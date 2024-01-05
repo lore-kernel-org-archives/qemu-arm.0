@@ -1,111 +1,112 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp791464ejo;
-        Fri, 5 Jan 2024 07:43:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHzSXGZAYGSSpBf9AokL7ELoul6hTaU+vA1Jpesk1+P9pcwiY/3ud6iIAmQDItnKx6U55MR
-X-Received: by 2002:a05:6870:d192:b0:1fa:f31b:4708 with SMTP id a18-20020a056870d19200b001faf31b4708mr2278001oac.47.1704469417187;
-        Fri, 05 Jan 2024 07:43:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469417; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp855273ejo;
+        Fri, 5 Jan 2024 09:27:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF5/Z8MmHpDcNArmCSmBC6rkI68v+yCG3TGZVodd7rB1RHzfLXhOJNzmVsyYwrefezwSjBl
+X-Received: by 2002:a05:6808:21a9:b0:3bc:206a:41c4 with SMTP id be41-20020a05680821a900b003bc206a41c4mr2891125oib.76.1704475634304;
+        Fri, 05 Jan 2024 09:27:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704475634; cv=none;
         d=google.com; s=arc-20160816;
-        b=qvYpPbnhsYO9itaIcb+6RczY/tJmhPUyRJSEUWd6SlGUiYzzBQeKXvEQYnhuzgdcBk
-         cASb+AfTuNPPnqWGT7y1N4VVYQVPxjg+G/7BnMuAmqKNVP5BNQ/fkZSReVG8IQ4zgQh1
-         z1wcw51UrI9T0Xnvl50oAcnTyeXGjAUucLTx8PxtKFRM7gYlOxRB1yetZ6s/DEgrPK8t
-         /iU5UGFZ5HAsBFCuNNzSa+5ejuM2YgERxiR75kXfFm6Lr0PG6Alz2KDV0s39YSxqXG7z
-         AGr/MZnnPljxSlkEfqxQHY+koIoyFEuWmQ3qMxCFycP+Tj2D7Z40mXf/FjDR4HU+/RSA
-         BnMw==
+        b=es+XkdnZq8Br3ZKVV0Rkoca7M0K/oEXJ+akzly0RUKBzqu8oKJY5reio8DMQODHAsB
+         UuNJhls9u+bda9W4swFvfrrut2hdbtxDBjrIXW3cEoU/59rsEWi4nh61+Pqns3jwLrdy
+         T3dKKO42P04Go7evHFj8NVi83TJfDvR5+KunRWHrh7CNSbVrS6ifAOHpH2HccXrYO93n
+         FsMyrxGLU4Zliae8WgqeMX68fOLWe1SKAiaVbP8g3xG8EBKWX1El+GaQb6z8cszpor10
+         gTxx7cUVuz96DMdYpLSMh1lbH1tmidv5Jg2SV2GdqpjHkawgau6ywDkM5QZLbAjXvlAR
+         0jqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GSOT+lEi5AuW4r0IW5SvW5ThfdMzHSU7KJgpnCVspg4=;
-        fh=ax0hyuqR7wRLb1fLJ3q+f2fyJsTM1JTvunEE8pKHy3I=;
-        b=mKd5NXeqW+FarWuHym9KGQBfpEPzBFAWZ+iJbTsrpgqkQv56eCCXivKjwryqQy17MB
-         ekqD+Q5xRknNfp825+mGPwuv7HKp3n0m9U2eYt6LXfUGwfmjsB2tqakrce6tnzaBWowq
-         gV2kE571UQ8OfCYpxrGGfIfnBqE5pw/WVc6w2ewVzLWwR7ahLIyjPeMNRB0Y4EK2RwWu
-         ejD4qcKtHxg8ZLOy4E66BdMbNHxQE/eZT6TgphGwnKQtlZ7/wIKaAZA2S2rHQqtLkjXW
-         svJlf5ZxH6qPf7Qc45ydEJJbiYgRA+xWkhk1IgUQIi/6O09SIfq559cugc2iVFc7t3nF
-         l7vQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Ca/KSmdg+t73to0c+0RcEgkeIdXUcFDWCT3dpOFVbjI=;
+        fh=Gwzg6NeTIDvtO++ZHibvdz2nfjJ55EPNprbys5G7+kQ=;
+        b=UBy3V7NwohZcL67mKaPT0lNs/ibFEPtjHIukp1aeJoD3U+piWZWaOyaVGBoEPtSDLB
+         olYVf4fpzxMTm5pIQSpVN/xMrv9ZDn4oh22H57vRhXAplckKpqcb2XP7gqyXm5EoSqHC
+         2qynJRW8bNWImOvu3w6YQoZhWPETESMkLvSbLAeSPP9xXY4dG7DWrTaTfOSgA3Lk0VbE
+         Mf3H03RXLWqSPEj6+HFyYukmbZJJLEiHvQK6ZxnsvN3vYmpcNvDOMVXZKEoBsj4XEdyI
+         E1fqd4sVURGZesSinR+ye6QCpMHqSa0I96+vTdFgFH9s49Egwme3u2jjCj04lYghRB1G
+         bhdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N8XkDgsT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gU3Q20jJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s22-20020a05620a0bd600b00781cc3f5103si2051190qki.511.2024.01.05.07.43.37
+        by mx.google.com with ESMTPS id d18-20020a0cf0d2000000b0068077cd22c8si2179781qvl.298.2024.01.05.09.27.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:43:37 -0800 (PST)
+        Fri, 05 Jan 2024 09:27:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N8XkDgsT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gU3Q20jJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmLv-0004EO-R9; Fri, 05 Jan 2024 10:43:21 -0500
+	id 1rLnxr-0008Pn-7A; Fri, 05 Jan 2024 12:26:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmLt-0004D9-8b
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:43:17 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLnxo-0008PK-0r
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:26:32 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmLo-0002uq-9I
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:43:16 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-40d89446895so4042335e9.0
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:43:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLnxm-0000Qn-1E
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:26:31 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-55569b59f81so2134548a12.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 09:26:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469390; x=1705074190; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=GSOT+lEi5AuW4r0IW5SvW5ThfdMzHSU7KJgpnCVspg4=;
- b=N8XkDgsTwRilNf01QxGynJFUxeEX3VOqa0Wth0N8td/shoxYqokGGX8vGb4VPuWLm6
- yP4lGUcJ5YOvsjsYhXC3Dx21cHa7mhPuo8oGZowsbJ4fQtrcmHC37yhZ2XTHJxhMo4UV
- P/wbr8jbomFN+YJq0KmWgvQRgkFR2p8MFfz0Dpl9y3GGQzrVfHGkBcZRj20O0u11JJYw
- XgzJeAeM63ai5yTrL3SyLVBHvQ16/KT9qfIgfYqrgWS15BJ+AvmYrBqKvoFzQRsCBHaS
- qjDH8S4JG1iJT3thKEdozoXAh1eSOU2C5Xw8ztEVmyus3Js5PMEbyuyskPzMRVcQH1vv
- 7jsw==
+ d=linaro.org; s=google; t=1704475588; x=1705080388; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ca/KSmdg+t73to0c+0RcEgkeIdXUcFDWCT3dpOFVbjI=;
+ b=gU3Q20jJx/HOcjs3/Mybc6sVeL/g0sNYyjENYOy7PhTUt1v3o9AHN9htLzcDJDQE3e
+ McWf2x0V98ifSTXxVetj4EJYlc+/bsUuXInFkwcyPyUckQyBw1xSvA/Ke7yDbrCmEiNN
+ qeXznFKBGwpp12iBMhRivfzhRXUWgOK9OfQLQjFbMKT/J/6G9JikJtXiQ68dASbMJ3yN
+ 6r70CeXLLpiLaZMRYxlwjEXfxRs8Y34x5GOJKsY1Zf3bhsPiQtCAuzvO1b7xqfWeKkj7
+ 6UG3EHq93Mty4DzYaAY+Joz9nMAI3akA77VNpNgfa2oHtXdNMOTP3m/Bcjil6hXEaFSW
+ 1BkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469390; x=1705074190;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GSOT+lEi5AuW4r0IW5SvW5ThfdMzHSU7KJgpnCVspg4=;
- b=Ymoo8Cli0LR6Ga73shCUCA15fF541gfhWJnn9+dk8BJU7ikTvWumJ4HRacHwttP41j
- KJGu25PJ2da6fOuNtpO2tGvpGHpO9l0I14bINqsiY0Ih2brRbCYp8cqKDc4jWdmW+Fjh
- PMdZjegZvh9QtSzN10/oJXvu1DpdMhFLX0mv0w5GPRc4BXMUFTBzK2yU9cDbb14CkB+d
- TYXAH8nba1SG3OW51T3k3YUD4k9eBYPSwH4RI6UJvDMWGkTZ/vcZm5JVd8qXDIQwVcBy
- kBXN8fSnx2zZg/seGSuXKViULjZ9vndD9wBUIAfRaf/5ucm7VjtfUThVRhLcLzEP/nfK
- OSTg==
-X-Gm-Message-State: AOJu0YwW7LHhmUtYyqtVBRHQNgGjUvTwDRUQPZgVoC4qgm+mc9jFdrkU
- WL9qq+vW47rGGaLvdZUU0nvP49PxILojHQ==
-X-Received: by 2002:a05:600c:4e86:b0:40c:7120:2fac with SMTP id
- f6-20020a05600c4e8600b0040c71202facmr1248444wmq.126.1704469390489; 
- Fri, 05 Jan 2024 07:43:10 -0800 (PST)
-Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
- [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- z5-20020a05600c0a0500b0040d772030c2sm1873937wmp.44.2024.01.05.07.43.09
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:43:10 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 00/71] HW core patches for 2024-01-05
-Date: Fri,  5 Jan 2024 16:41:53 +0100
-Message-ID: <20240105154307.21385-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+ d=1e100.net; s=20230601; t=1704475588; x=1705080388;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ca/KSmdg+t73to0c+0RcEgkeIdXUcFDWCT3dpOFVbjI=;
+ b=XXUujQ/Ixpf5ORsIbCEWUs9PEGw59caI6WvJ67AQlpbz6ENHELbdAGrZIs5/ecT+CS
+ UUPmQJfodkFFhT4QUpi64l83y/wrBoR5atM7MqCFmLkflmmse4QNiwtyd0YxOGoNOs55
+ cUXIM2DuseOb8ZNYiyHNlE3Tj/SeTwJPV6Jy/vYqdiiermD5eFEnlIKrfPvShCJIA4te
+ rCMhHXGN/u7h6ev6GElpwgjRgCBocYpISMd565Rkh8qKghbsxP3kvOaeHtssXNDDlDyD
+ HQyV/v95ABsaMuwzO4j00i44ZezlNSOTqLFvX9mpAMjCVBxGiyb4TvmNejpxkok9NrPz
+ 0TjA==
+X-Gm-Message-State: AOJu0Yx3YsPuHPAVfhF7RWI05GmlDQt1WDIAgbImybDGzwlLjyENegWh
+ TkOQ3nG0tuHYVhNPxvmIQeOW84Rua/ttb+3VDhdqx3+CYRCBGA==
+X-Received: by 2002:a50:c04a:0:b0:554:877e:b7f with SMTP id
+ u10-20020a50c04a000000b00554877e0b7fmr1661522edd.39.1704475587946; Fri, 05
+ Jan 2024 09:26:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+References: <20231220064735.387346-1-ah@immunant.com>
+In-Reply-To: <20231220064735.387346-1-ah@immunant.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 5 Jan 2024 17:26:17 +0000
+Message-ID: <CAFEAcA-XPfOX-=dutD5zO1_zRs4ciYzLL8zHwwTAnBSxvywD7g@mail.gmail.com>
+Subject: Re: [PATCH] arm_gic: Implement GICC_AIAR, GICC_AEOIR and GICC_AHPPIR
+To: Andrei Homescu <ah@immunant.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, armellel@google.com, 
+ jansene@google.com, =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@android.com>, 
+ Matthew Maurer <mmaurer@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,231 +121,170 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Gp5UGyi6dZz9
+X-TUID: dMG8/7BqZpeG
 
-The following changes since commit 05470c3979d5485003e129ff4b0c2ef98af91d86:
+On Wed, 20 Dec 2023 at 06:47, Andrei Homescu <ah@immunant.com> wrote:
+>
+> From: Arve Hj=C3=B8nnev=C3=A5g <arve@android.com>
+>
+> Implement aliased registers so group 1 interrupts can be used in secure
+> mode.
 
-  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging (2024-01-04 19:55:20 +0000)
+Hi; thanks for this patch.
 
-are available in the Git repository at:
+> GICC_AEOIR is only implemented as a direct alias to GICC_EOIR for now as
+> gic_complete_irq does not currently check if the cpu is in secure mode.
 
-  https://github.com/philmd/qemu.git tags/hw-cpus-20240105
+I'm not really sure what this comment has in mind, but I think
+perhaps it is alluding to the issue that https://r.android.com/859189
+fixes ? In any case, we should either expand it to be clearer about
+what problem it's referring to or else delete it as no longer
+relevant.
 
-for you to fetch changes up to a318da6b3f6a88e6cfd6953c519def9457e8962f:
+> Upstreamed from https://r.android.com/705890 and
+> https://r.android.com/859189.
+>
+> Signed-off-by: Arve Hj=C3=B8nnev=C3=A5g <arve@android.com>
+> Signed-off-by: Matthew Maurer <mmaurer@google.com>
 
-  target/sparc: Simplify qemu_irq_ack (2024-01-05 16:20:15 +0100)
+Hmm, I'm not entirely sure if we should be creating signed-off-by
+lines if they've not been provided by the original authors.
+(We can take the code because it's from a GPL2'd fork, and we
+should credit the original authors, but a signed-off-by tag
+says a bit more than that.)
 
-----------------------------------------------------------------
-HW core patch queue
+> Signed-off-by: Andrei Homescu <ah@immunant.com>
+> ---
+>  hw/intc/arm_gic.c | 31 ++++++++++++++++++++++++++++---
+>  1 file changed, 28 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 074cf50af2..d0e267a4b2 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -854,7 +854,8 @@ static void gic_deactivate_irq(GICState *s, int cpu, =
+int irq, MemTxAttrs attrs)
+>      gic_clear_active(s, irq, cpu);
+>  }
+>
+> -static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs a=
+ttrs)
+> +static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs a=
+ttrs,
+> +                             bool ns_irq)
 
-- Unify CPU QOM type checks (Gavin)
-- Simplify uses of some CPU related property (Philippe)
-  (start-powered-off, ARM reset-cbar and mp-affinity)
-- Header and documentation cleanups (Zhao, Philippe)
-- Have Memory API return boolean indicating possible error
-- Fix frame filter mask in CAN sja1000 model (Pavel)
-- QOM embed MCF5206 timer into SoC (Thomas)
-- Simplify LEON3 qemu_irq_ack handler (Clément)
+I think this argument should be called group1_only (see later).
 
-----------------------------------------------------------------
+>  {
+>      int cm =3D 1 << cpu;
+>      int group;
 
-Clément Chigot (1):
-  target/sparc: Simplify qemu_irq_ack
+There's a codepath here for "gic_is_vcpu())"; we should
+add a comment somewhere there that says something like:
 
-Gavin Shan (29):
-  target/alpha: Remove fallback to ev67 cpu class
-  target/hppa: Remove object_class_is_abstract()
-  cpu: Add helper cpu_model_from_type()
-  cpu: Add generic cpu_list()
-  target/alpha: Use generic cpu_list()
-  target/arm: Use generic cpu_list()
-  target/avr: Use generic cpu_list()
-  target/cris: Use generic cpu_list()
-  target/hexagon: Use generic cpu_list()
-  target/hppa: Use generic cpu_list()
-  target/loongarch: Use generic cpu_list()
-  target/m68k: Use generic cpu_list()
-  target/mips: Use generic cpu_list()
-  target/openrisc: Use generic cpu_list()
-  target/riscv: Use generic cpu_list()
-  target/rx: Use generic cpu_list()
-  target/sh4: Use generic cpu_list()
-  target/tricore: Use generic cpu_list()
-  target/xtensa: Use generic cpu_list()
-  target: Use generic cpu_model_from_type()
-  machine: Use error handling when CPU type is checked
-  machine: Introduce helper is_cpu_type_supported()
-  machine: Improve is_cpu_type_supported()
-  machine: Print CPU model name instead of CPU type
-  hw/arm/virt: Hide host CPU model for tcg
-  hw/arm/virt: Check CPU type in machine_run_board_init()
-  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
-  hw/arm: Check CPU type in machine_run_board_init()
-  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+ /*
+  * Acknowledging a group 0 interrupt via GICV_AEOIR is
+  * UNPREDICTABLE; we choose to treat it as if the guest
+  * had acknowledged it via GICV_EOIR, i.e. we ignore
+  * the group1_only flag.
+  */
 
-Pavel Pisa (1):
-  hw/net/can/sja1000: fix bug for single acceptance filter and standard
-    frame
+> @@ -922,7 +923,7 @@ static void gic_complete_irq(GICState *s, int cpu, in=
+t irq, MemTxAttrs attrs)
+>
+>      group =3D gic_has_groups(s) && gic_test_group(s, irq, cpu);
+>
+> -    if (gic_cpu_ns_access(s, cpu, attrs) && !group) {
+> +    if (ns_irq && !group) {
+>          DPRINTF("Non-secure EOI for Group0 interrupt %d ignored\n", irq)=
+;
+>          return;
+>      }
 
-Philippe Mathieu-Daudé (37):
-  meson: Allow building binary with no target-specific files in hw/
-  cpu: Call object_class_dynamic_cast() once in cpu_class_by_name()
-  hw/core: Add machine_class_default_cpu_type()
-  hw/core/cpu: Remove final vestiges of dynamic state tracing
-  hw/core/cpu: Update description of CPUState::node
-  hw/audio/sb16: Do not migrate qdev properties
-  hw/arm/bcm2836: Simplify use of 'reset-cbar' property
-  hw/arm/bcm2836: Use ARM_CPU 'mp-affinity' property
-  hw/ppc/spapr_cpu_core: Access QDev properties with proper API
-  hw: Simplify accesses to the CPUState::'start-powered-off' property
-  hw/ppc/xive2_regs: Remove unnecessary 'cpu.h' inclusion
-  hw/mips: Inline 'bios.h' definitions
-  memory: Have memory_region_init_ram_flags_nomigrate() return a boolean
-  memory: Have memory_region_init_ram_nomigrate() handler return a
-    boolean
-  memory: Have memory_region_init_rom_nomigrate() handler return a
-    boolean
-  memory: Simplify memory_region_init_rom_nomigrate() calls
-  memory: Simplify memory_region_init_ram_from_fd() calls
-  memory: Have memory_region_init_ram() handler return a boolean
-  memory: Have memory_region_init_rom() handler return a boolean
-  memory: Have memory_region_init_rom_device_nomigrate() return a
-    boolean
-  memory: Simplify memory_region_init_rom_device_nomigrate() calls
-  memory: Have memory_region_init_rom_device() handler return a boolean
-  memory: Have memory_region_init_resizeable_ram() return a boolean
-  memory: Have memory_region_init_ram_from_file() handler return a
-    boolean
-  memory: Have memory_region_init_ram_from_fd() handler return a boolean
-  backends: Use g_autofree in HostMemoryBackendClass::alloc() handlers
-  backends: Simplify host_memory_backend_memory_complete()
-  backends: Have HostMemoryBackendClass::alloc() handler return a
-    boolean
-  backends: Reduce variable scope in host_memory_backend_memory_complete
-  util/oslib: Have qemu_prealloc_mem() handler return a boolean
-  misc: Simplify qemu_prealloc_mem() calls
-  hw: Simplify memory_region_init_ram() calls
-  hw/arm: Simplify memory_region_init_rom() calls
-  hw/sparc: Simplify memory_region_init_ram_nomigrate() calls
-  hw/misc: Simplify memory_region_init_ram_from_fd() calls
-  hw/nvram: Simplify memory_region_init_rom_device() calls
-  hw/pci-host/raven: Propagate error in raven_realize()
+> @@ -1647,6 +1648,22 @@ static MemTxResult gic_cpu_read(GICState *s, int c=
+pu, int offset,
+>              *data =3D s->abpr[cpu];
+>          }
+>          break;
+> +    case 0x20: /* Aliased Interrupt Acknowledge */
+> +        if (!gic_has_groups(s) || (s->security_extn && !attrs.secure)) {
 
-Thomas Huth (1):
-  hw/m68k/mcf5206: Embed m5206_timer_state in m5206_mbar_state
+This doesn't look like the right condition -- the spec
+says GICC_AIAR is only present in GICv2. gic_has_groups()
+will return true for GICv2 or for a GICv1 with the security
+extensions. (That's the right check for GICC_ABPR, but not
+for GICC_AIAR or GICC_AHPPIR or GIC_AEOIR.)
 
-Zhao Liu (2):
-  hw/cpu/core: Cleanup unused included header in core.c
-  hw/cpu/cluster: Cleanup unused included header in cluster.c
+It will also mean we incorrectly return 0 for the case
+of the GICV_AIAR vcpu interface register. (This is why the
+existing code for the GICC_ABPR uses gic_cpu_ns_access() in
+this part of its check.)
 
- meson.build                           |   8 +-
- include/exec/memory.h                 |  40 +++++--
- include/hw/boards.h                   |   6 ++
- include/hw/core/cpu.h                 |  18 +++-
- include/hw/mips/bios.h                |  14 ---
- include/hw/ppc/xive2_regs.h           |   2 +-
- include/qemu/osdep.h                  |   4 +-
- include/sysemu/hostmem.h              |  10 +-
- linux-user/alpha/target_elf.h         |   2 +-
- target/alpha/cpu.h                    |   3 -
- target/arm/cpu.h                      |   3 -
- target/avr/cpu.h                      |   2 -
- target/cris/cpu.h                     |   3 -
- target/hexagon/cpu.h                  |   3 -
- target/hppa/cpu.h                     |   3 -
- target/loongarch/cpu.h                |   4 -
- target/m68k/cpu.h                     |   4 -
- target/mips/cpu.h                     |   4 -
- target/openrisc/cpu.h                 |   3 -
- target/riscv/cpu.h                    |   2 -
- target/rx/cpu.h                       |   3 -
- target/sh4/cpu.h                      |   3 -
- target/sparc/cpu.h                    |   2 +-
- target/tricore/cpu.h                  |   4 -
- target/xtensa/cpu.h                   |   3 -
- backends/hostmem-epc.c                |  14 ++-
- backends/hostmem-file.c               |  22 ++--
- backends/hostmem-memfd.c              |  13 ++-
- backends/hostmem-ram.c                |  12 +--
- backends/hostmem.c                    | 144 ++++++++++++--------------
- bsd-user/main.c                       |   5 +-
- cpu-target.c                          |  44 +++++++-
- hw/arm/armsse.c                       |   6 +-
- hw/arm/armv7m.c                       |   8 +-
- hw/arm/aspeed_ast2400.c               |   6 +-
- hw/arm/aspeed_ast2600.c               |   6 +-
- hw/arm/bananapi_m2u.c                 |  12 +--
- hw/arm/bcm2836.c                      |  18 ++--
- hw/arm/cubieboard.c                   |  12 +--
- hw/arm/fsl-imx25.c                    |  19 ++--
- hw/arm/fsl-imx31.c                    |  19 ++--
- hw/arm/fsl-imx6.c                     |  19 ++--
- hw/arm/integratorcp.c                 |   7 +-
- hw/arm/mps2-tz.c                      |  26 +++--
- hw/arm/mps2.c                         |  26 +++--
- hw/arm/msf2-som.c                     |  12 +--
- hw/arm/musca.c                        |  12 +--
- hw/arm/npcm7xx_boards.c               |  12 +--
- hw/arm/nrf51_soc.c                    |   7 +-
- hw/arm/orangepi.c                     |  12 +--
- hw/arm/sbsa-ref.c                     |  36 ++-----
- hw/arm/virt.c                         |  60 ++++-------
- hw/audio/sb16.c                       |  10 +-
- hw/core/cpu-common.c                  |   8 +-
- hw/core/machine.c                     | 103 +++++++++++-------
- hw/cpu/cluster.c                      |   5 +-
- hw/cpu/core.c                         |   9 +-
- hw/m68k/mcf5206.c                     |  20 ++--
- hw/mips/cps.c                         |   7 +-
- hw/mips/jazz.c                        |  10 +-
- hw/mips/malta.c                       |   9 +-
- hw/mips/mipssim.c                     |  10 +-
- hw/misc/ivshmem.c                     |   8 +-
- hw/net/can/can_sja1000.c              |   2 +-
- hw/nvram/nrf51_nvm.c                  |   7 +-
- hw/pci-host/raven.c                   |   6 +-
- hw/ppc/e500.c                         |   2 +-
- hw/ppc/rs6000_mc.c                    |   7 +-
- hw/ppc/spapr_cpu_core.c               |   2 +-
- hw/riscv/shakti_c.c                   |  13 ++-
- hw/sparc/leon3.c                      |   8 +-
- hw/sparc/sun4m.c                      |  23 ++--
- hw/sparc64/sun4u.c                    |   7 +-
- hw/virtio/virtio-mem.c                |   6 +-
- system/memory.c                       |  69 +++++++-----
- system/vl.c                           |   2 +-
- target/alpha/cpu.c                    |  23 ----
- target/arm/arm-qmp-cmds.c             |   3 +-
- target/arm/cpu.c                      |   4 +-
- target/arm/helper.c                   |  46 --------
- target/avr/cpu.c                      |  23 +---
- target/cris/cpu.c                     |  42 +-------
- target/hexagon/cpu.c                  |  24 +----
- target/hppa/cpu.c                     |  32 +-----
- target/i386/cpu.c                     |   3 +-
- target/loongarch/cpu.c                |  23 +---
- target/loongarch/loongarch-qmp-cmds.c |   3 +-
- target/m68k/cpu.c                     |   4 +-
- target/m68k/helper.c                  |  40 -------
- target/mips/sysemu/mips-qmp-cmds.c    |   3 +-
- target/openrisc/cpu.c                 |  46 +-------
- target/ppc/cpu_init.c                 |   3 +-
- target/ppc/ppc-qmp-cmds.c             |   3 +-
- target/riscv/cpu.c                    |  36 +------
- target/riscv/riscv-qmp-cmds.c         |   3 +-
- target/rx/cpu.c                       |  16 ---
- target/sh4/cpu.c                      |  17 ---
- target/sparc/int32_helper.c           |   2 +-
- target/tricore/cpu.c                  |   4 +-
- target/tricore/helper.c               |  22 ----
- target/xtensa/cpu.c                   |   4 +-
- target/xtensa/helper.c                |   9 --
- util/oslib-posix.c                    |   7 +-
- util/oslib-win32.c                    |   4 +-
- target/mips/cpu-defs.c.inc            |   9 --
- 105 files changed, 576 insertions(+), 977 deletions(-)
- delete mode 100644 include/hw/mips/bios.h
+> +            *data =3D 0;
+> +        } else {
+> +            attrs.secure =3D false;
+> +            *data =3D gic_acknowledge_irq(s, cpu, attrs);
 
--- 
-2.41.0
+This doesn't do the right thing I think for the GICV_AIAR
+vcpu interface, or for a GICv2 which doesn't have the security
+extensions, because gic_cpu_ns_access() will return false
+for both of those cases even if attrs.secure is false, and
+so when gic_acknowledge_irq() calls gic_get_current_pending_irq()
+it won't get the group 1 IRQ it's supposed to.
 
+> +        }
+> +        break;
+> +    case 0x28: /* Aliased Highest Priority Pending Interrupt */
+> +        if (!gic_has_groups(s) || (s->security_extn && !attrs.secure)) {
+> +            *data =3D 0;
+> +        } else {
+> +            attrs.secure =3D false;
+> +            *data =3D gic_get_current_pending_irq(s, cpu, attrs);
+> +        }
+
+Similarly this isn't correct for the GICv2-no-security-interface
+and the GICV-vcpu-interface cases.
+
+I think we probably need to plumb through more of the "what
+behaviour do we need" rather than trying to do it by setting
+attrs.secure. My first thought is a 'bool group1_only' argument
+to gic_get_current_pending_irq() and gic_acknowledge_irq(),
+so that those functions can give the behaviour we want for
+the alias registers.
+
+> +        break;
+>      case 0xd0: case 0xd4: case 0xd8: case 0xdc:
+>      {
+>          int regno =3D (offset - 0xd0) / 4;
+> @@ -1724,7 +1741,15 @@ static MemTxResult gic_cpu_write(GICState *s, int =
+cpu, int offset,
+>          }
+>          break;
+>      case 0x10: /* End Of Interrupt */
+> -        gic_complete_irq(s, cpu, value & 0x3ff, attrs);
+> +        gic_complete_irq(s, cpu, value & 0x3ff, attrs,
+> +                         gic_cpu_ns_access(s, cpu, attrs));
+> +        return MEMTX_OK;
+> +    case 0x24: /* Aliased End Of Interrupt */
+> +        if (!gic_has_groups(s) || (s->security_extn && !attrs.secure)) {
+> +            /* unimplemented, or NS access: RAZ/WI */
+
+Same remark applies here about the condition to use.
+
+> +        } else {
+> +            gic_complete_irq(s, cpu, value & 0x3ff, attrs, true);
+
+Here we are passing through the equivalent of a
+"group1_only" argument, so my suggestion above pretty
+much is to bring the AHPPIR and AIAR into line with this.
+
+> +        }
+
+>          return MEMTX_OK;
+>      case 0x1c: /* Aliased Binary Point */
+>          if (!gic_has_groups(s) || (gic_cpu_ns_access(s, cpu, attrs))) {
+> --
+> 2.42.1
+
+thanks
+-- PMM

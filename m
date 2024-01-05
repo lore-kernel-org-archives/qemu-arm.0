@@ -1,113 +1,111 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp794734ejo;
-        Fri, 5 Jan 2024 07:49:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE4hFiKQgdW+4El87EFfpUrXJJN4xXIvuw+DvPc8MXc4M8dUcJ1fr4x3YkcGUqlXrW+MRTL
-X-Received: by 2002:a05:6214:40f:b0:680:d2eb:879a with SMTP id z15-20020a056214040f00b00680d2eb879amr2389456qvx.43.1704469762427;
-        Fri, 05 Jan 2024 07:49:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469762; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp794776ejo;
+        Fri, 5 Jan 2024 07:49:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG79LBWPEJlptussFDvA0fTwFit4jzrJx/c/CqsZVRyvlvA/xiqYLbGN1rEhQq5u0H8GLN+
+X-Received: by 2002:a05:622a:450:b0:427:9a7a:2c72 with SMTP id o16-20020a05622a045000b004279a7a2c72mr2600156qtx.112.1704469766706;
+        Fri, 05 Jan 2024 07:49:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469766; cv=none;
         d=google.com; s=arc-20160816;
-        b=DLBNmbxSnar2MSvbuqnD7Cls8wV/l8ShyG3P9WFlNwRKBnxuKa2Rw9VJT230LD5vzp
-         M7+3bCwsiaD1Y1YA15iaoiWQfxQFrEhT9IgzudeHEJIMGCHp7hidrOzk/P/9I/ROXV1H
-         qvW47C+8NhjyWIbYiI+SxI+VV3uVsey7wyuCunDe3FjSZDuVBSkTlBLAZW8eeSpv7vqo
-         OrlhdAXjCKp/KR1scPZh1aCMT5fVEJ/wMxYIoDrI0iVZSagzINpwrDUzEEw1O/dvcwOy
-         VttIBqMlngHmhlE29rfxjZyDQMpdyUgtIw2NF+3UlQuZPEQLviDxTWAnRGztEbZhnrZh
-         CaaQ==
+        b=RqfAPLd73PfC6RkPefPjDa0LlCg/c3WIG5mxGiMTeOwqhM16bJ/lHxBPr6pnqs+2lt
+         gGcxBUbw2uxeTS4h2bAsVAD54nITwzSWIDS9c3JrXsc87JLbmM1wr1gqC4CsTzfH8GU9
+         aBu7kCQsTF/R9DtAcFPpbJJjaR/J7fk3NPNse0MDANHHu3b+Ckmr016LlFn/dK7FFIVN
+         Noz3iYet3ZJYhrXe0V9/7Lek96nePKmUJ2vIjHlnphsiJNCxazH4EKRh3zAyMIGdmvzl
+         462jZBet7YbADifY/bFfWcStjHVNZEipzD3ZcC9pBtRpL68BwfxytYR39zbSCJ1ClWdp
+         wbGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=E6gZ5WhughGxcVou1a2gSnMeSMbcizgPZgg8bhDFRA4=;
-        fh=D8rzsyW32sL0F4dymhcQ/+RJwDoO/kXyRKYDrO0pbQc=;
-        b=nr1fQudnNpXMLpC2c5nvGwzL30AqwMI6D4A0Kx7kZ4npkNXHaNhNzYPvrz9twa7k54
-         +XI7h7GKYRekhnK1ijAUUHnJ56U0VdlNTc4sHv3r9VGOVJF52zjp2+ditzdoa8882M1Y
-         gwbPaFjNFdNvIrbylj/mhpzVJzZXt7sLkPSGKrx6gNRZD+iIe2tXsprac63B03Sypi3/
-         slfMwWap1YLnU8QnEyOd7iiDF+GAsdeRCzu8mbFNiK7A+RLc5wL3/PCAIjin1G9uOEWl
-         jYfHKWq89rWHGUTlPdmGSMv+qEWiaV4led+eUXAc2do8Ow/OtmmcdxyXh3n1PilQCOxm
-         tHxw==
+        bh=MxNkugF37b5fEcbJO0/Zfbyy2DcJjrIhzRUUZIZhOZ4=;
+        fh=RHvafWDgpoEf3dpMj/nX1s5Lj/g1hoSh/j4YvQR2jco=;
+        b=vZaA4R+zwpcfnMMyYnWekBxN6j8qwGStsH6SoHPawRtK2E4w7sHbCgW94a/zGleIlz
+         pC4/0jgVJb824Q+M+qp3Ujtpq9EA0QELHoreiG5smiFW4928D1YEzYVt9ZGVASzKjLZ2
+         5R0TsgEA+zkhPqHPbDhX9SM71EXDoQbsBflZ15Xv89ZRn+sdg70BMxKuenO4JOrJSf/L
+         fVY8LAs9ay5sxMB0+Im6UzMWO1mzwbAogziVctHnSIKhzNU/JuwSqh7Y/QKkx+iFJ3Ne
+         23foBAvow2pFYrl10E1rqqQP2bYKYrp5m7arykHpeGOUFkysv6tHHOFSlP/XqmKhV3st
+         CFyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qhcaafY2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=yYLmrPiF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2-20020a0c9c02000000b0067f93558a30si2000484qve.362.2024.01.05.07.49.22
+        by mx.google.com with ESMTPS id v7-20020ac85787000000b004277d662d67si2026323qta.512.2024.01.05.07.49.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:49:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jan 2024 07:49:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qhcaafY2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=yYLmrPiF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmRH-0004Be-61; Fri, 05 Jan 2024 10:48:52 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rLmR4-0002YA-Mb; Fri, 05 Jan 2024 10:48:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmQB-00073e-03
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:47:43 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmQE-0007VR-6B
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:47:47 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmQ5-0004QK-JL
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:47:41 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-40d5d8a6730so15209035e9.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:47:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmQB-0004R6-3U
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:47:45 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-40d2e56f3a6so4035035e9.1
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:47:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469656; x=1705074456; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469661; x=1705074461; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=E6gZ5WhughGxcVou1a2gSnMeSMbcizgPZgg8bhDFRA4=;
- b=qhcaafY2wK1cDcfgx5MrK949O89dJJEHfaQa9rTTbysHcJivO4WmkmbPTEOpwWr1KW
- bHoD76itI+sdJQQq0quf06rpAZAXn7iIKB6AGPG5kNteKAlt2gTcuZ7j17SXBn0gNPgi
- XC672JaKdTfiLUxN6QN7+uLrDp5XY63k5w+yW1EVQTJzOFtvJOQpOFsy5OSpaiXEsYni
- 2wIIjeTvG5gUym1imHNTTxcSvA28AHDMjwn84XNdmZ6ekAGz8855I7D9oRxmYUUoKsg8
- ZzVc7jYbFLh+zQ3PklsjDjbVsEmX1fHTfgvtbwtCreTeIH11At5HFulLf67+WoiTpNZh
- x+XA==
+ bh=MxNkugF37b5fEcbJO0/Zfbyy2DcJjrIhzRUUZIZhOZ4=;
+ b=yYLmrPiFphG60m57lWmC4wzmjjC5wVNp3yXqvYn5hD2n/4yIBy7JfY251rW0btPeVh
+ K8jX2XUEbDcJJsBNOYaM33TPegWCZy6Db1d2U7ge6EKZQ6H9yhtAPOwYGJJrwdWAdDyJ
+ SSksFTsyvOlezel6aiee7zY+Pfsf0aDX4C0W2Aa4/J9dgq96kepL0zHsxZC7lcN3bpNM
+ ZuxqOz63Yr5gIr/EuCp6YDRSBvOFOVcf1FVuneMfxkwwqxVxLi3W5PXHJPtpW6Cbidis
+ 9xLUSHsHjlTeVj4cJIb5Hhg1xKaJFikrm/5YS773otLAsL4Yt7do9EUMZoHQJZI3ocj7
+ uFJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469656; x=1705074456;
+ d=1e100.net; s=20230601; t=1704469661; x=1705074461;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=E6gZ5WhughGxcVou1a2gSnMeSMbcizgPZgg8bhDFRA4=;
- b=YOq3rRPo1rOS5qiNLABXF1Oczpd3AEnnMY6SJXMwGRyyA8G7yOnhTM3nuyia4M3rFK
- 7YWPpGwKxjkEh0cs/SkSBcSDewyTjbCUwYqCScKz8y4FULDoUsBFqIAYo89I5H512N4j
- L2iqAE4biQsP1rEYdzBF+F3/MkdDqPtPLHruthqFgEAIG9yoWqET3C4y57vqqm/EvmPh
- 1ZFf/XLVicewoaEN/Pt/IUgtDsPY6hpn5XMLUjaKgfxPuelpZ7SCBAkINlLprWYL3BzB
- OWJflraad6xeLlVf2fvcytRZg2cKNufOXDgp9z+6b+afS479SPdpoz5Wv0YPCGQUmNNH
- Rxlw==
-X-Gm-Message-State: AOJu0YxzRtZQjQEgMFHwoB4KbWpauZYuAa8hOa3RjhjKjlEIi91Ud4lG
- y+GDy/T6fpIGthMLaSDSKJRceuZ8oWBx07r8Z7pOYxtbgVk=
-X-Received: by 2002:a1c:4b10:0:b0:40d:8810:620c with SMTP id
- y16-20020a1c4b10000000b0040d8810620cmr1318587wma.52.1704469656069; 
- Fri, 05 Jan 2024 07:47:36 -0800 (PST)
+ bh=MxNkugF37b5fEcbJO0/Zfbyy2DcJjrIhzRUUZIZhOZ4=;
+ b=VfE+dowLyZ7XABI5RPTHm5/qm7ffZLTxHv/OcV/XVx6EJwq4qC920DB7HDTC9zmxpJ
+ za0kof+EXDpKj4wNb//DNdYB8RmInNeBkPpOScLq8dfKQVuG7j1b6v0gSrICn/pRVa7y
+ Sw2JIjOrJ+oqdurEE+V9wmpRPi6q8OSM4lLmE4qbhDBX76pxXWFyJ45OYUvppyuYU9h0
+ 70RSVVsK3CtG1It6G+KDNPM48yUtUohke3juBJGYqBDiezbx9dmzidoZ1SMRVrf3P1UQ
+ Bm700qODbjkE/9rWxfdkcNuFHhnFhH+fu3nHBtE/BBrlwP98x67K9Qb3gUVp7hL5wPFN
+ u94w==
+X-Gm-Message-State: AOJu0Yx8HrEkvJJVjm5C3HJMf56GpAZ4zLSCUfRN4jKCRguj7SkLW2pT
+ ol4SAda6PGMOT8YgSrg+lSysmzcu8JGy8Q3bq4nPPo5JwdU=
+X-Received: by 2002:a05:600c:1d0a:b0:40d:81bd:9d12 with SMTP id
+ l10-20020a05600c1d0a00b0040d81bd9d12mr1310560wms.147.1704469661441; 
+ Fri, 05 Jan 2024 07:47:41 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- t9-20020a05600c198900b0040d6d755c90sm1933844wmq.42.2024.01.05.07.47.34
+ q16-20020adfea10000000b003365fcc1846sm1605027wrm.52.2024.01.05.07.47.40
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:47:35 -0800 (PST)
+ Fri, 05 Jan 2024 07:47:41 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PULL 41/71] hw: Simplify accesses to the
- CPUState::'start-powered-off' property
-Date: Fri,  5 Jan 2024 16:42:34 +0100
-Message-ID: <20240105154307.21385-42-philmd@linaro.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>
+Subject: [PULL 42/71] hw/ppc/xive2_regs: Remove unnecessary 'cpu.h' inclusion
+Date: Fri,  5 Jan 2024 16:42:35 +0100
+Message-ID: <20240105154307.21385-43-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,147 +114,44 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gO8nc8x3U+vy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bxV0dlGbsvj4
 
-The 'start-powered-off' property has been added to ARM CPUs in
-commit 5de164304a ("arm: Allow secondary KVM CPUs to be booted
-via PSCI"), then eventually got generalized to all CPUs in commit
-c1b701587e ("target/arm: Move start-powered-off property to generic
-CPUState"). Since all CPUs have it, no need to check whether it is
-available. Updating this property can't fail, so use &error_abort.
+xive2_regs.h only requires declarations from "qemu/bswap.h".
+Include it instead of the huge target-specific "cpu.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20231123143813.42632-5-philmd@linaro.org>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Message-Id:  <20231122183920.17905-1-philmd@linaro.org>
 ---
- hw/arm/armsse.c  | 6 ++----
- hw/arm/armv7m.c  | 8 ++------
- hw/arm/bcm2836.c | 8 ++------
- hw/mips/cps.c    | 7 +++----
- hw/ppc/e500.c    | 2 +-
- hw/sparc/sun4m.c | 2 +-
- 6 files changed, 11 insertions(+), 22 deletions(-)
+ include/hw/ppc/xive2_regs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 02b4f6596f..91502d157a 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -1022,10 +1022,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-          * later if necessary.
-          */
-         if (extract32(info->cpuwait_rst, i, 1)) {
--            if (!object_property_set_bool(cpuobj, "start-powered-off", true,
--                                          errp)) {
--                return;
--            }
-+            object_property_set_bool(cpuobj, "start-powered-off", true,
-+                                     &error_abort);
-         }
-         if (!s->cpu_fpu[i]) {
-             if (!object_property_set_bool(cpuobj, "vfp", false, errp)) {
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 375a40962f..e39b61bc1a 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -318,12 +318,6 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
--    if (object_property_find(OBJECT(s->cpu), "start-powered-off")) {
--        if (!object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
--                                      s->start_powered_off, errp)) {
--            return;
--        }
--    }
-     if (object_property_find(OBJECT(s->cpu), "vfp")) {
-         if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp, errp)) {
-             return;
-@@ -334,6 +328,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+    object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
-+                             s->start_powered_off, &error_abort);
+diff --git a/include/hw/ppc/xive2_regs.h b/include/hw/ppc/xive2_regs.h
+index b7adbdb7b9..816f5d0e84 100644
+--- a/include/hw/ppc/xive2_regs.h
++++ b/include/hw/ppc/xive2_regs.h
+@@ -10,7 +10,7 @@
+ #ifndef PPC_XIVE2_REGS_H
+ #define PPC_XIVE2_REGS_H
  
-     /*
-      * Real M-profile hardware can be configured with a different number of
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 289c30e6b6..b0674a22a6 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -135,12 +135,8 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
-                                 bc->peri_base, &error_abort);
+-#include "cpu.h"
++#include "qemu/bswap.h"
  
-         /* start powered off if not enabled */
--        if (!object_property_set_bool(OBJECT(&s->cpu[n].core),
--                                      "start-powered-off",
--                                      n >= s->enabled_cpus,
--                                      errp)) {
--            return;
--        }
-+        object_property_set_bool(OBJECT(&s->cpu[n].core), "start-powered-off",
-+                                 n >= s->enabled_cpus, &error_abort);
- 
-         if (!qdev_realize(DEVICE(&s->cpu[n].core), NULL, errp)) {
-             return;
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index b6612c1762..4f12e23ab5 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -78,10 +78,9 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-         CPUMIPSState *env = &cpu->env;
- 
-         /* All VPs are halted on reset. Leave powering up to CPC. */
--        if (!object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
--                                      errp)) {
--            return;
--        }
-+        object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
-+                                 &error_abort);
-+
-         /* All cores use the same clock tree */
-         qdev_connect_clock_in(DEVICE(cpu), "clk-in", s->clock);
- 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 384226296b..566f1200dd 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -955,7 +955,7 @@ void ppce500_init(MachineState *machine)
-          * when implementing non-kernel boot.
-          */
-         object_property_set_bool(OBJECT(cs), "start-powered-off", i != 0,
--                                 &error_fatal);
-+                                 &error_abort);
-         qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
- 
-         if (!firstenv) {
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 17bf5f2879..64895aebe3 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -804,7 +804,7 @@ static void cpu_devinit(const char *cpu_type, unsigned int id,
- 
-     qemu_register_reset(sun4m_cpu_reset, cpu);
-     object_property_set_bool(OBJECT(cpu), "start-powered-off", id != 0,
--                             &error_fatal);
-+                             &error_abort);
-     qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
-     cpu_sparc_set_id(env, id);
-     *cpu_irqs = qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
+ /*
+  * Thread Interrupt Management Area (TIMA)
 -- 
 2.41.0
 

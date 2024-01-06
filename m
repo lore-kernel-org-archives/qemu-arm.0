@@ -1,132 +1,100 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1780430ejo;
-        Sun, 7 Jan 2024 06:05:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF1MvH5rF7Vtd7aL8GYJMDMdHYJoHuRS1g1D4YRB2R874l0jEUqxMTxlyioiRn1BW3IJI7q
-X-Received: by 2002:a05:6102:158b:b0:467:d5ba:53cc with SMTP id g11-20020a056102158b00b00467d5ba53ccmr58279vsv.11.1704636302489;
-        Sun, 07 Jan 2024 06:05:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704636302; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1363257ejo;
+        Sat, 6 Jan 2024 08:39:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEsytHTtuEwcT094t9dY3iCXtD+WgfUvUC2BZJAmhmdFBAtVg9fo/Q7sEq9D4NpsNCi4te4
+X-Received: by 2002:a05:620a:28c4:b0:783:1845:4a99 with SMTP id l4-20020a05620a28c400b0078318454a99mr442284qkp.47.1704559175606;
+        Sat, 06 Jan 2024 08:39:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704559175; cv=none;
         d=google.com; s=arc-20160816;
-        b=EosAbiuWFzUnS2jNamko74jJgK5OilsYm2z6GuaDU8uxbvH3Ako54cY01mpRUq+8XF
-         Xhiq0XtkBMx3y3WX7uUjsIAtrZFvmwTYNjXFsuoKIx90EWn0vcpI/pE/DzzQQaQlbDNx
-         sW9dK3/PKtAJMU9ggNEfUTSNaRMAnxsf2w3rU9ipmqXSQPC1rkuoQ2I6HHLnOSO1oTns
-         WIltiJl7vLZuGe5Q1z6KbneZEdpudaUbyrRZ40yFcRji+YomFiUxFUxIuKj4PK1950sw
-         I8Y6wkSX7eRCdDw9oTHAi6oEWde1pZyG6RUfR1+oQ5HDZLlAGuMaO9kSK+OiFJf8sZrV
-         2PWQ==
+        b=p4XEzcW94X9AMvSpPlq+qip51k2JKxYJJvwdmOm5KcYju3XpUrF8aIVlpB8QG7ry5D
+         nx2os2Fe2Vx6h7zWsR5Zkfnbkj1Q29GtHOHK6XYkK4N4dLEzScxyynFQxDcwQ7AEy1CN
+         iXsI+jMVIsqZRwRV6DGIyvC1/VKpscojZmC3TDIORdh4Rxxb7T/rWxVdoZ4W3HUtYq9e
+         5FrIUynaDxj2eevxg6LCHo5o81TldGkOKq4vtXdFb2g5NAXgpR/DFuNAFGnPbIFYIAdM
+         HsE66OxAvGT90n2A4zuOPcDTQpmaluuCNewqJO6m2ahRXH8H98JaI3A47yB269qQVXb4
+         tqaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=fEJoEgbFJSgvpGetzAYU6wr3cF/3P9Go4Hx6iYVVKaA=;
-        fh=Jf1nKP2WL2jcbqOIOxxD2PSimQ8lvAM02ydtFJZMJic=;
-        b=F5RKOyavp1TZ/NL5FOkMvLhMAmDBXigewzIXABJPO8pQF3s3/ZWIhqhvtatDL4x1YH
-         ZW7otfUPGyHcX7FK/CnkCnD+kCvWIUEOdZAKr8tUlCTCyhRP0BEFGpdjF23y3mwJguIs
-         1VLuu4De21yENyFt8IuOhq7Kz2cnvvEuDXVj6dZRB1VaEWz9phnkuLQ5ZgGRsL5ei7cC
-         LcXMTQmLgvGcdgB9oOM7YUmPicTSstNdU6skCW6mquiLMfKkxzbj9Tmq142qSrWiBbpg
-         6HNAlPumBseL9Xaob1ZobavQzS7CoZ0Tg8aX0DvoZfjKgM+jc0FvhqXnIi9yfaSeo0iq
-         FIMg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=fi6GQXYo1/ahC6bOFpzhel50lc+Tb0ZLdlgLZLGO1e4=;
+        fh=7PA+vUGXkkjAcZvk/H80lUiJ0SZWtswN2qIXn6r4OtE=;
+        b=0zLmM5SOc8Zk4zBwZPrBM2aPcPvJcHloEiMopfZ+ATRGmQ0RybeQKgOfd+SQ4dTfeo
+         DG5LcOe7jlHHt5XFDbMvdALb39OuTeHz++SYV3MfZzahPKxdO/cTC4fbEisI6n36EEK+
+         A9rviSxsTRZcb37hOtJieoqVns79p7XLuM5fdCBmH7D58iD25dUNUgb5WaDSvKiYNFdG
+         OxnNjXi1782lj5gVI/2ox/DGwqbcfTX3xD40wj90qpJD4qzHI6hg/VrJ9cPoAEWxmHtb
+         /bIRQIWcoNGPr5bVfR/nuctyUjBDtiQRVhzIWAX/bCY854EAm1vP28P47x+gPGG0gxwj
+         Pmyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OqAgtgcN;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=lbSo4Fqo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19-20020a67ec93000000b0046747315964si456780vsp.456.2024.01.07.06.05.02
+        by mx.google.com with ESMTPS id fg22-20020a05622a581600b004297621769csi4330986qtb.791.2024.01.06.08.39.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Jan 2024 06:05:02 -0800 (PST)
+        Sat, 06 Jan 2024 08:39:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OqAgtgcN;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=lbSo4Fqo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMTlg-0005Fc-2B; Sun, 07 Jan 2024 09:04:48 -0500
+	id 1rM9ho-0002uL-H5; Sat, 06 Jan 2024 11:39:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rMTle-0005EU-QE; Sun, 07 Jan 2024 09:04:46 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rM9hm-0002tr-Im; Sat, 06 Jan 2024 11:39:26 -0500
+Received: from zproxy2.enst.fr ([137.194.2.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rMTlc-0006fX-W3; Sun, 07 Jan 2024 09:04:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=fEJoEgbFJSgvpGetzAYU6wr3cF/3P9Go4Hx6iYVVKaA=; b=OqAgtgcNQoFMX3dbDiQNqH8/uy
- 2vgnguyIM4VRlpzCVABLwkmWHbbfm0b8yr6M77R1lX7TP1StjNzAH+BT/j9WPB5UUhkGNwjOebETl
- /OhZxOvGpzFMjTrsz/rEUz6CRgQAhwz1djz1IHq1QtfozDh54nL94dTP9/MrWR3+we+KU5+YbZhZO
- jtCFGKyhVMSBIX8hTw1QnvE8xYqBhmICY8hTWGTfOJap1hO+YOgLosFzA1v7+2yMaNAjuJ1rWkjYO
- JiX9kNjQW2kheoRbdAdFSzWRhm0v+RED998oTgXRPwDPudWM4v1bTgS6AI9JyfRI3+O7V/KPoI1Ny
- IIF17jiZkoMPCEpVtAu72nRK4vLNoDFib+JBM0IhalVAoIh1DlePuLjRB3l5ZGFKFCoV8nMgKLPmm
- FWi1JZuCsMBM33g3+pKPrZs5d11vVx92lmTf3Xbth6KJvYmvVBDQHqx/yMc/1ZPk3aNjAh5bOwF45
- XU6aKQBJx41d+ios06Q9m/e831yC5aP4TNZF1BKIHBFoBO3rY+MejIuHql8lH2PuE1XV3YmXcSGjE
- pghBVC3ZGdWv8/0KAUNUaIp5cgEHW/+84l5NcfFraFJdhaBNa2mnxHu7dfnn5Oocl+N50r5EzsI0/
- azqkCkM7xaVE2xVoHQFQ4esi21edL7GlDnZ+dQ6OU=;
-Received: from [2a00:23c4:8bb1:9800:d580:3d66:e68a:4949]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rMTkx-0003dG-7K; Sun, 07 Jan 2024 14:04:07 +0000
-Message-ID: <ab6ecb71-7c29-45e6-b69f-9e36d05fd6d6@ilande.co.uk>
-Date: Sun, 7 Jan 2024 14:04:27 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- inesvarhol <inesvarhol@proton.me>, =?UTF-8?Q?In=C3=A8s_Varhol?=
- <ines.varhol@telecom-paris.fr>, Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rM9hf-0007At-Va; Sat, 06 Jan 2024 11:39:26 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 1806880800;
+ Sat,  6 Jan 2024 17:39:16 +0100 (CET)
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id UVDO5aqnbpYO; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 8D181807DC;
+ Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 8D181807DC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704559154;
+ bh=fi6GQXYo1/ahC6bOFpzhel50lc+Tb0ZLdlgLZLGO1e4=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=lbSo4Fqoff5ZzCAHYizA7yKVPD2GZcFye2HQ5We9O9hZPPa4vXpBoPu0sRn582sW1
+ y81/yYsyY70psmKYkNrCvUCsVNtrzue5/XYsioKOd0qG6uxjHZavgt4U83T02GBwxP
+ c8SUhsY16VfkamWrdvDX6gj88X7+EviBKPKhqAjQ=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id BaoVRlMjhAbB; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy2.enst.fr (Postfix) with ESMTPSA id 4133A80800;
+ Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
- <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
- <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
- <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
- <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb1:9800:d580:3d66:e68a:4949
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+ Alexandre Iooss <erdnaxe@crans.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH v5 1/2] hw/arm: Add minimal support for the STM32L4x5 SoC
+Date: Sat,  6 Jan 2024 17:38:40 +0100
+Message-ID: <20240106163905.42027-2-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240106163905.42027-1-ines.varhol@telecom-paris.fr>
+References: <20240106163905.42027-1-ines.varhol@telecom-paris.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.221;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -147,84 +115,441 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OHnPAv6NCPCc
+X-TUID: qiyQPNaVxInQ
 
-On 05/01/2024 10:13, Philippe Mathieu-Daudé wrote:
+This patch adds a new STM32L4x5 SoC, it is necessary to add support for
+the B-L475E-IOT01A board.
+The implementation is derived from the STM32F405 SoC.
+The implementation contains no peripherals, only memory regions are
+implemented.
 
-> (+Mark & Eduardo)
-> 
-> On 4/1/24 14:37, inesvarhol wrote:
->>
->> Le jeudi 4 janvier 2024 à 14:05, Philippe Mathieu-Daudé <philmd@linaro.org> a écrit :
->>
->> Hello,
->>
->>>> +static void test_edge_selector(void)
->>>> +{
->>>> + enable_nvic_irq(EXTI0_IRQ);
->>>> +
->>>> + / Configure EXTI line 0 irq on rising edge */
->>>> + qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
->>>
->>>
->>> Markus, this qtest use seems to expect some stability in QOM path...
->>>
->>> Inès, Arnaud, having the SoC unattached is dubious, it belongs to
->>> the machine.
->>
->> Noted, we will fix that.
->> Should we be concerned about the "stability in QOM path" ?
-> 
-> Don't worry about this Inès, I wanted to raise Markus attention on this.
-> 
-> You showed a legit use of stable QOM path, and Markus told me recently
-> there is no contract for QOM paths (it shouldn't be considered as a
-> stable API). IIRC Markus explanation, "/unattached" container was
-> added as a temporary hack to allow migrating QDev objects to QOM (see
-> around commit da57febfed "qdev: give all devices a canonical path",
-> 11 years ago).
-> 
-> I agree anything under "/unattached" can be expected to be stable
-> (but we need a community consensus). Then the big question remaining
-> is "can any qom-path out of /unattached be considered stable?"
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+---
+ MAINTAINERS                    |   8 +
+ hw/arm/Kconfig                 |   5 +
+ hw/arm/meson.build             |   1 +
+ hw/arm/stm32l4x5_soc.c         | 268 +++++++++++++++++++++++++++++++++
+ include/hw/arm/stm32l4x5_soc.h |  57 +++++++
+ 5 files changed, 339 insertions(+)
+ create mode 100644 hw/arm/stm32l4x5_soc.c
+ create mode 100644 include/hw/arm/stm32l4x5_soc.h
 
-For the moment I would definitely say no, and that is mainly because if we were to 
-assume that QOM paths were stable today then I can see it being a barrier to updating 
-older code to meet our current guidelines.
-
-These days I think more about QOM paths being related to the lifecycle of the objects 
-e.g. a machine object has child devices, which may also consist of a number of other 
-children in the case of a multi-function device. For me this means that using 
-object_resolve_path_component() to look up a child object seems reasonable, in 
-contrast with expecting the entire path to be stable.
-
-One thing I think about often is whether the use of device[n] is suitable within QOM 
-tree. For example, if I have a command line like:
-
-   -device foo,myprop=prop0,id=fooid0 -device foo,myprop=prop1,id=fooid1
-
-currently they would appear in "info qom-tree" as:
-
-   /machine
-     /unattached
-       /device[0] (foo)
-       /device[1] (foo)
-
-whereas it feels this could be done better as:
-
-   /machine
-     /unattached
-       /foo[0] (fooid0)
-       /foo[1] (fooid1)
-
-This would automatically place devices of the same type within a QOM array to allow 
-them to be accessed separately by type, or even directly via the "id" if we assume 
-they are unique. In particular if you have a machine with 2 foo in-built devices you 
-could then potentially configure them separately using -global foo[0].myprop=newprop0 
-and/or -global foo[1].myprop=newprop1 which is something that currently isn't possible.
-
-
-ATB,
-
-Mark.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 695e0bd34f..e5b28aee28 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1123,6 +1123,14 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/olimex-stm32-h405.c
+=20
++STM32L4x5 SoC Family
++M: Arnaud Minier <arnaud.minier@telecom-paris.fr>
++M: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/stm32l4x5_soc.c
++F: include/hw/arm/stm32l4x5_soc.h
++
+ SmartFusion2
+ M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 3ada335a24..d2b94d9a47 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -448,6 +448,11 @@ config STM32F405_SOC
+     select STM32F4XX_SYSCFG
+     select STM32F4XX_EXTI
+=20
++config STM32L4X5_SOC
++    bool
++    select ARM_V7M
++    select OR_IRQ
++
+ config XLNX_ZYNQMP_ARM
+     bool
+     default y if PIXMAN
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 68245d3ad1..9766da10c4 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -42,6 +42,7 @@ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm283=
+6.c', 'raspi.c'))
+ arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c=
+'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c=
+'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c=
+'))
++arm_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_soc.c=
+'))
+ arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c=
+', 'xlnx-zcu102.c'))
+ arm_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', '=
+xlnx-versal-virt.c'))
+ arm_ss.add(when: 'CONFIG_FSL_IMX25', if_true: files('fsl-imx25.c', 'imx2=
+5_pdk.c'))
+diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+new file mode 100644
+index 0000000000..7513db0d6a
+--- /dev/null
++++ b/hw/arm/stm32l4x5_soc.c
+@@ -0,0 +1,268 @@
++/*
++ * STM32L4x5 SoC family
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ *
++ * This work is heavily inspired by the stm32f405_soc by Alistair Franci=
+s.
++ * Original code is licensed under the MIT License:
++ *
++ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
++ */
++
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "qapi/error.h"
++#include "exec/address-spaces.h"
++#include "sysemu/sysemu.h"
++#include "hw/arm/stm32l4x5_soc.h"
++#include "hw/qdev-clock.h"
++#include "hw/misc/unimp.h"
++
++#define FLASH_BASE_ADDRESS 0x08000000
++#define SRAM1_BASE_ADDRESS 0x20000000
++#define SRAM1_SIZE (96 * KiB)
++#define SRAM2_BASE_ADDRESS 0x10000000
++#define SRAM2_SIZE (32 * KiB)
++
++static void stm32l4x5_soc_initfn(Object *obj)
++{
++    Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
++
++    s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
++    s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
++}
++
++static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
++{
++    ERRP_GUARD();
++    Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
++    const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
++    MemoryRegion *system_memory =3D get_system_memory();
++    DeviceState *armv7m;
++
++    /*
++     * We use s->refclk internally and only define it with qdev_init_clo=
+ck_in()
++     * so it is correctly parented and not leaked on an init/deinit; it =
+is not
++     * intended as an externally exposed clock.
++     */
++    if (clock_has_source(s->refclk)) {
++        error_setg(errp, "refclk clock must not be wired up by the board=
+ code");
++        return;
++    }
++
++    if (!clock_has_source(s->sysclk)) {
++        error_setg(errp, "sysclk clock must be wired up by the board cod=
+e");
++        return;
++    }
++
++    /*
++     * TODO: ideally we should model the SoC RCC and its ability to
++     * change the sysclk frequency and define different sysclk sources.
++     */
++
++    /* The refclk always runs at frequency HCLK / 8 */
++    clock_set_mul_div(s->refclk, 8, 1);
++    clock_set_source(s->refclk, s->sysclk);
++
++    memory_region_init_rom(&s->flash, OBJECT(dev_soc), "flash",
++                           sc->flash_size, errp);
++    if (*errp) {
++        return;
++    }
++    memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
++                             "flash_boot_alias", &s->flash, 0,
++                             sc->flash_size);
++
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->f=
+lash);
++    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
++
++    memory_region_init_ram(&s->sram1, OBJECT(dev_soc), "SRAM1", SRAM1_SI=
+ZE,
++                           errp);
++    if (*errp) {
++        return;
++    }
++    memory_region_add_subregion(system_memory, SRAM1_BASE_ADDRESS, &s->s=
+ram1);
++
++    memory_region_init_ram(&s->sram2, OBJECT(dev_soc), "SRAM2", SRAM2_SI=
+ZE,
++                           errp);
++    if (*errp) {
++        return;
++    }
++    memory_region_add_subregion(system_memory, SRAM2_BASE_ADDRESS, &s->s=
+ram2);
++
++    object_initialize_child(OBJECT(dev_soc), "armv7m", &s->armv7m, TYPE_=
+ARMV7M);
++    armv7m =3D DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m=
+4"));
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
++    qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
++    qdev_connect_clock_in(armv7m, "refclk", s->refclk);
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++                             OBJECT(system_memory), &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
++        return;
++    }
++
++    /* APB1 BUS */
++    create_unimplemented_device("TIM2",      0x40000000, 0x400);
++    create_unimplemented_device("TIM3",      0x40000400, 0x400);
++    create_unimplemented_device("TIM4",      0x40000800, 0x400);
++    create_unimplemented_device("TIM5",      0x40000C00, 0x400);
++    create_unimplemented_device("TIM6",      0x40001000, 0x400);
++    create_unimplemented_device("TIM7",      0x40001400, 0x400);
++    /* RESERVED:    0x40001800, 0x1000 */
++    create_unimplemented_device("RTC",       0x40002800, 0x400);
++    create_unimplemented_device("WWDG",      0x40002C00, 0x400);
++    create_unimplemented_device("IWDG",      0x40003000, 0x400);
++    /* RESERVED:    0x40001800, 0x400 */
++    create_unimplemented_device("SPI2",      0x40003800, 0x400);
++    create_unimplemented_device("SPI3",      0x40003C00, 0x400);
++    /* RESERVED:    0x40004000, 0x400 */
++    create_unimplemented_device("USART2",    0x40004400, 0x400);
++    create_unimplemented_device("USART3",    0x40004800, 0x400);
++    create_unimplemented_device("UART4",     0x40004C00, 0x400);
++    create_unimplemented_device("UART5",     0x40005000, 0x400);
++    create_unimplemented_device("I2C1",      0x40005400, 0x400);
++    create_unimplemented_device("I2C2",      0x40005800, 0x400);
++    create_unimplemented_device("I2C3",      0x40005C00, 0x400);
++    /* RESERVED:    0x40006000, 0x400 */
++    create_unimplemented_device("CAN1",      0x40006400, 0x400);
++    /* RESERVED:    0x40006800, 0x400 */
++    create_unimplemented_device("PWR",       0x40007000, 0x400);
++    create_unimplemented_device("DAC1",      0x40007400, 0x400);
++    create_unimplemented_device("OPAMP",     0x40007800, 0x400);
++    create_unimplemented_device("LPTIM1",    0x40007C00, 0x400);
++    create_unimplemented_device("LPUART1",   0x40008000, 0x400);
++    /* RESERVED:    0x40008400, 0x400 */
++    create_unimplemented_device("SWPMI1",    0x40008800, 0x400);
++    /* RESERVED:    0x40008C00, 0x800 */
++    create_unimplemented_device("LPTIM2",    0x40009400, 0x400);
++    /* RESERVED:    0x40009800, 0x6800 */
++
++    /* APB2 BUS */
++    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
++    create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
++    create_unimplemented_device("COMP",      0x40010200, 0x200);
++    create_unimplemented_device("EXTI",      0x40010400, 0x400);
++    /* RESERVED:    0x40010800, 0x1400 */
++    create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
++    /* RESERVED:    0x40012000, 0x800 */
++    create_unimplemented_device("SDMMC1",    0x40012800, 0x400);
++    create_unimplemented_device("TIM1",      0x40012C00, 0x400);
++    create_unimplemented_device("SPI1",      0x40013000, 0x400);
++    create_unimplemented_device("TIM8",      0x40013400, 0x400);
++    create_unimplemented_device("USART1",    0x40013800, 0x400);
++    /* RESERVED:    0x40013C00, 0x400 */
++    create_unimplemented_device("TIM15",     0x40014000, 0x400);
++    create_unimplemented_device("TIM16",     0x40014400, 0x400);
++    create_unimplemented_device("TIM17",     0x40014800, 0x400);
++    /* RESERVED:    0x40014C00, 0x800 */
++    create_unimplemented_device("SAI1",      0x40015400, 0x400);
++    create_unimplemented_device("SAI2",      0x40015800, 0x400);
++    /* RESERVED:    0x40015C00, 0x400 */
++    create_unimplemented_device("DFSDM1",    0x40016000, 0x400);
++    /* RESERVED:    0x40016400, 0x9C00 */
++
++    /* AHB1 BUS */
++    create_unimplemented_device("DMA1",      0x40020000, 0x400);
++    create_unimplemented_device("DMA2",      0x40020400, 0x400);
++    /* RESERVED:    0x40020800, 0x800 */
++    create_unimplemented_device("RCC",       0x40021000, 0x400);
++    /* RESERVED:    0x40021400, 0xC00 */
++    create_unimplemented_device("FLASH",     0x40022000, 0x400);
++    /* RESERVED:    0x40022400, 0xC00 */
++    create_unimplemented_device("CRC",       0x40023000, 0x400);
++    /* RESERVED:    0x40023400, 0x400 */
++    create_unimplemented_device("TSC",       0x40024000, 0x400);
++
++    /* RESERVED:    0x40024400, 0x7FDBC00 */
++
++    /* AHB2 BUS */
++    create_unimplemented_device("GPIOA",     0x48000000, 0x400);
++    create_unimplemented_device("GPIOB",     0x48000400, 0x400);
++    create_unimplemented_device("GPIOC",     0x48000800, 0x400);
++    create_unimplemented_device("GPIOD",     0x48000C00, 0x400);
++    create_unimplemented_device("GPIOE",     0x48001000, 0x400);
++    create_unimplemented_device("GPIOF",     0x48001400, 0x400);
++    create_unimplemented_device("GPIOG",     0x48001800, 0x400);
++    create_unimplemented_device("GPIOH",     0x48001C00, 0x400);
++    /* RESERVED:    0x48002000, 0x7FDBC00 */
++    create_unimplemented_device("OTG_FS",    0x50000000, 0x40000);
++    create_unimplemented_device("ADC",       0x50040000, 0x400);
++    /* RESERVED:    0x50040400, 0x20400 */
++    create_unimplemented_device("RNG",       0x50060800, 0x400);
++
++    /* AHB3 BUS */
++    create_unimplemented_device("FMC",       0xA0000000, 0x1000);
++    create_unimplemented_device("QUADSPI",   0xA0001000, 0x400);
++}
++
++static void stm32l4x5_soc_class_init(ObjectClass *klass, void *data)
++{
++
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->realize =3D stm32l4x5_soc_realize;
++    /* Reason: Mapped at fixed location on the system bus */
++    dc->user_creatable =3D false;
++    /* No vmstate or reset required: device has no internal state */
++}
++
++static void stm32l4x5xc_soc_class_init(ObjectClass *oc, void *data)
++{
++    Stm32l4x5SocClass *ssc =3D STM32L4X5_SOC_CLASS(oc);
++
++    ssc->flash_size =3D 256 * KiB;
++}
++
++static void stm32l4x5xe_soc_class_init(ObjectClass *oc, void *data)
++{
++    Stm32l4x5SocClass *ssc =3D STM32L4X5_SOC_CLASS(oc);
++
++    ssc->flash_size =3D 512 * KiB;
++}
++
++static void stm32l4x5xg_soc_class_init(ObjectClass *oc, void *data)
++{
++    Stm32l4x5SocClass *ssc =3D STM32L4X5_SOC_CLASS(oc);
++
++    ssc->flash_size =3D 1 * MiB;
++}
++
++static const TypeInfo stm32l4x5_soc_types[] =3D {
++    {
++        .name           =3D TYPE_STM32L4X5XC_SOC,
++        .parent         =3D TYPE_STM32L4X5_SOC,
++        .class_init     =3D stm32l4x5xc_soc_class_init,
++    }, {
++        .name           =3D TYPE_STM32L4X5XE_SOC,
++        .parent         =3D TYPE_STM32L4X5_SOC,
++        .class_init     =3D stm32l4x5xe_soc_class_init,
++    }, {
++        .name           =3D TYPE_STM32L4X5XG_SOC,
++        .parent         =3D TYPE_STM32L4X5_SOC,
++        .class_init     =3D stm32l4x5xg_soc_class_init,
++    }, {
++        .name           =3D TYPE_STM32L4X5_SOC,
++        .parent         =3D TYPE_SYS_BUS_DEVICE,
++        .instance_size  =3D sizeof(Stm32l4x5SocState),
++        .instance_init  =3D stm32l4x5_soc_initfn,
++        .class_size     =3D sizeof(Stm32l4x5SocClass),
++        .class_init     =3D stm32l4x5_soc_class_init,
++        .abstract       =3D true,
++    }
++};
++
++DEFINE_TYPES(stm32l4x5_soc_types)
+diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+new file mode 100644
+index 0000000000..2fd44a36a9
+--- /dev/null
++++ b/include/hw/arm/stm32l4x5_soc.h
+@@ -0,0 +1,57 @@
++/*
++ * STM32L4x5 SoC family
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ *
++ * This work is heavily inspired by the stm32f405_soc by Alistair Franci=
+s.
++ * Original code is licensed under the MIT License:
++ *
++ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
++ */
++
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
++ */
++
++#ifndef HW_ARM_STM32L4x5_SOC_H
++#define HW_ARM_STM32L4x5_SOC_H
++
++#include "exec/memory.h"
++#include "hw/arm/armv7m.h"
++#include "qom/object.h"
++
++#define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
++#define TYPE_STM32L4X5XC_SOC "stm32l4x5xc-soc"
++#define TYPE_STM32L4X5XE_SOC "stm32l4x5xe-soc"
++#define TYPE_STM32L4X5XG_SOC "stm32l4x5xg-soc"
++OBJECT_DECLARE_TYPE(Stm32l4x5SocState, Stm32l4x5SocClass, STM32L4X5_SOC)
++
++struct Stm32l4x5SocState {
++    SysBusDevice parent_obj;
++
++    ARMv7MState armv7m;
++
++    MemoryRegion sram1;
++    MemoryRegion sram2;
++    MemoryRegion flash;
++    MemoryRegion flash_alias;
++
++    Clock *sysclk;
++    Clock *refclk;
++};
++
++struct Stm32l4x5SocClass {
++    SysBusDeviceClass parent_class;
++
++    size_t flash_size;
++};
++
++#endif
+--=20
+2.43.0
 

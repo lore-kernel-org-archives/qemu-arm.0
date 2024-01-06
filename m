@@ -1,89 +1,98 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1411200ejo;
-        Sat, 6 Jan 2024 10:15:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEdld0qBCpmruTLGcEajjcC4QhYYldJQ41f675caHuSKaC+/BDj/baDLTOd/KOXV5XbBgmp
-X-Received: by 2002:a05:622a:1819:b0:429:8791:c804 with SMTP id t25-20020a05622a181900b004298791c804mr1106489qtc.48.1704564952040;
-        Sat, 06 Jan 2024 10:15:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704564952; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1363503ejo;
+        Sat, 6 Jan 2024 08:40:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEomJ6IqvYEZZjstDaCACDj1zYfZ/aLCJCtCMAmjOR8k6h9OpujkPLxQSfcwsc/jS0BKlwK
+X-Received: by 2002:a05:620a:4151:b0:783:13e0:3297 with SMTP id k17-20020a05620a415100b0078313e03297mr821291qko.78.1704559221209;
+        Sat, 06 Jan 2024 08:40:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704559221; cv=none;
         d=google.com; s=arc-20160816;
-        b=thbQLRZwWVJ1sbCcKIXA2aKnxeYViC856i3dkHgtVvZLg4ObvZCPE1/EmCiRfKjEIN
-         rJcRZ852RKGyzrqWwXC8JrcdRB8CiK2QWG3BM+zWL/xt5IzQB/hnj/LrfFHl4wU3L8yN
-         ktlIWL9cE4mjlRW1X4RQii2ABATLLaPG5q11wlw7dQ/EW3FKkTBlskOhJEIOnhSpimOp
-         xSlXJHg8CXL4IGTOKrGNUNgoaw3I5IXD8/e6QlXM6Ykhm2iDIdYQI5aEGMffFtZGG361
-         W05L2tWO3Ah3INBWYVbnm/kW/kQJ93OljG4axTJk0XbBTqTxsrvK0wo8nbP1T/4/K5y8
-         d1ww==
+        b=lx1zPCYSDnCm4/C8sC00PVsoBO7WxVKm6E+JneHTn+4ZIervMWsHFRbBrLs/pnWH8K
+         lQ1Cg9kN58UvTqfKkS75zpKiuvwxB+qznQTNGUKesUVS9t/BeisOvYCiaqXNoYZV0nFj
+         07ikCZoa2LYGKDgcCKfj+ii/y6JbjJdWOey2oEgrC69LEYKduJTLNiGx5zeT2MS2uWZh
+         p6j5fBTthiNnUPIh5h8ko+lfWUzc39XxAGGN4KMRq+vXXfAOLslGWs11tZ32lAYU+Dlk
+         KhVpGFuhkQx+SCTjUM8zIP8cNEzyeRqzh9H5iZGT2qoMQwYJxJsEzx6MXMp7gpew6xtz
+         yOOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=pwne6ZRdjiy0KdXBJMIAxtpZ6iYOY3k5ka8VghVZA2w=;
-        fh=R87mPwhYHu0gF5afZtbOsfEVx9y6lHOQHbd5WAm8bKQ=;
-        b=FqQ6rNl+/PJBO4eiETdfsfHA0eBcBwB17RWfH3uPjZ0g6l1ELgDy3S8AR0NMR5xo6n
-         QIVKkYZdX4Wh0J/DX6o5XqTNZoKs/3q0uzsLqhM2sHkjgYwmZLi9GYp7Qo9EKUOF7loC
-         rPKPKb70DLiGgv417/0J6djpeEAC3eE6Cby6MtLdJqx/bm5OjbZKAJHBt6ctQqkC+OLt
-         dL/SvpeggabYU18GY+rG1CBQqDUwnIuvqqwwCpecni4wXGQgagJuX6RLudr8y5OjfIaK
-         Vsn4/OHwBIvtw0RK6SMzFgwETo/F7HxxILVKoAAsUWXgZvuqPciA3amH5bXLWmuh4G5o
-         RTIw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=bTJgsQGuWSR9753C2pJ/CrFSw7ymAq7Pqwu6CUOai7I=;
+        fh=7PA+vUGXkkjAcZvk/H80lUiJ0SZWtswN2qIXn6r4OtE=;
+        b=aGUy67Bi2ShVjryVXTIi5E3+n0jI5lOf3WCHJJs5XfjJGrtSvkwReQEep+9iIIM8NB
+         zFrBfuhu9PD891zwlwpazv6WNhBddnr9Q+jaG00bRMQD/aWWLoykv8gpO1wy85gHB+n4
+         DEPV4RPvfatJ8EWgAv+TYD0EuWW7rbG9By5e6BiO5ySwVEkrx4bUwqw7K9hwA4heAbAV
+         Sw7VjQCJ9ItBoQ34YHDRr0TwX83kP4do9OvCzkJYRrYuU16ihcc7DO2RMB7qJyws/fo+
+         OiWGzVx2nOr+ebQJtldZ+fjiRIQEuu8zz3EoyoEZP2F3ZfweQ+31XuBcpNhn96b2uIBk
+         FPDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=yLEYvFld;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=M6nyDpXS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ca5-20020a05622a1f0500b004254e18956asi4346034qtb.98.2024.01.06.10.15.51
+        by mx.google.com with ESMTPS id dz22-20020a05620a2b9600b00781be7d3a60si4452393qkb.763.2024.01.06.08.40.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 Jan 2024 10:15:52 -0800 (PST)
+        Sat, 06 Jan 2024 08:40:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=yLEYvFld;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=M6nyDpXS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMBCT-0006N4-3P; Sat, 06 Jan 2024 13:15:13 -0500
+	id 1rM9hj-0002sm-WC; Sat, 06 Jan 2024 11:39:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rMBCR-0006MG-Md; Sat, 06 Jan 2024 13:15:11 -0500
-Received: from zoidberg.rfc1149.net ([195.154.227.159])
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rM9hi-0002sS-Ud; Sat, 06 Jan 2024 11:39:22 -0500
+Received: from zproxy2.enst.fr ([137.194.2.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rMBCP-0001vz-S1; Sat, 06 Jan 2024 13:15:11 -0500
-Received: from 127.0.0.1 (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (Client did not present a certificate)
- by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 6152A80027;
- Sat,  6 Jan 2024 19:15:04 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
- t=1704564904; bh=oUHxTnxbJvmbEvqdnnqwZEZn9kWgtC+tyGXnlDxve3k=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=yLEYvFldTrVhoUyXhSBunjIXabEi7otSSKeJUDbtwa67DXed7zA3oked6YwF8Q35O
- 3TvznjLfB02ciVDDx+fvglBOxguG0hlslc0yQbl6ZGfohjFi4HEJP0YIsRHtLrM/63
- TY3Xg43Ou9ig3NmXs4OVZt7zfHaCJ1FNeWtBBPaLTMwBbHk/gmSfVYMxmixBbi8B8H
- DYreBykkpctFN36ccDsdzuGE0Wlp+VzMWKgV7x/KvPlcJXaHkyCofaSUfOKspN1DrB
- bdb+lfVtWqyU2rN0+NXtwH4UdGHeDAEX+H2fMd11VcTyKy1Mql7MG4rIyLNRgnBzlu
- 50YFwaTIcFaoQ==
-From: Samuel Tardieu <sam@rfc1149.net>
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rM9hf-0007Ar-Vx; Sat, 06 Jan 2024 11:39:21 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id A2015808A5;
+ Sat,  6 Jan 2024 17:39:15 +0100 (CET)
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id TNJxrIF19rGO; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 57FCE80893;
+ Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 57FCE80893
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704559154;
+ bh=bTJgsQGuWSR9753C2pJ/CrFSw7ymAq7Pqwu6CUOai7I=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=M6nyDpXSgf7TiZuPkd1vKnHi0OCB2yHWweQlovsTo0HmmOs7gvLzvvfhDxYNmWdaO
+ BdsRhd2FRw4X+dvsBn/kDiuB4TukojYKNN42DJlF1hvomfIz4x+pZn1FIYlQW2cua9
+ Ea6CQdZ1CCVKtWzHgiE6tzku5Agh0pp80jDY+hMQ=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id oBTCS6aV5d2w; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy2.enst.fr (Postfix) with ESMTPSA id E93CB807DC;
+ Sat,  6 Jan 2024 17:39:13 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
-Cc: Anton Kochkov <anton.kochkov@proton.me>, qemu-arm@nongnu.org,
- Alexandre Iooss <erdnaxe@crans.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
-Subject: [PATCH v3 2/3] hw/arm/armv7m: alias the NVIC "num-prio-bits" property
-Date: Sat,  6 Jan 2024 19:15:02 +0100
-Message-ID: <20240106181503.1746200-3-sam@rfc1149.net>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20240106181503.1746200-1-sam@rfc1149.net>
-References: <20240106181503.1746200-1-sam@rfc1149.net>
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Alexandre Iooss <erdnaxe@crans.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH v5 0/2] Add minimal support for the B-L475E-IOT01A board
+Date: Sat,  6 Jan 2024 17:38:39 +0100
+Message-ID: <20240106163905.42027-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
- helo=zoidberg.rfc1149.net
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.221;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,45 +113,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ic5Y4bBXbiWI
+X-TUID: 0Dt2NRUvgxyu
 
-A SoC will not have a direct access to the NVIC embedded in its ARM
-core. By aliasing the "num-prio-bits" property similarly to what is
-done for the "num-irq" one, a SoC can easily configure it on its
-armv7m instance.
+This patch adds a new STM32L4x5 SoC, it is necessary to add support for
+the B-L475E-IOT01A board.
+The implementation is derived from the STM32F405 SoC and NetduinoPlus2
+board.
+The implementation contains no peripherals, only memory regions are
+implemented.
 
-Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/armv7m.c         | 2 ++
- include/hw/arm/armv7m.h | 1 +
- 2 files changed, 3 insertions(+)
+Changes from v5 to v4:
+- in `b-l475e-iot01a.c`: adding missing machine/SoC parentship relation
+- in `b-l475e-iot01a.c`: renaming `SYSCLK_FRQ` macro
+to `MAIN_SYSCLK_FREQ_HZ`
+- in `b-l475e-iot01a.c`: fixing coding style issue
+- in `stm32l4x5_soc.h`: removing unused imports
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index e39b61bc1a..1f21827773 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -256,6 +256,8 @@ static void armv7m_instance_init(Object *obj)
-     object_initialize_child(obj, "nvic", &s->nvic, TYPE_NVIC);
-     object_property_add_alias(obj, "num-irq",
-                               OBJECT(&s->nvic), "num-irq");
-+    object_property_add_alias(obj, "num-prio-bits",
-+                              OBJECT(&s->nvic), "num-prio-bits");
- 
-     object_initialize_child(obj, "systick-reg-ns", &s->systick[M_REG_NS],
-                             TYPE_SYSTICK);
-diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-index e2cebbd15c..5c057ab2ec 100644
---- a/include/hw/arm/armv7m.h
-+++ b/include/hw/arm/armv7m.h
-@@ -43,6 +43,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MState, ARMV7M)
-  *   a qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET).
-  * + Property "cpu-type": CPU type to instantiate
-  * + Property "num-irq": number of external IRQ lines
-+ * + Property "num-prio-bits": number of priority bits in the NVIC
-  * + Property "memory": MemoryRegion defining the physical address space
-  *   that CPU accesses see. (The NVIC, bitbanding and other CPU-internal
-  *   devices will be automatically layered on top of this view.)
--- 
-2.42.0
+Changes from v3 to v4:
+- adding a documentation file for the B-L475E-IOT01A board
+
+Changes from v1 to v3:
+- changing the MIT license to GPL.
+
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+
+In=C3=A8s Varhol (2):
+  hw/arm: Add minimal support for the STM32L4x5 SoC
+  hw/arm: Add minimal support for the B-L475E-IOT01A board
+
+ MAINTAINERS                             |  15 ++
+ configs/devices/arm-softmmu/default.mak |   1 +
+ docs/system/arm/b-l475e-iot01a.rst      |  46 ++++
+ docs/system/arm/stm32.rst               |   6 +-
+ docs/system/target-arm.rst              |   1 +
+ hw/arm/Kconfig                          |  11 +
+ hw/arm/b-l475e-iot01a.c                 |  72 +++++++
+ hw/arm/meson.build                      |   2 +
+ hw/arm/stm32l4x5_soc.c                  | 268 ++++++++++++++++++++++++
+ include/hw/arm/stm32l4x5_soc.h          |  57 +++++
+ 10 files changed, 477 insertions(+), 2 deletions(-)
+ create mode 100644 docs/system/arm/b-l475e-iot01a.rst
+ create mode 100644 hw/arm/b-l475e-iot01a.c
+ create mode 100644 hw/arm/stm32l4x5_soc.c
+ create mode 100644 include/hw/arm/stm32l4x5_soc.h
+
+--=20
+2.43.0
 

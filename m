@@ -1,108 +1,95 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1363497ejo;
-        Sat, 6 Jan 2024 08:40:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFSkAii64E/SCJ9EB/35277oimndo6xQkOXvS8wqnZ76PkiJD2fEVgHxXPpe3rAg+DeXkYY
-X-Received: by 2002:a05:620a:1093:b0:781:db57:572 with SMTP id g19-20020a05620a109300b00781db570572mr1475072qkk.95.1704559219884;
-        Sat, 06 Jan 2024 08:40:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704559219; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1411200ejo;
+        Sat, 6 Jan 2024 10:15:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEdld0qBCpmruTLGcEajjcC4QhYYldJQ41f675caHuSKaC+/BDj/baDLTOd/KOXV5XbBgmp
+X-Received: by 2002:a05:622a:1819:b0:429:8791:c804 with SMTP id t25-20020a05622a181900b004298791c804mr1106489qtc.48.1704564952040;
+        Sat, 06 Jan 2024 10:15:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704564952; cv=none;
         d=google.com; s=arc-20160816;
-        b=e4hzsMVqE+aeOGWBJeXzzEmkNVCGlqfL4QLcxVt8ts3ellAnAWBv9EsU66wiDqUp1s
-         8HDL+NMZxi5maNo972ysmWfCyvXa36hdPNHgXDu+zxNG8eh6HxSK9JEu++0Z2Xt9Gur7
-         UCCjVp5f+4nTer/vIpjC2GVSHlGrQI+fXL+VA/qo5YQg+8zFhSAMdWdndhCaXNuGMQmS
-         5A1FdSpo1ZsWBpTdCH2iSVYIabWCzzc6mJJpJ5SVg04qi2Yv887i3lrYXhVc/pVBhI5y
-         2/vF/eS7yoSNWVtfFURO0xTHbIMQAJdJdJOORA4PyXc+7+U4Yt77NJP+Q9nHBk5J+UK1
-         5jNg==
+        b=thbQLRZwWVJ1sbCcKIXA2aKnxeYViC856i3dkHgtVvZLg4ObvZCPE1/EmCiRfKjEIN
+         rJcRZ852RKGyzrqWwXC8JrcdRB8CiK2QWG3BM+zWL/xt5IzQB/hnj/LrfFHl4wU3L8yN
+         ktlIWL9cE4mjlRW1X4RQii2ABATLLaPG5q11wlw7dQ/EW3FKkTBlskOhJEIOnhSpimOp
+         xSlXJHg8CXL4IGTOKrGNUNgoaw3I5IXD8/e6QlXM6Ykhm2iDIdYQI5aEGMffFtZGG361
+         W05L2tWO3Ah3INBWYVbnm/kW/kQJ93OljG4axTJk0XbBTqTxsrvK0wo8nbP1T/4/K5y8
+         d1ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=6KB2b8B5P/Jtso+W1CaKlzgnOB3ixK228ikk4vY23eg=;
-        fh=7PA+vUGXkkjAcZvk/H80lUiJ0SZWtswN2qIXn6r4OtE=;
-        b=lLNR8MnIXRTweSsPY3A5Nmfr7JRe/QpRNp7XZXkRusvuLp4zxKpZr9fJPc5Ctma5aM
-         pC2pDjwA87rC+u9upJJ+D4nSRk5cx/q+qULe+wphm0Lo6yvsFQX6+8joJjLCy0cdQgur
-         gcULl9ZppkOkAg/P6onlUBBG3/6sKg5N91BvFt2SUjbhZDKEpJToHmfHwPfyGo3hxeCR
-         A8a5zP9pBaLTYAKgATHJWEjMrVb3WdegN2s1vCDtte3LoRDV6xjzuuvCcL2jnx9gsVn8
-         /4GAd24WKcEEW4pXWOf4xoVo4lmdTGV66gasBypathsB/lD2k/dbyAGHYzV0Nn6bpV2W
-         mzYA==
+         :from:dkim-signature;
+        bh=pwne6ZRdjiy0KdXBJMIAxtpZ6iYOY3k5ka8VghVZA2w=;
+        fh=R87mPwhYHu0gF5afZtbOsfEVx9y6lHOQHbd5WAm8bKQ=;
+        b=FqQ6rNl+/PJBO4eiETdfsfHA0eBcBwB17RWfH3uPjZ0g6l1ELgDy3S8AR0NMR5xo6n
+         QIVKkYZdX4Wh0J/DX6o5XqTNZoKs/3q0uzsLqhM2sHkjgYwmZLi9GYp7Qo9EKUOF7loC
+         rPKPKb70DLiGgv417/0J6djpeEAC3eE6Cby6MtLdJqx/bm5OjbZKAJHBt6ctQqkC+OLt
+         dL/SvpeggabYU18GY+rG1CBQqDUwnIuvqqwwCpecni4wXGQgagJuX6RLudr8y5OjfIaK
+         Vsn4/OHwBIvtw0RK6SMzFgwETo/F7HxxILVKoAAsUWXgZvuqPciA3amH5bXLWmuh4G5o
+         RTIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=w6rEbaXi;
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=yLEYvFld;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5-20020a05620a2a0500b007830ff07151si2038132qkp.615.2024.01.06.08.40.19
+        by mx.google.com with ESMTPS id ca5-20020a05622a1f0500b004254e18956asi4346034qtb.98.2024.01.06.10.15.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 Jan 2024 08:40:19 -0800 (PST)
+        Sat, 06 Jan 2024 10:15:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=w6rEbaXi;
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=yLEYvFld;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rM9hj-0002si-Dq; Sat, 06 Jan 2024 11:39:23 -0500
+	id 1rMBCT-0006N4-3P; Sat, 06 Jan 2024 13:15:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rM9hi-0002sL-Lf; Sat, 06 Jan 2024 11:39:22 -0500
-Received: from zproxy2.enst.fr ([137.194.2.221])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rMBCR-0006MG-Md; Sat, 06 Jan 2024 13:15:11 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rM9hf-0007Al-VZ; Sat, 06 Jan 2024 11:39:22 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 9129A8089B;
- Sat,  6 Jan 2024 17:39:15 +0100 (CET)
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id 1sB6CsmnsrP8; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id B873480800;
- Sat,  6 Jan 2024 17:39:14 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr B873480800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704559154;
- bh=6KB2b8B5P/Jtso+W1CaKlzgnOB3ixK228ikk4vY23eg=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=w6rEbaXi0jNsgaVGVQmFrUKBhmrYRG4aI4zybHz7orBVUS+yHOIVKM7ATozAkkxsK
- FkiUk+zj7/QdZE5kYuxyRuvLwoLG8auFHM6fIstffg/Q+WOo8roF8Q0Z7MyqSXGv6K
- Ys7weDgyVU6X7AChD/ETcsK36eozbknzUC7BJDKU=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id q3cBwLISU2zy; Sat,  6 Jan 2024 17:39:14 +0100 (CET)
-Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id 75BF48089B;
- Sat,  6 Jan 2024 17:39:14 +0100 (CET)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rMBCP-0001vz-S1; Sat, 06 Jan 2024 13:15:11 -0500
+Received: from 127.0.0.1 (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 6152A80027;
+ Sat,  6 Jan 2024 19:15:04 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
+ t=1704564904; bh=oUHxTnxbJvmbEvqdnnqwZEZn9kWgtC+tyGXnlDxve3k=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=yLEYvFldTrVhoUyXhSBunjIXabEi7otSSKeJUDbtwa67DXed7zA3oked6YwF8Q35O
+ 3TvznjLfB02ciVDDx+fvglBOxguG0hlslc0yQbl6ZGfohjFi4HEJP0YIsRHtLrM/63
+ TY3Xg43Ou9ig3NmXs4OVZt7zfHaCJ1FNeWtBBPaLTMwBbHk/gmSfVYMxmixBbi8B8H
+ DYreBykkpctFN36ccDsdzuGE0Wlp+VzMWKgV7x/KvPlcJXaHkyCofaSUfOKspN1DrB
+ bdb+lfVtWqyU2rN0+NXtwH4UdGHeDAEX+H2fMd11VcTyKy1Mql7MG4rIyLNRgnBzlu
+ 50YFwaTIcFaoQ==
+From: Samuel Tardieu <sam@rfc1149.net>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+Cc: Anton Kochkov <anton.kochkov@proton.me>, qemu-arm@nongnu.org,
+ Alexandre Iooss <erdnaxe@crans.org>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Alexandre Iooss <erdnaxe@crans.org>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Samuel Tardieu <sam@rfc1149.net>
-Subject: [PATCH v5 2/2] hw/arm: Add minimal support for the B-L475E-IOT01A
- board
-Date: Sat,  6 Jan 2024 17:38:41 +0100
-Message-ID: <20240106163905.42027-3-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240106163905.42027-1-ines.varhol@telecom-paris.fr>
-References: <20240106163905.42027-1-ines.varhol@telecom-paris.fr>
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH v3 2/3] hw/arm/armv7m: alias the NVIC "num-prio-bits" property
+Date: Sat,  6 Jan 2024 19:15:02 +0100
+Message-ID: <20240106181503.1746200-3-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20240106181503.1746200-1-sam@rfc1149.net>
+References: <20240106181503.1746200-1-sam@rfc1149.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.221;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,278 +104,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q4rJOPPTO0rA
+X-TUID: Ic5Y4bBXbiWI
 
-This commit adds a new B-L475E-IOT01A board using the STM32L475VG SoC
-as well as a dedicated documentation file.
-The implementation is derived from the Netduino Plus 2 machine.
-There are no peripherals implemented yet, only memory regions.
+A SoC will not have a direct access to the NVIC embedded in its ARM
+core. By aliasing the "num-prio-bits" property similarly to what is
+done for the "num-irq" one, a SoC can easily configure it on its
+armv7m instance.
 
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                             |  7 +++
- configs/devices/arm-softmmu/default.mak |  1 +
- docs/system/arm/b-l475e-iot01a.rst      | 46 ++++++++++++++++
- docs/system/arm/stm32.rst               |  6 ++-
- docs/system/target-arm.rst              |  1 +
- hw/arm/Kconfig                          |  6 +++
- hw/arm/b-l475e-iot01a.c                 | 72 +++++++++++++++++++++++++
- hw/arm/meson.build                      |  1 +
- 8 files changed, 138 insertions(+), 2 deletions(-)
- create mode 100644 docs/system/arm/b-l475e-iot01a.rst
- create mode 100644 hw/arm/b-l475e-iot01a.c
+ hw/arm/armv7m.c         | 2 ++
+ include/hw/arm/armv7m.h | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e5b28aee28..3f3831c92a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1131,6 +1131,13 @@ S: Maintained
- F: hw/arm/stm32l4x5_soc.c
- F: include/hw/arm/stm32l4x5_soc.h
-=20
-+B-L475E-IOT01A IoT Node
-+M: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+M: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/arm/b-l475e-iot01a.c
-+
- SmartFusion2
- M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/ar=
-m-softmmu/default.mak
-index 980c48a7d9..023faa2f75 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -19,6 +19,7 @@ CONFIG_ARM_VIRT=3Dy
- # CONFIG_NSERIES=3Dn
- # CONFIG_STELLARIS=3Dn
- # CONFIG_STM32VLDISCOVERY=3Dn
-+# CONFIG_B_L475E_IOT01A=3Dn
- # CONFIG_REALVIEW=3Dn
- # CONFIG_VERSATILE=3Dn
- # CONFIG_VEXPRESS=3Dn
-diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e=
--iot01a.rst
-new file mode 100644
-index 0000000000..2b128e6b84
---- /dev/null
-+++ b/docs/system/arm/b-l475e-iot01a.rst
-@@ -0,0 +1,46 @@
-+B-L475E-IOT01A IoT Node (``b-l475e-iot01a``)
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-+
-+The B-L475E-IOT01A IoT Node uses the STM32L475VG SoC which is based on
-+ARM Cortex-M4F core. It is part of STMicroelectronics
-+:doc:`STM32 boards </system/arm/stm32>` and more specifically the STM32L=
-4
-+ultra-low power series. The STM32L4x5 chip runs at up to 80 MHz and
-+integrates 128 KiB of SRAM and up to 1MiB of Flash. The B-L475E-IOT01A b=
-oard
-+namely features 64 Mibit QSPI Flash, BT, WiFi and RF connectivity,
-+USART, I2C, SPI, CAN and USB OTG, as well as a variety of sensors.
-+
-+Supported devices
-+"""""""""""""""""
-+
-+Currently, B-L475E-IOT01A machine's implementation is minimal,
-+it only supports the following device:
-+
-+- Cortex-M4F based STM32L4x5 SoC
-+
-+Missing devices
-+"""""""""""""""
-+
-+The B-L475E-IOT01A does *not* support the following devices:
-+
-+- Extended interrupts and events controller (EXTI)
-+- Reset and clock control (RCC)
-+- Serial ports (UART)
-+- System configuration controller (SYSCFG)
-+- General-purpose I/Os (GPIO)
-+- Analog to Digital Converter (ADC)
-+- SPI controller
-+- Timer controller (TIMER)
-+
-+See the complete list of unimplemented peripheral devices
-+in the STM32L4x5 module : ``./hw/arm/stm32l4x5_soc.c``
-+
-+Boot options
-+""""""""""""
-+
-+The B-L475E-IOT01A machine can be started using the ``-kernel``
-+option to load a firmware. Example:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M b-l475e-iot01a -kernel firmware.bin
-+
-diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
-index d7265b763d..3b640f3ee0 100644
---- a/docs/system/arm/stm32.rst
-+++ b/docs/system/arm/stm32.rst
-@@ -16,11 +16,13 @@ based on this chip :
-=20
- - ``netduino2``         Netduino 2 board with STM32F205RFT6 microcontrol=
-ler
-=20
--The STM32F4 series is based on ARM Cortex-M4F core. This series is pin-t=
-o-pin
--compatible with STM32F2 series. The following machines are based on this=
- chip :
-+The STM32F4 series is based on ARM Cortex-M4F core, as well as the STM32=
-L4
-+ultra-low-power series. The STM32F4 series is pin-to-pin compatible with=
- STM32F2 series.
-+The following machines are based on this ARM Cortex-M4F chip :
-=20
- - ``netduinoplus2``     Netduino Plus 2 board with STM32F405RGT6 microco=
-ntroller
- - ``olimex-stm32-h405`` Olimex STM32 H405 board with STM32F405RGT6 micro=
-controller
-+- ``b-l475e-iot01a``     :doc:`B-L475E-IOT01A IoT Node </system/arm/b-l4=
-75e-iot01a>` board with STM32L475VG microcontroller
-=20
- There are many other STM32 series that are currently not supported by QE=
-MU.
-=20
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 790ac1b8a2..c9d7c0dda7 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -84,6 +84,7 @@ undocumented; you can get a complete list by running
-    arm/vexpress
-    arm/aspeed
-    arm/bananapi_m2u.rst
-+   arm/b-l475e-iot01a.rst
-    arm/sabrelite
-    arm/digic
-    arm/cubieboard
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index d2b94d9a47..7520dc5cc0 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -448,6 +448,12 @@ config STM32F405_SOC
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
-=20
-+config B_L475E_IOT01A
-+    bool
-+    default y
-+    depends on TCG && ARM
-+    select STM32L4X5_SOC
-+
- config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-new file mode 100644
-index 0000000000..6ecde2db15
---- /dev/null
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -0,0 +1,72 @@
-+/*
-+ * B-L475E-IOT01A Discovery Kit machine
-+ * (B-L475E-IOT01A IoT Node)
-+ *
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * This work is heavily inspired by the netduinoplus2 by Alistair Franci=
-s.
-+ * Original code is licensed under the MIT License:
-+ *
-+ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-+ */
-+
-+/*
-+ * The reference used is the STMicroElectronics UM2153 User manual
-+ * Discovery kit for IoT node, multi-channel communication with STM32L4.
-+ * https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#documentat=
-ion
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/arm/boot.h"
-+
-+/* Main SYSCLK frequency in Hz (80MHz) */
-+#define MAIN_SYSCLK_FREQ_HZ 80000000ULL
-+
-+static void b_l475e_iot01a_init(MachineState *machine)
-+{
-+    const Stm32l4x5SocClass *sc;
-+    DeviceState *dev;
-+    Clock *sysclk;
-+
-+    /* This clock doesn't need migration because it is fixed-frequency *=
-/
-+    sysclk =3D clock_new(OBJECT(machine), "SYSCLK");
-+    clock_set_hz(sysclk, MAIN_SYSCLK_FREQ_HZ);
-+
-+    dev =3D qdev_new(TYPE_STM32L4X5XG_SOC);
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
-+    qdev_connect_clock_in(dev, "sysclk", sysclk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    sc =3D STM32L4X5_SOC_GET_CLASS(dev);
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       0, sc->flash_size);
-+}
-+
-+static void b_l475e_iot01a_machine_init(MachineClass *mc)
-+{
-+    static const char *machine_valid_cpu_types[] =3D {
-+        ARM_CPU_TYPE_NAME("cortex-m4"),
-+        NULL
-+    };
-+    mc->desc =3D "B-L475E-IOT01A Discovery Kit (Cortex-M4)";
-+    mc->init =3D b_l475e_iot01a_init;
-+    mc->valid_cpu_types =3D machine_valid_cpu_types;
-+
-+    /* SRAM pre-allocated as part of the SoC instantiation */
-+    mc->default_ram_size =3D 0;
-+}
-+
-+DEFINE_MACHINE("b-l475e-iot01a", b_l475e_iot01a_machine_init)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 9766da10c4..bb92b27db3 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -42,6 +42,7 @@ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm283=
-6.c', 'raspi.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c=
-'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c=
-'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c=
-'))
-+arm_ss.add(when: 'CONFIG_B_L475E_IOT01A', if_true: files('b-l475e-iot01a=
-.c'))
- arm_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_soc.c=
-'))
- arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c=
-', 'xlnx-zcu102.c'))
- arm_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', '=
-xlnx-versal-virt.c'))
---=20
-2.43.0
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index e39b61bc1a..1f21827773 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -256,6 +256,8 @@ static void armv7m_instance_init(Object *obj)
+     object_initialize_child(obj, "nvic", &s->nvic, TYPE_NVIC);
+     object_property_add_alias(obj, "num-irq",
+                               OBJECT(&s->nvic), "num-irq");
++    object_property_add_alias(obj, "num-prio-bits",
++                              OBJECT(&s->nvic), "num-prio-bits");
+ 
+     object_initialize_child(obj, "systick-reg-ns", &s->systick[M_REG_NS],
+                             TYPE_SYSTICK);
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index e2cebbd15c..5c057ab2ec 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -43,6 +43,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(ARMv7MState, ARMV7M)
+  *   a qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET).
+  * + Property "cpu-type": CPU type to instantiate
+  * + Property "num-irq": number of external IRQ lines
++ * + Property "num-prio-bits": number of priority bits in the NVIC
+  * + Property "memory": MemoryRegion defining the physical address space
+  *   that CPU accesses see. (The NVIC, bitbanding and other CPU-internal
+  *   devices will be automatically layered on top of this view.)
+-- 
+2.42.0
 

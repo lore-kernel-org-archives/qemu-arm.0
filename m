@@ -1,144 +1,159 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp988157ejo;
-        Fri, 5 Jan 2024 14:17:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF1KowTpa9FNh9u08jbGasbuzrHTe8GlUNaywDwUa5103fLOipAi7QVSgWGOp9JwOu0ZTHb
-X-Received: by 2002:a5b:18c:0:b0:dbe:ace5:c054 with SMTP id r12-20020a5b018c000000b00dbeace5c054mr45485ybl.5.1704493044869;
-        Fri, 05 Jan 2024 14:17:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704493044; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp1780430ejo;
+        Sun, 7 Jan 2024 06:05:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF1MvH5rF7Vtd7aL8GYJMDMdHYJoHuRS1g1D4YRB2R874l0jEUqxMTxlyioiRn1BW3IJI7q
+X-Received: by 2002:a05:6102:158b:b0:467:d5ba:53cc with SMTP id g11-20020a056102158b00b00467d5ba53ccmr58279vsv.11.1704636302489;
+        Sun, 07 Jan 2024 06:05:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704636302; cv=none;
         d=google.com; s=arc-20160816;
-        b=NipOUrQ7PkFGzew6z+j0AGHGwzwhlhaslSDmIKuO+7Tu4w5427+uQhsRSTbOW1Vf3M
-         rIua7ILr3AGYCEVxGosCfE+6uMgINntEewZDTNbA1F8KRvOX4rDyGNed+Pe2FSegLIPr
-         WekVm1XsSiexi5xx/1vApbFL7XryQrvIvaKRvuCgHQnjR1ixLZ/vNU/ggk9J7CghKYG7
-         uT+jgTj0BgnAkEeZwV2KoUEA4mFpeXQDVzXU83pd/S6uYKw3Yjt5OLdTi6ZB8MefloIF
-         cnm+Zj5MdpQ7ZsmIO/0qMgVwIg3M1vFXHv607U9d2UeQkqAYjGYsaLWbfJDa+kPV36Ri
-         Z3dw==
+        b=EosAbiuWFzUnS2jNamko74jJgK5OilsYm2z6GuaDU8uxbvH3Ako54cY01mpRUq+8XF
+         Xhiq0XtkBMx3y3WX7uUjsIAtrZFvmwTYNjXFsuoKIx90EWn0vcpI/pE/DzzQQaQlbDNx
+         sW9dK3/PKtAJMU9ggNEfUTSNaRMAnxsf2w3rU9ipmqXSQPC1rkuoQ2I6HHLnOSO1oTns
+         WIltiJl7vLZuGe5Q1z6KbneZEdpudaUbyrRZ40yFcRji+YomFiUxFUxIuKj4PK1950sw
+         I8Y6wkSX7eRCdDw9oTHAi6oEWde1pZyG6RUfR1+oQ5HDZLlAGuMaO9kSK+OiFJf8sZrV
+         2PWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4r9F1ve4tri+fejC8d02n5r3ZdvwikIuY6dGBcXdBSI=;
-        fh=ENFfhUolrpukLS+jFgss4uWru+LNyj3ihV3aQDhUm+Q=;
-        b=nLdk9gJww3QIa1ZyVbuflGQwSp3D1IzT9U6wTdAkwFz+qE8/+fV06gsYntZ9tjO49G
-         oKgKZC1RqnaSgDEfd77GHOI0frbQAnwpxn5Af/wS8TorEFaOR62jSwfINSAF35EZV1qJ
-         n0ggNk64TGrfhJ+aaW9ZjgD8n/M3kofG83mEWdKmGxg+FlW2WOxEEB8XCX/q3NOfRTGB
-         9J06tTxBzkCt0dQkEb0oxsxinS0uMFqyKHFmD+rRF4bbG+FsMDHXZS0xEorVAsgqcmIz
-         HkPvuw5BJu3FZcKNRNSiDP3V21/oNWt8b5rwKkcVTBl4kWyW5NPZ987AaQIjWxOdkKrJ
-         OcUA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=fEJoEgbFJSgvpGetzAYU6wr3cF/3P9Go4Hx6iYVVKaA=;
+        fh=Jf1nKP2WL2jcbqOIOxxD2PSimQ8lvAM02ydtFJZMJic=;
+        b=F5RKOyavp1TZ/NL5FOkMvLhMAmDBXigewzIXABJPO8pQF3s3/ZWIhqhvtatDL4x1YH
+         ZW7otfUPGyHcX7FK/CnkCnD+kCvWIUEOdZAKr8tUlCTCyhRP0BEFGpdjF23y3mwJguIs
+         1VLuu4De21yENyFt8IuOhq7Kz2cnvvEuDXVj6dZRB1VaEWz9phnkuLQ5ZgGRsL5ei7cC
+         LcXMTQmLgvGcdgB9oOM7YUmPicTSstNdU6skCW6mquiLMfKkxzbj9Tmq142qSrWiBbpg
+         6HNAlPumBseL9Xaob1ZobavQzS7CoZ0Tg8aX0DvoZfjKgM+jc0FvhqXnIi9yfaSeo0iq
+         FIMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GiZudMrm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OqAgtgcN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp12-20020a05622a1b8c00b0042806f41efcsi2656451qtb.805.2024.01.05.14.17.24
+        by mx.google.com with ESMTPS id h19-20020a67ec93000000b0046747315964si456780vsp.456.2024.01.07.06.05.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 14:17:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 07 Jan 2024 06:05:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GiZudMrm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OqAgtgcN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLsV4-0003OP-SO; Fri, 05 Jan 2024 17:17:12 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rMTlg-0005Fc-2B; Sun, 07 Jan 2024 09:04:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLsUr-0003Kf-3B
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 17:17:00 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLsUm-0002to-Q6
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 17:16:54 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-40d60ad5f0bso613035e9.0
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 14:16:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704493011; x=1705097811; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4r9F1ve4tri+fejC8d02n5r3ZdvwikIuY6dGBcXdBSI=;
- b=GiZudMrm4qIKvdCdOaEydHTZPwSQfBhF4PkNwZsFwmeuf4VooZ8E0LOKbYiG8nY9Y7
- WRRx841Fdxz2WxjuYzp5phesuCuI//ik+Tu7IQ6LgK09/17CMvveKY3bpj1I5U0Zy9s2
- EVU9V4jIP40T/t08X8q+c3/og30ttTBOvflzJlf8Xm7sbktYwIjY9Of0lyvzNhox2yP3
- lZXof+4W0S6suGmj0kydJkl3MNySeGZsyrzO77JHd+oqt6USx3SpKONqiJ2zn4LmpBZw
- 85g5Zl5ZdJ8Kc7KO2yO4Vl1JhS8maEj0K+GbJh93y2EFhLzs3w0HbBjkVk+q8pCI3tEK
- wNAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704493011; x=1705097811;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4r9F1ve4tri+fejC8d02n5r3ZdvwikIuY6dGBcXdBSI=;
- b=kgPXV66m6a5ANnaGapANF9WegKomMtyTG5BQXUUS0YSWjNrf0HHZAoA8GGa8omuRT0
- F6Td+7f7uAYin4dFUKzhBuG8rUUxpxdDPJnWzCrg1cfLuegpuoW40Og6FppB0FagsECK
- gJ3Qt8clXPV6D3ClAHVN+Qs3MKhlQdWpHNLHeXYIKOpOKZrvcNzRPHJYHwdGw61ZdPkO
- iscKR6TmVoYsFVc2yKuJk2TOREpv0QYRdgJ9eQD7fbdhY02bjl8bDqqBoAXJhSq2lpZQ
- 4bwg2hevZ44suLvLHwTGpzgUSt7yWmoZk3Q0K2bZUq84y9KIBH0E7EjVhh/VmrhOTAzs
- qgFA==
-X-Gm-Message-State: AOJu0Yx9v0HynlojTfL9p1zSOoFl7tnVhbYXGm5YnIrzov99+3xyIiIb
- 4EaFSCfBJUGZ3m+iqimHsfVc3iKUBq+hhw==
-X-Received: by 2002:a05:600c:84cf:b0:40d:9377:d988 with SMTP id
- er15-20020a05600c84cf00b0040d9377d988mr103684wmb.60.1704493011345; 
- Fri, 05 Jan 2024 14:16:51 -0800 (PST)
-Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
- [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- e13-20020a05600c4e4d00b0040d79907acasm2768995wmq.26.2024.01.05.14.16.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jan 2024 14:16:50 -0800 (PST)
-Message-ID: <4eb7a7f5-8cb5-41a3-ac26-9b9a77a34b09@linaro.org>
-Date: Fri, 5 Jan 2024 23:16:48 +0100
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rMTle-0005EU-QE; Sun, 07 Jan 2024 09:04:46 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rMTlc-0006fX-W3; Sun, 07 Jan 2024 09:04:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=fEJoEgbFJSgvpGetzAYU6wr3cF/3P9Go4Hx6iYVVKaA=; b=OqAgtgcNQoFMX3dbDiQNqH8/uy
+ 2vgnguyIM4VRlpzCVABLwkmWHbbfm0b8yr6M77R1lX7TP1StjNzAH+BT/j9WPB5UUhkGNwjOebETl
+ /OhZxOvGpzFMjTrsz/rEUz6CRgQAhwz1djz1IHq1QtfozDh54nL94dTP9/MrWR3+we+KU5+YbZhZO
+ jtCFGKyhVMSBIX8hTw1QnvE8xYqBhmICY8hTWGTfOJap1hO+YOgLosFzA1v7+2yMaNAjuJ1rWkjYO
+ JiX9kNjQW2kheoRbdAdFSzWRhm0v+RED998oTgXRPwDPudWM4v1bTgS6AI9JyfRI3+O7V/KPoI1Ny
+ IIF17jiZkoMPCEpVtAu72nRK4vLNoDFib+JBM0IhalVAoIh1DlePuLjRB3l5ZGFKFCoV8nMgKLPmm
+ FWi1JZuCsMBM33g3+pKPrZs5d11vVx92lmTf3Xbth6KJvYmvVBDQHqx/yMc/1ZPk3aNjAh5bOwF45
+ XU6aKQBJx41d+ios06Q9m/e831yC5aP4TNZF1BKIHBFoBO3rY+MejIuHql8lH2PuE1XV3YmXcSGjE
+ pghBVC3ZGdWv8/0KAUNUaIp5cgEHW/+84l5NcfFraFJdhaBNa2mnxHu7dfnn5Oocl+N50r5EzsI0/
+ azqkCkM7xaVE2xVoHQFQ4esi21edL7GlDnZ+dQ6OU=;
+Received: from [2a00:23c4:8bb1:9800:d580:3d66:e68a:4949]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rMTkx-0003dG-7K; Sun, 07 Jan 2024 14:04:07 +0000
+Message-ID: <ab6ecb71-7c29-45e6-b69f-9e36d05fd6d6@ilande.co.uk>
+Date: Sun, 7 Jan 2024 14:04:27 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- inesvarhol <inesvarhol@proton.me>
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ inesvarhol <inesvarhol@proton.me>, =?UTF-8?Q?In=C3=A8s_Varhol?=
+ <ines.varhol@telecom-paris.fr>, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
 References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
  <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
  <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
  <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
- <ZZfYvlmcxBCiaeWE@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <ZZfYvlmcxBCiaeWE@redhat.com>
+ <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+X-SA-Exim-Connect-IP: 2a00:23c4:8bb1:9800:d580:3d66:e68a:4949
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Pati+NgEUt5c
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OHnPAv6NCPCc
 
-On 5/1/24 11:24, Daniel P. Berrangé wrote:
-> On Thu, Jan 04, 2024 at 01:37:22PM +0000, inesvarhol wrote:
+On 05/01/2024 10:13, Philippe Mathieu-Daudé wrote:
+
+> (+Mark & Eduardo)
+> 
+> On 4/1/24 14:37, inesvarhol wrote:
 >>
 >> Le jeudi 4 janvier 2024 à 14:05, Philippe Mathieu-Daudé <philmd@linaro.org> a écrit :
 >>
@@ -160,33 +175,56 @@ On 5/1/24 11:24, Daniel P. Berrangé wrote:
 >> Noted, we will fix that.
 >> Should we be concerned about the "stability in QOM path" ?
 > 
-> QTest is a functional test harness that intentionally has knowledge
-> about QEMU internals.
+> Don't worry about this Inès, I wanted to raise Markus attention on this.
 > 
-> IOW, usage of particular QOM path in qtest does *not* imply that
-> QOM path needs to be stable.  If QEMU internals change for whatever
-> reason, it is expected that QTests may need some updates to match.
-
-Good point.
-
-> QOM path stability only matters if there's a mgmt app facing use
-> case, which requires the app to have hardcoded knowledge of the
-> path.
+> You showed a legit use of stable QOM path, and Markus told me recently
+> there is no contract for QOM paths (it shouldn't be considered as a
+> stable API). IIRC Markus explanation, "/unattached" container was
+> added as a temporary hack to allow migrating QDev objects to QOM (see
+> around commit da57febfed "qdev: give all devices a canonical path",
+> 11 years ago).
 > 
-> Even a mgmt app can use unstable QOM paths, provided it has a way
-> to dynamically detect the path to be used, instead of hardcoding
-> it.
+> I agree anything under "/unattached" can be expected to be stable
+> (but we need a community consensus). Then the big question remaining
+> is "can any qom-path out of /unattached be considered stable?"
 
-I can understand this use to lookup "on which CDROM tray is
-inserted the blkdrv named FOO", but to find a component on a
-well specified system on chip, this is overkill.
+For the moment I would definitely say no, and that is mainly because if we were to 
+assume that QOM paths were stable today then I can see it being a barrier to updating 
+older code to meet our current guidelines.
 
-> None the less, you may still choose to move it out of /unattached
-> at your discretion.
+These days I think more about QOM paths being related to the lifecycle of the objects 
+e.g. a machine object has child devices, which may also consist of a number of other 
+children in the case of a multi-function device. For me this means that using 
+object_resolve_path_component() to look up a child object seems reasonable, in 
+contrast with expecting the entire path to be stable.
 
-Yeah we should clean those...
+One thing I think about often is whether the use of device[n] is suitable within QOM 
+tree. For example, if I have a command line like:
 
-Thanks for clarifying,
+   -device foo,myprop=prop0,id=fooid0 -device foo,myprop=prop1,id=fooid1
 
-Phil.
+currently they would appear in "info qom-tree" as:
+
+   /machine
+     /unattached
+       /device[0] (foo)
+       /device[1] (foo)
+
+whereas it feels this could be done better as:
+
+   /machine
+     /unattached
+       /foo[0] (fooid0)
+       /foo[1] (fooid1)
+
+This would automatically place devices of the same type within a QOM array to allow 
+them to be accessed separately by type, or even directly via the "id" if we assume 
+they are unique. In particular if you have a machine with 2 foo in-built devices you 
+could then potentially configure them separately using -global foo[0].myprop=newprop0 
+and/or -global foo[1].myprop=newprop1 which is something that currently isn't possible.
+
+
+ATB,
+
+Mark.
 

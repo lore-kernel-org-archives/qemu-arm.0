@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp7365ejs;
-        Mon, 8 Jan 2024 12:59:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFqX+4va4iZyvywm/mpKNDNI6ydJBxE+rj4kjymxuqC7q4cu10DdNrukuXPugjNl91WWwLu
-X-Received: by 2002:a05:6870:31cc:b0:206:90:7cda with SMTP id x12-20020a05687031cc00b0020600907cdamr5348455oac.106.1704747594133;
-        Mon, 08 Jan 2024 12:59:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747594; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp7377ejs;
+        Mon, 8 Jan 2024 12:59:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFcbfvW7UX6uDyxEU/ukf9oUJrLJ/Qt8u147O7k/g+HoW17ilKwsSGz/2sRbehU3VDC50U0
+X-Received: by 2002:a05:620a:6890:b0:781:e4c9:da86 with SMTP id rv16-20020a05620a689000b00781e4c9da86mr5184678qkn.87.1704747596400;
+        Mon, 08 Jan 2024 12:59:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747596; cv=none;
         d=google.com; s=arc-20160816;
-        b=OF1fJxmxHAwUAPi+aRpIkmhj1ZzsBXRPpn70SpkoCOSnxCxPzDuXttyWO8dhQK7lNu
-         nmMZYQvqb8FbfnWj/Y17nByjsSMjo5L2E22s4z8mF789OQws/2YUMRC5nTTmtRQgCejZ
-         fVCS+GFFN6AQLuw8WrHuX0fdOypMQ6/jxeKcHN3qYu63kCutIuV24zUULdjIYliYthOs
-         dBzMz2l7QieXFcYRfo9hzJolfrO9AAS64zzZyB6iolj/9Rao1+LGkc1HN0tWy4i+o9OH
-         yAEM3LpbHFn4lssQO5H5YWmr1RSqYuiCOP97tk3wo6AK30IYhLddiEtbsfs6G75GoHCs
-         O8gQ==
+        b=fNFH46xGOspFiU4PKhhRA7dEoGo2xVlRNsUsy5+kbahS/q0hcFclZRG8ZfsnQmSYx0
+         s2VyJgOU4eLu6kpZiRJTiL8kDFeD7SDMasQjmuYG4gz+nWAH7Uzi4jMBpWMuFiLE2bc4
+         TWooD41jHYuqFyA1fznLs6uj6YJBWImPlVdlvrnYk0foVBnWK+bHs7i1NQMxkzd8QCo3
+         CTewGyky07mu5B0apCQhZSFxdCGHPmbintY9DLGDBKmGkoL8c6idlMJgzYxCw6nS2jR3
+         Fod0jaNBc4l3kHiLdtGJG/+UcGFzM5aXpJ2JA6wqCLzN2iUYKf+oCRjnjuareicWvLoE
+         OAow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vOPLDRs2pS03aFI3QKRuxfVdnOLMGUdP65R8Ofm4Hp4=;
+        bh=1WN6S7P9khjjRDptuhw9wfAzdg/uT5NK3rR3MKpFEIQ=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=w8IYGQYQmK9rxI9QGt4yOdw2S9QtYIzThEWEwRI7bvayKZl/2T1OFmzQnjL1CRgEuw
-         nw2zma1zAXxLP9uISewszQ98VNqP2e4ObsA52TugCHCW3wN9smve4by+bGlHg9urHjg3
-         daEN4nGt4tLrCSEElYl2rQTD0J61Y+g0vHAeih5ufqgsvyD/1lPNucc14m0WrKm8wOQL
-         m8JBr2msT48kyEj4Saal+nooQXgNA8q5n2Ix/zBXlqqc1l5/7UPz4J7qC7ZKacxqFeDX
-         Vc2pPVPiE3SrM96khpjvN2qu2kx24/RnHrLYkI/ErwhiHFWbGwEwIlOnRUpI1jqz+q80
-         Hq5Q==
+        b=00tohEBeDd/Al0gN/g2YNSyePpbcOhI8+Q5m2c9qRlh77fKTdEAkV8ga7okyv6SI65
+         YQjTrqL5mjJhV8dTcqngmkzpN/QBEkTUMWncUz9DLu7b2Va/nfVKioHOkeDFXEhYIYLr
+         Jbp7dgaf68wpl/G2hfId3eOGdNqjeLe18LvnpSdxVnRip5i1tZOe07ZX5LTk12iGiJDW
+         fXPVY6s4pXYFGmci/4k4W1/RJad5rQdvErY9PMzZ/ygMGkMwVTFT+DF6bFcew/hwKLys
+         qEHBMWQ4japoCavWZ8iI7Zu5LeyzOpSSmfjZWhtNTJcBlPZ0375jYOcee6Yqchz7YRyy
+         2XUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=fryOhSDr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=PPEeq4uX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5-20020a05620a0bc500b007830c3de57fsi576409qki.239.2024.01.08.12.59.53
+        by mx.google.com with ESMTPS id h11-20020a05620a10ab00b0078326027458si526407qkk.771.2024.01.08.12.59.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 12:59:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jan 2024 12:59:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=fryOhSDr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=PPEeq4uX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMwaC-0004hG-0G; Mon, 08 Jan 2024 15:50:52 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rMwbO-0008LK-9r; Mon, 08 Jan 2024 15:52:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwZY-0003o6-M0; Mon, 08 Jan 2024 15:50:13 -0500
+ id 1rMwaB-0004eJ-5i; Mon, 08 Jan 2024 15:50:51 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwZE-00010E-RB; Mon, 08 Jan 2024 15:50:11 -0500
+ id 1rMwa4-00010F-CU; Mon, 08 Jan 2024 15:50:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=vOPLDRs2pS03aFI3QKRuxfVdnOLMGUdP65R8Ofm4Hp4=; b=fryOhSDr3Sqtj/iGNQmSgoZC81
- 0bGoir4uvuNgVOwYFL1sDLG0qL07aRdFpM5bAJLXRJnRMx9U3c4QlhYrfGIR0ZD8rzIod70oaH03m
- 32JHaV5EZnpDyaapgbucMOXP0B4SNSnpc4ECIHxaJ403KFlc8VSyGhgbl9Ov+D8HDtwELOrzGF4H/
- ItyyGOTXfBcAilSezrmYxbybrVpmkvoj+/cBATGduER26ylWNBqZXNBMljk3KwcpPcFIx/nScB0CD
- 6caPIW50TvBL5hpX6f7H+gU3MUsh5192cNfpYuPDZO/kTfzzbn8mkGjq6+Oq5MRyuGx/CIfzH0w3a
- 9/f6TL/g==;
+ bh=1WN6S7P9khjjRDptuhw9wfAzdg/uT5NK3rR3MKpFEIQ=; b=PPEeq4uX8x6/nqsUejt6pI1XaC
+ ehm7vGRO+AeDJTn95tLLNTK6MCaBnw3TGnVndxXMuigBOvc0bp2fxfK+TJitEh886faEWTINhRz/Z
+ dRaiGbhvcYjxVSDG1cogfRLbVb9/ZSxdWZveefhh6Sm/Yk7oNQFjx7BDj5VQzgJbPOQJLzyE10nop
+ aVlZ5rmjSlPSKJ+zmpjuCM1yqlikPj3dCmhEJofR53U3jV9LUCUzJey80tr7JrolAVt4/CuMVI/sC
+ kwbXGKVFCAtoQ33Duv8DOIeSkjf49ZVomUSkU/LVmI4JAtdJUR53zRhRHSYcq+WKfNWqgG4mD5hhj
+ 170FqWXA==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1rMwYk-007wXT-2t; Mon, 08 Jan 2024 20:49:23 +0000
+ id 1rMwYm-007wXu-0F; Mon, 08 Jan 2024 20:49:24 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYj-002NF7-2j; Mon, 08 Jan 2024 20:49:21 +0000
+ Hat Linux)) id 1rMwYl-002NGi-1C; Mon, 08 Jan 2024 20:49:23 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,9 +115,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 17/46] hw/ppc: use pci_init_nic_devices()
-Date: Mon,  8 Jan 2024 20:26:46 +0000
-Message-ID: <20240108204909.564514-18-dwmw2@infradead.org>
+Subject: [PATCH v3 37/46] hw/net/lasi_i82596: use qemu_configure_nic_device()
+Date: Mon,  8 Jan 2024 20:27:06 +0000
+Message-ID: <20240108204909.564514-38-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
@@ -136,108 +136,45 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zIFaExGlqiz2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: c5GzG+t/TUUI
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/ppc/e500.c          |  4 +---
- hw/ppc/mac_newworld.c  |  4 +---
- hw/ppc/mac_oldworld.c  |  4 +---
- hw/ppc/ppc440_bamboo.c | 14 +++++---------
- 4 files changed, 8 insertions(+), 18 deletions(-)
+ hw/net/lasi_i82596.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 566f1200dd..3bd12b54ab 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -1079,9 +1079,7 @@ void ppce500_init(MachineState *machine)
+diff --git a/hw/net/lasi_i82596.c b/hw/net/lasi_i82596.c
+index 6a3147fe2d..2bb4f2c4ca 100644
+--- a/hw/net/lasi_i82596.c
++++ b/hw/net/lasi_i82596.c
+@@ -125,11 +125,10 @@ SysBusI82596State *lasi_82596_init(MemoryRegion *addr_space,
+     static const MACAddr HP_MAC = {
+         .a = { 0x08, 0x00, 0x09, 0xef, 0x34, 0xf6 } };
  
-     if (pci_bus) {
-         /* Register network interfaces. */
--        for (i = 0; i < nb_nics; i++) {
--            pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
--        }
-+        pci_init_nic_devices(pci_bus, mc->default_nic);
-     }
+-    qemu_check_nic_model(&nd_table[0], TYPE_LASI_82596);
+     dev = qdev_new(TYPE_LASI_82596);
+     s = SYSBUS_I82596(dev);
+     s->state.irq = lan_irq;
+-    qdev_set_nic_properties(dev, &nd_table[0]);
++    qemu_configure_nic_device(dev, true, NULL);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     s->state.conf.macaddr = HP_MAC; /* set HP MAC prefix */
  
-     /* Register spinning region */
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index 535710314a..b36dbaf2b6 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -444,9 +444,7 @@ static void ppc_core99_init(MachineState *machine)
-         graphic_depth = 15;
-     }
- 
--    for (i = 0; i < nb_nics; i++) {
--        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
--    }
-+    pci_init_nic_devices(pci_bus, mc->default_nic);
- 
-     /* The NewWorld NVRAM is not located in the MacIO device */
-     if (kvm_enabled() && qemu_real_host_page_size() > 4096) {
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index 9acc7adfc9..1981d3d8f6 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -277,9 +277,7 @@ static void ppc_heathrow_init(MachineState *machine)
- 
-     pci_vga_init(pci_bus);
- 
--    for (i = 0; i < nb_nics; i++) {
--        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
--    }
-+    pci_init_nic_devices(pci_bus, mc->default_nic);
- 
-     /* MacIO IDE */
-     ide_drive_get(hd, ARRAY_SIZE(hd));
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index a189942de4..c75c3083e6 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -161,7 +161,6 @@ static void bamboo_init(MachineState *machine)
-     DeviceState *uicdev;
-     SysBusDevice *uicsbd;
-     int success;
--    int i;
- 
-     if (kvm_enabled()) {
-         error_report("machine %s does not support the KVM accelerator",
-@@ -234,14 +233,11 @@ static void bamboo_init(MachineState *machine)
-     }
- 
-     if (pcibus) {
--        /* Register network interfaces. */
--        for (i = 0; i < nb_nics; i++) {
--            /*
--             * There are no PCI NICs on the Bamboo board, but there are
--             * PCI slots, so we can pick whatever default model we want.
--             */
--            pci_nic_init_nofail(&nd_table[i], pcibus, mc->default_nic, NULL);
--        }
-+        /*
-+         * There are no PCI NICs on the Bamboo board, but there are
-+         * PCI slots, so we can pick whatever default model we want.
-+         */
-+        pci_init_nic_devices(pcibus, mc->default_nic);
-     }
- 
-     /* Load kernel. */
 -- 
 2.41.0
 

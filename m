@@ -1,123 +1,118 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp54973ejs;
-        Mon, 8 Jan 2024 14:57:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFyIY6AbCp3xY8WH9QXWUgm52CYb2hMgaJb3pvw+C2HJsTkGRx5zNzBTm2eO0UTbkzr/zI0
-X-Received: by 2002:a05:6808:14d0:b0:3bd:265c:7d2d with SMTP id f16-20020a05680814d000b003bd265c7d2dmr4034117oiw.59.1704754651456;
-        Mon, 08 Jan 2024 14:57:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704754651; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp63166ejs;
+        Mon, 8 Jan 2024 15:14:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFrvK7ZadZgyBsKcXTUkwO/4NM0NZBY7M0nRTgOSi5AohnEz52PRbmm4QHqNLIo5lSXEpVF
+X-Received: by 2002:a05:620a:1661:b0:783:1c68:c15d with SMTP id d1-20020a05620a166100b007831c68c15dmr3432812qko.86.1704755691226;
+        Mon, 08 Jan 2024 15:14:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704755691; cv=none;
         d=google.com; s=arc-20160816;
-        b=KeKovAt3s1l24ZdJ4VEuJVV7uhX2rj5J3ipLswixshdAKqxudxLEQwJ53f4k7/3m2Q
-         hgICFFM1eNg9O7boDkwnTpyWcBEaPje0v1cyOEE7cRLemYvo7nEQPBpGguNuijwSr+tZ
-         jkrKUstwuw6jK/y197qmJYoYok35h3hrK5EQCLWMVtrK6zq7uCD2B7gKBI1Npmlp3QKr
-         mL8ebsKeP4BHZ24pH5HDVoEn9tCnNxuc8Wbvof+vDPepf6decZ3QXqa+/jaFPXuTnFuD
-         fIva7rp+7Hp7Zf2A0Igb2D48XfZyeoU5VpDioHoNue7Dy7okOFYQwejHJZoi4cSy74cM
-         RzPQ==
+        b=H6XsWIwoTu/yAJilcjDOAaaOJ92pj1vmly1vUSRjAliSpxd6thB4SljDZNk1lUKSLl
+         NbJSS9vo81pnFDfpeyA3te3gytD+rUmZA9jR3buou/WsPe/OphTCaAFyykPk2vueHOwB
+         i7ca2d+B2JRj6evkzZPs8pWzBd6bpC/e/uDMqb4h/u9CUwYLBe6zYUCX6tKUzm1LAkf8
+         aaAWIakTs147GQHrn/rxF4I7HywYHnxOl3941x/Cwow7+k42XHSoQrqTvgdAz2XMaOZV
+         sqemtVPbdPbhiFLgk7sl4JDTak84xa/zLHHneQ6Iy31s4xYjXcuGQ6Jpduj7ZXGEKdK9
+         OoNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RQ7tMiFUBZpc7a/GWseZV8JMPs0jLW4xfpFMkgMbUSo=;
-        fh=NYvuA77Jk1UiGzrBCopX1mY70nSnO23xzaepzDnf7X4=;
-        b=qjt3WNTNcvRL3NORR4hPiYEN4cvRZUxh3KTO0AaMB7A9OzYFLOwLgUyqih12lblUgh
-         hdneiYaSOLoQruHUmv2XmDZ+KHnyIxiFOOBCF4X8GLXIw09iAOHpg3/U3DsHYLCls1E6
-         zUTr3CuYV6ImgXje6lOzlifka2KkYQ62UlHkn0nM1txim6XGKx+fNuHKlNCdELu/Q3ae
-         mJBDKaYZIsEUwuKcdW8oc7Lg1ANKM3sT1j3MMv0bi1vpkmZo4XobTXUKLuC5gC9kyh1x
-         p4BNVA05+ktEWseDEq8Nx/GqGVZtSPPflO2vSoPEl3vHDIsTAQIRm21Y83OypKakIpxp
-         MGIg==
+        bh=cU9XPHoclqEeRy1KkF1HJKic3tB/ViVBZim3kjYaLVc=;
+        fh=KlMGm1mrCnwsnKfhEn7lY1Smhl6zVU7EG8tbsQKM8NY=;
+        b=yeUPppBgY/ZCsRT3kNZu8UtiDr3zmyMt8pqzXxM+a/iKgC1HCe6TJaJLtr09nko10a
+         mEUtkK28Vmsn0URJ530UGNT2j1/5SvKEJZYNORvf3PjUyl01XCUkbTgcJUvgreoIFH91
+         0H7uYH/fThxdFJseHgIb7OkVb4rViHC3SKvUIys24spWancpPUuSmVlQtrrT0zr8A0ef
+         vwPLdfutn6D/iK/dyN6WF1r7bpz+2xtKekYGAdotOY2mYPSNrX/vFMoGy7qyDDyWdWUd
+         smFjZpRhcuUWwdT+aulcgy/V0Fql33EdYzn6yT4FEzwvYdarXzsaHCJouSor3CyDAEoe
+         zMRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NqK8LMx+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KUZiQQg3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h15-20020a0cf20f000000b0067a395ef2d3si966315qvk.70.2024.01.08.14.57.31
+        by mx.google.com with ESMTPS id g7-20020a05620a40c700b00783248933e1si851437qko.702.2024.01.08.15.14.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 14:57:31 -0800 (PST)
+        Mon, 08 Jan 2024 15:14:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NqK8LMx+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KUZiQQg3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMyXn-0001ch-32; Mon, 08 Jan 2024 17:56:31 -0500
+	id 1rMypK-0003eW-Gq; Mon, 08 Jan 2024 18:14:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMyXj-0001bU-Ft
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:56:28 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMypI-0003bZ-LH
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 18:14:36 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMyXg-0005MF-Ut
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:56:27 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3376f71fcbbso840883f8f.1
- for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 14:56:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMypG-0000aL-Ut
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 18:14:36 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-33770772136so652242f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 15:14:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704754583; x=1705359383; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704755673; x=1705360473; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=RQ7tMiFUBZpc7a/GWseZV8JMPs0jLW4xfpFMkgMbUSo=;
- b=NqK8LMx+9hTxKq73IU/l2CJb78vmZL35snRiDsWctGToKjKu2pbDRWxNBgGiiKh+oB
- aociYihdinHe+1UZMVcC8fUQkxMNgWcj5lwIziAG5gQdmYjyFsZSkZ+pv0EOF2OU34TJ
- cQFSGb5Cy/3ANvLNaoaRSdXhi9mhs+MwqyoGugPmgQkC1tJgkvEJkVHKZoOcYEuS82PJ
- 7I5x3IVuQ0ezBxw4F3ghiyZGGeZ1RiysTIJBMlpapXSQP3ntBZfAHfl6GEzhsJafaJCm
- RP/zhGJ5AzlWU/yFaLymYxNMyfpfF/OumSEgSh9+p6rgdz7o+wUi4hi7xxvOayzF5Zr+
- g/Xw==
+ bh=cU9XPHoclqEeRy1KkF1HJKic3tB/ViVBZim3kjYaLVc=;
+ b=KUZiQQg3o/Bco2Qw7AYjSbgO0T9X6INAFli9w4Ay1TBvECRvKIpoSGahwZark9KjR/
+ XrN9YbrljW8eqXl73rRoDlFrNv7w7M4Hlx2+ChpWXsgGFcmXnEZXQQjwH7bIrS28fVO8
+ hAFBZnHRLP7LmiDlF2hAYgtT/bS7fS81+f8nbthq5RhxHeApMRUq0TP94Wgu32J42R0E
+ vcpYQ+Kf6azKQf6PV3LpcBFtb2DlTJneiKedP3aHZ8SvQ2cLVS4rSE6X9ArbF0n3LJRj
+ rbf/IwVfNTtD3yYT9kF+dVzXGdCI4aV8BJGqe60yi2tqEPyI15ERTrpjpsl/fA2ndZxl
+ H71g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704754583; x=1705359383;
+ d=1e100.net; s=20230601; t=1704755673; x=1705360473;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RQ7tMiFUBZpc7a/GWseZV8JMPs0jLW4xfpFMkgMbUSo=;
- b=voUFlEQrh/Bk2rTQNCNqRBl3mbI9OLpcZ0DvkAYOr40hwPmFvyw6yQ2Y2F4Gt9fzav
- 9u34k5So9Op0TY3LGQkbtym9twUtyKtXM7U4cOGUK7LK3eC3FjhPmcH5bAEvvXSoacOz
- 08r+XQfM9IVizzGRhmHQQ/wZTkjKmIO/QAO6vBXLlslkhmaMX0qPYyZGdeiD9DiWRChb
- xV58JKYm8F+woj21mHaFsi1jTSQToTJZOBjE1RYcocBXoddLpAPjy5u/o38wdWS7mJ0Y
- eWalkHzELQ60rj7GSjlsoSrabL+ZOwgJXgpnL+gQpbOd+NfNDW9Q6PiILEMOoHKvTKik
- uCJg==
-X-Gm-Message-State: AOJu0YyWPiHu4UQIneYM+rat0S9E3j5SZ5p/ShuTejnwxXnf1jgbGg8L
- 4fuQNiGjQY6Zu2C+xOJKmARy930rcyfzfQ==
-X-Received: by 2002:adf:fb83:0:b0:336:c4c1:2d7d with SMTP id
- a3-20020adffb83000000b00336c4c12d7dmr40979wrr.60.1704754583222; 
- Mon, 08 Jan 2024 14:56:23 -0800 (PST)
+ bh=cU9XPHoclqEeRy1KkF1HJKic3tB/ViVBZim3kjYaLVc=;
+ b=m+VqzQoBhY1DSuRoGqXy36fg1KkKD6t8lKvQtOLcOnnnqRqzOBQdrtcmXkiytHrO0i
+ bWCOCYwbynpiyN7NXK5GRet0NRdcEqnu3MypohE80kNQCatI1ND+PNXsY+G277x1aMpH
+ vDshuXBU3qqCFvjkvqtub4AHntM2qJzpMO3qgKSSeFw+/TQHooHhTF0i+5wYJczEFTCS
+ 5CljOt2IPAemlEd7TXtwIiE93OzKjbh4jl2Ci+HXKp50TmKBBegLHl3O+i9JgJtcJGEJ
+ U4QWiEIX/dExSBqgbI1DpI5/wZ/E/4U1prq9IpW15NfuacMiUDLWQXft+4jc7nG6OZ3T
+ DTdQ==
+X-Gm-Message-State: AOJu0YxbptBYLl2q4DVAh6PH1dDGJQOxVdOatprWMA+kaMEqOzAb8LBn
+ VQOq+zrqCrSkyE1yX862f4BXKvLqeO4l3w==
+X-Received: by 2002:a5d:4046:0:b0:333:2fd2:815b with SMTP id
+ w6-20020a5d4046000000b003332fd2815bmr90488wrp.120.1704755673236; 
+ Mon, 08 Jan 2024 15:14:33 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.194.16])
  by smtp.gmail.com with ESMTPSA id
- bs7-20020a056000070700b003368100ff71sm770294wrb.10.2024.01.08.14.56.21
+ f3-20020a056000128300b003376dbc75e9sm788091wrx.14.2024.01.08.15.14.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jan 2024 14:56:22 -0800 (PST)
-Message-ID: <ec9af4db-5159-4123-ab91-eef3dbb82ed6@linaro.org>
-Date: Mon, 8 Jan 2024 23:56:20 +0100
+ Mon, 08 Jan 2024 15:14:31 -0800 (PST)
+Message-ID: <58a28201-7f26-4637-b311-4c291dd7aa7a@linaro.org>
+Date: Tue, 9 Jan 2024 00:14:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/3] hw/misc: Implement STM32L4x5 EXTI
+Subject: Re: [PATCH v10 08/10] hw/net: GMAC Rx Implementation
 Content-Language: en-US
-To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org
-Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240108181104.46880-1-ines.varhol@telecom-paris.fr>
- <20240108181104.46880-2-ines.varhol@telecom-paris.fr>
+To: Nabih Estefan <nabihestefan@google.com>, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
+ wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com,
+ kwliu@nuvoton.com, tomer.maimon@nuvoton.com, Hila.Miranda-Kuzi@nuvoton.com
+References: <20240108222747.2453106-1-nabihestefan@google.com>
+ <20240108222747.2453106-9-nabihestefan@google.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240108181104.46880-2-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240108222747.2453106-9-nabihestefan@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,465 +127,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Opu4f4wPvxZv
+X-TUID: 1S7qkKms9xKh
 
-On 8/1/24 19:03, Inès Varhol wrote:
-> Although very similar to the STM32F4xx EXTI, STM32L4x5 EXTI generates
-> more than 32 event/interrupt requests and thus uses more registers
-> than STM32F4xx EXTI which generates 23 event/interrupt requests.
+On 8/1/24 23:27, Nabih Estefan wrote:
+> From: Nabih Estefan Diaz <nabihestefan@google.com>
 > 
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> - Implementation of Receive function for packets
+> - Implementation for reading and writing from and to descriptors in
+>    memory for Rx
+> 
+> When RX starts, we need to flush the queued packets so that they
+> can be received by the GMAC device. Without this it won't work
+> with TAP NIC device.
+> 
+> When RX descriptor list is full, it returns a DMA_STATUS for
+> software to handle it. But there's no way to indicate the software has
+> handled all RX descriptors and the whole pipeline stalls.
+> 
+> We do something similar to NPCM7XX EMC to handle this case.
+> 
+> 1. Return packet size when RX descriptor is full, effectively dropping
+> these packets in such a case.
+> 2. When software clears RX descriptor full bit, continue receiving
+> further packets by flushing QEMU packet queue.
+> 
+> Added relevant trace-events
+> 
+> Change-Id: I132aa254a94cda1a586aba2ea33bbfc74ecdb831
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 > ---
+>   hw/net/npcm_gmac.c  | 324 +++++++++++++++++++++++++++++++++++++++++++-
+>   hw/net/trace-events |   5 +
+>   2 files changed, 327 insertions(+), 2 deletions(-)
 > 
-> Should the for loop variables be `unsigned` rather than `int` ?
+> diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
+> index 44c4ffaff4..54c8af3b41 100644
+> --- a/hw/net/npcm_gmac.c
+> +++ b/hw/net/npcm_gmac.c
+> @@ -23,7 +23,11 @@
+>   #include "hw/registerfields.h"
+>   #include "hw/net/mii.h"
+>   #include "hw/net/npcm_gmac.h"
+> +#include "linux/if_ether.h"
 
-It depends on the iterated range. Here you iterate over
-ARRAY_SIZE(Stm32l4x5ExtiState::irq) which is a size_t type,
-which is unsigned. Amusingly we use both similarly:
+Still doesn't build on macOS:
 
-$ git grep 'for (size_t' | wc -l
-       56
-$ git grep 'for (unsigned' | wc -l
-       59
-
->   docs/system/arm/b-l475e-iot01a.rst |   5 +-
->   hw/misc/Kconfig                    |   3 +
->   hw/misc/meson.build                |   1 +
->   hw/misc/stm32l4x5_exti.c           | 292 +++++++++++++++++++++++++++++
->   hw/misc/trace-events               |   5 +
->   include/hw/misc/stm32l4x5_exti.h   |  51 +++++
->   6 files changed, 354 insertions(+), 3 deletions(-)
->   create mode 100644 hw/misc/stm32l4x5_exti.c
->   create mode 100644 include/hw/misc/stm32l4x5_exti.h
-> 
-> diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e-iot01a.rst
-> index 2b128e6b84..72f256ace7 100644
-> --- a/docs/system/arm/b-l475e-iot01a.rst
-> +++ b/docs/system/arm/b-l475e-iot01a.rst
-> @@ -12,17 +12,16 @@ USART, I2C, SPI, CAN and USB OTG, as well as a variety of sensors.
->   Supported devices
->   """""""""""""""""
->   
-> -Currently, B-L475E-IOT01A machine's implementation is minimal,
-> -it only supports the following device:
-> +Currently B-L475E-IOT01A machine's only supports the following devices:
->   
->   - Cortex-M4F based STM32L4x5 SoC
-> +- STM32L4x5 EXTI (Extended interrupts and events controller)
->   
->   Missing devices
->   """""""""""""""
->   
->   The B-L475E-IOT01A does *not* support the following devices:
->   
-> -- Extended interrupts and events controller (EXTI)
->   - Reset and clock control (RCC)
->   - Serial ports (UART)
->   - System configuration controller (SYSCFG)
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index cc8a8c1418..3efe3dc2cc 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -87,6 +87,9 @@ config STM32F4XX_SYSCFG
->   config STM32F4XX_EXTI
->       bool
->   
-> +config STM32L4X5_EXTI
-> +    bool
-> +
->   config MIPS_ITU
->       bool
->   
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 36c20d5637..16db6e228d 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -110,6 +110,7 @@ system_ss.add(when: 'CONFIG_XLNX_VERSAL_TRNG', if_true: files(
->   system_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
->   system_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
->   system_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_exti.c'))
-> +system_ss.add(when: 'CONFIG_STM32L4X5_EXTI', if_true: files('stm32l4x5_exti.c'))
->   system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'))
->   system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
->   
-> diff --git a/hw/misc/stm32l4x5_exti.c b/hw/misc/stm32l4x5_exti.c
-> new file mode 100644
-> index 0000000000..aedf1fb370
-> --- /dev/null
-> +++ b/hw/misc/stm32l4x5_exti.c
-> @@ -0,0 +1,292 @@
-> +/*
-> + * STM32L4x5 EXTI (Extended interrupts and events controller)
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-> + * Copyright (c) 2023 Inès Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * This work is based on the stm32f4xx_exti by Alistair Francis.
-> + * Original code is licensed under the MIT License:
-> + *
-> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-> + */
-> +
-> +/*
-> + * The reference used is the STMicroElectronics RM0351 Reference manual
-> + * for STM32L4x5 and STM32L4x6 advanced Arm ® -based 32-bit MCUs.
-> + * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/documentation.html
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "trace.h"
-> +#include "hw/irq.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/misc/stm32l4x5_exti.h"
-> +
-> +#define EXTI_IMR1   0x00
-> +#define EXTI_EMR1   0x04
-> +#define EXTI_RTSR1  0x08
-> +#define EXTI_FTSR1  0x0C
-> +#define EXTI_SWIER1 0x10
-> +#define EXTI_PR1    0x14
-
-> +#define EXTI_IMR2   0x20
-> +#define EXTI_EMR2   0x24
-> +#define EXTI_RTSR2  0x28
-> +#define EXTI_FTSR2  0x2C
-> +#define EXTI_SWIER2 0x30
-> +#define EXTI_PR2    0x34
-> +
-> +#define EXTI_NUM_GPIO_EVENT_IN_LINES 16
-
-   #define EXTI_MAX_IRQ_PER_BANK 32
-
-> +
-> +/* 0b11111111_10000010_00000000_00000000 */
-> +#define DIRECT_LINE_MASK1 0xFF820000
-> +/* 0b00000000_00000000_00000000_10000111 */
-> +#define DIRECT_LINE_MASK2 0x00000087
-> +/* 0b11111111_11111111_11111111_00000000 */
-> +#define RESERVED_BITS_MASK2 0xFFFFFF00
-> +
-> +/* 0b00000000_00000000_00000000_01111000 */
-> +#define ACTIVABLE_MASK2 (~DIRECT_LINE_MASK2 & ~RESERVED_BITS_MASK2)
-
-
-You might want to declare:
-
-   #define EXTI_IRQS_BANK0  32
-   #define EXTI_IRQS_BANK1  8
-
-   static const unsigned irqs_per_bank[EXTI_NUM_REGISTER] = {
-       EXTI_IRQS_BANK0,
-       EXTI_IRQS_BANK1,
-   };
-
-   static const uint32_t exti_romask[EXTI_NUM_REGISTER] = {
-       0xff820000, /* 0b11111111_10000010_00000000_00000000 */
-       0x00000087, /* 0b00000000_00000000_00000000_10000111 */
-   };
-
-And add descriptive helpers such:
-
-static unsigned regbank_index_by_irq(unsigned irq)
-{
-     return irq >= EXTI_MAX_IRQ_PER_BANK ? 1 : 0;
-}
-
-static unsigned regbank_index_by_addr(hwaddr addr)
-{
-     return addr >= EXTI_IMR2 ? 1 : 0;
-}
-
-static unsigned valid_mask(unsigned bank)
-{
-     return MAKE_64BIT_MASK(0, irqs_per_bank[bank]);
-}
-
-(then see below)
-
-> +static void stm32l4x5_exti_reset_hold(Object *obj)
-> +{
-> +    Stm32l4x5ExtiState *s = STM32L4X5_EXTI(obj);
-> +
-> +    s->imr[0] = DIRECT_LINE_MASK1;
-> +    s->emr[0] = 0x00000000;
-> +    s->rtsr[0] = 0x00000000;
-> +    s->ftsr[0] = 0x00000000;
-> +    s->swier[0] = 0x00000000;
-> +    s->pr[0] = 0x00000000;
-> +
-> +    s->imr[1] = DIRECT_LINE_MASK2;
-> +    s->emr[1] = 0x00000000;
-> +    s->rtsr[1] = 0x00000000;
-> +    s->ftsr[1] = 0x00000000;
-> +    s->swier[1] = 0x00000000;
-> +    s->pr[1] = 0x00000000;
-> +}
-
-BTW stm32l4x5_exti_reset_hold() can also be unified:
-
-    static void stm32l4x5_exti_reset_hold(Object *obj)
-    {
-        Stm32l4x5ExtiState *s = STM32L4X5_EXTI(obj);
-
-        for (unsigned bank = 0; bank < EXTI_NUM_REGISTER; bank++) {
-            s->imr[bank] = exti_romask[bank];
-            s->emr[bank] = 0;
-            s->rtsr[bank] = 0;
-            s->ftsr[bank] = 0;
-            s->swier[bank] = 0;
-            s->pr[bank] = 0;
-        }
-    }
-
-> +static void stm32l4x5_exti_set_irq(void *opaque, int irq, int level)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +    const unsigned n = irq >= 32;
-
-Then:
-
-       n = regbank_index_by_irq(irq);
-
-Maybe 'bank' is a better variable name instead of 'n', in particular
-in stm32l4x5_exti_read() it makes it clear registers behave identically
-for each bank of registers.
-
-> +    const int oirq = irq;
-> +
-> +    trace_stm32l4x5_exti_set_irq(irq, level);
-> +
-> +    if (irq >= 32) {
-> +        /* Shift the value to enable access in x2 registers. */
-> +        irq -= 32;
-> +    }
-
-Alternatively:
-
-       irq %= EXTI_MAX_IRQ_PER_BANK;
-
-> +    /* If the interrupt is masked, pr won't be raised */
-> +    if (!((1 << irq) & s->imr[n])) {
-
-Alternatively:
-
-        if (!extract32(s->imr[n], irq, 1)) {
-
-> +        return;
-> +    }
-> +
-> +    if (((1 << irq) & s->rtsr[n]) && level) {
-> +        /* Rising Edge */
-> +        s->pr[n] |= 1 << irq;
-> +        qemu_irq_pulse(s->irq[oirq]);
-> +    } else if (((1 << irq) & s->ftsr[n]) && !level) {
-> +        /* Falling Edge */
-> +        s->pr[n] |= 1 << irq;
-> +        qemu_irq_pulse(s->irq[oirq]);
-> +    }
-
-        else { // Can we get here?
-
-> +}
-> +
-> +static uint64_t stm32l4x5_exti_read(void *opaque, hwaddr addr,
-> +                                    unsigned int size)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +    uint32_t r = 0;
-> +    const unsigned n = addr >= EXTI_IMR2;
-
-       bank = regbank_index_by_addr(addr);
-
-> +
-> +    switch (addr) {
-> +    case EXTI_IMR1:
-> +    case EXTI_IMR2:
-> +        r = s->imr[n];
-> +        break;
-> +    case EXTI_EMR1:
-> +    case EXTI_EMR2:
-> +        r = s->emr[n];
-> +        break;
-> +    case EXTI_RTSR1:
-> +    case EXTI_RTSR2:
-> +        r = s->rtsr[n];
-> +        break;
-> +    case EXTI_FTSR1:
-> +    case EXTI_FTSR2:
-> +        r = s->ftsr[n];
-> +        break;
-> +    case EXTI_SWIER1:
-> +    case EXTI_SWIER2:
-> +        r = s->swier[n];
-> +        break;
-> +    case EXTI_PR1:
-> +    case EXTI_PR2:
-> +        r = s->pr[n];
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "STM32L4X5_exti_read: Bad offset 0x%x\n", (int)addr);
-
-Here you can avoid the cast by using the HWADDR_PRIx format.
-
-> +        break;
-> +    }
-> +
-> +    trace_stm32l4x5_exti_read(addr, r);
-> +
-> +    return r;
-> +}
-> +
-> +static void stm32l4x5_exti_write(void *opaque, hwaddr addr,
-> +                                 uint64_t val64, unsigned int size)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +    const uint32_t value = (uint32_t)val64;
-
-I don't see the benefit of casting to 32-bits, besides we have
-".valid.max_access_size = 4" so the caller always pass 32-bits.
-
-> +
-> +    trace_stm32l4x5_exti_write(addr, value);
-> +
-> +    switch (addr) {
-> +    case EXTI_IMR1:
-> +        s->imr[0] = value;
-> +        return;
-
-You can unify banks:
-
-        case EXTI_IMR1:
-        case EXTI_IMR2:
-            s->imr[bank] = value & valid_mask(bank);
-            return;
-
-> +    case EXTI_EMR1:
-> +        s->emr[0] = value;
-> +        return;
-
-        case EXTI_EMR1:
-        case EXTI_EMR2:
-            s->emr[bank] = value & valid_mask(bank);
-            return;
-
-> +    case EXTI_RTSR1:
-> +        s->rtsr[0] = value & ~DIRECT_LINE_MASK1;
-> +        return;
-
-        case EXTI_RTSR1:
-        case EXTI_RTSR2:
-            s->rtsr[bank] = value & ~exti_romask[bank];
-            return;
-
-> +    case EXTI_FTSR1:
-> +        s->ftsr[0] = value & ~DIRECT_LINE_MASK1;
-> +        return;
-
-        case EXTI_FTSR1:
-        case EXTI_FTSR2:
-            s->ftsr[bank] = value & ~exti_romask[bank];
-            return;
-
-> +    case EXTI_SWIER1: {
-> +        const uint32_t set1 = value & ~DIRECT_LINE_MASK1;
-> +        const uint32_t pend1 = set1 & ~s->swier[0] & s->imr[0] & ~s->pr[0];
-> +        s->swier[0] = set1;
-> +        s->pr[0] |= pend1;
-> +        for (int i = 0; i < 32; i++) {
-> +            if (pend1 & (1 << i)) {
-> +                qemu_irq_pulse(s->irq[i]);
-> +            }
-> +        }
-> +        return;
-
-      case EXTI_SWIER1:
-      case EXTI_SWIER2:
-           set = value & ~exti_romask[bank];
-           pend = set & ~s->swier[bank] & s->imr[bank] & ~s->pr[bank];
-           s->swier[bank] = set;
-           s->pr[bank] |= pend;
-           for (unsigned i = 0; i < irqs_per_bank[bank]; i++) {
-               if (pend & (1 << i)) { // or extract32()
-                   qemu_irq_pulse(s->irq[i]);
-               }
-           }
-           return;
-
-> +    }
-> +    case EXTI_PR1: {
-> +        const uint32_t cleared1 = s->pr[0] & value & ~DIRECT_LINE_MASK1;
-> +        /* This bit is cleared by writing a 1 to it */
-> +        s->pr[0] &= ~cleared1;
-> +        /* Software triggered interrupts are cleared as well */
-> +        s->swier[0] &= ~cleared1;
-> +        return;
-
-Ditto.
-
-> +    }
-> +    case EXTI_IMR2:
-> +        s->imr[1] = value & ~RESERVED_BITS_MASK2;
-> +        return;
-> +    case EXTI_EMR2:
-> +        s->emr[1] = value & ~RESERVED_BITS_MASK2;
-> +        return;
-> +    case EXTI_RTSR2:
-> +        s->rtsr[1] = value & ACTIVABLE_MASK2;
-> +        return;
-> +    case EXTI_FTSR2:
-> +        s->ftsr[1] = value & ACTIVABLE_MASK2;
-> +        return;
-> +    case EXTI_SWIER2: {
-> +        const uint32_t set2 = value & ACTIVABLE_MASK2;
-> +        const uint32_t pend2 = set2 & ~s->swier[1] & s->imr[1] & ~s->pr[1];
-> +        s->swier[1] = set2;
-> +        s->pr[1] |= pend2;
-> +        for (int i = 0; i < 8; i++) {
-> +            if (pend2 & (1 << i)) {
-> +                qemu_irq_pulse(s->irq[32 + i]);
-> +            }
-> +        }
-> +        return;
-> +    }
-> +    case EXTI_PR2: {
-> +        const uint32_t cleared = s->pr[1] & value & ACTIVABLE_MASK2;
-> +        /* This bit is cleared by writing a 1 to it */
-> +        s->pr[1] &= ~cleared;
-> +        /* Software triggered interrupts are cleared as well */
-> +        s->swier[1] &= ~cleared;
-> +        return;
-> +    }
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "STM32L4X5_exti_write: Bad offset 0x%x\n", (int)addr);
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps stm32l4x5_exti_ops = {
-> +    .read = stm32l4x5_exti_read,
-> +    .write = stm32l4x5_exti_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .impl.min_access_size = 4,
-> +    .impl.max_access_size = 4,
-> +    .impl.unaligned = false,
-> +    .valid.min_access_size = 4,
-> +    .valid.max_access_size = 4,
-> +    .valid.unaligned = false,
-> +};
-
-Code totally untested =)
-
-Regards,
-
-Phil.
+[1215/1649] Compiling C object libcommon.fa.p/hw_net_npcm_gmac.c.o
+../../hw/net/npcm_gmac.c:26:10: fatal error: 'linux/if_ether.h' file not 
+found
+#include "linux/if_ether.h"
+          ^~~~~~~~~~~~~~~~~~
+1 error generated.
+FAILED: libcommon.fa.p/hw_net_npcm_gmac.c.o

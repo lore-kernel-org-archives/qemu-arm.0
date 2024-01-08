@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp6804ejs;
-        Mon, 8 Jan 2024 12:58:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGwBRphV7hESrw7DBiKroe4X0m0hvH7bMORIIH7V1KusVn/0W9fUCEKG1ZeQ8yzWfS6VdbW
-X-Received: by 2002:ae9:f10d:0:b0:783:221c:5431 with SMTP id k13-20020ae9f10d000000b00783221c5431mr537108qkg.14.1704747492466;
-        Mon, 08 Jan 2024 12:58:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747492; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4047ejs;
+        Mon, 8 Jan 2024 12:50:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHPSvlmBv/9HIlfFPQVZv7tk2HivhriKJh8NAyLhLXKHxqaqyHvEl+WR9rvnIDmCBPiK8Qm
+X-Received: by 2002:a05:620a:46ab:b0:783:230e:90c3 with SMTP id bq43-20020a05620a46ab00b00783230e90c3mr2576536qkb.93.1704747047152;
+        Mon, 08 Jan 2024 12:50:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747047; cv=none;
         d=google.com; s=arc-20160816;
-        b=NO0eW7+8RU1euHpJ4spLWVWQFIJwS2kjGqQW7eed8X/dFTAgGBF0oWHWYXzz9wrsfM
-         aT2ZabdT+VxkOiFFCpOIEQitv3YRpoSUrkDBXvdFaW6l01rdlvlC+K3FhmAqhF8FH45g
-         RetwgOe+t8AwRYaFzrpn8tqOyl0yV4IWFL8z21squpHw8D9iIDlEdB1uBjtKpglvvJ4b
-         oe8gfgHBUVhaskX2XUyZh2qT/50aeawkQb+RHJ+Ah+OHEg3EOlaM/LODHfOuU0poTV5x
-         49f4mtastmEH1W+QzGJgEevZnJChrOgTuM/Jp0VQaNZ78IKzrv7DM1dc59NZGi08lw4/
-         NONQ==
+        b=i8oJAyOLNqVXuo8pxLrJa3TnTRqySjW5WQvHI5kxLpSgDYYa5jhdU4OrySJ0itmxE4
+         q0kelvzCwRBwxI0O8xLPqI0Kdy7YJCNRXZmoYKHARAv7QcH1ZTccgF2OmU26WPlm5b29
+         hc3U+aXPSAuAoPUpjwpaiocya6KTGs1LKrbWmYn0RshHBes5zvrryoh2T1hHTnMFTKBJ
+         ttIinnu9QbaxllWjAYsWKbuj6Ywxtv0IaPP6MLdLV8lpWk7+y1xOkMtFd1DD1KkPwGla
+         zQO3FVroHoEQFVmFPzDoKD5DiILYxiTqfEfVOJiC9ZNvBGzGeIVbtThuIirVjgQzsQjP
+         5PFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=eaAFW36JmxXWmDyL503PHxB2uidAX+ONS5eunDGunx4=;
+        bh=7Y/fpZLGSTfVybtSU43YJBQfzBq7lyV4x3tmIJkV8Ts=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=dPSxOCERMV1Ohxc+Z6ncS40WUqpKzd8pABm4JClc3JLmZZPlohK7k6L4LnxnNi2fx+
-         J4u/d7PdTQIFuDuswmGAVbJ3dITXT2OCBQPuDgcJghCB7VSzylM92HqW6Iro0Xs2nPV9
-         47FNnFVBXOwU3CqKFsbdoyqfh0bd3402M3Pyivb82RX0xSdvbkH6qYV+h4oNfLqnQPim
-         lW6sAcyuVKJzggFEwRvyIosLplp9wPEtPgULgN2qcVxBzIXLUQf4ZHFVAaNU2inOelBJ
-         pXBmKw8ytvREQtovRQ5xQLn/QwzYL/p1VmISHkEZ+XFg8kVDOuu9Bw3rEkuOW8xaVGq/
-         wW2w==
+        b=C/ChX2QIeUpVWDLkpOQJDVIhb/PuedXm39s9g34lmnBqZMcRdjdbVXd7L1R3P0M5BB
+         YZAYtsvrcUwULeq8vk8yVldBuZ2nIyu7b77uEFFEcnODIiqaaBDOu1Itcl+0Sake3AfA
+         3H4APHaC7uKhnRwHcQir1VHWKiuG+//cwGCdXGz7I7R9yo5J5hdpqMpzCxTx3oytQlT+
+         7EBKWjV0GoXTJUZwLFoGBz9Du7X85PKBXi0ugMAhDUzL4OlTKe9caMCKkK1wKgrC1J8D
+         2tMwyeW/Z5WSkhO2OquP9ozhIZjwL8J0265D1GXiinyuhlHwi0ykhLYLkyrQGYlsq247
+         LxMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=bXRZhmKq;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=e82c7+8C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id vq14-20020a05620a558e00b007830acd06eesi504616qkn.574.2024.01.08.12.58.12
+        by mx.google.com with ESMTPS id az10-20020a05620a170a00b007832473b8c1si556406qkb.284.2024.01.08.12.50.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 12:58:12 -0800 (PST)
+        Mon, 08 Jan 2024 12:50:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=bXRZhmKq;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=e82c7+8C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rMwbJ-0008FZ-Ge; Mon, 08 Jan 2024 15:52:01 -0500
+	id 1rMwZj-0003s3-9x; Mon, 08 Jan 2024 15:50:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwa9-0004ae-Ob; Mon, 08 Jan 2024 15:50:49 -0500
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rMwZU-0003lK-BK; Mon, 08 Jan 2024 15:50:08 -0500
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwa4-00010A-4O; Mon, 08 Jan 2024 15:50:49 -0500
+ <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rMwZB-0000uz-28; Mon, 08 Jan 2024 15:50:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=eaAFW36JmxXWmDyL503PHxB2uidAX+ONS5eunDGunx4=; b=bXRZhmKqy0KMbxNQ2VqUTO4fz9
- scNM0xmLPjyWIYQ3Gl4ffbtEMSnh6B40MB53OrOF44rVR5KTqrbsIdpUv+PTciMO1S+sa9ElOmQI2
- byu39cOOJs179txlBRh6J9Y4NL61hEy96HNxOFAKccIkhndFEN3ADJ+wkJjhDk7k3VuuX1BXTYWZP
- Eip9ztAl8vl0duIqFNc1DBpbrw5MIp2r4Q/+9IEVC6J/ueW2VxOSOgs7sthH/5TNq6Z9QxjTn/shJ
- 2UdqNMrSnCO8dkrClsFTOfSf2OeTekne0NFfasFqnq3fBvh/52IPDe/dYHEqTx0MfR+ctal3Hq3rv
- GugV2WmQ==;
+ bh=7Y/fpZLGSTfVybtSU43YJBQfzBq7lyV4x3tmIJkV8Ts=; b=e82c7+8C6M2+PbpguJIN0m5bUN
+ TRxTNVMVnkmomcru6vqqeFzQr+jet08uHbZBojwEdctvCMdjKhIagERczo1Tq6AaijgzCFCPpvWvl
+ Z4YVc4fCtbQnj1CuCCwGZeW6LtZCMc49LzcbdI3UGVBFh/JFxKfxBIyzg/67/bv4M0QXpHhk8SBQa
+ 19EHdUHFu5fXojvCMw+X6O05LgK8eo7bWVSm3/6fqjYfkuJNUz+lWR7jQrnZmTmPLzfGr4ebO4kj7
+ 4a9lu7XLoJh+XSrmdPDYjmVUQ7e3xnHx1sqL3wrwMBWrg2PoGk6ufFz96Zcya45KEZkPEr9pRoPSv
+ cLpEBghg==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1rMwYn-007wY5-1J; Mon, 08 Jan 2024 20:49:27 +0000
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1rMwYj-008RPf-3s; Mon, 08 Jan 2024 20:49:22 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYm-002NHR-08; Mon, 08 Jan 2024 20:49:24 +0000
+ Hat Linux)) id 1rMwYj-002NF3-2R; Mon, 08 Jan 2024 20:49:21 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,19 +115,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 46/46] net: make nb_nics and nd_table[] static in net/net.c
-Date: Mon,  8 Jan 2024 20:27:15 +0000
-Message-ID: <20240108204909.564514-47-dwmw2@infradead.org>
+Subject: [PATCH v3 16/46] hw/ppc/spapr: use qemu_get_nic_info() and
+ pci_init_nic_devices()
+Date: Mon,  8 Jan 2024 20:26:45 +0000
+Message-ID: <20240108204909.564514-17-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- desiato.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
- envelope-from=BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org;
- helo=desiato.infradead.org
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -149,59 +150,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4JPT7yKLMbP5
+X-TUID: RqV3QfYlv88L
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
+Avoid directly referencing nd_table[] by first instantiating any
+spapr-vlan devices using a qemu_get_nic_info() loop, then calling
+pci_init_nic_devices() to do the rest.
+
+No functional change intended.
+
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- include/net/net.h | 4 ----
- net/net.c         | 3 +++
- system/globals.c  | 2 --
- 3 files changed, 3 insertions(+), 6 deletions(-)
+ hw/ppc/spapr.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index 19fb82833c..766201c62c 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -247,10 +247,6 @@ struct NICInfo {
-     int nvectors;
- };
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 4997aa4f1d..37604e7caf 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -2796,6 +2796,7 @@ static void spapr_machine_init(MachineState *machine)
+     MemoryRegion *sysmem = get_system_memory();
+     long load_limit, fw_size;
+     Error *resize_hpt_err = NULL;
++    NICInfo *nd;
  
--extern int nb_nics;
--extern NICInfo nd_table[MAX_NICS];
--extern const char *host_net_devices[];
+     if (!filename) {
+         error_report("Could not find LPAR firmware '%s'", bios_name);
+@@ -2996,21 +2997,12 @@ static void spapr_machine_init(MachineState *machine)
+ 
+     phb = spapr_create_default_phb();
+ 
+-    for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
 -
- /* from net.c */
- extern NetClientStateList net_clients;
- bool netdev_is_modern(const char *optstr);
-diff --git a/net/net.c b/net/net.c
-index 09ab0889f5..71cccb19da 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -77,6 +77,9 @@ static NetdevQueue nd_queue = QSIMPLEQ_HEAD_INITIALIZER(nd_queue);
+-        if (!nd->model) {
+-            nd->model = g_strdup("spapr-vlan");
+-        }
+-
+-        if (g_str_equal(nd->model, "spapr-vlan") ||
+-            g_str_equal(nd->model, "ibmveth")) {
+-            spapr_vlan_create(spapr->vio_bus, nd);
+-        } else {
+-            pci_nic_init_nofail(&nd_table[i], phb->bus, nd->model, NULL);
+-        }
++    while ((nd = qemu_find_nic_info("spapr-vlan", true, "ibmveth"))) {
++        spapr_vlan_create(spapr->vio_bus, nd);
+     }
  
- static GHashTable *nic_model_help;
- 
-+static int nb_nics;
-+static NICInfo nd_table[MAX_NICS];
++    pci_init_nic_devices(phb->bus, NULL);
 +
- /***********************************************************/
- /* network device redirectors */
- 
-diff --git a/system/globals.c b/system/globals.c
-index e83b5428d1..b6d4e72530 100644
---- a/system/globals.c
-+++ b/system/globals.c
-@@ -36,8 +36,6 @@ int display_opengl;
- const char* keyboard_layout;
- bool enable_mlock;
- bool enable_cpu_pm;
--int nb_nics;
--NICInfo nd_table[MAX_NICS];
- int autostart = 1;
- int vga_interface_type = VGA_NONE;
- bool vga_interface_created;
+     for (i = 0; i <= drive_get_max_bus(IF_SCSI); i++) {
+         spapr_vscsi_create(spapr->vio_bus);
+     }
 -- 
 2.41.0
 

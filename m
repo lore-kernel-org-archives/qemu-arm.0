@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp9109ejs;
-        Mon, 8 Jan 2024 13:02:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH72EDKHKAFz+1U3ekPIQWQZWe1RPsHuqmfmuc+k8oyNlCBUFFO8RiQl4FhkAo0AC1HHezA
-X-Received: by 2002:a05:6808:301f:b0:3bc:3796:c505 with SMTP id ay31-20020a056808301f00b003bc3796c505mr5333842oib.12.1704747742328;
-        Mon, 08 Jan 2024 13:02:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747742; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp9438ejs;
+        Mon, 8 Jan 2024 13:02:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFOtB+AVeI8V7fVMKT0EWiAP3kt1AtS5IJKhOwaiNKUrVepr3M8QT6y8W5Pok6m5PdWbK16
+X-Received: by 2002:a05:622a:1041:b0:429:9eb9:d731 with SMTP id f1-20020a05622a104100b004299eb9d731mr907821qte.113.1704747771835;
+        Mon, 08 Jan 2024 13:02:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747771; cv=none;
         d=google.com; s=arc-20160816;
-        b=w1E9Rc9buiPXBVl4Py8KWGfNZBHIvHyrgGzzuUrIOZJBTQPPOfzef6aDeDMWdzRjDm
-         SbHGhrDJbv4ABJds302rdpTfCA25qcuvsWT3Oyy/jwkoeYyBH7aGKlBK4CJ446gRpBZP
-         ia6psxH1M4xF3y7MqjUVMBn0U6I2V3mM4UgrEGLIgPjbrnm5hZFHUCoXXwTKq3aogvor
-         +0wzWok93RpjxhRqglmVVPA0pnZWtavrm37zesroKNysFqJMmJh+Oltkl7kjjlTobZor
-         gmEFeV4fd17kHic9cC6eez5H+5n73TE8JprN+pV832aJT4bcQ/bVA++zd9AjHovAkwFX
-         ygFg==
+        b=JFyN4tXiaGjQVhxQsE5RLffpb1EGwdBwRoBEKw5dx3020eF8dQL1zXgPCSekHCyIFM
+         MezBg3pjNhQS1U5Iq8iNbirmGy/a+CTefbhWRUWrKsqOtdP3mGFHD+fZhLe4pA0RUur+
+         uT4OtMRIDGgsYyZ2lICO69+Nbw+rEjzNCDfLBUufuJVZyBZ6m8x6wfPDh2sVYWHKRSj6
+         j64/oggcPNnQNkzEiM/kgDhTiEEoj+wGSXvriAxgkfQ4srdfZuEalf+S6MnTS55wr9Rc
+         yGNhvY5gAWKHPHDGrwrxhrP9mDNmQu2R5uBoCsBDDa6pltjyUAgphj6qiwopiz52iayS
+         r3ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=apktM3rQhqJT/gPdzzrEkhVTg4OW0ilv1ws3zHsGmXQ=;
+        bh=oLriCfKbYL3o15M6kYDB7N5HJ+JVsRg5ZZIf/+DvLkY=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=Xj+qEkS6zfG19e1X5RDhvF03uwYtZT+7q3pIO/oYvMl8fMJwCP4bu6xB+FcaJpSs/r
-         DkA7n5AphGcLxEP+CO3cxo0p4TmaFip6N5+2+g4oGKYpErAUjM88H8bWom7uvvf8ao28
-         1GPDyyyWBwVKqVC0vhNXheWfK8PbMCMG77tU1B1jdtP4zjaV9EMEhM16GkwKr9/6yKOQ
-         r0tcK3i9MX8C1wGaCzubudC7zKbXmz2hvjCbwEIgR+UwUlDh0bi+/6mIJuag0sDy2fDR
-         oCTS3GmL5pFvxPIuo/I48/A4bqwbTDOasW+q9J29LPReMUiL2A9RuWUuPCA98B3yBLlc
-         o0eg==
+        b=EiIA40C2tLpDyAYGE8sliC+hLS4Up6+UDOc4looMbXfzhoolBMRp+LfzqP1i4MLHFK
+         KTJhtQ9E9T6leshy0npNUD8/rVAl7yXpnv+MZGWZJdBVBAFBAXJOYUm1yeT6RQ0ZNaPp
+         oBbwzvgHs4UetllGz4kE3HrPZTeapGUthpMIYBPaSLirjl7yxErfZdl8toIaqsvI8Wkl
+         ngJCkXB2pKFQ9YVvwPhy/WEw+E0LaAAAKdTjTGp/udeqq5Xdp8W3EVCO9QQhpkJzDJbJ
+         i8ViFZvWlW+TUswvZS8NafzNRG6c/ePadiR/UId40DArqi7x644Xwoo36v7G4gDiWKDp
+         2LjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=f5E8BtrW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=E9vGlnFd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10-20020a0cac0a000000b0067f969c9f65si825626qvb.33.2024.01.08.13.02.22
+        by mx.google.com with ESMTPS id t6-20020a05622a01c600b0042999b9ea6fsi599171qtw.429.2024.01.08.13.02.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 13:02:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jan 2024 13:02:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=f5E8BtrW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=E9vGlnFd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rMwbO-0008LI-39; Mon, 08 Jan 2024 15:52:06 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rMwbX-00005z-0X; Mon, 08 Jan 2024 15:52:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwaB-0004fD-HO; Mon, 08 Jan 2024 15:50:51 -0500
+ id 1rMwaD-0004l3-3D; Mon, 08 Jan 2024 15:50:53 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwa3-00010G-M5; Mon, 08 Jan 2024 15:50:51 -0500
+ id 1rMwa9-00017T-41; Mon, 08 Jan 2024 15:50:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=apktM3rQhqJT/gPdzzrEkhVTg4OW0ilv1ws3zHsGmXQ=; b=f5E8BtrWl0Oi9+DI39I39oIRpP
- rRDUHBUwPpvktpzzw9rTpGQNHL9MgQykQr5OwSCDg+RnjTMxky3qb/VBl2Few1nWUrwYqpreNWf8h
- BUPA/iYnHBul1TWdzNxl00o3hkG7FewYMX4O4NOJJVb0cECNwBfnrtZMr0SUBQNzQLg6jDhhcCKJ+
- UzMGARSFcO311sRBWcSYexrdPs6sr1ek4+TRJr5MYHmyGh6axYw++gap3DTQkmud5eVMqRaA9Jo/3
- AJOsNX0pT3DXRw1t3TIHE5QR+MCf20OVWT/3euGBbUPwEqChZ6IYdT+4EhO4QJqK9NYMWkMbozWCb
- usoYhQ1A==;
+ bh=oLriCfKbYL3o15M6kYDB7N5HJ+JVsRg5ZZIf/+DvLkY=; b=E9vGlnFdFf3HV6UJCMFj6OIPyv
+ rvc5QUWb96PKjF6mE2I11Rl8ZWztiHGTr4ZIo7q12V0DCVEmsB60Ufi/rY1P+ELqqdgw3ToQmvV0X
+ cYttlyf1jmO2+WsWSZdZ7OMTG4bD+BSU8Qf4eQRS4DJo5cC40Xy8tqBwTCmaDN4xvZFyFKaHyyj8/
+ pqA/OmtEMtGz+uKiP4c8FlJKQlj8Ecj+bxfaDB9iLh1I5ekySmusMa5lce2qxre3ohO4Dcezwy1Jb
+ vMi8U49juUa0PUhxK/s7aT/B+0nveV59uDjFWnSair7sFYf0YKlXdlkmfvfK5/M0k14WMZ/VUlvYI
+ cFAbgGaQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1rMwYm-007wY2-0K; Mon, 08 Jan 2024 20:49:24 +0000
+ id 1rMwYm-007wXk-0J; Mon, 08 Jan 2024 20:49:53 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYl-002NH0-23; Mon, 08 Jan 2024 20:49:23 +0000
+ Hat Linux)) id 1rMwYk-002NGB-36; Mon, 08 Jan 2024 20:49:22 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,9 +115,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 41/46] hw/sparc/sun4m: use qemu_find_nic_info()
-Date: Mon,  8 Jan 2024 20:27:10 +0000
-Message-ID: <20240108204909.564514-42-dwmw2@infradead.org>
+Subject: [PATCH v3 31/46] hw/net/etraxfs-eth: use qemu_configure_nic_device()
+Date: Mon,  8 Jan 2024 20:27:00 +0000
+Message-ID: <20240108204909.564514-32-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
@@ -136,98 +136,89 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QHuvNUfiP7Jt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tduDteROrzQf
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Obtain the MAC address from the NIC configuration if there is one, or
-generate one explicitly so that it can be placed in the PROM.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/sparc/sun4m.c | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
+ hw/cris/axis_dev88.c      | 9 ++++-----
+ hw/net/etraxfs_eth.c      | 5 ++---
+ include/hw/cris/etraxfs.h | 2 +-
+ 3 files changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 550af01690..e782c8ec7a 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -299,13 +299,15 @@ static void *iommu_init(hwaddr addr, uint32_t version, qemu_irq irq)
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index d82050d927..5556634921 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -308,15 +308,14 @@ void axisdev88_init(MachineState *machine)
  
- static void *sparc32_dma_init(hwaddr dma_base,
-                               hwaddr esp_base, qemu_irq espdma_irq,
--                              hwaddr le_base, qemu_irq ledma_irq, NICInfo *nd)
-+                              hwaddr le_base, qemu_irq ledma_irq,
-+                              MACAddr *mac)
- {
-     DeviceState *dma;
-     ESPDMADeviceState *espdma;
-     LEDMADeviceState *ledma;
-     SysBusESPState *esp;
-     SysBusPCNetState *lance;
-+    NICInfo *nd = qemu_find_nic_info("lance", true, NULL);
+     /* Add the two ethernet blocks.  */
+     dma_eth = g_malloc0(sizeof dma_eth[0] * 4); /* Allocate 4 channels.  */
+-    etraxfs_eth_init(&nd_table[0], 0x30034000, 1, &dma_eth[0], &dma_eth[1]);
+-    if (nb_nics > 1) {
+-        etraxfs_eth_init(&nd_table[1], 0x30036000, 2, &dma_eth[2], &dma_eth[3]);
+-    }
  
-     dma = qdev_new(TYPE_SPARC32_DMA);
-     espdma = SPARC32_ESPDMA_DEVICE(object_resolve_path_component(
-@@ -320,7 +322,14 @@ static void *sparc32_dma_init(hwaddr dma_base,
- 
-     lance = SYSBUS_PCNET(object_resolve_path_component(
-                          OBJECT(ledma), "lance"));
--    qdev_set_nic_properties(DEVICE(lance), nd);
++    etraxfs_eth_init(0x30034000, 1, &dma_eth[0], &dma_eth[1]);
+     /* The DMA Connector block is missing, hardwire things for now.  */
+     etraxfs_dmac_connect_client(etraxfs_dmac, 0, &dma_eth[0]);
+     etraxfs_dmac_connect_client(etraxfs_dmac, 1, &dma_eth[1]);
+-    if (nb_nics > 1) {
 +
-+    if (nd) {
-+        qdev_set_nic_properties(DEVICE(lance), nd);
-+        memcpy(mac->a, nd->macaddr.a, sizeof(mac->a));
-+    } else {
-+        qemu_macaddr_default_if_unset(mac);
-+        qdev_prop_set_macaddr(DEVICE(lance), "mac", mac->a);
-+    }
- 
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dma), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dma), 0, dma_base);
-@@ -823,7 +832,7 @@ static void sun4m_hw_init(MachineState *machine)
-     unsigned int smp_cpus = machine->smp.cpus;
-     unsigned int max_cpus = machine->smp.max_cpus;
-     HostMemoryBackend *ram_memdev = machine->memdev;
--    NICInfo *nd = &nd_table[0];
-+    MACAddr hostid;
- 
-     if (machine->ram_size > hwdef->max_mem) {
-         error_report("Too much memory for this machine: %" PRId64 ","
-@@ -884,10 +893,9 @@ static void sun4m_hw_init(MachineState *machine)
-                         hwdef->iommu_pad_base, hwdef->iommu_pad_len);
++    if (qemu_find_nic_info("etraxfs-eth", true, "fseth")) {
++        etraxfs_eth_init(0x30036000, 2, &dma_eth[2], &dma_eth[3]);
+         etraxfs_dmac_connect_client(etraxfs_dmac, 6, &dma_eth[2]);
+         etraxfs_dmac_connect_client(etraxfs_dmac, 7, &dma_eth[3]);
      }
+diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
+index ba57a978d1..5faf20c782 100644
+--- a/hw/net/etraxfs_eth.c
++++ b/hw/net/etraxfs_eth.c
+@@ -647,15 +647,14 @@ static void etraxfs_eth_class_init(ObjectClass *klass, void *data)
  
--    qemu_check_nic_model(nd, TYPE_LANCE);
-     sparc32_dma_init(hwdef->dma_base,
-                      hwdef->esp_base, slavio_irq[18],
--                     hwdef->le_base, slavio_irq[16], nd);
-+                     hwdef->le_base, slavio_irq[16], &hostid);
+ /* Instantiate an ETRAXFS Ethernet MAC.  */
+ DeviceState *
+-etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++etraxfs_eth_init(hwaddr base, int phyaddr,
+                  struct etraxfs_dma_client *dma_out,
+                  struct etraxfs_dma_client *dma_in)
+ {
+     DeviceState *dev;
+-    qemu_check_nic_model(nd, "fseth");
  
-     if (graphic_depth != 8 && graphic_depth != 24) {
-         error_report("Unsupported depth: %d", graphic_depth);
-@@ -1039,7 +1047,7 @@ static void sun4m_hw_init(MachineState *machine)
-                                     machine->initrd_filename,
-                                     machine->ram_size, &initrd_size);
+     dev = qdev_new("etraxfs-eth");
+-    qdev_set_nic_properties(dev, nd);
++    qemu_configure_nic_device(dev, true, "fseth");
+     qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
  
--    nvram_init(nvram, (uint8_t *)&nd->macaddr, machine->kernel_cmdline,
-+    nvram_init(nvram, hostid.a, machine->kernel_cmdline,
-                machine->boot_config.order, machine->ram_size, kernel_size,
-                graphic_width, graphic_height, graphic_depth,
-                hwdef->nvram_machine_id, "Sun4m");
+     /*
+diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
+index 467b529dc0..012c4e9974 100644
+--- a/include/hw/cris/etraxfs.h
++++ b/include/hw/cris/etraxfs.h
+@@ -31,7 +31,7 @@
+ #include "hw/sysbus.h"
+ #include "qapi/error.h"
+ 
+-DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++DeviceState *etraxfs_eth_init(hwaddr base, int phyaddr,
+                               struct etraxfs_dma_client *dma_out,
+                               struct etraxfs_dma_client *dma_in);
+ 
 -- 
 2.41.0
 

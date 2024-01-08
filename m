@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4622ejs;
-        Mon, 8 Jan 2024 12:52:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFY9yAJSGU9cVp/WTSAE48hizZRkmt13N0lHHNjaU8W4kIPSSvsBE1hEQuJ3ShRqrqgivP7
-X-Received: by 2002:a05:6102:2c19:b0:466:fcdb:570c with SMTP id ie25-20020a0561022c1900b00466fcdb570cmr3529919vsb.3.1704747139845;
-        Mon, 08 Jan 2024 12:52:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747139; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4653ejs;
+        Mon, 8 Jan 2024 12:52:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGnNx2Ah/Ox71vy10Wp/jsza0EwWK7Sj60JX32Z+em7aheZM8sUCf0M8nrjAYZBu/JNXxn/
+X-Received: by 2002:a05:6102:3955:b0:467:c74f:efe5 with SMTP id f21-20020a056102395500b00467c74fefe5mr2869543vsu.2.1704747143771;
+        Mon, 08 Jan 2024 12:52:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747143; cv=none;
         d=google.com; s=arc-20160816;
-        b=OcNs9XOzVRiyduURepPTvut4LWpiSkYojHiX29U2ckkNaCQxPvESR3Jv3DKAGd+Gv7
-         w4nxwmfR//nNmUFwLfnOBwA8sRUlZvX+QjNWYrNdxHMtax33B1PtcSQJIId4qx6Vr6Qc
-         1wgLo3GUJvdti1oQb5hWh6mz0GSCO3pnhNiL5Pk0+wG7xZZuOJXtEyh+1en6+1OrsxBd
-         1580jFuhm6T+1ohJil8G4MvCb2I/NOPvI17jFVJ7vJL5h1sN+fl0t3ysnayhaLTatRE1
-         7+IQ4lZ50odtqNIfZQiFNWCzcKqgHcVRo3V9VTIJN+hdN1i1jbBPaVcOEzTwT9Q7xlsH
-         e4hw==
+        b=s/fUQx8WoOFgI+ZTSYb1N7iampLGUFthFVw55YSSNT07kQkjKoSkscrDFyXCGfohOa
+         93rrwqlPMRqCTUmHw7U6t5bGYJiZwCZI6+xBIiAR13uU6biWVdYz/hgZ+XDKKld0e0PR
+         n1XHyirpC1pLegU3P03R0Li4jIAifkDyp9Oln88MKVa+4cg2+rNBzbGbiMlm8v0zFC2m
+         9HzJeCytZpW3PHzraZspPQ9TicaViYWoAfVxmqTpvpcPPGxLFJ0ukB8VT3xSzI7GLOrJ
+         d21Z/P/r4tHGCyLf1r/WYbnPji6X7W+nRu2lnNCQ16CI4W0rNruJkAx4HOCfLZqqafDs
+         CflA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=nQ3rktK8dEdIEwAMeeCC6bqdVVt9BSYkg4MRVTEfqOM=;
+        bh=mKejtkSe+nFfQ0aoeWucod44zhEmF2o9bYQegdFzkdU=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=snjK2C0tFIwJJ8mA/mb5LZW2amhDZTtr2q9tUcfmn1wb3WDi8r8ZoXv599UG5wBuyU
-         CHvPFRgymMVyE0O6z6JN2zsDQx/eVTWXUEdOTq4IiMFZUuFHb8zc2tC5zFk3ojJQtFPO
-         o/Y9wNmHGQPCEkho1CpMRhGZ3Q9XopV65NrfohB2o0QGpmqZZzwPdWO1CmURZn2aJpSU
-         oMB0hzjH4JtkvubLNL8KoCwzuQOChBhz0IExNb/s2T6D+VwiI2YN9epa88vSYG6hWSw6
-         F6Un+DLMfxZUr+nx9ScQ8Sl9Zsq/ldVvID4pDP24WqRPBrnfm+VawkiWx1ipYzpQOg44
-         jhNQ==
+        b=uOB8wFD0EDVE5cKEU1An2MHCBoesP2zetmPLfivNs5+ZzU9CBpGODbwis0R6QbJwo2
+         17lJxp5U82MDV9atGtMN4MWfCmf0ycujrg/M1tn0IIkiIK09vuaO5+StNFcfu0Jlm9Nb
+         /nEIZnR1UJvG5Dr19AFoRH+x7OPkyKWYehKNDOz3JwVqpDwihHQZONDPBOMQDAy24H37
+         jmSxP0i/t2/1ZDjBIJIzvjHeTNaCtns4FKuZ9VddwyAkoXoRC40dzgBiabPH8XesMFfR
+         sHs868mqN6wW8Iv6R6NlOLp9Lmr0sQoT3m66tKlsZxQ/KBSlXXJjgrIYyFlOW76HRdVx
+         9QEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=bGBRXYSb;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZhUUZhVn;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id cd8-20020a05622a418800b00428327cf9basi570774qtb.758.2024.01.08.12.52.19
+        by mx.google.com with ESMTPS id s11-20020a05622a1a8b00b00429a368b18dsi209585qtc.476.2024.01.08.12.52.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 12:52:19 -0800 (PST)
+        Mon, 08 Jan 2024 12:52:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=bGBRXYSb;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZhUUZhVn;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.663897.1033821 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.663899.1033836 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rMwaM-0000r4-PV; Mon, 08 Jan 2024 20:51:02 +0000
+	id 1rMwaN-00012h-FW; Mon, 08 Jan 2024 20:51:03 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 663897.1033821; Mon, 08 Jan 2024 20:51:02 +0000
+Received: by outflank-mailman (output) from mailman id 663899.1033836; Mon, 08 Jan 2024 20:51:03 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rMwaM-0000pz-Lf; Mon, 08 Jan 2024 20:51:02 +0000
-Received: by outflank-mailman (input) for mailman id 663897;
+	id 1rMwaN-00011p-6y; Mon, 08 Jan 2024 20:51:03 +0000
+Received: by outflank-mailman (input) for mailman id 663899;
  Mon, 08 Jan 2024 20:51:01 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
+Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
+ helo=se1-gles-sth1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=CNLN=IS=desiato.srs.infradead.org=BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1rMwaK-0000R6-TR
+ <SRS0=NrlO=IS=casper.srs.infradead.org=BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
+ id 1rMwaL-0000R5-Qx
  for xen-devel@lists.xenproject.org; Mon, 08 Jan 2024 20:51:01 +0000
-Received: from desiato.infradead.org (desiato.infradead.org
- [2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 9e96adb0-ae67-11ee-9b0f-b553b5be7939;
- Mon, 08 Jan 2024 21:50:58 +0100 (CET)
+Received: from casper.infradead.org (casper.infradead.org
+ [2001:8b0:10b:1236::1])
+ by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
+ id 9cb0f570-ae67-11ee-98ef-6d05b1d4d9a1;
+ Mon, 08 Jan 2024 21:50:55 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1rMwYj-007wXP-2m; Mon, 08 Jan 2024 20:49:22 +0000
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1rMwYj-008RPh-C4; Mon, 08 Jan 2024 20:49:22 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYj-002NEe-1A; Mon, 08 Jan 2024 20:49:21 +0000
+ Hat Linux)) id 1rMwYj-002NFB-2x; Mon, 08 Jan 2024 20:49:21 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 9e96adb0-ae67-11ee-9b0f-b553b5be7939
+X-Inumbo-ID: 9cb0f570-ae67-11ee-98ef-6d05b1d4d9a1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=nQ3rktK8dEdIEwAMeeCC6bqdVVt9BSYkg4MRVTEfqOM=; b=bGBRXYSbyRkskdXWh6m971dJdP
-	5XIzUANuHbkSZaFKWvwYPX45SbDNG5Fp0a3TOesDsQ33yypvAO9Gi6u/0HEdR431TkjP7mk7K4Owp
-	/InUIPomiJAIvxOJdUaPkJ0/3jWUkebXuphh9ozi6hfKvahJI7sx0LZ0dBk9hueidmt0lg6F4KUDh
-	6oLeCH7TDfP4T2HQ1qvRFGGNuPScQKbTgqryBva7FULnF52zKDcH4zrQvWY8+k/ImNsKHXBzRpLx/
-	vxaDexMsh4s2s1HV0EAaK8/YK8elERa4drs1WpWoMFzMXeFozgiifA/NpPu3cBnTFcbfZultK2uoE
-	JvzSk6Dg==;
+	bh=mKejtkSe+nFfQ0aoeWucod44zhEmF2o9bYQegdFzkdU=; b=ZhUUZhVnEtNk66WpkrjhP43mCV
+	H3uiW5TCXECVTszSMNTlGImLRnCJ7mRVxLbSXF38/zp3zDh02oGGm5xm1I++bqiszLsiMgpKlsBbn
+	TJQE40SEXrpdX5zDOCgvIUvf9p8gxJfkb+6CquiaHmvhy7TAgDi56pnWpJpl40xFp1hW+Xx6NKe3k
+	vCmsdXhQ0Q6xN/66xcfxEuTCsskLeP5QiaL+89ed4mPu9Kg9GS2bh5ElDodmdAGOkP/R3hIqKRb+l
+	MgVuvJNBtE+tYSeTpi/2OPg3fM5ZN3Lu/S6/PYMJcGzRRk680SD/KQX/roookyqQ58M4LHbFjVmKM
+	Otesh1vA==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -151,40 +151,56 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org,
 	David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 11/46] hw/loongarch: use pci_init_nic_devices()
-Date: Mon,  8 Jan 2024 20:26:40 +0000
-Message-ID: <20240108204909.564514-12-dwmw2@infradead.org>
+Subject: [PATCH v3 18/46] hw/sh4/r2d: use pci_init_nic_devices()
+Date: Mon,  8 Jan 2024 20:26:47 +0000
+Message-ID: <20240108204909.564514-19-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by desiato.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: iLrfvgEnEUB1
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: 86JXUIt9HnHD
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
----
- hw/loongarch/virt.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Previously, the first PCI NIC would be assigned to slot 2 even if the
+user override the model and made it something other than an rtl8139
+which is the default. Everything else would be dynamically assigned.
 
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 4b7dc67a2d..c48804ac38 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -504,9 +504,7 @@ static void loongarch_devices_init(DeviceState *pch_pic, LoongArchMachineState *
-     fdt_add_uart_node(lams);
+Now, the first rtl8139 gets slot 2 and everything else is dynamic.
+
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+---
+ hw/sh4/r2d.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 4944994e9c..e9f316a6ce 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -240,7 +240,6 @@ static void r2d_init(MachineState *machine)
+     MemoryRegion *sdram = g_new(MemoryRegion, 1);
+     qemu_irq *irq;
+     DriveInfo *dinfo;
+-    int i;
+     DeviceState *dev;
+     SysBusDevice *busdev;
+     MemoryRegion *address_space_mem = get_system_memory();
+@@ -309,9 +308,8 @@ static void r2d_init(MachineState *machine)
+                           0x555, 0x2aa, 0);
  
-     /* Network init */
--    for (i = 0; i < nb_nics; i++) {
--        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
--    }
+     /* NIC: rtl8139 on-board, and 2 slots. */
+-    for (i = 0; i < nb_nics; i++)
+-        pci_nic_init_nofail(&nd_table[i], pci_bus,
+-                            mc->default_nic, i == 0 ? "2" : NULL);
++    pci_init_nic_in_slot(pci_bus, mc->default_nic, NULL, "2");
 +    pci_init_nic_devices(pci_bus, mc->default_nic);
  
-     /*
-      * There are some invalid guest memory access.
+     /* USB keyboard */
+     usb_create_simple(usb_bus_find(-1), "usb-kbd");
 -- 
 2.41.0
 

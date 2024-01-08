@@ -1,274 +1,166 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2299168ejo;
-        Mon, 8 Jan 2024 06:04:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH1lA3QBYmUqFN/BMDuv6OECiLBI5zbgB4wlM2Xd6mMlbtR18lk71ib/fOmQRoFhkCU7Zvc
-X-Received: by 2002:a05:6102:c51:b0:467:cd99:716c with SMTP id y17-20020a0561020c5100b00467cd99716cmr792734vss.45.1704722644152;
-        Mon, 08 Jan 2024 06:04:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704722644; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2325103ejo;
+        Mon, 8 Jan 2024 06:47:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG5Fpe+PKBCe/AQhhR51QB9PS7vvlbzAHxopH3Fqk6ncFP3F6FwveTG2eVQ6igykkpBHcej
+X-Received: by 2002:a05:6214:2b0f:b0:67a:bce4:e2e3 with SMTP id jx15-20020a0562142b0f00b0067abce4e2e3mr4644791qvb.5.1704725231828;
+        Mon, 08 Jan 2024 06:47:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704725231; cv=none;
         d=google.com; s=arc-20160816;
-        b=YGGfyXfJ7Rgd+IQCWp1jE8cFMxv2o7acMI4WHJNMyV3ePfDR49eCFm6rhvD4cFpyZd
-         xPs3UlgnEEjy18hOjf5m2Tzy2wu/VGCqzFAj7AhmoeXQACsdKnMBpIUVwsiUzy1T+Myz
-         vHtQGgT5hcEEnKA+4Q498Hym7DMzLEf1NgPnGPV1/a30mIf4+5PTnDE+axndrWwh8saS
-         MqGocYNt++482lUgLWutVMySiY2IkCl276OmyJGgQRb07riRA8g7GzyhSArFlG4mYVpH
-         neI1f9EUwT8NW2PgidupHlGUDk9RwJV2eIbQKjD5AeIwbt1Xr4uJfmQMCen10iMUeiI+
-         Gn3g==
+        b=bu9lg3TwA+mW1G+yuvA4OYOZ2TQgpu3antz6+L639ChiCAkvHrBYaW/Yvb3kaBUSGz
+         Wn3IJICrcsvhJ1l+Paz+Q+ITxMHL1moXZNiWdhvIh8c7/r4HJdUjPnk4kw9tsYorUIzQ
+         0BZJtKdYw7WOKLV/l/lnu47e6b/s6aiBdXcccy//d+d1wrf0XkxCCvF/blf/rSD//KvB
+         5yyeZ5doj9Le3FFOGThnpC9aA5XdU01vwDgwYhqkLjiFhqbgNAqTRa3iHj1yARYBMobx
+         qf2q9gizs8Mi4pekCKFxEOycBtLUE0Ex5FBFQFnBo6z9K51M9xwEeZxYf4y62VqfXKji
+         ftuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tn9CedzcoYGfrgw8qUPmHYgPUJ1WmgHTMwvo6Lc8xOk=;
-        fh=Ehp5e14YNTWl8xh3Al+zCKjhDcxI+JHVnQ/TJNceZ/M=;
-        b=C/VP6EbODFU5Au69kM4dzskOZGbb3GkHKRhwLHB2S50ZOMiRfurpkzKNoc5UQ2ushZ
-         U8FXeYhAgQNpPdylITd5CyCT6qKhFdbFR0cZjGMLP0P9XxLpjg8B4k5FhsZ1BRmbRFia
-         xxvZ2uaCBVPFQETc2K5f7xMg3+pii46Z9J9XK7BfBJ7uH34VD1G5L+dPH4ityzZM3uHK
-         nEjaHwP95vyk4r1sf43j2djL6CvB+Kl/2Qe/303RyYqARIhj4d0l+P4zlW3vtL6/wARU
-         Tc+ejruzopRDPy+gcP+QIypg3bRgn6nxMcG13XZJKWYyFj08pxa4pRrTKym2PTShkszm
-         SiQQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=rfJb/XDW2sMdwEW50xiC1ExpZZqBBkoIvzgus9dfrXw=;
+        fh=/Hl7OebPePerWzk1X43SZD+2nWwA2Cp/XnwDnNJtXrM=;
+        b=YT5rR1hqhu7oDLRm9996yPvOP1cqrsyJGBN3CELWju+uBmmu1Ab8ImfB00d+RttkRy
+         HYsUemmkpXyTN6bcHWx1rH6F1j+IEmUT7Yxg74RH2/oqd9bapvZjZSIx33ms6S/gCSMK
+         qLeCdoIPqV2bNiy9Y1Hs93/6LhUtOhJU0pbBDM5s+qX0pe6jH8MQsQhvRPwZCePkV4eq
+         1GySwy/D6txhWiBI9XkqBFPl2o7dQUDqCYvd6zMVgqzRG5eImDjWiDiwGlDRIJu57vdo
+         kN0zk5tdaeescNUhJcRkqNHgvx1WYihjUL8gl30V5KkY4Sx7iigpbth9PGOwMmmdOYzf
+         9IhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JHxvvM3q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dw9vQXwx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6-20020a05610221a600b00466ddc60358si538440vsb.309.2024.01.08.06.04.03
+        by mx.google.com with ESMTPS id x17-20020a0ce251000000b0068028d722c2si14811qvl.554.2024.01.08.06.47.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 06:04:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jan 2024 06:47:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JHxvvM3q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dw9vQXwx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMqEH-0006Rx-1q; Mon, 08 Jan 2024 09:03:49 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rMqts-0007fz-Pc; Mon, 08 Jan 2024 09:46:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rMqEC-0006R8-9B; Mon, 08 Jan 2024 09:03:45 -0500
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rMqtp-0007fj-TT
+ for qemu-devel@nongnu.org; Mon, 08 Jan 2024 09:46:45 -0500
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rMqE9-0008Pc-Rn; Mon, 08 Jan 2024 09:03:43 -0500
-Received: by mail-lj1-x22f.google.com with SMTP id
- 38308e7fff4ca-2cd56dac1adso9654151fa.2; 
- Mon, 08 Jan 2024 06:03:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rMqto-0004IW-5e
+ for qemu-devel@nongnu.org; Mon, 08 Jan 2024 09:46:45 -0500
+Received: by mail-lj1-x230.google.com with SMTP id
+ 38308e7fff4ca-2ccae380df2so19383181fa.1
+ for <qemu-devel@nongnu.org>; Mon, 08 Jan 2024 06:46:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1704722619; x=1705327419; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=tn9CedzcoYGfrgw8qUPmHYgPUJ1WmgHTMwvo6Lc8xOk=;
- b=JHxvvM3qmHgD2p2Or31nO8mfaL3wBXeWcV2NKecfxoNAT4/7M//yUUq/DRA0lyoc35
- Rqavr7kLnUELFLSgGNwportwrK5UgNaYhwVIMDTvLs8CKIsLoLOoCRhP/ZIytQMetbW/
- WPXDaUiACHXluO+IS1Gxkj/HIGJyHbgPuNGuT/Tk8hhIR2+ZUX79iUtgS6vESs1eh0I4
- uzNclS3oeL+zhtxys3XLZtvPaYp/T3MeL1AtV57jTMlt67xO1BV4M42Ej9DVpujhTmsw
- sznCKLHNFz1T/p3fJLw6HYrej+otSr9Ur4Mvd094HZTV42KS+a8isheTf50ONloWmIR8
- QSpg==
+ d=linaro.org; s=google; t=1704725202; x=1705330002; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rfJb/XDW2sMdwEW50xiC1ExpZZqBBkoIvzgus9dfrXw=;
+ b=Dw9vQXwxj71nikzLs3dj+UNabrJZxiTEbEu6TuqsRLBBW/1VsfeBoSdieIRYaRgUOs
+ HRpuYj8EwUJwk5ULvyRwiRxNPlBEdaKOCkBOdAvbpor0lU5q7qHLgDijEtbxBm0Y5lPO
+ iYyKHgcR+CzaIueKoW+jqROUi95z8Oo1O79/AcZ011Xv/f1P1zLbxpTHxn9vGPm3SCtl
+ aDTernOmkwE9cUGExV0Q0k9zJPaQLnj1oZivM9dqUOYDQ0fZlyKX/dFTsD4ijhF40iUZ
+ mHWOEJZTmsEIAmRoBmUZKGNVnewvnmIUb4mRWVPyFL1a4flxrFbuWpCkn6bKvGj8wIJK
+ +z8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704722619; x=1705327419;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tn9CedzcoYGfrgw8qUPmHYgPUJ1WmgHTMwvo6Lc8xOk=;
- b=DchbxUDqoWNBWemb5x2YJhagmSfjBVF5cVSLDsvPG4sUFprIO6ePlUEbKTEhWyR5rq
- d2e7J2GeW03SrY/9YGjTyn9uNRfmNI/F6iVZ7vwv83kYB07XxBzuIig4q+r9qatx75bp
- Uetz+AXYeOP5/9axZDz7/0o33ye25PlZixZACKZHMRqQOClqMl3QgGGFHi/aMl/hfoey
- s/3DJvzaIUpESQrF/nAVv588gK3HtEBHkYatH7pk3q6XcNrqm0goPjODhHtorVdzjmXI
- sNwxics9k946ZGTgKjzbLnCJZWQZbqy6iVoxF60g+nX9akTm3jA3La0CHM5vHf0ZK9db
- dMnw==
-X-Gm-Message-State: AOJu0Yw4Ai0NbIG/LeD8r8PMNwfnTby20XS/MsUw3VT9hROi+OpB+tfK
- HTBRivb1P6KVKxFrwNB7P4yrm1Fp01iA9met
-X-Received: by 2002:a2e:b5c4:0:b0:2cc:7b19:1b05 with SMTP id
- g4-20020a2eb5c4000000b002cc7b191b05mr1410532ljn.48.1704722618977; 
- Mon, 08 Jan 2024 06:03:38 -0800 (PST)
-Received: from localhost.localdomain ([176.120.189.69])
- by smtp.gmail.com with ESMTPSA id
- d19-20020a05651c089300b002cd4f3c1106sm762165ljq.114.2024.01.08.06.03.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jan 2024 06:03:38 -0800 (PST)
-From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Subject: [PATCH v2] hw/arm: add PCIe to Freescale i.MX6
-Date: Mon,  8 Jan 2024 14:03:25 +0000
-Message-Id: <20240108140325.1291-1-n.ostrenkov@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ d=1e100.net; s=20230601; t=1704725202; x=1705330002;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rfJb/XDW2sMdwEW50xiC1ExpZZqBBkoIvzgus9dfrXw=;
+ b=H8w6DK10w9qk+wf15QxnleDt+09mtvOFaf8PnhZHiteYETEnA+Df3XBkVReisDld3w
+ aQfxqgkQRmKr/N9Uk/P8DH2VOff+PwscwQ/YG9MfBudvuAVDNyNFuk8aUfqvglUNNVpa
+ smbUffgSkGa2GJSwUfd8pOJz2UL6KXnVi7mwbuUKOodpI1A2uD9RCDh9JTsBKCUQneNY
+ cWRTWSStpVzUsSe+Q8d4P+5M0a3lWgVspkW/xXe4g87vKv5G/EH0X8tkzr6uYQWe0laH
+ ySErDmVMBVe3+0Pwpxh/Naev9nl9y71qP8KmKs3gXab3t6iGxKGqvjQBNiQegkyTOi5N
+ Qldg==
+X-Gm-Message-State: AOJu0Ywt8n5BXrCntg5HXHuoaqg1mPOhhibzq7fj98W1NiGOJazK/Pn2
+ 3llKIRUOEuCZkqSha9W2YoTou6CIsZpr/zWzonOykCXLWUQHUw==
+X-Received: by 2002:a2e:86d4:0:b0:2cc:7db2:acb5 with SMTP id
+ n20-20020a2e86d4000000b002cc7db2acb5mr1360536ljj.93.1704725202139; Mon, 08
+ Jan 2024 06:46:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
- envelope-from=n.ostrenkov@gmail.com; helo=mail-lj1-x22f.google.com
+References: <20240108135849.351719-1-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240108135849.351719-1-ines.varhol@telecom-paris.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Jan 2024 14:46:30 +0000
+Message-ID: <CAFEAcA-ThK=fRQ0RNQJ0stNfYF3hH0bxP7z2N9sCvtWQD1b=Aw@mail.gmail.com>
+Subject: Re: [PATCH v6 0/2] Add minimal support for the B-L475E-IOT01A board
+To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
+Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>, 
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A/tfCXb3ZZOL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6/pPST/HuUIj
 
-Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
----
- hw/arm/Kconfig            |  2 ++
- hw/arm/fsl-imx6.c         | 25 ++++++++++++++++++++++
- include/hw/arm/fsl-imx6.h | 44 ++++++++++++++++++++-------------------
- 3 files changed, 50 insertions(+), 21 deletions(-)
+On Mon, 8 Jan 2024 at 14:00, In=C3=A8s Varhol <ines.varhol@telecom-paris.fr=
+> wrote:
+>
+> This patch adds a new STM32L4x5 SoC, it is necessary to add support for
+> the B-L475E-IOT01A board.
+> The implementation is derived from the STM32F405 SoC and NetduinoPlus2
+> board.
+> The implementation contains no peripherals, only memory regions are
+> implemented.
+>
+> Changes from v5 to v6:
+> - in `stm32l4x5_soc.c`: use boolean returned by `memory_region_init_rom()=
+`
+> and `memory_region_init_ram()` instead of checking `errp`
+>
+> Changes from v4 to v5:
+> - in `b-l475e-iot01a.c`: adding missing machine/SoC parentship relation
+> - in `b-l475e-iot01a.c`: renaming `SYSCLK_FRQ` macro
+> to `MAIN_SYSCLK_FREQ_HZ`
+> - in `b-l475e-iot01a.c`: fixing coding style issue
+> - in `stm32l4x5_soc.h`: removing unused imports
+>
+> Changes from v3 to v4:
+> - adding a documentation file for the B-L475E-IOT01A board
+>
+> Changes from v1 to v3:
+> - changing the MIT license to GPL.
+>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 660f49db49..2559d1317b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -530,6 +530,7 @@ config FSL_IMX31
- 
- config FSL_IMX6
-     bool
-+    imply PCIE_DEVICES
-     imply I2C_DEVICES
-     select A9MPCORE
-     select IMX
-@@ -537,6 +538,7 @@ config FSL_IMX6
-     select IMX_I2C
-     select IMX_USBPHY
-     select WDT_IMX2
-+    select PCI_EXPRESS_DESIGNWARE
-     select SDHCI
- 
- config ASPEED_SOC
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index b2153022c0..27702b6d6d 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -22,6 +22,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/arm/fsl-imx6.h"
-+#include "hw/misc/unimp.h"
- #include "hw/usb/imx-usb-phy.h"
- #include "hw/boards.h"
- #include "hw/qdev-properties.h"
-@@ -102,6 +103,8 @@ static void fsl_imx6_init(Object *obj)
- 
- 
-     object_initialize_child(obj, "eth", &s->eth, TYPE_IMX_ENET);
-+
-+    object_initialize_child(obj, "pcie", &s->pcie, TYPE_DESIGNWARE_PCIE_HOST);
- }
- 
- static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-@@ -109,6 +112,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-     MachineState *ms = MACHINE(qdev_get_machine());
-     FslIMX6State *s = FSL_IMX6(dev);
-     uint16_t i;
-+    qemu_irq irq;
-     unsigned int smp_cpus = ms->smp.cpus;
- 
-     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
-@@ -421,6 +425,27 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                             FSL_IMX6_WDOGn_IRQ[i]));
-     }
- 
-+    /*
-+     * PCIe
-+     */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->pcie), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pcie), 0, FSL_IMX6_PCIe_REG_ADDR);
-+
-+    irq = qdev_get_gpio_in(DEVICE(&s->a9mpcore), FSL_IMX6_PCIE1_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 0, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a9mpcore), FSL_IMX6_PCIE2_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 1, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a9mpcore), FSL_IMX6_PCIE3_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 2, irq);
-+    irq = qdev_get_gpio_in(DEVICE(&s->a9mpcore), FSL_IMX6_PCIE4_IRQ);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pcie), 3, irq);
-+
-+    /*
-+     * PCIe PHY
-+     */
-+    create_unimplemented_device("pcie-phy", FSL_IMX6_PCIe_ADDR,
-+                                FSL_IMX6_PCIe_SIZE);
-+
-     /* ROM memory */
-     if (!memory_region_init_rom(&s->rom, OBJECT(dev), "imx6.rom",
-                                 FSL_IMX6_ROM_SIZE, errp)) {
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 519b871014..61c593ffd2 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -32,6 +32,7 @@
- #include "hw/net/imx_fec.h"
- #include "hw/usb/chipidea.h"
- #include "hw/usb/imx-usb-phy.h"
-+#include "hw/pci-host/designware.h"
- #include "exec/memory.h"
- #include "cpu.h"
- #include "qom/object.h"
-@@ -55,27 +56,28 @@ struct FslIMX6State {
-     DeviceState parent_obj;
- 
-     /*< public >*/
--    ARMCPU         cpu[FSL_IMX6_NUM_CPUS];
--    A9MPPrivState  a9mpcore;
--    IMX6CCMState   ccm;
--    IMX6SRCState   src;
--    IMX7SNVSState  snvs;
--    IMXSerialState uart[FSL_IMX6_NUM_UARTS];
--    IMXGPTState    gpt;
--    IMXEPITState   epit[FSL_IMX6_NUM_EPITS];
--    IMXI2CState    i2c[FSL_IMX6_NUM_I2CS];
--    IMXGPIOState   gpio[FSL_IMX6_NUM_GPIOS];
--    SDHCIState     esdhc[FSL_IMX6_NUM_ESDHCS];
--    IMXSPIState    spi[FSL_IMX6_NUM_ECSPIS];
--    IMX2WdtState   wdt[FSL_IMX6_NUM_WDTS];
--    IMXUSBPHYState usbphy[FSL_IMX6_NUM_USB_PHYS];
--    ChipideaState  usb[FSL_IMX6_NUM_USBS];
--    IMXFECState    eth;
--    MemoryRegion   rom;
--    MemoryRegion   caam;
--    MemoryRegion   ocram;
--    MemoryRegion   ocram_alias;
--    uint32_t       phy_num;
-+    ARMCPU             cpu[FSL_IMX6_NUM_CPUS];
-+    A9MPPrivState      a9mpcore;
-+    IMX6CCMState       ccm;
-+    IMX6SRCState       src;
-+    IMX7SNVSState      snvs;
-+    IMXSerialState     uart[FSL_IMX6_NUM_UARTS];
-+    IMXGPTState        gpt;
-+    IMXEPITState       epit[FSL_IMX6_NUM_EPITS];
-+    IMXI2CState        i2c[FSL_IMX6_NUM_I2CS];
-+    IMXGPIOState       gpio[FSL_IMX6_NUM_GPIOS];
-+    SDHCIState         esdhc[FSL_IMX6_NUM_ESDHCS];
-+    IMXSPIState        spi[FSL_IMX6_NUM_ECSPIS];
-+    IMX2WdtState       wdt[FSL_IMX6_NUM_WDTS];
-+    IMXUSBPHYState     usbphy[FSL_IMX6_NUM_USB_PHYS];
-+    ChipideaState      usb[FSL_IMX6_NUM_USBS];
-+    IMXFECState        eth;
-+    DesignwarePCIEHost pcie;
-+    MemoryRegion       rom;
-+    MemoryRegion       caam;
-+    MemoryRegion       ocram;
-+    MemoryRegion       ocram_alias;
-+    uint32_t           phy_num;
- };
- 
- 
--- 
-2.34.1
+Applied to target-arm.next. Thanks for this contribution
+and for your work iterating through the code review process!
 
+-- PMM

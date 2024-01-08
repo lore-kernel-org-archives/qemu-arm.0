@@ -1,111 +1,110 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2325697ejo;
-        Mon, 8 Jan 2024 06:48:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFF7vgcFpgMC3nqZso+vFl4eQgCaviOa/6RIDBk63QQqSf6T1Qqv+uv+E9CW7Q7oP7LcgeB
-X-Received: by 2002:a05:620a:6401:b0:781:bb0f:dd8b with SMTP id pz1-20020a05620a640100b00781bb0fdd8bmr4360115qkn.21.1704725295797;
-        Mon, 08 Jan 2024 06:48:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704725295; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2332432ejo;
+        Mon, 8 Jan 2024 07:01:18 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGmRHDokSPbU1IP2JczRJZOXSq775X9sJ0Y0kbsTQzoW6wETO2a/V+Mm5AdZ1wYstNHd0KS
+X-Received: by 2002:a05:6102:3ec7:b0:467:cabb:c6a9 with SMTP id n7-20020a0561023ec700b00467cabbc6a9mr1264809vsv.3.1704726078236;
+        Mon, 08 Jan 2024 07:01:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704726078; cv=none;
         d=google.com; s=arc-20160816;
-        b=BVdHOfzYuRZOpB3cT/9/EV4d2g1ZAJf8pg399xWQzl/rAqPDSWKDbV1URXNWXVDGLI
-         8hci30Ai++hiG/iv8GtCeR5lGg/xVLK823IRknTxFfoGEgTY0wLsQpH8IJ/rAOIPOfQ7
-         TcQruEqRJZvJLBAs9ld64aDftUNqHV3gnt80Nk1sl+fBkT0eO+JBo/O5IPtZz6xF0Vj4
-         E0iFDP1ktAUuf816eX6K4CI15poMfkJIgnKpqHmuYZ6mZv+5a7uieI0p58UYQN3QqJOV
-         +xaDJ4z2ajP255EGepcHxnF07yg4inR6XLH7SvRzf8WRtybKD1RuXXwtMm3PSWPy8jQ8
-         qcKA==
+        b=B3AX8FBnty9onHNeOJitj/TMl9C5I6BmLpP9umwvoz5ig5D/n8wHbO8N2uIKvSC2My
+         t0bDH2F4M3WjBdNEu9r4B4z/HG5iTKWuwv7kT20re/dvbBqC9GWCCEcnsSNN6oRsy/E9
+         53Rl6VVp8+2MKfSgyNmwXpAmd2WEw1GiSU/g0eEbMrmmwXusouHx+Zf9s2S6F+793zNR
+         nOkPmI+GyihefyRLejh9chCd4say/g954yl6JE6Vd0drV3lQY5N9ZZFY1wTlZ7BvDdml
+         qJBoH3C6U/W+oGsRGtlPHb50mroEls4RfycXNo4h7oJWVDYGaY8zKu/37gIL6RD4jUr0
+         hMjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=h1zjyM5K94HNzD0G3uJzO/KMoQm+1Hqsn7WyA7Mglyo=;
-        fh=34V0ak2y3FFHQY5ziOg4esI0Eafo1rDvTW1MQAOKnlk=;
-        b=J7e23wpTX48Bxdmn/VzYkS0zMslMkWlS5Z0ZDPFoAF9+0uxWNCMFT1eT7b5feyq5c6
-         gbZ/BOTLnkhJy/jUO0oG+2vaDV88FyYdJPO2uMefdABJm4XZ2DesC6OvAZGtT5J4zRwz
-         eoCnrzdUpoB4j5qyQrkCto7U48ZCaZTmpNXEBStH7/g3cdLK7aSGGKWh+/BQcDxNhd9f
-         VLvadL0DSa1dR4BrStK3RGtftMv/qv+pKjhCuBB2j21V6stDs12GwqVormwEp3k4Fb8M
-         0pr5kf05Am1nPIoBnlt7yLZrw5yqMUB4EXmcRS0sNgelpiZOeQMWfnuJ07YQk0I8CujD
-         nR9g==
+        bh=xjuJ8p64YYyiyxB8HtYFESOS8y/RlKCSYwiAqrSM4ZQ=;
+        fh=okBdXp2j7ZzUTSUTpGCvfl98J3L9zXWlzkZsOlQF4t8=;
+        b=JQTG2E39Fu61/Y9LhgA8AahEZI4U7alfSPNpZrESMkF7j1ijYHFpu8noc5mWhins5N
+         3KBRDa7qzCnniE7yfoE8/Cpa6EMyPieOdO19b9N3WqkruyMMJiJpQg5jPgU8fhN+cLpi
+         N6MH+P+TgTAh5V393K4LqR8GQGEBNv4HtAwu3awwnUDxGAfMAJLcDKOgngkZYZUmT7yB
+         F10I9g3ERk7JmtzKL5i3Ul5V/qunCoPV1R8btxvcRW3zYxDQbe6Q7xhn1pm0B9vfKb+F
+         FRYw0jg4bw5PIJTc88otQVi+wdCNPc+CwPrYu5t8yRXe+FXtWvU1BLemihENd52kb/iX
+         E3BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xqGEtCSZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oYPQYYDc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020a05620a084a00b007830707c650si7654178qku.561.2024.01.08.06.48.15
+        by mx.google.com with ESMTPS id bm41-20020a056102512900b00466e75aefbasi4003vsb.12.2024.01.08.07.01.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 06:48:15 -0800 (PST)
+        Mon, 08 Jan 2024 07:01:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xqGEtCSZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oYPQYYDc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMqv8-0008Pf-HE; Mon, 08 Jan 2024 09:48:10 -0500
+	id 1rMr7o-0006CJ-S4; Mon, 08 Jan 2024 10:01:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rMqv2-0008P8-J7
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 09:48:01 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1rMr7l-0006Bo-3c
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 10:01:11 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rMqv1-00057n-4O
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 09:48:00 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-557e76e1bd6so132852a12.1
- for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 06:47:58 -0800 (PST)
+ id 1rMr7j-0002tF-1u
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 10:01:08 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-557d08bb0f7so717479a12.3
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 07:01:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704725277; x=1705330077; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704726065; x=1705330865; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=h1zjyM5K94HNzD0G3uJzO/KMoQm+1Hqsn7WyA7Mglyo=;
- b=xqGEtCSZsQhF2AwhLthfObhgn3rN8D9xZSorGOcykc2VYt7Av+5rt2H52bkVhN2Nol
- DqrKEonl/AULVaBJZzmaaZbBv+6i5eSnwlin/4iozirxUyIuYzv+YyCuGaVYVhRhQTqV
- LOrG8Yq4M5MIzjvGFG+aQG5aHHm8+ThyYSNnZfsg4lNssN+DxnqJRcm30Uix9FgbJiOf
- XC7T/rIomu4oApdv5sAO+WJtLe+vrckMJDDQqi23Dxv5caGrcbfJZ4xy6VaOqvQIT4cY
- sKMJOcQE15bT7+wV5gk47ic7YF2/954yaaT4KRgnyq+O0SCYsXef0Uj37MOT5kGwh9hO
- TNlQ==
+ bh=xjuJ8p64YYyiyxB8HtYFESOS8y/RlKCSYwiAqrSM4ZQ=;
+ b=oYPQYYDcOXsTRWn3enElgBHjISZ7allLnbHvUWgCOZN/HGISDDgyQD5vXhzQ4BCdaG
+ V+a+0XE8SPBqhzfh1cI6rxp+xdgcLCsNMRm3A/17ZaBs2ZbsedPrKKIUYOdB29R36Bjy
+ pGmcZRwR+TI8mdvfblJ8hm3/MSZRU+IzmDivdpfJt26PqAK9FoArD/xG5b6QW58V8m4K
+ n6cCbvufzosM2nKTLEJb2AJNtzAowUYNz3e8IRbCpzKRxDQfop8Nw+HKv5YZaNew0iRU
+ UR3lohyJ5B/+FsSeY1TmDlqzO1/mTEQm5FhBV/rUbZYdf3ozn//7329umtPnvayNlOnO
+ JJmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704725277; x=1705330077;
+ d=1e100.net; s=20230601; t=1704726065; x=1705330865;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=h1zjyM5K94HNzD0G3uJzO/KMoQm+1Hqsn7WyA7Mglyo=;
- b=bNTzxGuHF3DwtsW6WhqouSr8OfyVBVARcUfPQXsAMIKeCXv4VGrgzJwjhQgC1b1nBV
- 0jRt6eAURG2/mathu70Un5jWiRoufb826fucudxtuVFK0PtpuCOIPnCx8EMtbByyJftl
- qWDDP/ZQuZfh+/K9VmDA0vBbOrYzx8orLrIRcNI016EqAkjJjNsSIym+Mv57DJSBlrti
- 1fpYaNhUZkX39qEZyI/23SIPrDquKABMz7GJ6MsS1cqJqXbWYi9lULhvmB9/METapHJa
- mmgFCCENldxshK+6icEPRo6fktn7u6WLcTq8AywkPd4Lm6ieKm2azM07cj0fLDLRx73i
- odHg==
-X-Gm-Message-State: AOJu0YxW4MSc8zuQ/zEvuc2KHCeHEE5Zx/5nF4jp1//BWQsewDcjMYcS
- 34UdW2f0fhb/wEbH12u8JpAeePYMBr6kigF9fDVKwUXAFPbUrw==
-X-Received: by 2002:a50:9fcd:0:b0:556:51a4:1426 with SMTP id
- c71-20020a509fcd000000b0055651a41426mr2862716edf.0.1704725277617; Mon, 08 Jan
- 2024 06:47:57 -0800 (PST)
+ bh=xjuJ8p64YYyiyxB8HtYFESOS8y/RlKCSYwiAqrSM4ZQ=;
+ b=bDB5olomld/FohLzRVBjdAOU5gfZ7EvU/g0a5GXJJkKpYQSECMEBWCjaZkyGFj1kZD
+ GUGr14hMif5v65IPkdE1R7nEbeCbg/lzgtSHrUqmqZLSLXQRUDG0Deq6t71JudJHzf+O
+ yxgNEAkxwI3X6tcXyHBxdfMBh+0M+cOwfXFsyTL3ZkZRweC/Fh2Aqc7N65UYApTC89rV
+ fFzJ1ZDAbEB7DAilXXXUc6ciAhpIjBCwcMUk1bFeSo4FfeZWkCnzX2s9LSXsl6GHw5i6
+ 1jjZnRrHavLl8ho/5Wu2MtTAcGnAxhOV0ncu8TXNnZxWdtZGDi0VGsnr1Y+JNU1zJcOW
+ tjDw==
+X-Gm-Message-State: AOJu0YxtlI7q7kzcHSvo0Vvc0XDBhA1fbdLEDH1RSbyk9XbV7/rmQArr
+ YF87SBvPnA92AYfy2TTlB02YG1UaN+UaVGbILkzCk1IxTJj3Wx1gSjUSw/9B
+X-Received: by 2002:a50:cd90:0:b0:557:e92:155f with SMTP id
+ p16-20020a50cd90000000b005570e92155fmr1663909edi.71.1704726065390; Mon, 08
+ Jan 2024 07:01:05 -0800 (PST)
 MIME-Version: 1.0
-References: <20240106181503.1746200-1-sam@rfc1149.net>
-In-Reply-To: <20240106181503.1746200-1-sam@rfc1149.net>
+References: <20231219213255.604535-1-nabihestefan@google.com>
+ <20231219213255.604535-9-nabihestefan@google.com>
+In-Reply-To: <20231219213255.604535-9-nabihestefan@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jan 2024 14:47:46 +0000
-Message-ID: <CAFEAcA9o=ep2AjYS6e7q9g-mYZ8eM8iPfd9936k__jaDw7anKA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/3] Add "num-prio-bits" property for Cortex-M devices
-To: Samuel Tardieu <sam@rfc1149.net>
-Cc: qemu-devel@nongnu.org, Anton Kochkov <anton.kochkov@proton.me>,
- qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- Alistair Francis <alistair@alistair23.me>
+Date: Mon, 8 Jan 2024 15:00:54 +0000
+Message-ID: <CAFEAcA8awaf=fdPGk+YcV9zPjGNbhP0n=-L0p0VEwPe1U6tXRg@mail.gmail.com>
+Subject: Re: [PATCH v9 08/10] hw/net: GMAC Rx Implementation
+To: Nabih Estefan <nabihestefan@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
+ kwliu@nuvoton.com, tomer.maimon@nuvoton.com, Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,24 +119,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ho69oRx70W7C
+X-TUID: mA57NHClfonR
 
-On Sat, 6 Jan 2024 at 18:15, Samuel Tardieu <sam@rfc1149.net> wrote:
+On Tue, 19 Dec 2023 at 21:33, Nabih Estefan <nabihestefan@google.com> wrote:
 >
-> This patch series builds on a discussion initiated by Anton Kochkov on
-> this list in 2022. It allows setting the appropriate number of priority
-> bits for Cortex-M devices. For example, FreeRTOS checks at startup that
-> the right number of priority bits is available in order to guarantee
-> its runtime structures safety. They have added a configuration option
-> to disable this check when running on QEMU because QEMU always use 2
-> bits for Cortex-M0/M0+/M1 and 8 bits for other devices.
+> From: Nabih Estefan Diaz <nabihestefan@google.com>
 >
-> While this change allows the number of priority bits to be properly
-> configured, it keeps the same default as before in order to preserve
-> backward compatibility unless the SoC configures the exact value.
+> - Implementation of Receive function for packets
+> - Implementation for reading and writing from and to descriptors in
+>   memory for Rx
+>
+> When RX starts, we need to flush the queued packets so that they
+> can be received by the GMAC device. Without this it won't work
+> with TAP NIC device.
+>
+> When RX descriptor list is full, it returns a DMA_STATUS for software to handle it. But there's no way to indicate the software ha handled all RX descriptors and the whole pipeline stalls.
 
+Please make sure you line wrap commit messages at an
+appropriate line length.
 
+> We do something similar to NPCM7XX EMC to handle this case.
+>
+> 1. Return packet size when RX descriptor is full, effectively dropping these packets in such a case.
+> 2. When software clears RX descriptor full bit, continue receiving further packets by flushing QEMU packet queue.
+>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> ---
 
-Applied to target-arm.next, thanks.
+> +    /* write frame part to memory */
+> +    if (dma_memory_write(&address_space_memory, (uint64_t) rx_buf_addr,
+> +                         *frame_ptr, to_transfer, MEMTXATTRS_UNSPECIFIED))
+> +    {
 
+Our coding style says the open brace of an if goes on the same line,
+not on a line of its own.
+
+> +        return -1;
+> +    }
+
+thanks
 -- PMM

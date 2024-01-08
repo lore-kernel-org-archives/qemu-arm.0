@@ -1,434 +1,263 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2389925ejo;
-        Mon, 8 Jan 2024 08:38:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHm67v8f+xAeYrmPdxbZO6esWjMfzMFahuodpJWzVLu/r31e0sEeZ/EO8ityneH2o/idtW1
-X-Received: by 2002:ac8:5f4b:0:b0:429:7990:4a3e with SMTP id y11-20020ac85f4b000000b0042979904a3emr5756703qta.7.1704731885568;
-        Mon, 08 Jan 2024 08:38:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704731885; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2442560ejo;
+        Mon, 8 Jan 2024 10:11:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEnc3MlLCq5yaOrZVgBCCZp21ud5BbdlgLsRrdhZT2TqgSp9W8nH57pC1kUpHAlDFMlC3m5
+X-Received: by 2002:a37:e20e:0:b0:781:565c:3d8 with SMTP id g14-20020a37e20e000000b00781565c03d8mr2998127qki.90.1704737489455;
+        Mon, 08 Jan 2024 10:11:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704737489; cv=none;
         d=google.com; s=arc-20160816;
-        b=RRi9QTkr8TohW+f8XXDonMMVJ/tu+5/HxsGtyCjOZ5+MJb99SqZ92YQ8VW21WuhbyJ
-         HHoqU64hiUs7Jrp+d5HtmEL1Y/qbky2EeLteKFLbklGqAE2j5DNxtpj/EbqW4T18MUbq
-         SKEXqQdIfp7pIOAqzs3PPMuHwlKrZNXrOEmXobG/XrivTalKG2Y1W76u9DmdviWJHcYp
-         NK6JKiwZGtz70+ILq9M00fWd1JBfCUNP5jBO8qI6SBP74G+eoFFQCM6uH3VRdyna2VXU
-         v8MFlh/K7NZ7gpYbBf2+l1MnE412X3RldXvtnlg+Pe5mv7poHiR8Xo4T2OqWvm6UpW7/
-         Y2Fw==
+        b=GSeNeeFifT4MM/CjdS19cJIugHm2+NUg0xrRJ/xdilQQz1RShDj69+eijqliDAwu1Q
+         CSCxqsTrzGsVvuZzP3O6oJRHWyVadzMjWpcOSd5G0WR5jVz5tJthXjdsqYIKjDKZ9q0T
+         lT6NDAmg4H/P+Qzb+eSdVkUT4pt+EEmDDlSgjc0UP+xeq6+iJ0omHkfhMi/GWmMJ+AeE
+         oY+X3fHOmDBgZeYTOVsTEjTmS6WyM0PJ37BJh2A6OvvgrY2/+Mm4EfcfYvDX7aTKksxZ
+         VOjsk+LbIqegSs+nsDPLOl1KT9r4yBjv101uwGyHnvOw4rc1CDqS0OjyU+YGCvXfm7Km
+         G1mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xM4VAbKYt5bBYtmHmlEyW+nGKsdcNTrQLabNpuLOZVM=;
-        fh=5fMz2F8zQkRjlaxnj3AO/pLGiW7hAhGPmcy5QVDwW54=;
-        b=DXcx+94P9Ag5ltmuSEGNzpEG9fr0mDgX92F7WPDtuelZ8b00qYYL/rfZ1EL5nYSZPs
-         DxWN6IOJ7xe5tDo2DyAMxTN5jLNnBQ7zg4yD53jVyzMlO6fe8T4wbEFLIRIV1OSjb1u/
-         yS7zpnH0+3U3wGeafjZNxmTmyGv1pwvSovIBQVJ5C8haQ+s53DEMNW/KRr9+jIy2n2iP
-         SEYaTDuaEOZE8Fp5aBwVuqUOnO7FkwHzJ1UCmfjjgmWkdew9WSBKIR5WR+OCTTahj0lI
-         XsnoqTsTxH6JTiJ2jdQMvT/z0bLwPPQCZFwyHeMv0qKRoLhEwq0gweP7Yrc16SHg7Duh
-         f51w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=Ca6hmgpPbhemvhYSfPCbopjCGJJMtOpR4HF5RyCauW4=;
+        fh=uVT5UAOcZRZbquK2hAVR/DyoKbSs07dkEc53dKSfuj0=;
+        b=h3WzdUC8TnUt8O3PIMupe/CsfJXNoLi/3LGaGBkvhCUJe/OKBFoI2M5qNmusGC87Zq
+         66y0Pr4aw5rl5R6PfR3yRDZuOiRZ4it+1JzwoyQ4SlTHupSKV0zRsZGeXCGeH4aOgH11
+         akD9wm66PM0xA3GODuc3/O7JQgCf5aCIJdhEEbx9OySXz3YQCI89pEbPnQ8305p220MU
+         T4pr/BXXSlEXaAiOk+v25UhJ5qgdE2+sIofTPDV284VvVK5FE4T50pWu6YkeSHFQbn8w
+         XxJZRGpCwCe6srDW7r/TDS7aYbNYMHqtDn9i/yqjnc7xFEnPw+gPxoe52p0AMZkCPxq3
+         /G4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLtCj7HN;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 7-20020ac85747000000b00427871f949bsi73292qtx.165.2024.01.08.08.38.05
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=0koDAMT3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l9-20020a05620a28c900b0078314d3d6e9si241663qkp.752.2024.01.08.10.11.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 08:38:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 08 Jan 2024 10:11:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLtCj7HN;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1704731885;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xM4VAbKYt5bBYtmHmlEyW+nGKsdcNTrQLabNpuLOZVM=;
-	b=FLtCj7HNQn5dURrMftUniGZ90jhFU5dQbBKoTDgA53FBSaLMoomCU+GNBTGARTXjdt6jk9
-	tJyF6boIWfDjFS3yMGi2m/EmUEkhgJqRcWIt7YryqrcEJLNerVTdrXIcp/eOEpZCRJj/76
-	HrDkE9klnv9xiR0QIKPcOAYBVO1uclg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-287-P6Ntz1u8OGWXTHWfH-iwTQ-1; Mon, 08 Jan 2024 11:37:59 -0500
-X-MC-Unique: P6Ntz1u8OGWXTHWfH-iwTQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5097D1019C97;
-	Mon,  8 Jan 2024 16:37:57 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CF54C2166B33;
-	Mon,  8 Jan 2024 16:37:55 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=0koDAMT3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rMu5o-0004zx-QD; Mon, 08 Jan 2024 13:11:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rMu5k-0004wP-Pf; Mon, 08 Jan 2024 13:11:16 -0500
+Received: from zproxy1.enst.fr ([137.194.2.220])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rMu5h-0003Eu-PQ; Mon, 08 Jan 2024 13:11:16 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id 5FB62C0738;
+ Mon,  8 Jan 2024 19:11:11 +0100 (CET)
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id 0coPSbjJ32Mx; Mon,  8 Jan 2024 19:11:10 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id DBADFC0C9E;
+ Mon,  8 Jan 2024 19:11:10 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr DBADFC0C9E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704737470;
+ bh=Ca6hmgpPbhemvhYSfPCbopjCGJJMtOpR4HF5RyCauW4=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=0koDAMT3we7Q5awTLb5xR7VkaqsNZuW+t0C83WOiJCPC6KAv1QeDrwKKVO0upZPr2
+ XP0I6iBwVHIoJlp9LDjtgyBOT6EX2E+m73/RXIYxmyO0voQq8ob/hP8ihcPykK9Nj4
+ e+4nR7kr5IsR+qFQgsRFvOkusuFPvHIdU6Li+qwc=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id v6dZl3IwogHH; Mon,  8 Jan 2024 19:11:10 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 868FAC0655;
+ Mon,  8 Jan 2024 19:11:10 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	qemu-block@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	kvm@vger.kernel.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	qemu-arm@nongnu.org,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Jiri Slaby <jslaby@suse.cz>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Paul Durrant <paul@xen.org>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	xen-devel@lists.xenproject.org,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	qemu-ppc@nongnu.org,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	qemu-riscv@nongnu.org,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Markus Armbruster <armbru@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Hailiang Zhang <zhanghailiang@xfusion.com>,
-	Hyman Huang <yong.huang@smartx.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Fam Zheng <fam@euphon.net>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Eric Farman <farman@linux.ibm.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	David Hildenbrand <david@redhat.com>
-Subject: [PULL 6/6] Rename "QEMU global mutex" to "BQL" in comments and docs
-Date: Mon,  8 Jan 2024 11:37:35 -0500
-Message-ID: <20240108163735.254732-7-stefanha@redhat.com>
-In-Reply-To: <20240108163735.254732-1-stefanha@redhat.com>
-References: <20240108163735.254732-1-stefanha@redhat.com>
+Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-arm@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 2/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
+Date: Mon,  8 Jan 2024 19:03:05 +0100
+Message-ID: <20240108181104.46880-3-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240108181104.46880-1-ines.varhol@telecom-paris.fr>
+References: <20240108181104.46880-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-X-TUID: fezt4BymNBbD
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.220;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sSogR6YxI8i8
 
-The term "QEMU global mutex" is identical to the more widely used Big
-QEMU Lock ("BQL"). Update the code comments and documentation to use
-"BQL" instead of "QEMU global mutex".
-
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Acked-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Paul Durrant <paul@xen.org>
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Message-id: 20240102153529.486531-6-stefanha@redhat.com
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- docs/devel/multi-thread-tcg.rst   |  7 +++----
- docs/devel/qapi-code-gen.rst      |  2 +-
- docs/devel/replay.rst             |  2 +-
- docs/devel/multiple-iothreads.txt | 14 +++++++-------
- include/block/blockjob.h          |  6 +++---
- include/io/task.h                 |  2 +-
- include/qemu/coroutine-core.h     |  2 +-
- include/qemu/coroutine.h          |  2 +-
- hw/block/dataplane/virtio-blk.c   |  8 ++++----
- hw/block/virtio-blk.c             |  2 +-
- hw/scsi/virtio-scsi-dataplane.c   |  6 +++---
- net/tap.c                         |  2 +-
- 12 files changed, 27 insertions(+), 28 deletions(-)
+ hw/arm/Kconfig                 |  1 +
+ hw/arm/stm32l4x5_soc.c         | 52 +++++++++++++++++++++++++++++++++-
+ include/hw/arm/stm32l4x5_soc.h |  3 ++
+ 3 files changed, 55 insertions(+), 1 deletion(-)
 
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index c9541a7b20..7302c3bf53 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -226,10 +226,9 @@ instruction. This could be a future optimisation.
- Emulated hardware state
- -----------------------
- 
--Currently thanks to KVM work any access to IO memory is automatically
--protected by the global iothread mutex, also known as the BQL (Big
--QEMU Lock). Any IO region that doesn't use global mutex is expected to
--do its own locking.
-+Currently thanks to KVM work any access to IO memory is automatically protected
-+by the BQL (Big QEMU Lock). Any IO region that doesn't use the BQL is expected
-+to do its own locking.
- 
- However IO memory isn't the only way emulated hardware state can be
- modified. Some architectures have model specific registers that
-diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
-index 7f78183cd4..ea8228518c 100644
---- a/docs/devel/qapi-code-gen.rst
-+++ b/docs/devel/qapi-code-gen.rst
-@@ -594,7 +594,7 @@ blocking the guest and other background operations.
- Coroutine safety can be hard to prove, similar to thread safety.  Common
- pitfalls are:
- 
--- The global mutex isn't held across ``qemu_coroutine_yield()``, so
-+- The BQL isn't held across ``qemu_coroutine_yield()``, so
-   operations that used to assume that they execute atomically may have
-   to be more careful to protect against changes in the global state.
- 
-diff --git a/docs/devel/replay.rst b/docs/devel/replay.rst
-index 0244be8b9c..effd856f0c 100644
---- a/docs/devel/replay.rst
-+++ b/docs/devel/replay.rst
-@@ -184,7 +184,7 @@ modes.
- Reading and writing requests are created by CPU thread of QEMU. Later these
- requests proceed to block layer which creates "bottom halves". Bottom
- halves consist of callback and its parameters. They are processed when
--main loop locks the global mutex. These locks are not synchronized with
-+main loop locks the BQL. These locks are not synchronized with
- replaying process because main loop also processes the events that do not
- affect the virtual machine state (like user interaction with monitor).
- 
-diff --git a/docs/devel/multiple-iothreads.txt b/docs/devel/multiple-iothreads.txt
-index 4865196bde..de85767b12 100644
---- a/docs/devel/multiple-iothreads.txt
-+++ b/docs/devel/multiple-iothreads.txt
-@@ -5,7 +5,7 @@ the COPYING file in the top-level directory.
- 
- 
- This document explains the IOThread feature and how to write code that runs
--outside the QEMU global mutex.
-+outside the BQL.
- 
- The main loop and IOThreads
- ---------------------------
-@@ -29,13 +29,13 @@ scalability bottleneck on hosts with many CPUs.  Work can be spread across
- several IOThreads instead of just one main loop.  When set up correctly this
- can improve I/O latency and reduce jitter seen by the guest.
- 
--The main loop is also deeply associated with the QEMU global mutex, which is a
--scalability bottleneck in itself.  vCPU threads and the main loop use the QEMU
--global mutex to serialize execution of QEMU code.  This mutex is necessary
--because a lot of QEMU's code historically was not thread-safe.
-+The main loop is also deeply associated with the BQL, which is a
-+scalability bottleneck in itself.  vCPU threads and the main loop use the BQL
-+to serialize execution of QEMU code.  This mutex is necessary because a lot of
-+QEMU's code historically was not thread-safe.
- 
- The fact that all I/O processing is done in a single main loop and that the
--QEMU global mutex is contended by all vCPU threads and the main loop explain
-+BQL is contended by all vCPU threads and the main loop explain
- why it is desirable to place work into IOThreads.
- 
- The experimental virtio-blk data-plane implementation has been benchmarked and
-@@ -66,7 +66,7 @@ There are several old APIs that use the main loop AioContext:
- 
- Since they implicitly work on the main loop they cannot be used in code that
- runs in an IOThread.  They might cause a crash or deadlock if called from an
--IOThread since the QEMU global mutex is not held.
-+IOThread since the BQL is not held.
- 
- Instead, use the AioContext functions directly (see include/block/aio.h):
-  * aio_set_fd_handler() - monitor a file descriptor
-diff --git a/include/block/blockjob.h b/include/block/blockjob.h
-index e594c10d23..7061ab7201 100644
---- a/include/block/blockjob.h
-+++ b/include/block/blockjob.h
-@@ -54,7 +54,7 @@ typedef struct BlockJob {
- 
-     /**
-      * Speed that was set with @block_job_set_speed.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under the BQL (GLOBAL_STATE_CODE).
-      */
-     int64_t speed;
- 
-@@ -66,7 +66,7 @@ typedef struct BlockJob {
- 
-     /**
-      * Block other operations when block job is running.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under the BQL (GLOBAL_STATE_CODE).
-      */
-     Error *blocker;
- 
-@@ -89,7 +89,7 @@ typedef struct BlockJob {
- 
-     /**
-      * BlockDriverStates that are involved in this block job.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under the BQL (GLOBAL_STATE_CODE).
-      */
-     GSList *nodes;
- } BlockJob;
-diff --git a/include/io/task.h b/include/io/task.h
-index dc7d32ebd0..0b5342ee84 100644
---- a/include/io/task.h
-+++ b/include/io/task.h
-@@ -149,7 +149,7 @@ typedef void (*QIOTaskWorker)(QIOTask *task,
-  * lookups) to be easily run non-blocking. Reporting the
-  * results in the main thread context means that the caller
-  * typically does not need to be concerned about thread
-- * safety wrt the QEMU global mutex.
-+ * safety wrt the BQL.
-  *
-  * For example, the socket_listen() method will block the caller
-  * while DNS lookups take place if given a name, instead of IP
-diff --git a/include/qemu/coroutine-core.h b/include/qemu/coroutine-core.h
-index 230bb56517..503bad6e0e 100644
---- a/include/qemu/coroutine-core.h
-+++ b/include/qemu/coroutine-core.h
-@@ -22,7 +22,7 @@
-  * rather than callbacks, for operations that need to give up control while
-  * waiting for events to complete.
-  *
-- * These functions are re-entrant and may be used outside the global mutex.
-+ * These functions are re-entrant and may be used outside the BQL.
-  *
-  * Functions that execute in coroutine context cannot be called
-  * directly from normal functions.  Use @coroutine_fn to mark such
-diff --git a/include/qemu/coroutine.h b/include/qemu/coroutine.h
-index a65be6697f..e6aff45301 100644
---- a/include/qemu/coroutine.h
-+++ b/include/qemu/coroutine.h
-@@ -26,7 +26,7 @@
-  * rather than callbacks, for operations that need to give up control while
-  * waiting for events to complete.
-  *
-- * These functions are re-entrant and may be used outside the global mutex.
-+ * These functions are re-entrant and may be used outside the BQL.
-  *
-  * Functions that execute in coroutine context cannot be called
-  * directly from normal functions.  Use @coroutine_fn to mark such
-diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
-index 97a302cf49..ba22732497 100644
---- a/hw/block/dataplane/virtio-blk.c
-+++ b/hw/block/dataplane/virtio-blk.c
-@@ -84,7 +84,7 @@ apply_vq_mapping(IOThreadVirtQueueMappingList *iothread_vq_mapping_list,
-     }
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- bool virtio_blk_data_plane_create(VirtIODevice *vdev, VirtIOBlkConf *conf,
-                                   VirtIOBlockDataPlane **dataplane,
-                                   Error **errp)
-@@ -148,7 +148,7 @@ bool virtio_blk_data_plane_create(VirtIODevice *vdev, VirtIOBlkConf *conf,
-     return true;
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_blk_data_plane_destroy(VirtIOBlockDataPlane *s)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 4ae2073a1d..8c8488a70a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -459,6 +459,7 @@ config STM32L4X5_SOC
+     bool
+     select ARM_V7M
+     select OR_IRQ
++    select STM32L4X5_EXTI
+=20
+ config XLNX_ZYNQMP_ARM
+     bool
+diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+index 70609a6dac..fe46b7c6c0 100644
+--- a/hw/arm/stm32l4x5_soc.c
++++ b/hw/arm/stm32l4x5_soc.c
+@@ -36,10 +36,51 @@
+ #define SRAM2_BASE_ADDRESS 0x10000000
+ #define SRAM2_SIZE (32 * KiB)
+=20
++#define EXTI_ADDR 0x40010400
++
++#define NUM_EXTI_IRQ 40
++/* Match exti line connections with their CPU IRQ number */
++/* See Vector Table (Reference Manual p.396) */
++static const int exti_irq[NUM_EXTI_IRQ] =3D {
++    6,                      /* GPIO[0]                 */
++    7,                      /* GPIO[1]                 */
++    8,                      /* GPIO[2]                 */
++    9,                      /* GPIO[3]                 */
++    10,                     /* GPIO[4]                 */
++    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
++    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
++    1,                      /* PVD                     */
++    67,                     /* OTG_FS_WKUP, Direct     */
++    41,                     /* RTC_ALARM               */
++    2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
++    3,                      /* RTC wakeup timer        */
++    63,                     /* COMP1                   */
++    63,                     /* COMP2                   */
++    31,                     /* I2C1 wakeup, Direct     */
++    33,                     /* I2C2 wakeup, Direct     */
++    72,                     /* I2C3 wakeup, Direct     */
++    37,                     /* USART1 wakeup, Direct   */
++    38,                     /* USART2 wakeup, Direct   */
++    39,                     /* USART3 wakeup, Direct   */
++    52,                     /* UART4 wakeup, Direct    */
++    53,                     /* UART4 wakeup, Direct    */
++    70,                     /* LPUART1 wakeup, Direct  */
++    65,                     /* LPTIM1, Direct          */
++    66,                     /* LPTIM2, Direct          */
++    76,                     /* SWPMI1 wakeup, Direct   */
++    1,                      /* PVM1 wakeup             */
++    1,                      /* PVM2 wakeup             */
++    1,                      /* PVM3 wakeup             */
++    1,                      /* PVM4 wakeup             */
++    78                      /* LCD wakeup, Direct      */
++};
++
+ static void stm32l4x5_soc_initfn(Object *obj)
  {
-     VirtIOBlock *vblk;
-@@ -179,7 +179,7 @@ void virtio_blk_data_plane_destroy(VirtIOBlockDataPlane *s)
-     g_free(s);
+     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
+=20
++    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
++
+     s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
+     s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
  }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- int virtio_blk_data_plane_start(VirtIODevice *vdev)
- {
-     VirtIOBlock *vblk = VIRTIO_BLK(vdev);
-@@ -310,7 +310,7 @@ static void virtio_blk_data_plane_stop_vq_bh(void *opaque)
-     virtio_queue_host_notifier_read(host_notifier);
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_blk_data_plane_stop(VirtIODevice *vdev)
- {
-     VirtIOBlock *vblk = VIRTIO_BLK(vdev);
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 315b7b364c..b7a344ca97 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -1539,7 +1539,7 @@ static void virtio_blk_resize(void *opaque)
-     VirtIODevice *vdev = VIRTIO_DEVICE(opaque);
- 
+@@ -51,6 +92,7 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
+ Error **errp)
+     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
+     MemoryRegion *system_memory =3D get_system_memory();
+     DeviceState *armv7m;
++    SysBusDevice *busdev;
+=20
      /*
--     * virtio_notify_config() needs to acquire the global mutex,
-+     * virtio_notify_config() needs to acquire the BQL,
-      * so it can't be called from an iothread. Instead, schedule
-      * it to be run in the main context BH.
-      */
-diff --git a/hw/scsi/virtio-scsi-dataplane.c b/hw/scsi/virtio-scsi-dataplane.c
-index 135e23fe54..2806a121b2 100644
---- a/hw/scsi/virtio-scsi-dataplane.c
-+++ b/hw/scsi/virtio-scsi-dataplane.c
-@@ -20,7 +20,7 @@
- #include "scsi/constants.h"
- #include "hw/virtio/virtio-bus.h"
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_scsi_dataplane_setup(VirtIOSCSI *s, Error **errp)
- {
-     VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(s);
-@@ -93,7 +93,7 @@ static void virtio_scsi_dataplane_stop_bh(void *opaque)
+      * We use s->refclk internally and only define it with qdev_init_clo=
+ck_in()
+@@ -112,6 +154,15 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+         return;
      }
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- int virtio_scsi_dataplane_start(VirtIODevice *vdev)
- {
-     int i;
-@@ -185,7 +185,7 @@ fail_guest_notifiers:
-     return -ENOSYS;
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_scsi_dataplane_stop(VirtIODevice *vdev)
- {
-     BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
-diff --git a/net/tap.c b/net/tap.c
-index c23d0323c2..c698b70475 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -219,7 +219,7 @@ static void tap_send(void *opaque)
- 
-         /*
-          * When the host keeps receiving more packets while tap_send() is
--         * running we can hog the QEMU global mutex.  Limit the number of
-+         * running we can hog the BQL.  Limit the number of
-          * packets that are processed per tap_send() callback to prevent
-          * stalling the guest.
-          */
--- 
+=20
++    busdev =3D SYS_BUS_DEVICE(&s->exti);
++    if (!sysbus_realize(busdev, errp)) {
++        return;
++    }
++    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
++    for (unsigned i =3D 0; i < NUM_EXTI_IRQ; i++) {
++        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
+i]));
++    }
++
+     /* APB1 BUS */
+     create_unimplemented_device("TIM2",      0x40000000, 0x400);
+     create_unimplemented_device("TIM3",      0x40000400, 0x400);
+@@ -152,7 +203,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
+c, Error **errp)
+     create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
+     create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
+     create_unimplemented_device("COMP",      0x40010200, 0x200);
+-    create_unimplemented_device("EXTI",      0x40010400, 0x400);
+     /* RESERVED:    0x40010800, 0x1400 */
+     create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
+     /* RESERVED:    0x40012000, 0x800 */
+diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+index 2fd44a36a9..f7305568dc 100644
+--- a/include/hw/arm/stm32l4x5_soc.h
++++ b/include/hw/arm/stm32l4x5_soc.h
+@@ -26,6 +26,7 @@
+=20
+ #include "exec/memory.h"
+ #include "hw/arm/armv7m.h"
++#include "hw/misc/stm32l4x5_exti.h"
+ #include "qom/object.h"
+=20
+ #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
+@@ -39,6 +40,8 @@ struct Stm32l4x5SocState {
+=20
+     ARMv7MState armv7m;
+=20
++    Stm32l4x5ExtiState exti;
++
+     MemoryRegion sram1;
+     MemoryRegion sram2;
+     MemoryRegion flash;
+--=20
 2.43.0
+

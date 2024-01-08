@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4983ejs;
-        Mon, 8 Jan 2024 12:53:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFn1r/tZSf7zxm5t3M0+nbVZ7zNts5n41/Qnee/G0ceTIPHTLqeDqiAPxBxfd7f5WCfccUH
-X-Received: by 2002:a05:6871:811:b0:204:5aa9:b1b8 with SMTP id q17-20020a056871081100b002045aa9b1b8mr5767144oap.88.1704747190635;
-        Mon, 08 Jan 2024 12:53:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747190; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp5498ejs;
+        Mon, 8 Jan 2024 12:54:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFWnmLMJK+w5k6ZcLsEjFpdNspWLsWK0ABIVpkQA6Q5sMiYGwZu35qeL9nrsn68+wlQYpGm
+X-Received: by 2002:ac8:5b90:0:b0:429:811f:cd3f with SMTP id a16-20020ac85b90000000b00429811fcd3fmr5344797qta.72.1704747283796;
+        Mon, 08 Jan 2024 12:54:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747283; cv=none;
         d=google.com; s=arc-20160816;
-        b=C9e//zi5HRJ+YfYOPB3f6lIlUDS/OxGKb5BHV4oclq+4e1rxYKiJz4z3oPbRa+vy68
-         DwfbbywoY12kZZ1lNuTSOhaXTm48alTM4Cn365NPy48khHoLO13zpUBcLVSgfwao1bs1
-         4mbytqdvi+OkzlFl9LUH3Yd40JOoClU7rTDixSPFEjfXZ1h6T5NdLioJ5h40Wrz3icxZ
-         1wZYQC2cLq9YtqUGv42mkdT3NRsxxJxaT6FX4564oTa6hmYkZnT4HZHuIPgLWTcAaZ8j
-         nmkAn7097R8cyWrsBLGZVaQ79GKfjULOAuoaFq8ATA3t+MqE46E9YYxV+3QDukpKkYkB
-         0vVA==
+        b=mba9oUvsfUvYO3EHN4fDETWSuIN+5ojoSR7YUPstQDDYy+eHMSgoGxgkY/5qD2VZmX
+         /1f7vuTb1PiIzihfr1Ny+wlzsrBSkcCgQOFeQlICtlaUI+1GqFhIJs3dnnsqfiseM6WL
+         mMzWs2UrHDfv+cldwclQkF72tiGDkS5tUpy+l2SGf9mNC6mHMN1bNTMUaMzCf/Lwsvm6
+         HHibXHGNPwnm3Fw35OwepuVNxlQhCWfQ0vB785N6y2dzJOEzvAUccyBqjCTMkAd9D6no
+         DZNXssh+UngOXMaCX4DLL26bPfBWBrued2SW4ECOKUQJBg5wZnql6LP8euhaD1+VbreZ
+         exnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jjA+mKm/KR8ygCw36R3MvCf4i1b5Zw/aOnxUi6/7roc=;
+        bh=uc7qG2cne/6E8+t91EtiLDMAE+B8LUD5xbmCp8tTbzY=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=wrrFq79mP0UdmdRNdMezPjIG0HX3P1jqok9+0b5OH0tA5Zd82/kEvVt3C+2PT3iy/7
-         t0znPIcUQt3fB+1JdXxTjz53b8Rx9ZycEsVlgcVQ2uJz0ydQW9/cJbKBPteiNHhSFMFr
-         FcNA0CJPEjxeJd83X0trCOhKW0zW91Z/f7fVbhHFpJxRBiSpV5/Yx9ULZ4aJ3mPiZ8jx
-         ajQ+erBoUZuUgWBsSUR/kFPJz1X1UoBwWjQ2in/xYXq7cW5PvA8WZajTFvLh1+dSyd4g
-         KATpV7jj8cT5ptt9HQjVjROpxIYjc/fLXUCdkQwq8VAV4tEZ5tweatKJfWxy2ueNALAs
-         +4sg==
+        b=jDuc/NqIVoEg+m0EJ7BnZFMWIuZh0Qx2OG30b6iuZ8CTMzRuW9yVtM7LJnRCUkIDMf
+         pCK5krcxJDSly3BgVY5Pxp/obymVKF3rFsgJbfNWE7hCYqRhoxwjCkLF0aysU8tl8KCG
+         GIGthHIPST5H+nxodUgXsG0ncJSY6JvjK75+aXDOvUNugFyyn1bbqA2gt2MvIOayPGzm
+         kIoP4UFZgH5zNXqTkXvlVwTp/vC5644vZkFuMm99OemEJrHhb5p/NlrSjK8LilZy8Ddz
+         +JNFVtafpVheKmpUQX0QOWcG8UFIGtLtziaRb04cZPUnIUF63cydXxtOOVKc1dINphiu
+         Gmyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=ayaN3phb;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=W51OsUX6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl14-20020a05620a1a8e00b00781c4f7c73bsi576071qkb.288.2024.01.08.12.53.10
+        by mx.google.com with ESMTPS id v19-20020a05622a015300b004299d9e8acdsi550354qtw.276.2024.01.08.12.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 12:53:10 -0800 (PST)
+        Mon, 08 Jan 2024 12:54:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=ayaN3phb;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=W51OsUX6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMwZy-00045K-7N; Mon, 08 Jan 2024 15:50:38 -0500
+	id 1rMwad-0006L8-M4; Mon, 08 Jan 2024 15:51:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwZY-0003o8-NU; Mon, 08 Jan 2024 15:50:13 -0500
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rMwZw-00043Q-WD; Mon, 08 Jan 2024 15:50:37 -0500
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rMwZF-00010T-8L; Mon, 08 Jan 2024 15:50:11 -0500
+ <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rMwZt-0000v9-L6; Mon, 08 Jan 2024 15:50:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=jjA+mKm/KR8ygCw36R3MvCf4i1b5Zw/aOnxUi6/7roc=; b=ayaN3phb+ckS8ROU9AY1SGuUTM
- ooSaOlRggGQVW9JWqJ+ibLgkjfCrdQKFACmIKNhsgzsvpneprXtirDm+QCqwpT1xljM/hGtQpHtWo
- nlIdMQueQhwP72M1QvdFWZShiYMP4hg2hlJQaaQ9uRW12q0D8ri/WO71OtJa/or3G4h9k5QShJSCj
- SI9lhYJ0PjPLqufG6HVzDbjbpT1yYv9p6pszsLVo9X4MdIkUslz8q+Ts+LVakHg/4zPYHCFhIhuh6
- miSZ4JJxO5mXWNpXPRBGPoRhCPXENfBznpyBU2IipG9GD85xVTsAmNeud8DZPp+pFdt4lcbjPtLmy
- nIFMhOHg==;
+ bh=uc7qG2cne/6E8+t91EtiLDMAE+B8LUD5xbmCp8tTbzY=; b=W51OsUX6uNMef+WOdKoBKEPVPC
+ l0ml+H8yYOCuYD7wGi99UEZz8kAiuHDfQMnIowBKwdmBZgV/FseLB9wsfW9NBF/9hTlPSgKb8sPbT
+ Rz/dYde3PWiVF1nj1oHbdRjdIJWaFu4zzaTQjsQ2wZ6fsux/b1qrQucpKv5XdU09eB2CeQtn085kL
+ fPtGEs9Lyi+1jaCl3c8zXbiOKhWcdUaGNdQ/dL6CSW0S4V5PGqwF0YPEUjhr1MvpAur/nK6MRrk4S
+ knwoPsI53hHdtH+Pv7fm2VJ2RJuqW/JfFDzL+n2PAaKMLsC12mbjmRy67qQO0maB4G7TPJIPjgHmC
+ OoLgn7hw==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1rMwYm-007wXn-0I; Mon, 08 Jan 2024 20:49:24 +0000
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1rMwYh-008RPP-WE; Mon, 08 Jan 2024 20:49:21 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYl-002NGG-05; Mon, 08 Jan 2024 20:49:23 +0000
+ Hat Linux)) id 1rMwYi-002NEF-2O; Mon, 08 Jan 2024 20:49:20 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,19 +115,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 32/46] hw/m68k/mcf5208: use qemu_create_nic_device()
-Date: Mon,  8 Jan 2024 20:27:01 +0000
-Message-ID: <20240108204909.564514-33-dwmw2@infradead.org>
+Subject: [PATCH v3 05/46] hw/i386/pc: use qemu_get_nic_info() and
+ pci_init_nic_devices()
+Date: Mon,  8 Jan 2024 20:26:34 +0000
+Message-ID: <20240108204909.564514-6-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- desiato.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
- envelope-from=BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org;
- helo=desiato.infradead.org
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -149,57 +150,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3NjDw4qhDOpP
+X-TUID: 52Ft3gv+bT98
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
----
- hw/m68k/mcf5208.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+Eliminate direct access to nd_table[] and nb_nics by processing the the
+Xen and ISA NICs first and then calling pci_init_nic_devices() for the
+rest.
 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index d22d8536db..0cfb806c20 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -206,16 +206,16 @@ static void mcf5208_sys_init(MemoryRegion *address_space, qemu_irq *pic)
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Paul Durrant <paul@xen.org>
+---
+ hw/i386/pc.c                | 26 ++++++++++++++++----------
+ include/hw/net/ne2000-isa.h |  2 --
+ 2 files changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 496498df3a..d80c536d88 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -658,8 +658,11 @@ static void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
+ {
+     static int nb_ne2k = 0;
+ 
+-    if (nb_ne2k == NE2000_NB_MAX)
++    if (nb_ne2k == NE2000_NB_MAX) {
++        error_setg(&error_fatal,
++                   "maximum number of ISA NE2000 devices exceeded");
+         return;
++    }
+     isa_ne2000_init(bus, ne2000_io[nb_ne2k],
+                     ne2000_irq[nb_ne2k], nd);
+     nb_ne2k++;
+@@ -1297,23 +1300,26 @@ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
+                  BusState *xen_bus)
+ {
+     MachineClass *mc = MACHINE_CLASS(pcmc);
+-    int i;
++    bool default_is_ne2k = g_str_equal(mc->default_nic, TYPE_ISA_NE2000);
++    NICInfo *nd;
+ 
+     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_NIC);
+-    for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-        const char *model = nd->model ? nd->model : mc->default_nic;
+ 
+-        if (xen_bus && (!nd->model || g_str_equal(model, "xen-net-device"))) {
++    if (xen_bus) {
++        while (nc = qemu_find_nic_info("xen-net-device", true, NULL)) {
+             DeviceState *dev = qdev_new("xen-net-device");
+             qdev_set_nic_properties(dev, nd);
+             qdev_realize_and_unref(dev, xen_bus, &error_fatal);
+-        } else if (g_str_equal(model, "ne2k_isa")) {
+-            pc_init_ne2k_isa(isa_bus, nd);
+-        } else {
+-            pci_nic_init_nofail(nd, pci_bus, model, NULL);
+         }
      }
++
++    while ((nd = qemu_find_nic_info(TYPE_ISA_NE2000, default_is_ne2k, NULL))) {
++        pc_init_ne2k_isa(isa_bus, nd);
++    }
++
++    /* Anything remaining should be a PCI NIC */
++    pci_init_nic_devices(pci_bus, mc->default_nic);
++
+     rom_reset_order_override();
  }
  
--static void mcf_fec_init(MemoryRegion *sysmem, NICInfo *nd, hwaddr base,
--                         qemu_irq *irqs)
-+static void mcf_fec_init(MemoryRegion *sysmem, hwaddr base, qemu_irq *irqs)
+diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
+index af59ee0b02..73bae10ad1 100644
+--- a/include/hw/net/ne2000-isa.h
++++ b/include/hw/net/ne2000-isa.h
+@@ -22,8 +22,6 @@ static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
  {
-     DeviceState *dev;
-     SysBusDevice *s;
-     int i;
+     ISADevice *d;
  
--    qemu_check_nic_model(nd, TYPE_MCF_FEC_NET);
--    dev = qdev_new(TYPE_MCF_FEC_NET);
--    qdev_set_nic_properties(dev, nd);
-+    dev = qemu_create_nic_device(TYPE_MCF_FEC_NET, true, NULL);
-+    if (!dev) {
-+        return;
-+    }
- 
-     s = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-@@ -267,14 +267,7 @@ static void mcf5208evb_init(MachineState *machine)
- 
-     mcf5208_sys_init(address_space_mem, pic);
- 
--    if (nb_nics > 1) {
--        error_report("Too many NICs");
--        exit(1);
--    }
--    if (nd_table[0].used) {
--        mcf_fec_init(address_space_mem, &nd_table[0],
--                     0xfc030000, pic + 36);
--    }
-+    mcf_fec_init(address_space_mem, 0xfc030000, pic + 36);
- 
-     g_free(pic);
- 
+-    qemu_check_nic_model(nd, "ne2k_isa");
+-
+     d = isa_try_new(TYPE_ISA_NE2000);
+     if (d) {
+         DeviceState *dev = DEVICE(d);
 -- 
 2.41.0
 

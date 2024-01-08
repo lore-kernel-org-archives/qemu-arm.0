@@ -1,197 +1,349 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2268241ejo;
-        Mon, 8 Jan 2024 05:08:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGQ7t2RK/UCTMV301HlT1dc5xIK3BWJV/mi2aeTtFp0lWUVM0ZvviAEMj/zCtZ1mzqgNq4m
-X-Received: by 2002:a05:620a:6892:b0:781:5234:56ed with SMTP id rv18-20020a05620a689200b00781523456edmr3575428qkn.92.1704719321352;
-        Mon, 08 Jan 2024 05:08:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704719321; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp7270ejs;
+        Mon, 8 Jan 2024 12:59:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEYUH3lhzwyl8buXWpACStoCfOkMqAKMENTrL1FLrLE+VrNME1afwbiShOmc2a/ucvXWmFz
+X-Received: by 2002:a05:620a:3942:b0:783:48e:b6e9 with SMTP id qs2-20020a05620a394200b00783048eb6e9mr9528094qkn.5.1704747582952;
+        Mon, 08 Jan 2024 12:59:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747582; cv=none;
         d=google.com; s=arc-20160816;
-        b=0twCSxLPgs4sfywHtwSM9A5TRelPKs3fL8c4jc85uEWX4LkODzuE0C+bJJIfvWsmTU
-         fqc8n7DudklU4yFkmu519mFoHZQPcpgSzJggiFlTC26L0DigBb+bQ2eHzCiFbF6NLqVc
-         qO1O4ZCj9vI/iETYRnOEtttHUzm+oYG+h5VjcEdWdFrh9mKFiwoM+aOqLDIRo7OL8RyK
-         HhGwO8mIE/12nqxq6YOkcapBQU3RfYnL2eg1h+oK1xhPV+Y8pWwQQJXE25yocIu3ToD7
-         4TW7U8nNCniUJpBg39QXtJBt+mMgWkEn71zzFu16PJ37tqLLikdd6oWFK/5xfaE2sRKC
-         QkzQ==
+        b=tnHWkYzNAGiHaNNrepEcJqruRtIAesuT3LDrvsOdwaBkogN6mAeKlfweruxXsL3Cb4
+         n5ocp2mN3nkiH0s69zHKsyGPhBTKspeQBJcGIvPsVK1YFGNy75bSmO7m3qeOShXd72Kb
+         WCGxpGH5ATalQyLM0umIy2CiAbTOM7oo85nulSR04+FUbnoyhiG7LACA7dkMicw2Ho7E
+         0tKBdZyX39VStS9XyMIkr7AME0kajtP1bE6FZbegjlyBB958Inwv2A1MzvWXIqEXxB00
+         FCPltynVkvMZNZah/YQh2aPjkx7juHRH622s3rgq7UPTxr00/mHKG2W6n7FSKFoTkAWW
+         q1zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=qRGkre4BD6hOHc5l0m0uf0cMrl5kOZ9XmzivJhgY/R0=;
-        fh=cKhYZuA4dziQ7Wqnsq6LgUAvSsSS1lnAmKK9i7nSK/g=;
-        b=KoA4w9DvcdpZHrzHBSVqqvyh3GeGfk87haSreFOxpfx2fO3VttJroxZbvd/VFJ1JpA
-         GTx0Lr+dhcnjM3q9crgYDyNFHyYetU/R2s9O/6dQGBljFxoTo/63ekCjiJQH/eOOpuqo
-         QsxqvAHa4k3iQqFHrGf0F7dfeV+ghIYSlc8LnKhKNB76z+RT4kPEWEVRZMisNYPP3D/H
-         m7VtfVNfTVXNAJQf0i/kUeTlPT3bm96VCzIysp/JA9PwXnLKJOffYegFG1L1+F/MsQKn
-         xAtqDqEQ81IjZNuajBLyUlNlIHFCHD3b/bx8DuCNk2/HVbPMr3VELvmiZtiiRk1g6WXy
-         UlWw==
+        h=sender:content-transfer-encoding:mime-version:message-id:date
+         :subject:cc:to:from:dkim-signature:precedence:errors-to
+         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
+        bh=L372ttgGvDGyyCghqVoINE0k487r36oJ8nW8vjTjSug=;
+        fh=TyBrkLvq7lwd9D5T7c2YdjFfl5v0NLwCo1XfP1ynNa4=;
+        b=mNwjpDouPQ4Q8j64vQnZX/Zb7PzBGK0ToCrRlWU78fktDCIg0yWXTOOfTXTRU5Cl/b
+         mnFcevgVqOeddTObpBgoXQkiTqAQOuMGEsocTslpBvRwitrAWY+X0rJZG/Oj0hyMnV1I
+         zdHwwxsur6fQ684LsE4NtjUpSB8aIQR8X7UZuxUFzXY1jKU55zxLHveT31c2ChWRk3Ga
+         eGB5NEFlV7z1Z3Pm5JRCSYjfQUY0BZZXLU6tDkUKeAfTsqHHPJr1zvJ/YSNfqGfHJn2Q
+         WiFStJBT/R9xVLLIfCsfnz7r26k6WhyccByordHp6DiAG+9wBwOEP5CiAG2EXaZkc8Qu
+         dhEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NSl5oYXx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v12-20020a05620a440c00b00781cbe35244si7983190qkp.679.2024.01.08.05.08.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 05:08:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=NWMmXTt4;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id j3-20020a05620a000300b00781adc17f0fsi540909qki.63.2024.01.08.12.59.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Jan 2024 12:59:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NSl5oYXx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMpMB-0003Dn-QS; Mon, 08 Jan 2024 08:07:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1rMpM9-0003Cw-8X; Mon, 08 Jan 2024 08:07:53 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1rMpM6-0004q3-4d; Mon, 08 Jan 2024 08:07:52 -0500
-Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 408D2EA0020592; Mon, 8 Jan 2024 13:07:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=qRGkre4BD6hOHc5l0m0uf0cMrl5kOZ9XmzivJhgY/R0=;
- b=NSl5oYXx12nrV3salCl7QgvLtaZaCyZ3hjsbPz4Wkn9DRZKQcHvMhAUQ/1AX2+6JjZB4
- oOIRH1v4UvZwFKAgIzeb0+RPUN+7PSf5zvBgF+hlVA3RY1U62s+jjuMi2+cEqP+LYUDK
- TncOicTUOdaXKRHqgZMu5PBBcUkWML4YK59VuF7+bL0XUti98ASmNWvsuVOsmt1eZTDx
- 4IiQwahLEWHvb6ftcKaeLCzcugR8m3BbCz/pIv5JN4tV+r4QoVe2qw3saIrRrzgTBnNu
- qKm8XNixGYoy56mnnujQ6+q1g0xwdGUfJkeyXkFTdPFrPiXBV66CfcAoAPRhUqayx8tp jw== 
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vghk385br-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 08 Jan 2024 13:07:45 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 408Adjsq000893; Mon, 8 Jan 2024 13:07:43 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkdjynse-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 08 Jan 2024 13:07:43 +0000
-Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
- [10.20.54.100])
- by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 408D7gg244171952
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 8 Jan 2024 13:07:42 GMT
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 048782004B;
- Mon,  8 Jan 2024 13:07:42 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D5DBD20043;
- Mon,  8 Jan 2024 13:07:41 +0000 (GMT)
-Received: from [9.155.200.166] (unknown [9.155.200.166])
- by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  8 Jan 2024 13:07:41 +0000 (GMT)
-Message-ID: <99bf8c28ebd44be8dc59a911985e571afc15b8b1.camel@linux.ibm.com>
-Subject: Re: [PATCH] tests/tcg: Don't #include <inttypes.h> in
- aarch64/system/vtimer.c
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Peter
- Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Mon, 08 Jan 2024 14:07:41 +0100
-In-Reply-To: <1c18863a-ecf9-4522-af75-793cd358c745@linaro.org>
-References: <20240108125030.58569-1-iii@linux.ibm.com>
- <1c18863a-ecf9-4522-af75-793cd358c745@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
-MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: sTyhFZiEd253q3Z29v0IB7-iJyzTyJZG
-X-Proofpoint-ORIG-GUID: sTyhFZiEd253q3Z29v0IB7-iJyzTyJZG
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-08_04,2024-01-08_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- phishscore=0 suspectscore=0 mlxlogscore=528 impostorscore=0 clxscore=1015
- spamscore=0 malwarescore=0 mlxscore=0 bulkscore=0 adultscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401080112
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=NWMmXTt4;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
+Received: from list by lists.xenproject.org with outflank-mailman.663970.1034046 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1rMwhq-0004cW-Cc; Mon, 08 Jan 2024 20:58:46 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 663970.1034046; Mon, 08 Jan 2024 20:58:46 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1rMwhq-0004cM-8x; Mon, 08 Jan 2024 20:58:46 +0000
+Received: by outflank-mailman (input) for mailman id 663970;
+ Mon, 08 Jan 2024 20:58:44 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=CNLN=IS=desiato.srs.infradead.org=BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
+ id 1rMwaa-0000R6-HJ
+ for xen-devel@lists.xenproject.org; Mon, 08 Jan 2024 20:51:16 +0000
+Received: from desiato.infradead.org (desiato.infradead.org
+ [2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id a7eaf613-ae67-11ee-9b0f-b553b5be7939;
+ Mon, 08 Jan 2024 21:51:11 +0100 (CET)
+Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1rMwYi-007wXG-2o; Mon, 08 Jan 2024 20:49:21 +0000
+Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
+ Hat Linux)) id 1rMwYi-002NDu-0s; Mon, 08 Jan 2024 20:49:20 +0000
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +FbgJBFAwvK/
+X-Inumbo-ID: a7eaf613-ae67-11ee-9b0f-b553b5be7939
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=L372ttgGvDGyyCghqVoINE0k487r36oJ8nW8vjTjSug=; b=NWMmXTt4xusPOFX8+KCmWpTwJ9
+	OySgvY/alBXUcnvRQbEqI1+AUox7eNasSqEoppkdivwIk8kd/AZuBvraLSgvDkq9XodnLXOx/7W4V
+	Iwey267nbJxyP+KA2JRZYmeyZyV6wGE35cismr6ljabQ+bvk2pFOz+gauExaWPfM749zYJ+cimPpL
+	gF4EAEbQLOqYf5g3bVXutPfiyKMv5KuC73axdVXDPJcTwxBEURLZH9LtliAmm5F4Tsd5vnaEdE5Ni
+	5x+SAOcKc7SfLHVSSJWvds3t6HefsBhxJYNb84J9HfwgG8+UhlCILY+4CoVkcC2oZ3Y0HVaNHdIN0
+	jpplR4rw==;
+From: David Woodhouse <dwmw2@infradead.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Jan Kiszka <jan.kiszka@web.de>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Hao Wu <wuhaotsh@google.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Helge Deller <deller@gmx.de>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Song Gao <gaosong@loongson.cn>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jason Wang <jasowang@redhat.com>,
+	Jia Liu <proljc@gmail.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	xen-devel@lists.xenproject.org
+Subject: [PATCH v3 00/46] Rework matching of network devices to -nic options
+Date: Mon,  8 Jan 2024 20:26:29 +0000
+Message-ID: <20240108204909.564514-1-dwmw2@infradead.org>
+X-Mailer: git-send-email 2.41.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Sender: David Woodhouse <dwmw2@infradead.org>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by desiato.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: psV3VDBU6X0z
 
-On Mon, 2024-01-08 at 13:56 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Ilya,
->=20
-> On 8/1/24 13:50, Ilya Leoshkevich wrote:
-> > make check-tcg fails on Fedora with:
-> >=20
-> > =C2=A0=C2=A0=C2=A0=C2=A0 vtimer.c:9:10: fatal error: inttypes.h: No suc=
-h file or
-> > directory
-> >=20
-> > Fedora has a minimal aarch64 cross-compiler, which satisfies the
-> > configure checks, so it's chosen instead of the dockerized one.
-> > There is no cross-version of inttypes.h, however.
->=20
-> Presumably this isn't specific to aarch64 target, so what about
-> the other uses, shouldn't we clean all similar uses at once?
->=20
-> $ git grep inttypes.h tests/tcg | wc -l
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 26
 
-As far as I can see, these 26 occurrences are for user tests.
+Most platforms iterating directly over the nd_table[] are doing one of 
+two things. Either they are creating the NIC for their platform and want
+to find a matching -nic configuration for it, if such exists. Or they
+are only going to create that platform NIC if a matching config *does*
+exist.
 
-These work fine; I assume this is because the user cross-compiler is
-chosen using a stricter configure check:
+All of those can be converted to the new qemu_configure_nic_device()
+and qemu_create_nic_device() functions. The latter of which will call
+qdev_new() to create the device (and apply the config) if a matching
+NIC config does exist for it. The existing behaviour of each platform
+has been preserved for now, despite it being apparently fairly random.
 
-    write_c_skeleton
-    case $1 in
-      *-softmmu)
-        if do_compiler "$target_cc" $target_cflags -o $TMPO -c $TMPC &&
-          do_compiler "$target_cc" $target_cflags -r -nostdlib -o
-"${TMPDIR1}/${TMPB}2.o" "$TMPO" -lgcc; then
-          got_cross_cc=3Dyes
-          break
-        fi
-        ;;
-      *)
-        if do_compiler "$target_cc" $target_cflags -o $TMPE $TMPC -
-static ; then
-          build_static=3Dy
-          got_cross_cc=3Dyes
-          break
-        fi
-        if do_compiler "$target_cc" $target_cflags -o $TMPE $TMPC ;
-then
-          build_static=3D
-          got_cross_cc=3Dyes
-          break
-        fi
-        ;;
-    esac
+PCI and indeed XenBus can use a qemu_create_nic_bus_devices() which will 
+create all NICs that live on a given bus type. That covers most 
+platforms, but some PCI platforms do something special with the first 
+NIC of a given type, placing it in the slot where it would have been on 
+the real hardware. There were various inconsistencies in the way the 
+platforms did so, and whether they cared what model the NIC was. Those 
+subtle behavioural changes I *have* allowed to change, and now the 
+pci_init_nic_slot() function will pick the first NIC that the user 
+specified which isn't explicitly *not* the default type, and put that
+in the specified slot.
 
-[...]
+The tests for npcm7xx used to lament that they had to instantiate both
+NICs even when they wanted to test only the second, because there was
+no way to specify which hardware devices gets which configuration. I
+made that untrue, by allowing 'emc0' and 'emc1' aliases, and fixed up
+the test accordingly.
+
+There are one or two special cases which want to do special things with
+the MAC address of the primary NIC, to set up a system identification
+(or force it to use an Apple OUI, in the case of m68k/q400). All those
+work out relatively cleanly too.
+
+And I can clean up the ugly patch which fixed up the Xen network device 
+handling, and replace it with a simple call to the new 
+qemu_create_nic_bus_devices() function.
+
+I suspect that we can remove the pci_init_nic_devices() from platform
+code and just do it later, except for platforms which *care* which
+PCI bus the dynamic devices go on (is that just sun4u which puts its
+primary NIC onto a different bus?).
+
+Finally, while we're at it, clean up -nic model=help to only print
+the device models which are actually usable on the given platform
+rather than just listing them *all*.
+
+And now we can make nd_table[] and nb_nics static in net/net.c because
+nothing else has any business poking at them directly.
+
+ v3: Rebase to 8.2
+
+ v2: Some build fixes after better coverage testing, revert the Xen fix
+     in this series because I'm putting the less invasive hack into 8.2
+     (hopefully).
+
+David Woodhouse (46):
+      net: add qemu_{configure,create}_nic_device(), qemu_find_nic_info()
+      net: report list of available models according to platform
+      net: add qemu_create_nic_bus_devices()
+      hw/pci: add pci_init_nic_devices(), pci_init_nic_in_slot()
+      hw/i386/pc: use qemu_get_nic_info() and pci_init_nic_devices()
+      hw/xen: use qemu_create_nic_bus_devices() to instantiate Xen NICs
+      hw/alpha/dp264: use pci_init_nic_devices()
+      hw/arm/sbsa-ref: use pci_init_nic_devices()
+      hw/arm/virt: use pci_init_nic_devices()
+      hw/hppa: use pci_init_nic_devices()
+      hw/loongarch: use pci_init_nic_devices()
+      hw/mips/fuloong2e: use pci_init_nic_devices()
+      hw/mips/malta: use pci_init_nic_devices()
+      hw/mips/loongson3_virt: use pci_init_nic_devices()
+      hw/ppc/prep: use pci_init_nic_devices()
+      hw/ppc/spapr: use qemu_get_nic_info() and pci_init_nic_devices()
+      hw/ppc: use pci_init_nic_devices()
+      hw/sh4/r2d: use pci_init_nic_devices()
+      hw/sparc64/sun4u: use pci_init_nic_devices()
+      hw/xtensa/virt: use pci_init_nic_devices()
+      hw/arm/allwinner: use qemu_configure_nic_device()
+      hw/arm/aspeed: use qemu_configure_nic_device()
+      hw/arm/exynos4: use qemu_create_nic_device()
+      hw/arm/fsl: use qemu_configure_nic_device()
+      hw/net/smc91c111: use qemu_configure_nic_device()
+      hw/net/lan9118: use qemu_configure_nic_device()
+      hw/arm/highbank: use qemu_create_nic_device()
+      hw/arm/npcm7xx: use qemu_configure_nic_device, allow emc0/emc1 as aliases
+      hw/arm/stellaris: use qemu_find_nic_info()
+      hw/arm: use qemu_configure_nic_device()
+      hw/net/etraxfs-eth: use qemu_configure_nic_device()
+      hw/m68k/mcf5208: use qemu_create_nic_device()
+      hw/m68k/q800: use qemu_find_nic_info()
+      hw/microblaze: use qemu_configure_nic_device()
+      hw/mips/mipssim: use qemu_create_nic_device()
+      hw/mips/jazz: use qemu_find_nic_info()
+      hw/net/lasi_i82596: use qemu_configure_nic_device()
+      hw/openrisc/openrisc_sim: use qemu_create_nic_device()
+      hw/riscv: use qemu_configure_nic_device()
+      hw/s390x/s390-virtio-ccw: use qemu_create_nic_device()
+      hw/sparc/sun4m: use qemu_find_nic_info()
+      hw/xtensa/xtfpga: use qemu_create_nic_device()
+      net: remove qemu_check_nic_model()
+      hw/pci: remove pci_nic_init_nofail()
+      net: remove qemu_show_nic_models(), qemu_find_nic_model()
+      net: make nb_nics and nd_table[] static in net/net.c
+
+ hw/alpha/dp264.c                         |   4 +-
+ hw/arm/allwinner-a10.c                   |   6 +-
+ hw/arm/allwinner-h3.c                    |   6 +-
+ hw/arm/allwinner-r40.c                   |  27 +---
+ hw/arm/aspeed.c                          |   9 +-
+ hw/arm/exynos4_boards.c                  |   6 +-
+ hw/arm/fsl-imx25.c                       |   2 +-
+ hw/arm/fsl-imx6.c                        |   2 +-
+ hw/arm/fsl-imx6ul.c                      |   2 +-
+ hw/arm/fsl-imx7.c                        |   2 +-
+ hw/arm/gumstix.c                         |   6 +-
+ hw/arm/highbank.c                        |  12 +-
+ hw/arm/integratorcp.c                    |   5 +-
+ hw/arm/kzm.c                             |   4 +-
+ hw/arm/mainstone.c                       |   3 +-
+ hw/arm/mps2-tz.c                         |   8 +-
+ hw/arm/mps2.c                            |   2 +-
+ hw/arm/msf2-soc.c                        |   6 +-
+ hw/arm/musicpal.c                        |   3 +-
+ hw/arm/npcm7xx.c                         |  16 +-
+ hw/arm/realview.c                        |  25 ++-
+ hw/arm/sbsa-ref.c                        |   4 +-
+ hw/arm/stellaris.c                       |  30 +++-
+ hw/arm/versatilepb.c                     |  15 +-
+ hw/arm/vexpress.c                        |   4 +-
+ hw/arm/virt.c                            |   4 +-
+ hw/arm/xilinx_zynq.c                     |  11 +-
+ hw/arm/xlnx-versal.c                     |   7 +-
+ hw/arm/xlnx-zynqmp.c                     |   8 +-
+ hw/cris/axis_dev88.c                     |   9 +-
+ hw/hppa/machine.c                        |   7 +-
+ hw/i386/pc.c                             |  33 ++--
+ hw/i386/pc_piix.c                        |   2 +-
+ hw/i386/pc_q35.c                         |   2 +-
+ hw/loongarch/virt.c                      |   4 +-
+ hw/m68k/mcf5208.c                        |  19 +--
+ hw/m68k/q800.c                           |  29 ++--
+ hw/microblaze/petalogix_ml605_mmu.c      |   3 +-
+ hw/microblaze/petalogix_s3adsp1800_mmu.c |   3 +-
+ hw/mips/fuloong2e.c                      |  16 +-
+ hw/mips/jazz.c                           |  15 +-
+ hw/mips/loongson3_virt.c                 |   4 +-
+ hw/mips/malta.c                          |  15 +-
+ hw/mips/mipssim.c                        |  13 +-
+ hw/net/etraxfs_eth.c                     |   5 +-
+ hw/net/lan9118.c                         |   5 +-
+ hw/net/lasi_i82596.c                     |   3 +-
+ hw/net/smc91c111.c                       |   5 +-
+ hw/openrisc/openrisc_sim.c               |  18 +--
+ hw/pci/pci.c                             |  73 +++------
+ hw/ppc/e500.c                            |   4 +-
+ hw/ppc/mac_newworld.c                    |   4 +-
+ hw/ppc/mac_oldworld.c                    |   4 +-
+ hw/ppc/ppc440_bamboo.c                   |  14 +-
+ hw/ppc/prep.c                            |   8 +-
+ hw/ppc/spapr.c                           |  18 +--
+ hw/riscv/microchip_pfsoc.c               |  14 +-
+ hw/riscv/sifive_u.c                      |   7 +-
+ hw/s390x/s390-virtio-ccw.c               |  11 +-
+ hw/sh4/r2d.c                             |   6 +-
+ hw/sparc/sun4m.c                         |  20 ++-
+ hw/sparc64/sun4u.c                       |  27 +---
+ hw/xen/xen-bus.c                         |   6 +-
+ hw/xen/xen_devconfig.c                   |  25 ---
+ hw/xenpv/xen_machine_pv.c                |   9 --
+ hw/xtensa/virt.c                         |   4 +-
+ hw/xtensa/xtfpga.c                       |  13 +-
+ include/hw/cris/etraxfs.h                |   2 +-
+ include/hw/i386/pc.h                     |   4 +-
+ include/hw/net/lan9118.h                 |   2 +-
+ include/hw/net/ne2000-isa.h              |   2 -
+ include/hw/net/smc91c111.h               |   2 +-
+ include/hw/pci/pci.h                     |   7 +-
+ include/hw/xen/xen-bus.h                 |   2 +-
+ include/hw/xen/xen-legacy-backend.h      |   1 -
+ include/net/net.h                        |  18 +--
+ net/net.c                                | 253 +++++++++++++++++++++++++------
+ system/globals.c                         |   2 -
+ tests/qtest/npcm7xx_emc-test.c           |  18 +--
+ 79 files changed, 479 insertions(+), 550 deletions(-)
+
+
+

@@ -1,122 +1,120 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2234550ejo;
-        Mon, 8 Jan 2024 04:03:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE1Y05cPMb6oi8cgQf2MwJkZMCSuqnVMXVBcbvl5RK2gQlcwJiI+0cHPeBjBexkWpK+12rc
-X-Received: by 2002:a05:6214:488:b0:67f:5784:bf26 with SMTP id pt8-20020a056214048800b0067f5784bf26mr6435275qvb.47.1704715402331;
-        Mon, 08 Jan 2024 04:03:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704715402; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2223076ejo;
+        Mon, 8 Jan 2024 03:35:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFYPr7muQyreva4I3YbYZhvGEVTQ5+QDHCa5cwMkxr0Cm6VSgaD5TdKHqusm6fllEF5h9Pm
+X-Received: by 2002:a05:622a:304:b0:429:8218:f9d5 with SMTP id q4-20020a05622a030400b004298218f9d5mr4586594qtw.11.1704713710245;
+        Mon, 08 Jan 2024 03:35:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704713710; cv=none;
         d=google.com; s=arc-20160816;
-        b=pLwg1pSI2N6aZJCVuAQaXWB6va2b9ZiuBBaoFR/IikF7FwPV1RBr94mdcgBqTp59b7
-         jraZgyfPMSF9Ws7M+SSIuo3pCkS0EBmEakVbjlqPPb3TeJC86/FVWweCWQIx7MiipzoZ
-         cPKM9IVNY4T938xHNkOTYv9HdNBxNSnzrW5dPURJ8uCo5cp2DOskjzDWVUPOLCBfov0X
-         FoL1p287x5LbfQve30qNoLVsBUTMSrx3HApB8tSRwUcY86ITPUrsA74bGrTNfKtXB+xp
-         d95vhWdB7asly3y7i79osCaavHkszlV0x7bYjnCPuE9xmEVXFHhrvdw+zbFoYSXTXygm
-         Aj2Q==
+        b=AX+8J6FK7XvxxJo0D34moCd82V+gHw5N97hE50z7qQZ7VyBOe/p0j8ifnVRKkb8qfG
+         +gjJor7AjAFNp4hcHBHH+6Kkw4g2S03CoRFcRpfOQNHlbQShQ4/97ktNp9Sq3xoMGfDg
+         kR6gHfPGt5WVHmXTrq0MeKXf1vLDR6aCeYhdLW5YsqlJjs73C/TQh/QwIIcVhrQw8i6+
+         cca+5z98IjNnEc5dNS6YM8FfDLiRBOOCKoWYJPHpL5hH4sRTDQSn3nX7l5ZIeNhsBR29
+         LugmZTGXhdnMZkt5OAU3xX2LQlT3pEwNbJ1+O+tv6wEFQvT8TzxZdtw5z6Q75p5MN5D1
+         vm3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zpymm/kt3CHzXmb7fCv0GtjP6/svBoF6IF2skQ/PclE=;
-        fh=2fVZqZt1+HwIA6QyNWBW0YENHVKwH6/KbylVC4hHYL4=;
-        b=PDlc3IkpG3hznbJwYOthDQT4VNWC1pYN+0/qu1g4UxZeYxJ6Ss38bTWWEzQG4USzq+
-         17vzb3TgRqDxP0wlg41tKSUrFT1Z3XC8z++VpE/f6gJz3MFtDDRRVHikhy0l9zHn43cz
-         magyPqluFmJ9F18onJb7frKQQfsYZeZytXVxOQRadcLjZenh10Oh9rpesdlmrHnjQSr2
-         odIsIhobuy1nU4FEhT+ws4yk9jAL7V/xgooG4Fesn17WqeN0HkJlb8d5b6WUs9j3Kgcz
-         I1pgxHMu93GJEHfOhajeP5KcQtZEh/OnSa87E4w5+kdHZ66DJb9Q8V+UiieW4n7vPDhL
-         SyqQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=ykj9rb5faTIAKtTXYqY6/zCYcpj8jVy1GLb0MO00h10=;
+        fh=kv6Jf0pw1WY3asWg4h2YxETjvawAmIzYBKRuDZhHxDg=;
+        b=PdHgHVd5/K+aYEFrZmFVR6uXAFkRMXmakSfYmBmj7BREy975jK3BDMLITx4WE79seR
+         x+qhW65n45e0sgr5rFEiKf90zcFEMRS6lCMA5i7K4jwSXJbItZpAUzcWHH0Cooq1UBCc
+         s1kESPOWuBYfUxtMPytvIw9dxX5TnPtoLwQmo2F3Lkpbv0GTsOD/DuriRPYR3pC8tvu3
+         4mAFufsKBIhAs1I9EuUsmWhCrbssdtwKLPeyM+PZC6IpM7HmbDStSydVjSOW/3Y3l0iB
+         z77ozHOooRi5w44wQCoKrV30b5DWZ45afl8AsSPPz0+aiitijYmqAv13elBJTSZkNGzX
+         uyCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nus1EJW5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Vsx0eRjr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020a0c8e8c000000b0067f85fb3dd2si7652560qvb.465.2024.01.08.04.03.22
+        by mx.google.com with ESMTPS id fc24-20020a05622a489800b00428301e1bfbsi7941602qtb.8.2024.01.08.03.35.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 04:03:22 -0800 (PST)
+        Mon, 08 Jan 2024 03:35:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nus1EJW5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Vsx0eRjr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMoLY-0001h8-0N; Mon, 08 Jan 2024 07:03:12 -0500
+	id 1rMnu9-00027V-Kt; Mon, 08 Jan 2024 06:34:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMoLW-0001gr-Ie
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 07:03:10 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rMnu7-000267-Dd
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 06:34:51 -0500
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMoLV-0005br-2Y
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 07:03:10 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-40e461c1f44so9919395e9.3
- for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 04:03:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rMnu5-0006y9-54
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 06:34:51 -0500
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-5ce2aada130so296320a12.1
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 03:34:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704715387; x=1705320187; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zpymm/kt3CHzXmb7fCv0GtjP6/svBoF6IF2skQ/PclE=;
- b=Nus1EJW5PtDhVmkZVmUOwTmtEO4w5LsJWs88dHd8qt1h3Cexl7R+TIMaaLukV/7Fay
- p+0VjeN8HQ1GOP/PWOElCKxc4ng+2s9ceAWrlnixMWAywNMfauSm4pmmgdw5r0/2JOYu
- ReKhwb3AlLFxXO5yKlW3/t0wq2CPS8+bcagyprNg6o74JPpDaJRNR03CEjYg2E/fcckW
- 5pQgcSPML8lqQ5bb0TsUyqocJaIC/lqQW4s99nqdbDb3XfoTSX5DHA4udd3LkdjrR0dH
- Vevv/1Z7q85Qvvyg7czpumePDXd+qzeChQSQoB5RjblxGl1aBbgq+hO+zvY3yZrRDETa
- tQhg==
+ d=ventanamicro.com; s=google; t=1704713686; x=1705318486; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=ykj9rb5faTIAKtTXYqY6/zCYcpj8jVy1GLb0MO00h10=;
+ b=Vsx0eRjrIzolNbNxwD8cV1w5n4L6RMeRNmObCi14yQ/90ZVRUEiwR8PzuV+y1kOjCj
+ Xbo4v/eOqOraevFhLrnIYhkgAO/E5ai0GF/UKt3EqG5/lHFQcRRndNgiZRoDPnH2AXYC
+ qjfI2352fqvjFej0QkhxVWBc6FxcmoF7lGEk00xgdAGdMi0a16IAM2CLIB6LAzXioJ8f
+ LXt6TAVMXBWVVv7Cvlcwpw2i2xwmIPsEx431+WdpJ0352AbiUxow2lSBEJJLU3BjZs4J
+ b6jqPVJ0+DHV0hmWahNSYxPCL0e3apUxrtelf+okQ1YNWF9EeJs+YQXLbUxusrRnJhBr
+ /B/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704715387; x=1705320187;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zpymm/kt3CHzXmb7fCv0GtjP6/svBoF6IF2skQ/PclE=;
- b=RxYxGH7/ER6i78K8rkKPpnnFCogKqvjq3QBwWJVr4R1g/0T6OvhfXK8NcmL+mwONzN
- oe+EqqZUC1xIYZBYzezLnrP3uCQiBHn/77PjwTjs+EUQ/wrbIjp63gCXe7VX5+/m/J3b
- wBFfmBBZlPY3t0QNJUOM2gpvq9pfmAdKDSA/TuzqD1Udoj3IjRYiE2t7XHTbyD3yP6Tq
- 89jkDis8Or0PfBfItwJ6E/4OnvZIkbnsTobIXUNucWEYVZ+t6UZQyw/GE3A8HCZYxzrB
- 49RxUa2R7DvGQNrtyyPPd4FjL5i1iQtPWXbgxY1t0fc6s/JwmVtP5IHv00Bx/TpuTQ/w
- qVdw==
-X-Gm-Message-State: AOJu0YysMllJDiMhMZn1HR7hmcqLTjEP+Req92qTavaRg6hiFfc65e4o
- jDiJuHxtXyhLZGFsGLmh7Wp99oiEZzifFQ==
-X-Received: by 2002:a05:600c:6907:b0:40d:88bc:a896 with SMTP id
- fo7-20020a05600c690700b0040d88bca896mr1859077wmb.62.1704715387557; 
- Mon, 08 Jan 2024 04:03:07 -0800 (PST)
-Received: from [192.168.1.102] ([176.176.175.62])
+ d=1e100.net; s=20230601; t=1704713686; x=1705318486;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ykj9rb5faTIAKtTXYqY6/zCYcpj8jVy1GLb0MO00h10=;
+ b=IMTIqmx9/wt/wjUyiJocGfz5bYVYKbc2FyKE47Jp7kC10I9MhhKP+3Y42OmOLRXQh9
+ KCNj0ZcR2R+3U2HD9/GSY6SRE39ES4v5s2BwK4nDLjtUs6TDod25d03noJtgttDW7/ol
+ 0TF3P8SDh9ZcBjLGsksDk0sbqGWpckoenAPvFKeyCM4Jj4/MTcuwTwVA9uki7QZl8jwU
+ 0Drwwb8SX2GQ1RVKdLEfjiZ33vddVgO6mJRLtIm+1ln31TBtqyzL5GZqyZaWccBza1cU
+ ehmDFCr6H+saQz2JmoIA2XvGAAS6PvwB9hcuXsCuydTpCYnw4wp3g/ROQnsI6zCoSm2Y
+ GOgw==
+X-Gm-Message-State: AOJu0YwXUIng2AgYRMf4hvLB8YTM2sdQgdR7fY3xTCFsVoVBj5b+JVNo
+ gixIolwtIhmqw+zUHaPbL46sfUfEnxsPcA==
+X-Received: by 2002:a05:6a20:13d1:b0:196:d90:aa62 with SMTP id
+ ho17-20020a056a2013d100b001960d90aa62mr887356pzc.121.1704713686162; 
+ Mon, 08 Jan 2024 03:34:46 -0800 (PST)
+Received: from sunil-laptop ([106.51.188.200])
  by smtp.gmail.com with ESMTPSA id
- bg11-20020a05600c3c8b00b0040d6ffae526sm10813708wmb.39.2024.01.08.04.03.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jan 2024 04:03:07 -0800 (PST)
-Message-ID: <0ba00ce5-0b4c-4e43-890d-9ebe6ecca6bc@linaro.org>
-Date: Mon, 8 Jan 2024 13:03:05 +0100
+ j23-20020a17090aeb1700b0028b89520c7asm5986211pjz.9.2024.01.08.03.34.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jan 2024 03:34:45 -0800 (PST)
+Date: Mon, 8 Jan 2024 17:04:36 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Cc: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, mst@redhat.com,
+ imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com
+Subject: Re: [RESEND RFC v1 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR
+ creation to common location
+Message-ID: <ZZvdzOjQBbxfmuRJ@sunil-laptop>
+References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
+ <20240105090608.5745-2-jeeheng.sia@starfivetech.com>
+ <7cb2ab36-811a-477f-b2de-1f581150a595@ventanamicro.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/3] hw/arm/armv7m: alias the NVIC "num-prio-bits"
- property
-Content-Language: en-US
-To: Samuel Tardieu <sam@rfc1149.net>, qemu-devel@nongnu.org
-Cc: Anton Kochkov <anton.kochkov@proton.me>, qemu-arm@nongnu.org,
- Alexandre Iooss <erdnaxe@crans.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240106181503.1746200-1-sam@rfc1149.net>
- <20240106181503.1746200-3-sam@rfc1149.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240106181503.1746200-3-sam@rfc1149.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7cb2ab36-811a-477f-b2de-1f581150a595@ventanamicro.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,21 +129,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WN23mkvPwqV6
+X-TUID: sbGpeL4/zrO9
 
-On 6/1/24 19:15, Samuel Tardieu wrote:
-> A SoC will not have a direct access to the NVIC embedded in its ARM
-> core. By aliasing the "num-prio-bits" property similarly to what is
-> done for the "num-irq" one, a SoC can easily configure it on its
-> armv7m instance.
+On Fri, Jan 05, 2024 at 09:19:14AM -0300, Daniel Henrique Barboza wrote:
 > 
-> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/arm/armv7m.c         | 2 ++
->   include/hw/arm/armv7m.h | 1 +
->   2 files changed, 3 insertions(+)
+> 
+> On 1/5/24 06:06, Sia Jee Heng wrote:
+> > RISC-V should also generate the SPCR in a manner similar to ARM.
+> > Therefore, instead of replicating the code, relocate this function
+> > to the common AML build.
+> > 
+> > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> > ---
+> >   hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+> >   hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
+> >   include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+> >   include/hw/acpi/aml-build.h |  4 +++
+> >   4 files changed, 115 insertions(+), 41 deletions(-)
+> > 
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > index af66bde0f5..1efa534aa8 100644
+> > --- a/hw/acpi/aml-build.c
+> > +++ b/hw/acpi/aml-build.c
+> > @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+> >       }
+> >   }
+> > +void build_spcr(GArray *table_data, BIOSLinker *linker,
+> > +                const AcpiSpcrData *f, const char *oem_id,
+> > +                const char *oem_table_id)
+> > +{
+> > +    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = oem_id,
+> > +                        .oem_table_id = oem_table_id };
+> > +
+> > +    acpi_table_begin(&table, table_data);
+> > +    /* Interface type */
+> > +    build_append_int_noprefix(table_data, f->interface_type, 1);
+> > +    /* Reserved */
+> > +    build_append_int_noprefix(table_data, 0, 3);
+> > +    /* Base Address */
+> > +    build_append_gas(table_data, f->base_addr.id, f->base_addr.width,
+> > +                     f->base_addr.offset, f->base_addr.size,
+> > +                     f->base_addr.addr);
+> > +    /* Interrupt type */
+> > +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
+> > +    /* IRQ */
+> > +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
+> > +    /* Global System Interrupt */
+> > +    build_append_int_noprefix(table_data, f->interrupt, 4);
+> > +    /* Baud Rate */
+> > +    build_append_int_noprefix(table_data, f->baud_rate, 1);
+> > +    /* Parity */
+> > +    build_append_int_noprefix(table_data, f->parity, 1);
+> > +    /* Stop Bits */
+> > +    build_append_int_noprefix(table_data, f->stop_bits, 1);
+> > +    /* Flow Control */
+> > +    build_append_int_noprefix(table_data, f->flow_control, 1);
+> > +    /* Terminal Type */
+> > +    build_append_int_noprefix(table_data, f->terminal_type, 1);
+> > +    /* PCI Device ID  */
+> > +    build_append_int_noprefix(table_data, f->pci_device_id, 2);
+> > +    /* PCI Vendor ID */
+> > +    build_append_int_noprefix(table_data, f->pci_vendor_id, 2);
+> > +    /* PCI Bus Number */
+> > +    build_append_int_noprefix(table_data, f->pci_bus, 1);
+> > +    /* PCI Device Number */
+> > +    build_append_int_noprefix(table_data, f->pci_device, 1);
+> > +    /* PCI Function Number */
+> > +    build_append_int_noprefix(table_data, f->pci_function, 1);
+> > +    /* PCI Flags */
+> > +    build_append_int_noprefix(table_data, f->pci_flags, 4);
+> > +    /* PCI Segment */
+> > +    build_append_int_noprefix(table_data, f->pci_segment, 1);
+> > +    /* Reserved */
+> > +    build_append_int_noprefix(table_data, 0, 4);
+> > +
+> > +    acpi_table_end(linker, &table);
+> > +}
+> >   /*
+> >    * ACPI spec, Revision 6.3
+> >    * 5.2.29 Processor Properties Topology Table (PPTT)
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 510ab0dcca..a31f736d1a 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -431,48 +431,34 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >    * Rev: 1.07
+> >    */
+> >   static void
+> > -build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > +build_spcr_v2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> 
+> Nit: I don't understand the '_v2' in the name of this function. Is it just to not collide
+> with the now public build_spcr()? Or does it have to do with the SPCR table being
+> '.rev = 2'? Because if it's the latter, you can name the common helper 'build_spcr_rev2'
+> (since both ARM and RISC-V use SPCR rev 2), keep this local build_spcr() initializing
+> the AcpiSpcrData struct with ARM attributes and then call the common build_spcr_rev2().
+> 
+My suggestion is, keep the build_spcr() generic and take version as the
+parameter.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-
+Thanks,
+Sunil

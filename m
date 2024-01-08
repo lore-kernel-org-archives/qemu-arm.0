@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4748ejs;
-        Mon, 8 Jan 2024 12:52:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGlJrLxWFacqHxEwpHMBe9aUygynqfgVDI4xFce2eanEO2ItxaHrpH1Q0ByLm8RiF0OkIsO
-X-Received: by 2002:a05:622a:1b19:b0:429:8d3f:b036 with SMTP id bb25-20020a05622a1b1900b004298d3fb036mr6487040qtb.4.1704747156384;
-        Mon, 08 Jan 2024 12:52:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747156; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp4802ejs;
+        Mon, 8 Jan 2024 12:52:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHsOtISbnbhxMs14/6m/HNDSXFuptMdKfAdslQocKgrlWJsu5ezpgDJfeWTqi5bqyqxsdHl
+X-Received: by 2002:a05:6830:25cd:b0:6d9:d486:be6b with SMTP id d13-20020a05683025cd00b006d9d486be6bmr7782927otu.2.1704747164469;
+        Mon, 08 Jan 2024 12:52:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747164; cv=none;
         d=google.com; s=arc-20160816;
-        b=OP2b1FJ2rXs/ynSZ69F9gOlaNx9MbhjS/CfPKGsETrg8KTJmzY8T7i/dVKeCPDkPyd
-         3eBJgBITEyuqsXME/1CeBXU7CE+NXNR5KhkQu2HoBjNt/i2nRtPWKKKfEq2w0gKR/DYK
-         W1al9qlWXZ/cV6Fk5Kde4pkhYpntb3/JtpwKZz9mbcfVuOPfDTBo+9rDVFVSesoZL8C1
-         /UF48PZTxnvx5AGNg9I36X7zfK5sm6Q3iGVbRTUMoDPyyH6E40fYvC6VMecasthrgTlS
-         i3r5yKm8oR8+/WS4V2x3GrYy0p5UP9bwqaIa3D4x961GBMU8hs9LGbNgfVXHXhUcUnZw
-         6Bfg==
+        b=s3Ef8q/nCplWYBp/HQscn7QB6xeFMgi0Wq9ZYB9fA8Jn27IljKJMXY2QoTQByHd/76
+         0laHuiytmisQA9a5/nyInSQXfD64dkE9nNfIEgD6ekaaGRZj2msBx7l3eDLPORkl9qgC
+         9KmzciWKk+vNaxrJ0D/D2dp8+tE3QwTOQsXmQ7H+Z7GYApWjf41r8UFV1NNTAM+7pBsX
+         cohY3Rqvd/mBhT/CafanGoVGqRg0UqaF0uxx8RnlKbsK1mCAiJIz5ZosGxGf75yFyT3q
+         sdKEucDDIkzFKpl3fywY3sUsbgKa5LhExEowsw4evdLQ7NjS3H9YupTaGnfiqDrF6/XQ
+         6/lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=ZkSNmy83S4DOqkgHUNjcsUnKDxjqNwsV356V+7t17VI=;
+        bh=3IJgWxMmUdLOBVuYUZ4BO4uyS9hEOvqvAglyEu5N/aM=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=jM6N4sv0LlCSL+UbpeSPfT1jBc6lyQkMF7xxnWx0PGAc1DtZnqg9mMMPCpsrtiWv/E
-         SkVN+pIi+Vv5NB16v/3+HV3IKw7Ell0Eg/V8UB7ALSf9gwOfWxh7QSP+pDjhhAj+8ytE
-         isFZLVl1SJGlj81GgZmRQs0YVfvbCh1mndnYMPtCngwxDIvABCjkxWH2TRbmM9MjVyxC
-         vfhF8nwa49GfkhT98VT0MtqrrFle6aCpDrbV8iHYumqtHihouKPhFAqn69bXlmarN0MA
-         +037lyzJPUG9Npd20/57RWVfD0qeQDT1Wk8vG01FDoYP7NgZMed0c9xu8BAFKznjXT12
-         HwYQ==
+        b=DQ5TGB8XE+LmOujUw+HdLbsl8sqJAK4exnYxUpgi9NtxGafUyCNPTPDwYtw7RgBpE0
+         ZlHLkfQ6dYJCfafdIm2sWDgScWjl954aJXdvRjid2epn2I0lDQYoyJNbWQKrvzQGy/xe
+         2KmOEch9mDK7NR+Qj0Xr8LwssssaAtpG3fNOJKPZgwdgGez/9Zv9Gt42FNsVXlgLF8ep
+         P2CPi/f54VlobtZigCmCMcF+fwDBvncdx0gNOBVbCnMTdVf1W7vaHMdwI1obFtv6MbB5
+         VlwKq+Af+NG/a3xdpztIZiFyxZKKzcZUTQFuqATN4LWEamsBMItsYV4V+Ldjz9lcsiJt
+         zY2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=EQc+yjRl;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZlBVon3D;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id o13-20020ac87c4d000000b00429973b0dc8si566591qtv.108.2024.01.08.12.52.36
+        by mx.google.com with ESMTPS id j7-20020a05620a288700b0078158ded522si533882qkp.635.2024.01.08.12.52.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jan 2024 12:52:36 -0800 (PST)
+        Mon, 08 Jan 2024 12:52:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=EQc+yjRl;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZlBVon3D;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.663911.1033940 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.663910.1033939 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rMwaX-0003mC-JC; Mon, 08 Jan 2024 20:51:13 +0000
+	id 1rMwaX-0003bi-75; Mon, 08 Jan 2024 20:51:13 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 663911.1033940; Mon, 08 Jan 2024 20:51:13 +0000
+Received: by outflank-mailman (output) from mailman id 663910.1033939; Mon, 08 Jan 2024 20:51:12 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rMwaW-0003hX-PH; Mon, 08 Jan 2024 20:51:12 +0000
-Received: by outflank-mailman (input) for mailman id 663911;
- Mon, 08 Jan 2024 20:51:09 +0000
+	id 1rMwaW-0003Wl-5q; Mon, 08 Jan 2024 20:51:12 +0000
+Received: by outflank-mailman (input) for mailman id 663910;
+ Mon, 08 Jan 2024 20:51:08 +0000
 Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
  helo=se1-gles-sth1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=NrlO=IS=casper.srs.infradead.org=BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1rMwaS-0000R5-Rq
- for xen-devel@lists.xenproject.org; Mon, 08 Jan 2024 20:51:08 +0000
+ id 1rMwaR-0000R5-Rq
+ for xen-devel@lists.xenproject.org; Mon, 08 Jan 2024 20:51:07 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
  by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id a4321408-ae67-11ee-98ef-6d05b1d4d9a1;
- Mon, 08 Jan 2024 21:51:05 +0100 (CET)
+ id a2a7eecd-ae67-11ee-98ef-6d05b1d4d9a1;
+ Mon, 08 Jan 2024 21:51:03 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1rMwYk-008RQ7-PV; Mon, 08 Jan 2024 20:49:24 +0000
+ id 1rMwYl-008RQ9-31; Mon, 08 Jan 2024 20:49:24 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYl-002NGr-1c; Mon, 08 Jan 2024 20:49:23 +0000
+ Hat Linux)) id 1rMwYl-002NH5-2H; Mon, 08 Jan 2024 20:49:23 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: a4321408-ae67-11ee-98ef-6d05b1d4d9a1
+X-Inumbo-ID: a2a7eecd-ae67-11ee-98ef-6d05b1d4d9a1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=ZkSNmy83S4DOqkgHUNjcsUnKDxjqNwsV356V+7t17VI=; b=EQc+yjRlYKASMGRQ5TGtJYtw74
-	sF8ySymUAdfsOgT4x8BrVFBLhebRSylHntgqIY++FPzBttXXgr/16ja7fa2J1+ehxRT60nkpIJ6O2
-	xdt6IBFKc6PoA3ULA/douiQH9RzvQ2xt9Wqg2tyJbaDQBf1BW2CB3ctV16gcUYApEAKkwdCHnPPyN
-	iQ5mxU5swxpdModrJuuKK28dz5xRvKVKpiNRdDaPMFGioGC7eFsMNDKDyTOmQENQyzl80fz01z2zn
-	Rl+kUJ85iSOo9TQly6JKlt7Nw8vnlz4wR7uiOnNFppoUpeXr7e8yTOB9xXJR8ax9b+bRWyyATW+sE
-	MnMHK9vA==;
+	bh=3IJgWxMmUdLOBVuYUZ4BO4uyS9hEOvqvAglyEu5N/aM=; b=ZlBVon3DzGBlJcC87Be0qL8RWU
+	d6X4a+DxoBXqP/XC56vV646U0bCd4hdkyLAnU1gOfJvP0C/ZzRNMTkfwfzzf4mext7K0imLIVhvNI
+	7coUYjY/T7UNIgIG85T/i9YMGkx8TR8sSvrDQh1F/vqzMXuY8Xw2sKB9xvUSr0rc2ofICePdTnDEu
+	0o8fcUcIZB673qW57YhOeq/H8AT6j/TStiqxRQbHJKVAi0Q+dhqTf2bJMMW1B0HL8/8R3WbDQ5Xrx
+	s5c7fcKmoTWB7pLR8xIRwnY+fyucp+GpIQICz922h/DyZTkH4cmVM6ML/C32nC8Zq5X6oEkYPxodk
+	TwHGOZig==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -151,9 +151,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org,
 	David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 39/46] hw/riscv: use qemu_configure_nic_device()
-Date: Mon,  8 Jan 2024 20:27:08 +0000
-Message-ID: <20240108204909.564514-40-dwmw2@infradead.org>
+Subject: [PATCH v3 42/46] hw/xtensa/xtfpga: use qemu_create_nic_device()
+Date: Mon,  8 Jan 2024 20:27:11 +0000
+Message-ID: <20240108204909.564514-43-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
@@ -161,73 +161,51 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: E/CQSk2BhvMd
+X-TUID: jzM6+2tyO3rC
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/riscv/microchip_pfsoc.c | 14 ++------------
- hw/riscv/sifive_u.c        |  7 +------
- 2 files changed, 3 insertions(+), 18 deletions(-)
+ hw/xtensa/xtfpga.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index b775aa8946..7725dfbde5 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -202,7 +202,6 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *envm_data = g_new(MemoryRegion, 1);
-     MemoryRegion *qspi_xip_mem = g_new(MemoryRegion, 1);
-     char *plic_hart_config;
--    NICInfo *nd;
-     int i;
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index fbad1c83a3..f49e6591dc 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -141,14 +141,16 @@ static void xtfpga_net_init(MemoryRegion *address_space,
+         hwaddr base,
+         hwaddr descriptors,
+         hwaddr buffers,
+-        qemu_irq irq, NICInfo *nd)
++        qemu_irq irq)
+ {
+     DeviceState *dev;
+     SysBusDevice *s;
+     MemoryRegion *ram;
  
-     sysbus_realize(SYS_BUS_DEVICE(&s->e_cpus), &error_abort);
-@@ -411,17 +410,8 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
-         memmap[MICROCHIP_PFSOC_USB].size);
+-    dev = qdev_new("open_eth");
+-    qdev_set_nic_properties(dev, nd);
++    dev = qemu_create_nic_device("open_eth", true, NULL);
++    if (!dev) {
++        return;
++    }
  
-     /* GEMs */
--
--    nd = &nd_table[0];
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem0), nd);
--    }
--    nd = &nd_table[1];
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem1), nd);
--    }
-+    qemu_configure_nic_device(DEVICE(&s->gem0), true, NULL);
-+    qemu_configure_nic_device(DEVICE(&s->gem1), true, NULL);
- 
-     object_property_set_int(OBJECT(&s->gem0), "revision", GEM_REVISION, errp);
-     object_property_set_int(OBJECT(&s->gem0), "phy-addr", 8, errp);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index ec76dce6c9..5207ec1fa5 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -789,7 +789,6 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *l2lim_mem = g_new(MemoryRegion, 1);
-     char *plic_hart_config;
-     int i, j;
--    NICInfo *nd = &nd_table[0];
- 
-     qdev_prop_set_uint32(DEVICE(&s->u_cpus), "num-harts", ms->smp.cpus - 1);
-     qdev_prop_set_uint32(DEVICE(&s->u_cpus), "hartid-base", 1);
-@@ -893,11 +892,7 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
+     s = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(s, &error_fatal);
+@@ -301,10 +303,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         memory_region_add_subregion(system_memory, board->io[1], io);
      }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->otp), 0, memmap[SIFIVE_U_DEV_OTP].base);
- 
--    /* FIXME use qdev NIC properties instead of nd_table[] */
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem), nd);
+     xtfpga_fpga_init(system_io, 0x0d020000, freq);
+-    if (nd_table[0].used) {
+-        xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000,
+-                        extints[1], nd_table);
 -    }
-+    qemu_configure_nic_device(DEVICE(&s->gem), true, NULL);
-     object_property_set_int(OBJECT(&s->gem), "revision", GEM_REVISION,
-                             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gem), errp)) {
++    xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
+ 
+     serial_mm_init(system_io, 0x0d050020, 2, extints[0],
+                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
 -- 
 2.41.0
 

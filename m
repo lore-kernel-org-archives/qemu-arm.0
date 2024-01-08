@@ -1,125 +1,116 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2257865ejo;
-        Mon, 8 Jan 2024 04:51:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFnWU2v1qWmP8jhI4ic+P30bVY6YSi4qzvugbSGYM+mcI1xZsWr+MqwO9/K4wdWHD6cIy5z
-X-Received: by 2002:a05:620a:45a3:b0:781:80dc:8e13 with SMTP id bp35-20020a05620a45a300b0078180dc8e13mr5384838qkb.147.1704718260933;
-        Mon, 08 Jan 2024 04:51:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704718260; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp2260516ejo;
+        Mon, 8 Jan 2024 04:57:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHxvczgcJOab1szB7OWWnkNeKSKs4gyljx4zCSjHb5sbTq5/FbE6p882PXSEaHjCBQTBJ8s
+X-Received: by 2002:a05:620a:2985:b0:783:20a4:6404 with SMTP id r5-20020a05620a298500b0078320a46404mr1469358qkp.124.1704718629268;
+        Mon, 08 Jan 2024 04:57:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704718629; cv=none;
         d=google.com; s=arc-20160816;
-        b=DfN/gUDPhbxzwqqHs/2v20OGlg/x8E/R9pX9dIr8xC5vrlXgowzqdy6PQSyY0XAmf6
-         Rt3Kugowr1jLNwYOM6Unkn1pktuDiP2ZBpzpupibAXK90z1rcdmqYXud60JnGkf5Heq5
-         yAElhB7RbekjRgIIoh84TNzIJIVnrXRGj8EIwcvs4FsThHQMLwZL93ZkJWe0SLRKEbzN
-         +8ld99i+HOLcb1VCYA2pilPtDsZ4oTPHH410pluWEIWQMFtD8DfmoD70JVuuoy4EXV19
-         IOcq6jTytHVqGC5xSFidl0qq9I2G0AR3QHimhwZuK+YrjsYBYVkYlTG93nQiw4br/WBm
-         slww==
+        b=QNRwER9RaUH/2Q59iW7ocKAy0IgohAvaLK3L72N10J0DFxqLmlj9nv5APbAe3sWZ0D
+         MO9vbp2L7umbzwl4NBBeVWTVEcLgVfOaJQ2VfQ8/dohyoLave+kAV5gXfwX7hkyHMj1P
+         Iwpaqn3RMdTKsur41ZXAZIXnh2mcDDG1iW6OtaJX1TMCQE555n836EjeX5veCP8ssQma
+         s9tpeprpHMJng8vdQzgeOAs7UZqzYa2x0qXEO3Pm+GFePhuFMXeassYK7fdoa/TCQHW0
+         rQpKtE/1QzJAadNSgUELYTjSfghnqke+OQ/OAOg24dFeLH9mnOK8cF0cLxkEE3IEUGFy
+         bRlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=N0tHCZIWFjSHh1wasfe8VFzeR+j+9M76XHh9XfyjqoI=;
-        fh=bBQekQR/P2pOG7DRwivIi3zDyO7shyklhMYjX+JI6Rw=;
-        b=jS+UwDqgTRh+/5nlPPgqx2UImEzwMaKP15/Vc8m5ZiMkTbZ9S67L1s539etATOuSuq
-         pWcusPmPMRkFMeL5xGTfCK1BCYUZkMkCLMQP7N6Lb3VoB4BXu5sUNWwru87LUrCu7ZUo
-         ieeKLv5eiLpRox9dOBPkXuTeVdJxdzATo56tlYkABeahjCl8xYjSEpNHlrG+mFvnuHrh
-         dVmuXdnwvk4O5m0ISzWKRiIgbNP8A3b98y7bhRTXl+W9NOohCi17XE5M+BWX/74JCCu5
-         I8GUW1KzCfoT1cpTPbvVy+kOV8/in1ean9zSSiO5UB88tW1UHL7yU5YV/D2dgZ9oEAQH
-         dVPg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=F1Szk0h7YIyOnUKRSCOKIVxPUcBtgdQl+uheqjerzns=;
+        fh=eAXPffmw/KQFNgRcpG6vPHezohc+Ws2xkWgZac0nVsk=;
+        b=U3ZDq5Oc10qU6Cop2vc97gyxb1IwhFIQm/pK5YfvRtlWCsNYEmOm6LecqKWb+hSt9Q
+         TaVrNT698Hfcnn8Jx5XGL7fU7RT7riFxvT/xoCHFi2YxsgWkWGEwXP8gcMjXlcErCnMi
+         AhRl1vvk0bWqJk4MCCU8dW+RvWf8LlWR+5X3ye7zuampQT9gcTFVVxJkEoPNj/ucchab
+         ZENoJ5LV53yYZCbpgYepuQ/tkn1XhvKvvOhMrKBy5jS7z4TYEfXMC7xO8sz3cuPXfH8p
+         Ta+dWTyjuYWnWcCuyLqyAcD9798eUgxFMUmlHhsJOJ5CkROnAp8lN0rAirq+ngFCOk8o
+         YdVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=iPffQ+FZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nDvzY3yc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pb14-20020a05620a838e00b007811a26404bsi8288727qkn.768.2024.01.08.04.51.00
+        by mx.google.com with ESMTPS id oq1-20020a05620a610100b00781ebb79d07si7397268qkn.171.2024.01.08.04.57.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 04:51:00 -0800 (PST)
+        Mon, 08 Jan 2024 04:57:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=iPffQ+FZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nDvzY3yc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMp5Y-0001o6-Te; Mon, 08 Jan 2024 07:50:45 -0500
+	id 1rMpBc-00052c-P8; Mon, 08 Jan 2024 07:57:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1rMp5W-0001nY-Vc; Mon, 08 Jan 2024 07:50:43 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1rMp5U-0004tO-AR; Mon, 08 Jan 2024 07:50:42 -0500
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 408BRb0c009449; Mon, 8 Jan 2024 12:50:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=N0tHCZIWFjSHh1wasfe8VFzeR+j+9M76XHh9XfyjqoI=;
- b=iPffQ+FZpt/LsLiFRaa6BpyCIjFx+P8CugopxnBarh1qZ3bym9hc2k+U5eprDoYhCMRE
- BIibeVjBl2dlBoHcRUTIXKK5qR2KJjUkZ2v3QStKW75jBQShYR38E+UxAuFT4bXEdJ5v
- 3iUT5EcZNGm20rQvKqv/bEEra3FvwbpWGQoB56Sx3OXsakeeqBVrQxoki8QXw7wBJJeJ
- 7lmXF6kFHLNTYKgeu1NRvyjmvWzxPybcNEG2ClHptFunm1SnEqM7MEG9f0q6Hp4jCaiR
- jTbYJTYGMrApajvNnepFRFOQDA/j2fvVsGAhgIkvsqqm5JOsxZckneR/Fwa8KtoQNb+W wg== 
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vgg6jsne1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 08 Jan 2024 12:50:34 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 408C6DBg022781; Mon, 8 Jan 2024 12:50:34 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfhjy82jp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 08 Jan 2024 12:50:34 +0000
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com
- [10.20.54.102])
- by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 408CoWN866060794
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 8 Jan 2024 12:50:32 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1795A20043;
- Mon,  8 Jan 2024 12:50:32 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D7D5E20040;
- Mon,  8 Jan 2024 12:50:31 +0000 (GMT)
-Received: from heavy.boeblingen.de.ibm.com (unknown [9.155.200.166])
- by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  8 Jan 2024 12:50:31 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH] tests/tcg: Don't #include <inttypes.h> in
- aarch64/system/vtimer.c
-Date: Mon,  8 Jan 2024 13:50:00 +0100
-Message-ID: <20240108125030.58569-1-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMpBW-00051l-OJ
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 07:56:56 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMpBT-0007Es-3L
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 07:56:53 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-336c8ab0b20so1830980f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 04:56:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704718609; x=1705323409; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=F1Szk0h7YIyOnUKRSCOKIVxPUcBtgdQl+uheqjerzns=;
+ b=nDvzY3yccy92qtXe3HbK5buf5UDIpPJcCn5aPfGZHX108i8ZsaWjBQS5ScrxG5/kOX
+ CpzCnou0+cDx7LIIMhAxbJyMV0FDhO1AjqJvHmPYaUgcsLQ3grpaqM6GUz7IcWkvqkWc
+ CKpxBdB3eeQ3z2HXPhEM8X7ABomqIPTtJCAX4goA6HKDIW0k82reTcZfMDAvvx+/Uiiq
+ BMn84fDziIEUiUO0RB08fXEIfoOX2O/wF2qYl1zO31zmedhUfSIodFApPT558LZR3Bc/
+ 5zfvEzMq0unCehGziUDdld5YvR0zvJBC0xR+20iCXLJN1fy3BTCLl8TQPZhWEy+cKD//
+ pMUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704718609; x=1705323409;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=F1Szk0h7YIyOnUKRSCOKIVxPUcBtgdQl+uheqjerzns=;
+ b=dYlwMMxKrniKrKorMJ2kukrP6GtniVuUm8okoEho3GEw3PsLmgvL953cJ615CZhUMa
+ 39Gv6kN9xA8MD0oh9PqLcGFGWI2eOxg2EmmApc5ZYmk2mr9sWoCEE/2lk2hSd8KX20rK
+ OV3qhSN/ITBlO5MgJclBHm8Cuw7QVZFp7CKvreSKhW4ZL2jB/KXp+bORJindgKg7nggI
+ okekU42zgk8kb/lTxmTxFkdi/+NKymcEAX5PlQdBDnZy99zPj7moe2Qa+IO7ftQE9FLK
+ JCvfFAGnnTDYmRdb+f+HSHVjAQFtESgdNSLcwsmhxuOIjqEhbSrkCHuIvzWAWU3NErHX
+ ydbw==
+X-Gm-Message-State: AOJu0Yyi5o+d3cV0LhKQtVE1wrSgOb7Q30qEADJz4N/r/Ah+rR/Okiw6
+ tnoa7AQIWzbs+6+g+XlB8X0kwDpxqeXAKw==
+X-Received: by 2002:a5d:4b91:0:b0:337:2c08:ae9c with SMTP id
+ b17-20020a5d4b91000000b003372c08ae9cmr1642991wrt.141.1704718608864; 
+ Mon, 08 Jan 2024 04:56:48 -0800 (PST)
+Received: from [192.168.1.102] ([176.176.175.62])
+ by smtp.gmail.com with ESMTPSA id
+ u5-20020a5d5145000000b00336cbbf2e0fsm7749588wrt.27.2024.01.08.04.56.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Jan 2024 04:56:48 -0800 (PST)
+Message-ID: <1c18863a-ecf9-4522-af75-793cd358c745@linaro.org>
+Date: Mon, 8 Jan 2024 13:56:47 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 9ew2VzDaQ-HYg4BPfA0SArI_fQggQc6H
-X-Proofpoint-ORIG-GUID: 9ew2VzDaQ-HYg4BPfA0SArI_fQggQc6H
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-08_04,2024-01-08_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 mlxscore=0
- malwarescore=0 bulkscore=0 adultscore=0 phishscore=0 clxscore=1015
- suspectscore=0 spamscore=0 mlxlogscore=868 impostorscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401080109
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/tcg: Don't #include <inttypes.h> in
+ aarch64/system/vtimer.c
+Content-Language: en-US
+To: Ilya Leoshkevich <iii@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240108125030.58569-1-iii@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240108125030.58569-1-iii@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,37 +126,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hP7NtBJu7Ala
+X-TUID: FuPpN20hW4uJ
 
-make check-tcg fails on Fedora with:
+Hi Ilya,
 
-    vtimer.c:9:10: fatal error: inttypes.h: No such file or directory
+On 8/1/24 13:50, Ilya Leoshkevich wrote:
+> make check-tcg fails on Fedora with:
+> 
+>      vtimer.c:9:10: fatal error: inttypes.h: No such file or directory
+> 
+> Fedora has a minimal aarch64 cross-compiler, which satisfies the
+> configure checks, so it's chosen instead of the dockerized one.
+> There is no cross-version of inttypes.h, however.
 
-Fedora has a minimal aarch64 cross-compiler, which satisfies the
-configure checks, so it's chosen instead of the dockerized one.
-There is no cross-version of inttypes.h, however.
+Presumably this isn't specific to aarch64 target, so what about
+the other uses, shouldn't we clean all similar uses at once?
 
-Fix by using stdint.h instead. The test does not require anything
-from inttypes.h anyway.
+$ git grep inttypes.h tests/tcg | wc -l
+       26
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
----
- tests/tcg/aarch64/system/vtimer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system/vtimer.c
-index 42f2f7796c7..7d725eced34 100644
---- a/tests/tcg/aarch64/system/vtimer.c
-+++ b/tests/tcg/aarch64/system/vtimer.c
-@@ -6,7 +6,7 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
--#include <inttypes.h>
-+#include <stdint.h>
- #include <minilib.h>
- 
- /* grabbed from Linux */
--- 
-2.43.0
+> Fix by using stdint.h instead. The test does not require anything
+> from inttypes.h anyway.
+> 
+> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+> ---
+>   tests/tcg/aarch64/system/vtimer.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system/vtimer.c
+> index 42f2f7796c7..7d725eced34 100644
+> --- a/tests/tcg/aarch64/system/vtimer.c
+> +++ b/tests/tcg/aarch64/system/vtimer.c
+> @@ -6,7 +6,7 @@
+>    * SPDX-License-Identifier: GPL-2.0-or-later
+>    */
+>   
+> -#include <inttypes.h>
+> +#include <stdint.h>
+>   #include <minilib.h>
+>   
+>   /* grabbed from Linux */
 

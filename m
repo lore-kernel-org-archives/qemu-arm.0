@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp6046ejs;
-        Mon, 8 Jan 2024 12:56:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFq89fvCOcUBqUVxZfA1za8xjlkBAQsPeOEYsZTi/i4r0RodbnBIV6GA9AZQGEvCwzlO/tA
-X-Received: by 2002:a37:ef04:0:b0:77d:e60b:4caa with SMTP id j4-20020a37ef04000000b0077de60b4caamr4576066qkk.35.1704747367447;
-        Mon, 08 Jan 2024 12:56:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704747367; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp7176ejs;
+        Mon, 8 Jan 2024 12:59:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGbysgfQYSpU1YgbMaa0ZuAt6pnQ26cuSrXA5uC8ET1dnH+Jcrdy02qaeCAUxR1weZRr1Tc
+X-Received: by 2002:a05:622a:40e:b0:429:7e09:4ddd with SMTP id n14-20020a05622a040e00b004297e094dddmr6083942qtx.33.1704747564640;
+        Mon, 08 Jan 2024 12:59:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704747564; cv=none;
         d=google.com; s=arc-20160816;
-        b=hfyOdey6OJjluvuJIxPMed+KTVBjmV/moKzl6lOwf4C+Sx67xcTVu/ZdUl0m0jein4
-         0CVcV82uUEv/M8XCIX8A9dZJmCcFxBd4wepZPAxTYiQbQx4BJIW397Kf2/nWyJ21x2cX
-         DyiTdLw7gCC/ldVswxtHnE62pDBGBOEUZwCDeEEAssZhk+mMJeMHgXRrvIzdjnsnrCup
-         Iii+bfK4AyCvNcO3hG/0XSx+FGIIa27mcVhhXMmwKg2PH7U9HBBePqKx3EBOQsBNnyHd
-         tvBZQkHIevWcMxPhV/w/KkD14USkXnCXzppb9I3I1+7Kd+HOH8DE9PNx9hAIcWsAIuxl
-         Ul4Q==
+        b=Trop5FaO3s/RMYobkUSsq92PQSC13RobJskK95UE4y0Ivk+SCLux363mO0GBCGAdaP
+         YBA3MFfc1kvh7y6Trq1wF+AJV5VxQ3cg+CDlgwdinXMZ47ih0TFkwDgui37bCrg7KUOY
+         +F8Zy1Jt08+ffAjH8O2bYH1Mc5RSL1KkC2giprWgCxDqpmshftm0zjlJax+dvsLm0i0V
+         g5Utz2Yuc4qtj3/XAo5eoNfq59ocQiIX9e4X0BMiUV8UgbQyOcIGpiI7wnhtvP0Iwx6d
+         IvGvBHdjQauX17WsdvDzXT9l7Yst9KI0y7I78nG21kJYN59GeNtgoUs2/7sK9WYfhhpA
+         UN+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cethWUh/RWDV/5OHSmNNy/kAHmyOEuR7joLxV258gbE=;
+        bh=H8uo0pCflTks+jIWZUwcN6rKBxLFmITgxa+9iGQo6wc=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=W54y2CLeU/wlqLQWfVKsKXXMSHYU1pS5df/HBg09wIiHOs5FhjOF0QCOUbNkMUm/Ea
-         J8gIAOyDL0To/Q4+VyERt+/Mp+2w2hHRydjJ6JfS0rIcpreHpLN1V54Xdn2WF0sk243N
-         w9VTxob0LQZogntW+7fgzJvAe43+ykCYCourvE4GxLuStSGRN8f8LIuoRrC0EAM446/B
-         FCBE+zamfqa77/kzUvDicvyBy/MAbkSaYbT1Q50CcnpohwMYOfAWldeBq6CaTvt94RGo
-         7kAI85fR+J5frZ1wE8Buw4RMZ+iR2iDt03KyYztMe1hSa+8DH7fd1F1kU2UoNwuZijZC
-         YGnw==
+        b=LtQnP/kqaF9PdgHprr9eCFotLOd5bI6wFGC3hQL4Z5Ds5p8nnhXJN0lnmW6zGFOo8Z
+         ZVUIL3JCbpG41aawT78tXxT0iaI6f4yk40PFZZQDV2NUFBGKn+YKZm5ZT5Jxx008raeo
+         2Oi+Q84/LA+zWsQ7PxzfxeaJNWu9+cnCgPNyYpI1kdO3PeTTQO9R/DqN21SuUUXTnw2Z
+         A5OED3NN9wWLgRUwsAO4THPJdrsSVco4B4pp26jN6fNYpWoZLoaCqcxXoDWahao5PBnx
+         0yXNfz72UcNEk5BCt4PWvXscfrF30cjnEth58oAN5vMe3MhzBEuQUaRh/vIXBRAuqy/r
+         q5ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=UWpFdiGn;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b="DYAuUj1/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10-20020a05620a24ca00b007816c894164si628827qkn.370.2024.01.08.12.56.07
+        by mx.google.com with ESMTPS id o19-20020a05622a045300b00425840f70a2si566493qtx.427.2024.01.08.12.59.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 12:56:07 -0800 (PST)
+        Mon, 08 Jan 2024 12:59:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=UWpFdiGn;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b="DYAuUj1/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMwaa-0006Fn-9K; Mon, 08 Jan 2024 15:51:17 -0500
+	id 1rMwbF-0007zt-7C; Mon, 08 Jan 2024 15:51:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rMwZw-00042u-5u; Mon, 08 Jan 2024 15:50:36 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rMwa6-0004Jr-10; Mon, 08 Jan 2024 15:50:46 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rMwZq-0000vA-LM; Mon, 08 Jan 2024 15:50:35 -0500
+ <BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rMwa3-00010P-7i; Mon, 08 Jan 2024 15:50:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=cethWUh/RWDV/5OHSmNNy/kAHmyOEuR7joLxV258gbE=; b=UWpFdiGnLNbiORgtAtG7p/WIdU
- nqFdfmvFAt8+yDpmkAnslA8FXZL1a921R8Kdz47iQJ7f17BTPcH4js6e2TxfDyTYvHNY1vVjWpW+m
- Whc4h/FvtK2nvQOQsjYX3o41E5/ptjCAznwTkiO6CNzrlCyTe0eHM75LZR6L5bXa62NGM8JbcGUiG
- nXsZwYmZ5A1JpV8dCV4PEggRIKS2aDRX8EC3nqa6ZIAI3ndlm5P39xBy+k5aD+gzf0mL8IjBKgRx5
- Ikfo9pWQAFrvpUXLgIHi4y8C+yztqZohoFPmmZ09XXK8DdZpROKs9MJnq6Y8exAPocL+bH4EWAJFd
- D2vqX0yA==;
+ bh=H8uo0pCflTks+jIWZUwcN6rKBxLFmITgxa+9iGQo6wc=; b=DYAuUj1/b3Aiz1Ro0D1uOcLOS2
+ fmkbWrwK8cH+8Kqsr2fBgtANEG2Xqc1y6z4oMUtgexhozrioVT7ym4qdEAmgUmfB98R6vXpQkwH+v
+ 7efyS/FPX8AUfdLxUAEyHQdRNWduvPc62LwiJ0SwgIzBU4ROOxqwGryDlLeri8KNpYYfNpMz/10lH
+ JUm+eugn0mnWmH7MMMk27Z/P+w9+2arZpfk2IOzbYwXG+3DkrQactNCd2UoSTbJ1QTySEyjtKdlr7
+ tSVgFCsjOnU+Fc65A3MFEH1791jXTV+BgzIyyDnPOzrRVLtdU1rN6qbog2ITH/0/7+HrPk0xKMWS9
+ 5FaID+kQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1rMwYi-008RPO-0H; Mon, 08 Jan 2024 20:49:21 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1rMwYn-007wY4-1K; Mon, 08 Jan 2024 20:49:26 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1rMwYi-002NEB-22; Mon, 08 Jan 2024 20:49:20 +0000
+ Hat Linux)) id 1rMwYl-002NHM-34; Mon, 08 Jan 2024 20:49:23 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,20 +115,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v3 04/46] hw/pci: add pci_init_nic_devices(),
- pci_init_nic_in_slot()
-Date: Mon,  8 Jan 2024 20:26:33 +0000
-Message-ID: <20240108204909.564514-5-dwmw2@infradead.org>
+Subject: [PATCH v3 45/46] net: remove qemu_show_nic_models(),
+ qemu_find_nic_model()
+Date: Mon,  8 Jan 2024 20:27:14 +0000
+Message-ID: <20240108204909.564514-46-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240108204909.564514-1-dwmw2@infradead.org>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+41a72dc6539c0dfbbc31+7442+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+a33e3d7a5f0474923369+7442+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -150,95 +150,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GbJ6wICm7L8Z
+X-TUID: jZF6WvZcapPx
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-The loop over nd_table[] to add PCI NICs is repeated in quite a few
-places. Add a helper function to do it.
-
-Some platforms also try to instantiate a specific model in a specific
-slot, to match the real hardware. Add pci_init_nic_in_slot() for that
-purpose.
+These old functions can be removed now too. Let net_param_nic() print
+the full set of network devices directly, and also make it note that a
+list more specific to this platform/config will be available by using
+'-nic model=help' instead.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- hw/pci/pci.c         | 45 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/pci/pci.h |  4 +++-
- 2 files changed, 48 insertions(+), 1 deletion(-)
+ include/net/net.h |  3 ---
+ net/net.c         | 39 ++++++---------------------------------
+ 2 files changed, 6 insertions(+), 36 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 76080af580..5849606f66 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -1925,6 +1925,51 @@ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-     return pci_dev;
+diff --git a/include/net/net.h b/include/net/net.h
+index 1be8b40074..19fb82833c 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -203,9 +203,6 @@ void qemu_set_vnet_hdr_len(NetClientState *nc, int len);
+ int qemu_set_vnet_le(NetClientState *nc, bool is_le);
+ int qemu_set_vnet_be(NetClientState *nc, bool is_be);
+ void qemu_macaddr_default_if_unset(MACAddr *macaddr);
+-int qemu_show_nic_models(const char *arg, const char *const *models);
+-int qemu_find_nic_model(NICInfo *nd, const char * const *models,
+-                        const char *default_model);
+ NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
+                             const char *alias);
+ bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
+diff --git a/net/net.c b/net/net.c
+index ffd4b42d5a..09ab0889f5 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -977,38 +977,6 @@ GPtrArray *qemu_get_nic_models(const char *device_type)
+     return nic_models;
  }
  
-+void pci_init_nic_devices(PCIBus *bus, const char *default_model)
-+{
-+    qemu_create_nic_bus_devices(&bus->qbus, TYPE_PCI_DEVICE, default_model,
-+                                "virtio", "virtio-net-pci");
-+}
-+
-+bool pci_init_nic_in_slot(PCIBus *rootbus, const char *model,
-+                          const char *alias, const char *devaddr)
-+{
-+    NICInfo *nd = qemu_find_nic_info(model, true, alias);
-+    int dom, busnr, devfn;
-+    PCIDevice *pci_dev;
-+    unsigned slot;
-+    PCIBus *bus;
-+
-+    if (!nd) {
-+        return false;
-+    }
-+
-+    if (!devaddr || pci_parse_devaddr(devaddr, &dom, &busnr, &slot, NULL) < 0) {
-+        error_report("Invalid PCI device address %s for device %s",
-+                     devaddr, model);
-+        exit(1);
-+    }
-+
-+    if (dom != 0) {
-+        error_report("No support for non-zero PCI domains");
-+        exit(1);
-+    }
-+
-+    devfn = PCI_DEVFN(slot, 0);
-+
-+    bus = pci_find_bus_nr(rootbus, busnr);
-+    if (!bus) {
-+        error_report("Invalid PCI device address %s for device %s",
-+                     devaddr, model);
-+        exit(1);
-+    }
-+
-+    pci_dev = pci_new(devfn, model);
-+    qdev_set_nic_properties(&pci_dev->qdev, nd);
-+    pci_realize_and_unref(pci_dev, bus, &error_fatal);
-+    return true;
-+}
-+
- PCIDevice *pci_vga_init(PCIBus *bus)
- {
-     vga_interface_created = true;
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index fa6313aabc..6ff0b95a02 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -317,7 +317,9 @@ void pci_device_reset(PCIDevice *dev);
- PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-                                const char *default_model,
-                                const char *default_devaddr);
+-int qemu_show_nic_models(const char *arg, const char *const *models)
+-{
+-    int i;
 -
-+void pci_init_nic_devices(PCIBus *bus, const char *default_model);
-+bool pci_init_nic_in_slot(PCIBus *rootbus, const char *default_model,
-+                          const char *alias, const char *devaddr);
- PCIDevice *pci_vga_init(PCIBus *bus);
- 
- static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+-    if (!arg || !is_help_option(arg)) {
+-        return 0;
+-    }
+-
+-    printf("Available NIC models:\n");
+-    for (i = 0 ; models[i]; i++) {
+-        printf("%s\n", models[i]);
+-    }
+-    return 1;
+-}
+-
+-int qemu_find_nic_model(NICInfo *nd, const char * const *models,
+-                        const char *default_model)
+-{
+-    int i;
+-
+-    if (!nd->model)
+-        nd->model = g_strdup(default_model);
+-
+-    for (i = 0 ; models[i]; i++) {
+-        if (strcmp(nd->model, models[i]) == 0)
+-            return i;
+-    }
+-
+-    error_report("Unsupported NIC model: %s", nd->model);
+-    return -1;
+-}
+-
+ static int net_init_nic(const Netdev *netdev, const char *name,
+                         NetClientState *peer, Error **errp)
+ {
+@@ -1791,9 +1759,14 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+         }
+         if (is_help_option(type)) {
+             GPtrArray *nic_models = qemu_get_nic_models(TYPE_DEVICE);
++            int i;
+             show_netdevs();
+             printf("\n");
+-            qemu_show_nic_models(type, (const char **)nic_models->pdata);
++            printf("Supported NIC models "
++                   "(use -nic model=help for a filtered list):\n");
++            for (i = 0 ; nic_models->pdata[i]; i++) {
++                printf("%s\n", (char *)nic_models->pdata[i]);
++            }
+             g_ptr_array_free(nic_models, true);
+             exit(0);
+         }
 -- 
 2.41.0
 

@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp44822ejs;
-        Mon, 8 Jan 2024 14:29:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBm3+VBDgmpV1L1c4HC5wqgVlsOhAIJpcl3DxClkk8TUYJkzpB62QyIG9QqKZbqm0HtujM
-X-Received: by 2002:a05:622a:3cd:b0:429:96f8:86c8 with SMTP id k13-20020a05622a03cd00b0042996f886c8mr2481696qtx.122.1704752948455;
-        Mon, 08 Jan 2024 14:29:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704752948; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp44896ejs;
+        Mon, 8 Jan 2024 14:29:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGzPX+bKmThbYtyIuUKVGYD0WVHxqRAEbqHRwvEqJHYVeDnugqtgSB/4ZH25UdJ5WUltiP1
+X-Received: by 2002:a05:6214:1302:b0:67a:96c7:4c90 with SMTP id pn2-20020a056214130200b0067a96c74c90mr5491477qvb.38.1704752962161;
+        Mon, 08 Jan 2024 14:29:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704752962; cv=none;
         d=google.com; s=arc-20160816;
-        b=XBiNZTqIXicQ+V12rFIsPJgbzfU8TqwBr/0QV8yHJHSs+nekfNIJXNGQMz8CVjD/HO
-         Q17KZsX/q5cQIP4ayWtVm8wLAPPNnZTRXhWGQveK0YvzpLzd7I+QPN4rVbjbq8JO2jyf
-         tDNrHJCQWsZCVcIubpLhLjQxVQaM47dV5/DCD3s8vBBZGIg6fe67UmZElaHfToRBz49Q
-         dxG5HVntLYPKnLJiThMO51DpU5VlBVbL56vCfZT9Quz51XocpCQt4Y/QD2+AYtndXK1O
-         r9rad/vc/3Cvr+QtbmCBtvNwfphPg3vGV2XvpUxGltDYa0yjz/9o6+4bO6J6tIEY49VX
-         tzVA==
+        b=W7qnoTFVzHKG5U2nFAeIMJugndTdWsKSy+FbwHu4j9Ge3R4UDitUUcvZNZmkldL0DL
+         WRqNiGfqXduf5diJWNzaWol5TjzTxCD6ErPyyGFuglYgjNP4H8hL+TVCQ+CGf0iMsn2j
+         Qhuh5U06luM9P8i3oc6Ao1hHiWCV6GWrnuGg4yah1BDjfG9RoT6ZBaxafv/m5388SWrr
+         d/eM9cgy2hG/nS4lat+frR+war1aSQtla846rS0TSt0m6pDyEi76t4x/5u/d7uOFmd/b
+         5LxmP1r2IjxGJtgC2VbhdOuqoed417kQ9KeNzFZ3nMeWaFtF8Zx2PqB37B04Me2HHJwt
+         LdiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=6iBOMgf9hpZYop+0lXsFMKyjLJAgDOQNMwHSzA4Z+UA=;
+        bh=tej3cWvS+UWc/eQTZOfAEg9WDZ/VnqiSSVvVLWXewJo=;
         fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
-        b=CrlfUk2cV40CpIgkLu7CTTLHL+H0lGthFdfbQ2wGI99h0r7r0xhxVH83ULkZNqI7rG
-         w1ZRJVINHShyDCk4MKI+kw6B9P3Snq/0Lc/d1eUeQ+PY4i0ne7WeWP1r+c1sQFVOJfp6
-         3bDkjZtj8gt+ZgjfOy98vUszvaCYUaAsm0EZVtSZlPLLPACTNnpKxJuT22W6LL0NlIdH
-         7OW6Bnm7j9oHSdS+o4CszFqYpWe5fCGQrvr0ldPvixphXrCFPh5ZA2T+NAr5jRu1u8jM
-         +Yt+wQEs5remLM9dawrlUHTinCWQH5L4qSotcIsuiXjoVnZYYmB67swYC4KEoaJQppYB
-         tY7Q==
+        b=JN9MEL0I3NTAyMtmgZyF9eAstKsFdEnyFW5+y+GI47Vio775OFTIoCDNsx18o5D1EV
+         hRIJwvPidyBI5OfaWJPTDabfPZTwkT7xjSf6NZJLM0dYWZ7r6zy8STw521kJUIMvpy1y
+         mlvmU9+yKjD1tfUzCQfyvI+u0tFy4FVbA4ogCmmbDB4w2uMrj3buHRieVosGcaEqMNAg
+         G7Rym8L9aD2/uYsrE0FHb0BRYXokLi8cqyNNTeKVg/m09CeDz5Ip1/j6LUchdtoDarfh
+         U8GbViW6hASF7hRAs/BrYcE4TiD3+3KH4GJwhHhP/EsmS02OBA0Y6v8gIsDc41QyTtTy
+         eBbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=pA22jOnF;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=2wQzjgt8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fb17-20020a05622a481100b004299e360d39si849411qtb.765.2024.01.08.14.29.08
+        by mx.google.com with ESMTPS id sq20-20020a05620a4ad400b00781a46d4c1esi686508qkn.10.2024.01.08.14.29.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 14:29:08 -0800 (PST)
+        Mon, 08 Jan 2024 14:29:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=pA22jOnF;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=2wQzjgt8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMy6G-0006nh-S3; Mon, 08 Jan 2024 17:28:04 -0500
+	id 1rMy6N-0006tI-53; Mon, 08 Jan 2024 17:28:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <38HacZQwKCIMuhipolz0lmhunvvnsl.jvtxlt1-hytuvunu1.vyn@flex--nabihestefan.bounces.google.com>)
- id 1rMy6F-0006nM-PU
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:28:03 -0500
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+ <383acZQwKCIYxklsro23opkxqyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--nabihestefan.bounces.google.com>)
+ id 1rMy6J-0006rc-UG
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:28:07 -0500
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <38HacZQwKCIMuhipolz0lmhunvvnsl.jvtxlt1-hytuvunu1.vyn@flex--nabihestefan.bounces.google.com>)
- id 1rMy6E-00046R-0J
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:28:03 -0500
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-dbed6083a91so2596480276.3
- for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 14:28:00 -0800 (PST)
+ <383acZQwKCIYxklsro23opkxqyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--nabihestefan.bounces.google.com>)
+ id 1rMy6I-00048l-8o
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 17:28:07 -0500
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-5efe82b835fso38692907b3.0
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 14:28:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1704752880; x=1705357680; darn=nongnu.org;
+ d=google.com; s=20230601; t=1704752884; x=1705357684; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=6iBOMgf9hpZYop+0lXsFMKyjLJAgDOQNMwHSzA4Z+UA=;
- b=pA22jOnFrEw2vVBVk+WoLEJ7Eaan1V02l+PivOAsi0HAChlnj0nHDBZorSz3eqK8Ew
- IFYkkv0y6ILBmzl9tlWkroswekWF/fWxX2Ip7f1G5MD26JZjrf9Cp/Sy9nEhWTE/UER1
- F0F3AffyCEonNEp9ExrL+qDgjkkqx2uUBVX44y0JZ4lbDqcGNc405JxcWY7UguphgOUF
- 36dJPW/U2HGjdyJDiHM65dSWTbioaB8BCQPbYh2gFVrXPRQvAleNVwlEHWS9pnP5ABaM
- t7OF22vtuRrYm335tZwMxndmNPlKGNvBhtZGjgbUvCWtRr5YUnHUMbGHkefMFZinMGl6
- Q/JQ==
+ bh=tej3cWvS+UWc/eQTZOfAEg9WDZ/VnqiSSVvVLWXewJo=;
+ b=2wQzjgt8fPXFwJxQhvHiqNpBWEhsZZkb0DDKafXfRgeiyRb+pSns39d+gTDlXaUgM9
+ tk0fshMApsQOKR6SllP7ttXeUdzTfrMauUDRrVYydW/YtdoJ7bAjltNfMNwmlgWFCfFJ
+ 8m6T+m/eNJsymib9tMVaeSH1l12eXfhM+Mm7+pFtdiEnfMfJsnilb3F2Z8MtUi0k9pR4
+ z2StibHk8I53HR1gWLNrgtCwwPTwDRh/OdkFusvBFCNH2I0Aa4lz0cUaBsToW7/abmvJ
+ MWAieYfIgViEg9hRZr5WvL8hJmOWWCV25rusU6Hne3iycB2Z7UaRZB2+EeKWhIrm1iTA
+ zwcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704752880; x=1705357680;
+ d=1e100.net; s=20230601; t=1704752884; x=1705357684;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6iBOMgf9hpZYop+0lXsFMKyjLJAgDOQNMwHSzA4Z+UA=;
- b=D+EEtL9y4rhD73Yz0bb9Vk/Wd+3o6mMWZcEdWt9Fuaz9h5ETYL9qH2ibuljOcRN194
- wm5r86BhdZcfuX05NZx5crtL75UnGmHbt7MhVuB2pCvifzEVls2TcgeXOM8D44b6+Yhd
- BiJBz15fBtap0PEMkJRz4SzJLThM/Gi1jdS9UN7alV0Paf7D30Y7D8jS7GGx0yVwGSo9
- wDx2se3EtA+VElgqYeKWPX5kKEJhnw2Qc4bhsMolNLnW/s2HCIVhvjxwPndoNdDUxhKh
- mVshDK+x4+75Zle627sulhaL/YLJxV6449yNviMMwvbCJj4T9IKzgWv7hJVIeC6wJZnh
- 2/Xw==
-X-Gm-Message-State: AOJu0YxVQrqdjYHh6Sv+9VetgAAsj1nBtaz/hRV8wvbN4KI7uWQoYLy/
- 9Ha8TTzI8+XxFKdiSt3KYmvHmQaw1ayjMs9PxHiKtRn92g==
+ bh=tej3cWvS+UWc/eQTZOfAEg9WDZ/VnqiSSVvVLWXewJo=;
+ b=tBp1oEibBqXJs6gt9HAMFnM9nr7PZ3IzF9snXMUWj5jB63293fqp2MwOxNxiU6Sf7s
+ Cxe/dhCIwMPloadILPEixR6a0wCEuRHuci6/ZIKFc68lS1ZjudyW9VdQVjdhE5v1epgn
+ N5DgfYmZA10vvhxdesCV2lNxNmGnS60Ax769qQM9KkqJyLUJdKX2l5YVR1zbXN13uwXB
+ psnKnxetEKaAblQkEU1t0gtwRr8fYp0B8rOshQG1fiwWHxFp/+i8U28Ibex1HNgi4B7A
+ 1yW5Bod4to1af3weCBCSoFwr5gWTXWIetWPGB7wr3Wg5dksjrZQGgeQiEd83kBYUrlSG
+ asug==
+X-Gm-Message-State: AOJu0YxBokWrxyT9fp0sg6kcHwVXMyDtOjfNHd5bls2ilGZ3UDD47UBB
+ ERtcW6b9Y8ONZYc7QY5xPORbu77w7CDOmZFiBHcqcc0Uzg==
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a25:bbce:0:b0:dbd:7254:a62a with SMTP
- id c14-20020a25bbce000000b00dbd7254a62amr1692073ybk.12.1704752880419; Mon, 08
- Jan 2024 14:28:00 -0800 (PST)
-Date: Mon,  8 Jan 2024 22:27:42 +0000
+ (user=nabihestefan job=sendgmr) by 2002:a25:bb0b:0:b0:dbd:4683:21da with SMTP
+ id z11-20020a25bb0b000000b00dbd468321damr1799602ybg.8.1704752883996; Mon, 08
+ Jan 2024 14:28:03 -0800 (PST)
+Date: Mon,  8 Jan 2024 22:27:44 +0000
 In-Reply-To: <20240108222747.2453106-1-nabihestefan@google.com>
 Mime-Version: 1.0
 References: <20240108222747.2453106-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
-Message-ID: <20240108222747.2453106-6-nabihestefan@google.com>
-Subject: [PATCH v10 05/10] hw/arm: Add GMAC devices to NPCM7XX SoC
+Message-ID: <20240108222747.2453106-8-nabihestefan@google.com>
+Subject: [PATCH v10 07/10] include/hw/net: GMAC IRQ Implementation
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
@@ -100,9 +100,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
  nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
  Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=38HacZQwKCIMuhipolz0lmhunvvnsl.jvtxlt1-hytuvunu1.vyn@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=383acZQwKCIYxklsro23opkxqyyqvo.myw0ow4-k1wxyxqx4.y1q@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -110,7 +110,7 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,114 +125,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wvgkfJfs47of
+X-TUID: 6Q73P8SkHXxN
 
-From: Hao Wu <wuhaotsh@google.com>
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-Change-Id: Id8a3461fb5042adc4c3fd6f4fbd1ca0d33e22565
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Implement Update IRQ Method for GMAC functionality.
+
+Added relevant trace-events
+
+Change-Id: I7a2d3cd3f493278bcd0cf483233c1e05c37488b7
 Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 ---
- hw/arm/npcm7xx.c         | 36 ++++++++++++++++++++++++++++++++++--
- include/hw/arm/npcm7xx.h |  2 ++
- 2 files changed, 36 insertions(+), 2 deletions(-)
+ hw/net/npcm_gmac.c  | 40 ++++++++++++++++++++++++++++++++++++++++
+ hw/net/trace-events |  1 +
+ 2 files changed, 41 insertions(+)
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index c9e87162cb..12e11250e1 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -91,6 +91,7 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_GMAC1_IRQ           = 14,
-     NPCM7XX_EMC1RX_IRQ          = 15,
-     NPCM7XX_EMC1TX_IRQ,
-+    NPCM7XX_GMAC2_IRQ,
-     NPCM7XX_MMC_IRQ             = 26,
-     NPCM7XX_PSPI2_IRQ           = 28,
-     NPCM7XX_PSPI1_IRQ           = 31,
-@@ -234,6 +235,12 @@ static const hwaddr npcm7xx_pspi_addr[] = {
-     0xf0201000,
- };
+diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
+index 98b3c33c94..44c4ffaff4 100644
+--- a/hw/net/npcm_gmac.c
++++ b/hw/net/npcm_gmac.c
+@@ -149,6 +149,46 @@ static bool gmac_can_receive(NetClientState *nc)
+     return true;
+ }
  
-+/* Register base address for each GMAC Module */
-+static const hwaddr npcm7xx_gmac_addr[] = {
-+    0xf0802000,
-+    0xf0804000,
-+};
-+
- static const struct {
-     hwaddr regs_addr;
-     uint32_t unconnected_pins;
-@@ -462,6 +469,10 @@ static void npcm7xx_init(Object *obj)
-         object_initialize_child(obj, "pspi[*]", &s->pspi[i], TYPE_NPCM_PSPI);
-     }
- 
-+    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
-+        object_initialize_child(obj, "gmac[*]", &s->gmac[i], TYPE_NPCM_GMAC);
-+    }
-+
-     object_initialize_child(obj, "pci-mbox", &s->pci_mbox,
-                             TYPE_NPCM7XX_PCI_MBOX);
-     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
-@@ -695,6 +706,29 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(sbd, 1, npcm7xx_irq(s, rx_irq));
-     }
- 
++/*
++ * Function that updates the GMAC IRQ
++ * It find the logical OR of the enabled bits for NIS (if enabled)
++ * It find the logical OR of the enabled bits for AIS (if enabled)
++ */
++static void gmac_update_irq(NPCMGMACState *gmac)
++{
 +    /*
-+     * GMAC Modules. Cannot fail.
++     * Check if the normal interrupts summary is enabled
++     * if so, add the bits for the summary that are enabled
 +     */
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_gmac_addr) != ARRAY_SIZE(s->gmac));
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(s->gmac) != 2);
-+    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->gmac[i]);
-+
-+        /*
-+         * The device exists regardless of whether it's connected to a QEMU
-+         * netdev backend. So always instantiate it even if there is no
-+         * backend.
-+         */
-+        sysbus_realize(sbd, &error_abort);
-+        sysbus_mmio_map(sbd, 0, npcm7xx_gmac_addr[i]);
-+        int irq = i == 0 ? NPCM7XX_GMAC1_IRQ : NPCM7XX_GMAC2_IRQ;
-+        /*
-+         * N.B. The values for the second argument sysbus_connect_irq are
-+         * chosen to match the registration order in npcm7xx_emc_realize.
-+         */
-+        sysbus_connect_irq(sbd, 0, npcm7xx_irq(s, irq));
++    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
++        (NPCM_DMA_INTR_ENAB_NIE_BITS)) {
++        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_NIS;
++    }
++    /*
++     * Check if the abnormal interrupts summary is enabled
++     * if so, add the bits for the summary that are enabled
++     */
++    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
++        (NPCM_DMA_INTR_ENAB_AIE_BITS)) {
++        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_AIS;
 +    }
 +
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -765,8 +799,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.ahbpci",       0xf0400000,   1 * MiB);
-     create_unimplemented_device("npcm7xx.mcphy",        0xf05f0000,  64 * KiB);
--    create_unimplemented_device("npcm7xx.gmac1",        0xf0802000,   8 * KiB);
--    create_unimplemented_device("npcm7xx.gmac2",        0xf0804000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.vcd",          0xf0810000,  64 * KiB);
-     create_unimplemented_device("npcm7xx.ece",          0xf0820000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.vdma",         0xf0822000,   8 * KiB);
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index cec3792a2e..9e5cf639a2 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -30,6 +30,7 @@
- #include "hw/misc/npcm7xx_pwm.h"
- #include "hw/misc/npcm7xx_rng.h"
- #include "hw/net/npcm7xx_emc.h"
-+#include "hw/net/npcm_gmac.h"
- #include "hw/nvram/npcm7xx_otp.h"
- #include "hw/timer/npcm7xx_timer.h"
- #include "hw/ssi/npcm7xx_fiu.h"
-@@ -105,6 +106,7 @@ struct NPCM7xxState {
-     OHCISysBusState     ohci;
-     NPCM7xxFIUState     fiu[2];
-     NPCM7xxEMCState     emc[2];
-+    NPCMGMACState       gmac[2];
-     NPCM7xxPCIMBoxState pci_mbox;
-     NPCM7xxSDHCIState   mmc;
-     NPCMPSPIState       pspi[2];
++    /* Get the logical OR of both normal and abnormal interrupts */
++    int level = !!((gmac->regs[R_NPCM_DMA_STATUS] &
++                    gmac->regs[R_NPCM_DMA_INTR_ENA] &
++                    NPCM_DMA_STATUS_NIS) |
++                   (gmac->regs[R_NPCM_DMA_STATUS] &
++                   gmac->regs[R_NPCM_DMA_INTR_ENA] &
++                   NPCM_DMA_STATUS_AIS));
++
++    /* Set the IRQ */
++    trace_npcm_gmac_update_irq(DEVICE(gmac)->canonical_path,
++                               gmac->regs[R_NPCM_DMA_STATUS],
++                               gmac->regs[R_NPCM_DMA_INTR_ENA],
++                               level);
++    qemu_set_irq(gmac->irq, level);
++}
++
+ static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
+ {
+     /* Placeholder. Function will be filled in following patches */
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index 33514548b8..56057de47f 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -473,6 +473,7 @@ npcm_gmac_reg_write(const char *name, uint64_t offset, uint32_t value) "%s: offs
+ npcm_gmac_mdio_access(const char *name, uint8_t is_write, uint8_t pa, uint8_t gr, uint16_t val) "%s: is_write: %" PRIu8 " pa: %" PRIu8 " gr: %" PRIu8 " val: 0x%04" PRIx16
+ npcm_gmac_reset(const char *name, uint16_t value) "%s: phy_regs[0][1]: 0x%04" PRIx16
+ npcm_gmac_set_link(bool active) "Set link: active=%u"
++npcm_gmac_update_irq(const char *name, uint32_t status, uint32_t intr_en, int level) "%s: Status Reg: 0x%04" PRIX32 " Interrupt Enable Reg: 0x%04" PRIX32 " IRQ Set: %d"
+ 
+ # npcm_pcs.c
+ npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
 -- 
 2.43.0.472.g3155946c3a-goog
 

@@ -1,256 +1,184 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp599748ejs;
-        Tue, 9 Jan 2024 11:39:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHJTrmfSGFwE7g7ibx3Mz1A1jKvHpTJw0dfIw29BVKzx3J7DONDdjEEOKdY67Y9hsIOOzA1
-X-Received: by 2002:a05:620a:14a7:b0:783:32e1:4d5 with SMTP id x7-20020a05620a14a700b0078332e104d5mr682802qkj.87.1704829149576;
-        Tue, 09 Jan 2024 11:39:09 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1704829149; cv=pass;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp602716ejs;
+        Tue, 9 Jan 2024 11:45:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFNLxNNtRzsKIY9epUqotra0Xq5tyZJ1g68MEDzPBSIpFxbwCIc2maj/SBOqrUkUHAOl3dU
+X-Received: by 2002:a05:620a:5601:b0:783:2e75:9377 with SMTP id vu1-20020a05620a560100b007832e759377mr1455445qkn.57.1704829543368;
+        Tue, 09 Jan 2024 11:45:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704829543; cv=none;
         d=google.com; s=arc-20160816;
-        b=B5UZlkSaTHQknvEDtWhLp0FSZNnT+kqQbOYSv3W0/vkluAPe7SUoTXnnVfiZDZ9grQ
-         J4ettGPEHnXrfudOGMxFNVlJ1jWLaokaUi3CBb24Lq11dns8J29aHWi9m0A7EhQ5Y1ZV
-         eAMcM7ND6WeNheX3MVM5wzT7HTiuN3ohi4DEwXvdNk+MghkVWskGtwNPmx1uKMIQcQvw
-         27HJrFrVXgD1p85pw0HNUp3ek7ydHafXdioZfysmqngVOHneml7DsW3XA8A5JWDUIN5B
-         QsO4/0Vknnrx5vIhejNlYFyQ3qcrbl4iHAs4iuUDPLFsBuMFwzob5a0NnPOpMk+aQqbA
-         b6lw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=csTdfr61L1ed8RsepA3qDwF7OjRgx9HqMVnPDrg3fIOdRGTah1XH/f+AoP0DFZxUXm
+         wqlNlOZnQwKKJdOj6cbZNkphEGswbWOvRyGU4HC2ovcgEzC6hKYumH4m9DC+OJvZKhyJ
+         OUWtU1pzYZH30JAaNh8e0xBC+KrYafxE0MdeFfKfbf5z5ZlCXpXQZnuUfe8IoX6k4BpU
+         3o8ReuMZtch6NMzt0/XHmHQZG+WIqhNUrEteKVSdY7U3Rp8iEpC0HBoMMDiwYptXswZK
+         WI+MfstieF2fralXZCrO0n+eMYQ0V1ak+PkIqBYwc7Mn2+oJt+NKMibL+ZUCsVdJNoXN
+         ujoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=tA3o7NnQjDSN/nqTygo5/+BRrkAwg4R10Id71m2xzLY=;
-        fh=sOnxNTF6HR1chrCmhacNbbBaJTMsC5mkTLqykeUyqVM=;
-        b=dxLX6ah8dlHIN7V5Nctj4KaE48CEfZkP6qF7+ahlXpFNo47PvFda/z3k3dwPhwWwpY
-         mMyPy3SaOdIR9qutG1WxpIA5rMZIw6cJPAXYzXs41UPdLvtD7PJaLCFUrjmhYECfOOh/
-         tpy7RdJ/R0MokWfbEonqnyA1N2C2vQeWXNdhyEoGB5bk4W12ZVW5MbjLyvj71if/j1Ms
-         ZvtPkrIdBmDs8AQUpfRGQsntnx2qoBwHm03JneUFjfem2Gq0cYTXdomWZvqJjOmsUEZM
-         fyeeqelk+rmd8TpATZavJZwDrYVlKezLNenRppCMPxAybEeJPunAVOvZxnzYvgnYkksf
-         OKGg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=k++uzrUF;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=AALDtbxiHDFlIUTu8ehdDRQQJ3tSs7nKyZkmY3F09Ng=;
+        fh=sXeXe/og0x2iPPydpiq5PEKhKkQtimrUH7f/c295vY8=;
+        b=bXZJtOBHC0rLk9TDS130oPFxxhJ0F0btAdK2AGMCaGgtpw3p0SUjWpItbX3IZeJKZD
+         9bd/xkfdCZM6dYCWra7slaiEAFRZDH+MGUDyUBVYuTrKOdx25xh5av0Ovd+/TgwXZQ+O
+         hztOfju0aVsjt5rKBiPv/Cqg9sqdeAJASIYFw5v08UFzdwQzxXuy4qdV6dI9vNLXHfpA
+         p5LToAhLI8SE2oCLtZ9j54j+X5r172bQ8lI5woefZanCH2H3MDUB4uedgz0z4N4txz08
+         Ho1dVZ/CRgyE+2C7T8x5oBixsrTrSNUVEwbOX/yIUzDag7/uIBNHHX7SUhvxF0av71p7
+         2Sbw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=owQmPfSH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5-20020a05620a0d8500b0078323d0bf09si2927962qkl.756.2024.01.09.11.39.09
+        by mx.google.com with ESMTPS id bq10-20020a05620a468a00b0078334092c60si417314qkb.70.2024.01.09.11.45.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 11:39:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jan 2024 11:45:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=k++uzrUF;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=owQmPfSH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNHw9-0005uv-FK; Tue, 09 Jan 2024 14:38:57 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rNI1s-00013f-VK; Tue, 09 Jan 2024 14:44:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1rNHw8-0005tA-G5; Tue, 09 Jan 2024 14:38:56 -0500
-Received: from mail-sn1nam02on20610.outbound.protection.outlook.com
- ([2a01:111:f400:7ea9::610]
- helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rNI1r-00013N-7B; Tue, 09 Jan 2024 14:44:51 -0500
+Received: from zproxy1.enst.fr ([137.194.2.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1rNHw6-0002oq-Cd; Tue, 09 Jan 2024 14:38:56 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=loncMlhobnB2ylEN5WShgtMtGmSjqTvRq9jLPW5B/SsRiGjDKRPnWa58Yyl7AJWbUsgxGFLiTTPSgCbgQCPCS4nckatJ7R4zkSkvbOr9AH4jRVhjV55y4vldWSFu5eoEIPbmxd9XJxJltA7r/KzJEuLER6BffqW7zpn/4ihWygu9PeFImrGXf1mLAIKGDsxTyGv48XwLTHszsgi02OMK7w+gUSfx6Uw8Hyf9i3oLdOWqtmiY2Gn6E6F8+SuA01qx+kbsrfV4PCJ3egm09vq76GtZI4JnEU+fohCZnTkblZlaicktPqS9O4GAvgkqQxiVMD4fLDGbFPgxoZdhKeAutQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tA3o7NnQjDSN/nqTygo5/+BRrkAwg4R10Id71m2xzLY=;
- b=fpsIYwUlottehzXxnhdqXqm2JFMcWY7KsIpUx8yjhS1juKgGf30zdLpAPZEWb0qmPq3MNommoMziHrly/8DlEygPDQ73zYD3zLICU/uN06tHhXDIdCsVgiaihkFmtXbKYaQ7upUOLau5N6lXs89wJjG89GqYeFU1qQ2uf2yn3slf94p7I842mUE3+hTvTRPtbbmF3AK828xBT+smfgbCVQPpcnUK7YOhlzCcAYpQ8NBz9Vdzib/YKWUB3LBlIb9Ljc4iJ/tBbZXKlz0NXOjHr3PxnqQeX/tT+oRqdVYZTz9eG6D463yvs/rI0brdxdmAbg/+QyrURu9KTk10o7tY4w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tA3o7NnQjDSN/nqTygo5/+BRrkAwg4R10Id71m2xzLY=;
- b=k++uzrUFyxLSMqScxHG+UuP65M3mhJyCrv8MlI06Q5qzWFQ37pvM9nV0ESluFLZxf9jMMYI9ALfNbwtBITmE7FJLD+hB10hreh3okoVineLnePBpK4y+4b62tpaoVZV1ndQb3bqtfbEjBIKe2AnoEAAtvNq7izmUnMoH4PR1utjrjoGI2KeB3pxO6uwefwN96qhc2/WAZvZhbQMMFDJqqvqp3XTwZ8+v0uNlrduQKtYWaRy68vTS3N08TxvMQfAWY73EiKN2r2wblioWmDiGyd2EJ0iHNyD3WSjh8BNPT4DoRQCJH6GH2iYN/8SiXHuoo528MPcGHeIGRmdX8kkw6Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DM4PR12MB6469.namprd12.prod.outlook.com (2603:10b6:8:b6::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7159.23; Tue, 9 Jan 2024 19:38:48 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::60d4:c1e3:e1aa:8f93]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::60d4:c1e3:e1aa:8f93%4]) with mapi id 15.20.7159.020; Tue, 9 Jan 2024
- 19:38:48 +0000
-Date: Tue, 9 Jan 2024 15:38:47 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Dan Williams <dan.j.williams@intel.com>
-Cc: David Hildenbrand <david@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Ankit Agrawal <ankita@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ani@anisinha.ca" <ani@anisinha.ca>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com" <eblake@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- Aniket Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>,
- Kirti Wankhede <kwankhede@nvidia.com>,
- "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>,
- Vikram Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>,
- Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v6 1/2] qom: new object to associate device to numa node
-Message-ID: <20240109193847.GF439767@nvidia.com>
-References: <20231225045603.7654-1-ankita@nvidia.com>
- <20231225045603.7654-2-ankita@nvidia.com>
- <20240102125821.00001aa0@Huawei.com>
- <SA1PR12MB7199DF47EDDA9419E22FD79FB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
- <SA1PR12MB719917E2C9D98C04AE9058C4B0672@SA1PR12MB7199.namprd12.prod.outlook.com>
- <20240104103941.019f9b54.alex.williamson@redhat.com>
- <20240109165221.00003b8b@Huawei.com>
- <16d54fd2-9bab-46cd-a1b7-9742674453d6@redhat.com>
- <20240109171030.GE439767@nvidia.com>
- <659da02316cab_24a829418@dwillia2-xfh.jf.intel.com.notmuch>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <659da02316cab_24a829418@dwillia2-xfh.jf.intel.com.notmuch>
-X-ClientProxiedBy: MN2PR20CA0034.namprd20.prod.outlook.com
- (2603:10b6:208:e8::47) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rNI1p-0005c4-2j; Tue, 09 Jan 2024 14:44:50 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id 8D9F4C0CDE;
+ Tue,  9 Jan 2024 20:44:46 +0100 (CET)
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id Iy8tK8_qiNsi; Tue,  9 Jan 2024 20:44:45 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id A77C0C0CF6;
+ Tue,  9 Jan 2024 20:44:45 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr A77C0C0CF6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704829485;
+ bh=AALDtbxiHDFlIUTu8ehdDRQQJ3tSs7nKyZkmY3F09Ng=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=owQmPfSHTFVjw87NWKV0zwa6Zk17qwcJn5h87NuKdlGS0Cdx5wpveA8uCn0CDtQ/z
+ MIj+tRGhbgoyzbl+wNxaPTLowQOYlruVq2tz5ZkaJw40p4EHx0REZAgGP7WNz9BcDj
+ 9DXUTvNeEy9OJzptB0ZDlNB2nPFnFLTF0iMbCq6w=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id ad4DrU6UqU8m; Tue,  9 Jan 2024 20:44:45 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 0AC82C0643;
+ Tue,  9 Jan 2024 20:44:44 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH v4 0/3] Add device STM32L4x5 SYSCFG
+Date: Tue,  9 Jan 2024 20:41:56 +0100
+Message-ID: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM4PR12MB6469:EE_
-X-MS-Office365-Filtering-Correlation-Id: e4211d5e-96b9-4509-3c93-08dc114a99be
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dr41iDrPNgsCTMo11TbV4lArzm2UAtl9U9ofZpybwvcm5FfgFPOoPglcOH78djF5jIvWVFNC+kGDAQX7TL+fZ4RxwnMhlUZtOdSTT3GRjudKFnqhk06pb1zl67KbRoc9duLF7THsz9jVbxzAKA2peAHeL8pzT6QrzR7PexCyvigrO3LLY5XF+e4bd2L3Wv6TxgDJ8o4XCApdXtgfaw+A/0NQN3HkQSQwzYFgj0zxx0C+lMeescq80en6dEp1kioD2NMQcvZklmoPeXOdHLnot+u51yQAINY7krYepS1bvA8B1l8bn9N78YZrhFpCw6//ZNn3Dy947XaKnp5PJJ4ovA4ZYHdtQRPrq6IHf9eBq2mxrMD5NwPcvFimYgaQkSILzYFE/VOArOxqbKMH/le7ybieLLXwTIVoJUf1A5GrHam6yalMjsLLfT91FMXNTEw1tz1/t+rF9vXKFOTmpW3ysMYKCggb9jASTcf9yGo4Fp6LUqGIQzDPlL8Q2UoGfzQsUq2SqC7QJVJxA6JIhIs//lYH1ArVH+35G8f6m2HOP3PnDnNbsv6uk8qFZ4d35tU+vABh9wUII6rmHI5MAHf4G6Xg7LgJt+EyckoZdcDv9GRP9j8SJiw9/RV7ozdnBNrO
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(346002)(376002)(366004)(39860400002)(396003)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(41300700001)(86362001)(8936002)(6486002)(8676002)(6916009)(7416002)(2906002)(5660300002)(66476007)(66556008)(36756003)(316002)(1076003)(66946007)(2616005)(26005)(54906003)(6512007)(33656002)(83380400001)(478600001)(6506007)(4326008)(38100700002)(27376004);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?epo02Z2cW/J6ZlZU2BJGzAmlqQ82vfrqnVHZDo0pS8TWGGGY9pok44isirFV?=
- =?us-ascii?Q?go6vMFaiwxUJ6Msr//ssAtdFDgdLH39dZFBZbHaJrYS8/oj3Gaj1BnDohy2z?=
- =?us-ascii?Q?KXxbWXElLvY5pB4yjWweKL+whdzoDV/C8zY/HG/bTQc4YTuVNa9/7rhQJQiN?=
- =?us-ascii?Q?a+/aQa4ESGH6i+9J8UUmtt/erM8VycAyjoN99gpotpijBoNNTUySnHmmgGcg?=
- =?us-ascii?Q?fGdeFT5SOPx29cn2BWMjtowd7cao42lG4v8E5ODF3u80E4ZGZVPT2BGp7PsD?=
- =?us-ascii?Q?iIZRiNwN9VL1vOgXGAdNOPmgXRt/VbwHv+tPQ10DqMZoKQ6I9Bak5qxqnXUy?=
- =?us-ascii?Q?deSJIlXJuYGLgb1xgsL0PmXCDc+AMs3Y/76Bh5e2fAQ+pUpo6w/H4ecK0SZo?=
- =?us-ascii?Q?B04bS7t2tFwhkuOcy+cDuzqvGlCsDNixVL9anx4f7GWWZrSFThXHJT1eqBMq?=
- =?us-ascii?Q?XPkQkVauRDEeuVlQJVDsvI00gj8eKTTZEsSSy0yUL7JsHL3YX3lOSmp5INoH?=
- =?us-ascii?Q?6J5AWpk39scKvWPJ84Kjl2SVEG7nnZht/Rz2q2C96tH90x4f1oRQG1YZfEMk?=
- =?us-ascii?Q?rgF1R8ZjkryzAvWchaPP0OrgEyuxsrCcH4ix/1X1r7O5AWcIHIT8GJMY/cT/?=
- =?us-ascii?Q?MVvCeh8bOdZQWrZaw6hDpKnHMFMr8G3FKlltPZ/scJVSxWz0lSSLliHxjeu3?=
- =?us-ascii?Q?Z1lg4jKRJ9I3uEf8+Jeqi7eNvulv8BH1bj543Jp0VjlcxqhGMnCAEV4cqp8f?=
- =?us-ascii?Q?CG6Us0ya3uvHmvcQFLhSk8iFe75W/JsxEEvJZ60KCYstEq8nPeLMPcGVMzlb?=
- =?us-ascii?Q?sSQRUTEzX09SEgBBtFfuzYsuAspgRmjcTszOwo5Mrqn9x5KoKkypw4Gh/BjD?=
- =?us-ascii?Q?LW+9+kehye6lM7BvbhY6EBmMuFnWUXqs3FUT6JooRd7htvKkYLYXo+mk0UBK?=
- =?us-ascii?Q?4XK8ktK16Qhqa6m8bACnu6NwL2RmIhQAwcnBSX+UaoWgbDtqsgd+edxOy507?=
- =?us-ascii?Q?8JmLCCyyUypUYR4ExUtR1q2znjjlw3W8JD1hKiYLfySmiiTyk5i+kqZz2F+F?=
- =?us-ascii?Q?CtFAvsY5zYOqAUnpstNxda1/ArpiRHMYREUEzMxGAlTAgpMeFJ80YI46txk1?=
- =?us-ascii?Q?s30GJ1DHD0X8brm7N5kLyXkKnuZCSlxNDayr1MbPTmuxiM+uCxKfMeX5YaVG?=
- =?us-ascii?Q?zLz9p/X7NQAFPTcuPruTTcjg1mdpAdL6yoAMjGmvcgCrS5TswaqGuefAFc51?=
- =?us-ascii?Q?FJZNgKk7/DKiTz8IA7aGZcLk6zjHqwEVtCQZEY0u1pirTUZturMMZQuDKcVs?=
- =?us-ascii?Q?d8jyzmvtJZE9qe5BKPdILhi32wWYXZPmkfWscdL+QjxjwYgeZ1KcjiBrzb8j?=
- =?us-ascii?Q?JULfDvwhbQsJIS69ZhFUTCRV5BFo4fwa8jhKkVlZJ3LZLoBaWPbxAKJcAsQI?=
- =?us-ascii?Q?3z7vHGX4/I5A44ClS/95RV1SDvVG5wH4UoY2vKFEV+8DQkpIWsRpp8DJEwHy?=
- =?us-ascii?Q?7ET5Z/Bn4tOhX1xsv68tdYv9g6aO4amMIUn7nhu1fJuNRl6OCXpuYYZhG1lc?=
- =?us-ascii?Q?hmm2Ip9KIxzc5QZNUZ1C3hLS3QpsBVgMJzyXpjtz?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4211d5e-96b9-4509-3c93-08dc114a99be
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jan 2024 19:38:48.6359 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: bd45fVkSwSp662Fa6LF/gwpAOoz2owRHaCdP0PeXAy7emdWzWPBYZDolhowkgOfl
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6469
-Received-SPF: softfail client-ip=2a01:111:f400:7ea9::610;
- envelope-from=jgg@nvidia.com;
- helo=NAM02-SN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.493,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.220;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8kFOC9DYcCXs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IdvITBDenO9W
 
-On Tue, Jan 09, 2024 at 11:36:03AM -0800, Dan Williams wrote:
-> Jason Gunthorpe wrote:
-> > On Tue, Jan 09, 2024 at 06:02:03PM +0100, David Hildenbrand wrote:
-> > > > Given that, an alternative proposal that I think would work
-> > > > for you would be to add a 'placeholder' memory node definition
-> > > > in SRAT (so allow 0 size explicitly - might need a new SRAT
-> > > > entry to avoid backwards compat issues).
-> > > 
-> > > Putting all the PCI/GI/... complexity aside, I'll just raise again that for
-> > > virtio-mem something simple like that might be helpful as well, IIUC.
-> > > 
-> > > 	-numa node,nodeid=2 \
-> > > 	...
-> > > 	-device virtio-mem-pci,node=2,... \
-> > > 
-> > > All we need is the OS to prepare for an empty node that will get populated
-> > > with memory later.
-> > 
-> > That is all this is doing too, the NUMA relationship of the actual
-> > memory is desribed already by the PCI device since it is a BAR on the
-> > device.
-> > 
-> > The only purpose is to get the empty nodes into Linux :(
-> > 
-> > > So if that's what a "placeholder" node definition in srat could achieve as
-> > > well, even without all of the other acpi-generic-initiator stuff, that would
-> > > be great.
-> > 
-> > Seems like there are two use quite similar cases.. virtio-mem is going
-> > to be calling the same family of kernel API I suspect :)
-> 
-> It seems sad that we, as an industry, went through all of this trouble
-> to define a dynamically enumerable CXL device model only to turn around
-> and require static ACPI tables to tell us how to enumerate it.
-> 
-> A similar problem exists on the memory target side and the approach
-> taken there was to have Linux statically reserve at least enough numa
-> node numbers for all the platform CXL memory ranges (defined in the
-> ACPI.CEDT.CFMWS), but with the promise to come back and broach the
-> dynamic node creation problem "if the need arises".
-> 
-> This initiator-node enumeration case seems like that occasion where the
-> need has arisen to get Linux out of the mode of needing to declare all
-> possible numa nodes early in boot. Allow for nodes to be discoverable
-> post NUMA-init.
-> 
-> One strawman scheme that comes to mind is instead of "add nodes early" in
-> boot, "delete unused nodes late" in boot after the device topology has
-> been enumerated. Otherwise, requiring static ACPI tables to further
-> enumerate an industry-standard dynamically enumerated bus seems to be
-> going in the wrong direction.
+This patch adds a new device STM32L4x5 SYSCFG device and is part
+of a series implementing the STM32L4x5 with a few peripherals.
 
-Fully agree, and I think this will get increasingly painful as we go
-down the CXL road.
+Changes from v3 to v4:
+- swapping commit 2 (add tests) and commit 3 (connect syscfg to SoC)
+so that the tests pass in the commit they're added
+- in `stm32l4x5_syscfg-test.c`: instead of declaring intermediate
+variables, using `syscfg_readl` directly in `g_assert_cmpuint`
+so that QEMU coding style is respected
+- in `stm32l4x5_syscfg-test.c`: the tests are now independant
+from the EXTI device (the reads in EXTI registers were unnecessary)
+- in `stm32l4x5_syscfg-test.c` : using a helper function
+`syscfg_set_irq()` to help readability
+- in `stm32l4x5_soc.c` : reducing scope of `i` used in for loops
+- in `stm32l4x5_soc.c` : removing useless variable `dev`
+- in `stm32l4x5_syscfg.c`: add macro `NUM_LINES_PER_EXTICR_REG`,
+correct some coding styles issues
 
-Jason
+Changes from v2 to v3:
+- updating the B-L475E-IOT01A machine's documentation file
+- using `GPIO_NUM_PINS` instead of 16 in `stm32l4x5_syscfg_init`
+- correcting the formatting of multiline indents
+- renaming a trace function (`trace_stm32l4x5_syscfg_forward_exti`
+instead of `trace_stm32l4x5_syscfg_pulse_exti`)
+
+Changes from v1 to v2:
+- explain in 3rd commit why SYSCFG input GPIOs aren't connected and add
+a TODO comment in stm32l4x5_soc.c
+- use macros `NUM_GPIOS` and `GPIO_NUM_PINS` in
+`stm32l4x5_syscfg_set_irq`
+- rename STM32L4XX to STM32L4X5, Stm32l4xx to Stm32l4x5
+(the SYSCFG implementation is only valid for STM32L4x5 and STM32L4x6
+but not for STM32L41xx/42xx/43xx/44xx)
+- refactor `STM32L4x5SyscfgState` to `Stm32l4x5SyscfgState` to be
+consistent with other peripherals
+
+Based-on: 20240109160658.311932-1-ines.varhol@telecom-paris.fr
+([PATCH v8 0/3] Add device STM32L4x5 EXTI)
+
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+
+In=C3=A8s Varhol (3):
+  hw/misc: Implement STM32L4x5 SYSCFG
+  hw/arm: Connect STM32L4x5 SYSCFG to STM32L4x5 SoC
+  tests/qtest: Add STM32L4x5 SYSCFG QTest testcase
+
+ docs/system/arm/b-l475e-iot01a.rst  |   2 +-
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/stm32l4x5_soc.c              |  21 +-
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/meson.build                 |   1 +
+ hw/misc/stm32l4x5_syscfg.c          | 266 ++++++++++++++++++++++
+ hw/misc/trace-events                |   6 +
+ include/hw/arm/stm32l4x5_soc.h      |   2 +
+ include/hw/misc/stm32l4x5_syscfg.h  |  54 +++++
+ tests/qtest/meson.build             |   3 +-
+ tests/qtest/stm32l4x5_syscfg-test.c | 331 ++++++++++++++++++++++++++++
+ 11 files changed, 687 insertions(+), 3 deletions(-)
+ create mode 100644 hw/misc/stm32l4x5_syscfg.c
+ create mode 100644 include/hw/misc/stm32l4x5_syscfg.h
+ create mode 100644 tests/qtest/stm32l4x5_syscfg-test.c
+
+--=20
+2.43.0
+

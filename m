@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp552973ejs;
-        Tue, 9 Jan 2024 10:10:11 -0800 (PST)
-X-Received: by 2002:a05:600c:468e:b0:40d:9032:1920 with SMTP id p14-20020a05600c468e00b0040d90321920mr3144513wmo.38.1704823811614;
-        Tue, 09 Jan 2024 10:10:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704823811; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp553060ejs;
+        Tue, 9 Jan 2024 10:10:18 -0800 (PST)
+X-Received: by 2002:a05:600c:4447:b0:40e:36ac:d9e3 with SMTP id v7-20020a05600c444700b0040e36acd9e3mr593647wmn.37.1704823818594;
+        Tue, 09 Jan 2024 10:10:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704823818; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQkqlsXbhOMyN2DnzkEbyHFecarUVsBgX1/VbE73V7+YWPueUl6u598Ivf7kWT+mkV
-         7TiJ00yreAy4ieGgRxbtnZMbUQivIrpZh8BroyUjNpV4gKYT7kSBqbQVnQPY4WJ9GrKK
-         wkVSeiFloWBgzcgaI2/LbcPdr7gQWWWSP9GvfUXdmhCY9nyF5lNPx+xfVNxnWrcLeIRT
-         ohh4ThKed6A8MkeybexbR0jTG/fjFM951flL4cVC74d+L8XGp6oexYJMHrl5g2jgFAzJ
-         6H6kyzV+tQBkDdBmTyY/wUY+ulJ8ndoBMWv9UjxecVs2lymHTBCTWVx0amHi5YuAMNT/
-         PZAQ==
+        b=co5fknO97Dz8lj3pKlSnlkDYHuX8BsNBDkzi4y0s03WcSZHLTN7qR0SgceeL6QpZse
+         a6Ct25xtGk9I4U68P2RehgSC+/4Y/KFW8H0Ov/j+ZKd0OmW1X1XFxfTZLVAeXEmNm4nT
+         yKjOGnP882wccXuwutWY7UiJHIUM3cTHyy00gDDwEwQAcMxU7DPUz9pSAPBcoOdeynnO
+         FcqY/0z5uaaVE/4VSF7C4nLuCVJtL1hzAyax2uHpIZBk/A7NFc/C4xOn5qu0NRVXodZX
+         s+MePxYl1nEn2KDVXhGl23Unp1EwewTjOR6thqHPvTD3/1FBWC8caeJVnoi4Ywn3RlVo
+         DYLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+Lqyw2xeJxP0nadk2efU9Sx5aGl4DyqfaFeDtt0siLg=;
+        bh=5n6b/Kfb2q1nuszk7kQnrf8+ZzcUeVpd0islGk5jF8M=;
         fh=v69mdd+nxs/0WeTIWzLZOPCx0ynE2o0vtvId2fSwkBY=;
-        b=Te17q7cpwamjTofuHzoLtbvggG7TqreZfw6h0hmd4ikNpoRJJ5/Iu0EI+eXg8DA5wb
-         wr7bPOJE1j/eSntSJ2tIPhRjsdjD7Yqn9CRqWynTtZkQLBb9/FZRnlppp7cGwdYixNMS
-         uC2raFDPSwFMPfLitvN5trY+U/WBq+CYbLtfbkebe/SsvFMdW83tNTUXfiP4PqKTVMmN
-         4gbAt03ethIaNlOu3q9Cr0lDZNGdNAVx/6XIm06pNmxNcamk1lkX3NjvGO04dkOuSE9+
-         I9rCWd9QpCr8ngAAG52bbWLND50STcMHR/leKrCUW9OKTo7QkDv1+fD53pRA64jZyLwR
-         oPkw==
+        b=rzvLWgeDQvr4ciI7iyJwKBBLmz2W00WZuMTIkz5wThxkPfFyImMtLUSC0JT32S+FLt
+         SLym/2UA4InOFxKxbc92nMP4RG9IQ67mMzzo8OHyRoSeAqyaAbReH/PxwcPo9WCoPqif
+         0owCKsd6ByB0ebj6PztoctI9w9oiCY0RB9woVacx3FKYQDyy6sB8iRd7vhi6iSF7dyGO
+         fjsk67o+zGhQyo6BGTwUeYCHmRWhD1wYf6azqZ+jnAQfHzUozhVr2zCSxfgGEtBb5cQS
+         eng14bPsP22yxPOI7WjkIXILC6qhP5hF4rvUk+xGs1wrTT7w/nfOx7HMXvO17dQJMQnL
+         /qmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L8mpgaK7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y8jh6rYr;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 24-20020a05600c025800b0040e455808e8sor917378wmj.12.2024.01.09.10.10.11
+        by mx.google.com with SMTPS id l13-20020a05600012cd00b003365f12a05esor2125353wrx.3.2024.01.09.10.10.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jan 2024 10:10:11 -0800 (PST)
+        Tue, 09 Jan 2024 10:10:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L8mpgaK7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y8jh6rYr;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704823811; x=1705428611; darn=linaro.org;
+        d=linaro.org; s=google; t=1704823818; x=1705428618; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+Lqyw2xeJxP0nadk2efU9Sx5aGl4DyqfaFeDtt0siLg=;
-        b=L8mpgaK7Z2Z+9YU1FeiIbB6dYEvoCs1lQfPtgeUMWg/TeZnmt/2KAna3ohvJP6T5ix
-         d5MXmwLu6SaZsSut+yhicFEgfMjpI4a3+EB4uP/XH6h3TmPVFTvYLPPMIkxB74SP/md7
-         4GYJDrFHRJ/1UIO/peoF/fdlB1wUGeVS/cAeIhpvYi4TBj9Y+ZNxR3ujmcLQof5G3Fwu
-         4qGdFX+GI0AAJHkd7y53Fv9vsiGxVkpELmRxkq5vLmmfeuJEm6hNXxwYJPb5jMa/Gew+
-         44naoNvQ0FJ8wFb/lhERdq/+n0J3C1sSIDqAq48ENrHVsotXtqo6a7d7qQ4LyX5mAlnl
-         0uvA==
+        bh=5n6b/Kfb2q1nuszk7kQnrf8+ZzcUeVpd0islGk5jF8M=;
+        b=y8jh6rYr4H+VI9NNK+IxEYoTTpNiV4pArA+ZnVgpskhLbKSLO2nA21Cq4VM/NiYdT7
+         +DuroMSULlRvKhFQnRf8I6tbly4hqeL+OKyarc3V47eogqss8uC4qhpTOEwyxkniNpjt
+         ZqM3ZoZbuiWw/YhUqieGx2jzukJ/b4Rr+rjaFnP8ZiNBJ2SxBfIDCsSNXZUPF7PNmzZu
+         pcfVPf69dCsL1lz8UgHguoaXYVQxYozH51pNlfVwi/+FWsEsjzlB+45gs0GLoNXmXgC+
+         8RbRXJnr0rgVMgAmqmilCOjM8MbU28Jreny1nvmjVvw8SrvWjy46mGsl/nHpu4pSg402
+         xlDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704823811; x=1705428611;
+        d=1e100.net; s=20230601; t=1704823818; x=1705428618;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=+Lqyw2xeJxP0nadk2efU9Sx5aGl4DyqfaFeDtt0siLg=;
-        b=aWcYKGPkfe7dIStMtF6RVJ9W6mshPLxd0oQgrm72obl+KT/0gk1vkoyal00ilMNfKU
-         96CCwjjoI+U+Z1Dehp3QiO580Rl9sRwoySBoYrCAxbPkdNSwoRrQ36ndN+WuMr2KzUMp
-         3qIuZujvNfkLCjpD/I4GAsfZwRJjAq+i43Z3l9P5u8RrHCdY1VhljChLttNiwEtmDdxX
-         OtEpykdEimCbcqqaYRb/uk3F8GN5QAUDatY3z3BYTwFRK2QeAQGMdbYEDrukOHmGJDYw
-         IxzHgKgaz1Bcc7M7uwkOPj6o/tm2Y7s8CZWlz07rAdh6/NqJl+KYmaUTZf4xf7RBtSOY
-         EEJA==
-X-Gm-Message-State: AOJu0YzV7PquMadPplhIRCr3FpJ6QJL2UitZQqAGGFV65DGQeNa52PZl
-	2BQwbecAzP9XGxdPx5o4NUIcbaot0cMgae31
-X-Google-Smtp-Source: AGHT+IEkV3EqOMZBiyi/x5ctMwIwgQqB9cTJaNXPdfadCTidyHUkVC6QTsodAd4u42EfBemrXHw2rw==
-X-Received: by 2002:a05:600c:b97:b0:40e:4985:ba63 with SMTP id fl23-20020a05600c0b9700b0040e4985ba63mr1545900wmb.107.1704823811362;
-        Tue, 09 Jan 2024 10:10:11 -0800 (PST)
+        bh=5n6b/Kfb2q1nuszk7kQnrf8+ZzcUeVpd0islGk5jF8M=;
+        b=QkL7CnzvTa2Mwg2gqHAijYPJ7DQ4T67MxmUSTrFaHpb+qkIw1Z0yl+EAIgYGUD93bz
+         dr1uaM8WR560Pi5tIrkuFL0ZwuYwvrxjoS4w+pIycNozEQWuzjU0uIBoYJwKLBlWNxLY
+         4XYC7A706yXemgYyt2TtYByTv4RoHuks0e+uubY3DdGkyErC+wND5anWdhCNTrfcMyQU
+         4gjvDcOJ0/qy4w7pMIU8R39duH0CPvDAp7KDaDZIc9+y792YATjGcFHoectIoqw8w54l
+         EVhy+nE+OFN4uLk6EkBklfYTF11iCO5eDTEh+2K8nQ79sap0IqruNrrcEwh4Pt3DoT3v
+         iphA==
+X-Gm-Message-State: AOJu0Yzh1HoPyptVq4SPVrATjG4M0fzhhPQ2U4WEvSRLKdVv2ACDBT4X
+	jzKvQ3OVaoew/LW+r4Z/3v4G+4fiQzMaXKtIJo/XcX2ZvjhXDmWX
+X-Google-Smtp-Source: AGHT+IE4jXA8U3e7c26iLW2dOY1wGZCd4tmuuH2ptRrYrBk6Wktz0CFYIyrg0TR6TFnaeQVst5SKlg==
+X-Received: by 2002:a7b:cd17:0:b0:40e:364d:d526 with SMTP id f23-20020a7bcd17000000b0040e364dd526mr735782wmj.87.1704823818320;
+        Tue, 09 Jan 2024 10:10:18 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr. [176.184.32.47])
-        by smtp.gmail.com with ESMTPSA id gw24-20020a05600c851800b0040d3276ba19sm4549145wmb.25.2024.01.09.10.10.09
+        by smtp.gmail.com with ESMTPSA id i1-20020a05600c354100b0040d5a5c523csm15647125wmq.1.2024.01.09.10.10.16
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 09 Jan 2024 10:10:11 -0800 (PST)
+        Tue, 09 Jan 2024 10:10:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -85,62 +85,39 @@ Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 06/14] hw/arm: Prefer arm_feature(M_SECURITY) over object_property_find()
-Date: Tue,  9 Jan 2024 19:09:21 +0100
-Message-ID: <20240109180930.90793-7-philmd@linaro.org>
+Subject: [PATCH v2 07/14] hw/arm: Prefer arm_feature(THUMB_DSP) over object_property_find(dsp)
+Date: Tue,  9 Jan 2024 19:09:22 +0100
+Message-ID: <20240109180930.90793-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240109180930.90793-1-philmd@linaro.org>
 References: <20240109180930.90793-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ux2ufLPCww1q
+X-TUID: BTmQoLeCj62/
 
-Both "idau" and "init-svtor" properties are added to ARMCPU
-when the ARM_FEATURE_M_SECURITY feature is available. Rather
-than checking whether the QOM properties are present, directly
-check the feature.
-
-Since we are sure the "init-svtor" is present, the
-object_property_set_uint() can't fail.
-Instead of using &error_abort, replace:
-
-  object_property_set_uint(OBJECT(s->cpu), "init-svtor",
-                           s->init_svtor, &error_abort);
-by:
-
-  qdev_prop_set_uint32(cpudev, "init-svtor", s->init_svtor);
-
-which is a one-to-one replacement.
+The "dsp" property is added to ARMCPU when the ARM_FEATURE_THUMB_DSP
+feature is available. Rather than checking whether the QOM property
+is present, directly check the feature.
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/armv7m.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ hw/arm/armv7m.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 530729f42e..8350267d96 100644
+index 8350267d96..0a7ad2b762 100644
 --- a/hw/arm/armv7m.c
 +++ b/hw/arm/armv7m.c
-@@ -311,16 +311,11 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-     qdev_prop_set_bit(cpudev, "start-powered-off", s->start_powered_off);
-     qdev_prop_set_uint32(cpudev, "init-nsvtor", s->init_nsvtor);
- 
--    if (object_property_find(OBJECT(s->cpu), "idau")) {
-+    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
-+        qdev_prop_set_uint32(cpudev, "init-svtor", s->init_svtor);
-         object_property_set_link(OBJECT(s->cpu), "idau", s->idau,
-                                  &error_abort);
-     }
--    if (object_property_find(OBJECT(s->cpu), "init-svtor")) {
--        if (!object_property_set_uint(OBJECT(s->cpu), "init-svtor",
--                                      s->init_svtor, errp)) {
--            return;
--        }
--    }
-     if (object_property_find(OBJECT(s->cpu), "vfp")) {
-         if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp, errp)) {
+@@ -321,7 +321,7 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
              return;
+         }
+     }
+-    if (object_property_find(OBJECT(s->cpu), "dsp")) {
++    if (arm_feature(&s->cpu->env, ARM_FEATURE_THUMB_DSP)) {
+         if (!object_property_set_bool(OBJECT(s->cpu), "dsp", s->dsp, errp)) {
+             return;
+         }
 -- 
 2.41.0

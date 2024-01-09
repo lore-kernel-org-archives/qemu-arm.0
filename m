@@ -1,74 +1,75 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp552549ejs;
-        Tue, 9 Jan 2024 10:09:35 -0800 (PST)
-X-Received: by 2002:a05:6512:400d:b0:50e:7be1:f0e3 with SMTP id br13-20020a056512400d00b0050e7be1f0e3mr2541993lfb.83.1704823774434;
-        Tue, 09 Jan 2024 10:09:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704823774; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp552631ejs;
+        Tue, 9 Jan 2024 10:09:40 -0800 (PST)
+X-Received: by 2002:a05:600c:1d28:b0:40e:540a:dc22 with SMTP id l40-20020a05600c1d2800b0040e540adc22mr173772wms.182.1704823780610;
+        Tue, 09 Jan 2024 10:09:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704823780; cv=none;
         d=google.com; s=arc-20160816;
-        b=iVMdx7GcRiBo9iJft7olpuVpAhAOTMwFguI+09gxlYGADeh/g3qvdxkNFyT3wba0b9
-         3grVgxKsisNDRadmaUDJ/XEbNdVh2aZ0Mb80hvFysHdDQM+XLY1sqsmNtXAb2D9pHZQ9
-         TWAhpDpvUegIlKvexPnuOF8xywXlLALgdcGy6gIbDiu9ZViBVZStj5UOoqlL042j+viy
-         3qKQ8/tC5YS3B2a3zqkcexf1Kpoy9GYRfLH43lv+Xd+RvoeeaOdE0VvmLijOn56/qXEp
-         jzyrfntXL1/EWNqIMpnDrOfQkE1bnAVK0emcMovf3CfEsxr8uVgvD6l0d5+ssYnMmc0M
-         3+ug==
+        b=rgmaKs42Lh+lIxOrYds0p7z2aqh2wRP6vA2RDviXmz/TE1k0gYZj5uB8NZnbU/+xKP
+         XnMLN46RzaiP1HpVngsCGXnQ7V++JjzaYEno+IEc5C3Geq8dl3akVZdxnOG0kE4wb92J
+         /dCCmYTo+7gJcTaHmdvZNDpfWuC6DUgnjpe3vywqLedmBRkP/pNLU9aKdTW6/rMxYqEq
+         sv7oapiNewXOUpVx4n9ImsgBh6D6pDlMzbNw8UnYdUJQfQZCQqQMbQWC5Nzd1WCrOmsB
+         u9j30JPTTTbJz13JcNxuUECEN4AZLisntDV/RaYitScZM9k9pdkDC8FAZ42Te21m9pVY
+         qIBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ih59QO5Uf+GiDwqnPD0KnU4KBtIrojXxz4NGhpA5s9c=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=m5j2p6OKwzJC1ZEqQVM4irz5Oy7NtypkEBAv8Xtr+qU=;
         fh=v69mdd+nxs/0WeTIWzLZOPCx0ynE2o0vtvId2fSwkBY=;
-        b=zywlAoRwZZjRba5ZwLbfoCnhn976g+YOeZjfiMfDw5oErmSemwZrXe04sngFfJBTMn
-         nNERM75IZiqpdZ0qEi4gDxrzuo5bUfBIk/147+yUWZs0T+xIMJaPNh1PnkrK8QIjPz6v
-         GO+tYUXxnHgL4n+63s7rPnVW7mQDDfTh6cP+DtTiGGKuT8e40/eI6F4L6FEZeALnwuNg
-         kzyJ/n1sKt5ySrct0CHFZbhiol1xU4+A2k2xIuuh3fCXsq8SEHqXk6QTEmugFvJkWAbq
-         awcaVnKxwUDjbfZWzsoD9baXZ/QrSEc08e6CMZFlXWT3/vf7JiNPWW3Sy+rgOXbuyIJO
-         gpbQ==
+        b=uLxZRTdvvpSvew7v5ealNRdCJ8DPkAzaihyexe2I0hY0nn30dEeW2Oif/xzhIy1+x0
+         4BLm/vtC6Zush1RyfElqJnW46pP/STpb2uOf12h9D+4XyGwRJwtaCOsQEHcBTB/aGntD
+         gRMTUoj3Ps2wDVVsxpRGRJphcB+W/soDHNne1lLD57SvFw3M/S9G+ZI62dwsWx6HTGRw
+         xabXQUB/f01nQxaic+CJDnIt/xXX5UoVjpPT7SU5/fSPEFpHodJmCdfY7jQLk7GuVyds
+         mCbrh1OM5BPFuwPRgpsBkh56PbZgQs0PTSkB9qeupHpYH/tRq6aoKCV2DjOylf8LmTpX
+         t+lA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Oz+Kzs/z";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ux5AdK/j";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j8-20020a05600c1c0800b0040e427383c6sor917235wms.11.2024.01.09.10.09.34
+        by mx.google.com with SMTPS id f20-20020a7bc8d4000000b0040e47b7fdccsor1048378wml.13.2024.01.09.10.09.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jan 2024 10:09:34 -0800 (PST)
+        Tue, 09 Jan 2024 10:09:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Oz+Kzs/z";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ux5AdK/j";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704823774; x=1705428574; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ih59QO5Uf+GiDwqnPD0KnU4KBtIrojXxz4NGhpA5s9c=;
-        b=Oz+Kzs/zMxym6bYdskailWiFHTU11N0Hrd0rM73jWcwrYrha2iGZr3pZ3mDzko2dac
-         kGSxywoEje5S1SrQa/mjAX76zXFWW40o9tzPAdJhDkRb+i82TN/wgr57+xy4gaEkhl0K
-         ++Bene20o53NIPsDIS22WAXVBYPnhKu6QgSdEeKVQUGCb4pjp7y927CPpFrhfsjOoIra
-         1s11xoaa6PbM2M6mUxx/N3NxtpA8nW0w6+DDc5tQ4HXj7DPz9H1Wk/9nhOprvl5vcuAN
-         EsScFEq+sJFrGcpmHpDf2N4KKJAHVTjUwhT9/V2JMzCCg2vsyQjTaLLo/GP9kmQ8+Yyz
-         SR4g==
+        d=linaro.org; s=google; t=1704823780; x=1705428580; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=m5j2p6OKwzJC1ZEqQVM4irz5Oy7NtypkEBAv8Xtr+qU=;
+        b=ux5AdK/jcY/k0OMe8+miLJvJu9dWk6BHEk2XLtYqAJtbzvif+hH85aLNHZ9DLPXixx
+         o+FRoCFSWNdzJnROMv9abGOLoQNbfx/g6xPEieSA/nQfrakURBRJZk1UFQUs/HYpCaeC
+         okNXYhvxfxfIlVinlkzsCeS0OJq6JyOD/MFw/abs/0KHo9ARMCKOkbEvXfwRZ9vx3ifs
+         YB2D3Js8QrvmoVoD/W2I3cZUcqNiWvKQtBvbnpgnxM5AZmVt8AD+WoGK/fZ217P2mcBN
+         zv3Ukr5UhH2JA5oddT6NlBtQPpmnFhCl/BFGdZHoBjCqnr7Xv38jKdv8MP3arxsVrPlE
+         tz8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704823774; x=1705428574;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ih59QO5Uf+GiDwqnPD0KnU4KBtIrojXxz4NGhpA5s9c=;
-        b=mG+P9IelnJXwmBqEoGzC1j8pqh6lxoIg+PImVctRZ7zJMzUmoCV61H/sWMlqpubxRq
-         jXJfW8sqALBgIBM6FhNLp/AhX6OiCIurVyp2UBKwK9oka1lV9i7xS8OPiNqdnwtpXwbu
-         wpTzeMfzGYBm+EGETjcWoQRcNIolu27D1QZU0KK2mh5SZFrecLTV4/cMSFptR+q1slp/
-         4RW0k1he/6D5KTnGPSYquetnRAZRuQCrlOmh3ZfVw+cSUwQ6rdPnxEhLCWZ6W+vkXm7X
-         yZ/vTS2TweZpFJZN7h+6Zy7FT1NuieJEVH/4jR+eRpPx6FzXcbn5S54BUfNfbX4osPb9
-         zieg==
-X-Gm-Message-State: AOJu0YxeCBVCNE6Kf8GUl9BodOCrTLj9qvBKwDkPSVmOZznhiYh1xmft
-	Cqm4RfpGyU5VPdK8EwWMix8pYhrhRvlzUTyh
-X-Google-Smtp-Source: AGHT+IHrifeKELkHacXcTTxsVDBQKHRYqMM2IGqnfqAvppq0dVY/cV5k/wMH1c+qfpdCnDfx78L/Ng==
-X-Received: by 2002:a05:600c:4f14:b0:40d:85a0:d0f3 with SMTP id l20-20020a05600c4f1400b0040d85a0d0f3mr3027381wmq.51.1704823773988;
-        Tue, 09 Jan 2024 10:09:33 -0800 (PST)
+        d=1e100.net; s=20230601; t=1704823780; x=1705428580;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=m5j2p6OKwzJC1ZEqQVM4irz5Oy7NtypkEBAv8Xtr+qU=;
+        b=Wtut9PHS7G4Ql3MbAopLh3uaVfPyOOBMfOdlkN0uvW24JvEeQz0iX52TS+8ci+2O5h
+         QyoADF4g+C2OWdZ41im6iykG32BLXLYt13X9yKLlmE0nFHWR26ABfI7GYpYQPsv+KDqB
+         ZDu1uchGqxDJPsYO6efkdcZrgb+5bDqhstjwEUFEgDtWmU864q7m6tGM75/uMrjIWuoM
+         UEkcx7/Zj6mRcErCNXJC4gWimlen1nlVBpRYts0I0PVJPmIC12fPuN9hi5BJyGl+mFea
+         rHnSpppK2samwEqxBJrZ+HnzMBGRUx2ez1jPJdDJ2tLTOcQhwKveHBp5uOldBYhkE/ly
+         Xszg==
+X-Gm-Message-State: AOJu0YwNsI+FWAbUDf8Pse7r9uXkJ+oeM+vluV8HgcpLwlHGV0I9quUj
+	x8dWRVrgPgCd25JQuWi5Nh9qEAw9toH8HVge
+X-Google-Smtp-Source: AGHT+IHV9YSsFjhJsNkaNRxtL2ZWaA4NYuAVVSfCkzcK/wAgLO9QVTkYuMRe13iW4oHxzjynZlEiCQ==
+X-Received: by 2002:a05:600c:b56:b0:40e:52e0:baca with SMTP id k22-20020a05600c0b5600b0040e52e0bacamr368437wmr.129.1704823780337;
+        Tue, 09 Jan 2024 10:09:40 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr. [176.184.32.47])
-        by smtp.gmail.com with ESMTPSA id bi26-20020a05600c3d9a00b0040d53588d94sm15630529wmb.46.2024.01.09.10.09.32
+        by smtp.gmail.com with ESMTPSA id i12-20020adff30c000000b00336b8461a5esm2980486wro.88.2024.01.09.10.09.38
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 09 Jan 2024 10:09:33 -0800 (PST)
+        Tue, 09 Jan 2024 10:09:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -84,58 +85,38 @@ Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 00/14] hw/arm: Prefer arm_feature() over object_property_find()
-Date: Tue,  9 Jan 2024 19:09:15 +0100
-Message-ID: <20240109180930.90793-1-philmd@linaro.org>
+Subject: [PATCH v2 01/14] target/arm/cpu: Simplify checking A64_MTE bit in FEATURE_ID register
+Date: Tue,  9 Jan 2024 19:09:16 +0100
+Message-ID: <20240109180930.90793-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240109180930.90793-1-philmd@linaro.org>
+References: <20240109180930.90793-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iAeG+Pz8k8cg
+X-TUID: ne3Et7QRC7q6
 
-Since RFC [*]:
-- Split one patch per feature
-- Addressed Peter's review comments
+cpu_isar_feature(aa64_mte, cpu) is testing a AArch64-only ID
+register. The ARM_FEATURE_AARCH64 check is redundant.
 
-[*] https://lore.kernel.org/qemu-devel/20231214171447.44025-1-philmd@linaro.org/
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/cpu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Based-on: <20231123143813.42632-1-philmd@linaro.org>
-  "hw: Simplify accesses to CPUState::'start-powered-off' property"
-
-Philippe Mathieu-Daudé (14):
-  target/arm/cpu: Simplify checking A64_MTE bit in FEATURE_ID register
-  hw/arm/armv7m: Introduce cpudev variable in armv7m_realize()
-  hw/arm/armv7m: Ensure requested CPU type implements ARM_FEATURE_M
-  hw/arm/armv7m: Move code setting 'start-powered-off' property around
-  hw/arm/armv7m: Always set 'init-nsvtor' property for Cortex-M CPUs
-  hw/arm: Prefer arm_feature(M_SECURITY) over object_property_find()
-  hw/arm: Prefer arm_feature(THUMB_DSP) over object_property_find(dsp)
-  hw/arm: Prefer arm_feature(V7) over
-    object_property_find(pmsav7-dregion)
-  hw/arm: Prefer arm_feature(EL3) over object_property_find(has_el3)
-  hw/arm: Prefer arm_feature(EL2) over object_property_find(has_el2)
-  hw/arm: Prefer arm_feature(CBAR*) over
-    object_property_find(reset-cbar)
-  hw/arm: Prefer arm_feature(PMU) over object_property_find(pmu)
-  hw/arm: Prefer cpu_isar_feature(aa64_mte) over
-    property_find(tag-memory)
-  hw/arm: Prefer arm_feature(GENERIC_TMR) over 'kvm-no-adjvtime'
-    property
-
- hw/arm/armv7m.c       | 36 ++++++++++++++++--------------------
- hw/arm/exynos4210.c   |  4 ++--
- hw/arm/highbank.c     |  3 ++-
- hw/arm/integratorcp.c |  5 ++---
- hw/arm/realview.c     |  2 +-
- hw/arm/sbsa-ref.c     |  3 ++-
- hw/arm/versatilepb.c  |  5 ++---
- hw/arm/vexpress.c     |  6 ++++--
- hw/arm/virt.c         | 24 ++++++++++++------------
- hw/arm/xilinx_zynq.c  |  2 +-
- hw/cpu/a15mpcore.c    | 17 +++++++++++------
- hw/cpu/a9mpcore.c     |  6 +++---
- target/arm/cpu.c      |  3 +--
- 13 files changed, 59 insertions(+), 57 deletions(-)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1c8b787482..c828b333c9 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1690,8 +1690,7 @@ void arm_cpu_post_init(Object *obj)
+     }
+ 
+ #ifndef CONFIG_USER_ONLY
+-    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) &&
+-        cpu_isar_feature(aa64_mte, cpu)) {
++    if (cpu_isar_feature(aa64_mte, cpu)) {
+         object_property_add_link(obj, "tag-memory",
+                                  TYPE_MEMORY_REGION,
+                                  (Object **)&cpu->tag_memory,
 -- 
 2.41.0

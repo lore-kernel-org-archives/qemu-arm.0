@@ -1,133 +1,133 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp673003ejs;
-        Tue, 9 Jan 2024 14:25:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFCU1AQzj+vhynWcn5EkSFA7lHh/Z6RIQeVhnuUMA3FsCb1XnjEm/lIYH33gwB7gtM7SboH
-X-Received: by 2002:ac8:7d4d:0:b0:429:b1f1:5006 with SMTP id h13-20020ac87d4d000000b00429b1f15006mr301611qtb.42.1704839152463;
-        Tue, 09 Jan 2024 14:25:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704839152; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp673144ejs;
+        Tue, 9 Jan 2024 14:26:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHKM9epr+AmsqGMLcK5g9uBZmCff8LZwaNFB5zQFzdBMXVFepsvzt1C10DDVVJ8hb7w4uuY
+X-Received: by 2002:ac8:5882:0:b0:429:b0e2:594f with SMTP id t2-20020ac85882000000b00429b0e2594fmr340816qta.6.1704839170572;
+        Tue, 09 Jan 2024 14:26:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704839170; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNZi9HnrznURxTmyZ47zBCD75OA8Cm2KIX6kg2gGEVUYo8SbEI0vBflfhND/QxNhmm
-         Th8vBTJbzN52BWHo1s4BgrN/WhH1Z7CuUKwng6HH/9pU/QK6yYixpEPyHRdU9X5zg47d
-         4+tq1ZEXU2dSL8s7OqDv1qXK9BsA+VqmAPyNegIUb5aQvsd0UXmknlxa7R4Ae62OXfEb
-         HTrf2CYnNd4sGdG3jNGzFWGxLwfgvl9UT2XI1gyG803e5o30JsA4ldMeILDT2a4+AB5C
-         AJ63y1GgJWfx4Os8Af2kYtPYFyrUYqVz6lpYMG4D9fpuKN4txbKELbFepNHm0BWvnoH1
-         LatQ==
+        b=mzuy8/9/lTqp4F/jbiNbeAOvd/sBf+pkqEC/SCH3JuGkDnZm4QHvtRfCI9+UcypP50
+         TwiVx90AH7An0R0EDyLUO1gJEHov8cLIT02sryh0uWfSn0suO+mWk7gKJRHzTdNdmfMC
+         MQohSGPHgL1at8aZhnT+ZAcrLyloekD50o8VsbHJ5dIoVKrz/e8E2V946GkDtTfcf7Ry
+         7uu7ULSsU2cMCcdmR847NyBLls0NGFKBUFCapZFuuxX/3zMwzL7Sn2tE2+Tpiw1EFaIs
+         XtR6qz6eTwq1fmLwEBNHaFxGB5m75OUWP1XmEA964m0vCc5lr30qIRpKDf6nn7FLgrKn
+         x6kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=qVy1gu9DESPjM0g2Fp5VfF4gdAqryGgXBFpVxscAy0M=;
-        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
-        b=e/OBh1aEe28s8QboOEOIbrVfJibYrb2lwCLE+4MjBYYvEWeuJFUgKoujnrb5vLFeXo
-         tIbijshMARTudmx9G9Twzhwy7Npa8r4vOagy8KoEhUio9bgkZOPU27YD8NTFzRaWTHv7
-         UCpchJ5xZs3xSGtuyGBWMgswkYAAhnvaxsyFTeRaWClRp+RalJNm+LQeZWnROj8UOa2+
-         n0kuSsu1Mf+GEOxCHLMdKyP41Ga1wx62qu5o/swLicom83uLGd6WHqEpRRgWmOa9QUH9
-         Kq3uq0Sew+vzJQbcHWnoTvPDt+9lTu3/AT1yGZWkAhe7UFr64we3RWhGAGTELZgezrGL
-         zY7g==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=xxs6ZMK6+RJxyBu17TLrrE0NgbI4LjuVtGU9sdHJmuY=;
+        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
+        b=yXgdMrA7gVX+ZNXyhBiyyO9SQRz7v/btp47uR874i48/MZS02ruwo5i3A9Hz6SWW51
+         7KPp07qSAD8nsPp+XUUzbPBBaKcOEPvsGfkTAChPu4Lw8B46EKsJWc35sAOZ6ZDEqBUY
+         e4xGtSA5zVfykVzPNWB22RArvLTYth76j1TpMZr4RGMNW/P/Q/2m69Trjv42qW41s1Cs
+         TxVq2n1wG9QWk2URSFYDiRBRhmm2G+qVN98n+D0fYtPvLOE/4acsazlhu1qbZJIScW4A
+         GsJNtd7CLAZPrbtMsGYKYOeNy1FXQO/adRtq1IUo7YaBoWsV0DhL3YrBoLy6DGKhAjGj
+         uZZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=D1tLQsKE;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Mfr41tH7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8-20020ac857c8000000b00429b2e2e534si216363qta.389.2024.01.09.14.25.52
+        by mx.google.com with ESMTPS id z7-20020a05622a060700b00427779b6d7dsi3069718qta.443.2024.01.09.14.26.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 14:25:52 -0800 (PST)
+        Tue, 09 Jan 2024 14:26:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=D1tLQsKE;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Mfr41tH7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNKVu-0006Xb-25; Tue, 09 Jan 2024 17:24:02 -0500
+	id 1rNKVu-0006Xi-FZ; Tue, 09 Jan 2024 17:24:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNKVr-0006UO-Ty; Tue, 09 Jan 2024 17:23:59 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ id 1rNKVs-0006Vl-VK; Tue, 09 Jan 2024 17:24:01 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNKVp-0002BE-7d; Tue, 09 Jan 2024 17:23:59 -0500
-Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ id 1rNKVq-0002Dh-O0; Tue, 09 Jan 2024 17:24:00 -0500
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409LHsg7022940; Tue, 9 Jan 2024 22:23:40 GMT
+ 409LLhA4014993; Tue, 9 Jan 2024 22:23:43 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=qVy1gu9DESPjM0g2Fp5VfF4gdAqryGgXBFpVxscAy0M=;
- b=D1tLQsKESjIbERJcdklW7KWlJ+HkZPXGWY3ilSFJ+UIKMWLsi1eKpJ6akSxfh84hlOIJ
- Qb9uwkiwr9wflaQB89ZZc9kLGg8kMUcnLEKsFbahODDaFuxL2PAsbWWZbgiPjivR3iWf
- X37OSC23pGU46CYfIAfxLDaC1ka3FCjns4RB4HEM88JeBSPwbj4CBezgxuzfMriy9xms
- ZThBFR82r4dna19cRNfENattAMLPKGat0evyzBcOoCJzU0E9hIXGujVKqII9laKhsebS
- lArCPIcuewXpDKPTw2inxbFQh1AcdTigsnwc9uGPX0VCW+S9P8aW4Luxz97ivzxsUxkf gA== 
+ : date : message-id : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=xxs6ZMK6+RJxyBu17TLrrE0NgbI4LjuVtGU9sdHJmuY=;
+ b=Mfr41tH7sAvzTjQ4nS1hgLIuKs1gw0H7ryQBH4rmJ2XpqDfLk9FYx+rtQK8M4/qzVB0L
+ mBmbxaRFMnskYNxQfngKDtWW5l3SpDddTMrzpX/vlT0vjLNkb+tDOayWcrtT5VD1M/5z
+ 9QpfjNQLTVuYbnkuvAnkEr0TlFCEeK3t2PAJQqVzuN2mqJWHakiQLkhz1QHwmcEUOMt7
+ jBIfIVnuy5URzelS7xJGwKbtiuMdEen8HlyCzdn+6G/7Q+WpmZf5+rblLnPJXFN0dNC+
+ Q4SzstHI6w/lNGTuY1hPHlrBr7LZwzPEjvbWa9JsUmM/XoJspOfu9o9kJZVR0XLLS/uq eg== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhdx4h28k-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhd1stfv6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:23:39 +0000
-Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409MKo8Z022748;
- Tue, 9 Jan 2024 22:23:39 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhdx4h27q-1
+ Tue, 09 Jan 2024 22:23:42 +0000
+Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409M8A1Z001312;
+ Tue, 9 Jan 2024 22:23:42 GMT
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhd1stfub-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:23:39 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409JPJJX022859; Tue, 9 Jan 2024 22:23:37 GMT
-Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfj6nhgbe-1
+ Tue, 09 Jan 2024 22:23:41 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 409Kljra027254; Tue, 9 Jan 2024 22:23:40 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkw212a9-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:23:37 +0000
+ Tue, 09 Jan 2024 22:23:40 +0000
 Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
  [10.241.53.101])
- by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 409MNbZn24117920
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 409MNe3a40108298
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 9 Jan 2024 22:23:37 GMT
+ Tue, 9 Jan 2024 22:23:40 GMT
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1028E58051;
- Tue,  9 Jan 2024 22:23:37 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 53A9258051;
+ Tue,  9 Jan 2024 22:23:40 +0000 (GMT)
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9B8545805E;
- Tue,  9 Jan 2024 22:23:36 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 0319D5805E;
+ Tue,  9 Jan 2024 22:23:40 +0000 (GMT)
 Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
  by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue,  9 Jan 2024 22:23:36 +0000 (GMT)
+ Tue,  9 Jan 2024 22:23:39 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
 To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
  philmd@linaro.org, lvivier@redhat.com
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>
-Subject: [PATCH v9 02/10] hw/fsi: Introduce IBM's FSI Bus
-Date: Tue,  9 Jan 2024 16:23:25 -0600
-Message-Id: <20240109222333.1225031-3-ninad@linux.ibm.com>
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v9 09/10] hw/fsi: Added FSI documentation
+Date: Tue,  9 Jan 2024 16:23:32 -0600
+Message-Id: <20240109222333.1225031-10-ninad@linux.ibm.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240109222333.1225031-1-ninad@linux.ibm.com>
 References: <20240109222333.1225031-1-ninad@linux.ibm.com>
-MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: G4-Tydr12K_3Q9zapebXH0PgWO9IdMw5
-X-Proofpoint-ORIG-GUID: 2nOHv0ZFcZtmYfoxODxD9nzUKmzLqcqX
+X-Proofpoint-ORIG-GUID: YnZB7kpiB0XE-rKTG0KZ9wSN5nx5fnaK
+X-Proofpoint-GUID: 3ZcqYCGtOkGwCdGnf7xXnOYoD9UZiKOV
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 3 URL's were un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-09_11,2024-01-09_02,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 phishscore=0
- lowpriorityscore=0 suspectscore=0 priorityscore=1501 malwarescore=0
- mlxscore=0 clxscore=1015 bulkscore=0 adultscore=0 mlxlogscore=671
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ clxscore=1015 phishscore=0
+ lowpriorityscore=0 malwarescore=0 impostorscore=0 mlxlogscore=693
+ spamscore=0 suspectscore=0 adultscore=0 priorityscore=1501 bulkscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2311290000 definitions=main-2401090179
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -19
 X-Spam_score: -2.0
 X-Spam_bar: --
@@ -149,100 +149,174 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tlxFr6IXddna
+X-TUID: PfUKxOKoZ3lc
 
-This is a part of patchset where FSI bus is introduced.
+Documentation for IBM FSI model.
 
-The FSI bus is a simple bus where FSI master is attached.
-
-[ clg: - removed include/hw/fsi/engine-scratchpad.h and
-       	 hw/fsi/engine-scratchpad.c
-       - dropped FSI_SCRATCHPAD
-       - included FSIBus definition
-       - dropped hw/fsi/trace-events changes ]
-
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 ---
- include/hw/fsi/fsi.h | 19 +++++++++++++++++++
- hw/fsi/fsi.c         | 22 ++++++++++++++++++++++
- hw/fsi/Kconfig       |  3 +++
- hw/fsi/meson.build   |  1 +
- 4 files changed, 45 insertions(+)
- create mode 100644 include/hw/fsi/fsi.h
- create mode 100644 hw/fsi/fsi.c
+ docs/specs/fsi.rst   | 138 +++++++++++++++++++++++++++++++++++++++++++
+ docs/specs/index.rst |   1 +
+ 2 files changed, 139 insertions(+)
+ create mode 100644 docs/specs/fsi.rst
 
-diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
+diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
 new file mode 100644
-index 0000000000..a75e3e5bdc
+index 0000000000..05a6b6347a
 --- /dev/null
-+++ b/include/hw/fsi/fsi.h
-@@ -0,0 +1,19 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface
-+ */
-+#ifndef FSI_FSI_H
-+#define FSI_FSI_H
++++ b/docs/specs/fsi.rst
+@@ -0,0 +1,138 @@
++======================================
++IBM's Flexible Service Interface (FSI)
++======================================
 +
-+#include "hw/qdev-core.h"
++The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
++master/slave and the end engine.
 +
-+#define TYPE_FSI_BUS "fsi.bus"
-+OBJECT_DECLARE_SIMPLE_TYPE(FSIBus, FSI_BUS)
++FSI is a point-to-point two wire interface which is capable of supporting
++distances of up to 4 meters. FSI interfaces have been used successfully for
++many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
++CPUs and IBM ASICs.
 +
-+typedef struct FSIBus {
-+    BusState bus;
-+} FSIBus;
++FSI allows a service processor access to the internal buses of a host POWER
++processor to perform configuration or debugging. FSI has long existed in POWER
++processes and so comes with some baggage, including how it has been integrated
++into the ASPEED SoC.
 +
-+#endif
-diff --git a/hw/fsi/fsi.c b/hw/fsi/fsi.c
-new file mode 100644
-index 0000000000..8dca472bc3
---- /dev/null
-+++ b/hw/fsi/fsi.c
-@@ -0,0 +1,22 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface
-+ */
-+#include "qemu/osdep.h"
++Working backwards from the POWER processor, the fundamental pieces of interest
++for the implementation are: (see the `FSI specification`_ for more details)
 +
-+#include "hw/fsi/fsi.h"
++1. The Common FRU Access Macro (CFAM), an address space containing various
++   "engines" that drive accesses on buses internal and external to the POWER
++   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
++   an internal Local Bus (LBUS) which is described by the CFAM configuration
++   block.
 +
-+static const TypeInfo fsi_bus_info = {
-+    .name = TYPE_FSI_BUS,
-+    .parent = TYPE_BUS,
-+    .instance_size = sizeof(FSIBus),
-+};
++2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
++   symbols addressed to it. Slaves can be cascaded off of one another. The
++   slave's configuration registers appear in address space of the CFAM to
++   which it is attached.
 +
-+static void fsi_bus_register_types(void)
-+{
-+    type_register_static(&fsi_bus_info);
-+}
++3. The FSI master: A controller in the platform service processor (e.g. BMC)
++   driving CFAM engine accesses into the POWER chip. At the hardware level
++   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
++   of engines in a CFAM.
 +
-+type_init(fsi_bus_register_types);
-diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index e650c660f0..f4869c209f 100644
---- a/hw/fsi/Kconfig
-+++ b/hw/fsi/Kconfig
-@@ -1,2 +1,5 @@
-+config FSI
-+    bool
++4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
++   processors. This now makes an appearance in the ASPEED SoC due to tight
++   integration of the FSI master IP with the OPB, mainly the existence of an
++   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
++   address space.
 +
- config FSI_LBUS
-     bool
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index 4074d3a7d2..487fb31cbc 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1 +1,2 @@
- system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
-+system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c'))
++5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
++   AST2600. Hardware limitations prevent the OPB from being directly mapped
++   into APB, so all accesses are indirect through the bridge.
++
++The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
++of the object model to automatically generate the CFAM configuration block.
++The configuration block presents engines in the order they are attached to the
++CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
++'config' member of LBusDeviceClass to match the engine's type.
++
++CFAM designs offer a lot of flexibility, for instance it is possible for a
++CFAM to be simultaneously driven from multiple FSI links. The modeling is not
++so complete; it's assumed that each CFAM is attached to a single FSI slave (as
++a consequence the CFAM subclasses the FSI slave).
++
++As for FSI, its symbols and wire-protocol are not modelled at all. This is not
++necessary to get FSI off the ground thanks to the mapping of the CFAM address
++space onto the OPB address space - the models follow this directly and map the
++CFAM memory region into the OPB's memory region.
++
++QEMU files related to FSI interface:
++ - ``hw/fsi/aspeed-apb2opb.c``
++ - ``include/hw/fsi/aspeed-apb2opb.h``
++ - ``hw/fsi/opb.c``
++ - ``include/hw/fsi/opb.h``
++ - ``hw/fsi/fsi.c``
++ - ``include/hw/fsi/fsi.h``
++ - ``hw/fsi/fsi-master.c``
++ - ``include/hw/fsi/fsi-master.h``
++ - ``hw/fsi/fsi-slave.c``
++ - ``include/hw/fsi/fsi-slave.h``
++ - ``hw/fsi/cfam.c``
++ - ``include/hw/fsi/cfam.h``
++ - ``hw/fsi/engine-scratchpad.c``
++ - ``include/hw/fsi/engine-scratchpad.h``
++ - ``include/hw/fsi/lbus.h``
++
++The following commands start the rainier machine with built-in FSI model.
++There are no model specific arguments.
++
++.. code-block:: console
++
++  qemu-system-arm -M rainier-bmc -nographic \
++  -kernel fitImage-linux.bin \
++  -dtb aspeed-bmc-ibm-rainier.dtb \
++  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
++  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
++  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
++
++The implementation appears as following in the qemu device tree:
++
++.. code-block:: console
++
++  (qemu) info qtree
++  bus: main-system-bus
++    type System
++    ...
++    dev: aspeed.apb2opb, id ""
++      gpio-out "sysbus-irq" 1
++      mmio 000000001e79b000/0000000000001000
++      bus: opb.1
++        type opb
++        dev: fsi.master, id ""
++          bus: fsi.bus.1
++            type fsi.bus
++            dev: cfam.config, id ""
++            dev: cfam, id ""
++              bus: lbus.1
++                type lbus
++                dev: scratchpad, id ""
++                  address = 0 (0x0)
++      bus: opb.0
++        type opb
++        dev: fsi.master, id ""
++          bus: fsi.bus.0
++            type fsi.bus
++            dev: cfam.config, id ""
++            dev: cfam, id ""
++              bus: lbus.0
++                type lbus
++                dev: scratchpad, id ""
++                  address = 0 (0x0)
++
++pdbg is a simple application to allow debugging of the host POWER processors
++from the BMC. (see the `pdbg source repository`_ for more details)
++
++.. code-block:: console
++
++  root@p10bmc:~# pdbg -a getcfam 0x0
++  p0: 0x0 = 0xc0022d15
++
++.. _FSI specification:
++   https://openpowerfoundation.org/specifications/fsi/
++
++.. _pdbg source repository:
++   https://github.com/open-power/pdbg
+diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+index b3f482b0aa..1484e3e760 100644
+--- a/docs/specs/index.rst
++++ b/docs/specs/index.rst
+@@ -24,6 +24,7 @@ guest hardware that is specific to QEMU.
+    acpi_erst
+    sev-guest-firmware
+    fw_cfg
++   fsi
+    vmw_pvscsi-spec
+    edu
+    ivshmem-spec
 -- 
 2.39.2
 

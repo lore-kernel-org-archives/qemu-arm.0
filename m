@@ -1,200 +1,161 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp536815ejs;
-        Tue, 9 Jan 2024 09:42:36 -0800 (PST)
-X-Received: by 2002:a05:6870:4413:b0:204:32a:7b96 with SMTP id u19-20020a056870441300b00204032a7b96mr7112054oah.95.1704822155822;
-        Tue, 09 Jan 2024 09:42:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704822155; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp550633ejs;
+        Tue, 9 Jan 2024 10:06:45 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGObLoDmxy8X1R66U/q3UvEAjal8nbH0+7e9LDWHeo5p+kqOKGsy4BkNKUKT+9J2J3lAJbH
+X-Received: by 2002:a17:902:7845:b0:1d5:4ba:c143 with SMTP id e5-20020a170902784500b001d504bac143mr5335866pln.130.1704823605011;
+        Tue, 09 Jan 2024 10:06:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704823604; cv=none;
         d=google.com; s=arc-20160816;
-        b=LRjRcs75lObWXUoI93VLpYZhQ6mPq/Udkj92fNiBhX4aTWsgQ01HZwSd5EBGwWU7XU
-         g6Z1rquREFkpqETS++Ys9D8GGWdUMXRCX1n3MmJFGPKwX+ceMPEVOwFDKEoJruGBy13L
-         baAKoDEGAw00CYKHc/KxtLxQfEC+9hEh/Bf3E/ZVeQf8LWAO0BniJ+wbreAs7GA2EIH2
-         +jJJ14VM90tnrdXbLmNdlfWvAdkjy+OJ0/GD6FgyQQo9V0QDrd6QUuwuA4LlPMWiUHKc
-         3OgZQFGSgjh31Es+uk/Iho0hVA2RLUw34sjZHfG+4Epb9g5R0QMPzg5FB+PuU9EhVwIG
-         gDsQ==
+        b=G66/Ml3Ch4Wvbu4AboMxPG+EbwPel+8ifNRwgLmcwlYPvPEzpiXF56q78QOug9yq6C
+         UmpFGsLWmlemoyMMmfdM6ky5Taxh9DGnbBJ+v9fQicaSRZqvTz1l1RGp8ddA9Ts/sCkQ
+         9T/xtas3JtyymjkL5sVE7unQkltSInT29u5oM/KfJUOOrn4XnatV+LExA+8WDe+XBU4+
+         R/wZw31EUU8AvyjHCp/GCAm/l0BwSnXOPNegMSxUTuEiK6fVc/uChwxiJe/0lCo6ZLOa
+         KEZ7ACUN12pOOuI4TckGeN+ebXT4LU4sND/NvsVrpAcSnlEAG8uS1n/QcBPoD+ZYxBdE
+         jVww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=53lziAUMWxraWZMqgeq7a80JdQqfRhcqMRb3/zt6Asw=;
-        fh=W84aVyQshfm+IQnNVHPtZJa4aBqwTfwNS9QthDGemZ4=;
-        b=sNvtPTxPe9z7xgAVEyPecvDgz4iF/GWn/Z5jGvQVn48rMW66+lfxuu5AXClIWQEgL/
-         ivsfgtp+09r0NTM0thulYmkRkn9DJNKSTmdnQ4ISnqVmpLVj5+YCAFZmlVvzYhJNmJ74
-         yduATlZLERik8JaV7Jl1BryRWfZxi3blyh4d3YTdsdELDK47RC4aA1Z1eNqkq1h5mETq
-         LRtUZ9GiD4clBdzzfhTGZ+I+mVxd1LeNnugQLS+mqpvmNC70O5uRHM9J1yvzONl90j1b
-         E0Z1Pajuecuvbw3sN8hZArSo+JA7LQvTeGJEJ5d3ToTId1ymOVBtdTqpm7XO2bE8+lCi
-         +rng==
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=GdiBYgKqjNYQ1bcQDmCrXPsjtYR7xjzw0ydo9N8/qD8=;
+        fh=imwoQFzikunaWxODekeFXoUboiSHzGdlklFTQPaRD40=;
+        b=rp2DyCXYneTG+DqMBTsPb2BKF0UOwooHeBsmf9ZGsFyRJ3wBbo4i3CQaMbkCXALOhr
+         yryMJUk1zLH1Y1K/M4lcW3aoWEF9B6kZa+gS6GUZ8QTMr9TlfaEN51dEgE8x+ZMXN+if
+         NsS2nX6xCRkYnik8q7gOSDoMGQm6cxU2xUdLUypAjIo6DAJufV5xIRxt5UenyM+H/3hj
+         E9fs81p69FJKk0avRCa9psip0eYCFtYuCN+JcKw0991LTogWq48msKvuNfr7MyN9pQWw
+         hov7hIHv9QJ32fGTuo2uMfSb7MdirdihHyPS9E/XSpKrmBhCgmy04xe2LpVPquASCnwj
+         j5eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z2zBokZN;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id od4-20020a05687176c400b001fb358806f5sor1131488oac.10.2024.01.09.09.42.35
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 Jan 2024 09:42:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of srs0=gpa9=it=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
+        by mx.google.com with ESMTPS id a19-20020a170902ee9300b001d4af8e295bsi1824640pld.116.2024.01.09.10.06.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Jan 2024 10:06:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=gpa9=it=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z2zBokZN;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704822155; x=1705426955; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=53lziAUMWxraWZMqgeq7a80JdQqfRhcqMRb3/zt6Asw=;
-        b=Z2zBokZN7IFELaHWKJfBgo0yrZKN30dJP6u48qBAH2osnMADfZpmo2GHC7yk+zvzcI
-         mBwIGlZkCPR2lvNid9AhdMsCLAA6oeWfVn2vl6MZdtsgxsENAjV9rtcnLfMWr18syD0N
-         AnZEWex76EdjbjbsoRwaRKiOVahN1nLjfZ5O0Ooy3tZqc/KvZIHLewcDwDvutl4upDMC
-         ifehtIFPuU7/+uQW2g8VY963XsEDINeOQa4PJmj66kgAd6GtfD/EVHninFbvflMFxjwi
-         F2CETxh/gC+m24WP1K4ov1IzmcFnykQOY0lh6gDIQiC5CaXQX/PKA1jREJxBd3xVaqQw
-         lgCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704822155; x=1705426955;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=53lziAUMWxraWZMqgeq7a80JdQqfRhcqMRb3/zt6Asw=;
-        b=wPCgYOFjk05lerYYVe7CZmZ+eY0Ho582kmGd2tVwx3UDsvcGWXUFgCSfbC+7w0XPvX
-         12TMcSltaePaYohEo3y0Gxt7OqSqb+sY5UaevZm6EbfWIZEYaFVVuLhWp+fadfXUMYVc
-         P3YoWvLLDa9+uPaSsJGwbkbKeOKTpe5aeLnuBYpVw3cn65cR+5gNYDMg0vpM9orV6JFL
-         Bk3iqMkLh6vnlSEJJ+o4IcQmjMZqaXsldE0QTLpA/E7X+FoSJvUhOPq/9V6qPjQTP8ij
-         fTa954NzTtBTtOn5nsE400MIiq6FWIDjOxSvW2M0E9S7VIuF1AL738UFvBSHpZZSeAAm
-         6M5A==
-X-Gm-Message-State: AOJu0YzW6/u16miadjd5nVz3rNXRVEjoqt+xvk7uZMGHztHpsn4jA5vY
-	KDxDjI8dwb3jxEfMmLlS3D4WefS3Bi+75dZ3
-X-Google-Smtp-Source: AGHT+IHxUMMYJ/vAbIQlNFckjGkIgPJs+GLjgPsKFbCHiyvDz5gA/hBhrn4ZU0Ho1Nznt8vVdOJHEA==
-X-Received: by 2002:a05:6870:b613:b0:206:2550:d22d with SMTP id cm19-20020a056870b61300b002062550d22dmr4904922oab.46.1704822155304;
-        Tue, 09 Jan 2024 09:42:35 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.47.227] ([172.58.111.136])
-        by smtp.gmail.com with ESMTPSA id pt7-20020a0568709e4700b002064e3ae6e7sm535893oab.0.2024.01.09.09.42.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 09:42:34 -0800 (PST)
-Message-ID: <0195c274-0d5c-484b-9475-84a4d16bfae8@linaro.org>
-Date: Wed, 10 Jan 2024 04:42:25 +1100
+       spf=pass (google.com: domain of srs0=gpa9=it=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4T8f5G0RL4z4wx8;
+	Wed, 10 Jan 2024 05:06:42 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4T8f561MDXz4wbR;
+	Wed, 10 Jan 2024 05:06:33 +1100 (AEDT)
+Message-ID: <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+Date: Tue, 9 Jan 2024 19:06:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] linux-user: Allow gdbstub to ignore page protection
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
 Content-Language: en-US
-To: Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- David Hildenbrand <david@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
+To: Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-References: <20240108233821.201325-1-iii@linux.ibm.com>
- <20240108233821.201325-2-iii@linux.ibm.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240108233821.201325-2-iii@linux.ibm.com>
+ qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Peter Xu <peterx@redhat.com>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <87plya76cu.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: +2jajK5/hpRw
+Content-Transfer-Encoding: 8bit
+X-TUID: fec7NFC3JYbC
 
-On 1/9/24 10:34, Ilya Leoshkevich wrote:
-> gdbserver ignores page protection by virtue of using /proc/$pid/mem.
-> Teach qemu gdbstub to do this too. This will not work if /proc is not
-> mounted; accept this limitation.
+On 1/9/24 18:40, Fabiano Rosas wrote:
+> Cédric Le Goater <clg@kaod.org> writes:
 > 
-> One alternative is to temporarily grant the missing PROT_* bit, but
-> this is inherently racy. Another alternative is self-debugging with
-> ptrace(POKE), which will break if QEMU itself is being debugged - a
-> much more severe limitation.
+>> On 1/3/24 20:53, Fabiano Rosas wrote:
+>>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+>>>
+>>>> +Peter/Fabiano
+>>>>
+>>>> On 2/1/24 17:41, Cédric Le Goater wrote:
+>>>>> On 1/2/24 17:15, Philippe Mathieu-Daudé wrote:
+>>>>>> Hi Cédric,
+>>>>>>
+>>>>>> On 2/1/24 15:55, Cédric Le Goater wrote:
+>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
+>>>>>>>> Hi,
+>>>>>>>>
+>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
+>>>>>>>> cluster container, not to the board/soc layer. This series move
+>>>>>>>> the creation of vCPUs to the MPCore private container.
+>>>>>>>>
+>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
+>>>>>>>> central place (abstract MPCore parent).
+>>>>>>>
+>>>>>>> Changing the QOM hierarchy has an impact on the state of the machine
+>>>>>>> and some fixups are then required to maintain migration compatibility.
+>>>>>>> This can become a real headache for KVM machines like virt for which
+>>>>>>> migration compatibility is a feature, less for emulated ones.
+>>>>>>
+>>>>>> All changes are either moving properties (which are not migrated)
+>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
+>>>>>> is still migrated elsewhere). So I don't see any obvious migration
+>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
+>>>
+>>> FWIW, I didn't spot anything problematic either.
+>>>
+>>> I've ran this through my migration compatibility series [1] and it
+>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
+>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
+>>> think we even support migration of anything non-KVM on arm.
+>>
+>> it happens we do.
+>>
 > 
-> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-> ---
->   cpu-target.c | 55 ++++++++++++++++++++++++++++++++++++++--------------
->   1 file changed, 40 insertions(+), 15 deletions(-)
+> Oh, sorry, I didn't mean TCG here. Probably meant to say something like
+> non-KVM-capable cpus, as in 32-bit. Nevermind.
+
+Theoretically, we should be able to migrate to a TCG guest. Well, this
+worked in the past for PPC. When I was doing more KVM related changes,
+this was very useful for dev. Also, some machines are partially emulated.
+Anyhow I agree this is not a strong requirement and we often break it.
+Let's focus on KVM only.
+
+>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+>>
+>> yes it depends on the QOM hierarchy and virt seems immune to the changes.
+>> Good.
+>>
+>> However, changing the QOM topology clearly breaks migration compat,
 > 
-> diff --git a/cpu-target.c b/cpu-target.c
-> index 5eecd7ea2d7..69e97f78980 100644
-> --- a/cpu-target.c
-> +++ b/cpu-target.c
-> @@ -406,6 +406,15 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
->       vaddr l, page;
->       void * p;
->       uint8_t *buf = ptr;
-> +    int ret = -1;
-> +    int mem_fd;
-> +
-> +    /*
-> +     * Try ptrace first. If /proc is not mounted or if there is a different
-> +     * problem, fall back to the manual page access. Note that, unlike ptrace,
-> +     * it will not be able to ignore the protection bits.
-> +     */
-> +    mem_fd = open("/proc/self/mem", is_write ? O_WRONLY : O_RDONLY);
+> Well, "clearly" is relative =) You've mentioned pseries and aspeed
+> already, do you have a pointer to one of those cases were we broke
+> migration 
 
-Surely this is the unlikely fallback, and you don't need to open unless the page is 
-otherwise inaccessible.
+Regarding pseries, migration compat broke because of 5bc8d26de20c
+("spapr: allocate the ICPState object from under sPAPRCPUCore") which
+is similar to the changes proposed by this series, it impacts the QOM
+hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+("spapr: fix migration of ICPState objects from/to older QEMU") which
+is quite an headache and this turned out to raise another problem some
+months ago ... :/ That's why I sent [1] to prepare removal of old
+machines and workarounds becoming a burden.
 
-I see no handling for writes to pages that contain TranslationBlocks.
+Regarding aspeed, this series breaks compat. Not that we care much
+but ​this caught my attention because of my past experience on pseries.
+Same kind of QOM change which could impact other machines, like virt.
+Since you checked that migration compat is preserved on virt, we should
+be fine.
 
+Thanks,
 
-r~
+C.
 
->   
->       while (len > 0) {
->           page = addr & TARGET_PAGE_MASK;
-> @@ -413,22 +422,33 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
->           if (l > len)
->               l = len;
->           flags = page_get_flags(page);
-> -        if (!(flags & PAGE_VALID))
-> -            return -1;
-> +        if (!(flags & PAGE_VALID)) {
-> +            goto out_close;
-> +        }
->           if (is_write) {
-> -            if (!(flags & PAGE_WRITE))
-> -                return -1;
-> +            if (mem_fd == -1 ||
-> +                pwrite(mem_fd, ptr, len, (off_t)g2h_untagged(addr)) != len) {
-> +                if (!(flags & PAGE_WRITE)) {
-> +                    goto out_close;
-> +                }
-> +                /* XXX: this code should not depend on lock_user */
-> +                p = lock_user(VERIFY_WRITE, addr, l, 0);
-> +                if (!p) {
-> +                    goto out_close;
-> +                }
-> +                memcpy(p, buf, l);
-> +                unlock_user(p, addr, l);
-> +            }
-> +        } else if (mem_fd == -1 ||
-> +                   pread(mem_fd, ptr, len, (off_t)g2h_untagged(addr)) != len) {
-> +            if (!(flags & PAGE_READ)) {
-> +                goto out_close;
-> +            }
->               /* XXX: this code should not depend on lock_user */
-> -            if (!(p = lock_user(VERIFY_WRITE, addr, l, 0)))
-> -                return -1;
-> -            memcpy(p, buf, l);
-> -            unlock_user(p, addr, l);
-> -        } else {
-> -            if (!(flags & PAGE_READ))
-> -                return -1;
-> -            /* XXX: this code should not depend on lock_user */
-> -            if (!(p = lock_user(VERIFY_READ, addr, l, 1)))
-> -                return -1;
-> +            p = lock_user(VERIFY_READ, addr, l, 1);
-> +            if (!p) {
-> +                goto out_close;
-> +            }
->               memcpy(buf, p, l);
->               unlock_user(p, addr, 0);
->           }
-> @@ -436,7 +456,12 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
->           buf += l;
->           addr += l;
->       }
-> -    return 0;
-> +    ret = 0;
-> +out_close:
-> +    if (mem_fd != -1) {
-> +        close(mem_fd);
-> +    }
-> +    return ret;
->   }
->   #endif
->   
+[1] https://lore.kernel.org/qemu-devel/20231214181723.1520854-1-clg@kaod.org/

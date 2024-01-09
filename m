@@ -1,157 +1,358 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp303288ejs;
-        Tue, 9 Jan 2024 02:47:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE7wK46SfhUY8FkSaVMgOMXMHqiFYr0VHX9u+PB+ovKT2xPm0pbqUgs2CvjTGfXkJ0eIgld
-X-Received: by 2002:a25:4109:0:b0:dbd:ad93:6181 with SMTP id o9-20020a254109000000b00dbdad936181mr2296435yba.121.1704797275721;
-        Tue, 09 Jan 2024 02:47:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704797275; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp259804ejs;
+        Tue, 9 Jan 2024 01:01:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEsRBs3sirpVfKiQPXEb/+NgSVOnCuoAvLMPqxHanAhsud4dLNMySjC6O+OshMgHxb8LY+F
+X-Received: by 2002:a05:6871:7a85:b0:203:8ae:e133 with SMTP id pd5-20020a0568717a8500b0020308aee133mr6190889oac.44.1704790881749;
+        Tue, 09 Jan 2024 01:01:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704790881; cv=none;
         d=google.com; s=arc-20160816;
-        b=gyspVlUwnD74scKvrUmp+pztxPzoYOcKmzzWDe6vUuVVJDkMvWtrCuNQopY6/gmoMw
-         +065fQK7eVD3YTtLLN4lX26/H/FVZceB+EOCHddHm1sdO+xqJBKAQzz0As2CroHOIsdU
-         xooHyNExseQNiVmqprrQ8mkG3q1JeAia4QK1bUcu4Ig27uKMLaziZrIFs1YR6yKbTNbz
-         eXsPTFBpDnDhjCn44g1qRpPg6rnc+U/BJPz4uAZmTEC56XoROQ3LaK1Ru8LyYAvTsLDo
-         AZIhBUXAG1PY39odRCKJEFNWanJriyipYHapqghDDxmrfC4MRXIpHehqIBbmZmwrbjoF
-         aFig==
+        b=e3eQghPTsvddN1PLKkrpwNFBwLwhQqlTzRxVIhqe2ynxX8uwpvsCppCLqc2vl6+TmR
+         e2msNeIcUxM/s//liqL1pwSXsnShR0nLpC4OZJmAomC2zu/lJClSB4erg0Ae5S+7COyl
+         SlqJhQm1yXZ0c/ZYVdtKsFQp/+S8nWlh82P/0r2JgGEuwrRgfpUY2vsYzYO7tqkkN1c5
+         h48GIVUqCU2VFPS0Hy/ftHd2rqrw0P0fk/aqE00CghhcQ6UscEoXhVrOfEF21ezJ6oyW
+         dq4csE7BOnV6M71jnJ6v1BMsvK3bHhEbw+zdfUCQNsD69qlJRi1SI31GxrBZPTbVVDyF
+         rItw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=WeE9p1KtNiMS+m1qiSiYi66/Rm0PEV09UDX3wJbs64A=;
-        fh=8T5jpy8nnx9A9iI/Evvvm4CFZ7+43NG31kqZ6MU2JiA=;
-        b=tc29n+Ji1HI2OgNPlxGzpOy777LHLiBfHL7K4qd+5FvhND8wi7cVYiXYwhNnMIhVFS
-         /h4NBYlKMdSXtMnuXrxRahLo6eADK6zkoNj/U+zXfxo9QY0vGbmO6C0103e5Q57CLFcg
-         mWdWVHScYU+MYbEpK5XhCRwS7jctz8xg00qVuugxIykgLIyIsiVwBIpZOtIwtWqmR+zw
-         D6mbxBXJRBWEuNNc0+ZOR+6i/Z+o0Yuq90CtYdTQJUQATV6+L9Sb6EFd1NM55DIoD4qZ
-         iHXlvbJuBQ8cc5nIMHifgdlnR7bXtTs3n7CoCjVGovOQ6ZjgvxZvMwTWGaddGE5xxNxb
-         fY6Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9u0M5CrNUCxVjRY/uzE4BI8IxOo54f8PSWNdJ9hom+o=;
+        fh=F8lI6APrpOpRMGxIPqCutMXITf12uKef9cJV3DxjelY=;
+        b=can8BxmZyXOxt1TWldjieJd3WhLPQZ34Dcnp1IRJg+UzDlltMYlflFLyL+fZrzFJma
+         ehhei5s3dx0OnzxUuEF6ziDPaKPLtvBP2Ux9pqM/zxit1V9GfVDPAVmOQVYhDcMvQud+
+         hIV0TCNwS9q0gByLL77XAkEMbBbIZEfzExe5NVCD7wmxXSr2bhCo77AOsxyY05p8zI+f
+         zPKvld+xI4KJ7JNjO/+SWtyZscjgU99MORrhEHYsQfgtlmhsn7TkgrsXTAdofvLGHzKE
+         BNYliz1HSyz1csE/hl5oZHlvCLaeQJdiz56xiiEDCX561wzzY4K2addB9cmghgw9Rccg
+         Esqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZT3Bcj6e;
-       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kwolf@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id f205-20020a251fd6000000b00dbed7179c7dsi778616ybf.418.2024.01.09.02.47.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Jan 2024 02:47:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=DCKBqDwp;
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <quic_svaddagi@quicinc.com>
+Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
+        by mx.google.com with ESMTPS id g6-20020a056870c38600b00205faf5ea8asi532568oao.0.2024.01.09.01.01.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Jan 2024 01:01:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZT3Bcj6e;
-       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1704797273;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WeE9p1KtNiMS+m1qiSiYi66/Rm0PEV09UDX3wJbs64A=;
-	b=ZT3Bcj6e2NmULIF87C4NaotYT1W5P1l5/xjwqKGNDXs1074gDNx8WDOhrs+T8UA1Aejqru
-	Ktr+7ZwfQvJH04OvkgXlvSWPHjHiMMyw6BeJwMnmnbjdyM80TsxfI4CZaRqMODOVnbmWBY
-	uAtd2kZOk5DS+QZYhQixeVajGXWXRzE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-327-5dXObOloPIqrJU1vnaNEbA-1; Tue, 09 Jan 2024 05:47:49 -0500
-X-MC-Unique: 5dXObOloPIqrJU1vnaNEbA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8B8F68E4ABA;
-	Tue,  9 Jan 2024 10:47:48 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BADF7C15E6A;
-	Tue,  9 Jan 2024 10:47:46 +0000 (UTC)
-Date: Tue, 9 Jan 2024 11:47:45 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org, Luc Michel <luc.michel@amd.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Frederic Konrad <fkonrad@amd.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [RFC PATCH 0/5] qdev-properties: Try to improve use of dynamic
- property introspection
-Message-ID: <ZZ0kUcy14YA8t3Pd@redhat.com>
-References: <20240102160455.68612-1-philmd@linaro.org>
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=DCKBqDwp;
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 4096680I004958;
+	Tue, 9 Jan 2024 09:01:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding:content-type; s=
+	qcppdkim1; bh=9u0M5CrNUCxVjRY/uzE4BI8IxOo54f8PSWNdJ9hom+o=; b=DC
+	KBqDwpnEQf+HBaCwYV8jEsJ6+J4c0JXiZppug0FMH7Yk/E4+051bXvoYQ/YDpqDI
+	iAAkSNmOcayXppojSwMd/k38x8Cj5yxqtWftBmGHweS4FjAz1SLCLxDD3t8VvfqI
+	IuCohjAI2Xg0txF+q8YfXrEc8CvznTuhZap9FSglKEdhQDb/HbvSWKXjejCtBA+l
+	6Ze2i6W04ojUlgmPPsIO/iwF/fyejM+nGgX+dny+12ifbtX0MiGp3WxcDznnrgiC
+	Da6lomqXyegoefpf8soTeu6idU4D4s8AFpavm9Mo9oghkGnc/fH4e4GhNtzkr+d7
+	j25etTcQbb4osF2F4FvA==
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vgxxbgfuu-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 09 Jan 2024 09:01:20 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 40991KEb009636
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 9 Jan 2024 09:01:20 GMT
+Received: from blr-ubuntu-31.qualcomm.com (10.80.80.8) by
+ nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.40; Tue, 9 Jan 2024 01:01:15 -0800
+From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+To: <peter.maydell@linaro.org>, <philmd@linaro.org>, <alex.bennee@linaro.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <quic_svaddagi@quicinc.com>, <quic_tsoni@quicinc.com>,
+        <quic_pheragu@quicinc.com>, <quic_eberman@quicinc.com>,
+        <quic_yvasi@quicinc.com>, <quic_cvanscha@quicinc.com>,
+        <quic_mnalajal@quicinc.com>
+Subject: [RFC/PATCH v1 06/11] gunyah: Add gicv3 interrupt controller
+Date: Tue, 9 Jan 2024 09:00:34 +0000
+Message-ID: <20240109090039.1636383-7-quic_svaddagi@quicinc.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240109090039.1636383-1-quic_svaddagi@quicinc.com>
+References: <20240109090039.1636383-1-quic_svaddagi@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240102160455.68612-1-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-X-TUID: cZbN8BinZ3fy
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: HAh53AmMlj1QSqnz5MdLDaA1i90OMVFa
+X-Proofpoint-GUID: HAh53AmMlj1QSqnz5MdLDaA1i90OMVFa
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-09_02,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999
+ lowpriorityscore=0 priorityscore=1501 bulkscore=0 phishscore=0 spamscore=0
+ clxscore=1015 mlxscore=0 adultscore=0 impostorscore=0 malwarescore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2311290000 definitions=main-2401090070
+X-TUID: Z+O/NJGB+rUQ
 
-Am 02.01.2024 um 17:04 hat Philippe Mathieu-Daudé geschrieben:
-> Hi,
-> 
-> This RFC series tries to work over some limitations exposed in
-> https://lore.kernel.org/qemu-devel/9293e63b-8032-4ea0-b516-9db6949fb607@linaro.org/
-> 
-> Eventually all QDev objects would use static QOM properties,
-> but in some cases we can not. ARMv7MState is a such example
-> adding properties that might end up irrelevant.
-> 
-> This is just an example, but thinking long term (in particular
-> in the context of dynamic machines) I'm looking at how this
-> could be improved. Thus this series. I don't like much this
-> current approach (because more boiler place and complexity)
-> however this seems to DTRT for the user.
+Gunyah hypervisor supports emulation of a GICv3 compatible interrupt
+controller. Emulation is handled by hypervisor itself, with Qemu being
+allowed to specify some of the properties such as IO address at which
+GICv3 should be mapped in guest address space. These properties are
+conveyed to hypervisor via the device-tree, which is parsed by
+hypervisor (or more specifically Resource Manager VM, which is the
+trusted agent of hypervisor), before VM begins execution.
 
-This doesn't feel like the right approach to me. If you were to describe
-the properties of armv7m in the QAPI schema language without looking at
-the implementation, you would never add something like OptionalBool.
+Injection of interrupts inside guest is supported by doorbell API of
+Gunyah hypervisor. Each doorbell is associated with a specific
+interrupt. An eventfd is created and associated with each doorbell/irq.
+Injection of a specific irq is accomplished by writing to the eventfd
+associated with that irq.
 
-I'm not entirely sure if I understand the details of the problem, so if
-I make wrong assumptions below, please correct me.
+Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+---
+ MAINTAINERS                    |   2 +
+ accel/gunyah/gunyah-all.c      |   5 ++
+ hw/arm/virt.c                  |   5 ++
+ hw/intc/arm_gicv3_common.c     |   3 +
+ hw/intc/arm_gicv3_gunyah.c     | 106 +++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_its_common.c |   3 +
+ hw/intc/meson.build            |   1 +
+ include/sysemu/gunyah_int.h    |   2 +
+ 8 files changed, 127 insertions(+)
+ create mode 100644 hw/intc/arm_gicv3_gunyah.c
 
-I think what you would get instead is a union with the different CPU
-types as union variants. You would have few fields in the base type
-(cpu-type, memory, etc.), and everything specific to the variant, you
-wouldn't even want to look at in armv7m, but just forward it to the CPU.
-
-Now of course actually getting this QAPIfied is not something to expect
-in the next few days, so let's get back to the QOM level, but keep the
-general idea in mind.
-
-Based on the above, I'd argue that armv7m shouldn't even have the
-properties that it only uses to forward them. Instead, we should let the
-CPU grab its properties directly from the configuration. The way we
-create objects currently is not really designed for this. But let's get
-back to the QOM/QAPI integration patches [1] I sent two years ago and
-suddently it becomes quite easy: armv7m's .instance_config simply calls
-the CPU's .instance_config and passes its visitor. Then the CPU takes
-the options it needs for its properties and that's it.
-
-I discussed this series with Markus recently, and I actually assume that
-he at least mentioned it to you when you discussed things with him. I
-believe the part that you would need here (only up to patch 4 really) is
-pretty much uncontroversial.
-
-Of course, I ignored several "details" here, but I think the idea should
-still be workable. Some of those details:
-
-* This approach requires that the CPUs are first converted to have
-  static properties, but given that making everything static is your
-  goal, I assume that's not a problem.
-
-* The CPU must actually exist when you want to set properties for it.
-  This probably means moving creating the CPU from realize to the new
-  instance_config.
-
-* My patches are for object-add, but we're coming from board code here.
-  So the callers would have to be changed to call .instance_config
-  (probalby indirectly through object_configure()) instead of setting
-  individual properties.
-
-All of this is additional work, but it doesn't look like exceedingly
-hard work.
-
-Kevin
-
-[1] https://patchew.org/QEMU/20211103173002.209906-1-kwolf@redhat.com/
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cdda9208e2..b90a4558a1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -543,6 +543,8 @@ S: Maintained
+ F: accel/gunyah
+ F: include/sysemu/gunyah.h
+ F: include/sysemu/gunyah_int.h
++F: target/arm/arm_gicv3_gunyah.c
++F: hw/intc/arm_gicv3_gunyah.c
+ 
+ WHPX CPUs
+ M: Sunil Muthuswamy <sunilmut@microsoft.com>
+diff --git a/accel/gunyah/gunyah-all.c b/accel/gunyah/gunyah-all.c
+index 8aaf5b7354..4e4a2b89db 100644
+--- a/accel/gunyah/gunyah-all.c
++++ b/accel/gunyah/gunyah-all.c
+@@ -400,6 +400,11 @@ static void gunyah_mem_ioeventfd_del(MemoryListener *listener,
+     }
+ }
+ 
++GUNYAHState *get_gunyah_state(void)
++{
++    return GUNYAH_STATE(current_accel());
++}
++
+ void *gunyah_cpu_thread_fn(void *arg)
+ {
+     CPUState *cpu = arg;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 6a62fc29ad..4f4e10c234 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -643,6 +643,9 @@ static void create_its(VirtMachineState *vms)
+         if (!vms->tcg_its) {
+             itsclass = NULL;
+         }
++    } else if (!strcmp(itsclass, "arm-its-gunyah")) {
++        /* ITS is not yet supported */
++        itsclass = NULL;
+     }
+ 
+     if (!itsclass) {
+@@ -1914,6 +1917,8 @@ static void finalize_gic_version(VirtMachineState *vms)
+                 gics_supported |= VIRT_GIC_VERSION_4_MASK;
+             }
+         }
++    } else if (gunyah_enabled()) {
++        gics_supported |= VIRT_GIC_VERSION_3_MASK;
+     } else {
+         error_report("Unsupported accelerator, can not determine GIC support");
+         exit(1);
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index cb55c72681..9d6bc52e45 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -32,6 +32,7 @@
+ #include "gicv3_internal.h"
+ #include "hw/arm/linux-boot-if.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/gunyah.h"
+ 
+ 
+ static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
+@@ -614,6 +615,8 @@ const char *gicv3_class_name(void)
+ {
+     if (kvm_irqchip_in_kernel()) {
+         return "kvm-arm-gicv3";
++    } else if (gunyah_enabled()) {
++        return "gunyah-arm-gicv3";
+     } else {
+         if (kvm_enabled()) {
+             error_report("Userspace GICv3 is not supported with KVM");
+diff --git a/hw/intc/arm_gicv3_gunyah.c b/hw/intc/arm_gicv3_gunyah.c
+new file mode 100644
+index 0000000000..f52e82bf9a
+--- /dev/null
++++ b/hw/intc/arm_gicv3_gunyah.c
+@@ -0,0 +1,106 @@
++/*
++ * QEMU Gunyah hypervisor support
++ *
++ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "cpu.h"
++#include "hw/intc/arm_gicv3_common.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "sysemu/gunyah.h"
++#include "sysemu/gunyah_int.h"
++#include "sysemu/runstate.h"
++#include "gicv3_internal.h"
++#include "vgic_common.h"
++#include "migration/blocker.h"
++#include "qom/object.h"
++#include "target/arm/cpregs.h"
++#include "qemu/event_notifier.h"
++
++struct GUNYAHARMGICv3Class {
++    ARMGICv3CommonClass parent_class;
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
++#define TYPE_GUNYAH_ARM_GICV3 "gunyah-arm-gicv3"
++typedef struct GUNYAHARMGICv3Class GUNYAHARMGICv3Class;
++
++/* This is reusing the GICv3State typedef from ARM_GICV3_ITS_COMMON */
++DECLARE_OBJ_CHECKERS(GICv3State, GUNYAHARMGICv3Class,
++                     GUNYAH_ARM_GICV3, TYPE_GUNYAH_ARM_GICV3)
++
++static EventNotifier *irq_notify;
++
++static void gunyah_arm_gicv3_set_irq(void *opaque, int irq, int level)
++{
++    GICv3State *s = (GICv3State *)opaque;
++
++    if (irq < s->num_irq - GIC_INTERNAL) {
++        event_notifier_set(&irq_notify[irq]);
++    }
++}
++
++static void gunyah_arm_gicv3_realize(DeviceState *dev, Error **errp)
++{
++    GICv3State *s = GUNYAH_ARM_GICV3(dev);
++    GUNYAHARMGICv3Class *ggc = GUNYAH_ARM_GICV3_GET_CLASS(s);
++    Error *local_err = NULL;
++    int i;
++    GUNYAHState *state = get_gunyah_state();
++
++    ggc->parent_realize(dev, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    if (s->revision != 3) {
++        error_setg(errp, "unsupported GIC revision %d for in-kernel GIC",
++                   s->revision);
++        return;
++    }
++
++    gicv3_init_irqs_and_mmio(s, gunyah_arm_gicv3_set_irq, NULL);
++
++    irq_notify = g_malloc_n(s->num_irq - GIC_INTERNAL, sizeof(EventNotifier));
++
++    for (i = 0; i < s->num_irq - GIC_INTERNAL; ++i) {
++        event_notifier_init(&irq_notify[i], 0);
++        gunyah_add_irqfd(irq_notify[i].wfd, i, errp);
++    }
++
++    state->nr_irqs = s->num_irq - GIC_INTERNAL;
++}
++
++static void gunyah_arm_gicv3_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    GUNYAHARMGICv3Class *ggc = GUNYAH_ARM_GICV3_CLASS(klass);
++
++    device_class_set_parent_realize(dc, gunyah_arm_gicv3_realize,
++                                    &ggc->parent_realize);
++    resettable_class_set_parent_phases(rc, NULL, NULL, NULL,
++                                       &ggc->parent_phases);
++}
++
++static const TypeInfo gunyah_arm_gicv3_info = {
++    .name = TYPE_GUNYAH_ARM_GICV3,
++    .parent = TYPE_ARM_GICV3_COMMON,
++    .instance_size = sizeof(GICv3State),
++    .class_init = gunyah_arm_gicv3_class_init,
++    .class_size = sizeof(GUNYAHARMGICv3Class),
++};
++
++static void gunyah_arm_gicv3_register_types(void)
++{
++    type_register_static(&gunyah_arm_gicv3_info);
++}
++
++type_init(gunyah_arm_gicv3_register_types)
+diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+index 331d6b93cc..fe3752abc3 100644
+--- a/hw/intc/arm_gicv3_its_common.c
++++ b/hw/intc/arm_gicv3_its_common.c
+@@ -25,6 +25,7 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/gunyah.h"
+ 
+ static int gicv3_its_pre_save(void *opaque)
+ {
+@@ -164,6 +165,8 @@ const char *its_class_name(void)
+ {
+     if (kvm_irqchip_in_kernel()) {
+         return "arm-its-kvm";
++    } else if (gunyah_enabled()) {
++        return "arm-its-gunyah";
+     } else {
+         /* Software emulation based model */
+         return "arm-gicv3-its";
+diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+index ed355941d1..6e680cf0f2 100644
+--- a/hw/intc/meson.build
++++ b/hw/intc/meson.build
+@@ -73,3 +73,4 @@ specific_ss.add(when: 'CONFIG_LOONGARCH_IPI', if_true: files('loongarch_ipi.c'))
+ specific_ss.add(when: 'CONFIG_LOONGARCH_PCH_PIC', if_true: files('loongarch_pch_pic.c'))
+ specific_ss.add(when: 'CONFIG_LOONGARCH_PCH_MSI', if_true: files('loongarch_pch_msi.c'))
+ specific_ss.add(when: 'CONFIG_LOONGARCH_EXTIOI', if_true: files('loongarch_extioi.c'))
++specific_ss.add(when: ['CONFIG_ARM_GIC', 'CONFIG_GUNYAH', 'TARGET_AARCH64'], if_true: files('arm_gicv3_gunyah.c'))
+diff --git a/include/sysemu/gunyah_int.h b/include/sysemu/gunyah_int.h
+index 011b5a072c..dc5b4847a9 100644
+--- a/include/sysemu/gunyah_int.h
++++ b/include/sysemu/gunyah_int.h
+@@ -45,11 +45,13 @@ struct GUNYAHState {
+     bool is_protected_vm;
+     bool preshmem_reserved;
+     uint32_t preshmem_size;
++    uint32_t nr_irqs;
+ };
+ 
+ int gunyah_create_vm(void);
+ int gunyah_vm_ioctl(int type, ...);
+ void *gunyah_cpu_thread_fn(void *arg);
+ int gunyah_add_irqfd(int irqfd, int label, Error **errp);
++GUNYAHState *get_gunyah_state(void);
+ 
+ #endif    /* GUNYAH_INT_H */
+-- 
+2.25.1

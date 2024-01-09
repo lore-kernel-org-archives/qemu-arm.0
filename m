@@ -1,191 +1,256 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp599701ejs;
-        Tue, 9 Jan 2024 11:39:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGdEF5C+LlYkzJ0kTq3pHdr5c9A2Yaq++MaBvJc8Y3dNmQA+eUGm/N7XOURmA5r3sPMPgVP
-X-Received: by 2002:a81:5402:0:b0:5e7:b8bf:7a64 with SMTP id i2-20020a815402000000b005e7b8bf7a64mr5129248ywb.85.1704829145703;
-        Tue, 09 Jan 2024 11:39:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704829145; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp619949ejs;
+        Tue, 9 Jan 2024 12:21:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF5vjxhIKlLB6oVcOnYFh+ESZGrBP2WL7CGL97knY6giCALHLweNhEr8uugvORh/mGHMCB0
+X-Received: by 2002:a2e:2c15:0:b0:2cc:56a9:32d7 with SMTP id s21-20020a2e2c15000000b002cc56a932d7mr2964750ljs.85.1704831667465;
+        Tue, 09 Jan 2024 12:21:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704831667; cv=none;
         d=google.com; s=arc-20160816;
-        b=k7t57dgJRXr6cdVA0konFA//nwG97EleCBatV2ItysjXOhZFk/PqF6ylTsFUGvmh7U
-         CHHzGAX2NTBZSssmK9mm6PVruTTB8BPP8aP6QKa4KwLFzNVmi7LbkAPCyCBClya2kode
-         Z6kFs5+A1Xh6H/vnohExBPi5erkKm/bNgysb8JaKRJyEzL6NQSmejZiFE/50RBpBJCW9
-         Vyh4tVY+JhD+SLn4qouy4+YSNZ1WwsfYxOT8GZZp+fNl+oJ1USNCALc7IwECk4eDhEh+
-         hCkFXpqJsu51RLyDnYfKOs6AtuiJ2C2mi2lmC3zNg0cxxTosanZ4Dsaj9STnuAb1EA8/
-         QAjw==
+        b=zY8Nsp42GjU5moj71KeuZ3ugRFi3jWuHB668vHXcWcrSHEu1hXF/TZa+WAEmmN9Sfz
+         gOQuLJ23UUJxOMWAnKHz8hOItVs1L+HgaKoZXxEhnUcrwCaR56qJQfeC5a9dGXI4BMSU
+         86MAbUTweP53OUX7raHyTOq8e0MNs1GF5T2J/bt1ApoYo51TdmPAZ56XVS5YqFGJnkgX
+         4elcqStSFeOSiB4cwfjQS1RFVJqAe1ljxIpn87N5PDYagDdqbURjhYInzvz93j6KoI1F
+         fjr63ih+ECTlhMNZbkbFxVejo9Xzu6QKjnfo425m3blN2KY4L+sOPdXFaPPM6axam3T/
+         e3sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=v1Ys5UoQvqyvOZVHNyK2gndac13fXVfP3voCbvZiAYc=;
-        fh=ySpFvo+DCssipn/6esbM/M/CPtUmNEswhMzOkPHPJKw=;
-        b=OC2IiShWjfE1jobrnY7K8XLG+xXim3iwOHB91DTbQ1uUtvYIQrpNjl2l1gP6AQqOAn
-         gr3/9WsKEg0+fANMcZjsOZnlc++8h1EvcOrfrv3qleYMD7aIOBOYpF4NQFviwuqhuHsR
-         3yPXj+gZCd/bMZa58IlI5mHeLjmBQ+7BUJItlQXN6caa72mxiuhI2fN6bfDYO3elkrul
-         Di65/6zfDSZVqwJRRFFKUj02IQSNmkZljheFbojycXkhaUkccES4Kw39F8IQnlQVftZJ
-         xAoBEdAHX8ck9AGAW9QvvLVuzYNP7uXJvngWKLEM5rPKomqMvhlNLn27q07aG3mrvsPt
-         rE3g==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=kWmxf0mlhBYBS0EsSSNkgd7+huRVr/Byc/CXIT+Shks=;
+        fh=gf8t/VQiNQ+0eEEr/9+wieESJKlRqn9ej7QKhVZYUnc=;
+        b=mPyEfwf2rmiAr/djJoB6KDu3bQyAsHvAs+o+isG9VmdJFtQE68Hz5cptpCRxxE9TNX
+         LS5PODGTTO6rsw3eJjaZlO4AnqtV6eiIX2KwPivOptb8lbglHC8aQRFolniHT7CD5WWc
+         TpxIb42JTUxs4tEAVLz0OMYVfCUVBTk2iaxf1xtjMEMog0yMIWmpLlJf9VgqHNloU5Ci
+         REl2yRKQ6V4M/Xa3lEsgtQzRgmZWwFiKd+QRbRIMUiYYA85mzRwAh3fdvr8ifEUD2kRz
+         9S3p+I3g8O/P4UG+6dsR+sGlqbuUaWx2fd/u7etYvKFvB+dwp13o8vjYfYjrATpS4Qqv
+         JkKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=i1zPGhpz;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id t138-20020a817890000000b005fa1932fd5esi44550ywc.286.2024.01.09.11.39.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Jan 2024 11:39:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m5mRB0aN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=ZOdEsI6S;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m5mRB0aN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2a07:de40:b251:101:10:150:64:1])
+        by mx.google.com with ESMTPS id a94-20020a509ee7000000b00554c2e4e39esi1002744edf.523.2024.01.09.12.21.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Jan 2024 12:21:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=i1zPGhpz;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 409Hukja017531;
-	Tue, 9 Jan 2024 19:39:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=v1Ys5UoQvqyvOZVHNyK2gndac13fXVfP3voCbvZiAYc=;
- b=i1zPGhpz82WlDqqfPyCpNZ+9SWNaa+velY+1i4iL5x+RtYKWfhxXYgst2VFKsAjgLJuS
- Rw5rnHPgH6erdTlh3l0bPKjbsoYffOqkGxpLGoWo6J7pEnX5G6hdLIT+kLsIvB1JbXx/
- CgfiR8ZzCgToPrFO/WEgUUNdeMureLdk116+L3wSWAybQXnWnC5PyOoNxS4PaAhtLkWw
- 6Oh0gibKTQWtZxY1Fvl4K91btNe/d7cdLX5AW0iw8MIIFyAOT+ZcuWjhr9Ol9RiR+5d5
- VaZs6BilZFSdmk5RiyK+KDWmUlsH0VlXMn582wcliYjG5cGQN0lUHyXUYDUSk5cTJFHi TA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f8w4tu-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 09 Jan 2024 19:39:04 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409JEbt5019696;
-	Tue, 9 Jan 2024 19:39:04 GMT
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f8w4th-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 09 Jan 2024 19:39:04 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 409IZXLN022781;
-	Tue, 9 Jan 2024 19:39:03 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfhjygx1w-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 09 Jan 2024 19:39:03 +0000
-Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
-	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 409Jd1di42139958
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 9 Jan 2024 19:39:01 GMT
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 823A92004B;
-	Tue,  9 Jan 2024 19:39:01 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 1A8FC20043;
-	Tue,  9 Jan 2024 19:39:01 +0000 (GMT)
-Received: from [9.171.60.193] (unknown [9.171.60.193])
-	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue,  9 Jan 2024 19:39:01 +0000 (GMT)
-Message-ID: <139c997f23a3e7edd8334de124d0ba7820cf6dc9.camel@linux.ibm.com>
-Subject: Re: [PATCH 1/3] linux-user: Allow gdbstub to ignore page protection
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
-        Peter Maydell
-	 <peter.maydell@linaro.org>,
-        Alex =?ISO-8859-1?Q?Benn=E9e?=
-	 <alex.bennee@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-        Philippe
-	=?ISO-8859-1?Q?Mathieu-Daud=E9?=
-	 <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-Date: Tue, 09 Jan 2024 20:39:00 +0100
-In-Reply-To: <0195c274-0d5c-484b-9475-84a4d16bfae8@linaro.org>
-References: <20240108233821.201325-1-iii@linux.ibm.com>
-	 <20240108233821.201325-2-iii@linux.ibm.com>
-	 <0195c274-0d5c-484b-9475-84a4d16bfae8@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m5mRB0aN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=ZOdEsI6S;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=m5mRB0aN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 0B683220F1;
+	Tue,  9 Jan 2024 20:21:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1704831666; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kWmxf0mlhBYBS0EsSSNkgd7+huRVr/Byc/CXIT+Shks=;
+	b=m5mRB0aNdJCipoWMCSVL6uy6d0dX1M18wrNH5XUG3y6s8z0ukpuf0FBJa8vb71kEJ+xGfQ
+	0QIZyw9SPdlvvDA6tvjbWtzof9CwXGQa+tD5Hlu03ITjzhAeeiAXx1K/Qc0ilEcaV4ygoi
+	RNbcVBj7t2sIaVoLrIM2Muw0PE9Y3Go=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1704831666;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kWmxf0mlhBYBS0EsSSNkgd7+huRVr/Byc/CXIT+Shks=;
+	b=ZOdEsI6SQyhpNNOqcEdQO1aTqVK/VSAnKvI+Hz1Z8TcpizgcoJgyrEWPtD2+GwKbsIO2zk
+	l/72NJSJGrHNRECQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1704831666; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kWmxf0mlhBYBS0EsSSNkgd7+huRVr/Byc/CXIT+Shks=;
+	b=m5mRB0aNdJCipoWMCSVL6uy6d0dX1M18wrNH5XUG3y6s8z0ukpuf0FBJa8vb71kEJ+xGfQ
+	0QIZyw9SPdlvvDA6tvjbWtzof9CwXGQa+tD5Hlu03ITjzhAeeiAXx1K/Qc0ilEcaV4ygoi
+	RNbcVBj7t2sIaVoLrIM2Muw0PE9Y3Go=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1704831666;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kWmxf0mlhBYBS0EsSSNkgd7+huRVr/Byc/CXIT+Shks=;
+	b=ZOdEsI6SQyhpNNOqcEdQO1aTqVK/VSAnKvI+Hz1Z8TcpizgcoJgyrEWPtD2+GwKbsIO2zk
+	l/72NJSJGrHNRECQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 8727C134E8;
+	Tue,  9 Jan 2024 20:21:05 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id RW6WE7GqnWVbMAAAD6G6ig
+	(envelope-from <farosas@suse.de>); Tue, 09 Jan 2024 20:21:05 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, Philippe =?utf-8?Q?M?=
+ =?utf-8?Q?athieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-devel@nongnu.org, Juan Quintela
+ <quintela@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Anton Johansson <anjo@rev.ng>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring
+ <robh@kernel.org>, qemu-arm@nongnu.org, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+In-Reply-To: <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+Date: Tue, 09 Jan 2024 17:21:03 -0300
+Message-ID: <87bk9u8dhs.fsf@suse.de>
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: HmV9mEOLbVoQzvmFEp3lT72JAtKOu76U
-X-Proofpoint-ORIG-GUID: DSOadI09zZmVdANh_PCXDrM340jHBLxp
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-09_09,2024-01-09_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 phishscore=0
- mlxlogscore=805 impostorscore=0 lowpriorityscore=0 malwarescore=0
- bulkscore=0 suspectscore=0 priorityscore=1501 spamscore=0 adultscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401090158
-X-TUID: A39OCV5N5awx
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spam-Level: ***
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: 0B683220F1
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=m5mRB0aN;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=ZOdEsI6S
+X-Spam-Score: -3.01
+X-Spam-Level: 
+X-Spam-Flag: NO
+X-Spamd-Result: default: False [-3.01 / 50.00];
+	 RCVD_VIA_SMTP_AUTH(0.00)[];
+	 TO_DN_SOME(0.00)[];
+	 R_RATELIMIT(0.00)[to_ip_from(RLpct1jb1dgwfjtbqq8ebpmkdo)];
+	 RCVD_COUNT_THREE(0.00)[3];
+	 DKIM_TRACE(0.00)[suse.de:+];
+	 MX_GOOD(-0.01)[];
+	 NEURAL_HAM_SHORT(-0.20)[-1.000];
+	 FROM_EQ_ENVFROM(0.00)[];
+	 MIME_TRACE(0.00)[0:+];
+	 MID_RHS_MATCH_FROM(0.00)[];
+	 BAYES_HAM(-3.00)[100.00%];
+	 ARC_NA(0.00)[];
+	 R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	 FROM_HAS_DN(0.00)[];
+	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	 TO_MATCH_ENVRCPT_ALL(0.00)[];
+	 TAGGED_RCPT(0.00)[];
+	 MIME_GOOD(-0.10)[text/plain];
+	 NEURAL_HAM_LONG(-1.00)[-1.000];
+	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	 RCPT_COUNT_TWELVE(0.00)[23];
+	 DBL_BLOCKED_OPENRESOLVER(0.00)[gitlab.com:url];
+	 FUZZY_BLOCKED(0.00)[rspamd.com];
+	 FREEMAIL_CC(0.00)[redhat.com,nuvoton.com,linaro.org,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,tribudubois.net,codeconstruct.com.au,kernel.org,nongnu.org,ilande.co.uk];
+	 RCVD_TLS_ALL(0.00)[];
+	 SUSPICIOUS_RECIPS(1.50)[]
+X-TUID: 2ewwqXyTk4hg
 
-On Wed, 2024-01-10 at 04:42 +1100, Richard Henderson wrote:
-> On 1/9/24 10:34, Ilya Leoshkevich wrote:
-> > gdbserver ignores page protection by virtue of using
-> > /proc/$pid/mem.
-> > Teach qemu gdbstub to do this too. This will not work if /proc is
-> > not
-> > mounted; accept this limitation.
-> >=20
-> > One alternative is to temporarily grant the missing PROT_* bit, but
-> > this is inherently racy. Another alternative is self-debugging with
-> > ptrace(POKE), which will break if QEMU itself is being debugged - a
-> > much more severe limitation.
-> >=20
-> > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-> > ---
-> > =C2=A0 cpu-target.c | 55 ++++++++++++++++++++++++++++++++++++++--------=
--
-> > -----
-> > =C2=A0 1 file changed, 40 insertions(+), 15 deletions(-)
-> >=20
-> > diff --git a/cpu-target.c b/cpu-target.c
-> > index 5eecd7ea2d7..69e97f78980 100644
-> > --- a/cpu-target.c
-> > +++ b/cpu-target.c
-> > @@ -406,6 +406,15 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr
-> > addr,
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vaddr l, page;
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 void * p;
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint8_t *buf =3D ptr;
-> > +=C2=A0=C2=A0=C2=A0 int ret =3D -1;
-> > +=C2=A0=C2=A0=C2=A0 int mem_fd;
-> > +
-> > +=C2=A0=C2=A0=C2=A0 /*
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 * Try ptrace first. If /proc is not mounted o=
-r if there is a
-> > different
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 * problem, fall back to the manual page acces=
-s. Note that,
-> > unlike ptrace,
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 * it will not be able to ignore the protectio=
-n bits.
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 */
-> > +=C2=A0=C2=A0=C2=A0 mem_fd =3D open("/proc/self/mem", is_write ? O_WRON=
-LY :
-> > O_RDONLY);
->=20
-> Surely this is the unlikely fallback, and you don't need to open
-> unless the page is=20
-> otherwise inaccessible.
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
 
-Ok, I can move this under (flags & PAGE_*) checks.
+> On 1/9/24 18:40, Fabiano Rosas wrote:
+>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>=20
+>>> On 1/3/24 20:53, Fabiano Rosas wrote:
+>>>> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>>>>
+>>>>> +Peter/Fabiano
+>>>>>
+>>>>> On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
+>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>> Hi C=C3=A9dric,
+>>>>>>>
+>>>>>>> On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
+>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>>>> Hi,
+>>>>>>>>>
+>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
+>>>>>>>>> cluster container, not to the board/soc layer. This series move
+>>>>>>>>> the creation of vCPUs to the MPCore private container.
+>>>>>>>>>
+>>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
+>>>>>>>>> central place (abstract MPCore parent).
+>>>>>>>>
+>>>>>>>> Changing the QOM hierarchy has an impact on the state of the machi=
+ne
+>>>>>>>> and some fixups are then required to maintain migration compatibil=
+ity.
+>>>>>>>> This can become a real headache for KVM machines like virt for whi=
+ch
+>>>>>>>> migration compatibility is a feature, less for emulated ones.
+>>>>>>>
+>>>>>>> All changes are either moving properties (which are not migrated)
+>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
+>>>>>>> is still migrated elsewhere). So I don't see any obvious migration
+>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
+>>>>
+>>>> FWIW, I didn't spot anything problematic either.
+>>>>
+>>>> I've ran this through my migration compatibility series [1] and it
+>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
+>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don=
+'t
+>>>> think we even support migration of anything non-KVM on arm.
+>>>
+>>> it happens we do.
+>>>
+>>=20
+>> Oh, sorry, I didn't mean TCG here. Probably meant to say something like
+>> non-KVM-capable cpus, as in 32-bit. Nevermind.
+>
+> Theoretically, we should be able to migrate to a TCG guest. Well, this
+> worked in the past for PPC. When I was doing more KVM related changes,
+> this was very useful for dev. Also, some machines are partially emulated.
+> Anyhow I agree this is not a strong requirement and we often break it.
+> Let's focus on KVM only.
+>
+>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+>>>
+>>> yes it depends on the QOM hierarchy and virt seems immune to the change=
+s.
+>>> Good.
+>>>
+>>> However, changing the QOM topology clearly breaks migration compat,
+>>=20
+>> Well, "clearly" is relative =3D) You've mentioned pseries and aspeed
+>> already, do you have a pointer to one of those cases were we broke
+>> migration=20
+>
+> Regarding pseries, migration compat broke because of 5bc8d26de20c
+> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
+> is similar to the changes proposed by this series, it impacts the QOM
+> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+> ("spapr: fix migration of ICPState objects from/to older QEMU") which
+> is quite an headache and this turned out to raise another problem some
+> months ago ... :/ That's why I sent [1] to prepare removal of old
+> machines and workarounds becoming a burden.
 
-> I see no handling for writes to pages that contain TranslationBlocks.
+This feels like something that could be handled by the vmstate code
+somehow. The state is there, just under a different path. No one wants
+to be policing QOM hierarchy changes in every single series that shows
+up on the list.
 
-Sorry, I completely missed that. I'm currently experimenting with the
-following:
+Anyway, thanks for the pointers. I'll study that code a bit more, maybe
+I can come up with some way to handle these cases.
 
-	/*
-	 * If there is a TranslationBlock and we weren't bypassing
-host
-	 * page protection, the memcpy() above would SEGV, ultimately
-	 * leading to page_unprotect(). So invalidate the translations
-	 * manually. Both invalidation and pwrite() must be under
-	 * mmap_lock() in order to prevent the creation of another
-	 * TranslationBlock in between.
-	 */
-	mmap_lock();
-	tb_invalidate_phys_page(page);
-	written =3D pwrite(fd, buf, l, (off_t)g2h_untagged(addr));
-	mmap_unlock();
+Hopefully between the analyze-migration test and the compat tests we'll
+catch the next bug of this kind before it gets merged.
 
-Does that look okay?
-
-[...]

@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp602786ejs;
-        Tue, 9 Jan 2024 11:45:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHWgvcZ5TIwmF3Mh2ZG6xdShBPOnDPRxoCVzBGzri03MauxNyF0AErd5y2bchOpG8FWLUJj
-X-Received: by 2002:a05:622a:cb:b0:429:9787:d8b2 with SMTP id p11-20020a05622a00cb00b004299787d8b2mr3825805qtw.137.1704829552151;
-        Tue, 09 Jan 2024 11:45:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704829552; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp603092ejs;
+        Tue, 9 Jan 2024 11:46:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHcGb7u1CSgjeJ+w/u5NlE4PqlW8Nu5wUCR7WtcjTKRymG2M29e4jBB0AYL0Yi55JFrzsPE
+X-Received: by 2002:a05:6808:3c89:b0:3b8:b063:8950 with SMTP id gs9-20020a0568083c8900b003b8b0638950mr4920859oib.94.1704829588840;
+        Tue, 09 Jan 2024 11:46:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704829588; cv=none;
         d=google.com; s=arc-20160816;
-        b=od9XXoEjqVgD1u9WXiPZ/br6Eg0zefYmym3mM8nXiCDJzY2reA8LRHRd2Vv0f1ZZmK
-         aIcvZ4dMHL6Xxz70sJpwgLb/MZdqxXGznPQm4Wq4nZRgzkIgHVe6+XE92Wl73CfHOLXo
-         zFMJsK0A+ftyHHJ+quTUk296okWiJLqDcSmvbQ9CvtltVyW+EFcptNSS3aJNmJvAXeKA
-         nHuoqZfmscJ73jFgU5pZ6tPmaPawf2pvP0G3CES8P5sAsz+mzfxR1HkSHQ9XwwyqFlNl
-         ndy8qfVrYFQ1Zd3EuH7Lg74fjlPAKOQh2dLjYm4iEOpFRCxMngm9ZiG4gjHr2JI5QtFa
-         ZE6Q==
+        b=cMfpiKR3uQvyjrba8sEhjAC0Xq7UNXNexCO9e5XT59q/8h3REorWBtGbCuZORhlM9O
+         dUC9wSYq51WfJXTOIaQ899p3vObQFRohepOdbpC1XSNb6U22fYdzZ33Q41Tz0TewO9Aw
+         CgLuxUSCQvOpWU5Iow3wAsJpl0iVuiHPjq/sKvdQmYTGse8gBe8/PlKjMXN/FTx/RWbz
+         4X2EjWOxxT+nmDUlTjYb4eg4vAoo7pTouPYVoEteidq+/0r0hkYN9W+hfXiXNV68ph2y
+         MXNU2U3TQNULyDQYe43nDsq++R+Bx7vEwtffmP2x2YjOmp7uU7uDD+enDzLsSBJl1ldi
+         /LYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=yMzvz6qwSFKC5OyF4+vSQks97LFNIui3nYOUYqwTsWM=;
+        bh=wwhG2Kr1u/Ne7uRxBZkCh739TK0CS4I0s3XKbczKToM=;
         fh=K+fAt321hrraqpxJaMvMW9ZZZtd7w16ejmv2KMcqJ8s=;
-        b=hMgqQgY0qU9Z7HkUHNe1+/6mlUg50F7KgrXNvmXhm+y2JAwFtdTGSEZ9ZpGe5RXPZA
-         iHMcLUj7/8xOpPGY8yYNhJzMJqIbxg9Eg9UcMf5ihK7Rx7ledZxg6SoKEYSc/rghdGZL
-         Uu1BQUeigfRp9sgQCJKu6ylecAGjWv5c8lwlkz3yZW5w6kd5a/kMvtOvFt6vKnfEFola
-         PDo7UT5DnOl35spmq6yRiS3fCDJJaomhtfzz02b6Yv4fKa83Oqrf+yW/8Os8e1ZKAWS1
-         bDC++fZJUfBM3IIxYWYsODwfxZcbY/ReBf2AfI7fRnLutsfRQvfRtwPaipD5GVK6842/
-         sm7w==
+        b=T+E/769mQNP+X4TNl2X5RSqWvGjDpWQrHQEVS78K0aAKJBWDOj7MDsOGu7lPuNSHB3
+         iBXt700yngHx21sfbB45q0m2nYH8x0xUXy3xGreFbKTCZH8VMCqFPVUNMzuRRGqko3+r
+         yrgXFdiraAZMj3/RAQtaDBl7MjARraGFFOqqgvHkh1fexgqoOFdx4pX5345SZevGoBFo
+         SBMTwp9nN80OwH3IQpVbmz90n6XmFD6WwfztLafkDNOwM8ykYgEaEEr5M5ap3HIzvnWS
+         Swy0U6XCTaBGseKsmzSx8PAgzTphZHQnAy6jVSbusEqj8v1UMGpx/tIQEJy6EVtzzC8O
+         b+Zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=sVWtYUpF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="bfAdENL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n2-20020a05622a11c200b00429b1d33b14si217410qtk.47.2024.01.09.11.45.51
+        by mx.google.com with ESMTPS id r15-20020a0ccc0f000000b0067f9b7e5f33si2906366qvk.344.2024.01.09.11.46.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 11:45:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jan 2024 11:46:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=sVWtYUpF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="bfAdENL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rNI1v-00014y-2J; Tue, 09 Jan 2024 14:44:55 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rNI1x-00017y-HY; Tue, 09 Jan 2024 14:44:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rNI1t-00014P-49; Tue, 09 Jan 2024 14:44:53 -0500
+ id 1rNI1u-00014h-PD; Tue, 09 Jan 2024 14:44:54 -0500
 Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rNI1q-0005cw-Qi; Tue, 09 Jan 2024 14:44:52 -0500
+ id 1rNI1q-0005cR-R7; Tue, 09 Jan 2024 14:44:54 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 1583CC0CBA;
- Tue,  9 Jan 2024 20:44:48 +0100 (CET)
+ by zproxy1.enst.fr (Postfix) with ESMTP id 51D20C0643;
+ Tue,  9 Jan 2024 20:44:47 +0100 (CET)
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id mdXwjDboYyFK; Tue,  9 Jan 2024 20:44:47 +0100 (CET)
+ id JM75hvROiskF; Tue,  9 Jan 2024 20:44:46 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 676B5C0D00;
- Tue,  9 Jan 2024 20:44:47 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 676B5C0D00
+ by zproxy1.enst.fr (Postfix) with ESMTP id 589CFC0CF9;
+ Tue,  9 Jan 2024 20:44:46 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 589CFC0CF9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704829487;
- bh=yMzvz6qwSFKC5OyF4+vSQks97LFNIui3nYOUYqwTsWM=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704829486;
+ bh=wwhG2Kr1u/Ne7uRxBZkCh739TK0CS4I0s3XKbczKToM=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=sVWtYUpFj/kXdZ9AUdv/mKyKOpX1xlrluICBfgoYOTEbTd3Ibxe0KwzkNwCd9At4T
- wdxebBCvLKUborvfbwu1lCjA89sLAV+fXJEMwco6vXVQl5r9uCe0DNrEyw35KR9YSZ
- jNHCSl0KStr9wlVUhhurz/+rAK3F+/pU2oEUPldk=
+ b=bfAdENL//9LD0nkNNXc53fP6gWuQsMSdvt8f55cqRqGQFDm/ddm8AQjvTDrlEVibf
+ ZW9pEVKly3AIwiJ9ngnuDjjEUTQJyd2wvf0xA0LxtZ7udK5HwZZ8jkGWVT1Hm3FWDc
+ JJlMU4smQko8WZerheiKIkZBuGtK84Li8q9Xs+rg=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id 9AXEEhrzrCvf; Tue,  9 Jan 2024 20:44:47 +0100 (CET)
+ id k7I9pia1IWoJ; Tue,  9 Jan 2024 20:44:46 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id EAD1FC0CF2;
- Tue,  9 Jan 2024 20:44:46 +0100 (CET)
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id A306AC0CDE;
+ Tue,  9 Jan 2024 20:44:45 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
@@ -86,9 +86,9 @@ Cc: Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Laurent Vivier <lvivier@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v4 3/3] tests/qtest: Add STM32L4x5 SYSCFG QTest testcase
-Date: Tue,  9 Jan 2024 20:41:59 +0100
-Message-ID: <20240109194438.70934-4-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v4 1/3] hw/misc: Implement STM32L4x5 SYSCFG
+Date: Tue,  9 Jan 2024 20:41:57 +0100
+Message-ID: <20240109194438.70934-2-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
 References: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
@@ -102,71 +102,131 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eD689r5+MN20
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LRYqJ2+8roQD
 
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 Acked-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- tests/qtest/meson.build             |   3 +-
- tests/qtest/stm32l4x5_syscfg-test.c | 331 ++++++++++++++++++++++++++++
- 2 files changed, 333 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32l4x5_syscfg-test.c
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ hw/misc/Kconfig                    |   3 +
+ hw/misc/meson.build                |   1 +
+ hw/misc/stm32l4x5_syscfg.c         | 266 +++++++++++++++++++++++++++++
+ hw/misc/trace-events               |   6 +
+ include/hw/misc/stm32l4x5_syscfg.h |  54 ++++++
+ 6 files changed, 331 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/stm32l4x5_syscfg.c
+ create mode 100644 include/hw/misc/stm32l4x5_syscfg.h
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index d890b6f333..a926af92f6 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -196,7 +196,8 @@ qtests_aspeed =3D \
-    'aspeed_gpio-test']
+diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e=
+-iot01a.rst
+index 72f256ace7..1a021b306a 100644
+--- a/docs/system/arm/b-l475e-iot01a.rst
++++ b/docs/system/arm/b-l475e-iot01a.rst
+@@ -16,6 +16,7 @@ Currently B-L475E-IOT01A machine's only supports the fo=
+llowing devices:
 =20
- qtests_stm32l4x5 =3D \
--  ['stm32l4x5_exti-test']
-+  ['stm32l4x5_exti-test',
-+   'stm32l4x5_syscfg-test']
+ - Cortex-M4F based STM32L4x5 SoC
+ - STM32L4x5 EXTI (Extended interrupts and events controller)
++- STM32L4x5 SYSCFG (System configuration controller)
 =20
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
-syscfg-test.c
+ Missing devices
+ """""""""""""""
+@@ -24,7 +25,6 @@ The B-L475E-IOT01A does *not* support the following dev=
+ices:
+=20
+ - Reset and clock control (RCC)
+ - Serial ports (UART)
+-- System configuration controller (SYSCFG)
+ - General-purpose I/Os (GPIO)
+ - Analog to Digital Converter (ADC)
+ - SPI controller
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 3efe3dc2cc..4fc6b29b43 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -90,6 +90,9 @@ config STM32F4XX_EXTI
+ config STM32L4X5_EXTI
+     bool
+=20
++config STM32L4X5_SYSCFG
++    bool
++
+ config MIPS_ITU
+     bool
+=20
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 16db6e228d..2ca2ce4b62 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -111,6 +111,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_tru=
+e: files('stm32f2xx_syscfg.
+ system_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx=
+_syscfg.c'))
+ system_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_e=
+xti.c'))
+ system_ss.add(when: 'CONFIG_STM32L4X5_EXTI', if_true: files('stm32l4x5_e=
+xti.c'))
++system_ss.add(when: 'CONFIG_STM32L4X5_SYSCFG', if_true: files('stm32l4x5=
+_syscfg.c'))
+ system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'=
+))
+ system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
+=20
+diff --git a/hw/misc/stm32l4x5_syscfg.c b/hw/misc/stm32l4x5_syscfg.c
 new file mode 100644
-index 0000000000..ed4801798d
+index 0000000000..fd68cb800b
 --- /dev/null
-+++ b/tests/qtest/stm32l4x5_syscfg-test.c
-@@ -0,0 +1,331 @@
++++ b/hw/misc/stm32l4x5_syscfg.c
+@@ -0,0 +1,266 @@
 +/*
-+ * QTest testcase for STM32L4x5_SYSCFG
++ * STM32L4x5 SYSCFG (System Configuration Controller)
 + *
 + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
 + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 + *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
 + * This work is licensed under the terms of the GNU GPL, version 2 or la=
 ter.
 + * See the COPYING file in the top-level directory.
++ *
++ * This work is based on the stm32f4xx_syscfg by Alistair Francis.
++ * Original code is licensed under the MIT License:
++ *
++ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
++ */
++
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
 + */
 +
 +#include "qemu/osdep.h"
-+#include "libqtest-single.h"
++#include "qemu/log.h"
++#include "trace.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "hw/misc/stm32l4x5_syscfg.h"
 +
-+#define SYSCFG_BASE_ADDR 0x40010000
 +#define SYSCFG_MEMRMP 0x00
 +#define SYSCFG_CFGR1 0x04
 +#define SYSCFG_EXTICR1 0x08
@@ -178,312 +238,322 @@ ter.
 +#define SYSCFG_SWPR 0x20
 +#define SYSCFG_SKR 0x24
 +#define SYSCFG_SWPR2 0x28
-+#define INVALID_ADDR 0x2C
 +
-+static void syscfg_writel(unsigned int offset, uint32_t value)
++/* 00000000_00000000_00000001_00000111 */
++#define ACTIVABLE_BITS_MEMRP 0x00000107
++
++/* 11111100_11111111_00000001_00000000 */
++#define ACTIVABLE_BITS_CFGR1 0xFCFF0100
++/* 00000000_00000000_00000000_00000001 */
++#define FIREWALL_DISABLE_CFGR1 0x00000001
++
++/* 00000000_00000000_11111111_11111111 */
++#define ACTIVABLE_BITS_EXTICR 0x0000FFFF
++
++/* 00000000_00000000_00000000_00000011 */
++/* #define ACTIVABLE_BITS_SCSR 0x00000003 */
++
++/* 00000000_00000000_00000000_00001111 */
++#define ECC_LOCK_CFGR2 0x0000000F
++/* 00000000_00000000_00000001_00000000 */
++#define SRAM2_PARITY_ERROR_FLAG_CFGR2 0x00000100
++
++/* 00000000_00000000_00000000_11111111 */
++#define ACTIVABLE_BITS_SKR 0x000000FF
++
++#define NUM_LINES_PER_EXTICR_REG 4
++
++static void stm32l4x5_syscfg_hold_reset(Object *obj)
 +{
-+    writel(SYSCFG_BASE_ADDR + offset, value);
++    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(obj);
++
++    s->memrmp =3D 0x00000000;
++    s->cfgr1 =3D 0x7C000001;
++    s->exticr[0] =3D 0x00000000;
++    s->exticr[1] =3D 0x00000000;
++    s->exticr[2] =3D 0x00000000;
++    s->exticr[3] =3D 0x00000000;
++    s->scsr =3D 0x00000000;
++    s->cfgr2 =3D 0x00000000;
++    s->swpr =3D 0x00000000;
++    s->skr =3D 0x00000000;
++    s->swpr2 =3D 0x00000000;
 +}
 +
-+static uint32_t syscfg_readl(unsigned int offset)
++static void stm32l4x5_syscfg_set_irq(void *opaque, int irq, int level)
 +{
-+    return readl(SYSCFG_BASE_ADDR + offset);
++    Stm32l4x5SyscfgState *s =3D opaque;
++    const uint8_t gpio =3D irq / GPIO_NUM_PINS;
++    const int line =3D irq % GPIO_NUM_PINS;
++
++    const int exticr_reg =3D line / NUM_LINES_PER_EXTICR_REG;
++    const int startbit =3D (line % NUM_LINES_PER_EXTICR_REG) * 4;
++
++    g_assert(gpio < NUM_GPIOS);
++    trace_stm32l4x5_syscfg_set_irq(gpio, line, level);
++
++    if (extract32(s->exticr[exticr_reg], startbit, 4) =3D=3D gpio) {
++        trace_stm32l4x5_syscfg_forward_exti(line);
++        qemu_set_irq(s->gpio_out[line], level);
++    }
 +}
 +
-+static void syscfg_set_irq(int num, int level)
++static uint64_t stm32l4x5_syscfg_read(void *opaque, hwaddr addr,
++                                      unsigned int size)
 +{
-+   qtest_set_irq_in(global_qtest, "/machine/soc/syscfg",
-+                    NULL, num, level);
++    Stm32l4x5SyscfgState *s =3D opaque;
++
++    trace_stm32l4x5_syscfg_read(addr);
++
++    switch (addr) {
++    case SYSCFG_MEMRMP:
++        return s->memrmp;
++    case SYSCFG_CFGR1:
++        return s->cfgr1;
++    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
++        return s->exticr[(addr - SYSCFG_EXTICR1) / 4];
++    case SYSCFG_SCSR:
++        return s->scsr;
++    case SYSCFG_CFGR2:
++        return s->cfgr2;
++    case SYSCFG_SWPR:
++        return s->swpr;
++    case SYSCFG_SKR:
++        return s->skr;
++    case SYSCFG_SWPR2:
++        return s->swpr2;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, a=
+ddr);
++        return 0;
++    }
++}
++static void stm32l4x5_syscfg_write(void *opaque, hwaddr addr,
++                                   uint64_t value, unsigned int size)
++{
++    Stm32l4x5SyscfgState *s =3D opaque;
++
++    trace_stm32l4x5_syscfg_write(addr, value);
++
++    switch (addr) {
++    case SYSCFG_MEMRMP:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Changing the memory mapping isn't supported\n=
+",
++                      __func__);
++        s->memrmp =3D value & ACTIVABLE_BITS_MEMRP;
++        return;
++    case SYSCFG_CFGR1:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Functions in CFGRx aren't supported\n",
++                      __func__);
++        /* bit 0 (firewall dis.) is cleared by software, set only by res=
+et. */
++        s->cfgr1 =3D (s->cfgr1 & value & FIREWALL_DISABLE_CFGR1) |
++                   (value & ACTIVABLE_BITS_CFGR1);
++        return;
++    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
++        s->exticr[(addr - SYSCFG_EXTICR1) / 4] =3D
++                (value & ACTIVABLE_BITS_EXTICR);
++        return;
++    case SYSCFG_SCSR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Erasing SRAM2 isn't supported\n",
++                      __func__);
++        /*
++         * only non reserved bits are :
++         * bit 0 (write-protected by a passkey), bit 1 (meant to be read=
+)
++         * so it serves no purpose yet to add :
++         * s->scsr =3D value & 0x3;
++         */
++        return;
++    case SYSCFG_CFGR2:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Functions in CFGRx aren't supported\n",
++                      __func__);
++        /* bit 8 (SRAM2 PEF) is cleared by software by writing a '1'.*/
++        /* bits[3:0] (ECC Lock) are set by software, cleared only by res=
+et.*/
++        s->cfgr2 =3D (s->cfgr2 | (value & ECC_LOCK_CFGR2)) &
++                   ~(value & SRAM2_PARITY_ERROR_FLAG_CFGR2);
++        return;
++    case SYSCFG_SWPR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Write protecting SRAM2 isn't supported\n",
++                      __func__);
++        /* These bits are set by software and cleared only by reset.*/
++        s->swpr |=3D value;
++        return;
++    case SYSCFG_SKR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Erasing SRAM2 isn't supported\n",
++                      __func__);
++        s->skr =3D value & ACTIVABLE_BITS_SKR;
++        return;
++    case SYSCFG_SWPR2:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Write protecting SRAM2 isn't supported\n",
++                      __func__);
++        /* These bits are set by software and cleared only by reset.*/
++        s->swpr2 |=3D value;
++        return;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, a=
+ddr);
++    }
 +}
 +
-+static void system_reset(void)
++static const MemoryRegionOps stm32l4x5_syscfg_ops =3D {
++    .read =3D stm32l4x5_syscfg_read,
++    .write =3D stm32l4x5_syscfg_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size =3D 4,
++    .impl.max_access_size =3D 4,
++    .impl.unaligned =3D false,
++    .valid.min_access_size =3D 4,
++    .valid.max_access_size =3D 4,
++    .valid.unaligned =3D false,
++};
++
++static void stm32l4x5_syscfg_init(Object *obj)
 +{
-+    QDict *response;
-+    response =3D qtest_qmp(global_qtest, "{'execute': 'system_reset'}");
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
++    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(obj);
++
++    memory_region_init_io(&s->mmio, obj, &stm32l4x5_syscfg_ops, s,
++                          TYPE_STM32L4X5_SYSCFG, 0x400);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++
++    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_syscfg_set_irq,
++                      GPIO_NUM_PINS * NUM_GPIOS);
++    qdev_init_gpio_out(DEVICE(obj), s->gpio_out, GPIO_NUM_PINS);
 +}
 +
-+static void test_reset(void)
++static const VMStateDescription vmstate_stm32l4x5_syscfg =3D {
++    .name =3D TYPE_STM32L4X5_SYSCFG,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32(memrmp, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32(cfgr1, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32_ARRAY(exticr, Stm32l4x5SyscfgState,
++                             SYSCFG_NUM_EXTICR),
++        VMSTATE_UINT32(scsr, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32(cfgr2, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32(swpr, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32(skr, Stm32l4x5SyscfgState),
++        VMSTATE_UINT32(swpr2, Stm32l4x5SyscfgState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void stm32l4x5_syscfg_class_init(ObjectClass *klass, void *data)
 +{
-+    /*
-+     * Test that registers are initialized at the correct values
-+     */
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_MEMRMP), =3D=3D, 0x00000000);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
 +
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR1), =3D=3D, 0x7C000001);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR1), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR2), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR3), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR4), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SCSR), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR2), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SWPR), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SKR), =3D=3D, 0x00000000);
-+
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SWPR2), =3D=3D, 0x00000000);
++    dc->vmsd =3D &vmstate_stm32l4x5_syscfg;
++    rc->phases.hold =3D stm32l4x5_syscfg_hold_reset;
 +}
 +
-+static void test_reserved_bits(void)
-+{
-+    /*
-+     * Test that reserved bits stay at reset value
-+     * (which is 0 for all of them) by writing '1'
-+     * in all reserved bits (keeping reset value for
-+     * other bits) and checking that the
-+     * register is still at reset value
-+     */
-+    syscfg_writel(SYSCFG_MEMRMP, 0xFFFFFEF8);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_MEMRMP), =3D=3D, 0x00000000);
++static const TypeInfo stm32l4x5_syscfg_info[] =3D {
++    {
++        .name          =3D TYPE_STM32L4X5_SYSCFG,
++        .parent        =3D TYPE_SYS_BUS_DEVICE,
++        .instance_size =3D sizeof(Stm32l4x5SyscfgState),
++        .instance_init =3D stm32l4x5_syscfg_init,
++        .class_init    =3D stm32l4x5_syscfg_class_init,
++    }
++};
 +
-+    syscfg_writel(SYSCFG_CFGR1, 0x7F00FEFF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR1), =3D=3D, 0x7C000001);
++DEFINE_TYPES(stm32l4x5_syscfg_info)
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index fccd3204bf..5f5bc92222 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -163,6 +163,12 @@ stm32f4xx_exti_set_irq(int irq, int level) "Set EXTI=
+: %d to %d"
+ stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+ stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%=
+" PRIx64 " val: 0x%" PRIx64 ""
+=20
++# stm32l4x5_syscfg.c
++stm32l4x5_syscfg_set_irq(int gpio, int line, int level) "irq from GPIO: =
+%d, line: %d, level: %d"
++stm32l4x5_syscfg_forward_exti(int irq) "irq %d forwarded to EXTI"
++stm32l4x5_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
++stm32l4x5_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0=
+x%" PRIx64 " val: 0x%" PRIx64 ""
 +
-+    syscfg_writel(SYSCFG_EXTICR1, 0xFFFF0000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR1), =3D=3D, 0x00000000);
+ # stm32l4x5_exti.c
+ stm32l4x5_exti_set_irq(int irq, int level) "Set EXTI: %d to %d"
+ stm32l4x5_exti_read(uint64_t addr, uint64_t data) "reg read: addr: 0x%" =
+PRIx64 " val: 0x%" PRIx64 ""
+diff --git a/include/hw/misc/stm32l4x5_syscfg.h b/include/hw/misc/stm32l4=
+x5_syscfg.h
+new file mode 100644
+index 0000000000..29c3522f9d
+--- /dev/null
++++ b/include/hw/misc/stm32l4x5_syscfg.h
+@@ -0,0 +1,54 @@
++/*
++ * STM32L4x5 SYSCFG (System Configuration Controller)
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ *
++ * This work is based on the stm32f4xx_syscfg by Alistair Francis.
++ * Original code is licensed under the MIT License:
++ *
++ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
++ */
 +
-+    syscfg_writel(SYSCFG_EXTICR2, 0xFFFF0000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR2), =3D=3D, 0x00000000);
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
++ */
 +
-+    syscfg_writel(SYSCFG_EXTICR3, 0xFFFF0000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR3), =3D=3D, 0x00000000);
++#ifndef HW_STM32L4X5_SYSCFG_H
++#define HW_STM32L4X5_SYSCFG_H
 +
-+    syscfg_writel(SYSCFG_EXTICR4, 0xFFFF0000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR4), =3D=3D, 0x00000000);
++#include "hw/sysbus.h"
++#include "qom/object.h"
 +
-+    syscfg_writel(SYSCFG_SKR, 0xFFFFFF00);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SKR), =3D=3D, 0x00000000);
-+}
++#define TYPE_STM32L4X5_SYSCFG "stm32l4x5-syscfg"
++OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5SyscfgState, STM32L4X5_SYSCFG)
 +
-+static void test_set_and_clear(void)
-+{
-+    /*
-+     * Test that regular bits can be set and cleared
-+     */
-+    syscfg_writel(SYSCFG_MEMRMP, 0x00000107);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_MEMRMP), =3D=3D, 0x00000107);
-+    syscfg_writel(SYSCFG_MEMRMP, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_MEMRMP), =3D=3D, 0x00000000);
++#define NUM_GPIOS 8
++#define GPIO_NUM_PINS 16
++#define SYSCFG_NUM_EXTICR 4
 +
-+    /* cfgr1 bit 0 is clear only so we keep it set */
-+    syscfg_writel(SYSCFG_CFGR1, 0xFCFF0101);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR1), =3D=3D, 0xFCFF0101);
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR1), =3D=3D, 0x00000001);
++struct Stm32l4x5SyscfgState {
++    SysBusDevice parent_obj;
 +
-+    syscfg_writel(SYSCFG_EXTICR1, 0x0000FFFF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR1), =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR1), =3D=3D, 0x00000000);
++    MemoryRegion mmio;
 +
-+    syscfg_writel(SYSCFG_EXTICR2, 0x0000FFFF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR2), =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR2, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR2), =3D=3D, 0x00000000);
++    uint32_t memrmp;
++    uint32_t cfgr1;
++    uint32_t exticr[SYSCFG_NUM_EXTICR];
++    uint32_t scsr;
++    uint32_t cfgr2;
++    uint32_t swpr;
++    uint32_t skr;
++    uint32_t swpr2;
 +
-+    syscfg_writel(SYSCFG_EXTICR3, 0x0000FFFF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR3), =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR3, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR3), =3D=3D, 0x00000000);
++    qemu_irq gpio_out[GPIO_NUM_PINS];
++};
 +
-+    syscfg_writel(SYSCFG_EXTICR4, 0x0000FFFF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR4), =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR4, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_EXTICR4), =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_SKR, 0x000000FF);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SKR), =3D=3D, 0x000000FF);
-+    syscfg_writel(SYSCFG_SKR, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SKR), =3D=3D, 0x00000000);
-+}
-+
-+static void test_clear_by_writing_1(void)
-+{
-+    /*
-+     * Test that writing '1' doesn't set the bit
-+     */
-+    syscfg_writel(SYSCFG_CFGR2, 0x00000100);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR2), =3D=3D, 0x00000000);
-+}
-+
-+static void test_set_only_bits(void)
-+{
-+    /*
-+     * Test that set only bits stay can't be cleared
-+     */
-+    syscfg_writel(SYSCFG_CFGR2, 0x0000000F);
-+    syscfg_writel(SYSCFG_CFGR2, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR2), =3D=3D, 0x0000000F);
-+
-+    syscfg_writel(SYSCFG_SWPR, 0xFFFFFFFF);
-+    syscfg_writel(SYSCFG_SWPR, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SWPR), =3D=3D, 0xFFFFFFFF);
-+
-+    syscfg_writel(SYSCFG_SWPR2, 0xFFFFFFFF);
-+    syscfg_writel(SYSCFG_SWPR2, 0x00000000);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_SWPR2), =3D=3D, 0xFFFFFFFF);
-+
-+    system_reset();
-+}
-+
-+static void test_clear_only_bits(void)
-+{
-+    /*
-+     * Test that clear only bits stay can't be set
-+     */
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000000);
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-+    g_assert_cmpuint(syscfg_readl(SYSCFG_CFGR1), =3D=3D, 0x00000000);
-+
-+    system_reset();
-+}
-+
-+static void test_interrupt(void)
-+{
-+    /*
-+     * Test that GPIO rising lines result in an irq
-+     * with the right configuration
-+     */
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+
-+    /* GPIOA is the default source for EXTI lines 0 to 15 */
-+
-+    syscfg_set_irq(0, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+
-+    syscfg_set_irq(15, 1);
-+
-+    g_assert_true(get_irq(15));
-+
-+    /* Configure GPIOB[1] as the source input for EXTI1 */
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000010);
-+
-+    syscfg_set_irq(17, 1);
-+
-+    g_assert_true(get_irq(1));
-+
-+    /* Clean the test */
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+    syscfg_set_irq(0, 0);
-+    syscfg_set_irq(15, 0);
-+    syscfg_set_irq(17, 0);
-+}
-+
-+static void test_irq_pin_multiplexer(void)
-+{
-+    /*
-+     * Test that syscfg irq sets the right exti irq
-+     */
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+
-+    syscfg_set_irq(0, 1);
-+
-+    /* Check that irq 0 was set and irq 15 wasn't */
-+    g_assert_true(get_irq(0));
-+    g_assert_false(get_irq(15));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(0, 0);
-+
-+    syscfg_set_irq(15, 1);
-+
-+    /* Check that irq 15 was set and irq 0 wasn't */
-+    g_assert_true(get_irq(15));
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(15, 0);
-+}
-+
-+static void test_irq_gpio_multiplexer(void)
-+{
-+    /*
-+     * Test that an irq is generated only by the right GPIO
-+     */
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+
-+    /* GPIOA is the default source for EXTI lines 0 to 15 */
-+
-+    /* Check that setting rising pin GPIOA[0] generates an irq */
-+    syscfg_set_irq(0, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(0, 0);
-+
-+    /* Check that setting rising pin GPIOB[0] doesn't generate an irq */
-+    syscfg_set_irq(16, 1);
-+
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(16, 0);
-+
-+    /* Configure GPIOB[0] as the source input for EXTI0 */
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000001);
-+
-+    /* Check that setting rising pin GPIOA[0] doesn't generate an irq */
-+    syscfg_set_irq(0, 1);
-+
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(0, 0);
-+
-+    /* Check that setting rising pin GPIOB[0] generates an irq */
-+    syscfg_set_irq(16, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+    /* Clean the test */
-+    syscfg_set_irq(16, 0);
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    qtest_add_func("stm32l4x5/syscfg/test_reset", test_reset);
-+    qtest_add_func("stm32l4x5/syscfg/test_reserved_bits",
-+                   test_reserved_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_set_and_clear",
-+                   test_set_and_clear);
-+    qtest_add_func("stm32l4x5/syscfg/test_clear_by_writing_1",
-+                   test_clear_by_writing_1);
-+    qtest_add_func("stm32l4x5/syscfg/test_set_only_bits",
-+                   test_set_only_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_clear_only_bits",
-+                   test_clear_only_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_interrupt",
-+                   test_interrupt);
-+    qtest_add_func("stm32l4x5/syscfg/test_irq_pin_multiplexer",
-+                   test_irq_pin_multiplexer);
-+    qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
-+                   test_irq_gpio_multiplexer);
-+
-+    qtest_start("-machine b-l475e-iot01a");
-+    ret =3D g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
++#endif
 --=20
 2.43.0
 

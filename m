@@ -1,141 +1,184 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp592711ejs;
-        Tue, 9 Jan 2024 11:24:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFX3n6GeE/154wor6nZkjyVJUbSVvKKr4H52fk56kNUNhLbk7VOT0Gsb03oQj+tX8omTGFG
-X-Received: by 2002:a37:ef04:0:b0:77d:e60b:4caa with SMTP id j4-20020a37ef04000000b0077de60b4caamr5973867qkk.35.1704828265020;
-        Tue, 09 Jan 2024 11:24:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704828264; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rbsUtU8fNTPTvTB2zDNlNXi+Ra537USntXQl/d2MJxubIWtX/ewsUwpAuBTVoBh75m
-         qzPoN53iOmEgACjiTFDZRrLP0vBCcTMR01ulnc7YK2sLQD3uNJ3DAAifLCU5JKsoPphj
-         F+VkGr7SRTaYCpUfMrDuboN2rk54n+vjqbtyaUr3PQ8qZAGcFuNncjt9WkKxxoclTn07
-         21A8pKIC27MORmGYICg/Ighev0QeGcXKIWxg4zp4nJWH1C5ZxiOD/E9h62gIzFh/kyWF
-         9flGesuCR6RNOUh99kIu5tJovYnj13DciCbvtRSGltWapMZ9ureTacU3YEovn38cWI3y
-         0EDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=F40FYYpRe1pVvmEFSoSVFLkq/ixDj4ITB+4b+qGHmro=;
-        fh=HTHR+Q2d6bLhEl37Oh4T8uXQP5/6sUv4T2u8Op+j0Ns=;
-        b=G72ME9u4ncc4vEkxfjmRE4YVy/pWkjlD8oM4yWiIT/b7TVIM5PuTCVVm6W3Lv4UDyn
-         LPgrmli+4+sTwUFGA6LFOo2Y08/A8iH2Fa+8/F7X7nycDSLInvIPvj4/0NFFscz4Tf0S
-         lN/V5PCr/gKWeyjLFN2yjT0xLc7LBa0Cr4Oj/rGdaLvCAYbiIqeg44ELkXTEBc2yGlnq
-         KEZmJPVUuY5aoE5TRGBuxuJrfVLn8cNDG3Afj1EK5U+Rs7Ok69Sn4mrTybyK5D4Ci4I6
-         fdxYGnxDT8WcYkj35zyMFDM+sWBDWNYnv+ZvZS7ldwZVATyl/XPRoLaavrUkjXUj15Wa
-         MvxQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CvXkeFjq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp598622ejs;
+        Tue, 9 Jan 2024 11:36:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFYbM0ijrq3a6Ajehg/sjx92nWTEqNkF2BQUnZ5q7y58gpLWlKusKOXWYh5yhQ3jg7sE1ir
+X-Received: by 2002:a05:6808:14ca:b0:3bd:37e2:148b with SMTP id f10-20020a05680814ca00b003bd37e2148bmr2424871oiw.84.1704829006071;
+        Tue, 09 Jan 2024 11:36:46 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14-20020a05620a214e00b0078326e6f1casi2529848qkm.202.2024.01.09.11.24.24
+        by mx.google.com with ESMTPS id k12-20020a0cf28c000000b0067f38efba40si2946593qvl.144.2024.01.09.11.36.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 11:24:24 -0800 (PST)
+        Tue, 09 Jan 2024 11:36:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CvXkeFjq;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=GmD7zR88;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNHhx-0007pO-TQ; Tue, 09 Jan 2024 14:24:18 -0500
+	id 1rNHtl-0004RV-2d; Tue, 09 Jan 2024 14:36:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNHhv-0007p1-Cj; Tue, 09 Jan 2024 14:24:16 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <dan.j.williams@intel.com>)
+ id 1rNHtc-0004QT-9U; Tue, 09 Jan 2024 14:36:20 -0500
+Received: from mgamail.intel.com ([198.175.65.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNHhs-0003uc-Mg; Tue, 09 Jan 2024 14:24:14 -0500
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409Ig3gx024507; Tue, 9 Jan 2024 19:23:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=F40FYYpRe1pVvmEFSoSVFLkq/ixDj4ITB+4b+qGHmro=;
- b=CvXkeFjqxfuV7Ixd0zBxxuiCCtc+1CPdoAFcpjdSC1kIVnSWy1Hl3/N7qLaXOKbWjphQ
- ncC4vmC/je+PxL2RCwidwqeFr2cAQSJI3kTs8pib202iL/SYayIP1vUi8DS6a8QDHml4
- kYPtUwWB7x/kbb3dnMMnqmGyrVBi/P4+QZT9x8e8WX5uj+nID65QVQFxH342hjCKqDVo
- GlaN5nVKqBvvMtgVJtTFm5W3ExiMRNAdjgD/Dzq+MHagNJ8s9bOKKExIKbAYkFPA6F39
- o4CE805S2sdHSINmfOl4PJO1TXfE/1wLGbDLNHyL4pV8OWtnusBdM0u0ACLwJjF5nwe2 ig== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhbn8911b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 19:23:37 +0000
-Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409JLLZ0025718;
- Tue, 9 Jan 2024 19:23:37 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhbn890yx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 19:23:37 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409Hswks027026; Tue, 9 Jan 2024 19:23:35 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkw207ew-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 19:23:35 +0000
-Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
- [10.241.53.105])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 409JNZxL35586384
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 9 Jan 2024 19:23:35 GMT
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 358F958059;
- Tue,  9 Jan 2024 19:23:35 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CA09C58055;
- Tue,  9 Jan 2024 19:23:34 +0000 (GMT)
-Received: from [9.61.145.235] (unknown [9.61.145.235])
- by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue,  9 Jan 2024 19:23:34 +0000 (GMT)
-Message-ID: <f827c2e5-699d-48cf-afca-d73897564b59@linux.ibm.com>
-Date: Tue, 9 Jan 2024 13:23:34 -0600
+ (Exim 4.90_1) (envelope-from <dan.j.williams@intel.com>)
+ id 1rNHta-0001Up-6J; Tue, 09 Jan 2024 14:36:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1704828978; x=1736364978;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=+duKtoOArticCnYrgElMQQwyqMmLvc3J9tW7+ZquuFg=;
+ b=GmD7zR88jlTc+TjqbnVcEZto7MT2PkxANhJPG2QmlzzLC8nVOOxT2Nrf
+ BgqPIj6vNQJjA8VzVXvGfvxM8gMrh4bbHj2Ucb+LUBowWPvTyUJa0ypag
+ 1/WEaIV8+yb+VmbhsLnVRRpK/hBj6g7QsXl0frW37iubvDAN6uqUaDs/R
+ g6BXNi0j/WlyYgp5RMhURRp2BDhcNG/ZG2MHhfEDQgZ46BqaALl0K85Ao
+ lmoTBGMfJbIJwJmQlqSh+tCb5C/GgX3rDtz5GG12uZo9mZC7AIV9vMouY
+ waS1DgGsMyM0kbeKThIyFq4oovDm5du41N86dfRGITobt3G5nflvFtC95 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10947"; a="5664338"
+X-IronPort-AV: E=Sophos;i="6.04,183,1695711600"; 
+   d="scan'208";a="5664338"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jan 2024 11:36:13 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10947"; a="774967991"
+X-IronPort-AV: E=Sophos;i="6.04,183,1695711600"; d="scan'208";a="774967991"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 09 Jan 2024 11:36:12 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 9 Jan 2024 11:36:11 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Tue, 9 Jan 2024 11:36:11 -0800
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Tue, 9 Jan 2024 11:36:11 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KzOLDZVd4lo5mWuu7qJVwZ/xISvfXNTX/o6z1JO3u3aSA/jaHCAeQ7v2Y7WkyrfkcncCivTEEgdH1zerPyNGxK2e6+OSIc0L0ZvQyK0+tehvBMzISrnEkjzpPdODW4QLrwec5LvVrGPJoFlKDlvqN3AtBLCbqAKq8tKZlq1TRQikrnajBYCKUDnKCfnVA+us+CZS1QIGLHnHdliuZhSDyZyOxZmKu3gZaTSlBNUem8Ykpc6iEB0uxVuSQkg9wfgyPPwvvcXxdCWN1bVqGfXZC1tvu5hHWM/UMrTfntAV9Lqa2+R/0/FBjDl0X7Ma/4tw+iQmARPudcviQu1Sac+HPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Gk+sBhGEZOQXttWy5Tevj2tWS7Yv274EomyKvG+24Sk=;
+ b=Cil5+trXWGjbArrjErEOV6UiGy00gUU3sq85bvDOH1Mp7w0toYUtyunjiH4dfrEaPH7uNvm2boEBndpkrBax8bho5VZ7f9C5cAlpvllW0c4ULBbbbsmS+dzobHlapHYRkxJK2AricTTZ+l723jqixz/HYCWZHjj6XFOawCLH5CLbmCMFzEovAUb/cbd9MOQzRHuvd9F4c+fbr0/+GE2IG31pwjGD0Zx0juSiYwnB1HZK9t0v9ZmSYjSqsI5ZvHuhsuW4v+g76BhUFCjEzqoCcpataTvgz/mWVw1t8JQ2l/YhQGHORbHIkYwdmn1Re+2fQsZdlfEvQk4ODKv79qvFcw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH8PR11MB8107.namprd11.prod.outlook.com (2603:10b6:510:256::6)
+ by CY8PR11MB7945.namprd11.prod.outlook.com (2603:10b6:930:7b::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7159.23; Tue, 9 Jan
+ 2024 19:36:08 +0000
+Received: from PH8PR11MB8107.namprd11.prod.outlook.com
+ ([fe80::6257:f90:c7dd:f0b2]) by PH8PR11MB8107.namprd11.prod.outlook.com
+ ([fe80::6257:f90:c7dd:f0b2%4]) with mapi id 15.20.7181.015; Tue, 9 Jan 2024
+ 19:36:07 +0000
+Date: Tue, 9 Jan 2024 11:36:03 -0800
+From: Dan Williams <dan.j.williams@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, David Hildenbrand <david@redhat.com>
+CC: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Ankit Agrawal <ankita@nvidia.com>,
+ "clg@redhat.com" <clg@redhat.com>, "shannon.zhaosl@gmail.com"
+ <shannon.zhaosl@gmail.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "ani@anisinha.ca" <ani@anisinha.ca>,
+ "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
+ <eduardo@habkost.net>, "imammedo@redhat.com" <imammedo@redhat.com>,
+ "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com" <eblake@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>, "gshan@redhat.com"
+ <gshan@redhat.com>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, "Andy
+ Currid" <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
+ <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v6 1/2] qom: new object to associate device to numa node
+Message-ID: <659da02316cab_24a829418@dwillia2-xfh.jf.intel.com.notmuch>
+References: <20231225045603.7654-1-ankita@nvidia.com>
+ <20231225045603.7654-2-ankita@nvidia.com>
+ <20240102125821.00001aa0@Huawei.com>
+ <SA1PR12MB7199DF47EDDA9419E22FD79FB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <SA1PR12MB719917E2C9D98C04AE9058C4B0672@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <20240104103941.019f9b54.alex.williamson@redhat.com>
+ <20240109165221.00003b8b@Huawei.com>
+ <16d54fd2-9bab-46cd-a1b7-9742674453d6@redhat.com>
+ <20240109171030.GE439767@nvidia.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20240109171030.GE439767@nvidia.com>
+X-ClientProxiedBy: MW4PR04CA0087.namprd04.prod.outlook.com
+ (2603:10b6:303:6b::32) To PH8PR11MB8107.namprd11.prod.outlook.com
+ (2603:10b6:510:256::6)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 01/10] hw/fsi: Introduce IBM's Local bus
-Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
-References: <20231128235700.599584-1-ninad@linux.ibm.com>
- <20231128235700.599584-2-ninad@linux.ibm.com>
- <2645397c-eacd-48d4-b452-c9d6cce83d96@kaod.org>
-From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <2645397c-eacd-48d4-b452-c9d6cce83d96@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: ERlBoPVNthSnjN9uielCpiLO2Sj2HrX_
-X-Proofpoint-ORIG-GUID: 2HvBCHIzwO-iv1-CWF3W2zLe_3dIX2ah
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-09_09,2024-01-09_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- priorityscore=1501 mlxscore=0 lowpriorityscore=0 adultscore=0
- clxscore=1015 spamscore=0 malwarescore=0 phishscore=0 suspectscore=0
- mlxlogscore=894 bulkscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2311290000 definitions=main-2401090156
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH8PR11MB8107:EE_|CY8PR11MB7945:EE_
+X-MS-Office365-Filtering-Correlation-Id: 63678b21-9601-4545-4be5-08dc114a39a5
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6iEh7+p7+jwqwnSpsm8D7VEr56mb3QZ40n9bEFTeC+XkzenQLBrSl47wFK1rPS+R5xD10j0J+hMU0dLZYSHBg/AqpahQT36QjMX7C4EN+L3R9hWZLHFmLUzm9owVzX44EUxEaQIntiQOxsV64HzcrWwmruKKFdnyidIwouvpTo17sL8iRIbVcMIgtScgCxCvjxhXLJlPQRhxDSocHQVv5dyGCK2r93T/1n8kxWYYobAlsTyu65A0eTzwWSY8uW6Qr3pUySdluRPOFe/imFZ9PfURx96Rd6OFAdAYbrnwDZ4ORanQs57nTHYCzs9h1cA0JtLfTHIgOOQ/v3hyHqCZaSQcMVyovgou++9Go+Y9ZJFEeJ02g+yxw/2+dvpXzgmCq9FrGGa4/SDQSOiZtha1upH/MGJoLf635pkqv71bCGDsUxMDOonfbBnAcS51GJaZhkEBuBf9pcVhkqbUNFXL4VX4CQhFgfzm5FFg/asHTmD/e8k2XujMH6bPYYlmAeH66P8QU//KO9Y65+hRkL2QJnuAB8hXuESjZlLmJsRn1J6gMU6UcKXpFwsjyG2t/hVf
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH8PR11MB8107.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(39860400002)(346002)(366004)(376002)(136003)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(9686003)(38100700002)(478600001)(6486002)(6512007)(6506007)(26005)(6666004)(86362001)(82960400001)(2906002)(5660300002)(7416002)(41300700001)(83380400001)(66946007)(54906003)(66556008)(8936002)(66476007)(110136005)(8676002)(316002)(4326008);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8nEKhfs8XY0mMNsg+4d3e5gSjaf6SJrfC9KFrgv4/b5nQbFGN6Irb+Xfzwyk?=
+ =?us-ascii?Q?UoLktBjNuDmk8Qqx77eTRcuufR+dUHAYgDb8UyXMTZwcvRf78s+tqw2NKlSf?=
+ =?us-ascii?Q?RNCkd0do7xtyYr3yEQuNIvjKzJpjZ8z5ZB4X/RhB8KIlZfEKH0M7k76PWt/n?=
+ =?us-ascii?Q?va9ZQ/6sgckVvrLtNYakxxudL5HuIRTS4QnlLlE0M0rkvMg+g2+HlRt/qIzd?=
+ =?us-ascii?Q?xuyrsS1TgLImlYAw0zzlf3TyFusIU+A97Z3H4KHZ3vkLY5IeaUTtrxYD+6cL?=
+ =?us-ascii?Q?raBsBHWlJb1vXq40Cdv+4EBk2PzSG0Abnu3RS6zcQ4wnLAs8cy2I3TWSGdSI?=
+ =?us-ascii?Q?38cmjt3SO6nUOlH1OuRXdAGHzYcxf+Htn39Wz+ZvciF45q4UpaNn3KIFzqak?=
+ =?us-ascii?Q?wgpeh9K9YCRZRsn60x3yqSPxicRiQW8tHOb2uepCAuWg6cIyoARzNsCIYDj6?=
+ =?us-ascii?Q?Sar4IlvM6S024ce9CemENdUMu39AiHVokWbGbbrBdNpw2oFekaua7av1C608?=
+ =?us-ascii?Q?MU/0dwaxIXeJjJ9ea9QejQZGEZoEu5oHNqIDGNAIS+AIBhTAVNQN/ZpDUeEK?=
+ =?us-ascii?Q?yPFi+UC6r4mhDoOpM2SIz4PDyhdR4NrXQYXfkKxXRuYO6RWZxsy6mcwLXlL+?=
+ =?us-ascii?Q?262CMimSSII/seKwM3aHElK5F+LQl3VimyHk5AWcjP/ukw59Y3bBAksF1GXG?=
+ =?us-ascii?Q?MyG+chSaLCtWzJ5ktcscwLIBhAN+LU5dedF9i9jH54LsL3bcSqyR9worxQDC?=
+ =?us-ascii?Q?2Tztpu3JeaHyGZIeKlDIJAcym6S39GjWdWCfAotO4+nBQe10VC3bpYiSpfTY?=
+ =?us-ascii?Q?AsamSNWZenP0VnKX1A2gsS2S91N7ZEagbzJmiR6B1h37dEvnK84muskwFGTQ?=
+ =?us-ascii?Q?s+JXag/RmmMak77Gt9icZ8Op5sJlm52r0J/Kx2T0g2W+zxO/CsFI/WkBj7s0?=
+ =?us-ascii?Q?YOvYHAa+M8DLGxNqq/h+oCyazrkA/+GXNl1mQxTVpPyY2+EDoUvfP34nA/vJ?=
+ =?us-ascii?Q?QeaH4bDuzufM/vN7t7XlFM6UpeAltSVsaoLrkvbM6lvaLRNXkJTsqG0NI26o?=
+ =?us-ascii?Q?wyNWSNRyxCjTr4Us/ifAa5HgZJIx39b3zWpzjGJ/Ge0+nvCpNu/kUvGInNXQ?=
+ =?us-ascii?Q?hyDsX9JLIjTNKx++5IPT5X5dgPnU4pcDneWKqGZVOW79QsX1phOCbb4Waw9G?=
+ =?us-ascii?Q?HL+zUbI1Dqw1cfR5hazveAwWd/H2dRsMj9c6bx4P1cYE6dDmHnf65vRjnU8r?=
+ =?us-ascii?Q?irSk62JZMBnRFJtv73gIjnvs+rCZAexWiOcnI+gnTyYSKzMawHIjDtztU1eY?=
+ =?us-ascii?Q?TpHLrL+dD6jFMbkQQ/xwzmE6D6OGBeBGm+ZpnjPs9B3Fkscc/iC4WvBqgsOV?=
+ =?us-ascii?Q?LZvEH7tBbYrvCe7oK19MmGwuCpqmsctFOyge2XJtzDYTnFDkTli23rM0GXG+?=
+ =?us-ascii?Q?nKbVvnmZFnQUpO5GYyelxmCMt9TIYvNOf4j7BSUQZo/YqvpPFbb+qIIrayxQ?=
+ =?us-ascii?Q?X93ZkAxhTBhYorEG6wS5B4/GR7WqXs1swvfYzCG2zc8sD/EVFSNjxTYYlbav?=
+ =?us-ascii?Q?2kL4K5YOAHLaottiQaQHcZ3MSKB6YwSTTCmSPOD3oMM1tc637tCBbz8fmaPV?=
+ =?us-ascii?Q?aw=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 63678b21-9601-4545-4be5-08dc114a39a5
+X-MS-Exchange-CrossTenant-AuthSource: PH8PR11MB8107.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jan 2024 19:36:07.4651 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4DuBw/oZ+50YaL2A4S7FfUMZ8rBNwKhXAWMOSdEXg6EsucOO5I8muzoeAxpGhiXKRW+r3WVhJMbEx+aW2nuAUhBxVSWu5Y03ErHymk4rv5Y=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7945
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=198.175.65.12;
+ envelope-from=dan.j.williams@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.493,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,104 +194,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EG3Gkkvb7NRJ
+X-TUID: wdnHN05LM/dJ
 
-Hello Cedric,
+Jason Gunthorpe wrote:
+> On Tue, Jan 09, 2024 at 06:02:03PM +0100, David Hildenbrand wrote:
+> > > Given that, an alternative proposal that I think would work
+> > > for you would be to add a 'placeholder' memory node definition
+> > > in SRAT (so allow 0 size explicitly - might need a new SRAT
+> > > entry to avoid backwards compat issues).
+> > 
+> > Putting all the PCI/GI/... complexity aside, I'll just raise again that for
+> > virtio-mem something simple like that might be helpful as well, IIUC.
+> > 
+> > 	-numa node,nodeid=2 \
+> > 	...
+> > 	-device virtio-mem-pci,node=2,... \
+> > 
+> > All we need is the OS to prepare for an empty node that will get populated
+> > with memory later.
+> 
+> That is all this is doing too, the NUMA relationship of the actual
+> memory is desribed already by the PCI device since it is a BAR on the
+> device.
+> 
+> The only purpose is to get the empty nodes into Linux :(
+> 
+> > So if that's what a "placeholder" node definition in srat could achieve as
+> > well, even without all of the other acpi-generic-initiator stuff, that would
+> > be great.
+> 
+> Seems like there are two use quite similar cases.. virtio-mem is going
+> to be calling the same family of kernel API I suspect :)
 
-On 12/12/23 08:46, Cédric Le Goater wrote:
-> On 11/29/23 00:56, Ninad Palsule wrote:
->> This is a part of patchset where IBM's Flexible Service Interface is
->> introduced.
->>
->> The LBUS is modelled to maintain mapped memory for the devices. The
->> memory is mapped after CFAM config, peek table and FSI slave registers.
->>
->> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->> [ clg: - removed lbus_add_device() bc unused
->>         - removed lbus_create_device() bc used only once
->>         - removed "address" property
->>         - updated meson.build to build fsi dir
->>         - included an empty hw/fsi/trace-events ]
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   meson.build           |  1 +
->>   hw/fsi/trace.h        |  1 +
->>   include/hw/fsi/lbus.h | 40 +++++++++++++++++++++++++++++++++
->>   hw/fsi/lbus.c         | 51 +++++++++++++++++++++++++++++++++++++++++++
->>   hw/Kconfig            |  1 +
->>   hw/fsi/Kconfig        |  2 ++
->>   hw/fsi/meson.build    |  1 +
->>   hw/fsi/trace-events   |  1 +
->>   hw/meson.build        |  1 +
->>   9 files changed, 99 insertions(+)
->>   create mode 100644 hw/fsi/trace.h
->>   create mode 100644 include/hw/fsi/lbus.h
->>   create mode 100644 hw/fsi/lbus.c
->>   create mode 100644 hw/fsi/Kconfig
->>   create mode 100644 hw/fsi/meson.build
->>   create mode 100644 hw/fsi/trace-events
->>
->> diff --git a/meson.build b/meson.build
->> index ec01f8b138..b6556efd51 100644
->> --- a/meson.build
->> +++ b/meson.build
->> @@ -3298,6 +3298,7 @@ if have_system
->>       'hw/char',
->>       'hw/display',
->>       'hw/dma',
->> +    'hw/fsi',
->>       'hw/hyperv',
->>       'hw/i2c',
->>       'hw/i386',
->> diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
->> new file mode 100644
->> index 0000000000..ee67c7fb04
->> --- /dev/null
->> +++ b/hw/fsi/trace.h
->> @@ -0,0 +1 @@
->> +#include "trace/trace-hw_fsi.h"
->> diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
->> new file mode 100644
->> index 0000000000..a58e33d061
->> --- /dev/null
->> +++ b/include/hw/fsi/lbus.h
->> @@ -0,0 +1,40 @@
->> +/*
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + * Copyright (C) 2023 IBM Corp.
->> + *
->> + * IBM Local bus and connected device structures.
->> + */
->> +#ifndef FSI_LBUS_H
->> +#define FSI_LBUS_H
->> +
->> +#include "exec/memory.h"
->> +#include "hw/qdev-core.h"
->> +
->> +#define TYPE_FSI_LBUS_DEVICE "fsi.lbus.device"
->> +OBJECT_DECLARE_TYPE(FSILBusDevice, FSILBusDeviceClass, FSI_LBUS_DEVICE)
->> +
->> +#define FSI_LBUS_MEM_REGION_SIZE  (2 * 1024 * 1024)
->> +#define FSI_LBUSDEV_IOMEM_START   0xc00 /* 3K used by CFAM config 
->> etc */
->
-> I don't think sizing the local bus MMIO region exactly to the size of
-> the CFAM MMIO region is necessary. The upper LBUS/CFAM addresses might
-> not even be backed by device registers.
->
-> I would simplify with :
->
-> #define FSI_LBUS_MEM_REGION_SIZE  (1 * MiB)
->
-> and forget about the offset.
->
-ok, I made it as 1MB.
+It seems sad that we, as an industry, went through all of this trouble
+to define a dynamically enumerable CXL device model only to turn around
+and require static ACPI tables to tell us how to enumerate it.
 
-Thanks for the review.
+A similar problem exists on the memory target side and the approach
+taken there was to have Linux statically reserve at least enough numa
+node numbers for all the platform CXL memory ranges (defined in the
+ACPI.CEDT.CFMWS), but with the promise to come back and broach the
+dynamic node creation problem "if the need arises".
 
-Regards,
+This initiator-node enumeration case seems like that occasion where the
+need has arisen to get Linux out of the mode of needing to declare all
+possible numa nodes early in boot. Allow for nodes to be discoverable
+post NUMA-init.
 
-Ninad
-
-
+One strawman scheme that comes to mind is instead of "add nodes early" in
+boot, "delete unused nodes late" in boot after the device topology has
+been enumerated. Otherwise, requiring static ACPI tables to further
+enumerate an industry-standard dynamically enumerated bus seems to be
+going in the wrong direction.

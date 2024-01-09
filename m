@@ -1,866 +1,431 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp72834ejs;
-        Mon, 8 Jan 2024 15:38:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEJ9ppl3yTVONVoUqCrqs6TwwR4Fkfbp8ajaXmRFYOKjAQ6QEhdkBGTvZ6MRpSGwMUL5yCy
-X-Received: by 2002:a25:add3:0:b0:dbd:49fd:9dbe with SMTP id d19-20020a25add3000000b00dbd49fd9dbemr2083940ybe.100.1704757118013;
-        Mon, 08 Jan 2024 15:38:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704757118; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp259569ejs;
+        Tue, 9 Jan 2024 01:01:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHatQXIBRfH5j5xhM2de8IhtbQIQp5o48HHf8DzuFVunnEFaCTXxYKEIg1mUFv1PUT8snod
+X-Received: by 2002:a05:6808:309a:b0:3bd:22b2:9035 with SMTP id bl26-20020a056808309a00b003bd22b29035mr5206477oib.41.1704790859715;
+        Tue, 09 Jan 2024 01:00:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704790859; cv=none;
         d=google.com; s=arc-20160816;
-        b=tkBwu9tO661QhGsxhLkohqxrbzQaMslJm61gF5O2L+DC1f3DfeIzYdJbl6xt8jtnxu
-         Fm0gLa3IdQaisP1jpEcbvGw4DKsAPejv3TGzIA4ySZL1kYiD3rH2I+1pCtdDb1Vvp1qY
-         QO3q0tLVRtS6m59V5tgB604fWaTat7haXuxQ2C4UakbQq6ccwWcUqQz2s3ZBRkz9i+IS
-         PaeJWUchjSFMEf5vuNbZmaXkVPiHD/v9KGeXeG/xFh8MkwbXs3ykut+7ca+zkOmeF9M7
-         v8M4NU2ywgY+mR4GdUXfsMmiLUbwDlnnBpYWz1RYXvlhN6/e/2Ca16Rp5EttPZoOVPRX
-         2+Aw==
+        b=iss1guaBKkPj6pqcZWvJI60xjXNMDMOyjDsgFMwyCdw5BVdFpbF4VRFNzBu0zS+4TO
+         SWdCryZF/XqqR0o+6reaI67zdaFbKz7BBwRRu0SlbJKC+LD1ukyFUjhjTrAdWaIKWnqm
+         QILbpNZePrEfMknQMsHzEkRvRav9HLAq92Ku+ux0uOGhb5GaYpzGe3c13gTHy328nYAt
+         ydkwEWAoKMFQuX1QFwUN/YQdpQ0NRkYRRKmom7OxR5nP0ltMNswgL7kiw2+8XvOxAJKw
+         RyQjR+w0e0uSzaDCc8KBeQI4St4nbAjtbqiRNLGsIMDacFD9i2nojEK4RTMksaYXl+K8
+         TMjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dZ+xaDDcxWjOrjft2MIdhUXVN0DBh7GdHtmsvFjfKAU=;
-        fh=MCCLRI7Eav0C58J4xbQiDqdrgb9nG6Ic0RkQM1eww+k=;
-        b=IcLP7l3YpH74xhcV2X+I2ojiNb0ZdJC4tNQIKIuTVNwl/sk5ZOBO3vc1sjw006uXth
-         agcNJHwQQJ6fbjpHRqzOWmwN6DiOM8DcuHVlX0ZzhDa+vhVwxHPv7+ukRpDG3DdF1g09
-         m/V7+r2Hs6+v8D017vi3FI9s+6Vuetolnln6MVxjuXB2tZND+xoeqPCUp5zABfIAkuRT
-         CtvIMKxCOe1LoOnk38N7rITrk5zXmAiEiCnWIimPbNeOUjRl/S/YZJUAF8Gl7DkQk32F
-         dLOey2xFnte0nZTh7Wo/m97k8zklf/tTA58fSIwBNmDJMgUcjIkv8pdv+tRjXkolAnOc
-         C1oA==
+        bh=SnPAwMXXVZYe7Q+nI/EdBVzc4Z9dngQFeu9fGBE3f4Q=;
+        fh=F8lI6APrpOpRMGxIPqCutMXITf12uKef9cJV3DxjelY=;
+        b=d4wRm9a1fOnN8wHSlcUNGOgEAlSVDcCjDbujT4Jg74w0RtMM0ED60Dpk8u5lOX3YGM
+         3cqXNYEUITfyLrD+7/RSACq2RVETHE3CepaTSlNamOmqMzzm46RaLjDn+lGVg2GYMCp7
+         jZKoiqWIWcVyOc3dXO7cNTbmASFPTtkO7RGeHcxByw6N7Zx0O7eRC2or8zt9WOBcbTLV
+         vzGVOevdMqpNJ2hW4MdK1uTc449CNwh+fXefgtnTLnaV01dZ5rAbCSt+Vsm7rcc/SXwb
+         huT4v8TBiNc/8dB53KvgeH0QqIRW5uosD3sAKIm6YEse9rjJU6ljvzr8L51PYFn4JtwF
+         lxVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=cCXpwx7B;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id g8-20020a25ae48000000b00dbdb8481896si570727ybe.197.2024.01.08.15.38.37
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="elrWSf6/";
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <quic_svaddagi@quicinc.com>
+Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
+        by mx.google.com with ESMTPS id bk35-20020a0568081a2300b003bd3c71e366si256397oib.258.2024.01.09.01.00.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 08 Jan 2024 15:38:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+        Tue, 09 Jan 2024 01:00:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=cCXpwx7B;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 408NBeHc021941;
-	Mon, 8 Jan 2024 23:38:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=dZ+xaDDcxWjOrjft2MIdhUXVN0DBh7GdHtmsvFjfKAU=;
- b=cCXpwx7Bfi/kRsoeimSKwrMEMBzDPkYSDk/5Z+w+ql1uMiQ7UWjTP2wgjsBWmB/sI1Lv
- YxaYiBDZYwWaYj9uMjhu4M7UQt1GbIQzHmw3wE7OcgeFTsXLpaw3lMPGjpNEOe5XYyY0
- elksxsOceNFHJ82AGdtPoc/EIQ/Kbnupqnt070ePPBvMjaQolnNFJBN8PwdaWIxvuz9P
- 3/67tNtWkbj3nhRIP9E+oe3AVj/qgSnIlgMnbdNY8Yb7lraO9h3MKIpeJn3Ny3wdXzi8
- 6plgffI05ceZfiEpZ5PwL1WyPd6Q2KhZWQSsbeLCHYmngyRUr9K1YfB3LbuY6kYkbj90 Eg== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vgsf9a04c-1
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="elrWSf6/";
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 4098vT3m009736;
+	Tue, 9 Jan 2024 09:00:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding:content-type; s=
+	qcppdkim1; bh=SnPAwMXXVZYe7Q+nI/EdBVzc4Z9dngQFeu9fGBE3f4Q=; b=el
+	rWSf6/99l6JZPCw/CEmFPLAh4xzGelsDr7d3Nuanjq7yl+qENkO8Ps70HFzRHEwG
+	GD7Tze5sVGlMIs65htGLv/pbbNiaD8Ym5c4NIIT59NWfxkCSguWEU47LzUtCqxxT
+	TmkTyAlEmvVYI7lYZlNUE04uZE3/x055nVsG0Wsv9n+nH1JJ91dMZn+qHfhOSA9/
+	Q8KWl6B2CEBnm3YkrpvAI39Ry9kUmc3Pu6+u8B8qZg6zNeAjdLyp9PTEyKYaC8z3
+	uTInt5cNJd1Z8zDdNxI6cHdiGFMvQX6o7Kh37vZXoSxFkK5zWBh8z1YMuoOUexjx
+	Hy+Ma00G8QVet/xok86Q==
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vgwx38k0n-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Jan 2024 23:38:37 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 408NcXMW011408;
-	Mon, 8 Jan 2024 23:38:36 GMT
-Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vgsf9a03x-1
+	Tue, 09 Jan 2024 09:00:58 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 40990vv7003245
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Jan 2024 23:38:36 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 408KubBI022859;
-	Mon, 8 Jan 2024 23:38:35 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
-	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfj6nb8m4-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Jan 2024 23:38:35 +0000
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com [10.20.54.102])
-	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 408NcXM322807086
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 8 Jan 2024 23:38:33 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id A20B820043;
-	Mon,  8 Jan 2024 23:38:33 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E30C020040;
-	Mon,  8 Jan 2024 23:38:32 +0000 (GMT)
-Received: from heavy.boeblingen.de.ibm.com (unknown [9.171.15.162])
-	by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Mon,  8 Jan 2024 23:38:32 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 2/3] tests/tcg: Factor out gdbstub test functions
-Date: Tue,  9 Jan 2024 00:34:07 +0100
-Message-ID: <20240108233821.201325-3-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240108233821.201325-1-iii@linux.ibm.com>
-References: <20240108233821.201325-1-iii@linux.ibm.com>
+	Tue, 9 Jan 2024 09:00:58 GMT
+Received: from blr-ubuntu-31.qualcomm.com (10.80.80.8) by
+ nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.40; Tue, 9 Jan 2024 01:00:53 -0800
+From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+To: <peter.maydell@linaro.org>, <philmd@linaro.org>, <alex.bennee@linaro.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <quic_svaddagi@quicinc.com>, <quic_tsoni@quicinc.com>,
+        <quic_pheragu@quicinc.com>, <quic_eberman@quicinc.com>,
+        <quic_yvasi@quicinc.com>, <quic_cvanscha@quicinc.com>,
+        <quic_mnalajal@quicinc.com>
+Subject: [RFC/PATCH v1 01/11] gunyah: UAPI header (NOT FOR MERGE)
+Date: Tue, 9 Jan 2024 09:00:29 +0000
+Message-ID: <20240109090039.1636383-2-quic_svaddagi@quicinc.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240109090039.1636383-1-quic_svaddagi@quicinc.com>
+References: <20240109090039.1636383-1-quic_svaddagi@quicinc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: _7WGZU11gg_GeQ8CBOqNs51K7O1SsLHW
-X-Proofpoint-GUID: FrgN18lTwrwxfpASSnYLLYZfrDSwxEGA
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: xfr538nwr0uGRO20hRFAMHtA6TAtG7oS
+X-Proofpoint-ORIG-GUID: xfr538nwr0uGRO20hRFAMHtA6TAtG7oS
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-08_10,2024-01-08_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- malwarescore=0 spamscore=0 adultscore=0 mlxlogscore=942 suspectscore=0
- clxscore=1015 impostorscore=0 phishscore=0 bulkscore=0 lowpriorityscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401080192
-X-TUID: DT3m7QGzzUUI
+ definitions=2023-12-09_01,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 lowpriorityscore=0
+ adultscore=0 spamscore=0 priorityscore=1501 malwarescore=0 mlxlogscore=999
+ impostorscore=0 clxscore=1015 bulkscore=0 phishscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2311290000
+ definitions=main-2401090070
+X-TUID: oLG49gbct8Eu
 
-Both the report() function as well as the initial gdbstub test sequence
-are copy-pasted into ~10 files with slight modifications. This
-indicates that they are indeed generic, so factor them out. While
-at it, add a few newlines to make the formatting closer to PEP-8.
+Gunyah UAPI header file is provided for ease of use, until Gunyah kernel
+driver is merged upstream. scripts/update-linux-headers.sh will be
+updated via a separate patch after that for Qemu to pick up gunyah.h
+UAPI header from Linux kernel sources.
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+This header file is based on the Gunyah driver present in Android-14.
+
+https://android.googlesource.com/kernel/common
+Branch: android14-6.1
+
+Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 ---
- tests/guest-debug/run-test.py                 |  7 ++-
- tests/guest-debug/test_gdbstub.py             | 56 +++++++++++++++++++
- tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +----------
- tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +----------
- tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++--------------
- tests/tcg/multiarch/gdbstub/memory.py         | 41 +-------------
- tests/tcg/multiarch/gdbstub/registers.py      | 41 ++------------
- tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++-----------
- .../multiarch/gdbstub/test-proc-mappings.py   | 39 +------------
- .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +-----------
- .../gdbstub/test-thread-breakpoint.py         | 37 +-----------
- tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +-------------
- tests/tcg/s390x/gdbstub/test-svc.py           | 39 +------------
- 13 files changed, 96 insertions(+), 397 deletions(-)
- create mode 100644 tests/guest-debug/test_gdbstub.py
+ linux-headers/linux/gunyah.h | 311 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 311 insertions(+)
+ create mode 100644 linux-headers/linux/gunyah.h
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index b13b27d4b19..368ff8a8903 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -97,7 +97,12 @@ def log(output, msg):
-     sleep(1)
-     log(output, "GDB CMD: %s" % (gdb_cmd))
- 
--    result = subprocess.call(gdb_cmd, shell=True, stdout=output, stderr=stderr)
-+    gdb_env = dict(os.environ)
-+    gdb_pythonpath = gdb_env.get("PYTHONPATH", "").split(os.pathsep)
-+    gdb_pythonpath.append(os.path.dirname(os.path.realpath(__file__)))
-+    gdb_env["PYTHONPATH"] = os.pathsep.join(gdb_pythonpath)
-+    result = subprocess.call(gdb_cmd, shell=True, stdout=output, stderr=stderr,
-+                             env=gdb_env)
- 
-     # A result of greater than 128 indicates a fatal signal (likely a
-     # crash due to gdb internal failure). That's a problem for GDB and
-diff --git a/tests/guest-debug/test_gdbstub.py b/tests/guest-debug/test_gdbstub.py
+diff --git a/linux-headers/linux/gunyah.h b/linux-headers/linux/gunyah.h
 new file mode 100644
-index 00000000000..1bc4ed131f4
+index 0000000000..c8d250a834
 --- /dev/null
-+++ b/tests/guest-debug/test_gdbstub.py
-@@ -0,0 +1,56 @@
-+"""Helper functions for gdbstub testing
++++ b/linux-headers/linux/gunyah.h
+@@ -0,0 +1,311 @@
++/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
++/*
++ * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
++ */
 +
-+"""
-+from __future__ import print_function
-+import gdb
-+import sys
++#ifndef _LINUX_GUNYAH_H
++#define _LINUX_GUNYAH_H
 +
-+fail_count = 0
++/*
++ * Userspace interface for /dev/gunyah - gunyah based virtual machine
++ */
 +
++#include <linux/types.h>
++#include <linux/ioctl.h>
 +
-+def report(cond, msg):
-+    """Report success/fail of a test"""
-+    if cond:
-+        print("PASS: {}".format(msg))
-+    else:
-+        print("FAIL: {}".format(msg))
-+        global fail_count
-+        fail_count += 1
++#define GH_IOCTL_TYPE			'G'
 +
++/*
++ * ioctls for /dev/gunyah fds:
++ */
++#define GH_CREATE_VM			_IO(GH_IOCTL_TYPE, 0x0) /* Returns a Gunyah VM fd */
 +
-+def main(test, expected_arch=None):
-+    """Run a test function
++/*
++ * ioctls for VM fds
++ */
 +
-+    This runs as the script it sourced (via -x, via run-test.py)."""
-+    try:
-+        inferior = gdb.selected_inferior()
-+        arch = inferior.architecture()
-+        print("ATTACHED: {}".format(arch))
-+        if expected_arch is not None:
-+            report(arch.name() == expected_arch,
-+                   "connected to {}".format(expected_arch))
-+    except (gdb.error, AttributeError):
-+        print("SKIP: not connected")
-+        exit(0)
++/**
++ * enum gh_mem_flags - Possible flags on &struct gh_userspace_memory_region
++ * @GH_MEM_ALLOW_READ: Allow guest to read the memory
++ * @GH_MEM_ALLOW_WRITE: Allow guest to write to the memory
++ * @GH_MEM_ALLOW_EXEC: Allow guest to execute instructions in the memory
++ */
++enum gh_mem_flags {
++	GH_MEM_ALLOW_READ	= 1UL << 0,
++	GH_MEM_ALLOW_WRITE	= 1UL << 1,
++	GH_MEM_ALLOW_EXEC	= 1UL << 2,
++};
 +
-+    if gdb.parse_and_eval("$pc") == 0:
-+        print("SKIP: PC not set")
-+        exit(0)
++/**
++ * struct gh_userspace_memory_region - Userspace memory descripion for GH_VM_SET_USER_MEM_REGION
++ * @label: Identifer to the region which is unique to the VM.
++ * @flags: Flags for memory parcel behavior. See &enum gh_mem_flags.
++ * @guest_phys_addr: Location of the memory region in guest's memory space (page-aligned)
++ * @memory_size: Size of the region (page-aligned)
++ * @userspace_addr: Location of the memory region in caller (userspace)'s memory
++ *
++ * See Documentation/virt/gunyah/vm-manager.rst for further details.
++ */
++struct gh_userspace_memory_region {
++	__u32 label;
++	__u32 flags;
++	__u64 guest_phys_addr;
++	__u64 memory_size;
++	__u64 userspace_addr;
++};
 +
-+    try:
-+        test()
-+    except:
-+        print("GDB Exception: {}".format(sys.exc_info()[0]))
-+        global fail_count
-+        fail_count += 1
-+        import code
-+        code.InteractiveConsole(locals=globals()).interact()
-+        raise
++#define GH_VM_SET_USER_MEM_REGION	_IOW(GH_IOCTL_TYPE, 0x1, \
++						struct gh_userspace_memory_region)
 +
-+    try:
-+        gdb.execute("kill")
-+    except gdb.error:
-+        pass
++/**
++ * struct gh_vm_dtb_config - Set the location of the VM's devicetree blob
++ * @guest_phys_addr: Address of the VM's devicetree in guest memory.
++ * @size: Maximum size of the devicetree including space for overlays.
++ *        Resource manager applies an overlay to the DTB and dtb_size should
++ *        include room for the overlay. A page of memory is typicaly plenty.
++ */
++struct gh_vm_dtb_config {
++	__u64 guest_phys_addr;
++	__u64 size;
++};
++#define GH_VM_SET_DTB_CONFIG	_IOW(GH_IOCTL_TYPE, 0x2, struct gh_vm_dtb_config)
 +
-+    print("All tests complete: %d failures".format(fail_count))
-+    exit(fail_count)
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-index ee8d467e59d..a78a3a2514d 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-@@ -8,19 +8,10 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
- initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- class TestBreakpoint(gdb.Breakpoint):
-     def __init__(self, sym_name="__sve_ld_done"):
-@@ -64,26 +55,5 @@ def run_test():
- 
-     gdb.execute("c")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    report(arch.name() == "aarch64", "connected to aarch64")
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except:
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    import code
--    code.InteractiveConsole(locals=globals()).interact()
--    raise
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test, expected_arch="aarch64")
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
-index afd8ece98dd..84cdcd4a32e 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve.py
-@@ -6,20 +6,10 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
- MAGIC = 0xDEADBEEF
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -54,24 +44,5 @@ def run_test():
-             report(str(v.type) == "uint64_t", "size of %s" % (reg))
-             report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    report(arch.name() == "aarch64", "connected to aarch64")
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except:
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--
--print("All tests complete: %d failures" % failcount)
- 
--exit(failcount)
-+main(run_test, expected_arch="aarch64")
-diff --git a/tests/tcg/multiarch/gdbstub/interrupt.py b/tests/tcg/multiarch/gdbstub/interrupt.py
-index c016e7afbbf..90a45b5140a 100644
---- a/tests/tcg/multiarch/gdbstub/interrupt.py
-+++ b/tests/tcg/multiarch/gdbstub/interrupt.py
-@@ -8,19 +8,7 @@
- #
- 
- import gdb
--import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def check_interrupt(thread):
-@@ -59,6 +47,9 @@ def run_test():
-     Test if interrupting the code always lands us on the same thread when
-     running with scheduler-lock enabled.
-     """
-+    if len(gdb.selected_inferior().threads()) == 1:
-+        print("SKIP: set to run on a single thread")
-+        exit(0)
- 
-     gdb.execute("set scheduler-locking on")
-     for thread in gdb.selected_inferior().threads():
-@@ -66,32 +57,4 @@ def run_test():
-                "thread %d resumes correctly on interrupt" % thread.num)
- 
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--if len(gdb.selected_inferior().threads()) == 1:
--    print("SKIP: set to run on a single thread")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--# Finally kill the inferior and exit gdb with a count of failures
--gdb.execute("kill")
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/memory.py b/tests/tcg/multiarch/gdbstub/memory.py
-index fb1d06b7bb7..532b92e7fb3 100644
---- a/tests/tcg/multiarch/gdbstub/memory.py
-+++ b/tests/tcg/multiarch/gdbstub/memory.py
-@@ -9,18 +9,7 @@
- 
- import gdb
- import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def check_step():
-@@ -99,29 +88,5 @@ def run_test():
- 
-     report(cbp.hit_count == 0, "didn't reach backstop")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--# Finally kill the inferior and exit gdb with a count of failures
--gdb.execute("kill")
--exit(failcount)
++#define GH_VM_START		_IO(GH_IOCTL_TYPE, 0x3)
 +
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/registers.py b/tests/tcg/multiarch/gdbstub/registers.py
-index 688c0611072..b3d13cb077f 100644
---- a/tests/tcg/multiarch/gdbstub/registers.py
-+++ b/tests/tcg/multiarch/gdbstub/registers.py
-@@ -7,20 +7,11 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import gdb
--import sys
- import xml.etree.ElementTree as ET
-+from test_gdbstub import main, report
- 
--initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test."
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+initial_vlen = 0
- 
- 
- def fetch_xml_regmap():
-@@ -75,6 +66,7 @@ def fetch_xml_regmap():
- 
-     return reg_map
- 
++/**
++ * enum gh_fn_type - Valid types of Gunyah VM functions
++ * @GH_FN_VCPU: create a vCPU instance to control a vCPU
++ *              &struct gh_fn_desc.arg is a pointer to &struct gh_fn_vcpu_arg
++ *              Return: file descriptor to manipulate the vcpu.
++ * @GH_FN_IRQFD: register eventfd to assert a Gunyah doorbell
++ *               &struct gh_fn_desc.arg is a pointer to &struct gh_fn_irqfd_arg
++ * @GH_FN_IOEVENTFD: register ioeventfd to trigger when VM faults on parameter
++ *                   &struct gh_fn_desc.arg is a pointer to &struct gh_fn_ioeventfd_arg
++ */
++enum gh_fn_type {
++	GH_FN_VCPU = 1,
++	GH_FN_IRQFD,
++	GH_FN_IOEVENTFD,
++};
 +
- def get_register_by_regnum(reg_map, regnum):
-     """
-     Helper to find a register from the map via its XML regnum
-@@ -84,6 +76,7 @@ def get_register_by_regnum(reg_map, regnum):
-             return entry
-     return None
- 
++#define GH_FN_MAX_ARG_SIZE		256
 +
- def crosscheck_remote_xml(reg_map):
-     """
-     Cross-check the list of remote-registers with the XML info.
-@@ -144,6 +137,7 @@ def crosscheck_remote_xml(reg_map):
-         elif "seen" not in x_reg:
-             print(f"{x_reg} wasn't seen in remote-registers")
- 
++/**
++ * struct gh_fn_vcpu_arg - Arguments to create a vCPU.
++ * @id: vcpu id
++ *
++ * Create this function with &GH_VM_ADD_FUNCTION using type &GH_FN_VCPU.
++ *
++ * The vcpu type will register with the VM Manager to expect to control
++ * vCPU number `vcpu_id`. It returns a file descriptor allowing interaction with
++ * the vCPU. See the Gunyah vCPU API description sections for interacting with
++ * the Gunyah vCPU file descriptors.
++ */
++struct gh_fn_vcpu_arg {
++	__u32 id;
++};
 +
- def initial_register_read(reg_map):
-     """
-     Do an initial read of all registers that we know gdb cares about
-@@ -214,27 +208,4 @@ def run_test():
-         complete_and_diff(reg_map)
- 
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/sha1.py b/tests/tcg/multiarch/gdbstub/sha1.py
-index 416728415f9..1ce711a402c 100644
---- a/tests/tcg/multiarch/gdbstub/sha1.py
-+++ b/tests/tcg/multiarch/gdbstub/sha1.py
-@@ -7,19 +7,11 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
++/**
++ * enum gh_irqfd_flags - flags for use in gh_fn_irqfd_arg
++ * @GH_IRQFD_FLAGS_LEVEL: make the interrupt operate like a level triggered
++ *                        interrupt on guest side. Triggering IRQFD before
++ *                        guest handles the interrupt causes interrupt to
++ *                        stay asserted.
++ */
++enum gh_irqfd_flags {
++	GH_IRQFD_FLAGS_LEVEL		= 1UL << 0,
++};
 +
- 
- initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def check_break(sym_name):
-     "Setup breakpoint, continue and check we stopped."
-@@ -35,6 +27,7 @@ def check_break(sym_name):
- 
-     bp.delete()
- 
++/**
++ * struct gh_fn_irqfd_arg - Arguments to create an irqfd function.
++ *
++ * Create this function with &GH_VM_ADD_FUNCTION using type &GH_FN_IRQFD.
++ *
++ * Allows setting an eventfd to directly trigger a guest interrupt.
++ * irqfd.fd specifies the file descriptor to use as the eventfd.
++ * irqfd.label corresponds to the doorbell label used in the guest VM's devicetree.
++ *
++ * @fd: an eventfd which when written to will raise a doorbell
++ * @label: Label of the doorbell created on the guest VM
++ * @flags: see &enum gh_irqfd_flags
++ * @padding: padding bytes
++ */
++struct gh_fn_irqfd_arg {
++	__u32 fd;
++	__u32 label;
++	__u32 flags;
++	__u32 padding;
++};
 +
- def run_test():
-     "Run through the tests one by one"
- 
-@@ -57,28 +50,5 @@ def run_test():
-     # finally check we don't barf inspecting registers
-     gdb.execute("info registers")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
++/**
++ * enum gh_ioeventfd_flags - flags for use in gh_fn_ioeventfd_arg
++ * @GH_IOEVENTFD_FLAGS_DATAMATCH: the event will be signaled only if the
++ *                                written value to the registered address is
++ *                                equal to &struct gh_fn_ioeventfd_arg.datamatch
++ */
++enum gh_ioeventfd_flags {
++	GH_IOEVENTFD_FLAGS_DATAMATCH	= 1UL << 0,
++};
 +
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-index 04ec61d2197..564613fabf0 100644
---- a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-+++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-@@ -3,20 +3,7 @@
- This runs as a sourced script (via -x, via run-test.py)."""
- from __future__ import print_function
- import gdb
--import sys
--
--
--n_failures = 0
--
--
--def report(cond, msg):
--    """Report success/fail of a test"""
--    if cond:
--        print("PASS: {}".format(msg))
--    else:
--        print("FAIL: {}".format(msg))
--        global n_failures
--        n_failures += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -37,26 +24,4 @@ def run_test():
-     # report("/sha1" in mappings, "Found the test binary name in the mappings")
- 
- 
--def main():
--    """Prepare the environment and run through the tests"""
--    try:
--        inferior = gdb.selected_inferior()
--        print("ATTACHED: {}".format(inferior.architecture().name()))
--    except (gdb.error, AttributeError):
--        print("SKIPPING (not connected)")
--        exit(0)
--
--    if gdb.parse_and_eval('$pc') == 0:
--        print("SKIP: PC not set")
--        exit(0)
--
--    try:
--        # Run the actual tests
--        run_test()
--    except gdb.error:
--        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
--    print("All tests complete: %d failures" % n_failures)
--    exit(n_failures)
--
--
--main()
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-index 926fa962b77..00c26ab4a95 100644
---- a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-+++ b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-@@ -6,18 +6,8 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -26,28 +16,5 @@ def run_test():
-     report(isinstance(auxv, str), "Fetched auxv from inferior")
-     report(auxv.find("sha1"), "Found test binary name in auxv")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-index e57d2a8db8b..4d6b6b9fbe7 100644
---- a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-+++ b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-@@ -6,18 +6,8 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -29,28 +19,5 @@ def run_test():
-     frame = gdb.selected_frame()
-     report(str(frame.function()) == "thread1_func", "break @ %s"%frame)
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/s390x/gdbstub/test-signals-s390x.py b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-index ca2bbc0b03e..b6b7b39fc46 100644
---- a/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-+++ b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-@@ -7,19 +7,7 @@
- #
- 
- import gdb
--import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    """Report success/fail of test"""
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -42,31 +30,7 @@ def run_test():
-     gdb.Breakpoint("_exit")
-     gdb.execute("c")
-     status = int(gdb.parse_and_eval("$r2"))
--    report(status == 0, "status == 0");
--
--
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval("$pc") == 0:
--    print("SKIP: PC not set")
--    exit(0)
-+    report(status == 0, "status == 0")
- 
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/s390x/gdbstub/test-svc.py b/tests/tcg/s390x/gdbstub/test-svc.py
-index 804705fede9..17210b4e020 100644
---- a/tests/tcg/s390x/gdbstub/test-svc.py
-+++ b/tests/tcg/s390x/gdbstub/test-svc.py
-@@ -3,20 +3,7 @@
- This runs as a sourced script (via -x, via run-test.py)."""
- from __future__ import print_function
- import gdb
--import sys
--
--
--n_failures = 0
--
--
--def report(cond, msg):
--    """Report success/fail of a test"""
--    if cond:
--        print("PASS: {}".format(msg))
--    else:
--        print("FAIL: {}".format(msg))
--        global n_failures
--        n_failures += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -35,26 +22,4 @@ def run_test():
-     gdb.execute("si")
- 
- 
--def main():
--    """Prepare the environment and run through the tests"""
--    try:
--        inferior = gdb.selected_inferior()
--        print("ATTACHED: {}".format(inferior.architecture().name()))
--    except (gdb.error, AttributeError):
--        print("SKIPPING (not connected)")
--        exit(0)
--
--    if gdb.parse_and_eval('$pc') == 0:
--        print("SKIP: PC not set")
--        exit(0)
--
--    try:
--        # Run the actual tests
--        run_test()
--    except gdb.error:
--        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
--    print("All tests complete: %d failures" % n_failures)
--    exit(n_failures)
--
--
--main()
-+main(run_test)
++/**
++ * struct gh_fn_ioeventfd_arg - Arguments to create an ioeventfd function
++ * @datamatch: data used when GH_IOEVENTFD_DATAMATCH is set
++ * @addr: Address in guest memory
++ * @len: Length of access
++ * @fd: When ioeventfd is matched, this eventfd is written
++ * @flags: See &enum gh_ioeventfd_flags
++ * @padding: padding bytes
++ *
++ * Create this function with &GH_VM_ADD_FUNCTION using type &GH_FN_IOEVENTFD.
++ *
++ * Attaches an ioeventfd to a legal mmio address within the guest. A guest write
++ * in the registered address will signal the provided event instead of triggering
++ * an exit on the GH_VCPU_RUN ioctl.
++ */
++struct gh_fn_ioeventfd_arg {
++	__u64 datamatch;
++	__u64 addr;        /* legal mmio address */
++	__u32 len;         /* 1, 2, 4, or 8 bytes; or 0 to ignore length */
++	__s32 fd;
++	__u32 flags;
++	__u32 padding;
++};
++
++/**
++ * struct gh_fn_desc - Arguments to create a VM function
++ * @type: Type of the function. See &enum gh_fn_type.
++ * @arg_size: Size of argument to pass to the function. arg_size <= GH_FN_MAX_ARG_SIZE
++ * @arg: Pointer to argument given to the function. See &enum gh_fn_type for expected
++ *       arguments for a function type.
++ */
++struct gh_fn_desc {
++	__u32 type;
++	__u32 arg_size;
++	__u64 arg;
++};
++
++#define GH_VM_ADD_FUNCTION	_IOW(GH_IOCTL_TYPE, 0x4, struct gh_fn_desc)
++#define GH_VM_REMOVE_FUNCTION	_IOW(GH_IOCTL_TYPE, 0x7, struct gh_fn_desc)
++
++/*
++ * ioctls for vCPU fds
++ */
++
++/**
++ * enum gh_vm_status - Stores status reason why VM is not runnable (exited).
++ * @GH_VM_STATUS_LOAD_FAILED: VM didn't start because it couldn't be loaded.
++ * @GH_VM_STATUS_EXITED: VM requested shutdown/reboot.
++ *                       Use &struct gh_vm_exit_info.reason for further details.
++ * @GH_VM_STATUS_CRASHED: VM state is unknown and has crashed.
++ */
++enum gh_vm_status {
++	GH_VM_STATUS_LOAD_FAILED	= 1,
++	GH_VM_STATUS_EXITED		= 2,
++	GH_VM_STATUS_CRASHED		= 3,
++};
++
++/*
++ * Gunyah presently sends max 4 bytes of exit_reason.
++ * If that changes, this macro can be safely increased without breaking
++ * userspace so long as struct gh_vcpu_run < PAGE_SIZE.
++ */
++#define GH_VM_MAX_EXIT_REASON_SIZE	8u
++
++/**
++ * struct gh_vm_exit_info - Reason for VM exit as reported by Gunyah
++ * See Gunyah documentation for values.
++ * @type: Describes how VM exited
++ * @padding: padding bytes
++ * @reason_size: Number of bytes valid for `reason`
++ * @reason: See Gunyah documentation for interpretation. Note: these values are
++ *          not interpreted by Linux and need to be converted from little-endian
++ *          as applicable.
++ */
++struct gh_vm_exit_info {
++	__u16 type;
++	__u16 padding;
++	__u32 reason_size;
++	__u8 reason[GH_VM_MAX_EXIT_REASON_SIZE];
++};
++
++/**
++ * enum gh_vcpu_exit - Stores reason why &GH_VCPU_RUN ioctl recently exited with status 0
++ * @GH_VCPU_EXIT_UNKNOWN: Not used, status != 0
++ * @GH_VCPU_EXIT_MMIO: vCPU performed a read or write that could not be handled
++ *                     by hypervisor or Linux. Use @struct gh_vcpu_run.mmio for
++ *                     details of the read/write.
++ * @GH_VCPU_EXIT_STATUS: vCPU not able to run because the VM has exited.
++ *                       Use @struct gh_vcpu_run.status for why VM has exited.
++ */
++enum gh_vcpu_exit {
++	GH_VCPU_EXIT_UNKNOWN,
++	GH_VCPU_EXIT_MMIO,
++	GH_VCPU_EXIT_STATUS,
++};
++
++/**
++ * struct gh_vcpu_run - Application code obtains a pointer to the gh_vcpu_run
++ *                      structure by mmap()ing a vcpu fd.
++ * @immediate_exit: polled when scheduling the vcpu. If set, immediately returns -EINTR.
++ * @padding: padding bytes
++ * @exit_reason: Set when GH_VCPU_RUN returns successfully and gives reason why
++ *               GH_VCPU_RUN has stopped running the vCPU. See &enum gh_vcpu_exit.
++ * @mmio: Used when exit_reason == GH_VCPU_EXIT_MMIO
++ *        The guest has faulted on an memory-mapped I/O instruction that
++ *        couldn't be satisfied by gunyah.
++ * @mmio.phys_addr: Address guest tried to access
++ * @mmio.data: the value that was written if `is_write == 1`. Filled by
++ *        user for reads (`is_write == 0`).
++ * @mmio.len: Length of write. Only the first `len` bytes of `data`
++ *       are considered by Gunyah.
++ * @mmio.is_write: 1 if VM tried to perform a write, 0 for a read
++ * @status: Used when exit_reason == GH_VCPU_EXIT_STATUS.
++ *          The guest VM is no longer runnable. This struct informs why.
++ * @status.status: See &enum gh_vm_status for possible values
++ * @status.exit_info: Used when status == GH_VM_STATUS_EXITED
++ */
++struct gh_vcpu_run {
++	/* in */
++	__u8 immediate_exit;
++	__u8 padding[7];
++
++	/* out */
++	__u32 exit_reason;
++
++	union {
++		struct {
++			__u64 phys_addr;
++			__u8  data[8];
++			__u32 len;
++			__u8  is_write;
++		} mmio;
++
++		struct {
++			enum gh_vm_status status;
++			struct gh_vm_exit_info exit_info;
++		} status;
++	};
++};
++
++#define GH_VCPU_RUN		_IO(GH_IOCTL_TYPE, 0x5)
++#define GH_VCPU_MMAP_SIZE	_IO(GH_IOCTL_TYPE, 0x6)
++
++/**
++ * ANDROID: android14-6.1 unfortunately contains UAPI that won't be carried
++ * in kernel.org. Expose orthogonal ioctls that will never conflict with
++ * kernel.org for these UAPIs. See b/268234781.
++ */
++#define GH_ANDROID_IOCTL_TYPE		'A'
++
++#define GH_VM_ANDROID_LEND_USER_MEM	_IOW(GH_ANDROID_IOCTL_TYPE, 0x11, \
++						struct gh_userspace_memory_region)
++
++struct gh_vm_firmware_config {
++	__u64 guest_phys_addr;
++	__u64 size;
++};
++
++#define GH_VM_ANDROID_SET_FW_CONFIG	_IOW(GH_ANDROID_IOCTL_TYPE, 0x12, \
++						struct gh_vm_firmware_config)
++
++#endif
 -- 
-2.43.0
+2.25.1

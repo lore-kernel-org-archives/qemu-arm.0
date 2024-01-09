@@ -1,83 +1,84 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp554945ejs;
-        Tue, 9 Jan 2024 10:13:25 -0800 (PST)
-X-Received: by 2002:a1c:4c08:0:b0:40e:4905:3fb with SMTP id z8-20020a1c4c08000000b0040e490503fbmr1618823wmf.32.1704824005382;
-        Tue, 09 Jan 2024 10:13:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704824005; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp557040ejs;
+        Tue, 9 Jan 2024 10:17:12 -0800 (PST)
+X-Received: by 2002:a05:600c:4395:b0:40d:88ea:5c3a with SMTP id e21-20020a05600c439500b0040d88ea5c3amr3037179wmn.141.1704824232199;
+        Tue, 09 Jan 2024 10:17:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704824232; cv=none;
         d=google.com; s=arc-20160816;
-        b=ugW92uM3+WkVByvdoapTDFdADoY8Eq8HhokIjD2/Qpwz6OpjZl+Q1M24NTKoUedo4X
-         N10iHlQtH+91H6tv+vvc5XnHula/m+By5FSy738bAGkFkIyuiZ6+cR7NNjG2cq0+Blns
-         yx2eE97TxnNss0XwEIWiNKSLNZkuTw2LIxuUv5DEWVI8SC7OBUsKjRtOD7holxl0lLZI
-         +NMcDJFBP/i9UnSh/rQ5MdJQ3sHmc/ATN+Fx96I1u0AkSAY3jmPF/K+Ea49vjFOqh5EP
-         qnpqBq7LH708w6DZCNXkFjgik8cVLftPVGU/xO2ztgxMY6jlzMfPsDs/C3XIZ7v2T/7E
-         CIYg==
+        b=fNNKLqyCtE4J99zUJDC1McEn5c6e6DGftD9CRDzxZfPS0xiIGhNnf458WFg4DtVn0U
+         1bML+G1/81CPekpHmmnIMM10aVfO3pCEZmbe13xzU7w6YfMbwJu6/QiksF5DP1m7xxQR
+         XcNZl2Br6jsUxZL8GDqiw9gtK5QgRPl2VYMfuQXSxgCaxdeiravb9jl24iCmJ01Grcad
+         r77vEc9S6c/LsaRqvjZMdKJgl179cvC4/fwvh7XWNKBG2iXCczfuEaqAnuSAcJ6n2MIs
+         PYNecUZ8X2bTmlFJK+uacw7K+JaKE0jGtn+A2O3Ajda80c8R8JSzL+QNdCNmk3lHl0Jz
+         MecQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=5/858XesEX8oNeaCZG/kMKhZLCv5GHmvQ3J4ODyOadM=;
+        bh=Im1zlbdxa9TddRVz/6Jix3LDtFJyt0kZS2LzdsZk3es=;
         fh=tIPtNlFzeHxgf2SHuPpxDfNXaZCwv2ZxIDfoid7y1B4=;
-        b=jG9ztWY5loG2Sz9CI5dxKUCCaNk+SMpmXQVaIKfMqKZIBrTmOpa7Y8elx61Ezoc1q5
-         ALyvJBDyRfZedCn7fq81PDqPxSU9McAImFbmjtzyktUGDuhy8agz3x5c1xn2mQJcJ/Qg
-         wFPo7BUBJn4s3UZ+3ZKDOfKlZFXI/Gw9CFdNdGNNMQo5pCVQidfbmYRJWvO1qPc1o/44
-         0yX/DidfjregYk2phFL226TP8eON4gc4FITxPeDe/6zXijmwoG0g2dILA8Ccy1pkSRnm
-         UdYjhfOSoa37nYL6UQgRtNy800D240XUWDS1QVUgrKgs1v7UWfJBGMlHt78cB4XqaILy
-         e4sA==
+        b=03P87wrIxHcM1skd8tz4PYxFgUBXmsTUIrdAHj6glPNsN/4DUUCZKVQSX5CucwZQ9I
+         V3RLzqjQ1Q3te2xTKQ8dvo2HtDwQGXbLZXQbxFOGWXVdv2Pm8dvxQ89oUUMTEiWUs2gh
+         sv7ufTAzQ+mCj3joT2KaT+kdR4+IRmioZlur+2v6HkorEcz+KLCHIIRFdsUiOmjFlpKE
+         Hq7Cun6gtu482H+woS6Nxaq3yDW9Ep3Xu04Z35mv0YLU5MNwZyb6xuqhVvEkdxvfcdqM
+         9frWcN56AYPS3OUf7+dsu9mCcOw23CQFYNNzHao6xRiz7xt0LFw5LgNvItk/ssVWODSb
+         paWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRIyxXhW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VO95XUQk;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u30-20020a05600c4d1e00b0040d90c913b4sor1051399wmp.11.2024.01.09.10.13.25
+        by mx.google.com with SMTPS id bg22-20020a05600c3c9600b0040d7fd44915sor1062367wmb.1.2024.01.09.10.17.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jan 2024 10:13:25 -0800 (PST)
+        Tue, 09 Jan 2024 10:17:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRIyxXhW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VO95XUQk;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704824005; x=1705428805; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=linaro.org; s=google; t=1704824232; x=1705429032; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=5/858XesEX8oNeaCZG/kMKhZLCv5GHmvQ3J4ODyOadM=;
-        b=TRIyxXhWxJbSVDW0hgtJvJQlK28U5xr16eKz9UGemH7zxKphpKKBTSCLuxq3PQb349
-         3rOmhFk7Uf3Y4GB8q0mt+M7f6WTdgD77T4SqNH6xQQaArZ90bl6T52YTxaF+S+vZBeoC
-         zlxTao08RRYqCWnn9mZKvFj3j9blThLVL4UIJsCavqhr9LpcYYICl+rzpxidtIJ+o0dy
-         PWqcUPgynQXcSNO8JIfjnv6xefJlaTVYtpTY/cN1ldRLgyvrTfMbVxmEnGIgdr0YOXdd
-         Ihrd2+xWShkUkER3lc+JzwROE2QtTuZsD3uXjyqNHvqUpBNdp2E+uGlkMYzxoAVknunI
-         iIKw==
+        bh=Im1zlbdxa9TddRVz/6Jix3LDtFJyt0kZS2LzdsZk3es=;
+        b=VO95XUQkdpC3FCSygHweKLBJ3qBpQB3WTMiaktXgV6/e8V14CiavK3zMXQ8WPu3psj
+         h+5xjz+G/ZyPRGoX4D7sq12dLgPsCCSZqnUBLzaKPhGpnEpd23NMq/h+fa6C9DnA1e+z
+         S6M01Je3qq2pSQdc3SkzeNG8zxfRQZvdHDZdHeC/59OD1Y9SziZxp8gGedVCSR6jJQF6
+         0l0p+B79ZEz+IW3NAuJjDqpr4kZsvFPfwF4sn/1vgkef4mbEp8Xpe2q/ih25FBD6bABt
+         TPJRfVEE/9F4Qxu+GTCqTvH67OeBvJGx9B6GVJZHvi6uk4HSc2vU/h3gjByCF0A2EmNJ
+         IKGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704824005; x=1705428805;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=1e100.net; s=20230601; t=1704824232; x=1705429032;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5/858XesEX8oNeaCZG/kMKhZLCv5GHmvQ3J4ODyOadM=;
-        b=BqeDawHD8KYZUvV+RukK+6JqKkzC9tuJZ4VJjyTnKCnsI00YsVHONePZNRn4ehrWMM
-         +5b/vOlU04YdCVXMdWqIv6TfZEfkpHLt9xvKySn1UumkI9LxwdkV6dZht+2lt0DVMl8S
-         FMde9qO7HykkhCF9vAkt5PmsWAd56Hu/ChDeUkvIrg9Q2RjMvULWndz7sNBrtaw5NzjA
-         Wx5AIh8H5lLRDN32bF0ucY+kngjvEymhdxRo3GASPXLd2l//Zeb1xghv8GLiyL0t3/yU
-         71H0UamhuLLGcQTxM720jocm9Z/yL5YtJWEFh05aOxFE2ko/2shq4u58+WohFkevjPkH
-         oeug==
-X-Gm-Message-State: AOJu0Yx1qHfM5zedg9HLjot5lJPfpO1gUKtm3TMoG7nTBVnGIzmmq086
-	RO4tlQ9EjjECPEGuKK40V3R7X22BDqNTGUVs
-X-Google-Smtp-Source: AGHT+IGGLSiLqo35JZYqB7Fm4mO4NgbXxAnLphPDLsnl8mWyvKIgsiS30GuPBQ6YFSlnW00RpWev/A==
-X-Received: by 2002:a05:600c:4ecc:b0:40e:49b9:98e8 with SMTP id g12-20020a05600c4ecc00b0040e49b998e8mr1418871wmq.89.1704824004991;
-        Tue, 09 Jan 2024 10:13:24 -0800 (PST)
+        bh=Im1zlbdxa9TddRVz/6Jix3LDtFJyt0kZS2LzdsZk3es=;
+        b=kgQDAOQyudzkCKlGENV6eS//y2tA/pyniGk9Z8zEcUirNflcOB8/Og1wavsecFze8Z
+         CwP6TftgqID2YjcbXOLSXQUUOrxLCGqz4bkiAoJVWdqpkMDJ6UFjtP/0+ff9Ids0vOJI
+         jwQYNz1t4j+3r9zgrU8jkwBRvOD7PyxKD+v+WyahOm9MNa6min1lGFxOCpj2pegXkQJm
+         4TiVdq9qJluMy8tBvusJnm8RBdK1yJLclLe8EXmpOR/3lzcgWTDL/XjwPZzKwGYAE4Xv
+         JF5yEhK87yE7gDYksKrC588Jy/mgzugdWZdaTGnkYm+/K3uugMkAP6IEfngp4mZQ1aSU
+         XYMA==
+X-Gm-Message-State: AOJu0YwgHZq59jsRgcV1VV0YQSbsp2HIIXyH/l3ZL7uwcTWrZTXyP/eK
+	xRZdRnoqJ1e14FQLnG/hxXKBMaLKuR21tRZE
+X-Google-Smtp-Source: AGHT+IE/67O/UX7j9V7C3AlbRGgZf9I0XmwLn5yB0vHa5Nh8BvHgWG1d9aiVabyT2d0U7VbWMHrPew==
+X-Received: by 2002:a05:600c:3d1b:b0:40e:45a3:bf6d with SMTP id bh27-20020a05600c3d1b00b0040e45a3bf6dmr2003989wmb.90.1704824231828;
+        Tue, 09 Jan 2024 10:17:11 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr. [176.184.32.47])
-        by smtp.gmail.com with ESMTPSA id n10-20020a5d420a000000b0033719111458sm2987751wrq.36.2024.01.09.10.13.23
+        by smtp.gmail.com with ESMTPSA id j40-20020a05600c1c2800b0040e451fd602sm9533800wms.33.2024.01.09.10.17.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 10:13:24 -0800 (PST)
-Message-ID: <2fccc023-c10d-4d66-8f3a-9e119dd29ffe@linaro.org>
-Date: Tue, 9 Jan 2024 19:13:22 +0100
+        Tue, 09 Jan 2024 10:17:11 -0800 (PST)
+Message-ID: <102e3be3-a574-4095-a6fa-7d23e7b0b0bc@linaro.org>
+Date: Tue, 9 Jan 2024 19:17:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 09/14] hw/arm: Prefer arm_feature(EL3) over
  object_property_find(has_el3)
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  <alex.bennee@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>,
@@ -90,56 +91,73 @@ Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 References: <20240109180930.90793-1-philmd@linaro.org>
  <20240109180930.90793-10-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240109180930.90793-10-philmd@linaro.org>
+ <2fccc023-c10d-4d66-8f3a-9e119dd29ffe@linaro.org>
+In-Reply-To: <2fccc023-c10d-4d66-8f3a-9e119dd29ffe@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: N65zv+46ev0w
+X-TUID: WAAugHkHYKPK
 
-On 9/1/24 19:09, Philippe Mathieu-Daudé wrote:
-> The "has_el3" property is added to ARMCPU when the
-> ARM_FEATURE_EL3 feature is available. Rather than
-> checking whether the QOM property is present, directly
-> check the feature.
+On 9/1/24 19:13, Philippe Mathieu-Daudé wrote:
+> On 9/1/24 19:09, Philippe Mathieu-Daudé wrote:
+>> The "has_el3" property is added to ARMCPU when the
+>> ARM_FEATURE_EL3 feature is available. Rather than
+>> checking whether the QOM property is present, directly
+>> check the feature.
+>>
+>> Suggested-by: Markus Armbruster <armbru@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/arm/exynos4210.c   |  4 ++--
+>>   hw/arm/integratorcp.c |  5 ++---
+>>   hw/arm/realview.c     |  2 +-
+>>   hw/arm/versatilepb.c  |  5 ++---
+>>   hw/arm/xilinx_zynq.c  |  2 +-
+>>   hw/cpu/a15mpcore.c    | 11 +++++++----
+>>   hw/cpu/a9mpcore.c     |  6 +++---
+>>   7 files changed, 18 insertions(+), 17 deletions(-)
 > 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/arm/exynos4210.c   |  4 ++--
->   hw/arm/integratorcp.c |  5 ++---
->   hw/arm/realview.c     |  2 +-
->   hw/arm/versatilepb.c  |  5 ++---
->   hw/arm/xilinx_zynq.c  |  2 +-
->   hw/cpu/a15mpcore.c    | 11 +++++++----
->   hw/cpu/a9mpcore.c     |  6 +++---
->   7 files changed, 18 insertions(+), 17 deletions(-)
+> 
+>> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
+>> index d03f57e579..9355e8443b 100644
+>> --- a/hw/cpu/a9mpcore.c
+>> +++ b/hw/cpu/a9mpcore.c
+>> @@ -52,7 +52,6 @@ static void a9mp_priv_realize(DeviceState *dev, 
+>> Error **errp)
+>>       SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
+>>                    *wdtbusdev;
+>>       int i;
+>> -    bool has_el3;
+>>       CPUState *cpu0;
+>>       Object *cpuobj;
+>> @@ -81,9 +80,10 @@ static void a9mp_priv_realize(DeviceState *dev, 
+>> Error **errp)
+>>       /* Make the GIC's TZ support match the CPUs. We assume that
+>>        * either all the CPUs have TZ, or none do.
+>>        */
+>> -    has_el3 = object_property_find(cpuobj, "has_el3") &&
+>> +    if (arm_feature(cpu_env(cpu0), ARM_FEATURE_EL3)) {
+>>           object_property_get_bool(cpuobj, "has_el3", &error_abort);
+> 
+> Oops, something is wrong here...
 
+This should be:
 
-> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-> index d03f57e579..9355e8443b 100644
-> --- a/hw/cpu/a9mpcore.c
-> +++ b/hw/cpu/a9mpcore.c
-> @@ -52,7 +52,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
->       SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
->                    *wdtbusdev;
->       int i;
-> -    bool has_el3;
->       CPUState *cpu0;
->       Object *cpuobj;
->   
-> @@ -81,9 +80,10 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
->       /* Make the GIC's TZ support match the CPUs. We assume that
->        * either all the CPUs have TZ, or none do.
->        */
-> -    has_el3 = object_property_find(cpuobj, "has_el3") &&
-> +    if (arm_feature(cpu_env(cpu0), ARM_FEATURE_EL3)) {
->           object_property_get_bool(cpuobj, "has_el3", &error_abort);
+-- >8 --
+@@ -84,3 +83,5 @@ static void a9mp_priv_realize(DeviceState *dev, Error 
+**errp)
+-    has_el3 = object_property_find(cpuobj, "has_el3") &&
+-        object_property_get_bool(cpuobj, "has_el3", &error_abort);
+-    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
++    if (arm_feature(cpu_env(cpu0), ARM_FEATURE_EL3)) {
++        qdev_prop_set_bit(gicdev, "has-security-extensions",
++                          object_property_get_bool(cpuobj, "has_el3",
++                                                   &error_abort));
++    }
+---
 
-Oops, something is wrong here...
-
-> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
-> +        qdev_prop_set_bit(gicdev, "has-security-extensions", true);
-> +    }
->   
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
->           return;
+>> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
+>> +        qdev_prop_set_bit(gicdev, "has-security-extensions", true);
+>> +    }
+>>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+>>           return;
+> 

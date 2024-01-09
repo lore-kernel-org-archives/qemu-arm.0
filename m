@@ -1,173 +1,157 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp657115ejs;
-        Tue, 9 Jan 2024 13:47:33 -0800 (PST)
-X-Received: by 2002:a05:6870:c1d2:b0:206:216:8f9c with SMTP id i18-20020a056870c1d200b0020602168f9cmr130403oad.101.1704836853256;
-        Tue, 09 Jan 2024 13:47:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704836853; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp690134ejs;
+        Tue, 9 Jan 2024 15:08:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGOtFDQXx+4i/8+7crwWViW7AqUVrnadFFdcFkrfhLqYMCcQjlO5H9uqOTSO+gZC5JeuNHO
+X-Received: by 2002:a25:ac9d:0:b0:dbe:30f2:48c1 with SMTP id x29-20020a25ac9d000000b00dbe30f248c1mr1047614ybi.1.1704841695509;
+        Tue, 09 Jan 2024 15:08:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704841695; cv=none;
         d=google.com; s=arc-20160816;
-        b=FnMCQsqeR+BOoQcbEtN54FgcKCpd3qs6bhfzse/CeR1MtKQtQueCfm8z1KRnM4cigI
-         ariQ1WOOdnLQszL+JVYRfPSLMsNEnHToVkdx/4fKRSXor//4WUiqKK5okyArs1eidu6W
-         6+nCFbd4jzoNCg7hn0JQnmVqFvblr87LmstWzETfpW4/yeMLrCkIH1ldWqu5JBSS1cEG
-         KrucNuETOqb0HcOCDQAyGAl26QGg+j9E7UA7R3RgUmUZaA7IVT13zNvNwp69/lE0vaEU
-         0PaBi4IukyIxXHy/pZpAXwKtIiSFV+7mt0LwfMQMPqINb+z4BfBGCraHq9OLOH6kZEb9
-         30hw==
+        b=T/u9E/v5sLtk9JdMmVYBGiQltMMtffAB+aqPTTxi0vaR3rfjQtn7uSoV0aDEQM0DFm
+         MR4BlRLt9mcKuQ4RkVUPskjmE4ANe0z0vVgHOKXR2Z7JkhtNmDis6u7SdERRg5HyDu/X
+         ruCoagv7OiFZr4DCj7YWc6BNBRnaql4H1ATfm7fBv6+kguhYwm6EGsgnfEdSjQehLX6v
+         9/xKaVcfiShpLx5HOgXdqh0glJqYAe7Em2+ARfhLF/BecgZTpFkC0ljX0MNJUdq3aHPS
+         RJ66/daEnKhpfpDf4vf9PTO9KRKzl1tip1m7JYBtiNY1d7DZkJkGSsQW1GT0Za47w+P8
+         55cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=z6mlmKKl0dxnFYQ96TgJKXaPpEa7mLFTUa1Gacpiv+8=;
-        fh=W84aVyQshfm+IQnNVHPtZJa4aBqwTfwNS9QthDGemZ4=;
-        b=thoNV1jFoLzWzpjQeLclam4E+NwBx37i9KIh3aFiKM1dvr5Cm/EwDU5S6zi1SZOMaR
-         b7+3JmMNU0kymzUxpw+vGl/vps0f5Qr4oPwIZkm4kuunnSZ2OK/OHdJyDn82pWiwlGwy
-         i9gBAAgjZ5OeWGNSijUeQsxQK4BucvE3P7V2r3lFfH+DjZ4OHoEgMRYn0m8B2yjujbIA
-         6k5Duc8WDlCUkLBE9lh9KoLy1IhnshydT07sBxlvdQJ8HkGi76mAYXQdiS6aMRG9Lfdc
-         egH2yyvYZSY29MAv1rhA4vXF7lD1cv1zZFpkGtc6sbiroUBZHS5mxSg8IY/N9IVO/4aD
-         hyXw==
+        h=mime-version:content-transfer-encoding:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=A0s5Mr4Jzof5SnKIeNox8cnL/bIAyWOAdsRpeuHqFaA=;
+        fh=MCCLRI7Eav0C58J4xbQiDqdrgb9nG6Ic0RkQM1eww+k=;
+        b=ZqhDXOnqzee9uI+jLzaUVVf/4X4ysHgAgf0tDcQ4Qj+FPO9pEXTkZfyAbYOso6cXBI
+         N846PoPzzACVRbfRKocwjcPxM09hHv20E3ertdhjedDBCdeiZVd2o47PJ4VCWbr78rW7
+         JonbcJixtGj2/QM6S2/43zOpmFL+CsT800fk05gBpGGtxWgg3amgm8Nj15BsWJruZLpY
+         UjTf0VWnu527m72QRYxpmPNKiHi/JLlENOCxsQjrUhWVaZHgU6QxeB5Bzb9Y6dQ/t9p/
+         6vCUDoLNamFUQZIEcTCqk0C77va6Dwdsls3+BPiVcCmJZGcC3ZZSPDbJSSkUFy/WbF9w
+         kmrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wYexFsj2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ax31-20020a05687c021f00b00205d586170asor1429811oac.13.2024.01.09.13.47.33
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 Jan 2024 13:47:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hWctXQDa;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id 132-20020a25148a000000b00dbdb45d964fsi1442545ybu.538.2024.01.09.15.08.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Jan 2024 15:08:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wYexFsj2;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704836853; x=1705441653; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=z6mlmKKl0dxnFYQ96TgJKXaPpEa7mLFTUa1Gacpiv+8=;
-        b=wYexFsj2GLGOQSIq/AaMJaxwQhasBQ8xQ1TaP4Y+enl5o4Tr8+n9H00lyp7RtuwVvi
-         yU/LInmIcW3jounQJYfrZ6jVBo2Ziyz4Fo7q3ryPngtd2MZCoCjTWSUuukQvCGe9rvHX
-         P/zgzrF7I7szzmDKFrfMw57SjELnO/fER4/HO6BB1zuYnqyAb0FMowtEbKeaS9HiGrZB
-         k/3R6psezYp+i6rD3s1mjbjur/wSyBVniHKoVzoDGb8ZUQw519Gvr5AUBUbEJ/6QldLN
-         lH+vhWYDX6LSZEWeWTapicGNU5Hwz9Klb127JVEDxQzdRwhmhIWQTawmYHWjGCwNcGYv
-         04vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704836853; x=1705441653;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=z6mlmKKl0dxnFYQ96TgJKXaPpEa7mLFTUa1Gacpiv+8=;
-        b=hbgzVIsb6bwEGfBeYIZyFjs7lVB8tDXx5OUAD+xQuAFFZT557Ew9L2VTiGSY9LBqfP
-         uuGV+NzSesNr5NSN8ARZxCqxemS+yEfd24ORjW19yhTr1/zGjnqzgCezmfnge85uyxJn
-         N9jodpi5pt8dA71yfIr+nj/eocg7/krHj5qnBEKE0lvEVaXs7VgCqswEozAQk6963Fcb
-         R2lG2BeyeTFfhf6RGDNwXwgCyPqr/1ict0WUT55wHs7TiQZtG1zpfNBfw+TUG8CELgWb
-         Fii5epOzdNX+vxVS7dvwlfQe+lHUJHWmTf5/dpo/b0pdjZyN6KV6ppkO6TG4i/wfE5ez
-         xfwQ==
-X-Gm-Message-State: AOJu0YzFTnBuqnoCcKOjLnQEq1ZktXTOF/LC1tL/XFAax4pwgc7VWVaB
-	MrSuI14jaq7DHMBAoK61EA5imkwafUoasLR/
-X-Google-Smtp-Source: AGHT+IEqrgWcZo5HjHrAQ+SlypPQNRY8cRFDcKpwyoi7GrqHj+UdgUPe9e3qicO9EMDtCr1viG263Q==
-X-Received: by 2002:a05:6870:b622:b0:204:126d:85b5 with SMTP id cm34-20020a056870b62200b00204126d85b5mr139430oab.38.1704836852809;
-        Tue, 09 Jan 2024 13:47:32 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.44.231] ([172.58.109.85])
-        by smtp.gmail.com with ESMTPSA id tp15-20020a0568718b8f00b00205e506c00fsm648824oab.49.2024.01.09.13.47.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 13:47:32 -0800 (PST)
-Message-ID: <c0bef257-4d1a-4660-a351-ff5dc240723c@linaro.org>
-Date: Wed, 10 Jan 2024 08:47:21 +1100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] linux-user: Allow gdbstub to ignore page protection
-Content-Language: en-US
-To: Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- David Hildenbrand <david@redhat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hWctXQDa;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 409MF6au028583;
+	Tue, 9 Jan 2024 23:08:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=A0s5Mr4Jzof5SnKIeNox8cnL/bIAyWOAdsRpeuHqFaA=;
+ b=hWctXQDatracJTza4VOeEJ7NeViQ+GEMACmjYrBVkFDQt7HcIC0Y+s1z3WTUtBfOZTfx
+ XLlAnBuofLL4G2TNmukbxwouOvDgy/qHuI6m6L5w9hm4Ae0nFi7whGhIG0EehDoLYGV1
+ GmR3ZJXj5Qg/pIpADU57E2T+p79UYyz8t5tOsfHSPlE9/5JGVB0/JAhjukMtZE2Hr1Ik
+ YHVyD7NxINV6C1JN313vcMA45Fp/QUeuCdHvVIuaBuPOkYb/dGXjiA1TmlDpSRXypT7K
+ vjQb8zU6Z5XTaAqd5Ldjnw0g0H0sYNMZicqKyG69ybBhznaJcXPElx5VpZ2YW2gowZFi SA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f91n04-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 09 Jan 2024 23:08:14 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409Mpa9x008108;
+	Tue, 9 Jan 2024 23:08:13 GMT
+Received: from ppma11.dal12v.mail.ibm.com (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f91myc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 09 Jan 2024 23:08:13 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 409LIqpe027421;
+	Tue, 9 Jan 2024 23:08:12 GMT
+Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
+	by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkw218us-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 09 Jan 2024 23:08:12 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 409N8B9e25756316
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 9 Jan 2024 23:08:11 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0EA1D20043;
+	Tue,  9 Jan 2024 23:08:11 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 9129320040;
+	Tue,  9 Jan 2024 23:08:10 +0000 (GMT)
+Received: from heavy.boeblingen.de.ibm.com (unknown [9.171.60.193])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Tue,  9 Jan 2024 23:08:10 +0000 (GMT)
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        David Hildenbrand <david@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-References: <20240108233821.201325-1-iii@linux.ibm.com>
- <20240108233821.201325-2-iii@linux.ibm.com>
- <0195c274-0d5c-484b-9475-84a4d16bfae8@linaro.org>
- <139c997f23a3e7edd8334de124d0ba7820cf6dc9.camel@linux.ibm.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <139c997f23a3e7edd8334de124d0ba7820cf6dc9.camel@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v2 0/3] linux-user: Allow gdbstub to ignore page protection
+Date: Wed, 10 Jan 2024 00:05:52 +0100
+Message-ID: <20240109230808.583012-1-iii@linux.ibm.com>
+X-Mailer: git-send-email 2.43.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: scAaSRplPvUgjbDknyyL-fMUr0uBPcQ_
+X-Proofpoint-ORIG-GUID: OA-ZZ68_N2V5tawb6PWxZeC7ZbCoHM6X
 Content-Transfer-Encoding: 8bit
-X-TUID: 2P7PoVj/iJki
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-09_11,2024-01-09_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 phishscore=0
+ mlxlogscore=743 impostorscore=0 lowpriorityscore=0 malwarescore=0
+ bulkscore=0 suspectscore=0 priorityscore=1501 spamscore=0 adultscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401090186
+X-TUID: yz67FeiSG7Uh
 
-On 1/10/24 06:39, Ilya Leoshkevich wrote:
-> On Wed, 2024-01-10 at 04:42 +1100, Richard Henderson wrote:
->> On 1/9/24 10:34, Ilya Leoshkevich wrote:
->>> gdbserver ignores page protection by virtue of using
->>> /proc/$pid/mem.
->>> Teach qemu gdbstub to do this too. This will not work if /proc is
->>> not
->>> mounted; accept this limitation.
->>>
->>> One alternative is to temporarily grant the missing PROT_* bit, but
->>> this is inherently racy. Another alternative is self-debugging with
->>> ptrace(POKE), which will break if QEMU itself is being debugged - a
->>> much more severe limitation.
->>>
->>> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
->>> ---
->>>    cpu-target.c | 55 ++++++++++++++++++++++++++++++++++++++---------
->>> -----
->>>    1 file changed, 40 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/cpu-target.c b/cpu-target.c
->>> index 5eecd7ea2d7..69e97f78980 100644
->>> --- a/cpu-target.c
->>> +++ b/cpu-target.c
->>> @@ -406,6 +406,15 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr
->>> addr,
->>>        vaddr l, page;
->>>        void * p;
->>>        uint8_t *buf = ptr;
->>> +    int ret = -1;
->>> +    int mem_fd;
->>> +
->>> +    /*
->>> +     * Try ptrace first. If /proc is not mounted or if there is a
->>> different
->>> +     * problem, fall back to the manual page access. Note that,
->>> unlike ptrace,
->>> +     * it will not be able to ignore the protection bits.
->>> +     */
->>> +    mem_fd = open("/proc/self/mem", is_write ? O_WRONLY :
->>> O_RDONLY);
->>
->> Surely this is the unlikely fallback, and you don't need to open
->> unless the page is
->> otherwise inaccessible.
-> 
-> Ok, I can move this under (flags & PAGE_*) checks.
-> 
->> I see no handling for writes to pages that contain TranslationBlocks.
-> 
-> Sorry, I completely missed that. I'm currently experimenting with the
-> following:
-> 
-> 	/*
-> 	 * If there is a TranslationBlock and we weren't bypassing
-> host
-> 	 * page protection, the memcpy() above would SEGV, ultimately
-> 	 * leading to page_unprotect(). So invalidate the translations
-> 	 * manually. Both invalidation and pwrite() must be under
-> 	 * mmap_lock() in order to prevent the creation of another
-> 	 * TranslationBlock in between.
-> 	 */
-> 	mmap_lock();
-> 	tb_invalidate_phys_page(page);
-> 	written = pwrite(fd, buf, l, (off_t)g2h_untagged(addr));
+v1 -> v2: Use /proc/self/mem as a fallback. Handle TB invalidation
+          (Richard).
+          Test cross-page accesses.
 
-I would use here tb_invalidate_phys_range(addr, addr + l - 1),
-but otherwise, it looks good.
+RFC: https://lists.gnu.org/archive/html/qemu-devel/2023-12/msg02044.html
+RFC -> v1: Use /proc/self/mem and accept that this will not work
+           without /proc.
+           Factor out a couple functions for gdbstub testing.
+           Add a test.
 
+Hi,
 
-r~
+I've noticed that gdbstub behaves differently from gdbserver in that it
+doesn't allow reading non-readable pages. This series improves the
+situation by using the same mechanism as gdbserver: /proc/self/mem.
 
-> 	mmap_unlock();
-> 
-> Does that look okay?
-> 
-> [...]
+Best regards,
+Ilya
+
+Ilya Leoshkevich (3):
+  linux-user: Allow gdbstub to ignore page protection
+  tests/tcg: Factor out gdbstub test functions
+  tests/tcg: Add the PROT_NONE gdbstub test
+
+ cpu-target.c                                  | 76 +++++++++++++++----
+ tests/guest-debug/run-test.py                 |  7 +-
+ tests/guest-debug/test_gdbstub.py             | 56 ++++++++++++++
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +--------
+ tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +-------
+ tests/tcg/multiarch/Makefile.target           |  9 ++-
+ tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++----------
+ tests/tcg/multiarch/gdbstub/memory.py         | 41 +---------
+ tests/tcg/multiarch/gdbstub/prot-none.py      | 22 ++++++
+ tests/tcg/multiarch/gdbstub/registers.py      | 41 ++--------
+ tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++--------
+ .../multiarch/gdbstub/test-proc-mappings.py   | 39 +---------
+ .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +--------
+ .../gdbstub/test-thread-breakpoint.py         | 37 +--------
+ tests/tcg/multiarch/prot-none.c               | 40 ++++++++++
+ tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +---------
+ tests/tcg/s390x/gdbstub/test-svc.py           | 39 +---------
+ 17 files changed, 227 insertions(+), 413 deletions(-)
+ create mode 100644 tests/guest-debug/test_gdbstub.py
+ create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
+ create mode 100644 tests/tcg/multiarch/prot-none.c
+
+-- 
+2.43.0

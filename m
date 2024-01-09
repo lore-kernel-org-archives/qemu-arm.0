@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp553260ejs;
-        Tue, 9 Jan 2024 10:10:38 -0800 (PST)
-X-Received: by 2002:a7b:cd0c:0:b0:40e:4c1d:d117 with SMTP id f12-20020a7bcd0c000000b0040e4c1dd117mr680427wmj.184.1704823838607;
-        Tue, 09 Jan 2024 10:10:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704823838; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp553334ejs;
+        Tue, 9 Jan 2024 10:10:45 -0800 (PST)
+X-Received: by 2002:a05:600c:3b25:b0:40d:7691:d056 with SMTP id m37-20020a05600c3b2500b0040d7691d056mr3042086wms.38.1704823845650;
+        Tue, 09 Jan 2024 10:10:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704823845; cv=none;
         d=google.com; s=arc-20160816;
-        b=0zp3Vzzg5AK5uh8JHXG7ydUkSvjcJaRShl+iDe6UMaNQxWParTH9Uq6BOq+Hb+rDHZ
-         q/jJ7wC1hDMffS212wa5YjtRy6yXuvwtZi5O73u2vNwub/WHY1B0d72BYuZwjgBt2mrS
-         A35ViGuK4RSPWVYlFKbN8lBVfmrMuOyLT2NHQoEfVza5AuNg3HYR9d8Izz8a9Npom1fy
-         yVZA1HLyqvLeR9c4MxYO0Bn2eW9+5K8nqdFcbDTLjXMZIk09xvPja5Vp1Qq9RqPc16Ry
-         kgmSFIJhv6yHHjVz7OXXzoGVrnNO2SLU3ppYxoXhipzi9qhQtZT4Z06h17UNglQ/C+x6
-         0HYA==
+        b=KFkEoEE7q1ygV8y4D+nLwg4TuYmce+TokyplUEnHzQ+xIRgOT+Q82a7RxGZLPk9Uq2
+         T5rsNu4MF9zFhVFa4aIKrpgXEc9NnN6QwIbQz8MsHmup99EMc+5dtmF4D6hJt6bu1T3A
+         S3VzVrzZPgf3vbJP3Sw3Tu20eCcTyeje7E8zpunktyFSEAulN4WgYw10l8PFBYljHjsu
+         tkQndZDrQ/0rv0Wa1yTDvdrIh72T1xBeP3IZA1QHyaFMIB2a3dFUYEL3vkVBprmQyQor
+         7BbzdMqLiSoWFyNQLLl4DlnAzzGS11hvEKERtA57GvXtp6BXj4CuoggwwY5tynfMz1wZ
+         qCRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZzKRv8rSt0g4enhYH8TEbkEK8L7Z/ollqT46K3u21b8=;
+        bh=rKXURkFhsCy0V0ubg/nJYR4pTGn8xQxbtylatTgX1X4=;
         fh=v69mdd+nxs/0WeTIWzLZOPCx0ynE2o0vtvId2fSwkBY=;
-        b=x8qrxpn4IRlv9qIh8ZUv92VqHHp7vw8PZrsxdJxAGj2RwYzFtQHgNFnVl5+vGcyrjF
-         jFZGcL25u/xm1qN4iAz/c9kW+Jg+FlJpWkBJsI1LP2fVPUXOo/uXgM6MhALMqe3Vht68
-         Ew5hA4wMsJpfC31Y1sptbj6GmnIjxjbk3lkr0FqF04/1s0vBozS/nUzfL8uxdFnSFGAD
-         8PkqEqit/nFONZp3I4aRZTYUfUyk/+57vXWfkFVPo89r9Z8tJfjXVocyNDUyimoNkaaZ
-         RThJIFVeOUCXXgoP2d9YbYW9sELxQm2q3kMzMzAWgzJHODirW6VzH0SICmW4EV3X2Apy
-         nPcg==
+        b=TJQnxedDHy9odarTy5VKT3pqhxtkrpAbrrNKA+v6w/AhFKA6OA2N9P17MPUIdp6OIp
+         hGDTUEfxaiAc9EjtlwagnyozSL5kZ3AWYRCy3XCCki40NKPQIieGPMTEkB34/v4THMHA
+         faRCPPzLyzzKj2/Ivo9qHWP2wCA2Pvy+vbQl3hkP97nK2Te8aS0eHluJMasYPwaxKyp5
+         CmM8uXA/QuMIkMHhhzFJU44JxIMuB5k6pJbST6NygqOq6ruKkOb3uqPQTqPuOv3bFhPA
+         UZoSvkyQv2DUb7PSpFFwkcXoMy6eLslb8keueqyzaQ2lGJvP0+IOqtuoYCO7vyfdiKst
+         DxhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i2qFDMFT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WbtbWJJo;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o31-20020a05600c511f00b0040e53f70251sor123512wms.2.2024.01.09.10.10.38
+        by mx.google.com with SMTPS id x14-20020a05600c21ce00b0040e49212c39sor1158176wmj.11.2024.01.09.10.10.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jan 2024 10:10:38 -0800 (PST)
+        Tue, 09 Jan 2024 10:10:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i2qFDMFT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WbtbWJJo;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704823838; x=1705428638; darn=linaro.org;
+        d=linaro.org; s=google; t=1704823844; x=1705428644; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZzKRv8rSt0g4enhYH8TEbkEK8L7Z/ollqT46K3u21b8=;
-        b=i2qFDMFTGc3mULxUQ60hgiBTcA5FOWB7LNAzphBuOohPe42uj8Cp9ADXrwpcIukVS8
-         wLWIXtQmUK7SqC8NiEhSGtB5ENoUv8TrzPGPyJlhUwPCC4NbW13UnNF2vRvz8sLkeBQm
-         RbSBCcHX4PwD903QHmbu8YKuJnIFAIrxvkxUkDc1RkETjaPkdakeE9IwiA+W0Dyo93mZ
-         eM8qk6e9QYs+Hcq7kiJ3B+1IzRmqjc3GFjcc+TSvTW2QVgYZNTtum1k4uhR02WMxSNJL
-         6E8rYNFhZ/Gi/AqPawITbblj2UDtTPGm9yphFwETaNIy/Je3YbCV0FMaup+38wLOUEX5
-         NS2w==
+        bh=rKXURkFhsCy0V0ubg/nJYR4pTGn8xQxbtylatTgX1X4=;
+        b=WbtbWJJov3KA3WYOTo0hhP95eI5d3WkuPUSllhD+MD6YFH9ozQL5w3UCxKI1Fo0sjX
+         PpnGSk2kmFHASBNWS+ugAs2GvFeRX7t2zdY6kxjfhBR0LuaZipN/bD6ppIsPWd+J8VHT
+         6EdhE351xiHwVI5LyJxVkb4+r29DxBWc4JbQNtQfmD0b22XytklTuxrR7HVKXd1tQTnS
+         0+XQO9aIZVn22YGbzyzdrvAXYYnVq3zSeY8B8w5DmtvUyo4RPy92fqRvFe1db/TqobL/
+         sWXu+uTJu6SI5nAD1UOugX4fx8EoqZKWvz9dkLcCuHxUJQIB23trvuBrOTlL7WAqZQSp
+         C/gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704823838; x=1705428638;
+        d=1e100.net; s=20230601; t=1704823844; x=1705428644;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZzKRv8rSt0g4enhYH8TEbkEK8L7Z/ollqT46K3u21b8=;
-        b=SKzLNtLAbWjsMBEwwnuaIC5ASW4OueDwhkrUTvemFbDWXMnnzAXq9/hJOBHfc81bv6
-         nhD+6ciZugZFR5D1VAPcowOU4ObFqFKIBF9sjfd6DfxSLk/Z/kla9u3jiJL2vxq/o8Ae
-         1qaJLukm8/7syiiP+mJgdqYPAnFCrcGqCDJP/dKsPGHOLjOibZU1SFZBXJuL9tPV/VlE
-         LY2Re75dSfCmjCwJ7ek3XJRg7sJjS3Ms9uTZyAHI42oNhkgg/MJ1l0d1o5tfb8KDxP+O
-         QqKjy31tVYb+q9On/Pg4oWlRYmpyaoQTMHGEGuKyakxKSJ2h5uCjb2LjaABC8yYPDYeP
-         bWXg==
-X-Gm-Message-State: AOJu0YyWR/tdlOOrT7CTQKIf7LWLY94bjzZXTm8tdV758FKdoh/ZOWaP
-	OwWVKYd/1AsQUz+Kob+ximnHBzUuIbbESjL5
-X-Google-Smtp-Source: AGHT+IH/3kbQYMH94lAPMzxFc6qC/itYnaoRJaclfEFfMxujnUkK+tg1K29wr/U1N6iYR3akTCtTTg==
-X-Received: by 2002:a05:600c:298c:b0:40d:5aea:c89b with SMTP id r12-20020a05600c298c00b0040d5aeac89bmr648301wmd.64.1704823838301;
-        Tue, 09 Jan 2024 10:10:38 -0800 (PST)
+        bh=rKXURkFhsCy0V0ubg/nJYR4pTGn8xQxbtylatTgX1X4=;
+        b=YBfFBxlQ4VrxKFfBngHl+AHl5PRC3izMoJr+z77B7RD2jpPUmah9GpgqWb3exiFw0O
+         vXKD3dsDUE8qyJ5CC6y7Qbt/0O5DYiVCgjOXK10cvkil7gZW85xFWH8epbkpRlq00P7b
+         TblRZJv9hXdY8OYp/c1ylTyPzuOK9GSnpYTe5B+aZ4H4JkXjsmD01fhibhNA3parPtWW
+         PkYJFv7RZXD6cLCvm3LxvzhBMTRFoJ41OwHBGGobqoH6SAOBf//+G6vn8cLjiJm1hJRq
+         6V34TeXCPMqxItDzZEulPTCvjqQbwMT4Wpg2FH93O75KmNQXI1lMvNMFPm4ffMusyM1n
+         Lxmg==
+X-Gm-Message-State: AOJu0YzQ60GXk2OLG23Bh6Z51J4oD20sDqAn90biBLZlZTaBAzJsKfYy
+	ECqx7nfs2dIdKLPFU89gpzCpSlyiugQKfGse
+X-Google-Smtp-Source: AGHT+IHjV0TvmBLA9WFnSsyWWHMR3APuO4MZjZIF0jPXU/Ws3vRpGE54iQvFItP+9NQO3t8cNQKgAQ==
+X-Received: by 2002:a05:600c:154d:b0:40e:3dad:efe8 with SMTP id f13-20020a05600c154d00b0040e3dadefe8mr3265076wmg.87.1704823844642;
+        Tue, 09 Jan 2024 10:10:44 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr. [176.184.32.47])
-        by smtp.gmail.com with ESMTPSA id t6-20020a05600c198600b0040e4a7a7ca3sm4385674wmq.43.2024.01.09.10.10.36
+        by smtp.gmail.com with ESMTPSA id p11-20020a5d59ab000000b00336ebf93416sm3047825wrr.17.2024.01.09.10.10.42
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 09 Jan 2024 10:10:37 -0800 (PST)
+        Tue, 09 Jan 2024 10:10:44 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -85,79 +85,86 @@ Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 10/14] hw/arm: Prefer arm_feature(EL2) over object_property_find(has_el2)
-Date: Tue,  9 Jan 2024 19:09:25 +0100
-Message-ID: <20240109180930.90793-11-philmd@linaro.org>
+Subject: [PATCH v2 11/14] hw/arm: Prefer arm_feature(CBAR*) over object_property_find(reset-cbar)
+Date: Tue,  9 Jan 2024 19:09:26 +0100
+Message-ID: <20240109180930.90793-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240109180930.90793-1-philmd@linaro.org>
 References: <20240109180930.90793-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eXfD8bFkfTrl
+X-TUID: LdT8jVcIFxdf
 
-The "has_el2" property is added to ARMCPU when the
-ARM_FEATURE_EL2 feature is available. Rather than
+The "reset-cbar" property is added to ARMCPU when the
+ARM_FEATURE_CBAR[_RO] features are available. Rather than
 checking whether the QOM property is present, directly
-check the feature.
+check the features.
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/vexpress.c  | 3 ++-
- hw/arm/virt.c      | 2 +-
- hw/cpu/a15mpcore.c | 6 ++++--
- 3 files changed, 7 insertions(+), 4 deletions(-)
+ hw/arm/highbank.c | 3 ++-
+ hw/arm/sbsa-ref.c | 3 ++-
+ hw/arm/vexpress.c | 3 ++-
+ hw/arm/virt.c     | 3 ++-
+ 4 files changed, 8 insertions(+), 4 deletions(-)
 
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index c21e18d08f..b06a727c06 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -211,7 +211,8 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+         object_property_set_int(cpuobj, "psci-conduit", QEMU_PSCI_CONDUIT_SMC,
+                                 &error_abort);
+ 
+-        if (object_property_find(cpuobj, "reset-cbar")) {
++        if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
++            arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
+             object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBASE,
+                                     &error_abort);
+         }
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 477dca0637..c073c462c7 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -770,7 +770,8 @@ static void sbsa_ref_init(MachineState *machine)
+         numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
+                           &error_fatal);
+ 
+-        if (object_property_find(cpuobj, "reset-cbar")) {
++        if (arm_feature(cpu_env(cs), ARM_FEATURE_CBAR) ||
++            arm_feature(cpu_env(cs), ARM_FEATURE_CBAR_RO)) {
+             object_property_set_int(cpuobj, "reset-cbar",
+                                     sbsa_ref_memmap[SBSA_CPUPERIPHS].base,
+                                     &error_abort);
 diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index fd981f4c33..753a645c05 100644
+index 753a645c05..ea3c76f3e1 100644
 --- a/hw/arm/vexpress.c
 +++ b/hw/arm/vexpress.c
-@@ -218,12 +218,13 @@ static void init_cpus(MachineState *ms, const char *cpu_type,
-     /* Create the actual CPUs */
-     for (n = 0; n < smp_cpus; n++) {
-         Object *cpuobj = object_new(cpu_type);
-+        ARMCPU *cpu = ARM_CPU(cpuobj);
- 
-         if (!secure) {
-             object_property_set_bool(cpuobj, "has_el3", false, NULL);
-         }
-         if (!virt) {
--            if (object_property_find(cpuobj, "has_el2")) {
-+            if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-                 object_property_set_bool(cpuobj, "has_el2", false, NULL);
+@@ -229,7 +229,8 @@ static void init_cpus(MachineState *ms, const char *cpu_type,
              }
          }
+ 
+-        if (object_property_find(cpuobj, "reset-cbar")) {
++        if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
++            arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
+             object_property_set_int(cpuobj, "reset-cbar", periphbase,
+                                     &error_abort);
+         }
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2793121cb4..35eb01a3dc 100644
+index 35eb01a3dc..7e7350fec2 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2146,7 +2146,7 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, "has_el3", false, NULL);
+@@ -2168,7 +2168,8 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, "lpa2", false, NULL);
          }
  
--        if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
-+        if (!vms->virt &&  arm_feature(cpu_env(cs), ARM_FEATURE_EL2)) {
-             object_property_set_bool(cpuobj, "has_el2", false, NULL);
-         }
- 
-diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-index cebfe142cf..1fa079b3b8 100644
---- a/hw/cpu/a15mpcore.c
-+++ b/hw/cpu/a15mpcore.c
-@@ -73,9 +73,11 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
-             qdev_prop_set_bit(gicdev, "has-security-extensions", true);
-         }
-         /* Similarly for virtualization support */
--        has_el2 = object_property_find(cpuobj, "has_el2") &&
-+        has_el2 = arm_feature(cpu_env(cpu), ARM_FEATURE_EL2);
-+        if (has_el2) {
-             object_property_get_bool(cpuobj, "has_el2", &error_abort);
--        qdev_prop_set_bit(gicdev, "has-virtualization-extensions", has_el2);
-+            qdev_prop_set_bit(gicdev, "has-virtualization-extensions", true);
-+        }
-     }
- 
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+-        if (object_property_find(cpuobj, "reset-cbar")) {
++        if (arm_feature(cpu_env(cs), ARM_FEATURE_CBAR) ||
++            arm_feature(cpu_env(cs), ARM_FEATURE_CBAR_RO)) {
+             object_property_set_int(cpuobj, "reset-cbar",
+                                     vms->memmap[VIRT_CPUPERIPHS].base,
+                                     &error_abort);
 -- 
 2.41.0

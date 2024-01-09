@@ -1,185 +1,158 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3460011ejc;
-        Thu, 16 Nov 2023 04:46:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEFK7MqeSzxbicRlz/K0gMlfspEtb3oPQF8RbDksEaKVu06vOkuN9L6wtk8DVeu9GvHUuOh
-X-Received: by 2002:ac8:5a87:0:b0:41e:28d1:c8ff with SMTP id c7-20020ac85a87000000b0041e28d1c8ffmr11414627qtc.51.1700138819496;
-        Thu, 16 Nov 2023 04:46:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700138819; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp416142ejs;
+        Tue, 9 Jan 2024 06:24:13 -0800 (PST)
+X-Received: by 2002:a05:6512:a91:b0:50e:609c:ab90 with SMTP id m17-20020a0565120a9100b0050e609cab90mr1868492lfu.32.1704810253150;
+        Tue, 09 Jan 2024 06:24:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704810253; cv=none;
         d=google.com; s=arc-20160816;
-        b=qA7phjXUcYoO3ROjxg6XLpnwemHNXRc8O6mH1WHBdozrb6XIbXQee462k91X8JM3wS
-         ppdOEDpYc9M47IT9pu0Hrcct+kBF/4HLyv1tYElG6adXrq9Y7RnqtBe1JHawXJRLNsDP
-         n2iExHHKVViJk/EBJTxh6fT+2rJN81fH0Q6UymivyJxzSY02OkoEVvtSV8hdwhZJ+1hC
-         eQZ1EPXjqlwFJVskhrgW+/gHn/kqvDJB6c1JSFnr3LENSuwGd3P9eGIVJmyNLy7QJCAv
-         ovG0ReFGg0qXTZ0ti3rYfCCDBHu9ke0+LiYjGMSjXi0ew3lxcH31xZwKJ0+axNsXzmui
-         f0bg==
+        b=ULaSL/J9Rsr5RjtvxZBR2F4V2A/9p8ITaDStoVxkKTCpdSQ2pIdF3ZtICG4qxzN9kT
+         EmqKi0xf3LBqJfJx0DWJWrHfRCZmuQklHEGmcZCdvJ7aCgYzItgOBfyvp6aDXVxbrqG2
+         GTbJIhjujhXO0EVWXJt92AKMQTn5ExlZYqUyG9sI3s078huKIUUavZwsKYM+k8zsCqAj
+         pAjDKVV04J86dKttZh/xSKPmZhA9r7HgQRK2PaRoQygaT0+KypQ97mydzBb1HJUwhSVR
+         x2Aaro+WwvQ/QY/beiqva07Vx7fGGfOn9jIulvYW2CBlp2xU1KAhVOmNZN0I76L4Nv+a
+         mLpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :mime-version:date:message-id:dkim-signature;
-        bh=37/vd5BT2BR+X/Vmpl9N9wIK1MYiu2a3rUJxZx7ieP0=;
-        fh=WaOdKrDWYJFCjpd9XuplKfhY5PHSKebwZLQ9Fcuj1Yw=;
-        b=D5y8x0iH4ly6X41Tg8TSZzWaXebhDH+/MiN4+9grPQNDPmzSiBEAYGEGyiSDvyTV+i
-         /vQhIf7HM0J6rKjuu360UufxUZTIgWLTZmRPk3yYMEnXTErGwJziAKPQ4vwtk94Y/O7J
-         LJKiTWjjIoLok2y9wJpLVW5UuXnidquFRCLkbJAN7QLaRsJw99FYlH2kdwLpstg53izX
-         FFfnWhlOkoKePkSydQVoYKO8tjRV0Kvmxpc3b0JOh3V+nQBXwhIN4ZHyrI2WGonYjoVU
-         q4i/RoC50pgO7/kBwnhAg13Gv+pgkR4EezC84ABUfFdPVkViK48VUUnoUEHKVsiM3blk
-         HOgw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=w/fxIqo+g5WwjavjYufA4hFi1cRbz34uO2PZEzQMCek=;
+        fh=O+2u8hFAAERaF+T6vw7JypAsUuQaL3qza6cHiv6p+w8=;
+        b=UepNz5Tpo2KsGdCR2S3MUKv4KoH7/MemS5ZbqbcLJARDLfgNhq8K0bTucmokdLt7kN
+         /FiKKLrQr5Ijcoh611Q0ROkUt2yA7Zaa7D12vKbDvvYBac4IJPsGbzf0nNjYYps/9vGZ
+         7ew8eWtugyP+wGeu1zdtfjduXh4UNLhpMI1DuYcfyb4+BZmSRuWQBeIDtBv9KqZ71k40
+         gpHZ8iTvwRXkK+vjtfuqVSKMC7uUJT5CnxVL1xedbBwO+CfySgZpuO4kCfeXRisjHYUM
+         4NyOy9s/YOW3G15VhKp9GJyqJAgI172vQXSwSsRIjmes3++LZvdefw96GSDSj6Pr1bVs
+         ToOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MdReVYsz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020ac85d87000000b004197a296e03si11186044qtx.514.2023.11.16.04.46.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=weJhndDP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i15-20020a056512318f00b0050ec96b961dsor503527lfe.0.2024.01.09.06.24.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 04:46:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 Jan 2024 06:24:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MdReVYsz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3blc-0006H2-UP; Thu, 16 Nov 2023 07:46:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r3bla-0006GK-Of
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 07:46:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r3blZ-0005hM-5j
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 07:46:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700138798;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=37/vd5BT2BR+X/Vmpl9N9wIK1MYiu2a3rUJxZx7ieP0=;
- b=MdReVYszlQHU1PpAv+x4u9ubsxaBGy2cQJBivpUmTlXm2l1Z9yysroVQhfLBkxDv69hwW3
- g/jCD+xn9GmmzAdL/fT2gXEcaBcu4+Z75nHduBTwaZT2zW7U+swLysFPata1ATiNn/oOxa
- wtzNJakdXJHeyeJAqsEUgrK1glTu2GI=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-184-4hzgqoaDPX-ydVN_ZLGjbw-1; Thu,
- 16 Nov 2023 07:46:35 -0500
-X-MC-Unique: 4hzgqoaDPX-ydVN_ZLGjbw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C4BC43C1ACD5;
- Thu, 16 Nov 2023 12:46:34 +0000 (UTC)
-Received: from [10.39.193.151] (unknown [10.39.193.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D04E37ACE;
- Thu, 16 Nov 2023 12:46:32 +0000 (UTC)
-Message-ID: <5d7cc3e7-a534-0352-6a86-fb95fdf3ccfa@redhat.com>
-Date: Thu, 16 Nov 2023 13:46:31 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b=weJhndDP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1704810253; x=1705415053; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=w/fxIqo+g5WwjavjYufA4hFi1cRbz34uO2PZEzQMCek=;
+        b=weJhndDP+FivvkdCBNTS7iChtDmUcuZOy6XtZuXKgPL5gq9oQaY/GUlrJGa357WF3Z
+         /n1Wh4WgEonKP+S0DVIOKUfPSSOOOjiY/E0MBnS119m2ejMDv7pBoKmxjtP+uIqDoQTN
+         AsC4+VYNnfbRF+lCjVYhMHTPSFxB1YpcNf4t8+5SWxc/C4gRLz4/bjrr/rwgWCvH+x+g
+         jDSS91buoXZe5yYQ2J+bKJlcn+LUQiBNyUfYjgoM6GVkBojfYRW/YaA6Q9jawNqvsosD
+         u4SJAoLYj9tVoNl7rpCF66jmtRzkn7sF+40gjRkEdGjKeUvuphm9dEV/NyPTS2iZpDCs
+         488w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704810253; x=1705415053;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=w/fxIqo+g5WwjavjYufA4hFi1cRbz34uO2PZEzQMCek=;
+        b=HEy9XHhACAMgmSlDPR4dxdbIohk1h1VqWcOVR2lW4G69rMzfflT3GSmbG6qlloNHxs
+         K6+yS4vRSVkAWL753MnT5j+zuzixj8PG7wJKSmG0GUpg1aivDQcLGzEhGMW6sCjX9f+5
+         BT7wCuzVSvIZFwOdUm8RCrD+BBESrkqEjaC2hIxzh2yudWiRB+WXqwlGJRQAda1ONNRi
+         2WF4o4Wiy8HoL3D0Rwcp16y2+vRGwi6Tazf4/Ygnq11nSD4uOsQMA7VEYUwF8/bX9MHL
+         PLQ34Y9ZGyjegsqZYiKCn6ILaeTlyyZ6ncUOyEundLDjYPauSRayns1sIT3iP3DSkDUC
+         vaJQ==
+X-Gm-Message-State: AOJu0Yxajb8U90roijCP/Db0mnOq1fowU8SOqOe2g4Fm8QZVhuoHRuXh
+	0S+WvAy5MpCyv7spZPSPlQfw/gCpqZvTsDg2pT2Ob+IqowQIOmqg
+X-Google-Smtp-Source: AGHT+IFrVXvHsq1m1peP2eO+e72Pz8YdISUp+RIUUAo1aE+Zj9tZO0OThcNuGgpWww0VuL5fmq96NN7TJ2JIvwtuWz4=
+X-Received: by 2002:a05:6512:2001:b0:50e:a923:4bb with SMTP id
+ a1-20020a056512200100b0050ea92304bbmr1442148lfb.133.1704810252732; Tue, 09
+ Jan 2024 06:24:12 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [PATCH 01/16] hw/uefi: add include/hw/uefi/var-service-api.h
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, graf@amazon.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-References: <20231115151242.184645-1-kraxel@redhat.com>
- <20231115151242.184645-2-kraxel@redhat.com>
-Content-Language: en-US
-From: Laszlo Ersek <lersek@redhat.com>
-In-Reply-To: <20231115151242.184645-2-kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /lNUnb+KzrGk
+References: <20240108163735.254732-1-stefanha@redhat.com>
+In-Reply-To: <20240108163735.254732-1-stefanha@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jan 2024 14:24:01 +0000
+Message-ID: <CAFEAcA_RYdGZRxOAD43phmj0WmHTbU01tiNTmC8CxHF2cpb6DQ@mail.gmail.com>
+Subject: Re: [PULL 0/6] Block patches
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, 
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-block@nongnu.org, 
+	Alistair Francis <alistair.francis@wdc.com>, Max Filippov <jcmvbkbc@gmail.com>, kvm@vger.kernel.org, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-arm@nongnu.org, 
+	Jean-Christophe Dubois <jcd@tribudubois.net>, Jiri Slaby <jslaby@suse.cz>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Eric Blake <eblake@redhat.com>, Paul Durrant <paul@xen.org>, BALATON Zoltan <balaton@eik.bme.hu>, 
+	Kevin Wolf <kwolf@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Roman Bolshakov <rbolshakov@ddn.com>, Reinoud Zandijk <reinoud@netbsd.org>, 
+	Christian Borntraeger <borntraeger@linux.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>, 
+	Weiwei Li <liwei1518@gmail.com>, qemu-ppc@nongnu.org, 
+	Sunil Muthuswamy <sunilmut@microsoft.com>, Halil Pasic <pasic@linux.ibm.com>, 
+	Song Gao <gaosong@loongson.cn>, Aurelien Jarno <aurelien@aurel32.net>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Andrey Smirnov <andrew.smirnov@gmail.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Alexander Graf <agraf@csgraf.de>, 
+	Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, Stefan Weil <sw@weilnetz.de>, 
+	Harsh Prateek Bora <harshpb@linux.ibm.com>, Hailiang Zhang <zhanghailiang@xfusion.com>, 
+	Hyman Huang <yong.huang@smartx.com>, Michael Roth <michael.roth@amd.com>, Fam Zheng <fam@euphon.net>, 
+	Stefano Stabellini <sstabellini@kernel.org>, 
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, David Gibson <david@gibson.dropbear.id.au>, 
+	Artyom Tarasenko <atar4qemu@gmail.com>, Stafford Horne <shorne@gmail.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, David Woodhouse <dwmw2@infradead.org>, 
+	Cameron Esfahani <dirty@apple.com>, Eric Farman <farman@linux.ibm.com>, Jason Wang <jasowang@redhat.com>, 
+	Nicholas Piggin <npiggin@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Hanna Reitz <hreitz@redhat.com>, 
+	Huacai Chen <chenhuacai@kernel.org>, Jagannathan Raman <jag.raman@oracle.com>, 
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>, Bin Meng <bin.meng@windriver.com>, 
+	Fabiano Rosas <farosas@suse.de>, Akihiko Odaki <akihiko.odaki@daynix.com>, 
+	David Hildenbrand <david@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +J9Eiyc7cEl/
 
-On 11/15/23 16:12, Gerd Hoffmann wrote:
-> This file defines the register interface of the uefi-vars device.
-> It's only a handful of registers: magic value, command and status
-> registers, location and size of the communication buffer.
-> 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  include/hw/uefi/var-service-api.h | 40 +++++++++++++++++++++++++++++++
->  1 file changed, 40 insertions(+)
->  create mode 100644 include/hw/uefi/var-service-api.h
-> 
-> diff --git a/include/hw/uefi/var-service-api.h b/include/hw/uefi/var-service-api.h
-> new file mode 100644
-> index 000000000000..37fdab32741f
-> --- /dev/null
-> +++ b/include/hw/uefi/var-service-api.h
-> @@ -0,0 +1,40 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * uefi-vars device - API of the virtual device for guest/host communication.
-> + */
-> +#ifndef QEMU_UEFI_VAR_SERVICE_API_H
-> +#define QEMU_UEFI_VAR_SERVICE_API_H
-> +
-> +
-> +/* isa: io range */
-> +#define UEFI_VARS_IO_BASE                   0x520
-> +
-> +/* sysbus: fdt node path */
-> +#define UEFI_VARS_FDT_NODE       "qemu-uefi-vars"
-> +#define UEFI_VARS_FDT_COMPAT     "qemu,uefi-vars"
-> +
-> +/* registers */
-> +#define UEFI_VARS_REG_MAGIC                  0x00  /* 16 bit */
-> +#define UEFI_VARS_REG_CMD_STS                0x02  /* 16 bit */
-> +#define UEFI_VARS_REG_BUFFER_SIZE            0x04  /* 32 bit */
-> +#define UEFI_VARS_REG_BUFFER_ADDR_LO         0x08  /* 32 bit */
-> +#define UEFI_VARS_REG_BUFFER_ADDR_HI         0x0c  /* 32 bit */
-> +#define UEFI_VARS_REGS_SIZE                  0x10
-> +
-> +/* magic value */
-> +#define UEFI_VARS_MAGIC_VALUE               0xef1
-> +
-> +/* command values */
-> +#define UEFI_VARS_CMD_RESET                  0x01
-> +#define UEFI_VARS_CMD_MM                     0x02
-> +
-> +/* status values */
-> +#define UEFI_VARS_STS_SUCCESS                0x00
-> +#define UEFI_VARS_STS_BUSY                   0x01
-> +#define UEFI_VARS_STS_ERR_UNKNOWN            0x10
-> +#define UEFI_VARS_STS_ERR_NOT_SUPPORTED      0x11
-> +#define UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE    0x12
-> +
-> +
-> +#endif /* QEMU_UEFI_VAR_SERVICE_API_H */
+On Mon, 8 Jan 2024 at 16:37, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+>
+> The following changes since commit ffd454c67e38cc6df792733ebc5d967eee28ac=
+0d:
+>
+>   Merge tag 'pull-vfio-20240107' of https://github.com/legoater/qemu into=
+ staging (2024-01-08 10:28:42 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/stefanha/qemu.git tags/block-pull-request
+>
+> for you to fetch changes up to 0b2675c473f68f13bc5ca1dd1c43ce421542e7b8:
+>
+>   Rename "QEMU global mutex" to "BQL" in comments and docs (2024-01-08 10=
+:45:43 -0500)
+>
+> ----------------------------------------------------------------
+> Pull request
+>
+> ----------------------------------------------------------------
+>
+> Philippe Mathieu-Daud=C3=A9 (1):
+>   iothread: Remove unused Error** argument in aio_context_set_aio_params
+>
+> Stefan Hajnoczi (5):
+>   system/cpus: rename qemu_mutex_lock_iothread() to bql_lock()
+>   qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to BQL_LOCK_GUARD
+>   qemu/main-loop: rename qemu_cond_wait_iothread() to
+>     qemu_cond_wait_bql()
+>   Replace "iothread lock" with "BQL" in comments
+>   Rename "QEMU global mutex" to "BQL" in comments and docs
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0
+for any user-visible changes.
+
+-- PMM

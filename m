@@ -1,87 +1,87 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp641000ejs;
-        Tue, 9 Jan 2024 13:09:30 -0800 (PST)
-X-Received: by 2002:a05:600c:2111:b0:40e:51bf:cd9a with SMTP id u17-20020a05600c211100b0040e51bfcd9amr700163wml.39.1704834570050;
-        Tue, 09 Jan 2024 13:09:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704834570; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp647088ejs;
+        Tue, 9 Jan 2024 13:22:35 -0800 (PST)
+X-Received: by 2002:a05:600c:4504:b0:40e:3edf:106f with SMTP id t4-20020a05600c450400b0040e3edf106fmr2898715wmo.35.1704835355631;
+        Tue, 09 Jan 2024 13:22:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704835355; cv=none;
         d=google.com; s=arc-20160816;
-        b=mWAEeunZ61l7XoM/0fnVLZt9FDSnsYAIz2Y6Te0yLsv1/s+oydxnce9wWTjt3y+NTC
-         r4NkGOjndhC31ssf5btVw2fxY1fsYfmLNSS/IpTRTCn6RgG90H9yWRILEk80VvVo5sAe
-         9HJUXi9cyFpfchhSjYJZKKtjbN+f7D1s0Bybhob/ZzgpoCdb2fCCxKR9AFkjN5xxlMgP
-         JRPssR1d7vyYXTlUiUzpSoDM1ZZ0JATuulCu48JhvCsQCDQNrFTtm+kATJWJczWylocc
-         YUCdR6LomFNYzMdumqFzwt8B5k3U7UWu64eKTK5XaQBNXH0B7DMWBQKueQMk3hs5W/0m
-         4ENQ==
+        b=ZWJXU8PIQyz6sV5TRRd5K2qW4o8C/mtZZPJNf8tHBzaeB4mySCZDZS5mJbjkNKnT5S
+         tU+shd3mIW+ISDkTBFFLYjTEIAyI/Hrjuq8wG03SQaUrvRt1O6bZTCY/lByV3gCOnRwN
+         kPjfcUKgSH3NCy1hYoTisiz124zhkM8eNznHSP2Ykmbd3ZyeYu8hJNRcF/50Cg1G7/Iu
+         f1xyo/KzTONqHHy6Tu1ViTnbeWcWkkbQXarnT3o1ufKEe3T3RLPqQPsZ2mBJBh+z/eXd
+         V3JSEOuGL6u4QuF0AOGnFTqDKWHRvo1xmkT+O3SBodPca7rRLDDe3qOC31F8KOyyVQxI
+         XcSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Wz1iXNg4TXNcOn/x7G2oIVLLHopXLlyNHKrHRtohyQo=;
-        fh=wRU5kielp4IS2kICFCLYdHE13iB+78bzyZKKybLnvkQ=;
-        b=xh1DlE8cbb4Pqd7dfk/DTZw0XOBtHsOjSWSW7eRV91mzdxoJpUwjbbbTXKGQYxjL9e
-         nhbwZuDSDf755eJsOwDyBL2MdxqcxlogOJPenU7U6Z/NlpxggWUPi4totCJI/5PPY0JS
-         KyPa7D5+FJ2U1hbEf75JRCr4CITsWlauuew8AYnDfJh5LE+LKIeSABWwkH9FR0O0hgAp
-         Wvco1ybjLil9+aenGeK1IZCbgjFyKxxgqt7b6IP3FUmCbAjuZoliOFWJGmctPY0XagsP
-         +JSKLKiCxYh/94u82hvG98wf11OUB7IogF2n0AAweWgvz7it1WFfkDTUwh9Jzk9HnrWM
-         dAOg==
+        bh=vilajE5PD5xNBjEyKKd02WV1Do39jbxVN5LpyF4myDk=;
+        fh=sC2jhvJGes9ZKuASZGFqGOvDOKxpH4EPQIQTcIa403Y=;
+        b=ZaGhThzyyL2dCatS5VejZOjHR3H2B6patgkpG313e4FOrF3dw9/xms6+91TB1xVbXB
+         CQbZ7ue8QuSiX8LMqAQjXgxmQedsnZ1Qe3Mg6XnJlxRT3Sp5NzRlS+RY0lpSISP7QPFw
+         QPk8PNO+VzCz/CtCfbe2fqkg0woM2S/aZFaBl7K1216/R1dAtTmJDL0f489Y7FgA0amr
+         sUhcH5xuszRhViBDXTgYg+mk27VdyHnX+g53BYHLZBXbhp5zklVoJhLDJdbBG4jT/Heg
+         0aeiimBKvg4myDXtaRbK9mDa3bg046cpuB+wHPNszypBmOWj05W54iEzqFiHlh+MR/xj
+         yBdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jRWkmdqo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YRaokbTP;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 17-20020a17090601d100b00a2b857a06ecsor350977ejj.7.2024.01.09.13.09.29
+        by mx.google.com with SMTPS id q20-20020a7bce94000000b0040d5ab899cbsor1185348wmj.11.2024.01.09.13.22.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jan 2024 13:09:30 -0800 (PST)
+        Tue, 09 Jan 2024 13:22:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jRWkmdqo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YRaokbTP;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704834569; x=1705439369; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=linaro.org; s=google; t=1704835355; x=1705440155; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Wz1iXNg4TXNcOn/x7G2oIVLLHopXLlyNHKrHRtohyQo=;
-        b=jRWkmdqovD5PMtatY13qVq+LVCjNEmlgV1eBwOlAgQPInAYuFXJEwcKrkQ+sVCGlDf
-         XSZwD8d3pb0hpOnhGXitoaYjhdMKvYsP3H6zG8CtKy8gNj56YWnJsCfTXVjJ4Q7DlQ+h
-         K6ljS4SKulK9vPVA3TAClj1TuVQPefkKT4JfyRBT6v4Py3hu0lRGlBoRyrLsXfPwaWyU
-         6XUTD9hNAJnndRKjfGvZkZKLs0ekCURnkbfTlAHcyzo13Tsiu/uyoAJueH4ZZsWoJP3p
-         snm9EFSHY0Ux9Z0EsjzXgAvZI8ZEjwehmQuVfLuAtzw4p0lWcl0Xcnv67E6arNR9ATX1
-         fWPQ==
+        bh=vilajE5PD5xNBjEyKKd02WV1Do39jbxVN5LpyF4myDk=;
+        b=YRaokbTP1b5mjUa2rgmwp+hJ7hB9eceizGcZGr3JTXwz+EuhcSy4Trkei+BvfBLwju
+         uTKYypNk4JHoYfn/FErF3409PZirEFISioUlmLd4qrEcKnqWjNMVHnJE842Rzl26WyGn
+         gFyIJ7kp+HCJf+EP0/73OcnPQ3WdR88YZZ/pVIFY5wuKOer3IoH6Ew7iVyKbGWlBzGes
+         a3YJ88yZFwUceIXrEJgQzdLZ8v9UEC4U/gsZ43wFf1O8bm9hkvlnkOLOwo3vnzoTarjh
+         WZpk4Irh9Wyjs0HJ//TpawCzq0wo9+rqnrtmIi75ce/h+xldeTCxCfrrE5BwXRsv+Yd+
+         R5Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704834569; x=1705439369;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=1e100.net; s=20230601; t=1704835355; x=1705440155;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Wz1iXNg4TXNcOn/x7G2oIVLLHopXLlyNHKrHRtohyQo=;
-        b=s+auA7HS5mmhY0xnObpNzmxLC0USN9+zf7TUxZlOhLhYyqZPErgK9aXfx1oM6dExs4
-         /6GEemxWD1ARCyaMAdfFG94lXxCtp7ISZS5OAhjk8Igf+0+OmZ+f7TiRFph5BrymIVN2
-         VxvmeEdSQ7c1/f6oQxP7nbrgMMGRZRa1xG6xlVfnTgtSo9+QRuqJ8sRS2L18Ay8E8aXG
-         97a8APay5RMIDxfA7izDAuZdW0FVJaXgriICGCoK9KELj4cbgvLh/9iAZDia1LxTn02U
-         9cVAJmkAs7rLvyYaWNZ3i50KSoFQDuvMN13WLUtQniihpPlMh/F9GYtBBtLMxTbBmXUq
-         nn0g==
-X-Gm-Message-State: AOJu0Ywoeb3bWGisR9a08LHjLEYZUlFxiKJwzen4n9iV0BdtXRlLU4dN
-	jslaQN5nplybGT8Z9PLyhNab9rVZ41T0qUPX
-X-Google-Smtp-Source: AGHT+IHftvF2JCRBKB+z64ic95MXrpEdZp/g67kVpBlET30ZvQURGCj3M5YiV7FCXCXenqJW3Z8kkw==
-X-Received: by 2002:a17:906:1914:b0:a29:905d:447b with SMTP id a20-20020a170906191400b00a29905d447bmr34782eje.96.1704834569679;
-        Tue, 09 Jan 2024 13:09:29 -0800 (PST)
+        bh=vilajE5PD5xNBjEyKKd02WV1Do39jbxVN5LpyF4myDk=;
+        b=OEWTyKqAZ6Y5V8okMzUEgcTi/EH6AXrxVkiFG/U7NmQGpvPAKRvd3EoJQTHq3Nuw/a
+         xuzFOQeINUV8x9DAvsf042lh1xGIsgavGFBuumbhUPFiarmeGEjsur+oU/LJVvJDo4OQ
+         ifs3SL7AWZvC0imZ1Npi4w0ke4VZwCDHVNuEDEK8HNQ/5c6tT8Lxa0rUg3VO4E9jCKOv
+         KXA6UH9DTpvW/XO7ePtEqNO5eTT8g7Gjg/y7hxF1oyKlEll2M5yRW57Q52b1416f//9T
+         BwhArpaMYxf95E+7V0EZpJUfZt5M0HYVstEV88u+Q3v9cNkuA4szQULwtrX0e75Ue0HU
+         bcYQ==
+X-Gm-Message-State: AOJu0Yz5e5Wd/xrXKMw8fTsv4ddFIWwdT8bcrzT1MLZzPZlGgAFwNFNy
+	4rtvdy5bnPNx4dD+XIviIt+7kOBV+gIxXtzj
+X-Google-Smtp-Source: AGHT+IEAJEHgRoRyUHQtZpit8RRsRcQzryKB20FYHzfp1NjPrNzEae/jM666RZEIN0O3yT5dlel3NA==
+X-Received: by 2002:a05:600c:4fc7:b0:40e:fba:524 with SMTP id o7-20020a05600c4fc700b0040e0fba0524mr3152487wmq.120.1704835355086;
+        Tue, 09 Jan 2024 13:22:35 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr. [176.184.32.47])
-        by smtp.gmail.com with ESMTPSA id p22-20020a17090628d600b00a2b07693f55sm1400919ejd.166.2024.01.09.13.09.27
+        by smtp.gmail.com with ESMTPSA id bg30-20020a05600c3c9e00b0040d62f89381sm4924090wmb.35.2024.01.09.13.22.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 13:09:29 -0800 (PST)
-Message-ID: <9a98502f-12a4-4f8f-ba54-a6e1d7a2d4a2@linaro.org>
-Date: Tue, 9 Jan 2024 22:09:26 +0100
+        Tue, 09 Jan 2024 13:22:34 -0800 (PST)
+Message-ID: <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org>
+Date: Tue, 9 Jan 2024 22:22:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
  A7/A15 MPCore priv
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org,
- Juan Quintela <quintela@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, qemu-devel@nongnu.org, Markus Armbruster
+ <armbru@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
@@ -101,17 +101,18 @@ References: <20231212162935.42910-1-philmd@linaro.org>
  <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
  <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
  <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
- <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
- <e2a282a5-b92a-439e-9ecf-3ea1f74deb25@linaro.org>
-In-Reply-To: <e2a282a5-b92a-439e-9ecf-3ea1f74deb25@linaro.org>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <87bk9u8dhs.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: H4BDD+PotBM0
+X-TUID: WAISGwvfhf8v
 
-On 9/1/24 22:07, Philippe Mathieu-Daudé wrote:
-> Hi Cédric,
+Hi Fabiano,
+
+On 9/1/24 21:21, Fabiano Rosas wrote:
+> Cédric Le Goater <clg@kaod.org> writes:
 > 
-> On 9/1/24 19:06, Cédric Le Goater wrote:
 >> On 1/9/24 18:40, Fabiano Rosas wrote:
 >>> Cédric Le Goater <clg@kaod.org> writes:
 >>>
@@ -135,12 +136,9 @@ On 9/1/24 22:07, Philippe Mathieu-Daudé wrote:
 >>>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
 >>>>>>>>>> central place (abstract MPCore parent).
 >>>>>>>>>
->>>>>>>>> Changing the QOM hierarchy has an impact on the state of the 
->>>>>>>>> machine
->>>>>>>>> and some fixups are then required to maintain migration 
->>>>>>>>> compatibility.
->>>>>>>>> This can become a real headache for KVM machines like virt for 
->>>>>>>>> which
+>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the machine
+>>>>>>>>> and some fixups are then required to maintain migration compatibility.
+>>>>>>>>> This can become a real headache for KVM machines like virt for which
 >>>>>>>>> migration compatibility is a feature, less for emulated ones.
 >>>>>>>>
 >>>>>>>> All changes are either moving properties (which are not migrated)
@@ -152,8 +150,7 @@ On 9/1/24 22:07, Philippe Mathieu-Daudé wrote:
 >>>>>
 >>>>> I've ran this through my migration compatibility series [1] and it
 >>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
->>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I 
->>>>> don't
+>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
 >>>>> think we even support migration of anything non-KVM on arm.
 >>>>
 >>>> it happens we do.
@@ -167,20 +164,17 @@ On 9/1/24 22:07, Philippe Mathieu-Daudé wrote:
 >> this was very useful for dev. Also, some machines are partially emulated.
 >> Anyhow I agree this is not a strong requirement and we often break it.
 >> Let's focus on KVM only.
-> 
-> No no, we want the same for TCG.
-> 
+>>
 >>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
 >>>>
->>>> yes it depends on the QOM hierarchy and virt seems immune to the 
->>>> changes.
+>>>> yes it depends on the QOM hierarchy and virt seems immune to the changes.
 >>>> Good.
 >>>>
 >>>> However, changing the QOM topology clearly breaks migration compat,
 >>>
 >>> Well, "clearly" is relative =) You've mentioned pseries and aspeed
 >>> already, do you have a pointer to one of those cases were we broke
->>> migration 
+>>> migration
 >>
 >> Regarding pseries, migration compat broke because of 5bc8d26de20c
 >> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
@@ -190,26 +184,25 @@ On 9/1/24 22:07, Philippe Mathieu-Daudé wrote:
 >> is quite an headache and this turned out to raise another problem some
 >> months ago ... :/ That's why I sent [1] to prepare removal of old
 >> machines and workarounds becoming a burden.
->>
->> Regarding aspeed, this series breaks compat.
 > 
-> Can you write down the steps to reproduce please? I'll debug it.
+> This feels like something that could be handled by the vmstate code
+> somehow. The state is there, just under a different path.
 
-Also, have you figured (bisecting) which patch start to break?
+What, the QOM path is used in migration? ...
 
-> We need to understand this.
+See recent discussions on "QOM path stability":
+https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
+https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
+https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
+
+> No one wants
+> to be policing QOM hierarchy changes in every single series that shows
+> up on the list.
 > 
->> Not that we care much
->> but ​this caught my attention because of my past experience on pseries.
->> Same kind of QOM change which could impact other machines, like virt.
->> Since you checked that migration compat is preserved on virt, we should
->> be fine.
->>
->> Thanks,
->>
->> C.
->>
->> [1] 
->> https://lore.kernel.org/qemu-devel/20231214181723.1520854-1-clg@kaod.org/
->>
+> Anyway, thanks for the pointers. I'll study that code a bit more, maybe
+> I can come up with some way to handle these cases.
+> 
+> Hopefully between the analyze-migration test and the compat tests we'll
+> catch the next bug of this kind before it gets merged.
+> 
 > 

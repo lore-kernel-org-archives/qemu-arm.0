@@ -1,98 +1,97 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp82254ejs;
-        Mon, 8 Jan 2024 16:04:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHIsd3PJvnUkt5FBlHdye/8vU+mtVYPQGDTxr/9sdk/TzmnWjCqjCHa/IZNcQ6ShX+7V3/o
-X-Received: by 2002:a05:6214:2489:b0:67f:7e15:fc86 with SMTP id gi9-20020a056214248900b0067f7e15fc86mr5994664qvb.17.1704758683867;
-        Mon, 08 Jan 2024 16:04:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704758683; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp82330ejs;
+        Mon, 8 Jan 2024 16:04:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE7QPM2Fvu1jUWuM9T4+F6WkhND/77Q5jiZwZF9NBG/h7AOIiRpXiEWksUFhMSXb87kRRuS
+X-Received: by 2002:a05:6808:2120:b0:3bd:3cc7:bcb0 with SMTP id r32-20020a056808212000b003bd3cc7bcb0mr53157oiw.91.1704758692019;
+        Mon, 08 Jan 2024 16:04:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704758691; cv=none;
         d=google.com; s=arc-20160816;
-        b=uYzLXDD81xdi4n1DAn51nG0a/39OsO3R1fzhyF12hoWqQiZ4sqLPUWmplcgovlUgjF
-         VhsdmozPLbVn3hBQAG2WYRHs7M0Mcbtb6FNU1RjsieIyWQ/5JF/T/oc9oxb8QjqMSFoE
-         ycp1mfA9snV+VSQJV885vFEEyY4xVyDU5A6guNhgnJDzmDDSVYLmv/XU4yletGgrh3Rk
-         KrjVhAvvWB4vbxIHtTyvJSk1iyi1sFbD1+o24CSMqfGSTNYp5mBlrW1+3JDWHKaZpHpH
-         h9PjMDCFY1/RE0gtMhA78+p1G5iq/Yg7IqX/p6MpunVL6hxv1l9/Ez6/kSgwLhU7k9CR
-         5OMQ==
+        b=1KCxpSjT7oL7pelVk4yzXsbCy7jEamzcp5bUYFbepr/cFkGriDa7DWusn59qkosaRB
+         JUyfWJb2WGNZpRdtfc43BRIn5RyARtyBjDoH+XG9bKhQ0MUa8Lyv0aRD12cQ2adqJGyv
+         b5OGiGtNhVanVbFMYio7Ph1Z0zjTKuz6ge3fbeGQ5bX8EXE5aZYn12nHiTJWF6gTwVfb
+         ZUV4svUhrUm0rCq8zNf9PpTCo6vm+UNJ0cCCDnj4pNmOHTc5nYzl8nR5llX8thOiQYe7
+         2CpCaDEU85Pves1+rqZel+MS92Cvs2pgD2Gr9SWoXZ0VFPFZaoSJMedAUsgz+GbfYjE/
+         oKDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=0zwBYwlXzagRxm522cZZg7FCEItIO1cnO0b0ABF21a4=;
+         :mime-version:date:dkim-signature;
+        bh=lo2y+3Kxpi5o71dRFLd+CcN35f2ucT4g03dBFKBsl+c=;
         fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
-        b=Oo/MQKsxgFtnkcs/L/E2KiMDx9NdT4OK+yJhrBK+ocUokaBvq5BWN2oydxl22/0bAb
-         5YSxncZxkvT8WrHHOFrfKz0DI8pIrsWrN2VjIOnXrPwGuOqyV77pXiD0oxCoiboeUDPx
-         AcvhCJWaabNqOWHhCqC+gESSLGqelrQSZaX2EHXYbqdWQkzFyEfIAMupX3wmIqoNbeok
-         xXO9dkh0clJZSKqq5LJoAVy/IHPE+w6qqcYOus1AR4vnxnZv54TF4OWwM7epa4CcsJRj
-         qHy1jh861NhaY8VRcNh/o9liKOSze4Plh+oelxzaQqvdmtRRxKghemWZLk+kHLGSLGs/
-         PMuQ==
+        b=jlpIQP/NJmZMZ4A0clIwpvUSOY1JVjqIjgffcAO0pkdUwh0MBzDhzdc1WqBQKlhiN9
+         0+uCU2q1s3zdZjQgUDq1lT2p1osG1ZSQQd+FgVxSA5mZjN6Uk3gOrcP277j4EIYXk668
+         F6dPV7JLvGjM68RLWL9cMCg7cSel1HUhwG8yGd1i8qdMMTnHA/npi0bybNZ++8Xl4FAf
+         eHML3BOeWsz03uRTwvz2OCEmyilgTzpY8CNr5lcUwI2Yz8bnTxgojo9vPgGQ6L4R5v/m
+         E/8ldszgVSFSqPQUc4++XaE35MSbio/lzHOfmlzBv/I6DbgLAM9e4t1mMgllXnPOZfnJ
+         vwrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=FsquVmaW;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=U788Rm1h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t20-20020a0ce2d4000000b0067f9276f8d2si861376qvl.87.2024.01.08.16.04.43
+        by mx.google.com with ESMTPS id n6-20020a0c9d46000000b00680f685d333si1035060qvf.18.2024.01.08.16.04.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jan 2024 16:04:43 -0800 (PST)
+        Mon, 08 Jan 2024 16:04:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=FsquVmaW;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=U788Rm1h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rMza2-0002PE-Gb; Mon, 08 Jan 2024 19:02:54 -0500
+	id 1rMzZu-0002H9-6u; Mon, 08 Jan 2024 19:02:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3J42cZQwKCOYVIJQPMabMNIVOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--nabihestefan.bounces.google.com>)
- id 1rMza0-0002MI-6p
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 19:02:52 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <3HY2cZQwKCNwL89GFCQRCD8LEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--nabihestefan.bounces.google.com>)
+ id 1rMzZs-0002Fo-Vn
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 19:02:45 -0500
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3J42cZQwKCOYVIJQPMabMNIVOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--nabihestefan.bounces.google.com>)
- id 1rMzZx-0002sK-RT
- for qemu-arm@nongnu.org; Mon, 08 Jan 2024 19:02:51 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-5ecfd153ccfso39788427b3.2
- for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 16:02:47 -0800 (PST)
+ <3HY2cZQwKCNwL89GFCQRCD8LEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--nabihestefan.bounces.google.com>)
+ id 1rMzZo-0002pS-Sk
+ for qemu-arm@nongnu.org; Mon, 08 Jan 2024 19:02:42 -0500
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-dbed0713422so1421339276.0
+ for <qemu-arm@nongnu.org>; Mon, 08 Jan 2024 16:02:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1704758567; x=1705363367; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=0zwBYwlXzagRxm522cZZg7FCEItIO1cnO0b0ABF21a4=;
- b=FsquVmaWGY/l2+8DsaY2+vKVUb5dEHtztPzGRWyvpzMDVY8UIVKK38Ot4FlMtGE9Ju
- l0y24QWxw56ARNPo7Z0nhmSfF1rrXpl29g7ChJ8yhDryq00Tml5tkBaex7qwl3Zfee4g
- mmpEgwv4xlORJcBZBjKUySJs7+8gDSJAsn6un0f6IAAuKisskHBg7X8jpgtgFfuLXo/B
- WsdYi8IHCMCHmw5FFCvmYprmgR71zY687M714kcePG9Pqa/KH+w/mySlxffrW9kcnMVH
- 4KuzR0YRDfaPeNnP680i8gZku6xeAKKLzA/7Apy90qNv2iNuhVRUJohf4DE2DhRUqXt+
- gxbQ==
+ d=google.com; s=20230601; t=1704758557; x=1705363357; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=lo2y+3Kxpi5o71dRFLd+CcN35f2ucT4g03dBFKBsl+c=;
+ b=U788Rm1hjCNIXg0DFkMDEzUKGVv05CZJ+j2t0iqFUKtU9Db7y8eJqj9XKW/w8P1ATY
+ salmfFTc6K3Eo4L6Okqy+S34uH248/RmwOfk2Mcu++p0oN8HoW2d0RJoKHTkWcTJfjJZ
+ TwyOiuqPwHUF68zE/08Y9KiNOdsK6iQgHK3BFH1i3/ysoPVt3VReAnGGLmBSqDx19xow
+ FHo/Iguj6htU+k7VgFZ72Yte7uk/SGrclfNUkNwssT0ur+aw2HlnueYiETelk4s/XYKO
+ 4KSGwytjpvi4W9IPiOT4i7+yZyx2GP0JslWYLRvegzQbkwYErNSgHocLQIdzWoM2xI40
+ BZ0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704758567; x=1705363367;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0zwBYwlXzagRxm522cZZg7FCEItIO1cnO0b0ABF21a4=;
- b=vOqrODYujdd4sBZyl95PSsUaJCgi9a9lzi6sOdVBYBZ0/qMPa60KaI7ckamROnSrSi
- Q74bXoAaPd6XYd1rcwVu5Ri7XnehL20zLKJ9lJp4Fr3sjj3rMPkopSMlfapUW+hOkUR0
- QipB4xF2J2F8yKPlA7RrwIJSXY1ARFZGHUiak/RXQ9WSByFoc+3U6Y+mmj7AwGprnllT
- QzU6/c7Fi262WcKAHv9aG8UpU0WBE4oyTOqr+i6TZ/E8V78IJupYikqSPuj/1K4pI2me
- ssvP46USgZajQ7bsipLi9+lWALj39IdR86GjGjo6Rsr+Go2GH20BWmHUJH47+OA8oRWV
- Zl1A==
-X-Gm-Message-State: AOJu0YyVifAxDUBgG2ZiMvy/Faw2YqqPmAh2BVPKwYIe8MvSGERdKF5L
- q+6uliyGhzQ1Zu+AimGq1lIR0VsfaKmUW+ZXwHEqPB6OYw==
+ d=1e100.net; s=20230601; t=1704758557; x=1705363357;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lo2y+3Kxpi5o71dRFLd+CcN35f2ucT4g03dBFKBsl+c=;
+ b=IHvNAmK1jcGZPt2Xbg6ioO1fl9x4wM+9IhNJVmrre8Bm5kduX2Fttz6p6aL7ck0X8S
+ /cCFJYqpVOFAWtoKutQ+8omXbuc5wzQ+pwD5JNmYbJLGU/R8kOmNibb6ILqqGge7zQvw
+ 1pZDUazjZX61egLcabEQzx5mXVAyjugRo2lH+tSkW7hvHtfuBOKGCQ2BBZDtv3xOOFjt
+ okCALirS+WVeOUMq+Grz4CIx78ed4SzU9swCnmnSuk06/Sx6PywEf9APGXscUoEOWw3Z
+ SEJa2eO0Pmvcr1CHIpv2BX0DtNPqnv3FK3YMzfYN6eOki6LJnW5Ho2j9oiE4I86r9hXZ
+ 0QWA==
+X-Gm-Message-State: AOJu0Ywbq7XsUM0U5Ig5uNtp5pxivdd6wVc7icIIRn6S/ZmU0mCsIa7f
+ 7MwDXL9IDC//6mqGup0PU1CAsTo355r1q6JuY3+8ZOyb9w==
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a25:848b:0:b0:dbd:f0c7:8926 with SMTP
- id v11-20020a25848b000000b00dbdf0c78926mr1843244ybk.7.1704758567571; Mon, 08
- Jan 2024 16:02:47 -0800 (PST)
-Date: Tue,  9 Jan 2024 00:02:30 +0000
-In-Reply-To: <20240109000234.2799153-1-nabihestefan@google.com>
+ (user=nabihestefan job=sendgmr) by 2002:a25:8203:0:b0:dbe:30cd:8fcb with SMTP
+ id q3-20020a258203000000b00dbe30cd8fcbmr126857ybk.0.1704758557158; Mon, 08
+ Jan 2024 16:02:37 -0800 (PST)
+Date: Tue,  9 Jan 2024 00:02:24 +0000
 Mime-Version: 1.0
-References: <20240109000234.2799153-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
-Message-ID: <20240109000234.2799153-7-nabihestefan@google.com>
-Subject: [PATCH v11 06/10] tests/qtest: Creating qtest for GMAC Module
+Message-ID: <20240109000234.2799153-1-nabihestefan@google.com>
+Subject: [PATCH v11 00/10] Implementation of NPI Mailbox and GMAC Networking
+ Module
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
@@ -100,9 +99,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
  nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
  Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3J42cZQwKCOYVIJQPMabMNIVOWWOTM.KWUYMUc-IZUVWVOVc.WZO@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3HY2cZQwKCNwL89GFCQRCD8LEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -110,7 +109,7 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,249 +124,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e03hD3Jha9B5
+X-TUID: 682Q15lzlIRS
 
 From: Nabih Estefan Diaz <nabihestefan@google.com>
 
- - Created qtest to check initialization of registers in GMAC Module.
- - Implemented test into Build File.
+[Changes since v10]
+Fixed macOS build issue. Changed imports to not be linux-specific.
 
-Change-Id: I8b2fe152d3987a7eec4cf6a1d25ba92e75a5391d
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
----
- tests/qtest/meson.build      |   1 +
- tests/qtest/npcm_gmac-test.c | 209 +++++++++++++++++++++++++++++++++++
- 2 files changed, 210 insertions(+)
+[Changes since v9]
+More cleanup and fixes based on suggestions from Peter Maydell
+(peter.maydell@linaro.org) suggestions.
+
+[Changes since v8]
+Suggestions and Fixes from Peter Maydell (peter.maydell@linaro.org),
+also cleaned up changes so nothing is deleted in a later patch that was
+added in an earlier patch. Patch count decresed by 1 because this cleanup
+led to one of the patches being irrelevant.
+
+[Changes since v7]
+Fixed patch 4 declaration of new NIC based on comments by Peter Maydell
+(peter.maydell@linaro.org)
+
+[Changes since v6]
+Remove the Change-Ids from the commit messages.
+
+[Changes since v5]
+Undid remove of some qtests that seem to have been caused by a merge
+conflict.
+
+[Changes since v4]
+Added Signed-off-by tag and fixed patch 4 commit message as suggested by
+Peter Maydell (peter.maydell@linaro.org)
+
+[Changes since v3]
+Fixed comments from Hao Wu (wuhaotsh@google.com)
+
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
+
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
+
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
+
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
+
+Hao Wu (5):
+  hw/misc: Add Nuvoton's PCI Mailbox Module
+  hw/arm: Add PCI mailbox module to Nuvoton SoC
+  hw/misc: Add qtest for NPCM7xx PCI Mailbox
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
+
+Nabih Estefan Diaz (5):
+  tests/qtest: Creating qtest for GMAC Module
+  include/hw/net: GMAC IRQ Implementation
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ docs/system/arm/nuvoton.rst         |   2 +
+ hw/arm/npcm7xx.c                    |  53 +-
+ hw/misc/meson.build                 |   1 +
+ hw/misc/npcm7xx_pci_mbox.c          | 324 ++++++++++
+ hw/misc/trace-events                |   5 +
+ hw/net/meson.build                  |   2 +-
+ hw/net/npcm_gmac.c                  | 939 ++++++++++++++++++++++++++++
+ hw/net/trace-events                 |  19 +
+ include/hw/arm/npcm7xx.h            |   4 +
+ include/hw/misc/npcm7xx_pci_mbox.h  |  81 +++
+ include/hw/net/npcm_gmac.h          | 340 ++++++++++
+ tests/qtest/meson.build             |   2 +
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 +++++++
+ tests/qtest/npcm_gmac-test.c        | 341 ++++++++++
+ 14 files changed, 2347 insertions(+), 4 deletions(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
  create mode 100644 tests/qtest/npcm_gmac-test.c
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 2ac79925f9..aed8924be9 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -221,6 +221,7 @@ qtests_aarch64 = \
-   (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
-   (config_all.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-new file mode 100644
-index 0000000000..130a1599a8
---- /dev/null
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -0,0 +1,209 @@
-+/*
-+ * QTests for Nuvoton NPCM7xx/8xx GMAC Modules.
-+ *
-+ * Copyright 2023 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqos/libqos.h"
-+
-+/* Name of the GMAC Device */
-+#define TYPE_NPCM_GMAC "npcm-gmac"
-+
-+typedef struct GMACModule {
-+    int irq;
-+    uint64_t base_addr;
-+} GMACModule;
-+
-+typedef struct TestData {
-+    const GMACModule *module;
-+} TestData;
-+
-+/* Values extracted from hw/arm/npcm8xx.c */
-+static const GMACModule gmac_module_list[] = {
-+    {
-+        .irq        = 14,
-+        .base_addr  = 0xf0802000
-+    },
-+    {
-+        .irq        = 15,
-+        .base_addr  = 0xf0804000
-+    },
-+    {
-+        .irq        = 16,
-+        .base_addr  = 0xf0806000
-+    },
-+    {
-+        .irq        = 17,
-+        .base_addr  = 0xf0808000
-+    }
-+};
-+
-+/* Returns the index of the GMAC module. */
-+static int gmac_module_index(const GMACModule *mod)
-+{
-+    ptrdiff_t diff = mod - gmac_module_list;
-+
-+    g_assert_true(diff >= 0 && diff < ARRAY_SIZE(gmac_module_list));
-+
-+    return diff;
-+}
-+
-+/* 32-bit register indices. Taken from npcm_gmac.c */
-+typedef enum NPCMRegister {
-+    /* DMA Registers */
-+    NPCM_DMA_BUS_MODE = 0x1000,
-+    NPCM_DMA_XMT_POLL_DEMAND = 0x1004,
-+    NPCM_DMA_RCV_POLL_DEMAND = 0x1008,
-+    NPCM_DMA_RCV_BASE_ADDR = 0x100c,
-+    NPCM_DMA_TX_BASE_ADDR = 0x1010,
-+    NPCM_DMA_STATUS = 0x1014,
-+    NPCM_DMA_CONTROL = 0x1018,
-+    NPCM_DMA_INTR_ENA = 0x101c,
-+    NPCM_DMA_MISSED_FRAME_CTR = 0x1020,
-+    NPCM_DMA_HOST_TX_DESC = 0x1048,
-+    NPCM_DMA_HOST_RX_DESC = 0x104c,
-+    NPCM_DMA_CUR_TX_BUF_ADDR = 0x1050,
-+    NPCM_DMA_CUR_RX_BUF_ADDR = 0x1054,
-+    NPCM_DMA_HW_FEATURE = 0x1058,
-+
-+    /* GMAC Registers */
-+    NPCM_GMAC_MAC_CONFIG = 0x0,
-+    NPCM_GMAC_FRAME_FILTER = 0x4,
-+    NPCM_GMAC_HASH_HIGH = 0x8,
-+    NPCM_GMAC_HASH_LOW = 0xc,
-+    NPCM_GMAC_MII_ADDR = 0x10,
-+    NPCM_GMAC_MII_DATA = 0x14,
-+    NPCM_GMAC_FLOW_CTRL = 0x18,
-+    NPCM_GMAC_VLAN_FLAG = 0x1c,
-+    NPCM_GMAC_VERSION = 0x20,
-+    NPCM_GMAC_WAKEUP_FILTER = 0x28,
-+    NPCM_GMAC_PMT = 0x2c,
-+    NPCM_GMAC_LPI_CTRL = 0x30,
-+    NPCM_GMAC_TIMER_CTRL = 0x34,
-+    NPCM_GMAC_INT_STATUS = 0x38,
-+    NPCM_GMAC_INT_MASK = 0x3c,
-+    NPCM_GMAC_MAC0_ADDR_HI = 0x40,
-+    NPCM_GMAC_MAC0_ADDR_LO = 0x44,
-+    NPCM_GMAC_MAC1_ADDR_HI = 0x48,
-+    NPCM_GMAC_MAC1_ADDR_LO = 0x4c,
-+    NPCM_GMAC_MAC2_ADDR_HI = 0x50,
-+    NPCM_GMAC_MAC2_ADDR_LO = 0x54,
-+    NPCM_GMAC_MAC3_ADDR_HI = 0x58,
-+    NPCM_GMAC_MAC3_ADDR_LO = 0x5c,
-+    NPCM_GMAC_RGMII_STATUS = 0xd8,
-+    NPCM_GMAC_WATCHDOG = 0xdc,
-+    NPCM_GMAC_PTP_TCR = 0x700,
-+    NPCM_GMAC_PTP_SSIR = 0x704,
-+    NPCM_GMAC_PTP_STSR = 0x708,
-+    NPCM_GMAC_PTP_STNSR = 0x70c,
-+    NPCM_GMAC_PTP_STSUR = 0x710,
-+    NPCM_GMAC_PTP_STNSUR = 0x714,
-+    NPCM_GMAC_PTP_TAR = 0x718,
-+    NPCM_GMAC_PTP_TTSR = 0x71c,
-+} NPCMRegister;
-+
-+static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-+                          NPCMRegister regno)
-+{
-+    return qtest_readl(qts, mod->base_addr + regno);
-+}
-+
-+/* Check that GMAC registers are reset to default value */
-+static void test_init(gconstpointer test_data)
-+{
-+    const TestData *td = test_data;
-+    const GMACModule *mod = td->module;
-+    QTestState *qts = qtest_init("-machine npcm845-evb");
-+
-+#define CHECK_REG32(regno, value) \
-+    do { \
-+        g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
-+    } while (0)
-+
-+    CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
-+    CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
-+    CHECK_REG32(NPCM_DMA_RCV_POLL_DEMAND, 0);
-+    CHECK_REG32(NPCM_DMA_RCV_BASE_ADDR, 0);
-+    CHECK_REG32(NPCM_DMA_TX_BASE_ADDR, 0);
-+    CHECK_REG32(NPCM_DMA_STATUS, 0);
-+    CHECK_REG32(NPCM_DMA_CONTROL, 0);
-+    CHECK_REG32(NPCM_DMA_INTR_ENA, 0);
-+    CHECK_REG32(NPCM_DMA_MISSED_FRAME_CTR, 0);
-+    CHECK_REG32(NPCM_DMA_HOST_TX_DESC, 0);
-+    CHECK_REG32(NPCM_DMA_HOST_RX_DESC, 0);
-+    CHECK_REG32(NPCM_DMA_CUR_TX_BUF_ADDR, 0);
-+    CHECK_REG32(NPCM_DMA_CUR_RX_BUF_ADDR, 0);
-+    CHECK_REG32(NPCM_DMA_HW_FEATURE, 0x100d4f37);
-+
-+    CHECK_REG32(NPCM_GMAC_MAC_CONFIG, 0);
-+    CHECK_REG32(NPCM_GMAC_FRAME_FILTER, 0);
-+    CHECK_REG32(NPCM_GMAC_HASH_HIGH, 0);
-+    CHECK_REG32(NPCM_GMAC_HASH_LOW, 0);
-+    CHECK_REG32(NPCM_GMAC_MII_ADDR, 0);
-+    CHECK_REG32(NPCM_GMAC_MII_DATA, 0);
-+    CHECK_REG32(NPCM_GMAC_FLOW_CTRL, 0);
-+    CHECK_REG32(NPCM_GMAC_VLAN_FLAG, 0);
-+    CHECK_REG32(NPCM_GMAC_VERSION, 0x00001032);
-+    CHECK_REG32(NPCM_GMAC_WAKEUP_FILTER, 0);
-+    CHECK_REG32(NPCM_GMAC_PMT, 0);
-+    CHECK_REG32(NPCM_GMAC_LPI_CTRL, 0);
-+    CHECK_REG32(NPCM_GMAC_TIMER_CTRL, 0x03e80000);
-+    CHECK_REG32(NPCM_GMAC_INT_STATUS, 0);
-+    CHECK_REG32(NPCM_GMAC_INT_MASK, 0);
-+    CHECK_REG32(NPCM_GMAC_MAC0_ADDR_HI, 0x8000ffff);
-+    CHECK_REG32(NPCM_GMAC_MAC0_ADDR_LO, 0xffffffff);
-+    CHECK_REG32(NPCM_GMAC_MAC1_ADDR_HI, 0x0000ffff);
-+    CHECK_REG32(NPCM_GMAC_MAC1_ADDR_LO, 0xffffffff);
-+    CHECK_REG32(NPCM_GMAC_MAC2_ADDR_HI, 0x0000ffff);
-+    CHECK_REG32(NPCM_GMAC_MAC2_ADDR_LO, 0xffffffff);
-+    CHECK_REG32(NPCM_GMAC_MAC3_ADDR_HI, 0x0000ffff);
-+    CHECK_REG32(NPCM_GMAC_MAC3_ADDR_LO, 0xffffffff);
-+    CHECK_REG32(NPCM_GMAC_RGMII_STATUS, 0);
-+    CHECK_REG32(NPCM_GMAC_WATCHDOG, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_TCR, 0x00002000);
-+    CHECK_REG32(NPCM_GMAC_PTP_SSIR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_STSR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_STNSR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_STSUR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_STNSUR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
-+    CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void gmac_add_test(const char *name, const TestData* td,
-+                          GTestDataFunc fn)
-+{
-+    g_autofree char *full_name = g_strdup_printf(
-+            "npcm7xx_gmac/gmac[%d]/%s", gmac_module_index(td->module), name);
-+    qtest_add_data_func(full_name, td, fn);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    TestData test_data_list[ARRAY_SIZE(gmac_module_list)];
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    for (int i = 0; i < ARRAY_SIZE(gmac_module_list); ++i) {
-+        TestData *td = &test_data_list[i];
-+
-+        td->module = &gmac_module_list[i];
-+
-+        gmac_add_test("init", td, test_init);
-+    }
-+
-+    return g_test_run();
-+}
 -- 
 2.43.0.472.g3155946c3a-goog
 

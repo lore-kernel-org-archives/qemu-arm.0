@@ -1,196 +1,157 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp252549ejs;
-        Tue, 9 Jan 2024 00:41:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFvZzQ0qPV2EkDQ2juDh5LibxA1d6VK48R8WqIwXlKopxAj2TIB/aaXj0oF7o0XTYfb1CLu
-X-Received: by 2002:a05:6214:242d:b0:67f:5118:b65e with SMTP id gy13-20020a056214242d00b0067f5118b65emr7962227qvb.50.1704789694810;
-        Tue, 09 Jan 2024 00:41:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704789694; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp303288ejs;
+        Tue, 9 Jan 2024 02:47:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE7wK46SfhUY8FkSaVMgOMXMHqiFYr0VHX9u+PB+ovKT2xPm0pbqUgs2CvjTGfXkJ0eIgld
+X-Received: by 2002:a25:4109:0:b0:dbd:ad93:6181 with SMTP id o9-20020a254109000000b00dbdad936181mr2296435yba.121.1704797275721;
+        Tue, 09 Jan 2024 02:47:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704797275; cv=none;
         d=google.com; s=arc-20160816;
-        b=eG4JeWm50+xeL0xEKa0DtAP9wi1Ida3+3YjnNyVOt+yKFgLmW4eB8csJqkTWnW8I4M
-         GCZwYpd67s3QLKspIacMEAuHDAGgmNQ7zl2h4JKaM33TRtS7Hz8B3tSfpPK4Tdt5qVDq
-         4GG5pygMxQV9kHZk3ROwKR1BKsgpMEmPQ2lUrSzeKzjLyFJeld1Y7yqLxKqgy7Mq75Ru
-         T5QW6jZdVV2xeUxgFAf80LvOaA20bQeViLXdoPLjZJgeviVjvu3ig6LKf5JrwiSxx1W2
-         hmdj8EIzSCtyiYVgbDuf/WfyVYp3sy+uNjEEzRLgnOs1PKqslVl5fm3mFPJeLWfi/IxL
-         UCPQ==
+        b=gyspVlUwnD74scKvrUmp+pztxPzoYOcKmzzWDe6vUuVVJDkMvWtrCuNQopY6/gmoMw
+         +065fQK7eVD3YTtLLN4lX26/H/FVZceB+EOCHddHm1sdO+xqJBKAQzz0As2CroHOIsdU
+         xooHyNExseQNiVmqprrQ8mkG3q1JeAia4QK1bUcu4Ig27uKMLaziZrIFs1YR6yKbTNbz
+         eXsPTFBpDnDhjCn44g1qRpPg6rnc+U/BJPz4uAZmTEC56XoROQ3LaK1Ru8LyYAvTsLDo
+         AZIhBUXAG1PY39odRCKJEFNWanJriyipYHapqghDDxmrfC4MRXIpHehqIBbmZmwrbjoF
+         aFig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=SmXcImIVxWxiPq142HoSGr/nabmNhgAEQtTOPNP71MM=;
-        fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
-        b=Q6QMSmJhyjLxDqzUQoPqK2msZm2npB8vOgNDyPo8C6lrkwAwDH6WsF56g1Fud9qC4o
-         D61SQcGMa62mLl8A+pdzbR+exW26q1+EkM3BYLQH2S3yMMbkcoVQ3cUTS3TZq+xTfDlM
-         69cqOSQbbh/lcF6h0lrmA/I61iu9496qbiHfFI3U/Lo7pfQMEeQ49rRoN4KXIVZqNEKn
-         1nJs6OemuGecgZ+oGMwNRV4Tj7MjcTZYZC2p8a30e71olxAqYQQxZ2X2Bux/bF/N4HeZ
-         piUf4MjxzMd6eW+xPCDAQi1vTlhKSX668BYu1P1s6uhI53oA+PDmTVR0gtcZz90LHJKe
-         Tg2w==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=WeE9p1KtNiMS+m1qiSiYi66/Rm0PEV09UDX3wJbs64A=;
+        fh=8T5jpy8nnx9A9iI/Evvvm4CFZ7+43NG31kqZ6MU2JiA=;
+        b=tc29n+Ji1HI2OgNPlxGzpOy777LHLiBfHL7K4qd+5FvhND8wi7cVYiXYwhNnMIhVFS
+         /h4NBYlKMdSXtMnuXrxRahLo6eADK6zkoNj/U+zXfxo9QY0vGbmO6C0103e5Q57CLFcg
+         mWdWVHScYU+MYbEpK5XhCRwS7jctz8xg00qVuugxIykgLIyIsiVwBIpZOtIwtWqmR+zw
+         D6mbxBXJRBWEuNNc0+ZOR+6i/Z+o0Yuq90CtYdTQJUQATV6+L9Sb6EFd1NM55DIoD4qZ
+         iHXlvbJuBQ8cc5nIMHifgdlnR7bXtTs3n7CoCjVGovOQ6ZjgvxZvMwTWGaddGE5xxNxb
+         fY6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q/wfSXb7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020a0ce146000000b00680506b5aa9si1787426qvl.14.2024.01.09.00.41.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZT3Bcj6e;
+       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kwolf@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id f205-20020a251fd6000000b00dbed7179c7dsi778616ybf.418.2024.01.09.02.47.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 00:41:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Jan 2024 02:47:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Q/wfSXb7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rN7fh-0003Eo-TK; Tue, 09 Jan 2024 03:41:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rN7fh-0003Eg-EX
- for qemu-devel@nongnu.org; Tue, 09 Jan 2024 03:41:17 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rN7ff-0001VC-HB
- for qemu-devel@nongnu.org; Tue, 09 Jan 2024 03:41:17 -0500
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-1d3ec3db764so7847435ad.2
- for <qemu-devel@nongnu.org>; Tue, 09 Jan 2024 00:41:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704789673; x=1705394473; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=SmXcImIVxWxiPq142HoSGr/nabmNhgAEQtTOPNP71MM=;
- b=Q/wfSXb7OAYFJgdSjXIC6psySyeCU9ozHHFMmZiK4QuGnsJgbyqZIboBqcPT7zful1
- E5fKJyizArhNoGJC8ZPrG1zmDClk4MYhtiRfv4iXz3/FpnQf/qW7z32JjK7oKdjJZK3B
- wxPVzGM3kcJnDb6kobn4tD1hLFTVNwro7KWSTzI8jfofSBJACsqhFx9/0T66P8jTq1Fl
- EwQQ3SO5L5GqF4DMZoL5T6bJLEuDX4Zig7fOKBfxcfZGdnFibLXgZRON96WnOgn4Mf+n
- fVNPyYC8xqWKvxH2FvxOgVW6rFdVnKHPjri2mATsrxM2YnLixHf0L7p01UItoffLTMCw
- upmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704789673; x=1705394473;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SmXcImIVxWxiPq142HoSGr/nabmNhgAEQtTOPNP71MM=;
- b=JPjxUTi2u+9af/XQ8oTH7RnW1ggP2Zs3uSK8ap+NOmWJ4eZ4QMY3UGZVTkJpYdy6R+
- tKEH/I/uxaPA4hKPt80mzmsUL0MXLJOLDhJkPH4IWBnwpt57c8k6eqsSMF+e0uvdiRkQ
- znwuW/3pxCfWFTSVSuM4EGsjVQaVD11Kmq/bvsOUENVuvGqVZ8uguuLdS5vPVI+LxkL7
- WOg3ZtfSojH1s77kRgs+My2Hs1n5gfqc89+pCUxkdqWjJM5Zs8Hd81VncBPW6SEMm5IW
- yxGeG89HJQcdexlk3j/+PCvb/bwjEFsMPhecDYm1Tl7COMnpc7aEIstqf6dmxOSQAiWK
- Pplw==
-X-Gm-Message-State: AOJu0Yycuk7dEjXd8yI2LSZU77ZhiKXGhtRBGXSbgpIILWKtU2xR/dVT
- uV0n7zC7e7LQHzjW/KBQUbHhQuSYTAVEVA==
-X-Received: by 2002:a17:902:780e:b0:1d4:79b7:b8ce with SMTP id
- p14-20020a170902780e00b001d479b7b8cemr2247199pll.44.1704789673639; 
- Tue, 09 Jan 2024 00:41:13 -0800 (PST)
-Received: from [192.168.40.227] ([172.58.27.248])
- by smtp.gmail.com with ESMTPSA id
- i10-20020a170902eb4a00b001d4ca3087dfsm1205827pli.234.2024.01.09.00.41.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jan 2024 00:41:13 -0800 (PST)
-Message-ID: <dd1ea56b-8347-4536-bf2b-1be63f260496@linaro.org>
-Date: Tue, 9 Jan 2024 19:40:59 +1100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZT3Bcj6e;
+       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1704797273;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WeE9p1KtNiMS+m1qiSiYi66/Rm0PEV09UDX3wJbs64A=;
+	b=ZT3Bcj6e2NmULIF87C4NaotYT1W5P1l5/xjwqKGNDXs1074gDNx8WDOhrs+T8UA1Aejqru
+	Ktr+7ZwfQvJH04OvkgXlvSWPHjHiMMyw6BeJwMnmnbjdyM80TsxfI4CZaRqMODOVnbmWBY
+	uAtd2kZOk5DS+QZYhQixeVajGXWXRzE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-327-5dXObOloPIqrJU1vnaNEbA-1; Tue, 09 Jan 2024 05:47:49 -0500
+X-MC-Unique: 5dXObOloPIqrJU1vnaNEbA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8B8F68E4ABA;
+	Tue,  9 Jan 2024 10:47:48 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.130])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id BADF7C15E6A;
+	Tue,  9 Jan 2024 10:47:46 +0000 (UTC)
+Date: Tue, 9 Jan 2024 11:47:45 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org, Luc Michel <luc.michel@amd.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Frederic Konrad <fkonrad@amd.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [RFC PATCH 0/5] qdev-properties: Try to improve use of dynamic
+ property introspection
+Message-ID: <ZZ0kUcy14YA8t3Pd@redhat.com>
+References: <20240102160455.68612-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 26/35] target/arm: Implement FEAT_NV2 redirection of
- sysregs to RAM
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-27-peter.maydell@linaro.org>
- <88dcdb40-2fa3-449e-a3f7-41d75269a968@linaro.org>
- <CAFEAcA88=EjttEfaVdthnn2vLgWRY1NqYd3cti1VE+4EqsboMg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA88=EjttEfaVdthnn2vLgWRY1NqYd3cti1VE+4EqsboMg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KqiQcwJdDF8M
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240102160455.68612-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-TUID: cZbN8BinZ3fy
 
-On 1/5/24 03:23, Peter Maydell wrote:
-> On Wed, 27 Dec 2023 at 23:55, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 12/18/23 22:32, Peter Maydell wrote:
->>> +    if (s->nv && s->nv2 && ri->nv2_redirect_offset) {
->>
->> Again, s->nv test is redundant.
+Am 02.01.2024 um 17:04 hat Philippe Mathieu-Daudé geschrieben:
+> Hi,
 > 
-> Fixed, thanks.
+> This RFC series tries to work over some limitations exposed in
+> https://lore.kernel.org/qemu-devel/9293e63b-8032-4ea0-b516-9db6949fb607@linaro.org/
 > 
->>> +        /*
->>> +         * Some registers always redirect to memory; some only do so if
->>> +         * HCR_EL2.NV1 is 0, and some only if NV1 is 1 (these come in
->>> +         * pairs which share an offset; see the table in R_CSRPQ).
->>> +         */
->>> +        if (ri->nv2_redirect_offset & NV2_REDIR_NV1) {
->>> +            nv2_mem_redirect = s->nv1;
->>> +        } else if (ri->nv2_redirect_offset & NV2_REDIR_NO_NV1) {
->>> +            nv2_mem_redirect = !s->nv1;
->>> +        } else {
->>> +            nv2_mem_redirect = true;
->>> +        }
->>
->> I wondered if it would be clearer with the "both" case having both bits set.  While I see
->> that the first defined offset is 0x20, offset 0x00 is still reserved and *could* be used.
->> At which point ri->nv2_redirect_offset would need a non-zero value for a zero offset.
->>
->> Maybe clearer as
->>
->>       nv2_mem_redirect = (ri->nv2_redirect_offset &
->>                           (s->nv1 ? NV2_REDIR_NV1_1 : NV2_REDIR_NV1_0));
->>
->> ?
->>
->> This is more verbose for the (common?) case of redirect regardless of nv1, so maybe not.
+> Eventually all QDev objects would use static QOM properties,
+> but in some cases we can not. ARMv7MState is a such example
+> adding properties that might end up irrelevant.
 > 
-> Yes, my motivation for the notation I used is that I wanted to
-> make the specification of the cpreg structs in the common case
-> simple and not too long-winded. If offset 0 does ever get
-> allocated, we'll have to come back and revisit this. But
-> new entries clearly seem to be being allocated at the other
-> end of the table, so I think our chances are good...
-> 
->>> +        if (s->nv2_mem_be) {
->>> +            mop |= MO_BE;
->>> +        }
->>
->> MO_BSWAP is host dependent -- needs
->>
->>       mop |= (s->nv2_mem_be ? MO_BE : MO_LE);
-> 
-> Fixed.
-> 
-> With those two fixes, can I have a reviewed-by? This is the
-> only patch without one, and all the fixes seem to me like
-> very minor things not worth sending out a full v2 for.
+> This is just an example, but thinking long term (in particular
+> in the context of dynamic machines) I'm looking at how this
+> could be improved. Thus this series. I don't like much this
+> current approach (because more boiler place and complexity)
+> however this seems to DTRT for the user.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This doesn't feel like the right approach to me. If you were to describe
+the properties of armv7m in the QAPI schema language without looking at
+the implementation, you would never add something like OptionalBool.
 
+I'm not entirely sure if I understand the details of the problem, so if
+I make wrong assumptions below, please correct me.
 
-r~
+I think what you would get instead is a union with the different CPU
+types as union variants. You would have few fields in the base type
+(cpu-type, memory, etc.), and everything specific to the variant, you
+wouldn't even want to look at in armv7m, but just forward it to the CPU.
+
+Now of course actually getting this QAPIfied is not something to expect
+in the next few days, so let's get back to the QOM level, but keep the
+general idea in mind.
+
+Based on the above, I'd argue that armv7m shouldn't even have the
+properties that it only uses to forward them. Instead, we should let the
+CPU grab its properties directly from the configuration. The way we
+create objects currently is not really designed for this. But let's get
+back to the QOM/QAPI integration patches [1] I sent two years ago and
+suddently it becomes quite easy: armv7m's .instance_config simply calls
+the CPU's .instance_config and passes its visitor. Then the CPU takes
+the options it needs for its properties and that's it.
+
+I discussed this series with Markus recently, and I actually assume that
+he at least mentioned it to you when you discussed things with him. I
+believe the part that you would need here (only up to patch 4 really) is
+pretty much uncontroversial.
+
+Of course, I ignored several "details" here, but I think the idea should
+still be workable. Some of those details:
+
+* This approach requires that the CPUs are first converted to have
+  static properties, but given that making everything static is your
+  goal, I assume that's not a problem.
+
+* The CPU must actually exist when you want to set properties for it.
+  This probably means moving creating the CPU from realize to the new
+  instance_config.
+
+* My patches are for object-add, but we're coming from board code here.
+  So the callers would have to be changed to call .instance_config
+  (probalby indirectly through object_configure()) instead of setting
+  individual properties.
+
+All of this is additional work, but it doesn't look like exceedingly
+hard work.
+
+Kevin
+
+[1] https://patchew.org/QEMU/20211103173002.209906-1-kwolf@redhat.com/

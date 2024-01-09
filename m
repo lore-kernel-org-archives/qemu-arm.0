@@ -1,207 +1,192 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp521126ejs;
-        Tue, 9 Jan 2024 09:14:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFdFF+ZBMKtoREnxrm/4j0YWhszXsgPMcXNyezny0hL/VlQiw9KsH9d0Q0zQikyThcNVm2b
-X-Received: by 2002:a05:620a:3796:b0:783:17fe:103a with SMTP id pi22-20020a05620a379600b0078317fe103amr3343163qkn.19.1704820449971;
-        Tue, 09 Jan 2024 09:14:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704820449; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp533943ejs;
+        Tue, 9 Jan 2024 09:36:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHedWLU+7Bl1dLkT8ouWpVq3CXIWq7JE/MwCH3bKpRSbPQp8MK25KuX4SVb/s5uIni/BS7J
+X-Received: by 2002:a05:6214:23cc:b0:680:d4d8:4297 with SMTP id hr12-20020a05621423cc00b00680d4d84297mr6802548qvb.44.1704821802607;
+        Tue, 09 Jan 2024 09:36:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704821802; cv=none;
         d=google.com; s=arc-20160816;
-        b=JeqSIcBzsR5L+07g2oJTImd0H6GvYZf+uMdKdD+rpUAjTX9topIita536rpMWbMe2B
-         Pl+XC3Ksql4hqG8l+zT5sFPc+VkGBkQhgB0EQce1pkoiBIKqtzJmIWNfnvdMg4p+32ua
-         3rmKVcFYUncHs7NVCwa30yOnn6ACY2m6+SRQ3Nhx7JEvfcfTEmqHFyMVphEBRscS0yQe
-         dTjcesdUX7KoPATLzxsZptTsBFx8wxDmwprIPLkbGsGlzXF4W0fROYk8FCVfsBjE6+sa
-         uzTuzjZIFmngxr+j5cd66VGcO3nGOoaGdltuKf23tqCNzwpfX3V6nxpdhY3nHifIZPKm
-         SP/A==
+        b=kjL5q96LPFg/7tjtriQZNxYzwe7l0UBJcY8SZtdP1iU1dXMFvV6S5pLq/BR5X4o/Xw
+         yeJmqoHAA/BPFH0H2dvvC8vo25A/ZCMHiX6J/1z/19md0YVvJ/Xh37oof1nt6RCWAbJJ
+         zBJZV76XfVvd5T1HB77iUY0G0ygMrKA8HkzjKtHXzFwIi/Ogr9wjYEXF6ATEgaL77QAM
+         rYVNtuvZ/9FPLhtRUk/DTU7UocP9idBQrjW53xilo9A0lUcoDJKIhvNhekzJ4nj4sObn
+         IagUHXrESNH2QazzBHXHBtHKXhqkoon7xyx08qU2Jqs9uSbvFcqLNkwkJU9Lml4zxoIg
+         PBzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CHC1NK96q6cWM/H+9W9W8XZwDAj/9wTds35KcQ/gzhg=;
-        fh=5zYgDpezQB258wHIg5KdU8gmbwSQXoSWZ6UaXqRC/iM=;
-        b=CcWqJONO47jmMukQcwS3vr6bGuaYVE4d0k0u4PJfXQD0Omsr4GNrUbbkHrgj6Nnsb+
-         1EfVMlRhMsjUUyYwmPZHXYWLiQnO1n7gEoSGaaUfMyD5qs4HieWhX++B+yRg0ZJYyASr
-         GevE/oHlqaL58nOwR8ci7l/oootBtk5bztX9bGSDamAmdRBQk1aqBgDAoqI3UVNCe0C8
-         BgsAdGaYA5nN1sFTBkWEpLS/ighUy5R6S8VcoKw3YoPCgbgROLqXjR1qaLdU64ZPHmPt
-         KXZcvRPiwLRqd8Rf9ogLYrzqO+sqwp9bEcUgBuIkS6NrPXD+QwX1iElp4g3oeqghk//G
-         hHVA==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=ZcYirumRuyZPaFy/9HFOSE2W5znoMqi8X59+loeJRSc=;
+        fh=H+bnH/1LVxfdWyHUrNnyE6eBPUhUnkevyjpu/3Dm6qA=;
+        b=HsiDwbIiw8XBlPiTwdlhGIrz05bo+ooZzgpOR7GoX0nELZedeeHYdWO9TmfLt2jrZ3
+         6vpHr7pW1HrmZaHOn3z3bOHwDIu/d/LfkvCeuk43RVJH4Wqp9ZScOIbf5FY41b2Y69V6
+         HkLdjEx3FVSKlAdqXkWxJTxxxDwnC93CnDx4V6nIlT0jthesOscsHAIWoVk0UUQgzKRE
+         69OCig2X1ii+loYePKuGA7YiR+b3zug/zLfNgoKE5E/kaRdZIHtscf3VuFW+9TsPpM9C
+         NCzt0Ko5Dt40AZ6addToB0wJ1kfvjzpPy1Wgz6KvslEUvNQp9T9rVFa9OnAs9XwR6CkX
+         aA2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cEQ0C1kw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17-20020a05620a121100b0078320c07419si2530838qkj.228.2024.01.09.09.14.09
+        by mx.google.com with ESMTPS id v12-20020a05620a0f0c00b007830dd7eaf3si2497912qkl.633.2024.01.09.09.36.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 09:14:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jan 2024 09:36:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cEQ0C1kw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rNFfu-0008PV-Lo; Tue, 09 Jan 2024 12:14:02 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rNG1Q-0001ou-Gz; Tue, 09 Jan 2024 12:36:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNFfs-0008Ox-6n
- for qemu-devel@nongnu.org; Tue, 09 Jan 2024 12:14:01 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNFff-0002GR-Fh
- for qemu-devel@nongnu.org; Tue, 09 Jan 2024 12:13:59 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3376d424a79so1709521f8f.1
- for <qemu-devel@nongnu.org>; Tue, 09 Jan 2024 09:13:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704820421; x=1705425221; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=CHC1NK96q6cWM/H+9W9W8XZwDAj/9wTds35KcQ/gzhg=;
- b=cEQ0C1kwKaHfEP7h5Z1SNQaPjh4nf8mgWB3VLjc12edZvxcg9lpP0oS7RHmMkjqEzw
- A1lZ7E05RQHA4LfycP8IXwJaZGZqN17TSnMnj1GEwJvODZO+7B4EFrkMcnAmqbQkdtNF
- mRVs9+bLYfsXIh9lSMoRtLBHWQu5ibN8GPvo4j/gsRfXYj9YKkugAM8iYaZmHZepEOge
- FQL43fRuDNSAgIywSEIndcgj8zE7yJSk0kLyrsgpXzm68pwR1b6o/KFAoa5L9cj1XimK
- DnPb3owkxbHelbcqqSri+2SvQr+xE8QW09mskHmJGSDsgIawzej5l3g7yOzluJWVc2Lt
- Z2Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704820421; x=1705425221;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CHC1NK96q6cWM/H+9W9W8XZwDAj/9wTds35KcQ/gzhg=;
- b=mznuMUrjQrEV5/AS5pvoIBLi6dFSv+p01hknYHlSqTxoU0/psbkYAWmzcH6IuMlmkj
- mZTCqUuBENlIxoQDw8QpTXBEYhRZCxmDsJcJN6ev0fCBzD43QiCXTwiDDc5zIZrXTEa4
- mMSd2jdPyLUXOo/W5n5OKgjlbr0fyxm1zdwhPnbcXaU39EalxHbXYLXGVLBy2RZ4B/df
- PZ3kACvMnTSGntZKt3mNO4TMbIwhEhHhaSkyIt6BwjKh84UZT+DImdbpQAxEAFAFLWh4
- CleygjVYpn/qNXR8iWrstkGxo6fLtZbMp/8HmdLxVYV3xvyBNQeqojDdSQIrirHBt7D6
- Z5UQ==
-X-Gm-Message-State: AOJu0YyPu7S5ValQAtkCp6rIERqp6Kiwhhh9xK+f/Euxg+oTXkvI0ZxD
- kYevdiRgUI1sVm2W7QC3Scqr0FgumQZ1AQ==
-X-Received: by 2002:adf:fe09:0:b0:336:660d:20e1 with SMTP id
- n9-20020adffe09000000b00336660d20e1mr801164wrr.75.1704820421397; 
- Tue, 09 Jan 2024 09:13:41 -0800 (PST)
-Received: from [192.168.69.100] (rsa59-h02-176-184-32-47.dsl.sta.abo.bbox.fr.
- [176.184.32.47]) by smtp.gmail.com with ESMTPSA id
- g18-20020adff3d2000000b00336aac53e75sm2850512wrp.97.2024.01.09.09.13.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jan 2024 09:13:41 -0800 (PST)
-Message-ID: <50a4ff56-65e5-4c14-86ba-c0759d1c5034@linaro.org>
-Date: Tue, 9 Jan 2024 18:13:38 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org>)
+ id 1rNG1M-0001gz-5t; Tue, 09 Jan 2024 12:36:12 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org>)
+ id 1rNG16-0004iu-ND; Tue, 09 Jan 2024 12:36:10 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4T8dPd0T1mz4wxZ;
+ Wed, 10 Jan 2024 04:35:49 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4T8dPZ1Cgsz4wx5;
+ Wed, 10 Jan 2024 04:35:45 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] tests/avocado/machine_aspeed.py: Update buildroot images to
+ 2023.11
+Date: Tue,  9 Jan 2024 18:35:38 +0100
+Message-ID: <20240109173538.435781-1-clg@kaod.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 1/3] hw/misc: Implement STM32L4x5 EXTI
-Content-Language: en-US
-To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20240109160658.311932-1-ines.varhol@telecom-paris.fr>
- <20240109160658.311932-2-ines.varhol@telecom-paris.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240109160658.311932-2-ines.varhol@telecom-paris.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=Gpa9=IT=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Tti2XOSsK/5z
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: blZeDm5t+9ye
 
-On 9/1/24 17:06, Inès Varhol wrote:
-> Although very similar to the STM32F4xx EXTI, STM32L4x5 EXTI generates
-> more than 32 event/interrupt requests and thus uses more registers
-> than STM32F4xx EXTI which generates 23 event/interrupt requests.
-> 
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
-> ---
->   docs/system/arm/b-l475e-iot01a.rst |   5 +-
->   hw/misc/Kconfig                    |   3 +
->   hw/misc/meson.build                |   1 +
->   hw/misc/stm32l4x5_exti.c           | 290 +++++++++++++++++++++++++++++
->   hw/misc/trace-events               |   5 +
->   include/hw/misc/stm32l4x5_exti.h   |  51 +++++
->   6 files changed, 352 insertions(+), 3 deletions(-)
->   create mode 100644 hw/misc/stm32l4x5_exti.c
->   create mode 100644 include/hw/misc/stm32l4x5_exti.h
+Compared to mainline buildroot, these images have some customization :
 
+- Linux version is bumped to 6.6.3 and built with a custom config
+- U-Boot is switched to the one provided by OpenBMC for more support
+- defconfigs extra tools for dev
 
-> +static unsigned configurable_mask(unsigned bank)
-> +{
-> +     return valid_mask(bank) & ~exti_romask[bank];
-> +}
+See branch [1] for more details.
 
-Excellent, I'm glad of all the improvement you made over
-the review process, great work!
+There are a few changes since last update, commit ed1f5ff84209. Images
+all have a password now and I2C devices have been updated in the Linux
+ast2600-evb device tree [2]. Do the necessary adjustements.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+[1] https://github.com/legoater/buildroot/commits/aspeed-2023.11
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9deb10cf160e
 
-> +static void stm32l4x5_exti_write(void *opaque, hwaddr addr,
-> +                                 uint64_t val64, unsigned int size)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +    const unsigned bank = regbank_index_by_addr(addr);
-> +
-> +    trace_stm32l4x5_exti_write(addr, val64);
-> +
-> +    switch (addr) {
-> +    case EXTI_IMR1:
-> +    case EXTI_IMR2:
-> +        s->imr[bank] = val64 & valid_mask(bank);
-> +        return;
-> +    case EXTI_EMR1:
-> +    case EXTI_EMR2:
-> +        s->emr[bank] = val64 & valid_mask(bank);
-> +        return;
-> +    case EXTI_RTSR1:
-> +    case EXTI_RTSR2:
-> +        s->rtsr[bank] = val64 & configurable_mask(bank);
-> +        return;
-> +    case EXTI_FTSR1:
-> +    case EXTI_FTSR2:
-> +        s->ftsr[bank] = val64 & configurable_mask(bank);
-> +        return;
-> +    case EXTI_SWIER1:
-> +    case EXTI_SWIER2: {
-> +        const uint32_t set = val64 & configurable_mask(bank);
-> +        const uint32_t pend = set & ~s->swier[bank] & s->imr[bank] &
-> +                              ~s->pr[bank];
-> +        s->swier[bank] = set;
-> +        s->pr[bank] |= pend;
-> +        for (unsigned i = 0; i < irqs_per_bank[bank]; i++) {
-> +            if (extract32(pend, i, 1)) {
-> +                qemu_irq_pulse(s->irq[i + 32 * bank]);
-> +            }
-> +        }
-> +        return;
-> +    }
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ tests/avocado/machine_aspeed.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-[...]
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 6fa5459a07bf..cec018142453 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -155,6 +155,7 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+         time.sleep(0.1)
+         exec_command(self, 'root')
+         time.sleep(0.1)
++        exec_command(self, "passw0rd")
+ 
+     def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+@@ -167,14 +168,14 @@ def test_arm_ast2500_evb_buildroot(self):
+         """
+ 
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2500-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('f96d11db521fe7a2787745e9e391225deeeec3318ee0fc07c8b799b8833dd474')
++                     'images/ast2500-evb/buildroot-2023.11/flash.img')
++        image_hash = ('c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0', 'Aspeed AST2500 EVB')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -195,8 +196,8 @@ def test_arm_ast2600_evb_buildroot(self):
+         """
+ 
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2600-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('e598d86e5ea79671ca8b59212a326c911bc8bea728dec1a1f5390d717a28bb8b')
++                     'images/ast2600-evb/buildroot-2023.11/flash.img')
++        image_hash = ('b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
+@@ -206,17 +207,17 @@ def test_arm_ast2600_evb_buildroot(self):
+                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+         self.vm.add_args('-device',
+                          'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+              'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '0')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+         self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+                     property='temperature', value=18000);
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '18000')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -261,7 +262,6 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+         self.vm.add_args('-device',
+                          'tpm-tis-i2c,tpmdev=tpm0,bus=aspeed.i2c.bus.12,address=0x2e')
+         self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+-        exec_command(self, "passw0rd")
+ 
+         exec_command_and_wait_for_pattern(self,
+             'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_device',
+-- 
+2.43.0
+

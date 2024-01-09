@@ -1,133 +1,127 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp666152ejs;
-        Tue, 9 Jan 2024 14:09:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGaRmu+4S4dbyy1pFaaDlT0p3CIKRauWYH2eu9hU8TZA3LG6uTqxmNuU8bAgJh5kUV1kcX2
-X-Received: by 2002:ad4:5762:0:b0:680:d227:f3fe with SMTP id r2-20020ad45762000000b00680d227f3femr173615qvx.50.1704838152040;
-        Tue, 09 Jan 2024 14:09:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704838152; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp672264ejs;
+        Tue, 9 Jan 2024 14:24:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEN3tMWWGdTLpodG1cvbo4sC+Zg3/i/HON7DVGz10NHo8apJMbUX1c6lPIBVNDafflrYQP4
+X-Received: by 2002:a05:620a:14a7:b0:781:6086:db95 with SMTP id x7-20020a05620a14a700b007816086db95mr136167qkj.28.1704839041218;
+        Tue, 09 Jan 2024 14:24:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704839041; cv=none;
         d=google.com; s=arc-20160816;
-        b=ek6xEwqNK6T93MWX5ruNx4tJsv1ci9OdcJcQL2W9MOT2kkSp5VTttcF/6bXlDz0Kj2
-         pLE/uaZ/pC7gswqy9NyfJzjz71Ihn05vRXvAqz6yYTLQ3hdRn1a4ousXekFpWrP3Pms/
-         /RGx9Lx/AZr9/8c7F5/F8Q/oOziQaYQyU3OU5o4N6GQcbdKliuWI2r7vjrfKVsQlwqJK
-         pJAc5c1950CdtaJoLbEzg/esQAeUQYPNa5kXxZpg+/sOgQG2H8W30vwax+BprniPRX4w
-         tEmWnn73PLTUrFi8J1X43phLKqZf4GBhqu92dJYAgAPWzmQdsPM/Bvl5jYif6JDQCDca
-         DvUg==
+        b=mfVnkc4OkD6e2RS0VDDq7ZDtf8SB/qWQd7rkTnxHrJMCGrPfnG1hx6jDgKGPAxVDq8
+         XNXoBJRCzE6UKZzYyCtBXo1dTytZNxdQoyk/hUQh2jk4kRkxgc9SJbJwmjWrMeHMHa5m
+         A9bI+bOf+PuRXlHg9a44WF2G6B1dhYxsnRhK2Ugqxn3AU2xEbqdv4mfo7oZ2JySQ6a+R
+         5M0BZuqzsVupW7rRtaF/L4y59m2ufAi+dyk1eMwN/20iqb3LF7U10J7o1OinkNuWrq61
+         9gEu3VUhPwJ+VTFA8RNJb3YsvqTGTYjt5wwmJUgy04zKEZjHljG8Duv4CyG5SRfKX0rP
+         mf8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=lyQ55igLuzLNmSMuTQ2CxmrWrBO01F1GMmLRqq07uoE=;
-        fh=HTHR+Q2d6bLhEl37Oh4T8uXQP5/6sUv4T2u8Op+j0Ns=;
-        b=oVUxSu4eGAuZtWBoKjL/wrmbTK/KStqV1yIw9y2J8o4Hd9D7WzhMqxzmvwnwjffRGO
-         /EtIaupzkrboD9n7HN9WeYWDQu9AnyVLrtgUqmhzdRrqUA7B1Lx2d1ZsynRQIe23NqQk
-         XCHha9t925UMoSTFRhBWpDAydIE3p/WmeMIvaAQpPqjLPSF7N7xJPwPV0mQI0CfWqMnU
-         06zdEp2G/RgwwFVwRueuHYhMH0pSFBJN3srymt9MpT4soukfi7Rkfv9lWR3ek02C64H4
-         3b8in1JgocqD2BkzFzHttBrJEAPkXCYAMQtJSg4SyDPS5RVCynIywpu1yV/WOrEucVSF
-         ysNA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ehDLOWY8e3Uoj6KiAHXnx43mYM2iMoM6gnLe4cC5Q0I=;
+        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
+        b=n3xLl8n0bX/ywtyZcTjfXoj8e3chQFk3poDR/81fhtRECOkejWlUBN9XeZ7LVLAB8+
+         +2dYjHgEgm+IkVE40epWkybilmEFA+/ASXDUahUyY32SN2zPsVsyLu+4H2vGr9htaXSJ
+         BiJUEhTd8siMDnWs85Jtr9oUGyuZwqTxGy8nh857uAAXt5e8ep6MKLJBbBEbAVFmJrS1
+         6mjsDqRncvXY4XzvyceJgVk9UEBEHWKF/2z5eAxZ7LGxGIUybMttYRtkGaEiGi4CqeCI
+         GgrGBjOyo0nFdBfv/cICf96UvezptD20rTba33KqNcqwetzb3RYGWp/acLuXsiiSYHUH
+         dUSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=iYGsh+bJ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=d6cHpFlD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14-20020a0cdc8e000000b0067f9a054855si3263231qvk.334.2024.01.09.14.09.11
+        by mx.google.com with ESMTPS id 4-20020a05620a048400b007832de5e5efsi2266777qkr.216.2024.01.09.14.24.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 14:09:12 -0800 (PST)
+        Tue, 09 Jan 2024 14:24:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=iYGsh+bJ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=d6cHpFlD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNKHP-0007HM-P1; Tue, 09 Jan 2024 17:09:05 -0500
+	id 1rNKVl-0006Pu-H1; Tue, 09 Jan 2024 17:23:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNKHJ-0007Gq-O0; Tue, 09 Jan 2024 17:08:57 -0500
+ id 1rNKVk-0006Pi-94; Tue, 09 Jan 2024 17:23:52 -0500
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNKHG-0004AZ-1H; Tue, 09 Jan 2024 17:08:56 -0500
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ id 1rNKVi-00025y-DM; Tue, 09 Jan 2024 17:23:51 -0500
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409LY7xx016383; Tue, 9 Jan 2024 22:08:33 GMT
+ 409M4A7q022981; Tue, 9 Jan 2024 22:23:38 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=lyQ55igLuzLNmSMuTQ2CxmrWrBO01F1GMmLRqq07uoE=;
- b=iYGsh+bJKvlXH8Oc/E+uQdNX4DEsHJJz+1LvsAGh30ZYc2WWee8DItzc1NF0oNhYaV7d
- vt7noLnISRc5BTa1c+zRZewzhNH4Rya5Z7MBmUub+S2yJMfxw/JXRJfHw5CSvOXsmZn0
- lsPfj01WElTEAQJ9NEIMX2pMyQDFzlXCofOQLffIE68Whp2VT5wihVh0AFpLHJsZ4zNH
- QwhB1p7B/xvAYHyGPY0ucPgHepsu+/kLs/JlroTqRJT4K1q79QQ+o58snunTpXVvC4xA
- 8bZxy4KrTh+jhOgPp0mF7MBaEKdlRRZWlf7akPHQEPYgZrjlUnIsYSzA4q7DeB8ukNPj hQ== 
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=ehDLOWY8e3Uoj6KiAHXnx43mYM2iMoM6gnLe4cC5Q0I=;
+ b=d6cHpFlD/gu5uxZcre9/gNoM0iTm+rlC+UlJPYSpTZs7peSdZ2wOnK/UrtZhMErfIhoI
+ wT81YtouLMzQRcH13vZva4EONOX+xvlaOXTxlhoeEf2vG+Z8KT/B5Gdw4n7kDmXbQXBF
+ 0rCteM3luKwzF9zdrWwpYR4c1WX/MXAw4q/8z/FX8M8ms1zWT599ZQQukeMp6y+fjNAS
+ 91ue3zMZoRCVHsP2zPRxPGy/sm9SFq5qrVuHoj0kH6ifHbYT6Yy/OoHS+b2zycs0t15c
+ 1CyZOGjGPhbfj9xu+LMFahBi+LlbZZkUTfPo9LLndVMykgDZU0BtP3ypgXZ5dQT7UQPO vg== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f906we-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhd1stfrp-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:08:33 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409LkUTC012220;
- Tue, 9 Jan 2024 22:08:32 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vh9f906w5-1
+ Tue, 09 Jan 2024 22:23:38 +0000
+Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 409M5wdT027361;
+ Tue, 9 Jan 2024 22:23:37 GMT
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vhd1stfra-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:08:32 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 409KbaCj000926; Tue, 9 Jan 2024 22:08:31 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkdk94q4-1
+ Tue, 09 Jan 2024 22:23:37 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 409JswU7004384; Tue, 9 Jan 2024 22:23:37 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfjpksd72-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 09 Jan 2024 22:08:31 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 409M8UAB42074418
+ Tue, 09 Jan 2024 22:23:36 +0000
+Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
+ [10.241.53.101])
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 409MNae537028242
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 9 Jan 2024 22:08:31 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C737B5805D;
- Tue,  9 Jan 2024 22:08:30 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5C48058057;
- Tue,  9 Jan 2024 22:08:30 +0000 (GMT)
-Received: from [9.61.145.235] (unknown [9.61.145.235])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue,  9 Jan 2024 22:08:30 +0000 (GMT)
-Message-ID: <3a0efed2-620f-48e1-b400-a0313694476b@linux.ibm.com>
-Date: Tue, 9 Jan 2024 16:08:30 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 03/10] hw/fsi: Introduce IBM's cfam,fsi-slave,scratchpad
-Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
-References: <20231128235700.599584-1-ninad@linux.ibm.com>
- <20231128235700.599584-4-ninad@linux.ibm.com>
- <4bce745f-c70f-414a-bf1a-f53503d5bc1a@kaod.org>
+ Tue, 9 Jan 2024 22:23:36 GMT
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2A28358051;
+ Tue,  9 Jan 2024 22:23:36 +0000 (GMT)
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C9E475805A;
+ Tue,  9 Jan 2024 22:23:35 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Tue,  9 Jan 2024 22:23:35 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <4bce745f-c70f-414a-bf1a-f53503d5bc1a@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v9 00/10] Introduce model for IBM's FSI
+Date: Tue,  9 Jan 2024 16:23:23 -0600
+Message-Id: <20240109222333.1225031-1-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: kzX97PInrku-9liL0AvFBW0WlX3OYYQ9
-X-Proofpoint-ORIG-GUID: LvatMcKMKLvNttfx6MdfR5FhnJPChDbt
+X-Proofpoint-ORIG-GUID: 8INPp8TU_UId747VWuJs3NvWbzV9y6XT
+X-Proofpoint-GUID: bonWcAqEykVVpVKTxX5kkYZll5y6sF7n
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-09_11,2024-01-09_02,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 phishscore=0
- mlxlogscore=999 impostorscore=0 lowpriorityscore=0 malwarescore=0
- bulkscore=0 suspectscore=0 priorityscore=1501 spamscore=0 adultscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401090177
+ clxscore=1015 phishscore=0
+ lowpriorityscore=0 malwarescore=0 impostorscore=0 mlxlogscore=245
+ spamscore=0 suspectscore=0 adultscore=0 priorityscore=1501 bulkscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401090179
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -19
@@ -151,273 +145,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YG7Vo8pXzSQB
+X-TUID: qQF/F5dUaJ+s
 
-Hello Cedric,
+Hello,
 
+Please review the patch-set version 9.
+I have incorporated review comments from Cedric.
 
->> +
->> +#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
->> +#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), 
->> TYPE_FSI_SCRATCHPAD)
->> +
->> +typedef struct FSIScratchPad {
->> +        FSILBusDevice parent;
->> +
->> +        uint32_t reg;
->> +} FSIScratchPad;
->
-> We could extend to 4 regs possibly.
-OK, Added 4 registers.
->
->> +
->> +#define TYPE_FSI_CFAM "cfam"
->> +#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
->> +
->> +/* P9-ism */
->> +#define CFAM_CONFIG_NR_REGS 0x28
->> +
->> +typedef struct FSICFAMState {
->> +    /* < private > */
->> +    FSISlaveState parent;
->> +
->> +    /* CFAM config address space */
->> +    MemoryRegion config_iomem;
->> +
->> +    MemoryRegion mr;
->> +    AddressSpace as;
->
-> The address space is not used. please remove.
-Removed address space.
->
->>
->> +#include "exec/memory.h"
->> +#include "hw/qdev-core.h"
->> +
->> +#include "hw/fsi/lbus.h"
->> +
->> +#include <stdint.h>
->
-> Not needed. Please remove.
-Removed the header file.
->
->> +
->> +static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, 
->> unsigned size)
->> +{
->> +    FSICFAMState *cfam = FSI_CFAM(opaque);
->> +    BusChild *kid;
->> +    int i;
->> +
->> +    trace_fsi_cfam_config_read(addr, size);
->> +
->> +    switch (addr) {
->> +    case 0x00:
->> +        return CFAM_CONFIG_CHIP_ID_P9;
->> +    case 0x04:
->> +        return ENGINE_CONFIG_NEXT       |   /* valid */
->> +               0x00010000               |   /* slots */
->> +               0x00001000               |   /* version */
->> +               ENGINE_CONFIG_TYPE_PEEK  |   /* type */
->> +               0x0000000c;                  /* crc */
->> +    case 0x08:
->> +        return ENGINE_CONFIG_NEXT       |   /* valid */
->> +               0x00010000               |   /* slots */
->> +               0x00005000               |   /* version */
->> +               ENGINE_CONFIG_TYPE_FSI   |   /* type */
->> +               0x0000000a;                  /* crc */
->
-> Please introduce a macro to build these register values.
-Added macros
->
->> +        break;
->> +    default:
->> +        /* The config table contains different engines from 0xc 
->> onwards. */
->> +        i = 0xc;
->> +        QTAILQ_FOREACH(kid, &cfam->lbus.bus.children, sibling) {
->> +            if (i == addr) {
->> +                DeviceState *ds = kid->child;
->> +                FSILBusDevice *dev = FSI_LBUS_DEVICE(ds);
->> +                return FSI_LBUS_DEVICE_GET_CLASS(dev)->config;
->> +            }
->> +            i += size;
->> +        }
->> +
->> +        if (i == addr) {
->> +            return 0;
->> +        }
->
-> If I understand correctly, the register 0xC contains some static config
-> value for the first device engine, the scratchpad device mapped at 0xC00,
-> and following registers would do the same for other devices if they were
-> modelled.
->
-> This is certtainly hardwired in HW, so I would simplify to :
->
->     case 0xC:
->         return ldc->config
->     default:
->         /* log not implemented */
->
-> And extend the list when more devices are modeled.
-Simplified as per your suggestion.
->
->> +        /*
->> +         * As per FSI specification, This is a magic value at 
->> address 0 of
->> +         * given FSI port. This causes FSI master to send BREAK 
->> command for
->> +         * initialization and recovery.
->> +         */
->> +        return CFAM_CONFIG_CHIP_ID_BREAK;
->
-> This looks weird. I don't understant to which offset this value belongs.
-Yes, Removed it for now. We are handling break command in the config write.
->
->> +    }
->> +}
->> +
->> +static void fsi_cfam_config_write(void *opaque, hwaddr addr, 
->> uint64_t data,
->> +                                  unsigned size)
->> +{
->> +    FSICFAMState *cfam = FSI_CFAM(opaque);
->> +
->> +    trace_fsi_cfam_config_write(addr, size, data);
->> +
->> +    switch (TO_REG(addr)) {
->> +    case CFAM_CONFIG_CHIP_ID:
->> +    case CFAM_CONFIG_CHIP_ID + 4:
->
-> Couldn't we introduce a proper define for this reg ? and can we write to
-> the config space ? This break command seems to be sent to the FSI master,
-> according to Linux. Why is it handled in the CFAM config space ?
-Added new PEEK_STATUS register. The BREAK command is send by FSI-master 
-to FSI-slave and FSI-slave is embedded into CFAM hence we are handling 
-it here.
->
->> +        if (data == CFAM_CONFIG_CHIP_ID_BREAK) {
->> +            bus_cold_reset(BUS(&cfam->lbus));
->> +        }
->> +    break;
->
-> alignment is not good.
-Fixed the alignment.
->
->>
->> +static void fsi_cfam_realize(DeviceState *dev, Error **errp)
->> +{
->> +    FSICFAMState *cfam = FSI_CFAM(dev);
->> +    FSISlaveState *slave = FSI_SLAVE(dev);
->> +
->> +    /* Each slave has a 2MiB address space */
->> +    memory_region_init_io(&cfam->mr, OBJECT(cfam), 
->> &fsi_cfam_unimplemented_ops,
->> +                          cfam, TYPE_FSI_CFAM, 2 * 1024 * 1024);
->
-> 2 * MiB
-Now using MiB.
->
->> +
->> +    /* Add scratchpad engine */
->> +    if (!qdev_realize_and_unref(DEVICE(&cfam->scratchpad), 
->> BUS(&cfam->lbus),
->
-> cfam->scratchpad is not allocated. We should use qdev_realize instead.
-Fixed it.
->
->>
->> +    /* TODO: clarify scratchpad mapping */
->
-> You can remove the TODO now. All Local bus devices are mapped at offset
-> 0xc00.
-Removed it.
->
->>
->> +static void fsi_scratchpad_reset(DeviceState *dev)
->> +{
->> +    FSIScratchPad *s = SCRATCHPAD(dev);
->> +
->> +    s->reg = 0;
->
-> Just one reg ! Too easy :) let's have a few more.
-Now clear 4 registers.
->
->
->>
->> +    ldc->config =
->> +          ENGINE_CONFIG_NEXT            | /* valid */
->> +          0x00010000                    | /* slots */
->> +          0x00001000                    | /* version */
->> +          ENGINE_CONFIG_TYPE_SCRATCHPAD | /* type */
->> +          0x00000007;                     /* crc */
->
-> This class and attribute do not  look useful. Please use a macro
-> to build the value and return it in the CFAM config read operation.
-Added macro for SCARTCHPAD config value but keeping the class as new 
-devices need it.
->
->
->>
->> +
->> +static uint64_t fsi_slave_read(void *opaque, hwaddr addr, unsigned 
->> size)
->> +{
->> +    FSISlaveState *s = FSI_SLAVE(opaque);
->> +
->> +    trace_fsi_slave_read(addr, size);
->> +
->> +    if (addr + size > sizeof(s->regs)) {
->
-> This test is mixing memory region offsets and memop size. These are two
-> fields of different nature. So this is quite incorrect !
->
-> Ideally, we should have a switch statement with handlers for implemented
-> registers and a default for the rest. Please see the aspeed_scu model
-> for an example.
-I have fixed the limit check but registers are simply used as a memory 
-region hence did not add switch statement.
->
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for 
->> %u\n",
->> +                      __func__, addr, size);
->> +        return 0;
->> +    }
->> +
->> +    return s->regs[TO_REG(addr)];
->> +}
->> +
->> +static void fsi_slave_write(void *opaque, hwaddr addr, uint64_t data,
->> +                                 unsigned size)
->> +{
->> +    FSISlaveState *s = FSI_SLAVE(opaque);
->> +
->> +    trace_fsi_slave_write(addr, size, data);
->> +
->> +    if (addr + size > sizeof(s->regs)) {
->
-> Same here.
-Fixed the limit check.
->
->> +
->> +static void fsi_slave_init(Object *o)
->> +{
->> +    FSISlaveState *s = FSI_SLAVE(o);
->> +
->> +    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_slave_ops,
->> +                          s, TYPE_FSI_SLAVE, 0x400);
->> +}
->
->
-> No reset handler ?
+Ninad Palsule (10):
+  hw/fsi: Introduce IBM's Local bus
+  hw/fsi: Introduce IBM's FSI Bus
+  hw/fsi: Introduce IBM's cfam,fsi-slave,scratchpad
+  hw/fsi: IBM's On-chip Peripheral Bus
+  hw/fsi: Introduce IBM's FSI master
+  hw/fsi: Aspeed APB2OPB interface
+  hw/arm: Hook up FSI module in AST2600
+  hw/fsi: Added qtest
+  hw/fsi: Added FSI documentation
+  hw/fsi: Update MAINTAINER list
 
-Added reset handler.
+ MAINTAINERS                     |   8 +
+ docs/specs/fsi.rst              | 138 ++++++++++++++
+ docs/specs/index.rst            |   1 +
+ meson.build                     |   1 +
+ hw/fsi/trace.h                  |   1 +
+ include/hw/arm/aspeed_soc.h     |   4 +
+ include/hw/fsi/aspeed-apb2opb.h |  34 ++++
+ include/hw/fsi/cfam.h           |  46 +++++
+ include/hw/fsi/fsi-master.h     |  32 ++++
+ include/hw/fsi/fsi-slave.h      |  27 +++
+ include/hw/fsi/fsi.h            |  24 +++
+ include/hw/fsi/lbus.h           |  41 +++++
+ include/hw/fsi/opb.h            |  27 +++
+ hw/arm/aspeed_ast2600.c         |  19 ++
+ hw/fsi/aspeed-apb2opb.c         | 314 ++++++++++++++++++++++++++++++++
+ hw/fsi/cfam.c                   | 253 +++++++++++++++++++++++++
+ hw/fsi/fsi-master.c             | 173 ++++++++++++++++++
+ hw/fsi/fsi-slave.c              | 101 ++++++++++
+ hw/fsi/fsi.c                    |  22 +++
+ hw/fsi/lbus.c                   |  51 ++++++
+ hw/fsi/opb.c                    |  36 ++++
+ tests/qtest/aspeed-fsi-test.c   | 205 +++++++++++++++++++++
+ hw/Kconfig                      |   1 +
+ hw/arm/Kconfig                  |   1 +
+ hw/fsi/Kconfig                  |  21 +++
+ hw/fsi/meson.build              |   5 +
+ hw/fsi/trace-events             |  13 ++
+ hw/meson.build                  |   1 +
+ tests/qtest/meson.build         |   1 +
+ 29 files changed, 1601 insertions(+)
+ create mode 100644 docs/specs/fsi.rst
+ create mode 100644 hw/fsi/trace.h
+ create mode 100644 include/hw/fsi/aspeed-apb2opb.h
+ create mode 100644 include/hw/fsi/cfam.h
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 include/hw/fsi/fsi-slave.h
+ create mode 100644 include/hw/fsi/fsi.h
+ create mode 100644 include/hw/fsi/lbus.h
+ create mode 100644 include/hw/fsi/opb.h
+ create mode 100644 hw/fsi/aspeed-apb2opb.c
+ create mode 100644 hw/fsi/cfam.c
+ create mode 100644 hw/fsi/fsi-master.c
+ create mode 100644 hw/fsi/fsi-slave.c
+ create mode 100644 hw/fsi/fsi.c
+ create mode 100644 hw/fsi/lbus.c
+ create mode 100644 hw/fsi/opb.c
+ create mode 100644 tests/qtest/aspeed-fsi-test.c
+ create mode 100644 hw/fsi/Kconfig
+ create mode 100644 hw/fsi/meson.build
+ create mode 100644 hw/fsi/trace-events
 
-Thanks for the review.
-
-Regards,
-
-Ninad
+-- 
+2.39.2
 

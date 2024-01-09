@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp481025ejs;
-        Tue, 9 Jan 2024 08:08:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEUIGZExCEx7/+Dz9zdSR3dHDp+Y4UNgHUDMVMxmHQmAo4rxf/4iij/xnXZ03nGD6O2ohk+
-X-Received: by 2002:a05:6102:1518:b0:467:c7a9:f12d with SMTP id f24-20020a056102151800b00467c7a9f12dmr3346844vsv.22.1704816494317;
-        Tue, 09 Jan 2024 08:08:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704816494; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp481243ejs;
+        Tue, 9 Jan 2024 08:08:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGlorxdTKtPeIXqfX7wwZ8uo7/U6Q40a+DpGBEM9AivxAWMz4Ai7+vHxYEo33SfQPX1y5vD
+X-Received: by 2002:a05:620a:42:b0:783:3366:9709 with SMTP id t2-20020a05620a004200b0078333669709mr139036qkt.41.1704816513204;
+        Tue, 09 Jan 2024 08:08:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704816513; cv=none;
         d=google.com; s=arc-20160816;
-        b=gArCh8zQH9b3ZDMxnNVzW0/IpWM3vUy+zQ18JTsoq8MmdVgMjYi4Fx4yL4C84TPYAI
-         Qj5qFWaUKwn/MpaCTlN1JenpZXu2qcqzuqiank0bBWVjpidX46Rki+naBSzPUW4h0D43
-         yUIPZVcuWcmjDOkWeUtSGdVcFGydEKECFVhmuISoQWVMxcNecnjaexwgJOXo5HM41QPc
-         W3fmG2rm3Ux+44VKPxkdLpPJV2v49WoV8ieYqvAGiPBpyDazMQ+aq4+My/R//rcHtcSb
-         nSwLr0HZJ9nPBMkUKpHp1SqpT0LM33fRBY8AqYDfJydcqBW7I+hNcnYcxxiinOeBFept
-         NsXQ==
+        b=sX5GTdv3BxnaE1IBGpv0fL1hRASsZdvZMq+6zsmdeOxNX5kSmlqOe3AxnjW0NuIedE
+         h5QQLno/iS8/45bk95hBntb+Plwl9JZVg7BoVEpeplkqu1cbQ4fOAmIMH/C4eVb5WuEY
+         uSjmmjzhK6PXHKFg7IIJXLMTjA+KEI6aeYO2L75wzfhbpbB3dXVqYPPUykOBNeu15kwu
+         801Ky23Ep1kRvBy63KY85bJtTEqFI+fufZ+g+Z2fZCU7PQJauPJp724HWYH7JfJt45Fc
+         9HBFzxsSW9mKaO9cqre2+RYdAJ8bXm1LL/+5kDzXcorNw7kaq29ztEpAwzOAAhsbphrI
+         qQ2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=Ca6hmgpPbhemvhYSfPCbopjCGJJMtOpR4HF5RyCauW4=;
-        fh=D7FrLTYBNymcyR4/5eiGNqC/GGoB5dZ4D4pNBcLzeok=;
-        b=bdi6l/CT+IyqZ4snQCp8cv870JQ9fp/Y3rUNAAd+jF+NAi3MwkGt76ODH6duwOJRBD
-         /gYiI2LBCo8ZUuD0W2q2qX617gJL3KdAM66m3hk8qSNpYgxoBVWG+7XcRG3MBHGzXKx0
-         0DkHvD7v6ezJL9xcP7sHvZyIT4ePwK7J2bgX55SKTuQxoAUuctWFKSQsLVAzMsYOlegi
-         Xx5XbHYIt5Ps02RDi2Gv+D4BHR1lCVFaPl34U0CzX0zYc/LoW4VOrGqBwyb0Q8EqPEfw
-         3F34j2BcYZ6EHrb0hRhDX3X1HO8NG0Yc1XTJctJqDU1uGvWGqV/mydqHi1bWHjRbqy4c
-         HfxA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=Fa6iXOTxCJEHlEtFpkWRgg0sDhCwpacy0sY/3kGpfP8=;
+        fh=frZoPGebsZEvOC7cB+mBUxtlGn4nM0NxmVdInlVf7vQ=;
+        b=DIkt82uIvZXFaKWKFTb7gPHFJi6VuP88K7aEoGRdPTKe83BRSuJOgy1ouhkhEqZjDP
+         tN44xhSF79K2Lk+lUOSwHgpLSJQHWokvXzEd/OZwjvAk/oCKkhd2XVNvsNZihnZZmYoZ
+         1Pe7OcqcG7lPJEwgU4+QmMkmhtXH+9Bt2qcZRl0u9ZzBmHylnwpnY+ifqfC3jgXBil4l
+         EzbumWSOrRSls5WYt4j+HRa0fYrKzZ4fZzO89KSfsxPb7Be7WDPIufq3PCovZ3yimhbY
+         qdQ5zSjYioWRTzciTLeLTdpipVy6cF9IC+6Cq6odBeX7ee/xzIPz4qaxV1/0FQ+bo8mB
+         bOfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=FiIRIpkj;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=8u+mRyFU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020a056102080b00b00467e684da25si227475vsb.42.2024.01.09.08.08.14
+        by mx.google.com with ESMTPS id q5-20020a05620a0d8500b0078323d0bf09si2522205qkl.756.2024.01.09.08.08.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jan 2024 08:08:14 -0800 (PST)
+        Tue, 09 Jan 2024 08:08:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=FiIRIpkj;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=8u+mRyFU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNEdM-0005M3-9c; Tue, 09 Jan 2024 11:07:20 -0500
+	id 1rNEdQ-0005Pj-22; Tue, 09 Jan 2024 11:07:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rNEdJ-0005JK-C5; Tue, 09 Jan 2024 11:07:17 -0500
-Received: from zproxy1.enst.fr ([137.194.2.220])
+ id 1rNEdJ-0005JQ-Ka; Tue, 09 Jan 2024 11:07:17 -0500
+Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rNEdE-0005eT-BB; Tue, 09 Jan 2024 11:07:15 -0500
+ id 1rNEdG-0005eU-Gh; Tue, 09 Jan 2024 11:07:17 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id BE766C0D39;
+ by zproxy1.enst.fr (Postfix) with ESMTP id DE43DC065F;
  Tue,  9 Jan 2024 17:07:03 +0100 (CET)
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id x6_8t9YL11AQ; Tue,  9 Jan 2024 17:07:03 +0100 (CET)
+ id LEaEAEYWK3BX; Tue,  9 Jan 2024 17:07:03 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 47564C065F;
- Tue,  9 Jan 2024 17:07:03 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 47564C065F
+ by zproxy1.enst.fr (Postfix) with ESMTP id ECEA3C0CF6;
+ Tue,  9 Jan 2024 17:07:02 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr ECEA3C0CF6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
  s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704816423;
- bh=Ca6hmgpPbhemvhYSfPCbopjCGJJMtOpR4HF5RyCauW4=;
+ bh=Fa6iXOTxCJEHlEtFpkWRgg0sDhCwpacy0sY/3kGpfP8=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=FiIRIpkji6dkdZxh4I58Z7zfp0BOzeeyBeYNWTOCOykEYIXjeh1rEsyEOf2UEYk9c
- dTbIpw2eysaV7l+zRDuRoaJFJq/uvKtcGtCuPjIBABX0rbq76b6CDyJ8WJxI0YDGW4
- 5obnYhBWEf59VuBuiVmzASCT+bBs9zg23wiuZOks=
+ b=8u+mRyFU7mD/8niFLReP+7lkwl3wqwQ55eRU/XL4bVV9o5svf7kLuWPnHK6D4Dix6
+ TriKKPh9X1ATzlF7gSz7OZPf4KRlfsKP1+5GTfwod2DluBR8zLILoUOiS4xALxcxLG
+ xQW/SBsdosJZX1vGa+RZIcABJd6CZZQH/W7oK4Qg=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id BLmlwWKtb6sy; Tue,  9 Jan 2024 17:07:03 +0100 (CET)
+ id mYA49N_WGErx; Tue,  9 Jan 2024 17:07:02 +0100 (CET)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:240:3f5e:381b:bff9:b9ae])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 0FB49C0D36;
- Tue,  9 Jan 2024 17:07:03 +0100 (CET)
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 996EFC0CF3;
+ Tue,  9 Jan 2024 17:07:02 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -85,18 +85,15 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v8 2/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
-Date: Tue,  9 Jan 2024 17:06:03 +0100
-Message-ID: <20240109160658.311932-3-ines.varhol@telecom-paris.fr>
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH v8 0/3] Add device STM32L4x5 EXTI
+Date: Tue,  9 Jan 2024 17:06:01 +0100
+Message-ID: <20240109160658.311932-1-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240109160658.311932-1-ines.varhol@telecom-paris.fr>
-References: <20240109160658.311932-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.220;
+Received-SPF: pass client-ip=2001:660:330f:2::dc;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -118,148 +115,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NGFgBWG7WAxK
+X-TUID: 8V5umtoETH/S
 
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/arm/Kconfig                 |  1 +
- hw/arm/stm32l4x5_soc.c         | 52 +++++++++++++++++++++++++++++++++-
- include/hw/arm/stm32l4x5_soc.h |  3 ++
- 3 files changed, 55 insertions(+), 1 deletion(-)
+This patch adds a new device STM32L4x5 EXTI device and is part
+of a series implementing the STM32L4x5 with a few peripherals.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4ae2073a1d..8c8488a70a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -459,6 +459,7 @@ config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-     select OR_IRQ
-+    select STM32L4X5_EXTI
-=20
- config XLNX_ZYNQMP_ARM
-     bool
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index 70609a6dac..fe46b7c6c0 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -36,10 +36,51 @@
- #define SRAM2_BASE_ADDRESS 0x10000000
- #define SRAM2_SIZE (32 * KiB)
-=20
-+#define EXTI_ADDR 0x40010400
-+
-+#define NUM_EXTI_IRQ 40
-+/* Match exti line connections with their CPU IRQ number */
-+/* See Vector Table (Reference Manual p.396) */
-+static const int exti_irq[NUM_EXTI_IRQ] =3D {
-+    6,                      /* GPIO[0]                 */
-+    7,                      /* GPIO[1]                 */
-+    8,                      /* GPIO[2]                 */
-+    9,                      /* GPIO[3]                 */
-+    10,                     /* GPIO[4]                 */
-+    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
-+    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
-+    1,                      /* PVD                     */
-+    67,                     /* OTG_FS_WKUP, Direct     */
-+    41,                     /* RTC_ALARM               */
-+    2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
-+    3,                      /* RTC wakeup timer        */
-+    63,                     /* COMP1                   */
-+    63,                     /* COMP2                   */
-+    31,                     /* I2C1 wakeup, Direct     */
-+    33,                     /* I2C2 wakeup, Direct     */
-+    72,                     /* I2C3 wakeup, Direct     */
-+    37,                     /* USART1 wakeup, Direct   */
-+    38,                     /* USART2 wakeup, Direct   */
-+    39,                     /* USART3 wakeup, Direct   */
-+    52,                     /* UART4 wakeup, Direct    */
-+    53,                     /* UART4 wakeup, Direct    */
-+    70,                     /* LPUART1 wakeup, Direct  */
-+    65,                     /* LPTIM1, Direct          */
-+    66,                     /* LPTIM2, Direct          */
-+    76,                     /* SWPMI1 wakeup, Direct   */
-+    1,                      /* PVM1 wakeup             */
-+    1,                      /* PVM2 wakeup             */
-+    1,                      /* PVM3 wakeup             */
-+    1,                      /* PVM4 wakeup             */
-+    78                      /* LCD wakeup, Direct      */
-+};
-+
- static void stm32l4x5_soc_initfn(Object *obj)
- {
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
-=20
-+    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-+
-     s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
-;
-     s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
-;
- }
-@@ -51,6 +92,7 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
- Error **errp)
-     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
-     MemoryRegion *system_memory =3D get_system_memory();
-     DeviceState *armv7m;
-+    SysBusDevice *busdev;
-=20
-     /*
-      * We use s->refclk internally and only define it with qdev_init_clo=
-ck_in()
-@@ -112,6 +154,15 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
-         return;
-     }
-=20
-+    busdev =3D SYS_BUS_DEVICE(&s->exti);
-+    if (!sysbus_realize(busdev, errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
-+    for (unsigned i =3D 0; i < NUM_EXTI_IRQ; i++) {
-+        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
-+    }
-+
-     /* APB1 BUS */
-     create_unimplemented_device("TIM2",      0x40000000, 0x400);
-     create_unimplemented_device("TIM3",      0x40000400, 0x400);
-@@ -152,7 +203,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-     create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
-     create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
-     create_unimplemented_device("COMP",      0x40010200, 0x200);
--    create_unimplemented_device("EXTI",      0x40010400, 0x400);
-     /* RESERVED:    0x40010800, 0x1400 */
-     create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
-     /* RESERVED:    0x40012000, 0x800 */
-diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-index 2fd44a36a9..f7305568dc 100644
---- a/include/hw/arm/stm32l4x5_soc.h
-+++ b/include/hw/arm/stm32l4x5_soc.h
-@@ -26,6 +26,7 @@
-=20
- #include "exec/memory.h"
- #include "hw/arm/armv7m.h"
-+#include "hw/misc/stm32l4x5_exti.h"
- #include "qom/object.h"
-=20
- #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
-@@ -39,6 +40,8 @@ struct Stm32l4x5SocState {
-=20
-     ARMv7MState armv7m;
-=20
-+    Stm32l4x5ExtiState exti;
-+
-     MemoryRegion sram1;
-     MemoryRegion sram2;
-     MemoryRegion flash;
+Hello,
+I see that the previous patch v7 couldn't be applied to master,
+the log is :
+...
+Applying: hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
+error: sha1 information is lacking or useless (hw/arm/stm32l4x5_soc.c).
+error: could not build fake ancestor
+...
+I notice there was a wrong Based-on message ID in v7 and I figure
+that's the issue (since the relevant commit
+"hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC" didn't even change
+from v6). If that's not the case, I apologize in advance.
+
+Changes from v7 to v8:
+- none except for "Based-on" message-id correction
+
+Changes from v6 to v7:
+- in `stm32l4x5_exti_reset_hold`: unify register initialization
+using new array `exti_romask`
+- in `stm32l4x5_exti_set_irq`: rename `n` to `bank`, use new helper
+function `regbank_index_by_irq` and new macro `EXTI_MAX_IRQ_PER_BANK`,
+explain why there's no `else` clause
+- in `stm32l4x5_exti_read`: rename `n` to `bank`, use new helper
+function `regbank_index_by_irq`, use `HWADDR_PRIx` formatting in error lo=
+g
+- in `stm32l4x5_exti_write`: rename `n` to `bank`, use new helper
+function `regbank_index_by_irq`, use `HWADDR_PRIx` formatting in error lo=
+g,
+unify writes where only bank differs using new helper functions
+`valid_mask` and `configurable_mask`
+- in `stm32l4x5_exti_init`: use `size_t` instead of `int` in for loop
+- in `stm32l4x5_exti-test.c`: instead of declaring intermediate
+variables, using `exti_readl` directly in `g_assert_cmpuint`
+so that QEMU coding style is respected
+
+Changes from v5 to v6:
+- in `stm32l4x5_exti-test.c` : using a helper function
+`exti_set_irq()` to help readability
+- in `stm32l4x5_exti-test.c` : correct a mistake in test
+`test_edge_selector` (adding a necessary NVIC interrupt unpend
+so that the assert actually checks something)
+- in `stm32l4x5_soc.c` : reducing scope of `i` used in for loops
+- in `stm32l4x5_soc.c` : removing useless variable `dev`
+- swapping commit 2 (add tests) and commit 3 (connects exti to SoC)
+so that the tests pass in the commit they're added
+
+Changes from v4 to v5:
+- update the documentation file
+
+Changes from v3 to v4:
+- add a test to check that irq trigger selection works correctly
+(`test_edge_selector`) and correct `stm32l4x5_exti_set_irq` accordingly
+
+Changes from v2 to v3:
+- corrected the license to GPL
+
+Changes from v1 to v2:
+- correct the commit messages
+- remove a misleading comment
+
+Changes from v3 to v1:
+- separating the patch in 3 commits
+- justifying in the commit message why we implement a new model instead
+of changing the existing stm32f4xx_exti
+- changed irq_raise to irq_pulse in register SWIERx write
+(in `stm32l4x5_exti_write`) to be consistent with the irq_pulse in
+`stm32l4x5_exti_set_irq` (and also both these interrupts are
+edge-triggered)
+- changed the license to GPL
+
+Changes from v2 to v3:
+- adding more tests writing/reading in exti registers
+- adding tests checking that interrupt work by reading NVIC registers
+- correcting exti_write in SWIER (so it sets an irq only when a bit
+goes from '0' to '1')
+- correcting exti_set_irq (so it never writes in PR when the relevant
+bit in IMR is '0')
+
+Changes from v1 to v2:
+- use arrays to deduplicate code and logic
+- move internal constant `EXTI_NUM_GPIO_EVENT_IN_LINES` from the header
+to the .c file
+- Improve copyright headers
+- replace `static const` with `#define`
+- use the DEFINE_TYPES macro
+- fill the `impl` and `valid` field of the exti's `MemoryRegionOps`
+- fix invalid test caused by a last minute change
+
+Based-on: 20240108135849.351719-1-ines.varhol@telecom-paris.fr
+([PATCH v6 0/2] Add minimal support for the B-L475E-IOT01A board)
+
+In=C3=A8s Varhol (3):
+  hw/misc: Implement STM32L4x5 EXTI
+  hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
+  tests/qtest: Add STM32L4x5 EXTI QTest testcase
+
+ docs/system/arm/b-l475e-iot01a.rst |   5 +-
+ hw/arm/Kconfig                     |   1 +
+ hw/arm/stm32l4x5_soc.c             |  52 ++-
+ hw/misc/Kconfig                    |   3 +
+ hw/misc/meson.build                |   1 +
+ hw/misc/stm32l4x5_exti.c           | 290 ++++++++++++++++
+ hw/misc/trace-events               |   5 +
+ include/hw/arm/stm32l4x5_soc.h     |   3 +
+ include/hw/misc/stm32l4x5_exti.h   |  51 +++
+ tests/qtest/meson.build            |   5 +
+ tests/qtest/stm32l4x5_exti-test.c  | 524 +++++++++++++++++++++++++++++
+ 11 files changed, 936 insertions(+), 4 deletions(-)
+ create mode 100644 hw/misc/stm32l4x5_exti.c
+ create mode 100644 include/hw/misc/stm32l4x5_exti.h
+ create mode 100644 tests/qtest/stm32l4x5_exti-test.c
+
 --=20
 2.43.0
 

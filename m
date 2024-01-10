@@ -1,311 +1,171 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp882791ejs;
-        Wed, 10 Jan 2024 00:03:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHbF/HXF4FD0QxEXU+dCZ4U1GQfZzLnw9qoqzE6vpqkXJCQDBn0Xj5zbawVN/p5Dda7curb
-X-Received: by 2002:a25:dfcd:0:b0:dbc:d36f:b6e2 with SMTP id w196-20020a25dfcd000000b00dbcd36fb6e2mr434495ybg.23.1704873820863;
-        Wed, 10 Jan 2024 00:03:40 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1704873820; cv=pass;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp899579ejs;
+        Wed, 10 Jan 2024 00:44:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFprgdF9axFOD8hSTpuAmXWX0Wot4O7NYsMF9SUD7iD3GCRICn7v7TsrD5KwXmubPf+szdt
+X-Received: by 2002:a05:622a:182:b0:429:b4ae:bb65 with SMTP id s2-20020a05622a018200b00429b4aebb65mr749327qtw.57.1704876257315;
+        Wed, 10 Jan 2024 00:44:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704876257; cv=none;
         d=google.com; s=arc-20160816;
-        b=OISWSqHXBlssOWVYv8TFAVgLlDqS9l8eDZjrUfVvW8i8JYKwznCdHAsf387awUkREv
-         ++5BQkJFfRROk/hvF5wHRExkbXCaQQyxmRW3g/klAr0whEiv7uwo9WGHrkV1PaiDA3f8
-         EK7j3dGlCyHU2TMzKpDZ7Cjg2gOh1XJJfVAh+oUX3irxp900uxes7UIkJUFD9u+8+IZZ
-         n+BU56cioJxcG5UhISk7JwNEX2GoCGxskpq4gqxguMREp/YQTwSeK8mkTqTWnzoZdGfB
-         bryIfNqKVA5lFurEY75yMIMxHipYJPvGNZlLIeLBHTro1zgfFCkThE8dnC2sHepYDGD8
-         +i2w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from;
-        bh=jWhspMuDL6Ty4lEbuffb+m063T3ZjG1PuUjYZyU/ULY=;
-        fh=s+ZjH8IU3D/GLRd29vt+pHnkf9l/XKBUMmTlFktJBvE=;
-        b=WdkmcXY0X6+H/7LYMR10bf+dvZbtU5aC/TARou5BM1UcJqkEvxS/DV7mX+zdsnmPDZ
-         USZG1iSVfdfTKzD9v7nOZ+h8P4v2wPE9uzrehf5bQbyUQAYxQ0qRmDOGG4CmIXKjDx0S
-         7XaPsI29NJrdWEsJAdJvpCUwE3PD95Rz3VfuHg+BoW9W7VPkFZqeGTuHb8nkGnB76Oln
-         PrUqe25BWv53BmvX6GdWYq1W4+XttmtVr6RLvbdpptsdYeOWrNiUIOQFFRvyVd66Pv2M
-         1rtYPsLqD8eOkmxoN/JaFcwKq3BiVp4abMZNYuglKrrRYrpkAKSplXgB5Jjl6DTHci/D
-         iCvA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18-20020ac85852000000b004299b199763si3665392qth.98.2024.01.10.00.03.40
+        b=kTska7rIfXQJBjgvT4zorngPjRgVgndQDKqvpcJg93cZtRd81F6QpOVDXht8tF1U8C
+         J3IuDkeaXphJWYkGUmBRXc4+YHEzgx754wjkOY+FlBoXWKkPjXrZ05Z6VZXsUDXebUpo
+         CyREOtveisfccTLsxamm8LYHn41iaa7jxKXtsMT/53t07UzCYFdQOUpmhwzscdpwSF5Z
+         YqGSGHz1rgIXB15w5w/wNBIQRFe9rubpCDqg67fJneykyr67rlpdKoQkcDt6ooZgmZIW
+         JLpm73R2mModXUnXpJFKwWIP13qQ24z2rzyj2A0gAfNkUaFydRfzJZym5ggxNouiZT/A
+         IJ/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=609N03LdjpkxAYKf0CfIMFNH4ZnJqwVCDxCBxZ9EZlM=;
+        fh=Kis5pzYxYX9ZASkT8rajCHfSMMnzBjKVV/vODd71G44=;
+        b=T7C04w/MQvSLyNQV7FC0V/9H/u0o3Ry9Fhtv6Cbmo6n0/WqA7ZW0scIGicJnP3dWpk
+         oLojF4V/TPIiBRY4EAojPKnTN4wGG2Y4QS7kqhFlbREXL8lXzNyhYdH8dUx/N5CooFUv
+         5f9FhsEpyAffE6ix46XNFHsNLpbDy44u9q0+/nzQa8zGDryJGreZYpkecUAIhLCTNsKX
+         8RBHhteScR/yzBLD9STZxZ9SGWQhM4DjKw5yOtRfwwBPrOSV+QCsJOBQ8sem/5rkTrsw
+         LxzLo7bx/syTlS2VzwwldcKRi/mTm1SghWbrk8McIuwm4pdf2ENoF+YXDE8Wy8IYJHxe
+         qVVg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jq6BjIt2;
+       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 9-20020ac85949000000b00423d65135f7si3377128qtz.809.2024.01.10.00.44.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jan 2024 00:03:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Jan 2024 00:44:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rNTYm-00027n-VC; Wed, 10 Jan 2024 03:03:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rNTYl-00027E-VD; Wed, 10 Jan 2024 03:03:35 -0500
-Received: from mail-bjschn02on20620.outbound.protection.partner.outlook.cn
- ([2406:e500:4440:2::620]
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rNTYj-0004Cz-SS; Wed, 10 Jan 2024 03:03:35 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=h2GwBGsFEfYPhXPi6Ds4qPz+f4fdKTAglBJ4ZylLpGNyTtKo/Mh8LFcgmZ7ng5YaG6QDIhTfOt2dfAbw/sme1RjyxT/4FWM5Sfpzu2GdC8aV2bFbx75dRoNNDcN+gReFZBiXlzyoTvBfo40F1NWr7xKqsC3rGcmpt2908jCnwNfhry4bKBpu4Oe8I1kN841GXk+wevXqpqMfLBnIvWSpGBjghK4GUVwLZfocHM/y9ZVjtlM5bhpLjVzRkrryeYzAPJkm347T6O3a3ImFarOb76NdqeV+RnjlEbAmRL1xUE6e2G4l8Up60wPZ/8ePJq70nOwIVV/1QWjeBHPfzGrsxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jWhspMuDL6Ty4lEbuffb+m063T3ZjG1PuUjYZyU/ULY=;
- b=fcdBVMKunBd13kuaV1dGBtAtV0gqaYuaLVmUh0wJofxZjoAja7bx9OsSTGwjNjhxJdHYUQmkoOVOCdh/nCXW4U39Em2Fs3HDvvefMxiwjWqPYN9623mB5rGN7b7BSLG5opfz+Gm1ESV2gQ9/XhvH10MENITaiDYV+2shlTF2JcFAaTtvlzgKZ/LYRuU39KSci0gTjX/fpfoi1620MfxHJ5fU19yI8Fx6p2tm/NNsKN1irjUctS+ylN1FRZpLpenF7kv0pWqgJXQWK9DY6zQmWy7ezvQX96AbQv3PZXPmEosP3mK3AnJmuzABE8mWUvgFNXEdfxQa8T2UW8wpniFoAQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:1c::14) by SHXPR01MB0782.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:25::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.36; Wed, 10 Jan
- 2024 08:03:25 +0000
-Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- ([fe80::535d:fb55:ed0:334f]) by SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- ([fe80::535d:fb55:ed0:334f%3]) with mapi id 15.20.7135.032; Wed, 10 Jan 2024
- 08:03:24 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Sunil V L <sunilvl@ventanamicro.com>, Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>, "palmer@dabbelt.com"
- <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
- <liwei1518@gmail.com>, "zhiwei_liu@linux.alibaba.com"
- <zhiwei_liu@linux.alibaba.com>
-Subject: RE: [RESEND RFC v1 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR
- creation to common location
-Thread-Topic: [RESEND RFC v1 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR
- creation to common location
-Thread-Index: AQHaP7Z27iEkwerb1kSWH+lHBrIFFbDLI10AgASqhgCAAulXwA==
-Date: Wed, 10 Jan 2024 08:03:24 +0000
-Message-ID: <SHXPR01MB0574A03EA35A5C49357BC32D9C69A@SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn>
-References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
- <20240105090608.5745-2-jeeheng.sia@starfivetech.com>
- <7cb2ab36-811a-477f-b2de-1f581150a595@ventanamicro.com>
- <ZZvdzOjQBbxfmuRJ@sunil-laptop>
-In-Reply-To: <ZZvdzOjQBbxfmuRJ@sunil-laptop>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SHXPR01MB0574:EE_|SHXPR01MB0782:EE_
-x-ms-office365-filtering-correlation-id: 390595a9-2a49-46bd-62d9-08dc11b29f09
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: r+VSchBzfwGhzL5K9KmTlQHvp+B8R4t3KfKrPV5fErXL/dd2v0MCupbO75sIHB8Hf7r5hMEPcblH977SPFfd8NAv9hDMr63IANOu2xuGi3qC0xs01Pqbk9B8wOxDNbn5u/OOnfxYAed3MJaHyKRQTgCE/bZfYKmtk0LVGoaxdzhLbKifvC5Jx9401XGxFHsn8/aR3c90ummF3XYQtrpIGXzchgTWG1wqdaiTdL6QLmKzJcUsqZzXd6vbM50FHJvJG3beJVE7jF9I8SXZKgDNZvseqLZZVmRCHvQoo8CabMPdc+sH7zPGnpURvCf8kQRLLCeNFA2G9PHZJyWLEpxPEbHeFnS1fYJS1idE+WQJX8U/c5cZAtVEM5fkBLXNKfnHWlXI5/niBRDJ42v6Q7NX3viffL1Z/+P8fB6xvvTwLjSFZ1Xb663+poYoHs1J/6cZNaRVIXLPBeSEKkGuKaQ3zuuEPr5pRy+gtIn5YvZ7+enmYnxjNChOF+VqbxCnu0t7X720hG0jfiZKZMDMUMj+YW7KeAdm/bDl0/goUp/q70eu69RUrt23FflHDfs1pZSz
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(39830400003)(136003)(346002)(366004)(396003)(230922051799003)(1800799012)(186009)(451199024)(64100799003)(41320700001)(71200400001)(38070700009)(40160700002)(83380400001)(53546011)(9686003)(7696005)(38100700002)(508600001)(122000001)(8676002)(86362001)(4326008)(55016003)(8936002)(41300700001)(7416002)(5660300002)(66946007)(40180700001)(2906002)(64756008)(54906003)(66476007)(66556008)(66446008)(110136005)(76116006)(33656002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?FJBqzEdeg6P8d7EguFHtkEm7pmguhU36UWxBUk4SMydV7GZeyivkoeXFGhqL?=
- =?us-ascii?Q?gEhSVSuG6aXlsw2IHj/vgXacaN5J22YzDhDHxingmy3QzsVAv6LzankgFPiF?=
- =?us-ascii?Q?it2bSEowWiL5GCNXIMRRKLP5ACco5JeiJ8VsDFLHTtG8Y1Npx/ivs+8RRBoP?=
- =?us-ascii?Q?l2cIk1QVw3mjT9ZoCobB6CR5PefMfDf6/rT7an8ghtadARrk1rW1/BNFFXOf?=
- =?us-ascii?Q?nBvAK7uQrp0mQwSP+E/sWVruweBQtHl226DreytcO5eLaMl5gZ+ztsifsGfa?=
- =?us-ascii?Q?UH6KvoXdlRx/34HhmWqoKBIWCjr5tLgxCh81zakIgfIbB7jyzuLJKzcTwcxO?=
- =?us-ascii?Q?D3X4NhGkB6JLpqXpMgp7CzT+x26UluH9jdOXyOxW+QeOQlV0SPFrYzuCGmbD?=
- =?us-ascii?Q?RdbpH4yipt75NyZ5F0POhuOWxOU3Cqe7ew7hY2nmaTVmiE/iZbTtfUc3WKnb?=
- =?us-ascii?Q?X4uEWKAU/PB+seI6d9iPJMZ9T2IJyoYOwE7ybK0XOf54gJXhbI2xETIGwTdV?=
- =?us-ascii?Q?aLfDM0jdCBLlAAuPEM7Wq/26vSWqCc+2MIjNZuFzgJQPPOzmCU0Irtxnm3ym?=
- =?us-ascii?Q?dW4V653jOW0yaajJwPXAEOf7DLDO1HmEoSb8X9veRAzaBYlVLyIIC/7/YrKH?=
- =?us-ascii?Q?zvN8cFQX1hvZD8aH0ajtHAd21rUZUXDqRZ2C+DMgSn7wRlUZ/oOZqIfxlMbe?=
- =?us-ascii?Q?Vfsn5u/k3wjt9RGLfIxLKZkR0D93Th1GOmL45fK5dbJKZiI+Ju1fdO9ktE+Y?=
- =?us-ascii?Q?IVM3G5xOCiJhQ35uWnCxZSSW7NcufCgPIIJWOUGIzzMlYk9KuadShH3h7qPZ?=
- =?us-ascii?Q?IwY2TyDJQpLwB6X4XN5x8toyGVhCsPSmFzsxTDVldYaz2TxzXg68DbGUFQWp?=
- =?us-ascii?Q?v9i7+nFwomq09LhLQyDzczeyRECRn22jPXIuLlr7s3OurcMCdjDUGIqeV+/Y?=
- =?us-ascii?Q?mIJ+2LpSPvNoKFp6CMv5q6IJ/yz2x4Nca2utusS1b8mUB6aH84qBmejEwa7u?=
- =?us-ascii?Q?2eFuLPdzkFMPUwtVcoioTQoILvB5t71qz1H7aq3uDUTYARXX6Pu2+alg9ddL?=
- =?us-ascii?Q?qKlGBk6GoFvdD+sUV2kqUPEP3V1pvZfAnX19+jK/us9Pik0wUyPDNe18tBvh?=
- =?us-ascii?Q?dIOUKjRv3K7M+yq9awYaYNAMoyLknV+wZE5ZkF6lkRwuOrmx3SVDcVF1qYKo?=
- =?us-ascii?Q?5En0OhYIewb1HEAt7er5HDapZO+WQFuf6KCxHUjS/r6kiIn9uidjqwayb0mY?=
- =?us-ascii?Q?Hlahch9E38t55SmUhbL82VBmdFsN4fu7r+xB8ZP5axCElQ8rAy7FW7NA8SpT?=
- =?us-ascii?Q?QvAOH0I5uNJNeOz/lJ8OrNNzB+qCFEpI9lTtn5OKMd8FA8CGQzzizOV9g2V4?=
- =?us-ascii?Q?n4wibkYPYL7/tvgd0Woq/FDrIxgW08dahLxxJUKhq7YgAdqjsSwbITN0aS2R?=
- =?us-ascii?Q?UR1p9IQ7jmjjLoj+ZEEwPiMVrSHO0pL9y+nsss5NHgpzSxe9WFo0SO7Uk7YW?=
- =?us-ascii?Q?DA9e5irOQWEiMvAWyk5GhpLYSgb1QBI1wnAdbAUPgkmcIkr2aCIpHsidk8Qh?=
- =?us-ascii?Q?WOC/+gMVPMXELJ6kenl6E7dD+GnR4EnQwrgOyl+0H974uFUs9w7FQ5AHo78F?=
- =?us-ascii?Q?ZeCMTgfMYNrH9JdtFLYnhpVqCsZ3AZvtOhL8e2e2jMoQ1vC6dw1/AACJ1gs0?=
- =?us-ascii?Q?ec5Jkw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jq6BjIt2;
+       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1704876256;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=609N03LdjpkxAYKf0CfIMFNH4ZnJqwVCDxCBxZ9EZlM=;
+	b=Jq6BjIt2zPDO9yz+zmKxPCn9wjS66Eopnhmqe/tf6yYJgWWsJK/yatd8+XzqqOhbmxttI9
+	F0bGyQMB7A/PhjdqcF/7iE+WHJHoD2MltNxAoDZLw4yZpdKd+GIl05V4dEAkm+UFpPsqk4
+	twkFmADBCbYlw3BLmCyIFbw3E+zBOsg=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-164-KkbvRvBgNmOk5liB-2NaVw-1; Wed, 10 Jan 2024 03:44:15 -0500
+X-MC-Unique: KkbvRvBgNmOk5liB-2NaVw-1
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1d44a50ab19so8308895ad.1
+        for <alex.bennee@linaro.org>; Wed, 10 Jan 2024 00:44:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704876255; x=1705481055;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=609N03LdjpkxAYKf0CfIMFNH4ZnJqwVCDxCBxZ9EZlM=;
+        b=tmlztzvTad2st5Wh6a/ORTf540uukae+GW+oIcQBWDLCuc0aukde7BIIG055rNfn48
+         XwhSogYYJ0jAHdGbGse7BNKfw5Z8YUFf6rLqoLPQaW3VVVcvoxrKrAlcsCuScZtcF3Bt
+         aXz/4X8BUY25icJhwl4EpaFGLurBmFJNWNmggrHfDDTZ7YMMmj41o3fc/mfWTmgI5cdk
+         t6vl74OtXqyNjQ7z6vmuPexCzxNrd/ZrGgEdFG37C/CC2QJ9JTtkqUtBzcqfiX2clzel
+         ZlerP1yjmQZMWDCnHO8CULm1ZU0KkxR3KO1asEJktHABsfeBLGE3CBoTrJIWq1Igzokw
+         LEiA==
+X-Gm-Message-State: AOJu0Yyqhvutl9sADV+Zv3mCB+2tbziL3aruElocj3ZvUkVm8EfRcG0Q
+	VvC6ghHT7zyiEyl47HI57IxUNvC0FyfHiOPccQG2O1cBFiHKKmrcuw/LK8xALaW0wEbdEC1RGZY
+	ujfAx1nfFFZMHM70RTiSqo7ey
+X-Received: by 2002:a17:902:7297:b0:1d5:4c03:9988 with SMTP id d23-20020a170902729700b001d54c039988mr1289576pll.2.1704876254836;
+        Wed, 10 Jan 2024 00:44:14 -0800 (PST)
+X-Received: by 2002:a17:902:7297:b0:1d5:4c03:9988 with SMTP id d23-20020a170902729700b001d54c039988mr1289560pll.2.1704876254547;
+        Wed, 10 Jan 2024 00:44:14 -0800 (PST)
+Return-Path: <peterx@redhat.com>
+Received: from x1n ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id t24-20020a1709028c9800b001ce5b859a59sm3089659plo.305.2024.01.10.00.44.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Jan 2024 00:44:14 -0800 (PST)
+Date: Wed, 10 Jan 2024 16:44:01 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>,
+	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+	qemu-devel@nongnu.org,
+	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	Anton Johansson <anjo@rev.ng>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Hao Wu <wuhaotsh@google.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+Message-ID: <ZZ5Y0UMA2h2x_tb9@x1n>
+References: <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org>
+ <87plya76cu.fsf@suse.de>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+ <87bk9u8dhs.fsf@suse.de>
+ <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org>
+ <ZZ4Qrfis4XHWGN0j@x1n>
+ <87cyu9hgit.fsf@pond.sub.org>
+ <ZZ44iQRPrdDpfov7@x1n>
+ <87sf35ehio.fsf@pond.sub.org>
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: 390595a9-2a49-46bd-62d9-08dc11b29f09
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jan 2024 08:03:24.9301 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uxL3DjpAmZKDqKdrL7MsA3z3T6axrVdgL0+cLha3YxswiGUD2lhLizuPfIYC7iqsj1awxYB1JWGbz3byM4Ib8e1LMEVsE1oVjCTbtzPwwzw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SHXPR01MB0782
-Received-SPF: pass client-ip=2406:e500:4440:2::620;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 08TDFtfBwG0b
+In-Reply-To: <87sf35ehio.fsf@pond.sub.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+X-TUID: tY6ilx9eD92h
 
+On Wed, Jan 10, 2024 at 09:09:51AM +0100, Markus Armbruster wrote:
+> If an object has state that needs to be migrated only sometimes, and
+> that part of the state is large enough to bother, we can put it in an
+> optional subsection, can't we?
+> 
+> Destination: if present, take it.  If absent, initialize to default.
+> 
+> Source: send unless (known to be) in default state.
 
+Hmm.. correct. I think I messed up VMSD's needed() hook with field_exists()
+of the fields; my apologies.
 
-> -----Original Message-----
-> From: Sunil V L <sunilvl@ventanamicro.com>
-> Sent: Monday, January 8, 2024 7:35 PM
-> To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-> Cc: JeeHeng Sia <jeeheng.sia@starfivetech.com>; qemu-arm@nongnu.org; qemu=
--devel@nongnu.org; qemu-riscv@nongnu.org;
-> mst@redhat.com; imammedo@redhat.com; anisinha@redhat.com; peter.maydell@l=
-inaro.org; shannon.zhaosl@gmail.com;
-> palmer@dabbelt.com; alistair.francis@wdc.com; bin.meng@windriver.com; liw=
-ei1518@gmail.com; zhiwei_liu@linux.alibaba.com
-> Subject: Re: [RESEND RFC v1 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR c=
-reation to common location
->=20
-> On Fri, Jan 05, 2024 at 09:19:14AM -0300, Daniel Henrique Barboza wrote:
-> >
-> >
-> > On 1/5/24 06:06, Sia Jee Heng wrote:
-> > > RISC-V should also generate the SPCR in a manner similar to ARM.
-> > > Therefore, instead of replicating the code, relocate this function
-> > > to the common AML build.
-> > >
-> > > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-> > > ---
-> > >   hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
-> > >   hw/arm/virt-acpi-build.c    | 68 +++++++++++++++-------------------=
----
-> > >   include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
-> > >   include/hw/acpi/aml-build.h |  4 +++
-> > >   4 files changed, 115 insertions(+), 41 deletions(-)
-> > >
-> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > > index af66bde0f5..1efa534aa8 100644
-> > > --- a/hw/acpi/aml-build.c
-> > > +++ b/hw/acpi/aml-build.c
-> > > @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GAr=
-ray *tbl, uint32_t flags,
-> > >       }
-> > >   }
-> > > +void build_spcr(GArray *table_data, BIOSLinker *linker,
-> > > +                const AcpiSpcrData *f, const char *oem_id,
-> > > +                const char *oem_table_id)
-> > > +{
-> > > +    AcpiTable table =3D { .sig =3D "SPCR", .rev =3D 2, .oem_id =3D o=
-em_id,
-> > > +                        .oem_table_id =3D oem_table_id };
-> > > +
-> > > +    acpi_table_begin(&table, table_data);
-> > > +    /* Interface type */
-> > > +    build_append_int_noprefix(table_data, f->interface_type, 1);
-> > > +    /* Reserved */
-> > > +    build_append_int_noprefix(table_data, 0, 3);
-> > > +    /* Base Address */
-> > > +    build_append_gas(table_data, f->base_addr.id, f->base_addr.width=
-,
-> > > +                     f->base_addr.offset, f->base_addr.size,
-> > > +                     f->base_addr.addr);
-> > > +    /* Interrupt type */
-> > > +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
-> > > +    /* IRQ */
-> > > +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
-> > > +    /* Global System Interrupt */
-> > > +    build_append_int_noprefix(table_data, f->interrupt, 4);
-> > > +    /* Baud Rate */
-> > > +    build_append_int_noprefix(table_data, f->baud_rate, 1);
-> > > +    /* Parity */
-> > > +    build_append_int_noprefix(table_data, f->parity, 1);
-> > > +    /* Stop Bits */
-> > > +    build_append_int_noprefix(table_data, f->stop_bits, 1);
-> > > +    /* Flow Control */
-> > > +    build_append_int_noprefix(table_data, f->flow_control, 1);
-> > > +    /* Terminal Type */
-> > > +    build_append_int_noprefix(table_data, f->terminal_type, 1);
-> > > +    /* PCI Device ID  */
-> > > +    build_append_int_noprefix(table_data, f->pci_device_id, 2);
-> > > +    /* PCI Vendor ID */
-> > > +    build_append_int_noprefix(table_data, f->pci_vendor_id, 2);
-> > > +    /* PCI Bus Number */
-> > > +    build_append_int_noprefix(table_data, f->pci_bus, 1);
-> > > +    /* PCI Device Number */
-> > > +    build_append_int_noprefix(table_data, f->pci_device, 1);
-> > > +    /* PCI Function Number */
-> > > +    build_append_int_noprefix(table_data, f->pci_function, 1);
-> > > +    /* PCI Flags */
-> > > +    build_append_int_noprefix(table_data, f->pci_flags, 4);
-> > > +    /* PCI Segment */
-> > > +    build_append_int_noprefix(table_data, f->pci_segment, 1);
-> > > +    /* Reserved */
-> > > +    build_append_int_noprefix(table_data, 0, 4);
-> > > +
-> > > +    acpi_table_end(linker, &table);
-> > > +}
-> > >   /*
-> > >    * ACPI spec, Revision 6.3
-> > >    * 5.2.29 Processor Properties Topology Table (PPTT)
-> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > index 510ab0dcca..a31f736d1a 100644
-> > > --- a/hw/arm/virt-acpi-build.c
-> > > +++ b/hw/arm/virt-acpi-build.c
-> > > @@ -431,48 +431,34 @@ build_iort(GArray *table_data, BIOSLinker *link=
-er, VirtMachineState *vms)
-> > >    * Rev: 1.07
-> > >    */
-> > >   static void
-> > > -build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState =
-*vms)
-> > > +build_spcr_v2(GArray *table_data, BIOSLinker *linker, VirtMachineSta=
-te *vms)
-> >
-> > Nit: I don't understand the '_v2' in the name of this function. Is it j=
-ust to not collide
-> > with the now public build_spcr()? Or does it have to do with the SPCR t=
-able being
-> > '.rev =3D 2'? Because if it's the latter, you can name the common helpe=
-r 'build_spcr_rev2'
-> > (since both ARM and RISC-V use SPCR rev 2), keep this local build_spcr(=
-) initializing
-> > the AcpiSpcrData struct with ARM attributes and then call the common bu=
-ild_spcr_rev2().
-> >
-> My suggestion is, keep the build_spcr() generic and take version as the
-> parameter.
-Alright. I will give them a generic name for both the arch build_spcr() and
-the common build_spcr(). The revision info should be passed to the common
-build_spcr().
->=20
-> Thanks,
-> Sunil
+The trick should be that VMSD's subsections is more flexible, due to the
+fact that vmstate_subsection_load() has:
+
+    while (qemu_peek_byte(f, 0) == QEMU_VM_SUBSECTION) {
+        ...
+        sub_vmsd = vmstate_get_subsection(vmsd->subsections, idstr);
+        ...
+    }
+
+So it tolerates the case where the subsection doesn't exist, or out of
+order subsections.
+
+While field_exists() hook seems not that flexible, as it's implemented as
+this in vmstate_load_state():
+
+    while (field->name) {
+        ...
+        if (vmstate_field_exists(vmsd, field, opaque, version_id)) {
+           ...
+        }
+        ...
+        field++;
+    }
+
+So that vmstate_field_exists() needs to be known even on dest before the
+main vmsd got loaded, and it should always return the same value as the
+source.  Also, the field has ordering requirements.
+
+Then yes, subsection should work for dynamic objects.
+
+Thanks,
+
+-- 
+Peter Xu

@@ -1,132 +1,131 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1349375ejs;
-        Wed, 10 Jan 2024 15:18:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEgb6BPNHARcP7yvlH55xui1bYLkqvFGSwd5Q/sQgvTonb2pYmPUUtDdT0NdP3/JNIuQF3k
-X-Received: by 2002:a05:6214:1c0e:b0:681:35b:fea4 with SMTP id u14-20020a0562141c0e00b00681035bfea4mr305776qvc.41.1704928730416;
-        Wed, 10 Jan 2024 15:18:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704928730; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1349384ejs;
+        Wed, 10 Jan 2024 15:18:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGLJBaZrTsqG5bGG0ymmCTPDHWJTPqFOgBmDP68dH3LQC0E4SuUs8C31+Z+XLgWhnIdXxaG
+X-Received: by 2002:ac8:59c8:0:b0:429:b5e1:2fd with SMTP id f8-20020ac859c8000000b00429b5e102fdmr305085qtf.61.1704928731358;
+        Wed, 10 Jan 2024 15:18:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704928731; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ukutt5sA313Ojq4BXMGzZQhnl9Y4MFz1fkZesgephbQ5PtBQsEwdxMhXtsuKYYTv+n
-         zZUGUNpuJgV9S90v6qfVV3wLsLyr088HwJwDpyQ26gOzC/OdUv0ukLnos4o3TifjUfy2
-         t+3y+QHHwTYDmnU/v9omL3kBlLaQlx1xfmCBF5drQvajrcinQL+VHRHMW7kGoylBQ0E+
-         Fzj712ZbIzX7+/d7SitIMo2djdaQ32YXzKXwOAoHeduyn9l+ZiQ0qiluKl3JvjJqODFV
-         IyKENU70sO4tfqE45QcaMV5UCFIldFE8ZWcARrVzt+sNerCS99HAzgjdnP3zf0gYfAjy
-         7bQA==
+        b=SMw51PhbSPbRFGvbNDbphOAOynqiTxy1KdLnAew5huvilIguQDtK5XdHZM1CqRdnyj
+         MwSrZsOywDqRu4TXNh4PiRk7ZHScWqYdPv1bMvuCmJYsS8UuWMoWoN8BcE00i3+3g4LO
+         7NipmSVDRpLj+yYJD7yH8Non3HwgJhBBF0DainSmzvIimc5+MOFivd4WUlwcelXSlFtt
+         +BK589n9OzXAwzViyeLDwoTiZqH0SgHwOKxWTHvzoHYRNVzbq6dvTusWxYvM7owJaL2f
+         /LtVAhP4whHaEJwKJ6xZ/mGU27bYrDSO5IvYxAQyhn1jfZnMho83biPM/9h3MXnj6n2l
+         StPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CJswFmRWSp5Rg893I6qlcgWxDqaJpvGjsJ2AF4UWe0s=;
-        fh=cgAQA+XUIsr4IqXjvxsNSbu6yUfPNOKZue5KQ1lizTE=;
-        b=Z28+xgjfJJzHdlocKlJtafwIV0YZk54grnr1mGfeWp2JbW0lPhnRIfLS4LM3EKEIlX
-         wZjKK8nwJAM397nixzgyCN9Rmch7diZjfi5TWgV5T9Mmfz6qYBozpfxsRj8yZVY3MCXN
-         EBjKOGn30SCh5VOXaLquEk0MQz+qiqBmSsLlXUDQ6qLYinXyl8oA7m1+PnN4bC+Ka75f
-         uCQUzcE+ISC4jrYUg1psKcOKA1GpQ+NajEaInc6/FozSfNCKvqq4w7WqqN4UMdL/nzrV
-         UPbEyFIlF+9MTo97cdKD9iOykA1UZS0zZEJEO74OCni5CJVyDNgH5d9q1qKpTfBNJ79T
-         X35g==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=PDOe5rG2IV3uBSu+c5KdooXOx5bZNFDLEG68jw4CDe4=;
+        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
+        b=h3wzXrY6QVM0MkDivdjCGHyVogSvwxUZV3c6Bn4Arj8lRkHAJqbPSc4EQVKHtv/7uh
+         8fjYHvspwA8bqoGOqt2G1Wi2DK+Yi7ibKxKsNCmhux5lSkvdLh2sTs/pUBcLZe5FO+uQ
+         61Pe80rkC7m885lhGJgEnU+B3hvjIdp1QEQ/9RZCz5Cuz5FRZhmgDleazD/2JAVDkV8a
+         A8TSXZEtT7mVQpBbBqIhne4iFtRIlJw+LZYX5ZCNzITPaBbx3xTAJ53sAbFC0VYOogDR
+         CJsdUC1uTUUhkPtSJiT1thYOeavUIhpLRBQoNyVcVcIthW68hJc2NApPbYc9HZUH8myL
+         /Emg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kVXpxKgP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=s3i3EK6t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020a0cf0cd000000b0067f8cab3dc5si5320992qvl.488.2024.01.10.15.18.50
+        by mx.google.com with ESMTPS id e17-20020a05622a111100b004297dd15c8asi5012717qty.36.2024.01.10.15.18.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jan 2024 15:18:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Jan 2024 15:18:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kVXpxKgP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=s3i3EK6t;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rNhpt-0001UX-QJ; Wed, 10 Jan 2024 18:18:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rNho7-0007QP-2l; Wed, 10 Jan 2024 18:16:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNhpa-0001F3-DG; Wed, 10 Jan 2024 18:17:56 -0500
+ id 1rNhnx-0007K1-AL; Wed, 10 Jan 2024 18:16:13 -0500
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1rNhpY-0002IA-R4; Wed, 10 Jan 2024 18:17:54 -0500
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ id 1rNhnv-0001XX-5f; Wed, 10 Jan 2024 18:16:13 -0500
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 40AMvXS1006150; Wed, 10 Jan 2024 23:17:36 GMT
+ 40AN4PVe007373; Wed, 10 Jan 2024 23:15:44 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
  content-type : content-transfer-encoding; s=pp1;
- bh=CJswFmRWSp5Rg893I6qlcgWxDqaJpvGjsJ2AF4UWe0s=;
- b=kVXpxKgP3h8xEJjK9ayqlv1Fw3rariv+XaoPApr06nGbgx2DJE7obaP3z5kI4DwgWiYv
- pwtNTngg2fSWDlQiMmkIA7su4UZH1RrzLlBXEv/rH2733KM9vKyEqXNDU1z+My7AmEPf
- Pt0eSQ6UDhAfRyM27a7G+tuca/Usw+TgFzGspwyU70KbmDn3eBUvhDj2Xp/2tGIiOFp8
- YKyQvM/MkUvGQ9dTZLXLM1tsGu7P+cOmoSf/9HPrzNKTSa/SagFj5RtifEI02FKvOkF1
- HOiB4CJTX4BBLrI41CRTxc3yVLJXpONi0RNpcHJi2QKcu+yhmdZybAJYyQZjpsxRAIhI lA== 
+ bh=PDOe5rG2IV3uBSu+c5KdooXOx5bZNFDLEG68jw4CDe4=;
+ b=s3i3EK6tt/Bbjuetzx5J/aYyO8xn7jKnOzgTNXHDFlIcYqztbexkxIGNEuQB+aYKBSbJ
+ p4L9273LFyjfmR0Lig6kaEAgtPZymZ4dmKbb16u4WmLjXt9Wr1518UPSpuuCVjbUgUfs
+ iAxCxJrdmY9x0atv5kGxT83fad7Qj8OBa2pv7VLR8zczHWNDFR3hQvaCCCAiY5f+Et1v
+ 8rcZXmzsPWiErd7HOgzdvfYIA1+jsVJPqRyZG3WwB5h6nHquNZZJYrLS/DrSKzg8z6Nc
+ 9YRbT6aipBa1GXxvq+Sl1L+N9aHTkX8X9fMUFJWxQZ8H5zqaBW54EvaNOvD/YtX+908Z hA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj4g0gff3-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj4990n3j-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Jan 2024 23:17:36 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40AN9daS009235;
- Wed, 10 Jan 2024 23:17:35 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj4g0gfee-1
+ Wed, 10 Jan 2024 23:15:43 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40AMjQ0T019263;
+ Wed, 10 Jan 2024 23:15:43 GMT
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj4990n3b-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Jan 2024 23:17:35 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 40AMlhpd000926; Wed, 10 Jan 2024 23:17:35 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkdkftpj-1
+ Wed, 10 Jan 2024 23:15:43 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40ANDvMq027006; Wed, 10 Jan 2024 23:15:42 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vfkw27nxx-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 10 Jan 2024 23:17:35 +0000
-Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
- [10.241.53.102])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 40ANHYte24838870
+ Wed, 10 Jan 2024 23:15:42 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40ANFfS031851136
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 10 Jan 2024 23:17:34 GMT
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7FCD65803F;
- Wed, 10 Jan 2024 23:17:34 +0000 (GMT)
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 281C158060;
- Wed, 10 Jan 2024 23:17:34 +0000 (GMT)
-Received: from [9.61.76.45] (unknown [9.61.76.45])
- by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Wed, 10 Jan 2024 23:17:34 +0000 (GMT)
-Message-ID: <9da3b6c6-631d-48c4-8af7-2b9e25393008@linux.ibm.com>
-Date: Wed, 10 Jan 2024 17:17:33 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/10] Introduce model for IBM's FSI
-Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org
-References: <20231128235700.599584-1-ninad@linux.ibm.com>
- <d9d29531-e3a1-4f16-b0af-f9328d72508f@kaod.org>
+ Wed, 10 Jan 2024 23:15:41 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2E31C58065;
+ Wed, 10 Jan 2024 23:15:41 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C468158069;
+ Wed, 10 Jan 2024 23:15:40 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 10 Jan 2024 23:15:40 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <d9d29531-e3a1-4f16-b0af-f9328d72508f@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>
+Subject: [PATCH v10 4/9] hw/fsi: Introduce IBM's FSI master
+Date: Wed, 10 Jan 2024 17:15:32 -0600
+Message-Id: <20240110231537.1654478-5-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240110231537.1654478-1-ninad@linux.ibm.com>
+References: <20240110231537.1654478-1-ninad@linux.ibm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: fs6dPg8UM9rPEep_bQ3K75wW_cE9yJGg
-X-Proofpoint-GUID: ka680qEjeqYpwGU67y3o7d6uWlRIPO62
+X-Proofpoint-GUID: o-wkCn0htIXZSEwr60l9-wyGlWXvtXx5
+X-Proofpoint-ORIG-GUID: Sd906wV-9svhntO4eqoQHBIxJ86zrgj9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-10_12,2024-01-10_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 mlxscore=0
- suspectscore=0 phishscore=0 clxscore=1015 spamscore=0 impostorscore=0
- bulkscore=0 mlxlogscore=757 lowpriorityscore=0 adultscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2311290000
- definitions=main-2401100184
+ phishscore=0 clxscore=1015
+ spamscore=0 bulkscore=0 mlxlogscore=917 mlxscore=0 suspectscore=0
+ priorityscore=1501 adultscore=0 impostorscore=0 lowpriorityscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401100183
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -19
@@ -137,65 +136,287 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gRPBv514NeMR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DgrAm5/BA8Ih
 
-Hello Cedric,
+This is a part of patchset where IBM's Flexible Service Interface is
+introduced.
 
+This commit models the FSI master. CFAM is hanging out of FSI master which is a bus controller.
 
->>   include/hw/fsi/aspeed-apb2opb.h |  34 ++++
->
-> aspeed-apb2opb is a HW logic bridging the FSI world and Aspeed. It
-> doesn't belong to the FSI susbsytem. Since we don't have a directory
-> for platform specific devices, I think the model shoud go under hw/misc/.
->
-Moved it to hw/misc directory
->
->>   include/hw/fsi/cfam.h           |  45 +++++
->
-> scratchpad is the only lbus device and it is quite generic, we could
-> move it to lbus files. It would be nice to implement more than one
-> reg.
-Moved scratchpad to lbus files.
->
->
->>   include/hw/fsi/fsi-master.h     |  32 ++++
->>   include/hw/fsi/fsi-slave.h      |  29 +++
->>   include/hw/fsi/fsi.h            |  24 +++
->
-> I would move the definitions and implementation of the fsi bus and
-> the fsi slave under the fsi.h and fsi.c files
-Moved fsi-slave to fsi files.
->
->
->>   include/hw/fsi/lbus.h           |  40 ++++
->>   include/hw/fsi/opb.h            |  25 +++
->
-> opb is quite minimal now and I think it could be hidden under
-> aspeed-apb2opb.
-Moved opb to aspeed-apb2opb files.
->
->>   hw/fsi/Kconfig                  |  21 +++
->
-> one CONFIG_FSI option and one CONFIG_FSI_APB2OPB should be enough.
-> CONFIG_FSI_APB2OPB should select FSI and depends on CONFIG_ASPEED_SOC.
-Reduced number of configs as you suggested.
+The FSI master: A controller in the platform service processor (e.g.
+BMC) driving CFAM engine accesses into the POWER chip. At the
+hardware level FSI is a bit-based protocol supporting synchronous and
+DMA-driven accesses of engines in a CFAM.
 
-Thanks for the review.
+[ clg: - move FSICFAMState object under FSIMasterState
+       - introduced fsi_master_init()
+       - reworked fsi_master_realize()
+       - dropped FSIBus definition ]
 
-Regards,
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+---
+v9:
+  - Initialized registers.
+  - Fixed the address check.
+---
+ include/hw/fsi/fsi-master.h |  32 +++++++
+ hw/fsi/fsi-master.c         | 173 ++++++++++++++++++++++++++++++++++++
+ hw/fsi/meson.build          |   2 +-
+ hw/fsi/trace-events         |   2 +
+ 4 files changed, 208 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 hw/fsi/fsi-master.c
 
-Ninad
+diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
+new file mode 100644
+index 0000000000..3830869877
+--- /dev/null
++++ b/include/hw/fsi/fsi-master.h
+@@ -0,0 +1,32 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2019 IBM Corp.
++ *
++ * IBM Flexible Service Interface Master
++ */
++#ifndef FSI_FSI_MASTER_H
++#define FSI_FSI_MASTER_H
++
++#include "exec/memory.h"
++#include "hw/qdev-core.h"
++#include "hw/fsi/fsi.h"
++#include "hw/fsi/cfam.h"
++
++#define TYPE_FSI_MASTER "fsi.master"
++OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
++
++#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
++
++typedef struct FSIMasterState {
++    DeviceState parent;
++    MemoryRegion iomem;
++    MemoryRegion opb2fsi;
++
++    FSIBus bus;
++
++    uint32_t regs[FSI_MASTER_NR_REGS];
++    FSICFAMState cfam;
++} FSIMasterState;
++
++
++#endif /* FSI_FSI_H */
+diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+new file mode 100644
+index 0000000000..939de5927f
+--- /dev/null
++++ b/hw/fsi/fsi-master.c
+@@ -0,0 +1,173 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Flexible Service Interface master
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "trace.h"
++
++#include "hw/fsi/fsi-master.h"
++
++#define TYPE_OP_BUS "opb"
++
++#define TO_REG(x)                               ((x) >> 2)
++
++#define FSI_MENP0                               TO_REG(0x010)
++#define FSI_MENP32                              TO_REG(0x014)
++#define FSI_MSENP0                              TO_REG(0x018)
++#define FSI_MLEVP0                              TO_REG(0x018)
++#define FSI_MSENP32                             TO_REG(0x01c)
++#define FSI_MLEVP32                             TO_REG(0x01c)
++#define FSI_MCENP0                              TO_REG(0x020)
++#define FSI_MREFP0                              TO_REG(0x020)
++#define FSI_MCENP32                             TO_REG(0x024)
++#define FSI_MREFP32                             TO_REG(0x024)
++
++#define FSI_MVER                                TO_REG(0x074)
++#define FSI_MRESP0                              TO_REG(0x0d0)
++
++#define FSI_MRESB0                              TO_REG(0x1d0)
++#define   FSI_MRESB0_RESET_GENERAL              BE_BIT(0)
++#define   FSI_MRESB0_RESET_ERROR                BE_BIT(1)
++
++static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
++{
++    FSIMasterState *s = FSI_MASTER(opaque);
++    int reg = TO_REG(addr);
++
++    trace_fsi_master_read(addr, size);
++
++    if (reg >= FSI_MASTER_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
++                      __func__, addr, size);
++        return 0;
++    }
++
++    return s->regs[reg];
++}
++
++static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
++                             unsigned size)
++{
++    FSIMasterState *s = FSI_MASTER(opaque);
++    int reg = TO_REG(addr);
++
++    trace_fsi_master_write(addr, size, data);
++
++    if (reg >= FSI_MASTER_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
++                      __func__, addr, size);
++        return;
++    }
++
++    switch (reg) {
++    case FSI_MENP0:
++        s->regs[FSI_MENP0] = data;
++        break;
++    case FSI_MENP32:
++        s->regs[FSI_MENP32] = data;
++        break;
++    case FSI_MSENP0:
++        s->regs[FSI_MENP0] |= data;
++        break;
++    case FSI_MSENP32:
++        s->regs[FSI_MENP32] |= data;
++        break;
++    case FSI_MCENP0:
++        s->regs[FSI_MENP0] &= ~data;
++        break;
++    case FSI_MCENP32:
++        s->regs[FSI_MENP32] &= ~data;
++        break;
++    case FSI_MRESP0:
++        /* Perform necessary resets leave register 0 to indicate no errors */
++        break;
++    case FSI_MRESB0:
++        if (data & FSI_MRESB0_RESET_GENERAL) {
++            device_cold_reset(DEVICE(opaque));
++        }
++        if (data & FSI_MRESB0_RESET_ERROR) {
++            /* FIXME: this seems dubious */
++            device_cold_reset(DEVICE(opaque));
++        }
++        break;
++    default:
++        s->regs[reg] = data;
++    }
++}
++
++static const struct MemoryRegionOps fsi_master_ops = {
++    .read = fsi_master_read,
++    .write = fsi_master_write,
++    .endianness = DEVICE_BIG_ENDIAN,
++};
++
++static void fsi_master_init(Object *o)
++{
++    FSIMasterState *s = FSI_MASTER(o);
++
++    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
++
++    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
++                          TYPE_FSI_MASTER, 0x10000000);
++    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
++}
++
++static void fsi_master_realize(DeviceState *dev, Error **errp)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++
++    if (!qdev_realize(DEVICE(&s->cfam), BUS(&s->bus), errp)) {
++        return;
++    }
++
++    /* address ? */
++    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
++}
++
++static void fsi_master_reset(DeviceState *dev)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++    int i;
++
++    /* Initialize registers */
++    for (i = 0; i < FSI_MASTER_NR_REGS; i++) {
++        s->regs[i] = 0;
++    }
++
++    /* ASPEED default */
++    s->regs[FSI_MVER] = 0xe0050101;
++}
++
++static void fsi_master_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->bus_type = TYPE_OP_BUS;
++    dc->desc = "FSI Master";
++    dc->realize = fsi_master_realize;
++    dc->reset = fsi_master_reset;
++}
++
++static const TypeInfo fsi_master_info = {
++    .name = TYPE_FSI_MASTER,
++    .parent = TYPE_DEVICE,
++    .instance_init = fsi_master_init,
++    .instance_size = sizeof(FSIMasterState),
++    .class_init = fsi_master_class_init,
++};
++
++static void fsi_register_types(void)
++{
++    type_register_static(&fsi_master_info);
++}
++
++type_init(fsi_register_types);
+diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+index 96403d4efc..7803b3afd1 100644
+--- a/hw/fsi/meson.build
++++ b/hw/fsi/meson.build
+@@ -1 +1 @@
+-system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c'))
++system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c','fsi-master.c'))
+diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+index b542956fb3..bf417b6dc3 100644
+--- a/hw/fsi/trace-events
++++ b/hw/fsi/trace-events
+@@ -7,3 +7,5 @@ fsi_cfam_config_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64
+ fsi_cfam_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+ fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
++fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
++fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+-- 
+2.39.2
 

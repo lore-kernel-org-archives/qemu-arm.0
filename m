@@ -1,327 +1,279 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1026814ejs;
-        Wed, 10 Jan 2024 05:19:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHZaZCa2HbSVEIBd2HsDZWvCLw24prBp3oEqUnt6UBoouH0Q7/hBhswEMtCkhEhEGVgyRL5
-X-Received: by 2002:a5d:4dce:0:b0:337:6f4e:3833 with SMTP id f14-20020a5d4dce000000b003376f4e3833mr584338wru.12.1704892793148;
-        Wed, 10 Jan 2024 05:19:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704892793; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1044946ejs;
+        Wed, 10 Jan 2024 05:55:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGeCenyKpDSXJcBkgrQdpODI27AalBQHR71GAC1z5vp2V66KPuQF46a96hCIQmjE1gD4Meu
+X-Received: by 2002:ad4:5beb:0:b0:680:f9a2:4c3e with SMTP id k11-20020ad45beb000000b00680f9a24c3emr1344522qvc.38.1704894900895;
+        Wed, 10 Jan 2024 05:55:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704894900; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qlem8FFmAyRnm4rZRBcpoDmr4MmN/ebOZ2ed3gjEWpxTBaIQ+xHnM/6b2ecw48DOo6
-         c94Ad4mtEg06l6DokHkRaQEfcqoKZeFook2zqk9KgoRxQgbIvuBDiNFkz4UZ3CgF3rzs
-         kFd22H+1075cWxd89qyuXycaP7e5fhY3usuDfDfI4OMKN6mo+9/3qKZaT7LEnpNt2ILv
-         zC22A40GwRczleIo2biNOktCwpmIZF0eru33WyPIQxy+LxMABd4Shcerp9b16MX8L8ao
-         JRd4WOh10vAef3G0krmHyzu+3Zk7UZugJVZg28u2VWM1S+/mOkafpmRQyZy3AtjmkuVN
-         x1sg==
+        b=Fa0tYCM7fVYaJM0nFGs2F6aW6iw+DvAQZDWwCBNJFMqnQwdvCzRrAvEm3uF2qD8raN
+         dOxk9HMtAUzo2+fTrMsqEVzIJtjEoPMEcLeW+HAGUERRoB2/sLB5NeIwpdkuuIBURqzp
+         6mZKCiicGuGqDPyVy6Jel7ykaG0vBL194zukNsT358KVBawU2uiZalhHdM96K9qVWLai
+         jsryevhXdoycg4W/tJFyACJ179DLxzQOBXORPXRMCMfK0vWYbPpagJctGqTQszaXx4ze
+         pLglsqB0Gz3o2gX/GfUfVCck9VOOPyJ+pJDjQoKG1MYVR8/odfyj5BjWPY3dDD4zIbFg
+         iNZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
-         :dkim-signature:dkim-signature;
-        bh=1GYT9PesspGGTGrKftEOP1PfOQjdmzxfChZ6FPizWes=;
-        fh=s4dQv/uYEdEtMTmgYTm9hLkT5tFqDeVVHFflq7EGhBc=;
-        b=gUJC6Q1P3wET13ddSKpGTNRN98txo/HiHRIIinEhT8YPu2vlf23rbabO0ruCc6DWf2
-         g94tE7Z+GWICgqwaQH6PuRD28rOTK4tGWpc5jAA5rC/D6CmlCZad11xnF3+6FxG7Esnm
-         ik/19oyFX7dnj8zbGv4lsHlCc//lJUj/a403j4XwJBFioIWS95PF+0PEhkpHxyZUwCOa
-         NeowRJLrfgYngJqrRthzRrO9DL+rhTlN+ZgW0xsVhH6OCjIisPmcGTw6eecbV3ckQhtJ
-         3Sjq+18L2KUQltKx3OHaeSD381Oezbjb8IsSCEJJfJcyfzxASqNchwo8c0KTRWw6jPV4
-         eYuw==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=wk07C0QrNxbfu+ZfQjNe5NGRfyFgkwnr48d1D4Mxe+E=;
+        fh=aS4USwmi6JJv1Gf+5YdjwDcgBBw+2I1IGrvxAdiP+Dk=;
+        b=OICbOnilPQPTrQ2gi01ImHiDmFzkA6nYKDsnGSXM9rPURIlZ/Z4UQzV0swJxGIPesW
+         EMT+qYtJSlCzRBFAfifRBKOcTMmhQRiae1wgfL3n+cOh1vgeMDwH5CxZ3oTlgOvOWzBp
+         4ZAG0e6956yRs1mx/rHRy+yxJUN4kXfFZeLcxLPTl1mAeNLddiqyHEtL3Ucdyy4yI6Mq
+         CIMEAxV7C0+wnmq/43/3XFIpHHh9qhHaAcm45BxMMCWcrB+H6FHB/irnQCaN33ppw+ki
+         nodsZVXUEQv6WjVabWgEAFosNf7lK1tFXPHX16mB0sumjLY0YnEzjLEkHnJqF1P6KDt1
+         cJow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uvtYAcnO;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uvtYAcnO;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.223.131])
-        by mx.google.com with ESMTPS id n4-20020a5d4844000000b003373f309375si2081646wrs.129.2024.01.10.05.19.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QkZ7wIlS;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id j3-20020a0c9cc3000000b0068061339975si4261275qvf.286.2024.01.10.05.55.00
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jan 2024 05:19:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) client-ip=195.135.223.131;
+        Wed, 10 Jan 2024 05:55:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uvtYAcnO;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uvtYAcnO;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QkZ7wIlS;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1704894900;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wk07C0QrNxbfu+ZfQjNe5NGRfyFgkwnr48d1D4Mxe+E=;
+	b=QkZ7wIlS1+RoyCsI71yNLsVCnK5XfDELy/8+babW1tfZ8CTMNhL89C23FYoflSGEYR+JeJ
+	WXIbMGaqTCPF/SKJk+QxwfGWKYB6U58Ga6h3Zr/MHnrljKzHmaGPoS4lrlouB52RCt5y0a
+	uQ7eHsw3sBf60DUCHERTzF73IU7LAlw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-428-1g23w-L4NHqNyLTHE1BtLA-1; Wed,
+ 10 Jan 2024 08:54:57 -0500
+X-MC-Unique: 1g23w-L4NHqNyLTHE1BtLA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 3D2941F8AB;
-	Wed, 10 Jan 2024 13:19:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1704892792; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1GYT9PesspGGTGrKftEOP1PfOQjdmzxfChZ6FPizWes=;
-	b=uvtYAcnOz9eQLWG8584tL8SFuNZDxpyGe9n4Hr/bnZYJivVhxSXqjB0ti6zRaWSyC26KJA
-	ivMIeTEpYGLpQ0W9nrOkB3LFhqtTfsvPHMm0uqGmqaWuTYa8A5eNw0uZPE8u6wj4binMaB
-	Z/JnW8JVqpK8H1Tcyb6tSqA+YWcPOP0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1704892792;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1GYT9PesspGGTGrKftEOP1PfOQjdmzxfChZ6FPizWes=;
-	b=rBKmJ+a1DPlGGBsLtsGibhShrqzsmxK0w+kxYcsMaYAdQreboGtYX7Q2swkzvbpyxG3GNW
-	LbnhZWa8PuOY5qAg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1704892792; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1GYT9PesspGGTGrKftEOP1PfOQjdmzxfChZ6FPizWes=;
-	b=uvtYAcnOz9eQLWG8584tL8SFuNZDxpyGe9n4Hr/bnZYJivVhxSXqjB0ti6zRaWSyC26KJA
-	ivMIeTEpYGLpQ0W9nrOkB3LFhqtTfsvPHMm0uqGmqaWuTYa8A5eNw0uZPE8u6wj4binMaB
-	Z/JnW8JVqpK8H1Tcyb6tSqA+YWcPOP0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1704892792;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1GYT9PesspGGTGrKftEOP1PfOQjdmzxfChZ6FPizWes=;
-	b=rBKmJ+a1DPlGGBsLtsGibhShrqzsmxK0w+kxYcsMaYAdQreboGtYX7Q2swkzvbpyxG3GNW
-	LbnhZWa8PuOY5qAg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id A287C13786;
-	Wed, 10 Jan 2024 13:19:51 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id vowEGneZnmV6EwAAD6G6ig
-	(envelope-from <farosas@suse.de>); Wed, 10 Jan 2024 13:19:51 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Markus Armbruster <armbru@redhat.com>, Peter Xu <peterx@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>, qemu-devel@nongnu.org, Markus Armbruster
- <armbru@redhat.com>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, Eduardo Habkost
- <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>, Alistair Francis
- <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>, Andrey Smirnov
- <andrew.smirnov@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Hao
- Wu <wuhaotsh@google.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4BFC01C05149;
+	Wed, 10 Jan 2024 13:54:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.71])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C3E0C15880;
+	Wed, 10 Jan 2024 13:54:54 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 92EE321E6682; Wed, 10 Jan 2024 14:54:53 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: Peter Xu <peterx@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+  qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Tyrone Ting <kfting@nuvoton.com>,  Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  Eduardo Habkost <eduardo@habkost.net>,
+  Joel Stanley <joel@jms.id.au>,  Alistair Francis
+ <alistair@alistair23.me>,  Anton Johansson <anjo@rev.ng>,  Andrey Smirnov
+ <andrew.smirnov@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Hao Wu <wuhaotsh@google.com>,  Jean-Christophe Dubois
+ <jcd@tribudubois.net>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,  Andrew Jeffery
+ <andrew@codeconstruct.com.au>,  Rob Herring <robh@kernel.org>,
+  qemu-arm@nongnu.org,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
  A7/A15 MPCore priv
-In-Reply-To: <87cyu9hgit.fsf@pond.sub.org>
+In-Reply-To: <874jfl8gwf.fsf@suse.de> (Fabiano Rosas's message of "Wed, 10 Jan
+	2024 10:19:44 -0300")
 References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
- <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
- <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
- <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
- <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
- <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
- <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
- <87cyu9hgit.fsf@pond.sub.org>
-Date: Wed, 10 Jan 2024 10:19:44 -0300
-Message-ID: <874jfl8gwf.fsf@suse.de>
+	<18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+	<38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+	<fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org>
+	<87y1d6i47m.fsf@suse.de>
+	<597186d9-af21-46e8-8075-f21d36c01c07@kaod.org>
+	<87plya76cu.fsf@suse.de>
+	<d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+	<87bk9u8dhs.fsf@suse.de>
+	<2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org>
+	<ZZ4Qrfis4XHWGN0j@x1n> <87cyu9hgit.fsf@pond.sub.org>
+	<874jfl8gwf.fsf@suse.de>
+Date: Wed, 10 Jan 2024 14:54:53 +0100
+Message-ID: <87v88170pe.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Authentication-Results: smtp-out2.suse.de;
-	none
-X-Spam-Level: 
-X-Spam-Score: -1.80
-X-Spamd-Result: default: False [-1.80 / 50.00];
-	 ARC_NA(0.00)[];
-	 RCVD_VIA_SMTP_AUTH(0.00)[];
-	 MID_RHS_MATCH_FROM(0.00)[];
-	 FROM_HAS_DN(0.00)[];
-	 TO_DN_SOME(0.00)[];
-	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	 TO_MATCH_ENVRCPT_ALL(0.00)[];
-	 TAGGED_RCPT(0.00)[];
-	 MIME_GOOD(-0.10)[text/plain];
-	 BAYES_HAM(-3.00)[100.00%];
-	 R_RATELIMIT(0.00)[to_ip_from(RLgn3pipxh44ye66tuwadwbnif)];
-	 RCVD_COUNT_THREE(0.00)[3];
-	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	 NEURAL_HAM_SHORT(-0.20)[-1.000];
-	 RCPT_COUNT_TWELVE(0.00)[25];
-	 DBL_BLOCKED_OPENRESOLVER(0.00)[gitlab.com:url];
-	 FUZZY_BLOCKED(0.00)[rspamd.com];
-	 FROM_EQ_ENVFROM(0.00)[];
-	 MIME_TRACE(0.00)[0:+];
-	 FREEMAIL_CC(0.00)[linaro.org,kaod.org,nongnu.org,redhat.com,nuvoton.com,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,tribudubois.net,codeconstruct.com.au,kernel.org,ilande.co.uk];
-	 RCVD_TLS_ALL(0.00)[];
-	 SUSPICIOUS_RECIPS(1.50)[]
-X-Spam-Flag: NO
-X-TUID: Q3mSIQ5+4gv0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-TUID: jJEqiUxhSsha
 
-Markus Armbruster <armbru@redhat.com> writes:
+Fabiano Rosas <farosas@suse.de> writes:
 
-> Peter Xu <peterx@redhat.com> writes:
+> Markus Armbruster <armbru@redhat.com> writes:
 >
->> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 wr=
-ote:
->>> Hi Fabiano,
->>>=20
->>> On 9/1/24 21:21, Fabiano Rosas wrote:
->>> > C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>> >=20
->>> > > On 1/9/24 18:40, Fabiano Rosas wrote:
->>> > > > C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>> > > >=20
->>> > > > > On 1/3/24 20:53, Fabiano Rosas wrote:
->>> > > > > > Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>> > > > > >=20
->>> > > > > > > +Peter/Fabiano
->>> > > > > > >=20
->>> > > > > > > On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
->>> > > > > > > > On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
->>> > > > > > > > > Hi C=C3=A9dric,
->>> > > > > > > > >=20
->>> > > > > > > > > On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
->>> > > > > > > > > > On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
->>> > > > > > > > > > > Hi,
->>> > > > > > > > > > >=20
->>> > > > > > > > > > > When a MPCore cluster is used, the Cortex-A cores b=
-elong the the
->>> > > > > > > > > > > cluster container, not to the board/soc layer. This=
- series move
->>> > > > > > > > > > > the creation of vCPUs to the MPCore private contain=
-er.
->>> > > > > > > > > > >=20
->>> > > > > > > > > > > Doing so we consolidate the QOM model, moving commo=
-n code in a
->>> > > > > > > > > > > central place (abstract MPCore parent).
->>> > > > > > > > > >=20
->>> > > > > > > > > > Changing the QOM hierarchy has an impact on the state=
- of the machine
->>> > > > > > > > > > and some fixups are then required to maintain migrati=
-on compatibility.
->>> > > > > > > > > > This can become a real headache for KVM machines like=
- virt for which
->>> > > > > > > > > > migration compatibility is a feature, less for emulat=
-ed ones.
->>> > > > > > > > >=20
->>> > > > > > > > > All changes are either moving properties (which are not=
- migrated)
->>> > > > > > > > > or moving non-migrated QOM members (i.e. pointers of AR=
-MCPU, which
->>> > > > > > > > > is still migrated elsewhere). So I don't see any obviou=
-s migration
->>> > > > > > > > > problem, but I might be missing something, so I Cc'ed J=
-uan :>
->>> > > > > >=20
->>> > > > > > FWIW, I didn't spot anything problematic either.
->>> > > > > >=20
->>> > > > > > I've ran this through my migration compatibility series [1] a=
-nd it
->>> > > > > > doesn't regress aarch64 migration from/to 8.2. The tests use =
-'-M
->>> > > > > > virt -cpu max', so the cortex-a7 and cortex-a15 are not cover=
-ed. I don't
->>> > > > > > think we even support migration of anything non-KVM on arm.
->>> > > > >=20
->>> > > > > it happens we do.
->>> > > > >=20
->>> > > >=20
->>> > > > Oh, sorry, I didn't mean TCG here. Probably meant to say somethin=
-g like
->>> > > > non-KVM-capable cpus, as in 32-bit. Nevermind.
->>> > >=20
->>> > > Theoretically, we should be able to migrate to a TCG guest. Well, t=
-his
->>> > > worked in the past for PPC. When I was doing more KVM related chang=
-es,
->>> > > this was very useful for dev. Also, some machines are partially emu=
-lated.
->>> > > Anyhow I agree this is not a strong requirement and we often break =
-it.
->>> > > Let's focus on KVM only.
->>> > >=20
->>> > > > > > 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
->>> > > > >=20
->>> > > > > yes it depends on the QOM hierarchy and virt seems immune to th=
-e changes.
->>> > > > > Good.
->>> > > > >=20
->>> > > > > However, changing the QOM topology clearly breaks migration com=
-pat,
->>> > > >=20
->>> > > > Well, "clearly" is relative =3D) You've mentioned pseries and asp=
-eed
->>> > > > already, do you have a pointer to one of those cases were we broke
->>> > > > migration
->>> > >=20
->>> > > Regarding pseries, migration compat broke because of 5bc8d26de20c
->>> > > ("spapr: allocate the ICPState object from under sPAPRCPUCore") whi=
-ch
->>> > > is similar to the changes proposed by this series, it impacts the Q=
-OM
->>> > > hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
->>> > > ("spapr: fix migration of ICPState objects from/to older QEMU") whi=
-ch
->>> > > is quite an headache and this turned out to raise another problem s=
-ome
->>> > > months ago ... :/ That's why I sent [1] to prepare removal of old
->>> > > machines and workarounds becoming a burden.
->>> >=20
->>> > This feels like something that could be handled by the vmstate code
->>> > somehow. The state is there, just under a different path.
->>>=20
->>> What, the QOM path is used in migration? ...
+>> Peter Xu <peterx@redhat.com> writes:
 >>
->> Hopefully not..
-
-Unfortunately the original fix doesn't mention _what_ actually broke
-with migration. I assumed the QOM path was needed because otherwise I
-don't think the fix makes sense. The thread discussing that patch also
-directly mentions the QOM path:
-
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
-
-But I probably misunderstood something while reading that thread.
-
+>>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 w=
+rote:
+>>>> Hi Fabiano,
+>>>>=20
+>>>> On 9/1/24 21:21, Fabiano Rosas wrote:
+>>>> > C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>> >=20
+>>>> > > On 1/9/24 18:40, Fabiano Rosas wrote:
+>>>> > > > C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>> > > >=20
+>>>> > > > > On 1/3/24 20:53, Fabiano Rosas wrote:
+>>>> > > > > > Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>>>> > > > > >=20
+>>>> > > > > > > +Peter/Fabiano
+>>>> > > > > > >=20
+>>>> > > > > > > On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
+>>>> > > > > > > > On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> > > > > > > > > Hi C=C3=A9dric,
+>>>> > > > > > > > >=20
+>>>> > > > > > > > > On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
+>>>> > > > > > > > > > On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> > > > > > > > > > > Hi,
+>>>> > > > > > > > > > >=20
+>>>> > > > > > > > > > > When a MPCore cluster is used, the Cortex-A cores =
+belong the the
+>>>> > > > > > > > > > > cluster container, not to the board/soc layer. Thi=
+s series move
+>>>> > > > > > > > > > > the creation of vCPUs to the MPCore private contai=
+ner.
+>>>> > > > > > > > > > >=20
+>>>> > > > > > > > > > > Doing so we consolidate the QOM model, moving comm=
+on code in a
+>>>> > > > > > > > > > > central place (abstract MPCore parent).
+>>>> > > > > > > > > >=20
+>>>> > > > > > > > > > Changing the QOM hierarchy has an impact on the stat=
+e of the machine
+>>>> > > > > > > > > > and some fixups are then required to maintain migrat=
+ion compatibility.
+>>>> > > > > > > > > > This can become a real headache for KVM machines lik=
+e virt for which
+>>>> > > > > > > > > > migration compatibility is a feature, less for emula=
+ted ones.
+>>>> > > > > > > > >=20
+>>>> > > > > > > > > All changes are either moving properties (which are no=
+t migrated)
+>>>> > > > > > > > > or moving non-migrated QOM members (i.e. pointers of A=
+RMCPU, which
+>>>> > > > > > > > > is still migrated elsewhere). So I don't see any obvio=
+us migration
+>>>> > > > > > > > > problem, but I might be missing something, so I Cc'ed =
+Juan :>
+>>>> > > > > >=20
+>>>> > > > > > FWIW, I didn't spot anything problematic either.
+>>>> > > > > >=20
+>>>> > > > > > I've ran this through my migration compatibility series [1] =
+and it
+>>>> > > > > > doesn't regress aarch64 migration from/to 8.2. The tests use=
+ '-M
+>>>> > > > > > virt -cpu max', so the cortex-a7 and cortex-a15 are not cove=
+red. I don't
+>>>> > > > > > think we even support migration of anything non-KVM on arm.
+>>>> > > > >=20
+>>>> > > > > it happens we do.
+>>>> > > > >=20
+>>>> > > >=20
+>>>> > > > Oh, sorry, I didn't mean TCG here. Probably meant to say somethi=
+ng like
+>>>> > > > non-KVM-capable cpus, as in 32-bit. Nevermind.
+>>>> > >=20
+>>>> > > Theoretically, we should be able to migrate to a TCG guest. Well, =
+this
+>>>> > > worked in the past for PPC. When I was doing more KVM related chan=
+ges,
+>>>> > > this was very useful for dev. Also, some machines are partially em=
+ulated.
+>>>> > > Anyhow I agree this is not a strong requirement and we often break=
+ it.
+>>>> > > Let's focus on KVM only.
+>>>> > >=20
+>>>> > > > > > 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+>>>> > > > >=20
+>>>> > > > > yes it depends on the QOM hierarchy and virt seems immune to t=
+he changes.
+>>>> > > > > Good.
+>>>> > > > >=20
+>>>> > > > > However, changing the QOM topology clearly breaks migration co=
+mpat,
+>>>> > > >=20
+>>>> > > > Well, "clearly" is relative =3D) You've mentioned pseries and as=
+peed
+>>>> > > > already, do you have a pointer to one of those cases were we bro=
+ke
+>>>> > > > migration
+>>>> > >=20
+>>>> > > Regarding pseries, migration compat broke because of 5bc8d26de20c
+>>>> > > ("spapr: allocate the ICPState object from under sPAPRCPUCore") wh=
+ich
+>>>> > > is similar to the changes proposed by this series, it impacts the =
+QOM
+>>>> > > hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+>>>> > > ("spapr: fix migration of ICPState objects from/to older QEMU") wh=
+ich
+>>>> > > is quite an headache and this turned out to raise another problem =
+some
+>>>> > > months ago ... :/ That's why I sent [1] to prepare removal of old
+>>>> > > machines and workarounds becoming a burden.
+>>>> >=20
+>>>> > This feels like something that could be handled by the vmstate code
+>>>> > somehow. The state is there, just under a different path.
+>>>>=20
+>>>> What, the QOM path is used in migration? ...
+>>>
+>>> Hopefully not..
+>
+> Unfortunately the original fix doesn't mention _what_ actually broke
+> with migration. I assumed the QOM path was needed because otherwise I
+> don't think the fix makes sense. The thread discussing that patch also
+> directly mentions the QOM path:
+>
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
+>
+> But I probably misunderstood something while reading that thread.
+>
+>>>
+>>>>=20
+>>>> See recent discussions on "QOM path stability":
+>>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
+>>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
+>>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
+>>>
+>>> If I read it right, the commit 46f7afa37096 example is pretty special t=
+hat
+>>> the QOM path more or less decided more than the hierachy itself but cha=
+nges
+>>> the existances of objects.
 >>
->>>=20
->>> See recent discussions on "QOM path stability":
->>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
->>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
->>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
+>> Let's see whether I got this...
 >>
->> If I read it right, the commit 46f7afa37096 example is pretty special th=
-at
->> the QOM path more or less decided more than the hierachy itself but chan=
-ges
->> the existances of objects.
+>> We removed some useless objects, moved the useful ones to another home.
+>> The move changed their QOM path.
+>>
+>> The problem was the removal of useless objects, because this also
+>> removed their vmstate.
 >
-> Let's see whether I got this...
+> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
+> been kept untouched.
 >
-> We removed some useless objects, moved the useful ones to another home.
-> The move changed their QOM path.
+>>
+>> The fix was adding the vmstate back as a dummy.
 >
-> The problem was the removal of useless objects, because this also
-> removed their vmstate.
+> Since the vmstate was kept I don't see why would we need a dummy. The
+> incoming migration stream would still have the state, only at a
+> different point in the stream. It's surprising to me that that would
+> cause an issue, but I'm not well versed in that code.
 
-If you checkout at the removal commit (5bc8d26de20c), the vmstate has
-been kept untouched.
+Alright, I understand neither the problem nor the fix :)
 
+>> The QOM patch changes are *not* part of the problem.
 >
-> The fix was adding the vmstate back as a dummy.
+> The only explanation I can come up with is that after the patch
+> migration has broken after a hotplug or similar operation. In such
+> situation, the preallocated state would always be present before the
+> patch, but sometimes not present after the patch in case, say, a
+> hot-unplug has taken away a cpu + ICPState.
 
-Since the vmstate was kept I don't see why would we need a dummy. The
-incoming migration stream would still have the state, only at a
-different point in the stream. It's surprising to me that that would
-cause an issue, but I'm not well versed in that code.
-
->
-> The QOM patch changes are *not* part of the problem.
-
-The only explanation I can come up with is that after the patch
-migration has broken after a hotplug or similar operation. In such
-situation, the preallocated state would always be present before the
-patch, but sometimes not present after the patch in case, say, a
-hot-unplug has taken away a cpu + ICPState.
+My head hurts...  Oh, we're talking migration!  Perfectly normal then.

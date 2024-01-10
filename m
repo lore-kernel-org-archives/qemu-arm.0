@@ -1,175 +1,182 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp860952ejs;
-        Tue, 9 Jan 2024 23:05:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGM5EXOcFQx1qAI8o7A+IXzTNT5++QTQD9WUOiqsP5DKrtjytpD2mqJpqbysrl1TXf/Z0WI
-X-Received: by 2002:a05:600c:1e89:b0:40e:5059:9c4e with SMTP id be9-20020a05600c1e8900b0040e50599c4emr275761wmb.65.1704870304654;
-        Tue, 09 Jan 2024 23:05:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704870304; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp885970ejs;
+        Wed, 10 Jan 2024 00:10:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEXsKhuA92YRnSJq1bNY3lIWXKNLD4e0rWYsdYuwFRZ7q6De9PZvQz5HUPzZ5nNM2gneOEi
+X-Received: by 2002:a05:620a:a45:b0:783:37fa:cd07 with SMTP id j5-20020a05620a0a4500b0078337facd07mr283802qka.83.1704874200909;
+        Wed, 10 Jan 2024 00:10:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704874200; cv=none;
         d=google.com; s=arc-20160816;
-        b=fr4sIjpM852N1c/cPUJTPipGD242ZJMotth2/sANtUtfNMRNbDu0e8ehjshurBts6F
-         XfHv1vw3Hz4YXTibEtxfNcfHDvPDoaaOtNkym6A3wHE9W6OnfMCfmX+jT0UxqTWSm6vP
-         jJErju7Ty1uwI1naPMpuHVm1dD8/6woO1Y5r0MbtKOCBysBCsDmJiHgwgWjBZ5voDT+A
-         iRB2DDFDaMGvckkZvnmv+qdk+SnFHUIlKZowuyB2WF+HvSfjQGSkA2V6f5d1yjd4k47A
-         AyjWwUp8trq4YtnT8/OtB6adAhJlNdKs0WAsLc9mP0lW1YLX1bGXtMnBLcXP1gLa5yO+
-         wHZg==
+        b=aAt5MwkP5Iwg1Y95iQ9zSN9ALKwEmCOKUKotu7wsN3qNT5fRxwLFD5U6Q+2Z+M3DBp
+         llbWibaMaS9cmgnHShQhAOsPn4xYbHWrKoVbV34gVjPLqN15qEIsi1HsTwwpkxl2LVM3
+         3RsQqNtGMy3cfGOmfThIgOv+H9Os5wTOGN/4zOKD0dAaplxhkYGFQ8xg0su5Pl0pztR+
+         uVKQrybb0XUGMTTu8tMrxXkwXf+hU4Z92j+cCxxTplmQRyFHWRfGZkfmYup+GNA8DLsq
+         lhYwUD3E5f3fCuLpGPruxJOycrxxBDCy2MJzg0ytgFXkndBkCUK7hMoANo0pYE4Iahu4
+         I/vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:in-reply-to:autocrypt:references
-         :cc:to:from:content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=mWov6SjLzOWE5RpHEnMMvpt0uuKxigxvA15kPD+FN8Q=;
-        fh=iAm5A4zWGUYFq3Jtozfiktm/oazx9RljWkTzR1zwPVI=;
-        b=pAg/cgFUzQizdB1PVBVhqnzZvTOeRTyRdxcthJ8cUzuS2MR3ibzv57MRKC2mU/Ot7L
-         I3ur6mnWbBEB0OyCK4XrrJHLMxc0DViDtMOSPQM0nSwsm2L3LAtVNuEiFG7UifJ/FbqW
-         rOnS6kwnBEVBc+IhswBuTYcf1N47oddcqa+146bCePzosUhZzDH1tf9eFGJ9rMjOGEY0
-         XIAi1+76TxSDtGL0tNspY9zg9pESdbimgjDDxAN9FWW/TkyHAT9VfIriWbQLrJTjavuu
-         ap5TjSwPPO5fMPFESxzkhHmaADWid+FEBYBU81fvsPkLuQF65N0uOdHUMdF6AjIVFAkG
-         fgiQ==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=6HC1mmrR/hNPTO8t9wijLNFaNcSLwsWEDAclfCoIYZ8=;
+        fh=DnjtovuCqoxcquEhV0NAW0XkbxSt8oSV/Q95Re698V8=;
+        b=HLoHV4kPBF43Cl6ufXNxjZvOa4pdcJ0iW9WEn3nwOkAJyuV4/uvCx36MaQGG2WS8O9
+         rTWl2ks2818LoABX77NFlfXemnJoC/g4aIDy7KZttOeec3IKN0X3kAHxb2226VWDBQ/V
+         NC71aSJhyEDvTgElPsc+a2tFg6UOihf8QUkmpHtU1E9N3IcfFfN4ZfcWvNups4Zht/Ox
+         7xQhiF8tmOtutR/VX8Y8vHDDvz+w3dv4azcIsKz8bKIBLL6CV1OJkQwvVqTr5gcwIGgq
+         gcpCcjp7h+tYgm1LKPAzX5haxAfZIXAsNi42ZEwK4nYPHS/lRMYHPyKyKm3h1GUUAe2a
+         VpMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="dv/urBvp";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <mark.cave-ayland@ilande.co.uk>
-Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
-        by mx.google.com with ESMTPS id bp21-20020a5d5a95000000b003362a448482si1780834wrb.0.2024.01.09.23.05.04
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kre2d7q0;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id p18-20020a05620a113200b007815f7168e6si3647147qkk.35.2024.01.10.00.10.00
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Jan 2024 23:05:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
+        Wed, 10 Jan 2024 00:10:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="dv/urBvp";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:References:Cc:To:From:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mWov6SjLzOWE5RpHEnMMvpt0uuKxigxvA15kPD+FN8Q=; b=dv/urBvpQm+O3BJVQA7w56aoRc
-	MPFP1kSpeQCRD5cVYocUVOPqFG3hxic0yWKzSFAXGN6jK/g5HplQaBsHcjOgUALuv4ilM9GdzgBfM
-	wBuER6LXmhha7+Fj+U1Ni/NXXtZEANkD/usQaziTKOONcYNvhEcbFIrJdf0EOZgD6u+nFbAAtRkFp
-	Wp8RlULdtbBvfjBIO8kmu9w2IO4w4EHZPC32ICJCn8Kp/ylEq7u+S2pf1AExoQ30j7HNXuDjqxDQ/
-	w6Bwqjl4XgPEDFPKUbEYGcoIwOspU/26JSza6RJ3MvrxPs4E+dOssfqn9k1PzXF7fnx6zK4FEidxB
-	hUjnFuPKJVKKP5ARMWnsI/nfJArQeg6V2zTGzNWxEl7wdvfMEMBoCahugD7ySMjgclPAhStTRu2dj
-	fGw0lv27ZvrWf5r3BiAV26JsrqmlBnmB3oOBH3pbvJMyXUFQccProZEfaxs6/7tkSEP2lYp3+N1u0
-	S+zNh1W/yJUezX2zq73m+hYa3SEuHZAKqZspV4nIXlfxbGNblXcspombBQNOETh/e25I5aeXZ9Axi
-	6NzEjO+SLbvIcXWnc1zA04sUfhOe9XjaaY8ZvxHly8O8pzQwK2+l1K2evoEKjIHqZfGMaEpjAjrQ3
-	QSSDLJmTUWjEUJBVAaNb6RzbpmB+m6EPT7Vfo1EVc=;
-Received: from [2a00:23c4:8bb1:9800:b804:1635:e423:adbd]
-	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1rNSde-0001WG-1V; Wed, 10 Jan 2024 07:04:34 +0000
-Message-ID: <3a1ba17f-2bfe-4639-8527-a69c13290f3b@ilande.co.uk>
-Date: Wed, 10 Jan 2024 07:05:01 +0000
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kre2d7q0;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1704874199;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6HC1mmrR/hNPTO8t9wijLNFaNcSLwsWEDAclfCoIYZ8=;
+	b=Kre2d7q0pT6vd81cIZKg0AbqgFBveh1Z+QJR+uvgRnhjcRiuiJId5mXGQMYISemWPTbYYK
+	zXHGbGozP4Yy5KVzEASeb800nLdlaoM2aRWIAazMAHxTwIguVbmgluix8+pDni/Be0sVS/
+	xb+I2yIC/mp9CMhJ/hPlmtrILafQgYU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-187-QaRung1SOSueSZ8ZBTGplQ-1; Wed, 10 Jan 2024 03:09:55 -0500
+X-MC-Unique: QaRung1SOSueSZ8ZBTGplQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CB91B185A782;
+	Wed, 10 Jan 2024 08:09:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.71])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 013BDC15E6A;
+	Wed, 10 Jan 2024 08:09:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id ECCC921E6806; Wed, 10 Jan 2024 09:09:51 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Xu <peterx@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Fabiano
+ Rosas
+ <farosas@suse.de>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+  qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Tyrone Ting <kfting@nuvoton.com>,  Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  Eduardo Habkost <eduardo@habkost.net>,
+  Joel Stanley <joel@jms.id.au>,  Alistair Francis
+ <alistair@alistair23.me>,  Anton Johansson <anjo@rev.ng>,  Andrey Smirnov
+ <andrew.smirnov@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Hao Wu <wuhaotsh@google.com>,  Jean-Christophe Dubois
+ <jcd@tribudubois.net>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,  Andrew Jeffery
+ <andrew@codeconstruct.com.au>,  Rob Herring <robh@kernel.org>,
+  qemu-arm@nongnu.org,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+In-Reply-To: <ZZ44iQRPrdDpfov7@x1n> (Peter Xu's message of "Wed, 10 Jan 2024
+	14:26:17 +0800")
+References: <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+	<fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org>
+	<87y1d6i47m.fsf@suse.de>
+	<597186d9-af21-46e8-8075-f21d36c01c07@kaod.org>
+	<87plya76cu.fsf@suse.de>
+	<d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+	<87bk9u8dhs.fsf@suse.de>
+	<2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org>
+	<ZZ4Qrfis4XHWGN0j@x1n> <87cyu9hgit.fsf@pond.sub.org>
+	<ZZ44iQRPrdDpfov7@x1n>
+Date: Wed, 10 Jan 2024 09:09:51 +0100
+Message-ID: <87sf35ehio.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-References: <20231109192814.95977-1-philmd@linaro.org>
- <525885a8-59f0-44e1-b210-0b4bcbbe4258@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <525885a8-59f0-44e1-b210-0b4bcbbe4258@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb1:9800:b804:1635:e423:adbd
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
-	mail.default.ilande.bv.iomart.io
-X-Spam-Level: 
-X-Spam-Status: No, score=-2.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
-	autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH-for-8.2 v4 00/10] hw/char/pl011: Implement TX (async) FIFO
- to avoid blocking the main loop
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-X-TUID: tZKovduDRxi8
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-TUID: xfu96f9yfPCg
 
-On 05/01/2024 07:50, Mark Cave-Ayland wrote:
+Peter Xu <peterx@redhat.com> writes:
 
-> On 09/11/2023 19:28, Philippe Mathieu-Daudé wrote:
-> 
->> Missing review: #10
->>
->> Hi,
->>
->> This series add support for (async) FIFO on the transmit path
->> of the PL011 UART.
->>
->> Since v3:
->> - Document migration bits (Alex, Richard)
->> - Just check FIFO is not empty in pl011_xmit_fifo_state_needed (rth)
->> - In pl011_xmit check TX enabled first, and ignore < 8-bit TX (rth)
->>
->> Since v2:
->> - Added R-b tags
->> - Addressed Richard comments on migration
->>
->> Since v1:
->> - Restrict pl011_ops[] impl access_size,
->> - Do not check transmitter is enabled (Peter),
->> - Addressed Alex's review comments,
->> - Simplified migration trying to care about backward compat,
->>    but still unsure...
->>
->> Philippe Mathieu-Daudé (10):
->>    util/fifo8: Allow fifo8_pop_buf() to not populate popped length
->>    util/fifo8: Introduce fifo8_peek_buf()
->>    hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
->>    hw/char/pl011: Extract pl011_write_txdata() from pl011_write()
->>    hw/char/pl011: Extract pl011_read_rxdata() from pl011_read()
->>    hw/char/pl011: Warn when using disabled transmitter
->>    hw/char/pl011: Check if receiver is enabled
->>    hw/char/pl011: Rename RX FIFO methods
->>    hw/char/pl011: Add transmit FIFO to PL011State
->>    hw/char/pl011: Implement TX FIFO
->>
->>   include/hw/char/pl011.h |   2 +
->>   include/qemu/fifo8.h    |  37 ++++++-
->>   hw/char/pl011.c         | 239 +++++++++++++++++++++++++++++++++-------
->>   util/fifo8.c            |  28 ++++-
->>   hw/char/trace-events    |   8 +-
->>   5 files changed, 263 insertions(+), 51 deletions(-)
-> 
-> Hi Phil,
-> 
-> Happy New Year! Are there plans to queue this series for 9.0 soon? I'm particularly 
-> interested in the first 2 patches as I've made use of the new fifo8_peek_buf() 
-> function as part of my latest ESP updates.
+> On Wed, Jan 10, 2024 at 07:03:06AM +0100, Markus Armbruster wrote:
+>> Peter Xu <peterx@redhat.com> writes:
+>>=20
+>> > On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 =
+wrote:
+>> >> Hi Fabiano,
+>> >>=20
+>> >> On 9/1/24 21:21, Fabiano Rosas wrote:
 
-I've spoken to Phil, and as patches 1 and 2 implementing fifo8_peek_buf() have R-B 
-tags he is happy for me to take them separately via my qemu-sparc branch. I'll send a 
-PR with those patches shortly.
+[...]
 
+>> >> > No one wants
+>> >> > to be policing QOM hierarchy changes in every single series that sh=
+ows
+>> >> > up on the list.
+>> >> >=20
+>> >> > Anyway, thanks for the pointers. I'll study that code a bit more, m=
+aybe
+>> >> > I can come up with some way to handle these cases.
+>> >> >=20
+>> >> > Hopefully between the analyze-migration test and the compat tests w=
+e'll
+>> >> > catch the next bug of this kind before it gets merged.
+>> >
+>> > Things like that might be able to be detected via vmstate-static-check=
+er.py.
+>> > But I'm not 100% sure, also its coverage is limited.
+>> >
+>> > For example, I don't think it can detect changes to objects that will =
+only
+>> > be created dynamically, e.g., I think sometimes we create objects after
+>> > some guest behaviors (consider guest enables the device, then QEMU
+>> > emulation creates some objects on demand of device setup?),
+>>=20
+>> Feels nuts to me.
+>>=20
+>> In real hardware, software enabling a device that is disabled by default
+>> doesn't create the device.  The device is always there, it just happens
+>> to be inactive unless enabled.  We should model the device just like
+>> that.
+>
+> It doesn't need to be the device itself to be dynamically created, but so=
+me
+> other sub-objects that do not require to exist until the device is enable=
+d,
+> or some specific function of that device is enabled.  It is logically doa=
+ble.
+>
+> Is the example Cedric provided looks like some case like this?  I am not
+> sure, that's also why I'm not sure the static checker would work here.  B=
+ut
+> logically it seems possible, e.g. with migration VMSD needed() facilities.
+> Consider a device has a sub-function that requires a sub-object.  It may
+> not need to migrate that object if that sub-feature is not even enabled.
+> If that object is very large, it might be wise to do so if possible to not
+> send chunks of junk during the VM downtime.
+>
+> But then after a 2nd thought I do agree it's probably not sensible, becau=
+se
+> even if the src may know whether the sub-object will be needed, there's
+> probably no good way for the dest QEMU to know.  It can only know in
+> something like a post_load() hook, but logically that can happen only aft=
+er
+> a full load of that device state, so might already be too late.
+>
+> Thanks,
 
-ATB,
+If an object has state that needs to be migrated only sometimes, and
+that part of the state is large enough to bother, we can put it in an
+optional subsection, can't we?
 
-Mark.
+Destination: if present, take it.  If absent, initialize to default.
+
+Source: send unless (known to be) in default state.

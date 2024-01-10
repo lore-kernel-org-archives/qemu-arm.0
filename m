@@ -1,98 +1,97 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1358925ejs;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1358923ejs;
         Wed, 10 Jan 2024 15:43:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHPwBP6qxdbOXmGUS1piT3ldx2Y7zm4KcPLfjiP+VQDtrtmdLUb6wRtmM0uu26l6BYeFWHt
-X-Received: by 2002:a05:6214:234b:b0:67f:48e0:6725 with SMTP id hu11-20020a056214234b00b0067f48e06725mr276986qvb.43.1704930205151;
+X-Google-Smtp-Source: AGHT+IEUiQ/CPpU/8cGXZqEAL4HfER1jZCKq12v3VcHc8J9ljHvmmD+FtZ8AZOXGlGWrA/1e0Lqy
+X-Received: by 2002:ac8:5703:0:b0:429:9175:db33 with SMTP id 3-20020ac85703000000b004299175db33mr257638qtw.126.1704930205138;
         Wed, 10 Jan 2024 15:43:25 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1704930205; cv=none;
         d=google.com; s=arc-20160816;
-        b=KdolIYkGYlM/UZsCOk/6YSESEJcDBaMc9tWHXxe9mfRTWUl+mAx3nI+T1ffpUU9z/A
-         wZuvGukbUQvP8Az0khOcV8laqnedawH+qAR5r69lvOb5w2oc2p+4G4c0ubvHrrLd3aiL
-         hMwpHlv6glbEUnZ9+hGu4Uml55o4y++TlLQ7oh68FbGc6bZl4iZl3qVYlllD9tzjLcvu
-         qHr57UHuo+QJ7oYcedFG5FX4NhF0M2zOnWLsp2dmGWon5BIunWVvgCiBYt02iVFwfmea
-         /gAquAdnotD1RxcKKq10AOXgPvkP5UnYvuSlmd3X5XWSVj4rxj1tbTWADaXu/My3vP0J
-         ZWaw==
+        b=PXDA9PP7DgdF4NjKVv0QSTCyXD9DOqEpMxEPtkQlX7Qcm/IPsyUiRi1dTcCegZGLLy
+         su7o5XR+p6Wa41RPyFejP8sJgdrDBP6U2IP4e5l+orbiXPkPJmiLBPXlonGnqSPGUrrW
+         X4iCj6Tx0kF/CANqbuLLNePk2BnQSCtthzWzMujUOPldoaxkCLMxM/bPbehpsnKzRuYk
+         7wjpGpIbdCZaAKSDrwmPe7Gmbpx4gn/mL/u/cLIVdkY/eFOLB8/0SYoFvY1CQGIAie2j
+         dh7Jkb40EGsLbKDCpjwo4210TK9Gc3j7n3+Yx3ABlG0zj9r0wVYb+YWAvZkKt++GqQhX
+         sZOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=oAHRpxv+fB7+yiYSPtPuRU5upd4MhVK+1G8Q0VdrAns=;
+         :mime-version:date:dkim-signature;
+        bh=tAfDGsZ8AUgD+M/9Tt0Dtjah8AATenuIrS5Z3ZfvJOQ=;
         fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
-        b=jqt6fnDkMIcYr3jw61H7SGpJVqNm1vYbvvckMtScjPlmLYmvFWGaq2de6RIRiu+eJR
-         d7SOqYemkoSwGm8qq8t93qfFXzTdW4jIPRU89r+mt+z6kn270G1uv+GThY6sdxGkk/tg
-         VWQqTl5xlL8c8WbyMiRVqq/6mS7q/ciCI4zrQyzp7VkWFaN1i8HHEpFN5SkwzVsPfdy2
-         FxJm+rgTxM4ib/QOkoKHktFKDxDmVI07KTyTNCf7BxiIc6KhI+8H4Ag4GgCh0FSEgMIn
-         C32csUPlMDDKMTyx42dp/bwV86Ad/cC3HHws4+l17t/yCHKp8wsCSIcfAazU/lfIU8PG
-         NI7g==
+        b=F1b7fg5rvGc6M6huw9Ygn1wVWqMeds4AUVU06JViVvx3/XTQs/rBM5VxcbcQVW7FY5
+         +N+WvNHTO9kBU30qiH+y+HpJMj+eS1EKi8Rh37iIGJPoreleII3PFr0gf6FThPHkluJ0
+         hmqaijSx5LEkVYvlM+kA4KC8MlZcfMBtRli2JcXdiNrbSOPgn4rYIVAc90VCaTBEJr6l
+         438Az0FgwqiWIJtyhFNnFxg/S9quQFOa4OAK8O149lR+T0A+l/2Az12zC4oWgRwZURbV
+         5Son6626LAk2exNnHUnC0QlLLt9TL8AAIsm01SHcPP6OS6CHNNZqzsOjGZkhKF7nXTyW
+         464Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=DNi8HYoZ;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=4lP8XpJ7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9-20020a0c8e09000000b0067a8ae295b9si5328080qvb.544.2024.01.10.15.43.24
+        by mx.google.com with ESMTPS id 3-20020ac84e83000000b00429bf856a2bsi510260qtp.153.2024.01.10.15.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 10 Jan 2024 15:43:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=DNi8HYoZ;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=4lP8XpJ7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rNiDw-0007XE-2R; Wed, 10 Jan 2024 18:43:04 -0500
+	id 1rNiDe-0007Na-S7; Wed, 10 Jan 2024 18:42:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3fSufZQwKCoQvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
- id 1rNiDo-0007VQ-3G
- for qemu-devel@nongnu.org; Wed, 10 Jan 2024 18:42:56 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <3ciufZQwKCnkkXYfebpqbcXkdlldib.Zljnbjr-absbiklkdkr.lod@flex--nabihestefan.bounces.google.com>)
+ id 1rNiDd-0007N5-E3
+ for qemu-devel@nongnu.org; Wed, 10 Jan 2024 18:42:45 -0500
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3fSufZQwKCoQvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
- id 1rNiDm-0006fe-9a
- for qemu-devel@nongnu.org; Wed, 10 Jan 2024 18:42:55 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-5e73bd9079eso88430297b3.2
- for <qemu-devel@nongnu.org>; Wed, 10 Jan 2024 15:42:53 -0800 (PST)
+ <3ciufZQwKCnkkXYfebpqbcXkdlldib.Zljnbjr-absbiklkdkr.lod@flex--nabihestefan.bounces.google.com>)
+ id 1rNiDb-0006XR-KR
+ for qemu-devel@nongnu.org; Wed, 10 Jan 2024 18:42:45 -0500
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-5e9a02c6d49so88265757b3.2
+ for <qemu-devel@nongnu.org>; Wed, 10 Jan 2024 15:42:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1704930173; x=1705534973; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=oAHRpxv+fB7+yiYSPtPuRU5upd4MhVK+1G8Q0VdrAns=;
- b=DNi8HYoZL2Mms/tYGm/C8Rv6zXFpZ6etb/KOskGwzV9617ODuBs9WVyewY3PXi3ubS
- iioPJEYGB9Ciu6ba8sG1qp6iYxsU0PY14fDwCxIbAlhptnufJgtBnC9WEd9Ma5pyttb2
- tHl48juhW+gbgncHYO2qKARuyvBC4NfjMIc004Xhr91JRQF+bhGqgzSN2fIINvbnBnLA
- 9ZvkeF/Kdj7j7/sJ7n37Tku/EoLse86HGq71ke+eT4agBa1zUt/irLMb35mz3fhLbWzK
- 1du//P6nhQaUDaTt5G5gG6wKb+MFoHwvi+Arx+a1FR9YQEBjHNV5PMZp7zu8IRV7mFCG
- 7ZRA==
+ d=google.com; s=20230601; t=1704930162; x=1705534962; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=tAfDGsZ8AUgD+M/9Tt0Dtjah8AATenuIrS5Z3ZfvJOQ=;
+ b=4lP8XpJ7B4nPqMag5N7JaF3Yevkklp+qLedITzAXhnc0cGQW4fOCF4g1Im/7qHPRrv
+ Hlp53pcaOAE01XKoZ9yDji/wxxxJqE45sk5mav3omNY1nJ8x8OMcEF6qSCQvAxfhzvkn
+ lGDohK6bYWcPmLcZx35AA5y9pRsdMfaDPe766HatQi0HDu34wfQs06JYSma12yLhiEeY
+ /6jrKr18iLEWgHX4lt6fe3lVjcwOGkn3VENRqV1GErb74BeACKtEnnQgCweXTspcWNeB
+ 6wOVWXNHUxGEKF988PkEABqJsWTRcKvAm3qcSkJYR9ypLrmiIs0H4lVzXe55094610z2
+ wc0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704930173; x=1705534973;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oAHRpxv+fB7+yiYSPtPuRU5upd4MhVK+1G8Q0VdrAns=;
- b=Q8wMOmvSGTkPB4RDWriyHGHLYpinjmcQmOa7y82iDJ5r7BuYnrNPXXqhXlOnSv3SV/
- E660GB0xDJju6CCayXXHvUt1dxZRmHThco8bIMN4Kp5MlEJb/Wqnhhl+1lK8Eh/pNTVK
- CQuu9ex7w/ovfy7RW32wA4zJjNBITxuZpTyVB5/WX8gXV1gelHyIHyikgiSWL2gUdZCu
- f9BcIICbDQx0y8VlFzn9apFM3EmboFGPKhQq3YuyZBPsFq+wj0z1m4yByEjx1jOYdizX
- bPfBxQFcLq6fYxBdZFyPRVtZeOa3/8PNCllM4ug9YvbLCHhFeGyqZDGfaDtPr/yTj4e4
- Hwzg==
-X-Gm-Message-State: AOJu0YzZ33PlMNXxJoDnZUB/dJQy3e6ASvEW7UNbvx9J3ht7m2s0riJg
- zMb8y7jeiz9JGV/WLl15Xt9xOM+Am5deJg7MNRZeMVZ7xg==
+ d=1e100.net; s=20230601; t=1704930162; x=1705534962;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=tAfDGsZ8AUgD+M/9Tt0Dtjah8AATenuIrS5Z3ZfvJOQ=;
+ b=aNOkVW7fjEae5J+it8odKlN7xZ/v4yLLUNld2rWh/1bagZ/IZ2I7XEZ3oF/Ds+7yjO
+ fCaYeqv7aXZ+6RuaKnh7Zdo9QUoVy4Jk+NGQL3FsjA4MXyIJEj3We91U6lr4samNnTea
+ CCEYwxf+7NdnLIiIW9jZZwMS8R+RWNJez7VhuZJQcu4oXH8uX2xkzF5usOmdtpbUkZ5H
+ 0QycGAvHdinZCGxQFPhIkv/gLQ8w+QRu3Bcvw5Al8Bqp+dc1j3BY5kFtb196xgCTekAB
+ FSBPwBLWUgB6mkrjVQMExwTL2nZG3D8VE2XX/nTbXOvPw9VvhGJ2/IKu5G7REw4cTEOS
+ U/6A==
+X-Gm-Message-State: AOJu0YxfUxzA/dfFovdsoRnb8CrLymaHZ+LRUtfK75j+1x5sTfcPEin7
+ +THU02+cieBK16JROhBt/evjzpcx9yXIs1UjFmX2scPmFQ==
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:6902:a02:b0:dbd:b6cd:92cf with
- SMTP id cb2-20020a0569020a0200b00dbdb6cd92cfmr161272ybb.11.1704930173233;
- Wed, 10 Jan 2024 15:42:53 -0800 (PST)
-Date: Wed, 10 Jan 2024 23:42:29 +0000
-In-Reply-To: <20240110234232.4116804-1-nabihestefan@google.com>
+ (user=nabihestefan job=sendgmr) by 2002:a0d:d301:0:b0:5f4:f576:6441 with SMTP
+ id v1-20020a0dd301000000b005f4f5766441mr270347ywd.0.1704930162174; Wed, 10
+ Jan 2024 15:42:42 -0800 (PST)
+Date: Wed, 10 Jan 2024 23:42:22 +0000
 Mime-Version: 1.0
-References: <20240110234232.4116804-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.43.0.275.g3460e3d667-goog
-Message-ID: <20240110234232.4116804-8-nabihestefan@google.com>
-Subject: [PATCH v12 07/10] include/hw/net: General GMAC Implementation
+Message-ID: <20240110234232.4116804-1-nabihestefan@google.com>
+Subject: [PATCH v12 00/10] Implementation of NPI Mailbox and GMAC Networking
+ Module
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
@@ -100,9 +99,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
  nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
  Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3fSufZQwKCoQvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3ciufZQwKCnkkXYfebpqbcXkdlldib.Zljnbjr-absbiklkdkr.lod@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -125,83 +124,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xq0n2jheG6BM
+X-TUID: Mn+JO45SVofW
 
 From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-Implemented GMAC IRQ Handling and added relevant trace-events
+[Changes since v11]
+Was running into error syncing into master. It seemed to be related to a
+hash problem introduced in patchset 10 (unrelated to the macOS build
+issue). carried the patches from v9 (before the syncing problem) and
+added the fixes from patchsets 10 and 11 to remove the hash error.
 
-Change-Id: I7a2d3cd3f493278bcd0cf483233c1e05c37488b7
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
----
- hw/net/npcm_gmac.c  | 40 ++++++++++++++++++++++++++++++++++++++++
- hw/net/trace-events |  1 +
- 2 files changed, 41 insertions(+)
+[Changes since v10]
+Fixed macOS build issue. Changed imports to not be linux-specific.
 
-diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index 98b3c33c94..44c4ffaff4 100644
---- a/hw/net/npcm_gmac.c
-+++ b/hw/net/npcm_gmac.c
-@@ -149,6 +149,46 @@ static bool gmac_can_receive(NetClientState *nc)
-     return true;
- }
- 
-+/*
-+ * Function that updates the GMAC IRQ
-+ * It find the logical OR of the enabled bits for NIS (if enabled)
-+ * It find the logical OR of the enabled bits for AIS (if enabled)
-+ */
-+static void gmac_update_irq(NPCMGMACState *gmac)
-+{
-+    /*
-+     * Check if the normal interrupts summary is enabled
-+     * if so, add the bits for the summary that are enabled
-+     */
-+    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
-+        (NPCM_DMA_INTR_ENAB_NIE_BITS)) {
-+        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_NIS;
-+    }
-+    /*
-+     * Check if the abnormal interrupts summary is enabled
-+     * if so, add the bits for the summary that are enabled
-+     */
-+    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
-+        (NPCM_DMA_INTR_ENAB_AIE_BITS)) {
-+        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_AIS;
-+    }
-+
-+    /* Get the logical OR of both normal and abnormal interrupts */
-+    int level = !!((gmac->regs[R_NPCM_DMA_STATUS] &
-+                    gmac->regs[R_NPCM_DMA_INTR_ENA] &
-+                    NPCM_DMA_STATUS_NIS) |
-+                   (gmac->regs[R_NPCM_DMA_STATUS] &
-+                   gmac->regs[R_NPCM_DMA_INTR_ENA] &
-+                   NPCM_DMA_STATUS_AIS));
-+
-+    /* Set the IRQ */
-+    trace_npcm_gmac_update_irq(DEVICE(gmac)->canonical_path,
-+                               gmac->regs[R_NPCM_DMA_STATUS],
-+                               gmac->regs[R_NPCM_DMA_INTR_ENA],
-+                               level);
-+    qemu_set_irq(gmac->irq, level);
-+}
-+
- static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
- {
-     /* Placeholder. Function will be filled in following patches */
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 33514548b8..56057de47f 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -473,6 +473,7 @@ npcm_gmac_reg_write(const char *name, uint64_t offset, uint32_t value) "%s: offs
- npcm_gmac_mdio_access(const char *name, uint8_t is_write, uint8_t pa, uint8_t gr, uint16_t val) "%s: is_write: %" PRIu8 " pa: %" PRIu8 " gr: %" PRIu8 " val: 0x%04" PRIx16
- npcm_gmac_reset(const char *name, uint16_t value) "%s: phy_regs[0][1]: 0x%04" PRIx16
- npcm_gmac_set_link(bool active) "Set link: active=%u"
-+npcm_gmac_update_irq(const char *name, uint32_t status, uint32_t intr_en, int level) "%s: Status Reg: 0x%04" PRIX32 " Interrupt Enable Reg: 0x%04" PRIX32 " IRQ Set: %d"
- 
- # npcm_pcs.c
- npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
+[Changes since v9]
+More cleanup and fixes based on suggestions from Peter Maydell
+(peter.maydell@linaro.org) suggestions.
+
+[Changes since v8]
+Suggestions and Fixes from Peter Maydell (peter.maydell@linaro.org),
+also cleaned up changes so nothing is deleted in a later patch that was
+added in an earlier patch. Patch count decresed by 1 because this cleanup
+led to one of the patches being irrelevant.
+
+[Changes since v7]
+Fixed patch 4 declaration of new NIC based on comments by Peter Maydell
+(peter.maydell@linaro.org)
+
+[Changes since v6]
+Remove the Change-Ids from the commit messages.
+
+[Changes since v5]
+Undid remove of some qtests that seem to have been caused by a merge
+conflict.
+
+[Changes since v4]
+Added Signed-off-by tag and fixed patch 4 commit message as suggested by
+Peter Maydell (peter.maydell@linaro.org)
+
+[Changes since v3]
+Fixed comments from Hao Wu (wuhaotsh@google.com)
+
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
+
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
+
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
+
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
+
+Hao Wu (5):
+  hw/misc: Add Nuvoton's PCI Mailbox Module
+  hw/arm: Add PCI mailbox module to Nuvoton SoC
+  hw/misc: Add qtest for NPCM7xx PCI Mailbox
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
+
+Nabih Estefan Diaz (5):
+  tests/qtest: Creating qtest for GMAC Module
+  include/hw/net: General GMAC Implementation
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ docs/system/arm/nuvoton.rst         |   2 +
+ hw/arm/npcm7xx.c                    |  53 +-
+ hw/misc/meson.build                 |   1 +
+ hw/misc/npcm7xx_pci_mbox.c          | 324 ++++++++++
+ hw/misc/trace-events                |   5 +
+ hw/net/meson.build                  |   2 +-
+ hw/net/npcm_gmac.c                  | 939 ++++++++++++++++++++++++++++
+ hw/net/trace-events                 |  19 +
+ include/hw/arm/npcm7xx.h            |   4 +
+ include/hw/misc/npcm7xx_pci_mbox.h  |  81 +++
+ include/hw/net/npcm_gmac.h          | 340 ++++++++++
+ tests/qtest/meson.build             |   2 +
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 +++++++
+ tests/qtest/npcm_gmac-test.c        | 341 ++++++++++
+ 14 files changed, 2347 insertions(+), 4 deletions(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
+ create mode 100644 tests/qtest/npcm_gmac-test.c
+
 -- 
 2.43.0.275.g3460e3d667-goog
 

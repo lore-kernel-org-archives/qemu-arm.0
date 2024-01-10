@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1259078ejs;
-        Wed, 10 Jan 2024 11:54:57 -0800 (PST)
-X-Received: by 2002:a05:6000:1369:b0:337:7086:b70c with SMTP id q9-20020a056000136900b003377086b70cmr4802wrz.81.1704916497547;
-        Wed, 10 Jan 2024 11:54:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704916497; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1259132ejs;
+        Wed, 10 Jan 2024 11:55:04 -0800 (PST)
+X-Received: by 2002:a05:600c:520d:b0:40c:416c:d99b with SMTP id fb13-20020a05600c520d00b0040c416cd99bmr820282wmb.47.1704916504271;
+        Wed, 10 Jan 2024 11:55:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704916504; cv=none;
         d=google.com; s=arc-20160816;
-        b=MYMnUDKFmtGpGo+Nab9YaNHeStHKg5bLgW9Gyl3g31xPXGeC6zCynyy4M3EHdbdCeK
-         CR+DIJ3xCTMoPHt+IwXMi9Xe6I56NXsMulGlYwEzZQgG27WehdphQ++l0nnZqQkl70Py
-         qON+yQSfNQv5CtUVFQG8LMqPCMNvwUyu16+UW9QIXI0rTP8J70efF7fEPaGOzIiTz4Ke
-         Nd+sPDeaV7HKsLDsl3hv5GcwNabyPGL6LIVTotzMf5cWn5r6c70fkJeqk0urK2G9Zk4x
-         y/2FkcqTajdTrYxGnPqi0RgBehAgXtualDbw/w7b7+wg64BWHydLHqBFgHYlwSs2gwYD
-         QP5Q==
+        b=vv1DvSTnTqbHJHNgrvX/clMzvj4RmpS2z3otucg1NGsl3G+6Ustm7GEql9H+Oie+l+
+         bstEP5uoZxeldhWh1lnpGP9aojvLk/ztW54byFMhyZeqbVvz6DpO4zRD+Bo/Ecww+Z3v
+         Kn1kQJ4TbIFUUV50xH/7EM1v8vSRIxHLvpF+UNUPvIQk14+NqIv8CeGcVbzrHbknEinm
+         /CC7jf7mIPdhZk1NwS57gFwewnrIJ64xRKkwRr/FCkjiEeBj4wVlo3DXLymxNnyEVnEN
+         P5OAciMp53moO0edzVfMNWNcvcuOri8l3ovgg8TXVYvH+rMsYuQNy5JQN1n/m3dKxNIU
+         pSvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=H2YEvqYxr1jwORUy1H416YdJDByH1Bti5dkUqmMcrho=;
+        bh=GdLxkKJBM9/8cO5ervTCmHlXNSnSwQGVSVS04z23rsg=;
         fh=0Bn9ysFO5uhdOoEvdDNDnkwY7yFMuDt2XLw3k0zcWt8=;
-        b=D2IClUEnZ0X+TzZ0ZtphpGDSla3oEgdVQ3Lob39jgzlsUwRqAMq4MHvd8bt0ISEhIU
-         wudVYqNucsiYgfOBCNd+vk3UCo7tbN6JK1zts+3jM8XliX/laR1eWupyavlGN8RLUOn4
-         /k+YFTjlYlChKPbLEM0b2m6sGhVjitXyckZyIvv/eVCcC11OESvnf+IgZo8xT567Qk6h
-         kXpPBHxeaWZU6BJvlmYx5GpdKc+lK1FRtmAHq9+Qce8rk3qeN/+1dSfV49PH4R4djW5i
-         E2LwxQ6LdhXEkTTOiLf6PWrnbnygDR8esapv/a5cPkhSPh2ImGtAdWLl2MQ5OqYu3/xn
-         0kNg==
+        b=msugmR/B76gsyCmUYkcI1nhKjjc/J0GPzGuN9Uv52yiMrveIltwjUElb17hlKpXxJP
+         Z5C2vyK8KN79kaRF6xawx5gs60d91Eb7d5uQEv6igISrWcdMyztGx9k60uzskOtgrsFR
+         KNm6y3yPkzTwFA9n9nIBBSLWp8nhUJcrzSzIeuEXkMCmcYlMYFzNCjVC4Nuhk9Xg6IE3
+         N55tHNFLmgckP65qXZlZBt/VfYt09ZzeUPcSFIoscSV7zj2y/C7Nf97H/gtI81wX14BC
+         jMF0gamPECi3VsVJr1s54dnN59nkWM8U5gFXi2RJsaYjZJn1xVBvRraudttHF/lmy0K2
+         Difw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhkgIfYO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mgrjIfSy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q18-20020adffed2000000b003367beed7a8sor435206wrs.4.2024.01.10.11.54.57
+        by mx.google.com with SMTPS id n32-20020a05600c3ba000b0040e5181638fsor1652913wms.12.2024.01.10.11.55.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 10 Jan 2024 11:54:57 -0800 (PST)
+        Wed, 10 Jan 2024 11:55:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xhkgIfYO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mgrjIfSy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704916497; x=1705521297; darn=linaro.org;
+        d=linaro.org; s=google; t=1704916504; x=1705521304; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=H2YEvqYxr1jwORUy1H416YdJDByH1Bti5dkUqmMcrho=;
-        b=xhkgIfYOeJ8OH/xNIgU8zEWX/A1sTwWKJ6Tzqgqo4lcHGXq8LdlR9fqf5+D+y4h+o5
-         BuaBmEG3/eXjy/KEnjtOzxnTWc/cy2+lXIVGnIMFK1214LokSghxS6NHM9WCp8zrlsLf
-         mwOg3NfbR9uVeCwIKs/lCZLU2Ag/Ver2lAvEhcLrVia+plMiJvozuqCt2sQb3jtKe7x1
-         oRcs6NkKio+SmlP27OmzzKIkmyiNktYanWc9psQkk9WbLcVYJ69ReHq1mPvBqp4IDP28
-         RG0iaDDYWeDAbbMsFmBCdbHscjxaV3HOyD7HHpwfMrOzSPXOCojPFuuxqNZWfT0TDpao
-         1ADg==
+        bh=GdLxkKJBM9/8cO5ervTCmHlXNSnSwQGVSVS04z23rsg=;
+        b=mgrjIfSypoMWh0a/FdPa7nMgub+2vnvVFEXqbT7Pm0uqEM0rHK010U7xKF0u0ddJru
+         muEFEvE/OvCkV+cp5eXZE58Z4mRpytoigx/AxI3Jjh3vH7+5mLXQvFSrsW84znXMhR0c
+         wYUj5D7nN1vBq1a3/EIumqZO6jRZl9YjDrgzwlkRTRHkWFUsvc42fL7oozRQ1sx602ku
+         mxaSW8v0i72k2dpD+G3jdv5GOHaBgfQ/U6VXR66al6UBiE6wVXvVq6d/wv1dl0/3Jy1r
+         BHw5EQhEaacF9fHAfKd354AmsKvf1m9mRw0PZI2ErXM7L+6btCMYitLTKdJZOBh5YqtM
+         g8aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704916497; x=1705521297;
+        d=1e100.net; s=20230601; t=1704916504; x=1705521304;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=H2YEvqYxr1jwORUy1H416YdJDByH1Bti5dkUqmMcrho=;
-        b=mu4aHBAuQ+oh5dF6PAdXpnKD6O9Jd45A4j/5Ct9/F6Nj9okoePPlv7zamvjMaRJRo7
-         3xYRqipWzcsQKDKUIAM5W/cZOJku9sOcvMvSTszlHSrdappWG1yVSpaiUeuPn74UHgdu
-         WXQ8k/5IKXaGMxQajTSiKRa5noEAQFvNvKHuWipVP/sjhftqWEqgbBDI9JMPwlv+sGy0
-         fe530wj8xxg1kIwyXPib2zgFRdZ3/w6vmH0ckqMB8BPlg7XqHXc6rmHJ+9XmmMfTPRAI
-         TbK2joOZPAqxPtoqMYiLzXRCvx5bk/qLhqn3CbEyqJCSpwuuUMNyC7/9sAJyGCkz8KL0
-         ORDQ==
-X-Gm-Message-State: AOJu0YyLS7zvfs3ZTCSeKbX/pI+KZa0QoNSZDZ4Aa7d+mAk7gcECpk5q
-	XqM0CXr0A3wIxhI+fbPKMGy4jrMzqLAoG4C6
-X-Google-Smtp-Source: AGHT+IHQIfFBBMTYrGuA2Z7LZ0BoaPN7z/xVJtfC+knKSfqFG55a4WX2lBDF0b0ZD9Mqg27tWGP88w==
-X-Received: by 2002:a05:600c:4387:b0:40e:511c:ce85 with SMTP id e7-20020a05600c438700b0040e511cce85mr866737wmn.57.1704916497248;
-        Wed, 10 Jan 2024 11:54:57 -0800 (PST)
+        bh=GdLxkKJBM9/8cO5ervTCmHlXNSnSwQGVSVS04z23rsg=;
+        b=mSEewzc+1xVEb9xvCCsQgvi4qGE2dlaDlZ5akHsIZpSIBa+iM3AU2rJs7d2v5UeVe4
+         WtI65JykvSMYiuuP5/0ELEVUE8QyjW2qHtXp4qXUoFBKgWtibaJTS1vOsz1B7zj68OwF
+         3/8DRV+QaG1mmkVNTsh0SV0CYTYTfeUBSemSisRxVkbCWN75t46kCo82cNlM0u7aScb4
+         WtrJX/P2Y0Vd62j2uH1/yS33AJ9PD0P0FXEogrxg+VSxhDoXyD5Wt7Pcrx+yTeaNIsnA
+         N+N+4yIYizAlfqpMnrv6RTSjRgsFCZ3ChUT1pABhQPRskOabRT+DydekZ0yFM05B/ZX9
+         gCgg==
+X-Gm-Message-State: AOJu0Yx/BGB366XrlfYr2RdUnWGDMAkbmSh6tXyLIv6BxSRZtMn5Ira/
+	cPCkVqg2v8jk1iR5B897zNvniMpLJcXMcVQsg+535Mb9jcvBnQ==
+X-Google-Smtp-Source: AGHT+IFBq3SIKl//Nr9ItYDR3BjCPPqSfdupmfgRICMthFR5bjiXIpR3ELMN9whuDN7HLjO6jOiNlw==
+X-Received: by 2002:a05:600c:4f85:b0:40d:4e28:43e8 with SMTP id n5-20020a05600c4f8500b0040d4e2843e8mr783060wmq.167.1704916503990;
+        Wed, 10 Jan 2024 11:55:03 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (vau06-h02-176-184-43-236.dsl.sta.abo.bbox.fr. [176.184.43.236])
-        by smtp.gmail.com with ESMTPSA id l17-20020a05600c1d1100b0040e4a2b36bfsm3188298wms.22.2024.01.10.11.54.55
+        by smtp.gmail.com with ESMTPSA id w4-20020adfec44000000b0033662fb321esm5583482wrn.33.2024.01.10.11.55.01
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 10 Jan 2024 11:54:56 -0800 (PST)
+        Wed, 10 Jan 2024 11:55:03 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
@@ -85,69 +85,40 @@ Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Alistair Francis <alistair@alistair23.me>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 12/14] hw/arm: Prefer arm_feature(GENERIC_TMR) over 'kvm-no-adjvtime' property
-Date: Wed, 10 Jan 2024 20:53:26 +0100
-Message-ID: <20240110195329.3995-13-philmd@linaro.org>
+Subject: [PATCH v3 13/14] hw/arm: Prefer arm_feature(AARCH64) over object_property_find(aarch64)
+Date: Wed, 10 Jan 2024 20:53:27 +0100
+Message-ID: <20240110195329.3995-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240110195329.3995-1-philmd@linaro.org>
 References: <20240110195329.3995-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OiLwQpRQkMms
+X-TUID: DOp2646a0C3x
 
-First, the "kvm-no-adjvtime" and "kvm-steal-time" are only
-available when KVM is available, so guard this block within
-a 'kvm_enabled()' check. Since the "kvm-steal-time" property
-is always available under KVM, directly set it.
-
-Then, the "kvm-no-adjvtime" property is added to ARMCPU when
-the ARM_FEATURE_GENERIC_TIMER feature is available. Rather than
-checking whether the QOM property is present, directly check
-the feature.
-
-Finally, since we are sure the properties are available, we can
-use &error_abort instead of NULL error. Replace:
-
-  object_property_set_bool(..., PROPERTY, ..., &error_abort);
-
-by:
-
-  qdev_prop_set_bit(..., PROPERTY, ...);
-
-which is a one-to-one replacement.
+The "aarch64" property is added to ARMCPU when the
+ARM_FEATURE_AARCH64 feature is available. Rather than
+checking whether the QOM property is present, directly
+check the feature.
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/virt.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 6d1cb24a6e..49ed5309ff 100644
+index 49ed5309ff..a43e87874c 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2150,14 +2150,13 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, "has_el2", false, NULL);
-         }
+@@ -2140,7 +2140,7 @@ static void machvirt_init(MachineState *machine)
+         numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
+                           &error_fatal);
  
--        if (vmc->kvm_no_adjvtime &&
--            object_property_find(cpuobj, "kvm-no-adjvtime")) {
--            object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
--        }
--
--        if (vmc->no_kvm_steal_time &&
--            object_property_find(cpuobj, "kvm-steal-time")) {
--            object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
-+        if (kvm_enabled()) {
-+            if (arm_feature(cpu_env(cs), ARM_FEATURE_GENERIC_TIMER)) {
-+                qdev_prop_set_bit(DEVICE(cs), "kvm-no-adjvtime",
-+                                  vmc->kvm_no_adjvtime);
-+            }
-+            qdev_prop_set_bit(DEVICE(cs), "kvm-steal-time",
-+                              !vmc->no_kvm_steal_time);
-         }
+-        aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
++        aarch64 &= arm_feature(cpu_env(cs), ARM_FEATURE_AARCH64);
  
-         if (arm_feature(cpu_env(cs), ARM_FEATURE_PMU) && vmc->no_pmu) {
+         if (!vms->secure) {
+             object_property_set_bool(cpuobj, "has_el3", false, NULL);
 -- 
 2.41.0

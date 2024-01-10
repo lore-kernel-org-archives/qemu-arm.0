@@ -1,279 +1,389 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1044946ejs;
-        Wed, 10 Jan 2024 05:55:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGeCenyKpDSXJcBkgrQdpODI27AalBQHR71GAC1z5vp2V66KPuQF46a96hCIQmjE1gD4Meu
-X-Received: by 2002:ad4:5beb:0:b0:680:f9a2:4c3e with SMTP id k11-20020ad45beb000000b00680f9a24c3emr1344522qvc.38.1704894900895;
-        Wed, 10 Jan 2024 05:55:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704894900; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1348466ejs;
+        Wed, 10 Jan 2024 15:16:41 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEtsOsGthrn8esTqFRLX6hRP1G2YaPqm3tyBOffZ3TKh0AgMDDdcmoLxha5ZvHFWnEGpYAb
+X-Received: by 2002:a05:6214:27ce:b0:67f:ae1d:917d with SMTP id ge14-20020a05621427ce00b0067fae1d917dmr277578qvb.125.1704928601159;
+        Wed, 10 Jan 2024 15:16:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704928601; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fa0tYCM7fVYaJM0nFGs2F6aW6iw+DvAQZDWwCBNJFMqnQwdvCzRrAvEm3uF2qD8raN
-         dOxk9HMtAUzo2+fTrMsqEVzIJtjEoPMEcLeW+HAGUERRoB2/sLB5NeIwpdkuuIBURqzp
-         6mZKCiicGuGqDPyVy6Jel7ykaG0vBL194zukNsT358KVBawU2uiZalhHdM96K9qVWLai
-         jsryevhXdoycg4W/tJFyACJ179DLxzQOBXORPXRMCMfK0vWYbPpagJctGqTQszaXx4ze
-         pLglsqB0Gz3o2gX/GfUfVCck9VOOPyJ+pJDjQoKG1MYVR8/odfyj5BjWPY3dDD4zIbFg
-         iNZQ==
+        b=v+I1uRstgb0dZfCEDbZJ16s6AJT2Cb9j+gwSpOLneNaSLuiWNk9VgasmlIxFPUp4Eu
+         cL7WiyMwWvzygbnSIV/tOa2RTeBG2+ysYp3K0+pQ6m1AywidDF1kSPyrbX6bNjMC7cK/
+         S02+DK89U9odS0VWbqlOP+j+Y/8bCaegGHtp1t6D6IwV+wTFNxFF4Y8NPOuciNxRcVG/
+         QYWsOadiBnMWMJx/LmaLI1FCmHuiYxzgNoovmaUKwzE2qp0LNBbWIEn9Qyll9VZxSn+l
+         BsIX0FCcybO+Hmg+g/swoVX7fFKY48HeqKXDzfRuIQnOw9CPZfiguCm71VuS6y/1j8b6
+         hchA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=wk07C0QrNxbfu+ZfQjNe5NGRfyFgkwnr48d1D4Mxe+E=;
-        fh=aS4USwmi6JJv1Gf+5YdjwDcgBBw+2I1IGrvxAdiP+Dk=;
-        b=OICbOnilPQPTrQ2gi01ImHiDmFzkA6nYKDsnGSXM9rPURIlZ/Z4UQzV0swJxGIPesW
-         EMT+qYtJSlCzRBFAfifRBKOcTMmhQRiae1wgfL3n+cOh1vgeMDwH5CxZ3oTlgOvOWzBp
-         4ZAG0e6956yRs1mx/rHRy+yxJUN4kXfFZeLcxLPTl1mAeNLddiqyHEtL3Ucdyy4yI6Mq
-         CIMEAxV7C0+wnmq/43/3XFIpHHh9qhHaAcm45BxMMCWcrB+H6FHB/irnQCaN33ppw+ki
-         nodsZVXUEQv6WjVabWgEAFosNf7lK1tFXPHX16mB0sumjLY0YnEzjLEkHnJqF1P6KDt1
-         cJow==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=xPF6d/CbAB0c8eya9GGq3SUilyofhRsBmI3X1G5Mgvo=;
+        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
+        b=cxFCp2lDW8pHi2v9IQxBscPNLCo438q7PuwaVtDLnuUBre0ARXDqrVDb2rigUmch7g
+         xJDVzzY6Pje2jbs4qVOaDuIQXnMVQvLzscqgsm3g4o8OImPOj3K30xR2N+lPfJsWeiVT
+         rOGTPYrgCVt6HD35bv21ove4P39ewWrPozGKncwatMK7V527iagVVNhfVFcO8cIO5+3F
+         HWo62gy88o4ZNPb4aXR2XA4axY/qA6QWuf2615CYVuG8cnPh9erpPeEOw+p9ESv6Kgx0
+         qW/UEg4t4WKPQDkY4IsybwxM0HHvvoMBoPkKGKBtgXbHp6RVD7uIHwcQRGhPNevI4wHj
+         2XEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QkZ7wIlS;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id j3-20020a0c9cc3000000b0068061339975si4261275qvf.286.2024.01.10.05.55.00
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=BXFDGpkn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e25-20020a0cb459000000b00680f6edff7esi5344973qvf.324.2024.01.10.15.16.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Jan 2024 05:55:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 10 Jan 2024 15:16:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QkZ7wIlS;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1704894900;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wk07C0QrNxbfu+ZfQjNe5NGRfyFgkwnr48d1D4Mxe+E=;
-	b=QkZ7wIlS1+RoyCsI71yNLsVCnK5XfDELy/8+babW1tfZ8CTMNhL89C23FYoflSGEYR+JeJ
-	WXIbMGaqTCPF/SKJk+QxwfGWKYB6U58Ga6h3Zr/MHnrljKzHmaGPoS4lrlouB52RCt5y0a
-	uQ7eHsw3sBf60DUCHERTzF73IU7LAlw=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-428-1g23w-L4NHqNyLTHE1BtLA-1; Wed,
- 10 Jan 2024 08:54:57 -0500
-X-MC-Unique: 1g23w-L4NHqNyLTHE1BtLA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4BFC01C05149;
-	Wed, 10 Jan 2024 13:54:56 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C3E0C15880;
-	Wed, 10 Jan 2024 13:54:54 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 92EE321E6682; Wed, 10 Jan 2024 14:54:53 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Peter Xu <peterx@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-  qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Tyrone Ting <kfting@nuvoton.com>,  Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>,  Eduardo Habkost <eduardo@habkost.net>,
-  Joel Stanley <joel@jms.id.au>,  Alistair Francis
- <alistair@alistair23.me>,  Anton Johansson <anjo@rev.ng>,  Andrey Smirnov
- <andrew.smirnov@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
-  Hao Wu <wuhaotsh@google.com>,  Jean-Christophe Dubois
- <jcd@tribudubois.net>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Andrew Jeffery
- <andrew@codeconstruct.com.au>,  Rob Herring <robh@kernel.org>,
-  qemu-arm@nongnu.org,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
- A7/A15 MPCore priv
-In-Reply-To: <874jfl8gwf.fsf@suse.de> (Fabiano Rosas's message of "Wed, 10 Jan
-	2024 10:19:44 -0300")
-References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
-	<18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
-	<38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
-	<fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org>
-	<87y1d6i47m.fsf@suse.de>
-	<597186d9-af21-46e8-8075-f21d36c01c07@kaod.org>
-	<87plya76cu.fsf@suse.de>
-	<d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
-	<87bk9u8dhs.fsf@suse.de>
-	<2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org>
-	<ZZ4Qrfis4XHWGN0j@x1n> <87cyu9hgit.fsf@pond.sub.org>
-	<874jfl8gwf.fsf@suse.de>
-Date: Wed, 10 Jan 2024 14:54:53 +0100
-Message-ID: <87v88170pe.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=BXFDGpkn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rNhoB-0007TR-9v; Wed, 10 Jan 2024 18:16:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rNhny-0007Kk-M9; Wed, 10 Jan 2024 18:16:15 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rNhnw-0001lz-EX; Wed, 10 Jan 2024 18:16:14 -0500
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40ANBSFA001646; Wed, 10 Jan 2024 23:16:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=xPF6d/CbAB0c8eya9GGq3SUilyofhRsBmI3X1G5Mgvo=;
+ b=BXFDGpknoDVxR+CibSNSX6th4PimN+fUt/U+B9XNohqsK63UR1j0d6TWq7Y4c99wQlnH
+ aXHRCwqiVHyOz6rPe/m5RnfGhApKn+HxllaUABV9ddyf5i4QFjJmswyMoA6JI0KGxbm6
+ vPyK2xbtvSSGPEpSIpx+Bg8qnJCE7jHRPVkNOHDCSIEza/MVhDfHuOKSvc8VI2TDS+29
+ c2+I5Rypl7pN3gCN/DviYoBLAjP8PuXZQj1SXf7TpNNO1bs5a8PqJE5ihOH2c+3vqFX5
+ gGFWgjya55iy8ixZsS+vJdjdxBPFdX41RSpIwnLWJnkcNBtA997cNmrnRAdaB8e6tvLC 6Q== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj41sh5bd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Jan 2024 23:16:02 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40AMUDxx014367;
+ Wed, 10 Jan 2024 23:16:01 GMT
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vj41sh536-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Jan 2024 23:16:01 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40ALYOVa004395; Wed, 10 Jan 2024 23:15:43 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfjpm005f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 10 Jan 2024 23:15:43 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40ANFglq20382332
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 10 Jan 2024 23:15:43 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8E37358065;
+ Wed, 10 Jan 2024 23:15:42 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3654F5806C;
+ Wed, 10 Jan 2024 23:15:42 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 10 Jan 2024 23:15:42 +0000 (GMT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v10 7/9] hw/fsi: Added qtest
+Date: Wed, 10 Jan 2024 17:15:35 -0600
+Message-Id: <20240110231537.1654478-8-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240110231537.1654478-1-ninad@linux.ibm.com>
+References: <20240110231537.1654478-1-ninad@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-X-TUID: jJEqiUxhSsha
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 3FkIj729AdjQnMSbjxgSEJ7R4e_K5iHZ
+X-Proofpoint-ORIG-GUID: f1nJtcHpAiEkmThCFAoLnrOQRAvig13l
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-10_12,2024-01-10_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 phishscore=0
+ mlxlogscore=507 clxscore=1015 impostorscore=0 mlxscore=0 bulkscore=0
+ adultscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401100184
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9T3IyEtB7IYJ
 
-Fabiano Rosas <farosas@suse.de> writes:
+Added basic qtests for FSI model.
 
-> Markus Armbruster <armbru@redhat.com> writes:
->
->> Peter Xu <peterx@redhat.com> writes:
->>
->>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 w=
-rote:
->>>> Hi Fabiano,
->>>>=20
->>>> On 9/1/24 21:21, Fabiano Rosas wrote:
->>>> > C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>> >=20
->>>> > > On 1/9/24 18:40, Fabiano Rosas wrote:
->>>> > > > C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>> > > >=20
->>>> > > > > On 1/3/24 20:53, Fabiano Rosas wrote:
->>>> > > > > > Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>>> > > > > >=20
->>>> > > > > > > +Peter/Fabiano
->>>> > > > > > >=20
->>>> > > > > > > On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
->>>> > > > > > > > On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> > > > > > > > > Hi C=C3=A9dric,
->>>> > > > > > > > >=20
->>>> > > > > > > > > On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
->>>> > > > > > > > > > On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> > > > > > > > > > > Hi,
->>>> > > > > > > > > > >=20
->>>> > > > > > > > > > > When a MPCore cluster is used, the Cortex-A cores =
-belong the the
->>>> > > > > > > > > > > cluster container, not to the board/soc layer. Thi=
-s series move
->>>> > > > > > > > > > > the creation of vCPUs to the MPCore private contai=
-ner.
->>>> > > > > > > > > > >=20
->>>> > > > > > > > > > > Doing so we consolidate the QOM model, moving comm=
-on code in a
->>>> > > > > > > > > > > central place (abstract MPCore parent).
->>>> > > > > > > > > >=20
->>>> > > > > > > > > > Changing the QOM hierarchy has an impact on the stat=
-e of the machine
->>>> > > > > > > > > > and some fixups are then required to maintain migrat=
-ion compatibility.
->>>> > > > > > > > > > This can become a real headache for KVM machines lik=
-e virt for which
->>>> > > > > > > > > > migration compatibility is a feature, less for emula=
-ted ones.
->>>> > > > > > > > >=20
->>>> > > > > > > > > All changes are either moving properties (which are no=
-t migrated)
->>>> > > > > > > > > or moving non-migrated QOM members (i.e. pointers of A=
-RMCPU, which
->>>> > > > > > > > > is still migrated elsewhere). So I don't see any obvio=
-us migration
->>>> > > > > > > > > problem, but I might be missing something, so I Cc'ed =
-Juan :>
->>>> > > > > >=20
->>>> > > > > > FWIW, I didn't spot anything problematic either.
->>>> > > > > >=20
->>>> > > > > > I've ran this through my migration compatibility series [1] =
-and it
->>>> > > > > > doesn't regress aarch64 migration from/to 8.2. The tests use=
- '-M
->>>> > > > > > virt -cpu max', so the cortex-a7 and cortex-a15 are not cove=
-red. I don't
->>>> > > > > > think we even support migration of anything non-KVM on arm.
->>>> > > > >=20
->>>> > > > > it happens we do.
->>>> > > > >=20
->>>> > > >=20
->>>> > > > Oh, sorry, I didn't mean TCG here. Probably meant to say somethi=
-ng like
->>>> > > > non-KVM-capable cpus, as in 32-bit. Nevermind.
->>>> > >=20
->>>> > > Theoretically, we should be able to migrate to a TCG guest. Well, =
-this
->>>> > > worked in the past for PPC. When I was doing more KVM related chan=
-ges,
->>>> > > this was very useful for dev. Also, some machines are partially em=
-ulated.
->>>> > > Anyhow I agree this is not a strong requirement and we often break=
- it.
->>>> > > Let's focus on KVM only.
->>>> > >=20
->>>> > > > > > 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
->>>> > > > >=20
->>>> > > > > yes it depends on the QOM hierarchy and virt seems immune to t=
-he changes.
->>>> > > > > Good.
->>>> > > > >=20
->>>> > > > > However, changing the QOM topology clearly breaks migration co=
-mpat,
->>>> > > >=20
->>>> > > > Well, "clearly" is relative =3D) You've mentioned pseries and as=
-peed
->>>> > > > already, do you have a pointer to one of those cases were we bro=
-ke
->>>> > > > migration
->>>> > >=20
->>>> > > Regarding pseries, migration compat broke because of 5bc8d26de20c
->>>> > > ("spapr: allocate the ICPState object from under sPAPRCPUCore") wh=
-ich
->>>> > > is similar to the changes proposed by this series, it impacts the =
-QOM
->>>> > > hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
->>>> > > ("spapr: fix migration of ICPState objects from/to older QEMU") wh=
-ich
->>>> > > is quite an headache and this turned out to raise another problem =
-some
->>>> > > months ago ... :/ That's why I sent [1] to prepare removal of old
->>>> > > machines and workarounds becoming a burden.
->>>> >=20
->>>> > This feels like something that could be handled by the vmstate code
->>>> > somehow. The state is there, just under a different path.
->>>>=20
->>>> What, the QOM path is used in migration? ...
->>>
->>> Hopefully not..
->
-> Unfortunately the original fix doesn't mention _what_ actually broke
-> with migration. I assumed the QOM path was needed because otherwise I
-> don't think the fix makes sense. The thread discussing that patch also
-> directly mentions the QOM path:
->
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
->
-> But I probably misunderstood something while reading that thread.
->
->>>
->>>>=20
->>>> See recent discussions on "QOM path stability":
->>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
->>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
->>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
->>>
->>> If I read it right, the commit 46f7afa37096 example is pretty special t=
-hat
->>> the QOM path more or less decided more than the hierachy itself but cha=
-nges
->>> the existances of objects.
->>
->> Let's see whether I got this...
->>
->> We removed some useless objects, moved the useful ones to another home.
->> The move changed their QOM path.
->>
->> The problem was the removal of useless objects, because this also
->> removed their vmstate.
->
-> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
-> been kept untouched.
->
->>
->> The fix was adding the vmstate back as a dummy.
->
-> Since the vmstate was kept I don't see why would we need a dummy. The
-> incoming migration stream would still have the state, only at a
-> different point in the stream. It's surprising to me that that would
-> cause an issue, but I'm not well versed in that code.
+Acked-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+---
+ tests/qtest/aspeed-fsi-test.c | 205 ++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build       |   1 +
+ 2 files changed, 206 insertions(+)
+ create mode 100644 tests/qtest/aspeed-fsi-test.c
 
-Alright, I understand neither the problem nor the fix :)
+diff --git a/tests/qtest/aspeed-fsi-test.c b/tests/qtest/aspeed-fsi-test.c
+new file mode 100644
+index 0000000000..b3020dd821
+--- /dev/null
++++ b/tests/qtest/aspeed-fsi-test.c
+@@ -0,0 +1,205 @@
++/*
++ * QTest testcases for IBM's Flexible Service Interface (FSI)
++ *
++ * Copyright (c) 2023 IBM Corporation
++ *
++ * Authors:
++ *   Ninad Palsule <ninad@linux.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include <glib/gstdio.h>
++
++#include "qemu/module.h"
++#include "libqtest-single.h"
++
++/* Registers from ast2600 specifications */
++#define ASPEED_FSI_ENGINER_TRIGGER   0x04
++#define ASPEED_FSI_OPB0_BUS_SELECT   0x10
++#define ASPEED_FSI_OPB1_BUS_SELECT   0x28
++#define ASPEED_FSI_OPB0_RW_DIRECTION 0x14
++#define ASPEED_FSI_OPB1_RW_DIRECTION 0x2c
++#define ASPEED_FSI_OPB0_XFER_SIZE    0x18
++#define ASPEED_FSI_OPB1_XFER_SIZE    0x30
++#define ASPEED_FSI_OPB0_BUS_ADDR     0x1c
++#define ASPEED_FSI_OPB1_BUS_ADDR     0x34
++#define ASPEED_FSI_INTRRUPT_CLEAR    0x40
++#define ASPEED_FSI_INTRRUPT_STATUS   0x48
++#define ASPEED_FSI_OPB0_BUS_STATUS   0x80
++#define ASPEED_FSI_OPB1_BUS_STATUS   0x8c
++#define ASPEED_FSI_OPB0_READ_DATA    0x84
++#define ASPEED_FSI_OPB1_READ_DATA    0x90
++
++/*
++ * FSI Base addresses from the ast2600 specifications.
++ */
++#define AST2600_OPB_FSI0_BASE_ADDR 0x1e79b000
++#define AST2600_OPB_FSI1_BASE_ADDR 0x1e79b100
++
++static uint32_t aspeed_fsi_base_addr;
++
++static uint32_t aspeed_fsi_readl(QTestState *s, uint32_t reg)
++{
++    return qtest_readl(s, aspeed_fsi_base_addr + reg);
++}
++
++static void aspeed_fsi_writel(QTestState *s, uint32_t reg, uint32_t val)
++{
++    qtest_writel(s, aspeed_fsi_base_addr + reg, val);
++}
++
++/* Setup base address and select register */
++static void test_fsi_setup(QTestState *s, uint32_t base_addr)
++{
++    uint32_t curval;
++
++    aspeed_fsi_base_addr = base_addr;
++
++    /* Set the base select register */
++    if (base_addr == AST2600_OPB_FSI0_BASE_ADDR) {
++        /* Unselect FSI1 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x0);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x0);
++
++        /* Select FSI0 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x1);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x1);
++    } else if (base_addr == AST2600_OPB_FSI1_BASE_ADDR) {
++        /* Unselect FSI0 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x0);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x0);
++
++        /* Select FSI1 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x1);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x1);
++    } else {
++        g_assert_not_reached();
++    }
++}
++
++static void test_fsi_reg_change(QTestState *s, uint32_t reg, uint32_t newval)
++{
++    uint32_t base;
++    uint32_t curval;
++
++    base = aspeed_fsi_readl(s, reg);
++    aspeed_fsi_writel(s, reg, newval);
++    curval = aspeed_fsi_readl(s, reg);
++    g_assert_cmpuint(curval, ==, newval);
++    aspeed_fsi_writel(s, reg, base);
++    curval = aspeed_fsi_readl(s, reg);
++    g_assert_cmpuint(curval, ==, base);
++}
++
++static void test_fsi0_master_regs(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++
++    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
++
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0xF3F4F514);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_XFER_SIZE, 0xF3F4F518);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xF3F4F51c);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_STATUS, 0xF3F4F580);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_READ_DATA, 0xF3F4F584);
++}
++
++static void test_fsi1_master_regs(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++
++    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
++
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0xF3F4F514);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_XFER_SIZE, 0xF3F4F518);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xF3F4F51c);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_STATUS, 0xF3F4F580);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_READ_DATA, 0xF3F4F584);
++}
++
++static void test_fsi0_getcfam_addr0(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++    uint32_t curval;
++
++    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
++
++    /* Master access direction read */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0x1);
++    /* word */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_XFER_SIZE, 0x3);
++    /* Address */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xa0000000);
++    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
++    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
++
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
++    g_assert_cmpuint(curval, ==, 0x10000);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_STATUS);
++    g_assert_cmpuint(curval, ==, 0x0);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_READ_DATA);
++    g_assert_cmpuint(curval, ==, 0x152d02c0);
++}
++
++static void test_fsi1_getcfam_addr0(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++    uint32_t curval;
++
++    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
++
++    /* Master access direction read */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0x1);
++
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_XFER_SIZE, 0x3);
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xa0000000);
++    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
++    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
++
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
++    g_assert_cmpuint(curval, ==, 0x20000);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_STATUS);
++    g_assert_cmpuint(curval, ==, 0x0);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_READ_DATA);
++    g_assert_cmpuint(curval, ==, 0x152d02c0);
++}
++
++int main(int argc, char **argv)
++{
++    int ret = -1;
++    QTestState *s;
++
++    g_test_init(&argc, &argv, NULL);
++
++    s = qtest_init("-machine ast2600-evb ");
++
++    /* Tests for OPB/FSI0 */
++    qtest_add_data_func("/aspeed-fsi-test/test_fsi0_master_regs", s,
++                        test_fsi0_master_regs);
++
++    qtest_add_data_func("/aspeed-fsi-test/test_fsi0_getcfam_addr0", s,
++                        test_fsi0_getcfam_addr0);
++
++    /* Tests for OPB/FSI1 */
++    qtest_add_data_func("/aspeed-fsi-test/test_fsi1_master_regs", s,
++                        test_fsi1_master_regs);
++
++    qtest_add_data_func("/aspeed-fsi-test/test_fsi1_getcfam_addr0", s,
++                        test_fsi1_getcfam_addr0);
++
++    ret = g_test_run();
++    qtest_quit(s);
++
++    return ret;
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index f25bffcc20..8c09159702 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -207,6 +207,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed-fsi-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
+ 
+-- 
+2.39.2
 
->> The QOM patch changes are *not* part of the problem.
->
-> The only explanation I can come up with is that after the patch
-> migration has broken after a hotplug or similar operation. In such
-> situation, the preallocated state would always be present before the
-> patch, but sometimes not present after the patch in case, say, a
-> hot-unplug has taken away a cpu + ICPState.
-
-My head hurts...  Oh, we're talking migration!  Perfectly normal then.

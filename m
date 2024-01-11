@@ -1,113 +1,117 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1922576ejs;
-        Thu, 11 Jan 2024 11:26:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH133FC+ry1xUIfM6GsIP913x1I6eGu0jN7J9PkM6fNVo16lSCX3XtauQ833sw2koXX2Rqi
-X-Received: by 2002:a05:6102:30aa:b0:467:37b:c256 with SMTP id y10-20020a05610230aa00b00467037bc256mr301212vsd.42.1705001167127;
-        Thu, 11 Jan 2024 11:26:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705001167; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2032567ejs;
+        Thu, 11 Jan 2024 15:32:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFTlkkObrZtyeg4w+DPYA37yJfCPZLv3R9JOcdJ0FbQcDkxFdve8NMB06TlROmvFkg4owfn
+X-Received: by 2002:a05:620a:e02:b0:780:e491:f233 with SMTP id y2-20020a05620a0e0200b00780e491f233mr878276qkm.64.1705015969996;
+        Thu, 11 Jan 2024 15:32:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705015969; cv=none;
         d=google.com; s=arc-20160816;
-        b=0/RBMHjhNeeFVqIErk7/6YJW+SrFeeNG495xTVNCe4M9pcR8V9n9cF2gbqGsBc5pEJ
-         /lUZ9qiqUh6AKw0eRLndiNMQFRfvWpWkl5T5a84oEEyuyxSRiQ7mLRiUy5Co0+NI25jv
-         qlyE+6zVqoQqtO8TS+Q9i1IIpXO+s36Ei9F4Uf4mn0agKtzDFAWxh8/6mespo5p2hsm5
-         GUuP8xRiYSIHYbRDiJprF2Fi/op0x/4se+jlDoFOZJ6bHfcV1+i2pTN37+65+IlKMAt9
-         yrxJu/ZlwleMxcHzoxj4qoHBZmmdXeuM+QSxlvxvT3rYC0A4yeWPCZCI1VJBBNwrLH+g
-         VeBA==
+        b=Qj5V4YqbaOVeyIf5lHCL52NE5HsgcZeTxrpqxKcoG9jDvPUajhwHf323FYoN3xBvon
+         +fCjAp/AlOC9v0j+c9Gaw9e5R236kc8yy86EybdZTIVcDFvPZHGvdH/5TV6vF4aa1gLF
+         5cq9zJ94b5B2xKt7tDubIyvNbJN/ZzHhARVmtAkwebFl57YhjRNb3FxSijk09+567v7F
+         IcFWn7x4ScLQE+GQhpnaVcEQ2+OIkQwJXlP8yALix57aMWq1WEHVlmu8p3ABjuQQOGb1
+         QS0RWKh93DTkaggoJ/hOgecmuq2+v4bWTFdrqgz12ey5ol2Ft+LmjtMDwuqtf1nnIAOd
+         mlZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=yU8Bwsv4Ub+jQ+i0pE2G4S+631LJCrBTTrKsYCnLbHQ=;
-        fh=ecXz5+IsThWE6dkme7ssyphrG7iw98FSg6CfeHJWVBk=;
-        b=YsqxAiNl2VxwcbothaU32K8mgcJuxC/OO0CJaZh1jNcqbJsMLhqS2WUsDEnQ82YYMp
-         8WiI8trVCQCfRopStvpgZNn6Hf8vAB9EqHMm2ukPkoFkFV6bnNT07k9KBG0bXMShYZBQ
-         e7wqbU12FP/dx4FblhLPuHpgcUD55Cjanx1vwalFNVR7JWyHm11w/bHeaB7SakiKGpcP
-         FhtBBQJ9/6bAWX1jx/z322U3bU5sEIvXgnyRwEFoAPRJxJUaraLlg7tP+p57wjUGEe4+
-         x+5tfaJeinTRLhEvk5aL4hDtFne/rf3JDZkYqdY33h2bYmRZDmMinqCqMVn87iDmNROZ
-         q0Ew==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
+        fh=NcqnbRcJ7RFo3aWnSmbYiVc8hsBFlrmI7Mv6nKUY7ls=;
+        b=es3Hy/p7uSJxlT/8CEfQkgV/qadV3DbVforjzzBu+pCYcQUWaa87YahsGwTDHPnonv
+         l+MO+8ja/Tf7yEjCHkqOasKHMk3cPDFhLACwYFSi63OppdjvxJ2byAd9e5GpKWibwnH6
+         kEgWG4OYtcF5G9KiHczAOZGrvXs4QO7JVf4Q7sd58d2oBWrEXLKDnUclhLvs7Z+QHjb5
+         3GeMlUAKtXK1R+IUvDAOgyHI8v+AfdGAvYv1uzkhcgEWVDzsKXD5HdK9cIoSszIaHc7b
+         N2sa4G0o8M8tYWXfFJzxW9/6nlP6SCORwnh7jxrZSZ3s5kj1og4p0GaEmI2k3hdykQjL
+         /bYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=aNudt8Lu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="brf/ll8c";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16-20020ac859d0000000b004297dbff4a5si1612921qtf.186.2024.01.11.11.26.06
+        by mx.google.com with ESMTPS id t20-20020a05620a0b1400b00781555ae8basi1868208qkg.210.2024.01.11.15.32.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jan 2024 11:26:07 -0800 (PST)
+        Thu, 11 Jan 2024 15:32:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=aNudt8Lu;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="brf/ll8c";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rO0gS-0005xH-7k; Thu, 11 Jan 2024 14:25:44 -0500
+	id 1rO4XA-0000W0-F3; Thu, 11 Jan 2024 18:32:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3rkCgZQQKCOMKQbZLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--flwu.bounces.google.com>)
- id 1rO0gN-0005vF-6Y
- for qemu-arm@nongnu.org; Thu, 11 Jan 2024 14:25:39 -0500
-Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rO4X8-0000TI-QU; Thu, 11 Jan 2024 18:32:22 -0500
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3rkCgZQQKCOMKQbZLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--flwu.bounces.google.com>)
- id 1rO0gL-0004GW-Ib
- for qemu-arm@nongnu.org; Thu, 11 Jan 2024 14:25:38 -0500
-Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-6d9c7de0620so4813544b3a.1
- for <qemu-arm@nongnu.org>; Thu, 11 Jan 2024 11:25:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rO4Wz-0001Pp-Rg; Thu, 11 Jan 2024 18:32:15 -0500
+Received: by mail-vk1-xa30.google.com with SMTP id
+ 71dfb90a1353d-4b739b29686so3290420e0c.0; 
+ Thu, 11 Jan 2024 15:32:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1705001134; x=1705605934; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=yU8Bwsv4Ub+jQ+i0pE2G4S+631LJCrBTTrKsYCnLbHQ=;
- b=aNudt8LuQu9NormYn7L9T8QBlXiOQEYkLynCzXD/hG3zU07SdHWG/pjQCaD+Flz1Tz
- liQWJ6iUzAknoNFw5eeidkLM2qLPH9A0DGU4Gjxa+hWUI3YzRxekXu8TlcJQFgk0gRuV
- 9auppJ+Y5k9PvUKiTssyzVw+BwPMZ71Vw9Oj/vLP79MhYzcoP6k2W4VFxnLW+FRz0lIG
- FWyu3D0oYiwtItwQW2eJAxoFMe743bNuzC1ZLabt1FVm+Tr5Z10rQHxB8PNGIomiuHkL
- 9PoBIDErzXXspQvDMyhOt12HNq0Cprslz0RCCXdhM6B0A9ud9cxm26C6UpfQx4xNBprc
- gCrA==
+ d=gmail.com; s=20230601; t=1705015931; x=1705620731; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
+ b=brf/ll8cMCgEYD08U1Bc+PTQvezyVlSvRQENg0/1Fpue9JAAuH7RGX6tMpr7LaZmTu
+ 51h1570irpjv6bTERAo3H2SWrs6Nj3uRLlUHWyHHdGHyAL8uHwr0RCfSRyyVegeVri4c
+ rHNpF0Glx0Q532MetutEovV4uH6w19I9QIykk/BYaSxVcwyAM37syNeqIz3VX9W+t4+4
+ 0lOpj+7qGzTyLdNVLloxEHF8gNc0I8L4XTPdOeZzW1WpMKcLeNiAGBdmkuyssdTa4Zda
+ eB7b4+z9MJSKa+xVIiGOkrtoBXe0GXFX9c2ICJGn1mDQaX56Xz7YrZxz4B5PUklcnzqH
+ tyrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705001134; x=1705605934;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yU8Bwsv4Ub+jQ+i0pE2G4S+631LJCrBTTrKsYCnLbHQ=;
- b=uIpgGWEyKh3A2vY8Kr+0CJZOVFrCbU21AsaJZ4eEwKa+AjUvNd1fk5bXS1FnsDqvJn
- BL3u1WCShIWCJB6Co1SFAQd6AcybxneBhJGvzjdyi9g77lfBYM9rK8uSNIhjF7ZzRUzc
- WzRy1UAe4cbylqNIfFp5ETgKgTeDggLIFCdVuPqwESi4toYiQEPitTFJnbrcdQIuFqHE
- +15RpR8z8LbzsRQa30E7ejqAQlItLit4xn4l0/7Z5fznJ5Po4miO+M8BKVXh4Phkv+50
- kGp9q302WCmdayUl29YRC7Suath4tVD2719vOBsPf9MKtpkJiCun9Sx4mfETl0XLJZqb
- YTGg==
-X-Gm-Message-State: AOJu0YyJu5oTKtHSE1HXEhD1da2w8vKm6FmiB8GJsZbqkq2nBxfe/O3j
- MUuV3eTT2pLOwXcU72waIoVqgnuWeLIxwrQ=
-X-Received: from flwu-kvm.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5ceb])
- (user=flwu job=sendgmr) by 2002:a05:6a00:228b:b0:6d9:430d:ee59 with SMTP id
- f11-20020a056a00228b00b006d9430dee59mr30119pfe.2.1705001134588; Thu, 11 Jan
- 2024 11:25:34 -0800 (PST)
-Date: Thu, 11 Jan 2024 19:25:22 +0000
-In-Reply-To: <20240111192522.2795498-1-flwu@google.com>
-Mime-Version: 1.0
-References: <20240111192522.2795498-1-flwu@google.com>
-X-Mailer: git-send-email 2.43.0.275.g3460e3d667-goog
-Message-ID: <20240111192522.2795498-2-flwu@google.com>
-Subject: [PATCH 1/1] SMBIOS type 8 should use T8_BASE.
-From: Felix Wu <flwu@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Felix Wu <flwu@google.com>
+ d=1e100.net; s=20230601; t=1705015931; x=1705620731;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
+ b=ZGR3+Mg6EhoG0X5WdH5zl1VnVH4gRowPp1B8T5iB/o8yxBp8oxUVkmyMwjKYzWHNGz
+ DNkYHnCP76VENAk1U3BRGQVOFmKFtK0C2wsQC9/+Uc5BzY4WL9sBjmtfFZ/u/D69VOWM
+ VLOrMwQmvfEpxEQW4PLDtYcAK49XvDEla2SbOggfahHMB2ZtsapCbpbVUtliAL26iC4t
+ Ay3d/TsirrIB9CG3jlXShGk8K4H4K5CtgWJrCYHZ5wPSVq5lvUw8Uve7IusZp9JPuE4i
+ /ozQBSrNCkhwe+X2xTv1Zijw7eWN+PzHIY7KiS366HdTYPHlp6xf1CAjczY6u2Ao2+8D
+ FGEg==
+X-Gm-Message-State: AOJu0YyDSJ+4qIHcFFYS0i5Z+JOIVCFV5sV6nOJV+ag87Xp8H/v0WQ8E
+ dlnl613ntWS5bj2OMPxZgbRWLpOmcRx0Rw9Nci4=
+X-Received: by 2002:a1f:e784:0:b0:4b6:e3b6:41ea with SMTP id
+ e126-20020a1fe784000000b004b6e3b641eamr681462vkh.4.1705015930734; Thu, 11 Jan
+ 2024 15:32:10 -0800 (PST)
+MIME-Version: 1.0
+References: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
+ <20240109194438.70934-3-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240109194438.70934-3-ines.varhol@telecom-paris.fr>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 12 Jan 2024 09:31:44 +1000
+Message-ID: <CAKmqyKMqM=8SQpbdviMnVBcFdChRUmk5C-SW=dB-RMKP=L+zzA@mail.gmail.com>
+Subject: Re: [PATCH v4 2/3] hw/arm: Connect STM32L4x5 SYSCFG to STM32L4x5 SoC
+To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Laurent Vivier <lvivier@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
- envelope-from=3rkCgZQQKCOMKQbZLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--flwu.bounces.google.com;
- helo=mail-pf1-x44a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa30.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,33 +126,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c/cyFC1HIjWF
+X-TUID: R6toSdPzs6U4
 
----
- hw/smbios/smbios.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Wed, Jan 10, 2024 at 5:47=E2=80=AFAM In=C3=A8s Varhol
+<ines.varhol@telecom-paris.fr> wrote:
+>
+> The SYSCFG input GPIOs aren't connected yet. When the STM32L4x5 GPIO
+> device will be implemented, its output GPIOs will be connected to the
+> SYSCFG input GPIOs.
+>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 2a90601ac5..7dda84b284 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -591,6 +591,7 @@ bool smbios_skip_table(uint8_t type, bool required_table)
- #define T2_BASE 0x200
- #define T3_BASE 0x300
- #define T4_BASE 0x400
-+#define T8_BASE 0x800
- #define T11_BASE 0xe00
- 
- #define T16_BASE 0x1000
-@@ -775,7 +776,7 @@ static void smbios_build_type_8_table(void)
-     struct type8_instance *t8;
- 
-     QTAILQ_FOREACH(t8, &type8, next) {
--        SMBIOS_BUILD_TABLE_PRE(8, T0_BASE + instance, true);
-+        SMBIOS_BUILD_TABLE_PRE(8, T8_BASE + instance, true);
- 
-         SMBIOS_TABLE_SET_STR(8, internal_reference_str, t8->internal_reference);
-         SMBIOS_TABLE_SET_STR(8, external_reference_str, t8->external_reference);
--- 
-2.43.0.275.g3460e3d667-goog
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+Alistair
+
+> ---
+>  hw/arm/Kconfig                 |  1 +
+>  hw/arm/stm32l4x5_soc.c         | 21 ++++++++++++++++++++-
+>  include/hw/arm/stm32l4x5_soc.h |  2 ++
+>  3 files changed, 23 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 8c8488a70a..bb4693bfbb 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -459,6 +459,7 @@ config STM32L4X5_SOC
+>      bool
+>      select ARM_V7M
+>      select OR_IRQ
+> +    select STM32L4X5_SYSCFG
+>      select STM32L4X5_EXTI
+>
+>  config XLNX_ZYNQMP_ARM
+> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+> index fe46b7c6c0..431f982caf 100644
+> --- a/hw/arm/stm32l4x5_soc.c
+> +++ b/hw/arm/stm32l4x5_soc.c
+> @@ -37,6 +37,7 @@
+>  #define SRAM2_SIZE (32 * KiB)
+>
+>  #define EXTI_ADDR 0x40010400
+> +#define SYSCFG_ADDR 0x40010000
+>
+>  #define NUM_EXTI_IRQ 40
+>  /* Match exti line connections with their CPU IRQ number */
+> @@ -80,6 +81,7 @@ static void stm32l4x5_soc_initfn(Object *obj)
+>      Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
+>
+>      object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
+> +    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SY=
+SCFG);
+>
+>      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
+>      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
+> @@ -154,6 +156,19 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>          return;
+>      }
+>
+> +    /* System configuration controller */
+> +    busdev =3D SYS_BUS_DEVICE(&s->syscfg);
+> +    if (!sysbus_realize(busdev, errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
+> +    /*
+> +     * TODO: when the GPIO device is implemented, connect it
+> +     * to SYCFG using `qdev_connect_gpio_out`, NUM_GPIOS and
+> +     * GPIO_NUM_PINS.
+> +     */
+> +
+> +    /* EXTI device */
+>      busdev =3D SYS_BUS_DEVICE(&s->exti);
+>      if (!sysbus_realize(busdev, errp)) {
+>          return;
+> @@ -163,6 +178,11 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>          sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
+i]));
+>      }
+>
+> +    for (unsigned i =3D 0; i < 16; i++) {
+> +        qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
+> +                              qdev_get_gpio_in(DEVICE(&s->exti), i));
+> +    }
+> +
+>      /* APB1 BUS */
+>      create_unimplemented_device("TIM2",      0x40000000, 0x400);
+>      create_unimplemented_device("TIM3",      0x40000400, 0x400);
+> @@ -200,7 +220,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
+c, Error **errp)
+>      /* RESERVED:    0x40009800, 0x6800 */
+>
+>      /* APB2 BUS */
+> -    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
+>      create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
+>      create_unimplemented_device("COMP",      0x40010200, 0x200);
+>      /* RESERVED:    0x40010800, 0x1400 */
+> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+> index f7305568dc..baf70410b5 100644
+> --- a/include/hw/arm/stm32l4x5_soc.h
+> +++ b/include/hw/arm/stm32l4x5_soc.h
+> @@ -26,6 +26,7 @@
+>
+>  #include "exec/memory.h"
+>  #include "hw/arm/armv7m.h"
+> +#include "hw/misc/stm32l4x5_syscfg.h"
+>  #include "hw/misc/stm32l4x5_exti.h"
+>  #include "qom/object.h"
+>
+> @@ -41,6 +42,7 @@ struct Stm32l4x5SocState {
+>      ARMv7MState armv7m;
+>
+>      Stm32l4x5ExtiState exti;
+> +    Stm32l4x5SyscfgState syscfg;
+>
+>      MemoryRegion sram1;
+>      MemoryRegion sram2;
+> --
+> 2.43.0
+>
+>

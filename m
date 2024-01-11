@@ -1,243 +1,159 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1516235ejs;
-        Wed, 10 Jan 2024 23:01:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHOmLt72dm7MrxjKFE5mAqOwgwhiJTYZH5unMc2Av+L2qAb7I6F9bEUIdmUAetsqe3KWQvQ
-X-Received: by 2002:a05:622a:18c:b0:429:c2d3:1cfe with SMTP id s12-20020a05622a018c00b00429c2d31cfemr177152qtw.30.1704956508904;
-        Wed, 10 Jan 2024 23:01:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704956508; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp1787521ejs;
+        Thu, 11 Jan 2024 07:41:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGbbS+A+mU63n4wIrslTgJGHqkbOlPJ3/6rh1zpdlhWNZUWlvYOv5yq4SM9Mnf1bFFpnctU
+X-Received: by 2002:a0d:ebc8:0:b0:5f4:1540:48b8 with SMTP id u191-20020a0debc8000000b005f4154048b8mr923107ywe.4.1704987690399;
+        Thu, 11 Jan 2024 07:41:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704987690; cv=none;
         d=google.com; s=arc-20160816;
-        b=O84E0kq6rhT2EDeTz3ydOpRZ4ptvfkBgaApHmMPb3JxTNlXQTp866X4sLdtUL146/r
-         FQMcHyyD4+1FUNXXwmujB9nUJKHsrO0Ap9kmlblVM6PFPhKXaHhUrca9JyQMbKVrQ8Cm
-         F3tMQUbUJh8fVWzgddfdKjU5G0RVEcQVF34Dy8HZ2EWR02JddsQHq70/D8YKJGNfbllN
-         J/O7OQxjEqKdgc3XVuG+321eL90A+c0Q2JhOOeiom4qTXX9UvZaDCCFRt+xPHns+2Exq
-         iBmqrgivdxpOOJl8Y69nHlYkmpyOvFzFutJm4Ah4WHD9HGP9vH8ENeoEPYAA9uC6/dsS
-         3fiA==
+        b=dAMCeb1H+2rM1Ltx6Yih6/j30mnmD+U/DYnhf4ry5R8yd2pHanzsICdoy3lJ+6ixOw
+         xz8IB2Gi60z/4gZ77KCXAnZQsFpRAELn8Ab/f+JiCVfiUZ1dDr4Fnjrgi+lXDWCsHVE4
+         8vJusTIp2utM+L2+LJnir7/3rYgYfWK85gFAIk3m3x1URZShfZuTJtzc0K4D4nk73JDN
+         yY/8nDK+fG30/KIcBgDa28wlAv4A0HzrfSbOz62GGkbYY+1bxkai1ZVEf0P4I7D+sSCk
+         /k6et3rgQbIXVlIpXmpXm4dREkCUKMz7B7m/x2qO48o0jywbPRG5s2ozYHRXRoTrqEvA
+         3TUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=R9RxyL7BNCG6WzOUiQDBiDLY8C3CuDVjlJ93IG4mPvA=;
-        fh=6lqXYSQSzZuUDrlY2tjgeD+gSMSUajW+BzoXGSWB9wE=;
-        b=tzaSkvXJfwNvqPt6a7J+ldOy+8iEP0ioKLdRH4xq2SLpB3Cbq24nO3F+ClcTfO5blC
-         eLKbRyDdZt83asYjcw6fz+PZQ90k5/VywMfbkuLb7ya2b5kGpcJAIuoKJtk8ZEmi9zQC
-         2JudruXQX8IkC7uIBy7yPfbWHiSHNR1dXXkBfDczA1kTNm2u3va5H5yvdWXvrfa6+ARl
-         vmCIdv/G01XxpCwJ9XTE56RcxD4Q4/0plpB1QbVEdxrLXmLSwhqEp/sO7xFJX8ZyoiiM
-         6UGWoe0CxLVo2qA9kvzQvuDSjDRlMDhBz5mXwDxPHLmnlIfsFmueaKFSLJ+B4ChF9eCD
-         IS3g==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=iEz7sPILT/HMrC7NOzt7pd9/3qFxaGBIjK04DG6KQo8=;
+        fh=Qhc/Z+4AqHwUeknErqy3gwtb3GElk3CHv/+pURptbrc=;
+        b=F/WVjT4hZfOm5XxR5ApfWFCEBwDs4Pt+hwjsHL+SiIQ7yXo08HGpy8e426Q7xlOOcr
+         +g3pB3FK5Zw3ZPgz1tZP35hG3CCq3m8oGUbW3yrzfDRjl8gSt3X3IUlqtzMXDUcg0VSQ
+         lQKLxryubGQDCNwETilk0wqhawnhWkHCXU9xuYmUBUEzsL/gihMPkloP6n0ZLOPgvPFs
+         LBjhvs58GPuQ3Zn6yAG+9l8YZkxOwBxrgJ9euWCCacdKQAjC40XmdJhuqnNhWj5y+d7w
+         oKv9kRb9gy2RrYkFGssxexkiwZCWHmHCTjCmim8xXbVDE3oNlS9LstcMGI6ESgCtsOfm
+         0cgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpCB4WXL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=WpRC2Xph;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y11-20020a05622a004b00b0042753fdb817si419504qtw.449.2024.01.10.23.01.48
+        by mx.google.com with ESMTPS id m17-20020a0cf191000000b00680642bcdb3si977038qvl.590.2024.01.11.07.41.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jan 2024 23:01:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jan 2024 07:41:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpCB4WXL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=WpRC2Xph;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rNp4L-00022r-Ie; Thu, 11 Jan 2024 02:01:37 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rNxBE-0005DL-OM; Thu, 11 Jan 2024 10:41:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rNp4K-00022O-9V
- for qemu-devel@nongnu.org; Thu, 11 Jan 2024 02:01:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rNp4H-0001c5-TP
- for qemu-devel@nongnu.org; Thu, 11 Jan 2024 02:01:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704956493;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=R9RxyL7BNCG6WzOUiQDBiDLY8C3CuDVjlJ93IG4mPvA=;
- b=LpCB4WXL3FK89EkEajn29shCKOzra3wKhtafpTI2lBweAQhnRMGvfdn9G0Tlg56Z1rBrYj
- XXMzhuRLNTjknuEo6TEk/uqvZBszdmxvDzNw0PhgBvOAdPWOnypA9wN8Er43J1veRxSDd8
- TIS4auw40+SZfagh92FPEos/kpoyabA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-208-C_kgjc8JPoC_jzg131RKpw-1; Thu, 11 Jan 2024 02:01:30 -0500
-X-MC-Unique: C_kgjc8JPoC_jzg131RKpw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-33693a2dae7so2838889f8f.3
- for <qemu-devel@nongnu.org>; Wed, 10 Jan 2024 23:01:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rNxBC-0005CQ-S9
+ for qemu-arm@nongnu.org; Thu, 11 Jan 2024 10:41:14 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rNxBB-0005t5-4S
+ for qemu-arm@nongnu.org; Thu, 11 Jan 2024 10:41:14 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5534dcfdd61so9688818a12.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Jan 2024 07:41:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704987671; x=1705592471; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=iEz7sPILT/HMrC7NOzt7pd9/3qFxaGBIjK04DG6KQo8=;
+ b=WpRC2Xph05dC0SMDf8VLXWWeTVUeVw4bZGKbizFFUYWTpzcg3Sny6ig9g+iffbojiD
+ M44QOzF24iZMsGBS1sqMVs1GrjPgJlLHAVaFQ6XZkO9E3cqj2gYrKbrNPQGuyrd40rg1
+ GND0vLw5HW6WqUM7GjLX7rJSCq34H2onB3PQjkueewIFxqxuZdXXQBk1R4CG6H0HaRj4
+ 5aK5rtLM3IdINls5zwm5Hu0L77EjboC+7u2zBRyx/G1LYuO6puiR46pZ3uQD18nTIsc1
+ 2yfu/pFzMVDabBuLVg6DCyOAZ2z6BFgzThNRvAKc9V7l8T8FloT9EpjiZofzL845UUKd
+ NGfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704956489; x=1705561289;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=R9RxyL7BNCG6WzOUiQDBiDLY8C3CuDVjlJ93IG4mPvA=;
- b=vWksYY1ysQM9dIJwteH3pTrZt4ASpCEiLzSXjZvWQnYYhXGS0daGyQEF2v2xjuZy5J
- ihXbcuwiVEw6LGCQh1XVB2IGTK7KGZQBc8QreA0oteMkM6ZUVxweFU14WymPuZ0EGiQv
- xZa3fpV/yrw+MZjfRtddFnu7lp2RyNNE/+Bv02ZwJw2/n97CrqtHyzbJCpBst4wFjHzF
- mvNsfK/qZvChngW0NmQV7/xySU71w/ZDtbgBpgVfHApetkveBSZqkZoSez51VPHMXBi6
- CB1ZVR4NVFWen6XHEkzfi/s8sug0VSYsrkpGzixk4g9qApYAAnNaQtCcGzK/01hSloLJ
- 011A==
-X-Gm-Message-State: AOJu0YxCPshoZdfOVMB4o3soGKEtPYru3UoqLc01yA/wWnnNK3k55Vky
- e8dIvCxgJyC+CNpgvLOJBvNr/wxOHMtcgQ8fGQ7Ohh2gpeeR9XTkpmqGYanHeLQoTeF8Ha4CD1j
- FiiDvGP78hwTRxZVepFvsfHQ=
-X-Received: by 2002:adf:fe07:0:b0:336:c4c1:2d7c with SMTP id
- n7-20020adffe07000000b00336c4c12d7cmr329530wrr.41.1704956489306; 
- Wed, 10 Jan 2024 23:01:29 -0800 (PST)
-X-Received: by 2002:adf:fe07:0:b0:336:c4c1:2d7c with SMTP id
- n7-20020adffe07000000b00336c4c12d7cmr329499wrr.41.1704956488909; 
- Wed, 10 Jan 2024 23:01:28 -0800 (PST)
-Received: from redhat.com ([2a06:c701:73ef:4100:2cf6:9475:f85:181e])
- by smtp.gmail.com with ESMTPSA id
- m8-20020adfe948000000b00336710ddea0sm393142wrn.59.2024.01.10.23.01.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jan 2024 23:01:27 -0800 (PST)
-Date: Thu, 11 Jan 2024 02:01:22 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Dan Williams <dan.j.williams@intel.com>
-Cc: David Hildenbrand <david@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Ankit Agrawal <ankita@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ani@anisinha.ca" <ani@anisinha.ca>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "eblake@redhat.com" <eblake@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- Aniket Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>,
- Kirti Wankhede <kwankhede@nvidia.com>,
- "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>,
- Vikram Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>,
- Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v6 1/2] qom: new object to associate device to numa node
-Message-ID: <20240111015923-mutt-send-email-mst@kernel.org>
-References: <20231225045603.7654-1-ankita@nvidia.com>
- <20231225045603.7654-2-ankita@nvidia.com>
- <20240102125821.00001aa0@Huawei.com>
- <SA1PR12MB7199DF47EDDA9419E22FD79FB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
- <SA1PR12MB719917E2C9D98C04AE9058C4B0672@SA1PR12MB7199.namprd12.prod.outlook.com>
- <20240104103941.019f9b54.alex.williamson@redhat.com>
- <20240109165221.00003b8b@Huawei.com>
- <16d54fd2-9bab-46cd-a1b7-9742674453d6@redhat.com>
- <659f25e98bbb_5cee2945@dwillia2-xfh.jf.intel.com.notmuch>
+ d=1e100.net; s=20230601; t=1704987671; x=1705592471;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=iEz7sPILT/HMrC7NOzt7pd9/3qFxaGBIjK04DG6KQo8=;
+ b=Rrw4fEYW233wCH8QcPTN2buKjPtRLIZNLo2RiPOMDCz2rHUkVdFzMcukK8nSlj8dEK
+ SSOWc1nbWdJDm+d51caiZ5LD8lIAxMPDuhlkpyTJMm/YbLlcGGk5cS4j7SNnyYdpcCRm
+ l6kL1rVUZ6AGe1srNyPJiDdyIII1z1VnPjFhAXu9yp9tIzjqrGyNxUCWsV6+jgVPV0OB
+ DlKM48u1ng8BumlPKkM/+Q8ncwU/2qWmDai5Dae/SEXuOaUhfnZK0qIWzJ3fRCxQb3D9
+ qoyQkcpWTb6VbFMnkW5aGScXj9COoc8FU5UB6TWl0qVdQhONRWQTPWRRqHzlPzBoukWT
+ E34A==
+X-Gm-Message-State: AOJu0YygRt9WuxwnjvEs+CUhnszyhxZ5qGtfY8CmlWd22N2ipzS2o1Ji
+ 7sw03Ji299fycU+qEU/tOt+VPuXpckY0B2edAteOLxczv4Iwzg==
+X-Received: by 2002:a05:6402:34c6:b0:557:de62:4be0 with SMTP id
+ w6-20020a05640234c600b00557de624be0mr10621edc.28.1704987671033; Thu, 11 Jan
+ 2024 07:41:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <659f25e98bbb_5cee2945@dwillia2-xfh.jf.intel.com.notmuch>
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.774,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20230721104437.1199866-1-gshan@redhat.com>
+ <CAFEAcA9Sr=eE6PNR7e4jnGVj65wnFgDfbUTHpm+PzSU_5Fy+HQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9Sr=eE6PNR7e4jnGVj65wnFgDfbUTHpm+PzSU_5Fy+HQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Jan 2024 15:41:00 +0000
+Message-ID: <CAFEAcA-8aTiMNr1op_DDMcZmT+FLyQb7mV0YEh4Eq_DsG73rsw@mail.gmail.com>
+Subject: Re: [PATCH] numa: Skip invalidation of cluster and NUMA node boundary
+ for qtest
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eduardo@habkost.net, 
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com, 
+ imammedo@redhat.com, pbonzini@redhat.com, shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5peUz1oKtTvq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IKwckA0TOPvc
 
-On Wed, Jan 10, 2024 at 03:19:05PM -0800, Dan Williams wrote:
-> David Hildenbrand wrote:
-> > On 09.01.24 17:52, Jonathan Cameron wrote:
-> > > On Thu, 4 Jan 2024 10:39:41 -0700
-> > > Alex Williamson <alex.williamson@redhat.com> wrote:
-> > > 
-> > >> On Thu, 4 Jan 2024 16:40:39 +0000
-> > >> Ankit Agrawal <ankita@nvidia.com> wrote:
-> > >>
-> > >>> Had a discussion with RH folks, summary follows:
-> > >>>
-> > >>> 1. To align with the current spec description pointed by Jonathan, we first do
-> > >>>       a separate object instance per GI node as suggested by Jonathan. i.e.
-> > >>>       a acpi-generic-initiator would only link one node to the device. To
-> > >>>       associate a set of nodes, those number of object instances should be
-> > >>>       created.
-> > >>> 2. In parallel, we work to get the spec updated. After the update, we switch
-> > >>>      to the current implementation to link a PCI device with a set of NUMA
-> > >>>      nodes.
-> > >>>
-> > >>> Alex/Jonathan, does this sound fine?
-> > >>>    
-> > >>
-> > >> Yes, as I understand Jonathan's comments, the acpi-generic-initiator
-> > >> object should currently define a single device:node relationship to
-> > >> match the ACPI definition.
-> > > 
-> > > Doesn't matter for this, but it's a many_device:single_node
-> > > relationship as currently defined. We should be able to support that
-> > > in any new interfaces for QEMU.
-> > > 
-> > >>   Separately a clarification of the spec
-> > >> could be pursued that could allow us to reinstate a node list option
-> > >> for the acpi-generic-initiator object.  In the interim, a user can
-> > >> define multiple 1:1 objects to create the 1:N relationship that's
-> > >> ultimately required here.  Thanks,
-> > > 
-> > > Yes, a spec clarification would work, probably needs some text
-> > > to say a GI might not be an initiator as well - my worry is
-> > > theoretical backwards compatibility with a (probably
-> > > nonexistent) OS that assumes the N:1 mapping. So you may be in
-> > > new SRAT entry territory.
-> > > 
-> > > Given that, an alternative proposal that I think would work
-> > > for you would be to add a 'placeholder' memory node definition
-> > > in SRAT (so allow 0 size explicitly - might need a new SRAT
-> > > entry to avoid backwards compat issues).
-> > 
-> > Putting all the PCI/GI/... complexity aside, I'll just raise again that 
-> > for virtio-mem something simple like that might be helpful as well, IIUC.
-> > 
-> > 	-numa node,nodeid=2 \
-> > 	...
-> > 	-device virtio-mem-pci,node=2,... \
-> > 
-> > All we need is the OS to prepare for an empty node that will get 
-> > populated with memory later.
-> > 
-> > So if that's what a "placeholder" node definition in srat could achieve 
-> > as well, even without all of the other acpi-generic-initiator stuff, 
-> > that would be great.
-> 
-> Please no "placeholder" definitions in SRAT. One of the main thrusts of
-> CXL is to move away from static ACPI tables describing vendor-specific
-> memory topology, towards an industry standard device enumeration.
-> 
-> Platform firmware enumerates the platform CXL "windows" (ACPI CEDT
-> CFMWS) and the relative performance of the CPU access a CXL port (ACPI
-> HMAT Generic Port), everything else is CXL standard enumeration.
+On Fri, 21 Jul 2023 at 12:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 21 Jul 2023 at 11:44, Gavin Shan <gshan@redhat.com> wrote:
+> >
+> > There are warning messages printed from tests/qtest/numa-test.c,
+> > to complain the CPU cluster and NUMA node boundary is broken. Since
+> > the broken boundary is expected, we don't want to see the warning
+> > messages.
+> >
+> >   # cd /home/gavin/sandbox/qemu.main/build
+> >   # MALLOC_PERTURB_=255 QTEST_QEMU_BINARY=./qemu-system-aarch64           \
+> >     G_TEST_DBUS_DAEMON=../tests/dbus-vmstate-daemon.sh                    \
+> >     QTEST_QEMU_IMG=./qemu-img                                             \
+> >     QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon \
+> >     tests/qtest/numa-test --tap -k
+> >       :
+> >     qemu-system-aarch64: warning: CPU-0 and CPU-4 in socket-0-cluster-0   \
+> >     have been associated with node-0 and node-1 respectively.             \
+> >     It can cause OSes like Linux to misbehave
+> >       :
+> >
+> > Skip the invalidation of CPU cluster and NUMA node boundary when
+> > qtest is enabled, to avoid the warning messages.
+> >
+> > Fixes: a494fdb715 ("numa: Validate cluster and NUMA node boundary if required")
+> > Signed-off-by: Gavin Shan <gshan@redhat.com>
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-I assume memory topology and so on apply, right?  E.g PMTT etc.
-Just making sure.
+Looks like this got lost last year. I'm going to pick it up and
+apply it since the warnings it suppresses are still in the
+test output.
 
-
-> It is strictly OS policy about how many NUMA nodes it imagines it wants
-> to define within that playground. The current OS policy is one node per
-> "window". If a solution believes Linux should be creating more than that
-> I submit that's a discussion with OS policy developers, not a trip to
-> the BIOS team to please sprinkle in more placeholders. Linux can fully
-> own the policy here. The painful bit is just that it never had to
-> before.
-
+thanks
+-- PMM

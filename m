@@ -1,133 +1,196 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2484614ejs;
-        Fri, 12 Jan 2024 08:41:41 -0800 (PST)
-X-Received: by 2002:a05:6512:3a81:b0:50e:7bf2:69 with SMTP id q1-20020a0565123a8100b0050e7bf20069mr983790lfu.94.1705077701566;
-        Fri, 12 Jan 2024 08:41:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705077701; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2500442ejs;
+        Fri, 12 Jan 2024 09:07:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH22AiEk16ccFD2ilBJo6EuTETwoP/iqcOm1wgBzb3rt4KZ4DcFOMJxv6ID/BBOT0WFg0Mq
+X-Received: by 2002:a05:6214:500b:b0:680:caa7:7f6a with SMTP id jo11-20020a056214500b00b00680caa77f6amr1235279qvb.55.1705079239290;
+        Fri, 12 Jan 2024 09:07:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705079239; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z9WosaSaPJKwlU+bzZe6BY/WIkMZCA8xZlpd9cgqIHGLAqM1YXwCGkAHs3OXawPGhq
-         UWFojy0dGpmf1M5U9XsJPJVJIiGYks4POarLXjyhj+ATUgSiRXBoocxUkszm0rq41xGV
-         EvF4lE7hjq9H6/JxBKNsrwraE9WUQET6aJkqWSBHjkFmUMo78e3Ykhrayiwj2xJ+DJl1
-         fKxXpwUOYM2douJf7K5BYLvQSuGSZzQz9ur3nTB0mDdo6zzSA8hs1MsW1w743N0Cq6II
-         HRclm80H6TGw/NqS53++J+OTqalUQGPG+rYrq6FiVopjrkAQdD4leMe8aveXKhcaKeRx
-         ZUZA==
+        b=DUD1Cgwcrys47upklm8wX//LFu8+q9fWT4beyyMYLcEufanohCBjrfP8doNulMfMdi
+         UTLZvtmmYGE5wNquSNpAg/UaS5L20LTChSUWDyhfueh2arb+9O1fe96IwaUuH5DWVRMS
+         hAIka2lmTYVgISG0+GpycByf6zjXhyNUg+77kU5Zt2ZDz1COi3gO3s2bf8h7+4p3XHzZ
+         /CJu2IeqjMGpffVxVhaqqRvRaeD3YRs1bkoNJau0lJ69L3LJb6KrdjAcNURAkB89htU9
+         cnMlwKfMHFidsc2kJivkDYo121y9L1shFHWhfnlWErGVa+MgKmPzXHofS9HXaUJK/k/f
+         dn6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=BEFF89OwKim9bxIDXoomIIhBg+ts+L6z4md1sRy870k=;
-        fh=EJlKFvTEXeBbatWu+S+2owffZOJ22sl4ViEmjlBrVyM=;
-        b=qCaIY93CbV/ToSWRgvMAxnNwBEI92jsktLEW8+7eLTSdAhgQVugirn3cW7st8zh/Ms
-         bx5M/3I8hCrdJkDdutTBryOkiwnucxBVe0CPkAYOEw/mq9d4PM0DtaSEnGMf2pm7r6WO
-         pdu4OSySZ5cH8QH8v7/UgjMUAeKfUWrql6EU9Z8eyiWTPRZC3XaSY11N4+DwPOGqqJY2
-         vrXgq3Aa/YRh9pQT0HLDx1+V6DGKJsh8fYoCMyXjk1Q30dopdKA4I/1eH6McZJWrLWlz
-         LsQjnOO6Gkt2VGiBYo4Uf6t1hcmu1KibxeWU7m3Vxq4GQgJzixb/wymShcPQTViEMgQR
-         3t9A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=nN4AxN4bZ4OGgQmrqiZVBP3Aptm+OlATveS92Sj9fmc=;
+        fh=H4j+w7DFGN5ZRWLtnlYR7eibAzEyLeay0bJsCJBlOgY=;
+        b=FOpvFmUHtMm+JHtVeDB0/CntWoCItLnPP/Um3SYtRr9VgwcVOc1gy/PH82Foqg/fZs
+         UzNbuSDbM8gTwkxZKjNfho2GquNnSt0QKDqEAUpO/WZ1bvhG4gt+WN7i1pIVqfg2Zkr4
+         8pWR16/oCIZjk+9/tj7QbyFT/v2HvALCSSXc4uVvNBRAGK2EeLGqCQZZuv3g0D8AN+VG
+         sy53SVq5VmMAt6UTcm9/mDeUHJ4edVktW80Z7bumJHwLK9P/t+Xxl1Nd2MRm+w8TCG1O
+         UQ+QEX8zhkGm1rHmJu9/os1mJoFtvdxGdozXtgmkOGhWzHMNzDC8JwylYap6KL7kPb/p
+         +7hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NjaOSJjp;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x26-20020a056512047a00b0050eb36c135asor894561lfd.18.2024.01.12.08.41.41
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=sxLDPFnN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r25-20020a0cb299000000b00680f74cf179si3065567qve.464.2024.01.12.09.07.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 12 Jan 2024 08:41:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Jan 2024 09:07:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NjaOSJjp;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705077701; x=1705682501; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BEFF89OwKim9bxIDXoomIIhBg+ts+L6z4md1sRy870k=;
-        b=NjaOSJjp8QfR8hGoGJDtiaZl2iehfwDnd5iHohxGMzKHTOBR7HhOb/PIQ4KrXUTbEk
-         Sb1kSXMZn+oFDPUx7T89ADAafmRcKHcQt154j9l4E9k2mHMELBsA0INH/EDEBjj5jeyp
-         87PMdebYLf+22pUy/FtaMKaTLINrOlAk2kmek9qy+MxybYHTr3cpXKclQ/kFiAePRObM
-         ag0L2kYQz1u0dyXqpsDJrZwSTyL6UR/HgEO6Sx83B3VU7vEm0yIHel1ykq3Qsp5iZvUc
-         qJfjjrSyB3bPilWlqQUC0oE9hjMWNB1k+Gayv7AwnH3hAucWb7568qjjkktIGp1WoV+/
-         wdYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705077701; x=1705682501;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BEFF89OwKim9bxIDXoomIIhBg+ts+L6z4md1sRy870k=;
-        b=QS0NH9xs9Nlz89ZeFMmS1NFJg9PBeFosM6Otsv3ccDhW5lZGvguyj7tlE0RGvgKrRF
-         DuQfeTagPpdBeQ47wE9lOy1eWhjqvkX0VSLBahAR0vvTKZp2RSHaXYfP5ixe9GylcdgQ
-         GbMcldcnDNND1iR2DQL4q0rVCT4gD3AX+XJ6QndHaOCo4URAGFBMPPbTUBvZ3kgVmL/5
-         uXFmMmLC1eCPNu4kne3Ipq4pWVvhB1Mfo+VtjtVBz1R3q2SJCo8h5sV7Cx43Hil2ZecT
-         n1nPKBHFPrtprtIgdLl5yuYzweMb/1Q9vR/T6YpFzEeFFyu836agJV+ielV/YWln8wMb
-         cJWA==
-X-Gm-Message-State: AOJu0YwhrW6yz91352bRceSkpSNILJ8wWLziqTgthO5te3RmpaoJv/OW
-	ZkUB8nJk1VW6t8yAUm3opVptDVtiP0DSUG0O2Xzfp3svkccyKUNY
-X-Google-Smtp-Source: AGHT+IFWMfKEiJsqRmc2ekiDwya6XdYRUPze6mpsYCQFgZmzYlOBo+7MZfKmRu/+/hab5VSHqQsOJsMrZALMhW5mrc0=
-X-Received: by 2002:a2e:8013:0:b0:2cc:ceb2:372a with SMTP id
- j19-20020a2e8013000000b002ccceb2372amr804945ljg.96.1705077701104; Fri, 12 Jan
- 2024 08:41:41 -0800 (PST)
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=sxLDPFnN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rOKzc-0005IR-Ag; Fri, 12 Jan 2024 12:06:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rOKza-0005I9-HC; Fri, 12 Jan 2024 12:06:50 -0500
+Received: from zproxy2.enst.fr ([137.194.2.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rOKzX-000503-6g; Fri, 12 Jan 2024 12:06:49 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 23D908068A;
+ Fri, 12 Jan 2024 18:06:42 +0100 (CET)
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id hv8Iltz2pEga; Fri, 12 Jan 2024 18:06:41 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 26877806A7;
+ Fri, 12 Jan 2024 18:06:41 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 26877806A7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1705079201;
+ bh=nN4AxN4bZ4OGgQmrqiZVBP3Aptm+OlATveS92Sj9fmc=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=sxLDPFnNmQs8iyQBWD4IqJP50HIUy2I5ATry898uILT38m3NShBqXohIu71otwjsx
+ plGvq0f2k5u39f856yxHLlJqODtM4HkaLSanmlkebdDhHPJfyYXYLwdsuGjC26XPtS
+ ikvCgHjnj9wZScBPZjvhsAiA3OMKgY4EsxKKBadc=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id fFkiPx4NyS4X; Fri, 12 Jan 2024 18:06:41 +0100 (CET)
+Received: from inesv-Inspiron-3501.enst.fr (unknown
+ [IPv6:2a04:8ec0:0:240:fa97:9da:79c1:e167])
+ by zproxy2.enst.fr (Postfix) with ESMTPSA id B22CE8066D;
+ Fri, 12 Jan 2024 18:06:40 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: [RFC 0/3] Add device STM32L4x5 GPIO
+Date: Fri, 12 Jan 2024 18:05:37 +0100
+Message-ID: <20240112170635.303226-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20240102160455.68612-1-philmd@linaro.org> <20240102160455.68612-5-philmd@linaro.org>
-In-Reply-To: <20240102160455.68612-5-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jan 2024 16:41:30 +0000
-Message-ID: <CAFEAcA-qyLf_ACX-pD2nR8h+EcipqK_=re05wmBJBa93AOeg_Q@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/5] hw/arm/armv7m: Error if trying to set unavailable
- ARMCPU::vfp property
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	qemu-arm@nongnu.org, Luc Michel <luc.michel@amd.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Eduardo Habkost <eduardo@habkost.net>, 
-	Frederic Konrad <fkonrad@amd.com>, Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Kevin Wolf <kwolf@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: iKLPU+fcgwIC
+Received-SPF: pass client-ip=137.194.2.221;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iZTNEq+F2hmO
 
-On Tue, 2 Jan 2024 at 16:05, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> Do not ignore impossible configuration requested by the user.
-> For example, when trying to enable VFP on a Cortex-M33 we now get:
->
->   qemu-system-arm: 'cortex-m33-arm-cpu' does not support VFP
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/arm/armv7m.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 3610f6f4a1..12cdad09f9 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -328,6 +328,9 @@ static void armv7m_realize(DeviceState *dev, Error **=
-errp)
->          if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp, err=
-p)) {
->              return;
->          }
-> +    } else if (s->vfp =3D=3D OPTIONAL_BOOL_TRUE) {
-> +        error_setg(errp, "'%s' does not support VFP", s->cpu_type);
-> +        return;
->      }
+This patch adds a new device STM32L4x5 GPIO device and is part
+of a series implementing the STM32L4x5 with a few peripherals.
 
-I'm not sure exactly what this series is trying to do, but
-this isn't the right error message, at least at the moment.
-Our Cortex-M33 model does support VFP -- in fact, there's
-currently no way to turn it off, since we only expose the vfp
-property for AArch64 CPUs.
+This is RFC as the tests need to be corrected and completed.
 
-I think we broke this in commit 4315f7c61474 last year,
-accidentally restricting the definition of the "vfp"
-property to ARM_FEATURE_AARCH64 CPUs only.
-(filed https://gitlab.com/qemu-project/qemu/-/issues/2098
-to track that)
+The way the short-circuits are handled in the code currently :
+(0) The model is simplified (it detects pins driven internally and
+externally, not actual short-circuits)
+(1) It reacts by ignoring external driving and writes
+a `qemu_log_mask` about it
+(2) The model is tested by using a fake register
+`GPIO_DISCONNECTED_PINS` which is quite practical.
+However the tests could disconnect pins and check if a pin is
+disconnected in other ways (like setting all pins in push-pull
+output to disconnect them), should I unmap this attribute?
 
-I suppose if we fixed that regression then the error message
-would become correct again, since we'd be back to exposing
-the 'vfp' property only if the CPU did support VFP.
+Some context and more details for (0)
 
--- PMM
+This code uses a simplified model. Instead of checking for
+short-circuits each time the driving (internal and external) changes,
+some configurations aren't allowed :
+- push-pull with external driving
+- open-drain with pin set high
+
+Concretely, the pins configured as output can't be set externally
+when in push-pull mode, or set high when in open-drain mode.
+Conversely, when input/output mode or push-pull/open-drain mode
+is changed, the problematic pins driven externally are "disconnected"
+and the external value isn't considered anymore.
+
+I saw sifive_gpio.c uses a similar model :
+```
+/* Pin both driven externally and internally */
+if (output_en && in_mask) {
+    qemu_log_mask(LOG_GUEST_ERROR, "GPIO pin %zu short circuited\n", i);
+}
+```
+
+But nrf51_gpio.c actually checks for short-circuits :
+```
+if (connected_out && connected_in && out !=3D in) {
+    /* Pin both driven externally and internally */
+    qemu_log_mask(LOG_GUEST_ERROR,
+                    "GPIO pin %zu short circuited\n", i);
+}
+```
+
+Based-on: 20240109194438.70934-1-ines.varhol@telecom-paris.fr
+([PATCH v4 0/3] Add device STM32L4x5 SYSCFG)
+
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+
+In=C3=A8s Varhol (3):
+  hw/gpio: Implement STM32L4x5 GPIO
+  hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
+  tests/qtest: Add STM32L4x5 GPIO QTest testcase
+
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ hw/arm/Kconfig                     |   3 +-
+ hw/arm/stm32l4x5_soc.c             |  62 +++-
+ hw/gpio/Kconfig                    |   3 +
+ hw/gpio/meson.build                |   1 +
+ hw/gpio/stm32l4x5_gpio.c           | 520 +++++++++++++++++++++++++++++
+ hw/gpio/trace-events               |   6 +
+ include/hw/arm/stm32l4x5_soc.h     |   9 +
+ include/hw/gpio/stm32l4x5_gpio.h   |  79 +++++
+ tests/qtest/meson.build            |   3 +-
+ tests/qtest/stm32l4x5_gpio-test.c  | 319 ++++++++++++++++++
+ 11 files changed, 991 insertions(+), 16 deletions(-)
+ create mode 100644 hw/gpio/stm32l4x5_gpio.c
+ create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
+ create mode 100644 tests/qtest/stm32l4x5_gpio-test.c
+
+--=20
+2.43.0
+

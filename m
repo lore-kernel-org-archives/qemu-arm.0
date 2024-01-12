@@ -1,59 +1,60 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2232139ejs;
-        Fri, 12 Jan 2024 01:03:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF4TWXXdFfnhjhvhwScJ5Ye0cNHLQ051IC8WM0L2zb+xYnBSxVAZnNDFGdvKnvMtE9OXiPm
-X-Received: by 2002:a17:902:9344:b0:1d4:8be0:4494 with SMTP id g4-20020a170902934400b001d48be04494mr464135plp.125.1705050237172;
-        Fri, 12 Jan 2024 01:03:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705050237; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2266172ejs;
+        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE5Z31uPfeNacsHA6SXwKdvXNg18wxo8bPEx3krov0nA24GRtKYTuASQ55TzsQsCU1VhQ0c
+X-Received: by 2002:a17:902:eacb:b0:1d4:e210:22a7 with SMTP id p11-20020a170902eacb00b001d4e21022a7mr1116326pld.9.1705055196472;
+        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705055196; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHbTl/SWM5hqcp+gHHTUUjCJHtM2YyvObGxQDVe2kogOJECHUnov54fKitQqM/xPqy
-         4gtsQU6cW1wnysH9cVFHLqpj323Rcb2BygKQCO39oSDvtWDvga7kDLep940q+383S7fV
-         2IJ3vp/zX33iCEMxApelg0TyXGZX5k+pBuUg4cPeGhwaOGXNeW52XIybXA9krjfMgzq+
-         Vveij7FhTN2TNtcFl3ugYQC+6666A1xB4h0zexLhk+xr42Fxo7h4SjyfwQRIs0BZOIza
-         xcLywrMB6xm1kdNJHRBZugWWicH0OJ7DygFDeZ05dJBLAATNmlilXOfHE/KNXmcfNrXp
-         vwCQ==
+        b=RGxxl8c1N+ZZL/edwjNgE2nJLV5xCFoJuzYH9hbXCDYnNmwkI980dSWVukbJ9Znqeu
+         Hmo3Ep3hNDdpj3q5iAZLc3yQ0fK5a5bKu5503eV9Tpq7ZkjWu1wARuRt7PPSqONq9nev
+         KsDPZWGSgIxEgU2N/NMhMldeNk8vYDf016L7ahVpUmlNo0ORSNfysuRp1wRPpLI/k2IJ
+         RbDk1SEAIl8dDzaRBIlhnqWYCnzxFFDPtuJpwAvDoH1Xr2LxFoONWH2FSoqrGhoJ5NqE
+         BSEdLQYgcZ6F+r99mpyN1616Ot/o4ECbaFfKIugel1BQwaEGGbo08JDxX3r4RdjENu7L
+         63pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=Xy2PvNzdSgPWlt3JcggwSOi8nAK9NJT00bLUMAPTxJA=;
-        fh=CU1yliy8VciVniJeXkDzVDPqn+p4xkeFpW8viYzYwFY=;
-        b=N5XSB4BcDFXDVMTw/tN7y6gRM5cWEOy+WVSpGI0K3am2vn8f0rN/YDAaVXrBJ3Hzdw
-         zlHNUv+lzMzVyJP7xQLVewL30cHgYyAYq6YQQDLI9+NX4BIKymrcnUCYyj+5/JCxw3kf
-         6r37NrPRFLNrUs73C//adSpme8DS7QIcdFSfsZ/QjEeFYUSS56WjARcoTVgCt5ZwSDsi
-         wX48eeW1WqRhqAnVphJVqZZ7DHowT1KfKcSI2PoYKwlYqgCkqAJKXOAlaG9/Jw2q+SrT
-         VmNccBG1IQXopCpXmtDf2Lre9LgPV+WEV8gtz9SXnT23rL1agLV+DJLqVrj0DNZZ50F/
-         XCUA==
+        bh=/EnzgH5vf5oDONwtMeegPHrlVKT/2Oc5LOGb7NdYdbU=;
+        fh=6BJLbSgDP+13DvE3/k0EcyypWvOeKepkYLZSR9LCZDE=;
+        b=px9igRyq68ottnQf6F0ZzCljx6+SzgrIQtpbnGdD2jo49jslUh7+odbh1vuv4RpoYY
+         7NCE7qlx9ZWFcY+mjXQn8v1/YiyfWLo1uzcE4ur63LS98HXbqsYJv1te9o8pcFELBun1
+         v4a8TCvhaQPbkN6WZZVrfYW5RoTz8EjDGR6QWw1F0FdBwVqDZMNUVcKGlfAJZAS9Lf62
+         bTcs3Hkxu7jnKQrgnwvhbvU77sWKVsib91TF5DsYXkH9J2+EN/Ekis8Zz9zvrmA7N+mk
+         AQzPp0Jhuccn7Q65uQOXWb51GaVYLLHAbBPB/YHvSGxwtZI2dvz582/VniFkQFcaHa5f
+         ietw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
+       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
 Return-Path: <SRS0=qInK=IW=kaod.org=clg@ozlabs.org>
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id jf7-20020a170903268700b001d37369fe10si2661950plb.106.2024.01.12.01.03.56
+Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
+        by mx.google.com with ESMTPS id k17-20020a170902f29100b001d352ecfa69si2813504plc.218.2024.01.12.02.26.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 01:03:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
+        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
+       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TBFvY6vwqz4x43;
-	Fri, 12 Jan 2024 20:03:53 +1100 (AEDT)
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TBHkx3pVFz4xF1;
+	Fri, 12 Jan 2024 21:26:33 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TBFvM6cJDz4wc6;
-	Fri, 12 Jan 2024 20:03:43 +1100 (AEDT)
-Message-ID: <17419ee0-11f4-4082-bd91-212449ab1da8@kaod.org>
-Date: Fri, 12 Jan 2024 10:03:40 +0100
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TBHkk4JQMz4wcc;
+	Fri, 12 Jan 2024 21:26:21 +1100 (AEDT)
+Message-ID: <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
+Date: Fri, 12 Jan 2024 11:26:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
  A7/A15 MPCore priv
 Content-Language: en-US
-To: Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
+ Peter Xu <peterx@redhat.com>
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
@@ -64,20 +65,23 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
  <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
  <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
  <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
  <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
- <87cyu9hgit.fsf@pond.sub.org> <ZZ44iQRPrdDpfov7@x1n>
+ <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <ZZ44iQRPrdDpfov7@x1n>
+In-Reply-To: <874jfl8gwf.fsf@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 5t8GmEqa0xo4
+X-TUID: WPDq/MX8It3K
 
-On 1/10/24 07:26, Peter Xu wrote:
-> On Wed, Jan 10, 2024 at 07:03:06AM +0100, Markus Armbruster wrote:
+On 1/10/24 14:19, Fabiano Rosas wrote:
+> Markus Armbruster <armbru@redhat.com> writes:
+> 
 >> Peter Xu <peterx@redhat.com> writes:
 >>
 >>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daudé wrote:
@@ -164,6 +168,16 @@ On 1/10/24 07:26, Peter Xu wrote:
 >>>> What, the QOM path is used in migration? ...
 >>>
 >>> Hopefully not..
+> 
+> Unfortunately the original fix doesn't mention _what_ actually broke
+> with migration. I assumed the QOM path was needed because otherwise I
+> don't think the fix makes sense. The thread discussing that patch also
+> directly mentions the QOM path:
+> 
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
+> 
+> But I probably misunderstood something while reading that thread.
+> 
 >>>
 >>>>
 >>>> See recent discussions on "QOM path stability":
@@ -182,65 +196,76 @@ On 1/10/24 07:26, Peter Xu wrote:
 >>
 >> The problem was the removal of useless objects, because this also
 >> removed their vmstate.
+> 
+> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
+> been kept untouched.
+> 
 >>
 >> The fix was adding the vmstate back as a dummy.
+> 
+> Since the vmstate was kept I don't see why would we need a dummy. The
+> incoming migration stream would still have the state, only at a
+> different point in the stream. It's surprising to me that that would
+> cause an issue, but I'm not well versed in that code.
+> 
 >>
 >> The QOM patch changes are *not* part of the problem.
->>
->> Correct?
 > 
-> [I'd leave this to Cedric]
-> 
->>
->>>>> No one wants
->>>>> to be policing QOM hierarchy changes in every single series that shows
->>>>> up on the list.
->>>>>
->>>>> Anyway, thanks for the pointers. I'll study that code a bit more, maybe
->>>>> I can come up with some way to handle these cases.
->>>>>
->>>>> Hopefully between the analyze-migration test and the compat tests we'll
->>>>> catch the next bug of this kind before it gets merged.
->>>
->>> Things like that might be able to be detected via vmstate-static-checker.py.
->>> But I'm not 100% sure, also its coverage is limited.
->>>
->>> For example, I don't think it can detect changes to objects that will only
->>> be created dynamically, e.g., I think sometimes we create objects after
->>> some guest behaviors (consider guest enables the device, then QEMU
->>> emulation creates some objects on demand of device setup?),
->>
->> Feels nuts to me.
->>
->> In real hardware, software enabling a device that is disabled by default
->> doesn't create the device.  The device is always there, it just happens
->> to be inactive unless enabled.  We should model the device just like
->> that.
-> 
-> It doesn't need to be the device itself to be dynamically created, but some
-> other sub-objects that do not require to exist until the device is enabled,
-> or some specific function of that device is enabled.  It is logically doable.
-> 
-> Is the example Cedric provided looks like some case like this?  I am not
-> sure, that's also why I'm not sure the static checker would work here.  But
-> logically it seems possible, e.g. with migration VMSD needed() facilities.
-> Consider a device has a sub-function that requires a sub-object.  It may
-> not need to migrate that object if that sub-feature is not even enabled.
-> If that object is very large, it might be wise to do so if possible to not
-> send chunks of junk during the VM downtime.
-> 
-> But then after a 2nd thought I do agree it's probably not sensible, because
-> even if the src may know whether the sub-object will be needed, there's
-> probably no good way for the dest QEMU to know.  It can only know in
-> something like a post_load() hook, but logically that can happen only after
-> a full load of that device state, so might already be too late.
+> The only explanation I can come up with is that after the patch
+> migration has broken after a hotplug or similar operation. In such
+> situation, the preallocated state would always be present before the
+> patch, but sometimes not present after the patch in case, say, a
+> hot-unplug has taken away a cpu + ICPState.
 
-If features can be dynamically enabled by the OS, after negotiation
-with the platform, the source should prepare for all possible
-scenarios and migrate all models supported for a given configuration.
-The OS could choose to enable a feature on the target which was not
-enabled on the source before migration.
+May be. It has been a while.
+
+For a better understanding, I tried to reproduce. QEMU 2.9 still
+compiles on a f38 (memfd_create needs a fix). However, a
+QEMU-2.9/pseries-2.9 machine won't start any recent OS because
+something broke the OS/platform negotiation process (CAS) ...
+
+I removed the pre_2_10_has_unused_icps hack and worked around
+another migration compat issue in IOMMU ... Here are the last
+trace-events for migration :
+
+     QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
+
+1016464@1705053752.106417:vmstate_load spapr, spapr
+1016464@1705053752.106419:vmstate_load_state spapr v3
+1016464@1705053752.106421:vmstate_load_state_field spapr:unused
+1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
+1016464@1705053752.106425:vmstate_load_state_field spapr:tb
+1016464@1705053752.106427:vmstate_n_elems tb: 1
+1016464@1705053752.106429:vmstate_load_state timebase v1
+1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
+1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
+1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_day_ns
+1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
+1016464@1705053752.106438:vmstate_subsection_load timebase
+1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_option_vector_ov5_cas/(prefix)
+1016464@1705053752.106442:vmstate_load_state_end timebase end/0
+1016464@1705053752.106443:vmstate_subsection_load spapr
+1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas v1
+1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov5_cas:ov5_cas
+1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
+1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
+1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bitmap
+1016464@1705053752.106454:vmstate_n_elems bitmap: 1
+1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
+1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector: (short)/
+1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
+1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5_cas
+1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector_ov5_cas: (short)/
+1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_cas end/0
+1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/htm/(lookup)
+qemu-system-ppc64: error while loading state for instance 0x0 of device 'spapr'
+
+
+Hope it helps,
 
 Thanks,
 
 C.
+
+
+

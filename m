@@ -1,170 +1,361 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2449240ejs;
-        Fri, 12 Jan 2024 07:44:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFgpgH1MpvXZsTZnwNBSknVz0buUFxqqI3lqofTHlK8/YGv/iyhQX9klVtAioZz3US1wUJa
-X-Received: by 2002:a05:6902:1b08:b0:dbd:753:af3d with SMTP id eh8-20020a0569021b0800b00dbd0753af3dmr924245ybb.75.1705074295014;
-        Fri, 12 Jan 2024 07:44:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705074295; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2473731ejs;
+        Fri, 12 Jan 2024 08:22:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHPKBEDxJZYSazmSWRT2wzgeTTjAFjVo4byawejLizmZmP+QFHvd42EZD9IIL8esb6bskfo
+X-Received: by 2002:a05:6808:3404:b0:3bd:591e:b4b6 with SMTP id by4-20020a056808340400b003bd591eb4b6mr1265855oib.51.1705076570488;
+        Fri, 12 Jan 2024 08:22:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705076570; cv=none;
         d=google.com; s=arc-20160816;
-        b=pVITt3DXqR++n2C2pPvJEUzwegSS1NwJrLk6YoA95f1MgB14DIh8wKAmIgJd+FHL2N
-         ShLpVcJo5kabaBMKlFqiyX98TK5OUrttjWlzRnz4SQtNeIFBKUmJ7zlU1N4WzIh10Y/H
-         thq3PbbBtqW9sbgIoUTf/jf0IpcxLM6vY0QXRispo8kKW4mPTzzvVHZzcvE4LQGBwQXa
-         PwJ573S5aCL6I7Y++I81dMlOGgrvv//wxY6qUse14J2I9KPkXE6Y/wqDEOuX1C8TXqVo
-         zlSn6b6kyvMI7lYtUdmaDDPxEeUCUXBmUSIQT67fnmnW7bns2enZm2NRii3hf0x1j4Kz
-         qNwQ==
+        b=1HjPPWCtJk9TJzQXtL7TCfnQZIF3QRiz5F8tfecmjTWJ0Fv+dyw+x9hkDpJxWfMtax
+         5VEV0woW8YQcFO/mkGbX9v2SwEDuWsMj9AVwT72UVdqo8bT/efk0Dp910LkY2IImp6ZC
+         PC++WKvMnDFTMB4G6HpGAJ6PAeKfvRBMC2gvNKYlaEoF/2/amqH6gfmSboQW3c4IlX1C
+         zGa4oXdK/Umt2vGnysQ8vwjIPJARR7iJNDstXB3nQ6oqHZ18fwSM42xilGpITV+glfg/
+         aZpZGm53ztcl+lnY1Ou1135roWxRRqL23cEYggjKzbxflKHgzEMfrpbTE92nNsi1E9DP
+         CvDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=hfrdnEtpGn94s5HzyRrjF4o/Q8dg/DO4WQ288cW8ZFY=;
-        fh=m3bHuMhYjQ2YvYwoscJTXWr8s26fyrFRD7neFrPr5W8=;
-        b=DhvLqteTrzxOzzhlsso4capvwLATvYhqb83XK7slltcT9dpJnSL4wyjsf+whK+eYLB
-         o61Zen5H/y/Ds/4aTbJ+OQJ6M5wkcM9j1shKhSLxFtqRPmMxZIV3aHinqIb8BVT++VL5
-         bIkwIKYaucjIkNwyC4gTV2NgM7q5tYdxBaJnU2yZbbnEVyZ8/FpHxABJ4g0elnYglqlg
-         RY20A8h91Iw7pVqzaIH8NJ+bDSA8cTdcsazgwOaHcmVrE72oJ2QT8+WMfYx/kez9SA0M
-         W+YwE1Q9XMSxp5iU8l5lUvDJnaTROkSf+GYzThw1zUkfJKbMa6naOQYxNfq2fY8mRDGa
-         KEMA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=hMH9mr0HA/UjxaD57Pv6Lim3NsM+wGThyBC7vlN5KAM=;
+        fh=v045sp/n/mLZv49zCKO2LE5RLzVm9wU5iQpoO1Uergo=;
+        b=fytfUlr2uruO+xcA+YkI3j6asuJnsAYjFO7xYiyuryX2eH5aAurN3htIy0n2mvpeTO
+         Q8TYqhVOiQcjkhIL4Saslheyv3kaGYxDOKm3jIhZNRRd1r9UQBXuzotHuH4LFAApe5aQ
+         dGTTS3y8xuiCbk7DGjmOmcyLXGbC540+DoRaj3q2XtqBZGu3abWg6RJpGf3u03XxsaCf
+         SJi+FNjBz5K9TMudoW8VxDOLK1oTSi3a1LeN00PnvcSq1jlrOskKO+IEYFR2jWg4C0GB
+         vzXRuuQ2HiukDl+bICcT6KRmknMQbyr1BCmJedREP4gCrP8afLXi64v4H9vbm7jBiG9I
+         8izw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IIS0v6rx;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id x130-20020a25e088000000b00dbcdff18420si1118956ybg.149.2024.01.12.07.44.54
+       dkim=pass header.i=@linaro.org header.s=google header.b=hoLpLTpZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ow26-20020a05620a821a00b007814f7972f9si3081318qkn.542.2024.01.12.08.22.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 07:44:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Jan 2024 08:22:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IIS0v6rx;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1705074294;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hfrdnEtpGn94s5HzyRrjF4o/Q8dg/DO4WQ288cW8ZFY=;
-	b=IIS0v6rxG8BF4yx+wUvflCmoTmm5PfIVql+BgJmIggbd5XUgZwfuzm3ekEFsAX5X66zopR
-	E3jhfiBC9K2WI43eVIAeGoF6VEg25xMGup3qsgPrFyeKhIbjsdBar/KgZydHWj78THxjmd
-	/0M5K4KNMkWoHESJqV6UqUrbDBYiDtU=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-315-qHMIU1caNEeRbQSiFqv-Ag-1; Fri,
- 12 Jan 2024 10:44:52 -0500
-X-MC-Unique: qHMIU1caNEeRbQSiFqv-Ag-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 05F6E3C29A67;
-	Fri, 12 Jan 2024 15:44:48 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 246D2492BC6;
-	Fri, 12 Jan 2024 15:44:40 +0000 (UTC)
-Date: Fri, 12 Jan 2024 15:44:37 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Song Gao <gaosong@loongson.cn>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>, Brian Cain <bcain@quicinc.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Beraldo Leal <bleal@redhat.com>, Paul Durrant <paul@xen.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	qemu-arm@nongnu.org, Weiwei Li <liwei1518@gmail.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-riscv@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
-Subject: Re: [PATCH v2 12/43] qtest: bump boot-serial-test timeout to 3
- minutes
-Message-ID: <ZaFeZXP-3sYdnZbS@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
- <20240103173349.398526-13-alex.bennee@linaro.org>
- <cf617223-0a0b-4d42-84a3-cd323ea4c421@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=hoLpLTpZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rOKIc-0006f8-Pf; Fri, 12 Jan 2024 11:22:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rOKIa-0006bw-AL
+ for qemu-arm@nongnu.org; Fri, 12 Jan 2024 11:22:24 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rOKIY-0006sz-8L
+ for qemu-arm@nongnu.org; Fri, 12 Jan 2024 11:22:24 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-556c3f0d6c5so7892680a12.2
+ for <qemu-arm@nongnu.org>; Fri, 12 Jan 2024 08:22:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705076540; x=1705681340; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=hMH9mr0HA/UjxaD57Pv6Lim3NsM+wGThyBC7vlN5KAM=;
+ b=hoLpLTpZp8tlHo0/gIxlURYvaCLGlav9YfBCHVj8WpyH7aDkOaKE8ZzpM62d0feIA7
+ r9XmDX7koLkIbjs6EJEZOHSGObHvjkOY0hQo+zcDyL0UtXFXayQQXXtvF8SrdwrZIEhK
+ TJv3u/fvzkb4AyJRwmA7eTdgDvGtcHRRsPSBe6cUlWWjhzlpWZ/prudsNajSa7lnQ+mj
+ VlLVeTkKppxZGG3toIQpNJffwngk5AeODRHMOcmDlaa9mTGFnQ7AUtR+pW4bWby3EqPD
+ ChBDuj7gOP1dZlg00Ac2rR+BZueTJDtwx+tdIiIliTKzkyocDQOJjlaKFN9Ab8dDIhWg
+ nGJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705076540; x=1705681340;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=hMH9mr0HA/UjxaD57Pv6Lim3NsM+wGThyBC7vlN5KAM=;
+ b=vZXLHbVQYkgt8Q5wjsB4PJmU32xTY6qR5gPDhAR3pL8vB67QfTN/EfYOT31370Q+Et
+ tdpAzuoxtKNQdcBc/B/lC8SYQrPmLVegdrCiVKXKgyD6bmur0mqGSElOX8NQFR99TnXf
+ 5WUR15jQw8F50MPYHtEaG3/lvenia31h9OvIoa1bueq4SQcu+AlbT3JlulKo78IdOyNP
+ /sELzqxiDikgVY9LtHW/z737ZxKJrGczO1/bYprBeIihos0kkjone0N/Z864TImU0hJ/
+ oO7+YsfsPfmXkIsB9birQqrAWTGe6LyY9JKCf1iEmoGMMfEtDp8Z6betgvCvyheYO1v9
+ Wq9Q==
+X-Gm-Message-State: AOJu0YwJUhMDMYLkF7C5vye9/pzYHrTOVkT6p5gEF5vx/0DLPcifKIjz
+ 4JaZ2X7CDTXGznW63NEVpOBA56MRsdt9qOkuHK4aP1Z0+Iw0d3Sw3KaToGV8
+X-Received: by 2002:aa7:cf06:0:b0:556:d09e:fb63 with SMTP id
+ a6-20020aa7cf06000000b00556d09efb63mr559412edy.48.1705076540206; Fri, 12 Jan
+ 2024 08:22:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cf617223-0a0b-4d42-84a3-cd323ea4c421@redhat.com>
-User-Agent: Mutt/2.2.10 (2023-03-25)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-TUID: zkVDopf9+WX7
+References: <20231103182750.855577-1-peter.maydell@linaro.org>
+ <CAFEAcA-QXorAggMFLEknvkrrBtCZSEWpcW_Fx_GTrxD0RfqUFg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-QXorAggMFLEknvkrrBtCZSEWpcW_Fx_GTrxD0RfqUFg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Jan 2024 16:22:09 +0000
+Message-ID: <CAFEAcA8qrDHLVhq44Fh9PVORrRddyU10LiLtjDJasF5O8sNoqg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Jan Kiszka <jan.kiszka@web.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZnGQQyHjD2Ga
 
-On Fri, Jan 12, 2024 at 04:13:16PM +0100, Thomas Huth wrote:
-> On 03/01/2024 18.33, Alex Bennée wrote:
-> > From: Daniel P. Berrangé <berrange@redhat.com>
-> > 
-> > The boot-serial-test takes about 1 + 1/2 minutes in a --enable-debug
-> > build. Bumping to 3 minutes will give more headroom.
-> > 
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > Reviewed-by: Thomas Huth <thuth@redhat.com>
-> > Message-ID: <20230717182859.707658-9-berrange@redhat.com>
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > Message-Id: <20231215070357.10888-9-thuth@redhat.com>
-> > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Ping^2 for code review?
+
+thanks
+-- PMM
+
+On Fri, 15 Dec 2023 at 14:07, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Ping for code review, since we're approaching the end of the
+> 8.2 freeze ?
+>
+> thanks
+> -- PMM
+>
+> On Fri, 3 Nov 2023 at 18:27, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > Convert the musicpal key input device to use
+> > qemu_add_kbd_event_handler().  This lets us simplify it because we no
+> > longer need to track whether we're in the middle of a PS/2 multibyte
+> > key sequence.
+> >
+> > In the conversion we move the keyboard handler registration from init
+> > to realize, because devices shouldn't disturb the state of the
+> > simulation by doing things like registering input handlers until
+> > they're realized, so that device objects can be introspected
+> > safely.
+> >
+> > The behaviour where key-repeat is permitted for the arrow-keys only
+> > is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
+> > and add a comment to that effect.
+> >
+> > This is a migration compatibility break for musicpal.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > > ---
-> >   tests/qtest/meson.build | 1 +
-> >   1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> > index c7944e8dbe9..dc1e6da5c7b 100644
-> > --- a/tests/qtest/meson.build
-> > +++ b/tests/qtest/meson.build
-> > @@ -6,6 +6,7 @@ slow_qtests = {
-> >     'test-hmp' : 240,
-> >     'pxe-test': 600,
-> >     'prom-env-test': 360,
-> > +  'boot-serial-test': 180,
-> >   }
-> >   qtests_generic = [
-> 
-> 3 minutes was obviously not enough:
-> 
->  https://gitlab.com/qemu-project/qemu/-/jobs/5918818492#L4984
-> 
-> And in older runs, we can see that the boot-serial-test might take longer
-> than 180s when run with TCI :
-> 
->  https://gitlab.com/qemu-project/qemu/-/jobs/5890481086#L4772
-> 
-> So I think we should bump the timeout to 240s here. Alex, are you going to
-> respin your pull request? If so, could you modify your patch? Otherwise I
-> can also send a new version of this patch here, just let me know.
-
-Agreed, 240s seems a good next attempt
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> >  hw/arm/musicpal.c | 131 +++++++++++++++++++++-------------------------
+> >  1 file changed, 61 insertions(+), 70 deletions(-)
+> >
+> > diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+> > index 9703bfb97fb..e8c1250ab04 100644
+> > --- a/hw/arm/musicpal.c
+> > +++ b/hw/arm/musicpal.c
+> > @@ -1043,20 +1043,6 @@ static const TypeInfo musicpal_gpio_info = {
+> >  };
+> >
+> >  /* Keyboard codes & masks */
+> > -#define KEY_RELEASED            0x80
+> > -#define KEY_CODE                0x7f
+> > -
+> > -#define KEYCODE_TAB             0x0f
+> > -#define KEYCODE_ENTER           0x1c
+> > -#define KEYCODE_F               0x21
+> > -#define KEYCODE_M               0x32
+> > -
+> > -#define KEYCODE_EXTENDED        0xe0
+> > -#define KEYCODE_UP              0x48
+> > -#define KEYCODE_DOWN            0x50
+> > -#define KEYCODE_LEFT            0x4b
+> > -#define KEYCODE_RIGHT           0x4d
+> > -
+> >  #define MP_KEY_WHEEL_VOL       (1 << 0)
+> >  #define MP_KEY_WHEEL_VOL_INV   (1 << 1)
+> >  #define MP_KEY_WHEEL_NAV       (1 << 2)
+> > @@ -1074,67 +1060,66 @@ struct musicpal_key_state {
+> >      SysBusDevice parent_obj;
+> >      /*< public >*/
+> >
+> > -    uint32_t kbd_extended;
+> >      uint32_t pressed_keys;
+> >      qemu_irq out[8];
+> >  };
+> >
+> > -static void musicpal_key_event(void *opaque, int keycode)
+> > +static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
+> > +                               InputEvent *evt)
+> >  {
+> > -    musicpal_key_state *s = opaque;
+> > +    musicpal_key_state *s = MUSICPAL_KEY(dev);
+> > +    InputKeyEvent *key = evt->u.key.data;
+> > +    int qcode = qemu_input_key_value_to_qcode(key->key);
+> >      uint32_t event = 0;
+> >      int i;
+> >
+> > -    if (keycode == KEYCODE_EXTENDED) {
+> > -        s->kbd_extended = 1;
+> > -        return;
+> > +    switch (qcode) {
+> > +    case Q_KEY_CODE_UP:
+> > +        event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_DOWN:
+> > +        event = MP_KEY_WHEEL_NAV;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_LEFT:
+> > +        event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_RIGHT:
+> > +        event = MP_KEY_WHEEL_VOL;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_F:
+> > +        event = MP_KEY_BTN_FAVORITS;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_TAB:
+> > +        event = MP_KEY_BTN_VOLUME;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_RET:
+> > +        event = MP_KEY_BTN_NAVIGATION;
+> > +        break;
+> > +
+> > +    case Q_KEY_CODE_M:
+> > +        event = MP_KEY_BTN_MENU;
+> > +        break;
+> >      }
+> >
+> > -    if (s->kbd_extended) {
+> > -        switch (keycode & KEY_CODE) {
+> > -        case KEYCODE_UP:
+> > -            event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
+> > -            break;
+> > -
+> > -        case KEYCODE_DOWN:
+> > -            event = MP_KEY_WHEEL_NAV;
+> > -            break;
+> > -
+> > -        case KEYCODE_LEFT:
+> > -            event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
+> > -            break;
+> > -
+> > -        case KEYCODE_RIGHT:
+> > -            event = MP_KEY_WHEEL_VOL;
+> > -            break;
+> > -        }
+> > -    } else {
+> > -        switch (keycode & KEY_CODE) {
+> > -        case KEYCODE_F:
+> > -            event = MP_KEY_BTN_FAVORITS;
+> > -            break;
+> > -
+> > -        case KEYCODE_TAB:
+> > -            event = MP_KEY_BTN_VOLUME;
+> > -            break;
+> > -
+> > -        case KEYCODE_ENTER:
+> > -            event = MP_KEY_BTN_NAVIGATION;
+> > -            break;
+> > -
+> > -        case KEYCODE_M:
+> > -            event = MP_KEY_BTN_MENU;
+> > -            break;
+> > -        }
+> > -        /* Do not repeat already pressed buttons */
+> > -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
+> > +    /*
+> > +     * We allow repeated wheel-events when the arrow keys are held down,
+> > +     * but do not repeat already-pressed buttons for the other key inputs.
+> > +     */
+> > +    if (!(event & (MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_VOL))) {
+> > +        if (key->down && (s->pressed_keys & event)) {
+> >              event = 0;
+> >          }
+> >      }
+> >
+> >      if (event) {
+> >          /* Raise GPIO pin first if repeating a key */
+> > -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
+> > +        if (key->down && (s->pressed_keys & event)) {
+> >              for (i = 0; i <= 7; i++) {
+> >                  if (event & (1 << i)) {
+> >                      qemu_set_irq(s->out[i], 1);
+> > @@ -1143,17 +1128,15 @@ static void musicpal_key_event(void *opaque, int keycode)
+> >          }
+> >          for (i = 0; i <= 7; i++) {
+> >              if (event & (1 << i)) {
+> > -                qemu_set_irq(s->out[i], !!(keycode & KEY_RELEASED));
+> > +                qemu_set_irq(s->out[i], !key->down);
+> >              }
+> >          }
+> > -        if (keycode & KEY_RELEASED) {
+> > -            s->pressed_keys &= ~event;
+> > -        } else {
+> > +        if (key->down) {
+> >              s->pressed_keys |= event;
+> > +        } else {
+> > +            s->pressed_keys &= ~event;
+> >          }
+> >      }
+> > -
+> > -    s->kbd_extended = 0;
+> >  }
+> >
+> >  static void musicpal_key_init(Object *obj)
+> > @@ -1162,20 +1145,27 @@ static void musicpal_key_init(Object *obj)
+> >      DeviceState *dev = DEVICE(sbd);
+> >      musicpal_key_state *s = MUSICPAL_KEY(dev);
+> >
+> > -    s->kbd_extended = 0;
+> >      s->pressed_keys = 0;
+> >
+> >      qdev_init_gpio_out(dev, s->out, ARRAY_SIZE(s->out));
+> > +}
+> >
+> > -    qemu_add_kbd_event_handler(musicpal_key_event, s);
+> > +static const QemuInputHandler musicpal_key_handler = {
+> > +    .name = "musicpal_key",
+> > +    .mask = INPUT_EVENT_MASK_KEY,
+> > +    .event = musicpal_key_event,
+> > +};
+> > +
+> > +static void musicpal_key_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    qemu_input_handler_register(dev, &musicpal_key_handler);
+> >  }
+> >
+> >  static const VMStateDescription musicpal_key_vmsd = {
+> >      .name = "musicpal_key",
+> > -    .version_id = 1,
+> > -    .minimum_version_id = 1,
+> > +    .version_id = 2,
+> > +    .minimum_version_id = 2,
+> >      .fields = (VMStateField[]) {
+> > -        VMSTATE_UINT32(kbd_extended, musicpal_key_state),
+> >          VMSTATE_UINT32(pressed_keys, musicpal_key_state),
+> >          VMSTATE_END_OF_LIST()
+> >      }
+> > @@ -1186,6 +1176,7 @@ static void musicpal_key_class_init(ObjectClass *klass, void *data)
+> >      DeviceClass *dc = DEVICE_CLASS(klass);
+> >
+> >      dc->vmsd = &musicpal_key_vmsd;
+> > +    dc->realize = musicpal_key_realize;
+> >  }
+> >
+> >  static const TypeInfo musicpal_key_info = {
+> > --
+> > 2.34.1
+> >

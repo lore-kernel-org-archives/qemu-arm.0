@@ -1,271 +1,159 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2266172ejs;
-        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE5Z31uPfeNacsHA6SXwKdvXNg18wxo8bPEx3krov0nA24GRtKYTuASQ55TzsQsCU1VhQ0c
-X-Received: by 2002:a17:902:eacb:b0:1d4:e210:22a7 with SMTP id p11-20020a170902eacb00b001d4e21022a7mr1116326pld.9.1705055196472;
-        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705055196; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2373269ejs;
+        Fri, 12 Jan 2024 05:53:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHD5OMYlqXuPJ+mfK4ateXl3mgEsR6xevUEV/A5H+M4OqeesnL2XtgxWMmpCWgt/Q63HDII
+X-Received: by 2002:ac8:7fc4:0:b0:428:3f23:5d07 with SMTP id b4-20020ac87fc4000000b004283f235d07mr1314895qtk.106.1705067624609;
+        Fri, 12 Jan 2024 05:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705067624; cv=none;
         d=google.com; s=arc-20160816;
-        b=RGxxl8c1N+ZZL/edwjNgE2nJLV5xCFoJuzYH9hbXCDYnNmwkI980dSWVukbJ9Znqeu
-         Hmo3Ep3hNDdpj3q5iAZLc3yQ0fK5a5bKu5503eV9Tpq7ZkjWu1wARuRt7PPSqONq9nev
-         KsDPZWGSgIxEgU2N/NMhMldeNk8vYDf016L7ahVpUmlNo0ORSNfysuRp1wRPpLI/k2IJ
-         RbDk1SEAIl8dDzaRBIlhnqWYCnzxFFDPtuJpwAvDoH1Xr2LxFoONWH2FSoqrGhoJ5NqE
-         BSEdLQYgcZ6F+r99mpyN1616Ot/o4ECbaFfKIugel1BQwaEGGbo08JDxX3r4RdjENu7L
-         63pg==
+        b=pf4+SIuf+7b10h6xeyG0ah/eSBa1HhLvRdy7uX/niztrjL9BlZWPSjqntqctWKi0A8
+         dF7y/aezABVtYsxSLPngf0Vf+l2aQk8ptLCVqRoD4gdTjZEd46wzOqIHyekzvURdawMP
+         xVOed1upgzilwG0XLDzuv6Bu1hPwIwY4wrh+4aOcgQop3r65+KqNHJa7if1+ixjEEaRZ
+         CrxK6GAO4bBk4RbmpjeGIfkLJCGe8tgFqshMxHP4/EZ1CBGKkNGv4lO4Pfs9Ed8HxQQr
+         Ny6Ovjzj01/HekRgwcCZHiMH1ACAtSsPaDovh6jkch3b+MB6gSJo2DNNgTe2XGrD82cm
+         XM0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=/EnzgH5vf5oDONwtMeegPHrlVKT/2Oc5LOGb7NdYdbU=;
-        fh=6BJLbSgDP+13DvE3/k0EcyypWvOeKepkYLZSR9LCZDE=;
-        b=px9igRyq68ottnQf6F0ZzCljx6+SzgrIQtpbnGdD2jo49jslUh7+odbh1vuv4RpoYY
-         7NCE7qlx9ZWFcY+mjXQn8v1/YiyfWLo1uzcE4ur63LS98HXbqsYJv1te9o8pcFELBun1
-         v4a8TCvhaQPbkN6WZZVrfYW5RoTz8EjDGR6QWw1F0FdBwVqDZMNUVcKGlfAJZAS9Lf62
-         bTcs3Hkxu7jnKQrgnwvhbvU77sWKVsib91TF5DsYXkH9J2+EN/Ekis8Zz9zvrmA7N+mk
-         AQzPp0Jhuccn7Q65uQOXWb51GaVYLLHAbBPB/YHvSGxwtZI2dvz582/VniFkQFcaHa5f
-         ietw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=YLQeK9JPN153qq4oML3PXAtaSLTSsAR4OAWzDWUTomw=;
+        fh=nzWOGEZwAN+iSprOOrqT+6Ru49p/bLZIgCNLJCUdTeA=;
+        b=JksMzMVfLKxVcal+pQbXg+WXRxCYxjN8gI8wx9yGJrTBwb6qltd965z17J1pLLRQH+
+         MuHDzttguFegkdBUMPWkWILflaL26yrKIxjmRuYMSbpiqBkICkUJEr0UlgiCEQW7foRR
+         mWYKz85cgGL1RukJoX4fhA8WbWya+QMesnnY0YbIqQ1WUoOxzP57e+HRFgkpD/4QZdhe
+         irGbrL59WdHNc350LR9jqw4uT9+CMp//4T4PuljNb/0ZcCsK56nz+NIDzBbKLUvsxHZu
+         RneIbPfrvedM7t6M48oKHXOtTXtD19LQHQ8i564WV4po2PikX0lAtJ3Ue1cKcYtidWlO
+         LPUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
-Return-Path: <SRS0=qInK=IW=kaod.org=clg@ozlabs.org>
-Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
-        by mx.google.com with ESMTPS id k17-20020a170902f29100b001d352ecfa69si2813504plc.218.2024.01.12.02.26.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 02:26:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="STHFkOL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w2-20020a05622a190200b00428032714basi2928900qtc.212.2024.01.12.05.53.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Jan 2024 05:53:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TBHkx3pVFz4xF1;
-	Fri, 12 Jan 2024 21:26:33 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TBHkk4JQMz4wcc;
-	Fri, 12 Jan 2024 21:26:21 +1100 (AEDT)
-Message-ID: <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
-Date: Fri, 12 Jan 2024 11:26:25 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="STHFkOL/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rOHyY-0005hn-WB; Fri, 12 Jan 2024 08:53:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1rOHyW-0005em-5W
+ for qemu-arm@nongnu.org; Fri, 12 Jan 2024 08:53:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1rOHyQ-00015P-PU
+ for qemu-arm@nongnu.org; Fri, 12 Jan 2024 08:53:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705067604;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=YLQeK9JPN153qq4oML3PXAtaSLTSsAR4OAWzDWUTomw=;
+ b=STHFkOL/HAKQAfI5vm/tuCoVtJATAVCsMKO9QyudNliEjV80gpjkqTd/MurQCt7EgTckGs
+ SIfQo90F+FN8KZe9CCdBgiULhdV5t/EcOo6klFL9miIO0mofFZ2FfSsTxQkaIWA2928JMV
+ G7OX2HSeU86u78jgLTtrB99FHR4m7qE=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-496-lfRjC8NOO5ai_dbpu73Hxw-1; Fri,
+ 12 Jan 2024 08:53:19 -0500
+X-MC-Unique: lfRjC8NOO5ai_dbpu73Hxw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 36B0D29ABA00;
+ Fri, 12 Jan 2024 13:53:19 +0000 (UTC)
+Received: from localhost (unknown [10.22.8.17])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F0820492BC6;
+ Fri, 12 Jan 2024 13:53:18 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
+ richard.henderson@linaro.org, shan.gavin@gmail.com
+Subject: Re: [PATCH] hw/arm/virt: Consolidate valid CPU types
+In-Reply-To: <20240111051054.83304-1-gshan@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy Ross"
+References: <20240111051054.83304-1-gshan@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Fri, 12 Jan 2024 14:53:11 +0100
+Message-ID: <875xzyodyw.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
- A7/A15 MPCore priv
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
- Peter Xu <peterx@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
- <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
- <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
- <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
- <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
- <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
- <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
- <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <874jfl8gwf.fsf@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: WPDq/MX8It3K
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.09,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WCsX0VZeTHii
 
-On 1/10/24 14:19, Fabiano Rosas wrote:
-> Markus Armbruster <armbru@redhat.com> writes:
-> 
->> Peter Xu <peterx@redhat.com> writes:
->>
->>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daudé wrote:
->>>> Hi Fabiano,
->>>>
->>>> On 9/1/24 21:21, Fabiano Rosas wrote:
->>>>> Cédric Le Goater <clg@kaod.org> writes:
->>>>>
->>>>>> On 1/9/24 18:40, Fabiano Rosas wrote:
->>>>>>> Cédric Le Goater <clg@kaod.org> writes:
->>>>>>>
->>>>>>>> On 1/3/24 20:53, Fabiano Rosas wrote:
->>>>>>>>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
->>>>>>>>>
->>>>>>>>>> +Peter/Fabiano
->>>>>>>>>>
->>>>>>>>>> On 2/1/24 17:41, Cédric Le Goater wrote:
->>>>>>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daudé wrote:
->>>>>>>>>>>> Hi Cédric,
->>>>>>>>>>>>
->>>>>>>>>>>> On 2/1/24 15:55, Cédric Le Goater wrote:
->>>>>>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
->>>>>>>>>>>>>> Hi,
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
->>>>>>>>>>>>>> cluster container, not to the board/soc layer. This series move
->>>>>>>>>>>>>> the creation of vCPUs to the MPCore private container.
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
->>>>>>>>>>>>>> central place (abstract MPCore parent).
->>>>>>>>>>>>>
->>>>>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the machine
->>>>>>>>>>>>> and some fixups are then required to maintain migration compatibility.
->>>>>>>>>>>>> This can become a real headache for KVM machines like virt for which
->>>>>>>>>>>>> migration compatibility is a feature, less for emulated ones.
->>>>>>>>>>>>
->>>>>>>>>>>> All changes are either moving properties (which are not migrated)
->>>>>>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
->>>>>>>>>>>> is still migrated elsewhere). So I don't see any obvious migration
->>>>>>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
->>>>>>>>>
->>>>>>>>> FWIW, I didn't spot anything problematic either.
->>>>>>>>>
->>>>>>>>> I've ran this through my migration compatibility series [1] and it
->>>>>>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
->>>>>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
->>>>>>>>> think we even support migration of anything non-KVM on arm.
->>>>>>>>
->>>>>>>> it happens we do.
->>>>>>>>
->>>>>>>
->>>>>>> Oh, sorry, I didn't mean TCG here. Probably meant to say something like
->>>>>>> non-KVM-capable cpus, as in 32-bit. Nevermind.
->>>>>>
->>>>>> Theoretically, we should be able to migrate to a TCG guest. Well, this
->>>>>> worked in the past for PPC. When I was doing more KVM related changes,
->>>>>> this was very useful for dev. Also, some machines are partially emulated.
->>>>>> Anyhow I agree this is not a strong requirement and we often break it.
->>>>>> Let's focus on KVM only.
->>>>>>
->>>>>>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
->>>>>>>>
->>>>>>>> yes it depends on the QOM hierarchy and virt seems immune to the changes.
->>>>>>>> Good.
->>>>>>>>
->>>>>>>> However, changing the QOM topology clearly breaks migration compat,
->>>>>>>
->>>>>>> Well, "clearly" is relative =) You've mentioned pseries and aspeed
->>>>>>> already, do you have a pointer to one of those cases were we broke
->>>>>>> migration
->>>>>>
->>>>>> Regarding pseries, migration compat broke because of 5bc8d26de20c
->>>>>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
->>>>>> is similar to the changes proposed by this series, it impacts the QOM
->>>>>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
->>>>>> ("spapr: fix migration of ICPState objects from/to older QEMU") which
->>>>>> is quite an headache and this turned out to raise another problem some
->>>>>> months ago ... :/ That's why I sent [1] to prepare removal of old
->>>>>> machines and workarounds becoming a burden.
->>>>>
->>>>> This feels like something that could be handled by the vmstate code
->>>>> somehow. The state is there, just under a different path.
->>>>
->>>> What, the QOM path is used in migration? ...
->>>
->>> Hopefully not..
-> 
-> Unfortunately the original fix doesn't mention _what_ actually broke
-> with migration. I assumed the QOM path was needed because otherwise I
-> don't think the fix makes sense. The thread discussing that patch also
-> directly mentions the QOM path:
-> 
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
-> 
-> But I probably misunderstood something while reading that thread.
-> 
->>>
->>>>
->>>> See recent discussions on "QOM path stability":
->>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
->>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
->>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
->>>
->>> If I read it right, the commit 46f7afa37096 example is pretty special that
->>> the QOM path more or less decided more than the hierachy itself but changes
->>> the existances of objects.
->>
->> Let's see whether I got this...
->>
->> We removed some useless objects, moved the useful ones to another home.
->> The move changed their QOM path.
->>
->> The problem was the removal of useless objects, because this also
->> removed their vmstate.
-> 
-> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
-> been kept untouched.
-> 
->>
->> The fix was adding the vmstate back as a dummy.
-> 
-> Since the vmstate was kept I don't see why would we need a dummy. The
-> incoming migration stream would still have the state, only at a
-> different point in the stream. It's surprising to me that that would
-> cause an issue, but I'm not well versed in that code.
-> 
->>
->> The QOM patch changes are *not* part of the problem.
-> 
-> The only explanation I can come up with is that after the patch
-> migration has broken after a hotplug or similar operation. In such
-> situation, the preallocated state would always be present before the
-> patch, but sometimes not present after the patch in case, say, a
-> hot-unplug has taken away a cpu + ICPState.
+On Thu, Jan 11 2024, Gavin Shan <gshan@redhat.com> wrote:
 
-May be. It has been a while.
+> It's found that some of the CPU type names in the array of valid
+> CPU types are invalid because their corresponding classes aren't
+> registered, as reported by Peter Maydell.
+>
+> [gshan@gshan build]$ ./qemu-system-arm -machine virt -cpu cortex-a9
+> qemu-system-arm: Invalid CPU model: cortex-a9
+> The valid models are: cortex-a7, cortex-a15, (null), (null), (null),
+> (null), (null), (null), (null), (null), (null), (null), (null), max
+>
+> Fix it by consolidating the array of valid CPU types. After it's
+> applied, we have the following output when TCG is enabled.
+>
+> [gshan@gshan build]$ ./qemu-system-arm -machine virt -cpu cortex-a9
+> qemu-system-arm: Invalid CPU model: cortex-a9
+> The valid models are: cortex-a7, cortex-a15, max
+>
+> [gshan@gshan build]$ ./qemu-system-aarch64 -machine virt -cpu cortex-a9
+> qemu-system-aarch64: Invalid CPU model: cortex-a9
+> The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,
+> cortex-a72, cortex-a76, cortex-a710, a64fx, neoverse-n1, neoverse-v1,
+> neoverse-n2, cortex-a53, cortex-a57, max
 
-For a better understanding, I tried to reproduce. QEMU 2.9 still
-compiles on a f38 (memfd_create needs a fix). However, a
-QEMU-2.9/pseries-2.9 machine won't start any recent OS because
-something broke the OS/platform negotiation process (CAS) ...
+Alternatively, we could skip any NULL returns from cpu_model_from_type()
+in is_cpu_type_supported(), but I guess leaving out not-provided cpu
+types in the first place is cleaner.
 
-I removed the pre_2_10_has_unused_icps hack and worked around
-another migration compat issue in IOMMU ... Here are the last
-trace-events for migration :
+>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: fa8c617791 ("hw/arm/virt: Check CPU type in machine_run_board_init()")
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+>  hw/arm/virt.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 
-     QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
-
-1016464@1705053752.106417:vmstate_load spapr, spapr
-1016464@1705053752.106419:vmstate_load_state spapr v3
-1016464@1705053752.106421:vmstate_load_state_field spapr:unused
-1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
-1016464@1705053752.106425:vmstate_load_state_field spapr:tb
-1016464@1705053752.106427:vmstate_n_elems tb: 1
-1016464@1705053752.106429:vmstate_load_state timebase v1
-1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
-1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
-1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_day_ns
-1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
-1016464@1705053752.106438:vmstate_subsection_load timebase
-1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_option_vector_ov5_cas/(prefix)
-1016464@1705053752.106442:vmstate_load_state_end timebase end/0
-1016464@1705053752.106443:vmstate_subsection_load spapr
-1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas v1
-1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov5_cas:ov5_cas
-1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
-1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
-1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bitmap
-1016464@1705053752.106454:vmstate_n_elems bitmap: 1
-1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
-1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector: (short)/
-1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
-1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5_cas
-1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector_ov5_cas: (short)/
-1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_cas end/0
-1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/htm/(lookup)
-qemu-system-ppc64: error while loading state for instance 0x0 of device 'spapr'
-
-
-Hope it helps,
-
-Thanks,
-
-C.
-
-
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 

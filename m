@@ -1,139 +1,130 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2592138ejs;
-        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGcndmzIZHD91nmTkE6J+F0EdH9aDXQr4jmvsn+PLXe2BwMVU6twNtJgA4uxt9tBJswUheP
-X-Received: by 2002:a6b:c98c:0:b0:7bb:1d93:b318 with SMTP id z134-20020a6bc98c000000b007bb1d93b318mr2340346iof.22.1705089269339;
-        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705089269; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2637966ejs;
+        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHfNHgWaL8RK+ibJVYqnVAE1EoS/UIx4dI92pLBz/s1fdrGLlNiMbRps9uSNmA3uMPfydFT
+X-Received: by 2002:a17:906:6d52:b0:a2c:34c9:469e with SMTP id a18-20020a1709066d5200b00a2c34c9469emr565596ejt.57.1705095199378;
+        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705095199; cv=none;
         d=google.com; s=arc-20160816;
-        b=eNrpt0hr3DY6YypdaE8C6Uuv8kb0r+sJHYGAt1pWzNWw8i6d809NwF3+DVNTt+afQq
-         NXJAUCRBH19MDNcVVPM4+O8NmCSGAvTgXPo2zMJf3A3jWCNlacEfP9xakC+ReftUGRz0
-         EMbs6h7WHxJAwGfLPIXHXHrGXSaTdXkifpV27ntzTRCdCy0t6tl1YXKKP9Z3jndCvalg
-         3oNC+eD0M7p4RxvQUXRkVM19g7tFbZNzFuNNVKFLKe5U311qpzNB7TeoUyh+rMkLy/eM
-         bFVIS42lbrAA+8i9vYYQHPJ8ReVEJiL4VkUIAwjPZ45xOhM+cHaxBh358s7dMaeqYezb
-         XUTw==
+        b=l+DUvFfjENkf0pDh2WEhGFlHS2jMUxnKuqyWBHOS8nBSrzlAiSr1+iS8IQTgRgocV/
+         6sOmtRAtxlicOCusth7qcPuSa5oTbIYCjPowVBg+S1QiWGSRpuYA+xopAkjFjTfkp4WI
+         4Lv3NZhEC3D7wcVwoI8XJOkSBO7R4gd+3KDp9/S8Xt9b2VdyU7Y838/Ar+Aymq4eCHle
+         oc/Fv8x3NNDv5N1oIwpIWaMuwjnxeJG35ooXdy/T1/2eUyFMS1q0guUyWtVeXQkFsVmu
+         Qhn5IBBPGMahM7YnLRwS/ON4ASrz+KdaeJhs393FB4P4vx+Q6PXcUjhNTS/0TndgD9+l
+         P++A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:references
          :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
          :dkim-signature:dkim-signature;
-        bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
-        fh=bTNyA6hBaP3ytwHnR+kOagwQSkEQn12jUjl+8zNq+Fc=;
-        b=QgT3BaDbjr7kWPxI4Ou6LZCAzi0GPFPIigNQBAzRTlYDSbDunh1OHidsmhNcXcA0NY
-         NwuanYp+qXwNdkD+c1s1RY2+/K1IxJCLqdmCvG4DjmQJSSS1+UAK+I5f9tqe8l920wJI
-         RcdfAtKItCM0iYct0HlZtuyl+nbMDCxSt2Sphahv42Z5RDGumCQzjzu++FJtMbEywIrM
-         S4eFNn/XTXYtGXg8oE0dpPqAcCozV7msxpMZvQ0VtoCixBgCztUd6R1/ml04wgchjk6B
-         qcLm/Ey7C365tobVtb1Sq3716+rjUWEBVVlGKhOVHVym+5c/YFS45VZG18Hlpoh0DZwx
-         2B3w==
+        bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
+        fh=fFvlIDdmAqaAkfPyDpiwHTbwrkOx8QXnQLLSSSv2vZM=;
+        b=vRXCLCQeJwJHIA5NX0HS3qJVPL4/oDhj12Lh5ZJyD04Tu51f+09TYXhjjE9gaeHfEb
+         XswhuPxGYJXkSa5n6JdN+ylGANmQYr9jo1oJ8SgSj6dae2JVAPRISnj5EOe+AyajzwEo
+         vquBsNXAUTwSwpdEC74mVku4To9KT1h2Nt6Iiz3ryDYuKJcM8ECoCedWY7KZqRyGvAVb
+         j8IEl1nb2toufZjw3VRzwAw2C7Al3mhi3C4t3XR/QAzYtaKgLX3zBoLk3wSW3n45hFyk
+         CCEzo1gPTn1IZSf21fyYj/vBeDlVrHux7p4DYz4ICcs2WI18pjS8ta1DgGTxoE3m3tiZ
+         Q8zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=RXSJ0KUl;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Xj0mUNWG;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.223.130])
-        by mx.google.com with ESMTPS id p8-20020a5ecb08000000b007befc54dd02si1055083iom.50.2024.01.12.11.54.28
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.223.131])
+        by mx.google.com with ESMTPS id p17-20020a1709060e9100b00a28716cefa6si1717212ejf.63.2024.01.12.13.33.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) client-ip=195.135.223.130;
+        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) client-ip=195.135.223.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=RXSJ0KUl;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Xj0mUNWG;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 12F0121A61;
-	Fri, 12 Jan 2024 19:54:27 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 810371F393;
+	Fri, 12 Jan 2024 21:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1705089267; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1705095198; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
-	b=To6BzbsNJoiOX+WAtNG2LjDzvR5Vf7zcgb+SkzoZ0NBa7ljwVDxmJc8Hel9JvNnHb57YaT
-	jlodVOod7FxaoNrmc8x65Wj5NKM9CNJcYvf2Q9K4sK/zeLVBUQmZl4uIC4YF5H4AQt7+GO
-	LhSA9T145zWHpoE6+oTohvZenTbSn+g=
+	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
+	b=RXSJ0KUlqlQb94jSMgnp7KY9dXKkHSCZEh1sV8b3m3o9TYXbHI73yo1NZ1KQxW/Tzl/LeE
+	pXzbmpsYcu9uoKrYqyZ4lMbq92JWJqa1w6GBLsGfFPuyG8OJGhAKZObko60kzZ5Df5x59L
+	b94P8wuHtbTalHlvUYDQxhUKSBaTdyg=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1705089267;
+	s=susede2_ed25519; t=1705095198;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
-	b=S5I/8izY4WW098LF8gTaJXU91Ct0d5JsepDAJRN594OfU5/S/DJ7JZVARzdawHoADAFVRV
-	tFNQc+4hPRZzCPBg==
+	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
+	b=yaYeNV6UEMNmmPIPTKJt+ETLNGj72p/vAsfoPvAr8h7OJ3uzHB8I9/mtfPsH9StIUksQPL
+	5C9w4j7VJyFqGDCA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1705089267; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1705095197; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
-	b=To6BzbsNJoiOX+WAtNG2LjDzvR5Vf7zcgb+SkzoZ0NBa7ljwVDxmJc8Hel9JvNnHb57YaT
-	jlodVOod7FxaoNrmc8x65Wj5NKM9CNJcYvf2Q9K4sK/zeLVBUQmZl4uIC4YF5H4AQt7+GO
-	LhSA9T145zWHpoE6+oTohvZenTbSn+g=
+	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
+	b=Xj0mUNWGvi+WcpUhHsMUi8zIrFTjnYi3K/JsAekN6k/ZWHtzC/lTKjkiWLGS6fi2oFNjOC
+	sNtGC0sZARBtrflv6+KeYAlu9DiAu0BLIlw76By0z0j6/JoDsyl1ItaDZdW1WwZJr6hsOY
+	2zmA7FQZVfRfRaSPt+mXW5wR/YmEy8Q=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1705089267;
+	s=susede2_ed25519; t=1705095197;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
-	b=S5I/8izY4WW098LF8gTaJXU91Ct0d5JsepDAJRN594OfU5/S/DJ7JZVARzdawHoADAFVRV
-	tFNQc+4hPRZzCPBg==
+	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
+	b=ky2udXbPYlbgiy6Rz5p+ZbXAQMsVcGw2V8z8S1+kWW1NjLxA12i7rYezMxAv1fsSxEdNI3
+	yfE3j2tyLpv5dMBg==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 8640D136A4;
-	Fri, 12 Jan 2024 19:54:26 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id F311E136A4;
+	Fri, 12 Jan 2024 21:33:16 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id IAFwE/KYoWUUXAAAD6G6ig
-	(envelope-from <farosas@suse.de>); Fri, 12 Jan 2024 19:54:26 +0000
+	id p1jmLRywoWXlcQAAD6G6ig
+	(envelope-from <farosas@suse.de>); Fri, 12 Jan 2024 21:33:16 +0000
 From: Fabiano Rosas <farosas@suse.de>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, Markus Armbruster
- <armbru@redhat.com>,
- Peter Xu <peterx@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>, Alex =?utf-8?Q?B?=
- =?utf-8?Q?enn=C3=A9e?=
- <alex.bennee@linaro.org>, Manos Pitsidianakis
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Manos Pitsidianakis
  <manos.pitsidianakis@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
  Anton Johansson <anjo@rev.ng>, Andrey Smirnov <andrew.smirnov@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, Igor Mitsyanko
- <i.mitsyanko@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring
- <robh@kernel.org>, qemu-arm@nongnu.org, Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
- A7/A15 MPCore priv
-In-Reply-To: <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
-References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
- <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
- <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
- <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
- <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
- <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
- <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
- <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
- <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
-Date: Fri, 12 Jan 2024 16:54:23 -0300
-Message-ID: <871qamfhu8.fsf@suse.de>
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, Jean-Christophe Dubois
+ <jcd@tribudubois.net>, Igor Mitsyanko <i.mitsyanko@gmail.com>, "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH 14/33] hw/cpu/arm: Handle 'has_el2/3' properties once in
+ MPCore parent
+In-Reply-To: <20231212162935.42910-15-philmd@linaro.org>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <20231212162935.42910-15-philmd@linaro.org>
+Date: Fri, 12 Jan 2024 18:33:13 -0300
+Message-ID: <87y1cudyp2.fsf@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Authentication-Results: smtp-out1.suse.de;
+Authentication-Results: smtp-out2.suse.de;
 	none
-X-Spamd-Result: default: False [-1.60 / 50.00];
+X-Spam-Level: 
+X-Spam-Score: -2.80
+X-Spamd-Result: default: False [-2.80 / 50.00];
 	 ARC_NA(0.00)[];
 	 RCVD_VIA_SMTP_AUTH(0.00)[];
 	 MID_RHS_MATCH_FROM(0.00)[];
@@ -143,270 +134,245 @@ X-Spamd-Result: default: False [-1.60 / 50.00];
 	 TO_MATCH_ENVRCPT_ALL(0.00)[];
 	 TAGGED_RCPT(0.00)[];
 	 MIME_GOOD(-0.10)[text/plain];
+	 NEURAL_HAM_LONG(-1.00)[-1.000];
 	 BAYES_HAM(-3.00)[100.00%];
+	 URIBL_BLOCKED(0.00)[linaro.org:email];
 	 R_RATELIMIT(0.00)[to_ip_from(RLgn3pipxh44ye66tuwadwbnif)];
 	 RCVD_COUNT_THREE(0.00)[3];
 	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	 RCPT_COUNT_TWELVE(0.00)[24];
+	 NEURAL_HAM_SHORT(-0.20)[-1.000];
+	 RCPT_COUNT_TWELVE(0.00)[22];
 	 FUZZY_BLOCKED(0.00)[rspamd.com];
 	 FROM_EQ_ENVFROM(0.00)[];
 	 MIME_TRACE(0.00)[0:+];
-	 FREEMAIL_CC(0.00)[linaro.org,nongnu.org,redhat.com,nuvoton.com,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,tribudubois.net,codeconstruct.com.au,kernel.org,ilande.co.uk];
+	 FREEMAIL_CC(0.00)[redhat.com,nuvoton.com,linaro.org,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,kaod.org,tribudubois.net,codeconstruct.com.au,kernel.org,nongnu.org,ilande.co.uk];
 	 RCVD_TLS_ALL(0.00)[];
 	 SUSPICIOUS_RECIPS(1.50)[]
-X-Spam-Level: 
 X-Spam-Flag: NO
-X-Spam-Score: -1.60
-X-TUID: p5VlzArwDAlR
+X-TUID: FIQw0xRh0UIE
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-> On 1/10/24 14:19, Fabiano Rosas wrote:
->> Markus Armbruster <armbru@redhat.com> writes:
->>=20
->>> Peter Xu <peterx@redhat.com> writes:
->>>
->>>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 =
-wrote:
->>>>> Hi Fabiano,
->>>>>
->>>>> On 9/1/24 21:21, Fabiano Rosas wrote:
->>>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>>>>
->>>>>>> On 1/9/24 18:40, Fabiano Rosas wrote:
->>>>>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>>>>>>
->>>>>>>>> On 1/3/24 20:53, Fabiano Rosas wrote:
->>>>>>>>>> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>>>>>>>>>
->>>>>>>>>>> +Peter/Fabiano
->>>>>>>>>>>
->>>>>>>>>>> On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
->>>>>>>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>>>>>>>>> Hi C=C3=A9dric,
->>>>>>>>>>>>>
->>>>>>>>>>>>> On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
->>>>>>>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>>>>>>>>>>> Hi,
->>>>>>>>>>>>>>>
->>>>>>>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong th=
-e the
->>>>>>>>>>>>>>> cluster container, not to the board/soc layer. This series =
-move
->>>>>>>>>>>>>>> the creation of vCPUs to the MPCore private container.
->>>>>>>>>>>>>>>
->>>>>>>>>>>>>>> Doing so we consolidate the QOM model, moving common code i=
-n a
->>>>>>>>>>>>>>> central place (abstract MPCore parent).
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the=
- machine
->>>>>>>>>>>>>> and some fixups are then required to maintain migration comp=
-atibility.
->>>>>>>>>>>>>> This can become a real headache for KVM machines like virt f=
-or which
->>>>>>>>>>>>>> migration compatibility is a feature, less for emulated ones.
->>>>>>>>>>>>>
->>>>>>>>>>>>> All changes are either moving properties (which are not migra=
-ted)
->>>>>>>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, =
-which
->>>>>>>>>>>>> is still migrated elsewhere). So I don't see any obvious migr=
-ation
->>>>>>>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
->>>>>>>>>>
->>>>>>>>>> FWIW, I didn't spot anything problematic either.
->>>>>>>>>>
->>>>>>>>>> I've ran this through my migration compatibility series [1] and =
-it
->>>>>>>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
->>>>>>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered.=
- I don't
->>>>>>>>>> think we even support migration of anything non-KVM on arm.
->>>>>>>>>
->>>>>>>>> it happens we do.
->>>>>>>>>
->>>>>>>>
->>>>>>>> Oh, sorry, I didn't mean TCG here. Probably meant to say something=
- like
->>>>>>>> non-KVM-capable cpus, as in 32-bit. Nevermind.
->>>>>>>
->>>>>>> Theoretically, we should be able to migrate to a TCG guest. Well, t=
-his
->>>>>>> worked in the past for PPC. When I was doing more KVM related chang=
-es,
->>>>>>> this was very useful for dev. Also, some machines are partially emu=
-lated.
->>>>>>> Anyhow I agree this is not a strong requirement and we often break =
-it.
->>>>>>> Let's focus on KVM only.
->>>>>>>
->>>>>>>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
->>>>>>>>>
->>>>>>>>> yes it depends on the QOM hierarchy and virt seems immune to the =
-changes.
->>>>>>>>> Good.
->>>>>>>>>
->>>>>>>>> However, changing the QOM topology clearly breaks migration compa=
-t,
->>>>>>>>
->>>>>>>> Well, "clearly" is relative =3D) You've mentioned pseries and aspe=
-ed
->>>>>>>> already, do you have a pointer to one of those cases were we broke
->>>>>>>> migration
->>>>>>>
->>>>>>> Regarding pseries, migration compat broke because of 5bc8d26de20c
->>>>>>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") whi=
-ch
->>>>>>> is similar to the changes proposed by this series, it impacts the Q=
-OM
->>>>>>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
->>>>>>> ("spapr: fix migration of ICPState objects from/to older QEMU") whi=
-ch
->>>>>>> is quite an headache and this turned out to raise another problem s=
-ome
->>>>>>> months ago ... :/ That's why I sent [1] to prepare removal of old
->>>>>>> machines and workarounds becoming a burden.
->>>>>>
->>>>>> This feels like something that could be handled by the vmstate code
->>>>>> somehow. The state is there, just under a different path.
->>>>>
->>>>> What, the QOM path is used in migration? ...
->>>>
->>>> Hopefully not..
->>=20
->> Unfortunately the original fix doesn't mention _what_ actually broke
->> with migration. I assumed the QOM path was needed because otherwise I
->> don't think the fix makes sense. The thread discussing that patch also
->> directly mentions the QOM path:
->>=20
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
->>=20
->> But I probably misunderstood something while reading that thread.
->>=20
->>>>
->>>>>
->>>>> See recent discussions on "QOM path stability":
->>>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
->>>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
->>>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
->>>>
->>>> If I read it right, the commit 46f7afa37096 example is pretty special =
-that
->>>> the QOM path more or less decided more than the hierachy itself but ch=
-anges
->>>> the existances of objects.
->>>
->>> Let's see whether I got this...
->>>
->>> We removed some useless objects, moved the useful ones to another home.
->>> The move changed their QOM path.
->>>
->>> The problem was the removal of useless objects, because this also
->>> removed their vmstate.
->>=20
->> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
->> been kept untouched.
->>=20
->>>
->>> The fix was adding the vmstate back as a dummy.
->>=20
->> Since the vmstate was kept I don't see why would we need a dummy. The
->> incoming migration stream would still have the state, only at a
->> different point in the stream. It's surprising to me that that would
->> cause an issue, but I'm not well versed in that code.
->>=20
->>>
->>> The QOM patch changes are *not* part of the problem.
->>=20
->> The only explanation I can come up with is that after the patch
->> migration has broken after a hotplug or similar operation. In such
->> situation, the preallocated state would always be present before the
->> patch, but sometimes not present after the patch in case, say, a
->> hot-unplug has taken away a cpu + ICPState.
+> Move the 'has_el2' and 'has_el3' properties to the abstract
+> QOM parent.
 >
-> May be. It has been a while.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  include/hw/cpu/cortex_mpcore.h |  5 +++++
+>  hw/arm/exynos4210.c            | 10 ++++++++--
+>  hw/arm/vexpress.c              |  6 ++++++
+>  hw/arm/xilinx_zynq.c           |  6 ++++++
+>  hw/cpu/a15mpcore.c             | 18 ++++++------------
+>  hw/cpu/a9mpcore.c              |  5 +----
+>  hw/cpu/cortex_mpcore.c         |  3 +++
+>  7 files changed, 35 insertions(+), 18 deletions(-)
 >
-> For a better understanding, I tried to reproduce. QEMU 2.9 still
-> compiles on a f38 (memfd_create needs a fix). However, a
-> QEMU-2.9/pseries-2.9 machine won't start any recent OS because
-> something broke the OS/platform negotiation process (CAS) ...
+> diff --git a/include/hw/cpu/cortex_mpcore.h b/include/hw/cpu/cortex_mpcor=
+e.h
+> index 0e7cca9e93..387552468c 100644
+> --- a/include/hw/cpu/cortex_mpcore.h
+> +++ b/include/hw/cpu/cortex_mpcore.h
+> @@ -30,6 +30,8 @@
+>   * QEMU interface:
+>   *  + QOM property "num-cores" which set the number of cores present in
+>   *    the cluster.
+> + *  + QOM properties "cpu-has-el3", "cpu-has-el2" which set whether the =
+CPUs
+> + *    have the exception level features present.
+>   */
+>  #define TYPE_CORTEX_MPCORE_PRIV "cortex_mpcore_priv"
+>  OBJECT_DECLARE_TYPE(CortexMPPrivState, CortexMPPrivClass, CORTEX_MPCORE_=
+PRIV)
+> @@ -53,6 +55,9 @@ struct CortexMPPrivState {
+>=20=20
+>      /* Properties */
+>      uint32_t num_cores;
+> +
+> +    bool cpu_has_el3;
+> +    bool cpu_has_el2;
+>  };
+>=20=20
+>  #define TYPE_A9MPCORE_PRIV "a9mpcore_priv"
+> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> index ea1364499d..7386a8fe57 100644
+> --- a/hw/arm/exynos4210.c
+> +++ b/hw/arm/exynos4210.c
+> @@ -548,7 +548,7 @@ static void exynos4210_realize(DeviceState *socdev, E=
+rror **errp)
+>      Exynos4210State *s =3D EXYNOS4210_SOC(socdev);
+>      MemoryRegion *system_mem =3D get_system_memory();
+>      SysBusDevice *busdev;
+> -    DeviceState *dev, *uart[4], *pl330[3];
+> +    DeviceState *dev, *mpdev, *uart[4], *pl330[3];
+>      int i, n;
+>=20=20
+>      for (n =3D 0; n < EXYNOS4210_NCPUS; n++) {
+> @@ -582,7 +582,13 @@ static void exynos4210_realize(DeviceState *socdev, =
+Error **errp)
+>      }
+>=20=20
+>      /* Private memory region and Internal GIC */
+> -    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "num-cores", EXYNOS4210_N=
+CPUS);
+> +    mpdev =3D DEVICE(&s->a9mpcore);
+> +    qdev_prop_set_uint32(mpdev, "num-cores", EXYNOS4210_NCPUS);
+> +    /*
+> +     * By default A9 CPUs have EL3 enabled.  This board does not current=
+ly
+> +     * support EL3 so the CPU EL3 property is disabled before realizatio=
+n.
+> +     */
+> +    qdev_prop_set_bit(mpdev, "cpu-has-el3", false);
+>      busdev =3D SYS_BUS_DEVICE(&s->a9mpcore);
+>      sysbus_realize(busdev, &error_fatal);
+>      sysbus_mmio_map(busdev, 0, EXYNOS4210_SMP_PRIVATE_BASE_ADDR);
+> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+> index a320d1c181..294b6f15f2 100644
+> --- a/hw/arm/vexpress.c
+> +++ b/hw/arm/vexpress.c
+> @@ -239,6 +239,12 @@ static void init_cpus(MachineState *ms, const char *=
+cpu_type,
+>       * wires itself up to the CPU's generic_timer gpio out lines.
+>       */
+>      dev =3D qdev_new(privdev);
+> +    if (!secure) {
+> +        qdev_prop_set_bit(dev, "cpu-has-el3", false);
+> +    }
+> +    if (!virt) {
+> +        qdev_prop_set_bit(dev, "cpu-has-el2", false);
+> +    }
+>      qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
+>      busdev =3D SYS_BUS_DEVICE(dev);
+>      sysbus_realize_and_unref(busdev, &error_fatal);
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index fc9c927d09..28430dcfba 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -240,6 +240,12 @@ static void zynq_init(MachineState *machine)
+>=20=20
+>      dev =3D qdev_new(TYPE_A9MPCORE_PRIV);
+>      qdev_prop_set_uint32(dev, "num-cpu", 1);
+> +    /*
+> +     * By default A9 CPUs have EL3 enabled.  This board does not
+> +     * currently support EL3 so the CPU EL3 property is disabled before
+> +     * realization.
+> +     */
+> +    qdev_prop_set_bit(dev, "cpu-has-el3", false);
+>      busdev =3D SYS_BUS_DEVICE(dev);
+>      sysbus_realize_and_unref(busdev, &error_fatal);
+>      sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
+> diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+> index 16874426e1..a16544fdde 100644
+> --- a/hw/cpu/a15mpcore.c
+> +++ b/hw/cpu/a15mpcore.c
+> @@ -52,9 +52,6 @@ static void a15mp_priv_realize(DeviceState *dev, Error =
+**errp)
+>      SysBusDevice *gicsbd;
+>      Error *local_err =3D NULL;
+>      int i;
+> -    bool has_el3;
+> -    bool has_el2 =3D false;
+> -    Object *cpuobj;
+>=20=20
+>      cc->parent_realize(dev, &local_err);
+>      if (local_err) {
+> @@ -70,14 +67,11 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
+r **errp)
+>          /* Make the GIC's TZ support match the CPUs. We assume that
+>           * either all the CPUs have TZ, or none do.
+>           */
+> -        cpuobj =3D OBJECT(qemu_get_cpu(0));
+> -        has_el3 =3D object_property_find(cpuobj, "has_el3") &&
+> -            object_property_get_bool(cpuobj, "has_el3", &error_abort);
+> -        qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
+> +        qdev_prop_set_bit(gicdev, "has-security-extensions",
+> +                          c->cpu_has_el3);
+>          /* Similarly for virtualization support */
+> -        has_el2 =3D object_property_find(cpuobj, "has_el2") &&
+> -            object_property_get_bool(cpuobj, "has_el2", &error_abort);
+> -        qdev_prop_set_bit(gicdev, "has-virtualization-extensions", has_e=
+l2);
+> +        qdev_prop_set_bit(gicdev, "has-virtualization-extensions",
+> +                          c->cpu_has_el2);
+>      }
+>=20=20
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+> @@ -112,7 +106,7 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
+r **errp)
+>                                    qdev_get_gpio_in(gicdev,
+>                                                     ppibase + timer_irq[i=
+rq]));
+>          }
+> -        if (has_el2) {
+> +        if (c->cpu_has_el2) {
+>              /* Connect the GIC maintenance interrupt to PPI ID 25 */
+>              sysbus_connect_irq(SYS_BUS_DEVICE(gicdev), i + 4 * c->num_co=
+res,
+>                                 qdev_get_gpio_in(gicdev, ppibase + 25));
+> @@ -134,7 +128,7 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
+r **errp)
+>                                  sysbus_mmio_get_region(gicsbd, 0));
+>      memory_region_add_subregion(&c->container, 0x2000,
+>                                  sysbus_mmio_get_region(gicsbd, 1));
+> -    if (has_el2) {
+> +    if (c->cpu_has_el2) {
+>          memory_region_add_subregion(&c->container, 0x4000,
+>                                      sysbus_mmio_get_region(gicsbd, 2));
+>          memory_region_add_subregion(&c->container, 0x6000,
+> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
+> index 9c138f4442..54949314f8 100644
+> --- a/hw/cpu/a9mpcore.c
+> +++ b/hw/cpu/a9mpcore.c
+> @@ -51,7 +51,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error *=
+*errp)
+>      SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
+>                   *wdtbusdev;
+>      Error *local_err =3D NULL;
+> -    bool has_el3;
+>      CPUState *cpu0;
+>      Object *cpuobj;
+>=20=20
+> @@ -86,9 +85,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error *=
+*errp)
+>      /* Make the GIC's TZ support match the CPUs. We assume that
+>       * either all the CPUs have TZ, or none do.
+>       */
+> -    has_el3 =3D object_property_find(cpuobj, "has_el3") &&
+> -        object_property_get_bool(cpuobj, "has_el3", &error_abort);
+> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
+> +    qdev_prop_set_bit(gicdev, "has-security-extensions", c->cpu_has_el3);
+>=20=20
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+>          return;
+> diff --git a/hw/cpu/cortex_mpcore.c b/hw/cpu/cortex_mpcore.c
+> index d7ea633e4e..549b81f708 100644
+> --- a/hw/cpu/cortex_mpcore.c
+> +++ b/hw/cpu/cortex_mpcore.c
+> @@ -27,6 +27,9 @@ static Property cortex_mpcore_priv_properties[] =3D {
+>      DEFINE_PROP_UINT32("num-cores", CortexMPPrivState, num_cores, 1),
+>      DEFINE_PROP_UINT32("num-cpu", CortexMPPrivState, num_cores, 1), /* a=
+lias */
+>=20=20
+> +    DEFINE_PROP_BOOL("cpu-has-el3", CortexMPPrivState, cpu_has_el3, true=
+),
+> +    DEFINE_PROP_BOOL("cpu-has-el2", CortexMPPrivState, cpu_has_el2, fals=
+e),
 
-Thanks for letting us know it still builds. That motivated me to try as
-well. Although it took me a while because of python's brokenness.
+Are we missing setting cpu_has_el2 somewhere else? This^ results in fewer
+cpregs being registered and is what breaks migration.
 
-The issue was indeed the difference in preallocation vs. no
-preallocation. I don't remember how to do hotplug in ppc anymore, but
-maxcpus was sufficient to reproduce:
+You can test with:
 
-src 2.9.0:
-$ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -nographic -vga none
--display none -accel tcg -machine pseries -smp 4,maxcpus=3D8 -m 256M
--nodefaults
+$ (echo "migrate file:migfile"; echo "quit") | ./qemu-system-arm -M ast2600=
+-evb -monitor stdio
+$ ./scripts/analyze-migration.py -f migfile | grep array_len
 
-dst 2.9.0 prior to 46f7afa:
-$ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -display none
--accel tcg -machine pseries-2.9 -smp 4,maxcpus=3D8 -m 256M -nodefaults
--incoming defer
+Before series:
+$ ./scripts/analyze-migration.py -f migfile | grep array_len
+        "cpreg_vmstate_array_len": "0x0000010a",
+        "cpreg_vmstate_array_len": "0x0000010a",
 
-(qemu) migrate_incoming tcp:localhost:1234
-(qemu) qemu-system-ppc64: Unknown savevm section or instance 'icp/server' 4
-qemu-system-ppc64: load of migration failed: Invalid argument
-
-As you can see, both use 4 cpus, but the src will try to migrate all 8
-icp/server instances. After the patch, the same migration works.
-
-So this was not related to the QOM path nor the QOM hierarchy, it was
-just about having state created at machine init vs. cpu realize time. It
-might be wise to keep an eye on the QOM hierarchy anyway as it could
-make these kinds of changes more evident during review.
-
-> I removed the pre_2_10_has_unused_icps hack and worked around
-> another migration compat issue in IOMMU ... Here are the last
-> trace-events for migration :
->
->      QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
->
-> 1016464@1705053752.106417:vmstate_load spapr, spapr
-> 1016464@1705053752.106419:vmstate_load_state spapr v3
-> 1016464@1705053752.106421:vmstate_load_state_field spapr:unused
-> 1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
-> 1016464@1705053752.106425:vmstate_load_state_field spapr:tb
-> 1016464@1705053752.106427:vmstate_n_elems tb: 1
-> 1016464@1705053752.106429:vmstate_load_state timebase v1
-> 1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
-> 1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
-> 1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_d=
-ay_ns
-> 1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
-> 1016464@1705053752.106438:vmstate_subsection_load timebase
-> 1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_opt=
-ion_vector_ov5_cas/(prefix)
-> 1016464@1705053752.106442:vmstate_load_state_end timebase end/0
-> 1016464@1705053752.106443:vmstate_subsection_load spapr
-> 1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas =
-v1
-> 1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov=
-5_cas:ov5_cas
-> 1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
-> 1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
-> 1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bi=
-tmap
-> 1016464@1705053752.106454:vmstate_n_elems bitmap: 1
-> 1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
-> 1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector=
-: (short)/
-> 1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
-> 1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5=
-_cas
-> 1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector=
-_ov5_cas: (short)/
-> 1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_=
-cas end/0
-> 1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/ht=
-m/(lookup)
-> qemu-system-ppc64: error while loading state for instance 0x0 of device '=
-spapr'
-
-This trace this seems to be something else entirely. I'd be amazed if
-migrating mainline vs. something that old worked at all, even on x86.
+After series:
+$ ./scripts/analyze-migration.py -f migfile | grep array_len
+        "cpreg_vmstate_array_len": "0x000000df",
+        "cpreg_vmstate_array_len": "0x000000df",

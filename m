@@ -1,141 +1,412 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2540524ejs;
-        Fri, 12 Jan 2024 10:14:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IElDIrz6nrYIqHuVUNN/gu07HKrzXQDFWWpkKgdX37sS/dz4F/GGFx2cgskWS+d0Tl0ZZiK
-X-Received: by 2002:ac8:5993:0:b0:429:d291:5396 with SMTP id e19-20020ac85993000000b00429d2915396mr896675qte.80.1705083250621;
-        Fri, 12 Jan 2024 10:14:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705083250; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2592138ejs;
+        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGcndmzIZHD91nmTkE6J+F0EdH9aDXQr4jmvsn+PLXe2BwMVU6twNtJgA4uxt9tBJswUheP
+X-Received: by 2002:a6b:c98c:0:b0:7bb:1d93:b318 with SMTP id z134-20020a6bc98c000000b007bb1d93b318mr2340346iof.22.1705089269339;
+        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705089269; cv=none;
         d=google.com; s=arc-20160816;
-        b=PhZ8fTAr20cP5JkUNQQetKw4oFleadLIe7OZaSysf691cMncAkOMlIq0KVV2wJLkOD
-         hatFv8Dl3AdMVt4zpwmgFKy5WifA6tZ/EzBSGFkvk794UgDoVzoGtGLYzg5sqEusfKfN
-         RjppzI77Me2BzJ9Thrd5LGFB0TCV6niqOnUiNXHmv0wKsv7KR8Yr4LK7KqxyuUfnLBDP
-         6D8ahc3lg1dyBitenZ+00GX5fALIOfE1AMWcOIDt5Fk2nbgolsVWLiKp7pkBkxTwdqoa
-         jDzGXccCWKUejfczY6r0/k1Eh06MQ8RlsGRxvkotZ7R+J+lsF16V3+f1J23OzPH4ROpJ
-         poAA==
+        b=eNrpt0hr3DY6YypdaE8C6Uuv8kb0r+sJHYGAt1pWzNWw8i6d809NwF3+DVNTt+afQq
+         NXJAUCRBH19MDNcVVPM4+O8NmCSGAvTgXPo2zMJf3A3jWCNlacEfP9xakC+ReftUGRz0
+         EMbs6h7WHxJAwGfLPIXHXHrGXSaTdXkifpV27ntzTRCdCy0t6tl1YXKKP9Z3jndCvalg
+         3oNC+eD0M7p4RxvQUXRkVM19g7tFbZNzFuNNVKFLKe5U311qpzNB7TeoUyh+rMkLy/eM
+         bFVIS42lbrAA+8i9vYYQHPJ8ReVEJiL4VkUIAwjPZ45xOhM+cHaxBh358s7dMaeqYezb
+         XUTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=SekbX91ewW9O1O5kfjeQJCVRZEAQ+BEcbYLDhGhP1/g=;
-        fh=T9ekBJ7/CNtRFfqYTMlXPokWYqzz1KxERJNnCtN+Dzc=;
-        b=FOhgeOxGD+6ubbw0pIFAH2FlnQ30GSra97QESrIyxXrSO9XICtdBjSdy0/ObGX4ndC
-         OviAXv7zQd4b+ortJxjmQha/6C1eAcRb/bXAAcrd97JoBNrlu3d4CCY//XofRUvR0+k8
-         LvEK9xJ+g0YjWPSuQBVJvBuEnV3Jy+gODP0sCP6TyEMkQErOXf/bG5pb4xeXMF7NNF3o
-         WaDIywcaXYQFYzJg0Yd7QTQ9BwYoQ7cOroP0HUIAM+uN4Ws27UW/jiONGBScRRw2uanX
-         VFW6FH9hcVYjhhUpABdzyxpW8dJDudIMUnA0nwj2z0Lr7UsQ6ouQz7TquPz8RYm/JjIw
-         zfnA==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
+        fh=bTNyA6hBaP3ytwHnR+kOagwQSkEQn12jUjl+8zNq+Fc=;
+        b=QgT3BaDbjr7kWPxI4Ou6LZCAzi0GPFPIigNQBAzRTlYDSbDunh1OHidsmhNcXcA0NY
+         NwuanYp+qXwNdkD+c1s1RY2+/K1IxJCLqdmCvG4DjmQJSSS1+UAK+I5f9tqe8l920wJI
+         RcdfAtKItCM0iYct0HlZtuyl+nbMDCxSt2Sphahv42Z5RDGumCQzjzu++FJtMbEywIrM
+         S4eFNn/XTXYtGXg8oE0dpPqAcCozV7msxpMZvQ0VtoCixBgCztUd6R1/ml04wgchjk6B
+         qcLm/Ey7C365tobVtb1Sq3716+rjUWEBVVlGKhOVHVym+5c/YFS45VZG18Hlpoh0DZwx
+         2B3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rf9zMIdE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11-20020a05622a144b00b00429be06351fsi3348518qtx.247.2024.01.12.10.14.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jan 2024 10:14:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.223.130])
+        by mx.google.com with ESMTPS id p8-20020a5ecb08000000b007befc54dd02si1055083iom.50.2024.01.12.11.54.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Jan 2024 11:54:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) client-ip=195.135.223.130;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rf9zMIdE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rOM2e-000116-RI; Fri, 12 Jan 2024 13:14:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rOM2c-0000vz-AZ
- for qemu-arm@nongnu.org; Fri, 12 Jan 2024 13:14:02 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rOM2W-0001g6-W2
- for qemu-arm@nongnu.org; Fri, 12 Jan 2024 13:14:01 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-40e63bc90f2so11539545e9.2
- for <qemu-arm@nongnu.org>; Fri, 12 Jan 2024 10:13:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705083234; x=1705688034; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SekbX91ewW9O1O5kfjeQJCVRZEAQ+BEcbYLDhGhP1/g=;
- b=rf9zMIdEkXfo9gb7mYGftaUlgqMVX1iMafuAWEnimvABiuhOtWTkCFwMqzV+I3PHA3
- BsIxtjEe8OTZMHTi8XgXhlu7NkzaEXMmyjYvnQVzadMl7iMbDBe6yFZYNkMsA8pSGhoL
- m7o9+raQ0TRAiwIKXRuXUe2TcaDDMQKGW3aepXaZUCq9La7S0eUXuxm5LcWYzCqclLDI
- mLeCVVAVA6CaLQTRm/vOwD22gSUrH6KnrQVhCOvFqJBtj8jyg/Gc3jNyGHbxkfGcvWts
- ZncJKampGDVlCDMCT6AKonGFTyJtaxHxtYPyVzfw5UbE7oQRl3sMcKBQEXOM1QtZA3yD
- mZ1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705083234; x=1705688034;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=SekbX91ewW9O1O5kfjeQJCVRZEAQ+BEcbYLDhGhP1/g=;
- b=MDjfHmyHjf7V+sIhtfuCrFldEpUINThMi/SSO7LfBuPOdky/DbF6NMS+cbizratXDh
- 5Ni0BoFmH++LFhcuMnDNzSAVldh/SQ5QlLMffl7lCR4K/KUZOVNiB7Z4mVDaSgkp8Cpb
- /IyYeblEBCzkRqlvWoKe/EcsV4bFE/3x6oeRvM6X4QKfkQGgd8VKyysEiMOw6KhmQNyM
- j5ozJ95oeLDNTej8xMNqQH+Z/JsBb6Bz2YNuzs2iigGAMqvJG074OR468NykdXzCjtxk
- NOUdfCQqXlVLMeBeLEv1XZC+/plvx4cMzoA/GQG55IcFvFDZgkIMEo9OYKETQmQP9yzy
- bDQQ==
-X-Gm-Message-State: AOJu0YxBCEb/ooB3M8yMJYgHQHWEDfhOwmqAWEB8Nzhd82rXDVFHkJWl
- TSRSuF17SluupghUgRm0syibge1VBc4vuj8BO3c/OllH1LQs+A==
-X-Received: by 2002:a05:600c:21d4:b0:40d:3112:a2d7 with SMTP id
- x20-20020a05600c21d400b0040d3112a2d7mr846789wmj.187.1705083234394; Fri, 12
- Jan 2024 10:13:54 -0800 (PST)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=To6BzbsN;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 12F0121A61;
+	Fri, 12 Jan 2024 19:54:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1705089267; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
+	b=To6BzbsNJoiOX+WAtNG2LjDzvR5Vf7zcgb+SkzoZ0NBa7ljwVDxmJc8Hel9JvNnHb57YaT
+	jlodVOod7FxaoNrmc8x65Wj5NKM9CNJcYvf2Q9K4sK/zeLVBUQmZl4uIC4YF5H4AQt7+GO
+	LhSA9T145zWHpoE6+oTohvZenTbSn+g=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1705089267;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
+	b=S5I/8izY4WW098LF8gTaJXU91Ct0d5JsepDAJRN594OfU5/S/DJ7JZVARzdawHoADAFVRV
+	tFNQc+4hPRZzCPBg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1705089267; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
+	b=To6BzbsNJoiOX+WAtNG2LjDzvR5Vf7zcgb+SkzoZ0NBa7ljwVDxmJc8Hel9JvNnHb57YaT
+	jlodVOod7FxaoNrmc8x65Wj5NKM9CNJcYvf2Q9K4sK/zeLVBUQmZl4uIC4YF5H4AQt7+GO
+	LhSA9T145zWHpoE6+oTohvZenTbSn+g=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1705089267;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=z9lR4FF2XvVBDHSLk9YaBEPtCYlCK1uKX6T1qbRuZhE=;
+	b=S5I/8izY4WW098LF8gTaJXU91Ct0d5JsepDAJRN594OfU5/S/DJ7JZVARzdawHoADAFVRV
+	tFNQc+4hPRZzCPBg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 8640D136A4;
+	Fri, 12 Jan 2024 19:54:26 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id IAFwE/KYoWUUXAAAD6G6ig
+	(envelope-from <farosas@suse.de>); Fri, 12 Jan 2024 19:54:26 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, Markus Armbruster
+ <armbru@redhat.com>,
+ Peter Xu <peterx@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>, Alex =?utf-8?Q?B?=
+ =?utf-8?Q?enn=C3=A9e?=
+ <alex.bennee@linaro.org>, Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Anton Johansson <anjo@rev.ng>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring
+ <robh@kernel.org>, qemu-arm@nongnu.org, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+In-Reply-To: <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
+References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
+ <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
+ <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
+ <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org>
+Date: Fri, 12 Jan 2024 16:54:23 -0300
+Message-ID: <871qamfhu8.fsf@suse.de>
 MIME-Version: 1.0
-References: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jan 2024 18:13:43 +0000
-Message-ID: <CAFEAcA_HR+PfavrUf9bVLk8biZKLxkNV3M6gtpofk3_6wfR4zg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/3] Add device STM32L4x5 SYSCFG
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Laurent Vivier <lvivier@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wc4hxu8PYBtR
+Authentication-Results: smtp-out1.suse.de;
+	none
+X-Spamd-Result: default: False [-1.60 / 50.00];
+	 ARC_NA(0.00)[];
+	 RCVD_VIA_SMTP_AUTH(0.00)[];
+	 MID_RHS_MATCH_FROM(0.00)[];
+	 FROM_HAS_DN(0.00)[];
+	 TO_DN_SOME(0.00)[];
+	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	 TO_MATCH_ENVRCPT_ALL(0.00)[];
+	 TAGGED_RCPT(0.00)[];
+	 MIME_GOOD(-0.10)[text/plain];
+	 BAYES_HAM(-3.00)[100.00%];
+	 R_RATELIMIT(0.00)[to_ip_from(RLgn3pipxh44ye66tuwadwbnif)];
+	 RCVD_COUNT_THREE(0.00)[3];
+	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	 RCPT_COUNT_TWELVE(0.00)[24];
+	 FUZZY_BLOCKED(0.00)[rspamd.com];
+	 FROM_EQ_ENVFROM(0.00)[];
+	 MIME_TRACE(0.00)[0:+];
+	 FREEMAIL_CC(0.00)[linaro.org,nongnu.org,redhat.com,nuvoton.com,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,tribudubois.net,codeconstruct.com.au,kernel.org,ilande.co.uk];
+	 RCVD_TLS_ALL(0.00)[];
+	 SUSPICIOUS_RECIPS(1.50)[]
+X-Spam-Level: 
+X-Spam-Flag: NO
+X-Spam-Score: -1.60
+X-TUID: p5VlzArwDAlR
 
-On Tue, 9 Jan 2024 at 19:44, In=C3=A8s Varhol <ines.varhol@telecom-paris.fr=
-> wrote:
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
+
+> On 1/10/24 14:19, Fabiano Rosas wrote:
+>> Markus Armbruster <armbru@redhat.com> writes:
+>>=20
+>>> Peter Xu <peterx@redhat.com> writes:
+>>>
+>>>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daud=C3=A9 =
+wrote:
+>>>>> Hi Fabiano,
+>>>>>
+>>>>> On 9/1/24 21:21, Fabiano Rosas wrote:
+>>>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>>>>
+>>>>>>> On 1/9/24 18:40, Fabiano Rosas wrote:
+>>>>>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>>>>>>
+>>>>>>>>> On 1/3/24 20:53, Fabiano Rosas wrote:
+>>>>>>>>>> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>>>>>>>>>>
+>>>>>>>>>>> +Peter/Fabiano
+>>>>>>>>>>>
+>>>>>>>>>>> On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
+>>>>>>>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>>>>>>>> Hi C=C3=A9dric,
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
+>>>>>>>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>>>>>>>>>> Hi,
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong th=
+e the
+>>>>>>>>>>>>>>> cluster container, not to the board/soc layer. This series =
+move
+>>>>>>>>>>>>>>> the creation of vCPUs to the MPCore private container.
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> Doing so we consolidate the QOM model, moving common code i=
+n a
+>>>>>>>>>>>>>>> central place (abstract MPCore parent).
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the=
+ machine
+>>>>>>>>>>>>>> and some fixups are then required to maintain migration comp=
+atibility.
+>>>>>>>>>>>>>> This can become a real headache for KVM machines like virt f=
+or which
+>>>>>>>>>>>>>> migration compatibility is a feature, less for emulated ones.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> All changes are either moving properties (which are not migra=
+ted)
+>>>>>>>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, =
+which
+>>>>>>>>>>>>> is still migrated elsewhere). So I don't see any obvious migr=
+ation
+>>>>>>>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
+>>>>>>>>>>
+>>>>>>>>>> FWIW, I didn't spot anything problematic either.
+>>>>>>>>>>
+>>>>>>>>>> I've ran this through my migration compatibility series [1] and =
+it
+>>>>>>>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
+>>>>>>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered.=
+ I don't
+>>>>>>>>>> think we even support migration of anything non-KVM on arm.
+>>>>>>>>>
+>>>>>>>>> it happens we do.
+>>>>>>>>>
+>>>>>>>>
+>>>>>>>> Oh, sorry, I didn't mean TCG here. Probably meant to say something=
+ like
+>>>>>>>> non-KVM-capable cpus, as in 32-bit. Nevermind.
+>>>>>>>
+>>>>>>> Theoretically, we should be able to migrate to a TCG guest. Well, t=
+his
+>>>>>>> worked in the past for PPC. When I was doing more KVM related chang=
+es,
+>>>>>>> this was very useful for dev. Also, some machines are partially emu=
+lated.
+>>>>>>> Anyhow I agree this is not a strong requirement and we often break =
+it.
+>>>>>>> Let's focus on KVM only.
+>>>>>>>
+>>>>>>>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+>>>>>>>>>
+>>>>>>>>> yes it depends on the QOM hierarchy and virt seems immune to the =
+changes.
+>>>>>>>>> Good.
+>>>>>>>>>
+>>>>>>>>> However, changing the QOM topology clearly breaks migration compa=
+t,
+>>>>>>>>
+>>>>>>>> Well, "clearly" is relative =3D) You've mentioned pseries and aspe=
+ed
+>>>>>>>> already, do you have a pointer to one of those cases were we broke
+>>>>>>>> migration
+>>>>>>>
+>>>>>>> Regarding pseries, migration compat broke because of 5bc8d26de20c
+>>>>>>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") whi=
+ch
+>>>>>>> is similar to the changes proposed by this series, it impacts the Q=
+OM
+>>>>>>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+>>>>>>> ("spapr: fix migration of ICPState objects from/to older QEMU") whi=
+ch
+>>>>>>> is quite an headache and this turned out to raise another problem s=
+ome
+>>>>>>> months ago ... :/ That's why I sent [1] to prepare removal of old
+>>>>>>> machines and workarounds becoming a burden.
+>>>>>>
+>>>>>> This feels like something that could be handled by the vmstate code
+>>>>>> somehow. The state is there, just under a different path.
+>>>>>
+>>>>> What, the QOM path is used in migration? ...
+>>>>
+>>>> Hopefully not..
+>>=20
+>> Unfortunately the original fix doesn't mention _what_ actually broke
+>> with migration. I assumed the QOM path was needed because otherwise I
+>> don't think the fix makes sense. The thread discussing that patch also
+>> directly mentions the QOM path:
+>>=20
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
+>>=20
+>> But I probably misunderstood something while reading that thread.
+>>=20
+>>>>
+>>>>>
+>>>>> See recent discussions on "QOM path stability":
+>>>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
+>>>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
+>>>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
+>>>>
+>>>> If I read it right, the commit 46f7afa37096 example is pretty special =
+that
+>>>> the QOM path more or less decided more than the hierachy itself but ch=
+anges
+>>>> the existances of objects.
+>>>
+>>> Let's see whether I got this...
+>>>
+>>> We removed some useless objects, moved the useful ones to another home.
+>>> The move changed their QOM path.
+>>>
+>>> The problem was the removal of useless objects, because this also
+>>> removed their vmstate.
+>>=20
+>> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
+>> been kept untouched.
+>>=20
+>>>
+>>> The fix was adding the vmstate back as a dummy.
+>>=20
+>> Since the vmstate was kept I don't see why would we need a dummy. The
+>> incoming migration stream would still have the state, only at a
+>> different point in the stream. It's surprising to me that that would
+>> cause an issue, but I'm not well versed in that code.
+>>=20
+>>>
+>>> The QOM patch changes are *not* part of the problem.
+>>=20
+>> The only explanation I can come up with is that after the patch
+>> migration has broken after a hotplug or similar operation. In such
+>> situation, the preallocated state would always be present before the
+>> patch, but sometimes not present after the patch in case, say, a
+>> hot-unplug has taken away a cpu + ICPState.
 >
-> This patch adds a new device STM32L4x5 SYSCFG device and is part
-> of a series implementing the STM32L4x5 with a few peripherals.
+> May be. It has been a while.
 >
+> For a better understanding, I tried to reproduce. QEMU 2.9 still
+> compiles on a f38 (memfd_create needs a fix). However, a
+> QEMU-2.9/pseries-2.9 machine won't start any recent OS because
+> something broke the OS/platform negotiation process (CAS) ...
 
+Thanks for letting us know it still builds. That motivated me to try as
+well. Although it took me a while because of python's brokenness.
 
+The issue was indeed the difference in preallocation vs. no
+preallocation. I don't remember how to do hotplug in ppc anymore, but
+maxcpus was sufficient to reproduce:
 
-Applied to target-arm.next, thanks.
+src 2.9.0:
+$ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -nographic -vga none
+-display none -accel tcg -machine pseries -smp 4,maxcpus=3D8 -m 256M
+-nodefaults
 
--- PMM
+dst 2.9.0 prior to 46f7afa:
+$ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -display none
+-accel tcg -machine pseries-2.9 -smp 4,maxcpus=3D8 -m 256M -nodefaults
+-incoming defer
+
+(qemu) migrate_incoming tcp:localhost:1234
+(qemu) qemu-system-ppc64: Unknown savevm section or instance 'icp/server' 4
+qemu-system-ppc64: load of migration failed: Invalid argument
+
+As you can see, both use 4 cpus, but the src will try to migrate all 8
+icp/server instances. After the patch, the same migration works.
+
+So this was not related to the QOM path nor the QOM hierarchy, it was
+just about having state created at machine init vs. cpu realize time. It
+might be wise to keep an eye on the QOM hierarchy anyway as it could
+make these kinds of changes more evident during review.
+
+> I removed the pre_2_10_has_unused_icps hack and worked around
+> another migration compat issue in IOMMU ... Here are the last
+> trace-events for migration :
+>
+>      QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
+>
+> 1016464@1705053752.106417:vmstate_load spapr, spapr
+> 1016464@1705053752.106419:vmstate_load_state spapr v3
+> 1016464@1705053752.106421:vmstate_load_state_field spapr:unused
+> 1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
+> 1016464@1705053752.106425:vmstate_load_state_field spapr:tb
+> 1016464@1705053752.106427:vmstate_n_elems tb: 1
+> 1016464@1705053752.106429:vmstate_load_state timebase v1
+> 1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
+> 1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
+> 1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_d=
+ay_ns
+> 1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
+> 1016464@1705053752.106438:vmstate_subsection_load timebase
+> 1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_opt=
+ion_vector_ov5_cas/(prefix)
+> 1016464@1705053752.106442:vmstate_load_state_end timebase end/0
+> 1016464@1705053752.106443:vmstate_subsection_load spapr
+> 1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas =
+v1
+> 1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov=
+5_cas:ov5_cas
+> 1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
+> 1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
+> 1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bi=
+tmap
+> 1016464@1705053752.106454:vmstate_n_elems bitmap: 1
+> 1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
+> 1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector=
+: (short)/
+> 1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
+> 1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5=
+_cas
+> 1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector=
+_ov5_cas: (short)/
+> 1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_=
+cas end/0
+> 1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/ht=
+m/(lookup)
+> qemu-system-ppc64: error while loading state for instance 0x0 of device '=
+spapr'
+
+This trace this seems to be something else entirely. I'd be amazed if
+migrating mainline vs. something that old worked at all, even on x86.

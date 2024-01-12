@@ -1,256 +1,119 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2032567ejs;
-        Thu, 11 Jan 2024 15:32:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFTlkkObrZtyeg4w+DPYA37yJfCPZLv3R9JOcdJ0FbQcDkxFdve8NMB06TlROmvFkg4owfn
-X-Received: by 2002:a05:620a:e02:b0:780:e491:f233 with SMTP id y2-20020a05620a0e0200b00780e491f233mr878276qkm.64.1705015969996;
-        Thu, 11 Jan 2024 15:32:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705015969; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2197085ejs;
+        Thu, 11 Jan 2024 23:29:48 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFW4SVnamPSQ5Qum6ddVGZYOOSRwwt6aIUsfqIhkjLOxSl2qcT4keEyipMwslyf68xmr7zZ
+X-Received: by 2002:a05:6359:6b89:b0:175:a79e:21b3 with SMTP id ta9-20020a0563596b8900b00175a79e21b3mr919955rwb.13.1705044588017;
+        Thu, 11 Jan 2024 23:29:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705044587; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qj5V4YqbaOVeyIf5lHCL52NE5HsgcZeTxrpqxKcoG9jDvPUajhwHf323FYoN3xBvon
-         +fCjAp/AlOC9v0j+c9Gaw9e5R236kc8yy86EybdZTIVcDFvPZHGvdH/5TV6vF4aa1gLF
-         5cq9zJ94b5B2xKt7tDubIyvNbJN/ZzHhARVmtAkwebFl57YhjRNb3FxSijk09+567v7F
-         IcFWn7x4ScLQE+GQhpnaVcEQ2+OIkQwJXlP8yALix57aMWq1WEHVlmu8p3ABjuQQOGb1
-         QS0RWKh93DTkaggoJ/hOgecmuq2+v4bWTFdrqgz12ey5ol2Ft+LmjtMDwuqtf1nnIAOd
-         mlZQ==
+        b=VTHYhDr9MVB3glyOx6jEwar8oa9GVJAnxGLEWlbIhxoErepFEs4FH+ppDzKwx1LrSy
+         quCOCniqcpiQn9PWoNtDQbf/f/2AMEzNRFech5SE8D2Beff8z9wmlf2wYa08P5hAqKWi
+         G8r8jjqbLyA+KgD0nb4tMFrwLJL/lNbYaKuYSmNmfnfHf64d/7iXbAYFJ8xIzuZJucan
+         TCdLQYUpUXImjq0GqxE84+7VuXr1AY9CrDfnp335gpccKUk+jidm6ul55rLx+qnLac3z
+         mpCO5i6xHS1V0Tomws5ZUBU2WF3yYFwKdaj9njvZhlPEdsxePduOaDAPQ6q9n6psDrBn
+         fE+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
-        fh=NcqnbRcJ7RFo3aWnSmbYiVc8hsBFlrmI7Mv6nKUY7ls=;
-        b=es3Hy/p7uSJxlT/8CEfQkgV/qadV3DbVforjzzBu+pCYcQUWaa87YahsGwTDHPnonv
-         l+MO+8ja/Tf7yEjCHkqOasKHMk3cPDFhLACwYFSi63OppdjvxJ2byAd9e5GpKWibwnH6
-         kEgWG4OYtcF5G9KiHczAOZGrvXs4QO7JVf4Q7sd58d2oBWrEXLKDnUclhLvs7Z+QHjb5
-         3GeMlUAKtXK1R+IUvDAOgyHI8v+AfdGAvYv1uzkhcgEWVDzsKXD5HdK9cIoSszIaHc7b
-         N2sa4G0o8M8tYWXfFJzxW9/6nlP6SCORwnh7jxrZSZ3s5kj1og4p0GaEmI2k3hdykQjL
-         /bYA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=3MKp4q6DIcWNusf2Q6B9NpiRfoilXcQMK56ltvlweRY=;
+        fh=VwstGSR0xcOYJhziV7z8p6b90WYb250cJKKwgb72cNg=;
+        b=P1pTEw38JAysQDbMGMsHj8wm6mOi/lkmEYLsEWa0kQGZ4uN+Zy37aNGJGQEiKjpho4
+         i0BqBLrODIou8JQRMV/UkG6BV8Sh07VaCK9SMQak1X/m6nPSaOHo1z29nqCL3swNy2W3
+         UB2FkwyhKdFlVHeq8HcotV4qujzTQmy7wC/iGK65Y0n80BcUDkT/ORRsclDFwp7Ek3h4
+         eeGtr5LmLMl5hR18fILan1i5j37eFkoDdJQYGOdG1TaC5lHckrOVTPNAfXNYbj02MR/B
+         bfwtqfhxNDSNnKuTxwfHhYBzuO0kHYWc5rTbT8nMv/X6g1jo19UBq9wmslAIYKpK4dL2
+         AGyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="brf/ll8c";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t20-20020a05620a0b1400b00781555ae8basi1868208qkg.210.2024.01.11.15.32.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jan 2024 15:32:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=qInK=IW=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
+        by mx.google.com with ESMTPS id t12-20020a056a00138c00b006d979da61b9si2776724pfg.338.2024.01.11.23.29.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Jan 2024 23:29:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="brf/ll8c";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rO4XA-0000W0-F3; Thu, 11 Jan 2024 18:32:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rO4X8-0000TI-QU; Thu, 11 Jan 2024 18:32:22 -0500
-Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rO4Wz-0001Pp-Rg; Thu, 11 Jan 2024 18:32:15 -0500
-Received: by mail-vk1-xa30.google.com with SMTP id
- 71dfb90a1353d-4b739b29686so3290420e0c.0; 
- Thu, 11 Jan 2024 15:32:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705015931; x=1705620731; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
- b=brf/ll8cMCgEYD08U1Bc+PTQvezyVlSvRQENg0/1Fpue9JAAuH7RGX6tMpr7LaZmTu
- 51h1570irpjv6bTERAo3H2SWrs6Nj3uRLlUHWyHHdGHyAL8uHwr0RCfSRyyVegeVri4c
- rHNpF0Glx0Q532MetutEovV4uH6w19I9QIykk/BYaSxVcwyAM37syNeqIz3VX9W+t4+4
- 0lOpj+7qGzTyLdNVLloxEHF8gNc0I8L4XTPdOeZzW1WpMKcLeNiAGBdmkuyssdTa4Zda
- eB7b4+z9MJSKa+xVIiGOkrtoBXe0GXFX9c2ICJGn1mDQaX56Xz7YrZxz4B5PUklcnzqH
- tyrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705015931; x=1705620731;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ecoc00QYwaJz8dIkPPEYb205rWMV7qbZJM9fu2YOHGU=;
- b=ZGR3+Mg6EhoG0X5WdH5zl1VnVH4gRowPp1B8T5iB/o8yxBp8oxUVkmyMwjKYzWHNGz
- DNkYHnCP76VENAk1U3BRGQVOFmKFtK0C2wsQC9/+Uc5BzY4WL9sBjmtfFZ/u/D69VOWM
- VLOrMwQmvfEpxEQW4PLDtYcAK49XvDEla2SbOggfahHMB2ZtsapCbpbVUtliAL26iC4t
- Ay3d/TsirrIB9CG3jlXShGk8K4H4K5CtgWJrCYHZ5wPSVq5lvUw8Uve7IusZp9JPuE4i
- /ozQBSrNCkhwe+X2xTv1Zijw7eWN+PzHIY7KiS366HdTYPHlp6xf1CAjczY6u2Ao2+8D
- FGEg==
-X-Gm-Message-State: AOJu0YyDSJ+4qIHcFFYS0i5Z+JOIVCFV5sV6nOJV+ag87Xp8H/v0WQ8E
- dlnl613ntWS5bj2OMPxZgbRWLpOmcRx0Rw9Nci4=
-X-Received: by 2002:a1f:e784:0:b0:4b6:e3b6:41ea with SMTP id
- e126-20020a1fe784000000b004b6e3b641eamr681462vkh.4.1705015930734; Thu, 11 Jan
- 2024 15:32:10 -0800 (PST)
+       spf=pass (google.com: domain of srs0=qink=iw=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=qInK=IW=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TBCpw5K6fz4wnw;
+	Fri, 12 Jan 2024 18:29:44 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TBCpl1z17z4wc6;
+	Fri, 12 Jan 2024 18:29:35 +1100 (AEDT)
+Message-ID: <2c03b5a7-9f6d-49af-8931-00e1fb14065d@kaod.org>
+Date: Fri, 12 Jan 2024 08:29:29 +0100
 MIME-Version: 1.0
-References: <20240109194438.70934-1-ines.varhol@telecom-paris.fr>
- <20240109194438.70934-3-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20240109194438.70934-3-ines.varhol@telecom-paris.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 12 Jan 2024 09:31:44 +1000
-Message-ID: <CAKmqyKMqM=8SQpbdviMnVBcFdChRUmk5C-SW=dB-RMKP=L+zzA@mail.gmail.com>
-Subject: Re: [PATCH v4 2/3] hw/arm: Connect STM32L4x5 SYSCFG to STM32L4x5 SoC
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Laurent Vivier <lvivier@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa30.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R6toSdPzs6U4
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Peter Xu <peterx@redhat.com>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org>
+ <e2a282a5-b92a-439e-9ecf-3ea1f74deb25@linaro.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <e2a282a5-b92a-439e-9ecf-3ea1f74deb25@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: H+XEGOqkcqOr
 
-On Wed, Jan 10, 2024 at 5:47=E2=80=AFAM In=C3=A8s Varhol
-<ines.varhol@telecom-paris.fr> wrote:
->
-> The SYSCFG input GPIOs aren't connected yet. When the STM32L4x5 GPIO
-> device will be implemented, its output GPIOs will be connected to the
-> SYSCFG input GPIOs.
->
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>> Regarding pseries, migration compat broke because of 5bc8d26de20c
+>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
+>> is similar to the changes proposed by this series, it impacts the QOM
+>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+>> ("spapr: fix migration of ICPState objects from/to older QEMU") which
+>> is quite an headache and this turned out to raise another problem some
+>> months ago ... :/ That's why I sent [1] to prepare removal of old
+>> machines and workarounds becoming a burden.
+>>
+>> Regarding aspeed, this series breaks compat.
+> 
+> Can you write down the steps to reproduce please? I'll debug it.
+> We need to understand this.
 
-Alistair
+Nothing complex,
 
-> ---
->  hw/arm/Kconfig                 |  1 +
->  hw/arm/stm32l4x5_soc.c         | 21 ++++++++++++++++++++-
->  include/hw/arm/stm32l4x5_soc.h |  2 ++
->  3 files changed, 23 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 8c8488a70a..bb4693bfbb 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -459,6 +459,7 @@ config STM32L4X5_SOC
->      bool
->      select ARM_V7M
->      select OR_IRQ
-> +    select STM32L4X5_SYSCFG
->      select STM32L4X5_EXTI
->
->  config XLNX_ZYNQMP_ARM
-> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-> index fe46b7c6c0..431f982caf 100644
-> --- a/hw/arm/stm32l4x5_soc.c
-> +++ b/hw/arm/stm32l4x5_soc.c
-> @@ -37,6 +37,7 @@
->  #define SRAM2_SIZE (32 * KiB)
->
->  #define EXTI_ADDR 0x40010400
-> +#define SYSCFG_ADDR 0x40010000
->
->  #define NUM_EXTI_IRQ 40
->  /* Match exti line connections with their CPU IRQ number */
-> @@ -80,6 +81,7 @@ static void stm32l4x5_soc_initfn(Object *obj)
->      Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
->
->      object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-> +    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SY=
-SCFG);
->
->      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
-;
->      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
-;
-> @@ -154,6 +156,19 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
->          return;
->      }
->
-> +    /* System configuration controller */
-> +    busdev =3D SYS_BUS_DEVICE(&s->syscfg);
-> +    if (!sysbus_realize(busdev, errp)) {
-> +        return;
-> +    }
-> +    sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
-> +    /*
-> +     * TODO: when the GPIO device is implemented, connect it
-> +     * to SYCFG using `qdev_connect_gpio_out`, NUM_GPIOS and
-> +     * GPIO_NUM_PINS.
-> +     */
-> +
-> +    /* EXTI device */
->      busdev =3D SYS_BUS_DEVICE(&s->exti);
->      if (!sysbus_realize(busdev, errp)) {
->          return;
-> @@ -163,6 +178,11 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
->          sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
->      }
->
-> +    for (unsigned i =3D 0; i < 16; i++) {
-> +        qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
-> +                              qdev_get_gpio_in(DEVICE(&s->exti), i));
-> +    }
-> +
->      /* APB1 BUS */
->      create_unimplemented_device("TIM2",      0x40000000, 0x400);
->      create_unimplemented_device("TIM3",      0x40000400, 0x400);
-> @@ -200,7 +220,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
->      /* RESERVED:    0x40009800, 0x6800 */
->
->      /* APB2 BUS */
-> -    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
->      create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
->      create_unimplemented_device("COMP",      0x40010200, 0x200);
->      /* RESERVED:    0x40010800, 0x1400 */
-> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-> index f7305568dc..baf70410b5 100644
-> --- a/include/hw/arm/stm32l4x5_soc.h
-> +++ b/include/hw/arm/stm32l4x5_soc.h
-> @@ -26,6 +26,7 @@
->
->  #include "exec/memory.h"
->  #include "hw/arm/armv7m.h"
-> +#include "hw/misc/stm32l4x5_syscfg.h"
->  #include "hw/misc/stm32l4x5_exti.h"
->  #include "qom/object.h"
->
-> @@ -41,6 +42,7 @@ struct Stm32l4x5SocState {
->      ARMv7MState armv7m;
->
->      Stm32l4x5ExtiState exti;
-> +    Stm32l4x5SyscfgState syscfg;
->
->      MemoryRegion sram1;
->      MemoryRegion sram2;
-> --
-> 2.43.0
->
->
+$ wget https://github.com/legoater/qemu-aspeed-boot/raw/master/images/ast2600-evb/buildroot-2023.11/flash.img
+
+$ qemu-system-arm -M ast2600-evb -net user -drive file=./flash.img,format=raw,if=mtd -nographic -snapshot -serial mon:stdio  -trace vmstate* -trace save* -trace load*
+
+$ qemu-system-arm-patch -M ast2600-evb -net user -drive file=./flash.img,format=raw,if=mtd -nographic -snapshot -serial mon:stdio  -trace vmstate* -trace save* -trace load* -incoming tcp::1234
+
+stop the VM in U-boot before loading the kernel because QEMU does not
+support migrating CPU when in secure mode. That's how I understood what
+Peter told me.
+
+(qemu) migrate tcp:localhost:1234
+
+...
+vmstate_load_state_field cpu:cpreg_vmstate_array_len
+vmstate_n_elems cpreg_vmstate_array_len: 1
+qemu-system-arm: Invalid value 266 expecting positive value <= 223
+qemu-system-arm: Failed to load cpu:cpreg_vmstate_array_len
+vmstate_load_field_error field "cpreg_vmstate_array_len" load failed, ret = -22
+qemu-system-arm: error while loading state for instance 0x0 of device 'cpu'
+
+Thanks,
+
+C.

@@ -1,100 +1,89 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2889734ejs;
-        Sat, 13 Jan 2024 02:31:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEIcTR37tlDSIFQrvaO2XbGzaUKl6toewsMi0wdo3UowuLv2k0Mmx54gEZqjvTuZI85eTp5
-X-Received: by 2002:ac8:5e4b:0:b0:429:d455:6b7 with SMTP id i11-20020ac85e4b000000b00429d45506b7mr2166498qtx.94.1705141886203;
-        Sat, 13 Jan 2024 02:31:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705141886; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2892851ejs;
+        Sat, 13 Jan 2024 02:41:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEgcwJkFi6Yzf0fDXc1er2gOWGH0PTv4mIGT7mwlw5YO020HSLwoh0zrCmKh7MeEWEx73B7
+X-Received: by 2002:ac8:7d96:0:b0:429:e003:43df with SMTP id c22-20020ac87d96000000b00429e00343dfmr239725qtd.114.1705142496997;
+        Sat, 13 Jan 2024 02:41:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705142496; cv=none;
         d=google.com; s=arc-20160816;
-        b=kYf0G4fq0VwLUotJW3+CisWfmMeWkTZyP9xaujuyWWk2SLpV9YMSqjtkbUL+OtSZ3o
-         THFI8ItlBXViYWd5nQYFiXPqzgzed7zoNXgLKeN2E4GicaOT2favRTXVPTUQPgdVIkba
-         mDS6LWD+pBtEmszTSOCBQG5wcf3bb5zZZF+hpLOL6+PbzVbdnXX4P8Jw6DPCr7U0vbcD
-         87zr/jLj877qaebbOqNB1GTVja7/1D4UVDR9SoOKNMx5bS63T6bjrwG5uAZtUgmCsIDP
-         YxWM/qKCRP1Bx7rggIvHvuj7vMF1tOLxN9QZlFnViCOgHt9plvhotWQIi5aaYFvFfHsN
-         NT2Q==
+        b=N71KpuYpqrmZJSo7qpxyRt8EYUEyQcS5OCKNBcuwIDTeS8D1eOgIm2wjiLjbUuWBSD
+         iU8/nIXgT5FBgF2ig5LCshrKrZQZMPljZ52ovXwxVCLIFcscxyRdq2QoEERaHYcJyNgE
+         QwoXsAxHzV8odJ2Pc+si9qjNlUuMAz2Hf9nlCptsy8OF67cCmBYUDxR/fISPqitFUBDC
+         hp+JylgABFZPG1e1VEZcGvoM0eyTg7TyizqMb3m3z7qjPcWGERbwaZCb8XgHLfFVq6Sw
+         dDKBQ9vOztUeAcpfMiyqB/wYz2m3eMxcVZwg7NNzrtPzfJtcZJf9HeFycJgZXapBH7li
+         pa3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=nYlucyPJjNn3tjn3l3KDjRd1roMbb90uTvgczkrDX/E=;
-        fh=/XJxoXs5cC2CXt6M+TWCN3kiDWHHEGC2LObkJjyubOk=;
-        b=Co/9AQdhz3UDh0HXpUqSkRZ8rPK/q/LK316lih+i5M5cAKAPQr9lUamVf0zyPC38KQ
-         Rr8ulZqi0bHTUCULZZi6IPVMVPYRgKq2/0Ih6fJXRN1ATBRNr2GSJ9jaDe+HWIHZHM+k
-         XgMk86ByAFwSNs6P5mOqnkzGdKGTojgu5SjXcxcS+zpVQnZFnpdW/zcNI/fznwvLuSM2
-         B3yBLgnU/zC3rmjXeeHdWMSRwUkQcbGdhI72KUZb6v7I25SWvCh2EEi0UwpWOSpxPweh
-         eaVpSojCyiVeZ27oZIy5AzDxHdaYjyfJ1PaWtKmo6SuPrlbg1LoWR1NLQ7hKJaVeIZEh
-         om1g==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id
+         :in-reply-to:date:subject:cc:to:from:user-agent:references
+         :dkim-signature;
+        bh=ff7TkTuGuELDZ75dKYbl/t6mm6j6yduwDcqGH/5y9Ek=;
+        fh=bK6HWTkBOyM5KIaTPN53H4+O0/wt4Gn+uOMybiIhQAo=;
+        b=jvc/y/fijLoU9oJoVlhDfszLTl+wlZXvfOCyftDR2NdVVEuEJ9XxwLeoydzhGtW5UE
+         ksl51IES2rqWrI17v0k4QYNJuqe0Tzu8TQ88hYBk0m0SwqZmypjDESzf6gU4ByaP1oRe
+         wv0Gcym3XUZQuDQMtuCrgtgItgk9vkpI4WY3ZCA0k6kGV+u5GalxEDB9b8VfS2bkwZfy
+         /SZILfVF1iQj8dpex0XQKClaINA/OMLySI2Hjg0DDL6zToFmeH117aNjce29LBI8dHxf
+         YScYIaEvPmiScE3hnFO5aV520lKdfGtjCd3wUBNUGJ/rUov8sKxpr+f6h/nRCqbu+QXw
+         qp+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=GbvHGZtI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=so0k2mO8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hg5-20020a05622a610500b00429c967ef5csi3676319qtb.733.2024.01.13.02.31.26
+        by mx.google.com with ESMTPS id t1-20020a05622a180100b00429c839fb21si4113449qtc.396.2024.01.13.02.41.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jan 2024 02:31:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 13 Jan 2024 02:41:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=GbvHGZtI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=so0k2mO8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rObHC-0004uk-Rd; Sat, 13 Jan 2024 05:30:06 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rObRy-0004y9-TC; Sat, 13 Jan 2024 05:41:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rObGi-0004qx-6o; Sat, 13 Jan 2024 05:29:37 -0500
-Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rObRx-0004xu-Vs; Sat, 13 Jan 2024 05:41:14 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rObGe-0004UX-Ag; Sat, 13 Jan 2024 05:29:34 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 099E8C071F;
- Sat, 13 Jan 2024 11:29:24 +0100 (CET)
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id KmO8QdPpyo7X; Sat, 13 Jan 2024 11:29:23 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 7BCDCC061A;
- Sat, 13 Jan 2024 11:29:23 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 7BCDCC061A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1705141763;
- bh=nYlucyPJjNn3tjn3l3KDjRd1roMbb90uTvgczkrDX/E=;
- h=From:To:Date:Message-Id:MIME-Version;
- b=GbvHGZtInopgkpxTGQQcKsC7UAjbCfTf6eHoU7ZHVFiJvmwWYKV4a5pwNm+X4TQOm
- YFICsZzv/tkFd5bk4oqLIPWCeoVoZcGjRBk2M3jimyc0UOgQrUKKsx1w/gkh4yDbLN
- 155FI2nNn4zkwVZwWQR4dREE1tsaH1hzL0YpLR3Q=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id a6nrp4H3ItXM; Sat, 13 Jan 2024 11:29:23 +0100 (CET)
-Received: from AM-Inspiron-3585.numericable.fr (38.162.10.109.rev.sfr.net
- [109.10.162.38])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 37645C070E;
- Sat, 13 Jan 2024 11:29:23 +0100 (CET)
-From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- =?UTF-8?q?Philipe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 7/7] Add tests for the STM32L4x5_RCC
-Date: Sat, 13 Jan 2024 11:29:13 +0100
-Message-Id: <20240113102913.18278-8-arnaud.minier@telecom-paris.fr>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240113102913.18278-1-arnaud.minier@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rObRv-0000Mx-UO; Sat, 13 Jan 2024 05:41:13 -0500
+Received: from 127.0.0.1 (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits)
+ server-digest SHA256) (Client did not present a certificate)
+ by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 85B6680024;
+ Sat, 13 Jan 2024 11:41:06 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
+ t=1705142466; bh=XsBfk377Hx91qrk58snQlKdvUyxgU/0p/5F+skRQh7A=;
+ h=References:From:To:Cc:Subject:Date:In-reply-to;
+ b=so0k2mO88xfaEBgdwt4NI2lWvCS8iy7kqRCwTUNvQJIX1KLZPyt59clZZoVghWY8g
+ 3Jnh0NrX0qVPV1dninf6MUVZ5Z7eMCQFGDdzoeLFwCASoC5hWK0DCrcWBoQ/j57kNT
+ ySH2mvkWpieLYi/hIcn2MUtJp+tMqEGgnTohu6pkJEqjegTu+0fp5kTjJzVrqvEVgA
+ nZ89CtoFAmnN+cm4OgBHbxbryDcFUyTItGPo76Lg08qCLwZE6pstoL8y4oolXYQ+d+
+ lC1ThQuPRhn+S1L0K957OD1ZWZxGp7eHsJ12FLaIR8rB1FQuwLEcsHxAbOu2LlJIS1
+ OTizmpZ81DjzA==
 References: <20240113102913.18278-1-arnaud.minier@telecom-paris.fr>
+ <20240113102913.18278-8-arnaud.minier@telecom-paris.fr>
+User-agent: mu4e 1.10.8; emacs 29.1
+From: Samuel Tardieu <sam@rfc1149.net>
+To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Cc: Alistair Francis <alistair@alistair23.me>, =?utf-8?Q?In=C3=A8s?= Varhol
+ <ines.varhol@telecom-paris.fr>, qemu-arm@nongnu.org, Philipe =?utf-8?Q?Ma?=
+ =?utf-8?Q?thieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH 7/7] Add tests for the STM32L4x5_RCC
+Date: Sat, 13 Jan 2024 11:40:24 +0100
+In-reply-to: <20240113102913.18278-8-arnaud.minier@telecom-paris.fr>
+Message-ID: <878r4th5x9.fsf@rfc1149.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::dc;
- envelope-from=arnaud.minier@telecom-paris.fr; helo=zproxy1.enst.fr
+Content-Type: text/plain; format=flowed
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,268 +91,29 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0Hnd5nEMaExL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kFHBKE0n7Atp
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- tests/qtest/meson.build          |   3 +-
- tests/qtest/stm32l4x5_rcc-test.c | 211 +++++++++++++++++++++++++++++++
- 2 files changed, 213 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32l4x5_rcc-test.c
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index a926af92f6..b0d9a8c2de 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -197,7 +197,8 @@ qtests_aspeed =3D \
-=20
- qtests_stm32l4x5 =3D \
-   ['stm32l4x5_exti-test',
--   'stm32l4x5_syscfg-test']
-+   'stm32l4x5_syscfg-test',
-+   'stm32l4x5_rcc-test']
-=20
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-diff --git a/tests/qtest/stm32l4x5_rcc-test.c b/tests/qtest/stm32l4x5_rcc=
--test.c
-new file mode 100644
-index 0000000000..eaa2f4b02f
---- /dev/null
-+++ b/tests/qtest/stm32l4x5_rcc-test.c
-@@ -0,0 +1,211 @@
-+/*
-+ * QTest testcase for STM32L4x5_RCC
-+ *
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/registerfields.h"
-+#include "libqtest-single.h"
-+#include "hw/misc/stm32l4x5_rcc_internals.h"
-+
-+#define RCC_BASE_ADDR 0x40021000
-+#define NVIC_ISER 0xE000E100
-+#define NVIC_ISPR 0xE000E200
-+#define NVIC_ICPR 0xE000E280
-+#define RCC_IRQ 5
-+
-+static void enable_nvic_irq(unsigned int n)
-+{
-+    writel(NVIC_ISER, 1 << n);
-+}
-+
-+static void unpend_nvic_irq(unsigned int n)
-+{
-+    writel(NVIC_ICPR, 1 << n);
-+}
-+
-+static bool check_nvic_pending(unsigned int n)
-+{
-+    return readl(NVIC_ISPR) & (1 << n);
-+}
-+
-+static bool qts_wait_for_flag(QTestState *qts, uint32_t event_addr,
-+                              uint32_t flag, uint32_t value)
-+{
-+    time_t now, start =3D time(NULL);
-+
-+    while (true) {
-+        if ((qtest_readl(qts, event_addr) & flag) =3D=3D value) {
-+            return true;
-+        }
-+
-+        /* Wait at most 5 seconds */
-+        now =3D time(NULL);
-+        if (now - start > 5) {
-+            break;
-+        }
-+        g_usleep(1000);
-+    }
-+
-+    return false;
-+}
-+
-+static bool rcc_wait_for_flag(uint32_t event_addr, uint32_t flag,
-+                              uint32_t value)
-+{
-+    return qts_wait_for_flag(global_qtest, RCC_BASE_ADDR + event_addr, f=
-lag, value);
-+}
-+
-+static void rcc_writel(unsigned int offset, uint32_t value)
-+{
-+    writel(RCC_BASE_ADDR + offset, value);
-+}
-+
-+static uint32_t rcc_readl(unsigned int offset)
-+{
-+    return readl(RCC_BASE_ADDR + offset);
-+}
-+
-+static void test_init_msi(void)
-+{
-+    /* MSIRANGE can be set only when MSI is OFF or READY */
-+    rcc_writel(A_CR, R_CR_MSION_MASK);
-+    /* Wait until MSI is stable */
-+    g_assert_true(rcc_wait_for_flag(A_CR, R_CR_MSIRDY_MASK, R_CR_MSIRDY_=
-MASK));
-+    /* TODO find a way to test MSI value */
-+}
-+
-+static void test_set_msi_as_sysclk(void)
-+{
-+    /* Clocking from MSI, in case MSI was not the default source */
-+    rcc_writel(A_CFGR, 0);
-+    /* Wait until MSI is selected and stable */
-+    g_assert_true(rcc_wait_for_flag(A_CFGR, R_CFGR_SWS_MASK, 0));
-+}
-+
-+static void test_init_pll(void)
-+{
-+    uint32_t value;
-+
-+    /*
-+     * Update PLL and set MSI as the source clock.
-+     * PLLM =3D 1 --> 000
-+     * PLLN =3D 40 --> 40
-+     * PPLLR =3D 2 --> 00
-+     * PLLDIV =3D unused, PLLP =3D unused (SAI3), PLLQ =3D unused (48M1)
-+     * SRC =3D MSI --> 01
-+     */
-+    rcc_writel(A_PLLCFGR, R_PLLCFGR_PLLREN_MASK |
-+            (40 << R_PLLCFGR_PLLN_SHIFT) |
-+            (0b01 << R_PLLCFGR_PLLSRC_SHIFT));
-+
-+    /* PLL activation */
-+    value =3D rcc_readl(A_CR);
-+    rcc_writel(A_CR, value | R_CR_PLLON_MASK);
-+
-+    /* Waiting for PLL lock. */
-+    g_assert_true(rcc_wait_for_flag(A_CR, R_CR_PLLRDY_MASK, R_CR_PLLRDY_=
-MASK));
-+
-+    /* Switches on the PLL clock source */
-+    value =3D rcc_readl(A_CFGR);
-+    rcc_writel(A_CFGR, (value & ~R_CFGR_SW_MASK) |
-+        (0b11 << R_CFGR_SW_SHIFT));
-+
-+    /* Wait until SYSCLK is stable. */
-+    g_assert_true(rcc_wait_for_flag(A_CFGR, R_CFGR_SWS_MASK,
-+        (0b11 << R_CFGR_SWS_SHIFT)));
-+}
-+
-+static void test_activate_lse(void)
-+{
-+    /* LSE activation, no LSE Bypass */
-+    rcc_writel(A_BDCR, R_BDCR_LSEDRV_MASK | R_BDCR_LSEON_MASK);
-+    g_assert_true(rcc_wait_for_flag(A_BDCR, R_BDCR_LSERDY_MASK, R_BDCR_L=
-SERDY_MASK));
-+}
-+
-+static void test_irq(void)
-+{
-+    enable_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_LSIRDYIE_MASK);
-+    rcc_writel(A_CSR, R_CSR_LSION_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_LSIRDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_LSERDYIE_MASK);
-+    rcc_writel(A_BDCR, R_BDCR_LSEON_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_LSERDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_MSIRDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_MSION_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_MSIRDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_HSIRDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_HSION_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_HSIRDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_HSERDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_HSEON_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_HSERDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_PLLRDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_PLLON_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_PLLRDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_PLLSAI1RDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_PLLSAI1ON_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_PLLSAI1RDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+
-+    rcc_writel(A_CIER, R_CIER_PLLSAI2RDYIE_MASK);
-+    rcc_writel(A_CR, R_CR_PLLSAI2ON_MASK);
-+    g_assert_true(check_nvic_pending(RCC_IRQ));
-+    rcc_writel(A_CICR, R_CICR_PLLSAI2RDYC_MASK);
-+    unpend_nvic_irq(RCC_IRQ);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+    /*
-+     * These test separately that we can enable the plls, change the sys=
-clk,
-+     * and enable different devices.
-+     * They are dependent on one another.
-+     * The procedure is taken from a program by Samuel Tardieu.
-+     */
-+    qtest_add_func("stm32l4x5/rcc/init_msi", test_init_msi);
-+    qtest_add_func("stm32l4x5/rcc/set_msi_as_sysclk",
-+        test_set_msi_as_sysclk);
-+    qtest_add_func("stm32l4x5/rcc/activate_lse", test_activate_lse);
-+    qtest_add_func("stm32l4x5/rcc/init_pll", test_init_pll);
-+
-+    qtest_add_func("stm32l4x5/rcc/irq", test_irq);
-+
-+    qtest_start("-machine b-l475e-iot01a");
-+    ret =3D g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
---=20
-2.34.1
+Arnaud Minier <arnaud.minier@telecom-paris.fr> writes:
 
+> +     * The procedure is taken from a program by Samuel Tardieu.
+
+You may drop this line as I used the same procedure which is used 
+in other tests, this does not deserve a mention here.
+
+  Sam
+-- 
+Samuel Tardieu

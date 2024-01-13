@@ -1,79 +1,78 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2958055ejs;
-        Sat, 13 Jan 2024 05:28:07 -0800 (PST)
-X-Received: by 2002:a05:600c:2e15:b0:40e:5182:e8dc with SMTP id o21-20020a05600c2e1500b0040e5182e8dcmr1421697wmf.99.1705152486885;
-        Sat, 13 Jan 2024 05:28:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705152486; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2962231ejs;
+        Sat, 13 Jan 2024 05:37:26 -0800 (PST)
+X-Received: by 2002:a05:6402:510d:b0:558:c044:e860 with SMTP id m13-20020a056402510d00b00558c044e860mr1912107edd.69.1705153046295;
+        Sat, 13 Jan 2024 05:37:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705153046; cv=none;
         d=google.com; s=arc-20160816;
-        b=B14itMuiFXW4uxmt8haBp5nk6gz/e+Tyf8UWzsCvtdvg9su1s1ToDTnxd7l92E0whm
-         uKhB16knOOpN0qj/TGLUDaX7RTJhCVpaiPIHacys3hwhvcGD7YeqX2zlEMalY8PqQjrP
-         tTCt/lfCAigXvFHFrtaYZFae1AI+bGBgUveYUuqmqed4NGUpCddnoYJqYFEsXv+VP07z
-         oCgQJXuC7bWt0btutR0FN6VpeU+fSzJVeXOJeIUn+7v+FWMsMmQzcLhtmB4XPQ4svvmU
-         TmDepKKRWn1V2e2hL1d7ex7UMLO2ZnYMl+SG9G62jQDsfzh/a/pQ1mEGuYrG3vNgE9bT
-         2E7Q==
+        b=Mm4eASosvZhwsVuWDOqjY5O5VM8tb8J4/BnqKYeW7AGfm/BvJIC1KTQwbrHNT0F57V
+         sQHO/xYdyULYrcpNQnf3mdWqietj/HeU21Pncj3W8jd7kbX26hSX0oqFvs39U+q5N6ww
+         PqBzDArFAsvdtWh6gWEHXxLgEzPdH2hyOrLiVuleF/B2f7gmcR7JDVqCYyQ17tCZS4jF
+         CeSR3XPvPUqfmPb5lYT7eMUGTvEe51j2VnhPMA71mzesN95U1JIepG74SWkgmeP410IS
+         jk/ZT9kWxgkAHlB1sza1emQyu+0tofhx5yv4emNqKhO7W86V+ZGVCdjQ3HfAPLoCpIyM
+         xX6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=h4K3Wxfo4ZyLhveW7ANrV2lDD2G99tSb4tG0hfk3ZaM=;
+        bh=+rz24OMvi/V2SXbGCS1IxK9DxcCEEIjiEZAyA2+zzZc=;
         fh=TdHNMZ8OHJtpmGETXsguxom88UHQqP6xd+te8w86lwo=;
-        b=wm0zJRQBElYuhTIuw+vB07T1rNBQH6XHjKNmfv5jAGTy37fKNa0cF2Niz+Up3zuq+e
-         lj00y4Pq+xTnxCT4l8YwdXwY/t3KcsY8buYpbJXLt9U+Zpt7filAvjeAbo8R1itv5nL+
-         IuZez8AChJOBjR8XUZjzausvQD6P2ihZhVX80bkbK+503xm8fBten81GotYpcxM25n38
-         locTzKdD0nv9rQK5ZEpaZSnzyICbl2FOD5mAzPXCXkmoXBsFg1nt8HX70Vgn0dh5JlUy
-         4vieaxcAS2T4MivKsRgaB2CW1NxarQFuzTMIHWu3N9tyfmthbR+6jvargJZLzSOSFSbh
-         MQxA==
+        b=xtb6NVq2/Bw4W7yVCnqSfJGZSUHuh1WLrCOX6+zfoR/wWrO7WvXocXnTQo2aI5Ru9d
+         S1kL4xQ+MSc5vL9H/P37wxijFfxneLd4AU25MUFxYZdxFyCV3X/e39WdvKlzvOT6dygh
+         WKBCuY4ZXGtm1xZB/418Zj0mHn8gAD9lK5tdkcKvIPycxyWe2cKSR5xy/uZkim1tR0FM
+         P8GX1n/nWO+LAWMSpy6fBOpf1v7PBE0pAZZvommJmkGsjKMK4is721EHiibXRS/UBBMy
+         +4souJgdCwzokF/IhXM+sBp6AWavTlOWUVT5+JMzJ/YUsp+IvUdVkJytqlAaBg8Y5TCj
+         3WQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ntyHI/eu";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EfGNpItu;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n9-20020a05600c4f8900b0040e4e36d0cesor124174wmq.1.2024.01.13.05.28.06
+        by mx.google.com with SMTPS id s28-20020a05640217dc00b0055881087bb1sor544089edy.11.2024.01.13.05.37.26
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 13 Jan 2024 05:28:06 -0800 (PST)
+        Sat, 13 Jan 2024 05:37:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ntyHI/eu";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EfGNpItu;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705152486; x=1705757286; darn=linaro.org;
+        d=linaro.org; s=google; t=1705153046; x=1705757846; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h4K3Wxfo4ZyLhveW7ANrV2lDD2G99tSb4tG0hfk3ZaM=;
-        b=ntyHI/euI90S5TnUQEwxcAhYa5uxFhPykp/Q652jv+lrLlVIPn/g2/7pHGVNcpdHNk
-         jh2utfCdblCvVzjUBOyhME04Xlzmskff/GJ/xb4g1tdw2eJ9LfGTdg++05uGfLsCiJS3
-         Y770dY/NqF1ac3K6438EfIgsVMK2ytfl2GPB2y3GXqL9Pn0oYRavE1XLu3O4m5kDzDyM
-         OXsa56W7kodWzu+6qEaagqjnt71Kh0tqqIWCN/E+wE/diHBCF/DQHFRtyZlkN6hpp9el
-         zzM1zGrenR2cKK53F0E9aiU8dQmYXGLlxNyda4TU3VQfiNxtomJ8GdQDqjHXvzvXJVZ3
-         hedw==
+        bh=+rz24OMvi/V2SXbGCS1IxK9DxcCEEIjiEZAyA2+zzZc=;
+        b=EfGNpItuHUJoT1oHE87IbkDTYQcww0AKnoQfSB5s44xEw+ilfIDsV8IqF96rbM+9s1
+         ZWdmOYZNH0rEKE4vpV8yMpSTbMmmIkm6Gr1EggGjwp3DG7w+MXvakhvGFHU6mKFgnnon
+         zcuUEycMTM8Tk0F3J8Xs15Dj3QqNdN/7b7GWX0zTIDtUakKXHB0z8PDK433u2Srp/zHN
+         c/BLv6O4ygS9vy8Uriiq6VBnN0+n1zZEvCvXNxGXalKWRfiPP7Ef1mLuJlXcbAmD/pad
+         trxQxj3Kl8kPd4KOOBTNX2/Ra3/9ELdMocLLTRUmuNvj+xJSGZFWD09JGMdSUTFScM+p
+         /bCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705152486; x=1705757286;
+        d=1e100.net; s=20230601; t=1705153046; x=1705757846;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h4K3Wxfo4ZyLhveW7ANrV2lDD2G99tSb4tG0hfk3ZaM=;
-        b=eBtDThIuGK7s8fTKDc9JkpwtjENPdRIlatr7po+Mm0feM1kopHvDhKNnPFzfkEKE9y
-         O1yJWma4RshKCaCInkTeDbaRZgS6Ddo7yWLm1KFx2yBx0llcX55GkvK7Mzvd3YFwBUQN
-         L933tceNOQbELnmBD1N2sxP2K0u9OEmdgvocc2SYPPVACkDmVkfG6WNgc+e4XzylA1XS
-         iWFypRWgDJK6RmgIpSXKyuseRFjm8fh6TudgRrQjKO7bDKbUh8Q4wTFPEEVSNDxYRwox
-         p7HvqMJ7TyzexWMZ8i7ZVl/KY1j21EYVTTQgkQWqR8Uxn2QrpiUzHPZe3F1u1Fx/WVAz
-         oQzQ==
-X-Gm-Message-State: AOJu0YwZcdei+9ZT8BkSAw+Wi5J9M0xXE3B94yj3YfHeHqyskvbojUG9
-	6l5H053dge1ZiQhi81i9Ge71nYD6aNjEFX31+yizaZ8Esh6jf27s
-X-Google-Smtp-Source: AGHT+IGXxTvL35WmMTNzUEMuG99M1syyv7xFN0LuUEEggaWsIfLCCeKzw1TLSg9w362CnqRs5DDHBLTM2hBlZXeTTh8=
-X-Received: by 2002:a05:600c:1d85:b0:40e:4c1a:2663 with SMTP id
- p5-20020a05600c1d8500b0040e4c1a2663mr1406433wms.3.1705152486520; Sat, 13 Jan
- 2024 05:28:06 -0800 (PST)
+        bh=+rz24OMvi/V2SXbGCS1IxK9DxcCEEIjiEZAyA2+zzZc=;
+        b=TB5hs5Loz1BcsUV2gwXotZ00So7XxxC7w8GJ2JHsWhH3OensfmCREZgVIMzdTH6dN3
+         wNWdgyLj4UDfvlaT3dHY9HAEHUzH5cXAl2GQJSA5hQdNqOj5G+8jNH0jiLIK+Wqb5BHu
+         s1AuW3pqVAqj8mrK4MEHsTR7JZgXMnHL9M6pXfOS3RI1dRur6TTRHExuQgo5CCUDhFt7
+         mSBM/tS9yyvFy/2245IGHoJQ10jiiidbTIRbW6louxi7z7vr5KWe5Nz1g7YiWfjlaCST
+         PMmQuj1bmWcafI/PfoOyjAo1G3qO7/iAyh1gOCfO+Fs1pRd8AqtrionQcAclYWtLQQQF
+         XFMg==
+X-Gm-Message-State: AOJu0Yx12Xvw/zQDVrvl+T0oArdCYTq/DSnCGKOz6UUToonTcw6T8M93
+	ROupbEfzryP3Us/bnnvjgg5x6Xx2Wy0JU+xPl4IoWOMKkwD1/z1L
+X-Google-Smtp-Source: AGHT+IEFatFmxhqUzrc60Lqwqt/8ztwxYuxm8NO3lDTfOsUB6qyjMzekHJGP1a1zywT026F3xSTSBFFp4HzydNpglIU=
+X-Received: by 2002:aa7:cd62:0:b0:557:9018:9980 with SMTP id
+ ca2-20020aa7cd62000000b0055790189980mr1356731edb.52.1705153045887; Sat, 13
+ Jan 2024 05:37:25 -0800 (PST)
 MIME-Version: 1.0
-References: <20240110195329.3995-1-philmd@linaro.org> <20240110195329.3995-5-philmd@linaro.org>
-In-Reply-To: <20240110195329.3995-5-philmd@linaro.org>
+References: <20240110195329.3995-1-philmd@linaro.org>
+In-Reply-To: <20240110195329.3995-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 13 Jan 2024 13:27:33 +0000
-Message-ID: <CAFEAcA_OarQg2Aw8bTQD3Q4X80uTzzfgvG9pXcRvz48_aa=vFw@mail.gmail.com>
-Subject: Re: [PATCH v3 04/14] hw/arm/armv7m: Always set 'init-nsvtor' property
- for Cortex-M CPUs
+Date: Sat, 13 Jan 2024 13:36:53 +0000
+Message-ID: <CAFEAcA9c58iVvgW4wnNT1H3tzsdYbxyU-kT7bJP=A3E+B-t7PA@mail.gmail.com>
+Subject: Re: [PATCH v3 00/14] hw/arm: Prefer arm_feature() over object_property_find()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
 	qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>, 
@@ -83,26 +82,62 @@ Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Markus Armbruster <armbru@redhat.com>, Alistair Francis <alistair@alistair23.me>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: T9ZhBmyTgb56
+X-TUID: wdy8CGKEz6ux
 
-On Wed, 10 Jan 2024 at 19:54, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+On Wed, 10 Jan 2024 at 19:53, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> All CPUs implementing ARM_FEATURE_M have the 'init-nsvtor' property.
-> Since setting the property can not fail, replace
+> Since v2 [2]:
+> - Dropped "Simplify checking A64_MTE bit in FEATURE_ID register"
+> - Correct object_property_get_bool() uses
+> - Update ARM_FEATURE_AARCH64 && aa64_mte
 >
->    object_property_set_uint(..., "init-nsvtor", ..., &error_abort);
+> Since RFC [1]:
+> - Split one patch per feature
+> - Addressed Peter's review comments
 >
-> by:
->    qdev_prop_set_uint32(..., "init-nsvtor", ...).
+> [1] https://lore.kernel.org/qemu-devel/20231214171447.44025-1-philmd@lina=
+ro.org/
+> [2] https://lore.kernel.org/qemu-devel/20240109180930.90793-1-philmd@lina=
+ro.org/
 >
-> which is a one-to-one replacement.
+> Based-on: <20231123143813.42632-1-philmd@linaro.org>
+>   "hw: Simplify accesses to CPUState::'start-powered-off' property"
 >
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
+> Philippe Mathieu-Daud=C3=A9 (14):
+>   hw/arm/armv7m: Introduce cpudev variable in armv7m_realize()
+>   hw/arm/armv7m: Ensure requested CPU type implements ARM_FEATURE_M
+>   hw/arm/armv7m: Move code setting 'start-powered-off' property around
+>   hw/arm/armv7m: Always set 'init-nsvtor' property for Cortex-M CPUs
+>   hw/arm: Prefer arm_feature(M_SECURITY) over object_property_find()
+>   hw/arm: Prefer arm_feature(THUMB_DSP) over object_property_find(dsp)
+>   hw/arm: Prefer arm_feature(V7) over
+>     object_property_find(pmsav7-dregion)
+>   hw/arm: Prefer arm_feature(EL3) over object_property_find(has_el3)
+>   hw/arm: Prefer arm_feature(EL2) over object_property_find(has_el2)
+>   hw/arm: Prefer arm_feature(CBAR*) over
+>     object_property_find(reset-cbar)
+>   hw/arm: Prefer arm_feature(PMU) over object_property_find(pmu)
+>   hw/arm: Prefer arm_feature(GENERIC_TMR) over 'kvm-no-adjvtime'
+>     property
+>   hw/arm: Prefer arm_feature(AARCH64) over object_property_find(aarch64)
+>   hw/arm: Prefer cpu_isar_feature(aa64_mte) over
+>     property_find(tag-memory)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+The first part of this is fine and reasonable cleanup, but I
+continue to disagree about the later parts. What we want to do is
+"if this property is present, then set it", and that's what we do.
+Conversion to "if <some condition we know that the CPU is using to
+decide whether to define the property> then set it" is duplicating
+the condition logic in two places and opening the door for bugs
+where we change the condition in one place and not in the other.
+Where the <some condition> is a simple "feature X is set" it doesn't
+look too bad, but where it gets more complex it makes it IMHO more
+obvious that this is a bad idea, for example with:
+
+-        if (object_property_find(cpuobj, "reset-cbar")) {
++        if (arm_feature(&cpu->env, ARM_FEATURE_CBAR) ||
++            arm_feature(&cpu->env, ARM_FEATURE_CBAR_RO)) {
 
 thanks
 -- PMM

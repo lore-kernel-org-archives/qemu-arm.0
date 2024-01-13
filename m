@@ -1,103 +1,102 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c11-20020a05600c0a4b00b0040d53588d94sm10357998wmq.46.2024.01.12.08.46.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 08:46:51 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3147A5F7A9;
-	Fri, 12 Jan 2024 16:46:51 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
-  qemu-s390x@nongnu.org,  qemu-ppc@nongnu.org,  Richard Henderson
- <richard.henderson@linaro.org>,  Song Gao <gaosong@loongson.cn>,
-  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  David
- Hildenbrand
- <david@redhat.com>,  Aurelien Jarno <aurelien@aurel32.net>,  Yoshinori
- Sato <ysato@users.sourceforge.jp>,  Yanan Wang <wangyanan55@huawei.com>,
-  Bin Meng <bin.meng@windriver.com>,  Laurent Vivier <lvivier@redhat.com>,
-  Michael Rolnik <mrolnik@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
-  David Woodhouse <dwmw2@infradead.org>,  Laurent Vivier
- <laurent@vivier.eu>,  Paolo Bonzini <pbonzini@redhat.com>,  Brian Cain
- <bcain@quicinc.com>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
-  Beraldo Leal <bleal@redhat.com>,  Paul Durrant <paul@xen.org>,  Mahmoud
- Mandour <ma.mandourr@gmail.com>,  Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>,  Cleber Rosa <crosa@redhat.com>,
-  kvm@vger.kernel.org,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
-  qemu-arm@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  John Snow
- <jsnow@redhat.com>,  Daniel
- Henrique Barboza <dbarboza@ventanamicro.com>,  Nicholas Piggin
- <npiggin@gmail.com>,  Palmer Dabbelt <palmer@dabbelt.com>,  Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>,  Ilya Leoshkevich
- <iii@linux.ibm.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Eduardo Habkost
- <eduardo@habkost.net>,  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-  qemu-riscv@nongnu.org,  Alistair Francis <alistair.francis@wdc.com>,
-  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Subject: Re: [PATCH v2 12/43] qtest: bump boot-serial-test timeout to 3 minutes
-In-Reply-To: <cf617223-0a0b-4d42-84a3-cd323ea4c421@redhat.com> (Thomas Huth's
-	message of "Fri, 12 Jan 2024 16:13:16 +0100")
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
-	<20240103173349.398526-13-alex.bennee@linaro.org>
-	<cf617223-0a0b-4d42-84a3-cd323ea4c421@redhat.com>
-User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Fri, 12 Jan 2024 16:46:51 +0000
-Message-ID: <871qamwlc4.fsf@draig.linaro.org>
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2957070ejs;
+        Sat, 13 Jan 2024 05:25:41 -0800 (PST)
+X-Received: by 2002:a17:907:1b02:b0:a28:ac22:7575 with SMTP id mp2-20020a1709071b0200b00a28ac227575mr5686517ejc.4.1705152340918;
+        Sat, 13 Jan 2024 05:25:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705152340; cv=none;
+        d=google.com; s=arc-20160816;
+        b=1Lj3dlEbQLyClqDk29MwG8GMnOfQSlwp3KEQyyOiTQdrF5dyaixaEzluGneElta4bg
+         zYuV5d2oEKSi34aWtMCOKsfg7fpDmLfcYywSEe05C98dFHw8GqZTs4TBXnGUexWK7AhC
+         JHunok9Gga0lAy1iho0I6hfao40AwrJHTUea8kl65DqOgmwA4uUet9v5780w+DeE1Egj
+         9igSs04fZM2KYnXIMNvmNSW3RZb80Thw8i7uITYRqhIOYHAE2M+1WCtpyBEDhlGulA0G
+         ihKbUcVkV+BbYsswVnHVKa+Tp7aBD7JkIn8oiL/sffo7XAqVbcNdeBLxbl/RgMPTLRAp
+         qkWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+xwb/pG+4+lZ/N8kjn8ZXif7LxvZAq1yC/392vBJEkw=;
+        fh=TdHNMZ8OHJtpmGETXsguxom88UHQqP6xd+te8w86lwo=;
+        b=vqmlXw5j7KeA8gtLY8yN8UAdDf8AdhxdKnDaZvMm7TdCNkaH6xjyIBWfhKPE3YK87e
+         LxdTqdwhVwjxSzmd0AHYlcLIbEM8Jd1PBPcRoa5+CtDQIPDbza+b8NXRPXeud5gZ1bIt
+         Gg72gAmR6MJR9YbmELr9hpjG+iPD4J/+oaKzZ6oJYqVYA9VqMGzZiJ1kAy7HxgJ1zaDs
+         a345ALolrF6wbCOwxb6zuTP4yRQkVlNsYkCSxmxJ/1593G/TSee7Mr0R4UCsD1CnEK5n
+         Scx2z83LAa/KXdg3888Qk8CMSEMI1KvjwccznINK8g+pkl7hy0qWaxfhxbkGTjKkST4X
+         MuSA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CJI0KB1S;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f8-20020a056402354800b00556c6bb4f68sor214345edd.0.2024.01.13.05.25.40
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Sat, 13 Jan 2024 05:25:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CJI0KB1S;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705152340; x=1705757140; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+xwb/pG+4+lZ/N8kjn8ZXif7LxvZAq1yC/392vBJEkw=;
+        b=CJI0KB1S0kUOsjXXyIDkK9/ZEdZIzGw1MSlGI6z85NvTY7ilXSCBVHWjsi7U2pZ7Y1
+         5Nthb5z5sUHymZUgp43l7OhocWaAXLDQRiS1N/c+2thvia3p+mAdc50T8LNtcVdeEuw6
+         oEbZyivBEguJboDMI4l7+WsjTgt86El3GcVw9MKKRCzzuFHs9AURTqnA8NET8GRhQ7pm
+         q3KGYfCie2VdRPDtoAY326mIumyifCaKo5cUJzlteSG99LBOz3/b7h+NetypY8d2HKQx
+         F0zoBDg+9nrADPcPqyJryKPTAugAiXebEdK04LBByH1FVBa2AXz9wMnMJMS0+UAwXKmT
+         lS7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705152340; x=1705757140;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+xwb/pG+4+lZ/N8kjn8ZXif7LxvZAq1yC/392vBJEkw=;
+        b=xKaztxcTHxMxOGOuJ+k9ElP4zqKa9RbHojuX/GamHAylngYm3Axg++YwSN5Vpzo32B
+         pQeUZStRY5NQZqQR8yWeLVe0x8bzSgawNywYL+JELJxUy9CvJswR98R65R/ARpGJuP8e
+         9am8BfwDkANnH9R/TLnJyX6Pxb3A6yNl3WkMbHKqti9JVJFDc5qYh1ChniDyvQUEvrLw
+         5exdNtF0JvQWSUIa4ar0sxt0VABrGL8n/xQcK7AUE9yaTeWUlefBJKcJLLczcPVZYlOy
+         7wnp7ZtRjm0A/dfmZ0bx6k7HmxHyozDbqWWVfAIx151LLENMDnUjfH3JruwfO/Fz3JOw
+         +O6w==
+X-Gm-Message-State: AOJu0Yx6taybqtdfpU5VNsulSfaZMPqMmW9o/DypC3uOfZPzuBeKwop/
+	AQcfg5X27jOi8VwkRz/ONkLdUeh+iIrEZ/hAD0WBRR35kctIRo7+
+X-Google-Smtp-Source: AGHT+IHsocBF7/cu2JK0SXST7YGi8MhSkKTcSmXdINw2CLet1TnDdHVlR8823CE151CQ3Y15CFO05uzPC+ZdPcnLuR4=
+X-Received: by 2002:a05:6402:3cd:b0:559:144:7dc4 with SMTP id
+ t13-20020a05640203cd00b0055901447dc4mr581733edw.21.1705152340575; Sat, 13 Jan
+ 2024 05:25:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20240110195329.3995-1-philmd@linaro.org> <20240110195329.3995-2-philmd@linaro.org>
+In-Reply-To: <20240110195329.3995-2-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 13 Jan 2024 13:25:07 +0000
+Message-ID: <CAFEAcA9Au5TFkmJvEphUXRNH4EvtoBbQ-10MZUJzTn0TPaE3-g@mail.gmail.com>
+Subject: Re: [PATCH v3 01/14] hw/arm/armv7m: Introduce cpudev variable in armv7m_realize()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+	qemu-arm@nongnu.org, Kevin Wolf <kwolf@redhat.com>, 
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Radoslaw Biernacki <rad@semihalf.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	Leif Lindholm <quic_llindhol@quicinc.com>, Rob Herring <robh@kernel.org>, 
+	Markus Armbruster <armbru@redhat.com>, Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: c7M1raCWZaaE
+X-TUID: ENaqWye8vEj6
 
-Thomas Huth <thuth@redhat.com> writes:
+On Wed, 10 Jan 2024 at 19:53, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> We are going to cast s->cpu as DeviceState multiple times.
+> Add a local 'cpudev' variable to simplify code review, having
+> a single DEVICE(s->cpu) conversion.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/arm/armv7m.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 
-> On 03/01/2024 18.33, Alex Benn=C3=A9e wrote:
->> From: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->> The boot-serial-test takes about 1 + 1/2 minutes in a --enable-debug
->> build. Bumping to 3 minutes will give more headroom.
->> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
->> Message-ID: <20230717182859.707658-9-berrange@redhat.com>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> Message-Id: <20231215070357.10888-9-thuth@redhat.com>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   tests/qtest/meson.build | 1 +
->>   1 file changed, 1 insertion(+)
->> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
->> index c7944e8dbe9..dc1e6da5c7b 100644
->> --- a/tests/qtest/meson.build
->> +++ b/tests/qtest/meson.build
->> @@ -6,6 +6,7 @@ slow_qtests =3D {
->>     'test-hmp' : 240,
->>     'pxe-test': 600,
->>     'prom-env-test': 360,
->> +  'boot-serial-test': 180,
->>   }
->>     qtests_generic =3D [
->
-> 3 minutes was obviously not enough:
->
->  https://gitlab.com/qemu-project/qemu/-/jobs/5918818492#L4984
->
-> And in older runs, we can see that the boot-serial-test might take
-> longer than 180s when run with TCI :
->
->  https://gitlab.com/qemu-project/qemu/-/jobs/5890481086#L4772
->
-> So I think we should bump the timeout to 240s here. Alex, are you
-> going to respin your pull request? If so, could you modify your patch?
-> Otherwise I can also send a new version of this patch here, just let
-> me know.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-I'm travelling now so its tricky to respin. If you could send a new
-version that would be great.
-
-
->
->  Thomas
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM

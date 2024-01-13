@@ -1,378 +1,171 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2637966ejs;
-        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHfNHgWaL8RK+ibJVYqnVAE1EoS/UIx4dI92pLBz/s1fdrGLlNiMbRps9uSNmA3uMPfydFT
-X-Received: by 2002:a17:906:6d52:b0:a2c:34c9:469e with SMTP id a18-20020a1709066d5200b00a2c34c9469emr565596ejt.57.1705095199378;
-        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705095199; cv=none;
+Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp2889366ejs;
+        Sat, 13 Jan 2024 02:30:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGIiRH4G253SrS3tUmuDwpWIFAHDshDQHWDGre4fx69KvBXDtXtILCceFP7VmFkSgVBaIQs
+X-Received: by 2002:a05:620a:269b:b0:783:4b33:7e40 with SMTP id c27-20020a05620a269b00b007834b337e40mr2669308qkp.153.1705141833843;
+        Sat, 13 Jan 2024 02:30:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705141833; cv=none;
         d=google.com; s=arc-20160816;
-        b=l+DUvFfjENkf0pDh2WEhGFlHS2jMUxnKuqyWBHOS8nBSrzlAiSr1+iS8IQTgRgocV/
-         6sOmtRAtxlicOCusth7qcPuSa5oTbIYCjPowVBg+S1QiWGSRpuYA+xopAkjFjTfkp4WI
-         4Lv3NZhEC3D7wcVwoI8XJOkSBO7R4gd+3KDp9/S8Xt9b2VdyU7Y838/Ar+Aymq4eCHle
-         oc/Fv8x3NNDv5N1oIwpIWaMuwjnxeJG35ooXdy/T1/2eUyFMS1q0guUyWtVeXQkFsVmu
-         Qhn5IBBPGMahM7YnLRwS/ON4ASrz+KdaeJhs393FB4P4vx+Q6PXcUjhNTS/0TndgD9+l
-         P++A==
+        b=knYTDJLlM4UuHyGnPrzLUd78GnNBqQOZeD2vmrAKGc0nkllhulrr2ODG8depErT6NN
+         U7lAK57ZNS9Oo7k5GA7pc+CV+Rw4UM0/94RYMSggAVsxPABc8WPN2PiYDXfvVklPLmhf
+         7tgXKBntbznVA3IJhi1en5U7ieE0OELQBP3/SGNg7Wgt/rVYbmJvQLC7AWehOmJo2jVv
+         k5gEEozc6PxxvQfreMVVecGyHJWPSJ1W5Bw2EuiNZXe0r+MP0XufPrmrtQ0VyZ5Hl93l
+         5BKTl3DhPglAoedYjlwKMb9m9+gUJEi8zvWDgrw7vXUYBHVgKVAUVa9MXJj766W/Tg+S
+         A9gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
-         :dkim-signature:dkim-signature;
-        bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
-        fh=fFvlIDdmAqaAkfPyDpiwHTbwrkOx8QXnQLLSSSv2vZM=;
-        b=vRXCLCQeJwJHIA5NX0HS3qJVPL4/oDhj12Lh5ZJyD04Tu51f+09TYXhjjE9gaeHfEb
-         XswhuPxGYJXkSa5n6JdN+ylGANmQYr9jo1oJ8SgSj6dae2JVAPRISnj5EOe+AyajzwEo
-         vquBsNXAUTwSwpdEC74mVku4To9KT1h2Nt6Iiz3ryDYuKJcM8ECoCedWY7KZqRyGvAVb
-         j8IEl1nb2toufZjw3VRzwAw2C7Al3mhi3C4t3XR/QAzYtaKgLX3zBoLk3wSW3n45hFyk
-         CCEzo1gPTn1IZSf21fyYj/vBeDlVrHux7p4DYz4ICcs2WI18pjS8ta1DgGTxoE3m3tiZ
-         Q8zw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=E5yuWhfPnppHLVuFXQteLkpsVLRPsOnr02EFK3W7dNk=;
+        fh=/XJxoXs5cC2CXt6M+TWCN3kiDWHHEGC2LObkJjyubOk=;
+        b=fBXkz0useUv7JmiXs4OGVBuGrZx8JTmm02R2h4FW0sPmzlIF7s/dUfcomDIEdeeOsY
+         LGOLKNlIWKd4TePP06Pi7T6oWEBCBZbh/yGQx9kGMLzMGzCRmdf2yOd3bIYDiHzN6TiP
+         l6TnHfVNRC+ifkx32wFpni6K8GHG5u0VZ7WBhYRn0J1gv51a/CDmLNVcerYPF8q42/4u
+         cUWTAS1ZcJnuuoQXBUk2/MaDCA86PDNEZ1KcogBWmR4UXJkBXhNRPmuRdhnk3SaSb3S8
+         yuF0pW4zXb/jQr8//fOqi/+HY1pbikQRvesGgInii2EqtghPuG4ILt+7TiMmpTxcuDJn
+         f1gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=RXSJ0KUl;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Xj0mUNWG;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.223.131])
-        by mx.google.com with ESMTPS id p17-20020a1709060e9100b00a28716cefa6si1717212ejf.63.2024.01.12.13.33.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jan 2024 13:33:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) client-ip=195.135.223.131;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ADHAYOuT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u13-20020a05620a120d00b0078310e04b6csi4481654qkj.634.2024.01.13.02.30.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 13 Jan 2024 02:30:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=RXSJ0KUl;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Xj0mUNWG;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.131 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 810371F393;
-	Fri, 12 Jan 2024 21:33:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1705095198; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
-	b=RXSJ0KUlqlQb94jSMgnp7KY9dXKkHSCZEh1sV8b3m3o9TYXbHI73yo1NZ1KQxW/Tzl/LeE
-	pXzbmpsYcu9uoKrYqyZ4lMbq92JWJqa1w6GBLsGfFPuyG8OJGhAKZObko60kzZ5Df5x59L
-	b94P8wuHtbTalHlvUYDQxhUKSBaTdyg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1705095198;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
-	b=yaYeNV6UEMNmmPIPTKJt+ETLNGj72p/vAsfoPvAr8h7OJ3uzHB8I9/mtfPsH9StIUksQPL
-	5C9w4j7VJyFqGDCA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1705095197; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
-	b=Xj0mUNWGvi+WcpUhHsMUi8zIrFTjnYi3K/JsAekN6k/ZWHtzC/lTKjkiWLGS6fi2oFNjOC
-	sNtGC0sZARBtrflv6+KeYAlu9DiAu0BLIlw76By0z0j6/JoDsyl1ItaDZdW1WwZJr6hsOY
-	2zmA7FQZVfRfRaSPt+mXW5wR/YmEy8Q=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1705095197;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ahxnVnXxpZSNcR24q3h+Stwk7Ct/k/IcNC9dnQQCRro=;
-	b=ky2udXbPYlbgiy6Rz5p+ZbXAQMsVcGw2V8z8S1+kWW1NjLxA12i7rYezMxAv1fsSxEdNI3
-	yfE3j2tyLpv5dMBg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id F311E136A4;
-	Fri, 12 Jan 2024 21:33:16 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id p1jmLRywoWXlcQAAD6G6ig
-	(envelope-from <farosas@suse.de>); Fri, 12 Jan 2024 21:33:16 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Anton Johansson <anjo@rev.ng>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, Jean-Christophe Dubois
- <jcd@tribudubois.net>, Igor Mitsyanko <i.mitsyanko@gmail.com>, "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH 14/33] hw/cpu/arm: Handle 'has_el2/3' properties once in
- MPCore parent
-In-Reply-To: <20231212162935.42910-15-philmd@linaro.org>
-References: <20231212162935.42910-1-philmd@linaro.org>
- <20231212162935.42910-15-philmd@linaro.org>
-Date: Fri, 12 Jan 2024 18:33:13 -0300
-Message-ID: <87y1cudyp2.fsf@suse.de>
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ADHAYOuT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rObGo-0004rW-7p; Sat, 13 Jan 2024 05:29:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
+ id 1rObGd-0004oM-4b; Sat, 13 Jan 2024 05:29:32 -0500
+Received: from zproxy1.enst.fr ([137.194.2.220])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
+ id 1rObGb-0004SM-1I; Sat, 13 Jan 2024 05:29:30 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id 8768DC06B8;
+ Sat, 13 Jan 2024 11:29:22 +0100 (CET)
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id uO31SiJUm0xn; Sat, 13 Jan 2024 11:29:21 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id A2E6CC070E;
+ Sat, 13 Jan 2024 11:29:21 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr A2E6CC070E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1705141761;
+ bh=E5yuWhfPnppHLVuFXQteLkpsVLRPsOnr02EFK3W7dNk=;
+ h=From:To:Date:Message-Id:MIME-Version;
+ b=ADHAYOuTn0clcobOc57d7mltq8kkh/gF6Sxqsg3rGPTAKONgEefdOi6yZjoz7A1vK
+ LxzE+KxOPWeVfQJf/dAGhxPSea7JeTouhdxHcEHPxwcwkDSn2ch9o4iMF1DyU19WjP
+ FxXByRtRxh6T2gDUAtfMFBaCWmK02Geo29m40YFU=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id JwRdq_mhVlo5; Sat, 13 Jan 2024 11:29:21 +0100 (CET)
+Received: from AM-Inspiron-3585.numericable.fr (38.162.10.109.rev.sfr.net
+ [109.10.162.38])
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 3CB89C061A;
+ Sat, 13 Jan 2024 11:29:21 +0100 (CET)
+From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ =?UTF-8?q?Philipe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/7] Add device STM32L4x5 RCC
+Date: Sat, 13 Jan 2024 11:29:06 +0100
+Message-Id: <20240113102913.18278-1-arnaud.minier@telecom-paris.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Authentication-Results: smtp-out2.suse.de;
-	none
-X-Spam-Level: 
-X-Spam-Score: -2.80
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	 ARC_NA(0.00)[];
-	 RCVD_VIA_SMTP_AUTH(0.00)[];
-	 MID_RHS_MATCH_FROM(0.00)[];
-	 FROM_HAS_DN(0.00)[];
-	 TO_DN_SOME(0.00)[];
-	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	 TO_MATCH_ENVRCPT_ALL(0.00)[];
-	 TAGGED_RCPT(0.00)[];
-	 MIME_GOOD(-0.10)[text/plain];
-	 NEURAL_HAM_LONG(-1.00)[-1.000];
-	 BAYES_HAM(-3.00)[100.00%];
-	 URIBL_BLOCKED(0.00)[linaro.org:email];
-	 R_RATELIMIT(0.00)[to_ip_from(RLgn3pipxh44ye66tuwadwbnif)];
-	 RCVD_COUNT_THREE(0.00)[3];
-	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	 NEURAL_HAM_SHORT(-0.20)[-1.000];
-	 RCPT_COUNT_TWELVE(0.00)[22];
-	 FUZZY_BLOCKED(0.00)[rspamd.com];
-	 FROM_EQ_ENVFROM(0.00)[];
-	 MIME_TRACE(0.00)[0:+];
-	 FREEMAIL_CC(0.00)[redhat.com,nuvoton.com,linaro.org,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,kaod.org,tribudubois.net,codeconstruct.com.au,kernel.org,nongnu.org,ilande.co.uk];
-	 RCVD_TLS_ALL(0.00)[];
-	 SUSPICIOUS_RECIPS(1.50)[]
-X-Spam-Flag: NO
-X-TUID: FIQw0xRh0UIE
+Received-SPF: pass client-ip=137.194.2.220;
+ envelope-from=arnaud.minier@telecom-paris.fr; helo=zproxy1.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Qh2SunRstL9v
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+This patch adds a new device STM32L4x5 RCC (Reset and Clock Control) devi=
+ce and is part
+of a series implementing the STM32L4x5 with a few peripherals.
 
-> Move the 'has_el2' and 'has_el3' properties to the abstract
-> QOM parent.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  include/hw/cpu/cortex_mpcore.h |  5 +++++
->  hw/arm/exynos4210.c            | 10 ++++++++--
->  hw/arm/vexpress.c              |  6 ++++++
->  hw/arm/xilinx_zynq.c           |  6 ++++++
->  hw/cpu/a15mpcore.c             | 18 ++++++------------
->  hw/cpu/a9mpcore.c              |  5 +----
->  hw/cpu/cortex_mpcore.c         |  3 +++
->  7 files changed, 35 insertions(+), 18 deletions(-)
->
-> diff --git a/include/hw/cpu/cortex_mpcore.h b/include/hw/cpu/cortex_mpcor=
-e.h
-> index 0e7cca9e93..387552468c 100644
-> --- a/include/hw/cpu/cortex_mpcore.h
-> +++ b/include/hw/cpu/cortex_mpcore.h
-> @@ -30,6 +30,8 @@
->   * QEMU interface:
->   *  + QOM property "num-cores" which set the number of cores present in
->   *    the cluster.
-> + *  + QOM properties "cpu-has-el3", "cpu-has-el2" which set whether the =
-CPUs
-> + *    have the exception level features present.
->   */
->  #define TYPE_CORTEX_MPCORE_PRIV "cortex_mpcore_priv"
->  OBJECT_DECLARE_TYPE(CortexMPPrivState, CortexMPPrivClass, CORTEX_MPCORE_=
-PRIV)
-> @@ -53,6 +55,9 @@ struct CortexMPPrivState {
->=20=20
->      /* Properties */
->      uint32_t num_cores;
-> +
-> +    bool cpu_has_el3;
-> +    bool cpu_has_el2;
->  };
->=20=20
->  #define TYPE_A9MPCORE_PRIV "a9mpcore_priv"
-> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-> index ea1364499d..7386a8fe57 100644
-> --- a/hw/arm/exynos4210.c
-> +++ b/hw/arm/exynos4210.c
-> @@ -548,7 +548,7 @@ static void exynos4210_realize(DeviceState *socdev, E=
-rror **errp)
->      Exynos4210State *s =3D EXYNOS4210_SOC(socdev);
->      MemoryRegion *system_mem =3D get_system_memory();
->      SysBusDevice *busdev;
-> -    DeviceState *dev, *uart[4], *pl330[3];
-> +    DeviceState *dev, *mpdev, *uart[4], *pl330[3];
->      int i, n;
->=20=20
->      for (n =3D 0; n < EXYNOS4210_NCPUS; n++) {
-> @@ -582,7 +582,13 @@ static void exynos4210_realize(DeviceState *socdev, =
-Error **errp)
->      }
->=20=20
->      /* Private memory region and Internal GIC */
-> -    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "num-cores", EXYNOS4210_N=
-CPUS);
-> +    mpdev =3D DEVICE(&s->a9mpcore);
-> +    qdev_prop_set_uint32(mpdev, "num-cores", EXYNOS4210_NCPUS);
-> +    /*
-> +     * By default A9 CPUs have EL3 enabled.  This board does not current=
-ly
-> +     * support EL3 so the CPU EL3 property is disabled before realizatio=
-n.
-> +     */
-> +    qdev_prop_set_bit(mpdev, "cpu-has-el3", false);
->      busdev =3D SYS_BUS_DEVICE(&s->a9mpcore);
->      sysbus_realize(busdev, &error_fatal);
->      sysbus_mmio_map(busdev, 0, EXYNOS4210_SMP_PRIVATE_BASE_ADDR);
-> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-> index a320d1c181..294b6f15f2 100644
-> --- a/hw/arm/vexpress.c
-> +++ b/hw/arm/vexpress.c
-> @@ -239,6 +239,12 @@ static void init_cpus(MachineState *ms, const char *=
-cpu_type,
->       * wires itself up to the CPU's generic_timer gpio out lines.
->       */
->      dev =3D qdev_new(privdev);
-> +    if (!secure) {
-> +        qdev_prop_set_bit(dev, "cpu-has-el3", false);
-> +    }
-> +    if (!virt) {
-> +        qdev_prop_set_bit(dev, "cpu-has-el2", false);
-> +    }
->      qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
->      busdev =3D SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(busdev, &error_fatal);
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index fc9c927d09..28430dcfba 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -240,6 +240,12 @@ static void zynq_init(MachineState *machine)
->=20=20
->      dev =3D qdev_new(TYPE_A9MPCORE_PRIV);
->      qdev_prop_set_uint32(dev, "num-cpu", 1);
-> +    /*
-> +     * By default A9 CPUs have EL3 enabled.  This board does not
-> +     * currently support EL3 so the CPU EL3 property is disabled before
-> +     * realization.
-> +     */
-> +    qdev_prop_set_bit(dev, "cpu-has-el3", false);
->      busdev =3D SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(busdev, &error_fatal);
->      sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
-> diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-> index 16874426e1..a16544fdde 100644
-> --- a/hw/cpu/a15mpcore.c
-> +++ b/hw/cpu/a15mpcore.c
-> @@ -52,9 +52,6 @@ static void a15mp_priv_realize(DeviceState *dev, Error =
-**errp)
->      SysBusDevice *gicsbd;
->      Error *local_err =3D NULL;
->      int i;
-> -    bool has_el3;
-> -    bool has_el2 =3D false;
-> -    Object *cpuobj;
->=20=20
->      cc->parent_realize(dev, &local_err);
->      if (local_err) {
-> @@ -70,14 +67,11 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
-r **errp)
->          /* Make the GIC's TZ support match the CPUs. We assume that
->           * either all the CPUs have TZ, or none do.
->           */
-> -        cpuobj =3D OBJECT(qemu_get_cpu(0));
-> -        has_el3 =3D object_property_find(cpuobj, "has_el3") &&
-> -            object_property_get_bool(cpuobj, "has_el3", &error_abort);
-> -        qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
-> +        qdev_prop_set_bit(gicdev, "has-security-extensions",
-> +                          c->cpu_has_el3);
->          /* Similarly for virtualization support */
-> -        has_el2 =3D object_property_find(cpuobj, "has_el2") &&
-> -            object_property_get_bool(cpuobj, "has_el2", &error_abort);
-> -        qdev_prop_set_bit(gicdev, "has-virtualization-extensions", has_e=
-l2);
-> +        qdev_prop_set_bit(gicdev, "has-virtualization-extensions",
-> +                          c->cpu_has_el2);
->      }
->=20=20
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
-> @@ -112,7 +106,7 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
-r **errp)
->                                    qdev_get_gpio_in(gicdev,
->                                                     ppibase + timer_irq[i=
-rq]));
->          }
-> -        if (has_el2) {
-> +        if (c->cpu_has_el2) {
->              /* Connect the GIC maintenance interrupt to PPI ID 25 */
->              sysbus_connect_irq(SYS_BUS_DEVICE(gicdev), i + 4 * c->num_co=
-res,
->                                 qdev_get_gpio_in(gicdev, ppibase + 25));
-> @@ -134,7 +128,7 @@ static void a15mp_priv_realize(DeviceState *dev, Erro=
-r **errp)
->                                  sysbus_mmio_get_region(gicsbd, 0));
->      memory_region_add_subregion(&c->container, 0x2000,
->                                  sysbus_mmio_get_region(gicsbd, 1));
-> -    if (has_el2) {
-> +    if (c->cpu_has_el2) {
->          memory_region_add_subregion(&c->container, 0x4000,
->                                      sysbus_mmio_get_region(gicsbd, 2));
->          memory_region_add_subregion(&c->container, 0x6000,
-> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-> index 9c138f4442..54949314f8 100644
-> --- a/hw/cpu/a9mpcore.c
-> +++ b/hw/cpu/a9mpcore.c
-> @@ -51,7 +51,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error *=
-*errp)
->      SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
->                   *wdtbusdev;
->      Error *local_err =3D NULL;
-> -    bool has_el3;
->      CPUState *cpu0;
->      Object *cpuobj;
->=20=20
-> @@ -86,9 +85,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error *=
-*errp)
->      /* Make the GIC's TZ support match the CPUs. We assume that
->       * either all the CPUs have TZ, or none do.
->       */
-> -    has_el3 =3D object_property_find(cpuobj, "has_el3") &&
-> -        object_property_get_bool(cpuobj, "has_el3", &error_abort);
-> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
-> +    qdev_prop_set_bit(gicdev, "has-security-extensions", c->cpu_has_el3);
->=20=20
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
->          return;
-> diff --git a/hw/cpu/cortex_mpcore.c b/hw/cpu/cortex_mpcore.c
-> index d7ea633e4e..549b81f708 100644
-> --- a/hw/cpu/cortex_mpcore.c
-> +++ b/hw/cpu/cortex_mpcore.c
-> @@ -27,6 +27,9 @@ static Property cortex_mpcore_priv_properties[] =3D {
->      DEFINE_PROP_UINT32("num-cores", CortexMPPrivState, num_cores, 1),
->      DEFINE_PROP_UINT32("num-cpu", CortexMPPrivState, num_cores, 1), /* a=
-lias */
->=20=20
-> +    DEFINE_PROP_BOOL("cpu-has-el3", CortexMPPrivState, cpu_has_el3, true=
-),
-> +    DEFINE_PROP_BOOL("cpu-has-el2", CortexMPPrivState, cpu_has_el2, fals=
-e),
+Due to the high number of lines, I tried to split the patch into several =
+independent commits.
+Each commit compiles on its own but I had to add temporary workarounds in=
+ intermediary commits to allow them to compile even if some functions are=
+ not used. However, they have been removed once the functions were used. =
+Tell me if this is ok or if I should remove them.
 
-Are we missing setting cpu_has_el2 somewhere else? This^ results in fewer
-cpregs being registered and is what breaks migration.
+Also, the tests are not very exhaustive for the moment. I have not found =
+a way to test the clocks' frequency from the qtests, which limits severel=
+y the exhaustiveness of the tests.
 
-You can test with:
+Thanks to Philippe Mathieu-Daud=C3=A9 and Luc Michel for guiding me towar=
+d the hw/misc/bcm2835_cprman.c implementation and answering my questions =
+about clock emulation in qemu !
 
-$ (echo "migrate file:migfile"; echo "quit") | ./qemu-system-arm -M ast2600=
--evb -monitor stdio
-$ ./scripts/analyze-migration.py -f migfile | grep array_len
+Based on 20240109194438.70934-1-ines.varhol@telecom-paris.fr
+([PATCH v4 0/3] Add device STM32L4x5 SYSCFG)
 
-Before series:
-$ ./scripts/analyze-migration.py -f migfile | grep array_len
-        "cpreg_vmstate_array_len": "0x0000010a",
-        "cpreg_vmstate_array_len": "0x0000010a",
+Arnaud Minier (7):
+  Implement STM32L4x5_RCC skeleton
+  Add an internal clock multiplexer object
+  Add an internal PLL Clock object
+  Add initialization information for PLLs and clock multiplexers
+  RCC: Handle Register Updates
+  STM32L4x5: Use the RCC Sysclk
+  Add tests for the STM32L4x5_RCC
 
-After series:
-$ ./scripts/analyze-migration.py -f migfile | grep array_len
-        "cpreg_vmstate_array_len": "0x000000df",
-        "cpreg_vmstate_array_len": "0x000000df",
+ MAINTAINERS                               |    5 +-
+ docs/system/arm/b-l475e-iot01a.rst        |    2 +-
+ hw/arm/Kconfig                            |    1 +
+ hw/arm/b-l475e-iot01a.c                   |   10 +-
+ hw/arm/stm32l4x5_soc.c                    |   45 +-
+ hw/misc/Kconfig                           |    3 +
+ hw/misc/meson.build                       |    1 +
+ hw/misc/stm32l4x5_rcc.c                   | 1298 +++++++++++++++++++++
+ hw/misc/trace-events                      |   14 +
+ include/hw/arm/stm32l4x5_soc.h            |    5 +-
+ include/hw/misc/stm32l4x5_rcc.h           |  239 ++++
+ include/hw/misc/stm32l4x5_rcc_internals.h | 1044 +++++++++++++++++
+ tests/qtest/meson.build                   |    3 +-
+ tests/qtest/stm32l4x5_rcc-test.c          |  211 ++++
+ 14 files changed, 2836 insertions(+), 45 deletions(-)
+ create mode 100644 hw/misc/stm32l4x5_rcc.c
+ create mode 100644 include/hw/misc/stm32l4x5_rcc.h
+ create mode 100644 include/hw/misc/stm32l4x5_rcc_internals.h
+ create mode 100644 tests/qtest/stm32l4x5_rcc-test.c
+
+--=20
+2.34.1
+

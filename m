@@ -1,316 +1,258 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp106660ejf;
-        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG+2ZEpCNa7ZdU9o0Yjd9Uc4ICc+mpwBVrWs600ZAOc69KATFEGBYDwu5ceLM85D/tFzAh3
-X-Received: by 2002:a17:90a:6003:b0:28e:272:4727 with SMTP id y3-20020a17090a600300b0028e02724727mr1894044pji.0.1705309518520;
-        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705309518; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp157692ejf;
+        Mon, 15 Jan 2024 03:02:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF3pKX+NJWvMnAtwa/FVZsCW4C7BgjzqJI9M5sHpxmZmQxiDT1tya+MOf7q93h5b3zYKwQZ
+X-Received: by 2002:a05:620a:2685:b0:783:1f88:1717 with SMTP id c5-20020a05620a268500b007831f881717mr10069714qkp.13.1705316556917;
+        Mon, 15 Jan 2024 03:02:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705316556; cv=none;
         d=google.com; s=arc-20160816;
-        b=0YE+VNr62a/k/kh5AP4fiO1z0NdUT1Fy+rjrdA4LdlIWa1JAmj2tJ2r/Swwoks7vHw
-         gr2TEz1kBw6BCj+dPYZd1c9Iny84K0Kan60daO1v4ePOO7XLaaZtPcmFiDoZmGp7yXHE
-         4huXrMKxizjnswLKMwm9/4Hn1OT1IRKkds2SoajjdWawAvtb2vfSVAIdm9Fxg2Y5+PHN
-         cjPrXtp930+eucGwSCpoVJXH69f7qZr3F6UJdfBgAir7iuXk02+JMN7gShHNOFtJ5gZ8
-         BsjCLHd6dUk9/Pb3Q1buuRm+B8y/ITKAFNfFIR/ceBOHQuVJvspWjJ+jwJFx5gMU0onZ
-         /UDQ==
+        b=TTYasEiCcY2uCox4lFGEcIJDEj1ujsnL3tCqxZdkwj7rtjMStgiia2Z9r2uL9K1UZl
+         rWHek9V+MMbb2+WBkw63+NYHHsuswJ0TTmQBO4Ddsq/tN6Z2ChFN7GX4PYqgRpJ6bhrd
+         NFS4rozFRWKt4FlBAoQSZkU9OHNpQheCN4Xox9MZGhKIGZ5W3nmvvZThskulTxogGtAu
+         OV1AEi6bmLQxiiDGa3Q53swXEfUqVDS5eXctWkTPvMiaCAwIKsYgyJjGNHEnxbXaTTgt
+         yz/2UFE0g3GZiiOsQfRObKc/BLHCwyQ8OK9RLWtKx/jDJBxm94a9q/UL2HbavXqueUfg
+         N+Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=BcYty4B4yUSYTNgnowoFcjlasHrdCVm0qNnTRXMcDKc=;
-        fh=6BJLbSgDP+13DvE3/k0EcyypWvOeKepkYLZSR9LCZDE=;
-        b=Y625YrO/Q+OBxv/fD1zXBzMU6Nlvp3P65R+gSR0D2Ln0UHXVIDgy4MGa5Kx/qrpOrq
-         Ei2NXExkKCbifVzjnUEh0nPoBWMK37nwtwGXr9/fcJiX10oZdVYlhU94ZIoJPiB7CDlW
-         Vgeh0edRBLLrmm6BD40qJ3QcrCHsZMob30TkuvqbrOD/o7gLUjYoYciJcnv8vTglLDDB
-         G8CNB9t9JKKP0pdnMD+7KofIZTmeAq+AINfznfMvNKbP6Q6QWlkQWeAu2d1nKMkfLtPG
-         D5BDL51XbkwME107STcR1k7UpqIuCnoPkWt1/wWskFUwwWAhPGjnzO6Pvy9V/j7m/KvW
-         Ih1A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=dPexkEbzURvwVYCONouG/Kmx12DM35q2hLQURuQCNPw=;
+        fh=Lz96kAh05Lyhn+r3BjRcKrsf0avdlDODlt5sqEZmKzo=;
+        b=mGAoufR+ce9iRyTy4WJUa5jMP6TyTBz9HB41rBkuwK23nJk4shBiRDYrcWvMwtDQEV
+         /+VRVcNyQ5oSz10456xIrCOCfZcX9N2jM0Lw1fWQO78DxnRQMPsEHhSldly9gK8RXFSb
+         rswlGJE0XuqOaHMgCbJhs0h10B/oSp0Y7bcVE2Dydf7vuWANvBywTCUQObsgCosOJwma
+         W9CoTXRBD4evMV0cIc3LLzm6uS9GysLT5j5fUijGNl6bjUfEMd3qU2VRTgj+/NfD7ftw
+         R7qV4L2YFa3lYEDZmgZXgDPzJI6J5kzKD2/3R/XVPzM7o4Ra8tX76u/Sl714vYkJOSEz
+         5YUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=oXar=IZ=kaod.org=clg@ozlabs.org"
-Return-Path: <SRS0=oXar=IZ=kaod.org=clg@ozlabs.org>
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id h4-20020a17090ac38400b0028ce3d29f34si8708420pjt.39.2024.01.15.01.05.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
+       dkim=pass header.i=@linaro.org header.s=google header.b="J/DijTao";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y7-20020a05620a44c700b0078325ebdf42si8481667qkp.145.2024.01.15.03.02.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Jan 2024 03:02:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=oXar=IZ=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TD5nm1HzLz4xG4;
-	Mon, 15 Jan 2024 20:05:16 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TD5nS6d6bz4xFj;
-	Mon, 15 Jan 2024 20:05:00 +1100 (AEDT)
-Message-ID: <17903567-5c5c-4492-b9cf-eaaae7d903cf@kaod.org>
-Date: Mon, 15 Jan 2024 10:04:56 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b="J/DijTao";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rPKja-0003ZM-Ti; Mon, 15 Jan 2024 06:02:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPKjZ-0003Ym-1h
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 06:02:25 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPKjX-0002d6-3a
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 06:02:24 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a2cea0563cbso367589566b.3
+ for <qemu-arm@nongnu.org>; Mon, 15 Jan 2024 03:02:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705316541; x=1705921341; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dPexkEbzURvwVYCONouG/Kmx12DM35q2hLQURuQCNPw=;
+ b=J/DijTaoBwlUxYvz4FzuaSsG0BdVw/gJepS9DMZbq9M9DOntO0+ukPGZKkQM1TW/DD
+ PqN7Le0qzQCjtsQTWJ8K/KVO4wLv6bq2cP2Xc0Q45Aos4AypTszOA+Fb+vp6RfROJPy1
+ 8NLw0SE+CoKcKfqQcn7xtdWCgJt6gD0oxwzL7WvhsJxzV0fr8tgtpqMkIpos5emeY7RV
+ pm4b5K2gVIGDUTqsUvnwvf77CQID5+EaotkJwVBADhw76csgHiWgZYNKCe5VBIIngGJb
+ lUmw9BTiuJXGkn0zg2Y1g9dfUvrINkAMUq6DfOHYkNZ8pMHMh37KgKUKVrnTJhQZLPr3
+ SxUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705316541; x=1705921341;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dPexkEbzURvwVYCONouG/Kmx12DM35q2hLQURuQCNPw=;
+ b=DNPSmLm2xgrXpRq7NqwlRlvsgb3qF+rsuCt6uf/LMQ4NYYLOiGSjz3eUlz4nfZ0b59
+ t3JpA1/CTXrBnelIdiy95YRzQxjjqi2AQcHWIwdapBXNNId36DnlRSRH1TNh4uX6b6J7
+ O5jqzAvNOVp5QRrZbHfYFh/GPqWpXAC8T6+bbwgpOMLYlj7iu5Y3H+10KFil86lUWlGh
+ o7e73cxHWRNoENlsrh16gYMpDf7Qyi8tsEMLmqLgYJ2s70sGb6o/ISP6oBUzUm0isxGi
+ 2oBqQwSBe9txp4QYdyYbIl5EqBE7vDBRjtd4ieRWrwUbPJQt6AfU1WpIGTMWSqmd83fT
+ SZtw==
+X-Gm-Message-State: AOJu0YwO7JjOVaA/kEtX67RwNtc3Mc4Ls6mjc9aBS6Ol1oDv+5lzsKEy
+ 7fwPxjffS1WOBFUaXqp1q9GIaRWfFhJy7g==
+X-Received: by 2002:a17:906:682:b0:a28:ec67:185f with SMTP id
+ u2-20020a170906068200b00a28ec67185fmr2653122ejb.60.1705316541434; 
+ Mon, 15 Jan 2024 03:02:21 -0800 (PST)
+Received: from [192.168.1.102] ([176.187.209.30])
+ by smtp.gmail.com with ESMTPSA id
+ qc21-20020a170906d8b500b00a26ac5e3683sm5143656ejb.100.2024.01.15.03.02.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Jan 2024 03:02:20 -0800 (PST)
+Message-ID: <56f692d8-41b1-4126-96b9-80d274624984@linaro.org>
+Date: Mon, 15 Jan 2024 12:02:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
- A7/A15 MPCore priv
+Subject: Re: [PATCH 1/3] hw/arm: Add EHCI/OHCI controllers to Allwinner R40
+ and Bananapi board
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
- Peter Xu <peterx@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
- <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
- <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
- <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
- <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
- <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
- <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
- <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
- <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org> <871qamfhu8.fsf@suse.de>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <871qamfhu8.fsf@suse.de>
+To: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth
+ <thuth@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20240113191651.1313226-1-linux@roeck-us.net>
+ <20240113191651.1313226-2-linux@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240113191651.1313226-2-linux@roeck-us.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ieuGazk2i161
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R5kD+Q06NE9O
 
-On 1/12/24 20:54, Fabiano Rosas wrote:
-> Cédric Le Goater <clg@kaod.org> writes:
+Hi,
+
+On 13/1/24 20:16, Guenter Roeck wrote:
+> Allwinner R40 supports two USB host ports shared between a USB 2.0 EHCI
+> host controller and a USB 1.1 OHCI host controller. Add support for both
+> of them.
 > 
->> On 1/10/24 14:19, Fabiano Rosas wrote:
->>> Markus Armbruster <armbru@redhat.com> writes:
->>>
->>>> Peter Xu <peterx@redhat.com> writes:
->>>>
->>>>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daudé wrote:
->>>>>> Hi Fabiano,
->>>>>>
->>>>>> On 9/1/24 21:21, Fabiano Rosas wrote:
->>>>>>> Cédric Le Goater <clg@kaod.org> writes:
->>>>>>>
->>>>>>>> On 1/9/24 18:40, Fabiano Rosas wrote:
->>>>>>>>> Cédric Le Goater <clg@kaod.org> writes:
->>>>>>>>>
->>>>>>>>>> On 1/3/24 20:53, Fabiano Rosas wrote:
->>>>>>>>>>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
->>>>>>>>>>>
->>>>>>>>>>>> +Peter/Fabiano
->>>>>>>>>>>>
->>>>>>>>>>>> On 2/1/24 17:41, Cédric Le Goater wrote:
->>>>>>>>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daudé wrote:
->>>>>>>>>>>>>> Hi Cédric,
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> On 2/1/24 15:55, Cédric Le Goater wrote:
->>>>>>>>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
->>>>>>>>>>>>>>>> Hi,
->>>>>>>>>>>>>>>>
->>>>>>>>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
->>>>>>>>>>>>>>>> cluster container, not to the board/soc layer. This series move
->>>>>>>>>>>>>>>> the creation of vCPUs to the MPCore private container.
->>>>>>>>>>>>>>>>
->>>>>>>>>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
->>>>>>>>>>>>>>>> central place (abstract MPCore parent).
->>>>>>>>>>>>>>>
->>>>>>>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the machine
->>>>>>>>>>>>>>> and some fixups are then required to maintain migration compatibility.
->>>>>>>>>>>>>>> This can become a real headache for KVM machines like virt for which
->>>>>>>>>>>>>>> migration compatibility is a feature, less for emulated ones.
->>>>>>>>>>>>>>
->>>>>>>>>>>>>> All changes are either moving properties (which are not migrated)
->>>>>>>>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
->>>>>>>>>>>>>> is still migrated elsewhere). So I don't see any obvious migration
->>>>>>>>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
->>>>>>>>>>>
->>>>>>>>>>> FWIW, I didn't spot anything problematic either.
->>>>>>>>>>>
->>>>>>>>>>> I've ran this through my migration compatibility series [1] and it
->>>>>>>>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
->>>>>>>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
->>>>>>>>>>> think we even support migration of anything non-KVM on arm.
->>>>>>>>>>
->>>>>>>>>> it happens we do.
->>>>>>>>>>
->>>>>>>>>
->>>>>>>>> Oh, sorry, I didn't mean TCG here. Probably meant to say something like
->>>>>>>>> non-KVM-capable cpus, as in 32-bit. Nevermind.
->>>>>>>>
->>>>>>>> Theoretically, we should be able to migrate to a TCG guest. Well, this
->>>>>>>> worked in the past for PPC. When I was doing more KVM related changes,
->>>>>>>> this was very useful for dev. Also, some machines are partially emulated.
->>>>>>>> Anyhow I agree this is not a strong requirement and we often break it.
->>>>>>>> Let's focus on KVM only.
->>>>>>>>
->>>>>>>>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
->>>>>>>>>>
->>>>>>>>>> yes it depends on the QOM hierarchy and virt seems immune to the changes.
->>>>>>>>>> Good.
->>>>>>>>>>
->>>>>>>>>> However, changing the QOM topology clearly breaks migration compat,
->>>>>>>>>
->>>>>>>>> Well, "clearly" is relative =) You've mentioned pseries and aspeed
->>>>>>>>> already, do you have a pointer to one of those cases were we broke
->>>>>>>>> migration
->>>>>>>>
->>>>>>>> Regarding pseries, migration compat broke because of 5bc8d26de20c
->>>>>>>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
->>>>>>>> is similar to the changes proposed by this series, it impacts the QOM
->>>>>>>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
->>>>>>>> ("spapr: fix migration of ICPState objects from/to older QEMU") which
->>>>>>>> is quite an headache and this turned out to raise another problem some
->>>>>>>> months ago ... :/ That's why I sent [1] to prepare removal of old
->>>>>>>> machines and workarounds becoming a burden.
->>>>>>>
->>>>>>> This feels like something that could be handled by the vmstate code
->>>>>>> somehow. The state is there, just under a different path.
->>>>>>
->>>>>> What, the QOM path is used in migration? ...
->>>>>
->>>>> Hopefully not..
->>>
->>> Unfortunately the original fix doesn't mention _what_ actually broke
->>> with migration. I assumed the QOM path was needed because otherwise I
->>> don't think the fix makes sense. The thread discussing that patch also
->>> directly mentions the QOM path:
->>>
->>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
->>>
->>> But I probably misunderstood something while reading that thread.
->>>
->>>>>
->>>>>>
->>>>>> See recent discussions on "QOM path stability":
->>>>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
->>>>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
->>>>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
->>>>>
->>>>> If I read it right, the commit 46f7afa37096 example is pretty special that
->>>>> the QOM path more or less decided more than the hierachy itself but changes
->>>>> the existances of objects.
->>>>
->>>> Let's see whether I got this...
->>>>
->>>> We removed some useless objects, moved the useful ones to another home.
->>>> The move changed their QOM path.
->>>>
->>>> The problem was the removal of useless objects, because this also
->>>> removed their vmstate.
->>>
->>> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
->>> been kept untouched.
->>>
->>>>
->>>> The fix was adding the vmstate back as a dummy.
->>>
->>> Since the vmstate was kept I don't see why would we need a dummy. The
->>> incoming migration stream would still have the state, only at a
->>> different point in the stream. It's surprising to me that that would
->>> cause an issue, but I'm not well versed in that code.
->>>
->>>>
->>>> The QOM patch changes are *not* part of the problem.
->>>
->>> The only explanation I can come up with is that after the patch
->>> migration has broken after a hotplug or similar operation. In such
->>> situation, the preallocated state would always be present before the
->>> patch, but sometimes not present after the patch in case, say, a
->>> hot-unplug has taken away a cpu + ICPState.
->>
->> May be. It has been a while.
->>
->> For a better understanding, I tried to reproduce. QEMU 2.9 still
->> compiles on a f38 (memfd_create needs a fix). However, a
->> QEMU-2.9/pseries-2.9 machine won't start any recent OS because
->> something broke the OS/platform negotiation process (CAS) ...
-> 
-> Thanks for letting us know it still builds. That motivated me to try as
-> well. Although it took me a while because of python's brokenness.
-> 
-> The issue was indeed the difference in preallocation vs. no
-> preallocation. I don't remember how to do hotplug in ppc anymore, but
-> maxcpus was sufficient to reproduce:
-> 
-> src 2.9.0:
-> $ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -nographic -vga none
-> -display none -accel tcg -machine pseries -smp 4,maxcpus=8 -m 256M
-> -nodefaults
-> 
-> dst 2.9.0 prior to 46f7afa:
-> $ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -display none
-> -accel tcg -machine pseries-2.9 -smp 4,maxcpus=8 -m 256M -nodefaults
-> -incoming defer
-> 
-> (qemu) migrate_incoming tcp:localhost:1234
-> (qemu) qemu-system-ppc64: Unknown savevm section or instance 'icp/server' 4
-> qemu-system-ppc64: load of migration failed: Invalid argument
-> 
-> As you can see, both use 4 cpus, but the src will try to migrate all 8
-> icp/server instances. After the patch, the same migration works.
-> 
-> So this was not related to the QOM path nor the QOM hierarchy, it was
-> just about having state created at machine init vs. cpu realize time. 
+> If machine USB support is not enabled, create unimplemented devices
+> for the USB memory ranges to avoid crashes when booting Linux.
 
-Ah ! of course, the machine is created in an init handler.
+I never really understood the reason for machine_usb() and had on my
+TODO to do some archeology research to figure it out since quite some
+time. Having to map an UnimpDevice due to CLI options seems like an
+anti-pattern when the device is indeed implemented in the repository.
 
-Thanks Fabiano, for the diagnostic and the time you took to reproduce
-and analyze. I had this bad assumption of constraint between QOM vs.
-migration and any change made me uncomfortable. You cleared it.
+IIUC MachineState was introduced by a big rework during 2014-2015,
+and ::usb became a property.
 
-Good that we are deprecating this hack in a couple of versions.
+Reading git-history and mailing list threads, apparently it was not
+easy for the mac99 machine (read whole thread):
+https://lore.kernel.org/qemu-devel/1420550957-22337-2-git-send-email-marcel@redhat.com/
+A bit later commit c6e765035b ("powerpc: fix -machine usb=no for
+newworld and pseries machines") introduced the ::usb_disabled property
+to deal with CLI -nodefaults with these 2 specific machines.
 
-> It
-> might be wise to keep an eye on the QOM hierarchy anyway as it could
-> make these kinds of changes more evident during review.
-
-Clearly,
+(-nodefaults is yet another CLI option I never really understood but
+take it as legacy heritage with biggest maintenance headaches).
 
 
-Thanks,
+The R40 is a SoC photolithographied on silicon as a single piece
+with a set of in-silicon peripherals, we can not remove peripherals
+from this HW. We can not remove its USB controller.
 
-C.
+What we can do is play at the external devices connected on buses
+exposed by the SoC.
+
+I can understand it is convenient for CLI users to start a machine
+with a console and a keyboard, so if a machine provides a USB bus,
+then it is created with a USB to UART converter and a USB keyboard.
+
+So I'd interpret '-machine usb=off' as "if this machine has a USB
+controller providing a USB bus which is not exposed outside of the
+machine", but certainly not as "any mmio-mapped USB controller is
+removed from chipsets".
 
 
+To the extend I can understand floppy/cdrom/sdcard drives can be
+inserted into available controllers used as buses, but I don't
+really understand how to do that with serial/parallel.
 
->> I removed the pre_2_10_has_unused_icps hack and worked around
->> another migration compat issue in IOMMU ... Here are the last
->> trace-events for migration :
->>
->>       QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
->>
->> 1016464@1705053752.106417:vmstate_load spapr, spapr
->> 1016464@1705053752.106419:vmstate_load_state spapr v3
->> 1016464@1705053752.106421:vmstate_load_state_field spapr:unused
->> 1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
->> 1016464@1705053752.106425:vmstate_load_state_field spapr:tb
->> 1016464@1705053752.106427:vmstate_n_elems tb: 1
->> 1016464@1705053752.106429:vmstate_load_state timebase v1
->> 1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
->> 1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
->> 1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_day_ns
->> 1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
->> 1016464@1705053752.106438:vmstate_subsection_load timebase
->> 1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_option_vector_ov5_cas/(prefix)
->> 1016464@1705053752.106442:vmstate_load_state_end timebase end/0
->> 1016464@1705053752.106443:vmstate_subsection_load spapr
->> 1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas v1
->> 1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov5_cas:ov5_cas
->> 1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
->> 1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
->> 1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bitmap
->> 1016464@1705053752.106454:vmstate_n_elems bitmap: 1
->> 1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
->> 1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector: (short)/
->> 1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
->> 1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5_cas
->> 1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector_ov5_cas: (short)/
->> 1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_cas end/0
->> 1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/htm/(lookup)
->> qemu-system-ppc64: error while loading state for instance 0x0 of device 'spapr'
-> 
-> This trace this seems to be something else entirely. I'd be amazed if
-> migrating mainline vs. something that old worked at all, even on x86.
+
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>   docs/system/arm/bananapi_m2u.rst |  2 +-
+>   hw/arm/Kconfig                   |  2 +
+>   hw/arm/allwinner-r40.c           | 70 +++++++++++++++++++++++++++++++-
+>   include/hw/arm/allwinner-r40.h   |  9 ++++
+>   4 files changed, 80 insertions(+), 3 deletions(-)
+
+
+> @@ -407,6 +427,37 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+>       sysbus_realize(SYS_BUS_DEVICE(&s->ccu), &error_fatal);
+>       sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_R40_DEV_CCU]);
+>   
+> +    /* USB */
+> +    if (machine_usb(current_machine)) {
+> +        int i;
+> +
+> +        for (i = 0; i < AW_R40_NUM_USB; i++) {
+> +            g_autofree char *bus = g_strdup_printf("usb-bus.%d", i);
+> +
+> +            object_property_set_bool(OBJECT(&s->ehci[i]), "companion-enable",
+> +                                     true, &error_fatal);
+> +            sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), &error_fatal);
+> +            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                            allwinner_r40_memmap[i ? AW_R40_DEV_EHCI2
+> +                                                   : AW_R40_DEV_EHCI1]);
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
+> +                               qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                                i ? AW_R40_GIC_SPI_EHCI2
+> +                                                  : AW_R40_GIC_SPI_EHCI1));
+> +
+> +            object_property_set_str(OBJECT(&s->ohci[i]), "masterbus", bus,
+> +                                    &error_fatal);
+> +            sysbus_realize(SYS_BUS_DEVICE(&s->ohci[i]), &error_fatal);
+> +            sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
+> +                            allwinner_r40_memmap[i ? AW_R40_DEV_OHCI2
+> +                                                   : AW_R40_DEV_OHCI1]);
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
+> +                               qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                                i ? AW_R40_GIC_SPI_OHCI2
+> +                                                  : AW_R40_GIC_SPI_OHCI1));
+> +        }
+> +    }
+> +
+>       /* SD/MMC */
+>       for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
+>           qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->gic),
+> @@ -498,6 +549,21 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+>                                       r40_unimplemented[i].base,
+>                                       r40_unimplemented[i].size);
+>       }
+> +    if (!machine_usb(current_machine)) {
+> +        /* unimplemented if USB is not enabled */
+> +        create_unimplemented_device("usb-ehci1",
+> +                                    allwinner_r40_memmap[AW_R40_DEV_EHCI1],
+> +                                    0x800);
+> +        create_unimplemented_device("usb-ehci2",
+> +                                    allwinner_r40_memmap[AW_R40_DEV_EHCI2],
+> +                                    0x800);
+> +        create_unimplemented_device("usb-ohci1",
+> +                                    allwinner_r40_memmap[AW_R40_DEV_OHCI1],
+> +                                    0x800);
+> +        create_unimplemented_device("usb-ohci2",
+> +                                    allwinner_r40_memmap[AW_R40_DEV_OHCI2],
+> +                                    0x800);
+> +    }
+>   }
+
+

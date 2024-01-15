@@ -1,350 +1,316 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp78477ejf;
-        Mon, 15 Jan 2024 00:02:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHrdlB/7PzraROhxexKzVy3WmCT+T4zWtLqZ0RIFsXDtODTDS2YmKE1jF61s2Uh97/e4kqq
-X-Received: by 2002:a05:6358:2810:b0:175:86cb:4d62 with SMTP id k16-20020a056358281000b0017586cb4d62mr6430006rwb.39.1705305719761;
-        Mon, 15 Jan 2024 00:01:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705305719; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp106660ejf;
+        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG+2ZEpCNa7ZdU9o0Yjd9Uc4ICc+mpwBVrWs600ZAOc69KATFEGBYDwu5ceLM85D/tFzAh3
+X-Received: by 2002:a17:90a:6003:b0:28e:272:4727 with SMTP id y3-20020a17090a600300b0028e02724727mr1894044pji.0.1705309518520;
+        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705309518; cv=none;
         d=google.com; s=arc-20160816;
-        b=b4+G8R8mcynQK/6v3ynRQzrRBvDID1dTiqshHn6A4uRLffNzShuM1+L5OwfqquJKVc
-         Q5FLhYA43uoN79N9oLbdJSb7ik9F5c0p5Qvu4NHMRdCXLY57I4nXQQdXNLU5a2XedC4d
-         LSpM+QbWDDErmLL1ZHIZcKAZCQk7Q2uCbLlHr1B538/GkgTqUAcxTtjtEGsJPhG8YXRc
-         jwnvJQE6RMoQZYocc1joBBtlycSJkVn66w46hw6I/zrXF9wRHJ1ziiH+HVT9mOqI7saZ
-         lvl4sObTpFruMma3R6V1Z0hSMyCSlNpDmccusQPkyQgO9dep5ckCFunFfaASHHVLHOAJ
-         JKXg==
+        b=0YE+VNr62a/k/kh5AP4fiO1z0NdUT1Fy+rjrdA4LdlIWa1JAmj2tJ2r/Swwoks7vHw
+         gr2TEz1kBw6BCj+dPYZd1c9Iny84K0Kan60daO1v4ePOO7XLaaZtPcmFiDoZmGp7yXHE
+         4huXrMKxizjnswLKMwm9/4Hn1OT1IRKkds2SoajjdWawAvtb2vfSVAIdm9Fxg2Y5+PHN
+         cjPrXtp930+eucGwSCpoVJXH69f7qZr3F6UJdfBgAir7iuXk02+JMN7gShHNOFtJ5gZ8
+         BsjCLHd6dUk9/Pb3Q1buuRm+B8y/ITKAFNfFIR/ceBOHQuVJvspWjJ+jwJFx5gMU0onZ
+         /UDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ImySdM6rVLcpykjYKF0CY09VSeZgLPq5jeZ421owvpE=;
-        fh=2CmYTdCa5ca7Hmy2n2o5rVc8RblFPDg+Dk2/rDKaxhY=;
-        b=FUa9LoForM+9AWJBuL0QKyLbxNFxfirYDtWw6WDFxhk1XrB0TzKsWASucrWeydQSuq
-         FU91EaOKm7DnwTzaCVbItIgkGHdHcJbuR4yEFIQzxTXGvTnaguL3OMMyNOc18YrBHIsa
-         900xSFMdUh3oZw/V4DFSTIkkCIW50anAcLRYt7M1srrCAJLwXHgzgwpoMOKAxEUNHZtK
-         oDog/doEfPnDWgvDJ9wmlrkf2gVQ3Tl+XOQQ1Tk3+pi+ozMJwF9Toseqv37DyiBeVrOJ
-         28vAzANU/cJmVVINjRH0fuSO4zLmwyK3FnKz/YaZsPR6spYmkz6l1Xn3fPoE/7BbRHwC
-         rhOw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=BcYty4B4yUSYTNgnowoFcjlasHrdCVm0qNnTRXMcDKc=;
+        fh=6BJLbSgDP+13DvE3/k0EcyypWvOeKepkYLZSR9LCZDE=;
+        b=Y625YrO/Q+OBxv/fD1zXBzMU6Nlvp3P65R+gSR0D2Ln0UHXVIDgy4MGa5Kx/qrpOrq
+         Ei2NXExkKCbifVzjnUEh0nPoBWMK37nwtwGXr9/fcJiX10oZdVYlhU94ZIoJPiB7CDlW
+         Vgeh0edRBLLrmm6BD40qJ3QcrCHsZMob30TkuvqbrOD/o7gLUjYoYciJcnv8vTglLDDB
+         G8CNB9t9JKKP0pdnMD+7KofIZTmeAq+AINfznfMvNKbP6Q6QWlkQWeAu2d1nKMkfLtPG
+         D5BDL51XbkwME107STcR1k7UpqIuCnoPkWt1/wWskFUwwWAhPGjnzO6Pvy9V/j7m/KvW
+         Ih1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YdXAgisB;
-       spf=pass (google.com: domain of kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id x38-20020a634a26000000b005c688ef7549si8461719pga.98.2024.01.15.00.01.59
-        for <alex.bennee@linaro.org>
+       spf=pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=oXar=IZ=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=oXar=IZ=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id h4-20020a17090ac38400b0028ce3d29f34si8708420pjt.39.2024.01.15.01.05.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jan 2024 00:01:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Mon, 15 Jan 2024 01:05:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YdXAgisB;
-       spf=pass (google.com: domain of kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-6204-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2EE85281A0E
-	for <alex.bennee@linaro.org>; Mon, 15 Jan 2024 08:01:59 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id BA6236FA6;
-	Mon, 15 Jan 2024 08:01:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="YdXAgisB"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 944566FA4
-	for <kvm@vger.kernel.org>; Mon, 15 Jan 2024 08:01:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1705305712;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=ImySdM6rVLcpykjYKF0CY09VSeZgLPq5jeZ421owvpE=;
-	b=YdXAgisB1SwC9SqMXoFk+aR8oEGxJSOOHFyxeLE1YM/OUJ/8hOu+xpsSn/Emnwox9XczrW
-	Ml7+Cfv9UXPOH+vEyEDS0pSsLSM0fi6tEnSVOmQILAf8xWwmAURjiNLifusIgionJkQ6eb
-	GP5PX9mYADsLAeCON2qfQC2R2ek2xho=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-36-W9tPWVHqOrGi1YlGmT-Fng-1; Mon, 15 Jan 2024 03:01:48 -0500
-X-MC-Unique: W9tPWVHqOrGi1YlGmT-Fng-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+       spf=pass (google.com: domain of srs0=oxar=iz=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=oXar=IZ=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4TD5nm1HzLz4xG4;
+	Mon, 15 Jan 2024 20:05:16 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9422388CDCD;
-	Mon, 15 Jan 2024 08:01:46 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 876AF1121306;
-	Mon, 15 Jan 2024 08:01:46 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: Eric Auger <eauger@redhat.com>,
-	Gavin Shan <gshan@redhat.com>,
-	Shaoqin Huang <shahuang@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org,
-	kvm@vger.kernel.org
-Subject: [PATCH v5] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Date: Mon, 15 Jan 2024 03:01:44 -0500
-Message-Id: <20240115080144.44944-1-shahuang@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4TD5nS6d6bz4xFj;
+	Mon, 15 Jan 2024 20:05:00 +1100 (AEDT)
+Message-ID: <17903567-5c5c-4492-b9cf-eaaae7d903cf@kaod.org>
+Date: Mon, 15 Jan 2024 10:04:56 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
+ Peter Xu <peterx@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org> <87y1d6i47m.fsf@suse.de>
+ <597186d9-af21-46e8-8075-f21d36c01c07@kaod.org> <87plya76cu.fsf@suse.de>
+ <d5c0b9fb-8b09-4f68-b3ab-c8adffd484a9@kaod.org> <87bk9u8dhs.fsf@suse.de>
+ <2fa344b7-ccd2-4e6a-8c32-5ad7e4c960d6@linaro.org> <ZZ4Qrfis4XHWGN0j@x1n>
+ <87cyu9hgit.fsf@pond.sub.org> <874jfl8gwf.fsf@suse.de>
+ <1d58a31b-3a8b-4a56-b9bc-dded024ac7dc@kaod.org> <871qamfhu8.fsf@suse.de>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <871qamfhu8.fsf@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-X-TUID: +kdEknmr5duq
+X-TUID: ieuGazk2i161
 
-The KVM_ARM_VCPU_PMU_V3_FILTER provides the ability to let the VMM decide
-which PMU events are provided to the guest. Add a new option
-`kvm-pmu-filter` as -cpu sub-option to set the PMU Event Filtering.
-Without the filter, all PMU events are exposed from host to guest by
-default. The usage of the new sub-option can be found from the updated
-document (docs/system/arm/cpu-features.rst).
+On 1/12/24 20:54, Fabiano Rosas wrote:
+> Cédric Le Goater <clg@kaod.org> writes:
+> 
+>> On 1/10/24 14:19, Fabiano Rosas wrote:
+>>> Markus Armbruster <armbru@redhat.com> writes:
+>>>
+>>>> Peter Xu <peterx@redhat.com> writes:
+>>>>
+>>>>> On Tue, Jan 09, 2024 at 10:22:31PM +0100, Philippe Mathieu-Daudé wrote:
+>>>>>> Hi Fabiano,
+>>>>>>
+>>>>>> On 9/1/24 21:21, Fabiano Rosas wrote:
+>>>>>>> Cédric Le Goater <clg@kaod.org> writes:
+>>>>>>>
+>>>>>>>> On 1/9/24 18:40, Fabiano Rosas wrote:
+>>>>>>>>> Cédric Le Goater <clg@kaod.org> writes:
+>>>>>>>>>
+>>>>>>>>>> On 1/3/24 20:53, Fabiano Rosas wrote:
+>>>>>>>>>>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+>>>>>>>>>>>
+>>>>>>>>>>>> +Peter/Fabiano
+>>>>>>>>>>>>
+>>>>>>>>>>>> On 2/1/24 17:41, Cédric Le Goater wrote:
+>>>>>>>>>>>>> On 1/2/24 17:15, Philippe Mathieu-Daudé wrote:
+>>>>>>>>>>>>>> Hi Cédric,
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> On 2/1/24 15:55, Cédric Le Goater wrote:
+>>>>>>>>>>>>>>> On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
+>>>>>>>>>>>>>>>> Hi,
+>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
+>>>>>>>>>>>>>>>> cluster container, not to the board/soc layer. This series move
+>>>>>>>>>>>>>>>> the creation of vCPUs to the MPCore private container.
+>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>> Doing so we consolidate the QOM model, moving common code in a
+>>>>>>>>>>>>>>>> central place (abstract MPCore parent).
+>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>> Changing the QOM hierarchy has an impact on the state of the machine
+>>>>>>>>>>>>>>> and some fixups are then required to maintain migration compatibility.
+>>>>>>>>>>>>>>> This can become a real headache for KVM machines like virt for which
+>>>>>>>>>>>>>>> migration compatibility is a feature, less for emulated ones.
+>>>>>>>>>>>>>>
+>>>>>>>>>>>>>> All changes are either moving properties (which are not migrated)
+>>>>>>>>>>>>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
+>>>>>>>>>>>>>> is still migrated elsewhere). So I don't see any obvious migration
+>>>>>>>>>>>>>> problem, but I might be missing something, so I Cc'ed Juan :>
+>>>>>>>>>>>
+>>>>>>>>>>> FWIW, I didn't spot anything problematic either.
+>>>>>>>>>>>
+>>>>>>>>>>> I've ran this through my migration compatibility series [1] and it
+>>>>>>>>>>> doesn't regress aarch64 migration from/to 8.2. The tests use '-M
+>>>>>>>>>>> virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
+>>>>>>>>>>> think we even support migration of anything non-KVM on arm.
+>>>>>>>>>>
+>>>>>>>>>> it happens we do.
+>>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Oh, sorry, I didn't mean TCG here. Probably meant to say something like
+>>>>>>>>> non-KVM-capable cpus, as in 32-bit. Nevermind.
+>>>>>>>>
+>>>>>>>> Theoretically, we should be able to migrate to a TCG guest. Well, this
+>>>>>>>> worked in the past for PPC. When I was doing more KVM related changes,
+>>>>>>>> this was very useful for dev. Also, some machines are partially emulated.
+>>>>>>>> Anyhow I agree this is not a strong requirement and we often break it.
+>>>>>>>> Let's focus on KVM only.
+>>>>>>>>
+>>>>>>>>>>> 1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+>>>>>>>>>>
+>>>>>>>>>> yes it depends on the QOM hierarchy and virt seems immune to the changes.
+>>>>>>>>>> Good.
+>>>>>>>>>>
+>>>>>>>>>> However, changing the QOM topology clearly breaks migration compat,
+>>>>>>>>>
+>>>>>>>>> Well, "clearly" is relative =) You've mentioned pseries and aspeed
+>>>>>>>>> already, do you have a pointer to one of those cases were we broke
+>>>>>>>>> migration
+>>>>>>>>
+>>>>>>>> Regarding pseries, migration compat broke because of 5bc8d26de20c
+>>>>>>>> ("spapr: allocate the ICPState object from under sPAPRCPUCore") which
+>>>>>>>> is similar to the changes proposed by this series, it impacts the QOM
+>>>>>>>> hierarchy. Here is the workaround/fix from Greg : 46f7afa37096
+>>>>>>>> ("spapr: fix migration of ICPState objects from/to older QEMU") which
+>>>>>>>> is quite an headache and this turned out to raise another problem some
+>>>>>>>> months ago ... :/ That's why I sent [1] to prepare removal of old
+>>>>>>>> machines and workarounds becoming a burden.
+>>>>>>>
+>>>>>>> This feels like something that could be handled by the vmstate code
+>>>>>>> somehow. The state is there, just under a different path.
+>>>>>>
+>>>>>> What, the QOM path is used in migration? ...
+>>>>>
+>>>>> Hopefully not..
+>>>
+>>> Unfortunately the original fix doesn't mention _what_ actually broke
+>>> with migration. I assumed the QOM path was needed because otherwise I
+>>> don't think the fix makes sense. The thread discussing that patch also
+>>> directly mentions the QOM path:
+>>>
+>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg450912.html
+>>>
+>>> But I probably misunderstood something while reading that thread.
+>>>
+>>>>>
+>>>>>>
+>>>>>> See recent discussions on "QOM path stability":
+>>>>>> https://lore.kernel.org/qemu-devel/ZZfYvlmcxBCiaeWE@redhat.com/
+>>>>>> https://lore.kernel.org/qemu-devel/87jzojbxt7.fsf@pond.sub.org/
+>>>>>> https://lore.kernel.org/qemu-devel/87v883by34.fsf@pond.sub.org/
+>>>>>
+>>>>> If I read it right, the commit 46f7afa37096 example is pretty special that
+>>>>> the QOM path more or less decided more than the hierachy itself but changes
+>>>>> the existances of objects.
+>>>>
+>>>> Let's see whether I got this...
+>>>>
+>>>> We removed some useless objects, moved the useful ones to another home.
+>>>> The move changed their QOM path.
+>>>>
+>>>> The problem was the removal of useless objects, because this also
+>>>> removed their vmstate.
+>>>
+>>> If you checkout at the removal commit (5bc8d26de20c), the vmstate has
+>>> been kept untouched.
+>>>
+>>>>
+>>>> The fix was adding the vmstate back as a dummy.
+>>>
+>>> Since the vmstate was kept I don't see why would we need a dummy. The
+>>> incoming migration stream would still have the state, only at a
+>>> different point in the stream. It's surprising to me that that would
+>>> cause an issue, but I'm not well versed in that code.
+>>>
+>>>>
+>>>> The QOM patch changes are *not* part of the problem.
+>>>
+>>> The only explanation I can come up with is that after the patch
+>>> migration has broken after a hotplug or similar operation. In such
+>>> situation, the preallocated state would always be present before the
+>>> patch, but sometimes not present after the patch in case, say, a
+>>> hot-unplug has taken away a cpu + ICPState.
+>>
+>> May be. It has been a while.
+>>
+>> For a better understanding, I tried to reproduce. QEMU 2.9 still
+>> compiles on a f38 (memfd_create needs a fix). However, a
+>> QEMU-2.9/pseries-2.9 machine won't start any recent OS because
+>> something broke the OS/platform negotiation process (CAS) ...
+> 
+> Thanks for letting us know it still builds. That motivated me to try as
+> well. Although it took me a while because of python's brokenness.
+> 
+> The issue was indeed the difference in preallocation vs. no
+> preallocation. I don't remember how to do hotplug in ppc anymore, but
+> maxcpus was sufficient to reproduce:
+> 
+> src 2.9.0:
+> $ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -nographic -vga none
+> -display none -accel tcg -machine pseries -smp 4,maxcpus=8 -m 256M
+> -nodefaults
+> 
+> dst 2.9.0 prior to 46f7afa:
+> $ ./ppc64-softmmu/qemu-system-ppc64 -serial mon:stdio -display none
+> -accel tcg -machine pseries-2.9 -smp 4,maxcpus=8 -m 256M -nodefaults
+> -incoming defer
+> 
+> (qemu) migrate_incoming tcp:localhost:1234
+> (qemu) qemu-system-ppc64: Unknown savevm section or instance 'icp/server' 4
+> qemu-system-ppc64: load of migration failed: Invalid argument
+> 
+> As you can see, both use 4 cpus, but the src will try to migrate all 8
+> icp/server instances. After the patch, the same migration works.
+> 
+> So this was not related to the QOM path nor the QOM hierarchy, it was
+> just about having state created at machine init vs. cpu realize time. 
 
-Here is an example shows how to use the PMU Event Filtering, when
-we launch a guest by use kvm, add such command line:
+Ah ! of course, the machine is created in an init handler.
 
-  # qemu-system-aarch64 \
-        -accel kvm \
-        -cpu host,kvm-pmu-filter="D:0x11-0x11"
+Thanks Fabiano, for the diagnostic and the time you took to reproduce
+and analyze. I had this bad assumption of constraint between QOM vs.
+migration and any change made me uncomfortable. You cleared it.
 
-Since the first action is deny, we have a global allow policy. This
-disables the filtering of the cycle counter (event 0x11 being CPU_CYCLES).
+Good that we are deprecating this hack in a couple of versions.
 
-And then in guest, use the perf to count the cycle:
+> It
+> might be wise to keep an eye on the QOM hierarchy anyway as it could
+> make these kinds of changes more evident during review.
 
-  # perf stat sleep 1
+Clearly,
 
-   Performance counter stats for 'sleep 1':
 
-              1.22 msec task-clock                       #    0.001 CPUs utilized
-                 1      context-switches                 #  820.695 /sec
-                 0      cpu-migrations                   #    0.000 /sec
-                55      page-faults                      #   45.138 K/sec
-   <not supported>      cycles
-           1128954      instructions
-            227031      branches                         #  186.323 M/sec
-              8686      branch-misses                    #    3.83% of all branches
+Thanks,
 
-       1.002492480 seconds time elapsed
+C.
 
-       0.001752000 seconds user
-       0.000000000 seconds sys
 
-As we can see, the cycle counter has been disabled in the guest, but
-other pmu events are still work.
 
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
----
-v4->v5:
-  - Change the kvm-pmu-filter as a -cpu sub-option.     [Eric]
-  - Comment tweak.                                      [Gavin]
-  - Rebase to the latest branch.
-
-v3->v4:
-  - Fix the wrong check for pmu_filter_init.            [Sebastian]
-  - Fix multiple alignment issue.                       [Gavin]
-  - Report error by warn_report() instead of error_report(), and don't use
-  abort() since the PMU Event Filter is an add-on and best-effort feature.
-                                                        [Gavin]
-  - Add several missing {  } for single line of code.   [Gavin]
-  - Use the g_strsplit() to replace strtok().           [Gavin]
-
-v2->v3:
-  - Improve commits message, use kernel doc wording, add more explaination on
-    filter example, fix some typo error.                [Eric]
-  - Add g_free() in kvm_arch_set_pmu_filter() to prevent memory leak. [Eric]
-  - Add more precise error message report.              [Eric]
-  - In options doc, add pmu-filter rely on KVM_ARM_VCPU_PMU_V3_FILTER support in
-    KVM.                                                [Eric]
-
-v1->v2:
-  - Add more description for allow and deny meaning in 
-    commit message.                                     [Sebastian]
-  - Small improvement.                                  [Sebastian]
-
- docs/system/arm/cpu-features.rst | 23 ++++++++++
- include/sysemu/kvm_int.h         |  1 +
- target/arm/cpu.h                 |  3 ++
- target/arm/kvm.c                 | 78 ++++++++++++++++++++++++++++++++
- 4 files changed, 105 insertions(+)
-
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index a5fb929243..44a797c50e 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -204,6 +204,29 @@ the list of KVM VCPU features and their descriptions.
-   the guest scheduler behavior and/or be exposed to the guest
-   userspace.
- 
-+``kvm-pmu-filter``
-+  By default kvm-pmu-filter is disabled. This means that by default all pmu
-+  events will be exposed to guest.
-+
-+  KVM implements PMU Event Filtering to prevent a guest from being able to
-+  sample certain events. It depends on the KVM_ARM_VCPU_PMU_V3_FILTER
-+  attribute supported in KVM. It has the following format:
-+
-+  kvm-pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-+
-+  The A means "allow" and D means "deny", start is the first event of the
-+  range and the end is the last one. The first registered range defines
-+  the global policy(global ALLOW if the first @action is DENY, global DENY
-+  if the first @action is ALLOW). The start and end only support hexadecimal
-+  format now. For example:
-+
-+  kvm-pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
-+
-+  Since the first action is allow, we have a global deny policy. It
-+  will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-+  also allowed except the event 0x30 is denied, and all the other events
-+  are disallowed.
-+
- TCG VCPU Features
- =================
- 
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index fd846394be..8f4601474f 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -120,6 +120,7 @@ struct KVMState
-     uint32_t xen_caps;
-     uint16_t xen_gnttab_max_frames;
-     uint16_t xen_evtchn_max_pirq;
-+    char *kvm_pmu_filter;
- };
- 
- void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8c3ca2e231..1be7dca4aa 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -971,6 +971,9 @@ struct ArchCPU {
- 
-     /* KVM steal time */
-     OnOffAuto kvm_steal_time;
-+
-+    /* KVM PMU Filter */
-+    char *kvm_pmu_filter;
- #endif /* CONFIG_KVM */
- 
-     /* Uniprocessor system with MP extensions */
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index c5a3183843..413ee2720e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -495,6 +495,22 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
-     ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
- }
- 
-+static char *kvm_pmu_filter_get(Object *obj, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    return g_strdup(cpu->kvm_pmu_filter);
-+}
-+
-+static void kvm_pmu_filter_set(Object *obj, const char *pmu_filter,
-+                               Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    g_free(cpu->kvm_pmu_filter);
-+    cpu->kvm_pmu_filter = g_strdup(pmu_filter);
-+}
-+
- /* KVM VCPU properties should be prefixed with "kvm-". */
- void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
- {
-@@ -516,6 +532,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
-                              kvm_steal_time_set);
-     object_property_set_description(obj, "kvm-steal-time",
-                                     "Set off to disable KVM steal time.");
-+
-+    object_property_add_str(obj, "kvm-pmu-filter", kvm_pmu_filter_get,
-+                            kvm_pmu_filter_set);
-+    object_property_set_description(obj, "kvm-pmu-filter",
-+                                    "PMU Event Filtering description for "
-+                                    "guest PMU. (default: NULL, disabled)");
- }
- 
- bool kvm_arm_pmu_supported(void)
-@@ -1705,6 +1727,60 @@ static bool kvm_arm_set_device_attr(ARMCPU *cpu, struct kvm_device_attr *attr,
-     return true;
- }
- 
-+static void kvm_arm_pmu_filter_init(ARMCPU *cpu)
-+{
-+    static bool pmu_filter_init;
-+    struct kvm_pmu_event_filter filter;
-+    struct kvm_device_attr attr = {
-+        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-+        .addr       = (uint64_t)&filter,
-+    };
-+    int i;
-+    gchar **event_filters;
-+
-+    if (!cpu->kvm_pmu_filter) {
-+        return;
-+    }
-+    if (kvm_vcpu_ioctl(CPU(cpu), KVM_HAS_DEVICE_ATTR, &attr)) {
-+        warn_report("The KVM doesn't support the PMU Event Filter!");
-+        return;
-+    }
-+
-+    /*
-+     * The filter only needs to be initialized through one vcpu ioctl and it
-+     * will affect all other vcpu in the vm.
-+     */
-+    if (pmu_filter_init) {
-+        return;
-+    } else {
-+        pmu_filter_init = true;
-+    }
-+
-+    event_filters = g_strsplit(cpu->kvm_pmu_filter, ";", -1);
-+    for (i = 0; event_filters[i]; i++) {
-+        unsigned short start = 0, end = 0;
-+        char act;
-+
-+        sscanf(event_filters[i], "%c:%hx-%hx", &act, &start, &end);
-+        if ((act != 'A' && act != 'D') || (!start && !end)) {
-+            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
-+            continue;
-+        }
-+
-+        filter.base_event = start;
-+        filter.nevents = end - start + 1;
-+        filter.action = (act == 'A') ? KVM_PMU_EVENT_ALLOW :
-+                                       KVM_PMU_EVENT_DENY;
-+
-+        if (!kvm_arm_set_device_attr(cpu, &attr, "PMU Event Filter")) {
-+            break;
-+        }
-+    }
-+
-+    g_strfreev(event_filters);
-+}
-+
- void kvm_arm_pmu_init(ARMCPU *cpu)
- {
-     struct kvm_device_attr attr = {
-@@ -1715,6 +1791,8 @@ void kvm_arm_pmu_init(ARMCPU *cpu)
-     if (!cpu->has_pmu) {
-         return;
-     }
-+
-+    kvm_arm_pmu_filter_init(cpu);
-     if (!kvm_arm_set_device_attr(cpu, &attr, "PMU")) {
-         error_report("failed to init PMU");
-         abort();
--- 
-2.40.1
-
+>> I removed the pre_2_10_has_unused_icps hack and worked around
+>> another migration compat issue in IOMMU ... Here are the last
+>> trace-events for migration :
+>>
+>>       QEMU-mainline/pseries-2.9 -> QEMU-2.9/pseries-2.9
+>>
+>> 1016464@1705053752.106417:vmstate_load spapr, spapr
+>> 1016464@1705053752.106419:vmstate_load_state spapr v3
+>> 1016464@1705053752.106421:vmstate_load_state_field spapr:unused
+>> 1016464@1705053752.106424:vmstate_load_state_field spapr:rtc_offset
+>> 1016464@1705053752.106425:vmstate_load_state_field spapr:tb
+>> 1016464@1705053752.106427:vmstate_n_elems tb: 1
+>> 1016464@1705053752.106429:vmstate_load_state timebase v1
+>> 1016464@1705053752.106432:vmstate_load_state_field timebase:guest_timebase
+>> 1016464@1705053752.106433:vmstate_n_elems guest_timebase: 1
+>> 1016464@1705053752.106435:vmstate_load_state_field timebase:time_of_the_day_ns
+>> 1016464@1705053752.106436:vmstate_n_elems time_of_the_day_ns: 1
+>> 1016464@1705053752.106438:vmstate_subsection_load timebase
+>> 1016464@1705053752.106440:vmstate_subsection_load_bad timebase: spapr_option_vector_ov5_cas/(prefix)
+>> 1016464@1705053752.106442:vmstate_load_state_end timebase end/0
+>> 1016464@1705053752.106443:vmstate_subsection_load spapr
+>> 1016464@1705053752.106445:vmstate_load_state spapr_option_vector_ov5_cas v1
+>> 1016464@1705053752.106447:vmstate_load_state_field spapr_option_vector_ov5_cas:ov5_cas
+>> 1016464@1705053752.106448:vmstate_n_elems ov5_cas: 1
+>> 1016464@1705053752.106450:vmstate_load_state spapr_option_vector v1
+>> 1016464@1705053752.106452:vmstate_load_state_field spapr_option_vector:bitmap
+>> 1016464@1705053752.106454:vmstate_n_elems bitmap: 1
+>> 1016464@1705053752.106456:vmstate_subsection_load spapr_option_vector
+>> 1016464@1705053752.106457:vmstate_subsection_load_bad spapr_option_vector: (short)/
+>> 1016464@1705053752.106459:vmstate_load_state_end spapr_option_vector end/0
+>> 1016464@1705053752.106461:vmstate_subsection_load spapr_option_vector_ov5_cas
+>> 1016464@1705053752.106462:vmstate_subsection_load_bad spapr_option_vector_ov5_cas: (short)/
+>> 1016464@1705053752.106465:vmstate_load_state_end spapr_option_vector_ov5_cas end/0
+>> 1016464@1705053752.106466:vmstate_subsection_load_bad spapr: spapr/cap/htm/(lookup)
+>> qemu-system-ppc64: error while loading state for instance 0x0 of device 'spapr'
+> 
+> This trace this seems to be something else entirely. I'd be amazed if
+> migrating mainline vs. something that old worked at all, even on x86.

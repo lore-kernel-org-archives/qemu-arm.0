@@ -1,117 +1,176 @@
-Received: by 2002:a17:906:6951:b0:a28:f940:7a27 with SMTP id c17csp3106788ejs;
-        Sat, 13 Jan 2024 11:18:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGdcgpU30WcgIHNgjCMFW91K+DFNI6LaEZ5j4w9r6fY13uaGGjd7wYnp+a5DIXcx5SblHqW
-X-Received: by 2002:a05:620a:1466:b0:781:bd79:dcf8 with SMTP id j6-20020a05620a146600b00781bd79dcf8mr5908908qkl.65.1705173503219;
-        Sat, 13 Jan 2024 11:18:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705173503; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp35637ejf;
+        Sun, 14 Jan 2024 21:53:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFrcSzJ3nFFedQraCc9lmimPGqFvwL7h03bxt41/Qcf+n7ju4KPWSOa38guTIKzDmHdKHSf
+X-Received: by 2002:ad4:5f06:0:b0:680:cd3b:c100 with SMTP id fo6-20020ad45f06000000b00680cd3bc100mr7056526qvb.19.1705298012768;
+        Sun, 14 Jan 2024 21:53:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705298012; cv=none;
         d=google.com; s=arc-20160816;
-        b=VlfP3iyt08lHJaX4StGLoTxCI+gENVDjonYJkgtNLvPyulfu0Gsqli6N+QsBPDbqoy
-         2XopttLeySUitawrSxbCYjDER9WYtyiKBIi1z0KEGtfwotrkpwNzcrUSxshnreXzoh0b
-         qvIhRyfN2H1HKtqHT093s8Xqp7qlXvW4DV1M6EfLOKTwOudF165sMapNfdBake1VahPS
-         R4iHbvEd5Lh1rx+ayaHxfOEKj7NzOo75iCZ9QvJArcsJWFpOtkVchHo7aszRT02sw5dS
-         kNqp30BwQd/EC25UtdPpaeg7PlhfLaIWWWVQJ1ybtwwSMPU/3kf9b2f56ekQEmL8wS3a
-         qW4g==
+        b=QKLRSXrUQjjqnmYX6EeB1kckl2y0COFaMdJS8ZHaMlr9qGj0SqnmcfgiCNIsr2W4wy
+         /BlV2c5HwV0yKXexK/J5ZM2aD//qm1PfmisGv+Q6aE1h+M7E9NZdwwt0Tv71ur9afvUp
+         Cw2AjVv31tEbzaKdh4hrwiEupKFUy5Lq2FG5IP7X4rPsn65cGPJsi28AnF3L7wtarbIo
+         YHxJmCiLbVCvyzdWEqlyz2XXB/TE0Wt12vHonuDEG6LHDTrv90OCsdRrHj/FPqwE4aHD
+         ezIZssw4Tu7+JwvQvmK4/h3zzR+UhlYryRY+EsGRP2bNsQAG6hRW1XEuSY2TxQHfJVR4
+         PTSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=4UCDHGFBDJB1Ot7Qx0E2+kK/f2W9pzsH3RVjHm4uLUw=;
-        fh=iZ5aizxLdCGVu5REqOBn2Q9N1PphBwZZ8KuDLD3B8yA=;
-        b=JlZfuSFhjVpF4UFiMVByAzqSa/F5wQix+vDE4L+Dy5TAbBPorJf6VrHsohZGqCUGdK
-         PbrvUooT5nwieAE/a/iHeax+DnnzdcxCNhU1rbtCjDyucOn8+A0PAFbLeCzrRfqN68Il
-         GDZ3JWMcOZVl5EYkTsI2PNdMKYk57Rvo4sS29GuYrhgDwSeeu6pm58Hj8hVi/pR1Unrn
-         94tQDmvB0b6cVE1xz3nF1GsTx8EcJqRiNcpay6K8CnLb0ZOp/JtbaxT1iH8S7W+dEm6A
-         w9GH0UNXp7FSPY1qSps7UlJFirkOYoOAc+Vd4AAOEO16zbbIfBBtI/bT6ufVBla5EvQO
-         v3Vw==
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Ad5LqbOndgRFjsWqtjVLdopSBTTMpibLsYLxVlS4SRo=;
+        fh=UBZJIFyEXw2NEQCbGJtDA1qjVF7HIlYnHNaGWc5dEVc=;
+        b=U9LMyQ5cZvPGuHVyQPtJwSr6gv/bBvAtKLuy2S70yycmFQEFQ5pgYCHaJ7qqpnJ17H
+         fhyrUyMTHmzfO/id21VlFsmMZGji8EkwWLOQ20OSrNbozZRWe19W5txhoSK7pcxIkQCb
+         8wjVFumG3fV9I5DNTn34FAsoObMgJw8pJdH54le3V0gtAJg+5UE17EdEndC1O2+Qji0k
+         abLRcZtYO6l1w7UWhCyKTABuqKQd4Q95gOGKqwAHzOKE+x5Pv4jHQOqwiyM5uyNdGPB8
+         EGSr9Q6xQGWNhAn8FJKwYqSMNtizUId4xJzZ958Jt3Ka/pM2S91GEcD5Hu1ygYeb2LR1
+         wLUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="Pg8h/wqB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VOczEr7k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s10-20020a05620a0bca00b0077efd5a9f39si5590304qki.143.2024.01.13.11.18.23
+        by mx.google.com with ESMTPS id n1-20020a0c8c01000000b0067f8279ac5dsi7462125qvb.487.2024.01.14.21.53.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jan 2024 11:18:23 -0800 (PST)
+        Sun, 14 Jan 2024 21:53:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="Pg8h/wqB";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VOczEr7k;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rOjVM-0006Cy-Pt; Sat, 13 Jan 2024 14:17:16 -0500
+	id 1rPFuL-000747-FU; Mon, 15 Jan 2024 00:53:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rOjV8-000694-Jv; Sat, 13 Jan 2024 14:17:02 -0500
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rOjV6-00087F-Gt; Sat, 13 Jan 2024 14:17:01 -0500
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-1d427518d52so55185345ad.0; 
- Sat, 13 Jan 2024 11:16:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705173419; x=1705778219; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4UCDHGFBDJB1Ot7Qx0E2+kK/f2W9pzsH3RVjHm4uLUw=;
- b=Pg8h/wqB61Eqv+q6X0x3s0OWweRtXj2eBNuSiS9/Gf3EwPVPAxeMLj6TNtCSLAFqxO
- o4k8Ix08WyL0zpq9cMT3wvIDyaHn+gtABv9Z5Au7IKtpPGrCeTWUCt02EvvoVhGyklV3
- fvm0/SRXJTmF9nCYcxtEoe5Rb5H6IM4JRcLPSFmaORlSC5w1k0ppP3ctg7+fbpp96EyH
- MY0LQYF/9BGDJWAV3vrAETO1juRO4YKdS0rTqOp9fYQejE+BWji83ay19B5Tk4W4adAz
- 0LJ6oENrX+yTlbBx9MaQxYuM/4MDunT0EyNRWAAWWVxbgNeq4oL9r3o/qghpwtcYx/GE
- +yOg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rPFuJ-00072t-H8
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 00:53:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rPFuI-00063X-2G
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 00:53:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705297989;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Ad5LqbOndgRFjsWqtjVLdopSBTTMpibLsYLxVlS4SRo=;
+ b=VOczEr7k/MHX4b7jSeeTWsJxUxBu3AfSgoI9pnuqKShVPxB1U7tMllYmTNJK1ToiWgcD1S
+ GkUJjwsZwSOb0MX4whtleO9L041icUYudIq5mSVkUd5DNsE+hGFW9q+d8eV6fsI5elEDSt
+ BFeyw3eL6KrHvHrPdMWobh6wYTuVSVs=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-269-XTJuWuXkOOCDFomORDr9zw-1; Mon, 15 Jan 2024 00:53:02 -0500
+X-MC-Unique: XTJuWuXkOOCDFomORDr9zw-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ 4fb4d7f45d1cf-555e8b639abso5206728a12.2
+ for <qemu-arm@nongnu.org>; Sun, 14 Jan 2024 21:53:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705173419; x=1705778219;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=4UCDHGFBDJB1Ot7Qx0E2+kK/f2W9pzsH3RVjHm4uLUw=;
- b=ONBD/ebJKpv9LTjeot9IOPHVAQTdkNoct8uI6bAeqF442ttqQNULPOBowuAYgc1Cdp
- DtuzyJsT3O36ldB1UxrSd/XoaowTm1VyXWZbLuhHLOAViWBzhz0gp8Jih/YM3idLMJeW
- odAWZFr7TFVfOsR5I/6onICxHAIpcSzli4+Psi4ZC26UFnI4gpHmfrqNavT5MFjKvNrR
- vii7oJXs0YVbnBXUvhuiOMrMwogrWEVfvTysWDOOseePAmMi/7wGvYQFW9VCtkXVxuQy
- v+ndZsG+efUunnvofoom76kwiUDDi6q6x+X+eUtKlA9Exu1bImUjx3FOXEHK5SIrTLSn
- X5bA==
-X-Gm-Message-State: AOJu0YyvR3NwWLZWyQndPth8Y7167QoGTdLCGeg5zy35z/XdDPJCWKoC
- MM8rbGwP8G+eTMOKXot6Ey6EgDz64t8=
-X-Received: by 2002:a17:902:6b48:b0:1d5:8cbc:863c with SMTP id
- g8-20020a1709026b4800b001d58cbc863cmr3628676plt.27.1705173418874; 
- Sat, 13 Jan 2024 11:16:58 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- jg20-20020a17090326d400b001d060c61da5sm5097593plb.134.2024.01.13.11.16.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 Jan 2024 11:16:58 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH 3/3] hw/arm: Add watchdog timer to Allwinner H40 and Bananapi
- board
-Date: Sat, 13 Jan 2024 11:16:51 -0800
-Message-Id: <20240113191651.1313226-4-linux@roeck-us.net>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240113191651.1313226-1-linux@roeck-us.net>
-References: <20240113191651.1313226-1-linux@roeck-us.net>
+ d=1e100.net; s=20230601; t=1705297981; x=1705902781;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ad5LqbOndgRFjsWqtjVLdopSBTTMpibLsYLxVlS4SRo=;
+ b=YzhFyLaI/E6euu04TJ4Yw8fPJfqFNwaTCT0BvcWW5ayCdxfnbPn6oixcDCvyX8GDdw
+ ersHaWTEF3lAbLeqiL7mBHnFANZGYDSGYeRrh1kW3v4uVuCYE2NfnEryFxmN6s4z4/Lm
+ LbZUABaouNRT0fh+0BnnnS89cGnis/fmJFbmvgjGhKcJKZq4WO1n77dM9iYsOi7plgKS
+ lstfpF2HmdDZwBorm86C+1JjbMDZ3thSr77XCHvvlVF/KrVNfUt+rDZBwsWsy2WA9pin
+ WQTkz1oLe8GsjEDL5jG+HTucTEnEMWPk8ZOF1I6tSBNLziZUVPVpWmTvBZUS6SkMxmqI
+ Tdug==
+X-Gm-Message-State: AOJu0Yw9t+qO0rc5jk81Ce0U1bKz1w5ABBcLKRYv7aWAkfimP4JQ+YiZ
+ pbDsly/ktcT9jt/pGsG3jUu5/hvApEFc2VmKONsL4TVZl++KSpfVjnuW4VXIyhbpPhGcrRV1Ijg
+ NOkh98Ne2FLYZiwPlAYXj
+X-Received: by 2002:a17:906:260d:b0:a2c:72e4:efb1 with SMTP id
+ h13-20020a170906260d00b00a2c72e4efb1mr2040113ejc.139.1705297981010; 
+ Sun, 14 Jan 2024 21:53:01 -0800 (PST)
+X-Received: by 2002:a17:906:260d:b0:a2c:72e4:efb1 with SMTP id
+ h13-20020a170906260d00b00a2c72e4efb1mr2040103ejc.139.1705297980748; 
+ Sun, 14 Jan 2024 21:53:00 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-176-232.web.vodafone.de.
+ [109.43.176.232]) by smtp.gmail.com with ESMTPSA id
+ v8-20020a170906488800b00a27aabff0dcsm4952601ejq.179.2024.01.14.21.52.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 14 Jan 2024 21:53:00 -0800 (PST)
+Message-ID: <5200b68d-6b3d-491f-8e51-4a53aca2f3a1@redhat.com>
+Date: Mon, 15 Jan 2024 06:52:58 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 3/3] tests/qtest: Add STM32L4x5 GPIO QTest testcase
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20240112170635.303226-1-ines.varhol@telecom-paris.fr>
+ <20240112170635.303226-4-ines.varhol@telecom-paris.fr>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240112170635.303226-4-ines.varhol@telecom-paris.fr>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.248, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.758,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,113 +185,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rItZcAs+sysW
+X-TUID: qpBc4IpizZga
 
-Add watchdog timer support to Allwinner-H40 and Bananapi.
-The watchdog timer is added as an overlay to the Timer
-module memory map.
+  Hi!
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- docs/system/arm/bananapi_m2u.rst | 2 +-
- hw/arm/Kconfig                   | 1 +
- hw/arm/allwinner-r40.c           | 8 ++++++++
- include/hw/arm/allwinner-r40.h   | 3 +++
- 4 files changed, 13 insertions(+), 1 deletion(-)
+On 12/01/2024 18.05, Inès Varhol wrote:
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
 
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
-index 542310591d..587b488655 100644
---- a/docs/system/arm/bananapi_m2u.rst
-+++ b/docs/system/arm/bananapi_m2u.rst
-@@ -25,6 +25,7 @@ The Banana Pi M2U machine supports the following devices:
-  * SATA
-  * TWI (I2C)
-  * USB 2.0
-+ * Hardware Watchdog
- 
- Limitations
- """""""""""
-@@ -33,7 +34,6 @@ Currently, Banana Pi M2U does *not* support the following features:
- 
- - Graphical output via HDMI, GPU and/or the Display Engine
- - Audio output
--- Hardware Watchdog
- - Real Time Clock
- 
- Also see the 'unimplemented' array in the Allwinner R40 SoC module
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 98ca5ebc7d..386edbae15 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -411,6 +411,7 @@ config ALLWINNER_R40
-     select AHCI
-     select ALLWINNER_SRAMC
-     select ALLWINNER_A10_PIT
-+    select ALLWINNER_WDT
-     select AXP2XX_PMU
-     select SERIAL
-     select ARM_TIMER
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index f90d59fb5e..334692ef97 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_OHCI2]      = 0x01c1c400,
-     [AW_R40_DEV_CCU]        = 0x01c20000,
-     [AW_R40_DEV_PIT]        = 0x01c20c00,
-+    [AW_R40_DEV_WDT]        = 0x01c20c90,
-     [AW_R40_DEV_UART0]      = 0x01c28000,
-     [AW_R40_DEV_UART1]      = 0x01c28400,
-     [AW_R40_DEV_UART2]      = 0x01c28800,
-@@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)
-     object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-                               "clk1-freq");
- 
-+    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
-+
-     object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
- 
-     for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
-@@ -553,6 +556,11 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
- 
-+    /* WDT */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
-+                            allwinner_r40_memmap[AW_R40_DEV_WDT], 1);
-+
-     /* Unimplemented devices */
-     for (unsigned i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-         create_unimplemented_device(r40_unimplemented[i].device_name,
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index c589fcc1c1..66c38e7d90 100644
---- a/include/hw/arm/allwinner-r40.h
-+++ b/include/hw/arm/allwinner-r40.h
-@@ -33,6 +33,7 @@
- #include "hw/net/allwinner-sun8i-emac.h"
- #include "hw/usb/hcd-ohci.h"
- #include "hw/usb/hcd-ehci.h"
-+#include "hw/watchdog/allwinner-wdt.h"
- #include "target/arm/cpu.h"
- #include "sysemu/block-backend.h"
- 
-@@ -54,6 +55,7 @@ enum {
-     AW_R40_DEV_OHCI2,
-     AW_R40_DEV_CCU,
-     AW_R40_DEV_PIT,
-+    AW_R40_DEV_WDT,
-     AW_R40_DEV_UART0,
-     AW_R40_DEV_UART1,
-     AW_R40_DEV_UART2,
-@@ -114,6 +116,7 @@ struct AwR40State {
-     const hwaddr *memmap;
-     AwSRAMCState sramc;
-     AwA10PITState timer;
-+    AwWdtState wdt;
-     AllwinnerAHCIState sata;
-     AwSdHostState mmc[AW_R40_NUM_MMCS];
-     EHCISysBusState ehci[AW_R40_NUM_USB];
--- 
-2.39.2
+Maybe add a short patch description (e.g. saying what aspects of the GPIOs 
+are tested here)?
+
+> diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gpio-test.c
+> new file mode 100644
+> index 0000000000..189083bc4f
+> --- /dev/null
+> +++ b/tests/qtest/stm32l4x5_gpio-test.c
+...
+> +static void test_idr_reset_value(void)
+> +{
+> +    /*
+> +     * Check that IDR register as well as other registers
+> +     * determining its value have the exepcted value
+
+s/exepcted/expected/
+
+> +     * GPIOA->IDR value after reset is not identical
+> +     * to the real one ad Alternate Functions aren't
+
+s/ad/and/ ?
+
+> +     * implemented
+> +     */
+
+With the typos fixed:
+Acked-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp264739ejf;
-        Mon, 15 Jan 2024 06:10:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFXlhBZEV5DoxyWQEcrRlnWOOdR9cKsSOP3u9tQ2luSlaIhQtmBGd5+Q4OxOg8VaW3QrVXb
-X-Received: by 2002:ad4:5bef:0:b0:681:56c3:af0e with SMTP id k15-20020ad45bef000000b0068156c3af0emr4718256qvc.38.1705327842281;
-        Mon, 15 Jan 2024 06:10:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705327842; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp272380ejf;
+        Mon, 15 Jan 2024 06:20:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEG30yOlmyNjfNwNdrhtzj3xwNFCbtB4iVEdvhZJcUzYhAw6UGHnR5SRUCH41El4ZhW+p/3
+X-Received: by 2002:a05:620a:d85:b0:781:e452:e33f with SMTP id q5-20020a05620a0d8500b00781e452e33fmr6721003qkl.100.1705328417611;
+        Mon, 15 Jan 2024 06:20:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705328417; cv=none;
         d=google.com; s=arc-20160816;
-        b=zbP6vb7OHHrmdS7l9EbmdeTVSq3dTn27UiQ/Uh0PPMoy3w5ghaMuxPZqEy354LXCxe
-         8c1ffcx+xahG+HdE57oGYz8TogI4tNsU4Wzbh6aQt1ubqvAXD9mX/XhG/6Ff/s//kQ5D
-         5bfzGeC4kFLMdoqAX56xlZjAGTx13wNp+KIQMiLiLGvtRYrBMcUVW421PZmfLvKN++C4
-         i+W5Y6kuP/eDuLejAJkvZLJcQjiXO6zQzXaNmxymfDb+1mjeezf4eWiGrQK1MqJhboQd
-         PQ3Dbegj7eps829dwIfcV31XQI77lWPQpkE9YWcpeCWAEUysH6wcgwyW7QiQMlhE4Nh/
-         imlw==
+        b=HLzUb5wgpbDKZFH+35cWRRvue3dPH2elYUMx+t0M4J/7yt6CzizUsJ3aONGEB/c4ZO
+         ElYnS+vi1Prt/hTa/vsoERGd/mMDAgKIh3S8EXxKj2Ip4F48wXeb5YzEZizizGmFqBfy
+         aix6YWAN2swY5eBHHMtXU4iVjrw0CmqtSlGJXS1ZxFfyxcUHGCrJtnYl8PJXTX5ufY7B
+         8Ni2mM4fqDCSE8yQgOEFT2gshid6bAZiL5nssPLVgJFzpJM9q572LqdAcPteLtpK5U88
+         FQWO2ZGwesPblbfVThccAC0KCx6lII6LcKdcc/TnPv/ig8wAmSLaLpspPTixtQsXJMvO
+         5YIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=epfBPg5XRbb4yGTmyrNtVuyfafA74tcJKJMpUdL1RLo=;
+        bh=RocVOM2E5OVyv8T7N6cot2XBmdVPKoRvT9l6F16ZNdY=;
         fh=gdBed72JnSifzQdV0PLkUCrNnp2PjbNCgzXbyzmTG1w=;
-        b=ZaQw1JVxd15Ukqt4pdbSsyQwY+Jkm76aktP2DsM191CsJ+mWN0xFdCvjXelQj+Lq24
-         ZSAAEEuyMWjwz/6Vmewlm2ZCZl0iW9LYlj+GgM5hZn8qnshdJbtvonmAAViBT+jByu5w
-         awZwGw7cvdE5N3Ay9XqdlkJ7b+wsEVj/kQbOHYkBiZx5Dgr74S9L0LZX8ms2u1+KHLZL
-         JSQCHiPzlGrEBiS2LXKs20MxiVVo1I3CoNftGrdGU55ZXmOfUBk7fHOTTGkLU8xyzI65
-         JlF8/HuFe1Ol2nn1kH19yGEa0iMrcODSmR0VsPz1q+DVplImgMi2IPTG7tRrOqaWtQnF
-         AwpQ==
+        b=EMpT4MukJbg/ZXOsLVe3WOkmfyDZANzSuoFP39Q7gmRORif3zlWGgQ8h2A2HG2wv8X
+         Qa9RkRI3hN7pKJNnyuF2CM078HsKzP64lv3SYJHyZv0g8jKCd3nplPM8yAqXNHMTCTzF
+         YWUFRYssuayFVIRxyuBH5jSmCWnwG0a+sBqZrrYKP3dUKG75Bsq1btEfKs1866uJg7G3
+         lvXHZ2VQ9qm8h83cyqOTpHZwsic+WeS3O2I35y3Sg4g+oKuPitXAK6nPmsbE5Up62Dok
+         8WylUk03T8AVhKyKD+n4Dx0guTAXEKWk3tSR6Lgr3q06Rw22gsH+0258aJlBtEKgiS/C
+         SyCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IVQwBjGJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TEKU1ptg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e1-20020a0cf341000000b0067f3dbabee4si8166442qvm.183.2024.01.15.06.10.42
+        by mx.google.com with ESMTPS id q26-20020a05620a0c9a00b007832b15c5b7si7736466qki.719.2024.01.15.06.20.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jan 2024 06:10:42 -0800 (PST)
+        Mon, 15 Jan 2024 06:20:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IVQwBjGJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TEKU1ptg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPNfh-0002nm-Ob; Mon, 15 Jan 2024 09:10:37 -0500
+	id 1rPNow-0005ZD-Io; Mon, 15 Jan 2024 09:20:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rPNff-0002mA-Rd
- for qemu-arm@nongnu.org; Mon, 15 Jan 2024 09:10:35 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1rPNou-0005Yu-T2
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 09:20:08 -0500
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rPNfe-0007R7-4Y
- for qemu-arm@nongnu.org; Mon, 15 Jan 2024 09:10:35 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-557ad92cabbso8570023a12.0
- for <qemu-arm@nongnu.org>; Mon, 15 Jan 2024 06:10:33 -0800 (PST)
+ id 1rPNor-0000f4-3M
+ for qemu-arm@nongnu.org; Mon, 15 Jan 2024 09:20:07 -0500
+Received: by mail-lj1-x22e.google.com with SMTP id
+ 38308e7fff4ca-2cd0d05838fso99025961fa.1
+ for <qemu-arm@nongnu.org>; Mon, 15 Jan 2024 06:20:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705327831; x=1705932631; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705328402; x=1705933202; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=epfBPg5XRbb4yGTmyrNtVuyfafA74tcJKJMpUdL1RLo=;
- b=IVQwBjGJdleqtndMuF2hKlIF3NFEf5OZlbUXEr8prlEa3uJ/J6y95T8H5W8p/QwLKD
- ZEpjZM8zAY9oSr1n5aCi1xbzXlGLpECjWWuukEgMiaBQoiorn2IdV41yUwN2TFW5NES2
- aF21z9ZT0vpM31gE5K9JUGSTnV5SzxbHTJ73knY6k0VouFRPbyWy3wZuBuO9dqIZ0t6D
- INsfKHmUd78aY2fozKjIuPnWsepuQTEDqNk/aMxQxc4h6jOCwRqIVkY3jf7C7C3g9w4W
- oAw3XHhEjonRiH3nX21XywMetzy0CSEMokAfnoXg9BQ5gkRGeEalZZd7pJC2IXB+w4Ru
- 3scQ==
+ bh=RocVOM2E5OVyv8T7N6cot2XBmdVPKoRvT9l6F16ZNdY=;
+ b=TEKU1ptg+gSjrHqRAvFTUWQcrQ+UxDKgqx/ukEhTTrDDJw7eIfPlI0dK9S2XaMU2PV
+ 0tBpeIL/cW+S+EVTWDLq1Sl5njQYcACk7/qHyG0rKP2Mkd+MgXpN87qVd71coEQjLkGX
+ nRyAziDlqE5xlTRile56sWcKWHd3pkrUufrIdePPsW7ImOsh9RvBJaLe1VRMPscwUZCO
+ Xar92srWOiTTXdfUkKv5pWTzKdpA562n9qk44T0nAYZYawPRCpAXuSxksfcszMxaL0JY
+ keVOYPN30ovOj4uo3pAycYbb34bMiesHYqIS+yaVkOWqziXm9MQRYIDtu1lLFn5J75+1
+ AhlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705327831; x=1705932631;
+ d=1e100.net; s=20230601; t=1705328402; x=1705933202;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=epfBPg5XRbb4yGTmyrNtVuyfafA74tcJKJMpUdL1RLo=;
- b=xPQLpgZboBEVyuNuAAfgir8inu3MYnwJsk9K/0hOZpQif72dzqL1jMiq4V+qLPbiPh
- J7q1rM8Ch4LEgE+Zlqh5iWmwVPw9YyjVT9a1wqLF6urv1s/F7JON3W8N2BQvlvcU2HVw
- zTz1pXwCxeHTdh/nhS/BwGp3qMhmQwMkkX8AezD0pNhio/QMBs5H68wh9GqPxeX15f+l
- fJJxPO6UrLoyqTu7AuIrQxDcwgpgoYAvdpySztWNd3mPVeo4bbYLHAkh+A3iyrKNPjY+
- eFCq8K5uSMrIm4GUV7edGLaKwXcIhP+2RqyoUuXKGMzW2CPihwtOyPcm3cX3ZxwZ+RzA
- uhcA==
-X-Gm-Message-State: AOJu0Yx8BcVdGTs7Idux21HPkOrhioUfU0LYaI7jweF0S8cZfC0B2prN
- BMQTAzfpLKVchFnj/5OdewOTYVKvZZJpp77iR2hq6Qy3X9Z4Ng==
-X-Received: by 2002:a05:6402:40c6:b0:558:b9ed:2efb with SMTP id
- z6-20020a05640240c600b00558b9ed2efbmr1747090edb.98.1705327831412; Mon, 15 Jan
- 2024 06:10:31 -0800 (PST)
+ bh=RocVOM2E5OVyv8T7N6cot2XBmdVPKoRvT9l6F16ZNdY=;
+ b=QvbRqwJAkX9aMa/Da1NUqcb5OFt1KBzgdXhc0xTnmJ4JOXTRPl99bGCwTdin1GqyKc
+ lfeZ4P08Cj2KxdrSOFSAeytWCLJZO7wayw4NGwb2FIPD7JgS303QhkyDOUjvDSnXGmG/
+ QSPmBB91xkv6b/bZ0FGkEby517DBnlLhCoIe9pPdtml4EQT5WAa8YQMwqEH4OPly6EM3
+ 2+jejd9gDDrwNnQfvl9BIQDANhyEWizE5C87EUxLVHGBP1EqEFB0UmJksCsEts42Wma6
+ L1q+MgPPbGREgMlMqQMoSRu7nAosMC75QApAlOFS0OCtDs8DIx03hh+x2Vvy7TyOqYPs
+ qnnQ==
+X-Gm-Message-State: AOJu0YzuIR/3wUWD58v67+n2w9WX1IwVFsaJUQUzOrxLgjtKL4iwxVKK
+ 3xoEerIp7W7qe79ce4bM2hND7HhzF9phA8n/OCcZLs5W6pD+Lw==
+X-Received: by 2002:a2e:5c44:0:b0:2cd:1d6e:74c9 with SMTP id
+ q65-20020a2e5c44000000b002cd1d6e74c9mr2274120ljb.48.1705328402214; Mon, 15
+ Jan 2024 06:20:02 -0800 (PST)
 MIME-Version: 1.0
 References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
- <20231208023145.1385775-17-sergey.kambalin@auriga.com>
-In-Reply-To: <20231208023145.1385775-17-sergey.kambalin@auriga.com>
+ <20231208023145.1385775-18-sergey.kambalin@auriga.com>
+In-Reply-To: <20231208023145.1385775-18-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jan 2024 14:10:20 +0000
-Message-ID: <CAFEAcA_O0+P2MTe8KLNz5PYqQG1xFAbFHGv5ANpj0d=OY123VQ@mail.gmail.com>
-Subject: Re: [PATCH v4 16/45] Enable BCM2838 PCIE
+Date: Mon, 15 Jan 2024 14:19:50 +0000
+Message-ID: <CAFEAcA95Ou+8RNyTQ5X_Lmibq2TcyhU+pO-fA9w0u+1NH1B6EA@mail.gmail.com>
+Subject: Re: [PATCH v4 17/45] Add RNG200 skeleton
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,98 +118,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rz5jXeoQ/b8S
+X-TUID: KjQZeWjiY9Dt
 
 On Fri, 8 Dec 2023 at 02:33, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  hw/arm/bcm2838_pcie.c                |  3 +++
->  hw/arm/bcm2838_peripherals.c         | 26 ++++++++++++++++++++++++++
->  hw/arm/meson.build                   |  7 ++++---
->  hw/arm/raspi4b.c                     |  1 -
->  include/hw/arm/bcm2838_peripherals.h |  3 +++
->  5 files changed, 36 insertions(+), 4 deletions(-)
+>  hw/misc/bcm2838_rng200.c         | 152 +++++++++++++++++++++++++++++++
+>  hw/misc/meson.build              |   1 +
+>  hw/misc/trace-events             |   9 ++
+>  include/hw/misc/bcm2838_rng200.h |  51 +++++++++++
+>  4 files changed, 213 insertions(+)
+>  create mode 100644 hw/misc/bcm2838_rng200.c
+>  create mode 100644 include/hw/misc/bcm2838_rng200.h
 >
-> diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
-> index 75146d6c2e..8e046d0ac7 100644
-> --- a/hw/arm/bcm2838_pcie.c
-> +++ b/hw/arm/bcm2838_pcie.c
-> @@ -239,6 +239,9 @@ static void bcm2838_pcie_root_reg_reset(PCIDevice *dev)
->  }
->
->  static void bcm2838_pcie_root_realize(PCIDevice *dev, Error **errp) {
-> +    BCM2838PcieRootClass *brpc = BCM2838_PCIE_ROOT_GET_CLASS(dev);
+> diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
+> new file mode 100644
+> index 0000000000..8f64e6a20f
+> --- /dev/null
+> +++ b/hw/misc/bcm2838_rng200.c
+> @@ -0,0 +1,152 @@
+> +/*
+> + * BCM2838 Random Number Generator emulation
+> + *
+> + * Copyright (C) 2022 Sergey Pushkarev <sergey.pushkarev@auriga.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
 > +
-> +    brpc->parent_realize(dev, errp);
->      bcm2838_pcie_root_reg_reset(dev);
->  }
->
-
-I guess this change should have been in the previous patch ?
-
-> diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-> index d3b42cf25b..ee06214715 100644
-> --- a/hw/arm/bcm2838_peripherals.c
-> +++ b/hw/arm/bcm2838_peripherals.c
-> @@ -12,6 +12,11 @@
->  #include "hw/arm/raspi_platform.h"
->  #include "hw/arm/bcm2838_peripherals.h"
->
-> +#define PCIE_RC_OFFSET          0x1500000
-> +#define PCIE_MMIO_OFFSET        0xc0000000
-> +#define PCIE_MMIO_ARM_OFFSET    0x600000000
-> +#define PCIE_MMIO_SIZE          0x40000000
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/misc/bcm2838_rng200.h"
+> +#include "migration/vmstate.h"
+> +#include "trace.h"
 > +
->  /* Lower peripheral base address on the VC (GPU) system bus */
->  #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
->
-> @@ -29,6 +34,10 @@ static void bcm2838_peripherals_init(Object *obj)
->                         bc->peri_low_size);
->      sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
->
-> +    /* PCIe Host Bridge */
-> +    object_initialize_child(obj, "pcie-host", &s->pcie_host,
-> +                            TYPE_BCM2838_PCIE_HOST);
-> +
->      /* Extended Mass Media Controller 2 */
->      object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
->
-> @@ -61,6 +70,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
->      MemoryRegion *mphi_mr;
->      BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
->      BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
-> +    MemoryRegion *regs_mr;
-> +    MemoryRegion *mmio_mr;
-> +
->      int n;
->
->      bcm_soc_peripherals_common_realize(dev, errp);
-> @@ -172,6 +184,20 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
->                               BCM2838_MPHI_SIZE);
->      memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
->                                  &s->mphi_mr_alias);
-> +    /* PCIe Root Complex */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_host), errp)) {
-> +        return;
+> +static const VMStateDescription vmstate_bcm2838_rng200_regs = {
+> +    .name = "bcm2838_rng200_regs",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(ctrl, BCM2838_rng_regs_t),
+> +        VMSTATE_UINT32(int_status, BCM2838_rng_regs_t),
+> +        VMSTATE_UINT32(fifo_count, BCM2838_rng_regs_t),
+> +        VMSTATE_UINT32(fifo_count_threshold, BCM2838_rng_regs_t),
+> +        VMSTATE_UINT32(total_bit_count_threshold, BCM2838_rng_regs_t),
+> +        VMSTATE_END_OF_LIST()
 > +    }
-> +    /* RC registers region */
-> +    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 0);
-> +    memory_region_add_subregion(&s->peri_low_mr, PCIE_RC_OFFSET, regs_mr);
-> +    /* MMIO region */
-> +    mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 1);
-> +    memory_region_init_alias(&s->pcie_mmio_alias, OBJECT(&s->pcie_host),
-> +                             "pcie-mmio", mmio_mr, PCIE_MMIO_OFFSET,
-> +                             PCIE_MMIO_SIZE);
-> +    memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-> +                                &s->pcie_mmio_alias);
+> +};
 
-Why do we need an alias region here rather than just mapping
-the region from the pcie host device directly ?
+We add this vmstate struct in this patch, but then the
+following patch deletes it again and opts to instead
+define the registers with a simple uint32_t array.
 
->
->      /* GPIO */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
+The trace events are also added in this patch but not
+used until the next patch.
+
+Since this device isn't a very large one, I'm OK with
+you squashing together this patch and the next patch
+if you want, so that there's a single patch that implements
+the whole device. That makes the patch more than our usual
+preference for patch size, but it's probably less effort on
+your end than moving code between the two patches so the
+second patch isn't deleting parts the first one added.
+(You can do that if you prefer, though.)
+
+> +
+> +static const VMStateDescription vmstate_bcm2838_rng200 = {
+> +    .name = "bcm2838_rng200",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(rbg_period, BCM2838Rng200State),
+> +        VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
+> +        VMSTATE_BOOL(use_timer, BCM2838Rng200State),
+> +
+> +        VMSTATE_STRUCT(regs, BCM2838Rng200State, 0, vmstate_bcm2838_rng200_regs,
+> +                       BCM2838_rng_regs_t),
+> +
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
 
 thanks
 -- PMM

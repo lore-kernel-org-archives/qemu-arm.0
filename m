@@ -1,184 +1,204 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp964770ejf;
-        Tue, 16 Jan 2024 07:59:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGJcAwg7HcUREhD1l2ul6ZL2bYMCRu/5/txyqIT5AwV2IwZC9cm3INbz+hKMehRbyEKw8JR
-X-Received: by 2002:a5d:5584:0:b0:336:85b7:12ad with SMTP id i4-20020a5d5584000000b0033685b712admr3810168wrv.113.1705420754998;
-        Tue, 16 Jan 2024 07:59:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705420754; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp983375ejf;
+        Tue, 16 Jan 2024 08:25:47 -0800 (PST)
+X-Received: by 2002:a05:600c:2b0e:b0:40e:4271:69e7 with SMTP id y14-20020a05600c2b0e00b0040e427169e7mr4019418wme.218.1705422347003;
+        Tue, 16 Jan 2024 08:25:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705422346; cv=none;
         d=google.com; s=arc-20160816;
-        b=1H4FQjLTbaSTqs8nZvi9xOtdZ6Zqpp2myWJxftcqgS9mmK4ruyjdwyhuLGRl9U4t9r
-         v/HI8PiNksrxwCkSkkhIal0Ex6XBIGNx8J/mTZz58cy8pclejSz0gjkS8qPZ9jky7V+e
-         ort4Y0ddQ06PFA6t2V/vQpR6fwpCYsflbm1eOJgr4reoLyZoHK8wm2UjsJaQ/xecjUdt
-         IlLq8ddzGvs5PnWoJnx+dgiV87aWrY2SvN7grAACjpKS4bkIyQL41nZNPqQP99ngBND9
-         tmRhEuISzWqNqnuoOjUsVZCXilNbsyqPxRAZvxMDaGKFvi/LbV7ea1mER/G3rup/dl7w
-         kOaw==
+        b=Ac6jqLqD7LTrYVcY3rzvhfWKjAaRXOH6D0D3h5UNuGWZ3pNMqDy5aiH36naSCxGgLN
+         W77gPAXXgwRRt4UPpapSB8zhLUleUeTRIgMV/hVs1v6r3ISXHWBC2heOTQ0IpPHDSK0c
+         OXzdRmeFoSXYvbHgVNNBDmPt+ZN7cTder7AlnyeymeSk262VbeNb+GDcFLN5xPVUtT/c
+         T3AJRAbuHovO4tZQj7ZKvtGYcFZm4CcrT8t7cfJaoZbRSjy4MhIZ1sKvrinvnOkrj0kf
+         xKaOGGjyyzhgRiwoHYyCWUknkZ8mzSinULM/qBcYWH7xQHt3gOxTFG/5xKzNKjTmKLTp
+         eV1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=65N+dfYpGnRZRbDcuknn5lzm7IakQPdlmOPk6hImFAQ=;
-        fh=Oly6wDQiVE7caIki2YuOuc5YtEz9BiDmQs4w23KwEvs=;
-        b=i8fD3pSilSyDmOnOQs6rSb1IA168VLZ6u+BVRK2gtfyIJZwZM7Kn9KUe3eZhnNBBpc
-         aVs0tjALrDys1PYmuRmuFlxTUOHdBNU2Gi6pdrw5YagDcN0laUENl3H/EdHuYkfu3Tty
-         G10+VYIhxnyS9S/D2zi/G+o/SOO7BN7n2WaTy+nUkhgaStnkMDrOQ1krPNGoOdClaAVs
-         M24+zcgMEKMrS41o1VDdRn9iwnosgiyoyy/HqA7x3t8mp4aR2NlXOlWCVL8x1SCs9Vi6
-         ApP6BxZWBgbjegBTzyEyHead5DbljOiBwMgyn3JATMH2h4sVqePVO6cwIzhf/FE2iJ6D
-         7R1g==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
+        fh=h5za0Tuk79K26f0pDBJXjGFMyFjZAtOa3cm3bh485sc=;
+        b=Vt8SEXbGIJRobEfC/EgqloztBr0XUA3rE33xd4SuaGHQC+4bcib3tgeqCy5CaGWwZn
+         66a02rMHQejiWnzpsDlpTQRsv9fihYRaHEUSvjUFsTFOLtqzVzXcVKTlS7Frmw451brg
+         f1nYa9kBVsMF9hshXPNDCtqD8JN5AzQ7wu1T+oH7XqJqjaxHzPHckgcyniPyXOYBnvTc
+         CAS9naloTzUq0cajeR836/A1+rvUN+HDdjqGCoCpZM+4lxCwax5piukt3PaGPDRLwQH7
+         cXURskZXcvB0gf/jLoP5vQG6FG99c7agii3+ry3eqTyvYzk2LBv9EWih4F2tbchpefYB
+         MRfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id h12-20020a5d4fcc000000b003366e080057si5696468wrw.236.2024.01.16.07.59.14
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Jan 2024 07:59:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Mpo8bY8i;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x1-20020a05600c21c100b0040e622ce9b5sor770198wmj.11.2024.01.16.08.25.46
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDtsm5pwvz67NNV;
-	Tue, 16 Jan 2024 23:56:28 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id A1F26140A36;
-	Tue, 16 Jan 2024 23:59:13 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
- 2024 15:59:12 +0000
-Date: Tue, 16 Jan 2024 15:59:11 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-CC: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>, "andrew.jones@linux.dev"
-	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
-	<eric.auger@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"ardb@kernel.org" <ardb@kernel.org>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
-	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>
-Subject: Re: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
- change common to vCPU {cold|hot}-plug
-Message-ID: <20240116155911.00004fe1@Huawei.com>
-In-Reply-To: <de871e3d7b8f440b93b20c734fe5b7a8@huawei.com>
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
-	<20230926100436.28284-5-salil.mehta@huawei.com>
-	<1c5fa24c-6bf3-750f-4f22-087e4a9311af@redhat.com>
-	<de871e3d7b8f440b93b20c734fe5b7a8@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Mpo8bY8i;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705422346; x=1706027146; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
+        b=Mpo8bY8i0uNa47/eD3kPmtu0sC16nj4BlqciegaUzHupt3NdZu+mCgStrWSnxPXeyw
+         /TLpBMiTXvNxEJF6mwClT55O4ZiTBzOEvPqB2rchulDPxNYGGAydj9Fni+g3hbdUET9l
+         cHT+DKe4odIt6otkRB+pGPP0uBd3BHj6zkknMPQ5PLk2juo2CtehkWP7Snm1DTPC9q30
+         xlWR8u1o18Qjp32PTgSJfgfPr1UQJ+K6a900ksjAYDMV5UUQSNTNaydEWsRzaulckOOj
+         zutAlyRrkphGNuwnOsMorznvKJ1X+r9xMokHwqgH4x2YgphtXx2XGAXYF3tfUTSJKGJt
+         X9/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705422346; x=1706027146;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
+        b=V86ItyYtryPB+cG2GI6Pdi+pfwOoSHtuynkhu5VWicP9rM3rqtx0b4Loq3LckFUrMM
+         u0WBWlFAOxZBK50+0deklbQFyHeHeojr92BsUvaBv2EKuDTwGtwBhf8oYNTKjO/NXrpH
+         sh8J1TfCF3thg7UeEtzjx4Nvcvl9IH6DRvr6kxrG8LIfRjEwA4Vyfgw/qQjBppPOgbPv
+         rDau+wvrqljJkJun/CBhXxFogb7CQIhNBuVhxqqOb/CrNBKVa4fTWH1SOSEmzsXrFiux
+         DMGAA+MyKgtBWRgERJHKFpBYbyBs5xdjiXOJqkFYYoWL0Tl/vo7W+JLvkHjxyvqL43lJ
+         u1Yw==
+X-Gm-Message-State: AOJu0Yxj8t6MSAHmo637slxfRbY+t4aZceY98XiFDY3Kl6q35IeTDCu9
+	rosSOE1iBtoAv2JQ1tAe/qr5TUvOcnymyZf/
+X-Google-Smtp-Source: AGHT+IEd9iSQRr5FpCis06jN1hSBln9tMu7sGM83eRoAmH6A1XUDsRO3hLrvkGmIeRagMBTD2XPoSw==
+X-Received: by 2002:a05:600c:5398:b0:40e:62b1:58a5 with SMTP id hg24-20020a05600c539800b0040e62b158a5mr3902845wmb.15.1705422346579;
+        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.102] ([176.176.156.199])
+        by smtp.gmail.com with ESMTPSA id q14-20020a1709060f8e00b00a2a61b9c166sm6639819ejj.33.2024.01.16.08.25.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
+Message-ID: <501c1bfe-fb26-42ab-a925-9888755c72ad@linaro.org>
+Date: Tue, 16 Jan 2024 17:25:43 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: EE/c+0NET3LX
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 14/33] hw/cpu/arm: Handle 'has_el2/3' properties once in
+ MPCore parent
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <20231212162935.42910-15-philmd@linaro.org> <87y1cudyp2.fsf@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <87y1cudyp2.fsf@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: v1Fe0etas2tm
 
-On Mon, 2 Oct 2023 17:12:43 +0100
-Salil Mehta <salil.mehta@huawei.com> wrote:
+On 12/1/24 22:33, Fabiano Rosas wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+>> Move the 'has_el2' and 'has_el3' properties to the abstract
+>> QOM parent.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   include/hw/cpu/cortex_mpcore.h |  5 +++++
+>>   hw/arm/exynos4210.c            | 10 ++++++++--
+>>   hw/arm/vexpress.c              |  6 ++++++
+>>   hw/arm/xilinx_zynq.c           |  6 ++++++
+>>   hw/cpu/a15mpcore.c             | 18 ++++++------------
+>>   hw/cpu/a9mpcore.c              |  5 +----
+>>   hw/cpu/cortex_mpcore.c         |  3 +++
+>>   7 files changed, 35 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/include/hw/cpu/cortex_mpcore.h b/include/hw/cpu/cortex_mpcore.h
+>> index 0e7cca9e93..387552468c 100644
+>> --- a/include/hw/cpu/cortex_mpcore.h
+>> +++ b/include/hw/cpu/cortex_mpcore.h
+>> @@ -30,6 +30,8 @@
+>>    * QEMU interface:
+>>    *  + QOM property "num-cores" which set the number of cores present in
+>>    *    the cluster.
+>> + *  + QOM properties "cpu-has-el3", "cpu-has-el2" which set whether the CPUs
+>> + *    have the exception level features present.
+>>    */
+>>   #define TYPE_CORTEX_MPCORE_PRIV "cortex_mpcore_priv"
+>>   OBJECT_DECLARE_TYPE(CortexMPPrivState, CortexMPPrivClass, CORTEX_MPCORE_PRIV)
+>> @@ -53,6 +55,9 @@ struct CortexMPPrivState {
+>>   
+>>       /* Properties */
+>>       uint32_t num_cores;
+>> +
+>> +    bool cpu_has_el3;
+>> +    bool cpu_has_el2;
+>>   };
 
-> Hi Gavin,
-> 
-> > From: Gavin Shan <gshan@redhat.com>
-> > Sent: Wednesday, September 27, 2023 7:29 AM
-> > To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org; qemu-
-> > arm@nongnu.org
-> > Cc: maz@kernel.org; jean-philippe@linaro.org; Jonathan Cameron
-> > <jonathan.cameron@huawei.com>; lpieralisi@kernel.org;
-> > peter.maydell@linaro.org; richard.henderson@linaro.org;
-> > imammedo@redhat.com; andrew.jones@linux.dev; david@redhat.com;
-> > philmd@linaro.org; eric.auger@redhat.com; will@kernel.org; ardb@kernel.org;
-> > oliver.upton@linux.dev; pbonzini@redhat.com; mst@redhat.com;
-> > rafael@kernel.org; borntraeger@linux.ibm.com; alex.bennee@linaro.org;
-> > linux@armlinux.org.uk; darren@os.amperecomputing.com;
-> > ilkka@os.amperecomputing.com; vishnu@os.amperecomputing.com;
-> > karl.heubaum@oracle.com; miguel.luis@oracle.com; salil.mehta@opnsrc.net;
-> > zhukeqian <zhukeqian1@huawei.com>; wangxiongfeng (C)
-> > <wangxiongfeng2@huawei.com>; wangyanan (Y) <wangyanan55@huawei.com>;
-> > jiakernel2@gmail.com; maobibo@loongson.cn; lixianglai@loongson.cn
-> > Subject: Re: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
-> > change common to vCPU {cold|hot}-plug
-> > 
-> > Hi Salil,
-> > 
-> > On 9/26/23 20:04, Salil Mehta wrote:  
-> > > Refactor and introduce the common logic required during the  
-> > initialization of  
-> > > both cold and hot plugged vCPUs. Also initialize the *disabled* state of the
-> > > vCPUs which shall be used further during init phases of various other components
-> > > like GIC, PMU, ACPI etc as part of the virt machine initialization.
-> > >
-> > > KVM vCPUs corresponding to unplugged/yet-to-be-plugged QOM CPUs are kept in
-> > > powered-off state in the KVM Host and do not run the guest code. Plugged vCPUs
-> > > are also kept in powered-off state but vCPU threads exist and is kept sleeping.
-> > >
-> > > TBD:
-> > > For the cold booted vCPUs, this change also exists in the arm_load_kernel()
-> > > in boot.c but for the hotplugged CPUs this change should still remain part of
-> > > the pre-plug phase. We are duplicating the powering-off of the cold booted CPUs.
-> > > Shall we remove the duplicate change from boot.c?
-> > >
-> > > Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
-> > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > > Reported-by: Gavin Shan <gavin.shan@redhat.com>
-> > > [GS: pointed the assertion due to wrong range check]
-> > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > > ---
-> > >   hw/arm/virt.c      | 149 ++++++++++++++++++++++++++++++++++++++++-----
-> > >   target/arm/cpu.c   |   7 +++
-> > >   target/arm/cpu64.c |  14 +++++
-> > >   3 files changed, 156 insertions(+), 14 deletions(-)
-> > >
-> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > index 0eb6bf5a18..3668ad27ec 100644
-> > > --- a/hw/arm/virt.c
-> > > +++ b/hw/arm/virt.c
-> > > @@ -221,6 +221,7 @@ static const char *valid_cpus[] = {
-> > >       ARM_CPU_TYPE_NAME("max"),
-> > >   };
-> > >
-> > > +static CPUArchId *virt_find_cpu_slot(MachineState *ms, int vcpuid);
-> > >   static int virt_get_socket_id(const MachineState *ms, int cpu_index);
-> > >   static int virt_get_cluster_id(const MachineState *ms, int cpu_index);
-> > >   static int virt_get_core_id(const MachineState *ms, int cpu_index);
-> > > @@ -2154,6 +2155,14 @@ static void machvirt_init(MachineState *machine)
-> > >           exit(1);
-> > >       }
-> > >
-> > > +    finalize_gic_version(vms);
-> > > +    if (tcg_enabled() || hvf_enabled() || qtest_enabled() ||
-> > > +        (vms->gic_version < VIRT_GIC_VERSION_3)) {
-> > > +        machine->smp.max_cpus = smp_cpus;
-> > > +        mc->has_hotpluggable_cpus = false;
-> > > +        warn_report("cpu hotplug feature has been disabled");
-> > > +    }
-> > > +  
-> > 
-> > Comments needed here to explain why @mc->has_hotpluggable_cpus is set to false.
-> > I guess it's something related to TODO list, mentioned in the cover letter.  
-> 
-> 
-> I can put a comment explaining the checks as to why feature has been disabled.
-> BTW, isn't code self-explanatory here?
 
-Would be good to gate that warn_report() on whether any attempt to enable
-CPU hotplug has been made if (max_cpus > smp for example).
-Right now it's noise on a lot of pre existing configurations.
+>> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
+>> index 9c138f4442..54949314f8 100644
+>> --- a/hw/cpu/a9mpcore.c
+>> +++ b/hw/cpu/a9mpcore.c
+>> @@ -51,7 +51,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
+>>       SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
+>>                    *wdtbusdev;
+>>       Error *local_err = NULL;
+>> -    bool has_el3;
+>>       CPUState *cpu0;
+>>       Object *cpuobj;
+>>   
+>> @@ -86,9 +85,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
+>>       /* Make the GIC's TZ support match the CPUs. We assume that
+>>        * either all the CPUs have TZ, or none do.
+>>        */
+>> -    has_el3 = object_property_find(cpuobj, "has_el3") &&
+>> -        object_property_get_bool(cpuobj, "has_el3", &error_abort);
+>> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
+>> +    qdev_prop_set_bit(gicdev, "has-security-extensions", c->cpu_has_el3);
+>>   
+>>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+>>           return;
+>> diff --git a/hw/cpu/cortex_mpcore.c b/hw/cpu/cortex_mpcore.c
+>> index d7ea633e4e..549b81f708 100644
+>> --- a/hw/cpu/cortex_mpcore.c
+>> +++ b/hw/cpu/cortex_mpcore.c
+>> @@ -27,6 +27,9 @@ static Property cortex_mpcore_priv_properties[] = {
+>>       DEFINE_PROP_UINT32("num-cores", CortexMPPrivState, num_cores, 1),
+>>       DEFINE_PROP_UINT32("num-cpu", CortexMPPrivState, num_cores, 1), /* alias */
+>>   
+>> +    DEFINE_PROP_BOOL("cpu-has-el3", CortexMPPrivState, cpu_has_el3, true),
+>> +    DEFINE_PROP_BOOL("cpu-has-el2", CortexMPPrivState, cpu_has_el2, false),
+> 
+> Are we missing setting cpu_has_el2 somewhere else? This^ results in fewer
+> cpregs being registered and is what breaks migration.
+> 
+> You can test with:
+> 
+> $ (echo "migrate file:migfile"; echo "quit") | ./qemu-system-arm -M ast2600-evb -monitor stdio
+> $ ./scripts/analyze-migration.py -f migfile | grep array_len
+> 
+> Before series:
+> $ ./scripts/analyze-migration.py -f migfile | grep array_len
+>          "cpreg_vmstate_array_len": "0x0000010a",
+>          "cpreg_vmstate_array_len": "0x0000010a",
+> 
+> After series:
+> $ ./scripts/analyze-migration.py -f migfile | grep array_len
+>          "cpreg_vmstate_array_len": "0x000000df",
+>          "cpreg_vmstate_array_len": "0x000000df",
+
+Thank you Fabiano for helping debugging. Indeed there is a problem
+with properties, so this patch is bogus.
+
+The good news is the QOM reparenting happened 2 commits earlier,
+so this discarded the doubts on qom-path change possibly affecting
+migration :)
+
+Regards,
+
+Phil.

@@ -1,210 +1,357 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r1-20020a5d4941000000b00337712b065dsm14224517wrs.99.2024.01.16.02.48.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jan 2024 02:48:17 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BA1A85F8F7;
-	Tue, 16 Jan 2024 10:48:10 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PULL 13/22] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Tue, 16 Jan 2024 10:48:00 +0000
-Message-Id: <20240116104809.250076-14-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240116104809.250076-1-alex.bennee@linaro.org>
-References: <20240116104809.250076-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp963901ejf;
+        Tue, 16 Jan 2024 07:57:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGqCHALLpI5ZKYrnUEP/GcKn2o/ptAnvxTNQcMljzq8tt5B0hTFahHFR+pw7e1Ar72wo1gp
+X-Received: by 2002:a25:dfc1:0:b0:dc2:2f4f:757 with SMTP id w184-20020a25dfc1000000b00dc22f4f0757mr468943ybg.7.1705420647679;
+        Tue, 16 Jan 2024 07:57:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705420647; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LNtAi8pvPZ2GdVe94YsU5ThKlYHtbaSm9pFmiVIpY8h/wilqwfjp7djHDx0o0KrdfX
+         BqW0Lb2bYJi/72wYVu0VvXAeCosngCpwG0o9oFPq+ySYlRAvHISWewqzn+ugRzKj3psi
+         GqCCTn33gydj0v/fDSsExMEp+ivurus+uX74ndR177AEHwEoMqAYMbhaC8yVlzgp6Lku
+         CslTTTP74jl0sisXHyW82rz09qK0NeuUASmJ+FnptSr7sUBBMCG0VefMLzbqmc64bRIO
+         asi6hYOGXQVGQRFfW5Z2eeu2mY4tedORsPd1mbVQ4luSydAw9SoBVD5IGn4l/H5L7z8p
+         H0EA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Lxk0ItVRgHD7AlkEQ0GOc9f/MCeC+C+nelHHzRfEGFI=;
+        fh=UqQGT6Dp/nYYKyh4M3piLQtJUdT3N3nvDZCuBUkn/6w=;
+        b=yqe3WqpT42lj1Fu1pzuU+6XsGsNiviHgSdrEdXHolMv0u8Z+rkcXDFEdz1NsJCh5yD
+         mP9kv3oJgnxMRsPrTYRrDCs/5/05Tv97WhF5EWANOK3rnd9qGTIgKW1P9GsomVzKcg7f
+         gy8Nv17TFbLjTMwXxNRKVZbb4whmHAbOqdgfAbOOvHjyMgjuuJywU3utTcrhrIinpset
+         4ZezNsbLG0wmXuAtPMEpLej71BBg0fehdUrm/L7/NB98PDdlxKNVNIEXMYnMdG/VzEuV
+         6suWvg2daRxokCFqvXNypDmoSRwPiTRcPsG7quYroJbs5oR/WZnEB+G9nkJ5auHUQ/3X
+         S1dQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rrPREMIB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t20-20020ac85894000000b00429fe7e8127si2158918qta.35.2024.01.16.07.57.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Jan 2024 07:57:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rrPREMIB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rPloO-0005Zw-LD; Tue, 16 Jan 2024 10:57:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPloM-0005ZA-GL
+ for qemu-devel@nongnu.org; Tue, 16 Jan 2024 10:57:10 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPloK-0005OE-FN
+ for qemu-devel@nongnu.org; Tue, 16 Jan 2024 10:57:10 -0500
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-a28b0207c1dso814900466b.3
+ for <qemu-devel@nongnu.org>; Tue, 16 Jan 2024 07:57:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705420627; x=1706025427; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Lxk0ItVRgHD7AlkEQ0GOc9f/MCeC+C+nelHHzRfEGFI=;
+ b=rrPREMIBmVxkVSW9m8kzx++Q1EYXrdBN/oaeP/4hQjhO859lzS5ZeBps3sbszRZqS/
+ ozHaxslhTkgOVvaP3W0TMMB0374U33s69XY+PULIgDqhHJoGsoARK64xS8XA2/SBLL0e
+ ZuK7a1GX98VrO/sSHMuKc9/VLV09FbFaIjtHloh5urDE9PkvBYB7lTZHQKbqzbvrQtqf
+ OQexe6NVNdeoqcxcmchqvvLIHqe9spJs734NKVEWPxDFOLl1REa1MpAo6+CDbpImZN/l
+ 2bykqxm60psc0pmY3BcxcKaLrMfMyO6z+J8NLiObc0dyCtF99GxhAhfWQaXoratcKj46
+ 2Ryg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705420627; x=1706025427;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Lxk0ItVRgHD7AlkEQ0GOc9f/MCeC+C+nelHHzRfEGFI=;
+ b=v1APKIhTyHWA5nCHwIs5Gvzu4gGkorKnXP/UnUHBotYNf+jKpmjvq/1pXV7Yc5Rz63
+ eog4Huhk4HlFplhQ2u81eqSdkCch+Cw4IFSHhdm7XW26b2yThg0nGlVgymslOZoI3SuA
+ i8sf1sKOxJI3uEdVLPrYesVnJgcAuoOFhsog7qvLPSlUDUCBIFTdjRS4053UvvRIEB+7
+ UFdvPHKF6ALlruUIGVIdq5RsFRkY8CVvOq4AaR2AdNRG/pmUmt7iFc4n6zSjH7mvc+IM
+ +g1A4xVFgCJcG0qgZ7a5nhQAxy9zX1Jjj5FXpB4AHgBYI9AKgqvN9QVpe8we2dO1tKeT
+ aUVQ==
+X-Gm-Message-State: AOJu0YzDFIWwPcN/ldhKsZqXTpENBu7xVkh/mXK6J6aU7JtJ2Rqj7ozi
+ byL87hfKaINGrhJpM4GOS/C35WOgmmtqNg==
+X-Received: by 2002:a17:907:9283:b0:a2b:5c42:76d0 with SMTP id
+ bw3-20020a170907928300b00a2b5c4276d0mr4722822ejc.54.1705420626739; 
+ Tue, 16 Jan 2024 07:57:06 -0800 (PST)
+Received: from [192.168.1.102] ([176.176.156.199])
+ by smtp.gmail.com with ESMTPSA id
+ o26-20020a170906289a00b00a2bd8953af2sm6594342ejd.55.2024.01.16.07.57.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jan 2024 07:57:06 -0800 (PST)
+Message-ID: <b763463b-3174-43dd-8ee5-2a01e98a8bdb@linaro.org>
+Date: Tue, 16 Jan 2024 16:57:04 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20231103182750.855577-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231103182750.855577-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ExTY2tg2Es7w
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Y0X6ssgQlVyn
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc'ing Gerd & Marc-André for UI.
 
-This function is no longer used.
+On 3/11/23 19:27, Peter Maydell wrote:
+> Convert the musicpal key input device to use
+> qemu_add_kbd_event_handler().  This lets us simplify it because we no
+> longer need to track whether we're in the middle of a PS/2 multibyte
+> key sequence.
+> 
+> In the conversion we move the keyboard handler registration from init
+> to realize, because devices shouldn't disturb the state of the
+> simulation by doing things like registering input handlers until
+> they're realized, so that device objects can be introspected
+> safely.
+> 
+> The behaviour where key-repeat is permitted for the arrow-keys only
+> is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
+> and add a comment to that effect.
+> 
+> This is a migration compatibility break for musicpal.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/musicpal.c | 131 +++++++++++++++++++++-------------------------
+>   1 file changed, 61 insertions(+), 70 deletions(-)
+> 
+> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+> index 9703bfb97fb..e8c1250ab04 100644
+> --- a/hw/arm/musicpal.c
+> +++ b/hw/arm/musicpal.c
+> @@ -1043,20 +1043,6 @@ static const TypeInfo musicpal_gpio_info = {
+>   };
+>   
+>   /* Keyboard codes & masks */
+> -#define KEY_RELEASED            0x80
+> -#define KEY_CODE                0x7f
+> -
+> -#define KEYCODE_TAB             0x0f
+> -#define KEYCODE_ENTER           0x1c
+> -#define KEYCODE_F               0x21
+> -#define KEYCODE_M               0x32
+> -
+> -#define KEYCODE_EXTENDED        0xe0
+> -#define KEYCODE_UP              0x48
+> -#define KEYCODE_DOWN            0x50
+> -#define KEYCODE_LEFT            0x4b
+> -#define KEYCODE_RIGHT           0x4d
+> -
+>   #define MP_KEY_WHEEL_VOL       (1 << 0)
+>   #define MP_KEY_WHEEL_VOL_INV   (1 << 1)
+>   #define MP_KEY_WHEEL_NAV       (1 << 2)
+> @@ -1074,67 +1060,66 @@ struct musicpal_key_state {
+>       SysBusDevice parent_obj;
+>       /*< public >*/
+>   
+> -    uint32_t kbd_extended;
+>       uint32_t pressed_keys;
+>       qemu_irq out[8];
+>   };
+>   
+> -static void musicpal_key_event(void *opaque, int keycode)
+> +static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
+> +                               InputEvent *evt)
+>   {
+> -    musicpal_key_state *s = opaque;
+> +    musicpal_key_state *s = MUSICPAL_KEY(dev);
+> +    InputKeyEvent *key = evt->u.key.data;
+> +    int qcode = qemu_input_key_value_to_qcode(key->key);
+>       uint32_t event = 0;
+>       int i;
+>   
+> -    if (keycode == KEYCODE_EXTENDED) {
+> -        s->kbd_extended = 1;
+> -        return;
+> +    switch (qcode) {
+> +    case Q_KEY_CODE_UP:
+> +        event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
+> +        break;
+> +
+> +    case Q_KEY_CODE_DOWN:
+> +        event = MP_KEY_WHEEL_NAV;
+> +        break;
+> +
+> +    case Q_KEY_CODE_LEFT:
+> +        event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
+> +        break;
+> +
+> +    case Q_KEY_CODE_RIGHT:
+> +        event = MP_KEY_WHEEL_VOL;
+> +        break;
+> +
+> +    case Q_KEY_CODE_F:
+> +        event = MP_KEY_BTN_FAVORITS;
+> +        break;
+> +
+> +    case Q_KEY_CODE_TAB:
+> +        event = MP_KEY_BTN_VOLUME;
+> +        break;
+> +
+> +    case Q_KEY_CODE_RET:
+> +        event = MP_KEY_BTN_NAVIGATION;
+> +        break;
+> +
+> +    case Q_KEY_CODE_M:
+> +        event = MP_KEY_BTN_MENU;
+> +        break;
+>       }
+>   
+> -    if (s->kbd_extended) {
+> -        switch (keycode & KEY_CODE) {
+> -        case KEYCODE_UP:
+> -            event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
+> -            break;
+> -
+> -        case KEYCODE_DOWN:
+> -            event = MP_KEY_WHEEL_NAV;
+> -            break;
+> -
+> -        case KEYCODE_LEFT:
+> -            event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
+> -            break;
+> -
+> -        case KEYCODE_RIGHT:
+> -            event = MP_KEY_WHEEL_VOL;
+> -            break;
+> -        }
+> -    } else {
+> -        switch (keycode & KEY_CODE) {
+> -        case KEYCODE_F:
+> -            event = MP_KEY_BTN_FAVORITS;
+> -            break;
+> -
+> -        case KEYCODE_TAB:
+> -            event = MP_KEY_BTN_VOLUME;
+> -            break;
+> -
+> -        case KEYCODE_ENTER:
+> -            event = MP_KEY_BTN_NAVIGATION;
+> -            break;
+> -
+> -        case KEYCODE_M:
+> -            event = MP_KEY_BTN_MENU;
+> -            break;
+> -        }
+> -        /* Do not repeat already pressed buttons */
+> -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
+> +    /*
+> +     * We allow repeated wheel-events when the arrow keys are held down,
+> +     * but do not repeat already-pressed buttons for the other key inputs.
+> +     */
+> +    if (!(event & (MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_VOL))) {
+> +        if (key->down && (s->pressed_keys & event)) {
+>               event = 0;
+>           }
+>       }
+>   
+>       if (event) {
+>           /* Raise GPIO pin first if repeating a key */
+> -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
+> +        if (key->down && (s->pressed_keys & event)) {
+>               for (i = 0; i <= 7; i++) {
+>                   if (event & (1 << i)) {
+>                       qemu_set_irq(s->out[i], 1);
+> @@ -1143,17 +1128,15 @@ static void musicpal_key_event(void *opaque, int keycode)
+>           }
+>           for (i = 0; i <= 7; i++) {
+>               if (event & (1 << i)) {
+> -                qemu_set_irq(s->out[i], !!(keycode & KEY_RELEASED));
+> +                qemu_set_irq(s->out[i], !key->down);
+>               }
+>           }
+> -        if (keycode & KEY_RELEASED) {
+> -            s->pressed_keys &= ~event;
+> -        } else {
+> +        if (key->down) {
+>               s->pressed_keys |= event;
+> +        } else {
+> +            s->pressed_keys &= ~event;
+>           }
+>       }
+> -
+> -    s->kbd_extended = 0;
+>   }
+>   
+>   static void musicpal_key_init(Object *obj)
+> @@ -1162,20 +1145,27 @@ static void musicpal_key_init(Object *obj)
+>       DeviceState *dev = DEVICE(sbd);
+>       musicpal_key_state *s = MUSICPAL_KEY(dev);
+>   
+> -    s->kbd_extended = 0;
+>       s->pressed_keys = 0;
+>   
+>       qdev_init_gpio_out(dev, s->out, ARRAY_SIZE(s->out));
+> +}
+>   
+> -    qemu_add_kbd_event_handler(musicpal_key_event, s);
+> +static const QemuInputHandler musicpal_key_handler = {
+> +    .name = "musicpal_key",
+> +    .mask = INPUT_EVENT_MASK_KEY,
+> +    .event = musicpal_key_event,
+> +};
+> +
+> +static void musicpal_key_realize(DeviceState *dev, Error **errp)
+> +{
+> +    qemu_input_handler_register(dev, &musicpal_key_handler);
+>   }
+>   
+>   static const VMStateDescription musicpal_key_vmsd = {
+>       .name = "musicpal_key",
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>       .fields = (VMStateField[]) {
+> -        VMSTATE_UINT32(kbd_extended, musicpal_key_state),
+>           VMSTATE_UINT32(pressed_keys, musicpal_key_state),
+>           VMSTATE_END_OF_LIST()
+>       }
+> @@ -1186,6 +1176,7 @@ static void musicpal_key_class_init(ObjectClass *klass, void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>   
+>       dc->vmsd = &musicpal_key_vmsd;
+> +    dc->realize = musicpal_key_realize;
+>   }
+>   
+>   static const TypeInfo musicpal_key_info = {
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240103173349.398526-35-alex.bennee@linaro.org>
-Message-Id: <20231213-gdb-v17-9-777047380591@daynix.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 06931f330b7..ae11e66d382 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 65b961fb948..caa4fd156da 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1185,12 +1185,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index f87c26f98a6..9f94282e13e 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1524,7 +1524,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2a7e47a70eb..71358d2bce6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2499,7 +2499,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 059d84f98e5..a3bb73cfa7c 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -474,24 +474,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index a7b593dbfac..496f8fdb7f2 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7379,9 +7379,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 8ca37b6bf95..f47878a67bd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -342,16 +342,6 @@ static void gdb_gen_spr_feature(CPUState *cs)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index c777f2dd641..515c8efcdc6 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1667,19 +1667,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -1833,7 +1820,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
-                               cpu_set_mvendorid, NULL, NULL);
--- 
-2.39.2

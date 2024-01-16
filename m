@@ -1,319 +1,200 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp421905ejf;
-        Mon, 15 Jan 2024 10:29:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGWdqVkCBblGZvItnX1wFynpAbpQwDtbbeqZ23Ojm1zL2IBHHT4WKBW9PzoxMcu4CR8ewb1
-X-Received: by 2002:a0c:f193:0:b0:681:616e:83ac with SMTP id m19-20020a0cf193000000b00681616e83acmr1241422qvl.37.1705343354191;
-        Mon, 15 Jan 2024 10:29:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705343354; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp595108ejf;
+        Mon, 15 Jan 2024 17:10:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFYVYuDmFwOBbI/JOQyvWRfPWDTJOg7h8ItQJ4d6o4q4MTW3q79eoVnke7R0E6Ts2t6gueE
+X-Received: by 2002:a05:6214:29cd:b0:681:6930:1b8a with SMTP id gh13-20020a05621429cd00b0068169301b8amr1149315qvb.52.1705367421901;
+        Mon, 15 Jan 2024 17:10:21 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705367421; cv=pass;
         d=google.com; s=arc-20160816;
-        b=P4R1r6oNgiBRb0qdDM7RpVt6HUz+pU0BW7Wy3cMnrM62iZZZI93L4pLQ+97F9yr4WG
-         U9umgOn4V3fhCvv0G6LqeGHZ5pVpi7i87N8AYsA2A+Ex6NWezbxP73spDcTQjL/N8kN5
-         hf3XNSWD6V4cn8C1qfU/BKfbSG2EyuBuIauXg3zm0Qv7ojDz39jldEsNwl0uG7Txuri2
-         RZMjoWfQwbIxoRL8dQCdfCaZZTuyz4uzqYEgFbi7TdjG2QLZ1DmKeA9fvkVIG2fUxUzc
-         ps6yct7+2kHyvTzXqdyxBBrYt8VtO7Ki0VxJ9PgXar58Swf27NGx5JE0EUqyaD8I1L+X
-         +wzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=n7acCeLVYLuE2IEWPG3gV9IOx4HGaIR2avCYPGv6t3qrxYnedGAIOKk94ILQF6p1pd
+         mOzJR1bKQwTQk62Vqy9gCy9Qew1h5V7jZE3TscF6VIAu9RL3FdS85NTG4UiTHejbVQsO
+         d22S4Dt3onBbC/Yq/tcjNot2hvZuKOrS8mbNSORtl4i1nuqToZOxCuOkJa/54qnKm4vx
+         8sQNTPnDM+gXioTXlML5POKxyJEv2XmQzBj+m9HGUiQCNhqWds7omLq4Te/+31DkajI+
+         HJtfEQxsdSEz9Z09lqkzF2E2+Vemg177Dh02HhTC6XdCyxCTMs1NmXl4JMU5amTisO94
+         2YGg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=rmxgi7IsUAQHRVXACijKvBufJzviH8GhErYh0azxm9c=;
-        fh=iZ5aizxLdCGVu5REqOBn2Q9N1PphBwZZ8KuDLD3B8yA=;
-        b=TFNLWF0S5s+bHJKf1OwRyZBjEnAztNOOwvr+oxE31tlkSCSJLSn9jfZFq19LdArSfk
-         Q8VphPonkMfxrvel6thZlVRWASHwTLgE6abXcjE1cRZcAWqdqoaMnJddMbvBC18IDSfT
-         J2gjEE7/lHTqsx3OD4hxer4gaeIWg5FiX4232SiB1n3odeK7T554u5eC+97FWMdV2qaw
-         0uUKtOlcpPtSUpkwtvjX9ooiKdhMUZv4hJDbDeZZtlx1NQ0mflNSNKRFrYqjttKUzeVF
-         KRtbWzOPaKhsBfBi/fjXQuqvjsk+RG6o7H7pV3wsdQNdTX5/eICbp59YvJ3M2fATmRfR
-         Dz8g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=dwWQdt+i;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from;
+        bh=493pUU49l9KD7HnBf5Ra222ZudvCFsIrdMRpjyeBkRs=;
+        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
+        b=Q4IzZ1cxHfWmPAkK7p36XLqVHHtwnPWcbAGkwJg0+BotmXDZlrBTKE3VM5NDVRZpxP
+         8QHq44fq7Pj2q1b6K7pPj34H4hQIs6L2I7VPRT72WctM3Sc03KatlytjiUfqzDmEmdYZ
+         55AXDSIy6jd0arrv056F1JuhO6UCfm1Thluf5WsJPvygcKoyp4DCqKwTtoxf7kvEkZ5e
+         gqbbRB5uEVOjW1Q6CD7ImUIL2U5yDRvIy+V4W9yE33XEsWqoXQJRo2/0tEZUpp9Hkxin
+         HT4e9gpWLma2eso8RrMZdm0qLU74bnkt8xqLjuAxEA2jkvHUaQ85WVsVq/AiwGLGogHb
+         0vJA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a0ce1d4000000b0067f6151c9dcsi8317636qvl.140.2024.01.15.10.29.14
+        by mx.google.com with ESMTPS id a4-20020a0cca84000000b0067f74401583si8973248qvk.203.2024.01.15.17.10.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jan 2024 10:29:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Jan 2024 17:10:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=dwWQdt+i;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rPRh5-0007MQ-Rr; Mon, 15 Jan 2024 13:28:19 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rPXxx-0007QE-9o; Mon, 15 Jan 2024 20:10:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rPRgz-0007Ks-48; Mon, 15 Jan 2024 13:28:14 -0500
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rPRgp-0007UE-7a; Mon, 15 Jan 2024 13:28:04 -0500
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-3bd7c5b243dso635044b6e.1; 
- Mon, 15 Jan 2024 10:28:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705343282; x=1705948082; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rmxgi7IsUAQHRVXACijKvBufJzviH8GhErYh0azxm9c=;
- b=dwWQdt+i9Ff30uT4N7b7McUgBti1/+16zWOR42iHsFZJ09WUNG+MZ/CZ3di0/fxREH
- fpSB+MrfpDtusHxQddZaXvjOtzz97GOy0WQwPe4bJtOhIWwRiLjPPScYHyMXlRosaig/
- nNdgj2cjzaqzoK5KrKtiNGtv91EMhb9Ea2hMnFwZYSJEbAOGqldoFTRdeKoIAKhEDZQo
- pbm1SrTnsCgxXctSr3wuA2V5/iaSEeZHVKmAB+0pIVcUl0kPYIPcEgCOA4otEzouhAkR
- o22WUUm2T+MPQCK2kEIfo+IE0fA2BY5q0Yrq4uWNKNOTvkjA9yd5UHvM+8bHZQwAZf2N
- LynQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705343282; x=1705948082;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=rmxgi7IsUAQHRVXACijKvBufJzviH8GhErYh0azxm9c=;
- b=Z6OM7E8qtaTc1IraCCpo78zSE8LWOlaLxIvl+Nrtp3IDgd+A3/+r+BshC5kwHPcvwc
- i8XUgM9kpdK2CIXe4EDQawI2n3Ez1kYX4UOK1Ja5NdHjrUPKT0LfyFbjxEObs/pThXJq
- 7Wv5Crff9+mi57TSEQ2g40QGMeTZCpLMCZJyLO1tIoyR10mQ9D4oU0fCtdJf1ABWtT+J
- kVTOgJ3nghhqVs9kwZmj2s2Ag5uKUGIIOhU3mLuPTqBhh4WedXd5OKiVEzfS+VtjyUGc
- f3nwug7a4BvTVvna0IOBlYtFhaeKnGEr8h/KpSZdj6pTVXzEAHGd30iZiWMH6QbOwOHB
- 82pQ==
-X-Gm-Message-State: AOJu0Yw+0r6QpyRxhybs7mmqiojm1lcyLf9h6XLS66/2W5NGs/TCN/5O
- UcUIRi088lbeoS8AGlNQ4zw=
-X-Received: by 2002:a05:6358:4686:b0:175:7be5:7355 with SMTP id
- w6-20020a056358468600b001757be57355mr8579300rwl.31.1705343281546; 
- Mon, 15 Jan 2024 10:28:01 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- ks19-20020a056a004b9300b006d977f70cd5sm7941008pfb.23.2024.01.15.10.28.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jan 2024 10:28:01 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH v2 1/3] hw/arm: Add EHCI/OHCI controllers to Allwinner R40 and
- Bananapi board
-Date: Mon, 15 Jan 2024 10:27:55 -0800
-Message-Id: <20240115182757.1095012-2-linux@roeck-us.net>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240115182757.1095012-1-linux@roeck-us.net>
-References: <20240115182757.1095012-1-linux@roeck-us.net>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rPXxs-0007Pb-2p; Mon, 15 Jan 2024 20:10:04 -0500
+Received: from mail-sh0chn02on2062c.outbound.protection.partner.outlook.cn
+ ([2406:e500:4420:2::62c]
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rPXxk-0005hs-G3; Mon, 15 Jan 2024 20:10:03 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ik+qEhPUteo3ZYc1v6l7aLf796yD4DF+akQXK2J1OW125d75ZQNbZgufrJh4+78Sr7KTXHEPGsjSmnELKI3WaCCAHPUGq0BCNGF0PN2yYsIwfUvtkzXAYZY7RJ2k/tENuruA8wan0jrtTVQeYeF/8YN3hwbZmNd/0yYCCmeB52g/BI8kWB8fKGPK0M3616NSIKjW/wX1Ogze/r1MrJcs4Cz6x7xSUbr5MsVwilETw1xbpLyGtuWtPEHBd6YWH+CwxvaLAVUVU7oJqSqwFebVS+CbWoucIkp2tRNZdFClTQelfHHniLZMGpr7bv7WydAV3JCImGEcjbL4ZgrNFoOFXg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=493pUU49l9KD7HnBf5Ra222ZudvCFsIrdMRpjyeBkRs=;
+ b=e1/DLVwBV06xw+IRS6KQuI8IzPTDdXE+x125cu0UxpQ2Xq8Wz8SSGzq1LyzYyxhroISDTpTyv8Dp1en5ixrbCmSvkngTIFOYpLElnq8NJzacsPBkgOrFDfJSg1ewTI/ucFRKhe2Ba+mEhUaMEa2ZmeLGP7xeB3pmKWmWRzZepmv7v8KuLy0ExLz9x63nf9iKvnfnvndgJSVDdH/9NOlzyvzYkaA7aGyCnTnR6vnM7WzEftMGwgEBEk1MaxUSCsa3D0XZ8bP+WxDbKt/fTVQli7TSd4ZJywhzaGpPagCp7Yh60qnDjCkFH9qgq51ii5GiMj0SsiujBGlqlTNOcjJ2kg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c311:1c::14) by SHXPR01MB0527.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c311:1e::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7135.33; Tue, 16 Jan
+ 2024 01:09:43 +0000
+Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
+ ([fe80::535d:fb55:ed0:334f]) by SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
+ ([fe80::535d:fb55:ed0:334f%3]) with mapi id 15.20.7135.033; Tue, 16 Jan 2024
+ 01:09:43 +0000
+From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
+ shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: [PATCH v2 0/2] RISC-V: ACPI: Enable SPCR
+Date: Mon, 15 Jan 2024 17:09:28 -0800
+Message-Id: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=groeck7@gmail.com; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
+Content-Type: text/plain
+X-ClientProxiedBy: ZQ0PR01CA0031.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c550:2::16) To SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c311:1c::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SHXPR01MB0574:EE_|SHXPR01MB0527:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7c2328b6-9f03-4b27-f4fb-08dc162fd294
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: lJ6fRK6OWWqYCSBnoIFyapLVrytCyHQUGbDeMHoX0iOyfSgR6ZoDqeeRtPJnhbxf/Qaf6K9NurDo1qKQEtsOQcwql58Ig4WNe7vEwfa2Bid0/Ek5eaVLaQLNLdLZu9swJthtAunE31uugenjVVIfhRh895WeC5abrg9143oagJrwl5eAFBuvdLSn8k64EegYDg8bwhdybFREyxhd34LVsfYGUEi2PNu9vNDFsDNg5p80s7Vns4LjrrjA5Yj4W4sNR/D305R/wnVSnzqQOyqiKe6I/d4L7gjcXGDKvW+kQV3P8RK34RC0WItuVNUozvwrxypwogdxikjMRqDz747etWpW90cBIekk3OHxFrwM5WAGhWxtfQh1lSRIxX3foZJOT7TGPBMi+3Guxoxdfh4BWiNnHhE3Fb9OqlnM2Y1oDdc4gWWv6a1McS1s4QYCOHqdDdifstUsYjPUUzHIPnRjAUKlZUvLGK654oCc4OuzBIQ+qQSumy8EO06cWd+xe+OHiR2byeGKdKIJ2//ndgTZ0Kploo/Ak4TGSqtFgL5UJ1SJpelZwOY/YbuHiFjS1BVR
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn; PTR:;
+ CAT:NONE;
+ SFS:(13230031)(366004)(136003)(346002)(39830400003)(396003)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(1076003)(26005)(41320700001)(8936002)(83380400001)(41300700001)(66556008)(66476007)(8676002)(66946007)(508600001)(966005)(86362001)(6666004)(2616005)(36756003)(2906002)(38100700002)(38350700005)(5660300002)(40160700002)(52116002)(7416002)(4326008)(40180700001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Z2OPIZjdfcNijtSW/JMTq5PBKXhsOmPUld2OcjfJh56I4Bxh2BScZOmg9iL2?=
+ =?us-ascii?Q?cyJDRmk+31H1JGuEC81H7hEUkRPl4u7CnNteLG5dsXGogHo7m0h3+MRqVHFv?=
+ =?us-ascii?Q?7GY6hTHv0jiBXoO8WIJrAYQVlzofFooisCh0KSYoR0jLNtDr0XpnGKPSJZom?=
+ =?us-ascii?Q?e7A5MldqvvFCRNDv8ZpjvdX9MyGydLAgFB8mpjsjH2zsv/AsQ5lU3fFzFASx?=
+ =?us-ascii?Q?tkSzW0gucltABrc8FFTJ/QR/1QLWXGHHr6PlM6huz5SjmUyAOVCXC1wp+K0w?=
+ =?us-ascii?Q?OZ0Blaj2SUfOwiGtmGytILN/Wcn3IVl7rPPylaU9+SJD/lryIP4IuRaFzqeS?=
+ =?us-ascii?Q?s83vM3a0/8uugBRZczy3OZ01EzxMyCE7b5PWKtjcNtOwuK7zNzH7fNKnaWEe?=
+ =?us-ascii?Q?mZ9rYja7wDw/JWaOIfdbd9HgcMJox20hOzNitO4wdhl7X5ro9/yg3m2vIV6P?=
+ =?us-ascii?Q?q3ev0QIXcH8+5lo6rCeS36RQCdXA4hj3Qhfp51I7gz8+8dwKYugZmqOlV3OD?=
+ =?us-ascii?Q?HrqLUQz+gDryDGFXpabzdZMIilwIsGiijwbJSgsQYTBwzgLVWdrTaGpEGmz4?=
+ =?us-ascii?Q?V8fVAxw38LBrpWEOJvbqESinxZivgJnQGNcCT1JKjyvcVeOkfdGcYBU7hz3U?=
+ =?us-ascii?Q?5Kp+mNastPaEMtjmAy2xeiZjnvPd3jeXHCkltYqxKj8/28EA7vmhlsFG16PZ?=
+ =?us-ascii?Q?5lJxASndU3tjoCeweTMuBlOUf04tUfoOuVuRgO6oJTwWeK/00iNtJ8O43J0a?=
+ =?us-ascii?Q?kzxaQMC9cwocY6BUkrHbHgTMsYvwz5rztO+JaMoXJ0boeAFSM64Z2R0ASXfT?=
+ =?us-ascii?Q?vvVBlUXONIIQ3hfX2ZGeGM2e8oc429lh9DCaadQyCvxAJuw8FfjLwwbRuffp?=
+ =?us-ascii?Q?bSnUfo4kf7S9Vi+LpfdzsIaGo4ItTvKp+px78xmFPaYd9b4KLbW4QvDG1p3Y?=
+ =?us-ascii?Q?PZrPmFkCPFFs+FAslNQA9XMDgBoTVI86c97mHGw0Iw7VeuCzBTS400dQPbto?=
+ =?us-ascii?Q?sFx54Pmr+voVQpdbhOROAYu7eethTjwqEle+16O2lLdCy8h40Rb2cov6LOJL?=
+ =?us-ascii?Q?rTlT2FPoBN31QKe4p/AE+/tyb+7laA5xnS8iK1PLNTvZ4sIB7LiRTvqtYqwY?=
+ =?us-ascii?Q?05bqtFWiJCvmp9IJwvf356b7NnUUqc3NqbAuwtuP+VF20bINBMrsFQPyT53U?=
+ =?us-ascii?Q?ueXZcfIXbBB8sWz4aF/H2e1UMhCqRopyvnR7gCQhOyvhrkCGS5b/rzMjObOd?=
+ =?us-ascii?Q?eGWBUPeqFDOBguW5heTLYiGesIPAOB2zWjiJ5GDBz3T4X7m8eS0CkIO5REL0?=
+ =?us-ascii?Q?3ctDo/XolmW3wUS+Q6lfLnKN++70d+Uop+9RYCSMDlPw4VklE4bOECaGFVdN?=
+ =?us-ascii?Q?PzI0zCXSn+yzE+8cUnuRXAAL2dRU8PGglaf+OxZ+y+aKkUyrZVOUESKhEOsl?=
+ =?us-ascii?Q?5MSlbRMj65KxJHFhm747LC/Gj3Dp/z9Km/IzMshPdMCxu6h4UdKq4nEzHD/1?=
+ =?us-ascii?Q?Juvo80OkCu2HJjdznzJuuceQ4kAC37vE2HHDw/hyhYBU9omIWfkeNuS+DcnL?=
+ =?us-ascii?Q?IFYaFG5yQUQVmUavK5rvd6H/8PQbmXusNuOn7w1mgr1tlHj+JnxqCzjB8Fi1?=
+ =?us-ascii?Q?Sw=3D=3D?=
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c2328b6-9f03-4b27-f4fb-08dc162fd294
+X-MS-Exchange-CrossTenant-AuthSource: SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2024 01:09:43.4271 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sdnHhMcMtYzcvw5mIp87MZFF5waBAiF9PAB12VUXsHQlMnVGS9f1cencT98os+Zd7c5W1kKKSkZWLWc1vhk1SW++xrwUJOX+h/wdWuAA0ik=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SHXPR01MB0527
+Received-SPF: pass client-ip=2406:e500:4420:2::62c;
+ envelope-from=jeeheng.sia@starfivetech.com;
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cgnQiCkVuX0e
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vNx6z+Dr43NR
 
-Allwinner R40 supports two USB host ports shared between a USB 2.0 EHCI
-host controller and a USB 1.1 OHCI host controller. Add support for both
-of them.
+This series focuses on enabling the Serial Port Console Redirection (SPCR)
+table for the RISC-V virt platform. Considering that ARM utilizes the same
+function, the initial patch involves migrating the build_spcr function to
+common code. This consolidation ensures that RISC-V avoids duplicating the
+function.
 
-If machine USB support is not enabled, create unimplemented devices
-for the USB memory ranges to avoid crashes when booting Linux.
+The patch set is built upon Alistair's riscv-to-apply.next branch
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
-v2: The USB Controllers are part of the chipset, so instantiate them
-    unconditionally
+Changes in v2:
+- Renamed the build_spcr_rev2() function to spcr_setup().
+- SPCR table version is passed from spcr_setup() to the common
+  build_spcr() function.
+- Added "Reviewed-by" from Daniel for patch 2.
+- The term 'RFC' has been removed from this series, as the dependency code
+  from [1] has been merged into Alistair's riscv-to-apply.next branch. The
+  first series of this patch can be found at [2].
 
- docs/system/arm/bananapi_m2u.rst |  2 +-
- hw/arm/Kconfig                   |  2 ++
- hw/arm/allwinner-r40.c           | 47 ++++++++++++++++++++++++++++++--
- include/hw/arm/allwinner-r40.h   |  9 ++++++
- 4 files changed, 57 insertions(+), 3 deletions(-)
+[1] https://lore.kernel.org/qemu-devel/20231218150247.466427-1-sunilvl@ventanamicro.com/
+[2] https://lore.kernel.org/qemu-devel/20240105090608.5745-1-jeeheng.sia@starfivetech.com/
 
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
-index b09ba5c548..e77c425e2c 100644
---- a/docs/system/arm/bananapi_m2u.rst
-+++ b/docs/system/arm/bananapi_m2u.rst
-@@ -23,6 +23,7 @@ The Banana Pi M2U machine supports the following devices:
-  * GMAC ethernet
-  * Clock Control Unit
-  * TWI (I2C)
-+ * USB 2.0
- 
- Limitations
- """""""""""
-@@ -33,7 +34,6 @@ Currently, Banana Pi M2U does *not* support the following features:
- - Audio output
- - Hardware Watchdog
- - Real Time Clock
--- USB 2.0 interfaces
- 
- Also see the 'unimplemented' array in the Allwinner R40 SoC module
- for a complete list of unimplemented I/O devices: ``./hw/arm/allwinner-r40.c``
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 39d255425b..6b508780d3 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -415,6 +415,8 @@ config ALLWINNER_R40
-     select ARM_TIMER
-     select ARM_GIC
-     select UNIMP
-+    select USB_OHCI
-+    select USB_EHCI_SYSBUS
-     select SD
- 
- config RASPI
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index a0d367c60d..2e8943eff7 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -23,6 +23,7 @@
- #include "qemu/bswap.h"
- #include "qemu/module.h"
- #include "qemu/units.h"
-+#include "hw/boards.h"
- #include "hw/qdev-core.h"
- #include "hw/sysbus.h"
- #include "hw/char/serial.h"
-@@ -45,6 +46,10 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_MMC1]       = 0x01c10000,
-     [AW_R40_DEV_MMC2]       = 0x01c11000,
-     [AW_R40_DEV_MMC3]       = 0x01c12000,
-+    [AW_R40_DEV_EHCI1]      = 0x01c19000,
-+    [AW_R40_DEV_OHCI1]      = 0x01c19400,
-+    [AW_R40_DEV_EHCI2]      = 0x01c1c000,
-+    [AW_R40_DEV_OHCI2]      = 0x01c1c400,
-     [AW_R40_DEV_CCU]        = 0x01c20000,
-     [AW_R40_DEV_PIT]        = 0x01c20c00,
-     [AW_R40_DEV_UART0]      = 0x01c28000,
-@@ -89,9 +94,9 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "crypto",     0x01c15000, 4 * KiB },
-     { "spi2",       0x01c17000, 4 * KiB },
-     { "sata",       0x01c18000, 4 * KiB },
--    { "usb1-host",  0x01c19000, 4 * KiB },
-+    { "usb1-phy",   0x01c19800, 2 * KiB },
-     { "sid",        0x01c1b000, 4 * KiB },
--    { "usb2-host",  0x01c1c000, 4 * KiB },
-+    { "usb2-phy",   0x01c1c800, 2 * KiB },
-     { "cs1",        0x01c1d000, 4 * KiB },
-     { "spi3",       0x01c1f000, 4 * KiB },
-     { "rtc",        0x01c20400, 1 * KiB },
-@@ -181,6 +186,10 @@ enum {
-     AW_R40_GIC_SPI_MMC2      = 34,
-     AW_R40_GIC_SPI_MMC3      = 35,
-     AW_R40_GIC_SPI_EMAC      = 55,
-+    AW_R40_GIC_SPI_OHCI1     = 64,
-+    AW_R40_GIC_SPI_OHCI2     = 65,
-+    AW_R40_GIC_SPI_EHCI1     = 76,
-+    AW_R40_GIC_SPI_EHCI2     = 78,
-     AW_R40_GIC_SPI_GMAC      = 85,
- };
- 
-@@ -276,6 +285,13 @@ static void allwinner_r40_init(Object *obj)
-                                 TYPE_AW_SDHOST_SUN50I_A64);
-     }
- 
-+    for (size_t i = 0; i < AW_R40_NUM_USB; i++) {
-+        object_initialize_child(obj, "ehci[*]", &s->ehci[i],
-+                                TYPE_PLATFORM_EHCI);
-+        object_initialize_child(obj, "ohci[*]", &s->ohci[i],
-+                                TYPE_SYSBUS_OHCI);
-+    }
-+
-     object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
- 
-     object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
-@@ -407,6 +423,33 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->ccu), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_R40_DEV_CCU]);
- 
-+    /* USB */
-+    for (size_t i = 0; i < AW_R40_NUM_USB; i++) {
-+        g_autofree char *bus = g_strdup_printf("usb-bus.%zu", i);
-+
-+        object_property_set_bool(OBJECT(&s->ehci[i]), "companion-enable", true,
-+                                 &error_fatal);
-+        sysbus_realize(SYS_BUS_DEVICE(&s->ehci[i]), &error_fatal);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                        allwinner_r40_memmap[i ? AW_R40_DEV_EHCI2
-+                                               : AW_R40_DEV_EHCI1]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci[i]), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->gic),
-+                                            i ? AW_R40_GIC_SPI_EHCI2
-+                                              : AW_R40_GIC_SPI_EHCI1));
-+
-+        object_property_set_str(OBJECT(&s->ohci[i]), "masterbus", bus,
-+                                &error_fatal);
-+        sysbus_realize(SYS_BUS_DEVICE(&s->ohci[i]), &error_fatal);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                        allwinner_r40_memmap[i ? AW_R40_DEV_OHCI2
-+                                               : AW_R40_DEV_OHCI1]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci[i]), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->gic),
-+                                            i ? AW_R40_GIC_SPI_OHCI2
-+                                              : AW_R40_GIC_SPI_OHCI1));
-+    }
-+
-     /* SD/MMC */
-     for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
-         qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->gic),
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 6e1ac9d4c1..ae82822d42 100644
---- a/include/hw/arm/allwinner-r40.h
-+++ b/include/hw/arm/allwinner-r40.h
-@@ -30,6 +30,8 @@
- #include "hw/i2c/allwinner-i2c.h"
- #include "hw/net/allwinner_emac.h"
- #include "hw/net/allwinner-sun8i-emac.h"
-+#include "hw/usb/hcd-ohci.h"
-+#include "hw/usb/hcd-ehci.h"
- #include "target/arm/cpu.h"
- #include "sysemu/block-backend.h"
- 
-@@ -44,6 +46,10 @@ enum {
-     AW_R40_DEV_MMC1,
-     AW_R40_DEV_MMC2,
-     AW_R40_DEV_MMC3,
-+    AW_R40_DEV_EHCI1,
-+    AW_R40_DEV_OHCI1,
-+    AW_R40_DEV_EHCI2,
-+    AW_R40_DEV_OHCI2,
-     AW_R40_DEV_CCU,
-     AW_R40_DEV_PIT,
-     AW_R40_DEV_UART0,
-@@ -88,6 +94,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)
-  * which are currently emulated by the R40 SoC code.
-  */
- #define AW_R40_NUM_MMCS         4
-+#define AW_R40_NUM_USB          2
- #define AW_R40_NUM_UARTS        8
- 
- struct AwR40State {
-@@ -106,6 +113,8 @@ struct AwR40State {
-     AwSRAMCState sramc;
-     AwA10PITState timer;
-     AwSdHostState mmc[AW_R40_NUM_MMCS];
-+    EHCISysBusState ehci[AW_R40_NUM_USB];
-+    OHCISysBusState ohci[AW_R40_NUM_USB];
-     AwR40ClockCtlState ccu;
-     AwR40DramCtlState dramc;
-     AWI2CState i2c0;
+Sia Jee Heng (2):
+  hw/arm/virt-acpi-build.c: Migrate SPCR creation to common location
+  hw/riscv/virt-acpi-build.c: Generate SPCR table
+
+ hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
+ hw/riscv/virt-acpi-build.c  | 39 +++++++++++++++++++++
+ include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+ include/hw/acpi/aml-build.h |  4 +++
+ 5 files changed, 154 insertions(+), 41 deletions(-)
+
 -- 
-2.39.2
+2.34.1
 

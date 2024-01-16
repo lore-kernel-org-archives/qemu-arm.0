@@ -1,135 +1,90 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp918863ejf;
-        Tue, 16 Jan 2024 06:44:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE/rfvwP93LZauq+ekZCG2Coh8K4pLGyniMe9RbCSfnnd4eGBvXPjOzPZsS34D9LkjMFMpq
-X-Received: by 2002:a05:6808:20a1:b0:3bd:9043:95d2 with SMTP id s33-20020a05680820a100b003bd904395d2mr387903oiw.24.1705416292883;
-        Tue, 16 Jan 2024 06:44:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705416292; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp922279ejf;
+        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFuO6tXUqSbWRkDsb/v6hvZmHMz3hKt2JY94AiaZ+mLY+gA08fPK/0LdRBgi3OUsfrQRRuB
+X-Received: by 2002:a05:6870:a119:b0:1f9:5f20:8c7a with SMTP id m25-20020a056870a11900b001f95f208c7amr7011879oae.21.1705416682312;
+        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705416682; cv=none;
         d=google.com; s=arc-20160816;
-        b=szlKRE/stYk7knsEH0qEiQx0GfDEmvEUpJNXnxyWz2zCcY4bLJH9bG9pKw9sVAZhef
-         NTjwiAlDwPy5QQk+qgKWo9XAQStpzzSX1kIUqi3HTbVK8EjTF+3xsROoJS4yembRk2DI
-         CYMfEBR3HuOn8NPUY0CXnQsyhefqbFCVmS9WXutCmODdIQ1OPcvGOK2UgDEFqRf1pNLJ
-         6EbdBB8flul/ZB/3jByKiMbHuqfXHDj8a2c6Ob7C55VO4FlRwgUdFO63Bvu03r6SlgCt
-         +5gRO9YPHImUjGuZx0xFUF6BykG9NTBNU6+jNZheX3djQNAYTNif377Yz9oSnGYgpwhn
-         sa2w==
+        b=oFwLKAUp46hCrB3fn3PiQ/jT4FAyibTDkGCx44Lrpk85capBmgo7kVa7osHuapo/f1
+         OX00ryVcZdPgOnKkTvIC9pEiu3WS0CGzM24pQRH5MwcjOamGXjzCDKBQApr2DEJOEx4L
+         dd7J0SKRjbpSJZfY0xF2EWugRjMGKGYwMzhnHIQAoA+w+44GVIB0WnCamUFHajBct6nP
+         QWfBaIphgYrLHUkejpoa5MOenfjBkTNX/z1I+g3FpUUqiYGj7yrwYqipnMOAnHmTlgfK
+         UYBM2jESOlmOG1LYGJ4khPOMBfMLBXlXzUrqoXo04vtWyGNwUxdMT7Y+ypts1iMnSwdr
+         dVYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
-        fh=+ztKG102Dtyh3/ypdyuwCMn1Av5726neqv+2jMtYmy8=;
-        b=cko5Z8I4c/+meJ92yTelM1dTMQ/YFcr5H1hSeyxiGi3OmFOn7zAIgkik6Metg3PB+U
-         LWGIp+iHQt1z3lUya++EhRlEHg+I06oAzapOKYsfuI5v4IiJJ3i7SDhyL0U6214I525z
-         9nTxI/giB8BaCzeBC836ff74uLUw25OAZ1/bi3a7zZWs7F+YFBBOCtnUMHI5AV6pN9wf
-         O/npMrSteAE74BH1w9w/J8ARpexjtOqGGcYuucKtRqwGWtLctdRzp7YDYSGBRjK+ckLK
-         4O0QngkS/rQ6Leswtx+r3p9ISFcdQOFmuPWsIdaxfXDrZNyafzimWK1gtRGpusuaGIIf
-         9x0g==
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=DERmTmnGXutz3c6px9o3LCS/P0EOxQHIz4Ber6JEE6A=;
+        fh=CPqfQhXyZp7q048m/2YkQDugvmq3ADVWuTpqTS8jIPQ=;
+        b=CsLvzJTj96exeHnOaQSGm/hsLtPFu8hU2F+gWqjP1tVHU8Ulq2l3F6vRF2n6H80Pct
+         rMDGpvvp+DRnrpb2MVm7k27CQx/EIrMb+oQmRIklGPZ17LqpKl1T723qc+DlNr+gKiC2
+         7Lw1N79/yXl9XzfpxeR4Xb051S35J8yGgRtWop3hfYZmSa6rakkAnVBQ1AMnrQai4tS1
+         eSnCAw0AmQPnwPlTLNhhpb7/aKEGoTQzn1keLMbLSVWGhi3Jtt4GoLej/gOKXVYPsKWE
+         LvmxwkIeQCii94aEIel0PFfWw8+yqM5UecCrNXFXD6yMjgP5USnE/qD2t3vkx3u47+qx
+         jR4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N284IVpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12-20020a05620a124c00b007833f10151bsi9784695qkl.383.2024.01.16.06.44.52
+        by mx.google.com with ESMTPS id d7-20020ac85d87000000b00429fb485704si2569293qtx.606.2024.01.16.06.51.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 06:44:52 -0800 (PST)
+        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N284IVpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPkgG-0003ti-By; Tue, 16 Jan 2024 09:44:44 -0500
+	id 1rPkmM-0006UP-Df; Tue, 16 Jan 2024 09:51:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rPkgE-0003sx-Jq
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:44:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rPkmL-0006U5-BV; Tue, 16 Jan 2024 09:51:01 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rPkgC-0006wy-PN
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:44:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705416277;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
- b=N284IVpFRuhQJKaWoaf2glZXB/VshofvJoTeJTze6D0r3pbxFF4qzSxyUqd2XjpOzRY/k3
- knh+M1hfnx6v6qfRRHPz98mfg34DOcApJqHsoYyirce6+6qyAC+S56EnnpaJSCPdpSrP9G
- PukHp7AodG3YOLExkd36J4NTcxy1c40=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-442-sWQcScymOviz0b2dmyP44w-1; Tue, 16 Jan 2024 09:44:35 -0500
-X-MC-Unique: sWQcScymOviz0b2dmyP44w-1
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-429c5cf9585so76439031cf.1
- for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 06:44:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705416274; x=1706021074;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
- b=rnE8BlvnvHPt10kVlmOCoIwpTspx0OAS9xEjbvIHe5CO7Fq37Rk2ILJS+8z0K9tlta
- bEWL07/59kaUmrv3OZUHNRgtkadb0Aw0fAJWPCvL8VbZjToIp5SZoh9gpVR19yeS1KXJ
- B4VH67v7V/uTcwqzKX88dmzhRzgYZEwGustYzv9raoXX5g/r3amkDfCScKKfzvTah0b8
- wznGgiQL6RN+59yEskxn0EAlKb3kfHSbQenmnvJnKqQmqgtWRCpvdFQwKEHsgye9mMhv
- EOK+58uOiqGdQm7WzLEgXxEYqpuUmhAoozqs+tMH8ZA+fD1rJGJZzDaM7CBcnioQXu2n
- HIMg==
-X-Gm-Message-State: AOJu0YyJx67W3uUfvpjHzD44YzaMLFpIZjsRtW1qiu1RjAqz3cx84Ii0
- qOtpo9RS/gjSlRf+vNN0th8JmgO3tBoGJnZ42P6pyscWbKjEVIEPimNqjpJF2tGFfQRaRkJU+Ih
- TPjdXjAVq6QuCKPFEhYcW
-X-Received: by 2002:a05:6214:258e:b0:680:b48c:b543 with SMTP id
- fq14-20020a056214258e00b00680b48cb543mr9453228qvb.64.1705416274305; 
- Tue, 16 Jan 2024 06:44:34 -0800 (PST)
-X-Received: by 2002:a05:6214:258e:b0:680:b48c:b543 with SMTP id
- fq14-20020a056214258e00b00680b48cb543mr9453217qvb.64.1705416273985; 
- Tue, 16 Jan 2024 06:44:33 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ez15-20020ad4590f000000b0068116eaf26bsm4236319qvb.114.2024.01.16.06.44.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jan 2024 06:44:33 -0800 (PST)
-Message-ID: <b513dd07-e696-411f-9c8a-ca1a8a6269f4@redhat.com>
-Date: Tue, 16 Jan 2024 15:44:30 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rPkmI-0001XX-N9; Tue, 16 Jan 2024 09:51:00 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDsM32mq5z6J9sP;
+ Tue, 16 Jan 2024 22:48:15 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id AC0B81408FE;
+ Tue, 16 Jan 2024 22:50:52 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
+ 2024 14:50:52 +0000
+Date: Tue, 16 Jan 2024 14:50:51 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
+Message-ID: <20240116145051.000004f7@Huawei.com>
+In-Reply-To: <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
+References: <20231218113305.2511480-1-peter.maydell@linaro.org>
+ <20231218113305.2511480-28-peter.maydell@linaro.org>
+ <20240116130940.00002523@Huawei.com>
+ <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] virtio-iommu: Use qemu_real_host_page_mask as default
- page_size_mask
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, mst@redhat.com, clg@redhat.com,
- alex.williamson@redhat.com
-References: <20231221134505.100916-1-eric.auger@redhat.com>
- <20240116125359.GA710190@myrica>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240116125359.GA710190@myrica>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,118 +97,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fhP5txbwh+bs
+X-TUID: QfzyANrnIEaO
 
-Hi Jean,
+On Tue, 16 Jan 2024 13:20:33 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-On 1/16/24 13:53, Jean-Philippe Brucker wrote:
-> On Thu, Dec 21, 2023 at 08:45:05AM -0500, Eric Auger wrote:
->> We used to set default page_size_mask to qemu_target_page_mask() but
->> with VFIO assignment it makes more sense to use the actual host page mask
->> instead.
->>
->> So from now on qemu_real_host_page_mask() will be used as a default.
->> To be able to migrate older code, we increase the vmstat version_id
->> to 3 and if an older incoming v2 stream is detected we set the previous
->> default value.
->>
->> The new default is well adapted to configs where host and guest have
->> the same page size. This allows to fix hotplugging VFIO devices on a
->> 64kB guest and a 64kB host. This test case has been failing before
->> and even crashing qemu with hw_error("vfio: DMA mapping failed,
->> unable to continue") in VFIO common). Indeed the hot-attached VFIO
->> device would call memory_region_iommu_set_page_size_mask with 64kB
->> mask whereas after the granule was frozen to 4kB on machine init done.
-> I guess TARGET_PAGE_MASK is always 4kB on arm64 CPUs, since it's the
-> smallest supported and the guest configures its page size at runtime.
-correct
-> Even if QEMU's software IOMMU can deal with any page size, VFIO can't so
-> passing the host page size seems more accurate than forcing a value of
-> 4kB.
-that's my guess too
->
->> Now this works. However the new default will prevent 4kB guest on
->> 64kB host because the granule will be set to 64kB which would be
->> larger than the guest page size. In that situation, the virtio-iommu
->> driver fails the viommu_domain_finalise() with
->> "granule 0x10000 larger than system page zie 0x1000".
-> "size"
-> (it could matter if someone searches for this message later)
-sure I will correct it
->
->> The current limitation of global granule in the virtio-iommu
->> should be removed and turned into per domain granule. But
->> until we get this upgraded, this new default is probably
->> better because I don't think anyone is currently interested in
->> running a 4kB page size guest with virtio-iommu on a 64kB host.
->> However supporting 64kB guest on 64kB host with virtio-iommu and
->> VFIO looks a more important feature.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> So to summarize the configurations that work for hotplug (tested with QEMU
-> system emulation with SMMU + QEMU VMM with virtio-iommu):
->
->  Host | Guest | virtio-net | IGB passthrough
->   4k  | 4k    | Y          | Y
->   64k | 64k   | Y          | N -> Y (fixed by this patch)
->   64k | 4k    | Y -> N     | N
->   4k  | 64k   | Y          | Y
-That table is correct
->
-> The change is a reasonable trade-off in my opinion. It fixes the more common
-> 64k on 64k case, and for 4k on 64k, the error is now contained to the
-> guest and made clear ("granule 0x10000 larger than system page size
-> 0x1000") instead of crashing the VMM. A guest OS now discovers that the
-> host needs DMA buffers aligned on 64k and could actually support this case
-> (but Linux won't because it can't control the origin of all DMA buffers).
-> Later, support for page tables will enable 4k on 64k for all devices.
->
-> Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> On Tue, 16 Jan 2024 at 13:09, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > On Mon, 18 Dec 2023 11:32:57 +0000
+> > Peter Maydell <peter.maydell@linaro.org> wrote:
+> >  
+> > > If FEAT_NV2 redirects a system register access to a memory offset
+> > > from VNCR_EL2, that access might fault.  In this case we need to
+> > > report the correct syndrome information:
+> > >  * Data Abort, from same-EL
+> > >  * no ISS information
+> > >  * the VNCR bit (bit 13) is set
+> > >
+> > > and the exception must be taken to EL2.
+> > >
+> > > Save an appropriate syndrome template when generating code; we can
+> > > then use that to:
+> > >  * select the right target EL
+> > >  * reconstitute a correct final syndrome for the data abort
+> > >  * report the right syndrome if we take a FEAT_RME granule protection
+> > >    fault on the VNCR-based write
+> > >
+> > > Note that because VNCR is bit 13, we must start keeping bit 13 in
+> > > template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
+> > >
+> > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>  
+> >
+> > Hi Peter,
+> >
+> > I'm getting an unhelpful crash on calling init in a guest
+> > running on top of an a76 emulated host with virtualization turned on.
+> >
+> > Run /sbin/init as init process
+> > Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007
+> > CPU: 1 PID: 1 Comm: init Not tainted 6.7.0+ #1119
+> > Hardware name: linux,dummy-virt (DT)
+> > Call trace:
+> >  dump_backtrace+0xa0/0x128
+> >  show_stack+0x20/0x38
+> >  dump_stack_lvl+0x48/0x60
+> >  dump_stack+0x18/0x28
+> >  panic+0x380/0x3c0
+> >  do_exit+0x89c/0x9a0
+> >  do_group_exit+0x3c/0xa0
+> >  get_signal+0x968/0x970
+> >  do_notify_resume+0x21c/0x1460
+> >  el0_ia+0xa0/0xb0
+> >  el0t_64_sync_handler+0xd0/0x130
+> >  el0t_64_sync+0x190/0x198
+> > SMP: stopping secondary CPUs
+> > Kernel Offset: 0x2a8c93a00000 from 0xffff800080000000
+> > PHYS_OFFSET: 0xffff82f980000000
+> > CPU features: 0x0,00000001,7002014a,2101720b
+> > Memory Limit: none
+> > ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007 ]---
+> >
+> > Upstream kernel as of yesterday.  Nothing particular 'exciting' in the
+> > configurations. Not attempting to use Nested virt.
+> > -M virt,gic-version=3,virtualization=true
+> > -cpu cortex-a76 (happens with max as well but switched to a76 for testing
+> > to reduce possible sources of problems).
+> >
+> > Doesn't happen if single cpu in the guest, or if using gic v2 in both.
+> >
+> > Bisection points at this patch - so far no idea why but I've only
+> > just started digging into this.  
+> 
+> Bisecting to this patch is a bit weird because at this point
+> in the series emulation of FEAT_NV2 should be disabled and
+> the code being added should never be used. You could put
+> an assert(0) into the code in translate-a64.c before the
+> call to syn_data_abort_vncr() and in arm_deliver_fault()
+> assert(!is_vncr) to confirm that we're not somehow getting
+> into this code for some non-FEAT_NV2 situation, I guess.
 
-Many thanks!
+Not that, but surprisingly is_vncr == true.
+in arm_deliver_fault()
 
-Eric
->
->> ---
->>  hw/virtio/virtio-iommu.c | 7 +++++--
->>  1 file changed, 5 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index 9d463efc52..b77e3644ea 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -1313,7 +1313,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->>       * in vfio realize
->>       */
->>      s->config.bypass = s->boot_bypass;
->> -    s->config.page_size_mask = qemu_target_page_mask();
->> +    s->config.page_size_mask = qemu_real_host_page_mask();
->>      s->config.input_range.end = UINT64_MAX;
->>      s->config.domain_range.end = UINT32_MAX;
->>      s->config.probe_size = VIOMMU_PROBE_SIZE;
->> @@ -1491,13 +1491,16 @@ static int iommu_post_load(void *opaque, int version_id)
->>       * still correct.
->>       */
->>      virtio_iommu_switch_address_space_all(s);
->> +    if (version_id <= 2) {
->> +        s->config.page_size_mask = qemu_target_page_mask();
->> +    }
->>      return 0;
->>  }
->>  
->>  static const VMStateDescription vmstate_virtio_iommu_device = {
->>      .name = "virtio-iommu-device",
->>      .minimum_version_id = 2,
->> -    .version_id = 2,
->> +    .version_id = 3,
->>      .post_load = iommu_post_load,
->>      .fields = (VMStateField[]) {
->>          VMSTATE_GTREE_DIRECT_KEY_V(domains, VirtIOIOMMU, 2,
->> -- 
->> 2.27.0
->>
+Frigging that to be false gets me up and running. I'll see
+if I can figure out why it is set.
+
+J
+> 
+> thanks
+> -- PMM
 

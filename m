@@ -1,204 +1,160 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp983375ejf;
-        Tue, 16 Jan 2024 08:25:47 -0800 (PST)
-X-Received: by 2002:a05:600c:2b0e:b0:40e:4271:69e7 with SMTP id y14-20020a05600c2b0e00b0040e427169e7mr4019418wme.218.1705422347003;
-        Tue, 16 Jan 2024 08:25:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705422346; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp999785ejf;
+        Tue, 16 Jan 2024 08:56:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEyqKoEoGucsGUhHWpIsb+E80muhIekaPoK9qtoD7zKEkQ//TZXTnfcQJRDzezzk4AtsNcO
+X-Received: by 2002:ac8:7f10:0:b0:429:be18:8150 with SMTP id f16-20020ac87f10000000b00429be188150mr10604774qtk.100.1705424193853;
+        Tue, 16 Jan 2024 08:56:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705424193; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ac6jqLqD7LTrYVcY3rzvhfWKjAaRXOH6D0D3h5UNuGWZ3pNMqDy5aiH36naSCxGgLN
-         W77gPAXXgwRRt4UPpapSB8zhLUleUeTRIgMV/hVs1v6r3ISXHWBC2heOTQ0IpPHDSK0c
-         OXzdRmeFoSXYvbHgVNNBDmPt+ZN7cTder7AlnyeymeSk262VbeNb+GDcFLN5xPVUtT/c
-         T3AJRAbuHovO4tZQj7ZKvtGYcFZm4CcrT8t7cfJaoZbRSjy4MhIZ1sKvrinvnOkrj0kf
-         xKaOGGjyyzhgRiwoHYyCWUknkZ8mzSinULM/qBcYWH7xQHt3gOxTFG/5xKzNKjTmKLTp
-         eV1w==
+        b=H1Oxdxn8+4qhc1h+TwRu3WhFhaMe3PNMBnEGcYI14jcu7/mQzJYgcUk8i04uYzdPXc
+         pYdQK1YLjhsaRsXSnpAgR1vu5WUiNNkbuGNyL8Fh+S92Dwp4vFcLAVa1zyJUyE65mU9i
+         doXCMa41sJaA+3ca72PlulQchpS4sAsGg9yWM/vSyCKWWaKdh2QUp3rUjB6c6FAIyCNA
+         xeBGjpDM0VzGfeFCkCVDvXoEfaykM4xSWh7u8sb3SJrywLx/uY4DhP82MsxHwOIdDfM1
+         2CQYTZxalIs4hV7pUoAHtXTCkw7wQZkh+CQkGJMyQDpX5yhyss7ktZKfbAIKEdRYlhmO
+         darg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
-        fh=h5za0Tuk79K26f0pDBJXjGFMyFjZAtOa3cm3bh485sc=;
-        b=Vt8SEXbGIJRobEfC/EgqloztBr0XUA3rE33xd4SuaGHQC+4bcib3tgeqCy5CaGWwZn
-         66a02rMHQejiWnzpsDlpTQRsv9fihYRaHEUSvjUFsTFOLtqzVzXcVKTlS7Frmw451brg
-         f1nYa9kBVsMF9hshXPNDCtqD8JN5AzQ7wu1T+oH7XqJqjaxHzPHckgcyniPyXOYBnvTc
-         CAS9naloTzUq0cajeR836/A1+rvUN+HDdjqGCoCpZM+4lxCwax5piukt3PaGPDRLwQH7
-         cXURskZXcvB0gf/jLoP5vQG6FG99c7agii3+ry3eqTyvYzk2LBv9EWih4F2tbchpefYB
-         MRfQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=g5+MoEdJcCdHmkaazghwpTww92NWQ0eEpf8jlJ56rWs=;
+        fh=RngBVondoO8Rybm7DS4h37/aX8/Cu6PJZygxu/v2CFo=;
+        b=wF0mS72xaKuX24vm2CoLjMaPWw+ojwqNsmMG86WyW9nEuvb4n0jVmyGe2oZJlRFPLw
+         eSDAjwq/9ote9B4xDqAqDxl7YjCOQlTphxG1jIbAajNITb3zu6okwIJz+WpUFAoWQvW9
+         V+LwFRbols7JNjG/WSOXGZaligJb5tiN8Kv7B2m83E+PcUy2iXIv8akOxbPqx43cP+qp
+         /tH0zBBofvgJBvHwslTfLt/pu12FJ5egbOSnUQkTTwUqK0NsJyI2PHbjb6eORKWB4vWB
+         mmMVkm1pELnTEzxrJTISm3KxHHWIWT++veJiVfixJwMsne+n7IV0gZlNlOjBcCpARfZh
+         xqfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mpo8bY8i;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TcJhCRCn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x1-20020a05600c21c100b0040e622ce9b5sor770198wmj.11.2024.01.16.08.25.46
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n8-20020a05622a11c800b00429fe13e602si2302856qtk.8.2024.01.16.08.56.33
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Jan 2024 08:56:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mpo8bY8i;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TcJhCRCn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rPmjT-00063K-Hx; Tue, 16 Jan 2024 11:56:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPmjR-00062W-L7
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 11:56:09 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPmjQ-0008AG-6X
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 11:56:09 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40e800461baso14534795e9.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 08:56:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705422346; x=1706027146; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
-        b=Mpo8bY8i0uNa47/eD3kPmtu0sC16nj4BlqciegaUzHupt3NdZu+mCgStrWSnxPXeyw
-         /TLpBMiTXvNxEJF6mwClT55O4ZiTBzOEvPqB2rchulDPxNYGGAydj9Fni+g3hbdUET9l
-         cHT+DKe4odIt6otkRB+pGPP0uBd3BHj6zkknMPQ5PLk2juo2CtehkWP7Snm1DTPC9q30
-         xlWR8u1o18Qjp32PTgSJfgfPr1UQJ+K6a900ksjAYDMV5UUQSNTNaydEWsRzaulckOOj
-         zutAlyRrkphGNuwnOsMorznvKJ1X+r9xMokHwqgH4x2YgphtXx2XGAXYF3tfUTSJKGJt
-         X9/g==
+ d=linaro.org; s=google; t=1705424166; x=1706028966; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=g5+MoEdJcCdHmkaazghwpTww92NWQ0eEpf8jlJ56rWs=;
+ b=TcJhCRCnLLFa3ABKuPxkWBLbYVql0nrLOrLbhLuvpLF8GF2nOL2XRlZvNoHEIoTW1y
+ U+KGuY0auprbUrh/4entfIjTqcFXX7Hxv6WLgoh0R3HPr/qR8Z0MPMBNYLYxosbKdT7N
+ uiq9a1GUZYm9VYSFUFv8vKGQEkhG+YW6/BKRkpzZcGY0lJyUxUulgkKdu0KFIkput2XY
+ 8Ato5s4rl5Gisi1rX9eMsy/DLneyU+fUSVtedz+kcA7GpQoupsG6d6HzpYAkdI2Qd0+K
+ Rd/xploKWLH+C6WTBuk+DBIhXl7BXocm+ZYogQv7ss8mJa7yoI/6rg3yOJxJv2QzTGyT
+ Ik3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705422346; x=1706027146;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Sb8ewZWwHpfNyDhnqAuVoxp7WG7jOe/slKL1LcWRMgA=;
-        b=V86ItyYtryPB+cG2GI6Pdi+pfwOoSHtuynkhu5VWicP9rM3rqtx0b4Loq3LckFUrMM
-         u0WBWlFAOxZBK50+0deklbQFyHeHeojr92BsUvaBv2EKuDTwGtwBhf8oYNTKjO/NXrpH
-         sh8J1TfCF3thg7UeEtzjx4Nvcvl9IH6DRvr6kxrG8LIfRjEwA4Vyfgw/qQjBppPOgbPv
-         rDau+wvrqljJkJun/CBhXxFogb7CQIhNBuVhxqqOb/CrNBKVa4fTWH1SOSEmzsXrFiux
-         DMGAA+MyKgtBWRgERJHKFpBYbyBs5xdjiXOJqkFYYoWL0Tl/vo7W+JLvkHjxyvqL43lJ
-         u1Yw==
-X-Gm-Message-State: AOJu0Yxj8t6MSAHmo637slxfRbY+t4aZceY98XiFDY3Kl6q35IeTDCu9
-	rosSOE1iBtoAv2JQ1tAe/qr5TUvOcnymyZf/
-X-Google-Smtp-Source: AGHT+IEd9iSQRr5FpCis06jN1hSBln9tMu7sGM83eRoAmH6A1XUDsRO3hLrvkGmIeRagMBTD2XPoSw==
-X-Received: by 2002:a05:600c:5398:b0:40e:62b1:58a5 with SMTP id hg24-20020a05600c539800b0040e62b158a5mr3902845wmb.15.1705422346579;
-        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.102] ([176.176.156.199])
-        by smtp.gmail.com with ESMTPSA id q14-20020a1709060f8e00b00a2a61b9c166sm6639819ejj.33.2024.01.16.08.25.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Jan 2024 08:25:46 -0800 (PST)
-Message-ID: <501c1bfe-fb26-42ab-a925-9888755c72ad@linaro.org>
-Date: Tue, 16 Jan 2024 17:25:43 +0100
+ d=1e100.net; s=20230601; t=1705424166; x=1706028966;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=g5+MoEdJcCdHmkaazghwpTww92NWQ0eEpf8jlJ56rWs=;
+ b=f+uy5esL7gjdjmyJUam7U04+PP8Z7tUHnCZsLKQUtRptlvU/+BrAGxai+irBZ9aWEc
+ 2ooAGFQzkyvKsWrWGeTevEmklxr7Ie7DDsEpXzpofmvvNJpYi2ADOPq5E9sK+OYx100S
+ eQ6W7N3TIvjny3Ldr1sz16HIZMeIVoRuD4cwHtnLtbi3KzD17Wi+TRIxtKHbYImvaCuv
+ 6hVeu9bI8AiBrspQy7NpdnMYuFpUy9J7uOKfNe4SSUP4LTY35XevWl/IHazhzj6QYufW
+ ixQmbztrKJHU/ZtmV9pbje4XhjAbB8BVS9vQB4EHv3Uci4WGnkUnYdk5kh+Elc4VQk5n
+ NDaA==
+X-Gm-Message-State: AOJu0YzZ2k/KB3Uq75lsjzAsJOwpH/CGpsvjZhyJFKgifiDz5ZfkQNvB
+ b91g4pDMnSMFxKwDsanFfLWCB8DHwPTSHYC2X0DC+Ene8A0=
+X-Received: by 2002:a05:600c:2ed2:b0:40e:491e:e387 with SMTP id
+ q18-20020a05600c2ed200b0040e491ee387mr2101176wmn.355.1705424166462; 
+ Tue, 16 Jan 2024 08:56:06 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ bg23-20020a05600c3c9700b0040d91fa270fsm19968636wmb.36.2024.01.16.08.56.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Jan 2024 08:56:06 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: [PATCH] target/arm: Fix VNCR fault detection logic
+Date: Tue, 16 Jan 2024 16:56:05 +0000
+Message-Id: <20240116165605.2523055-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/33] hw/cpu/arm: Handle 'has_el2/3' properties once in
- MPCore parent
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20231212162935.42910-1-philmd@linaro.org>
- <20231212162935.42910-15-philmd@linaro.org> <87y1cudyp2.fsf@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87y1cudyp2.fsf@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: v1Fe0etas2tm
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7UL4dktZS2AG
 
-On 12/1/24 22:33, Fabiano Rosas wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
->> Move the 'has_el2' and 'has_el3' properties to the abstract
->> QOM parent.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/hw/cpu/cortex_mpcore.h |  5 +++++
->>   hw/arm/exynos4210.c            | 10 ++++++++--
->>   hw/arm/vexpress.c              |  6 ++++++
->>   hw/arm/xilinx_zynq.c           |  6 ++++++
->>   hw/cpu/a15mpcore.c             | 18 ++++++------------
->>   hw/cpu/a9mpcore.c              |  5 +----
->>   hw/cpu/cortex_mpcore.c         |  3 +++
->>   7 files changed, 35 insertions(+), 18 deletions(-)
->>
->> diff --git a/include/hw/cpu/cortex_mpcore.h b/include/hw/cpu/cortex_mpcore.h
->> index 0e7cca9e93..387552468c 100644
->> --- a/include/hw/cpu/cortex_mpcore.h
->> +++ b/include/hw/cpu/cortex_mpcore.h
->> @@ -30,6 +30,8 @@
->>    * QEMU interface:
->>    *  + QOM property "num-cores" which set the number of cores present in
->>    *    the cluster.
->> + *  + QOM properties "cpu-has-el3", "cpu-has-el2" which set whether the CPUs
->> + *    have the exception level features present.
->>    */
->>   #define TYPE_CORTEX_MPCORE_PRIV "cortex_mpcore_priv"
->>   OBJECT_DECLARE_TYPE(CortexMPPrivState, CortexMPPrivClass, CORTEX_MPCORE_PRIV)
->> @@ -53,6 +55,9 @@ struct CortexMPPrivState {
->>   
->>       /* Properties */
->>       uint32_t num_cores;
->> +
->> +    bool cpu_has_el3;
->> +    bool cpu_has_el2;
->>   };
+In arm_deliver_fault() we check for whether the fault is caused
+by a data abort due to an access to a FEAT_NV2 sysreg in the
+memory pointed to by the VNCR. Unfortunately part of the
+condition checks the wrong argument to the function, meaning
+that it would spuriously trigger, resulting in some instruction
+aborts being taken to the wrong EL and reported incorrectly.
 
+Use the right variable in the condition.
 
->> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
->> index 9c138f4442..54949314f8 100644
->> --- a/hw/cpu/a9mpcore.c
->> +++ b/hw/cpu/a9mpcore.c
->> @@ -51,7 +51,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
->>       SysBusDevice *scubusdev, *gicbusdev, *gtimerbusdev, *mptimerbusdev,
->>                    *wdtbusdev;
->>       Error *local_err = NULL;
->> -    bool has_el3;
->>       CPUState *cpu0;
->>       Object *cpuobj;
->>   
->> @@ -86,9 +85,7 @@ static void a9mp_priv_realize(DeviceState *dev, Error **errp)
->>       /* Make the GIC's TZ support match the CPUs. We assume that
->>        * either all the CPUs have TZ, or none do.
->>        */
->> -    has_el3 = object_property_find(cpuobj, "has_el3") &&
->> -        object_property_get_bool(cpuobj, "has_el3", &error_abort);
->> -    qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
->> +    qdev_prop_set_bit(gicdev, "has-security-extensions", c->cpu_has_el3);
->>   
->>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
->>           return;
->> diff --git a/hw/cpu/cortex_mpcore.c b/hw/cpu/cortex_mpcore.c
->> index d7ea633e4e..549b81f708 100644
->> --- a/hw/cpu/cortex_mpcore.c
->> +++ b/hw/cpu/cortex_mpcore.c
->> @@ -27,6 +27,9 @@ static Property cortex_mpcore_priv_properties[] = {
->>       DEFINE_PROP_UINT32("num-cores", CortexMPPrivState, num_cores, 1),
->>       DEFINE_PROP_UINT32("num-cpu", CortexMPPrivState, num_cores, 1), /* alias */
->>   
->> +    DEFINE_PROP_BOOL("cpu-has-el3", CortexMPPrivState, cpu_has_el3, true),
->> +    DEFINE_PROP_BOOL("cpu-has-el2", CortexMPPrivState, cpu_has_el2, false),
-> 
-> Are we missing setting cpu_has_el2 somewhere else? This^ results in fewer
-> cpregs being registered and is what breaks migration.
-> 
-> You can test with:
-> 
-> $ (echo "migrate file:migfile"; echo "quit") | ./qemu-system-arm -M ast2600-evb -monitor stdio
-> $ ./scripts/analyze-migration.py -f migfile | grep array_len
-> 
-> Before series:
-> $ ./scripts/analyze-migration.py -f migfile | grep array_len
->          "cpreg_vmstate_array_len": "0x0000010a",
->          "cpreg_vmstate_array_len": "0x0000010a",
-> 
-> After series:
-> $ ./scripts/analyze-migration.py -f migfile | grep array_len
->          "cpreg_vmstate_array_len": "0x000000df",
->          "cpreg_vmstate_array_len": "0x000000df",
+Fixes: 674e5345275d425 ("target/arm: Report VNCR_EL2 based faults correctly")
+Reported-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+In less lax languages the compiler might have pointed out that
+the type of the LHS and the RHS in the comparison didn't match :-)
+---
+ target/arm/tcg/tlb_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thank you Fabiano for helping debugging. Indeed there is a problem
-with properties, so this patch is bogus.
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index dd5de74ffb7..5477c7fb7dc 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -184,7 +184,7 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+      * (and indeed syndrome does not have the EC field in it,
+      * because we masked that out in disas_set_insn_syndrome())
+      */
+-    bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
++    bool is_vncr = (access_type != MMU_INST_FETCH) &&
+         (env->exception.syndrome & ARM_EL_VNCR);
+ 
+     if (is_vncr) {
+-- 
+2.34.1
 
-The good news is the QOM reparenting happened 2 commits earlier,
-so this discarded the doubts on qom-path change possibly affecting
-migration :)
-
-Regards,
-
-Phil.

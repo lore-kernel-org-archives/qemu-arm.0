@@ -1,105 +1,91 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp902211ejf;
-        Tue, 16 Jan 2024 06:15:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGCmtoAW5V+fR6EIjNFaV8fMkM3kQjqnwX0YOqpbeeQQVAl9km756QNg2bNpZNwKjZyN1uC
-X-Received: by 2002:a05:6214:202d:b0:681:12f5:d5f5 with SMTP id 13-20020a056214202d00b0068112f5d5f5mr9033960qvf.91.1705414506386;
-        Tue, 16 Jan 2024 06:15:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705414506; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp902265ejf;
+        Tue, 16 Jan 2024 06:15:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHWT2cs7lnbNqDxJ0OIoswdBnkGc1parl/3JolBwjcnSMVyBm4E3MwBN52h/og6vzax/Bwf
+X-Received: by 2002:a05:6214:20ea:b0:681:6584:9c93 with SMTP id 10-20020a05621420ea00b0068165849c93mr2226525qvk.55.1705414511808;
+        Tue, 16 Jan 2024 06:15:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705414511; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTpDSUe6ZPkZhQLiL3gWDOM/4icwbZTZ31q5Sg0S1VHvZ3rHO8xCAAI52q8encoXAV
-         rVNUuU0+4jSGxt3tV+f/OVSIlD+C/r1qPD1iywVB6y1Z2q2/AfGxyjvYAqWU1EroxP89
-         QWa72mp11dy+NYWEfefG1O/TdFEvfIgK//ZTqsrShWWEdqbr7rS8Vc5KXeesj6WLVMxT
-         /WZtvOrsZRMmzO0HcOaajLJaROAcZQC+gB7R9YOVJrMvUfwRueHrqly4utlG5HIBToZP
-         e0FyVTrxWLzl13+Fo9bDhSlNwQUee4xhez6+OE78q3axXCIDsnSu+XAiB6+SQsuDfzLh
-         QEVw==
+        b=ToIgy3/6i10afwSOrqmgGsTNMkRk4QuLJZnaSLoWqMSctz8l/bcLah14ETkI6RLAFR
+         tQZpU7M8lt4I+K+hVh1cdWxevxN1sVrudLDySNBeL+5eqwO6nukqIylrOV03zznJKpxS
+         al+ir27zP4PyFa+nxXWskEVmADtOJedh0t9xFcg/z88D0ScSg5lpF/vAq/0FHxZ8MkZ6
+         AvbRZhAV3uJFkZ6vmB9HTDgvKepamYuFcNriewWN55J3TDa/emvLinq2rj1QsYOZ/FR6
+         2m9oSMPCLotkI9vKAd0BJ/5/tbgCCsZrqET1mChCFm9IuZ5BUd+tkHXcHLRCJdbEUtmL
+         FScw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=JnD7WDmfXAWcGBKIoWM/hsiANoZnI/Yko8kNh0EFTVU=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=s2sP+l7r6YetrmH5c3VINybkvhn78bbot/7bb0rBDejb5M7+n1lZiS1Ho5OuMQtk6X
-         6y2mJStmfQXqN3Hhp0BqbNOnpT7Eje0gZ/jNF7hDq9fdkf5VCDEhUTsyH0eg+hullBAG
-         lsM6DlhEEdXqgGBAhC0js9UljjHhvbbIC7N7eeTfc1GVx+9C3zI4ZGe8eMazqtoJt2z1
-         xoDz8zhZcGMDgQmjYresmV1X/SlWD8jw+NoUAor3uQKAYuuY2OwvBZ99MGHF0A1OYB2c
-         wQGoK1Ea8sZhxWrh96UrDZNt4PQ7P4Nb8X+Km1uY6DSYgz9w4SbDKTwKJTQzl2T9JJ/L
-         U+WQ==
+         :list-unsubscribe:list-id:precedence:message-id:mime-version:subject
+         :to:from:date:dkim-signature;
+        bh=68K3OiPyi1wmxbXKVPK6Rq2PpKH3K91k1PymycU+GYw=;
+        fh=omRVdegjSObLqZQ/sYFkP5s/rlX0MPKsjDmMz35ZNEw=;
+        b=ub4KU8px0YuOfreU4JTeP2Btqc5uRRXOzYRp4Gnvnh83cSOnTAL6L2ab65cacOVGx+
+         vVMu2ij1p4zqyQT4qeGDIAWm+Dy19swGKL1Z0T8n/1kczbhMacZTVszf8Up10GI55j0O
+         XbJlqkNegq/dBojEjIv2rVNpwsYwoKz3VteFCgUd1LRiStauN/PPmZnwbkX7T1GKpp+j
+         EOpqKN1/n/u8VXX0boN6tcyAoeMP+BMunmInTnP6DJW8ntuSXl9VRfwrCA1fl311x/uG
+         sUt6K31QhZDHsSXeqFTj4QP5zoBrLSh87sjzXhxLNu1+9+6kr7Poe+gjluc56puaNpn2
+         DTNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EkxSvt37;
+       dkim=pass header.i=@126.com header.s=s110527 header.b=mQhbGajg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=126.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17-20020a0cf151000000b0067f86df1ed8si680428qvl.238.2024.01.16.06.15.06
+        by mx.google.com with ESMTPS id r5-20020a0c8d05000000b0067f2b2b2468si9573962qvb.116.2024.01.16.06.15.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 06:15:06 -0800 (PST)
+        Tue, 16 Jan 2024 06:15:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EkxSvt37;
+       dkim=pass header.i=@126.com header.s=s110527 header.b=mQhbGajg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=126.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPkDH-00073C-L7; Tue, 16 Jan 2024 09:14:47 -0500
+	id 1rPkDE-00071F-QN; Tue, 16 Jan 2024 09:14:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
- id 1rPekb-00038i-Qb
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 03:24:50 -0500
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
- id 1rPekZ-0004Ah-7g
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 03:24:48 -0500
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-28e8489c205so56993a91.0
- for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 00:24:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705393485; x=1705998285; darn=nongnu.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=JnD7WDmfXAWcGBKIoWM/hsiANoZnI/Yko8kNh0EFTVU=;
- b=EkxSvt37fXKuBJaG0b44Fs7qAlaAZs8ZQXrxQjDDyuVTdF+K9pZQSnb6dty0JIp/6e
- EuUvDeVQ8K0VNZiojXlZaEGT5Er9Dck2qQxs5GdHZXjx49YuJb9iZSk5C+h4Ysiiixrl
- bu8+yF95KOThExG2Th5vC9LWCA3o4cvsh7/58w9lsq7cJpaJdVdhXn4PwSyRD/QbAawZ
- GSaF5X03lftekdBKjh6hsBXP8T6NUUTrDDq+qZ9ptNwyd8NlyjBf6GrZ04EQNetBKt6/
- Ij1IT+j0tVWIlyPSscaMkiTiv5cS6N+fOCH6KibHVhQ4Ax7OAyLLnzwIj8w8EaWe/cKC
- PtQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705393485; x=1705998285;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=JnD7WDmfXAWcGBKIoWM/hsiANoZnI/Yko8kNh0EFTVU=;
- b=jHAfSX1HdfJRqdk+rCn63TJfrgFiS/FFzv6KC11W94KGBB3va1ym2UiiX5VwUCLejX
- Wmk7QbsZK8dKlqzRAaSO5JrXQ98YCa1cu35QrwYfwiQtzQo0bGt4N+OTDw4BnQGjJNH6
- fTwq0NyOKcghAJYFP4Eltw00axxG9aNwCeY8tKxxtLn07sSUJKei5kri9AS7kKzR4FlK
- Cp9u/P3vb+ziQP5KnM6Z/8orAIACMDbLbBY5jCTTy2HjT6lgz3aaG271Hu9q1PuZu9+d
- UxwLR/jfNQiw275mZBUG8EDBnjr+W2GOjDvmfCMBnmCRA/Pg8fC+WwdIJww5GRMxySk1
- BsnA==
-X-Gm-Message-State: AOJu0Ywq+3STeglFEMMtL+oJJyH7bSspadr9mO7eGvUGGaLT93Dx5l9I
- zjGY1Lc1Bazw7Toqo42oLpw6WErIucC7O6cU5oeSh1zgtP8=
-X-Received: by 2002:a17:90a:e00b:b0:28d:e8:3852 with SMTP id
- u11-20020a17090ae00b00b0028d00e83852mr3340266pjy.68.1705393484811; Tue, 16
- Jan 2024 00:24:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <yezengruan@126.com>)
+ id 1rPdj0-0003Ek-MI; Tue, 16 Jan 2024 02:19:06 -0500
+Received: from m15.mail.126.com ([45.254.50.223])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <yezengruan@126.com>)
+ id 1rPdix-0001vl-S8; Tue, 16 Jan 2024 02:19:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+ s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+ Message-ID; bh=68K3OiPyi1wmxbXKVPK6Rq2PpKH3K91k1PymycU+GYw=; b=m
+ QhbGajgvTlFPi6EdNi5bfa9LHOKq0r9tnOu2dtoQYoUdSAoQdZ6npapXD8T+o49k
+ dxtQX529Dyi+f8C3DO7g7AQF6vgzXW4FRs6E/LssdJDOg1NeNBHV1MJIdg/Tcwe5
+ zKSobfyoMJYAFV3+lnUfv+N9GIZ8rmPAOfczyqa2qY=
+Received: from yezengruan$126.com ( [119.3.118.251] ) by
+ ajax-webmail-wmsvr-41-106 (Coremail) ; Tue, 16 Jan 2024 15:18:45 +0800
+ (CST)
+X-Originating-IP: [119.3.118.251]
+Date: Tue, 16 Jan 2024 15:18:45 +0800 (CST)
+From: =?UTF-8?B?5Y+25aKe6L2v?= <yezengruan@126.com>
+To: qemu-devel@nongnu.org, qemu-stable@nongnu.org, qemu-arm@nongnu.org
+Subject: =?UTF-8?Q?=E2=80=8B[Qemu-arm]_Windows_11_guest_Fast_startup_cannot_work?=
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
+ Copyright (c) 2002-2024 www.mailtech.cn 126com
+X-NTES-SC: AL_Qu2bB/+Ttk0p4yaYYekfm04Qj+4/UMq1ufsk1IZSPJtwjDvj4gkRdHJOIlrt1dC1BBuGoRWaWzVW5OljY6x0fLAXbfecxhfQF2ME9KrcBLJ7iA==
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_78125_1362291615.1705389525611"
 MIME-Version: 1.0
-From: sanjana gogte <sanj27272@gmail.com>
-Date: Tue, 16 Jan 2024 13:54:33 +0530
-Message-ID: <CA+ji3pHdO4kFfdxVKXYuJiymhHCtdN8vYuqv0gR_mvdAMGPzwQ@mail.gmail.com>
-Subject: Assistance Required for QEMU Hardfault Error with Cortex-M33 on
- MPS2AN505
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000dd5239060f0bdcdb"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=sanj27272@gmail.com; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_FONT_FACE_BAD=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Message-ID: <2b8a530a.4d83.18d11230a6c.Coremail.yezengruan@126.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: _____wD3fyLWLaZlIDcfAA--.35268W
+X-CM-SenderInfo: p1h2v0pjuxt0a6rslhhfrp/1tbi5gRngGVLYZCwhQABsu
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Received-SPF: pass client-ip=45.254.50.223; envelope-from=yezengruan@126.com;
+ helo=m15.mail.126.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ URI_TRY_3LD=1.999 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 16 Jan 2024 09:14:41 -0500
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,296 +101,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cng7vfzMs/tP
+X-TUID: PhEMdNFIfdGD
+
+------=_Part_78125_1362291615.1705389525611
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+SGksCgpJIHdhbnQgdG8gaW1wcm92ZSB0aGUgc3RhcnR1cCBzcGVlZCBvZiBXaW5kb3dzIFZNLiBP
+biB0aGUgeDg2IGFyY2hpdGVjdHVyZSwgUUVNVSdzIFdpbmRvd3MxMSBWTSBjYW4gZW5hYmxlIHRo
+ZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24sIGJ1dCBpdCBjYW5ub3Qgd29yayBvbiB0aGUgQVJNIGFy
+Y2hpdGVjdHVyZS4gSW4gYWRkaXRpb24sIFdpbmRvd3MgY2FuIGFsc28gZW5hYmxlIHRoZSBGYXN0
+IHN0YXJ0dXAgZnVuY3Rpb24gb24gdGhlIEFSTSBob3N0LiAKCklzIHRoZXJlIGFueXRoaW5nIG1p
+c3NpbmcgaW4gUUVNVSdzIEFSTSBhcmNoaXRlY3R1cmUgZm9yIFdpbmRvd3MgZ3Vlc3Q/CgpNeSBl
+bnZpcm9ubWVudGFsIGluZm9ybWF0aW9uOgpMaW51eCA1LjEwClFFTVUgNi4yLjAKR3Vlc3Q6IFdp
+bmRvd3MxMSBBUk0KCgpRRU1VIGNvbW1hbmQgbGluZToKcWVtdS1zeXN0ZW0tYWFyY2g2NCAtbm9k
+ZWZhdWx0cyAtbWFjaGluZSB2aXJ0LGtlcm5lbC1pcnFjaGlwPW9uLHZpcnR1YWxpemF0aW9uPW9m
+ZixnaWMtdmVyc2lvbj0zLGl0cz1vZmYgLWFjY2VsIGt2bSAtY3B1IGhvc3QgLW0gNjE0NCAtc21w
+IDYgLWJpb3MgL3Vzci9zaGFyZS9lZGsyL2FhcmNoNjQvUUVNVV9FRkktcGZsYXNoLnJhdyAtZHJp
+dmUgaWY9bm9uZSxpZD1zeXN0ZW0sZm9ybWF0PXFjb3cyLGZpbGU9L2RhdGEvaW1hZ2VzL3dpbjEx
+X2Rpc2sucWNvdzIgLWRldmljZSB2aXJ0aW8tYmxrLXBjaSxkcml2ZT1zeXN0ZW0gLWRldmljZSBu
+ZWMtdXNiLXhoY2ksbXNpeD1vZmYsbXNpPW9mZiAtZGV2aWNlIHVzYi1rYmQgLWRldmljZSB1c2It
+dGFibGV0IC1kZXZpY2UgcmFtZmIgLWRpc3BsYXkgZ3RrIC1uYW1lIFdpbmRvd3MgLXFtcCB1bml4
+Oi90bXAvcW1wLnNvY2tldCxzZXJ2ZXIsbm93YWl0IC1kIGFsbCAtRCAvdG1wL3FlbXUubG9nIC1t
+c2cgdGltZXN0YW1wPW9uIAoKClJlZmVyIHRvIHRoZSBGYXN0IHN0YXJ0dXAgbGluayBiZWxvdzoK
+aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3MtaGFyZHdhcmUvdGVzdC93
+ZWcvZGVsaXZlcmluZy1hLWdyZWF0LXN0YXJ0dXAtYW5kLXNodXRkb3duLWV4cGVyaWVuY2UKCgpU
+aGFuayB5b3UuClplbmdydWFuIFll
+------=_Part_78125_1362291615.1705389525611
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
+Zm9udC1mYW1pbHk6QXJpYWwiPjxwPkhpLDwvcD48cD5JIHdhbnQgdG8gaW1wcm92ZSB0aGUgc3Rh
+cnR1cCBzcGVlZCBvZiBXaW5kb3dzIFZNLiBPbiB0aGUgeDg2IGFyY2hpdGVjdHVyZSwgUUVNVSdz
+IFdpbmRvd3MxMSBWTSBjYW4gZW5hYmxlIHRoZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24sIGJ1dCBp
+dCBjYW5ub3Qgd29yayBvbiB0aGUgQVJNIGFyY2hpdGVjdHVyZS4gSW4gYWRkaXRpb24sIFdpbmRv
+d3MgY2FuIGFsc28gZW5hYmxlIHRoZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24gb24gdGhlIEFSTSBo
+b3N0LiZuYnNwOzwvcD48cD5JcyB0aGVyZSBhbnl0aGluZyBtaXNzaW5nIGluIFFFTVUncyBBUk0g
+YXJjaGl0ZWN0dXJlIGZvciBXaW5kb3dzIGd1ZXN0PzwvcD48ZGl2Pk15IGVudmlyb25tZW50YWwg
+aW5mb3JtYXRpb246PC9kaXY+PGRpdj5MaW51eCA1LjEwPC9kaXY+PGRpdj5RRU1VIDYuMi4wPC9k
+aXY+PGRpdj5HdWVzdDogV2luZG93czExIEFSTTwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+UUVN
+VSBjb21tYW5kIGxpbmU6PC9kaXY+PGRpdj5xZW11LXN5c3RlbS1hYXJjaDY0IC1ub2RlZmF1bHRz
+IC1tYWNoaW5lIHZpcnQsa2VybmVsLWlycWNoaXA9b24sdmlydHVhbGl6YXRpb249b2ZmLGdpYy12
+ZXJzaW9uPTMsaXRzPW9mZiAtYWNjZWwga3ZtIC1jcHUgaG9zdCAtbSA2MTQ0IC1zbXAgNiAtYmlv
+cyAvdXNyL3NoYXJlL2VkazIvYWFyY2g2NC9RRU1VX0VGSS1wZmxhc2gucmF3IC1kcml2ZSBpZj1u
+b25lLGlkPXN5c3RlbSxmb3JtYXQ9cWNvdzIsZmlsZT0vZGF0YS9pbWFnZXMvd2luMTFfZGlzay5x
+Y293MiAtZGV2aWNlIHZpcnRpby1ibGstcGNpLGRyaXZlPXN5c3RlbSAtZGV2aWNlIG5lYy11c2It
+eGhjaSxtc2l4PW9mZixtc2k9b2ZmIC1kZXZpY2UgdXNiLWtiZCAtZGV2aWNlIHVzYi10YWJsZXQg
+LWRldmljZSByYW1mYiAtZGlzcGxheSBndGsgLW5hbWUgV2luZG93cyAtcW1wIHVuaXg6L3RtcC9x
+bXAuc29ja2V0LHNlcnZlcixub3dhaXQgLWQgYWxsIC1EIC90bXAvcWVtdS5sb2cgLW1zZyB0aW1l
+c3RhbXA9b24mbmJzcDs8L2Rpdj48ZGl2Pjxicj48L2Rpdj48ZGl2PlJlZmVyIHRvIHRoZSBGYXN0
+IHN0YXJ0dXAgbGluayBiZWxvdzo8L2Rpdj48ZGl2PjxhIGhyZWY9Imh0dHBzOi8vbGVhcm4ubWlj
+cm9zb2Z0LmNvbS9lbi11cy93aW5kb3dzLWhhcmR3YXJlL3Rlc3Qvd2VnL2RlbGl2ZXJpbmctYS1n
+cmVhdC1zdGFydHVwLWFuZC1zaHV0ZG93bi1leHBlcmllbmNlIiBfc3JjPSJodHRwczovL2xlYXJu
+Lm1pY3Jvc29mdC5jb20vZW4tdXMvd2luZG93cy1oYXJkd2FyZS90ZXN0L3dlZy9kZWxpdmVyaW5n
+LWEtZ3JlYXQtc3RhcnR1cC1hbmQtc2h1dGRvd24tZXhwZXJpZW5jZSI+aHR0cHM6Ly9sZWFybi5t
+aWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3MtaGFyZHdhcmUvdGVzdC93ZWcvZGVsaXZlcmluZy1h
+LWdyZWF0LXN0YXJ0dXAtYW5kLXNodXRkb3duLWV4cGVyaWVuY2U8L2E+PC9kaXY+PGRpdj48YnI+
+PC9kaXY+PGRpdj5UaGFuayB5b3UuPC9kaXY+PGRpdj5aZW5ncnVhbiBZZTwvZGl2PjwvZGl2Pg==
+
+------=_Part_78125_1362291615.1705389525611--
 
---000000000000dd5239060f0bdcdb
-Content-Type: text/plain; charset="UTF-8"
-
-I hope this message finds you well. I am reaching out to seek your
-expertise regarding a persistent issue I have encountered while working
-with QEMU, specifically a hardfault error when emulating the MPS2AN505 with
-a Cortex-M33 core.
-
-I have been grappling with this issue for some time and am unsure of the
-next steps to take. Could you please advise on potential areas to
-investigate or adjustments that might resolve this error? I am particularly
-curious if the issue lies with the vector table placement or the
-configuration in my linker script.
-
-The error I am facing is as follows:
-*qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)*
-
-This occurs when I attempt to run my kernel.elf file using the following
-QEMU command:
-
-
-
-
-*qemu-system-arm -machine mps2-an505 -cpu cortex-m33 \                -m
-16M \                -nographic -serial mon:stdio \                -device
-loader,file=kernel.elf*
-
-For your reference, here are the relevant details of my setup:
-
-Startup File (Boot.s)
-*.**thumb*
-*.section .isr_vector*
-*    .long    __StackTop         /* Initial Top of Stack */*
-*    .long    Reset_Handler      /* Reset Handler */*
-
-*.text*
-*.global Reset_Handler*
-*Reset_Handler:  *
-*    ldr     R0, = main*
-*bx      R0*
-
-Linker Script (Kernel.ld)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*MEMORY{   NS_CODE (rx)     : ORIGIN = 0x00000000, LENGTH = 512K
- S_CODE_BOOT (rx) : ORIGIN = 0x10000000, LENGTH = 512k   RAM   (rwx) :
-ORIGIN = 0x20000000, LENGTH = 512k}/* Entry Point
-*/ENTRY(Reset_Handler)SECTIONS{    .text :    {
-KEEP(*(.isr_vector))        *(.text)        *(.data)        *(.bss)    } >
-S_CODE_BOOT    /* Set stack top to end of S_CODE_BOOT. */    __StackTop =
-ORIGIN(S_CODE_BOOT) + LENGTH(S_CODE_BOOT);}*
-
-Toolchain Used:
-*arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi*
-
-Compilation Commands to generate my elf file:
-
-
-
-
-*arm-none-eabi-gcc -mcpu=cortex-m33 -g -c boot.s -o boot.oarm-none-eabi-ld
-boot.o main.o -T kernel.ld -o kernel.elfarm-none-eabi-objdump -d kernel.elf
-> kernel.listarm-none-eabi-objdump -t kernel.elf | sed '1,/SYMBOL TABLE/d;
-s/ .* / /; /^$/d' > kernel.symarm-none-eabi-readelf -A kernel.elf*
-
-Main Function (main.c):
-
-
-
-*void main(void){    while (1);}*
-
-Output of readelf -wl Command:
-
-
-
-
-
-
-
-
-
-
-
-*Elf file type is EXEC (Executable file)Entry point 0x10000008There is 1
-program header, starting at offset 52Program Headers:  Type
-Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align  LOAD
-0x001000 0x10000000 0x10000000 0x00016 0x00016 R E 0x1000 Section to
-Segment mapping:  Segment Sections...   00     .text*
-
-Guest Errors Observed:
-I
-*nvalid read at addr 0x10000000, size 4, region '(null)', reason:
-rejectedInvalid read at addr 0x10000004, size 4, region '(null)', reason:
-rejected*
-
-Your guidance on this matter would be greatly appreciated. I am eager to
-understand and resolve this issue, and I believe your expertise could be
-invaluable in this context.
-
-Thank you for your time and consideration. I look forward to any insights
-or suggestions you might have.
-
-Best regards,
-Sanjana Gogte
-sanj27272@gmail.com
-
---000000000000dd5239060f0bdcdb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p style=3D"border:0px solid rgb(217,217,227);box-sizing:b=
-order-box;margin:1.25em 0px;font-family:S=C3=B6hne,ui-sans-serif,system-ui,=
--apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&=
-quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji&q=
-uot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Colo=
-r Emoji&quot;"><font color=3D"#000000">I hope this message finds you well. =
-I am reaching out to seek your expertise regarding a persistent issue I hav=
-e encountered while working with QEMU, specifically a hardfault error when =
-emulating the MPS2AN505 with a Cortex-M33 core.=C2=A0</font></p><p style=3D=
-"border:0px solid rgb(217,217,227);box-sizing:border-box;margin:1.25em 0px;=
-font-family:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;Segoe UI=
-&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&quot;Helve=
-tica Neue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&qu=
-ot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;"><span style=
-=3D"font-family:Arial,Helvetica,sans-serif">I have been grappling with this=
- issue for some time and am unsure of the next steps to take. Could you ple=
-ase advise on potential areas to investigate or adjustments that might reso=
-lve this error? I am particularly curious if the issue lies with the vector=
- table placement or the configuration in my linker script.</span><font colo=
-r=3D"#000000"><br></font></p><p style=3D"border:0px solid rgb(217,217,227);=
-box-sizing:border-box;margin:1.25em 0px;font-family:S=C3=B6hne,ui-sans-seri=
-f,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quo=
-t;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple C=
-olor Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&qu=
-ot;Noto Color Emoji&quot;">The error I am facing is as follows:<br><b>qemu:=
- fatal: Lockup: can&#39;t escalate 3 to HardFault (current priority -1)</b>=
-</p><p style=3D"border:0px solid rgb(217,217,227);box-sizing:border-box;mar=
-gin:1.25em 0px;font-family:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system=
-,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-se=
-rif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Se=
-goe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;=
-">This occurs when I attempt to run my kernel.elf file using the following =
-QEMU command:</p><p style=3D"border:0px solid rgb(217,217,227);box-sizing:b=
-order-box;margin:1.25em 0px;font-family:S=C3=B6hne,ui-sans-serif,system-ui,=
--apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&=
-quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji&q=
-uot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Colo=
-r Emoji&quot;"><b style=3D"background-color:rgb(204,204,204)">qemu-system-a=
-rm -machine mps2-an505 -cpu cortex-m33 \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 -m 16M \<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 -nographic -serial mon:stdio \<br>=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -device loader,file=3Dkernel.elf</b><br>=
-</p><p style=3D"border:0px solid rgb(217,217,227);box-sizing:border-box;mar=
-gin:1.25em 0px;font-family:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system=
-,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-se=
-rif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Se=
-goe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;=
-">For your reference, here are the relevant details of my setup:<br></p><p =
-style=3D"border:0px solid rgb(217,217,227);box-sizing:border-box;margin:1.2=
-5em 0px;font-family:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;=
-Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&qu=
-ot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI =
-Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;">Start=
-up File (Boot.s)</p><b style=3D"font-family:S=C3=B6hne,ui-sans-serif,system=
--ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto S=
-ans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emo=
-ji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto =
-Color Emoji&quot;">.</b><b style=3D"font-family:S=C3=B6hne,ui-sans-serif,sy=
-stem-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;No=
-to Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color=
- Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;N=
-oto Color Emoji&quot;"><span style=3D"background-color:rgb(204,204,204)">th=
-umb</span></b><br><b style=3D"font-family:S=C3=B6hne,ui-sans-serif,system-u=
-i,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto San=
-s&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Color Emoji=
-&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Co=
-lor Emoji&quot;"><span style=3D"background-color:rgb(204,204,204)">.section=
- .isr_vector</span></b><br><b style=3D"font-family:S=C3=B6hne,ui-sans-serif=
-,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot=
-;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Co=
-lor Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quo=
-t;Noto Color Emoji&quot;"><span style=3D"background-color:rgb(204,204,204)"=
->=C2=A0 =C2=A0 .long =C2=A0 =C2=A0__StackTop =C2=A0 =C2=A0 =C2=A0 =C2=A0 /*=
- Initial Top of Stack */</span></b><br><b style=3D"font-family:S=C3=B6hne,u=
-i-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Can=
-tarell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&q=
-uot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbo=
-l&quot;,&quot;Noto Color Emoji&quot;"><span style=3D"background-color:rgb(2=
-04,204,204)">=C2=A0 =C2=A0 .long =C2=A0 =C2=A0Reset_Handler =C2=A0 =C2=A0 =
-=C2=A0/* Reset Handler */</span></b><br><font face=3D"S=C3=B6hne, ui-sans-s=
-erif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto S=
-ans, sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, =
-Segoe UI Symbol, Noto Color Emoji"><b><br></b></font><b style=3D"font-famil=
-y:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Rob=
-oto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&=
-quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;=
-Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;"><span style=3D"backgrou=
-nd-color:rgb(204,204,204)">.text</span></b><br><b style=3D"font-family:S=C3=
-=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ub=
-untu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,=
-Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe =
-UI Symbol&quot;,&quot;Noto Color Emoji&quot;"><span style=3D"background-col=
-or:rgb(204,204,204)">.global Reset_Handler</span></b><br><b style=3D"font-f=
-amily:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;=
-,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica N=
-eue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&q=
-uot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;"><span style=3D"back=
-ground-color:rgb(204,204,204)">Reset_Handler: =C2=A0</span></b><br><b style=
-=3D"font-family:S=C3=B6hne,ui-sans-serif,system-ui,-apple-system,&quot;Sego=
-e UI&quot;,Roboto,Ubuntu,Cantarell,&quot;Noto Sans&quot;,sans-serif,&quot;H=
-elvetica Neue&quot;,Arial,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoj=
-i&quot;,&quot;Segoe UI Symbol&quot;,&quot;Noto Color Emoji&quot;"><span sty=
-le=3D"background-color:rgb(204,204,204)">=C2=A0 =C2=A0 ldr =C2=A0 =C2=A0 R0=
-, =3D main</span></b><div><b style=3D"font-family:S=C3=B6hne,ui-sans-serif,=
-system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantarell,&quot;=
-Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot;Apple Col=
-or Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&quot;,&quot=
-;Noto Color Emoji&quot;"><span style=3D"background-color:rgb(204,204,204)">=
-bx =C2=A0 =C2=A0 =C2=A0R0</span></b><b style=3D"font-family:S=C3=B6hne,ui-s=
-ans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cantar=
-ell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&quot=
-;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol&q=
-uot;,&quot;Noto Color Emoji&quot;"><span style=3D"background-color:rgb(204,=
-204,204)"><br></span></b><br>Linker Script (Kernel.ld)</div><div><br></div>=
-<div><b style=3D"background-color:rgb(204,204,204)">MEMORY<br>{<br>=C2=A0 =
-=C2=A0NS_CODE (rx) =C2=A0 =C2=A0 : ORIGIN =3D 0x00000000, LENGTH =3D 512K<b=
-r>=C2=A0 =C2=A0S_CODE_BOOT (rx) : ORIGIN =3D 0x10000000, LENGTH =3D 512k<br=
->=C2=A0 =C2=A0RAM =C2=A0 (rwx) : ORIGIN =3D 0x20000000, LENGTH =3D 512k<br>=
-}<br><br>/* Entry Point */<br>ENTRY(Reset_Handler)<br><br>SECTIONS<br>{<br>=
-=C2=A0 =C2=A0 .text :<br>=C2=A0 =C2=A0 {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 KEE=
-P(*(.isr_vector))<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 *(.text)<br>=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 *(.data)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 *(.bss)<br>=C2=A0 =C2=
-=A0 } &gt; S_CODE_BOOT<br>=C2=A0 =C2=A0 /* Set stack top to end of S_CODE_B=
-OOT. */<br>=C2=A0 =C2=A0 __StackTop =3D ORIGIN(S_CODE_BOOT) + LENGTH(S_CODE=
-_BOOT);<br>}</b></div><div><b><br></b></div><div>Toolchain Used:</div><div>=
-<b style=3D"background-color:rgb(204,204,204)">arm-gnu-toolchain-13.2.Rel1-=
-x86_64-arm-none-eabi</b></div><div><b style=3D"background-color:rgb(204,204=
-,204)"><br></b></div><div>Compilation Commands to generate my elf file:<br>=
-</div><div><b style=3D"background-color:rgb(204,204,204)">arm-none-eabi-gcc=
- -mcpu=3Dcortex-m33 -g -c boot.s -o boot.o<br>arm-none-eabi-ld boot.o main.=
-o -T kernel.ld -o kernel.elf<br>arm-none-eabi-objdump -d kernel.elf &gt; ke=
-rnel.list<br>arm-none-eabi-objdump -t kernel.elf | sed &#39;1,/SYMBOL TABLE=
-/d; s/ .* / /; /^$/d&#39; &gt; kernel.sym<br>arm-none-eabi-readelf -A kerne=
-l.elf</b><br></div><div><b style=3D"background-color:rgb(204,204,204)"><br>=
-</b></div><div>Main Function (main.c):<br></div><div><b style=3D"background=
--color:rgb(204,204,204)">void main(void)<br>{<br>=C2=A0 =C2=A0 while (1);<b=
-r>}</b><br></div><div><b><br></b></div><div>Output of readelf -wl Command:<=
-br></div><div><br></div><div><b style=3D"background-color:rgb(204,204,204)"=
->Elf file type is EXEC (Executable file)<br>Entry point 0x10000008<br>There=
- is 1 program header, starting at offset 52<br><br>Program Headers:<br>=C2=
-=A0 Type =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Offset =C2=A0 VirtAddr =C2=A0 P=
-hysAddr =C2=A0 FileSiz MemSiz =C2=A0Flg Align<br>=C2=A0 LOAD =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 0x001000 0x10000000 0x10000000 0x00016 0x00016 R E 0x1=
-000<br><br>=C2=A0Section to Segment mapping:<br>=C2=A0 Segment Sections...<=
-br>=C2=A0 =C2=A000 =C2=A0 =C2=A0 .text</b><br></div><div><b style=3D"backgr=
-ound-color:rgb(204,204,204)"><br></b></div><div>Guest Errors Observed:<br><=
-/div><div><span style=3D"background-color:rgb(204,204,204)">I<b>nvalid read=
- at addr 0x10000000, size 4, region &#39;(null)&#39;, reason: rejected<br>I=
-nvalid read at addr 0x10000004, size 4, region &#39;(null)&#39;, reason: re=
-jected</b><br></span></div><div><br></div><div>Your guidance on this matter=
- would be greatly appreciated. I am eager to understand and resolve this is=
-sue, and I believe your expertise could be invaluable in this context.<br><=
-br>Thank you for your time and consideration. I look forward to any insight=
-s or suggestions you might have.<br><br>Best regards,<br>Sanjana Gogte<br><=
-a href=3D"mailto:sanj27272@gmail.com" target=3D"_blank">sanj27272@gmail.com=
-</a><span style=3D"background-color:rgb(204,204,204)"><b><br></b></span></d=
-iv><div><b style=3D"background-color:rgb(204,204,204)"><br></b></div><div><=
-b style=3D"background-color:rgb(204,204,204)"><br></b></div><br class=3D"gm=
-ail-Apple-interchange-newline"></div>
-
---000000000000dd5239060f0bdcdb--

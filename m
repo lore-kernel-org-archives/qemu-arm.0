@@ -1,88 +1,109 @@
-Received: by 2002:a05:7022:97:b0:73:b07a:d1c0 with SMTP id 23csp156411dlx;
-        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHL7eQTIkqKD9A9AmXAN1ILNj5vxGdnGJuXL3aUnjc/YfBMEfGc4vYH8/GOgBavKqmRuszZ
-X-Received: by 2002:ac8:5f0b:0:b0:429:e94e:5a94 with SMTP id x11-20020ac85f0b000000b00429e94e5a94mr4801949qta.36.1705410607144;
-        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705410607; cv=none;
+Received: by 2002:a05:7022:97:b0:73:b07a:d1c0 with SMTP id 23csp162823dlx;
+        Tue, 16 Jan 2024 05:21:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGwfd5TARdTU6UqjkyDSPwgINwRkEp0oz7YqUh1K77fRhb2vlAbPcmANKYGWKmGF6dvidNs
+X-Received: by 2002:a05:6214:e4e:b0:680:a4a:db94 with SMTP id o14-20020a0562140e4e00b006800a4adb94mr9395828qvc.77.1705411282701;
+        Tue, 16 Jan 2024 05:21:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705411282; cv=none;
         d=google.com; s=arc-20160816;
-        b=wmWeyL6jrscyK2Wg9pCfX4HgszI2bB3J9FbQGxHU3EC2lc8BycgobZxEHNHM3FsRuA
-         XleP5CGtDT54m0SavUsMS82aAii1v3KrX7wK3ascpWmnyZ7W7oJ/wolYQp15gEasUweH
-         On12KkmbFjIu+0P6DQr5yfvo/qf5cuFZedVwx3HlIN3256wGJaY0aIUFwY6HTcC+7ut2
-         UhctsU/PoXhtjJvSURbcY5eGkWrL5J4UUMebLnSaaOmeC+eJgMrrHfrU+fMix3ikW7bX
-         +rdRA3J+T1k1+c2FL/TEalM/RJ8n3BidtqEERJXFnH1TaQXlry6WuOlUGhz38AmRweih
-         bMvw==
+        b=QH+6yjGJDvE1pvlw2986mplzXD+FEz/MZ59JALxFWE4ER+ffEzgVfGZ9+Aocc9bMWL
+         VIHgfJICIjHErUJJard4oU1JKV0giQSiMjO0jRgro9Sj9VuXKNquJ7aZdLc7wJE+w+x4
+         8W4tAUxdVv9hwHs1LD7I6p0qA9cAITx3P10uXkW07gaBLHAxVvZvERIW0j2ZI/7GihBz
+         ptdtMyhTNcl9qa8tbNh7mkaUdhs3j6H6FPmRdQ+WJv5r1j29/hoTjSLMBTnUJuk9upur
+         XCh0gGATL3Cb9x4Uji+ACU3XIcfxB4Mcr1q0XfciXRZsOHLH4WSaZ6gF693vfinzvrhA
+         AndA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=PatB4vit1GFFc1ZInQKMiuGS4kU6QyLc2VhL6SqXi5c=;
-        fh=CPqfQhXyZp7q048m/2YkQDugvmq3ADVWuTpqTS8jIPQ=;
-        b=n7ERWx5BHgvDk6wwGdMrS6FF5pCLEvPclmCzH+QHxdoKrohAaePlmCu5NmtaTdYq/i
-         wbHtvPau8mjULXoiltmu/gQzHJtygw7kS50AUPni8/INhSzCJS0bmXyaKjPdtyg9Oesn
-         AOJ93HFM8amQDTt1gVGBubOX0w1GR60bAtDrWYlkfHOTJWUnB4iIE7bg+8qSob9UTg7o
-         wWbxBnyKWD1mK3nYkk3t9uJoZTCALVWjSFxcWcXcU2JzVOwnxrhLWnaVA7s6PG0FDTGG
-         JsLKFJNyOAv3c0BxBln+q0Rhvdd33lAjyAEEB4mn0ZQJNdwYIKNkYmEhxwAyQXzg/mRX
-         ZgYg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tkwoDVlLqRXVUSTuDgmc6wD0FLwW/mNGEfVVUweFZtI=;
+        fh=G4ej1JnN8P6fgAZk0wPFnEOwbCZSOB2m6YxI6BipXl8=;
+        b=t+TXSla81K55JWDCFG7xOuKySXam2dNlzT8BgK7ueiJvdIKSCIdOtiW+FNNhZfQtDA
+         U4jpDnbXECMYYpqwzmLdEL8F4MxX9rhPGT/OrBos/afesCE0TfgFnka+4mS4O0FBZgVh
+         /yQBv1w2txyiQEaRy+I6wW5Y5b61X8rlNcYA5mnCOHiYnAOXIUpxepAgypJGk83SXpYd
+         +0KZlZ04P9gZmCiQnv+8AxmYOzGi5nHiCBXJLK08vtj5zSVyc77F5Wy9ZIMoU2EWPXrZ
+         nHlkDk8f1TxbIik9+0dRkF9KInL28MfHFG6SFtIuRMFSAoergq2Hw5C8NdwPkXLhlbPq
+         RK7g==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FedO34IE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020ac85f11000000b004298cd61ef3si9561730qta.163.2024.01.16.05.10.07
+        by mx.google.com with ESMTPS id j6-20020a0cf506000000b006816cfaa6ebsi1126276qvm.371.2024.01.16.05.21.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
+        Tue, 16 Jan 2024 05:21:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FedO34IE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPjCV-0006f9-Nr; Tue, 16 Jan 2024 08:09:56 -0500
+	id 1rPjNG-0000oo-IR; Tue, 16 Jan 2024 08:21:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPjCU-0006bK-H4; Tue, 16 Jan 2024 08:09:54 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPjCR-00089R-IY; Tue, 16 Jan 2024 08:09:54 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDq6s41zWz6H6tG;
- Tue, 16 Jan 2024 21:07:33 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 5CE03140A36;
- Tue, 16 Jan 2024 21:09:42 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
- 2024 13:09:41 +0000
-Date: Tue, 16 Jan 2024 13:09:40 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
-Message-ID: <20240116130940.00002523@Huawei.com>
-In-Reply-To: <20231218113305.2511480-28-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPjN5-0000o7-85
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 08:20:51 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPjN1-0002V6-47
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 08:20:50 -0500
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-559533e2503so2264948a12.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 05:20:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705411245; x=1706016045; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tkwoDVlLqRXVUSTuDgmc6wD0FLwW/mNGEfVVUweFZtI=;
+ b=FedO34IENOC7TzPRlodF8oy79+E2eCVi35IK4JQdSOoQDBpgVcJcEzmvp4lIY19vz0
+ oFoIMx8+tl0XIZVxJ7S4FgeFl71gJpXXykp01fdwyczXApuxoXfmtrSw5k1NznKp8uMU
+ 75EUdaA1JQrJGwZ+F+ODr7oWb7r/4XQz6zVsOYfIbCUn5J/ww/6dUqIxF+mY+930LYyE
+ ehgvsofUf7TZQhmS1pGaF49SYqY3Uswspm7S36+ueG2ibS4yuUKHAxUbLv91HWUNX96d
+ hUp7EC59LigQHz9ssdE5X+0KualjgmT1OdcGiB5hLOxtwYbIKbchsWnMTtbJ8G05qrHV
+ ExoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705411245; x=1706016045;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tkwoDVlLqRXVUSTuDgmc6wD0FLwW/mNGEfVVUweFZtI=;
+ b=hAcsDz/w/hvlFxnc2PGZz+Z9iY4jheAe/NjRnKLEnl7278gr2zOQ/dWR1W7rmUTbRa
+ JMemmG26aypc/7H9mSS3Rc1BAi8Shy1k8nUDsqhGG9k1mpz1jlMXpN5YUQBXzaEmN+pi
+ E+ywfp1GERDxaeEptnB5uIooaE8z3DXl03Oy29RTLxY0pIigf2Xdoad0HFMkRc8Ll92G
+ ryPii4IJ2xxCUY6VWkxACwPadxcYqX96wTKZZyXiS/riLTyUTvM/2ii3pbvrVZwdZz/s
+ 4eaqe2g7GDkmNIPUG3JvOdrAkL6Wm9/Sc5X2md1dpN+k0sFTw7KeZsCb/YUDXS8lI6Tt
+ 7lNw==
+X-Gm-Message-State: AOJu0Yy5/u+k/jPraTG4RA7h4IJRlsLxFWSMvkAtyWYI7oJ6jm1685dI
+ rO2eCF2uWxZ4gX/R/D8NbvsH7DJuu5Mki5edcdMftyEa9OhsTw==
+X-Received: by 2002:a50:fa94:0:b0:54c:60f0:7511 with SMTP id
+ w20-20020a50fa94000000b0054c60f07511mr3263070edr.35.1705411244810; Tue, 16
+ Jan 2024 05:20:44 -0800 (PST)
+MIME-Version: 1.0
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
  <20231218113305.2511480-28-peter.maydell@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20240116130940.00002523@Huawei.com>
+In-Reply-To: <20240116130940.00002523@Huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jan 2024 13:20:33 +0000
+Message-ID: <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
+Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,230 +116,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2FeF0kl3x4Jw
+X-TUID: MLNia8EvF2ZW
 
-On Mon, 18 Dec 2023 11:32:57 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 16 Jan 2024 at 13:09, Jonathan Cameron
+<Jonathan.Cameron@huawei.com> wrote:
+>
+> On Mon, 18 Dec 2023 11:32:57 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> > If FEAT_NV2 redirects a system register access to a memory offset
+> > from VNCR_EL2, that access might fault.  In this case we need to
+> > report the correct syndrome information:
+> >  * Data Abort, from same-EL
+> >  * no ISS information
+> >  * the VNCR bit (bit 13) is set
+> >
+> > and the exception must be taken to EL2.
+> >
+> > Save an appropriate syndrome template when generating code; we can
+> > then use that to:
+> >  * select the right target EL
+> >  * reconstitute a correct final syndrome for the data abort
+> >  * report the right syndrome if we take a FEAT_RME granule protection
+> >    fault on the VNCR-based write
+> >
+> > Note that because VNCR is bit 13, we must start keeping bit 13 in
+> > template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Hi Peter,
+>
+> I'm getting an unhelpful crash on calling init in a guest
+> running on top of an a76 emulated host with virtualization turned on.
+>
+> Run /sbin/init as init process
+> Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007
+> CPU: 1 PID: 1 Comm: init Not tainted 6.7.0+ #1119
+> Hardware name: linux,dummy-virt (DT)
+> Call trace:
+>  dump_backtrace+0xa0/0x128
+>  show_stack+0x20/0x38
+>  dump_stack_lvl+0x48/0x60
+>  dump_stack+0x18/0x28
+>  panic+0x380/0x3c0
+>  do_exit+0x89c/0x9a0
+>  do_group_exit+0x3c/0xa0
+>  get_signal+0x968/0x970
+>  do_notify_resume+0x21c/0x1460
+>  el0_ia+0xa0/0xb0
+>  el0t_64_sync_handler+0xd0/0x130
+>  el0t_64_sync+0x190/0x198
+> SMP: stopping secondary CPUs
+> Kernel Offset: 0x2a8c93a00000 from 0xffff800080000000
+> PHYS_OFFSET: 0xffff82f980000000
+> CPU features: 0x0,00000001,7002014a,2101720b
+> Memory Limit: none
+> ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007 ]---
+>
+> Upstream kernel as of yesterday.  Nothing particular 'exciting' in the
+> configurations. Not attempting to use Nested virt.
+> -M virt,gic-version=3,virtualization=true
+> -cpu cortex-a76 (happens with max as well but switched to a76 for testing
+> to reduce possible sources of problems).
+>
+> Doesn't happen if single cpu in the guest, or if using gic v2 in both.
+>
+> Bisection points at this patch - so far no idea why but I've only
+> just started digging into this.
 
-> If FEAT_NV2 redirects a system register access to a memory offset
-> from VNCR_EL2, that access might fault.  In this case we need to
-> report the correct syndrome information:
->  * Data Abort, from same-EL
->  * no ISS information
->  * the VNCR bit (bit 13) is set
-> 
-> and the exception must be taken to EL2.
-> 
-> Save an appropriate syndrome template when generating code; we can
-> then use that to:
->  * select the right target EL
->  * reconstitute a correct final syndrome for the data abort
->  * report the right syndrome if we take a FEAT_RME granule protection
->    fault on the VNCR-based write
-> 
-> Note that because VNCR is bit 13, we must start keeping bit 13 in
-> template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Bisecting to this patch is a bit weird because at this point
+in the series emulation of FEAT_NV2 should be disabled and
+the code being added should never be used. You could put
+an assert(0) into the code in translate-a64.c before the
+call to syn_data_abort_vncr() and in arm_deliver_fault()
+assert(!is_vncr) to confirm that we're not somehow getting
+into this code for some non-FEAT_NV2 situation, I guess.
 
-Hi Peter,
-
-I'm getting an unhelpful crash on calling init in a guest
-running on top of an a76 emulated host with virtualization turned on.
-
-Run /sbin/init as init process
-Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007
-CPU: 1 PID: 1 Comm: init Not tainted 6.7.0+ #1119
-Hardware name: linux,dummy-virt (DT)
-Call trace:
- dump_backtrace+0xa0/0x128
- show_stack+0x20/0x38
- dump_stack_lvl+0x48/0x60
- dump_stack+0x18/0x28
- panic+0x380/0x3c0
- do_exit+0x89c/0x9a0
- do_group_exit+0x3c/0xa0
- get_signal+0x968/0x970
- do_notify_resume+0x21c/0x1460
- el0_ia+0xa0/0xb0
- el0t_64_sync_handler+0xd0/0x130
- el0t_64_sync+0x190/0x198
-SMP: stopping secondary CPUs
-Kernel Offset: 0x2a8c93a00000 from 0xffff800080000000
-PHYS_OFFSET: 0xffff82f980000000
-CPU features: 0x0,00000001,7002014a,2101720b
-Memory Limit: none
----[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007 ]---
-
-Upstream kernel as of yesterday.  Nothing particular 'exciting' in the
-configurations. Not attempting to use Nested virt.
--M virt,gic-version=3,virtualization=true
--cpu cortex-a76 (happens with max as well but switched to a76 for testing
-to reduce possible sources of problems).
-
-Doesn't happen if single cpu in the guest, or if using gic v2 in both.
-
-Bisection points at this patch - so far no idea why but I've only
-just started digging into this.
-Having one of those weeks where I'm juggling several issues so
-might not make progress on this for a while.
-
-The VMM in the guest is also recent QEMU (yesterday's upstream I think)
-so I suppose this might just be exposing a problem that will bisect
-to a different patch in there.
-
-Jonathan
-
-> ---
->  target/arm/cpu.h               |  4 ++--
->  target/arm/syndrome.h          | 20 ++++++++++++++++----
->  target/arm/tcg/tlb_helper.c    | 27 +++++++++++++++++++++++++--
->  target/arm/tcg/translate-a64.c |  4 ++++
->  4 files changed, 47 insertions(+), 8 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index bc4fa95ea35..da640949518 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -120,12 +120,12 @@ enum {
->  #define TARGET_INSN_START_EXTRA_WORDS 2
->  
->  /* The 2nd extra word holding syndrome info for data aborts does not use
-> - * the upper 6 bits nor the lower 14 bits. We mask and shift it down to
-> + * the upper 6 bits nor the lower 13 bits. We mask and shift it down to
->   * help the sleb128 encoder do a better job.
->   * When restoring the CPU state, we shift it back up.
->   */
->  #define ARM_INSN_START_WORD2_MASK ((1 << 26) - 1)
-> -#define ARM_INSN_START_WORD2_SHIFT 14
-> +#define ARM_INSN_START_WORD2_SHIFT 13
->  
->  /* We currently assume float and double are IEEE single and double
->     precision respectively.
-> diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-> index 95454b5b3bb..1a49767479f 100644
-> --- a/target/arm/syndrome.h
-> +++ b/target/arm/syndrome.h
-> @@ -86,6 +86,9 @@ typedef enum {
->  #define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
->  #define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
->  
-> +/* In the Data Abort syndrome */
-> +#define ARM_EL_VNCR (1 << 13)
-> +
->  static inline uint32_t syn_get_ec(uint32_t syn)
->  {
->      return syn >> ARM_EL_EC_SHIFT;
-> @@ -256,13 +259,12 @@ static inline uint32_t syn_bxjtrap(int cv, int cond, int rm)
->          (cv << 24) | (cond << 20) | rm;
->  }
->  
-> -static inline uint32_t syn_gpc(int s2ptw, int ind, int gpcsc,
-> +static inline uint32_t syn_gpc(int s2ptw, int ind, int gpcsc, int vncr,
->                                 int cm, int s1ptw, int wnr, int fsc)
->  {
-> -    /* TODO: FEAT_NV2 adds VNCR */
->      return (EC_GPC << ARM_EL_EC_SHIFT) | ARM_EL_IL | (s2ptw << 21)
-> -            | (ind << 20) | (gpcsc << 14) | (cm << 8) | (s1ptw << 7)
-> -            | (wnr << 6) | fsc;
-> +        | (ind << 20) | (gpcsc << 14) | (vncr << 13) | (cm << 8)
-> +        | (s1ptw << 7) | (wnr << 6) | fsc;
->  }
->  
->  static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
-> @@ -295,6 +297,16 @@ static inline uint32_t syn_data_abort_with_iss(int same_el,
->             | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
->  }
->  
-> +/*
-> + * Faults due to FEAT_NV2 VNCR_EL2-based accesses report as same-EL
-> + * Data Aborts with the VNCR bit set.
-> + */
-> +static inline uint32_t syn_data_abort_vncr(int ea, int wnr, int fsc)
-> +{
-> +    return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (1 << ARM_EL_EC_SHIFT)
-> +        | ARM_EL_IL | ARM_EL_VNCR | (wnr << 6) | fsc;
-> +}
-> +
->  static inline uint32_t syn_swstep(int same_el, int isv, int ex)
->  {
->      return (EC_SOFTWARESTEP << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
-> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-> index 4fdd85359e1..dd5de74ffb7 100644
-> --- a/target/arm/tcg/tlb_helper.c
-> +++ b/target/arm/tcg/tlb_helper.c
-> @@ -50,7 +50,15 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
->       * ST64BV, or ST64BV0 insns report syndrome info even for stage-1
->       * faults and regardless of the target EL.
->       */
-> -    if (!(template_syn & ARM_EL_ISV) || target_el != 2
-> +    if (template_syn & ARM_EL_VNCR) {
-> +        /*
-> +         * FEAT_NV2 faults on accesses via VNCR_EL2 are a special case:
-> +         * they are always reported as "same EL", even though we are going
-> +         * from EL1 to EL2.
-> +         */
-> +        assert(!fi->stage2);
-> +        syn = syn_data_abort_vncr(fi->ea, is_write, fsc);
-> +    } else if (!(template_syn & ARM_EL_ISV) || target_el != 2
->          || fi->s1ptw || !fi->stage2) {
->          syn = syn_data_abort_no_iss(same_el, 0,
->                                      fi->ea, 0, fi->s1ptw, is_write, fsc);
-> @@ -169,6 +177,20 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
->      int current_el = arm_current_el(env);
->      bool same_el;
->      uint32_t syn, exc, fsr, fsc;
-> +    /*
-> +     * We know this must be a data or insn abort, and that
-> +     * env->exception.syndrome contains the template syndrome set
-> +     * up at translate time. So we can check only the VNCR bit
-> +     * (and indeed syndrome does not have the EC field in it,
-> +     * because we masked that out in disas_set_insn_syndrome())
-> +     */
-> +    bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
-> +        (env->exception.syndrome & ARM_EL_VNCR);
-> +
-> +    if (is_vncr) {
-> +        /* FEAT_NV2 faults on accesses via VNCR_EL2 go to EL2 */
-> +        target_el = 2;
-> +    }
->  
->      if (report_as_gpc_exception(cpu, current_el, fi)) {
->          target_el = 3;
-> @@ -177,7 +199,8 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
->  
->          syn = syn_gpc(fi->stage2 && fi->type == ARMFault_GPCFOnWalk,
->                        access_type == MMU_INST_FETCH,
-> -                      encode_gpcsc(fi), 0, fi->s1ptw,
-> +                      encode_gpcsc(fi), is_vncr,
-> +                      0, fi->s1ptw,
->                        access_type == MMU_DATA_STORE, fsc);
->  
->          env->cp15.mfar_el3 = fi->paddr;
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index 128bff4b445..8f905ed9645 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -2293,6 +2293,7 @@ static void handle_sys(DisasContext *s, bool isread,
->          MemOp mop = MO_64 | MO_ALIGN | MO_ATOM_IFALIGN;
->          ARMMMUIdx armmemidx = s->nv2_mem_e20 ? ARMMMUIdx_E20_2 : ARMMMUIdx_E2;
->          int memidx = arm_to_core_mmu_idx(armmemidx);
-> +        uint32_t syn;
->  
->          if (s->nv2_mem_be) {
->              mop |= MO_BE;
-> @@ -2302,6 +2303,9 @@ static void handle_sys(DisasContext *s, bool isread,
->          tcg_gen_addi_i64(ptr, ptr,
->                           (ri->nv2_redirect_offset & ~NV2_REDIR_FLAG_MASK));
->          tcg_rt = cpu_reg(s, rt);
-> +
-> +        syn = syn_data_abort_vncr(0, !isread, 0);
-> +        disas_set_insn_syndrome(s, syn);
->          if (isread) {
->              tcg_gen_qemu_ld_i64(tcg_rt, ptr, memidx, mop);
->          } else {
-
+thanks
+-- PMM

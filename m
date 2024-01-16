@@ -1,87 +1,142 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1022128ejf;
-        Tue, 16 Jan 2024 09:29:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGT54kd9o6mh9T3DH/avJ9PAIk/EpX9dSn5KVe9NXQd2RdWSsFf7mjhNIEo3UqMudcucItN
-X-Received: by 2002:a05:620a:122c:b0:783:45bd:4d28 with SMTP id v12-20020a05620a122c00b0078345bd4d28mr7416450qkj.9.1705426186267;
-        Tue, 16 Jan 2024 09:29:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705426186; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1090189ejf;
+        Tue, 16 Jan 2024 11:32:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IECu75aFo6l+rnLFRdtn7/aMULzLTJAm9GIH5YlLSSzdP4hCuLAPHbmJRYbvuIsH2MHFfoo
+X-Received: by 2002:a05:6214:31a1:b0:681:5629:c2c8 with SMTP id lb33-20020a05621431a100b006815629c2c8mr6417626qvb.117.1705433556520;
+        Tue, 16 Jan 2024 11:32:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705433556; cv=none;
         d=google.com; s=arc-20160816;
-        b=M71hoU57QG6HLycZiyaPB0e1iI70jYRq+cB4Oz61TY/bMn4FYIk84DU+WxKz8Qv0nQ
-         j2jpgmWVdYDPB4rNzx7qM2FyRYUSUG/PGURMiUiFwrSw+ZczE3lWvTc5As6tzVwLw0lH
-         edQvE58k98YGf8uIH7WuXec0ABNJ/eSm3GEdvqQE5mw1MC2SHRBI6Ywa4srAjQIgdZye
-         zQOEUJqtJJJjDtj+Shciuu56J35AMvvjSqxvtR0MkQbZZOSjc+GHsjhzWVli+dCc3u5B
-         7ykwQafeX0eNl31UxmykQC8AUcyfoXk4YFMrT5TFXj8XcB5J8ccDabwvCL1trmnODIEK
-         QGKw==
+        b=iwi7Lj714+hJqXbxbQEuhrShjNijNLeFJQyNEgrmS1Iw+YpjMCZABJX2FDw+ocwjw5
+         bum3GqT+l949GpWWr5/I/bDG6w60yyYRPr7S9fLpih7CPtmxzZMaoMdf5BT0ylDUzxhc
+         6/GdrayhYR8/lu6Kn3fc951t8kbJHHaB2xynlFCQnMxZGhXkmmBryA/N+s4J4yjH7I3b
+         gnNVcEukzQh056xIjDBaWNQweG8xzvP94Vsadp7NbwkJ34PqpejPRd62MXTBFLhdWy/G
+         hY5WFfjq/xfZc+iHTDoi0UnqSPunP369Nm+WgP9NyJ7rWhNO/ksuvXf+b0JcL44z6fKv
+         XHDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=piYULvdV+co80oXQCnZeWXIkrWknrqpTia8KAdIy/4U=;
-        fh=CPqfQhXyZp7q048m/2YkQDugvmq3ADVWuTpqTS8jIPQ=;
-        b=XIvB9RruFMC+ThntIAxxu+TI9cfGDv7XLPZLp+H4kIYk1G4F//z65q1VMwjmdiDRjJ
-         bpmmaMy+lRjImXbBdDgojclcqI/jLBTjayy4kBvwExKbivauskiGDvCVQcWCVnWbsDCj
-         AIg+K/1/rbyAawnE/qcjL0M2q/yqKv7XmC51nU8mSMHVNnoCvICOkwhOPPWYIjyiDsWa
-         xywdu6Nqs254+0EjK8tt0U7N9b79bv2tOPJcHZjYkUFMzTtKzuimAXs6+oDUICIIi2jO
-         VjkYEEUSrlpCmlb57TMFwQ3/iQcygslpkpzxf+UkAi+f+Gp2hvfPtMhxTG5Eo2KYdwkd
-         Ah5Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4tg8BpELTxKwl3eiGvl6SWp/fnCMecN81ckgX8wF+io=;
+        fh=cgAQA+XUIsr4IqXjvxsNSbu6yUfPNOKZue5KQ1lizTE=;
+        b=q/MDs9KSS33RWMKO0pDpuCb0SEBMw5yKla0JdABMsXD3vcazf9kxvbf9szN9vcy60o
+         zYqidH5qwqGxolk9bzoUx+sQtmzf5MJ3xnEKcZC3+VwoX8hBQt+SfkTydrAqwQfOZ73B
+         Vmu7hvSwnCVkPlVX4yhF9PPInS9uipsErLwnIeusoM45wr2SgYmMQYGMa7o0J7JJtTXf
+         oJvNVwP9JLNWSCdZSjHP++ts6OE16nA9DVRrsYP+9tteCRlNXPn6odXHz5u7Z4SWAv3G
+         1crCc7HtK5c7j7IjNIGsb8gQD9Pg08f9suaizeX7wSe6QO+24rnWUVbDwUsS5S9u6BEI
+         FICA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=IonM8E1L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13-20020a05620a454d00b007833e6a3e8dsi10793166qkp.333.2024.01.16.09.29.39
+        by mx.google.com with ESMTPS id i7-20020a0cf387000000b006817002c68esi1519102qvk.574.2024.01.16.11.32.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 09:29:46 -0800 (PST)
+        Tue, 16 Jan 2024 11:32:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=IonM8E1L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPnFY-0008Mm-NW; Tue, 16 Jan 2024 12:29:21 -0500
+	id 1rPpAK-0003fK-5G; Tue, 16 Jan 2024 14:32:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPnFX-0008Lu-07; Tue, 16 Jan 2024 12:29:19 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rPpAI-0003eq-Ga; Tue, 16 Jan 2024 14:32:02 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPnFU-0005oh-NI; Tue, 16 Jan 2024 12:29:18 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDwsh44qtz6J9xb;
- Wed, 17 Jan 2024 01:26:32 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 30B94140135;
- Wed, 17 Jan 2024 01:29:10 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
- 2024 17:29:09 +0000
-Date: Tue, 16 Jan 2024 17:29:07 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] target/arm: Fix VNCR fault detection logic
-Message-ID: <20240116172907.00003e6d@Huawei.com>
-In-Reply-To: <20240116165605.2523055-1-peter.maydell@linaro.org>
-References: <20240116165605.2523055-1-peter.maydell@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rPpAG-0000bf-Ev; Tue, 16 Jan 2024 14:32:02 -0500
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40GJK1Gt001573; Tue, 16 Jan 2024 19:30:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=4tg8BpELTxKwl3eiGvl6SWp/fnCMecN81ckgX8wF+io=;
+ b=IonM8E1LgH0UMwLjlvzdqqua3c0vTi3dUc+TX9d4T8NNy75E2C28dlbFlMlDFBc9jkBJ
+ O2LYjboTsVJldY9SnvkkaU5KdwIiOPwpErj9p9gFHnXsDyMggiKfk6cOjfUHXjXzFrm0
+ rUM0kZexYNzqP7ms2qnlarUTMBzDDr/inraoXaxtDMeTCpCrWYECmERTJgeL7TDF3kLj
+ gArWoze/spa6NkFOQ2kf7Sk/m1j8NL4BdPNjZuYaXov9AVLu/64VOOe/2UQjO83ZqpmF
+ mQm3YnnT0hQjkBctwL4D2mkfWV68bm1mDf5wOtte4lumb3Djs1SzssgKmvV5il3ZN016 fw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vnyrsggmt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Jan 2024 19:30:47 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40GJF7P7012003;
+ Tue, 16 Jan 2024 19:30:46 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vnyrsggme-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Jan 2024 19:30:46 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40GJCrDW010973; Tue, 16 Jan 2024 19:30:45 GMT
+Received: from smtprelay03.dal12v.mail.ibm.com ([172.16.1.5])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vm57ygtva-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Jan 2024 19:30:45 +0000
+Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
+ [10.241.53.101])
+ by smtprelay03.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40GJUiOo12190346
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Jan 2024 19:30:44 GMT
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D21085805E;
+ Tue, 16 Jan 2024 19:30:44 +0000 (GMT)
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 74C2B5805A;
+ Tue, 16 Jan 2024 19:30:44 +0000 (GMT)
+Received: from [9.24.12.86] (unknown [9.24.12.86])
+ by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 16 Jan 2024 19:30:44 +0000 (GMT)
+Message-ID: <02b84057-b100-4708-8415-909ed26ac922@linux.ibm.com>
+Date: Tue, 16 Jan 2024 13:30:44 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 9/9] hw/fsi: Update MAINTAINER list
+Content-Language: en-US
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20240110231537.1654478-1-ninad@linux.ibm.com>
+ <20240110231537.1654478-10-ninad@linux.ibm.com>
+ <39f33cc8-7457-43a1-a5dd-d6afada07e10@kaod.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <39f33cc8-7457-43a1-a5dd-d6afada07e10@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: OAloF6jDiibeATJQ7ZY2ouEmkIA1Hmea
+X-Proofpoint-ORIG-GUID: NaUQOg4e1V31PnqbYwgskEoGjyDhNrJf
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-16_11,2024-01-16_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ impostorscore=0 lowpriorityscore=0 bulkscore=0 adultscore=0 clxscore=1015
+ suspectscore=0 mlxscore=0 mlxlogscore=682 phishscore=0 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401160152
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,53 +149,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tSFzMs8CuOZr
+X-TUID: M2LCMQ0PgQUh
 
-On Tue, 16 Jan 2024 16:56:05 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+Hello Cedric,
 
-> In arm_deliver_fault() we check for whether the fault is caused
-> by a data abort due to an access to a FEAT_NV2 sysreg in the
-> memory pointed to by the VNCR. Unfortunately part of the
-> condition checks the wrong argument to the function, meaning
-> that it would spuriously trigger, resulting in some instruction
-> aborts being taken to the wrong EL and reported incorrectly.
-> 
-> Use the right variable in the condition.
-> 
-> Fixes: 674e5345275d425 ("target/arm: Report VNCR_EL2 based faults correctly")
-> Reported-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 1/12/24 10:03, Cédric Le Goater wrote:
+> On 1/11/24 00:15, Ninad Palsule wrote:
+>> Added maintainer for IBM FSI model
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>
+> Please remove my S-o-b.
+Removed.
+>
+>>
+>>   F: tests/qtest/isl_pmbus_vr-test.c
+>>   +FSI
+>> +M: Ninad Palsule <ninad@linux.ibm.com>
+>
+> and add me as Reviewer.
 
-Matches what I have locally from discussion earlier.
+Added you as a reviewer.
 
-Tested-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Thanks for the review.
 
-Thanks
+Regards,
 
-> ---
-> In less lax languages the compiler might have pointed out that
-> the type of the LHS and the RHS in the comparison didn't match :-)
-> ---
->  target/arm/tcg/tlb_helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-> index dd5de74ffb7..5477c7fb7dc 100644
-> --- a/target/arm/tcg/tlb_helper.c
-> +++ b/target/arm/tcg/tlb_helper.c
-> @@ -184,7 +184,7 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
->       * (and indeed syndrome does not have the EC field in it,
->       * because we masked that out in disas_set_insn_syndrome())
->       */
-> -    bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
-> +    bool is_vncr = (access_type != MMU_INST_FETCH) &&
->          (env->exception.syndrome & ARM_EL_VNCR);
->  
->      if (is_vncr) {
+Ninad
 
+>
+>

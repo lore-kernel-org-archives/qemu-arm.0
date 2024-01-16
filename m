@@ -1,90 +1,111 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp922279ejf;
-        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFuO6tXUqSbWRkDsb/v6hvZmHMz3hKt2JY94AiaZ+mLY+gA08fPK/0LdRBgi3OUsfrQRRuB
-X-Received: by 2002:a05:6870:a119:b0:1f9:5f20:8c7a with SMTP id m25-20020a056870a11900b001f95f208c7amr7011879oae.21.1705416682312;
-        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705416682; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp926417ejf;
+        Tue, 16 Jan 2024 06:59:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFXu894x1WywinT8O5kG9Ct6lkXnYIe/CwZFN88yBW95zFLZYAAaJM/U7OPppp0JfTbkkoF
+X-Received: by 2002:a05:620a:4ac1:b0:783:52a:2597 with SMTP id sq1-20020a05620a4ac100b00783052a2597mr6736137qkn.64.1705417195975;
+        Tue, 16 Jan 2024 06:59:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705417195; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFwLKAUp46hCrB3fn3PiQ/jT4FAyibTDkGCx44Lrpk85capBmgo7kVa7osHuapo/f1
-         OX00ryVcZdPgOnKkTvIC9pEiu3WS0CGzM24pQRH5MwcjOamGXjzCDKBQApr2DEJOEx4L
-         dd7J0SKRjbpSJZfY0xF2EWugRjMGKGYwMzhnHIQAoA+w+44GVIB0WnCamUFHajBct6nP
-         QWfBaIphgYrLHUkejpoa5MOenfjBkTNX/z1I+g3FpUUqiYGj7yrwYqipnMOAnHmTlgfK
-         UYBM2jESOlmOG1LYGJ4khPOMBfMLBXlXzUrqoXo04vtWyGNwUxdMT7Y+ypts1iMnSwdr
-         dVYA==
+        b=r1p+20ARnvoj8fZG7DXVhCy8eiQ18+tJwLeYD8dwBHUIGCyU1h2YpX4XFI/rzkcflR
+         ZgUOorKxg3P6I2AZRe3x2QBa3jaChUkvaN8Tbfv1k8eBWHeI3Kd/g6YfxDp97tSNIKlC
+         DJOfRwbs4GYaGW7bmBfcH0DqdVnGaE+aXeFSYdRWft2E8HG8QU0Cg0tF2KeIrTMJ7T+9
+         xTLbkm7dO8kIxadwyagIlEtgjC9PJJYtm/f7eyRgGuDs7WrdV0KIF2nFrB2kxvgM7cKz
+         MCweY0JbT54vpza2K+m6+HHuKxq4KM5URshRIBT5HvXPm0iJxIul8qUjtjzsZlUMmvTq
+         ksQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=DERmTmnGXutz3c6px9o3LCS/P0EOxQHIz4Ber6JEE6A=;
-        fh=CPqfQhXyZp7q048m/2YkQDugvmq3ADVWuTpqTS8jIPQ=;
-        b=CsLvzJTj96exeHnOaQSGm/hsLtPFu8hU2F+gWqjP1tVHU8Ulq2l3F6vRF2n6H80Pct
-         rMDGpvvp+DRnrpb2MVm7k27CQx/EIrMb+oQmRIklGPZ17LqpKl1T723qc+DlNr+gKiC2
-         7Lw1N79/yXl9XzfpxeR4Xb051S35J8yGgRtWop3hfYZmSa6rakkAnVBQ1AMnrQai4tS1
-         eSnCAw0AmQPnwPlTLNhhpb7/aKEGoTQzn1keLMbLSVWGhi3Jtt4GoLej/gOKXVYPsKWE
-         LvmxwkIeQCii94aEIel0PFfWw8+yqM5UecCrNXFXD6yMjgP5USnE/qD2t3vkx3u47+qx
-         jR4w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=YrJ+VmxwgbKzw3XkqeIfss4FMWzAgprqMmIV3Uk7Gi0=;
+        fh=G4ej1JnN8P6fgAZk0wPFnEOwbCZSOB2m6YxI6BipXl8=;
+        b=cpOc9h52y+i42eOD59HXvXWEqtUT+3bFccSJ3KvG6ZloZ708Ku0FioAL6jC0NGdzM4
+         yomurRMlOsOeMBbZeiCy7eyKRST7w8k/MF1e27hjn6dGGBxzmizeHeWyKUAxvcMraaZi
+         Gf9YAP+ldLqmaTmigGAaAo3SgbvfDIFIJSsYUjKgUb+P8x+Kgzdyjsi7VWNTNCdrHMv3
+         AGupgzessM5hgjL34UeQJ5HOm0yqNDDKrB3/WkapGSqp/82CByevGt48Nl/7HwN0g8Ks
+         P1zKFIyomOVdkYiUkL9xo+h76hswf1gPiwzyCwWpWLkho4Od1GnPxjMqjgQMMm7NP1dD
+         x2PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RfMLt3ks;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020ac85d87000000b00429fb485704si2569293qtx.606.2024.01.16.06.51.22
+        by mx.google.com with ESMTPS id bj1-20020a05620a190100b00783363d74d9si10265375qkb.76.2024.01.16.06.59.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 06:51:22 -0800 (PST)
+        Tue, 16 Jan 2024 06:59:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RfMLt3ks;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPkmM-0006UP-Df; Tue, 16 Jan 2024 09:51:02 -0500
+	id 1rPkub-0001tD-5K; Tue, 16 Jan 2024 09:59:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPkmL-0006U5-BV; Tue, 16 Jan 2024 09:51:01 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rPkmI-0001XX-N9; Tue, 16 Jan 2024 09:51:00 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDsM32mq5z6J9sP;
- Tue, 16 Jan 2024 22:48:15 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id AC0B81408FE;
- Tue, 16 Jan 2024 22:50:52 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
- 2024 14:50:52 +0000
-Date: Tue, 16 Jan 2024 14:50:51 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
-Message-ID: <20240116145051.000004f7@Huawei.com>
-In-Reply-To: <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPkua-0001rw-IS
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:59:32 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rPkuX-0003M8-59
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:59:31 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-559533e2503so2413095a12.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 06:59:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705417167; x=1706021967; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=YrJ+VmxwgbKzw3XkqeIfss4FMWzAgprqMmIV3Uk7Gi0=;
+ b=RfMLt3ksHbojJEIlbqBcNmrnu/xOWOTai3skG+Q9BJh3C8bU3Mwez14iYZdcMW7ZvZ
+ gYv7VOKc+CybZmw282bQkV/cP+PYFLT4KL9+nhfMfE1qSlE5KgZzqS8syu23aTj0ECE+
+ VzNQUqIOpeIiWb9LXqecGIprAxUL+qAx417ylLJr8bSCWxk9Mq9I1mM2rlxjnDg+BNgI
+ KOu48jz6C9sA8O/IMk6bgkQeQTx1jqydJtVdvFvG1xAKrnh84XbesTcwlG4r+BvmA+dV
+ dYDEc3eV7QY1e3DUtrBvYx42DRnSxbrQ3lqN2mf+s+85Fkr4/OMsbaWsJSqhNbv/Wp0G
+ t/Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705417167; x=1706021967;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YrJ+VmxwgbKzw3XkqeIfss4FMWzAgprqMmIV3Uk7Gi0=;
+ b=q/qBRUwWxkd7LKKEpHL6GsMSHeb3b9nes9jGGW7U/9j61hqJtQGbJIJOzLvRg84gZs
+ AvW7TjSaOT6Z0RYCuYjMwjJaE4/JYDHki+L26f67XugVBJkj+pZquRd98BMV8hkSA/J7
+ jBHC82f5mUr+77v9YzCeSiwmfiKmnr0DbMoWUhx1Ci3O51LEE/EJhbgn7VjG99qql9lA
+ xIiEH0MRQ3O0U/Hc5p1dnFequ+ysJ5Ag86HnxVlbWzJl5IH7jrOfrvI9lgLquBuwuV18
+ PAFnSHRPYqNwpNO2+8/+mir8oAHQHzBviHvN94dwl4MxD3GlaRtRR0nI/SMYx3stat0x
+ B3uw==
+X-Gm-Message-State: AOJu0YwDoanpkEFLRFdZFj5JoHit52dM1pCylG5ZIE2IlBIFXeBVtlF7
+ akvnHo7HEh1K8PmG8AZ1IKqouSTIYw93Hb4bv8BPDroJxO+gvLHkpYrs8umc
+X-Received: by 2002:a05:6402:31eb:b0:559:bdd3:80df with SMTP id
+ dy11-20020a05640231eb00b00559bdd380dfmr278031edb.45.1705417167403; Tue, 16
+ Jan 2024 06:59:27 -0800 (PST)
+MIME-Version: 1.0
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
  <20231218113305.2511480-28-peter.maydell@linaro.org>
  <20240116130940.00002523@Huawei.com>
  <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20240116145051.000004f7@Huawei.com>
+In-Reply-To: <20240116145051.000004f7@Huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jan 2024 14:59:15 +0000
+Message-ID: <CAFEAcA8=CK00w_Yk-X=+6cm2X5BWSiTw7_y6uQN8qyFHF4-iFg@mail.gmail.com>
+Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,98 +118,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QfzyANrnIEaO
+X-TUID: 76BivVHqA+qa
 
-On Tue, 16 Jan 2024 13:20:33 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 16 Jan 2024 at 14:50, Jonathan Cameron
+<Jonathan.Cameron@huawei.com> wrote:
+>
+> On Tue, 16 Jan 2024 13:20:33 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+> > Bisecting to this patch is a bit weird because at this point
+> > in the series emulation of FEAT_NV2 should be disabled and
+> > the code being added should never be used. You could put
+> > an assert(0) into the code in translate-a64.c before the
+> > call to syn_data_abort_vncr() and in arm_deliver_fault()
+> > assert(!is_vncr) to confirm that we're not somehow getting
+> > into this code for some non-FEAT_NV2 situation, I guess.
+>
+> Not that, but surprisingly is_vncr == true.
+> in arm_deliver_fault()
+>
+> Frigging that to be false gets me up and running. I'll see
+> if I can figure out why it is set.
 
-> On Tue, 16 Jan 2024 at 13:09, Jonathan Cameron
-> <Jonathan.Cameron@huawei.com> wrote:
-> >
-> > On Mon, 18 Dec 2023 11:32:57 +0000
-> > Peter Maydell <peter.maydell@linaro.org> wrote:
-> >  
-> > > If FEAT_NV2 redirects a system register access to a memory offset
-> > > from VNCR_EL2, that access might fault.  In this case we need to
-> > > report the correct syndrome information:
-> > >  * Data Abort, from same-EL
-> > >  * no ISS information
-> > >  * the VNCR bit (bit 13) is set
-> > >
-> > > and the exception must be taken to EL2.
-> > >
-> > > Save an appropriate syndrome template when generating code; we can
-> > > then use that to:
-> > >  * select the right target EL
-> > >  * reconstitute a correct final syndrome for the data abort
-> > >  * report the right syndrome if we take a FEAT_RME granule protection
-> > >    fault on the VNCR-based write
-> > >
-> > > Note that because VNCR is bit 13, we must start keeping bit 13 in
-> > > template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
-> > >
-> > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>  
-> >
-> > Hi Peter,
-> >
-> > I'm getting an unhelpful crash on calling init in a guest
-> > running on top of an a76 emulated host with virtualization turned on.
-> >
-> > Run /sbin/init as init process
-> > Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007
-> > CPU: 1 PID: 1 Comm: init Not tainted 6.7.0+ #1119
-> > Hardware name: linux,dummy-virt (DT)
-> > Call trace:
-> >  dump_backtrace+0xa0/0x128
-> >  show_stack+0x20/0x38
-> >  dump_stack_lvl+0x48/0x60
-> >  dump_stack+0x18/0x28
-> >  panic+0x380/0x3c0
-> >  do_exit+0x89c/0x9a0
-> >  do_group_exit+0x3c/0xa0
-> >  get_signal+0x968/0x970
-> >  do_notify_resume+0x21c/0x1460
-> >  el0_ia+0xa0/0xb0
-> >  el0t_64_sync_handler+0xd0/0x130
-> >  el0t_64_sync+0x190/0x198
-> > SMP: stopping secondary CPUs
-> > Kernel Offset: 0x2a8c93a00000 from 0xffff800080000000
-> > PHYS_OFFSET: 0xffff82f980000000
-> > CPU features: 0x0,00000001,7002014a,2101720b
-> > Memory Limit: none
-> > ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007 ]---
-> >
-> > Upstream kernel as of yesterday.  Nothing particular 'exciting' in the
-> > configurations. Not attempting to use Nested virt.
-> > -M virt,gic-version=3,virtualization=true
-> > -cpu cortex-a76 (happens with max as well but switched to a76 for testing
-> > to reduce possible sources of problems).
-> >
-> > Doesn't happen if single cpu in the guest, or if using gic v2 in both.
-> >
-> > Bisection points at this patch - so far no idea why but I've only
-> > just started digging into this.  
-> 
-> Bisecting to this patch is a bit weird because at this point
-> in the series emulation of FEAT_NV2 should be disabled and
-> the code being added should never be used. You could put
-> an assert(0) into the code in translate-a64.c before the
-> call to syn_data_abort_vncr() and in arm_deliver_fault()
-> assert(!is_vncr) to confirm that we're not somehow getting
-> into this code for some non-FEAT_NV2 situation, I guess.
+I don't know if this is the cause, but looking again at the
+line that sets is_vncr I see at least one obvious bug:
 
-Not that, but surprisingly is_vncr == true.
-in arm_deliver_fault()
+    bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
+        (env->exception.syndrome & ARM_EL_VNCR);
 
-Frigging that to be false gets me up and running. I'll see
-if I can figure out why it is set.
+is testing the wrong variable -- the first part
+of the condition should be "access_type != MMU_INST_FETCH".
 
-J
-> 
-> thanks
-> -- PMM
+If you fix that does the failure go away ?
 
+Yay for C and its very sloppy typing :-/
+
+-- PMM

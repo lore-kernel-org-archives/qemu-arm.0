@@ -1,155 +1,194 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp775664ejf;
-        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFOwX1xBdtmnx4Y58xGZw2AojGrUD9wtQbhbEQdiGVzLopDxxEysHeBNdfKsZp3rWU2jlOp
-X-Received: by 2002:a05:620a:4088:b0:783:2e22:5743 with SMTP id f8-20020a05620a408800b007832e225743mr9558558qko.92.1705398987628;
-        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705398987; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp779536ejf;
+        Tue, 16 Jan 2024 02:04:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGxIA5kHJ/Rh6LuW1L7Jd9o/O0poDcd3Jmysw3EwsMw3kSA/tgkcx6nvmgJBTBvKx+7RJAj
+X-Received: by 2002:a05:6214:2523:b0:681:73b8:5c28 with SMTP id gg3-20020a056214252300b0068173b85c28mr353243qvb.76.1705399497421;
+        Tue, 16 Jan 2024 02:04:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705399497; cv=none;
         d=google.com; s=arc-20160816;
-        b=CQ0DYYjRsR+M/4yuw9vkw0nCNT/Ve3wA2ra7Gc6HzWTzuXyoOUC0QZFbrCo+t57NGH
-         DYKDCB8ee5gUH/xWMK3q/U9GUnMJhw2TVBiegOBmPljf1dZO5wJHtYQsQMFJcbsQExsu
-         GKGRrzDJX717RQ4M3MrHpYeyT8pvd2nCyHsLdNPNBPOQVEZojvNsj0oUqQ9iKaYMZdFG
-         zzyD5NCfLQcZKurXkY8sYMb5z00KzK9q2TO3/0NuoOc++Gyq3ufesLQswiZXY+MGRZbx
-         eRP5bNT8NlYBCK9GWlIqNjXd11GwDNWztZQZ0/6FYPVGCkmxKZHhK2f8v2RU8gMujPsh
-         RGOw==
+        b=HbLEyTTc+g1ZH1NFrIYetBacRLa3OTKA8EPQQsCkWIq+cvxWuHhGCUfpoRp2kbRSQh
+         IGtpT9SSoeTn55+HnzgKDihyMLeM3/83P1IOTknOGALtLHdRauJxfJWwDGM7G1oVaE0j
+         Gahv2mmcaljTguadzWQNp4oK5vrRZi5AW6OILkQiWMYr2Zr3/dzHoYQzeyooJyY55Xea
+         Y3ifKiLyBTZ02SwmMN+EZW3/APmyogphJR2YNPGCrfDCERtOSxAbdF/Cs/AQ0oPe4m2W
+         VhR9Xtf9G9pnUnSMD8W3k4Kraf+Ql3xMCYkfwicyubwy7r/1SiLBeoOEKwd+Bbk6gflI
+         /8Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
-        fh=6Z3RMM6KtNtgAHYm8r/Oc93i7IjTrJ8xFP/z4cPiKpI=;
-        b=g2VvmyRm7yCnOcSDNkYI1sQaMuIRPvti1Er8WDd1CW3/H0TiOPbj/qqYb9BPFdBQDb
-         i4CwFeBMnEy9VGictyvPRJrEW06qIc2p4dICab7czUf3Zxnn38FdnAo2YZ4ek+94DOy3
-         cmp4yBbdLy/TxUiD31W4G2RUC3T1dhBK2t7VFlcXtrlXYMJfk92z6d82KPXq7bgKqu1j
-         5yhFyGOrRWmT3GwSL3tPH+VyWpCgBPpyUgLiCoH5zcyWPj1J0ke3+iWhqpL7Z2JoWEAW
-         q/RZM4oRTKxQcVIvk+R5F9EKpm9SoR/ud6Ge75kmyxZa51vuEDUupyuUhwJfB0EkmjT4
-         iHpg==
+        bh=6LbOO+70/NHRDqGhL19dCytYyC7QSSY/CHkPL1/Sa5s=;
+        fh=wOq/wRy+Z0N//hQwV/2yhnqcZ3D46mc/jn6KnPA9GHE=;
+        b=0o4WeT9OMgLdevMIpJfTvLX0tB2buTu5vb986BnAMYONOCCTNVpYRlBu2Fr4zU7N96
+         sEHi2slLJvsMmYjbR+70l3rV2z5VAmY5nch8OJiQ/paNJ9YL/GHNHiDNi/mY7q71+6nc
+         ItYamXc6aD9DlxSSkjaFPi9ns3+Yvo5R3w20luyiu4xhBfRlSBSmC1BP2uJa8uLnrjO5
+         ye5k2jdlhdmHkTInKBepnqQSMLpnhVUvVMYGWFYs7JjZAMLFFzSIQO4HaKtoy/QatXGQ
+         bwIX188t0UTJB2Q4TXIit7+Ue0KGBakNItCKSkB1u2196YEoflru/Oypx8OJyu0cQqjM
+         lOkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="op/8uDuU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=z6wTBhS4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eb7-20020a05620a480700b007834eb57f7fsi6837019qkb.782.2024.01.16.01.56.27
+        by mx.google.com with ESMTPS id j4-20020a0c9cc4000000b0067f97856aebsi5474745qvf.299.2024.01.16.02.04.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jan 2024 02:04:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="op/8uDuU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=z6wTBhS4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rPgB4-0006SG-IM; Tue, 16 Jan 2024 04:56:14 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rPgJ2-0008Dy-1T; Tue, 16 Jan 2024 05:04:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgB3-0006Rx-J7
- for qemu-devel@nongnu.org; Tue, 16 Jan 2024 04:56:13 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgJ0-0008DU-As
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 05:04:26 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgB2-0006kN-16
- for qemu-devel@nongnu.org; Tue, 16 Jan 2024 04:56:13 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-557ad92cabbso9506385a12.0
- for <qemu-devel@nongnu.org>; Tue, 16 Jan 2024 01:56:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgIy-00085Q-BG
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 05:04:25 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-55817a12ad8so7501067a12.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 02:04:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705398970; x=1706003770; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705399462; x=1706004262; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
- b=op/8uDuU6pmRMb8eTMyXn/eA3gJ3TdKU6W4wy6UYGQWXg8qfkCGMp83LRxDsM4cs7x
- QOvvpRfpkjLr5FtLJAh3M2AoFENn5AYzZwMEeUgIU68Wjfyx05wOHGv8X0JroBB6wygw
- jGmRQzp+RGk77UFynM+VVVtkJiZuXymeHDPWeKfKjP5k2lqjcyXAJv3ld74J99BASYZ5
- DByAZyslFYdzExTdVBQwuLri/DNMtDVyQPIyz3AqrEwtx1GtQVQ5AviwGMsIPfuN4W6I
- kX1rjDHxtCK5HXzoD3xa6p8KnVyIzMl+elWMLk/gljFKJTKBOa5CbUSGVsZgFSd9IZNH
- /vwQ==
+ bh=6LbOO+70/NHRDqGhL19dCytYyC7QSSY/CHkPL1/Sa5s=;
+ b=z6wTBhS4GfS2MAlOHZct1xiwj1ipYBmTd0cWMvp5WnDHTZLNahDfEOb8YmCEcyfaGZ
+ z/Nya0bOotLhi3IeAJzbjm2fCzfrup8IfejwZCffw6C3w4qCCxiLHhAmCStCu8efhfpu
+ IeQ7e1HGb3djau6gbcXcWnAZWAaBeFtU6b9sLS8NZK7N0vL51B3oW+t+n+8716jTUC8O
+ QO1TkQG+SNHldgxRMlf0e1h4ZATIzxa3l5oYUJFSKvdXbcZ0EV2shnavU9ir+/ShxMzD
+ jAcoOkyFJ6LEwnZmU1W6EuK/y/qfgBiP8nfwhjHZZ4YLyroGvyMbSZ7Dlg1nrKeu3R6G
+ N4ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705398970; x=1706003770;
+ d=1e100.net; s=20230601; t=1705399462; x=1706004262;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
- b=s2Yf37MNVMXiIDDZRiWsO06bHW15P2oFcY1hRBsGkXVhiHC/zKz+Jc4kFeWbScMxoF
- kY5Sy8qArPQ7tyYC9VA4s/k5N0rlCibexlZ7G0zFBAo9BeZ1c2ej5tMiZAwB41tjbq0P
- Nejrwrfnox7tRWjc0TVRhUVvoEXqvRWcYyEgEAZPYKeDcMmye5SGmP6+3KPWJWPzFhhm
- 9ReOUxKGJcOiRToVdsNmTjbJi3TA75r6iBhEhbGKdNO2BLzTDROdCy/aCxNV647mtBAr
- 8/dlSnLm0yEsInMKyU9cxy1vGGQOlCU9MGpFFfdyKPPDMm+P7jt9Fc99puipNm4XC0MM
- kpLQ==
-X-Gm-Message-State: AOJu0YxV4TwyO4fieOoNJXATXKGdvJtnq/CgOpUa+7GAj12LZPcIk3sV
- C1iUrD6HF/U2c1s/bhGA8dWCA64ojSw6og==
-X-Received: by 2002:aa7:c39a:0:b0:558:c105:5eb9 with SMTP id
- k26-20020aa7c39a000000b00558c1055eb9mr1767691edq.68.1705398970248; 
- Tue, 16 Jan 2024 01:56:10 -0800 (PST)
+ bh=6LbOO+70/NHRDqGhL19dCytYyC7QSSY/CHkPL1/Sa5s=;
+ b=WgiFyAxZLngIL6/p8gRIz0h29lepdWaRE/A9poyYB0mSVY1NjXztIhoXcvIlN7A23P
+ r35twvxi4S/MnsNWSnUqSn16Vo2hz9zz3KXcPJ90gpPwXyz6Ex4YiZkIpoSOUT3Ta/jt
+ hpcx+7TmJjMB94pzXHUDrk2rV1FThapO3I8grhR7wC0u+3L9l1dJAKuddwV47899DO7P
+ OxHm1QKIROnrFqlre/cSUcmyU6VjPUykvb3WYtr9YAIrm9zgOcdpcluC3tlwfxNU44IY
+ yk/NEYD4a/6N/ANeEo/A8imSZIySbkDkuH12Gr1xUNZffJyf4b0VKbFIeuAVkLt9xCSy
+ oBRQ==
+X-Gm-Message-State: AOJu0YxDfIaw9TfgQ+AouegsNjiDVt0qdFgYfsbF4GfpBm5M0SpOIjrY
+ Yin/WN7JruppMuGRN+Hk/9s22TyKdusISA==
+X-Received: by 2002:a05:6402:510d:b0:558:c044:e860 with SMTP id
+ m13-20020a056402510d00b00558c044e860mr4852626edd.69.1705399462402; 
+ Tue, 16 Jan 2024 02:04:22 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.209.30])
  by smtp.gmail.com with ESMTPSA id
- g3-20020aa7c843000000b00558dcec1d4dsm5151022edt.76.2024.01.16.01.56.08
+ ee34-20020a056402292200b00559bb6eef00sm114268edb.85.2024.01.16.02.04.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jan 2024 01:56:09 -0800 (PST)
-Message-ID: <f21da8aa-106c-4022-8ffc-1925f977dbdd@linaro.org>
-Date: Tue, 16 Jan 2024 10:56:07 +0100
+ Tue, 16 Jan 2024 02:04:22 -0800 (PST)
+Message-ID: <7551e55e-89b3-40de-a3b4-60e158d00295@linaro.org>
+Date: Tue, 16 Jan 2024 11:04:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] hw/arm: Add EHCI/OHCI controllers to Allwinner R40
- and Bananapi board
+Subject: Re: [PATCH v2 3/3] hw/arm: Add watchdog timer to Allwinner H40 and
+ Bananapi board
 Content-Language: en-US
 To: Guenter Roeck <linux@roeck-us.net>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+ qemu-arm@nongnu.org, Li Guang <lig.fnst@cn.fujitsu.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>
 References: <20240115182757.1095012-1-linux@roeck-us.net>
- <20240115182757.1095012-2-linux@roeck-us.net>
+ <20240115182757.1095012-4-linux@roeck-us.net>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240115182757.1095012-2-linux@roeck-us.net>
+In-Reply-To: <20240115182757.1095012-4-linux@roeck-us.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jgff740xxJsy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MENpQkE5queT
+
+Hi,
+
+(Cc'ing Li, Strahinja and Niek)
 
 On 15/1/24 19:27, Guenter Roeck wrote:
-> Allwinner R40 supports two USB host ports shared between a USB 2.0 EHCI
-> host controller and a USB 1.1 OHCI host controller. Add support for both
-> of them.
-> 
-> If machine USB support is not enabled, create unimplemented devices
-> for the USB memory ranges to avoid crashes when booting Linux.
-> 
+> Add watchdog timer support to Allwinner-H40 and Bananapi.
+> The watchdog timer is added as an overlay to the Timer
+> module memory map.
+
+I'm confused by these registers from TYPE_AW_A10_PIT
+and the TYPE_AW_WDT implementation you are using:
+
+   #define AW_A10_PIT_WDOG_CONTROL    0x90
+   #define AW_A10_PIT_WDOG_MODE       0x94
+
+Do we have 2 implementations of the same peripheral?
+
+Should we instanciate AW_WDT within AW_A10_PIT?
+
 > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > ---
-> v2: The USB Controllers are part of the chipset, so instantiate them
->      unconditionally
-> 
->   docs/system/arm/bananapi_m2u.rst |  2 +-
->   hw/arm/Kconfig                   |  2 ++
->   hw/arm/allwinner-r40.c           | 47 ++++++++++++++++++++++++++++++--
->   include/hw/arm/allwinner-r40.h   |  9 ++++++
->   4 files changed, 57 insertions(+), 3 deletions(-)
+>   docs/system/arm/bananapi_m2u.rst | 2 +-
+>   hw/arm/Kconfig                   | 1 +
+>   hw/arm/allwinner-r40.c           | 8 ++++++++
+>   include/hw/arm/allwinner-r40.h   | 3 +++
+>   4 files changed, 13 insertions(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+> diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+> index 534be4a735..a28e5b3886 100644
+> --- a/hw/arm/allwinner-r40.c
+> +++ b/hw/arm/allwinner-r40.c
+> @@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] = {
+>       [AW_R40_DEV_OHCI2]      = 0x01c1c400,
+>       [AW_R40_DEV_CCU]        = 0x01c20000,
+>       [AW_R40_DEV_PIT]        = 0x01c20c00,
+> +    [AW_R40_DEV_WDT]        = 0x01c20c90,
+>       [AW_R40_DEV_UART0]      = 0x01c28000,
+>       [AW_R40_DEV_UART1]      = 0x01c28400,
+>       [AW_R40_DEV_UART2]      = 0x01c28800,
+> @@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)
+>       object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+>                                 "clk1-freq");
+>   
+> +    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
+> +
+>       object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
+>   
+>       for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
+> @@ -545,6 +548,11 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
+>                          qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
+>   
+> +    /* WDT */
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
+> +                            allwinner_r40_memmap[AW_R40_DEV_WDT], 1);
+> +

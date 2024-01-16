@@ -1,133 +1,155 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp750326ejf;
-        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBHPy1Gpo/ptQDOCioEEuRRZN2OAKrHExoYFR7M4qhOEwUNuZVQjtCFrKza73tA6bS3RKl
-X-Received: by 2002:a05:622a:1386:b0:429:c526:92bd with SMTP id o6-20020a05622a138600b00429c52692bdmr8602701qtk.28.1705395029365;
-        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705395029; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp775664ejf;
+        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFOwX1xBdtmnx4Y58xGZw2AojGrUD9wtQbhbEQdiGVzLopDxxEysHeBNdfKsZp3rWU2jlOp
+X-Received: by 2002:a05:620a:4088:b0:783:2e22:5743 with SMTP id f8-20020a05620a408800b007832e225743mr9558558qko.92.1705398987628;
+        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705398987; cv=none;
         d=google.com; s=arc-20160816;
-        b=fxigGR8nW11Mx/RjZe9bliL/RPj4aAyypFsscuzxU2W/+obln3LBlon3jiBL8S4gTJ
-         kGVwLul2PYLZe0BOgf5RZ8zw60Tk92KA74k7ThxYGvBL3Mp3CcUVlfTxPyRi2Qtn2W2F
-         YPb+6+Fl5BKLi7mG18icjmOlbsXUVDJgvRfMgoHa+hhJwU/Ho/j/swV3jhUOzi3nQBlb
-         nwUY0Q9acFyKj+NJvjapaGSMwb/htNFRw5L2Dfy+6pTVgt6krILUE8UFAFkeww9RATU5
-         zOMzkrD3PXuLkr3GeRp3jWXpTv5Lv+xg/S+8vieUeMfXj61agW4crIjr1XcIH84Q8ESP
-         Gl7Q==
+        b=CQ0DYYjRsR+M/4yuw9vkw0nCNT/Ve3wA2ra7Gc6HzWTzuXyoOUC0QZFbrCo+t57NGH
+         DYKDCB8ee5gUH/xWMK3q/U9GUnMJhw2TVBiegOBmPljf1dZO5wJHtYQsQMFJcbsQExsu
+         GKGRrzDJX717RQ4M3MrHpYeyT8pvd2nCyHsLdNPNBPOQVEZojvNsj0oUqQ9iKaYMZdFG
+         zzyD5NCfLQcZKurXkY8sYMb5z00KzK9q2TO3/0NuoOc++Gyq3ufesLQswiZXY+MGRZbx
+         eRP5bNT8NlYBCK9GWlIqNjXd11GwDNWztZQZ0/6FYPVGCkmxKZHhK2f8v2RU8gMujPsh
+         RGOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:mime-version:user-agent:date:message-id
-         :subject:cc:to;
-        bh=7NhM7MwHcgQSsRtLGzzoVmBue3ZR7kyzW5x3ZtElHvk=;
-        fh=PIbGBagwLpv6m0icLWEhwafnC4co/H/Kz+HEUUEdBUE=;
-        b=yvlBRiqg5ejE8ROdrfDok3/Rv/J1iQkgmh8ZorCMTVxxH6pmZ6BGQbkoMuYGRSm60B
-         4FsXS/C6kAcC2UFMuibEhVg25EAudv46fA+qsfs3do2QIGfwPqntoiJbzSpFskK6IJFd
-         8fV3du6epB0OS7S6auvp+Z2UHapo+hLJZSzqG5cZ6QP6Y1xGpI32B9QAPTOBl3F0EMJD
-         iUOamJDrXGIcDCX2e5DSYLnoQ0glB2PmkqCJnsSgO+L5J2fOT8Mzu71mWmIT0+k4rbtf
-         8Sk2zK7Mj65c40ynQeRkt2B+55FxTX9IR3kUgDKUY2XdvdMxDQX34j5Qw+VVdZZn7/ar
-         jvYg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
+        fh=6Z3RMM6KtNtgAHYm8r/Oc93i7IjTrJ8xFP/z4cPiKpI=;
+        b=g2VvmyRm7yCnOcSDNkYI1sQaMuIRPvti1Er8WDd1CW3/H0TiOPbj/qqYb9BPFdBQDb
+         i4CwFeBMnEy9VGictyvPRJrEW06qIc2p4dICab7czUf3Zxnn38FdnAo2YZ4ek+94DOy3
+         cmp4yBbdLy/TxUiD31W4G2RUC3T1dhBK2t7VFlcXtrlXYMJfk92z6d82KPXq7bgKqu1j
+         5yhFyGOrRWmT3GwSL3tPH+VyWpCgBPpyUgLiCoH5zcyWPj1J0ke3+iWhqpL7Z2JoWEAW
+         q/RZM4oRTKxQcVIvk+R5F9EKpm9SoR/ud6Ge75kmyxZa51vuEDUupyuUhwJfB0EkmjT4
+         iHpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="op/8uDuU";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i10-20020ac85c0a000000b004298c93b0e2si9494530qti.683.2024.01.16.00.50.29
+        by mx.google.com with ESMTPS id eb7-20020a05620a480700b007834eb57f7fsi6837019qkb.782.2024.01.16.01.56.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jan 2024 01:56:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="op/8uDuU";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPf9E-0007yc-A7; Tue, 16 Jan 2024 03:50:17 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rPgB4-0006SG-IM; Tue, 16 Jan 2024 04:56:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yezengruan@huawei.com>)
- id 1rPf9C-0007yP-Pe; Tue, 16 Jan 2024 03:50:14 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yezengruan@huawei.com>)
- id 1rPf9A-0008TL-DS; Tue, 16 Jan 2024 03:50:14 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.252])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4TDjNV5lTFzWmYZ;
- Tue, 16 Jan 2024 16:48:58 +0800 (CST)
-Received: from canpemm500001.china.huawei.com (unknown [7.192.104.163])
- by mail.maildlp.com (Postfix) with ESMTPS id ECFEA180071;
- Tue, 16 Jan 2024 16:49:58 +0800 (CST)
-Received: from [10.174.185.33] (10.174.185.33) by
- canpemm500001.china.huawei.com (7.192.104.163) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 16 Jan 2024 16:49:58 +0800
-To: <qemu-devel@nongnu.org>, <qemu-stable@nongnu.org>, <qemu-arm@nongnu.org>
-CC: yuzenghui <yuzenghui@huawei.com>
-Subject: [Qemu-arm] Windows11 guest Fast startup cannot work
-Message-ID: <6dad82d6-2722-3a07-03ee-6dea6d74ba47@huawei.com>
-Date: Tue, 16 Jan 2024 16:49:58 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.9.1
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgB3-0006Rx-J7
+ for qemu-devel@nongnu.org; Tue, 16 Jan 2024 04:56:13 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPgB2-0006kN-16
+ for qemu-devel@nongnu.org; Tue, 16 Jan 2024 04:56:13 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-557ad92cabbso9506385a12.0
+ for <qemu-devel@nongnu.org>; Tue, 16 Jan 2024 01:56:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705398970; x=1706003770; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
+ b=op/8uDuU6pmRMb8eTMyXn/eA3gJ3TdKU6W4wy6UYGQWXg8qfkCGMp83LRxDsM4cs7x
+ QOvvpRfpkjLr5FtLJAh3M2AoFENn5AYzZwMEeUgIU68Wjfyx05wOHGv8X0JroBB6wygw
+ jGmRQzp+RGk77UFynM+VVVtkJiZuXymeHDPWeKfKjP5k2lqjcyXAJv3ld74J99BASYZ5
+ DByAZyslFYdzExTdVBQwuLri/DNMtDVyQPIyz3AqrEwtx1GtQVQ5AviwGMsIPfuN4W6I
+ kX1rjDHxtCK5HXzoD3xa6p8KnVyIzMl+elWMLk/gljFKJTKBOa5CbUSGVsZgFSd9IZNH
+ /vwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705398970; x=1706003770;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fD8iZVx1Kb45c+iS0qDf1hucW8J3ZTTlTbKWstGEz7Y=;
+ b=s2Yf37MNVMXiIDDZRiWsO06bHW15P2oFcY1hRBsGkXVhiHC/zKz+Jc4kFeWbScMxoF
+ kY5Sy8qArPQ7tyYC9VA4s/k5N0rlCibexlZ7G0zFBAo9BeZ1c2ej5tMiZAwB41tjbq0P
+ Nejrwrfnox7tRWjc0TVRhUVvoEXqvRWcYyEgEAZPYKeDcMmye5SGmP6+3KPWJWPzFhhm
+ 9ReOUxKGJcOiRToVdsNmTjbJi3TA75r6iBhEhbGKdNO2BLzTDROdCy/aCxNV647mtBAr
+ 8/dlSnLm0yEsInMKyU9cxy1vGGQOlCU9MGpFFfdyKPPDMm+P7jt9Fc99puipNm4XC0MM
+ kpLQ==
+X-Gm-Message-State: AOJu0YxV4TwyO4fieOoNJXATXKGdvJtnq/CgOpUa+7GAj12LZPcIk3sV
+ C1iUrD6HF/U2c1s/bhGA8dWCA64ojSw6og==
+X-Received: by 2002:aa7:c39a:0:b0:558:c105:5eb9 with SMTP id
+ k26-20020aa7c39a000000b00558c1055eb9mr1767691edq.68.1705398970248; 
+ Tue, 16 Jan 2024 01:56:10 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.209.30])
+ by smtp.gmail.com with ESMTPSA id
+ g3-20020aa7c843000000b00558dcec1d4dsm5151022edt.76.2024.01.16.01.56.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jan 2024 01:56:09 -0800 (PST)
+Message-ID: <f21da8aa-106c-4022-8ffc-1925f977dbdd@linaro.org>
+Date: Tue, 16 Jan 2024 10:56:07 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] hw/arm: Add EHCI/OHCI controllers to Allwinner R40
+ and Bananapi board
 Content-Language: en-US
-X-Originating-IP: [10.174.185.33]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- canpemm500001.china.huawei.com (7.192.104.163)
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=yezengruan@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+To: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20240115182757.1095012-1-linux@roeck-us.net>
+ <20240115182757.1095012-2-linux@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240115182757.1095012-2-linux@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- URI_TRY_3LD=1.999 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  yezengruan <yezengruan@huawei.com>
-From:  yezengruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P3TZEsIPHCrO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jgff740xxJsy
 
-Hi,
+On 15/1/24 19:27, Guenter Roeck wrote:
+> Allwinner R40 supports two USB host ports shared between a USB 2.0 EHCI
+> host controller and a USB 1.1 OHCI host controller. Add support for both
+> of them.
+> 
+> If machine USB support is not enabled, create unimplemented devices
+> for the USB memory ranges to avoid crashes when booting Linux.
+> 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+> v2: The USB Controllers are part of the chipset, so instantiate them
+>      unconditionally
+> 
+>   docs/system/arm/bananapi_m2u.rst |  2 +-
+>   hw/arm/Kconfig                   |  2 ++
+>   hw/arm/allwinner-r40.c           | 47 ++++++++++++++++++++++++++++++--
+>   include/hw/arm/allwinner-r40.h   |  9 ++++++
+>   4 files changed, 57 insertions(+), 3 deletions(-)
 
-I want to improve the startup speed of Windows VM. On the x86 
-architecture, QEMU's Windows11 VM can enable the Fast startup function, 
-but it cannot work on the ARM architecture. By the way, the Fast startup 
-function of Windows on ARM physical machines can work normally.
-
-Is there anything missing in QEMU's ARM architecture for Windows guest?
-
-My environmental information:
-Linux 5.10
-QEMU 6.2.0
-Guest: Windows11 ARM
-
-QEMU command line:
-qemu-system-aarch64 -nodefaults -machine 
-virt,kernel-irqchip=on,virtualization=off,gic-version=3,its=off -accel 
-kvm -cpu host -m 6144 -smp 6 -bios 
-/usr/share/edk2/aarch64/QEMU_EFI-pflash.raw -drive 
-if=none,id=system,format=qcow2,file=/data/images/win11_disk.qcow2 
--device virtio-blk-pci,drive=system -device 
-nec-usb-xhci,msix=off,msi=off -device usb-kbd -device usb-tablet -device 
-ramfb -display gtk -name Windows -qmp unix:/tmp/qmp.socket,server,nowait 
--d all -D /tmp/qemu.log -msg timestamp=on
-
-Refer to the Fast startup link below:
-https://learn.microsoft.com/en-us/windows-hardware/test/weg/delivering-a-great-startup-and-shutdown-experience
-
-Thank you.
-Zengruan Ye
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

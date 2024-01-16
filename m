@@ -1,238 +1,133 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp595441ejf;
-        Mon, 15 Jan 2024 17:10:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFBLDVNAwQGeQohsY2YpcjN8GnCDLe/OG/eRorgdSdsoYVHetC5EsU6SIwjBkkCRPFOeNKn
-X-Received: by 2002:a05:620a:66d:b0:783:25ef:818e with SMTP id a13-20020a05620a066d00b0078325ef818emr6956277qkh.116.1705367443764;
-        Mon, 15 Jan 2024 17:10:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705367443; cv=pass;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp750326ejf;
+        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHBHPy1Gpo/ptQDOCioEEuRRZN2OAKrHExoYFR7M4qhOEwUNuZVQjtCFrKza73tA6bS3RKl
+X-Received: by 2002:a05:622a:1386:b0:429:c526:92bd with SMTP id o6-20020a05622a138600b00429c52692bdmr8602701qtk.28.1705395029365;
+        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705395029; cv=none;
         d=google.com; s=arc-20160816;
-        b=uTe6gbGZpzlYchVyXerms0oBkjAncjf1//0fLy5FG6f1u+B49/SuBgDVwqigv7PqYp
-         0QkZbgUu2A0Q1mhUZfkrPTA0jWSRkS21oZbYGLTE/fxH9ogJMe10qEXnPdu0hj1ZnelB
-         l/CGWUEcv3S2nzyeHtEqD8Nv46MmFAJxv7GKAFGimzrA6AkZyhZKyG/PpvwqX1voj35m
-         OMzaoGmAbJWdfwNUlluKBbbzKqn+rab/03Z+1FgICxvetbTEaKBceUPnj1oy2KBODtA2
-         y37+ZKFPV1t6H1IhTd1Mfj4VO1HXb0hrt02R+1RjEAR9UYzXW/iqcXSIIeB9xBKHd4ek
-         skOw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from;
-        bh=SWgcDjUyZMtL9DFUEv4cj7M9P0hs02oxETW145rxLtg=;
-        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
-        b=z15r+px1Bg6HOFP9p6lvB0CZ/87QlOPokH40mveJGvr6H5J8bUBSCQPTQilQRzKPIz
-         NvmF3XXgok0IhIwkIWxBTwV7H18OsJizolk0bFbIUjQFE+XrlnDlc3uOmfIuEGlj3gMa
-         QLqhSwf3DTTpLbYbCkUgpJl6lWvwlUSCTh0V2WsSgu/UD2r9hX5cZDeKRvl4PXU+y1CR
-         OEYa++9nCMbvsvHsziDx5ExbVfK46pI2PuTSiekBCt1FagbzHf3I14rEbI+Qco4GYZ9h
-         4e9vyU/2Vvj8J1aaMocSq4wC7oJ+xc6++DreopwDht3hV7pm7QrRXWw7PPSuwRtwSliy
-         5zFQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=fxigGR8nW11Mx/RjZe9bliL/RPj4aAyypFsscuzxU2W/+obln3LBlon3jiBL8S4gTJ
+         kGVwLul2PYLZe0BOgf5RZ8zw60Tk92KA74k7ThxYGvBL3Mp3CcUVlfTxPyRi2Qtn2W2F
+         YPb+6+Fl5BKLi7mG18icjmOlbsXUVDJgvRfMgoHa+hhJwU/Ho/j/swV3jhUOzi3nQBlb
+         nwUY0Q9acFyKj+NJvjapaGSMwb/htNFRw5L2Dfy+6pTVgt6krILUE8UFAFkeww9RATU5
+         zOMzkrD3PXuLkr3GeRp3jWXpTv5Lv+xg/S+8vieUeMfXj61agW4crIjr1XcIH84Q8ESP
+         Gl7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:mime-version:user-agent:date:message-id
+         :subject:cc:to;
+        bh=7NhM7MwHcgQSsRtLGzzoVmBue3ZR7kyzW5x3ZtElHvk=;
+        fh=PIbGBagwLpv6m0icLWEhwafnC4co/H/Kz+HEUUEdBUE=;
+        b=yvlBRiqg5ejE8ROdrfDok3/Rv/J1iQkgmh8ZorCMTVxxH6pmZ6BGQbkoMuYGRSm60B
+         4FsXS/C6kAcC2UFMuibEhVg25EAudv46fA+qsfs3do2QIGfwPqntoiJbzSpFskK6IJFd
+         8fV3du6epB0OS7S6auvp+Z2UHapo+hLJZSzqG5cZ6QP6Y1xGpI32B9QAPTOBl3F0EMJD
+         iUOamJDrXGIcDCX2e5DSYLnoQ0glB2PmkqCJnsSgO+L5J2fOT8Mzu71mWmIT0+k4rbtf
+         8Sk2zK7Mj65c40ynQeRkt2B+55FxTX9IR3kUgDKUY2XdvdMxDQX34j5Qw+VVdZZn7/ar
+         jvYg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020a05620a441100b0078362336cb8si2347285qkp.273.2024.01.15.17.10.43
+        by mx.google.com with ESMTPS id i10-20020ac85c0a000000b004298c93b0e2si9494530qti.683.2024.01.16.00.50.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jan 2024 17:10:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jan 2024 00:50:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rPXy7-0007Uu-2c; Mon, 15 Jan 2024 20:10:19 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rPf9E-0007yc-A7; Tue, 16 Jan 2024 03:50:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rPXy1-0007Qv-8G; Mon, 15 Jan 2024 20:10:13 -0500
-Received: from mail-sh0chn02on2062c.outbound.protection.partner.outlook.cn
- ([2406:e500:4420:2::62c]
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
+ (Exim 4.90_1) (envelope-from <yezengruan@huawei.com>)
+ id 1rPf9C-0007yP-Pe; Tue, 16 Jan 2024 03:50:14 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rPXxy-0005hs-CI; Mon, 15 Jan 2024 20:10:12 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=acSE9P1sV/s6dLrdtU8S2HL3hSh8wSg20Hk9fQId1BI8zzZN/QeCZwg/JaUYbQpG90zuX/2v1V1O3xLUW2MJGF6KMsRyWPxIlI9hB4dMX7bhi2UDoeK7/V/xjnfaNR6KuuYrhHHkHMa7AkchMTvtpNtEaOjmBlMUILE2igWutneKBrZJkzMDiFftQpbmcsFvj1EomQMO8DBjG4a4QP46z4/uOuVirx2ZdkMsvHymxTDqdNkcr4s83AyrgUxVMSSXSTwY7Z6GtxcI7Om3TEthDLs4EamIDZexQt7SLlvEtbpcnD7maAChxw8SZ4ZqiNn5jnK4I1TzH7KcIsbFK2saog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SWgcDjUyZMtL9DFUEv4cj7M9P0hs02oxETW145rxLtg=;
- b=Z2Euo63BQEau+fJKZJp+lW+qKM3uQ1+KOTcSLsKo4SYQiarNM3WcVt+iInnqEDau1DsNjs7jxSWPpaX77J1wn6ocAMLZ4+6kf3JoOHYlvz08BJhgqot0hhdJ+aesi54r5uWxUMWlykPScVNJ88HIPYXWTIiyZ5Dcf/M/LePXv7KU82GDuHqL7Z+H05hpzS5X3DPb6p3b/qME2P8Y/UVBJPfVOjV+QVbucBbvR0jSeiDtYuxdgjudahezNSoUogHf7YKxKxNa6CsxUFKEf2qIn/zu5VWS0lGUXMgZBO3VP8H0KPzdpOcuVKrf3xiX5CHts8PgUsXMWpfCTQr9mkzsFA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:1c::14) by SHXPR01MB0527.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:1e::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7135.33; Tue, 16 Jan
- 2024 01:09:54 +0000
-Received: from SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- ([fe80::535d:fb55:ed0:334f]) by SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- ([fe80::535d:fb55:ed0:334f%3]) with mapi id 15.20.7135.033; Tue, 16 Jan 2024
- 01:09:54 +0000
-From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
- shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: [PATCH v2 2/2] hw/riscv/virt-acpi-build.c: Generate SPCR table
-Date: Mon, 15 Jan 2024 17:09:30 -0800
-Message-Id: <20240116010930.43433-3-jeeheng.sia@starfivetech.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
-References: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: ZQ0PR01CA0031.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c550:2::16) To SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:1c::14)
+ (Exim 4.90_1) (envelope-from <yezengruan@huawei.com>)
+ id 1rPf9A-0008TL-DS; Tue, 16 Jan 2024 03:50:14 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.252])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4TDjNV5lTFzWmYZ;
+ Tue, 16 Jan 2024 16:48:58 +0800 (CST)
+Received: from canpemm500001.china.huawei.com (unknown [7.192.104.163])
+ by mail.maildlp.com (Postfix) with ESMTPS id ECFEA180071;
+ Tue, 16 Jan 2024 16:49:58 +0800 (CST)
+Received: from [10.174.185.33] (10.174.185.33) by
+ canpemm500001.china.huawei.com (7.192.104.163) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 16 Jan 2024 16:49:58 +0800
+To: <qemu-devel@nongnu.org>, <qemu-stable@nongnu.org>, <qemu-arm@nongnu.org>
+CC: yuzenghui <yuzenghui@huawei.com>
+Subject: [Qemu-arm] Windows11 guest Fast startup cannot work
+Message-ID: <6dad82d6-2722-3a07-03ee-6dea6d74ba47@huawei.com>
+Date: Tue, 16 Jan 2024 16:49:58 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SHXPR01MB0574:EE_|SHXPR01MB0527:EE_
-X-MS-Office365-Filtering-Correlation-Id: 412dbab7-e065-439f-0158-08dc162fd972
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 0JjhB5pgBW1FYD/xKugSCMLI5rDVGN+bFi48BPsJcVHnAqo254KrtajXerlRJtoMHehVhF/0ZkRfZAFr2N7gIUvkSVSV0dsN+AYmahXj+TG5Mv7Ih0tBSskUsH2/DCL+uJ0n3QJ9o8sGpWciZDxagY7PINm31vjGlwA8Fwfc2vyDoEJDL5/Zh/PTIGV8huD9x3Q09HJeJW7FM4PWs2ALPWEAM1WOLebivU4yJyN6kWt6keBfpxfJbqWtv7KDI9bOSeDTo8iymZz7WgDEGVhd6wa+GmM3VdF5DYmTH/WKJ6I+FPGhqM415eu2i2JGCAQ8bTZl69KK4Hq2O4cpdEaPK6osk0hbqJLWU3x9STlngJgXbyauLHUOYmchWr9YASIDkH9jX1cCGJyiAhafgNS7NA/uxg7Pi2PnRryX3unHaAMY7tn0OghUMypwgm88scbFlzjwd9X7ZKeJoZSiXqj3chZImi67ic7/DIVC6Ea3lQTJmL8KDndD499ElBYQ42Dq5q3NStKGUKlGGUGSzngdajJqhGsLc0bnn3wE2rGghk/x8sgMmSdIPvxjRgKRdgKV
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(366004)(136003)(346002)(39830400003)(396003)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(1076003)(26005)(41320700001)(8936002)(41300700001)(66556008)(66476007)(8676002)(66946007)(508600001)(86362001)(6666004)(2616005)(36756003)(2906002)(38100700002)(38350700005)(5660300002)(40160700002)(52116002)(7416002)(4326008)(40180700001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3FQ/UbsVzUX/+3Usmq5fVxDns7Q6qn+Gww6Lzrb0fAQVqYBOEj5BgTGLDOc4?=
- =?us-ascii?Q?/wEg+d1hYYlkVD0Kxny+/YOofFHT0iXOIAEFzO/lUVrTmUB7997g3OPeP3vp?=
- =?us-ascii?Q?CNKST69t8tuSQplnFr6F7VtrdJ0HrzVf9ROim2UGVv1OawbS4RtXK1ssSwF9?=
- =?us-ascii?Q?XhGS+K5xzyS5Ms5KIvtLvzv171wVphGLL44abAjVlSIGXTINmIou2dSyKKKN?=
- =?us-ascii?Q?sHJmWckFGo+7lF30WwY84TvER3DriHxDvlSwvbR23dAmR55vXFUgndopoVVt?=
- =?us-ascii?Q?Hj2tDd0IIviXjOgqYDA35d/k36x6nBDXoepNlFIYLe0BdTzhRcbDPfgz4rLd?=
- =?us-ascii?Q?RvyLLOrg6bbE4uLrPzbYkMBsKyQYEI1ylmCoBf4yHaqNpwTxQ/qL2xEls5cH?=
- =?us-ascii?Q?x4m3G3Cm/f1Lxc1TxPcr4CpuPDWpi31z/SaF3vz1NX56spwbuE47RQu2ZbNe?=
- =?us-ascii?Q?VtgrXsnZuFQOVLyYdfPL1+WEhObxU+/BVBZ8z+8AkmbBeOGVOc1z3U/vxQdW?=
- =?us-ascii?Q?/pQais6KnEW7ciyE5MRQxZmvmZONTA3WBT6NK9gWFP1El0j3e2AmTjEjXsNk?=
- =?us-ascii?Q?+AZbwQQ8NzKbN2qbz9G1zs6EXqnylMpJ5ycqyAxzSbwioPvHUb8Z0o5er9R9?=
- =?us-ascii?Q?fLJvyk7lKQFil2wJ7Ucg4K5gdnyXPKLUhBwHatAaClQQVqPU6fYvBzMI1ToI?=
- =?us-ascii?Q?gg3aI/T4lOvRQt8F8VUCaTMhfoDD1p/OBoOBE78MZZNVnjAcdS6aNkq+yb0T?=
- =?us-ascii?Q?qe3RMgwWiRWLVNSGa3QkSWNzTJcMZBdugHA32o2C8OcsqiBnYIJZICW4FrPa?=
- =?us-ascii?Q?+NZzZVYVjjYyeNPPVEmGtJJ37fHZDnv9TN+Ua6UrBgWW8UT9D61mr9X1MWx8?=
- =?us-ascii?Q?ZAyest/qneMv1ktt6Lwu199fRdx1hzDSNwUiYf+hNlbXBUkJQrTFc4yi489a?=
- =?us-ascii?Q?wY0K7vaZCQANaPz9egXkAEa14ymrKHfyYoQPbSks7jm2d06AAnY1UW1kWiiZ?=
- =?us-ascii?Q?KBklowyRIb7mIG/+kRsM8rJgKJ2n/IgsvAmGP+wpZY58EdzGZqHcZ7M161I4?=
- =?us-ascii?Q?YBDwzlTfRVqDUG9O61az/kJKKJULyQ9ibbzrjwOy9UDKn6OTHZ0Kh4h8QGFu?=
- =?us-ascii?Q?mRXVL53aSzOwHJ53D7d8EX+/suPA/+/UuAhWlnb8P2/kzv026pLhmV/UKcgD?=
- =?us-ascii?Q?Hy8C/TezUM7RLdRz8+iXYnO5xJvUVE5H2cfcWFWBjM6X+y6Cwy8s3f7zCrCY?=
- =?us-ascii?Q?47HqtovUosM3glqENgApb0Xe9lZRdHwN6cBL+r17FG/kbCzjAa+RIs841TR6?=
- =?us-ascii?Q?UiidXYE4KMMWlKL3pxgWySKMFt1+ThAhQkP44o5M4Ss4kxbnt+gk9Sv6Y+7w?=
- =?us-ascii?Q?+mEOwBPSQ6EYuiNjQSAwHuo4ofI1CMDw+SUFaUa4XXoAUaVAFfjfoeWyokSV?=
- =?us-ascii?Q?/bC34HggG3spwwZCF0Ltv+XCUBryL8tFzMz+X6WP1xaY+VhYFuc8QtOkqUHT?=
- =?us-ascii?Q?8B6Naf6RP67t0gVQ+KlSUlPhgIoj/4f/t17fxBApCiyLbFGTvuBNwbjwf9eX?=
- =?us-ascii?Q?aqJNKsL6MH2pvYXgw4mp1AQwyFJxNL1RrBKhObQ8FgXspzSHKfICCNkRj9fE?=
- =?us-ascii?Q?2A=3D=3D?=
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 412dbab7-e065-439f-0158-08dc162fd972
-X-MS-Exchange-CrossTenant-AuthSource: SHXPR01MB0574.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jan 2024 01:09:54.9501 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7Z+006pjy77HiNUa2wgDMBAb+9MW4XkGkhsp7KUqBOiJuqjLZ4qbRWOjE+heWpQ3nmsNI48l19gdA3L7H4NdZcAMpSMP4VPCB0Mzira1G8Y=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SHXPR01MB0527
-Received-SPF: pass client-ip=2406:e500:4420:2::62c;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.174.185.33]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ canpemm500001.china.huawei.com (7.192.104.163)
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=yezengruan@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ URI_TRY_3LD=1.999 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 72QiQt644wGt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  yezengruan <yezengruan@huawei.com>
+From:  yezengruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: P3TZEsIPHCrO
 
-Generate Serial Port Console Redirection Table (SPCR) for RISC-V
-virtual machine.
+Hi,
 
-Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
----
- hw/riscv/virt-acpi-build.c | 39 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+I want to improve the startup speed of Windows VM. On the x86 
+architecture, QEMU's Windows11 VM can enable the Fast startup function, 
+but it cannot work on the ARM architecture. By the way, the Fast startup 
+function of Windows on ARM physical machines can work normally.
 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 26c7e4482d..7fc5071c84 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -174,6 +174,42 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-     aml_append(scope, dev);
- }
- 
-+/*
-+ * Serial Port Console Redirection Table (SPCR)
-+ * Rev: 1.07
-+ */
-+
-+static void
-+spcr_setup(GArray *table_data, BIOSLinker *linker, RISCVVirtState *s)
-+{
-+    AcpiSpcrData serial = {
-+        .interface_type = 0,       /* 16550 compatible */
-+        .base_addr.id = AML_AS_SYSTEM_MEMORY,
-+        .base_addr.width = 32,
-+        .base_addr.offset = 0,
-+        .base_addr.size = 1,
-+        .base_addr.addr = s->memmap[VIRT_UART0].base,
-+        .interrupt_type = (1 << 4),/* Bit[4] RISC-V PLIC/APLIC */
-+        .pc_interrupt = 0,
-+        .interrupt = UART0_IRQ,
-+        .baud_rate = 7,            /* 15200 */
-+        .parity = 0,
-+        .stop_bits = 1,
-+        .flow_control = 0,
-+        .terminal_type = 3,        /* ANSI */
-+        .language = 0,             /* Language */
-+        .pci_device_id = 0xffff,   /* not a PCI device*/
-+        .pci_vendor_id = 0xffff,   /* not a PCI device*/
-+        .pci_bus = 0,
-+        .pci_device = 0,
-+        .pci_function = 0,
-+        .pci_flags = 0,
-+        .pci_segment = 0,
-+    };
-+
-+    build_spcr(table_data, linker, &serial, 2, s->oem_id, s->oem_table_id);
-+}
-+
- /* RHCT Node[N] starts at offset 56 */
- #define RHCT_NODE_ARRAY_OFFSET 56
- 
-@@ -555,6 +591,9 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_rhct(tables_blob, tables->linker, s);
- 
-+    acpi_add_table(table_offsets, tables_blob);
-+    spcr_setup(tables_blob, tables->linker, s);
-+
-     acpi_add_table(table_offsets, tables_blob);
-     {
-         AcpiMcfgInfo mcfg = {
--- 
-2.34.1
+Is there anything missing in QEMU's ARM architecture for Windows guest?
+
+My environmental information:
+Linux 5.10
+QEMU 6.2.0
+Guest: Windows11 ARM
+
+QEMU command line:
+qemu-system-aarch64 -nodefaults -machine 
+virt,kernel-irqchip=on,virtualization=off,gic-version=3,its=off -accel 
+kvm -cpu host -m 6144 -smp 6 -bios 
+/usr/share/edk2/aarch64/QEMU_EFI-pflash.raw -drive 
+if=none,id=system,format=qcow2,file=/data/images/win11_disk.qcow2 
+-device virtio-blk-pci,drive=system -device 
+nec-usb-xhci,msix=off,msi=off -device usb-kbd -device usb-tablet -device 
+ramfb -display gtk -name Windows -qmp unix:/tmp/qmp.socket,server,nowait 
+-d all -D /tmp/qemu.log -msg timestamp=on
+
+Refer to the Fast startup link below:
+https://learn.microsoft.com/en-us/windows-hardware/test/weg/delivering-a-great-startup-and-shutdown-experience
+
+Thank you.
+Zengruan Ye
 

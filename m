@@ -1,93 +1,136 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp902265ejf;
-        Tue, 16 Jan 2024 06:15:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHWT2cs7lnbNqDxJ0OIoswdBnkGc1parl/3JolBwjcnSMVyBm4E3MwBN52h/og6vzax/Bwf
-X-Received: by 2002:a05:6214:20ea:b0:681:6584:9c93 with SMTP id 10-20020a05621420ea00b0068165849c93mr2226525qvk.55.1705414511808;
-        Tue, 16 Jan 2024 06:15:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705414511; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp918863ejf;
+        Tue, 16 Jan 2024 06:44:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE/rfvwP93LZauq+ekZCG2Coh8K4pLGyniMe9RbCSfnnd4eGBvXPjOzPZsS34D9LkjMFMpq
+X-Received: by 2002:a05:6808:20a1:b0:3bd:9043:95d2 with SMTP id s33-20020a05680820a100b003bd904395d2mr387903oiw.24.1705416292883;
+        Tue, 16 Jan 2024 06:44:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705416292; cv=none;
         d=google.com; s=arc-20160816;
-        b=ToIgy3/6i10afwSOrqmgGsTNMkRk4QuLJZnaSLoWqMSctz8l/bcLah14ETkI6RLAFR
-         tQZpU7M8lt4I+K+hVh1cdWxevxN1sVrudLDySNBeL+5eqwO6nukqIylrOV03zznJKpxS
-         al+ir27zP4PyFa+nxXWskEVmADtOJedh0t9xFcg/z88D0ScSg5lpF/vAq/0FHxZ8MkZ6
-         AvbRZhAV3uJFkZ6vmB9HTDgvKepamYuFcNriewWN55J3TDa/emvLinq2rj1QsYOZ/FR6
-         2m9oSMPCLotkI9vKAd0BJ/5/tbgCCsZrqET1mChCFm9IuZ5BUd+tkHXcHLRCJdbEUtmL
-         FScw==
+        b=szlKRE/stYk7knsEH0qEiQx0GfDEmvEUpJNXnxyWz2zCcY4bLJH9bG9pKw9sVAZhef
+         NTjwiAlDwPy5QQk+qgKWo9XAQStpzzSX1kIUqi3HTbVK8EjTF+3xsROoJS4yembRk2DI
+         CYMfEBR3HuOn8NPUY0CXnQsyhefqbFCVmS9WXutCmODdIQ1OPcvGOK2UgDEFqRf1pNLJ
+         6EbdBB8flul/ZB/3jByKiMbHuqfXHDj8a2c6Ob7C55VO4FlRwgUdFO63Bvu03r6SlgCt
+         +5gRO9YPHImUjGuZx0xFUF6BykG9NTBNU6+jNZheX3djQNAYTNif377Yz9oSnGYgpwhn
+         sa2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:mime-version:subject
-         :to:from:date:dkim-signature;
-        bh=68K3OiPyi1wmxbXKVPK6Rq2PpKH3K91k1PymycU+GYw=;
-        fh=omRVdegjSObLqZQ/sYFkP5s/rlX0MPKsjDmMz35ZNEw=;
-        b=ub4KU8px0YuOfreU4JTeP2Btqc5uRRXOzYRp4Gnvnh83cSOnTAL6L2ab65cacOVGx+
-         vVMu2ij1p4zqyQT4qeGDIAWm+Dy19swGKL1Z0T8n/1kczbhMacZTVszf8Up10GI55j0O
-         XbJlqkNegq/dBojEjIv2rVNpwsYwoKz3VteFCgUd1LRiStauN/PPmZnwbkX7T1GKpp+j
-         EOpqKN1/n/u8VXX0boN6tcyAoeMP+BMunmInTnP6DJW8ntuSXl9VRfwrCA1fl311x/uG
-         sUt6K31QhZDHsSXeqFTj4QP5zoBrLSh87sjzXhxLNu1+9+6kr7Poe+gjluc56puaNpn2
-         DTNQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
+        fh=+ztKG102Dtyh3/ypdyuwCMn1Av5726neqv+2jMtYmy8=;
+        b=cko5Z8I4c/+meJ92yTelM1dTMQ/YFcr5H1hSeyxiGi3OmFOn7zAIgkik6Metg3PB+U
+         LWGIp+iHQt1z3lUya++EhRlEHg+I06oAzapOKYsfuI5v4IiJJ3i7SDhyL0U6214I525z
+         9nTxI/giB8BaCzeBC836ff74uLUw25OAZ1/bi3a7zZWs7F+YFBBOCtnUMHI5AV6pN9wf
+         O/npMrSteAE74BH1w9w/J8ARpexjtOqGGcYuucKtRqwGWtLctdRzp7YDYSGBRjK+ckLK
+         4O0QngkS/rQ6Leswtx+r3p9ISFcdQOFmuPWsIdaxfXDrZNyafzimWK1gtRGpusuaGIIf
+         9x0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@126.com header.s=s110527 header.b=mQhbGajg;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N284IVpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=126.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5-20020a0c8d05000000b0067f2b2b2468si9573962qvb.116.2024.01.16.06.15.11
+        by mx.google.com with ESMTPS id a12-20020a05620a124c00b007833f10151bsi9784695qkl.383.2024.01.16.06.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 06:15:11 -0800 (PST)
+        Tue, 16 Jan 2024 06:44:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@126.com header.s=s110527 header.b=mQhbGajg;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N284IVpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=126.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPkDE-00071F-QN; Tue, 16 Jan 2024 09:14:46 -0500
+	id 1rPkgG-0003ti-By; Tue, 16 Jan 2024 09:44:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yezengruan@126.com>)
- id 1rPdj0-0003Ek-MI; Tue, 16 Jan 2024 02:19:06 -0500
-Received: from m15.mail.126.com ([45.254.50.223])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <yezengruan@126.com>)
- id 1rPdix-0001vl-S8; Tue, 16 Jan 2024 02:19:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
- Message-ID; bh=68K3OiPyi1wmxbXKVPK6Rq2PpKH3K91k1PymycU+GYw=; b=m
- QhbGajgvTlFPi6EdNi5bfa9LHOKq0r9tnOu2dtoQYoUdSAoQdZ6npapXD8T+o49k
- dxtQX529Dyi+f8C3DO7g7AQF6vgzXW4FRs6E/LssdJDOg1NeNBHV1MJIdg/Tcwe5
- zKSobfyoMJYAFV3+lnUfv+N9GIZ8rmPAOfczyqa2qY=
-Received: from yezengruan$126.com ( [119.3.118.251] ) by
- ajax-webmail-wmsvr-41-106 (Coremail) ; Tue, 16 Jan 2024 15:18:45 +0800
- (CST)
-X-Originating-IP: [119.3.118.251]
-Date: Tue, 16 Jan 2024 15:18:45 +0800 (CST)
-From: =?UTF-8?B?5Y+25aKe6L2v?= <yezengruan@126.com>
-To: qemu-devel@nongnu.org, qemu-stable@nongnu.org, qemu-arm@nongnu.org
-Subject: =?UTF-8?Q?=E2=80=8B[Qemu-arm]_Windows_11_guest_Fast_startup_cannot_work?=
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
- Copyright (c) 2002-2024 www.mailtech.cn 126com
-X-NTES-SC: AL_Qu2bB/+Ttk0p4yaYYekfm04Qj+4/UMq1ufsk1IZSPJtwjDvj4gkRdHJOIlrt1dC1BBuGoRWaWzVW5OljY6x0fLAXbfecxhfQF2ME9KrcBLJ7iA==
-Content-Type: multipart/alternative; 
- boundary="----=_Part_78125_1362291615.1705389525611"
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rPkgE-0003sx-Jq
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:44:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rPkgC-0006wy-PN
+ for qemu-arm@nongnu.org; Tue, 16 Jan 2024 09:44:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705416277;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
+ b=N284IVpFRuhQJKaWoaf2glZXB/VshofvJoTeJTze6D0r3pbxFF4qzSxyUqd2XjpOzRY/k3
+ knh+M1hfnx6v6qfRRHPz98mfg34DOcApJqHsoYyirce6+6qyAC+S56EnnpaJSCPdpSrP9G
+ PukHp7AodG3YOLExkd36J4NTcxy1c40=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-442-sWQcScymOviz0b2dmyP44w-1; Tue, 16 Jan 2024 09:44:35 -0500
+X-MC-Unique: sWQcScymOviz0b2dmyP44w-1
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-429c5cf9585so76439031cf.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 06:44:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705416274; x=1706021074;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=28Kn8cex8y9+iSmT8GYpAOyhIo/pnm+omlqhBsqFdXA=;
+ b=rnE8BlvnvHPt10kVlmOCoIwpTspx0OAS9xEjbvIHe5CO7Fq37Rk2ILJS+8z0K9tlta
+ bEWL07/59kaUmrv3OZUHNRgtkadb0Aw0fAJWPCvL8VbZjToIp5SZoh9gpVR19yeS1KXJ
+ B4VH67v7V/uTcwqzKX88dmzhRzgYZEwGustYzv9raoXX5g/r3amkDfCScKKfzvTah0b8
+ wznGgiQL6RN+59yEskxn0EAlKb3kfHSbQenmnvJnKqQmqgtWRCpvdFQwKEHsgye9mMhv
+ EOK+58uOiqGdQm7WzLEgXxEYqpuUmhAoozqs+tMH8ZA+fD1rJGJZzDaM7CBcnioQXu2n
+ HIMg==
+X-Gm-Message-State: AOJu0YyJx67W3uUfvpjHzD44YzaMLFpIZjsRtW1qiu1RjAqz3cx84Ii0
+ qOtpo9RS/gjSlRf+vNN0th8JmgO3tBoGJnZ42P6pyscWbKjEVIEPimNqjpJF2tGFfQRaRkJU+Ih
+ TPjdXjAVq6QuCKPFEhYcW
+X-Received: by 2002:a05:6214:258e:b0:680:b48c:b543 with SMTP id
+ fq14-20020a056214258e00b00680b48cb543mr9453228qvb.64.1705416274305; 
+ Tue, 16 Jan 2024 06:44:34 -0800 (PST)
+X-Received: by 2002:a05:6214:258e:b0:680:b48c:b543 with SMTP id
+ fq14-20020a056214258e00b00680b48cb543mr9453217qvb.64.1705416273985; 
+ Tue, 16 Jan 2024 06:44:33 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ez15-20020ad4590f000000b0068116eaf26bsm4236319qvb.114.2024.01.16.06.44.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jan 2024 06:44:33 -0800 (PST)
+Message-ID: <b513dd07-e696-411f-9c8a-ca1a8a6269f4@redhat.com>
+Date: Tue, 16 Jan 2024 15:44:30 +0100
 MIME-Version: 1.0
-Message-ID: <2b8a530a.4d83.18d11230a6c.Coremail.yezengruan@126.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: _____wD3fyLWLaZlIDcfAA--.35268W
-X-CM-SenderInfo: p1h2v0pjuxt0a6rslhhfrp/1tbi5gRngGVLYZCwhQABsu
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
-Received-SPF: pass client-ip=45.254.50.223; envelope-from=yezengruan@126.com;
- helo=m15.mail.126.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- URI_TRY_3LD=1.999 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] virtio-iommu: Use qemu_real_host_page_mask as default
+ page_size_mask
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, clg@redhat.com,
+ alex.williamson@redhat.com
+References: <20231221134505.100916-1-eric.auger@redhat.com>
+ <20240116125359.GA710190@myrica>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240116125359.GA710190@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 16 Jan 2024 09:14:41 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,66 +142,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PhEMdNFIfdGD
+X-TUID: fhP5txbwh+bs
 
-------=_Part_78125_1362291615.1705389525611
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+Hi Jean,
 
-SGksCgpJIHdhbnQgdG8gaW1wcm92ZSB0aGUgc3RhcnR1cCBzcGVlZCBvZiBXaW5kb3dzIFZNLiBP
-biB0aGUgeDg2IGFyY2hpdGVjdHVyZSwgUUVNVSdzIFdpbmRvd3MxMSBWTSBjYW4gZW5hYmxlIHRo
-ZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24sIGJ1dCBpdCBjYW5ub3Qgd29yayBvbiB0aGUgQVJNIGFy
-Y2hpdGVjdHVyZS4gSW4gYWRkaXRpb24sIFdpbmRvd3MgY2FuIGFsc28gZW5hYmxlIHRoZSBGYXN0
-IHN0YXJ0dXAgZnVuY3Rpb24gb24gdGhlIEFSTSBob3N0LiAKCklzIHRoZXJlIGFueXRoaW5nIG1p
-c3NpbmcgaW4gUUVNVSdzIEFSTSBhcmNoaXRlY3R1cmUgZm9yIFdpbmRvd3MgZ3Vlc3Q/CgpNeSBl
-bnZpcm9ubWVudGFsIGluZm9ybWF0aW9uOgpMaW51eCA1LjEwClFFTVUgNi4yLjAKR3Vlc3Q6IFdp
-bmRvd3MxMSBBUk0KCgpRRU1VIGNvbW1hbmQgbGluZToKcWVtdS1zeXN0ZW0tYWFyY2g2NCAtbm9k
-ZWZhdWx0cyAtbWFjaGluZSB2aXJ0LGtlcm5lbC1pcnFjaGlwPW9uLHZpcnR1YWxpemF0aW9uPW9m
-ZixnaWMtdmVyc2lvbj0zLGl0cz1vZmYgLWFjY2VsIGt2bSAtY3B1IGhvc3QgLW0gNjE0NCAtc21w
-IDYgLWJpb3MgL3Vzci9zaGFyZS9lZGsyL2FhcmNoNjQvUUVNVV9FRkktcGZsYXNoLnJhdyAtZHJp
-dmUgaWY9bm9uZSxpZD1zeXN0ZW0sZm9ybWF0PXFjb3cyLGZpbGU9L2RhdGEvaW1hZ2VzL3dpbjEx
-X2Rpc2sucWNvdzIgLWRldmljZSB2aXJ0aW8tYmxrLXBjaSxkcml2ZT1zeXN0ZW0gLWRldmljZSBu
-ZWMtdXNiLXhoY2ksbXNpeD1vZmYsbXNpPW9mZiAtZGV2aWNlIHVzYi1rYmQgLWRldmljZSB1c2It
-dGFibGV0IC1kZXZpY2UgcmFtZmIgLWRpc3BsYXkgZ3RrIC1uYW1lIFdpbmRvd3MgLXFtcCB1bml4
-Oi90bXAvcW1wLnNvY2tldCxzZXJ2ZXIsbm93YWl0IC1kIGFsbCAtRCAvdG1wL3FlbXUubG9nIC1t
-c2cgdGltZXN0YW1wPW9uIAoKClJlZmVyIHRvIHRoZSBGYXN0IHN0YXJ0dXAgbGluayBiZWxvdzoK
-aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3MtaGFyZHdhcmUvdGVzdC93
-ZWcvZGVsaXZlcmluZy1hLWdyZWF0LXN0YXJ0dXAtYW5kLXNodXRkb3duLWV4cGVyaWVuY2UKCgpU
-aGFuayB5b3UuClplbmdydWFuIFll
-------=_Part_78125_1362291615.1705389525611
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+On 1/16/24 13:53, Jean-Philippe Brucker wrote:
+> On Thu, Dec 21, 2023 at 08:45:05AM -0500, Eric Auger wrote:
+>> We used to set default page_size_mask to qemu_target_page_mask() but
+>> with VFIO assignment it makes more sense to use the actual host page mask
+>> instead.
+>>
+>> So from now on qemu_real_host_page_mask() will be used as a default.
+>> To be able to migrate older code, we increase the vmstat version_id
+>> to 3 and if an older incoming v2 stream is detected we set the previous
+>> default value.
+>>
+>> The new default is well adapted to configs where host and guest have
+>> the same page size. This allows to fix hotplugging VFIO devices on a
+>> 64kB guest and a 64kB host. This test case has been failing before
+>> and even crashing qemu with hw_error("vfio: DMA mapping failed,
+>> unable to continue") in VFIO common). Indeed the hot-attached VFIO
+>> device would call memory_region_iommu_set_page_size_mask with 64kB
+>> mask whereas after the granule was frozen to 4kB on machine init done.
+> I guess TARGET_PAGE_MASK is always 4kB on arm64 CPUs, since it's the
+> smallest supported and the guest configures its page size at runtime.
+correct
+> Even if QEMU's software IOMMU can deal with any page size, VFIO can't so
+> passing the host page size seems more accurate than forcing a value of
+> 4kB.
+that's my guess too
+>
+>> Now this works. However the new default will prevent 4kB guest on
+>> 64kB host because the granule will be set to 64kB which would be
+>> larger than the guest page size. In that situation, the virtio-iommu
+>> driver fails the viommu_domain_finalise() with
+>> "granule 0x10000 larger than system page zie 0x1000".
+> "size"
+> (it could matter if someone searches for this message later)
+sure I will correct it
+>
+>> The current limitation of global granule in the virtio-iommu
+>> should be removed and turned into per domain granule. But
+>> until we get this upgraded, this new default is probably
+>> better because I don't think anyone is currently interested in
+>> running a 4kB page size guest with virtio-iommu on a 64kB host.
+>> However supporting 64kB guest on 64kB host with virtio-iommu and
+>> VFIO looks a more important feature.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> So to summarize the configurations that work for hotplug (tested with QEMU
+> system emulation with SMMU + QEMU VMM with virtio-iommu):
+>
+>  Host | Guest | virtio-net | IGB passthrough
+>   4k  | 4k    | Y          | Y
+>   64k | 64k   | Y          | N -> Y (fixed by this patch)
+>   64k | 4k    | Y -> N     | N
+>   4k  | 64k   | Y          | Y
+That table is correct
+>
+> The change is a reasonable trade-off in my opinion. It fixes the more common
+> 64k on 64k case, and for 4k on 64k, the error is now contained to the
+> guest and made clear ("granule 0x10000 larger than system page size
+> 0x1000") instead of crashing the VMM. A guest OS now discovers that the
+> host needs DMA buffers aligned on 64k and could actually support this case
+> (but Linux won't because it can't control the origin of all DMA buffers).
+> Later, support for page tables will enable 4k on 64k for all devices.
+>
+> Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
-Zm9udC1mYW1pbHk6QXJpYWwiPjxwPkhpLDwvcD48cD5JIHdhbnQgdG8gaW1wcm92ZSB0aGUgc3Rh
-cnR1cCBzcGVlZCBvZiBXaW5kb3dzIFZNLiBPbiB0aGUgeDg2IGFyY2hpdGVjdHVyZSwgUUVNVSdz
-IFdpbmRvd3MxMSBWTSBjYW4gZW5hYmxlIHRoZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24sIGJ1dCBp
-dCBjYW5ub3Qgd29yayBvbiB0aGUgQVJNIGFyY2hpdGVjdHVyZS4gSW4gYWRkaXRpb24sIFdpbmRv
-d3MgY2FuIGFsc28gZW5hYmxlIHRoZSBGYXN0IHN0YXJ0dXAgZnVuY3Rpb24gb24gdGhlIEFSTSBo
-b3N0LiZuYnNwOzwvcD48cD5JcyB0aGVyZSBhbnl0aGluZyBtaXNzaW5nIGluIFFFTVUncyBBUk0g
-YXJjaGl0ZWN0dXJlIGZvciBXaW5kb3dzIGd1ZXN0PzwvcD48ZGl2Pk15IGVudmlyb25tZW50YWwg
-aW5mb3JtYXRpb246PC9kaXY+PGRpdj5MaW51eCA1LjEwPC9kaXY+PGRpdj5RRU1VIDYuMi4wPC9k
-aXY+PGRpdj5HdWVzdDogV2luZG93czExIEFSTTwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+UUVN
-VSBjb21tYW5kIGxpbmU6PC9kaXY+PGRpdj5xZW11LXN5c3RlbS1hYXJjaDY0IC1ub2RlZmF1bHRz
-IC1tYWNoaW5lIHZpcnQsa2VybmVsLWlycWNoaXA9b24sdmlydHVhbGl6YXRpb249b2ZmLGdpYy12
-ZXJzaW9uPTMsaXRzPW9mZiAtYWNjZWwga3ZtIC1jcHUgaG9zdCAtbSA2MTQ0IC1zbXAgNiAtYmlv
-cyAvdXNyL3NoYXJlL2VkazIvYWFyY2g2NC9RRU1VX0VGSS1wZmxhc2gucmF3IC1kcml2ZSBpZj1u
-b25lLGlkPXN5c3RlbSxmb3JtYXQ9cWNvdzIsZmlsZT0vZGF0YS9pbWFnZXMvd2luMTFfZGlzay5x
-Y293MiAtZGV2aWNlIHZpcnRpby1ibGstcGNpLGRyaXZlPXN5c3RlbSAtZGV2aWNlIG5lYy11c2It
-eGhjaSxtc2l4PW9mZixtc2k9b2ZmIC1kZXZpY2UgdXNiLWtiZCAtZGV2aWNlIHVzYi10YWJsZXQg
-LWRldmljZSByYW1mYiAtZGlzcGxheSBndGsgLW5hbWUgV2luZG93cyAtcW1wIHVuaXg6L3RtcC9x
-bXAuc29ja2V0LHNlcnZlcixub3dhaXQgLWQgYWxsIC1EIC90bXAvcWVtdS5sb2cgLW1zZyB0aW1l
-c3RhbXA9b24mbmJzcDs8L2Rpdj48ZGl2Pjxicj48L2Rpdj48ZGl2PlJlZmVyIHRvIHRoZSBGYXN0
-IHN0YXJ0dXAgbGluayBiZWxvdzo8L2Rpdj48ZGl2PjxhIGhyZWY9Imh0dHBzOi8vbGVhcm4ubWlj
-cm9zb2Z0LmNvbS9lbi11cy93aW5kb3dzLWhhcmR3YXJlL3Rlc3Qvd2VnL2RlbGl2ZXJpbmctYS1n
-cmVhdC1zdGFydHVwLWFuZC1zaHV0ZG93bi1leHBlcmllbmNlIiBfc3JjPSJodHRwczovL2xlYXJu
-Lm1pY3Jvc29mdC5jb20vZW4tdXMvd2luZG93cy1oYXJkd2FyZS90ZXN0L3dlZy9kZWxpdmVyaW5n
-LWEtZ3JlYXQtc3RhcnR1cC1hbmQtc2h1dGRvd24tZXhwZXJpZW5jZSI+aHR0cHM6Ly9sZWFybi5t
-aWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3MtaGFyZHdhcmUvdGVzdC93ZWcvZGVsaXZlcmluZy1h
-LWdyZWF0LXN0YXJ0dXAtYW5kLXNodXRkb3duLWV4cGVyaWVuY2U8L2E+PC9kaXY+PGRpdj48YnI+
-PC9kaXY+PGRpdj5UaGFuayB5b3UuPC9kaXY+PGRpdj5aZW5ncnVhbiBZZTwvZGl2PjwvZGl2Pg==
+Many thanks!
 
-------=_Part_78125_1362291615.1705389525611--
+Eric
+>
+>> ---
+>>  hw/virtio/virtio-iommu.c | 7 +++++--
+>>  1 file changed, 5 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index 9d463efc52..b77e3644ea 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -1313,7 +1313,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>       * in vfio realize
+>>       */
+>>      s->config.bypass = s->boot_bypass;
+>> -    s->config.page_size_mask = qemu_target_page_mask();
+>> +    s->config.page_size_mask = qemu_real_host_page_mask();
+>>      s->config.input_range.end = UINT64_MAX;
+>>      s->config.domain_range.end = UINT32_MAX;
+>>      s->config.probe_size = VIOMMU_PROBE_SIZE;
+>> @@ -1491,13 +1491,16 @@ static int iommu_post_load(void *opaque, int version_id)
+>>       * still correct.
+>>       */
+>>      virtio_iommu_switch_address_space_all(s);
+>> +    if (version_id <= 2) {
+>> +        s->config.page_size_mask = qemu_target_page_mask();
+>> +    }
+>>      return 0;
+>>  }
+>>  
+>>  static const VMStateDescription vmstate_virtio_iommu_device = {
+>>      .name = "virtio-iommu-device",
+>>      .minimum_version_id = 2,
+>> -    .version_id = 2,
+>> +    .version_id = 3,
+>>      .post_load = iommu_post_load,
+>>      .fields = (VMStateField[]) {
+>>          VMSTATE_GTREE_DIRECT_KEY_V(domains, VirtIOIOMMU, 2,
+>> -- 
+>> 2.27.0
+>>
 

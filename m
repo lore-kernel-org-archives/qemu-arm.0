@@ -1,116 +1,88 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp856221ejf;
-        Tue, 16 Jan 2024 04:54:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBsaAgWo/RC7om7ojU7JqUde2e5g/NP9rIeEjEAPkPrkqpuNdDuVyeyinBU0QDCdf51/CW
-X-Received: by 2002:a05:6830:89:b0:6d9:e3ad:a602 with SMTP id a9-20020a056830008900b006d9e3ada602mr4814286oto.5.1705409663826;
-        Tue, 16 Jan 2024 04:54:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705409663; cv=none;
+Received: by 2002:a05:7022:97:b0:73:b07a:d1c0 with SMTP id 23csp156411dlx;
+        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHL7eQTIkqKD9A9AmXAN1ILNj5vxGdnGJuXL3aUnjc/YfBMEfGc4vYH8/GOgBavKqmRuszZ
+X-Received: by 2002:ac8:5f0b:0:b0:429:e94e:5a94 with SMTP id x11-20020ac85f0b000000b00429e94e5a94mr4801949qta.36.1705410607144;
+        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705410607; cv=none;
         d=google.com; s=arc-20160816;
-        b=sOiW6TAdLVG44bvZD3hw55PvFY/UN161+VoYTzqP3AHcSmiZHlUR160c6BDqfGaWUw
-         gykk4aikuVc/6qMjeZ07VthhD9/P8KexT41tveCJssi8/Y194SMUMnfo1zXiR5pDHUkS
-         4FWIuab/vx4jqaoUQfbtZabD2MJwrOghquG0J9CyDhN6j1ncWj+WXJC5+XT2nYKRO3k9
-         OvEE+xLVoLdW8geqy4HSdwiS8X5E3k0Wb8WNirFnkl79BzPyKImi674fO2bR6ndxx2n/
-         ev0OtkwxQEn7AvvwtTkqzbW/9u4g5FZl7+jdkVfLp8a+NpkwRlWlAJ0qO433VZUT+dmb
-         fy9g==
+        b=wmWeyL6jrscyK2Wg9pCfX4HgszI2bB3J9FbQGxHU3EC2lc8BycgobZxEHNHM3FsRuA
+         XleP5CGtDT54m0SavUsMS82aAii1v3KrX7wK3ascpWmnyZ7W7oJ/wolYQp15gEasUweH
+         On12KkmbFjIu+0P6DQr5yfvo/qf5cuFZedVwx3HlIN3256wGJaY0aIUFwY6HTcC+7ut2
+         UhctsU/PoXhtjJvSURbcY5eGkWrL5J4UUMebLnSaaOmeC+eJgMrrHfrU+fMix3ikW7bX
+         +rdRA3J+T1k1+c2FL/TEalM/RJ8n3BidtqEERJXFnH1TaQXlry6WuOlUGhz38AmRweih
+         bMvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=9aqK08wufU5uXoPLSqlNaOYiNFaqBwBPzJjyRb7+Gqs=;
-        fh=PajfzdsUltYAWFfzzclm0e8l5D2t2Ccj+FvhIze7pn8=;
-        b=zlSBesvySKj8bckZmsOvT+pkbNWng2/1VJOKFy8n8Rp3cfv+MJOqRzBN6yX4Yxeg3Z
-         mQFa8aZHDXXKCEkT+SH1TzfqiEFKRDo3QfVygTaAi0wpIbfDomei3p6YnDQNWtckJdP5
-         Brnvo6LC2hxN05r2Ihwi63IxycDbxUohE/xrtRC5VzQZyOgzt1Ctpaw5jMjlF3FmJc6C
-         Uao4TjW0HBSZHttDY6p/D6AKKmxa7H6ryontH/x8TTbR7EghOy0DZL7xe4sMmcE/YZA6
-         HhLwOFSFuk+AksZB6c9FrQjHyCKAolKqqdtUELptFya/l7sQQh5OS0RHBXhvgwplOxnM
-         bxEA==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=PatB4vit1GFFc1ZInQKMiuGS4kU6QyLc2VhL6SqXi5c=;
+        fh=CPqfQhXyZp7q048m/2YkQDugvmq3ADVWuTpqTS8jIPQ=;
+        b=n7ERWx5BHgvDk6wwGdMrS6FF5pCLEvPclmCzH+QHxdoKrohAaePlmCu5NmtaTdYq/i
+         wbHtvPau8mjULXoiltmu/gQzHJtygw7kS50AUPni8/INhSzCJS0bmXyaKjPdtyg9Oesn
+         AOJ93HFM8amQDTt1gVGBubOX0w1GR60bAtDrWYlkfHOTJWUnB4iIE7bg+8qSob9UTg7o
+         wWbxBnyKWD1mK3nYkk3t9uJoZTCALVWjSFxcWcXcU2JzVOwnxrhLWnaVA7s6PG0FDTGG
+         JsLKFJNyOAv3c0BxBln+q0Rhvdd33lAjyAEEB4mn0ZQJNdwYIKNkYmEhxwAyQXzg/mRX
+         ZgYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fYk0kVo1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 20-20020ac85714000000b00429f8641bfesi2609343qtw.127.2024.01.16.04.54.23
+        by mx.google.com with ESMTPS id x17-20020ac85f11000000b004298cd61ef3si9561730qta.163.2024.01.16.05.10.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 04:54:23 -0800 (PST)
+        Tue, 16 Jan 2024 05:10:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fYk0kVo1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPix2-0004Py-UT; Tue, 16 Jan 2024 07:53:57 -0500
+	id 1rPjCV-0006f9-Nr; Tue, 16 Jan 2024 08:09:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rPix1-0004Pa-Dl
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 07:53:55 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rPiwz-0004qI-Lz
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 07:53:55 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-40e6f652eb8so29915805e9.1
- for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 04:53:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705409631; x=1706014431; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=9aqK08wufU5uXoPLSqlNaOYiNFaqBwBPzJjyRb7+Gqs=;
- b=fYk0kVo1FY5beIVc523S55dC/hL8IsUg7seks/l5bjyidab1sKuj8Y22xl/DOu0XqG
- XfJQYYDVP6dUqP+bfGg0Ayc2HncU7zalYIKdclgyHcYGcJ03V89ApI6qKTJbSKAuM8a7
- OzqHnGsSLwi0a8Z6MmTtx115ZL3L85a23OfxfhBslMfqI4evhXRW3YR0koKRy274pTv5
- gvTvifBxe4J8HEX5ZTsQpyKHIXe1gEqr67M8DD3tGnnyIWcV9VHijcOx6ghlqKoX4YMm
- xIoJ1EkOL16FCsS2fmzo19vx5dcvXuRGRuO2k1Z4wnaYq1mnlKV+y8DeIktMAkX2v3fC
- g9bQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705409631; x=1706014431;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9aqK08wufU5uXoPLSqlNaOYiNFaqBwBPzJjyRb7+Gqs=;
- b=xNUEwEsTo245bgKaM0ZJqlGMhmFKbIN/CTUs4O6glweKamhTvbFEsbse4oZIue+1pF
- NOt/2m1+nqizXTqX6I2vZC/C+h9EaXfiB8cYGXPIryc25qgiwuBsMBiTklhrI3ov+l7W
- GP43KS56eZDAjxdQUwDCZL2/NFawtLOmoq8GDScsPKve0BZj5TZQUc1YQyL7BzmOWH3T
- beadO0X9esnWfYC39VAch53VBV25e67BLJxMjH1QuUsybiMDthmfPOHRXp7BuVmo8H1q
- c+RRAnHyCxguGqRVuYANzQC7II95l1rWuAUNFfMq9b5S2+WLgdb9mp/Zyimg1hsKrnto
- Yq/A==
-X-Gm-Message-State: AOJu0YwZlYVcMBrNL8N4m9jg7DQ6++iqoCF2fbDDtaHDU14pbO+vapV8
- f/wv/JJrtZ7hRQerXIoVInpwaKVG4Fy1bA==
-X-Received: by 2002:a7b:c8cc:0:b0:40e:5327:91b4 with SMTP id
- f12-20020a7bc8cc000000b0040e532791b4mr3418376wml.222.1705409631093; 
- Tue, 16 Jan 2024 04:53:51 -0800 (PST)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- v13-20020a05600c444d00b0040e526bd5fdsm1264683wmn.1.2024.01.16.04.53.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jan 2024 04:53:50 -0800 (PST)
-Date: Tue, 16 Jan 2024 12:53:59 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, mst@redhat.com, clg@redhat.com,
- alex.williamson@redhat.com
-Subject: Re: [PATCH] virtio-iommu: Use qemu_real_host_page_mask as default
- page_size_mask
-Message-ID: <20240116125359.GA710190@myrica>
-References: <20231221134505.100916-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rPjCU-0006bK-H4; Tue, 16 Jan 2024 08:09:54 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rPjCR-00089R-IY; Tue, 16 Jan 2024 08:09:54 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDq6s41zWz6H6tG;
+ Tue, 16 Jan 2024 21:07:33 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 5CE03140A36;
+ Tue, 16 Jan 2024 21:09:42 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
+ 2024 13:09:41 +0000
+Date: Tue, 16 Jan 2024 13:09:40 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
+Message-ID: <20240116130940.00002523@Huawei.com>
+In-Reply-To: <20231218113305.2511480-28-peter.maydell@linaro.org>
+References: <20231218113305.2511480-1-peter.maydell@linaro.org>
+ <20231218113305.2511480-28-peter.maydell@linaro.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231221134505.100916-1-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,109 +95,230 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m4lilkkFUpwU
+X-TUID: 2FeF0kl3x4Jw
 
-On Thu, Dec 21, 2023 at 08:45:05AM -0500, Eric Auger wrote:
-> We used to set default page_size_mask to qemu_target_page_mask() but
-> with VFIO assignment it makes more sense to use the actual host page mask
-> instead.
+On Mon, 18 Dec 2023 11:32:57 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> If FEAT_NV2 redirects a system register access to a memory offset
+> from VNCR_EL2, that access might fault.  In this case we need to
+> report the correct syndrome information:
+>  * Data Abort, from same-EL
+>  * no ISS information
+>  * the VNCR bit (bit 13) is set
 > 
-> So from now on qemu_real_host_page_mask() will be used as a default.
-> To be able to migrate older code, we increase the vmstat version_id
-> to 3 and if an older incoming v2 stream is detected we set the previous
-> default value.
+> and the exception must be taken to EL2.
 > 
-> The new default is well adapted to configs where host and guest have
-> the same page size. This allows to fix hotplugging VFIO devices on a
-> 64kB guest and a 64kB host. This test case has been failing before
-> and even crashing qemu with hw_error("vfio: DMA mapping failed,
-> unable to continue") in VFIO common). Indeed the hot-attached VFIO
-> device would call memory_region_iommu_set_page_size_mask with 64kB
-> mask whereas after the granule was frozen to 4kB on machine init done.
-
-I guess TARGET_PAGE_MASK is always 4kB on arm64 CPUs, since it's the
-smallest supported and the guest configures its page size at runtime.
-Even if QEMU's software IOMMU can deal with any page size, VFIO can't so
-passing the host page size seems more accurate than forcing a value of
-4kB.
-
-> Now this works. However the new default will prevent 4kB guest on
-> 64kB host because the granule will be set to 64kB which would be
-> larger than the guest page size. In that situation, the virtio-iommu
-> driver fails the viommu_domain_finalise() with
-> "granule 0x10000 larger than system page zie 0x1000".
-
-"size"
-(it could matter if someone searches for this message later)
-
+> Save an appropriate syndrome template when generating code; we can
+> then use that to:
+>  * select the right target EL
+>  * reconstitute a correct final syndrome for the data abort
+>  * report the right syndrome if we take a FEAT_RME granule protection
+>    fault on the VNCR-based write
 > 
-> The current limitation of global granule in the virtio-iommu
-> should be removed and turned into per domain granule. But
-> until we get this upgraded, this new default is probably
-> better because I don't think anyone is currently interested in
-> running a 4kB page size guest with virtio-iommu on a 64kB host.
-> However supporting 64kB guest on 64kB host with virtio-iommu and
-> VFIO looks a more important feature.
+> Note that because VNCR is bit 13, we must start keeping bit 13 in
+> template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-So to summarize the configurations that work for hotplug (tested with QEMU
-system emulation with SMMU + QEMU VMM with virtio-iommu):
+Hi Peter,
 
- Host | Guest | virtio-net | IGB passthrough
-  4k  | 4k    | Y          | Y
-  64k | 64k   | Y          | N -> Y (fixed by this patch)
-  64k | 4k    | Y -> N     | N
-  4k  | 64k   | Y          | Y
+I'm getting an unhelpful crash on calling init in a guest
+running on top of an a76 emulated host with virtualization turned on.
 
-The change is a reasonable trade-off in my opinion. It fixes the more common
-64k on 64k case, and for 4k on 64k, the error is now contained to the
-guest and made clear ("granule 0x10000 larger than system page size
-0x1000") instead of crashing the VMM. A guest OS now discovers that the
-host needs DMA buffers aligned on 64k and could actually support this case
-(but Linux won't because it can't control the origin of all DMA buffers).
-Later, support for page tables will enable 4k on 64k for all devices.
+Run /sbin/init as init process
+Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007
+CPU: 1 PID: 1 Comm: init Not tainted 6.7.0+ #1119
+Hardware name: linux,dummy-virt (DT)
+Call trace:
+ dump_backtrace+0xa0/0x128
+ show_stack+0x20/0x38
+ dump_stack_lvl+0x48/0x60
+ dump_stack+0x18/0x28
+ panic+0x380/0x3c0
+ do_exit+0x89c/0x9a0
+ do_group_exit+0x3c/0xa0
+ get_signal+0x968/0x970
+ do_notify_resume+0x21c/0x1460
+ el0_ia+0xa0/0xb0
+ el0t_64_sync_handler+0xd0/0x130
+ el0t_64_sync+0x190/0x198
+SMP: stopping secondary CPUs
+Kernel Offset: 0x2a8c93a00000 from 0xffff800080000000
+PHYS_OFFSET: 0xffff82f980000000
+CPU features: 0x0,00000001,7002014a,2101720b
+Memory Limit: none
+---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000007 ]---
 
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Upstream kernel as of yesterday.  Nothing particular 'exciting' in the
+configurations. Not attempting to use Nested virt.
+-M virt,gic-version=3,virtualization=true
+-cpu cortex-a76 (happens with max as well but switched to a76 for testing
+to reduce possible sources of problems).
+
+Doesn't happen if single cpu in the guest, or if using gic v2 in both.
+
+Bisection points at this patch - so far no idea why but I've only
+just started digging into this.
+Having one of those weeks where I'm juggling several issues so
+might not make progress on this for a while.
+
+The VMM in the guest is also recent QEMU (yesterday's upstream I think)
+so I suppose this might just be exposing a problem that will bisect
+to a different patch in there.
+
+Jonathan
 
 > ---
->  hw/virtio/virtio-iommu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+>  target/arm/cpu.h               |  4 ++--
+>  target/arm/syndrome.h          | 20 ++++++++++++++++----
+>  target/arm/tcg/tlb_helper.c    | 27 +++++++++++++++++++++++++--
+>  target/arm/tcg/translate-a64.c |  4 ++++
+>  4 files changed, 47 insertions(+), 8 deletions(-)
 > 
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index 9d463efc52..b77e3644ea 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -1313,7 +1313,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->       * in vfio realize
->       */
->      s->config.bypass = s->boot_bypass;
-> -    s->config.page_size_mask = qemu_target_page_mask();
-> +    s->config.page_size_mask = qemu_real_host_page_mask();
->      s->config.input_range.end = UINT64_MAX;
->      s->config.domain_range.end = UINT32_MAX;
->      s->config.probe_size = VIOMMU_PROBE_SIZE;
-> @@ -1491,13 +1491,16 @@ static int iommu_post_load(void *opaque, int version_id)
->       * still correct.
->       */
->      virtio_iommu_switch_address_space_all(s);
-> +    if (version_id <= 2) {
-> +        s->config.page_size_mask = qemu_target_page_mask();
-> +    }
->      return 0;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index bc4fa95ea35..da640949518 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -120,12 +120,12 @@ enum {
+>  #define TARGET_INSN_START_EXTRA_WORDS 2
+>  
+>  /* The 2nd extra word holding syndrome info for data aborts does not use
+> - * the upper 6 bits nor the lower 14 bits. We mask and shift it down to
+> + * the upper 6 bits nor the lower 13 bits. We mask and shift it down to
+>   * help the sleb128 encoder do a better job.
+>   * When restoring the CPU state, we shift it back up.
+>   */
+>  #define ARM_INSN_START_WORD2_MASK ((1 << 26) - 1)
+> -#define ARM_INSN_START_WORD2_SHIFT 14
+> +#define ARM_INSN_START_WORD2_SHIFT 13
+>  
+>  /* We currently assume float and double are IEEE single and double
+>     precision respectively.
+> diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+> index 95454b5b3bb..1a49767479f 100644
+> --- a/target/arm/syndrome.h
+> +++ b/target/arm/syndrome.h
+> @@ -86,6 +86,9 @@ typedef enum {
+>  #define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
+>  #define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
+>  
+> +/* In the Data Abort syndrome */
+> +#define ARM_EL_VNCR (1 << 13)
+> +
+>  static inline uint32_t syn_get_ec(uint32_t syn)
+>  {
+>      return syn >> ARM_EL_EC_SHIFT;
+> @@ -256,13 +259,12 @@ static inline uint32_t syn_bxjtrap(int cv, int cond, int rm)
+>          (cv << 24) | (cond << 20) | rm;
 >  }
 >  
->  static const VMStateDescription vmstate_virtio_iommu_device = {
->      .name = "virtio-iommu-device",
->      .minimum_version_id = 2,
-> -    .version_id = 2,
-> +    .version_id = 3,
->      .post_load = iommu_post_load,
->      .fields = (VMStateField[]) {
->          VMSTATE_GTREE_DIRECT_KEY_V(domains, VirtIOIOMMU, 2,
-> -- 
-> 2.27.0
-> 
+> -static inline uint32_t syn_gpc(int s2ptw, int ind, int gpcsc,
+> +static inline uint32_t syn_gpc(int s2ptw, int ind, int gpcsc, int vncr,
+>                                 int cm, int s1ptw, int wnr, int fsc)
+>  {
+> -    /* TODO: FEAT_NV2 adds VNCR */
+>      return (EC_GPC << ARM_EL_EC_SHIFT) | ARM_EL_IL | (s2ptw << 21)
+> -            | (ind << 20) | (gpcsc << 14) | (cm << 8) | (s1ptw << 7)
+> -            | (wnr << 6) | fsc;
+> +        | (ind << 20) | (gpcsc << 14) | (vncr << 13) | (cm << 8)
+> +        | (s1ptw << 7) | (wnr << 6) | fsc;
+>  }
+>  
+>  static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+> @@ -295,6 +297,16 @@ static inline uint32_t syn_data_abort_with_iss(int same_el,
+>             | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
+>  }
+>  
+> +/*
+> + * Faults due to FEAT_NV2 VNCR_EL2-based accesses report as same-EL
+> + * Data Aborts with the VNCR bit set.
+> + */
+> +static inline uint32_t syn_data_abort_vncr(int ea, int wnr, int fsc)
+> +{
+> +    return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (1 << ARM_EL_EC_SHIFT)
+> +        | ARM_EL_IL | ARM_EL_VNCR | (wnr << 6) | fsc;
+> +}
+> +
+>  static inline uint32_t syn_swstep(int same_el, int isv, int ex)
+>  {
+>      return (EC_SOFTWARESTEP << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
+> diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+> index 4fdd85359e1..dd5de74ffb7 100644
+> --- a/target/arm/tcg/tlb_helper.c
+> +++ b/target/arm/tcg/tlb_helper.c
+> @@ -50,7 +50,15 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+>       * ST64BV, or ST64BV0 insns report syndrome info even for stage-1
+>       * faults and regardless of the target EL.
+>       */
+> -    if (!(template_syn & ARM_EL_ISV) || target_el != 2
+> +    if (template_syn & ARM_EL_VNCR) {
+> +        /*
+> +         * FEAT_NV2 faults on accesses via VNCR_EL2 are a special case:
+> +         * they are always reported as "same EL", even though we are going
+> +         * from EL1 to EL2.
+> +         */
+> +        assert(!fi->stage2);
+> +        syn = syn_data_abort_vncr(fi->ea, is_write, fsc);
+> +    } else if (!(template_syn & ARM_EL_ISV) || target_el != 2
+>          || fi->s1ptw || !fi->stage2) {
+>          syn = syn_data_abort_no_iss(same_el, 0,
+>                                      fi->ea, 0, fi->s1ptw, is_write, fsc);
+> @@ -169,6 +177,20 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+>      int current_el = arm_current_el(env);
+>      bool same_el;
+>      uint32_t syn, exc, fsr, fsc;
+> +    /*
+> +     * We know this must be a data or insn abort, and that
+> +     * env->exception.syndrome contains the template syndrome set
+> +     * up at translate time. So we can check only the VNCR bit
+> +     * (and indeed syndrome does not have the EC field in it,
+> +     * because we masked that out in disas_set_insn_syndrome())
+> +     */
+> +    bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
+> +        (env->exception.syndrome & ARM_EL_VNCR);
+> +
+> +    if (is_vncr) {
+> +        /* FEAT_NV2 faults on accesses via VNCR_EL2 go to EL2 */
+> +        target_el = 2;
+> +    }
+>  
+>      if (report_as_gpc_exception(cpu, current_el, fi)) {
+>          target_el = 3;
+> @@ -177,7 +199,8 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+>  
+>          syn = syn_gpc(fi->stage2 && fi->type == ARMFault_GPCFOnWalk,
+>                        access_type == MMU_INST_FETCH,
+> -                      encode_gpcsc(fi), 0, fi->s1ptw,
+> +                      encode_gpcsc(fi), is_vncr,
+> +                      0, fi->s1ptw,
+>                        access_type == MMU_DATA_STORE, fsc);
+>  
+>          env->cp15.mfar_el3 = fi->paddr;
+> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+> index 128bff4b445..8f905ed9645 100644
+> --- a/target/arm/tcg/translate-a64.c
+> +++ b/target/arm/tcg/translate-a64.c
+> @@ -2293,6 +2293,7 @@ static void handle_sys(DisasContext *s, bool isread,
+>          MemOp mop = MO_64 | MO_ALIGN | MO_ATOM_IFALIGN;
+>          ARMMMUIdx armmemidx = s->nv2_mem_e20 ? ARMMMUIdx_E20_2 : ARMMMUIdx_E2;
+>          int memidx = arm_to_core_mmu_idx(armmemidx);
+> +        uint32_t syn;
+>  
+>          if (s->nv2_mem_be) {
+>              mop |= MO_BE;
+> @@ -2302,6 +2303,9 @@ static void handle_sys(DisasContext *s, bool isread,
+>          tcg_gen_addi_i64(ptr, ptr,
+>                           (ri->nv2_redirect_offset & ~NV2_REDIR_FLAG_MASK));
+>          tcg_rt = cpu_reg(s, rt);
+> +
+> +        syn = syn_data_abort_vncr(0, !isread, 0);
+> +        disas_set_insn_syndrome(s, syn);
+>          if (isread) {
+>              tcg_gen_qemu_ld_i64(tcg_rt, ptr, memidx, mop);
+>          } else {
+

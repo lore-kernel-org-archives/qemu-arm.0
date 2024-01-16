@@ -1,172 +1,184 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp952453ejf;
-        Tue, 16 Jan 2024 07:35:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFoKt3+yk05+MbWec0szx4Qd27bWlC6H6HgJaYqyEc0YmRBGVcUM8+5IJlo/ekERsDZa2gz
-X-Received: by 2002:a05:620a:560f:b0:783:47c6:6ae5 with SMTP id vu15-20020a05620a560f00b0078347c66ae5mr8110790qkn.149.1705419353139;
-        Tue, 16 Jan 2024 07:35:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705419353; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp964770ejf;
+        Tue, 16 Jan 2024 07:59:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGJcAwg7HcUREhD1l2ul6ZL2bYMCRu/5/txyqIT5AwV2IwZC9cm3INbz+hKMehRbyEKw8JR
+X-Received: by 2002:a5d:5584:0:b0:336:85b7:12ad with SMTP id i4-20020a5d5584000000b0033685b712admr3810168wrv.113.1705420754998;
+        Tue, 16 Jan 2024 07:59:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705420754; cv=none;
         d=google.com; s=arc-20160816;
-        b=j03EcuPsyMA67jegqGXMXrlVS8WznEfKTp3z20e9Lz8ku+et4zjn5VcX49A+f/ZcBN
-         UzeEZ0WGqyzCIpkpY6gADkbWXbYXQwPq3HfF74OcJGcQLtI0u3tr1FPzGxM2HF9E6jOe
-         kPH3DjDu/ZFqIaRMwbkNsD7OdsX4+tYU5TyNULtX84cH6SRTLDGxtYX/fKvHPoeCm2wD
-         VmvP+dnbjC7j8joCS7tA5N/j5l59PRxeCUC/H7cSPVbMeBdDStUp8q4pVOmq0DGBVM/8
-         XvEB0ZWosqN9+wVS/BNKTTOuj5an5Hzst3NmbB2q6EP1LdE2s/x0N2L50sdt9UfaeLBn
-         Cdjw==
+        b=1H4FQjLTbaSTqs8nZvi9xOtdZ6Zqpp2myWJxftcqgS9mmK4ruyjdwyhuLGRl9U4t9r
+         v/HI8PiNksrxwCkSkkhIal0Ex6XBIGNx8J/mTZz58cy8pclejSz0gjkS8qPZ9jky7V+e
+         ort4Y0ddQ06PFA6t2V/vQpR6fwpCYsflbm1eOJgr4reoLyZoHK8wm2UjsJaQ/xecjUdt
+         IlLq8ddzGvs5PnWoJnx+dgiV87aWrY2SvN7grAACjpKS4bkIyQL41nZNPqQP99ngBND9
+         tmRhEuISzWqNqnuoOjUsVZCXilNbsyqPxRAZvxMDaGKFvi/LbV7ea1mER/G3rup/dl7w
+         kOaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5/HxhFNv2D0FhjaUowOiVQsUgxb47pxbOi1FkGS7kjk=;
-        fh=G4ej1JnN8P6fgAZk0wPFnEOwbCZSOB2m6YxI6BipXl8=;
-        b=iJ3dYwEjLKhpbUN5j4E811hEkXFca47YcYPkdRRMOP37u4U4P/kRmvcIwipzA/g5vV
-         IBzBUvGT5dw7sjsEAGmnYD6Zb0pBsmhtxEbLcKqU4asKrvNzkhvXyyQVu4J75aOWiCMC
-         U+LaRQlMiRo2NqGX/2yr2dj0+FQZBDljaRbmxnThI8mgzGagoD8+kaxy+uY8j4PYuM4C
-         kJCCqVIRGPPirKnteMQr+p/0MvZUgg8Q9VLvLrnmC6ryle9AK3pxtIXpueEXHwfnrGgV
-         R8ut7Bcve6NABmAj2iQRQnWE4jGrzUMcbSm2tC9NlNuAiU70mKwD7/Ad0IB75Qo+Qtfi
-         Dj8Q==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=65N+dfYpGnRZRbDcuknn5lzm7IakQPdlmOPk6hImFAQ=;
+        fh=Oly6wDQiVE7caIki2YuOuc5YtEz9BiDmQs4w23KwEvs=;
+        b=i8fD3pSilSyDmOnOQs6rSb1IA168VLZ6u+BVRK2gtfyIJZwZM7Kn9KUe3eZhnNBBpc
+         aVs0tjALrDys1PYmuRmuFlxTUOHdBNU2Gi6pdrw5YagDcN0laUENl3H/EdHuYkfu3Tty
+         G10+VYIhxnyS9S/D2zi/G+o/SOO7BN7n2WaTy+nUkhgaStnkMDrOQ1krPNGoOdClaAVs
+         M24+zcgMEKMrS41o1VDdRn9iwnosgiyoyy/HqA7x3t8mp4aR2NlXOlWCVL8x1SCs9Vi6
+         ApP6BxZWBgbjegBTzyEyHead5DbljOiBwMgyn3JATMH2h4sVqePVO6cwIzhf/FE2iJ6D
+         7R1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dG948k5z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b20-20020a05620a119400b00781e3ce60b6si9779080qkk.103.2024.01.16.07.35.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jan 2024 07:35:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id h12-20020a5d4fcc000000b003366e080057si5696468wrw.236.2024.01.16.07.59.14
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Jan 2024 07:59:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dG948k5z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rPlTe-0002s6-Sa; Tue, 16 Jan 2024 10:35:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rPlTc-0002rV-OA
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 10:35:45 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rPlTa-0001fI-2S
- for qemu-arm@nongnu.org; Tue, 16 Jan 2024 10:35:44 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-557c188f313so15721133a12.1
- for <qemu-arm@nongnu.org>; Tue, 16 Jan 2024 07:35:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705419340; x=1706024140; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5/HxhFNv2D0FhjaUowOiVQsUgxb47pxbOi1FkGS7kjk=;
- b=dG948k5z2kWIV/jF9+UO9kSGiEBSwooDc9Rtw44CSV7fRlGNfEjoHYHMjPq50TY3FE
- gDIwbYgrppqxfACGrl4rsGTOw2pAUEc4F1eJaASwxxJfPCZIJRLKuMUt0H8UlyhpzcKC
- gJRmblQxVUTRGBKxIcVar97Cgk1IGTv/6sabqHRIKbr01r+dMqI7u/ByMchGqWczNnfP
- 7TW4FDX1FQBvL9EIbS7uc3mCNIZ+8rl6AniZFyqSMJnghDF3k6FkugxzRYuEa8VRnVMY
- ccvvytrodXYR/1m7Hwf+t8ACLWEQoYfAGxX9PBp5tPXUI81U6+pbBRmfXDSz4vNdVgcg
- cKWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705419340; x=1706024140;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5/HxhFNv2D0FhjaUowOiVQsUgxb47pxbOi1FkGS7kjk=;
- b=f1SqpmvjDr8BLs9ijoAC/8hpx5ArqAGZsTR9cJJc2vTAPDB1y16Np52r9uhdVNOXlQ
- d8pevT5uOUJ8+L9CwwqDRhuPQf9t7GJGcEyYOwciyDbA/x5Wveiagn6X6AgBp/kpn9a1
- k5h5q4QIVy7KoXsl/GinMQvhrZNPeyNJ2MIMnpZSHvgYMcqnzkPHsf260tNOMZybBiLc
- f6rZgjoIDx3lzJixQg3URxQes4dWiLrf3EHmu5ivaUWYERBzjouNoHqNIFIX9rM2lSAd
- rwDt6KbjewdN1DmoevMUqXKMEMsLVixoO3j28FUoE01krTroPq7c6ElMMwY5g4UOLNBb
- zb2g==
-X-Gm-Message-State: AOJu0YxuNedDdipYmNkIbh67PR9gowU7w3Bm7xJcIS5G88Ghhi8MbTkD
- ge3mwWCxJAI8WU6KJs4u12qfsZv8exNiDnvKRj0cmqRN6YOyxg==
-X-Received: by 2002:a05:6402:1747:b0:558:308f:db04 with SMTP id
- v7-20020a056402174700b00558308fdb04mr6919837edx.18.1705419340383; Tue, 16 Jan
- 2024 07:35:40 -0800 (PST)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TDtsm5pwvz67NNV;
+	Tue, 16 Jan 2024 23:56:28 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id A1F26140A36;
+	Tue, 16 Jan 2024 23:59:13 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 16 Jan
+ 2024 15:59:12 +0000
+Date: Tue, 16 Jan 2024 15:59:11 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+CC: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"imammedo@redhat.com" <imammedo@redhat.com>, "andrew.jones@linux.dev"
+	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, "will@kernel.org" <will@kernel.org>,
+	"ardb@kernel.org" <ardb@kernel.org>, "oliver.upton@linux.dev"
+	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
+	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
+	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
+	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
+	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>
+Subject: Re: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
+ change common to vCPU {cold|hot}-plug
+Message-ID: <20240116155911.00004fe1@Huawei.com>
+In-Reply-To: <de871e3d7b8f440b93b20c734fe5b7a8@huawei.com>
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
+	<20230926100436.28284-5-salil.mehta@huawei.com>
+	<1c5fa24c-6bf3-750f-4f22-087e4a9311af@redhat.com>
+	<de871e3d7b8f440b93b20c734fe5b7a8@huawei.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-28-peter.maydell@linaro.org>
- <20240116130940.00002523@Huawei.com>
- <CAFEAcA-94-TeFw4AmTsuQaJROADaet8aWDEBXbt9H_gc1Fs6pg@mail.gmail.com>
- <20240116145051.000004f7@Huawei.com>
- <CAFEAcA8=CK00w_Yk-X=+6cm2X5BWSiTw7_y6uQN8qyFHF4-iFg@mail.gmail.com>
- <20240116152919.00001571@Huawei.com>
-In-Reply-To: <20240116152919.00001571@Huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jan 2024 15:35:29 +0000
-Message-ID: <CAFEAcA-txzOZ_Z0x3n+idTLp-3QevV_Jpur74kdCOhFmBy1Atw@mail.gmail.com>
-Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: INgffK8sml0N
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-TUID: EE/c+0NET3LX
 
-On Tue, 16 Jan 2024 at 15:29, Jonathan Cameron
-<Jonathan.Cameron@huawei.com> wrote:
->
-> On Tue, 16 Jan 2024 14:59:15 +0000
-> Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > On Tue, 16 Jan 2024 at 14:50, Jonathan Cameron
-> > <Jonathan.Cameron@huawei.com> wrote:
-> > >
-> > > On Tue, 16 Jan 2024 13:20:33 +0000
-> > > Peter Maydell <peter.maydell@linaro.org> wrote:
-> > > > Bisecting to this patch is a bit weird because at this point
-> > > > in the series emulation of FEAT_NV2 should be disabled and
-> > > > the code being added should never be used. You could put
-> > > > an assert(0) into the code in translate-a64.c before the
-> > > > call to syn_data_abort_vncr() and in arm_deliver_fault()
-> > > > assert(!is_vncr) to confirm that we're not somehow getting
-> > > > into this code for some non-FEAT_NV2 situation, I guess.
-> > >
-> > > Not that, but surprisingly is_vncr == true.
-> > > in arm_deliver_fault()
-> > >
-> > > Frigging that to be false gets me up and running. I'll see
-> > > if I can figure out why it is set.
-> >
-> > I don't know if this is the cause, but looking again at the
-> > line that sets is_vncr I see at least one obvious bug:
-> >
-> >     bool is_vncr = (mmu_idx != MMU_INST_FETCH) &&
-> >         (env->exception.syndrome & ARM_EL_VNCR);
-> >
-> > is testing the wrong variable -- the first part
-> > of the condition should be "access_type != MMU_INST_FETCH".
-> >
-> > If you fix that does the failure go away ?
-> Ah - indeed that fixes it.
->
-> I guess that makes sense. Presumably the bit is used for
-> something else for instruction fetches.
->
-> Thanks for your quick help!
+On Mon, 2 Oct 2023 17:12:43 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-Thanks for testing -- I'll send out a proper patch in
-a bit.
+> Hi Gavin,
+> 
+> > From: Gavin Shan <gshan@redhat.com>
+> > Sent: Wednesday, September 27, 2023 7:29 AM
+> > To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org; qemu-
+> > arm@nongnu.org
+> > Cc: maz@kernel.org; jean-philippe@linaro.org; Jonathan Cameron
+> > <jonathan.cameron@huawei.com>; lpieralisi@kernel.org;
+> > peter.maydell@linaro.org; richard.henderson@linaro.org;
+> > imammedo@redhat.com; andrew.jones@linux.dev; david@redhat.com;
+> > philmd@linaro.org; eric.auger@redhat.com; will@kernel.org; ardb@kernel.org;
+> > oliver.upton@linux.dev; pbonzini@redhat.com; mst@redhat.com;
+> > rafael@kernel.org; borntraeger@linux.ibm.com; alex.bennee@linaro.org;
+> > linux@armlinux.org.uk; darren@os.amperecomputing.com;
+> > ilkka@os.amperecomputing.com; vishnu@os.amperecomputing.com;
+> > karl.heubaum@oracle.com; miguel.luis@oracle.com; salil.mehta@opnsrc.net;
+> > zhukeqian <zhukeqian1@huawei.com>; wangxiongfeng (C)
+> > <wangxiongfeng2@huawei.com>; wangyanan (Y) <wangyanan55@huawei.com>;
+> > jiakernel2@gmail.com; maobibo@loongson.cn; lixianglai@loongson.cn
+> > Subject: Re: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
+> > change common to vCPU {cold|hot}-plug
+> > 
+> > Hi Salil,
+> > 
+> > On 9/26/23 20:04, Salil Mehta wrote:  
+> > > Refactor and introduce the common logic required during the  
+> > initialization of  
+> > > both cold and hot plugged vCPUs. Also initialize the *disabled* state of the
+> > > vCPUs which shall be used further during init phases of various other components
+> > > like GIC, PMU, ACPI etc as part of the virt machine initialization.
+> > >
+> > > KVM vCPUs corresponding to unplugged/yet-to-be-plugged QOM CPUs are kept in
+> > > powered-off state in the KVM Host and do not run the guest code. Plugged vCPUs
+> > > are also kept in powered-off state but vCPU threads exist and is kept sleeping.
+> > >
+> > > TBD:
+> > > For the cold booted vCPUs, this change also exists in the arm_load_kernel()
+> > > in boot.c but for the hotplugged CPUs this change should still remain part of
+> > > the pre-plug phase. We are duplicating the powering-off of the cold booted CPUs.
+> > > Shall we remove the duplicate change from boot.c?
+> > >
+> > > Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
+> > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> > > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> > > Reported-by: Gavin Shan <gavin.shan@redhat.com>
+> > > [GS: pointed the assertion due to wrong range check]
+> > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > > ---
+> > >   hw/arm/virt.c      | 149 ++++++++++++++++++++++++++++++++++++++++-----
+> > >   target/arm/cpu.c   |   7 +++
+> > >   target/arm/cpu64.c |  14 +++++
+> > >   3 files changed, 156 insertions(+), 14 deletions(-)
+> > >
+> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > index 0eb6bf5a18..3668ad27ec 100644
+> > > --- a/hw/arm/virt.c
+> > > +++ b/hw/arm/virt.c
+> > > @@ -221,6 +221,7 @@ static const char *valid_cpus[] = {
+> > >       ARM_CPU_TYPE_NAME("max"),
+> > >   };
+> > >
+> > > +static CPUArchId *virt_find_cpu_slot(MachineState *ms, int vcpuid);
+> > >   static int virt_get_socket_id(const MachineState *ms, int cpu_index);
+> > >   static int virt_get_cluster_id(const MachineState *ms, int cpu_index);
+> > >   static int virt_get_core_id(const MachineState *ms, int cpu_index);
+> > > @@ -2154,6 +2155,14 @@ static void machvirt_init(MachineState *machine)
+> > >           exit(1);
+> > >       }
+> > >
+> > > +    finalize_gic_version(vms);
+> > > +    if (tcg_enabled() || hvf_enabled() || qtest_enabled() ||
+> > > +        (vms->gic_version < VIRT_GIC_VERSION_3)) {
+> > > +        machine->smp.max_cpus = smp_cpus;
+> > > +        mc->has_hotpluggable_cpus = false;
+> > > +        warn_report("cpu hotplug feature has been disabled");
+> > > +    }
+> > > +  
+> > 
+> > Comments needed here to explain why @mc->has_hotpluggable_cpus is set to false.
+> > I guess it's something related to TODO list, mentioned in the cover letter.  
+> 
+> 
+> I can put a comment explaining the checks as to why feature has been disabled.
+> BTW, isn't code self-explanatory here?
 
--- PMM
+Would be good to gate that warn_report() on whether any attempt to enable
+CPU hotplug has been made if (max_cpus > smp for example).
+Right now it's noise on a lot of pre existing configurations.

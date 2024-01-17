@@ -1,239 +1,341 @@
-Received: by 2002:a17:906:cd06:b0:a2e:1324:ea5c with SMTP id oz6csp24602ejb;
-        Wed, 17 Jan 2024 13:46:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFa7NKH9OeprmbmEwvBqoVBDU3P3tnHUMVg9EuFUfLh/Ab0abimh6GIvRbH84/1zr524lZ4
-X-Received: by 2002:a05:600c:31a9:b0:40e:5a80:6177 with SMTP id s41-20020a05600c31a900b0040e5a806177mr4759698wmp.69.1705527974139;
-        Wed, 17 Jan 2024 13:46:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705527974; cv=none;
+Received: by 2002:a17:906:cd06:b0:a2e:1324:ea5c with SMTP id oz6csp48319ejb;
+        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFCBV1Tyg4KF40EXogkw4iDC7iz6XdsZK3nvg3Q6/kIrhKKW4w6cBxd0Z8js7jCsPvxDPO4
+X-Received: by 2002:a25:ae43:0:b0:dc2:50f3:c9d3 with SMTP id g3-20020a25ae43000000b00dc250f3c9d3mr566334ybe.66.1705531445370;
+        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705531445; cv=none;
         d=google.com; s=arc-20160816;
-        b=yFiBiT3PG7UIPEliNh6kCI1O/qDaymlFbNEopuXDeqGS2FGSZukeQsCN/SJ2+TobIh
-         iDc0wkHujad+s9z7HyKzO6uDFPsVKwykR5SyqvNdGUdT8FE2Tz/szqHdJVTjImgLy6GK
-         +1tMUyEKaoKBiBG1xmVaqNNXXExVai6d+aYH01L/iSNFow4XpFsSxI8NvlWqClGvuYdd
-         r3LYVEJb2snWsatnltjUu3oNGAvzAzGwK9AJvXAtxfti0J0Bm0bh8mhFbTQrPPiFq83W
-         Yksh0Pq/iWyI3oyQBYaL8KyGrYWTRxmQsSgTKg4lxmbwZhSwK6UmmOy23GD01ITmXaeg
-         evnQ==
+        b=HTgK7gun1ap9PrY+93vhbgCKC/2bDqUEnEkGAu/w3lrAtOURD8/mZBXQVCXSw9o5G/
+         dRVJxM83jl0ho6wn77j4F9lQJ3SEIFZzkhYSRqC3/tk3k1dAR7h28XdFXXOqw6YX7scy
+         0kz96Fwesllqc/NsXdakcGpPUZx2rPrX2vB2unRQY7Z4NqCe5ZyZ/fuV6wOMQg7d2DC5
+         6qo9OQSFjYoFWqbJ47KGblQy+jCXOjOn/1bzTy5EySIpcpbAuxZYvTXpDsNOwZ8DeJTD
+         G/+6OpPSfm72hJmlvtxN4/DRdomDjaiF8f33X3UIY2+A3NKWy3t1jUyQvGvoLz+c/S0o
+         BWNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=S4QiS8kHF64ziopB+qlWeOlegZro8Dnas4Xn8CqGa50=;
-        fh=fml60s1Gm2l4HdzJqyaca6OMt3sjJvy33LKgv0VhBYs=;
-        b=smjnOzbSLFtodNuoCBAoqvfaMTyaHnC08dJ8c1mAQarSOn5tVwYIezduwllynsB8Yi
-         /Tu6PJ2yPmGeai+8DeR4VRhV8CZEp/biZsVFB5ItH4yistQpzAJeWlmUnYiGDbhX4w8A
-         RA3k3gZQDKPcFg2womURcmU7uOUc2l6TOtqgglPMiMd321vt+OIwacW1hLgWO/AP0PNV
-         fjUV4fV3cDUereU9QAPmstu9BCHFTl5kx169tglQJdYEQ7KCIod1MlMtnuLSmW/FqlcH
-         RnkZaMHSn0aDpVGJ2UCGKVXhBJKa3lVUhq7fW+Pn9MVYL6ZG6UBl6ZVQpmuN7wfWilD+
-         PrxA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
+        fh=1M2LM3DPNDszvSSe6bKaRtdru7gmC/McEFAxnrzN28M=;
+        b=Zf8Dg5twwPa1YuJyZ9kQom7L1Nbtmj+lHnm6fCn3qGk18H3QMeG4fc1v362gFVs2EZ
+         rggCoT6ysKH2vK+OfcGZ1eSTsYYqCuZNYFW//6einDyM+L8xOGVfheVDOEbWKknTOFmH
+         ke3rMN56AuvNlgyJDx9B1atx4G7a6ltCOAWS6gFXzfcS4rhJjXOwCMmG74SrASlR6Jyq
+         nm9wR7R+wX/fUu9nphLyhSS1iDp/5PWH+c9JIlIWKYHQVUqtCS7l8Us/6CmFRMPmg1aU
+         2gSrMD4eqXsUQyi7ilF84GDW5AI4XgqthCm4HKq7mzOP0ByaAGa9bAlx+ElkTS7xabv1
+         MqOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id h11-20020adfa4cb000000b003374dcaa1e3si1336232wrb.346.2024.01.17.13.46.13
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Jan 2024 13:46:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A4zR/2a9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id os15-20020a05620a810f00b0078318d0603fsi12424004qkn.186.2024.01.17.14.44.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TFfXH5MNVz6K5Xl;
-	Thu, 18 Jan 2024 05:43:59 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id D3934140519;
-	Thu, 18 Jan 2024 05:46:12 +0800 (CST)
-Received: from localhost (10.48.153.213) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 17 Jan
- 2024 21:46:11 +0000
-Date: Wed, 17 Jan 2024 21:46:08 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Salil Mehta via <qemu-devel@nongnu.org>
-CC: Salil Mehta <salil.mehta@huawei.com>, <qemu-arm@nongnu.org>,
-	<maz@kernel.org>, <jean-philippe@linaro.org>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
-	<mst@redhat.com>, <gshan@redhat.com>, <rafael@kernel.org>,
-	<borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>
-Subject: Re: [PATCH RFC V2 19/37] hw/acpi: ACPI/AML Changes to reflect the
- correct _STA.{PRES, ENA} Bits to Guest
-Message-ID: <20240117214608.00007d1b@Huawei.com>
-In-Reply-To: <20230926100436.28284-20-salil.mehta@huawei.com>
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
-	<20230926100436.28284-20-salil.mehta@huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A4zR/2a9";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQEdY-0002PA-NL; Wed, 17 Jan 2024 17:43:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1rQEdW-0002NM-83; Wed, 17 Jan 2024 17:43:54 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1rQEdU-0008PL-C5; Wed, 17 Jan 2024 17:43:53 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-a2d348d213dso512139066b.0; 
+ Wed, 17 Jan 2024 14:43:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705531430; x=1706136230; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
+ b=A4zR/2a94NCpGGoe9dRPP2HbRQcOiI9jYp+BRyxe9W4SimcSK6Q6ZLF0iqTsvCowGx
+ Hah/BKXNtoABOc5V7tfojhP5QBibn68+abrKBexffk6fyr7jaZnwt9dPUPo6eIf2pc8e
+ FAxbx4V2mBynrzc/y+DcEGLLCovOrC+ZJqSowRuolEvmOIUUnTfTfVYCjk9jQzYVdzRF
+ cQ4MDJD+EmdfkKyquB4swSTelCVOeATn49mH0oGOrvDyXUiyaMQsCmhoBGiTPCJdbPfU
+ YnFa3C87eB+g56TNCHOEeqFgymiSMnTq1YCdEE2KRQRy90m0DYmj+VQ119IKYboHPuKt
+ U68A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705531430; x=1706136230;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
+ b=m+Ce1QDfbPNJYuNWWVHWRpkfpCs/cWVdcdH75r3B5nsNUiPM+U+dMD+++1Rdge/XR7
+ g1cxdrWbDcyqXzi2h/9b6p0kkUVk01ZWa/rbOg9/wDXl9wVZP9EJHkk1VoIPWuTLzAhg
+ LxWar463jO8AwJ1B7fFWlG5Z26ujsIDPqp7Lp36933mak9sYiQ5Y2thqDgSgpVLzm65t
+ AccKdkzwcBo0EKKJOl1tEs4ohuSz42ujdzyeLtaouDf4U0bCPWv0PVqzo7Gn5C/zTu5I
+ fHtHx3SksKQxZwNb3gA5EewLP4M8/PxEGocBxscxULkl05SfSQ1/eYM4rE/Hl8SN1Pgp
+ CJeQ==
+X-Gm-Message-State: AOJu0YwyZgbE9gcD9KbfpOnnfHpCyUDtsWfGFgWMZKK/PPavaxy40OiG
+ LZRov5+0I9gMmG5QGXgQdIfC7Sqaf5niVTuy9+E=
+X-Received: by 2002:a17:906:55c1:b0:a28:ff59:12eb with SMTP id
+ z1-20020a17090655c100b00a28ff5912ebmr4623618ejp.139.1705531429733; Wed, 17
+ Jan 2024 14:43:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.48.153.213]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: dxciUR4MsR58
+References: <20240115182757.1095012-1-linux@roeck-us.net>
+ <20240115182757.1095012-4-linux@roeck-us.net>
+ <7551e55e-89b3-40de-a3b4-60e158d00295@linaro.org>
+In-Reply-To: <7551e55e-89b3-40de-a3b4-60e158d00295@linaro.org>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Wed, 17 Jan 2024 23:43:38 +0100
+Message-ID: <CABtshVSGYURKLN250C=a9RuP1bkwEe41OUKJXG+CUh-FPZPzYA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] hw/arm: Add watchdog timer to Allwinner H40 and
+ Bananapi board
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
+ qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, Li Guang <lig.fnst@cn.fujitsu.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000005cac0060f2bfbcb"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZK1jJHVpoEQz
 
-On Tue, 26 Sep 2023 11:04:18 +0100
-Salil Mehta via <qemu-devel@nongnu.org> wrote:
+--00000000000005cac0060f2bfbcb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> ACPI AML changes to properly reflect the _STA.PRES and _STA.ENA Bits to the
-> guest during initialzation, when CPUs are hotplugged and after CPUs are
-> hot-unplugged.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Hi Philippe,
 
-Hi Salil,
+On Tue, Jan 16, 2024 at 11:04=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philm=
+d@linaro.org>
+wrote:
 
-Just brought up a qemu on qemu test setup again to poke
-the kernel series and hopefully resolve a few questions there.
-Ran into a trivial problem in which the kernel was trying and
-failing to attach an ACPI handler before these were hotplugged.
-Came down to the kernel code now treating functional in _STA as
-meaning can be enumerated and effectively
-ignoring all the other bits.
+> Hi,
+>
+> (Cc'ing Li, Strahinja and Niek)
+>
+> On 15/1/24 19:27, Guenter Roeck wrote:
+> > Add watchdog timer support to Allwinner-H40 and Bananapi.
+> > The watchdog timer is added as an overlay to the Timer
+> > module memory map.
+>
+> I'm confused by these registers from TYPE_AW_A10_PIT
+> and the TYPE_AW_WDT implementation you are using:
+>
+>    #define AW_A10_PIT_WDOG_CONTROL    0x90
+>    #define AW_A10_PIT_WDOG_MODE       0x94
+>
+> Do we have 2 implementations of the same peripheral?
+>
 
-Requires a change to the value presented by default...
-See below.  Fix may well be completely wrong even though it works ;)
+The inspiration for the AW_WDT implementation, with overlay of WDOG_CONTROL
+and WDOG_MODE registers in the PIT memory map, was taken from the AW_RTC
+implementation.
+That was the easiest way to implement watchdog functionality, and also
+keeps logical functionality in the appropriate place (hw/watchdog) instead
+of bundling it with the timer.
+As Guenter commented, the AW_A10_PIT does not do anything with those two
+registers and with overlay it does not matter anymore.
 
-Thanks,
 
-Jonathan
+>
+> Should we instanciate AW_WDT within AW_A10_PIT?
+>
+
+Unfortunately, I don't know what that would look like and what benefits we
+would have from it. Can you point me to an example that already exists?
+
+
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>
+
+Guenter, thank you for submitting this change. The commit looks fine to me,
+so
+
+Reviewed-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+
+Best regards,
+Strahinja
+
 
 > ---
->  hw/acpi/cpu.c                  | 49 +++++++++++++++++++++++++++++++---
->  hw/acpi/generic_event_device.c | 11 ++++++++
->  include/hw/acpi/cpu.h          |  2 ++
->  3 files changed, 58 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index 232720992d..e1299696d3 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -63,10 +63,11 @@ static uint64_t cpu_hotplug_rd(void *opaque, hwaddr addr, unsigned size)
->      cdev = &cpu_st->devs[cpu_st->selector];
->      switch (addr) {
->      case ACPI_CPU_FLAGS_OFFSET_RW: /* pack and return is_* fields */
-> -        val |= cdev->cpu ? 1 : 0;
-> +        val |= cdev->is_enabled ? 1 : 0;
->          val |= cdev->is_inserting ? 2 : 0;
->          val |= cdev->is_removing  ? 4 : 0;
->          val |= cdev->fw_remove  ? 16 : 0;
-> +        val |= cdev->is_present ? 32 : 0;
->          trace_cpuhp_acpi_read_flags(cpu_st->selector, val);
->          break;
->      case ACPI_CPU_CMD_DATA_OFFSET_RW:
-> @@ -228,7 +229,21 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
->          struct CPUState *cpu = CPU(id_list->cpus[i].cpu);
->          if (qemu_present_cpu(cpu)) {
->              state->devs[i].cpu = cpu;
-> +            state->devs[i].is_present = true;
-> +        } else {
-> +            if (qemu_persistent_cpu(cpu)) {
-> +                state->devs[i].is_present = true;
-> +            } else {
-> +                state->devs[i].is_present = false;
-> +            }
->          }
-> +
-> +        if (qemu_enabled_cpu(cpu)) {
-> +            state->devs[i].is_enabled = true;
-> +        } else {
-> +            state->devs[i].is_enabled = false;
-> +        }
-> +
->          state->devs[i].arch_id = id_list->cpus[i].arch_id;
->      }
->      memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, state,
-> @@ -261,6 +276,8 @@ void acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
->      }
->  
->      cdev->cpu = CPU(dev);
-> +    cdev->is_present = true;
-> +    cdev->is_enabled = true;
->      if (dev->hotplugged) {
->          cdev->is_inserting = true;
->          acpi_send_event(DEVICE(hotplug_dev), ACPI_CPU_HOTPLUG_STATUS);
-> @@ -292,6 +309,11 @@ void acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
->          return;
->      }
->  
-> +    cdev->is_enabled = false;
-> +    if (!qemu_persistent_cpu(CPU(dev))) {
-> +        cdev->is_present = false;
-> +    }
-> +
->      cdev->cpu = NULL;
->  }
->  
-> @@ -302,6 +324,8 @@ static const VMStateDescription vmstate_cpuhp_sts = {
->      .fields      = (VMStateField[]) {
->          VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
->          VMSTATE_BOOL(is_removing, AcpiCpuStatus),
-> +        VMSTATE_BOOL(is_present, AcpiCpuStatus),
-> +        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),
->          VMSTATE_UINT32(ost_event, AcpiCpuStatus),
->          VMSTATE_UINT32(ost_status, AcpiCpuStatus),
->          VMSTATE_END_OF_LIST()
-> @@ -339,6 +363,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
->  #define CPU_REMOVE_EVENT  "CRMV"
->  #define CPU_EJECT_EVENT   "CEJ0"
->  #define CPU_FW_EJECT_EVENT "CEJF"
-> +#define CPU_PRESENT       "CPRS"
->  
->  void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->                      hwaddr base_addr,
-> @@ -399,7 +424,9 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->          aml_append(field, aml_named_field(CPU_EJECT_EVENT, 1));
->          /* tell firmware to do device eject, write only */
->          aml_append(field, aml_named_field(CPU_FW_EJECT_EVENT, 1));
-> -        aml_append(field, aml_reserved_field(3));
-> +        /* 1 if present, read only */
-> +        aml_append(field, aml_named_field(CPU_PRESENT, 1));
-> +        aml_append(field, aml_reserved_field(2));
->          aml_append(field, aml_named_field(CPU_COMMAND, 8));
->          aml_append(cpu_ctrl_dev, field);
->  
-> @@ -429,6 +456,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->          Aml *ctrl_lock = aml_name("%s.%s", cphp_res_path, CPU_LOCK);
->          Aml *cpu_selector = aml_name("%s.%s", cphp_res_path, CPU_SELECTOR);
->          Aml *is_enabled = aml_name("%s.%s", cphp_res_path, CPU_ENABLED);
-> +        Aml *is_present = aml_name("%s.%s", cphp_res_path, CPU_PRESENT);
->          Aml *cpu_cmd = aml_name("%s.%s", cphp_res_path, CPU_COMMAND);
->          Aml *cpu_data = aml_name("%s.%s", cphp_res_path, CPU_DATA);
->          Aml *ins_evt = aml_name("%s.%s", cphp_res_path, CPU_INSERT_EVENT);
-> @@ -457,13 +485,26 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->          {
->              Aml *idx = aml_arg(0);
->              Aml *sta = aml_local(0);
-> +            Aml *ifctx2;
-> +            Aml *else_ctx;
->  
->              aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
->              aml_append(method, aml_store(idx, cpu_selector));
->              aml_append(method, aml_store(zero, sta));
-> -            ifctx = aml_if(aml_equal(is_enabled, one));
-> +            ifctx = aml_if(aml_equal(is_present, one));
->              {
-> -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
-> +                ifctx2 = aml_if(aml_equal(is_enabled, one));
-> +                {
-> +                    /* cpu is present and enabled */
-> +                    aml_append(ifctx2, aml_store(aml_int(0xF), sta));
-> +                }
-> +                aml_append(ifctx, ifctx2);
-> +                else_ctx = aml_else();
-> +                {
-> +                    /* cpu is present but disabled */
-> +                    aml_append(else_ctx, aml_store(aml_int(0xD), sta));
-For the current kernel patches, functional should not be set. So this should
-be something like 0x5.
+> >   docs/system/arm/bananapi_m2u.rst | 2 +-
+> >   hw/arm/Kconfig                   | 1 +
+> >   hw/arm/allwinner-r40.c           | 8 ++++++++
+> >   include/hw/arm/allwinner-r40.h   | 3 +++
+> >   4 files changed, 13 insertions(+), 1 deletion(-)
+>
+>
+> > diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+> > index 534be4a735..a28e5b3886 100644
+> > --- a/hw/arm/allwinner-r40.c
+> > +++ b/hw/arm/allwinner-r40.c
+> > @@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] =3D {
+> >       [AW_R40_DEV_OHCI2]      =3D 0x01c1c400,
+> >       [AW_R40_DEV_CCU]        =3D 0x01c20000,
+> >       [AW_R40_DEV_PIT]        =3D 0x01c20c00,
+> > +    [AW_R40_DEV_WDT]        =3D 0x01c20c90,
+> >       [AW_R40_DEV_UART0]      =3D 0x01c28000,
+> >       [AW_R40_DEV_UART1]      =3D 0x01c28400,
+> >       [AW_R40_DEV_UART2]      =3D 0x01c28800,
+> > @@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)
+> >       object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+> >                                 "clk1-freq");
+> >
+> > +    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
+> > +
+> >       object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
+> >
+> >       for (int i =3D 0; i < AW_R40_NUM_MMCS; i++) {
+> > @@ -545,6 +548,11 @@ static void allwinner_r40_realize(DeviceState *dev=
+,
+> Error **errp)
+> >       sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
+> >                          qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_R40_GIC_SPI_EMAC));
+> >
+> > +    /* WDT */
+> > +    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+> > +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
+> > +                            allwinner_r40_memmap[AW_R40_DEV_WDT], 1);
+> > +
+>
 
-> +                }
-> +                aml_append(ifctx, else_ctx);
->              }
->              aml_append(method, ifctx);
->              aml_append(method, aml_release(ctrl_lock));
+--00000000000005cac0060f2bfbcb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,</div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 16, 2024 at 11:04=
+=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro=
+.org" target=3D"_blank">philmd@linaro.org</a>&gt; wrote:<br></div><blockquo=
+te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
+solid rgb(204,204,204);padding-left:1ex">Hi,<br>
+<br>
+(Cc&#39;ing Li, Strahinja and Niek)<br>
+<br>
+On 15/1/24 19:27, Guenter Roeck wrote:<br>
+&gt; Add watchdog timer support to Allwinner-H40 and Bananapi.<br>
+&gt; The watchdog timer is added as an overlay to the Timer<br>
+&gt; module memory map.<br>
+<br>
+I&#39;m confused by these registers from TYPE_AW_A10_PIT<br>
+and the TYPE_AW_WDT implementation you are using:<br>
+<br>
+=C2=A0 =C2=A0#define AW_A10_PIT_WDOG_CONTROL=C2=A0 =C2=A0 0x90<br>
+=C2=A0 =C2=A0#define AW_A10_PIT_WDOG_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A00x94<br=
+>
+<br>
+Do we have 2 implementations of the same peripheral?<br></blockquote><div><=
+br></div><div>The inspiration for the AW_WDT implementation, with overlay o=
+f WDOG_CONTROL and WDOG_MODE registers in the PIT memory map, was taken fro=
+m the AW_RTC implementation.</div><div>That was the easiest way to implemen=
+t watchdog functionality, and also keeps logical functionality in the appro=
+priate place (hw/watchdog) instead of bundling it with the timer.</div><div=
+>As Guenter commented, the AW_A10_PIT does not do anything with those two r=
+egisters and with overlay it does not matter anymore.</div><div>=C2=A0</div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
+-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Should we instanciate AW_WDT within AW_A10_PIT?<br></blockquote><div><br></=
+div><div>Unfortunately, I don&#39;t know what that would look like and what=
+ benefits we would have from it. Can you point me to an example that alread=
+y exists?</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">
+<br>
+&gt; Signed-off-by: Guenter Roeck &lt;<a href=3D"mailto:linux@roeck-us.net"=
+ target=3D"_blank">linux@roeck-us.net</a>&gt;<br></blockquote><div><br></di=
+v><div>Guenter, thank you for submitting this change. The commit looks fine=
+ to me, so</div><div><br></div><div>Reviewed-by: Strahinja Jankovic &lt;<a =
+href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank">strahinja.=
+p.jankovic@gmail.com</a>&gt;</div><div><br></div><div>Best regards,</div><d=
+iv>Strahinja</div><div><br></div><div><br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0docs/system/arm/bananapi_m2u.rst | 2 +-<br>
+&gt;=C2=A0 =C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 +<br>
+&gt;=C2=A0 =C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 8 ++++++++<br>
+&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0| 3 +++<br>
+&gt;=C2=A0 =C2=A04 files changed, 13 insertions(+), 1 deletion(-)<br>
+<br>
+<br>
+&gt; diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c<br>
+&gt; index 534be4a735..a28e5b3886 100644<br>
+&gt; --- a/hw/arm/allwinner-r40.c<br>
+&gt; +++ b/hw/arm/allwinner-r40.c<br>
+&gt; @@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_OHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c1c400,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_CCU]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=3D 0x01c20000,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=3D 0x01c20c00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_R40_DEV_WDT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20=
+c90,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c28000,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART1]=C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c28400,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART2]=C2=A0 =C2=A0 =C2=A0 =3D 0=
+x01c28800,<br>
+&gt; @@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_add_alias(obj, &quot;clk1-fr=
+eq&quot;, OBJECT(&amp;s-&gt;timer),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;clk1-freq&quot;);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +=C2=A0 =C2=A0 object_initialize_child(obj, &quot;wdt&quot;, &amp;s-&g=
+t;wdt, TYPE_AW_WDT_SUN4I);<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_initialize_child(obj, &quot;ccu&quot;=
+, &amp;s-&gt;ccu, TYPE_AW_R40_CCU);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0for (int i =3D 0; i &lt; AW_R40_NUM_MMCS; i+=
++) {<br>
+&gt; @@ -545,6 +548,11 @@ static void allwinner_r40_realize(DeviceState *de=
+v, Error **errp)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt=
+;emac), 0,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_R40_GIC_SP=
+I_EMAC));<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +=C2=A0 =C2=A0 /* WDT */<br>
+&gt; +=C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;wdt), &amp;err=
+or_fatal);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&amp;s-&gt;wdt),=
+ 0,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_r40_memmap[AW_R40_DEV_WDT], 1);<br>
+&gt; +<br>
+</blockquote></div></div>
+
+--00000000000005cac0060f2bfbcb--

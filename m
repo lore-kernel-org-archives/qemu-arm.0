@@ -1,193 +1,223 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1406301ejf;
-        Wed, 17 Jan 2024 00:41:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFrUHN8Y+kivPeFpz286mvI9KFIqE/PYqe4kZ392IOXx70h8XpQs9zm5h7wenNjacEuePzY
-X-Received: by 2002:ac8:584d:0:b0:429:f3d2:6dfc with SMTP id h13-20020ac8584d000000b00429f3d26dfcmr4515857qth.96.1705480879003;
-        Wed, 17 Jan 2024 00:41:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705480878; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1468013ejf;
+        Wed, 17 Jan 2024 03:05:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IExKqCXWpVgkf4krEw6cOlXhogECqt0XZYmD3JBtdh9RVI3J3KJHnKf6SvpLE+z2fWyCUUx
+X-Received: by 2002:ac8:7d14:0:b0:429:b8cc:8697 with SMTP id g20-20020ac87d14000000b00429b8cc8697mr809486qtb.36.1705489550653;
+        Wed, 17 Jan 2024 03:05:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705489550; cv=none;
         d=google.com; s=arc-20160816;
-        b=DKvAVFB1Vr33owFGTymv3lvbae5IGzSX61jop+lTiStQQdYhBbrCROqRZPkiuBsQZJ
-         s8br3xXbyYxUzf1ANLQXiN7J8g7100Aw/ImQ/kCesHTgxHbRFL/JB8T+EmOmxDQnGbub
-         KanxHJkKuCkkhLgeDyFSolcKchB3o74CYyzjB2YikPyQ4dzj7Ke8PYEpna8F7qSGUMA6
-         fZ+Me2hVyhrqExnVNP0SYrvnHDVc3C1BhG+qvSaAW9YevutY2r0IYYSpIlvZVg9uqGlH
-         S7rjgMu+ojBQ5MmEoLccrAtaWDZDeHlFwQnaDe6b8aZljYsP8QAILvrEQPbjfnec/idc
-         /cTA==
+        b=Ex3IzfAI/xyzpSaN3igZHq18CjbuqK5+wJVloay9BjsSQwzV3EtPzcNtK+YHf9y3n1
+         LPiEJeFv67w3cuYPZLj3BQ+x13gPBs8U/jB/GtjyCPDsSA3ktRYkr6hxkNRAcfOGE1Q2
+         h334/fL55n0+Nh5v1W86sZtWLTs1cufaX/zdmBtufBRsn7oGYESgw8UD9tTBu2zQA5+q
+         Ni4IbGyJ78ojBYdPrIa20UwUCSWxKR5vI7LjXvbwPqjUiUSB4UMF/WyE+X5/nRQM4Kf8
+         9mXdb5A1j7oV0/CG5fBlsxPsHUf4gR/yTfL4+wROSosyi0dtJRBUpRLLIoBjsa0R3oJa
+         Tb/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
          :date:dkim-signature;
-        bh=FbexiVYUa4f5Ut9Oc53ij44ge22AhxP47f1RuO8L+B4=;
-        fh=Bj3iOVmu1clgG+pZT8H/mySoK2b13K3HhEi6cJJAapU=;
-        b=MkIXZYz2aaTLAmQtcEsnBwjCiDbDycyJS8u3CvX4PdLUpFyCpmBE23d+PwiHERB+e0
-         azDc8+0Bpb5XGocSolaUN8kCQIicFUr1Qw6gIfTSlxqmTVaGMTCSN5R+C1ThxkZ6D0FC
-         dwVpnjhZp8VQ/RfHMBxG6sgkykGUajIx3szxEAY1deh+JTtVYVI8yQpFqfP4DaRNGF09
-         ZttBqbbPe1Z5IKvaiou1mdV1oDQ3EvCjtYKd/ZjmoSv2xfNqJbHbVliypL4a5hNBbo3l
-         LYx61MmYqrlS8kPa8/a4a9yMygBcLYtbXENA21ThDhYZKvbiR5mMXdBru27Su2NJHDj7
-         jXog==
+        bh=aTMbsHsrO4MrYT6vSy6ZhZxs09701ZYspzOhmvylig0=;
+        fh=Wy16zEefzmDVK4hSUH9RrV6EQ+HyWwceWY8/bLOOjIE=;
+        b=vEO6T4bcUyvL5RwKMlA2ZwvyXeuycPPTpWPgfLE0bhSCto/P4izDD6GmUFuZ7lL7TB
+         cz3oWJFRz/o0s96GMdTZfo3uybjZd+gjEubEWBi5mQ/uD1cWlyYREsCjJPCOEtPonI29
+         M5HdBPtRZgqdErvkePWoxplQpws+FzdDHS6uovGaN1ay+lZV2D9fn+CMjzjEklwCBEs/
+         9iCfFvuRIt6McPx3QgCifWzqVMgmxMj7t22Wslbvxig89hP2JH+PTC4qpeDHuqd7GJ05
+         sQBp1he0hanr+cnQW0nVUflzusp6sCwxx4ccr1z8mi4uh+plPyCXaBlCQ2ivpmBaEGL9
+         26Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBLzpYXF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ZjiRG/Ah";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21-20020ac85f95000000b00429c7bb667csi11047576qta.51.2024.01.17.00.41.18
+        by mx.google.com with ESMTPS id x1-20020a05622a000100b0042a12a1520bsi275362qtw.602.2024.01.17.03.05.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jan 2024 00:41:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 17 Jan 2024 03:05:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBLzpYXF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ZjiRG/Ah";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQ1Tr-0007xf-A6; Wed, 17 Jan 2024 03:41:04 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rQ3jn-0003uV-HQ; Wed, 17 Jan 2024 06:05:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rQ1Tm-0007x4-Rc
- for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:40:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rQ1Tk-00014v-T3
- for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:40:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705480856;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FbexiVYUa4f5Ut9Oc53ij44ge22AhxP47f1RuO8L+B4=;
- b=FBLzpYXFmOa+otcsTIadhBZ0NO4kBDQ90ZtmXzoB+oT2A0blCo1jonQFzwuOAcIFry3KSy
- ztFHTgx32BGAyNQ6I1jBPuWhFIY3Ft3+G/TzYWb8reVB+m2u0Q7dq+8j0qfTJzP8EL+rqD
- VVYG3ia7WYzIZRv4kYQq/Ew6sWkrnY8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-442-bpuNONVpN_qvAKyMTUvyWA-1; Wed, 17 Jan 2024 03:40:55 -0500
-X-MC-Unique: bpuNONVpN_qvAKyMTUvyWA-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-40e5f548313so48851395e9.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jan 2024 00:40:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1rQ3ji-0003u6-By; Wed, 17 Jan 2024 06:05:34 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1rQ3jg-0000aC-6j; Wed, 17 Jan 2024 06:05:34 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5534dcfdd61so19228975a12.0; 
+ Wed, 17 Jan 2024 03:05:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705489529; x=1706094329; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aTMbsHsrO4MrYT6vSy6ZhZxs09701ZYspzOhmvylig0=;
+ b=ZjiRG/Ah53Q1q7UrPwgDojfmyI7RSZk32x1uLKjARNBORdhCI/H5GVVjwN6YhEZ1LN
+ /WiCY99+gqxs5OMF+DaIvat9a7jgQb0iltbWXPhvv9ShKObfjV+uob9K/xwwNYX4pS83
+ Iiu2abqiUzVYayiIpJECgFGg99mimUQJYdeKaIqNX6BflwHuxBS8N2dSfbUy8K/+4oWg
+ taE+6egB7xHCdtTDEWxraH2oX72uQo7aVG4Jg3trF8LTsk8vj3vb+VZ1UlIzjfL4LcJ1
+ toqLdLq7nFpaznSN7iseAS3tueyPy+6lPpVCFrDEM41/4fFZwf2kSEeaspX3j019AnG+
+ qw4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705480853; x=1706085653;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1705489529; x=1706094329;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FbexiVYUa4f5Ut9Oc53ij44ge22AhxP47f1RuO8L+B4=;
- b=BpJH7GFAv195QC2Getyw5n9ktITSNmRR0PvoIT38qD5Wjpt5EfD9PpEAJODCuO6geb
- MHbk1Aesvn6MXBDsYtAD4he+0VCS7FDYUaJwVyZ+6ZBtFHSMrBR+q2XjVbih10Q81cuh
- Lb52etTUnYnUvqDv6aTaqRtdrmFwIMXCCj+KeB4nhX50lTXbrXxaHTu14vd2sW5Fh0oo
- iQqDnP7jEUOmh9pRZcH3fvuNWGfejOi/BkyhZRzPI+Dc2niAZDsl+I7dvEkXxw+gAXh8
- TR1LI5kKnoLZUvkchkUBbGiLpaOan+ExhZpk7ozzeWpAbW7039ZeE7VUgcxHlNi5hk0n
- 2OIA==
-X-Gm-Message-State: AOJu0YzbqWSXLjNA6ME69SZYFX2IJXX4g7u59fPfv6734ueDx7YQTkih
- iDkH1kQBllmOsskGYXZhflKH1TjfECrjUdBL69K5dNNq/hpo2OL6d+6LEuVaBQMStmt/5HI6snA
- TurD1k5qBgdiEyFpRX5gBhzHwM+3r
-X-Received: by 2002:a1c:6a03:0:b0:40e:6948:3226 with SMTP id
- f3-20020a1c6a03000000b0040e69483226mr3655427wmc.134.1705480853239; 
- Wed, 17 Jan 2024 00:40:53 -0800 (PST)
-X-Received: by 2002:a1c:6a03:0:b0:40e:6948:3226 with SMTP id
- f3-20020a1c6a03000000b0040e69483226mr3655421wmc.134.1705480852957; 
- Wed, 17 Jan 2024 00:40:52 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- r7-20020a05600c35c700b0040d1bd0e716sm21834056wmq.9.2024.01.17.00.40.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jan 2024 00:40:52 -0800 (PST)
-Date: Wed, 17 Jan 2024 09:40:51 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Felix Wu <flwu@google.com>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 1/1] SMBIOS type 8 should use T8_BASE.
-Message-ID: <20240117094051.401b6316@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240117093847.5dc92824@imammedo.users.ipa.redhat.com>
-References: <20240111192522.2795498-1-flwu@google.com>
- <20240111192522.2795498-2-flwu@google.com>
- <20240117093847.5dc92824@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.39; x86_64-redhat-linux-gnu)
+ bh=aTMbsHsrO4MrYT6vSy6ZhZxs09701ZYspzOhmvylig0=;
+ b=w1eSaYZMWj9QuAyJaIqBiTpFiMDgGFnoTQwYKSxxJfCKbevKgMAG03iL8cGbfSYpjS
+ ILPKvDThidmhmmFwi0vYoIP9Neo1KDmYPE5dB3vO6KnhmRRwnGirFYfl9lr3ve4aDgDo
+ SfDP+sx64rXlZmnfDkcgQiqgb5hbNikaLEQAnQjBTm+DCENThFSv2iHZYVRCAAhyZ/I7
+ yE3E6BB7jI+lh4hncrvp7sQiMrrJX+rCImW8bbcirZVLE1jUtmhwSkH7uaZjCZxq7QlR
+ lfei46HVTiOhLZJLCDBy4/g5MXkbpATQuRIFoJ+lKJknc7i6BGPQGrclncpDAKd97uRF
+ JFHQ==
+X-Gm-Message-State: AOJu0YzXi3iIzJUpikKTgaHlijatUCOnq3+XfldCpOdqx26xKP0K9y+J
+ CAAaPJSxRFK4/XivhxzWkn0DduW1Fk8=
+X-Received: by 2002:a05:6402:2052:b0:558:b89d:8e39 with SMTP id
+ bc18-20020a056402205200b00558b89d8e39mr720307edb.37.1705489528778; 
+ Wed, 17 Jan 2024 03:05:28 -0800 (PST)
+Received: from [127.0.0.1] ([90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ v21-20020a50a455000000b005527c02c1d6sm8254309edb.50.2024.01.17.03.05.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 17 Jan 2024 03:05:27 -0800 (PST)
+Date: Wed, 17 Jan 2024 11:05:20 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
+CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: =?US-ASCII?Q?Re=3A_Re=3A_=5BPATCH_1/3=5D_hw/arm=3A_Add_EHCI/OHCI_co?=
+ =?US-ASCII?Q?ntrollers_to_Allwinner_R40_and_Bananapi_board?=
+In-Reply-To: <ccs4nfcdm7e5iek2enycw4echbyny2okstx4pg2es7pggjlgld@5vftyjpgfot2>
+References: <20240113191651.1313226-1-linux@roeck-us.net>
+ <20240113191651.1313226-2-linux@roeck-us.net>
+ <56f692d8-41b1-4126-96b9-80d274624984@linaro.org>
+ <56fde49f-7dc6-4f8e-9bbf-0336a20a9ebf@roeck-us.net>
+ <ccs4nfcdm7e5iek2enycw4echbyny2okstx4pg2es7pggjlgld@5vftyjpgfot2>
+Message-ID: <51F3A473-7A20-4C0C-BDF1-98D839E56A0F@gmail.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pYbhj6e6zIpC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BPAdDGlGx8Fx
 
-On Wed, 17 Jan 2024 09:38:47 +0100
-Igor Mammedov <imammedo@redhat.com> wrote:
 
-> On Thu, 11 Jan 2024 19:25:22 +0000
-> Felix Wu <flwu@google.com> wrote:
-> 
-> it is missing Signed-off tag a minimum, and also commit message should describe in more detail
-> what's wrong and what's breaks and how it's being fixed with references to spec preferably. 
-> 
-> please see https://www.qemu.org/docs/master/devel/submitting-a-patch.html
-> for requirements to commit message of the patch.
+
+Am 16=2E Januar 2024 10:13:37 UTC schrieb Gerd Hoffmann <kraxel@redhat=2Ec=
+om>:
+>On Mon, Jan 15, 2024 at 08:12:29AM -0800, Guenter Roeck wrote:
+>> On 1/15/24 03:02, Philippe Mathieu-Daud=C3=A9 wrote:
+>> > On 13/1/24 20:16, Guenter Roeck wrote:
+>> > > If machine USB support is not enabled, create unimplemented devices
+>> > > for the USB memory ranges to avoid crashes when booting Linux=2E
+>> >=20
+>> > I never really understood the reason for machine_usb() and had on my
+>> > TODO to do some archeology research to figure it out since quite some
+>> > time=2E Having to map an UnimpDevice due to CLI options seems like an
+>> > anti-pattern when the device is indeed implemented in the repository=
+=2E
+>>=20
+>> Me not either=2E I copied the code from aw_a10_init(), trying to use th=
+e
+>> same pattern=2E I am perfectly fine with making it unconditional, but t=
+hen
+>> I would argue that it should be unconditional for Allwinner A10 as well
+>> (not that I really care much, just for consistency)=2E
+>>=20
+>> The "-usb" option says "enable on-board USB host controller (if not
+>> enabled by default)"=2E Unfortunately, that doesn't tell me much,
+>> and most specifically it doesn't tell me how to enable it by default=2E
+>> One option I can think of would be to enable it on the machine level,
+>> i=2Ee=2E, from bananapi_m2u=2Ec, but then, again, I don't see if/how
+>> that is done for other boards=2E Any suggestions ?
 >
+>The -usb switch is there as long as I remember (which goes back to qemu
+>0=2E1x days)=2E  I suspect it was introduced in the early usb emulation
+>days, where usb emulation was more fragile and turning it on by default
+>didn't look like a good plan=2E
+>
+>usb emulation in modern qemu should be stable enough that enabling it by
+>default should not be much of a problem=2E  ohci/uhci/ehci emulation is
+>somewhat expensive due to polling being wired into the hardware design,
+>but as long as there are no usb devices connected this should not be
+>much of a concern either as the guest drivers usually put the usb host
+>adapter to sleep in that case (which saves power on physical hardware
+>and stops the polling timer in qemu)=2E
+>
+>So, turning on usb support by default makes sense to me when emulating
+>boards, where guests expect the usb controllers being present at
+>specific MMIO addresses, so mapping UnimpDevice is not needed=2E
 
-on top of that pls consider adding test case for it in
-tests/qtest/bios-tables-test.c
+Good idea, this might make upstreaming my VIA-south-bridges-in-the-pc-mach=
+ine work simpler=2E
 
-> > ---
-> >  hw/smbios/smbios.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> > index 2a90601ac5..7dda84b284 100644
-> > --- a/hw/smbios/smbios.c
-> > +++ b/hw/smbios/smbios.c
-> > @@ -591,6 +591,7 @@ bool smbios_skip_table(uint8_t type, bool required_table)
-> >  #define T2_BASE 0x200
-> >  #define T3_BASE 0x300
-> >  #define T4_BASE 0x400
-> > +#define T8_BASE 0x800
-> >  #define T11_BASE 0xe00
-> >  
-> >  #define T16_BASE 0x1000
-> > @@ -775,7 +776,7 @@ static void smbios_build_type_8_table(void)
-> >      struct type8_instance *t8;
-> >  
-> >      QTAILQ_FOREACH(t8, &type8, next) {
-> > -        SMBIOS_BUILD_TABLE_PRE(8, T0_BASE + instance, true);
-> > +        SMBIOS_BUILD_TABLE_PRE(8, T8_BASE + instance, true);  
-> 
-> we can't do that unconditionally as it will break live migration
-> where firmware reading this might get part of broken tables (on source host)
-> and 2nd part of fixed ones (from target host).
-> 
-> So we need to use T0_base for old machine types and T8_BASE for
-> default/new machine types.
-> for example see how 'pcmc->smbios_uuid_encoded' is used.
-> unless it's x86 specific, this should be done for affected machine types.
->   
-> >          SMBIOS_TABLE_SET_STR(8, internal_reference_str, t8->internal_reference);
-> >          SMBIOS_TABLE_SET_STR(8, external_reference_str, t8->external_reference);  
-> 
+>
+>In case guests detect hardware via generated device tree / generated
+>ACPI tables / pci bus scan (i=2Ee=2E arm virt + microvm + pc + q35) it IM=
+HO
+>makes sense to keep current behavior=2E
 
+I remember similar discussions with Phil during PIIX consolidation where t=
+he motivation was to make the code simpler by removing options=2E That is, =
+if a piece of silicon contains multiple functions, the QEMU model should al=
+ways instantiate all (available) functions rather than providing options fo=
+r cherry-picking=2E
+
+Especially in highly integrated devices (such as south bridges) there migh=
+t be interconnections between functions that are hard to handle when some a=
+re optional=2E For example, the ACPI function in the VIA south bridges dete=
+ct activity from all other functions=2E In both PIIX and VIA, the USB funct=
+ion can be (de)activated by software from the ISA function (not implemented=
+ yet)=2E
+
+The latter would allow the current behavior of the pc machine(s) to be imp=
+lemented while avoiding the cherry picking problem: The BIOS could switch t=
+he USB function on or off depending on fw_cfg (please correct me if I'm wro=
+ng)=2E I think this would't even need compat machinery=2E Of course, suppor=
+t would need to be added in SeaBIOS and -- I guess -- Tianocore=2E I'd like=
+ to look into that but, as usual, no guarantees when this will arrive=2E
+
+Best regards,
+Bernhard
+
+>
+>take care,
+>  Gerd
+>
+>

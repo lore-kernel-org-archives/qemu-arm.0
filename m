@@ -1,120 +1,127 @@
-Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1399095ejf;
-        Wed, 17 Jan 2024 00:22:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHehYag6XtOJjq44f2OSTmj4Cjg1Bmkg7F4guziI5WXMk4hyJQIvxavH0x/gLa3M1x000YP
-X-Received: by 2002:a05:6214:d84:b0:681:80b8:afec with SMTP id e4-20020a0562140d8400b0068180b8afecmr194813qve.25.1705479742436;
-        Wed, 17 Jan 2024 00:22:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705479742; cv=none;
+Received: by 2002:a17:906:18b1:b0:a2e:1324:ea5c with SMTP id c17csp1405447ejf;
+        Wed, 17 Jan 2024 00:39:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFVlDLrtOZnHsGwYOU9OnVu5F8h4A0sCST1LHVZRNQWCPO9fB3srokKEZyngJaulcTSewVu
+X-Received: by 2002:a37:e10a:0:b0:783:1fa8:a59a with SMTP id c10-20020a37e10a000000b007831fa8a59amr8886839qkm.32.1705480746839;
+        Wed, 17 Jan 2024 00:39:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705480746; cv=none;
         d=google.com; s=arc-20160816;
-        b=fXt8AfqUDws3Z4ezRKljp8n17OGhoAGHuOci8BD3pQgdKuNu4Zjz00onNObovKAXXl
-         86458rkjbghSjOg2OYH7GwSxQlky8HwGLll0JldqN6eRIxw1pnrM8FjUmjMsE8pSzdsa
-         Lh//m3i1FkzcXmuqn1VlMPaWTjjzU2Pjet3qXdmRZXipKk2PaQ1u5udEzzXyu7yYEQ8e
-         bEiAz6aA+Cx1TE9JH11ATNjQeGRpLwX9tOEuiwfo0lo6Ckdf7Cy9X0Rzsnz/kNQfbckH
-         0/EmA1pALCkosTMaSSp3wC5gjEeaLbFXdowX89T2/YDd7Iz5/NE9t67QzxcaSQ9JzZdY
-         kgnQ==
+        b=bF5UMd7rXfvD9465fkVRM10/iuHgRGwqx5bp0UVlr8nehvYZVV9ZsmaZ8Ng2GhGCXi
+         KebdaQHmFrCRicDMkHd56N0Dt9vF4X1FSILrU/X8FhNxpQbjtxX4ytl1qFldYE9eX/vM
+         NKkLHdhS+fbIs0KRVA+LE0FKQeNCe67x+tUDDNRuSh/NFNyR+Isgiu1REYvJGjCNFax2
+         Tg+p3DNr+S0qqqdoGQupoLbP7vVWPR5aEST4IZJWprPSuTe9fbad4hqZRRGl/0IsQ52d
+         kznIFbvlwAQXtubfsMeku6btmjtbIrcfqsY3HLt79NeezLQ7L31SvzrzwgR4JtGgsV+M
+         3akA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=EmEum774Ua+C6UqJ8Bit+z7AWBLq2AIE2JojPLeEIcc=;
-        fh=QCq67MjJ9ZNv+r/6aHCftgXUNUhuidysX9YlaIvB7hU=;
-        b=tlezX9giYC6geZLnGkidW2GnYSEtz/DH5GA/Gp9ETgKABu/OhK+Doa6tY4+DoIm7Bc
-         hviqvyslgz7DEfm+tfylZBt8TtClCdAYB67LyPumHqx6LQ020BizNzD8USwVtKQAGCnR
-         f44qRJx6U3IJ1nWymTK3kw+TSzscg7omXvdHZzAgzh5PDV/LgPjMDJayFnreLzUgLj5t
-         /2KaUlKgZYLYG+ac/6TmrYHF6NuH8p2Qd4/Pe+lkT/d1On5v1sctpnJh0f3WxJlPh5dJ
-         6FGOw9WPIidnvaHtOhdqvTjrg0vZlnknmtWjlr/weFX66ZXaUxFUNAKC3sfHO20iP2nm
-         1uxA==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Af2rR5ZJLoauR5bWUoT60gMoi3cfXo5P5ZHhPEaQHTs=;
+        fh=Bj3iOVmu1clgG+pZT8H/mySoK2b13K3HhEi6cJJAapU=;
+        b=jOggJphBzOmXO8WZLqzlLdRkoo0w3cwxcNCWeyBXP/3Tl6Gg02otqVDVkroghI55Mf
+         xg5XO5NbkatNi6gWprgmzQ7tMb5DSQn0+6Oawo21mUaaM+HrDKwRCKeK1KbhXro47Ie3
+         by7z4oXwl5MJH2r1dYZmAfnDqldchd7EDN9x/iwZXnAY/WgYjgdO76qjSwpODpEJT17y
+         TQmbc46+yHIIF0px52NU9RKABuRY3GJZil8fuKg+lyB345r/uD53CAF5QFbppWnNtfly
+         JPGHkuIT7WyOgW3ChkmBi3/5v1XyhMeaQ2QX9bTS1NjFhWfN80K86OAWQuFr1LA8rqEe
+         UHag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fJ9/HQ6t";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVUypnF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13-20020a0ce24d000000b006817a3fe953si974574qvl.144.2024.01.17.00.22.22
+        by mx.google.com with ESMTPS id k5-20020a05620a07e500b0078315f41489si10825783qkk.432.2024.01.17.00.39.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jan 2024 00:22:22 -0800 (PST)
+        Wed, 17 Jan 2024 00:39:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fJ9/HQ6t";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVUypnF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQ1BY-0007jb-0R; Wed, 17 Jan 2024 03:22:08 -0500
+	id 1rQ1Rx-0006dk-2A; Wed, 17 Jan 2024 03:39:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQ1BW-0007il-TC
- for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:22:06 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQ1BU-00062z-Es
- for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:22:06 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-336990fb8fbso8388653f8f.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jan 2024 00:21:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705479714; x=1706084514; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=EmEum774Ua+C6UqJ8Bit+z7AWBLq2AIE2JojPLeEIcc=;
- b=fJ9/HQ6tD+ff37q1bFRwvsvPtA6vrhgUxNkTntjk3PA7kJFr+Drj0G0K8MDcZIcV1i
- yBqI6K3/yRSCglUrhk2l9WMJeYkOmtUjg79aqNuVujlackP6Zx79VpB538YyVjxS38vx
- wYa1kLxX6zKlGGfsuL9vv5THOWskIfz7jMS0zhImDRJFhBxxLR0FgZ2TKHQbwOZGmHB8
- y+HQr33qiR0YkFUbFWRd3r46lKHt+nZYnWNEqPhteTiWXevwLi3bar29kSrH6Oy4BheR
- iPcH0IttYMEnbHiSU0fgLJy/YkqvtAhxkXUIr/5GKu+UsjFMEhFix0dmWr092ovUAyxM
- dKrg==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rQ1Rp-0006bZ-5j
+ for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:38:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rQ1Rm-0000V1-Dl
+ for qemu-arm@nongnu.org; Wed, 17 Jan 2024 03:38:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705480732;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Af2rR5ZJLoauR5bWUoT60gMoi3cfXo5P5ZHhPEaQHTs=;
+ b=TVUypnF62BULsEakdaxObCTWK29Iw+8V/2LNi4FAxiNGrunrE+Rh8e6TfjNXP0n/pq11wF
+ QR4xQtcxPeY8AWC0JJRCJW1pcI850B8rXQxHPu/knMy6z7jG7wr7jf1oK/GWGmDHsi68mB
+ N2YknB7VBnfSv5Qi3ep6x+4FMkHFnm0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-554-B8O1poKAO2uYYzd4jLqbIw-1; Wed, 17 Jan 2024 03:38:50 -0500
+X-MC-Unique: B8O1poKAO2uYYzd4jLqbIw-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-40e4caa37f5so65600605e9.0
+ for <qemu-arm@nongnu.org>; Wed, 17 Jan 2024 00:38:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705479714; x=1706084514;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EmEum774Ua+C6UqJ8Bit+z7AWBLq2AIE2JojPLeEIcc=;
- b=byxpXFBOhc5sP3WtyNv70g50cdGm2qUVZiQl9339Gz6gi8kWZtFq65PMSnSwrdmBHX
- S7xZr0G0Y20b0OjuG+Myvjxz0RFqA4p13m291FAyCr9PNx2EOM51EyLoQcakEuhhHv6g
- oZJs9dGWRqWj7NpfZIYgBMKTXkSA+Alfb7JHQYtQvIjqzamMeG9CcyQeb7nUcA++EkNe
- Gnnjc9IX9iTocSrqG9x0nRJ35BYaMr1lUOwkZcZVOxo5Koubbmyt+X3dnEbI/xEvpCO1
- qIetZVALhx4cNZBJJhPAjcRmwoF7a9vtPj6xCIKgJwG+rZR2LT+Maxfdy9IbKPNm+RGA
- 9Fkg==
-X-Gm-Message-State: AOJu0Yy4pinQPlssMqy8YH0FdRTesab2WSkcEE7iwjNyfsxABiJWIuC5
- 0jA7YBa6s/rWUJRU1S+JbsaHzG9kqEYUNw==
-X-Received: by 2002:a05:600c:3551:b0:40e:4806:f42a with SMTP id
- i17-20020a05600c355100b0040e4806f42amr4707119wmq.15.1705479713781; 
- Wed, 17 Jan 2024 00:21:53 -0800 (PST)
-Received: from [192.168.69.100] ([176.176.156.199])
- by smtp.gmail.com with ESMTPSA id
- n13-20020a5d51cd000000b0033673ddd81csm1033645wrv.112.2024.01.17.00.21.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Jan 2024 00:21:53 -0800 (PST)
-Message-ID: <a6146842-4202-4cca-a193-901bee53f1d3@linaro.org>
-Date: Wed, 17 Jan 2024 09:21:51 +0100
+ d=1e100.net; s=20230601; t=1705480729; x=1706085529;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Af2rR5ZJLoauR5bWUoT60gMoi3cfXo5P5ZHhPEaQHTs=;
+ b=EV6+Tz7+HuiGUD2wheU6Qqg5fHwKPHWb9xg1f5BkX5GXdmVu4Zz8kqQRplPEVa2jj2
+ /0ZtObOrKMOCgGvJODhWfQhx5wbFOGQllRAiLspNRFYK9EdlFOqDJwBrlvG8M+/O4wTf
+ 0ESDuvHpbssiUdyqRkrKVF3i3HsoJeVzJLjV1qXDajHYu2HvVURw1AC6/1x5NLiAXyQY
+ /YBT0kiGbkEyJ/FYM6dHOfVrKtHJCBJh4gqTQagfKVncjTyABGFyvP+fTag07tMP1Cmp
+ cO5LYY/e0vmHTPOr1kKYpoN1ckA/hfIjI6k1mKffBnPDcrCdZvtg8wbl3pUM2LsfuAtd
+ pIaQ==
+X-Gm-Message-State: AOJu0YzeM/g1S2WOXNzc0rAdpvQ6wmWG5Q4hueQxadGTqeu7W6RJumAf
+ 2y5+5e+bq1HhiyFUIWcf1bdySl8IxJCXDSVQFr3iTPta7hbgstBy/vTdHiOzt5DhKSQYCEYZeFr
+ PJEq4Sb+UkYkDESh+WwRP2cL7QLCJ
+X-Received: by 2002:a05:600c:2295:b0:40d:5fc7:7a74 with SMTP id
+ 21-20020a05600c229500b0040d5fc77a74mr4173439wmf.188.1705480728834; 
+ Wed, 17 Jan 2024 00:38:48 -0800 (PST)
+X-Received: by 2002:a05:600c:2295:b0:40d:5fc7:7a74 with SMTP id
+ 21-20020a05600c229500b0040d5fc77a74mr4173429wmf.188.1705480728508; 
+ Wed, 17 Jan 2024 00:38:48 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ fm23-20020a05600c0c1700b0040e612aa673sm21607653wmb.17.2024.01.17.00.38.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jan 2024 00:38:48 -0800 (PST)
+Date: Wed, 17 Jan 2024 09:38:47 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Felix Wu <flwu@google.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH 1/1] SMBIOS type 8 should use T8_BASE.
+Message-ID: <20240117093847.5dc92824@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240111192522.2795498-2-flwu@google.com>
+References: <20240111192522.2795498-1-flwu@google.com>
+ <20240111192522.2795498-2-flwu@google.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.39; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/6] sysemu/replay: Restrict icount to TCG system
- emulation
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Stefan Hajnoczi <stefanha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Fam Zheng <fam@euphon.net>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20231208113529.74067-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231208113529.74067-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,17 +136,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i2Zk+QBFMipB
+X-TUID: AaD3jLJuuiM4
 
-On 8/12/23 12:35, Philippe Mathieu-Daudé wrote:
+On Thu, 11 Jan 2024 19:25:22 +0000
+Felix Wu <flwu@google.com> wrote:
 
-> Philippe Mathieu-Daudé (6):
->    sysemu/cpu-timers: Have icount_configure() return a boolean
->    system/vl: Evaluate icount after accelerator options are parsed
->    sysemu/cpu-timers: Introduce ICountMode enumerator
->    target/arm: Ensure icount is enabled when emulating INST_RETIRED
->    util/async: Only call icount_notify_exit() if icount is enabled
->    sysemu/replay: Restrict icount to system emulation
+it is missing Signed-off tag a minimum, and also commit message should describe in more detail
+what's wrong and what's breaks and how it's being fixed with references to spec preferably. 
 
-Thanks, series queued.
+please see https://www.qemu.org/docs/master/devel/submitting-a-patch.html
+for requirements to commit message of the patch.
+
+> ---
+>  hw/smbios/smbios.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> index 2a90601ac5..7dda84b284 100644
+> --- a/hw/smbios/smbios.c
+> +++ b/hw/smbios/smbios.c
+> @@ -591,6 +591,7 @@ bool smbios_skip_table(uint8_t type, bool required_table)
+>  #define T2_BASE 0x200
+>  #define T3_BASE 0x300
+>  #define T4_BASE 0x400
+> +#define T8_BASE 0x800
+>  #define T11_BASE 0xe00
+>  
+>  #define T16_BASE 0x1000
+> @@ -775,7 +776,7 @@ static void smbios_build_type_8_table(void)
+>      struct type8_instance *t8;
+>  
+>      QTAILQ_FOREACH(t8, &type8, next) {
+> -        SMBIOS_BUILD_TABLE_PRE(8, T0_BASE + instance, true);
+> +        SMBIOS_BUILD_TABLE_PRE(8, T8_BASE + instance, true);
+
+we can't do that unconditionally as it will break live migration
+where firmware reading this might get part of broken tables (on source host)
+and 2nd part of fixed ones (from target host).
+
+So we need to use T0_base for old machine types and T8_BASE for
+default/new machine types.
+for example see how 'pcmc->smbios_uuid_encoded' is used.
+unless it's x86 specific, this should be done for affected machine types.
+  
+>          SMBIOS_TABLE_SET_STR(8, internal_reference_str, t8->internal_reference);
+>          SMBIOS_TABLE_SET_STR(8, external_reference_str, t8->external_reference);
 

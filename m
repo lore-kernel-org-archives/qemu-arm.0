@@ -1,113 +1,203 @@
-Received: by 2002:a17:906:cd06:b0:a2e:1324:ea5c with SMTP id oz6csp48319ejb;
-        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFCBV1Tyg4KF40EXogkw4iDC7iz6XdsZK3nvg3Q6/kIrhKKW4w6cBxd0Z8js7jCsPvxDPO4
-X-Received: by 2002:a25:ae43:0:b0:dc2:50f3:c9d3 with SMTP id g3-20020a25ae43000000b00dc250f3c9d3mr566334ybe.66.1705531445370;
-        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705531445; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp106950ejg;
+        Wed, 17 Jan 2024 23:33:03 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFWrFwf1Fk+5X3Gw+EnlrEQ+i0iZcpmu00MrALUCam1/LWYNizuFVq4YK7RdvtkNNAfhD12
+X-Received: by 2002:a05:620a:461f:b0:783:7801:d98b with SMTP id br31-20020a05620a461f00b007837801d98bmr367164qkb.23.1705563183216;
+        Wed, 17 Jan 2024 23:33:03 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705563183; cv=pass;
         d=google.com; s=arc-20160816;
-        b=HTgK7gun1ap9PrY+93vhbgCKC/2bDqUEnEkGAu/w3lrAtOURD8/mZBXQVCXSw9o5G/
-         dRVJxM83jl0ho6wn77j4F9lQJ3SEIFZzkhYSRqC3/tk3k1dAR7h28XdFXXOqw6YX7scy
-         0kz96Fwesllqc/NsXdakcGpPUZx2rPrX2vB2unRQY7Z4NqCe5ZyZ/fuV6wOMQg7d2DC5
-         6qo9OQSFjYoFWqbJ47KGblQy+jCXOjOn/1bzTy5EySIpcpbAuxZYvTXpDsNOwZ8DeJTD
-         G/+6OpPSfm72hJmlvtxN4/DRdomDjaiF8f33X3UIY2+A3NKWy3t1jUyQvGvoLz+c/S0o
-         BWNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=xWdqv+zspHH4W/VpvIjCUdwtQ2ADMs/pqrk7kRNqn2B6SmC+PfcymoGzI+HxCEzMk4
+         qlf4Kb9P4XD/UeyyMp9lw9FbZ77T05Ao9ZCulz4UnCuuuNtqqiB3oPVMBGovtf3j2vMW
+         eWc4Mm8RLhKXUnL3RnLaPj7OHhVDIe60y8+QSAwH0m5NFn6eo2XQr0NRIcJh5c2WOYn9
+         RfoYiFzXi3WfONZVPrTtH6bW81EhbcbSZywt2Arbbgs/0F7Mq/0R8EYwaURl8LRHQ3ed
+         yVhbhqOJ3c68R+uygkVhu/QjlIExu3PNDQ1FGSfUv+fy7DvJhdoVBcKYHjDW634zfNDV
+         Q7og==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
-        fh=1M2LM3DPNDszvSSe6bKaRtdru7gmC/McEFAxnrzN28M=;
-        b=Zf8Dg5twwPa1YuJyZ9kQom7L1Nbtmj+lHnm6fCn3qGk18H3QMeG4fc1v362gFVs2EZ
-         rggCoT6ysKH2vK+OfcGZ1eSTsYYqCuZNYFW//6einDyM+L8xOGVfheVDOEbWKknTOFmH
-         ke3rMN56AuvNlgyJDx9B1atx4G7a6ltCOAWS6gFXzfcS4rhJjXOwCMmG74SrASlR6Jyq
-         nm9wR7R+wX/fUu9nphLyhSS1iDp/5PWH+c9JIlIWKYHQVUqtCS7l8Us/6CmFRMPmg1aU
-         2gSrMD4eqXsUQyi7ilF84GDW5AI4XgqthCm4HKq7mzOP0ByaAGa9bAlx+ElkTS7xabv1
-         MqOg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A4zR/2a9";
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=Ay9knUFl+M1gMjvv4GCoUrBgK6rK9LTYFkjWT0W1l/0=;
+        fh=PmzKZNjj5NnkEl3QJSdOpiQAh5z3bSKliBox3YS+HK0=;
+        b=ItvC/PbWoeSoPRkQqClRExba0UvzG8Rl1IqTBazx7WJ62+cpXdH+Sy3+uyOX5JW6AO
+         PR0WGrhPKCYiCqzri71HSTz6gjzhAYeJ6StktJNrqfe3RSPgPT2yHOOKQLefpVuR7Xqn
+         vII9C6cEg/305OSCUfSR6ZR2yMHPe9wITCrDV2uMWWl2sOK3+t2AriXNMWm+6Azi6phK
+         ZEW0G8W+S0IuU1HAKc9Nz+/XbaHtQ9xQz7pa4+2pRthcRjV4megXgQzzZoJaYxxLFCbe
+         PUE5ostsqLmHH8MncDFTMn28AK8hhGlcbxQQeTTwpINBDSy/Fcd7Wi541EGF/XetYpIP
+         EVnQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bFdiVJIy;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id os15-20020a05620a810f00b0078318d0603fsi12424004qkn.186.2024.01.17.14.44.05
+        by mx.google.com with ESMTPS id j13-20020a37c24d000000b007832a1c2a08si13543659qkm.372.2024.01.17.23.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jan 2024 14:44:05 -0800 (PST)
+        Wed, 17 Jan 2024 23:33:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A4zR/2a9";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=bFdiVJIy;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQEdY-0002PA-NL; Wed, 17 Jan 2024 17:43:56 -0500
+	id 1rQMtT-00087z-Cl; Thu, 18 Jan 2024 02:32:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1rQEdW-0002NM-83; Wed, 17 Jan 2024 17:43:54 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1rQEdU-0008PL-C5; Wed, 17 Jan 2024 17:43:53 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a2d348d213dso512139066b.0; 
- Wed, 17 Jan 2024 14:43:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705531430; x=1706136230; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
- b=A4zR/2a94NCpGGoe9dRPP2HbRQcOiI9jYp+BRyxe9W4SimcSK6Q6ZLF0iqTsvCowGx
- Hah/BKXNtoABOc5V7tfojhP5QBibn68+abrKBexffk6fyr7jaZnwt9dPUPo6eIf2pc8e
- FAxbx4V2mBynrzc/y+DcEGLLCovOrC+ZJqSowRuolEvmOIUUnTfTfVYCjk9jQzYVdzRF
- cQ4MDJD+EmdfkKyquB4swSTelCVOeATn49mH0oGOrvDyXUiyaMQsCmhoBGiTPCJdbPfU
- YnFa3C87eB+g56TNCHOEeqFgymiSMnTq1YCdEE2KRQRy90m0DYmj+VQ119IKYboHPuKt
- U68A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705531430; x=1706136230;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=31DszSb/MTr/KXXyUj5c1lXqsyoKEYYLM0ujM1F/9r8=;
- b=m+Ce1QDfbPNJYuNWWVHWRpkfpCs/cWVdcdH75r3B5nsNUiPM+U+dMD+++1Rdge/XR7
- g1cxdrWbDcyqXzi2h/9b6p0kkUVk01ZWa/rbOg9/wDXl9wVZP9EJHkk1VoIPWuTLzAhg
- LxWar463jO8AwJ1B7fFWlG5Z26ujsIDPqp7Lp36933mak9sYiQ5Y2thqDgSgpVLzm65t
- AccKdkzwcBo0EKKJOl1tEs4ohuSz42ujdzyeLtaouDf4U0bCPWv0PVqzo7Gn5C/zTu5I
- fHtHx3SksKQxZwNb3gA5EewLP4M8/PxEGocBxscxULkl05SfSQ1/eYM4rE/Hl8SN1Pgp
- CJeQ==
-X-Gm-Message-State: AOJu0YwyZgbE9gcD9KbfpOnnfHpCyUDtsWfGFgWMZKK/PPavaxy40OiG
- LZRov5+0I9gMmG5QGXgQdIfC7Sqaf5niVTuy9+E=
-X-Received: by 2002:a17:906:55c1:b0:a28:ff59:12eb with SMTP id
- z1-20020a17090655c100b00a28ff5912ebmr4623618ejp.139.1705531429733; Wed, 17
- Jan 2024 14:43:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1rQMtP-00085n-UL; Thu, 18 Jan 2024 02:32:53 -0500
+Received: from mgamail.intel.com ([198.175.65.13])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1rQMtM-0003xW-FZ; Thu, 18 Jan 2024 02:32:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1705563168; x=1737099168;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=XZJbrOS+TGG0rgtZCf6mwppvJzk/OoGpkLv4oWiQd+Y=;
+ b=bFdiVJIyIPLLKcCVJCvVMT3hkRNbIqfClBdSl7WRPEq8/CUFE+hHMqSp
+ raO4VJRyZOZjpMKWGid6PO/7SuOSmAOcjXo8WSjzJqIGnmdt+cE1th2GM
+ vA6ycpNPVS5YoDmGCumg8DcWBvBbhNGFa8PikDM3GEvQI5weou7CAZeY0
+ x3hgCeHMJu3L7JOuE+Dm12NyqkPGjN9VnVQS9mFHMet4uNOg0e55f8A5S
+ BAS3ebUQhDq8jVD/n3hNQoM7AVm8lIzoHFfubO/mu6+DgWgRDjxsoQIYF
+ +CjgKsj9yIXdxJqtJFPxhLdSm4l4HdteUcAG++aeEt0pnxpROmKXsvRFI Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10956"; a="7466217"
+X-IronPort-AV: E=Sophos;i="6.05,201,1701158400"; 
+   d="scan'208";a="7466217"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2024 23:32:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10956"; a="1115889584"
+X-IronPort-AV: E=Sophos;i="6.05,201,1701158400"; d="scan'208";a="1115889584"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 17 Jan 2024 23:32:44 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 17 Jan 2024 23:32:43 -0800
+Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 17 Jan 2024 23:32:42 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Wed, 17 Jan 2024 23:32:42 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Wed, 17 Jan 2024 23:32:42 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kwv2VLj0lEmdQ3UVFMF7pSLugf8nnP4ntdnYT9tE0z6B7JZz1uI2vE68Ub3DtjgNTzI5N5kIJUi6A0rCh+nBO4oeUMjfKq344pMAuMoORR8EXNgGSFuud2w/7YGqMBQ8lEAQ8+oNUZhraQh0dnjxQibyvcEosZW5Ni7tLWWtav4HAQXjdomB31lc0dEHRFq5sJtlNaM41iHc0ZmMyMziUomiDS/p+0Sl+8jJzoeqy132WQ7HmDb5xUv3iCjU1rqmEWRcNQ+grc3y+KpDtguWE4VS9xC2pe0QcWeQiSZPVgvmYF6HwFEAHvJ0QZtvmhwdyYBjCagZxN4BDxbvDRS4xA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ay9knUFl+M1gMjvv4GCoUrBgK6rK9LTYFkjWT0W1l/0=;
+ b=JnDaVzYcz6EURW5LxadA/O/5CJi9V403dSHYEnJAcTB39zqb7EFapiKnp3L+6VXt+mAi1j4pkB/ByeRkOMviciazUcKQO2CvCopSFcNx3fhcO/vyRLz8WYv7jOyN63e9+ZcBTI2p/qzrxuy9aWblbdltobRE8eiPUm1dgj4DyJEKbe4b4HZM34Eb0V0FqBJ2FSfMXIiqEXcHdNeFPTN88jtf3+n6b+nTd0cOmGeXuuPjz1jqK1jXYq8jQ1syZ+pHbu93go44MWptSKHSGxRBixijjP9x3B0PFCEZTyrTJgTifDZIVqJxDeNwbUqCpWgz/Zg+gE/9nzK8tK0Y0Ka3sA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
+ by SJ0PR11MB5023.namprd11.prod.outlook.com (2603:10b6:a03:2de::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.24; Thu, 18 Jan
+ 2024 07:32:40 +0000
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::88e9:5716:274c:5ace]) by SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::88e9:5716:274c:5ace%5]) with mapi id 15.20.7181.020; Thu, 18 Jan 2024
+ 07:32:40 +0000
+From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "jean-philippe@linaro.org"
+ <jean-philippe@linaro.org>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "peterx@redhat.com" <peterx@redhat.com>,
+ "yanghliu@redhat.com" <yanghliu@redhat.com>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>
+CC: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
+Subject: RE: [RFC 2/7] hw/pci: Introduce pci_device_iommu_bus
+Thread-Topic: [RFC 2/7] hw/pci: Introduce pci_device_iommu_bus
+Thread-Index: AQHaSRvX0S/PDwJ87EKoqW7HGqD/IrDfLprw
+Date: Thu, 18 Jan 2024 07:32:40 +0000
+Message-ID: <SJ0PR11MB67443DF78924B8E2D8BF470192712@SJ0PR11MB6744.namprd11.prod.outlook.com>
+References: <20240117080414.316890-1-eric.auger@redhat.com>
+ <20240117080414.316890-3-eric.auger@redhat.com>
+In-Reply-To: <20240117080414.316890-3-eric.auger@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|SJ0PR11MB5023:EE_
+x-ms-office365-filtering-correlation-id: cb75c921-b9f1-4465-69f8-08dc17f7a711
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: DVD9FaiPDkfboxnGRWNUw5Y2VveveuqR7cHiwFaO/0xrocr4JGQoHMWXGIvbtG+BbjrUyGq6TL6M8q+ZvheJIb5S3YnZu4TfIxPMHyu7AR/TV+2iS5DDXav23fqYcicAVdiWfOY5a7GiBb+dMfZ53ADu3QPulMdKCUcEZ+LCPwvbc5zoDvl8JRVn2U2EuBPnR7321KNqgaev5fJwuE42IzR5EbxtJz7is7eP07JHkoqe4NHAUWI+ApStlitJPBxuWaFLrBT9zOBCJU6UPwVLNejJOM7js3VIu+xpgQx+ywPP5tFWpUWXNG/BH2AkrQIE9xl/LkzrEnPASnfqxfVJD5Hoe8Wo2LicoOlv5T0G4sSeEpKseBOyLdszwiOcW7GD1EKDr5g3HTcOXZRpxRuynBDNlqvbnnef6o1qCrj/ampkYwppAYjVLCdVBeKjyZcQSKJuOzx8Tj9gNgn8Zjsa/FioxVvpM/BJVszajQjcoLXI4Q37UH3T//7cSRCT1ss7vh7aQm3jYA8GK4hCfCMUlU2fVD196olL2Qh1BqZRWdA2jQ/Tko4siKGXApYZzpComfsBvKWNRK2n4abqfGBRyKm826H3/697b6PfAtN1B0PwzfJboN18/+homosBfUWcthet+dVVILI0ZICkIdRf4w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(136003)(346002)(39860400002)(396003)(366004)(376002)(230922051799003)(1800799012)(186009)(451199024)(64100799003)(66556008)(66476007)(66446008)(54906003)(76116006)(66946007)(64756008)(316002)(55016003)(6506007)(7696005)(9686003)(71200400001)(110136005)(82960400001)(26005)(52536014)(122000001)(83380400001)(478600001)(4326008)(8936002)(8676002)(5660300002)(7416002)(2906002)(86362001)(33656002)(41300700001)(921011)(38100700002)(38070700009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?UB+UYmKAba+5sjEdEi0KsnbqNIQH3HGmgMk8rJ/VJARgZ7IJa/dUXVZz2lRH?=
+ =?us-ascii?Q?ZLddpjXYovFA8FOMBx18P9JMzYm1ZzmssMRsEXsxXXord9VBUmZkKSujQNAS?=
+ =?us-ascii?Q?LaRU6dpNq+JGon65CrbYgM7QH229pdm2dq8QuiEaYYPTyA5YNx6n/kZCTa7S?=
+ =?us-ascii?Q?LLLylV/Jx1RZZz0ruzK1IUTTWvNIPLEtRuvZ6p8M2sbW0ui3uDaV3f5u/kA+?=
+ =?us-ascii?Q?7etgbDu/5pVUyn3cgL/ASpdr28GR/6B4+g7/XqawCvBv+Kpn5GkkzUiXJsfU?=
+ =?us-ascii?Q?vkZjdxf/xCRvFmeIghnbNEHLsG19t+/ftfdtwJL69Dy9h6Xwubcbi6aZqcor?=
+ =?us-ascii?Q?8hqG/+ZbVM9aH8gfIMfDdDWAJIwelDwKjG9qECH+RKWaj7d4gAUs/qrTf8EJ?=
+ =?us-ascii?Q?4FAfy45DuYJFugo/2EOOE1DcVnFMDnV6ezfFIx09E6hIfwN1xwiOMG8IbArQ?=
+ =?us-ascii?Q?S1lUCj7vtHuIdwwbsmAQsTDMeqXTyO/GDDaarogCBpNz6TCSInSC0+9/gcHH?=
+ =?us-ascii?Q?Zmn3Ljm0l0E+WwdBDqJsSTmb78AyLB6jjjyDqvtEyjGK4ZcWYhsCwsI0Ij+G?=
+ =?us-ascii?Q?r9F0QGnLxuQSXXkt+pghVLWLTnbzCFWF7UCa9LMyRGESjC46AbAeKhwmZntR?=
+ =?us-ascii?Q?9A0Dry+m7PdOhePRn77zl++cYURgxDMJUTnO9I2fjRuVaQ4VKyPXbKCkbJsS?=
+ =?us-ascii?Q?CRukd3bsztRLLsMfgsoL7o7izIR5V/PyeS/ptxxoyVud9kWYY2vJ2g65G10m?=
+ =?us-ascii?Q?EXAMN0d/ACwuDEW/2g3NOu/traZC/WhkNn8wrfGgoyd+5oIOk3zURLEnVo43?=
+ =?us-ascii?Q?4itLU8wgpT5Ic3BEdfigRkcI4pJCHo5KnYDKPCdoAZjArooGzitJSu+90SMY?=
+ =?us-ascii?Q?xVx2l+Bg/9PLbCrzLxnw9szuvVOJrziFX8WLGxvpsU5q7sEPdBmlUxJYODSk?=
+ =?us-ascii?Q?mqT2j4Ya1+6jDWhtHvE6fIYwz4AFpwesVf5Kg7jRQgP9m+/8danF69yMeG92?=
+ =?us-ascii?Q?ZkzMRh539DXmeMb/uC+nxFI3Yr/+0vTMhPn0PWGPEaHOqNUUSgdUNfCst43+?=
+ =?us-ascii?Q?yqMSLQwG4h8ipSxBUbcb6i/v9OW0TTrtV4WrhXoFot/5xk1zx5B1IsQXRK1J?=
+ =?us-ascii?Q?MqjtoNR6XZSIWClijwGh3PLAADUM2yjTM0tB0lDyBmidRzHuD4o/pYeLgYjv?=
+ =?us-ascii?Q?XdLw01RYcgHWNCaAbCSOSUYYcL92JNlgiNcj+0sKlx8OQQ1owH0f+s9RvTNz?=
+ =?us-ascii?Q?gtP0X7mpiPtGAlSh4mOpn9D2sMnuLkwlv6viGVzbtG/bpLw78VoXMdn1+w65?=
+ =?us-ascii?Q?vohZmefO5mSAPwU9NXLPm/b4AFemUHFu83J/HJfeiiHQsuCTODSnZgRnN9U2?=
+ =?us-ascii?Q?oRaRonJ5BlNLYvdcbiQOaODA2kivt2pInbHqnwRPM6mr4mqzpRcmkfLzN+Qv?=
+ =?us-ascii?Q?3vYhmHwyqCK4gIXVhtHWocU/GvY3uud1vJF6IsLmQiWVIpjNeLKu3IKc1Kfs?=
+ =?us-ascii?Q?ctwswL53YRhrPsmtbMWiV6MxMxA6up7QDmRXRkBAl9GXRBq6K7+2/l1wWz7l?=
+ =?us-ascii?Q?tyaRPkCyuxtEBarM/oVC99Uth/NgvBZYFCVlx/my?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20240115182757.1095012-1-linux@roeck-us.net>
- <20240115182757.1095012-4-linux@roeck-us.net>
- <7551e55e-89b3-40de-a3b4-60e158d00295@linaro.org>
-In-Reply-To: <7551e55e-89b3-40de-a3b4-60e158d00295@linaro.org>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Wed, 17 Jan 2024 23:43:38 +0100
-Message-ID: <CABtshVSGYURKLN250C=a9RuP1bkwEe41OUKJXG+CUh-FPZPzYA@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] hw/arm: Add watchdog timer to Allwinner H40 and
- Bananapi board
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
- qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, Li Guang <lig.fnst@cn.fujitsu.com>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: multipart/alternative; boundary="00000000000005cac0060f2bfbcb"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cb75c921-b9f1-4465-69f8-08dc17f7a711
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jan 2024 07:32:40.6681 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3iXrY+ybF4a+jntAPNFpoYzdTTLWpVNeZKk0LvSCpnqcTaJ+b8Pd8Glunb70EVUkXwTPX6DY5q8e42zA7m/12GVBtEZ86RboizgP8TbtLS0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5023
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=198.175.65.13;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,220 +212,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZK1jJHVpoEQz
+X-TUID: 72UjAzFRA2Qc
 
---00000000000005cac0060f2bfbcb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi Philippe,
 
-On Tue, Jan 16, 2024 at 11:04=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philm=
-d@linaro.org>
-wrote:
-
-> Hi,
+>-----Original Message-----
+>From: Eric Auger <eric.auger@redhat.com>
+>Subject: [RFC 2/7] hw/pci: Introduce pci_device_iommu_bus
 >
-> (Cc'ing Li, Strahinja and Niek)
+>This helper will allow subsequent patches to retrieve the IOMMU bus
+>and call its associated PCIIOMMUOps callbacks.
 >
-> On 15/1/24 19:27, Guenter Roeck wrote:
-> > Add watchdog timer support to Allwinner-H40 and Bananapi.
-> > The watchdog timer is added as an overlay to the Timer
-> > module memory map.
+>Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>---
+> include/hw/pci/pci.h |  1 +
+> hw/pci/pci.c         | 16 ++++++++++++++++
+> 2 files changed, 17 insertions(+)
 >
-> I'm confused by these registers from TYPE_AW_A10_PIT
-> and the TYPE_AW_WDT implementation you are using:
+>diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+>index 63c018b35a..649b327f9f 100644
+>--- a/include/hw/pci/pci.h
+>+++ b/include/hw/pci/pci.h
+>@@ -403,6 +403,7 @@ typedef struct PCIIOMMUOps {
+> } PCIIOMMUOps;
 >
->    #define AW_A10_PIT_WDOG_CONTROL    0x90
->    #define AW_A10_PIT_WDOG_MODE       0x94
+> AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
+>+PCIBus *pci_device_iommu_bus(PCIDevice *dev);
 >
-> Do we have 2 implementations of the same peripheral?
+> /**
+>  * pci_setup_iommu: Initialize specific IOMMU handlers for a PCIBus
+>diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+>index 76080af580..5bf07662fe 100644
+>--- a/hw/pci/pci.c
+>+++ b/hw/pci/pci.c
+>@@ -2672,6 +2672,22 @@ static void
+>pci_device_class_base_init(ObjectClass *klass, void *data)
+>     }
+> }
 >
+>+PCIBus *pci_device_iommu_bus(PCIDevice *dev)
+>+{
+>+    PCIBus *bus =3D pci_get_bus(dev);
+>+    PCIBus *iommu_bus =3D bus;
+>+
+>+    while (iommu_bus && !iommu_bus->iommu_ops && iommu_bus-
+>>parent_dev) {
+>+        PCIBus *parent_bus =3D pci_get_bus(iommu_bus->parent_dev);
+>+
+>+        iommu_bus =3D parent_bus;
 
-The inspiration for the AW_WDT implementation, with overlay of WDOG_CONTROL
-and WDOG_MODE registers in the PIT memory map, was taken from the AW_RTC
-implementation.
-That was the easiest way to implement watchdog functionality, and also
-keeps logical functionality in the appropriate place (hw/watchdog) instead
-of bundling it with the timer.
-As Guenter commented, the AW_A10_PIT does not do anything with those two
-registers and with overlay it does not matter anymore.
+Variable parent_bus can be removed.
 
+>+    }
+>+    if (pci_bus_bypass_iommu(bus)) {
+>+        return NULL;
+>+    }
+>+    return iommu_bus;
+>+}
+>+
+> AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
+> {
+>     PCIBus *bus =3D pci_get_bus(dev);
+>--
+>2.41.0
 
->
-> Should we instanciate AW_WDT within AW_A10_PIT?
->
-
-Unfortunately, I don't know what that would look like and what benefits we
-would have from it. Can you point me to an example that already exists?
-
-
-> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->
-
-Guenter, thank you for submitting this change. The commit looks fine to me,
-so
-
-Reviewed-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-
-Best regards,
-Strahinja
-
-
-> ---
-> >   docs/system/arm/bananapi_m2u.rst | 2 +-
-> >   hw/arm/Kconfig                   | 1 +
-> >   hw/arm/allwinner-r40.c           | 8 ++++++++
-> >   include/hw/arm/allwinner-r40.h   | 3 +++
-> >   4 files changed, 13 insertions(+), 1 deletion(-)
->
->
-> > diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-> > index 534be4a735..a28e5b3886 100644
-> > --- a/hw/arm/allwinner-r40.c
-> > +++ b/hw/arm/allwinner-r40.c
-> > @@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] =3D {
-> >       [AW_R40_DEV_OHCI2]      =3D 0x01c1c400,
-> >       [AW_R40_DEV_CCU]        =3D 0x01c20000,
-> >       [AW_R40_DEV_PIT]        =3D 0x01c20c00,
-> > +    [AW_R40_DEV_WDT]        =3D 0x01c20c90,
-> >       [AW_R40_DEV_UART0]      =3D 0x01c28000,
-> >       [AW_R40_DEV_UART1]      =3D 0x01c28400,
-> >       [AW_R40_DEV_UART2]      =3D 0x01c28800,
-> > @@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)
-> >       object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-> >                                 "clk1-freq");
-> >
-> > +    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
-> > +
-> >       object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
-> >
-> >       for (int i =3D 0; i < AW_R40_NUM_MMCS; i++) {
-> > @@ -545,6 +548,11 @@ static void allwinner_r40_realize(DeviceState *dev=
-,
-> Error **errp)
-> >       sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-> >                          qdev_get_gpio_in(DEVICE(&s->gic),
-> AW_R40_GIC_SPI_EMAC));
-> >
-> > +    /* WDT */
-> > +    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-> > +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
-> > +                            allwinner_r40_memmap[AW_R40_DEV_WDT], 1);
-> > +
->
-
---00000000000005cac0060f2bfbcb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Philippe,</div><br><div class=3D"gmail=
-_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 16, 2024 at 11:04=
-=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro=
-.org" target=3D"_blank">philmd@linaro.org</a>&gt; wrote:<br></div><blockquo=
-te class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px =
-solid rgb(204,204,204);padding-left:1ex">Hi,<br>
-<br>
-(Cc&#39;ing Li, Strahinja and Niek)<br>
-<br>
-On 15/1/24 19:27, Guenter Roeck wrote:<br>
-&gt; Add watchdog timer support to Allwinner-H40 and Bananapi.<br>
-&gt; The watchdog timer is added as an overlay to the Timer<br>
-&gt; module memory map.<br>
-<br>
-I&#39;m confused by these registers from TYPE_AW_A10_PIT<br>
-and the TYPE_AW_WDT implementation you are using:<br>
-<br>
-=C2=A0 =C2=A0#define AW_A10_PIT_WDOG_CONTROL=C2=A0 =C2=A0 0x90<br>
-=C2=A0 =C2=A0#define AW_A10_PIT_WDOG_MODE=C2=A0 =C2=A0 =C2=A0 =C2=A00x94<br=
->
-<br>
-Do we have 2 implementations of the same peripheral?<br></blockquote><div><=
-br></div><div>The inspiration for the AW_WDT implementation, with overlay o=
-f WDOG_CONTROL and WDOG_MODE registers in the PIT memory map, was taken fro=
-m the AW_RTC implementation.</div><div>That was the easiest way to implemen=
-t watchdog functionality, and also keeps logical functionality in the appro=
-priate place (hw/watchdog) instead of bundling it with the timer.</div><div=
->As Guenter commented, the AW_A10_PIT does not do anything with those two r=
-egisters and with overlay it does not matter anymore.</div><div>=C2=A0</div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-Should we instanciate AW_WDT within AW_A10_PIT?<br></blockquote><div><br></=
-div><div>Unfortunately, I don&#39;t know what that would look like and what=
- benefits we would have from it. Can you point me to an example that alread=
-y exists?</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">
-<br>
-&gt; Signed-off-by: Guenter Roeck &lt;<a href=3D"mailto:linux@roeck-us.net"=
- target=3D"_blank">linux@roeck-us.net</a>&gt;<br></blockquote><div><br></di=
-v><div>Guenter, thank you for submitting this change. The commit looks fine=
- to me, so</div><div><br></div><div>Reviewed-by: Strahinja Jankovic &lt;<a =
-href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank">strahinja.=
-p.jankovic@gmail.com</a>&gt;</div><div><br></div><div>Best regards,</div><d=
-iv>Strahinja</div><div><br></div><div><br></div><blockquote class=3D"gmail_=
-quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
-204);padding-left:1ex">
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0docs/system/arm/bananapi_m2u.rst | 2 +-<br>
-&gt;=C2=A0 =C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 +<br>
-&gt;=C2=A0 =C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 8 ++++++++<br>
-&gt;=C2=A0 =C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0| 3 +++<br>
-&gt;=C2=A0 =C2=A04 files changed, 13 insertions(+), 1 deletion(-)<br>
-<br>
-<br>
-&gt; diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c<br>
-&gt; index 534be4a735..a28e5b3886 100644<br>
-&gt; --- a/hw/arm/allwinner-r40.c<br>
-&gt; +++ b/hw/arm/allwinner-r40.c<br>
-&gt; @@ -53,6 +53,7 @@ const hwaddr allwinner_r40_memmap[] =3D {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_OHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0=
-x01c1c400,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_CCU]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=3D 0x01c20000,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=3D 0x01c20c00,<br>
-&gt; +=C2=A0 =C2=A0 [AW_R40_DEV_WDT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20=
-c90,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0=
-x01c28000,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART1]=C2=A0 =C2=A0 =C2=A0 =3D 0=
-x01c28400,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0[AW_R40_DEV_UART2]=C2=A0 =C2=A0 =C2=A0 =3D 0=
-x01c28800,<br>
-&gt; @@ -279,6 +280,8 @@ static void allwinner_r40_init(Object *obj)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_property_add_alias(obj, &quot;clk1-fr=
-eq&quot;, OBJECT(&amp;s-&gt;timer),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;clk1-freq&quot;);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 object_initialize_child(obj, &quot;wdt&quot;, &amp;s-&g=
-t;wdt, TYPE_AW_WDT_SUN4I);<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0object_initialize_child(obj, &quot;ccu&quot;=
-, &amp;s-&gt;ccu, TYPE_AW_R40_CCU);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0for (int i =3D 0; i &lt; AW_R40_NUM_MMCS; i+=
-+) {<br>
-&gt; @@ -545,6 +548,11 @@ static void allwinner_r40_realize(DeviceState *de=
-v, Error **errp)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt=
-;emac), 0,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_R40_GIC_SP=
-I_EMAC));<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; +=C2=A0 =C2=A0 /* WDT */<br>
-&gt; +=C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;wdt), &amp;err=
-or_fatal);<br>
-&gt; +=C2=A0 =C2=A0 sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&amp;s-&gt;wdt),=
- 0,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_r40_memmap[AW_R40_DEV_WDT], 1);<br>
-&gt; +<br>
-</blockquote></div></div>
-
---00000000000005cac0060f2bfbcb--

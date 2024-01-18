@@ -1,428 +1,321 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp146706ejg;
-        Thu, 18 Jan 2024 01:15:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHkDDQNuYUncrsj6vXIoDKnDpUpqhbKGLEhVEciQ6CHFybNLIEmZ9pah3dxl1MOcE0Qp/Gt
-X-Received: by 2002:a50:cd50:0:b0:559:fbdf:6d7f with SMTP id d16-20020a50cd50000000b00559fbdf6d7fmr324062edj.2.1705569345190;
-        Thu, 18 Jan 2024 01:15:45 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705569345; cv=pass;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp157933ejg;
+        Thu, 18 Jan 2024 01:44:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHkRrsBt9YY5XSYGbqiq0InCCVOdufB+BPGAecG4qqj/BDfILIpUGO5vE8p6rmMsVW0Y6U3
+X-Received: by 2002:a05:6214:2262:b0:681:7814:fafe with SMTP id gs2-20020a056214226200b006817814fafemr568627qvb.118.1705571071609;
+        Thu, 18 Jan 2024 01:44:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705571071; cv=none;
         d=google.com; s=arc-20160816;
-        b=ItLpQ8axbVdMm8Lnaf4htbZOALPnm9xM8rpEmPowu87v0XEJZNWmtxCAb4UpxVVBT4
-         3QNLw+NxHQZOpPkbM0hq0Jrt1Rbx1grlEAjh09AjmzMxi4DRgeT8rNK1w+ez4cP/yhPJ
-         /b2jU8gxyM0jzvzUFAn0a4mbMIhm7d9pyr/DTa5NYwD/RY9KfFX3vFGjknH0yZG+q6E1
-         2xZxlYizFh1QF2aTgpWeSCZxBrMjxFMPCKF/sXcZ9Rx8v1cjgvlERPg6iEXcNTta0oCt
-         TqfEQB415dJdAd4r3DxdSUp2aWQsmLUhCLv6SGaJGu/02j1XJJQCkB480Wp5ty8isaAf
-         q6MQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=KwCd7826almhpSf/b29InQHhw76eQACzSTc5c4HWA5c=;
-        fh=IbSjnPHsQL3Li+qr2yM1O7V6ETv7d5QKfRdt+VuFqfg=;
-        b=avxcp92dwLmUuSNHJqHwZRlcOFrAeHpm1VN079RcawGe3k42H/GyLZl6jzedNAkTby
-         IZGlWeM8xsFHEDg4+nI1YWIxAvpHRDJiRfVAsXsr1A6wE3P1R0sDfgdMyesm7sgH1DXc
-         +WnIyKkvthp6RLG9vvdHIE0YF2sw1N539EyKCDAkBvXSQWOKr/vs48LQxM0lYZUsb+Ri
-         Ave0Q/kJK4N+zL1P9+QXJhr0FsLW0KphNz5AWHrrSp+6K+jdKQUtibzoDhUhs+xeWKKi
-         FAi8P8zHdLd9w3iV5FHi3tKBMMi9NVIIRd6LXkDt4MWPNi1emnwPPL4vQuBdpt/may8D
-         RbYw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WRhnItv1;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org";
+        b=EGnMGmcJjWuOabXLcPFestVWgGpqCZdxgW7TiVq7vG9d1Vk77TsFdjYfQySRIuW2UJ
+         vpfs8vCI/HiA7gRDm2qGADfsZlplTJALfk5/XBD4QcnEnWSA40Xu4G+JVsoAftUB/9gb
+         FMoJcM/G0XgSplPQnRjIpQKjPeCFLw+HpW9RG/ahayedrOQDGWSfz0O5AeqcR9j00jJj
+         iCFl/ZvMqimrQIHpwtGyjnlyyqAPmRylh3QaQvN+OUzpLScZw8aX/5EclWmZgZDGSCkD
+         ls4vpn1IbqAIpzmBy8DkxTsx9LeLStf7Ssw4hFHZyWr5pxKDQzR+AexPW19iosrHIytM
+         Gdgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=L1eWFuvbPN2XWYlwmX84RL9N5C6TGdAt+GZgn+IeD54=;
+        fh=sc/f/APP3mEL+ybYg3pf4tL4i47+6j9QJKOr14qmIUU=;
+        b=MyuhvmZT8o9tUZtsNO/7QRz28U9+HF/zxi3bZfKIycWBWnOYUWCYZFRBj+XYcB33fz
+         4ENypzW5rejfLTsxNmI4xqNBicgNJZikt4Bc/a6R49ASqsSWXooBi77+juHsis1SiDkT
+         BXi6VTGhs0QvSXwbCJUidU5T5SqSI1/PxtR894/TAg2OKEKt2mv1kz4mhgPQUhxLD1rP
+         S/PuhM349SyomMLl5gzuTkyQgmLjwe76UUyGRy1eyO/y45K24zX0jSHD+hZG2gczSz/8
+         BoUFc8QFuCjZDZNr2VUN5dgfw9JhVBAYsJG5V4iJKIIThshW1QskH11Ky7ppu2Wi29Zk
+         vmLw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U8rZUovY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id u19-20020a50c053000000b0055a059380a6si464082edd.621.2024.01.18.01.15.45
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r1-20020a0c8b81000000b00681955e64bcsi438157qva.604.2024.01.18.01.44.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jan 2024 01:15:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Jan 2024 01:44:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WRhnItv1;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-6418-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U8rZUovY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8FCD61F221C0
-	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 09:15:44 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5AEA913AF8;
-	Thu, 18 Jan 2024 09:15:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="WRhnItv1"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 545BE13FF8
-	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 09:15:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1705569338; cv=none; b=TViAlt0Y0cmhh6UtNyLp2kBe10JpAbfk7E0tHxp8xlYMFYPhdNcbLODSav47TnpPdivUouu35Qzkq5Gv8Urngf0U9Yl0WSeJjF0mKAytdfxktErJKkEJ7kWz7MOddYtnxPRgLPSRXAuDRARKuIb3MTofzrUwLgv3SI10wXN+/7Y=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1705569338; c=relaxed/simple;
-	bh=j1EyYOqT4NW0UWWbUHaQWToqyvyIZzEuZLX5je+IXig=;
-	h=DKIM-Signature:Received:X-MC-Unique:Received:
-	 X-Google-DKIM-Signature:X-Gm-Message-State:X-Received:
-	 X-Google-Smtp-Source:X-Received:Received:Message-ID:Date:
-	 MIME-Version:User-Agent:Subject:Content-Language:To:Cc:References:
-	 From:In-Reply-To:Content-Type:Content-Transfer-Encoding; b=YhlFLDwYPlFuPinzBS6NPRHUZBSOB7TarsyRe9GVTY7oBqeVyV0Rg7wkNuJs+6urC7Axv7cXGGbBxVb6dhsaQIRIpzMRP/2EkmIkvsDboOixuoXS1FDuIJPsBOW+GVmgj8XeSeGJ2u0/9+8CHcZItbZRGF+JoCPPr2/i6/xGFrk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=WRhnItv1; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQOwY-0004Yo-W4; Thu, 18 Jan 2024 04:44:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rQOwX-0004Yf-US
+ for qemu-arm@nongnu.org; Thu, 18 Jan 2024 04:44:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rQOwS-0002Hu-6o
+ for qemu-arm@nongnu.org; Thu, 18 Jan 2024 04:44:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1705569335;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KwCd7826almhpSf/b29InQHhw76eQACzSTc5c4HWA5c=;
-	b=WRhnItv1BOdBoFXlC2yPA/hA69U/rGdAfXvZeG9uU6OTJ1J+8wB8YzoSBzAGMp76MvJIlx
-	Oueopf33ILv/wjG0eFMF91GS6oemLyGmvBqWXJCJeByvwExNSRxNVufo1gCLyvmioKQM+d
-	b1IBtem7swXY1dJrHwaGlpgZ6u4kd9s=
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1705571047;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=L1eWFuvbPN2XWYlwmX84RL9N5C6TGdAt+GZgn+IeD54=;
+ b=U8rZUovY7b00hbQoLMTK5p02FfyO7Uib1FYoSeGrPVehiZUI2AYu9IX7QWyM/5AQ/h031O
+ WDTW9q0TQ3dnqZI23qds4y9svNHzkObhplesVfNa1zjlE2NKkFoq2vJ9FIG3nPA4kXx6WX
+ 6pGYiiFiuD/QsWvswEuEpw0parEHbTw=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-619-8Nil20aNOP6YDZbLEiTgRg-1; Thu, 18 Jan 2024 04:15:33 -0500
-X-MC-Unique: 8Nil20aNOP6YDZbLEiTgRg-1
-Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-5cf474e52c6so199344a12.0
-        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 01:15:32 -0800 (PST)
+ us-mta-421-ibQkwOA5MpW6ksk-V1sDSQ-1; Thu, 18 Jan 2024 04:44:01 -0500
+X-MC-Unique: ibQkwOA5MpW6ksk-V1sDSQ-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-78335ae3fa8so1065447385a.3
+ for <qemu-arm@nongnu.org>; Thu, 18 Jan 2024 01:44:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705569332; x=1706174132;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KwCd7826almhpSf/b29InQHhw76eQACzSTc5c4HWA5c=;
-        b=QvJxnuujBQp+3SK1MXhXmDtQQI+qglJ8ZEGe387HS0a2ifx6PsLDDysWeSZVdoBYmt
-         23GPd1nUmaI3JA6E+QwOAtsfwTIdj13ci3Sw9Mewuj56e3lZJn6QGYWXlVzs+Er9Kh8/
-         lvkbPCxm2ZhGOU6bDofMLgaerMasrXOF03e9kIgsOXO5VM4eAypep8Tl3nc8CTLtMnjA
-         d4Om8JeE0iS800vgRMT3nydpEOU/pfs6xwzBQCqRk/A4QKS9htmPY1RGU/3HlMwEfj93
-         MQGGI9eFOcfG2+pSTIIwczLyd1vnIJat+otTnmIUpH5VMZGVD5ZQQ5QQW3c//QuA3ouV
-         7JFQ==
-X-Gm-Message-State: AOJu0YwI+ThBGHAFLy9oYDTr968pW7aBhKsmb3k3kAR9AzSMpzF5EPtg
-	8amJINUzLIuEpD3S4ksQNl22p+tkmOLk6wlz0prGE4auMMpGaMj7FqGATRu3ewg3z/oOsagUKY9
-	ZD3sgMwrbabCMyNHmFIwVremt3QSuRoP7s5O1fD7YxvS+d7sNyA==
-X-Received: by 2002:a17:903:41c7:b0:1d4:e308:cb0d with SMTP id u7-20020a17090341c700b001d4e308cb0dmr1042775ple.5.1705569331870;
-        Thu, 18 Jan 2024 01:15:31 -0800 (PST)
-X-Received: by 2002:a17:903:41c7:b0:1d4:e308:cb0d with SMTP id u7-20020a17090341c700b001d4e308cb0dmr1042763ple.5.1705569331419;
-        Thu, 18 Jan 2024 01:15:31 -0800 (PST)
-Received: from [10.66.61.39] ([43.228.180.230])
-        by smtp.gmail.com with ESMTPSA id n9-20020a170902d0c900b001d706c17af2sm751174pln.268.2024.01.18.01.15.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Jan 2024 01:15:30 -0800 (PST)
-Message-ID: <bebf1bfc-8f51-4e30-af33-9b3f276ad3ee@redhat.com>
-Date: Thu, 18 Jan 2024 17:15:27 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1705571041; x=1706175841;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=L1eWFuvbPN2XWYlwmX84RL9N5C6TGdAt+GZgn+IeD54=;
+ b=KPgQCz5tpTWTATEUXlWM8gqv+iJlinGpch9Bh21v4K36MCp8qG5QpS6G4uTp7M5V0D
+ juPDzZ9qHk6pl78VwVwFo9FLxrpQy5TAv+BCblvlpA2kWUkG6GVn/hPCKEYtUZi4YO7Z
+ yu5bnJTRKAbQC9Rhxyf632gEStjlwWQPi/FFY9M33HwYsHWrofde9h3JVYdF/ExYHZnd
+ LHXbmCjjdDkwufTXhHynHFo2MCW8bW10dsq7eDPDx6NOzm7AmHgeQNj+jaNbIMJu6OiK
+ 5SWwltWeC2SUTzw6kFu4uK+uTfY64f95l7S8umhW1/S7KCoxoUR1u4uhRtKO9BXxT1U3
+ /nLQ==
+X-Gm-Message-State: AOJu0Yw28+rmtgRa2IiJ3SX0bqMS3AYQsY3A3Kojw7PBfUMX6kJPik0c
+ zd/mW4b0Zy/+3UPKfT+gAkH5+E2714Xd8/x+CZfMzoQi284LPCBnzYzSN4xR9tYuLMlYg9ElU0P
+ afUGlGh+rOTxTk/pQlHyWc/BXgZVpdXhVukhs/uWz6W4NjsBEOQ==
+X-Received: by 2002:a37:ac0c:0:b0:783:3f20:4120 with SMTP id
+ e12-20020a37ac0c000000b007833f204120mr456850qkm.86.1705571041199; 
+ Thu, 18 Jan 2024 01:44:01 -0800 (PST)
+X-Received: by 2002:a37:ac0c:0:b0:783:3f20:4120 with SMTP id
+ e12-20020a37ac0c000000b007833f204120mr456841qkm.86.1705571040965; 
+ Thu, 18 Jan 2024 01:44:00 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ w15-20020ae9e50f000000b007837a9b3590sm463258qkf.65.2024.01.18.01.43.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Jan 2024 01:43:59 -0800 (PST)
+Message-ID: <7bc955a1-f58d-43b1-8e95-c452bb11f208@redhat.com>
+Date: Thu, 18 Jan 2024 10:43:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
+Subject: Re: [RFC 0/7] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling for
+ hotplugged devices
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "yanghliu@redhat.com" <yanghliu@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
+Cc: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
+References: <20240117080414.316890-1-eric.auger@redhat.com>
+ <SJ0PR11MB6744C50921CC63221A93C75492712@SJ0PR11MB6744.namprd11.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <SJ0PR11MB6744C50921CC63221A93C75492712@SJ0PR11MB6744.namprd11.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Eric Auger <eauger@redhat.com>, qemu-arm@nongnu.org
-Cc: Gavin Shan <gshan@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org
-References: <20240115080144.44944-1-shahuang@redhat.com>
- <852ee2a3-b69f-4480-a6f4-f2b274f5e01c@redhat.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <852ee2a3-b69f-4480-a6f4-f2b274f5e01c@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TUID: B2WTSwssScTy
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uI7QnPBIrTB0
 
-Hi Eric,
+Hi Zhenzhong,
+On 1/18/24 08:10, Duan, Zhenzhong wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Cc: mst@redhat.com; clg@redhat.com
+>> Subject: [RFC 0/7] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling
+>> for hotplugged devices
+>>
+>> In [1] we attempted to fix a case where a VFIO-PCI device protected
+>> with a virtio-iommu was assigned to an x86 guest. On x86 the physical
+>> IOMMU may have an address width (gaw) of 39 or 48 bits whereas the
+>> virtio-iommu used to expose a 64b address space by default.
+>> Hence the guest was trying to use the full 64b space and we hit
+>> DMA MAP failures. To work around this issue we managed to pass
+>> usable IOVA regions (excluding the out of range space) from VFIO
+>> to the virtio-iommu device. This was made feasible by introducing
+>> a new IOMMU Memory Region callback dubbed iommu_set_iova_regions().
+>> This latter gets called when the IOMMU MR is enabled which
+>> causes the vfio_listener_region_add() to be called.
+>>
+>> However with VFIO-PCI hotplug, this technique fails due to the
+>> race between the call to the callback in the add memory listener
+>> and the virtio-iommu probe request. Indeed the probe request gets
+>> called before the attach to the domain. So in that case the usable
+>> regions are communicated after the probe request and fail to be
+>> conveyed to the guest. To be honest the problem was hinted by
+>> Jean-Philippe in [1] and I should have been more careful at
+>> listening to him and testing with hotplug :-(
+> It looks the global virtio_iommu_config.bypass is never cleared in guest.
+> When guest virtio_iommu driver enable IOMMU, should it clear this
+> bypass attribute?
+> If it could be cleared in viommu_probe(), then qemu will call
+> virtio_iommu_set_config() then virtio_iommu_switch_address_space_all()
+> to enable IOMMU MR. Then both coldplugged and hotplugged devices will work.
 
-On 1/17/24 20:59, Eric Auger wrote:
-> Hi  Shaoqin,
-> 
-> On 1/15/24 09:01, Shaoqin Huang wrote:
->> The KVM_ARM_VCPU_PMU_V3_FILTER provides the ability to let the VMM decide
->> which PMU events are provided to the guest. Add a new option
->> `kvm-pmu-filter` as -cpu sub-option to set the PMU Event Filtering.
->> Without the filter, all PMU events are exposed from host to guest by
->> default. The usage of the new sub-option can be found from the updated
->> document (docs/system/arm/cpu-features.rst).
-> 
-> do not hesitate to cc qemu-arm@nongnu.org for ARM specific topics.
-> 
->>
->> Here is an example shows how to use the PMU Event Filtering, when
-> which shows
->> we launch a guest by use kvm, add such command line:
->>
->>    # qemu-system-aarch64 \
->>          -accel kvm \
->>          -cpu host,kvm-pmu-filter="D:0x11-0x11"
->>
->> Since the first action is deny, we have a global allow policy. This
->> disables the filtering of the cycle counter (event 0x11 being CPU_CYCLES).
-> Actually it filters it ;-) It would rather say this filters out the
-> cycle counter. But I am not a native speaker either ;-)
->>
->> And then in guest, use the perf to count the cycle:
->>
->>    # perf stat sleep 1
->>
->>     Performance counter stats for 'sleep 1':
->>
->>                1.22 msec task-clock                       #    0.001 CPUs utilized
->>                   1      context-switches                 #  820.695 /sec
->>                   0      cpu-migrations                   #    0.000 /sec
->>                  55      page-faults                      #   45.138 K/sec
->>     <not supported>      cycles
->>             1128954      instructions
->>              227031      branches                         #  186.323 M/sec
->>                8686      branch-misses                    #    3.83% of all branches
->>
->>         1.002492480 seconds time elapsed
->>
->>         0.001752000 seconds user
->>         0.000000000 seconds sys
->>
->> As we can see, the cycle counter has been disabled in the guest, but
->> other pmu events are still work.
-> do still work
->>
->> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
->> ---
->> v4->v5:
->>    - Change the kvm-pmu-filter as a -cpu sub-option.     [Eric]
->>    - Comment tweak.                                      [Gavin]
->>    - Rebase to the latest branch.
->>
->> v3->v4:
->>    - Fix the wrong check for pmu_filter_init.            [Sebastian]
->>    - Fix multiple alignment issue.                       [Gavin]
->>    - Report error by warn_report() instead of error_report(), and don't use
->>    abort() since the PMU Event Filter is an add-on and best-effort feature.
->>                                                          [Gavin]
->>    - Add several missing {  } for single line of code.   [Gavin]
->>    - Use the g_strsplit() to replace strtok().           [Gavin]
->>
->> v2->v3:
->>    - Improve commits message, use kernel doc wording, add more explaination on
->>      filter example, fix some typo error.                [Eric]
->>    - Add g_free() in kvm_arch_set_pmu_filter() to prevent memory leak. [Eric]
->>    - Add more precise error message report.              [Eric]
->>    - In options doc, add pmu-filter rely on KVM_ARM_VCPU_PMU_V3_FILTER support in
->>      KVM.                                                [Eric]
->>
->> v1->v2:
->>    - Add more description for allow and deny meaning in
->>      commit message.                                     [Sebastian]
->>    - Small improvement.                                  [Sebastian]
->>
->>   docs/system/arm/cpu-features.rst | 23 ++++++++++
->>   include/sysemu/kvm_int.h         |  1 +
->>   target/arm/cpu.h                 |  3 ++
->>   target/arm/kvm.c                 | 78 ++++++++++++++++++++++++++++++++
->>   4 files changed, 105 insertions(+)
->>
->> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
->> index a5fb929243..44a797c50e 100644
->> --- a/docs/system/arm/cpu-features.rst
->> +++ b/docs/system/arm/cpu-features.rst
->> @@ -204,6 +204,29 @@ the list of KVM VCPU features and their descriptions.
->>     the guest scheduler behavior and/or be exposed to the guest
->>     userspace.
->>   
->> +``kvm-pmu-filter``
->> +  By default kvm-pmu-filter is disabled. This means that by default all pmu
->> +  events will be exposed to guest.
->> +
->> +  KVM implements PMU Event Filtering to prevent a guest from being able to
->> +  sample certain events. It depends on the KVM_ARM_VCPU_PMU_V3_FILTER
->> +  attribute supported in KVM. It has the following format:
->> +
->> +  kvm-pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
->> +
->> +  The A means "allow" and D means "deny", start is the first event of the
->> +  range and the end is the last one. The first registered range defines
->> +  the global policy(global ALLOW if the first @action is DENY, global DENY
->> +  if the first @action is ALLOW). The start and end only support hexadecimal
->> +  format now. For example:
->> +
->> +  kvm-pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
->> +
->> +  Since the first action is allow, we have a global deny policy. It
->> +  will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-> s/is/are
->> +  also allowed except the event 0x30 is denied, and all the other events
-> 0x30 is/0x30 which is
->> +  are disallowed.
-> s/disallowed/denied just to match the above terminology.
->> +
->>   TCG VCPU Features
->>   =================
->>   
->> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
->> index fd846394be..8f4601474f 100644
->> --- a/include/sysemu/kvm_int.h
->> +++ b/include/sysemu/kvm_int.h
->> @@ -120,6 +120,7 @@ struct KVMState
->>       uint32_t xen_caps;
->>       uint16_t xen_gnttab_max_frames;
->>       uint16_t xen_evtchn_max_pirq;
->> +    char *kvm_pmu_filter;
-> I think this is not needed anymore
+this field is iommu wide while the probe applies on a one device.In
+general I would prefer not to be dependent on the MR enablement. We know
+that the device is likely to be protected and we can collect its
+requirements beforehand.
+>
+> Intel iommu has a similar bit in register GCMD_REG.TE, when guest
+> intel_iommu driver probe set it, on qemu side, vtd_address_space_refresh_all()
+> is called to enable IOMMU MRs.
+interesting.
 
-Thanks for pointing it. It should be deleted.
+Would be curious to get Jean Philippe's pov.
+>
+>> For coldplugged device the technique works because we make sure all
+>> the IOMMU MR are enabled once on the machine init done: 94df5b2180
+>> ("virtio-iommu: Fix 64kB host page size VFIO device assignment")
+>> for granule freeze. But I would be keen to get rid of this trick.
+>>
+>> Using an IOMMU MR Ops is unpractical because this relies on the IOMMU
+>> MR to have been enabled and the corresponding vfio_listener_region_add()
+>> to be executed. Instead this series proposes to replace the usage of this
+>> API by the recently introduced PCIIOMMUOps: ba7d12eb8c  ("hw/pci:
+>> modify
+>> pci_setup_iommu() to set PCIIOMMUOps"). That way, the callback can be
+>> called earlier, once the usable IOVA regions have been collected by
+>> VFIO, without the need for the IOMMU MR to be enabled.
+>>
+>> This looks cleaner. In the short term this may also be used for
+>> passing the page size mask, which would allow to get rid of the
+>> hacky transient IOMMU MR enablement mentionned above.
+>>
+>> [1] [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
+>>    https://lore.kernel.org/all/20231019134651.842175-1-
+>> eric.auger@redhat.com/
+>>
+>> [2] https://lore.kernel.org/all/20230929161547.GB2957297@myrica/
+>>
+>> Extra Notes:
+>> With that series, the reserved memory regions are communicated on time
+>> so that the virtio-iommu probe request grabs them. However this is not
+>> sufficient. In some cases (my case), I still see some DMA MAP failures
+>> and the guest keeps on using IOVA ranges outside the geometry of the
+>> physical IOMMU. This is due to the fact the VFIO-PCI device is in the
+>> same iommu group as the pcie root port. Normally the kernel
+>> iova_reserve_iommu_regions (dma-iommu.c) is supposed to call
+>> reserve_iova()
+>> for each reserved IOVA, which carves them out of the allocator. When
+>> iommu_dma_init_domain() gets called for the hotplugged vfio-pci device
+>> the iova domain is already allocated and set and we don't call
+>> iova_reserve_iommu_regions() again for the vfio-pci device. So its
+>> corresponding reserved regions are not properly taken into account.
+> I suspect there is same issue with coldplugged devices. If those devices
+> are in same group, get iova_reserve_iommu_regions() is only called
+> for first device. But other devices's reserved regions are missed.
 
->>   };
->>   
->>   void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index 8c3ca2e231..1be7dca4aa 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -971,6 +971,9 @@ struct ArchCPU {
->>   
->>       /* KVM steal time */
->>       OnOffAuto kvm_steal_time;
->> +
->> +    /* KVM PMU Filter */
->> +    char *kvm_pmu_filter;
->>   #endif /* CONFIG_KVM */
->>   
->>       /* Uniprocessor system with MP extensions */
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index c5a3183843..413ee2720e 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -495,6 +495,22 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
->>       ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
->>   }
->>   
->> +static char *kvm_pmu_filter_get(Object *obj, Error **errp)
->> +{
->> +    ARMCPU *cpu = ARM_CPU(obj);
->> +
->> +    return g_strdup(cpu->kvm_pmu_filter);
->> +}
->> +
->> +static void kvm_pmu_filter_set(Object *obj, const char *pmu_filter,
->> +                               Error **errp)
->> +{
->> +    ARMCPU *cpu = ARM_CPU(obj);
->> +
->> +    g_free(cpu->kvm_pmu_filter);
->> +    cpu->kvm_pmu_filter = g_strdup(pmu_filter);
->> +}
->> +
->>   /* KVM VCPU properties should be prefixed with "kvm-". */
->>   void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->>   {
->> @@ -516,6 +532,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->>                                kvm_steal_time_set);
->>       object_property_set_description(obj, "kvm-steal-time",
->>                                       "Set off to disable KVM steal time.");
->> +
->> +    object_property_add_str(obj, "kvm-pmu-filter", kvm_pmu_filter_get,
->> +                            kvm_pmu_filter_set);
->> +    object_property_set_description(obj, "kvm-pmu-filter",
->> +                                    "PMU Event Filtering description for "
->> +                                    "guest PMU. (default: NULL, disabled)");
->>   }
->>   
->>   bool kvm_arm_pmu_supported(void)
->> @@ -1705,6 +1727,60 @@ static bool kvm_arm_set_device_attr(ARMCPU *cpu, struct kvm_device_attr *attr,
->>       return true;
->>   }
->>   
->> +static void kvm_arm_pmu_filter_init(ARMCPU *cpu)
->> +{
->> +    static bool pmu_filter_init;
->> +    struct kvm_pmu_event_filter filter;
->> +    struct kvm_device_attr attr = {
->> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
->> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
->> +        .addr       = (uint64_t)&filter,
->> +    };
->> +    int i;
->> +    gchar **event_filters;
-> wonder if you couldn't use g_auto(GStrv) event_filters with auto
-> cleenup? examples in qom/object.c for instance
+Correct
+>
+> Curious how you make passthrough device and pcie root port under same
+> group.
+> When I start a x86 guest with passthrough device, I see passthrough
+> device and pcie root port are in different group.
+>
+> -[0000:00]-+-00.0
+>            +-01.0
+>            +-02.0
+>            +-03.0-[01]----00.0
+>
+> /sys/kernel/iommu_groups/3/devices:
+> 0000:00:03.0
+> /sys/kernel/iommu_groups/7/devices:
+> 0000:01:00.0
+>
+> My qemu cmdline:
+> -device pcie-root-port,id=root0,slot=0
+> -device vfio-pci,host=6f:01.0,id=vfio0,bus=root0
 
-I can take a look of it.
+I just replayed the scenario:
+- if you have a coldplugged vfio-pci device, the pci root port and the
+passthroughed device end up in different iommu groups. On my end I use
+ioh3420 but you confirmed that's the same for the generic pcie-root-port
+- however if you hotplug the vfio-pci device that's a different story:
+they end up in the same group. Don't ask me why. I tried with
+both virtio-iommu and intel iommu and I end up with the same topology.
+That looks really weird to me.
 
->> +
->> +    if (!cpu->kvm_pmu_filter) {
->> +        return;
->> +    }
->> +    if (kvm_vcpu_ioctl(CPU(cpu), KVM_HAS_DEVICE_ATTR, &attr)) {
->> +        warn_report("The KVM doesn't support the PMU Event Filter!");
->> +        return;
->> +    }
->> +
->> +    /*
->> +     * The filter only needs to be initialized through one vcpu ioctl and it
->> +     * will affect all other vcpu in the vm.
->> +     */
->> +    if (pmu_filter_init) {
-> I think I commented on that on the v4. Maybe I missed your reply. You
-> sure you don't need to call it for each vcpu?
-> 
+I initially thought this was an ACS issue but I am now puzzled.
 
- From the document we know that set the pmu_filter through one vcpu 
-ioctl but it will take effect on the entire vm.
+Thanks!
 
->> +        return;
->> +    } else {
->> +        pmu_filter_init = true;
->> +    }
->> +
->> +    event_filters = g_strsplit(cpu->kvm_pmu_filter, ";", -1);
->> +    for (i = 0; event_filters[i]; i++) {
->> +        unsigned short start = 0, end = 0;
->> +        char act;
->> +
->> +        sscanf(event_filters[i], "%c:%hx-%hx", &act, &start, &end);
->> +        if ((act != 'A' && act != 'D') || (!start && !end)) {
->> +            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
->> +            continue;
->> +        }
->> +
->> +        filter.base_event = start;
->> +        filter.nevents = end - start + 1;
->> +        filter.action = (act == 'A') ? KVM_PMU_EVENT_ALLOW :
->> +                                       KVM_PMU_EVENT_DENY;
->> +
->> +        if (!kvm_arm_set_device_attr(cpu, &attr, "PMU Event Filter")) {
-> Nit: maybe s/PMU Event Filter/PMU_V3_FILTER
->> +            break;
->> +        }
->> +    }
->> +
->> +    g_strfreev(event_filters);
->> +}
->> +
->>   void kvm_arm_pmu_init(ARMCPU *cpu)
->>   {
->>       struct kvm_device_attr attr = {
->> @@ -1715,6 +1791,8 @@ void kvm_arm_pmu_init(ARMCPU *cpu)
->>       if (!cpu->has_pmu) {
->>           return;
->>       }
->> +
->> +    kvm_arm_pmu_filter_init(cpu);
->>       if (!kvm_arm_set_device_attr(cpu, &attr, "PMU")) {
->>           error_report("failed to init PMU");
->>           abort();
-> Along with this new vcpu feature you may want to add a test like what
-> was done in 68970d1e0d07 ("hw/arm/virt: Implement kvm-steal-time"), in
-> tests/qtest/arm-cpu-features.c
-> 
-
-Ok. I can add a new test and repost it. And I will fix all errors 
-pointed by you. Thanks for your reviewing.
-
+Eric
+>
 > Thanks
-> 
-> Eric
-> 
-
--- 
-Shaoqin
+> Zhenzhong
+>
+>> This is not trivial to fix because theoretically the 1st attached
+>> devices could already have allocated IOVAs within the reserved regions
+>> of the second device. Also we are somehow hijacking the reserved
+>> memory regions to model the geometry of the physical IOMMU so not sure
+>> any attempt to fix that upstream will be accepted. At the moment one
+>> solution is to make sure assigned devices end up in singleton group.
+>> Another solution is to work on a different approach where the gaw
+>> can be passed as an option to the virtio-iommu device, similarly at
+>> what is done with intel iommu.
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/hotplug-resv-rfc
+>>
+>>
+>> Eric Auger (7):
+>>  hw/pci: Introduce PCIIOMMUOps::set_host_iova_regions
+>>  hw/pci: Introduce pci_device_iommu_bus
+>>  vfio/pci: Pass the usable IOVA ranges through PCIIOMMUOps
+>>  virtio-iommu: Implement PCIIOMMUOps set_host_resv_regions
+>>  virtio-iommu: Remove the implementation of iommu_set_iova_ranges
+>>  hw/vfio: Remove memory_region_iommu_set_iova_ranges() call
+>>  memory: Remove IOMMU MR iommu_set_iova_range API
+>>
+>> include/exec/memory.h    |  32 -------
+>> include/hw/pci/pci.h     |  16 ++++
+>> hw/pci/pci.c             |  16 ++++
+>> hw/vfio/common.c         |  10 --
+>> hw/vfio/pci.c            |  27 ++++++
+>> hw/virtio/virtio-iommu.c | 201 ++++++++++++++++++++-------------------
+>> system/memory.c          |  13 ---
+>> 7 files changed, 160 insertions(+), 155 deletions(-)
+>>
+>> --
+>> 2.41.0
 

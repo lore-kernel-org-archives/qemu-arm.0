@@ -1,314 +1,143 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n7-20020adff087000000b00337bb0f370dsm6354884wro.40.2024.01.19.03.57.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jan 2024 03:57:03 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A7C1F5F8C8;
-	Fri, 19 Jan 2024 11:57:02 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 2/6] hw/arm/strongarm.c: convert DPRINTF to tracepoints
-In-Reply-To: <3c6fbd73a14fdf120a6b0c1e168e5469acd00306.1705662313.git.manos.pitsidianakis@linaro.org>
-	(Manos Pitsidianakis's message of "Fri, 19 Jan 2024 13:14:20 +0200")
-References: <cover.1705662313.git.manos.pitsidianakis@linaro.org>
-	<3c6fbd73a14fdf120a6b0c1e168e5469acd00306.1705662313.git.manos.pitsidianakis@linaro.org>
-User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Fri, 19 Jan 2024 11:57:02 +0000
-Message-ID: <87plxxfsdt.fsf@draig.linaro.org>
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp338579ejg;
+        Thu, 18 Jan 2024 07:21:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG/b8gMLrps1FmXp4egPGzNmQMYKAx4rULiLOqYptzfIrWkxNcHIvDr0vm56CTs3pGJR3UH
+X-Received: by 2002:a05:600c:1d16:b0:40e:4d1f:ce11 with SMTP id l22-20020a05600c1d1600b0040e4d1fce11mr302764wms.289.1705591265291;
+        Thu, 18 Jan 2024 07:21:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705591265; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PGgk5vCiWt3lcj3VqUDg4ypspyQLihIyEFQvimMYZc9Ic4UymFbfPx6T0yAsJghnvK
+         aANkCaB8UFvkTTGn/6Ferc592OUwqOqgSKtx1bKebBcpNaZRiw0mAgeN0aO6j4FlseMk
+         AbeoZ1xpQGApbTxQsfOl8mHXa48GHJUHoBYl1qfNhXbDQ3BfKUUNbk9QzOdH6lyVG5Qr
+         s+xUpIGmOrSFT8tyME2pvXnL8boYGY6wQMHYrg7PxIT5t7ZIYEAHWU835mZWd+aahxVG
+         BedxKuqnmpiDsq5coIaAOhorLFIkmESCE8jAKvZbnl/W/Xp+q7PgUDP7HFhm3rNY67wp
+         8Dmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=WlkvkmGu3v052Jxiy0qSWoXaSU2xt7d1c5IMx6XOSLw=;
+        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
+        b=JeiH5uEmr9c4Wf+NQ6y69H8Onum8KDJvU2JK5046C0xxLmYd3/N0PYcztW7+KmCcts
+         wd/xEWvV2HPmoVTEsBgw9m2KFmYbW/eJe+VZXxKKgLRuK16dpRYAalek12pQgfcp3WJa
+         3x30ezf6FApt847spU4Vn4UM5mSthQlhRSPD9RoTNgSo8zG7b23kisRkD4M1foN1hcNp
+         ZQCZ9wPW3+i2ExcMK8CkaMjOgzxzYWEJQgcEu6ufFgxS+iOq4av63iyXK+jLREFUShp+
+         jXVphxL8NUBpIe2X3++9CPBEbbCJEOSS2O22UQEzsnxYXtd1FBpsC+XjCgeXep5Ejt8Q
+         gMtQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AUnec7Wz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j21-20020a05600c1c1500b0040e512942fbsi9878168wms.217.2024.01.18.07.21.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Jan 2024 07:21:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AUnec7Wz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQUBy-0005Ao-1w; Thu, 18 Jan 2024 10:20:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQUBv-00059T-VR
+ for qemu-arm@nongnu.org; Thu, 18 Jan 2024 10:20:27 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQUBt-0005qN-Pm
+ for qemu-arm@nongnu.org; Thu, 18 Jan 2024 10:20:27 -0500
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-3366ddd1eddso10134571f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 18 Jan 2024 07:20:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705591224; x=1706196024; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=WlkvkmGu3v052Jxiy0qSWoXaSU2xt7d1c5IMx6XOSLw=;
+ b=AUnec7WzuqyJ4qusSg23qgGil8iyl6fQxVnZ1GNo2iY5b+rgxeREJSzikLQOkRGBfP
+ 7bSQ9zTd4JW8KIbIR8RUz+rqEX+aya6kXTqx4Dun3i98JDnoBvpciNLNQT1N0OYtLyqG
+ 9NhnoBPBlXMMU4R+8zVi3qTDOBq7GrzYvydkFQ3KTkZ2MA2k5CAe/4Jbs8QFBagJNqaE
+ 8H0vcY72oox16Oaqe0LMTnsSyylnAIHmdF/oqxG4tOkoJiTfo+YM6kezw1+JfTeAe2bL
+ hZCbkqe2Vo5Mt4X0DYbMZ272ox987DHMn3T675D7247vTVatbr9aHR7vdZFy6NF2Glrb
+ FGFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705591224; x=1706196024;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=WlkvkmGu3v052Jxiy0qSWoXaSU2xt7d1c5IMx6XOSLw=;
+ b=phSE25aeNW7dMyB9Rt4FqVU/P8HbTUlsVFLxvE2Nn+/Msyv37JteebfO+n55lArZG3
+ 0RhepSZxsqMEz/UCvkfENN6Fo6jm5LAn6jBQkFY0eLQ0+Rbh8dj78QOZYnWdPLeE0Wbu
+ MPgA7bY/zwML8Qu+om6ko69Mjy1Th7FF2NFDYG3FAdEDL6GDpBVPNJYx1Z3z7mLla0sx
+ XmnPvyZ6qjI8SNWD6dKoOCTvAlDYG9G9mV3Q1xIPa7NB7MtIfIZvElHu5zz7BfFqbLfT
+ kFpBeFVkBqNZMHJ99ELdZ6Fehxbbbkrww5wLmVs+zRqmPUTf8eBrDwfH/oOqBabAP11O
+ I8MA==
+X-Gm-Message-State: AOJu0Yyt//IZDP1s2o4j/L8CRHmSPeeYNwTqepB4wusUwsV6BnhlWpqe
+ toSKaAo5XEoicqCcBnr69eyA+E6qirI94q2WKNeEVrGyEeX3DGQtFHKbr7c7BhI=
+X-Received: by 2002:adf:ed02:0:b0:333:2fd2:7699 with SMTP id
+ a2-20020adfed02000000b003332fd27699mr304313wro.138.1705591224201; 
+ Thu, 18 Jan 2024 07:20:24 -0800 (PST)
+Received: from [192.168.108.175] (33.red-95-127-38.staticip.rima-tde.net.
+ [95.127.38.33]) by smtp.gmail.com with ESMTPSA id
+ d6-20020adff846000000b0033725783839sm4256057wrq.110.2024.01.18.07.20.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Jan 2024 07:20:23 -0800 (PST)
+Message-ID: <1f34e941-5b0a-4091-95f9-0d0c8e302aa9@linaro.org>
+Date: Thu, 18 Jan 2024 16:17:23 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: hwIK+qa3VlL/
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/virt.c: Remove newline from error_report() string
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240118131649.2726375-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240118131649.2726375-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hPQIhCgRK230
 
-Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
-
-> Tracing DPRINTFs to stderr might not be desired. A developer that relies
-> on tracepoints should be able to opt-in to each tracepoint and rely on
-> QEMU's log redirection, instead of stderr by default.
->
-> This commit converts DPRINTFs in this file that are used for tracing
-> into tracepoints.
->
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+On 18/1/24 14:16, Peter Maydell wrote:
+> error_report() strings should not include trailing newlines; remove
+> the newline from the error we print when devices won't fit into the
+> address space of the CPU.
+> 
+> This commit also fixes the accidental hardcoded tabs that were in
+> this line, since we have to touch the line anyway.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/strongarm.c  | 49 +++++++++++++++++++--------------------------
->  hw/arm/trace-events | 18 +++++++++++++++++
->  2 files changed, 39 insertions(+), 28 deletions(-)
->
-> diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-> index fef3638aca..3ff748e826 100644
-> --- a/hw/arm/strongarm.c
-> +++ b/hw/arm/strongarm.c
-> @@ -46,8 +46,7 @@
->  #include "qemu/cutils.h"
->  #include "qemu/log.h"
->  #include "qom/object.h"
-> -
-> -//#define DEBUG
-> +#include "trace.h"
->=20=20
->  /*
->   TODO
-> @@ -66,12 +65,6 @@
->   - Enhance UART with modem signals
->   */
->=20=20
-> -#ifdef DEBUG
-> -# define DPRINTF(format, ...) printf(format , ## __VA_ARGS__)
-> -#else
-> -# define DPRINTF(format, ...) do { } while (0)
-> -#endif
-> -
->  static struct {
->      hwaddr io_base;
->      int irq;
-> @@ -151,8 +144,7 @@ static uint64_t strongarm_pic_mem_read(void *opaque, =
-hwaddr offset,
->      case ICPR:
->          return s->pending;
->      default:
-> -        printf("%s: Bad register offset 0x" HWADDR_FMT_plx "\n",
-> -                        __func__, offset);
-> +        trace_strongarm_pic_mem_read(offset);
+>   hw/arm/virt.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-I think these should be:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-  qemu_log_mask(LOG_GUEST_ERROR, "...")
-
->          return 0;
->      }
->  }
-> @@ -173,8 +165,7 @@ static void strongarm_pic_mem_write(void *opaque, hwa=
-ddr offset,
->          s->int_idle =3D (value & 1) ? 0 : ~0;
->          break;
->      default:
-> -        printf("%s: Bad register offset 0x" HWADDR_FMT_plx "\n",
-> -                        __func__, offset);
-> +        trace_strongarm_pic_mem_write(offset);
-
-LOG_GUEST_ERROR again.
-
->          break;
->      }
->      strongarm_pic_update(s);
-> @@ -333,7 +324,7 @@ static uint64_t strongarm_rtc_read(void *opaque, hwad=
-dr addr,
->                  ((qemu_clock_get_ms(rtc_clock) - s->last_hz) << 15) /
->                  (1000 * ((s->rttr & 0xffff) + 1));
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_rtc_read(addr);
->          return 0;
->      }
->  }
-> @@ -375,7 +366,7 @@ static void strongarm_rtc_write(void *opaque, hwaddr =
-addr,
->          break;
->=20=20
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_rtc_write(addr);
->      }
->  }
->=20=20
-> @@ -581,7 +572,7 @@ static uint64_t strongarm_gpio_read(void *opaque, hwa=
-ddr offset,
->          return s->status;
->=20=20
->      default:
-> -        printf("%s: Bad offset 0x" HWADDR_FMT_plx "\n", __func__, offset=
-);
-> +        trace_strongarm_gpio_read(offset);
->      }
->=20=20
->      return 0;
-> @@ -626,7 +617,7 @@ static void strongarm_gpio_write(void *opaque, hwaddr=
- offset,
->          break;
->=20=20
->      default:
-> -        printf("%s: Bad offset 0x" HWADDR_FMT_plx "\n", __func__, offset=
-);
-> +        trace_strongarm_gpio_write(offset);
->      }
->  }
->=20=20
-> @@ -782,7 +773,7 @@ static uint64_t strongarm_ppc_read(void *opaque, hwad=
-dr offset,
->          return s->ppfr | ~0x7f001;
->=20=20
->      default:
-> -        printf("%s: Bad offset 0x" HWADDR_FMT_plx "\n", __func__, offset=
-);
-> +        trace_strongarm_ppc_read(offset);
->      }
->=20=20
->      return 0;
-> @@ -817,7 +808,7 @@ static void strongarm_ppc_write(void *opaque, hwaddr =
-offset,
->          break;
->=20=20
->      default:
-> -        printf("%s: Bad offset 0x" HWADDR_FMT_plx "\n", __func__, offset=
-);
-> +        trace_strongarm_ppc_write(offset);
->      }
->  }
->
-
-In fact all of the above I thing are LOG_GUEST_ERRORs
-
-
-> @@ -1029,8 +1020,11 @@ static void strongarm_uart_update_parameters(Stron=
-gARMUARTState *s)
->      s->char_transmit_time =3D  (NANOSECONDS_PER_SECOND / speed) * frame_=
-size;
->      qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
->=20=20
-> -    DPRINTF(stderr, "%s speed=3D%d parity=3D%c data=3D%d stop=3D%d\n", s=
-->chr->label,
-> -            speed, parity, data_bits, stop_bits);
-> +    trace_strongarm_uart_update_parameters(s->chr.chr->label?:"NULL",
-> +                                           speed,
-> +                                           parity,
-> +                                           data_bits,
-> +                                           stop_bits);
->  }
-
-This one is good, and the remaining ones are also guest errors.
-
->=20=20
->  static void strongarm_uart_rx_to(void *opaque)
-> @@ -1164,7 +1158,7 @@ static uint64_t strongarm_uart_read(void *opaque, h=
-waddr addr,
->          return s->utsr1;
->=20=20
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_uart_read_bad_register(addr);
->          return 0;
->      }
->  }
-> @@ -1221,7 +1215,7 @@ static void strongarm_uart_write(void *opaque, hwad=
-dr addr,
->          break;
->=20=20
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_uart_write_bad_register(addr);
->      }
->  }
->=20=20
-> @@ -1434,7 +1428,7 @@ static uint64_t strongarm_ssp_read(void *opaque, hw=
-addr addr,
->              return 0xffffffff;
->          }
->          if (s->rx_level < 1) {
-> -            printf("%s: SSP Rx Underrun\n", __func__);
-> +            trace_strongarm_ssp_read_underrun();
-
-I think is ok for a tracepoint.
-
->              return 0xffffffff;
->          }
->          s->rx_level--;
-> @@ -1443,7 +1437,7 @@ static uint64_t strongarm_ssp_read(void *opaque, hw=
-addr addr,
->          strongarm_ssp_fifo_update(s);
->          return retval;
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_ssp_read(addr);
->          break;
->      }
->      return 0;
-> @@ -1458,8 +1452,7 @@ static void strongarm_ssp_write(void *opaque, hwadd=
-r addr,
->      case SSCR0:
->          s->sscr[0] =3D value & 0xffbf;
->          if ((s->sscr[0] & SSCR0_SSE) && SSCR0_DSS(value) < 4) {
-> -            printf("%s: Wrong data size: %i bits\n", __func__,
-> -                   (int)SSCR0_DSS(value));
-> +            trace_strongarm_ssp_write_wrong_data_size((int)SSCR0_DSS(val=
-ue));
->          }
->          if (!(value & SSCR0_SSE)) {
->              s->sssr =3D 0;
-> @@ -1471,7 +1464,7 @@ static void strongarm_ssp_write(void *opaque, hwadd=
-r addr,
->      case SSCR1:
->          s->sscr[1] =3D value & 0x2f;
->          if (value & SSCR1_LBM) {
-> -            printf("%s: Attempt to use SSP LBM mode\n", __func__);
-> +            trace_strongarm_ssp_write_wrong_data_size_invalid();
-
-Maybe it would just be better to have a:
-
-  trace_strongarm_ssp_write(addr, value)
-
-at the top of the function?
-
->          }
->          strongarm_ssp_fifo_update(s);
->          break;
-> @@ -1509,7 +1502,7 @@ static void strongarm_ssp_write(void *opaque, hwadd=
-r addr,
->          break;
->=20=20
->      default:
-> -        printf("%s: Bad register 0x" HWADDR_FMT_plx "\n", __func__, addr=
-);
-> +        trace_strongarm_ssp_write_bad_register(addr);
-
-guest error.
-
->          break;
->      }
->  }
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index a262ad2e6a..a6a67d5f16 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -63,3 +63,21 @@ z2_lcd_invalid_command(uint8_t value) "0x%x"
->  z2_aer915_send_too_log(int8_t msg) "message too long (%i bytes)"
->  z2_aer915_send(uint8_t reg, uint8_t value) "reg %d value 0x%02x"
->  z2_aer915_i2c_start_recv(uint16_t len) "I2C_START_RECV: short message wi=
-th len %d"
-> +
-> +# strongarm.c
-> +strongarm_uart_update_parameters(const char *label, int speed, char pari=
-ty, int data_bits, int stop_bits) "%s speed=3D%d parity=3D%c data=3D%d stop=
-=3D%d"
-> +strongarm_uart_read_bad_register(uint64_t addr) "Bad uart register 0x%zu"
-> +strongarm_uart_write_bad_register(uint64_t addr) "Bad uart register 0x%z=
-u"
-> +strongarm_pic_mem_read(uint64_t offset) "Bad pic mem register read offse=
-t 0x%zu"
-> +strongarm_pic_mem_write(uint64_t offset) "Bad pic mem register write off=
-set 0x%zu"
-> +strongarm_rtc_read(uint64_t addr) "Bad rtc register read 0x%zu"
-> +strongarm_rtc_write(uint64_t addr) "Bad rtc register write 0x%zu"
-> +strongarm_gpio_read(uint64_t offset) "Bad gpio read offset 0x%zu"
-> +strongarm_gpio_write(uint64_t offset) "Bad gpio write offset 0x%zu"
-> +strongarm_ppc_write(uint64_t offset) "Bad ppc write offset 0x%zu"
-> +strongarm_ppc_read(uint64_t offset) "Bad ppc write offset 0x%zu"
-> +strongarm_ssp_read_underrun(void) "SSP Rx Underrun"
-> +strongarm_ssp_read(uint64_t addr) "Bad register 0x%zu"
-> +strongarm_ssp_write_wrong_data_size(int v) "Wrong data size: %i bits"
-> +strongarm_ssp_write_wrong_data_size_invalid(void) "Attempt to use SSP LB=
-M mode"
-> +strongarm_ssp_write_bad_register(uint64_t addr) "Bad register 0x%zu"
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

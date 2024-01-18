@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519832ejg;
-        Thu, 18 Jan 2024 12:08:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEaJLKRyKLN+cNNMrPmZ4k6zDt/69xst8n5hlXaw1Uo8J+RVtPIrWuC9fFQ4UDRWxxCaoPf
-X-Received: by 2002:a17:902:d485:b0:1d6:f0e6:801c with SMTP id c5-20020a170902d48500b001d6f0e6801cmr1621708plg.106.1705608530048;
-        Thu, 18 Jan 2024 12:08:50 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705608530; cv=pass;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519910ejg;
+        Thu, 18 Jan 2024 12:08:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF/BxbOwJpPdoylIGABHNIz85HG1d1RHDG5yiRQPPCTkEI474GDIszOqHoeWUfZFzhf93vS
+X-Received: by 2002:a05:6a00:178b:b0:6db:cb:205d with SMTP id s11-20020a056a00178b00b006db00cb205dmr1445159pfg.45.1705608537132;
+        Thu, 18 Jan 2024 12:08:57 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705608537; cv=pass;
         d=google.com; s=arc-20160816;
-        b=yQFxjaVyGxL4QZdcbfrOPrdPb8Nm3ZVGgpBGq9FAOZ6W/wofKRfPltS1AVuxxD3Svn
-         2L6u8Smut0rfuuQDOwHfPOKeuZtR3dwRS4eWpy+K4RqNtyH3nCFBeEBGOe+nk3tkoH9J
-         Q41lR5LXwL7GIZBlEZz/LEiq9KuhUSKhacj5yr01thcswe/uN11V9HOwPg6k3ySKSWhF
-         1vweplkbMzKovzjbhJuvcBHc9lxFUGU0LghrH7461Lcs+O9xWo7EbIqjDMcqjSQOORTb
-         EF1cEFenZDXjmeHdGLhfZ8ladY2xRMawMSvgdLUc5IM4A5+ZGmXg81n78esp4+YMgmbs
-         +Zsg==
+        b=yNxFYqozWzwWnHlNLZ4SLCVh82wHbcgmr4xSfgExh9xyajHaJFCKtyM8aQehsUueYh
+         t7mu6v05sfwos+gTIn8ja2Q8CcfS89w9SDTaFZKwpc8T8G7t1EHMRs56jBrAW1JpiEvj
+         T+D6mHKEACsukfCK7v7tj7Z5PkqRm2wI1/i8f5viGkfbE5pI2TAuTaJn7iEEVoYrChQR
+         pSme1OWu+Y1tBi/Nx7/un7Y3ngtAPEpun4XyaUNRpnSBrESUyGhv9mR9zn8ls9A/M4p7
+         PA/9n9wolrqwEmmgVadx0tj2YZAVlovya4qBJTUPJSGacPMhC7VTdjz1WoECAEVebe/9
+         DFMA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=7RZro+jmubrqox1BtgtSrk1gGKfZgwoa/a4ZCw9lbhM=;
+        bh=7i3W6cKZo6jUarGFVlLnFc+nsCmIDidPRgxq67roFM8=;
         fh=cUgEM3TMHOIH70RmHTmTZxZmItZJnKfBWHSaci49aLY=;
-        b=ki8LLdzRr2sDXqoiem4gcHc9v9iFPgsA3Ze9eKKf9alrswivWqi0B7oZeFKxIfgLTS
-         SBQ3eL8ATbFxkfIMMF/v9VnL8ebIYShUMYgQ4FgpefR2boVlaYQpfPfAKR9rRqJKMGCr
-         kq46/IaDYx4UgcT9d6/Qb1gklQqTBxwQeZ83ahAA4Fn9cs6VMvjXoQL112pfPqm1IEcn
-         2XIpnO0W7S82lxUeKZskbq6tTbtYNvRKNq27ZCoftCHtOct9iVkGvpZ6JYRqI4F0ZZAl
-         dsMIuibF49MMXvrfHrPLUHUXLclXWgD1sGYZT3gTdXo+zrP9bFr52JjfGg7yTCcBM14a
-         3m4Q==
+        b=m5nPHP0+v/pjjyVouJocLHurjkTe+7RlKgnWSczrX7dMqK1o8usI9OevRLFoUawe3e
+         vYAUGDv2BS546fIMlVkVwN0IKjr+E+gYCcvoAxNp9riADN/8woRP7EpaqJ4wHf45Ig4h
+         xNqj3+BB2wFIyLEcS+ATIeBWv9yD9pGONtCgRdLwmPK4+SZBmFi3IovVWEsqwpKIZ7Nj
+         FFTXg7D9f0DGyh3LCkD2trs8ckdkbN7qkTCZ19wn2Y2A/0moaeDeR7yzVjdIQ2V4KH4c
+         hlu9wtL4d7S722VG38y7uHegr1y2ro0jZMCVaZGWsTIyWqz+3HvnJnSWMiD0AS4w6anw
+         rMTg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvuvzeEy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oS2NhRLD;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org>
 Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id q63-20020a634342000000b005c6b59c91bbsi1973116pga.654.2024.01.18.12.08.49
+        by mx.google.com with ESMTPS id r6-20020a63ce46000000b005ce24ee6a90si1953198pgi.342.2024.01.18.12.08.56
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jan 2024 12:08:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        Thu, 18 Jan 2024 12:08:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvuvzeEy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oS2NhRLD;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6446-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6447-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id BE25BB26FEB
-	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:08:47 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 01D06B270C2
+	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:08:55 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D83A8321B3;
-	Thu, 18 Jan 2024 20:08:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 870882E62C;
+	Thu, 18 Jan 2024 20:08:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="KvuvzeEy"
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="oS2NhRLD"
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0CF9C321AD
-	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:08:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.52
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C10AE2E62A
+	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:08:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1705608495; cv=none; b=VoyszFsSmCIdkSw2WE0LN53lQFiN1+DRtzqr5c8787zoSlhc3C02FhWVf7oWasjbRbNEQTdqXyPCKxIu/d+iFe+hm0z8L36aHc0hYOA33rYKMmb208fiqB+OfM12g3BUsrEgDT4hyTGPaAvsKd2ylRD0ZjW6ziNsVoP8cS3jny0=
+	t=1705608501; cv=none; b=aDP89HpcCc9Kz3kkHr5VCAUZ/5UH5pmP6gpApZzDqSKPvyUYNm7c0ppElHEs7ocUeub4BQwPF0E24Y9dWx1LVha7ssB4VqcUOlnw+/t1dYsG3glDi1zESs0IoMGyeWajQBaROW06EN5d/7XuA3uoPyOoCBQYD9fNLTyz4xMBngE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1705608495; c=relaxed/simple;
-	bh=+lY2v9EH/JVH+KmAUGLxQJ2KHUR61n4xD7XCeSIX2GI=;
+	s=arc-20240116; t=1705608501; c=relaxed/simple;
+	bh=vxM7rZgRIdZCOLEefBS8aM3zBBR/LN6UIE+U89tGxFo=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=HczrPuk1hLVEYjGzibZcNbAGW8zBHVYNBSCou0rubhIagqi47ZY9042B7WdbGF2n0XMm2p1UCVgvteSkt67riT0Qe+Byc7X4FHLOf2ozx2Yq9YS/iE4bu9DOQw2JH7mdV3Toh0TlCwQwvUJMiXjGavA94yZo2omPS/tuGItP4zg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=KvuvzeEy; arc=none smtp.client-ip=209.85.221.52
+	 MIME-Version:Content-Type; b=kOTA6CZyWbL4wXlgKExwql9fbb1sxewmMnFUxZEsBBP212Fl3cK0vSHKCMiipATNNTHPyZQTSmucyzzy/oH9y0FIUAZYoNYZsJQ7RlDApL0IXo7wzetAuSXkYQ86Y1n9jjLG1EOY9ym7Nm56RA9IL8FbqftlcGW/NAxc5i82zeM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=oS2NhRLD; arc=none smtp.client-ip=209.85.128.46
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-337cf4eabc9so788615f8f.3
-        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:08:13 -0800 (PST)
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-40e80046264so440675e9.0
+        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:08:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705608492; x=1706213292; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1705608498; x=1706213298; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7RZro+jmubrqox1BtgtSrk1gGKfZgwoa/a4ZCw9lbhM=;
-        b=KvuvzeEyLNOnmNyy5N8QfNlai0eyM5Z5YjG5D0GcuYzi0iLSbgz63ZFjIlPx0BPFZf
-         oFI+yyhhy9tlSdFWJK8xfHFx2kIZzFh2EukWcPf5GBTN86lw+GuVqnAL7qh8pkdgrTtX
-         XN999xatpSVsECtohYTY+UbLX2n0+g6Ex07UBpByV++4n0SfhZEk1h8JQ93etF96BIxy
-         KCoaHo/mZqgQyf8J+JG0b9Z1FPF79pkZP8Qp5a5pTWPew9e2EJNRHNY/8714+SiS39Bw
-         vUjtd7p+eKPPCeAIrbbxaGSIsjC0eNqjq/k/rdBWbVdpqT3ISsZbbaMyz6YyqI9r4WY4
-         91EQ==
+        bh=7i3W6cKZo6jUarGFVlLnFc+nsCmIDidPRgxq67roFM8=;
+        b=oS2NhRLDO+tJWMbFweL0Gqi3SFN1h5jyFPjUmTFEJYfqT8/NZTYw1HptJf7Q1kJMRQ
+         bhGmMnDV1E+NFxHtWfOgZwySFLBPEqk6cfNyFD0tiyOxAELlVh7zH/oGWTr1RmL+i1cs
+         32tQ9CIkdoqYG3rNvFW/51jpVnRnXpy81TiHyj9hveLWvLQMy+0sqryfV4bFNPeI8pce
+         Q0fJh5R7dALsBfMvhEjlENUGkKEo10VkPmuD+AIrdTG8KPVBAAq9PJMotztdK5TB/BPw
+         U8AgDyM4t+L44gzAQl5zDIzeVnJeFa+7b8MY7x5KLJcznOdu2y22yJ65M9n79V5IlLyv
+         VXag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705608492; x=1706213292;
+        d=1e100.net; s=20230601; t=1705608498; x=1706213298;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7RZro+jmubrqox1BtgtSrk1gGKfZgwoa/a4ZCw9lbhM=;
-        b=gPuJpHrwkAo4gmj0/uXO7oBRx92+xm4THjtcigPlvQKGoKisuapgO/jpBDIWB4Rcrc
-         8yNRqhXRk9b0GRrbmS1ca4rgpIrSrKKQUap+iHRO7HRnvfv87Hwb+IVE2XXQZpcdE+1/
-         n9tHRr1zOoDgfPmTzmo8gw/9GjTe1jvR8BllDr4quzaZ06l1BEqomAnu3Kgc4r+uaHHt
-         eMmzwsRRFE946yAOLy1JsrJZ0vgtL0zx4Vmvq02jYrUk3sRh/u9XqCZxDvHd7jcsq1v3
-         9A+x+zFv5xSPju6vevs5SBoDh/WRCmCNajUKoNM9d5nfBXhmh4hvhs6C44UrQmLJg2US
-         +r9g==
-X-Gm-Message-State: AOJu0YwrFkk+B/j9IW4+reH+iph5czYHNK3SG0uYjc3bHx8qMGf3UOUS
-	kOmiWZAznAC7klLrauDl5rDH3AGhkobijffigfXNGAkE/AfQwGyUcNXRF02C1XY=
-X-Received: by 2002:a5d:6106:0:b0:336:7a58:39da with SMTP id v6-20020a5d6106000000b003367a5839damr872886wrt.106.1705608492322;
-        Thu, 18 Jan 2024 12:08:12 -0800 (PST)
+        bh=7i3W6cKZo6jUarGFVlLnFc+nsCmIDidPRgxq67roFM8=;
+        b=ctixfJGB0iJ/IfNDFn8ajjBvrHspJCALwPRaNNq7nAzYTyJ8lqZ4tFFl5dTNfqVlad
+         m3DU8BxzW53aKAGVUDvqjiQE275A+XLjx+F3EfFAc19Gf0p5rsznS3Yhifkt9IWAir0q
+         Kk/lgoIHmyewh3nE/UCnQj2VTVSYG2ivpleYDQYwPWeYUBnyZ7LDwe05TZBkjzGhjR77
+         Sa4T69vcoJ3Wyjk1jnUXMqsGDIDT2oKTpkMYnAdrFpTSMru6L/cSv3W48OhSW4/V46A9
+         8i1NiFOsA2pkNoHOAHkHDYq6HDx4s3Q+lfrQJnkjlcH5zSiqnkwpJT70CM5KmlPwsbdi
+         UaQA==
+X-Gm-Message-State: AOJu0Yx6EZnhszmravi1y54CC4nNWrS4Al/4mKHwn+EoxZD52cG1bd6N
+	Y2HVMirHfpuP8vpqbWAX4lUOtFEWNX4P++ckT0mYMeL8UeQWW7172+0D1cmpzTY=
+X-Received: by 2002:a05:600c:46ce:b0:40e:5feb:699d with SMTP id q14-20020a05600c46ce00b0040e5feb699dmr926186wmo.164.1705608498089;
+        Thu, 18 Jan 2024 12:08:18 -0800 (PST)
 Received: from localhost.localdomain ([78.196.4.158])
-        by smtp.gmail.com with ESMTPSA id d19-20020adf9c93000000b003365aa39d30sm4762614wre.11.2024.01.18.12.08.10
+        by smtp.gmail.com with ESMTPSA id s14-20020a5d69ce000000b00337478efa4fsm4783334wrw.60.2024.01.18.12.08.16
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Jan 2024 12:08:11 -0800 (PST)
+        Thu, 18 Jan 2024 12:08:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
@@ -131,9 +131,9 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Joel Stanley <joel@jms.id.au>,
 	Hao Wu <wuhaotsh@google.com>,
 	kvm@vger.kernel.org
-Subject: [PATCH 15/20] target/arm: Expose M-profile register bank index definitions
-Date: Thu, 18 Jan 2024 21:06:36 +0100
-Message-ID: <20240118200643.29037-16-philmd@linaro.org>
+Subject: [PATCH 16/20] hw/arm/armv7m: Make 'hw/intc/armv7m_nvic.h' a target agnostic header
+Date: Thu, 18 Jan 2024 21:06:37 +0100
+Message-ID: <20240118200643.29037-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240118200643.29037-1-philmd@linaro.org>
 References: <20240118200643.29037-1-philmd@linaro.org>
@@ -145,72 +145,45 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zvI5OGA5Ig5l
+X-TUID: XjTfheLR+Kjr
 
-The ARMv7M QDev container accesses the QDev SysTickState
-by its secure/non-secure bank index. In order to make
-the "hw/intc/armv7m_nvic.h" header target-agnostic in
-the next commit, first move the M-profile bank index
-definitions to "target/arm/cpu-qom.h".
+Now than we can access the M-profile bank index
+definitions from the target-agnostic "cpu-qom.h"
+header, we don't need the huge "cpu.h" anymore
+(except in hw/arm/armv7m.c). Reduce its inclusion
+to the source unit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-Or do we want these in a more specific header?
----
- target/arm/cpu-qom.h | 15 +++++++++++++++
- target/arm/cpu.h     | 15 ---------------
- 2 files changed, 15 insertions(+), 15 deletions(-)
+ include/hw/intc/armv7m_nvic.h | 2 +-
+ hw/arm/armv7m.c               | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index f795994135..77bbc1f13c 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -36,4 +36,19 @@ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
- #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
+diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+index 6b4ae566c9..89fe8aedaa 100644
+--- a/include/hw/intc/armv7m_nvic.h
++++ b/include/hw/intc/armv7m_nvic.h
+@@ -10,7 +10,7 @@
+ #ifndef HW_ARM_ARMV7M_NVIC_H
+ #define HW_ARM_ARMV7M_NVIC_H
  
-+/* For M profile, some registers are banked secure vs non-secure;
-+ * these are represented as a 2-element array where the first element
-+ * is the non-secure copy and the second is the secure copy.
-+ * When the CPU does not have implement the security extension then
-+ * only the first element is used.
-+ * This means that the copy for the current security state can be
-+ * accessed via env->registerfield[env->v7m.secure] (whether the security
-+ * extension is implemented or not).
-+ */
-+enum {
-+    M_REG_NS = 0,
-+    M_REG_S = 1,
-+    M_REG_NUM_BANKS = 2,
-+};
-+
- #endif
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 41659d0ef1..d6a79482ad 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -73,21 +73,6 @@
- #define ARMV7M_EXCP_PENDSV  14
- #define ARMV7M_EXCP_SYSTICK 15
+-#include "target/arm/cpu.h"
++#include "target/arm/cpu-qom.h"
+ #include "hw/sysbus.h"
+ #include "hw/timer/armv7m_systick.h"
+ #include "qom/object.h"
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 1f21827773..edcd8adc74 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -21,6 +21,7 @@
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+ #include "target/arm/idau.h"
++#include "target/arm/cpu.h"
+ #include "target/arm/cpu-features.h"
+ #include "migration/vmstate.h"
  
--/* For M profile, some registers are banked secure vs non-secure;
-- * these are represented as a 2-element array where the first element
-- * is the non-secure copy and the second is the secure copy.
-- * When the CPU does not have implement the security extension then
-- * only the first element is used.
-- * This means that the copy for the current security state can be
-- * accessed via env->registerfield[env->v7m.secure] (whether the security
-- * extension is implemented or not).
-- */
--enum {
--    M_REG_NS = 0,
--    M_REG_S = 1,
--    M_REG_NUM_BANKS = 2,
--};
--
- /* ARM-specific interrupt pending bits.  */
- #define CPU_INTERRUPT_FIQ   CPU_INTERRUPT_TGT_EXT_1
- #define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
 -- 
 2.41.0
 

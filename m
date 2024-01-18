@@ -1,154 +1,123 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp259782ejg;
-        Thu, 18 Jan 2024 05:17:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGxZN3XlYsTwfdVaAqgNlhGdxRR/XmOa8W1PFZPDhfKWGMQv9fbA3z8w7l+AnaGRPe+nwi0
-X-Received: by 2002:a05:622a:48d:b0:429:97f2:85cb with SMTP id p13-20020a05622a048d00b0042997f285cbmr860345qtx.64.1705583830842;
-        Thu, 18 Jan 2024 05:17:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705583830; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp345144ejg;
+        Thu, 18 Jan 2024 07:30:32 -0800 (PST)
+X-Received: by 2002:aa7:de0f:0:b0:559:bec2:ad4d with SMTP id h15-20020aa7de0f000000b00559bec2ad4dmr713926edv.23.1705591832566;
+        Thu, 18 Jan 2024 07:30:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705591832; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ub3QRpAzHXV/sJDyXNggEJoM9Y2JVRWTanBFDe3A1T4hEDZTaWpil1Kd/LciqevtXS
-         Yw8uBUb9aBm1RqZb7XQ1gTTXlnMz07xdn6QVByDq4UIKN9S0NDdzw9qjRXbl+j6AKh6L
-         afxWhMwbbzUjTndZ0cSfY0Kzjet0WqWlKrP70DhqACT2ZeQhLWrPWjTcL0ScskAeL7LU
-         CJ3ccmHRNEJ1k99NTwJt1nPFpKslLRuEE/AseLmmAqDGmZhwivjv46QGRjWCFU8rqMrb
-         P0LUZbPzrgX/1UuwE/y1YPEBy/YYyEi/dloV/NwczI3QbUDSWu4MHgPJcMPKp9ApC7+/
-         YPTg==
+        b=cKRhrakPjmTE5Y4Q/KtNamUrbTLY41s7g1A7z2V3BloRsKtzcYTr4J2b5esovBHLHh
+         AJtldFlOYiOmMsQgOsu9SYzTG+OwJkSUkI0xpQcj4NuCyzKICN9GBiIcOn5hsG2jqZMV
+         7woWgFDZzVON+5/rZHUXH251bt7OPLWM5cy4QtGMB7/uBBWUGmA5KsbLprE9Q3Okshqu
+         TUrkaTUOE67bRqrQwoZrUtcnTTx7QJiT4f7Nlutz6SlXJUdTgkNeZu3KUI7WyhrsSdWO
+         A7FjuykDEApqCFXTa4RK+AoleJPE7PstI9vjuylQg1xxIa6Knhh5VsNXoNjg0CupQnm4
+         5nEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=jXuzdDHoDfS1SMEKlLWllgS9IfT5ukyEOa75Rlj3kHM=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=mikQeBXC1iOoEwP3xbfQTvsUbX7L1SW0GyRKNlcNvx9LR0I+pq6+B02wQyZstLhdf6
-         qnCLEnHuA/ne3YJ/N6Tg9Zc3SS0RItpU/pdvWDFPhK1uYapq4zucRHUNbbdL0ehk+EYd
-         yoT4CvG+ow+bFplaNKQ6d+61Pr1aHoR2ChL//4ra74H0CQ/cPJ5ORr/eeLUCMLzjt04t
-         Nw12jvX2sZ2a6N7ydtzzFGTvYumsuG6jqpPBUkb0wVAaIJXeVwb31kP+gY+0gtsJM5CP
-         7zAHpdMRoQzrULLYF+jJt6v7XLueBpOSHauXd25YECSTsZ31hLim1l3Mb66KZGMIgFAs
-         ct5g==
+        h=content-transfer-encoding:in-reply-to:cc:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=yMhYaW/DOrnmTxGo423p3Vj6zWbiOp+1fhUIT1Jiclc=;
+        fh=EJOcKS192pQBHqmpM8VkZhvQHVzwq/rnEw6abS6OQyg=;
+        b=vJhJwqh87s9pHpTo9vjOhmIPGiT/DyHbvjFeJoq2cE2S3D6qI4hxr7gtCTDhcT41/Y
+         U/ij8h05dlPoK/Qe5E5jR/1B2OSPgXi2MAxiDKjvmwm5A2xtTHbAUyjHFtP3oGycDreA
+         epFr3OKnazdYoXCXCeiDQjKr2v86iLamPGY1TaRKV92Mtkw/6Q0ZHhrsfcRnhSU2FrzX
+         K9pxQ+JqqQgQ1Pye6ND/dl6UeCwXihGLH0+wAEIzGAX8+6Qa1Iizkq31Z0PdWccnUuPu
+         ApODKuxnVkNKCe5MIc7L+rXELgbQCrYm4AT//zUtT5in3sgpAPupgBrm/VjS8b1jL5WH
+         1zwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jqM5mk4o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="X3yx/9w6";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u33-20020a05622a19a100b0042a1a88e1acsi1156653qtc.394.2024.01.18.05.17.10
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g11-20020a50ee0b000000b0055517da3146sor3323565eds.10.2024.01.18.07.30.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jan 2024 05:17:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 18 Jan 2024 07:30:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jqM5mk4o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="X3yx/9w6";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQSGP-0005Y1-0p; Thu, 18 Jan 2024 08:16:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rQSGM-0005W9-Hc
- for qemu-arm@nongnu.org; Thu, 18 Jan 2024 08:16:54 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rQSGK-0004DN-Rc
- for qemu-arm@nongnu.org; Thu, 18 Jan 2024 08:16:54 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40e7065b692so49539445e9.3
- for <qemu-arm@nongnu.org>; Thu, 18 Jan 2024 05:16:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705583811; x=1706188611; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=jXuzdDHoDfS1SMEKlLWllgS9IfT5ukyEOa75Rlj3kHM=;
- b=jqM5mk4oUYoH2mUbwftBX2mwWocmhWGwIVSpSUkESYHgyOWoKoeUIeIHA4pZd1Eq+o
- /7Y9jRTX/tZ8tgGGQuGb+0QsImSC4iDfzgZs/1SJ8MGVLPoNLTwyuca0mjqdCjfQz45w
- pmY0xDa922Shme+9cLL6HI1C1K6rN68eBeJrT/zSUePnZN2BkCbbcORcawgN/9379qZJ
- mf3PlnyKX8nxR6Lrw+ODk3vun/UJyl9g5Cs17yuQXp3rljFtmWBdUSJ9gzPkA7k5EfpJ
- flvXgOclSDmqyEV84OWDgOU86hP2o5MBP+gLEnw+ij0/FMZHrf+tptEP3c4xZYLRymZ0
- x/dA==
+        d=linaro.org; s=google; t=1705591832; x=1706196632; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:cc:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yMhYaW/DOrnmTxGo423p3Vj6zWbiOp+1fhUIT1Jiclc=;
+        b=X3yx/9w6soCm7SrY246mqATX5bOHR6N1n9OC1PYWorZjTdoL0jv9hKOI6BR7pKkWpn
+         6MBweTy7jsFyqmHtCL3FdKtyy9Qzq82BrvU6xiro3pKYn12a5IlZ7KxGNJEXk5nUu2+h
+         r9H9WvLFDwtniLXJ+QU5LVvVX99BoNUhdLCPjySPnA07DEHPij6zY6avhV0xsuVb+xuF
+         8j5MnV4W9MMnoltnWCNSin8QHAnykUUbVnVazGBqYxL8fjkmfaRunsTMCZjvwjRoaAEE
+         H+W/TQD/bbFl6r0/u+0hUI2uZJVkCmn/hNDga9nJA7VeusJjw5B7LTqJhiK1v9B7Wjuc
+         U8rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705583811; x=1706188611;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jXuzdDHoDfS1SMEKlLWllgS9IfT5ukyEOa75Rlj3kHM=;
- b=vAy9/gBCojvs7AhnWtWOdoHZbXgWd60gNRBtRdGE4MnoesP6UhSDFX3EGG+zyHfOcn
- xdNncTtVuiA679H6ZGjJygkPffgN5Xpq/NHnOdBhgD3dhUA+IcSDb20xxdOaowvdxefA
- WjgHkgrpYurcRvTCkFkwJM/KDQh/tlCVUSdVfUy32KVTK+ZA5aL5J4Ysahywcrvbr0DX
- lAcsPqSEnRdus4b2DO7acQ/2fTzxGzWx5XFW5br9XYcqgp5xikvcrtneHFusKelH1f4w
- 68Cso8hRx1QYJOnuZaYDsycMLJ4hlNXcYVf4AfXl2zwoONcY55a7NbyWzNAvBcNSToUv
- JOog==
-X-Gm-Message-State: AOJu0YyAE0sJRDMAUPNnvIcZVIwdJ5plpwxS3uKxwFCYRR3vSWS83OTQ
- WAdJQQKMyXSVSu2DNO4T947CupueNqbA7eHOpg/ge2HgcVN0jl5DTVNkvWp0rfxblc4nesTaf0j
- 7
-X-Received: by 2002:a7b:c392:0:b0:40e:6a93:1c42 with SMTP id
- s18-20020a7bc392000000b0040e6a931c42mr534135wmj.26.1705583811035; 
- Thu, 18 Jan 2024 05:16:51 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- jg1-20020a05600ca00100b0040d4e1393dcsm29277526wmb.20.2024.01.18.05.16.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Jan 2024 05:16:50 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/virt.c: Remove newline from error_report() string
-Date: Thu, 18 Jan 2024 13:16:49 +0000
-Message-Id: <20240118131649.2726375-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1705591832; x=1706196632;
+        h=content-transfer-encoding:in-reply-to:cc:references:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yMhYaW/DOrnmTxGo423p3Vj6zWbiOp+1fhUIT1Jiclc=;
+        b=akyJzwYJ2Cj2/JbLUmFKd7mJB63Y7FKWMyQZDjgLiKBX6h8TttnlpSg51/RdIgcNKN
+         UUTNH7wc6vhFZ4gWBxEVam8iyzBfoGeVXruJ7in9BaLg3SM4Wy293rwfh5ANeMq0RI+n
+         ZDVhr4Gi/zApBLT8KqXjYVaFYw3L1ZoMa+F55T5lniMx/r47YcafLHG6ijFTs1VnVRYw
+         hnh4RYO7yJ0pF7l1pvZ143oNq4fcB3nNsJ6taXDV/JOxb5tig/V3WJ7koVYw+NHGimL3
+         3QrKK4OL1sUgNhdnpUzQHzbad+IEpBeQxUf4/2+sszSiHGxEjWRQWf0cqpfWfgy4ZuPb
+         a/0A==
+X-Gm-Message-State: AOJu0YxYVvlSLjBtrTMd+dipdtrfTz6DQbVVT1U4cGsMXZues3skzVwQ
+	sqhvvj+eVNNE1WDVGssu9+eFe+rWxpSGmCCQbfUDT1menmTaSGGR5DuP/mQ9IXtnNA==
+X-Google-Smtp-Source: AGHT+IFPawHvT5TaSru0RdAQx7GTopIeVVGRoM+1q0gheEiFEfomxLs0OjbfSXbR0Vr+eCj0Opv1Ow==
+X-Received: by 2002:a17:907:802:b0:a24:8deb:3524 with SMTP id wv2-20020a170907080200b00a248deb3524mr708053ejb.54.1705591832228;
+        Thu, 18 Jan 2024 07:30:32 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.108.175] (33.red-95-127-38.staticip.rima-tde.net. [95.127.38.33])
+        by smtp.gmail.com with ESMTPSA id hy7-20020a1709068a6700b00a280944f775sm9228709ejc.153.2024.01.18.07.30.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Jan 2024 07:30:31 -0800 (PST)
+Message-ID: <5531b75e-86ef-4543-b62a-1457666d9585@linaro.org>
+Date: Thu, 18 Jan 2024 16:30:27 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/virt.c: Remove newline from error_report() string
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240118131649.2726375-1-peter.maydell@linaro.org>
+ <1f34e941-5b0a-4091-95f9-0d0c8e302aa9@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+In-Reply-To: <1f34e941-5b0a-4091-95f9-0d0c8e302aa9@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fm1InhwL/sgh
+X-TUID: 4SoUJ2tABbVp
 
-error_report() strings should not include trailing newlines; remove
-the newline from the error we print when devices won't fit into the
-address space of the CPU.
+On 18/1/24 16:17, Philippe Mathieu-Daudé wrote:
+> On 18/1/24 14:16, Peter Maydell wrote:
+>> error_report() strings should not include trailing newlines; remove
+>> the newline from the error we print when devices won't fit into the
+>> address space of the CPU.
+>>
+>> This commit also fixes the accidental hardcoded tabs that were in
+>> this line, since we have to touch the line anyway.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>   hw/arm/virt.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-This commit also fixes the accidental hardcoded tabs that were in
-this line, since we have to touch the line anyway.
+BTW there is another case:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/virt.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+$ spatch \
+   --macro-file scripts/cocci-macro-file.h \
+   --sp-file scripts/coccinelle/err-bad-newline.cocci \
+   --keep-comments --use-gitgrep --dir .
+./hw/arm/virt.c:1775:38:"Addressing limited to %d bits, but memory 
+exceeds it by %llu bytes\n"
+./ui/gtk.c:1094:56:"gtk: unexpected touch event type\n"
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2793121cb41..da6cea30534 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1771,8 +1771,8 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
-     /* Base address of the high IO region */
-     memtop = base = device_memory_base + ROUND_UP(device_memory_size, GiB);
-     if (memtop > BIT_ULL(pa_bits)) {
--	    error_report("Addressing limited to %d bits, but memory exceeds it by %llu bytes\n",
--			 pa_bits, memtop - BIT_ULL(pa_bits));
-+        error_report("Addressing limited to %d bits, but memory exceeds it by %llu bytes",
-+                     pa_bits, memtop - BIT_ULL(pa_bits));
-         exit(EXIT_FAILURE);
-     }
-     if (base < device_memory_base) {
--- 
-2.34.1
+We could run this some of these coccinelle scripts on CI,
+as a new job in .gitlab-ci.d/static_checks.yml or extending
+the check-patch job...
 
+Patch on the way for ui/gtk.c.

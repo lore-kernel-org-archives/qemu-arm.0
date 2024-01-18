@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519697ejg;
-        Thu, 18 Jan 2024 12:08:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEFsZ1xfVOfkcNgZSUXkux2dE5J/f4j7SrT9VbFlmextVMjD6wCsc90M0GlGmWUIccphmj9
-X-Received: by 2002:a05:6a20:4327:b0:199:8ed6:746e with SMTP id h39-20020a056a20432700b001998ed6746emr1290877pzk.58.1705608516410;
-        Thu, 18 Jan 2024 12:08:36 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705608516; cv=pass;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519764ejg;
+        Thu, 18 Jan 2024 12:08:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFDwzYdS4a0Qrq6RNdG8ZlD28Ulr0x4zXttsZhI2JOR82Muba/2/taWRkRxgIaOL0ZGXmjR
+X-Received: by 2002:a05:6359:1b98:b0:175:8ecb:54ca with SMTP id ur24-20020a0563591b9800b001758ecb54camr1182190rwb.34.1705608522870;
+        Thu, 18 Jan 2024 12:08:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705608522; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qbumpcsaAgLNsicoa1dhoeJAJzsUnQOTkbpKMW31mS3vjGC9I7NxsROUoJ25XE47ai
-         StRlClP/TdOJIVO8FjfFvos9zkD+uhrFiKN2Xa1zwYGL54QohlZDPYzmkuzi2G+shTUB
-         EKVEqI67r/X5kd6GP8FQEX11x4EvkeBtJzkI8MhNDpBKnA0I7l+CMcc/YM/3rwGe+RxG
-         m66+1kum2xtj2k5ibL+uoBqCsqIXCWTZTk6j134iXoe4ya1n9bc39Ds0Xa5GVQNXz8w9
-         jcYxhajFkHjXvihyple8GW2Yvg1Tu+GyZ7ff85LSNtxgIzEbmDz2Ri7EjYiBRyL7XOEE
-         NAZw==
+        b=NUhK5344R+U5XYJ57AVw0ztls74jq5eJyvlkg7zGELR4j5G9I88/Tp2gzajoaEGZ9E
+         Vl7Etj7xIqkYiDcr8OC+aKZItempkKzOCQvYjRyO7UsRwesodiUgR8BqGiEmQLjEM93P
+         /qJgBdsVv4HTWu+3IjkMD5+5oFVBMSh+P2sOXBLN+ppOkmKXQZ3xKtXzklPW8IgFWVlZ
+         vedPctrbWfIpxA96dbazoLRSihUlV+FrUF6XPyoDVuBHKJrpP6bz6I9S0uGFl62e45vZ
+         061ec2DNnaMiyYUhmthSucCnRPiUiqNDb98DD2S2KJxrQbnx+WvYk6V/LTwFac7F5qKG
+         U8YA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=o0rOeZxLobaeC+GA5Yjm4BlTG768XBMgHhLq69UHP94=;
+        bh=FzWbQBIfEs6OJQ0hzr//F/cyUEfiuvwBN1uqJ0c1PMQ=;
         fh=cUgEM3TMHOIH70RmHTmTZxZmItZJnKfBWHSaci49aLY=;
-        b=r/CulsFhAbpVhgXA/aoJh7HP3Hi2m0DMFgdPpo9h6LxE+ksYxcl2S51zUv1Kn0DJVN
-         TG7eCKAfx21BcXo7D2/iBBtjJvF+8unelBR0H9kDtjh+hwX5+ZkWmxbcrMND25te7zGn
-         i7LVIZwhDCT7CeG4KnBD71ke8Im0KKwkWfZJ8a0jte1xWoPqVa7sJR+MRW4gWJsnSsJM
-         NA67ogsjRrQfXNeC8qEgHV6m5jiqyl2+mHLSgxD7yIiIaZX1O6Kx/UdKtpp670Rr9hl9
-         C+whKm27I9C2jbpW16GkUp8oudJziRuP1hLRVc/t5xt7Wryo9RCDiRBYCy5Mod1vy+3x
-         nYig==
+        b=A2O4oFDgg5l6ElRzMlu0Qh9Q6a9KWrmX9c8tRMP5ZiQqgTEcMa4QaBWbo9tOElXW+H
+         /yS/E0rZ18nXBrGa9tssTGqQFiR337LnBqKmg+RodsAhKbeE1hzsVE3c4mQjRHMm8d2S
+         mVC6+CogTJAKp4JHDBv5bCfpqpZGs3e//6Hg6U+vFywWufquxka5zgA+v/bygm8kxlEq
+         7FhisIg9wcSHVzfLBKLMghKrbrR5pbHbTawgy+Vow2Pas3CtAZnI78Ab6y+x2qcb2lfG
+         GYC+2NW0FjejtVTDjLyRhXhzMalP3oWbbYv+a3r4NtBYL8juLrSYSEozAjUbsaKl7c+x
+         qASg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yjf92Dw4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IBIezyXp;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id fe12-20020a056a002f0c00b006db702116d1si4023936pfb.388.2024.01.18.12.08.35
+Return-Path: <kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id j5-20020a63cf05000000b005b96d038729si1957574pgg.728.2024.01.18.12.08.42
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jan 2024 12:08:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Thu, 18 Jan 2024 12:08:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yjf92Dw4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IBIezyXp;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6444-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-6445-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 03688B26E3C
-	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:08:34 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id B2BC2B26E3D
+	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:08:40 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CD4DD31A79;
-	Thu, 18 Jan 2024 20:08:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6F48731A9D;
+	Thu, 18 Jan 2024 20:08:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yjf92Dw4"
-Received: from mail-wr1-f41.google.com (mail-wr1-f41.google.com [209.85.221.41])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="IBIezyXp"
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B51B31A73
-	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:08:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.41
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BC9A431A98
+	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:08:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1705608483; cv=none; b=QDj4nQuxL5knh4fE9DKWvnAOWEG1/OUbodg2KJpVjAzkZ90cOTd4Nr2cuZY93aKvJ0PF3kveMmKIt+HdRO64Dd5BkHT4cXWn09npTUaSnaTNwHzHydSKONjWOEN1lrRzloiYDLPVdYyWeYp9RUAbCjSDJ5Wd11E5qbUVcOWBxsw=
+	t=1705608489; cv=none; b=fvyRUXhweX0uGyk8iAC27ZmM397TgysRWDRC9QMu1HLgqef4Au3f0g21M0KHhSmL+amrvxdokaPcFIPeAH/Uof6Sy6rjzPqWq//pTcMstTEyMp25j+Pi6IjpfcURpVq6C3QujKJ3k8AbauspVsMazZKg8B2D3GrbqgeCgJKXTBM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1705608483; c=relaxed/simple;
-	bh=1GWzJA2hXX8z2G9I3aCH1yJ7z0+NgAdv2RboAlgWSUU=;
+	s=arc-20240116; t=1705608489; c=relaxed/simple;
+	bh=MhCutPUJXazK8GtOfSH+kdYhMiaTMKVYNEVzzLFwaEM=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=FdEZu4clAzw8cWH2GFzjUn5DCwOhS/xwEFNXwyt6TlBijVv+mH1AnDesy7CsYRTA914ja1FWRK9CXzd9zNwqunHWgX1XrN1Dj8j9tAoXqYkttBRNlA8fC2qww3bDCWbvpzMmdx1zFhZa+1VbaORjLvMACljCW5hFIPkcjJU/rP0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=yjf92Dw4; arc=none smtp.client-ip=209.85.221.41
+	 MIME-Version:Content-Type; b=ejnsLQwmFQ0UJ/bFk/xfmpTGgxRMhXIzMuBKNQokebWMF5mGzrGPuTv7hQTgYTapr3rB6Y3MCmFtcoV8P9ivj0GRhV50D5B6bStJ/JbZWzMJLczG8052Hv0ZFUZla0P+3I3s3rlV7HGrimgM/SAg0h2RbacO9MyCGAjJqMTPgkY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=IBIezyXp; arc=none smtp.client-ip=209.85.128.46
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wr1-f41.google.com with SMTP id ffacd0b85a97d-3366e78d872so12448700f8f.3
-        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:08:01 -0800 (PST)
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-40e90163be1so339755e9.1
+        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:08:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705608480; x=1706213280; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1705608486; x=1706213286; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=o0rOeZxLobaeC+GA5Yjm4BlTG768XBMgHhLq69UHP94=;
-        b=yjf92Dw4hg8PM+T0arUNwZUKCzY6XQRWoYpvZl7wmcV+nl/nPKQiC5oydWx4KG3fqN
-         /XYhzRGktC3Adt5q7iWbBqml5ma4TMHL39eKP8gBTN5SJPaICfvPuiLyPAT5psxOYq12
-         DMg9dRk4MPN4lb8FGjhgvRTuZSzx3f87M3C5Aecupl5Ptn3+/Nr2fOYizj//tT8TFgau
-         9Od55Jdstypj+Ym/sIPHcr9rVFSkhDrV16tddLMoNEUUHK+uMySH9C72sd0N4DxKYP/n
-         2ExkEJ/TuEkBG95YSLn/PLhmXl/2y9GunXvguUNSxDlDVJft2wpq7C/BCgKS6osiXTfz
-         mJaw==
+        bh=FzWbQBIfEs6OJQ0hzr//F/cyUEfiuvwBN1uqJ0c1PMQ=;
+        b=IBIezyXpRoa1zvTu9+NSRMqtde/e2nmh6UJFmlGIrGEY+YOyNnYw7Mbj+bh2rShNaq
+         FZOD9DasETrA7wDC5oTNV+JI3q8oJ3d2l120a2TlWycl5foiNwwu3Y6Hp3IXPkCIE9YP
+         acBu7Ml2q56UOwWhFM6mlcFzodVpKW2ieFJ6T1oOoDJrl18pvRXHB1sJWa4XAXvF/DGU
+         xCetsIqMQ9FeAkC9/jw/4V/mHJluu9VTS5vfEitEPobEk0/HT8DdKsWEkePwjyuZNmA7
+         Z4vanMsh3GAyg9iJY1dM7AhpVhdXb8BjO9tZ0QbU99cMseFl62LE3e//vpbEsbgE8m6s
+         LWcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705608480; x=1706213280;
+        d=1e100.net; s=20230601; t=1705608486; x=1706213286;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=o0rOeZxLobaeC+GA5Yjm4BlTG768XBMgHhLq69UHP94=;
-        b=HMZiDHsKpu8CUDj8pl8c6V9mbFj94f1lfh8npcdlx8on6f1ZEgPQmTZod6u7p3WCTT
-         wi6TwUom9tKSvyotDzK8bqdBkWG1vieB/9FKLXiNPm/WrpCb2sCLHZWE94WxH33s9p2L
-         syODE2A1PHqB04MCV8+IRDNZgndBvCWzxnfZOG3mCCyZGGjLOQeHuBH6SWg7Y4B7OPax
-         OcUU5sMC7h/HqG5eGPSSPi3BUELUvhKjaLIPa6B4eQERcwXjvkSH1M2UdcN3Dy0yY2XU
-         8bOUH55lSLDiU3WZx6ojyJL/8ZWrL0Sp782k/kLvf661HdTPUL9tlJ1Ds7dkaEpD+AMP
-         rfiw==
-X-Gm-Message-State: AOJu0YyBFUmQhbZ0hQXstlm5vGsNo+j7GLOx2H9ykCzc2InCga7PQb3R
-	gCPZuhpjtLjLujJfwyiHfCcCQM4I5QMYuu/eBpZJGQ2SPlQGh0PJvEfPp5BnvpY=
-X-Received: by 2002:a05:6000:186a:b0:337:ac2c:cfd9 with SMTP id d10-20020a056000186a00b00337ac2ccfd9mr389531wri.196.1705608480329;
-        Thu, 18 Jan 2024 12:08:00 -0800 (PST)
+        bh=FzWbQBIfEs6OJQ0hzr//F/cyUEfiuvwBN1uqJ0c1PMQ=;
+        b=YpFQ1pzPXQVoKzqSFbhQ99hJ5/Nk3RRK99anppA6b0rVMCYEjH6xpoghyIkdmEFnuD
+         SskUfMVNE3q3bHlekcY9E/eJ/AvynW6p1/ZZY1SR3HWwRVtTzIQumurdy2tvV0SFUGAe
+         9+b4iFttrSvgF0PvnzFrZBuXYpDmfQe50p7pBRvf535docOjkkuN7c72T/7zTzNQl+xQ
+         o6N0yivuryJE68GFGPlpFIjITr5D5hWngsuPdDyKWiJ4jKQslYJ/gcee/YgOahesQWDS
+         PTxoknGcljJ3x3dUKVvTY6lrml8rwfmkHZW6nxSlxI9yBCPSzdyYgFIYwQoM4irQtAr3
+         uuvQ==
+X-Gm-Message-State: AOJu0YyGcd2ffACKdjU9aDnOlmnl53A/KHYYyn6psb08lNACPADgh4CV
+	Wv4WP1rhUAhNcDvRUmcQSwFRryU/IxTEWHXoAb/5BSBxXRYmnyWP77WtfmNoR+o=
+X-Received: by 2002:a05:600c:2047:b0:40e:53a0:c140 with SMTP id p7-20020a05600c204700b0040e53a0c140mr471729wmg.229.1705608486072;
+        Thu, 18 Jan 2024 12:08:06 -0800 (PST)
 Received: from localhost.localdomain ([78.196.4.158])
-        by smtp.gmail.com with ESMTPSA id p13-20020adf9d8d000000b00337bcae5eb1sm4764752wre.72.2024.01.18.12.07.58
+        by smtp.gmail.com with ESMTPSA id z10-20020a05600c0a0a00b0040e4bcfd826sm27279780wmp.47.2024.01.18.12.08.04
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Jan 2024 12:08:00 -0800 (PST)
+        Thu, 18 Jan 2024 12:08:05 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
@@ -131,9 +131,9 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Joel Stanley <joel@jms.id.au>,
 	Hao Wu <wuhaotsh@google.com>,
 	kvm@vger.kernel.org
-Subject: [PATCH 13/20] hw/misc/xlnx-versal-crl: Include generic 'cpu-qom.h' instead of 'cpu.h'
-Date: Thu, 18 Jan 2024 21:06:34 +0100
-Message-ID: <20240118200643.29037-14-philmd@linaro.org>
+Subject: [PATCH 14/20] hw/misc/xlnx-versal-crl: Build it only once
+Date: Thu, 18 Jan 2024 21:06:35 +0100
+Message-ID: <20240118200643.29037-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240118200643.29037-1-philmd@linaro.org>
 References: <20240118200643.29037-1-philmd@linaro.org>
@@ -145,48 +145,44 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: q84Nkey8D7PD
+X-TUID: qAkH7k1nuAnN
 
-"target/arm/cpu.h" is target specific, any file including it
-becomes target specific too, thus this is the same for any file
-including "hw/misc/xlnx-versal-crl.h".
-
-"hw/misc/xlnx-versal-crl.h" doesn't require any target specific
-definition however, only the target-agnostic QOM definitions
-from "target/arm/cpu-qom.h". Include the latter header to avoid
-tainting unnecessary objects as target-specific.
+hw/misc/xlnx-versal-crl.c doesn't require "cpu.h"
+anymore.  By removing it, the unit become target
+agnostic: we can build it once. Update meson.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/misc/xlnx-versal-crl.h | 2 +-
- hw/misc/xlnx-versal-crl.c         | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ hw/misc/xlnx-versal-crl.c | 1 -
+ hw/misc/meson.build       | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/include/hw/misc/xlnx-versal-crl.h b/include/hw/misc/xlnx-versal-crl.h
-index dfb8dff197..dba6d3585d 100644
---- a/include/hw/misc/xlnx-versal-crl.h
-+++ b/include/hw/misc/xlnx-versal-crl.h
-@@ -11,7 +11,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/register.h"
--#include "target/arm/cpu.h"
-+#include "target/arm/cpu-qom.h"
- 
- #define TYPE_XLNX_VERSAL_CRL "xlnx-versal-crl"
- OBJECT_DECLARE_SIMPLE_TYPE(XlnxVersalCRL, XLNX_VERSAL_CRL)
 diff --git a/hw/misc/xlnx-versal-crl.c b/hw/misc/xlnx-versal-crl.c
-index 1f1762ef16..1a596f1cf5 100644
+index 1a596f1cf5..1f1762ef16 100644
 --- a/hw/misc/xlnx-versal-crl.c
 +++ b/hw/misc/xlnx-versal-crl.c
-@@ -18,6 +18,7 @@
+@@ -18,7 +18,6 @@
  #include "hw/register.h"
  #include "hw/resettable.h"
  
-+#include "target/arm/cpu.h"
+-#include "target/arm/cpu.h"
  #include "target/arm/arm-powerctl.h"
  #include "target/arm/multiprocessing.h"
  #include "hw/misc/xlnx-versal-crl.h"
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 36c20d5637..66820acac3 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -96,8 +96,8 @@ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
+-specific_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-crl.c'))
+ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
++  'xlnx-versal-crl.c',
+   'xlnx-versal-xramc.c',
+   'xlnx-versal-pmc-iou-slcr.c',
+   'xlnx-versal-cfu.c',
 -- 
 2.41.0
 

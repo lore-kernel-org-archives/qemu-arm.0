@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp518832ejg;
-        Thu, 18 Jan 2024 12:07:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEqxpPAudiF8JyC8u0KSoIlsid1lz/qqwBNXB4ioKFCpi7XfuOm7rVH/9uSBdL42GaXdf7t
-X-Received: by 2002:a17:906:35c7:b0:a2b:1a20:e634 with SMTP id p7-20020a17090635c700b00a2b1a20e634mr901502ejb.11.1705608430966;
-        Thu, 18 Jan 2024 12:07:10 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705608430; cv=pass;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp518931ejg;
+        Thu, 18 Jan 2024 12:07:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEiBvexe38zeYABm0H0H11HVCZCanDDHUJlxH+iPHBXkQJa7HgxFOG/mfmoQAS2gTDeq3rM
+X-Received: by 2002:a17:90b:1208:b0:28e:2294:78ba with SMTP id gl8-20020a17090b120800b0028e229478bamr1193191pjb.93.1705608439914;
+        Thu, 18 Jan 2024 12:07:19 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705608439; cv=pass;
         d=google.com; s=arc-20160816;
-        b=req4TYH2uL0IKGOEXCnBPFeFOlnZcQcq2gFJq++boXlDsGUpz57lBvvCSh6GOSEXBG
-         Y8ieG9eFyaxkKCQqSODtePs3GJLnRtYyJstyVWcHuxO+YiZ0yVAv+HNDzoGpiNRY3AQd
-         l4YQdK95Y2ur/x0OwUs72CILBdlig5uH0TXh5nVSE2SV6HMbHASpVOg9GvkjZw5sbAgn
-         udSuZSYMuCNHdUgLVbPLEygQlqmxY7rtI70d9JXsHyqo+mdUbsY2f9bXhIMomwyYSRke
-         hXgicbJIJkNyJ/FOHg6QvK+hhPJyjUVdBQnjM0ocmDCRJSwMSpQPJUo/dBGLurHMEB9O
-         WlYg==
+        b=M/oXsImzd6bTx9HzHuQ5oOzhOOcyX/zm+WL3Ni99uGU/C4VBytSeteL6VLOa7By/RK
+         xj/crw0iQUTrko09Aye/gcrnfxVubIhqT22U3cMNHWI1vp893z17iQG8Up4zV1n6+siY
+         SJhd09eHtIoEI9mR2deoVSTTIfOKy6bYSEKzL3s8RvUeLETgiF3YS0CkVan5D38u5jbB
+         01Ryr8yVCbZ/wtE+9hsuIV1VCW6OQVa99zTL+E2fldOCKawSYgRpdIIBAoKp8lJohqb9
+         p+G0n3efg8JeddbE5c8RkrXnhsyZuocEqP/d5s4GNCAN6+KeIQWz/vERNMCNQbAtyEfG
+         Tm7w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=htALVQYUd7tctCm3cf8P5ZcYUk/HKeiXOxSFOuNuC8A=;
+        bh=5DV0gjEvxVYdSUXbSGfE0SOvd3u+uIvvVQeLb8GJ57M=;
         fh=cUgEM3TMHOIH70RmHTmTZxZmItZJnKfBWHSaci49aLY=;
-        b=EcSze9XgxXdf/j6emAhXPYm1gl1QPDa7Iu6FfxioyFUY/0g4UpeUdnvgrpfboOxkdR
-         DIq+KHfp2rVkQl2XHxc600T7PekVFLATI8A/F7+sJUtokmXx1VscDU8tGEdcxodFEv2k
-         5OfNXqBqX3XUsU5PcnR7pbv4WzjWkhZC7Orsd6zfWA/uTUeD2Lnpdz61CrV/kPDsC/iX
-         nAP7z88lyLlTUMWFuS8Q6UjPIeFypelI1VN7QYBvIQzCLr/3IXNGJ36VCMMFNimuNZwF
-         XyV/s96r1r12sLmKZ3V7F/85CERxpi/TiM8KBW0xZzpdk8dV5pSsqBvHB6w5q/ZEy1q4
-         yq/Q==
+        b=oXfX9ujL0xtwUe0bmr9jzXVLoKY0NaviZi6+olc4LshQ4kXiXXROCIH58LBg2KyN3Q
+         S/CNYUMcGOMw4fcwWtawfQwnqGnboYqU/LIB5toJ1EI/Mog82j+ypvw29mYZPDXxlYS4
+         2AxagDi1FSZPNjvFMnNtTnbS/RZvZIoBstmHNu+hAEz978loZbJnz22V8FMFYlCsq1JM
+         s4nYU33oVu5p4naSAdKOHkEJGYwofUQEcIV4COxLz/Cfb1s7tBfqL+TRjvlSGSVADa2d
+         upIOOCSECghJgbfyU1wM4D6+BJpzy+ZdNSF0Su5XvInPB5R6U7mxIRmwcFXdf7ozt6eg
+         689Q==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w7zDKMc1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ga3/pHlI";
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id o16-20020a1709064f9000b00a2e66e7a63fsi3054744eju.119.2024.01.18.12.07.10
+Return-Path: <kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id cq16-20020a17090af99000b0028ffc9c1453si1962074pjb.21.2024.01.18.12.07.19
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jan 2024 12:07:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Thu, 18 Jan 2024 12:07:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w7zDKMc1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ga3/pHlI";
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-6433-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6434-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id A96741F27868
-	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:07:10 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 84B12B25FCC
+	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:07:17 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2C98E2E634;
-	Thu, 18 Jan 2024 20:07:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 07A5C2E62A;
+	Thu, 18 Jan 2024 20:07:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="w7zDKMc1"
-Received: from mail-wm1-f44.google.com (mail-wm1-f44.google.com [209.85.128.44])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Ga3/pHlI"
+Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57D6C2E62A
-	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:07:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.44
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34C6D2E641
+	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:07:05 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1705608422; cv=none; b=UReM1Jvpt+4pes0B/4IZMGmCv2ty86+FqdHJSlrM1FGpqEfOLAR9z5grdqtZuw4WCyQt4JSsAFEO7id537uVv1ioE1wCzbGt5f1bm+a3dcXvIx5bHHdAR08+0aXZu5+TISJ/k0RfN1ToZFq5kXqr6IGdCl5WUso7DWRIUIiG8WI=
+	t=1705608427; cv=none; b=QyhvEVxb+j4k9LGPNSLy2WJP0j2hOXlsL6Cy6+0aGTQPpNxyifEcs5lZziBNCLyhaynL0azOn6It77uu4cG+FzByApgTlIKsQHTw5eebpkwxevWw6maxpbXlNI5C8W57F8mmmzuJxuB8WNPXQFrONDD9a3nd8T88vVucSbYGQnM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1705608422; c=relaxed/simple;
-	bh=gLomlSi8LgyeMv1miaxbAAFi+OJvA8xaDbLDEuVzDGg=;
+	s=arc-20240116; t=1705608427; c=relaxed/simple;
+	bh=tv4vAiOcp6184qBhbcUf5afz5+FGGf+V6gkBDL5kRR0=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=EowBpqKoTc8kAV6Lvj/rh/o8NMLSZ3nxj3rJiCNxfQOGPAT+V+i+rOfDCmuN1yGqn/JUregNnt0QOs5vlny6HG9OfNvmwcSKm7G1pvchU2Z9DXl5z5zPh38sFArtv4lUS8AFXNZYNFDOceUB92XaaNxbDxvz6Pzpf8QcYYLpQRM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=w7zDKMc1; arc=none smtp.client-ip=209.85.128.44
+	 MIME-Version:Content-Type; b=Xid532NVacbgjznMePN0QBOo7EhiJNLp4rrb3gGsCa/FEW6PfB7ZZWDX1Es8cGXeaomNn3zqhtFGe6+XvYpxyhAJYeGMrhcHRg8N5S6IY9/0Ewq0jQ9Fq+pzQhnbfvsLJUSCVudSqZ7YuVQdh4iFgwL9+RpHuiT+zcTm5Z7kK34=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=Ga3/pHlI; arc=none smtp.client-ip=209.85.128.41
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-40e7065b692so105125e9.3
-        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:07:00 -0800 (PST)
+Received: by mail-wm1-f41.google.com with SMTP id 5b1f17b1804b1-40e958cd226so125725e9.2
+        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:07:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705608418; x=1706213218; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1705608424; x=1706213224; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=htALVQYUd7tctCm3cf8P5ZcYUk/HKeiXOxSFOuNuC8A=;
-        b=w7zDKMc1t3w60DfWg0Yk73ETsRpskLOEhe7YyDJrP4iIgddPZxc+dTXKVvmKuGre8R
-         c76QujSwFnY4jfzVWRG+tqQIbEK4MJSnUAAgh/rRRgX28WzrvZXz2+amNB6sXKQIElxG
-         ukJoeVZq2FkPqwArfTofdIwdDkq1pL9uq5ZA2KlKFm44lBPa7e9eXswAdU20htX2W7Uf
-         osexnXkcYPYk5YkKOuBW2bmwJxjVx6gGrco+wNryMEqiaVXcZiGoalFN8L28kB/0Tw7/
-         gFIv3ORo4Yl4Ky5qeGkj3yMIYj6pG0cEtA8dB1RIUarW20OsNE9FG1HcZse4ciQT00mD
-         jlnA==
+        bh=5DV0gjEvxVYdSUXbSGfE0SOvd3u+uIvvVQeLb8GJ57M=;
+        b=Ga3/pHlInLDyujuWCjy7x6StVO9rTvf/uxu2H/Wyx1wl+aX2mwoyKyFffWsbivtqtt
+         Gb7WHgjzBAYVjH9tax2xBXcHfE+vTX77XxES5Y0ym2nu8g1B4keM6VmmTvdHoLEbT2PK
+         SdZrmFT+wCkq/1XzUuVJBiQbJ24X/Lx5oP+zAS5o6uRIYKon0nQZT+3HYRjN+jxqXjE/
+         pu4AW1Hf/702Lxku+T6QbI1s/obfskkoEXyUK4WTD9cV38OmRMysBh2JFRujQMoLJ4kv
+         nwRXiPZx2VVQw/WONbWlbAHrTXRnwrevp8hAkG3tvldQZJFtja6L2ZxpTu+AAdxlmzAz
+         60aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705608418; x=1706213218;
+        d=1e100.net; s=20230601; t=1705608424; x=1706213224;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=htALVQYUd7tctCm3cf8P5ZcYUk/HKeiXOxSFOuNuC8A=;
-        b=TFqUnLFD9px+K1R64/7Ae+K9ylAf8Gex6C6fyO1r3ZflG0SfhuexPZkpfzuOLkxas8
-         ytlEr1QWEIfft31ezjPeh90J4j1cpy/D3tJ+vITpfxOn3EW35P0w5NsIspy5sO6XSq4L
-         e8Sw1fUj/NYQXMjfmTGUm+WDEdLxfGqk9704aZ7eZO6Aqfsz2N/cvaIzbChdI8/KgtSi
-         3s1BJfqKuwrNsQph41mxqRV+ogAOhC7xTpC+F5O2ueInbvbu0koP0KAXYEKSHmoKWJt9
-         SLxgC/3MfAYPcDPXix5fFqdADk3TmgWEdLIBPOg/alEvNpxnxJly4ue10DewaJI2FdEV
-         0tSQ==
-X-Gm-Message-State: AOJu0YzYaXGw5hDANRecHDHOhxvFRqMn+mdZ5wTfj2uBOWAOsvi4pFnl
-	x7U589cqXPMlyeLXeuowa2twfLFQBZT/NiKAdxSdq/H+fhLbTGBvk3JQmPIC8xw=
-X-Received: by 2002:a7b:cbcc:0:b0:40c:416c:d99b with SMTP id n12-20020a7bcbcc000000b0040c416cd99bmr862981wmi.47.1705608418664;
-        Thu, 18 Jan 2024 12:06:58 -0800 (PST)
+        bh=5DV0gjEvxVYdSUXbSGfE0SOvd3u+uIvvVQeLb8GJ57M=;
+        b=AgDJYd8dc/STDxLpEwOBmNafX62ur4dEAYUnIp8eiqBtadXCH40NzU6Gv510xcziI2
+         FW6cJN2L9UCsHGkvHtm0wPSCizNzDk8gHNFUgqnbaiXVgZ1XFgTYgtshieQrOjo+n/Xp
+         RvTJew1U2DXykvei/XVVJtKzFY7o/mKf73rgfboDwhLuTszEesMiA95SOI7xg9dyVTh5
+         6VqlgjuxIU4e1pAgM8+wFqF3IBzPvMIjWbp8qecJGB2ZJ0U3LE8eLdWx7P8OxO6cu+aF
+         GOA1KtrQSVZcBhqnJZKr7t8NhI8aRxL4gswZ9DG9gZ28pjBLisUwnxNskw2hmSP1DoGS
+         pfjQ==
+X-Gm-Message-State: AOJu0Yyitn0xAToAV60hYrJDf6sVcb4t4TgXYC4V/OgeSbrseYudON7U
+	nbYL+2vRT9dSGh6PcbrVtPQw4jIma6MH1/Ktp7kQyps6yXhx9fdKGPZHEUSdwjk=
+X-Received: by 2002:a05:600c:2981:b0:40e:954d:1a1a with SMTP id r1-20020a05600c298100b0040e954d1a1amr749105wmd.76.1705608424346;
+        Thu, 18 Jan 2024 12:07:04 -0800 (PST)
 Received: from localhost.localdomain ([78.196.4.158])
-        by smtp.gmail.com with ESMTPSA id k20-20020a05600c1c9400b0040e54f15d3dsm30578929wms.31.2024.01.18.12.06.57
+        by smtp.gmail.com with ESMTPSA id c11-20020a05600c0a4b00b0040d53588d94sm30769470wmq.46.2024.01.18.12.07.02
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Jan 2024 12:06:58 -0800 (PST)
+        Thu, 18 Jan 2024 12:07:04 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
@@ -131,9 +131,9 @@ Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Joel Stanley <joel@jms.id.au>,
 	Hao Wu <wuhaotsh@google.com>,
 	kvm@vger.kernel.org
-Subject: [PATCH 02/20] hw/arm/xilinx_zynq: Include missing 'exec/tswap.h' header
-Date: Thu, 18 Jan 2024 21:06:23 +0100
-Message-ID: <20240118200643.29037-3-philmd@linaro.org>
+Subject: [PATCH 03/20] hw/arm/smmuv3: Include missing 'hw/registerfields.h' header
+Date: Thu, 18 Jan 2024 21:06:24 +0100
+Message-ID: <20240118200643.29037-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240118200643.29037-1-philmd@linaro.org>
 References: <20240118200643.29037-1-philmd@linaro.org>
@@ -145,34 +145,37 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0cXq7Wx7blwO
+X-TUID: FGKNZ6QI8b4R
 
-hw/arm/xilinx_zynq.c calls tswap32() which is declared
-in "exec/tswap.h". Include it in order to avoid when
-refactoring unrelated headers:
+hw/arm/smmuv3-internal.h uses the REG32() and FIELD()
+macros defined in "hw/registerfields.h". Include it in
+order to avoid when refactoring unrelated headers:
 
-  hw/arm/xilinx_zynq.c:103:31: error: call to undeclared function 'tswap32';
-  ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-          board_setup_blob[n] = tswap32(board_setup_blob[n]);
-                                ^
+  In file included from ../../hw/arm/smmuv3.c:34:
+  hw/arm/smmuv3-internal.h:36:28: error: expected identifier
+  REG32(IDR0,                0x0)
+                             ^
+  hw/arm/smmuv3-internal.h:37:5: error: expected function body after function declarator
+      FIELD(IDR0, S2P,         0 , 1)
+      ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/xilinx_zynq.c | 1 +
+ hw/arm/smmuv3-internal.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index dbb9793aa1..d4c817ecdc 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -37,6 +37,7 @@
- #include "hw/qdev-clock.h"
- #include "sysemu/reset.h"
- #include "qom/object.h"
-+#include "exec/tswap.h"
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index 6076025ad6..e987bc4686 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -21,6 +21,7 @@
+ #ifndef HW_ARM_SMMUV3_INTERNAL_H
+ #define HW_ARM_SMMUV3_INTERNAL_H
  
- #define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
- OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)
++#include "hw/registerfields.h"
+ #include "hw/arm/smmu-common.h"
+ 
+ typedef enum SMMUTranslationStatus {
 -- 
 2.41.0
 

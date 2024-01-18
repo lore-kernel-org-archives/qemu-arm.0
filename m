@@ -1,323 +1,189 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519368ejg;
-        Thu, 18 Jan 2024 12:08:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG3YJb2Hl/jQTRWux9crbQiybC2m94aV6/3YgviGI1odOP5F5D4W6RrBWeUyuuTZ5rwfviE
-X-Received: by 2002:a05:620a:bc8:b0:783:2fcb:6baa with SMTP id s8-20020a05620a0bc800b007832fcb6baamr224990qki.40.1705608487587;
-        Thu, 18 Jan 2024 12:08:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705608487; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp519562ejg;
+        Thu, 18 Jan 2024 12:08:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEbOjMUrAQIVehS7LdrCMyCbBLgFd6gAbe7X42slSCY4UUNgxu3Inz9IIC1e62H8NboBwRf
+X-Received: by 2002:a05:6a00:3d04:b0:6da:c623:f054 with SMTP id lo4-20020a056a003d0400b006dac623f054mr1624236pfb.15.1705608502832;
+        Thu, 18 Jan 2024 12:08:22 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705608502; cv=pass;
         d=google.com; s=arc-20160816;
-        b=EqWD1E/UZMA06ZT2xSvU/2a+ZF6ZjZm0XFCKRWd7UK2PVlqVhzhMluGdHlhGPtROZj
-         CBNwAWXaeXMaXNKV3eMCrtzsz93P44lZD2tAJUvoNWuLbso9AROhQw4nx9V53qbOEJYy
-         yiqaCM3FpeF6KngqiljTHivT4BunnfLPWW1aP2gxh3YpEpXKf+tRkWxFpbpdqncxTtGw
-         1ujwaDiFGj5KeJ80YavbI2SipCpIdBhC82v3GX0hu7Lr8WNZ19Rwm4STmlZvpa8GNSlt
-         QRb1gQURILm5RURdT5Plf8oyiqO2IBZ8VXkJonhvoxm+AxOgdL8+7P0aA1YKfcZVnTwE
-         aDuw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=6w1iFT2RaAu4CDh7Rs92padfv2CQrVGTqWTSowRX6NU=;
-        fh=cUgEM3TMHOIH70RmHTmTZxZmItZJnKfBWHSaci49aLY=;
-        b=Ffz1+mA/TqulLLkXlrvPvT02+gXxqzyRMLAbms8t+IDMnXciuVon2mEvPqEgv+i6ly
-         u4IBpDJrV3fCya+4p73UN+elivhxdFyuTK/YXg2SkewBzEI1oXNl9UA80kWvLhd/hlmb
-         1ExpjX47TfWo85CWpNnSFIkT/8BIrZhpE+Uj6ZjlGBOv8D6kQpSUN4Ix1mFkO/XsOCxh
-         24RGfw8Oyi6GluBJ8tnlZiP3xXKbVE67EFdi5J9SluRL7/o+JwJd1jwjQIV/4mCw5jfF
-         G3ZaI2cZ564vYos1dXUji8dQ6BrZ/1Rlu01L+T+YLbizt9ntC++tp6E457mO35im9MNZ
-         s/gQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynXEujcM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+        b=V7rnHz8jtgaBKHYcOaC3c3+R8A1kw/gr4DW8xfvLOyGzuWG3ibVnLoqviYflGS9wrZ
+         dEaq/xo4sQFJm8Xzd1e9Mldpu2IAOLV6+rIs/PBkut/oTTHDCCph7pjmnFoiSym3uJDy
+         WsEt03ArZ11KjbLLYDUdPxNTUYdFcSFehoOpEKGrp0L0Gyx1fD1ojmxpzB7DDJe6KMT6
+         krpuUqjeFGqk9pJYm7kDf8wpADhrWO7gcyK0viifyPiwf3Pi4QeaUqBTlNm25RBF23Xu
+         7T4XK/2w8mzUog5v62BW8V1FfcZ24HGm+lW+hXlofAQFnAZhYeIzOmFgy/tXAtYFGTRt
+         Bjbw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=wzXk5yiY5MpA6wV2WpkIOyNiGD0qCuniPF02smOcXHA=;
+        fh=GY0J1BHXV8JCT94Jevwcoc+qV/LriKwcR3tgpDluTBE=;
+        b=n/drfbPg5I9hh6IuyaZs3mR0+otznTPfzdGkLwoEkYaDdkarx4E9PK2T1gjDInbARd
+         Sb+ON7mqmkepEpWhCBeOMtsWuSeSdWCBC6gJos1dscPfzD0rRq7STJPp3GOPQLyKaTiS
+         fRqjofhI1NIcRnfu74bG/9/Omp2E3Hj+/AHOEJN8xZh7HoAt6eogHtOrP6JeSwdffMcO
+         Yu+jSqmxuQHC9tUXPIP6S5yfX7MlkKnMqpzc61jGlQP3XZiWzQx72+IPcFg0bM00N/bF
+         EKloX4CyHQ2XuaXP131z4ewICZM+HXwj3ZR9EP2u20qEvd0iW5YtFEXQVc5S0+L50oZX
+         nkHg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UFJLCyob;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15-20020ac85b8f000000b00429f4fe7740si7632063qta.517.2024.01.18.12.08.07
+Return-Path: <kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id ce15-20020a056a002a0f00b006d9b2f4cc26si4331514pfb.105.2024.01.18.12.08.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jan 2024 12:08:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Jan 2024 12:08:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynXEujcM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UFJLCyob;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-6442-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQYg5-0004DZ-VN; Thu, 18 Jan 2024 15:07:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQYfz-0003qX-MY
- for qemu-devel@nongnu.org; Thu, 18 Jan 2024 15:07:49 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQYfw-0006z8-Tl
- for qemu-devel@nongnu.org; Thu, 18 Jan 2024 15:07:47 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-40e90163be1so336095e9.1
- for <qemu-devel@nongnu.org>; Thu, 18 Jan 2024 12:07:44 -0800 (PST)
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id B0105B26D29
+	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:08:20 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 69AAD2EB10;
+	Thu, 18 Jan 2024 20:07:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="UFJLCyob"
+Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DB3E2EB07
+	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:07:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.44
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1705608472; cv=none; b=a7dvh6dwNTqfEHKiIWfXIiDxue15VLpoD9FhNrSLXZdSK4SQ5oWM4/p0Uf0gJzhZ6YyAZcEyIoTxhbd6HdnCKaWWRzOWq3klsHIM79rJezfkCSFA1yL54g3FRFk+2353EaNHEhXN0rN0HASZKDCNPLRbhGCcO++0/2twb5HUz/I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1705608472; c=relaxed/simple;
+	bh=2R/xi4qjLIoZXicOT+fjSBOBeerCpQzqeiOl7r6gHVo=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=KbEAK6fsLZawOMCwTIWQfSN9aTHKHxPrCZFxczWXx7SsEDpvX6UuiQsTYKjBIwETQRxuaXXvzX01vF7jwvtCB9yL42xMU+hArK0QfyV3Wp6vNcV23rplCOvmIRD0Tqwb4JT7efF4ALA+kBwPLGP21CKe9GOuuqMyQyqkj0DlZx0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=UFJLCyob; arc=none smtp.client-ip=209.85.221.44
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wr1-f44.google.com with SMTP id ffacd0b85a97d-337bad75860so680f8f.1
+        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:07:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705608463; x=1706213263; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6w1iFT2RaAu4CDh7Rs92padfv2CQrVGTqWTSowRX6NU=;
- b=ynXEujcMlogdBay1SNflb5sul/3AL9/a2GRlG7VuPlYaYtPNug8sd3Nfk/ZBaeRdAG
- 2RS8Zc3U0Z5HdicamtJH/WHMh+Kgrij28Py8dysnETcjYm01T/4toJ/rVgI0OYJrb6T7
- oPF29zMxwCDd/rfMzoUHXwm0EUF1oCUEp5f9Zzelig3KUkE+mfdsceEdSoZCil5TF9AQ
- drc2giwsJIzdhiw744kliT/ENV+JXlu4yvR4Cs6woV8bWk1OHH6D0LPhg0wAm2tzzKT3
- 4UmePOOw/5/UDzy1EvZdw/mMLmm9P7pfP7VDT1F2FC+dtdA6oWmWpdJW4KTh6pmeECf5
- JXkw==
+        d=linaro.org; s=google; t=1705608469; x=1706213269; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wzXk5yiY5MpA6wV2WpkIOyNiGD0qCuniPF02smOcXHA=;
+        b=UFJLCyobPVChjcVh0QBZw6H+tuq3aYRRgnQ5Sl/cziJZ4f3c7ktxkKvOSyx6CeXh5y
+         EpfGO+SVp3nlkCxR0US3l6v4IiaR42d3rTtdjSJVaL4vPXUPblmaEdwtgI3GjGreToyg
+         WCM1FvuH1QPP9HxuaUp/K0c6kcUBC59v322nMEQ+rK5XZO5OUYF+FpGZRJOIgmhZCx1E
+         QMflE9AGd4mxNvpj8OeGjH389GRIadxqhR0Rf7UEeHjPIO0YqpMTa2tt7PIWOuwEDrZ0
+         Wuz1BPEXDOFIBQVJgTUM4PYlT/CCO4sJLnvsvuv7YigH4sA92DHh4GnElGytooLBrxyu
+         ackA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705608463; x=1706213263;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=6w1iFT2RaAu4CDh7Rs92padfv2CQrVGTqWTSowRX6NU=;
- b=aeVdAwJZEg4gCQhJiH+mp0zKhWWUTAaIreR4+r9U3OPslxt2NxyWorCA5+VStP1BgD
- 91iTnEOv18g75qJQIa9lrItCXJ/Q77Gc4GvqHI/sX+58ex68gzz8TB75g3gSJl7B/R1M
- l4B5wYYe8Fo8rYwGhKBlYeW5JvnEN8vIo0i0s/M8iBgfBuGAtCwQABY87sOw+OLjiY5l
- T6YrZEXpl38W4Wbtu6ujEovYkdcVNAfPJntCC4Zp3UrOmQ6BGqqOm2rye1w/93cFlFRF
- qjYjgrFHV1Ur8awa+ibccvMfHs5HKXB/VWZ2hcjQ/iPY1rGsV5ILQBy7UtgSUU/2I6Re
- aqZg==
-X-Gm-Message-State: AOJu0Yx0o/tsFYjrgYGalEd8WSr0iYU3/Sl2+FSO8xWkA8XEVyTfl7pf
- GhX1obgwSCCAItqceqaYQ8jupV2bELnoB6b5V0puPjnJUXWFaAe+l9YgumMTBtVdtbYsH/goK6a
- 6aHbMxNId
-X-Received: by 2002:a05:600c:331b:b0:40e:5f01:6209 with SMTP id
- q27-20020a05600c331b00b0040e5f016209mr464662wmp.37.1705608463223; 
- Thu, 18 Jan 2024 12:07:43 -0800 (PST)
+        d=1e100.net; s=20230601; t=1705608469; x=1706213269;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wzXk5yiY5MpA6wV2WpkIOyNiGD0qCuniPF02smOcXHA=;
+        b=oDuMmiEiqVwR6AEmAE0V/33MuHJTeSbHM+GA/IvER6k/ZWUPy5KHkGV2DW2u0Gn7wZ
+         s/WFpmklH05LF2YxYIqDTh7K5UcWmTr5gvV6vIP1HB4b7EBY000hTOKAMv3eSDQJfHEc
+         gIvhBIFpsGNYSI06QnqNB75G2FabP4+3DARd89Xtj1vDfVziJDFWoih7nIi/Cmi7GJrI
+         fBF5ht7KHMdMB0GOYpyNisd9dMsebBajc7RnuLmkSHZuMC4m+7bH0iV8xCNG6HFIXzEf
+         GZr2SdTm8+2k79t+v3UxVU7YJavgEXI1V806J+6McPpes2mAtUqiVwmUYkf9UfbykgbL
+         h4mw==
+X-Gm-Message-State: AOJu0Yw1FIcFP17SqqntlBuqoSJ1pXgTXBc/iX664s1VvUBFtg/Lbpxs
+	jCZk8tSFHKch5BHs2CpAguJl18WTmReb0kGW3JVPhwx+UZMF8VOuC7aMJu6S+EE=
+X-Received: by 2002:adf:f191:0:b0:337:cef4:ae1e with SMTP id h17-20020adff191000000b00337cef4ae1emr909314wro.20.1705608469011;
+        Thu, 18 Jan 2024 12:07:49 -0800 (PST)
 Received: from localhost.localdomain ([78.196.4.158])
- by smtp.gmail.com with ESMTPSA id
- je14-20020a05600c1f8e00b0040e3635ca65sm30698740wmb.2.2024.01.18.12.07.41
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 18 Jan 2024 12:07:42 -0800 (PST)
+        by smtp.gmail.com with ESMTPSA id o9-20020adfe809000000b00337bf81e06bsm4758039wrm.48.2024.01.18.12.07.47
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 18 Jan 2024 12:07:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Eric Auger <eric.auger@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Rob Herring <robh@kernel.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Tyrone Ting <kfting@nuvoton.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- Leif Lindholm <quic_llindhol@quicinc.com>, Ani Sinha <anisinha@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
- kvm@vger.kernel.org
-Subject: [PATCH 10/20] target/arm: Expose arm_cpu_mp_affinity() in
- 'multiprocessing.h' header
-Date: Thu, 18 Jan 2024 21:06:31 +0100
-Message-ID: <20240118200643.29037-11-philmd@linaro.org>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	qemu-arm@nongnu.org,
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eric Auger <eric.auger@redhat.com>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jan Kiszka <jan.kiszka@web.de>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Joel Stanley <joel@jms.id.au>,
+	Hao Wu <wuhaotsh@google.com>,
+	kvm@vger.kernel.org,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 11/20] target/arm: Declare ARM_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'
+Date: Thu, 18 Jan 2024 21:06:32 +0100
+Message-ID: <20240118200643.29037-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240118200643.29037-1-philmd@linaro.org>
 References: <20240118200643.29037-1-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EjCR47VaF5er
+X-TUID: dWF6tfOf9Nrq
 
-Declare arm_cpu_mp_affinity() prototype in the new
- "target/arm/multiprocessing.h" header so units in
-hw/arm/ can use it without having to include the huge
-target-specific "cpu.h".
-
-File list to include the new header generated using:
-
-  $ git grep -lw arm_cpu_mp_affinity
+Missed in commit 2d56be5a29 ("target: Declare
+FOO_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'"). See
+it for more details.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h             |  6 +-----
- target/arm/multiprocessing.h | 16 ++++++++++++++++
- hw/arm/virt-acpi-build.c     |  1 +
- hw/arm/virt.c                |  1 +
- hw/arm/xlnx-versal-virt.c    |  1 +
- hw/misc/xlnx-versal-crl.c    |  1 +
- target/arm/arm-powerctl.c    |  1 +
- target/arm/cpu.c             |  5 +++++
- target/arm/hvf/hvf.c         |  1 +
- target/arm/tcg/psci.c        |  1 +
- 10 files changed, 29 insertions(+), 5 deletions(-)
- create mode 100644 target/arm/multiprocessing.h
+ target/arm/cpu-qom.h | 3 +++
+ target/arm/cpu.h     | 2 --
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 02b914c876..f795994135 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -33,4 +33,7 @@ typedef struct AArch64CPUClass AArch64CPUClass;
+ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+                        TYPE_AARCH64_CPU)
+ 
++#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
++#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
++
+ #endif
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d1584bdb3b..cecac4c0a1 100644
+index cecac4c0a1..41659d0ef1 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -26,6 +26,7 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
-+#include "target/arm/multiprocessing.h"
+@@ -2837,8 +2837,6 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+ #define ARM_CPUID_TI915T      0x54029152
+ #define ARM_CPUID_TI925T      0x54029252
  
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-@@ -1173,11 +1174,6 @@ void arm_cpu_post_init(Object *obj);
+-#define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
+-#define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
  
- uint64_t arm_build_mp_affinity(int idx, uint8_t clustersz);
- 
--static inline uint64_t arm_cpu_mp_affinity(ARMCPU *cpu)
--{
--    return cpu->mp_affinity;
--}
--
- #ifndef CONFIG_USER_ONLY
- extern const VMStateDescription vmstate_arm_cpu;
- 
-diff --git a/target/arm/multiprocessing.h b/target/arm/multiprocessing.h
-new file mode 100644
-index 0000000000..81715d345c
---- /dev/null
-+++ b/target/arm/multiprocessing.h
-@@ -0,0 +1,16 @@
-+/*
-+ * ARM multiprocessor CPU helpers
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#ifndef TARGET_ARM_MULTIPROCESSING_H
-+#define TARGET_ARM_MULTIPROCESSING_H
-+
-+#include "target/arm/cpu-qom.h"
-+
-+uint64_t arm_cpu_mp_affinity(ARMCPU *cpu);
-+
-+#endif
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 2127778c1e..43ccc60f43 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -59,6 +59,7 @@
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/viot.h"
- #include "hw/virtio/virtio-acpi.h"
-+#include "target/arm/multiprocessing.h"
- 
- #define ARM_SPI_BASE 32
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 34cba9ebd8..beba151620 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -74,6 +74,7 @@
- #include "hw/arm/smmuv3.h"
- #include "hw/acpi/acpi.h"
- #include "target/arm/internals.h"
-+#include "target/arm/multiprocessing.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/acpi/generic_event_device.h"
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 841ef69df6..29f4d2c2dc 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -20,6 +20,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/arm/xlnx-versal.h"
- #include "hw/arm/boot.h"
-+#include "target/arm/multiprocessing.h"
- #include "qom/object.h"
- 
- #define TYPE_XLNX_VERSAL_VIRT_MACHINE MACHINE_TYPE_NAME("xlnx-versal-virt")
-diff --git a/hw/misc/xlnx-versal-crl.c b/hw/misc/xlnx-versal-crl.c
-index 9bfa9baa15..1f1762ef16 100644
---- a/hw/misc/xlnx-versal-crl.c
-+++ b/hw/misc/xlnx-versal-crl.c
-@@ -19,6 +19,7 @@
- #include "hw/resettable.h"
- 
- #include "target/arm/arm-powerctl.h"
-+#include "target/arm/multiprocessing.h"
- #include "hw/misc/xlnx-versal-crl.h"
- 
- #ifndef XLNX_VERSAL_CRL_ERR_DEBUG
-diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-index 6c86e90102..2b2055c6ac 100644
---- a/target/arm/arm-powerctl.c
-+++ b/target/arm/arm-powerctl.c
-@@ -16,6 +16,7 @@
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
- #include "sysemu/tcg.h"
-+#include "target/arm/multiprocessing.h"
- 
- #ifndef DEBUG_ARM_POWERCTL
- #define DEBUG_ARM_POWERCTL 0
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0bbba48faa..89e44a31fd 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1314,6 +1314,11 @@ uint64_t arm_build_mp_affinity(int idx, uint8_t clustersz)
-     return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
- }
- 
-+uint64_t arm_cpu_mp_affinity(ARMCPU *cpu)
-+{
-+    return cpu->mp_affinity;
-+}
-+
- static void arm_cpu_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 659401e12c..71a26db188 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -28,6 +28,7 @@
- #include "arm-powerctl.h"
- #include "target/arm/cpu.h"
- #include "target/arm/internals.h"
-+#include "target/arm/multiprocessing.h"
- #include "trace/trace-target_arm_hvf.h"
- #include "migration/vmstate.h"
- 
-diff --git a/target/arm/tcg/psci.c b/target/arm/tcg/psci.c
-index 50d4b23d26..51d2ca3d30 100644
---- a/target/arm/tcg/psci.c
-+++ b/target/arm/tcg/psci.c
-@@ -24,6 +24,7 @@
- #include "sysemu/runstate.h"
- #include "internals.h"
- #include "arm-powerctl.h"
-+#include "target/arm/multiprocessing.h"
- 
- bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
- {
+ #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
 -- 
 2.41.0
 

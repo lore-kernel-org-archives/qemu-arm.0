@@ -1,200 +1,113 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp110468ejg;
-        Wed, 17 Jan 2024 23:43:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE3R1v5YwV7hA1wmyT6deVg/Qn39KJONLmgLsMabGVOisPADft56K3ikLl2ZlGihQ4/mKbe
-X-Received: by 2002:a05:622a:2c7:b0:42a:335:7511 with SMTP id a7-20020a05622a02c700b0042a03357511mr437076qtx.35.1705563819300;
-        Wed, 17 Jan 2024 23:43:39 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1705563819; cv=pass;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp112562ejg;
+        Wed, 17 Jan 2024 23:49:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG//B9WfrJvU6n4mPtqepS79LqTvcxGwubyb6XohihTo32P98IJfhSffPsY8SZlSuVJOVoz
+X-Received: by 2002:a05:6808:17a7:b0:3bd:8e96:a0c8 with SMTP id bg39-20020a05680817a700b003bd8e96a0c8mr581905oib.75.1705564174490;
+        Wed, 17 Jan 2024 23:49:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705564174; cv=none;
         d=google.com; s=arc-20160816;
-        b=S0ABrxjnxIw6NJ+IZ6ye75ZGNltzywy0cPqGrDXztzQBsW22FW39dyVO1BcT9br7cA
-         4NRBrzxg5h3Ev66up18qfgcKqHBh7+tfiNLXM6w1i7Qmc+7CpWTFReVyDdiD5agl2aKj
-         PngwaIWWcdzLIsCW97qZcUbcefJTEkG+PVhL3uH7jCMPDv5kVBc4uy3ejERQEXlqVNo3
-         yQIzxqy2lO3fRB1ma8iFNZLr9uRtfJ629OV4CUKkw363rpsBahe3dd6ZLKjCM2/wTrtB
-         h5Z4telHz6Ws7ak8afb5TKyb2L8NdY1JEZfYwgFf97H4HBcQN1Ht+0592axKS5SDbxH3
-         9x4w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=mEmQl4v7tk4yEEiTLxjNseuaVmyAzrmhjdWcW7p1bJ27zL6KVzxxjTt8eBfZSNq/8K
+         lDzLADUVj35nBLsGtsZsn0SWf3BWqqVT/LlK59uJzj2X+CFOGq16Ohs5078u8qatYmks
+         nsG/Aa8QoWXE0qKqvF0gdJ05uvgv26/tkHvbtc+X8ZcxlaN+e49M+4kbP2hI6DbLTAsl
+         l4r9pOK5gw6/2b9+QTL9hJQxUdAut3Jey47Ds2j4fPdSaGBSY4zMsa1WgQ39nM1FpBKJ
+         BbHpykQd5mRSq+7GVfcIq1UKq4cVPFAYZDivCEsbx5n1lENcsNqP3my/aUQV9q58PSrS
+         578Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=d6Yb9lJKys0A/9NtspqxRnd5MgBhjfBdtndVwXlBZUM=;
-        fh=PmzKZNjj5NnkEl3QJSdOpiQAh5z3bSKliBox3YS+HK0=;
-        b=gZ2aBGjLhVXu03upiH5rVWOgG+WCVrD26iQM9zdSTNDeukcLtb5dNj07rqsD+fR4LJ
-         +NrvDVm3ZKN+1C+aBmSa/UFN9RcRR0DQtEBSvRyK54Dg3X5F7uUR933bxFGVUj/bRjeN
-         e3TesB4BdKTrHrLCyIXr8ZkVgpuxuwkgsbiin9Fak+Qz2rFFvxvtdNGuJE0tkhbZauup
-         OtpSZyGSBM83nEB65nZj/RbobKbUdVppMon12EEFTjJbLIHatFIyOqF0udDrThhC1M7G
-         6ZH6Wbv67nF3ulO2sDJNZnw6rZE4y0nFUGVYghlT9DdoLo3abT+b4tOVUdCQ6eqQrFOy
-         DiaA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Xrfy7bl8;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Mfh4veqbaX/t17E8a5QVpXbU74gFm2H55VSmHu7JOGw=;
+        fh=irNRlEco/Cz5I9vvDAIJdnwVTrx4Nzx79NRRHlSvh+8=;
+        b=RXJDvfUxVRHCuPZFVLP2za7LpPykXoiF4rAoGB/Q6HXgVwE5YHuajRLvV0Tyh7aBqu
+         2PgglLUTbJ9jLD+V7SQ/qWO4jbprMI+4N5qhYEP6PtQEOLTsylCxlQU60dgTg2k8/hsv
+         vnDmtJ5CIe30Yb0/xclbCUMK34ai8FlfWUSZ05VLiIVJNMih/M3EtAxvSWZwJDOW4Cav
+         nWwj3cC2wnU5/dFUlIriparDDsrC4iIm6SE37rD7mo9QNfa5XQVVZpp1zu374PyQcLFX
+         1hvgHnT84EYviUm8imN6uLjX5mQeYwfTY25CV81ymfP1vI8V1Rw27q0jyvkUA1pLgvzv
+         R4UA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JAczx3Xj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18-20020ac85dd2000000b004299897955dsi13417703qtx.686.2024.01.17.23.43.39
+        by mx.google.com with ESMTPS id i19-20020ac85e53000000b0042a0331e7dcsi4707873qtx.634.2024.01.17.23.49.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jan 2024 23:43:39 -0800 (PST)
+        Wed, 17 Jan 2024 23:49:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Xrfy7bl8;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JAczx3Xj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQN3W-0004tO-WC; Thu, 18 Jan 2024 02:43:19 -0500
+	id 1rQN9C-00078L-Ia; Thu, 18 Jan 2024 02:49:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rQN3U-0004sd-Mm; Thu, 18 Jan 2024 02:43:16 -0500
-Received: from mgamail.intel.com ([192.198.163.11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rQN3S-0002Xi-FP; Thu, 18 Jan 2024 02:43:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705563794; x=1737099794;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=eH72y9bVPRoSxwthODW2NKPIrY+N6l7DjTmiJaEyJnc=;
- b=Xrfy7bl8AynR/OvYLSOUs3n7WNSMgPDmjVjqBFsqQMIngi/T38nmeE+k
- DlYL59OAQpW5CufV2KdkL3ENUxIXBW0Vytn8i+NlPBlHK9EL2fPtMA15y
- RVlBDNJ76Cw+9yrtIUG2oMLaYNs0CgeKu+VgexZ60T5JqDL05e8qdS2U5
- NupkRmyVjJsPN3f4XgfTZqPlUm79dVH8pEEPvoJ9L+y/O7wJFNlbEOau+
- F0pg1xrl2ekloJo7euwUUpxpKiCjoErwmgT9ZRv4/nUnZD7oxopAE9txO
- AjHhKlTHlSk3A5crRLzV5s20RBnkkIbJdSKj8hLLXa2kC393T4OlLCw8t w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10956"; a="7082574"
-X-IronPort-AV: E=Sophos;i="6.05,201,1701158400"; 
-   d="scan'208";a="7082574"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2024 23:43:11 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,201,1701158400"; 
-   d="scan'208";a="214000"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 17 Jan 2024 23:43:12 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Wed, 17 Jan 2024 23:43:10 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Wed, 17 Jan 2024 23:43:10 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 17 Jan 2024 23:43:10 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hXW7AuQLMJY4dpyIi9fw+ECggXzJ/ocbnoPRS76T+C8f3RhiYXiBKDon0FMeuZtzNdZ/EHBgtSaLVG9MvL3k3Jaj+oRz5+XxORrCLo/jKV3Jc6X7jbmV3Wq1Ai8hLmNT6Igmlq2YIy+Wokz/BiWoDhlOMtlf0vdUMdgjm87rTPQQ+WwFJbXZawvO9T3mQnlGdWSo+ZLf8vu5DqTn4fOEseTvglvA24w/2PZbqM3xWzU6ayM1CSRp3J5uPkjTBSVZkiZ+U6r3j7rfl9RlFASwREV9+chVV3Icm431GFLr2tm4CMJO27lhrAev/ZmNH+WgytFz035QAWFuk78u8A22xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=d6Yb9lJKys0A/9NtspqxRnd5MgBhjfBdtndVwXlBZUM=;
- b=cW9+XsILs8AMAo9KdGsJxBJBClR69CRtXz4inWEAw++2z4KjdqvSme2Jlj9fFKifN/8gUOrMWGfn7XE1sX2Sd/VOITxIHtw/8IqH7Dy30bZZkFAgnRvmX6W1/7c4NJpIO52NfHV/e+UVnnzxfEELjZfKjgPyuemTPgE86FFHQ386zeueXuN7HnXXXvfA2zTH41JzPzHr3RTS09I7lFvYjvqnxWMIdUhRgitVphQY0J7Z4m5bq9z/gtdGcoDukJGc9FMLgCDwQjCErvEOiF/Jj3YVCwyP+tZtTb+qPLgoJclGSXzmloIQMJXaO4l/26zcJyF16W5ZVzsi29ztsQfusQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
- by PH0PR11MB5642.namprd11.prod.outlook.com (2603:10b6:510:e5::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.23; Thu, 18 Jan
- 2024 07:43:09 +0000
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::88e9:5716:274c:5ace]) by SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::88e9:5716:274c:5ace%5]) with mapi id 15.20.7181.020; Thu, 18 Jan 2024
- 07:43:08 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "jean-philippe@linaro.org"
- <jean-philippe@linaro.org>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "peterx@redhat.com" <peterx@redhat.com>,
- "yanghliu@redhat.com" <yanghliu@redhat.com>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>
-CC: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
-Subject: RE: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
- set_host_resv_regions
-Thread-Topic: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
- set_host_resv_regions
-Thread-Index: AQHaSRvZODIWGRgczkWQzR/Sdm1iRrDfLnsw
-Date: Thu, 18 Jan 2024 07:43:08 +0000
-Message-ID: <SJ0PR11MB67443F1D15B5959A77B60E3F92712@SJ0PR11MB6744.namprd11.prod.outlook.com>
-References: <20240117080414.316890-1-eric.auger@redhat.com>
- <20240117080414.316890-5-eric.auger@redhat.com>
-In-Reply-To: <20240117080414.316890-5-eric.auger@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|PH0PR11MB5642:EE_
-x-ms-office365-filtering-correlation-id: 4ded0c3e-68e7-480c-5811-08dc17f91d1f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: STcImFCvbuW8jfdSQhA9SFewxnSa08O/bq74vDKcKy3cV3n5iIgduzIfxihUWKkpQ8gbRlvFXMsqFt8CypPIR637KFdjKMXqpHUKRJuZWW8t2ts/3BJoPSCd5hlrmBMhrhMhCbdzu5Sf85/euXe22MNrXPpUT26LeVU6xR8wYYLvG1w9Yjk7ZR/sm6nQnc4kfeNVSvokZsJ2HX0Pxen67wV06N0XdH/ZeQIhWmFvpq+xmuRiDx2K28DsO96hGFqFgSyptDhxqtovX5t51ZfyysXvDtdk+ZfUWNGqnpT2RWkqNAvEvdqhOwUSIbsnvEusSlkt0hAPqvV7dkwj1/RYPomIV/FcgXqNgxhnTmxKKvF+SPj3FOXVYjorKiSJz7aO9U2aF1dIUt/u5HH5VWSp2wn/8H5jhrnSGtvlNZsagq84drJKnQ+cZc/zo3VGb74yLxxOMYCHTjpWwjp8aelC/9UobvgZcB04R9i9Zfz9V/PPsT5hNB8XV/aynB3HSllWSGOGBfoI90930y0JEg+VUFE6wkHHoTkW/V7kAYcRAkOnjBOW1sIgebRKX0Ha5Xz5E1cUSpv6t9pvrR8aDnwoKtQ6VKlsZi+WXQqatfqCM3SSHFzPfNBnC0O3MB7pC7jLVABeUe2+lHEZjW0DklIx9LqoxJFzUJTRZI3q6GEWhGQ=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(366004)(346002)(136003)(39860400002)(376002)(230922051799003)(64100799003)(1800799012)(186009)(451199024)(38070700009)(921011)(55016003)(71200400001)(83380400001)(8936002)(478600001)(52536014)(4326008)(7416002)(5660300002)(66556008)(316002)(76116006)(110136005)(8676002)(6506007)(64756008)(54906003)(66446008)(66476007)(66946007)(9686003)(26005)(2906002)(122000001)(38100700002)(82960400001)(7696005)(41300700001)(86362001)(33656002)(309714004);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?AoeC9wswhCPAAK4reU23azBUDVqETb0o++4HblzLGlkoiBH93q/NI7bAUxgV?=
- =?us-ascii?Q?xNpGQ1eHA/7EL6hFMsH6uf+sY3sL+h2jl4sXrQ9RKhAc3MKnayI62yvnf1OH?=
- =?us-ascii?Q?X4g1YDsbEO4oF03EJKkGcji3NObU/aeEXiigJ7AaRAGFLpidYZEYVLwDIvfx?=
- =?us-ascii?Q?UeWj/RgBZW+IrgYabuPdiv6o5JN9ukF+/evkCcxmnBKLsjSVVMlt1067Esbw?=
- =?us-ascii?Q?f2IyTkJU/rYGsdyFXLORpplszHh7tjGQZgAyl2EJbevnS9OfX8JQyPebeFrY?=
- =?us-ascii?Q?tYAw7YVX2B70szBoE1/wXVJLmt1leYXjOrb0pc02ZlECqjIXiCH6IWIVxbCH?=
- =?us-ascii?Q?12qSpx/p9wut9WU6fcsgZreb96f+BrnNoiuJ8FdGdvkd9N8dIO77KA1geIu3?=
- =?us-ascii?Q?BY1xTVBYncMQGS/RkSKS+3phGIsbY0XZrh2oEgidMNZFgyNlnUlzOK8QDEo/?=
- =?us-ascii?Q?VUFWgID7tv4rZmmvwwy9+4rd5om64rj3OYY9P8MlX7NipioNiccSGUGZclmX?=
- =?us-ascii?Q?vH9oJFaLFdg6Vs69VYtseEIWdSPbXpqzRaISS3KeG9p5IbOJ1PIeAJ5EjLQ/?=
- =?us-ascii?Q?R0ES8C44Cgyv5ic4dH63okumpMfa3PI3tiGjEyWX2Swm5Lyp96Vu5IS8UUlI?=
- =?us-ascii?Q?S0bB35IbSH6zl1rUE3DmN/8c63uY0n8zZFrDM0FCo+Cckdc9OiWoVU+8UGqU?=
- =?us-ascii?Q?sJ3eLBkEF6/z9z9mjSmhVwDF3TTuhTDk7bzH4hKtIIa0wVkhEeyItvAp0/it?=
- =?us-ascii?Q?LeY628iBd9VmLxTilQENJnsOQSGgMORQIfAlJ1gItJHMmCg2rfYqe4U7rsuk?=
- =?us-ascii?Q?tSjP1ZvFRF4bWQQZIJCRQOZjTeFsMlwkf7o9RBvpQLVWmbBOYxwyJ4Py8Nzb?=
- =?us-ascii?Q?/frlA0ZFlcmxkfRY6Ns3TCnUDJ67uwYQFzCRneT12a7xUr5J4cKpplUAvXWw?=
- =?us-ascii?Q?N/+IkPNg5f8Cu2bvvP7axvmwxzdxcjU3l40D2rhHJ1vY2ah3HFmaxjV7aMY1?=
- =?us-ascii?Q?fxS5M77jTa20VclCUXeIqpi70oHmfUC10pdQ8gmir33LEcrV02qCr4GgYU0x?=
- =?us-ascii?Q?g1GVMqlNTjl2Z0Bm00EYuQ2xP9CbwONxDwFMtx1aVAyw3/LwL2mT/TqxQEKn?=
- =?us-ascii?Q?NlJ3EYIhBm+yXd7WGsKHOl5dfkrcBZIhEDGalwyVRzfvfd9WWXVW8HogGyrQ?=
- =?us-ascii?Q?qkbuhlYJ5i4ab6NhrRmK/6uyHlgioQxLz+y++bsHVyhIBqf/n2f2u9VwLp06?=
- =?us-ascii?Q?2KcZQwptCvSTx0MnHKS30SWusiPBTwAjHgr1wYwHKbWsIIQ/5jTZMhhurIeG?=
- =?us-ascii?Q?xFE3DM0Vj7j0cptY9Tsom2+5SB5Pp5Wr5B7YzECZDsYae553fT3TqctLF/3J?=
- =?us-ascii?Q?ub4RD6mcyDEfJJ32GuEW+63/4qbF6wGw2n7shC23emegaWR/LlwHFvjb3CCO?=
- =?us-ascii?Q?qbPcpY6NO9D5CHfP1glEvAp7Wvss0kuiSq5PgSSiQP4k48I0NM6ruUrve3ZI?=
- =?us-ascii?Q?X5r0XryjuxlXW2E5Tgr5Y7kPL6bxvSESoZHRaXbdPSto9t71oBrNTXumtWeG?=
- =?us-ascii?Q?LqTHsUuAUSjCtV2kWlkyBgf5G3bNTFYgYbBf39Hj?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rQN9A-00077h-HD; Thu, 18 Jan 2024 02:49:08 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rQN98-0005bo-74; Thu, 18 Jan 2024 02:49:08 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-1d5dfda4319so21821935ad.0; 
+ Wed, 17 Jan 2024 23:49:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705564144; x=1706168944; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Mfh4veqbaX/t17E8a5QVpXbU74gFm2H55VSmHu7JOGw=;
+ b=JAczx3XjGacNLxyopl7zg7Qe3tfPBM/H2V7xf9QaIg1EWopiueEb1HdKSX5zdGjbNc
+ m4WR2iPSRFJF2VQuYLEloS2bmx5MV2EKm2WfYJI8e0YWx53A71K3In47/DChwdPJwPdb
+ TmOE+YHtjN3gfF/BdtQaI4F1gvBzWdb3zGw53OJpGX//O3JJau79NS7feDuyZNXWFdLR
+ vO8phIX/WNdjdaTlLVu3JyHmz5m4KA+X1CoT7DS58peX9RiJnEhtjnrWSrIfdvV9YoWk
+ BF+sY2cVgOqCCS6lQvuIoEHc58kUG4Xl86biEq3dR4hJPqeuVkhLXoypTRsJ7PMUJwIY
+ zSLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705564144; x=1706168944;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Mfh4veqbaX/t17E8a5QVpXbU74gFm2H55VSmHu7JOGw=;
+ b=HG+i5VXAzB1YC1gGqOues5t39gTwUo6YZtV5LSEFL1kCGX/e7eg5t5EDuvfmm2FPfU
+ ZvtegxKWFJutvTQE8Wi0oYs8EFxWDcJglrV2Yl730DJff6ZwB3c3iPGU2h2j39wR7KbD
+ VgpnGuXF4WF/pK+xTNf7P19neglUsQ1wbyeET0Lx9W8nUGe8e6XDlCPjx/MJUGgvyYyI
+ M0Iw6GD5xba91LCcaxPxD2C94IxGsVBbhB/5MNvOvzseRQmnRapZv9UY83gnA7KMVo5V
+ XSuYJ/cbdtPkusaYtVAOS+/3eJrrFrbLQnMGfxJU15eXfUoBohHqf3GXi/Icxg/wuaXM
+ J2wA==
+X-Gm-Message-State: AOJu0YxG9pC8C8b+BX3nijsr0OEd+4HqjeaoI9oiBivMlmvVldYs6iyp
+ 3iX12qba/Y12G3NWGRn/ssAv7MvUS63JWyXZjL+gmHS2MTTI2DONavX/QVFP1vOtmA==
+X-Received: by 2002:a17:902:7888:b0:1d6:ee79:c1f with SMTP id
+ q8-20020a170902788800b001d6ee790c1fmr434890pll.89.1705564144105; 
+ Wed, 17 Jan 2024 23:49:04 -0800 (PST)
+Received: from localhost.localdomain ([49.37.224.90])
+ by smtp.gmail.com with ESMTPSA id
+ h10-20020a170902b94a00b001d4c6a9ca2dsm783007pls.208.2024.01.17.23.49.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jan 2024 23:49:03 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Rayhan Faizel <rayhan.faizel@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org (open list:i.MX31 (kzm))
+Subject: [PATCH v3] hw/char/imx_serial: Implement receive FIFO and ageing
+ timer for imx serial.
+Date: Thu, 18 Jan 2024 13:17:51 +0530
+Message-Id: <20240118074749.2299959-1-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ded0c3e-68e7-480c-5811-08dc17f91d1f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jan 2024 07:43:08.2240 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pkI7BKMPundeQqeHJyGJJrO3couY6XG4MYcTk+t0AiTVOLxJSigMSLGDwod5gklJ+OnLgj91l3v2bxv8kVyxgfWYBw04hQ9Gq7rlqrS/xb0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5642
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.198.163.11;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -210,198 +123,270 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d4vTY93sfzvb
+X-TUID: +OszzQdwsY8D
 
-Hi Eric,
+This patch implements a 32 half word FIFO as per imx serial device
+specifications. If a non empty FIFO is below the trigger level, an ageing
+timer will tick for a duration of 8 characters. On expiry, AGTIM will be set
+triggering an interrupt. AGTIM timer resets when there is activity in
+the receive FIFO.
 
->-----Original Message-----
->From: Eric Auger <eric.auger@redhat.com>
->Subject: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
->set_host_resv_regions
->
->Reuse the implementation of virtio_iommu_set_iova_ranges() which
->will be removed in subsequent patches.
->
->Signed-off-by: Eric Auger <eric.auger@redhat.com>
->---
-> hw/virtio/virtio-iommu.c | 134 +++++++++++++++++++++++++++++---------
->-
-> 1 file changed, 101 insertions(+), 33 deletions(-)
->
->diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->index 8a4bd933c6..716a3fcfbf 100644
->--- a/hw/virtio/virtio-iommu.c
->+++ b/hw/virtio/virtio-iommu.c
->@@ -461,8 +461,109 @@ static AddressSpace
->*virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
->     return &sdev->as;
-> }
->
->+/**
->+ * rebuild_resv_regions: rebuild resv regions with both the
->+ * info of host resv ranges and property set resv ranges
->+ */
->+static int rebuild_resv_regions(IOMMUDevice *sdev)
->+{
->+    GList *l;
->+    int i =3D 0;
->+
->+    /* free the existing list and rebuild it from scratch */
->+    g_list_free_full(sdev->resv_regions, g_free);
->+    sdev->resv_regions =3D NULL;
->+
->+    /* First add host reserved regions if any, all tagged as RESERVED */
->+    for (l =3D sdev->host_resv_ranges; l; l =3D l->next) {
->+        ReservedRegion *reg =3D g_new0(ReservedRegion, 1);
->+        Range *r =3D (Range *)l->data;
->+
->+        reg->type =3D VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
->+        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
->+        sdev->resv_regions =3D resv_region_list_insert(sdev->resv_regions=
-, reg);
->+        trace_virtio_iommu_host_resv_regions(sdev-
->>iommu_mr.parent_obj.name, i,
->+                                             range_lob(&reg->range),
->+                                             range_upb(&reg->range));
->+        i++;
->+    }
->+    /*
->+     * then add higher priority reserved regions set by the machine
->+     * through properties
->+     */
->+    add_prop_resv_regions(sdev);
->+    return 0;
->+}
->+
->+static int virtio_iommu_set_host_iova_ranges(PCIBus *bus, void *opaque,
->+                                             int devfn, GList *iova_range=
-s,
->+                                             Error **errp)
->+{
->+    VirtIOIOMMU *s =3D opaque;
->+    IOMMUPciBus *sbus =3D g_hash_table_lookup(s->as_by_busptr, bus);
->+    IOMMUDevice *sdev;
->+    GList *current_ranges;
->+    GList *l, *tmp, *new_ranges =3D NULL;
->+    int ret =3D -EINVAL;
->+
->+    if (!sbus) {
->+        error_report("%s no sbus", __func__);
->+    }
+Otherwise, RRDY is set when trigger level is
+exceeded. The receive trigger level is 8 in newer kernel versions and 1 in
+older ones.
 
-Do we plan to support multiple devices in same iommu group?
-as_by_busptr is hashed by bus which is an aliased bus of the device.
-So sbus may be NULL if device's bus is different from aliased bus.
+This change will break migration compatibility.
 
->+
->+    sdev =3D sbus->pbdev[devfn];
->+
->+    current_ranges =3D sdev->host_resv_ranges;
->+
->+    warn_report("%s: host_resv_regions=3D%d", __func__, !!sdev-
->>host_resv_ranges);
->+    /* check that each new resv region is included in an existing one */
->+    if (sdev->host_resv_ranges) {
+[Changes in v3]
 
-May be we could just error out as vfio_realize should not call
-set_host_iova_ranges() twice.
+- Caught more whitespace changes that went overlooked
+- Moved fifo and timer initialization to realize
 
-Thanks
-Zhenzhong
->+        range_inverse_array(iova_ranges,
->+                            &new_ranges,
->+                            0, UINT64_MAX);
->+
->+        for (tmp =3D new_ranges; tmp; tmp =3D tmp->next) {
->+            Range *newr =3D (Range *)tmp->data;
->+            bool included =3D false;
->+
->+            for (l =3D current_ranges; l; l =3D l->next) {
->+                Range * r =3D (Range *)l->data;
->+
->+                if (range_contains_range(r, newr)) {
->+                    included =3D true;
->+                    break;
->+                }
->+            }
->+            if (!included) {
->+                goto error;
->+            }
->+        }
->+        /* all new reserved ranges are included in existing ones */
->+        ret =3D 0;
->+        goto out;
->+    }
->+
->+    if (sdev->probe_done) {
->+        warn_report("%s: Notified about new host reserved regions after
->probe",
->+                    __func__);
->+    }
->+
->+    range_inverse_array(iova_ranges,
->+                        &sdev->host_resv_ranges,
->+                        0, UINT64_MAX);
->+    rebuild_resv_regions(sdev);
->+
->+    return 0;
->+error:
->+    error_setg(errp, "%s Conflicting host reserved ranges set!",
->+               __func__);
->+out:
->+    g_list_free_full(new_ranges, g_free);
->+    return ret;
->+}
->+
-> static const PCIIOMMUOps virtio_iommu_ops =3D {
->     .get_address_space =3D virtio_iommu_find_add_as,
->+    .set_host_iova_ranges =3D virtio_iommu_set_host_iova_ranges,
-> };
->
-> static int virtio_iommu_attach(VirtIOIOMMU *s,
->@@ -1158,39 +1259,6 @@ static int
->virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
->     return 0;
-> }
->
->-/**
->- * rebuild_resv_regions: rebuild resv regions with both the
->- * info of host resv ranges and property set resv ranges
->- */
->-static int rebuild_resv_regions(IOMMUDevice *sdev)
->-{
->-    GList *l;
->-    int i =3D 0;
->-
->-    /* free the existing list and rebuild it from scratch */
->-    g_list_free_full(sdev->resv_regions, g_free);
->-    sdev->resv_regions =3D NULL;
->-
->-    /* First add host reserved regions if any, all tagged as RESERVED */
->-    for (l =3D sdev->host_resv_ranges; l; l =3D l->next) {
->-        ReservedRegion *reg =3D g_new0(ReservedRegion, 1);
->-        Range *r =3D (Range *)l->data;
->-
->-        reg->type =3D VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
->-        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
->-        sdev->resv_regions =3D resv_region_list_insert(sdev->resv_regions=
-, reg);
->-        trace_virtio_iommu_host_resv_regions(sdev-
->>iommu_mr.parent_obj.name, i,
->-                                             range_lob(&reg->range),
->-                                             range_upb(&reg->range));
->-        i++;
->-    }
->-    /*
->-     * then add higher priority reserved regions set by the machine
->-     * through properties
->-     */
->-    add_prop_resv_regions(sdev);
->-    return 0;
->-}
->
-> /**
->  * virtio_iommu_set_iova_ranges: Conveys the usable IOVA ranges
->--
->2.41.0
+[Changes in v2]
+
+As per Peter Maydell's suggestions,
+
+- Use generic FIFO32 implementation in place of handmade impl.
+- Moved timer_init to serial init and use timer_del in reset
+- Removed stray whitespaces
+- Increment VMSTATE version
+
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ hw/char/imx_serial.c         | 97 +++++++++++++++++++++++++++++++-----
+ include/hw/char/imx_serial.h | 18 ++++++-
+ 2 files changed, 102 insertions(+), 13 deletions(-)
+
+diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
+index 1df862eb7f..893e84ccf6 100644
+--- a/hw/char/imx_serial.c
++++ b/hw/char/imx_serial.c
+@@ -26,6 +26,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/fifo32.h"
+ 
+ #ifndef DEBUG_IMX_UART
+ #define DEBUG_IMX_UART 0
+@@ -41,10 +42,11 @@
+ 
+ static const VMStateDescription vmstate_imx_serial = {
+     .name = TYPE_IMX_SERIAL,
+-    .version_id = 2,
+-    .minimum_version_id = 2,
++    .version_id = 3,
++    .minimum_version_id = 3,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_INT32(readbuff, IMXSerialState),
++        VMSTATE_FIFO32(rx_fifo, IMXSerialState),
++        VMSTATE_TIMER(ageing_timer, IMXSerialState),
+         VMSTATE_UINT32(usr1, IMXSerialState),
+         VMSTATE_UINT32(usr2, IMXSerialState),
+         VMSTATE_UINT32(ucr1, IMXSerialState),
+@@ -71,6 +73,10 @@ static void imx_update(IMXSerialState *s)
+      * following:
+      */
+     usr1 = s->usr1 & s->ucr1 & (USR1_TRDY | USR1_RRDY);
++    /*
++     * Interrupt if AGTIM is set (ageing timer interrupt in RxFIFO)
++     */
++    usr1 |= (s->ucr2 & UCR2_ATEN) ? (s->usr1 & USR1_AGTIM) : 0;
+     /*
+      * Bits that we want in USR2 are not as conveniently laid out,
+      * unfortunately.
+@@ -87,6 +93,53 @@ static void imx_update(IMXSerialState *s)
+     qemu_set_irq(s->irq, usr1 || usr2);
+ }
+ 
++static void imx_serial_rx_fifo_push(IMXSerialState *s, uint32_t value)
++{
++    if (fifo32_is_full(&s->rx_fifo)) {
++        /* Discard lost character on overflow */
++        fifo32_pop(&s->rx_fifo);
++    }
++    fifo32_push(&s->rx_fifo, value);
++}
++
++static uint32_t imx_serial_rx_fifo_pop(IMXSerialState *s)
++{
++    if (fifo32_is_empty(&s->rx_fifo)) {
++        return URXD_ERR;
++    }
++    return fifo32_pop(&s->rx_fifo);
++}
++
++static void imx_serial_rx_fifo_ageing_timer_int(void *opaque)
++{
++    IMXSerialState *s = (IMXSerialState *) opaque;
++    s->usr1 |= USR1_AGTIM;
++
++    imx_update(s);
++}
++
++static void imx_serial_rx_fifo_ageing_timer_restart(void *opaque)
++{
++    /*
++     * Ageing timer starts ticking when
++     * RX FIFO is non empty and below trigger level.
++     * Timer is reset if new character is received or
++     * a FIFO read occurs.
++     * Timer triggers an interrupt when duration of
++     * 8 characters has passed ( assuming 115200 baudrate ).
++     */
++    IMXSerialState *s = (IMXSerialState *) opaque;
++    uint8_t rxtl = s->ufcr & TL_MASK;
++    int rx_used = fifo32_num_used(&s->rx_fifo);
++
++    if (rx_used > 0 && rx_used < rxtl) {
++        timer_mod_ns(&s->ageing_timer,
++            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + AGE_DURATION_NS);
++    } else {
++        timer_del(&s->ageing_timer);
++    }
++}
++
+ static void imx_serial_reset(IMXSerialState *s)
+ {
+ 
+@@ -102,7 +155,9 @@ static void imx_serial_reset(IMXSerialState *s)
+     s->ucr3 = 0x700;
+     s->ubmr = 0;
+     s->ubrc = 4;
+-    s->readbuff = URXD_ERR;
++
++    fifo32_reset(&s->rx_fifo);
++    timer_del(&s->ageing_timer);
+ }
+ 
+ static void imx_serial_reset_at_boot(DeviceState *dev)
+@@ -125,20 +180,28 @@ static uint64_t imx_serial_read(void *opaque, hwaddr offset,
+                                 unsigned size)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
+-    uint32_t c;
++    uint32_t c, rx_used;
++    uint8_t rxtl = s->ufcr & TL_MASK;
+ 
+     DPRINTF("read(offset=0x%" HWADDR_PRIx ")\n", offset);
+ 
+     switch (offset >> 2) {
+     case 0x0: /* URXD */
+-        c = s->readbuff;
++        c = imx_serial_rx_fifo_pop(s);
+         if (!(s->uts1 & UTS1_RXEMPTY)) {
+             /* Character is valid */
+             c |= URXD_CHARRDY;
+-            s->usr1 &= ~USR1_RRDY;
+-            s->usr2 &= ~USR2_RDR;
+-            s->uts1 |= UTS1_RXEMPTY;
++            rx_used = fifo32_num_used(&s->rx_fifo);
++            /* Clear RRDY if below threshold */
++            if (rx_used < rxtl) {
++                s->usr1 &= ~USR1_RRDY;
++            }
++            if (rx_used == 0) {
++                s->usr2 &= ~USR2_RDR;
++                s->uts1 |= UTS1_RXEMPTY;
++            }
+             imx_update(s);
++            imx_serial_rx_fifo_ageing_timer_restart(s);
+             qemu_chr_fe_accept_input(&s->chr);
+         }
+         return c;
+@@ -300,19 +363,25 @@ static void imx_serial_write(void *opaque, hwaddr offset,
+ static int imx_can_receive(void *opaque)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
+-    return !(s->usr1 & USR1_RRDY);
++    return s->ucr1 & UCR1_RRDYEN &&
++        s->ucr2 & UCR2_RXEN && fifo32_num_used(&s->rx_fifo) < FIFO_SIZE;
+ }
+ 
+ static void imx_put_data(void *opaque, uint32_t value)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
++    uint8_t rxtl = s->ufcr & TL_MASK;
+ 
+     DPRINTF("received char\n");
++    imx_serial_rx_fifo_push(s, value);
++    if (fifo32_num_used(&s->rx_fifo) >= rxtl) {
++        s->usr1 |= USR1_RRDY;
++    }
++
++    imx_serial_rx_fifo_ageing_timer_restart(s);
+ 
+-    s->usr1 |= USR1_RRDY;
+     s->usr2 |= USR2_RDR;
+     s->uts1 &= ~UTS1_RXEMPTY;
+-    s->readbuff = value;
+     if (value & URXD_BRK) {
+         s->usr2 |= USR2_BRCD;
+     }
+@@ -345,6 +414,10 @@ static void imx_serial_realize(DeviceState *dev, Error **errp)
+ {
+     IMXSerialState *s = IMX_SERIAL(dev);
+ 
++    fifo32_create(&s->rx_fifo, FIFO_SIZE);
++    timer_init_ns(&s->ageing_timer, QEMU_CLOCK_VIRTUAL,
++        imx_serial_rx_fifo_ageing_timer_int, s);
++
+     DPRINTF("char dev for uart: %p\n", qemu_chr_fe_get_driver(&s->chr));
+ 
+     qemu_chr_fe_set_handlers(&s->chr, imx_can_receive, imx_receive,
+diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
+index b823f94519..b5f714add1 100644
+--- a/include/hw/char/imx_serial.h
++++ b/include/hw/char/imx_serial.h
+@@ -21,10 +21,13 @@
+ #include "hw/sysbus.h"
+ #include "chardev/char-fe.h"
+ #include "qom/object.h"
++#include "qemu/fifo32.h"
+ 
+ #define TYPE_IMX_SERIAL "imx.serial"
+ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ 
++#define FIFO_SIZE       32
++
+ #define URXD_CHARRDY    (1<<15)   /* character read is valid */
+ #define URXD_ERR        (1<<14)   /* Character has error */
+ #define URXD_FRMERR     (1<<12)   /* Character has frame error */
+@@ -65,6 +68,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ #define UCR1_TXMPTYEN   (1<<6)    /* Tx Empty Interrupt Enable */
+ #define UCR1_UARTEN     (1<<0)    /* UART Enable */
+ 
++#define UCR2_ATEN       BIT(3)    /* Ageing Timer Enable */
+ #define UCR2_TXEN       (1<<2)    /* Transmitter enable */
+ #define UCR2_RXEN       (1<<1)    /* Receiver enable */
+ #define UCR2_SRST       (1<<0)    /* Reset complete */
+@@ -78,13 +82,25 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ #define UTS1_TXFULL     (1<<4)
+ #define UTS1_RXFULL     (1<<3)
+ 
++#define TL_MASK         0x3f
++
++ /* Bit time in nanoseconds assuming maximum baud rate of 115200 */
++#define BIT_TIME_NS     8681
++
++/* Assume 8 bits per character */
++#define NUM_BITS        8
++
++/* Ageing timer triggers after 8 characters */
++#define AGE_DURATION_NS (8 * NUM_BITS * BIT_TIME_NS)
++
+ struct IMXSerialState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+     /*< public >*/
+     MemoryRegion iomem;
+-    int32_t readbuff;
++    QEMUTimer ageing_timer;
++    Fifo32 rx_fifo;
+ 
+     uint32_t usr1;
+     uint32_t usr2;
+-- 
+2.34.1
 

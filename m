@@ -1,357 +1,248 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp231400ejg;
-        Thu, 18 Jan 2024 04:26:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHpm1uhBNMF2BhqQj8dRtHhVAzOjJccIkA2Q3v5SognYrX1O0f/arINE7Zi0RbTG7vIjdJO
-X-Received: by 2002:a05:6214:b6e:b0:67f:be4:2c31 with SMTP id ey14-20020a0562140b6e00b0067f0be42c31mr697456qvb.24.1705580770293;
-        Thu, 18 Jan 2024 04:26:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705580770; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp518675ejg;
+        Thu, 18 Jan 2024 12:06:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGg38jpF9BQNj9QZy+lq0w3TzltbEiraIqeyBxQGa9POYq77QQWSSaDLLkV51OqKRFvLpIq
+X-Received: by 2002:ae9:e707:0:b0:781:428b:78be with SMTP id m7-20020ae9e707000000b00781428b78bemr196696qka.134.1705608415910;
+        Thu, 18 Jan 2024 12:06:55 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705608415; cv=pass;
         d=google.com; s=arc-20160816;
-        b=H0MFUXVl2SA2CmAfSTLhuWYDlcqQ4hdXRGHa9/6DwTqGWC59jj5j4dfg+C1g4zpwfg
-         qU6mERwrcs7l0p80QVgUgQrYKxCA26+yUZCSju4DWb6oyu9gWALUIM0pUueO/7fU9ebF
-         EmSYyZH0iUbkP/vDgB3L+8uO5JAFJqw9BKJDfes3mAMkEfQ2J5huB3wIo6+ijnaE7q1Z
-         IqGxZBmmOfa+a64lzC9iZp9tIhWu7yhMSH7EaDhs/jgQ+aDQOh/fszTBHEsPplQZI33o
-         QX12VA+riXiTe6cNIn+ItFIhwYFvFh0boMEYDkusyWs9SKAM+d/jZxSluX/w4Utz1p5n
-         +atQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=PMGN0Aptn07SIFPxlKczc8frqh2/vdWVw5jn6iR/GmI=;
-        fh=sc/f/APP3mEL+ybYg3pf4tL4i47+6j9QJKOr14qmIUU=;
-        b=uzlTrUjeHeE6155JfAKlGnldAjqlguERGwvh6ftx7aRjoM+WN74MK/zv365h02uqL8
-         m/eBPWfzUmeh9FnD0Eh1c2GA3AgqMpV24ioraddy2FWQ5YiPpoOzr/xXpe2a5vIcnPxX
-         XU00/kCGKGs40d6BnZpZAO6hTKFaV63eHpqb4X6kcGJ+bXURV4FMVuVnkb51yszdbEMR
-         eT3JHAhF92TdDEyHNsqND3Me7V19X/Ayi2k86CU1d/D4tyE/qaf9JFkyTup7M2zrka/2
-         688KgZIIhzo7S+m7DqrU5Qu4OKYe+YG4kjY2pr471r6ntE3yB/pNE6MvU52T8zUIu6ot
-         x9KQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DqS665uq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020a0c8d47000000b00680c838d0fdsi13708674qvb.169.2024.01.18.04.26.10
+        b=esq9M8q85Qpv3MFfA+GcqU64EVPQiVDpfveMiusnjdWLPo47kw5LNij//Cxz3sxn+z
+         W5X3gSScZ1KgYoGs6pk1M8zmYvgQAy6fB+aoMfcljJO3LCBejKW5PZaMM3LgGTGuci1y
+         CMaqmcno5QN95tFfsUMKNabwdwBYrFshArsYTLHj8q9n1rfT7xM4L2RBhjQj0fPXXATR
+         Mzvk/bFUvG8kMopb5vwm4c2xKV84t1cr+PoDc3B/u/dmEDVnhoXmpQfOQFBnGUug0za3
+         k0nv7xGL4rAfo6DAO9fXqqQC3JcYWWXSf+jqzwUIiHVfB9qiFN0zrrpj5Es2gp1YzxsK
+         NQKg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=MnxwcG9x8U6GyBQH17lIVMOVUV+dD9v6DloaKxqOUuQ=;
+        fh=cUgEM3TMHOIH70RmHTmTZxZmItZJnKfBWHSaci49aLY=;
+        b=AdMzpHSgExSCFgJQpgUCgTJVY9dp7Z8LDvdetiydc35WX4A0lDh2u+KfdTJYImwFyM
+         chaxMLo3bGeMZAMGwnzmuh6A2xQ1XEM60i0NuqLOViLUuF3IHzF7zgfzt9brveR6wFIq
+         2sUETtuaL8VTomqW91YUup826LzsqFeiL8576822b8hd0PEDJIwn8U93ouC6vhtlwHlV
+         PenbhYPfqFA+I2FIDmAsAb7v5bUT95GQEsY3W6s11oDZxrI7rRGcHIF+vXYEOh8Fi9FX
+         1AK9zyvnwX76lmxmvCj8awJCNcGV0liHBt0W3R7f2CqZo1lT0ssd8H+znUUB+3xGuCcY
+         QRQg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vtP6J7TB;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id a11-20020a05620a102b00b00783485982a1si384166qkk.363.2024.01.18.12.06.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jan 2024 04:26:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Jan 2024 12:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DqS665uq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQRSg-0005Rs-HT; Thu, 18 Jan 2024 07:25:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rQRSW-0005Av-Iy
- for qemu-devel@nongnu.org; Thu, 18 Jan 2024 07:25:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rQRSS-000789-Uc
- for qemu-devel@nongnu.org; Thu, 18 Jan 2024 07:25:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705580718;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PMGN0Aptn07SIFPxlKczc8frqh2/vdWVw5jn6iR/GmI=;
- b=DqS665uqNMZOrl/wXpdskHkadHDLgF4wekI0duqWJRXp5LAk7wH/J0KMyXcEJzVnqnrMFG
- GIcu87PXN6x+XfxwtrpB44/BCSF2f8633+bM7jOLqKxPUYekX2HvorZ/4TtDdNazpAsezF
- wD88KS6LlMI6p6DSRvP9xUppC/5mQYU=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-632-_imVXFP3OfigSCOt18Saow-1; Thu, 18 Jan 2024 07:25:16 -0500
-X-MC-Unique: _imVXFP3OfigSCOt18Saow-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-7833751431dso1130702785a.1
- for <qemu-devel@nongnu.org>; Thu, 18 Jan 2024 04:25:16 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vtP6J7TB;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-6431-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 7F1771C24EFA
+	for <alex.bennee@linaro.org>; Thu, 18 Jan 2024 20:06:55 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 92EEE2E632;
+	Thu, 18 Jan 2024 20:06:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="vtP6J7TB"
+Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 890202E62A
+	for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 20:06:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.51
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1705608409; cv=none; b=LwX46wJBIoJbi/hguD7uMuXNwzazPwBlCSuqvvrj65Vp5dVvHh2DUQSyNlzSFzql5Yu2Nxr8rRLLf7Uhxh/3xQK3D840mLbdDrJmpk+3bBv3DWgS7S3NohYswxBWygdJoNwkrwsiauDsOpM2+HntFpTD3ZBl1mZ9SgydK0a9HCU=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1705608409; c=relaxed/simple;
+	bh=WvSP7v2YJclQg5RMQsOdcgT2wXVbeeNFQV0UWIqnP4o=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=rUCit7QP03cazu1WDYV5C8QQzGLIkGmfcEaKP4j0lF3XwHo6dHsnxa/lrCYq4hzJkcbQ5S2PFpLnWVepKiIGRfXw7LbUzRTke1I4tIapyriWzWlAmGz3z7sttWk59CHuwZ97NiBaZtIFqyonz0Zl29UTaVur9N2nyMjckHoEkl0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=vtP6J7TB; arc=none smtp.client-ip=209.85.221.51
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wr1-f51.google.com with SMTP id ffacd0b85a97d-337d05b8942so866918f8f.3
+        for <kvm@vger.kernel.org>; Thu, 18 Jan 2024 12:06:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705608406; x=1706213206; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=MnxwcG9x8U6GyBQH17lIVMOVUV+dD9v6DloaKxqOUuQ=;
+        b=vtP6J7TBdDFovrqv20+7oOSPz7FDVhCYzo+OIj2YsqJbdiDmcK1f6A1sBQ1WKZkD5x
+         gqLn7xiZUM20fdxZLvs3Khzm37pCw8gwlNGH3v+FDEh1wJJakaLmc9hzxayP2At0UryM
+         jY6+rjBgoNieMlYgXwiNDZP9owCNzXelGhYcj0jbBstaWmHl6EPdG9vQFkdpVuLJ4bIj
+         xiYzGeGFr9x2xJ39FgKx5tnkxr3guCfc8VzX9l1Sl+nJy50yFXOGn077cBEtPFigpNj3
+         ZK0Ky8r7rcJbtMCAJKppu9h7VY7Iy77G7VX+aUtIjhT+Zw65ItIYl8rzJ4dAa8C8KsOJ
+         SH7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705580715; x=1706185515;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PMGN0Aptn07SIFPxlKczc8frqh2/vdWVw5jn6iR/GmI=;
- b=vbdCbjX0J1yFXbJzAeUwJJMnlLGRupkeTSWaEg80L+w8M1mLX/Zwox+wNklc8YxEv5
- S9uds5yxz4rN/wOyloPLwU97S9pNiOhu6/86u3qlwz23xm8IjxS8es+FkI10rdF3IxVI
- 2FIThDNCHyK7XIKH0tUrQVwcVOw+hCvWdpqHK55PwU9q+iR8YdjLX6bhdl+nfEG21XDy
- tGaLkrDGGQ5KFJfPb8S4YS/ut1W0icHNmBM1iakBsoCKIckLeSpMrWhLDMsgQofSpISh
- dDSKvDCcbMlZOavTvv9T+GaXf/zvQ0N7t7r7hoRJCYuluzVmgd0pMFpjt9FH6PwP1o+x
- 4F/w==
-X-Gm-Message-State: AOJu0YwFeikwOIrv6oVfF04vfajEn51HJtEByT4Xex0JlfIrEtGons2c
- N4alE7pEFWZnAPF+QfK9vmBlGlbb86qsVQEcD9CfhVMKtCSZZr3aOOMZvA2F3KP/d834MVnuY/6
- La4TPEaPTWx4z+bvCW6XNSd6vPgXV9NnW1WJd/Fal15yyBTC4sw62
-X-Received: by 2002:a05:620a:2621:b0:781:a678:9a3f with SMTP id
- z33-20020a05620a262100b00781a6789a3fmr837481qko.115.1705580715629; 
- Thu, 18 Jan 2024 04:25:15 -0800 (PST)
-X-Received: by 2002:a05:620a:2621:b0:781:a678:9a3f with SMTP id
- z33-20020a05620a262100b00781a6789a3fmr837474qko.115.1705580715379; 
- Thu, 18 Jan 2024 04:25:15 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- os7-20020a05620a810700b007815c25b32bsm5265044qkn.35.2024.01.18.04.25.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Jan 2024 04:25:14 -0800 (PST)
-Message-ID: <307bbfec-005c-4ca8-8c21-cb39f16812f3@redhat.com>
-Date: Thu, 18 Jan 2024 13:25:10 +0100
+        d=1e100.net; s=20230601; t=1705608406; x=1706213206;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MnxwcG9x8U6GyBQH17lIVMOVUV+dD9v6DloaKxqOUuQ=;
+        b=Ob7W5Ex8Z4DNlF7xX97/JQ94DX5CNlLSrqfjsazvpQEtDGVHQ9GN88Xazhld81HOMW
+         xvFFZgQeKrv29GimLoXE0+yJPnBHnkr1O57Pqeuml6fE0QdNJ7DMsSbXRUUFntIbDw9X
+         vPFv7YrtugEQ5CYhUv0k9FRXoV0QVHDhXeoMyC9r03yHyCfsdtix2DfygAqfhre3uaAW
+         cPlczPljg/0gfhd20En6pjzxMkJUMhIKjyL5qyug8Y9OXluOoH/C97Xy5lsJPxmBxi8I
+         Pl/Kr5Ey19su9yZ6peC9M114+wNotJhtsxzIgUdk/0auisd0XGrUdvThPmfBZjndKddq
+         B8gQ==
+X-Gm-Message-State: AOJu0Yx34Q+oIZN+z7JDtoqa6XznJb/tdii9231gDthaIYJDVXYBm2n8
+	eHKcPstL5V0wJoJK9wPmZRNkWItu4RnpfAdSPVrIdamNHrTU6kDJkRE90M8y5+w=
+X-Received: by 2002:adf:e2c6:0:b0:337:c54d:c3ca with SMTP id d6-20020adfe2c6000000b00337c54dc3camr987049wrj.132.1705608405815;
+        Thu, 18 Jan 2024 12:06:45 -0800 (PST)
+Received: from localhost.localdomain ([78.196.4.158])
+        by smtp.gmail.com with ESMTPSA id f11-20020adff98b000000b00337d5cd0d8asm1667439wrr.90.2024.01.18.12.06.44
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 18 Jan 2024 12:06:45 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	qemu-arm@nongnu.org,
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Eric Auger <eric.auger@redhat.com>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jan Kiszka <jan.kiszka@web.de>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Joel Stanley <joel@jms.id.au>,
+	Hao Wu <wuhaotsh@google.com>,
+	kvm@vger.kernel.org
+Subject: [PATCH 00/20] arm: Rework target/ headers to build various hw/ files once
+Date: Thu, 18 Jan 2024 21:06:21 +0100
+Message-ID: <20240118200643.29037-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
- set_host_resv_regions
-Content-Language: en-US
-To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "yanghliu@redhat.com" <yanghliu@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
-Cc: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
-References: <20240117080414.316890-1-eric.auger@redhat.com>
- <20240117080414.316890-5-eric.auger@redhat.com>
- <SJ0PR11MB67443F1D15B5959A77B60E3F92712@SJ0PR11MB6744.namprd11.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <SJ0PR11MB67443F1D15B5959A77B60E3F92712@SJ0PR11MB6744.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kjeJfVfstGLX
+X-TUID: xflE+tv1FWaE
 
-Hi Zhenzhong,
-On 1/18/24 08:43, Duan, Zhenzhong wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Subject: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
->> set_host_resv_regions
->>
->> Reuse the implementation of virtio_iommu_set_iova_ranges() which
->> will be removed in subsequent patches.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->> hw/virtio/virtio-iommu.c | 134 +++++++++++++++++++++++++++++---------
->> -
->> 1 file changed, 101 insertions(+), 33 deletions(-)
->>
->> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index 8a4bd933c6..716a3fcfbf 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -461,8 +461,109 @@ static AddressSpace
->> *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
->>     return &sdev->as;
->> }
->>
->> +/**
->> + * rebuild_resv_regions: rebuild resv regions with both the
->> + * info of host resv ranges and property set resv ranges
->> + */
->> +static int rebuild_resv_regions(IOMMUDevice *sdev)
->> +{
->> +    GList *l;
->> +    int i = 0;
->> +
->> +    /* free the existing list and rebuild it from scratch */
->> +    g_list_free_full(sdev->resv_regions, g_free);
->> +    sdev->resv_regions = NULL;
->> +
->> +    /* First add host reserved regions if any, all tagged as RESERVED */
->> +    for (l = sdev->host_resv_ranges; l; l = l->next) {
->> +        ReservedRegion *reg = g_new0(ReservedRegion, 1);
->> +        Range *r = (Range *)l->data;
->> +
->> +        reg->type = VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
->> +        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
->> +        sdev->resv_regions = resv_region_list_insert(sdev->resv_regions, reg);
->> +        trace_virtio_iommu_host_resv_regions(sdev-
->>> iommu_mr.parent_obj.name, i,
->> +                                             range_lob(&reg->range),
->> +                                             range_upb(&reg->range));
->> +        i++;
->> +    }
->> +    /*
->> +     * then add higher priority reserved regions set by the machine
->> +     * through properties
->> +     */
->> +    add_prop_resv_regions(sdev);
->> +    return 0;
->> +}
->> +
->> +static int virtio_iommu_set_host_iova_ranges(PCIBus *bus, void *opaque,
->> +                                             int devfn, GList *iova_ranges,
->> +                                             Error **errp)
->> +{
->> +    VirtIOIOMMU *s = opaque;
->> +    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
->> +    IOMMUDevice *sdev;
->> +    GList *current_ranges;
->> +    GList *l, *tmp, *new_ranges = NULL;
->> +    int ret = -EINVAL;
->> +
->> +    if (!sbus) {
->> +        error_report("%s no sbus", __func__);
->> +    }
-> Do we plan to support multiple devices in same iommu group?
-> as_by_busptr is hashed by bus which is an aliased bus of the device.
-> So sbus may be NULL if device's bus is different from aliased bus.
-If I understand you remark properly this means that
+Hi,
 
-virtio_iommu_set_host_iova_ranges should take as arg the aliased bus and not the bus, right?
-I think we shall support non singleton groups too.
+In order to fix a bug noticed [*] by Cédric and Fabiano in my
+"Remove one use of qemu_get_cpu() in A7/A15 MPCore priv" series,
+I ended reusing commits from other branches and it grew quite
+a lot. This is the first "cleanup" part, unrelated on MPCorePriv.
 
->
->> +
->> +    sdev = sbus->pbdev[devfn];
->> +
->> +    current_ranges = sdev->host_resv_ranges;
->> +
->> +    warn_report("%s: host_resv_regions=%d", __func__, !!sdev-
->>> host_resv_ranges);
->> +    /* check that each new resv region is included in an existing one */
->> +    if (sdev->host_resv_ranges) {
-> May be we could just error out as vfio_realize should not call
-> set_host_iova_ranges() twice.
-so if we have several devices in the group,
+Please review,
 
-set_host_iova_ranges()
+Phil.
 
- may be called several times. Right?
+Philippe Mathieu-Daudé (18):
+  hw/arm/exynos4210: Include missing 'exec/tswap.h' header
+  hw/arm/xilinx_zynq: Include missing 'exec/tswap.h' header
+  hw/arm/smmuv3: Include missing 'hw/registerfields.h' header
+  hw/arm/xlnx-versal: Include missing 'cpu.h' header
+  target/arm/cpu-features: Include missing 'hw/registerfields.h' header
+  target/arm/cpregs: Include missing 'hw/registerfields.h' header
+  target/arm/cpregs: Include missing 'kvm-consts.h' header
+  target/arm: Expose arm_cpu_mp_affinity() in 'multiprocessing.h' header
+  target/arm: Declare ARM_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'
+  hw/cpu/a9mpcore: Build it only once
+  hw/misc/xlnx-versal-crl: Include generic 'cpu-qom.h' instead of
+    'cpu.h'
+  hw/misc/xlnx-versal-crl: Build it only once
+  target/arm: Expose M-profile register bank index definitions
+  hw/arm/armv7m: Make 'hw/intc/armv7m_nvic.h' a target agnostic header
+  target/arm: Move ARM_CPU_IRQ/FIQ definitions to 'cpu-qom.h' header
+  target/arm: Move e2h_access() helper around
+  target/arm: Move GTimer definitions to new 'gtimer.h' header
+  hw/arm: Build various units only once
 
-Eric
->
-> Thanks
-> Zhenzhong
->> +        range_inverse_array(iova_ranges,
->> +                            &new_ranges,
->> +                            0, UINT64_MAX);
->> +
->> +        for (tmp = new_ranges; tmp; tmp = tmp->next) {
->> +            Range *newr = (Range *)tmp->data;
->> +            bool included = false;
->> +
->> +            for (l = current_ranges; l; l = l->next) {
->> +                Range * r = (Range *)l->data;
->> +
->> +                if (range_contains_range(r, newr)) {
->> +                    included = true;
->> +                    break;
->> +                }
->> +            }
->> +            if (!included) {
->> +                goto error;
->> +            }
->> +        }
->> +        /* all new reserved ranges are included in existing ones */
->> +        ret = 0;
->> +        goto out;
->> +    }
->> +
->> +    if (sdev->probe_done) {
->> +        warn_report("%s: Notified about new host reserved regions after
->> probe",
->> +                    __func__);
->> +    }
->> +
->> +    range_inverse_array(iova_ranges,
->> +                        &sdev->host_resv_ranges,
->> +                        0, UINT64_MAX);
->> +    rebuild_resv_regions(sdev);
->> +
->> +    return 0;
->> +error:
->> +    error_setg(errp, "%s Conflicting host reserved ranges set!",
->> +               __func__);
->> +out:
->> +    g_list_free_full(new_ranges, g_free);
->> +    return ret;
->> +}
->> +
->> static const PCIIOMMUOps virtio_iommu_ops = {
->>     .get_address_space = virtio_iommu_find_add_as,
->> +    .set_host_iova_ranges = virtio_iommu_set_host_iova_ranges,
->> };
->>
->> static int virtio_iommu_attach(VirtIOIOMMU *s,
->> @@ -1158,39 +1259,6 @@ static int
->> virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
->>     return 0;
->> }
->>
->> -/**
->> - * rebuild_resv_regions: rebuild resv regions with both the
->> - * info of host resv ranges and property set resv ranges
->> - */
->> -static int rebuild_resv_regions(IOMMUDevice *sdev)
->> -{
->> -    GList *l;
->> -    int i = 0;
->> -
->> -    /* free the existing list and rebuild it from scratch */
->> -    g_list_free_full(sdev->resv_regions, g_free);
->> -    sdev->resv_regions = NULL;
->> -
->> -    /* First add host reserved regions if any, all tagged as RESERVED */
->> -    for (l = sdev->host_resv_ranges; l; l = l->next) {
->> -        ReservedRegion *reg = g_new0(ReservedRegion, 1);
->> -        Range *r = (Range *)l->data;
->> -
->> -        reg->type = VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
->> -        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
->> -        sdev->resv_regions = resv_region_list_insert(sdev->resv_regions, reg);
->> -        trace_virtio_iommu_host_resv_regions(sdev-
->>> iommu_mr.parent_obj.name, i,
->> -                                             range_lob(&reg->range),
->> -                                             range_upb(&reg->range));
->> -        i++;
->> -    }
->> -    /*
->> -     * then add higher priority reserved regions set by the machine
->> -     * through properties
->> -     */
->> -    add_prop_resv_regions(sdev);
->> -    return 0;
->> -}
->>
->> /**
->>  * virtio_iommu_set_iova_ranges: Conveys the usable IOVA ranges
->> --
->> 2.41.0
+Richard Henderson (2):
+  target/arm: Rename arm_cpu_mp_affinity
+  target/arm: Create arm_cpu_mp_affinity
+
+ hw/arm/smmuv3-internal.h          |  1 +
+ include/hw/arm/xlnx-versal.h      |  1 +
+ include/hw/intc/armv7m_nvic.h     |  2 +-
+ include/hw/misc/xlnx-versal-crl.h |  2 +-
+ target/arm/cpregs.h               |  3 +++
+ target/arm/cpu-features.h         |  2 ++
+ target/arm/cpu-qom.h              | 24 ++++++++++++++++++++++
+ target/arm/cpu.h                  | 34 +++----------------------------
+ target/arm/gtimer.h               | 21 +++++++++++++++++++
+ target/arm/multiprocessing.h      | 16 +++++++++++++++
+ hw/arm/allwinner-a10.c            |  1 +
+ hw/arm/allwinner-h3.c             |  2 ++
+ hw/arm/allwinner-r40.c            |  2 ++
+ hw/arm/armv7m.c                   |  2 ++
+ hw/arm/aspeed_ast2400.c           |  1 +
+ hw/arm/aspeed_ast2600.c           |  1 +
+ hw/arm/bcm2836.c                  |  2 ++
+ hw/arm/collie.c                   |  1 -
+ hw/arm/exynos4210.c               |  2 ++
+ hw/arm/fsl-imx25.c                |  1 +
+ hw/arm/fsl-imx31.c                |  1 +
+ hw/arm/fsl-imx6.c                 |  1 +
+ hw/arm/fsl-imx6ul.c               |  1 +
+ hw/arm/fsl-imx7.c                 |  1 +
+ hw/arm/gumstix.c                  |  1 -
+ hw/arm/highbank.c                 |  1 +
+ hw/arm/integratorcp.c             |  2 +-
+ hw/arm/mainstone.c                |  1 -
+ hw/arm/musicpal.c                 |  2 +-
+ hw/arm/npcm7xx.c                  |  3 ++-
+ hw/arm/omap1.c                    |  1 +
+ hw/arm/omap2.c                    |  2 +-
+ hw/arm/omap_sx1.c                 |  1 -
+ hw/arm/palm.c                     |  1 -
+ hw/arm/realview.c                 |  1 +
+ hw/arm/sbsa-ref.c                 |  4 +++-
+ hw/arm/spitz.c                    |  1 -
+ hw/arm/strongarm.c                |  2 +-
+ hw/arm/versatilepb.c              |  2 +-
+ hw/arm/vexpress.c                 |  2 +-
+ hw/arm/virt-acpi-build.c          |  4 ++--
+ hw/arm/virt.c                     | 11 ++++++----
+ hw/arm/xilinx_zynq.c              |  3 ++-
+ hw/arm/xlnx-versal-virt.c         |  5 +++--
+ hw/arm/xlnx-versal.c              |  2 ++
+ hw/arm/xlnx-zynqmp.c              |  2 ++
+ hw/arm/z2.c                       |  1 -
+ hw/cpu/a15mpcore.c                |  1 +
+ hw/cpu/a9mpcore.c                 |  2 +-
+ hw/misc/xlnx-versal-crl.c         |  5 +++--
+ target/arm/arm-powerctl.c         |  3 ++-
+ target/arm/cpu.c                  | 13 +++++++++---
+ target/arm/helper.c               | 30 ++++++++++++++-------------
+ target/arm/hvf/hvf.c              |  6 ++++--
+ target/arm/kvm.c                  |  1 +
+ target/arm/machine.c              |  1 +
+ target/arm/tcg/psci.c             |  3 ++-
+ hw/arm/meson.build                | 23 +++++++++++----------
+ hw/cpu/meson.build                |  2 +-
+ hw/misc/meson.build               |  2 +-
+ 60 files changed, 178 insertions(+), 94 deletions(-)
+ create mode 100644 target/arm/gtimer.h
+ create mode 100644 target/arm/multiprocessing.h
+
+-- 
+2.41.0
 

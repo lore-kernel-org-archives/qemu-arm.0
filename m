@@ -1,28 +1,28 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f12-20020adfb60c000000b00336b8461a5esm6331586wre.88.2024.01.19.04.05.59
+        by smtp.gmail.com with ESMTPSA id b1-20020a5d4b81000000b0033920dfd287sm1245582wrt.19.2024.01.19.03.41.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jan 2024 04:05:59 -0800 (PST)
+        Fri, 19 Jan 2024 03:41:40 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BD6095F8C8;
-	Fri, 19 Jan 2024 12:05:58 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 92DFD5F8C8;
+	Fri, 19 Jan 2024 11:41:40 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>,
   qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 3/6] hw/arm/xen_arm.c: convert DPRINTF to tracepoints
-In-Reply-To: <49905a0d22aa80956645d6dd74e9bc098c56555b.1705662313.git.manos.pitsidianakis@linaro.org>
-	(Manos Pitsidianakis's message of "Fri, 19 Jan 2024 13:14:21 +0200")
+Subject: Re: [PATCH 1/6] hw/arm/z2: convert DPRINTF to tracepoints
+In-Reply-To: <021405f5ef53ebe80c7218e1df537635d34889b3.1705662313.git.manos.pitsidianakis@linaro.org>
+	(Manos Pitsidianakis's message of "Fri, 19 Jan 2024 13:14:19 +0200")
 References: <cover.1705662313.git.manos.pitsidianakis@linaro.org>
-	<49905a0d22aa80956645d6dd74e9bc098c56555b.1705662313.git.manos.pitsidianakis@linaro.org>
+	<021405f5ef53ebe80c7218e1df537635d34889b3.1705662313.git.manos.pitsidianakis@linaro.org>
 User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Fri, 19 Jan 2024 12:05:58 +0000
-Message-ID: <87jzo5fryx.fsf@draig.linaro.org>
+Date: Fri, 19 Jan 2024 11:41:40 +0000
+Message-ID: <87v87pft3f.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Eq5Y5F+1DcO7
+X-TUID: 4kH/2bOJhVEj
 
 Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 
@@ -35,133 +35,135 @@ Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 >
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->  hw/arm/trace-events |  7 +++++++
->  hw/arm/xen_arm.c    | 26 +++++++++++++++-----------
->  2 files changed, 22 insertions(+), 11 deletions(-)
+>  hw/arm/trace-events |  8 ++++++++
+>  hw/arm/z2.c         | 26 +++++++++-----------------
+>  2 files changed, 17 insertions(+), 17 deletions(-)
 >
 > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index a6a67d5f16..e3f5d677d7 100644
+> index cdc1ea06a8..a262ad2e6a 100644
 > --- a/hw/arm/trace-events
 > +++ b/hw/arm/trace-events
-> @@ -81,3 +81,10 @@ strongarm_ssp_read(uint64_t addr) "Bad register 0x%zu"
->  strongarm_ssp_write_wrong_data_size(int v) "Wrong data size: %i bits"
->  strongarm_ssp_write_wrong_data_size_invalid(void) "Attempt to use SSP LB=
-M mode"
->  strongarm_ssp_write_bad_register(uint64_t addr) "Bad register 0x%zu"
-> +
-> +# xen_arm.c
-> +xen_create_virtio_mmio_devices(int i, int irq, uint64_t base) "Created v=
-irtio-mmio device %d: irq %d base 0x%lx"
-> +xen_init_ram(const char *hi_xor_low, uint64_t base, uint64_t size) "Init=
-ialized region xen.ram.%s: base 0x%lx size 0x%lx"
-> +xen_enable_tpm_not_found(void) "Couldn't find tmp0 backend"
-> +xen_enable_tpm(uint64_t addr) "Connected tpmdev at address 0x%lx"
-> +xen_arm_init(const char *msg) "%s"
-> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-> index a5631529d0..a024117d22 100644
-> --- a/hw/arm/xen_arm.c
-> +++ b/hw/arm/xen_arm.c
-> @@ -34,6 +34,7 @@
->  #include "hw/xen/xen-hvm-common.h"
->  #include "sysemu/tpm.h"
->  #include "hw/xen/arch_hvm.h"
+> @@ -55,3 +55,11 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNot=
+ifier node for iommu mr=3D%s
+>  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iom=
+mu mr=3D%s"
+>  smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint16_t vmid=
+, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=3D%s asid=3D%d v=
+mid=3D%d iova=3D0x%"PRIx64" tg=3D%d num_pages=3D0x%"PRIx64
+>=20=20
+> +# z2.c
+> +z2_lcd_cur_reg_update(uint8_t r) "reg: 0x%x"
+> +z2_lcd_enable_disable(uint16_t v) "value: 0x%x"
+> +z2_lcd_enable_disable_result(const char * result) "LCD %s"
+> +z2_lcd_invalid_command(uint8_t value) "0x%x"
+> +z2_aer915_send_too_log(int8_t msg) "message too long (%i bytes)"
+> +z2_aer915_send(uint8_t reg, uint8_t value) "reg %d value 0x%02x"
+> +z2_aer915_i2c_start_recv(uint16_t len) "I2C_START_RECV: short message wi=
+th len %d"
+> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+> index 83741a4909..6c0889d698 100644
+> --- a/hw/arm/z2.c
+> +++ b/hw/arm/z2.c
+> @@ -28,13 +28,7 @@
+>  #include "cpu.h"
+>  #include "qom/object.h"
+>  #include "qapi/error.h"
+> -
+> -#ifdef DEBUG_Z2
+> -#define DPRINTF(fmt, ...) \
+> -        printf(fmt, ## __VA_ARGS__)
+> -#else
+> -#define DPRINTF(fmt, ...)
+> -#endif
 > +#include "trace.h"
 >=20=20
->  #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
->  OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
-> @@ -91,8 +92,9 @@ static void xen_create_virtio_mmio_devices(XenArmState =
-*xam)
->=20=20
->          sysbus_create_simple("virtio-mmio", base, irq);
->=20=20
-> -        DPRINTF("Created virtio-mmio device %d: irq %d base 0x%lx\n",
-> -                i, GUEST_VIRTIO_MMIO_SPI_FIRST + i, base);
-> +        trace_xen_create_virtio_mmio_devices(i,
-> +                                             GUEST_VIRTIO_MMIO_SPI_FIRST=
- + i,
-> +                                             base);
->      }
->  }
->=20=20
-> @@ -117,15 +119,13 @@ static void xen_init_ram(MachineState *machine)
->      memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo", &ram_memory,
->                               GUEST_RAM0_BASE, ram_size[0]);
->      memory_region_add_subregion(sysmem, GUEST_RAM0_BASE, &ram_lo);
-> -    DPRINTF("Initialized region xen.ram.lo: base 0x%llx size 0x%lx\n",
-> -            GUEST_RAM0_BASE, ram_size[0]);
-> +    trace_xen_init_ram("lo", GUEST_RAM0_BASE, ram_size[0]);
->=20=20
->      if (ram_size[1] > 0) {
->          memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi", &ram_memor=
-y,
->                                   GUEST_RAM1_BASE, ram_size[1]);
->          memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
-> -        DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n=
-",
-> -                GUEST_RAM1_BASE, ram_size[1]);
-> +        trace_xen_init_ram("hi", GUEST_RAM1_BASE, ram_size[1]);
->      }
+>  static const struct keymap map[0x100] =3D {
+>      [0 ... 0xff] =3D { -1, -1 },
+> @@ -127,22 +121,22 @@ static uint32_t zipit_lcd_transfer(SSIPeripheral *d=
+ev, uint32_t value)
+>      if (z->pos =3D=3D 3) {
 
-I wonder if a single trace_xen_init_ram(machine->ram_size) at the top
-would be better as everything can be inferred from that.
+Maybe we could just have:
 
->  }
->=20=20
-> @@ -158,7 +158,7 @@ static void xen_enable_tpm(XenArmState *xam)
->=20=20
->      TPMBackend *be =3D qemu_find_tpm_be("tpm0");
->      if (be =3D=3D NULL) {
-> -        DPRINTF("Couldn't fine the backend for tpm0\n");
-> +        trace_xen_enable_tpm_not_found();
+   trace_z2_lcd_reg_update(z->buf[0], z->buf[1], z->buf[2]);
 
-This smells like it should be an error_report (or maybe warn_report) as
-its a misconfiguration the user/tools should know about.
+here
 
->          return;
->      }
->      dev =3D qdev_new(TYPE_TPM_TIS_SYSBUS);
-> @@ -168,7 +168,7 @@ static void xen_enable_tpm(XenArmState *xam)
->      sysbus_realize_and_unref(busdev, &error_fatal);
->      sysbus_mmio_map(busdev, 0, xam->cfg.tpm_base_addr);
->=20=20
-> -    DPRINTF("Connected tpmdev at address 0x%lx\n", xam->cfg.tpm_base_add=
-r);
-> +    trace_xen_enable_tpm(xam->cfg.tpm_base_addr);
->  }
->  #endif
->=20=20
-> @@ -179,8 +179,11 @@ static void xen_arm_init(MachineState *machine)
->      xam->state =3D  g_new0(XenIOState, 1);
->=20=20
->      if (machine->ram_size =3D=3D 0) {
-> -        DPRINTF("ram_size not specified. QEMU machine started without IO=
-REQ"
-> -                "(no emulated devices including Virtio)\n");
-> +        trace_xen_arm_init("ram_size not specified. "
-> +                           "QEMU machine started "
-> +                           "without IOREQ "
-> +                           "(no emulated devices"
-> +                           "including Virtio)");
+>          switch (z->buf[0]) {
+>          case 0x74:
+> -            DPRINTF("%s: reg: 0x%.2x\n", __func__, z->buf[2]);
+> +            trace_z2_lcd_cur_reg_update(z->buf[2]);
 
-again at least an warn_report...
+drop this
 
->          return;
+>              z->cur_reg =3D z->buf[2];
+>              break;
+>          case 0x76:
+>              val =3D z->buf[1] << 8 | z->buf[2];
+> -            DPRINTF("%s: value: 0x%.4x\n", __func__, val);
+> +            trace_z2_lcd_enable_disable(val);
+
+and this
+
+>              if (z->cur_reg =3D=3D 0x22 && val =3D=3D 0x0000) {
+>                  z->enabled =3D 1;
+> -                printf("%s: LCD enabled\n", __func__);
+> +                trace_z2_lcd_enable_disable_result("enabled");
+>              } else if (z->cur_reg =3D=3D 0x10 && val =3D=3D 0x0000) {
+>                  z->enabled =3D 0;
+> -                printf("%s: LCD disabled\n", __func__);
+> +                trace_z2_lcd_enable_disable_result("disabled");
+
+and just have two trace points, one for enable and one for disable to
+save spamming a string into the log.
+
+>              }
+>              break;
+>          default:
+> -            DPRINTF("%s: unknown command!\n", __func__);
+> +            trace_z2_lcd_invalid_command(z->buf[0]);
+
+drop this, it can be inferred if we trace the command stream above.
+
+>              break;
+>          }
+>          z->pos =3D 0;
+> @@ -212,14 +206,12 @@ static int aer915_send(I2CSlave *i2c, uint8_t data)
+>=20=20
+>      s->buf[s->len] =3D data;
+>      if (s->len++ > 2) {
+> -        DPRINTF("%s: message too long (%i bytes)\n",
+> -            __func__, s->len);
+> +        trace_z2_aer915_send_too_log(s->len);
+
+long
+
+>          return 1;
 >      }
 >=20=20
-> @@ -194,7 +197,8 @@ static void xen_arm_init(MachineState *machine)
->      if (xam->cfg.tpm_base_addr) {
->          xen_enable_tpm(xam);
->      } else {
-> -        DPRINTF("tpm-base-addr is not provided. TPM will not be enabled\=
-n");
-> +        trace_xen_arm_init("tpm-base-addr is not provided."
-> +                           "TPM will not be enabled");
-
-warn_report.
-
+>      if (s->len =3D=3D 2) {
+> -        DPRINTF("%s: reg %d value 0x%02x\n", __func__,
+> -                s->buf[0], s->buf[1]);
+> +        trace_z2_aer915_send(s->buf[0], s->buf[1]);
 >      }
->  #endif
->  }
+>=20=20
+>      return 0;
+> @@ -235,7 +227,7 @@ static int aer915_event(I2CSlave *i2c, enum i2c_event=
+ event)
+>          break;
+>      case I2C_START_RECV:
+>          if (s->len !=3D 1) {
+> -            DPRINTF("%s: short message!?\n", __func__);
+> +            trace_z2_aer915_i2c_start_recv(s->len);
+>          }
+>          break;
+>      case I2C_FINISH:
+
+maybe better just to have a:
+
+  trace_aer915_event(event, s->len)
+
+before the return?
 
 --=20
 Alex Benn=C3=A9e

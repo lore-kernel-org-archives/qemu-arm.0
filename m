@@ -1,127 +1,206 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp879197ejg;
-        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
-X-Received: by 2002:a1c:7919:0:b0:40d:4e28:43e8 with SMTP id l25-20020a1c7919000000b0040d4e2843e8mr1363046wme.167.1705664271029;
-        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664271; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp878318ejg;
+        Fri, 19 Jan 2024 03:35:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEcFJlaLzLmsWRNaUGB2PBAc7eH4YE0zFrlSlSEyWCtfbWS7l0brF6qRvkhVQXd8gttxI0Y
+X-Received: by 2002:a25:d3cb:0:b0:dc2:398b:fa08 with SMTP id e194-20020a25d3cb000000b00dc2398bfa08mr2076617ybf.31.1705664155037;
+        Fri, 19 Jan 2024 03:35:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664155; cv=none;
         d=google.com; s=arc-20160816;
-        b=bh4PYMAlTogdiRBiryCtwCW3R24t98cY+CGP9acEac6M6obrNJMkYhNecBIqJQ5wOH
-         vJmdaDHuR71LnIyORfq9N8fQQmTB4fgSWnf2uEQ91QCB7vqvBcS+R4STEEFzDSQlayPM
-         0kPzXHMblVzMKxXaN59eEIxdgkoEvIFxeApH4+spVzmBScXvpaRiDKYzLdsKMnub+7a7
-         ohvfAC594OmVdpmpt4CcascbMh4JgnOJujBHSB2Mg8aOKZPNPtr41hUuA51sb4Putox1
-         wotx2+8nSVCrRxAmUbjKZWZjPbYgECI6tVagUYSP3F/Vt1nJJXPEH5HK/+zIdq3gEm0Z
-         X8qg==
+        b=IdFo/h2L7itc5CCwyphTtfvvffU3I87UBhmFx7NCqWQ88ty9t+NdPkagAM7aBnusBY
+         lQ/ielogKxoN2t3wTziS6gG5F8O4rTlfJQuLU4OhGzh/Wwj/YW7Ff2Bsjui+PzTc5Y+N
+         YvJPqXUNn/iDxm5lQ+hwZy7NFCMDNODv6A6AaPTrYFmp+1wVQkL9Y3wudy1ShyufZLhC
+         ioTQ64rUTgWMJIpbyam84WIf3pWjmpnHS0PRfvBvO4ypBn3pmD3S0k/sHPCYahookbYP
+         BvJdlHqlKrnjVPIfaNu1VGNPhsCFijoP/WPwtJJ6xitaiHngOC+NAyYInypU9plX+X/F
+         kR6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
-        fh=Fvwgvy80ygdP82bysZimOYQryTQSPXLk9G3SuBJkrbU=;
-        b=eNBZgqEgodQqHdBywX//1m7nxErXv0pWYoxaF6VCq07K7XIWSkoKFXQ4WniLezwKaM
-         b60OlRos/0sNzb1dlPlI2Bn1cKQJx1uCgr/kE5hTG96GaYn+J6gFjMYz8o5JZFe6dK+U
-         7VQ9AEnQMo2LsFrxTGT7Bloz6teV2+v3gWVgai2Oy0gQvXL8hO9FQ3FTAFFkUAnDmm9u
-         D3QGJcYIQ3TmXlnnOqZLFRcZvHYf+npv/X8YRgq9uzAfSev+eirsO1y5V661QBSdFfB8
-         kkiab+5xV10HGS6UQoweDQCfkEHC41q+U2uyvSG6RsBJz7x7WFR7PBq/5BzX+YwvvLyY
-         4PTA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=1kHSnHH1cspbXUMLrjnX00ivshEejOmgJvy2gqACDDE=;
+        fh=0x3oxSDM+3B1iq7MNcEDPiiYDxF4jnBXeQY/LXh8Yxc=;
+        b=hd88kKYDqFqiF6QyZ/Bc4fl+E81qJlA4fqJVguZEodAq3WMfDsJcMXEVXootMTatjG
+         8n9WtpgvihcirDhtZtwH19ZrYOlFAGMQlGb2PO59F68KQArhxH9uLu82Vj9KwoyGioOd
+         JqD2LA8rAVxtJIXJg6/Ip2stSDvjIXoYh5ERrLcW3+cxh1G7iMIdVAl6FaMHwtHEBu+V
+         X1I2ip1KM27k+WoZy/wqfCHSyeSEqlXQ/HYfZld0XJivQ3q5r2tZ5H4QR05Dd/zOVG7w
+         DOrOT4qtaIWKRoQjJbLoJRhcu1R1LjAIJYX0X4olyQ2Sh+DwJe/ej8FwS8UeTiNOq5su
+         tOiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uWAfgTIL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pmp2M1qF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id fc17-20020a05600c525100b0040e47c9fe2bsor202833wmb.0.2024.01.19.03.37.50
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n10-20020ac85a0a000000b0042a1c77a496si3146637qta.665.2024.01.19.03.35.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jan 2024 03:35:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uWAfgTIL;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pmp2M1qF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQnA3-0001xF-Fg; Fri, 19 Jan 2024 06:35:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnA1-0001tg-34
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:35:45 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQn9x-0008TA-TV
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:35:44 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40ea045f29eso2157475e9.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:35:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705664270; x=1706269070; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
-        b=uWAfgTILSbXx6uKODBrL7dmFNJytjpsgTJl5rokL/wHiMmMFuZ2Z6O/KZA6HF4uZwW
-         azrT6rzsGpDbWAP+gV6qWH7Jordk4K7FcEzPPVBbvdnRzhLfXIYqJy4aEK1mE9loloiu
-         J91u3Gx8/+S7AvP3UdrKgWnFSSl7nwT2Qp0x8Foyahx+XI40e3Wh06zQmkfSQ8dGFrmn
-         kv1g9ZGgOpd1Fj5sbHjMrs/bDAcNMNiV3QymYOv31kZ4OEm5uH2Wyc0ljHC3SDRw1C1W
-         HdZNjH4HmWa1kQ/VR3br0et+AUzLFJuO5WyXcQtQo2hh0M8FKTpGNX6l13e0Mh25Jna0
-         FYCw==
+ d=linaro.org; s=google; t=1705664140; x=1706268940; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1kHSnHH1cspbXUMLrjnX00ivshEejOmgJvy2gqACDDE=;
+ b=Pmp2M1qFgKdzOe+yvdLB+GLMLhJAEBXba31E0fg38K7BDaV7/XKG2Gb5/tIWAxD3ok
+ Mje+5NNxEoTEs+bDhNUbm6f8/cW88JgYAIc3H8rz/WWFurqdqO91tVgNC1RI8V6LT5rC
+ am+E28XQ4lKzciIwl4eFZStciQsncCpRMWkajWsfygrtB5RvffQEyJcrUTf9catzjPPJ
+ A+AxmNdhgzlJTQU7L8Kr9V6jNoULC88EM4KDrfu/Xr2OnFn7GcsU8+S4Lj1ZLp5lP2oR
+ KhRqyykkKVQPtSvXEE7KIcNnq5bfpEO5NmYAq3BRpYtbwdGQUskqnUxEHwCEB8twWfNe
+ g1Vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705664270; x=1706269070;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
-        b=m7CEGRffnIGYEzQBoykYRn9sOQBJK8m+vz9+nSPG8UOBNU70Fn6dfenkqORYddgSdo
-         yDiqDfaanYI9TWWc/tU9xtUaU0X3pkEC3u3OFlve3EqyvgxvtjS+Ma4/nccdVUikgCsy
-         WC3vNZWwZHZUIJdYK552qcaDuCrV9fOacCVcYPdJnoEBuBiPqcPd/pdXnana6V6sUe+T
-         XsfzJXxMEV/Cp+uiV7wn6EsxBS+98nf/LkTlZR/D7XlaDslXHQlskFV9xvqPI5zKPtn9
-         IwkxYJtbFArcfOFsFYuMcHYT+tCEQfBK8ovLrakJZQu9cFq+itYBbwv2ixU5/yYyyzea
-         2e2g==
-X-Gm-Message-State: AOJu0YyNCYPIlgoDcgJxPyLoQ2FSUZ7oUPrCAzE4rUYBA3pgSKS/afbQ
-	KXy2sBHaZbcVcNzdAZ72Q+Y+yJx7zZKgR5gW9V4O6lVRXoGV/X5cVST5UTWwV9OJCQ==
-X-Google-Smtp-Source: AGHT+IFyTbs9SjNe0bzDqWuc52RujTUb9c4usvahIXvdRm1GAXWN+0NECvsNYTHwwL2fqfD9VRtwkQ==
-X-Received: by 2002:a7b:cc88:0:b0:40e:6207:2ecf with SMTP id p8-20020a7bcc88000000b0040e62072ecfmr1314432wma.10.1705664270639;
-        Fri, 19 Jan 2024 03:37:50 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (91-163-26-170.subs.proxad.net. [91.163.26.170])
-        by smtp.gmail.com with ESMTPSA id hg14-20020a05600c538e00b0040e5cf9a6c7sm29076314wmb.13.2024.01.19.03.37.49
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 19 Jan 2024 03:37:50 -0800 (PST)
+ d=1e100.net; s=20230601; t=1705664140; x=1706268940;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1kHSnHH1cspbXUMLrjnX00ivshEejOmgJvy2gqACDDE=;
+ b=q/r680D+xUTCpDU0gMM2PmBUkrw3ul1bYnB6WaLCYs2DeHQrneMC5tvLpaHwuswwRL
+ W3NxWKrgEDLc+suyu4qWI+nxAUtg33CEpTKQ1UoRDHi/dYaM2c6lnzakIWqtL0xLRfd6
+ jYkTQUaEnACiu423a0xtzXOccU4vsPv8MqgJNUgFc461RqjkxE3ypIsrnBNFIA8qzRm3
+ 35mof5x8ciXAxwgbeA9c04RtjW4PyBkulG8w3EzPctSvnqNvK6HrsjR2x4W/wtsuALG8
+ d51HsIw0/XV6kG5KHsGC72uj+uELTU79ZTDgMToYmob0TC9lpIJqNzN6/NAOiQ5WKM3j
+ uWjA==
+X-Gm-Message-State: AOJu0Yw3J+op4vio+kJwiUizranS3yqFbKw5RmQB7725uqqSdpXLF+hI
+ f6nfl5jnzcNv83TK+jmmle+0B5ORSsDw2RxCmMkjYafGUHLpfyE4r4FNBL/H5AQ=
+X-Received: by 2002:a05:600c:5697:b0:40e:9d7f:d00f with SMTP id
+ jt23-20020a05600c569700b0040e9d7fd00fmr501059wmb.122.1705664140557; 
+ Fri, 19 Jan 2024 03:35:40 -0800 (PST)
+Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
+ [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
+ r7-20020a05600c35c700b0040d1bd0e716sm28955617wmq.9.2024.01.19.03.35.39
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 19 Jan 2024 03:35:40 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	Bibo Mao <maobibo@loongson.cn>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PULL 36/36] configure: Add linux header compile support for LoongArch
-Date: Fri, 19 Jan 2024 12:35:05 +0100
-Message-ID: <20240119113507.31951-37-philmd@linaro.org>
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 07/36] accel/tcg: Remove unused tb_invalidate_phys_addr()
+Date: Fri, 19 Jan 2024 12:34:36 +0100
+Message-ID: <20240119113507.31951-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: H9XdP59VvgGg
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UOSYVo0WIEkE
 
-From: Bibo Mao <maobibo@loongson.cn>
+Commit e3f7c801f1 introduced the TCGCPUOps::debug_check_breakpoint()
+handler, and commit 10c37828b2 "moved breakpoint recognition outside
+of translation", so "we no longer need to flush any TBs when changing
+BPs".
 
-When compiling qemu with system KVM mode for LoongArch, header files
-in directory linux-headers/asm-loongarch should be used firstly.
-Otherwise it fails to find kvm.h on system with old glibc, since
-latest kernel header files are not installed.
+The last target using tb_invalidate_phys_addr() was converted to the
+debug_check_breakpoint(), so this function is now unused. Remove it.
 
-This patch adds linux_arch definition for LoongArch system so that
-header files in directory linux-headers/asm-loongarch can be included.
-
-Fixes: 714b03c125 ("target/loongarch: Add loongarch kvm into meson build")
-Signed-off-by: Bibo Mao <maobibo@loongson.cn>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240116013952.264474-1-maobibo@loongson.cn>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231130203241.31099-1-philmd@linaro.org>
 ---
- configure | 1 +
- 1 file changed, 1 insertion(+)
+ include/exec/exec-all.h |  5 -----
+ cpu-target.c            | 29 -----------------------------
+ 2 files changed, 34 deletions(-)
 
-diff --git a/configure b/configure
-index 21ab9a64e9..3d8e24ae01 100755
---- a/configure
-+++ b/configure
-@@ -445,6 +445,7 @@ case "$cpu" in
-   loongarch*)
-     cpu=loongarch64
-     host_arch=loongarch64
-+    linux_arch=loongarch
-     ;;
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index ee90ef122b..df3d93a2e2 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -518,11 +518,6 @@ static inline void tb_set_page_addr1(TranslationBlock *tb,
+ uint32_t curr_cflags(CPUState *cpu);
  
-   mips64*)
+ /* TranslationBlock invalidate API */
+-#if defined(CONFIG_USER_ONLY)
+-void tb_invalidate_phys_addr(hwaddr addr);
+-#else
+-void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs);
+-#endif
+ void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
+ void tb_invalidate_phys_range(tb_page_addr_t start, tb_page_addr_t last);
+ void tb_set_jmp_target(TranslationBlock *tb, int n, uintptr_t addr);
+diff --git a/cpu-target.c b/cpu-target.c
+index 5eecd7ea2d..d51adfd7e3 100644
+--- a/cpu-target.c
++++ b/cpu-target.c
+@@ -314,35 +314,6 @@ void list_cpus(void)
+     cpu_list();
+ }
+ 
+-#if defined(CONFIG_USER_ONLY)
+-void tb_invalidate_phys_addr(hwaddr addr)
+-{
+-    mmap_lock();
+-    tb_invalidate_phys_page(addr);
+-    mmap_unlock();
+-}
+-#else
+-void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr, MemTxAttrs attrs)
+-{
+-    ram_addr_t ram_addr;
+-    MemoryRegion *mr;
+-    hwaddr l = 1;
+-
+-    if (!tcg_enabled()) {
+-        return;
+-    }
+-
+-    RCU_READ_LOCK_GUARD();
+-    mr = address_space_translate(as, addr, &addr, &l, false, attrs);
+-    if (!(memory_region_is_ram(mr)
+-          || memory_region_is_romd(mr))) {
+-        return;
+-    }
+-    ram_addr = memory_region_get_ram_addr(mr) + addr;
+-    tb_invalidate_phys_page(ram_addr);
+-}
+-#endif
+-
+ /* enable or disable single step mode. EXCP_DEBUG is returned by the
+    CPU loop after each instruction */
+ void cpu_single_step(CPUState *cpu, int enabled)
 -- 
 2.41.0
+

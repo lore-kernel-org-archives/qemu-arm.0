@@ -1,117 +1,119 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881358ejg;
-        Fri, 19 Jan 2024 03:42:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHDEYurMD06A/B99fyd58VeesrJqZmrNAqNgK+yJ4hhdSW8c9OuYBPqeWpF4QR+pwPEq9PQ
-X-Received: by 2002:ac8:5fc2:0:b0:429:f674:4e79 with SMTP id k2-20020ac85fc2000000b00429f6744e79mr2459579qta.127.1705664573437;
-        Fri, 19 Jan 2024 03:42:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664573; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881573ejg;
+        Fri, 19 Jan 2024 03:43:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IETI145BauEJ6CMEJS5Cn3lV6gjENiPnpwQBVL4yDFIqas1uIPcx2divgb77Mv3CmUlz0yP
+X-Received: by 2002:ac8:7c4d:0:b0:429:f64f:72fa with SMTP id o13-20020ac87c4d000000b00429f64f72famr2827786qtv.118.1705664599971;
+        Fri, 19 Jan 2024 03:43:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664599; cv=none;
         d=google.com; s=arc-20160816;
-        b=AhUU9N6H8OTYAs1jUz81Q9QtbVDjFITnRCryRrIzISDfXpryNXSCjtw2fbvWD3GzKp
-         rT/d2HTnE2dUpXy1D2KapcXeRkFks5Jdvnx0113D9LjBLSrNYqvbIqllptvVOtxTdLq3
-         6YCS0G4PTFBFArfkBJa4y2JoC0chwmN37/DYBuHOkQTJgDwOHeWejC22c7SDx2AO5WAU
-         rD/GxsowclJMRsIHMTGx11AbHYO216tK+MdsTOQKxbCL2LAc6BIcLWCgWNbAh7Ytt2Vi
-         lDQ3qZNXYRPznNn+h1AFS400eHhvVSDN7RfcZOE5UzBDPsYp98U2tJ9L38UI8OWGPmIX
-         ylcg==
+        b=Z0ya792ZyS5RD7htzxz+aC5oASFGQWdPjIGJd/09pxSn6ozpOH5oixe442rwBFRSif
+         XVYVmnh9nYMbBueihRlEaMK7+MvrLTNpYNL5IP++WwkmUoTOty6RkWJPN4tU5fuWS2GD
+         Oy2dA2PBg9a3vygC482aPvk5VmsVMUupvZe3WjQaVZA7/FA+FNrj/2v3DXDd3U1W83mQ
+         tbVXYsP+CIvWf2U4vE9MlRfBGo4ds3PynEm75/FvuQyyA3Ooa2h92f3exNkEW/79QlDq
+         zwnkq18Xgl4o7Pbb0d7iUgXv6O9DRJLLFj4yCd3LB1GfisnsL3bzBjAwNoNTCBHmNCMo
+         FOmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=n/Q3pfm39hWlzYJ6LfMyGawyaAzdsP1AW7mdF4S9bfM=;
-        fh=shBiktBRRICBjJuyah2fF4bkBU1YvsgMKrbdhZxP1OE=;
-        b=arQKiYZvcocL+gElaHBnyj+ccCaXosmALyama3AAKy9HP88EW27+zylBAPMdaf84i+
-         r9UHfl6cafx0xxiVVeLK95O1mckSpcgTu5aSDxS7chofQ1PiA572rN/ptX9iT4c0EnGs
-         /a3RW73qy7VbVtf6AVF15fjFV4kuJwGP+mc8pXIJJBZsXMOQHeXB9hJvI0bbmhI5ne9W
-         2JG1AUV7FdNMeTy7sWQvpQvrWPoDpco4hArWQ3gKPced5pzF7ecrDdTtasM/EWd5/F9S
-         JN7kJw+g97cR4xP71KEu47r2cYsaBN+rLFre00mQWcuCyfNMbuXfKxj+ZmZf+FIQQmz2
-         /cEg==
+        bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
+        fh=0x3oxSDM+3B1iq7MNcEDPiiYDxF4jnBXeQY/LXh8Yxc=;
+        b=n/P2VeuDTKoGA7N4MTqrvVD8kS2b3b+DpNMwjvDCx826XZFMqa5hRRI3h0ismu6DL/
+         nTco6JPK04g+VZRLDf4NR/x/LniSLjNPXpKNXW1Cork0mUbdPqEv5ReNFQ471AZPt8OS
+         mM+Uux/exTQxGz54yk1Jk2ztRzFY07z3vCnOF9sLxldXh0EQHRV3zNK46UXMJO9zVUSV
+         XptwUN3nELbnhdyg1qdhf8jDPvxY9Gj2b7kAI2AwR7xeUE0jlKKhpmOdtK5U2p0jVUaP
+         XrYQ2r6Y4nFMpYkOq0f3TWhPmkc2X6EyaG6teU5lAyaMuWwt3j5nB2lIvxoabzO32pME
+         e8nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgU6DI2R;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eMGH+etL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18-20020ac85792000000b0042a220f0cacsi2088696qta.650.2024.01.19.03.42.53
+        by mx.google.com with ESMTPS id v19-20020a05620a441300b0078363796704si9270979qkp.225.2024.01.19.03.43.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:42:53 -0800 (PST)
+        Fri, 19 Jan 2024 03:43:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgU6DI2R;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eMGH+etL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQnBz-0007fo-C8; Fri, 19 Jan 2024 06:37:47 -0500
+	id 1rQnBD-0004XE-1x; Fri, 19 Jan 2024 06:36:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBx-0007dM-V0
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:45 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnB5-0004B1-V0
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:54 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBv-00039Y-LN
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:45 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-339208f5105so415971f8f.1
- for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:37:43 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnB3-0002sE-LP
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:51 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-337cf4ac600so523952f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:36:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664262; x=1706269062; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664208; x=1706269008; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=n/Q3pfm39hWlzYJ6LfMyGawyaAzdsP1AW7mdF4S9bfM=;
- b=tgU6DI2R7DAufztizGNRFOpv2bR9xY1LfcIVKjlQwgkykRVT7kz3H13UIoi0IUev6o
- jqiFwliRmxSOu6OOQNuckiwda+IJGaGYy8tNcHHXLuCVqRM499NjZW4hz8a/ms4OUea0
- Qo5CwBN26PGbff4MtchTwFcqogmOHl1pDp7OVTV+Xg4Vf1K9kk95AfYbBgeYezsTiWR2
- +D6e79dfdJmzT7e0F2LShd2xMystgWAHM3rYsc4+zvjNJQ5QZ6zZdonSuHWr1CstML9j
- g8WNsx/UoYr4JY3YjJDflYKLmoMSHskHQCOOstbYdqLBHv2Y50whhdFgRanXcBeM6Lgn
- BcgQ==
+ bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
+ b=eMGH+etLp6duFlqp5ln+QKjiKcOonNqAI15qO9z0NxECN5Sh6hhaW3Iu4l9k18s8gw
+ EvmstfaLIMxrIo16NW7mnlMPOAHf4HQup7R3rjeA57ZtmCV69LPDpYlzUispLRuPIU9P
+ WgB+mfIEEVxo4ygpeQii6fT/QgPxoi+IUZUBWYrgBCPFmPs0msTsEwL9rOtiGLzHVF39
+ vWePDqYGy5tEO5ADXg14pKOWKF1dCSsmbR7pmN88EuH6PV9E64Im7r6yOfu4EYALnbN9
+ Sq5j1XoquS8fINiepYl6EoWkObuFwNjQr1NzbM77nC5AI0VG8HjzxEMNfxcFVEg+g62D
+ 4oqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664262; x=1706269062;
+ d=1e100.net; s=20230601; t=1705664208; x=1706269008;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=n/Q3pfm39hWlzYJ6LfMyGawyaAzdsP1AW7mdF4S9bfM=;
- b=VaEug4Zcm/xCi1nl6JiXZDrX2J7UkxKitH1g5J69sXBahuv59XEtYgrRXbO1Fwkiqp
- aBltUkPvWiUrTsy4USLtsW0YKsVcq/E5CMfBbJYbIIzgxWLx76jlNKpooZel65NVBqO1
- lUAxpdCEWVD+BQUBugaJwZYzNiNBbD6+nyx3GmdJCdGEsbx8sc7evI7XPZUXt7y3JF8D
- sQRozGAP33dHg9Il71VodFNWFEp3d0FV5NOV+LKhgZmDmagL2S2g1o9ys16zqFAn7B0c
- KC9jpjRTWseInLUurdkjQtjRDkLsBReil8LKfKlOWEc3AoG4hF686Z9neYGSGmCtAOQV
- vcGQ==
-X-Gm-Message-State: AOJu0YwcCY/UbVL96gLF2OZnkxmSxxkWT/BpVARPCTHVU8/VHTi5xrgk
- WpQKFSsiJaBNSrnkAQAtO2YLcrBrY6HIiYau/RwqdzLgRam8Fv8yyZBOHZN2zUM+qEBzEhcy5U5
- RSPeyWw==
-X-Received: by 2002:adf:b319:0:b0:337:61eb:2880 with SMTP id
- j25-20020adfb319000000b0033761eb2880mr884157wrd.88.1705664261827; 
- Fri, 19 Jan 2024 03:37:41 -0800 (PST)
+ bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
+ b=pwGudgNa4rycsPrSMeAYDy9eHRer1q0KXEVe6NiKlC06a5MXCnWcfGGwYEkoDSH+qX
+ 6deEKvD7Q+jusbQZTxcljhl+C1gc3sJ2El5WxxQCWJ9WLlBTiAOB8kPoKNlhCYR7BgGs
+ ZAznLFaxplw0EJEEutICXTmoWxOaVY2Vy8bAGs8vJM0krhz5u4PkOeHNrSJcA3H51ujI
+ AlGfApx9r6o4sv+KMcePvmBne6tOBifOkwyCUdLi3qKKh6c7ZgVJavXafeyt7sTr2g5P
+ Yc7/dBgxSMU7fP1x+eO9gbZ4OSeMUrAYRDswH1nay46IcKmp+aW8pZyJPGY1HgYAnOp6
+ Vv2w==
+X-Gm-Message-State: AOJu0Yz3n2wy33FvhUId4aWFG1/gohikU/aofEHegY0RxrfvE7S96Z3a
+ a9UcW3vXAJ9ITbZFQSsWvZID74TZtVodAq1sh7wUd9HlvSFv3Xn66uNa/wCIun+kpvYYUrTW4wb
+ YFg9PlA==
+X-Received: by 2002:adf:f50e:0:b0:332:e667:4277 with SMTP id
+ q14-20020adff50e000000b00332e6674277mr1280379wro.40.1705664207710; 
+ Fri, 19 Jan 2024 03:36:47 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- n7-20020adff087000000b00337bb0f370dsm6313156wro.40.2024.01.19.03.37.41
+ c9-20020adfe749000000b003368d2e729bsm6307532wrn.43.2024.01.19.03.36.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:37:41 -0800 (PST)
+ Fri, 19 Jan 2024 03:36:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, Raphael Norwitz <raphael.norwitz@nutanix.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 34/36] MAINTAINERS: Update Raphael Norwitz email
-Date: Fri, 19 Jan 2024 12:35:03 +0100
-Message-ID: <20240119113507.31951-35-philmd@linaro.org>
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 22/36] system/watchpoint: Move TCG specific code to accel/tcg/
+Date: Fri, 19 Jan 2024 12:34:51 +0100
+Message-ID: <20240119113507.31951-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,34 +128,323 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S4b+nGNQMQYR
+X-TUID: HU7YBtCcK50b
 
-From: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Keep system/watchpoint.c accelerator-agnostic by moving
+TCG specific code to accel/tcg/watchpoint.c. Update meson.
 
-I will be leaving Nutanix so updating my email in MAINTAINERS to my
-personal email for now.
-
-Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240111192846.111699-1-raphael.norwitz@nutanix.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240111162032.43378-1-philmd@linaro.org>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ accel/tcg/watchpoint.c | 143 +++++++++++++++++++++++++++++++++++++++++
+ system/watchpoint.c    | 124 -----------------------------------
+ accel/tcg/meson.build  |   1 +
+ 3 files changed, 144 insertions(+), 124 deletions(-)
+ create mode 100644 accel/tcg/watchpoint.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8e8ca270c4..760acdea66 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2555,7 +2555,7 @@ F: include/hw/virtio/virtio-gpu.h
- F: docs/system/devices/virtio-gpu.rst
+diff --git a/accel/tcg/watchpoint.c b/accel/tcg/watchpoint.c
+new file mode 100644
+index 0000000000..d3aab11458
+--- /dev/null
++++ b/accel/tcg/watchpoint.c
+@@ -0,0 +1,143 @@
++/*
++ * CPU watchpoints
++ *
++ *  Copyright (c) 2003 Fabrice Bellard
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/main-loop.h"
++#include "qemu/error-report.h"
++#include "exec/exec-all.h"
++#include "exec/translate-all.h"
++#include "sysemu/tcg.h"
++#include "sysemu/replay.h"
++#include "hw/core/tcg-cpu-ops.h"
++#include "hw/core/cpu.h"
++
++/*
++ * Return true if this watchpoint address matches the specified
++ * access (ie the address range covered by the watchpoint overlaps
++ * partially or completely with the address range covered by the
++ * access).
++ */
++static inline bool watchpoint_address_matches(CPUWatchpoint *wp,
++                                              vaddr addr, vaddr len)
++{
++    /*
++     * We know the lengths are non-zero, but a little caution is
++     * required to avoid errors in the case where the range ends
++     * exactly at the top of the address space and so addr + len
++     * wraps round to zero.
++     */
++    vaddr wpend = wp->vaddr + wp->len - 1;
++    vaddr addrend = addr + len - 1;
++
++    return !(addr > wpend || wp->vaddr > addrend);
++}
++
++/* Return flags for watchpoints that match addr + prot.  */
++int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len)
++{
++    CPUWatchpoint *wp;
++    int ret = 0;
++
++    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
++        if (watchpoint_address_matches(wp, addr, len)) {
++            ret |= wp->flags;
++        }
++    }
++    return ret;
++}
++
++/* Generate a debug exception if a watchpoint has been hit.  */
++void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
++                          MemTxAttrs attrs, int flags, uintptr_t ra)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++    CPUWatchpoint *wp;
++
++    assert(tcg_enabled());
++    if (cpu->watchpoint_hit) {
++        /*
++         * We re-entered the check after replacing the TB.
++         * Now raise the debug interrupt so that it will
++         * trigger after the current instruction.
++         */
++        bql_lock();
++        cpu_interrupt(cpu, CPU_INTERRUPT_DEBUG);
++        bql_unlock();
++        return;
++    }
++
++    if (cc->tcg_ops->adjust_watchpoint_address) {
++        /* this is currently used only by ARM BE32 */
++        addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
++    }
++
++    assert((flags & ~BP_MEM_ACCESS) == 0);
++    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
++        int hit_flags = wp->flags & flags;
++
++        if (hit_flags && watchpoint_address_matches(wp, addr, len)) {
++            if (replay_running_debug()) {
++                /*
++                 * replay_breakpoint reads icount.
++                 * Force recompile to succeed, because icount may
++                 * be read only at the end of the block.
++                 */
++                if (!cpu->neg.can_do_io) {
++                    /* Force execution of one insn next time.  */
++                    cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
++                    cpu_loop_exit_restore(cpu, ra);
++                }
++                /*
++                 * Don't process the watchpoints when we are
++                 * in a reverse debugging operation.
++                 */
++                replay_breakpoint();
++                return;
++            }
++
++            wp->flags |= hit_flags << BP_HIT_SHIFT;
++            wp->hitaddr = MAX(addr, wp->vaddr);
++            wp->hitattrs = attrs;
++
++            if (wp->flags & BP_CPU
++                && cc->tcg_ops->debug_check_watchpoint
++                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
++                wp->flags &= ~BP_WATCHPOINT_HIT;
++                continue;
++            }
++            cpu->watchpoint_hit = wp;
++
++            mmap_lock();
++            /* This call also restores vCPU state */
++            tb_check_watchpoint(cpu, ra);
++            if (wp->flags & BP_STOP_BEFORE_ACCESS) {
++                cpu->exception_index = EXCP_DEBUG;
++                mmap_unlock();
++                cpu_loop_exit(cpu);
++            } else {
++                /* Force execution of one insn next time.  */
++                cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
++                mmap_unlock();
++                cpu_loop_exit_noexc(cpu);
++            }
++        } else {
++            wp->flags &= ~BP_WATCHPOINT_HIT;
++        }
++    }
++}
+diff --git a/system/watchpoint.c b/system/watchpoint.c
+index b76007ebf6..2aa2a9ea63 100644
+--- a/system/watchpoint.c
++++ b/system/watchpoint.c
+@@ -18,13 +18,8 @@
+  */
  
- vhost-user-blk
--M: Raphael Norwitz <raphael.norwitz@nutanix.com>
-+M: Raphael Norwitz <raphael.s.norwitz@gmail.com>
- S: Maintained
- F: contrib/vhost-user-blk/
- F: contrib/vhost-user-scsi/
+ #include "qemu/osdep.h"
+-#include "qemu/main-loop.h"
+ #include "qemu/error-report.h"
+ #include "exec/exec-all.h"
+-#include "exec/translate-all.h"
+-#include "sysemu/tcg.h"
+-#include "sysemu/replay.h"
+-#include "hw/core/tcg-cpu-ops.h"
+ #include "hw/core/cpu.h"
+ 
+ /* Add a watchpoint.  */
+@@ -103,122 +98,3 @@ void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
+         }
+     }
+ }
+-
+-#ifdef CONFIG_TCG
+-
+-/*
+- * Return true if this watchpoint address matches the specified
+- * access (ie the address range covered by the watchpoint overlaps
+- * partially or completely with the address range covered by the
+- * access).
+- */
+-static inline bool watchpoint_address_matches(CPUWatchpoint *wp,
+-                                              vaddr addr, vaddr len)
+-{
+-    /*
+-     * We know the lengths are non-zero, but a little caution is
+-     * required to avoid errors in the case where the range ends
+-     * exactly at the top of the address space and so addr + len
+-     * wraps round to zero.
+-     */
+-    vaddr wpend = wp->vaddr + wp->len - 1;
+-    vaddr addrend = addr + len - 1;
+-
+-    return !(addr > wpend || wp->vaddr > addrend);
+-}
+-
+-/* Return flags for watchpoints that match addr + prot.  */
+-int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len)
+-{
+-    CPUWatchpoint *wp;
+-    int ret = 0;
+-
+-    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
+-        if (watchpoint_address_matches(wp, addr, len)) {
+-            ret |= wp->flags;
+-        }
+-    }
+-    return ret;
+-}
+-
+-/* Generate a debug exception if a watchpoint has been hit.  */
+-void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+-                          MemTxAttrs attrs, int flags, uintptr_t ra)
+-{
+-    CPUClass *cc = CPU_GET_CLASS(cpu);
+-    CPUWatchpoint *wp;
+-
+-    assert(tcg_enabled());
+-    if (cpu->watchpoint_hit) {
+-        /*
+-         * We re-entered the check after replacing the TB.
+-         * Now raise the debug interrupt so that it will
+-         * trigger after the current instruction.
+-         */
+-        bql_lock();
+-        cpu_interrupt(cpu, CPU_INTERRUPT_DEBUG);
+-        bql_unlock();
+-        return;
+-    }
+-
+-    if (cc->tcg_ops->adjust_watchpoint_address) {
+-        /* this is currently used only by ARM BE32 */
+-        addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
+-    }
+-
+-    assert((flags & ~BP_MEM_ACCESS) == 0);
+-    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
+-        int hit_flags = wp->flags & flags;
+-
+-        if (hit_flags && watchpoint_address_matches(wp, addr, len)) {
+-            if (replay_running_debug()) {
+-                /*
+-                 * replay_breakpoint reads icount.
+-                 * Force recompile to succeed, because icount may
+-                 * be read only at the end of the block.
+-                 */
+-                if (!cpu->neg.can_do_io) {
+-                    /* Force execution of one insn next time.  */
+-                    cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
+-                    cpu_loop_exit_restore(cpu, ra);
+-                }
+-                /*
+-                 * Don't process the watchpoints when we are
+-                 * in a reverse debugging operation.
+-                 */
+-                replay_breakpoint();
+-                return;
+-            }
+-
+-            wp->flags |= hit_flags << BP_HIT_SHIFT;
+-            wp->hitaddr = MAX(addr, wp->vaddr);
+-            wp->hitattrs = attrs;
+-
+-            if (wp->flags & BP_CPU
+-                && cc->tcg_ops->debug_check_watchpoint
+-                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
+-                wp->flags &= ~BP_WATCHPOINT_HIT;
+-                continue;
+-            }
+-            cpu->watchpoint_hit = wp;
+-
+-            mmap_lock();
+-            /* This call also restores vCPU state */
+-            tb_check_watchpoint(cpu, ra);
+-            if (wp->flags & BP_STOP_BEFORE_ACCESS) {
+-                cpu->exception_index = EXCP_DEBUG;
+-                mmap_unlock();
+-                cpu_loop_exit(cpu);
+-            } else {
+-                /* Force execution of one insn next time.  */
+-                cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
+-                mmap_unlock();
+-                cpu_loop_exit_noexc(cpu);
+-            }
+-        } else {
+-            wp->flags &= ~BP_WATCHPOINT_HIT;
+-        }
+-    }
+-}
+-
+-#endif /* CONFIG_TCG */
+diff --git a/accel/tcg/meson.build b/accel/tcg/meson.build
+index d25638d6c1..c15ac9ac8f 100644
+--- a/accel/tcg/meson.build
++++ b/accel/tcg/meson.build
+@@ -24,6 +24,7 @@ specific_ss.add_all(when: 'CONFIG_TCG', if_true: tcg_ss)
+ 
+ specific_ss.add(when: ['CONFIG_SYSTEM_ONLY', 'CONFIG_TCG'], if_true: files(
+   'cputlb.c',
++  'watchpoint.c',
+ ))
+ 
+ system_ss.add(when: ['CONFIG_TCG'], if_true: files(
 -- 
 2.41.0
 

@@ -1,167 +1,145 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp937537ejg;
-        Fri, 19 Jan 2024 05:24:59 -0800 (PST)
-X-Received: by 2002:a2e:91c6:0:b0:2cd:24e9:731c with SMTP id u6-20020a2e91c6000000b002cd24e9731cmr1399270ljg.46.1705670699134;
-        Fri, 19 Jan 2024 05:24:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705670699; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp1063758ejg;
+        Fri, 19 Jan 2024 08:51:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFm+fP7bLguIemdFxU3IVDCrojD+mpj2xoAX8Udz/9+zYXm9dGmqEN4BWm4ADIrHlPo80PY
+X-Received: by 2002:a05:622a:15cb:b0:42a:1556:8475 with SMTP id d11-20020a05622a15cb00b0042a15568475mr102232qty.117.1705683117643;
+        Fri, 19 Jan 2024 08:51:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705683117; cv=none;
         d=google.com; s=arc-20160816;
-        b=A61yHm9fzpoBkqGxsyY4hQOrV1Q21r5E2tIY27iC9Z/gAqsaLHaZgB7K6vorPl5nMw
-         2lM+RZO1Ide+UMeO6lOPF/tJjEx9bXpBMTueNDXOYx1EkIkwRTu7csx20oUTXElsqp19
-         L0XsRYxeQB+z0Wb1i+N3N7qx9pmPw5qc5itXxx9KC8weF4HbYQvWQ/jNHxXbhRLZjUDL
-         De9GCRP8VsklB5s6kNlZVBC7x1vjpypphswvrGtw0DJ0y0NQ0EUFs3NDF2nczm59sqKb
-         SVRrYissTL6Q0ifTpoWJTWRdoabzWMiD8ShQBTl7ShyfqbGaMUm67ZgWJ7/uKeFqSPMq
-         R3Aw==
+        b=I/9hBXIzecx8Dtk+TrrzZkL515wxSUrXPr1L1dYZJwzsTEvBF7JWKsHlyhV6J87rgQ
+         MhCCJ1/MVh5xtTjuQJXTVMGykp4kdDulQeO2ho5Nv/5WtbdKlCflRAs/8Uxbn72/Voyv
+         TL3VhVgT0Ui4BQGxqK76RSxYVCm59XAqlclxHPd+CiC6HghAxzVEOgVAl8GTrssxKNQ8
+         8RHc0nXHa1X8iiUcsQn4mY3sn9/L+GjfaVaAdiXd5YxGngmPzDTvbunh3RzZQ8sxg+QS
+         uhwCbvNg6sXH615DV9/48UtFBXmjgunuUKY6WtWUdYUY5wn2aFW430Q4A2Az1spiZEK4
+         a1LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YfuQXxmvX9JAP4TN/xfu2dZ/IwBEFTowVO1pKbfDK8M=;
-        fh=lJw5UzM6ifQszfT4HEcQjHZ3kAdCqWnl2xV8CLz9k2o=;
-        b=bI6hHisBK17ff04hl2bQ2pp5s/CowQeZL71+Lg8fSi8ZgfQ9t3Y64LjMnBlUPkhSvz
-         7sW/I/MitYOr+TBV6tCaEtMoRl4xEaUrdeazhZzixtwT3qpLyHZ3XfmuyLjxWZTmm57t
-         6c6T6HNPnWx5YW82/lDX2LFziwmPIUKm9mkL00C+fAhNBE0rIJym6bwldBxp2uQx0QTR
-         FNoIClh8qrs3m9w+znWbD3gSJEerAGN/GfF7efhvEz3dTpaHfRrJDmuj/1pFbBvhyJmh
-         IuIF+LGErkw3R3radDy2tc3iLVre2DDvOB+SOiLYmLiuXg7TjxUw95hAlgTB8ndHNJEK
-         3ikg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=99GGFKJsGkqxZjzf6eaXDRk+uN38Nnj8b78hLWlyNfM=;
+        fh=R0Uk93c2UowJAnA8LybPaViTSfjsv755BgrHgmmG7As=;
+        b=JUJn8tW2D9AwSego7xbh2PiC3tvVS/EXVljT6hm00ihmY9MikuNuawv+Kdq8R2v0Ya
+         Ifdvq/xnx9+oFQPLYA41RGA5XtKK6Sa6FIb9JeNNi8/Nm3sqxq7kztMKIqOd2bWJfW+/
+         onVX7U+h2VmK48gjQND2HyhB724Dsk6VOoREVM3gg7MC87iITq0RfhY7BzOx0wXd7xST
+         F4zKDoqFhC1ms5CSA8GV8vFYb4FvJCAcsuM4+/bHcU4UkhAPcj18xssZBbaCoIi+m6OG
+         kDf6QIX1mf5wqZTUFIYCI8/8rW0+jL0h/9MCkmI8SPQAGe1oqUEOvG2Rkcecrcwu6nuF
+         4yNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RJFffjt9;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SngrvfWJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i25-20020aa7c719000000b0055a73d102e2sor83989edq.3.2024.01.19.05.24.59
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 22-20020ac85756000000b0042a2bcbff97si361028qtx.166.2024.01.19.08.51.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jan 2024 05:24:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jan 2024 08:51:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RJFffjt9;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SngrvfWJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQs5W-000332-Ld; Fri, 19 Jan 2024 11:51:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rQs5U-00032b-0Y
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 11:51:24 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rQs5R-0004YY-K2
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 11:51:23 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-55a684acf92so829493a12.0
+ for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 08:51:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705670699; x=1706275499; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YfuQXxmvX9JAP4TN/xfu2dZ/IwBEFTowVO1pKbfDK8M=;
-        b=RJFffjt9XAfd/pIoKUlHYSjgYG3lMxrQLE2SyrKMUEkep2ECMzAOci95/7gfQxsQmE
-         mdgv6fIGtgtlI5y+O0qvv57csS4rMI0J4UFp9S5qNn7ZfLOax9uFMvRX6ye8nRsncNFI
-         TOmy5V6JLZmUn08EP4mnOJX22h66yVnwz3HWLhkSU0OVaIi2sSypZFed0cSqCiyokk/z
-         WQ5byhIcR1+gIFEgKB0uKo7laYyfIOvWB+WHa1Y97LmY6DxBa5QQiSZv/3TGboPpjoHH
-         AHtZzmbcGhCYNnMIxeN7QSU6GqcpYA7esj+uKXqgwMfdzb18CO+DDGAdVP23LrKSZlui
-         8QUQ==
+ d=linaro.org; s=google; t=1705683080; x=1706287880; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=99GGFKJsGkqxZjzf6eaXDRk+uN38Nnj8b78hLWlyNfM=;
+ b=SngrvfWJ+fNNPpO37pIrkqhgruXxhpuhuSvTQlQjOsQSASPstYgKjzFrlmTW5IVTxn
+ s0r+5dJ5Hj624ZCXursCHy8sKRGlIPwtcqctzfEe9yNxEQarZwJJml0d0IvfYx6vL8ZO
+ XntDXETPT3AswI2+jkZNWiYsvRzM3zXTfIhJXQSd/houiyJx+EU8U3eSut1VCddnOwlN
+ xEQxqTyyyq2Iy9kHpWDLve495Snk+FrmR2kEaswnx9peKhfynedM3E28OkPTWaSkbFfe
+ FX5pIJLHFb+EKnb1ZlyfXGVT6slGJkNygrK8DwX+sgNCw58YQHm8KP+BHB3gpRK+mr5C
+ ryKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705670699; x=1706275499;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YfuQXxmvX9JAP4TN/xfu2dZ/IwBEFTowVO1pKbfDK8M=;
-        b=QvnpUyPV2WVMO2aNSaZd/Atlyuq5Ejm7/qMcDL3Bw/yyQaI4qssByIOPrXvVOCwluV
-         Tiu6w+/qM8jeWFt47BAvin5BM3MN7qlyXCh/1WBg6iyn+tVDciAFIuKi+KOFVXSYHizF
-         Msv7x/e/edtBVZWHd6MP11sCHU9snY6ARV3dm/nFcYjCC+k7F1RZAALGfh+OGcBYLyJD
-         ttxKNO6d8LR+XqM56dy1qXgXOzqho0BQ3sYZdCLoub8k1lr1IhYQcblah8/iEY51qzAk
-         UWBrxXXtbp0HiWFgYsqAnltYXVr3W13ZOy92YXSvyqqy1aCpuBOCzuq2floDUUHfsHh6
-         7XNw==
-X-Gm-Message-State: AOJu0YwZ+9GaxI1Y3X6t0YHUFIAzZ2iVn6rbbXiCysc28X+ddl82CNmS
-	NWD1SQP2GggT9iswxqzPAQK7QSaZUWKxafOfVmeh4fwehjlrSguUdZijklbk2crQhw==
-X-Google-Smtp-Source: AGHT+IGSoNv5INVnSqko5OrH7zTf+jb7pBx9jX4flwfLWo+bpMWVQxBgd75egqiSm83wZgZZW9SGQA==
-X-Received: by 2002:a05:6402:c16:b0:55a:6086:7e1e with SMTP id co22-20020a0564020c1600b0055a60867e1emr457236edb.75.1705670698789;
-        Fri, 19 Jan 2024 05:24:58 -0800 (PST)
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from localhost.localdomain (adsl-138.37.6.1.tellas.gr. [37.6.1.138])
-        by smtp.gmail.com with ESMTPSA id b11-20020aa7dc0b000000b00558fc426affsm8568310edu.88.2024.01.19.05.24.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jan 2024 05:24:58 -0800 (PST)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	xen-devel@lists.xenproject.org
-Subject: [PATCH v2 5/5] hw/xen: convert stderr prints to error/warn reports
-Date: Fri, 19 Jan 2024 15:24:47 +0200
-Message-Id: <bf5504369023dc115f0d7a756c4c5254fa9cd10d.1705670342.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1705670342.git.manos.pitsidianakis@linaro.org>
-References: <cover.1705670342.git.manos.pitsidianakis@linaro.org>
+ d=1e100.net; s=20230601; t=1705683080; x=1706287880;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=99GGFKJsGkqxZjzf6eaXDRk+uN38Nnj8b78hLWlyNfM=;
+ b=itEicQqIGZnUFQUwhRpRcaBgg69czkkUHC6lVSfeKsl686ItGhS718yme6X3d23Ea4
+ lnwB0gnVsdYVjhQToYACtlGPzUlkv3y/Ao8K7xRV5zhw1CQ2jTHf8CeCijZd1oSnPf+N
+ l6RSTH7j0W8O06ZuxQ9vpsGNKrsSEX05oBTImka0uy/PHY01uOEnw884yYrq1O4IiaO4
+ vxUdQsISxAXIahoOjC1PjaLMJe4KDsBY0gYoRqpXGeuF00Jpbbvvz3Vccv/ibbE1zxQb
+ j1ujaGCYaKDQpx90emfQO376lfipW02y2eYXi+q3sI4HZxmpqkji7gLQuiO14jOhHuJ8
+ ksFA==
+X-Gm-Message-State: AOJu0YxXygwuaMeBLXASTg1EtpLRbF/5KH302lPVNMHZl57U5cFJshdP
+ jtVPmo8lBHKtblvMqUj66skjPxrcgrmZYv8rBifrwI6oG1ojdLfCizS8pSdkenMtfPTMTkX1KyD
+ K/CgX/zvrT4eglV1ELb+D67jU6HPCWzq4Fqc8BQ==
+X-Received: by 2002:a05:6402:3582:b0:55a:6d78:75ed with SMTP id
+ y2-20020a056402358200b0055a6d7875edmr29186edc.51.1705683079875; Fri, 19 Jan
+ 2024 08:51:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF8
-Content-Transfer-Encoding: 8bit
-X-TUID: +Jtx2o7rdP0J
+References: <20240115165615.78323-1-philmd@linaro.org>
+In-Reply-To: <20240115165615.78323-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Jan 2024 16:51:09 +0000
+Message-ID: <CAFEAcA9abVk_BvWYE6ctcsLrk0CP=aqy38ncgxNrooNroe_1mA@mail.gmail.com>
+Subject: Re: [PATCH 0/2] hw/arm: Unconditionally map MMIO-based USB host
+ controllers
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ qemu-arm@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DThxclQzyXk5
 
-According to the QEMU Coding Style document:
+On Mon, 15 Jan 2024 at 16:56, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> When a chipset contain a USB controller, we can not simply
+> remove it. We could disable it, but that requires more changes
+> this series isn't aiming for. For more context:
+> https://lore.kernel.org/qemu-devel/56fde49f-7dc6-4f8e-9bbf-0336a20a9ebf@r=
+oeck-us.net/
+>
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   hw/arm/allwinner-a10: Unconditionally map the USB Host controllers
+>   hw/arm/nseries: Unconditionally map the TUSB6010 USB Host controller
+>
 
-> Do not use printf(), fprintf() or monitor_printf(). Instead, use
-> error_report() or error_vreport() from error-report.h. This ensures the
-> error is reported in the right place (current monitor or stderr), and in
-> a uniform format.
-> Use error_printf() & friends to print additional information.
 
-This commit changes fprintfs that report warnings and errors to the
-appropriate report functions.
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- hw/xen/xen-hvm-common.c | 12 ++++++------
- hw/xen/xen-mapcache.c   |  5 ++---
- 2 files changed, 8 insertions(+), 9 deletions(-)
+Applied to target-arm.next, thanks.
 
-diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index 05a29c6f11..baa1adb9f2 100644
---- a/hw/xen/xen-hvm-common.c
-+++ b/hw/xen/xen-hvm-common.c
-@@ -20,8 +20,8 @@ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
- 
-     if (runstate_check(RUN_STATE_INMIGRATE)) {
-         /* RAM already populated in Xen */
--        fprintf(stderr, "%s: do not alloc "RAM_ADDR_FMT
--                " bytes of ram at "RAM_ADDR_FMT" when runstate is INMIGRATE\n",
-+        warn_report("%s: do not alloc "RAM_ADDR_FMT
-+                " bytes of ram at "RAM_ADDR_FMT" when runstate is INMIGRATE",
-                 __func__, size, ram_addr);
-         return;
-     }
-@@ -552,9 +552,9 @@ static void cpu_handle_ioreq(void *opaque)
-         req->data = copy.data;
- 
-         if (req->state != STATE_IOREQ_INPROCESS) {
--            fprintf(stderr, "Badness in I/O request ... not in service?!: "
-+            warn_report("Badness in I/O request ... not in service?!: "
-                     "%x, ptr: %x, port: %"PRIx64", "
--                    "data: %"PRIx64", count: %u, size: %u, type: %u\n",
-+                    "data: %"PRIx64", count: %u, size: %u, type: %u",
-                     req->state, req->data_is_ptr, req->addr,
-                     req->data, req->count, req->size, req->type);
-             destroy_hvm_domain(false);
-@@ -758,9 +758,9 @@ void xen_shutdown_fatal_error(const char *fmt, ...)
-     va_list ap;
- 
-     va_start(ap, fmt);
--    vfprintf(stderr, fmt, ap);
-+    error_vreport(fmt, ap);
-     va_end(ap);
--    fprintf(stderr, "Will destroy the domain.\n");
-+    error_report("Will destroy the domain.");
-     /* destroy the domain */
-     qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
- }
-diff --git a/hw/xen/xen-mapcache.c b/hw/xen/xen-mapcache.c
-index 336c212376..4f956d048e 100644
---- a/hw/xen/xen-mapcache.c
-+++ b/hw/xen/xen-mapcache.c
-@@ -347,9 +347,8 @@ tryagain:
-         MapCacheRev *reventry = g_new0(MapCacheRev, 1);
-         entry->lock++;
-         if (entry->lock == 0) {
--            fprintf(stderr,
--                    "mapcache entry lock overflow: "HWADDR_FMT_plx" -> %p\n",
--                    entry->paddr_index, entry->vaddr_base);
-+            error_report("mapcache entry lock overflow: "HWADDR_FMT_plx" -> %p",
-+                         entry->paddr_index, entry->vaddr_base);
-             abort();
-         }
-         reventry->dma = dma;
--- 
-γαῖα πυρί μιχθήτω
+-- PMM

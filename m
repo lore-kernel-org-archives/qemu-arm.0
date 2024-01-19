@@ -1,348 +1,127 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp878307ejg;
-        Fri, 19 Jan 2024 03:35:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEXNCJr+MIzUBbGwfPT56rCLyT5fH/nPpZHoF60j3noUL39eu+3zwhCFJiap3MAIVvywOhA
-X-Received: by 2002:a05:6214:20e4:b0:681:6862:3459 with SMTP id 4-20020a05621420e400b0068168623459mr2416757qvk.18.1705664153890;
-        Fri, 19 Jan 2024 03:35:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664153; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp879197ejg;
+        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
+X-Received: by 2002:a1c:7919:0:b0:40d:4e28:43e8 with SMTP id l25-20020a1c7919000000b0040d4e2843e8mr1363046wme.167.1705664271029;
+        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664271; cv=none;
         d=google.com; s=arc-20160816;
-        b=f15D29DSyrsL17fZEBCoUWB2h0GRMtk1iYgEtrmdevdKzufIouT2Rs/gV+LpPpT25V
-         y/TACpQSzdToNtf+930wUcHxXpTH+6u/Nbo+sigihSrYMlOYXsDHQt+aTnaV/s+gd6Vo
-         Ff/JN5cqjg5aoit3aEqgGwjAxJ84XK3l5kqiIrxdgpYCTt4H2Ck4s7Wv5KmUxMgsnBAX
-         3A4eoU79ogOXFTJHQzUanCkL7uNOvoiVTsDtgd/o+Ggv9Ula/28+9QEtiM5xYt+9F9NV
-         g5U1XDh/IlVZAp5DTq4/euyi4HHDMZC1kAl9JyKdKLPIoctMgdfrMoYjDJkxAdCqsS6e
-         m9jA==
+        b=bh4PYMAlTogdiRBiryCtwCW3R24t98cY+CGP9acEac6M6obrNJMkYhNecBIqJQ5wOH
+         vJmdaDHuR71LnIyORfq9N8fQQmTB4fgSWnf2uEQ91QCB7vqvBcS+R4STEEFzDSQlayPM
+         0kPzXHMblVzMKxXaN59eEIxdgkoEvIFxeApH4+spVzmBScXvpaRiDKYzLdsKMnub+7a7
+         ohvfAC594OmVdpmpt4CcascbMh4JgnOJujBHSB2Mg8aOKZPNPtr41hUuA51sb4Putox1
+         wotx2+8nSVCrRxAmUbjKZWZjPbYgECI6tVagUYSP3F/Vt1nJJXPEH5HK/+zIdq3gEm0Z
+         X8qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=q0OM46pXL9nPMgsbRdva1NHrfhMdj+GFjvayF2pJiPE=;
-        fh=1jXRedgX4RIAhStB/Bq8o6Nhp+sAflv6/uDpY6aTzyI=;
-        b=YDBL732yjKlkPBPcJ7x/bOrw6ETe0eKR2HZNh/OGeLojmlVB7PJ9AlVVTDOud6tai8
-         igNGsz7D/lD2sUkCNRWR4EjOCnQ156RAPDUwxg25UFDgestyGFsAbOebe98SuGSlWQAa
-         WazSqfqVL/lhru1XFb5mIfYVuDdy2KR0P9D+lsodyWrScUSEoncq1ox2PB/b26hNYQf6
-         P+EIamg3GB2FCnXoXkycZlZB1ZqOb9xPHEa2MGOPPkHG39aUrbTD/m8g6tS3ZMUjNZjb
-         ITuKoNk+OsthXutrgxnYBUZBR/kKpeyqNpJdcUZ/hWfUlmN9MvMLomNPa3dLCMV5rr5V
-         KxMg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
+        fh=Fvwgvy80ygdP82bysZimOYQryTQSPXLk9G3SuBJkrbU=;
+        b=eNBZgqEgodQqHdBywX//1m7nxErXv0pWYoxaF6VCq07K7XIWSkoKFXQ4WniLezwKaM
+         b60OlRos/0sNzb1dlPlI2Bn1cKQJx1uCgr/kE5hTG96GaYn+J6gFjMYz8o5JZFe6dK+U
+         7VQ9AEnQMo2LsFrxTGT7Bloz6teV2+v3gWVgai2Oy0gQvXL8hO9FQ3FTAFFkUAnDmm9u
+         D3QGJcYIQ3TmXlnnOqZLFRcZvHYf+npv/X8YRgq9uzAfSev+eirsO1y5V661QBSdFfB8
+         kkiab+5xV10HGS6UQoweDQCfkEHC41q+U2uyvSG6RsBJz7x7WFR7PBq/5BzX+YwvvLyY
+         4PTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YUeCbigq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uWAfgTIL;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020a0cca81000000b0068194128b3dsi3264801qvk.593.2024.01.19.03.35.53
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id fc17-20020a05600c525100b0040e47c9fe2bsor202833wmb.0.2024.01.19.03.37.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:35:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 19 Jan 2024 03:37:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YUeCbigq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uWAfgTIL;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQn9b-0001OW-6q; Fri, 19 Jan 2024 06:35:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQn9Z-0001MZ-5I
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:35:17 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQn9X-0007QY-0N
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:35:16 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-336c9acec03so488647f8f.2
- for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:35:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664113; x=1706268913; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=q0OM46pXL9nPMgsbRdva1NHrfhMdj+GFjvayF2pJiPE=;
- b=YUeCbigqUdzKZto7onfovqzSLSTvYz9uIlTIuruzRZdSr+/STPbOcK54FjSCkDJBMa
- 4CercISKYID1MGpBLDaU92VSI6vOhD2oojCrh00q8ThBx6bsEW4434X1j6q8R4byaRtW
- 3F6axbiVyXJsYpJhiruthqaXrsjd2BhwAnJZuHRhRvOgDtCVPjpxn3MSRLO2IUC18mkI
- GzGijM0QWo9vw1AtnH4miA3T8XKaqgVtS0lMC/8umKXdhtOXqHk3bPU9fbtBDADsgd6J
- U7TebedMkWcj2wFxp4kPISKI9vw8hHp3ADn2iP3/yHkbSHdFqbKTvYsrMVxhkzRBeRLs
- 74wQ==
+        d=linaro.org; s=google; t=1705664270; x=1706269070; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
+        b=uWAfgTILSbXx6uKODBrL7dmFNJytjpsgTJl5rokL/wHiMmMFuZ2Z6O/KZA6HF4uZwW
+         azrT6rzsGpDbWAP+gV6qWH7Jordk4K7FcEzPPVBbvdnRzhLfXIYqJy4aEK1mE9loloiu
+         J91u3Gx8/+S7AvP3UdrKgWnFSSl7nwT2Qp0x8Foyahx+XI40e3Wh06zQmkfSQ8dGFrmn
+         kv1g9ZGgOpd1Fj5sbHjMrs/bDAcNMNiV3QymYOv31kZ4OEm5uH2Wyc0ljHC3SDRw1C1W
+         HdZNjH4HmWa1kQ/VR3br0et+AUzLFJuO5WyXcQtQo2hh0M8FKTpGNX6l13e0Mh25Jna0
+         FYCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664113; x=1706268913;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=q0OM46pXL9nPMgsbRdva1NHrfhMdj+GFjvayF2pJiPE=;
- b=tf6bJnr/b2VdQbtNDMg/SNxa4OZEzlSJRxtr39lKjcfh1Dbq0AEEaI6kOchfBtrO6Y
- S1T8KpEgoGOL58kTlyhNXZqGlLASBSvGy6UbeoF0t16GGptAocD9BxBdiU2k6iCzs+Rj
- oarG0H23ZyddYeE+cWVkLKP9mtJ3i7hdObidY2gGRnUAmDm2I4FSO49PjP3pjxHU/sr+
- c8Yx3Zod7zY2m0hm3v/LTUncGU7Ff0RUYeBSt4g+VSN/Qgr3yTq6P4abRNxYnlmwp194
- IU7J9ZqCjyZLcUZ9lU4WS/SSLrrNYTO9nMVBnVDI5E3JVGcwFumS9tUewOZXGJnCKRN4
- cj/w==
-X-Gm-Message-State: AOJu0YxJt2uZOXRkx73DW+TpT40Cl3Ia3cfexNP7jRMScG/VKCkRHrX7
- Gj/OFFjvpod+E12RAyPly738LI+7p0lcj9hUjddbEK/pxnTt5kB2dMmoT1POV6k=
-X-Received: by 2002:a05:600c:3110:b0:40e:5cf9:d5cf with SMTP id
- g16-20020a05600c311000b0040e5cf9d5cfmr1352683wmo.124.1705664113537; 
- Fri, 19 Jan 2024 03:35:13 -0800 (PST)
-Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
- [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- q8-20020a7bce88000000b0040c11fbe581sm28301424wmj.27.2024.01.19.03.35.12
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:35:13 -0800 (PST)
+        d=1e100.net; s=20230601; t=1705664270; x=1706269070;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Nr4OUHS+lBPFXd43ccavf7bhITrAw62IpLJRw1qHBNM=;
+        b=m7CEGRffnIGYEzQBoykYRn9sOQBJK8m+vz9+nSPG8UOBNU70Fn6dfenkqORYddgSdo
+         yDiqDfaanYI9TWWc/tU9xtUaU0X3pkEC3u3OFlve3EqyvgxvtjS+Ma4/nccdVUikgCsy
+         WC3vNZWwZHZUIJdYK552qcaDuCrV9fOacCVcYPdJnoEBuBiPqcPd/pdXnana6V6sUe+T
+         XsfzJXxMEV/Cp+uiV7wn6EsxBS+98nf/LkTlZR/D7XlaDslXHQlskFV9xvqPI5zKPtn9
+         IwkxYJtbFArcfOFsFYuMcHYT+tCEQfBK8ovLrakJZQu9cFq+itYBbwv2ixU5/yYyyzea
+         2e2g==
+X-Gm-Message-State: AOJu0YyNCYPIlgoDcgJxPyLoQ2FSUZ7oUPrCAzE4rUYBA3pgSKS/afbQ
+	KXy2sBHaZbcVcNzdAZ72Q+Y+yJx7zZKgR5gW9V4O6lVRXoGV/X5cVST5UTWwV9OJCQ==
+X-Google-Smtp-Source: AGHT+IFyTbs9SjNe0bzDqWuc52RujTUb9c4usvahIXvdRm1GAXWN+0NECvsNYTHwwL2fqfD9VRtwkQ==
+X-Received: by 2002:a7b:cc88:0:b0:40e:6207:2ecf with SMTP id p8-20020a7bcc88000000b0040e62072ecfmr1314432wma.10.1705664270639;
+        Fri, 19 Jan 2024 03:37:50 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (91-163-26-170.subs.proxad.net. [91.163.26.170])
+        by smtp.gmail.com with ESMTPSA id hg14-20020a05600c538e00b0040e5cf9a6c7sm29076314wmb.13.2024.01.19.03.37.49
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Fri, 19 Jan 2024 03:37:50 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, Daniel Hoffman <dhoff749@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 01/36] hw/timer/hpet: Convert DPRINTF to trace events
-Date: Fri, 19 Jan 2024 12:34:30 +0100
-Message-ID: <20240119113507.31951-2-philmd@linaro.org>
+Cc: qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	qemu-block@nongnu.org,
+	qemu-arm@nongnu.org,
+	Bibo Mao <maobibo@loongson.cn>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PULL 36/36] configure: Add linux header compile support for LoongArch
+Date: Fri, 19 Jan 2024 12:35:05 +0100
+Message-ID: <20240119113507.31951-37-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5fNJRChaChU6
+X-TUID: H9XdP59VvgGg
 
-From: Daniel Hoffman <dhoff749@gmail.com>
+From: Bibo Mao <maobibo@loongson.cn>
 
-This conversion is pretty straight-forward. Standardized some formatting
-so the +0 and +4 offset cases can recycle the same message.
+When compiling qemu with system KVM mode for LoongArch, header files
+in directory linux-headers/asm-loongarch should be used firstly.
+Otherwise it fails to find kvm.h on system with old glibc, since
+latest kernel header files are not installed.
 
-Signed-off-by: Daniel Hoffman <dhoff749@gmail.com>
+This patch adds linux_arch definition for LoongArch system so that
+header files in directory linux-headers/asm-loongarch can be included.
+
+Fixes: 714b03c125 ("target/loongarch: Add loongarch kvm into meson build")
+Signed-off-by: Bibo Mao <maobibo@loongson.cn>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20231118231129.2840388-1-dhoff749@gmail.com>
-[PMD: Fixed few string formats]
+Message-ID: <20240116013952.264474-1-maobibo@loongson.cn>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/timer/hpet.c       | 55 +++++++++++++++++--------------------------
- hw/timer/trace-events | 15 ++++++++++++
- 2 files changed, 37 insertions(+), 33 deletions(-)
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index f2f1580f81..1672faa4f2 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -39,13 +39,7 @@
- #include "hw/timer/i8254.h"
- #include "exec/address-spaces.h"
- #include "qom/object.h"
--
--//#define HPET_DEBUG
--#ifdef HPET_DEBUG
--#define DPRINTF printf
--#else
--#define DPRINTF(...)
--#endif
-+#include "trace.h"
+diff --git a/configure b/configure
+index 21ab9a64e9..3d8e24ae01 100755
+--- a/configure
++++ b/configure
+@@ -445,6 +445,7 @@ case "$cpu" in
+   loongarch*)
+     cpu=loongarch64
+     host_arch=loongarch64
++    linux_arch=loongarch
+     ;;
  
- #define HPET_MSI_SUPPORT        0
- 
-@@ -431,7 +425,7 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-     HPETState *s = opaque;
-     uint64_t cur_tick, index;
- 
--    DPRINTF("qemu: Enter hpet_ram_readl at %" PRIx64 "\n", addr);
-+    trace_hpet_ram_read(addr);
-     index = addr;
-     /*address range of all TN regs*/
-     if (index >= 0x100 && index <= 0x3ff) {
-@@ -439,7 +433,7 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-         HPETTimer *timer = &s->timer[timer_id];
- 
-         if (timer_id > s->num_timers) {
--            DPRINTF("qemu: timer id out of range\n");
-+            trace_hpet_timer_id_out_of_range(timer_id);
-             return 0;
-         }
- 
-@@ -457,7 +451,7 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-         case HPET_TN_ROUTE + 4:
-             return timer->fsb >> 32;
-         default:
--            DPRINTF("qemu: invalid hpet_ram_readl\n");
-+            trace_hpet_ram_read_invalid();
-             break;
-         }
-     } else {
-@@ -469,7 +463,7 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-         case HPET_CFG:
-             return s->config;
-         case HPET_CFG + 4:
--            DPRINTF("qemu: invalid HPET_CFG + 4 hpet_ram_readl\n");
-+            trace_hpet_invalid_hpet_cfg(4);
-             return 0;
-         case HPET_COUNTER:
-             if (hpet_enabled(s)) {
-@@ -477,7 +471,7 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-             } else {
-                 cur_tick = s->hpet_counter;
-             }
--            DPRINTF("qemu: reading counter  = %" PRIx64 "\n", cur_tick);
-+            trace_hpet_ram_read_reading_counter(0, cur_tick);
-             return cur_tick;
-         case HPET_COUNTER + 4:
-             if (hpet_enabled(s)) {
-@@ -485,12 +479,12 @@ static uint64_t hpet_ram_read(void *opaque, hwaddr addr,
-             } else {
-                 cur_tick = s->hpet_counter;
-             }
--            DPRINTF("qemu: reading counter + 4  = %" PRIx64 "\n", cur_tick);
-+            trace_hpet_ram_read_reading_counter(4, cur_tick);
-             return cur_tick >> 32;
-         case HPET_STATUS:
-             return s->isr;
-         default:
--            DPRINTF("qemu: invalid hpet_ram_readl\n");
-+            trace_hpet_ram_read_invalid();
-             break;
-         }
-     }
-@@ -504,8 +498,7 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-     HPETState *s = opaque;
-     uint64_t old_val, new_val, val, index;
- 
--    DPRINTF("qemu: Enter hpet_ram_writel at %" PRIx64 " = 0x%" PRIx64 "\n",
--            addr, value);
-+    trace_hpet_ram_write(addr, value);
-     index = addr;
-     old_val = hpet_ram_read(opaque, addr, 4);
-     new_val = value;
-@@ -515,14 +508,14 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-         uint8_t timer_id = (addr - 0x100) / 0x20;
-         HPETTimer *timer = &s->timer[timer_id];
- 
--        DPRINTF("qemu: hpet_ram_writel timer_id = 0x%x\n", timer_id);
-+        trace_hpet_ram_write_timer_id(timer_id);
-         if (timer_id > s->num_timers) {
--            DPRINTF("qemu: timer id out of range\n");
-+            trace_hpet_timer_id_out_of_range(timer_id);
-             return;
-         }
-         switch ((addr - 0x100) % 0x20) {
-         case HPET_TN_CFG:
--            DPRINTF("qemu: hpet_ram_writel HPET_TN_CFG\n");
-+            trace_hpet_ram_write_tn_cfg();
-             if (activating_bit(old_val, new_val, HPET_TN_FSB_ENABLE)) {
-                 update_irq(timer, 0);
-             }
-@@ -540,10 +533,10 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-             }
-             break;
-         case HPET_TN_CFG + 4: // Interrupt capabilities
--            DPRINTF("qemu: invalid HPET_TN_CFG+4 write\n");
-+            trace_hpet_ram_write_invalid_tn_cfg(4);
-             break;
-         case HPET_TN_CMP: // comparator register
--            DPRINTF("qemu: hpet_ram_writel HPET_TN_CMP\n");
-+            trace_hpet_ram_write_tn_cmp(0);
-             if (timer->config & HPET_TN_32BIT) {
-                 new_val = (uint32_t)new_val;
-             }
-@@ -566,7 +559,7 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-             }
-             break;
-         case HPET_TN_CMP + 4: // comparator register high order
--            DPRINTF("qemu: hpet_ram_writel HPET_TN_CMP + 4\n");
-+            trace_hpet_ram_write_tn_cmp(4);
-             if (!timer_is_periodic(timer)
-                 || (timer->config & HPET_TN_SETVAL)) {
-                 timer->cmp = (timer->cmp & 0xffffffffULL) | new_val << 32;
-@@ -591,7 +584,7 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-             timer->fsb = (new_val << 32) | (timer->fsb & 0xffffffff);
-             break;
-         default:
--            DPRINTF("qemu: invalid hpet_ram_writel\n");
-+            trace_hpet_ram_write_invalid();
-             break;
-         }
-         return;
-@@ -631,7 +624,7 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-             }
-             break;
-         case HPET_CFG + 4:
--            DPRINTF("qemu: invalid HPET_CFG+4 write\n");
-+            trace_hpet_invalid_hpet_cfg(4);
-             break;
-         case HPET_STATUS:
-             val = new_val & s->isr;
-@@ -643,24 +636,20 @@ static void hpet_ram_write(void *opaque, hwaddr addr,
-             break;
-         case HPET_COUNTER:
-             if (hpet_enabled(s)) {
--                DPRINTF("qemu: Writing counter while HPET enabled!\n");
-+                trace_hpet_ram_write_counter_write_while_enabled();
-             }
-             s->hpet_counter =
-                 (s->hpet_counter & 0xffffffff00000000ULL) | value;
--            DPRINTF("qemu: HPET counter written. ctr = 0x%" PRIx64 " -> "
--                    "%" PRIx64 "\n", value, s->hpet_counter);
-+            trace_hpet_ram_write_counter_written(0, value, s->hpet_counter);
-             break;
-         case HPET_COUNTER + 4:
--            if (hpet_enabled(s)) {
--                DPRINTF("qemu: Writing counter while HPET enabled!\n");
--            }
-+            trace_hpet_ram_write_counter_write_while_enabled();
-             s->hpet_counter =
-                 (s->hpet_counter & 0xffffffffULL) | (((uint64_t)value) << 32);
--            DPRINTF("qemu: HPET counter + 4 written. ctr = 0x%" PRIx64 " -> "
--                    "%" PRIx64 "\n", value, s->hpet_counter);
-+            trace_hpet_ram_write_counter_written(4, value, s->hpet_counter);
-             break;
-         default:
--            DPRINTF("qemu: invalid hpet_ram_writel\n");
-+            trace_hpet_ram_write_invalid();
-             break;
-         }
-     }
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 8145e18e3d..de769f4b71 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -99,3 +99,18 @@ sifive_pwm_write(uint64_t data, uint64_t offset) "Write 0x%" PRIx64 " at address
- sh_timer_start_stop(int enable, int current) "%d (%d)"
- sh_timer_read(uint64_t offset) "tmu012_read 0x%" PRIx64
- sh_timer_write(uint64_t offset, uint64_t value) "tmu012_write 0x%" PRIx64 " 0x%08" PRIx64
-+
-+# hpet.c
-+hpet_timer_id_out_of_range(uint8_t timer_id) "timer id out of range: 0x%" PRIx8
-+hpet_invalid_hpet_cfg(uint8_t reg_off) "invalid HPET_CFG + %u" PRIx8
-+hpet_ram_read(uint64_t addr) "enter hpet_ram_readl at 0x%" PRIx64
-+hpet_ram_read_reading_counter(uint8_t reg_off, uint64_t cur_tick) "reading counter + %" PRIu8 " = 0x%" PRIx64
-+hpet_ram_read_invalid(void) "invalid hpet_ram_readl"
-+hpet_ram_write(uint64_t addr, uint64_t value) "enter hpet_ram_writel at 0x%" PRIx64 " = 0x%" PRIx64
-+hpet_ram_write_timer_id(uint64_t timer_id) "hpet_ram_writel timer_id = 0x%" PRIx64
-+hpet_ram_write_tn_cfg(void) "hpet_ram_writel HPET_TN_CFG"
-+hpet_ram_write_invalid_tn_cfg(uint8_t reg_off) "invalid HPET_TN_CFG + %" PRIu8 " write"
-+hpet_ram_write_tn_cmp(uint8_t reg_off) "hpet_ram_writel HPET_TN_CMP + %" PRIu8
-+hpet_ram_write_invalid(void) "invalid hpet_ram_writel"
-+hpet_ram_write_counter_write_while_enabled(void) "Writing counter while HPET enabled!"
-+hpet_ram_write_counter_written(uint8_t reg_off, uint64_t value, uint64_t counter) "HPET counter + %" PRIu8 "written. crt = 0x%" PRIx64 " -> 0x%" PRIx64
+   mips64*)
 -- 
 2.41.0
-

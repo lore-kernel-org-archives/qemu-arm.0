@@ -1,119 +1,120 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881573ejg;
-        Fri, 19 Jan 2024 03:43:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IETI145BauEJ6CMEJS5Cn3lV6gjENiPnpwQBVL4yDFIqas1uIPcx2divgb77Mv3CmUlz0yP
-X-Received: by 2002:ac8:7c4d:0:b0:429:f64f:72fa with SMTP id o13-20020ac87c4d000000b00429f64f72famr2827786qtv.118.1705664599971;
-        Fri, 19 Jan 2024 03:43:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664599; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881811ejg;
+        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGjB39YA1hh41FueEcn3ekPgWHXFd2qgVCj0ELSOHvl6rsf1kv+ihTAWVDRX3UfZuvOY8Hn
+X-Received: by 2002:a05:620a:4d7:b0:783:30d1:d49b with SMTP id 23-20020a05620a04d700b0078330d1d49bmr1046751qks.112.1705664635348;
+        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664635; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z0ya792ZyS5RD7htzxz+aC5oASFGQWdPjIGJd/09pxSn6ozpOH5oixe442rwBFRSif
-         XVYVmnh9nYMbBueihRlEaMK7+MvrLTNpYNL5IP++WwkmUoTOty6RkWJPN4tU5fuWS2GD
-         Oy2dA2PBg9a3vygC482aPvk5VmsVMUupvZe3WjQaVZA7/FA+FNrj/2v3DXDd3U1W83mQ
-         tbVXYsP+CIvWf2U4vE9MlRfBGo4ds3PynEm75/FvuQyyA3Ooa2h92f3exNkEW/79QlDq
-         zwnkq18Xgl4o7Pbb0d7iUgXv6O9DRJLLFj4yCd3LB1GfisnsL3bzBjAwNoNTCBHmNCMo
-         FOmw==
+        b=Z5QAn/tQ3AGU7qLbASwFwkL4dwBXNSCTEzw56y1E0KSQ+KgUcznNMpppFVwhrx54NP
+         oKhU6KkrWb3AmbtWy7ftkMEgfogNMOgSA8zc2EvKR2+p0qiDyFMFB0/vbuG1hgqnAnQ3
+         Hoea9LtdrwadvxWGkdti0UJPW/hZV9D8/ZX3q+pF5schm++xJlKyutLCnM7VXhv1iepF
+         zC1lkksFDtvLn3iysKpEgZlcMJbNZhmm9he8rastKMr9ZOj02mzhwn7GFUXOchiTGheE
+         9pt/QOG0rM7WULeFuxlOzE9QBd6Fm9RjTQoz3sWVeiCAkQCMh7+YZIphRPJwSrEq7l8d
+         GMdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
-        fh=0x3oxSDM+3B1iq7MNcEDPiiYDxF4jnBXeQY/LXh8Yxc=;
-        b=n/P2VeuDTKoGA7N4MTqrvVD8kS2b3b+DpNMwjvDCx826XZFMqa5hRRI3h0ismu6DL/
-         nTco6JPK04g+VZRLDf4NR/x/LniSLjNPXpKNXW1Cork0mUbdPqEv5ReNFQ471AZPt8OS
-         mM+Uux/exTQxGz54yk1Jk2ztRzFY07z3vCnOF9sLxldXh0EQHRV3zNK46UXMJO9zVUSV
-         XptwUN3nELbnhdyg1qdhf8jDPvxY9Gj2b7kAI2AwR7xeUE0jlKKhpmOdtK5U2p0jVUaP
-         XrYQ2r6Y4nFMpYkOq0f3TWhPmkc2X6EyaG6teU5lAyaMuWwt3j5nB2lIvxoabzO32pME
-         e8nQ==
+        bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
+        fh=AgN8TvM7pMmL5RKrQhAJxXwOmBywzcClhFxW1SQC+/4=;
+        b=mFM5bGn8BlXHBNDcjrPHxmSTE5ZIjUZvWA/EZv6r5WpvjvUecCnQbA4IMbOQNVU5ds
+         Fq6NAfwTo7GLYayc/daA6UnE7TVvzLAL8hS0jFkdyFv/Zu3EssKHOhpoKu5Rlq+bDES3
+         DJdQWhTHvwgmTlP/fSj638Fckhyc11CFKM+U5AuEk4VdE3GDvykfLxX/YggJ6E1yAFCs
+         7O6Lbtb+biwD3TTah4P1q9U7CxMC80l9DsIICoxTFBv1MvDm5AntJ1AEelnU6sH8hn80
+         b9slDs1F1xOYqfHm9gHEHMhST4rKw26LzQF/gWVuI62Qll7CnVC38cZjr2UUiAZIDvDm
+         gang==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eMGH+etL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eIXZ1Tks;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19-20020a05620a441300b0078363796704si9270979qkp.225.2024.01.19.03.43.19
+        by mx.google.com with ESMTPS id c1-20020a05620a11a100b007834b7bf527si13829171qkk.351.2024.01.19.03.43.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:43:19 -0800 (PST)
+        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eMGH+etL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eIXZ1Tks;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQnBD-0004XE-1x; Fri, 19 Jan 2024 06:36:59 -0500
+	id 1rQnBn-0007Nj-CS; Fri, 19 Jan 2024 06:37:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnB5-0004B1-V0
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:54 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBl-0007H9-4w
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:33 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnB3-0002sE-LP
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:51 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-337cf4ac600so523952f8f.3
- for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:36:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBh-00034w-Sz
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:32 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-3376555b756so389741f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:37:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664208; x=1706269008; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664248; x=1706269048; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
- b=eMGH+etLp6duFlqp5ln+QKjiKcOonNqAI15qO9z0NxECN5Sh6hhaW3Iu4l9k18s8gw
- EvmstfaLIMxrIo16NW7mnlMPOAHf4HQup7R3rjeA57ZtmCV69LPDpYlzUispLRuPIU9P
- WgB+mfIEEVxo4ygpeQii6fT/QgPxoi+IUZUBWYrgBCPFmPs0msTsEwL9rOtiGLzHVF39
- vWePDqYGy5tEO5ADXg14pKOWKF1dCSsmbR7pmN88EuH6PV9E64Im7r6yOfu4EYALnbN9
- Sq5j1XoquS8fINiepYl6EoWkObuFwNjQr1NzbM77nC5AI0VG8HjzxEMNfxcFVEg+g62D
- 4oqw==
+ bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
+ b=eIXZ1Tks3W8nIRyoK4sHzQw0RHEZji/9FUeQC8Qsy/N4NAp9hCQOp/w05MccHJ+bZo
+ g8TnlT/q8GFE+LwuEWlQAPYX+svvvoa1iohVpBTIgiqMOfTbY93S3NnYLPJX2Av8/pUF
+ W1GRN/b5qkuGXmlzBE+zo927o7ij/RfxmjX8dnXfia0NDa0NuCcJtcb6qMOTWPfMUx1y
+ cJ+92ucdBkVXxKoSZUNSEeSvoWBVSJrYRn0oB+1KrpH44Pl2R54Ecdg1XqQGVfiNGS5R
+ Xzg5wIvP6KSX9cwZ2dFz5JoAWJoJ9h4pfXQUsq/1dirfqxaYGdAUfDH6ThhvUKV2IcW2
+ JEpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664208; x=1706269008;
+ d=1e100.net; s=20230601; t=1705664248; x=1706269048;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YCJoMF/gb5igTgNTbALJP1a0Tru9ZbMYu/Xtk0bIyeE=;
- b=pwGudgNa4rycsPrSMeAYDy9eHRer1q0KXEVe6NiKlC06a5MXCnWcfGGwYEkoDSH+qX
- 6deEKvD7Q+jusbQZTxcljhl+C1gc3sJ2El5WxxQCWJ9WLlBTiAOB8kPoKNlhCYR7BgGs
- ZAznLFaxplw0EJEEutICXTmoWxOaVY2Vy8bAGs8vJM0krhz5u4PkOeHNrSJcA3H51ujI
- AlGfApx9r6o4sv+KMcePvmBne6tOBifOkwyCUdLi3qKKh6c7ZgVJavXafeyt7sTr2g5P
- Yc7/dBgxSMU7fP1x+eO9gbZ4OSeMUrAYRDswH1nay46IcKmp+aW8pZyJPGY1HgYAnOp6
- Vv2w==
-X-Gm-Message-State: AOJu0Yz3n2wy33FvhUId4aWFG1/gohikU/aofEHegY0RxrfvE7S96Z3a
- a9UcW3vXAJ9ITbZFQSsWvZID74TZtVodAq1sh7wUd9HlvSFv3Xn66uNa/wCIun+kpvYYUrTW4wb
- YFg9PlA==
-X-Received: by 2002:adf:f50e:0:b0:332:e667:4277 with SMTP id
- q14-20020adff50e000000b00332e6674277mr1280379wro.40.1705664207710; 
- Fri, 19 Jan 2024 03:36:47 -0800 (PST)
+ bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
+ b=cTPcVpKfyhpEn7EFFEJiD/+GJAO9Otv0BZcQjWTZ58UksJby4m9eanSGXDWVvq1msY
+ vYztOGMnCQnRW9tSliRtelWlTPoLhcjj/aOCMp2Ttkg8Bc13uPcuvrgBFbe1lH8/5BBq
+ CN1jHFS5CRQ5wA3AX6EKO8f2iGQP/6XQl309tFihZpV8/Vy9dqghL2+LYKRxsm+0NEk4
+ xv7zaSqEkRdkAxzOhQgnKtICFz+TJItr51FYuPLijM1jqJKvJ59GoTZzJ6EBByxksSz/
+ /WTXb2FlcKuFEfBMsccu3Xl7POOZcdEc4MF6zEczK5NXpZCfVYk0j32d0zWdoGlQPTQR
+ HwDQ==
+X-Gm-Message-State: AOJu0Yyh2k9x1a2GwYwl+k1LhQkhlY28FKdzKCRtK7wAGpVOR/ypbPmP
+ c6LBf5ncHm5lcuFxpc/zjXrQqpehIahekKRXcAzDGvuZ/xQArDrKOEHVZ+vIDHaY0/L7i/j8j0l
+ iLDI+/g==
+X-Received: by 2002:a5d:698b:0:b0:336:8b2f:2ae5 with SMTP id
+ g11-20020a5d698b000000b003368b2f2ae5mr589450wru.24.1705664248288; 
+ Fri, 19 Jan 2024 03:37:28 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- c9-20020adfe749000000b003368d2e729bsm6307532wrn.43.2024.01.19.03.36.47
+ n13-20020a5d51cd000000b0033673ddd81csm6238840wrv.112.2024.01.19.03.37.27
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:36:47 -0800 (PST)
+ Fri, 19 Jan 2024 03:37:27 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 22/36] system/watchpoint: Move TCG specific code to accel/tcg/
-Date: Fri, 19 Jan 2024 12:34:51 +0100
-Message-ID: <20240119113507.31951-23-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
+Subject: [PULL 31/36] hw/scsi/esp-pci: synchronise setting of DMA_STAT_DONE
+ with ESP completion interrupt
+Date: Fri, 19 Jan 2024 12:35:00 +0100
+Message-ID: <20240119113507.31951-32-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,323 +129,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HU7YBtCcK50b
+X-TUID: +UTb/gI2VM5B
 
-Keep system/watchpoint.c accelerator-agnostic by moving
-TCG specific code to accel/tcg/watchpoint.c. Update meson.
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
+The setting of DMA_STAT_DONE at the end of a DMA transfer can be configured to
+generate an interrupt, however the Linux driver manually checks for DMA_STAT_DONE
+being set and if it is, considers that a DMA transfer has completed.
+
+If DMA_STAT_DONE is set but the ESP device isn't indicating an interrupt then
+the Linux driver considers this to be a spurious interrupt. However this can
+occur in QEMU as there is a delay between the end of DMA transfer where
+DMA_STAT_DONE is set, and the ESP device raising its completion interrupt.
+
+This appears to be an incorrect assumption in the Linux driver as the ESP and
+PCI DMA interrupt sources are separate (and may not be raised exactly
+together), however we can work around this by synchronising the setting of
+DMA_STAT_DONE at the end of a DMA transfer with the ESP completion interrupt.
+
+In conjunction with the previous commit Linux is now able to correctly boot
+from an am53c974 PCI SCSI device on the hppa C3700 machine without emitting
+"iget: checksum invalid" and "Spurious irq, sreg=10" errors.
+
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Tested-by: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <20240112131529.515642-4-mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240111162032.43378-1-philmd@linaro.org>
 ---
- accel/tcg/watchpoint.c | 143 +++++++++++++++++++++++++++++++++++++++++
- system/watchpoint.c    | 124 -----------------------------------
- accel/tcg/meson.build  |   1 +
- 3 files changed, 144 insertions(+), 124 deletions(-)
- create mode 100644 accel/tcg/watchpoint.c
+ hw/scsi/esp-pci.c | 28 +++++++++++++---------------
+ 1 file changed, 13 insertions(+), 15 deletions(-)
 
-diff --git a/accel/tcg/watchpoint.c b/accel/tcg/watchpoint.c
-new file mode 100644
-index 0000000000..d3aab11458
---- /dev/null
-+++ b/accel/tcg/watchpoint.c
-@@ -0,0 +1,143 @@
-+/*
-+ * CPU watchpoints
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index 15dc3c004d..875a49199d 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -93,6 +93,18 @@ static void esp_irq_handler(void *opaque, int irq_num, int level)
+ 
+     if (level) {
+         pci->dma_regs[DMA_STAT] |= DMA_STAT_SCSIINT;
 +
-+#include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/error-report.h"
-+#include "exec/exec-all.h"
-+#include "exec/translate-all.h"
-+#include "sysemu/tcg.h"
-+#include "sysemu/replay.h"
-+#include "hw/core/tcg-cpu-ops.h"
-+#include "hw/core/cpu.h"
-+
-+/*
-+ * Return true if this watchpoint address matches the specified
-+ * access (ie the address range covered by the watchpoint overlaps
-+ * partially or completely with the address range covered by the
-+ * access).
-+ */
-+static inline bool watchpoint_address_matches(CPUWatchpoint *wp,
-+                                              vaddr addr, vaddr len)
-+{
-+    /*
-+     * We know the lengths are non-zero, but a little caution is
-+     * required to avoid errors in the case where the range ends
-+     * exactly at the top of the address space and so addr + len
-+     * wraps round to zero.
-+     */
-+    vaddr wpend = wp->vaddr + wp->len - 1;
-+    vaddr addrend = addr + len - 1;
-+
-+    return !(addr > wpend || wp->vaddr > addrend);
-+}
-+
-+/* Return flags for watchpoints that match addr + prot.  */
-+int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len)
-+{
-+    CPUWatchpoint *wp;
-+    int ret = 0;
-+
-+    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
-+        if (watchpoint_address_matches(wp, addr, len)) {
-+            ret |= wp->flags;
-+        }
-+    }
-+    return ret;
-+}
-+
-+/* Generate a debug exception if a watchpoint has been hit.  */
-+void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
-+                          MemTxAttrs attrs, int flags, uintptr_t ra)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+    CPUWatchpoint *wp;
-+
-+    assert(tcg_enabled());
-+    if (cpu->watchpoint_hit) {
 +        /*
-+         * We re-entered the check after replacing the TB.
-+         * Now raise the debug interrupt so that it will
-+         * trigger after the current instruction.
++         * If raising the ESP IRQ to indicate end of DMA transfer, set
++         * DMA_STAT_DONE at the same time. In theory this should be done in
++         * esp_pci_dma_memory_rw(), however there is a delay between setting
++         * DMA_STAT_DONE and the ESP IRQ arriving which is visible to the
++         * guest that can cause confusion e.g. Linux
 +         */
-+        bql_lock();
-+        cpu_interrupt(cpu, CPU_INTERRUPT_DEBUG);
-+        bql_unlock();
-+        return;
-+    }
-+
-+    if (cc->tcg_ops->adjust_watchpoint_address) {
-+        /* this is currently used only by ARM BE32 */
-+        addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
-+    }
-+
-+    assert((flags & ~BP_MEM_ACCESS) == 0);
-+    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
-+        int hit_flags = wp->flags & flags;
-+
-+        if (hit_flags && watchpoint_address_matches(wp, addr, len)) {
-+            if (replay_running_debug()) {
-+                /*
-+                 * replay_breakpoint reads icount.
-+                 * Force recompile to succeed, because icount may
-+                 * be read only at the end of the block.
-+                 */
-+                if (!cpu->neg.can_do_io) {
-+                    /* Force execution of one insn next time.  */
-+                    cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
-+                    cpu_loop_exit_restore(cpu, ra);
-+                }
-+                /*
-+                 * Don't process the watchpoints when we are
-+                 * in a reverse debugging operation.
-+                 */
-+                replay_breakpoint();
-+                return;
-+            }
-+
-+            wp->flags |= hit_flags << BP_HIT_SHIFT;
-+            wp->hitaddr = MAX(addr, wp->vaddr);
-+            wp->hitattrs = attrs;
-+
-+            if (wp->flags & BP_CPU
-+                && cc->tcg_ops->debug_check_watchpoint
-+                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
-+                wp->flags &= ~BP_WATCHPOINT_HIT;
-+                continue;
-+            }
-+            cpu->watchpoint_hit = wp;
-+
-+            mmap_lock();
-+            /* This call also restores vCPU state */
-+            tb_check_watchpoint(cpu, ra);
-+            if (wp->flags & BP_STOP_BEFORE_ACCESS) {
-+                cpu->exception_index = EXCP_DEBUG;
-+                mmap_unlock();
-+                cpu_loop_exit(cpu);
-+            } else {
-+                /* Force execution of one insn next time.  */
-+                cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
-+                mmap_unlock();
-+                cpu_loop_exit_noexc(cpu);
-+            }
-+        } else {
-+            wp->flags &= ~BP_WATCHPOINT_HIT;
++        if ((pci->dma_regs[DMA_CMD] & DMA_CMD_MASK) == 0x3 &&
++            pci->dma_regs[DMA_WBC] == 0) {
++                pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
 +        }
-+    }
-+}
-diff --git a/system/watchpoint.c b/system/watchpoint.c
-index b76007ebf6..2aa2a9ea63 100644
---- a/system/watchpoint.c
-+++ b/system/watchpoint.c
-@@ -18,13 +18,8 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/main-loop.h"
- #include "qemu/error-report.h"
- #include "exec/exec-all.h"
--#include "exec/translate-all.h"
--#include "sysemu/tcg.h"
--#include "sysemu/replay.h"
--#include "hw/core/tcg-cpu-ops.h"
- #include "hw/core/cpu.h"
- 
- /* Add a watchpoint.  */
-@@ -103,122 +98,3 @@ void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
-         }
+     } else {
+         pci->dma_regs[DMA_STAT] &= ~DMA_STAT_SCSIINT;
      }
+@@ -306,9 +318,6 @@ static void esp_pci_dma_memory_rw(PCIESPState *pci, uint8_t *buf, int len,
+     /* update status registers */
+     pci->dma_regs[DMA_WBC] -= len;
+     pci->dma_regs[DMA_WAC] += len;
+-    if (pci->dma_regs[DMA_WBC] == 0) {
+-        pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
+-    }
  }
--
--#ifdef CONFIG_TCG
--
--/*
-- * Return true if this watchpoint address matches the specified
-- * access (ie the address range covered by the watchpoint overlaps
-- * partially or completely with the address range covered by the
-- * access).
-- */
--static inline bool watchpoint_address_matches(CPUWatchpoint *wp,
--                                              vaddr addr, vaddr len)
--{
--    /*
--     * We know the lengths are non-zero, but a little caution is
--     * required to avoid errors in the case where the range ends
--     * exactly at the top of the address space and so addr + len
--     * wraps round to zero.
--     */
--    vaddr wpend = wp->vaddr + wp->len - 1;
--    vaddr addrend = addr + len - 1;
--
--    return !(addr > wpend || wp->vaddr > addrend);
--}
--
--/* Return flags for watchpoints that match addr + prot.  */
--int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len)
--{
--    CPUWatchpoint *wp;
--    int ret = 0;
--
--    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
--        if (watchpoint_address_matches(wp, addr, len)) {
--            ret |= wp->flags;
--        }
--    }
--    return ret;
--}
--
--/* Generate a debug exception if a watchpoint has been hit.  */
--void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
--                          MemTxAttrs attrs, int flags, uintptr_t ra)
--{
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--    CPUWatchpoint *wp;
--
--    assert(tcg_enabled());
--    if (cpu->watchpoint_hit) {
--        /*
--         * We re-entered the check after replacing the TB.
--         * Now raise the debug interrupt so that it will
--         * trigger after the current instruction.
--         */
--        bql_lock();
--        cpu_interrupt(cpu, CPU_INTERRUPT_DEBUG);
--        bql_unlock();
--        return;
--    }
--
--    if (cc->tcg_ops->adjust_watchpoint_address) {
--        /* this is currently used only by ARM BE32 */
--        addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
--    }
--
--    assert((flags & ~BP_MEM_ACCESS) == 0);
--    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
--        int hit_flags = wp->flags & flags;
--
--        if (hit_flags && watchpoint_address_matches(wp, addr, len)) {
--            if (replay_running_debug()) {
--                /*
--                 * replay_breakpoint reads icount.
--                 * Force recompile to succeed, because icount may
--                 * be read only at the end of the block.
--                 */
--                if (!cpu->neg.can_do_io) {
--                    /* Force execution of one insn next time.  */
--                    cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
--                    cpu_loop_exit_restore(cpu, ra);
--                }
--                /*
--                 * Don't process the watchpoints when we are
--                 * in a reverse debugging operation.
--                 */
--                replay_breakpoint();
--                return;
--            }
--
--            wp->flags |= hit_flags << BP_HIT_SHIFT;
--            wp->hitaddr = MAX(addr, wp->vaddr);
--            wp->hitattrs = attrs;
--
--            if (wp->flags & BP_CPU
--                && cc->tcg_ops->debug_check_watchpoint
--                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
--                wp->flags &= ~BP_WATCHPOINT_HIT;
--                continue;
--            }
--            cpu->watchpoint_hit = wp;
--
--            mmap_lock();
--            /* This call also restores vCPU state */
--            tb_check_watchpoint(cpu, ra);
--            if (wp->flags & BP_STOP_BEFORE_ACCESS) {
--                cpu->exception_index = EXCP_DEBUG;
--                mmap_unlock();
--                cpu_loop_exit(cpu);
--            } else {
--                /* Force execution of one insn next time.  */
--                cpu->cflags_next_tb = 1 | CF_NOIRQ | curr_cflags(cpu);
--                mmap_unlock();
--                cpu_loop_exit_noexc(cpu);
--            }
--        } else {
--            wp->flags &= ~BP_WATCHPOINT_HIT;
--        }
--    }
--}
--
--#endif /* CONFIG_TCG */
-diff --git a/accel/tcg/meson.build b/accel/tcg/meson.build
-index d25638d6c1..c15ac9ac8f 100644
---- a/accel/tcg/meson.build
-+++ b/accel/tcg/meson.build
-@@ -24,6 +24,7 @@ specific_ss.add_all(when: 'CONFIG_TCG', if_true: tcg_ss)
  
- specific_ss.add(when: ['CONFIG_SYSTEM_ONLY', 'CONFIG_TCG'], if_true: files(
-   'cputlb.c',
-+  'watchpoint.c',
- ))
+ static void esp_pci_dma_memory_read(void *opaque, uint8_t *buf, int len)
+@@ -363,24 +372,13 @@ static const VMStateDescription vmstate_esp_pci_scsi = {
+     }
+ };
  
- system_ss.add(when: ['CONFIG_TCG'], if_true: files(
+-static void esp_pci_command_complete(SCSIRequest *req, size_t resid)
+-{
+-    ESPState *s = req->hba_private;
+-    PCIESPState *pci = container_of(s, PCIESPState, esp);
+-
+-    esp_command_complete(req, resid);
+-    pci->dma_regs[DMA_WBC] = 0;
+-    pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
+-    esp_pci_update_irq(pci);
+-}
+-
+ static const struct SCSIBusInfo esp_pci_scsi_info = {
+     .tcq = false,
+     .max_target = ESP_MAX_DEVS,
+     .max_lun = 7,
+ 
+     .transfer_data = esp_transfer_data,
+-    .complete = esp_pci_command_complete,
++    .complete = esp_command_complete,
+     .cancel = esp_request_cancelled,
+ };
+ 
 -- 
 2.41.0
 

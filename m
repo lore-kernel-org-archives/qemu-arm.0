@@ -1,114 +1,112 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp878672ejg;
-        Fri, 19 Jan 2024 03:36:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHqB/La7Z8sN47c7zoU/JJsz32qFHkm3bXHEYWSCLZYNjfwSJZhnJTqYunCHKGApw6UceOo
-X-Received: by 2002:ad4:5c69:0:b0:681:931d:20c0 with SMTP id i9-20020ad45c69000000b00681931d20c0mr961649qvh.24.1705664201705;
-        Fri, 19 Jan 2024 03:36:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664201; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp878894ejg;
+        Fri, 19 Jan 2024 03:37:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEOuviZ+YmOjLsQishSehfJyMiU6GzASArhLmrocutjwH6sMHTEL87sz1F4aIh407Hemm+S
+X-Received: by 2002:a54:4e96:0:b0:3bd:71b4:20c0 with SMTP id c22-20020a544e96000000b003bd71b420c0mr2243207oiy.109.1705664228159;
+        Fri, 19 Jan 2024 03:37:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664228; cv=none;
         d=google.com; s=arc-20160816;
-        b=SHzjMNT15cZoN94Xh88wek1jRqsK+N+egpDpmmMJm3aqI2zUU5nDXrDM0FrPiElysY
-         KjPVD/3noD3vwR/k6FXMwgITysNEq5pIvvs7ZHD8E+DnktopPjcymRPKx5PHKj0xE4Nh
-         330i7jJ3O9Xe14P7lMLCD3MIPMGUTVyi8etaVT/MK4bq5ph+5h10prZJPqkj9QR/Af1f
-         jVk6g4hl1Js1JTdOsQPaTMMUMkI6r78xvaVN/Ep8KDmBiSmFOj/UrQSvSFsjKHiNKqQl
-         1huLfF0AV5VKrA/c59QnrOPxZGAiTkvWcZ3A2i/LNgJASNPkl944K+Q/jJewTLpkLzu8
-         F97A==
+        b=rHKjakH4JHYtRNjMcqIt8S3b9u6OVIxfCVTLq7GhGbkRplCt0FYy/eAwFnvstJh0zT
+         TkryakZ4Na3YnDkGWMq/yNWLZJFNQs042o0aG5a8jQmAm6ALQ/0UCKoeLgOEBLpQvgWj
+         A7PvCi8lupCCtJYeCEsgI4t3hxeKwTtcMIFPAb3jWRKO21FGiAaZwNd7WLySfKxZXlrQ
+         H5p7mXXQIYZuCG83nv3rg3y31v/Kwz1ZT+MJqkY4RswHEDZjgG+3fEA0PcGIUxUEFv7W
+         8eMEBg8FOgWPVLNvXIOs5ZCTPFtxl8XNWWiRk8tXTUmPqkePeaBGeMCySVKYTmavAPGE
+         DZKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4V5MwJ3yzBvCl1jR3LZsLDTSMljFxa13ddLlRCJyMuc=;
-        fh=ljlq2IERA83R/N9I+W7btu6jk8dnbNWtb9KZN1Aqt3M=;
-        b=yJwJHTkzlFkPc5PNzscMFHWmNQsUsHJMiumCATOnNk3k87kTt+/SywDrE+GabYoeLD
-         Re8nDAd9cy0A7Jw1SCn1+n/w0NXlkMEEKZYxAw5+4kBcaRyzmeh4uijclbTmpEDjqCfE
-         wLk1DXDgDFcY8Tw7JGIsYO0pnHpO0QGnFmCikrZ4B9xBs6Jtb18fTPnl9nYl6E19vB9a
-         871dLj6JixQ8DlNbQz1qjpAKqzHCV7cb3r3qF6o9x1cXGJwA4giQQ9Xk9XtsmkUCu1W8
-         z6gAWptCkVZg/f+BEAXREBvg4ejbd+kldbqAqt72SUvnfhU69Yh2VFlrlBZqIWjMJAtk
-         vu6Q==
+        bh=bZ2ofuMw9l9dRlR/wStloN7Wq3xL/x8gLMvQvh8dxdA=;
+        fh=0x3oxSDM+3B1iq7MNcEDPiiYDxF4jnBXeQY/LXh8Yxc=;
+        b=Gi7vXIvfRtPUE1d+5VwhHbQkjlpGHH+2/aC+Hyh4p1cabYd4GIKwdZrOHRdXUF2YTF
+         1wtTXbApmgx08nd7bs1Ua106FcFBnpr4Ju0JXNXXQA46K0UJAowpOWhWoiGjkNGPg8bm
+         3ifhXca0ykK/vg30Sejhpgiv9GvH9JSHIkav97djiUyuAD4kDafOIgyebf7IU2eL+60/
+         tBaB6Mz0U9rAWasEHcBMtJrthGC/4880jS/pKVUo06XaLWF1CMGLM+FU1q+QxjFYQKpb
+         gSI5lL9rFPSjBBiTK6QRJp4jm+OIpPX9T04JSm+8d9nK49zrXD5iz5xEEKBdGvTTjmIu
+         iq8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Yjueg+Bs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LpMWM1zy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6-20020a0cf586000000b0068177f1fec2si6474785qvm.556.2024.01.19.03.36.41
+        by mx.google.com with ESMTPS id i3-20020ac85c03000000b00429785b48cesi16327096qti.23.2024.01.19.03.37.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:36:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Jan 2024 03:37:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Yjueg+Bs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LpMWM1zy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQnAg-00038P-UT; Fri, 19 Jan 2024 06:36:27 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rQnAI-0002KP-PA; Fri, 19 Jan 2024 06:36:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAe-00030F-O5
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:24 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAH-0002If-Lv
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:01 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAc-0002O2-AT
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:24 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-40ea084ec14so1271045e9.2
- for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:36:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAF-0001E5-OT
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:01 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-40e9e96edd1so4732265e9.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:35:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664181; x=1706268981; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664158; x=1706268958; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4V5MwJ3yzBvCl1jR3LZsLDTSMljFxa13ddLlRCJyMuc=;
- b=Yjueg+BsESEHq9lwdZMlj9v/mN0HCf7eMYlMOQLpLYbgvcVKiNW1Sy6NVRBUw33doa
- WiO3dlMZtU/SxsigLh4Ik7Yl91tqU4gMORI2UCjhQvD5Ljkwzo5AGs2WpwEl9QyT0VsO
- J3jmC4vardD9+EDk58bRG1JOn6VBL+tDpx9wfRW8NZRpjvMsy2M2HaTnGt0/VfBe3b8b
- VrYdnDrEPmPrRyJYSBPeYC4Ed3ldnT2eDO9efu0cw4ZaPuNKLmB1sRjKynUzEPkTLrhd
- e0er/XjafnznvGibE7vmn5yQlzni3N1IaTaTdPKW4k62wx/1IT9V3KIWpcwvVg3n8jFY
- thXw==
+ bh=bZ2ofuMw9l9dRlR/wStloN7Wq3xL/x8gLMvQvh8dxdA=;
+ b=LpMWM1zy9VO8qoemsrs20TrHnsp4ZCXikcGvz2AyjXunvTLzBTGyoH458RQ8brPgaE
+ uCCO64PIMXuD9ZMUsqlK82BJQ7S3Sk7YH5ELpgzY0k2ma59EJawLCHKRFsYC1FQlIqHD
+ 9zxv1rvfrueabvOHrAmOvpriNdZgzMz4Ai/CpliIeJl9zRLbbtb2IgSzGSzpiel7UBCz
+ 1YdXBbgjc40XEvJWYVBdfbgTU9bOC54w7HAkJS7WjQkF9hJX859A6+yhO+uDlOF2bv8A
+ adfE3EQ0ZkUmzsv7BpmSBp2Eo4deh38+J2mJCa/ptdII/jG0P81os8c4C3pXEKt50kj0
+ Z4qQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664181; x=1706268981;
+ d=1e100.net; s=20230601; t=1705664158; x=1706268958;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4V5MwJ3yzBvCl1jR3LZsLDTSMljFxa13ddLlRCJyMuc=;
- b=bSd+Uuo1qLbBr7jif/87XgoQPx/Hvcjr9+Xmcgon3l8qm4LFVV/mvMpmgymwtBu0e6
- yDqxe904NQ5HUnvOJDFmZ8RR0nNp871EdCh9eWT/7hQLYq+78gQuqZrhOs6PAAliPrh6
- E7Qi/MWtJ2T20TxmnS8ayp/4aC6sEgxW5hDsVhvWG6Zusc2Y1djbucQA6HyrJGIuqDzB
- Dl9vNa+VIM1PcDl1Uz4Bl533BlUkfjKjPKwvRZzLDOir4NuhWYM7hlw+pD7Ejvj0+qD7
- GuxESyHfC6C6cggxC8cgj670oRNQ4cWRrkFACFtlZhBRYR1P4rwOe9CDTcgTTqBR9cZM
- o67w==
-X-Gm-Message-State: AOJu0YxfWxg2mxzMd8jQfiPjgmHTArmx4zs1IUWlVwWvo5PPLfEpcej8
- 1tYZO/u7FwB/oustC6uexkmCvd4tvz9+VGKxh/FPfmNr9YnsZQ5FsgB5vfXfWqdcep63H4Lswy/
- 4pYu2SA==
-X-Received: by 2002:a05:600c:1990:b0:40e:50ac:d24e with SMTP id
- t16-20020a05600c199000b0040e50acd24emr1781197wmq.13.1705664180890; 
- Fri, 19 Jan 2024 03:36:20 -0800 (PST)
+ bh=bZ2ofuMw9l9dRlR/wStloN7Wq3xL/x8gLMvQvh8dxdA=;
+ b=XtdIHbHNRDYHluD8BUkdp36n1lpPPyLcBzjGDo9vfuyeiqt0JDuhLoEqb/PDW+wyGf
+ 1brEFj7lRhftwLuKVMhWSEyaSuxAmkpNYgZnLTUVU+7h86UHa1yBqikKDTWw84HzMt/Q
+ mAflSMAAiV7JRdFjmrWSi59z67Xsxaz4nbkVowzykAoJK3E0ArZwkXMZzghmIF6xER0z
+ Z4BY90KxKz/1bFIv7w+lR8V1FBLItbegMdLAFC1ZwQmC+LWcwhmb8D9gkF4UxHDpE/yw
+ y1OXMg/yjo+6oR87hhVQY/ZOORaKQjWc56BewD9XEtmmF48RRsl9fNCyJuvi961RwRnr
+ 4wYA==
+X-Gm-Message-State: AOJu0YxplQaK9xLPCu7FBNjOLB0new0O50XHg09QlEZ9hfzYVP92NchJ
+ TWHjZTYecaBn9/JAfmAQYcKikeNu6fot2bncrTQ+zeVYigcUA5crx+5JMsWMOEQ=
+X-Received: by 2002:a05:600c:4394:b0:40d:5a5a:a10 with SMTP id
+ e20-20020a05600c439400b0040d5a5a0a10mr604581wmn.139.1705664158381; 
+ Fri, 19 Jan 2024 03:35:58 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- fm16-20020a05600c0c1000b0040ea10178f3sm237439wmb.21.2024.01.19.03.36.20
+ m10-20020adffa0a000000b003392172fd60sm1114421wrr.51.2024.01.19.03.35.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:36:20 -0800 (PST)
+ Fri, 19 Jan 2024 03:35:58 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, Samuel Tardieu <sam@rfc1149.net>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- devel@lists.libvirt.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
-Subject: [PULL 16/36] hw/block: Deprecate the TC58128 block device
-Date: Fri, 19 Jan 2024 12:34:45 +0100
-Message-ID: <20240119113507.31951-17-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 11/36] system/cpu-timers: Have icount_configure() return a
+ boolean
+Date: Fri, 19 Jan 2024 12:34:40 +0100
+Message-ID: <20240119113507.31951-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,63 +115,152 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E+CPwXVS2Cs1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Cu+iBvVgnCPj
 
-From: Samuel Tardieu <sam@rfc1149.net>
+Following the example documented since commit e3fe3988d7 ("error:
+Document Error API usage rules"), have icount_configure()
+return a boolean indicating whether an error is set or not.
 
-The 16MiB flash device is only used by the deprecated shix machine.
-Its code it old and unmaintained, and has never been adapted to the
-QOM architecture. It still contains debug statements and uses global
-variables. It is time to deprecate it.
-
-Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240109083053.2581588-3-sam@rfc1149.net>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20231208113529.74067-2-philmd@linaro.org>
 ---
- docs/about/deprecated.rst | 2 +-
- hw/block/tc58128.c        | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ include/sysemu/cpu-timers.h | 10 ++++++++--
+ accel/tcg/icount-common.c   | 16 +++++++++-------
+ stubs/icount.c              |  4 +++-
+ system/vl.c                 |  3 +--
+ 4 files changed, 21 insertions(+), 12 deletions(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index e6a12c9077..15e39f8bbb 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -273,7 +273,7 @@ The Nios II architecture is orphan.
- ''''''''''''''''''''
+diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
+index 2e786fe7fb..b70dc7692d 100644
+--- a/include/sysemu/cpu-timers.h
++++ b/include/sysemu/cpu-timers.h
+@@ -50,8 +50,14 @@ int64_t icount_get(void);
+  */
+ int64_t icount_to_ns(int64_t icount);
  
- The machine is no longer in existence and has been long unmaintained
--in QEMU.
-+in QEMU. This also holds for the TC51828 16MiB flash that it uses.
+-/* configure the icount options, including "shift" */
+-void icount_configure(QemuOpts *opts, Error **errp);
++/**
++ * icount_configure: configure the icount options, including "shift"
++ * @opts: Options to parse
++ * @errp: pointer to a NULL-initialized error object
++ *
++ * Return: true on success, else false setting @errp with error
++ */
++bool icount_configure(QemuOpts *opts, Error **errp);
  
- Backend options
- ---------------
-diff --git a/hw/block/tc58128.c b/hw/block/tc58128.c
-index d350126b27..6944cf58fa 100644
---- a/hw/block/tc58128.c
-+++ b/hw/block/tc58128.c
-@@ -202,6 +202,7 @@ static sh7750_io_device tc58128 = {
+ /* used by tcg vcpu thread to calc icount budget */
+ int64_t icount_round(int64_t count);
+diff --git a/accel/tcg/icount-common.c b/accel/tcg/icount-common.c
+index ec57192be8..dc69d6a4c6 100644
+--- a/accel/tcg/icount-common.c
++++ b/accel/tcg/icount-common.c
+@@ -419,7 +419,7 @@ void icount_account_warp_timer(void)
+     icount_warp_rt();
+ }
  
- int tc58128_init(struct SH7750State *s, const char *zone1, const char *zone2)
+-void icount_configure(QemuOpts *opts, Error **errp)
++bool icount_configure(QemuOpts *opts, Error **errp)
  {
-+    warn_report_once("The TC58128 flash device is deprecated");
-     init_dev(&tc58128_devs[0], zone1);
-     init_dev(&tc58128_devs[1], zone2);
-     return sh7750_register_io_device(s, &tc58128);
+     const char *option = qemu_opt_get(opts, "shift");
+     bool sleep = qemu_opt_get_bool(opts, "sleep", true);
+@@ -429,27 +429,28 @@ void icount_configure(QemuOpts *opts, Error **errp)
+     if (!option) {
+         if (qemu_opt_get(opts, "align") != NULL) {
+             error_setg(errp, "Please specify shift option when using align");
++            return false;
+         }
+-        return;
++        return true;
+     }
+ 
+     if (align && !sleep) {
+         error_setg(errp, "align=on and sleep=off are incompatible");
+-        return;
++        return false;
+     }
+ 
+     if (strcmp(option, "auto") != 0) {
+         if (qemu_strtol(option, NULL, 0, &time_shift) < 0
+             || time_shift < 0 || time_shift > MAX_ICOUNT_SHIFT) {
+             error_setg(errp, "icount: Invalid shift value");
+-            return;
++            return false;
+         }
+     } else if (icount_align_option) {
+         error_setg(errp, "shift=auto and align=on are incompatible");
+-        return;
++        return false;
+     } else if (!icount_sleep) {
+         error_setg(errp, "shift=auto and sleep=off are incompatible");
+-        return;
++        return false;
+     }
+ 
+     icount_sleep = sleep;
+@@ -463,7 +464,7 @@ void icount_configure(QemuOpts *opts, Error **errp)
+     if (time_shift >= 0) {
+         timers_state.icount_time_shift = time_shift;
+         icount_enable_precise();
+-        return;
++        return true;
+     }
+ 
+     icount_enable_adaptive();
+@@ -491,6 +492,7 @@ void icount_configure(QemuOpts *opts, Error **errp)
+     timer_mod(timers_state.icount_vm_timer,
+                    qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                    NANOSECONDS_PER_SECOND / 10);
++    return true;
+ }
+ 
+ void icount_notify_exit(void)
+diff --git a/stubs/icount.c b/stubs/icount.c
+index 6df8c2bf7d..85c381a0ea 100644
+--- a/stubs/icount.c
++++ b/stubs/icount.c
+@@ -10,10 +10,12 @@ void icount_update(CPUState *cpu)
+ {
+     abort();
+ }
+-void icount_configure(QemuOpts *opts, Error **errp)
++bool icount_configure(QemuOpts *opts, Error **errp)
+ {
+     /* signal error */
+     error_setg(errp, "cannot configure icount, TCG support not available");
++
++    return false;
+ }
+ int64_t icount_get_raw(void)
+ {
+diff --git a/system/vl.c b/system/vl.c
+index 53850a1daf..404e7cf87a 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -2270,8 +2270,7 @@ static void user_register_global_props(void)
+ 
+ static int do_configure_icount(void *opaque, QemuOpts *opts, Error **errp)
+ {
+-    icount_configure(opts, errp);
+-    return 0;
++    return !icount_configure(opts, errp);
+ }
+ 
+ static int accelerator_set_property(void *opaque,
 -- 
 2.41.0
 

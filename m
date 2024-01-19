@@ -1,112 +1,112 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881139ejg;
-        Fri, 19 Jan 2024 03:42:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG69IP9kBdJxzg1ViXiE2vBGyUiHWV4EBAQTB2FP+yRbHQY+9b6fDxepF8lK1zybfI87eYt
-X-Received: by 2002:a05:620a:4548:b0:783:3f25:c6f3 with SMTP id u8-20020a05620a454800b007833f25c6f3mr1403974qkp.47.1705664547895;
-        Fri, 19 Jan 2024 03:42:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664547; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881265ejg;
+        Fri, 19 Jan 2024 03:42:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFmQN4sUl87/I+cCX8bags4ZJLhjpO1APVISVYeqM/9+e+X4cwp28zzEkWV89gYm1CFu2sH
+X-Received: by 2002:a05:6214:20c6:b0:680:c2be:a178 with SMTP id 6-20020a05621420c600b00680c2bea178mr2695705qve.37.1705664563887;
+        Fri, 19 Jan 2024 03:42:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664563; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2GvMj9huvxcjFY3d8cDKSxQMQ/7a+YqwKw+m+4bm+BfYGYsyBu4/58ACoRqRlqd8c
-         fnO6o1PiJzNyigOuvWt2L14ewkoPjPJamVtXa2y110y4ldG8UwDYH/lZsvPcZR4UYsQS
-         M089eI1OhzBiDXaWr7Z9cRkHV67k/X+cdgKfJkf+za5WslKVStz0HFsfAkW13niJnIUD
-         WW9GdvWs5TjrptUcmVcploNXkJTo/zj/+XABhtJScnNkIPnHvMwfeLN/F7E+Dj0Qpsl+
-         fQlGAY5i8auFFRC+pZArH6btOXNAU69BFVPQl5kogN9MUBU8B7CFefKZfB4rA1y58dfa
-         Ou3Q==
+        b=SvcEDUElOUwULdrMgDYxPSxVzn4zzHe2zP8dayTKzDJQK5W/+PgXOHDf6ySonnkVP6
+         Dp5gw42snkiJOqBQ5ii3h2jw3LMo0Mf59Z06o9MGGCQkuPRY3ZOsfkT7tFFL44L7qJ3F
+         v/nFxqu8O7O9/0WQR+An6GsDzpIjFTpYVt6H/Vfa+bvb/EXNrVERskD/f2Bdi3kcvdO7
+         n6Rogw5Cw8UlLORnxT3U1J210JMR2fchOweVr8W1PWHGbNySS1EDQzoSeqbRKI9+3iNc
+         tmOVY29jbFm/2jUbMUZhbQQZLDVXq4Xoe/ytct5KW28Xm+yTQQaXOWyxDhpqU5ihu3og
+         PF8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=SZyaevqz+BXyv3cNgww9mIqrqdn3HHupjjYERjA5ZHo=;
-        fh=2EbE8WjaLVa53Sj7ZDsxqgEqspxq22HPHyVjpmlNACU=;
-        b=hQDS+Qciiq5KMqI0g8HA++IXeY93shXDhZOdq6MMUbQGS627xTuyorluneo5/DKf7X
-         NZebgp1oF+V+C+HwBmOGmLp1nkHys1qFzHkydk5CpU9MC22MYbWcYaD2PNMxpuIJbvPV
-         TLml7oPjG+TPWYfsGCegdtIGsVxmlsZkmYqVLQGqaFAK8gECHWrm8x9pXlJbWRJh0Fgo
-         pp0mn4WeNZJYGIvSavRvk2J7Rn4dv/xu6Kn2DqC58fZdAy/N7zlHHSsHT0mKoX/41i0Z
-         SP6L0eCfGsuWWUPWGBVOdhNjqqOFklOi4Wok7yvlgzrtqO9QEpOV4vF1VAf4bMipBB6F
-         aQ0A==
+        bh=dFDI//XvTpn1St0hBV0sdqL1iHcD9DD5+xWDU4qjjTU=;
+        fh=AgN8TvM7pMmL5RKrQhAJxXwOmBywzcClhFxW1SQC+/4=;
+        b=nGteXYKeEC8nGaZ25bU2u6EGdrPaeniHmJvyVi5r3b7nCFrsoKdjBCl3ik/NAl+P3R
+         UG33aXYly2oAXVIj9p0r7qJsC1AjZN5+zESf/VXvRPiNX4Nj8VJN2EiyN3600pY2DLzm
+         OJQxx66N8x3SNvg6QJcQzLgjzeUb1HQsf6449zMwCxVrP6zk97wRauTGN3PiRKtHSZUs
+         3R0QdL4+wO5DLnqHd8oWC8GhzF9Ncq0sxLFX0ZaE/VONtliPYnTiaatVWPRIt+OgAV/r
+         Os+DOwz5XLLq8K86Y2Hoz6wHdV/69gipdD37tEq3hyIsN7tzd6YSEe/jDeCHeMxy4O/K
+         2DrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PzjBfl7J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pdGn9JtO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b14-20020a05620a0cce00b007833eba5119si15576212qkj.697.2024.01.19.03.42.27
+        by mx.google.com with ESMTPS id u2-20020a0cb682000000b00680f74cf178si15719242qvd.126.2024.01.19.03.42.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:42:27 -0800 (PST)
+        Fri, 19 Jan 2024 03:42:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PzjBfl7J;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pdGn9JtO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQnAQ-0002YG-Lz; Fri, 19 Jan 2024 06:36:10 -0500
+	id 1rQnBe-0006Xf-3M; Fri, 19 Jan 2024 06:37:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAN-0002Ok-Fz
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:07 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBc-0006F3-6q
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:37:24 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAK-0001Xu-G3
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:07 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-337d6d7fbd5so809806f8f.0
- for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:36:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBY-00030i-S5
+ for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:37:23 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-40e913e3f03so7593195e9.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:37:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664163; x=1706268963; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664239; x=1706269039; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SZyaevqz+BXyv3cNgww9mIqrqdn3HHupjjYERjA5ZHo=;
- b=PzjBfl7JgPrdR2nlF8LJhLzmOV5m3ibMjDKnxC4aqNfDvuqb1x0jt1eIv3Z8IWSD7A
- hoyWNknS34fz7r/LL6+pi1AbIZ/vjHkgfGL0VCvah5IFYJcHMNY6gHIHHV8rsej9ss69
- rfGXP+EVX2+3jwE0p6ZLoOFCaSNkhQe2vkQZ2VkY5dNcUFAqkY8Raz47RVXqp7mL+Tl9
- SRiE7h2ldMxqImmeWkD4j7iUGqDkmjnN80Fp4+j0iXJeq4/HicDrPzzp5ciMsrP+giBK
- BZJwS9+TmYoojczEmnDKwLSgY8X+5bZikk3yt1lqoU2yk+222qjem+cyQbedaMiAdAOP
- g82w==
+ bh=dFDI//XvTpn1St0hBV0sdqL1iHcD9DD5+xWDU4qjjTU=;
+ b=pdGn9JtO76ViFOkGKsvfbXZ4CWo1qTx3bP39Kqzb9rUhmPkIPIgGISZl/OR85c3ZLB
+ aw3A8+20jAS5p49HNSu7Y8f860kaNvQY//Xs8uG7+yPgOqu94HHPZFEw2KONo3fhG/QA
+ ztyjOcX3oyODeAJfmdbmPLRwAmae/xVbbOd7VjeMqgJlkN2p52XimtI6u7meeu3KCIoB
+ 3lieDp8R2VeAuXJcVG8D+d/h0o5Ei6Cvwkmtlq3IvFWIox3CvivMXOQNAgBfy3q/m1Qe
+ MSnGyXDHmwwm1yqsCKX/SxvAooIvccs80g2TBOWZjh/9OZVxrksr/xUgPAZhzHimYJ6R
+ C1oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664163; x=1706268963;
+ d=1e100.net; s=20230601; t=1705664239; x=1706269039;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=SZyaevqz+BXyv3cNgww9mIqrqdn3HHupjjYERjA5ZHo=;
- b=YvZmpMrXp1Ucqi8j6mZiUF9ZHaLTNtws/iQEgR2dsY8qyQLue3FWPX7DAo/D8dQAue
- 5RqexNgS5C02rTyYicCIjCnHENCcWi5nha3eS47jv/uypFU7fkUFS/1aV80aaozQTKRk
- 9J7M8pHaxOikjvaWVHcZcO6Au6zdw0NIcHYhcKSPerc3fHETminRkMkRjHsHBVSQ+Ubq
- dcvIOVbdFUKR6fFwv8+xZRc7drKPL8aXg4fk4Eh2sLNaS0zwbjY5kpeZ+bMx/e9OPrZP
- +C9b6J+u5YOQEfULTlZs5NmK7zfYJQ9pgn4hCecSuh7umur7ruXpN+jCBXtFzKtKh8Tc
- wXew==
-X-Gm-Message-State: AOJu0Yz6tvYpT44O5haULhjZYCcYC1s1RE9wbKKqDA3HsPMtQYwvcEK2
- RBzAw0ZMxlzIPzRVp6RyqN85Vb4VDdgiqtiJ+DL+SnwJ6V8OpVtn40ewJEcdmFI=
-X-Received: by 2002:a7b:c3d7:0:b0:40e:59e9:98d0 with SMTP id
- t23-20020a7bc3d7000000b0040e59e998d0mr583577wmj.154.1705664162785; 
- Fri, 19 Jan 2024 03:36:02 -0800 (PST)
+ bh=dFDI//XvTpn1St0hBV0sdqL1iHcD9DD5+xWDU4qjjTU=;
+ b=cOfeBycLCKd67xLJNc9DXce9ig2PRLYSNgHe2ryhzEf9zRVEFpDgcxsWtosfbUZ8c+
+ t7TsNbeEmf6uHMaSeLe51GJsjCnyk4p5pAaUZgcJDukRZIUmCvMDW2h/8uIGK6PMAp83
+ DWWdnK70FUz0Oo0S4/YxBqlyjeXDSNSIPIfh9Zzh0Ikv5znurCt3bFuyuc9gZUOhevXI
+ kPL/zmbfIGgsyNJXvSNape+9NC0YtVsEKadrpLRitvj9DcwsUmDkEZ+ZsKvCb04rV5Qu
+ 0EL/nho/wLjTtJSt6rVGCuXMg2jnBl1mEicUnvzXaOC/UE6J/IIlnsDEV3w8XN6VvkN/
+ Z5qQ==
+X-Gm-Message-State: AOJu0YwWDyN+3U/9A/OY5U2rOoREfPgaOuInon6iI3MKdo0zdI+W/Z0W
+ v3r3EPkGTT/2/hHny9QNhe7a86aLd0FaSQbwP8ROhpvqcNgxkaZNavv7sl8f60g=
+X-Received: by 2002:a7b:c311:0:b0:40e:4252:e26 with SMTP id
+ k17-20020a7bc311000000b0040e42520e26mr1417146wmj.69.1705664239333; 
+ Fri, 19 Jan 2024 03:37:19 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- hg14-20020a05600c538e00b0040e5cf9a6c7sm29071140wmb.13.2024.01.19.03.36.02
+ c11-20020a05600c0a4b00b0040d53588d94sm32738791wmq.46.2024.01.19.03.37.18
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:36:02 -0800 (PST)
+ Fri, 19 Jan 2024 03:37:18 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 12/36] system/cpu-timers: Introduce ICountMode enumerator
-Date: Fri, 19 Jan 2024 12:34:41 +0100
-Message-ID: <20240119113507.31951-13-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
+Subject: [PULL 29/36] hw/scsi/esp-pci: use correct address register for PCI
+ DMA transfers
+Date: Fri, 19 Jan 2024 12:34:58 +0100
+Message-ID: <20240119113507.31951-30-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,139 +128,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6aCjNxoaoBxD
+X-TUID: FeUualpJJs48
 
-Rather than having to lookup for what the 0, 1, 2, ...
-icount values are, use a enum definition.
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
+The current code in esp_pci_dma_memory_rw() sets the DMA address to the value
+of the DMA_SPA (Starting Physical Address) register which is incorrect: this
+means that for each callback from the SCSI layer the DMA address is set back
+to the starting address.
+
+In the case where only a single SCSI callback occurs (currently for transfer
+lengths < 128kB) this works fine, however for larger transfers the DMA address
+wraps back to the initial starting address, corrupting the buffer holding the
+data transferred to the guest.
+
+Fix esp_pci_dma_memory_rw() to use the DMA_WAC (Working Address Counter) for
+the DMA address which is correctly incremented across multiple SCSI layer
+transfers.
+
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Tested-by: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <20240112131529.515642-2-mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20231208113529.74067-4-philmd@linaro.org>
 ---
- include/sysemu/cpu-timers.h | 20 +++++++++++++-------
- accel/tcg/icount-common.c   | 16 +++++++---------
- stubs/icount.c              |  2 +-
- system/cpu-timers.c         |  2 +-
- target/arm/helper.c         |  3 ++-
- 5 files changed, 24 insertions(+), 19 deletions(-)
+ hw/scsi/esp-pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
-index b70dc7692d..3f05f29b10 100644
---- a/include/sysemu/cpu-timers.h
-+++ b/include/sysemu/cpu-timers.h
-@@ -17,18 +17,24 @@ void cpu_timers_init(void);
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index 93b3429e0f..7117725371 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -275,7 +275,7 @@ static void esp_pci_dma_memory_rw(PCIESPState *pci, uint8_t *buf, int len,
+         qemu_log_mask(LOG_UNIMP, "am53c974: MDL transfer not implemented\n");
+     }
  
- /* icount - Instruction Counter API */
- 
--/*
-- * icount enablement state:
-+/**
-+ * ICountMode: icount enablement state:
-  *
-- * 0 = Disabled - Do not count executed instructions.
-- * 1 = Enabled - Fixed conversion of insn to ns via "shift" option
-- * 2 = Enabled - Runtime adaptive algorithm to compute shift
-+ * @ICOUNT_DISABLED: Disabled - Do not count executed instructions.
-+ * @ICOUNT_PRECISE: Enabled - Fixed conversion of insn to ns via "shift" option
-+ * @ICOUNT_ADAPTATIVE: Enabled - Runtime adaptive algorithm to compute shift
-  */
-+typedef enum {
-+    ICOUNT_DISABLED = 0,
-+    ICOUNT_PRECISE,
-+    ICOUNT_ADAPTATIVE,
-+} ICountMode;
-+
- #ifdef CONFIG_TCG
--extern int use_icount;
-+extern ICountMode use_icount;
- #define icount_enabled() (use_icount)
- #else
--#define icount_enabled() 0
-+#define icount_enabled() ICOUNT_DISABLED
- #endif
- 
- /*
-diff --git a/accel/tcg/icount-common.c b/accel/tcg/icount-common.c
-index dc69d6a4c6..f0f8fc7f1c 100644
---- a/accel/tcg/icount-common.c
-+++ b/accel/tcg/icount-common.c
-@@ -49,21 +49,19 @@ static bool icount_sleep = true;
- /* Arbitrarily pick 1MIPS as the minimum allowable speed.  */
- #define MAX_ICOUNT_SHIFT 10
- 
--/*
-- * 0 = Do not count executed instructions.
-- * 1 = Fixed conversion of insn to ns via "shift" option
-- * 2 = Runtime adaptive algorithm to compute shift
-- */
--int use_icount;
-+/* Do not count executed instructions */
-+ICountMode use_icount = ICOUNT_DISABLED;
- 
- static void icount_enable_precise(void)
- {
--    use_icount = 1;
-+    /* Fixed conversion of insn to ns via "shift" option */
-+    use_icount = ICOUNT_PRECISE;
- }
- 
- static void icount_enable_adaptive(void)
- {
--    use_icount = 2;
-+    /* Runtime adaptive algorithm to compute shift */
-+    use_icount = ICOUNT_ADAPTATIVE;
- }
- 
- /*
-@@ -256,7 +254,7 @@ static void icount_warp_rt(void)
-         int64_t warp_delta;
- 
-         warp_delta = clock - timers_state.vm_clock_warp_start;
--        if (icount_enabled() == 2) {
-+        if (icount_enabled() == ICOUNT_ADAPTATIVE) {
-             /*
-              * In adaptive mode, do not let QEMU_CLOCK_VIRTUAL run too far
-              * ahead of real time (it might already be ahead so careful not
-diff --git a/stubs/icount.c b/stubs/icount.c
-index 85c381a0ea..c2c10dfb6b 100644
---- a/stubs/icount.c
-+++ b/stubs/icount.c
-@@ -4,7 +4,7 @@
- 
- /* icount - Instruction Counter API */
- 
--int use_icount;
-+ICountMode use_icount = ICOUNT_DISABLED;
- 
- void icount_update(CPUState *cpu)
- {
-diff --git a/system/cpu-timers.c b/system/cpu-timers.c
-index bdf3a41dcb..0b31c9a1b6 100644
---- a/system/cpu-timers.c
-+++ b/system/cpu-timers.c
-@@ -154,7 +154,7 @@ static bool adjust_timers_state_needed(void *opaque)
- 
- static bool icount_shift_state_needed(void *opaque)
- {
--    return icount_enabled() == 2;
-+    return icount_enabled() == ICOUNT_ADAPTATIVE;
- }
- 
- /*
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index dc8f14f433..49665bb763 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -948,7 +948,8 @@ static int64_t cycles_ns_per(uint64_t cycles)
- 
- static bool instructions_supported(CPUARMState *env)
- {
--    return icount_enabled() == 1; /* Precise instruction counting */
-+    /* Precise instruction counting */
-+    return icount_enabled() == ICOUNT_PRECISE;
- }
- 
- static uint64_t instructions_get_count(CPUARMState *env)
+-    addr = pci->dma_regs[DMA_SPA];
++    addr = pci->dma_regs[DMA_WAC];
+     if (pci->dma_regs[DMA_WBC] < len) {
+         len = pci->dma_regs[DMA_WBC];
+     }
 -- 
 2.41.0
 

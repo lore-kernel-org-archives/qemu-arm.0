@@ -1,112 +1,111 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp880099ejg;
-        Fri, 19 Jan 2024 03:40:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGfaTv/2iFwNS6hx/dt1olQH1JNTuTFZBFc9DxULygTJtuy/oJKtsCJLLew4N50B83jgtbp
-X-Received: by 2002:a05:622a:8:b0:42a:cbb:7e8e with SMTP id x8-20020a05622a000800b0042a0cbb7e8emr2567186qtw.110.1705664405110;
-        Fri, 19 Jan 2024 03:40:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664405; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp880532ejg;
+        Fri, 19 Jan 2024 03:41:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG/BHZbQwDh/NY5UH/ig4kbvK+dw+3JzlTFA/9KsAcnqIOHD2pYHTfBipKXD4wjpB3WcUzU
+X-Received: by 2002:ac8:5397:0:b0:42a:2680:fe3b with SMTP id x23-20020ac85397000000b0042a2680fe3bmr594959qtp.83.1705664460890;
+        Fri, 19 Jan 2024 03:41:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664460; cv=none;
         d=google.com; s=arc-20160816;
-        b=iPV42csUHmqofIMdynowd9mR8vxudnFPPaUwJXSmeQrBXhmvHvURX21kq1yBveC4j/
-         cLI2iND69AmITYf39o8Emjdi7Z7/WUsn5Fm2f2O3xV/oNJBI2B7juyJOGYUtqvlRV/Jc
-         ZFJ0Y665ijcR2x5yli7MBzWQ4D55AMJNJspSMOVp/30ACTqOI0V6QdKM4/m2TEW/wNIv
-         rSCKeruPLDqL+W0G1i+g/L4Mr3sd255O+zddX6FInGkW+ZFHi8GtfPCLBh7mA21Eya1d
-         nB+Kg05j4b+pj4zLtNK+/zkFIA/90rsMm/p+hEYgpDElZKr0qFLRAiBkU+iBWkSsVK1H
-         2yjg==
+        b=xM57n4eX1l7HRwFFgVun9MBtgDhUCnvYzH4RvnxOUDyG+Lq5Kfpzoci9kNYXAz9jYB
+         ech+JWqNgW3CthYtA1NzSNLBjzqWUgAcIDuBURji2ETzUHEPq3EnxXoS4tkCMyD2QBRe
+         oan/HWPkvHIHLCk1QGg0wA1DZ24AlN49hHwI/d+vACgqSDlhLrWIEddrFJ1GQ53H6WDm
+         rkyzSHz4wDI90+OmxIDJOqGtOLyYJcUQOj/971p1ctuZ8BsaE34CfIs6+hBDhnzJXj4G
+         6wyztiAamfjj32S7H4weawjqRBipplr5XZJJ6keRqp2+WW55stF6jc1rrpp+yxeTvLji
+         ZNXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uEVuIq2fAugiO07WlgkO+R3+5CVkxIv0WR9Gtc3uhxc=;
-        fh=XLY9/kD9LztQxqN909aTdcehMZxtcAiCmiec2r3FPyM=;
-        b=c7Bh34RUDt8cRG470QXYjz0xWBAqQ6SATMtnrQk7u/9nALz9/VrUUJcUNJIDrzEWC4
-         yz+DIQy25bg9rYBzJ3Tq3lp8rDytXqPFkBr+qmr7ok70KBuHoOQstzh4GBtPVKOvoYat
-         GqHXTgy3T+a7L1hSqCevyo39fkwh23M1Qm/ddIYNKdSg9yIBe/b7c/uhHc9c+iP05JYM
-         +PfPzrUcaoRbryy7liE6sX1T8KfjqkmcqANzrwPGG3O2fxeCVjQ9I/XXAJzMFEhQSI2m
-         QvFgkW1ntuoiUx0bSYk6Md9KTZuR1XFTwbq+VeVdnQdGVN2hUbz6q5KklWoFPJbCQhUy
-         15Jg==
+        bh=1bDfprnFlfsfXltzGvRi/dALsYabn5U/Cj2d9HyuVIo=;
+        fh=H3gzWMxIGcYpnCV3e2JUJoIjDrs6lUKJhouF472DiR4=;
+        b=aVMwei6iTB13FLGY3Vl31+9W8ewOt0+CHmtP3YZh4v1vzOI3HLFZjaqQoPRYlCcAbl
+         SS5zGevDj+H7Cu/+SufdWO422QEhprl5NQZbhqsebaiUgE0+0chSjLyzHnzm48UoJ7Xx
+         jZPbzrw1ZdiJkwJ6y8SOHguL6YDIhqEQb/D0mKbQAEXP7Qy0vVzLD1xShUMB0wo/Tyn2
+         CukE5SAQOinmAyVM30QR8nGGSbTPsVR/BfbjwLuAvX2fKDfJHWQNNZdawo6EGgSf47uY
+         1f4AXBME80Tv08j+Jgs64uvGmwP5WA8zvQYcXEEmhgyZ+w5PFVMcgZOsWRjEwAkWfjIW
+         Y2Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="crG/ilcE";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=h8Cubpe3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2-20020a05622a170200b00429e9611ae4si10389795qtk.491.2024.01.19.03.40.04
+        by mx.google.com with ESMTPS id f3-20020ac87f03000000b00428254553e7si16472261qtk.764.2024.01.19.03.41.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:40:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Jan 2024 03:41:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="crG/ilcE";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=h8Cubpe3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rQnAV-0002gS-0U; Fri, 19 Jan 2024 06:36:15 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rQnAz-0003lZ-FD; Fri, 19 Jan 2024 06:36:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAR-0002Z3-AW
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:11 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAx-0003fM-0j
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:43 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAO-0001gV-Fb
- for qemu-arm@nongnu.org; Fri, 19 Jan 2024 06:36:11 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-33922b66bd7so190683f8f.2
- for <qemu-arm@nongnu.org>; Fri, 19 Jan 2024 03:36:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnAu-0002pq-IN
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:36:42 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-40e7065b7bdso7085905e9.3
+ for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:36:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664167; x=1706268967; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664199; x=1706268999; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uEVuIq2fAugiO07WlgkO+R3+5CVkxIv0WR9Gtc3uhxc=;
- b=crG/ilcE51nUFWJXGdgDdvo4UpscOiNrOgxcA1fkKxfx5saDy0xuCs6O7pAdkk3A+e
- bBVB0gIYGAfj2FmH9kO7LxMRaa9Hk/9wdthUAs4pDdIdmZY3jM8GJD3fcvmagDlBt1aK
- V5X4Pw8BPKg91p6x4qMybO2hmG+hr1YIyL9zkSZxAq3olLE+0M5HhuxAj/dSWengmCqZ
- R4p1A+SJDojWwhq+akJizpqmpB5bO+KLZOPq5PPoByapklbGQ4RvUXupX5lDjoPs2cvI
- jDElsE0jOKOJ4a1bug1yBTcT+zZVxF4uRso3M87n4bqa/R6j5buv0n9/pIGmqpuGsjQG
- HMcw==
+ bh=1bDfprnFlfsfXltzGvRi/dALsYabn5U/Cj2d9HyuVIo=;
+ b=h8Cubpe3S+tE5+65/G+uhpZUJZLKVVUWbQtT7wwtTUQU8OABdqnMF21STV8TgzMTpB
+ rBu0Yw70GRw+koXNthMmD0slIs2cpNk1bx1Z6piK+XnCu7QVOkePmoZDtD1Y/yITHeP5
+ WGg9hyDWmxdZ4xp4OK4kvEUukDAFbULe0TaB+ZKRk/97DYW4mtzUt1g9vDdUEFrIamVD
+ N6ZFAg21BybvJr4vYURmHTc+q60KpAPaaPJ4Luu/Wp7EtXNkU8DrF08eMF+F0wYKAdGb
+ U3MIzOUkzMgjAyiqli23ybmxb8XpJ5K0GtbCn/raYcz5YQCwPkLTkvTGNW2iWdvDY2VK
+ Pf1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664167; x=1706268967;
+ d=1e100.net; s=20230601; t=1705664199; x=1706268999;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uEVuIq2fAugiO07WlgkO+R3+5CVkxIv0WR9Gtc3uhxc=;
- b=pTShbwTIN9yxdf2vYk1U/pbmjZmGXy87eMX3nX4aZmID3pa69ug15cg3efXxQvq3UH
- NXBt7UyjZNB1nzqlyFDevX5o/HJWCRzJXZ/I0TSz03icfpqXRKN/DFPrWEhIOAWHJF/l
- 9vF6Hp3lKNoJdLQWeGCXVI7jYTfSlGjBXY9wEyt6Li6OMYo0SfSAdpZFQvxbwf8sS9rS
- djfaRpZYtgvQRdOnaS1ltowG4mGgdvQKyz40LfKAZ6pDqCa48ewzlUjFj7v73J9e1oWf
- si1NmmzZInxas602NPW9+1G8LPCrB+9YfY2RJRvFs7C6UoOOKxAOjm5tgq+hMC9IaroW
- LHqA==
-X-Gm-Message-State: AOJu0Yzotkn4zP/gCywt+/9o2bSFXuxnmUm8IYKQxAjkynDS88mOJ4s4
- 4e5eyZJYDUZTvAKhcYVf8SIW/DYU6n60hL8CqiAqdXVOn8g3cSXE9iTnfLlUrY4=
-X-Received: by 2002:a5d:49cc:0:b0:339:2248:3e30 with SMTP id
- t12-20020a5d49cc000000b0033922483e30mr342492wrs.138.1705664167141; 
- Fri, 19 Jan 2024 03:36:07 -0800 (PST)
+ bh=1bDfprnFlfsfXltzGvRi/dALsYabn5U/Cj2d9HyuVIo=;
+ b=pLJORAzt24QFsxUMoTbHvb2VO/jF7LotldOwt1UQwcykoMi1tmT1d8PPQhEBMlbjdu
+ hrE3g+aB60KHfUBIJ5ECkMy/SWC9jlhRHjN7KCLPn3jPMDsFg009E4QTuvTmw29PWQd9
+ PL9yYlydZ754c5d2/TCX/Fw3LZFiUDj2IpUkulSyIyu3ZFjpQ4GwShEMfJkIA3oOKkZN
+ g/14EGXKA8KSjYh5W4IpGdkbl7GrRQRnJ5AHa5D/2VtkR9KytlYnCyyGfW1koWk48ehE
+ 3iGFHGDVSYIZsImsaLpIKmLcpdnLJ4y5auanNkENbNnbMpe1x5NnIxT+iLuf8gAZ3TLy
+ gp+Q==
+X-Gm-Message-State: AOJu0Yxv2Hktgyz2Rl9lhn53MxjB29FNMi/ngpR3ySutGV7FsuJSMPZH
+ QD9GFi2c/u1j/oLDpGc033VvjKXrnfu0YP8zO+4/w2Rjq0eCgIXhIK9iXSE14IhBTZCjR0Nyeci
+ dxX+1yg==
+X-Received: by 2002:a05:600c:4313:b0:40d:94da:ff40 with SMTP id
+ p19-20020a05600c431300b0040d94daff40mr912937wme.195.1705664198876; 
+ Fri, 19 Jan 2024 03:36:38 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- p1-20020adfe601000000b00337bf461385sm6296931wrm.26.2024.01.19.03.36.06
+ h5-20020a05600c314500b0040e5e21cd7bsm28384501wmo.11.2024.01.19.03.36.38
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:36:06 -0800 (PST)
+ Fri, 19 Jan 2024 03:36:38 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 13/36] target/arm: Ensure icount is enabled when emulating
- INST_RETIRED
-Date: Fri, 19 Jan 2024 12:34:42 +0100
-Message-ID: <20240119113507.31951-14-philmd@linaro.org>
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Subject: [PULL 20/36] hw/pflash: implement update buffer for block writes
+Date: Fri, 19 Jan 2024 12:34:49 +0100
+Message-ID: <20240119113507.31951-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,64 +114,279 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HSrXWxKDvM6Z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hG3pR4em6zee
 
-pmu_init() register its event checking the pm_event::supported()
-handler. For INST_RETIRED, the event is only registered and the
-bit enabled in the PMU Common Event Identification register when
-icount is enabled as ICOUNT_PRECISE.
+From: Gerd Hoffmann <kraxel@redhat.com>
 
-PMU events are TCG-only, hardware accelerators handle them
-directly. Unfortunately we register the events in non-TCG builds,
-leading to linking error such:
+Add an update buffer where all block updates are staged.
+Flush or discard updates properly, so we should never see
+half-completed block writes in pflash storage.
 
-  ld: Undefined symbols:
-    _icount_to_ns, referenced from:
-      _instructions_ns_per in target_arm_helper.c.o
-  clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Drop a bunch of FIXME comments ;)
 
-As a kludge, give a hint to the compiler by asserting the
-pm_event::get_count() and pm_event::ns_per_count() handler will
-only be called under this icount mode.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240108160900.104835-4-kraxel@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20231208113529.74067-5-philmd@linaro.org>
 ---
- target/arm/helper.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/block/pflash_cfi01.c | 110 ++++++++++++++++++++++++++++++----------
+ hw/block/pflash_cfi02.c |   2 +-
+ hw/block/trace-events   |   7 ++-
+ 3 files changed, 89 insertions(+), 30 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 49665bb763..e068d35383 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -954,11 +954,13 @@ static bool instructions_supported(CPUARMState *env)
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 8434a45cab..f956f8bcf7 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -80,16 +80,39 @@ struct PFlashCFI01 {
+     uint16_t ident3;
+     uint8_t cfi_table[0x52];
+     uint64_t counter;
+-    unsigned int writeblock_size;
++    uint32_t writeblock_size;
+     MemoryRegion mem;
+     char *name;
+     void *storage;
+     VMChangeStateEntry *vmstate;
+     bool old_multiple_chip_handling;
++
++    /* block update buffer */
++    unsigned char *blk_bytes;
++    uint32_t blk_offset;
+ };
  
- static uint64_t instructions_get_count(CPUARMState *env)
- {
-+    assert(icount_enabled() == ICOUNT_PRECISE);
-     return (uint64_t)icount_get_raw();
+ static int pflash_post_load(void *opaque, int version_id);
+ 
++static bool pflash_blk_write_state_needed(void *opaque)
++{
++    PFlashCFI01 *pfl = opaque;
++
++    return (pfl->blk_offset != -1);
++}
++
++static const VMStateDescription vmstate_pflash_blk_write = {
++    .name = "pflash_cfi01_blk_write",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = pflash_blk_write_state_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_VBUFFER_UINT32(blk_bytes, PFlashCFI01, 0, NULL, writeblock_size),
++        VMSTATE_UINT32(blk_offset, PFlashCFI01),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_pflash = {
+     .name = "pflash_cfi01",
+     .version_id = 1,
+@@ -101,6 +124,10 @@ static const VMStateDescription vmstate_pflash = {
+         VMSTATE_UINT8(status, PFlashCFI01),
+         VMSTATE_UINT64(counter, PFlashCFI01),
+         VMSTATE_END_OF_LIST()
++    },
++    .subsections = (const VMStateDescription * const []) {
++        &vmstate_pflash_blk_write,
++        NULL
+     }
+ };
+ 
+@@ -376,13 +403,55 @@ static void pflash_update(PFlashCFI01 *pfl, int offset,
+     }
  }
  
- static int64_t instructions_ns_per(uint64_t icount)
++/* copy current flash content to block update buffer */
++static void pflash_blk_write_start(PFlashCFI01 *pfl, hwaddr offset)
++{
++    hwaddr mask = ~(pfl->writeblock_size - 1);
++
++    trace_pflash_write_block_start(pfl->name, pfl->counter);
++    pfl->blk_offset = offset & mask;
++    memcpy(pfl->blk_bytes, pfl->storage + pfl->blk_offset,
++           pfl->writeblock_size);
++}
++
++/* commit block update buffer changes */
++static void pflash_blk_write_flush(PFlashCFI01 *pfl)
++{
++    g_assert(pfl->blk_offset != -1);
++    trace_pflash_write_block_flush(pfl->name);
++    memcpy(pfl->storage + pfl->blk_offset, pfl->blk_bytes,
++           pfl->writeblock_size);
++    pflash_update(pfl, pfl->blk_offset, pfl->writeblock_size);
++    pfl->blk_offset = -1;
++}
++
++/* discard block update buffer changes */
++static void pflash_blk_write_abort(PFlashCFI01 *pfl)
++{
++    trace_pflash_write_block_abort(pfl->name);
++    pfl->blk_offset = -1;
++}
++
+ static inline void pflash_data_write(PFlashCFI01 *pfl, hwaddr offset,
+                                      uint32_t value, int width, int be)
  {
-+    assert(icount_enabled() == ICOUNT_PRECISE);
-     return icount_to_ns((int64_t)icount);
+     uint8_t *p;
+ 
+-    trace_pflash_data_write(pfl->name, offset, width, value, pfl->counter);
+-    p = pfl->storage + offset;
++    if (pfl->blk_offset != -1) {
++        /* block write: redirect writes to block update buffer */
++        if ((offset < pfl->blk_offset) ||
++            (offset + width > pfl->blk_offset + pfl->writeblock_size)) {
++            pfl->status |= 0x10; /* Programming error */
++            return;
++        }
++        trace_pflash_data_write_block(pfl->name, offset, width, value,
++                                      pfl->counter);
++        p = pfl->blk_bytes + (offset - pfl->blk_offset);
++    } else {
++        /* write directly to storage */
++        trace_pflash_data_write(pfl->name, offset, width, value);
++        p = pfl->storage + offset;
++    }
+ 
+     if (be) {
+         stn_be_p(p, width, value);
+@@ -503,9 +572,9 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+             } else {
+                 value = extract32(value, 0, pfl->bank_width * 8);
+             }
+-            trace_pflash_write_block(pfl->name, value);
+             pfl->counter = value;
+             pfl->wcycle++;
++            pflash_blk_write_start(pfl, offset);
+             break;
+         case 0x60:
+             if (cmd == 0xd0) {
+@@ -536,12 +605,7 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+         switch (pfl->cmd) {
+         case 0xe8: /* Block write */
+             /* FIXME check @offset, @width */
+-            if (!pfl->ro) {
+-                /*
+-                 * FIXME writing straight to memory is *wrong*.  We
+-                 * should write to a buffer, and flush it to memory
+-                 * only on confirm command (see below).
+-                 */
++            if (!pfl->ro && (pfl->blk_offset != -1)) {
+                 pflash_data_write(pfl, offset, value, width, be);
+             } else {
+                 pfl->status |= 0x10; /* Programming error */
+@@ -550,18 +614,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+             pfl->status |= 0x80;
+ 
+             if (!pfl->counter) {
+-                hwaddr mask = pfl->writeblock_size - 1;
+-                mask = ~mask;
+-
+                 trace_pflash_write(pfl->name, "block write finished");
+                 pfl->wcycle++;
+-                if (!pfl->ro) {
+-                    /* Flush the entire write buffer onto backing storage.  */
+-                    /* FIXME premature! */
+-                    pflash_update(pfl, offset & mask, pfl->writeblock_size);
+-                } else {
+-                    pfl->status |= 0x10; /* Programming error */
+-                }
+             }
+ 
+             pfl->counter--;
+@@ -573,20 +627,17 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+     case 3: /* Confirm mode */
+         switch (pfl->cmd) {
+         case 0xe8: /* Block write */
+-            if (cmd == 0xd0) {
+-                /* FIXME this is where we should write out the buffer */
++            if ((cmd == 0xd0) && !(pfl->status & 0x10)) {
++                pflash_blk_write_flush(pfl);
+                 pfl->wcycle = 0;
+                 pfl->status |= 0x80;
+             } else {
+-                qemu_log_mask(LOG_UNIMP,
+-                    "%s: Aborting write to buffer not implemented,"
+-                    " the data is already written to storage!\n"
+-                    "Flash device reset into READ mode.\n",
+-                    __func__);
++                pflash_blk_write_abort(pfl);
+                 goto mode_read_array;
+             }
+             break;
+         default:
++            pflash_blk_write_abort(pfl);
+             goto error_flash;
+         }
+         break;
+@@ -820,6 +871,9 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+     pfl->cmd = 0x00;
+     pfl->status = 0x80; /* WSM ready */
+     pflash_cfi01_fill_cfi_table(pfl);
++
++    pfl->blk_bytes = g_malloc(pfl->writeblock_size);
++    pfl->blk_offset = -1;
  }
- #endif
+ 
+ static void pflash_cfi01_system_reset(DeviceState *dev)
+@@ -839,6 +893,8 @@ static void pflash_cfi01_system_reset(DeviceState *dev)
+      * This model deliberately ignores this delay.
+      */
+     pfl->status = 0x80;
++
++    pfl->blk_offset = -1;
+ }
+ 
+ static Property pflash_cfi01_properties[] = {
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 2a99b286b0..6fa56f14c0 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -546,7 +546,7 @@ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
+                 }
+                 goto reset_flash;
+             }
+-            trace_pflash_data_write(pfl->name, offset, width, value, 0);
++            trace_pflash_data_write(pfl->name, offset, width, value);
+             if (!pfl->ro) {
+                 p = (uint8_t *)pfl->storage + offset;
+                 if (pfl->be) {
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index bab21d3a1c..cc9a9f2460 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -12,7 +12,8 @@ fdctrl_tc_pulse(int level) "TC pulse: %u"
+ pflash_chip_erase_invalid(const char *name, uint64_t offset) "%s: chip erase: invalid address 0x%" PRIx64
+ pflash_chip_erase_start(const char *name) "%s: start chip erase"
+ pflash_data_read(const char *name, uint64_t offset, unsigned size, uint32_t value) "%s: data offset:0x%04"PRIx64" size:%u value:0x%04x"
+-pflash_data_write(const char *name, uint64_t offset, unsigned size, uint32_t value, uint64_t counter) "%s: data offset:0x%04"PRIx64" size:%u value:0x%04x counter:0x%016"PRIx64
++pflash_data_write(const char *name, uint64_t offset, unsigned size, uint32_t value) "%s: data offset:0x%04"PRIx64" size:%u value:0x%04x"
++pflash_data_write_block(const char *name, uint64_t offset, unsigned size, uint32_t value, uint64_t counter) "%s: data offset:0x%04"PRIx64" size:%u value:0x%04x counter:0x%016"PRIx64
+ pflash_device_id(const char *name, uint16_t id) "%s: read device ID: 0x%04x"
+ pflash_device_info(const char *name, uint64_t offset) "%s: read device information offset:0x%04" PRIx64
+ pflash_erase_complete(const char *name) "%s: sector erase complete"
+@@ -32,7 +33,9 @@ pflash_unlock0_failed(const char *name, uint64_t offset, uint8_t cmd, uint16_t a
+ pflash_unlock1_failed(const char *name, uint64_t offset, uint8_t cmd) "%s: unlock0 failed 0x%" PRIx64 " 0x%02x"
+ pflash_unsupported_device_configuration(const char *name, uint8_t width, uint8_t max) "%s: unsupported device configuration: device_width:%d max_device_width:%d"
+ pflash_write(const char *name, const char *str) "%s: %s"
+-pflash_write_block(const char *name, uint32_t value) "%s: block write: bytes:0x%x"
++pflash_write_block_start(const char *name, uint32_t value) "%s: block write start: bytes:0x%x"
++pflash_write_block_flush(const char *name) "%s: block write flush"
++pflash_write_block_abort(const char *name) "%s: block write abort"
+ pflash_write_block_erase(const char *name, uint64_t offset, uint64_t len) "%s: block erase offset:0x%" PRIx64 " bytes:0x%" PRIx64
+ pflash_write_failed(const char *name, uint64_t offset, uint8_t cmd) "%s: command failed 0x%" PRIx64 " 0x%02x"
+ pflash_write_invalid(const char *name, uint8_t cmd) "%s: invalid write for command 0x%02x"
 -- 
 2.41.0
 

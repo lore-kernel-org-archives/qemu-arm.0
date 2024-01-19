@@ -1,113 +1,114 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881811ejg;
-        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGjB39YA1hh41FueEcn3ekPgWHXFd2qgVCj0ELSOHvl6rsf1kv+ihTAWVDRX3UfZuvOY8Hn
-X-Received: by 2002:a05:620a:4d7:b0:783:30d1:d49b with SMTP id 23-20020a05620a04d700b0078330d1d49bmr1046751qks.112.1705664635348;
-        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705664635; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp881926ejg;
+        Fri, 19 Jan 2024 03:44:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IErRY7nBtV9KT5RXDoOKP2bZW+CooO+xnFDTV2xR9ciQ2EOtMZ4umyhU2wpaJrC1FjxH2Zj
+X-Received: by 2002:a05:620a:430f:b0:783:23a1:8b45 with SMTP id u15-20020a05620a430f00b0078323a18b45mr1653947qko.108.1705664651828;
+        Fri, 19 Jan 2024 03:44:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705664651; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5QAn/tQ3AGU7qLbASwFwkL4dwBXNSCTEzw56y1E0KSQ+KgUcznNMpppFVwhrx54NP
-         oKhU6KkrWb3AmbtWy7ftkMEgfogNMOgSA8zc2EvKR2+p0qiDyFMFB0/vbuG1hgqnAnQ3
-         Hoea9LtdrwadvxWGkdti0UJPW/hZV9D8/ZX3q+pF5schm++xJlKyutLCnM7VXhv1iepF
-         zC1lkksFDtvLn3iysKpEgZlcMJbNZhmm9he8rastKMr9ZOj02mzhwn7GFUXOchiTGheE
-         9pt/QOG0rM7WULeFuxlOzE9QBd6Fm9RjTQoz3sWVeiCAkQCMh7+YZIphRPJwSrEq7l8d
-         GMdA==
+        b=UXqsjELi2EidymiW4pzuqYMWnTNbnHab8muAUVCSu2DiKnZak1RM8i0t1dK0alD0Cj
+         U+ktY5DJmLh5eK6iJp6bnd/IIk3gO7Qgrgrq2fRE8LBbBWUcuMZzRdQLaQfj+3zqVXjr
+         AnlK/Djg4s4Uq3AHlrTcJ973hw+wXvu+SyQM1tiFBQr9jwmESwhlW3QdxJ5YluN8h2o+
+         vslZT8R3ACvm9ytKNtI/QgcHi7tdS1ZxAQzgDtMpG9KNOaxM4Yp/1AbI0KmydiRgIlqS
+         WWZGShFT+eFmrAO+N2UadpDGOlGMQsr0ngc5dJAt1YLKPW0yQYGlVpMoPdrH1epD+Aa5
+         Mw8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
-        fh=AgN8TvM7pMmL5RKrQhAJxXwOmBywzcClhFxW1SQC+/4=;
-        b=mFM5bGn8BlXHBNDcjrPHxmSTE5ZIjUZvWA/EZv6r5WpvjvUecCnQbA4IMbOQNVU5ds
-         Fq6NAfwTo7GLYayc/daA6UnE7TVvzLAL8hS0jFkdyFv/Zu3EssKHOhpoKu5Rlq+bDES3
-         DJdQWhTHvwgmTlP/fSj638Fckhyc11CFKM+U5AuEk4VdE3GDvykfLxX/YggJ6E1yAFCs
-         7O6Lbtb+biwD3TTah4P1q9U7CxMC80l9DsIICoxTFBv1MvDm5AntJ1AEelnU6sH8hn80
-         b9slDs1F1xOYqfHm9gHEHMhST4rKw26LzQF/gWVuI62Qll7CnVC38cZjr2UUiAZIDvDm
-         gang==
+        bh=jLRXy22Xor5y6P0/iN4HTYPsSbdEgm9rijeYJNuVZIA=;
+        fh=xyhJj9tfvEKpRpUcgN+Ggw682L07EpOsT6z0FH/aTQk=;
+        b=vRE5ZIS3hbVSH9tXLfoXnU4PvRakJvyUh7P2SGFExMpbT9u2pC8FYG7fgBj44CPsiO
+         eX80O0NpehhOjwWCbF6Zyl+NySLDNUFYMQ+79uMJiEv3Lr6rtannjfByQvdVVTcGyGEI
+         pxQKIbcgpUUapSs59cNraz+Aj97mOnLJHUdjK91ghViZVBP1oIBuDGR1+FSI/ixUnSD5
+         NtMkpynjb3Is7MRF79jeePw31NA6Mnor6FKgx38se2zhU8gR7qXSuNWDmlBE2fI5D3DK
+         r5VztxH/rtZvuYVfeqUHDRel/G3JeVF5FTzrd6DfGMkd1vXYfwA46q5ywgery5NmC4Cg
+         RU5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eIXZ1Tks;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rhMELx5I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1-20020a05620a11a100b007834b7bf527si13829171qkk.351.2024.01.19.03.43.55
+        by mx.google.com with ESMTPS id y6-20020a05620a0e0600b00781adc17f0fsi15857213qkm.63.2024.01.19.03.44.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jan 2024 03:43:55 -0800 (PST)
+        Fri, 19 Jan 2024 03:44:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eIXZ1Tks;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rhMELx5I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rQnBn-0007Nj-CS; Fri, 19 Jan 2024 06:37:35 -0500
+	id 1rQnBZ-0005qU-KD; Fri, 19 Jan 2024 06:37:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBl-0007H9-4w
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:33 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBY-0005fS-7I
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:20 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBh-00034w-Sz
- for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:32 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3376555b756so389741f8f.0
- for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:37:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQnBU-0002z8-Uw
+ for qemu-devel@nongnu.org; Fri, 19 Jan 2024 06:37:19 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-40e80046246so3929215e9.1
+ for <qemu-devel@nongnu.org>; Fri, 19 Jan 2024 03:37:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705664248; x=1706269048; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705664235; x=1706269035; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
- b=eIXZ1Tks3W8nIRyoK4sHzQw0RHEZji/9FUeQC8Qsy/N4NAp9hCQOp/w05MccHJ+bZo
- g8TnlT/q8GFE+LwuEWlQAPYX+svvvoa1iohVpBTIgiqMOfTbY93S3NnYLPJX2Av8/pUF
- W1GRN/b5qkuGXmlzBE+zo927o7ij/RfxmjX8dnXfia0NDa0NuCcJtcb6qMOTWPfMUx1y
- cJ+92ucdBkVXxKoSZUNSEeSvoWBVSJrYRn0oB+1KrpH44Pl2R54Ecdg1XqQGVfiNGS5R
- Xzg5wIvP6KSX9cwZ2dFz5JoAWJoJ9h4pfXQUsq/1dirfqxaYGdAUfDH6ThhvUKV2IcW2
- JEpg==
+ bh=jLRXy22Xor5y6P0/iN4HTYPsSbdEgm9rijeYJNuVZIA=;
+ b=rhMELx5IewmlbyOQ8VNkeyx6gJQ2pEdpuMFcvSLGghD5vKUuZn++wxiCs4XFCKN0OJ
+ dyRKHwXcY5rabKWz8fKmUEH8y6vBtxSBDpAIxhCnwqhQSwvBJQYicwc9q0L2kvifvyL5
+ 6NhylwIJ+h8xMRuPhbJajn9kDmdi+F4vastGzUzCyORLlt1Sg/CkbaIxHDvcXHR3VUFb
+ baOlKVEVshU7Y+L5aQ6nhoaC809Z41aSAnP72denK8W5fD0XwQu7NCY2zbFVRIBnlfZT
+ hkHMfnVeEctPVDjv0xwaHIg08+RYJ/WzqtHkfwtcNQR9ibFYisXm+irPGgYa7YVeWqTS
+ wRiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705664248; x=1706269048;
+ d=1e100.net; s=20230601; t=1705664235; x=1706269035;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ODpPk4V4L74xrCSwXIUijjl6fJH0n8xXoj2+PFNQbhs=;
- b=cTPcVpKfyhpEn7EFFEJiD/+GJAO9Otv0BZcQjWTZ58UksJby4m9eanSGXDWVvq1msY
- vYztOGMnCQnRW9tSliRtelWlTPoLhcjj/aOCMp2Ttkg8Bc13uPcuvrgBFbe1lH8/5BBq
- CN1jHFS5CRQ5wA3AX6EKO8f2iGQP/6XQl309tFihZpV8/Vy9dqghL2+LYKRxsm+0NEk4
- xv7zaSqEkRdkAxzOhQgnKtICFz+TJItr51FYuPLijM1jqJKvJ59GoTZzJ6EBByxksSz/
- /WTXb2FlcKuFEfBMsccu3Xl7POOZcdEc4MF6zEczK5NXpZCfVYk0j32d0zWdoGlQPTQR
- HwDQ==
-X-Gm-Message-State: AOJu0Yyh2k9x1a2GwYwl+k1LhQkhlY28FKdzKCRtK7wAGpVOR/ypbPmP
- c6LBf5ncHm5lcuFxpc/zjXrQqpehIahekKRXcAzDGvuZ/xQArDrKOEHVZ+vIDHaY0/L7i/j8j0l
- iLDI+/g==
-X-Received: by 2002:a5d:698b:0:b0:336:8b2f:2ae5 with SMTP id
- g11-20020a5d698b000000b003368b2f2ae5mr589450wru.24.1705664248288; 
- Fri, 19 Jan 2024 03:37:28 -0800 (PST)
+ bh=jLRXy22Xor5y6P0/iN4HTYPsSbdEgm9rijeYJNuVZIA=;
+ b=VfPQ8xMLkQnutIV65n3WXn2Erg8rZN/Z0AZXUz6lbOhDTnlQvw1JUcH/WNga3QGW82
+ /hzYJ7tfZAPbwqjpPxwdGkdw2C7MAxa6eb9Hz2z32l7ki7176sa8pxnfQrrhaEdkGMYI
+ E86nMypPof+edbL91fh1JPqF55HYp2yhHt4mZrlr65TLFPwAgqPO4xc2WRPXSIjxATgN
+ HUQEktQxw32Q5s8P0moSUN/XxHbWsRCNOfasZ9a7zNskCeRh7e5hrceZ2MTn5yhdGZdu
+ kDkkRH7SYMzSQfEEY2xbhRrWpaeM4YDnMKDUlc9Hn9SnzbcF6OOvfZTZpYJB7vI13RVh
+ UJ1Q==
+X-Gm-Message-State: AOJu0Yxr8jXzknBO09Wmuen53WEymA2gyrIEZEF6JDdKuzvZnRNOT+sZ
+ VPaYozKOX+LHgDZ/sNbF6lobKPk6V62JEiMpcAzmLSyQnR7FVJ/R9tHwSt1Yn7mfzyfZyJD+SL8
+ +AKZpqQ==
+X-Received: by 2002:a7b:cb46:0:b0:40e:78e0:adf with SMTP id
+ v6-20020a7bcb46000000b0040e78e00adfmr498602wmj.182.1705664234809; 
+ Fri, 19 Jan 2024 03:37:14 -0800 (PST)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- n13-20020a5d51cd000000b0033673ddd81csm6238840wrv.112.2024.01.19.03.37.27
+ f11-20020adff98b000000b00337d5cd0d8asm3184111wrr.90.2024.01.19.03.37.14
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 19 Jan 2024 03:37:27 -0800 (PST)
+ Fri, 19 Jan 2024 03:37:14 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Guenter Roeck <linux@roeck-us.net>,
+ qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>
-Subject: [PULL 31/36] hw/scsi/esp-pci: synchronise setting of DMA_STAT_DONE
- with ESP completion interrupt
-Date: Fri, 19 Jan 2024 12:35:00 +0100
-Message-ID: <20240119113507.31951-32-philmd@linaro.org>
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: [PULL 28/36] target/riscv: Rename tcg_cpu_FOO() to include 'riscv'
+Date: Fri, 19 Jan 2024 12:34:57 +0100
+Message-ID: <20240119113507.31951-29-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240119113507.31951-1-philmd@linaro.org>
 References: <20240119113507.31951-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,96 +130,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +UTb/gI2VM5B
+X-TUID: DyH2Ejck6Wb0
 
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+The tcg_cpu_FOO() names are riscv specific, so rename
+them as riscv_tcg_cpu_FOO() (as other names in this file)
+to ease navigating the code.
 
-The setting of DMA_STAT_DONE at the end of a DMA transfer can be configured to
-generate an interrupt, however the Linux driver manually checks for DMA_STAT_DONE
-being set and if it is, considers that a DMA transfer has completed.
-
-If DMA_STAT_DONE is set but the ESP device isn't indicating an interrupt then
-the Linux driver considers this to be a spurious interrupt. However this can
-occur in QEMU as there is a delay between the end of DMA transfer where
-DMA_STAT_DONE is set, and the ESP device raising its completion interrupt.
-
-This appears to be an incorrect assumption in the Linux driver as the ESP and
-PCI DMA interrupt sources are separate (and may not be raised exactly
-together), however we can work around this by synchronising the setting of
-DMA_STAT_DONE at the end of a DMA transfer with the ESP completion interrupt.
-
-In conjunction with the previous commit Linux is now able to correctly boot
-from an am53c974 PCI SCSI device on the hppa C3700 machine without emitting
-"iget: checksum invalid" and "Spurious irq, sreg=10" errors.
-
-Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-Tested-by: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <20240112131529.515642-4-mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-ID: <20240111120221.35072-6-philmd@linaro.org>
 ---
- hw/scsi/esp-pci.c | 28 +++++++++++++---------------
- 1 file changed, 13 insertions(+), 15 deletions(-)
+ target/riscv/tcg/tcg-cpu.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-index 15dc3c004d..875a49199d 100644
---- a/hw/scsi/esp-pci.c
-+++ b/hw/scsi/esp-pci.c
-@@ -93,6 +93,18 @@ static void esp_irq_handler(void *opaque, int irq_num, int level)
- 
-     if (level) {
-         pci->dma_regs[DMA_STAT] |= DMA_STAT_SCSIINT;
-+
-+        /*
-+         * If raising the ESP IRQ to indicate end of DMA transfer, set
-+         * DMA_STAT_DONE at the same time. In theory this should be done in
-+         * esp_pci_dma_memory_rw(), however there is a delay between setting
-+         * DMA_STAT_DONE and the ESP IRQ arriving which is visible to the
-+         * guest that can cause confusion e.g. Linux
-+         */
-+        if ((pci->dma_regs[DMA_CMD] & DMA_CMD_MASK) == 0x3 &&
-+            pci->dma_regs[DMA_WBC] == 0) {
-+                pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
-+        }
-     } else {
-         pci->dma_regs[DMA_STAT] &= ~DMA_STAT_SCSIINT;
-     }
-@@ -306,9 +318,6 @@ static void esp_pci_dma_memory_rw(PCIESPState *pci, uint8_t *buf, int len,
-     /* update status registers */
-     pci->dma_regs[DMA_WBC] -= len;
-     pci->dma_regs[DMA_WAC] += len;
--    if (pci->dma_regs[DMA_WBC] == 0) {
--        pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
--    }
+diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
+index 14133ff665..994ca1cdf9 100644
+--- a/target/riscv/tcg/tcg-cpu.c
++++ b/target/riscv/tcg/tcg-cpu.c
+@@ -929,7 +929,7 @@ static bool riscv_cpu_is_vendor(Object *cpu_obj)
+  *   -> cpu_exec_realizefn()
+  *      -> tcg_cpu_realize() (via accel_cpu_common_realize())
+  */
+-static bool tcg_cpu_realize(CPUState *cs, Error **errp)
++static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     Error *local_err = NULL;
+@@ -1372,7 +1372,7 @@ static bool riscv_cpu_has_max_extensions(Object *cpu_obj)
+     return object_dynamic_cast(cpu_obj, TYPE_RISCV_CPU_MAX) != NULL;
  }
  
- static void esp_pci_dma_memory_read(void *opaque, uint8_t *buf, int len)
-@@ -363,24 +372,13 @@ static const VMStateDescription vmstate_esp_pci_scsi = {
+-static void tcg_cpu_instance_init(CPUState *cs)
++static void riscv_tcg_cpu_instance_init(CPUState *cs)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     Object *obj = OBJECT(cpu);
+@@ -1386,7 +1386,7 @@ static void tcg_cpu_instance_init(CPUState *cs)
      }
+ }
+ 
+-static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
++static void riscv_tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
+ {
+     /*
+      * All cpus use the same set of operations.
+@@ -1394,30 +1394,30 @@ static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
+     cc->tcg_ops = &riscv_tcg_ops;
+ }
+ 
+-static void tcg_cpu_class_init(CPUClass *cc)
++static void riscv_tcg_cpu_class_init(CPUClass *cc)
+ {
+-    cc->init_accel_cpu = tcg_cpu_init_ops;
++    cc->init_accel_cpu = riscv_tcg_cpu_init_ops;
+ }
+ 
+-static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
++static void riscv_tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
+ {
+     AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
+ 
+-    acc->cpu_class_init = tcg_cpu_class_init;
+-    acc->cpu_instance_init = tcg_cpu_instance_init;
+-    acc->cpu_target_realize = tcg_cpu_realize;
++    acc->cpu_class_init = riscv_tcg_cpu_class_init;
++    acc->cpu_instance_init = riscv_tcg_cpu_instance_init;
++    acc->cpu_target_realize = riscv_tcg_cpu_realize;
+ }
+ 
+-static const TypeInfo tcg_cpu_accel_type_info = {
++static const TypeInfo riscv_tcg_cpu_accel_type_info = {
+     .name = ACCEL_CPU_NAME("tcg"),
+ 
+     .parent = TYPE_ACCEL_CPU,
+-    .class_init = tcg_cpu_accel_class_init,
++    .class_init = riscv_tcg_cpu_accel_class_init,
+     .abstract = true,
  };
  
--static void esp_pci_command_complete(SCSIRequest *req, size_t resid)
--{
--    ESPState *s = req->hba_private;
--    PCIESPState *pci = container_of(s, PCIESPState, esp);
--
--    esp_command_complete(req, resid);
--    pci->dma_regs[DMA_WBC] = 0;
--    pci->dma_regs[DMA_STAT] |= DMA_STAT_DONE;
--    esp_pci_update_irq(pci);
--}
--
- static const struct SCSIBusInfo esp_pci_scsi_info = {
-     .tcq = false,
-     .max_target = ESP_MAX_DEVS,
-     .max_lun = 7,
- 
-     .transfer_data = esp_transfer_data,
--    .complete = esp_pci_command_complete,
-+    .complete = esp_command_complete,
-     .cancel = esp_request_cancelled,
- };
- 
+-static void tcg_cpu_accel_register_types(void)
++static void riscv_tcg_cpu_accel_register_types(void)
+ {
+-    type_register_static(&tcg_cpu_accel_type_info);
++    type_register_static(&riscv_tcg_cpu_accel_type_info);
+ }
+-type_init(tcg_cpu_accel_register_types);
++type_init(riscv_tcg_cpu_accel_register_types);
 -- 
 2.41.0
 

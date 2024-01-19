@@ -1,187 +1,111 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp840617ejg;
-        Fri, 19 Jan 2024 02:09:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGabB4dPE8cnpAXG5eyZk78qiYnpr3Ogj1zjcqD5XkgjFrkYQBeqmHMIRuZfokYZ2CPn87q
-X-Received: by 2002:a81:69c2:0:b0:5ff:7cf4:3d75 with SMTP id e185-20020a8169c2000000b005ff7cf43d75mr2241210ywc.103.1705658969245;
-        Fri, 19 Jan 2024 02:09:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705658969; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp868762ejg;
+        Fri, 19 Jan 2024 03:14:27 -0800 (PST)
+X-Received: by 2002:a17:906:1b47:b0:a2c:7df9:b8b0 with SMTP id p7-20020a1709061b4700b00a2c7df9b8b0mr652847ejg.219.1705662867783;
+        Fri, 19 Jan 2024 03:14:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705662867; cv=none;
         d=google.com; s=arc-20160816;
-        b=lxm12G97IqZ1IumpYA8fzxWBIKpRHs2rj/5o/RvUMBwv9pGujrQSqczqQWYN2t6C0/
-         EAmkTSz6CFmnQmd10bsDxl9+IMn9JlEeQjQ74DK3DrXQIhM/8GicjRPSzognfl53axyu
-         pdXJnzA1UGsYKVZAfDFCETckuOvSlJbUv+h++NkCJoickbMDED3vXJyp++P1yIEZ5KO5
-         4KhJfzKMEfwPGnwOg4bcVpOGj1C1nD9JenpDXB55gttx6QJa0xAvze9VOfYf6U9TirDL
-         0zpn6FVJk1Ibr4LGYb8VsAG06GxjmNhGM5ol++5dJAVU9rewrSoVew1ZF7ymA1WE40VN
-         y3dA==
+        b=jmQU7ViB1+m/YWyz2tDeXX8u/SjWJ8hE5sEtV1Sr71pbF5GCVlCQBC7htB3FAZL0vx
+         rAe7e8Ze2dV2NAp13eOcUhoJMPbYFg+8Fi+3k9s1caNoSOgGMIxUFqBu8K32i46fcfTR
+         AnYFyiEDgLtx/dPpyhhyhXiWDdn3cszzAI1iOv0t+Mw2n+DAB4sUmXdE+dzhGbFYjAx/
+         sjOdb/LMo8c13c7v3BPW8m15WL+AeRPWkV8pU6RtFk9QcXz3KQsnq1PPrnCr2iv1oS+y
+         i2R7boiltQYXCXVvyY/kbPUTS05z2AZVJyFD30xnGaqg1gtJPMpF/eJo9/SLWXEDilcl
+         bpXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Migo7T0jQKXV0XcEd9xW1k66AHKgKw42yZhBkgGG2ys=;
-        fh=bvrTHXxDtERGnasHZBJGjAzBR+sJw6pI3FjbpiCqrs8=;
-        b=Vn1qO3FiprMVpfz9MWhP4NqS22aUTimhb6T0QJUzRqHlCHjZTFrMBgRu/BtmVujuHr
-         xD22iKKMlQzsZYMX5Z3PjANRbTXtvM5bLT4mIvtTH2rNjhCThqLOWBVRQjUC1vA8Y70Y
-         jHs2bwWRRpVAukLc/Sa/elQrWHOnZkrmxSo4M6RGjajt9fLOqq9jVXg/9WNEPDFJY1QN
-         ziG14pLqxwgcHBBhHWwspe7CdaPwzDPKjofCt4vFG7o1l+iHI5hr4b5hI/RaT49r+UWj
-         Y8KONz32DjWnJNAeojtubzJv8aPUzEroumNUeXEp2DxsXbiHBCml9IasY8lwcragvPba
-         36uQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=E+lMoeMoENzkmlbQHjTZz2Re+qm7+NP5TWh7XqMJhP4=;
+        fh=2YMDnQ3SxoZ0TW62CmU2DrPnMMetFtoAQMKRN2o0WyY=;
+        b=zAy8QxbbWyC7PZBBueYloTEjCkmedttGWx0B6zvyTTTAZ6umkhPKqzJfPJ8/Bl+U8b
+         oCPYbNp+XmvSw12QJnIQPkfQFXN8MUBrOUklkFUm+05f3Xm4mAWLT5jTUWXfMqILGhAB
+         Zyfp4Egsy/1+QQ3LpVEvrOJtoc6v4svaxNDiuXq+NlmPFbz3Uv5PWpSxZC0yLw53GwX6
+         7TppxbFi1J44IaKDTRL3stFpEhZAN4EyK4lOxzsRVCQxCIOuWq849cZHcf/PhPP/MnBA
+         cpyrTo7J9wQ4CVdehhERshi4NIPgfCGSTrdETv7s4tKybERHYATlhL04QeTpcP3mnFF/
+         RFYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ftzN96J/";
-       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kwolf@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id v16-20020a05622a145000b0042a0cd7975bsi5918370qtx.676.2024.01.19.02.09.29
+       dkim=pass header.i=@linaro.org header.s=google header.b=s7PG+4Xo;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m10-20020a17090679ca00b00a2de39ac21dsor2666261ejo.18.2024.01.19.03.14.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jan 2024 02:09:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of kwolf@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Fri, 19 Jan 2024 03:14:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ftzN96J/";
-       spf=pass (google.com: domain of kwolf@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kwolf@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1705658968;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Migo7T0jQKXV0XcEd9xW1k66AHKgKw42yZhBkgGG2ys=;
-	b=ftzN96J/IBdo96Sox3pdjdh3Xd2WvzVrizLCuZgZEv0bnYzi2HVs4lUQmXEw3tsDXFJUI8
-	HxW4+AJ0uVqj0CX5XEpaNfcEtiLhZzyuajnMrusdjFEjwxOM1KQZEmiZrOFUWfMOkOJSZM
-	3CBRexw114vMp7ht90hK/0pIYTeg0HU=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-x1kt7xAyM2yDBWZoYPV-WQ-1; Fri,
- 19 Jan 2024 05:09:25 -0500
-X-MC-Unique: x1kt7xAyM2yDBWZoYPV-WQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4DADF1C0CCA2;
-	Fri, 19 Jan 2024 10:09:24 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.86])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 484F32166B33;
-	Fri, 19 Jan 2024 10:09:22 +0000 (UTC)
-Date: Fri, 19 Jan 2024 11:09:21 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	Marc Zyngier <maz@kernel.org>,
-	Andrew Jones <ajones@ventanamicro.com>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	qemu-arm@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Rob Herring <robh@kernel.org>,
-	Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH v3 13/14] hw/arm: Prefer arm_feature(AARCH64) over
- object_property_find(aarch64)
-Message-ID: <ZapH_23WyMrcH72f@redhat.com>
-References: <20240110195329.3995-1-philmd@linaro.org>
- <20240110195329.3995-14-philmd@linaro.org>
- <ff57e1f5-ea78-459e-b51c-48040483bdea@linaro.org>
- <865y009p6b.wl-maz@kernel.org>
- <585e091b-d75c-408c-bc19-72728ff45e6f@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=s7PG+4Xo;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705662867; x=1706267667; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=E+lMoeMoENzkmlbQHjTZz2Re+qm7+NP5TWh7XqMJhP4=;
+        b=s7PG+4Xo9AknXuJZImLsmEPoogFTD5AHhHnW899ZBHWUy9JEbOz7vVnJxx7r6alOWI
+         6W4eQ7Cqn8KYVfgyF+AjOuDUamKi2FJQqW50ef5hlopuK+ITFHUuY8iGLRQZWDwVobhE
+         Hx43RHJeNXByCw7rTkLZWDCRnJVTTAqeGnVIYGv3YMRnM7uIkE5vx6Ua4ii2saDbDzXS
+         cnSb3LpW19Hh+9Zk/OZnDDxOlgr9qOeLoks6QLOAo9XTFU4ik350NrWy2YrVImqlmmDt
+         dr1vsv3NQQze6OAuHmu60/QtOmJ/SmZnUvaT1IvGsDIPK2S3cQsU4ftahdSbqWutL6tc
+         dgEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705662867; x=1706267667;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=E+lMoeMoENzkmlbQHjTZz2Re+qm7+NP5TWh7XqMJhP4=;
+        b=hN4tGurhJfNYdzNAlGAiKoIPgsH/J/ySUsujfSMWh8ML30ciOCwsB4OFnGtoYEuPfN
+         86e8sbyfrrsXpcY1PZZkVJX7BlI7JXAnTQnclbh98Cdrj0aSx5vO4XdkJqippz5teABb
+         EGy/87ebdpBjcahpyHQBA0RIoUskfVwOaFPDhsZaQqRcpAWsVXCTzaXGAnKhZl82X77S
+         7a+JXwTLTwPH+oijZpQ27CviKT6wcSzf158zv+NdULqVoU1btuscpO+uuTTI8+jDtThw
+         F38wEuidPlR2uNlJWdwPPlA1kSVN9ktvvxQwv7vXF/jJ438Rc5i+DsWgow1NAPTP9t2H
+         lKJQ==
+X-Gm-Message-State: AOJu0Yyx74Q+Rr+sfA0ZRc06f5h5PUx+U4lcVvvsy5OZE9S858h44TUa
+	OFwi4u1iaXrnkcuFkOe2LYRFI7IfSA0Mq75FZHqi8gFoC9RkLqp8mUzeNdgWm4mlPA==
+X-Google-Smtp-Source: AGHT+IG40CgX3vOLQiJgJm70QwwjNvZv0B3z0ek20UxsECgAhubD+AJ+rw987qMVtTfGtNiOpQHV7A==
+X-Received: by 2002:a17:906:b809:b0:a28:d68e:4372 with SMTP id dv9-20020a170906b80900b00a28d68e4372mr558547ejb.74.1705662867371;
+        Fri, 19 Jan 2024 03:14:27 -0800 (PST)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from localhost.localdomain (adsl-114.109.242.227.tellas.gr. [109.242.227.114])
+        by smtp.gmail.com with ESMTPSA id vq9-20020a170907a4c900b00a2ca97242d5sm9283321ejc.120.2024.01.19.03.14.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jan 2024 03:14:27 -0800 (PST)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 0/6] hw/{arm,xen} convert printfs to trace/reports
+Date: Fri, 19 Jan 2024 13:14:18 +0200
+Message-Id: <cover.1705662313.git.manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <585e091b-d75c-408c-bc19-72728ff45e6f@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-X-TUID: PdBUtxrd605g
+X-TUID: 7tPVbbkPdcW4
 
-Am 11.01.2024 um 11:08 hat Philippe Mathieu-Daud� geschrieben:
-> On 11/1/24 10:47, Marc Zyngier wrote:
-> > On Thu, 11 Jan 2024 09:39:18 +0000,
-> > Philippe Mathieu-Daud� <philmd@linaro.org> wrote:
-> > > 
-> > > On 10/1/24 20:53, Philippe Mathieu-Daud� wrote:
-> > > > The "aarch64" property is added to ARMCPU when the
-> > > > ARM_FEATURE_AARCH64 feature is available. Rather than
-> > > > checking whether the QOM property is present, directly
-> > > > check the feature.
-> > > > 
-> > > > Suggested-by: Markus Armbruster <armbru@redhat.com>
-> > > > Signed-off-by: Philippe Mathieu-Daud� <philmd@linaro.org>
-> > > > ---
-> > > >    hw/arm/virt.c | 2 +-
-> > > >    1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > index 49ed5309ff..a43e87874c 100644
-> > > > --- a/hw/arm/virt.c
-> > > > +++ b/hw/arm/virt.c
-> > > > @@ -2140,7 +2140,7 @@ static void machvirt_init(MachineState *machine)
-> > > >            numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
-> > > >                              &error_fatal);
-> > > >    -        aarch64 &= object_property_get_bool(cpuobj, "aarch64",
-> > > > NULL);
-> > > > +        aarch64 &= arm_feature(cpu_env(cs), ARM_FEATURE_AARCH64);
-> > > 
-> > > So after this patch there are no more use of the ARMCPU "aarch64"
-> > > property from code. Still it is exposed via the qom-tree. Thus it
-> > > can be set (see aarch64_cpu_set_aarch64). I could understand one
-> > > flip this feature to create a custom CPU (as a big-LITTLE setup
-> > > as Marc mentioned on IRC), but I don't understand what is the
-> > > expected behavior when this is flipped at runtime. Can that
-> > > happen in real hardware (how could the guest react to that...)?
-> > 
-> > I don't think it makes any sense to do that while a guest is running
-> > (and no HW I'm aware of would do this). However, it all depends what
-> > you consider "run time". You could imagine creating a skeletal VM with
-> > all features, and then apply a bunch of changes before the guest
-> > actually runs.
-> 
-> Thanks, this makes sense and confirms my guess.
-> 
-> > I don't know enough about the qom-tree and dynamic manipulation of
-> > these properties though, and I'm likely to be wrong about the expected
-> > usage model.
-> 
-> Kevin, Markus, this seems a good example of QOM "config" property that
-> is RW *before* Realize and should become RO *after* it.
-> 
-> QDev properties has PropertyInfo::realized_set_allowed set to false by
-> default, but here this property is added at the QOM (lower) layer, so
-> there is no such check IIUC.
+This series changes some printfs to use the trace event framework. 
+Additionally, it converts some error/warning reporting fprintfs to 
+error_report/warn_report.
 
-You can take almost any other config property and it will show the same
-pattern. This is the normal case (and one of the reasons why the current
-way of doing QOM properties isn't great).
+Manos Pitsidianakis (6):
+  hw/arm/z2: convert DPRINTF to tracepoints
+  hw/arm/strongarm.c: convert DPRINTF to tracepoints
+  hw/arm/xen_arm.c: replace DPRINTF with traces
+  hw/xen/xen-mapcache.c: convert DPRINTF to tracepoints
+  hw/xen/xen-hvm-common.c: convert DPRINTF to tracepoints
+  hw/xen: convert stderr prints to error/warn reports
 
-As you say, qdev tries to take care of this. In pure QOM properties, the
-property setter must have manually implemented checks, and perhaps not
-very surprisingly, people tend to forget to add them.
+ hw/arm/strongarm.c      | 49 +++++++++++++++-------------------
+ hw/arm/trace-events     | 33 +++++++++++++++++++++++
+ hw/arm/xen_arm.c        | 26 ++++++++++--------
+ hw/arm/z2.c             | 26 +++++++-----------
+ hw/xen/trace-events     | 21 ++++++++++++++-
+ hw/xen/xen-hvm-common.c | 47 ++++++++++++++++----------------
+ hw/xen/xen-mapcache.c   | 59 ++++++++++++++++++-----------------------
+ 7 files changed, 148 insertions(+), 113 deletions(-)
 
-> Should "aarch64" become a static QDev property instead (registered via
-> device_class_set_props -> qdev_class_add_property)?
-> 
-> This just an analyzed example, unfortunately there are many more...
 
-target/arm/cpu64.c already seems to use a wild mix of ways to add
-properties, so maybe it wouldn't make things worse...
-
-It's good to look at such devices because it shows how hard QAPIfication
-of all devices would become (fortunately the subset we're really
-interested in most is user creatable devices, and I don't think users
-can create CPUs with -device even though they look like it and are
-mentioned in -device help?).
-
-The basic requirement for QAPIfication is that each type has a fixed
-list of properties. This is easy with devices that create their
-properties with a single device_class_set_props(), but devices that
-directly create properties, some of them conditional, and spread across
-several different functions, it becomes hard to see what the real list
-of properties is.
-
-Even worse, there are properties whose creation depends on runtime
-options like which accelerator is used ("pauth-impdef" and
-"pauth-qarma3" exist only for TCG). There is no way to write a schema
-for that. In QAPI, you can have it optional and return an error if it's
-set when it shouldn't be, but the existence of the property itself can't
-(currently?) depend on runtime options.
-
-Kevin
+base-commit: d0f4aa7d50d485b1fb5ec8ab6f934e5df852ab07
+-- 
+γαῖα πυρί μιχθήτω

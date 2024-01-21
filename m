@@ -1,114 +1,151 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp1071987ejg;
-        Fri, 19 Jan 2024 09:04:31 -0800 (PST)
-X-Received: by 2002:a05:600c:1991:b0:40e:8f44:68fd with SMTP id t17-20020a05600c199100b0040e8f4468fdmr40077wmq.3.1705683871477;
-        Fri, 19 Jan 2024 09:04:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705683871; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2058977ejg;
+        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFcGVkYIDHks9h+1ynpMv5lAJU3vKq2pPKg/bUE5DwVHxpLMcu7dP6hFEcfF7HjuF9XJhoQ
+X-Received: by 2002:a05:600c:3145:b0:40e:a32c:9888 with SMTP id h5-20020a05600c314500b0040ea32c9888mr1517824wmo.36.1705854273200;
+        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705854273; cv=none;
         d=google.com; s=arc-20160816;
-        b=XceA2DtgNyXQv+ldRjOR6Unxp+myzXiI7lzHzHOrtkniQtCEdFVp2YBVo6+886TI8c
-         a+lR3OAEIxEkqgb8572tDrAsqDd+lKV0clzH4R45hfOvXNJe3k1e9FErLjMotUpb64yV
-         e51sofD+1rR1KsuB/iRtWVAUpiHGDkdZEVtb0KKAK+mlbJUFUQe4BNx/8A57qMd6yfH3
-         uJDGdm7tG/uxyPruG2IxVfcAIV0JEV4cVdbTgTcyHkJjxl/+Cx3rfHhxrUTTXbhBV4aR
-         ldkepShpxNKSCsOSi7LnrhOHBCJ1JgjZqOKS8F4Y95gpEGYd85kTRBOmCbb9rpdbVVfI
-         IswQ==
+        b=ItsQVnly2pXupq8nPhccW8weetMqV7s5bTIS9/nuICWRDCgQph6f2cBQziCbWaZ6XQ
+         LA0SG6AbqCZ0VprL2wHTjmOJpaAksKT9Mln00UiqkDZLORHkLgUYBL7XFyFhe5Lf42VF
+         yV3NBIQCOM7ES2aAEBvT1sO/DCZA/jCs/NOwO4E3VHL8W0B716Vq4GaDwxkzKe7t039X
+         XqVrZaWC69CfG/JMC3beL4+zIbohxJ8+8ketuaJ5OSzuE2Cxm8vco4fYgBYgM5A3top0
+         OOY3+5rpRdP+lDs5RrMxSf3bQ7+iqvxaYnzoYTE+rsGzd52xQCn1m1FYDcmH4z+NTmN+
+         Jdzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Qc2Peb2JtOjy+B1gVthMdZe/szYQ6eQYqtZctt3o1nc=;
-        fh=gN7tP2RJF6R67uHDD41ooZSyvekC+MCfHBb1bZmZwmo=;
-        b=f6XZ2EOoXMxmAPMs1gajDtivvCcY4PM+KDkKyg1erMRGDlRsyW5COpCtkrgofcvjn/
-         IkAiHTWjpPBXB99bX2XTAXcTdkSTvkHKEpEjZmRfDCl4CVosw9zYaBjMIuypKI971BiL
-         E1u6ukTLzcy8GQLDquY4aF/RtpXhPSnYbpLyAMn9/yRHysE9QEx1EVRcZ5+MIuxCTgRt
-         iDerdvNl0UBVMWPfeG1PK0C8LeoPXsSS0iI5xJ5kBlKpeHFKNCqwO/DnbxZaZy45IpM5
-         qBXUR4NosbKa6jwfw1mloqn3Tf0DJmOFM84JIXBVuS2jJDMP2DoK9nflU/8//4GtBW1w
-         Yqnw==
+        h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
+         :from:references:cc:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=0AFY5tEax31sARXtLfMpxvFm/xKNpvSVL+R/6CTVwWc=;
+        fh=H93wTKoKwIojazEDYOpGbbzjsfKtNGvy9HH1DvTrqPM=;
+        b=PEaqvFsgPa9gS45TyejFJ7yHUN0hqmVy1IlunmTGHzokiUDnYsbQ3Rgde4gq5IbqCr
+         Vpnt2dBSVK0fOJC8t7k/7VwEWIW6yoYgiqg7Oqign0+L/kI+JilFOt9LOIQm1UuVNlOO
+         i6SpFHarIMN3MhmGCW5sQgFk7z4Uc579aMxU6W3uYpA7p2RGyz6osd2w6bgGADWNifyN
+         /KqiV8X71yXPAniq5GYnqaIXMi/jBGXDFMoLqX0C9kPZmtGAVEw8Hw36rfsBsy/Ed19C
+         JUbkDIVkAXNLx090GKsV/OCfY5vK+YFLVqUglntmtYsWFIbyBt7IUkoumt98OjjmFhay
+         gyeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mDuirnwy;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h4-20020adffa84000000b0033739d761c8sor526036wrr.2.2024.01.19.09.04.31
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jan 2024 09:04:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@web.de header.s=s29768273 header.b=OKcchecs;
+       spf=pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) smtp.mailfrom=jan.kiszka@web.de;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=web.de
+Return-Path: <jan.kiszka@web.de>
+Received: from mout.web.de (mout.web.de. [217.72.192.78])
+        by mx.google.com with ESMTPS id z10-20020a05600c078a00b0040e47216e42si11623108wmo.162.2024.01.21.08.24.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) client-ip=217.72.192.78;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mDuirnwy;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705683871; x=1706288671; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Qc2Peb2JtOjy+B1gVthMdZe/szYQ6eQYqtZctt3o1nc=;
-        b=mDuirnwyA8ToAk4Hsf8f6+IbFQIsASn3t7rTJdntdLxkXbhUhKZo/5AiX6S8GahZ9m
-         JrnrTyA8zpv+Ju+AObICacnD66lalyCeuilMqnE81PG2heaERATJf58IBMgrdhVGvdmk
-         6hepbNSw3Qiyw3BQ0x0M3RGBwASaXn3xTqrjCanT+xk1DxOwRVjQhkCL+oe3CwKDTgzD
-         Ybf7bAIROgupflzVPepKV58pnCJGHyEwR3VfuQu3k44+p6x6RYeHep1nPGpT9fMxDGry
-         05NOvhirXQvPzGFjUWHffN2TmuFlFLzHdGmq7rvcRbKCj/Za4c55/6CDGM4/c0eiv5MS
-         y1WA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705683871; x=1706288671;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Qc2Peb2JtOjy+B1gVthMdZe/szYQ6eQYqtZctt3o1nc=;
-        b=Nu3obmkLeoRh4/bUQnmB2tTGZToKq4Oo3iFM31iiJEXuL0NrrnFD243lYGUqATl3ms
-         CiutP3dr1jPhuHhrVXzHuCc2VH6PL0sSVnWE+wdZ34vNHvXTDT8eTst4/2iLN8qBOrOo
-         k756TEojhL5vQBBE2sA6QCqECQk0qay4C3GTAqIsydDcyxBWVsWbmum/eE8QkoLIj+zn
-         Ur6DfSi69Y9HfIcWpfHfR9hrFc8moMGViAA3nREJWYmf0eb/9xn4XJn6LRdigY4LxyW3
-         XxofEMj9onLS9UCUo0p12KQDOB/Mmu711w4N+6BpFthZWtGmX56zdL3lIot7I3RGwhQu
-         Irkw==
-X-Gm-Message-State: AOJu0YxRyo/P+1AtKwHfjc+H2PlV2q6MN6h+dhlgSr9C3dHQaMg5+j3j
-	6u/Lu/Ic+XJGVdvPgPIQwgO+C99Tcap6xdK6Ksrh3iuCMiGSPdgRotHq3Laro0BKdw==
-X-Google-Smtp-Source: AGHT+IEDul5qUywMEJN+jSpZ6HXwnoasyUWK6xBsr0YM5aaNwbaNPCRkpy+8DrtQEvcE2bjVbOg8uw==
-X-Received: by 2002:a5d:654d:0:b0:337:a7fb:90d6 with SMTP id z13-20020a5d654d000000b00337a7fb90d6mr5721wrv.79.1705683871090;
-        Fri, 19 Jan 2024 09:04:31 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.67] ([78.196.4.158])
-        by smtp.gmail.com with ESMTPSA id o9-20020adfe809000000b00337bf81e06bsm6914635wrm.48.2024.01.19.09.04.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Jan 2024 09:04:30 -0800 (PST)
-Message-ID: <e25f2ede-1264-4c74-bc10-df7d9f874d47@linaro.org>
-Date: Fri, 19 Jan 2024 18:04:28 +0100
+       dkim=pass header.i=@web.de header.s=s29768273 header.b=OKcchecs;
+       spf=pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) smtp.mailfrom=jan.kiszka@web.de;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=web.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
+	t=1705854272; x=1706459072; i=jan.kiszka@web.de;
+	bh=ECl6xXsI289B9nONusLcZmYsxKtnfBVMIX2BDjFm/+Y=;
+	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
+	 In-Reply-To;
+	b=OKcchecspyeXPQxT40Oc6ikUuSH08t32jg6+kis5enttZ3vS3ltM6afrODKmeiFD
+	 /2wcVdbeJ3SvT0w7XDaQ6Htv21Ni2aX4xKXOpmHQl6fClVL/7H5ar5xeosV8GV2uB
+	 DNAifPeQ/3qlHVpq1QeA5UVcR5t1NuMSH3T8nfiI1PzjOafG4z6X3pFoRzE4he8M3
+	 LnRBoUBTyqNyDjEO8BUV15a4DNxg2A21x6g4xhO+n4U1cPx7eJZ9borIBpE2sOL/l
+	 nvWhkXF1oB1/5E0H9ZJlI14o9mrP7MAKwZuvrAriK6qgAH7X3fGa7ON9NStilCLJ5
+	 hzUUMOAEFikoogJInA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.12.10] ([46.128.89.130]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MFaui-1rKUxi21cM-00H6XN; Sun, 21
+ Jan 2024 17:24:32 +0100
+Message-ID: <9dff82f7-d997-4092-8b5a-cd21963826da@web.de>
+Date: Sun, 21 Jan 2024 17:24:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/5] hw/xen: convert stderr prints to error/warn
- reports
+Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
 Content-Language: en-US
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- xen-devel@lists.xenproject.org
-References: <cover.1705670342.git.manos.pitsidianakis@linaro.org>
- <bf5504369023dc115f0d7a756c4c5254fa9cd10d.1705670342.git.manos.pitsidianakis@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <bf5504369023dc115f0d7a756c4c5254fa9cd10d.1705670342.git.manos.pitsidianakis@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: IFQHkYoQqGbO
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
+References: <20231103182750.855577-1-peter.maydell@linaro.org>
+ <871qadh8g8.fsf@draig.linaro.org>
+From: Jan Kiszka <jan.kiszka@web.de>
+Autocrypt: addr=jan.kiszka@web.de; keydata=
+ xsDhBEq0i8QRBAD2wOxlC9m/8t/vqjm1U9yQCT6OJ2Wbv/qys9DYM0CvcOTDMWQwmV1/VsZj
+ KR5YgB5NPt+To7X6x5cjz15AGnx5Fb8Wnrq8EF9ZfHMwb7YMx1LdPYPDnXr37wE3XupFmkHB
+ Mes4htyX7Dz8LvKDLnli4IsAmWG+kV1JI6LWKXLpSwCg8JRq4SWoB4VCQxbH3GjntgvwNc8D
+ /2q5Dj0urJ7s7sdXhrH0hcFkpSFRmU5Yd6MCwcbFHm2paL5gqVjNNUUwDBKAL9eZaQVIHKwC
+ 44BvNGO2gcQ26R3AuCHUQ+pZHg34tok1JCNZ6IEZccb+33Qq0qbcDMJJiDYp7ppp6ozifvc4
+ YaqJECX48IydxfE9+41oV7T5vNAzA/QL/UMJyTnu5jiOXcyn5iFQw535lXkwKsqeXzCowLho
+ HICZ2jITJPdTT/+9pGWwMQqST/SS35Tx4EnS3z2BWsNMCLuXCPkxF1elaMJqMfMJxFD8rAgS
+ 9GK6zP6fJlsA1wq/UvKSL8v4QPOnTNCVOsyqJVasGV0ZPcDfcj+ClNO4zR5KYW4gS2lzemth
+ IDxqYW4ua2lzemthQHdlYi5kZT7CYAQTEQIAIAUCSrSLxAIbIwYLCQgHAwIEFQIIAwQWAgMB
+ Ah4BAheAAAoJEIrUrG965ecUhIMAnR6DDCW5cx+cVdYhydbhQXqeief6AJ4p+z4+nrmZLdfU
+ 7V6nKqKeHeTtj87BTQRKtIvEEAgA2/PlX6oyi7dToH0CJCHq0eKmZaa7CmGaVnxyeepKvIfi
+ M8n8Td76AbG64fjREMwgSpb4F/UytF3z/03tj4e49W/zKjbBRB2/wmFRlZBC9crg22Q+bgvM
+ OsxnC6uHXaWN8fL+jVei/5OoHOoFqaMsX8EvploitlI/BPj+VgW26jksf3YZyk1hnclsZ/IY
+ hXzgRmVJo4RiTW/YLQAkwndwc+fKPa/IYLEDW1Jc4kNLoK0P90b45zju0hpl0C00pVORTOtz
+ FK9G5Ha7qOAWJfAVJORHKAkkvwftf3hkpPdLyvZUWRHXvUexmA61fLvDBAFhRxYGD8t5gz88
+ SF5Tzq+0ywADBQf/YSkaYrEslPWiCA2wU6EW0yaqBQAobFsOMvsufJ6o2ntq5Ncq37VI3KCT
+ 67eHPE9x+zPcENoZWsRrC9S9PCf1LOsi7ybZsR13AJqDFlRzJZ4klh9QwgwFZxUBzOdIvttw
+ zG1QkzHx06RKZluFYpPF3DRduSMukdIJ2wmWCU+ohB+mYefe65JGjYQfHVs8mgYVFOPxbRea
+ 9VJACCMuspoZWpj43UdR1lLLyIUFYz+jqcPW7Hd/GTIw4N67pYl0dwPDmFd4ohJ5g4Zpq61t
+ oNysBGEuEm5GCcn0VmGtQpSYnR5cVm5b2yPz4bIuFOSuZUo/l7vitdY0iy0/wvKbBC+NK8JJ
+ BBgRAgAJBQJKtIvEAhsMAAoJEIrUrG965ecULvAAoKGvxs5T3IhyQT8I8sMsyAvCE4wHAJ46
+ S16yab+OxNkvOeoOEX0EnHVHaA==
+In-Reply-To: <871qadh8g8.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:mrluBn4fJJBQNWIHAydViwPjI2aVUIXBnqSFg4+vt9qXWXV5e7C
+ KySUH76hb/y61J0P/vzLeRkzBuaWf6CpsIiQ3A6KsZAUshhBKQGD52/9ELgOhDXH3vgFCTj
+ JjJLJYtdIwRcSmQmcf8hiXsCROnG5ju3nfTMBfbAVOv52rihrtE50Ff3geWnn0OArgduDe5
+ 0r4Da41ZbthwoPa6FkZhw==
+X-Spam-Flag: NO
+UI-OutboundReport: notjunk:1;M01:P0:TFFsts8+Ris=;i5D/CK2UKWwQDwefS47uoSVYS0q
+ cEBjTbOZq947TH89T86WUf/d4zgP3ejmsKVDGQdoE8PcB3AjqJUR3D7Q/4S42K1hganRWptFM
+ jlFZdBrHihj57a5KcfWv2AyiouGAf+gfKYJEbheRzT44A9jIPp2fpNBbQfdLexcYVvyqseHXy
+ DOq1HSDjKt5HWkMoz+hvQAVmFl8S0H0GMzCad7QTowK+1i/Jg/7wIraNbvPYG08RUJcl4XjUA
+ PpJJffKBUsGrgf1bHSBQT4hQbzsO7Q/CdUOk31dIzdZb55K//fo2Q6LcVoGP7tylcKjHyafVB
+ 6NfPJvielEtxtJiWb97KKjg6zGnVMOFg6rcV8Ic/jQ5dcXLcbEGuMTRaSa6xNXCENH6cZWt75
+ BfbOece6F11bPhdFNlJUbRq21CNbo9tmPKELd6mkPtEqgnFifHCQEeO/QOGJowkuptGbNQDTG
+ sTGS10eUAVDO66Kwkw79PJnJKXWcYJzesRBgyJjU2Cvh1h49OOHqP+BUUPeHLR8nXZ6CKc7VA
+ HCN83Fm5rVCkLRj84m1qDQd36taWzOeAw78rYknd9gzmwCZ36eB1ifOpzsFa2mmF54gPr0Z/v
+ 229svQbfV7oU2tBWGrUkNagjiC1c/+4W4r1Xmjq9ltMoU0PIkRlI0cB5OaqU0OgI1nuniZWRZ
+ XlMzSwzU9B0A4C95HUK4YNQEdmH6rjkawdw0F4OPi2/Vecdz5s596HtxAYA4yH9Xlp643fjl8
+ KaIXVKQZeS6lWfJnD8VCgLijBUGT27cWbIUUijIAcjH0wQQ1NUSU9BEAO/bYgDvBWywzQfYsL
+ r9upVzk4eVzUDPz6i4hv3Ar1z7dWEHlSBNw5mN0XtfGeldS/u/hq8WBsi8z4LV4pi0kwMMG+n
+ 9gIGXoDcoaydPINIdcq3/zlx60j8D2DgKkbfb8vAzNoeguqNXyxVzenY4eypANjcayKX6ISNf
+ sGWE9g==
+X-TUID: fV7begRvCMlT
 
-On 19/1/24 14:24, Manos Pitsidianakis wrote:
-> According to the QEMU Coding Style document:
-> 
->> Do not use printf(), fprintf() or monitor_printf(). Instead, use
->> error_report() or error_vreport() from error-report.h. This ensures the
->> error is reported in the right place (current monitor or stderr), and in
->> a uniform format.
->> Use error_printf() & friends to print additional information.
-> 
-> This commit changes fprintfs that report warnings and errors to the
-> appropriate report functions.
-> 
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->   hw/xen/xen-hvm-common.c | 12 ++++++------
->   hw/xen/xen-mapcache.c   |  5 ++---
->   2 files changed, 8 insertions(+), 9 deletions(-)
+On 19.01.24 12:24, Alex Benn=C3=A9e wrote:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+>> Convert the musicpal key input device to use
+>> qemu_add_kbd_event_handler().  This lets us simplify it because we no
+>> longer need to track whether we're in the middle of a PS/2 multibyte
+>> key sequence.
+>>
+>> In the conversion we move the keyboard handler registration from init
+>> to realize, because devices shouldn't disturb the state of the
+>> simulation by doing things like registering input handlers until
+>> they're realized, so that device objects can be introspected
+>> safely.
+>>
+>> The behaviour where key-repeat is permitted for the arrow-keys only
+>> is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
+>> and add a comment to that effect.
+>
+> Well the key input all works as intended and looks good to me. I'm a
+> little disappointed I couldn't get audio working on the musicpal machine
+> but that is not a problem for this patch.
+>
+> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Looks good to me as well, all keys still work fine.
+
+No idea what's the issue with sound, though. I think I haven't run the
+whole stuff in a decade or so, had to search for all the pieces first of
+all again. The webradio service original behind this stopped their
+operations, at least for this device, but manually entered favorits
+still work on the real device - I still have one, though that is
+starting to get some issues as well.
+
+Thanks,
+Jan

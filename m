@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f6-20020a05600c154600b0040e880ac6ecsm19550208wmg.35.2024.01.22.06.56.11
+        by smtp.gmail.com with ESMTPSA id k9-20020a05600c1c8900b0040d772030c2sm39337682wms.44.2024.01.22.06.56.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jan 2024 06:56:11 -0800 (PST)
+        Mon, 22 Jan 2024 06:56:14 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 339205F8FC;
+	by draig.lan (Postfix) with ESMTP id 717AC5F900;
 	Mon, 22 Jan 2024 14:56:11 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,112 +52,174 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Brian Cain <bcain@quicinc.com>,
 	Paul Durrant <paul@xen.org>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 04/21] target/riscv: Validate misa_mxl_max only once
-Date: Mon, 22 Jan 2024 14:55:53 +0000
-Message-Id: <20240122145610.413836-5-alex.bennee@linaro.org>
+Subject: [PATCH v3 06/21] target/ppc: Use GDBFeature for dynamic XML
+Date: Mon, 22 Jan 2024 14:55:55 +0000
+Message-Id: <20240122145610.413836-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240122145610.413836-1-alex.bennee@linaro.org>
 References: <20240122145610.413836-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8KPA0HfYiJiS
+X-TUID: Ov0ej4O33Cc+
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-misa_mxl_max is now a class member and initialized only once for each
-class. This also moves the initialization of gdb_core_xml_file which
-will be referenced before realization in the future.
+In preparation for a change to use GDBFeature as a parameter of
+gdb_register_coprocessor(), convert the internal representation of
+dynamic feature from plain XML to GDBFeature.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-26-alex.bennee@linaro.org>
-Message-Id: <20231213-riscv-v7-4-a760156a337f@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240103173349.398526-28-alex.bennee@linaro.org>
+Message-Id: <20231213-gdb-v17-2-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- target/riscv/cpu.c         | 21 +++++++++++++++++++++
- target/riscv/tcg/tcg-cpu.c | 23 -----------------------
- 2 files changed, 21 insertions(+), 23 deletions(-)
+ target/ppc/cpu-qom.h  |  1 +
+ target/ppc/cpu.h      |  4 +---
+ target/ppc/cpu_init.c |  4 ----
+ target/ppc/gdbstub.c  | 51 ++++++++++++++++---------------------------
+ 4 files changed, 21 insertions(+), 39 deletions(-)
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index dcc09a10875..7ee4f8520f9 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1292,6 +1292,26 @@ static const MISAExtInfo misa_ext_info_arr[] = {
-     MISA_EXT_INFO(RVG, "g", "General purpose (IMAFD_Zicsr_Zifencei)"),
- };
+diff --git a/target/ppc/cpu-qom.h b/target/ppc/cpu-qom.h
+index 0241609efef..8247fa23367 100644
+--- a/target/ppc/cpu-qom.h
++++ b/target/ppc/cpu-qom.h
+@@ -20,6 +20,7 @@
+ #ifndef QEMU_PPC_CPU_QOM_H
+ #define QEMU_PPC_CPU_QOM_H
  
-+static void riscv_cpu_validate_misa_mxl(RISCVCPUClass *mcc)
-+{
-+    CPUClass *cc = CPU_CLASS(mcc);
-+
-+    /* Validate that MISA_MXL is set properly. */
-+    switch (mcc->misa_mxl_max) {
-+#ifdef TARGET_RISCV64
-+    case MXL_RV64:
-+    case MXL_RV128:
-+        cc->gdb_core_xml_file = "riscv-64bit-cpu.xml";
-+        break;
-+#endif
-+    case MXL_RV32:
-+        cc->gdb_core_xml_file = "riscv-32bit-cpu.xml";
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- static int riscv_validate_misa_info_idx(uint32_t bit)
- {
-     int idx;
-@@ -1833,6 +1853,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
++#include "exec/gdbstub.h"
+ #include "hw/core/cpu.h"
  
-     mcc->misa_mxl_max = (uint32_t)(uintptr_t)data;
-+    riscv_cpu_validate_misa_mxl(mcc);
- }
- 
- static void riscv_isa_string_ext(RISCVCPU *cpu, char **isa_str,
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index 30f0a22a481..1cd659d992e 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -268,27 +268,6 @@ static void riscv_cpu_validate_misa_priv(CPURISCVState *env, Error **errp)
-     }
- }
- 
--static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu)
--{
--    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
--    CPUClass *cc = CPU_CLASS(mcc);
--
--    /* Validate that MISA_MXL is set properly. */
--    switch (mcc->misa_mxl_max) {
--#ifdef TARGET_RISCV64
--    case MXL_RV64:
--    case MXL_RV128:
--        cc->gdb_core_xml_file = "riscv-64bit-cpu.xml";
--        break;
--#endif
--    case MXL_RV32:
--        cc->gdb_core_xml_file = "riscv-32bit-cpu.xml";
--        break;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- static void riscv_cpu_validate_priv_spec(RISCVCPU *cpu, Error **errp)
- {
-     CPURISCVState *env = &cpu->env;
-@@ -935,8 +914,6 @@ static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
-         return false;
-     }
- 
--    riscv_cpu_validate_misa_mxl(cpu);
--
+ #ifdef TARGET_PPC64
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index f8101ffa296..f87c26f98a6 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -1471,8 +1471,7 @@ struct PowerPCCPUClass {
+     int bfd_mach;
+     uint32_t l1_dcache_size, l1_icache_size;
  #ifndef CONFIG_USER_ONLY
-     CPURISCVState *env = &cpu->env;
-     Error *local_err = NULL;
+-    unsigned int gdb_num_sprs;
+-    const char *gdb_spr_xml;
++    GDBFeature gdb_spr;
+ #endif
+     const PPCHash64Options *hash64_opts;
+     struct ppc_radix_page_info *radix_page_info;
+@@ -1525,7 +1524,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
+ #ifndef CONFIG_USER_ONLY
+ hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+-void ppc_gdb_gen_spr_xml(PowerPCCPU *cpu);
+ const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
+ #endif
+ int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index 344196a8ce3..a7b593dbfac 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -6682,10 +6682,6 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+     /* PowerPC implementation specific initialisations (SPRs, timers, ...) */
+     (*pcc->init_proc)(env);
+ 
+-#if !defined(CONFIG_USER_ONLY)
+-    ppc_gdb_gen_spr_xml(cpu);
+-#endif
+-
+     /* MSR bits & flags consistency checks */
+     if (env->msr_mask & (1 << 25)) {
+         switch (env->flags & (POWERPC_FLAG_SPE | POWERPC_FLAG_VRE)) {
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index ec5731e5d67..e3be3dbd109 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -300,15 +300,23 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+-void ppc_gdb_gen_spr_xml(PowerPCCPU *cpu)
++static void gdb_gen_spr_feature(CPUState *cs)
+ {
+-    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
++    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
++    PowerPCCPU *cpu = POWERPC_CPU(cs);
+     CPUPPCState *env = &cpu->env;
+-    GString *xml;
+-    char *spr_name;
++    GDBFeatureBuilder builder;
+     unsigned int num_regs = 0;
+     int i;
+ 
++    if (pcc->gdb_spr.xml) {
++        return;
++    }
++
++    gdb_feature_builder_init(&builder, &pcc->gdb_spr,
++                             "org.qemu.power.spr", "power-spr.xml",
++                             cs->gdb_num_regs);
++
+     for (i = 0; i < ARRAY_SIZE(env->spr_cb); i++) {
+         ppc_spr_t *spr = &env->spr_cb[i];
+ 
+@@ -326,35 +334,13 @@ void ppc_gdb_gen_spr_xml(PowerPCCPU *cpu)
+          */
+         spr->gdb_id = num_regs;
+         num_regs++;
+-    }
+-
+-    if (pcc->gdb_spr_xml) {
+-        return;
+-    }
+ 
+-    xml = g_string_new("<?xml version=\"1.0\"?>");
+-    g_string_append(xml, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append(xml, "<feature name=\"org.qemu.power.spr\">");
+-
+-    for (i = 0; i < ARRAY_SIZE(env->spr_cb); i++) {
+-        ppc_spr_t *spr = &env->spr_cb[i];
+-
+-        if (!spr->name) {
+-            continue;
+-        }
+-
+-        spr_name = g_ascii_strdown(spr->name, -1);
+-        g_string_append_printf(xml, "<reg name=\"%s\"", spr_name);
+-        g_free(spr_name);
+-
+-        g_string_append_printf(xml, " bitsize=\"%d\"", TARGET_LONG_BITS);
+-        g_string_append(xml, " group=\"spr\"/>");
++        gdb_feature_builder_append_reg(&builder, g_ascii_strdown(spr->name, -1),
++                                       TARGET_LONG_BITS, num_regs,
++                                       "int", "spr");
+     }
+ 
+-    g_string_append(xml, "</feature>");
+-
+-    pcc->gdb_num_sprs = num_regs;
+-    pcc->gdb_spr_xml = g_string_free(xml, false);
++    gdb_feature_builder_end(&builder);
+ }
+ 
+ const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
+@@ -362,7 +348,7 @@ const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
+ 
+     if (strcmp(xml_name, "power-spr.xml") == 0) {
+-        return pcc->gdb_spr_xml;
++        return pcc->gdb_spr.xml;
+     }
+     return NULL;
+ }
+@@ -599,7 +585,8 @@ void ppc_gdb_init(CPUState *cs, PowerPCCPUClass *pcc)
+                                  32, "power-vsx.xml", 0);
+     }
+ #ifndef CONFIG_USER_ONLY
++    gdb_gen_spr_feature(cs);
+     gdb_register_coprocessor(cs, gdb_get_spr_reg, gdb_set_spr_reg,
+-                             pcc->gdb_num_sprs, "power-spr.xml", 0);
++                             pcc->gdb_spr.num_regs, "power-spr.xml", 0);
+ #endif
+ }
 -- 
 2.39.2

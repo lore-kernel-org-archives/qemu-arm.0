@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r7-20020a05600c35c700b0040d1bd0e716sm39720140wmq.9.2024.01.22.06.56.11
+        by smtp.gmail.com with ESMTPSA id u6-20020a05600c138600b0040d5a9d6b68sm43621458wmf.6.2024.01.22.07.01.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jan 2024 06:56:11 -0800 (PST)
+        Mon, 22 Jan 2024 07:01:31 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F37E45F8F7;
-	Mon, 22 Jan 2024 14:56:10 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 1D9245F9D4;
+	Mon, 22 Jan 2024 14:56:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -50,84 +50,52 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Brian Cain <bcain@quicinc.com>,
-	Paul Durrant <paul@xen.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 02/21] target/riscv: Remove misa_mxl validation
-Date: Mon, 22 Jan 2024 14:55:51 +0000
-Message-Id: <20240122145610.413836-3-alex.bennee@linaro.org>
+	Paul Durrant <paul@xen.org>
+Subject: [PATCH v3 20/21] docs/devel: lift example and plugin API sections up
+Date: Mon, 22 Jan 2024 14:56:09 +0000
+Message-Id: <20240122145610.413836-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240122145610.413836-1-alex.bennee@linaro.org>
 References: <20240122145610.413836-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: umR6dTUWzm3M
+X-TUID: j4yp+2JStq2k
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+This makes them a bit more visible in the TCG emulation menu rather
+than hiding them away bellow the ToC limit.
 
-It is initialized with a simple assignment and there is little room for
-error. In fact, the validation is even more complex.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Acked-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20240103173349.398526-24-alex.bennee@linaro.org>
-Message-Id: <20231213-riscv-v7-2-a760156a337f@daynix.com>
+Message-Id: <20240103173349.398526-43-alex.bennee@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/riscv/tcg/tcg-cpu.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ docs/devel/tcg-plugins.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index 994ca1cdf9f..635b5fae576 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -268,7 +268,7 @@ static void riscv_cpu_validate_misa_priv(CPURISCVState *env, Error **errp)
-     }
- }
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index fa7421279f5..535a74684c5 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -143,7 +143,7 @@ requested. The plugin isn't completely uninstalled until the safe work
+ has executed while all vCPUs are quiescent.
  
--static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu, Error **errp)
-+static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu)
- {
-     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPUClass *cc = CPU_CLASS(mcc);
-@@ -288,11 +288,6 @@ static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu, Error **errp)
-     default:
-         g_assert_not_reached();
-     }
--
--    if (env->misa_mxl_max != env->misa_mxl) {
--        error_setg(errp, "misa_mxl_max must be equal to misa_mxl");
--        return;
--    }
- }
+ Example Plugins
+----------------
++===============
  
- static void riscv_cpu_validate_priv_spec(RISCVCPU *cpu, Error **errp)
-@@ -932,7 +927,6 @@ static bool riscv_cpu_is_vendor(Object *cpu_obj)
- static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
--    Error *local_err = NULL;
+ There are a number of plugins included with QEMU and you are
+ encouraged to contribute your own plugins plugins upstream. There is a
+@@ -591,8 +591,8 @@ The plugin has a number of arguments, all of them are optional:
+   configuration arguments implies ``l2=on``.
+   (default: N = 2097152 (2MB), B = 64, A = 16)
  
-     if (!riscv_cpu_tcg_compatible(cpu)) {
-         g_autofree char *name = riscv_cpu_get_name(cpu);
-@@ -941,14 +935,11 @@ static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
-         return false;
-     }
+-API
+----
++Plugin API
++==========
  
--    riscv_cpu_validate_misa_mxl(cpu, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
--        return false;
--    }
-+    riscv_cpu_validate_misa_mxl(cpu);
- 
- #ifndef CONFIG_USER_ONLY
-     CPURISCVState *env = &cpu->env;
-+    Error *local_err = NULL;
- 
-     CPU(cs)->tcg_cflags |= CF_PCREL;
- 
+ The following API is generated from the inline documentation in
+ ``include/qemu/qemu-plugin.h``. Please ensure any updates to the API
 -- 
 2.39.2

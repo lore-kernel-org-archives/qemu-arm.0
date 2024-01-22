@@ -1,83 +1,187 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b5-20020a5d4d85000000b00337d5aa55cdsm10350822wru.53.2024.01.22.01.50.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jan 2024 01:50:18 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 76C505F7AE;
-	Mon, 22 Jan 2024 09:50:17 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Jan Kiszka <jan.kiszka@web.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,
-  qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
-In-Reply-To: <9dff82f7-d997-4092-8b5a-cd21963826da@web.de> (Jan Kiszka's
-	message of "Sun, 21 Jan 2024 17:24:31 +0100")
-References: <20231103182750.855577-1-peter.maydell@linaro.org>
-	<871qadh8g8.fsf@draig.linaro.org>
-	<9dff82f7-d997-4092-8b5a-cd21963826da@web.de>
-User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Mon, 22 Jan 2024 09:50:17 +0000
-Message-ID: <87r0i9ofxi.fsf@draig.linaro.org>
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2530421ejg;
+        Mon, 22 Jan 2024 06:36:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGHjoMBAE3O3wujiCZhsHKKjpA5ZykCJ0Z0V3WcLdWXzJLtQUQQNTnTs0lI+5BRlqLWlkvU
+X-Received: by 2002:a05:620a:148e:b0:783:3b2a:8857 with SMTP id w14-20020a05620a148e00b007833b2a8857mr4366900qkj.39.1705934177596;
+        Mon, 22 Jan 2024 06:36:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705934177; cv=none;
+        d=google.com; s=arc-20160816;
+        b=aECxE64O541XDN0BS0NRhxO+A4Pf8omPWYE+z+yHLpiAiWYv6+CAjDTODq2mY/lgUo
+         FphZKenf7XEhAInxvdAqtejLaEL/rM9U64sYI+fT/b0n0D+fsU9KY0dfR63NAulan/l7
+         6LdIStmq4iE4XJDCm4+bxcgSyXHuW+8C+RlaDJ2EXmXsCawtd0ARZm/1+ZIL3hJ3jnk0
+         aw5E8wEhMllqDYnH4Q7S9ur60KwRBjcVqr6fzACQjEWaqKtlrWagKqSuV6aIf9fER0d5
+         3RqyAwZelkeCmIQO9Te3FOBtN2zFCETWW+yUr1iqzaXFjDhdWuI2R0MrGlCWZTojXXNy
+         HPDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Vf0m1wyMlr7cRTuzG2EUgLd0A0rBjsSs6MaGJHgZJIU=;
+        fh=VnLaRVPcN1gpaQWLnE0jAsSHd7/auwbL0WCytLamgZU=;
+        b=zurbFaGs3AT5iXNIqg+vhjqXWG1eGKCZ++hhZRgJWDkN97ySNnwMgGQUd17uQaNUpS
+         DBt2W4v3OoYrWzojaa5s0QQYKi46sqLFLoPZwbtXNDPAtiuwnraCjUiNBQtENlieRv6A
+         I3ZrCIs8wteTvVAMI51yojXEjb+npg+O9fW9o4Dpw3R820hTUdKL94WN8EvTaEOfVVRD
+         cdaCCTRh+wf1NYwVW+SabVIJtVdG7+gWYtsCWSTXOoSnS/vUcGs12olIQK5x1WyMqZ1Q
+         /MAxk7amG9hbNZ0ur7voN4effOLJFXQjgVXmPIShlbCEhtUrj2PFj6REdI8EFLhcVnzI
+         SGKA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s4rQMHhR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pa30-20020a05620a831e00b00783325a8cc1si5636750qkn.338.2024.01.22.06.36.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jan 2024 06:36:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=s4rQMHhR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rRvOu-0006Rf-Vm; Mon, 22 Jan 2024 09:35:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rRvOs-0006OC-36
+ for qemu-devel@nongnu.org; Mon, 22 Jan 2024 09:35:46 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rRvOo-0003Zv-St
+ for qemu-devel@nongnu.org; Mon, 22 Jan 2024 09:35:45 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-40ea5653f6bso25560665e9.3
+ for <qemu-devel@nongnu.org>; Mon, 22 Jan 2024 06:35:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705934139; x=1706538939; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Vf0m1wyMlr7cRTuzG2EUgLd0A0rBjsSs6MaGJHgZJIU=;
+ b=s4rQMHhRMd1CgM93Icgh2ZujbhE4igpyF6r11+Aax3kPqg0sfmixKTApnErNRYqhhZ
+ 5XJDSc4ixMGnkeRSxbxfXXfgb9jesHMmdPiw0BA7gMIYwklRFJ7Aak3jh1DoqNN19MAm
+ r1Ey76JhWLt0CcO9bw3y+uWCFNBd+pXNg1+6ugdxMUvNH0Q4fenpJsgo2V/ncBLyBfdY
+ Ws6J804oY15COHG+4Xja6Yb5MOPO3HFGDvY9tcH/lJ8RnYPeCTfdv4YP6l2Sr199fyKY
+ 5kLPJxL+rioEQLL+gcRPgWYwAsqjeODAzvavSs5NPCBkKbN89DU5BK/fQb93oBHR9pLW
+ UiwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705934139; x=1706538939;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Vf0m1wyMlr7cRTuzG2EUgLd0A0rBjsSs6MaGJHgZJIU=;
+ b=lCg5KTG92Yjib3gBIwJ+/mKfZmPxFashfNFb17ZFrLzs7Nm0h86yWUXQ/ZzRmNADZE
+ F4J9zrd/8cD7LAoJhBHS0quSobuEeyQoKiFG5OvBP1+8MneF/08jUnEpCJnmlsrk3iAM
+ HkCyckHM78C4flnahIaqpIkc8mJKyNkPNPUKrg1hexaKY/0vc6Ws0OEvoWC5R4gsLH4a
+ 3oN3RDcL3INpEjyR5nYLiNzmfA67kDUwO6EKXwhzaGeQLnxQaTRCAyEby33Y8eXa83Cp
+ uKHa5s7VzsiS7wb30iVRSHA70PaWfsFt8yf0o/rDqT+gNN4jDa2Hho8MQms/VnFuKn30
+ RxkA==
+X-Gm-Message-State: AOJu0Yzmkno9tt2KadtPewB7Bd2zIkgXbH9DzBaVLw7gS3T2mDgyfPcx
+ hMrgPNpfiUw/Q985ilc8ow69qR/+SoWzJQ1WaZUebs1jM/CgSvaQxoP6jdpv0XQ=
+X-Received: by 2002:a05:600c:3c93:b0:40e:596a:9850 with SMTP id
+ bg19-20020a05600c3c9300b0040e596a9850mr2217878wmb.240.1705934138939; 
+ Mon, 22 Jan 2024 06:35:38 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ je6-20020a05600c1f8600b0040d8d11bf63sm39559584wmb.41.2024.01.22.06.35.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Jan 2024 06:35:38 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Ard Biesheuvel <ardb@kernel.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>
+Subject: [PATCH v2 0/3] virt: wire up NS EL2 virtual timer IRQ
+Date: Mon, 22 Jan 2024 14:35:34 +0000
+Message-Id: <20240122143537.233498-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3JEp9A3W+fi4
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: moak0eYO/n+g
 
-Jan Kiszka <jan.kiszka@web.de> writes:
+This patchset wires up the NS EL2 virtual timer IRQ on the virt
+board, similarly to what commit 058262e0a8b2 did for the sbsa-ref board.
 
-> On 19.01.24 12:24, Alex Benn=C3=A9e wrote:
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> Convert the musicpal key input device to use
->>> qemu_add_kbd_event_handler().  This lets us simplify it because we no
->>> longer need to track whether we're in the middle of a PS/2 multibyte
->>> key sequence.
-<snip>
->>
->> Well the key input all works as intended and looks good to me. I'm a
->> little disappointed I couldn't get audio working on the musicpal machine
->> but that is not a problem for this patch.
->>
->> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>
->
-> Looks good to me as well, all keys still work fine.
->
-> No idea what's the issue with sound, though. I think I haven't run the
-> whole stuff in a decade or so, had to search for all the pieces first of
-> all again. The webradio service original behind this stopped their
-> operations, at least for this device, but manually entered favorits
-> still work on the real device - I still have one, though that is
-> starting to get some issues as well.
+Version 1 was an RFC patchset, originally sent back in autumn:
+https://patchew.org/QEMU/20230919101240.2569334-1-peter.maydell@linaro.org/
+The main reason for it being an RFC is that the change, while correct,
+triggers a bug in EDK2 guest firmware that makes EDK2 assert on bootup.
+Since the RFC, we've upgraded our in-tree version of the EDK2 binaries
+to a version that has the fix for that bug, so I think the QEMU side of
+these patches is ready to go in now.
 
-I navigated through the favourites and after pressing some keys it seems
-to indicate there was a stream of some sort (or at least a bitrate was
-reported ;-).
+To accommodate users who might still be using older EDK2 binaries,
+we only expose the IRQ in the DTB and ACPI tables for virt-9.0 and
+later machine types.
 
-The main issue I was having with sound was with pipewire - this would
-eventually generate a lot of warning messages because input devices are
-created but I guess the model wasn't draining the input buffers so
-eventually we get:
+If you see in the guest:
+     ASSERT [ArmTimerDxe] /home/kraxel/projects/qemu/roms/edk2/ArmVirtPkg/Library/ArmVirtTimerFdtClientLib/ArmVirtTimerFdtClientLib.c(72): PropSize == 36 || PropSize == 48
 
-  qemu: 0x7f1490259500: overrun write:5859188 filled:5842804 + size:940 > m=
-ax:4194304
-  qemu: 0x7f14902680a0: overrun write:5860128 filled:5843744 + size:940 > m=
-ax:4194304
-  qemu: 0x7f1490259500: overrun write:5861068 filled:5844684 + size:940 > m=
-ax:4194304
-  qemu: 0x7f14902680a0: overrun write:5862008 filled:5845624 + size:940 > m=
-ax:4194304
+then your options are:
+ * update your EDK2 binaries to edk2-stable202311 or newer
+ * use the 'virt-8.2' versioned machine type
+ * not use 'virtualization=on'
+                   
+I'll put something about this into the release notes when this
+goes into git. (There are other reasons why you probably want a
+newer EDK2 for AArch64 guests, so this is worth flagging up to our
+downstream distros who don't take our pre-built firmware binaries.)
 
-Is your image just a hacked up version of the original firmware or
-something we have source for? I guess there was never a rockbox port for
-the device?
+changes v1->v2:
+ * the change in DTB and ACPI tables is now tied to the machine version
+ * handle change of the ARCH_TIMER_*_IRQ values from PPI numbers to INTIDs
+ * bump the FADT header to indicate ACPI v6.3, since we might be using
+   a 6.3 feature in the GTDT
+ * the avocado tests now all pass, because we have updated our copy
+   of EDK2 in pc-bios/ to a version which has the fix for the bug
+   which would otherwise cause it to assert on bootup
+ * patch 2 commit message improved to give details of the EDK2 assert and
+   state the options for dealing with it (this will also go into the
+   QEMU release notes)
 
->
-> Thanks,
-> Jan
+thanks
+-- PMM
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Peter Maydell (3):
+  tests/qtest/bios-tables-test: Allow changes to virt GTDT
+  hw/arm/virt: Wire up non-secure EL2 virtual timer IRQ
+  tests/qtest/bios-tables-tests: Update virt golden reference
+
+ include/hw/arm/virt.h     |   2 ++
+ hw/arm/virt-acpi-build.c  |  20 +++++++++----
+ hw/arm/virt.c             |  60 ++++++++++++++++++++++++++++++++------
+ tests/data/acpi/virt/FACP | Bin 276 -> 276 bytes
+ tests/data/acpi/virt/GTDT | Bin 96 -> 104 bytes
+ 5 files changed, 67 insertions(+), 15 deletions(-)
+
+-- 
+2.34.1
+

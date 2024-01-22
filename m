@@ -1,507 +1,776 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2640026ejg;
-        Mon, 22 Jan 2024 09:39:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH+Aoq1FklxTF7EWpxvwemCD+uZNiM1IvmiMX13o8fdZZF67z5c6AUyLyGRp3/i15zjArUV
-X-Received: by 2002:a05:6214:e85:b0:686:2fb3:6bda with SMTP id hf5-20020a0562140e8500b006862fb36bdamr4230588qvb.23.1705945156612;
-        Mon, 22 Jan 2024 09:39:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705945156; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2742213ejg;
+        Mon, 22 Jan 2024 13:09:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGyPuYRf5Yb8R5OiRc+7z9wtsaCDaq7dy1+1OChUxQ/UkBEcA0zCrzGei1Uk1Y684gTzsHt
+X-Received: by 2002:a05:6870:3286:b0:210:b51c:5b91 with SMTP id q6-20020a056870328600b00210b51c5b91mr476480oac.84.1705957772727;
+        Mon, 22 Jan 2024 13:09:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705957772; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ts3qSHFXo3K50avvKBbuPa1Vre9Cyvh6GyZlECrrWw7iDEkuvS190EA9eyNImtSmtY
-         zjMzZ1F4hc3BRWxdBRu6TiLTkvPKnpkubo1juFO5MGjpMAbwToDXB4HxzYG18NH45oBE
-         lumaOq39jT9z9L7FRdcgTueNrWdSM17IJZS68mGLiT4fPfU4RTMS7c+t19MLHR3F3ZXH
-         ciJs3PMdWo7ARAGgTwNmJaM71CmnnZwDm9rtkQc+KB3bHyvRWcSM7Vuj5FvO71H8TwSZ
-         zcsknc++0XrSzHmCBQIyUtWDTveU2A5Rr+kN+wHLzGKLn1jReJQt7HFjBGYL2bQLqLKa
-         ZHsQ==
+        b=jA5TzHY1M0Dt/XkotKsp89TYxT1lUKPprklCANt8qjO0brWLdN61sqVU2GubMH2jvp
+         Xt7lJL6BLSo++d8p+QSnSP6SJIbD0+5JDFhj/Eei/BLIpDZXMUZ/XrrXU0qAPw/CimBc
+         jAc+CLQ86AOjOboaADxyRso5Jkfn4tkhsGnveIm8jTVoKCUOutpaOBDDqtCfRywXMp/L
+         jmdnu/DVmkSP6Pqe8JTmHc7fbkDSMjPo/EwEjcxSR9viQ4wJaXOhwJg1kuaBkuG4qr8q
+         Q9WSFAIlzexVLdJsugVhREVgmzPNE7bv0sE9plD4boRNwGbU++88nC9XKOMGjfXXSuwX
+         83oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=QSfsvmzLWez37hFav3tyw9t5H5IgMB4LtT429E2D6uc=;
-        fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
-        b=oPRfYTiupxkaO5wH3JMyVe0tIvejEt9Zh76yGH6LBpUtixX+iq1YZLtpmMLqMpfpsD
-         W5G6D/Vc+By5jusAT03N0B+SYaIRh7s9kFlUHiY2KV3U2+99IYJLa0uJj0/oh0gISV7+
-         vPqjY80Qy4gFmE0lVhEiAXD55MFrUOlSb4mTixOi83TTHdiaoxLf8BSqSDPKBgxOcd/5
-         MHKw2a+R+JmhCRIuTXSH62qMDnH+mm3LPJqTuqy+qo3VVIXErKE3+drw3mpLrQUD2bVC
-         a6hn/uTBwVwhre/I2iXzgXa47tbd0k1jo3iwM1leu4PZlujsBg37ScZ5H6vHChEiImM2
-         YBkQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=wfg5tczoG1RdIgE6unHySFIJoiGMB8hSgOnq2WZBPw8=;
+        fh=liRAIRxIADE2bmfasMOmYEUti54kpYvQeX8i34UwbXI=;
+        b=a8on96kiSlgkAC+gIsg6Qh6hob7MFQoisbZPoPaX14shPG6YngcJk4gtnR0QYjjjcV
+         TpxFiP9IkTf+zPc9Uysh2RpYGTrkr+qzcZxtYTHwR4M/F+vDNXKXcT/iNQA+hta7iN+Z
+         lh7uWcrmXsUy+b5+6fWrazcAjvWjS0qvse/na3cejAgzg/NoP+RIcLVBfxkbRWDV6pKi
+         KAGs3tvtwa4ldcnAKhpRmTQJBYEH/G1/6+feWnVDoG33biQQbkIY5W16jnMlzg7TBQlX
+         x18JAYoDK0rCDTHuP+nF2KcamPqCGD6KDgBvWpj0MeiIOs0EpVfrfavk/lJvVZpFbzVg
+         Jsig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=dpMSmCVi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=O09hldhA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10-20020a0c8e8a000000b0068199e7bef3si463282qvb.592.2024.01.22.09.39.16
+        by mx.google.com with ESMTPS id q17-20020a0ce211000000b0068179622f16si6274962qvl.248.2024.01.22.13.09.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jan 2024 09:39:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jan 2024 13:09:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=dpMSmCVi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=O09hldhA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rRyEl-0000Bx-8J; Mon, 22 Jan 2024 12:37:31 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rS1XU-0000Tj-5H; Mon, 22 Jan 2024 16:09:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <30qeuZQwKChE4rszyv9Avwr4x55x2v.t537v3B-uvCv2454x4B.58x@flex--nabihestefan.bounces.google.com>)
- id 1rRyEg-000092-5P
- for qemu-devel@nongnu.org; Mon, 22 Jan 2024 12:37:26 -0500
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <30qeuZQwKChE4rszyv9Avwr4x55x2v.t537v3B-uvCv2454x4B.58x@flex--nabihestefan.bounces.google.com>)
- id 1rRyEd-00040S-RN
- for qemu-devel@nongnu.org; Mon, 22 Jan 2024 12:37:25 -0500
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-dc253fee264so4760878276.2
- for <qemu-devel@nongnu.org>; Mon, 22 Jan 2024 09:37:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1705945042; x=1706549842; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=QSfsvmzLWez37hFav3tyw9t5H5IgMB4LtT429E2D6uc=;
- b=dpMSmCVi1JnX1zIUa/Dxlbxz58ffVN3uD619yfQ2zjUBXE0ycsiLwi10PiXG6bGIv5
- KtPDQW8Z+0XSaEPT24K+RaKKjKYNbMaruDG32Lqa1RKtntNS7B37j+XtykTLKXLhorya
- z8jwjA/xHVoY7Q3F2TyFfPvHxtLziP8m5+5KchdymXk+S05j/aMtiH/HJjNZ5oeqOYND
- BHnHYwF8jBe4FVIlTNeczSAwnb45rJt3Ol/MRAoPo4fWiIlgrr7cGi04HD805p8NUl5K
- yizG3rA2IodCINpBUNgbZ20iNS51QkyrYq9QixHyGmZGRjrQJ4rKwPe/vBxd+HIkyCO1
- 6OFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705945042; x=1706549842;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QSfsvmzLWez37hFav3tyw9t5H5IgMB4LtT429E2D6uc=;
- b=PNWepDSSz1R2Cldo9XivRxKbO0ORFihjta8G5czInQR+SFNs999TbvXrUiDLctbGjT
- EQo1m3FQ8YlLp+pqX9eI8bYVCY4N8/Bd2NcWxdMI16riN44/2rIkY65oIeUJitKpDaYd
- aR9pxxR0S+Keckq8K88/kP5FsOaB8sq/NoXUD+64LSx+2pkZmA7oZfx1075o/8Ixlofr
- 80YVfYlsPwdAbyMMTv+sszGx4eiOytbCC3lylt14li7AwXs6Yow1ltzodNmFHyMNkWTK
- 7KEDhxvYL/0+rMvOnJZfleCahQmd+RYfPer7nbiW0ydpcCrcgwfZQvVCxRV0FfMpdl8J
- QDsQ==
-X-Gm-Message-State: AOJu0Yx4fo6S15q1WmLPf5V67dfnRSdYt6/Z/DcpYJQQF5DAJemSAKcQ
- 13IZ6fYeNgJ4ZHW8pIVRUAuyySCKRM5nM4/L4ZFPwU2b6gcqeuhPbakrtP4tAEjSKNimhxdBHRl
- YJQeeHZfQ9ZUhNU5idBRcvJO7ug==
-X-Received: from nabihestefan.c.googlers.com
- ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:6902:b1d:b0:dc2:1dd0:c517 with
- SMTP id ch29-20020a0569020b1d00b00dc21dd0c517mr2308959ybb.7.1705945042606;
- Mon, 22 Jan 2024 09:37:22 -0800 (PST)
-Date: Mon, 22 Jan 2024 17:37:04 +0000
-In-Reply-To: <20240122173706.4019545-1-nabihestefan@google.com>
-Mime-Version: 1.0
-References: <20240122173706.4019545-1-nabihestefan@google.com>
-X-Mailer: git-send-email 2.43.0.429.g432eaa2c6b-goog
-Message-ID: <20240122173706.4019545-8-nabihestefan@google.com>
-Subject: [PATCH v14 7/9] hw/net: GMAC Rx Implementation
-From: Nabih Estefan <nabihestefan@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
- nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
- Hila.Miranda-Kuzi@nuvoton.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=30qeuZQwKChE4rszyv9Avwr4x55x2v.t537v3B-uvCv2454x4B.58x@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rS1XD-0000PY-8s; Mon, 22 Jan 2024 16:08:47 -0500
+Received: from zproxy4.enst.fr ([137.194.2.223])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rS1X9-00012e-Fs; Mon, 22 Jan 2024 16:08:46 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 16E0F20639;
+ Mon, 22 Jan 2024 22:08:41 +0100 (CET)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id 6EpNqMahF1zG; Mon, 22 Jan 2024 22:08:39 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 6DC87205EF;
+ Mon, 22 Jan 2024 22:08:39 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 6DC87205EF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1705957719;
+ bh=wfg5tczoG1RdIgE6unHySFIJoiGMB8hSgOnq2WZBPw8=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=O09hldhA4nLKUsPsMa/2NrtrLvhn3+S6wC2l5WjGxeREubyBCiVgbbriZLi5R2pTX
+ Eg9JZtgQvR7nBjP+lh1nTtdNbkhu4zkS57eEAi44lXSO/MKubvahb20tKPr2RVDNQW
+ rDCBdKaFTgV0kq+WQ39hfiOCbqr+Qaes8n3MXPvM=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id Fxurp4sytNEE; Mon, 22 Jan 2024 22:08:39 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id A5F05205B9;
+ Mon, 22 Jan 2024 22:08:38 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+Subject: [PATCH v2 1/3] hw/gpio: Implement STM32L4x5 GPIO
+Date: Mon, 22 Jan 2024 22:02:02 +0100
+Message-ID: <20240122210829.127691-2-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240122210829.127691-1-ines.varhol@telecom-paris.fr>
+References: <20240122210829.127691-1-ines.varhol@telecom-paris.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.223;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m7c3N+VXNjm3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 907qj+ofqbEH
 
-From: Nabih Estefan Diaz <nabihestefan@google.com>
+Features supported :
+- the 8 STM32L4x5 GPIOs are initialized with their reset values
+    (except IDR, see below)
+- input mode : setting a pin in input mode "externally" (using input
+    irqs) results in an out irq (transmitted to SYSCFG)
+- output mode : setting a bit in ODR sets the corresponding out irq
+    (if this line is configured in output mode)
+- pull-up, pull-down
+- push-pull, open-drain
 
-- Implementation of Receive function for packets
-- Implementation for reading and writing from and to descriptors in
-  memory for Rx
+Difference with the real GPIOs :
+- Alternate Function and Analog mode aren't implemented :
+    pins in AF/Analog behave like pins in input mode
+- floating pins stay at their last value
+- register IDR reset values differ from the real one :
+    values are coherent with the other registers reset values
+    and the fact that AF/Analog modes aren't implemented
+- setting I/O output speed isn't supported
+- locking port bits isn't supported
+- ADC function isn't supported
+- GPIOH has 16 pins instead of 2 pins
+- writing to registers LCKR, AFRL, AFRH and ASCR is ineffective
 
-When RX starts, we need to flush the queued packets so that they
-can be received by the GMAC device. Without this it won't work
-with TAP NIC device.
-
-When RX descriptor list is full, it returns a DMA_STATUS for
-software to handle it. But there's no way to indicate the software has
-handled all RX descriptors and the whole pipeline stalls.
-
-We do something similar to NPCM7XX EMC to handle this case.
-
-1. Return packet size when RX descriptor is full, effectively dropping
-these packets in such a case.
-2. When software clears RX descriptor full bit, continue receiving
-further packets by flushing QEMU packet queue.
-
-Added relevant trace-events
-
-Change-Id: I132aa254a94cda1a586aba2ea33bbfc74ecdb831
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/net/npcm_gmac.c  | 276 +++++++++++++++++++++++++++++++++++++++++++-
- hw/net/trace-events |   5 +
- 2 files changed, 279 insertions(+), 2 deletions(-)
+ MAINTAINERS                        |   1 +
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ hw/gpio/Kconfig                    |   3 +
+ hw/gpio/meson.build                |   1 +
+ hw/gpio/stm32l4x5_gpio.c           | 447 +++++++++++++++++++++++++++++
+ hw/gpio/trace-events               |   6 +
+ include/hw/gpio/stm32l4x5_gpio.h   |  65 +++++
+ 7 files changed, 524 insertions(+), 1 deletion(-)
+ create mode 100644 hw/gpio/stm32l4x5_gpio.c
+ create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
 
-diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index f434530930..b2b9314f5e 100644
---- a/hw/net/npcm_gmac.c
-+++ b/hw/net/npcm_gmac.c
-@@ -24,6 +24,10 @@
- #include "hw/net/mii.h"
- #include "hw/net/npcm_gmac.h"
- #include "migration/vmstate.h"
-+#include "net/checksum.h"
-+#include "net/eth.h"
-+#include "net/net.h"
-+#include "qemu/cutils.h"
- #include "qemu/log.h"
- #include "qemu/units.h"
- #include "sysemu/dma.h"
-@@ -146,6 +150,17 @@ static void gmac_phy_set_link(NPCMGMACState *gmac, bool active)
- 
- static bool gmac_can_receive(NetClientState *nc)
- {
-+    NPCMGMACState *gmac = NPCM_GMAC(qemu_get_nic_opaque(nc));
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c4085c32a7..269ed96052 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1131,6 +1131,7 @@ F: hw/arm/stm32l4x5_soc.c
+ F: hw/misc/stm32l4x5_exti.c
+ F: hw/misc/stm32l4x5_syscfg.c
+ F: hw/misc/stm32l4x5_rcc.c
++F: hw/gpio/stm32l4x5_gpio.c
+ F: include/hw/*/stm32l4x5_*.h
+=20
+ B-L475E-IOT01A IoT Node
+diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e=
+-iot01a.rst
+index b857a56ca4..0afef8e4f4 100644
+--- a/docs/system/arm/b-l475e-iot01a.rst
++++ b/docs/system/arm/b-l475e-iot01a.rst
+@@ -18,6 +18,7 @@ Currently B-L475E-IOT01A machine's only supports the fo=
+llowing devices:
+ - STM32L4x5 EXTI (Extended interrupts and events controller)
+ - STM32L4x5 SYSCFG (System configuration controller)
+ - STM32L4x5 RCC (Reset and clock control)
++- STM32L4x5 GPIOs (General-purpose I/Os)
+=20
+ Missing devices
+ """""""""""""""
+@@ -25,7 +26,6 @@ Missing devices
+ The B-L475E-IOT01A does *not* support the following devices:
+=20
+ - Serial ports (UART)
+-- General-purpose I/Os (GPIO)
+ - Analog to Digital Converter (ADC)
+ - SPI controller
+ - Timer controller (TIMER)
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index d2cf3accc8..712940b8e0 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -16,3 +16,6 @@ config GPIO_PWR
+=20
+ config SIFIVE_GPIO
+     bool
 +
-+    /* If GMAC receive is disabled. */
-+    if (!(gmac->regs[R_NPCM_GMAC_MAC_CONFIG] & NPCM_GMAC_MAC_CONFIG_RX_EN)) {
-+        return false;
-+    }
++config STM32L4X5_GPIO
++    bool
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 066ea96480..8470ca1639 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -9,6 +9,7 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpi=
+o.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
++system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_gp=
+io.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c')=
+)
+ system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'=
+))
+diff --git a/hw/gpio/stm32l4x5_gpio.c b/hw/gpio/stm32l4x5_gpio.c
+new file mode 100644
+index 0000000000..58b321a299
+--- /dev/null
++++ b/hw/gpio/stm32l4x5_gpio.c
+@@ -0,0 +1,447 @@
++/*
++ * STM32L4x5 GPIO (General Purpose Input/Ouput)
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
 +
-+    /* If GMAC DMA RX is stopped. */
-+    if (!(gmac->regs[R_NPCM_DMA_CONTROL] & NPCM_DMA_CONTROL_START_STOP_RX)) {
-+        return false;
-+    }
-     return true;
- }
- 
-@@ -189,12 +204,258 @@ static void gmac_update_irq(NPCMGMACState *gmac)
-     qemu_set_irq(gmac->irq, level);
- }
- 
--static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
-+static int gmac_read_rx_desc(dma_addr_t addr, struct NPCMGMACRxDesc *desc)
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/gpio/stm32l4x5_gpio.h"
++#include "hw/irq.h"
++#include "hw/qdev-clock.h"
++#include "hw/qdev-properties.h"
++#include "qapi/visitor.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++#define GPIO_MODER 0x00
++#define GPIO_OTYPER 0x04
++#define GPIO_OSPEEDR 0x08
++#define GPIO_PUPDR 0x0C
++#define GPIO_IDR 0x10
++#define GPIO_ODR 0x14
++#define GPIO_BSRR 0x18
++#define GPIO_LCKR 0x1C
++#define GPIO_AFRL 0x20
++#define GPIO_AFRH 0x24
++#define GPIO_BRR 0x28
++#define GPIO_ASCR 0x2C
++
++/* 0b11111111_11111111_00000000_00000000 */
++#define RESERVED_BITS_MASK 0xFFFF0000
++
++static void update_gpio_idr(Stm32l4x5GpioState *s);
++static void disconnected_pins_set(Object *obj, Visitor *v,
++    const char *name, void *opaque, Error **errp);
++static void disconnected_pins_get(Object *obj, Visitor *v,
++    const char *name, void *opaque, Error **errp);
++
++static void stm32l4x5_gpio_reset_hold(Object *obj)
 +{
-+    if (dma_memory_read(&address_space_memory, addr, desc,
-+                        sizeof(*desc), MEMTXATTRS_UNSPECIFIED)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to read descriptor @ 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        return -1;
-+    }
-+    desc->rdes0 = le32_to_cpu(desc->rdes0);
-+    desc->rdes1 = le32_to_cpu(desc->rdes1);
-+    desc->rdes2 = le32_to_cpu(desc->rdes2);
-+    desc->rdes3 = le32_to_cpu(desc->rdes3);
-+    return 0;
++    Stm32l4x5GpioState *s =3D STM32L4X5_GPIO(obj);
++
++    s->otyper =3D 0x00000000;
++    s->idr =3D 0x00000000;
++    s->odr =3D 0x00000000;
++    s->lckr =3D 0x00000000;
++    s->afrl =3D 0x00000000;
++    s->afrh =3D 0x00000000;
++    s->ascr =3D 0x00000000;
++    /* moder, ospeedr and pupdr are initialized using properties */
++
++    s->disconnected_pins =3D 0xFFFF;
++    object_property_add(obj, "disconnected-pins", "uint16",
++        disconnected_pins_get, disconnected_pins_set, NULL,
++        &s->disconnected_pins);
++    s->pins_connected_high =3D 0x0000;
++    update_gpio_idr(s);
 +}
 +
-+static int gmac_write_rx_desc(dma_addr_t addr, struct NPCMGMACRxDesc *desc)
- {
--    /* Placeholder. Function will be filled in following patches */
-+    struct NPCMGMACRxDesc le_desc;
-+    le_desc.rdes0 = cpu_to_le32(desc->rdes0);
-+    le_desc.rdes1 = cpu_to_le32(desc->rdes1);
-+    le_desc.rdes2 = cpu_to_le32(desc->rdes2);
-+    le_desc.rdes3 = cpu_to_le32(desc->rdes3);
-+    if (dma_memory_write(&address_space_memory, addr, &le_desc,
-+                        sizeof(le_desc), MEMTXATTRS_UNSPECIFIED)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to write descriptor @ 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        return -1;
-+    }
-     return 0;
- }
- 
-+static int gmac_rx_transfer_frame_to_buffer(uint32_t rx_buf_len,
-+                                            uint32_t *left_frame,
-+                                            uint32_t rx_buf_addr,
-+                                            bool *eof_transferred,
-+                                            const uint8_t **frame_ptr,
-+                                            uint16_t *transferred)
++static void stm32l4x5_gpio_set(void *opaque, int line, int level)
 +{
-+    uint32_t to_transfer;
++    Stm32l4x5GpioState *s =3D opaque;
 +    /*
-+     * Check that buffer is bigger than the frame being transfered
-+     * If bigger then transfer only whats left of frame
-+     * Else, fill frame with all the content possible
++     * The pin isn't set if line is configured in output mode
++     * except if level is 0 and the output is open-drain.
++     * This way there will be no short-circuit prone situations.
 +     */
-+    if (rx_buf_len >= *left_frame) {
-+        to_transfer = *left_frame;
-+        *eof_transferred = true;
++    if ((extract32(s->moder, 2 * line, 2) =3D=3D 1) &&
++        !((extract32(s->otyper, line, 1) =3D=3D 1) &&
++          (level =3D=3D 0))) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Line %d can't be driven external=
+ly\n",
++                      line);
++        return;
++    }
++
++    s->disconnected_pins &=3D ~(1 << line);
++    if (level) {
++        s->pins_connected_high |=3D (1 << line);
 +    } else {
-+        to_transfer = rx_buf_len;
++        s->pins_connected_high &=3D ~(1 << line);
 +    }
-+
-+    /* write frame part to memory */
-+    if (dma_memory_write(&address_space_memory, (uint64_t) rx_buf_addr,
-+                         *frame_ptr, to_transfer, MEMTXATTRS_UNSPECIFIED)) {
-+        return -1;
-+    }
-+
-+    /* update frame pointer and size of whats left of frame */
-+    *frame_ptr += to_transfer;
-+    *left_frame -= to_transfer;
-+    *transferred += to_transfer;
-+
-+    return 0;
++    trace_stm32l4x5_gpio_pins(s->name, s->disconnected_pins,
++                              s->pins_connected_high);
++    update_gpio_idr(s);
 +}
 +
-+static void gmac_dma_set_state(NPCMGMACState *gmac, int shift, uint32_t state)
++
++static void update_gpio_idr(Stm32l4x5GpioState *s)
 +{
-+    gmac->regs[R_NPCM_DMA_STATUS] = deposit32(gmac->regs[R_NPCM_DMA_STATUS],
-+        shift, 3, state);
-+}
++    uint32_t new_idr_mask =3D 0;
++    uint32_t new_idr =3D s->odr;
 +
-+static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
-+{
-+    /*
-+     * Comments have steps that relate to the
-+     * receiving process steps in pg 386
-+     */
-+    NPCMGMACState *gmac = NPCM_GMAC(qemu_get_nic_opaque(nc));
-+    uint32_t left_frame = len;
-+    const uint8_t *frame_ptr = buf;
-+    uint32_t desc_addr;
-+    uint32_t rx_buf_len, rx_buf_addr;
-+    struct NPCMGMACRxDesc rx_desc;
-+    uint16_t transferred = 0;
-+    bool eof_transferred = false;
-+
-+    trace_npcm_gmac_packet_receive(DEVICE(gmac)->canonical_path, len);
-+    if (!gmac_can_receive(nc)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "GMAC Currently is not able for Rx");
-+        return -1;
-+    }
-+    if (!gmac->regs[R_NPCM_DMA_HOST_RX_DESC]) {
-+        gmac->regs[R_NPCM_DMA_HOST_RX_DESC] =
-+            NPCM_DMA_HOST_RX_DESC_MASK(gmac->regs[R_NPCM_DMA_RX_BASE_ADDR]);
-+    }
-+    desc_addr = NPCM_DMA_HOST_RX_DESC_MASK(gmac->regs[R_NPCM_DMA_HOST_RX_DESC]);
-+
-+    /* step 1 */
-+    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+        NPCM_DMA_STATUS_RX_RUNNING_FETCHING_STATE);
-+    trace_npcm_gmac_packet_desc_read(DEVICE(gmac)->canonical_path, desc_addr);
-+    if (gmac_read_rx_desc(desc_addr, &rx_desc)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "RX Descriptor @ 0x%x cant be read\n",
-+                      desc_addr);
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_RX_SUSPENDED_STATE);
-+        return -1;
-+    }
-+
-+    /* step 2 */
-+    if (!(rx_desc.rdes0 & RX_DESC_RDES0_OWN)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "RX Descriptor @ 0x%x is owned by software\n",
-+                      desc_addr);
-+        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RU;
-+        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RI;
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_RX_SUSPENDED_STATE);
-+        gmac_update_irq(gmac);
-+        return len;
-+    }
-+    /* step 3 */
-+    /*
-+     * TODO --
-+     * Implement all frame filtering and processing (with its own interrupts)
-+     */
-+    trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
-+                                    rx_desc.rdes0, rx_desc.rdes1, rx_desc.rdes2,
-+                                    rx_desc.rdes3);
-+    /* Clear rdes0 for the incoming descriptor and set FS in first descriptor.*/
-+    rx_desc.rdes0 = RX_DESC_RDES0_FIRST_DESC_MASK;
-+
-+    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+        NPCM_DMA_STATUS_RX_RUNNING_TRANSFERRING_STATE);
-+
-+    /* Pad the frame with FCS as the kernel driver will strip it away. */
-+    left_frame += ETH_FCS_LEN;
-+
-+    /* repeat while we still have frame to transfer to memory */
-+    while (!eof_transferred) {
-+        /* Return descriptor no matter what happens */
-+        rx_desc.rdes0 &= ~RX_DESC_RDES0_OWN;
-+        /* Set the frame to be an IPv4/IPv6 frame. */
-+        rx_desc.rdes0 |= RX_DESC_RDES0_FRM_TYPE_MASK;
-+
-+        /* step 4 */
-+        rx_buf_len = RX_DESC_RDES1_BFFR1_SZ_MASK(rx_desc.rdes1);
-+        rx_buf_addr = rx_desc.rdes2;
-+        gmac->regs[R_NPCM_DMA_CUR_RX_BUF_ADDR] = rx_buf_addr;
-+        gmac_rx_transfer_frame_to_buffer(rx_buf_len, &left_frame, rx_buf_addr,
-+                                         &eof_transferred, &frame_ptr,
-+                                         &transferred);
-+
-+        trace_npcm_gmac_packet_receiving_buffer(DEVICE(gmac)->canonical_path,
-+                                                rx_buf_len, rx_buf_addr);
-+        /* if we still have frame left and the second buffer is not chained */
-+         if (!(rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) && \
-+              !eof_transferred) {
-+            /* repeat process from above on buffer 2 */
-+            rx_buf_len = RX_DESC_RDES1_BFFR2_SZ_MASK(rx_desc.rdes1);
-+            rx_buf_addr = rx_desc.rdes3;
-+            gmac->regs[R_NPCM_DMA_CUR_RX_BUF_ADDR] = rx_buf_addr;
-+            gmac_rx_transfer_frame_to_buffer(rx_buf_len, &left_frame,
-+                                             rx_buf_addr, &eof_transferred,
-+                                             &frame_ptr, &transferred);
-+            trace_npcm_gmac_packet_receiving_buffer( \
-+                                                DEVICE(gmac)->canonical_path,
-+                                                rx_buf_len, rx_buf_addr);
-+        }
-+        /* update address for descriptor */
-+        gmac->regs[R_NPCM_DMA_HOST_RX_DESC] = rx_buf_addr;
-+        /* Return descriptor */
-+        rx_desc.rdes0 &= ~RX_DESC_RDES0_OWN;
-+        /* Update frame length transferred */
-+        rx_desc.rdes0 |= ((uint32_t)transferred)
-+            << RX_DESC_RDES0_FRAME_LEN_SHIFT;
-+        trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
-+                                        rx_desc.rdes0, rx_desc.rdes1,
-+                                        rx_desc.rdes2, rx_desc.rdes3);
-+
-+        /* step 5 */
-+        gmac_write_rx_desc(desc_addr, &rx_desc);
-+        trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path,
-+                                        &rx_desc, rx_desc.rdes0,
-+                                        rx_desc.rdes1, rx_desc.rdes2,
-+                                        rx_desc.rdes3);
-+        /* read new descriptor into rx_desc if needed*/
-+        if (!eof_transferred) {
-+            /* Get next descriptor address (chained or sequential) */
-+            if (rx_desc.rdes1 & RX_DESC_RDES1_RC_END_RING_MASK) {
-+                desc_addr = gmac->regs[R_NPCM_DMA_RX_BASE_ADDR];
-+            } else if (rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) {
-+                desc_addr = rx_desc.rdes3;
++    for (int i =3D 0; i < 16; i++) {
++        /* output mode */
++        if (extract32(s->moder, 2 * i, 2) =3D=3D 1) {
++            if (extract32(s->otyper, i, 1) =3D=3D 0) {
++                /* push-pull */
++                new_idr_mask |=3D (1 << i);
++            } else if (!(s->odr & (1 << i))) {
++                /* open-drain ODR 0 */
++                new_idr_mask |=3D (1 << i);
++            } else if ((s->disconnected_pins & (1 << i)) &&
++                       (extract32(s->pupdr, 2 * i, 2) =3D=3D 1)) {
++                /* open-drain pull-up ODR 1 with disconnected pin */
++                new_idr_mask |=3D (1 << i);
++            } else if ((s->disconnected_pins & (1 << i)) &&
++                       (extract32(s->pupdr, 2 * i, 2) =3D=3D 2)) {
++                /* open-drain pull-down ODR 1 with disconnected pin */
++                new_idr_mask |=3D (1 << i);
++                new_idr &=3D ~(1 << i);
++            } else if (!(s->pins_connected_high & (1 << i))) {
++                /* open-drain ODR 1 with pin connected low */
++                new_idr_mask |=3D (1 << i);
++                new_idr &=3D ~(1 << i);
++            }
++            /*
++             * The only case left is for open-drain ODR 1
++             * with disconnected pin without pull-up or pull-down :
++             * the value is floating.
++             */
++        /* input or analog mode with connected pin */
++        } else if (!(s->disconnected_pins & (1 << i))) {
++            if (s->pins_connected_high & (1 << i)) {
++                /* pin high */
++                new_idr_mask |=3D (1 << i);
++                new_idr |=3D (1 << i);
 +            } else {
-+                desc_addr += sizeof(rx_desc);
++                /* pin low */
++                new_idr_mask |=3D (1 << i);
++                new_idr &=3D ~(1 << i);
 +            }
-+            trace_npcm_gmac_packet_desc_read(DEVICE(gmac)->canonical_path,
-+                                             desc_addr);
-+            if (gmac_read_rx_desc(desc_addr, &rx_desc)) {
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "RX Descriptor @ 0x%x cant be read\n",
-+                              desc_addr);
-+                gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RU;
-+                gmac_update_irq(gmac);
-+                return len;
++        /* input or analog mode with disconnected pin */
++        } else {
++            if (extract32(s->pupdr, 2 * i, 2) =3D=3D 1) {
++                /* pull-up */
++                new_idr_mask |=3D (1 << i);
++                new_idr |=3D (1 << i);
++            } else if (extract32(s->pupdr, 2 * i, 2) =3D=3D 2) {
++                /* pull-down */
++                new_idr_mask |=3D (1 << i);
++                new_idr &=3D ~(1 << i);
 +            }
-+
-+            /* step 6 */
-+            if (!(rx_desc.rdes0 & RX_DESC_RDES0_OWN)) {
-+                if (!(gmac->regs[R_NPCM_DMA_CONTROL] & \
-+                     NPCM_DMA_CONTROL_FLUSH_MASK)) {
-+                    rx_desc.rdes0 |= RX_DESC_RDES0_DESC_ERR_MASK;
-+                }
-+                eof_transferred = true;
-+            }
-+            /* Clear rdes0 for the incoming descriptor */
-+            rx_desc.rdes0 = 0;
++            /*
++             * The only case left is for a disconnected pin
++             * without pull-up or pull-down :
++             * the value is floating.
++             */
 +        }
 +    }
-+    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+        NPCM_DMA_STATUS_RX_RUNNING_CLOSING_STATE);
 +
-+    rx_desc.rdes0 |= RX_DESC_RDES0_LAST_DESC_MASK;
-+    if (!(rx_desc.rdes1 & RX_DESC_RDES1_DIS_INTR_COMP_MASK)) {
-+        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RI;
-+        gmac_update_irq(gmac);
++    uint32_t old_idr =3D s->idr;
++    s->idr =3D (old_idr & ~new_idr_mask) | (new_idr & new_idr_mask);
++    trace_stm32l4x5_gpio_update_idr(s->name, old_idr, s->idr);
++
++    for (int i =3D 0; i < 16; i++) {
++        if (new_idr_mask & (1 << i)) {
++            if ((new_idr & (1 << i)) > (old_idr & (1 << i))) {
++                qemu_irq_raise(s->pin[i]);
++            } else if ((new_idr & (1 << i)) < (old_idr & (1 << i))) {
++                qemu_irq_lower(s->pin[i]);
++            }
++        }
 +    }
-+    trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
-+                                    rx_desc.rdes0, rx_desc.rdes1, rx_desc.rdes2,
-+                                    rx_desc.rdes3);
-+
-+    /* step 8 */
-+    gmac->regs[R_NPCM_DMA_CONTROL] |= NPCM_DMA_CONTROL_FLUSH_MASK;
-+
-+    /* step 9 */
-+    trace_npcm_gmac_packet_received(DEVICE(gmac)->canonical_path, left_frame);
-+    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+        NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
-+    gmac_write_rx_desc(desc_addr, &rx_desc);
-+
-+    /* Get next descriptor address (chained or sequential) */
-+    if (rx_desc.rdes1 & RX_DESC_RDES1_RC_END_RING_MASK) {
-+        desc_addr = gmac->regs[R_NPCM_DMA_RX_BASE_ADDR];
-+    } else if (rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) {
-+        desc_addr = rx_desc.rdes3;
-+    } else {
-+        desc_addr += sizeof(rx_desc);
-+    }
-+    gmac->regs[R_NPCM_DMA_HOST_RX_DESC] = desc_addr;
-+    return len;
 +}
 +
- static void gmac_cleanup(NetClientState *nc)
- {
-     /* Nothing to do yet. */
-@@ -303,6 +564,7 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
-         break;
- 
-     case A_NPCM_GMAC_MAC_CONFIG:
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-         break;
- 
-     case A_NPCM_GMAC_MII_ADDR:
-@@ -344,6 +606,8 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
- 
-     case A_NPCM_DMA_RCV_POLL_DEMAND:
-         /* We dont actually care about the value */
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
-         break;
- 
-     case A_NPCM_DMA_STATUS:
-@@ -354,6 +618,14 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
-                            HWADDR_PRIx ", value: 0x%04" PRIx64 "\n",
-                            DEVICE(gmac)->canonical_path, offset, v);
-         }
-+        /* for W1C bits, implement W1C */
-+        gmac->regs[offset / sizeof(uint32_t)] &= ~NPCM_DMA_STATUS_W1C_MASK(v);
-+        if (v & NPCM_DMA_STATUS_RU) {
-+            /* Clearing RU bit indicates descriptor is owned by DMA again. */
-+            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
-+                NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
-+            qemu_flush_queued_packets(qemu_get_queue(gmac->nic));
++/*
++ * Return pins both configured in output mode
++ * and externally driven (except pins in open-drain
++ * mode externally set to 0).
++ */
++static uint32_t get_gpio_pins_to_disconnect(Stm32l4x5GpioState *s)
++{
++    uint32_t pins_to_disconnect =3D 0;
++    for (int i =3D 0; i < 16; i++) {
++        /* for each connected pin in output mode */
++        if ((~s->disconnected_pins & (1 << i)) &&
++            (extract32(s->moder, 2 * i, 2) =3D=3D 1)) {
++            /* if either push-pull or high level */
++            if ((extract32(s->otyper, i, 1) =3D=3D 0) ||
++                (extract16(s->pins_connected_high, i, 1)) =3D=3D 1) {
++                pins_to_disconnect |=3D (1 << i);
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "Line %d can't be driven externally\n",
++                              i);
++            }
 +        }
-         break;
- 
-     default:
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 56057de47f..f91b1a4a3d 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -474,6 +474,11 @@ npcm_gmac_mdio_access(const char *name, uint8_t is_write, uint8_t pa, uint8_t gr
- npcm_gmac_reset(const char *name, uint16_t value) "%s: phy_regs[0][1]: 0x%04" PRIx16
- npcm_gmac_set_link(bool active) "Set link: active=%u"
- npcm_gmac_update_irq(const char *name, uint32_t status, uint32_t intr_en, int level) "%s: Status Reg: 0x%04" PRIX32 " Interrupt Enable Reg: 0x%04" PRIX32 " IRQ Set: %d"
-+npcm_gmac_packet_desc_read(const char* name, uint32_t desc_addr) "%s: attempting to read descriptor @0x%04" PRIX32
-+npcm_gmac_packet_receive(const char* name, uint32_t len) "%s: RX packet length: 0x%04" PRIX32
-+npcm_gmac_packet_receiving_buffer(const char* name, uint32_t buf_len, uint32_t rx_buf_addr) "%s: Receiving into Buffer size: 0x%04" PRIX32 " at address 0x%04" PRIX32
-+npcm_gmac_packet_received(const char* name, uint32_t len) "%s: Reception finished, packet left: 0x%04" PRIX32
-+npcm_gmac_debug_desc_data(const char* name, void* addr, uint32_t des0, uint32_t des1, uint32_t des2, uint32_t des3)"%s: Address: %p Descriptor 0: 0x%04" PRIX32 " Descriptor 1: 0x%04" PRIX32 "Descriptor 2: 0x%04" PRIX32 " Descriptor 3: 0x%04" PRIX32
- 
- # npcm_pcs.c
- npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
--- 
-2.43.0.429.g432eaa2c6b-goog
++    }
++    return pins_to_disconnect;
++}
++
++/*
++ * Set field `disconnected_pins` and call `update_gpio_idr()`
++ */
++static void disconnect_gpio_pins(Stm32l4x5GpioState *s, uint16_t lines)
++{
++    s->disconnected_pins |=3D lines;
++    trace_stm32l4x5_gpio_pins(s->name, s->disconnected_pins,
++                              s->pins_connected_high);
++    update_gpio_idr(s);
++}
++
++static void disconnected_pins_set(Object *obj, Visitor *v,
++    const char *name, void *opaque, Error **errp)
++{
++    Stm32l4x5GpioState *s =3D STM32L4X5_GPIO(obj);
++    uint16_t value;
++    if (!visit_type_uint16(v, name, &value, errp)) {
++        return;
++    }
++    disconnect_gpio_pins(s, value);
++}
++
++static void disconnected_pins_get(Object *obj, Visitor *v,
++    const char *name, void *opaque, Error **errp)
++{
++    visit_type_uint16(v, name, (uint16_t *)opaque, errp);
++}
++
++static void stm32l4x5_gpio_write(void *opaque, hwaddr addr,
++                                 uint64_t val64, unsigned int size)
++{
++    Stm32l4x5GpioState *s =3D opaque;
++
++    uint32_t value =3D val64;
++    trace_stm32l4x5_gpio_write(s->name, addr, val64);
++
++    switch (addr) {
++    case GPIO_MODER:
++        s->moder =3D value;
++        disconnect_gpio_pins(s, get_gpio_pins_to_disconnect(s));
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Analog and AF modes aren't supported\n\
++                       Analog and AF mode behave like input mode\n",
++                      __func__);
++        return;
++    case GPIO_OTYPER:
++        s->otyper =3D value & ~RESERVED_BITS_MASK;
++        disconnect_gpio_pins(s, get_gpio_pins_to_disconnect(s));
++        return;
++    case GPIO_OSPEEDR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Changing I/O output speed isn't supported\n\
++                       I/O speed is already maximal\n",
++                      __func__);
++        s->ospeedr =3D value;
++        return;
++    case GPIO_PUPDR:
++        s->pupdr =3D value;
++        update_gpio_idr(s);
++        return;
++    case GPIO_IDR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: GPIO->IDR is read-only\n",
++                      __func__);
++        return;
++    case GPIO_ODR:
++        s->odr =3D value & ~RESERVED_BITS_MASK;
++        update_gpio_idr(s);
++        return;
++    case GPIO_BSRR: {
++        uint32_t bits_to_reset =3D (value & RESERVED_BITS_MASK) >> 16;
++        uint32_t bits_to_set =3D value & ~RESERVED_BITS_MASK;
++        /* If both BSx and BRx are set, BSx has priority.*/
++        s->odr &=3D ~bits_to_reset;
++        s->odr |=3D bits_to_set;
++        update_gpio_idr(s);
++        return;
++    }
++    case GPIO_LCKR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Locking port bits configuration isn't support=
+ed\n",
++                      __func__);
++        s->lckr =3D value & ~RESERVED_BITS_MASK;
++        return;
++    case GPIO_AFRL:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Alternate functions aren't supported\n",
++                      __func__);
++        s->afrl =3D value;
++        return;
++    case GPIO_AFRH:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Alternate functions aren't supported\n",
++                      __func__);
++        s->afrh =3D value;
++        return;
++    case GPIO_BRR: {
++        uint32_t bits_to_reset =3D value & ~RESERVED_BITS_MASK;
++        s->odr &=3D ~bits_to_reset;
++        update_gpio_idr(s);
++        return;
++    }
++    case GPIO_ASCR:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: ADC function isn't supported\n",
++                      __func__);
++        s->ascr =3D value & ~RESERVED_BITS_MASK;
++        return;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, a=
+ddr);
++    }
++}
++
++static uint64_t stm32l4x5_gpio_read(void *opaque, hwaddr addr,
++                                    unsigned int size)
++{
++    Stm32l4x5GpioState *s =3D opaque;
++
++    trace_stm32l4x5_gpio_read(s->name, addr);
++
++    switch (addr) {
++    case GPIO_MODER:
++        return s->moder;
++    case GPIO_OTYPER:
++        return s->otyper;
++    case GPIO_OSPEEDR:
++        return s->ospeedr;
++    case GPIO_PUPDR:
++        return s->pupdr;
++    case GPIO_IDR:
++        return s->idr;
++    case GPIO_ODR:
++        return s->odr;
++    case GPIO_BSRR:
++        return 0;
++    case GPIO_LCKR:
++        return s->lckr;
++    case GPIO_AFRL:
++        return s->afrl;
++    case GPIO_AFRH:
++        return s->afrh;
++    case GPIO_BRR:
++        return 0;
++    case GPIO_ASCR:
++        return s->ascr;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, a=
+ddr);
++        return 0;
++    }
++}
++
++static const MemoryRegionOps stm32l4x5_gpio_ops =3D {
++    .read =3D stm32l4x5_gpio_read,
++    .write =3D stm32l4x5_gpio_write,
++    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .impl =3D {
++        .min_access_size =3D 4,
++        .max_access_size =3D 4,
++        .unaligned =3D false,
++    },
++    .valid =3D {
++        .min_access_size =3D 4,
++        .max_access_size =3D 4,
++        .unaligned =3D false,
++    },
++};
++
++static void stm32l4x5_gpio_init(Object *obj)
++{
++    Stm32l4x5GpioState *s =3D STM32L4X5_GPIO(obj);
++
++    memory_region_init_io(&s->mmio, obj, &stm32l4x5_gpio_ops, s,
++                          TYPE_STM32L4X5_GPIO, 0x400);
++
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++
++    qdev_init_gpio_out(DEVICE(obj), s->pin, GPIO_NUM_PINS);
++    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_gpio_set, GPIO_NUM_PINS);
++
++    s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
++}
++
++static void stm32l4x5_gpio_realize(DeviceState *dev, Error **errp)
++{
++    Stm32l4x5GpioState *s =3D STM32L4X5_GPIO(dev);
++    if (!clock_has_source(s->clk)) {
++        error_setg(errp, "GPIO: clk input must be connected");
++        return;
++    }
++}
++
++static const VMStateDescription vmstate_stm32l4x5_gpio =3D {
++    .name =3D TYPE_STM32L4X5_GPIO,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]){
++        VMSTATE_UINT32(moder, Stm32l4x5GpioState),
++        VMSTATE_UINT32(otyper, Stm32l4x5GpioState),
++        VMSTATE_UINT32(ospeedr, Stm32l4x5GpioState),
++        VMSTATE_UINT32(pupdr, Stm32l4x5GpioState),
++        VMSTATE_UINT32(idr, Stm32l4x5GpioState),
++        VMSTATE_UINT32(odr, Stm32l4x5GpioState),
++        VMSTATE_UINT32(lckr, Stm32l4x5GpioState),
++        VMSTATE_UINT32(afrl, Stm32l4x5GpioState),
++        VMSTATE_UINT32(afrh, Stm32l4x5GpioState),
++        VMSTATE_UINT32(ascr, Stm32l4x5GpioState),
++        VMSTATE_UINT16(disconnected_pins, Stm32l4x5GpioState),
++        VMSTATE_UINT16(pins_connected_high, Stm32l4x5GpioState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static Property stm32l4x5_gpio_properties[] =3D {
++    DEFINE_PROP_STRING("name", Stm32l4x5GpioState, name),
++    DEFINE_PROP_UINT32("mode-reset", Stm32l4x5GpioState, moder, 0),
++    DEFINE_PROP_UINT32("ospeed-reset", Stm32l4x5GpioState, ospeedr, 0),
++    DEFINE_PROP_UINT32("pupd-reset", Stm32l4x5GpioState, pupdr, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void stm32l4x5_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++
++    device_class_set_props(dc, stm32l4x5_gpio_properties);
++    dc->vmsd =3D &vmstate_stm32l4x5_gpio;
++    dc->realize =3D stm32l4x5_gpio_realize;
++    rc->phases.hold =3D stm32l4x5_gpio_reset_hold;
++}
++
++static const TypeInfo stm32l4x5_gpio_types[] =3D {
++    {
++        .name =3D TYPE_STM32L4X5_GPIO,
++        .parent =3D TYPE_SYS_BUS_DEVICE,
++        .instance_size =3D sizeof(Stm32l4x5GpioState),
++        .instance_init =3D stm32l4x5_gpio_init,
++        .class_init =3D stm32l4x5_gpio_class_init,
++    },
++};
++
++DEFINE_TYPES(stm32l4x5_gpio_types)
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index 9736b362ac..9331f4289d 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -31,3 +31,9 @@ sifive_gpio_update_output_irq(int64_t line, int64_t val=
+ue) "line %" PRIi64 " val
+ # aspeed_gpio.c
+ aspeed_gpio_read(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 "=
+ value 0x%" PRIx64
+ aspeed_gpio_write(uint64_t offset, uint64_t value) "offset: 0x%" PRIx64 =
+" value 0x%" PRIx64
++
++# stm32l4x5_gpio.c
++stm32l4x5_gpio_read(char *gpio, uint64_t addr) "GPIO%s addr: 0x%" PRIx64=
+ " "
++stm32l4x5_gpio_write(char *gpio, uint64_t addr, uint64_t data) "GPIO%s a=
+ddr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
++stm32l4x5_gpio_update_idr(char *gpio, uint32_t old_idr, uint32_t new_idr=
+) "GPIO%s from: 0x%x to: 0x%x"
++stm32l4x5_gpio_pins(char *gpio, uint16_t disconnected, uint16_t high) "G=
+PIO%s disconnected pins: 0x%x levels: 0x%x"
+diff --git a/include/hw/gpio/stm32l4x5_gpio.h b/include/hw/gpio/stm32l4x5=
+_gpio.h
+new file mode 100644
+index 0000000000..fc2f0d55eb
+--- /dev/null
++++ b/include/hw/gpio/stm32l4x5_gpio.h
+@@ -0,0 +1,65 @@
++/*
++ * STM32L4x5 GPIO (General Purpose Input/Ouput)
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
++
++/*
++ * The reference used is the STMicroElectronics RM0351 Reference manual
++ * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
++ * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
++ */
++
++#ifndef HW_STM32L4X5_GPIO_H
++#define HW_STM32L4X5_GPIO_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_STM32L4X5_GPIO "stm32l4x5-gpio"
++OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5GpioState, STM32L4X5_GPIO)
++
++#define GPIO_NUM_PINS 16
++
++struct Stm32l4x5GpioState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion mmio;
++
++    /* GPIO registers */
++    uint32_t moder;
++    uint32_t otyper;
++    uint32_t ospeedr;
++    uint32_t pupdr;
++    uint32_t idr;
++    uint32_t odr;
++    uint32_t lckr;
++    uint32_t afrl;
++    uint32_t afrh;
++    uint32_t ascr;
++
++    /*
++     * External driving of pins.
++     * The pins can be set externally through the device
++     * anonymous input GPIOs lines under certain conditions.
++     * The pin must not be in push-pull output mode,
++     * and can't be set high in open-drain mode.
++     * Pins driven externally and configured to
++     * output mode will in general be "disconnected"
++     * (see `get_gpio_pins_to_disconnect()`)
++     */
++    uint16_t disconnected_pins;
++    uint16_t pins_connected_high;
++
++    char *name;
++    Clock *clk;
++    qemu_irq pin[GPIO_NUM_PINS];
++};
++
++#endif
+--=20
+2.43.0
 

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bh11-20020a05600c3d0b00b0040eabc7cfacsm5209276wmb.16.2024.01.22.07.43.55
+        by smtp.gmail.com with ESMTPSA id b17-20020a5d4d91000000b0033935b0a0fdsm3534040wru.44.2024.01.22.07.54.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jan 2024 07:43:55 -0800 (PST)
+        Mon, 22 Jan 2024 07:54:32 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 502AC5F7AE;
-	Mon, 22 Jan 2024 15:43:55 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 7F1B25F794;
+	Mon, 22 Jan 2024 15:54:32 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Ilya Leoshkevich <iii@linux.ibm.com>
 Cc: Richard Henderson <richard.henderson@linaro.org>,  Peter Maydell
@@ -19,12 +19,12 @@ In-Reply-To: <20240116003551.75168-4-iii@linux.ibm.com> (Ilya Leoshkevich's
 References: <20240116003551.75168-1-iii@linux.ibm.com>
 	<20240116003551.75168-4-iii@linux.ibm.com>
 User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Mon, 22 Jan 2024 15:43:55 +0000
-Message-ID: <877ck1nzk4.fsf@draig.linaro.org>
+Date: Mon, 22 Jan 2024 15:54:32 +0000
+Message-ID: <871qa9nz2f.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1K2o4jYwKXYT
+X-TUID: AuiRjYopkImN
 
 Ilya Leoshkevich <iii@linux.ibm.com> writes:
 
@@ -32,30 +32,6 @@ Ilya Leoshkevich <iii@linux.ibm.com> writes:
 > writing to PROT_NONE pages.
 >
 > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-
-Hmm I'm seeing the test hang and drop to the interactive python shell:
-
-    TEST    basic gdbstub support on aarch64
-  Failed to read a valid object file image from memory.
-  qemu-aarch64: QEMU: Terminated via GDBstub
-    TEST    basic gdbstub qXfer:auxv:read support on aarch64
-  Failed to read a valid object file image from memory.
-  qemu-aarch64: QEMU: Terminated via GDBstub
-    TEST    proc mappings support on aarch64
-  Failed to read a valid object file image from memory.
-  qemu-aarch64: QEMU: Terminated via GDBstub
-    TEST    hitting a breakpoint on non-main thread on aarch64
-  Failed to read a valid object file image from memory.
-  qemu-aarch64: QEMU: Terminated via GDBstub
-    TEST    checking register enumeration on aarch64
-  Failed to read a valid object file image from memory.
-  qemu-aarch64: QEMU: Terminated via GDBstub
-    TEST    accessing PROT_NONE memory on aarch64
-  Failed to read a valid object file image from memory.
-  Python 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0] on linux
-  Type "help", "copyright", "credits" or "license" for more information.
-  (InteractiveConsole)
-
 > ---
 >  tests/tcg/multiarch/Makefile.target      |  9 +++++-
 >  tests/tcg/multiarch/gdbstub/prot-none.py | 22 +++++++++++++
@@ -113,6 +89,26 @@ ch/gdbstub/prot-none.py
 > +    gdb.Breakpoint("break_here")
 > +    gdb.execute("continue")
 > +    val =3D gdb.parse_and_eval("*(char[2] *)q").string()
+
+Better traceback:
+
+  Breakpoint 1, break_here (q=3D0x400000802fff) at /home/alex/lsrc/qemu.git=
+/tests/tcg/multiarch/prot-none.c:14
+  14      }
+  GDB Exception:
+  Traceback (most recent call last):
+    File "/home/alex/lsrc/qemu.git/tests/guest-debug/test_gdbstub.py", line=
+ 42, in main
+      test()
+    File "./tests/tcg/multiarch/gdbstub/prot-none.py", line 14, in run_test
+      val =3D gdb.parse_and_eval("*(char[2] *)q").string()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  gdb.MemoryError: Cannot access memory at address 0x400000802fff
+  Python 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0] on linux
+  Type "help", "copyright", "credits" or "license" for more information.
+  (InteractiveConsole)
+  >>>=20
+
 > +    report(val =3D=3D "42", "{} =3D=3D 42".format(val))
 > +    gdb.execute("set *(char[3] *)q =3D \"24\"")
 > +    gdb.execute("continue")

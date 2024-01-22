@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2741797ejg;
-        Mon, 22 Jan 2024 13:08:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFAuUKEBSZaBBmKxKBLRKXSvu/+rZp/I90Gg8So5ggw56/q+hP/vRTJI+fnnF93Au1SOtuk
-X-Received: by 2002:a05:6358:3413:b0:175:d09d:6fd7 with SMTP id h19-20020a056358341300b00175d09d6fd7mr4502257rwd.43.1705957721164;
-        Mon, 22 Jan 2024 13:08:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705957721; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2752213ejg;
+        Mon, 22 Jan 2024 13:31:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGD092kbYJyeRbg28JtELLWEUjre6KefqJsxCZo0UZSHwRy142zHkV88F0o10IA4pFt9fDL
+X-Received: by 2002:a05:6e02:60c:b0:360:b551:bb8f with SMTP id t12-20020a056e02060c00b00360b551bb8fmr3765525ils.101.1705959075058;
+        Mon, 22 Jan 2024 13:31:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705959075; cv=none;
         d=google.com; s=arc-20160816;
-        b=IYyYX3pcvAHTCxDjmQSKO1crgBOYA7yNCb6fs0fcxgsoD4hMWEoDZfV7FN9unlmLdF
-         ROzohCciWMVhg5VrunAjEX3nNRGZXexZcwVkccy4Z7z3VnrACt6x2u+pHVmXM5tJ8H/X
-         N5eLEcMLqbcg9CLC06Ctq8NAD9gM748EeRum4O/OVHeg4dwdwm3nONv/SDPoST7OmHPQ
-         E7vIcseTlxz5r+pYzJI8uq9XPGQj5oRfrdqgwztoRFdwT0VyepvP/4qnvfnjnNnHDrCj
-         dVe5OPp/jOmPT4ufblxvKTUaCc5xc1HqSZ4lGVG3MplnMW8cTaG0dH915XGP/89jjrBh
-         2jLQ==
+        b=YxuKxJE8s4a3EITO7hfmKy0VLzgXxl1W5aRZfQXyBeSuV9etInEckwMT26M3R4L4NY
+         peJLawEQ1/VE9VnKjAP/l9BHbdViK/EgxCDNOUO9FI/aPbu0GvUlYjpGKTahRpuZXzdS
+         RZPgt3aWq/XRQvdwUK6vP65/5mtyi+qPodKJaZ+HY6xtWR+CbSMk/9NywLbzIEfZ/Fxb
+         TWSRwOk+KAwVX2UL9D5rZxMuqpK0LNDNnRaU5L8BKj3aWDb9b5x4SVbSh2v2I6CEUzCM
+         OW6fWG4xTHlJz1zVYVwLd6WI4ma/pKRapKcliUXQOzyvMxY86VRdadNbCfA4kXBZCQCR
+         azlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=W0QYU9EiatvYhqqkdNwRTy7IOqvo40s0QzAx49GDfCo=;
+        bh=AzxswaSdptTEDo3W/yeo/M3ux5cfnS0/KQDqILVGnrI=;
         fh=hBsDdU2J2vnqH761c116v7xc2dp10Isn09am3SZ9h54=;
-        b=D1rn2zULgK8A5aj8C2Bkuytoy9xJTJv7vKOZcUhCjMnN/LrstNpQsp2wfG4hzEyF63
-         JClwInydRrtsesjqRIIh0zYd54r7Odb12I74IuXJN7fwlBcyDsjSyXLTffpcmki1fl9W
-         unTlyjPbAbgi47Xc7P6Jdt8WiTk9cW1hVq3erXWF47aDrPYnK72tScz2JkSDlCN5RYtf
-         9E+wgWanpzwVtlVoKr2LgxvrdPE66a6E6JTnn0fLndlaXSEVoq4EStk4mGk8bi87cf7O
-         klf7yZmMhRXyld1IUoRtMcxdb0/u59+NvA1eMMuMJ1jIKWTQMfuLcpZqxnt02jnt8/9d
-         wFrg==
+        b=ISsj9Ofo+yA0kzwwUvZEVQ0xp4EYoZfCOWXdCyqZTYotKIm9wp3tPNbdufsVtApy9L
+         vbNrAE7hHaQO2fGfXfkXry63X5uLvcdGal1rJVRYmuhWpTnzSCXuD29G8lgizIbdQH8o
+         ZjLkvJ0lom+XUHvsWI2s35Q1uLEP5loVbWmsXBy5nNWu50ZQ88rkPdihKpvdpkuMZO6p
+         3fbvw9klNLIGDtl5UEGZwL50lZPoizneU1THAgmDB4690T0WY+Sj6OWt7JCu4ZucFNSE
+         U2p+0WEiQ9un/R1IgupOgL1u9EHOTDULyRX4/AeOEZ7dGE1s/kTCd/RNUZUy7tp+viUB
+         z0Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Ahhmt1Qr;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kbLDMKTK;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id z207-20020a814cd8000000b005ff8c880addsi410014ywa.428.2024.01.22.13.08.40
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id bx37-20020a056a02052500b005ce030e060esi8658372pgb.859.2024.01.22.13.31.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Jan 2024 13:08:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+        Mon, 22 Jan 2024 13:31:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Ahhmt1Qr;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kbLDMKTK;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40MKXfpV000551;
-	Mon, 22 Jan 2024 21:08:40 GMT
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40MLMIDW015660;
+	Mon, 22 Jan 2024 21:31:14 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
  subject : message-id : references : mime-version : content-type :
  content-transfer-encoding : in-reply-to; s=pp1;
- bh=W0QYU9EiatvYhqqkdNwRTy7IOqvo40s0QzAx49GDfCo=;
- b=Ahhmt1Qro0ZE4BitOxu1XL9Wtm+ynIOfhV8GHiMJXzVas6YGRSuERbhcJmV4gXnQCAnz
- Y1/KZP10T/ZkCcjVbMPSp/Kndw876qcPdtng/PcaLfexnaVLR0gwfXtywCh2UBWdPuMA
- SrSUygwytqZDaOrb8fk9xm+9UAlB+h9r5t+x34Kg3PRA2SyaxSFqI0E4yQj7/GGluEbO
- D5n0TW0qgy1ly/wRsWV7pnMLSuLTbdraELOJqh2wKmkFwDOeHCsr9OBf059I0jO5qGAK
- RE7TqtrR+oePbDn0RlxfQbdNY3Z0FH9KjVf64xViMi16hMSit9iKQjpYhZYUFtbl+pNa tw== 
+ bh=AzxswaSdptTEDo3W/yeo/M3ux5cfnS0/KQDqILVGnrI=;
+ b=kbLDMKTKHl+ucFtFGHsOz6UAeOkWVRmRL+Dd6zLT27twTnewkIy/yUrESw4BM13/Pcmn
+ uV5EUJwyUp0dfyW9Yxy2440Mny4KaZ3nermV/93euX2Z2UphijYlB8x3tO4QXuCZ6anW
+ D8EMBvz+q3uSn1nUNSDORmrUaAsQVcT0oCAk+pcBulFRhvrdfrBXZGpMmv2nYxB7BUFG
+ igzbDEh/nu/jw8/exccfhwh6+9DUYROYysfVyKKin12Wc5wsr3KVgy1uCSIYTJvQxyXs
+ g746ebQUrL/NV6FzMlAp0ycXPIAijapMo/kgjNDkzTA14ajsYLINV2plcoz6It4icrLO QQ== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vsygh0rks-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vt07br6u0-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 22 Jan 2024 21:08:40 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40ML38D9000637;
-	Mon, 22 Jan 2024 21:08:39 GMT
+	Mon, 22 Jan 2024 21:31:13 +0000
+Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40MLNlHO019070;
+	Mon, 22 Jan 2024 21:31:13 GMT
 Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vsygh0rkj-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vt07br6t5-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 22 Jan 2024 21:08:39 +0000
+	Mon, 22 Jan 2024 21:31:13 +0000
 Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40MKGQSD025277;
-	Mon, 22 Jan 2024 21:08:38 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
-	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vrtqk2s21-1
+	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40MKbVj3025285;
+	Mon, 22 Jan 2024 21:31:12 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vrtqk2vbx-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 22 Jan 2024 21:08:38 +0000
-Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com [10.20.54.103])
-	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40ML8bX666060604
+	Mon, 22 Jan 2024 21:31:12 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40MLVAdb4391674
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 22 Jan 2024 21:08:37 GMT
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0565C20040;
-	Mon, 22 Jan 2024 21:08:37 +0000 (GMT)
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 7942020043;
-	Mon, 22 Jan 2024 21:08:36 +0000 (GMT)
+	Mon, 22 Jan 2024 21:31:10 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id A1F6720043;
+	Mon, 22 Jan 2024 21:31:10 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0B3A420040;
+	Mon, 22 Jan 2024 21:31:10 +0000 (GMT)
 Received: from heavy (unknown [9.171.83.169])
-	by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTPS;
-	Mon, 22 Jan 2024 21:08:36 +0000 (GMT)
-Date: Mon, 22 Jan 2024 22:08:35 +0100
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTPS;
+	Mon, 22 Jan 2024 21:31:09 +0000 (GMT)
+Date: Mon, 22 Jan 2024 22:31:08 +0100
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -89,76 +89,72 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: Re: [PATCH v3 2/3] tests/tcg: Factor out gdbstub test functions
-Message-ID: <c3ve2aclqw7dbtubjxrwpu6tlfjdufqncgy4xiqesgs24jw2cd@uda3e7rgdpt2>
+Subject: Re: Re: [PATCH v3 3/3] tests/tcg: Add the PROT_NONE gdbstub test
+Message-ID: <aybsdiscvgcl5kici5lfupjtykvkyw4u5g3bdncmv3wufzwgou@r42zm6labldl>
 References: <20240116003551.75168-1-iii@linux.ibm.com>
- <20240116003551.75168-3-iii@linux.ibm.com>
- <87v87lmk7n.fsf@draig.linaro.org>
+ <20240116003551.75168-4-iii@linux.ibm.com>
+ <871qa9nz2f.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87v87lmk7n.fsf@draig.linaro.org>
+In-Reply-To: <871qa9nz2f.fsf@draig.linaro.org>
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: aFlWd8vN7Gl84hL8T08kf7lK_xriWneu
-X-Proofpoint-ORIG-GUID: RAJcDYFT93bx_ou0OtERhDr_NunOENhW
+X-Proofpoint-ORIG-GUID: BMm8EY_NhMZmPDb7Hi_Qi4ULDrIGUr3A
+X-Proofpoint-GUID: PprifhZw7RSfvShFWoNL6acTRzb0NnqZ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-22_09,2024-01-22_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 bulkscore=0
- lowpriorityscore=0 spamscore=0 clxscore=1015 malwarescore=0 suspectscore=0
- mlxlogscore=923 priorityscore=1501 adultscore=0 phishscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2311290000
- definitions=main-2401220150
-X-TUID: rphfr9KN9+WW
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 impostorscore=0
+ mlxscore=0 lowpriorityscore=0 suspectscore=0 adultscore=0 phishscore=0
+ spamscore=0 priorityscore=1501 mlxlogscore=934 malwarescore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401220152
+X-TUID: SOyAUDxI21vz
 
-On Mon, Jan 22, 2024 at 04:00:44PM +0000, Alex Bennée wrote:
+On Mon, Jan 22, 2024 at 03:54:32PM +0000, Alex Bennée wrote:
 > Ilya Leoshkevich <iii@linux.ibm.com> writes:
 > 
-> > Both the report() function as well as the initial gdbstub test sequence
-> > are copy-pasted into ~10 files with slight modifications. This
-> > indicates that they are indeed generic, so factor them out. While
-> > at it, add a few newlines to make the formatting closer to PEP-8.
+> > Make sure that qemu gdbstub, like gdbserver, allows reading from and
+> > writing to PROT_NONE pages.
 > >
 > > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 > > ---
-> >  tests/guest-debug/run-test.py                 |  7 ++-
-> >  tests/guest-debug/test_gdbstub.py             | 58 +++++++++++++++++++
-> >  tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +----------
-> >  tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +----------
-> >  tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++-------------
-> >  tests/tcg/multiarch/gdbstub/memory.py         | 41 +------------
-> >  tests/tcg/multiarch/gdbstub/registers.py      | 41 ++-----------
-> >  tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++-----------
-> >  .../multiarch/gdbstub/test-proc-mappings.py   | 39 +------------
-> >  .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +-----------
-> >  .../gdbstub/test-thread-breakpoint.py         | 37 +-----------
-> >  tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +-------------
-> >  tests/tcg/s390x/gdbstub/test-svc.py           | 39 +------------
-> >  13 files changed, 98 insertions(+), 397 deletions(-)
-> >  create mode 100644 tests/guest-debug/test_gdbstub.py
+> >  tests/tcg/multiarch/Makefile.target      |  9 +++++-
+> >  tests/tcg/multiarch/gdbstub/prot-none.py | 22 +++++++++++++
+> >  tests/tcg/multiarch/prot-none.c          | 40 ++++++++++++++++++++++++
+> >  3 files changed, 70 insertions(+), 1 deletion(-)
+> >  create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
+> >  create mode 100644 tests/tcg/multiarch/prot-none.c
 
 [...]
 
-> > +    if gdb.parse_and_eval("$pc") == 0:
-> > +        print("SKIP: PC not set")
-> > +        exit(0)
-> > +
-> > +    try:
-> > +        test()
-> > +    except:
-> > +        print("GDB Exception:")
-> > +        traceback.print_exc(file=sys.stdout)
-> > +        global fail_count
-> > +        fail_count += 1
-> > +        import code
-> > +        code.InteractiveConsole(locals=globals()).interact()
-> > +        raise
+> > +def run_test():
+> > +    """Run through the tests one by one"""
+> > +    gdb.Breakpoint("break_here")
+> > +    gdb.execute("continue")
+> > +    val = gdb.parse_and_eval("*(char[2] *)q").string()
 > 
-> While I can see this is useful we don't want to default to an
-> interactive console as that will hang the test in CI type setups. Can we
-> make this a option we enable?
+> Better traceback:
+> 
+>   Breakpoint 1, break_here (q=0x400000802fff) at /home/alex/lsrc/qemu.git/tests/tcg/multiarch/prot-none.c:14
+>   14      }
+>   GDB Exception:
+>   Traceback (most recent call last):
+>     File "/home/alex/lsrc/qemu.git/tests/guest-debug/test_gdbstub.py", line 42, in main
+>       test()
+>     File "./tests/tcg/multiarch/gdbstub/prot-none.py", line 14, in run_test
+>       val = gdb.parse_and_eval("*(char[2] *)q").string()
+>             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>   gdb.MemoryError: Cannot access memory at address 0x400000802fff
+>   Python 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0] on linux
+>   Type "help", "copyright", "credits" or "license" for more information.
+>   (InteractiveConsole)
+>   >>> 
 
-Would something like `export QEMU_TEST_INTERACTIVE=1` be okay?
+Thanks for the debug output. This shows that the feature being tested
+doesn't work (the value of `q` looks sane to me). May I ask what host
+distro is this? I tried on x86_64 Fedora 38 and x86_64 Ubuntu 22.04 so
+far, and the test was successful.
 
 [...]

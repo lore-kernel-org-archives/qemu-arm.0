@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2429944ejg;
-        Mon, 22 Jan 2024 03:33:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGzIAz3WrFzJctPY5r15d5Uf/RBZDK7KDFRpWEOGBPhl42jmzUL5FpCfqmRpjQUdHOvvpW5
-X-Received: by 2002:a05:6808:2f1b:b0:3bd:1fdc:eeaa with SMTP id gu27-20020a0568082f1b00b003bd1fdceeaamr7463253oib.55.1705923182073;
-        Mon, 22 Jan 2024 03:33:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705923182; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2432148ejg;
+        Mon, 22 Jan 2024 03:38:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGkjPA4ZuRqZSL7asAX34SxLLqxP7xhZ4Wczk6Ukn7LLIGyoXUP4nIau2KK4066lUqmnXmr
+X-Received: by 2002:a05:6214:e69:b0:681:132e:6e3a with SMTP id jz9-20020a0562140e6900b00681132e6e3amr6246149qvb.3.1705923485884;
+        Mon, 22 Jan 2024 03:38:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705923485; cv=none;
         d=google.com; s=arc-20160816;
-        b=xYWqfRArSRHOFk5EUYFoATQ65qFjncXOAR9/H7+SPcYYRk3pXFhTkK4pEfpEQ4ITcZ
-         tW73wJzwaZ+lA34KhLBpXlj/+G4fszRtaK+Bn+3gJC2/b/7d28nyfUlt9zDLiTjKmBek
-         D686V49m9tfxNSTzG5qT1q10V4rBtZ0gejqI8BBs+pWnmgIbSIk6qtAGTdZRIKRY8t3P
-         EWx0mhN44fDJVsPTyYvcgr5OIo19LYAMnOUOI2obJCh0Un95hUV/lsU/Qu/Tl15WqJ/l
-         6D1HFxwpjY8tvFYaVhYkw/uRyHSHvTctBSG3O5JviJij4CItJbe7EoBWlt45Dp3YWXVz
-         cJwA==
+        b=or1MkUengrVfIV6bsyq+hxZYQcgWzttKuelkVp+5Otvs4iEXp/tvpmWhHVkgU0jDnD
+         x4LZMKRkS+JZ8SeURNiHQZyN0jxFK1cwByjvaAewI3t+NWGW/0NqJXKDjcsqasio3498
+         vTjAxPcq+UQdScAH8bnP2Z5Jfw0sa3JD87eqdeV+93cF72QUzD3qrTDvhArUqpm+hgFM
+         QDzkqdna/2ybLes7yuiA+z6F4MXBVF+xV5ad0Rv2mykOJYmF+VzG87wXtPwFF+Ujj7qv
+         1VtS2Mnh5EgRc+d06QX4mMMpRZoUbcL1MVe7myhmcHJB8XTUaBSW3tFWDmZLx4wjunam
+         Fdig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Spj1DEQ3yDjTcC3IiWC7nEQw5VCoZYJNLSP2vwP4t8U=;
-        fh=Z3N10gw6mJnMT3ieT6+4ImP8OKl+uYykn1JJpSPdLyQ=;
-        b=n+nl1ySKpu5hCTUeadqs0FUn+g4/QIbB0YesZA+9qO6WaoXp+5o30Xl1c5S7RzX45z
-         QdfLkDaLBkTPq/bNXaMniB0COcjQEyhGo022Ys71oNuhFaf/7I8wWTCOhhBORiT1ol6f
-         wInuMzYTgy4B55j99h6cbZwVTvKKZC/YLTq+TfD0hQqgM3sMgrRyxpx2sERd91rA+rEf
-         rXlemTTk01hBghx4bVrD8QWNu2EqCnBdERlQCKY3Fdk8AvGUWGU1U8Y+aT9Y0AMbkjnL
-         /UzXdZO1L1qj8t8L1X0fMAkZieGGed45tGsUP9gZyqMec3wk5clS5UGchN/Gci2bNOBO
-         tKWg==
+        bh=SVJfVQ2y2FtsZNCREqkky2ma7FevhYRPbqBBi8ZQPAc=;
+        fh=QVOZFun91YkhANM8ONlHWmmPBJsstB3xY2OFcJVN7SU=;
+        b=JCL+pb8wGAbHQRPPgngVIbupjpECy0Mj1mHcwHLELjR/HUcF9GiPalB1h88gg/RZRz
+         UxN6p5OWnn0y/ATK38umf1HsJM8ljP/wBImFGWZSIzVDq1lNc/oI87oOJlgfSGT4MkOp
+         QbfY0P23nIDhS5zInz/jzT3+8CLDq6sghHZ5987H8/7KY2OhcMC4tB6VLTI8p5yMIbnV
+         sScmXvLFQnv/bRwr5+wruVtMFsraUcLOl2NHOhIY1DWwZaRCzSqfOb72LjTpiu0ieBsb
+         DOjZWMh55j22mpYApvgmj9woNTWucKLqMOw0+lR6e+YuPHlnXisoTDMokGbF07oIjL10
+         TUbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O5RBX/ET";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PNWsiR1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2-20020ac85c02000000b0042a2f5563a2si5209911qti.466.2024.01.22.03.33.01
+        by mx.google.com with ESMTPS id h1-20020a0cf201000000b0067f2c23a115si5369213qvk.163.2024.01.22.03.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jan 2024 03:33:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jan 2024 03:38:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O5RBX/ET";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PNWsiR1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rRsXh-0008P4-CK; Mon, 22 Jan 2024 06:32:41 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rRsce-00015L-C0; Mon, 22 Jan 2024 06:37:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rRsXe-0008Ob-Oc
- for qemu-arm@nongnu.org; Mon, 22 Jan 2024 06:32:38 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rRscc-00014T-CW
+ for qemu-devel@nongnu.org; Mon, 22 Jan 2024 06:37:46 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rRsXc-0001cW-SZ
- for qemu-arm@nongnu.org; Mon, 22 Jan 2024 06:32:38 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-339208f5105so2644922f8f.1
- for <qemu-arm@nongnu.org>; Mon, 22 Jan 2024 03:32:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rRsca-0002yO-Ef
+ for qemu-devel@nongnu.org; Mon, 22 Jan 2024 06:37:46 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-337d58942c9so3306546f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 22 Jan 2024 03:37:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705923155; x=1706527955; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705923462; x=1706528262; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Spj1DEQ3yDjTcC3IiWC7nEQw5VCoZYJNLSP2vwP4t8U=;
- b=O5RBX/ETcKylqELG5zgoyrDWzvpmzIEbh6ABM8wQ7NKHLtRqOOR/jWfBA9FQxGHAIb
- +Bf7V8FYPYYyXWQMcXVTYp2jpuUbM5WX4wK6Kyo12rwv2CHeVv4JJYtgBhrHXvo3HwFO
- LtJQRMK2GXXzVIpUTLDaA3xTWTZqkqND4U5X75572/Ll6BPDLqjlnh0ItKWtMILhpksj
- XdqX1XVQTFT6UIoa1bYicNOHZWoqIFNyLJlLRWTKHvhaeis3kIwvSwBKE/tl9DshawXw
- WEA0Mo2mAN1KGeb37tRx2rlAvrVABML77uXAY+JbfQ3yk8S4mpxUIvFIqowY2CkLHGMo
- Ymcg==
+ bh=SVJfVQ2y2FtsZNCREqkky2ma7FevhYRPbqBBi8ZQPAc=;
+ b=PNWsiR1extONPhaNP9WSRYpR9MyWLaZ6DxAq/1rALXtg5Y62+LFAfx9mOHvBG23YJr
+ r0bpgC0kXN50zoPE3jOvpeLEtATJU+MYiMz07jetpn6bnAmug8NddrG+THul9w8xttXM
+ 4Wz+8lBH7MtAi22dAEBx7kDsUkHtHC77IACyArh40yMJFB1SN65VPnMc3Yla/6SDPsqr
+ tB+nDhU4H8AynWg2bfOPxEjU2ZcPCPfLwQuciJ9V+csyVg6Izum9XG7M4YYtULHSZxG1
+ 3okW1rJwGItz86Hc57vjMFYrRj8imSSWYEV5tgP2aqCSe38nG4gJqRyO9DsIu+2XgssM
+ 30jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705923155; x=1706527955;
+ d=1e100.net; s=20230601; t=1705923462; x=1706528262;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Spj1DEQ3yDjTcC3IiWC7nEQw5VCoZYJNLSP2vwP4t8U=;
- b=TjDGIiWvo0lDumkKz3DwLjO+LyErkvltAg2Y51rQiV+V66XE/a+UKVZfa4qZWaZBK4
- 7OOVFP4jSV6mtIAqBUeWWWkCgCHk+NoxkWs9ui24kev13ySKK9n946Gt7qqVxRmfbcoj
- Q8yy3gsyb19B7P4cugqUq9pG5e5yEPAkKKhnrk6lc2vr39GYPd5Z4SV4F507CCrswxMl
- J0RKGc0adNJx+LGE025ntDy3/K+IOsnmQEAHurZm45Q+b1z+D9+LKXx0c8/bcT9BgEmT
- +B1BJIVCJVuYvDowRGWqL0VNw0fN48jppaqo/KqL2416j6ecR+14UZTenvfRGCr4npR0
- qIpA==
-X-Gm-Message-State: AOJu0Yy3JIgvrj2ruj2zrNbWdHc8CYGENEBToPCt0lGjxaNz/ih8G3qz
- p5phuj47eimq6iBWM3zpq7iNvi68dvn07BvxnoN3CXY6bF7ft+22OExqBphiEYA=
-X-Received: by 2002:a5d:6186:0:b0:337:c700:460e with SMTP id
- j6-20020a5d6186000000b00337c700460emr1556519wru.160.1705923154983; 
- Mon, 22 Jan 2024 03:32:34 -0800 (PST)
+ bh=SVJfVQ2y2FtsZNCREqkky2ma7FevhYRPbqBBi8ZQPAc=;
+ b=VnJ/BuntkWRa94pJhb+hNRiZjU3TeJQE/4T7T8FSLQCv6xB+M8RBWMql04wtt+x3hJ
+ rRo6Oye8/E6VftQDWEWTcBKcu1veZotFY1leVSnsqFpR+gAidhWzwqsD7EibMX9Y1wlx
+ uFqFsLMH7qwlG3+XTbz/ggvd3uMa0wYrLhPtrCFik9t/nJwhhSCWFFyHQhQiI1Ym0Znw
+ azy5C+OxEc5XJwAv7IpuABx3G98xvMSbVrzfVRWl8azE6gidFi6Ovbcfy4Fgzyp4ItZl
+ 51vCuRcNkNuM84TiXp+8+N7hkP/m72pktgzAdsrYBrWuvwwYQLanuKt5CiJB1+7CuCXj
+ 5Gzg==
+X-Gm-Message-State: AOJu0YweMFESToC+pCDOTVqHR8FqGbg2apfAKXrYKg4zeHP0rrZEc7rG
+ 1rnVZwGU68oMDFbs4ieWUuC5z0b9GHUecVar3A+hiOIed1k/rQMHOzNHA53NGHA=
+X-Received: by 2002:a05:600c:314e:b0:40e:4ab8:639a with SMTP id
+ h14-20020a05600c314e00b0040e4ab8639amr2478165wmo.246.1705923462153; 
+ Mon, 22 Jan 2024 03:37:42 -0800 (PST)
 Received: from [192.168.149.175] ([92.88.171.62])
  by smtp.gmail.com with ESMTPSA id
- y3-20020adfee03000000b003368c8d120fsm13662931wrn.7.2024.01.22.03.32.33
+ p10-20020a05600c358a00b0040e559e0ba7sm42463804wmq.26.2024.01.22.03.37.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Jan 2024 03:32:34 -0800 (PST)
-Message-ID: <3f2bbcb1-9552-46e1-8bd9-de3e626d0de6@linaro.org>
-Date: Mon, 22 Jan 2024 12:32:32 +0100
+ Mon, 22 Jan 2024 03:37:41 -0800 (PST)
+Message-ID: <8ba545d4-0a8d-4a8a-9e31-8b7b48b6c2e0@linaro.org>
+Date: Mon, 22 Jan 2024 12:37:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/3] hw/gpio: Implement STM32L4x5 GPIO
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
 Cc: qemu-arm@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
  Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
@@ -108,8 +108,8 @@ From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20240122092005.30556-2-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,22 +118,22 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AmFppwPxs6zM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: usZ+lm1+faiy
 
-Hello Inès,
+Hi Inès,
 
 On 22/1/24 10:18, Inès Varhol wrote:
 > Features supported :
@@ -174,141 +174,95 @@ On 22/1/24 10:18, Inès Varhol wrote:
 >   create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
 
 
-> +static void stm32l4x5_gpio_a_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xABFFFFFF;
-> +    sc->ospeedr_reset = 0x0C000000;
-> +    sc->pupdr_reset = 0x64000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_b_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFEBF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000100;
-> +}
-> +
-> +static void stm32l4x5_gpio_c_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFFFF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_d_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFFFF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_e_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFFFF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_f_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFFFF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_g_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0xFFFFFFFF;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_gpio_h_class_init(ObjectClass *klass, void *data)
-> +{
-> +    Stm32l4x5GpioClass *sc = STM32L4X5_GPIO_CLASS(klass);
-> +
-> +    sc->moder_reset = 0x0000000F;
-> +    sc->ospeedr_reset = 0x00000000;
-> +    sc->pupdr_reset = 0x00000000;
-> +}
-> +
-> +static const TypeInfo stm32l4x5_gpio_types[] = {
-> +    {
-> +        .name = TYPE_STM32L4X5_GPIO,
-> +        .parent = TYPE_SYS_BUS_DEVICE,
-> +        .instance_size = sizeof(Stm32l4x5GpioState),
-> +        .instance_init = stm32l4x5_gpio_init,
-> +        .class_size     = sizeof(Stm32l4x5GpioClass),
-> +        .class_init = stm32l4x5_gpio_class_init,
-> +        .abstract = true,
-> +    }, {
-> +        .name = TYPE_STM32L4X5_GPIO_A,
-> +        .parent = TYPE_STM32L4X5_GPIO,
-> +        .class_init = stm32l4x5_gpio_a_class_init,
-> +    }, {
-> +        .name = TYPE_STM32L4X5_GPIO_B,
-> +        .parent = TYPE_STM32L4X5_GPIO,
-> +        .class_init = stm32l4x5_gpio_b_class_init,
-> +    }, {
-> +        .name = TYPE_STM32L4X5_GPIO_C,
-> +        .parent = TYPE_STM32L4X5_GPIO,
-> +        .class_init = stm32l4x5_gpio_c_class_init,
-> +    }, {
-> +        .name = TYPE_STM32L4X5_GPIO_D,
-> +        .parent = TYPE_STM32L4X5_GPIO,
-> +        .class_init = stm32l4x5_gpio_d_class_init,
-> +    }, {
+> +#define GPIO_MODER 0x00
+> +#define GPIO_OTYPER 0x04
+> +#define GPIO_OSPEEDR 0x08
+> +#define GPIO_PUPDR 0x0C
+> +#define GPIO_IDR 0x10
+> +#define GPIO_ODR 0x14
+> +#define GPIO_BSRR 0x18
+> +#define GPIO_LCKR 0x1C
+> +#define GPIO_AFRL 0x20
+> +#define GPIO_AFRH 0x24
+> +#define GPIO_BRR 0x28
+> +#define GPIO_ASCR 0x2C
+> +/*
+> + * DISCONNECTED_PINS isn't actually a GPIO register.
+> + * It exists to ensure that :
+> + * - push-pull output pins can't be set externally
+> + * - open-drain output pins can only be externally set to 0
+> + *
+> + * This field is accessed for test purposes.
+> + */
+> +#define GPIO_DISCONNECTED_PINS 0x30
 
-My understanding is the same GPIO block is used for the STM32L4*
-family, and the reset values are specific to each SoC.
+[*]
 
-Therefore I'd keep a generic GPIO model in this file, and set the
-reset values in stm32l4x5_soc.c, likely stm32l4x5_soc_realize().
+> +static void stm32l4x5_gpio_write(void *opaque, hwaddr addr,
+> +                                 uint64_t val64, unsigned int size)
+> +{
+> +    Stm32l4x5GpioState *s = opaque;
+> +
+> +    uint32_t value = val64;
+> +    trace_stm32l4x5_gpio_write(addr, val64);
+> +
+> +    switch (addr) {
 
-Something like:
 
-static const struct {
-     uint32_t moder;
-     uint32_t ospeedr;
-     uint32_t pupdr;
-} stm32l4x5_gpio_initval[NUM_GPIOS] = {
-     { 0xABFFFFFF, 0x0C000000, 0x64000000 },
-     { 0xFFFFFEBF, 0x00000000, 0x00000100 },
-     { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-     ...
-};
+> +    /* a tweak to enable the qtest checking disconnected pins */
+> +    case GPIO_DISCONNECTED_PINS:
+> +        disconnect_gpio_pins(s, value);
+> +        return;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
+> +    }
+> +}
+> +
+> +static uint64_t stm32l4x5_gpio_read(void *opaque, hwaddr addr,
+> +                                    unsigned int size)
+> +{
+> +    Stm32l4x5GpioState *s = opaque;
+> +
+> +    trace_stm32l4x5_gpio_read(addr);
+> +
+> +    switch (addr) {
 
-   for (unsigned i = 0; i < NUM_GPIOS; i++) {
-       DeviceState *dev = DEVICE(&s->gpio[i]);
-       g_autofree char *name = g_strdup_printf("%c", 'A' + i);
 
-       qdev_prop_set_string(dev, "name", name);
-       qdev_prop_set_uint32(dev, "mode-reset",
-                            stm32l4x5_gpio_initval[i].moder);
-       qdev_prop_set_uint32(dev, "ospeed-reset",
-                            stm32l4x5_gpio_initval[i].ospeedr);
-       qdev_prop_set_uint32(dev, "pupd-reset",
-                            stm32l4x5_gpio_initval[i].pupdr);
-       ...
-   }
+> +    /* a tweak to enable the qtest checking disconnected pins */
+> +    case GPIO_DISCONNECTED_PINS:
+> +        return s->disconnected_pins;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
+> +        return 0;
+> +    }
+> +}
 
-(Having "mode-reset", "ospeed-reset", "pupd-reset" exposed as
-  DEFINE_PROP_UINT32() properties).
+
+> +static void stm32l4x5_gpio_init(Object *obj)
+> +{
+> +    Stm32l4x5GpioState *s = STM32L4X5_GPIO(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &stm32l4x5_gpio_ops, s,
+> +                          TYPE_STM32L4X5_GPIO, 0x400);
+
+This "testing purpose" [*] register is accessible by the guest, so
+this isn't a faithful emulation of the device, and could possibly
+lead to unexpected guest behavior.
+You can store testing fields in the device state, but don't expose
+the as register. Expose them as QOM/QDev properties and access them
+with the QOM QTest helpers.
 
 Regards,
 
 Phil.
+
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +
+> +    qdev_init_gpio_out(DEVICE(obj), s->pin, GPIO_NUM_PINS);
+> +    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_gpio_set, GPIO_NUM_PINS);
+> +
+> +    s->clk = qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
+> +}
+

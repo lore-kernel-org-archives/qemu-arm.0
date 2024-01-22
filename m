@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n17-20020a5d67d1000000b003392f229b60sm4368629wrw.40.2024.01.22.06.56.11
+        by smtp.gmail.com with ESMTPSA id f6-20020a05600c154600b0040e880ac6ecsm19550208wmg.35.2024.01.22.06.56.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 22 Jan 2024 06:56:11 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DBEA75F8F5;
-	Mon, 22 Jan 2024 14:56:10 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 339205F8FC;
+	Mon, 22 Jan 2024 14:56:11 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -52,41 +52,112 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Brian Cain <bcain@quicinc.com>,
 	Paul Durrant <paul@xen.org>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
-Date: Mon, 22 Jan 2024 14:55:50 +0000
-Message-Id: <20240122145610.413836-2-alex.bennee@linaro.org>
+Subject: [PATCH v3 04/21] target/riscv: Validate misa_mxl_max only once
+Date: Mon, 22 Jan 2024 14:55:53 +0000
+Message-Id: <20240122145610.413836-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240122145610.413836-1-alex.bennee@linaro.org>
 References: <20240122145610.413836-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: quqh1OCzkzBZ
+X-TUID: 8KPA0HfYiJiS
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-The effective MXL value matters when booting.
+misa_mxl_max is now a class member and initialized only once for each
+class. This also moves the initialization of gdb_core_xml_file which
+will be referenced before realization in the future.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
-Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
+Message-Id: <20240103173349.398526-26-alex.bennee@linaro.org>
+Message-Id: <20231213-riscv-v7-4-a760156a337f@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/riscv/boot.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/riscv/cpu.c         | 21 +++++++++++++++++++++
+ target/riscv/tcg/tcg-cpu.c | 23 -----------------------
+ 2 files changed, 21 insertions(+), 23 deletions(-)
 
-diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-index 0ffca05189f..bc67c0bd189 100644
---- a/hw/riscv/boot.c
-+++ b/hw/riscv/boot.c
-@@ -36,7 +36,7 @@
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index dcc09a10875..7ee4f8520f9 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1292,6 +1292,26 @@ static const MISAExtInfo misa_ext_info_arr[] = {
+     MISA_EXT_INFO(RVG, "g", "General purpose (IMAFD_Zicsr_Zifencei)"),
+ };
  
- bool riscv_is_32bit(RISCVHartArrayState *harts)
++static void riscv_cpu_validate_misa_mxl(RISCVCPUClass *mcc)
++{
++    CPUClass *cc = CPU_CLASS(mcc);
++
++    /* Validate that MISA_MXL is set properly. */
++    switch (mcc->misa_mxl_max) {
++#ifdef TARGET_RISCV64
++    case MXL_RV64:
++    case MXL_RV128:
++        cc->gdb_core_xml_file = "riscv-64bit-cpu.xml";
++        break;
++#endif
++    case MXL_RV32:
++        cc->gdb_core_xml_file = "riscv-32bit-cpu.xml";
++        break;
++    default:
++        g_assert_not_reached();
++    }
++}
++
+ static int riscv_validate_misa_info_idx(uint32_t bit)
  {
--    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
-+    return harts->harts[0].env.misa_mxl == MXL_RV32;
+     int idx;
+@@ -1833,6 +1853,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+     RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
+ 
+     mcc->misa_mxl_max = (uint32_t)(uintptr_t)data;
++    riscv_cpu_validate_misa_mxl(mcc);
  }
  
- /*
+ static void riscv_isa_string_ext(RISCVCPU *cpu, char **isa_str,
+diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
+index 30f0a22a481..1cd659d992e 100644
+--- a/target/riscv/tcg/tcg-cpu.c
++++ b/target/riscv/tcg/tcg-cpu.c
+@@ -268,27 +268,6 @@ static void riscv_cpu_validate_misa_priv(CPURISCVState *env, Error **errp)
+     }
+ }
+ 
+-static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu)
+-{
+-    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
+-    CPUClass *cc = CPU_CLASS(mcc);
+-
+-    /* Validate that MISA_MXL is set properly. */
+-    switch (mcc->misa_mxl_max) {
+-#ifdef TARGET_RISCV64
+-    case MXL_RV64:
+-    case MXL_RV128:
+-        cc->gdb_core_xml_file = "riscv-64bit-cpu.xml";
+-        break;
+-#endif
+-    case MXL_RV32:
+-        cc->gdb_core_xml_file = "riscv-32bit-cpu.xml";
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ static void riscv_cpu_validate_priv_spec(RISCVCPU *cpu, Error **errp)
+ {
+     CPURISCVState *env = &cpu->env;
+@@ -935,8 +914,6 @@ static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
+         return false;
+     }
+ 
+-    riscv_cpu_validate_misa_mxl(cpu);
+-
+ #ifndef CONFIG_USER_ONLY
+     CPURISCVState *env = &cpu->env;
+     Error *local_err = NULL;
 -- 
 2.39.2

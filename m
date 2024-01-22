@@ -1,573 +1,305 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2284451ejg;
-        Sun, 21 Jan 2024 20:37:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGHKMohG+PeYwmYshv9yQA6XChlgC8ElkCSXs3J5ZjpVoRiZRxvUSUco3v4s91JhWHdBka1
-X-Received: by 2002:ac8:5c4c:0:b0:42a:3bcd:d1ba with SMTP id j12-20020ac85c4c000000b0042a3bcdd1bamr2413303qtj.33.1705898236392;
-        Sun, 21 Jan 2024 20:37:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705898236; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2333869ejg;
+        Sun, 21 Jan 2024 23:17:41 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF44HuPhiSP8vp23Uf2HBtVZcXCSAFNrQr4B09p63DZIdxTJF4dEIxIE9tTxr0MhYMgizK7
+X-Received: by 2002:a05:6122:3804:b0:4b7:363d:89fd with SMTP id em4-20020a056122380400b004b7363d89fdmr1010096vkb.33.1705907861099;
+        Sun, 21 Jan 2024 23:17:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1705907861; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FZc9K8DDpA9VorZYmVMMJoV4gxYq/C/+Ni96dcoEhXeUufOIquzsTtG+9Al0LyUwj3
-         dRxvVC1X43sg/w7XbjC66OhHSTLjFm/TQm2T10u7udaJ655JjGpI8jnbDt5T9kQPN33Y
-         cCesK8BGzH/hr+PZWTO3Mlp3u5QG/X55YQDwCsoyeX2S2MsqS1IxmBuNJmqGWmDr6NWU
-         D9ePdbxDXljGHb8fdjJC04LaCRFlufiYoFqHOMDVvzqyizFAhnZecrmTH03LgjVyRLpt
-         eRxYttZ8mwJcROXBYEgWWp8VXQh4Xxj3nW2hwp/AaU0GWkQlOOcSVyBiSJRzZvATe2g2
-         9QSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=uln9eGsSnImCKyPRjovEspQ0GcGiWfKxa7usYmSg9Va8UJhd5N1jJwZr/TuIuFppnE
+         h/H0RrsfVJGcwnAkh+Jc8/zp+MAA06cv/YwNe3VXO8JTbDCPuSv4sl/D6dGkX82VIyYx
+         SWscbQ6SPpobXE25tCJzRXahEUTS7d96ywmKEKkuuGXtXRZLdL6BNnCMblLm62G59zZM
+         FUji8Kp9d9llTKO92UuGqj0DFf300l2WMLtYiP0RiKKSspsQK7PVwVsjwlCtPAQjMW53
+         nSZDmX4Nh6P/tRyDoG2Qc85nuPSWWAowpHNsVhrG85HETc5yzgU0cP1RUhI7O9RnGvt/
+         yQFg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=4FvrZ/918e+6croQmnlple/9deCPijgMaXK8VFdDJt4=;
-        fh=9uJO7PvXxq8Z32cz6CBN0P7rFy3LL9NPDQC0AdzQ1Wc=;
-        b=SMGZm+xFa6/uB01s9GwFJLQQky1KCLnSUxYdDW9aZMtHN9LpMyoF7tDi0S6vfS+573
-         s17DF7HVlUJ8YB/bJQ90Ql/NwLBkq0L5a/SzBEOVFrK8Metn7a0xJx/pqwSFwEVjS9D2
-         y4C5GIKaemwkhhzewlZlxU78R0weJG3fAJhapi2IuEfuIUGKzBY8s0CeChjdcwT5K2BU
-         PesHPHeSpf8ukUk2hTCTT9FSqRvFYfEKViwDDcJmiMHNrlGU4jYDkxAB38tEyPo1szE1
-         DFNRFDjxX0s4ckmLn+O7FduHkfi7WfcUYbVBG1Vk+xxSuyi8qcT/MF1pDxhKVX9pZoKM
-         k93A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ncW05yvd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=dzB42U9/Hpbn7yzSfIhPEHMEnKvy46Yf2wYTRqorK0E=;
+        fh=vx7Rvd0ITLUXo95BBxzwHypxP8/nORqM05zc4yfrAjs=;
+        b=K2TpfvPC6wYAd2FpfNkUTrg4LRFuv0iR9pyt+B0Ml9dC6sRDHi1coRau+AaUS/fBtC
+         gMEG1fVIdFW0HTeT4WhgAG5epXf5af4mnox9E+/tkd1Ow/Jgh/65xhvinG0KqNqqPaZO
+         atPveQWGOZLB/q6dB36gwCJtPBnMVL6mKFLx+SzGInt3aoeM3HIy5Y0eZg17NTv0BN9a
+         d9tLehAcTMfDiIgvdqfYvPxkzmDjpK4swVMEJyJMu634Pdwc/RHJDQ1SG2VrCHrkTWwz
+         WpztfGgFWZmxd14pU5PUsA/Dj+xfVCKVwb6BI0PQOsIq2wbE/kjQQsD1QCmx6vx9ldvl
+         SQng==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=G9yN9oGO;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020ac84d43000000b00429d71a9ab2si4500822qtv.778.2024.01.21.20.37.16
+        by mx.google.com with ESMTPS id du31-20020a05620a47df00b0078132aff7d3si4872197qkb.536.2024.01.21.23.17.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jan 2024 20:37:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 21 Jan 2024 23:17:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ncW05yvd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=G9yN9oGO;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rRm3X-0007dG-U3; Sun, 21 Jan 2024 23:37:07 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rRoYc-0005NV-VQ; Mon, 22 Jan 2024 02:17:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rRm3W-0007cm-C1; Sun, 21 Jan 2024 23:37:06 -0500
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rRm3U-0008AR-1i; Sun, 21 Jan 2024 23:37:06 -0500
-Received: by mail-ua1-x933.google.com with SMTP id
- a1e0cc1a2514c-7cbe98278f8so761727241.1; 
- Sun, 21 Jan 2024 20:37:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705898221; x=1706503021; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4FvrZ/918e+6croQmnlple/9deCPijgMaXK8VFdDJt4=;
- b=ncW05yvdWbyfJOO1IEyWPRdQr+q2rG0g33WpN7+/USqu8EGelxtKGTvyMZbyjFk5o+
- 0ZPIsLUKXF4UghjY3xI181Itdn59a7PMvF2rzlsTRkcMxtoQsmXic65UMXScXFfhWqCy
- RR4dpDwDSjSNGWiwykahcXFwRVDT5nIMclYvmeck+LgzQ195S7jv2YRNW0OiWYHl2JHz
- lOPglA1WlSi6qp7ZyXeM1yBRBRonCjqbvyFMWsW9I/xQqhlgWl0Vd+/AGL+X3xAWS3sX
- 6mjWiUW3sZxTSXPhYcRsNlsANbsI2Usw4O6+IUXbbIaO2C+oH9SLMiGiXsJmYPkm95NE
- Truw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705898221; x=1706503021;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4FvrZ/918e+6croQmnlple/9deCPijgMaXK8VFdDJt4=;
- b=SoyEKy9+GW+JKpfYZ3d0BGb1jc6UEYAvKFSoN4SEblJNF2dqHjR/TOyEhir+8JwcGS
- cJBVhq6eEZdsTZT1LRUP+rTMw1B6dvcQDF2eg1RSLQOppXQWjl+qOK8lQcBGO/NRFcPE
- SiH2DYq6cLuJLCkAYMhCbdTdPvQXIjvTd5VQv5D200jkV026usoDHHHYwySDlm23s5R4
- XneBK9rbIe+P/o/MWW9Qxc7WnFHHC4jfplF3Q9R+YNnjN4t7L8p4xxrmzJ6zqEtUvTMg
- /qEleyqiy0TaV/aRN0fxmne1o7uXRnP+uSlE8Cm0q7f8LxCmALdY67VMEq49rUgK+2AQ
- yLTg==
-X-Gm-Message-State: AOJu0YzMlD7BrYxznIJTnBve5laQKV9MTar+T4Uf/PpwhUf7MA6wrJrS
- 2rptowYfTqrCaHMohqTCBC3+Hl4CWJ3m3L1xNhAAwZg+2i3W7C/Qo2g8NW1689CFOwtwAHy6rnB
- ql/H7OCnocIDEKcLPYp8NLqKUb+k=
-X-Received: by 2002:a05:6122:209f:b0:4b7:8d7c:3488 with SMTP id
- i31-20020a056122209f00b004b78d7c3488mr1039280vkd.6.1705898221392; Sun, 21 Jan
- 2024 20:37:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1rRoYb-0005Mj-RI; Mon, 22 Jan 2024 02:17:22 -0500
+Received: from mgamail.intel.com ([134.134.136.31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1rRoYY-0005oW-T1; Mon, 22 Jan 2024 02:17:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1705907838; x=1737443838;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=dzB42U9/Hpbn7yzSfIhPEHMEnKvy46Yf2wYTRqorK0E=;
+ b=G9yN9oGOk01xQGwJSk7sKz8ykl8OoutGF/xmAeyUNSHh4PgZ29jr7RND
+ OZUh6dyHTpWMRGCuhSwgUK5rdstS0Mz0Bc5atZAILvelD1VwdZCr6OO+D
+ hds4p++CzckmGfjRJPpo57iNcNgtRy8SJokfHxMBpJYtMEDFSxq5yJjqG
+ CeKrTDgllB1Qjn9yoFGIoQKNrVVw1JqVGvFvWrrRcKRlctEn8euZueMEf
+ hBASbS8XQ0wbFaA8Ixq9ZKjHqjWndYOPSVGKoTRD+lckXZsa6hc54Vlnq
+ PY8mWF1Dw78J9MsdlJ5hMf2akGTG/yP8IINNb8mz2FHPz+KfrqHaCkOrR g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10960"; a="465393255"
+X-IronPort-AV: E=Sophos;i="6.05,211,1701158400"; d="scan'208";a="465393255"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2024 23:17:14 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,211,1701158400"; 
+   d="scan'208";a="1114907"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa005.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 21 Jan 2024 23:17:16 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Sun, 21 Jan 2024 23:17:13 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Sun, 21 Jan 2024 23:17:13 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Sun, 21 Jan 2024 23:17:13 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Sun, 21 Jan 2024 23:17:13 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HEq4OAyhT7VRCiVWDZxtbYiDL3N3IHydSVz2lMb0k6K9YdY0x3hScld5yDx5zsi9pc66XVErhvkEXWr3kAYU9PZ6LFn++kfNBZ0xFHDH9O8OCc57jzF6k941S1mpUAUuIm3i7LdnJNmCnpyZU/O4gh3pXQS1vpeqO6NuGkHrGk3FFxOBcRP3bqdgdP/OfqBmJdZfNRxOTn7oDIndc4RaCYejO0MmGVqyxFf951LthiiTuNwXK/x5ZdMoOtKipvpM5sZ1usouCDvsqJNqy9NjstiiMJ5XZALcezXCi9/w/ZesBQbUxG9Y1wJ+7jpWE4PvWgYxaA0qmEp6Lt3r/TLJfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dzB42U9/Hpbn7yzSfIhPEHMEnKvy46Yf2wYTRqorK0E=;
+ b=Pm5O9C3B/YJKgzu7B8MPmelfiH/UyPoKvklVw4iD1Le7Ta5Qra0ejkuy5q9cUsGHXQWLdWEdI8kvglhhvKotXRzIVgyJVTIpHEqbMqepk4Hv9RBIgR4+akaDesSFK98ZwlHUrY/R46jT+yXLRyyyOcgiOf4pvLJ/VbgtGnxjkz5sgs328wYoHhjfsiyDbCYaq4ZQ4y04a1IgeNnZM9LOPcvnWpOYQucR8fyS5U5pQzePuNwT4DVc9km8RuivXMIjuY5naQ0MAj1rPuZZ8BXyT6UPQ6g6U1A2fYF+Tm9vbjXbDiw7BTT78i5seml7x5/obC5Yo5GOkBaQucCapwasQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
+ by CH3PR11MB7204.namprd11.prod.outlook.com (2603:10b6:610:146::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.31; Mon, 22 Jan
+ 2024 07:17:11 +0000
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::d7ca:7979:6536:7ac3]) by SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::d7ca:7979:6536:7ac3%4]) with mapi id 15.20.7202.031; Mon, 22 Jan 2024
+ 07:17:10 +0000
+From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>, 
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "peterx@redhat.com"
+ <peterx@redhat.com>, "yanghliu@redhat.com" <yanghliu@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
+CC: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
+Subject: RE: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
+ set_host_resv_regions
+Thread-Topic: [RFC 4/7] virtio-iommu: Implement PCIIOMMUOps
+ set_host_resv_regions
+Thread-Index: AQHaSRvZODIWGRgczkWQzR/Sdm1iRrDfLnswgABSDgCAATT9wIAEvXkg
+Date: Mon, 22 Jan 2024 07:17:10 +0000
+Message-ID: <SJ0PR11MB674440705683CB68B844001E92752@SJ0PR11MB6744.namprd11.prod.outlook.com>
+References: <20240117080414.316890-1-eric.auger@redhat.com>
+ <20240117080414.316890-5-eric.auger@redhat.com>
+ <SJ0PR11MB67443F1D15B5959A77B60E3F92712@SJ0PR11MB6744.namprd11.prod.outlook.com>
+ <307bbfec-005c-4ca8-8c21-cb39f16812f3@redhat.com>
+ <SJ0PR11MB674415F01D3C4C46A7B6872392702@SJ0PR11MB6744.namprd11.prod.outlook.com>
+In-Reply-To: <SJ0PR11MB674415F01D3C4C46A7B6872392702@SJ0PR11MB6744.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|CH3PR11MB7204:EE_
+x-ms-office365-filtering-correlation-id: a15c4b5b-8435-4a92-1054-08dc1b1a2681
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ZtOeR1B7XJofHDtf9YaEvQ0/Ue5q7WZZcrBsZ12STXJ/IDTBCtlbY8IdTlYjBvMRvXJkvsPOlWnDQCCdGWyXUKlQ8hG3A/0luQFdUO+Jw1C/nqQMyWVfQm4oE5+5mmRfWNp/tihnWpLP7ZE8G5lQC4ElR5p22coLVgHgfMdBL59FvsBcMohkUMeTvPssxoUOFrpTDcj211cY1ww2AuWkgfFac4QrZT69aCfeDTPHCC1e4//3FBVjTtA1VB0ri+vRR04MxY82TfdxzW9xBkEHPAY/mBi1GWjwViPsisqPtrj0Ct4DE2592qdwSO8QPblME98ZCTp3cXs/P02NGTlh3wWcwyBcw3/IF7hrn6QSguNQ+Oit6hs3ba0l+PJvg6/0bbKfr2NUpjBOcXyixuY/o/Lq8JP0rXa3n33fgDEUD/S3N7xJbry4Ybmkcc5xrIxUp6z4fwotxv6H+fa/SUTcGFFXgI50jY1MvTM+TMGEliwhrPeZ0eBSzwePmR/WngZYl3jXeu8fcXfRWyMrGfWMvPGR4kNDW9dIFWQeXj1WtAWL/bw4etPDgLwmG0cGEA+BWhdUqGOKIyCFqxqpUjm+O1lWxpZ5Ge6TOZ6Yz9i8TRz3at1RWodj9oBbgTJC3vXEUKZk9BlR68D7kE6tu/GXtQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(346002)(136003)(376002)(396003)(39860400002)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(83380400001)(66946007)(26005)(71200400001)(5660300002)(38100700002)(4326008)(122000001)(8936002)(8676002)(478600001)(52536014)(7416002)(2906002)(41300700001)(66476007)(966005)(9686003)(6506007)(7696005)(66446008)(66556008)(316002)(54906003)(76116006)(110136005)(64756008)(921011)(38070700009)(82960400001)(86362001)(33656002)(55016003)(66899024)(13296009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?c2lFamQ5cVFZTWw5T0dpS0dSOTlZUnpPMklTWTNqdDBrTHFWVFlnQ3hrVjhM?=
+ =?utf-8?B?NGw5UDlxcXRpQUNUNUtwQmFKTjF5b09ocEZlK2NpY29pSkR1dXptaTBuc0VD?=
+ =?utf-8?B?b1FWQStnUmtmV2FhTzE3aEk3Rlh6dlVJV2ZuL0RVSC9DNG0vSFR2cXRHRCtO?=
+ =?utf-8?B?RzlJQ2s2STBNSnhxdUkxZFJzN2NjY3NTcmlQR3ZFenVmdEtXNlpreTRZUndK?=
+ =?utf-8?B?WDEwSjZaYVE3Z0dYVTRHVEZkbVdVN2NtdjJ6Y2JrMHJ5NCtNMGVhR2lLZG8w?=
+ =?utf-8?B?MENXNzlabmdzdFBKZ0Z4YjJybUF6MUViR3N1cEpJcFk5OHF3Wnc3U0lMNEhL?=
+ =?utf-8?B?ek1HTjNBeEg1Y0YrNGJKM3o0K1dHbEE2cHFXWUd6VElLMkNkTlMzQmx0YWdZ?=
+ =?utf-8?B?aW5FMDZFRzdVaWRmaFUvTnl4dkYybFh1M2hRRWc5WnIzVTVJbHZTZWJVNVht?=
+ =?utf-8?B?Y0ZwUmUvY3N5QXlBMGpkQWdRaTd4OEx5NnJhcnBEUWRPN2dlNHN2ZXV3alpI?=
+ =?utf-8?B?RXhQYnpBYVVNeWZTNFhoc0ZSV1pZQ3pSK3JCWnlSdmt0bE02UjFpbElYMDJq?=
+ =?utf-8?B?SXFyd0JJWWF6eU9FNkZEZUlZdVphRitqcDhzQlc4WTBxOUhmQThORUNRWjhu?=
+ =?utf-8?B?RUVNODg3bkdLUzcwNCszc1JPaStONSt5MWpFTFpnZWFzWGhGSnlMMUVlYW04?=
+ =?utf-8?B?Rm5IM2tVV1pmNU5wYnJvbk1MbEJzWXZGOVhRL3diZEhhQ1RBNk5zbzIrbGdH?=
+ =?utf-8?B?NXY4STFFMTdlR3o5VHNMc2FDUnFnQ2toclNzRWgydm9qSUZSb1VIaE9PZkFZ?=
+ =?utf-8?B?VEtXNlMwMUMvK3pHdVNObGFucDJtZXJsSTRGTmpLSmg5d1Y5L0d4MFJPQnJC?=
+ =?utf-8?B?cGlDVURMZjJ1bFJlaUpoa3FOUGVDK3hlalVTZWVkdFpYMHI1RGNhTW9lK250?=
+ =?utf-8?B?dm0xdU9BR3hjQ3E4bTc0UkNZUTlVWFRYY2ZBcTl6ODlEZE1NanNYUkJYTDBi?=
+ =?utf-8?B?aTJ2TW4yTDAvQTlUR1U5czFEOUYxckNyWmQ4N0ZsRzd6RTBabCtGNTViTUZE?=
+ =?utf-8?B?NTF6eHFkQTEzcHVLYWVXOHRPSUlYZVhEc09zMTRnbEFXaUtySUwxdVNENWlP?=
+ =?utf-8?B?YzZ0MmI3K1dOeFFhaDE5UXFNYWJFblJRRXpGbFlCNHF5RnpQbVJEUitkaHVT?=
+ =?utf-8?B?eGRuU0JqTks2Vm50UlM2aDB4OWY1WVpiQm9RWUtsV0FBYmtnUGtVYUZSREZZ?=
+ =?utf-8?B?cm1pbFFFcUpBYUhtTVNlMC9RT1hUaXRtbTZtazVNelE2YUFVbk8vZkNvcHFw?=
+ =?utf-8?B?RG16ODM2TXNITElzM016MDNrM0hOZHFIWnFodDB1WVRrSi9QU21KT2Qycy90?=
+ =?utf-8?B?Wi82b0FCd1ZXdUhLSW1qc1B0TE43TnZqQWh6dDFoTGRPZ2ZlUHJFRU1iZGRu?=
+ =?utf-8?B?VHMzZHZqWjBMTVMvK0VvaXQvbUZXZ2NtdGJHTzF4blhJWWdvTGI1ZjJGekhU?=
+ =?utf-8?B?YXVqTWRFSXRXcXQ1K1ZjaUpEczlHZm40Zm9wWTFTWmVwcFlqdkgyRkt4Snkx?=
+ =?utf-8?B?S1ZJZGppUGg1eklyRDlLa1N5ZnY5R2dLYncrNE40QkM2UHI5OFBXcXd3STJa?=
+ =?utf-8?B?QkdKZ0dBbERPMmoxeFVML0hxUHBVZWNwaktWdkl3d2hqVldTdDBWYXlXNVBR?=
+ =?utf-8?B?SjBwV2ZYSE4zT01BbXd3Vy9BYVNKQnVtSXcwckJ5UXluVDB6SU13NUZVZDZp?=
+ =?utf-8?B?VG5jQ3pEcXRmamhOaE1za1JCV3lzTjVVQmJ6elNuMVRuZXkxeGFiMWlJUnRp?=
+ =?utf-8?B?ZkVYdkt1SHZBUFhvUHlzMTFHV2RCNmhyU3YvcFczWVJkTkhMam9OSkNtWTFX?=
+ =?utf-8?B?Y29NYUU3RnQyTkJEQjR1RVhBZWVqMitjeVNvUnp4M0tnblN1ZFFtYTZ5eVlW?=
+ =?utf-8?B?UlgrMHZlUjd6WG5wV3NQUjJaVjN1aFRGK0VIM3FseU95ZG5JNFJSRTcrYjlB?=
+ =?utf-8?B?eG4rZ3c3Wko5SG9MS1o3dmhHYVltelNUNmRxY2Zpc084ZXliVFVpRHNManNu?=
+ =?utf-8?B?cldGM2ZqTmRMSEFOUWNoN1ZBRzFIQUNHcjZ6QmVoVWpGZitoazU3TmRaREZG?=
+ =?utf-8?Q?rCPbYuf7stkab/TOoIcjWvAje?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20240113102913.18278-1-arnaud.minier@telecom-paris.fr>
- <20240113102913.18278-3-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240113102913.18278-3-arnaud.minier@telecom-paris.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 22 Jan 2024 14:36:35 +1000
-Message-ID: <CAKmqyKPycNRQqTsFngdfTfdmakPWA+FnU_bcnVk6v=qjZFhkHQ@mail.gmail.com>
-Subject: Re: [PATCH 2/7] Add an internal clock multiplexer object
-To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
- =?UTF-8?Q?Philipe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::933;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x933.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a15c4b5b-8435-4a92-1054-08dc1b1a2681
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Jan 2024 07:17:10.8288 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: c7RKB49CnGLsmugusbHsIEokF6kO9Vm3JSTSkfZvsPenzdYvhivPpcA0YjYrpC9hrsASA4txEP9HudAEZEZZjP08i5oVJj7DQvwkXP4fAXU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7204
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=134.134.136.31;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -56
+X-Spam_score: -5.7
+X-Spam_bar: -----
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.287,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZAvhbvSqWLp2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ej62iJYkJZWV
 
-On Sat, Jan 13, 2024 at 8:31=E2=80=AFPM Arnaud Minier
-<arnaud.minier@telecom-paris.fr> wrote:
->
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
->  hw/misc/stm32l4x5_rcc.c                   | 154 ++++++++++++++++++++++
->  hw/misc/trace-events                      |   5 +
->  include/hw/misc/stm32l4x5_rcc.h           | 119 +++++++++++++++++
->  include/hw/misc/stm32l4x5_rcc_internals.h |  29 ++++
->  4 files changed, 307 insertions(+)
->
-> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index 5a6f475740..bcc69510b0 100644
-> --- a/hw/misc/stm32l4x5_rcc.c
-> +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -35,6 +35,128 @@
->  #define LSE_FRQ 32768ULL
->  #define LSI_FRQ 32000ULL
->
-> +static void clock_mux_update(RccClockMuxState *mux)
-> +{
-> +    uint64_t src_freq, old_freq, freq;
-> +
-> +    src_freq =3D clock_get_hz(mux->srcs[mux->src]);
-> +    old_freq =3D clock_get_hz(mux->out);
-> +
-> +    if (!mux->enabled || !mux->divider) {
-> +        freq =3D 0;
-> +    } else {
-> +        freq =3D muldiv64(src_freq, mux->multiplier, mux->divider);
-> +    }
-> +
-> +    /* No change, early return to avoid log spam and useless propagation=
- */
-> +    if (old_freq =3D=3D freq) {
-> +        return;
-> +    }
-> +
-> +    clock_update_hz(mux->out, freq);
-> +    trace_stm32l4x5_rcc_mux_update(mux->id, mux->src, src_freq, freq);
-> +}
-> +
-> +static void clock_mux_src_update(void *opaque, ClockEvent event)
-> +{
-> +    RccClockMuxState **backref =3D opaque;
-> +    RccClockMuxState *s =3D *backref;
-> +    /*
-> +     * The backref value is equal to:
-> +     * s->backref + (sizeof(RccClockMuxState *) * update_src).
-> +     * By subtracting we can get back the index of the updated clock.
-> +     */
-> +    const uint32_t update_src =3D backref - s->backref;
-> +    /* Only update if the clock that was updated is the current source*/
-> +    if (update_src =3D=3D s->src) {
-> +        clock_mux_update(s);
-> +    }
-> +}
-> +
-> +static void clock_mux_init(Object *obj)
-> +{
-> +    RccClockMuxState *s =3D RCC_CLOCK_MUX(obj);
-> +    size_t i;
-> +
-> +    for (i =3D 0; i < RCC_NUM_CLOCK_MUX_SRC; i++) {
-> +        char *name =3D g_strdup_printf("srcs[%zu]", i);
-> +        s->backref[i] =3D s;
-> +        s->srcs[i] =3D qdev_init_clock_in(DEVICE(s), name,
-> +                                        clock_mux_src_update,
-> +                                        &s->backref[i],
-> +                                        ClockUpdate);
-> +        g_free(name);
-> +    }
-> +
-> +    s->out =3D qdev_init_clock_out(DEVICE(s), "out");
-> +}
-> +
-> +static void clock_mux_reset_hold(Object *obj)
-> +{ }
-> +
-> +static const VMStateDescription clock_mux_vmstate =3D {
-> +    .name =3D TYPE_RCC_CLOCK_MUX,
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_ARRAY_CLOCK(srcs, RccClockMuxState,
-> +                            RCC_NUM_CLOCK_MUX_SRC),
-> +        VMSTATE_BOOL(enabled, RccClockMuxState),
-> +        VMSTATE_UINT32(src, RccClockMuxState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void clock_mux_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> +
-> +    rc->phases.hold =3D clock_mux_reset_hold;
-> +    dc->vmsd =3D &clock_mux_vmstate;
-> +}
-> +
-> +static void clock_mux_set_enable(RccClockMuxState *mux, bool enabled)
-> +{
-> +    if (mux->enabled =3D=3D enabled) {
-> +        return;
-> +    }
-> +
-> +    if (enabled) {
-> +        trace_stm32l4x5_rcc_mux_enable(mux->id);
-> +    } else {
-> +        trace_stm32l4x5_rcc_mux_disable(mux->id);
-> +    }
-> +
-> +    mux->enabled =3D enabled;
-> +    clock_mux_update(mux);
-> +}
-> +
-> +static void clock_mux_set_factor(RccClockMuxState *mux,
-> +                                 uint32_t multiplier, uint32_t divider)
-> +{
-> +    if (mux->multiplier =3D=3D multiplier && mux->divider =3D=3D divider=
-) {
-> +        return;
-> +    }
-> +    trace_stm32l4x5_rcc_mux_set_factor(mux->id,
-> +        mux->multiplier, multiplier, mux->divider, divider);
-> +
-> +    mux->multiplier =3D multiplier;
-> +    mux->divider =3D divider;
-> +    clock_mux_update(mux);
-> +}
-> +
-> +static void clock_mux_set_source(RccClockMuxState *mux, RccClockMuxSourc=
-e src)
-> +{
-> +    if (mux->src =3D=3D src) {
-> +        return;
-> +    }
-> +
-> +    trace_stm32l4x5_rcc_mux_set_src(mux->id, mux->src, src);
-> +    mux->src =3D src;
-> +    clock_mux_update(mux);
-> +}
-> +
->  static void rcc_update_irq(Stm32l4x5RccState *s)
->  {
->      if (s->cifr & CIFR_IRQ_MASK) {
-> @@ -326,6 +448,7 @@ static const ClockPortInitArray stm32l4x5_rcc_clocks =
-=3D {
->  static void stm32l4x5_rcc_init(Object *obj)
->  {
->      Stm32l4x5RccState *s =3D STM32L4X5_RCC(obj);
-> +    size_t i;
->
->      sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
->
-> @@ -335,6 +458,14 @@ static void stm32l4x5_rcc_init(Object *obj)
->
->      qdev_init_clocks(DEVICE(s), stm32l4x5_rcc_clocks);
->
-> +    for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
-> +
-> +        object_initialize_child(obj, "clock[*]",
-> +                                &s->clock_muxes[i],
-> +                                TYPE_RCC_CLOCK_MUX);
-> +
-> +    }
-> +
->      s->gnd =3D clock_new(obj, "gnd");
->  }
->
-> @@ -380,6 +511,7 @@ static const VMStateDescription vmstate_stm32l4x5_rcc=
- =3D {
->  static void stm32l4x5_rcc_realize(DeviceState *dev, Error **errp)
->  {
->      Stm32l4x5RccState *s =3D STM32L4X5_RCC(dev);
-> +    size_t i;
->
->      /* The HSE frequency must be in range 4-48 MHz */
->      if (s->hse_frequency <  4000000ULL ||
-> @@ -388,10 +520,26 @@ static void stm32l4x5_rcc_realize(DeviceState *dev,=
- Error **errp)
->              return;
->          }
->
-> +    for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
-> +        RccClockMuxState *clock_mux =3D &s->clock_muxes[i];
-> +
-> +        if (!qdev_realize(DEVICE(clock_mux), NULL, errp)) {
-> +            return;
-> +        }
-> +    }
-> +
->      clock_update_hz(s->msi_rc, MSI_DEFAULT_FRQ);
->      clock_update_hz(s->sai1_extclk, s->sai1_extclk_frequency);
->      clock_update_hz(s->sai2_extclk, s->sai2_extclk_frequency);
->      clock_update(s->gnd, 0);
-> +
-> +    /*
-> +     * Dummy values to make compilation pass.
-> +     * Removed in later commits.
-> +     */
-> +    clock_mux_set_source(&s->clock_muxes[0], RCC_CLOCK_MUX_SRC_GND);
-> +    clock_mux_set_enable(&s->clock_muxes[0], true);
-> +    clock_mux_set_factor(&s->clock_muxes[0], 1, 1);
->  }
->
->  static Property stm32l4x5_rcc_properties[] =3D {
-> @@ -423,6 +571,12 @@ static const TypeInfo stm32l4x5_rcc_types[] =3D {
->          .instance_size  =3D sizeof(Stm32l4x5RccState),
->          .instance_init  =3D stm32l4x5_rcc_init,
->          .class_init     =3D stm32l4x5_rcc_class_init,
-> +    }, {
-> +        .name =3D TYPE_RCC_CLOCK_MUX,
-> +        .parent =3D TYPE_DEVICE,
-> +        .instance_size =3D sizeof(RccClockMuxState),
-> +        .instance_init =3D clock_mux_init,
-> +        .class_init =3D clock_mux_class_init,
->      }
->  };
->
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index 62a7599353..d5e471811c 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -177,6 +177,11 @@ stm32l4x5_exti_write(uint64_t addr, uint64_t data) "=
-reg write: addr: 0x%" PRIx64
->  # stm32l4x5_rcc.c
->  stm32l4x5_rcc_read(uint64_t addr, uint32_t data) "RCC: Read <0x%" PRIx64=
- "> -> 0x%" PRIx32 ""
->  stm32l4x5_rcc_write(uint64_t addr, uint32_t data) "RCC: Write <0x%" PRIx=
-64 "> <- 0x%" PRIx32 ""
-> +stm32l4x5_rcc_mux_enable(uint32_t mux_id) "RCC: Mux %d enabled"
-> +stm32l4x5_rcc_mux_disable(uint32_t mux_id) "RCC: Mux %d disabled"
-> +stm32l4x5_rcc_mux_set_factor(uint32_t mux_id, uint32_t old_multiplier, u=
-int32_t new_multiplier, uint32_t old_divider, uint32_t new_divider) "RCC: M=
-ux %d factor changed: multiplier (%u -> %u), divider (%u -> %u)"
-> +stm32l4x5_rcc_mux_set_src(uint32_t mux_id, uint32_t old_src, uint32_t ne=
-w_src) "RCC: Mux %d source changed: from %u to %u"
-> +stm32l4x5_rcc_mux_update(uint32_t mux_id, uint32_t src, uint64_t src_fre=
-q, uint64_t new_freq) "RCC: Mux %d src %d update: src_freq %" PRIu64 " new_=
-freq %" PRIu64 ""
->
->  # tz-mpc.c
->  tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC r=
-egs read: offset 0x%x data 0x%" PRIx64 " size %u"
-> diff --git a/include/hw/misc/stm32l4x5_rcc.h b/include/hw/misc/stm32l4x5_=
-rcc.h
-> index 5157e96635..6719be9fbe 100644
-> --- a/include/hw/misc/stm32l4x5_rcc.h
-> +++ b/include/hw/misc/stm32l4x5_rcc.h
-> @@ -26,6 +26,122 @@ OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5RccState, STM32L4=
-X5_RCC)
->
->  /* In the Stm32l4x5 clock tree, mux have at most 7 sources */
->  #define RCC_NUM_CLOCK_MUX_SRC 7
-> +/* NB: Prescaler are assimilated to mux with one source and one output *=
-/
-> +typedef enum RccClockMux {
-> +    /* Internal muxes that arent't exposed publicly to other peripherals=
- */
-> +    RCC_CLOCK_MUX_SYSCLK,
-> +    RCC_CLOCK_MUX_PLL_INPUT,
-> +    RCC_CLOCK_MUX_HCLK,
-> +    RCC_CLOCK_MUX_PCLK1,
-> +    RCC_CLOCK_MUX_PCLK2,
-> +    RCC_CLOCK_MUX_HSE_OVER_32,
-> +    RCC_CLOCK_MUX_LCD_AND_RTC_COMMON,
-> +
-> +    /* Muxes with a publicly available output */
-> +    RCC_CLOCK_MUX_CORTEX_REFCLK,
-> +    RCC_CLOCK_MUX_USART1,
-> +    RCC_CLOCK_MUX_USART2,
-> +    RCC_CLOCK_MUX_USART3,
-> +    RCC_CLOCK_MUX_UART4,
-> +    RCC_CLOCK_MUX_UART5,
-> +    RCC_CLOCK_MUX_LPUART1,
-> +    RCC_CLOCK_MUX_I2C1,
-> +    RCC_CLOCK_MUX_I2C2,
-> +    RCC_CLOCK_MUX_I2C3,
-> +    RCC_CLOCK_MUX_LPTIM1,
-> +    RCC_CLOCK_MUX_LPTIM2,
-> +    RCC_CLOCK_MUX_SWPMI1,
-> +    RCC_CLOCK_MUX_MCO,
-> +    RCC_CLOCK_MUX_LSCO,
-> +    RCC_CLOCK_MUX_DFSDM1,
-> +    RCC_CLOCK_MUX_ADC,
-> +    RCC_CLOCK_MUX_CLK48,
-> +    RCC_CLOCK_MUX_SAI1,
-> +    RCC_CLOCK_MUX_SAI2,
-> +
-> +    /*
-> +     * Mux that have only one input and one output assigned to as periph=
-eral.
-> +     * They could be direct lines but it is simpler
-> +     * to use the same logic for all outputs.
-> +     */
-> +    /* - AHB1 */
-> +    RCC_CLOCK_MUX_TSC,
-> +    RCC_CLOCK_MUX_CRC,
-> +    RCC_CLOCK_MUX_FLASH,
-> +    RCC_CLOCK_MUX_DMA2,
-> +    RCC_CLOCK_MUX_DMA1,
-> +
-> +    /* - AHB2 */
-> +    RCC_CLOCK_MUX_RNG,
-> +    RCC_CLOCK_MUX_AES,
-> +    RCC_CLOCK_MUX_OTGFS,
-> +    RCC_CLOCK_MUX_GPIOA,
-> +    RCC_CLOCK_MUX_GPIOB,
-> +    RCC_CLOCK_MUX_GPIOC,
-> +    RCC_CLOCK_MUX_GPIOD,
-> +    RCC_CLOCK_MUX_GPIOE,
-> +    RCC_CLOCK_MUX_GPIOF,
-> +    RCC_CLOCK_MUX_GPIOG,
-> +    RCC_CLOCK_MUX_GPIOH,
-> +
-> +    /* - AHB3 */
-> +    RCC_CLOCK_MUX_QSPI,
-> +    RCC_CLOCK_MUX_FMC,
-> +
-> +    /* - APB1 */
-> +    RCC_CLOCK_MUX_OPAMP,
-> +    RCC_CLOCK_MUX_DAC1,
-> +    RCC_CLOCK_MUX_PWR,
-> +    RCC_CLOCK_MUX_CAN1,
-> +    RCC_CLOCK_MUX_SPI3,
-> +    RCC_CLOCK_MUX_SPI2,
-> +    RCC_CLOCK_MUX_WWDG,
-> +    RCC_CLOCK_MUX_LCD,
-> +    RCC_CLOCK_MUX_TIM7,
-> +    RCC_CLOCK_MUX_TIM6,
-> +    RCC_CLOCK_MUX_TIM5,
-> +    RCC_CLOCK_MUX_TIM4,
-> +    RCC_CLOCK_MUX_TIM3,
-> +    RCC_CLOCK_MUX_TIM2,
-> +
-> +    /* - APB2 */
-> +    RCC_CLOCK_MUX_TIM17,
-> +    RCC_CLOCK_MUX_TIM16,
-> +    RCC_CLOCK_MUX_TIM15,
-> +    RCC_CLOCK_MUX_TIM8,
-> +    RCC_CLOCK_MUX_SPI1,
-> +    RCC_CLOCK_MUX_TIM1,
-> +    RCC_CLOCK_MUX_SDMMC1,
-> +    RCC_CLOCK_MUX_FW,
-> +    RCC_CLOCK_MUX_SYSCFG,
-> +
-> +    /* - BDCR */
-> +    RCC_CLOCK_MUX_RTC,
-> +
-> +    /* - OTHER */
-> +    RCC_CLOCK_MUX_CORTEX_FCLK,
-> +
-> +    RCC_NUM_CLOCK_MUX
-> +} RccClockMux;
-> +
-> +typedef struct RccClockMuxState {
-> +    DeviceState parent_obj;
-> +
-> +    RccClockMux id;
-> +    Clock *srcs[RCC_NUM_CLOCK_MUX_SRC];
-> +    Clock *out;
-> +    bool enabled;
-> +    uint32_t src;
-> +    uint32_t multiplier;
-> +    uint32_t divider;
-> +
-> +    /*
-> +     * Used by clock srcs update callback to retrieve both the clock and=
- the
-> +     * source number.
-> +     */
-> +    struct RccClockMuxState *backref[RCC_NUM_CLOCK_MUX_SRC];
-> +} RccClockMuxState;
-> +
->  struct Stm32l4x5RccState {
->      SysBusDevice parent_obj;
->
-> @@ -71,6 +187,9 @@ struct Stm32l4x5RccState {
->      Clock *sai1_extclk;
->      Clock *sai2_extclk;
->
-> +    /* Muxes ~=3D outputs */
-> +    RccClockMuxState clock_muxes[RCC_NUM_CLOCK_MUX];
-> +
->      qemu_irq irq;
->      uint64_t hse_frequency;
->      uint64_t sai1_extclk_frequency;
-> diff --git a/include/hw/misc/stm32l4x5_rcc_internals.h b/include/hw/misc/=
-stm32l4x5_rcc_internals.h
-> index 331ea30db5..4aa836848b 100644
-> --- a/include/hw/misc/stm32l4x5_rcc_internals.h
-> +++ b/include/hw/misc/stm32l4x5_rcc_internals.h
-> @@ -21,6 +21,8 @@
->  #include "hw/registerfields.h"
->  #include "hw/misc/stm32l4x5_rcc.h"
->
-> +#define TYPE_RCC_CLOCK_MUX "stm32l4x5-rcc-clock-mux"
-> +OBJECT_DECLARE_SIMPLE_TYPE(RccClockMuxState, RCC_CLOCK_MUX)
->
->  /* Register map */
->  REG32(CR, 0x00)
-> @@ -283,4 +285,31 @@ REG32(CSR, 0x94)
->                              R_CSR_FWRSTF_MASK   | \
->                              R_CSR_LSIRDY_MASK)
->
-> +typedef enum RccClockMuxSource {
-> +    RCC_CLOCK_MUX_SRC_GND =3D 0,
-> +    RCC_CLOCK_MUX_SRC_HSI,
-> +    RCC_CLOCK_MUX_SRC_HSE,
-> +    RCC_CLOCK_MUX_SRC_MSI,
-> +    RCC_CLOCK_MUX_SRC_LSI,
-> +    RCC_CLOCK_MUX_SRC_LSE,
-> +    RCC_CLOCK_MUX_SRC_SAI1_EXTCLK,
-> +    RCC_CLOCK_MUX_SRC_SAI2_EXTCLK,
-> +    RCC_CLOCK_MUX_SRC_PLL,
-> +    RCC_CLOCK_MUX_SRC_PLLSAI1,
-> +    RCC_CLOCK_MUX_SRC_PLLSAI2,
-> +    RCC_CLOCK_MUX_SRC_PLLSAI3,
-> +    RCC_CLOCK_MUX_SRC_PLL48M1,
-> +    RCC_CLOCK_MUX_SRC_PLL48M2,
-> +    RCC_CLOCK_MUX_SRC_PLLADC1,
-> +    RCC_CLOCK_MUX_SRC_PLLADC2,
-> +    RCC_CLOCK_MUX_SRC_SYSCLK,
-> +    RCC_CLOCK_MUX_SRC_HCLK,
-> +    RCC_CLOCK_MUX_SRC_PCLK1,
-> +    RCC_CLOCK_MUX_SRC_PCLK2,
-> +    RCC_CLOCK_MUX_SRC_HSE_OVER_32,
-> +    RCC_CLOCK_MUX_SRC_LCD_AND_RTC_COMMON,
-> +
-> +    RCC_CLOCK_MUX_SRC_NUMBER,
-> +} RccClockMuxSource;
-> +
->  #endif /* HW_STM32L4X5_RCC_INTERNALS_H */
-> --
-> 2.34.1
->
->
+SGkgRXJpYywNCg0KPi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogRHVhbiwgWmhl
+bnpob25nDQo+U3ViamVjdDogUkU6IFtSRkMgNC83XSB2aXJ0aW8taW9tbXU6IEltcGxlbWVudCBQ
+Q0lJT01NVU9wcw0KPnNldF9ob3N0X3Jlc3ZfcmVnaW9ucw0KPg0KPg0KPg0KPj4tLS0tLU9yaWdp
+bmFsIE1lc3NhZ2UtLS0tLQ0KPj5Gcm9tOiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5j
+b20+DQo+PlN1YmplY3Q6IFJlOiBbUkZDIDQvN10gdmlydGlvLWlvbW11OiBJbXBsZW1lbnQgUENJ
+SU9NTVVPcHMNCj4+c2V0X2hvc3RfcmVzdl9yZWdpb25zDQo+Pg0KPj5IaSBaaGVuemhvbmcsDQo+
+Pk9uIDEvMTgvMjQgMDg6NDMsIER1YW4sIFpoZW56aG9uZyB3cm90ZToNCj4+PiBIaSBFcmljLA0K
+Pj4+DQo+Pj4+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+Pj4+IEZyb206IEVyaWMgQXVn
+ZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4+Pj4gU3ViamVjdDogW1JGQyA0LzddIHZpcnRp
+by1pb21tdTogSW1wbGVtZW50IFBDSUlPTU1VT3BzDQo+Pj4+IHNldF9ob3N0X3Jlc3ZfcmVnaW9u
+cw0KPj4+Pg0KPj4+PiBSZXVzZSB0aGUgaW1wbGVtZW50YXRpb24gb2YgdmlydGlvX2lvbW11X3Nl
+dF9pb3ZhX3JhbmdlcygpIHdoaWNoDQo+Pj4+IHdpbGwgYmUgcmVtb3ZlZCBpbiBzdWJzZXF1ZW50
+IHBhdGNoZXMuDQo+Pj4+DQo+Pj4+IFNpZ25lZC1vZmYtYnk6IEVyaWMgQXVnZXIgPGVyaWMuYXVn
+ZXJAcmVkaGF0LmNvbT4NCj4+Pj4gLS0tDQo+Pj4+IGh3L3ZpcnRpby92aXJ0aW8taW9tbXUuYyB8
+IDEzNCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0NCj4tLQ0KPj4tLS0NCj4+Pj4g
+LQ0KPj4+PiAxIGZpbGUgY2hhbmdlZCwgMTAxIGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygt
+KQ0KPj4+Pg0KPj4+PiBkaWZmIC0tZ2l0IGEvaHcvdmlydGlvL3ZpcnRpby1pb21tdS5jIGIvaHcv
+dmlydGlvL3ZpcnRpby1pb21tdS5jDQo+Pj4+IGluZGV4IDhhNGJkOTMzYzYuLjcxNmEzZmNmYmYg
+MTAwNjQ0DQo+Pj4+IC0tLSBhL2h3L3ZpcnRpby92aXJ0aW8taW9tbXUuYw0KPj4+PiArKysgYi9o
+dy92aXJ0aW8vdmlydGlvLWlvbW11LmMNCj4+Pj4gQEAgLTQ2MSw4ICs0NjEsMTA5IEBAIHN0YXRp
+YyBBZGRyZXNzU3BhY2UNCj4+Pj4gKnZpcnRpb19pb21tdV9maW5kX2FkZF9hcyhQQ0lCdXMgKmJ1
+cywgdm9pZCAqb3BhcXVlLA0KPj4+PiAgICAgcmV0dXJuICZzZGV2LT5hczsNCj4+Pj4gfQ0KPj4+
+Pg0KPj4+PiArLyoqDQo+Pj4+ICsgKiByZWJ1aWxkX3Jlc3ZfcmVnaW9uczogcmVidWlsZCByZXN2
+IHJlZ2lvbnMgd2l0aCBib3RoIHRoZQ0KPj4+PiArICogaW5mbyBvZiBob3N0IHJlc3YgcmFuZ2Vz
+IGFuZCBwcm9wZXJ0eSBzZXQgcmVzdiByYW5nZXMNCj4+Pj4gKyAqLw0KPj4+PiArc3RhdGljIGlu
+dCByZWJ1aWxkX3Jlc3ZfcmVnaW9ucyhJT01NVURldmljZSAqc2RldikNCj4+Pj4gK3sNCj4+Pj4g
+KyAgICBHTGlzdCAqbDsNCj4+Pj4gKyAgICBpbnQgaSA9IDA7DQo+Pj4+ICsNCj4+Pj4gKyAgICAv
+KiBmcmVlIHRoZSBleGlzdGluZyBsaXN0IGFuZCByZWJ1aWxkIGl0IGZyb20gc2NyYXRjaCAqLw0K
+Pj4+PiArICAgIGdfbGlzdF9mcmVlX2Z1bGwoc2Rldi0+cmVzdl9yZWdpb25zLCBnX2ZyZWUpOw0K
+Pj4+PiArICAgIHNkZXYtPnJlc3ZfcmVnaW9ucyA9IE5VTEw7DQo+Pj4+ICsNCj4+Pj4gKyAgICAv
+KiBGaXJzdCBhZGQgaG9zdCByZXNlcnZlZCByZWdpb25zIGlmIGFueSwgYWxsIHRhZ2dlZCBhcyBS
+RVNFUlZFRCAqLw0KPj4+PiArICAgIGZvciAobCA9IHNkZXYtPmhvc3RfcmVzdl9yYW5nZXM7IGw7
+IGwgPSBsLT5uZXh0KSB7DQo+Pj4+ICsgICAgICAgIFJlc2VydmVkUmVnaW9uICpyZWcgPSBnX25l
+dzAoUmVzZXJ2ZWRSZWdpb24sIDEpOw0KPj4+PiArICAgICAgICBSYW5nZSAqciA9IChSYW5nZSAq
+KWwtPmRhdGE7DQo+Pj4+ICsNCj4+Pj4gKyAgICAgICAgcmVnLT50eXBlID0gVklSVElPX0lPTU1V
+X1JFU1ZfTUVNX1RfUkVTRVJWRUQ7DQo+Pj4+ICsgICAgICAgIHJhbmdlX3NldF9ib3VuZHMoJnJl
+Zy0+cmFuZ2UsIHJhbmdlX2xvYihyKSwgcmFuZ2VfdXBiKHIpKTsNCj4+Pj4gKyAgICAgICAgc2Rl
+di0+cmVzdl9yZWdpb25zID0gcmVzdl9yZWdpb25fbGlzdF9pbnNlcnQoc2Rldi0+cmVzdl9yZWdp
+b25zLA0KPj5yZWcpOw0KPj4+PiArICAgICAgICB0cmFjZV92aXJ0aW9faW9tbXVfaG9zdF9yZXN2
+X3JlZ2lvbnMoc2Rldi0NCj4+Pj4+IGlvbW11X21yLnBhcmVudF9vYmoubmFtZSwgaSwNCj4+Pj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJhbmdlX2xvYigm
+cmVnLT5yYW5nZSksDQo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICByYW5nZV91cGIoJnJlZy0+cmFuZ2UpKTsNCj4+Pj4gKyAgICAgICAgaSsrOw0KPj4+
+PiArICAgIH0NCj4+Pj4gKyAgICAvKg0KPj4+PiArICAgICAqIHRoZW4gYWRkIGhpZ2hlciBwcmlv
+cml0eSByZXNlcnZlZCByZWdpb25zIHNldCBieSB0aGUgbWFjaGluZQ0KPj4+PiArICAgICAqIHRo
+cm91Z2ggcHJvcGVydGllcw0KPj4+PiArICAgICAqLw0KPj4+PiArICAgIGFkZF9wcm9wX3Jlc3Zf
+cmVnaW9ucyhzZGV2KTsNCj4+Pj4gKyAgICByZXR1cm4gMDsNCj4+Pj4gK30NCj4+Pj4gKw0KPj4+
+PiArc3RhdGljIGludCB2aXJ0aW9faW9tbXVfc2V0X2hvc3RfaW92YV9yYW5nZXMoUENJQnVzICpi
+dXMsIHZvaWQNCj4+Km9wYXF1ZSwNCj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGludCBkZXZmbiwgR0xpc3QgKmlvdmFfcmFuZ2VzLA0KPj4+PiArICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3IgKiplcnJwKQ0K
+Pj4+PiArew0KPj4+PiArICAgIFZpcnRJT0lPTU1VICpzID0gb3BhcXVlOw0KPj4+PiArICAgIElP
+TU1VUGNpQnVzICpzYnVzID0gZ19oYXNoX3RhYmxlX2xvb2t1cChzLT5hc19ieV9idXNwdHIsIGJ1
+cyk7DQo+Pj4+ICsgICAgSU9NTVVEZXZpY2UgKnNkZXY7DQo+Pj4+ICsgICAgR0xpc3QgKmN1cnJl
+bnRfcmFuZ2VzOw0KPj4+PiArICAgIEdMaXN0ICpsLCAqdG1wLCAqbmV3X3JhbmdlcyA9IE5VTEw7
+DQo+Pj4+ICsgICAgaW50IHJldCA9IC1FSU5WQUw7DQo+Pj4+ICsNCj4+Pj4gKyAgICBpZiAoIXNi
+dXMpIHsNCj4+Pj4gKyAgICAgICAgZXJyb3JfcmVwb3J0KCIlcyBubyBzYnVzIiwgX19mdW5jX18p
+Ow0KPj4+PiArICAgIH0NCj4+PiBEbyB3ZSBwbGFuIHRvIHN1cHBvcnQgbXVsdGlwbGUgZGV2aWNl
+cyBpbiBzYW1lIGlvbW11IGdyb3VwPw0KPj4+IGFzX2J5X2J1c3B0ciBpcyBoYXNoZWQgYnkgYnVz
+IHdoaWNoIGlzIGFuIGFsaWFzZWQgYnVzIG9mIHRoZSBkZXZpY2UuDQo+Pj4gU28gc2J1cyBtYXkg
+YmUgTlVMTCBpZiBkZXZpY2UncyBidXMgaXMgZGlmZmVyZW50IGZyb20gYWxpYXNlZCBidXMuDQo+
+PklmIEkgdW5kZXJzdGFuZCB5b3UgcmVtYXJrIHByb3Blcmx5IHRoaXMgbWVhbnMgdGhhdA0KPj4N
+Cj4+dmlydGlvX2lvbW11X3NldF9ob3N0X2lvdmFfcmFuZ2VzIHNob3VsZCB0YWtlIGFzIGFyZyB0
+aGUgYWxpYXNlZCBidXMgYW5kDQo+Pm5vdCB0aGUgYnVzLCByaWdodD8NCj4+SSB0aGluayB3ZSBz
+aGFsbCBzdXBwb3J0IG5vbiBzaW5nbGV0b24gZ3JvdXBzIHRvby4NCj4NCj5Ob3QgZXhhY3RseS4g
+SSB0aGluayB3ZSBzaG91bGQgcGFzcyBkZXZpY2UncyByZWFsIEJERiwgbm90IGFsaWFzZWQgQkRG
+LiBPciBlbHNlDQo+d2Ugc2V0dXAgcmVzZXJ2ZWQgcmFuZ2VzIG9mIGFsbCBkZXZpY2VzIGluIHNh
+bWUgZ3JvdXAgdG8gYWxpYXNlZCBCREYuDQo+DQo+SSdtIGp1c3Qgc3VzcGVjdGluZyB0aGF0IHRo
+ZSBoYXNoIGxvb2t1cCB3aXRoIHJlYWwgQkRGIGluZGV4IHdpbGwgcmV0dXJuIE5VTEwNCj5pZg0K
+Pm11bHRpcGxlIGRldmljZXMgYXJlIGluIHNhbWUgZ3JvdXAuIElmIHRoYXTigJlzIHRydWUsIHRo
+ZW4gaW92YV9yYW5nZXMgaXMgbmV2ZXINCj5wYXNzZWQgdG8gZ3Vlc3QuDQoNCkkgZ3Vlc3MgaHR0
+cHM6Ly9saXN0cy5nbnUub3JnL2FyY2hpdmUvaHRtbC9xZW11LWRldmVsLzIwMjQtMDEvbXNnMDQx
+NTMuaHRtbA0KbWF5IGhlbHAgb24gdGhlIGRpc2N1c3Npb24gaGVyZSwgaXQncyBhIGNvbXBsZW1l
+bnRhdGlvbiB0byB0aGlzIHNlcmllcyB0byBtYWtlDQptdWx0aXBsZSBkZXZpY2VzIGluIHNhbWUg
+SU9NTVUgZ3JvdXAgd29ya3MuIENvbW1lbnRzIHdlbGNvbWUuDQoNClRoYW5rcw0KWmhlbnpob25n
+DQo=

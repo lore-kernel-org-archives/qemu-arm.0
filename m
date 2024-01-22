@@ -1,151 +1,261 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2058977ejg;
-        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFcGVkYIDHks9h+1ynpMv5lAJU3vKq2pPKg/bUE5DwVHxpLMcu7dP6hFEcfF7HjuF9XJhoQ
-X-Received: by 2002:a05:600c:3145:b0:40e:a32c:9888 with SMTP id h5-20020a05600c314500b0040ea32c9888mr1517824wmo.36.1705854273200;
-        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705854273; cv=none;
+Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2265839ejg;
+        Sun, 21 Jan 2024 19:27:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEyHQk0eYC3vWiLUDM4TFmAhU7oNuULIvsuFYdTxco2t77BR42I/Pj/OqKhh4F13MM48iK+
+X-Received: by 2002:a05:6214:19e6:b0:686:91e8:de5d with SMTP id q6-20020a05621419e600b0068691e8de5dmr1237215qvc.129.1705894069964;
+        Sun, 21 Jan 2024 19:27:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705894069; cv=none;
         d=google.com; s=arc-20160816;
-        b=ItsQVnly2pXupq8nPhccW8weetMqV7s5bTIS9/nuICWRDCgQph6f2cBQziCbWaZ6XQ
-         LA0SG6AbqCZ0VprL2wHTjmOJpaAksKT9Mln00UiqkDZLORHkLgUYBL7XFyFhe5Lf42VF
-         yV3NBIQCOM7ES2aAEBvT1sO/DCZA/jCs/NOwO4E3VHL8W0B716Vq4GaDwxkzKe7t039X
-         XqVrZaWC69CfG/JMC3beL4+zIbohxJ8+8ketuaJ5OSzuE2Cxm8vco4fYgBYgM5A3top0
-         OOY3+5rpRdP+lDs5RrMxSf3bQ7+iqvxaYnzoYTE+rsGzd52xQCn1m1FYDcmH4z+NTmN+
-         Jdzw==
+        b=L4S9Cr2pJIjhzEtYIBe4Tsa84oDFIhwIzwETQYxSsADg0owyaRnOgGjNFo/+WMd2zu
+         zhohhy1pR0zLv1kswQzBmjN/l3do2Tx4F2DTswZHCLVv/Kj0Zv6Orl6qlhwm5c/3DH96
+         7eBr4ruyiB2QAO2vGhiPRpzR7XfUpBw7/S+IWzqPWCGmmNYF0J7Vd103xGkuMb0OHLDk
+         OYedC+poI7drBYvgBQjNIAnsLIru2CEMWBgEGtC+keYN+k8BVGKY1AaIIF8wQB9Clxpr
+         MF5AUvADGektsfdWW5ob0HFxozfQZJ7pHyXagOlqHHWz7mPBp483cMxXYrg7B5uf8/WV
+         JkSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
-         :from:references:cc:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=0AFY5tEax31sARXtLfMpxvFm/xKNpvSVL+R/6CTVwWc=;
-        fh=H93wTKoKwIojazEDYOpGbbzjsfKtNGvy9HH1DvTrqPM=;
-        b=PEaqvFsgPa9gS45TyejFJ7yHUN0hqmVy1IlunmTGHzokiUDnYsbQ3Rgde4gq5IbqCr
-         Vpnt2dBSVK0fOJC8t7k/7VwEWIW6yoYgiqg7Oqign0+L/kI+JilFOt9LOIQm1UuVNlOO
-         i6SpFHarIMN3MhmGCW5sQgFk7z4Uc579aMxU6W3uYpA7p2RGyz6osd2w6bgGADWNifyN
-         /KqiV8X71yXPAniq5GYnqaIXMi/jBGXDFMoLqX0C9kPZmtGAVEw8Hw36rfsBsy/Ed19C
-         JUbkDIVkAXNLx090GKsV/OCfY5vK+YFLVqUglntmtYsWFIbyBt7IUkoumt98OjjmFhay
-         gyeg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=p2igC9J/DXbp0p2cQRhRVs1QMFzrKhrr2jRPbTk8b3Y=;
+        fh=Au8BVtIDqWj8kCKZ+HLhiVQqmhm9eOUAvXyOvLodcAA=;
+        b=SvFWy5A8G5e+s1aLkPvLQXco3lUODkZE26G052bvpM9a8NOyg+kOFJhf6KvXymxVJ/
+         n5VWuhUd7AHOmY0bJZdqpe7Hido4tjxbSsFrwuxcwJivbS4fbVXn3wtkIWVpdQVk4Ui4
+         a6hHlh+w/8ahfKCfghC4TsF0jG4e5CtaX0HhnJOe0KcoB82RgmhPY2ZvO22OEOAxK+6L
+         g8sfAgl15txeFa2yYkQ//3iyAS/K6NystSKO8MqfgMb8EoftDcoo/hKyryvHH7EXuFEG
+         5aQAGSbvs9/xVW3kAJmWPUHgo0EnjKbb8uJl2eQrdE6cxGEZKoYh1tiOtdY2/+So8WTw
+         LgEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@web.de header.s=s29768273 header.b=OKcchecs;
-       spf=pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) smtp.mailfrom=jan.kiszka@web.de;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=web.de
-Return-Path: <jan.kiszka@web.de>
-Received: from mout.web.de (mout.web.de. [217.72.192.78])
-        by mx.google.com with ESMTPS id z10-20020a05600c078a00b0040e47216e42si11623108wmo.162.2024.01.21.08.24.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 21 Jan 2024 08:24:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) client-ip=217.72.192.78;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NvhV+8b7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f13-20020a05620a280d00b0078328d65c15si4916355qkp.476.2024.01.21.19.27.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 21 Jan 2024 19:27:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@web.de header.s=s29768273 header.b=OKcchecs;
-       spf=pass (google.com: domain of jan.kiszka@web.de designates 217.72.192.78 as permitted sender) smtp.mailfrom=jan.kiszka@web.de;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=web.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de; s=s29768273;
-	t=1705854272; x=1706459072; i=jan.kiszka@web.de;
-	bh=ECl6xXsI289B9nONusLcZmYsxKtnfBVMIX2BDjFm/+Y=;
-	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
-	 In-Reply-To;
-	b=OKcchecspyeXPQxT40Oc6ikUuSH08t32jg6+kis5enttZ3vS3ltM6afrODKmeiFD
-	 /2wcVdbeJ3SvT0w7XDaQ6Htv21Ni2aX4xKXOpmHQl6fClVL/7H5ar5xeosV8GV2uB
-	 DNAifPeQ/3qlHVpq1QeA5UVcR5t1NuMSH3T8nfiI1PzjOafG4z6X3pFoRzE4he8M3
-	 LnRBoUBTyqNyDjEO8BUV15a4DNxg2A21x6g4xhO+n4U1cPx7eJZ9borIBpE2sOL/l
-	 nvWhkXF1oB1/5E0H9ZJlI14o9mrP7MAKwZuvrAriK6qgAH7X3fGa7ON9NStilCLJ5
-	 hzUUMOAEFikoogJInA==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.12.10] ([46.128.89.130]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MFaui-1rKUxi21cM-00H6XN; Sun, 21
- Jan 2024 17:24:32 +0100
-Message-ID: <9dff82f7-d997-4092-8b5a-cd21963826da@web.de>
-Date: Sun, 21 Jan 2024 17:24:31 +0100
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NvhV+8b7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rRky5-00033E-Ps; Sun, 21 Jan 2024 22:27:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rRky4-00032s-5A; Sun, 21 Jan 2024 22:27:24 -0500
+Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rRky1-0001DO-OB; Sun, 21 Jan 2024 22:27:23 -0500
+Received: by mail-ua1-x929.google.com with SMTP id
+ a1e0cc1a2514c-7d2940ad0e1so609205241.1; 
+ Sun, 21 Jan 2024 19:27:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705894040; x=1706498840; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=p2igC9J/DXbp0p2cQRhRVs1QMFzrKhrr2jRPbTk8b3Y=;
+ b=NvhV+8b70omzccwp/UUDKxwI3j9OnEfdBLm0iBQOfEDG+NH1Xk7ezjIrAtBiPYpeF/
+ 3v7Tas7fA9u8jg66LexNedVvAH4mNaOdnNktjJdaIFQYYYacqFUjbOBSybFV3Oo4yX0W
+ L7pHr4VfR30Y6YtKNzZn1ZgcWs2SIWCuVglOQWWtB3fXS3dkUOYB9QpVYG7HvOQaMt4z
+ f6S1CoAiZR3oNp91IZCZlxCEGIJemBmZU8E/QC5J+Lf98jVUkx2I/hPwZSwxjhZh2PT9
+ +ZBldbv7uUi6qw008KLCZdhH7PSWqC9upe+8AidK77X81rCjMqiYe/sKNVFUOJgIgaLl
+ okhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705894040; x=1706498840;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=p2igC9J/DXbp0p2cQRhRVs1QMFzrKhrr2jRPbTk8b3Y=;
+ b=eHaH7Pc82vTE2BgcPZO9Z30ilrlJl0kVFUwgvTjNcv7zNvnUDGsLhKZ4bohft1xQY4
+ HtGG2cl73zsjRQWqL5ITeVVFE/A/ahh2Gx4X3sPoW0x8a0DMRvt2LoeEsRNEnadPcibl
+ oMPpo/9haPI2BOQqs0ME6nu4jT0UtUvfHcJdjF7KP5lBh4yzZxiWY3wFpekK6kIYK31d
+ ZBcXMq0x188DvoeuaE/Hun8SyFSPaH18vd8YTaP9Dx68R/EuyezmHs3cROfN1oU66ftv
+ llmAr3Xe60l/JxgDNaYfoT4OQRKCKb37RDz38cvmhowf/2j7yrYWubJeb0FRuHaBX8hN
+ XDJA==
+X-Gm-Message-State: AOJu0YwVTNnseaqhBiq5uJ70F/z65qS8Rv6gzrCA2t4uXdrDC9jjcz1v
+ D07JWwEGlSXsFDbJZJoykuA7jzjB+BnUbIzrEZAB61vBblvej/+xaDFlZ/4kuahZFjsMo0XWUmA
+ ZU66UUjvL8dkoQXC3S9orBgXW5Nc=
+X-Received: by 2002:a67:fa45:0:b0:467:fa58:7eb7 with SMTP id
+ j5-20020a67fa45000000b00467fa587eb7mr961350vsq.50.1705894039988; Sun, 21 Jan
+ 2024 19:27:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
-References: <20231103182750.855577-1-peter.maydell@linaro.org>
- <871qadh8g8.fsf@draig.linaro.org>
-From: Jan Kiszka <jan.kiszka@web.de>
-Autocrypt: addr=jan.kiszka@web.de; keydata=
- xsDhBEq0i8QRBAD2wOxlC9m/8t/vqjm1U9yQCT6OJ2Wbv/qys9DYM0CvcOTDMWQwmV1/VsZj
- KR5YgB5NPt+To7X6x5cjz15AGnx5Fb8Wnrq8EF9ZfHMwb7YMx1LdPYPDnXr37wE3XupFmkHB
- Mes4htyX7Dz8LvKDLnli4IsAmWG+kV1JI6LWKXLpSwCg8JRq4SWoB4VCQxbH3GjntgvwNc8D
- /2q5Dj0urJ7s7sdXhrH0hcFkpSFRmU5Yd6MCwcbFHm2paL5gqVjNNUUwDBKAL9eZaQVIHKwC
- 44BvNGO2gcQ26R3AuCHUQ+pZHg34tok1JCNZ6IEZccb+33Qq0qbcDMJJiDYp7ppp6ozifvc4
- YaqJECX48IydxfE9+41oV7T5vNAzA/QL/UMJyTnu5jiOXcyn5iFQw535lXkwKsqeXzCowLho
- HICZ2jITJPdTT/+9pGWwMQqST/SS35Tx4EnS3z2BWsNMCLuXCPkxF1elaMJqMfMJxFD8rAgS
- 9GK6zP6fJlsA1wq/UvKSL8v4QPOnTNCVOsyqJVasGV0ZPcDfcj+ClNO4zR5KYW4gS2lzemth
- IDxqYW4ua2lzemthQHdlYi5kZT7CYAQTEQIAIAUCSrSLxAIbIwYLCQgHAwIEFQIIAwQWAgMB
- Ah4BAheAAAoJEIrUrG965ecUhIMAnR6DDCW5cx+cVdYhydbhQXqeief6AJ4p+z4+nrmZLdfU
- 7V6nKqKeHeTtj87BTQRKtIvEEAgA2/PlX6oyi7dToH0CJCHq0eKmZaa7CmGaVnxyeepKvIfi
- M8n8Td76AbG64fjREMwgSpb4F/UytF3z/03tj4e49W/zKjbBRB2/wmFRlZBC9crg22Q+bgvM
- OsxnC6uHXaWN8fL+jVei/5OoHOoFqaMsX8EvploitlI/BPj+VgW26jksf3YZyk1hnclsZ/IY
- hXzgRmVJo4RiTW/YLQAkwndwc+fKPa/IYLEDW1Jc4kNLoK0P90b45zju0hpl0C00pVORTOtz
- FK9G5Ha7qOAWJfAVJORHKAkkvwftf3hkpPdLyvZUWRHXvUexmA61fLvDBAFhRxYGD8t5gz88
- SF5Tzq+0ywADBQf/YSkaYrEslPWiCA2wU6EW0yaqBQAobFsOMvsufJ6o2ntq5Ncq37VI3KCT
- 67eHPE9x+zPcENoZWsRrC9S9PCf1LOsi7ybZsR13AJqDFlRzJZ4klh9QwgwFZxUBzOdIvttw
- zG1QkzHx06RKZluFYpPF3DRduSMukdIJ2wmWCU+ohB+mYefe65JGjYQfHVs8mgYVFOPxbRea
- 9VJACCMuspoZWpj43UdR1lLLyIUFYz+jqcPW7Hd/GTIw4N67pYl0dwPDmFd4ohJ5g4Zpq61t
- oNysBGEuEm5GCcn0VmGtQpSYnR5cVm5b2yPz4bIuFOSuZUo/l7vitdY0iy0/wvKbBC+NK8JJ
- BBgRAgAJBQJKtIvEAhsMAAoJEIrUrG965ecULvAAoKGvxs5T3IhyQT8I8sMsyAvCE4wHAJ46
- S16yab+OxNkvOeoOEX0EnHVHaA==
-In-Reply-To: <871qadh8g8.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8
+References: <20240115043431.3900922-1-bin.meng@windriver.com>
+ <20240115043431.3900922-2-bin.meng@windriver.com>
+In-Reply-To: <20240115043431.3900922-2-bin.meng@windriver.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 22 Jan 2024 13:26:53 +1000
+Message-ID: <CAKmqyKNm3cLk1_VDi76W2qXM1kw4XmvP8Fn5NmsYg+sj3iQdEw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/arm: Refactor struct arm_boot_info::get_dtb()
+To: Bin Meng <bin.meng@windriver.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:mrluBn4fJJBQNWIHAydViwPjI2aVUIXBnqSFg4+vt9qXWXV5e7C
- KySUH76hb/y61J0P/vzLeRkzBuaWf6CpsIiQ3A6KsZAUshhBKQGD52/9ELgOhDXH3vgFCTj
- JjJLJYtdIwRcSmQmcf8hiXsCROnG5ju3nfTMBfbAVOv52rihrtE50Ff3geWnn0OArgduDe5
- 0r4Da41ZbthwoPa6FkZhw==
-X-Spam-Flag: NO
-UI-OutboundReport: notjunk:1;M01:P0:TFFsts8+Ris=;i5D/CK2UKWwQDwefS47uoSVYS0q
- cEBjTbOZq947TH89T86WUf/d4zgP3ejmsKVDGQdoE8PcB3AjqJUR3D7Q/4S42K1hganRWptFM
- jlFZdBrHihj57a5KcfWv2AyiouGAf+gfKYJEbheRzT44A9jIPp2fpNBbQfdLexcYVvyqseHXy
- DOq1HSDjKt5HWkMoz+hvQAVmFl8S0H0GMzCad7QTowK+1i/Jg/7wIraNbvPYG08RUJcl4XjUA
- PpJJffKBUsGrgf1bHSBQT4hQbzsO7Q/CdUOk31dIzdZb55K//fo2Q6LcVoGP7tylcKjHyafVB
- 6NfPJvielEtxtJiWb97KKjg6zGnVMOFg6rcV8Ic/jQ5dcXLcbEGuMTRaSa6xNXCENH6cZWt75
- BfbOece6F11bPhdFNlJUbRq21CNbo9tmPKELd6mkPtEqgnFifHCQEeO/QOGJowkuptGbNQDTG
- sTGS10eUAVDO66Kwkw79PJnJKXWcYJzesRBgyJjU2Cvh1h49OOHqP+BUUPeHLR8nXZ6CKc7VA
- HCN83Fm5rVCkLRj84m1qDQd36taWzOeAw78rYknd9gzmwCZ36eB1ifOpzsFa2mmF54gPr0Z/v
- 229svQbfV7oU2tBWGrUkNagjiC1c/+4W4r1Xmjq9ltMoU0PIkRlI0cB5OaqU0OgI1nuniZWRZ
- XlMzSwzU9B0A4C95HUK4YNQEdmH6rjkawdw0F4OPi2/Vecdz5s596HtxAYA4yH9Xlp643fjl8
- KaIXVKQZeS6lWfJnD8VCgLijBUGT27cWbIUUijIAcjH0wQQ1NUSU9BEAO/bYgDvBWywzQfYsL
- r9upVzk4eVzUDPz6i4hv3Ar1z7dWEHlSBNw5mN0XtfGeldS/u/hq8WBsi8z4LV4pi0kwMMG+n
- 9gIGXoDcoaydPINIdcq3/zlx60j8D2DgKkbfb8vAzNoeguqNXyxVzenY4eypANjcayKX6ISNf
- sGWE9g==
-X-TUID: fV7begRvCMlT
+Received-SPF: pass client-ip=2607:f8b0:4864:20::929;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x929.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cDITbdsP3eg/
 
-On 19.01.24 12:24, Alex Benn=C3=A9e wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
+On Mon, Jan 15, 2024 at 2:36=E2=80=AFPM Bin Meng <bin.meng@windriver.com> w=
+rote:
 >
->> Convert the musicpal key input device to use
->> qemu_add_kbd_event_handler().  This lets us simplify it because we no
->> longer need to track whether we're in the middle of a PS/2 multibyte
->> key sequence.
->>
->> In the conversion we move the keyboard handler registration from init
->> to realize, because devices shouldn't disturb the state of the
->> simulation by doing things like registering input handlers until
->> they're realized, so that device objects can be introspected
->> safely.
->>
->> The behaviour where key-repeat is permitted for the arrow-keys only
->> is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
->> and add a comment to that effect.
+> At present we expect struct arm_boot_info::get_dtb() to return the
+> device tree pointer as well as the device tree size. However, this
+> is not necessary as we can get the device tree size via the device
+> tree header directly. Change get_dtb() signature to drop the *size
+> argument, and get the size by ourselves.
 >
-> Well the key input all works as intended and looks good to me. I'm a
-> little disappointed I couldn't get audio working on the musicpal machine
-> but that is not a problem for this patch.
->
-> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-Looks good to me as well, all keys still work fine.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-No idea what's the issue with sound, though. I think I haven't run the
-whole stuff in a decade or so, had to search for all the pieces first of
-all again. The webradio service original behind this stopped their
-operations, at least for this device, but manually entered favorits
-still work on the real device - I still have one, though that is
-starting to get some issues as well.
+Alistair
 
-Thanks,
-Jan
+> ---
+>
+>  include/hw/arm/boot.h     | 8 ++++----
+>  hw/arm/boot.c             | 3 ++-
+>  hw/arm/sbsa-ref.c         | 3 +--
+>  hw/arm/virt.c             | 4 +---
+>  hw/arm/xlnx-versal-virt.c | 4 +---
+>  5 files changed, 9 insertions(+), 13 deletions(-)
+>
+> diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
+> index 80c492d742..37fd1b520e 100644
+> --- a/include/hw/arm/boot.h
+> +++ b/include/hw/arm/boot.h
+> @@ -82,11 +82,11 @@ struct arm_boot_info {
+>                                       const struct arm_boot_info *info);
+>      /* if a board is able to create a dtb without a dtb file then it
+>       * sets get_dtb. This will only be used if no dtb file is provided
+> -     * by the user. On success, sets *size to the length of the created
+> -     * dtb, and returns a pointer to it. (The caller must free this memo=
+ry
+> -     * with g_free() when it has finished with it.) On failure, returns =
+NULL.
+> +     * by the user. On success, returns a pointer to it. (The caller mus=
+t
+> +     * free this memory with g_free() when it has finished with it.)
+> +     * On failure, returns NULL.
+>       */
+> -    void *(*get_dtb)(const struct arm_boot_info *info, int *size);
+> +    void *(*get_dtb)(const struct arm_boot_info *info);
+>      /* if a board needs to be able to modify a device tree provided by
+>       * the user it should implement this hook.
+>       */
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 84ea6a807a..ff1173299f 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -538,11 +538,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+_info *binfo,
+>          }
+>          g_free(filename);
+>      } else {
+> -        fdt =3D binfo->get_dtb(binfo, &size);
+> +        fdt =3D binfo->get_dtb(binfo);
+>          if (!fdt) {
+>              fprintf(stderr, "Board was unable to create a dtb blob\n");
+>              goto fail;
+>          }
+> +        size =3D fdt_totalsize(fdt);
+>      }
+>
+>      if (addr_limit > addr && size > (addr_limit - addr)) {
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 477dca0637..c5023871a7 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -681,12 +681,11 @@ static void create_pcie(SBSAMachineState *sms)
+>      create_smmu(sms, pci->bus);
+>  }
+>
+> -static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_si=
+ze)
+> +static void *sbsa_ref_dtb(const struct arm_boot_info *binfo)
+>  {
+>      const SBSAMachineState *board =3D container_of(binfo, SBSAMachineSta=
+te,
+>                                                   bootinfo);
+>
+> -    *fdt_size =3D board->fdt_size;
+>      return board->fdt;
+>  }
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 2793121cb4..1996fffa99 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1577,14 +1577,12 @@ static void create_secure_ram(VirtMachineState *v=
+ms,
+>      g_free(nodename);
+>  }
+>
+> -static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_si=
+ze)
+> +static void *machvirt_dtb(const struct arm_boot_info *binfo)
+>  {
+>      const VirtMachineState *board =3D container_of(binfo, VirtMachineSta=
+te,
+>                                                   bootinfo);
+>      MachineState *ms =3D MACHINE(board);
+>
+> -
+> -    *fdt_size =3D board->fdt_size;
+>      return ms->fdt;
+>  }
+>
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index 537118224f..1e043c813e 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -551,12 +551,10 @@ static void versal_virt_modify_dtb(const struct arm=
+_boot_info *binfo,
+>      fdt_add_memory_nodes(s, fdt, binfo->ram_size);
+>  }
+>
+> -static void *versal_virt_get_dtb(const struct arm_boot_info *binfo,
+> -                                  int *fdt_size)
+> +static void *versal_virt_get_dtb(const struct arm_boot_info *binfo)
+>  {
+>      const VersalVirt *board =3D container_of(binfo, VersalVirt, binfo);
+>
+> -    *fdt_size =3D board->fdt_size;
+>      return board->fdt;
+>  }
+>
+> --
+> 2.34.1
+>
+>

@@ -1,34 +1,34 @@
-Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp190940ejc;
-        Tue, 23 Jan 2024 01:04:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH1K+yY/6vaAt05e6+m6LZ0M1QwRHoWi7YuxT15/TNolidtuFoK4iNFH1fJ5wqs21TfDzCm
-X-Received: by 2002:a9d:73d6:0:b0:6dd:ddd8:51e5 with SMTP id m22-20020a9d73d6000000b006ddddd851e5mr5125583otk.43.1706000653165;
+Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp190945ejc;
+        Tue, 23 Jan 2024 01:04:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGXTIH0dcjwBY71yNng6Qgklq/sTVBUHyBgoG0DyDuX2xM/aRSms+HMEaUCBM8A++E+ATaI
+X-Received: by 2002:ad4:5b87:0:b0:680:ce93:f47b with SMTP id 7-20020ad45b87000000b00680ce93f47bmr753275qvp.11.1706000653885;
         Tue, 23 Jan 2024 01:04:13 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1706000653; cv=none;
         d=google.com; s=arc-20160816;
-        b=eggcMuiZgapS+wq+r8Ou3GEy2nRQx+4OiLZ2SW2mj2/MygdkW4lXWzi3tLELxmmZZ1
-         JaeU5fQDQOIIUHOB/jlJcPoD3XOBCG5RWbqXH5xJ/+pPDlLS13vOPNyNG2f9o1UkJP1u
-         04HQBnlDLQM6ef5e5E2V9hGbDIXDB4Mu6C/UeEEjuDWpRkM02eqkuF4tkXopXqGDSm2k
-         KzkjfvLHycgEwzJoQZSJMBU1PKbcK0HHjoFPwm2wnFqQDbQyAT7qyXvY2kRhzTk4iuJU
-         ZANXE0kyPia4LAx/OHeYU1BLz5ApqFGQPR6EeY1GH7YD44ZtVJuR4y3rBu1mrQjt82rV
-         oIMQ==
+        b=fx7joCNZqTY3OZc8PlVrCexCcP+lRsUlm2qWRnl44AjnKUmHAjIT/J7v/pW8/GYhtW
+         75a8mvIFkcvrkWEm3SaMId2aUB9SL351KDs9SQbeHx/aSxihIAm8/Z4lWo94wHq1TQqS
+         jFbhieWP3eJWpyImV+1UfkX6xbvS2GPte0oM73GW5ELg5b+dxWcdOJCgCVU99SIT1qx2
+         yXP0sjRoD5busm4nsE06JiullN9XA2iVKILw3NRn3U7m5XUQM5tmmzQPWJa7rApY72VZ
+         9c46B9mrfipcJ3hRJ44vWnTW7Z+42m4Q6BQjndURbOPr0N2C0dSmxRqFUoTmmTf34mcv
+         sPIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=ZwqT9H6R0Y9hY0MtabauQpDfUCDV4nnYBHE39VGP+54=;
+        bh=rsr30efarczPFZGBFU2tSD2GKhpuh4P1uu9sDnG70pk=;
         fh=CjqoZpSay6rskVZIzd7DmHmGQlvZ+7x6x29uJZc5v74=;
-        b=prQYRP39OYIV6JiNZaU4lYVLXyUSKddX3eLgIwIzNTYklaZgeXviKXwbMYWElMrs8M
-         qNjg7nrFFryVHoeDR61r7JCMk8xkUDlZLxT/s/qWaAeXy9OaPeVFXidQ3o1FCRwGVaLo
-         3PiFprkzPtiv703Ef2cj6Il97OehzUOVdO7EjIJOJ0y9qR1AyjG9jErRKVNKsrADupxE
-         xJ6WYxdbSTM9BUuV1/UWQ7v3ZuGrqOG9swR0dA93ZSeet42Ofdzt9FXrO+p8qJqfLMrU
-         9Ud93V3z6Dr5VjqLdyO/OtNRnzyYnnKQsY4p5tSb5RZATzWlWD1oeOIyhbsI1hIq87DD
-         Uc+g==
+        b=mc+vE2RC0euZcwN+NDlFS0h6L+MnAzc5xi2vefA4eeb3ewloJ9Ay96rZls/qFujxFV
+         3Bl+VIZpoKH2HEj1UkOqN7I3CUEon6ktFLpZg9+nTey+GwiD6Mr1fxl8BQtns71/W0Jc
+         0Ji8SMZpS4oegKrLNPCFG2AUOqPCwqDJHXTs6oBU8lhxj2ONf9/0Au/VbhXkWYsR8oSe
+         DnHRGQxcjwuEEhI7SDT0OCJgTpvRQnsZFjRjSboUZ9GpGrXRqQ7nylSMAQ+7PGhFvmbY
+         p040zlVNQcqN6IQq/RGJFbX/LlStGGWoRnr7gI9TeW2IGdXkZ9UMN4fzl61Un47Naeji
+         LFoA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21-20020ac85755000000b0042a2a04c12bsi7524930qtx.515.2024.01.23.01.04.13
+        by mx.google.com with ESMTPS id k1-20020a0cb241000000b006814f436c2fsi7775731qve.239.2024.01.23.01.04.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 23 Jan 2024 01:04:13 -0800 (PST)
@@ -38,30 +38,31 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rSCh7-000329-Rb; Tue, 23 Jan 2024 04:03:45 -0500
+	id 1rSChG-00037l-E8; Tue, 23 Jan 2024 04:03:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=9HdW=JB=kaod.org=clg@ozlabs.org>)
- id 1rSCh6-00030s-5w; Tue, 23 Jan 2024 04:03:44 -0500
+ id 1rSChE-00036b-QB; Tue, 23 Jan 2024 04:03:52 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=9HdW=JB=kaod.org=clg@ozlabs.org>)
- id 1rSCgy-0007zL-Bj; Tue, 23 Jan 2024 04:03:43 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TK1N20sWgz4wcX;
- Tue, 23 Jan 2024 20:03:30 +1100 (AEDT)
+ id 1rSChC-00081V-Of; Tue, 23 Jan 2024 04:03:52 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TK1NN20wGz4wcJ;
+ Tue, 23 Jan 2024 20:03:48 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TK1My2hGkz4wc6;
- Tue, 23 Jan 2024 20:03:26 +1100 (AEDT)
-Message-ID: <14f2245c-ef63-454f-8ea2-eb5f21808100@kaod.org>
-Date: Tue, 23 Jan 2024 10:03:22 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TK1NJ6tB4z4wc6;
+ Tue, 23 Jan 2024 20:03:44 +1100 (AEDT)
+Message-ID: <6c22b5f1-6c72-4b31-85a0-d4d7acf02aab@kaod.org>
+Date: Tue, 23 Jan 2024 10:03:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/8] hw/arm/aspeed/2400: Check for CPU types in
+Subject: Re: [PATCH 5/8] hw/arm/aspeed/2500: Check for CPU types in
  machine_run_board_init()
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -73,9 +74,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, Joel Stanley <joel@jms.id.au>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring <robh@kernel.org>
 References: <20240123063842.35255-1-philmd@linaro.org>
- <20240123063842.35255-5-philmd@linaro.org>
+ <20240123063842.35255-6-philmd@linaro.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240123063842.35255-5-philmd@linaro.org>
+In-Reply-To: <20240123063842.35255-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -101,7 +102,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RiQAaGcByo1Z
+X-TUID: hMKW1A1dxpdT
 
 On 1/23/24 07:38, Philippe Mathieu-Daudé wrote:
 > Restrict MachineClass::valid_cpu_types[] to the single
@@ -118,47 +119,95 @@ C.
 
 
 > ---
->   hw/arm/aspeed.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>   hw/arm/aspeed.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
 > 
 > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index cc59176563..e0e0877b1d 100644
+> index e0e0877b1d..df627096d2 100644
 > --- a/hw/arm/aspeed.c
 > +++ b/hw/arm/aspeed.c
-> @@ -1147,6 +1147,11 @@ static int aspeed_soc_num_cpus(const char *soc_name)
->      return sc->num_cpus;
->   }
+> @@ -1152,6 +1152,11 @@ static const char * const ast2400_a1_valid_cpu_types[] = {
+>       NULL
+>   };
 >   
-> +static const char * const ast2400_a1_valid_cpu_types[] = {
-> +    ARM_CPU_TYPE_NAME("arm926"),
+> +static const char * const ast2500_a1_valid_cpu_types[] = {
+> +    ARM_CPU_TYPE_NAME("arm1176"),
 > +    NULL
 > +};
 > +
 >   static void aspeed_machine_class_init(ObjectClass *oc, void *data)
 >   {
 >       MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -1175,6 +1180,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
->       amc->spi_model = "mx25l25635f";
->       amc->num_cs    = 1;
->       amc->i2c_init  = palmetto_bmc_i2c_init;
-> +    mc->valid_cpu_types = ast2400_a1_valid_cpu_types;
->       mc->default_ram_size       = 256 * MiB;
->       mc->default_cpus = mc->min_cpus = mc->max_cpus =
->           aspeed_soc_num_cpus(amc->soc_name);
-> @@ -1192,6 +1198,7 @@ static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
->       amc->spi_model = "mx25l25635e";
->       amc->num_cs    = 1;
->       amc->i2c_init  = quanta_q71l_bmc_i2c_init;
-> +    mc->valid_cpu_types = ast2400_a1_valid_cpu_types;
->       mc->default_ram_size       = 128 * MiB;
->       mc->default_cpus = mc->min_cpus = mc->max_cpus =
->           aspeed_soc_num_cpus(amc->soc_name);
-> @@ -1211,6 +1218,7 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+> @@ -1236,6 +1241,7 @@ static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
 >       amc->num_cs    = 1;
 >       amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
 >       amc->i2c_init  = palmetto_bmc_i2c_init;
-> +    mc->valid_cpu_types = ast2400_a1_valid_cpu_types;
->       mc->default_ram_size = 256 * MiB;
->   }
->   
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1253,6 +1259,7 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx25l25635f";
+>       amc->num_cs    = 1;
+>       amc->i2c_init  = ast2500_evb_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size       = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1271,6 +1278,7 @@ static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx25l25635e";
+>       amc->num_cs    = 2;
+>       amc->i2c_init  = yosemitev2_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size       = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1288,6 +1296,7 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx66l1g45g";
+>       amc->num_cs    = 2;
+>       amc->i2c_init  = romulus_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size       = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1306,6 +1315,7 @@ static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx25l25635e";
+>       amc->num_cs    = 2;
+>       amc->i2c_init  = tiogapass_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size       = 1 * GiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1324,6 +1334,7 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx66l1g45g";
+>       amc->num_cs    = 2;
+>       amc->i2c_init  = sonorapass_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size       = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1341,6 +1352,7 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+>       amc->spi_model = "mx66l1g45g";
+>       amc->num_cs    = 2;
+>       amc->i2c_init  = witherspoon_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1398,6 +1410,7 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+>       amc->num_cs    = 2;
+>       amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+>       amc->i2c_init  = g220a_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size = 1024 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
+> @@ -1416,6 +1429,7 @@ static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
+>       amc->num_cs    = 2;
+>       amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+>       amc->i2c_init  = fp5280g2_bmc_i2c_init;
+> +    mc->valid_cpu_types = ast2500_a1_valid_cpu_types;
+>       mc->default_ram_size = 512 * MiB;
+>       mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>           aspeed_soc_num_cpus(amc->soc_name);
 

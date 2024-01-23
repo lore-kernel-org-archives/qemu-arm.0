@@ -1,88 +1,86 @@
-Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp119727ejc;
-        Mon, 22 Jan 2024 21:49:06 -0800 (PST)
-X-Received: by 2002:a05:6102:d88:b0:469:bd74:b06c with SMTP id d8-20020a0561020d8800b00469bd74b06cmr2044452vst.25.1705988946466;
-        Mon, 22 Jan 2024 21:49:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705988946; cv=none;
+Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp173962ejc;
+        Tue, 23 Jan 2024 00:20:21 -0800 (PST)
+X-Received: by 2002:a05:6512:a8b:b0:50e:ccd8:f9d9 with SMTP id m11-20020a0565120a8b00b0050eccd8f9d9mr2593609lfu.24.1705998020977;
+        Tue, 23 Jan 2024 00:20:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705998020; cv=none;
         d=google.com; s=arc-20160816;
-        b=QQzPDq1jsh2Vwk/KCZlCphQwCXHDCLuNS+eRxNmuPdlVSbo3kJjPcfzEajIR3j0b6G
-         bOtglT1CcwWBLiWe1qeNQsgbLBKgWowbcOxRSuWvNVKt3adh/PYGHJCtofGxkJ573aa2
-         g0WbuzTxTmmsFdExeb34ceE1Q2KnY7gTJlKxYSRS1FKcmmkYFIqTRexeA11wlFTwwl5I
-         LmAcXLlldt8Ifk5l2BzHMtJu3NENUh2ckvcDqz6wcNeTzt5PZhWGsF+wdPLQ7TTIsup8
-         Is4aFy/2GK1ubeL+1ex6zcFzfelqgwgfm4225oZiPaFvflQpJOOJXympyLqPmhvsb59R
-         6nuQ==
+        b=jdWpZTNAcUa7mE2YaLmktPMnrlYVVVw8tbvLW77QnvEWDTOCbwk6L5Sm68JTBtnQGT
+         vTpAgl5Hl2MZBj11DBQYCDhLOxv87DV3KzJLUUD7qNKKpYhcYyT5YpF/QfrQfWYtzWf/
+         GNw0nYCYvvysCELu6hYMJRTX5YvOfLyiD38FvQyHXjPnX/rsoYRFs6p7ay1YbePSc0Jz
+         Ckv+pNUWWD64fxbAhgAoftEz5bE08uN4XAsFegz87wh0FuLJhI6h/xM9XJ+osVBU6skC
+         bKcPATCsX/t9Spl+hPowGlC4Pdw1RxnYFp8nB4YqF26rXESqgTWrdOsszoa0dpWiGoR1
+         5wbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=XGWFIgPM+i7sy9OAsZEHC3tF/I68FLzyifoG6R+5O+0=;
-        fh=dKyXYLCLX5soM9gImFfqq7bsHK4jp+xhqbkG8eSLWz8=;
-        b=y2Q52JGcrlX5NVHpgVid3+XlU0eyjc1ZxSKHneWg+ogGhr24RHER3DA3q8g+mephZx
-         rev4tWvgdP9P/n5ZQBucJ/xSGq+FK5y/uVKnt+iYYM4R+uGGjLZIF7wSg89vLyamV0X4
-         5LWMwUFRG/i82PEbLe9B3lgyFwaV6cId1la7wcRdXCLvHz6qtRhu3sZezibp92FgMAlp
-         GqgLrwomfKofthc+sP2qqpIwVK35K9Ls/ZBaaYKN5vixu6n+KFszbdP949UUtMP7RbBT
-         M+DU4qZkkmERzeNe05ULpbUMi841QD5xHLuaBoEXblzb321880lYnYJR3QMyEan5igA3
-         Qyqw==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=jUV2ETur/YHhD2L9r2syN08M+wLYBj7G/QeHONE9k4A=;
+        fh=28jZmCtfPvDa6NKrQBOzonEVRynC+D8ypK9vX5EQexw=;
+        b=bkg7coRVmM706u77FAXFoV+s+lnyCFb42decMdngdjoq6vXt4JX/vN3he7x2SQyMww
+         d3AHvvW9PkkAagc3wLBblrQMKIC7PnBw3DyMO8Evd4+dY0a1fdQC5ZQEjAEBOfEseiHC
+         1YvjNBmVbdqmjGDgBF7dQzIg8kGAVbCb5xkPgVhhBpt4jjblXApja9SNlFLmRf5ofxdF
+         qyxs8C3xjL/ICNbAS1aNsaeoEl+v6PFQxY2LqzhQZVPCqvtxEj0JiVWNc60V37wqZ1HD
+         vz+Pt8hoxVosQUEljJsWFphX8yNmndaOvLxMRA7562HnWgH2zPVn//KJDVrErQdSDDFj
+         5Bmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DhDKUovg;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UyGUAbQU;
+       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
+Return-Path: <ajones@ventanamicro.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p94-20020a9f36e7000000b007d2e1be06bbsor1181313uap.4.2024.01.22.21.49.06
+        by mx.google.com with SMTPS id n13-20020a056402060d00b0055a8194dc8fsor1395645edv.12.2024.01.23.00.20.20
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 Jan 2024 21:49:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 23 Jan 2024 00:20:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DhDKUovg;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UyGUAbQU;
+       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1705988945; x=1706593745; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XGWFIgPM+i7sy9OAsZEHC3tF/I68FLzyifoG6R+5O+0=;
-        b=DhDKUovg/vfmHmQXIKAu0XfCfpXHEVs++Pwu2xvEYxl/5b1RpQGYG9Mn+9B0+tzYre
-         btMjgPrM/lrxbr3BJaP/izwFUygThtqB5i9TZIN63D3ChXKmlc9gekPqgeBIETwOy6dF
-         PakzTOUm7zkoMLbLn/YwiQqc2XM5oc3AkbBCZQOwg9yCQXIZfBm2Dj378PyfJHPoBBI2
-         nGBjDfAQP6nZrJAMRaPYbLZaEp63vDu59nEYCC4uNlAuoIl01ko6BNTWHsotI24dg+wz
-         dAZDB3LXLIgOfooSH5xvTfhh9L55yz7nAdVOI5yG1FlhZKF4pB2pki0c+ssLhsAHHgGp
-         F2Cg==
+        d=ventanamicro.com; s=google; t=1705998020; x=1706602820; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=jUV2ETur/YHhD2L9r2syN08M+wLYBj7G/QeHONE9k4A=;
+        b=UyGUAbQU0jE+/8OL/ERgvx6588bVmDJOg55eypcRbAohY4bnTi049TGK7mYMSXD6r4
+         Y6ZAhaXUopbw5GczwpWOut4dEVRAhWZcMCQ60ZMuaNpMZujXU/oxybCAuibQFST1STOa
+         iN4RGg2oFlAFis+RzhATu5VYEgjbDjr9WzuQaGVWPA1XKT07eWIZryJOAnJA9HW3h+Bh
+         ln5R8j/XsMKOGKngK4IDfte66kSLvGsI2Nd0FLAHCF/akqsD9weWa78MawLAolPctX45
+         JGYIs8zx7Z8pm74PsLKM2DNpbBpVei1jHXUWaKTs5+w/bZU+B3vi4qKyPuIcCPKmFFZ8
+         u5sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705988945; x=1706593745;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XGWFIgPM+i7sy9OAsZEHC3tF/I68FLzyifoG6R+5O+0=;
-        b=PzhpRJCnMK2DP6N0YLIYbnxRLBGuwfVrky/zURO9STaR5EM4iF6SNGvhLZUXSxXxrm
-         4VGO22On48K/bFwsbtXGr3p870Zd0eBRheM4AvoDLseChn8v9Gpu+G6mcOeygbVhwECp
-         KI7VYJ1N1feAbva/2OgcZdjfxTrma0UUQcGUE33Sdd/LrWNWX3OJrCkF+Y5Isupi4DB2
-         EzmTQgwRhn2jJl7/FMy0lGvLBLSyBGOgEMii+G8Ve1z1RJgkm4BpfatO3xxARmiL7h3k
-         lL8YIKVAhac62gHpa6HwCZIVue7ZCilgpUcr+eQApFC+BtvQyRnOoPvBGQAV2JlTeAIh
-         ucng==
-X-Gm-Message-State: AOJu0YwiHIqcjIFnd0vgw7BUs7zk2GO5126nwd/65wfUV1W6SLatgITW
-	oafjRMBD5cXGr0N3cX/qPSeonLzSVubUczEKhbi+ZyOBpXkbbBQTvd1TITJ6EgLBfkYEZailEyu
-	tSQ4e/A5zY/jht/ZZBllso87Ka8YxLEyOJWoG/g==
-X-Google-Smtp-Source: AGHT+IEGeNkPgWGB2ABOu+k0n1xgc8g0ke5OU9+x6qKIzezRXOSKHl+yIjtOmtVfaKEE0HM4paszPnbDaOrSmaVRSdk=
-X-Received: by 2002:a67:e3a7:0:b0:469:aec1:b42c with SMTP id
- j7-20020a67e3a7000000b00469aec1b42cmr2494332vsm.5.1705988945512; Mon, 22 Jan
- 2024 21:49:05 -0800 (PST)
-MIME-Version: 1.0
-References: <20240122145610.413836-1-alex.bennee@linaro.org> <20240122145610.413836-2-alex.bennee@linaro.org>
-In-Reply-To: <20240122145610.413836-2-alex.bennee@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 23 Jan 2024 15:48:39 +1000
-Message-ID: <CAKmqyKPawDYf1DBhGb05qnphOKNt8PATHiwaZVBuhS14sHAR0w@mail.gmail.com>
-Subject: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+        d=1e100.net; s=20230601; t=1705998020; x=1706602820;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jUV2ETur/YHhD2L9r2syN08M+wLYBj7G/QeHONE9k4A=;
+        b=gJkMT98xOXV1u1cVwiKP+AtSghT+EU8umO0bzb5IbnBo9qMhvtCthiEHytVomFsUY1
+         gVXNIik93hdLPUd0nqzc4cOVFzPKb10fkKaBBlMOK81+FGIdOkVDny8PP7tHNYzEOOhP
+         3Lk95JJ/1Tf/DAjatRZHIDevGZOiE2q8pKIGyhy6BTCDwC+DVSzIZ7lJ4SgAfMwbve6r
+         V9NmHR4cQpBP5lm5d1kVoH1qTuIAGFcAJjoWxaKc2O4mV0RvdN3AGbmsiOnILeOVQo3y
+         dP/XHD0XS1egVc/IbKJwGhc3EaQRTJk7wO76Vq2lRNGdWbBc0RWzV1CkxC0dcP7+pJ7+
+         oOXw==
+X-Gm-Message-State: AOJu0Yw1ZHsx4xErFOJV0r68nPAwM27nXmOfG4xAY2wzydURn1fOwcbJ
+	ZbfUTWteASVmYn1KkmS1CKwJoaRPvXuTRY9Ag0G4G0pktAFNPSQV9cxRuaY1IsXgqzFaGexSCuv
+	D
+X-Google-Smtp-Source: AGHT+IHrnFo96kFqXrbmtDTaJ16lW2vZWFoc71DDaTGvlSuwCuKmyi9E4Xkwwz9HfBbRN5oWg8OMmg==
+X-Received: by 2002:aa7:c982:0:b0:559:3583:bb6d with SMTP id c2-20020aa7c982000000b005593583bb6dmr667767edt.32.1705998020528;
+        Tue, 23 Jan 2024 00:20:20 -0800 (PST)
+Return-Path: <ajones@ventanamicro.com>
+Received: from localhost (cst2-173-16.cust.vodafone.cz. [31.30.173.16])
+        by smtp.gmail.com with ESMTPSA id ec32-20020a0564020d6000b0055c4c97b1f2sm1716628edb.91.2024.01.23.00.20.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Jan 2024 00:20:20 -0800 (PST)
+Date: Tue, 23 Jan 2024 09:20:18 +0100
+From: Andrew Jones <ajones@ventanamicro.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Michael Rolnik <mrolnik@gmail.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
-	Laurent Vivier <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>, qemu-ppc@nongnu.org, 
-	Weiwei Li <liwei1518@gmail.com>, qemu-s390x@nongnu.org, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+	Michael Rolnik <mrolnik@gmail.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier <laurent@vivier.eu>, 
+	Yanan Wang <wangyanan55@huawei.com>, qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, 
+	qemu-s390x@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, 
 	Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>, 
 	John Snow <jsnow@redhat.com>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
 	Wainer dos Santos Moschetta <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
@@ -95,44 +93,53 @@ Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>, 
 	Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>, Paul Durrant <paul@xen.org>, 
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 7TUfa6i6b/zE
+Subject: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
+Message-ID: <20240123-b8d1c55688885bfc9125c42b@orel>
+References: <20240122145610.413836-1-alex.bennee@linaro.org>
+ <20240122145610.413836-2-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240122145610.413836-2-alex.bennee@linaro.org>
+X-TUID: UMHozOuOp+KA
 
-On Tue, Jan 23, 2024 at 12:57=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@lina=
-ro.org> wrote:
->
+On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex Bennée wrote:
 > From: Akihiko Odaki <akihiko.odaki@daynix.com>
->
+> 
 > The effective MXL value matters when booting.
->
+
+I'd prefer this commit message get some elaboration. riscv_is_32bit()
+is used in a variety of contexts, some where it should be reporting
+the max misa.mxl. However, when used for booting an S-mode kernel it
+should indeed report the effective mxl. I think we're fine with the
+change, though, because at init and on reset the effective mxl is set
+to the max mxl, so, in those contexts, where riscv_is_32bit() should
+be reporting the max, it does.
+
+> 
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
 > Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
 >  hw/riscv/boot.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->
+> 
 > diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
 > index 0ffca05189f..bc67c0bd189 100644
 > --- a/hw/riscv/boot.c
 > +++ b/hw/riscv/boot.c
 > @@ -36,7 +36,7 @@
->
+>  
 >  bool riscv_is_32bit(RISCVHartArrayState *harts)
 >  {
-> -    return harts->harts[0].env.misa_mxl_max =3D=3D MXL_RV32;
-> +    return harts->harts[0].env.misa_mxl =3D=3D MXL_RV32;
+> -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
+> +    return harts->harts[0].env.misa_mxl == MXL_RV32;
 >  }
->
->  /*
-> --
-> 2.39.2
->
->
+
+Assuming everyone agrees with what I've written above, then maybe we
+should write something similar in a comment above this function.
+
+Thanks,
+drew

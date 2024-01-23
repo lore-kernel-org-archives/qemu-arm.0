@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp135948ejc;
-        Mon, 22 Jan 2024 22:39:30 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGk1y4kfwiaBi7jaKVWthndlliC6b9Gu1BrMcjDI94r72VR6KMZIF7NKGyVzLbN0nUSqhtU
-X-Received: by 2002:a05:620a:1988:b0:783:8b9a:243c with SMTP id bm8-20020a05620a198800b007838b9a243cmr7722265qkb.36.1705991970753;
-        Mon, 22 Jan 2024 22:39:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705991970; cv=none;
+Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp135980ejc;
+        Mon, 22 Jan 2024 22:39:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEnK2jrF9QxunuvgQ4L80wZRUbteygA1hH3b2OORUD/mKhw2gj3WAD7Er24r+ksdruKq9l0
+X-Received: by 2002:ad4:5ec5:0:b0:686:1cff:676e with SMTP id jm5-20020ad45ec5000000b006861cff676emr480596qvb.28.1705991976402;
+        Mon, 22 Jan 2024 22:39:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705991976; cv=none;
         d=google.com; s=arc-20160816;
-        b=d26Q+rel833WO9me2PzIMxx4tAUUJt+kTiZPrds3PmLJMlGCGNqH0ZmfjBEHNEbHNd
-         jSO6mZ0TNfgkJj8uKKNw0gRP8g/r3mAWGr09idsx3a+FxnA/bV+pWf+3XDmdj2e0kzQQ
-         owAZW1ZkCXKFersiPVFVlmRqfSEtzmCPmMlOacV3ImQgcUNuBNey6P3/t1MbwsjalZH7
-         u8zhEWSj8IpmivNkPFe4Pso4ALBmxa4hSh9VkF7GCCEiK7m9uNqfOjj63kxcra4KIjp2
-         iYl/gwoF57fk+UBesY4Yv18BdbeGPzlElZbDE/TtJ9TF5bjKdLbCBC3svAGvicjXp+0D
-         bFkQ==
+        b=zYSiCTxpQTSerZvYbSZxqPYiCJ/pDMHonT0WLuLLyL12IkJkOapPXA4xzZ6Wq4PFsw
+         6HlNvSM1WsyNXnd/oSqNBJiM6rGFQmlWXONLzbJ4SmIPOLMsWQcx8OtXvpi59W8spz2I
+         I2NFYw9sXLEJXI1U4B7+VaNcuPeiYSMFK/j7RiU7MtiiAHn8BUgYUhidDOJvcWrJzgRU
+         kWZgoFHRPqKABb+iXEVMgrOUThb4B8j4RoVX8u14Q2UCAIibA04AEX0/WnDkBWA61j85
+         vrRByDXOZqsYXIeT3JYX44Y6rEsrOnFu6blHyQyRWtt3KHvvLv+YyU/9en3th/Ggs6AF
+         KzKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=d2C77azz43915zIuIoKlnCQM/jW1+ruzYffMI8d4fYY=;
+        bh=yTFI6OnsG8Ecm0s/RbMlXPNe90MeYhDYsKxltFeRfZI=;
         fh=HVoLZTw5hlqqes9L9DSbvdhxOE62q72aEHLq82QYnRw=;
-        b=zhKNN7xXE8M6FZbA28nPhJs3+zeM2Sx0JXnKCb8xVUdGemQmyoClffH7iymu13EXmM
-         lKulhJpy9kNXCIQAlOb+Fvc+esQICtlrHPhI+goVNwVYm0DDgpPUHdV+PrE4ZafS9m6k
-         Tfy5JB1wbaFn2iwC0R/0eUzJxzF3/ALDsXmpISEvSS74BY2wiiGmbBnmciHW1nQ5iJuC
-         C08OcEeVC2ERcMuLzdbdLz0haA0b606nNhnESvolNLTekg2RiAF3v3/FKQn6S2tkYuf6
-         q1Cc6KdVsTBGU7e8q/ALd15ZhqIzUPGPLXYekpO67CUTXEHtFvuYA5qBAeSeC5pgeBSj
-         UYdQ==
+        b=AVpKBWxUgCiZOoZW1QLe6vizzgDPHJxWvLf83CbwIMaUCoW8AMk7bY7q+6zdRZVsiF
+         19blJsxKBLaXQUVGktyuaDVJhkApdY9KGXkGpsGIQcUsKOokgipEyye7Zwpid2m4YQ0P
+         VA4+68wncffQC1VjnSgYihZ1uED8TjkG2EOjIE0YZY8S3g9WXuwV6qqtc6YHxqcfdT06
+         39HL+c4Qg15zcT1fPTYjdYkr/xPyDzd8IpRdaJohPQ1tzvRpA8UdxZGzxWv8ulkSE9zM
+         ovF3gTIKsWv8LtE2E8eUBnnGoxbAnPqZUxwtUT3GfgtmEgQ2U9QRkQwlpNoEJb//EWj1
+         5Geg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="rK18/Jg2";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oJwAg8EU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c24-20020a37e118000000b00783aadb7aafsi702701qkm.517.2024.01.22.22.39.30
+        by mx.google.com with ESMTPS id w2-20020a0cdf82000000b0068176c14516si7343693qvl.188.2024.01.22.22.39.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jan 2024 22:39:30 -0800 (PST)
+        Mon, 22 Jan 2024 22:39:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="rK18/Jg2";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oJwAg8EU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rSARS-0003o2-3K; Tue, 23 Jan 2024 01:39:26 -0500
+	id 1rSARF-0003Xk-2A; Tue, 23 Jan 2024 01:39:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSARQ-0003n6-Kz
- for qemu-devel@nongnu.org; Tue, 23 Jan 2024 01:39:24 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSAQx-0003Vu-C6
+ for qemu-devel@nongnu.org; Tue, 23 Jan 2024 01:38:55 -0500
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSARP-00086K-00
- for qemu-devel@nongnu.org; Tue, 23 Jan 2024 01:39:24 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-a2dc7827a97so424850566b.2
- for <qemu-devel@nongnu.org>; Mon, 22 Jan 2024 22:39:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSAQv-000846-Mg
+ for qemu-devel@nongnu.org; Tue, 23 Jan 2024 01:38:55 -0500
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-2cf050ea05fso8822271fa.3
+ for <qemu-devel@nongnu.org>; Mon, 22 Jan 2024 22:38:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705991961; x=1706596761; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705991932; x=1706596732; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=d2C77azz43915zIuIoKlnCQM/jW1+ruzYffMI8d4fYY=;
- b=rK18/Jg2pkaOJHGccEXn5j5jujHqc4prwNyUwF0uxEACcDZ3l56TDNuoFTjDNxa7uB
- XtbKI9uOApkA81oKt10uSpGDaEeuTSnunB7etdwAdMwjAda7ryBiMQpJlhb9SHxlg8lW
- SZxZKrFWogO7xET09dLKHCCN1/7+8XD+O9juGSh0ZzG4LKeXtXVMfAe8kZFps34RbJND
- +gE1XYebodIew67yVvx8gytg4NVGfKpvUaapj231sEn8lSZAQUGlLCTixz00fkpFZKCQ
- SumsevgH/UYeBbz9mdrp+TUMZYpqBRjFlpe+hM5a2J9MsiErJ/qyWBUgSho5bN3cHgQN
- gjcg==
+ bh=yTFI6OnsG8Ecm0s/RbMlXPNe90MeYhDYsKxltFeRfZI=;
+ b=oJwAg8EU+ZjxEEPGkaiHSj7GScmTA7JqL9TBS/puFHXLyrU6JFSBA+rCBx3N/HnMfb
+ IDiyVtkA3vM0LtUcBEANJVK6q00oFxXw9icv0LA4NhxVDrn3baC5gtia+mms/iZ+V5cm
+ GLagQyEqpfXlZl+lxwvNfizfSVOHo8IGCpJ/LLSJvwMikL3+zhiZRoIusjyt2vEVcsjz
+ TVOZQ2SESw8AQYqF6ENdM9Cq/AMt+khuoXjLAZI+CFE2TUIv/O8ZwMgR6GE803AnQ6uK
+ xRieGOOjBd+WHBSc4LBBcgScU5Rb6UwB3AJeYTimu0sC4VCIQWoxJ0VKEnHrc+UhOlcP
+ oFHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705991961; x=1706596761;
+ d=1e100.net; s=20230601; t=1705991932; x=1706596732;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=d2C77azz43915zIuIoKlnCQM/jW1+ruzYffMI8d4fYY=;
- b=lwKG7h35nbXUuqYaVPBWfBH0PaZensJUQUIINQjEAVUH/5zpO0FGGYi04TYdPVO7Mn
- Xl94GqGDZttGcqJJ31WXTU2UeuLzmkgSeyl2NDXdHFiYw1heakJ912ng5Qz9Edb5Tuc5
- VJJwvSByTPxnRuCLkRuHHk19dJkeqvycXM5BnCR4x6ZMmz1Muufk7EShfDkXBkzfKGkd
- ehItlet8GOo2x7v9JFId52DSJJE0dzWcznQ8ZxGi8s/8OY3U/GhsYTMh7j8uwjkEqBnK
- sA/YUZ52jjzayVmzJZtHq7FEMAhQ2G2bsb5pNPAf7NKMZxDzgB3OujlPjrktD5BIFSLE
- u9iA==
-X-Gm-Message-State: AOJu0Ywjvv1JJMTUQckKmL63Dn4LLZuE/5NGPSrp7x30jyTdXYwWsQ8O
- txCw1HyEeOxY+atjG7SAidpb87TujG1g9d8FEwtw2z0YvQVJnUOfx/N3jaqsrsDSyAwmvzeHQkI
- JyF8=
-X-Received: by 2002:a17:906:4ac7:b0:a29:335f:4248 with SMTP id
- u7-20020a1709064ac700b00a29335f4248mr2660526ejt.45.1705991961146; 
- Mon, 22 Jan 2024 22:39:21 -0800 (PST)
+ bh=yTFI6OnsG8Ecm0s/RbMlXPNe90MeYhDYsKxltFeRfZI=;
+ b=E5XKdcTYamq6nmh9ZewQxOzge1Sne7J5+aQs25SqDcNBigVmKdVShO0gWJJTRVQHmm
+ RAsP6A5kxWuqQux36wwKpixCOdpYV/c/8USyDXIwetEcKRuMylDagGylNd2eaEKMcJ2H
+ YcQZXQJicb7UedpMcSf9G/x8PHSmV6vTF/wnKSrT1b2VP2PbT+F8z6fC+TtEGjrzgwFw
+ 2RlBSW2DWz198loRLi/SiSHE1jQYHxGW9gJTArBFKJ8pLO6FtxJhFIMzKfW3REFqPFzs
+ jHeX2iN7ME8Q8iA9vkt+JOHwLFOccdCennysThGw9H7U+5Yj/S69KRNCb6pfsT4ibVU2
+ ei4Q==
+X-Gm-Message-State: AOJu0YyDATWDg+mWUq/KE/yK8aTpqZadDN1y35YSQvE+P8zjCElOj/yw
+ QkHNCtbGlzmtk5w5IMVU/a+PnxtmumUhffxXKZvyXrPK0LOVqIZ5ZCjoMeTnijCj57zb89o69rA
+ HR1M=
+X-Received: by 2002:ac2:538f:0:b0:50e:ac2a:6b6d with SMTP id
+ g15-20020ac2538f000000b0050eac2a6b6dmr1784891lfh.119.1705991931669; 
+ Mon, 22 Jan 2024 22:38:51 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.194.78])
  by smtp.gmail.com with ESMTPSA id
- jx21-20020a170906ca5500b00a30d9c47f92sm16896ejb.15.2024.01.22.22.39.19
+ vq7-20020a170907a4c700b00a2cf537042asm12380825ejc.192.2024.01.22.22.38.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 22 Jan 2024 22:39:20 -0800 (PST)
+ Mon, 22 Jan 2024 22:38:51 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -100,25 +100,25 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Rob Herring <robh@kernel.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/8] hw/arm/aspeed/2600: Check for CPU types in
+Subject: [PATCH 1/8] hw/arm/exynos: Check for CPU types in
  machine_run_board_init()
-Date: Tue, 23 Jan 2024 07:38:40 +0100
-Message-ID: <20240123063842.35255-7-philmd@linaro.org>
+Date: Tue, 23 Jan 2024 07:38:35 +0100
+Message-ID: <20240123063842.35255-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240123063842.35255-1-philmd@linaro.org>
 References: <20240123063842.35255-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,88 +133,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rv800yIDmbAW
+X-TUID: efVLlKmv5Xtb
 
 Restrict MachineClass::valid_cpu_types[] to the single
 valid CPU type.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/aspeed.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ hw/arm/exynos4_boards.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index df627096d2..393c97d55e 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1157,6 +1157,11 @@ static const char * const ast2500_a1_valid_cpu_types[] = {
-     NULL
- };
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index b0e13eb4f0..01c7618a67 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
+@@ -34,6 +34,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/boards.h"
+ #include "hw/irq.h"
++#include "target/arm/cpu-qom.h"
  
-+static const char * const ast2600_a3_valid_cpu_types[] = {
+ #define SMDK_LAN9118_BASE_ADDR      0x05000000
+ 
+@@ -150,12 +151,18 @@ static void smdkc210_init(MachineState *machine)
+     arm_load_kernel(s->soc.cpu[0], machine, &exynos4_board_binfo);
+ }
+ 
++static const char * const valid_cpu_types[] = {
 +    ARM_CPU_TYPE_NAME("cortex-a9"),
 +    NULL
 +};
 +
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+ static void nuri_class_init(ObjectClass *oc, void *data)
  {
      MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1373,6 +1378,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
-                      ASPEED_MAC3_ON;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1392,6 +1398,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->macs_mask  = ASPEED_MAC2_ON;
-     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1449,6 +1456,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = rainier_bmc_i2c_init;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1471,6 +1479,7 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask = ASPEED_MAC3_ON;
-     amc->i2c_init = fuji_bmc_i2c_init;
-     amc->uart_default = ASPEED_DEV_UART1;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = FUJI_BMC_RAM_SIZE;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1492,6 +1501,7 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->macs_mask = ASPEED_MAC2_ON;
-     amc->i2c_init  = bletchley_bmc_i2c_init;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = BLETCHLEY_BMC_RAM_SIZE;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1631,6 +1641,7 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-     amc->num_cs    = 2;
-     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
-@@ -1651,6 +1662,7 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
-     amc->num_cs    = 2;
-     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
-+    mc->valid_cpu_types = ast2600_a3_valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-         aspeed_soc_num_cpus(amc->soc_name);
+ 
+     mc->desc = "Samsung NURI board (Exynos4210)";
+     mc->init = nuri_init;
++    mc->valid_cpu_types = valid_cpu_types;
+     mc->max_cpus = EXYNOS4210_NCPUS;
+     mc->min_cpus = EXYNOS4210_NCPUS;
+     mc->default_cpus = EXYNOS4210_NCPUS;
+@@ -174,6 +181,7 @@ static void smdkc210_class_init(ObjectClass *oc, void *data)
+ 
+     mc->desc = "Samsung SMDKC210 board (Exynos4210)";
+     mc->init = smdkc210_init;
++    mc->valid_cpu_types = valid_cpu_types;
+     mc->max_cpus = EXYNOS4210_NCPUS;
+     mc->min_cpus = EXYNOS4210_NCPUS;
+     mc->default_cpus = EXYNOS4210_NCPUS;
 -- 
 2.41.0
 

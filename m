@@ -1,107 +1,119 @@
-Received: by 2002:a17:906:2b99:b0:a2e:1324:ea5c with SMTP id m25csp2742650ejg;
-        Mon, 22 Jan 2024 13:10:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEdVAybPoglfDFc2zVy7KMalhEo7bU9pXr2ibwpDv+I786m7aWs49/Khs1Jl4VW3zHGTG8w
-X-Received: by 2002:a05:620a:1488:b0:783:1b28:d9d5 with SMTP id w8-20020a05620a148800b007831b28d9d5mr5806790qkj.73.1705957824817;
-        Mon, 22 Jan 2024 13:10:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1705957824; cv=none;
+Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp79303ejc;
+        Mon, 22 Jan 2024 19:32:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHaZyUfdh/v5qFDXMuRaOf49q4xrlEVsAU0rdYrTcN8yMc1mbHK8wr+qo/aDZ/bZb5c3bs9
+X-Received: by 2002:a05:6214:513:b0:686:a11d:6ab8 with SMTP id px19-20020a056214051300b00686a11d6ab8mr269002qvb.42.1705980752185;
+        Mon, 22 Jan 2024 19:32:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1705980752; cv=none;
         d=google.com; s=arc-20160816;
-        b=GYG05tAsZe395EZyjtb4iPr0OPNhJCPGAjJ30/BL9zOr6ObZtrTi0vBb/cganobdsZ
-         H8DOfAzNPQQXW6q2g7dEUuXt2wByBf18Q8cYOh1N/swvukB717QZAljMr3JxbxHRtvlY
-         X0gxC2aQE3UFSmv7o67k3fTw1TJoXoMnxSDkA8erGDxLaxNDeY6qlapPxkvRLYuAKtWr
-         VtVaNtuIEsjFbf9l9KvzpEq/bZfzzWHm+ByjhBqn1LO8vY9/ZAAy/jGUBxj26E3azUBk
-         uBRfqKUig7kvvrZZFS5BztuNRp610nu6cxa8ovJ5K5uS/hOne4MpDkcyjdu8zMq2TsR+
-         OprQ==
+        b=rhuP1tXwajWbZycFkcZuG1+1awW3+5XB020IDrxtB9ImGu6nbz1XiGgMYa+sGnKhb4
+         oOs5blCWeOxH/WLPlp8bI9GXVHQVE3okUSPE/lXeo46eahgK0ARuus1HHrwWaU0nMXMK
+         hSQwr3vBXjKum3sN9Q1Veay8RnscXoK2pUc0iahM7nkQDI3ILOJBeEBQpOtIv1QCREOz
+         ND2wjLv12lHXSQEAjJd5+TQNA6QwlBgBKvjgqGymL3Sasmtp/WqHngBthZvkuDXw12v7
+         2AtzM9xFr1b9rxbSzNYNLTey6Yvv9eR9FZ/R9aDPnzVE3/iTcGfihefDLFlUe7Ir5L0z
+         ILXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=AEMspFx50s/SZFaO4v/dcT+iEvoomUtdcbA0mNzRCig=;
-        fh=liRAIRxIADE2bmfasMOmYEUti54kpYvQeX8i34UwbXI=;
-        b=Z040uZjOYrJTsRzelkfDsHlqQr9+MPBD3Hof7IIEDmV+PFHgnCoOLov+kuScYWWf9Z
-         rZF5HBg3LG+eSBl2E93NhX+E8zOzttzrrF2ooGmYFt0xNscz2+ZG4BlT4CE7256uzLrE
-         kdFgPCTr1r+y4cQURaGNXbGx8ndJYqGjSd77Nno1NxvN80emmuf7kZP0AmbScCSurFGW
-         5W0PbbLhmGbKvOXMsoXUR0LUYkQPXwQ53tgcmwQ/+83Cln8zuvSlM0y6dZH2y7Ygk/LQ
-         odhFeFNuc/mCJje4+SL+kav700MdcFaqj5KDtyncNAex+pz/WV37jcdIlX2mKCylILtI
-         JTOw==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=rst7CkaOi1dkozdL9S94SxZycocSuZNQ9dDJxL/wk3Q=;
+        fh=aEn574hqK8bQMt9shDkCPmwP//YLRncUIiwkIRHx75k=;
+        b=T98pBHBXfEUdPg6V9ul4spnXJ1M0WSlwdNedFgw4BQSVuM6wktDyfMHemsIUtqxOud
+         JJ+LpUiJFlOypxgoE2tklMt5GK7lM9rUwFf//Bqmy//Zs6YiS771jthCyFrkXwjLLnyM
+         chfunX3XBW8rhRB21eRvhcaNOqzKTrWLhzOx6ElYErp25uo8qUmtMbi++jiA7ygJVPSj
+         668Vfdk2eKOOlwbIvuoT7srYZFe3z/Im0eAhp70ura+PO3Vv4ke0vgDbyLRxbexr9A9D
+         5dS8uwfGcOINsr1UjeFjxJhYJwCtFWLXkZvHor0MaaUMLbWW1s1GHd1KGfgDpeXVkO14
+         lBdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JR9csNiq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DXXMK7JA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u13-20020a05620a0c4d00b0078377888dbfsi6678513qki.406.2024.01.22.13.10.24
+        by mx.google.com with ESMTPS id m5-20020a0cf185000000b0067f79fc97f1si7075431qvl.397.2024.01.22.19.32.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jan 2024 13:10:24 -0800 (PST)
+        Mon, 22 Jan 2024 19:32:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JR9csNiq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DXXMK7JA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rS1Xd-0000Yw-6E; Mon, 22 Jan 2024 16:09:13 -0500
+	id 1rS7Vt-0005v5-2S; Mon, 22 Jan 2024 22:31:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rS1XF-0000Qi-0U; Mon, 22 Jan 2024 16:08:49 -0500
-Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rS1X9-00012M-LT; Mon, 22 Jan 2024 16:08:48 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id B4ACB205DA;
- Mon, 22 Jan 2024 22:08:40 +0100 (CET)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id V1cZrhEFQO9U; Mon, 22 Jan 2024 22:08:40 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id D7AAF20639;
- Mon, 22 Jan 2024 22:08:39 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr D7AAF20639
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1705957719;
- bh=AEMspFx50s/SZFaO4v/dcT+iEvoomUtdcbA0mNzRCig=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=JR9csNiqjYmXDYDl6S9YAfATS72mwKOW+CotWNjom20ZkLwwb9haXaLBgTeOa3pMl
- d4dguHwv4m/7NlXsi+KIpUHWC762coTfBuIjRu7pPux0hTBOa3aVkrimT/04wCNaJR
- iRjpmJJfFQrrw1Wx7KOckyhxdEMv06I8TPEMyTdI=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id snZ8lwjrH-4e; Mon, 22 Jan 2024 22:08:39 +0100 (CET)
-Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id 2CA1C2011B;
- Mon, 22 Jan 2024 22:08:39 +0100 (CET)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-Subject: [PATCH v2 2/3] hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
-Date: Mon, 22 Jan 2024 22:02:03 +0100
-Message-ID: <20240122210829.127691-3-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240122210829.127691-1-ines.varhol@telecom-paris.fr>
-References: <20240122210829.127691-1-ines.varhol@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rS7Vr-0005ua-Qy
+ for qemu-arm@nongnu.org; Mon, 22 Jan 2024 22:31:47 -0500
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rS7Vq-00031l-2U
+ for qemu-arm@nongnu.org; Mon, 22 Jan 2024 22:31:47 -0500
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-5ce10b5ee01so2666180a12.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Jan 2024 19:31:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705980704; x=1706585504; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=rst7CkaOi1dkozdL9S94SxZycocSuZNQ9dDJxL/wk3Q=;
+ b=DXXMK7JAkWD4dEwubpNQwRTlSMoKDzEg+YssXViEm3RqQ7w9y7DR7pm/QFKBZVUPbW
+ PayYFxsCi1zQBEYYgG91GIbyobX3ecreKrs08MU/w35hw8XcoWDNyJwF5wW24QiD/1P8
+ GOUXDZnSwEEgo701Qjx9YghB55rd/anI4uTG3zP4uKgXPvkroWBAv5Fd4bRLcTTAC5B6
+ Hu5dSuMzoPB4qxPWpLwkifjhy7TWSB7CZchJGTvDV1TCPU+dNje4DNNzrHKVHmyXltTY
+ KIyLRJJoP9mLdpHApN0BmOgQpsZQ2hE2rsRVvvdbs0s0v1XrqJtFFeIz4a00MBMlIijd
+ 96rA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705980704; x=1706585504;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=rst7CkaOi1dkozdL9S94SxZycocSuZNQ9dDJxL/wk3Q=;
+ b=MJ5UeaLbpPbFC7he+CSZiphvsJNkl5sMvS+4rSUhLf5ASg/0GS3FCRYbj9P1X7Mken
+ facFBfwrLerUh4jBl70JRXFtvO6Q6wCqjGcMQjrND0I8Xlsv1MW5GHtc1rfHERZ5EWBo
+ zqiYwEcuSGHpF7vf8dYCl2DzBidVlhyVypp3eJUr6vYSzbxjqr5Js3QiXDKDjMzfWEFQ
+ 0cUAt2ZO62YR1tqLmo9fRaZf8AxiS8B0l7eXLTA6m6PHhwKtSXmNOdzediUWNH+xGISE
+ VTeXLuU+ZIqbp2zPox7nozFbZdFlW93q5lT5ITl14oeJ429etCMqu+2lMyep5YXsSW17
+ /ubw==
+X-Gm-Message-State: AOJu0YwQnbT5ey5iugxwW56bZVvQqgBegElGOPg469Iwlm3+3a+o29VK
+ Mo0mYD16VcnqqH8mNdIgBa8oUYzG9j4frLcgpKNYGuqtXC3FNgqMd8imLd6Etbo=
+X-Received: by 2002:a05:6a20:8410:b0:19b:42ea:314f with SMTP id
+ c16-20020a056a20841000b0019b42ea314fmr6431938pzd.16.1705980704173; 
+ Mon, 22 Jan 2024 19:31:44 -0800 (PST)
+Received: from ?IPV6:2001:44b8:2176:c800:2a49:979b:9002:98e6?
+ (2001-44b8-2176-c800-2a49-979b-9002-98e6.static.ipv6.internode.on.net.
+ [2001:44b8:2176:c800:2a49:979b:9002:98e6])
+ by smtp.gmail.com with ESMTPSA id
+ fa20-20020a056a002d1400b006dbdfb7624bsm2775699pfb.170.2024.01.22.19.31.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jan 2024 19:31:43 -0800 (PST)
+Message-ID: <d2a08d09-5ad3-4ca9-a113-b481dbb5c866@linaro.org>
+Date: Tue, 23 Jan 2024 13:31:38 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::df;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tcg/arm: Fix SIGILL in tcg_out_qemu_st_direct
+Content-Language: en-US
+To: Joseph Burt <caseorum@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, "open list:ARM TCG target" <qemu-arm@nongnu.org>
+References: <20240121211439.100829-1-caseorum@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240121211439.100829-1-caseorum@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,183 +128,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FbyV2FbMZOWw
+X-TUID: n6bIIHhO7XMI
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/arm/Kconfig                 |  3 +-
- hw/arm/stm32l4x5_soc.c         | 79 ++++++++++++++++++++++++++++------
- include/hw/arm/stm32l4x5_soc.h |  2 +
- 3 files changed, 69 insertions(+), 15 deletions(-)
+On 1/22/24 07:14, Joseph Burt wrote:
+> When tcg_out_qemu_st_{index,direct} were merged, the direct case for
+> MO_64 was omitted, causing qemu_st_i64 to be encoded as 0xffffffff due
+> to underflow when adding h.base and h.index.
+> 
+> Fixes: 1df6d611bdc2("tcg/arm: Introduce HostAddress")
+> Signed-off-by: Joseph Burt <caseorum@gmail.com>
+> ---
+>   tcg/arm/tcg-target.c.inc | 3 +++
+>   1 file changed, 3 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 6bd7ba424f..3e49b913f8 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -459,9 +459,10 @@ config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-     select OR_IRQ
--    select STM32L4X5_SYSCFG
-     select STM32L4X5_EXTI
-+    select STM32L4X5_SYSCFG
-     select STM32L4X5_RCC
-+    select STM32L4X5_GPIO
-=20
- config XLNX_ZYNQMP_ARM
-     bool
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index bcdad69e92..0333cbb81a 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -78,13 +78,45 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
- #define RCC_BASE_ADDRESS 0x40021000
- #define RCC_IRQ 5
-=20
-+static const uint32_t gpio_addr[] =3D {
-+    0x48000000,
-+    0x48000400,
-+    0x48000800,
-+    0x48000C00,
-+    0x48001000,
-+    0x48001400,
-+    0x48001800,
-+    0x48001C00,
-+};
-+
-+static const struct {
-+    uint32_t moder;
-+    uint32_t ospeedr;
-+    uint32_t pupdr;
-+} stm32l4x5_gpio_initval[NUM_GPIOS] =3D {
-+    { 0xABFFFFFF, 0x0C000000, 0x64000000 },
-+    { 0xFFFFFEBF, 0x00000000, 0x00000100 },
-+    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x0000000F, 0x00000000, 0x00000000 },
-+};
-+
- static void stm32l4x5_soc_initfn(Object *obj)
- {
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
-+    g_autofree char *name =3D NULL;
-=20
-     object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-     object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SY=
-SCFG);
-     object_initialize_child(obj, "rcc", &s->rcc, TYPE_STM32L4X5_RCC);
-+
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        name =3D g_strdup_printf("gpio%c", 'a' + i);
-+        object_initialize_child(obj, name, &s->gpio[i], TYPE_STM32L4X5_G=
-PIO);
-+    }
- }
-=20
- static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
-@@ -93,8 +125,10 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
-     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
-     MemoryRegion *system_memory =3D get_system_memory();
--    DeviceState *armv7m;
-+    DeviceState *armv7m, *dev;
-     SysBusDevice *busdev;
-+    uint32_t pin_index;
-+    g_autofree char *name =3D NULL;
-=20
-     if (!memory_region_init_rom(&s->flash, OBJECT(dev_soc), "flash",
-                                 sc->flash_size, errp)) {
-@@ -134,17 +168,42 @@ static void stm32l4x5_soc_realize(DeviceState *dev_=
-soc, Error **errp)
-         return;
-     }
-=20
-+    /* GPIOs */
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        dev =3D DEVICE(&s->gpio[i]);
-+        name =3D g_strdup_printf("%c", 'A' + i);
-+        qdev_prop_set_string(dev, "name", name);
-+        qdev_prop_set_uint32(dev, "mode-reset",
-+                             stm32l4x5_gpio_initval[i].moder);
-+        qdev_prop_set_uint32(dev, "ospeed-reset",
-+                             stm32l4x5_gpio_initval[i].ospeedr);
-+        qdev_prop_set_uint32(dev, "pupd-reset",
-+                            stm32l4x5_gpio_initval[i].pupdr);
-+        busdev =3D SYS_BUS_DEVICE(&s->gpio[i]);
-+        name =3D g_strdup_printf("gpio%c-out", 'a' + i);
-+        qdev_connect_clock_in(DEVICE(&s->gpio[i]), "clk",
-+            qdev_get_clock_out(DEVICE(&(s->rcc)), name));
-+        if (!sysbus_realize(busdev, errp)) {
-+            return;
-+        }
-+        sysbus_mmio_map(busdev, 0, gpio_addr[i]);
-+    }
-+
-     /* System configuration controller */
-     busdev =3D SYS_BUS_DEVICE(&s->syscfg);
-     if (!sysbus_realize(busdev, errp)) {
-         return;
-     }
-     sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
--    /*
--     * TODO: when the GPIO device is implemented, connect it
--     * to SYCFG using `qdev_connect_gpio_out`, NUM_GPIOS and
--     * GPIO_NUM_PINS.
--     */
-+
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        for (unsigned j =3D 0; j < GPIO_NUM_PINS; j++) {
-+            pin_index =3D GPIO_NUM_PINS * i + j;
-+            qdev_connect_gpio_out(DEVICE(&s->gpio[i]), j,
-+                                  qdev_get_gpio_in(DEVICE(&s->syscfg),
-+                                  pin_index));
-+        }
-+    }
-=20
-     /* EXTI device */
-     busdev =3D SYS_BUS_DEVICE(&s->exti);
-@@ -241,14 +300,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
-     /* RESERVED:    0x40024400, 0x7FDBC00 */
-=20
-     /* AHB2 BUS */
--    create_unimplemented_device("GPIOA",     0x48000000, 0x400);
--    create_unimplemented_device("GPIOB",     0x48000400, 0x400);
--    create_unimplemented_device("GPIOC",     0x48000800, 0x400);
--    create_unimplemented_device("GPIOD",     0x48000C00, 0x400);
--    create_unimplemented_device("GPIOE",     0x48001000, 0x400);
--    create_unimplemented_device("GPIOF",     0x48001400, 0x400);
--    create_unimplemented_device("GPIOG",     0x48001800, 0x400);
--    create_unimplemented_device("GPIOH",     0x48001C00, 0x400);
-     /* RESERVED:    0x48002000, 0x7FDBC00 */
-     create_unimplemented_device("OTG_FS",    0x50000000, 0x40000);
-     create_unimplemented_device("ADC",       0x50040000, 0x400);
-diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-index 1f71298b45..cb4da08629 100644
---- a/include/hw/arm/stm32l4x5_soc.h
-+++ b/include/hw/arm/stm32l4x5_soc.h
-@@ -29,6 +29,7 @@
- #include "hw/misc/stm32l4x5_syscfg.h"
- #include "hw/misc/stm32l4x5_exti.h"
- #include "hw/misc/stm32l4x5_rcc.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
- #include "qom/object.h"
-=20
- #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
-@@ -45,6 +46,7 @@ struct Stm32l4x5SocState {
-     Stm32l4x5ExtiState exti;
-     Stm32l4x5SyscfgState syscfg;
-     Stm32l4x5RccState rcc;
-+    Stm32l4x5GpioState gpio[NUM_GPIOS];
-=20
-     MemoryRegion sram1;
-     MemoryRegion sram2;
---=20
-2.43.0
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
 

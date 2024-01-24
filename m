@@ -1,170 +1,167 @@
-Received: by 2002:a17:906:568b:b0:a2e:1324:ea5c with SMTP id am11csp393851ejc;
-        Tue, 23 Jan 2024 07:35:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE/KuoPh2qcNEtJP8Sg0/92DM6VnLHVzdcEFYE/+vCzE52Yx4lNooOIsJBgGLGqkUhayCRW
-X-Received: by 2002:a05:6830:14:b0:6dd:e778:881a with SMTP id c20-20020a056830001400b006dde778881amr48745otp.70.1706024103750;
-        Tue, 23 Jan 2024 07:35:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706024103; cv=none;
+Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp51416ejq;
+        Tue, 23 Jan 2024 19:08:45 -0800 (PST)
+X-Received: by 2002:a05:6808:1887:b0:3bd:5306:da9d with SMTP id bi7-20020a056808188700b003bd5306da9dmr1080298oib.65.1706065723641;
+        Tue, 23 Jan 2024 19:08:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706065723; cv=none;
         d=google.com; s=arc-20160816;
-        b=QCCwUVUq/fX/eEhBKH+Imrwl4m+OPhgW0fgVpTqCtwqmoOOuTs3BFENfwquEZ1hkbK
-         OG8flc14/GZhAaG+STsyoet2TuU0AGfRjXY9sP+IMwZXL2hL9x7EPXAg4kbPVYGEdUwK
-         EanLvl8N+VrIpjXu28cIl3tdGL2PpMdnpax4vKFQslFyOe5K1M+lWvNXQzufIvHBZMsv
-         AGpQ6t97e1zmgcbZX7FdGVeI9qML7KWeygi6ft9rkGVxH7HrfNjPdvIXldM2P4CMAFLf
-         rfzrsM8MzcQX0W0g2L/ANM7qmycrzw+w1IK3eT9gfmImjdzTmVapPUdMBDbQRZ03Jhmn
-         j3sw==
+        b=sG/4G532xpQgIgZtZt0Tb7RLyb2hWRfu6+pERjDhLc5+s6oXlLCnD5jB3bZM/8glx4
+         wNummP6iitfIkldpbzMgFiH08g/9O6CJkwKAn+yPRj8QVZZIcRDZSrHf4MyMFr8E0DF0
+         nflg6l5JToqasEQaimSQSbDcq8t1RoYXbcES7Molb92dkMF16zsTrDRoHnBFLwOroLFn
+         hwMAJZHE9rxMj4yGx+1r08LzIFnx2M6F/i3rVsZCR1QaYOckdE5XCJXNH9kmFNzuHY4n
+         OUD9t4y9cicOl+hlbn4pLuXDkIHBNonTPX1T3E/OM5m1rGB3ccJmplVaxLNQ5+exkR+5
+         8tyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WserJn90ElmaLFKu56K8+uISef20eii9M5Mz4+TMvho=;
-        fh=y40LNZs05R3i5IV6fHXzzcWaHqhYI6WuHX9dcMo1lak=;
-        b=TLRuzaV/AfnLKVjqjfKFbcg/BqindNxcwKAWPPTbuywwMjToEPSLudwtkt0fOZ3KS0
-         v0fazBvmLu6LawNKPDnZkZrrCITUW0QRIkBFD7/VAqtpWlgiwyTpZ11k+SuYZAQ5q5oZ
-         h28xT0Eo9XuUfTzjDXSrPVlBR8/Jmxt0C3guLCAUpEnYMyug1a4/XAjso5PSU6rvvZWy
-         TXVTUOjVht8HaYaBbZAHlspfYxbW1RG/5MCnc3j9KAWCQdlmL7ijR/DF07QQU4OvZKaR
-         5q9oZSSQ6YMEr+r146hXvI+h2CkXjLaCJW+fdXV3c8IeqQ+aTLKKO1TSsRlv8l7W2FdC
-         KU3g==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=VFo8VE/oCNQcg7y+0hi3tk0ijg8Jc1j7rMhdDApnhJI=;
+        fh=eJryPBtFtm0ZQMNOC2atImLqCe0fLKFvNJ2USZjzyUc=;
+        b=Rfdegq8n0VKbOsvoRkRv6sNFoJvVAM2oq60UsT+K3RwP0jpGn/EW7EJYG5uv3DzdBT
+         yiGz+eM9zZYLnly9sTz59Ul8mNZMsKsGyZ/HSKFQvgtFFyLj2PgyVoALkLACUxH+CzqT
+         VoD/l//88vZdfmLWPAx1/ddNusGqphgXfkZNq+HTRrLLsVBw6HJLpg50PWDPEN5O+ZGi
+         Dl9sI4TfYfKVmnZUn1LKAXdR67j2POCIW9/8DuqQ7sd27Jwlc6UPmDbCPR80/wMxsEQ7
+         wU7kl1wGVa4e9X5Vuv6twJxcJDAwnbP5W33SZCITx63PmzQbDcfblO6WWGa24eMLzIuS
+         8Xkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qY2FlyLk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8-20020ac85c48000000b00429f4a60ee4si8328655qtj.20.2024.01.23.07.35.03
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=yiOZkpqQ;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c32-20020a631c20000000b005cdfa131dbbsor4144672pgc.10.2024.01.23.19.08.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jan 2024 07:35:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 23 Jan 2024 19:08:43 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qY2FlyLk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rSInC-0004RM-3f; Tue, 23 Jan 2024 10:34:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rSIn9-0004Jb-UP
- for qemu-arm@nongnu.org; Tue, 23 Jan 2024 10:34:24 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rSIn7-0006du-VN
- for qemu-arm@nongnu.org; Tue, 23 Jan 2024 10:34:23 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-40e8d3b29f2so53156125e9.1
- for <qemu-arm@nongnu.org>; Tue, 23 Jan 2024 07:34:19 -0800 (PST)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=yiOZkpqQ;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706024058; x=1706628858; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=WserJn90ElmaLFKu56K8+uISef20eii9M5Mz4+TMvho=;
- b=qY2FlyLkZk80wBcCUV+dwD8aPMknPtp+1ktRyPQ/fer+R4qx34saGu2JFWFukPDpNe
- Nj8IEKM9DuwUvuZWCJ2FAhnuSl1CW9eUDVhUns4WMcmMqIokatmTcFgr0lAf3I2aqejb
- vW7Pc2HStswp1D6Gcz88jgGb6CdPBxDPySWPMY3f0iRHngjGakrjp+Wd3mRB3RRAQ4Y9
- CuUZ2VjZDABe5ugc6kpKjRe3V6wyDnEKR6ZogVB02p8Mu495wHVjIUjG9IqszIlVnbtV
- zJlzwyaH0McR0Yvurklgjxw/f/I65b5g0ASOhuYNb2XRvsHFMkEH3c9BdA0oxx+4LX1f
- 46zw==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1706065723; x=1706670523; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VFo8VE/oCNQcg7y+0hi3tk0ijg8Jc1j7rMhdDApnhJI=;
+        b=yiOZkpqQ9U8g5320A+5BXzIrwf7fP815YMARecKuT0AQoS2cO3jYBl3wJ59CnbB0hT
+         JnHrGxc8iWdYs2UGg5tMISdUqsIKpvrSPumEAZQztUNtkBdbGjvfNM5c33uOW9uvwvzR
+         l8rPzlni64RSjpaE2AYPSzJAwlgfoSt0Q+scxDu5YkVTZqqaKmtl16REGTznf9NJf2Uk
+         mk1E7qBLcMRtsPQdkK/4P9JTn+1rGttSKSVVtxUSeeujXwkgvz785kfQie2tVkcCTi7+
+         UoDvym2KY/sl+wEAhmRo/eiyw6YNzB8l5j8BAs+Uy+h+/CMwDyL8VoOQhLG2PKLunuoF
+         emUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706024058; x=1706628858;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WserJn90ElmaLFKu56K8+uISef20eii9M5Mz4+TMvho=;
- b=mBxXG2u2JLBCEHG77xwrNfec1+IjAKH4X0VNRFyDkj1QHHYofi5HNGXsQGTvkUCvyY
- lCdiTLmrOvFpsinnh7bk3h6YBNDTygnn++jyPuEPHc+E0myMl503KK2lqK0hbrfMGTwn
- 4cKmXk10xnuYnhlU+UdNFLswu09zCQISmrwYzBzuAVymG+44QQmpvAO/2ljLtEQuEHsO
- w98GJrxfovBhQnoDD+J0zUh5LeSley7xnIMlItI9/RXC6c8xXWosa8qQsFwFVZm4EU+j
- +O2FlNp45mf521Kf892H11/vaOKbvjZSYYk5EkW/yyZKFc7VMaoLhlRFusrKE5ZheZfY
- I4yw==
-X-Gm-Message-State: AOJu0Yxcseh7XQsAIm2x5+sGYV+nEo7qFSZVV5Oljwy9dxbyzA3VOeyL
- ZpdI76lxcXS/Ol9O9e0d9TK24/o4DwTCGM6edbeOP6KvIA9F/F69Oc+ohbrQpU3HifRH8LW64DB
- B
-X-Received: by 2002:a05:600c:4393:b0:40e:526b:d5f5 with SMTP id
- e19-20020a05600c439300b0040e526bd5f5mr167632wmn.247.1706024058481; 
- Tue, 23 Jan 2024 07:34:18 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- f13-20020a05600c4e8d00b0040eb6ce137asm2577783wmq.39.2024.01.23.07.34.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jan 2024 07:34:18 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH] target/arm: Fix A64 scalar SQSHRN and SQRSHRN
-Date: Tue, 23 Jan 2024 15:34:16 +0000
-Message-Id: <20240123153416.877308-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1706065723; x=1706670523;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VFo8VE/oCNQcg7y+0hi3tk0ijg8Jc1j7rMhdDApnhJI=;
+        b=WlX5thBF6GF5U0Gw0wsAdjtnWy01twy0Y5Q5Q+Gg9bxECzH+WEXZescaJVSvcjOPV/
+         PgwcyMGJQBjeY5bPElFX+76GcFhlcgXuBm/8SMmpfKPKLR6BDzP0NWaTm9JErV5BDV4G
+         MBbL+qYlv/U1C1nq9oMj2JGZp7jML94thpjtUvwJJxYl9MqS+NE1scpXg8R5v1icGA+7
+         XmLQT4Ny0Stv5DzwwbUMtIKxsE74s7LbCHpF6DigGagrQ3/2c4MogmAKkjVPiINY3E18
+         aCAnnIIdpxalUxz/y3dKnpt3R7f+6YbLb3JZgQmkHAEYbqKibCkHnFC+AI6Ks6GUyA9c
+         7JPQ==
+X-Gm-Message-State: AOJu0YzzAY81q8Pw+gOhkrBc7axBgIuGzHLD8sr97t03+dHyW2Erlmos
+	WHyk5wu4l6GesnObvZtwCGVGWt0fNWNtnYAMHri3LF6aJoIFv9iec72qN/dwgbmzHKUXxKjcMSU
+	5
+X-Google-Smtp-Source: AGHT+IHfntglvY7cr85OSIKd+heawzghHZglxVkz5tGKJB42nnuYpbxcKdH1C6I7IIHf5nsB+5FoRQ==
+X-Received: by 2002:a05:6a20:7284:b0:19c:53aa:53dd with SMTP id o4-20020a056a20728400b0019c53aa53ddmr210373pzk.42.1706065722914;
+        Tue, 23 Jan 2024 19:08:42 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.200.138] ([157.82.200.138])
+        by smtp.gmail.com with ESMTPSA id q12-20020a170902c9cc00b001d7267934c7sm7127456pld.298.2024.01.23.19.08.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Jan 2024 19:08:42 -0800 (PST)
+Message-ID: <15d2f958-a51e-4b87-9a70-28edf3b55491@daynix.com>
+Date: Wed, 24 Jan 2024 12:08:33 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Andrew Jones <ajones@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier
+ <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss
+ <erdnaxe@crans.org>, John Snow <jsnow@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
+ Paul Durrant <paul@xen.org>
+References: <20240122145610.413836-1-alex.bennee@linaro.org>
+ <20240122145610.413836-2-alex.bennee@linaro.org>
+ <20240123-b8d1c55688885bfc9125c42b@orel>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240123-b8d1c55688885bfc9125c42b@orel>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nmC4q2/VvjG6
+X-TUID: B9pewnXr/co8
 
-In commit 1b7bc9b5c8bf374dd we changed handle_vec_simd_sqshrn() so
-that instead of starting with a 0 value and depositing in each new
-element from the narrowing operation, it instead started with the raw
-result of the narrowing operation of the first element.
+On 2024/01/23 17:20, Andrew Jones wrote:
+> On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex Bennée wrote:
+>> From: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>
+>> The effective MXL value matters when booting.
+> 
+> I'd prefer this commit message get some elaboration. riscv_is_32bit()
+> is used in a variety of contexts, some where it should be reporting
+> the max misa.mxl. However, when used for booting an S-mode kernel it
+> should indeed report the effective mxl. I think we're fine with the
+> change, though, because at init and on reset the effective mxl is set
+> to the max mxl, so, in those contexts, where riscv_is_32bit() should
+> be reporting the max, it does.
+> 
+>>
+>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>> Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
+>> Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> ---
+>>   hw/riscv/boot.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+>> index 0ffca05189f..bc67c0bd189 100644
+>> --- a/hw/riscv/boot.c
+>> +++ b/hw/riscv/boot.c
+>> @@ -36,7 +36,7 @@
+>>   
+>>   bool riscv_is_32bit(RISCVHartArrayState *harts)
+>>   {
+>> -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
+>> +    return harts->harts[0].env.misa_mxl == MXL_RV32;
+>>   }
+> 
+> Assuming everyone agrees with what I've written above, then maybe we
+> should write something similar in a comment above this function.
+> 
+> Thanks,
+> drew
 
-This is fine in the vector case, because the deposit operations for
-the second and subsequent elements will always overwrite any higher
-bits that might have been in the first element's result value in
-tcg_rd.  However in the scalar case we only go through this loop
-once.  The effect is that for a signed narrowing operation, if the
-result is negative then we will now return a value where the bits
-above the first element are incorrectly 1 (because the narrowfn
-returns a sign-extended result, not one that is truncated to the
-element size).
+The corresponding commit in my series has a more elaborated message:
+https://patchew.org/QEMU/20240115-riscv-v9-0-ff171e1aedc8@daynix.com/20240115-riscv-v9-1-ff171e1aedc8@daynix.com/
 
-Fix this by using an extract operation to get exactly the correct
-bits of the output of the narrowfn for element 1, instead of a
-plain move.
+Alex, can you pull it?
 
-Cc: qemu-stable@nongnu.org
-Fixes: 1b7bc9b5c8bf374dd3 ("target/arm: Avoid tcg_const_ptr in handle_vec_simd_sqshrn")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2089
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/translate-a64.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 27335e85407..340265beb05 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -8343,7 +8343,7 @@ static void handle_vec_simd_sqshrn(DisasContext *s, bool is_scalar, bool is_q,
-         narrowfn(tcg_rd_narrowed, tcg_env, tcg_rd);
-         tcg_gen_extu_i32_i64(tcg_rd, tcg_rd_narrowed);
-         if (i == 0) {
--            tcg_gen_mov_i64(tcg_final, tcg_rd);
-+            tcg_gen_extract_i64(tcg_final, tcg_rd, 0, esize);
-         } else {
-             tcg_gen_deposit_i64(tcg_final, tcg_final, tcg_rd, esize * i, esize);
-         }
--- 
-2.34.1
-
+Regards,
+Akihiko Odaki

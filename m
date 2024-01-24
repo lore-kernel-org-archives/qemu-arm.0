@@ -1,133 +1,141 @@
-Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp544990ejq;
-        Wed, 24 Jan 2024 12:56:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHZmSpp7XYtAco/wjAM6IFoHONAv4nfWfH6k7wltyz11IPjqS00EkuEMZg9FHnpM43XhbIL
-X-Received: by 2002:a05:620a:438b:b0:783:a958:5cb3 with SMTP id a11-20020a05620a438b00b00783a9585cb3mr4041886qkp.21.1706129797830;
-        Wed, 24 Jan 2024 12:56:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706129797; cv=none;
+Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp548987ejq;
+        Wed, 24 Jan 2024 13:04:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFOkd4XdHXusx+URsuJ3IaWNVve7LEGkrtfJhG+mTZjT5lWk74ithJbRpZcgViOEStSYWOi
+X-Received: by 2002:a05:6870:b60f:b0:205:9fe9:67de with SMTP id cm15-20020a056870b60f00b002059fe967demr3884652oab.39.1706130292650;
+        Wed, 24 Jan 2024 13:04:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706130292; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSxA6piWPIm7Whpn0XyYDqd70eYOe7O/HBClyr/z2QPGdPtZ5gMRG3a6TEOTftL24p
-         cDFFwtopUV1h8EfzMleBcNhLvapkeroq7serjR05SaTOf7r86W+Ht+DW1V3MdIEVCgW7
-         swuZQqhtLcHvaB6K/wLbaWq7dFXCyYwIvdhqCS7NSjQ2IDGFSd1chHXHpIxHZGxG3MeC
-         VrmqYOZMokWQPUDZSt9r3mdlHg1KHqEKZTKDAG5LCg93H1zAuyLUx5JFa0iAxwud2dZR
-         tv36xJB4ANm/bWFy9DgVkFuKtk33XO63bNrEFLIjA2NEqVfshDq6Q3r4WbTo9n4ycWwJ
-         b8ow==
+        b=nxhK0XTT+k8hEHgU4f1E3o5je6kYNKsZJjTCldTu3X8vsTziVI2tdbZBderRSXCo5d
+         /zWj/lQe1nNaRbREFEzZnJlmxkzl+goQW6d3cPldhBeGosIALrypZbbxtSP+89wS8QsR
+         bee2wU3PFBlv3b0LlmgQ4MivLA/ZHJqcRO4Mgp1Exc8A/t93wvP9tB7bExzVwWl/tbdt
+         Oc09B9jBG+ahKyiP/Qlsl1+tPYATLM2ULrdgRrwjRaHt1+KiOSNFq1PSbMbjj306SXeE
+         SPp29yjYY4aA/xBk0MTGUR8FTCwy6ojxiEFMOdzTWC/M044argyvho6OBs89AXBOGBtR
+         05EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
-        fh=3ZRMErIroDuSap2RszxyIRR0o2ptPsIX5p5j+kfsr4A=;
-        b=S8lNzZ8XIqQ0yOFqQiNUMHsM/FjgcM69p3DIM68NK+0BzhNECyQf2owHH17g1JIpNB
-         8AQ56Kev6f9/oBweiqYcMNCn5hnmoHQt247YfNHYOpeFPP9XJ/KHhEurnVoL1OBGYerv
-         eK/o3vDAQQ3JxDgqZkrmoc7BIbcurIyvSA+PgBskvAWzO+lZiHoM6NkvVsEetXiaIwl+
-         nUqhCSeEEI30MMH2CRb4HWwK24INjpwRH2PbeZIfB6wERFAaQ3zCVEV/+7gUj4Q4H8jN
-         LOjWT7hlo8bbhtVEB2qB69ySUExESrpBvLtQnwZO7wd4KBhz0FhLGrQ5jYBQLzN4dFxW
-         2LNQ==
+        bh=pzumg2ibmjGB8BsT1tRBbbHW7FHEV7ESfyDIgA5MVVY=;
+        fh=i4aQDvMVklZZRQIk2gIZG1DpYjAHIH74Vpvh0ENxbz8=;
+        b=OstcTYNB7B1YgPd9NmED2ib/59R61zdAvcQ9HmR8x9ophNL/pTvLG92FNExEJ8i+GI
+         uw9x6RA2+IOKN7cDqsJS47/iPXdCYfBXgkSu/1GHuZo79rkj5Ua+72HL5C73pX1VxmfA
+         vujs+XCpDzz+TGb0Wo89vXai5RSBiVfiZtvuuuMeNqUxPqX1NSgL2a/J59fGgLf3jfKf
+         QbbSYOLis4iYP+rt4QrlIkRw8Te8YlFqcY/01WXLH+0ek+n/olkhk61J0e5RZX4fQ0Qf
+         PHlQmjyfuUWQki4c0BzsjWzQuMxGdgXe1Sxz8X4VIcQMOrNdJ0wbGgWtIDi50BrgNe9w
+         zM4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a+dVDADc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zgbfixna;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7-20020a05620a038700b00783a99fced4si4749752qkm.162.2024.01.24.12.56.37
+        by mx.google.com with ESMTPS id n4-20020a05622a11c400b0042a544a1a8csi3747017qtk.87.2024.01.24.13.04.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jan 2024 12:56:37 -0800 (PST)
+        Wed, 24 Jan 2024 13:04:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a+dVDADc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zgbfixna;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rSkIA-0000FO-OT; Wed, 24 Jan 2024 15:56:14 -0500
+	id 1rSkQR-0002Xc-OF; Wed, 24 Jan 2024 16:04:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rSkHw-0000EC-TL
- for qemu-arm@nongnu.org; Wed, 24 Jan 2024 15:56:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1rSkQE-0002Vg-Ig
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 16:04:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rSkHt-0006hm-UW
- for qemu-arm@nongnu.org; Wed, 24 Jan 2024 15:56:00 -0500
+ id 1rSkQC-0001OL-B1
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 16:04:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706129756;
+ s=mimecast20190719; t=1706130267;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
- b=a+dVDADcaswfqlwaHX4PzkbxJbyIiVKf6f/YrtYKeUMw8Iug/R7WWQYK6PCA7DAs7CJYaK
- JaialWrJmL8VR6siraH4UbCAwu/UFbQhcTMMfAOVVcwLcozWiPkTMXhB9Z5T03MPHv3qms
- m2ymjcpShunVPT/U2E1Zd9vfWvyqgsc=
-Received: from mail-yb1-f197.google.com (mail-yb1-f197.google.com
- [209.85.219.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pzumg2ibmjGB8BsT1tRBbbHW7FHEV7ESfyDIgA5MVVY=;
+ b=ZgbfixnaPe3j/2W2DChw5XlNbqktJ7zvnIq29dxCOcA4ku/2LWrYmejsTzKCzkOLI5rEvR
+ L61P/s457PUqyMk/N9CnD5p3H7rx7MbMjG86S7O/yu8I/6mqr+4+WyBxT6vZDm7vj0DC0L
+ K1L6vmVZQT1rlPGZpUJB5JArBwhHreM=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-622-v2WlcGZfOKq7FbB5V9JpXw-1; Wed, 24 Jan 2024 15:55:55 -0500
-X-MC-Unique: v2WlcGZfOKq7FbB5V9JpXw-1
-Received: by mail-yb1-f197.google.com with SMTP id
- 3f1490d57ef6-dc26605c273so9496117276.0
- for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 12:55:55 -0800 (PST)
+ us-mta-79-7WE4dI1RMLKx8iLbTM0H4g-1; Wed, 24 Jan 2024 16:04:24 -0500
+X-MC-Unique: 7WE4dI1RMLKx8iLbTM0H4g-1
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-7832a94b051so778957985a.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 13:04:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706129755; x=1706734555;
+ d=1e100.net; s=20230601; t=1706130264; x=1706735064;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
- b=YJtz7JI3ypniUFmgYMiN3Zzhvp+z/4u5VFMdWngmB+DnyHm5KgGe1wbGGLirbnio5q
- H4Q5WNLJiQWa7Ri2X8Wh7yT9MCTiI38gqsKl/An/bkFYvdNUcg0S6gIhsPLeAS9+yVf3
- Du2Ed6JBcCxt/4tkFGyQ23t/jvtzLq+1VqbKSsfAZ5oagBCPf+hGIVMcCa/nBKG3Hve7
- 6sJwMMyEFk/K4PSHX6jCYMPL+nxig7mohNQxyORRY57CI8ZQ09r3GTpH2HzA1USmUYn0
- ZGXqSgAV1DVBdPeCEe7FdCs4/v009Q1wKlG6CUyThrtDzLkivJAItEPXJC2RPO3qSlI4
- EDyQ==
-X-Gm-Message-State: AOJu0YznbgEKTAV5S4vuEgBuOlC8a7+DTk37ia5C9hV48l8PxtySBF7M
- V9vTLGWJcJ/HNkXD2p8k9y25geUaO81vLTKffgtoMNZV3tdJSC0QFMZ0WzIlrHyubl+wME/7Vv/
- uPdYSzA7R8d1KZ4csZmDG2U2hqgK8D5k29HWSzm7XX/13EN1qUw==
-X-Received: by 2002:a25:7106:0:b0:dc2:5674:b408 with SMTP id
- m6-20020a257106000000b00dc25674b408mr1044555ybc.57.1706129753608; 
- Wed, 24 Jan 2024 12:55:53 -0800 (PST)
-X-Received: by 2002:a25:7106:0:b0:dc2:5674:b408 with SMTP id
- m6-20020a257106000000b00dc25674b408mr1044527ybc.57.1706129751774; 
- Wed, 24 Jan 2024 12:55:51 -0800 (PST)
+ bh=pzumg2ibmjGB8BsT1tRBbbHW7FHEV7ESfyDIgA5MVVY=;
+ b=rI0aTjg43RBjRQvOuDdGpsmZ3WOCeF75AvOrmndIhx1LqggIscStEYXmzPERQWBecI
+ 415fYtcWw36eN6hHrwOKf93lI48gVSmJLiQAPGSHfPiT5Vwmz2HaJYi8t413q8srWsIz
+ bZC+WgmkxkXU8XOLlwFV0BRp6s02+Hje50clGVNmsFuGeb1Tg84JJG/YeutHBM6qiYC3
+ DUEwtdre8tcManEGiGt5OEpiwKVjZ80Wy5Mzxog+JLDHNwQ7wBWKwrQsbA7ije0uDrSq
+ mgpJ+LwfO8tHlNrzhdCxv8IGtT3sg2RtWIqLoDLpFnb626aAZn/SQ0MH/yk5U4EK849N
+ yzDA==
+X-Gm-Message-State: AOJu0YxpWMrrn6+/tvOAOfxjWsIX29AP8Vpu8IxPoOUjHt/WHzpODxwF
+ VnyF9T9t7AqyEEqNHN+ON62R7G4Wr5+b10RTsc9eZYwa7C6RnbB+phLVxmY2eM24NfXU5nbk7/g
+ 8ICklyqEhL9u6A4VU3xIDZgnnlIW7hTCW4VU8ziKPlYNZxhSsTA==
+X-Received: by 2002:a37:e301:0:b0:783:4b92:3b3b with SMTP id
+ y1-20020a37e301000000b007834b923b3bmr8931012qki.121.1706130263849; 
+ Wed, 24 Jan 2024 13:04:23 -0800 (PST)
+X-Received: by 2002:a37:e301:0:b0:783:4b92:3b3b with SMTP id
+ y1-20020a37e301000000b007834b923b3bmr8930996qki.121.1706130263585; 
+ Wed, 24 Jan 2024 13:04:23 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- b9-20020a0ce889000000b0068189a17598sm4832214qvo.72.2024.01.24.12.55.49
+ m29-20020a05620a215d00b00783958079b0sm4015507qkm.123.2024.01.24.13.04.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jan 2024 12:55:51 -0800 (PST)
-Message-ID: <afbb95d3-f18e-47d1-bb4f-ebcc89514c21@redhat.com>
-Date: Wed, 24 Jan 2024 21:55:47 +0100
+ Wed, 24 Jan 2024 13:04:22 -0800 (PST)
+Message-ID: <ef080ff4-1fd5-4639-a316-6e09949608c7@redhat.com>
+Date: Wed, 24 Jan 2024 22:04:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] virtio-iommu: Support PCI device aliases
-To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: jean-philippe@linaro.org, alex.williamson@redhat.com, clg@redhat.com,
- peterx@redhat.com, jasowang@redhat.com, mst@redhat.com, yi.l.liu@intel.com,
- chao.p.peng@intel.com
+Subject: Re: [PATCH 1/3] virtio_iommu: Clear IOMMUPciBus pointer cache when
+ system reset
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "mst@redhat.com"
+ <mst@redhat.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "Peng, Chao P" <chao.p.peng@intel.com>
 References: <20240122064015.94630-1-zhenzhong.duan@intel.com>
- <20240122064015.94630-4-zhenzhong.duan@intel.com>
+ <20240122064015.94630-2-zhenzhong.duan@intel.com>
+ <c47b95f9-ca42-4f8e-85d1-8fc72404e441@redhat.com>
+ <SJ0PR11MB6744E96BE6A6014F7E43899892742@SJ0PR11MB6744.namprd11.prod.outlook.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240122064015.94630-4-zhenzhong.duan@intel.com>
+In-Reply-To: <SJ0PR11MB6744E96BE6A6014F7E43899892742@SJ0PR11MB6744.namprd11.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.5,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -145,92 +153,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XlIm3zRPILNS
+X-TUID: 2otDBPBYEwHt
 
 Hi Zhenzhong,
 
-On 1/22/24 07:40, Zhenzhong Duan wrote:
-> Currently virtio-iommu doesn't work well if there are multiple devices
-> in same iommu group. In below example config, guest virtio-iommu driver
-> can successfully probe first device but fail on others. Only one device
-> under the bridge can work normally.
+On 1/23/24 11:03, Duan, Zhenzhong wrote:
 >
-> -device virtio-iommu \
-> -device pcie-pci-bridge,id=root0 \
-> -device vfio-pci,host=81:11.0,bus=root0 \
-> -device vfio-pci,host=6f:01.0,bus=root0 \
->
-> The reason is virtio-iommu stores AS(address space) in hash table with
-> aliased BDF and corelates endpoint which is indexed by device's real
-> BDF, i.e., virtio_iommu_mr() is passed a real BDF to lookup AS hash
-> table, we either get wrong AS or NULL.
->
-> Fix it by storing AS indexed by real BDF. This way also make iova_ranges
-> from vfio device stored in IOMMUDevice of real BDF successfully.
->
-> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> ---
->  hw/virtio/virtio-iommu.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index d99c1f0d64..6880d92a44 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -399,27 +399,27 @@ static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
->                                                int real_devfn)
->  {
->      VirtIOIOMMU *s = opaque;
-> -    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
-> +    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, real_bus);
->      static uint32_t mr_index;
->      IOMMUDevice *sdev;
->  
->      if (!sbus) {
->          sbus = g_malloc0(sizeof(IOMMUPciBus) +
->                           sizeof(IOMMUDevice *) * PCI_DEVFN_MAX);
-> -        sbus->bus = bus;
-> -        g_hash_table_insert(s->as_by_busptr, bus, sbus);
-> +        sbus->bus = real_bus;
-> +        g_hash_table_insert(s->as_by_busptr, real_bus, sbus);
->      }
->  
-> -    sdev = sbus->pbdev[devfn];
-> +    sdev = sbus->pbdev[real_devfn];
->      if (!sdev) {
->          char *name = g_strdup_printf("%s-%d-%d",
->                                       TYPE_VIRTIO_IOMMU_MEMORY_REGION,
-> -                                     mr_index++, devfn);
-> -        sdev = sbus->pbdev[devfn] = g_new0(IOMMUDevice, 1);
-> +                                     mr_index++, real_devfn);
-> +        sdev = sbus->pbdev[real_devfn] = g_new0(IOMMUDevice, 1);
->  
->          sdev->viommu = s;
-> -        sdev->bus = bus;
-> -        sdev->devfn = devfn;
-> +        sdev->bus = real_bus;
-> +        sdev->devfn = real_devfn;
-but then this means the 2 devices would be abstracted by two different
-IOMMU MRs whereas in practice they cannot be distinguished from an IOMMU
-pov. Shouldn't the virtio-iommu driver use the same ep_id for both
-devices within the same group?
-
-Note there are some known issues about virtio-iommu and pcie-to-pci
-bridges which were reported early last year and confirmed by Robin
-Murphy. See:
-
-[RFC] virtio-iommu: Take into account possible aliasing in virtio_iommu_mr() <https://lore.kernel.org/all/20230116124709.793084-1-eric.auger@redhat.com/#r>
-
-https://lore.kernel.org/all/20230116124709.793084-1-eric.auger@redhat.com/
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@redhat.com>
+>> Subject: Re: [PATCH 1/3] virtio_iommu: Clear IOMMUPciBus pointer cache
+>> when system reset
+>>
+>> On 1/22/24 07:40, Zhenzhong Duan wrote:
+>>> IOMMUPciBus pointer cache is indexed by bus number, bus number
+>>> may not always be a fixed value, i.e., guest reboot to different
+>>> kernel which set bus number with different algorithm.
+this cannot harm to reset it but I don't know if this can be encountered.
+>>>
+>>> This could lead to endpoint binding to wrong iommu MR in
+>>> virtio_iommu_get_endpoint(), then vfio device setup wrong
+>>> mapping from other device.
+>>>
+>>> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+>>> ---
+>>>   hw/virtio/virtio-iommu.c | 2 ++
+>>>   1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>>> index 8a4bd933c6..bfce3237f3 100644
+>>> --- a/hw/virtio/virtio-iommu.c
+>>> +++ b/hw/virtio/virtio-iommu.c
+>>> @@ -1264,6 +1264,8 @@ static void virtio_iommu_system_reset(void
+>> *opaque)
+>>>       trace_virtio_iommu_system_reset();
+>>>
+>>> +    memset(s->iommu_pcibus_by_bus_num, 0, sizeof(s-
+>>> iommu_pcibus_by_bus_num));
+>>> +
+>>>       /*
+>>>        * config.bypass is sticky across device reset, but should be restored on
+>>>        * system reset
+>> you could remove the memset in virtio_iommu_device_realize() then ?
+> Good suggestion, will do.
+By the way what about the vtd implementation. s->vtd_address_spaces is
+hash table but I don't see it reset either?
+Also if is requested here we would need it on smmuv3 as well.
 
 Thanks
 
 Eric
-
-
-
-
->  
->          trace_virtio_iommu_init_iommu_mr(name);
->  
+>
+> Thanks
+> Zhenzhong
 

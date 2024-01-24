@@ -1,313 +1,236 @@
-Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp382818ejq;
-        Wed, 24 Jan 2024 07:55:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHkmUApMZahYXJeDcJNLnKFDekqfQfmQKMw4Rs/sNovfA4RZ+q+hp1X4K/KYI7/Dp2zwkWa
-X-Received: by 2002:a05:6830:114d:b0:6e0:cce9:833b with SMTP id x13-20020a056830114d00b006e0cce9833bmr1828093otq.11.1706111731364;
-        Wed, 24 Jan 2024 07:55:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706111731; cv=none;
+Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp544990ejq;
+        Wed, 24 Jan 2024 12:56:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHZmSpp7XYtAco/wjAM6IFoHONAv4nfWfH6k7wltyz11IPjqS00EkuEMZg9FHnpM43XhbIL
+X-Received: by 2002:a05:620a:438b:b0:783:a958:5cb3 with SMTP id a11-20020a05620a438b00b00783a9585cb3mr4041886qkp.21.1706129797830;
+        Wed, 24 Jan 2024 12:56:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706129797; cv=none;
         d=google.com; s=arc-20160816;
-        b=dbm2v/D9eouC8ab/3yzE2BzM1m2pfFwsjLRroEGZ3xmNTBKbz26S+tPYzOjk2P2BT/
-         GJck0awz40XeUduRgSTtVBylfRiSEAdhlMwDUwXAVpVyLvVpcXP+kplTK0XCb49DN9oT
-         gW63NU6xZP6bxE8vJuWnxoChECY/9Tk5tG0+ydXcyxj6ZO9bGnVs512ZzV5JAJqogPpC
-         JkcJ9YKRvDef16Xlg6N80ql6i9T+Cmbo/d4dxs+N2oE5lIpYC4Th00enDQ7VsKNPYwls
-         2YLpOHXTtbVoBLMnDsl5mw7WliOSpNeYf3vICwFIFwLDgKvFTJz3/3ZUCYvXywo5yDer
-         G6ZA==
+        b=BSxA6piWPIm7Whpn0XyYDqd70eYOe7O/HBClyr/z2QPGdPtZ5gMRG3a6TEOTftL24p
+         cDFFwtopUV1h8EfzMleBcNhLvapkeroq7serjR05SaTOf7r86W+Ht+DW1V3MdIEVCgW7
+         swuZQqhtLcHvaB6K/wLbaWq7dFXCyYwIvdhqCS7NSjQ2IDGFSd1chHXHpIxHZGxG3MeC
+         VrmqYOZMokWQPUDZSt9r3mdlHg1KHqEKZTKDAG5LCg93H1zAuyLUx5JFa0iAxwud2dZR
+         tv36xJB4ANm/bWFy9DgVkFuKtk33XO63bNrEFLIjA2NEqVfshDq6Q3r4WbTo9n4ycWwJ
+         b8ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=aTb7XsL1n33B1zcbpZjICkUyxotK3fc0XdMkkBFWEgg=;
-        fh=UfkfHjWGH5H+AePOjBLPTwaeJMz6Xchv+Fis5d616vE=;
-        b=Cu99N/6H7YQ/oq/0ra5PGE4gkOZml/r0T9vW4nfq2453u5UFBeNeb7i1qjGGqMoPTX
-         IjnYSxEflvM92BInujFwilHzixS93lKq6+jZbX+7FmKn10qRIIRxROszCCrPNYIgJ9pA
-         Mf37cN3kro38TixMiniI5HE9l5LjSoxpdZqo1omi4+27ZaUaL0gsh10kvdiRlSAQHCNj
-         G7638ysRHmRcycqOcSJjYg1VZtvR5RoDsZw27INCVpXuhFagQ0QvRTdXtqrAgMdBfEHe
-         3iSaTZeux2WGe9bLotTfap81sEHzdwaX9ojzm6mTd3AmZ9hhvXLDKaif5m6biYDWhNRA
-         9Epg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
+        fh=3ZRMErIroDuSap2RszxyIRR0o2ptPsIX5p5j+kfsr4A=;
+        b=S8lNzZ8XIqQ0yOFqQiNUMHsM/FjgcM69p3DIM68NK+0BzhNECyQf2owHH17g1JIpNB
+         8AQ56Kev6f9/oBweiqYcMNCn5hnmoHQt247YfNHYOpeFPP9XJ/KHhEurnVoL1OBGYerv
+         eK/o3vDAQQ3JxDgqZkrmoc7BIbcurIyvSA+PgBskvAWzO+lZiHoM6NkvVsEetXiaIwl+
+         nUqhCSeEEI30MMH2CRb4HWwK24INjpwRH2PbeZIfB6wERFAaQ3zCVEV/+7gUj4Q4H8jN
+         LOjWT7hlo8bbhtVEB2qB69ySUExESrpBvLtQnwZO7wd4KBhz0FhLGrQ5jYBQLzN4dFxW
+         2LNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=anQR07mY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a+dVDADc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12-20020a05622a120c00b0042a1f94fe38si10723589qtx.268.2024.01.24.07.55.31
+        by mx.google.com with ESMTPS id q7-20020a05620a038700b00783a99fced4si4749752qkm.162.2024.01.24.12.56.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jan 2024 07:55:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 24 Jan 2024 12:56:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=anQR07mY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a+dVDADc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rSfaM-0003aZ-By; Wed, 24 Jan 2024 10:54:42 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rSkIA-0000FO-OT; Wed, 24 Jan 2024 15:56:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSfaK-0003aA-Lb
- for qemu-devel@nongnu.org; Wed, 24 Jan 2024 10:54:40 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSfaH-0002Nc-Qa
- for qemu-devel@nongnu.org; Wed, 24 Jan 2024 10:54:40 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-339261a6ec2so3902037f8f.0
- for <qemu-devel@nongnu.org>; Wed, 24 Jan 2024 07:54:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706111676; x=1706716476; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aTb7XsL1n33B1zcbpZjICkUyxotK3fc0XdMkkBFWEgg=;
- b=anQR07mYvhrjuYDuaduo4gvl2Pgyxo3W1wENdjnoClt71j+45t2IO9LvyuXVbOx14b
- Mu6OjXQX8zoSm8ZRxm2GHkQkt35blynjOZ7VYXeOQ+L+mXt9jOT8oOIqxMpF+ONZX2CP
- 88dqkQw60MqV0sAEnUnBJYWUO7kdMwpBn+cc8q0TBXjupRDhWbT8vrkCpgKFut/22JXP
- 7ZQmrrnd73qqfknx4zYP5Z6yPrITBCDb5Izm+rqKWIax9WOkK1QWgI/K81zq/YYeUTSX
- VGo2TMuO1EPWiHNaXoK6DyRjwljlbuRSBBvQ35EKgtmPP9U5KSIzsslGOtSvAQHHLAA4
- dxGQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rSkHw-0000EC-TL
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 15:56:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rSkHt-0006hm-UW
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 15:56:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1706129756;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
+ b=a+dVDADcaswfqlwaHX4PzkbxJbyIiVKf6f/YrtYKeUMw8Iug/R7WWQYK6PCA7DAs7CJYaK
+ JaialWrJmL8VR6siraH4UbCAwu/UFbQhcTMMfAOVVcwLcozWiPkTMXhB9Z5T03MPHv3qms
+ m2ymjcpShunVPT/U2E1Zd9vfWvyqgsc=
+Received: from mail-yb1-f197.google.com (mail-yb1-f197.google.com
+ [209.85.219.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-622-v2WlcGZfOKq7FbB5V9JpXw-1; Wed, 24 Jan 2024 15:55:55 -0500
+X-MC-Unique: v2WlcGZfOKq7FbB5V9JpXw-1
+Received: by mail-yb1-f197.google.com with SMTP id
+ 3f1490d57ef6-dc26605c273so9496117276.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 12:55:55 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706111676; x=1706716476;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aTb7XsL1n33B1zcbpZjICkUyxotK3fc0XdMkkBFWEgg=;
- b=QFXqaJHZiVzUwK60fJtCP0sQhAyYZeBhSx0xM/bauPlrRU5Xg2ZxOxTFosS6A1C6z6
- yocsHGBuOkWuDrurlpzpOSEzBJPv9Rm/lAINXTcp79rHzV/sRiFBbfp0oy885MPveIqi
- nbk40CNkGCwkKnWhRWwxoCppt4vGZCaKNRIdbLL5c+P/1VOtz9Yx6oP8AHPz8Bm/d7+X
- OO0Q+u7Rx2xNlIqKXxAuO4HNEW7lC03oxKcPuwgaoSupwZ1PTlhSyqCi/EBwQI+bv6FU
- plM3x8m/mwnd/cIGXpaA/igscrSjsthgDKhgqhOwRNdSQ5JFRa7cvbaA9L6pzRvyE1aI
- T/1w==
-X-Gm-Message-State: AOJu0Yzw5n90L6dnJ0xv6L45Gy/A56hIPK+2OT7RiyQDWmzv+ye/kwhz
- a35swqaKV2GxwLNuUlLlzwYismue8SMtd4Ggok7kCFy0aqZU7lMi/WgCupwT3C6Cf0tHwvXp9Nw
- V
-X-Received: by 2002:adf:cc84:0:b0:337:6806:f919 with SMTP id
- p4-20020adfcc84000000b003376806f919mr854421wrj.107.1706111675960; 
- Wed, 24 Jan 2024 07:54:35 -0800 (PST)
-Received: from localhost.localdomain
- (lgp44-h02-176-184-8-67.dsl.sta.abo.bbox.fr. [176.184.8.67])
+ d=1e100.net; s=20230601; t=1706129755; x=1706734555;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=buVzk3HyvBIdh21Cqn6CQiOqg/pULknLT8sljilCgLY=;
+ b=YJtz7JI3ypniUFmgYMiN3Zzhvp+z/4u5VFMdWngmB+DnyHm5KgGe1wbGGLirbnio5q
+ H4Q5WNLJiQWa7Ri2X8Wh7yT9MCTiI38gqsKl/An/bkFYvdNUcg0S6gIhsPLeAS9+yVf3
+ Du2Ed6JBcCxt/4tkFGyQ23t/jvtzLq+1VqbKSsfAZ5oagBCPf+hGIVMcCa/nBKG3Hve7
+ 6sJwMMyEFk/K4PSHX6jCYMPL+nxig7mohNQxyORRY57CI8ZQ09r3GTpH2HzA1USmUYn0
+ ZGXqSgAV1DVBdPeCEe7FdCs4/v009Q1wKlG6CUyThrtDzLkivJAItEPXJC2RPO3qSlI4
+ EDyQ==
+X-Gm-Message-State: AOJu0YznbgEKTAV5S4vuEgBuOlC8a7+DTk37ia5C9hV48l8PxtySBF7M
+ V9vTLGWJcJ/HNkXD2p8k9y25geUaO81vLTKffgtoMNZV3tdJSC0QFMZ0WzIlrHyubl+wME/7Vv/
+ uPdYSzA7R8d1KZ4csZmDG2U2hqgK8D5k29HWSzm7XX/13EN1qUw==
+X-Received: by 2002:a25:7106:0:b0:dc2:5674:b408 with SMTP id
+ m6-20020a257106000000b00dc25674b408mr1044555ybc.57.1706129753608; 
+ Wed, 24 Jan 2024 12:55:53 -0800 (PST)
+X-Received: by 2002:a25:7106:0:b0:dc2:5674:b408 with SMTP id
+ m6-20020a257106000000b00dc25674b408mr1044527ybc.57.1706129751774; 
+ Wed, 24 Jan 2024 12:55:51 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- s16-20020a5d5110000000b0033763a9ea2dsm9921845wrt.63.2024.01.24.07.54.33
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Jan 2024 07:54:35 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 1/2] accel/kvm: Define KVM_ARCH_HAVE_MCE_INJECTION in each
- target
-Date: Wed, 24 Jan 2024 16:54:24 +0100
-Message-ID: <20240124155425.73195-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240124155425.73195-1-philmd@linaro.org>
-References: <20240124155425.73195-1-philmd@linaro.org>
+ b9-20020a0ce889000000b0068189a17598sm4832214qvo.72.2024.01.24.12.55.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 Jan 2024 12:55:51 -0800 (PST)
+Message-ID: <afbb95d3-f18e-47d1-bb4f-ebcc89514c21@redhat.com>
+Date: Wed, 24 Jan 2024 21:55:47 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] virtio-iommu: Support PCI device aliases
+To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: jean-philippe@linaro.org, alex.williamson@redhat.com, clg@redhat.com,
+ peterx@redhat.com, jasowang@redhat.com, mst@redhat.com, yi.l.liu@intel.com,
+ chao.p.peng@intel.com
+References: <20240122064015.94630-1-zhenzhong.duan@intel.com>
+ <20240122064015.94630-4-zhenzhong.duan@intel.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240122064015.94630-4-zhenzhong.duan@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.5,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9tHi8trsbeT+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XlIm3zRPILNS
 
-Instead of having KVM_HAVE_MCE_INJECTION optionally defined,
-always define KVM_ARCH_HAVE_MCE_INJECTION for each target,
-and set KVM_HAVE_MCE_INJECTION if it is not zero.
+Hi Zhenzhong,
 
-It is now clearer for KVM targets to detect if they lack the
-MCE injection implementation. Also, moving headers around
-is no more painful, because if a target neglects to define
-KVM_ARCH_HAVE_MCE_INJECTION, the build will fail.
+On 1/22/24 07:40, Zhenzhong Duan wrote:
+> Currently virtio-iommu doesn't work well if there are multiple devices
+> in same iommu group. In below example config, guest virtio-iommu driver
+> can successfully probe first device but fail on others. Only one device
+> under the bridge can work normally.
+>
+> -device virtio-iommu \
+> -device pcie-pci-bridge,id=root0 \
+> -device vfio-pci,host=81:11.0,bus=root0 \
+> -device vfio-pci,host=6f:01.0,bus=root0 \
+>
+> The reason is virtio-iommu stores AS(address space) in hash table with
+> aliased BDF and corelates endpoint which is indexed by device's real
+> BDF, i.e., virtio_iommu_mr() is passed a real BDF to lookup AS hash
+> table, we either get wrong AS or NULL.
+>
+> Fix it by storing AS indexed by real BDF. This way also make iova_ranges
+> from vfio device stored in IOMMUDevice of real BDF successfully.
+>
+> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> ---
+>  hw/virtio/virtio-iommu.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index d99c1f0d64..6880d92a44 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -399,27 +399,27 @@ static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
+>                                                int real_devfn)
+>  {
+>      VirtIOIOMMU *s = opaque;
+> -    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
+> +    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, real_bus);
+>      static uint32_t mr_index;
+>      IOMMUDevice *sdev;
+>  
+>      if (!sbus) {
+>          sbus = g_malloc0(sizeof(IOMMUPciBus) +
+>                           sizeof(IOMMUDevice *) * PCI_DEVFN_MAX);
+> -        sbus->bus = bus;
+> -        g_hash_table_insert(s->as_by_busptr, bus, sbus);
+> +        sbus->bus = real_bus;
+> +        g_hash_table_insert(s->as_by_busptr, real_bus, sbus);
+>      }
+>  
+> -    sdev = sbus->pbdev[devfn];
+> +    sdev = sbus->pbdev[real_devfn];
+>      if (!sdev) {
+>          char *name = g_strdup_printf("%s-%d-%d",
+>                                       TYPE_VIRTIO_IOMMU_MEMORY_REGION,
+> -                                     mr_index++, devfn);
+> -        sdev = sbus->pbdev[devfn] = g_new0(IOMMUDevice, 1);
+> +                                     mr_index++, real_devfn);
+> +        sdev = sbus->pbdev[real_devfn] = g_new0(IOMMUDevice, 1);
+>  
+>          sdev->viommu = s;
+> -        sdev->bus = bus;
+> -        sdev->devfn = devfn;
+> +        sdev->bus = real_bus;
+> +        sdev->devfn = real_devfn;
+but then this means the 2 devices would be abstracted by two different
+IOMMU MRs whereas in practice they cannot be distinguished from an IOMMU
+pov. Shouldn't the virtio-iommu driver use the same ep_id for both
+devices within the same group?
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-I'd rather keep "cpu-param.h" simple/short.
+Note there are some known issues about virtio-iommu and pcie-to-pci
+bridges which were reported early last year and confirmed by Robin
+Murphy. See:
 
-Is a per-target "kvm-param.h" any better?
-Or per-target "accel-param.h"? For example TCG_GUEST_DEFAULT_MO
-is TCG specific and could also go there. Otherwise it will go
-in "cpu-param.h".
----
- include/sysemu/kvm.h         | 5 +++++
- target/arm/cpu-param.h       | 5 +++++
- target/arm/cpu.h             | 4 ----
- target/i386/cpu-param.h      | 2 ++
- target/i386/cpu.h            | 2 --
- target/loongarch/cpu-param.h | 2 ++
- target/mips/cpu-param.h      | 2 ++
- target/ppc/cpu-param.h       | 2 ++
- target/riscv/cpu-param.h     | 2 ++
- target/s390x/cpu-param.h     | 2 ++
- 10 files changed, 22 insertions(+), 6 deletions(-)
+[RFC] virtio-iommu: Take into account possible aliasing in virtio_iommu_mr() <https://lore.kernel.org/all/20230116124709.793084-1-eric.auger@redhat.com/#r>
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index d614878164..2e9aa2fc53 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -212,6 +212,7 @@ int kvm_on_sigbus(int code, void *addr);
- 
- #ifdef NEED_CPU_H
- #include "cpu.h"
-+#include "cpu-param.h"
- 
- void kvm_flush_coalesced_mmio_buffer(void);
- 
-@@ -349,6 +350,10 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
-+#if KVM_ARCH_HAVE_MCE_INJECTION
-+#define KVM_HAVE_MCE_INJECTION
-+#endif
-+
- #ifdef KVM_HAVE_MCE_INJECTION
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index f9b462a98f..d71cc29864 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -30,7 +30,12 @@
-  */
- # define TARGET_PAGE_BITS_VARY
- # define TARGET_PAGE_BITS_MIN  10
-+#endif
- 
-+#ifdef TARGET_AARCH64
-+#define KVM_ARCH_HAVE_MCE_INJECTION 1
-+#else
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
- #endif
- 
- #endif
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ec276fcd57..f92c8d3b88 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -30,10 +30,6 @@
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
- 
--#ifdef TARGET_AARCH64
--#define KVM_HAVE_MCE_INJECTION 1
--#endif
--
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/target/i386/cpu-param.h b/target/i386/cpu-param.h
-index 911b4cd51b..5933b0b756 100644
---- a/target/i386/cpu-param.h
-+++ b/target/i386/cpu-param.h
-@@ -24,4 +24,6 @@
- #endif
- #define TARGET_PAGE_BITS 12
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 1
-+
- #endif
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 7f0786e8b9..230ab1cded 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -33,8 +33,6 @@
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
- 
--#define KVM_HAVE_MCE_INJECTION 1
--
- /* support for self modifying code even if the modified instruction is
-    close to the modifying instruction */
- #define TARGET_HAS_PRECISE_SMC
-diff --git a/target/loongarch/cpu-param.h b/target/loongarch/cpu-param.h
-index cfe195db4e..f69a94e6b5 100644
---- a/target/loongarch/cpu-param.h
-+++ b/target/loongarch/cpu-param.h
-@@ -14,4 +14,6 @@
- 
- #define TARGET_PAGE_BITS 12
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
-+
- #endif
-diff --git a/target/mips/cpu-param.h b/target/mips/cpu-param.h
-index 594c91a156..45c885e00e 100644
---- a/target/mips/cpu-param.h
-+++ b/target/mips/cpu-param.h
-@@ -30,4 +30,6 @@
- #define TARGET_PAGE_BITS_MIN 12
- #endif
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
-+
- #endif
-diff --git a/target/ppc/cpu-param.h b/target/ppc/cpu-param.h
-index 0a0416e0a8..9975ae73ab 100644
---- a/target/ppc/cpu-param.h
-+++ b/target/ppc/cpu-param.h
-@@ -33,4 +33,6 @@
- #endif
- #define TARGET_PAGE_BITS 12
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
-+
- #endif
-diff --git a/target/riscv/cpu-param.h b/target/riscv/cpu-param.h
-index b2a9396dec..e6199f4f6d 100644
---- a/target/riscv/cpu-param.h
-+++ b/target/riscv/cpu-param.h
-@@ -28,4 +28,6 @@
-  *  - M mode HLV/HLVX/HSV 0b111
-  */
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
-+
- #endif
-diff --git a/target/s390x/cpu-param.h b/target/s390x/cpu-param.h
-index 84ca08626b..4728b3957e 100644
---- a/target/s390x/cpu-param.h
-+++ b/target/s390x/cpu-param.h
-@@ -13,4 +13,6 @@
- #define TARGET_PHYS_ADDR_SPACE_BITS 64
- #define TARGET_VIRT_ADDR_SPACE_BITS 64
- 
-+#define KVM_ARCH_HAVE_MCE_INJECTION 0
-+
- #endif
--- 
-2.41.0
+https://lore.kernel.org/all/20230116124709.793084-1-eric.auger@redhat.com/
+
+Thanks
+
+Eric
+
+
+
+
+>  
+>          trace_virtio_iommu_init_iommu_mr(name);
+>  
 

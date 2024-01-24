@@ -1,87 +1,137 @@
-Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp124882ejq;
-        Tue, 23 Jan 2024 22:59:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG+qSg6gIoo3lIuvPgjUAbNwv3aaSNUdX1Ut6G/gAxDtZsMilBQalOL0+NEsD4foLClfzfN
-X-Received: by 2002:ac8:7250:0:b0:42a:5076:a597 with SMTP id l16-20020ac87250000000b0042a5076a597mr1933665qtp.13.1706079595687;
-        Tue, 23 Jan 2024 22:59:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706079595; cv=none;
+Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp286533ejq;
+        Wed, 24 Jan 2024 05:14:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHMYpNvYPr/WM7S//RzvTt2WeVgy9zsmLvso6QeHUVXNV9NWrw2XhPWrQs3WPXJe8JnQe5S
+X-Received: by 2002:ac8:5a82:0:b0:42a:4a36:d134 with SMTP id c2-20020ac85a82000000b0042a4a36d134mr2895877qtc.113.1706102083637;
+        Wed, 24 Jan 2024 05:14:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706102083; cv=none;
         d=google.com; s=arc-20160816;
-        b=IOyi8zw7g+iSPqS3EWl7v7e6Ut0Q5aOfZ0svF1a5MqtmFGUIB/I3mX4aFBHRd7BMfF
-         o7fTzBQovlgzBm76WxlltysBMRdr/CgwOAF7mS3NClpMB4/8/SrI6kwdKw470e0C+ugP
-         NwScB+N8s6dLEggPlXUSBVCxWisdWEOGmOa5ZfXA+XlLr2er8TT4Q0mA4Ch0LVqwPmNf
-         Wr2odn2pxW1qBSM75HCvfBYi4/NbKmDzuhLQM0x8RWCDGdVzmugrY1MU+gDfBDI/hE+l
-         Kdyh3RDmLeGRRPYRqvYtfAbiR4Ox5Wagz+rV77Xfhkr2ZIGqx4DYUCxOfhqorLZuLq7v
-         XGbQ==
+        b=g1CgRROkFawCadizuwSw37uHUnJyfyzIgro0jYeW+dogxhh7wGxXJr1QFdsYTFrUx6
+         Js8FfvPZoQpCIOyRy15mjSdiTZhoChq/OdRpnmkA9GAhBOIpj03Oht+du50d3j+wNEQo
+         xBvswU6duVL8Ku2/PzF1eOJjGgmg/u+FpUVxzQe12r6AZUh6hwpTo7lLmEIyXYASz1Wc
+         NBN2iZ1CBiFfrrGhXq1i4rmdJxWboBnmkQo2NsnCi3kXk9Dhu1SXXvyqZcWGRlyRFGCT
+         JsqV3hRKA4SVTWUg+MEV6e1d3UBWLqWaJ+fnqOJWaVTi1JbRtiE9hh5Hb/nXoxRqpEDX
+         xqKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=fZuB16Cb9+3hUYgaUxDtYdiTbphZkNu1xEGil4YAUjw=;
-        fh=PGBvAVDo542HGKR2HEyzwlMafYQwpX/jzYtHtf/eDX4=;
-        b=V9RYaFbBNQyVLIOKEUTTz0tUXc6jThjD+hEcmBap4ZsjieSMwx2YEBCiOugXlg6QVv
-         ArQGxPsAdoMNr9QZvqKODVvMjUZgN/2ln8YXAkXbXpLxqwATFjE5sWV2C0E9ZOM6seYo
-         C6zRJBcG19fBPX1CB3nmZnc60q5aieCXKBRBZNDaigmyIGic2Ph2xdkVlxovSHQ8RM+1
-         r9ZxTT2k3GCbclW9ErEIOLG1PAiTz5pjdH7+Fkj0Xmlje/KdkQzIC3T2bgoX08hqSnJR
-         cxa78XUyM9zstClrbHyC11zRolDJs3LN8KuWpmYl45iPTB0+vUqrbH0hZR0u5mRfZjOg
-         pEOg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Kikj5Q9USpTy7MPHUzO0q8pIzEJ5a9YPFpJuSzTrSjU=;
+        fh=vSwT/VBY71qtAKEEWcguHenACYEbQUjHfUMtQuf6Vkw=;
+        b=DWtz5eDBE2FiECb/r5wMLE5ynV9Ahd7oT33XdQCRxRS1kX6UMEwjpjuXz79DzHUufr
+         kEw4bN4Fpups/vWZJgQfCEczQzyedAHOC1BN8V4GeKWYem1aTnGRGAm+tj5qtRsdEyQZ
+         CK5CUHY/IsIPT0n0uoTxZ5wa5HWheVqcz1iwdyTHXG9NqZWlQ+oez5nMHe8AQvq/oFdy
+         z0UtLCEDZiekMWRSQbaeh9CJ6dH3UIUqFiafncc2pva5lJuxQ1pL1kZiEWCJ4T8XF70V
+         u9mBw22CiaqEhb22UbWd5BmEtJHTbZYjqr2wNkgumRr/MfScqWdZoLadE5ZA1fZotK7m
+         e3Hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FVk55Xmu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4-20020ac87e84000000b0042a5536a270si2156940qtj.454.2024.01.23.22.59.55
+        by mx.google.com with ESMTPS id e8-20020a05622a110800b0042a3a097dc1si7695903qty.728.2024.01.24.05.14.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jan 2024 22:59:55 -0800 (PST)
+        Wed, 24 Jan 2024 05:14:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FVk55Xmu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rSXEg-0000om-AZ; Wed, 24 Jan 2024 01:59:46 -0500
+	id 1rSd5M-0006VV-GZ; Wed, 24 Jan 2024 08:14:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rIgd=JC=kaod.org=clg@ozlabs.org>)
- id 1rSXEe-0000oZ-UR; Wed, 24 Jan 2024 01:59:44 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rSd5I-0006Qm-KN
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 08:14:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rIgd=JC=kaod.org=clg@ozlabs.org>)
- id 1rSXEc-0004i0-RW; Wed, 24 Jan 2024 01:59:44 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TKZZh3nfSz4x3D;
- Wed, 24 Jan 2024 17:59:40 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TKZZf3lQqz4x2N;
- Wed, 24 Jan 2024 17:59:38 +1100 (AEDT)
-Message-ID: <294bd4eb-c335-4221-80a8-72a987c79698@kaod.org>
-Date: Wed, 24 Jan 2024 07:59:37 +0100
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rSd5G-00056O-Vm
+ for qemu-arm@nongnu.org; Wed, 24 Jan 2024 08:14:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1706102065;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Kikj5Q9USpTy7MPHUzO0q8pIzEJ5a9YPFpJuSzTrSjU=;
+ b=FVk55Xmu8XbDXdvm95F1bgWZbkWk2bSM67UBOXVBlcja3Frb20vXSTgP15r9DIuWO5tKVN
+ KWGejyYS5xOcIbCNMFHrT+rnsN95/aRPba+BT4uAd/oWQZsQ4X59+W6hoEXWppYYr4xB+h
+ a8JPrCV8lA7cnBn6SMj8HdQbch6y8ME=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-271-A5rnMis4MbOnmWm2sdLnPw-1; Wed, 24 Jan 2024 08:14:23 -0500
+X-MC-Unique: A5rnMis4MbOnmWm2sdLnPw-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-7830ab8fb5aso602940185a.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 05:14:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706102063; x=1706706863;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Kikj5Q9USpTy7MPHUzO0q8pIzEJ5a9YPFpJuSzTrSjU=;
+ b=qBRc9Tp+hhqdPqj9oki5V41y+T7oojkSQGgVNAlhlcqtROL0mCw06p6g9qNIsWU+ux
+ mfjHRD4w1ezR+34CGYkaSumPwTwca57lMMICzMR+We6o1GLWZxhuaUM2nQi1QFGDMrHm
+ n+G9tL4SAgS/NTuiqf5pVphanbTirBJVAknbK8lE9JhxIqHiLSplLqim+Vkks5BybtFL
+ TV8ZjesOyIksKKNG9FyeIF2BZ2oBMVmrOMQxqFdNxut/JQwquhp8efYxEvvem0G52U8Z
+ /WJkVitEMiulFVk0STsaISj9bJpYqMsc0oAx3PH7qJK1Kt48Qu0GfDfomJ+0IC5C8t+5
+ 7cVA==
+X-Gm-Message-State: AOJu0YwtLEkAVkhPIJcUZZuepXNV6wyLink9k6rZ2zdFPv4WwujZv6dR
+ FDK2Z0G2kgFr+5AUjd41V5N8NwdozNxRY20evhycu51Y5k22FO16G7qfrZS7SEWrhYfmxSZycD9
+ 7vt8DfFN8aC45qcFP6qlx5o6vCbB51YU/MyUhMnmoyOg7hDNhSA==
+X-Received: by 2002:a05:620a:218a:b0:783:3625:9e35 with SMTP id
+ g10-20020a05620a218a00b0078336259e35mr7571485qka.20.1706102063348; 
+ Wed, 24 Jan 2024 05:14:23 -0800 (PST)
+X-Received: by 2002:a05:620a:218a:b0:783:3625:9e35 with SMTP id
+ g10-20020a05620a218a00b0078336259e35mr7571475qka.20.1706102063081; 
+ Wed, 24 Jan 2024 05:14:23 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ e16-20020a37ac10000000b007816dc2ef52sm4019251qkm.8.2024.01.24.05.14.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 Jan 2024 05:14:22 -0800 (PST)
+Message-ID: <a35c4fad-a981-4fbf-81d1-be5625a537b9@redhat.com>
+Date: Wed, 24 Jan 2024 14:14:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/5] hw/arm/aspeed: Check for CPU types in
- machine_run_board_init()
+Subject: Re: [PATCH 1/3] virtio-iommu: Add an option to define the input range
+ width
+To: Alex Williamson <alex.williamson@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ jean-philippe@linaro.org, peter.maydell@linaro.org,
+ zhenzhong.duan@intel.com, peterx@redhat.com, yanghliu@redhat.com,
+ mst@redhat.com, clg@redhat.com, jasowang@redhat.com
+References: <20240123181753.413961-1-eric.auger@redhat.com>
+ <20240123181753.413961-2-eric.auger@redhat.com>
+ <20240123165141.7a79de34.alex.williamson@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240123165141.7a79de34.alex.williamson@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>
-References: <20240123224842.18485-1-philmd@linaro.org>
- <20240123224842.18485-6-philmd@linaro.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240123224842.18485-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=rIgd=JC=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.5,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,167 +144,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 21RHGMcVNAgd
+X-TUID: kk5tO/sQx5N0
 
-On 1/23/24 23:48, Philippe Mathieu-Daudé wrote:
-> Aspeed SoCs use a single CPU type (set as AspeedSoCClass::cpu_type).
-> Convert it to a NULL-terminated array (of a single non-NULL element).
-> 
-> Set MachineClass::valid_cpu_types[] to use the common machine code
-> to provide hints when the requested CPU is invalid (see commit
-> e702cbc19e ("machine: Improve is_cpu_type_supported()").
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi Alex,
 
+On 1/24/24 00:51, Alex Williamson wrote:
+> On Tue, 23 Jan 2024 19:15:55 +0100
+> Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> aw-bits is a new option that allows to set the bit width of
+>> the input address range. This value will be used as a default for
+>> the device config input_range.end. By default it is set to 64 bits
+>> which is the current value.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  include/hw/virtio/virtio-iommu.h | 1 +
+>>  hw/virtio/virtio-iommu.c         | 4 +++-
+>>  2 files changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+>> index 781ebaea8f..5fbe4677c2 100644
+>> --- a/include/hw/virtio/virtio-iommu.h
+>> +++ b/include/hw/virtio/virtio-iommu.h
+>> @@ -66,6 +66,7 @@ struct VirtIOIOMMU {
+>>      bool boot_bypass;
+>>      Notifier machine_done;
+>>      bool granule_frozen;
+>> +    uint8_t aw_bits;
+>>  };
+>>  
+>>  #endif
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index ec2ba11d1d..e7f299e0c6 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -1314,7 +1314,8 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>       */
+>>      s->config.bypass = s->boot_bypass;
+>>      s->config.page_size_mask = qemu_real_host_page_mask();
+>> -    s->config.input_range.end = UINT64_MAX;
+>> +    s->config.input_range.end =
+>> +        s->aw_bits == 64 ? UINT64_MAX : BIT_ULL(s->aw_bits) - 1;
+> What happens when someone sets aw_bits = 1?  There are a whole bunch of
+> impractical values here ripe for annoying bug reports.  vtd_realize()
+> returns an Error for any values other than 39 or 48.  We might pick an
+> arbitrary lower bound (39?) or some other more creative solution here
+> to avoid those silly issues in our future.  Thanks,
+You're right. I can check the input value. This needs to be dependent on
+the machine though but this should be feasable.
+Then I would allow 39 and 48 for q35 and 64 only on ARM.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-
-> ---
->   include/hw/arm/aspeed_soc.h |  3 ++-
->   hw/arm/aspeed.c             |  1 +
->   hw/arm/aspeed_ast10x0.c     |  6 +++++-
->   hw/arm/aspeed_ast2400.c     | 12 ++++++++++--
->   hw/arm/aspeed_ast2600.c     |  6 +++++-
->   hw/arm/aspeed_soc_common.c  |  5 ++++-
->   6 files changed, 27 insertions(+), 6 deletions(-)
-> 
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index a060a59918..0db5a41e71 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -128,7 +128,8 @@ struct AspeedSoCClass {
->       DeviceClass parent_class;
->   
->       const char *name;
-> -    const char *cpu_type;
-> +    /** valid_cpu_types: NULL terminated array of a single CPU type. */
-> +    const char * const *valid_cpu_types;
->       uint32_t silicon_rev;
->       uint64_t sram_size;
->       uint64_t secsram_size;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 636a6269aa..1be3b6bcae 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1149,6 +1149,7 @@ static void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
->       mc->default_cpus = mc->min_cpus
->                        = mc->max_cpus
->                        = sc->num_cpus;
-> +    mc->valid_cpu_types = sc->valid_cpu_types;
->   }
->   
->   static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index dca601a3f9..c3b5116a6a 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -417,13 +417,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->   
->   static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
->   {
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO cortex-m4f */
-> +        NULL
-> +    };
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
->   
->       dc->realize = aspeed_soc_ast1030_realize;
->   
->       sc->name = "ast1030-a1";
-> -    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4"); /* TODO cortex-m4f */
-> +    sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev = AST1030_A1_SILICON_REV;
->       sc->sram_size = 0xc0000;
->       sc->secsram_size = 0x40000; /* 256 * KiB */
-> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-> index 3baf95916d..8829561bb6 100644
-> --- a/hw/arm/aspeed_ast2400.c
-> +++ b/hw/arm/aspeed_ast2400.c
-> @@ -503,6 +503,10 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
->   
->   static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->   {
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("arm926"),
-> +        NULL
-> +    };
->       AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
->       DeviceClass *dc = DEVICE_CLASS(oc);
->   
-> @@ -511,7 +515,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->       dc->user_creatable = false;
->   
->       sc->name         = "ast2400-a1";
-> -    sc->cpu_type     = ARM_CPU_TYPE_NAME("arm926");
-> +    sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev  = AST2400_A1_SILICON_REV;
->       sc->sram_size    = 0x8000;
->       sc->spis_num     = 1;
-> @@ -527,6 +531,10 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->   
->   static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
->   {
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("arm1176"),
-> +        NULL
-> +    };
->       AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
->       DeviceClass *dc = DEVICE_CLASS(oc);
->   
-> @@ -535,7 +543,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
->       dc->user_creatable = false;
->   
->       sc->name         = "ast2500-a1";
-> -    sc->cpu_type     = ARM_CPU_TYPE_NAME("arm1176");
-> +    sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev  = AST2500_A1_SILICON_REV;
->       sc->sram_size    = 0x9000;
->       sc->spis_num     = 2;
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index b264433cf0..46baba0e41 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -629,13 +629,17 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->   
->   static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
->   {
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("cortex-a7"),
-> +        NULL
-> +    };
->       DeviceClass *dc = DEVICE_CLASS(oc);
->       AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
->   
->       dc->realize      = aspeed_soc_ast2600_realize;
->   
->       sc->name         = "ast2600-a3";
-> -    sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
-> +    sc->valid_cpu_types = valid_cpu_types;
->       sc->silicon_rev  = AST2600_A3_SILICON_REV;
->       sc->sram_size    = 0x16400;
->       sc->spis_num     = 2;
-> diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-> index 36ca189ce9..123a0c432c 100644
-> --- a/hw/arm/aspeed_soc_common.c
-> +++ b/hw/arm/aspeed_soc_common.c
-> @@ -20,7 +20,10 @@
->   
->   const char *aspeed_soc_cpu_type(AspeedSoCClass *sc)
->   {
-> -    return sc->cpu_type;
-> +    assert(sc->valid_cpu_types);
-> +    assert(sc->valid_cpu_types[0]);
-> +    assert(!sc->valid_cpu_types[1]);
-> +    return sc->valid_cpu_types[0];
->   }
->   
->   qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+Eric
+>
+> Alex
+>
+>>      s->config.domain_range.end = UINT32_MAX;
+>>      s->config.probe_size = VIOMMU_PROBE_SIZE;
+>>  
+>> @@ -1525,6 +1526,7 @@ static Property virtio_iommu_properties[] = {
+>>      DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
+>>                       TYPE_PCI_BUS, PCIBus *),
+>>      DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+>> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
+>>      DEFINE_PROP_END_OF_LIST(),
+>>  };
+>>  
 

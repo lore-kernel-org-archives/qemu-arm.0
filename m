@@ -1,112 +1,114 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp233347ejc;
-        Thu, 25 Jan 2024 05:43:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEJ7gXJoOLPasr+5Y8/HcjjVeFN1q56ByDh09U3xVM1pLasoMHHLkqpTdTlmZevISXZG9SE
-X-Received: by 2002:ac8:5706:0:b0:42a:63bd:c32f with SMTP id 6-20020ac85706000000b0042a63bdc32fmr1317159qtw.3.1706190216083;
-        Thu, 25 Jan 2024 05:43:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706190216; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp298388ejc;
+        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEAczTgoyKnrPZ4hK3hQ2iJZRvEPRxGLFO/sfY5cIqmiUvkA0X5/npqasgNNaDjAoaCkRCF
+X-Received: by 2002:a05:620a:4ad5:b0:783:3514:63b4 with SMTP id sq21-20020a05620a4ad500b00783351463b4mr1196141qkn.113.1706196197230;
+        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706196197; cv=none;
         d=google.com; s=arc-20160816;
-        b=RHg0Bbb0VCR5k5pukg86m5G3241x0YTzt1vApV5rt1d2mrW09JreL1NCRYAt5ACTmn
-         Hmz3pqAqdNKJuLuziRKFc1IPTt1gOmT3byJtdnUGWzgDNeh/0QpCtQtolOKHCzl0SQlT
-         1q/YzuV0KcurhbbTpnWpUR4sUX4tGgf5lLgXV2AHChhMtZoVQy49aSVBXSxLQqwZUziB
-         syLskh6h1c7GXy+IkQ/pbDIYYUPkQWhIIQ4kz4rcsuUsKBivI7pHLe5USzTYfIwEeZia
-         aijz8gjvhuR6CnuFScNRO0hrvNB0fo+baL90yhxShu28Jpqpc+zcSpToEySIS3wvHwWX
-         nnhQ==
+        b=Q35a5Rj7uW8OQEmQu6nRVUZjYd2xEpfm5pS4YPq7H3M0dFbt1FCKG8FD6RSxh+kLuU
+         ookYwA/Tj1z0p1+2TISnbLuGpZcJcEwalXl5pCl58PEHNtT0IZoW5C5xAMeILTSgfNtz
+         KHMe5vwV4cKE7QfHpq0TapFx++WkkuxumVhPqkMda0Z11pvD4JqQWNQN2J2loP2vCBkO
+         MltkN5WKtmznYY4DbScpv0hQP5d5bvCkKAI6IOaEI6OMznPWjeuKVhFwqmIazg897BRN
+         uuDm0BbkDncMaZPxTeiWSsgnxgt1z6LYO8dso+uuNaqDfRYWAuUUxi+koUEFdL+ehdk6
+         40Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=8cqesZOdW9FLhCoNybK1K8wV/PFZ0n/GQh3iLYD7EDg=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=Cbm9RanXTgo9AFStoy4I9msIyJhrIRQcM37jtqigw9CJraguhgl6vxJexnRZ8MjDmR
-         jM6gHLO1WB4nmZw4nj18swIIY93s4MnPadtm7t0cMolTw7IaCy7nSv/VHFZyreI53E7n
-         jjqsJdTQhalwrn5/P9DrLQiPbK521WBfviUUYgHi+wiwce3apHEeGvSfsggBFqmswuk5
-         TkCCyUc/Uo8/m77TcPDkDp3907tVckGFFg5KpmPXnhHSa19wQeQNrxtAKiy+gVJAESGf
-         kpBkwPxhn80ci8HfmOCIZm+r9Db4gOM87wjAlYiajeiXqI2xji6bTIMQHHVFCCUjLW6F
-         +Mcw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
+        fh=irNRlEco/Cz5I9vvDAIJdnwVTrx4Nzx79NRRHlSvh+8=;
+        b=QGg/JKbPKSpymvdhYaUPNph7b/X3W69eP2oXbiD+ThHbV7coNmIyQbyKOzeeAbstnl
+         ANLUJgXkom9r09axtJ4gZ7HwtlhhaU+kJ4zVXmt3jlGXLvlXTpuRHiZp4Iv8LBlrObFU
+         VUnP1OVkKfaZthAqWHSk9WZRuDG+EbgQQ9D7agoFp9xFqkVnvLASyf/GeEhZNVLPus2f
+         73vSHE8Z+TdyuWyk37IB77Tx+zVsicT5iie6rG4ixi5fnJ6bbqHmi+6MjathkFJISfVW
+         bF/fL3m4nCMzfpTwW/Kp3y1is8P9ZeNB4luRRssVIiYXcT1EpJ9kUF94GPJIuMt4HW08
+         sdPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZpW/cEJ+";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B+DIfvAl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3-20020ac87d83000000b0042a45478593si7920787qtd.578.2024.01.25.05.43.35
+        by mx.google.com with ESMTPS id h13-20020a05620a13ed00b00783070846e9si12796644qkl.385.2024.01.25.07.23.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jan 2024 05:43:36 -0800 (PST)
+        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZpW/cEJ+";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B+DIfvAl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rT00d-0003ZO-1t; Thu, 25 Jan 2024 08:43:11 -0500
+	id 1rT1ZF-0005XS-Nb; Thu, 25 Jan 2024 10:23:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT00b-0003XX-6j
- for qemu-arm@nongnu.org; Thu, 25 Jan 2024 08:43:09 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rT1ZD-0005Qi-R3; Thu, 25 Jan 2024 10:22:59 -0500
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT00Z-0001kn-Ar
- for qemu-arm@nongnu.org; Thu, 25 Jan 2024 08:43:08 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-339289fead2so5722930f8f.3
- for <qemu-arm@nongnu.org>; Thu, 25 Jan 2024 05:43:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rT1ZB-0007wZ-JL; Thu, 25 Jan 2024 10:22:59 -0500
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-6daa89a6452so4971985b3a.2; 
+ Thu, 25 Jan 2024 07:22:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706190185; x=1706794985; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=8cqesZOdW9FLhCoNybK1K8wV/PFZ0n/GQh3iLYD7EDg=;
- b=ZpW/cEJ+CCTg+N4tI41HEJBOWWfopjl+x252kk/oBWVmmNWn44/gmca1UWv4yxz3cX
- 5WK3pbZAgoSKPKuoeT+cn/FtHopGKmzDYIU71ARkSQ5mX/bcwt2Bi2rzJpvDeMKCKssB
- eS0kOCS55/nx/NxpfW/czP3Qzrkzc7vTc7k7vLyK7FHpzoNkeERJk6wYrRwANZoSlHZa
- ZGXgX2zi169ruArfD3qVjHBjeditQM5XmoHOqdw937PUQib15Rk1XGfzfjCqP856tbca
- 1rGtrmPqC7Ff5Jk8KXvAv/hISMpMu9ZfIZnQLuoY1W9S9BQET1BFA6WU+Ft18mZlQf0z
- 4tVw==
+ d=gmail.com; s=20230601; t=1706196174; x=1706800974; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
+ b=B+DIfvAlNl5mKrXZ93dAdzEKpHbBeKS4nybPxIlCqwkWa/DRsmaIfKZo60PPH4+UnY
+ HPVmY2Zghgch2ec5Cy4dw0OwJiZuYoubLM86KwrIH4leRhot8rotEx2BZpcVo2FJoXAh
+ sNlt0jBIfSw5/E0usj2Fj3MC0sJC2jHc7XKAZchNc90ajDCUIM+jRPmQHnxY+aDOpYEA
+ QTQOWVW0hZB6ZGlpZ9om6cFEHzs6V02+1l83uHFLpJC7QMXsSXYz+erZcNYltpXU4y+S
+ 7vzmuuuZu8M2nbkN9WnJrws2yaX867vSkG3nOtbuTfzx6ueJ2yxDYRWfNVnPdrmPs8Lp
+ LNLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706190185; x=1706794985;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8cqesZOdW9FLhCoNybK1K8wV/PFZ0n/GQh3iLYD7EDg=;
- b=UVF8OixBRBrtzE0ElrVyvAtuA+icypxVBdxWqzere05QnH/E9a0BbBUx1vI15w/UE6
- fnCLEja++p6xCWym8zz77t3DWewg2fQKLs1tKaX9MwEmY9DP/JLj4aC+9EAax1U4e27+
- 63wMMAyozEiTe95LzAW/SWOdU+qFG2HNykDK32h8CHvujSYl9XApJsFX6Php/we5PYXD
- cy20YCc4pkArWcq7lTNa16Plvy4rDWxeGKDOEBKWBUCfI3KtnuLiy0UBDlZA5HH44b+M
- tn6woJqV68x9W4gr+fliqnLiDKN0YKRL1EpBMFIQ8P4EuuOGIPmz0Y6l6BvvVWfiJ+PH
- nTbw==
-X-Gm-Message-State: AOJu0Yxco4X0gzOvCO9OBYQM35U7EJGkyT9mqXlgWgDfGKovwirRPP2F
- PzYNR6X7l0WhCv9AAA2jOwJvOyIWxA8wlzEBOGZpmMCJ3KxvC6pP23rGL/SKutSIuzkANS3i7ss
- 1
-X-Received: by 2002:a05:6000:1209:b0:337:bcac:35eb with SMTP id
- e9-20020a056000120900b00337bcac35ebmr529645wrx.136.1706190185451; 
- Thu, 25 Jan 2024 05:43:05 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1706196174; x=1706800974;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
+ b=L0QXOn/tLYXQk/6BQ3dDgMjcDfywX72Yc6zn37ZcHf5PB54Va8JUI/y+8KO5CZQvcw
+ zo38K9PyuQv6Kieqyjxhs7bVMbM65msKIRMetC/uTua7BXxpy2UmuMyiq60k/SBDKZFd
+ FD0ao9bZWv+qh24ZcWFTSrm0bukI1P7dpFIl0X+QaUY590BRbvxODgXDP5/FAFzTMXCT
+ AAOGElCJ4FC7oFcMcwVGek3KakupJ0CL7Td8HBZCDEJ2ipX7jiymOVD6e9uEjDh2iHqQ
+ c7nn3l3RjZqsfn6k8UCSR623jLpzJLoyvygfLIzLNGB7UtDkkcn1LUxcJFYYCfEqzQ6R
+ HLIA==
+X-Gm-Message-State: AOJu0YyBaSZGajX0xgkiMPmrQBF95GNzqyCrqzcOBliVmdMCC7UKmfRS
+ gN1aLEEQ+fwn3aJMTES1JHU9I5F9Scl5ZWBufNO2LByg7Gv8i5AztIXkO/ijtR6sPg==
+X-Received: by 2002:a05:6a21:2d89:b0:19c:768b:b77a with SMTP id
+ ty9-20020a056a212d8900b0019c768bb77amr984783pzb.113.1706196174281; 
+ Thu, 25 Jan 2024 07:22:54 -0800 (PST)
+Received: from localhost.localdomain ([49.47.195.100])
  by smtp.gmail.com with ESMTPSA id
- h5-20020adf9cc5000000b003368849129dsm20810534wre.15.2024.01.25.05.43.05
+ z2-20020aa785c2000000b006d99d986624sm15930366pfn.151.2024.01.25.07.22.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 05:43:05 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Add ID_AA64ZFR0_EL1.B16B16 to the
- exposed-to-userspace set
-Date: Thu, 25 Jan 2024 13:43:04 +0000
-Message-Id: <20240125134304.1470404-1-peter.maydell@linaro.org>
+ Thu, 25 Jan 2024 07:22:53 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Rayhan Faizel <rayhan.faizel@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org (open list:i.MX31 (kzm))
+Subject: [PATCH v4] hw/char/imx_serial: Implement receive FIFO and ageing
+ timer for imx serial.
+Date: Thu, 25 Jan 2024 20:49:32 +0530
+Message-Id: <20240125151931.83494-1-rayhan.faizel@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,54 +123,301 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u7EEO4yT6QhS
+X-TUID: gdUfnJGILCJA
 
-In kernel commit 5d5b4e8c2d9ec ("arm64/sve: Report FEAT_SVE_B16B16 to
-userspace") Linux added ID_AA64ZFR0_el1.B16B16 to the set of ID
-register fields which it exposes to userspace.  Update our
-exported_bits mask to include this.
+This patch implements a 32 half word FIFO as per imx serial device
+specifications. If a non empty FIFO is below the trigger level, an ageing
+timer will tick for a duration of 8 characters. On expiry, AGTIM will be set
+triggering an interrupt. AGTIM timer resets when there is activity in
+the receive FIFO.
 
-(This doesn't yet change any behaviour for us, because we don't yet
-have any CPUs that implement this feature, which is part of SVE2.)
+Otherwise, RRDY is set when trigger level is
+exceeded. The receive trigger level is 8 in newer kernel versions and 1 in
+older ones.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+This change will break migration compatibility.
+
+[Changes in v4]
+
+- Correct handling of fifo overflow including ORE and OVRRUN flag setting.
+- Correct behaviour of empty FIFO popping.
+- Remove unnecessary RRDYEN check in can_receive.
+- In ageing timer restart function, use flag checks instead of directly
+  checking FIFO levels.
+- Further fixes to code formatting.
+
+[Changes in v3]
+
+- Caught more whitespace changes that went overlooked
+- Moved fifo and timer initialization to realize
+
+[Changes in v2]
+
+As per Peter Maydell's suggestions,
+
+- Use generic FIFO32 implementation in place of handmade impl.
+- Moved timer_init to serial init and use timer_del in reset
+- Removed stray whitespaces
+- Increment VMSTATE version
+
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
 ---
-This is a loose end from last year: in commit 5f7b71fb99dc I
-updated our mask values to match the kernel, and when I was
-doing that I noticed that the kernel had forgotten to add
-B16B16 to its report-to-userspace list when adding support
-for that architectural feature. Now the kernel has fixed its
-side, we can update again to match it.
----
- target/arm/helper.c         | 1 +
- tests/tcg/aarch64/sysregs.c | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ hw/char/imx_serial.c         | 102 ++++++++++++++++++++++++++++++-----
+ include/hw/char/imx_serial.h |  20 ++++++-
+ 2 files changed, 108 insertions(+), 14 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e068d353831..24c0f80679d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8895,6 +8895,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-                                R_ID_AA64ZFR0_AES_MASK |
-                                R_ID_AA64ZFR0_BITPERM_MASK |
-                                R_ID_AA64ZFR0_BFLOAT16_MASK |
-+                               R_ID_AA64ZFR0_B16B16_MASK |
-                                R_ID_AA64ZFR0_SHA3_MASK |
-                                R_ID_AA64ZFR0_SM4_MASK |
-                                R_ID_AA64ZFR0_I8MM_MASK |
-diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-index f7a055f1d5f..301e61d0dd4 100644
---- a/tests/tcg/aarch64/sysregs.c
-+++ b/tests/tcg/aarch64/sysregs.c
-@@ -137,7 +137,7 @@ int main(void)
-     /* all hidden, DebugVer fixed to 0x6 (ARMv8 debug architecture) */
-     get_cpu_reg_check_mask(id_aa64dfr0_el1,  _m(0000,0000,0000,0006));
-     get_cpu_reg_check_zero(id_aa64dfr1_el1);
--    get_cpu_reg_check_mask(SYS_ID_AA64ZFR0_EL1,  _m(0ff0,ff0f,00ff,00ff));
-+    get_cpu_reg_check_mask(SYS_ID_AA64ZFR0_EL1,  _m(0ff0,ff0f,0fff,00ff));
-     get_cpu_reg_check_mask(SYS_ID_AA64SMFR0_EL1, _m(8ff1,fcff,0000,0000));
+diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
+index 1df862eb7f..ba37be6faa 100644
+--- a/hw/char/imx_serial.c
++++ b/hw/char/imx_serial.c
+@@ -26,6 +26,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/fifo32.h"
  
-     get_cpu_reg_check_zero(id_aa64afr0_el1);
+ #ifndef DEBUG_IMX_UART
+ #define DEBUG_IMX_UART 0
+@@ -41,10 +42,11 @@
+ 
+ static const VMStateDescription vmstate_imx_serial = {
+     .name = TYPE_IMX_SERIAL,
+-    .version_id = 2,
+-    .minimum_version_id = 2,
++    .version_id = 3,
++    .minimum_version_id = 3,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_INT32(readbuff, IMXSerialState),
++        VMSTATE_FIFO32(rx_fifo, IMXSerialState),
++        VMSTATE_TIMER(ageing_timer, IMXSerialState),
+         VMSTATE_UINT32(usr1, IMXSerialState),
+         VMSTATE_UINT32(usr2, IMXSerialState),
+         VMSTATE_UINT32(ucr1, IMXSerialState),
+@@ -71,6 +73,10 @@ static void imx_update(IMXSerialState *s)
+      * following:
+      */
+     usr1 = s->usr1 & s->ucr1 & (USR1_TRDY | USR1_RRDY);
++    /*
++     * Interrupt if AGTIM is set (ageing timer interrupt in RxFIFO)
++     */
++    usr1 |= (s->ucr2 & UCR2_ATEN) ? (s->usr1 & USR1_AGTIM) : 0;
+     /*
+      * Bits that we want in USR2 are not as conveniently laid out,
+      * unfortunately.
+@@ -78,15 +84,66 @@ static void imx_update(IMXSerialState *s)
+     mask = (s->ucr1 & UCR1_TXMPTYEN) ? USR2_TXFE : 0;
+     /*
+      * TCEN and TXDC are both bit 3
++     * ORE and OREN are both bit 1
+      * RDR and DREN are both bit 0
+      */
+-    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN);
++    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN | UCR4_OREN);
+ 
+     usr2 = s->usr2 & mask;
+ 
+     qemu_set_irq(s->irq, usr1 || usr2);
+ }
+ 
++static void imx_serial_rx_fifo_push(IMXSerialState *s, uint32_t value)
++{
++    uint32_t pushed_value = value;
++    if (fifo32_is_full(&s->rx_fifo)) {
++        /* Set ORE if FIFO is already full */
++        s->usr2 |= USR2_ORE;
++    } else {
++        if (fifo32_num_used(&s->rx_fifo) == FIFO_SIZE - 1) {
++            /* Set OVRRUN on 32nd character in FIFO */
++            pushed_value |= URXD_ERR | URXD_OVRRUN;
++        }
++        fifo32_push(&s->rx_fifo, pushed_value);
++    }
++}
++
++static uint32_t imx_serial_rx_fifo_pop(IMXSerialState *s)
++{
++    if (fifo32_is_empty(&s->rx_fifo)) {
++        return 0;
++    }
++    return fifo32_pop(&s->rx_fifo);
++}
++
++static void imx_serial_rx_fifo_ageing_timer_int(void *opaque)
++{
++    IMXSerialState *s = (IMXSerialState *) opaque;
++    s->usr1 |= USR1_AGTIM;
++    imx_update(s);
++}
++
++static void imx_serial_rx_fifo_ageing_timer_restart(void *opaque)
++{
++    /*
++     * Ageing timer starts ticking when
++     * RX FIFO is non empty and below trigger level.
++     * Timer is reset if new character is received or
++     * a FIFO read occurs.
++     * Timer triggers an interrupt when duration of
++     * 8 characters has passed (assuming 115200 baudrate).
++     */
++    IMXSerialState *s = (IMXSerialState *) opaque;
++
++    if (!(s->usr1 & USR1_RRDY) && !(s->uts1 & UTS1_RXEMPTY)) {
++        timer_mod_ns(&s->ageing_timer,
++                     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + AGE_DURATION_NS);
++    } else {
++        timer_del(&s->ageing_timer);
++    }
++}
++
+ static void imx_serial_reset(IMXSerialState *s)
+ {
+ 
+@@ -102,7 +159,9 @@ static void imx_serial_reset(IMXSerialState *s)
+     s->ucr3 = 0x700;
+     s->ubmr = 0;
+     s->ubrc = 4;
+-    s->readbuff = URXD_ERR;
++
++    fifo32_reset(&s->rx_fifo);
++    timer_del(&s->ageing_timer);
+ }
+ 
+ static void imx_serial_reset_at_boot(DeviceState *dev)
+@@ -125,20 +184,28 @@ static uint64_t imx_serial_read(void *opaque, hwaddr offset,
+                                 unsigned size)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
+-    uint32_t c;
++    uint32_t c, rx_used;
++    uint8_t rxtl = s->ufcr & TL_MASK;
+ 
+     DPRINTF("read(offset=0x%" HWADDR_PRIx ")\n", offset);
+ 
+     switch (offset >> 2) {
+     case 0x0: /* URXD */
+-        c = s->readbuff;
++        c = imx_serial_rx_fifo_pop(s);
+         if (!(s->uts1 & UTS1_RXEMPTY)) {
+             /* Character is valid */
+             c |= URXD_CHARRDY;
+-            s->usr1 &= ~USR1_RRDY;
+-            s->usr2 &= ~USR2_RDR;
+-            s->uts1 |= UTS1_RXEMPTY;
++            rx_used = fifo32_num_used(&s->rx_fifo);
++            /* Clear RRDY if below threshold */
++            if (rx_used < rxtl) {
++                s->usr1 &= ~USR1_RRDY;
++            }
++            if (rx_used == 0) {
++                s->usr2 &= ~USR2_RDR;
++                s->uts1 |= UTS1_RXEMPTY;
++            }
+             imx_update(s);
++            imx_serial_rx_fifo_ageing_timer_restart(s);
+             qemu_chr_fe_accept_input(&s->chr);
+         }
+         return c;
+@@ -300,19 +367,24 @@ static void imx_serial_write(void *opaque, hwaddr offset,
+ static int imx_can_receive(void *opaque)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
+-    return !(s->usr1 & USR1_RRDY);
++    return s->ucr2 & UCR2_RXEN && fifo32_num_used(&s->rx_fifo) < FIFO_SIZE;
+ }
+ 
+ static void imx_put_data(void *opaque, uint32_t value)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
++    uint8_t rxtl = s->ufcr & TL_MASK;
+ 
+     DPRINTF("received char\n");
++    imx_serial_rx_fifo_push(s, value);
++    if (fifo32_num_used(&s->rx_fifo) >= rxtl) {
++        s->usr1 |= USR1_RRDY;
++    }
++
++    imx_serial_rx_fifo_ageing_timer_restart(s);
+ 
+-    s->usr1 |= USR1_RRDY;
+     s->usr2 |= USR2_RDR;
+     s->uts1 &= ~UTS1_RXEMPTY;
+-    s->readbuff = value;
+     if (value & URXD_BRK) {
+         s->usr2 |= USR2_BRCD;
+     }
+@@ -345,6 +417,10 @@ static void imx_serial_realize(DeviceState *dev, Error **errp)
+ {
+     IMXSerialState *s = IMX_SERIAL(dev);
+ 
++    fifo32_create(&s->rx_fifo, FIFO_SIZE);
++    timer_init_ns(&s->ageing_timer, QEMU_CLOCK_VIRTUAL,
++                  imx_serial_rx_fifo_ageing_timer_int, s);
++
+     DPRINTF("char dev for uart: %p\n", qemu_chr_fe_get_driver(&s->chr));
+ 
+     qemu_chr_fe_set_handlers(&s->chr, imx_can_receive, imx_receive,
+diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
+index b823f94519..65f0e97c76 100644
+--- a/include/hw/char/imx_serial.h
++++ b/include/hw/char/imx_serial.h
+@@ -21,12 +21,16 @@
+ #include "hw/sysbus.h"
+ #include "chardev/char-fe.h"
+ #include "qom/object.h"
++#include "qemu/fifo32.h"
+ 
+ #define TYPE_IMX_SERIAL "imx.serial"
+ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ 
++#define FIFO_SIZE       32
++
+ #define URXD_CHARRDY    (1<<15)   /* character read is valid */
+ #define URXD_ERR        (1<<14)   /* Character has error */
++#define URXD_OVRRUN     (1<<13)   /* 32nd character in RX FIFO */
+ #define URXD_FRMERR     (1<<12)   /* Character has frame error */
+ #define URXD_BRK        (1<<11)   /* Break received */
+ 
+@@ -65,11 +69,13 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ #define UCR1_TXMPTYEN   (1<<6)    /* Tx Empty Interrupt Enable */
+ #define UCR1_UARTEN     (1<<0)    /* UART Enable */
+ 
++#define UCR2_ATEN       (1<<3)    /* Ageing Timer Enable */
+ #define UCR2_TXEN       (1<<2)    /* Transmitter enable */
+ #define UCR2_RXEN       (1<<1)    /* Receiver enable */
+ #define UCR2_SRST       (1<<0)    /* Reset complete */
+ 
+ #define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt enable */
++#define UCR4_OREN       BIT(1)    /* Overrun interrupt enable */
+ #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
+ #define UCR4_WKEN       BIT(7)    /* WAKE interrupt enable */
+ 
+@@ -78,13 +84,25 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ #define UTS1_TXFULL     (1<<4)
+ #define UTS1_RXFULL     (1<<3)
+ 
++#define TL_MASK         0x3f
++
++ /* Bit time in nanoseconds assuming maximum baud rate of 115200 */
++#define BIT_TIME_NS     8681
++
++/* Assume 8 bits per character */
++#define NUM_BITS        8
++
++/* Ageing timer triggers after 8 characters */
++#define AGE_DURATION_NS (8 * NUM_BITS * BIT_TIME_NS)
++
+ struct IMXSerialState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+     /*< public >*/
+     MemoryRegion iomem;
+-    int32_t readbuff;
++    QEMUTimer ageing_timer;
++    Fifo32 rx_fifo;
+ 
+     uint32_t usr1;
+     uint32_t usr2;
 -- 
 2.34.1
 

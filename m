@@ -1,181 +1,215 @@
-Received: by 2002:a17:906:590b:b0:a31:23a7:2a34 with SMTP id h11csp678117ejq;
-        Wed, 24 Jan 2024 18:39:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFaR9h9qHBGQD3I7FAZYLQg5pdLt7hOyaU4djWEr8AioU+ZzqagtNjS+dCNKjt+HG53QFKK
-X-Received: by 2002:a05:6358:6f94:b0:172:e3d3:4906 with SMTP id s20-20020a0563586f9400b00172e3d34906mr416428rwn.34.1706150396253;
-        Wed, 24 Jan 2024 18:39:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706150396; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp82878ejc;
+        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
+X-Received: by 2002:a9d:68c5:0:b0:6e0:cfa9:8e34 with SMTP id i5-20020a9d68c5000000b006e0cfa98e34mr566831oto.74.1706171010085;
+        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706171010; cv=none;
         d=google.com; s=arc-20160816;
-        b=CfSCMrLRUqnUz6sxD5oMHY8ATPP6QVR+Ie3BKwJ6yfeUiSYVfM+DqCtwEW06aW7Qnd
-         qm5gAJdV3LJsP5cyK5fEs0TdteBf22SAatc2oaasMtXyqZlxeNCRbqIz9mc6EoH/hn/5
-         05QpyZFuXk7TI8rRSrGdfpVISsA1HKOVbGs8buKfYV7nl+f5nca53hAU9SthoDdyYB5o
-         N7gI8uAFc0lXrX5GUBd3n9X9VUWd/8bnwJXyPV9ckeAZgWchqag4YK/4EHJzhaBc5iUu
-         8btH3Gk5BeS3iIWbmssZ3zeGPvK5YZPhwIwk2eprVncV8V8BxbFe38PBN0hPoQmJZr1O
-         bUcQ==
+        b=TuqBhr4LzrPE/J8egLOw2p4MZCr76kEd0OaqW2m882knMmnAZnArv2WtCeLLTNx7S7
+         1QMig//QUIhYv3hCTkjzrN+ENVfld/dkN8ojl+5ttopkG7gCwLtTNmsWQPkPftM04IDn
+         huTcjAm0FLn07Cu9dtYGNoZzaTFuQvZkDxrbBDWYnS6A/5zmUoh5B2+Vcw1LvfxTHOFA
+         gCYsP7Iy+Wqyw4V7nZvcmxAWL4wCy24dbwRqBOtieODI7M/3PAOAzxz/VV1MhFCoQMyx
+         5khei3FpN5s4++mKf+xDCjDJtKxoLiRYQGPpAF2JKesDAbWGpAVuF9EdbXQLWrbxQll8
+         5BWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=7h03dd4d2afjNjPxjioFMh8YUf/SKcW0V9zZKuwgNAA=;
-        fh=hBsDdU2J2vnqH761c116v7xc2dp10Isn09am3SZ9h54=;
-        b=JPFZqe+11GenNxjbFqR+Oq50XpVOXKrxwi1rgfYgQWIjuFq6keteCQdcTGREMnkY6o
-         5k5kFkJNV6I+kUAdpYkOWiQHqE5REuRmxr5YJJ3HrgDQZPbjgRxji9hbuDLPxbCzCGW/
-         4cxS5EX/wWO2iEAW0nAXgLXZmf/6tuEo9LDMlmLKOkWVEosL5pgUkWGoklcQu3cv9IC9
-         tvvYO9tmc7Ixl5U+FRiUduZw8YKWpVd0CYPgnqQMLEIs6pizTWogU6vxDgVflB0fh0sw
-         gzer7A2S0ZS3l/hyWgrsaywTCkXtCT1ehXJEOga2JO91pOx55dxuk3V2Ajt8YC/Kkta6
-         oVgQ==
+        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
+        fh=/NMbWunOO/ju3Rw6PgEsoQjFlTF5tZB+F7q8urK+xPI=;
+        b=dzegSqiR0mAQNRUkCsB8heKrVpMiG/J5wwR3YO/jnNwuT9fJWKhGp4FEjyVfr9zDt1
+         IopoL5UojPaoplKE8MuzppZEdwzAVsKsWOtejBovT++7O07PeY6ohMX+72AsHHpEvarv
+         2ftBQLaLc4bwyqMqe9vxgjN1rWOY+0iNy3u1pmVi3LnycOMnzyqqtKQ5Z9WlTRaXPNG/
+         xy0xB2eoEvsggw8gHeL5gK/OPvu/qGN43hS626lvTKTbblxLERKRGlDXQLo5pQ7UvrDI
+         2tAdYBw35llOVo01aUFq9g1zDFHvLEPI+Fd13FbyD5SgaVdeIwEyUHT1TUq3SHDezeOw
+         Yuig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=etfqBR67;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id h7-20020a17090a130700b00290e0e74a9bsi523116pja.75.2024.01.24.18.39.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Jan 2024 18:39:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xhs0z1Yu;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l9-20020a05683016c900b006d9cd6fc5e7sor7625718otr.7.2024.01.25.00.23.29
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=etfqBR67;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40P20Hd9029738;
-	Thu, 25 Jan 2024 02:39:55 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=date : from : to : cc :
- subject : message-id : references : mime-version : content-type :
- content-transfer-encoding : in-reply-to; s=pp1;
- bh=7h03dd4d2afjNjPxjioFMh8YUf/SKcW0V9zZKuwgNAA=;
- b=etfqBR67RweNK6czvOYBTQ7LhHaZq/8U4rnThkowIWMq7+MrqxPGjjRkZYMxd/s01Myt
- ZLKrUDb1in2XgMPrA/3uBd5LJ5I/+gkRVre9eTZjMPXDGlnk69jr/VQtd4G5beIdjmfR
- jiTiXtZsXZwLgkjpqUuxFDdKhLibqoPXn1R8SBwtMvkFDKxUtLD67BXqIIx3cmEjdmsG
- TphknRO73yAJKw9/VtBJGU07qjCKKUYt3K3dJZlsuKIqiiqeYmUmE17RbN3WtwE1klfN
- eZY072yT795YU0kz/3v03VzITKIryApw78R0YyHCusbJNPku6FZA6xiNn3PHDUb3bzyo UA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vue2ghegs-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 25 Jan 2024 02:39:55 +0000
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40P2KZxV031993;
-	Thu, 25 Jan 2024 02:39:54 GMT
-Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vue2ghege-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 25 Jan 2024 02:39:54 +0000
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40P2d4kt022429;
-	Thu, 25 Jan 2024 02:39:53 GMT
-Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
-	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vrt0m9np5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 25 Jan 2024 02:39:53 +0000
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
-	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40P2dpAs41812312
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 25 Jan 2024 02:39:51 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 2215220040;
-	Thu, 25 Jan 2024 02:39:51 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 842C72004B;
-	Thu, 25 Jan 2024 02:39:50 +0000 (GMT)
-Received: from heavy (unknown [9.179.10.76])
-	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTPS;
-	Thu, 25 Jan 2024 02:39:50 +0000 (GMT)
-Date: Thu, 25 Jan 2024 03:39:49 +0100
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        David Hildenbrand <david@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH v3 3/3] tests/tcg: Add the PROT_NONE gdbstub test
-Message-ID: <dzmijsonpnmv47smzbydfgg6pr5emzyhodflog2cdnfcpy64kp@jomrfa47g325>
-References: <20240116003551.75168-1-iii@linux.ibm.com>
- <20240116003551.75168-4-iii@linux.ibm.com>
- <871qa9nz2f.fsf@draig.linaro.org>
- <aybsdiscvgcl5kici5lfupjtykvkyw4u5g3bdncmv3wufzwgou@r42zm6labldl>
- <87jzo1lzx2.fsf@draig.linaro.org>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xhs0z1Yu;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1706171009; x=1706775809; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
+        b=xhs0z1YukF2st9CPFslIaIAz2HeEd6TBTgQGy5b7cb7/LOET0mEx+h9/1jVDWVne+p
+         2bnARiL+uBzckjJvo9gNB41rfGuRiNzM2V63FLgOcCJCCld1iz92wlL835pdqjUuy9iX
+         /+uaN0BEsVNeefkQcERu88YUVFEgz0rm/ZJsOH1ISrmVsjElE+Qo5kdTZE6S4zjUL9Fz
+         VEtb+5c8kUfwgeD7tcvuaBe9fpltEqnxa9XxgvchC2h4YbCFe5w/thy36u9hmzk+KqmM
+         cVgT1ddUW8MliHa2YlSoh0GrJGPUeAAYoGjF7pFakfFvqEX9bb0LqjIkumVvxysmzOTm
+         500g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706171009; x=1706775809;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
+        b=wq4PET//mzkxrz6i/7b2FYhn9OPFrxpOBBOJ7nGVlvl3GuIKvDB1yZd7u26eGo0x8g
+         3nCtBfmsYX5KQNYbrrOgj8x3ykAyMqj81lqOUy4D96OXt8yuoAAEprsIjULWGixqMW/k
+         0igkpQxkKt+FZujQJlCibWpssiuMXNxgJFONR4nyMVESVZurtKmXGRyV/RXj9EBIF0Aq
+         xg50otBTXtkvh2UG9XI3/5ewiag0SXlSLRhd4N+0RP8RvibLm0XyzV0t/1k/k9k6L0yM
+         SkKUCQHYSSL3u309KiaoOXWa2IQDXfLY1fjAPcshA5SCbpiHl0eu1W7QSdS7qvApP4ex
+         XXLw==
+X-Gm-Message-State: AOJu0YxKxMNQgfmrowxaJGr3zSydSM6cFulGo43f44fHFrNrGc1UMIvA
+	1+4s6esEJSimd2jwAvC8n0HNAfBBD1lzBg/85bDOiCi6/jC9uvrkHKePoRM/p9c=
+X-Google-Smtp-Source: AGHT+IECMqWYYJsB6MNOawObFchB6dGaMRCOAPEafdArYh7Hsf1OSjlc6V3+DkvMY59NBK0L25NVnw==
+X-Received: by 2002:a05:6830:2053:b0:6dc:3c65:2a7f with SMTP id f19-20020a056830205300b006dc3c652a7fmr559935otp.63.1706171009670;
+        Thu, 25 Jan 2024 00:23:29 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with ESMTPSA id w18-20020a639352000000b005d508535001sm2310835pgm.43.2024.01.25.00.23.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 25 Jan 2024 00:23:29 -0800 (PST)
+Message-ID: <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
+Date: Thu, 25 Jan 2024 17:23:20 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
+To: Andrew Jones <ajones@ventanamicro.com>
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier
+ <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
+ qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss
+ <erdnaxe@crans.org>, John Snow <jsnow@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
+ Paul Durrant <paul@xen.org>
+References: <20240122145610.413836-1-alex.bennee@linaro.org>
+ <20240122145610.413836-2-alex.bennee@linaro.org>
+ <20240123-b8d1c55688885bfc9125c42b@orel>
+ <15d2f958-a51e-4b87-9a70-28edf3b55491@daynix.com>
+ <20240124-3d9bec68bff7ab0057b902b6@orel>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240124-3d9bec68bff7ab0057b902b6@orel>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87jzo1lzx2.fsf@draig.linaro.org>
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: Ap5Noetn8rjwF62w3BsAq4yj1O46Lg6Q
-X-Proofpoint-GUID: 3pYfDREC4UzDJjNBaI-6kAX9Ys0aKvMc
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-24_12,2024-01-24_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 phishscore=0
- priorityscore=1501 spamscore=0 clxscore=1015 impostorscore=0
- lowpriorityscore=0 mlxlogscore=999 suspectscore=0 malwarescore=0
- adultscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401250018
-X-TUID: 9gcY9Ks7Gzj4
+X-TUID: YztfYuhL6QYH
 
-On Mon, Jan 22, 2024 at 11:19:05PM +0000, Alex BennÈe wrote:
-> Ilya Leoshkevich <iii@linux.ibm.com> writes:
+On 2024/01/24 17:16, Andrew Jones wrote:
+> On Wed, Jan 24, 2024 at 12:08:33PM +0900, Akihiko Odaki wrote:
+>> On 2024/01/23 17:20, Andrew Jones wrote:
+>>> On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex Benn√©e wrote:
+>>>> From: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>>
+>>>> The effective MXL value matters when booting.
+>>>
+>>> I'd prefer this commit message get some elaboration. riscv_is_32bit()
+>>> is used in a variety of contexts, some where it should be reporting
+>>> the max misa.mxl. However, when used for booting an S-mode kernel it
+>>> should indeed report the effective mxl. I think we're fine with the
+>>> change, though, because at init and on reset the effective mxl is set
+>>> to the max mxl, so, in those contexts, where riscv_is_32bit() should
+>>> be reporting the max, it does.
+>>>
+>>>>
+>>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>> Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
+>>>> Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
+>>>> Signed-off-by: Alex Benn√©e <alex.bennee@linaro.org>
+>>>> ---
+>>>>    hw/riscv/boot.c | 2 +-
+>>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+>>>> index 0ffca05189f..bc67c0bd189 100644
+>>>> --- a/hw/riscv/boot.c
+>>>> +++ b/hw/riscv/boot.c
+>>>> @@ -36,7 +36,7 @@
+>>>>    bool riscv_is_32bit(RISCVHartArrayState *harts)
+>>>>    {
+>>>> -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
+>>>> +    return harts->harts[0].env.misa_mxl == MXL_RV32;
+>>>>    }
+>>>
+>>> Assuming everyone agrees with what I've written above, then maybe we
+>>> should write something similar in a comment above this function.
+>>>
+>>> Thanks,
+>>> drew
+>>
+>> The corresponding commit in my series has a more elaborated message:
+>> https://patchew.org/QEMU/20240115-riscv-v9-0-ff171e1aedc8@daynix.com/20240115-riscv-v9-1-ff171e1aedc8@daynix.com/
 > 
-> > On Mon, Jan 22, 2024 at 03:54:32PM +0000, Alex BennÈe wrote:
-> >> Ilya Leoshkevich <iii@linux.ibm.com> writes:
-> >> 
-> >> > Make sure that qemu gdbstub, like gdbserver, allows reading from and
-> >> > writing to PROT_NONE pages.
-> >> >
-> >> > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-> >> > ---
-> >> >  tests/tcg/multiarch/Makefile.target      |  9 +++++-
-> >> >  tests/tcg/multiarch/gdbstub/prot-none.py | 22 +++++++++++++
-> >> >  tests/tcg/multiarch/prot-none.c          | 40 ++++++++++++++++++++++++
-> >> >  3 files changed, 70 insertions(+), 1 deletion(-)
-> >> >  create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
-> >> >  create mode 100644 tests/tcg/multiarch/prot-none.c
-> >
-> > [...]
-> >
-> >> > +def run_test():
-> >> > +    """Run through the tests one by one"""
-> >> > +    gdb.Breakpoint("break_here")
-> >> > +    gdb.execute("continue")
-> >> > +    val = gdb.parse_and_eval("*(char[2] *)q").string()
-> >> 
-> >> Better traceback:
-> >> 
-> >>   Breakpoint 1, break_here (q=0x400000802fff) at /home/alex/lsrc/qemu.git/tests/tcg/multiarch/prot-none.c:14
-> >>   14      }
-> >>   GDB Exception:
-> >>   Traceback (most recent call last):
-> >>     File "/home/alex/lsrc/qemu.git/tests/guest-debug/test_gdbstub.py", line 42, in main
-> >>       test()
-> >>     File "./tests/tcg/multiarch/gdbstub/prot-none.py", line 14, in run_test
-> >>       val = gdb.parse_and_eval("*(char[2] *)q").string()
-> >>             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> >>   gdb.MemoryError: Cannot access memory at address 0x400000802fff
-> >>   Python 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0] on linux
-> >>   Type "help", "copyright", "credits" or "license" for more information.
-> >>   (InteractiveConsole)
-> >>   >>> 
-> >
-> > Thanks for the debug output. This shows that the feature being tested
-> > doesn't work (the value of `q` looks sane to me). May I ask what host
-> > distro is this? I tried on x86_64 Fedora 38 and x86_64 Ubuntu 22.04 so
-> > far, and the test was successful.
+> I've pulled the message from that link and quoted it below
 > 
-> Debian Bookworm (x86_64) with gdb-multiarch installed.
-> >
-> > [...]
+>> A later commit requires one extra step to retrieve misa_mxl_max. As
+>> misa_mxl is semantically more correct and does not need such a extra
+>> step, refer to misa_mxl instead. Below is the explanation why misa_mxl
+>> is more semantically correct to refer to than misa_mxl_max in this case.
+>>
+>> Currently misa_mxl always equals to misa_mxl_max so it does not matter
 > 
-> -- 
-> Alex BennÈe
-> Virtualisation Tech Lead @ Linaro
+> That's true, but I think that's due to a bug in write_misa(), which
+> shouldn't be masking val with the extension mask until mxl has been
+> extracted.
 
-Hm, I tried that (in a VM, in case the kernel is somehow involved) and
-that worked too:
+misa.MXL writes are not supported since the MISA write code was 
+introduced with commit f18637cd611c ("RISC-V: Add misa runtime write 
+support"). It doesn't matter if we allow the guest to write MXL; the 
+firmware code is emulated by QEMU when QEMU loads a kernel.
 
-  Breakpoint 1, break_here (q=0x400000802fff) at /qemu/tests/tcg/multiarch/prot-none.c:14
-  14      }
-  PASS: 42 == 42
+> 
+>> which of misa_mxl or misa_mxl_max to refer to. However, it is possible
+>> to have different values for misa_mxl and misa_mxl_max if QEMU gains a
+>> new feature to load a RV32 kernel on a RV64 system, for example. For
+>> such a behavior, the real system will need the firmware to switch MXL to
+>> RV32, and if QEMU implements the same behavior, mxl will represent the
+>> MXL that corresponds to the kernel being loaded. Therefore, it is more
+>> appropriate to refer to mxl instead of misa_mxl_max when
+>> misa_mxl != misa_mxl_max.
+> 
+> Right, but that doesn't say anything more than the original one line,
+> "The effective MXL value matters when booting."
 
-I wonder what else can be different. Can it be that in your case the
-test runs without /proc? Or perhaps some additional LSM is enabled?
+What do you think is missing?
+
+> 
+> What I'm looking for is a code comment explaining how riscv_is_32bit()
+> is always safe to use. Something like
+> 
+>   /*
+>    * Checking the effective mxl is always correct, because the effective
+>    * mxl will be equal to the max mxl at initialization and also on reset,
+>    * which are the times when it should check the maximum mxl. Later, if
+>    * firmware writes misa with a smaller mxl, then that mxl should be
+>    * used in checks.
+
+It is misleading to say the maximum MXL should be checked only at 
+initialization and on reset. We can refer to the maximum MXL anytime; we 
+just don't need it to load a kernel.
+
+Regards,
+Akihiko Odaki

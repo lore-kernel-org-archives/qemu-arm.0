@@ -1,423 +1,259 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp298388ejc;
-        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEAczTgoyKnrPZ4hK3hQ2iJZRvEPRxGLFO/sfY5cIqmiUvkA0X5/npqasgNNaDjAoaCkRCF
-X-Received: by 2002:a05:620a:4ad5:b0:783:3514:63b4 with SMTP id sq21-20020a05620a4ad500b00783351463b4mr1196141qkn.113.1706196197230;
-        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706196197; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp356871ejc;
+        Thu, 25 Jan 2024 08:57:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFlx3Vq1GveP+bydWOLQz5GPp5i1HzHqRi28a3mf40GIv1Rr0gaGMKQUt682sjSvshEXFfo
+X-Received: by 2002:a05:6808:3a10:b0:3bd:53dd:5331 with SMTP id gr16-20020a0568083a1000b003bd53dd5331mr13515oib.119.1706201872484;
+        Thu, 25 Jan 2024 08:57:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706201872; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q35a5Rj7uW8OQEmQu6nRVUZjYd2xEpfm5pS4YPq7H3M0dFbt1FCKG8FD6RSxh+kLuU
-         ookYwA/Tj1z0p1+2TISnbLuGpZcJcEwalXl5pCl58PEHNtT0IZoW5C5xAMeILTSgfNtz
-         KHMe5vwV4cKE7QfHpq0TapFx++WkkuxumVhPqkMda0Z11pvD4JqQWNQN2J2loP2vCBkO
-         MltkN5WKtmznYY4DbScpv0hQP5d5bvCkKAI6IOaEI6OMznPWjeuKVhFwqmIazg897BRN
-         uuDm0BbkDncMaZPxTeiWSsgnxgt1z6LYO8dso+uuNaqDfRYWAuUUxi+koUEFdL+ehdk6
-         40Fg==
+        b=alBTnB78DhOYq//pk3Vio2JDZ3h2JSkODuCL46En7LG2hBJ9Tvp+HfQzPpBtax9GLs
+         wTFlvd+jygghWoKI0z9p33OHEG5WaQRqChvPRbbIMc/a7yexValoLQ+hMGA2RT+lWSrb
+         BNvLQnr3H3QLWSWcmO797y1wUcjsbk+6LWqY4VJoww9Q5DpDIJkHepzEP8C2eOELfFuq
+         o+K+2ASFEKQuiqKlqt4ojwdrl8CR0epDuLgLbeNEIKEGTobIpU6zTOhc8KuxLXRVXfrK
+         AdNegAlSpGXRzlaNVO1bDoUYvJs1Vv4gLvySOztPHdK8Sc759RfCDYbrbby8PLTp1ezc
+         /uxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
-        fh=irNRlEco/Cz5I9vvDAIJdnwVTrx4Nzx79NRRHlSvh+8=;
-        b=QGg/JKbPKSpymvdhYaUPNph7b/X3W69eP2oXbiD+ThHbV7coNmIyQbyKOzeeAbstnl
-         ANLUJgXkom9r09axtJ4gZ7HwtlhhaU+kJ4zVXmt3jlGXLvlXTpuRHiZp4Iv8LBlrObFU
-         VUnP1OVkKfaZthAqWHSk9WZRuDG+EbgQQ9D7agoFp9xFqkVnvLASyf/GeEhZNVLPus2f
-         73vSHE8Z+TdyuWyk37IB77Tx+zVsicT5iie6rG4ixi5fnJ6bbqHmi+6MjathkFJISfVW
-         bF/fL3m4nCMzfpTwW/Kp3y1is8P9ZeNB4luRRssVIiYXcT1EpJ9kUF94GPJIuMt4HW08
-         sdPQ==
+        bh=ZeCoqulJucVMeGZeJh3AVKZGYWy92cXRHx62XhZNVWU=;
+        fh=LrpQCMqEWkkfcCkbk4oEAKfm9hfQMuham9yWwcV3vYQ=;
+        b=vM4IAjWZVx/+JZKlt+5Ou/FF4wvziissg1uIxj3wS+yPDKiojr7l4a2EzWzOqsqnPW
+         I6ow458u96Romv21n+sfnpQdgA/lML6dMFS7IDBfRQUZK0gVj+dKfQ5OQMBozFfjq/k+
+         UCYQloEEvZ7beTkt6SyMBnwnWIKWzEV4Q+hThYtL99VQFYd1Z3nOd9qMc/7yQI2EOej4
+         uR5NxFnV2ETkVvOOSkRXNjh0AoBHcsjyr+8YYR3aabysbPPYakdFTh3if5tn+ws2wPWH
+         wjuROzAhkQOTHht5aPCUY0DBFN8RBqItQDzhkPFB69X1Cgg5il21NnoeMP39eeRrRbmz
+         JdLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B+DIfvAl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=wVCcmnAO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13-20020a05620a13ed00b00783070846e9si12796644qkl.385.2024.01.25.07.23.17
+        by mx.google.com with ESMTPS id z9-20020a05620a08c900b007830ce6519fsi12966846qkz.649.2024.01.25.08.57.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jan 2024 07:23:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Jan 2024 08:57:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B+DIfvAl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@linaro.org header.s=google header.b=wVCcmnAO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rT1ZF-0005XS-Nb; Thu, 25 Jan 2024 10:23:01 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rT329-0007SN-8W; Thu, 25 Jan 2024 11:56:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rT1ZD-0005Qi-R3; Thu, 25 Jan 2024 10:22:59 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rT328-0007QP-0X
+ for qemu-devel@nongnu.org; Thu, 25 Jan 2024 11:56:56 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rT1ZB-0007wZ-JL; Thu, 25 Jan 2024 10:22:59 -0500
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-6daa89a6452so4971985b3a.2; 
- Thu, 25 Jan 2024 07:22:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rT324-00016D-CL
+ for qemu-devel@nongnu.org; Thu, 25 Jan 2024 11:56:55 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-40ed4690ee4so3325065e9.2
+ for <qemu-devel@nongnu.org>; Thu, 25 Jan 2024 08:56:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706196174; x=1706800974; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706201811; x=1706806611; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
- b=B+DIfvAlNl5mKrXZ93dAdzEKpHbBeKS4nybPxIlCqwkWa/DRsmaIfKZo60PPH4+UnY
- HPVmY2Zghgch2ec5Cy4dw0OwJiZuYoubLM86KwrIH4leRhot8rotEx2BZpcVo2FJoXAh
- sNlt0jBIfSw5/E0usj2Fj3MC0sJC2jHc7XKAZchNc90ajDCUIM+jRPmQHnxY+aDOpYEA
- QTQOWVW0hZB6ZGlpZ9om6cFEHzs6V02+1l83uHFLpJC7QMXsSXYz+erZcNYltpXU4y+S
- 7vzmuuuZu8M2nbkN9WnJrws2yaX867vSkG3nOtbuTfzx6ueJ2yxDYRWfNVnPdrmPs8Lp
- LNLQ==
+ bh=ZeCoqulJucVMeGZeJh3AVKZGYWy92cXRHx62XhZNVWU=;
+ b=wVCcmnAOwfWfXH6eBwAsUiotEO/EGIr9e2A0WY/Nm1f9BTmd+PG7o9yG/8wKQd1Y1J
+ fEqC7JUb5ULN//ZT6wxz1OOMU/KiSvqvpI2b02FVDR4Ku18CQUaVrtdbsD9aV4A9r+zR
+ qpEiwKkU8lmxmPAM7mgW33A6a/1Avxt0vRDv5tEAcsGtio9nMjAPe8/OTsXoUjQ/HeSV
+ Ay+czTYPBe1V2Lgh7Pjhf7P8t2htmzPiV9Kd+/A0eKC0qJ3dvgDb0phSV/juIExy0Dqh
+ WUsf62uBGCIeNrLEGFahEieR519Jj013lHOXV0XH/kn48MhzrLiNvW8svwujgx5TV32K
+ +klA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706196174; x=1706800974;
+ d=1e100.net; s=20230601; t=1706201811; x=1706806611;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ICa7rCIzRHezzvI5p5tcpvg1MJA1MmCX0bzbSzFqJ9U=;
- b=L0QXOn/tLYXQk/6BQ3dDgMjcDfywX72Yc6zn37ZcHf5PB54Va8JUI/y+8KO5CZQvcw
- zo38K9PyuQv6Kieqyjxhs7bVMbM65msKIRMetC/uTua7BXxpy2UmuMyiq60k/SBDKZFd
- FD0ao9bZWv+qh24ZcWFTSrm0bukI1P7dpFIl0X+QaUY590BRbvxODgXDP5/FAFzTMXCT
- AAOGElCJ4FC7oFcMcwVGek3KakupJ0CL7Td8HBZCDEJ2ipX7jiymOVD6e9uEjDh2iHqQ
- c7nn3l3RjZqsfn6k8UCSR623jLpzJLoyvygfLIzLNGB7UtDkkcn1LUxcJFYYCfEqzQ6R
- HLIA==
-X-Gm-Message-State: AOJu0YyBaSZGajX0xgkiMPmrQBF95GNzqyCrqzcOBliVmdMCC7UKmfRS
- gN1aLEEQ+fwn3aJMTES1JHU9I5F9Scl5ZWBufNO2LByg7Gv8i5AztIXkO/ijtR6sPg==
-X-Received: by 2002:a05:6a21:2d89:b0:19c:768b:b77a with SMTP id
- ty9-20020a056a212d8900b0019c768bb77amr984783pzb.113.1706196174281; 
- Thu, 25 Jan 2024 07:22:54 -0800 (PST)
-Received: from localhost.localdomain ([49.47.195.100])
- by smtp.gmail.com with ESMTPSA id
- z2-20020aa785c2000000b006d99d986624sm15930366pfn.151.2024.01.25.07.22.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 07:22:53 -0800 (PST)
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
+ bh=ZeCoqulJucVMeGZeJh3AVKZGYWy92cXRHx62XhZNVWU=;
+ b=rZspQ+UTIpoYtbi5cohICmNBjVMK8D+2fDrSzFAn2Fj/dg3VbPQBoxefimEjZZZ0LS
+ v+0jfvv7wITlXzPpFKHrgBP87PGg5A9Q06Y1xDEn4KY7tMXtw0v5jjUVI16gyXBaJ21U
+ YGYPYKU9jSGwsOrutsoxTW1SfmBIrKPhpQ4hdT3CUgKnJBUqOYUE/bRiIGNn4DLgvneu
+ Nzvr6aG033ehjKReGlegwfdxpd1UtGoyonVFCYBvb0ISHBOReDo7NEZVGfsGcF95ltXI
+ PO+9LZvrsAd7W9V0MPAfTZdjOhWRcxbwBzqqp1ehnAQGwyDl4jLJNyOj8kGhau2uuXxs
+ HJhw==
+X-Gm-Message-State: AOJu0Yy7zK3jq+BqS5jy2lxd19VcWMMcHCXvlpf7uSC41vB/rq5TfWA6
+ xkAB++S3Fs++DQC+y+3ZEooqegjUISbOr+elnO4BzUuHBdpUm49bpqYtuvT1J9mQUarWwk//lXw
+ u
+X-Received: by 2002:a05:600c:214d:b0:40e:94f9:229e with SMTP id
+ v13-20020a05600c214d00b0040e94f9229emr23954wml.68.1706201810691; 
+ Thu, 25 Jan 2024 08:56:50 -0800 (PST)
+Received: from m1x-phil.lan (lec62-h02-176-184-19-125.dsl.sta.abo.bbox.fr.
+ [176.184.19.125]) by smtp.gmail.com with ESMTPSA id
+ v17-20020a05600c471100b0040ec7fcaea6sm3174210wmo.37.2024.01.25.08.56.49
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 25 Jan 2024 08:56:50 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Rayhan Faizel <rayhan.faizel@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org (open list:i.MX31 (kzm))
-Subject: [PATCH v4] hw/char/imx_serial: Implement receive FIFO and ageing
- timer for imx serial.
-Date: Thu, 25 Jan 2024 20:49:32 +0530
-Message-Id: <20240125151931.83494-1-rayhan.faizel@gmail.com>
-X-Mailer: git-send-email 2.34.1
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/2] hw,
+ target: Prefer fast cpu_env() over slower CPU QOM cast macro
+Date: Thu, 25 Jan 2024 17:56:44 +0100
+Message-ID: <20240125165648.49898-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gdUfnJGILCJA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZZnt+e6IRAfE
 
-This patch implements a 32 half word FIFO as per imx serial device
-specifications. If a non empty FIFO is below the trigger level, an ageing
-timer will tick for a duration of 8 characters. On expiry, AGTIM will be set
-triggering an interrupt. AGTIM timer resets when there is activity in
-the receive FIFO.
+Use cpu_env() -- which is fast path -- when possible.
+Bulk conversion using Coccinelle spatch (script included).
 
-Otherwise, RRDY is set when trigger level is
-exceeded. The receive trigger level is 8 in newer kernel versions and 1 in
-older ones.
+Philippe Mathieu-Daudé (2):
+  scripts/coccinelle: Add cpu_env.cocci_template script
+  bulk: Prefer fast cpu_env() over slower CPU QOM cast macro
 
-This change will break migration compatibility.
+ MAINTAINERS                               |  1 +
+ target/i386/hvf/vmx.h                     |  9 ++--
+ hw/i386/vmmouse.c                         |  6 +--
+ hw/i386/xen/xen-hvm.c                     |  3 +-
+ hw/intc/arm_gicv3_cpuif_common.c          |  3 +-
+ hw/ppc/mpc8544_guts.c                     |  3 +-
+ hw/ppc/pnv.c                              |  3 +-
+ hw/ppc/pnv_xscom.c                        |  3 +-
+ hw/ppc/ppce500_spin.c                     |  3 +-
+ hw/ppc/spapr.c                            |  3 +-
+ hw/ppc/spapr_caps.c                       |  6 +--
+ target/alpha/cpu.c                        | 21 +++-----
+ target/alpha/gdbstub.c                    |  6 +--
+ target/alpha/helper.c                     | 12 ++---
+ target/alpha/mem_helper.c                 |  9 ++--
+ target/arm/cpu.c                          | 15 ++----
+ target/arm/debug_helper.c                 |  6 +--
+ target/arm/gdbstub.c                      |  6 +--
+ target/arm/gdbstub64.c                    |  6 +--
+ target/arm/helper.c                       |  9 ++--
+ target/arm/hvf/hvf.c                      | 12 ++---
+ target/arm/kvm.c                          |  3 +-
+ target/arm/ptw.c                          |  3 +-
+ target/arm/tcg/cpu32.c                    |  3 +-
+ target/avr/cpu.c                          | 21 +++-----
+ target/avr/gdbstub.c                      |  6 +--
+ target/avr/helper.c                       |  9 ++--
+ target/cris/cpu.c                         |  3 +-
+ target/cris/gdbstub.c                     |  9 ++--
+ target/cris/helper.c                      | 12 ++---
+ target/cris/translate.c                   |  3 +-
+ target/hppa/cpu.c                         |  6 +--
+ target/hppa/int_helper.c                  |  6 +--
+ target/hppa/mem_helper.c                  |  3 +-
+ target/i386/arch_memory_mapping.c         |  3 +-
+ target/i386/cpu-dump.c                    |  3 +-
+ target/i386/cpu.c                         | 36 +++++---------
+ target/i386/helper.c                      | 30 ++++--------
+ target/i386/hvf/hvf.c                     |  6 +--
+ target/i386/hvf/x86.c                     |  3 +-
+ target/i386/hvf/x86_emu.c                 |  6 +--
+ target/i386/hvf/x86_task.c                | 10 ++--
+ target/i386/hvf/x86hvf.c                  |  6 +--
+ target/i386/kvm/kvm.c                     |  6 +--
+ target/i386/kvm/xen-emu.c                 | 30 ++++--------
+ target/i386/tcg/sysemu/bpt_helper.c       |  3 +-
+ target/i386/tcg/tcg-cpu.c                 | 12 ++---
+ target/i386/tcg/user/excp_helper.c        |  3 +-
+ target/i386/tcg/user/seg_helper.c         |  3 +-
+ target/m68k/cpu.c                         | 30 ++++--------
+ target/m68k/gdbstub.c                     |  6 +--
+ target/m68k/helper.c                      |  3 +-
+ target/m68k/m68k-semi.c                   |  6 +--
+ target/m68k/op_helper.c                   |  9 ++--
+ target/m68k/translate.c                   |  3 +-
+ target/microblaze/helper.c                |  3 +-
+ target/microblaze/translate.c             |  3 +-
+ target/mips/cpu.c                         |  9 ++--
+ target/mips/gdbstub.c                     |  6 +--
+ target/mips/kvm.c                         | 27 ++++------
+ target/mips/sysemu/physaddr.c             |  3 +-
+ target/mips/tcg/exception.c               |  3 +-
+ target/mips/tcg/op_helper.c               |  3 +-
+ target/mips/tcg/sysemu/special_helper.c   |  3 +-
+ target/mips/tcg/sysemu/tlb_helper.c       |  6 +--
+ target/mips/tcg/translate.c               |  3 +-
+ target/nios2/cpu.c                        |  9 ++--
+ target/nios2/helper.c                     |  3 +-
+ target/nios2/nios2-semi.c                 |  6 +--
+ target/openrisc/gdbstub.c                 |  3 +-
+ target/openrisc/interrupt.c               |  6 +--
+ target/openrisc/translate.c               |  3 +-
+ target/ppc/cpu_init.c                     |  9 ++--
+ target/ppc/excp_helper.c                  |  3 +-
+ target/ppc/gdbstub.c                      | 12 ++---
+ target/ppc/kvm.c                          |  6 +--
+ target/ppc/ppc-qmp-cmds.c                 |  3 +-
+ target/ppc/user_only_helper.c             |  3 +-
+ target/riscv/arch_dump.c                  |  6 +--
+ target/riscv/cpu.c                        | 15 ++----
+ target/riscv/cpu_helper.c                 | 13 ++---
+ target/riscv/debug.c                      |  9 ++--
+ target/riscv/gdbstub.c                    |  6 +--
+ target/riscv/kvm/kvm-cpu.c                |  6 +--
+ target/riscv/tcg/tcg-cpu.c                |  9 ++--
+ target/riscv/translate.c                  |  3 +-
+ target/rx/gdbstub.c                       |  6 +--
+ target/rx/helper.c                        |  6 +--
+ target/rx/translate.c                     |  3 +-
+ target/s390x/cpu-dump.c                   |  3 +-
+ target/s390x/gdbstub.c                    |  6 +--
+ target/s390x/helper.c                     |  3 +-
+ target/s390x/kvm/kvm.c                    |  6 +--
+ target/s390x/tcg/excp_helper.c            |  9 ++--
+ target/s390x/tcg/translate.c              |  3 +-
+ target/sh4/cpu.c                          | 15 ++----
+ target/sh4/gdbstub.c                      |  6 +--
+ target/sh4/helper.c                       |  9 ++--
+ target/sh4/translate.c                    |  3 +-
+ target/sparc/cpu.c                        | 12 ++---
+ target/sparc/gdbstub.c                    |  3 +-
+ target/sparc/int32_helper.c               |  3 +-
+ target/sparc/int64_helper.c               |  3 +-
+ target/sparc/ldst_helper.c                |  6 +--
+ target/sparc/mmu_helper.c                 | 15 ++----
+ target/sparc/translate.c                  |  3 +-
+ target/tricore/cpu.c                      | 12 ++---
+ target/tricore/gdbstub.c                  |  6 +--
+ target/tricore/helper.c                   |  3 +-
+ target/tricore/translate.c                |  3 +-
+ target/xtensa/dbg_helper.c                |  3 +-
+ target/xtensa/exc_helper.c                |  3 +-
+ target/xtensa/gdbstub.c                   |  6 +--
+ target/xtensa/helper.c                    |  9 ++--
+ target/xtensa/translate.c                 |  3 +-
+ scripts/coccinelle/cpu_env.cocci_template | 60 +++++++++++++++++++++++
+ 116 files changed, 334 insertions(+), 548 deletions(-)
+ create mode 100644 scripts/coccinelle/cpu_env.cocci_template
 
-[Changes in v4]
-
-- Correct handling of fifo overflow including ORE and OVRRUN flag setting.
-- Correct behaviour of empty FIFO popping.
-- Remove unnecessary RRDYEN check in can_receive.
-- In ageing timer restart function, use flag checks instead of directly
-  checking FIFO levels.
-- Further fixes to code formatting.
-
-[Changes in v3]
-
-- Caught more whitespace changes that went overlooked
-- Moved fifo and timer initialization to realize
-
-[Changes in v2]
-
-As per Peter Maydell's suggestions,
-
-- Use generic FIFO32 implementation in place of handmade impl.
-- Moved timer_init to serial init and use timer_del in reset
-- Removed stray whitespaces
-- Increment VMSTATE version
-
-Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
----
- hw/char/imx_serial.c         | 102 ++++++++++++++++++++++++++++++-----
- include/hw/char/imx_serial.h |  20 ++++++-
- 2 files changed, 108 insertions(+), 14 deletions(-)
-
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index 1df862eb7f..ba37be6faa 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -26,6 +26,7 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "qemu/fifo32.h"
- 
- #ifndef DEBUG_IMX_UART
- #define DEBUG_IMX_UART 0
-@@ -41,10 +42,11 @@
- 
- static const VMStateDescription vmstate_imx_serial = {
-     .name = TYPE_IMX_SERIAL,
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (const VMStateField[]) {
--        VMSTATE_INT32(readbuff, IMXSerialState),
-+        VMSTATE_FIFO32(rx_fifo, IMXSerialState),
-+        VMSTATE_TIMER(ageing_timer, IMXSerialState),
-         VMSTATE_UINT32(usr1, IMXSerialState),
-         VMSTATE_UINT32(usr2, IMXSerialState),
-         VMSTATE_UINT32(ucr1, IMXSerialState),
-@@ -71,6 +73,10 @@ static void imx_update(IMXSerialState *s)
-      * following:
-      */
-     usr1 = s->usr1 & s->ucr1 & (USR1_TRDY | USR1_RRDY);
-+    /*
-+     * Interrupt if AGTIM is set (ageing timer interrupt in RxFIFO)
-+     */
-+    usr1 |= (s->ucr2 & UCR2_ATEN) ? (s->usr1 & USR1_AGTIM) : 0;
-     /*
-      * Bits that we want in USR2 are not as conveniently laid out,
-      * unfortunately.
-@@ -78,15 +84,66 @@ static void imx_update(IMXSerialState *s)
-     mask = (s->ucr1 & UCR1_TXMPTYEN) ? USR2_TXFE : 0;
-     /*
-      * TCEN and TXDC are both bit 3
-+     * ORE and OREN are both bit 1
-      * RDR and DREN are both bit 0
-      */
--    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN);
-+    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN | UCR4_OREN);
- 
-     usr2 = s->usr2 & mask;
- 
-     qemu_set_irq(s->irq, usr1 || usr2);
- }
- 
-+static void imx_serial_rx_fifo_push(IMXSerialState *s, uint32_t value)
-+{
-+    uint32_t pushed_value = value;
-+    if (fifo32_is_full(&s->rx_fifo)) {
-+        /* Set ORE if FIFO is already full */
-+        s->usr2 |= USR2_ORE;
-+    } else {
-+        if (fifo32_num_used(&s->rx_fifo) == FIFO_SIZE - 1) {
-+            /* Set OVRRUN on 32nd character in FIFO */
-+            pushed_value |= URXD_ERR | URXD_OVRRUN;
-+        }
-+        fifo32_push(&s->rx_fifo, pushed_value);
-+    }
-+}
-+
-+static uint32_t imx_serial_rx_fifo_pop(IMXSerialState *s)
-+{
-+    if (fifo32_is_empty(&s->rx_fifo)) {
-+        return 0;
-+    }
-+    return fifo32_pop(&s->rx_fifo);
-+}
-+
-+static void imx_serial_rx_fifo_ageing_timer_int(void *opaque)
-+{
-+    IMXSerialState *s = (IMXSerialState *) opaque;
-+    s->usr1 |= USR1_AGTIM;
-+    imx_update(s);
-+}
-+
-+static void imx_serial_rx_fifo_ageing_timer_restart(void *opaque)
-+{
-+    /*
-+     * Ageing timer starts ticking when
-+     * RX FIFO is non empty and below trigger level.
-+     * Timer is reset if new character is received or
-+     * a FIFO read occurs.
-+     * Timer triggers an interrupt when duration of
-+     * 8 characters has passed (assuming 115200 baudrate).
-+     */
-+    IMXSerialState *s = (IMXSerialState *) opaque;
-+
-+    if (!(s->usr1 & USR1_RRDY) && !(s->uts1 & UTS1_RXEMPTY)) {
-+        timer_mod_ns(&s->ageing_timer,
-+                     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + AGE_DURATION_NS);
-+    } else {
-+        timer_del(&s->ageing_timer);
-+    }
-+}
-+
- static void imx_serial_reset(IMXSerialState *s)
- {
- 
-@@ -102,7 +159,9 @@ static void imx_serial_reset(IMXSerialState *s)
-     s->ucr3 = 0x700;
-     s->ubmr = 0;
-     s->ubrc = 4;
--    s->readbuff = URXD_ERR;
-+
-+    fifo32_reset(&s->rx_fifo);
-+    timer_del(&s->ageing_timer);
- }
- 
- static void imx_serial_reset_at_boot(DeviceState *dev)
-@@ -125,20 +184,28 @@ static uint64_t imx_serial_read(void *opaque, hwaddr offset,
-                                 unsigned size)
- {
-     IMXSerialState *s = (IMXSerialState *)opaque;
--    uint32_t c;
-+    uint32_t c, rx_used;
-+    uint8_t rxtl = s->ufcr & TL_MASK;
- 
-     DPRINTF("read(offset=0x%" HWADDR_PRIx ")\n", offset);
- 
-     switch (offset >> 2) {
-     case 0x0: /* URXD */
--        c = s->readbuff;
-+        c = imx_serial_rx_fifo_pop(s);
-         if (!(s->uts1 & UTS1_RXEMPTY)) {
-             /* Character is valid */
-             c |= URXD_CHARRDY;
--            s->usr1 &= ~USR1_RRDY;
--            s->usr2 &= ~USR2_RDR;
--            s->uts1 |= UTS1_RXEMPTY;
-+            rx_used = fifo32_num_used(&s->rx_fifo);
-+            /* Clear RRDY if below threshold */
-+            if (rx_used < rxtl) {
-+                s->usr1 &= ~USR1_RRDY;
-+            }
-+            if (rx_used == 0) {
-+                s->usr2 &= ~USR2_RDR;
-+                s->uts1 |= UTS1_RXEMPTY;
-+            }
-             imx_update(s);
-+            imx_serial_rx_fifo_ageing_timer_restart(s);
-             qemu_chr_fe_accept_input(&s->chr);
-         }
-         return c;
-@@ -300,19 +367,24 @@ static void imx_serial_write(void *opaque, hwaddr offset,
- static int imx_can_receive(void *opaque)
- {
-     IMXSerialState *s = (IMXSerialState *)opaque;
--    return !(s->usr1 & USR1_RRDY);
-+    return s->ucr2 & UCR2_RXEN && fifo32_num_used(&s->rx_fifo) < FIFO_SIZE;
- }
- 
- static void imx_put_data(void *opaque, uint32_t value)
- {
-     IMXSerialState *s = (IMXSerialState *)opaque;
-+    uint8_t rxtl = s->ufcr & TL_MASK;
- 
-     DPRINTF("received char\n");
-+    imx_serial_rx_fifo_push(s, value);
-+    if (fifo32_num_used(&s->rx_fifo) >= rxtl) {
-+        s->usr1 |= USR1_RRDY;
-+    }
-+
-+    imx_serial_rx_fifo_ageing_timer_restart(s);
- 
--    s->usr1 |= USR1_RRDY;
-     s->usr2 |= USR2_RDR;
-     s->uts1 &= ~UTS1_RXEMPTY;
--    s->readbuff = value;
-     if (value & URXD_BRK) {
-         s->usr2 |= USR2_BRCD;
-     }
-@@ -345,6 +417,10 @@ static void imx_serial_realize(DeviceState *dev, Error **errp)
- {
-     IMXSerialState *s = IMX_SERIAL(dev);
- 
-+    fifo32_create(&s->rx_fifo, FIFO_SIZE);
-+    timer_init_ns(&s->ageing_timer, QEMU_CLOCK_VIRTUAL,
-+                  imx_serial_rx_fifo_ageing_timer_int, s);
-+
-     DPRINTF("char dev for uart: %p\n", qemu_chr_fe_get_driver(&s->chr));
- 
-     qemu_chr_fe_set_handlers(&s->chr, imx_can_receive, imx_receive,
-diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
-index b823f94519..65f0e97c76 100644
---- a/include/hw/char/imx_serial.h
-+++ b/include/hw/char/imx_serial.h
-@@ -21,12 +21,16 @@
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
- #include "qom/object.h"
-+#include "qemu/fifo32.h"
- 
- #define TYPE_IMX_SERIAL "imx.serial"
- OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
- 
-+#define FIFO_SIZE       32
-+
- #define URXD_CHARRDY    (1<<15)   /* character read is valid */
- #define URXD_ERR        (1<<14)   /* Character has error */
-+#define URXD_OVRRUN     (1<<13)   /* 32nd character in RX FIFO */
- #define URXD_FRMERR     (1<<12)   /* Character has frame error */
- #define URXD_BRK        (1<<11)   /* Break received */
- 
-@@ -65,11 +69,13 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
- #define UCR1_TXMPTYEN   (1<<6)    /* Tx Empty Interrupt Enable */
- #define UCR1_UARTEN     (1<<0)    /* UART Enable */
- 
-+#define UCR2_ATEN       (1<<3)    /* Ageing Timer Enable */
- #define UCR2_TXEN       (1<<2)    /* Transmitter enable */
- #define UCR2_RXEN       (1<<1)    /* Receiver enable */
- #define UCR2_SRST       (1<<0)    /* Reset complete */
- 
- #define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt enable */
-+#define UCR4_OREN       BIT(1)    /* Overrun interrupt enable */
- #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
- #define UCR4_WKEN       BIT(7)    /* WAKE interrupt enable */
- 
-@@ -78,13 +84,25 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
- #define UTS1_TXFULL     (1<<4)
- #define UTS1_RXFULL     (1<<3)
- 
-+#define TL_MASK         0x3f
-+
-+ /* Bit time in nanoseconds assuming maximum baud rate of 115200 */
-+#define BIT_TIME_NS     8681
-+
-+/* Assume 8 bits per character */
-+#define NUM_BITS        8
-+
-+/* Ageing timer triggers after 8 characters */
-+#define AGE_DURATION_NS (8 * NUM_BITS * BIT_TIME_NS)
-+
- struct IMXSerialState {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
-     MemoryRegion iomem;
--    int32_t readbuff;
-+    QEMUTimer ageing_timer;
-+    Fifo32 rx_fifo;
- 
-     uint32_t usr1;
-     uint32_t usr2;
 -- 
-2.34.1
+2.41.0
 

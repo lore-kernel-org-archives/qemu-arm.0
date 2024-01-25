@@ -1,215 +1,228 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp82878ejc;
-        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
-X-Received: by 2002:a9d:68c5:0:b0:6e0:cfa9:8e34 with SMTP id i5-20020a9d68c5000000b006e0cfa98e34mr566831oto.74.1706171010085;
-        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706171010; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp166509ejc;
+        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
+X-Received: by 2002:a17:907:a808:b0:a31:7aca:a429 with SMTP id vo8-20020a170907a80800b00a317acaa429mr564036ejc.4.1706182902833;
+        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706182902; cv=none;
         d=google.com; s=arc-20160816;
-        b=TuqBhr4LzrPE/J8egLOw2p4MZCr76kEd0OaqW2m882knMmnAZnArv2WtCeLLTNx7S7
-         1QMig//QUIhYv3hCTkjzrN+ENVfld/dkN8ojl+5ttopkG7gCwLtTNmsWQPkPftM04IDn
-         huTcjAm0FLn07Cu9dtYGNoZzaTFuQvZkDxrbBDWYnS6A/5zmUoh5B2+Vcw1LvfxTHOFA
-         gCYsP7Iy+Wqyw4V7nZvcmxAWL4wCy24dbwRqBOtieODI7M/3PAOAzxz/VV1MhFCoQMyx
-         5khei3FpN5s4++mKf+xDCjDJtKxoLiRYQGPpAF2JKesDAbWGpAVuF9EdbXQLWrbxQll8
-         5BWQ==
+        b=Grxmau2afd/yqecfK5Awbj34onVUS3NYFp6RewLYIUFucNPlWqWABlEnCMxZgA84A5
+         E0BJYQYCoUo5awNBkqVMwIE6fN9Enf5cIm0/XnBPdUGoR65TAWV7BpsgHfD9u1J2xr/A
+         qCydcpMrvWTiVxoEYHpecotPyj0++f4mNQeAAuF+SgUsGdZO4vyhlM9C2YnBEhFkNOjt
+         3maN7N6UWPuYpjzjcqWYR7rVWUo5O7mI5DFRwW8CzeL9myTaKOrJC3wh+XbVJYGswopp
+         jQ1QUCzd0WK3Pj1Fr0MMWuQZshLf8flNOdOP79DMcrvU7OOyR9wFBhWPjBLvF2+2jCXK
+         tp1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
-        fh=/NMbWunOO/ju3Rw6PgEsoQjFlTF5tZB+F7q8urK+xPI=;
-        b=dzegSqiR0mAQNRUkCsB8heKrVpMiG/J5wwR3YO/jnNwuT9fJWKhGp4FEjyVfr9zDt1
-         IopoL5UojPaoplKE8MuzppZEdwzAVsKsWOtejBovT++7O07PeY6ohMX+72AsHHpEvarv
-         2ftBQLaLc4bwyqMqe9vxgjN1rWOY+0iNy3u1pmVi3LnycOMnzyqqtKQ5Z9WlTRaXPNG/
-         xy0xB2eoEvsggw8gHeL5gK/OPvu/qGN43hS626lvTKTbblxLERKRGlDXQLo5pQ7UvrDI
-         2tAdYBw35llOVo01aUFq9g1zDFHvLEPI+Fd13FbyD5SgaVdeIwEyUHT1TUq3SHDezeOw
-         Yuig==
+        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
+        fh=LZyHTHN6NX8/7mmal1FYxKQYiLBu4R15O2wo33y2D7M=;
+        b=DHJzU/AyA4kvJKe9fAx79CHpx+rbvOo2RYx8OuUKY15YK1OuNVHPC+CWvyNMjZe6wI
+         GOON6+XfWgPEWBJ75P6zZ4epQpXIMdu7qWsK+z+2Kvbh1iQ2ylgS1gF1s9lWlIXrQjxz
+         6WIz21Kd5yv4suwLZcsi3sz47qOjhtWS3EbJEmat33F7aBe4H96qmqcEnaTvHe/lHugm
+         GR/Dfh6L78dgFp8ymMm0/QUN3qUTIzFauYG7sSfHcy3Cynjbmzd9yYqm8mRbrrKoT60x
+         n6LHVJ7vhA4lWVasADLpSY/4juFyV4UAPZEpmY6JAxLUK22Q14yyBw6Pq1oiw2Sq8Lol
+         XjxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xhs0z1Yu;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="mJp/jJ2C";
+       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
+Return-Path: <ajones@ventanamicro.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l9-20020a05683016c900b006d9cd6fc5e7sor7625718otr.7.2024.01.25.00.23.29
+        by mx.google.com with SMTPS id kj17-20020a170907765100b00a26aaacb6f1sor530934ejc.21.2024.01.25.03.41.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 25 Jan 2024 00:23:30 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xhs0z1Yu;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="mJp/jJ2C";
+       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1706171009; x=1706775809; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
-        b=xhs0z1YukF2st9CPFslIaIAz2HeEd6TBTgQGy5b7cb7/LOET0mEx+h9/1jVDWVne+p
-         2bnARiL+uBzckjJvo9gNB41rfGuRiNzM2V63FLgOcCJCCld1iz92wlL835pdqjUuy9iX
-         /+uaN0BEsVNeefkQcERu88YUVFEgz0rm/ZJsOH1ISrmVsjElE+Qo5kdTZE6S4zjUL9Fz
-         VEtb+5c8kUfwgeD7tcvuaBe9fpltEqnxa9XxgvchC2h4YbCFe5w/thy36u9hmzk+KqmM
-         cVgT1ddUW8MliHa2YlSoh0GrJGPUeAAYoGjF7pFakfFvqEX9bb0LqjIkumVvxysmzOTm
-         500g==
+        d=ventanamicro.com; s=google; t=1706182902; x=1706787702; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
+        b=mJp/jJ2Cgdd2euBEzFIJc37eQgSg4FsDmgG5h6hHhUrep0zYal9ADA0KXsfr/owYwS
+         bAbTMWplel4w4A+Wf73fYNtEc16B8CGmPOaSvhnnuzwU61c9rQIgfEaRFFv1Slf76jD7
+         M1s0axXiTQnfianCs+D2TsMrYcMXb527nF6ycnLtC1+yILEzg3UtbGIzH8184tKZHv6M
+         DyzoHOovumhlrB9ponMi2OfS7Uy8zTxQ/gxk1kRjPAMcxs0iUTnZ8jBIX5KTuvA3KUH5
+         u/ciXZuqU7Wi+GzLilX6756qe8WOOi8l38J7IJF+gqJ7DGtdiNHpySMB6KCzVfEqaBGC
+         DuvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706171009; x=1706775809;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1706182902; x=1706787702;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=J9lYDlnAE0lJVngPq79SfowaDrB/STSBHiz7p/zSWjI=;
-        b=wq4PET//mzkxrz6i/7b2FYhn9OPFrxpOBBOJ7nGVlvl3GuIKvDB1yZd7u26eGo0x8g
-         3nCtBfmsYX5KQNYbrrOgj8x3ykAyMqj81lqOUy4D96OXt8yuoAAEprsIjULWGixqMW/k
-         0igkpQxkKt+FZujQJlCibWpssiuMXNxgJFONR4nyMVESVZurtKmXGRyV/RXj9EBIF0Aq
-         xg50otBTXtkvh2UG9XI3/5ewiag0SXlSLRhd4N+0RP8RvibLm0XyzV0t/1k/k9k6L0yM
-         SkKUCQHYSSL3u309KiaoOXWa2IQDXfLY1fjAPcshA5SCbpiHl0eu1W7QSdS7qvApP4ex
-         XXLw==
-X-Gm-Message-State: AOJu0YxKxMNQgfmrowxaJGr3zSydSM6cFulGo43f44fHFrNrGc1UMIvA
-	1+4s6esEJSimd2jwAvC8n0HNAfBBD1lzBg/85bDOiCi6/jC9uvrkHKePoRM/p9c=
-X-Google-Smtp-Source: AGHT+IECMqWYYJsB6MNOawObFchB6dGaMRCOAPEafdArYh7Hsf1OSjlc6V3+DkvMY59NBK0L25NVnw==
-X-Received: by 2002:a05:6830:2053:b0:6dc:3c65:2a7f with SMTP id f19-20020a056830205300b006dc3c652a7fmr559935otp.63.1706171009670;
-        Thu, 25 Jan 2024 00:23:29 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with ESMTPSA id w18-20020a639352000000b005d508535001sm2310835pgm.43.2024.01.25.00.23.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Jan 2024 00:23:29 -0800 (PST)
-Message-ID: <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
-Date: Thu, 25 Jan 2024 17:23:20 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of misa_mxl_max
-To: Andrew Jones <ajones@ventanamicro.com>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier
- <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
- qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, qemu-s390x@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss
- <erdnaxe@crans.org>, John Snow <jsnow@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Nicholas Piggin <npiggin@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
- Paul Durrant <paul@xen.org>
+        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
+        b=Jla03txFC0aZKZHz6/+igeFYsH4V1LBGvF5y6dNPkRBV7yDvJp7HDZqGwhL8N5F22y
+         ZWx2at/PUvn4VlOX2zlxBtUNJrsVv99Tkfxdua/flomYL5n76PpR1PM20sXQ7ij7X+nx
+         QVZsdT4up/m5ze1MzQZsuLytiuwyZpic2V+HhjWmkFe3y+uMz1yTb0vOnimh6SPMtHdZ
+         uPutSa8UehIav0y2193muCnYyEiFeH5BdcuLwlJVa7eYI3kvL9eYOuGB3mzAOnsW7FWK
+         49rId39To7bWuh246CM5Yzu86ZvbhmS7pNk5v0BelDspM7oNAYPFGXmRrefL87aQKdnI
+         GJXg==
+X-Gm-Message-State: AOJu0YyPQFqzBVpd0ATBKK7Jkq5u77Kst3OdpsL79LbB7TLk2NrrmxH7
+	+VPEqJ1ikvM1+PcY96ymNxmEg4vwBjiLjzpEDkdkR3sLQbKnXYQx/96BmzPs7Bw=
+X-Google-Smtp-Source: AGHT+IFkyRmD2hzS1gOnNZnLdv8EIZ8KrezT8Nj5/WaffSq6c11w7MGu1/Ch650W9qnJD8fVmx2Rqg==
+X-Received: by 2002:a17:906:dd0:b0:a30:ad90:22a with SMTP id p16-20020a1709060dd000b00a30ad90022amr536503eji.94.1706182902334;
+        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
+Return-Path: <ajones@ventanamicro.com>
+Received: from localhost (cst2-173-16.cust.vodafone.cz. [31.30.173.16])
+        by smtp.gmail.com with ESMTPSA id ep21-20020a1709069b5500b00a2ae7fb3fc6sm956224ejc.93.2024.01.25.03.41.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Jan 2024 03:41:41 -0800 (PST)
+Date: Thu, 25 Jan 2024 12:41:41 +0100
+From: Andrew Jones <ajones@ventanamicro.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+	Michael Rolnik <mrolnik@gmail.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier <laurent@vivier.eu>, 
+	Yanan Wang <wangyanan55@huawei.com>, qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, 
+	qemu-s390x@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>, 
+	John Snow <jsnow@redhat.com>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	Ilya Leoshkevich <iii@linux.ibm.com>, Alistair Francis <alistair.francis@wdc.com>, 
+	David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
+	Bin Meng <bin.meng@windriver.com>, Nicholas Piggin <npiggin@gmail.com>, 
+	Aurelien Jarno <aurelien@aurel32.net>, Daniel Henrique Barboza <danielhb413@gmail.com>, 
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Thomas Huth <thuth@redhat.com>, 
+	David Hildenbrand <david@redhat.com>, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>, 
+	Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>, Paul Durrant <paul@xen.org>
+Subject: Re: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of
+ misa_mxl_max
+Message-ID: <20240125-61a7ba58367f81afbe444a50@orel>
 References: <20240122145610.413836-1-alex.bennee@linaro.org>
  <20240122145610.413836-2-alex.bennee@linaro.org>
  <20240123-b8d1c55688885bfc9125c42b@orel>
  <15d2f958-a51e-4b87-9a70-28edf3b55491@daynix.com>
  <20240124-3d9bec68bff7ab0057b902b6@orel>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240124-3d9bec68bff7ab0057b902b6@orel>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: YztfYuhL6QYH
+In-Reply-To: <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
+X-TUID: c7vLUo8SKMfc
 
-On 2024/01/24 17:16, Andrew Jones wrote:
-> On Wed, Jan 24, 2024 at 12:08:33PM +0900, Akihiko Odaki wrote:
->> On 2024/01/23 17:20, Andrew Jones wrote:
->>> On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex BennÃ©e wrote:
->>>> From: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>
->>>> The effective MXL value matters when booting.
->>>
->>> I'd prefer this commit message get some elaboration. riscv_is_32bit()
->>> is used in a variety of contexts, some where it should be reporting
->>> the max misa.mxl. However, when used for booting an S-mode kernel it
->>> should indeed report the effective mxl. I think we're fine with the
->>> change, though, because at init and on reset the effective mxl is set
->>> to the max mxl, so, in those contexts, where riscv_is_32bit() should
->>> be reporting the max, it does.
->>>
->>>>
->>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>> Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
->>>> Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
->>>> Signed-off-by: Alex BennÃ©e <alex.bennee@linaro.org>
->>>> ---
->>>>    hw/riscv/boot.c | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
->>>> index 0ffca05189f..bc67c0bd189 100644
->>>> --- a/hw/riscv/boot.c
->>>> +++ b/hw/riscv/boot.c
->>>> @@ -36,7 +36,7 @@
->>>>    bool riscv_is_32bit(RISCVHartArrayState *harts)
->>>>    {
->>>> -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
->>>> +    return harts->harts[0].env.misa_mxl == MXL_RV32;
->>>>    }
->>>
->>> Assuming everyone agrees with what I've written above, then maybe we
->>> should write something similar in a comment above this function.
->>>
->>> Thanks,
->>> drew
->>
->> The corresponding commit in my series has a more elaborated message:
->> https://patchew.org/QEMU/20240115-riscv-v9-0-ff171e1aedc8@daynix.com/20240115-riscv-v9-1-ff171e1aedc8@daynix.com/
+On Thu, Jan 25, 2024 at 05:23:20PM +0900, Akihiko Odaki wrote:
+> On 2024/01/24 17:16, Andrew Jones wrote:
+> > On Wed, Jan 24, 2024 at 12:08:33PM +0900, Akihiko Odaki wrote:
+> > > On 2024/01/23 17:20, Andrew Jones wrote:
+> > > > On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex Bennée wrote:
+> > > > > From: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > > > > 
+> > > > > The effective MXL value matters when booting.
+> > > > 
+> > > > I'd prefer this commit message get some elaboration. riscv_is_32bit()
+> > > > is used in a variety of contexts, some where it should be reporting
+> > > > the max misa.mxl. However, when used for booting an S-mode kernel it
+> > > > should indeed report the effective mxl. I think we're fine with the
+> > > > change, though, because at init and on reset the effective mxl is set
+> > > > to the max mxl, so, in those contexts, where riscv_is_32bit() should
+> > > > be reporting the max, it does.
+> > > > 
+> > > > > 
+> > > > > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> > > > > Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
+> > > > > Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
+> > > > > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> > > > > ---
+> > > > >    hw/riscv/boot.c | 2 +-
+> > > > >    1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+> > > > > index 0ffca05189f..bc67c0bd189 100644
+> > > > > --- a/hw/riscv/boot.c
+> > > > > +++ b/hw/riscv/boot.c
+> > > > > @@ -36,7 +36,7 @@
+> > > > >    bool riscv_is_32bit(RISCVHartArrayState *harts)
+> > > > >    {
+> > > > > -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
+> > > > > +    return harts->harts[0].env.misa_mxl == MXL_RV32;
+> > > > >    }
+> > > > 
+> > > > Assuming everyone agrees with what I've written above, then maybe we
+> > > > should write something similar in a comment above this function.
+> > > > 
+> > > > Thanks,
+> > > > drew
+> > > 
+> > > The corresponding commit in my series has a more elaborated message:
+> > > https://patchew.org/QEMU/20240115-riscv-v9-0-ff171e1aedc8@daynix.com/20240115-riscv-v9-1-ff171e1aedc8@daynix.com/
+> > 
+> > I've pulled the message from that link and quoted it below
+> > 
+> > > A later commit requires one extra step to retrieve misa_mxl_max. As
+> > > misa_mxl is semantically more correct and does not need such a extra
+> > > step, refer to misa_mxl instead. Below is the explanation why misa_mxl
+> > > is more semantically correct to refer to than misa_mxl_max in this case.
+> > > 
+> > > Currently misa_mxl always equals to misa_mxl_max so it does not matter
+> > 
+> > That's true, but I think that's due to a bug in write_misa(), which
+> > shouldn't be masking val with the extension mask until mxl has been
+> > extracted.
 > 
-> I've pulled the message from that link and quoted it below
-> 
->> A later commit requires one extra step to retrieve misa_mxl_max. As
->> misa_mxl is semantically more correct and does not need such a extra
->> step, refer to misa_mxl instead. Below is the explanation why misa_mxl
->> is more semantically correct to refer to than misa_mxl_max in this case.
->>
->> Currently misa_mxl always equals to misa_mxl_max so it does not matter
-> 
-> That's true, but I think that's due to a bug in write_misa(), which
-> shouldn't be masking val with the extension mask until mxl has been
-> extracted.
+> misa.MXL writes are not supported since the MISA write code was introduced
+> with commit f18637cd611c ("RISC-V: Add misa runtime write support"). It
+> doesn't matter if we allow the guest to write MXL; the firmware code is
+> emulated by QEMU when QEMU loads a kernel.
 
-misa.MXL writes are not supported since the MISA write code was 
-introduced with commit f18637cd611c ("RISC-V: Add misa runtime write 
-support"). It doesn't matter if we allow the guest to write MXL; the 
-firmware code is emulated by QEMU when QEMU loads a kernel.
-
-> 
->> which of misa_mxl or misa_mxl_max to refer to. However, it is possible
->> to have different values for misa_mxl and misa_mxl_max if QEMU gains a
->> new feature to load a RV32 kernel on a RV64 system, for example. For
->> such a behavior, the real system will need the firmware to switch MXL to
->> RV32, and if QEMU implements the same behavior, mxl will represent the
->> MXL that corresponds to the kernel being loaded. Therefore, it is more
->> appropriate to refer to mxl instead of misa_mxl_max when
->> misa_mxl != misa_mxl_max.
-> 
-> Right, but that doesn't say anything more than the original one line,
-> "The effective MXL value matters when booting."
-
-What do you think is missing?
+Of course it matters. mxl will only change if we allow the guest to write
+it. Being aware of when/why mxl changes, i.e. is no longer equal to the
+max mxl, is the whole point of this patch.
 
 > 
-> What I'm looking for is a code comment explaining how riscv_is_32bit()
-> is always safe to use. Something like
+> > 
+> > > which of misa_mxl or misa_mxl_max to refer to. However, it is possible
+> > > to have different values for misa_mxl and misa_mxl_max if QEMU gains a
+> > > new feature to load a RV32 kernel on a RV64 system, for example. For
+> > > such a behavior, the real system will need the firmware to switch MXL to
+> > > RV32, and if QEMU implements the same behavior, mxl will represent the
+> > > MXL that corresponds to the kernel being loaded. Therefore, it is more
+> > > appropriate to refer to mxl instead of misa_mxl_max when
+> > > misa_mxl != misa_mxl_max.
+> > 
+> > Right, but that doesn't say anything more than the original one line,
+> > "The effective MXL value matters when booting."
 > 
->   /*
->    * Checking the effective mxl is always correct, because the effective
->    * mxl will be equal to the max mxl at initialization and also on reset,
->    * which are the times when it should check the maximum mxl. Later, if
->    * firmware writes misa with a smaller mxl, then that mxl should be
->    * used in checks.
+> What do you think is missing?
 
-It is misleading to say the maximum MXL should be checked only at 
-initialization and on reset. We can refer to the maximum MXL anytime; we 
-just don't need it to load a kernel.
+Um, what I wrote below...
 
-Regards,
-Akihiko Odaki
+> 
+> > 
+> > What I'm looking for is a code comment explaining how riscv_is_32bit()
+> > is always safe to use. Something like
+> > 
+> >   /*
+> >    * Checking the effective mxl is always correct, because the effective
+> >    * mxl will be equal to the max mxl at initialization and also on reset,
+> >    * which are the times when it should check the maximum mxl. Later, if
+> >    * firmware writes misa with a smaller mxl, then that mxl should be
+> >    * used in checks.
+> 
+> It is misleading to say the maximum MXL should be checked only at
+> initialization and on reset. We can refer to the maximum MXL anytime; we
+> just don't need it to load a kernel.
+>
+
+Of course mxl_max can be checked whenever one wants, but you're changing
+a function named riscv_is_32bit(), not
+riscv_is_32bit_when_loading_a_kernel(). riscv_is_32bit() is used in
+contexts where one should be concerned as to whether mxl == mxl_max
+or not, because what they really want is the max. The comment I suggest
+will allow them to rest easy.
+
+It's concerning that it doesn't appear you were aware that
+riscv_is_32bit() is used outside kernel loading contexts, which means it's
+unlikely you knew it was safe to make this change at all... I'm actually
+starting to think that maybe we should not make this change.
+riscv_is_32bit() should always check mxl_max and something like
+riscv_effective_mxl_is_32bit() should check mxl.
+
+drew

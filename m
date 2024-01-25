@@ -1,114 +1,108 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp30024ejc;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp30026ejc;
         Wed, 24 Jan 2024 21:56:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGdxZG6K7MXkS7aJpGYGkQSEa0q3Vu79dpgEltaIxLPHW6r8eGYYuvI8WPH5UPKHef6NoPw
-X-Received: by 2002:a05:620a:4488:b0:783:1b18:e911 with SMTP id x8-20020a05620a448800b007831b18e911mr779418qkp.91.1706162182409;
+X-Google-Smtp-Source: AGHT+IG6jIPzPIUDK2kqbGr05C+Cq3QIq+ZVCKSCWFLde1+nx/rwSjJId6xqQ0ljk1C2163Q+omC
+X-Received: by 2002:ac8:5c82:0:b0:42a:6286:1d2a with SMTP id r2-20020ac85c82000000b0042a62861d2amr866518qta.30.1706162182568;
         Wed, 24 Jan 2024 21:56:22 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1706162182; cv=none;
         d=google.com; s=arc-20160816;
-        b=PjGfiBJHODOV8owwpTnZ74wfGpXJIXUZaF3HRLGNVrKTqVtqK2JTEvTaEAV/ih2ar5
-         zbxIuYcs3w3J10MdmYw2ST346tv8iuDFXuIJQTVMcCx3RyG5a2E/nKbBbvRru1S0awv0
-         dUWrT+djTaT0BdFkZ1TQRReryY6z/fTX5JBY3iCZdBq+yJ94X7LRVtq4AOyx4/s0dO0Y
-         ngjxMJsMb/hRERKKXbbILBJji5PiAlQwBl7FXC0K2yzi7k5d2uARctULU/BL8WoF5zrM
-         erixUygrvYdjzEH+bT2p55qvN3mYeZ/DsSTRMSNKqfIMln0vao0/0pyyNZUunBn8J3Cd
-         Jh8g==
+        b=hgb4iLqe0KHIFcvg/GYI16bfnozmHkvb1whGSBI8TxPQRywlB3HZiQwPv7lMkhGcee
+         SVYMGSwiBMiUKHaTiSy5aZCagg8pyJULHKPJurINo5AZ4gof9zSnsjUCc/GpnCzUMcas
+         AAbjGESBzsCX/5412m/3Fi/OdNcyzeEAz4aZaa+BsgriTokM5xKKEMyaCJ1UCQuLuWmu
+         sfXBwPgdATnUqZu1zQoq8SF2M7bvau3ttzyaqmV7UzQo6L3wnfGOtfuJZJl1sz+OZiQx
+         KazGhiCAszOBEPydtDUnYsB3ivOgY3n/BcYw5M/u9+1QlHwZcCPUiljrApGVdupw0rrq
+         TCfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=34UBB3mcO7ZaMebRDdhjL43nDYc+kT1XdddwXkamjjk=;
-        fh=mgkM7j5chzFeBdbp6jSghBOXKGtgf9vcQQUOsrmpdjA=;
-        b=RapsOetJYfZwedXn5OJk04HbKspsB5qV52CdXMGT0TbJztSj9hJTktjDurNVBUz48s
-         fZZI9Dtx0CE5ZQTYo/ISPP2/bToRHqeINzagQ6NNZjhVnpP9g60Fvg/Q7rEoAhnS4wv9
-         1RLBcdofzNKFVnjlUZ75LOAMlbaaARwE+uBYfn4Hw7QWd87OJpRXf38S9JcFTvAfT+Ja
-         8nr1EVlfk1SdEzO1TsOsglWHSo+s3puQ2h9GtCyxrcoOrTDONcWUoamMxafY29lZLnqq
-         5zlD4mEvMwNxxQ0/Vrx1P4ihQy+w0c4Rak88r+PF5gu13yPxHgOBoVOBJidt3/Xj9hjB
-         yjOQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=LTjUodNM1cz/FwQ+agsvuxdNwnKZ6thXnjAI9kk5o1E=;
+        fh=ZofYB1COZgii34hhzHLtVD/QpgCjrxWfRH5mgsGMmL4=;
+        b=fyiAlRRtuxNkJF180IFIJpMiyHEBVOrt4oSV3HVVIGtdk813MM6y7rJcBYvLtueuZ1
+         xT5Yl/y675vqFtnIpvbld/0onIr7wv9vw22iYwok5j+jaaD1fUvbR/nGYTGJTxqsJtph
+         qClZa1iFn7vPf2IzxnxdGWkIDGx8prN0oVTTfuqC5BD9eVUEv5+dfVJrCltAhSF7/uDK
+         gxBck40pzZnxAAxF8xVA5r6az/ROUJDKCig/3sw0EiSDx+kxzohov1JBwL3Gt97EX+zc
+         CsOIjDp+14IdonJjRpZcebECUQZP6M/Q8JKEzeOOqGXTaIFn2URGGSrWVmypcdrDmqar
+         OXbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AJOD2qsj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hure3xIE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20-20020a05620a14b400b007838ef44330si11362228qkj.522.2024.01.24.21.56.22
+        by mx.google.com with ESMTPS id c14-20020ac85a8e000000b0042a1b115a01si12015792qtc.92.2024.01.24.21.56.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 24 Jan 2024 21:56:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AJOD2qsj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hure3xIE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rSsik-0003LQ-MG; Thu, 25 Jan 2024 00:56:14 -0500
+	id 1rSsiS-0003Gn-O4; Thu, 25 Jan 2024 00:55:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSsij-0003Kv-Bn
- for qemu-arm@nongnu.org; Thu, 25 Jan 2024 00:56:13 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSsiP-0003GB-Cs
+ for qemu-arm@nongnu.org; Thu, 25 Jan 2024 00:55:54 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSsih-0001HX-Oz
- for qemu-arm@nongnu.org; Thu, 25 Jan 2024 00:56:13 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40e86a9fc4bso80881085e9.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 21:56:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rSsiM-00016Q-Af
+ for qemu-arm@nongnu.org; Thu, 25 Jan 2024 00:55:52 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40e7e2e04f0so69124255e9.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Jan 2024 21:55:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706162170; x=1706766970; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=34UBB3mcO7ZaMebRDdhjL43nDYc+kT1XdddwXkamjjk=;
- b=AJOD2qsjuOMgUJiH6dXazUzrsg/oRCT1tB4R/7yEF/0RaNOzUfVjq3HOGmPNG+/WiL
- UdFpYJtGpUKw8fhlt43gfmC+IFFQdXQ0Jsat+XLZPizuWrWS/WEjUSVRBepwuG+10c7V
- ETE89q5RY163sfNKEzuuc9nm/cq9+v1hqBbPL4UdCXWOlApGzunKvB+Xkx2Sl5JXDgNH
- yPwRSItNdmczWqP7zP4IVwo5USpkOfONsVvKFbsW8jDu+bahKOXf665RqwaNc00ViKlL
- jfd5fRSefZWYIRHr0Z9Qrc3B0g+zTFJiBXH8O6d5P+Oo2IBU7vWaduJbncVhItKcstw7
- PDEA==
+ d=linaro.org; s=google; t=1706162147; x=1706766947; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=LTjUodNM1cz/FwQ+agsvuxdNwnKZ6thXnjAI9kk5o1E=;
+ b=hure3xIE0uajhbLsa4z+UrtyDXcDnOk8FD9OjbUuyG4dchJou+ZC1bO5WgdTIEIM3k
+ HqzxjBxXrn/klSAhPll1WhqJWV8S7UEtQwffknl+qtFDYw2ZlNSIzBASyT0Ifl933504
+ z/lamoS3u6lQvBmPAMhW6CFzpEWkOoyrYeE4SO+LDoJ3FeCgmCLVkIttxOOWqxTrJ1B7
+ NN7V9kMeJQBpEl1ponzkOoJUcdP0xggVeoN+Mayxg5bPzBbevnidyzKtD400xTlxoaSW
+ irDJR8wfZ6qkzsvAo8v69PazULTVbVF9EfWhQIkRWmZjzKTWJyc+aUYBwMXUcEWGgKs6
+ NfMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706162170; x=1706766970;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=34UBB3mcO7ZaMebRDdhjL43nDYc+kT1XdddwXkamjjk=;
- b=AeX67IpsihCLWzZ/8AKI9zvIZii9NCuFZ7iLq+TWd/fqk1kvYNWKIrvsxW+dvnnl7+
- c+I08c/mgIAy3NKFxJhEZiBsLyUhDAYFyaGZ6QOpfloYVnJEIxYMSyvp1NyLZoruTzeU
- y3osikMasJyhqySKXoKCpBce8VKGgpBLT7GjonnlhtPWxqHPy1RWF8QsBMX9GOWTxqhX
- VrPEXO1EsTMB9uSyQtgHUb7fmR4aBw8EmVD+JM72SBmkpIk3xJOYu0xzgtbr/L+WPBTB
- w9qeK1/Ou5eIOVc7VEwOE2+uuT4Q5s7qndusPGVtac84UlZio1tmiqx8Mr1yy4CqQflG
- iniA==
-X-Gm-Message-State: AOJu0Yz6XOZiu5opYRt2CW6N7kS75nocs+TRxzF6MA5ECWaVjkL6u0Vj
- 7joUm7nxs7Evv/1mQuhedQiP1YBthYBkX8obStft3oh0LBor+zy6r+W8wjYmeujVsr6xmjPJmkz
- 4
-X-Received: by 2002:a05:600c:3c8c:b0:40e:c4f8:bdf with SMTP id
- bg12-20020a05600c3c8c00b0040ec4f80bdfmr180379wmb.31.1706162170518; 
- Wed, 24 Jan 2024 21:56:10 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706162147; x=1706766947;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LTjUodNM1cz/FwQ+agsvuxdNwnKZ6thXnjAI9kk5o1E=;
+ b=KXlOyZ0RGlmYhn8aA/iZyir8R16RoOiDAw2LfXkZ3hr76BC2U3TqMyJhpargcn926V
+ vAEcHEAwGxp9zmOVaY1qTXrKPya4wL5EG4wzs7hhSWbzv/lnLWigB0sqZKQD6g443RWf
+ R6YDwp/Q8I9Yfg762o0QwZtH5HC9iLo/f/wGgsWMxNz5XvQd4LU5/tPYVdhQxmx62uU5
+ tXB+rjZ12lhe2rk14MIb0RFxgwrxV9Z4vpB0Y3e5YesokC7h5Xcb61teX330783nJRub
+ sOWl1j3MoGF87cm/H7wj4dcHiy7ppYj4xb5IxEpxXFHrXkCGxraMrZ2Mtb6gx9NzraLB
+ ITwQ==
+X-Gm-Message-State: AOJu0Yzb7aA6DAdk3RX/w+q4sBU6Ur0dOJu5C/UIx3IlEWOx84uscnQV
+ LHi26Kro8tBVTwX3cqnp9hnNtnrhEg9d+PetRu5JNx9H0hCUo4lHTs9c103APok=
+X-Received: by 2002:a05:600c:54d0:b0:40e:6639:6708 with SMTP id
+ iw16-20020a05600c54d000b0040e66396708mr16641wmb.49.1706162147617; 
+ Wed, 24 Jan 2024 21:55:47 -0800 (PST)
 Received: from m1x-phil.lan (lec62-h02-176-184-19-125.dsl.sta.abo.bbox.fr.
  [176.184.19.125]) by smtp.gmail.com with ESMTPSA id
- c6-20020a05600c0a4600b0040e621feca9sm1241668wmq.17.2024.01.24.21.56.09
+ d10-20020a05600c3aca00b0040e88fbe051sm1222406wms.48.2024.01.24.21.55.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Jan 2024 21:56:10 -0800 (PST)
+ Wed, 24 Jan 2024 21:55:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gavin Shan <gshan@redhat.com>
-Subject: [PATCH v3 4/5] hw/arm/aspeed: Introduce aspeed_soc_cpu_type() helper
-Date: Thu, 25 Jan 2024 06:55:43 +0100
-Message-ID: <20240125055544.79405-5-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 0/5] hw/arm/aspeed: Check for CPU types in
+ machine_run_board_init()
+Date: Thu, 25 Jan 2024 06:55:39 +0100
+Message-ID: <20240125055544.79405-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240125055544.79405-1-philmd@linaro.org>
-References: <20240125055544.79405-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,93 +124,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0o0dUk4pMTw7
+X-TUID: fBUsOeyc7Uwn
 
-In order to alter AspeedSoCClass::cpu_type in the next
-commit, introduce the aspeed_soc_cpu_type() helper to
-retrieve the per-SoC CPU type from AspeedSoCClass.
+Series fully reviewed.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
----
- include/hw/arm/aspeed_soc.h | 1 +
- hw/arm/aspeed_ast10x0.c     | 2 +-
- hw/arm/aspeed_ast2400.c     | 3 ++-
- hw/arm/aspeed_ast2600.c     | 3 ++-
- hw/arm/aspeed_soc_common.c  | 5 +++++
- 5 files changed, 11 insertions(+), 3 deletions(-)
+Since v2:
+- Addressed Gavin & Richard review comments.
+- Collected R-b tags
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cb832bc1ee..a060a59918 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -143,6 +143,7 @@ struct AspeedSoCClass {
-     qemu_irq (*get_irq)(AspeedSoCState *s, int dev);
- };
- 
-+const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
- 
- enum {
-     ASPEED_DEV_SPI_BOOT,
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 8becb146a8..dca601a3f9 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -211,7 +211,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     /* AST1030 CPU Core */
-     armv7m = DEVICE(&a->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);
--    qdev_prop_set_string(armv7m, "cpu-type", sc->cpu_type);
-+    qdev_prop_set_string(armv7m, "cpu-type", aspeed_soc_cpu_type(sc));
-     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
-     object_property_set_link(OBJECT(&a->armv7m), "memory",
-                              OBJECT(s->memory), &error_abort);
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index ad76035528..3baf95916d 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -156,7 +156,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
-     }
- 
-     for (i = 0; i < sc->num_cpus; i++) {
--        object_initialize_child(obj, "cpu[*]", &a->cpu[i], sc->cpu_type);
-+        object_initialize_child(obj, "cpu[*]", &a->cpu[i],
-+                                aspeed_soc_cpu_type(sc));
-     }
- 
-     snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 386a88d4e0..b264433cf0 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -158,7 +158,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     }
- 
-     for (i = 0; i < sc->num_cpus; i++) {
--        object_initialize_child(obj, "cpu[*]", &a->cpu[i], sc->cpu_type);
-+        object_initialize_child(obj, "cpu[*]", &a->cpu[i],
-+                                aspeed_soc_cpu_type(sc));
-     }
- 
-     snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index 828f61093b..36ca189ce9 100644
---- a/hw/arm/aspeed_soc_common.c
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -18,6 +18,11 @@
- #include "hw/char/serial.h"
- 
- 
-+const char *aspeed_soc_cpu_type(AspeedSoCClass *sc)
-+{
-+    return sc->cpu_type;
-+}
-+
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
- {
-     return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
+Since v1:
+- Follow suggestions from Cédric from [*]
+
+[*] https://lore.kernel.org/qemu-devel/e13c655b-7904-4e47-a673-4efd13c26b3d@kaod.org/
+
+Based-on: <20240123222508.13826-1-philmd@linaro.org>
+
+Philippe Mathieu-Daudé (5):
+  hw/arm/aspeed: Remove dead code
+  hw/arm/aspeed: Set default CPU count using aspeed_soc_num_cpus()
+  hw/arm/aspeed: Init CPU defaults in a common helper
+  hw/arm/aspeed: Introduce aspeed_soc_cpu_type() helper
+  hw/arm/aspeed: Check for CPU types in machine_run_board_init()
+
+ include/hw/arm/aspeed_soc.h |  4 ++-
+ hw/arm/aspeed.c             | 70 +++++++++++++++----------------------
+ hw/arm/aspeed_ast10x0.c     |  8 +++--
+ hw/arm/aspeed_ast2400.c     | 15 ++++++--
+ hw/arm/aspeed_ast2600.c     |  9 +++--
+ hw/arm/aspeed_soc_common.c  |  8 +++++
+ 6 files changed, 65 insertions(+), 49 deletions(-)
+
 -- 
 2.41.0
 

@@ -1,70 +1,70 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877181ejc;
-        Fri, 26 Jan 2024 05:33:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHUdpGeZc+bqmNvTGmwUzR4HLvhoIbK/tGB5ca1BrxNqhuNOa3yNqbvrJrCz4Hfszqocttd
-X-Received: by 2002:a05:622a:181c:b0:42a:2f9f:e4e1 with SMTP id t28-20020a05622a181c00b0042a2f9fe4e1mr1788150qtc.12.1706276016711;
-        Fri, 26 Jan 2024 05:33:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706276016; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877205ejc;
+        Fri, 26 Jan 2024 05:33:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH3Jmr4lspBuGKNDaReFYIhk6iaZo5OI0feKDVHKnntnfkta/T8qJVWkNRNcKmz0vedwPbr
+X-Received: by 2002:a05:622a:205:b0:42a:610f:f55e with SMTP id b5-20020a05622a020500b0042a610ff55emr1603984qtx.122.1706276022407;
+        Fri, 26 Jan 2024 05:33:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706276022; cv=none;
         d=google.com; s=arc-20160816;
-        b=VirEEKQ3cyxqQxd0f4NTy8LH3uIADQQrUgII2doQpuAMbDBHBjIpSsGw+hUWANHEPp
-         z0KQTzhcJ6ejfxhTIcngYXg4s6IKJcRiUAm4b0AXIO5FWex/eI+XVhDPXuGX5+ijQXJK
-         apmq6d/8Mi3mi1gB1RH1NMartkXx+zsc304uQtNwoMLdxrzu4l061rV/Cok3euhF9Dpa
-         AsUFenalJokz5DAutBc+VtyMuv0WqkzFpxoUnAEshnpEwUoBAtGqQEhncjxzW7zZG48z
-         /4VBqUsjZPq1SW1jzrnBclNajf7b+iJYNEi44TQ0k8ZEruj3MSeZUUz3SIg8tYJMcaEC
-         lRsw==
+        b=jcTl6eIgBA1QC8+UA3JozXBcpAnjcBng/+9VTTY+jPiydkVtRkCFwIA1KAzFBMuCyL
+         8FvKiGoskX3xdybb0mQrW2ujmTfL/sXm/+2kIVRkY7DvNs7YHIdwxNasT1jfUAfhd9UE
+         VJSMqC+W47YS2ZmOK/kLHNAmLqbeHNVRvUUH7R7ZtBXjqimbhWdfir6x+9ZlPigUALY4
+         dCFPATyq0upbJTun5xYAAoyOIAoBS1M85kXHUT9D6R8VBoS4fIZyi5ZTj38dBLSZiogb
+         ++ayyftBCXWKAxNEZoa6anOBltJtXZL+zlT7rWHIESmnN0hRqRUAoD5bWpjK9lxQdg0Z
+         4hdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=wAFDEn9U3awOKNQebI7aY0Yw9KFckL2UXWU9dAuO85E=;
+        bh=1qirqgR8vRSH/mQWpCDROvin4avN7ZlrIR8YxZV5Kqs=;
         fh=za8d50mC5rkhZmLzbgC0DovKQfedkIjGsi2wxbrkWZ8=;
-        b=BQdzPaDOPje78emMew/bUeW0r8kRL690wPW1/bkflrXrtk4yWyD+u1Agmd4Otbh8g5
-         Kjh126lApXnpy2qo5MMnNFMM8/ILnlSS9f4mBKzy4TmElxOAq8rLipWA8nRF4D69vV1+
-         TOHwZkWW0cp14zkDxNvYDVHjGOoyZCqTblpyCFRkDtDjXChIWZ4HRim/i6cIm4+MYmAw
-         7K2QGwxNsuCeTCIVuCQyw3YeR/ShBtXdw1q9JKrLdAZ42HblVOvMYQIrWk9B45fOBBxP
-         uZ6KhgRqwDrzBWtW1TqyTNfVXBc86T7KgOQPSVBuEcs4NotW9+9/j+/u6iVG0W5FV/fa
-         TA6A==
+        b=boJFXsyoxbTqV0vrvKcx6uUgMhG3CQDD9zPw2kvUkwtivDxkOxPRcXuQpjqfb+e0vb
+         iCLUjnoX24yIGxKkPJlMTcSS0Kf4AOuKiSeAj9S7FLKvgXeaINSlJXetQPnBCh6hmsMg
+         kINj57ehjoi2NRRvaByaIdrAv1Q1eqUpLvHwJenGj/OX1EBvwwQtdEBR5Ij2pDpssnri
+         AWs1FVvRouH2bkpnQLXoObN7ZoAZ4aVV2C/LYl6xGhlgxniKJPG1hG1YTX/MkErAFUHz
+         xZ9D1UxA9gu1todTgtPCSkxikceJq9hrRe4sAg+WORf1tPiUZ8ahYxQ7LJ1coxCN2ya+
+         U2Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3-20020a05622a02c300b0042a8638cd47si261229qtx.356.2024.01.26.05.33.36
+        by mx.google.com with ESMTPS id g2-20020ac85d42000000b0042a6cf8c5b9si1231121qtx.536.2024.01.26.05.33.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 05:33:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 05:33:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTMKR-0004fh-Ps; Fri, 26 Jan 2024 08:33:07 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTMKB-0003wI-NX; Fri, 26 Jan 2024 08:32:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMKH-0004Di-Hz; Fri, 26 Jan 2024 08:32:57 -0500
+ id 1rTMK8-0003aF-AH; Fri, 26 Jan 2024 08:32:48 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMKE-00080i-Nv; Fri, 26 Jan 2024 08:32:57 -0500
+ id 1rTMK5-00080i-OB; Fri, 26 Jan 2024 08:32:47 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzCT4g9mz4wxx;
- Sat, 27 Jan 2024 00:32:53 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzCJ4H8yz4x3D;
+ Sat, 27 Jan 2024 00:32:44 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzCR6L3tz4wny;
- Sat, 27 Jan 2024 00:32:51 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzCG5vK0z4wny;
+ Sat, 27 Jan 2024 00:32:42 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Ninad Palsule <ninad@linux.ibm.com>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 12/17] hw/fsi: Introduce IBM's FSI master
-Date: Fri, 26 Jan 2024 14:32:11 +0100
-Message-ID: <20240126133217.996306-13-clg@kaod.org>
+Subject: [PULL 08/17] hw/fsi: Introduce IBM's scratchpad device
+Date: Fri, 26 Jan 2024 14:32:07 +0100
+Message-ID: <20240126133217.996306-9-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126133217.996306-1-clg@kaod.org>
 References: <20240126133217.996306-1-clg@kaod.org>
@@ -80,281 +80,173 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d7enD0k64XBr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +6sscC6ckR9X
 
 From: Ninad Palsule <ninad@linux.ibm.com>
 
 This is a part of patchset where IBM's Flexible Service Interface is
 introduced.
 
-This commit models the FSI master. CFAM is hanging out of FSI master which is a bus controller.
-
-The FSI master: A controller in the platform service processor (e.g.
-BMC) driving CFAM engine accesses into the POWER chip. At the
-hardware level FSI is a bit-based protocol supporting synchronous and
-DMA-driven accesses of engines in a CFAM.
+The scratchpad provides a set of non-functional registers. The firmware
+is free to use them, hardware does not support any special management
+support. The scratchpad registers can be read or written from LBUS
+slave. The scratch pad is managed under FSI CFAM state.
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: - move FSICFAMState object under FSIMasterState
-       - introduced fsi_master_init()
-       - reworked fsi_master_realize()
-       - dropped FSIBus definition ]
+[ clg: - moved object FSIScratchPad under FSICFAMState
+       - moved FSIScratchPad code under cfam.c ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/fsi/fsi-master.h |  32 +++++++
- hw/fsi/fsi-master.c         | 170 ++++++++++++++++++++++++++++++++++++
- hw/fsi/meson.build          |   2 +-
- hw/fsi/trace-events         |   2 +
- 4 files changed, 205 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/fsi/fsi-master.h
- create mode 100644 hw/fsi/fsi-master.c
+ include/hw/fsi/lbus.h | 11 ++++++
+ hw/fsi/lbus.c         | 78 +++++++++++++++++++++++++++++++++++++++++--
+ hw/fsi/trace-events   |  2 ++
+ 3 files changed, 89 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
-new file mode 100644
-index 000000000000..68e5f56db2ea
---- /dev/null
-+++ b/include/hw/fsi/fsi-master.h
-@@ -0,0 +1,32 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2024 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface Master
-+ */
-+#ifndef FSI_FSI_MASTER_H
-+#define FSI_FSI_MASTER_H
+diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
+index e8a22e22a8fa..558268c013f5 100644
+--- a/include/hw/fsi/lbus.h
++++ b/include/hw/fsi/lbus.h
+@@ -29,4 +29,15 @@ typedef struct FSILBus {
+     MemoryRegion mr;
+ } FSILBus;
+ 
++#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
++#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), TYPE_FSI_SCRATCHPAD)
 +
-+#include "exec/memory.h"
-+#include "hw/qdev-core.h"
-+#include "hw/fsi/fsi.h"
-+#include "hw/fsi/cfam.h"
++#define FSI_SCRATCHPAD_NR_REGS 4
 +
-+#define TYPE_FSI_MASTER "fsi.master"
-+OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
++typedef struct FSIScratchPad {
++        FSILBusDevice parent;
 +
-+#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
++        uint32_t regs[FSI_SCRATCHPAD_NR_REGS];
++} FSIScratchPad;
 +
-+typedef struct FSIMasterState {
-+    DeviceState parent;
-+    MemoryRegion iomem;
-+    MemoryRegion opb2fsi;
-+
-+    FSIBus bus;
-+
-+    uint32_t regs[FSI_MASTER_NR_REGS];
-+    FSICFAMState cfam;
-+} FSIMasterState;
-+
-+
-+#endif /* FSI_FSI_H */
-diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-new file mode 100644
-index 000000000000..a5f0598c98ed
---- /dev/null
-+++ b/hw/fsi/fsi-master.c
-@@ -0,0 +1,170 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2024 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface master
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
+ #endif /* FSI_LBUS_H */
+diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
+index 44d2319087a8..20495f42fd99 100644
+--- a/hw/fsi/lbus.c
++++ b/hw/fsi/lbus.c
+@@ -8,11 +8,12 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/fsi/lbus.h"
+-
+ #include "hw/qdev-properties.h"
+-
 +#include "qemu/log.h"
-+#include "trace.h"
+ #include "trace.h"
+ 
++#define TO_REG(offset) ((offset) >> 2)
 +
-+#include "hw/fsi/fsi-master.h"
-+
-+#define TYPE_OP_BUS "opb"
-+
-+#define TO_REG(x)                               ((x) >> 2)
-+
-+#define FSI_MENP0                               TO_REG(0x010)
-+#define FSI_MENP32                              TO_REG(0x014)
-+#define FSI_MSENP0                              TO_REG(0x018)
-+#define FSI_MLEVP0                              TO_REG(0x018)
-+#define FSI_MSENP32                             TO_REG(0x01c)
-+#define FSI_MLEVP32                             TO_REG(0x01c)
-+#define FSI_MCENP0                              TO_REG(0x020)
-+#define FSI_MREFP0                              TO_REG(0x020)
-+#define FSI_MCENP32                             TO_REG(0x024)
-+#define FSI_MREFP32                             TO_REG(0x024)
-+
-+#define FSI_MVER                                TO_REG(0x074)
-+#define FSI_MRESP0                              TO_REG(0x0d0)
-+
-+#define FSI_MRESB0                              TO_REG(0x1d0)
-+#define   FSI_MRESB0_RESET_GENERAL              BIT(31)
-+#define   FSI_MRESB0_RESET_ERROR                BIT(30)
-+
-+static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
+ static void fsi_lbus_init(Object *o)
+ {
+     FSILBus *lbus = FSI_LBUS(o);
+@@ -34,10 +35,83 @@ static const TypeInfo fsi_lbus_device_type_info = {
+     .abstract = true,
+ };
+ 
++static uint64_t fsi_scratchpad_read(void *opaque, hwaddr addr, unsigned size)
 +{
-+    FSIMasterState *s = FSI_MASTER(opaque);
++    FSIScratchPad *s = SCRATCHPAD(opaque);
 +    int reg = TO_REG(addr);
 +
-+    trace_fsi_master_read(addr, size);
++    trace_fsi_scratchpad_read(addr, size);
 +
-+    if (reg >= FSI_MASTER_NR_REGS) {
++    if (reg >= FSI_SCRATCHPAD_NR_REGS) {
 +        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
 +        return 0;
 +    }
 +
 +    return s->regs[reg];
 +}
 +
-+static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
-+                             unsigned size)
++static void fsi_scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
++                                 unsigned size)
 +{
-+    FSIMasterState *s = FSI_MASTER(opaque);
++    FSIScratchPad *s = SCRATCHPAD(opaque);
++
++    trace_fsi_scratchpad_write(addr, size, data);
 +    int reg = TO_REG(addr);
 +
-+    trace_fsi_master_write(addr, size, data);
-+
-+    if (reg >= FSI_MASTER_NR_REGS) {
++    if (reg >= FSI_SCRATCHPAD_NR_REGS) {
 +        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
 +        return;
 +    }
 +
-+    switch (reg) {
-+    case FSI_MENP0:
-+        s->regs[FSI_MENP0] = data;
-+        break;
-+    case FSI_MENP32:
-+        s->regs[FSI_MENP32] = data;
-+        break;
-+    case FSI_MSENP0:
-+        s->regs[FSI_MENP0] |= data;
-+        break;
-+    case FSI_MSENP32:
-+        s->regs[FSI_MENP32] |= data;
-+        break;
-+    case FSI_MCENP0:
-+        s->regs[FSI_MENP0] &= ~data;
-+        break;
-+    case FSI_MCENP32:
-+        s->regs[FSI_MENP32] &= ~data;
-+        break;
-+    case FSI_MRESP0:
-+        /* Perform necessary resets leave register 0 to indicate no errors */
-+        break;
-+    case FSI_MRESB0:
-+        if (data & FSI_MRESB0_RESET_GENERAL) {
-+            device_cold_reset(DEVICE(opaque));
-+        }
-+        if (data & FSI_MRESB0_RESET_ERROR) {
-+            /* FIXME: this seems dubious */
-+            device_cold_reset(DEVICE(opaque));
-+        }
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+    }
++    s->regs[reg] = data;
 +}
 +
-+static const struct MemoryRegionOps fsi_master_ops = {
-+    .read = fsi_master_read,
-+    .write = fsi_master_write,
++static const struct MemoryRegionOps scratchpad_ops = {
++    .read = fsi_scratchpad_read,
++    .write = fsi_scratchpad_write,
 +    .endianness = DEVICE_BIG_ENDIAN,
 +};
 +
-+static void fsi_master_init(Object *o)
++static void fsi_scratchpad_realize(DeviceState *dev, Error **errp)
 +{
-+    FSIMasterState *s = FSI_MASTER(o);
++    FSILBusDevice *ldev = FSI_LBUS_DEVICE(dev);
 +
-+    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
-+
-+    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
-+                          TYPE_FSI_MASTER, 0x10000000);
-+    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
++    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
++                          ldev, TYPE_FSI_SCRATCHPAD, 0x400);
 +}
 +
-+static void fsi_master_realize(DeviceState *dev, Error **errp)
++static void fsi_scratchpad_reset(DeviceState *dev)
 +{
-+    FSIMasterState *s = FSI_MASTER(dev);
++    FSIScratchPad *s = SCRATCHPAD(dev);
 +
-+    if (!qdev_realize(DEVICE(&s->cfam), BUS(&s->bus), errp)) {
-+        return;
-+    }
-+
-+    /* address ? */
-+    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
-+}
-+
-+static void fsi_master_reset(DeviceState *dev)
-+{
-+    FSIMasterState *s = FSI_MASTER(dev);
-+
-+    /* Initialize registers */
 +    memset(s->regs, 0, sizeof(s->regs));
-+
-+    /* ASPEED default */
-+    s->regs[FSI_MVER] = 0xe0050101;
 +}
 +
-+static void fsi_master_class_init(ObjectClass *klass, void *data)
++static void fsi_scratchpad_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->bus_type = TYPE_OP_BUS;
-+    dc->desc = "FSI Master";
-+    dc->realize = fsi_master_realize;
-+    dc->reset = fsi_master_reset;
++    dc->bus_type = TYPE_FSI_LBUS;
++    dc->realize = fsi_scratchpad_realize;
++    dc->reset = fsi_scratchpad_reset;
 +}
 +
-+static const TypeInfo fsi_master_info = {
-+    .name = TYPE_FSI_MASTER,
-+    .parent = TYPE_DEVICE,
-+    .instance_init = fsi_master_init,
-+    .instance_size = sizeof(FSIMasterState),
-+    .class_init = fsi_master_class_init,
++static const TypeInfo fsi_scratchpad_info = {
++    .name = TYPE_FSI_SCRATCHPAD,
++    .parent = TYPE_FSI_LBUS_DEVICE,
++    .instance_size = sizeof(FSIScratchPad),
++    .class_init = fsi_scratchpad_class_init,
 +};
 +
-+static void fsi_register_types(void)
-+{
-+    type_register_static(&fsi_master_info);
-+}
-+
-+type_init(fsi_register_types);
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index 96403d4efcbc..7803b3afd191 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1 +1 @@
--system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c'))
-+system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c','fsi-master.c'))
+ static void fsi_lbus_register_types(void)
+ {
+     type_register_static(&fsi_lbus_info);
+     type_register_static(&fsi_lbus_device_type_info);
++    type_register_static(&fsi_scratchpad_info);
+ }
+ 
+ type_init(fsi_lbus_register_types);
 diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-index b542956fb38d..bf417b6dc3c8 100644
+index e69de29bb2d1..c5753e27910a 100644
 --- a/hw/fsi/trace-events
 +++ b/hw/fsi/trace-events
-@@ -7,3 +7,5 @@ fsi_cfam_config_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64
- fsi_cfam_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
- fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
- fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+@@ -0,0 +1,2 @@
++fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
++fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 -- 
 2.43.0
 

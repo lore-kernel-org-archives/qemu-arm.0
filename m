@@ -1,745 +1,375 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp742883ejc;
-        Fri, 26 Jan 2024 00:41:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG+cGbXAKMQ3O5HCEzq/J524Su1dj+1J0lZMW4U+30puhLIriqlybjzKibxYKghNMRRFQq9
-X-Received: by 2002:ae9:f403:0:b0:783:cdd1:5c1d with SMTP id y3-20020ae9f403000000b00783cdd15c1dmr599573qkl.106.1706258489387;
-        Fri, 26 Jan 2024 00:41:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706258489; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp743504ejc;
+        Fri, 26 Jan 2024 00:43:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFTFYCHoiZHM3jl0km/N95gYuQp68QNpx9NBRXnAdZsoQVEYQDRRAZ0HeXbfKq3g0qXipHW
+X-Received: by 2002:a25:814b:0:b0:dc2:3c31:8f85 with SMTP id j11-20020a25814b000000b00dc23c318f85mr781824ybm.47.1706258594913;
+        Fri, 26 Jan 2024 00:43:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706258594; cv=none;
         d=google.com; s=arc-20160816;
-        b=AdObp/A1/kIVj0C9bO0KVE6vk0bMEoyJBE6xDGFeq/Mr8Jdq3pAZufS+OV7Ji+mlHM
-         bWvzfvAXRFUO2mCWMhBtBNEZmGropbOrGqqxAViHG6TID1hb85fq0d0pZd51PXMSUkkt
-         wlEJXnkapcdsJvitS7AIYkY4/nddLrJkOkATWonMj1hpvzGloKzibW1bKqI8GQ4V58Xr
-         T+TZRRtnW6oAKcNK/wcNiks4r84wWhr7pf4n041ggIvuMRqznyUmH7xVpxEVG6sVE4/f
-         snDxvarsqdx5ifHQC2Ixry4uh/KlBASmvnCmkk5myZjXjEWQHBffuxjYb0yZWVm/ESKN
-         kXQQ==
+        b=TIagY7Ag6vop8++jRjpyU4gYXf3Y+i023LclgDJjOWbhTYPKCSpUOtWWJETm4i2RPO
+         PhX+xVZu4JKQeL+floOEZAEB+K64UCTBqMMQvwQvOWM4XPPQiX9SNzCOYSTiurgHW+QV
+         +d9mK2RF7nhaZi2j/tZwhiFNFbWY1p3k2MHpqSetXs1nvp6ITu2AN6ZcoudNIFK9FeAe
+         RKD57eaC5AOW9JhxbOHon3CmuNCuzt/M1OKFy8rR3NrfCtHibfHrtPHOcU+qXF48yRZs
+         C3S58DWQb1yXwBxmgdxuypvlpWSjzjusCyzELXuzQ8PJ0JdHplA2ZmvjoJTwiMRafMCV
+         ECHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=g/UsVZB+B2sIqWjDh5IVwSvGK3OAU7Pzri4K+uaXIJM=;
-        fh=4MFjWk99T14cOfrd/QAZZe1F8g1v4KV8Ub1F9CwTKmk=;
-        b=AjGKjHgg6HE30ahISFe827QUpDjPolhv43PI4fiJtNuz5pp9Bbsbx9J34z+jlwoNBr
-         e2KmNyGGgFMaOma6D+6cpLT3rL8sPdxngdpxhChTnourMve1MZn9ZyHQgDe1C7jM9GvM
-         7M76VEjcjnbB6fy9aP/EU6PGLUtWpcH//lfb0indbCG7grA2BKm1RozCZsuR0tyyRcoi
-         v2hrHQVnEEP1MdEc+3reZhpaYMwxesB5YoLN9gboOJBPvnvhnJBZzqiTeFBHbmKEttBn
-         BJYb2mg/EcEl1JG6TOgUDOCB4t38tDaulTNnLvR3AZYUOEfx+99zvWp3XHkMeXBh9jvs
-         Gg5Q==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=h4Pc/NrQbLWMwlJryWf3cM5Z2JEEkghsBt2SESmCnvw=;
+        fh=XjeWluILof3f/t2RMU9x5kUMQdajlxelk3b+5+95bRU=;
+        b=v9cXeKwhGAxtdMCeTUmwoL6lc1+ZOsk6XS/EltqTLRbTrrtm0ut5/f/kQXR3iN0op/
+         3C7pIqy8G4bipkvDmgU5aG5IjAr+SUd8PFKJ19VfNyOO9n+1F636U5DSlSVSitS+hS0w
+         7k62Av2Xuo2Wxwfg2hdoHUh1nRMC+fR0HQiLw37iYiKE2vz5qZda0kb971I1hoyDdq+l
+         xHm9Gv/OX/dJvXK4sXXl865fHFV9IIuI80OJ2VnYH/eUhSIx5YH1FSNUQUAzn5g02ocq
+         QglV1FzDES03z2wQgiBx72OHhXi6MapbBg5Pe3b2zX7sd8n+rbIOvJfqe7DaPFODqNtx
+         RBYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LE0bQ0vs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs33-20020a05620a472100b0078347a0ebd2si904690qkb.97.2024.01.26.00.41.29
+        by mx.google.com with ESMTPS id f5-20020a05620a408500b00781cbe3523dsi883003qko.506.2024.01.26.00.43.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 00:41:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 00:43:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LE0bQ0vs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTHl6-0008Q9-I2; Fri, 26 Jan 2024 03:40:20 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rTHnb-00048J-U0; Fri, 26 Jan 2024 03:42:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTHl1-0008EC-Cz
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 03:40:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTHnZ-00046E-5L; Fri, 26 Jan 2024 03:42:53 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTHkw-0002Rc-Hc
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 03:40:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706258409;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g/UsVZB+B2sIqWjDh5IVwSvGK3OAU7Pzri4K+uaXIJM=;
- b=LE0bQ0vs/iVAnG4R3JE2+U5WG+R6zno18oAIuq0OPmwmXA8BHgpr3Ye9jBDQAdozacOyqr
- 94d/1jUL9Dif/kBuu8ss7NAUxb3g9pzv+xZ7tsk3Zrstp5QMg6Q1muOK2rQOvyXGDmKK9w
- qyYhvUNPRXT7OX0KUuDCMOLZtnQWAsA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-64-p9ne1fpiMZGGN8aYrOnezQ-1; Fri,
- 26 Jan 2024 03:40:06 -0500
-X-MC-Unique: p9ne1fpiMZGGN8aYrOnezQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTHnW-0003CH-OH; Fri, 26 Jan 2024 03:42:52 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLrmm3GlBz4x5K;
+ Fri, 26 Jan 2024 19:42:48 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CA0B038149AF;
- Fri, 26 Jan 2024 08:40:05 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.161])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4F7EC492BFA;
- Fri, 26 Jan 2024 08:40:04 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] target/arm: Move v7m-related code from cpu32.c into a
- separate file
-Date: Fri, 26 Jan 2024 09:39:59 +0100
-Message-ID: <20240126084001.879548-2-thuth@redhat.com>
-In-Reply-To: <20240126084001.879548-1-thuth@redhat.com>
-References: <20240126084001.879548-1-thuth@redhat.com>
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLrmh5Gpmz4wcJ;
+ Fri, 26 Jan 2024 19:42:44 +1100 (AEDT)
+Message-ID: <8d457bb0-ee65-4dc2-ac9d-77d2c0747491@kaod.org>
+Date: Fri, 26 Jan 2024 09:42:42 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 06/11] hw/fsi: Introduce IBM's FSI master
+Content-Language: en-US
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20240126034026.31068-1-ninad@linux.ibm.com>
+ <20240126034026.31068-7-ninad@linux.ibm.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240126034026.31068-7-ninad@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.5,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PTdFYRKwQdne
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xf/0T+uQycii
 
-Move the code to a separate file so that we do not have to compile
-it anymore if CONFIG_ARM_V7M is not set.
+On 1/26/24 04:40, Ninad Palsule wrote:
+> This is a part of patchset where IBM's Flexible Service Interface is
+> introduced.
+> 
+> This commit models the FSI master. CFAM is hanging out of FSI master which is a bus controller.
+> 
+> The FSI master: A controller in the platform service processor (e.g.
+> BMC) driving CFAM engine accesses into the POWER chip. At the
+> hardware level FSI is a bit-based protocol supporting synchronous and
+> DMA-driven accesses of engines in a CFAM.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> [ clg: - move FSICFAMState object under FSIMasterState
+>         - introduced fsi_master_init()
+>         - reworked fsi_master_realize()
+>         - dropped FSIBus definition ]
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+> ---
+> v9:
+>    - Initialized registers.
+>    - Fixed the address check.
+> v11:
+>    - Replaced for loop with memset.
+>    - Removed Joel's review tag as per Cedric.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- target/arm/tcg/cpu-v7m.c   | 292 +++++++++++++++++++++++++++++++++++++
- target/arm/tcg/cpu32.c     | 261 ---------------------------------
- target/arm/tcg/meson.build |   4 +
- 3 files changed, 296 insertions(+), 261 deletions(-)
- create mode 100644 target/arm/tcg/cpu-v7m.c
 
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-new file mode 100644
-index 0000000000..d61873ab6d
---- /dev/null
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -0,0 +1,292 @@
-+/*
-+ * QEMU ARM V7 TCG-only CPUs.
-+ *
-+ * Copyright (c) 2012 SUSE LINUX Products GmbH
-+ *
-+ * This code is licensed under the GNU GPL v2 or later.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "hw/core/tcg-cpu-ops.h"
-+#include "internals.h"
-+#include "hw/intc/armv7m_nvic.h"
-+
-+/* CPU models. These are not needed for the AArch64 linux-user build. */
-+#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
-+
-+#if !defined(CONFIG_USER_ONLY)
-+static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cs);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    bool ret = false;
-+
-+    /*
-+     * ARMv7-M interrupt masking works differently than -A or -R.
-+     * There is no FIQ/IRQ distinction. Instead of I and F bits
-+     * masking FIQ and IRQ interrupts, an exception is taken only
-+     * if it is higher priority than the current execution priority
-+     * (which depends on state like BASEPRI, FAULTMASK and the
-+     * currently active exception).
-+     */
-+    if (interrupt_request & CPU_INTERRUPT_HARD
-+        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
-+        cs->exception_index = EXCP_IRQ;
-+        cc->tcg_ops->do_interrupt(cs);
-+        ret = true;
-+    }
-+    return ret;
-+}
-+#endif /* !CONFIG_USER_ONLY */
-+
-+static void cortex_m0_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V6);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+
-+    cpu->midr = 0x410cc200;
-+
-+    /*
-+     * These ID register values are not guest visible, because
-+     * we do not implement the Main Extension. They must be set
-+     * to values corresponding to the Cortex-M0's implemented
-+     * features, because QEMU generally controls its emulation
-+     * by looking at ID register fields. We use the same values as
-+     * for the M3.
-+     */
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-+    cpu->isar.id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00000030;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x00000000;
-+    cpu->isar.id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01141110;
-+    cpu->isar.id_isar1 = 0x02111000;
-+    cpu->isar.id_isar2 = 0x21112231;
-+    cpu->isar.id_isar3 = 0x01111110;
-+    cpu->isar.id_isar4 = 0x01310102;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+}
-+
-+static void cortex_m3_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V7);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    cpu->midr = 0x410fc231;
-+    cpu->pmsav7_dregion = 8;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-+    cpu->isar.id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00000030;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x00000000;
-+    cpu->isar.id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01141110;
-+    cpu->isar.id_isar1 = 0x02111000;
-+    cpu->isar.id_isar2 = 0x21112231;
-+    cpu->isar.id_isar3 = 0x01111110;
-+    cpu->isar.id_isar4 = 0x01310102;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+}
-+
-+static void cortex_m4_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V7);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    cpu->midr = 0x410fc240; /* r0p0 */
-+    cpu->pmsav7_dregion = 8;
-+    cpu->isar.mvfr0 = 0x10110021;
-+    cpu->isar.mvfr1 = 0x11000011;
-+    cpu->isar.mvfr2 = 0x00000000;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-+    cpu->isar.id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00000030;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x00000000;
-+    cpu->isar.id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01141110;
-+    cpu->isar.id_isar1 = 0x02111000;
-+    cpu->isar.id_isar2 = 0x21112231;
-+    cpu->isar.id_isar3 = 0x01111110;
-+    cpu->isar.id_isar4 = 0x01310102;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+}
-+
-+static void cortex_m7_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V7);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    cpu->midr = 0x411fc272; /* r1p2 */
-+    cpu->pmsav7_dregion = 8;
-+    cpu->isar.mvfr0 = 0x10110221;
-+    cpu->isar.mvfr1 = 0x12000011;
-+    cpu->isar.mvfr2 = 0x00000040;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-+    cpu->isar.id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00100030;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x01000000;
-+    cpu->isar.id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01101110;
-+    cpu->isar.id_isar1 = 0x02112000;
-+    cpu->isar.id_isar2 = 0x20232231;
-+    cpu->isar.id_isar3 = 0x01111131;
-+    cpu->isar.id_isar4 = 0x01310132;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+}
-+
-+static void cortex_m33_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    cpu->midr = 0x410fd213; /* r0p3 */
-+    cpu->pmsav7_dregion = 16;
-+    cpu->sau_sregion = 8;
-+    cpu->isar.mvfr0 = 0x10110021;
-+    cpu->isar.mvfr1 = 0x11000011;
-+    cpu->isar.mvfr2 = 0x00000040;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000210;
-+    cpu->isar.id_dfr0 = 0x00200000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00101F40;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x01000000;
-+    cpu->isar.id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01101110;
-+    cpu->isar.id_isar1 = 0x02212000;
-+    cpu->isar.id_isar2 = 0x20232232;
-+    cpu->isar.id_isar3 = 0x01111131;
-+    cpu->isar.id_isar4 = 0x01310132;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+    cpu->clidr = 0x00000000;
-+    cpu->ctr = 0x8000c000;
-+}
-+
-+static void cortex_m55_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    cpu->midr = 0x410fd221; /* r0p1 */
-+    cpu->revidr = 0;
-+    cpu->pmsav7_dregion = 16;
-+    cpu->sau_sregion = 8;
-+    /* These are the MVFR* values for the FPU + full MVE configuration */
-+    cpu->isar.mvfr0 = 0x10110221;
-+    cpu->isar.mvfr1 = 0x12100211;
-+    cpu->isar.mvfr2 = 0x00000040;
-+    cpu->isar.id_pfr0 = 0x20000030;
-+    cpu->isar.id_pfr1 = 0x00000230;
-+    cpu->isar.id_dfr0 = 0x10200000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->isar.id_mmfr0 = 0x00111040;
-+    cpu->isar.id_mmfr1 = 0x00000000;
-+    cpu->isar.id_mmfr2 = 0x01000000;
-+    cpu->isar.id_mmfr3 = 0x00000011;
-+    cpu->isar.id_isar0 = 0x01103110;
-+    cpu->isar.id_isar1 = 0x02212000;
-+    cpu->isar.id_isar2 = 0x20232232;
-+    cpu->isar.id_isar3 = 0x01111131;
-+    cpu->isar.id_isar4 = 0x01310132;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+    cpu->clidr = 0x00000000; /* caches not implemented */
-+    cpu->ctr = 0x8303c003;
-+}
-+
-+static const struct TCGCPUOps arm_v7m_tcg_ops = {
-+    .initialize = arm_translate_init,
-+    .synchronize_from_tb = arm_cpu_synchronize_from_tb,
-+    .debug_excp_handler = arm_debug_excp_handler,
-+    .restore_state_to_opc = arm_restore_state_to_opc,
-+
-+#ifdef CONFIG_USER_ONLY
-+    .record_sigsegv = arm_cpu_record_sigsegv,
-+    .record_sigbus = arm_cpu_record_sigbus,
-+#else
-+    .tlb_fill = arm_cpu_tlb_fill,
-+    .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
-+    .do_interrupt = arm_v7m_cpu_do_interrupt,
-+    .do_transaction_failed = arm_cpu_do_transaction_failed,
-+    .do_unaligned_access = arm_cpu_do_unaligned_access,
-+    .adjust_watchpoint_address = arm_adjust_watchpoint_address,
-+    .debug_check_watchpoint = arm_debug_check_watchpoint,
-+    .debug_check_breakpoint = arm_debug_check_breakpoint,
-+#endif /* !CONFIG_USER_ONLY */
-+};
-+
-+static void arm_v7m_class_init(ObjectClass *oc, void *data)
-+{
-+    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
-+    CPUClass *cc = CPU_CLASS(oc);
-+
-+    acc->info = data;
-+    cc->tcg_ops = &arm_v7m_tcg_ops;
-+    cc->gdb_core_xml_file = "arm-m-profile.xml";
-+}
-+
-+static const ARMCPUInfo arm_v7m_cpus[] = {
-+    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m7",   .initfn = cortex_m7_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m33",  .initfn = cortex_m33_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m55",  .initfn = cortex_m55_initfn,
-+                             .class_init = arm_v7m_class_init },
-+};
-+
-+static void arm_v7m_cpu_register_types(void)
-+{
-+    size_t i;
-+
-+    for (i = 0; i < ARRAY_SIZE(arm_v7m_cpus); ++i) {
-+        arm_cpu_register(&arm_v7m_cpus[i]);
-+    }
-+}
-+
-+type_init(arm_v7m_cpu_register_types)
-+
-+#endif
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index d9e0e2a4dd..7132dc4b6f 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -17,9 +17,6 @@
- #include "hw/boards.h"
- #endif
- #include "cpregs.h"
--#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
--#include "hw/intc/armv7m_nvic.h"
--#endif
- 
- 
- /* Share AArch32 -cpu max features with AArch64. */
-@@ -98,32 +95,6 @@ void aa32_max_features(ARMCPU *cpu)
- /* CPU models. These are not needed for the AArch64 linux-user build. */
- #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
- 
--#if !defined(CONFIG_USER_ONLY)
--static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
--{
--    CPUClass *cc = CPU_GET_CLASS(cs);
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    bool ret = false;
--
--    /*
--     * ARMv7-M interrupt masking works differently than -A or -R.
--     * There is no FIQ/IRQ distinction. Instead of I and F bits
--     * masking FIQ and IRQ interrupts, an exception is taken only
--     * if it is higher priority than the current execution priority
--     * (which depends on state like BASEPRI, FAULTMASK and the
--     * currently active exception).
--     */
--    if (interrupt_request & CPU_INTERRUPT_HARD
--        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
--        cs->exception_index = EXCP_IRQ;
--        cc->tcg_ops->do_interrupt(cs);
--        ret = true;
--    }
--    return ret;
--}
--#endif /* !CONFIG_USER_ONLY */
--
- static void arm926_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -571,195 +542,6 @@ static void cortex_a15_initfn(Object *obj)
-     define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
- }
- 
--static void cortex_m0_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    set_feature(&cpu->env, ARM_FEATURE_V6);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--
--    cpu->midr = 0x410cc200;
--
--    /*
--     * These ID register values are not guest visible, because
--     * we do not implement the Main Extension. They must be set
--     * to values corresponding to the Cortex-M0's implemented
--     * features, because QEMU generally controls its emulation
--     * by looking at ID register fields. We use the same values as
--     * for the M3.
--     */
--    cpu->isar.id_pfr0 = 0x00000030;
--    cpu->isar.id_pfr1 = 0x00000200;
--    cpu->isar.id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00000030;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x00000000;
--    cpu->isar.id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01141110;
--    cpu->isar.id_isar1 = 0x02111000;
--    cpu->isar.id_isar2 = 0x21112231;
--    cpu->isar.id_isar3 = 0x01111110;
--    cpu->isar.id_isar4 = 0x01310102;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m3_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    set_feature(&cpu->env, ARM_FEATURE_V7);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    cpu->midr = 0x410fc231;
--    cpu->pmsav7_dregion = 8;
--    cpu->isar.id_pfr0 = 0x00000030;
--    cpu->isar.id_pfr1 = 0x00000200;
--    cpu->isar.id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00000030;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x00000000;
--    cpu->isar.id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01141110;
--    cpu->isar.id_isar1 = 0x02111000;
--    cpu->isar.id_isar2 = 0x21112231;
--    cpu->isar.id_isar3 = 0x01111110;
--    cpu->isar.id_isar4 = 0x01310102;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m4_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V7);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fc240; /* r0p0 */
--    cpu->pmsav7_dregion = 8;
--    cpu->isar.mvfr0 = 0x10110021;
--    cpu->isar.mvfr1 = 0x11000011;
--    cpu->isar.mvfr2 = 0x00000000;
--    cpu->isar.id_pfr0 = 0x00000030;
--    cpu->isar.id_pfr1 = 0x00000200;
--    cpu->isar.id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00000030;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x00000000;
--    cpu->isar.id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01141110;
--    cpu->isar.id_isar1 = 0x02111000;
--    cpu->isar.id_isar2 = 0x21112231;
--    cpu->isar.id_isar3 = 0x01111110;
--    cpu->isar.id_isar4 = 0x01310102;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m7_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V7);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x411fc272; /* r1p2 */
--    cpu->pmsav7_dregion = 8;
--    cpu->isar.mvfr0 = 0x10110221;
--    cpu->isar.mvfr1 = 0x12000011;
--    cpu->isar.mvfr2 = 0x00000040;
--    cpu->isar.id_pfr0 = 0x00000030;
--    cpu->isar.id_pfr1 = 0x00000200;
--    cpu->isar.id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00100030;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x01000000;
--    cpu->isar.id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01101110;
--    cpu->isar.id_isar1 = 0x02112000;
--    cpu->isar.id_isar2 = 0x20232231;
--    cpu->isar.id_isar3 = 0x01111131;
--    cpu->isar.id_isar4 = 0x01310132;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m33_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V8);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fd213; /* r0p3 */
--    cpu->pmsav7_dregion = 16;
--    cpu->sau_sregion = 8;
--    cpu->isar.mvfr0 = 0x10110021;
--    cpu->isar.mvfr1 = 0x11000011;
--    cpu->isar.mvfr2 = 0x00000040;
--    cpu->isar.id_pfr0 = 0x00000030;
--    cpu->isar.id_pfr1 = 0x00000210;
--    cpu->isar.id_dfr0 = 0x00200000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00101F40;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x01000000;
--    cpu->isar.id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01101110;
--    cpu->isar.id_isar1 = 0x02212000;
--    cpu->isar.id_isar2 = 0x20232232;
--    cpu->isar.id_isar3 = 0x01111131;
--    cpu->isar.id_isar4 = 0x01310132;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--    cpu->clidr = 0x00000000;
--    cpu->ctr = 0x8000c000;
--}
--
--static void cortex_m55_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V8);
--    set_feature(&cpu->env, ARM_FEATURE_V8_1M);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    cpu->midr = 0x410fd221; /* r0p1 */
--    cpu->revidr = 0;
--    cpu->pmsav7_dregion = 16;
--    cpu->sau_sregion = 8;
--    /* These are the MVFR* values for the FPU + full MVE configuration */
--    cpu->isar.mvfr0 = 0x10110221;
--    cpu->isar.mvfr1 = 0x12100211;
--    cpu->isar.mvfr2 = 0x00000040;
--    cpu->isar.id_pfr0 = 0x20000030;
--    cpu->isar.id_pfr1 = 0x00000230;
--    cpu->isar.id_dfr0 = 0x10200000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->isar.id_mmfr0 = 0x00111040;
--    cpu->isar.id_mmfr1 = 0x00000000;
--    cpu->isar.id_mmfr2 = 0x01000000;
--    cpu->isar.id_mmfr3 = 0x00000011;
--    cpu->isar.id_isar0 = 0x01103110;
--    cpu->isar.id_isar1 = 0x02212000;
--    cpu->isar.id_isar2 = 0x20232232;
--    cpu->isar.id_isar3 = 0x01111131;
--    cpu->isar.id_isar4 = 0x01310132;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--    cpu->clidr = 0x00000000; /* caches not implemented */
--    cpu->ctr = 0x8303c003;
--}
--
- static const ARMCPRegInfo cortexr5_cp_reginfo[] = {
-     /* Dummy the TCM region regs for the moment */
-     { .name = "ATCM", .cp = 15, .opc1 = 0, .crn = 9, .crm = 1, .opc2 = 0,
-@@ -1018,37 +800,6 @@ static void pxa270c5_initfn(Object *obj)
-     cpu->reset_sctlr = 0x00000078;
- }
- 
--static const struct TCGCPUOps arm_v7m_tcg_ops = {
--    .initialize = arm_translate_init,
--    .synchronize_from_tb = arm_cpu_synchronize_from_tb,
--    .debug_excp_handler = arm_debug_excp_handler,
--    .restore_state_to_opc = arm_restore_state_to_opc,
--
--#ifdef CONFIG_USER_ONLY
--    .record_sigsegv = arm_cpu_record_sigsegv,
--    .record_sigbus = arm_cpu_record_sigbus,
--#else
--    .tlb_fill = arm_cpu_tlb_fill,
--    .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
--    .do_interrupt = arm_v7m_cpu_do_interrupt,
--    .do_transaction_failed = arm_cpu_do_transaction_failed,
--    .do_unaligned_access = arm_cpu_do_unaligned_access,
--    .adjust_watchpoint_address = arm_adjust_watchpoint_address,
--    .debug_check_watchpoint = arm_debug_check_watchpoint,
--    .debug_check_breakpoint = arm_debug_check_breakpoint,
--#endif /* !CONFIG_USER_ONLY */
--};
--
--static void arm_v7m_class_init(ObjectClass *oc, void *data)
--{
--    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
--    CPUClass *cc = CPU_CLASS(oc);
--
--    acc->info = data;
--    cc->tcg_ops = &arm_v7m_tcg_ops;
--    cc->gdb_core_xml_file = "arm-m-profile.xml";
--}
--
- #ifndef TARGET_AARCH64
- /*
-  * -cpu max: a CPU with as many features enabled as our emulation supports.
-@@ -1131,18 +882,6 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
-     { .name = "cortex-a8",   .initfn = cortex_a8_initfn },
-     { .name = "cortex-a9",   .initfn = cortex_a9_initfn },
-     { .name = "cortex-a15",  .initfn = cortex_a15_initfn },
--    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m7",   .initfn = cortex_m7_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m33",  .initfn = cortex_m33_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m55",  .initfn = cortex_m55_initfn,
--                             .class_init = arm_v7m_class_init },
-     { .name = "cortex-r5",   .initfn = cortex_r5_initfn },
-     { .name = "cortex-r5f",  .initfn = cortex_r5f_initfn },
-     { .name = "cortex-r52",  .initfn = cortex_r52_initfn },
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 6fca38f2cc..8c7f6b43f3 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -52,6 +52,10 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'sve_helper.c',
- ))
- 
-+arm_ss.add(when: 'CONFIG_ARM_V7M', if_true: files(
-+  'cpu-v7m.c'
-+))
-+
- arm_system_ss.add(files(
-   'psci.c',
- ))
--- 
-2.43.0
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   include/hw/fsi/fsi-master.h |  32 +++++++
+>   hw/fsi/fsi-master.c         | 170 ++++++++++++++++++++++++++++++++++++
+>   hw/fsi/meson.build          |   2 +-
+>   hw/fsi/trace-events         |   2 +
+>   4 files changed, 205 insertions(+), 1 deletion(-)
+>   create mode 100644 include/hw/fsi/fsi-master.h
+>   create mode 100644 hw/fsi/fsi-master.c
+> 
+> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
+> new file mode 100644
+> index 0000000000..68e5f56db2
+> --- /dev/null
+> +++ b/include/hw/fsi/fsi-master.h
+> @@ -0,0 +1,32 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2024 IBM Corp.
+> + *
+> + * IBM Flexible Service Interface Master
+> + */
+> +#ifndef FSI_FSI_MASTER_H
+> +#define FSI_FSI_MASTER_H
+> +
+> +#include "exec/memory.h"
+> +#include "hw/qdev-core.h"
+> +#include "hw/fsi/fsi.h"
+> +#include "hw/fsi/cfam.h"
+> +
+> +#define TYPE_FSI_MASTER "fsi.master"
+> +OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
+> +
+> +#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
+> +
+> +typedef struct FSIMasterState {
+> +    DeviceState parent;
+> +    MemoryRegion iomem;
+> +    MemoryRegion opb2fsi;
+> +
+> +    FSIBus bus;
+> +
+> +    uint32_t regs[FSI_MASTER_NR_REGS];
+> +    FSICFAMState cfam;
+> +} FSIMasterState;
+> +
+> +
+> +#endif /* FSI_FSI_H */
+> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+> new file mode 100644
+> index 0000000000..49ad4b988f
+> --- /dev/null
+> +++ b/hw/fsi/fsi-master.c
+> @@ -0,0 +1,170 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2024 IBM Corp.
+> + *
+> + * IBM Flexible Service Interface master
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +
+> +#include "hw/fsi/fsi-master.h"
+> +
+> +#define TYPE_OP_BUS "opb"
+> +
+> +#define TO_REG(x)                               ((x) >> 2)
+> +
+> +#define FSI_MENP0                               TO_REG(0x010)
+> +#define FSI_MENP32                              TO_REG(0x014)
+> +#define FSI_MSENP0                              TO_REG(0x018)
+> +#define FSI_MLEVP0                              TO_REG(0x018)
+> +#define FSI_MSENP32                             TO_REG(0x01c)
+> +#define FSI_MLEVP32                             TO_REG(0x01c)
+> +#define FSI_MCENP0                              TO_REG(0x020)
+> +#define FSI_MREFP0                              TO_REG(0x020)
+> +#define FSI_MCENP32                             TO_REG(0x024)
+> +#define FSI_MREFP32                             TO_REG(0x024)
+> +
+> +#define FSI_MVER                                TO_REG(0x074)
+> +#define FSI_MRESP0                              TO_REG(0x0d0)
+> +
+> +#define FSI_MRESB0                              TO_REG(0x1d0)
+> +#define   FSI_MRESB0_RESET_GENERAL              BE_BIT(0)
+> +#define   FSI_MRESB0_RESET_ERROR                BE_BIT(1)
+> +
+> +static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
+> +{
+> +    FSIMasterState *s = FSI_MASTER(opaque);
+> +    int reg = TO_REG(addr);
+> +
+> +    trace_fsi_master_read(addr, size);
+> +
+> +    if (reg >= FSI_MASTER_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
+> +                      __func__, addr, size);
+> +        return 0;
+> +    }
+> +
+> +    return s->regs[reg];
+> +}
+> +
+> +static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
+> +                             unsigned size)
+> +{
+> +    FSIMasterState *s = FSI_MASTER(opaque);
+> +    int reg = TO_REG(addr);
+> +
+> +    trace_fsi_master_write(addr, size, data);
+> +
+> +    if (reg >= FSI_MASTER_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
+> +                      __func__, addr, size);
+> +        return;
+> +    }
+> +
+> +    switch (reg) {
+> +    case FSI_MENP0:
+> +        s->regs[FSI_MENP0] = data;
+> +        break;
+> +    case FSI_MENP32:
+> +        s->regs[FSI_MENP32] = data;
+> +        break;
+> +    case FSI_MSENP0:
+> +        s->regs[FSI_MENP0] |= data;
+> +        break;
+> +    case FSI_MSENP32:
+> +        s->regs[FSI_MENP32] |= data;
+> +        break;
+> +    case FSI_MCENP0:
+> +        s->regs[FSI_MENP0] &= ~data;
+> +        break;
+> +    case FSI_MCENP32:
+> +        s->regs[FSI_MENP32] &= ~data;
+> +        break;
+> +    case FSI_MRESP0:
+> +        /* Perform necessary resets leave register 0 to indicate no errors */
+> +        break;
+> +    case FSI_MRESB0:
+> +        if (data & FSI_MRESB0_RESET_GENERAL) {
+> +            device_cold_reset(DEVICE(opaque));
+> +        }
+> +        if (data & FSI_MRESB0_RESET_ERROR) {
+> +            /* FIXME: this seems dubious */
+> +            device_cold_reset(DEVICE(opaque));
+> +        }
+> +        break;
+> +    default:
+> +        s->regs[reg] = data;
+> +    }
+> +}
+> +
+> +static const struct MemoryRegionOps fsi_master_ops = {
+> +    .read = fsi_master_read,
+> +    .write = fsi_master_write,
+> +    .endianness = DEVICE_BIG_ENDIAN,
+> +};
+> +
+> +static void fsi_master_init(Object *o)
+> +{
+> +    FSIMasterState *s = FSI_MASTER(o);
+> +
+> +    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
+> +
+> +    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
+> +                          TYPE_FSI_MASTER, 0x10000000);
+> +    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
+> +}
+> +
+> +static void fsi_master_realize(DeviceState *dev, Error **errp)
+> +{
+> +    FSIMasterState *s = FSI_MASTER(dev);
+> +
+> +    if (!qdev_realize(DEVICE(&s->cfam), BUS(&s->bus), errp)) {
+> +        return;
+> +    }
+> +
+> +    /* address ? */
+> +    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
+> +}
+> +
+> +static void fsi_master_reset(DeviceState *dev)
+> +{
+> +    FSIMasterState *s = FSI_MASTER(dev);
+> +
+> +    /* Initialize registers */
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +
+> +    /* ASPEED default */
+> +    s->regs[FSI_MVER] = 0xe0050101;
+> +}
+> +
+> +static void fsi_master_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->bus_type = TYPE_OP_BUS;
+> +    dc->desc = "FSI Master";
+> +    dc->realize = fsi_master_realize;
+> +    dc->reset = fsi_master_reset;
+> +}
+> +
+> +static const TypeInfo fsi_master_info = {
+> +    .name = TYPE_FSI_MASTER,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_init = fsi_master_init,
+> +    .instance_size = sizeof(FSIMasterState),
+> +    .class_init = fsi_master_class_init,
+> +};
+> +
+> +static void fsi_register_types(void)
+> +{
+> +    type_register_static(&fsi_master_info);
+> +}
+> +
+> +type_init(fsi_register_types);
+> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+> index 96403d4efc..7803b3afd1 100644
+> --- a/hw/fsi/meson.build
+> +++ b/hw/fsi/meson.build
+> @@ -1 +1 @@
+> -system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c'))
+> +system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c','fsi-master.c'))
+> diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+> index b542956fb3..bf417b6dc3 100644
+> --- a/hw/fsi/trace-events
+> +++ b/hw/fsi/trace-events
+> @@ -7,3 +7,5 @@ fsi_cfam_config_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64
+>   fsi_cfam_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+>   fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+>   fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+> +fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+> +fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 

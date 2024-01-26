@@ -1,69 +1,69 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023993ejc;
-        Fri, 26 Jan 2024 09:34:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFOFQkZFbV0TrOpUduio8ZDGje9bnytTSlGdOpoiIuWZpr6lF/8A9d48gmby2Sx7APcp1pw
-X-Received: by 2002:a0d:df50:0:b0:5ff:5d60:bc26 with SMTP id i77-20020a0ddf50000000b005ff5d60bc26mr250051ywe.1.1706290467863;
-        Fri, 26 Jan 2024 09:34:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290467; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024022ejc;
+        Fri, 26 Jan 2024 09:34:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGjIXT4JCuXFyhL3HfR8sZ59jNmxgEu2Z2c1mfChZyYShBx2bGI1HZEr2d0w3fP3Dq5xFwg
+X-Received: by 2002:a0d:eb11:0:b0:5ef:7760:5134 with SMTP id u17-20020a0deb11000000b005ef77605134mr319487ywe.0.1706290471276;
+        Fri, 26 Jan 2024 09:34:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290471; cv=none;
         d=google.com; s=arc-20160816;
-        b=MBeX+waW9rW907KBiCJcRGK3kYyEecLqP4jxys3FKQ3xgHiDvHGFOl9SBldUypkg5P
-         LjYXa5Gh7iCh2Eq+6daOdU7rQFdjcvZ4EMsP53i/HM5S1XDjhpJ9C+QquM8fmKfldsZ+
-         QGBitoA276rTReXkK/HbGJ9WvdV5UqKeVs4tzXOP5YfU1DRlgZH5qKafrSlU1wEnLB3g
-         ygYn6q6YJabvJrILwRN/XlqRd3jxxR/F5ZquYBSrOupU1TyxMRPVYpHsErpFx/H+NH5f
-         UoLFVFnsnuDP5PecI8CuZQIbovvbLAHI5Iglc5c7v9f4/+yb76wmog3bXwoi2NTjCWUx
-         4Q9g==
+        b=Zf4AGTW/pzIt2M2fYOVEB11/tIf2RPjNNHXiSs5on1Fksqx1vzDxpwG5brKqRLZcsj
+         PWLC3G2FFoiTPp4vOelo8IeJuxFLg1k6Ld51ZgffarcMzWvw9yqGtN8mIb1CICmKP4PF
+         EyQih5Mv3SZsW5tv5a4oOVRPN2bd0FSy8ap8z4u8jvTbbxOkQZzq/Pv1mpP1s/sg2aYd
+         yfwxtd6cqFWRAoF51RpTaN3BQz182cjSyvx+9xPIwGbPZG875U6A1pgdYVF7Uf7X/UWU
+         7MfjivTvXYSFmH1HzUgMB3DpDbi7AxHAIfYAXFegUo4+c+mX56DGhc9NN+LJq4TEVF/V
+         rExg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=dpw3DRxnhjEAefg4lwR8FOrDMECu9upnm/FS6/8ckXY=;
-        fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=0b4qZyVCEQXEpHv0ZgYMP13A5TNsS0psmiYI+fAIOzsYwfMCYiXcMK5iHWWsW9+Je6
-         xwjQa57+PrKjDE/XmLWDlp9kZK8BJx56BrH5hsWyY3g/0ewlzZP/gWYffktdOBrNJ/6V
-         HWU+TB8p76cMmPNeWLHuBorFlMefw2WYXBJG/Zp/XH2bbWTIUqbmMXYMPOUalOdxPmyI
-         QCCrP2DHBszsDa6pJ+iALVZ5Z3HNTcN3fxYRLjcToRPoRtzL0UgFGJ+M/PjhCsTFg4Xy
-         lY/KVzZaDiLLdJXusqaOcMpTKmkpq5/fmm57mwR8zghjlc4igTg+E1Faq7Kwkoi7iFVn
-         v5Ow==
+        bh=qZJ5znInl8VUzkg42vOEqkv8s7zoSUtbb4o7syIWshQ=;
+        fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
+        b=Qg3gl7lySxS99q1YRHPotL08SaAxJcQNN5bthuW5OIhgqKDX2t38fzx4BJXPZdr+DQ
+         FJRv/jbr/sjElVDXbs0eKNJQeu3YZLlB6zGSZxCTMXd/PeVpOn8WPd8n0tfLPGu7RpAm
+         cK+vLIWV0Chwod4K6o9hLWX2bS1H/DXe8uasMKPzDyKFgonYQF5qECsyMGhHobHZMGo+
+         lZWIvAYORKbLFr7cNpZ3KPDf/7OVZep18dnp5Rh5trLs2jHUpEbhbsUWtWFVx3CXP0dn
+         JnMR5jIpsCIs70bVD5n9flHCRL687yg5s+tJNhBtz4J1zW+VZh/PPDkQq0Y0K9svyJQa
+         il2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=fcayOa0i;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b="T/KFiNP0";
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id i1-20020a0ddf01000000b005ffe0335d99si907278ywe.124.2024.01.26.09.34.27
+        by mx.google.com with ESMTPS id cn6-20020a05690c0d0600b006003bafa4f5si1070868ywb.216.2024.01.26.09.34.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 09:34:27 -0800 (PST)
+        Fri, 26 Jan 2024 09:34:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=fcayOa0i;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b="T/KFiNP0";
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.672268.1046166 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.672262.1046133 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4v-00085k-Ij; Fri, 26 Jan 2024 17:33:21 +0000
+	id 1rTQ4q-0006zO-6i; Fri, 26 Jan 2024 17:33:16 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 672268.1046166; Fri, 26 Jan 2024 17:33:21 +0000
+Received: by outflank-mailman (output) from mailman id 672262.1046133; Fri, 26 Jan 2024 17:33:16 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4u-00084e-Ry; Fri, 26 Jan 2024 17:33:20 +0000
-Received: by outflank-mailman (input) for mailman id 672268;
- Fri, 26 Jan 2024 17:33:17 +0000
+	id 1rTQ4p-0006vy-Kc; Fri, 26 Jan 2024 17:33:15 +0000
+Received: by outflank-mailman (input) for mailman id 672262;
+ Fri, 26 Jan 2024 17:33:13 +0000
 Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
  helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=bPDA=JE=casper.srs.infradead.org=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1rTQ4q-0004m7-Pe
- for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:16 +0000
+ id 1rTQ4n-0004m7-O4
+ for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:13 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
  by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id fac52c5b-bc70-11ee-98f5-efadbce2ee36;
- Fri, 26 Jan 2024 18:33:12 +0100 (CET)
+ id f9d0fc83-bc70-11ee-98f5-efadbce2ee36;
+ Fri, 26 Jan 2024 18:33:11 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ48-0000000EKUD-0Nui; Fri, 26 Jan 2024 17:32:33 +0000
+ id 1rTQ48-0000000EKUb-3N6A; Fri, 26 Jan 2024 17:32:34 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ47-00000001elP-0s6u;
- Fri, 26 Jan 2024 17:32:31 +0000
+ Hat Linux)) id 1rTQ49-00000001enH-2xlx;
+ Fri, 26 Jan 2024 17:32:33 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -74,17 +74,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: fac52c5b-bc70-11ee-98f5-efadbce2ee36
+X-Inumbo-ID: f9d0fc83-bc70-11ee-98f5-efadbce2ee36
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=dpw3DRxnhjEAefg4lwR8FOrDMECu9upnm/FS6/8ckXY=; b=fcayOa0iWbqDEHNxZlGuRUJL2w
-	0JKCO+FJTsWwbo/cfqijlQ+xNgj/5/AoUMJOU1tlkhX6bGXyazCIMz3S4LnH6a1LuevndBu04RYQN
-	ZSkdaWwblbzRAd7koYHK2BqsY433GBbtt9lW2HyT4+sv9mrxklTvkmPHTzxDjEq3IVrUhEW8aEBge
-	u6IifDVEAY+gySCYT7JD5aKX3b5xIALCk0v5zMBJ0q76ZBXld+g2ijBxEBIFdGNQK/9jdT65oGl2h
-	toLcreIdanS2TGeX1tGH+oHCBKal+7xokz5KxgxrGZSfCCSkOfjeMlGLwUQEmlTFRqePxTrwY1Agx
-	6mowQODg==;
+	bh=qZJ5znInl8VUzkg42vOEqkv8s7zoSUtbb4o7syIWshQ=; b=T/KFiNP0VoNy+dRDdUz85cVgqC
+	d/xsD7bmL6yqgL5czKhzPlpCBdR4zMQ2tljn2inOKua253TIuXA5aleREh4omvZTb3lt5AE6FlLt4
+	FD5YLv2vx2lzct3UExbehtseqGJJrJBDqR6snT8lfXZhph3EQ38ZvTVzWpVFSvIXAjBrno+N4mQCE
+	6R/ethD97GGg1zQZEHFRl8VgWn0E79TwsyXQQe/4MlkzaLtMe8t2jP8icT93CfLgznQuh9IE9U1bp
+	NolX4B5CEASRxWu1Ajg1aLzK3NEbQVSQQe61d6hOrsipftq5dBATnnjcGmpap6RNwzZrUayjzYQhh
+	Y1TBCnVw==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -151,10 +151,11 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org,
-	David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v4 04/47] hw/pci: add pci_init_nic_devices(), pci_init_nic_in_slot()
-Date: Fri, 26 Jan 2024 17:24:41 +0000
-Message-ID: <20240126173228.394202-5-dwmw2@infradead.org>
+	David Woodhouse <dwmw@amazon.co.uk>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v4 31/47] hw/net/etraxfs-eth: use qemu_configure_nic_device()
+Date: Fri, 26 Jan 2024 17:25:08 +0000
+Message-ID: <20240126173228.394202-32-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
@@ -162,95 +163,77 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: 6ZlJEz/K2p+y
+X-TUID: 962QYkTY9YJP
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-The loop over nd_table[] to add PCI NICs is repeated in quite a few
-places. Add a helper function to do it.
-
-Some platforms also try to instantiate a specific model in a specific
-slot, to match the real hardware. Add pci_init_nic_in_slot() for that
-purpose.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/pci/pci.c         | 45 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/pci/pci.h |  4 +++-
- 2 files changed, 48 insertions(+), 1 deletion(-)
+ hw/cris/axis_dev88.c      | 9 ++++-----
+ hw/net/etraxfs_eth.c      | 5 ++---
+ include/hw/cris/etraxfs.h | 2 +-
+ 3 files changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 76080af580..5849606f66 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -1925,6 +1925,51 @@ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-     return pci_dev;
- }
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index d82050d927..5556634921 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -308,15 +308,14 @@ void axisdev88_init(MachineState *machine)
  
-+void pci_init_nic_devices(PCIBus *bus, const char *default_model)
-+{
-+    qemu_create_nic_bus_devices(&bus->qbus, TYPE_PCI_DEVICE, default_model,
-+                                "virtio", "virtio-net-pci");
-+}
+     /* Add the two ethernet blocks.  */
+     dma_eth = g_malloc0(sizeof dma_eth[0] * 4); /* Allocate 4 channels.  */
+-    etraxfs_eth_init(&nd_table[0], 0x30034000, 1, &dma_eth[0], &dma_eth[1]);
+-    if (nb_nics > 1) {
+-        etraxfs_eth_init(&nd_table[1], 0x30036000, 2, &dma_eth[2], &dma_eth[3]);
+-    }
+ 
++    etraxfs_eth_init(0x30034000, 1, &dma_eth[0], &dma_eth[1]);
+     /* The DMA Connector block is missing, hardwire things for now.  */
+     etraxfs_dmac_connect_client(etraxfs_dmac, 0, &dma_eth[0]);
+     etraxfs_dmac_connect_client(etraxfs_dmac, 1, &dma_eth[1]);
+-    if (nb_nics > 1) {
 +
-+bool pci_init_nic_in_slot(PCIBus *rootbus, const char *model,
-+                          const char *alias, const char *devaddr)
-+{
-+    NICInfo *nd = qemu_find_nic_info(model, true, alias);
-+    int dom, busnr, devfn;
-+    PCIDevice *pci_dev;
-+    unsigned slot;
-+    PCIBus *bus;
-+
-+    if (!nd) {
-+        return false;
-+    }
-+
-+    if (!devaddr || pci_parse_devaddr(devaddr, &dom, &busnr, &slot, NULL) < 0) {
-+        error_report("Invalid PCI device address %s for device %s",
-+                     devaddr, model);
-+        exit(1);
-+    }
-+
-+    if (dom != 0) {
-+        error_report("No support for non-zero PCI domains");
-+        exit(1);
-+    }
-+
-+    devfn = PCI_DEVFN(slot, 0);
-+
-+    bus = pci_find_bus_nr(rootbus, busnr);
-+    if (!bus) {
-+        error_report("Invalid PCI device address %s for device %s",
-+                     devaddr, model);
-+        exit(1);
-+    }
-+
-+    pci_dev = pci_new(devfn, model);
-+    qdev_set_nic_properties(&pci_dev->qdev, nd);
-+    pci_realize_and_unref(pci_dev, bus, &error_fatal);
-+    return true;
-+}
-+
- PCIDevice *pci_vga_init(PCIBus *bus)
++    if (qemu_find_nic_info("etraxfs-eth", true, "fseth")) {
++        etraxfs_eth_init(0x30036000, 2, &dma_eth[2], &dma_eth[3]);
+         etraxfs_dmac_connect_client(etraxfs_dmac, 6, &dma_eth[2]);
+         etraxfs_dmac_connect_client(etraxfs_dmac, 7, &dma_eth[3]);
+     }
+diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
+index ba57a978d1..5faf20c782 100644
+--- a/hw/net/etraxfs_eth.c
++++ b/hw/net/etraxfs_eth.c
+@@ -647,15 +647,14 @@ static void etraxfs_eth_class_init(ObjectClass *klass, void *data)
+ 
+ /* Instantiate an ETRAXFS Ethernet MAC.  */
+ DeviceState *
+-etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++etraxfs_eth_init(hwaddr base, int phyaddr,
+                  struct etraxfs_dma_client *dma_out,
+                  struct etraxfs_dma_client *dma_in)
  {
-     vga_interface_created = true;
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index fa6313aabc..6ff0b95a02 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -317,7 +317,9 @@ void pci_device_reset(PCIDevice *dev);
- PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-                                const char *default_model,
-                                const char *default_devaddr);
--
-+void pci_init_nic_devices(PCIBus *bus, const char *default_model);
-+bool pci_init_nic_in_slot(PCIBus *rootbus, const char *default_model,
-+                          const char *alias, const char *devaddr);
- PCIDevice *pci_vga_init(PCIBus *bus);
+     DeviceState *dev;
+-    qemu_check_nic_model(nd, "fseth");
  
- static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+     dev = qdev_new("etraxfs-eth");
+-    qdev_set_nic_properties(dev, nd);
++    qemu_configure_nic_device(dev, true, "fseth");
+     qdev_prop_set_uint32(dev, "phyaddr", phyaddr);
+ 
+     /*
+diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
+index 467b529dc0..012c4e9974 100644
+--- a/include/hw/cris/etraxfs.h
++++ b/include/hw/cris/etraxfs.h
+@@ -31,7 +31,7 @@
+ #include "hw/sysbus.h"
+ #include "qapi/error.h"
+ 
+-DeviceState *etraxfs_eth_init(NICInfo *nd, hwaddr base, int phyaddr,
++DeviceState *etraxfs_eth_init(hwaddr base, int phyaddr,
+                               struct etraxfs_dma_client *dma_out,
+                               struct etraxfs_dma_client *dma_in);
+ 
 -- 
 2.43.0
 

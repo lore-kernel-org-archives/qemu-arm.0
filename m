@@ -1,113 +1,110 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp789625ejc;
-        Fri, 26 Jan 2024 02:39:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHFJFSKemFTTFeShMDnXqnLSZPJdrhfzjKdcQ6emsSFRTtXjU2yY5RyRo1VVYtjSj5DFlc9
-X-Received: by 2002:ac8:7d90:0:b0:42a:8533:eea4 with SMTP id c16-20020ac87d90000000b0042a8533eea4mr136588qtd.14.1706265573214;
-        Fri, 26 Jan 2024 02:39:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706265573; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp791384ejc;
+        Fri, 26 Jan 2024 02:44:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH81o15JI0ThPOG1VkKhl+TCQFziKO5seRap7Blxb0RLq+QPy5mspINmxnZ3tV/3VisuPDc
+X-Received: by 2002:a0c:ac0b:0:b0:681:1197:e7b8 with SMTP id l11-20020a0cac0b000000b006811197e7b8mr879585qvb.40.1706265883024;
+        Fri, 26 Jan 2024 02:44:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706265883; cv=none;
         d=google.com; s=arc-20160816;
-        b=dXU3ykdeN27Di+i72mmj4aOV7jIPrltFVkQ80S/svQEG+3bK3cWa/YJGuK6JtVWtUu
-         1tfjEs3956uBrLHAwNUWdb6oWk1O0wT4IRx+dQj4WbNYuArt9y//Dp6tZZgt2sJ0xNSK
-         97DWcQLPEqQQW8sjZ5D2f0Q/M1O+5rbmRbu1pHhFgQLtZ5F1+EeFCH1nEqdgFC4KrDpK
-         y4ipy17aYBHolGxpIkWYdh8DIMOmnGtWJ8OapjCwpgCxgEd5+sSmp3+czEdz2TOLoKpd
-         psccsSUstbMYHMrYcFUbo1t+mKmVEZOgji7psyn5IjEgfpOwbaDHvR3prhEi6eckQA8T
-         Afuw==
+        b=S5TfZydjEzr3e+XLqhIQM2a0pnHnK1VnVx26vVKbbpZuDunKwvGvLbUZLhr9w3s6Bt
+         pwWZdpZhhBTHWaKJwgVd8UJgRkQv3olL5U7qHOUItbLpN9BvfKsXlFnitQRkAQbHWHzz
+         hSnSE2Ji/GSjpmctcUrxIULvRXWTiqVUT4djON5IC3GSbF7+APHnYwybtqQBFF9Z0zG9
+         LF48Qx/m2DgPzeJmSBPQL5bkJ4GIMgDyWPVpg2BPIMjJhQsSfSF9RZQ/mJB1w3ECmkZK
+         ARMYfQewHfoK5Y3L36hnrYup04bKHeeHVouAJw2SZXqgDvSJVGvGZmrgFLYe0weikXQI
+         0RLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mGEceRpzawgur6mwKEf1okcVHBJoqqu1g4hBfqZOOeY=;
-        fh=FNnfFfIIuMzgkPZNHq/Y45QhQ1Qwx4ejqPe3Z0ax2Z0=;
-        b=fzDkhetrCwxWfO+UgKJrvPRwaoMpYqtAvYVgomUXdOmVlx6tZZeVdA+9NvzA/HG+Pf
-         fMdl/dmzCO7WygAQ0Qk4OWETursAvA0TmVX17cVln/hd4xGkL+MEYt5/zsQFEj1qlFyh
-         CeatRqQD/a/3OxMyw9kwq3F7pfcx5WCys2EYSpU7doP2i0qW1gAud7E7duQ7EIOznW58
-         EEeiEe6QjnAJ2M3BMKDxT6oZx7KCIOdKzCvLdfK0P/cLgxv25XYUYiekIfw7OnAtdxnm
-         JUezyXwZx+FZbED5BhU8JyGURjaZDeUAp2wLRA/8+688DEBvkcl8Dh+rbXxFXdP3FYwC
-         Q1vg==
+        bh=fauZjtje0U1FVRMrKjMx2UjITlVsoiQwgqcFx8wHmk4=;
+        fh=A14TZK2WltwKOPCjCQlK1VAMb6dkh0Jf9NprWwmOMcw=;
+        b=f0+R/niO69q33AWQufXbGtuOiX/kbqRBSwDezi/EdJkJoFv+4aFy+dDJA/PLZ9Zx9w
+         ZhdPDllHUltPVYSPkC34HZtwIjk5UsKmdGUL5GfVr5q90ENBLEDl3i7MbXjIdQXwNWpW
+         8gOKW+D1zGJGJtZC/DDvz5a0CbXv10Jk+PtSUn0khjZ2Nk6p6hqLRDrH46fCBPehDb2H
+         XkiqxMEW7zTn0nngkVbZBDwYCewJ0iP3bgSUx4T66aPElxY6rdiyar+8AwUjL17cB6ep
+         UVRxadBBeLmqgOsgxBLL1ZgC3ae0ImDJsuNC+zxo2DIwe9HeGxYy/V/eN5M8L5CxLldr
+         WHXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jmM5MHg+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="CuPEWkA/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8-20020ac85788000000b0042a4d823f1csi917269qta.444.2024.01.26.02.39.33
+        by mx.google.com with ESMTPS id gs6-20020a056214226600b00681955dd564si1042026qvb.17.2024.01.26.02.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 02:39:33 -0800 (PST)
+        Fri, 26 Jan 2024 02:44:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jmM5MHg+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="CuPEWkA/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTJbo-0006hA-Ii; Fri, 26 Jan 2024 05:38:52 -0500
+	id 1rTJhH-0000bQ-4E; Fri, 26 Jan 2024 05:44:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTJbn-0006gv-SH
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 05:38:51 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTJh9-0000ao-RN
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 05:44:25 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTJbm-0006i1-3H
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 05:38:51 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-40eccf4a91dso2920485e9.2
- for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 02:38:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTJh2-0002nC-0P
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 05:44:19 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-5100fd7f71dso984106e87.1
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 02:44:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706265528; x=1706870328; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1706265849; x=1706870649; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mGEceRpzawgur6mwKEf1okcVHBJoqqu1g4hBfqZOOeY=;
- b=jmM5MHg+HCL/wFtSuS36zLq1iC8Tk85l10ycVUqQ86cB2Dg0y/FZgK/uT/UGsaPhG1
- 7kVT80lp0p6nLtLtAtqmcltO2AZfF9GpslKko9+hNz6Yst8k5nL8UMv4mMMf++zS/+r/
- xevIdq6oFZtoFG3qK0z2E34VtMdf3WQFCj0kZj5t/XnXtSj99s0keLi6Kiyl0Fz8VmdI
- AlK44+PApKybOPMac6UYxyXFwWn7zf8D2MnW0GtWHZJMY2RjheZQND3bjwdzk36w5fow
- QCf7/Q3NAfVXh7o3uU1PWVbd0T1qkjSiCK7iYUXD+RYe2NmLo1ShOhk14HMk+IBBjJbj
- 1Ayw==
+ bh=fauZjtje0U1FVRMrKjMx2UjITlVsoiQwgqcFx8wHmk4=;
+ b=CuPEWkA/KHjOx0L8koyqP9az317GZ7FOqGnRNd5oPAHCR3xddIdoqttSvK/ec99PJD
+ whspO664m+lKOW9SyAEtXaYmcrl/ISVQY6S2UsgZVceaBHCSBj5t093dhwrrjyiB8a6L
+ SNH3z3XOQJqpAbCvbOkSMtCxggTOLJe8lYSBHuxMYElHRAxrymIQ4LJPNbpjJE7q61ho
+ N+ibHvxsL8Y4PllCFT9Pk3KDL+NBVFX2+eJtYRxgMiks33T7EFyfwfOc2fF4emf0LfrG
+ kXyzJ4BZC6ZGeEN4hG7R917YcOZHTDSqq6XsuDoGw/C7l5dyF8EBZz7zUiV8VoL5Mc8Y
+ E6bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706265528; x=1706870328;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1706265849; x=1706870649;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mGEceRpzawgur6mwKEf1okcVHBJoqqu1g4hBfqZOOeY=;
- b=mhb8WpOUkxhnLpA2GY1wWpASpUiPKaK2Ys4Bu7yqpOdXzUjCFWfw5o9bbRR5hVv9Aa
- a9i3/Tg7sqngI5aT/BifIRPtW048o5uT6S6d1uCtaXS22okvSZwokublqCPu2YFnYHYj
- XQry0TmpBUKseS483+PooOe/582GTyv3vrOG3ddP0z5FCt8x4E+AeS+EU+eXaM0U9P9G
- IUIHm9ayTOT9fQLqSy0Oq9+Pn7cE43bBhtnlfkgddSCKz+dVUZ7sUqul7sxTtvPKBapM
- OWILsKLxo3JulJbDxIPvASqF3aJ8R37FbnBEV56sH4CAaxCklrFQUfqAvlBnvMzOm+cy
- C5lg==
-X-Gm-Message-State: AOJu0YwUoRoc+DHRssGwivzefy/E63Mx4K2o48Pviu3p59n+a2lFDYQ0
- uimHY1MWKf4Kvz3jV5wzYU9rwve06sL3ERFCFYloQ7YGR/8Oa7kmNtLSD/UBzYw=
-X-Received: by 2002:a7b:c8c9:0:b0:40e:bffb:ba19 with SMTP id
- f9-20020a7bc8c9000000b0040ebffbba19mr731249wml.48.1706265528398; 
- Fri, 26 Jan 2024 02:38:48 -0800 (PST)
+ bh=fauZjtje0U1FVRMrKjMx2UjITlVsoiQwgqcFx8wHmk4=;
+ b=vvczusi+VQ5sNAxD3PQdj8TVM12aXjb1oo4qutvBZvASrPaVe8clQ4EGScof+R9E6j
+ PNZ6jmheJGjEOzZ5ne5Ajgc3M0iRgX++IGYQPy5d6dZUYvqIQjgB3rTR4ehl30NbKuhj
+ Tww/nAr/frxr+HnBEg8tT7/V5MCWPQ26x1BfND8ojgiahfb+uCBsYeg5WNs+DGl1qaXt
+ X74NA02lZIJoNQugqpg870+01qY+Ncsd3UCzI2NMkIUIYJT3GpWMaUAAP6m4/yfgb2Pt
+ ypTCk2gUylCp74fFKxaXVKjwMHt+dMYxTbRDVBUwwm/HqQkxeRfJcDJ14J3BGzHusazy
+ XRgQ==
+X-Gm-Message-State: AOJu0YxlC+Mgie2nljlEPNyWpL4MO6M1Iiax84qQHb6BuFPLTzdr8IzN
+ 255f4APuGwo0KlfJyDxcyaYl3oIA6RXfc1fxorL2mtceedAWB0V7LMlrjdUvJfk=
+X-Received: by 2002:ac2:4555:0:b0:510:16f3:8087 with SMTP id
+ j21-20020ac24555000000b0051016f38087mr583321lfm.32.1706265849153; 
+ Fri, 26 Jan 2024 02:44:09 -0800 (PST)
 Received: from [192.168.69.100] ([176.176.142.39])
  by smtp.gmail.com with ESMTPSA id
- s13-20020a05600c384d00b0040e4a7a7ca3sm1454671wmr.43.2024.01.26.02.38.46
+ x20-20020ac25dd4000000b0051023513d8bsm140051lfq.258.2024.01.26.02.44.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jan 2024 02:38:48 -0800 (PST)
-Message-ID: <1128019c-adca-4cd4-aa73-937001ad990a@linaro.org>
-Date: Fri, 26 Jan 2024 11:38:45 +0100
+ Fri, 26 Jan 2024 02:44:08 -0800 (PST)
+Message-ID: <17455043-25cf-4978-afdd-147e689a1abd@linaro.org>
+Date: Fri, 26 Jan 2024 11:44:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] scripts/coccinelle: Add cpu_env.cocci_template script
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-References: <20240125165648.49898-1-philmd@linaro.org>
- <20240125165648.49898-2-philmd@linaro.org>
+Subject: Re: [PATCH 1/3] target/arm: Move v7m-related code from cpu32.c into a
+ separate file
 Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>
+References: <20240126084001.879548-1-thuth@redhat.com>
+ <20240126084001.879548-2-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240125165648.49898-2-philmd@linaro.org>
+In-Reply-To: <20240126084001.879548-2-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,97 +126,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o1vxqXTCUhDl
+X-TUID: y7t5f58ygM2r
 
-On 25/1/24 17:56, Philippe Mathieu-Daudé wrote:
-> Add a Coccinelle script to convert the following slow path
-> (due to the QOM cast macro):
+Hi Thomas,
+
+On 26/1/24 09:39, Thomas Huth wrote:
+> Move the code to a separate file so that we do not have to compile
+> it anymore if CONFIG_ARM_V7M is not set.
 > 
->    &ARCH_CPU(..)->env
-> 
-> to the following fast path:
-> 
->    cpu_env(..)
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   MAINTAINERS                               |  1 +
->   scripts/coccinelle/cpu_env.cocci_template | 60 +++++++++++++++++++++++
->   2 files changed, 61 insertions(+)
->   create mode 100644 scripts/coccinelle/cpu_env.cocci_template
-
-
-> diff --git a/scripts/coccinelle/cpu_env.cocci_template b/scripts/coccinelle/cpu_env.cocci_template
+>   target/arm/tcg/cpu-v7m.c   | 292 +++++++++++++++++++++++++++++++++++++
+>   target/arm/tcg/cpu32.c     | 261 ---------------------------------
+>   target/arm/tcg/meson.build |   4 +
+>   3 files changed, 296 insertions(+), 261 deletions(-)
+>   create mode 100644 target/arm/tcg/cpu-v7m.c
+> 
+> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
 > new file mode 100644
-> index 0000000000..53aa3a1fea
+> index 0000000000..d61873ab6d
 > --- /dev/null
-> +++ b/scripts/coccinelle/cpu_env.cocci_template
-> @@ -0,0 +1,60 @@
+> +++ b/target/arm/tcg/cpu-v7m.c
+> @@ -0,0 +1,292 @@
 > +/*
-> +
-> + Convert &ARCH_CPU(..)->env to use cpu_env(..).
-> +
-> + Rationale: ARCH_CPU() might be slow, being a QOM cast macro.
-> +            cpu_env() is its fast equivalent.
-> +
-> + SPDX-License-Identifier: GPL-2.0-or-later
-> + SPDX-FileCopyrightText: Linaro Ltd 2024
-> + SPDX-FileContributor: Philippe Mathieu-Daudé
-> +
-> + Usage as of v8.2.0:
-> +
-> + $ for targetdir in target/*; do test -d $targetdir || continue; \
-> +       export target=${targetdir:7}; \
-> +       sed \
-> +           -e "s/__CPUArchState__/$( \
-> +               git grep -h --no-line-number '@env: #CPU.*State' \
-> +                   target/$target/cpu.h \
-> +               | sed -n -e 's/.*\(CPU.*State\).\?/\1/p')/g" \
-> +           -e "s/__ARCHCPU__/$( \
-> +               git grep -h --no-line-number OBJECT_DECLARE_CPU_TYPE.*CPU \
-> +                   target/$target/cpu-qom.h \
-> +               | sed -n -e 's/.*(\(.*\), .*, .*)/\1/p')/g" \
-> +           -e "s/__ARCH_CPU__/$( \
-> +               git grep -h --no-line-number OBJECT_DECLARE_CPU_TYPE.*CPU \
-> +                   target/$target/cpu-qom.h \
-> +               | sed -n -e 's/.*(.*, .*, \(.*\))/\1/p')/g" \
-> +       < scripts/coccinelle/cpu_env.cocci_template \
-> +       > $TMPDIR/cpu_env_$target.cocci; \
-> +       for dir in hw target/$target; do \
-> +           spatch --macro-file scripts/cocci-macro-file.h \
-> +                  --sp-file $TMPDIR/cpu_env_$target.cocci \
-> +                  --keep-comments \
-> +                  --dir $dir \
-> +                  --in-place; \
-> +       done; \
-> +   done
-> +
-> +*/
-> +
-> +@ CPUState_arg_used @
-> +CPUState *cs;
-> +identifier cpu;
-> +identifier env;
-> +@@
-> +-   __ARCHCPU__ *cpu = __ARCH_CPU__(cs);
+> + * QEMU ARM V7 TCG-only CPUs.
 
-Here we remove ARCH_CPU(), ...
+s/V7/v7M/
 
-> +-   __CPUArchState__ *env = &cpu->env;
-> ++   __CPUArchState__ *env = cpu_env(cs);
-> +    ... when != cpu
+> + *
+> + * Copyright (c) 2012 SUSE LINUX Products GmbH
+> + *
+> + * This code is licensed under the GNU GPL v2 or later.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
 > +
-> +@ depends on never CPUState_arg_used @
-> +identifier obj;
-> +identifier cpu;
-> +identifier env;
-> +@@
-> +-   __ARCHCPU__ *cpu = __ARCH_CPU__(obj);
-> +-   __CPUArchState__ *env = &cpu->env;
-> ++   __CPUArchState__ *env = cpu_env(CPU(obj));
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "hw/core/tcg-cpu-ops.h"
+> +#include "internals.h"
+> +#include "hw/intc/armv7m_nvic.h"
+> +
+> +/* CPU models. These are not needed for the AArch64 linux-user build. */
+> +#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
 
-... but here we just change it by a CPU() QOM call.
-So this 2nd change is just style cleanup.
+Could we do that in meson instead?
 
-> +    ... when != cpu
+> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+> index 6fca38f2cc..8c7f6b43f3 100644
+> --- a/target/arm/tcg/meson.build
+> +++ b/target/arm/tcg/meson.build
+> @@ -52,6 +52,10 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>     'sve_helper.c',
+>   ))
+>   
+> +arm_ss.add(when: 'CONFIG_ARM_V7M', if_true: files(
+
+-> arm_system_ss
+
+> +  'cpu-v7m.c'
+> +))
 

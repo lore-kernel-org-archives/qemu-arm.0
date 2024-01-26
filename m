@@ -1,365 +1,411 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116265ejb;
-        Fri, 26 Jan 2024 14:06:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFeyffQ4usNt6x46wE0hDr2dcTA/Bdf0OSMFEp1qpfKg4w14OyG8NM5QAbmEYC6amk76RoC
-X-Received: by 2002:a05:651c:337:b0:2ce:ab1:95ec with SMTP id b23-20020a05651c033700b002ce0ab195ecmr182260ljp.105.1706306785228;
-        Fri, 26 Jan 2024 14:06:25 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706306785; cv=pass;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116468ejb;
+        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEKCCNY0H7qs/8Q3LjDchGt+HY8L11b+ZW4DXVhQSfadS3jztHERuz3kHF6YLxjhjaGSTu9
+X-Received: by 2002:a05:620a:22a5:b0:783:a948:5782 with SMTP id p5-20020a05620a22a500b00783a9485782mr482692qkh.134.1706306813341;
+        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706306813; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z9kYQ4PMP/dIah/ujcze53urs+DaTHkz+WDVp5z96vs0HDiknLgLm1EjCZkrwWOhMB
-         JsLGsQ2nf38kUUp6+vNtmmObBdUkY8CdbpSI7ZZdg7aVWpRHmZH+qUgP7t6rjoEJ/Vi5
-         9iM+kfCCHpcY0Bm9NJKfHQ+BAGmHB8vKOLmT1iqBnrRaVPUAvgw9U2s80MeaAE6+NfPa
-         I3cpZCOrn1rcJOoIhR1GK+QtMM/rwLQqPdyxtMREStLzHEGseb6sZv9wTj0uHsiI7MzT
-         BoJakjLgUSmjR9pZlaB4us4d3quKLpZjFmEOZ6yfk5/TeeAJhs6nV3Sc2gelnfkY+9+h
-         o8uQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=woNcbihCgyljuhpYMr+Cr15jve2C8HR8mCIZjTtoatM=;
-        fh=pQaP+E+x/SlYBxsHL23cXpmok6FR1BiCnvgepGhLjqU=;
-        b=WPIZpudYtu8K19eHSXQ3WoqBSRehNW1XnIRsobSL3CSSAOIB4R2cUHDHJY9BACY6Fm
-         +2huaNbgRWhL22zN9BeSLB2o4RjCSeRFdI09xAFfWkdj9Wc7z4g+zJNuXwOIEccV0qow
-         G6NkHpn1JJogpPOs84oAGOJDtDVWO0qtP0EdrERDHZlKxwieWZuvLy/bx5A3EpylJc5C
-         v5rXNhWjs1Q5wp9OAMfXWWaMSdNKVLPMBBcIfec+BHY0Sr0HlLkradQqrauTc7LK//Nq
-         abv1mJU/iDrQySUNCTH9Zz1R6kUbbLAPZSzo56yHeH5kFBxWcaw08J/RNOLV+2b8wcpa
-         SEEw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c3jLHtwy;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org";
+        b=Rz8IGN9fQDz0L0/tuIrUK+eWSJk085yh0LD3IelU0CQ2OUDnFIu1k+lhAnDNmPJmwO
+         OLkvIMcfslwNHtzpJeC5sCe7vvENUBuSb5aueS54VKGMENgfq1RgDOS8a93F6lTsixve
+         G7AUKOUdUi/1SMWRzXWv5x+R9hFfan4hY48r7Gs24ZuJS22gbv8PgZ9kzoqX2r3wfzPu
+         72VkErpJlsQ0FEAh2N1uSeCsDwLUmVJapo3Tlb+0nA/i7FaLyE1SyqRDJW1oJ0Vya7kW
+         4nMMqFSm/Gvx8/TIkXogKdrpKNTmZPR+CiIUoBBUYEzjFYnR71DX1EJZJJGs12AxIVSO
+         oMFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
+        fh=0uTmhh8CZ0ElLKkgnDATgdub0eAKmdn9Je9K5Trh2n4=;
+        b=0QdF6wnUMpogktbSZNjwi6yOA8YaX1KSi7kFamXMJL0fzoudRlMMJJRa/O561E6xZW
+         GwvOrNjZZfm3lWg3VL51PQnuJNlif1B93nHllfW4iAltvfdvNWtIVf4TfLWGCrY+wv/z
+         2L8R9/wcfo8Q6uSNtehKuIdoUrGnOhEKyA93lgD/9eod4Ez8lVyOffiZYGMdgwL7UE5b
+         +qKFZonss0rjwZ6gfVBvMkFTJRa4McfN7U/hKm7/R4TsEmuWbD3Y0Xf9ln+IZ2m8KiXR
+         ari6DELG5O2OkQpS3GHYEBWHedl2XS/6Vrq4VhJVHxP9JrllECw4CEHNrdB+f1qMwVsY
+         U60g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LLURRiO+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id b11-20020aa7c90b000000b0055cc4404d9asi1052454edt.637.2024.01.26.14.06.25
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s11-20020a05620a0bcb00b0078333a213cdsi2436099qki.368.2024.01.26.14.06.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 14:06:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c3jLHtwy;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-7225-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LLURRiO+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id B82D81F21AD9
-	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 22:06:24 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4662750A8B;
-	Fri, 26 Jan 2024 22:05:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="c3jLHtwy"
-Received: from mail-lf1-f49.google.com (mail-lf1-f49.google.com [209.85.167.49])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2199933CC5
-	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 22:05:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.49
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706306721; cv=none; b=ZhSb5n91ELlAqQZV3krc/21Ds+9w1fomi3XgfVAQYM0e9kCVi7RXvnHTYOhzeV5OrKIWiv31J9Mt67xisN66Wfp3DSidjTfqB7bSB+snGhzlaU57iUDTKDxKn00h9Q6yuyBvh4D+AOjxuxct3oWSU3UIHEo/A7/oEWzovXlKTtc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706306721; c=relaxed/simple;
-	bh=VtydEN97YkFxWF6L0PE70BVMYQAyfIYSjh7UEB393u8=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=VJ2vNRZP21VpXJbU/wahqTWg7rcExAi6xGmozUYu3hAHxs7dH3z7c7gtMZ0qLnsNIxF2QiTAmgJ65yMtFiLhAist5IfOaHk1G6GJJ9EkzGvZjn42HJxsShZ4A3E3yHAH+Ll3y9dDjXnLciOY74eXtMKKwsWJGaRIGHeLTjtsidQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=c3jLHtwy; arc=none smtp.client-ip=209.85.167.49
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5100cb64e7dso1320416e87.0
-        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 14:05:18 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTULL-0002ft-J7; Fri, 26 Jan 2024 17:06:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKh-00016c-Rx
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:57 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKc-0004Jj-LZ
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:55 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-337d05b8942so1092616f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 14:05:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706306717; x=1706911517; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=woNcbihCgyljuhpYMr+Cr15jve2C8HR8mCIZjTtoatM=;
-        b=c3jLHtwyOgozPLG/iw9Uoou7AO0S6IqrB3f1K7++QYj9NhtsTJfdDDLZap3LfVysfi
-         XC6GtpLoPG49B9VRDE3rnGakcGvvQEK97eD6fmf1ZKmkNqvQ5ehCJW99prTPbiSJUMA4
-         UT9ek5hvqfn2B5ftMyGmauU1Ee47g92zFlNQhUY51/LA1p6UI9QZgxHuE9yUarbuROb3
-         NbjcZu01vSvUuPkAHiCyse3JnzVqJSl+cfMMdNL5w5h6X4evIdVm/nd6P9imNKdesm9b
-         RSqyJGXq/ZFsHQnn/5DbnXPmQ1VTI6djtDmk3RmaK/d460EqYKSbPqxq5KT55OxULvEw
-         XRew==
+ d=linaro.org; s=google; t=1706306748; x=1706911548; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
+ b=LLURRiO+TsuqTB0BpXfXPb2M/onbv4KLGEXBHvsZz6xjhjgjEqlfBBJabP5ZTmhQgZ
+ dDnVF/pFpLPTll1PU00nWrkWggFGqGySSox6HE+it3yThagBIM+5otwjHDX+y1agI/UC
+ doq8SwGl1ndYMMDCI5GbQ/8KL3MHyFtBMW5yQ5e44gGZJq9VALYMyVMxOxzfA1f1P58j
+ SqPo27OMD5JIBfhWzQt9ZsRtHQxLVZlfXQZtYi5rFSgg7HxnABY9P7ZIyjeC58Nsc9XB
+ GAHwMzqk7CYxw7SquUnccDsop7umnf9QLEI0pE1/j2r3gRF3BAqXL1M9LNVnMRIJ9bim
+ lf+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706306717; x=1706911517;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=woNcbihCgyljuhpYMr+Cr15jve2C8HR8mCIZjTtoatM=;
-        b=XRdR7AsfBKIkdYTj52LK7fYKb+r47c93GG1ENXtAZ70GAfhKj/DHDw0ba1IyXL7ev8
-         guqTCFak/FBudmMktxqDCISZSQml39zjxn9hJNjmy+XrXVTrmCEJTZLuy6ndLhkvD92k
-         nOl8vbJi/4jFz2XvFJliVLUQ3XaO26RxnO7Rd4UI/pR2dw4S5fYzRiHvhWBfyVapeyx/
-         xisx8EOs6s2ON1TaGGCEpH+Jh/FpCLP51ukE1LrIZmbQToPIZ7dQuSPb+9IZibzofOpS
-         N+B8l+E+/kAqyZTCqqlG7Nr1DgYTfVxX6xnAhG8Ht6E86m55KIXM83N51sSPNUIq9i+p
-         9S0g==
-X-Gm-Message-State: AOJu0Yx9zXeaBgf/Fr84VLnExGWKWg+I6g4crFhtVHNDyTZiuhKzeGjP
-	AWACXvItKOKoOI+Im0ufeaN7dRErVvN2LVjC/IOMoh9ILZiFyY1a+98gIAO75hvianCTmBflrw8
-	v
-X-Received: by 2002:a2e:8ed5:0:b0:2cc:e9e6:e451 with SMTP id e21-20020a2e8ed5000000b002cce9e6e451mr172509ljl.86.1706306717285;
-        Fri, 26 Jan 2024 14:05:17 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706306748; x=1706911548;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
+ b=HxhAI9tjTT3feSWoglbrj/0DCYV6023z9XmjQLEUjQqyMkyEaZgpXgGCJX8cuPoReN
+ LUVELFj+dTnhVc+5esZQ6RBWNLottScFKp1ID+H0L01L/XT7sJiIfR1aH+unIPZNDpwR
+ HM/hLUSw597ugNBnb0XNe6Xln6uzLU4zg0LtdbgMlZBtmBb3JWRczt54AcCGqfq/hfjv
+ OJgV0PQi/ygc5VlwLSFASvlcM6WWGt0LuuIYG4hPqn/AnvkYseCD+v3xvckLKeDhh8nN
+ KBRunhbCp4NT5hYYcaLQUADlZJPXktRER0tn1QbteYH72dIPop9wQ1tz4FoLbRWw/rq0
+ 2CHw==
+X-Gm-Message-State: AOJu0Yw/VjjCW7A19SR3z5lNWGSGEWp4zk5B3G3mOO8Z+L52QGCaZFdV
+ 8Q4D1IPsQvB2cG1SS13zQVJffHi/wSLChsuKusfQhwpAqU5jo9pT9jEARxmklcc=
+X-Received: by 2002:adf:edd1:0:b0:33a:deec:66ad with SMTP id
+ v17-20020adfedd1000000b0033adeec66admr239506wro.104.1706306747724; 
+ Fri, 26 Jan 2024 14:05:47 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.142.39])
-        by smtp.gmail.com with ESMTPSA id n1-20020a056402434100b0055d1d0b4a4asm1002967edc.18.2024.01.26.14.05.15
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 26 Jan 2024 14:05:16 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id
+ vh5-20020a170907d38500b00a3517d26918sm508925ejc.107.2024.01.26.14.05.45
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 26 Jan 2024 14:05:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-s390x@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Eduardo Habkost <eduardo@habkost.net>,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 11/23] target/m68k: Prefer fast cpu_env() over slower CPU QOM cast macro
-Date: Fri, 26 Jan 2024 23:03:53 +0100
-Message-ID: <20240126220407.95022-12-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Subject: [PATCH v2 16/23] target/ppc: Prefer fast cpu_env() over slower CPU
+ QOM cast macro
+Date: Fri, 26 Jan 2024 23:03:58 +0100
+Message-ID: <20240126220407.95022-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240126220407.95022-1-philmd@linaro.org>
 References: <20240126220407.95022-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sb8jVtcBMdek
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m2Gc/JacUizu
 
 Mechanical patch produced running the command documented
 in scripts/coccinelle/cpu_env.cocci_template header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/m68k/cpu.c       | 30 ++++++++++--------------------
- target/m68k/gdbstub.c   |  6 ++----
- target/m68k/helper.c    |  3 +--
- target/m68k/m68k-semi.c |  6 ++----
- target/m68k/op_helper.c | 11 +++--------
- target/m68k/translate.c |  3 +--
- 6 files changed, 19 insertions(+), 40 deletions(-)
+ hw/ppc/mpc8544_guts.c         |  3 +--
+ hw/ppc/pnv.c                  |  3 +--
+ hw/ppc/pnv_xscom.c            |  5 +----
+ hw/ppc/ppce500_spin.c         |  3 +--
+ hw/ppc/spapr.c                |  3 +--
+ hw/ppc/spapr_caps.c           |  6 ++----
+ target/ppc/cpu_init.c         | 11 +++--------
+ target/ppc/excp_helper.c      |  3 +--
+ target/ppc/gdbstub.c          | 12 ++++--------
+ target/ppc/kvm.c              |  6 ++----
+ target/ppc/ppc-qmp-cmds.c     |  3 +--
+ target/ppc/user_only_helper.c |  3 +--
+ 12 files changed, 19 insertions(+), 42 deletions(-)
 
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index 1421e77c2c..c122fd96fb 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -117,8 +117,7 @@ static ObjectClass *m68k_cpu_class_by_name(const char *cpu_model)
- 
- static void m5206_cpu_initfn(Object *obj)
+diff --git a/hw/ppc/mpc8544_guts.c b/hw/ppc/mpc8544_guts.c
+index a26e83d048..e3540b0281 100644
+--- a/hw/ppc/mpc8544_guts.c
++++ b/hw/ppc/mpc8544_guts.c
+@@ -71,8 +71,7 @@ static uint64_t mpc8544_guts_read(void *opaque, hwaddr addr,
+                                   unsigned size)
  {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
+     uint32_t value = 0;
+-    PowerPCCPU *cpu = POWERPC_CPU(current_cpu);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(current_cpu);
  
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_A);
-     m68k_set_feature(env, M68K_FEATURE_MOVEFROMSR_PRIV);
-@@ -127,8 +126,7 @@ static void m5206_cpu_initfn(Object *obj)
- /* Base feature set, including isns. for m68k family */
- static void m68000_cpu_initfn(Object *obj)
+     addr &= MPC8544_GUTS_MMIO_SIZE - 1;
+     switch (addr) {
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 0297871bdd..a202b377e1 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -2294,8 +2294,7 @@ static void pnv_machine_set_hb(Object *obj, bool value, Error **errp)
+ 
+ static void pnv_cpu_do_nmi_on_cpu(CPUState *cs, run_on_cpu_data arg)
  {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
  
-     m68k_set_feature(env, M68K_FEATURE_M68K);
-     m68k_set_feature(env, M68K_FEATURE_USP);
-@@ -141,8 +139,7 @@ static void m68000_cpu_initfn(Object *obj)
-  */
- static void m68010_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68000_cpu_initfn(obj);
-     m68k_set_feature(env, M68K_FEATURE_M68010);
-@@ -161,8 +158,7 @@ static void m68010_cpu_initfn(Object *obj)
-  */
- static void m68020_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68010_cpu_initfn(obj);
-     m68k_unset_feature(env, M68K_FEATURE_M68010);
-@@ -192,8 +188,7 @@ static void m68020_cpu_initfn(Object *obj)
-  */
- static void m68030_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68020_cpu_initfn(obj);
-     m68k_unset_feature(env, M68K_FEATURE_M68020);
-@@ -219,8 +214,7 @@ static void m68030_cpu_initfn(Object *obj)
-  */
- static void m68040_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68030_cpu_initfn(obj);
-     m68k_unset_feature(env, M68K_FEATURE_M68030);
-@@ -240,8 +234,7 @@ static void m68040_cpu_initfn(Object *obj)
-  */
- static void m68060_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68040_cpu_initfn(obj);
-     m68k_unset_feature(env, M68K_FEATURE_M68040);
-@@ -254,8 +247,7 @@ static void m68060_cpu_initfn(Object *obj)
- 
- static void m5208_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_A);
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_APLUSC);
-@@ -267,8 +259,7 @@ static void m5208_cpu_initfn(Object *obj)
- 
- static void cfv4e_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_A);
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_B);
-@@ -281,8 +272,7 @@ static void cfv4e_cpu_initfn(Object *obj)
- 
- static void any_cpu_initfn(Object *obj)
- {
--    M68kCPU *cpu = M68K_CPU(obj);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(CPU(obj));
- 
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_A);
-     m68k_set_feature(env, M68K_FEATURE_CF_ISA_B);
-diff --git a/target/m68k/gdbstub.c b/target/m68k/gdbstub.c
-index 1e5f033a12..15547e2313 100644
---- a/target/m68k/gdbstub.c
-+++ b/target/m68k/gdbstub.c
-@@ -23,8 +23,7 @@
- 
- int m68k_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
- 
-     if (n < 8) {
-         /* D0-D7 */
-@@ -50,8 +49,7 @@ int m68k_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- 
- int m68k_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
-     uint32_t tmp;
- 
-     tmp = ldl_p(mem_buf);
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 14508dfa11..85f3cd1680 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -894,8 +894,7 @@ txfail:
- 
- hwaddr m68k_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
-     hwaddr phys_addr;
-     int prot;
-     int access_type;
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index b4ffb70f8b..546cff2246 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -77,8 +77,7 @@ static int host_to_gdb_errno(int err)
- 
- static void m68k_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
- 
-     target_ulong args = env->dregs[1];
-     if (put_user_u32(ret, args) ||
-@@ -95,8 +94,7 @@ static void m68k_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
- 
- static void m68k_semi_u64_cb(CPUState *cs, uint64_t ret, int err)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
- 
-     target_ulong args = env->dregs[1];
-     if (put_user_u32(ret >> 32, args) ||
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-index 1ce850bbc5..851cca640d 100644
---- a/target/m68k/op_helper.c
-+++ b/target/m68k/op_helper.c
-@@ -441,10 +441,7 @@ static void do_interrupt_all(CPUM68KState *env, int is_hw)
- 
- void m68k_cpu_do_interrupt(CPUState *cs)
- {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
+     cpu_synchronize_state(cs);
+     ppc_cpu_do_system_reset(cs);
+diff --git a/hw/ppc/pnv_xscom.c b/hw/ppc/pnv_xscom.c
+index 805b1d0c87..a17816d072 100644
+--- a/hw/ppc/pnv_xscom.c
++++ b/hw/ppc/pnv_xscom.c
+@@ -44,15 +44,12 @@ static void xscom_complete(CPUState *cs, uint64_t hmer_bits)
+      * passed for the cpu, and no CPU completion is generated.
+      */
+     if (cs) {
+-        PowerPCCPU *cpu = POWERPC_CPU(cs);
+-        CPUPPCState *env = &cpu->env;
 -
--    do_interrupt_all(env, 0);
-+    do_interrupt_all(cpu_env(cs), 0);
+         /*
+          * TODO: Need a CPU helper to set HMER, also handle generation
+          * of HMIs
+          */
+         cpu_synchronize_state(cs);
+-        env->spr[SPR_HMER] |= hmer_bits;
++        cpu_env(cs)->spr[SPR_HMER] |= hmer_bits;
+     }
  }
  
- static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)
-@@ -457,8 +454,7 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
-                                  int mmu_idx, MemTxAttrs attrs,
-                                  MemTxResult response, uintptr_t retaddr)
+diff --git a/hw/ppc/ppce500_spin.c b/hw/ppc/ppce500_spin.c
+index bbce63e8a4..dfbe759481 100644
+--- a/hw/ppc/ppce500_spin.c
++++ b/hw/ppc/ppce500_spin.c
+@@ -90,8 +90,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
+ 
+ static void spin_kick(CPUState *cs, run_on_cpu_data data)
  {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
- 
-     cpu_restore_state(cs, retaddr);
- 
-@@ -511,8 +507,7 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
- 
- bool m68k_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     SpinInfo *curspin = data.host_ptr;
+     hwaddr map_size = 64 * MiB;
+     hwaddr map_start;
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index e8dabc8614..d7edfc2a1a 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -3487,8 +3487,7 @@ static void spapr_machine_finalizefn(Object *obj)
+ void spapr_do_system_reset_on_cpu(CPUState *cs, run_on_cpu_data arg)
  {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
+     SpaprMachineState *spapr = SPAPR_MACHINE(qdev_get_machine());
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
  
-     if (interrupt_request & CPU_INTERRUPT_HARD
-         && ((env->sr & SR_I) >> SR_I_SHIFT) < env->pending_level) {
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 4a0b0b2703..9688476a7b 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -6108,8 +6108,7 @@ static double floatx80_to_double(CPUM68KState *env, uint16_t high, uint64_t low)
- 
- void m68k_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+     cpu_synchronize_state(cs);
+     /* If FWNMI is inactive, addr will be -1, which will deliver to 0x100 */
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index e889244e52..39edec0f84 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -194,8 +194,7 @@ static void cap_htm_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
  {
--    M68kCPU *cpu = M68K_CPU(cs);
--    CPUM68KState *env = &cpu->env;
-+    CPUM68KState *env = cpu_env(cs);
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(first_cpu);
+ 
+     if (!val) {
+         /* TODO: We don't support disabling vsx yet */
+@@ -213,8 +212,7 @@ static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ static void cap_dfp_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(first_cpu);
+ 
+     if (!val) {
+         /* TODO: We don't support disabling dfp yet */
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index 344196a8ce..f39f426fa9 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -7195,12 +7195,9 @@ static void ppc_cpu_reset_hold(Object *obj)
+ 
+ static bool ppc_cpu_is_big_endian(CPUState *cs)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
+-
+     cpu_synchronize_state(cs);
+ 
+-    return !FIELD_EX64(env->msr, MSR, LE);
++    return !FIELD_EX64(cpu_env(cs)->msr, MSR, LE);
+ }
+ 
+ static bool ppc_get_irq_stats(InterruptStatsProvider *obj,
+@@ -7287,8 +7284,7 @@ static bool ppc_pvr_match_default(PowerPCCPUClass *pcc, uint32_t pvr, bool best)
+ 
+ static void ppc_disas_set_info(CPUState *cs, disassemble_info *info)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+ 
+     if ((env->hflags >> MSR_LE) & 1) {
+         info->endian = BFD_ENDIAN_LITTLE;
+@@ -7446,8 +7442,7 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ #define RGPL  4
+ #define RFPL  4
+ 
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
      int i;
-     uint16_t sr;
-     for (i = 0; i < 8; i++) {
+ 
+     qemu_fprintf(f, "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx " CTR "
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index 2ec6429e36..fccfefa88e 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -2588,8 +2588,7 @@ void ppc_cpu_do_fwnmi_machine_check(CPUState *cs, target_ulong vector)
+ 
+ bool ppc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     int interrupt;
+ 
+     if ((interrupt_request & CPU_INTERRUPT_HARD) == 0) {
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index ec5731e5d6..fd986b1922 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -108,8 +108,7 @@ void ppc_maybe_bswap_register(CPUPPCState *env, uint8_t *mem_buf, int len)
+ 
+ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     uint8_t *mem_buf;
+     int r = ppc_gdb_register_len(n);
+ 
+@@ -152,8 +151,7 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+ 
+ int ppc_cpu_gdb_read_register_apple(CPUState *cs, GByteArray *buf, int n)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     uint8_t *mem_buf;
+     int r = ppc_gdb_register_len_apple(n);
+ 
+@@ -206,8 +204,7 @@ int ppc_cpu_gdb_read_register_apple(CPUState *cs, GByteArray *buf, int n)
+ 
+ int ppc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     int r = ppc_gdb_register_len(n);
+ 
+     if (!r) {
+@@ -253,8 +250,7 @@ int ppc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+ }
+ int ppc_cpu_gdb_write_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     int r = ppc_gdb_register_len_apple(n);
+ 
+     if (!r) {
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 26fa9d0575..7a0651b0af 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -546,8 +546,7 @@ static void kvm_sw_tlb_put(PowerPCCPU *cpu)
+ 
+ static void kvm_get_one_spr(CPUState *cs, uint64_t id, int spr)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     /* Init 'val' to avoid "uninitialised value" Valgrind warnings */
+     union {
+         uint32_t u32;
+@@ -581,8 +580,7 @@ static void kvm_get_one_spr(CPUState *cs, uint64_t id, int spr)
+ 
+ static void kvm_put_one_spr(CPUState *cs, uint64_t id, int spr)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     union {
+         uint32_t u32;
+         uint64_t u64;
+diff --git a/target/ppc/ppc-qmp-cmds.c b/target/ppc/ppc-qmp-cmds.c
+index c0c137d9d7..9ac74f5c04 100644
+--- a/target/ppc/ppc-qmp-cmds.c
++++ b/target/ppc/ppc-qmp-cmds.c
+@@ -133,8 +133,7 @@ static int ppc_cpu_get_reg_num(const char *numstr, int maxnum, int *pregnum)
+ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
+ {
+     int i, regnum;
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+ 
+     /* General purpose registers */
+     if ((qemu_tolower(name[0]) == 'r') &&
+diff --git a/target/ppc/user_only_helper.c b/target/ppc/user_only_helper.c
+index 7ff76f7a06..a4d07a0d0d 100644
+--- a/target/ppc/user_only_helper.c
++++ b/target/ppc/user_only_helper.c
+@@ -27,8 +27,7 @@ void ppc_cpu_record_sigsegv(CPUState *cs, vaddr address,
+                             MMUAccessType access_type,
+                             bool maperr, uintptr_t retaddr)
+ {
+-    PowerPCCPU *cpu = POWERPC_CPU(cs);
+-    CPUPPCState *env = &cpu->env;
++    CPUPPCState *env = cpu_env(cs);
+     int exception, error_code;
+ 
+     /*
 -- 
 2.41.0
 

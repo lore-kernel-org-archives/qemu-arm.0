@@ -1,297 +1,160 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp115107ejb;
-        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHHc2W6TmuKKYF1Hmk9GqO7YA/ho76D1PUrxnmu9aOSbS4MduR+/LL1fAQ/BO0otxeY7B7r
-X-Received: by 2002:aa7:888f:0:b0:6db:ad61:d840 with SMTP id z15-20020aa7888f000000b006dbad61d840mr560461pfe.55.1706306663249;
-        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706306663; cv=pass;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp51042ejb;
+        Fri, 26 Jan 2024 11:35:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEdHN6NxnsSB949R+F/C5j5cxztRo0W7vsEoMDZuoqFI5iHTBmIKpSLdnB49WwxMW1uzd8+
+X-Received: by 2002:a05:6214:20ec:b0:681:2fe6:6dcd with SMTP id 12-20020a05621420ec00b006812fe66dcdmr376466qvk.120.1706297703951;
+        Fri, 26 Jan 2024 11:35:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706297703; cv=none;
         d=google.com; s=arc-20160816;
-        b=XPEx5dNrQ3VdTOzJUDgvgCo/SzU0R2s4NQb0VDNJEctMPcyoBqPuuUSXBpfJVPQZ5O
-         NyuPq7iLnlDX+dFGJqHghXmP1neNtIGxynFFYnYuBVHlyFX0PJnPxsRXKoTbtiEVHL9D
-         os3RHyXUhws72gO0XSklvV1B0U6jZVp98sMmA75XYLJLMuOzl3xBwwZyEI/TyvK0pwVl
-         f11jM8mn0bpuqVwFZ544iL9smGwqdUBcrlPeWNo1qzK8aOj2d84kkDUKWtnpB2AuIJgF
-         SpkQobA5jDkB62exHJJdawPIXZZxE+b6MxzTFY29cXksU81YhQSBbb39VCJ+VM4h7pco
-         j2/A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
-        fh=vjIQCdGIiQvlMQV4M7vu+NKSTn5p9Q4HADr8u1W/+iI=;
-        b=H8bL7aNGoJoTdKG/3VQ3E3IgDEMQAbpbLHD0oJP61JjHiUTAeuQbgYiQie812U6HEP
-         +ubOpQ2dDYKxKXoXIUoqfrh0L2ESLZ7KsQukrOiGaqsRwUaBQNsS/zCqdKXlwkZfZKaO
-         57RX367Fn2TVQG58A/iCgEb7zVTRxP6D4xjrnZcF/uIA8qLFUiMTd/ykeUh0t12s3hMv
-         PZEPTbvf4qZtxdKTQFiUzIRSXKNyPUO2Ey1ve382IZdcoYVqYLKqAENZL7gXrnk4iseu
-         eb/JkRt5UrV/s02zxFDvpg+VTRTmxCPndhiIHgQqltA5S5Dju8lgullBg9k6BtxG0Aso
-         QYvA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wbcunhWo;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org";
+        b=yAQ2ilHgNVrUBX7wWVCKK4vH9HTHZvPWrTspEoAaVBNlIt1xiAXo2MGBeBSnx19c2m
+         Pyv/0S+lKbw3qf+fdV276JPgU3slh2qGIKACWEUzc0BzLEkc2vRPb6PgwkP+5oGXF1Sg
+         I1zl+ie2ju/mVzlRW7v1VZNJw4VwI/GEaowbTekPH0l5as70mZhX2jGgyhvXmuA5GIPY
+         88e6vNbwEnPv4yA2jvKgqEJ75GlXlin6Qda0b8Dcb307cVRgxcvK4sqskst5WZMr+mYJ
+         ETlYzqp4OZCVCE+dMeXAOxO/OxlvFbJA5tXdeGfSzbRAGhFrUWXOamVwrP184gyA5QxW
+         C4IQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0TeAfcJDcGJDZye+r/25zW/L60aexsAJdtgh4QaVcLo=;
+        fh=hUomQLa/s/gogr0u8ti5kBXrK7ipncypvawHBv3V55c=;
+        b=yTpVbNm2hCF/lYs3al2W584yM02wC8CyeXW9nPQqhT1CeWoy2wLGlDuzFKVbzc0HP/
+         of/oPSpSQowoyukBx2VKKQad+zKnrSGt+uafqyjEcCi1ddj8wluTId/m7no0WuE6Inyl
+         +FPeXSgmXS+7aVEXimfNE5AyBjFeyT5I/f7Vb8w7eBS8q/aEP4HKnIqI47iRXvsvJzq8
+         SerYpRUToPy11IlwLumGYCh91D1OONpRgwLhjzyjB1f3S17HqL4PzesJ5Ed92HLCJRwk
+         x2V9mq6JdG4SDxwlRfveW60jXpf7+n3jT3l/xhF4F/GTXxEoE3XW8r9MIsHrP8sgFGuf
+         AxDQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RKr+0W2x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id x39-20020a056a000be700b006d9a617d2ecsi1778921pfu.80.2024.01.26.14.04.22
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jp7-20020ad45f87000000b00681977533b3si1927334qvb.510.2024.01.26.11.35.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 11:35:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wbcunhWo;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RKr+0W2x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E8BDCB21919
-	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 22:04:20 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8322B2554E;
-	Fri, 26 Jan 2024 22:04:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="wbcunhWo"
-Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CD6B25543
-	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 22:04:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.52
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706306654; cv=none; b=Ye/dcyTHrBBPA1IrJCX2gIHrOavD5QREd1vIKaCfsJt0RPEzaVR0c0ztE46h5XJOof00zD8JVO/m6yBkPNKPKBeRIZHJC6kvRKKEf5+cjzhuIQ/rqcA0ijiekMmqvN2GnJ06nEDVRp1OfURSBZqU0TF7+7Ai4nNViDPKEgWXWq0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706306654; c=relaxed/simple;
-	bh=DkgttLBAlymmd03MCZsAV1//umks8Npk86CTHI2wLbA=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=dCrlOCeMhYga+tkoKfjyGmB3t7odCPkOYPkSyIyLA5PEvJoeDfnXde5VcMGMdbRZuor52rVZaSyAVr9wPJL96SFXXEfm8Nww4TQl6WnEKYh9xo0QRFLIOOslwAyqAARt0261PUv5o4ZC1eWGnr+TDIhIeb5ABCJXqJF/7q/35Gc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=wbcunhWo; arc=none smtp.client-ip=209.85.208.52
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-55817a12ad8so633753a12.2
-        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 14:04:11 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTRyS-0001We-8d; Fri, 26 Jan 2024 14:34:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rTRyK-0001WB-9j
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 14:34:42 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rTRyG-0002uq-KD
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 14:34:38 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40ee6ff0c7dso12145045e9.2
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 11:34:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706306650; x=1706911450; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
-        b=wbcunhWoDg4hFICL4ioNTqD26HcxAxuxfFKy8hH3wUZg4UXvpbRVomQLZczmUJGJ3K
-         ydk/C0JcyXVlwROQn0SMy1uVcI7v1ZfIwYqPbsjQvzzRmizP+oZGvw3GG5IbplRZYvKE
-         I99H6/JVj6p303I3l/sygP073q46WtWJ3CicieGt4exilm9FQQjXoI1Vt+mlEhHs4org
-         Rc1/PTEpNKtok5Y/Xd716rJDrVqZch/FAkqMIZ4aNfln6XdV8yUOEHENF726JTiRQU/K
-         SoW+Dg42TPhulfPQrxdN4ausN7HS4I0ZV+oRR16sRQTTHvfaFNf6D2PGl8ArWtnL6hYf
-         aKWA==
+ d=linaro.org; s=google; t=1706297674; x=1706902474; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0TeAfcJDcGJDZye+r/25zW/L60aexsAJdtgh4QaVcLo=;
+ b=RKr+0W2xM2CiSxZZc1M55Rq2RMCfGYsNBWunBMbAA+ZQSXCeavRleGZRlgKRZeVGqF
+ NnowFL0GK4ntrYk0hLVvTBggVWotbRg1R811Ov4DGqSsD0mjquNj4azQPbwFw3UJesFP
+ AAjXzlr5BIwDlr6Vegdrr96GeERDxltYrDlF+avIqtvr6KLtRCIEVAQxYSTAv4cr43YW
+ G9TTF6kfRj5bVi3+MCRqzXSIY6zqLjHapqaowwM0YRP4QwaiGIgqnbg7hUZBQThHmxnB
+ W2zTDw1l8cV+rnsECKPRWKiHfRTibyh2plvSh61TepBSiOVCbwlm8bVjgfnXF32T/N0U
+ 1pwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706306650; x=1706911450;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
-        b=cynSjdImDSHldR018wNystSOtIMbNc7h3tQ0S/rK4AqgnQIWI87O7lxgI4BXnUc5f4
-         oKYRbtUL0TIMpJnrKqjGnNpQTyruuHUV4s/267NX4r2UQdZrLhrduFcOAXai4xMict6j
-         RKU4rsvgt4JaUBBLhVOaLRIRk+/M0Z/QDKJaI1fChGQFhYrNhb1Obh2fDNE65+S6ZsLT
-         Xw6+yH9Jwc4LRimtceo8OkoipvdxgeuNo1FBhg7Ssv1NAXeMZuNzaevx7WvApCtkfCHB
-         kOCHSqr1RkvY1HqpDXJV727Jm4EmK8EAWZz3J5UQCHBkWTqogbnARSiGX38HUX5F/BlL
-         t0tA==
-X-Gm-Message-State: AOJu0Yzyfi9RzVoOAXETcZl5qnCGeyHh9mZcvE/afYEFWM6eJW3SJjEC
-	thWjcxq1hQNT54b7FZ5fgqXxHLmdneVnBVJsVs52bky/WdxTIbQAB4kJPo7kKT8F8GsepcWsTuF
-	+
-X-Received: by 2002:aa7:dc0f:0:b0:55c:d474:56dc with SMTP id b15-20020aa7dc0f000000b0055cd47456dcmr203467edu.39.1706306650281;
-        Fri, 26 Jan 2024 14:04:10 -0800 (PST)
-Received: from m1x-phil.lan ([176.176.142.39])
-        by smtp.gmail.com with ESMTPSA id q15-20020a056402032f00b0055ce4ea1c81sm1006182edw.89.2024.01.26.14.04.08
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 26 Jan 2024 14:04:09 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-s390x@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Eduardo Habkost <eduardo@habkost.net>,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 00/23] hw,target: Prefer fast cpu_env() over slower CPU QOM cast macro
-Date: Fri, 26 Jan 2024 23:03:42 +0100
-Message-ID: <20240126220407.95022-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1706297674; x=1706902474;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0TeAfcJDcGJDZye+r/25zW/L60aexsAJdtgh4QaVcLo=;
+ b=JybP6ISsN2To6rodimnhUvlxMKl1aCfQeR1z3L8ocgCWdWmbavJbPk7TqSPckA6sjs
+ ou6qr+Y0HKArt0ki67rZDPJHVuVqhCacOkz9jyQgRcY7J9/Od1Iw/2cekRBAQ8TiBDyr
+ 6Zws8Vxtl5zaWTIJAPUJq20XuvW38fzgnYLCkoC4vG+2G9GiCU4aL+T0y/Dfp75aRcdH
+ Nhhk6T24gKJLa3Jmj4mla7UhObzo8Lt28CXHyuNquO8ap+A7MY8soRfbtCICUGe+SKNf
+ WVL4v0YriclU0IrqO6bl7nPg4ZNJThRBlUGDxRn2O9KyalqItRzu05MCtULvDZ6rSajc
+ 5Zug==
+X-Gm-Message-State: AOJu0Yxf34BFCK8L1cNUy/BuVQPZKIl0lLF9w3+pbfr71NOZp7Zz2HUT
+ n32pXS41TWxY/186xNK3uY0uPNh0FWdwqHhEaF8HaYuR/GPAbPMrnhnX0UTtVTVyxc1G0rY6fMm
+ A
+X-Received: by 2002:a05:600c:ad4:b0:40e:44a9:c2be with SMTP id
+ c20-20020a05600c0ad400b0040e44a9c2bemr164051wmr.201.1706297674529; 
+ Fri, 26 Jan 2024 11:34:34 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ he9-20020a05600c540900b0040ed1df542bsm2676611wmb.20.2024.01.26.11.34.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Jan 2024 11:34:33 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/arm: Reinstate "vfp" property on AArch32 CPUs
+Date: Fri, 26 Jan 2024 19:34:32 +0000
+Message-Id: <20240126193432.2210558-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: Px+SZINL+Ue9
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kdd1uDA6Ta7r
 
-Use cpu_env() -- which is fast path -- when possible.
-Bulk conversion using Coccinelle spatch (script included).
+In commit 4315f7c614743 we restructured the logic for creating the
+VFP related properties to avoid testing the aa32_simd_r32 feature on
+AArch64 CPUs.  However in the process we accidentally stopped
+exposing the "vfp" QOM property on AArch32 TCG CPUs.
 
-Since v1:
-- Avoid CPU() cast (Paolo)
-- Split per targets (Thomas)
+This mostly hasn't had any ill effects because not many people want
+to disable VFP, but it wasn't intentional.  Reinstate the property.
 
-Philippe Mathieu-Daudé (23):
-  hw/acpi/cpu: Use CPUState typedef
-  scripts/coccinelle: Add cpu_env.cocci_template script
-  bulk: Call in place single use cpu_env()
-  target/alpha: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/arm: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/avr: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/cris: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/hppa: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/i386/hvf: Use CPUState typedef
-  target/i386: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/m68k: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/microblaze: Prefer fast cpu_env() over slower CPU QOM cast
-    macro
-  target/mips: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/nios2: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/openrisc: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/ppc: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/riscv: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/rx: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/s390x: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/sh4: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/tricore: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/xtensa: Prefer fast cpu_env() over slower CPU QOM cast macro
-  target/sparc: Prefer fast cpu_env() over slower CPU QOM cast macro
+Cc: qemu-stable@nongnu.org
+Fixes: 4315f7c614743 ("target/arm: Restructure has_vfp_d32 test")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2098
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- MAINTAINERS                               |  1 +
- include/hw/acpi/cpu.h                     |  2 +-
- target/i386/hvf/vmx.h                     | 13 +---
- target/i386/hvf/x86.h                     | 26 +++----
- target/i386/hvf/x86_descr.h               | 14 ++--
- target/i386/hvf/x86_emu.h                 |  4 +-
- target/i386/hvf/x86_mmu.h                 |  6 +-
- accel/tcg/cpu-exec.c                      |  3 +-
- hw/i386/vmmouse.c                         |  6 +-
- hw/i386/xen/xen-hvm.c                     |  3 +-
- hw/intc/arm_gicv3_cpuif_common.c          |  5 +-
- hw/ppc/mpc8544_guts.c                     |  3 +-
- hw/ppc/pnv.c                              |  3 +-
- hw/ppc/pnv_xscom.c                        |  5 +-
- hw/ppc/ppce500_spin.c                     |  3 +-
- hw/ppc/spapr.c                            |  3 +-
- hw/ppc/spapr_caps.c                       |  6 +-
- linux-user/i386/cpu_loop.c                |  4 +-
- target/alpha/cpu.c                        | 31 ++------
- target/alpha/gdbstub.c                    |  6 +-
- target/alpha/helper.c                     | 12 +--
- target/alpha/mem_helper.c                 | 11 +--
- target/arm/cpu.c                          | 19 ++---
- target/arm/debug_helper.c                 |  8 +-
- target/arm/gdbstub.c                      |  6 +-
- target/arm/gdbstub64.c                    |  6 +-
- target/arm/helper.c                       |  9 +--
- target/arm/hvf/hvf.c                      | 12 +--
- target/arm/kvm.c                          |  3 +-
- target/arm/ptw.c                          |  3 +-
- target/arm/tcg/cpu32.c                    |  3 +-
- target/avr/cpu.c                          | 27 ++-----
- target/avr/gdbstub.c                      |  6 +-
- target/avr/helper.c                       | 10 +--
- target/cris/cpu.c                         |  5 +-
- target/cris/gdbstub.c                     |  9 +--
- target/cris/helper.c                      | 12 +--
- target/cris/translate.c                   |  3 +-
- target/hppa/cpu.c                         |  8 +-
- target/hppa/int_helper.c                  |  8 +-
- target/hppa/mem_helper.c                  |  6 +-
- target/hppa/translate.c                   |  3 +-
- target/i386/arch_memory_mapping.c         |  3 +-
- target/i386/cpu-dump.c                    |  3 +-
- target/i386/cpu.c                         | 37 +++------
- target/i386/helper.c                      | 39 +++-------
- target/i386/hvf/hvf.c                     |  8 +-
- target/i386/hvf/x86.c                     | 30 ++++----
- target/i386/hvf/x86_descr.c               |  8 +-
- target/i386/hvf/x86_emu.c                 |  6 +-
- target/i386/hvf/x86_mmu.c                 | 14 ++--
- target/i386/hvf/x86_task.c                | 10 +--
- target/i386/hvf/x86hvf.c                  |  6 +-
- target/i386/kvm/kvm.c                     |  6 +-
- target/i386/kvm/xen-emu.c                 | 32 +++-----
- target/i386/nvmm/nvmm-all.c               |  6 +-
- target/i386/tcg/sysemu/bpt_helper.c       |  3 +-
- target/i386/tcg/tcg-cpu.c                 | 14 +---
- target/i386/tcg/user/excp_helper.c        |  3 +-
- target/i386/tcg/user/seg_helper.c         |  3 +-
- target/i386/whpx/whpx-all.c               | 18 ++---
- target/loongarch/tcg/translate.c          |  3 +-
- target/m68k/cpu.c                         | 30 +++-----
- target/m68k/gdbstub.c                     |  6 +-
- target/m68k/helper.c                      |  3 +-
- target/m68k/m68k-semi.c                   |  6 +-
- target/m68k/op_helper.c                   | 11 +--
- target/m68k/translate.c                   |  3 +-
- target/microblaze/helper.c                |  3 +-
- target/microblaze/translate.c             |  3 +-
- target/mips/cpu.c                         | 11 +--
- target/mips/gdbstub.c                     |  6 +-
- target/mips/kvm.c                         | 27 +++----
- target/mips/sysemu/physaddr.c             |  3 +-
- target/mips/tcg/exception.c               |  3 +-
- target/mips/tcg/op_helper.c               |  3 +-
- target/mips/tcg/sysemu/special_helper.c   |  3 +-
- target/mips/tcg/sysemu/tlb_helper.c       |  6 +-
- target/mips/tcg/translate.c               |  3 +-
- target/nios2/cpu.c                        | 15 +---
- target/nios2/helper.c                     |  3 +-
- target/nios2/nios2-semi.c                 |  6 +-
- target/openrisc/gdbstub.c                 |  3 +-
- target/openrisc/interrupt.c               |  6 +-
- target/openrisc/translate.c               |  3 +-
- target/ppc/cpu_init.c                     | 11 +--
- target/ppc/excp_helper.c                  |  3 +-
- target/ppc/gdbstub.c                      | 12 +--
- target/ppc/kvm.c                          |  6 +-
- target/ppc/ppc-qmp-cmds.c                 |  3 +-
- target/ppc/user_only_helper.c             |  3 +-
- target/riscv/arch_dump.c                  |  6 +-
- target/riscv/cpu.c                        | 17 ++---
- target/riscv/cpu_helper.c                 | 14 +---
- target/riscv/debug.c                      |  9 +--
- target/riscv/gdbstub.c                    |  6 +-
- target/riscv/kvm/kvm-cpu.c                |  6 +-
- target/riscv/tcg/tcg-cpu.c                |  9 +--
- target/riscv/translate.c                  |  3 +-
- target/rx/gdbstub.c                       |  6 +-
- target/rx/helper.c                        |  6 +-
- target/rx/translate.c                     |  6 +-
- target/s390x/cpu-dump.c                   |  3 +-
- target/s390x/gdbstub.c                    |  6 +-
- target/s390x/helper.c                     |  3 +-
- target/s390x/kvm/kvm.c                    |  6 +-
- target/s390x/tcg/excp_helper.c            | 11 +--
- target/s390x/tcg/translate.c              |  3 +-
- target/sh4/cpu.c                          | 15 ++--
- target/sh4/gdbstub.c                      |  6 +-
- target/sh4/helper.c                       | 11 +--
- target/sh4/op_helper.c                    |  4 +-
- target/sh4/translate.c                    |  3 +-
- target/sparc/cpu.c                        | 14 +---
- target/sparc/gdbstub.c                    |  3 +-
- target/sparc/int32_helper.c               |  3 +-
- target/sparc/int64_helper.c               |  3 +-
- target/sparc/ldst_helper.c                |  6 +-
- target/sparc/mmu_helper.c                 | 15 ++--
- target/sparc/translate.c                  |  3 +-
- target/tricore/cpu.c                      | 20 +----
- target/tricore/gdbstub.c                  |  6 +-
- target/tricore/helper.c                   |  3 +-
- target/tricore/translate.c                |  3 +-
- target/xtensa/dbg_helper.c                |  3 +-
- target/xtensa/exc_helper.c                |  3 +-
- target/xtensa/gdbstub.c                   |  6 +-
- target/xtensa/helper.c                    |  9 +--
- target/xtensa/translate.c                 |  3 +-
- scripts/coccinelle/cpu_env.cocci_template | 92 +++++++++++++++++++++++
- 130 files changed, 432 insertions(+), 714 deletions(-)
- create mode 100644 scripts/coccinelle/cpu_env.cocci_template
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 593695b4247..2bed5987619 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1620,6 +1620,10 @@ void arm_cpu_post_init(Object *obj)
+         }
+     } else if (cpu_isar_feature(aa32_vfp, cpu)) {
+         cpu->has_vfp = true;
++        if (tcg_enabled() || qtest_enabled()) {
++            qdev_property_add_static(DEVICE(obj),
++                                     &arm_cpu_has_vfp_property);
++        }
+         if (cpu_isar_feature(aa32_simd_r32, cpu)) {
+             cpu->has_vfp_d32 = true;
+             /*
 -- 
-2.41.0
+2.34.1
 

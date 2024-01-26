@@ -1,480 +1,222 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116067ejb;
-        Fri, 26 Jan 2024 14:06:03 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGayy1MzLH4ZWSLI7WmpZGeI5yCkQlZz4nWQC5Pp9MLtOCe60X73WqeWNdabUrDdPYpzJOr
-X-Received: by 2002:a17:906:4807:b0:a35:2758:579e with SMTP id w7-20020a170906480700b00a352758579emr569576ejq.34.1706306762844;
-        Fri, 26 Jan 2024 14:06:02 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706306762; cv=pass;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116145ejb;
+        Fri, 26 Jan 2024 14:06:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHnJBAyomhoqb+/0Wjh1xmG8PynV81v830rD+kVqV7iQ17qH1BvWzp311ALYmv3cKTegvlI
+X-Received: by 2002:ae9:e416:0:b0:783:5b21:5746 with SMTP id q22-20020ae9e416000000b007835b215746mr468365qkc.43.1706306771831;
+        Fri, 26 Jan 2024 14:06:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706306771; cv=none;
         d=google.com; s=arc-20160816;
-        b=aMEWollKZZxd2zm3GKUZLAKdfmLvemlUJYUi9+3NMcLd9woijE8DiPt/lm0XmIJhr+
-         B3VYhAK2hsypY1uhhYYyTuX3yKf2S9RyjMS1fUuruvHtM3+xqDu9OjmZWNfLY9ZbBgwb
-         C4aToxl1FigRGtBVn/b4PwBlSfyOUmoW/y9aUBlTDkeZnHaYPHcToKQ3rQc+jdoRDlGk
-         QbmKmFaWFrUa1SMRkydMqf0KzrDF6aVwi/nXLkj1NgQKsZmiSA92/QUEiz58P2OTDII/
-         8Z7lsurdUzWSFpVVsrA+tvoG2owg0ncp02IxexOhWEJ9Y7+DC81N0DSMQIjvCYCG0W1N
-         YOow==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=3QQAYRUB98rUN30LN98QVH8jAOd3KtarXuPYMe2XkgM=;
-        fh=p1XARvdnhCVn5KadEUXDOt8yvWK/iie0IWUXQLxA80k=;
-        b=jQKjqxEiMiY0nTdJEmGs3amz0oyJ6aezs1+D7Iwxfvpinop3B5aezHoOEIaf0GX4Et
-         iqNEf12eFU34dqa9uufweaIX5ZuaA+8EnZU8GNrCGBzb784k9iEbCKZ5leBJdIq7GOKq
-         FqwhWw7rPmnhGSqrqUJ22slL9rp3JQc9ZuBprJBPjtHU4D+Srvty68Z08ZvEazDg/pCB
-         q2p6PlSKQe8vUPqXqsOmGy3n2K9PAaskGey31oqMa7zBunRr2LnGjdOXn3cG/mhYdoDG
-         AfKB5744EnB1KsYGA2g7IuVWBv3Ad+TDFXIggFBdrnF4Sb+QSmFZyD6zj8G1uXnklmPi
-         rOfQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z18nvbSK;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org";
+        b=G3v1btii2LCzsiNlCtWKSXNYKW44wKIXtO+SQ3rxS58JlfLvPFIOeYkq7cMAErrwyy
+         db+pfHGKBevM3vHBzW7BgsZB+n/xOrCA7fQWx5tjUZJus7WCn4WK4yLAHG3gkXaUKbzR
+         WDQK/n4qF2igDRNc5kjVEkv14Vl415fEq2JUo8gziCQMmJb/GK9On06Dh4zS6R2DMSBN
+         0Iu5IrjFpvfrJm8S5J2yFYQXAQ3AxrJBL8N1u9JzGUohCDo151jVb0QwieqpXlHXxR8L
+         l33mwKZLa0XBLYdMa71E3/PBUkM8ysKlt8WK8NOsSrpGgHxTgLwSBlbZo3dV+kawsua1
+         CbcA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=FFJLEX8dK90+jos80xXDDodOgI2wmwmhf0FUxCQuinw=;
+        fh=lI5Wsv05ExsjZmYkykW8Qpb9ZaT0Mbjky7yp+criv00=;
+        b=oXDMVvrkZbub+OJDhE3oL8bxyc16/HeXiqosql6pbpQNJMin1m0GZnyBqfhPKM73f4
+         cvH3K4jCBmlgTLeTTzMQCqCYwXiEhVlqDAUm7gNlSO52l8GV/S2L0GfWvhBJycdstt9s
+         bSZVNgz/mk9QOLIB0nUkFZnvWJ/CY/4nwIrEsUolXvlkCUkrDBlzW6UMv6YfSUBMkDk8
+         70ZPu4LQMNB43d3xzqn2I5056BXubnS4SpuvhoMNuj7CIT705w4rCntEdAYJ08UE9Qom
+         j1ga5MHFkt7HO3w+nwkPM388af318K17F/xw8RtdUZExHvR23MYFDzoQiZikw90C7225
+         amcw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cz5GAQzX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id jx10-20020a170906ca4a00b00a35329f93c0si92034ejb.267.2024.01.26.14.06.02
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g10-20020ac8580a000000b0042a62a4ae9fsi2168788qtg.178.2024.01.26.14.06.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 14:06:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 14:06:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z18nvbSK;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-7223-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cz5GAQzX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 67BD61F2197D
-	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 22:06:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AD535481C5;
-	Fri, 26 Jan 2024 22:05:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Z18nvbSK"
-Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4216C47A5F
-	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 22:05:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.46
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706306708; cv=none; b=XmVx6gUw0p2Xxzju3ou4hoQLu/Zash9+6bH0ZDynlL6ncIQ96hYVOnpbdnu85aILtFOgmDW/FettEgg9iGyu5pygg7x4pkHUbtbJoGM8aYETkYiYeB2mP3/jJ5hhmZZ4GEvMrfzRdR30+NT8EQyNMz/oc9nFlcr5nRDO2hmsGq4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706306708; c=relaxed/simple;
-	bh=5nN54E3QaN9fIKrh+f913xl05sgRTstRxwDwdFy3IhU=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=rnzoZw34h6/AY6cV1FieHbxEanwjSySN1uVsw4q0PcPp9FW9sKTfa4E80H3EuzdpRXwKqc4hMBoddIKB4Pda7K9BMpp8myE5WEWnn0vvYgdGCND3xkOrRXxWjTjbS5Fys9TOfhu60irefprq0S8Mq44x/9+17Q8BjUg4L+MDRwo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=Z18nvbSK; arc=none smtp.client-ip=209.85.218.46
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ej1-f46.google.com with SMTP id a640c23a62f3a-a352c91457bso35497766b.1
-        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 14:05:05 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTUKp-0001Yn-6v; Fri, 26 Jan 2024 17:06:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKQ-00005K-Ua
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:39 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKO-0004CT-WA
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:38 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40ee9e21f89so5919775e9.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 14:05:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706306704; x=1706911504; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3QQAYRUB98rUN30LN98QVH8jAOd3KtarXuPYMe2XkgM=;
-        b=Z18nvbSKWaF0Gq/d8zcbBVqYlURwCFc4qAbKNys5YjElN6W/aw4Zp21UfkXnT9IZ7u
-         wVeH92BNJhCN27AtEddwFV2SDB/q0NPNeLLXSVCQ5MksA48c9AXcLB2uG45fg2vV4sMj
-         ZV5pWor0ei/wKLi6NzGdFPB7JYonbUe+6aSGvp/HzxbFUsiivBP6YykCNTztZZEFMkfr
-         lCQ4Cd9WLr+c1/l+9vQTKr1XJgAIWx38ed5mNpudkQuj/5oOvlItbzP3Az4u7aVNjEgc
-         twgYe+phVTa2d/Qsh7ndSxy9nVt3vfSnoY7NNdL8oAj9kJgXovZEB8DXKsnlors5HGIQ
-         +tzA==
+ d=linaro.org; s=google; t=1706306735; x=1706911535; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FFJLEX8dK90+jos80xXDDodOgI2wmwmhf0FUxCQuinw=;
+ b=Cz5GAQzXyFWJQnda5cT/mRJM4/z+9llym5n18wu+pTRcQrYEHaes3+dEXrVr6SD9uc
+ FNP+8aFBPxkUuI/D0SE7WtV1oXxNiaxJjjTw5N2NJTNEKJ1S+q+AmW1lDbMDdYQMVR7I
+ Cvc6Xb4bCKD809lorEV4AyW4b0DqPpiE5reWpKzzAyhCwPlOqqYHGSUlPhjAIzLcwVAL
+ xtGMyOTmrXIjzbZ+B4qfuhLqge3ot7bqed4Pzu+V2ewdgVL0z+h8Ei/UE6XsvnSrOQlo
+ HE0CpHaWNX6mtbQW6CedRX1yGukZP7rxMEQMyz9wwBOcaDbGvlJz45WwZXxdYTrfUYrx
+ ooDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706306704; x=1706911504;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3QQAYRUB98rUN30LN98QVH8jAOd3KtarXuPYMe2XkgM=;
-        b=T7HsYagP8oCmhlJwMGVovgR0Vi/mLWmxLrEk95+bk/xKWkqlHHLuz+ccxLwhBJ14bG
-         cqc6r/S/oC3tonJUZ29usIuqjhj8KhM2HS7LxaIHU9SnOnqwLRFzeD5sSnN0I9vBQE9R
-         +0s5/De6712MoMgbxdhzrgkvvVHKLKD3REDcRFYWwYL/TY0B4eyRtmfrWGZek6bv9IkD
-         jSTDbTaqHL1fhZ56djdAuwWysvexMB84dyQCHE1n7Wm4OYD/QZ3VUjSEi+wW6gthnhia
-         /NRBJJ4tevWGqIgPUA6moR/NmQpVXTO9EkUvoIVdIc4qCjiewVC7SLlBTCUxlhB0w7pA
-         JPFQ==
-X-Gm-Message-State: AOJu0YyKIGyLlohDTfiC46u6l4L9TUBX9Gk7mwrd+j65nIILjZGgOO2R
-	eu2p5axgnff94m/vPd16rmPdksaAzsL2DKWOuMnkTo8H9KzCTKRedAu8028ks6I=
-X-Received: by 2002:a17:906:4807:b0:a35:2758:579e with SMTP id w7-20020a170906480700b00a352758579emr567878ejq.34.1706306704551;
-        Fri, 26 Jan 2024 14:05:04 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706306735; x=1706911535;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FFJLEX8dK90+jos80xXDDodOgI2wmwmhf0FUxCQuinw=;
+ b=Ck4YeYgm8uxzSqoYfRz8AlEP/9ypMuuOR/yHMj7p2keyb0ejbaSxgXl0eWm8KVJWum
+ dPURn/HNJETGjSrSDW5+OqXbhhpCF3PBG/p65TWPaCj3Phos3OVbIreJIThdHWjMO7ue
+ ndRroAurwic7tnEHEssKZMWqWs47+n2BIK7SLPydCCEaC7sYFk7HHljbIYg18AQC6yp+
+ qbmD2W5EQBRYlx1vVYCMq5stecl0dSAJwmSPD78kVKdq8LZo6rIM/WrSMrICSuRpVkUu
+ gBR5Fk9BUhbjW4W58JWvZ8sUS8a2RwZcriYHGg3nnhXactS6g/000si1LlUjtt2k709+
+ OdEA==
+X-Gm-Message-State: AOJu0YxjHB632yat3aH+CiaKqsL0D8GeEWZ2LGnvFzDYU1pa3R6cnHwn
+ R5nwcUIOr1TaQyg7gbPyf3aIoKdXqBW7OzV+XCG8oAsHAdzoy+Rx25wrYbEpG8I=
+X-Received: by 2002:a05:600c:2246:b0:40e:e944:154a with SMTP id
+ a6-20020a05600c224600b0040ee944154amr243867wmm.198.1706306735629; 
+ Fri, 26 Jan 2024 14:05:35 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.142.39])
-        by smtp.gmail.com with ESMTPSA id fj17-20020a1709069c9100b00a2ada87f6a1sm1061882ejc.90.2024.01.26.14.05.02
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 26 Jan 2024 14:05:04 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id
+ s6-20020a1709060c0600b00a2a37f63216sm1056778ejf.171.2024.01.26.14.05.33
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 26 Jan 2024 14:05:35 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-s390x@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Eduardo Habkost <eduardo@habkost.net>,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>
-Subject: [PATCH v2 09/23] target/i386/hvf: Use CPUState typedef
-Date: Fri, 26 Jan 2024 23:03:51 +0100
-Message-ID: <20240126220407.95022-10-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
+Subject: [PATCH v2 14/23] target/nios2: Prefer fast cpu_env() over slower CPU
+ QOM cast macro
+Date: Fri, 26 Jan 2024 23:03:56 +0100
+Message-ID: <20240126220407.95022-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240126220407.95022-1-philmd@linaro.org>
 References: <20240126220407.95022-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: p6aeCRsIAzgh
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 70rNaNmbVf5b
 
-QEMU coding style recommend using structure typedefs:
-https://www.qemu.org/docs/master/devel/style.html#typedefs
+Mechanical patch produced running the command documented
+in scripts/coccinelle/cpu_env.cocci_template header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/hvf/x86.h       | 26 +++++++++++++-------------
- target/i386/hvf/x86_descr.h | 14 +++++++-------
- target/i386/hvf/x86_emu.h   |  4 ++--
- target/i386/hvf/x86_mmu.h   |  6 +++---
- target/i386/hvf/x86.c       | 26 +++++++++++++-------------
- target/i386/hvf/x86_descr.c |  8 ++++----
- target/i386/hvf/x86_mmu.c   | 14 +++++++-------
- 7 files changed, 49 insertions(+), 49 deletions(-)
+ target/nios2/cpu.c        | 15 +++------------
+ target/nios2/helper.c     |  3 +--
+ target/nios2/nios2-semi.c |  6 ++----
+ 3 files changed, 6 insertions(+), 18 deletions(-)
 
-diff --git a/target/i386/hvf/x86.h b/target/i386/hvf/x86.h
-index 947b98da41..3570f29aa9 100644
---- a/target/i386/hvf/x86.h
-+++ b/target/i386/hvf/x86.h
-@@ -248,30 +248,30 @@ typedef struct x68_segment_selector {
- #define BH(cpu)        RH(cpu, R_EBX)
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index a27732bf2b..a2eaf35c1a 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -28,28 +28,19 @@
  
- /* deal with GDT/LDT descriptors in memory */
--bool x86_read_segment_descriptor(struct CPUState *cpu,
-+bool x86_read_segment_descriptor(CPUState *cpu,
-                                  struct x86_segment_descriptor *desc,
-                                  x68_segment_selector sel);
--bool x86_write_segment_descriptor(struct CPUState *cpu,
-+bool x86_write_segment_descriptor(CPUState *cpu,
-                                   struct x86_segment_descriptor *desc,
-                                   x68_segment_selector sel);
- 
--bool x86_read_call_gate(struct CPUState *cpu, struct x86_call_gate *idt_desc,
-+bool x86_read_call_gate(CPUState *cpu, struct x86_call_gate *idt_desc,
-                         int gate);
- 
- /* helpers */
--bool x86_is_protected(struct CPUState *cpu);
--bool x86_is_real(struct CPUState *cpu);
--bool x86_is_v8086(struct CPUState *cpu);
--bool x86_is_long_mode(struct CPUState *cpu);
--bool x86_is_long64_mode(struct CPUState *cpu);
--bool x86_is_paging_mode(struct CPUState *cpu);
--bool x86_is_pae_enabled(struct CPUState *cpu);
-+bool x86_is_protected(CPUState *cpu);
-+bool x86_is_real(CPUState *cpu);
-+bool x86_is_v8086(CPUState *cpu);
-+bool x86_is_long_mode(CPUState *cpu);
-+bool x86_is_long64_mode(CPUState *cpu);
-+bool x86_is_paging_mode(CPUState *cpu);
-+bool x86_is_pae_enabled(CPUState *cpu);
- 
- enum X86Seg;
--target_ulong linear_addr(struct CPUState *cpu, target_ulong addr, enum X86Seg seg);
--target_ulong linear_addr_size(struct CPUState *cpu, target_ulong addr, int size,
-+target_ulong linear_addr(CPUState *cpu, target_ulong addr, enum X86Seg seg);
-+target_ulong linear_addr_size(CPUState *cpu, target_ulong addr, int size,
-                               enum X86Seg seg);
--target_ulong linear_rip(struct CPUState *cpu, target_ulong rip);
-+target_ulong linear_rip(CPUState *cpu, target_ulong rip);
- 
- static inline uint64_t rdtscp(void)
+ static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
  {
-diff --git a/target/i386/hvf/x86_descr.h b/target/i386/hvf/x86_descr.h
-index c356932fa4..9f06014b56 100644
---- a/target/i386/hvf/x86_descr.h
-+++ b/target/i386/hvf/x86_descr.h
-@@ -29,29 +29,29 @@ typedef struct vmx_segment {
- } vmx_segment;
- 
- /* deal with vmstate descriptors */
--void vmx_read_segment_descriptor(struct CPUState *cpu,
-+void vmx_read_segment_descriptor(CPUState *cpu,
-                                  struct vmx_segment *desc, enum X86Seg seg);
- void vmx_write_segment_descriptor(CPUState *cpu, struct vmx_segment *desc,
-                                   enum X86Seg seg);
- 
--x68_segment_selector vmx_read_segment_selector(struct CPUState *cpu,
-+x68_segment_selector vmx_read_segment_selector(CPUState *cpu,
-                                                enum X86Seg seg);
--void vmx_write_segment_selector(struct CPUState *cpu,
-+void vmx_write_segment_selector(CPUState *cpu,
-                                 x68_segment_selector selector,
-                                 enum X86Seg seg);
- 
--uint64_t vmx_read_segment_base(struct CPUState *cpu, enum X86Seg seg);
--void vmx_write_segment_base(struct CPUState *cpu, enum X86Seg seg,
-+uint64_t vmx_read_segment_base(CPUState *cpu, enum X86Seg seg);
-+void vmx_write_segment_base(CPUState *cpu, enum X86Seg seg,
-                             uint64_t base);
- 
--void x86_segment_descriptor_to_vmx(struct CPUState *cpu,
-+void x86_segment_descriptor_to_vmx(CPUState *cpu,
-                                    x68_segment_selector selector,
-                                    struct x86_segment_descriptor *desc,
-                                    struct vmx_segment *vmx_desc);
- 
- uint32_t vmx_read_segment_limit(CPUState *cpu, enum X86Seg seg);
- uint32_t vmx_read_segment_ar(CPUState *cpu, enum X86Seg seg);
--void vmx_segment_to_x86_descriptor(struct CPUState *cpu,
-+void vmx_segment_to_x86_descriptor(CPUState *cpu,
-                                    struct vmx_segment *vmx_desc,
-                                    struct x86_segment_descriptor *desc);
- 
-diff --git a/target/i386/hvf/x86_emu.h b/target/i386/hvf/x86_emu.h
-index 4b846ba80e..8bd97608c4 100644
---- a/target/i386/hvf/x86_emu.h
-+++ b/target/i386/hvf/x86_emu.h
-@@ -26,8 +26,8 @@
- void init_emu(void);
- bool exec_instruction(CPUX86State *env, struct x86_decode *ins);
- 
--void load_regs(struct CPUState *cpu);
--void store_regs(struct CPUState *cpu);
-+void load_regs(CPUState *cpu);
-+void store_regs(CPUState *cpu);
- 
- void simulate_rdmsr(CPUX86State *env);
- void simulate_wrmsr(CPUX86State *env);
-diff --git a/target/i386/hvf/x86_mmu.h b/target/i386/hvf/x86_mmu.h
-index 9ae8a548de..9447ae072c 100644
---- a/target/i386/hvf/x86_mmu.h
-+++ b/target/i386/hvf/x86_mmu.h
-@@ -36,9 +36,9 @@
- #define MMU_PAGE_US             (1 << 2)
- #define MMU_PAGE_NX             (1 << 3)
- 
--bool mmu_gva_to_gpa(struct CPUState *cpu, target_ulong gva, uint64_t *gpa);
-+bool mmu_gva_to_gpa(CPUState *cpu, target_ulong gva, uint64_t *gpa);
- 
--void vmx_write_mem(struct CPUState *cpu, target_ulong gva, void *data, int bytes);
--void vmx_read_mem(struct CPUState *cpu, void *data, target_ulong gva, int bytes);
-+void vmx_write_mem(CPUState *cpu, target_ulong gva, void *data, int bytes);
-+void vmx_read_mem(CPUState *cpu, void *data, target_ulong gva, int bytes);
- 
- #endif /* X86_MMU_H */
-diff --git a/target/i386/hvf/x86.c b/target/i386/hvf/x86.c
-index 8ceea6398e..80e36136d0 100644
---- a/target/i386/hvf/x86.c
-+++ b/target/i386/hvf/x86.c
-@@ -46,7 +46,7 @@
-    return ar;
- }*/
- 
--bool x86_read_segment_descriptor(struct CPUState *cpu,
-+bool x86_read_segment_descriptor(CPUState *cpu,
-                                  struct x86_segment_descriptor *desc,
-                                  x68_segment_selector sel)
- {
-@@ -76,7 +76,7 @@ bool x86_read_segment_descriptor(struct CPUState *cpu,
-     return true;
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
+-
+-    env->pc = value;
++    cpu_env(cs)->pc = value;
  }
  
--bool x86_write_segment_descriptor(struct CPUState *cpu,
-+bool x86_write_segment_descriptor(CPUState *cpu,
-                                   struct x86_segment_descriptor *desc,
-                                   x68_segment_selector sel)
+ static vaddr nios2_cpu_get_pc(CPUState *cs)
  {
-@@ -99,7 +99,7 @@ bool x86_write_segment_descriptor(struct CPUState *cpu,
-     return true;
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
+-
+-    return env->pc;
++    return cpu_env(cs)->pc;
  }
  
--bool x86_read_call_gate(struct CPUState *cpu, struct x86_call_gate *idt_desc,
-+bool x86_read_call_gate(CPUState *cpu, struct x86_call_gate *idt_desc,
-                         int gate)
+ static void nios2_restore_state_to_opc(CPUState *cs,
+                                        const TranslationBlock *tb,
+                                        const uint64_t *data)
  {
-     target_ulong base  = rvmcs(cpu->accel->fd, VMCS_GUEST_IDTR_BASE);
-@@ -115,30 +115,30 @@ bool x86_read_call_gate(struct CPUState *cpu, struct x86_call_gate *idt_desc,
-     return true;
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
+-
+-    env->pc = data[0];
++    cpu_env(cs)->pc = data[0];
  }
  
--bool x86_is_protected(struct CPUState *cpu)
-+bool x86_is_protected(CPUState *cpu)
+ static bool nios2_cpu_has_work(CPUState *cs)
+diff --git a/target/nios2/helper.c b/target/nios2/helper.c
+index bb3b09e5a7..ac57121afc 100644
+--- a/target/nios2/helper.c
++++ b/target/nios2/helper.c
+@@ -287,8 +287,7 @@ void nios2_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+                                    MMUAccessType access_type,
+                                    int mmu_idx, uintptr_t retaddr)
  {
-     uint64_t cr0 = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
-     return cr0 & CR0_PE_MASK;
- }
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
++    CPUNios2State *env = cpu_env(cs);
  
--bool x86_is_real(struct CPUState *cpu)
-+bool x86_is_real(CPUState *cpu)
+     env->ctrl[CR_BADADDR] = addr;
+     cs->exception_index = EXCP_UNALIGN;
+diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
+index 0b84fcb6b6..420702e293 100644
+--- a/target/nios2/nios2-semi.c
++++ b/target/nios2/nios2-semi.c
+@@ -75,8 +75,7 @@ static int host_to_gdb_errno(int err)
+ 
+ static void nios2_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
  {
-     return !x86_is_protected(cpu);
- }
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
++    CPUNios2State *env = cpu_env(cs);
+     target_ulong args = env->regs[R_ARG1];
  
--bool x86_is_v8086(struct CPUState *cpu)
-+bool x86_is_v8086(CPUState *cpu)
+     if (put_user_u32(ret, args) ||
+@@ -93,8 +92,7 @@ static void nios2_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
+ 
+ static void nios2_semi_u64_cb(CPUState *cs, uint64_t ret, int err)
  {
-     X86CPU *x86_cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86_cpu->env;
-     return x86_is_protected(cpu) && (env->eflags & VM_MASK);
- }
+-    Nios2CPU *cpu = NIOS2_CPU(cs);
+-    CPUNios2State *env = &cpu->env;
++    CPUNios2State *env = cpu_env(cs);
+     target_ulong args = env->regs[R_ARG1];
  
--bool x86_is_long_mode(struct CPUState *cpu)
-+bool x86_is_long_mode(CPUState *cpu)
- {
-     return rvmcs(cpu->accel->fd, VMCS_GUEST_IA32_EFER) & MSR_EFER_LMA;
- }
- 
--bool x86_is_long64_mode(struct CPUState *cpu)
-+bool x86_is_long64_mode(CPUState *cpu)
- {
-     struct vmx_segment desc;
-     vmx_read_segment_descriptor(cpu, &desc, R_CS);
-@@ -146,24 +146,24 @@ bool x86_is_long64_mode(struct CPUState *cpu)
-     return x86_is_long_mode(cpu) && ((desc.ar >> 13) & 1);
- }
- 
--bool x86_is_paging_mode(struct CPUState *cpu)
-+bool x86_is_paging_mode(CPUState *cpu)
- {
-     uint64_t cr0 = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
-     return cr0 & CR0_PG_MASK;
- }
- 
--bool x86_is_pae_enabled(struct CPUState *cpu)
-+bool x86_is_pae_enabled(CPUState *cpu)
- {
-     uint64_t cr4 = rvmcs(cpu->accel->fd, VMCS_GUEST_CR4);
-     return cr4 & CR4_PAE_MASK;
- }
- 
--target_ulong linear_addr(struct CPUState *cpu, target_ulong addr, X86Seg seg)
-+target_ulong linear_addr(CPUState *cpu, target_ulong addr, X86Seg seg)
- {
-     return vmx_read_segment_base(cpu, seg) + addr;
- }
- 
--target_ulong linear_addr_size(struct CPUState *cpu, target_ulong addr, int size,
-+target_ulong linear_addr_size(CPUState *cpu, target_ulong addr, int size,
-                               X86Seg seg)
- {
-     switch (size) {
-@@ -179,7 +179,7 @@ target_ulong linear_addr_size(struct CPUState *cpu, target_ulong addr, int size,
-     return linear_addr(cpu, addr, seg);
- }
- 
--target_ulong linear_rip(struct CPUState *cpu, target_ulong rip)
-+target_ulong linear_rip(CPUState *cpu, target_ulong rip)
- {
-     return linear_addr(cpu, rip, R_CS);
- }
-diff --git a/target/i386/hvf/x86_descr.c b/target/i386/hvf/x86_descr.c
-index c2d2e9ee84..5a9e8d307c 100644
---- a/target/i386/hvf/x86_descr.c
-+++ b/target/i386/hvf/x86_descr.c
-@@ -67,12 +67,12 @@ x68_segment_selector vmx_read_segment_selector(CPUState *cpu, X86Seg seg)
-     return sel;
- }
- 
--void vmx_write_segment_selector(struct CPUState *cpu, x68_segment_selector selector, X86Seg seg)
-+void vmx_write_segment_selector(CPUState *cpu, x68_segment_selector selector, X86Seg seg)
- {
-     wvmcs(cpu->accel->fd, vmx_segment_fields[seg].selector, selector.sel);
- }
- 
--void vmx_read_segment_descriptor(struct CPUState *cpu, struct vmx_segment *desc, X86Seg seg)
-+void vmx_read_segment_descriptor(CPUState *cpu, struct vmx_segment *desc, X86Seg seg)
- {
-     desc->sel = rvmcs(cpu->accel->fd, vmx_segment_fields[seg].selector);
-     desc->base = rvmcs(cpu->accel->fd, vmx_segment_fields[seg].base);
-@@ -90,7 +90,7 @@ void vmx_write_segment_descriptor(CPUState *cpu, struct vmx_segment *desc, X86Se
-     wvmcs(cpu->accel->fd, sf->ar_bytes, desc->ar);
- }
- 
--void x86_segment_descriptor_to_vmx(struct CPUState *cpu, x68_segment_selector selector, struct x86_segment_descriptor *desc, struct vmx_segment *vmx_desc)
-+void x86_segment_descriptor_to_vmx(CPUState *cpu, x68_segment_selector selector, struct x86_segment_descriptor *desc, struct vmx_segment *vmx_desc)
- {
-     vmx_desc->sel = selector.sel;
-     vmx_desc->base = x86_segment_base(desc);
-@@ -107,7 +107,7 @@ void x86_segment_descriptor_to_vmx(struct CPUState *cpu, x68_segment_selector se
-                     desc->type;
- }
- 
--void vmx_segment_to_x86_descriptor(struct CPUState *cpu, struct vmx_segment *vmx_desc, struct x86_segment_descriptor *desc)
-+void vmx_segment_to_x86_descriptor(CPUState *cpu, struct vmx_segment *vmx_desc, struct x86_segment_descriptor *desc)
- {
-     x86_set_segment_limit(desc, vmx_desc->limit);
-     x86_set_segment_base(desc, vmx_desc->base);
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index 8cd08622a1..649074a7d2 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -49,7 +49,7 @@ struct gpt_translation {
-     bool exec_access;
- };
- 
--static int gpt_top_level(struct CPUState *cpu, bool pae)
-+static int gpt_top_level(CPUState *cpu, bool pae)
- {
-     if (!pae) {
-         return 2;
-@@ -73,7 +73,7 @@ static inline int pte_size(bool pae)
- }
- 
- 
--static bool get_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
-+static bool get_pt_entry(CPUState *cpu, struct gpt_translation *pt,
-                          int level, bool pae)
- {
-     int index;
-@@ -95,7 +95,7 @@ static bool get_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
- }
- 
- /* test page table entry */
--static bool test_pt_entry(struct CPUState *cpu, struct gpt_translation *pt,
-+static bool test_pt_entry(CPUState *cpu, struct gpt_translation *pt,
-                           int level, bool *is_large, bool pae)
- {
-     uint64_t pte = pt->pte[level];
-@@ -166,7 +166,7 @@ static inline uint64_t large_page_gpa(struct gpt_translation *pt, bool pae)
- 
- 
- 
--static bool walk_gpt(struct CPUState *cpu, target_ulong addr, int err_code,
-+static bool walk_gpt(CPUState *cpu, target_ulong addr, int err_code,
-                      struct gpt_translation *pt, bool pae)
- {
-     int top_level, level;
-@@ -205,7 +205,7 @@ static bool walk_gpt(struct CPUState *cpu, target_ulong addr, int err_code,
- }
- 
- 
--bool mmu_gva_to_gpa(struct CPUState *cpu, target_ulong gva, uint64_t *gpa)
-+bool mmu_gva_to_gpa(CPUState *cpu, target_ulong gva, uint64_t *gpa)
- {
-     bool res;
-     struct gpt_translation pt;
-@@ -225,7 +225,7 @@ bool mmu_gva_to_gpa(struct CPUState *cpu, target_ulong gva, uint64_t *gpa)
-     return false;
- }
- 
--void vmx_write_mem(struct CPUState *cpu, target_ulong gva, void *data, int bytes)
-+void vmx_write_mem(CPUState *cpu, target_ulong gva, void *data, int bytes)
- {
-     uint64_t gpa;
- 
-@@ -246,7 +246,7 @@ void vmx_write_mem(struct CPUState *cpu, target_ulong gva, void *data, int bytes
-     }
- }
- 
--void vmx_read_mem(struct CPUState *cpu, void *data, target_ulong gva, int bytes)
-+void vmx_read_mem(CPUState *cpu, void *data, target_ulong gva, int bytes)
- {
-     uint64_t gpa;
- 
+     if (put_user_u32(ret >> 32, args) ||
 -- 
 2.41.0
 

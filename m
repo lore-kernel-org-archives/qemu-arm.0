@@ -1,105 +1,106 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp967409ejc;
-        Fri, 26 Jan 2024 08:03:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEaIpudSZDw4IyNOqSmDj5wuoZGKDQ1xQJYLU22vLtQBGjonCc4IDH1opyzEKoXnzlSW6ok
-X-Received: by 2002:ac8:7d0b:0:b0:42a:277a:b281 with SMTP id g11-20020ac87d0b000000b0042a277ab281mr2143333qtb.46.1706285021696;
-        Fri, 26 Jan 2024 08:03:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706285021; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp971320ejc;
+        Fri, 26 Jan 2024 08:08:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFYOcdRh2UiB1Vxi6oo3C2lxYixV0eUFve1aOexJAWfgl9zXKkV+/RydMTOlXAt0kA3vLbU
+X-Received: by 2002:a05:622a:58e:b0:42a:50e8:1657 with SMTP id c14-20020a05622a058e00b0042a50e81657mr62918qtb.131.1706285311130;
+        Fri, 26 Jan 2024 08:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706285311; cv=none;
         d=google.com; s=arc-20160816;
-        b=I2Jy6GQdAIeEkymTOk2DczPfL5IxrL7jeAX4ObJaI7Avx3qmzTgebo2dKzFmoiXX/C
-         yowNcge9oHdcg0zss8OtYNJhLROieasc4SSBNR7m3C1lUABQ/85+OA/m+KlbHaOG1rf0
-         D3y5ib2TN2Ne16Dhr9txF4l0SwwS5GSBrHvi0m4PkFeQi/fZnGugVA841uUHsb4iBCqN
-         QQZLYebXaotMH7rU3iB057LmHsD9aXOPxd22G/pQh89nOlR37Y3/zM1kX6gO1kz4G0OY
-         EiXGv/+6xJnmQhkbQxHXNhvwHMEtpJTNA+8aJfb36MD/Vq98OkW4bx9XX75ftL7FDmog
-         oSXA==
+        b=d3APVPBCA/9PQBx1NVCeEHva20kuoNgyyRQPGe94z31O15X/08lPVBDWvVNXQ7HMmo
+         VDaUr/SE/IouXqpDXhG192vrm6FB7Pn766Deo/2Niqes/uOf6vYZuVStZIp5dJ2vqRlA
+         5JEoYTrCepvMPFlMnAraeKr+YdT2JaL4H0F1NnLn8M98jzqPfTKH++pI56FT12yFuG0b
+         oyY45f6+UcvJUjt80hi5aOgbyINLPY49LVqJ9j5CFKn8did4kQqebR7MO6gHMhk1OOZi
+         Fn3a6Cc5WHotKpg2TQrc3hcJgSVcj932FzSIdtBtYQYcDwQ464+i1mX2Dkrcu9qfwk8H
+         +epA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zk0sP6rmajljurs2ccAeklwdmUeyPgag7oJCXCmQkmU=;
+        bh=D9F2bbUWw9sCxIexKZ1mkLwkfc28SE4GywK/1ph1ddI=;
         fh=RIVWBOSs2OZlP7XXIPkGQw38oz8oDq1OvCeujjh55qg=;
-        b=uTftjNnzFc/cM7cW53r1Fe8Q7wp/lm/XMkfrPFJnqsMuB0b4iRtJwb/H9iCj+tUA5Y
-         KxkI7XGSSsIN5s3uEmKYb49dSv7+hCtM5bbDDItEbK9vI8cPmuzVX9COd/0UJEGGlTB8
-         JYQvvAPhq34Gwx1B+rSmuVwoe0722CNr7OnVml0GQBgbew9jH7bX83ELxmsdsM6LGT+0
-         qlnGHV/GX1aQgdxmFFH8ZHGLAw2XJn/+95j4x8RY723+m+6loqRcALeHAm8sMvuCAkQi
-         dKkHtIatqM6RXO/vV53bGDR3xIr79oxq/Du1GyJ2FLxb3yje7ACU3/NSNYmNTQhIUxLy
-         wT/A==
+        b=oYAaxS2aYOpbXfuhgF7LhRjJqQc+U7kPP0c0ssfYNXLtS9xtuQo1kaHVAFQppkzv6j
+         WS2Ha4HZZEmit+7rdXLBKJ3VfXeebDtTuLgxe3N2DyXW+2BYfaqtuOwe6wn0S6+wKCPz
+         NMtoEbuZiHLtVn2whjZVj8lMkWfblaPWil0PV2feTOGrwi4SMZwupIboWskOaFVeozxN
+         Ts0tMKfEYm3q09f8dtLAI63sx1QWgM5aStudUF2KOD6wGuMNyLn1hprFDr5Z7JbrSocO
+         yTo+2sAoLpFt95TAJLbAywaMK7iIFkLyzdTabm49JuknS2GhfTk8ccVZdHtMixhQe9hF
+         Cn+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DGknJOIs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C+biXBt/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6-20020ac85a46000000b0042a4c02c9acsi1489833qta.107.2024.01.26.08.03.41
+        by mx.google.com with ESMTPS id z15-20020a05622a060f00b0042a0b35c01esi1473701qta.231.2024.01.26.08.08.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 08:03:41 -0800 (PST)
+        Fri, 26 Jan 2024 08:08:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DGknJOIs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C+biXBt/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTOfv-00011X-6h; Fri, 26 Jan 2024 11:03:27 -0500
+	id 1rTOkl-0004GA-Ox; Fri, 26 Jan 2024 11:08:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOfu-0000xB-16
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 11:03:26 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOki-0004Dc-4S
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 11:08:25 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOfr-0005rf-Ms
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 11:03:25 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOkf-0006gS-PE
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 11:08:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706285003;
+ s=mimecast20190719; t=1706285301;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=zk0sP6rmajljurs2ccAeklwdmUeyPgag7oJCXCmQkmU=;
- b=DGknJOIsCp0ZSBhjkCXy4ZLvjrlmxzz2Ijj1kuXwp8XLZq2Toytscw3uCrBJOKGAi5FoFp
- c0mrv87biZS0BnvZRoefHrtFUwftMz8qivAiBSvfpHKu1J0zHlU7uOB9XaPhGU0xLLLQuw
- hr/LtvUtMeYZS81qGXWPfom5TdLAYk0=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=D9F2bbUWw9sCxIexKZ1mkLwkfc28SE4GywK/1ph1ddI=;
+ b=C+biXBt/nvxkaLMjj04oVjlyDz76YEmv++s7sBRgN76Ux7S11fR9Bn7cYejNMqvstBvlgM
+ 4JIzNle410ggtHpN+59955IKbKN1iqZmoCd9Ui1kLAe4Y32vFYxP3SToul9HkyCf2n8z9k
+ ZZdIILt7wfVxzvO/4Ul8uVSiT5+AOL4=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-312-Gcyod3lNOLyTtYX3O5Nrwg-1; Fri, 26 Jan 2024 11:03:21 -0500
-X-MC-Unique: Gcyod3lNOLyTtYX3O5Nrwg-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-783ddd331f5so47726085a.1
- for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 08:03:21 -0800 (PST)
+ us-mta-482-NJwmEQtuMdiGv3jmhqmnMA-1; Fri, 26 Jan 2024 11:08:20 -0500
+X-MC-Unique: NJwmEQtuMdiGv3jmhqmnMA-1
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-6854ad24a0cso6656926d6.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 08:08:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706285000; x=1706889800;
+ d=1e100.net; s=20230601; t=1706285299; x=1706890099;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zk0sP6rmajljurs2ccAeklwdmUeyPgag7oJCXCmQkmU=;
- b=UBHKEQTCGfhUYGFXBG2kuNvnagrHD27u2ZQNrzg4drUmIhrqUi/2pv0DomujiZYvF5
- spmreI8B3HkFL9iNWZjfrtrLixakbIkwfWbu+zUwaV90wlXYlSUfwM0Dk2xR7gqtbt+g
- nyh6Xe886Xh+sjSI3A8zHN1ZuMaebZ1/VgI7UFaAUlmk9Vgnbzr4YKE0vK2Fw4DELxqn
- WAgn2FWFEmc8EJV/1JBP1kJr9TUUMRXcZq18rh2c90YMQuFidL6YAChKqAdYI24LlLOp
- 0h/1SrcwdHoQKo6AG1ixxV3UaGT0Na+mIKWzN1HMQszOT6qMbsakpAT0Le0ts8t4usER
- 88nA==
-X-Gm-Message-State: AOJu0YyojSt6v66cnTupjwifsUyVjWEV2uDECBEVHtgM3jFWqOJg8uU+
- mftp8yOtT3/v3iZl2HQZeoBnaq9hmmwTyPeqe1/Xe4avyEK/xbJ6k0IKSPzEhD1qxfUC5zlQDdX
- 5ZREIsVTJDwOUcqXoynMybC8TD1eoke5QDHflPNvVKFeupMZGzA==
-X-Received: by 2002:a05:620a:4884:b0:783:bcd8:530 with SMTP id
- ea4-20020a05620a488400b00783bcd80530mr1829445qkb.58.1706285000711; 
- Fri, 26 Jan 2024 08:03:20 -0800 (PST)
-X-Received: by 2002:a05:620a:4884:b0:783:bcd8:530 with SMTP id
- ea4-20020a05620a488400b00783bcd80530mr1829411qkb.58.1706285000435; 
- Fri, 26 Jan 2024 08:03:20 -0800 (PST)
+ bh=D9F2bbUWw9sCxIexKZ1mkLwkfc28SE4GywK/1ph1ddI=;
+ b=s7cHqalyfc30wJe5mRX4UxkE2r+J8r/6fjDvjbzXg35/+8VA/PjvkTwn1D9qirUTYp
+ YxDav/DNDdBKYGs5aUEjeblZxJNFpi7bRw2xUITDb36I0PoQDq8Xqfft4qbhybhemB8Y
+ r3oKb41CsrkgExDnwxL8jyPGWBEAHjBwvDNd4ysgFc5z8dR9guN2mCI0Vl87xDuNYZfw
+ i0M2Yfbrd49F/LCpuwIuMkDV5y+AQ3Bt5KNmCo3bRKWTzplRKuTTVNRbbsSoPiiJKEEp
+ x+QQ44oEzWuZcbhdfdtWACcDLKnucffBNaL6oeo8o7m+iAvqDmBsBrmXQ+pi5/39KHk9
+ aPBw==
+X-Gm-Message-State: AOJu0YypC03AKgem90s1MTLJLN00orPFVyZ419NNtTmrwRuVxcYgIJag
+ K3EwekIar/UE8eWWu3By092hYld11OfNeLd6P5ibyb8ZZT21w7ygPr5XBX0qSsW2WRvDlYYC8cZ
+ VoFFPZL9omxqAAAmdBov5Qse0muryxePJzW73zTM32GoKXQdSLg==
+X-Received: by 2002:a05:6214:2687:b0:686:aa78:d51b with SMTP id
+ gm7-20020a056214268700b00686aa78d51bmr82376qvb.57.1706285299300; 
+ Fri, 26 Jan 2024 08:08:19 -0800 (PST)
+X-Received: by 2002:a05:6214:2687:b0:686:aa78:d51b with SMTP id
+ gm7-20020a056214268700b00686aa78d51bmr82301qvb.57.1706285298903; 
+ Fri, 26 Jan 2024 08:08:18 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-176-119.web.vodafone.de.
  [109.43.176.119]) by smtp.gmail.com with ESMTPSA id
- ie7-20020a05622a698700b00427fabefe3bsm616431qtb.52.2024.01.26.08.03.07
+ kf4-20020a056214524400b006837a012417sm621834qvb.51.2024.01.26.08.08.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jan 2024 08:03:20 -0800 (PST)
-Message-ID: <14b546bf-2644-4e63-82d2-77d7ea43c732@redhat.com>
-Date: Fri, 26 Jan 2024 17:03:07 +0100
+ Fri, 26 Jan 2024 08:08:18 -0800 (PST)
+Message-ID: <532e0d7c-ddf0-4db4-a6eb-6660469fc72f@redhat.com>
+Date: Fri, 26 Jan 2024 17:08:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 44/46] hw/pci: remove pci_nic_init_nofail()
+Subject: Re: [PATCH v3 46/46] net: make nb_nics and nd_table[] static in
+ net/net.c
 To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Beniamino Galvani <b.galvani@gmail.com>,
@@ -147,7 +148,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
- <20240108204909.564514-45-dwmw2@infradead.org>
+ <20240108204909.564514-47-dwmw2@infradead.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -191,7 +192,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240108204909.564514-45-dwmw2@infradead.org>
+In-Reply-To: <20240108204909.564514-47-dwmw2@infradead.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -206,7 +207,7 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.313,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -221,19 +222,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wre3pYs5229L
+X-TUID: Yz+8HHePFbjV
 
 On 08/01/2024 21.27, David Woodhouse wrote:
 > From: David Woodhouse <dwmw@amazon.co.uk>
-> 
-> This function is no longer used.
-> 
-> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-> ---
->   hw/pci/pci.c         | 72 --------------------------------------------
->   include/hw/pci/pci.h |  3 --
->   2 files changed, 75 deletions(-)
 
+Please add: "Also remove the leftover definition of host_net_devices which 
+has been forgotten to be removed in commit 7cc28cb061040cb089." (or so)
+
+With that:
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
+
+
+> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+> ---
+>   include/net/net.h | 4 ----
+>   net/net.c         | 3 +++
+>   system/globals.c  | 2 --
+>   3 files changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/net/net.h b/include/net/net.h
+> index 19fb82833c..766201c62c 100644
+> --- a/include/net/net.h
+> +++ b/include/net/net.h
+> @@ -247,10 +247,6 @@ struct NICInfo {
+>       int nvectors;
+>   };
+>   
+> -extern int nb_nics;
+> -extern NICInfo nd_table[MAX_NICS];
+> -extern const char *host_net_devices[];
+> -
+>   /* from net.c */
+>   extern NetClientStateList net_clients;
+>   bool netdev_is_modern(const char *optstr);
+> diff --git a/net/net.c b/net/net.c
+> index 09ab0889f5..71cccb19da 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -77,6 +77,9 @@ static NetdevQueue nd_queue = QSIMPLEQ_HEAD_INITIALIZER(nd_queue);
+>   
+>   static GHashTable *nic_model_help;
+>   
+> +static int nb_nics;
+> +static NICInfo nd_table[MAX_NICS];
+> +
+>   /***********************************************************/
+>   /* network device redirectors */
+>   
+> diff --git a/system/globals.c b/system/globals.c
+> index e83b5428d1..b6d4e72530 100644
+> --- a/system/globals.c
+> +++ b/system/globals.c
+> @@ -36,8 +36,6 @@ int display_opengl;
+>   const char* keyboard_layout;
+>   bool enable_mlock;
+>   bool enable_cpu_pm;
+> -int nb_nics;
+> -NICInfo nd_table[MAX_NICS];
+>   int autostart = 1;
+>   int vga_interface_type = VGA_NONE;
+>   bool vga_interface_created;
 

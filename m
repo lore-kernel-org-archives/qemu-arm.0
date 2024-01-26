@@ -1,71 +1,71 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1026415ejc;
-        Fri, 26 Jan 2024 09:39:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGBcLvU7BV908y+k5tdMBo72iHLSRh16dtCiwURU/XgZPY6094VZnSwVfmXK+PzYMiobrHB
-X-Received: by 2002:ac8:5dcf:0:b0:42a:8715:839f with SMTP id e15-20020ac85dcf000000b0042a8715839fmr236960qtx.93.1706290746859;
-        Fri, 26 Jan 2024 09:39:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290746; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1026857ejc;
+        Fri, 26 Jan 2024 09:39:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHvZhlGp8hUHZr4UqYsi9VpX8kwCe3iPdWqZ/Ns1v52w1ZvNAuaxXL21taiqsvNLZ97r0z2
+X-Received: by 2002:a05:6808:f8e:b0:3bd:f6a6:1135 with SMTP id o14-20020a0568080f8e00b003bdf6a61135mr82926oiw.18.1706290799679;
+        Fri, 26 Jan 2024 09:39:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290799; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQDGPzLAPuIxvMhkE+mvYZ1jDxT8T/m+nLRs6/LYHoNVwhIHvvklltFGqED9mAY696
-         LnIf126GMy6ZTUaYOiyfJlGQ7xU2AejzPCutr1Qnp46qZaRabWLvWjLpq9CE/OVJarcR
-         NOhkccIJrODD+pptyo/bola+MRB600klyrEipJK4k4FxKNzWDmDGvhBV88bJupmvrGUs
-         rj8eL8HklmYW/uRXr5eExRIiTaH2Ry6z+lYFvevBJ9LAB0cPddNWHXm/8WYiqQgemmVy
-         yy9jrn1bx+IDeqw/10H1qV5Yza9TDS0Z8XlahKHU4bpD81gGtFMNAJp+X38YfUFVHfJY
-         UuYQ==
+        b=pL9sWxsETVaKUe1hz4Ngh1G2xSfOT/bVF1u+jmgzqNt9un/JubjJYZqd053K/UVWnR
+         CDmp4HNMhTuS5RZmbYCYTIM9lRs7EBiB/03TINEP8uqhkdFs2kDgvTz1bikqXtqqzwvX
+         bZO5CXjh9bL5LDsfwH8W/cfn49qMyfJ/9JN3ByhLQqrqS+4IC8vLWGwJTgOUhHvslwFM
+         IFcqWPfPz6QX38KwOIe0Nnc5aB+Ad2E8f0h6qkB5mm8bUW/Pr0IQStff0B7pk1VOaYWv
+         BWUxDZmVbD9+6wxDAJglAGkji0Kuad40qjS2pqUZF/up6cGCjbO4QadZA9+SggnEzLjN
+         oljA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZK2tD63GvqUrApaaWgfzsdauGq2sH6JIvuMsNwpoITs=;
-        fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=sjzIahUGooWyTa46fREXPW6eQXAF9hJyKBqIGOTeO6NeifsmlBUULgxmmj9C0iXAfn
-         cguJaqqCxrLNWQvBVA1vE3iWdLgayx7ULIidbZGJAaF7NlCAOpeLH4sHZJaeWCMzz8nD
-         J/46hPcWTetkAzyXTWAQUIEYJ7wI4YqwLRZ/wrG7h3X+Jp3ImhJT5Yj5KU0gfLfZor45
-         yy8Ic9SBr7neIqlZ22CLFmQwuSFKQsASALBWBuu0Xw9qMA08BzAW9qt1pLu0pUgQqlDA
-         5qoZeW9JQdk2NEJN05G+Yanul2xpkxgI4ikNsNGbmKJTRD2rW1Girq3rWzzaZymO81LR
-         cPgQ==
+        bh=mX/hl3L+uzP16qDkLnKIjlw9AZT6Th7nY6ik791ai64=;
+        fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
+        b=aVHmULSb94tOe86lYW8G4E+SGhfTPPneAj0pSjBWLmylawAnNevK+9kZFn8foH6il5
+         GxrA6UJeNnyLHUGPi1BPcxtCQ9oznojY2ROCgQVDTjKSQGJ4ByHBa2w4btzPnjAOmnTC
+         phZJMInHJnBedpxGC6qa/MnFPjfV6H/FQ3gcVSRSX17ydwG1ew3Nw86j3ZNXNLPyiWyF
+         WOjgUAgWgKcjQ/UmmGYQmQIoiknumu+LTJ5rAo9fDlX5GFSC2UC+p2IUsJ60WIrQgtBO
+         PrGMORnK0n958ddBMCr8yMIwpPytZMTuaMVogjiEjgTRDM6nPbLTwX/F2d66vnmBg8JR
+         MQLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=qkfPZXh4;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FEyZ2pdM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2-20020a05622a118200b0042a85ee0914si773684qtk.19.2024.01.26.09.39.06
+        by mx.google.com with ESMTPS id t2-20020ac85882000000b0042a5c3de4cdsi1617529qta.384.2024.01.26.09.39.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:39:06 -0800 (PST)
+        Fri, 26 Jan 2024 09:39:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=qkfPZXh4;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FEyZ2pdM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ5y-0001xv-Df; Fri, 26 Jan 2024 12:34:27 -0500
+	id 1rTQ4t-0007g5-V2; Fri, 26 Jan 2024 12:33:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ5D-0008Gb-U7; Fri, 26 Jan 2024 12:33:39 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rTQ4f-0007C4-TP; Fri, 26 Jan 2024 12:33:05 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ58-0001cV-I1; Fri, 26 Jan 2024 12:33:39 -0500
+ <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rTQ4c-0001jM-HA; Fri, 26 Jan 2024 12:33:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=ZK2tD63GvqUrApaaWgfzsdauGq2sH6JIvuMsNwpoITs=; b=qkfPZXh49dYOhIJMauMCMT4Wur
- huWzyz4Rsevt17NsZbNL4jjADOXXnZLkQ7VnzTp0d2odG3zXYBgdF4F1KtXW4/2kUjeD7HZfRyy3Z
- w48gBqearXCoIdsu0/Qr+d0rq6lwQF2LGSJN7r1ay+GTYZP0X03kpilU9pq5H6Zb9OdzC5afjHwTq
- SurL2JzCakVBVU5hx59YXCkgokAJr4Vf2SHPkccuA4H2S6gBVyMu7ddzFL3hH62/rkheekIN7jfU4
- mopxJLybNEjfV2HZyF3T5/z+qI1fciXVXGmT6EVxKFXmD+LXEEajOO/8eYmnZ5/hHmxCzMYm7PcmU
- iFeYg3aQ==;
+ bh=mX/hl3L+uzP16qDkLnKIjlw9AZT6Th7nY6ik791ai64=; b=FEyZ2pdM526tfsTPguJ6nEMtvW
+ HI13ThH4aGimnLaYdXWR6rBmwT7yOvUeWUsDqp3/RxjGthObBG+wR589pvEUzemdixC/bMU5Mps6Q
+ GZLdNd4A1WuN6jfAJYdVVLx+zy2Ml0Ze7DAOdwAqJ5nLHoP2Bs2Sbzt3l/TgAi4oGa9stRTBVFars
+ yi0kyONAoU/zrWfE2ZIGQxr7frBsw8wisVh/52fZ/UB5N02IFNCAuA7amOO/tPAVNricYVxymrzLH
+ jlhrncipjhaI27Tw0EnVvqCioV/tFZBrjwYrghPt9PJLAFi1ybpFOoL4q36iR7L/gm+12+BCgRnKM
+ +RY5auxQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ49-0000000EKUu-0WUm; Fri, 26 Jan 2024 17:32:34 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
+ id 1rTQ4B-000000069V7-2w5m; Fri, 26 Jan 2024 17:32:36 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ4A-00000001enY-0TPb;
+ Hat Linux)) id 1rTQ4A-00000001eoK-38TD;
  Fri, 26 Jan 2024 17:32:34 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
@@ -115,20 +115,21 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v4 35/47] hw/mips/mipssim: use qemu_create_nic_device()
-Date: Fri, 26 Jan 2024 17:25:12 +0000
-Message-ID: <20240126173228.394202-36-dwmw2@infradead.org>
+ xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v4 43/47] hw/xtensa/xtfpga: use qemu_create_nic_device()
+Date: Fri, 26 Jan 2024 17:25:20 +0000
+Message-ID: <20240126173228.394202-44-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -150,54 +151,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NLeqj3klf90T
+X-TUID: DlwCTp0eMSjz
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-The MIPS SIM platform instantiates its NIC only if a corresponding
-configuration exists for it. Use qemu_create_nic_device() function for
-that.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/mips/mipssim.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ hw/xtensa/xtfpga.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/mips/mipssim.c b/hw/mips/mipssim.c
-index 01e323904d..16af31648e 100644
---- a/hw/mips/mipssim.c
-+++ b/hw/mips/mipssim.c
-@@ -118,13 +118,15 @@ static void main_cpu_reset(void *opaque)
-     }
- }
- 
--static void mipsnet_init(int base, qemu_irq irq, NICInfo *nd)
-+static void mipsnet_init(int base, qemu_irq irq)
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index fbad1c83a3..f49e6591dc 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -141,14 +141,16 @@ static void xtfpga_net_init(MemoryRegion *address_space,
+         hwaddr base,
+         hwaddr descriptors,
+         hwaddr buffers,
+-        qemu_irq irq, NICInfo *nd)
++        qemu_irq irq)
  {
      DeviceState *dev;
      SysBusDevice *s;
+     MemoryRegion *ram;
  
--    dev = qdev_new("mipsnet");
+-    dev = qdev_new("open_eth");
 -    qdev_set_nic_properties(dev, nd);
-+    dev = qemu_create_nic_device("mipsnet", true, NULL);
++    dev = qemu_create_nic_device("open_eth", true, NULL);
 +    if (!dev) {
 +        return;
 +    }
  
      s = SYS_BUS_DEVICE(dev);
      sysbus_realize_and_unref(s, &error_fatal);
-@@ -225,9 +227,8 @@ mips_mipssim_init(MachineState *machine)
-                       sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
+@@ -301,10 +303,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+         memory_region_add_subregion(system_memory, board->io[1], io);
      }
+     xtfpga_fpga_init(system_io, 0x0d020000, freq);
+-    if (nd_table[0].used) {
+-        xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000,
+-                        extints[1], nd_table);
+-    }
++    xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
  
--    if (nd_table[0].used)
--        /* MIPSnet uses the MIPS CPU INT0, which is interrupt 2. */
--        mipsnet_init(0x4200, env->irq[2], &nd_table[0]);
-+    /* MIPSnet uses the MIPS CPU INT0, which is interrupt 2. */
-+    mipsnet_init(0x4200, env->irq[2]);
- }
- 
- static void mips_mipssim_machine_init(MachineClass *mc)
+     serial_mm_init(system_io, 0x0d050020, 2, extints[0],
+                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
 -- 
 2.43.0
 

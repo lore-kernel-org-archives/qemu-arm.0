@@ -1,72 +1,72 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1025201ejc;
-        Fri, 26 Jan 2024 09:36:48 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFATUfcbtnl5w0xyejc689QoKVniMbu74+sLmE9eDbbrWboe5NfktHEUKPVwjLz8a13GBOS
-X-Received: by 2002:a05:620a:1498:b0:783:9017:5c56 with SMTP id w24-20020a05620a149800b0078390175c56mr96063qkj.8.1706290608110;
-        Fri, 26 Jan 2024 09:36:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290608; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1025299ejc;
+        Fri, 26 Jan 2024 09:37:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFW9UwsUwcPmj0JoYYHoHhs/EE3tQTwVpg23K1u3BlAtaj0jO+5IHO3OILszWE+DLPW8qEJ
+X-Received: by 2002:a05:620a:229:b0:783:7aab:d0d1 with SMTP id u9-20020a05620a022900b007837aabd0d1mr77266qkm.136.1706290620178;
+        Fri, 26 Jan 2024 09:37:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290620; cv=none;
         d=google.com; s=arc-20160816;
-        b=WbiEEmmsuOexxS6WXZ4xPhPmomR4z+rBLXjDN48tmRZKtxsJZiDsbwVcuPPMRvQJU8
-         TZ2PDV7S6GuPqflPmkiKIoIbFRPpnKtdQfnD7EIDmuytosHKKJ+Htr3ucMu2B51tnhtV
-         saE4cmF7sf+oPLo1gKXLnhTF1WE4mruzz+ivQTd3DpOkSUDTL1Qx0BOhHIB3Gt6xSelC
-         GnbcD+hoq5TjqZwJIM5ktCN5BkSbQHf4lgs8OCAUi2MomG/8a2ghYuxw6J1ZUhlVxjNb
-         l+2sWPv43rUIkh9AmYhuVRKipOX2sj0223YIIGX6ZFqSTnv9TJKD6A9U0jl0nsiSpvU9
-         MegA==
+        b=Y0Vx+U++wPo8xYHGK4syVgVd69KP/ScIE/oXyttPgFqrP9p+D3nNQUhcET6Rh9+ekB
+         DGhGnx5f0/yb5+zdOtNeOQ6+zE0+lYnttWWdqG1PsHCJq3dz1SzELhhwHHe/G46ZcX8Z
+         ADezWg2vxT0xGPpLiiOO6L29OSTxpJz5aYV6yMfLySy5jbdoAkWre4I7jyV6KCF/Qr/a
+         jHtvpPr0smRMNGHKlExilRRPj8bAD59g9IBcJvjlO7ufO2wR7hl+h3CEB3j+WySUPez1
+         YcbAYwbTyKku9zAsOP3aSKSUXV+t0YRsfGAkNwosOwwE4J1FreuW8mE14miZ2Qdd8Rdl
+         lmNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=OcUPxqWmRn2W/vBLc1vAUxfRYXil4peX6g1xYhANngU=;
+        bh=dzXOsNH9wRjvHj3st0gxTJIXdksb3OkDh+zWazNsC/A=;
         fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
-        b=jWQ089ttsA9oZSn3e4uA6stg/ejrhPohyvHalqXhJVDyGnkuLYUOZzW1B5wXhMWqVM
-         OOQ2sU9uaiugv+e9XqwkV9VZ4JUsMnWZs2G+DfIsoKOf+zkxHRWx/aLSAvF0SFvLmA+r
-         6vKbufRoge552m81dfs8bdNThzBcgTzLt85IMrxFYus2C7IRH32NlkgqKKE5CorRIvRq
-         P3YPAn7PMWoxsp8b5BZpP3YObRNWLwOEPg+3SMpl/2kxKgESBkS+gKStPCKmLH4AkUqU
-         iMTyOsWUcd3f8vgYJL2nMKc+nMXbHubltCuJC1zav0Lnk4BaAqUDNQB6A3iyK4GZwF9z
-         hoMg==
+        b=mjpffC6koe8rpUlhNzlwR8GUFq+spEaHIgDqUXeEKRYR9mg6N7LSc+HInb5VYeg+OT
+         DCMl+SW0G7H9vYHKMTpqLLHrwhGetDulG+J+Ftjn9iud1rNi3swyrLmgL73nYHj765k6
+         MSetTJ7VcCFFDEk2gPPHvsswWL59aN/fAOUJE6vJPVecVZsDbbVY8jzwGfh9qffVEtma
+         3tgFo0QicsxP1U0K86KCnNiSeouwm/Ccos3Q4jcOhNI9yeBdK7LYWjTGAnS5GdD4C87Y
+         sS3cYnKsuw91yDnfRXNsKeO+qoBYeBxu/Gdte7WobPkVPlzjD+HEp8HDWJcUJtaXKkBg
+         z41Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=TfGUoteN;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=LNsJG7YJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6-20020a05620a136600b00783ddf8c341si794386qkl.198.2024.01.26.09.36.47
+        by mx.google.com with ESMTPS id dt25-20020a05620a479900b007831b225795si1766955qkb.187.2024.01.26.09.37.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:36:48 -0800 (PST)
+        Fri, 26 Jan 2024 09:37:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=TfGUoteN;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=LNsJG7YJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ6w-0006gl-As; Fri, 26 Jan 2024 12:35:26 -0500
+	id 1rTQ4w-0007i4-QS; Fri, 26 Jan 2024 12:33:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5P-00009T-PG; Fri, 26 Jan 2024 12:33:53 -0500
+ id 1rTQ4h-0007FK-C3; Fri, 26 Jan 2024 12:33:07 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5O-0001jH-6S; Fri, 26 Jan 2024 12:33:51 -0500
+ id 1rTQ4c-0001jI-K8; Fri, 26 Jan 2024 12:33:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=OcUPxqWmRn2W/vBLc1vAUxfRYXil4peX6g1xYhANngU=; b=TfGUoteNypHinLpnC54cAlZs44
- OX64oxlzkqBS+2+W6mF+76l9AOE+aFd0MOTd7JYOCqhTz6lgTYBEfS6c8Wq8ACwdgaB5BAfLi2vl5
- MzPO1rNXkxiINiFRVS807lK5988jrYw+TP64dtWej5D0TVT5XxC06/K9OGkd3pa4VwNyGz70vsqct
- KM7OvQJfK5TDUH3XQq3zjCOXDr/5T891JMPQdf7RFPSkscDNkorV2V6TLvUk3gVndHBVYku56BWaq
- Z5y0GMvGdrevv20WCscCTzB87FJixhTC4ym3Ce53CeRIAUB6+mPj2urOFzUj9Fx1LNYudl9zWMkta
- jmmSeFsg==;
+ bh=dzXOsNH9wRjvHj3st0gxTJIXdksb3OkDh+zWazNsC/A=; b=LNsJG7YJqs5GTjqRgQhdiPF1SQ
+ zmcMo2Vh8Ifp/kCuxMIuGCm7/dMuLhFuR2apigsHN4jJZPSF+HPHrJr2ZqP6z7RMV61bzkBXLvYH6
+ 2rNAT90JcnCxqBzFUCz3zaf5GflvSPEwpRxUpA9qPkd6zr2/YaneIHitgqo9TD11/Pfxu0a027c46
+ sFzjX169LBmyzhCtfCyOuWh+oGavb0R+k9ySNDACEo11Aw2ltP8fwUCM2Lcg2apWBUwxqmuXqjiQr
+ CaGfRP8cy6pxHou+q1f55jHgUa1whNeFNAKMPOzCuuMcioZphqihCfaGFb0VA/CIF34gF8So7jY5G
+ MU4bRqoQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ4B-000000069Uv-2wwE; Fri, 26 Jan 2024 17:32:36 +0000
+ id 1rTQ4A-000000069Um-1qlU; Fri, 26 Jan 2024 17:32:35 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ4A-00000001eoB-2IMj;
- Fri, 26 Jan 2024 17:32:34 +0000
+ Hat Linux)) id 1rTQ49-00000001emM-0Fux;
+ Fri, 26 Jan 2024 17:32:33 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -117,10 +117,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>,
  Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v4 41/47] hw/s390x/s390-virtio-ccw: use
- qemu_create_nic_device()
-Date: Fri, 26 Jan 2024 17:25:18 +0000
-Message-ID: <20240126173228.394202-42-dwmw2@infradead.org>
+Subject: [PATCH v4 23/47] hw/arm/exynos4: use qemu_create_nic_device()
+Date: Fri, 26 Jan 2024 17:25:00 +0000
+Message-ID: <20240126173228.394202-24-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
@@ -152,39 +151,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g+G/1J0jGtLP
+X-TUID: E4yfAaKL1I1H
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Acked-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/s390x/s390-virtio-ccw.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+ hw/arm/exynos4_boards.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index c99682b07d..62804cc228 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -229,16 +229,9 @@ static void s390_init_ipl_dev(const char *kernel_filename,
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index b0e13eb4f0..003992189b 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
+@@ -76,10 +76,8 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
+     SysBusDevice *s;
  
- static void s390_create_virtio_net(BusState *bus, const char *name)
- {
--    int i;
--
--    for (i = 0; i < nb_nics; i++) {
--        NICInfo *nd = &nd_table[i];
--        DeviceState *dev;
--
--        qemu_check_nic_model(nd, "virtio");
-+    DeviceState *dev;
- 
--        dev = qdev_new(name);
--        qdev_set_nic_properties(dev, nd);
-+    while ((dev = qemu_create_nic_device(name, true, "virtio"))) {
-         qdev_realize_and_unref(dev, bus, &error_fatal);
-     }
- }
+     /* This should be a 9215 but the 9118 is close enough */
+-    if (nd_table[0].used) {
+-        qemu_check_nic_model(&nd_table[0], "lan9118");
+-        dev = qdev_new(TYPE_LAN9118);
+-        qdev_set_nic_properties(dev, &nd_table[0]);
++    dev = qemu_create_nic_device(TYPE_LAN9118, true, NULL);
++    if (dev) {
+         qdev_prop_set_uint32(dev, "mode_16bit", 1);
+         s = SYS_BUS_DEVICE(dev);
+         sysbus_realize_and_unref(s, &error_fatal);
 -- 
 2.43.0
 

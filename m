@@ -1,89 +1,90 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp952957ejc;
-        Fri, 26 Jan 2024 07:38:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFJrVbZMk8ZFTAWttQB7GRjoICZRQGw7DmWaEGyRVgraItdQBesc+hwRcUpJzDG9kE0khmv
-X-Received: by 2002:ad4:5ce8:0:b0:686:415a:c040 with SMTP id iv8-20020ad45ce8000000b00686415ac040mr7887qvb.117.1706283526658;
-        Fri, 26 Jan 2024 07:38:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706283526; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp956014ejc;
+        Fri, 26 Jan 2024 07:44:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEpLZg8rPGmSU+8DTVyvIdNimbQgtdc+yTc6uVzogIrAfIb1Aviszmd+Y3/NUHPONSvyPEN
+X-Received: by 2002:a05:620a:894:b0:783:2320:9704 with SMTP id b20-20020a05620a089400b0078323209704mr1853520qka.26.1706283860708;
+        Fri, 26 Jan 2024 07:44:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706283860; cv=none;
         d=google.com; s=arc-20160816;
-        b=vvwyUjUrzH7wU6lsJvhW0WNO90f6r0aS/z/fNXiLVJ/GBJsSTsCW+C/RmM7mUdeXGu
-         2WaA19ReQrU91/2G7toRhNHNP0D5haxcuAdB2/JIpWD4H4flQVQk/5hGr97SKNf/48OO
-         vqjDgJ8XqDUBUMpI/U7gxkt5U3SzDmHC0w54VrXdyRtN/B2PNpPmkcoqjxQiG1f0mbX5
-         ck8Cab4ziG7Jyl3eZ5lMI7LRtZQugg3IEldWhgetm4Jd+DhhOAAtvSsr6gvG2T9fJi2S
-         nx0xt84RYatX3XbSf21WhjlEACe4Bs4yBrhColGROqFWoZ3l4ZTsNBiDmR9ZVMOjZrI4
-         w/iQ==
+        b=AKawqh1xQhjLtxNLjDqmNudLzrstlMD3iDBFaAYVPH6IDZ6T1hOFgL/wF4OIF+wJfV
+         Mdjx9fI0QihHe2unJs7VOJxg6wyk2/0L8UU15b0JwhEeRpG9DeqvJdIwApESuVSnYNgV
+         LtJ0T/Rv8KsMUoM3fBdcxMGZKIAfn6trwaIu2jNgUVDlBPNVxtIaW9tWbGBVfn9MasC/
+         tF95Z427JTCJG6tf7yt0cscAG3oL5ZotaNfSliTz3jh5/VCgV3TEjcvJ1i2jQPooZDnO
+         +Kicw2xaWsFSHnFoYOXy/NXFxBcqdMxNmkysdX8Jkmm7LfC21BtZqQhLYcgbovMG3Fkd
+         c9pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :references:in-reply-to:date:cc:to:from:subject:message-id
          :dkim-signature;
-        bh=lp+ZzrGdwnQdHFZCwgwx7w0fiF8gGe8nzvWfMY8i6Y0=;
-        fh=8DQW1j6i3SHUh/lLpdErs8TSnUcp0H+0U0QGl8K3j2U=;
-        b=RcrGK/CQPWwMcXHUig0qalz+mVgSxFceSj//L1F6kZkhSdnR3bIyeNuOfW7tsffk8V
-         rr+Sc6Y9u4f/zRihHMVMgUpCSSrmL34Ha1NJXQQd2cu4g7ZVWOu1iqFhbBST6p9jIgnU
-         oujDfMifRmQeqgStmb+BLMq3MA2ADtGGBSyhuNrW2nrCyVBkbELaL+7H8JKhageqDxA9
-         T8BknmNXQY2QJarjmuaW+WAwhc9JYIrI+sUXjqql6FZUGE+70jggt9smpIqSldDxGpsd
-         2o+LOiFYf8QrIifHCTf+gew/tl6hIlLQetOQsPPVqPJfbWK1jG0HZkL2i0E5Zq0YjQqg
-         Al8g==
+        bh=mngabhQEmcs5M+mA7V2LH0SPFB5oGW39VAOwTy5lgCU=;
+        fh=KXif9hysrDIsggTtErym9MhCwGGD7Xx7R5mZtu2eJN0=;
+        b=k+iDHOhYP1dXPiCyGm2mM/mjDV3/XF+0Wa0WxQsCiSMUlI+iA7303THsgsAS/Q2BZ2
+         OP8jRXr65jY5b399wbOCuH+ZGtHBBv7B4JdRm2xZp+RulvlBFVAGlz78GqnS3XmMClTY
+         5nOs92t0JoUrtsB7vB5xSu4ZnXRtopKufs9G29BH9ata5I45Z7bDaZW4GouoORCaY0NK
+         Wl2ZLB8bWcBlKUSAOgR5L2vdtMtFznJskhDxJz3pv5xKpf96Dfzjie1r+xXLvvd1cWyP
+         jfH0ItU0TZFl3aMU2xCGEL+84FNPQusrOelOBYlzSm922sBtBJuvmkeUt2IeXV8far5O
+         UXdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=NYLq24eJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=j0vlGs47;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gh1-20020a05621429c100b006889961da29si1460789qvb.491.2024.01.26.07.38.46
+        by mx.google.com with ESMTPS id q10-20020ae9e40a000000b0078394c072d0si1523833qkc.573.2024.01.26.07.44.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 07:38:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 07:44:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=NYLq24eJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=j0vlGs47;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTOHH-0000Cg-7s; Fri, 26 Jan 2024 10:37:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rTOMb-0001Ym-Jg; Fri, 26 Jan 2024 10:43:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTOHG-0000CQ-1G; Fri, 26 Jan 2024 10:37:58 -0500
+ id 1rTOMZ-0001Y0-Jo; Fri, 26 Jan 2024 10:43:27 -0500
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTOHD-0007en-8S; Fri, 26 Jan 2024 10:37:57 -0500
+ id 1rTOMW-0000Cv-VH; Fri, 26 Jan 2024 10:43:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
  In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=lp+ZzrGdwnQdHFZCwgwx7w0fiF8gGe8nzvWfMY8i6Y0=; b=NYLq24eJrVVadeeRWeO0xfkq/j
- p6f0NDwkrmE6riqP9jjWIPdU0BeIb9HAaRF9hHhLPq9dwPa7H/xINi+O2EkIRyrLAjr+5NnyRsPOk
- yKNDfi1VVPVhXzwhLs6NLygYJzLpCpF+K6YDBK+TFB9FAlbMTiodzD3wL2B+HSFIxcCZuosVWBftD
- nAkkquRYlF6v444XdKb7KDfXM/xtnZLNpXT0AsuQ2Lar8/2KYZOUOwEq2ZVPbRlzx2wjSePfYm/9R
- 6/e1ULNwG1GIUdhapD8h+E9PMd4kWuVRLqiHFb1V+yQ/RZ0PWStLVsZsQo7Cu5QLqfOEZmlZcJu9J
- /q0uzyEg==;
+ bh=mngabhQEmcs5M+mA7V2LH0SPFB5oGW39VAOwTy5lgCU=; b=j0vlGs47pwZ259SlLeAzzanfHg
+ 5bPw81/vFFxt69zjB0Pu1ZE5wnd+x5IR7LIDZ7vNUWofCrBdRgYMcysrYFZDDoUoCgzi9t/hTRvP7
+ j05fr+L2OkTAX6IAMorVNkXjiCjeke/taf2eIYI0s8s1ttOG0VGx+YGw+UHNJvClfCR+CO89bHnia
+ kFsBfUWd4pTY7ivhLzbV+Xh/PGYaZgwYjbbJp/JGyUxPcn4gSyQjUn3pksKkWC47PtFumCjDAdFfB
+ hphqAzo7JQgyn9RQBYTUOAX8XKJsLjBxiQLyxS3YAPgIYl+ETrWzhEmSTBBnaUmXskcSdR7fTy65h
+ WGOiKqNQ==;
 Received: from [2001:8b0:10b:5:d160:e4ac:a057:38f5]
  (helo=u3832b3a9db3152.ant.amazon.com)
  by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTOH2-0000000E35Q-3QsC; Fri, 26 Jan 2024 15:37:46 +0000
-Message-ID: <d03170888cb4ef1bdb1cf845e37adeffac80b22b.camel@infradead.org>
-Subject: Re: [PATCH v3 25/46] hw/net/smc91c111: use qemu_configure_nic_device()
+ id 1rTOMN-0000000E3bm-2q3B; Fri, 26 Jan 2024 15:43:17 +0000
+Message-ID: <0f9a9d9458c0dc6edd5dc127b794fed2231f5f73.camel@infradead.org>
+Subject: Re: [PATCH v3 01/46] net: add qemu_{configure,create}_nic_device(),
+ qemu_find_nic_info()
 From: David Woodhouse <dwmw2@infradead.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, Beniamino Galvani
- <b.galvani@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Strahinja
- Jankovic <strahinja.p.jankovic@gmail.com>, Niek Linnenbank
- <nieklinnenbank@gmail.com>,  =?ISO-8859-1?Q?C=E9dric?= Le Goater
- <clg@kaod.org>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Strahinja Jankovic
+ <strahinja.p.jankovic@gmail.com>, Niek Linnenbank
+ <nieklinnenbank@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>,  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley
  <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>, Jean-Christophe
- Dubois <jcd@tribudubois.net>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Rob Herring
+ Dubois <jcd@tribudubois.net>,  Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,  Rob Herring
  <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>, Jan Kiszka
- <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>, Hao Wu
- <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>, Leif Lindholm
- <quic_llindhol@quicinc.com>, Marcin Juszkiewicz
+ <jan.kiszka@web.de>,  Tyrone Ting <kfting@nuvoton.com>, Hao Wu
+ <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,  Leif
+ Lindholm <quic_llindhol@quicinc.com>, Marcin Juszkiewicz
  <marcin.juszkiewicz@linaro.org>, "Edgar E. Iglesias"
  <edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>,
- Helge Deller <deller@gmx.de>, Paolo Bonzini <pbonzini@redhat.com>,  Eduardo
+ Helge Deller <deller@gmx.de>, Paolo Bonzini <pbonzini@redhat.com>, Eduardo
  Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Song Gao
  <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>, Laurent Vivier
@@ -104,15 +105,19 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, Beniamino Galvani
  <ysato@users.sourceforge.jp>, Magnus Damm <magnus.damm@gmail.com>, Artyom
  Tarasenko <atar4qemu@gmail.com>, Stefano Stabellini
  <sstabellini@kernel.org>, Anthony Perard <anthony.perard@citrix.com>, Paul
- Durrant <paul@xen.org>, Max Filippov <jcmvbkbc@gmail.com>
-Date: Fri, 26 Jan 2024 15:37:44 +0000
-In-Reply-To: <4acd6d32-acf1-4b2b-b535-fb5082d4fe4c@redhat.com>
+ Durrant <paul@xen.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org,  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org,  xen-devel@lists.xenproject.org
+Date: Fri, 26 Jan 2024 15:43:15 +0000
+In-Reply-To: <CAFEAcA98ZW_1DtKvs-ZU=R9DOBwmnLPwnTBqPbTv7jE8zd1HoA@mail.gmail.com>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
- <20240108204909.564514-26-dwmw2@infradead.org>
- <4acd6d32-acf1-4b2b-b535-fb5082d4fe4c@redhat.com>
+ <20240108204909.564514-2-dwmw2@infradead.org>
+ <CAFEAcA8JtnXezmo-h-rFZcbqsN_-CnOYCTUfLfd_q=F0702U9g@mail.gmail.com>
+ <d501dfc14c7b109844ff6d28f6be3bba86a1be89.camel@infradead.org>
+ <CAFEAcA98ZW_1DtKvs-ZU=R9DOBwmnLPwnTBqPbTv7jE8zd1HoA@mail.gmail.com>
 Content-Type: multipart/signed; micalg="sha-256";
  protocol="application/pkcs7-signature"; 
- boundary="=-/kRElRqF5aoNJPm8553N"
+ boundary="=-O+xHr9kPrliOkD3fAySJ"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
@@ -128,88 +133,156 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P9bQxrvg24O3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: s+tYtrJ++6Ws
 
 
---=-/kRElRqF5aoNJPm8553N
+--=-O+xHr9kPrliOkD3fAySJ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, 2024-01-26 at 16:14 +0100, Thomas Huth wrote:
+On Fri, 2024-01-26 at 15:33 +0000, Peter Maydell wrote:
+> On Fri, 26 Jan 2024 at 15:20, David Woodhouse <dwmw2@infradead.org> wrote=
+:
+> >=20
+> > On Fri, 2024-01-26 at 14:43 +0000, Peter Maydell wrote:
+> > >=20
+> > > > +NICInfo *qemu_find_nic_info(const char *typename, bool match_defau=
+lt,
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 const char *alias);
+> > > > +bool qemu_configure_nic_device(DeviceState *dev, bool match_defaul=
+t,
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char *alias);
+> > > > +DeviceState *qemu_create_nic_device(const char *typename, bool mat=
+ch_default,
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const=
+ char *alias);
+> > >=20
+> > > Could we have doc comments that document the purpose and API
+> > > for these new global functions, please?
+> >=20
+> > Like this? I deliberately fatfingered the argument names and didn't
+> > even get a build warning, and I don't see any actual *documentation*
+> > being generated with it...?
 >=20
-> > =C2=A0=C2=A0 /* Legacy helper function.=C2=A0 Should go away when machi=
-ne config files are
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 implemented.=C2=A0 */
-> > -void smc91c111_init(NICInfo *nd, uint32_t base, qemu_irq irq)
-> > +void smc91c111_init(uint32_t base, qemu_irq irq)
-> > =C2=A0=C2=A0 {
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 DeviceState *dev;
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 SysBusDevice *s;
-> > =C2=A0=C2=A0=20
-> > -=C2=A0=C2=A0=C2=A0 qemu_check_nic_model(nd, "smc91c111");
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev =3D qdev_new(TYPE_SMC91C111);
-> > -=C2=A0=C2=A0=C2=A0 qdev_set_nic_properties(dev, nd);
-> > +=C2=A0=C2=A0=C2=A0 qemu_configure_nic_device(dev, true, NULL);
+> We use the doc comment format to allow for potential future
+> documentation generation, but it's only actually generated
+> if there's a .rst file somewhere under docs/ that has a
+> kernel-doc:: directive referencing the .h file (for instance
+> there's one in docs/devel/memory.rst that results in
+> https://www.qemu.org/docs/master/devel/memory.html#api-reference=C2=A0)
 >=20
-> Wouldn't it be possible to use qemu_create_nic_device() here, too?
+> For almost all internal functions, we set the relatively low
+> bar of "have a doc comment so people reading the header file
+> can see what the functions do". Where there's a more complex
+> subsystem that merits its own hand-written documentation
+> under docs/devel, then if the author of that documentation
+> is enthusiastic they can clean up and pull in specific headers
+> to add autogenerated docs. But the primary audience is the
+> human reader of the .h file.
 
-Not easily.
+Ack, thanks.
 
-The existing callers of smc91c111_init() differ. Some (e.g. mainstone)
-just create the device unconditionally, ignoring --nodefaults. Others
-(e.g. integratorcp) are better behaved and do it only if a
-configuration exists. (Citation of existing patch reinstated below)
+> > diff --git a/include/net/net.h b/include/net/net.h
+> > index 25ea83fd12..14614b0a31 100644
+> > --- a/include/net/net.h
+> > +++ b/include/net/net.h
+> > @@ -207,10 +207,46 @@ int qemu_show_nic_models(const char *arg, const c=
+har *const *models);
+> > =C2=A0void qemu_check_nic_model(NICInfo *nd, const char *model);
+> > =C2=A0int qemu_find_nic_model(NICInfo *nd, const char * const *models,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ const char *default_model);
+> > +/**
+> > + * qemu_find_nic_info: Obtain NIC configuration information
+> > + * @typename: Name of device object type
+> > + * @match_default: Match NIC configurations with no model specified
+> > + * @alias: Additional model string to match (for user convenience and
+> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 backward compatibil=
+ity).
+> > + *
+> > + * Search for a NIC configuration matching the NIC model constraints.
+> > + */
+> > =C2=A0NICInfo *qemu_find_nic_info(const char *typename, bool match_defa=
+ult,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 const char *alias);
+> > +/**
+> > + * qemu_configure_nic_device: Apply NIC configuration to a given devic=
+e
+> > + * @dev: Network device to be configured
+> > + * @match_default: Match NIC configurations with no model specified
+> > + * @alias: Additional model string to match
+> > + *
+> > + * Search for a NIC configuration for the provided device, using the
+> > + * additionally specified matching constraints. If found, apply the
+> > + * configuration using qdev_set_nic_properties() and return %true.
+> > + *
+> > + * This is used by platform code which creates the device anyway,
+> > + * regardless of whether there is a configuration for it. This tends
+> > + * to be platforms which ignore `--nodefaults` and create net devices
+> > + * anyway. This behaviour is not advised for new platforms; use the
+> > + * qemu_create_nic_device() function instead, which creates the device
+> > + * only when it is configured.
+>=20
+> I disagree about this paragraph. The behaviour we want for new
+> platforms is:
+>=20
+> =C2=A0* If this is modelling some board where the ethernet device is
+> =C2=A0=C2=A0 always present (eg it is soldered on to the board, or it is
+> =C2=A0=C2=A0 a part of the SoC that the board uses), then always create
+> =C2=A0=C2=A0 that device
+> =C2=A0* If the hardware being modelled has the ethernet device as an
+> =C2=A0=C2=A0 optional device (eg physically removable like a PCI card),
+> =C2=A0=C2=A0 then the board should arrange that --nodefaults causes it to
+> =C2=A0=C2=A0 not be created
+>=20
 
-And even if we wanted to convert the well-behaved ones to use
-qemu_create_nic_device() directly, we'd still have to explicitly set up
-the base address and IRQ, which smc91c111_init() currently does for us.
+Ack. Scratch the 'better behaved' part of my last response to Thomas
+about smc91c111 too then :)
 
-> --- a/hw/arm/integratorcp.c
-> +++ b/hw/arm/integratorcp.c
-> @@ -666,8 +666,9 @@ static void integratorcp_init(MachineState *machine)
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x1d000000);
->      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[25]);
-> =20
-> -    if (nd_table[0].used)
-> -        smc91c111_init(&nd_table[0], 0xc8000000, pic[27]);
-> +    if (qemu_find_nic_info("smc91c111", true, NULL)) {
-> +        smc91c111_init(0xc8000000, pic[27]);
-> +    }
-> =20
->      sysbus_create_simple("pl110", 0xc0000000, pic[22]);
-> =20
-> diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-> index 68329c4617..84dbb6e525 100644
-> --- a/hw/arm/mainstone.c
-> +++ b/hw/arm/mainstone.c
-> @@ -153,8 +153,7 @@ static void mainstone_common_init(MachineState *machi=
-ne,
->              qdev_get_gpio_in(mst_irq, S1_IRQ),
->              qdev_get_gpio_in(mst_irq, S1_CD_IRQ));
-> =20
-> -    smc91c111_init(&nd_table[0], MST_ETH_PHYS,
-> -                    qdev_get_gpio_in(mst_irq, ETHERNET_IRQ));
-> +    smc91c111_init(MST_ETH_PHYS, qdev_get_gpio_in(mst_irq, ETHERNET_IRQ)=
-);
-> =20
->      mainstone_binfo.board_id =3D arm_id;
->      arm_load_kernel(mpu->cpu, machine, &mainstone_binfo);
+How's this:
+
+/**
+ * qemu_configure_nic_device: Apply NIC configuration to a given device
+ * @dev: Network device to be configured
+ * @match_default: Match NIC configurations with no model specified
+ * @alias: Additional model string to match
+ *
+ * Search for a NIC configuration for the provided device, using the
+ * additionally specified matching constraints. If found, apply the
+ * configuration using qdev_set_nic_properties() and return %true.
+ *
+ * This is used by platform code which creates the device anyway,
+ * regardless of whether there is a configuration for it. This tends
+ * to be platforms which ignore `--nodefaults` and create net devices
+ * anyway, for example because the Ethernet device on that board is
+ * always physically present.
+ */
 
 
---=-/kRElRqF5aoNJPm8553N
+
+--=-O+xHr9kPrliOkD3fAySJ
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -301,24 +374,24 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQwMTI2MTUzNzQ0WjAvBgkqhkiG9w0BCQQxIgQgn0pevK72
-qTI/Ibl3g9e1xiWLT7Ib8eNBawnziqIydaUwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQwMTI2MTU0MzE1WjAvBgkqhkiG9w0BCQQxIgQgSDIxD5gE
+D+5SDr0LDxZ9BEbL0lXHpFOZ9yA+sS6n/QQwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCeFci5p3TjbGKhnEVlR1OCSGvysvXRv1MM
-lKLutpcrnA352pzSP+jWhNa9xt2YhHT4YpLtWSIL4/l1GPG3IXil02cBkizzu01K4yylNQCCVQFk
-8HURdOlyEr/0GOZN3w5SmRLO12Lojh0YB3PrQowb5yIqoKt+HwyvnNci9R2RWwkVDtTJm570Dvp6
-jLxWtF96YmqC0vi2RbIVUrg/BKcCvgfpN3/L445KsthgFUCGcfQXyR8kapSCDlZgOeogMW7pObVK
-XoJRsoUH/4lKX5bnPUdafyMzOyi+RX1jrEju49/w1XA2ZoPNcBkRoau5qaRlsWka3VmdAuA97evK
-tjqe/6Ie3pUiawUCBYg5cqq1Z+/PS8uGnQlX4F/J2W1t4bE+Fskb9Dz+8512SxLlSLWm/LZ7X/5Y
-jQAX32qbusHxi7nrnY8YN3fy+HWGBP5iOd7NR9zFyPSDLzMBU5zB1J4NyUsGygmsy+fcJzBoWr30
-/huk732ISGgoxcluZplBHalOneXd0f0aspgsSm+Mfyjg+w43zWSlWhJ6SP61A9Tgl37EkjFK5YUn
-ofUD6c6J2y1ZvtuG43ce3+NnRkWpw3rdYlS6MT08rrtU5JvZ8WzuOA93FnlnOsF/2Px0VvAyyUfy
-UILzUXvN0W8tj3TX+qx4ARz3IpwGRDBij73htJGk6wAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCwMsmI2mLopjEfvfRUGfMrf3Um3JeWqXyV
+bpj+b4tI9uCBCz3JxzWjNBaCkwq6zU3V6f3cCe7bnSBNUP1DZqtIXrT24CgFTkgMhhKbG+SL8j7X
+5c5CBm/PCysA4Yc3Yr1ACKhb0LrEaqLpWZNJcnyLoYEHnXgJvcHeSkVrHBbW9U0zh1OmW2sIJUEQ
+2yVI0vmNoxGbhpl/gm+nNae4C/SCMmLeg6P/O5L6BQy++BNy6bjo4wD4s0XmuMkVYjHgXzI7NbZx
+8yb+3Hc0l51dIcc/8DQe+s5N7LjikYzXgzxoN6d5rBZd0IH/oPHD2mom2yHjy+ovBfnXgyihvX1S
+Hfq49zj7LdtWIRgzLtXZTUFNC11fHlH2h5bagz6EI7Bl8p+l5Fd6nLyYwf65mUOcF9lp1108VbIW
+NRo2smND4W6M5EKFdJWrUemGwDXMq9OSoGph7CYyqpw3ZZk7J+s4aXFRAGDTAKY6lSjCDC5KCaBa
+9vTxhv3ZiML8/B9xN3J1K3d53WnU2HSORd7qqKHCe0MT7DSeeK3jUGhTaqDJPZAviQ8KNB/h2kbM
+Q8kHTvCx1kW4gql4DrdSZ/AcG6ot0zH/cuRs8PkDdOQV3+YnQNatgTeYvE9xZtIavQoq7RxCebk3
+uXQ/nKqWIZ9I5xkOHWqqDZITbHf5yk6cwrkVLNZ19QAAAAAAAA==
 
 
---=-/kRElRqF5aoNJPm8553N--
+--=-O+xHr9kPrliOkD3fAySJ--

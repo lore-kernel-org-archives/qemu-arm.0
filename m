@@ -1,402 +1,214 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1008589ejc;
-        Fri, 26 Jan 2024 09:09:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFR4mLtDOIQ0g6ab9oJmwEHwFkuBfiDyzrxL+qJ64/O2aeAQ958ZsQPytL6xveGccL42qnq
-X-Received: by 2002:a05:6a20:2529:b0:19c:1c59:4b39 with SMTP id j41-20020a056a20252900b0019c1c594b39mr5741pzd.67.1706288981074;
-        Fri, 26 Jan 2024 09:09:41 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706288981; cv=pass;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023618ejc;
+        Fri, 26 Jan 2024 09:33:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGT8XKFynU6Tr2I1+Z8C6/lPJnAXm/Ng2gjl3uBBtjs9+n8gkHLdf/Qr8C2Vg1PLXllfPHq
+X-Received: by 2002:a05:620a:1a9f:b0:783:6de8:e61b with SMTP id bl31-20020a05620a1a9f00b007836de8e61bmr2252882qkb.62.1706290433596;
+        Fri, 26 Jan 2024 09:33:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290433; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8hgBxN1IzQJS1H+KO7vd8R+6zMSw6vygvvgLpFr1/GPfUrZBQtA/kLNjHndp39WOX
-         DNWmeB8QifGJMk7NC+tbyk01Dj6S7uDAr6w6dS7IMkRTBnBgSdsmk3Jr1XutUBPcZA3s
-         MrpRLpB7wrbKeWZ8a9VReixVWiEUOEnPPthw8ElHeECX0xjHrzw1+o5bikIjz5A6J9PF
-         Ww+junwvpq15sgiEhvcSxDx8ZqUc7nhAF0AIQ1gc/iBX7pvADkiwCVqa64wkcqTvhmqT
-         ThpVhoPLhdl2OePg+ltzMfntnMr5AG3UOmjoIgGT0Jbm4VWnUYLAKw7Z+bgEZxLiPoVB
-         CG5w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
-         :dkim-signature;
-        bh=C0SzL+zRQ0KIywrJY/fgdSQ4/8H3RGQGGgFdpnwjnFM=;
-        fh=+pcJV+cv1HGZ3OTyEd9Qqu0BQgfYMY+seBXzNP2XHX0=;
-        b=uZ27W2vNSZ1xYibj7zb1o3AD3yiCNw9wgGpckwViabbf90v4n5Sj1Nc96BppKY8Dsb
-         ZgbPe4NL0dnowOglGsLGInSGPeu1dN2E4KlX0ftIMoMCS8Sm2tfhE6AeXZA3E1qS4GoL
-         b0GRItevrvhgZFLpFONs4FSAhtib8E4jwG4ygti524vV6ObAMGBX36R86DKvzDFpKsQy
-         exEVsFJc5AZVrzoVuW+AYx0Q6iH+aOUTW+uegORWaZ6/EQ9uA3ANvLxuFvzUueIdU3vk
-         iQX/WwdM3odbaSx2uXlS7+dahN/7enNvnJvRDIpijmPX1uOz9+qa3BiLmFhjJOENF6JK
-         2z1A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HAgEIMGH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id r6-20020aa78446000000b006dbe7073ce1si1427272pfn.201.2024.01.26.09.09.40
+        b=aTa4prTf+PhneA17VWgWLC1jlrutzIkUsgdkQ49B0qeKYFYaLi5r8+RJFKXVjg1idr
+         rheWdjA5nB0asHDCBsDTP3sLP+DgiVGFgdupT1039UycKXVXlcNZGRmyBQy6q1rKDhTj
+         WOVMf6s3BTm0Gx/wHc01yZ0ch6PzIlo2G2gOkBF9wS1icnIzvUMQVoYjCzDEQHEOdZ11
+         q2hhJZa5zILLAqn4Hyfoo23BDxcebgA2UNdn12bUXsYTAST7xeE/SMeo9mr6+i0x0Scg
+         oGxBIgAIACqkr+8TFfekck3UT9xPWfz/U5cBpZUANOt3v2IIFn50LR86cGHoH0nH0pn3
+         nS7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mMqmzYHdP9y/z29knSdyyl/j1smIAiKPsHboaiDoM8A=;
+        fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
+        b=fp2V6LdR92GwWpI3xCKq06gg0FzLsYD10WdaN1BsMBBz9yHOHFUsdRCAmMBYInHTf6
+         sMHKv+LCzOw6cAM+ikkMs+Q0vynNz5vfUBE6gcBiVm9AXvQDZG8I2d2Lsnrporul6Zmd
+         c/k4DUByFBk5vWCFJ22rLZVmSNSzr2kzCTpFIOPGMM1JdzAsBXEXKUXompz0DTvFrnd2
+         3vNYvlAA9jd91P7vcJhJQE8fyBpL2GfXxDy0NhRrWnqsGogLYUIYp81SAMrIRtno3L2y
+         bysv5Nucjw2i3UP6UH3uWrog+2EqL1MXQv9AbpP/vmtDX7G+eQTdEbUVRrz6KucuzByc
+         /8Yw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=IVHbkUTV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b6-20020ac85bc6000000b0042a3927b852si1603963qtb.294.2024.01.26.09.33.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 09:09:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 09:33:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HAgEIMGH;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7184-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 6ED82281F1A
-	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 17:09:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 550A61DFFC;
-	Fri, 26 Jan 2024 17:09:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HAgEIMGH"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B2D01DDEC
-	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 17:09:32 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706288975; cv=none; b=mmxMwkdAAESVBlXgbcTRiD3oCJ1N73/ucHg1R+g+ohbjTiqtnuaj+R+f1fbZB0MpomT6ZZAG48J/8R5d5W+LTUPmSr5ScRjr9545TG0mMSD3IvwJyepsRAW9AXkonQaoNbyDSPlKChhXhJBI/zFPHRPHhT7xJItMLrS6nNvN2aU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706288975; c=relaxed/simple;
-	bh=1Itxm1FlK+7eTWBtRV8lcts+Jbjl9/9Cqttu314keig=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=e40HFqwPdSVgewXq4/WqwEhJCReI9GeR+4lyyLeYI31qsX9x9KA6VsYxd2DV2s9URReDiHlk0NiXPfqTVbju4TLPHHJt9pPbXQ4XxonNEbDdi1eivOLVbNKeVMepOKsSkonvwiOfZ64fAFLENSBumpJBOkl9KvzFnD/mSvpB1m8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=HAgEIMGH; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1706288971;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=C0SzL+zRQ0KIywrJY/fgdSQ4/8H3RGQGGgFdpnwjnFM=;
-	b=HAgEIMGH/JaNXn+ECB7Gbzj6cmJcTAZissice4IFVegsQ2Jto6chW0xGgXQbrzDbMpvp+a
-	FcmsLLarrUJPNx6bB7WDgrW9y9BKsAoP62aEK0jCbs6MeM1FQWJtqsfbwBG75jbFB5j1MB
-	jCjTYz6OvVqK06Hy1Wye+X8eQFY71ng=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-339-GoFDshduMBif9C4KcHWOSA-1; Fri, 26 Jan 2024 12:09:24 -0500
-X-MC-Unique: GoFDshduMBif9C4KcHWOSA-1
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-429a8494838so9071351cf.0
-        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 09:09:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706288963; x=1706893763;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=C0SzL+zRQ0KIywrJY/fgdSQ4/8H3RGQGGgFdpnwjnFM=;
-        b=EwoofVAosAQN9wEF4znVBCNa+KOzbCCdHALR12NZQwn2Nbt7Raim8+rgl5dGXm0UHJ
-         4nt/aEifkeFVC9UglXrsm10+FEQdDHlTMNIXRjb5j9MCoy+pwf+76yHXMKX5og8YNQob
-         T+OC31w375Dki3MKMGG25KPhOGpuQIfeU811W5YNUDMtYyaR2U0J06W83gKiicAqQVsR
-         DCjbiSnAZZQnGFaHyw66msGDfVP5Q/aTz3qKXJczK3W2hphaD8F6oqaznccaKVqqkfHp
-         v7Wn11Zw93AOAzXkl64Hk/u3qctPUeeWC9tUDZmRRDXC4hLIqX/FkHg19aRVdXJ+A1cq
-         7tHw==
-X-Gm-Message-State: AOJu0YznXtPiP43miw0PUTb1D/Xv8k5cy1pMryyLhWHoWZ+XlrVQtgjT
-	UgEcT04ivcSiVKozHIdsK/PxwoqXFnVwNf6diSGi8/RmTHqdzffQpNGYNN1dJQXpqC/g30nDArQ
-	QyolQ7Z25TTl8L7rVOUNTJuXdM0RM2gc2YV5w+XAMJm75JSRGmw==
-X-Received: by 2002:ac8:5791:0:b0:42a:68be:493b with SMTP id v17-20020ac85791000000b0042a68be493bmr151990qta.51.1706288962998;
-        Fri, 26 Jan 2024 09:09:22 -0800 (PST)
-X-Received: by 2002:ac8:5791:0:b0:42a:68be:493b with SMTP id v17-20020ac85791000000b0042a68be493bmr151967qta.51.1706288962670;
-        Fri, 26 Jan 2024 09:09:22 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-176-119.web.vodafone.de. [109.43.176.119])
-        by smtp.gmail.com with ESMTPSA id ex7-20020a05622a518700b0042994b3c20dsm677135qtb.29.2024.01.26.09.09.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 26 Jan 2024 09:09:22 -0800 (PST)
-Message-ID: <135941df-2f8b-4fd5-91c7-40b413e6eae3@redhat.com>
-Date: Fri, 26 Jan 2024 18:09:08 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] bulk: Prefer fast cpu_env() over slower CPU QOM cast
- macro
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=IVHbkUTV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rTQ4Q-00072F-Nj; Fri, 26 Jan 2024 12:32:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rTQ4M-000713-HL; Fri, 26 Jan 2024 12:32:46 -0500
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1rTQ4K-0001dK-CC; Fri, 26 Jan 2024 12:32:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=mMqmzYHdP9y/z29knSdyyl/j1smIAiKPsHboaiDoM8A=; b=IVHbkUTVu9QS37/ZYsTzfIizrG
+ LPu/yqj/9DjNLjK5MqQJcDbaTTqxAzfRFUEkMm4afH9tPBzreb9YiJxUjaXrKpupvuupxwI0lVPkN
+ au0VGXkd5EMo6iuMUoLPFu4ZysSeYj85Cv6MjA8l3VInOlHCJOupJpehhmxdcdzfR7Qu12dwsiaDB
+ SwG+ZiJW3i5w1rLjjO/Er74woIQaiBQeJEMYx2XB+9mBVzYV+Q3RAnbYGraFAVlmSnA+NPgXLWxER
+ 0D1IBqmMMJjRwNalpz7QFwfhmoe/1hcEubjkQv2F5IzQDKtcYcoD3dgGB4HWxfKj248xTcE7A0nu5
+ HRskgV4g==;
+Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
+ by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
+ id 1rTQ4A-0000000EKVE-1KWX; Fri, 26 Jan 2024 17:32:35 +0000
+Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
+ Hat Linux)) id 1rTQ4B-00000001eoc-0Zcj;
+ Fri, 26 Jan 2024 17:32:35 +0000
+From: David Woodhouse <dwmw2@infradead.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?=
- <fbarrat@linux.ibm.com>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
+ Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
+ Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Alexander Graf
- <agraf@csgraf.de>, Michael Rolnik <mrolnik@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, David Woodhouse
- <dwmw2@infradead.org>, Laurent Vivier <laurent@vivier.eu>,
- Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Huacai Chen <chenhuacai@kernel.org>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, Stafford Horne <shorne@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>, xen-devel@lists.xenproject.org,
- kvm@vger.kernel.org
-References: <20240125165648.49898-1-philmd@linaro.org>
- <20240125165648.49898-3-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240125165648.49898-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v4 47/47] net: make nb_nics and nd_table[] static in net/net.c
+Date: Fri, 26 Jan 2024 17:25:24 +0000
+Message-ID: <20240126173228.394202-48-dwmw2@infradead.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
+References: <20240126173228.394202-1-dwmw2@infradead.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 3mzvIdnOBJ6y
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DSiZ1w2YT03r
 
-On 25/01/2024 17.56, Philippe Mathieu-Daudé wrote:
-> Mechanical patch produced running the command documented
-> in scripts/coccinelle/cpu_env.cocci_template header.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/i386/hvf/vmx.h                   |  9 +++----
->   hw/i386/vmmouse.c                       |  6 ++---
->   hw/i386/xen/xen-hvm.c                   |  3 +--
->   hw/intc/arm_gicv3_cpuif_common.c        |  3 +--
->   hw/ppc/mpc8544_guts.c                   |  3 +--
->   hw/ppc/pnv.c                            |  3 +--
->   hw/ppc/pnv_xscom.c                      |  3 +--
->   hw/ppc/ppce500_spin.c                   |  3 +--
->   hw/ppc/spapr.c                          |  3 +--
->   hw/ppc/spapr_caps.c                     |  6 ++---
->   target/alpha/cpu.c                      | 21 +++++----------
->   target/alpha/gdbstub.c                  |  6 ++---
->   target/alpha/helper.c                   | 12 +++------
->   target/alpha/mem_helper.c               |  9 +++----
->   target/arm/cpu.c                        | 15 ++++-------
->   target/arm/debug_helper.c               |  6 ++---
->   target/arm/gdbstub.c                    |  6 ++---
->   target/arm/gdbstub64.c                  |  6 ++---
->   target/arm/helper.c                     |  9 +++----
->   target/arm/hvf/hvf.c                    | 12 +++------
->   target/arm/kvm.c                        |  3 +--
->   target/arm/ptw.c                        |  3 +--
->   target/arm/tcg/cpu32.c                  |  3 +--
->   target/avr/cpu.c                        | 21 +++++----------
->   target/avr/gdbstub.c                    |  6 ++---
->   target/avr/helper.c                     |  9 +++----
->   target/cris/cpu.c                       |  3 +--
->   target/cris/gdbstub.c                   |  9 +++----
->   target/cris/helper.c                    | 12 +++------
->   target/cris/translate.c                 |  3 +--
->   target/hppa/cpu.c                       |  6 ++---
->   target/hppa/int_helper.c                |  6 ++---
->   target/hppa/mem_helper.c                |  3 +--
->   target/i386/arch_memory_mapping.c       |  3 +--
->   target/i386/cpu-dump.c                  |  3 +--
->   target/i386/cpu.c                       | 36 +++++++++----------------
->   target/i386/helper.c                    | 30 +++++++--------------
->   target/i386/hvf/hvf.c                   |  6 ++---
->   target/i386/hvf/x86.c                   |  3 +--
->   target/i386/hvf/x86_emu.c               |  6 ++---
->   target/i386/hvf/x86_task.c              | 10 +++----
->   target/i386/hvf/x86hvf.c                |  6 ++---
->   target/i386/kvm/kvm.c                   |  6 ++---
->   target/i386/kvm/xen-emu.c               | 30 +++++++--------------
->   target/i386/tcg/sysemu/bpt_helper.c     |  3 +--
->   target/i386/tcg/tcg-cpu.c               | 12 +++------
->   target/i386/tcg/user/excp_helper.c      |  3 +--
->   target/i386/tcg/user/seg_helper.c       |  3 +--
->   target/m68k/cpu.c                       | 30 +++++++--------------
->   target/m68k/gdbstub.c                   |  6 ++---
->   target/m68k/helper.c                    |  3 +--
->   target/m68k/m68k-semi.c                 |  6 ++---
->   target/m68k/op_helper.c                 |  9 +++----
->   target/m68k/translate.c                 |  3 +--
->   target/microblaze/helper.c              |  3 +--
->   target/microblaze/translate.c           |  3 +--
->   target/mips/cpu.c                       |  9 +++----
->   target/mips/gdbstub.c                   |  6 ++---
->   target/mips/kvm.c                       | 27 +++++++------------
->   target/mips/sysemu/physaddr.c           |  3 +--
->   target/mips/tcg/exception.c             |  3 +--
->   target/mips/tcg/op_helper.c             |  3 +--
->   target/mips/tcg/sysemu/special_helper.c |  3 +--
->   target/mips/tcg/sysemu/tlb_helper.c     |  6 ++---
->   target/mips/tcg/translate.c             |  3 +--
->   target/nios2/cpu.c                      |  9 +++----
->   target/nios2/helper.c                   |  3 +--
->   target/nios2/nios2-semi.c               |  6 ++---
->   target/openrisc/gdbstub.c               |  3 +--
->   target/openrisc/interrupt.c             |  6 ++---
->   target/openrisc/translate.c             |  3 +--
->   target/ppc/cpu_init.c                   |  9 +++----
->   target/ppc/excp_helper.c                |  3 +--
->   target/ppc/gdbstub.c                    | 12 +++------
->   target/ppc/kvm.c                        |  6 ++---
->   target/ppc/ppc-qmp-cmds.c               |  3 +--
->   target/ppc/user_only_helper.c           |  3 +--
->   target/riscv/arch_dump.c                |  6 ++---
->   target/riscv/cpu.c                      | 15 ++++-------
->   target/riscv/cpu_helper.c               | 13 +++------
->   target/riscv/debug.c                    |  9 +++----
->   target/riscv/gdbstub.c                  |  6 ++---
->   target/riscv/kvm/kvm-cpu.c              |  6 ++---
->   target/riscv/tcg/tcg-cpu.c              |  9 +++----
->   target/riscv/translate.c                |  3 +--
->   target/rx/gdbstub.c                     |  6 ++---
->   target/rx/helper.c                      |  6 ++---
->   target/rx/translate.c                   |  3 +--
->   target/s390x/cpu-dump.c                 |  3 +--
->   target/s390x/gdbstub.c                  |  6 ++---
->   target/s390x/helper.c                   |  3 +--
->   target/s390x/kvm/kvm.c                  |  6 ++---
->   target/s390x/tcg/excp_helper.c          |  9 +++----
->   target/s390x/tcg/translate.c            |  3 +--
->   target/sh4/cpu.c                        | 15 ++++-------
->   target/sh4/gdbstub.c                    |  6 ++---
->   target/sh4/helper.c                     |  9 +++----
->   target/sh4/translate.c                  |  3 +--
->   target/sparc/cpu.c                      | 12 +++------
->   target/sparc/gdbstub.c                  |  3 +--
->   target/sparc/int32_helper.c             |  3 +--
->   target/sparc/int64_helper.c             |  3 +--
->   target/sparc/ldst_helper.c              |  6 ++---
->   target/sparc/mmu_helper.c               | 15 ++++-------
->   target/sparc/translate.c                |  3 +--
->   target/tricore/cpu.c                    | 12 +++------
->   target/tricore/gdbstub.c                |  6 ++---
->   target/tricore/helper.c                 |  3 +--
->   target/tricore/translate.c              |  3 +--
->   target/xtensa/dbg_helper.c              |  3 +--
->   target/xtensa/exc_helper.c              |  3 +--
->   target/xtensa/gdbstub.c                 |  6 ++---
->   target/xtensa/helper.c                  |  9 +++----
->   target/xtensa/translate.c               |  3 +--
->   114 files changed, 273 insertions(+), 548 deletions(-)
+From: David Woodhouse <dwmw@amazon.co.uk>
 
-A huge patch ... I wonder whether it would make sense to split it up by 
-target architecture to ease the review?
+Also remove the stale declaration of host_net_devices; the actual
+definition was removed long ago in commit 7cc28cb06104 ("net: Remove
+the deprecated 'host_net_add' and 'host_net_remove' HMP commands")
 
-...
-> diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
-> index a8d014d09a..eb0613bfbe 100644
-> --- a/hw/i386/vmmouse.c
-> +++ b/hw/i386/vmmouse.c
-> @@ -74,8 +74,7 @@ struct VMMouseState {
->   
->   static void vmmouse_get_data(uint32_t *data)
->   {
-> -    X86CPU *cpu = X86_CPU(current_cpu);
-> -    CPUX86State *env = &cpu->env;
-> +    CPUX86State *env = cpu_env(CPU(current_cpu));
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+ include/net/net.h | 4 ----
+ net/net.c         | 3 +++
+ system/globals.c  | 2 --
+ 3 files changed, 3 insertions(+), 6 deletions(-)
 
-No need for the CPU() cast here, current_cpu is already
-of type "CPUState *".
-
->   
->       data[0] = env->regs[R_EAX]; data[1] = env->regs[R_EBX];
->       data[2] = env->regs[R_ECX]; data[3] = env->regs[R_EDX];
-> @@ -84,8 +83,7 @@ static void vmmouse_get_data(uint32_t *data)
->   
->   static void vmmouse_set_data(const uint32_t *data)
->   {
-> -    X86CPU *cpu = X86_CPU(current_cpu);
-> -    CPUX86State *env = &cpu->env;
-> +    CPUX86State *env = cpu_env(CPU(current_cpu));
-
-dito.
-
->       env->regs[R_EAX] = data[0]; env->regs[R_EBX] = data[1];
->       env->regs[R_ECX] = data[2]; env->regs[R_EDX] = data[3];
-> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-> index f42621e674..3d3ae49be5 100644
-> --- a/hw/i386/xen/xen-hvm.c
-> +++ b/hw/i386/xen/xen-hvm.c
-> @@ -487,8 +487,7 @@ static void regs_to_cpu(vmware_regs_t *vmport_regs, ioreq_t *req)
->   
->   static void regs_from_cpu(vmware_regs_t *vmport_regs)
->   {
-> -    X86CPU *cpu = X86_CPU(current_cpu);
-> -    CPUX86State *env = &cpu->env;
-> +    CPUX86State *env = cpu_env(CPU(current_cpu));
-
-dito.
-
->       vmport_regs->ebx = env->regs[R_EBX];
->       vmport_regs->ecx = env->regs[R_ECX];
-...
-> diff --git a/hw/ppc/mpc8544_guts.c b/hw/ppc/mpc8544_guts.c
-> index a26e83d048..3c6a852ad4 100644
-> --- a/hw/ppc/mpc8544_guts.c
-> +++ b/hw/ppc/mpc8544_guts.c
-> @@ -71,8 +71,7 @@ static uint64_t mpc8544_guts_read(void *opaque, hwaddr addr,
->                                     unsigned size)
->   {
->       uint32_t value = 0;
-> -    PowerPCCPU *cpu = POWERPC_CPU(current_cpu);
-> -    CPUPPCState *env = &cpu->env;
-> +    CPUPPCState *env = cpu_env(CPU(current_cpu));
-
-dito ...
-
-I'll stop here, please respin with the cpu_env(CPU(current_cpu)) fixed to
-cpu_env(current_cpu), and please split the patch by target CPU types.
-
-  Thanks,
-   Thomas
+diff --git a/include/net/net.h b/include/net/net.h
+index 588ee55f28..b1f9b35fcc 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -301,10 +301,6 @@ struct NICInfo {
+     int nvectors;
+ };
+ 
+-extern int nb_nics;
+-extern NICInfo nd_table[MAX_NICS];
+-extern const char *host_net_devices[];
+-
+ /* from net.c */
+ extern NetClientStateList net_clients;
+ bool netdev_is_modern(const char *optstr);
+diff --git a/net/net.c b/net/net.c
+index d705e9b0fd..a2f0c828bb 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -77,6 +77,9 @@ static NetdevQueue nd_queue = QSIMPLEQ_HEAD_INITIALIZER(nd_queue);
+ 
+ static GHashTable *nic_model_help;
+ 
++static int nb_nics;
++static NICInfo nd_table[MAX_NICS];
++
+ /***********************************************************/
+ /* network device redirectors */
+ 
+diff --git a/system/globals.c b/system/globals.c
+index e83b5428d1..b6d4e72530 100644
+--- a/system/globals.c
++++ b/system/globals.c
+@@ -36,8 +36,6 @@ int display_opengl;
+ const char* keyboard_layout;
+ bool enable_mlock;
+ bool enable_cpu_pm;
+-int nb_nics;
+-NICInfo nd_table[MAX_NICS];
+ int autostart = 1;
+ int vga_interface_type = VGA_NONE;
+ bool vga_interface_created;
+-- 
+2.43.0
 

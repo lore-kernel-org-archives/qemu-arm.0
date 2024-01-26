@@ -1,112 +1,89 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp817342ejc;
-        Fri, 26 Jan 2024 03:41:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHqTDYxnaQJRwebN/Qw2ytPZ/cK87uWfyGIJKW1v3aDCTeJ/rgBWS4T9G3xFkSs8FAlNYL/
-X-Received: by 2002:ad4:5dec:0:b0:686:1f2:4c00 with SMTP id jn12-20020ad45dec000000b0068601f24c00mr1161609qvb.117.1706269319283;
-        Fri, 26 Jan 2024 03:41:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706269319; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp834041ejc;
+        Fri, 26 Jan 2024 04:16:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFXkU76UqLn80/1F5V0rYw8cowH1zVMI/nW5lIYLpqbCKoHEvpFR0LSd7SO9q21AGoYM/GV
+X-Received: by 2002:ad4:5dec:0:b0:686:ab9a:e5ec with SMTP id jn12-20020ad45dec000000b00686ab9ae5ecmr1140425qvb.116.1706271403003;
+        Fri, 26 Jan 2024 04:16:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706271402; cv=none;
         d=google.com; s=arc-20160816;
-        b=bWnS3IZ0z+NWe43QhAvPj6G0KBjYo+h6vLCyhgxJ36G/Ev5DoBnutPpxvrZa2oUruA
-         p/wyGEQ/BLPGiOBYnNX2Ip5nTmP2bZqySivPx2FD6Or0MypJgmHDcEGmeX42s2oJ90YA
-         lUZ0KF3iiBcwIP8lIEiDtLHwPi/JyW16BkBDXpRTS8+FOPYkfewT6+AaoIw/xC0r6RES
-         utqZasNPdlA0cgBVJZejUwOBCVQzuSLPnzRgm22LRJq+XBlc6B47boHsbGIlU4rn7Dgi
-         QFb4YF4bhSGJ3BSoIdXph7tiXTDcVF/vosTeA/fwi0wtQrrtlt9X/sMdy/qDF6Wl0hpE
-         4X6Q==
+        b=JKK96AtnNPVrxZ0IYVjAuLNUbjQIedXq5ZwZz3Z4ucCE4i7OtKtWk5Tn/DCq7px5ll
+         KBJQTTkACA+P/fI3mV8Y4CbYDFwLmDsYV5gXQk1dfUGUTuI7fbhuBq5lMrMKH8WXuRqk
+         ST6qco7SB/OrQuxzRyZ5UpQupsSJ9nvXtkZ8RHLQeoIkASpSTB3MwBEoSe5WvztObpRs
+         9UXNsQG9JS1VEZxtuhC1HlJZcF3sqTy+GELCtI1UqVVnQhqPbz7VWVTiHiohIMyyEec1
+         BcySWeExwr1zowW+Ud9UYxo1Tj/B6KpRcOXRTZ0kq9iipqUeizrq+X3lmifoQn8af7fY
+         JToQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=smsoF7YI3d5cbf4R4RpQPesf7hMZC9hmlPQLc3Rlsus=;
-        fh=1IiNQ7hkkOGfrkc/eyoP4DLgzj+V841bm6RLp7ScrEo=;
-        b=FiQBdrjyWCxI3r63S6GPA/jbS/mmNk0ubHDBwY7vkWWmI/nVQQxhnv5t3d8Z/zwxO/
-         Kmr6qiitoSPYSjfrQ1qmR37oDNdD9IeGVFoGMz5v6aaSSKEkGL4qdJzriEIaXXjT3LD1
-         yShyNZmiXziGuHGoOBJo1M70bDgkjxq6nuhkiTbl5yXDa/RIHAVbjs0rg4G7t4gxQt/n
-         JT/vm4SfE5kgw0shjrrn5T6/GRP5T3vv6lOYI22pYHh3xbtWhpfzse4C47Cu29N3xNZD
-         u2Z2ix1b3uv8YEIPtugxzZ4Z5Vme5Gu84SiQ7wKxWO75BWeVE0c5yWmR8yUG1VW3V2MQ
-         4lhQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=vtGY2quM+SpW6miwGac8mBTj5E9nj7iktP11PLf8gHI=;
+        fh=JKTnjfgLebdI6Uppdd2zUuo3nA3KHnzgaaV6K84+8TY=;
+        b=aMUBCyWvgAS8qOMb2711ouJbOV8kt3upM1MplkOxEpp4KtS6+tC8Yn8LVZNbi6mSF/
+         7j8LKKlf1WoGC0OTiK2nsHUzJmMT4YU66FD+1SyW+n5J2gqvgOkFe478r6dFr27vT5Dv
+         WvcIz5Oy7dp6t5tn+1MKhUWSJFx0ddeNMbqhSOC5JCYCyaAJI/g9NClP8HcA1Eqe5sb9
+         yfNTaW3vw+u2yj+itl9rk4F0PDCaSeJb64P+wbTG+l6dyr/Hp49n+I0FPotXABC2YlK+
+         G6fDMBEhCrAdmbzN+G2eJceNHCNG/aI9AdJPxqF+xlVPfqnk5uoFsc5NVkm69o00vOdM
+         4Y6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QjHcb1d8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020ad45f4e000000b00681da55cc3fsi1106540qvg.249.2024.01.26.03.41.59
+        by mx.google.com with ESMTPS id im1-20020a056214246100b0067f60ad441bsi1199098qvb.88.2024.01.26.04.16.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 03:41:59 -0800 (PST)
+        Fri, 26 Jan 2024 04:16:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QjHcb1d8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTKaO-0001FW-4u; Fri, 26 Jan 2024 06:41:28 -0500
+	id 1rTL8Q-0004Uw-Hg; Fri, 26 Jan 2024 07:16:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rTKaM-0001El-NC
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 06:41:26 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rTKaJ-00040Y-Ri
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 06:41:26 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-40e7065b7bdso5057465e9.3
- for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 03:41:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706269281; x=1706874081; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=smsoF7YI3d5cbf4R4RpQPesf7hMZC9hmlPQLc3Rlsus=;
- b=QjHcb1d8guduzezdwcEFlZhLXaYZFffaEu6XqwNh9MWe00MaQGq1FVtuQa7RgdCIpi
- 4WkC+XIWi8/KSo4LJyum3SiF6xuyLH1gn3oc80N9YMGUPIFIuvyqMjVJmpKMC73vbPWE
- GPjrjHWifsls59t1zXf3svyl6jbI5OpRYa42heZt0xsKE2PBuLBJxyt7JNCtLXZLdG5O
- qbSW9MnOHybBnxh5Vbt8ZeJBjBVNu9Esrrwlvijk/MNOQt2h0RXejyEqKWhZMNXeA45n
- +ByEVMIAfmPwgVsaqLJQAfCDZ1L/jXOIAl0fMChf2RGMd+O4DWMvF353CR7oHWeNdoGm
- leFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706269281; x=1706874081;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=smsoF7YI3d5cbf4R4RpQPesf7hMZC9hmlPQLc3Rlsus=;
- b=VFBKUJaizPVsHoSVCfpNl0P9SR7OohyPAbednf7PkNlcNkRamN8Af9LyJY6SUSd+vM
- Go/hi3wXhnkyZ/zvq+0ile4T/bYe4Y0ZuriF2xSVT81X98aEQriRdo6lvNkpeZ5Kox9u
- ScG8//BwmsSEH7jHcZrjsNtHkVssKLW+Xqq5LxDBN3XnFLfcZe+Rv3LSsp616OudnwWs
- moRBDbQiIMA/s5dycJwEfcz2qvf0M9MP1mtBW9yE2KoNligw6xWEjuRMjPJaOrF4JPTc
- NOGPV4OMIIRJspXvFMiduK6kYPjjw2mg2v1X0aZC84wGBiJVmZicanB8vzP+p/fd5kbO
- wXEQ==
-X-Gm-Message-State: AOJu0YzdE0ogqtOTgQytMktWxHhB+zpoW/b2lS/483N1MldOemobbdrM
- Jq2N6IAEtW9yzNURVU1OU5LYijFOMVBMzROeY5TolO2g5i4bEVN16fM4xkfIBBKKPG0f2SC3Uta
- v9XZd/yfGox86Y/RJeZ+RPh1Wz+BbvB6lT7GoZw==
-X-Received: by 2002:a05:600c:354e:b0:40e:c71f:a92a with SMTP id
- i14-20020a05600c354e00b0040ec71fa92amr581460wmq.79.1706269280646; Fri, 26 Jan
- 2024 03:41:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTL8P-0004UW-52; Fri, 26 Jan 2024 07:16:37 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTL8L-00053L-Hu; Fri, 26 Jan 2024 07:16:36 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLxWG3KJ0z4wd4;
+ Fri, 26 Jan 2024 23:16:26 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLxW51TKHz4wd0;
+ Fri, 26 Jan 2024 23:16:16 +1100 (AEDT)
+Message-ID: <9d1368b2-b163-4fd7-90e6-c87a3e643bbc@kaod.org>
+Date: Fri, 26 Jan 2024 13:16:07 +0100
 MIME-Version: 1.0
-References: <20240125151931.83494-1-rayhan.faizel@gmail.com>
-In-Reply-To: <20240125151931.83494-1-rayhan.faizel@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jan 2024 11:41:09 +0000
-Message-ID: <CAFEAcA8vVP0ccBzLNguT4SJqVZL8a2CvPQTa6CZJqw=GH=8o0Q@mail.gmail.com>
-Subject: Re: [PATCH v4] hw/char/imx_serial: Implement receive FIFO and ageing
- timer for imx serial.
-To: Rayhan Faizel <rayhan.faizel@gmail.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 10/11] hw/fsi: Added FSI documentation
+Content-Language: en-US
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20240126104956.74126-1-ninad@linux.ibm.com>
+ <20240126104956.74126-11-ninad@linux.ibm.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240126104956.74126-11-ninad@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,48 +98,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l7EwFiqTqbXr
+X-TUID: vX8bn/iCk94D
 
-On Thu, 25 Jan 2024 at 15:22, Rayhan Faizel <rayhan.faizel@gmail.com> wrote:
->
-> This patch implements a 32 half word FIFO as per imx serial device
-> specifications. If a non empty FIFO is below the trigger level, an ageing
-> timer will tick for a duration of 8 characters. On expiry, AGTIM will be set
-> triggering an interrupt. AGTIM timer resets when there is activity in
-> the receive FIFO.
->
-> Otherwise, RRDY is set when trigger level is
-> exceeded. The receive trigger level is 8 in newer kernel versions and 1 in
-> older ones.
->
-> This change will break migration compatibility.
->
-> [Changes in v4]
->
-> - Correct handling of fifo overflow including ORE and OVRRUN flag setting.
-> - Correct behaviour of empty FIFO popping.
-> - Remove unnecessary RRDYEN check in can_receive.
-> - In ageing timer restart function, use flag checks instead of directly
->   checking FIFO levels.
-> - Further fixes to code formatting.
->
-> [Changes in v3]
->
-> - Caught more whitespace changes that went overlooked
-> - Moved fifo and timer initialization to realize
->
-> [Changes in v2]
->
-> As per Peter Maydell's suggestions,
->
-> - Use generic FIFO32 implementation in place of handmade impl.
-> - Moved timer_init to serial init and use timer_del in reset
-> - Removed stray whitespaces
-> - Increment VMSTATE version
->
-> Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+On 1/26/24 11:49, Ninad Palsule wrote:
+> Documentation for IBM FSI model.
+> 
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+> ---
+> v11:
+>    - Removed Cedric's signoff.
+> ---
+>   docs/specs/fsi.rst   | 126 +++++++++++++++++++++++++++++++++++++++++++
+>   docs/specs/index.rst |   1 +
+>   2 files changed, 127 insertions(+)
+>   create mode 100644 docs/specs/fsi.rst
+> 
+> diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
+> new file mode 100644
+> index 0000000000..b33b4d565c
+> --- /dev/null
+> +++ b/docs/specs/fsi.rst
+> @@ -0,0 +1,126 @@
+> +======================================
+> +IBM's Flexible Service Interface (FSI)
+> +======================================
+> +
+> +The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
+> +master/slave and the end engine.
+> +
+> +FSI is a point-to-point two wire interface which is capable of supporting
+> +distances of up to 4 meters. FSI interfaces have been used successfully for
+> +many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
+> +CPUs and IBM ASICs.
+> +
+> +FSI allows a service processor access to the internal buses of a host POWER
+> +processor to perform configuration or debugging. FSI has long existed in POWER
+> +processes and so comes with some baggage, including how it has been integrated
+> +into the ASPEED SoC.
+> +
+> +Working backwards from the POWER processor, the fundamental pieces of interest
+> +for the implementation are: (see the `FSI specification`_ for more details)
+> +
+> +1. The Common FRU Access Macro (CFAM), an address space containing various
+> +   "engines" that drive accesses on buses internal and external to the POWER
+> +   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
+> +   an internal Local Bus (LBUS) which is described by the CFAM configuration
+> +   block.
+> +
+> +2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
+> +   symbols addressed to it. Slaves can be cascaded off of one another. The
+> +   slave's configuration registers appear in address space of the CFAM to
+> +   which it is attached.
+> +
+> +3. The FSI master: A controller in the platform service processor (e.g. BMC)
+> +   driving CFAM engine accesses into the POWER chip. At the hardware level
+> +   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
+> +   of engines in a CFAM.
+> +
+> +4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
+> +   processors. This now makes an appearance in the ASPEED SoC due to tight
+> +   integration of the FSI master IP with the OPB, mainly the existence of an
+> +   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
+> +   address space.
+> +
+> +5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
+> +   AST2600. Hardware limitations prevent the OPB from being directly mapped
+> +   into APB, so all accesses are indirect through the bridge.
+> +
+> +The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
+> +of the object model to automatically generate the CFAM configuration block.
+> +The configuration block presents engines in the order they are attached to the
+> +CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
+> +'config' member of LBusDeviceClass to match the engine's type.
+> +
+> +CFAM designs offer a lot of flexibility, for instance it is possible for a
+> +CFAM to be simultaneously driven from multiple FSI links. The modeling is not
+> +so complete; it's assumed that each CFAM is attached to a single FSI slave (as
+> +a consequence the CFAM subclasses the FSI slave).
+> +
+> +As for FSI, its symbols and wire-protocol are not modelled at all. This is not
+> +necessary to get FSI off the ground thanks to the mapping of the CFAM address
+> +space onto the OPB address space - the models follow this directly and map the
+> +CFAM memory region into the OPB's memory region.
+> +
+> +QEMU files related to FSI interface are in following directories:
+> + - ``hw/fsi``
+> + - ``include/hw/fsi``
 
-Thanks for this respin -- I've applied it to target-arm.next,
-so it will get into upstream git by next week.
+This is not useful.
 
--- PMM
+> +The following commands start the ``rainier-bmc`` machine with built-in FSI
+> +model. There are no model specific arguments. Please check this document to
+> +learn more about Aspeed ``rainier-bmc`` machine: docs/system/arm/aspeed.rst
+
+This should be :  (:doc:`../../system/arm/aspeed`)
+
+I will fix it.
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+
+> +
+> +.. code-block:: console
+> +
+> +  qemu-system-arm -M rainier-bmc -nographic \
+> +  -kernel fitImage-linux.bin \
+> +  -dtb aspeed-bmc-ibm-rainier.dtb \
+> +  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
+> +  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
+> +  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
+> +
+> +The implementation appears as following in the qemu device tree:
+> +
+> +.. code-block:: console
+> +
+> +  (qemu) info qtree
+> +  bus: main-system-bus
+> +    type System
+> +    ...
+> +    dev: aspeed.apb2opb, id ""
+> +      gpio-out "sysbus-irq" 1
+> +      mmio 000000001e79b000/0000000000001000
+> +      bus: opb.1
+> +        type opb
+> +        dev: fsi.master, id ""
+> +          bus: fsi.bus.1
+> +            type fsi.bus
+> +            dev: cfam.config, id ""
+> +            dev: cfam, id ""
+> +              bus: lbus.1
+> +                type lbus
+> +                dev: scratchpad, id ""
+> +                  address = 0 (0x0)
+> +      bus: opb.0
+> +        type opb
+> +        dev: fsi.master, id ""
+> +          bus: fsi.bus.0
+> +            type fsi.bus
+> +            dev: cfam.config, id ""
+> +            dev: cfam, id ""
+> +              bus: lbus.0
+> +                type lbus
+> +                dev: scratchpad, id ""
+> +                  address = 0 (0x0)
+> +
+> +pdbg is a simple application to allow debugging of the host POWER processors
+> +from the BMC. (see the `pdbg source repository`_ for more details)
+> +
+> +.. code-block:: console
+> +
+> +  root@p10bmc:~# pdbg -a getcfam 0x0
+> +  p0: 0x0 = 0xc0022d15
+> +
+> +.. _FSI specification:
+> +   https://openpowerfoundation.org/specifications/fsi/
+> +
+> +.. _pdbg source repository:
+> +   https://github.com/open-power/pdbg
+> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+> index b3f482b0aa..1484e3e760 100644
+> --- a/docs/specs/index.rst
+> +++ b/docs/specs/index.rst
+> @@ -24,6 +24,7 @@ guest hardware that is specific to QEMU.
+>      acpi_erst
+>      sev-guest-firmware
+>      fw_cfg
+> +   fsi
+>      vmw_pvscsi-spec
+>      edu
+>      ivshmem-spec
+

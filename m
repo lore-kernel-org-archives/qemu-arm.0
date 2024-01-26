@@ -1,72 +1,72 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024919ejc;
-        Fri, 26 Jan 2024 09:36:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHoeh+b3la0uzps7rkC8ZMTth/fGyZ5XOjqRN7t0cXyyUfqRUPOSmXfZftyIHTGfFx+asxD
-X-Received: by 2002:a05:6808:1902:b0:3bd:48b2:af37 with SMTP id bf2-20020a056808190200b003bd48b2af37mr105295oib.30.1706290576460;
-        Fri, 26 Jan 2024 09:36:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290576; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024951ejc;
+        Fri, 26 Jan 2024 09:36:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH2z+BSae+2E8e//EZIZs9nUhoWqCSgfTJ9+ia8mbw8bHliC8tzdSV5APl/QvTUxcRZt+Co
+X-Received: by 2002:ac8:594f:0:b0:42a:351c:ec0e with SMTP id 15-20020ac8594f000000b0042a351cec0emr188745qtz.126.1706290579976;
+        Fri, 26 Jan 2024 09:36:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290579; cv=none;
         d=google.com; s=arc-20160816;
-        b=v2JflFEp5T6VXt0dOK8qVSRk4qUHmQhuKu8pphh7tMbwNYRJ3llkfniROnVU04FE8+
-         hkitr8VvOhGAhmjeHbzqIvPF9Vuhgln/+TZa256xGdk+RnJ6MzDxdkguk0HHcT1yxDsU
-         vOHyXyqOCgAiubpvaRmvlzFGQhql6/2nmoKcQvjnw8qdjgZM9oNwpc2/FOvIxFgwAFVB
-         H8bf+d12zhZxKWWljdA89Qm3GdPHkojudfyeyLxwS151ttDPz5wVhjDN/bFm3rxNB/0V
-         c38/xJDRC/IFmRLttpBv1MmlBll0eLqQR5ylqhhEJ1bzKx8dN9apqrVylG093i5Onem6
-         r0GA==
+        b=GOrvk92rAtQ4/7ZBmiEvi5UBs3kV8+wa8Q6Ezl8cukLN2uW7a20xQ+5b4IcX1E8KbU
+         /HcZdBi+65iaLXVB1p9F4Mi03CIyic/p+nQ/oUw4ZcIIXSGiZpEH7gubEHQHEWUETPD3
+         xXtuCP3vWC4LKua6jZ8nWoLRlrhHjTVJA+jhiKw5MUfHpm9ttf0IC4xV5tC5WGm0mnno
+         DbQot1GbipOcuLxnPTHlRjrOABg7Ivx9T+chmntt535kNxW5vdAFCAcFHTKyOxWI09Bk
+         Xkf87ifYt9LCohBy0GZ7IC3Ro4dV+w6ivZy3m+wOAcYxNopSZSg408Wkao413uolvG5p
+         /F2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aYJS/1ZmHvWqcX4ZFiiuaV9MoKjFfmvD/b97zwR6RTs=;
+        bh=X6ke30CwveEkz5smymx38sGBgkKUHVYamBl46p3i/0I=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=FZn2xDPPVuYHC/Q0+vxQakUo+qY6I0qxz8tO+gJCdoVQvTqTmrn14uGaNHiEgd/4Hm
-         70EGI831N0x/+oIITRYUtXMYHwRmcumduaxHkAgWbiTtyqhXlCN6hJj5Tyz2deInBN2X
-         XmoU9TuA0L7lXFesx/58y82Micyk/3MzAv9SZREq/N/+xKVU+9fiw1ClXN4oL0vpI8Cn
-         s170UcZrj6oe2wQBXMy7rv3zY5ykJawAaWAM5wtRcCj1y/Y1+v8o18OfUV0ynEJUIm87
-         9JwPHJR8jjL0AMfgXysmEyEWcTnPcxNVZRt33X+EDy9Ej0v7EsY11TjtfJzz/SN7pxff
-         uvyQ==
+        b=gWnhT4wU6RZLGul8WK8wHuGTXRcZ48UPG/NMpC+db6nst2+hhHN1pasvCugnUEFeY3
+         +AH19OlktGKNGNMu9BRNRuNvPuAN7K5AlXRqVCbw2MuU/+2EWcaHA4w7nbCflTOfBNho
+         QqHRBuMHnI0e0iGXqUVAzOXVhJ8Qle1eilRKFihHYm9LhVwFDVTpVit3Pbt4FhoIvoQa
+         Neprac094t+18jBrg5ZqVQWQ820zGWFkYthXz5m1Wv2Nr/Nci2tGjcYKEHzsE2oMJwW2
+         n7Z6WCASHwbPOmnGYoMMbWXb+P7E/5YNKd06m/dCAUiTyhg1AE72UaugZUlGjxeukKub
+         zHdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=D64f2o9E;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=G494fFd2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c25-20020ae9e219000000b0078397065625si1697044qkc.363.2024.01.26.09.36.16
+        by mx.google.com with ESMTPS id i22-20020ac85c16000000b0042a78fa8855si1736609qti.385.2024.01.26.09.36.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:36:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 09:36:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=D64f2o9E;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=G494fFd2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTQ5M-0008SB-O7; Fri, 26 Jan 2024 12:33:48 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTQ4w-0007i5-SR; Fri, 26 Jan 2024 12:33:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ5C-0008Dq-JL; Fri, 26 Jan 2024 12:33:38 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rTQ4h-0007F1-6W; Fri, 26 Jan 2024 12:33:07 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ58-0001ci-EM; Fri, 26 Jan 2024 12:33:38 -0500
+ <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1rTQ4c-0001jQ-E8; Fri, 26 Jan 2024 12:33:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=aYJS/1ZmHvWqcX4ZFiiuaV9MoKjFfmvD/b97zwR6RTs=; b=D64f2o9ExjTpXRh6lNheHhod11
- XLpJhKTr1/lZ/clcWVHv+r0qH+hO9IuX+5OCKW5QJDKRgIlMeO3iBkxLep82231pjtiQUg/SOyZ+3
- kjhYLEKlDpIMgbFMrc8eYUxT4T8BGApCoyxV8aAB2/qvZUVpaASy7tZZMOxv7/BwJeSYZ/WieflzD
- /vCQ5+IuDJHnHL+ksoy+2BpeR5ZcOp5mCPGHs8j+26cZsHFYatY5+TeRVWxRD3Ho5bnXnogPiHuc8
- WSVGXMZp17QLskVWHPyiskERlqsA36ZvCQf/XY5SJw5rEWhvHK2BKKZ4JwepyYFw8DtXSoYj/1ob7
- vYN8tDSQ==;
+ bh=X6ke30CwveEkz5smymx38sGBgkKUHVYamBl46p3i/0I=; b=G494fFd2mP0Dj7LuDOipJm7Owz
+ lg4FxCPBqEekH32mKUFiRpjvM4gbvJl8IyqV24tQnkqtoD3kIoU0//E55ptwp/KNLJLObDFWl84xA
+ LyyEbvysIGcuVn6jGjouhI95tXxUJ5Wd2Y1sxDNUbYJzAg1ojC1/ejwquyKqaxjA5h1ljcaxMG72Y
+ kKR324Lr/AGkF8i4Pg3J0gV8ytJQjyDewTTJR3xZfCcDxwRcsAqAf2QEZIPUmTm49PSKqH9r6ZzZo
+ qoBceM7r7v7IC4Pnmllgo8gsJCI7tdgMmdddhMb++f9cefXfZaemmAftT3NzjS7qS0dXTKscg1YGC
+ Zf2G4uPw==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ48-0000000EKUE-0fRh; Fri, 26 Jan 2024 17:32:33 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
+ id 1rTQ4A-000000069Up-1vM6; Fri, 26 Jan 2024 17:32:35 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ47-00000001elS-1KpR;
- Fri, 26 Jan 2024 17:32:31 +0000
+ Hat Linux)) id 1rTQ49-00000001en3-1zqq;
+ Fri, 26 Jan 2024 17:32:33 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,20 +116,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v4 05/47] hw/i386/pc: use qemu_get_nic_info() and
- pci_init_nic_devices()
-Date: Fri, 26 Jan 2024 17:24:42 +0000
-Message-ID: <20240126173228.394202-6-dwmw2@infradead.org>
+Subject: [PATCH v4 28/47] hw/arm/npcm7xx: use qemu_configure_nic_device,
+ allow emc0/emc1 as aliases
+Date: Fri, 26 Jan 2024 17:25:05 +0000
+Message-ID: <20240126173228.394202-29-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -138,110 +138,97 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EyhROqqM12ww
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lG29yGt3ZCl9
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Eliminate direct access to nd_table[] and nb_nics by processing the the
-Xen and ISA NICs first and then calling pci_init_nic_devices() for the
-rest.
+Also update the test to specify which device to attach the test socket
+to, and remove the comment lamenting the fact that we can't do so.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- hw/i386/pc.c                | 31 +++++++++++++++++++------------
- include/hw/net/ne2000-isa.h |  2 --
- 2 files changed, 19 insertions(+), 14 deletions(-)
+ hw/arm/npcm7xx.c               | 16 +++++++++-------
+ tests/qtest/npcm7xx_emc-test.c | 18 ++++--------------
+ 2 files changed, 13 insertions(+), 21 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 803244e5cc..ebb0b1c667 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -654,15 +654,19 @@ static const int ne2000_io[NE2000_NB_MAX] = { 0x300, 0x320, 0x340, 0x360,
-                                               0x280, 0x380 };
- static const int ne2000_irq[NE2000_NB_MAX] = { 9, 10, 11, 3, 4, 5 };
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 15ff21d047..ee395864e4 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -655,8 +655,9 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
  
--static void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
-+static gboolean pc_init_ne2k_isa(ISABus *bus, NICInfo *nd, Error **errp)
- {
-     static int nb_ne2k = 0;
- 
--    if (nb_ne2k == NE2000_NB_MAX)
--        return;
-+    if (nb_ne2k == NE2000_NB_MAX) {
-+        error_setg(errp,
-+                   "maximum number of ISA NE2000 devices exceeded");
-+        return false;
-+    }
-     isa_ne2000_init(bus, ne2000_io[nb_ne2k],
-                     ne2000_irq[nb_ne2k], nd);
-     nb_ne2k++;
-+    return true;
- }
- 
- void pc_acpi_smi_interrupt(void *opaque, int irq, int level)
-@@ -1297,23 +1301,26 @@ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
-                  BusState *xen_bus)
- {
-     MachineClass *mc = MACHINE_CLASS(pcmc);
--    int i;
-+    bool default_is_ne2k = g_str_equal(mc->default_nic, TYPE_ISA_NE2000);
-+    NICInfo *nd;
- 
-     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_NIC);
--    for (i = 0; i < nb_nics; i++) {
--        NICInfo *nd = &nd_table[i];
--        const char *model = nd->model ? nd->model : mc->default_nic;
- 
--        if (xen_bus && (!nd->model || g_str_equal(model, "xen-net-device"))) {
-+    if (xen_bus) {
-+        while ((nd = qemu_find_nic_info("xen-net-device", true, NULL))) {
-             DeviceState *dev = qdev_new("xen-net-device");
-             qdev_set_nic_properties(dev, nd);
-             qdev_realize_and_unref(dev, xen_bus, &error_fatal);
--        } else if (g_str_equal(model, "ne2k_isa")) {
--            pc_init_ne2k_isa(isa_bus, nd);
--        } else {
--            pci_nic_init_nofail(nd, pci_bus, model, NULL);
-         }
-     }
+     /*
+      * EMC Modules. Cannot fail.
+-     * The mapping of the device to its netdev backend works as follows:
+-     * emc[i] = nd_table[i]
++     * Use the available NIC configurations in order, allowing 'emc0' and
++     * 'emc1' to by used as aliases for the model= parameter to override.
++     *
+      * This works around the inability to specify the netdev property for the
+      * emc device: it's not pluggable and thus the -device option can't be
+      * used.
+@@ -664,12 +665,13 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_emc_addr) != ARRAY_SIZE(s->emc));
+     QEMU_BUILD_BUG_ON(ARRAY_SIZE(s->emc) != 2);
+     for (i = 0; i < ARRAY_SIZE(s->emc); i++) {
+-        s->emc[i].emc_num = i;
+         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->emc[i]);
+-        if (nd_table[i].used) {
+-            qemu_check_nic_model(&nd_table[i], TYPE_NPCM7XX_EMC);
+-            qdev_set_nic_properties(DEVICE(sbd), &nd_table[i]);
+-        }
++        char alias[6];
 +
-+    while ((nd = qemu_find_nic_info(TYPE_ISA_NE2000, default_is_ne2k, NULL))) {
-+        pc_init_ne2k_isa(isa_bus, nd, &error_fatal);
-+    }
++        s->emc[i].emc_num = i;
++        snprintf(alias, sizeof(alias), "emc%u", i);
++        qemu_configure_nic_device(DEVICE(sbd), true, alias);
 +
-+    /* Anything remaining should be a PCI NIC */
-+    pci_init_nic_devices(pci_bus, mc->default_nic);
-+
-     rom_reset_order_override();
- }
+         /*
+          * The device exists regardless of whether it's connected to a QEMU
+          * netdev backend. So always instantiate it even if there is no
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+index b046f1d76a..f7646fae2c 100644
+--- a/tests/qtest/npcm7xx_emc-test.c
++++ b/tests/qtest/npcm7xx_emc-test.c
+@@ -225,21 +225,11 @@ static int *packet_test_init(int module_num, GString *cmd_line)
+     g_assert_cmpint(ret, != , -1);
  
-diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
-index af59ee0b02..73bae10ad1 100644
---- a/include/hw/net/ne2000-isa.h
-+++ b/include/hw/net/ne2000-isa.h
-@@ -22,8 +22,6 @@ static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
- {
-     ISADevice *d;
+     /*
+-     * KISS and use -nic. We specify two nics (both emc{0,1}) because there's
+-     * currently no way to specify only emc1: The driver implicitly relies on
+-     * emc[i] == nd_table[i].
++     * KISS and use -nic. The driver accepts 'emc0' and 'emc1' as aliases
++     * in the 'model' field to specify the device to match.
+      */
+-    if (module_num == 0) {
+-        g_string_append_printf(cmd_line,
+-                               " -nic socket,fd=%d,model=" TYPE_NPCM7XX_EMC " "
+-                               " -nic user,model=" TYPE_NPCM7XX_EMC " ",
+-                               test_sockets[1]);
+-    } else {
+-        g_string_append_printf(cmd_line,
+-                               " -nic user,model=" TYPE_NPCM7XX_EMC " "
+-                               " -nic socket,fd=%d,model=" TYPE_NPCM7XX_EMC " ",
+-                               test_sockets[1]);
+-    }
++    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d ",
++                           test_sockets[1], module_num);
  
--    qemu_check_nic_model(nd, "ne2k_isa");
--
-     d = isa_try_new(TYPE_ISA_NE2000);
-     if (d) {
-         DeviceState *dev = DEVICE(d);
+     g_test_queue_destroy(packet_test_clear, test_sockets);
+     return test_sockets;
 -- 
 2.43.0
 

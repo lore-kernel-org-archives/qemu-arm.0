@@ -1,139 +1,106 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024313ejc;
-        Fri, 26 Jan 2024 09:35:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG2SWhIcWpId0Gq8kkBnZwkFm/S3vLTMSRTKSJEPOtXLKnplSTTTI3fDGwmAcg9Bk56LQDb
-X-Received: by 2002:a05:622a:1493:b0:42a:51c2:9efe with SMTP id t19-20020a05622a149300b0042a51c29efemr193888qtx.109.1706290504351;
-        Fri, 26 Jan 2024 09:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290504; cv=none;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp52254ejb;
+        Fri, 26 Jan 2024 11:37:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFlWyT/G8WdbA5vgoUc/xTwQ0QmZE05gDt7HJEmEB9Gf96NNmM7INAlocsOR1LGWKTWVMt4
+X-Received: by 2002:a05:620a:c17:b0:781:2c00:c89d with SMTP id l23-20020a05620a0c1700b007812c00c89dmr283560qki.42.1706297869624;
+        Fri, 26 Jan 2024 11:37:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706297869; cv=none;
         d=google.com; s=arc-20160816;
-        b=MfZfUJ6LPga1IOQmi/ZxnmoAF0rCib3mD/bA1QqGRiNQ/hmu2RPbbaVzi6659LJr/v
-         KA8ie9yjTtl8TufvKHkUNQ1/pkLe2Q3D48KM01AyrpotS2iIuiEsZNtTMK7ekbma1xIK
-         mkhDljDrmCJG0mI+zXm+u69bY2dexR0o79E5ZAr0UF7JNQOVejtqtGC7rZilOmWI9mE6
-         OH0/SapVfG3+gF6D0htS0ui5cES9DwJTlLC4F4BQunaXengTPjhMDr1Y/uwGvSJmdw84
-         YRNxiiQfE/cbjkqkJh80uiP2tuHczJ5pAlo2Vku8zE5aidOuNh+9GydQXgtOnS/Q4HjL
-         GTdQ==
+        b=BpQH8k8wT5K2KF35DoC3xBGb4iRtPEe+zwlL0KL3rqGFCqLo7LRoVfE39wOHDeCHWB
+         B3y+d0bszAUXiTZ3XbfHATTbIX7nUkHABz4WJOXY86yzFy3QzQQu3hvFQhE+hV7q8LHe
+         GQT4ZxMrJI8XW7D8vksDLURk1dPJZn0cecyROdBRYbNF2K0Wp6JO+dT9cthlZfUkwtCn
+         ++sdNYNxCUfJGjWmM2t+/kXs1zaTOlN8imqci83U/+qSloJ442iMlGHmUbM1UEOWmp7l
+         /b7614mtfrWyGUX61DUwjpZVpimzYdxQMJTJA4fyT8h5WzvVBYBO3ea4ktL+f4ssZNoB
+         s/OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uxZ4mGKFLew5MTQuKKAqXya97kMNkAzbjIcyINbmJGE=;
-        fh=TyBrkLvq7lwd9D5T7c2YdjFfl5v0NLwCo1XfP1ynNa4=;
-        b=pF1+ZMdok764MhEUXUw24Ru/aV59TJZXt5LCF4GNrCsxAAooauBXo0M3Vsfu4Vr4Op
-         Y5os12RVd2TCxbw3wfq71VNVSgz4sK8zIMbMQwzK5ETJuskinfOORJ6UX29QCPkUjzHe
-         zs47+rwPDG/K9rVuDXcs1+3uAmF57/YHHERf95/ka4MnRX3vn/96cpj2oLYaacH2OLEY
-         X14Z+2d8z7RYGmxdhQlvam4BrqXUCLo4VKi55AVWg/IBhskKvEgvx3UedEOXoZL3vKLA
-         Ey1/vbkwodJ46ZMsluzsx4kCu8x2alVLkM22e6tJrpsZHAxz7rKhSJAJDw4UUgn2l/PW
-         La0Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=hL9TaZ4ibiwR+WC8tu4kAPe9gkBsSjiDSq5hSzb1jHg=;
+        fh=ljnq3rjsw4OgfUmEdcxBMo/6xL95ZUg0LjPOK/rT3SQ=;
+        b=FGkbrImk8Tj8rUpwY9fhWA1DFtPEhFhHyBmE2EkgWRLRbF4JjJ8rzqlo4Smu20PGrK
+         fjimZS2e4RYxCIDUTAPN9STw3sK7t2ro+tZ3KhtOBH/v+UYV0ihKCGoy6bNL0hyXACHc
+         LUKypz7ZQXhzArXtyGB9P38HKuQCWHqT/lpGpwViwfe+h0cyYGe3BV+iVjjDZmqFUKPc
+         u7tvyzVoCEJ5ISKD3Q5AIQ5TVc9yhQBBUmtYEtw4YeJFZKkpCotlsvX2xZUwHNONcr6k
+         7CQC0OYuCdS5hbeLn1jzRnf3JofJu/0AR2PqWBuR1SZQ7MHk0km1RLnMcVzYAD8K+3Yf
+         OOjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=L789Dzt6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Xe65gfqw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020ac85ad1000000b00429bdc3957fsi1669400qtd.258.2024.01.26.09.35.04
+        by mx.google.com with ESMTPS id ow39-20020a05620a822700b00783e00b110bsi494740qkn.51.2024.01.26.11.37.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:35:04 -0800 (PST)
+        Fri, 26 Jan 2024 11:37:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=L789Dzt6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Xe65gfqw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ5f-0000n8-S0; Fri, 26 Jan 2024 12:34:07 -0500
+	id 1rTS0n-0002Re-Lz; Fri, 26 Jan 2024 14:37:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ5B-0008BX-I0; Fri, 26 Jan 2024 12:33:37 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rTS0m-0002Qu-KZ; Fri, 26 Jan 2024 14:37:12 -0500
+Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1rTQ58-0001cb-2j; Fri, 26 Jan 2024 12:33:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=uxZ4mGKFLew5MTQuKKAqXya97kMNkAzbjIcyINbmJGE=; b=L789Dzt6MRyCiK291RHRqqMe+V
- Srde9pmzJin4uUey0pMnEejE6xMp/9M6g9l8tUpziOzuA1LQmG6rsV3bmoeH8/PT+8JfpGSUEFn5l
- KxevtOxzueFYY2OObJ6DIyZ+82yb9ytGPa+mQTtz19N3nWl+4/q/3wIcad7/RyYkvIeZscD1AYX1D
- ZDDDvEFxB4zmkvOJJ44emRqdLNkEefIa4QpkmBquuL1m0pNRPsbTylK21NAJ3DbQoxa93w8Wxy/WM
- UDxk8pkVmj4SueJNAqldB8zJeNLBWFacCReO65PwoSiWKbu+ybgxJaJ4uYzWsw0+hY35mfFeiGZNr
- UTejY6hA==;
-Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ48-0000000EKUB-0emG; Fri, 26 Jan 2024 17:32:33 +0000
-Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ46-00000001elD-3aD3;
- Fri, 26 Jan 2024 17:32:30 +0000
-From: David Woodhouse <dwmw2@infradead.org>
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rTS0k-0003ak-9z; Fri, 26 Jan 2024 14:37:12 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id 263B2C0D84;
+ Fri, 26 Jan 2024 20:37:05 +0100 (CET)
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id G8AiXwxqoewB; Fri, 26 Jan 2024 20:37:04 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy1.enst.fr (Postfix) with ESMTP id ADA6AC0DEB;
+ Fri, 26 Jan 2024 20:37:04 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr ADA6AC0DEB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1706297824;
+ bh=hL9TaZ4ibiwR+WC8tu4kAPe9gkBsSjiDSq5hSzb1jHg=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=Xe65gfqwSGQ2180Nlali1HCAoJ4lOfozezS5TvTM+HdBPWrOgIh62vxhuWsDFf9b5
+ CQw2ty43tqEN4Z0gK0hjZVm5Fm8xdzD7f1hIf5HgjYA18ym5Rp1tnh4w1H04O3YNDH
+ cAjARPSot+azUfET6b99jLfAwMWYc/vjOE6t38XM=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy1.enst.fr ([IPv6:::1])
+ by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id mXthl3Y1vUHZ; Fri, 26 Jan 2024 20:37:04 +0100 (CET)
+Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 5E5AFC0DDF;
+ Fri, 26 Jan 2024 20:37:04 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
+Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Samuel Tardieu <sam@rfc1149.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org
-Subject: [PATCH v4 00/47] Rework matching of network devices to -nic options
-Date: Fri, 26 Jan 2024 17:24:37 +0000
-Message-ID: <20240126173228.394202-1-dwmw2@infradead.org>
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+Subject: [PATCH 2/3] hw/arm : Connect DM163 to STM32L4x5
+Date: Fri, 26 Jan 2024 20:31:02 +0100
+Message-ID: <20240126193657.792005-3-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2001:660:330f:2::dc;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,199 +115,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 51woyCcTyUU/
+X-TUID: kOfY8FOL5uwd
 
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+---
+ hw/arm/Kconfig                 |  1 +
+ hw/arm/stm32l4x5_soc.c         | 55 +++++++++++++++++++++++++++++++++-
+ include/hw/arm/stm32l4x5_soc.h |  3 ++
+ 3 files changed, 58 insertions(+), 1 deletion(-)
 
-Most platforms iterating directly over the nd_table[] are doing one of 
-two things. Either they are creating the NIC for their platform and want
-to find a matching -nic configuration for it, if such exists. Or they
-are only going to create that platform NIC if a matching config *does*
-exist.
-
-All of those can be converted to the new qemu_configure_nic_device()
-and qemu_create_nic_device() functions. The latter of which will call
-qdev_new() to create the device (and apply the config) if a matching
-NIC config does exist for it. The existing behaviour of each platform
-has been preserved for now, despite it being apparently fairly random.
-
-PCI and indeed XenBus can use a qemu_create_nic_bus_devices() which will 
-create all NICs that live on a given bus type. That covers most 
-platforms, but some PCI platforms do something special with the first 
-NIC of a given type, placing it in the slot where it would have been on 
-the real hardware. There were various inconsistencies in the way the 
-platforms did so, and whether they cared what model the NIC was. Those 
-subtle behavioural changes I *have* allowed to change, and now the 
-pci_init_nic_slot() function will pick the first NIC that the user 
-specified which isn't explicitly *not* the default type, and put that
-in the specified slot.
-
-The tests for npcm7xx used to lament that they had to instantiate both
-NICs even when they wanted to test only the second, because there was
-no way to specify which hardware devices gets which configuration. I
-made that untrue, by allowing 'emc0' and 'emc1' aliases, and fixed up
-the test accordingly.
-
-There are one or two special cases which want to do special things with
-the MAC address of the primary NIC, to set up a system identification
-(or force it to use an Apple OUI, in the case of m68k/q400). All those
-work out relatively cleanly too.
-
-And I can clean up the ugly patch which fixed up the Xen network device 
-handling, and replace it with a simple call to the new 
-qemu_create_nic_bus_devices() function.
-
-I suspect that we can remove the pci_init_nic_devices() from platform
-code and just do it later, except for platforms which *care* which
-PCI bus the dynamic devices go on (is that just sun4u which puts its
-primary NIC onto a different bus?).
-
-Finally, while we're at it, clean up -nic model=help to only print
-the device models which are actually usable on the given platform
-rather than just listing them *all*.
-
-And now we can make nd_table[] and nb_nics static in net/net.c because
-nothing else has any business poking at them directly.
-
- v4: Fix LASI_82596 build and rework HPPA machine support for it.
-     Slight improvement to ISA NE2000 error handling in hw/i386/pc.c.
-     Document new functions better in include/net/net.h.
-          
- v3: Rebase to 8.2
-
- v2: Some build fixes after better coverage testing, revert the Xen fix
-     in this series because I'm putting the less invasive hack into 8.2
-     (hopefully).
-
-
-David Woodhouse (47):
-      net: add qemu_{configure,create}_nic_device(), qemu_find_nic_info()
-      net: report list of available models according to platform
-      net: add qemu_create_nic_bus_devices()
-      hw/pci: add pci_init_nic_devices(), pci_init_nic_in_slot()
-      hw/i386/pc: use qemu_get_nic_info() and pci_init_nic_devices()
-      hw/xen: use qemu_create_nic_bus_devices() to instantiate Xen NICs
-      hw/alpha/dp264: use pci_init_nic_devices()
-      hw/arm/sbsa-ref: use pci_init_nic_devices()
-      hw/arm/virt: use pci_init_nic_devices()
-      hw/hppa: use pci_init_nic_devices()
-      hw/loongarch: use pci_init_nic_devices()
-      hw/mips/fuloong2e: use pci_init_nic_devices()
-      hw/mips/malta: use pci_init_nic_devices()
-      hw/mips/loongson3_virt: use pci_init_nic_devices()
-      hw/ppc/prep: use pci_init_nic_devices()
-      hw/ppc/spapr: use qemu_get_nic_info() and pci_init_nic_devices()
-      hw/ppc: use pci_init_nic_devices()
-      hw/sh4/r2d: use pci_init_nic_devices()
-      hw/sparc64/sun4u: use pci_init_nic_devices()
-      hw/xtensa/virt: use pci_init_nic_devices()
-      hw/arm/allwinner: use qemu_configure_nic_device()
-      hw/arm/aspeed: use qemu_configure_nic_device()
-      hw/arm/exynos4: use qemu_create_nic_device()
-      hw/arm/fsl: use qemu_configure_nic_device()
-      hw/net/smc91c111: use qemu_configure_nic_device()
-      hw/net/lan9118: use qemu_configure_nic_device()
-      hw/arm/highbank: use qemu_create_nic_device()
-      hw/arm/npcm7xx: use qemu_configure_nic_device, allow emc0/emc1 as aliases
-      hw/arm/stellaris: use qemu_find_nic_info()
-      hw/arm: use qemu_configure_nic_device()
-      hw/net/etraxfs-eth: use qemu_configure_nic_device()
-      hw/m68k/mcf5208: use qemu_create_nic_device()
-      hw/m68k/q800: use qemu_find_nic_info()
-      hw/microblaze: use qemu_configure_nic_device()
-      hw/mips/mipssim: use qemu_create_nic_device()
-      hw/mips/jazz: use qemu_find_nic_info()
-      hw/net/lasi_i82596: Re-enable build
-      hw/net/lasi_i82596: use qemu_create_nic_device()
-      hw/openrisc/openrisc_sim: use qemu_create_nic_device()
-      hw/riscv: use qemu_configure_nic_device()
-      hw/s390x/s390-virtio-ccw: use qemu_create_nic_device()
-      hw/sparc/sun4m: use qemu_find_nic_info()
-      hw/xtensa/xtfpga: use qemu_create_nic_device()
-      net: remove qemu_check_nic_model()
-      hw/pci: remove pci_nic_init_nofail()
-      net: remove qemu_show_nic_models(), qemu_find_nic_model()
-      net: make nb_nics and nd_table[] static in net/net.c
-
- hw/alpha/dp264.c                         |   4 +-
- hw/arm/allwinner-a10.c                   |   6 +-
- hw/arm/allwinner-h3.c                    |   6 +-
- hw/arm/allwinner-r40.c                   |  27 +---
- hw/arm/aspeed.c                          |   9 +-
- hw/arm/exynos4_boards.c                  |   6 +-
- hw/arm/fsl-imx25.c                       |   2 +-
- hw/arm/fsl-imx6.c                        |   2 +-
- hw/arm/fsl-imx6ul.c                      |   2 +-
- hw/arm/fsl-imx7.c                        |   2 +-
- hw/arm/gumstix.c                         |   6 +-
- hw/arm/highbank.c                        |  12 +-
- hw/arm/integratorcp.c                    |   5 +-
- hw/arm/kzm.c                             |   4 +-
- hw/arm/mainstone.c                       |   3 +-
- hw/arm/mps2-tz.c                         |   8 +-
- hw/arm/mps2.c                            |   2 +-
- hw/arm/msf2-soc.c                        |   6 +-
- hw/arm/musicpal.c                        |   3 +-
- hw/arm/npcm7xx.c                         |  16 +-
- hw/arm/realview.c                        |  25 ++-
- hw/arm/sbsa-ref.c                        |   4 +-
- hw/arm/stellaris.c                       |  30 +++-
- hw/arm/versatilepb.c                     |  15 +-
- hw/arm/vexpress.c                        |   4 +-
- hw/arm/virt.c                            |   4 +-
- hw/arm/xilinx_zynq.c                     |  11 +-
- hw/arm/xlnx-versal.c                     |   7 +-
- hw/arm/xlnx-zynqmp.c                     |   8 +-
- hw/cris/axis_dev88.c                     |   9 +-
- hw/hppa/machine.c                        |  14 +-
- hw/i386/pc.c                             |  38 +++--
- hw/i386/pc_piix.c                        |   2 +-
- hw/i386/pc_q35.c                         |   2 +-
- hw/loongarch/virt.c                      |   4 +-
- hw/m68k/mcf5208.c                        |  19 +--
- hw/m68k/q800.c                           |  29 ++--
- hw/microblaze/petalogix_ml605_mmu.c      |   3 +-
- hw/microblaze/petalogix_s3adsp1800_mmu.c |   3 +-
- hw/mips/fuloong2e.c                      |  16 +-
- hw/mips/jazz.c                           |  15 +-
- hw/mips/loongson3_virt.c                 |   4 +-
- hw/mips/malta.c                          |  15 +-
- hw/mips/mipssim.c                        |  13 +-
- hw/net/etraxfs_eth.c                     |   5 +-
- hw/net/lan9118.c                         |   5 +-
- hw/net/lasi_i82596.c                     |  13 +-
- hw/net/meson.build                       |   2 +-
- hw/net/smc91c111.c                       |   5 +-
- hw/openrisc/openrisc_sim.c               |  18 +--
- hw/pci/pci.c                             |  73 +++------
- hw/ppc/e500.c                            |   4 +-
- hw/ppc/mac_newworld.c                    |   4 +-
- hw/ppc/mac_oldworld.c                    |   4 +-
- hw/ppc/ppc440_bamboo.c                   |  14 +-
- hw/ppc/prep.c                            |   8 +-
- hw/ppc/spapr.c                           |  18 +--
- hw/riscv/microchip_pfsoc.c               |  14 +-
- hw/riscv/sifive_u.c                      |   7 +-
- hw/s390x/s390-virtio-ccw.c               |  11 +-
- hw/sh4/r2d.c                             |   6 +-
- hw/sparc/sun4m.c                         |  20 ++-
- hw/sparc64/sun4u.c                       |  27 +---
- hw/xen/xen-bus.c                         |   6 +-
- hw/xen/xen_devconfig.c                   |  25 ---
- hw/xenpv/xen_machine_pv.c                |   9 --
- hw/xtensa/virt.c                         |   4 +-
- hw/xtensa/xtfpga.c                       |  13 +-
- include/hw/cris/etraxfs.h                |   2 +-
- include/hw/i386/pc.h                     |   4 +-
- include/hw/net/lan9118.h                 |   2 +-
- include/hw/net/lasi_82596.h              |   4 +-
- include/hw/net/ne2000-isa.h              |   2 -
- include/hw/net/smc91c111.h               |   2 +-
- include/hw/pci/pci.h                     |   7 +-
- include/hw/xen/xen-bus.h                 |   2 +-
- include/hw/xen/xen-legacy-backend.h      |   1 -
- include/net/net.h                        |  70 ++++++++-
- net/net.c                                | 253 +++++++++++++++++++++++++------
- system/globals.c                         |   2 -
- tests/qtest/npcm7xx_emc-test.c           |  18 +--
- 81 files changed, 547 insertions(+), 562 deletions(-)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 3e49b913f8..818aa2f1a2 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -463,6 +463,7 @@ config STM32L4X5_SOC
+     select STM32L4X5_SYSCFG
+     select STM32L4X5_RCC
+     select STM32L4X5_GPIO
++    select DM163
+=20
+ config XLNX_ZYNQMP_ARM
+     bool
+diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+index 478c6ba056..8663546901 100644
+--- a/hw/arm/stm32l4x5_soc.c
++++ b/hw/arm/stm32l4x5_soc.c
+@@ -26,7 +26,9 @@
+ #include "qapi/error.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
++#include "hw/core/split-irq.h"
+ #include "hw/arm/stm32l4x5_soc.h"
++#include "hw/display/dm163.h"
+ #include "hw/qdev-clock.h"
+ #include "hw/misc/unimp.h"
+=20
+@@ -78,6 +80,31 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
+ #define RCC_BASE_ADDRESS 0x40021000
+ #define RCC_IRQ 5
+=20
++/*
++ * There are actually 14 input pins in the DM163 device.
++ * Here the DM163 input pin EN isn't connected to the STM32L4x5
++ * GPIOs as the IM120417002 colors shield doesn't actually use
++ * this pin to drive the RGB matrix.
++ */
++#define NUM_DM163_INPUTS 13
++
++static const int dm163_input[NUM_DM163_INPUTS] =3D {
++    1 * 16 + 2,  /* ROW0  PB2       */
++    0 * 16 + 15, /* ROW1  PA15      */
++    0 * 16 + 2,  /* ROW2  PA2       */
++    0 * 16 + 7,  /* ROW3  PA7       */
++    0 * 16 + 6,  /* ROW4  PA6       */
++    0 * 16 + 5,  /* ROW5  PA5       */
++    1 * 16 + 0,  /* ROW6  PB0       */
++    0 * 16 + 3,  /* ROW7  PA3       */
++    0 * 16 + 4,  /* SIN (SDA) PA4   */
++    1 * 16 + 1,  /* DCK (SCK) PB1   */
++    2 * 16 + 3,  /* RST_B (RST) PC3 */
++    2 * 16 + 4,  /* LAT_B (LAT) PC4 */
++    2 * 16 + 5,  /* SELBK (SB)  PC5 */
++};
++
++
+ static const uint32_t gpio_addr[] =3D {
+     0x48000000,
+     0x48000400,
+@@ -116,6 +143,8 @@ static void stm32l4x5_soc_initfn(Object *obj)
+         g_autofree char *name =3D g_strdup_printf("gpio%c", 'a' + i);
+         object_initialize_child(obj, name, &s->gpio[i], TYPE_STM32L4X5_G=
+PIO);
+     }
++
++    object_initialize_child(obj, "dm163", &s->dm163, TYPE_DM163);
+ }
+=20
+ static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
+@@ -124,9 +153,10 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+     Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
+     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
+     MemoryRegion *system_memory =3D get_system_memory();
+-    DeviceState *armv7m, *dev;
++    DeviceState *armv7m, *dev, *gpio_output_fork;
+     SysBusDevice *busdev;
+     uint32_t pin_index;
++    int gpio, pin;
+=20
+     if (!memory_region_init_rom(&s->flash, OBJECT(dev_soc), "flash",
+                                 sc->flash_size, errp)) {
+@@ -166,6 +196,12 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+         return;
+     }
+=20
++    /* DM163 */
++    dev =3D DEVICE(&s->dm163);
++    if (!qdev_realize(dev, NULL, errp)) {
++        return;
++    }
++
+     /* GPIOs */
+     for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
+         g_autofree char *name =3D g_strdup_printf("%c", 'A' + i);
+@@ -204,6 +240,23 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+         }
+     }
+=20
++    for (unsigned i =3D 0; i < NUM_DM163_INPUTS; i++) {
++        gpio_output_fork =3D qdev_new(TYPE_SPLIT_IRQ);
++        qdev_prop_set_uint32(gpio_output_fork, "num-lines", 2);
++        qdev_realize_and_unref(gpio_output_fork, NULL, &error_fatal);
++
++        qdev_connect_gpio_out(gpio_output_fork, 0,
++                              qdev_get_gpio_in(DEVICE(&s->syscfg),
++                                               dm163_input[i]));
++        qdev_connect_gpio_out(gpio_output_fork, 1,
++                              qdev_get_gpio_in(DEVICE(&s->dm163),
++                                               i));
++        gpio =3D dm163_input[i] / 16;
++        pin =3D dm163_input[i] % 16;
++        qdev_connect_gpio_out(DEVICE(&s->gpio[gpio]), pin,
++                              qdev_get_gpio_in(DEVICE(gpio_output_fork),=
+ 0));
++    }
++
+     /* EXTI device */
+     busdev =3D SYS_BUS_DEVICE(&s->exti);
+     if (!sysbus_realize(busdev, errp)) {
+diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+index cb4da08629..60b31d430e 100644
+--- a/include/hw/arm/stm32l4x5_soc.h
++++ b/include/hw/arm/stm32l4x5_soc.h
+@@ -30,6 +30,7 @@
+ #include "hw/misc/stm32l4x5_exti.h"
+ #include "hw/misc/stm32l4x5_rcc.h"
+ #include "hw/gpio/stm32l4x5_gpio.h"
++#include "hw/display/dm163.h"
+ #include "qom/object.h"
+=20
+ #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
+@@ -48,6 +49,8 @@ struct Stm32l4x5SocState {
+     Stm32l4x5RccState rcc;
+     Stm32l4x5GpioState gpio[NUM_GPIOS];
+=20
++    DM163State dm163;
++
+     MemoryRegion sram1;
+     MemoryRegion sram2;
+     MemoryRegion flash;
+--=20
+2.43.0
 

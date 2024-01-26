@@ -1,228 +1,190 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp166509ejc;
-        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
-X-Received: by 2002:a17:907:a808:b0:a31:7aca:a429 with SMTP id vo8-20020a170907a80800b00a317acaa429mr564036ejc.4.1706182902833;
-        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706182902; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp876720ejc;
+        Fri, 26 Jan 2024 05:32:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IES8q8mZAMpyOqi4smvg6OlnQh9x4kxk3zyw+cx1JOQfVo1xjzkYNfEATmR3xnT6r2LB/wD
+X-Received: by 2002:a05:6214:21a7:b0:680:c80b:7acf with SMTP id t7-20020a05621421a700b00680c80b7acfmr1420265qvc.86.1706275971169;
+        Fri, 26 Jan 2024 05:32:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706275971; cv=none;
         d=google.com; s=arc-20160816;
-        b=Grxmau2afd/yqecfK5Awbj34onVUS3NYFp6RewLYIUFucNPlWqWABlEnCMxZgA84A5
-         E0BJYQYCoUo5awNBkqVMwIE6fN9Enf5cIm0/XnBPdUGoR65TAWV7BpsgHfD9u1J2xr/A
-         qCydcpMrvWTiVxoEYHpecotPyj0++f4mNQeAAuF+SgUsGdZO4vyhlM9C2YnBEhFkNOjt
-         3maN7N6UWPuYpjzjcqWYR7rVWUo5O7mI5DFRwW8CzeL9myTaKOrJC3wh+XbVJYGswopp
-         jQ1QUCzd0WK3Pj1Fr0MMWuQZshLf8flNOdOP79DMcrvU7OOyR9wFBhWPjBLvF2+2jCXK
-         tp1Q==
+        b=cymRH3ZhemW6LhonZnbW9UkDMR4of6d54ihGBr4XtyC3H/OdSywWw4AKucQVhlOV7X
+         ktpT3rPOk0biWrBqYVLNJuyGNQ5en15oiyH+Rq1cfiHKrgj/JFDgdJxUF3FYwZRhJ59g
+         yI57m8VLJAwEzT8nBT0q1DYx5nzY9fUl7EtqUlwl6vhfKoAM7Jpfg5ZM4cdXDjZ+bwQX
+         OEOJsJ0loE93s4GBDDeyDT1uMYy/OI727ObiFGHga0QxaV/G89EPlL4B/3Cuf2/mf3lo
+         3Hn7UsWdjVRaXlCKyAAwQdC/Gqcyfnuj23SWWOKzxdMog63vq+K3ayPbe8ZOSYX0xxtF
+         Rx3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
-        fh=LZyHTHN6NX8/7mmal1FYxKQYiLBu4R15O2wo33y2D7M=;
-        b=DHJzU/AyA4kvJKe9fAx79CHpx+rbvOo2RYx8OuUKY15YK1OuNVHPC+CWvyNMjZe6wI
-         GOON6+XfWgPEWBJ75P6zZ4epQpXIMdu7qWsK+z+2Kvbh1iQ2ylgS1gF1s9lWlIXrQjxz
-         6WIz21Kd5yv4suwLZcsi3sz47qOjhtWS3EbJEmat33F7aBe4H96qmqcEnaTvHe/lHugm
-         GR/Dfh6L78dgFp8ymMm0/QUN3qUTIzFauYG7sSfHcy3Cynjbmzd9yYqm8mRbrrKoT60x
-         n6LHVJ7vhA4lWVasADLpSY/4juFyV4UAPZEpmY6JAxLUK22Q14yyBw6Pq1oiw2Sq8Lol
-         XjxQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=ZcYirumRuyZPaFy/9HFOSE2W5znoMqi8X59+loeJRSc=;
+        fh=U/0C24lFKzzomuy67bTtM+LZKjwyWOJtFrkAZXiyaww=;
+        b=WcjAqHQB+8NMM+ZZaWLM2fsiUsTxRmv33C5UM0DMFhLwHoBQcm0v+RTurN4+boMdNh
+         rtHwvLBOYtxlyH0ynrgohEjORccT/K2pptg/B6XxZfqE+MUiw++TY6Tpo5XkmGGtT9RX
+         LcWXYVqd8FUtlczl7AoFOJ0Nxm5Hsq9crRbch3cJojUgLzlmwXqhvNYT7ECPeQdv7cO8
+         Nt2oO3mXxv7fxZRVb50Oxt/R9W0l8OI7mktSvFGdysUSUcrS1XI6gDqtYjrlWpk2iSUl
+         P7nehcqKYnKwyzA47smxb9jJBLHwLhLSG0RVGkdADtD9r6OFvtkXi1czUgjjgI7OxvP4
+         GqZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="mJp/jJ2C";
-       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
-Return-Path: <ajones@ventanamicro.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id kj17-20020a170907765100b00a26aaacb6f1sor530934ejc.21.2024.01.25.03.41.42
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id kk25-20020a056214509900b0067f040246acsi1287915qvb.207.2024.01.26.05.32.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 05:32:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="mJp/jJ2C";
-       spf=pass (google.com: domain of ajones@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajones@ventanamicro.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ventanamicro.com; s=google; t=1706182902; x=1706787702; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
-        b=mJp/jJ2Cgdd2euBEzFIJc37eQgSg4FsDmgG5h6hHhUrep0zYal9ADA0KXsfr/owYwS
-         bAbTMWplel4w4A+Wf73fYNtEc16B8CGmPOaSvhnnuzwU61c9rQIgfEaRFFv1Slf76jD7
-         M1s0axXiTQnfianCs+D2TsMrYcMXb527nF6ycnLtC1+yILEzg3UtbGIzH8184tKZHv6M
-         DyzoHOovumhlrB9ponMi2OfS7Uy8zTxQ/gxk1kRjPAMcxs0iUTnZ8jBIX5KTuvA3KUH5
-         u/ciXZuqU7Wi+GzLilX6756qe8WOOi8l38J7IJF+gqJ7DGtdiNHpySMB6KCzVfEqaBGC
-         DuvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706182902; x=1706787702;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tlIg1ioriM7mX8+RYlQYJvoj00rwt6syn72TbvjwLGc=;
-        b=Jla03txFC0aZKZHz6/+igeFYsH4V1LBGvF5y6dNPkRBV7yDvJp7HDZqGwhL8N5F22y
-         ZWx2at/PUvn4VlOX2zlxBtUNJrsVv99Tkfxdua/flomYL5n76PpR1PM20sXQ7ij7X+nx
-         QVZsdT4up/m5ze1MzQZsuLytiuwyZpic2V+HhjWmkFe3y+uMz1yTb0vOnimh6SPMtHdZ
-         uPutSa8UehIav0y2193muCnYyEiFeH5BdcuLwlJVa7eYI3kvL9eYOuGB3mzAOnsW7FWK
-         49rId39To7bWuh246CM5Yzu86ZvbhmS7pNk5v0BelDspM7oNAYPFGXmRrefL87aQKdnI
-         GJXg==
-X-Gm-Message-State: AOJu0YyPQFqzBVpd0ATBKK7Jkq5u77Kst3OdpsL79LbB7TLk2NrrmxH7
-	+VPEqJ1ikvM1+PcY96ymNxmEg4vwBjiLjzpEDkdkR3sLQbKnXYQx/96BmzPs7Bw=
-X-Google-Smtp-Source: AGHT+IFkyRmD2hzS1gOnNZnLdv8EIZ8KrezT8Nj5/WaffSq6c11w7MGu1/Ch650W9qnJD8fVmx2Rqg==
-X-Received: by 2002:a17:906:dd0:b0:a30:ad90:22a with SMTP id p16-20020a1709060dd000b00a30ad90022amr536503eji.94.1706182902334;
-        Thu, 25 Jan 2024 03:41:42 -0800 (PST)
-Return-Path: <ajones@ventanamicro.com>
-Received: from localhost (cst2-173-16.cust.vodafone.cz. [31.30.173.16])
-        by smtp.gmail.com with ESMTPSA id ep21-20020a1709069b5500b00a2ae7fb3fc6sm956224ejc.93.2024.01.25.03.41.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jan 2024 03:41:41 -0800 (PST)
-Date: Thu, 25 Jan 2024 12:41:41 +0100
-From: Andrew Jones <ajones@ventanamicro.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
-	Michael Rolnik <mrolnik@gmail.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
-	Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier <laurent@vivier.eu>, 
-	Yanan Wang <wangyanan55@huawei.com>, qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, 
-	qemu-s390x@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>, 
-	John Snow <jsnow@redhat.com>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Alistair Francis <alistair.francis@wdc.com>, 
-	David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
-	Bin Meng <bin.meng@windriver.com>, Nicholas Piggin <npiggin@gmail.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Daniel Henrique Barboza <danielhb413@gmail.com>, 
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Thomas Huth <thuth@redhat.com>, 
-	David Hildenbrand <david@redhat.com>, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
-	Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>, 
-	Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>, Paul Durrant <paul@xen.org>
-Subject: Re: Re: [PATCH v3 01/21] hw/riscv: Use misa_mxl instead of
- misa_mxl_max
-Message-ID: <20240125-61a7ba58367f81afbe444a50@orel>
-References: <20240122145610.413836-1-alex.bennee@linaro.org>
- <20240122145610.413836-2-alex.bennee@linaro.org>
- <20240123-b8d1c55688885bfc9125c42b@orel>
- <15d2f958-a51e-4b87-9a70-28edf3b55491@daynix.com>
- <20240124-3d9bec68bff7ab0057b902b6@orel>
- <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTMJw-0002jA-F3; Fri, 26 Jan 2024 08:32:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTMJu-0002XN-0h; Fri, 26 Jan 2024 08:32:34 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTMJr-0007xT-FG; Fri, 26 Jan 2024 08:32:33 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzBz0xKpz4wdD;
+ Sat, 27 Jan 2024 00:32:27 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzBx63n7z4wbp;
+ Sat, 27 Jan 2024 00:32:25 +1100 (AEDT)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 01/17] tests/avocado/machine_aspeed.py: Update buildroot images
+ to 2023.11
+Date: Fri, 26 Jan 2024 14:32:00 +0100
+Message-ID: <20240126133217.996306-2-clg@kaod.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240126133217.996306-1-clg@kaod.org>
+References: <20240126133217.996306-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <246ea370-934e-4666-ba73-b49c3ff6e531@daynix.com>
-X-TUID: c7vLUo8SKMfc
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LFelp+onXrZh
 
-On Thu, Jan 25, 2024 at 05:23:20PM +0900, Akihiko Odaki wrote:
-> On 2024/01/24 17:16, Andrew Jones wrote:
-> > On Wed, Jan 24, 2024 at 12:08:33PM +0900, Akihiko Odaki wrote:
-> > > On 2024/01/23 17:20, Andrew Jones wrote:
-> > > > On Mon, Jan 22, 2024 at 02:55:50PM +0000, Alex Bennée wrote:
-> > > > > From: Akihiko Odaki <akihiko.odaki@daynix.com>
-> > > > > 
-> > > > > The effective MXL value matters when booting.
-> > > > 
-> > > > I'd prefer this commit message get some elaboration. riscv_is_32bit()
-> > > > is used in a variety of contexts, some where it should be reporting
-> > > > the max misa.mxl. However, when used for booting an S-mode kernel it
-> > > > should indeed report the effective mxl. I think we're fine with the
-> > > > change, though, because at init and on reset the effective mxl is set
-> > > > to the max mxl, so, in those contexts, where riscv_is_32bit() should
-> > > > be reporting the max, it does.
-> > > > 
-> > > > > 
-> > > > > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> > > > > Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
-> > > > > Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
-> > > > > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> > > > > ---
-> > > > >    hw/riscv/boot.c | 2 +-
-> > > > >    1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > > 
-> > > > > diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-> > > > > index 0ffca05189f..bc67c0bd189 100644
-> > > > > --- a/hw/riscv/boot.c
-> > > > > +++ b/hw/riscv/boot.c
-> > > > > @@ -36,7 +36,7 @@
-> > > > >    bool riscv_is_32bit(RISCVHartArrayState *harts)
-> > > > >    {
-> > > > > -    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
-> > > > > +    return harts->harts[0].env.misa_mxl == MXL_RV32;
-> > > > >    }
-> > > > 
-> > > > Assuming everyone agrees with what I've written above, then maybe we
-> > > > should write something similar in a comment above this function.
-> > > > 
-> > > > Thanks,
-> > > > drew
-> > > 
-> > > The corresponding commit in my series has a more elaborated message:
-> > > https://patchew.org/QEMU/20240115-riscv-v9-0-ff171e1aedc8@daynix.com/20240115-riscv-v9-1-ff171e1aedc8@daynix.com/
-> > 
-> > I've pulled the message from that link and quoted it below
-> > 
-> > > A later commit requires one extra step to retrieve misa_mxl_max. As
-> > > misa_mxl is semantically more correct and does not need such a extra
-> > > step, refer to misa_mxl instead. Below is the explanation why misa_mxl
-> > > is more semantically correct to refer to than misa_mxl_max in this case.
-> > > 
-> > > Currently misa_mxl always equals to misa_mxl_max so it does not matter
-> > 
-> > That's true, but I think that's due to a bug in write_misa(), which
-> > shouldn't be masking val with the extension mask until mxl has been
-> > extracted.
-> 
-> misa.MXL writes are not supported since the MISA write code was introduced
-> with commit f18637cd611c ("RISC-V: Add misa runtime write support"). It
-> doesn't matter if we allow the guest to write MXL; the firmware code is
-> emulated by QEMU when QEMU loads a kernel.
+Compared to mainline buildroot, these images have some customization :
 
-Of course it matters. mxl will only change if we allow the guest to write
-it. Being aware of when/why mxl changes, i.e. is no longer equal to the
-max mxl, is the whole point of this patch.
+- Linux version is bumped to 6.6.3 and built with a custom config
+- U-Boot is switched to the one provided by OpenBMC for more support
+- defconfigs extra tools for dev
 
-> 
-> > 
-> > > which of misa_mxl or misa_mxl_max to refer to. However, it is possible
-> > > to have different values for misa_mxl and misa_mxl_max if QEMU gains a
-> > > new feature to load a RV32 kernel on a RV64 system, for example. For
-> > > such a behavior, the real system will need the firmware to switch MXL to
-> > > RV32, and if QEMU implements the same behavior, mxl will represent the
-> > > MXL that corresponds to the kernel being loaded. Therefore, it is more
-> > > appropriate to refer to mxl instead of misa_mxl_max when
-> > > misa_mxl != misa_mxl_max.
-> > 
-> > Right, but that doesn't say anything more than the original one line,
-> > "The effective MXL value matters when booting."
-> 
-> What do you think is missing?
+See branch [1] for more details.
 
-Um, what I wrote below...
+There are a few changes since last update, commit ed1f5ff84209. Images
+all have a password now and I2C devices have been updated in the Linux
+ast2600-evb device tree [2]. Do the necessary adjustements.
 
-> 
-> > 
-> > What I'm looking for is a code comment explaining how riscv_is_32bit()
-> > is always safe to use. Something like
-> > 
-> >   /*
-> >    * Checking the effective mxl is always correct, because the effective
-> >    * mxl will be equal to the max mxl at initialization and also on reset,
-> >    * which are the times when it should check the maximum mxl. Later, if
-> >    * firmware writes misa with a smaller mxl, then that mxl should be
-> >    * used in checks.
-> 
-> It is misleading to say the maximum MXL should be checked only at
-> initialization and on reset. We can refer to the maximum MXL anytime; we
-> just don't need it to load a kernel.
->
+[1] https://github.com/legoater/buildroot/commits/aspeed-2023.11
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9deb10cf160e
 
-Of course mxl_max can be checked whenever one wants, but you're changing
-a function named riscv_is_32bit(), not
-riscv_is_32bit_when_loading_a_kernel(). riscv_is_32bit() is used in
-contexts where one should be concerned as to whether mxl == mxl_max
-or not, because what they really want is the max. The comment I suggest
-will allow them to rest easy.
+Signed-off-by: CÃ©dric Le Goater <clg@kaod.org>
+---
+ tests/avocado/machine_aspeed.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-It's concerning that it doesn't appear you were aware that
-riscv_is_32bit() is used outside kernel loading contexts, which means it's
-unlikely you knew it was safe to make this change at all... I'm actually
-starting to think that maybe we should not make this change.
-riscv_is_32bit() should always check mxl_max and something like
-riscv_effective_mxl_is_32bit() should check mxl.
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 6fa5459a07bf..cec018142453 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -155,6 +155,7 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+         time.sleep(0.1)
+         exec_command(self, 'root')
+         time.sleep(0.1)
++        exec_command(self, "passw0rd")
+ 
+     def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+@@ -167,14 +168,14 @@ def test_arm_ast2500_evb_buildroot(self):
+         """
+ 
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2500-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('f96d11db521fe7a2787745e9e391225deeeec3318ee0fc07c8b799b8833dd474')
++                     'images/ast2500-evb/buildroot-2023.11/flash.img')
++        image_hash = ('c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0', 'Aspeed AST2500 EVB')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -195,8 +196,8 @@ def test_arm_ast2600_evb_buildroot(self):
+         """
+ 
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2600-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('e598d86e5ea79671ca8b59212a326c911bc8bea728dec1a1f5390d717a28bb8b')
++                     'images/ast2600-evb/buildroot-2023.11/flash.img')
++        image_hash = ('b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
+@@ -206,17 +207,17 @@ def test_arm_ast2600_evb_buildroot(self):
+                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+         self.vm.add_args('-device',
+                          'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+              'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '0')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+         self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+                     property='temperature', value=18000);
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '18000')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -261,7 +262,6 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+         self.vm.add_args('-device',
+                          'tpm-tis-i2c,tpmdev=tpm0,bus=aspeed.i2c.bus.12,address=0x2e')
+         self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+-        exec_command(self, "passw0rd")
+ 
+         exec_command_and_wait_for_pattern(self,
+             'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_device',
+-- 
+2.43.0
 
-drew

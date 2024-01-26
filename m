@@ -1,72 +1,72 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1026234ejc;
-        Fri, 26 Jan 2024 09:38:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEf0x2SxBJ9u4gmiIFvefz1q5q99Rl0RYwBFXve0zAArGQPAnPcPAuBa6nRhdWRS3uQ5RtJ
-X-Received: by 2002:a05:6830:1e6a:b0:6e1:8ae:cf70 with SMTP id m10-20020a0568301e6a00b006e108aecf70mr37369otr.76.1706290729437;
-        Fri, 26 Jan 2024 09:38:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290729; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1026377ejc;
+        Fri, 26 Jan 2024 09:39:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHaOCnwj5ExoFED6nsFGzK9id0EhbPiVZ5JbjEgPC35WeNmhM5MT/qwso84p0OGnTVrCIzn
+X-Received: by 2002:a05:6214:19eb:b0:686:97da:8fd7 with SMTP id q11-20020a05621419eb00b0068697da8fd7mr280271qvc.50.1706290744764;
+        Fri, 26 Jan 2024 09:39:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290744; cv=none;
         d=google.com; s=arc-20160816;
-        b=I9JTG42O/eH2TkxQsC92OJdnCDBoJoiWXg9NV80njF74GtA3DMsbcnoS84RSD+LwIP
-         tdGuKEhiVrsjlzFTQWYJkmeeCSKbHmNAEQDqqDp9dlTe7Og11rNMCfMCwOR0LXD4+TGj
-         FLCfliYk+RtqvMw7iNuvKtp6/M5jaYm0bV44sHOcPLycJLfzDtwT/PFGIX6zgg5PGKtt
-         KSDXRgfe4dti2PJMl7hrWmeYcyNczL8+9wkLjxprE/CDNeY9JQ9NT0Sg5CsdjHG3/2+L
-         f48+JWLEVbVg9wSkv7c3b/g1ROnV8cxwLVIkQwh4EoCgkslK1bp9GRdhgCA8oPuqzKcF
-         ImOg==
+        b=aqPRblxBNJvvq/ImDphsT3ct9ANKXC8I4KxXYsBUrra0VtMS3kXKJmwnavsj/Qf+SD
+         hcs8gkqcGZRxaSaJKgYBCJoc/FQ8ZficCon9isnNtIRKM/WVAl++3uZsoz//eRq0/e+F
+         laqWl8OlX0zV5+Qn1OfRv8GRMzgMbLXgemzc7S4rdlA3M7Uk0tKhr2syAiIQ0ulHHgAI
+         rm77hKpqSptSQlJZ9snQzJr5qTJW2QI4JOKgBMj6SsxdmScKAki8uk0AoposcEYAb4ZS
+         OLefqZvgKLU9i83emExvTM6QelZqw2skQbxz7Mi5rCsgqsKtHgm+wWpBluY9C3PDvkSZ
+         PAhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1By8MLkJQQ5aDNY2GpLO8Lg7eMBepYz9kIQOUj3RWg4=;
-        fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
-        b=Qy/ooQQdw7NN8na5VMIi4sU35i8P3Aq+LsyAuQvKskA2ZnIHkhQlOXeKxoviosTeHG
-         0gIcbYouSNimm0Xzsn710e6dtSPK0cgRdnlOR2fREWb7BNbL5urdnFb87lsIhUt6mC1L
-         R0Oy+hg2fX2WXrBLfzhAyePJkOtN9rYYRo3XQE8j+H2P/Tibz9aJY93wXB4AtV3kuqh6
-         vLR8J2roWoYgrBSgj/uekDcwoBS5e+rXaBa1zu3ujU8Sy51uS0Y+/cigq4mUJhC/2Jqu
-         60qIZRIBqH/YWUwTete7TAKTtu91nK1ms3qAfVRfLUPYldvTVKPSEey3iAD+uGZRTY6S
-         9xcA==
+        bh=XmoH6A+nBWef4HqrfR783ZSUxaA8W49f9I7azkQqtOs=;
+        fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
+        b=oZEUVU5VZIQn/ciFf0O9Z5Qc7/lSlyudCxyuGWtPSo2p1m5BpuosSQwYc5ZEzKWtDY
+         gDfFsgeaX5IUq3ZtJeG6zd/4eWjr2ltggbH+L6QAnF21O2FYbkzFgZOgiminSUPJYp9m
+         wqVZ7clYcSfXDauHTVJNUNJ3zZovT9hVv3fszEBSGKyKdKgfKqNr/ydiIkERSRWZqObk
+         83QqMdZ7mCLI73BDAvx+OBhX9drenIdnnEZT+XH3nL9nTzMDIVCURrSHUUjMwVBtEk93
+         sV8+XDJ9oGAdxVm/SwSPQO614m6kRuJBSDziC1M9LJYsjHhoYYjLvEyKNfXMY6Jb7pL1
+         jKsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=Lu42CPJk;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FuCrBmZY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a0562141c0700b0067f483722c0si1719595qvc.208.2024.01.26.09.38.49
+        by mx.google.com with ESMTPS id os48-20020a05620a813000b0078325dbf784si1665572qkn.241.2024.01.26.09.39.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:38:49 -0800 (PST)
+        Fri, 26 Jan 2024 09:39:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=Lu42CPJk;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FuCrBmZY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ60-00027p-Sd; Fri, 26 Jan 2024 12:34:29 -0500
+	id 1rTQ6o-0005T1-5a; Fri, 26 Jan 2024 12:35:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5P-00008s-In; Fri, 26 Jan 2024 12:33:53 -0500
+ id 1rTQ5S-0000Ba-Jk; Fri, 26 Jan 2024 12:33:55 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5O-0001jY-09; Fri, 26 Jan 2024 12:33:51 -0500
+ id 1rTQ5O-0001jT-Id; Fri, 26 Jan 2024 12:33:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=1By8MLkJQQ5aDNY2GpLO8Lg7eMBepYz9kIQOUj3RWg4=; b=Lu42CPJkj0fpF55INNF9dFE3Jb
- 36moigKQb4zpZw+xI/DratrTzBmjGRdyT25PQKyglZ74refrkiMyun8BzZSzSHEJM+92iI9HenrW6
- meVmjVhZdnroFEGp4i3jIHB5B8t+nh2Jact19MP0cKrJ6KjxVjd4w6lDHuYT9vILTen85kESCpoyf
- 1GIEUuuVMXBnJEC97Vd9RxAMa7BSErwen5aaBIVeSoBaLU1C6Kyaix6HEoW+2GZcYsz447SCP6Oa7
- VOEez5Ox5CXR3k9U+T1cFCtXv2IqJHwEagBkJc1Fk3ADvav1IGvajAx3hyQ0Co8W1aAPD/XV5AGfR
- vRRhxKww==;
+ bh=XmoH6A+nBWef4HqrfR783ZSUxaA8W49f9I7azkQqtOs=; b=FuCrBmZY5nYwKyYrErP59AA1dZ
+ SWxwci4hTyJC9UXZZOp+usyr/gAyVYXGz3L7EOj4aNSPOwRWapSpc6hm68VAQYPzat9DngTZUbHja
+ Mlfdfsdy3v4OkHDI5iF62kvEKkcuYBi6FgB2BGtFH/H0TeceQq6XCcMdDCY5u5oaqAZCcb/6whd47
+ oJqFbYi8pQw34UzYm1n8cviAzuWn2HqbHfrAZxOD5dU13hEBwcw7cEkuyK55M1YGiMQFVTlHEBe4W
+ F2JcfiF9+y/mPN/BMca2IiouKaopiqwSC4tirvd6UqGXo+J+oKwdLuAqU+v/shwadwUZg9lwKiqzP
+ ulDsuIdQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ4A-000000069Uh-1rdy; Fri, 26 Jan 2024 17:32:34 +0000
+ id 1rTQ4A-000000069Ue-1wwP; Fri, 26 Jan 2024 17:32:35 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ48-00000001elq-0EMr;
- Fri, 26 Jan 2024 17:32:32 +0000
+ Hat Linux)) id 1rTQ47-00000001elJ-0BRo;
+ Fri, 26 Jan 2024 17:32:31 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -115,11 +115,11 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v4 13/47] hw/mips/malta: use pci_init_nic_devices()
-Date: Fri, 26 Jan 2024 17:24:50 +0000
-Message-ID: <20240126173228.394202-14-dwmw2@infradead.org>
+ xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
+Subject: [PATCH v4 02/47] net: report list of available models according to
+ platform
+Date: Fri, 26 Jan 2024 17:24:39 +0000
+Message-ID: <20240126173228.394202-3-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
@@ -151,49 +151,152 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6i6t+42g8pf8
+X-TUID: sH+RIjbbOPFb
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-The Malta board setup code would previously place the first NIC into PCI
-slot 11 if was a PCNet card, and the rest (including the first if it was
-anything other than a PCNet card) would be dynamically assigned.
-
-Now it will place any PCNet NIC into slot 11, and then anything else will
-be dynamically assigned.
+By noting the models for which a configuration was requested, we can give
+the user an accurate list of which NIC models were actually available on
+the platform/configuration that was otherwise chosen.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- hw/mips/malta.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ net/net.c | 94 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 94 insertions(+)
 
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index d22bb1edef..af74008c82 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -612,18 +612,9 @@ static MaltaFPGAState *malta_fpga_init(MemoryRegion *address_space,
- /* Network support */
- static void network_init(PCIBus *pci_bus)
- {
--    int i;
--
--    for (i = 0; i < nb_nics; i++) {
--        NICInfo *nd = &nd_table[i];
--        const char *default_devaddr = NULL;
--
--        if (i == 0 && (!nd->model || strcmp(nd->model, "pcnet") == 0))
--            /* The malta board has a PCNet card using PCI SLOT 11 */
--            default_devaddr = "0b";
--
--        pci_nic_init_nofail(nd, pci_bus, "pcnet", default_devaddr);
--    }
-+    /* The malta board has a PCNet card using PCI SLOT 11 */
-+    pci_init_nic_in_slot(pci_bus, "pcnet", NULL, "0b");
-+    pci_init_nic_devices(pci_bus, "pcnet");
+diff --git a/net/net.c b/net/net.c
+index aeb7f573fc..962904eaef 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -75,6 +75,8 @@ typedef QSIMPLEQ_HEAD(, NetdevQueueEntry) NetdevQueue;
+ 
+ static NetdevQueue nd_queue = QSIMPLEQ_HEAD_INITIALIZER(nd_queue);
+ 
++static GHashTable *nic_model_help;
++
+ /***********************************************************/
+ /* network device redirectors */
+ 
+@@ -1087,12 +1089,94 @@ static int net_init_nic(const Netdev *netdev, const char *name,
+     return idx;
  }
  
- static void bl_setup_gt64120_jump_kernel(void **p, uint64_t run_addr,
++static gboolean add_nic_result(gpointer key, gpointer value, gpointer user_data)
++{
++    GPtrArray *results = user_data;
++    GPtrArray *alias_list = value;
++    const char *model = key;
++    char *result;
++
++    if (!alias_list) {
++        result = g_strdup(model);
++    } else {
++        GString *result_str = g_string_new(model);
++        int i;
++
++        g_string_append(result_str, " (aka ");
++        for (i = 0; i < alias_list->len; i++) {
++            if (i) {
++                g_string_append(result_str, ", ");
++            }
++            g_string_append(result_str, alias_list->pdata[i]);
++        }
++        g_string_append(result_str, ")");
++        result = result_str->str;
++        g_string_free(result_str, false);
++        g_ptr_array_unref(alias_list);
++    }
++    g_ptr_array_add(results, result);
++    return true;
++}
++
++static int model_cmp(char **a, char **b)
++{
++    return strcmp(*a, *b);
++}
++
++static void show_nic_models(void)
++{
++    GPtrArray *results = g_ptr_array_new();
++    int i;
++
++    g_hash_table_foreach_remove(nic_model_help, add_nic_result, results);
++    g_ptr_array_sort(results, (GCompareFunc)model_cmp);
++
++    printf("Available NIC models for this configuration:\n");
++    for (i = 0 ; i < results->len; i++) {
++        printf("%s\n", (char *)results->pdata[i]);
++    }
++    g_hash_table_unref(nic_model_help);
++    nic_model_help = NULL;
++}
++
++static void add_nic_model_help(const char *model, const char *alias)
++{
++    GPtrArray *alias_list = NULL;
++
++    if (g_hash_table_lookup_extended(nic_model_help, model, NULL,
++                                     (gpointer *)&alias_list)) {
++        /* Already exists, no alias to add: return */
++        if (!alias) {
++            return;
++        }
++        if (alias_list) {
++            /* Check if this alias is already in the list. Add if not. */
++            if (!g_ptr_array_find_with_equal_func(alias_list, alias,
++                                                  g_str_equal, NULL)) {
++                g_ptr_array_add(alias_list, g_strdup(alias));
++            }
++            return;
++        }
++    }
++    /* Either this model wasn't in the list already, or a first alias added */
++    if (alias) {
++        alias_list = g_ptr_array_new();
++        g_ptr_array_set_free_func(alias_list, g_free);
++        g_ptr_array_add(alias_list, g_strdup(alias));
++    }
++    g_hash_table_replace(nic_model_help, g_strdup(model), alias_list);
++}
++
+ NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
+                             const char *alias)
+ {
+     NICInfo *nd;
+     int i;
+ 
++    if (nic_model_help) {
++        add_nic_model_help(typename, alias);
++    }
++
+     for (i = 0; i < nb_nics; i++) {
+         nd = &nd_table[i];
+ 
+@@ -1606,6 +1690,10 @@ void net_check_clients(void)
+     NetClientState *nc;
+     int i;
+ 
++    if (nic_model_help) {
++        show_nic_models();
++        exit(0);
++    }
+     net_hub_check_clients();
+ 
+     QTAILQ_FOREACH(nc, &net_clients, next) {
+@@ -1685,6 +1773,12 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+     memset(ni, 0, sizeof(*ni));
+     ni->model = qemu_opt_get_del(opts, "model");
+ 
++    if (!nic_model_help && !g_strcmp0(ni->model, "help")) {
++        nic_model_help = g_hash_table_new_full(g_str_hash, g_str_equal,
++                                               g_free, NULL);
++        return 0;
++    }
++
+     /* Create an ID if the user did not specify one */
+     nd_id = g_strdup(qemu_opts_id(opts));
+     if (!nd_id) {
 -- 
 2.43.0
 

@@ -1,34 +1,34 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877454ejc;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877457ejc;
         Fri, 26 Jan 2024 05:34:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFLM+jHoaQw3ratEiY2WzPPYr8iRTj2kkv/K1+FzHwvIz9marr7mBqMcs1baAfLyQM6zdo/
-X-Received: by 2002:a05:6808:1b12:b0:3bd:c076:35c7 with SMTP id bx18-20020a0568081b1200b003bdc07635c7mr1862298oib.103.1706276049200;
+X-Google-Smtp-Source: AGHT+IGvRxWmMTOULautZE+03CIKLWBoWYCNmcEIingV6fdT2N5Tciy8RnYb/GqNNl8v9F7gAIn5
+X-Received: by 2002:ae9:e915:0:b0:783:cdc1:9f64 with SMTP id x21-20020ae9e915000000b00783cdc19f64mr1113921qkf.13.1706276049029;
         Fri, 26 Jan 2024 05:34:09 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1706276049; cv=none;
         d=google.com; s=arc-20160816;
-        b=VsU9KqaQu2moFHcVGblV6Sfp7AW/uV11kjLpZZs4vkM2mzmwdbhA8LVWjy188tZpps
-         j96SQQECnPAuC9WTFYgzidEevt3NF3UzMVex4NLSZAXvQ8bpd09PFi/xZjOnsZ2A4FiO
-         SBc9kV5IU3iOe3Mf/YUB65517cYAgXWOQlofJerR18EjuZssjkX6Sc4U0otonzOTOpmj
-         bpf9Wwos/AO2LL3tSSVS6wXhNjVxM4Yl2yiJknmHA8jsBJ3MPFC1txXWKS98afQTZ7Wi
-         qkIV8vaMl+MBoG7vseqVVL3JpGXOkVvun9k1QpSkuijJT6MHx6P2HL8Y6939RTwX2D4X
-         OEDg==
+        b=ITHvsDOJeePAn/dsHerRUltzQiAZMo3twqss5UpY97RF0PQ4Zw1FJMNadmm6vkQief
+         C+PAPUwD+bO7OKufyF9XdsJo65en0QuHp5ccXN90fu4EbSQ6aThshL25DeeWIKGTd8uj
+         z0S8bzSl49B80lEM5BLuhyupSfvo6jd93m3TXcUgfHfJiLtfzmxykOktHPG2UKmNdaEv
+         o9yoTW+cTLj7L3ZklStJW66J2QfFIb7vaQNZu1/qDCC+khMxJpjYv16f2AVIorar0dJ3
+         iSkbdTPriuouZGv96RohwVb7T638xyff3LrVGqHYDlrtOJohC+qq6E4MK/RdgbF9hjlr
+         qSHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=XuCs0mBgQpStr1lLetQIwg+niHPv0kQ7LWI7YiPM2SQ=;
-        fh=bVphFuusNWIgqYv/5Ts2TRQEiVyLsGj1TQub5fSYeWw=;
-        b=aHUz4r5tl4+URhdNrdQg5+NzIp0tixC2JL37UenKbgpBT2g0EK6Z9sGpcmoNpc9eGc
-         Jg/Z3/W/4y+0MPJ8+KjWkcxBq8Sy+zRZTvXTjjB5gIevasA0l69LhANnsky6JgBe7s8w
-         QhGMzKmbZ6ussYxRF7NOjFPFMopNcvNOUAxbkwZPDrq8MqbafKS2+k4EwoZtDN66hDIB
-         DYP5xO2t9+u4Jq+fJq15oTTMal5fyjJ6wq87VxRb/JfCWetwftZAvwyvHlq3723bQVEf
-         JlZTX2BnO8dnF+PD6zvw5McZ4EdLuUP79VbMyjFyc2B1/tibUcR2d64/eFb3DyUR1h9d
-         7CvA==
+        bh=XwiLQBWlsnPdISQMIkbVjkAq78OSrC4f51CIgtfJUoI=;
+        fh=jLTX6LcWZDFHmzG0EpD0PNf260/p6eka/EHAnWM+BUw=;
+        b=Es5sTK5IbAB/URccZsSreUiOYtcwv1SkFwrZkcKZjpoV3OC3Mu0Hvt/Zo8oyPr1mcV
+         4vANSvBPI9o7JH+ZFl3HlfoxmmyBfpZafaW7hfWbYhFG9oN+03zwdvm8XNsp2w9q0rGS
+         XWAZYH+4Z9MN4lCufXNJZ3PrQWVguAZwEWWLurqSs4NZioR+gYYK1m5ImET3irrY5jte
+         OgupsjelsfC+/eaTiAh1HhuwQLZeFQeGvTNysCqxuufwD5OL6q6BXkHVX3estMmTQ5a3
+         ocUP7mi6tY+N6fteLKkTV+E7EVDBIoG+zcmU0U0ty0r0tNoxfTVGjMS/vC5Knq/nWi12
+         BOOg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1-20020a05622a018100b0042a83d42dbfsi583388qtw.505.2024.01.26.05.34.09
+        by mx.google.com with ESMTPS id r3-20020a05620a03c300b0078165c35587si1286919qkm.462.2024.01.26.05.34.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 26 Jan 2024 05:34:09 -0800 (PST)
@@ -38,49 +38,48 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTMKC-0003z0-UV; Fri, 26 Jan 2024 08:32:52 -0500
+	id 1rTMKY-0004xl-2a; Fri, 26 Jan 2024 08:33:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMK4-0003AI-AF; Fri, 26 Jan 2024 08:32:44 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1rTMKR-0004ct-2I; Fri, 26 Jan 2024 08:33:07 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMK1-00080i-T6; Fri, 26 Jan 2024 08:32:43 -0500
+ id 1rTMKN-00089p-Q5; Fri, 26 Jan 2024 08:33:06 -0500
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzCC3P5Tz4wdD;
- Sat, 27 Jan 2024 00:32:39 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzCf5K8Wz4x7q;
+ Sat, 27 Jan 2024 00:33:02 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzC93H8vz4wny;
- Sat, 27 Jan 2024 00:32:37 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzCd1Rlyz4wny;
+ Sat, 27 Jan 2024 00:33:00 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gavin Shan <gshan@redhat.com>
-Subject: [PULL 06/17] hw/arm/aspeed: Check for CPU types in
- machine_run_board_init()
-Date: Fri, 26 Jan 2024 14:32:05 +0100
-Message-ID: <20240126133217.996306-7-clg@kaod.org>
+Cc: Ninad Palsule <ninad@linux.ibm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 16/17] hw/fsi: Added FSI documentation
+Date: Fri, 26 Jan 2024 14:32:15 +0100
+Message-ID: <20240126133217.996306-17-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126133217.996306-1-clg@kaod.org>
 References: <20240126133217.996306-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,163 +94,163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ++bzwtwg4STK
+X-TUID: cf4+BJHrfwgc
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
 
-Aspeed SoCs use a single CPU type (set as AspeedSoCClass::cpu_type).
-Convert it to a NULL-terminated array (of a single non-NULL element).
+Documentation for IBM FSI model.
 
-Set MachineClass::valid_cpu_types[] to use the common machine code
-to provide hints when the requested CPU is invalid (see commit
-e702cbc19e ("machine: Improve is_cpu_type_supported()").
-
+Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+[ clg : - Removed source file list
+        - Fixed aspeed machine reference ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h |  3 ++-
- hw/arm/aspeed.c             |  1 +
- hw/arm/aspeed_ast10x0.c     |  6 +++++-
- hw/arm/aspeed_ast2400.c     | 12 ++++++++++--
- hw/arm/aspeed_ast2600.c     |  6 +++++-
- hw/arm/aspeed_soc_common.c  |  5 ++++-
- 6 files changed, 27 insertions(+), 6 deletions(-)
+ docs/specs/fsi.rst   | 122 +++++++++++++++++++++++++++++++++++++++++++
+ docs/specs/index.rst |   1 +
+ 2 files changed, 123 insertions(+)
+ create mode 100644 docs/specs/fsi.rst
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index a060a5991874..0db5a41e7170 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -128,7 +128,8 @@ struct AspeedSoCClass {
-     DeviceClass parent_class;
- 
-     const char *name;
--    const char *cpu_type;
-+    /** valid_cpu_types: NULL terminated array of a single CPU type. */
-+    const char * const *valid_cpu_types;
-     uint32_t silicon_rev;
-     uint64_t sram_size;
-     uint64_t secsram_size;
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index d2d490a6d142..fc8355cdce14 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1149,6 +1149,7 @@ static void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
-     mc->default_cpus = sc->num_cpus;
-     mc->min_cpus = sc->num_cpus;
-     mc->max_cpus = sc->num_cpus;
-+    mc->valid_cpu_types = sc->valid_cpu_types;
- }
- 
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index dca601a3f9b6..c3b5116a6a9d 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -417,13 +417,17 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
- static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
- {
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO cortex-m4f */
-+        NULL
-+    };
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
- 
-     dc->realize = aspeed_soc_ast1030_realize;
- 
-     sc->name = "ast1030-a1";
--    sc->cpu_type = ARM_CPU_TYPE_NAME("cortex-m4"); /* TODO cortex-m4f */
-+    sc->valid_cpu_types = valid_cpu_types;
-     sc->silicon_rev = AST1030_A1_SILICON_REV;
-     sc->sram_size = 0xc0000;
-     sc->secsram_size = 0x40000; /* 256 * KiB */
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index 789e591f3ad0..c613e58144dd 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -502,6 +502,10 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
- 
- static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
- {
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("arm926"),
-+        NULL
-+    };
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-@@ -510,7 +514,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
-     dc->user_creatable = false;
- 
-     sc->name         = "ast2400-a1";
--    sc->cpu_type     = ARM_CPU_TYPE_NAME("arm926");
-+    sc->valid_cpu_types = valid_cpu_types;
-     sc->silicon_rev  = AST2400_A1_SILICON_REV;
-     sc->sram_size    = 0x8000;
-     sc->spis_num     = 1;
-@@ -526,6 +530,10 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
- 
- static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
- {
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("arm1176"),
-+        NULL
-+    };
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-@@ -534,7 +542,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
-     dc->user_creatable = false;
- 
-     sc->name         = "ast2500-a1";
--    sc->cpu_type     = ARM_CPU_TYPE_NAME("arm1176");
-+    sc->valid_cpu_types = valid_cpu_types;
-     sc->silicon_rev  = AST2500_A1_SILICON_REV;
-     sc->sram_size    = 0x9000;
-     sc->spis_num     = 2;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 589a4a6eea10..24541b5284d4 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -628,13 +628,17 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
- 
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
- {
-+    static const char * const valid_cpu_types[] = {
-+        ARM_CPU_TYPE_NAME("cortex-a7"),
-+        NULL
-+    };
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
- 
-     dc->realize      = aspeed_soc_ast2600_realize;
- 
-     sc->name         = "ast2600-a3";
--    sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
-+    sc->valid_cpu_types = valid_cpu_types;
-     sc->silicon_rev  = AST2600_A3_SILICON_REV;
-     sc->sram_size    = 0x16400;
-     sc->spis_num     = 2;
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index 36ca189ce960..123a0c432cfd 100644
---- a/hw/arm/aspeed_soc_common.c
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -20,7 +20,10 @@
- 
- const char *aspeed_soc_cpu_type(AspeedSoCClass *sc)
- {
--    return sc->cpu_type;
-+    assert(sc->valid_cpu_types);
-+    assert(sc->valid_cpu_types[0]);
-+    assert(!sc->valid_cpu_types[1]);
-+    return sc->valid_cpu_types[0];
- }
- 
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
+new file mode 100644
+index 000000000000..af8782253152
+--- /dev/null
++++ b/docs/specs/fsi.rst
+@@ -0,0 +1,122 @@
++======================================
++IBM's Flexible Service Interface (FSI)
++======================================
++
++The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
++master/slave and the end engine.
++
++FSI is a point-to-point two wire interface which is capable of supporting
++distances of up to 4 meters. FSI interfaces have been used successfully for
++many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
++CPUs and IBM ASICs.
++
++FSI allows a service processor access to the internal buses of a host POWER
++processor to perform configuration or debugging. FSI has long existed in POWER
++processes and so comes with some baggage, including how it has been integrated
++into the ASPEED SoC.
++
++Working backwards from the POWER processor, the fundamental pieces of interest
++for the implementation are: (see the `FSI specification`_ for more details)
++
++1. The Common FRU Access Macro (CFAM), an address space containing various
++   "engines" that drive accesses on buses internal and external to the POWER
++   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
++   an internal Local Bus (LBUS) which is described by the CFAM configuration
++   block.
++
++2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
++   symbols addressed to it. Slaves can be cascaded off of one another. The
++   slave's configuration registers appear in address space of the CFAM to
++   which it is attached.
++
++3. The FSI master: A controller in the platform service processor (e.g. BMC)
++   driving CFAM engine accesses into the POWER chip. At the hardware level
++   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
++   of engines in a CFAM.
++
++4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
++   processors. This now makes an appearance in the ASPEED SoC due to tight
++   integration of the FSI master IP with the OPB, mainly the existence of an
++   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
++   address space.
++
++5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
++   AST2600. Hardware limitations prevent the OPB from being directly mapped
++   into APB, so all accesses are indirect through the bridge.
++
++The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
++of the object model to automatically generate the CFAM configuration block.
++The configuration block presents engines in the order they are attached to the
++CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
++'config' member of LBusDeviceClass to match the engine's type.
++
++CFAM designs offer a lot of flexibility, for instance it is possible for a
++CFAM to be simultaneously driven from multiple FSI links. The modeling is not
++so complete; it's assumed that each CFAM is attached to a single FSI slave (as
++a consequence the CFAM subclasses the FSI slave).
++
++As for FSI, its symbols and wire-protocol are not modelled at all. This is not
++necessary to get FSI off the ground thanks to the mapping of the CFAM address
++space onto the OPB address space - the models follow this directly and map the
++CFAM memory region into the OPB's memory region.
++
++The following commands start the ``rainier-bmc`` machine with built-in FSI
++model. There are no model specific arguments. Please check this document to
++learn more about Aspeed ``rainier-bmc`` machine: (:doc:`../../system/arm/aspeed`)
++
++.. code-block:: console
++
++  qemu-system-arm -M rainier-bmc -nographic \
++  -kernel fitImage-linux.bin \
++  -dtb aspeed-bmc-ibm-rainier.dtb \
++  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
++  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
++  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
++
++The implementation appears as following in the qemu device tree:
++
++.. code-block:: console
++
++  (qemu) info qtree
++  bus: main-system-bus
++    type System
++    ...
++    dev: aspeed.apb2opb, id ""
++      gpio-out "sysbus-irq" 1
++      mmio 000000001e79b000/0000000000001000
++      bus: opb.1
++        type opb
++        dev: fsi.master, id ""
++          bus: fsi.bus.1
++            type fsi.bus
++            dev: cfam.config, id ""
++            dev: cfam, id ""
++              bus: lbus.1
++                type lbus
++                dev: scratchpad, id ""
++                  address = 0 (0x0)
++      bus: opb.0
++        type opb
++        dev: fsi.master, id ""
++          bus: fsi.bus.0
++            type fsi.bus
++            dev: cfam.config, id ""
++            dev: cfam, id ""
++              bus: lbus.0
++                type lbus
++                dev: scratchpad, id ""
++                  address = 0 (0x0)
++
++pdbg is a simple application to allow debugging of the host POWER processors
++from the BMC. (see the `pdbg source repository`_ for more details)
++
++.. code-block:: console
++
++  root@p10bmc:~# pdbg -a getcfam 0x0
++  p0: 0x0 = 0xc0022d15
++
++.. _FSI specification:
++   https://openpowerfoundation.org/specifications/fsi/
++
++.. _pdbg source repository:
++   https://github.com/open-power/pdbg
+diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+index b3f482b0aa58..1484e3e76077 100644
+--- a/docs/specs/index.rst
++++ b/docs/specs/index.rst
+@@ -24,6 +24,7 @@ guest hardware that is specific to QEMU.
+    acpi_erst
+    sev-guest-firmware
+    fw_cfg
++   fsi
+    vmw_pvscsi-spec
+    edu
+    ivshmem-spec
 -- 
 2.43.0
 

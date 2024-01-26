@@ -1,69 +1,69 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023920ejc;
-        Fri, 26 Jan 2024 09:34:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFhcXmOZvVv6o8i95BTJI3JN2ycJCI4cHweSc1d5DR32cKTQvPYPu2J0MUki/M8uyQeP9fW
-X-Received: by 2002:a25:640c:0:b0:dc6:457f:c1cd with SMTP id y12-20020a25640c000000b00dc6457fc1cdmr291354ybb.6.1706290459596;
-        Fri, 26 Jan 2024 09:34:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290459; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023934ejc;
+        Fri, 26 Jan 2024 09:34:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGHfA+CeJjyLHSHl0VlSSQr0htmKPy8rHCGesMmf4ot6mkxAJoL5XQ7k/8XM9rgZzUupgSl
+X-Received: by 2002:a0d:f4c3:0:b0:602:cd1d:e559 with SMTP id d186-20020a0df4c3000000b00602cd1de559mr229025ywf.4.1706290460594;
+        Fri, 26 Jan 2024 09:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290460; cv=none;
         d=google.com; s=arc-20160816;
-        b=YJLuzNLTCaXH+9WORZUQqcfZjZYabId9Fkia9izvGyecr75htSj6j5ojTurPhSu9pl
-         M3Ar1xaKwO+AKh1SRq6vrwrgob5yGu0s+HogInE15ynee2SpnT0W9++xr2S4YqH8raNy
-         +noWwYNZoIwyGKDTUxeryovwf2oDYTBGV1GE1r1GkXnjtLmx3ZvWb3opYHvgOFahufe5
-         cthuEo71joslloNJiYrGS/QuaHFo454S4nbOls5LeL5DOHzIHSlR6N555yHJq2imcnef
-         /MCl8q7iRyfYzH5Z1DpKUQG9Mp/iXzXjV6eK2c4e7UaAppx0PrXFnt5+oxRGelCut1zp
-         aPIw==
+        b=EJpj1y3dpvLZu5o433+8gHPQ3M/LxAkEMHBxrsoI9cZbw4VQ4Sum5FEQJFnM+VRWfP
+         WtBxCekCrR98zJaQ2dK1xFpv4r8gIr4/j430S9b2/hdwDWXUNurtgEUj/3Rf9taZVzD+
+         Z7pX2vC5+xuEUnorn4rnfj933u1VJgYPDmgHmm7Vjzp6VgOm8xqv3QWKWQTLenHopAA9
+         GuCksg6wRjtsoktNkvGQ9x6S81jzWkAKLqzNcPdpVW2TucK9FXS2sqAbLFIktyeY57LJ
+         03/g1TfpM/6REXqZ2HDFdpTZLHcwgqSVELtkotMgSkp0mZI7z0M2z2mWfgUJ0lcBG8/8
+         mBdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=968FfiIx6xTKDJXJoXrAu14UZ4c3HMbAlGKHEl9nV4w=;
+        bh=OdxzKrubfC0ZaYycLGHWamGW/MHu3AZpCkbdAJlgMyI=;
         fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
-        b=N1tiNY4IPRDaqCz2Ru6w4ousltV5iQaaky5bbHBvJCPRW01DdDnLbrfVyyd2WAW7bv
-         1YNXv0VJCCBUOJNWTPIqMIMy07Pd8vkQGDioxs0TLkAv62Fom8YWDbOLJuXMxBNi6PFv
-         KzU5NXZhEexpEAg1wbg7L3ITfLrQT7iuIppz1UC31n5JobYbFU9Fus319DLmG02xk3F6
-         E9RLIZQUURnzr3tI0OsL2DDnpaoSszh8dy7TxttpFV5JCPptZzd8ZHAZkVwMq/miluq3
-         Gmg2V37SpMQxolyvMgEgxoXHO/4Fxexdvuk/2ZG9Bl72OlY05W+6RYYpquOl4KF7qTGb
-         DBog==
+        b=JkIXZFyH2QZg5h5dQxxCKFbtr/98HYFEBqBkiaKts49wjYoDG8SeifCeAEQOAlZ7ZM
+         2+uXWoMnvqQPajW2T7BN+F1XNilqtpQBYQg2S3mUGRnc1U9mzB0CcEjF+l9wv8VozjKj
+         QirS4FjvKT3vPu4oWU5mPukv4S5lBiGksF0dSDY5TnBRND+mqaTBaxUga64lTg4u9gr9
+         UkBgN7yyMBXyjhSradj9vvQhIksroh7xAiZ7sNbeUm95WajVqDJ72EQhF+JCYqnXHmxk
+         252ND6B9rgN05zk2tH3Fs65J3BzpG10F2HvC/v9IXchzeuaCgoqPJnyBSTV1puFmFXZ1
+         7oGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bNQnqA3i;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=oLyNvxBj;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id g13-20020a25b10d000000b00dc2289c41c7si956889ybj.633.2024.01.26.09.34.19
+        by mx.google.com with ESMTPS id s23-20020a814517000000b005ff95d53f30si935273ywa.86.2024.01.26.09.34.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 09:34:19 -0800 (PST)
+        Fri, 26 Jan 2024 09:34:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bNQnqA3i;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=oLyNvxBj;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.672263.1046130 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.672264.1046141 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4p-0006rF-E4; Fri, 26 Jan 2024 17:33:15 +0000
+	id 1rTQ4r-0007EJ-DL; Fri, 26 Jan 2024 17:33:17 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 672263.1046130; Fri, 26 Jan 2024 17:33:15 +0000
+Received: by outflank-mailman (output) from mailman id 672264.1046141; Fri, 26 Jan 2024 17:33:17 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4o-0006p6-Uv; Fri, 26 Jan 2024 17:33:14 +0000
-Received: by outflank-mailman (input) for mailman id 672263;
- Fri, 26 Jan 2024 17:33:13 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
+	id 1rTQ4q-0007Af-Tz; Fri, 26 Jan 2024 17:33:16 +0000
+Received: by outflank-mailman (input) for mailman id 672264;
+ Fri, 26 Jan 2024 17:33:14 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=bPDA=JE=casper.srs.infradead.org=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1rTQ4n-0004Zo-OZ
- for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:13 +0000
+ id 1rTQ4o-0004m7-OA
+ for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:14 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id fad9be61-bc70-11ee-8a43-1f161083a0e0;
- Fri, 26 Jan 2024 18:33:12 +0100 (CET)
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id f9d107ad-bc70-11ee-98f5-efadbce2ee36;
+ Fri, 26 Jan 2024 18:33:11 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ48-0000000EKUN-0LUU; Fri, 26 Jan 2024 17:32:33 +0000
+ id 1rTQ48-0000000EKUJ-0gas; Fri, 26 Jan 2024 17:32:33 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ48-00000001emE-3Z4R;
- Fri, 26 Jan 2024 17:32:32 +0000
+ Hat Linux)) id 1rTQ47-00000001elM-0UcP;
+ Fri, 26 Jan 2024 17:32:31 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -74,17 +74,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: fad9be61-bc70-11ee-8a43-1f161083a0e0
+X-Inumbo-ID: f9d107ad-bc70-11ee-98f5-efadbce2ee36
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=968FfiIx6xTKDJXJoXrAu14UZ4c3HMbAlGKHEl9nV4w=; b=bNQnqA3ia7NcIR0I5BM/faxrjJ
-	RQqKOP7UTwn5CM9MqTVYRdLSglntBNT1+Z68wtYVQ7M8VFbMOFa1J93IPv9G68D/pDzlNGz94M7PL
-	SzvEchfk5/xjMAVTF7DHS0PLexbY4t+WWLG9PZtrybRwqGKrSoBh/Lul/vXiRihNOHQHlNlohKXQ9
-	T/fhztZnc7WkSOt5GX74uYVaN8OuIcY0Sb27IROMoMObE+SpKfgEGnquCB/z5KPmf4hH0nQXFrd4X
-	tr/O6dIBs7YD3ciKL3bKUq1lFsPuHBoSByMvikAkKk1UhcbGGUyw34CnpG+P6SAUG2ByunA3YlEu7
-	1F1CeXwQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description;
+	bh=OdxzKrubfC0ZaYycLGHWamGW/MHu3AZpCkbdAJlgMyI=; b=oLyNvxBjpIrjGRRU3R48knb+RJ
+	HGX4tMfXsp1iRB4pIZ7NBDTIhTAKm3Wo8Qzxg8b3FXNy6G7bp4/3Q1XhZA1UniQnrDX5a+wRDU7oO
+	i2hMEaCbTfbVfs5a2hotsQ/cQ3lhYHtDc8VutRmH0woi0XpvA5OZXZcwfAOsQZS36JeB/nPaSRk8R
+	p/dMQqB8K5HxG0sI12RIlxWxy7Dvn6HPOeeAFRlVTUSbyMlAYrtkETpxYLgzemRWOvBEah7v4QXLu
+	6tvEyocuOhm7RAexy7qTfKmD0eZBrGjSXZI1q9ZWcVufyRe+Fx7dTOpo5V87/ZEgk/ajitS8bQXGL
+	mh3Xldiw==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -153,115 +153,131 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	xen-devel@lists.xenproject.org,
 	David Woodhouse <dwmw@amazon.co.uk>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v4 21/47] hw/arm/allwinner: use qemu_configure_nic_device()
-Date: Fri, 26 Jan 2024 17:24:58 +0000
-Message-ID: <20240126173228.394202-22-dwmw2@infradead.org>
+Subject: [PATCH v4 03/47] net: add qemu_create_nic_bus_devices()
+Date: Fri, 26 Jan 2024 17:24:40 +0000
+Message-ID: <20240126173228.394202-4-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: UYxWYV80Abl+
+X-TUID: CSRKYlu/wZK5
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
+This will instantiate any NICs which live on a given bus type. Each bus
+is allowed *one* substitution (for PCI it's virtio → virtio-net-pci, for
+Xen it's xen → xen-net-device; no point in overengineering it unless we
+actually want more).
+
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Paul Durrant <paul@xen.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/allwinner-a10.c |  6 +-----
- hw/arm/allwinner-h3.c  |  6 +-----
- hw/arm/allwinner-r40.c | 27 ++-------------------------
- 3 files changed, 4 insertions(+), 35 deletions(-)
+ include/net/net.h | 22 ++++++++++++++++++++
+ net/net.c         | 53 +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 75 insertions(+)
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index b0ea3f7f66..57f52871ec 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -142,11 +142,7 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0, AW_A10_DRAMC_BASE);
+diff --git a/include/net/net.h b/include/net/net.h
+index dff1872b4d..728ca965af 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -248,6 +248,28 @@ bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
+  */
+ DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
+                                     const char *alias);
++
++/*
++ * qemu_create_nic_bus_devices: Create configured NIC devices for a given bus
++ * @bus: Bus on which to create devices
++ * @parent_type: Object type for devices to be created (e.g. TYPE_PCI_DEVICE)
++ * @default_model: Object type name for default NIC model (or %NULL)
++ * @alias: Additional model string to replace, for user convenience
++ * @alias_target: Actual object type name to be used in place of @alias
++ *
++ * Instantiate dynamic NICs on a given bus, typically a PCI bus. This scans
++ * for available NIC configurations which either specify a model which is
++ * a child type of @parent_type, or which do not specify a model when
++ * @default_model is non-NULL. Each device is instantiated on the given @bus.
++ *
++ * A single substitution is supported, e.g. "xen" → "xen-net-device" for the
++ * Xen bus, or "virtio" → "virtio-net-pci" for PCI. This allows the user to
++ * specify a more understandable "model=" parameter on the command line, not
++ * only the real object typename.
++ */
++void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
++                                 const char *default_model,
++                                 const char *alias, const char *alias_target);
+ void print_net_client(Monitor *mon, NetClientState *nc);
+ void net_socket_rs_init(SocketReadState *rs,
+                         SocketReadStateFinalize *finalize,
+diff --git a/net/net.c b/net/net.c
+index 962904eaef..4651b3f443 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1223,6 +1223,59 @@ DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
+     return dev;
+ }
  
--    /* FIXME use qdev NIC properties instead of nd_table[] */
--    if (nd_table[0].used) {
--        qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
--        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
--    }
-+    qemu_configure_nic_device(DEVICE(&s->emac), true, NULL);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->emac), errp)) {
-         return;
-     }
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index f05afddf7e..4f102ad082 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -369,11 +369,7 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-                               "sd-bus");
- 
-     /* EMAC */
--    /* FIXME use qdev NIC properties instead of nd_table[] */
--    if (nd_table[0].used) {
--        qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
--        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
--    }
-+    qemu_configure_nic_device(DEVICE(&s->emac), true, NULL);
-     object_property_set_link(OBJECT(&s->emac), "dma-memory",
-                              OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index a0d367c60d..4d5661b014 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -294,7 +294,6 @@ static void allwinner_r40_init(Object *obj)
- 
- static void allwinner_r40_realize(DeviceState *dev, Error **errp)
- {
--    const char *r40_nic_models[] = { "gmac", "emac", NULL };
-     AwR40State *s = AW_R40(dev);
- 
-     /* CPUs */
-@@ -454,31 +453,8 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
-                     s->memmap[AW_R40_DEV_DRAMPHY]);
- 
--    /* nic support gmac and emac */
--    for (int i = 0; i < ARRAY_SIZE(r40_nic_models) - 1; i++) {
--        NICInfo *nic = &nd_table[i];
--
--        if (!nic->used) {
--            continue;
--        }
--        if (qemu_show_nic_models(nic->model, r40_nic_models)) {
--            exit(0);
--        }
--
--        switch (qemu_find_nic_model(nic, r40_nic_models, r40_nic_models[0])) {
--        case 0: /* gmac */
--            qdev_set_nic_properties(DEVICE(&s->gmac), nic);
--            break;
--        case 1: /* emac */
--            qdev_set_nic_properties(DEVICE(&s->emac), nic);
--            break;
--        default:
--            exit(1);
--            break;
--        }
--    }
--
-     /* GMAC */
-+    qemu_configure_nic_device(DEVICE(&s->gmac), true, "gmac");
-     object_property_set_link(OBJECT(&s->gmac), "dma-memory",
-                                      OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->gmac), &error_fatal);
-@@ -487,6 +463,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_GMAC));
- 
-     /* EMAC */
-+    qemu_configure_nic_device(DEVICE(&s->emac), true, "emac");
-     sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_R40_DEV_EMAC]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
++void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
++                                 const char *default_model,
++                                 const char *alias, const char *alias_target)
++{
++    GPtrArray *nic_models = qemu_get_nic_models(parent_type);
++    const char *model;
++    DeviceState *dev;
++    NICInfo *nd;
++    int i;
++
++    if (nic_model_help) {
++        if (alias_target) {
++            add_nic_model_help(alias_target, alias);
++        }
++        for (i = 0; i < nic_models->len - 1; i++) {
++            add_nic_model_help(nic_models->pdata[i], NULL);
++        }
++    }
++
++    /* Drop the NULL terminator which would make g_str_equal() unhappy */
++    nic_models->len--;
++
++    for (i = 0; i < nb_nics; i++) {
++        nd = &nd_table[i];
++
++        if (!nd->used || nd->instantiated) {
++            continue;
++        }
++
++        model = nd->model ? nd->model : default_model;
++        if (!model) {
++            continue;
++        }
++
++        /* Each bus type is allowed *one* substitution */
++        if (g_str_equal(model, alias)) {
++            model = alias_target;
++        }
++
++        if (!g_ptr_array_find_with_equal_func(nic_models, model,
++                                              g_str_equal, NULL)) {
++            /* This NIC does not live on this bus. */
++            continue;
++        }
++
++        dev = qdev_new(model);
++        qdev_set_nic_properties(dev, nd);
++        qdev_realize_and_unref(dev, bus, &error_fatal);
++    }
++
++    g_ptr_array_free(nic_models, true);
++}
++
+ static int (* const net_client_init_fun[NET_CLIENT_DRIVER__MAX])(
+     const Netdev *netdev,
+     const char *name,
 -- 
 2.43.0
 

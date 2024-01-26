@@ -1,93 +1,94 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116468ejb;
-        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEKCCNY0H7qs/8Q3LjDchGt+HY8L11b+ZW4DXVhQSfadS3jztHERuz3kHF6YLxjhjaGSTu9
-X-Received: by 2002:a05:620a:22a5:b0:783:a948:5782 with SMTP id p5-20020a05620a22a500b00783a9485782mr482692qkh.134.1706306813341;
-        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706306813; cv=none;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp116554ejb;
+        Fri, 26 Jan 2024 14:07:03 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGpg91OUWvIlJwwszi6tZKxo2sWxmipOPfk+GEW8qHsn2VqmWpynq/AIjN5mpjHdIUDtRX1
+X-Received: by 2002:a05:622a:90:b0:42a:541a:24de with SMTP id o16-20020a05622a009000b0042a541a24demr886213qtw.4.1706306823527;
+        Fri, 26 Jan 2024 14:07:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706306823; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rz8IGN9fQDz0L0/tuIrUK+eWSJk085yh0LD3IelU0CQ2OUDnFIu1k+lhAnDNmPJmwO
-         OLkvIMcfslwNHtzpJeC5sCe7vvENUBuSb5aueS54VKGMENgfq1RgDOS8a93F6lTsixve
-         G7AUKOUdUi/1SMWRzXWv5x+R9hFfan4hY48r7Gs24ZuJS22gbv8PgZ9kzoqX2r3wfzPu
-         72VkErpJlsQ0FEAh2N1uSeCsDwLUmVJapo3Tlb+0nA/i7FaLyE1SyqRDJW1oJ0Vya7kW
-         4nMMqFSm/Gvx8/TIkXogKdrpKNTmZPR+CiIUoBBUYEzjFYnR71DX1EJZJJGs12AxIVSO
-         oMFA==
+        b=PzjwDq06vt+GBrgXhaoqB9sJwrLbT7dR2frNQpg1Z/QkC0LTNfLbLRbCI75m0TJ6VU
+         2OgXmKMRPDO08JtGoZbH7aH4L/GGl/ibJ4ob6Ey3ds/UDeyZGdqhpyGkBQ1qoX7vhNlX
+         /i+g0ear84ZeiyGX2C8pSpt3qUYxe+bJYlv52dRZnvZCGboJ6w3thBGu7uYJFXIvQRuO
+         M3i6CdQVl++DJPluv5cjsR+mzKn+7NqPakuu3GLEnRbDVmkVlbzSjTz1omq6DRN+ddxB
+         B0Fo8z5bBhEaN66wXvDNkkgS4axX2bLG/r2umTM1r01GGP3WJbRuR/MoW4lTJ1yLpXUN
+         S74g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
-        fh=0uTmhh8CZ0ElLKkgnDATgdub0eAKmdn9Je9K5Trh2n4=;
-        b=0QdF6wnUMpogktbSZNjwi6yOA8YaX1KSi7kFamXMJL0fzoudRlMMJJRa/O561E6xZW
-         GwvOrNjZZfm3lWg3VL51PQnuJNlif1B93nHllfW4iAltvfdvNWtIVf4TfLWGCrY+wv/z
-         2L8R9/wcfo8Q6uSNtehKuIdoUrGnOhEKyA93lgD/9eod4Ez8lVyOffiZYGMdgwL7UE5b
-         +qKFZonss0rjwZ6gfVBvMkFTJRa4McfN7U/hKm7/R4TsEmuWbD3Y0Xf9ln+IZ2m8KiXR
-         ari6DELG5O2OkQpS3GHYEBWHedl2XS/6Vrq4VhJVHxP9JrllECw4CEHNrdB+f1qMwVsY
-         U60g==
+        bh=wkOEO96VeYz15t7MFpkcGQawVspurMDTqf/y8c7vhEo=;
+        fh=/qojCzKzJzu17eSGMo9CTqxbtyYGaOrKOmbzUDrHuP4=;
+        b=l4BmiY5q0KBH63To/CnDQWEJQKoweMNW581WTkzHEL9oVUTL8Ki2NUo37wKu1AHrjU
+         Dl1jbcjdoVXuMGlCMVz2IDf406oYPGKbi7+0KKDnzWb+++m3Z195ZRwlWAYtV3Kr3X9C
+         2JKaT+RYM4sZawtOkisjkf/EuJoYxa/XIALMm1PH+7krG3LvhgZ9BmS/des1FLeb2i4h
+         nPvTQdGb+qOO82heC3bLBcaIQJ8+tVufz37ogrVtLewn9hwsOp9rewnc4BMTijOEhkGj
+         lU2+Awzmwq/b/Nl6QOjtkF2t0xXoy/Y7bwlEXuXHo94e7IqhcQY5jCJ6YQamNdsWqqEA
+         o4AA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LLURRiO+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pTcaS6tJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11-20020a05620a0bcb00b0078333a213cdsi2436099qki.368.2024.01.26.14.06.53
+        by mx.google.com with ESMTPS id q14-20020a05622a04ce00b0042a3a097dc1si2042592qtx.728.2024.01.26.14.07.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 14:06:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 14:07:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LLURRiO+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pTcaS6tJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTULL-0002ft-J7; Fri, 26 Jan 2024 17:06:35 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rTULL-0002f1-LO; Fri, 26 Jan 2024 17:06:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKh-00016c-Rx
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:57 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKY-0000e2-U4
+ for qemu-devel@nongnu.org; Fri, 26 Jan 2024 17:05:47 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKc-0004Jj-LZ
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 17:05:55 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-337d05b8942so1092616f8f.3
- for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 14:05:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rTUKV-0004Fv-4g
+ for qemu-devel@nongnu.org; Fri, 26 Jan 2024 17:05:46 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a3122b70439so122086466b.3
+ for <qemu-devel@nongnu.org>; Fri, 26 Jan 2024 14:05:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706306748; x=1706911548; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706306741; x=1706911541; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
- b=LLURRiO+TsuqTB0BpXfXPb2M/onbv4KLGEXBHvsZz6xjhjgjEqlfBBJabP5ZTmhQgZ
- dDnVF/pFpLPTll1PU00nWrkWggFGqGySSox6HE+it3yThagBIM+5otwjHDX+y1agI/UC
- doq8SwGl1ndYMMDCI5GbQ/8KL3MHyFtBMW5yQ5e44gGZJq9VALYMyVMxOxzfA1f1P58j
- SqPo27OMD5JIBfhWzQt9ZsRtHQxLVZlfXQZtYi5rFSgg7HxnABY9P7ZIyjeC58Nsc9XB
- GAHwMzqk7CYxw7SquUnccDsop7umnf9QLEI0pE1/j2r3gRF3BAqXL1M9LNVnMRIJ9bim
- lf+Q==
+ bh=wkOEO96VeYz15t7MFpkcGQawVspurMDTqf/y8c7vhEo=;
+ b=pTcaS6tJXnX5eIh9+DM9zC2Nsnf4YHLPgupn80S7NUx+xHHDcXISd75tNEmhgQmYnC
+ N1toqpssV7ATI3kSPJT2HNm+lGul+VMG7AatqqOYTvkpj58RchtaOW1LWSndIKQ2yNp5
+ ThckOLqwlpm1WEBWKa5wG5fcZ0FBGwEUE+shkqDrySHh2JOK/lABwymge6bUBYDp35VY
+ RmfPjQ3nwBJg/AZFVgB75Oih094pFvRBjwWGXP+G3mNIP8LemyhIS6npl0eyJeMCUlbW
+ rUkYRwzG+ixA4daQgxC43a9oCNkmTVKZsd8omllQYIR51qpZ1lhi/rau3QKLR7j2SDWZ
+ 7/vQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706306748; x=1706911548;
+ d=1e100.net; s=20230601; t=1706306741; x=1706911541;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hrrpUHlY+apDJ+Bfl8GBcR4XdU7wA9f0hxfDSc9g5ew=;
- b=HxhAI9tjTT3feSWoglbrj/0DCYV6023z9XmjQLEUjQqyMkyEaZgpXgGCJX8cuPoReN
- LUVELFj+dTnhVc+5esZQ6RBWNLottScFKp1ID+H0L01L/XT7sJiIfR1aH+unIPZNDpwR
- HM/hLUSw597ugNBnb0XNe6Xln6uzLU4zg0LtdbgMlZBtmBb3JWRczt54AcCGqfq/hfjv
- OJgV0PQi/ygc5VlwLSFASvlcM6WWGt0LuuIYG4hPqn/AnvkYseCD+v3xvckLKeDhh8nN
- KBRunhbCp4NT5hYYcaLQUADlZJPXktRER0tn1QbteYH72dIPop9wQ1tz4FoLbRWw/rq0
- 2CHw==
-X-Gm-Message-State: AOJu0Yw/VjjCW7A19SR3z5lNWGSGEWp4zk5B3G3mOO8Z+L52QGCaZFdV
- 8Q4D1IPsQvB2cG1SS13zQVJffHi/wSLChsuKusfQhwpAqU5jo9pT9jEARxmklcc=
-X-Received: by 2002:adf:edd1:0:b0:33a:deec:66ad with SMTP id
- v17-20020adfedd1000000b0033adeec66admr239506wro.104.1706306747724; 
- Fri, 26 Jan 2024 14:05:47 -0800 (PST)
+ bh=wkOEO96VeYz15t7MFpkcGQawVspurMDTqf/y8c7vhEo=;
+ b=rJ7zwSadVMU+NcaKW7jP8iCO8MRlWTeDIrCCfSq377EzHI7oPQ6AaXAOo8sy0riGzg
+ hvJ43wIY9wAg8gnJKhtOJto4gSiivA7+qppwZuo0KqIRICIHj4IL2cmuZ68cyZxHX4Fb
+ ceG+cD3LcaFDPYsF0CI7I84iex5d63TD7uAIMvENsUiByo0P7Ew3HDRDFGS3DWkWTAGn
+ XjZJeGJi5zBcslZna/2uIpUjksJclUhKqGeISw15eBJG6rFO7QpLp76DGzx8ZGHWGYAI
+ cKB4NhdDVeGSOD1EwkSt5QzmLw3kWXMLSJZqpqDFOneunzbj4IQHiwY2XcfRKMqzoLDX
+ RAvA==
+X-Gm-Message-State: AOJu0Yz7CVlKHifnHmUA6r+qfViK/aBDzlsfu/W1tFBndcNi0HU2y4XD
+ xI3pC4/5xJaJunnqv9FZfcDihTKG8xMkBOaHUIPnGs0/cHb0vssPz6On6fDQ0nmrKesuURKHIDZ
+ 1
+X-Received: by 2002:a17:906:fc09:b0:a34:d426:1beb with SMTP id
+ ov9-20020a170906fc0900b00a34d4261bebmr335803ejb.54.1706306741394; 
+ Fri, 26 Jan 2024 14:05:41 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.142.39])
  by smtp.gmail.com with ESMTPSA id
- vh5-20020a170907d38500b00a3517d26918sm508925ejc.107.2024.01.26.14.05.45
+ u12-20020a170906408c00b00a3185d260e5sm1039705ejj.151.2024.01.26.14.05.39
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 26 Jan 2024 14:05:47 -0800 (PST)
+ Fri, 26 Jan 2024 14:05:41 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
@@ -97,315 +98,104 @@ Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
  Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH v2 16/23] target/ppc: Prefer fast cpu_env() over slower CPU
- QOM cast macro
-Date: Fri, 26 Jan 2024 23:03:58 +0100
-Message-ID: <20240126220407.95022-17-philmd@linaro.org>
+ Stafford Horne <shorne@gmail.com>
+Subject: [PATCH v2 15/23] target/openrisc: Prefer fast cpu_env() over slower
+ CPU QOM cast macro
+Date: Fri, 26 Jan 2024 23:03:57 +0100
+Message-ID: <20240126220407.95022-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240126220407.95022-1-philmd@linaro.org>
 References: <20240126220407.95022-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m2Gc/JacUizu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F5oFRZr9ccKN
 
 Mechanical patch produced running the command documented
 in scripts/coccinelle/cpu_env.cocci_template header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/ppc/mpc8544_guts.c         |  3 +--
- hw/ppc/pnv.c                  |  3 +--
- hw/ppc/pnv_xscom.c            |  5 +----
- hw/ppc/ppce500_spin.c         |  3 +--
- hw/ppc/spapr.c                |  3 +--
- hw/ppc/spapr_caps.c           |  6 ++----
- target/ppc/cpu_init.c         | 11 +++--------
- target/ppc/excp_helper.c      |  3 +--
- target/ppc/gdbstub.c          | 12 ++++--------
- target/ppc/kvm.c              |  6 ++----
- target/ppc/ppc-qmp-cmds.c     |  3 +--
- target/ppc/user_only_helper.c |  3 +--
- 12 files changed, 19 insertions(+), 42 deletions(-)
+ target/openrisc/gdbstub.c   | 3 +--
+ target/openrisc/interrupt.c | 6 ++----
+ target/openrisc/translate.c | 3 +--
+ 3 files changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/hw/ppc/mpc8544_guts.c b/hw/ppc/mpc8544_guts.c
-index a26e83d048..e3540b0281 100644
---- a/hw/ppc/mpc8544_guts.c
-+++ b/hw/ppc/mpc8544_guts.c
-@@ -71,8 +71,7 @@ static uint64_t mpc8544_guts_read(void *opaque, hwaddr addr,
-                                   unsigned size)
+diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
+index d1074a0581..0cce8d4f92 100644
+--- a/target/openrisc/gdbstub.c
++++ b/target/openrisc/gdbstub.c
+@@ -23,8 +23,7 @@
+ 
+ int openrisc_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
  {
-     uint32_t value = 0;
--    PowerPCCPU *cpu = POWERPC_CPU(current_cpu);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(current_cpu);
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
  
-     addr &= MPC8544_GUTS_MMIO_SIZE - 1;
-     switch (addr) {
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 0297871bdd..a202b377e1 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -2294,8 +2294,7 @@ static void pnv_machine_set_hb(Object *obj, bool value, Error **errp)
+     if (n < 32) {
+         return gdb_get_reg32(mem_buf, cpu_get_gpr(env, n));
+diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
+index d4fdb8ce8e..b3b5b40577 100644
+--- a/target/openrisc/interrupt.c
++++ b/target/openrisc/interrupt.c
+@@ -29,8 +29,7 @@
  
- static void pnv_cpu_do_nmi_on_cpu(CPUState *cs, run_on_cpu_data arg)
+ void openrisc_cpu_do_interrupt(CPUState *cs)
  {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     int exception = cs->exception_index;
  
-     cpu_synchronize_state(cs);
-     ppc_cpu_do_system_reset(cs);
-diff --git a/hw/ppc/pnv_xscom.c b/hw/ppc/pnv_xscom.c
-index 805b1d0c87..a17816d072 100644
---- a/hw/ppc/pnv_xscom.c
-+++ b/hw/ppc/pnv_xscom.c
-@@ -44,15 +44,12 @@ static void xscom_complete(CPUState *cs, uint64_t hmer_bits)
-      * passed for the cpu, and no CPU completion is generated.
-      */
-     if (cs) {
--        PowerPCCPU *cpu = POWERPC_CPU(cs);
--        CPUPPCState *env = &cpu->env;
--
-         /*
-          * TODO: Need a CPU helper to set HMER, also handle generation
-          * of HMIs
-          */
-         cpu_synchronize_state(cs);
--        env->spr[SPR_HMER] |= hmer_bits;
-+        cpu_env(cs)->spr[SPR_HMER] |= hmer_bits;
-     }
- }
+     env->epcr = env->pc;
+@@ -105,8 +104,7 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
  
-diff --git a/hw/ppc/ppce500_spin.c b/hw/ppc/ppce500_spin.c
-index bbce63e8a4..dfbe759481 100644
---- a/hw/ppc/ppce500_spin.c
-+++ b/hw/ppc/ppce500_spin.c
-@@ -90,8 +90,7 @@ static void mmubooke_create_initial_mapping(CPUPPCState *env,
- 
- static void spin_kick(CPUState *cs, run_on_cpu_data data)
+ bool openrisc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     SpinInfo *curspin = data.host_ptr;
-     hwaddr map_size = 64 * MiB;
-     hwaddr map_start;
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index e8dabc8614..d7edfc2a1a 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3487,8 +3487,7 @@ static void spapr_machine_finalizefn(Object *obj)
- void spapr_do_system_reset_on_cpu(CPUState *cs, run_on_cpu_data arg)
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     int idx = -1;
+ 
+     if ((interrupt_request & CPU_INTERRUPT_HARD) && (env->sr & SR_IEE)) {
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index ecff4412b7..aff53c0065 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -1668,8 +1668,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
+ 
+ void openrisc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  {
-     SpaprMachineState *spapr = SPAPR_MACHINE(qdev_get_machine());
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
- 
-     cpu_synchronize_state(cs);
-     /* If FWNMI is inactive, addr will be -1, which will deliver to 0x100 */
-diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
-index e889244e52..39edec0f84 100644
---- a/hw/ppc/spapr_caps.c
-+++ b/hw/ppc/spapr_caps.c
-@@ -194,8 +194,7 @@ static void cap_htm_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
- static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
- {
-     ERRP_GUARD();
--    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(first_cpu);
- 
-     if (!val) {
-         /* TODO: We don't support disabling vsx yet */
-@@ -213,8 +212,7 @@ static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
- static void cap_dfp_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
- {
-     ERRP_GUARD();
--    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(first_cpu);
- 
-     if (!val) {
-         /* TODO: We don't support disabling dfp yet */
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 344196a8ce..f39f426fa9 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7195,12 +7195,9 @@ static void ppc_cpu_reset_hold(Object *obj)
- 
- static bool ppc_cpu_is_big_endian(CPUState *cs)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
--
-     cpu_synchronize_state(cs);
- 
--    return !FIELD_EX64(env->msr, MSR, LE);
-+    return !FIELD_EX64(cpu_env(cs)->msr, MSR, LE);
- }
- 
- static bool ppc_get_irq_stats(InterruptStatsProvider *obj,
-@@ -7287,8 +7284,7 @@ static bool ppc_pvr_match_default(PowerPCCPUClass *pcc, uint32_t pvr, bool best)
- 
- static void ppc_disas_set_info(CPUState *cs, disassemble_info *info)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
- 
-     if ((env->hflags >> MSR_LE) & 1) {
-         info->endian = BFD_ENDIAN_LITTLE;
-@@ -7446,8 +7442,7 @@ void ppc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- #define RGPL  4
- #define RFPL  4
- 
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
      int i;
  
-     qemu_fprintf(f, "NIP " TARGET_FMT_lx "   LR " TARGET_FMT_lx " CTR "
-diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-index 2ec6429e36..fccfefa88e 100644
---- a/target/ppc/excp_helper.c
-+++ b/target/ppc/excp_helper.c
-@@ -2588,8 +2588,7 @@ void ppc_cpu_do_fwnmi_machine_check(CPUState *cs, target_ulong vector)
- 
- bool ppc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     int interrupt;
- 
-     if ((interrupt_request & CPU_INTERRUPT_HARD) == 0) {
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index ec5731e5d6..fd986b1922 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -108,8 +108,7 @@ void ppc_maybe_bswap_register(CPUPPCState *env, uint8_t *mem_buf, int len)
- 
- int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     uint8_t *mem_buf;
-     int r = ppc_gdb_register_len(n);
- 
-@@ -152,8 +151,7 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
- 
- int ppc_cpu_gdb_read_register_apple(CPUState *cs, GByteArray *buf, int n)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     uint8_t *mem_buf;
-     int r = ppc_gdb_register_len_apple(n);
- 
-@@ -206,8 +204,7 @@ int ppc_cpu_gdb_read_register_apple(CPUState *cs, GByteArray *buf, int n)
- 
- int ppc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     int r = ppc_gdb_register_len(n);
- 
-     if (!r) {
-@@ -253,8 +250,7 @@ int ppc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- }
- int ppc_cpu_gdb_write_register_apple(CPUState *cs, uint8_t *mem_buf, int n)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     int r = ppc_gdb_register_len_apple(n);
- 
-     if (!r) {
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 26fa9d0575..7a0651b0af 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -546,8 +546,7 @@ static void kvm_sw_tlb_put(PowerPCCPU *cpu)
- 
- static void kvm_get_one_spr(CPUState *cs, uint64_t id, int spr)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     /* Init 'val' to avoid "uninitialised value" Valgrind warnings */
-     union {
-         uint32_t u32;
-@@ -581,8 +580,7 @@ static void kvm_get_one_spr(CPUState *cs, uint64_t id, int spr)
- 
- static void kvm_put_one_spr(CPUState *cs, uint64_t id, int spr)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     union {
-         uint32_t u32;
-         uint64_t u64;
-diff --git a/target/ppc/ppc-qmp-cmds.c b/target/ppc/ppc-qmp-cmds.c
-index c0c137d9d7..9ac74f5c04 100644
---- a/target/ppc/ppc-qmp-cmds.c
-+++ b/target/ppc/ppc-qmp-cmds.c
-@@ -133,8 +133,7 @@ static int ppc_cpu_get_reg_num(const char *numstr, int maxnum, int *pregnum)
- int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
- {
-     int i, regnum;
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
- 
-     /* General purpose registers */
-     if ((qemu_tolower(name[0]) == 'r') &&
-diff --git a/target/ppc/user_only_helper.c b/target/ppc/user_only_helper.c
-index 7ff76f7a06..a4d07a0d0d 100644
---- a/target/ppc/user_only_helper.c
-+++ b/target/ppc/user_only_helper.c
-@@ -27,8 +27,7 @@ void ppc_cpu_record_sigsegv(CPUState *cs, vaddr address,
-                             MMUAccessType access_type,
-                             bool maperr, uintptr_t retaddr)
- {
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
--    CPUPPCState *env = &cpu->env;
-+    CPUPPCState *env = cpu_env(cs);
-     int exception, error_code;
- 
-     /*
+     qemu_fprintf(f, "PC=%08x\n", env->pc);
 -- 
 2.41.0
 

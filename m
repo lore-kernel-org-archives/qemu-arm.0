@@ -1,76 +1,69 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877045ejc;
-        Fri, 26 Jan 2024 05:33:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGp+hzSmnkKRWmY4wud5ZZiNEXL3Idg26ByJ9vniyIzWM3tI68kXr0Rh+L8Jj5LhHz7r65V
-X-Received: by 2002:ac8:5bc8:0:b0:42a:622b:bc08 with SMTP id b8-20020ac85bc8000000b0042a622bbc08mr1344360qtb.60.1706276006506;
-        Fri, 26 Jan 2024 05:33:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706276006; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp877153ejc;
+        Fri, 26 Jan 2024 05:33:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG6yhuaalXG26i/s+0vmG6KwezfV6xRFF5inDufp9gDS5KxGNovg0nEBZF5nxtB8akSvUzl
+X-Received: by 2002:a05:620a:4104:b0:783:d0da:d290 with SMTP id j4-20020a05620a410400b00783d0dad290mr1281770qko.80.1706276016132;
+        Fri, 26 Jan 2024 05:33:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706276016; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ghn70C2emLCEAHdWttOCjib7zlhK8+xdFKj4kGDNg9p2qiUZLYjwC1GrU8Mwus0y7S
-         xUUmZ596+Qm5twL9Q5bD4lRBDVk8ptST6JojsjueCReSisY002JMXvA5zsoxI+KGhMQC
-         syaammOoKMqUjLCeXqIz4+q4rq7SyqbG9T5zJhuELrIZ177zzspp+TVygV4zvG67NXcs
-         uYpgwtGFSjwChDBLtrQ5NA0mOYYvZnTXU0SOvSn5jUhv3G1EVS2Q9pNAz2YC6+Cskb+7
-         Ub1KGaIamac8NsojMdO2fcV06UWTYDYK1+ACmkKzHDc8GMIeDh4FBqepyubV73qlr0Bt
-         OwPA==
+        b=ukOgxhAmi0ywy8/+7CPPBqg1HNiJYyOa8lzljwCzH5JeVq2NPUtZKLPLH3W7XKnbes
+         5ZWiqo9p5jG0fP1QwNwBdrtDi4sNjiuwbAgSvwUdZFb8CkrGYrc1EsGNfmGuVgSVQ5Ir
+         XS/OolPejWwA2GXqStC1KVf/bXFrMtvDdQC+0luTezX2SmZDWAL2v0+Q+nT/OGB/tnmQ
+         jCijh3Q2LuGVndEbSvC2BrDLp0P7IikeF+8n1j441mlhLNQPhgVYV0J5lXvPyULBp2lK
+         RLIt6yHIophzfT5LtB56v2iDI247sOEyeGU8O1bdkT3gB4LZBqNhqTANHPPxGvzQVQd5
+         SgRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=hzSrtI3fglYDtbeuyRwoAN8dyoKbomd0k6vS/XUrZaU=;
-        fh=bVphFuusNWIgqYv/5Ts2TRQEiVyLsGj1TQub5fSYeWw=;
-        b=ahjvotf/ZdzEX4dqM/nj0J5FD+8e9dMP+QbEoNNDL9H7WoLkPyYFzM/4GYVvaSbhHz
-         PR5lcpp2SAa1T2QfzoTAO2tfhE5UuJI+qtZcYv849YD7TsUi0M5iDiLYURiJ2WDqVKX8
-         QjTzxStxGch1Rxrta/p3F4dtNb73VxUr8KhhLeYWgdjJh4W8eyM9rOYH0PLH6fiAs3aC
-         dU2r2ZV7R0H70Cje6FZcrfjurSvGZTe00XmeCjviJOT6+DN2jEYGu7MdqW4NjpZnB0SO
-         PCVcC/WmI1rzzPElBW07JSAcr/inezc3/6WpYa9R2HS3JNMQ0GGPsJa4+ZDZkRL+6vUb
-         l2mw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=5ivVu+qDemquMKRZkyI/8fUs2nf1zlh5//E7nWLRVU0=;
+        fh=U/0C24lFKzzomuy67bTtM+LZKjwyWOJtFrkAZXiyaww=;
+        b=uXAiUwEFB/XcvxTRx6hdRDyCDCYq0un9p4nBiqzhShENC8aehI4eHyDFW+S58XsuEW
+         yUZXDtficlIPiD9R/7n97JdiNyS6uYo1na5LKTo1hFdETHns74eTvAue2pR22uaddtK/
+         Izra9uTMlWbgsXE9c8EctSjYcj3sZHKch/dSd59pm5oqK9sh2WP9YgRtFYxuJDUz8cTg
+         07R3Ue2+S8sjeRlIL7TmJtm6Yd5Vu6LLUMF0xympCRs3XlQt7+oRFXeYEhlJZr/o3sUf
+         76D6WIRhemwPkrnVNj1iUhyQoKozIiqGq8GZLDJkY+QQkRHzo56TTUogPC4xBc50wUbq
+         cjYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17-20020a05622a065100b0042a383257fdsi1233916qtb.228.2024.01.26.05.33.26
+        by mx.google.com with ESMTPS id qp3-20020a05620a388300b00783587fc53csi1280296qkn.484.2024.01.26.05.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 05:33:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 05:33:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTMK8-0003aN-LM; Fri, 26 Jan 2024 08:32:48 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTMJy-0002rS-TC; Fri, 26 Jan 2024 08:32:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMK1-0002zz-HH; Fri, 26 Jan 2024 08:32:42 -0500
+ id 1rTMJu-0002Xg-2R; Fri, 26 Jan 2024 08:32:34 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTMJz-00080V-9e; Fri, 26 Jan 2024 08:32:41 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzC86q36z4wx6;
- Sat, 27 Jan 2024 00:32:36 +1100 (AEDT)
+ id 1rTMJr-0007wu-Cm; Fri, 26 Jan 2024 08:32:33 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLzBx2XL4z4wc3;
+ Sat, 27 Jan 2024 00:32:25 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzC66hVcz4wny;
- Sat, 27 Jan 2024 00:32:34 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLzBw0bzVz4wbp;
+ Sat, 27 Jan 2024 00:32:23 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gavin Shan <gshan@redhat.com>
-Subject: [PULL 05/17] hw/arm/aspeed: Introduce aspeed_soc_cpu_type() helper
-Date: Fri, 26 Jan 2024 14:32:04 +0100
-Message-ID: <20240126133217.996306-6-clg@kaod.org>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 00/17] aspeed queue
+Date: Fri, 26 Jan 2024 14:31:59 +0100
+Message-ID: <20240126133217.996306-1-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240126133217.996306-1-clg@kaod.org>
-References: <20240126133217.996306-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -84,109 +77,109 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mk+eJDUJHIgL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Mffx9+83WX6M
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+The following changes since commit e029fe22caad9b75c7ab69bd4e84853c11fb71e0:
 
-In order to alter AspeedSoCClass::cpu_type in the next
-commit, introduce the aspeed_soc_cpu_type() helper to
-retrieve the per-SoC CPU type from AspeedSoCClass.
+  Merge tag 'pull-qapi-2024-01-26' of https://repo.or.cz/qemu/armbru into staging (2024-01-26 10:21:27 +0000)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/arm/aspeed_soc.h | 1 +
- hw/arm/aspeed_ast10x0.c     | 2 +-
- hw/arm/aspeed_ast2400.c     | 3 ++-
- hw/arm/aspeed_ast2600.c     | 3 ++-
- hw/arm/aspeed_soc_common.c  | 5 +++++
- 5 files changed, 11 insertions(+), 3 deletions(-)
+are available in the Git repository at:
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cb832bc1ee14..a060a5991874 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -143,6 +143,7 @@ struct AspeedSoCClass {
-     qemu_irq (*get_irq)(AspeedSoCState *s, int dev);
- };
- 
-+const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
- 
- enum {
-     ASPEED_DEV_SPI_BOOT,
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 8becb146a8df..dca601a3f9b6 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -211,7 +211,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     /* AST1030 CPU Core */
-     armv7m = DEVICE(&a->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);
--    qdev_prop_set_string(armv7m, "cpu-type", sc->cpu_type);
-+    qdev_prop_set_string(armv7m, "cpu-type", aspeed_soc_cpu_type(sc));
-     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
-     object_property_set_link(OBJECT(&a->armv7m), "memory",
-                              OBJECT(s->memory), &error_abort);
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index 0baa2ff96e46..789e591f3ad0 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -155,7 +155,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
-     }
- 
-     for (i = 0; i < sc->num_cpus; i++) {
--        object_initialize_child(obj, "cpu[*]", &a->cpu[i], sc->cpu_type);
-+        object_initialize_child(obj, "cpu[*]", &a->cpu[i],
-+                                aspeed_soc_cpu_type(sc));
-     }
- 
-     snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 3a9a303ab8ba..589a4a6eea10 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -157,7 +157,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     }
- 
-     for (i = 0; i < sc->num_cpus; i++) {
--        object_initialize_child(obj, "cpu[*]", &a->cpu[i], sc->cpu_type);
-+        object_initialize_child(obj, "cpu[*]", &a->cpu[i],
-+                                aspeed_soc_cpu_type(sc));
-     }
- 
-     snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index 828f61093bfa..36ca189ce960 100644
---- a/hw/arm/aspeed_soc_common.c
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -18,6 +18,11 @@
- #include "hw/char/serial.h"
- 
- 
-+const char *aspeed_soc_cpu_type(AspeedSoCClass *sc)
-+{
-+    return sc->cpu_type;
-+}
-+
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
- {
-     return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
--- 
-2.43.0
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20240126
 
+for you to fetch changes up to b40769f4b49d15485ffaaa7acade3e3593ee6daa:
+
+  hw/fsi: Update MAINTAINER list (2024-01-26 14:22:08 +0100)
+
+----------------------------------------------------------------
+aspeed queue:
+
+* Update of buildroot images to 2023.11 (6.6.3 kernel)
+* Check of the valid CPU type supported by aspeed machines
+* Simplified models for the IBM's FSI bus and the Aspeed
+  controller bridge
+
+----------------------------------------------------------------
+Cédric Le Goater (1):
+      tests/avocado/machine_aspeed.py: Update buildroot images to 2023.11
+
+Ninad Palsule (11):
+      hw/fsi: Introduce IBM's Local bus
+      hw/fsi: Introduce IBM's scratchpad device
+      hw/fsi: Introduce IBM's FSI Bus
+      hw/fsi: Introduce IBM's fsi-slave model
+      hw/fsi: Introduce IBM's cfam
+      hw/fsi: Introduce IBM's FSI master
+      hw/fsi: Aspeed APB2OPB & On-chip peripheral bus
+      hw/arm: Hook up FSI module in AST2600
+      hw/fsi: Added qtest
+      hw/fsi: Added FSI documentation
+      hw/fsi: Update MAINTAINER list
+
+Philippe Mathieu-Daudé (5):
+      hw/arm/aspeed: Remove dead code
+      hw/arm/aspeed: Set default CPU count using aspeed_soc_num_cpus()
+      hw/arm/aspeed: Init CPU defaults in a common helper
+      hw/arm/aspeed: Introduce aspeed_soc_cpu_type() helper
+      hw/arm/aspeed: Check for CPU types in machine_run_board_init()
+
+ MAINTAINERS                     |   9 ++
+ docs/specs/fsi.rst              | 122 +++++++++++++++
+ docs/specs/index.rst            |   1 +
+ meson.build                     |   1 +
+ hw/fsi/trace.h                  |   1 +
+ include/hw/arm/aspeed_soc.h     |   8 +-
+ include/hw/fsi/aspeed_apb2opb.h |  46 ++++++
+ include/hw/fsi/cfam.h           |  34 +++++
+ include/hw/fsi/fsi-master.h     |  32 ++++
+ include/hw/fsi/fsi.h            |  37 +++++
+ include/hw/fsi/lbus.h           |  43 ++++++
+ hw/arm/aspeed.c                 |  70 ++++-----
+ hw/arm/aspeed_ast10x0.c         |   8 +-
+ hw/arm/aspeed_ast2400.c         |  15 +-
+ hw/arm/aspeed_ast2600.c         |  28 +++-
+ hw/arm/aspeed_soc_common.c      |   8 +
+ hw/fsi/aspeed_apb2opb.c         | 329 ++++++++++++++++++++++++++++++++++++++++
+ hw/fsi/cfam.c                   | 168 ++++++++++++++++++++
+ hw/fsi/fsi-master.c             | 170 +++++++++++++++++++++
+ hw/fsi/fsi.c                    | 102 +++++++++++++
+ hw/fsi/lbus.c                   | 117 ++++++++++++++
+ tests/qtest/aspeed-fsi-test.c   | 205 +++++++++++++++++++++++++
+ hw/Kconfig                      |   1 +
+ hw/arm/Kconfig                  |   1 +
+ hw/fsi/Kconfig                  |   7 +
+ hw/fsi/meson.build              |   2 +
+ hw/fsi/trace-events             |  13 ++
+ hw/meson.build                  |   1 +
+ tests/avocado/machine_aspeed.py |  18 +--
+ tests/qtest/meson.build         |   1 +
+ 30 files changed, 1540 insertions(+), 58 deletions(-)
+ create mode 100644 docs/specs/fsi.rst
+ create mode 100644 hw/fsi/trace.h
+ create mode 100644 include/hw/fsi/aspeed_apb2opb.h
+ create mode 100644 include/hw/fsi/cfam.h
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 include/hw/fsi/fsi.h
+ create mode 100644 include/hw/fsi/lbus.h
+ create mode 100644 hw/fsi/aspeed_apb2opb.c
+ create mode 100644 hw/fsi/cfam.c
+ create mode 100644 hw/fsi/fsi-master.c
+ create mode 100644 hw/fsi/fsi.c
+ create mode 100644 hw/fsi/lbus.c
+ create mode 100644 tests/qtest/aspeed-fsi-test.c
+ create mode 100644 hw/fsi/Kconfig
+ create mode 100644 hw/fsi/meson.build
+ create mode 100644 hw/fsi/trace-events

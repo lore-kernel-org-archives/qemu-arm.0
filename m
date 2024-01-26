@@ -1,185 +1,172 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp749958ejc;
-        Fri, 26 Jan 2024 01:01:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IExE1gIfbzM1dmPoAihM8ZbfWyrYT4c+V6nvJSdn3dNJupUvDtStLdcmTNL8nCfVEldIgbX
-X-Received: by 2002:a05:6214:5c9:b0:686:9ea4:ad91 with SMTP id t9-20020a05621405c900b006869ea4ad91mr881868qvz.23.1706259682435;
-        Fri, 26 Jan 2024 01:01:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706259682; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp768872ejc;
+        Fri, 26 Jan 2024 01:49:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFBPehArgWU+s01uHMFs/VK4dCG9BugWJRaNjHbGZxJ0eJHID6ug8wdJoJq5J2CZ95E5yaC
+X-Received: by 2002:a05:6808:3193:b0:3bd:9d97:42ca with SMTP id cd19-20020a056808319300b003bd9d9742camr1799609oib.51.1706262572593;
+        Fri, 26 Jan 2024 01:49:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706262572; cv=none;
         d=google.com; s=arc-20160816;
-        b=lKNbKVxwdMz0+P+XT4YzXKJoZP90of2B2xpDpIy2cEddFkllEzs+PJHuMYC1BK5x4d
-         l2REA+qv/95T086WWZ4W+1xkqWvxw53GcibVhUPgS1xjaXIyKTorNEF/63uNXQLtw+py
-         HSg/ti6TeMtLzuXHIOcUzTnWI2H0WUwNqS/hVG3i2qVu0Fh17VmqCAIxcDNByZ97fKm7
-         m43TKIlAF7Dsdbaxmjsfo6LEN6sIAU/sNBByXwGqnQKkOlX7atEmbovf/SdHl09L6Zit
-         egxeKlsjmwhuDlGmh/0PcCmKMTeAmltUuaRDQvQrkNbAXQrA/rvTFRhCMP1vDzPNtaTP
-         qe+g==
+        b=UZrUSQQX611EHWiwfN7vBtbWRgVSss17EqErJeJzz5lEpW+z3KlpD41F6c0uoProyb
+         qFVTF639RdExWjRJj798bFN7mtnizwIhhgUdWdG1uZbJPwbjAOn0ROGJOdB+kM9mz/m7
+         Xr2JP6g4UsVozL1C0+k36E9093NSpyGQ3kz3k7gt96+ouT6y8frBjdpKHw3i7hXkIjRc
+         MDj2o2/JM2n9vcgugY7frr7+SYSqo13xohL41b/ETqHZOzqAkeMYv5qLRBW4dHqdL/4L
+         ViiSANswGVnFsgjaNF+IVgcMUWKLXApSCJ5KaVNM3/YOrV3U9Sc+lxgvuGtnTR6wVpwd
+         jlYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=/7feK0h8tnpeWV9NC+WV0SUuBO0mnLTRxuWh8AiVhTs=;
-        fh=JKTnjfgLebdI6Uppdd2zUuo3nA3KHnzgaaV6K84+8TY=;
-        b=epLLhDDGW0ND5IIWNVMUVe2g4kOn4q+diThjVLKnJsihttcN82vjwcN8Z+2HOH0ndh
-         ZdOYnjK+Osh0gubJR1kjP//WgktREd81QA3vy759XGAKRlc3uP/J44Cg2AB586CWnJ15
-         Cgqd+wQk1ML4t6runKN7XkPEGfjJeXl9j5UQH0pjHjQgbk/L1h/BWUfNzz87b+vrt+oe
-         wed++DWsSi57KhsEaPOMYJX/sgAg1lUahpFuuxbcMCXi/XdcCFbJI9GELKlyxFvsptyS
-         Z25Up0I/BTmCqJXWbOW8sRit8UUhF/7UjD+11DNVYjNU5TL17OyEA1EzgHQlQs6qOLai
-         R6fw==
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5c0VA+Fxwhkg3HWVyo0oMC2JcoF03isJBLurddhnt68=;
+        fh=HTHR+Q2d6bLhEl37Oh4T8uXQP5/6sUv4T2u8Op+j0Ns=;
+        b=q45vxYM1grGkXKnqDKgMiIkLoqdkIusTaFNGy/HUvEW+FnUVcYVJ+g6Qdr1pbPQi8t
+         gnav1vzMhffYvHvB5tNHcj5eVArPdU6mw7dc+k87FW3gB/uf1RjeJlV0Ah9v7HoQfsit
+         g3zyTAshHxRCwY309w/ccJWTDHOkXT6tw6jyMlI5atHI+w5EwguuI2eBvuM2MroOVVFU
+         0U9kEPhvm4lWyvyVtDp23L3eyc5hQ3mHRoGBRa3eoaXGp2BStY0wta4FA0Yw5mY4JGoA
+         7r3QGTuu6mtW8E49/TNQ6hoaxA3v0cSK4Tr28bLfaCOgb6WtQgIGKBCEAW8pL3hs+6oE
+         QdDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=qSiafRro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1-20020a0562140c8100b006817002c68esi828626qvr.574.2024.01.26.01.01.22
+        by mx.google.com with ESMTPS id g10-20020ac8580a000000b0042a62a4ae9fsi849777qtg.178.2024.01.26.01.49.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 01:01:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jan 2024 01:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=qSiafRro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTI5H-00008V-Vh; Fri, 26 Jan 2024 04:01:12 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTIpn-0004nR-Tm; Fri, 26 Jan 2024 04:49:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTI5F-00007i-S4; Fri, 26 Jan 2024 04:01:09 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rTIpm-0004nD-Pr; Fri, 26 Jan 2024 04:49:15 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTI5D-0000ab-SD; Fri, 26 Jan 2024 04:01:09 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLs9s1JYBz4x5K;
- Fri, 26 Jan 2024 20:01:05 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLs9m03Cnz4wx5;
- Fri, 26 Jan 2024 20:00:59 +1100 (AEDT)
-Message-ID: <6a7c98da-c0de-4c59-9476-5b5fe17232c7@kaod.org>
-Date: Fri, 26 Jan 2024 10:00:58 +0100
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rTIpl-00080o-6u; Fri, 26 Jan 2024 04:49:14 -0500
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40Q8p3vV027157; Fri, 26 Jan 2024 09:48:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=5c0VA+Fxwhkg3HWVyo0oMC2JcoF03isJBLurddhnt68=;
+ b=qSiafRroXwigyhQbDQRwhyFdBvOBS1mWoYAXTHCkB1MJU/4vnzwnL9+Tlbkzb1kA8iht
+ F4LpM90dXPidjkCSliybwI0kBTRn1GOLvMoqiLYaVp+a6Xzx1jZ6aN7oqnBluvZdEQl6
+ PJKEF9lmaBMD8ICT7C1Lh+jvZsPudvhdU0KjnArfSE+FCfts4SaicXPnKrpzxJ+pd0dm
+ id2XRDwNYP6SeTTUqHa1d95gucwGOVjc8zr/BXLJpKo94+X89Zj3Ym7EyWUCVHbOALEF
+ AnWy8bGM4MMjIu2gWWPNMOkEXFKEGlYIwGvterL8nJasOUPWZ6m/AT0MTzAtvCOwFPVT Dg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vv8gnatre-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Jan 2024 09:48:53 +0000
+Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40Q9hhUT029403;
+ Fri, 26 Jan 2024 09:48:53 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vv8gnatr7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Jan 2024 09:48:53 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40Q7UI2s010860; Fri, 26 Jan 2024 09:48:51 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vrrw0a2fb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 26 Jan 2024 09:48:51 +0000
+Received: from smtpav03.wdc07v.mail.ibm.com (smtpav03.wdc07v.mail.ibm.com
+ [10.39.53.230])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40Q9mpL734275596
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 26 Jan 2024 09:48:51 GMT
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 693E35805F;
+ Fri, 26 Jan 2024 09:48:51 +0000 (GMT)
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9AACC5805C;
+ Fri, 26 Jan 2024 09:48:50 +0000 (GMT)
+Received: from [9.61.160.70] (unknown [9.61.160.70])
+ by smtpav03.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 26 Jan 2024 09:48:50 +0000 (GMT)
+Message-ID: <07c392a6-1cd2-4f3c-86a8-ad448ca3e02c@linux.ibm.com>
+Date: Fri, 26 Jan 2024 03:48:50 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 00/11] Introduce model for IBM's FSI
-Content-Language: en-US
-To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+Subject: Re: [PATCH v11 01/11] hw/fsi: Introduce IBM's Local bus
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
  peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
  pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
 References: <20240126034026.31068-1-ninad@linux.ibm.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240126034026.31068-1-ninad@linux.ibm.com>
+ <20240126034026.31068-2-ninad@linux.ibm.com>
+ <cc3daf3c-b6e0-42a9-9397-7171d1f63648@kaod.org>
+Content-Language: en-US
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <cc3daf3c-b6e0-42a9-9397-7171d1f63648@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 6zZngjhlXSFovYMKUo1fAOb7UIlXi-1R
+X-Proofpoint-GUID: Gh58p4C6skogTZuDR-oI78Rsjz9lGM_9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-25_14,2024-01-25_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 clxscore=1015
+ impostorscore=0 spamscore=0 adultscore=0 bulkscore=0 suspectscore=0
+ mlxscore=0 priorityscore=1501 malwarescore=0 mlxlogscore=646
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401260071
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZVXvwvjt8+Gt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gYgV5aQISLw+
 
-Hello Ninad,
+Hello Cedric,
 
-On 1/26/24 04:40, Ninad Palsule wrote:
-> Hello,
->   
-> Please review the patch-set version 11.
-> I have incorporated review comments from Cedric.
-> v10:
->    - Moved aspeed-apb2opb to hw/fsi directory
->    - Split some patches.
->    - Fixed crash.
->    - make check
->      Ok:                 319
->      Expected Fail:      0
->      Fail:               0
->      Unexpected Pass:    0
->      Skipped:            9
->      Timeout:            0
 
-I did some minor comments. v12 should be queued for upstream. I will
-reorder the Signed-off (mine) trailers.
+>>         - included an empty hw/fsi/trace-events ]
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>
+>
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Thanks,
+Added tag. Thank you for the review.
 
-C.
+Regards,
 
-> 
-> 
-> Ninad Palsule (11):
->    hw/fsi: Introduce IBM's Local bus
->    hw/fsi: Introduce IBM's scratchpad device
->    hw/fsi: Introduce IBM's FSI Bus
->    hw/fsi: Introduce IBM's fsi-slave model
->    hw/fsi: Introduce IBM's cfam
->    hw/fsi: Introduce IBM's FSI master
->    hw/fsi: Aspeed APB2OPB & On-chip peripheral bus
->    hw/arm: Hook up FSI module in AST2600
->    hw/fsi: Added qtest
->    hw/fsi: Added FSI documentation
->    hw/fsi: Update MAINTAINER list
-> 
->   MAINTAINERS                     |   9 +
->   docs/specs/fsi.rst              | 138 ++++++++++++++
->   docs/specs/index.rst            |   1 +
->   meson.build                     |   1 +
->   hw/fsi/trace.h                  |   1 +
->   include/hw/arm/aspeed_soc.h     |   4 +
->   include/hw/fsi/aspeed_apb2opb.h |  46 +++++
->   include/hw/fsi/cfam.h           |  34 ++++
->   include/hw/fsi/fsi-master.h     |  32 ++++
->   include/hw/fsi/fsi.h            |  38 ++++
->   include/hw/fsi/lbus.h           |  43 +++++
->   hw/arm/aspeed_ast2600.c         |  19 ++
->   hw/fsi/aspeed_apb2opb.c         | 322 ++++++++++++++++++++++++++++++++
->   hw/fsi/cfam.c                   | 168 +++++++++++++++++
->   hw/fsi/fsi-master.c             | 170 +++++++++++++++++
->   hw/fsi/fsi.c                    | 105 +++++++++++
->   hw/fsi/lbus.c                   | 112 +++++++++++
->   tests/qtest/aspeed-fsi-test.c   | 205 ++++++++++++++++++++
->   hw/Kconfig                      |   1 +
->   hw/arm/Kconfig                  |   1 +
->   hw/fsi/Kconfig                  |   7 +
->   hw/fsi/meson.build              |   2 +
->   hw/fsi/trace-events             |  13 ++
->   hw/meson.build                  |   1 +
->   tests/qtest/meson.build         |   1 +
->   25 files changed, 1474 insertions(+)
->   create mode 100644 docs/specs/fsi.rst
->   create mode 100644 hw/fsi/trace.h
->   create mode 100644 include/hw/fsi/aspeed_apb2opb.h
->   create mode 100644 include/hw/fsi/cfam.h
->   create mode 100644 include/hw/fsi/fsi-master.h
->   create mode 100644 include/hw/fsi/fsi.h
->   create mode 100644 include/hw/fsi/lbus.h
->   create mode 100644 hw/fsi/aspeed_apb2opb.c
->   create mode 100644 hw/fsi/cfam.c
->   create mode 100644 hw/fsi/fsi-master.c
->   create mode 100644 hw/fsi/fsi.c
->   create mode 100644 hw/fsi/lbus.c
->   create mode 100644 tests/qtest/aspeed-fsi-test.c
->   create mode 100644 hw/fsi/Kconfig
->   create mode 100644 hw/fsi/meson.build
->   create mode 100644 hw/fsi/trace-events
-> 
+Ninad
+
 

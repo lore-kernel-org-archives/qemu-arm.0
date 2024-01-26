@@ -1,201 +1,159 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1027065ejc;
-        Fri, 26 Jan 2024 09:40:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHLj9Okgg+IncX+nm7bft/vH17kcQ9pAEykKayMdT9D42GhsVpcRRbeC315QPtFtMAu8Hqv
-X-Received: by 2002:a05:620a:21c9:b0:783:7a57:75db with SMTP id h9-20020a05620a21c900b007837a5775dbmr108845qka.98.1706290822956;
-        Fri, 26 Jan 2024 09:40:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290822; cv=none;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp9684ejb;
+        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGIyLavvdZc93hT+DspcDlazibBp3LwrW7hiBsBSD2A1ovma9nxZ5VTZQjK7x6NqLpbZkzP
+X-Received: by 2002:a05:6a00:f88:b0:6de:55a:7662 with SMTP id ct8-20020a056a000f8800b006de055a7662mr277219pfb.53.1706292987101;
+        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706292987; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VoJZ6Ouue8fTNQuJHeAqFNYCyXxLFTV7YfHp0Qy13rEucYG5rpabwMfny9SyzAwkUG
-         kfxhNegA3o991OcEWmEK+iUzqysSdSZ9BLhzjtOFxykBaTz80P2EfkJx1k1OPdKR2s5F
-         m21suqDZO+mhlXTJ+Ehy1IAxVCod2UVNykSpexfPC5o3QTr01XMCGGP3XIM2s7zCSOyT
-         u0f83fpvSjl5MAa0j3hGAEq6Z8s0u2hnMxRI/7U6jiCRpKRGVhWKcDMAaMbFsTh4QiZi
-         4/QE3aA0auhYYgcF8aH61kmNIizx+jYbKa5dbUpraKnOUVl3M45b9r6tbjFfIqddwKYB
-         2JiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=g6ItrTH6xUERJPwo+cm9fCEJutLCoak9PKJqL8zqcI4=;
-        fh=4aUA0JPxoVvgInBmJ96rXkS+v1RtLmlfy0HlzHtXDaI=;
-        b=ZLSBAeo3COHM+uxVZjsPyI5oYttcmyHmjwuf2Fk0935OL1UeaMtJM6Um4OGdfr3Hpq
-         q/DBn9ot+Hzi3n7sR/D8Hhr3ykvyt7aTk20zA2xEj+hro6DHmbjTnThwDzGMkUiL8pYt
-         6Fj2h1jpuS3Su//doSiqQiDbPaW9SRaaEYIuO6NYJD3Gu2jxca786W7dj2wZMZW+vW5o
-         +LSNw5dT8ACxCOByycCqWZeVr5OW39pcrxbcWcFN19Um1OUVy3njCvWo+N5kFtQ86nSE
-         UM/h0gFvUMRVa2Iwp7qORbtxBn/XBIpgriLiTDJ7teiX0kAFS5D50l7btSY8n+Ffg6bO
-         lScw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=ba+p04F7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj31-20020a05620a191f00b007830f6d1588si1942062qkb.4.2024.01.26.09.40.22
+        b=TFGTpJkLRZl8Ix8tMXoothUZ9iZemGASkCbJxpcnAtSZXwHlmREt4GfWNf4bX9Dwq7
+         6RWFi/QsfKHmgEnVsH6YKVKCXSKrl9GYh9mKXBwQXO0YFO16LirMQP+yidWxuigC4eMc
+         RuzEtQIGQlIz5c5/zPXO4PKKgTReaGyAIuR2kgZpu5/HsF9snqphdEVx1sbgkm3fNMFW
+         iET0J4zINMAflNmOYz+0hPb7KNYEWleHAxBxf+VV7ZfDNy/+95v8nWc5f0vWVDymHM+T
+         ygAU138aLc2GROldJwxbVmxnXFZ099/vPe3oVnSOihO0H1KHALoEoIKJujCa5oN+wyzg
+         Ti5Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:list-unsubscribe:list-subscribe
+         :list-id:precedence:dkim-signature;
+        bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
+        fh=1+KOsEoY3EmNkpFU+sKR5rg4LxfthAd1a8WGcYfRF6c=;
+        b=gAJqejiYFMMgnZV3NbgFLpAiv3KS2jWkK8hkdqj6cKEocRhNTV4mlViGs7CxoYKCeh
+         93DdfFpyR1lOlmYRvEOiR8xV9T3s9qH4S2/8A+tcl3SDgcAPJHLrfK4jG6uyjLQ68fMV
+         glJobbmyYdGv+Pu9EU71DeErkZ0RBUarLYIOumOHTl4+113yoKcDUTSldb/FKgkeyrkb
+         tum0fKty9kTYwUCzSIDJZJcLxlBwtkW2vN3Q0fnToPdwz8WSjS+LQKEBF7pJXWEm3L5r
+         jaxp6J66iI4KprKgYelWrv3/rEYOs+Ex8/ytrW3nErR57L0ylQ27r6KBp2UvpJkz2xv2
+         QG0A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dBWZnp3z;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id n3-20020a635c43000000b005cd8dc9694dsi1532526pgm.178.2024.01.26.10.16.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:40:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=ba+p04F7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ4s-0007cS-Ew; Fri, 26 Jan 2024 12:33:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ4e-0007A3-Ep; Fri, 26 Jan 2024 12:33:04 -0500
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ4c-0001jD-BC; Fri, 26 Jan 2024 12:33:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Reply-To:Content-Type:Content-ID:Content-Description;
- bh=g6ItrTH6xUERJPwo+cm9fCEJutLCoak9PKJqL8zqcI4=; b=ba+p04F7gmVS2ZYXXnb5q5thmB
- 4WEY19RcmaOTcF1pOxT5ghJU0grzeoy1NkBTpXYYqeiSbsF6hKrVjnK1LchOXlR9IfvMejCnrvyWH
- RP6vDhuK6CM9HU+pNIKpZaF5nMW+7XzAwI1h3sdiNzZQofCBU4QAN/y2YkpSzBE8sGvI+3XmG64NS
- 7tG5UqPZlt4IDE7orurvgQJom0s12YDL6mVL+sTNBfpQ/yyIxyCzOWMWX6NM0JhMqnOtIenEBgOrj
- uGP1mQcA0gpj5ssU82hi6/xV1Gr+wVWWL3Yilz7PXJ/avJI3QscQOsOp4HeoPXryJ51F38+l4y5z/
- ++94306Q==;
-Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ4A-000000069Ug-1sBY; Fri, 26 Jan 2024 17:32:35 +0000
-Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ48-00000001elw-1AKN;
- Fri, 26 Jan 2024 17:32:32 +0000
-From: David Woodhouse <dwmw2@infradead.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v4 15/47] hw/ppc/prep: use pci_init_nic_devices()
-Date: Fri, 26 Jan 2024 17:24:52 +0000
-Message-ID: <20240126173228.394202-16-dwmw2@infradead.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
-References: <20240126173228.394202-1-dwmw2@infradead.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dBWZnp3z;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 81955283299
+	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 18:16:26 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5E77C20B24;
+	Fri, 26 Jan 2024 18:16:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="dBWZnp3z"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 924A81EB5E
+	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 18:16:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1706292983; cv=none; b=dU+yv1k6M+eW9lUlVn/At5Ug4lzMd6kpoEmuM5XFTsAFwy/6a7LpWxt/GBTjv+xOu3+aUBGLWbc3Or/2tBqoBSQjnW4cTpo4rwHjh4Gegpg7hi0lHEaOrE+6UdfJHoq9RxYq2S+m+JFNBkMLT3zm4aWAattq1zStWz6sLyXxaiM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1706292983; c=relaxed/simple;
+	bh=Aj47SDmrcP4Pxh/hJwfKzfAt19g8T0eO/pfpf8fQ60M=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=jHVokyolz93SlMWYgiaQSZMdYlEt2jslWUiLiEdEBL8WhVP8MhdkGWCeO/5RStr3CgptieThprFkWxWDuarKwZPFQG+n9hYxeCBRB6yyHbiH09LDcgqUP5EUDZLs1NVo+ctntYalov80IKzSaaxkYaNTfoKsEe5NOlmVnq2NxVM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=dBWZnp3z; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1706292980;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
+	b=dBWZnp3zPPd2/AjiEvuq1Hmih1zFnun9C6IU+BX3Yl1E47sZlrZPmFnR5c1XRK7wYJAV2b
+	vgY5vuKT2ef+SNu8Sxus4/GT4SA5M2B+O5uLjsYVqZvlMPOWe648CHskwlmXf8rh49yo7v
+	egO+SpXvyJIiUwW+E7cTKpUGD8wevrk=
+Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
+ [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-340-_MqfY369OT-d7T8znew5CQ-1; Fri, 26 Jan 2024 13:16:18 -0500
+X-MC-Unique: _MqfY369OT-d7T8znew5CQ-1
+Received: by mail-oi1-f199.google.com with SMTP id 5614622812f47-3bdf1be1528so965669b6e.2
+        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 10:16:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706292977; x=1706897777;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
+        b=UrkeUWiq8gBHHrnngp+KKxDGGLetOplvuQ0X5S5VzaVeUvePpD+utjIQgpNMqB8hQs
+         Z1FQ0m6wvWTujBWA57+IwGmbqhhcVgajo5Ia+Wb/Zid72GV47Gxpbsiq7AobgrUHNX9a
+         DREOaDhg1IkaE71KTwVM55HLN31HlFU+x91BY2GS2fBVA6SHFP+PiIUqThmHaILwH0dx
+         89mLh0VAu3Gxh53b7ZosITbVSRf+r2HHvheT8uHG0ui+FsDXxFN7ybVU5ountfOqBqkh
+         xe06oztPsgyQrxkL9AYf2SgdwRi97E+BJKDP7xR1kWoD4OgXtBS+ZukHUAufZLM7xg2L
+         b2lw==
+X-Gm-Message-State: AOJu0YyraYswZUkosZzrzMHbuDZB+b7VjWi3sACvjjAKXIl63Xn8/U0g
+	aCVESyjPjI6pn5dB8n7kYiO2evybSRNAYtumWIaXw6BTP3EbyLv6O0jr8VAgmsizxI3hpUyHh3u
+	S8ToUL03U+XBNcmJsNoze3JtdQ47ACgacrQ3Ysyhd6GXEV6oGHq9KUHfYEfbMCBQSp/cw7FGp43
+	YX0O0VFpv4CV3cI1GjVEmlU+W3
+X-Received: by 2002:a05:6808:d4b:b0:3bd:f41f:f9a6 with SMTP id w11-20020a0568080d4b00b003bdf41ff9a6mr168941oik.25.1706292977737;
+        Fri, 26 Jan 2024 10:16:17 -0800 (PST)
+X-Received: by 2002:a05:6808:d4b:b0:3bd:f41f:f9a6 with SMTP id
+ w11-20020a0568080d4b00b003bdf41ff9a6mr168928oik.25.1706292977542; Fri, 26 Jan
+ 2024 10:16:17 -0800 (PST)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- desiato.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
- envelope-from=BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org;
- helo=desiato.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qpn/5rS9wt6E
+References: <20240124155425.73195-1-philmd@linaro.org>
+In-Reply-To: <20240124155425.73195-1-philmd@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Fri, 26 Jan 2024 19:16:06 +0100
+Message-ID: <CABgObfb8pKdf=Q7JPDQ9j=Zanbk9gYOC8ufxprGA88zAPaoO5Q@mail.gmail.com>
+Subject: Re: [PATCH 0/2] accel/kvm: Sanitize KVM_HAVE_MCE_INJECTION definition
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+	qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org, 
+	qemu-s390x@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: We6fxG9ILhsa
 
-From: David Woodhouse <dwmw@amazon.co.uk>
+On Wed, Jan 24, 2024 at 4:54=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> Trivial replacement of KVM_HAVE_MCE_INJECTION by
+> KVM_ARCH_HAVE_MCE_INJECTION (not the "ARCH_" difference).
 
-Previously, the first PCI NIC would be placed in PCI slot 3 and the rest
-would be dynamically assigned. Even if the user overrode the default NIC
-type and made it something other than PCNet.
+I am confused, why can't you just rename the symbol and instead you go
+through this change?
 
-Now, the first PCNet NIC (that is, anything not explicitly specified
-to be anything different) will go to slot 3 even if it isn't the first
-NIC specified on the command line. And anything else will be dynamically
-assigned.
+Paolo
 
-Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- hw/ppc/prep.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
-
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 137276bcb9..1a6cd05c61 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -241,7 +241,6 @@ static void ibm_40p_init(MachineState *machine)
-     ISADevice *isa_dev;
-     ISABus *isa_bus;
-     void *fw_cfg;
--    int i;
-     uint32_t kernel_base = 0, initrd_base = 0;
-     long kernel_size = 0, initrd_size = 0;
-     char boot_device;
-@@ -336,10 +335,9 @@ static void ibm_40p_init(MachineState *machine)
-         /* XXX: s3-trio at PCI_DEVFN(2, 0) */
-         pci_vga_init(pci_bus);
- 
--        for (i = 0; i < nb_nics; i++) {
--            pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic,
--                                i == 0 ? "3" : NULL);
--        }
-+        /* First PCNET device at PCI_DEVFN(3, 0) */
-+        pci_init_nic_in_slot(pci_bus, mc->default_nic, NULL, "3");
-+        pci_init_nic_devices(pci_bus, mc->default_nic);
-     }
- 
-     /* Prepare firmware configuration for OpenBIOS */
--- 
-2.43.0
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   accel/kvm: Define KVM_ARCH_HAVE_MCE_INJECTION in each target
+>   accel/kvm: Directly check KVM_ARCH_HAVE_MCE_INJECTION value in place
+>
+>  include/sysemu/kvm.h         |  7 ++++++-
+>  target/arm/cpu-param.h       |  5 +++++
+>  target/arm/cpu.h             |  4 ----
+>  target/i386/cpu-param.h      |  2 ++
+>  target/i386/cpu.h            |  2 --
+>  target/loongarch/cpu-param.h |  2 ++
+>  target/mips/cpu-param.h      |  2 ++
+>  target/ppc/cpu-param.h       |  2 ++
+>  target/riscv/cpu-param.h     |  2 ++
+>  target/s390x/cpu-param.h     |  2 ++
+>  accel/kvm/kvm-all.c          | 10 +++++-----
+>  11 files changed, 28 insertions(+), 12 deletions(-)
+>
+> --
+> 2.41.0
+>
 

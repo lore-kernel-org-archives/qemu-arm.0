@@ -1,69 +1,69 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023751ejc;
-        Fri, 26 Jan 2024 09:34:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFgjFsthkt3juQtyLsGtZl0xBHaoavkphMt24qA88O4SogO5bBP71P1rPZdB4PE76oCmBI/
-X-Received: by 2002:a25:84c6:0:b0:dbe:9d18:31ea with SMTP id x6-20020a2584c6000000b00dbe9d1831eamr328697ybm.1.1706290444463;
-        Fri, 26 Jan 2024 09:34:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290444; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1023801ejc;
+        Fri, 26 Jan 2024 09:34:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEsETU7C490tL0oMLmiWyBWJPlHTmpZRXYsg+pzgfi/sQAFElnKTOvPoLeBGz1dE7S6z4n8
+X-Received: by 2002:a0d:df50:0:b0:5ff:5d60:bc26 with SMTP id i77-20020a0ddf50000000b005ff5d60bc26mr249131ywe.1.1706290448869;
+        Fri, 26 Jan 2024 09:34:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290448; cv=none;
         d=google.com; s=arc-20160816;
-        b=F0gbjV9axXleD8kKkf8iLsLhcRQo91Defh0Vwq9yW+ODsEbc1e2RqINmhUJhXvR27a
-         3ok5Nvy5gdKvYQDmMAfOYTRGo9rTea86wbawj08cyf3PBiX22czy3ciUap8R8X0nvIDx
-         JOkGf4Z/p26dSewCg3A4pWQp0XJFvivPaJPShdffzQsOQD00D5KF3Ai0tikj3Ny28PiS
-         O5qlj5GwrqxabXO+AqZTQW+uwxrGETGO8yUnJvtl3FBS2+GYVYP8Q9VVNKJU24hM5a5I
-         SFgynCVjTsizyoRm42l1mDmkB+M87ySu1+P6sl9QelxhCYK1lI9He/W7V8TgeBDn+RWi
-         CZnA==
+        b=Xt3Gv1Nt9EfJceGrdzwrBPJkjqLVfixYzPihxyUfpDP8CEdmfXnAtdox8ghEMgDAXS
+         nPhoyIDaTY7Vsofx0PWLVmV/iaCqExat7aQOof+UCYWW4VLvUK52DxG7QeOT7NzMITat
+         qgoVtSz5n/EGDkujg3Kn7dfhT7Mv7dombnFXqoZOu+9enk1Ij5qEBuGFWguA0AdU19vp
+         xdNYJuMWDYGqQJvyJh/bOP82w9PsKFXZNTuVS3cT0haRuq0ooojf8rxkGfSGYQfuHEiF
+         o9lTOGoXUxDb9wUIJ3nC74d1G+j04GfsnId61GKKBJw02mrPbsCX2zWyJ+Iay7dOJWDs
+         +4fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=+e8WGyk26Nx6F3/v612EfiHjqzKx8nYkFPtvGlnGd3w=;
+        bh=pMTNl31Z4wpC7RcyuXgVYoTxdcUq3RoTFZ8/v9Gj+ug=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=qbYUJbNHEc/BVBXuVsEfaevQKmYdsM3IhroHHM4pQMzgQ8op0b0TPIZP9ZiuTdrjfv
-         PpZZODmwuskNwo9Fn/SV6+8McbW7DfhLdt90YfjupKTFJ0IZZa99QS5rV5oTBcuZNajX
-         sCJkFIVjBZkqKDS8DmDzBFc0hI5I9qB0Nzpmvs0iMTNDYLpyRtBw5BHeCkobTQZUmJiF
-         bFj0tGGyAHQo75t+W0U3bnFx3lm+zVu6uMUGMu5C94WDk9+WKSVFayO0SxPoBHWwNuF4
-         GBfRfbRBlObKDBbuHowb54xmhvBdpzcS3g7laLd/u2NMxjtyyvIzuTrE1xKyTA9EVjS9
-         eiFw==
+        b=vN0GAu/opfciCcZINtqKQ8gjR9/1URTEagG3XyGUpEaKSWp24zj+8ozQrzcoVOjL2m
+         HGXgk8EliuYXgD1sosc5Yugc1kqILluhIMoL1i6lU4viWKdI6j0XKmvbTgp/0j5aWsNe
+         63z5V95gorFpfqDe8gNInnr5Zl5vIuwRl5HAaVG1cyPMdRuRYAAMhU/jaFcjTCw9v8Db
+         hE9l+Z3YUkQH5gKbo/iEjBUWYk7ZiLk5yKUZHve4sm6sSWyS5by1eueEfEnLKqqitye3
+         F0nAL+uShOLeFM9DT6GDJDnZlF1h+C3CkmIqcfXTjTFwZQT6Xfvm9jWK0gZCuLqtYt1g
+         S8Fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=Wj7wVHpM;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ODknmQx9;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id o132-20020a25418a000000b00dc2561d79casi924801yba.122.2024.01.26.09.34.04
+        by mx.google.com with ESMTPS id y8-20020a0dd608000000b005ffa1061076si974136ywd.233.2024.01.26.09.34.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 09:34:04 -0800 (PST)
+        Fri, 26 Jan 2024 09:34:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=Wj7wVHpM;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ODknmQx9;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.672252.1046038 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.672253.1046049 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4f-0004a1-Ep; Fri, 26 Jan 2024 17:33:05 +0000
+	id 1rTQ4g-0004ot-Pn; Fri, 26 Jan 2024 17:33:06 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 672252.1046038; Fri, 26 Jan 2024 17:33:05 +0000
+Received: by outflank-mailman (output) from mailman id 672253.1046049; Fri, 26 Jan 2024 17:33:06 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTQ4f-0004Zu-Bw; Fri, 26 Jan 2024 17:33:05 +0000
-Received: by outflank-mailman (input) for mailman id 672252;
- Fri, 26 Jan 2024 17:33:04 +0000
+	id 1rTQ4g-0004om-Mk; Fri, 26 Jan 2024 17:33:06 +0000
+Received: by outflank-mailman (input) for mailman id 672253;
+ Fri, 26 Jan 2024 17:33:05 +0000
 Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
  helo=se1-gles-sth1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=bPDA=JE=casper.srs.infradead.org=BATV+7caeb094913322f6f00d+7460+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1rTQ4e-0004Zo-Hg
- for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:04 +0000
+ id 1rTQ4f-0004Zo-DP
+ for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 17:33:05 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
  by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id f54d430b-bc70-11ee-8a43-1f161083a0e0;
- Fri, 26 Jan 2024 18:33:03 +0100 (CET)
+ id f62c9830-bc70-11ee-8a43-1f161083a0e0;
+ Fri, 26 Jan 2024 18:33:05 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ49-0000000EKUd-01Tz; Fri, 26 Jan 2024 17:32:34 +0000
+ id 1rTQ48-0000000EKUO-1Dvu; Fri, 26 Jan 2024 17:32:33 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ49-00000001enQ-3kks;
- Fri, 26 Jan 2024 17:32:33 +0000
+ Hat Linux)) id 1rTQ48-00000001emH-43JH;
+ Fri, 26 Jan 2024 17:32:32 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -74,17 +74,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: f54d430b-bc70-11ee-8a43-1f161083a0e0
+X-Inumbo-ID: f62c9830-bc70-11ee-8a43-1f161083a0e0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=+e8WGyk26Nx6F3/v612EfiHjqzKx8nYkFPtvGlnGd3w=; b=Wj7wVHpMtDarRXMBToq7G9m/GR
-	JIyL+umLSadU7YtXppHGohydct6iE2OaSPxQt+ONIgMnY6+6w/sul+wfD5BEOHoSRAba6pl7/iFG6
-	pzB+Qmg/XzA5Bcgpdv0Sv3H7Ypa3FuqdDSzmGBfk4nF9gM9Jr73sQXltSASv7KghBB2lEuqrBhs5K
-	tg/ZVNvLN3exxn+r1l2s9SkJ98IzX5zeIrUo6rK0r0NtzTeEHwyBi4wY4iPvf5Cgr3+0FepwwsCLR
-	CPE023t4WgOJN/AJAjtsl5ltjaMkSVfKE29fdVhX+Ab6pRk+sFWxlHtSnjChWv61xjwzhtviZaPoF
-	wt8AgzYA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description;
+	bh=pMTNl31Z4wpC7RcyuXgVYoTxdcUq3RoTFZ8/v9Gj+ug=; b=ODknmQx9pYHZ2OKzuPTEoZWS1B
+	QfPM2lEpj+28gcu3a/nGfEJDtNOhbYE5phTZvy+Q95iPyF7opdo6PhO4rKABtsv1fVlLZ8/pUr+Ps
+	snEPHO+f2tc4eKwrTOt4PRfShqjQC8kKFEpjsViqXHkLjp+mcTXkA0bqpHVgIykBy/YyJb5emsmXy
+	PAqprcm+ymy0h/xEza6ae9QafFApdKKvSK+Gfgyvnp7DFT99VAYGuoBSMPd5FWS2dUQmSWMyHM9mt
+	8RukyYs2i5ya21RAr7O3+4ZQ1nhuYilKDm9rnb2d1dJmC3axTOwTubfqZrvhFzMpUh0qimjhcAqMC
+	lUUf6c0A==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -152,103 +152,54 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org,
 	David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v4 33/47] hw/m68k/q800: use qemu_find_nic_info()
-Date: Fri, 26 Jan 2024 17:25:10 +0000
-Message-ID: <20240126173228.394202-34-dwmw2@infradead.org>
+Subject: [PATCH v4 22/47] hw/arm/aspeed: use qemu_configure_nic_device()
+Date: Fri, 26 Jan 2024 17:24:59 +0000
+Message-ID: <20240126173228.394202-23-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: W3EAy4yST1cG
+X-TUID: rA/UAG7xvxN4
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-If a corresponding NIC configuration was found, it will have a MAC address
-already assigned, so use that. Else, generate and assign a default one.
-
-Using qemu_find_nic_info() is simpler than the alternative of using
-qemu_configure_nic_device() and then having to fetch the "mac" property
-as a string and convert it.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Acked-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/m68k/q800.c | 29 ++++++++++++++++-------------
- 1 file changed, 16 insertions(+), 13 deletions(-)
+ hw/arm/aspeed.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index b80a3b6d5f..fa7683bf76 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -48,6 +48,7 @@
- #include "hw/display/macfb.h"
- #include "hw/block/swim.h"
- #include "net/net.h"
-+#include "net/util.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "sysemu/qtest.h"
-@@ -270,6 +271,8 @@ static void q800_machine_init(MachineState *machine)
-     BusState *adb_bus;
-     NubusBus *nubus;
-     DriveInfo *dinfo;
-+    NICInfo *nd;
-+    MACAddr mac;
-     uint8_t rng_seed[32];
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index cc59176563..bed5e4f40b 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -356,7 +356,6 @@ static void aspeed_machine_init(MachineState *machine)
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+     AspeedSoCClass *sc;
+     int i;
+-    NICInfo *nd = &nd_table[0];
  
-     linux_boot = (kernel_filename != NULL);
-@@ -370,13 +373,6 @@ static void q800_machine_init(MachineState *machine)
+     bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
+     object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
+@@ -371,10 +370,10 @@ static void aspeed_machine_init(MachineState *machine)
+                              &error_fatal);
  
-     /* MACSONIC */
- 
--    if (nb_nics > 1) {
--        error_report("q800 can only have one ethernet interface");
--        exit(1);
--    }
--
--    qemu_check_nic_model(&nd_table[0], "dp83932");
--
-     /*
-      * MacSonic driver needs an Apple MAC address
-      * Valid prefix are:
-@@ -386,14 +382,21 @@ static void q800_machine_init(MachineState *machine)
-      * 08:00:07 Apple
-      * (Q800 use the last one)
-      */
--    nd_table[0].macaddr.a[0] = 0x08;
--    nd_table[0].macaddr.a[1] = 0x00;
--    nd_table[0].macaddr.a[2] = 0x07;
--
-     object_initialize_child(OBJECT(machine), "dp8393x", &m->dp8393x,
-                             TYPE_DP8393X);
-     dev = DEVICE(&m->dp8393x);
--    qdev_set_nic_properties(dev, &nd_table[0]);
-+    nd = qemu_find_nic_info(TYPE_DP8393X, true, "dp83932");
-+    if (nd) {
-+        qdev_set_nic_properties(dev, nd);
-+        memcpy(mac.a, nd->macaddr.a, sizeof(mac.a));
-+    } else {
-+        qemu_macaddr_default_if_unset(&mac);
-+    }
-+    mac.a[0] = 0x08;
-+    mac.a[1] = 0x00;
-+    mac.a[2] = 0x07;
-+    qdev_prop_set_macaddr(dev, "mac", mac.a);
-+
-     qdev_prop_set_uint8(dev, "it_shift", 2);
-     qdev_prop_set_bit(dev, "big_endian", true);
-     object_property_set_link(OBJECT(dev), "dma_mr",
-@@ -414,7 +417,7 @@ static void q800_machine_init(MachineState *machine)
-     prom = memory_region_get_ram_ptr(&m->dp8393x_prom);
-     checksum = 0;
-     for (i = 0; i < 6; i++) {
--        prom[i] = revbit8(nd_table[0].macaddr.a[i]);
-+        prom[i] = revbit8(mac.a[i]);
-         checksum ^= prom[i];
+     for (i = 0; i < sc->macs_num; i++) {
+-        if ((amc->macs_mask & (1 << i)) && nd->used) {
+-            qemu_check_nic_model(nd, TYPE_FTGMAC100);
+-            qdev_set_nic_properties(DEVICE(&bmc->soc->ftgmac100[i]), nd);
+-            nd++;
++        if ((amc->macs_mask & (1 << i)) &&
++            !qemu_configure_nic_device(DEVICE(&bmc->soc->ftgmac100[i]),
++                                       true, NULL)) {
++            break; /* No configs left; stop asking */
+         }
      }
-     prom[7] = 0xff - checksum;
+ 
 -- 
 2.43.0
 

@@ -1,159 +1,297 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp9684ejb;
-        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGIyLavvdZc93hT+DspcDlazibBp3LwrW7hiBsBSD2A1ovma9nxZ5VTZQjK7x6NqLpbZkzP
-X-Received: by 2002:a05:6a00:f88:b0:6de:55a:7662 with SMTP id ct8-20020a056a000f8800b006de055a7662mr277219pfb.53.1706292987101;
-        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706292987; cv=pass;
+Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp115107ejb;
+        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHHc2W6TmuKKYF1Hmk9GqO7YA/ho76D1PUrxnmu9aOSbS4MduR+/LL1fAQ/BO0otxeY7B7r
+X-Received: by 2002:aa7:888f:0:b0:6db:ad61:d840 with SMTP id z15-20020aa7888f000000b006dbad61d840mr560461pfe.55.1706306663249;
+        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706306663; cv=pass;
         d=google.com; s=arc-20160816;
-        b=TFGTpJkLRZl8Ix8tMXoothUZ9iZemGASkCbJxpcnAtSZXwHlmREt4GfWNf4bX9Dwq7
-         6RWFi/QsfKHmgEnVsH6YKVKCXSKrl9GYh9mKXBwQXO0YFO16LirMQP+yidWxuigC4eMc
-         RuzEtQIGQlIz5c5/zPXO4PKKgTReaGyAIuR2kgZpu5/HsF9snqphdEVx1sbgkm3fNMFW
-         iET0J4zINMAflNmOYz+0hPb7KNYEWleHAxBxf+VV7ZfDNy/+95v8nWc5f0vWVDymHM+T
-         ygAU138aLc2GROldJwxbVmxnXFZ099/vPe3oVnSOihO0H1KHALoEoIKJujCa5oN+wyzg
-         Ti5Q==
+        b=XPEx5dNrQ3VdTOzJUDgvgCo/SzU0R2s4NQb0VDNJEctMPcyoBqPuuUSXBpfJVPQZ5O
+         NyuPq7iLnlDX+dFGJqHghXmP1neNtIGxynFFYnYuBVHlyFX0PJnPxsRXKoTbtiEVHL9D
+         os3RHyXUhws72gO0XSklvV1B0U6jZVp98sMmA75XYLJLMuOzl3xBwwZyEI/TyvK0pwVl
+         f11jM8mn0bpuqVwFZ544iL9smGwqdUBcrlPeWNo1qzK8aOj2d84kkDUKWtnpB2AuIJgF
+         SpkQobA5jDkB62exHJJdawPIXZZxE+b6MxzTFY29cXksU81YhQSBbb39VCJ+VM4h7pco
+         j2/A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:dkim-signature;
-        bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
-        fh=1+KOsEoY3EmNkpFU+sKR5rg4LxfthAd1a8WGcYfRF6c=;
-        b=gAJqejiYFMMgnZV3NbgFLpAiv3KS2jWkK8hkdqj6cKEocRhNTV4mlViGs7CxoYKCeh
-         93DdfFpyR1lOlmYRvEOiR8xV9T3s9qH4S2/8A+tcl3SDgcAPJHLrfK4jG6uyjLQ68fMV
-         glJobbmyYdGv+Pu9EU71DeErkZ0RBUarLYIOumOHTl4+113yoKcDUTSldb/FKgkeyrkb
-         tum0fKty9kTYwUCzSIDJZJcLxlBwtkW2vN3Q0fnToPdwz8WSjS+LQKEBF7pJXWEm3L5r
-         jaxp6J66iI4KprKgYelWrv3/rEYOs+Ex8/ytrW3nErR57L0ylQ27r6KBp2UvpJkz2xv2
-         QG0A==
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
+        fh=vjIQCdGIiQvlMQV4M7vu+NKSTn5p9Q4HADr8u1W/+iI=;
+        b=H8bL7aNGoJoTdKG/3VQ3E3IgDEMQAbpbLHD0oJP61JjHiUTAeuQbgYiQie812U6HEP
+         +ubOpQ2dDYKxKXoXIUoqfrh0L2ESLZ7KsQukrOiGaqsRwUaBQNsS/zCqdKXlwkZfZKaO
+         57RX367Fn2TVQG58A/iCgEb7zVTRxP6D4xjrnZcF/uIA8qLFUiMTd/ykeUh0t12s3hMv
+         PZEPTbvf4qZtxdKTQFiUzIRSXKNyPUO2Ey1ve382IZdcoYVqYLKqAENZL7gXrnk4iseu
+         eb/JkRt5UrV/s02zxFDvpg+VTRTmxCPndhiIHgQqltA5S5Dju8lgullBg9k6BtxG0Aso
+         QYvA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dBWZnp3z;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id n3-20020a635c43000000b005cd8dc9694dsi1532526pgm.178.2024.01.26.10.16.26
+       dkim=pass header.i=@linaro.org header.s=google header.b=wbcunhWo;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id x39-20020a056a000be700b006d9a617d2ecsi1778921pfu.80.2024.01.26.14.04.22
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 10:16:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 26 Jan 2024 14:04:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dBWZnp3z;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7191-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=wbcunhWo;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-7214-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 81955283299
-	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 18:16:26 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E8BDCB21919
+	for <alex.bennee@linaro.org>; Fri, 26 Jan 2024 22:04:20 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5E77C20B24;
-	Fri, 26 Jan 2024 18:16:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8322B2554E;
+	Fri, 26 Jan 2024 22:04:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="dBWZnp3z"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="wbcunhWo"
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 924A81EB5E
-	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 18:16:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CD6B25543
+	for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 22:04:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.52
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706292983; cv=none; b=dU+yv1k6M+eW9lUlVn/At5Ug4lzMd6kpoEmuM5XFTsAFwy/6a7LpWxt/GBTjv+xOu3+aUBGLWbc3Or/2tBqoBSQjnW4cTpo4rwHjh4Gegpg7hi0lHEaOrE+6UdfJHoq9RxYq2S+m+JFNBkMLT3zm4aWAattq1zStWz6sLyXxaiM=
+	t=1706306654; cv=none; b=Ye/dcyTHrBBPA1IrJCX2gIHrOavD5QREd1vIKaCfsJt0RPEzaVR0c0ztE46h5XJOof00zD8JVO/m6yBkPNKPKBeRIZHJC6kvRKKEf5+cjzhuIQ/rqcA0ijiekMmqvN2GnJ06nEDVRp1OfURSBZqU0TF7+7Ai4nNViDPKEgWXWq0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706292983; c=relaxed/simple;
-	bh=Aj47SDmrcP4Pxh/hJwfKzfAt19g8T0eO/pfpf8fQ60M=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=jHVokyolz93SlMWYgiaQSZMdYlEt2jslWUiLiEdEBL8WhVP8MhdkGWCeO/5RStr3CgptieThprFkWxWDuarKwZPFQG+n9hYxeCBRB6yyHbiH09LDcgqUP5EUDZLs1NVo+ctntYalov80IKzSaaxkYaNTfoKsEe5NOlmVnq2NxVM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=dBWZnp3z; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1706292980;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
-	b=dBWZnp3zPPd2/AjiEvuq1Hmih1zFnun9C6IU+BX3Yl1E47sZlrZPmFnR5c1XRK7wYJAV2b
-	vgY5vuKT2ef+SNu8Sxus4/GT4SA5M2B+O5uLjsYVqZvlMPOWe648CHskwlmXf8rh49yo7v
-	egO+SpXvyJIiUwW+E7cTKpUGD8wevrk=
-Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
- [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-340-_MqfY369OT-d7T8znew5CQ-1; Fri, 26 Jan 2024 13:16:18 -0500
-X-MC-Unique: _MqfY369OT-d7T8znew5CQ-1
-Received: by mail-oi1-f199.google.com with SMTP id 5614622812f47-3bdf1be1528so965669b6e.2
-        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 10:16:18 -0800 (PST)
+	s=arc-20240116; t=1706306654; c=relaxed/simple;
+	bh=DkgttLBAlymmd03MCZsAV1//umks8Npk86CTHI2wLbA=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=dCrlOCeMhYga+tkoKfjyGmB3t7odCPkOYPkSyIyLA5PEvJoeDfnXde5VcMGMdbRZuor52rVZaSyAVr9wPJL96SFXXEfm8Nww4TQl6WnEKYh9xo0QRFLIOOslwAyqAARt0261PUv5o4ZC1eWGnr+TDIhIeb5ABCJXqJF/7q/35Gc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=wbcunhWo; arc=none smtp.client-ip=209.85.208.52
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-55817a12ad8so633753a12.2
+        for <kvm@vger.kernel.org>; Fri, 26 Jan 2024 14:04:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1706306650; x=1706911450; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
+        b=wbcunhWoDg4hFICL4ioNTqD26HcxAxuxfFKy8hH3wUZg4UXvpbRVomQLZczmUJGJ3K
+         ydk/C0JcyXVlwROQn0SMy1uVcI7v1ZfIwYqPbsjQvzzRmizP+oZGvw3GG5IbplRZYvKE
+         I99H6/JVj6p303I3l/sygP073q46WtWJ3CicieGt4exilm9FQQjXoI1Vt+mlEhHs4org
+         Rc1/PTEpNKtok5Y/Xd716rJDrVqZch/FAkqMIZ4aNfln6XdV8yUOEHENF726JTiRQU/K
+         SoW+Dg42TPhulfPQrxdN4ausN7HS4I0ZV+oRR16sRQTTHvfaFNf6D2PGl8ArWtnL6hYf
+         aKWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706292977; x=1706897777;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uNG6H+3tybJ100+FQ7ifNQULqIkXKOGQRCmck6q+baY=;
-        b=UrkeUWiq8gBHHrnngp+KKxDGGLetOplvuQ0X5S5VzaVeUvePpD+utjIQgpNMqB8hQs
-         Z1FQ0m6wvWTujBWA57+IwGmbqhhcVgajo5Ia+Wb/Zid72GV47Gxpbsiq7AobgrUHNX9a
-         DREOaDhg1IkaE71KTwVM55HLN31HlFU+x91BY2GS2fBVA6SHFP+PiIUqThmHaILwH0dx
-         89mLh0VAu3Gxh53b7ZosITbVSRf+r2HHvheT8uHG0ui+FsDXxFN7ybVU5ountfOqBqkh
-         xe06oztPsgyQrxkL9AYf2SgdwRi97E+BJKDP7xR1kWoD4OgXtBS+ZukHUAufZLM7xg2L
-         b2lw==
-X-Gm-Message-State: AOJu0YyraYswZUkosZzrzMHbuDZB+b7VjWi3sACvjjAKXIl63Xn8/U0g
-	aCVESyjPjI6pn5dB8n7kYiO2evybSRNAYtumWIaXw6BTP3EbyLv6O0jr8VAgmsizxI3hpUyHh3u
-	S8ToUL03U+XBNcmJsNoze3JtdQ47ACgacrQ3Ysyhd6GXEV6oGHq9KUHfYEfbMCBQSp/cw7FGp43
-	YX0O0VFpv4CV3cI1GjVEmlU+W3
-X-Received: by 2002:a05:6808:d4b:b0:3bd:f41f:f9a6 with SMTP id w11-20020a0568080d4b00b003bdf41ff9a6mr168941oik.25.1706292977737;
-        Fri, 26 Jan 2024 10:16:17 -0800 (PST)
-X-Received: by 2002:a05:6808:d4b:b0:3bd:f41f:f9a6 with SMTP id
- w11-20020a0568080d4b00b003bdf41ff9a6mr168928oik.25.1706292977542; Fri, 26 Jan
- 2024 10:16:17 -0800 (PST)
+        d=1e100.net; s=20230601; t=1706306650; x=1706911450;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tLDD+gX81/flexkUVsp4uo9ttE0hN1WJun7ndqYAwQ4=;
+        b=cynSjdImDSHldR018wNystSOtIMbNc7h3tQ0S/rK4AqgnQIWI87O7lxgI4BXnUc5f4
+         oKYRbtUL0TIMpJnrKqjGnNpQTyruuHUV4s/267NX4r2UQdZrLhrduFcOAXai4xMict6j
+         RKU4rsvgt4JaUBBLhVOaLRIRk+/M0Z/QDKJaI1fChGQFhYrNhb1Obh2fDNE65+S6ZsLT
+         Xw6+yH9Jwc4LRimtceo8OkoipvdxgeuNo1FBhg7Ssv1NAXeMZuNzaevx7WvApCtkfCHB
+         kOCHSqr1RkvY1HqpDXJV727Jm4EmK8EAWZz3J5UQCHBkWTqogbnARSiGX38HUX5F/BlL
+         t0tA==
+X-Gm-Message-State: AOJu0Yzyfi9RzVoOAXETcZl5qnCGeyHh9mZcvE/afYEFWM6eJW3SJjEC
+	thWjcxq1hQNT54b7FZ5fgqXxHLmdneVnBVJsVs52bky/WdxTIbQAB4kJPo7kKT8F8GsepcWsTuF
+	+
+X-Received: by 2002:aa7:dc0f:0:b0:55c:d474:56dc with SMTP id b15-20020aa7dc0f000000b0055cd47456dcmr203467edu.39.1706306650281;
+        Fri, 26 Jan 2024 14:04:10 -0800 (PST)
+Received: from m1x-phil.lan ([176.176.142.39])
+        by smtp.gmail.com with ESMTPSA id q15-20020a056402032f00b0055ce4ea1c81sm1006182edw.89.2024.01.26.14.04.08
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Fri, 26 Jan 2024 14:04:09 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-s390x@nongnu.org,
+	qemu-riscv@nongnu.org,
+	Eduardo Habkost <eduardo@habkost.net>,
+	kvm@vger.kernel.org,
+	qemu-ppc@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 00/23] hw,target: Prefer fast cpu_env() over slower CPU QOM cast macro
+Date: Fri, 26 Jan 2024 23:03:42 +0100
+Message-ID: <20240126220407.95022-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240124155425.73195-1-philmd@linaro.org>
-In-Reply-To: <20240124155425.73195-1-philmd@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 26 Jan 2024 19:16:06 +0100
-Message-ID: <CABgObfb8pKdf=Q7JPDQ9j=Zanbk9gYOC8ufxprGA88zAPaoO5Q@mail.gmail.com>
-Subject: Re: [PATCH 0/2] accel/kvm: Sanitize KVM_HAVE_MCE_INJECTION definition
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
-	qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
-	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org, 
-	qemu-s390x@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: We6fxG9ILhsa
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Px+SZINL+Ue9
 
-On Wed, Jan 24, 2024 at 4:54=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Trivial replacement of KVM_HAVE_MCE_INJECTION by
-> KVM_ARCH_HAVE_MCE_INJECTION (not the "ARCH_" difference).
+Use cpu_env() -- which is fast path -- when possible.
+Bulk conversion using Coccinelle spatch (script included).
 
-I am confused, why can't you just rename the symbol and instead you go
-through this change?
+Since v1:
+- Avoid CPU() cast (Paolo)
+- Split per targets (Thomas)
 
-Paolo
+Philippe Mathieu-Daudé (23):
+  hw/acpi/cpu: Use CPUState typedef
+  scripts/coccinelle: Add cpu_env.cocci_template script
+  bulk: Call in place single use cpu_env()
+  target/alpha: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/arm: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/avr: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/cris: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/hppa: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/i386/hvf: Use CPUState typedef
+  target/i386: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/m68k: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/microblaze: Prefer fast cpu_env() over slower CPU QOM cast
+    macro
+  target/mips: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/nios2: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/openrisc: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/ppc: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/riscv: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/rx: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/s390x: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/sh4: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/tricore: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/xtensa: Prefer fast cpu_env() over slower CPU QOM cast macro
+  target/sparc: Prefer fast cpu_env() over slower CPU QOM cast macro
 
-> Philippe Mathieu-Daud=C3=A9 (2):
->   accel/kvm: Define KVM_ARCH_HAVE_MCE_INJECTION in each target
->   accel/kvm: Directly check KVM_ARCH_HAVE_MCE_INJECTION value in place
->
->  include/sysemu/kvm.h         |  7 ++++++-
->  target/arm/cpu-param.h       |  5 +++++
->  target/arm/cpu.h             |  4 ----
->  target/i386/cpu-param.h      |  2 ++
->  target/i386/cpu.h            |  2 --
->  target/loongarch/cpu-param.h |  2 ++
->  target/mips/cpu-param.h      |  2 ++
->  target/ppc/cpu-param.h       |  2 ++
->  target/riscv/cpu-param.h     |  2 ++
->  target/s390x/cpu-param.h     |  2 ++
->  accel/kvm/kvm-all.c          | 10 +++++-----
->  11 files changed, 28 insertions(+), 12 deletions(-)
->
-> --
-> 2.41.0
->
+ MAINTAINERS                               |  1 +
+ include/hw/acpi/cpu.h                     |  2 +-
+ target/i386/hvf/vmx.h                     | 13 +---
+ target/i386/hvf/x86.h                     | 26 +++----
+ target/i386/hvf/x86_descr.h               | 14 ++--
+ target/i386/hvf/x86_emu.h                 |  4 +-
+ target/i386/hvf/x86_mmu.h                 |  6 +-
+ accel/tcg/cpu-exec.c                      |  3 +-
+ hw/i386/vmmouse.c                         |  6 +-
+ hw/i386/xen/xen-hvm.c                     |  3 +-
+ hw/intc/arm_gicv3_cpuif_common.c          |  5 +-
+ hw/ppc/mpc8544_guts.c                     |  3 +-
+ hw/ppc/pnv.c                              |  3 +-
+ hw/ppc/pnv_xscom.c                        |  5 +-
+ hw/ppc/ppce500_spin.c                     |  3 +-
+ hw/ppc/spapr.c                            |  3 +-
+ hw/ppc/spapr_caps.c                       |  6 +-
+ linux-user/i386/cpu_loop.c                |  4 +-
+ target/alpha/cpu.c                        | 31 ++------
+ target/alpha/gdbstub.c                    |  6 +-
+ target/alpha/helper.c                     | 12 +--
+ target/alpha/mem_helper.c                 | 11 +--
+ target/arm/cpu.c                          | 19 ++---
+ target/arm/debug_helper.c                 |  8 +-
+ target/arm/gdbstub.c                      |  6 +-
+ target/arm/gdbstub64.c                    |  6 +-
+ target/arm/helper.c                       |  9 +--
+ target/arm/hvf/hvf.c                      | 12 +--
+ target/arm/kvm.c                          |  3 +-
+ target/arm/ptw.c                          |  3 +-
+ target/arm/tcg/cpu32.c                    |  3 +-
+ target/avr/cpu.c                          | 27 ++-----
+ target/avr/gdbstub.c                      |  6 +-
+ target/avr/helper.c                       | 10 +--
+ target/cris/cpu.c                         |  5 +-
+ target/cris/gdbstub.c                     |  9 +--
+ target/cris/helper.c                      | 12 +--
+ target/cris/translate.c                   |  3 +-
+ target/hppa/cpu.c                         |  8 +-
+ target/hppa/int_helper.c                  |  8 +-
+ target/hppa/mem_helper.c                  |  6 +-
+ target/hppa/translate.c                   |  3 +-
+ target/i386/arch_memory_mapping.c         |  3 +-
+ target/i386/cpu-dump.c                    |  3 +-
+ target/i386/cpu.c                         | 37 +++------
+ target/i386/helper.c                      | 39 +++-------
+ target/i386/hvf/hvf.c                     |  8 +-
+ target/i386/hvf/x86.c                     | 30 ++++----
+ target/i386/hvf/x86_descr.c               |  8 +-
+ target/i386/hvf/x86_emu.c                 |  6 +-
+ target/i386/hvf/x86_mmu.c                 | 14 ++--
+ target/i386/hvf/x86_task.c                | 10 +--
+ target/i386/hvf/x86hvf.c                  |  6 +-
+ target/i386/kvm/kvm.c                     |  6 +-
+ target/i386/kvm/xen-emu.c                 | 32 +++-----
+ target/i386/nvmm/nvmm-all.c               |  6 +-
+ target/i386/tcg/sysemu/bpt_helper.c       |  3 +-
+ target/i386/tcg/tcg-cpu.c                 | 14 +---
+ target/i386/tcg/user/excp_helper.c        |  3 +-
+ target/i386/tcg/user/seg_helper.c         |  3 +-
+ target/i386/whpx/whpx-all.c               | 18 ++---
+ target/loongarch/tcg/translate.c          |  3 +-
+ target/m68k/cpu.c                         | 30 +++-----
+ target/m68k/gdbstub.c                     |  6 +-
+ target/m68k/helper.c                      |  3 +-
+ target/m68k/m68k-semi.c                   |  6 +-
+ target/m68k/op_helper.c                   | 11 +--
+ target/m68k/translate.c                   |  3 +-
+ target/microblaze/helper.c                |  3 +-
+ target/microblaze/translate.c             |  3 +-
+ target/mips/cpu.c                         | 11 +--
+ target/mips/gdbstub.c                     |  6 +-
+ target/mips/kvm.c                         | 27 +++----
+ target/mips/sysemu/physaddr.c             |  3 +-
+ target/mips/tcg/exception.c               |  3 +-
+ target/mips/tcg/op_helper.c               |  3 +-
+ target/mips/tcg/sysemu/special_helper.c   |  3 +-
+ target/mips/tcg/sysemu/tlb_helper.c       |  6 +-
+ target/mips/tcg/translate.c               |  3 +-
+ target/nios2/cpu.c                        | 15 +---
+ target/nios2/helper.c                     |  3 +-
+ target/nios2/nios2-semi.c                 |  6 +-
+ target/openrisc/gdbstub.c                 |  3 +-
+ target/openrisc/interrupt.c               |  6 +-
+ target/openrisc/translate.c               |  3 +-
+ target/ppc/cpu_init.c                     | 11 +--
+ target/ppc/excp_helper.c                  |  3 +-
+ target/ppc/gdbstub.c                      | 12 +--
+ target/ppc/kvm.c                          |  6 +-
+ target/ppc/ppc-qmp-cmds.c                 |  3 +-
+ target/ppc/user_only_helper.c             |  3 +-
+ target/riscv/arch_dump.c                  |  6 +-
+ target/riscv/cpu.c                        | 17 ++---
+ target/riscv/cpu_helper.c                 | 14 +---
+ target/riscv/debug.c                      |  9 +--
+ target/riscv/gdbstub.c                    |  6 +-
+ target/riscv/kvm/kvm-cpu.c                |  6 +-
+ target/riscv/tcg/tcg-cpu.c                |  9 +--
+ target/riscv/translate.c                  |  3 +-
+ target/rx/gdbstub.c                       |  6 +-
+ target/rx/helper.c                        |  6 +-
+ target/rx/translate.c                     |  6 +-
+ target/s390x/cpu-dump.c                   |  3 +-
+ target/s390x/gdbstub.c                    |  6 +-
+ target/s390x/helper.c                     |  3 +-
+ target/s390x/kvm/kvm.c                    |  6 +-
+ target/s390x/tcg/excp_helper.c            | 11 +--
+ target/s390x/tcg/translate.c              |  3 +-
+ target/sh4/cpu.c                          | 15 ++--
+ target/sh4/gdbstub.c                      |  6 +-
+ target/sh4/helper.c                       | 11 +--
+ target/sh4/op_helper.c                    |  4 +-
+ target/sh4/translate.c                    |  3 +-
+ target/sparc/cpu.c                        | 14 +---
+ target/sparc/gdbstub.c                    |  3 +-
+ target/sparc/int32_helper.c               |  3 +-
+ target/sparc/int64_helper.c               |  3 +-
+ target/sparc/ldst_helper.c                |  6 +-
+ target/sparc/mmu_helper.c                 | 15 ++--
+ target/sparc/translate.c                  |  3 +-
+ target/tricore/cpu.c                      | 20 +----
+ target/tricore/gdbstub.c                  |  6 +-
+ target/tricore/helper.c                   |  3 +-
+ target/tricore/translate.c                |  3 +-
+ target/xtensa/dbg_helper.c                |  3 +-
+ target/xtensa/exc_helper.c                |  3 +-
+ target/xtensa/gdbstub.c                   |  6 +-
+ target/xtensa/helper.c                    |  9 +--
+ target/xtensa/translate.c                 |  3 +-
+ scripts/coccinelle/cpu_env.cocci_template | 92 +++++++++++++++++++++++
+ 130 files changed, 432 insertions(+), 714 deletions(-)
+ create mode 100644 scripts/coccinelle/cpu_env.cocci_template
+
+-- 
+2.41.0
 

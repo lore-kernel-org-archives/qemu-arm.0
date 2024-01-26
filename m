@@ -1,124 +1,105 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp960593ejc;
-        Fri, 26 Jan 2024 07:53:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE0Fvk8MBr//J5CJs5hV0Rus5TAhBdhAJ7oVsPo3QiIunafSUAQII9RpFh6JaTf6nP/jrtK
-X-Received: by 2002:a05:6808:1a0b:b0:3bd:e26f:9b6e with SMTP id bk11-20020a0568081a0b00b003bde26f9b6emr2933106oib.5.1706284380472;
-        Fri, 26 Jan 2024 07:53:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706284380; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp963030ejc;
+        Fri, 26 Jan 2024 07:58:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFlvjBhR2JdZxonUN7Hqoi+7m16L4AReF18/9kBY8UkYcqmRoqese9z10RpeRLHb7M+isvY
+X-Received: by 2002:a05:6214:19e4:b0:686:ac3a:e02f with SMTP id q4-20020a05621419e400b00686ac3ae02fmr99889qvc.22.1706284689903;
+        Fri, 26 Jan 2024 07:58:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706284689; cv=none;
         d=google.com; s=arc-20160816;
-        b=BMaRWENcCVsxA5Be/3vdJJXCIA7Ll7gDb/q8IVSgiv1iStNrTKFxkg6nuntKhlmifP
-         F+zFDWaIJJRqSgWGfqUThbOK77+GrQ6w34GjeS63yfBgvbDsXvtjZnI+dJZRW8LPMgAA
-         fxUWXZShMelU7c7ahmlrUeoa5sBosMfTEqwLgWyhb8nx7HWd8mad/lU/2Se7zDVx5VZn
-         usyR/CoSyr3Oe0iepV8oIzDzU4NjVXaWTOzU5lFoS3E4kwnJ+41KS5Jq9PkbfJsOqDXk
-         lYEu74bI8667fpBXW28udlb6MfvYbvID/Xl37wHB7jSfyYqIy+ePN/M3AV3rqD5mklEQ
-         04Nw==
+        b=OWsUTQWsOKSv/gGSFy5BHVHdn5iYoA9bb7HPuheMJksNQZr8spGG6Mo8BqgQL91TSj
+         IJh0Tt/WEFPeqv4MWyZGcqSftd2trkLatlKmTwK5z5YbPJw1l5QLLlnmju17zFzw3Kzk
+         yWVEbkQ+oWPhv71RNtO2v7BjBdhbxG3m++rqZczRXdaegCI8buRxNGfngbeUivDaObl4
+         rpQGGy0BpjCYqubtJEX4KR+VFpq9LBL8/Rsc2GJNzzDt9CzFbqdiOvU2KZrKj65G5pY4
+         jpy33Ce83+Lm9urfdVh7XiW7om6af3Zmus1LfqMO/1JXzDKZuJT42dclsFAuEYfSoxDW
+         oOFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature:sender:precedence:errors-to
-         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
-        bh=GVRU4JY42t0XtQar0MLRcTymoBOobeZe42nuYzL2Zis=;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uICF0HlUwroZLnpf75Ri8CLLs3QRzc6G/+R5nSoBH4g=;
         fh=RIVWBOSs2OZlP7XXIPkGQw38oz8oDq1OvCeujjh55qg=;
-        b=EaqoGOrbadodsKkQt8ou5oTk149aqKx5kJeAO3KmfGLXf3eMs8sBXZd6eS5f8cbCu5
-         EFQe4Y2iDuvug8z4Rm4xIoj8R/gMVx30H/wZ7Eajk4ffiOZGkfuQxm2SVOZe6+WXTEPK
-         3jsLs3/YG6zVXMCmET00HiVpFJxCi1tCWHMkhw6rj1sHS6V9/vjJyW6x3u1KJskQ+Qdh
-         nwZRQWdsJaIjXpKSfrpY5wkK/OvvOBcyByL2QDpPhQmyYPT0keWLALWvHj8wsTJpE7Te
-         22IF0PVSWq1KeXL6LBFaE6vBtdEc7t1NTtRUomfJjdDxMjn2iDbR7CDp6hXS/zbEJr3g
-         CY2g==
+        b=d2MjQ6ItNsWXmXLlwylD2kbvmuItqB9ZDMb/4pjveICvUDdU1YjIiVm8a7YuGmPDpZ
+         Jbt9NsA/bD2qcYYSoZQktrGTxzQLniwUFIyq/I6/mRtLg5cixmHCncrlcWN2V9AIGX5I
+         0iLPCvEJMoxccomyAYzUrBdoNIMeGRdaQvHlIJ3q5pBZkegXWDlikKfafrTW8wsm2ZsQ
+         lma1NkCQKmxwjxK6Z/P5/Agoi789M6V4sSCWbO+WRgFcU6NEJ+Iq7mx1IcAaNQhogD8F
+         IcjMtJOzXUNkKr2K72YOqNKg1fs7aMn09qwc9COHw76rZeJLwqNU2dn+d//U9TbCq0ca
+         0Rkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KfUJ35dD;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SXffkU3c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id t17-20020ac85891000000b0042a87eeae1bsi122640qta.745.2024.01.26.07.53.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 07:53:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 9-20020a0562140d4900b0067f29c99880si1545243qvr.292.2024.01.26.07.58.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jan 2024 07:58:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KfUJ35dD;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SXffkU3c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.672126.1045843 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTOUo-0001Xo-S5; Fri, 26 Jan 2024 15:51:58 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 672126.1045843; Fri, 26 Jan 2024 15:51:58 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rTOUo-0001Xh-OW; Fri, 26 Jan 2024 15:51:58 +0000
-Received: by outflank-mailman (input) for mailman id 672126;
- Fri, 26 Jan 2024 15:51:57 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=UtOA=JE=redhat.com=thuth@srs-se1.protection.inumbo.net>)
- id 1rTOUn-0001WN-Jp
- for xen-devel@lists.xenproject.org; Fri, 26 Jan 2024 15:51:57 +0000
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id d427a763-bc62-11ee-98f5-efadbce2ee36;
- Fri, 26 Jan 2024 16:51:55 +0100 (CET)
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rTOae-0007V3-Jr; Fri, 26 Jan 2024 10:58:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOaT-0007Sx-IA
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 10:57:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rTOaR-0004km-7j
+ for qemu-arm@nongnu.org; Fri, 26 Jan 2024 10:57:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1706284666;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=uICF0HlUwroZLnpf75Ri8CLLs3QRzc6G/+R5nSoBH4g=;
+ b=SXffkU3cWtBB7t7Mz0fwNiMum8qXtLgVNAaq6iMOwJRvXdRWL8GNPnxCaQrx9UuySSm12c
+ X7crrkWGj3+xmuDau5SYTChga9vzvWwhqn7IpN99t+B591TsPLfthbQY/xUSmXH002MdWL
+ xSDIItQHdw6Uc+QJyDEydDVE7Lt9cQY=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-617-mMxpJthxMyeqSLfeljI6Xg-1; Fri, 26 Jan 2024 10:51:53 -0500
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-783163c7c38so63211385a.2
- for <xen-devel@lists.xenproject.org>; Fri, 26 Jan 2024 07:51:52 -0800 (PST)
+ us-mta-475-MjN5thcQMbGjTChzZ57mLw-1; Fri, 26 Jan 2024 10:57:44 -0500
+X-MC-Unique: MjN5thcQMbGjTChzZ57mLw-1
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-5cd61dccd77so317403a12.3
+ for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 07:57:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706284664; x=1706889464;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uICF0HlUwroZLnpf75Ri8CLLs3QRzc6G/+R5nSoBH4g=;
+ b=CUAHK+zjkUq5dDE3r0G5tRttEFchi7Dd05WwOJtlCuHoZcCkjIhPBhirM66sTQaKVf
+ HyMuQrmTmGbFbJG2GUWseZ9Vjp4MOdTzOX1322cWk4yypS7zK9P9odkk+IsyUcSUfmUl
+ MgMiwzbaTYj5YAZOBsJo4rKKSMpTIMOiYMnoPoPfdrRiQ77lGqYwuNL0P7Ytn1kIN3PL
+ N6csd2C9g5ugcdoA2GovmgS520X5OER3Qk0eZH6/XiS8zNriYK82Z4BsXkgA4JxcEiZm
+ ko0ATN/8FaP3sd+/p85RmRJMFlRmdfUa4qk3emBCQPNfXwiwh5p2Ifhti3gmnmrXAJvu
+ ebUg==
+X-Gm-Message-State: AOJu0YwNelW08YeafShtBecza/ir6WZV2/nuMirks6PGMpdPpHRHCs0T
+ 5ueu+eyY//GgClionX0LZG3/QkJiIi9KWDLk+NUoZZrMwmyrsmJPhhPcHlT0l6nQyPmTMlQvvOQ
+ eU6FYv+hR891FCWuo2ONnXoMHcEsj91Rg/6Iggx/Ox5dN5rRUvw==
+X-Received: by 2002:a05:6a20:be20:b0:19c:32cf:8ff2 with SMTP id
+ ge32-20020a056a20be2000b0019c32cf8ff2mr1179223pzb.79.1706284663560; 
+ Fri, 26 Jan 2024 07:57:43 -0800 (PST)
+X-Received: by 2002:a05:6a20:be20:b0:19c:32cf:8ff2 with SMTP id
+ ge32-20020a056a20be2000b0019c32cf8ff2mr1179183pzb.79.1706284663142; 
+ Fri, 26 Jan 2024 07:57:43 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-176-119.web.vodafone.de.
  [109.43.176.119]) by smtp.gmail.com with ESMTPSA id
- i28-20020a05620a145c00b0078199077d0asm666795qkl.125.2024.01.26.07.51.40
+ s191-20020a6377c8000000b005c67a388836sm1253488pgc.62.2024.01.26.07.57.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jan 2024 07:51:51 -0800 (PST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: d427a763-bc62-11ee-98f5-efadbce2ee36
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1706284314;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=GVRU4JY42t0XtQar0MLRcTymoBOobeZe42nuYzL2Zis=;
-	b=KfUJ35dD1fEjw5e1fM4PZ6FcCMxyGKL8L2cI9HO3Wee9MKwlKYZ6o3KprIsvJlI/LkRgLN
-	eL0IfQgsD3Z0bR8aHkcgWht2XHG5cnN9sLkRaO/FTaGEtd+4NoTzV757nkQlhtvcETfXjH
-	/n8B5A2VJksWWxGt8pHKTDmgW/QRht0=
-X-MC-Unique: mMxpJthxMyeqSLfeljI6Xg-1
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706284312; x=1706889112;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GVRU4JY42t0XtQar0MLRcTymoBOobeZe42nuYzL2Zis=;
-        b=brae2XO68jBZEynd0KthBWkqhITedQgXxg0BbygoquwkQsNfb4JvypBu3CArLlVSem
-         QvJL5uHMKhwVAvNgp2krsICeBfiTQigQYgORcDKOEf114fTdT+ekwDqY8XeANnH9TXTl
-         z8VW2qHtJEEiMFO/572qRLztBFuDMZujZIIs5VSyRBnBTvS2tmccyqnuT2GCZ/wkwD+q
-         3aAWjytqoucfcn6d0AxXuSaM5LBVeH1snkcK2SLkbWwD3qXvO47S2m6pvLYjiKfwGJ0X
-         9vl/Fm03iQeWDStQ5iJvPnTvPH9KxRDuE7Wy1XRC0nFPtmoDGcQqpqU36IWY8kFDJJE4
-         KjZw==
-X-Gm-Message-State: AOJu0YzF2DOaHYy1gO9h7vEyEy174+F5VfJKxs4unPE4SGX48pr2dxnF
-	UvcaS8r+a78sdCcniDxZDxS4SG/lDs/0cLfGGdOuyzPEku5rEIi7LVuu4RhgXy9BRdjAECMXh9l
-	4T5Dpb/62N4G24zaWp9QYGiquAc7slIfZ/cb4RLNETc0uKaJiKg6SxpRYhXkJc4WO
-X-Received: by 2002:a37:e317:0:b0:783:b889:30d3 with SMTP id y23-20020a37e317000000b00783b88930d3mr1427761qki.15.1706284312511;
-        Fri, 26 Jan 2024 07:51:52 -0800 (PST)
-X-Received: by 2002:a37:e317:0:b0:783:b889:30d3 with SMTP id y23-20020a37e317000000b00783b88930d3mr1427741qki.15.1706284312247;
-        Fri, 26 Jan 2024 07:51:52 -0800 (PST)
-Message-ID: <c39be436-2790-42ff-8886-59925330b7d5@redhat.com>
-Date: Fri, 26 Jan 2024 16:51:39 +0100
+ Fri, 26 Jan 2024 07:57:42 -0800 (PST)
+Message-ID: <0702e0c9-599f-4809-b0b2-3b2a85b32971@redhat.com>
+Date: Fri, 26 Jan 2024 16:57:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 32/46] hw/m68k/mcf5208: use qemu_create_nic_device()
+Subject: Re: [PATCH v3 34/46] hw/microblaze: use qemu_configure_nic_device()
 To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Beniamino Galvani <b.galvani@gmail.com>,
@@ -166,7 +147,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
 References: <20240108204909.564514-1-dwmw2@infradead.org>
- <20240108204909.564514-33-dwmw2@infradead.org>
+ <20240108204909.564514-35-dwmw2@infradead.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -210,60 +191,84 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240108204909.564514-33-dwmw2@infradead.org>
+In-Reply-To: <20240108204909.564514-35-dwmw2@infradead.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: t2t2VAzkBer2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.313,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_SPACE_RATIO=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8bkMkiSbzbgq
 
 On 08/01/2024 21.27, David Woodhouse wrote:
 > From: David Woodhouse <dwmw@amazon.co.uk>
 > 
 > Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 > ---
->   hw/m68k/mcf5208.c | 19 ++++++-------------
->   1 file changed, 6 insertions(+), 13 deletions(-)
+>   hw/microblaze/petalogix_ml605_mmu.c      | 3 +--
+>   hw/microblaze/petalogix_s3adsp1800_mmu.c | 3 +--
+>   2 files changed, 2 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-> index d22d8536db..0cfb806c20 100644
-> --- a/hw/m68k/mcf5208.c
-> +++ b/hw/m68k/mcf5208.c
-> @@ -206,16 +206,16 @@ static void mcf5208_sys_init(MemoryRegion *address_space, qemu_irq *pic)
->       }
->   }
+> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+> index fb7889cf67..0f5fabc32e 100644
+> --- a/hw/microblaze/petalogix_ml605_mmu.c
+> +++ b/hw/microblaze/petalogix_ml605_mmu.c
+> @@ -133,7 +133,6 @@ petalogix_ml605_init(MachineState *machine)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
 >   
-> -static void mcf_fec_init(MemoryRegion *sysmem, NICInfo *nd, hwaddr base,
-> -                         qemu_irq *irqs)
-> +static void mcf_fec_init(MemoryRegion *sysmem, hwaddr base, qemu_irq *irqs)
->   {
->       DeviceState *dev;
->       SysBusDevice *s;
->       int i;
+>       /* axi ethernet and dma initialization. */
+> -    qemu_check_nic_model(&nd_table[0], "xlnx.axi-ethernet");
+>       eth0 = qdev_new("xlnx.axi-ethernet");
+>       dma = qdev_new("xlnx.axi-dma");
 >   
-> -    qemu_check_nic_model(nd, TYPE_MCF_FEC_NET);
-> -    dev = qdev_new(TYPE_MCF_FEC_NET);
-> -    qdev_set_nic_properties(dev, nd);
-> +    dev = qemu_create_nic_device(TYPE_MCF_FEC_NET, true, NULL);
-> +    if (!dev) {
-> +        return;
-> +    }
+> @@ -145,7 +144,7 @@ petalogix_ml605_init(MachineState *machine)
+>                                     "axistream-connected-target", NULL);
+>       cs = object_property_get_link(OBJECT(dma),
+>                                     "axistream-control-connected-target", NULL);
+> -    qdev_set_nic_properties(eth0, &nd_table[0]);
+> +    qemu_configure_nic_device(eth0, true, NULL);
+>       qdev_prop_set_uint32(eth0, "rxmem", 0x1000);
+>       qdev_prop_set_uint32(eth0, "txmem", 0x1000);
+>       object_property_set_link(OBJECT(eth0), "axistream-connected", ds,
+> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> index 505639c298..dad46bd7f9 100644
+> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> @@ -114,9 +114,8 @@ petalogix_s3adsp1800_init(MachineState *machine)
+>       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, TIMER_BASEADDR);
+>       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
 >   
->       s = SYS_BUS_DEVICE(dev);
->       sysbus_realize_and_unref(s, &error_fatal);
-> @@ -267,14 +267,7 @@ static void mcf5208evb_init(MachineState *machine)
->   
->       mcf5208_sys_init(address_space_mem, pic);
->   
-> -    if (nb_nics > 1) {
-> -        error_report("Too many NICs");
-> -        exit(1);
-> -    }
-
-I wonder whether we'd need a different mechanism to specify the maximum 
-amount of on-board NICs now... Anyway, we can also think of that later, so:
+> -    qemu_check_nic_model(&nd_table[0], "xlnx.xps-ethernetlite");
+>       dev = qdev_new("xlnx.xps-ethernetlite");
+> -    qdev_set_nic_properties(dev, &nd_table[0]);
+> +    qemu_configure_nic_device(dev, true, NULL);
+>       qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
+>       qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 

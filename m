@@ -1,89 +1,86 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp834041ejc;
-        Fri, 26 Jan 2024 04:16:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFXkU76UqLn80/1F5V0rYw8cowH1zVMI/nW5lIYLpqbCKoHEvpFR0LSd7SO9q21AGoYM/GV
-X-Received: by 2002:ad4:5dec:0:b0:686:ab9a:e5ec with SMTP id jn12-20020ad45dec000000b00686ab9ae5ecmr1140425qvb.116.1706271403003;
-        Fri, 26 Jan 2024 04:16:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706271402; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp837193ejc;
+        Fri, 26 Jan 2024 04:22:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF/X4mXK++BovElC/2GDBCyxivLQrpwfeaJ1KA9MJItKB2jaguTmPtk0MN/4GcRbKRMVRwQ
+X-Received: by 2002:ad4:5c49:0:b0:686:ad15:5123 with SMTP id a9-20020ad45c49000000b00686ad155123mr1539950qva.49.1706271779703;
+        Fri, 26 Jan 2024 04:22:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706271779; cv=none;
         d=google.com; s=arc-20160816;
-        b=JKK96AtnNPVrxZ0IYVjAuLNUbjQIedXq5ZwZz3Z4ucCE4i7OtKtWk5Tn/DCq7px5ll
-         KBJQTTkACA+P/fI3mV8Y4CbYDFwLmDsYV5gXQk1dfUGUTuI7fbhuBq5lMrMKH8WXuRqk
-         ST6qco7SB/OrQuxzRyZ5UpQupsSJ9nvXtkZ8RHLQeoIkASpSTB3MwBEoSe5WvztObpRs
-         9UXNsQG9JS1VEZxtuhC1HlJZcF3sqTy+GELCtI1UqVVnQhqPbz7VWVTiHiohIMyyEec1
-         BcySWeExwr1zowW+Ud9UYxo1Tj/B6KpRcOXRTZ0kq9iipqUeizrq+X3lmifoQn8af7fY
-         JToQ==
+        b=KeodbWnAdnuTPivaeey0kH5Oy5tlfIYlMNBfvcokuWQhjKMvyV9mwRKLE1s4+aTIEV
+         oEV/qg7uE9DxmSjKDd10pOphDWdU8a0RhkkqaItjYnrulIjQMttoda6HwwmK9FKpViaI
+         5bWIpSriBDRbOa1FhrYVsJvaZ9w70c1fija7nhPqOp8G/r11+Fwey2DOSdISeb/3h/dr
+         /OA1DgyOTBiql2xC2GircuTd/ZAtXStNmNjeL2+5fCrRcvUDp29yuE7sxSPYdi2B0+4R
+         xNdobmOpTAN6yA61yZRwh8K1k2F9+Z1/OAPdwIRQkZQ3s41IgmR+CGrNtTzQDIfbSsJH
+         1+4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=vtGY2quM+SpW6miwGac8mBTj5E9nj7iktP11PLf8gHI=;
-        fh=JKTnjfgLebdI6Uppdd2zUuo3nA3KHnzgaaV6K84+8TY=;
-        b=aMUBCyWvgAS8qOMb2711ouJbOV8kt3upM1MplkOxEpp4KtS6+tC8Yn8LVZNbi6mSF/
-         7j8LKKlf1WoGC0OTiK2nsHUzJmMT4YU66FD+1SyW+n5J2gqvgOkFe478r6dFr27vT5Dv
-         WvcIz5Oy7dp6t5tn+1MKhUWSJFx0ddeNMbqhSOC5JCYCyaAJI/g9NClP8HcA1Eqe5sb9
-         yfNTaW3vw+u2yj+itl9rk4F0PDCaSeJb64P+wbTG+l6dyr/Hp49n+I0FPotXABC2YlK+
-         G6fDMBEhCrAdmbzN+G2eJceNHCNG/aI9AdJPxqF+xlVPfqnk5uoFsc5NVkm69o00vOdM
-         4Y6w==
+        bh=GmmoR3jvGthiKENCQCIQLA18vF5QHigKDNCx8eOBrU0=;
+        fh=qvpQEwPhW+sVtKR5E6AId8Ma6sXNH1BljXbo4bG344s=;
+        b=jp1lJY/LtaL8Z192uc2QdDazikB2LQD/inVUFHhuav0l3jQfaeX9S0ZSzT2Aw1n6of
+         XA68fsOpzwiZy+j+XqfZoKAE6b9w4n9s+L3u1NdGz1LwJGXOPo9tXU8Q+sR7SlSOgSsm
+         TuMRlpSdZod2LY+5X3CbL4+BX4gllE+SyO6YE9RmV5HfLx9t4JnAebn/mSqsuxglxHKa
+         u4A9nL/y+mZDGu4O37qCxjPcArFC8MKZk9caB4HaBTOfoaPVjVcRk/AO9Hb+PSLrY07R
+         SfOdI2SJHWZpEeFUmxsMQpQGTMEb3b1T7FMIXVSmR4xPG4SQ3OvWI+Ev2ofGwc333Z4M
+         DXLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id im1-20020a056214246100b0067f60ad441bsi1199098qvb.88.2024.01.26.04.16.42
+        by mx.google.com with ESMTPS id pl15-20020ad4468f000000b0068c35f28746si293541qvb.352.2024.01.26.04.22.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 04:16:42 -0800 (PST)
+        Fri, 26 Jan 2024 04:22:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTL8Q-0004Uw-Hg; Fri, 26 Jan 2024 07:16:38 -0500
+	id 1rTLEK-0001UL-8d; Fri, 26 Jan 2024 07:22:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTL8P-0004UW-52; Fri, 26 Jan 2024 07:16:37 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1rTLEH-0001To-9e; Fri, 26 Jan 2024 07:22:42 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
- id 1rTL8L-00053L-Hu; Fri, 26 Jan 2024 07:16:36 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLxWG3KJ0z4wd4;
- Fri, 26 Jan 2024 23:16:26 +1100 (AEDT)
+ id 1rTLEF-0006sp-Eo; Fri, 26 Jan 2024 07:22:41 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TLxfL4rMvz4wny;
+ Fri, 26 Jan 2024 23:22:34 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLxW51TKHz4wd0;
- Fri, 26 Jan 2024 23:16:16 +1100 (AEDT)
-Message-ID: <9d1368b2-b163-4fd7-90e6-c87a3e643bbc@kaod.org>
-Date: Fri, 26 Jan 2024 13:16:07 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TLxfH3Y4kz4wcJ;
+ Fri, 26 Jan 2024 23:22:31 +1100 (AEDT)
+Message-ID: <a865d3aa-ed36-4d75-9358-ca5292a04b32@kaod.org>
+Date: Fri, 26 Jan 2024 13:22:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 10/11] hw/fsi: Added FSI documentation
+Subject: Re: [PATCH] tests/avocado/machine_aspeed.py: Update buildroot images
+ to 2023.11
 Content-Language: en-US
-To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org
-References: <20240126104956.74126-1-ninad@linux.ibm.com>
- <20240126104956.74126-11-ninad@linux.ibm.com>
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>
+References: <20240109173538.435781-1-clg@kaod.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240126104956.74126-11-ninad@linux.ibm.com>
+In-Reply-To: <20240109173538.435781-1-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,178 +95,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vX8bn/iCk94D
+X-TUID: fCzmEIJkzqcR
 
-On 1/26/24 11:49, Ninad Palsule wrote:
-> Documentation for IBM FSI model.
+On 1/9/24 18:35, Cédric Le Goater wrote:
+> Compared to mainline buildroot, these images have some customization :
 > 
-> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-> ---
-> v11:
->    - Removed Cedric's signoff.
-> ---
->   docs/specs/fsi.rst   | 126 +++++++++++++++++++++++++++++++++++++++++++
->   docs/specs/index.rst |   1 +
->   2 files changed, 127 insertions(+)
->   create mode 100644 docs/specs/fsi.rst
+> - Linux version is bumped to 6.6.3 and built with a custom config
+> - U-Boot is switched to the one provided by OpenBMC for more support
+> - defconfigs extra tools for dev
 > 
-> diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
-> new file mode 100644
-> index 0000000000..b33b4d565c
-> --- /dev/null
-> +++ b/docs/specs/fsi.rst
-> @@ -0,0 +1,126 @@
-> +======================================
-> +IBM's Flexible Service Interface (FSI)
-> +======================================
-> +
-> +The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
-> +master/slave and the end engine.
-> +
-> +FSI is a point-to-point two wire interface which is capable of supporting
-> +distances of up to 4 meters. FSI interfaces have been used successfully for
-> +many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
-> +CPUs and IBM ASICs.
-> +
-> +FSI allows a service processor access to the internal buses of a host POWER
-> +processor to perform configuration or debugging. FSI has long existed in POWER
-> +processes and so comes with some baggage, including how it has been integrated
-> +into the ASPEED SoC.
-> +
-> +Working backwards from the POWER processor, the fundamental pieces of interest
-> +for the implementation are: (see the `FSI specification`_ for more details)
-> +
-> +1. The Common FRU Access Macro (CFAM), an address space containing various
-> +   "engines" that drive accesses on buses internal and external to the POWER
-> +   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
-> +   an internal Local Bus (LBUS) which is described by the CFAM configuration
-> +   block.
-> +
-> +2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
-> +   symbols addressed to it. Slaves can be cascaded off of one another. The
-> +   slave's configuration registers appear in address space of the CFAM to
-> +   which it is attached.
-> +
-> +3. The FSI master: A controller in the platform service processor (e.g. BMC)
-> +   driving CFAM engine accesses into the POWER chip. At the hardware level
-> +   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
-> +   of engines in a CFAM.
-> +
-> +4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
-> +   processors. This now makes an appearance in the ASPEED SoC due to tight
-> +   integration of the FSI master IP with the OPB, mainly the existence of an
-> +   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
-> +   address space.
-> +
-> +5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
-> +   AST2600. Hardware limitations prevent the OPB from being directly mapped
-> +   into APB, so all accesses are indirect through the bridge.
-> +
-> +The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
-> +of the object model to automatically generate the CFAM configuration block.
-> +The configuration block presents engines in the order they are attached to the
-> +CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
-> +'config' member of LBusDeviceClass to match the engine's type.
-> +
-> +CFAM designs offer a lot of flexibility, for instance it is possible for a
-> +CFAM to be simultaneously driven from multiple FSI links. The modeling is not
-> +so complete; it's assumed that each CFAM is attached to a single FSI slave (as
-> +a consequence the CFAM subclasses the FSI slave).
-> +
-> +As for FSI, its symbols and wire-protocol are not modelled at all. This is not
-> +necessary to get FSI off the ground thanks to the mapping of the CFAM address
-> +space onto the OPB address space - the models follow this directly and map the
-> +CFAM memory region into the OPB's memory region.
-> +
-> +QEMU files related to FSI interface are in following directories:
-> + - ``hw/fsi``
-> + - ``include/hw/fsi``
+> See branch [1] for more details.
+> 
+> There are a few changes since last update, commit ed1f5ff84209. Images
+> all have a password now and I2C devices have been updated in the Linux
+> ast2600-evb device tree [2]. Do the necessary adjustements.
+> 
+> [1] https://github.com/legoater/buildroot/commits/aspeed-2023.11
+> [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9deb10cf160e
+> 
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
-This is not useful.
 
-> +The following commands start the ``rainier-bmc`` machine with built-in FSI
-> +model. There are no model specific arguments. Please check this document to
-> +learn more about Aspeed ``rainier-bmc`` machine: docs/system/arm/aspeed.rst
-
-This should be :  (:doc:`../../system/arm/aspeed`)
-
-I will fix it.
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Applied to aspeed-next.
 
 Thanks,
 
 C.
-
-
-
-> +
-> +.. code-block:: console
-> +
-> +  qemu-system-arm -M rainier-bmc -nographic \
-> +  -kernel fitImage-linux.bin \
-> +  -dtb aspeed-bmc-ibm-rainier.dtb \
-> +  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
-> +  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
-> +  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
-> +
-> +The implementation appears as following in the qemu device tree:
-> +
-> +.. code-block:: console
-> +
-> +  (qemu) info qtree
-> +  bus: main-system-bus
-> +    type System
-> +    ...
-> +    dev: aspeed.apb2opb, id ""
-> +      gpio-out "sysbus-irq" 1
-> +      mmio 000000001e79b000/0000000000001000
-> +      bus: opb.1
-> +        type opb
-> +        dev: fsi.master, id ""
-> +          bus: fsi.bus.1
-> +            type fsi.bus
-> +            dev: cfam.config, id ""
-> +            dev: cfam, id ""
-> +              bus: lbus.1
-> +                type lbus
-> +                dev: scratchpad, id ""
-> +                  address = 0 (0x0)
-> +      bus: opb.0
-> +        type opb
-> +        dev: fsi.master, id ""
-> +          bus: fsi.bus.0
-> +            type fsi.bus
-> +            dev: cfam.config, id ""
-> +            dev: cfam, id ""
-> +              bus: lbus.0
-> +                type lbus
-> +                dev: scratchpad, id ""
-> +                  address = 0 (0x0)
-> +
-> +pdbg is a simple application to allow debugging of the host POWER processors
-> +from the BMC. (see the `pdbg source repository`_ for more details)
-> +
-> +.. code-block:: console
-> +
-> +  root@p10bmc:~# pdbg -a getcfam 0x0
-> +  p0: 0x0 = 0xc0022d15
-> +
-> +.. _FSI specification:
-> +   https://openpowerfoundation.org/specifications/fsi/
-> +
-> +.. _pdbg source repository:
-> +   https://github.com/open-power/pdbg
-> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-> index b3f482b0aa..1484e3e760 100644
-> --- a/docs/specs/index.rst
-> +++ b/docs/specs/index.rst
-> @@ -24,6 +24,7 @@ guest hardware that is specific to QEMU.
->      acpi_erst
->      sev-guest-firmware
->      fw_cfg
-> +   fsi
->      vmw_pvscsi-spec
->      edu
->      ivshmem-spec
-

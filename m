@@ -1,116 +1,86 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp725913ejk;
-        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE5eMl89CKuZeWN/sy9EhtPS/ilHoIdwBkoJiHrOWxMsQ+EJgvBcEF+2PGatJHXfxAFH+8I
-X-Received: by 2002:a05:622a:38e:b0:42a:3658:5841 with SMTP id j14-20020a05622a038e00b0042a36585841mr10363182qtx.117.1706610611477;
-        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706610611; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp994908ejc;
+        Fri, 26 Jan 2024 08:49:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEsATw1dnBWb05WB8fD1kh4+rX+HMwI1RDRpyjaWSh0PqBB7iCZCc9qhEDyQuQAPiAJydjj
+X-Received: by 2002:a05:6830:7311:b0:6dc:854a:3d91 with SMTP id ex17-20020a056830731100b006dc854a3d91mr1859251otb.30.1706287764967;
+        Fri, 26 Jan 2024 08:49:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706287764; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hj0FHBNMdJsV7D6CZdW1m6g3s7368TmHuLqvIYPTRwJO098ro/BGBtPK85bkIiTF3J
-         iEG/7KK4hDko9PQB5/mi3deuTL6JXZ3Dq2tcW2GzPuXmXyTbIgMzTVYp/2mVXGebe/kF
-         sV+vinQagsQ1QfURTQIB9DgHxFrzvGTOop6Ms2hvoVjwvpW00s5RU8CXq2m8cbcmeQFT
-         SsFMoDM7I0TOHR5g6YajWD12hwSkeKRoNyC0tilXUh042VJ2h3METbajuLJdX6VzkOS5
-         Gev2wIRU6sHGbsTpy5/9pEmFc/pcUbu3I3iFqI7WK0UtNoy1YGacyeUeV32fJlup89qo
-         W/sA==
+        b=yuiqK1gIPWtnSo8B1DkHzAjrjHtOgRG5rhF7LAS85MFuPi4HXqbXYaErNgl8RSjDVb
+         6Uwax/wr+f8ijvqxssYvJqSrKPeSVOWdmVqahwi7j4OVi/BnpUBtU/CuZq0+b8sm7Rj8
+         ++M8vUnlIynE6q7FZc1JL6/3YOmDAMVXO4j5jWSeIcpjTFGfhuPxgHCH1yPcZRQP+ZV6
+         GilgXSMHFc56v9EiLoFcKbGqmJqHJzIjmwtsTiyB2CAIgdoN5DsdYiZCto3cLISiR/+B
+         kChFqWG5qDplIXR5frypm5BwiSsN8xkvKYgwKKDnDwLZL+PbqJ94pE4oZLNq6bzFr0mj
+         SSeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
-        fh=tG91SClu+OfDzmMHKkazd9TowFVdfcSb1bk7axst0w8=;
-        b=KFOzW3IBCrM6ABCWd6f2uNhg5iOdU/GtS3Jx7c/EShUU1RvplA9411Zl+l4GyfGiOd
-         rVFHq35FFAx8HLnWfuMmzVZel+K1zs52Sh7YP1yMW+EpwqB1paJy0JDk+dV0EXT7Oryy
-         wXtuxgcREDeXgP98VkATs+1ZVCWJNcBlkB8HaKpvE0wtoXivgrCWg/NHSFR7HSzavie4
-         6LCbpFUgJgqQ4uGB9pudevviTYJ5QjdChqrFxZg+K6NzMKo0BZWTISQ5Au5nRqMrU/3K
-         +c7Zp//mG+juplDEnw0BxDC/Ns2SsNmOpqw9z6vG/LsGNoh15NQ/WJXVUwhR7U3tiYr9
-         RLxQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=AvJz8RZ1AxCB0wgZE0erN3aj30Zjp6k5rD16YiMIfmk=;
+        fh=S6ku4RShRUFA+7Q61K+CSxboSpS3zBXnGkZDMgwjT6Y=;
+        b=0bEH+BR82UnzmIPrb5YFOsISTWeodqbKt/aJkqbTnJtACeZHJY1WHVwA725jtAUESI
+         CJqhLWqq+oxdTjyPTbwdxzwD34Nwu6ul9RgwKRZXF1/EE4s3kQ/pqeDb4zBlnDKnIY84
+         rTQHOO0iwWlAFwk1gV44xnz1IIzpIWS8lw12engVPhK8ZCasDm7Qz3Tl6bO+pEzDLePn
+         3yh7lrIWAoSY+FZ0USGi2SOkHpy0ezblH6ZsNNjp1SsSvAyc4cm4ISxEfG3oE8G9W3rB
+         i5icrUxALHzN5kgjj8dKSC0PBvuGVHT5pZzFjTl3YzLnmuSuiW0oX8Vc3BrXxKMoOYA+
+         CZag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GbEsThA6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7-20020ac85b87000000b0042a62bc0b72si6881284qta.617.2024.01.30.02.30.11
+        by mx.google.com with ESMTPS id m2-20020a05622a118200b0042a85ee0914si676640qtk.19.2024.01.26.08.49.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
+        Fri, 26 Jan 2024 08:49:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GbEsThA6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUlNT-0000Q5-Sf; Tue, 30 Jan 2024 05:30:03 -0500
+	id 1rTPO6-0004t8-Tx; Fri, 26 Jan 2024 11:49:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rUlNS-0000PU-Hc
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 05:30:02 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rUlNH-0006lY-Ra
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 05:30:02 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-55f2b0c5ae9so1431244a12.2
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 02:29:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706610589; x=1707215389; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
- b=GbEsThA6njFGF5WZQDeqw4ShFhuKyHHNs0IvfJdxgoaejfkUrRVH8U4yfNcQrngKSY
- e+xyUZ3QIyKhwrUVn12dnQ/kw90V5BzF2lp14018S3hlCFcwCf/DdgxorOXPZk+PDw9t
- qhkDcdow5hDeCXsNj6zWaCRhKPZyXA30rtXy/uL4B5K4o82HHqP2po9mif1PPb380awz
- 9oyW+/zJnS9DYgzZTn16c69hGAI9fV8DrktIMJfFaLSwPCMomSndVBjYbkVHUtgQlK/N
- S78QcXLgYUzHEuilqtdqzxyw1v99+5RybxFGf/iPmQMuRyW7Vo3gYO305B+F7nKJjcWt
- PUWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706610589; x=1707215389;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
- b=mqSchVO9U2Bd9JeVdCqJ7g4brhhfHj/Hip4Ntacb0D0o1ypxX1+M1u3pME8HPkuU+r
- SupzmPyLakDQRolenpDRZmyeSj4QJPbHGKhswpFoINJ0bVYqvAyT28Q1dOzPmMK9k275
- zaB+BRLGiFKRhPw1VXhVgsMabKfTV5w0D6XPEW79YCRKIu9L0iQb7YHxD0z1Nq3A+jA5
- p4F39eNJ3Udbbwy5XgtoDPtB8Tq2ojI97jEZXOqLLpSCHOh87aTnusTDsiDyqxJwhTp9
- BToY2uDA+3L2dFQAf5gXwreG+PvI3baenoJzivqgHbf96swRwbgUzM0RCRH4JoCgdPdG
- XVbg==
-X-Gm-Message-State: AOJu0Yy5TQem1XRDWrziwPreV8HqUoYt+wvmSjOdhKcZ3c/NWIMWAb/u
- Nq0azBZM8yScBR48hOmLZ8g7e5WEb13AijmgJZDOvbqRv27wfE8nR/1OfVVYpNFnOK/OHnX8dD0
- 0MmvonwvOi+TXGhhHtseQOLBrnnLEMR4OK3r+dw==
-X-Received: by 2002:a05:6402:504:b0:55e:f164:7765 with SMTP id
- m4-20020a056402050400b0055ef1647765mr4000426edv.32.1706610589713; Tue, 30 Jan
- 2024 02:29:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTPO5-0004su-Vt; Fri, 26 Jan 2024 11:49:05 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5gEp=JE=kaod.org=clg@ozlabs.org>)
+ id 1rTPO3-0007bc-Rg; Fri, 26 Jan 2024 11:49:05 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TM3Yk1qTzz4xF2;
+ Sat, 27 Jan 2024 03:48:58 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TM3Yh5kY6z4x23;
+ Sat, 27 Jan 2024 03:48:56 +1100 (AEDT)
+Message-ID: <1ab62ecc-7e3e-4c84-96e9-040193d9b35b@kaod.org>
+Date: Fri, 26 Jan 2024 17:48:52 +0100
 MIME-Version: 1.0
-References: <CA+ji3pGBJBp+trjM-RhgkYjOs8rrtLJgHsaNvf=EyGtWB4gAow@mail.gmail.com>
- <CAFEAcA-L2vepWXfgaHW=ogLAvAZjJd5yv1hm6dBU6dsEOS_gCA@mail.gmail.com>
- <CA+ji3pGVBmDAeUoPM9Zk8pOtpxcR+92XeUBN8G=Mmmyi4Eh8-g@mail.gmail.com>
- <CAFEAcA9AeqbWt1Q5QM_HEwi+A2KYXFs1ZEqfFJcqdktYwWujTQ@mail.gmail.com>
- <CA+ji3pH4ZapKAZ+vCSw6P=svWUtfsWt8aqoTFZX_CV5DzPoOyg@mail.gmail.com>
-In-Reply-To: <CA+ji3pH4ZapKAZ+vCSw6P=svWUtfsWt8aqoTFZX_CV5DzPoOyg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 Jan 2024 10:29:38 +0000
-Message-ID: <CAFEAcA-Hsm1b2-2r=c0n0g+pJUWxLNjhGwdeomBt6=1XqZux=Q@mail.gmail.com>
-Subject: Re: Assistance Required for QEMU Hardfault Error with Cortex-M33 on
- MPS2AN505
-To: sanjana gogte <sanj27272@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 00/17] aspeed queue
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Ninad Palsule <ninad@linux.ibm.com>
+References: <20240126133217.996306-1-clg@kaod.org>
+ <CAFEAcA8Q66Qw7spMOcBju0v-=C=x10hz1rwPWxjCzYWhdkX8Ww@mail.gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAFEAcA8Q66Qw7spMOcBju0v-=C=x10hz1rwPWxjCzYWhdkX8Ww@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=5gEp=JE=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,62 +95,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8kYRUzrf/qXg
+X-TUID: u2tyZUYMcjiv
 
-On Tue, 30 Jan 2024 at 07:48, sanjana gogte <sanj27272@gmail.com> wrote:
->
-> I wanted to express my gratitude for your insightful solution concerning =
-the INVSTATE fault I was encountering. After recompiling my code with the -=
-mthumb compiler flag, the exception is no longer being raised, which marks =
-a significant step forward in my project.
->
-> However, I've encountered another challenge while working with a specific=
- version of QEMU (QEMU emulator version 7.1.0, v2.6.0-55433-g23b643ba16). W=
-hile the code runs flawlessly on QEMU version 8.1.50 (v8.1.0-2375-g516fffc9=
-93), the earlier version throws a hard fault, which is critical to my use c=
-ase.
->
-> The use case involves attaching a remote port to the MPS2-AN505, and for =
-this, I need to utilize Xilinx=E2=80=99s fork of QEMU, which is based on ve=
-rsion 7.1.0 (v2.6.0-55433-g23b643ba16). The error I encounter during emulat=
-ion is as follows:
->
-> Loaded reset SP 0x0 PC 0x0 from vector table
-> Loaded reset SP 0x10080000 PC 0x10000009 from vector table
-> Taking exception 3 [Prefetch Abort] on CPU 0
-> ...at fault address 0x10800000
-> ...with CFSR.IBUSERR
-> ...taking pending secure exception 3
-> ...loading from element 3 000000c
-> ...loaded new PC 0x10000011 of secure vector table at 0x1
-> Taking exception 3 [Prefetch Abort] on CPU 0
-> ...at fault address 0x10800000
-> ...with CFSR.IBUSERR
-> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
->
-> Observations: When I trace it using the GDB:
+On 1/26/24 16:56, Peter Maydell wrote:
+> On Fri, 26 Jan 2024 at 13:33, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> The following changes since commit e029fe22caad9b75c7ab69bd4e84853c11fb71e0:
+>>
+>>    Merge tag 'pull-qapi-2024-01-26' of https://repo.or.cz/qemu/armbru into staging (2024-01-26 10:21:27 +0000)
+>>
+>> are available in the Git repository at:
+>>
+>>    https://github.com/legoater/qemu/ tags/pull-aspeed-20240126
+>>
+>> for you to fetch changes up to b40769f4b49d15485ffaaa7acade3e3593ee6daa:
+>>
+>>    hw/fsi: Update MAINTAINER list (2024-01-26 14:22:08 +0100)
+>>
+>> ----------------------------------------------------------------
+>> aspeed queue:
+>>
+>> * Update of buildroot images to 2023.11 (6.6.3 kernel)
+>> * Check of the valid CPU type supported by aspeed machines
+>> * Simplified models for the IBM's FSI bus and the Aspeed
+>>    controller bridge
+>>
+>> ----------------------------------------------------------------
+> 
+> Looks like you have an endianness bug, either in the device
+> or in the test. From the s390 runner:
+> 
+> https://gitlab.com/qemu-project/qemu/-/jobs/6029422595
+> 
+> 232/847 qemu:qtest+qtest-arm / qtest-arm/aspeed-fsi-test ERROR 0.38s
+> killed by signal 6 SIGABRT
+>>>> PYTHON=/home/gitlab-runner/builds/-LCfcJ2T/0/qemu-project/qemu/build/pyvenv/bin/python3 QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon QTEST_QEMU_BINARY=./qemu-system-arm G_TEST_DBUS_DAEMON=/home/gitlab-runner/builds/-LCfcJ2T/0/qemu-project/qemu/tests/dbus-vmstate-daemon.sh MALLOC_PERTURB_=82 QTEST_QEMU_IMG=./qemu-img /home/gitlab-runner/builds/-LCfcJ2T/0/qemu-project/qemu/build/tests/qtest/aspeed-fsi-test --tap -k
+> ――――――――――――――――――――――――――――――――――――― ✀ ―――――――――――――――――――――――――――――――――――――
+> stderr:
+> **
+> ERROR:../tests/qtest/aspeed-fsi-test.c:152:test_fsi0_getcfam_addr0:
+> assertion failed (curval == 0x152d02c0): (3221368085 == 355271360)
+> (test program exited with status code -6)
+> 
+> where 3221368085 is 0xC0022D15, and 355271360 is 0x152D02C0...
 
 
-> It goes to prefetch abort as soon as I step into reset handler and the co=
-nnection gets closed.
-> What I do not understand is:
->
-> 1) Why is my PC going to address 0x10800000?
->
->
-> 2) When I use Qemu version 8.1.50 (v8.1.0-2375-g516fffc993), the PC goes =
-to the right address and does not throw a prefetch abort.
+drat. Indeed. I didn't check BE ... Sorry about that.
 
-This strongly suggests you're running into a QEMU issue
-which we've fixed in some QEMU version after 7.1.0.
-For bugs in Xilinx's fork of QEMU, you should talk to Xilinx.
+Ninad,
 
-In terms of why your PC is going to 0x10800000, it is
-almost certainly executing a lot of NOPs from some point
-until it runs off the end of the flash memory. If you
-use the gdb 'si' command to single step single instructions
-you'll probably find this is less confusing than using
-the 's' command, which steps an entire C source line.
+Some changes are required in fsi_aspeed_apb2opb_write().
 
-thanks
--- PMM
+Could you please rework the address space accesses to use
+address_space_*_le() routines instead of address_space_rw() ?
+This will be less concise.
+
+To check, you can use a PPC64 debian (big-endian) on a PPC64
+KVM guest or PowerVM LPAR, or a s390x LPAR.
+
+
+Thanks,
+
+C.
+

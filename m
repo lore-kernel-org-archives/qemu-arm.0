@@ -1,72 +1,72 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024336ejc;
-        Fri, 26 Jan 2024 09:35:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGYTsuSRCV8R01zfhnCDPikmepoQHi+gio9y2kvAuGZAPX50T0xy/UR72BSXEiwQ0VDAkfG
-X-Received: by 2002:a05:620a:28cc:b0:783:b12f:625c with SMTP id l12-20020a05620a28cc00b00783b12f625cmr92055qkp.59.1706290505968;
-        Fri, 26 Jan 2024 09:35:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706290505; cv=none;
+Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp1024395ejc;
+        Fri, 26 Jan 2024 09:35:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGy5FJNrJz5T+h4tbtEnN36BJtQAh2/ANOob9s8vdG+ZIAPckJ8aj+1nP77EpMUnn55792S
+X-Received: by 2002:a05:620a:1791:b0:783:e114:2848 with SMTP id ay17-20020a05620a179100b00783e1142848mr22899qkb.35.1706290512640;
+        Fri, 26 Jan 2024 09:35:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706290512; cv=none;
         d=google.com; s=arc-20160816;
-        b=NRgwQ6Hk5D6KNmDAj6fafbCUEy55UnCIE+WwugEYTSObxPHbb8r4aCUg7dOSOaYgod
-         PugfcnYaYOyAmEYBNPVErev3c36o8tAkSnmUEjZEYEiYWkyiIFKjXzt+B5N9yTFikQrB
-         HysvqmT82QDraYEDNJkczrsxKIQ9gCqcH6xFRKA3Bc0ZwdNKrAoRRS+mCRUQU3IagDdg
-         HLQ9hbInApxzZIQHC5h67yW7BGbi+Y8Ah1nss/TtFD/KAOrQ4gd/46lAhozOdUxp9YXa
-         SYuqvCaKJHtpBrn34Cb1nfWSPNz9pPegyABl47QeuRD4QaoR8QsJVSe1v9aAuY8cdW7O
-         Ql7A==
+        b=ED7CLREs2GYVstFu1yREXfahnYXq4zZohoRcRyny729MBQ9FVKNsy/oQLtGlm+KSn+
+         FXzbc0SJeFPeFdIYMjw0X5FEzXLI/eB6HdRm9AAoWxAVD8yBUfI0ZRpOdPrlHBvhYSah
+         f2PiDKUqdINgAhRHldNBoFJ5ax167rfPWEVV0x73HNoMXog/96C7egH1J6eBpkOchUxX
+         eSXKPD10rW0ttjaFbFL1SD2owUaF5AEcyTNPXg+08g1sLFs0b3ohsWGtXaAiJW0Ww+2u
+         xDwTXkXiWUNoAlX5JWYxbhsbzFvS3ijFm82sBqzLGIAuBStg2LSdUQJZJNTPkabWbIPx
+         jEmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4MfAr1yLI5YhElasbf+xYz8slg97fPxYAJHsYCE6HR0=;
+        bh=84SjqVRU3phUY6XFnzqwJCBs+MK5duPh9P72Y2DAnRw=;
         fh=LeOBNGHwoQQCylLh9v89P/OdTUx8jmDchZ7fstdYfbc=;
-        b=iTXKh8jqmd3vdHd/y0JhFkfLnJn2duuYmCAbbTQlC/RYXr1I94dqqtZt3RWaOpmNng
-         dtG3FrkvyJLNGEUsb+KbCQtq4NF0xRojBJ5BwU77AGo8AqOQZjZYr5kIsYfxr9EvuOkr
-         hurvg0bqur/9vksU32RZfxE9C0vn/70l94fowvKeKyUvChAOyqjZY5iWiSb5JetRayoL
-         QtIQ/rUia37Q3sXLlIYIR/kXgDjkC4U4+adArL6Y6ynZq2p+GFMzQJdVl7YqGOpvHOzw
-         i4EjVDQSr/wVQZZTvkIlClhZ4Xe+9ghUmld1GRoHF7lBGNRTiLppjBxA8TWTfeR6bgX8
-         tQMA==
+        b=pTNmzKjuMzkYpKuLy1LC55W1m5RmvHdpcOoP/Oa9uzteceHwSbAF86q1M/I1dgsN8Q
+         JBDJZ2K6NZHZGeLrct3VbmWXEX2Lin+i2KojLMH3JyOdzw+4XiLMaNTRi2wmn3xRcSTu
+         AYqclQoNCw86f2/vCcp11jrK7lOQgU1MMYetjfho9rbV+dLu4gj6GYFYfE9hsf+g0hIG
+         mUec8b0BTNuiV7PWkuMDKLVtIE/mAHzKfxwl/EwMAZvr/CAVSdzRLdXjoSkjAdK8tCnn
+         bJqGbztlTdKSZDBGnxzWvKOUUptlKHUZ2/ZhiGoSB7/hzB4o+zt+jKr4+2B93EC1Nygf
+         KM3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b="QCcaZ/6C";
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=YLRHM0QJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt53-20020a05620a47b500b0078377888dbfsi1665228qkb.406.2024.01.26.09.35.05
+        by mx.google.com with ESMTPS id x5-20020a05620a0b4500b00783c052c92csi1621872qkg.528.2024.01.26.09.35.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 09:35:05 -0800 (PST)
+        Fri, 26 Jan 2024 09:35:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b="QCcaZ/6C";
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=YLRHM0QJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTQ6S-00032K-B2; Fri, 26 Jan 2024 12:34:57 -0500
+	id 1rTQ4u-0007gw-FB; Fri, 26 Jan 2024 12:33:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5S-0000BW-9q; Fri, 26 Jan 2024 12:33:55 -0500
+ id 1rTQ4f-0007CD-VX; Fri, 26 Jan 2024 12:33:05 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+5cc348fc898a3f56ac6c+7460+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1rTQ5O-0001jF-GF; Fri, 26 Jan 2024 12:33:54 -0500
+ id 1rTQ4c-0001jO-MM; Fri, 26 Jan 2024 12:33:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=4MfAr1yLI5YhElasbf+xYz8slg97fPxYAJHsYCE6HR0=; b=QCcaZ/6C5Iz4cXurFdCGdwPkbs
- Tx+OFOX65z8WZLMrj3r1M1OMa1uCBfhIBkcTalLwyCSVgdp6MRC0yngtPLUk5QQopCNkJxAPjr8jV
- gHBfM+h8Ivnb1jSyeRCUQN44kMg1saXw8rCMBiZrSz0X4jfd6xIpolJgUrAOJCJSl5DCO184V81xQ
- YRJVYKJmmArP7BgFHFDffL11xggxzqvuYlMBM/FYtZ++qK5KeLTkvIsQV7g7OmUG8MlMaO9v2/PFx
- 5M7WoyLiczrNts5+qs1F+3zrEq194HhwpwIokm0ghvWCjhXCW0mVX+pXANYl+JThRACU+DCvFtyGJ
- gN/pe2eA==;
+ bh=84SjqVRU3phUY6XFnzqwJCBs+MK5duPh9P72Y2DAnRw=; b=YLRHM0QJuZvioEMu4cTtQ8XMuH
+ DVoVTEiaE3jTfvMomCo1nLl8WENf0AkMzj8FCw9W+7oiwcKi2HBu4BfDOoQVkyRU9MsxkrQ1e7Xoo
+ A3MhXXnSEOIzy17tHel7ZFnScnbb+71N0lUKLS/zL6uRTqCA3xT9Z7TnteXeHUI3M3jnXdfElquLe
+ DFrF7Ha30BtG/n/jc3x/HMOoIMGwInJvf3fq4+spwa79+6kWiWPn3Ljos1oDjoWwt2f8xjw9JGNut
+ PoVOqnueY4A0hkcHW0bulErS47xyEAhtQFp/1VXRa7LDgHUgjJYtMtyHVIHys3oHO7S6dS2crmmcb
+ QBtUxEmw==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
- id 1rTQ4B-000000069V8-2yGf; Fri, 26 Jan 2024 17:32:36 +0000
+ id 1rTQ4B-000000069Uy-2xei; Fri, 26 Jan 2024 17:32:36 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.97.1 #2 (Red
- Hat Linux)) id 1rTQ4B-00000001eoX-07cN;
- Fri, 26 Jan 2024 17:32:35 +0000
+ Hat Linux)) id 1rTQ4A-00000001eoF-2md2;
+ Fri, 26 Jan 2024 17:32:34 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,10 +116,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-Subject: [PATCH v4 46/47] net: remove qemu_show_nic_models(),
- qemu_find_nic_model()
-Date: Fri, 26 Jan 2024 17:25:23 +0000
-Message-ID: <20240126173228.394202-47-dwmw2@infradead.org>
+Subject: [PATCH v4 42/47] hw/sparc/sun4m: use qemu_find_nic_info()
+Date: Fri, 26 Jan 2024 17:25:19 +0000
+Message-ID: <20240126173228.394202-43-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240126173228.394202-1-dwmw2@infradead.org>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
@@ -151,94 +150,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: enb3JWwWnQ24
+X-TUID: VR+uZNPNaB8F
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-These old functions can be removed now too. Let net_param_nic() print
-the full set of network devices directly, and also make it note that a
-list more specific to this platform/config will be available by using
-'-nic model=help' instead.
+Obtain the MAC address from the NIC configuration if there is one, or
+generate one explicitly so that it can be placed in the PROM.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- include/net/net.h |  3 ---
- net/net.c         | 39 ++++++---------------------------------
- 2 files changed, 6 insertions(+), 36 deletions(-)
+ hw/sparc/sun4m.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index 00ee1af7ab..588ee55f28 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -203,9 +203,6 @@ void qemu_set_vnet_hdr_len(NetClientState *nc, int len);
- int qemu_set_vnet_le(NetClientState *nc, bool is_le);
- int qemu_set_vnet_be(NetClientState *nc, bool is_be);
- void qemu_macaddr_default_if_unset(MACAddr *macaddr);
--int qemu_show_nic_models(const char *arg, const char *const *models);
--int qemu_find_nic_model(NICInfo *nd, const char * const *models,
--                        const char *default_model);
- /**
-  * qemu_find_nic_info: Obtain NIC configuration information
-  * @typename: Name of device object type
-diff --git a/net/net.c b/net/net.c
-index ffd4b42d5a..d705e9b0fd 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -977,38 +977,6 @@ GPtrArray *qemu_get_nic_models(const char *device_type)
-     return nic_models;
- }
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 550af01690..e782c8ec7a 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -299,13 +299,15 @@ static void *iommu_init(hwaddr addr, uint32_t version, qemu_irq irq)
  
--int qemu_show_nic_models(const char *arg, const char *const *models)
--{
--    int i;
--
--    if (!arg || !is_help_option(arg)) {
--        return 0;
--    }
--
--    printf("Available NIC models:\n");
--    for (i = 0 ; models[i]; i++) {
--        printf("%s\n", models[i]);
--    }
--    return 1;
--}
--
--int qemu_find_nic_model(NICInfo *nd, const char * const *models,
--                        const char *default_model)
--{
--    int i;
--
--    if (!nd->model)
--        nd->model = g_strdup(default_model);
--
--    for (i = 0 ; models[i]; i++) {
--        if (strcmp(nd->model, models[i]) == 0)
--            return i;
--    }
--
--    error_report("Unsupported NIC model: %s", nd->model);
--    return -1;
--}
--
- static int net_init_nic(const Netdev *netdev, const char *name,
-                         NetClientState *peer, Error **errp)
+ static void *sparc32_dma_init(hwaddr dma_base,
+                               hwaddr esp_base, qemu_irq espdma_irq,
+-                              hwaddr le_base, qemu_irq ledma_irq, NICInfo *nd)
++                              hwaddr le_base, qemu_irq ledma_irq,
++                              MACAddr *mac)
  {
-@@ -1791,9 +1759,14 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
-         }
-         if (is_help_option(type)) {
-             GPtrArray *nic_models = qemu_get_nic_models(TYPE_DEVICE);
-+            int i;
-             show_netdevs();
-             printf("\n");
--            qemu_show_nic_models(type, (const char **)nic_models->pdata);
-+            printf("Available NIC models "
-+                   "(use -nic model=help for a filtered list):\n");
-+            for (i = 0 ; nic_models->pdata[i]; i++) {
-+                printf("%s\n", (char *)nic_models->pdata[i]);
-+            }
-             g_ptr_array_free(nic_models, true);
-             exit(0);
-         }
+     DeviceState *dma;
+     ESPDMADeviceState *espdma;
+     LEDMADeviceState *ledma;
+     SysBusESPState *esp;
+     SysBusPCNetState *lance;
++    NICInfo *nd = qemu_find_nic_info("lance", true, NULL);
+ 
+     dma = qdev_new(TYPE_SPARC32_DMA);
+     espdma = SPARC32_ESPDMA_DEVICE(object_resolve_path_component(
+@@ -320,7 +322,14 @@ static void *sparc32_dma_init(hwaddr dma_base,
+ 
+     lance = SYSBUS_PCNET(object_resolve_path_component(
+                          OBJECT(ledma), "lance"));
+-    qdev_set_nic_properties(DEVICE(lance), nd);
++
++    if (nd) {
++        qdev_set_nic_properties(DEVICE(lance), nd);
++        memcpy(mac->a, nd->macaddr.a, sizeof(mac->a));
++    } else {
++        qemu_macaddr_default_if_unset(mac);
++        qdev_prop_set_macaddr(DEVICE(lance), "mac", mac->a);
++    }
+ 
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dma), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dma), 0, dma_base);
+@@ -823,7 +832,7 @@ static void sun4m_hw_init(MachineState *machine)
+     unsigned int smp_cpus = machine->smp.cpus;
+     unsigned int max_cpus = machine->smp.max_cpus;
+     HostMemoryBackend *ram_memdev = machine->memdev;
+-    NICInfo *nd = &nd_table[0];
++    MACAddr hostid;
+ 
+     if (machine->ram_size > hwdef->max_mem) {
+         error_report("Too much memory for this machine: %" PRId64 ","
+@@ -884,10 +893,9 @@ static void sun4m_hw_init(MachineState *machine)
+                         hwdef->iommu_pad_base, hwdef->iommu_pad_len);
+     }
+ 
+-    qemu_check_nic_model(nd, TYPE_LANCE);
+     sparc32_dma_init(hwdef->dma_base,
+                      hwdef->esp_base, slavio_irq[18],
+-                     hwdef->le_base, slavio_irq[16], nd);
++                     hwdef->le_base, slavio_irq[16], &hostid);
+ 
+     if (graphic_depth != 8 && graphic_depth != 24) {
+         error_report("Unsupported depth: %d", graphic_depth);
+@@ -1039,7 +1047,7 @@ static void sun4m_hw_init(MachineState *machine)
+                                     machine->initrd_filename,
+                                     machine->ram_size, &initrd_size);
+ 
+-    nvram_init(nvram, (uint8_t *)&nd->macaddr, machine->kernel_cmdline,
++    nvram_init(nvram, hostid.a, machine->kernel_cmdline,
+                machine->boot_config.order, machine->ram_size, kernel_size,
+                graphic_width, graphic_height, graphic_depth,
+                hwdef->nvram_machine_id, "Sun4m");
 -- 
 2.43.0
 

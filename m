@@ -1,115 +1,102 @@
-Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp565884eja;
-        Sat, 27 Jan 2024 20:47:30 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEQenFyylTY8DaasfvYroWqo5lOkvpSDM+L6dhCI2G8NpZY5rJ7qG2xvySLpq+TsmmYUzXJ
-X-Received: by 2002:a05:622a:189c:b0:42a:9f4b:5cce with SMTP id v28-20020a05622a189c00b0042a9f4b5ccemr29183qtc.127.1706417250123;
-        Sat, 27 Jan 2024 20:47:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706417250; cv=none;
+Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp657942eja;
+        Sun, 28 Jan 2024 02:35:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH1T48ttz3oNYF/Zz1CSeCqrYQsgG1bJK99wP8xXrJYz1CC7ys8Ky2LSXpiqSXMjEqVgBdf
+X-Received: by 2002:ae9:e645:0:b0:783:d2d7:f9b8 with SMTP id x5-20020ae9e645000000b00783d2d7f9b8mr3480292qkl.85.1706438125712;
+        Sun, 28 Jan 2024 02:35:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706438125; cv=none;
         d=google.com; s=arc-20160816;
-        b=O/QtG5KwrtnxKTgnSX4Z5Kt0MfsydFRpR8JI+zd6mnC+l6Ycgi/TnU4MeBQCQPacr2
-         6yNn/VVAPIXiRsvBJ7QdrSsrP7gP4Q8DRMOPqZZycE11/vN+PnHtOAJnNcH9sABepK3L
-         5042I7wjqQKsccSoJt+VOx5L6v9/P7ZAdnWn+JIWeZV1wgkVxMaAY5ISNx7vQ4TWKi8Y
-         ZIG8kcZjMpWpjhzi4ry12aHunB1H3wqbJ/DgP89b7MatEYIN6NyJXZCpUXgBCbeofGOY
-         nehfEhaSEuvYI8kinsxOGjl0HdBPdmFw1BtjftaYMth2Pearblg6gf/a53E1DKO/zYkf
-         i/kA==
+        b=cSnWaKu/rq9g2EWZ0t0JGRbQKHWTK2zlTCyt+EXo9kJmITW7ts5dmHa8xtH1TlpWau
+         BQW3/VHtzUzhqyX5nhdAie/M+UYbI78K4Y5/WmhgHg64FWEy8qeAmOddUi8Zoi61F7GK
+         0L2AbpvSIGiaAetMHpXh5KoNg3az6pbizfS8uRYaZ8qX+w2/nuvaX/vc9ad4KDF6mgTm
+         6BpqeR5Ni4U3X4HhADxqAPJ1RF/9Z9XPcGSCoy91NlI+MX/5ZN7r7JzrJ4DPf6g/q97Q
+         fXRWDBkCiONDAdIk1qMxxI+xgNxGI6/OsF9Hw5rJZlOI4XtxEk+NGbguMIIt8OXhjRu/
+         8+rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=oc2Siz9OBxlZLDAeyFFJMpRA7KUTuKiZ9yShIrajeBQ=;
-        fh=aMq9oiRNAyxXNrZUlR8FI5c+BCQNfdDPJO+mo//LuFI=;
-        b=n+ys7WBb1uw2U00nisEbHHS/nLtaG7HjjnKvnDs7P8gt90o+D2d245ZRxrsCbzQB5u
-         yLrXN19TSmHnv0GfvvlcHRSoxXakcrMuS1WqlzxK5KqKKMdS+CziqyooZxntrHnlPaTR
-         gQA5Chw0sYdMJ8mk2wpHNKg3h6xkONdvSNgPkO7YUcT1siSGWnpvlJNs+8FxvXmjaemu
-         rKTTFeOkvpaKInufdI/kZwIBtUwrqTJp7CxOz6KkQAdwsz2Jp0vMGJ0D0uWvMlJ2F6aS
-         8HPEMszRS8i4njHTpYnE05SmTU3P19FLpFY8ZKrxrBtjnspM//7FkPLtoNeJa93y9hw3
-         jbDg==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=vvIF26RBDLw+ldxcag6nMVV5Dto0lCR4pixmzH4okR8=;
+        fh=ydXKtdleIT0GXtoMMRrgINK5TKSJhWKr+0WlYVGlv1U=;
+        b=dMFHqCHROf7vb0k9ta9uPfScnv3QF6+Iw3skQz3AwKmMmUT6C0fayMq7IAraKJfon9
+         R6ja4t4dT1H5dHM0Lm/KVDXDAM5O4lEnF+HuRzkSsqlsCeuMvRpRdiAK+HKt/3GNusi9
+         BzGcqjzkJZAu3FxwmD8q+Pf5DRsFeUOnQy7qITuEwQlq3joZcm2Jb1dHcvqiBMr5QKN9
+         ZmGBwKdTOelBMs6c882I3rKWU/9W9Omu6+cHQ0PkyY24QoiWSqfeWFCXsaE/E9o4bWh6
+         GMkV/0NRD/02NxTXRBLXzjesmCCq/bPK0NcDDvxSxP/VXhwkkXGWgP5WB4emMLS8yCY8
+         /+Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=AU67RiOx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=mtzig3qU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020ac87e87000000b0042a5bb4613fsi4863955qtj.79.2024.01.27.20.47.29
+        by mx.google.com with ESMTPS id x7-20020ae9e647000000b00783dfe4b371si3900790qkl.338.2024.01.28.02.35.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Jan 2024 20:47:30 -0800 (PST)
+        Sun, 28 Jan 2024 02:35:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=AU67RiOx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=mtzig3qU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTx2w-0007NC-Pf; Sat, 27 Jan 2024 23:45:30 -0500
+	id 1rU2VQ-0004EI-HV; Sun, 28 Jan 2024 05:35:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rTx2u-0007BW-86; Sat, 27 Jan 2024 23:45:28 -0500
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rTx2r-0004x6-Te; Sat, 27 Jan 2024 23:45:27 -0500
-Received: by mail-oo1-xc32.google.com with SMTP id
- 006d021491bc7-5957ede4deaso1181183eaf.1; 
- Sat, 27 Jan 2024 20:45:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706417124; x=1707021924; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to; bh=oc2Siz9OBxlZLDAeyFFJMpRA7KUTuKiZ9yShIrajeBQ=;
- b=AU67RiOxj00U+yIBPUBjnaie8Ah5dQKu0P8kgFg/BFAARUOfGo9+NkR9NmWPjc2pR6
- rK4p8sqrUvpYyRbW9zDlPBFSiiJwKAb9vBoEbCLTXW7U1jmDygK6Sd+up4gW77xdRsRR
- YqNyG9mFtkztzl8M3mZRG3119x1jsBI4jeFbyivgukOya2V87uzSL6OLYKPK/O+1VBvR
- D1XcR6v+ocLZfW0e2HRFkyFPHEJ1ywMR+Jwl3K1sWKWe9lJPz9P3cUOLynIo6GD4BFWl
- dteXHpAUil7HneeGLKs2/IHoOZ5ID4dr9yiY+X3ix3shevjSMDtUXseGYs/MaBS5WKCo
- 2wNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706417124; x=1707021924;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oc2Siz9OBxlZLDAeyFFJMpRA7KUTuKiZ9yShIrajeBQ=;
- b=Sad8XKBHPDH2L7srR1Dt/ziHgKvPFWkaR6lruWJrV/fulRljYGW+gCiZ/YANTay+Xv
- lFTaTIroxPWigi/nsVNT4odizG3BAH2i9YKJPUu5rcql4Fn9NcZdGAMvmPx2a/YliydQ
- l0LgW7egxVthf0DyZ/T5iZKyLu6g8hFFhK42cfFJE4w0CAfX8wU41IkaXl6JqpWy7SU+
- +CT6RsKQY1zdS+CrZw60SmUTSL2tBZJIqS9vAh18wxq1ll21PEEoSFjzUb0Veuc1IQn+
- QrzCR2u56+IG2/1P8Jl0QF4nzjVgw7KM9+llkx5yzNV46yVsRlX5egIoZ4n5SIvYK7hW
- GbAA==
-X-Gm-Message-State: AOJu0YwWwBnqSwMfCOP9udrVfXXJoKav1V0+SNVFu5sTIgnJOR0URdWT
- RgBJgCn/S2xscIEpLBgaH4ewXFZKt1nDpxOllt9Yz6daFAf/MP85
-X-Received: by 2002:a05:6358:89d:b0:178:6bb9:427d with SMTP id
- m29-20020a056358089d00b001786bb9427dmr589197rwj.45.1706417123836; 
- Sat, 27 Jan 2024 20:45:23 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- r15-20020a17090ad40f00b00290ae3bf8d1sm3560578pju.57.2024.01.27.20.45.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Jan 2024 20:45:22 -0800 (PST)
-Date: Sat, 27 Jan 2024 20:45:21 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2] hw/arm: add PCIe to Freescale i.MX6
-Message-ID: <b85544e2-f8f3-4b03-9290-4303ae8814f1@roeck-us.net>
-References: <20240108140325.1291-1-n.ostrenkov@gmail.com>
- <9ee6eee8-2135-48f3-99a3-d572699fa4f7@roeck-us.net>
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1rU2VO-0004Dy-Rh; Sun, 28 Jan 2024 05:35:14 -0500
+Received: from zuban.uni-paderborn.de ([2001:638:502:c003::17])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1rU2VA-0003da-Cb; Sun, 28 Jan 2024 05:35:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=vvIF26RBDLw+ldxcag6nMVV5Dto0lCR4pixmzH4okR8=; b=mtzig3qUEc29xOV48tBTafSouS
+ kYOTxo1qfO1eb7PHNe7+5869tAjNjANki5CK7hOSu7tfylhpsS2P8/rOpbfXQcILECgiWXepxp8Q2
+ tq6NqTcqAisc0R98LRRP3A+RjNTk4zdt50hyxYyw8X2VhXC3NE0/Hoe+69FX9vTAmFoo=;
+Date: Sun, 28 Jan 2024 11:34:48 +0100
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, 
+ Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 21/23] target/tricore: Prefer fast cpu_env() over
+ slower CPU QOM cast macro
+Message-ID: <mc67nwaoaqancyz63zt36awnsyzslgl24w3hnctaxzuycezixt@yvxaywvzntvb>
+References: <20240126220407.95022-1-philmd@linaro.org>
+ <20240126220407.95022-22-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <9ee6eee8-2135-48f3-99a3-d572699fa4f7@roeck-us.net>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c32;
- envelope-from=groeck7@gmail.com; helo=mail-oo1-xc32.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_PORT=0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240126220407.95022-22-philmd@linaro.org>
+X-IMT-Source: Extern
+X-IMT-rspamd-score: -25
+X-IMT-Spam-Score: 0.0 ()
+X-Sophos-SenderHistory: ip=84.184.59.80, fs=1716459, da=194047155, mc=2, sc=0,
+ hc=2, sp=0, fso=1716459, re=0, sd=0, hd=0
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2024.1.27.235115, AntiVirus-Engine: 6.0.2,
+ AntiVirus-Data: 2024.1.26.602001
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::17;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=zuban.uni-paderborn.de
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,70 +111,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +CRZB1+iSva9
+X-TUID: 5KL3uukQGghJ
 
-On Sat, Jan 27, 2024 at 11:11:58AM -0800, Guenter Roeck wrote:
-> Hi,
+On Fri, Jan 26, 2024 at 11:04:03PM +0100, Philippe Mathieu-Daudé wrote:
+> Mechanical patch produced running the command documented
+> in scripts/coccinelle/cpu_env.cocci_template header.
 > 
-> On Mon, Jan 08, 2024 at 02:03:25PM +0000, Nikita Ostrenkov wrote:
-> > Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> > ---
-> 
-> This patch, with the "sabrelite" emulation and the Linux upstream kernel
-> (v6.8-rc1, using imx_v6_v7_defconfig), results in:
-> 
-> qemu-system-arm: ../system/memory.c:2750: memory_region_set_alias_offset: Assertion `mr->alias' failed.
-> 
-> with the backtrace below. Any idea what might be wrong ?
-> 
-
-Additional information: The only reason for not seing the same
-problem with mcimx7d-sabre is that Linux needs the PF3000 PMIC
-to instantiate the PCIe controller on that system. After implementing
-PF3000 support in qemu and instantiating it for mcimx7d-sabre,
-I get exactly the same assertion when trying to run that simulation
-with Linux v6.8-rc1.
-
-Guenter
-
-> Thanks,
-> Guenter
-> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> #0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140737237087808) at ./nptl/pthread_kill.c:44
-> #1  __pthread_kill_internal (signo=6, threadid=140737237087808) at ./nptl/pthread_kill.c:78
-> #2  __GI___pthread_kill (threadid=140737237087808, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
-> #3  0x00007ffff6242476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
-> #4  0x00007ffff62287f3 in __GI_abort () at ./stdlib/abort.c:79
-> #5  0x00007ffff622871b in __assert_fail_base
->     (fmt=0x7ffff63dd130 "%s%s%s:%u: %s%sAssertion `%s' failed.\n%n", assertion=0x5555565712bd "mr->alias", file=0x555556570da4 "../system/memory.c", line=2750, function=<optimized out>)
->     at ./assert/assert.c:92
-> #6  0x00007ffff6239e96 in __GI___assert_fail
->     (assertion=0x5555565712bd "mr->alias", file=0x555556570da4 "../system/memory.c", line=2750, function=0x555556571bf0 <__PRETTY_FUNCTION__.8> "memory_region_set_alias_offset")
->     at ./assert/assert.c:101
-> #7  0x00005555560192ce in memory_region_set_alias_offset (mr=0x555557a77ce0, offset=286326784) at ../system/memory.c:2750
-> #8  0x0000555555b8bc9f in designware_pcie_update_viewport (root=0x555557a74d50, viewport=0x555557a77bc0) at ../hw/pci-host/designware.c:280
-> #9  0x0000555555b8c06d in designware_pcie_root_config_write (d=0x555557a74d50, address=2312, val=0, len=4) at ../hw/pci-host/designware.c:375
-> #10 0x0000555555b78488 in pci_host_config_write_common (pci_dev=0x555557a74d50, addr=2312, limit=4096, val=0, len=4) at ../hw/pci/pci_host.c:96
-> #11 0x0000555555b8c7ee in designware_pcie_host_mmio_write (opaque=0x555557a746c0, addr=2312, val=0, size=4) at ../hw/pci-host/designware.c:635
-> #12 0x0000555556012388 in memory_region_write_accessor (mr=0x555557a780a0, addr=2312, value=0x7ffff105a628, size=4, shift=0, mask=4294967295, attrs=...) at ../system/memory.c:497
-> #13 0x00005555560126c1 in access_with_adjusted_size
->      (addr=2312, value=0x7ffff105a628, size=4, access_size_min=4, access_size_max=4, access_fn=0x55555601228e <memory_region_write_accessor>, mr=0x555557a780a0, attrs=...) at ../system/memory.c:573
-> #14 0x00005555560159cd in memory_region_dispatch_write (mr=0x555557a780a0, addr=2312, data=0, op=MO_32, attrs=...) at ../system/memory.c:1521
-> #15 0x000055555607351f in int_st_mmio_leN (cpu=0x555557a47150, full=0x7fffe841fe80, val_le=0, addr=3500312840, size=4, mmu_idx=7, ra=140734908258821, mr=0x555557a780a0, mr_offset=2312)
->     at ../accel/tcg/cputlb.c:2545
-> #16 0x0000555556073697 in do_st_mmio_leN (cpu=0x555557a47150, full=0x7fffe841fe80, val_le=0, addr=3500312840, size=4, mmu_idx=7, ra=140734908258821) at ../accel/tcg/cputlb.c:2581
-> #17 0x0000555556073f14 in do_st_4 (cpu=0x555557a47150, p=0x7ffff105a7c0, val=0, mmu_idx=7, memop=1282, ra=140734908258821) at ../accel/tcg/cputlb.c:2758
-> #18 0x00005555560742d7 in do_st4_mmu (cpu=0x555557a47150, addr=3500312840, val=0, oi=20519, ra=140734908258821) at ../accel/tcg/cputlb.c:2834
-> #19 0x0000555556074df3 in helper_stl_mmu (env=0x555557a49910, addr=3500312840, val=0, oi=20519, retaddr=140734908258821) at ../accel/tcg/ldst_common.c.inc:100
-> #20 0x00007fff6636da46 in code_gen_buffer ()
-> #21 0x00005555560587e8 in cpu_tb_exec (cpu=0x555557a47150, itb=0x7fffa636d900, tb_exit=0x7ffff105adf0) at ../accel/tcg/cpu-exec.c:458
-> #22 0x0000555556059565 in cpu_loop_exec_tb (cpu=0x555557a47150, tb=0x7fffa636d900, pc=3230581304, last_tb=0x7ffff105ae00, tb_exit=0x7ffff105adf0) at ../accel/tcg/cpu-exec.c:920
-> #23 0x00005555560598da in cpu_exec_loop (cpu=0x555557a47150, sc=0x7ffff105ae80) at ../accel/tcg/cpu-exec.c:1041
-> #24 0x00005555560599ab in cpu_exec_setjmp (cpu=0x555557a47150, sc=0x7ffff105ae80) at ../accel/tcg/cpu-exec.c:1058
-> #25 0x0000555556059a47 in cpu_exec (cpu=0x555557a47150) at ../accel/tcg/cpu-exec.c:1084
-> #26 0x00005555560838c2 in tcg_cpus_exec (cpu=0x555557a47150) at ../accel/tcg/tcg-accel-ops.c:76
-> #27 0x000055555608403d in mttcg_cpu_thread_fn (arg=0x555557a47150) at ../accel/tcg/tcg-accel-ops-mttcg.c:95
-> #28 0x00005555562b32d7 in qemu_thread_start (args=0x555557c06360) at ../util/qemu-thread-posix.c:541
-> #29 0x00007ffff6294ac3 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:442
-> #30 0x00007ffff6326850 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+>  target/tricore/cpu.c       | 20 ++++----------------
+>  target/tricore/gdbstub.c   |  6 ++----
+>  target/tricore/helper.c    |  3 +--
+>  target/tricore/translate.c |  3 +--
+>  4 files changed, 8 insertions(+), 24 deletions(-)
+
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+
+Cheers,
+Bastian

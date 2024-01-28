@@ -1,181 +1,156 @@
-Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp405336eja;
-        Sat, 27 Jan 2024 11:12:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IELOWCr5kiITcu3V2yJwWHLRdJ69bwivqg2rFm2yFGIuGzL8Z3QEzzN+U/ojqqFRLYPfLYn
-X-Received: by 2002:a05:620a:10b0:b0:783:caa5:be05 with SMTP id h16-20020a05620a10b000b00783caa5be05mr2315849qkk.114.1706382763828;
-        Sat, 27 Jan 2024 11:12:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706382763; cv=none;
+Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp506451eja;
+        Sat, 27 Jan 2024 16:49:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGUxaG+HpZYlcxNVuDX411ca4o5z0HMnKUoMHakb1WP0txGSwq4gkLKeHIZc1nYzOXi7YMK
+X-Received: by 2002:ac8:5cc9:0:b0:42a:5194:60b with SMTP id s9-20020ac85cc9000000b0042a5194060bmr4281580qta.81.1706402982069;
+        Sat, 27 Jan 2024 16:49:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706402982; cv=none;
         d=google.com; s=arc-20160816;
-        b=yktlYwbXNjkyz2k1dRZn/oBvd0sTXqJR6MrJUmXRQkyM4IHe2xKsoWNG1y9F3+0wST
-         vsvhJDltokQM+XRAnqqDsDAEickDQAVEcHJBL7BRFXMk2lx6gt29GlZtjy3Yoh9u4OXX
-         mne9OpD7WrRtJ5gHvylI1V8bhX6ihGB7N+W3XgdhRRrqdHSs+xyo4MtzlkwWut/ZxNLj
-         vxmt9zp6wK/Ak3SZYSJAefcuXX8tBPQmJYlK7Jad7WUvvnG5OHVbtxrrB7YUSaAxAy05
-         v7RZ1JO2UeAnZIlDXYf5BgsO2QIHSl9P03DiaYFS3XSDxw+Y8ICC/ewT5gRezuO4HMlt
-         NRNg==
+        b=g0pNJACt9O9/1dhtcxBm/+cApsYfGzWyNa5mn7CZxMo8AJylcv10fCPKDuuRcBr3pu
+         vtShcAdZVzgrZlBhIdl6KZ4eMceFoSUIKk+E3/qHqihaccBMjX1SJgRVrEr72/O6v4cw
+         Y1T4HnNMQaJq82BTVsGUzEDipDQr0laLJI84w/3E87WomM1YE42mrBEp6sve9sLsaPkS
+         a3pIWf2ur3+J9g5s4eMtrMYU+gnXN6DNTrvU02ZI6I7MOcl51L5rnJ75KMINdshN8b5H
+         4MRRB+PHy5eZ/VFn8sYO0tW+lG4Mtvn7ijlWepzoVQRXxYzfI8oVBlXC5aR8/j6XE1wl
+         AeHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=peiO/kJX4daBXJe+AQREwFu4kiAYkIpVzu3PvN0udrU=;
-        fh=aMq9oiRNAyxXNrZUlR8FI5c+BCQNfdDPJO+mo//LuFI=;
-        b=BbrdGl/02WeRj4C1XFHf4OcFYewQEgNyTMxpZSTWys5MfRWQd+LqaeThkWLBcx++JZ
-         ExLdPxGvhBerHLzRWbgKLRKMwXz6/nzaX9TPt+K9y/Dnezc2mqNb7JDpIOLGAmiaFuB+
-         RmI8+9fI49Qu9VAyZ3KlR7Fs/V6iVXwvA/7TIQp0VixSSBHNVzB2kLc7y5FNh8X8d4gB
-         mdqOo2gf48irD20WeJLD9ZM6toGsQ1dE6qI8QDXI3cSRRM23GBqSb5dVuDtodKUUpP2Q
-         b8+xNd/l3/KLDemLkEJAT7HjhpF5n229ZIyxohmGcYkqP/R5jJxH1dEZG16HRTXqXjXM
-         +ugA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=/mO8ivv1PL2nQKZ8i4ZNMsyNV4+kRqs+/b+Ehz5bhXM=;
+        fh=cQRfEpYtQ2OWXm32lwHQA/8Ey9aKL+vvRv75S/oyOqQ=;
+        b=GqLmtROXVu5+bbVrnhYUPJ9mG4FunwpVPfuXoPAGxoreXwGspkkCd5x5mWLt4F3PzX
+         oP8Zs1ro8fofCgbi4mW9FHg1uAE4OVTIlcIlbmUUi+zJxDDF7Dnwa+qYTZkXwri2YsIc
+         M5PeqAs0oQ4S+2EqjPPfC0VRQyNLF1b+o4x8Yv4xj6wCLnoC7pKbDVcCu536M5igD6km
+         OXAR12NZnIa79vg0x5iDxreRUTXZ0xw/PrdDYZF/XA/tUhC+7jGbLOwQYylvEzNr7lkp
+         cEeN3VE8wJsKBOnHMSjSJ2i8WHqLiPeFJKlpfvV2ssE0ioUwIzBvQL1D/dE7zd1QG5Ii
+         Q4Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=muYSIAoV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=AudYP2OX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bm42-20020a05620a19aa00b00783e1590eb6si2570447qkb.726.2024.01.27.11.12.43
+        by mx.google.com with ESMTPS id j6-20020a05622a038600b0042a29b47d8csi4528070qtx.678.2024.01.27.16.49.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Jan 2024 11:12:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 27 Jan 2024 16:49:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=muYSIAoV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=AudYP2OX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTo65-00076p-91; Sat, 27 Jan 2024 14:12:09 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rTtMP-0006VN-36; Sat, 27 Jan 2024 19:49:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rTo5z-000760-Dx; Sat, 27 Jan 2024 14:12:03 -0500
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rTtMN-0006Uy-M6
+ for qemu-devel@nongnu.org; Sat, 27 Jan 2024 19:49:19 -0500
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rTo5x-0005Gr-5D; Sat, 27 Jan 2024 14:12:03 -0500
-Received: by mail-oo1-xc30.google.com with SMTP id
- 006d021491bc7-59a2f28ea59so39744eaf.2; 
- Sat, 27 Jan 2024 11:11:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rTtML-0000Eh-QI
+ for qemu-devel@nongnu.org; Sat, 27 Jan 2024 19:49:19 -0500
+Received: by mail-oa1-x2c.google.com with SMTP id
+ 586e51a60fabf-210dec2442eso915705fac.2
+ for <qemu-devel@nongnu.org>; Sat, 27 Jan 2024 16:49:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706382718; x=1706987518; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to; bh=peiO/kJX4daBXJe+AQREwFu4kiAYkIpVzu3PvN0udrU=;
- b=muYSIAoVGZpUTZVMpOEwj6FSp+FQEaNkP3012SD63HlT0lTYEy1wbWUZH4qzATYWrq
- UqXipr5mhSD1fxGuMaW48sQTzkCcniNX8SW9pqekI3ND0Ob3Z9n6dmEcyCaHH2dNZLhE
- 2XMmI2E2Hy2EDaqcx8O/CTV22BXBR3WNHMxU8O0z0aJtoOzVTb6U8gtFX2asSGf4Kz/B
- roKlN1Fi+PR9MhRJ6e1HNZXq4oZTOWFRNyymxkW9Z+bcXAFHCftcdBRZCzc1On34uej0
- nMu2ij0mFyx0KL25jcGE2d7rUUp1Gxb8O9z/f6Hu7lyQpYbgXF+TceWimwtbUM+VP/xT
- 9fNA==
+ d=linaro.org; s=google; t=1706402956; x=1707007756; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/mO8ivv1PL2nQKZ8i4ZNMsyNV4+kRqs+/b+Ehz5bhXM=;
+ b=AudYP2OXAdSQqaNiZpx75ik0i9uYJFv7IImQ/c5K0i7ORzFt5Ws0zZ0PBWYdl0gFPf
+ 8DBKqzg4dA9RfGugTGmvQCaxMTRZJtE1sHTLgtQ0GLU0jt/4WldgPG+6Z7bwlX1misxa
+ hrsRJ45NS5DRMPCpdRyz+IIkbFF9m2U02nive//uqrY7GZ6XyRPFG5VIPEmhCP3ReM/o
+ kqhFIojfeXljcMqLGwC6eKGBWSEntvgp7FBsoM/PFauJSbgS+00q/cFjX99JmbYXf9Y8
+ zUT0utLrdY7HFnPbCgLBN2J/wq6Ke++J5LnGVPrj+fpkZuK6TbgW7SOttGhRNC0GFjp/
+ gHQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706382718; x=1706987518;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=peiO/kJX4daBXJe+AQREwFu4kiAYkIpVzu3PvN0udrU=;
- b=Pj33hGbpKLNaDrJKN53AclBJP/bwsknVWVh7d8GZWZwFe5OQvJEYBCgLxeYmzZ+4fs
- WxEQmir3dtzjiGrGKI1fRgEQ1dX+1JInnOuH2/BB9nDzXv9wupNRgtPnmmaAl1rKu3Wa
- pUhansoxgPdASy/rLC7IvW+7sE3HwIvowJp+0MIVX6fft4wj/WniTMtIOoiJMfGPunXA
- ZpRqKSrQ2a5nGFFa62SIxl2X3MaRRrdCm3j4IcFSYr64R1nfK2oAo0ofiOi8N6HrQJCX
- D47UOveDmK9wvoD79tl4nQzU08omsuHdf2yvJXkvQzYTfqqUw/3HuD6ga1zhgiU77Mzj
- 2NBA==
-X-Gm-Message-State: AOJu0YxAZp+ijpYES7I0NM1hr7GUhpJq8+EPVnjLkxk1/xlJnNj3DvM6
- 0YZMy6dMDYialhsYJ4TZh/3IPL7IsT7wFn2C+v22Tj+cWdvmJEaI
-X-Received: by 2002:a05:6358:725:b0:176:8a8e:213c with SMTP id
- e37-20020a056358072500b001768a8e213cmr1604074rwj.3.1706382718132; 
- Sat, 27 Jan 2024 11:11:58 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ d=1e100.net; s=20230601; t=1706402956; x=1707007756;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/mO8ivv1PL2nQKZ8i4ZNMsyNV4+kRqs+/b+Ehz5bhXM=;
+ b=T4YdpRfFLxi21m/r5+oNJxOKlIE4/M2gmhxp4+qGKsLkYGpN9GYdFkT0U1i+Cnpz4T
+ JHnsvhOd7Ti3DF9DJXAkJG1l3MSDLu3s7Vw2vSlfqn5z6rE0lbEqlrGofeZSxM66mw9u
+ sD1U+HTi2DhQEgNRrxuWp8WGMz9L+NL0FQlgllQhI9SBRV10BHpaya0ID83Xslu4+5u6
+ DrVVz2viTuck2tnnCA7LDzH3IEnAMtfrQD9qyfVyOGprO4FV1kk5bhJyo8o6VHnBFV1k
+ 5C61hNFq12Z4D+ndMc15JQz52UATjE47oBrvlWINbU8Qsp3oiuQJsC7ZAEq98KBAvbN+
+ PlkA==
+X-Gm-Message-State: AOJu0YxXsdQoNmbOZFUkuIdPugLUl85iPMPKQ9XIifyQ+ZKss5RS8y1W
+ 7W6c+2V+QDScLVtPTePdRSfbgWWvvyQ7jTqryXFEbxO/i8Sy/OwStN0M7HQI0LvXu9+IXZkH+GZ
+ Mk9Y=
+X-Received: by 2002:a05:6870:6123:b0:214:cb4d:43df with SMTP id
+ s35-20020a056870612300b00214cb4d43dfmr2568774oae.33.1706402956444; 
+ Sat, 27 Jan 2024 16:49:16 -0800 (PST)
+Received: from ?IPV6:2001:44b8:2176:c800:5c13:51aa:e666:7387?
+ ([2001:44b8:2176:c800:5c13:51aa:e666:7387])
  by smtp.gmail.com with ESMTPSA id
- bz11-20020a056a02060b00b005cdad153d84sm2609443pgb.90.2024.01.27.11.11.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Jan 2024 11:11:57 -0800 (PST)
-Date: Sat, 27 Jan 2024 11:11:55 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2] hw/arm: add PCIe to Freescale i.MX6
-Message-ID: <9ee6eee8-2135-48f3-99a3-d572699fa4f7@roeck-us.net>
-References: <20240108140325.1291-1-n.ostrenkov@gmail.com>
+ t12-20020a63460c000000b005d24e5ae4e3sm3393046pga.2.2024.01.27.16.49.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 27 Jan 2024 16:49:16 -0800 (PST)
+Message-ID: <340a5f2f-d5ec-4854-8776-6a25a39707f4@linaro.org>
+Date: Sun, 28 Jan 2024 10:49:09 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240108140325.1291-1-n.ostrenkov@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c30;
- envelope-from=groeck7@gmail.com; helo=mail-oo1-xc30.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_PORT=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Fix VNCR fault detection logic
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+References: <20240116165605.2523055-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240116165605.2523055-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::2c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ip+TZ1upjBXp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: b1X2Gw9n7H64
 
-Hi,
-
-On Mon, Jan 08, 2024 at 02:03:25PM +0000, Nikita Ostrenkov wrote:
-> Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+On 1/17/24 02:56, Peter Maydell wrote:
+> In arm_deliver_fault() we check for whether the fault is caused
+> by a data abort due to an access to a FEAT_NV2 sysreg in the
+> memory pointed to by the VNCR. Unfortunately part of the
+> condition checks the wrong argument to the function, meaning
+> that it would spuriously trigger, resulting in some instruction
+> aborts being taken to the wrong EL and reported incorrectly.
+> 
+> Use the right variable in the condition.
+> 
+> Fixes: 674e5345275d425 ("target/arm: Report VNCR_EL2 based faults correctly")
+> Reported-by: Jonathan Cameron<Jonathan.Cameron@huawei.com>
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
+> In less lax languages the compiler might have pointed out that
+> the type of the LHS and the RHS in the comparison didn't match :-)
+> ---
+>   target/arm/tcg/tlb_helper.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-This patch, with the "sabrelite" emulation and the Linux upstream kernel
-(v6.8-rc1, using imx_v6_v7_defconfig), results in:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-qemu-system-arm: ../system/memory.c:2750: memory_region_set_alias_offset: Assertion `mr->alias' failed.
-
-with the backtrace below. Any idea what might be wrong ?
-
-Thanks,
-Guenter
-
----
-#0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140737237087808) at ./nptl/pthread_kill.c:44
-#1  __pthread_kill_internal (signo=6, threadid=140737237087808) at ./nptl/pthread_kill.c:78
-#2  __GI___pthread_kill (threadid=140737237087808, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
-#3  0x00007ffff6242476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
-#4  0x00007ffff62287f3 in __GI_abort () at ./stdlib/abort.c:79
-#5  0x00007ffff622871b in __assert_fail_base
-    (fmt=0x7ffff63dd130 "%s%s%s:%u: %s%sAssertion `%s' failed.\n%n", assertion=0x5555565712bd "mr->alias", file=0x555556570da4 "../system/memory.c", line=2750, function=<optimized out>)
-    at ./assert/assert.c:92
-#6  0x00007ffff6239e96 in __GI___assert_fail
-    (assertion=0x5555565712bd "mr->alias", file=0x555556570da4 "../system/memory.c", line=2750, function=0x555556571bf0 <__PRETTY_FUNCTION__.8> "memory_region_set_alias_offset")
-    at ./assert/assert.c:101
-#7  0x00005555560192ce in memory_region_set_alias_offset (mr=0x555557a77ce0, offset=286326784) at ../system/memory.c:2750
-#8  0x0000555555b8bc9f in designware_pcie_update_viewport (root=0x555557a74d50, viewport=0x555557a77bc0) at ../hw/pci-host/designware.c:280
-#9  0x0000555555b8c06d in designware_pcie_root_config_write (d=0x555557a74d50, address=2312, val=0, len=4) at ../hw/pci-host/designware.c:375
-#10 0x0000555555b78488 in pci_host_config_write_common (pci_dev=0x555557a74d50, addr=2312, limit=4096, val=0, len=4) at ../hw/pci/pci_host.c:96
-#11 0x0000555555b8c7ee in designware_pcie_host_mmio_write (opaque=0x555557a746c0, addr=2312, val=0, size=4) at ../hw/pci-host/designware.c:635
-#12 0x0000555556012388 in memory_region_write_accessor (mr=0x555557a780a0, addr=2312, value=0x7ffff105a628, size=4, shift=0, mask=4294967295, attrs=...) at ../system/memory.c:497
-#13 0x00005555560126c1 in access_with_adjusted_size
-     (addr=2312, value=0x7ffff105a628, size=4, access_size_min=4, access_size_max=4, access_fn=0x55555601228e <memory_region_write_accessor>, mr=0x555557a780a0, attrs=...) at ../system/memory.c:573
-#14 0x00005555560159cd in memory_region_dispatch_write (mr=0x555557a780a0, addr=2312, data=0, op=MO_32, attrs=...) at ../system/memory.c:1521
-#15 0x000055555607351f in int_st_mmio_leN (cpu=0x555557a47150, full=0x7fffe841fe80, val_le=0, addr=3500312840, size=4, mmu_idx=7, ra=140734908258821, mr=0x555557a780a0, mr_offset=2312)
-    at ../accel/tcg/cputlb.c:2545
-#16 0x0000555556073697 in do_st_mmio_leN (cpu=0x555557a47150, full=0x7fffe841fe80, val_le=0, addr=3500312840, size=4, mmu_idx=7, ra=140734908258821) at ../accel/tcg/cputlb.c:2581
-#17 0x0000555556073f14 in do_st_4 (cpu=0x555557a47150, p=0x7ffff105a7c0, val=0, mmu_idx=7, memop=1282, ra=140734908258821) at ../accel/tcg/cputlb.c:2758
-#18 0x00005555560742d7 in do_st4_mmu (cpu=0x555557a47150, addr=3500312840, val=0, oi=20519, ra=140734908258821) at ../accel/tcg/cputlb.c:2834
-#19 0x0000555556074df3 in helper_stl_mmu (env=0x555557a49910, addr=3500312840, val=0, oi=20519, retaddr=140734908258821) at ../accel/tcg/ldst_common.c.inc:100
-#20 0x00007fff6636da46 in code_gen_buffer ()
-#21 0x00005555560587e8 in cpu_tb_exec (cpu=0x555557a47150, itb=0x7fffa636d900, tb_exit=0x7ffff105adf0) at ../accel/tcg/cpu-exec.c:458
-#22 0x0000555556059565 in cpu_loop_exec_tb (cpu=0x555557a47150, tb=0x7fffa636d900, pc=3230581304, last_tb=0x7ffff105ae00, tb_exit=0x7ffff105adf0) at ../accel/tcg/cpu-exec.c:920
-#23 0x00005555560598da in cpu_exec_loop (cpu=0x555557a47150, sc=0x7ffff105ae80) at ../accel/tcg/cpu-exec.c:1041
-#24 0x00005555560599ab in cpu_exec_setjmp (cpu=0x555557a47150, sc=0x7ffff105ae80) at ../accel/tcg/cpu-exec.c:1058
-#25 0x0000555556059a47 in cpu_exec (cpu=0x555557a47150) at ../accel/tcg/cpu-exec.c:1084
-#26 0x00005555560838c2 in tcg_cpus_exec (cpu=0x555557a47150) at ../accel/tcg/tcg-accel-ops.c:76
-#27 0x000055555608403d in mttcg_cpu_thread_fn (arg=0x555557a47150) at ../accel/tcg/tcg-accel-ops-mttcg.c:95
-#28 0x00005555562b32d7 in qemu_thread_start (args=0x555557c06360) at ../util/qemu-thread-posix.c:541
-#29 0x00007ffff6294ac3 in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:442
-#30 0x00007ffff6326850 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
+r~

@@ -1,169 +1,521 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp277179ejk;
-        Mon, 29 Jan 2024 08:11:07 -0800 (PST)
-X-Received: by 2002:a5d:690e:0:b0:33a:e762:ebcc with SMTP id t14-20020a5d690e000000b0033ae762ebccmr3337939wru.59.1706544666960;
-        Mon, 29 Jan 2024 08:11:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706544666; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp296324ejk;
+        Mon, 29 Jan 2024 08:45:25 -0800 (PST)
+X-Received: by 2002:a05:600c:198a:b0:40e:696a:f024 with SMTP id t10-20020a05600c198a00b0040e696af024mr5399480wmq.3.1706546725819;
+        Mon, 29 Jan 2024 08:45:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706546725; cv=none;
         d=google.com; s=arc-20160816;
-        b=U0ETV9tcxZaM51S9hvQQyZES3cE4c8wb8gqeVUsutTs7V1qM7WuIw3RS8hIEh8kl4l
-         nelvHx/Ay+n6HOlSlOu/V3sn9NgXizjnQQg/GJMXr5xLETQveNtLJpDxrktThhfXkNVP
-         GUfQD1AySimSISq4wATITQkzACMNbXxmxlKxj2R1PX+GlNamWLiZZh2wTGAKMSjW1B9f
-         zGg1m4mONjDTdGHzUdXOuEH7tdpc2OBAggQSzicn8jLXQQONI0dVsmynWEhTLl3rcpHg
-         G6+2ExjLVXnMQKeyj7K3DCihMhUH1sQLwmZ6WyPvzz1V3ECMAf72jt/eBPCmiZsksKcr
-         S2Vg==
+        b=RyUyRy0pLgabJylnqxF6gEDt088iFUwdccthw8ObGexTYNKutP50ULvW0JqNcez4fg
+         vYwEOCwa1PBmnZB7pNKDRWn35LamIG7ioLUK9fxljg3P4m4iR+EPsWAKko5KKZ6gFa0p
+         9yzVhz4OnMRo9kdtR2Wye8IHXqq1NZUAC0EwDMPBg+XiWRJnNdQWCd1ls9pK1NMSNXwW
+         qrI/qa38QYzpSZiexD3ovlLVueJXxtYdQ1lkCzllp8EwS6U4tpDZzBLJueo2tDh+GpJA
+         U79jK9kVcRYwgYiXB3/70GBeNGNXT0MucICED9m8R3Uekas6F0wjqzcNJZbKr+ZjTgB7
+         /Gww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=q+5SvWKJw3Pcq7y4wFA0yrN1E0wDdYRB5LHPrLR2R5E=;
-        fh=Xb4KIKmbdaaiPlPH1bCESW8KkxUeVgZklsOwpxb0HGc=;
-        b=AAVrVeL/pGoIqHQ1mhUd9ra/gYtUenF3VVEhbJltZTTxK1grLlZ5+Nc8g4Woh75g+y
-         yZeoHN2mHoZIEM9n0OuVSxKSEQeTZReFVjUtIVBAEBURZ0vwk/NE2xwPIYoTmSuM171q
-         Nu40fw9t4UucNqZ3RtzR0SnhRErHGntRop8/P8U6L0k0Kmszps3MJlQJG4Ny0/Y7fRpP
-         IZJdqLRLE3eKCYTNOqIPVcvzw2b95aBn4GfOlOB8yAwORwwhY6y76YIayA0jIayh2U94
-         0LiBY86jZrHqberFr+8qfAy78TS3PUHfBJm5XyzzwJ3UH+VD1aYQOzvphOGAAKIdIso7
-         bfpQ==
+        bh=xBAuw8z0uG8eCaMVzH857DmMp0S8FwvlSIliw26a1Io=;
+        fh=vyAFvcShT/9OBj2mc1JuQlNciKJNUVVf0xipR+TNyK8=;
+        b=kj3SMAMGYK76pfvEvxfYQ2kAyDv/jBv/9yykcnvjMik52MvtJ+kK2xToilatS2GSXT
+         Cu01mkjpWZFeQsv5yaXFOY/WDNuEDDxGeGBNI9iAwbktkKvLLWf3BsmJzuJRnDsbJ5Wd
+         vVbPDLj0MSb+GUtHM9x+ZWhdcyBBgn2ARCDm8xRCGZjkMJjmiWlD8b8qTonBqv+1onYa
+         U63l+pbxsuD/TKQsNfkPwF5IQ2aaFyonOrjwPywN/W4fMXExMXiRkcZJJ66OmmxTU0oG
+         ESHfu1qrSXZunJaWzoZhwotZAZvCFZJRkkhoTfKKkSr0vhKkM2iyhjvNgqILE3SKYCKO
+         anWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ovnzlj63;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SNefnG02;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q11-20020adfab0b000000b0033ade612a65sor126355wrc.7.2024.01.29.08.11.06
+        by mx.google.com with SMTPS id n17-20020a7bcbd1000000b0040ef02e250bsor1331402wmi.4.2024.01.29.08.45.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jan 2024 08:11:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 29 Jan 2024 08:45:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ovnzlj63;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SNefnG02;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706544666; x=1707149466; darn=linaro.org;
+        d=linaro.org; s=google; t=1706546725; x=1707151525; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=q+5SvWKJw3Pcq7y4wFA0yrN1E0wDdYRB5LHPrLR2R5E=;
-        b=ovnzlj63jxl0Je1MLWw9BnbrDNPjzvx7Q+YHYIASjV/+Vyd61t3rvY6pXa5lhGEuQP
-         9k31fze5YGiETF5+FHa3GYCAireI0KTCJc95LfabSkuDkLO5qkvN5kJWg64qgvuY9dD6
-         Fd4rUcEV3mtdOzNx53WjDSHg14Y9De+HAXUCQy2hqB3DBdrlYZplzIz5yVHpfgZ8JT6q
-         1MuA+qwgsX72SUsuJq9VvBAwzhCNgF48H+VbxmzeQ54ncj0uNWpwFlDVShNZ/++kcmkQ
-         tTccFzlCckQrimzHhO/lLLmzWNWB/VYYMojl5D8h5rLuacLbGj9g22GciuROtAHqjHWM
-         bZ1w==
+        bh=xBAuw8z0uG8eCaMVzH857DmMp0S8FwvlSIliw26a1Io=;
+        b=SNefnG02gRzqTweebyiW8o4egiOVYRN+xYeqDhFDbnG9fk8GAdJxTWAujURZCvVn6+
+         Gphpznn7luMevtM3xkisvPggBuL0UeuZ6OkZ98i1EMsdbUMwKoeU2bVYK7FheYE43mEE
+         VDwNeYacrJEwniraWc0GSFyphPy4Ty/jlu+SD4f37PCcaj/9u92BPKeL1gQTwUlQGdOu
+         cc1m/fVeN9SCGfoue9CvRdxrw/OgLmnQK/1cLEwu8gAHWppltiABeH6NT1AzfZZO2eMB
+         F4RsK5N1uHN/SYcJXsmI8RVqVjepOXXpMQE6A/Oc0j5L35MozDr3YUN73JfPJE18VyXY
+         E0nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706544666; x=1707149466;
+        d=1e100.net; s=20230601; t=1706546725; x=1707151525;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=q+5SvWKJw3Pcq7y4wFA0yrN1E0wDdYRB5LHPrLR2R5E=;
-        b=cC8lQzqrsnPZeHNxgPSnLW7bXN6mDXFIsHspchCv6dKwX3X/+H97rq+4zjF09du3qV
-         p43Z3iOamNtH5LXPg9WochoF6/SmOEmAecvfddVqGQNG7w0YOx3ONbST9af2BNzRZuNd
-         WfKmqiAlZyYWt/k8/Ih2dGS8c869hjPS+KvntmgLrLo4V9jqDNKX6ZFmku2TGIhu4yUV
-         Zw3KYuRItLTMRBVqvHqy5Fh4eog/SvceAcuTevpzc96IOY9Q+A37PdQ8OUVZxeyYowSs
-         1SSEND1NQKnX4mn0lX9o/1dRu+3OASqYjKGaEkDyf7S5O/IdrZArZCDPzJwKoFYGMLY4
-         OhBQ==
-X-Gm-Message-State: AOJu0YwrAjQv9IfbhHLNjRG3p/FBh90gLDDxdDeVMEe7s491HhqeyovU
-	nxjXyYLrj7RVT5w5o7k2Yw7jGrgnc/KRJ+Taql96nDVrSkCzQ0FyU50pa221Qbgnxw==
-X-Google-Smtp-Source: AGHT+IGZtrvB+zkUJjsAVGqIveytOHVyHqI8Q/vjlorX6vfjVFxTfYDnogBdEEvF9xxE2lcmt0PKdw==
-X-Received: by 2002:adf:cc91:0:b0:33a:f340:d09d with SMTP id p17-20020adfcc91000000b0033af340d09dmr1784015wrj.49.1706544666613;
-        Mon, 29 Jan 2024 08:11:06 -0800 (PST)
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr. [37.6.163.245])
-        by smtp.gmail.com with ESMTPSA id co6-20020a0560000a0600b0033af4df8e1esm1219957wrb.47.2024.01.29.08.11.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:11:06 -0800 (PST)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org,
+        bh=xBAuw8z0uG8eCaMVzH857DmMp0S8FwvlSIliw26a1Io=;
+        b=I9txAV3yhMMQy2iPgx3l5A6Q+v+v3S2K7K+2Ni+hsQesnu3UR+lWVxbQ0cQ5vn+/F5
+         PuOkQK+4wB7g9y93xnjdxMQAX5nQWRWaYYw7+wEesxwaG090TgYwJymkSZEG/nErDk25
+         4zhNkLAJ7K9+ZOKYiZSO0lMQduBSRzJT9ENy1OhkpewSbXlLbNu19bVR9AqNRbK06kYc
+         /KEfuek9z0ZnhxFJ2yHeVhkJqm8QmTzUxrVkhdra7g7fuDo1yPL7BcgHNQduYGIBYJli
+         lbr32ZkhyS6FFP+B/TMGqZ/rY4V9dVNIj+V2wJxT1mmxKBzDuGtf/F8E30oH+5slBfKC
+         hGGg==
+X-Gm-Message-State: AOJu0YwODlfkbaVna+NrYDnkeq9BL/2WckUcqPomjM06AUcGL7R3Fpzh
+	MP9f55GKZ7EUEDCbkReoFLDJLBOsikkyIGm4T8u+WfrtXhAoZJwOOai9pTQF8BMpqucj6OQbQyU
+	ujh0=
+X-Google-Smtp-Source: AGHT+IHdySqf8l0B9eRILTzofQq4FI067bCYaqQHaOlpomTXnMMg2eMjSm5D6MRXFRyoc/eMCrPXNw==
+X-Received: by 2002:a05:600c:4d96:b0:40e:e7c6:ddd3 with SMTP id v22-20020a05600c4d9600b0040ee7c6ddd3mr5188843wmp.9.1706546725381;
+        Mon, 29 Jan 2024 08:45:25 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan ([176.187.219.39])
+        by smtp.gmail.com with ESMTPSA id m8-20020a05600c4f4800b0040efc268713sm854310wmq.26.2024.01.29.08.45.22
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 29 Jan 2024 08:45:24 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
-	qemu-block@nongnu.org
-Cc: peter.maydell@linaro.org,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	mzamazal@redhat.com,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Anthony Perard <anthony.perard@citrix.com>,
 	Paul Durrant <paul@xen.org>,
+	Peter Xu <peterx@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH v3 6/6] hw/xen: convert stderr prints to error/warn reports
-Date: Mon, 29 Jan 2024 18:09:42 +0200
-Message-Id: <42a8953553cf68e8bacada966f93af4fbce45919.1706544115.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
-References: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
+Subject: [PATCH v3 01/29] bulk: Access existing variables initialized to &S->F when available
+Date: Mon, 29 Jan 2024 17:44:43 +0100
+Message-ID: <20240129164514.73104-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240129164514.73104-1-philmd@linaro.org>
+References: <20240129164514.73104-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EAso3G4IshVt
+X-TUID: tLuLbUdyoUaQ
 
-According to the QEMU Coding Style document:
+When a variable is initialized to &struct->field, use it
+in place. Rationale: while this makes the code more concise,
+this also helps static analyzers.
 
-> Do not use printf(), fprintf() or monitor_printf(). Instead, use
-> error_report() or error_vreport() from error-report.h. This ensures the
-> error is reported in the right place (current monitor or stderr), and in
-> a uniform format.
-> Use error_printf() & friends to print additional information.
+Mechanical change using the following Coccinelle spatch script:
 
-This commit changes fprintfs that report warnings and errors to the
-appropriate report functions.
+ @@
+ type S, F;
+ identifier s, m, v;
+ @@
+      S *s;
+      ...
+      F *v = &s->m;
+      <+...
+ -    &s->m
+ +    v
+      ...+>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Inspired-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/xen/xen-hvm-common.c | 12 ++++++------
- hw/xen/xen-mapcache.c   |  5 ++---
- 2 files changed, 8 insertions(+), 9 deletions(-)
+ hw/display/ati.c              |  2 +-
+ hw/misc/macio/pmu.c           |  2 +-
+ hw/misc/pvpanic-pci.c         |  2 +-
+ hw/pci-bridge/cxl_root_port.c |  2 +-
+ hw/ppc/pnv.c                  | 20 ++++++++++----------
+ hw/virtio/vhost-user-gpio.c   |  8 ++++----
+ hw/virtio/vhost-user-scmi.c   |  6 +++---
+ hw/virtio/virtio-pci.c        |  2 +-
+ hw/xen/xen_pt.c               |  6 +++---
+ migration/multifd-zlib.c      |  2 +-
+ target/arm/cpu.c              |  4 ++--
+ target/arm/kvm.c              |  2 +-
+ target/arm/machine.c          |  6 +++---
+ target/i386/hvf/x86hvf.c      |  2 +-
+ target/m68k/helper.c          |  2 +-
+ target/ppc/kvm.c              |  8 ++++----
+ target/riscv/cpu_helper.c     |  2 +-
+ 17 files changed, 39 insertions(+), 39 deletions(-)
 
-diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index 05a29c6f11..baa1adb9f2 100644
---- a/hw/xen/xen-hvm-common.c
-+++ b/hw/xen/xen-hvm-common.c
-@@ -20,8 +20,8 @@ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
+diff --git a/hw/display/ati.c b/hw/display/ati.c
+index 569b8f6165..8d2501bd82 100644
+--- a/hw/display/ati.c
++++ b/hw/display/ati.c
+@@ -991,7 +991,7 @@ static void ati_vga_realize(PCIDevice *dev, Error **errp)
+     }
+     vga_init(vga, OBJECT(s), pci_address_space(dev),
+              pci_address_space_io(dev), true);
+-    vga->con = graphic_console_init(DEVICE(s), 0, s->vga.hw_ops, &s->vga);
++    vga->con = graphic_console_init(DEVICE(s), 0, s->vga.hw_ops, vga);
+     if (s->cursor_guest_mode) {
+         vga->cursor_invalidate = ati_cursor_invalidate;
+         vga->cursor_draw_line = ati_cursor_draw_line;
+diff --git a/hw/misc/macio/pmu.c b/hw/misc/macio/pmu.c
+index e9a90da88f..7fe1c4e517 100644
+--- a/hw/misc/macio/pmu.c
++++ b/hw/misc/macio/pmu.c
+@@ -737,7 +737,7 @@ static void pmu_realize(DeviceState *dev, Error **errp)
+     timer_mod(s->one_sec_timer, s->one_sec_target);
  
-     if (runstate_check(RUN_STATE_INMIGRATE)) {
-         /* RAM already populated in Xen */
--        fprintf(stderr, "%s: do not alloc "RAM_ADDR_FMT
--                " bytes of ram at "RAM_ADDR_FMT" when runstate is INMIGRATE\n",
-+        warn_report("%s: do not alloc "RAM_ADDR_FMT
-+                " bytes of ram at "RAM_ADDR_FMT" when runstate is INMIGRATE",
-                 __func__, size, ram_addr);
+     if (s->has_adb) {
+-        qbus_init(&s->adb_bus, sizeof(s->adb_bus), TYPE_ADB_BUS,
++        qbus_init(adb_bus, sizeof(s->adb_bus), TYPE_ADB_BUS,
+                   dev, "adb.0");
+         adb_register_autopoll_callback(adb_bus, pmu_adb_poll, s);
+     }
+diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
+index c01e4ce864..83be95d0d2 100644
+--- a/hw/misc/pvpanic-pci.c
++++ b/hw/misc/pvpanic-pci.c
+@@ -48,7 +48,7 @@ static void pvpanic_pci_realizefn(PCIDevice *dev, Error **errp)
+     PVPanicPCIState *s = PVPANIC_PCI_DEVICE(dev);
+     PVPanicState *ps = &s->pvpanic;
+ 
+-    pvpanic_setup_io(&s->pvpanic, DEVICE(s), 2);
++    pvpanic_setup_io(ps, DEVICE(s), 2);
+ 
+     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &ps->mr);
+ }
+diff --git a/hw/pci-bridge/cxl_root_port.c b/hw/pci-bridge/cxl_root_port.c
+index 8f97697631..2cf2f7bf5f 100644
+--- a/hw/pci-bridge/cxl_root_port.c
++++ b/hw/pci-bridge/cxl_root_port.c
+@@ -175,7 +175,7 @@ static void cxl_rp_realize(DeviceState *dev, Error **errp)
+ 
+     cxl_cstate->dvsec_offset = CXL_ROOT_PORT_DVSEC_OFFSET;
+     cxl_cstate->pdev = pci_dev;
+-    build_dvsecs(&crp->cxl_cstate);
++    build_dvsecs(cxl_cstate);
+ 
+     cxl_component_register_block_init(OBJECT(pci_dev), cxl_cstate,
+                                       TYPE_CXL_ROOT_PORT);
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 0297871bdd..202a569e27 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -1257,11 +1257,11 @@ static void pnv_chip_power8_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Processor Service Interface (PSI) Host Bridge */
+-    object_property_set_int(OBJECT(&chip8->psi), "bar", PNV_PSIHB_BASE(chip),
++    object_property_set_int(OBJECT(psi8), "bar", PNV_PSIHB_BASE(chip),
+                             &error_fatal);
+-    object_property_set_link(OBJECT(&chip8->psi), ICS_PROP_XICS,
++    object_property_set_link(OBJECT(psi8), ICS_PROP_XICS,
+                              OBJECT(chip8->xics), &error_abort);
+-    if (!qdev_realize(DEVICE(&chip8->psi), NULL, errp)) {
++    if (!qdev_realize(DEVICE(psi8), NULL, errp)) {
          return;
      }
-@@ -552,9 +552,9 @@ static void cpu_handle_ioreq(void *opaque)
-         req->data = copy.data;
+     pnv_xscom_add_subregion(chip, PNV_XSCOM_PSIHB_BASE,
+@@ -1292,7 +1292,7 @@ static void pnv_chip_power8_realize(DeviceState *dev, Error **errp)
+     }
+     pnv_xscom_add_subregion(chip, PNV_XSCOM_OCC_BASE, &chip8->occ.xscom_regs);
+     qdev_connect_gpio_out(DEVICE(&chip8->occ), 0,
+-                          qdev_get_gpio_in(DEVICE(&chip8->psi), PSIHB_IRQ_OCC));
++                          qdev_get_gpio_in(DEVICE(psi8), PSIHB_IRQ_OCC));
  
-         if (req->state != STATE_IOREQ_INPROCESS) {
--            fprintf(stderr, "Badness in I/O request ... not in service?!: "
-+            warn_report("Badness in I/O request ... not in service?!: "
-                     "%x, ptr: %x, port: %"PRIx64", "
--                    "data: %"PRIx64", count: %u, size: %u, type: %u\n",
-+                    "data: %"PRIx64", count: %u, size: %u, type: %u",
-                     req->state, req->data_is_ptr, req->addr,
-                     req->data, req->count, req->size, req->type);
-             destroy_hvm_domain(false);
-@@ -758,9 +758,9 @@ void xen_shutdown_fatal_error(const char *fmt, ...)
-     va_list ap;
+     /* OCC SRAM model */
+     memory_region_add_subregion(get_system_memory(), PNV_OCC_SENSOR_BASE(chip),
+@@ -1543,12 +1543,12 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
+                             &chip9->xive.xscom_regs);
  
-     va_start(ap, fmt);
--    vfprintf(stderr, fmt, ap);
-+    error_vreport(fmt, ap);
-     va_end(ap);
--    fprintf(stderr, "Will destroy the domain.\n");
-+    error_report("Will destroy the domain.");
-     /* destroy the domain */
-     qemu_system_shutdown_request(SHUTDOWN_CAUSE_HOST_ERROR);
+     /* Processor Service Interface (PSI) Host Bridge */
+-    object_property_set_int(OBJECT(&chip9->psi), "bar", PNV9_PSIHB_BASE(chip),
++    object_property_set_int(OBJECT(psi9), "bar", PNV9_PSIHB_BASE(chip),
+                             &error_fatal);
+     /* This is the only device with 4k ESB pages */
+-    object_property_set_int(OBJECT(&chip9->psi), "shift", XIVE_ESB_4K,
++    object_property_set_int(OBJECT(psi9), "shift", XIVE_ESB_4K,
+                             &error_fatal);
+-    if (!qdev_realize(DEVICE(&chip9->psi), NULL, errp)) {
++    if (!qdev_realize(DEVICE(psi9), NULL, errp)) {
+         return;
+     }
+     pnv_xscom_add_subregion(chip, PNV9_XSCOM_PSIHB_BASE,
+@@ -1571,7 +1571,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
+     }
+     pnv_xscom_add_subregion(chip, PNV9_XSCOM_OCC_BASE, &chip9->occ.xscom_regs);
+     qdev_connect_gpio_out(DEVICE(&chip9->occ), 0, qdev_get_gpio_in(
+-                              DEVICE(&chip9->psi), PSIHB9_IRQ_OCC));
++                              DEVICE(psi9), PSIHB9_IRQ_OCC));
+ 
+     /* OCC SRAM model */
+     memory_region_add_subregion(get_system_memory(), PNV9_OCC_SENSOR_BASE(chip),
+@@ -1586,7 +1586,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
+     pnv_xscom_add_subregion(chip, PNV9_XSCOM_SBE_MBOX_BASE,
+                             &chip9->sbe.xscom_mbox_regs);
+     qdev_connect_gpio_out(DEVICE(&chip9->sbe), 0, qdev_get_gpio_in(
+-                              DEVICE(&chip9->psi), PSIHB9_IRQ_PSU));
++                              DEVICE(psi9), PSIHB9_IRQ_PSU));
+ 
+     /* HOMER */
+     object_property_set_link(OBJECT(&chip9->homer), "chip", OBJECT(chip),
+@@ -1627,7 +1627,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
+                                         PNV9_XSCOM_I2CM_SIZE,
+                                 &chip9->i2c[i].xscom_regs);
+         qdev_connect_gpio_out(DEVICE(&chip9->i2c[i]), 0,
+-                              qdev_get_gpio_in(DEVICE(&chip9->psi),
++                              qdev_get_gpio_in(DEVICE(psi9),
+                                                PSIHB9_IRQ_SBE_I2C));
+     }
  }
-diff --git a/hw/xen/xen-mapcache.c b/hw/xen/xen-mapcache.c
-index 336c212376..4f956d048e 100644
---- a/hw/xen/xen-mapcache.c
-+++ b/hw/xen/xen-mapcache.c
-@@ -347,9 +347,8 @@ tryagain:
-         MapCacheRev *reventry = g_new0(MapCacheRev, 1);
-         entry->lock++;
-         if (entry->lock == 0) {
--            fprintf(stderr,
--                    "mapcache entry lock overflow: "HWADDR_FMT_plx" -> %p\n",
--                    entry->paddr_index, entry->vaddr_base);
-+            error_report("mapcache entry lock overflow: "HWADDR_FMT_plx" -> %p",
-+                         entry->paddr_index, entry->vaddr_base);
-             abort();
-         }
-         reventry->dma = dma;
+diff --git a/hw/virtio/vhost-user-gpio.c b/hw/virtio/vhost-user-gpio.c
+index a83437a5da..6d4e9200ff 100644
+--- a/hw/virtio/vhost-user-gpio.c
++++ b/hw/virtio/vhost-user-gpio.c
+@@ -79,9 +79,9 @@ static int vu_gpio_start(VirtIODevice *vdev)
+      * set needed for the vhost configuration. The backend may also
+      * apply backend_features when the feature set is sent.
+      */
+-    vhost_ack_features(&gpio->vhost_dev, feature_bits, vdev->guest_features);
++    vhost_ack_features(vhost_dev, feature_bits, vdev->guest_features);
+ 
+-    ret = vhost_dev_start(&gpio->vhost_dev, vdev, false);
++    ret = vhost_dev_start(vhost_dev, vdev, false);
+     if (ret < 0) {
+         error_report("Error starting vhost-user-gpio: %d", ret);
+         goto err_guest_notifiers;
+@@ -94,7 +94,7 @@ static int vu_gpio_start(VirtIODevice *vdev)
+      * enabling/disabling irqfd.
+      */
+     for (i = 0; i < gpio->vhost_dev.nvqs; i++) {
+-        vhost_virtqueue_mask(&gpio->vhost_dev, vdev, i, false);
++        vhost_virtqueue_mask(vhost_dev, vdev, i, false);
+     }
+ 
+     /*
+@@ -114,7 +114,7 @@ static int vu_gpio_start(VirtIODevice *vdev)
+ err_guest_notifiers:
+     k->set_guest_notifiers(qbus->parent, gpio->vhost_dev.nvqs, false);
+ err_host_notifiers:
+-    vhost_dev_disable_notifiers(&gpio->vhost_dev, vdev);
++    vhost_dev_disable_notifiers(vhost_dev, vdev);
+ 
+     return ret;
+ }
+diff --git a/hw/virtio/vhost-user-scmi.c b/hw/virtio/vhost-user-scmi.c
+index 918bb7dcf7..300847e672 100644
+--- a/hw/virtio/vhost-user-scmi.c
++++ b/hw/virtio/vhost-user-scmi.c
+@@ -56,9 +56,9 @@ static int vu_scmi_start(VirtIODevice *vdev)
+         goto err_host_notifiers;
+     }
+ 
+-    vhost_ack_features(&scmi->vhost_dev, feature_bits, vdev->guest_features);
++    vhost_ack_features(vhost_dev, feature_bits, vdev->guest_features);
+ 
+-    ret = vhost_dev_start(&scmi->vhost_dev, vdev, true);
++    ret = vhost_dev_start(vhost_dev, vdev, true);
+     if (ret < 0) {
+         error_report("Error starting vhost-user-scmi: %d", ret);
+         goto err_guest_notifiers;
+@@ -71,7 +71,7 @@ static int vu_scmi_start(VirtIODevice *vdev)
+      * enabling/disabling irqfd.
+      */
+     for (i = 0; i < scmi->vhost_dev.nvqs; i++) {
+-        vhost_virtqueue_mask(&scmi->vhost_dev, vdev, i, false);
++        vhost_virtqueue_mask(vhost_dev, vdev, i, false);
+     }
+     return 0;
+ 
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index 1a7039fb0c..cb6940fc0e 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1929,7 +1929,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
+     bool modern_pio = proxy->flags & VIRTIO_PCI_FLAG_MODERN_PIO_NOTIFY;
+     uint8_t *config;
+     uint32_t size;
+-    VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
++    VirtIODevice *vdev = virtio_bus_get_device(bus);
+ 
+     /*
+      * Virtio capabilities present without
+diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
+index 36e6f93c37..10ddf6bc91 100644
+--- a/hw/xen/xen_pt.c
++++ b/hw/xen/xen_pt.c
+@@ -710,7 +710,7 @@ static void xen_pt_destroy(PCIDevice *d) {
+     uint8_t intx;
+     int rc;
+ 
+-    if (machine_irq && !xen_host_pci_device_closed(&s->real_device)) {
++    if (machine_irq && !xen_host_pci_device_closed(host_dev)) {
+         intx = xen_pt_pci_intx(s);
+         rc = xc_domain_unbind_pt_irq(xen_xc, xen_domid, machine_irq,
+                                      PT_IRQ_TYPE_PCI,
+@@ -759,8 +759,8 @@ static void xen_pt_destroy(PCIDevice *d) {
+         memory_listener_unregister(&s->io_listener);
+         s->listener_set = false;
+     }
+-    if (!xen_host_pci_device_closed(&s->real_device)) {
+-        xen_host_pci_device_put(&s->real_device);
++    if (!xen_host_pci_device_closed(host_dev)) {
++        xen_host_pci_device_put(host_dev);
+     }
+ }
+ /* init */
+diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
+index 37ce48621e..237ee49928 100644
+--- a/migration/multifd-zlib.c
++++ b/migration/multifd-zlib.c
+@@ -75,7 +75,7 @@ static int zlib_send_setup(MultiFDSendParams *p, Error **errp)
+ err_free_zbuff:
+     g_free(z->zbuff);
+ err_deflate_end:
+-    deflateEnd(&z->zs);
++    deflateEnd(zs);
+ err_free_z:
+     g_free(z);
+     error_setg(errp, "multifd %u: %s", p->id, err_msg);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b60e103046..60ab8f3242 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2087,7 +2087,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+      * We rely on no XScale CPU having VFP so we can use the same bits in the
+      * TB flags field for VECSTRIDE and XSCALE_CPAR.
+      */
+-    assert(arm_feature(&cpu->env, ARM_FEATURE_AARCH64) ||
++    assert(arm_feature(env, ARM_FEATURE_AARCH64) ||
+            !cpu_isar_feature(aa32_vfp_simd, cpu) ||
+            !arm_feature(env, ARM_FEATURE_XSCALE));
+ 
+@@ -2129,7 +2129,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     if (cpu->cfgend) {
+-        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++        if (arm_feature(env, ARM_FEATURE_V7)) {
+             cpu->reset_sctlr |= SCTLR_EE;
+         } else {
+             cpu->reset_sctlr |= SCTLR_B;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 81813030a5..ab85d628a8 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1888,7 +1888,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         cpu->psci_version = QEMU_PSCI_VERSION_0_2;
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
+     }
+-    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++    if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+     }
+     if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 9d7dbaea54..b2b39b2475 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -773,7 +773,7 @@ static int cpu_pre_load(void *opaque)
+     env->irq_line_state = UINT32_MAX;
+ 
+     if (!kvm_enabled()) {
+-        pmu_op_start(&cpu->env);
++        pmu_op_start(env);
+     }
+ 
+     return 0;
+@@ -871,11 +871,11 @@ static int cpu_post_load(void *opaque, int version_id)
+     }
+ 
+     if (!kvm_enabled()) {
+-        pmu_op_finish(&cpu->env);
++        pmu_op_finish(env);
+     }
+ 
+     if (tcg_enabled()) {
+-        arm_rebuild_hflags(&cpu->env);
++        arm_rebuild_hflags(env);
+     }
+ 
+     return 0;
+diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
+index 3b1ef5f49a..be2c46246e 100644
+--- a/target/i386/hvf/x86hvf.c
++++ b/target/i386/hvf/x86hvf.c
+@@ -408,7 +408,7 @@ bool hvf_inject_interrupts(CPUState *cs)
+     if (!(env->hflags & HF_INHIBIT_IRQ_MASK) &&
+         (cs->interrupt_request & CPU_INTERRUPT_HARD) &&
+         (env->eflags & IF_MASK) && !(info & VMCS_INTR_VALID)) {
+-        int line = cpu_get_pic_interrupt(&x86cpu->env);
++        int line = cpu_get_pic_interrupt(env);
+         cs->interrupt_request &= ~CPU_INTERRUPT_HARD;
+         if (line >= 0) {
+             wvmcs(cs->accel->fd, VMCS_ENTRY_INTR_INFO, line |
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index 14508dfa11..a812f328a1 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -972,7 +972,7 @@ bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+         access_type |= ACCESS_SUPER;
+     }
+ 
+-    ret = get_physical_address(&cpu->env, &physical, &prot,
++    ret = get_physical_address(env, &physical, &prot,
+                                address, access_type, &page_size);
+     if (likely(ret == 0)) {
+         tlb_set_page(cs, address & TARGET_PAGE_MASK,
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 26fa9d0575..b95a0b4928 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -635,8 +635,8 @@ static int kvm_put_fp(CPUState *cs)
+ 
+         for (i = 0; i < 32; i++) {
+             uint64_t vsr[2];
+-            uint64_t *fpr = cpu_fpr_ptr(&cpu->env, i);
+-            uint64_t *vsrl = cpu_vsrl_ptr(&cpu->env, i);
++            uint64_t *fpr = cpu_fpr_ptr(env, i);
++            uint64_t *vsrl = cpu_vsrl_ptr(env, i);
+ 
+ #if HOST_BIG_ENDIAN
+             vsr[0] = float64_val(*fpr);
+@@ -704,8 +704,8 @@ static int kvm_get_fp(CPUState *cs)
+ 
+         for (i = 0; i < 32; i++) {
+             uint64_t vsr[2];
+-            uint64_t *fpr = cpu_fpr_ptr(&cpu->env, i);
+-            uint64_t *vsrl = cpu_vsrl_ptr(&cpu->env, i);
++            uint64_t *fpr = cpu_fpr_ptr(env, i);
++            uint64_t *vsrl = cpu_vsrl_ptr(env, i);
+ 
+             reg.addr = (uintptr_t) &vsr;
+             reg.id = vsx ? KVM_REG_PPC_VSR(i) : KVM_REG_PPC_FPR(i);
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index c7cc7eb423..791435d628 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -1200,7 +1200,7 @@ hwaddr riscv_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     CPURISCVState *env = &cpu->env;
+     hwaddr phys_addr;
+     int prot;
+-    int mmu_idx = cpu_mmu_index(&cpu->env, false);
++    int mmu_idx = cpu_mmu_index(env, false);
+ 
+     if (get_physical_address(env, &phys_addr, &prot, addr, NULL, 0, mmu_idx,
+                              true, env->virt_enabled, true)) {
 -- 
-γαῖα πυρί μιχθήτω
+2.41.0

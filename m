@@ -1,198 +1,221 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp332207ejk;
-        Mon, 29 Jan 2024 09:43:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFtlxXcA8Qdoph5h0MiLkuK0qTQxJBgFR/ryNeuP0wnWFsb9bICAu4pezyJ9haNe/gOSRAL
-X-Received: by 2002:a05:620a:564:b0:783:ad8b:8b37 with SMTP id p4-20020a05620a056400b00783ad8b8b37mr5086345qkp.57.1706550184454;
-        Mon, 29 Jan 2024 09:43:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706550184; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp414865ejk;
+        Mon, 29 Jan 2024 12:25:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFIvLDIGMyPyZXKwmySmi0r7gYQyC4XuuVWb9vVDcRiz4hJb4MxVvJysa3M6uj03CCz5HLh
+X-Received: by 2002:a17:903:11cc:b0:1d7:5d88:f993 with SMTP id q12-20020a17090311cc00b001d75d88f993mr5761166plh.41.1706559929828;
+        Mon, 29 Jan 2024 12:25:29 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706559929; cv=pass;
         d=google.com; s=arc-20160816;
-        b=mbBiywQwtKVhPgqCzBRNcdelmdNxmB7PynS/+Z6dTYldFAfb+YrXgBKvx36rVDVeLP
-         SBY3hU+A3SAMfXaBlWsS5BmO4NkTFg1s7yavzsbKJXaMTjLogI5XgEFSLMKV7F6XlV3Y
-         4vDE1MXIH9NPf6CMIbIDLaqXv4V9UVtKzbZHEQPzwJoBMbKtRF5Oymf485RG6WbRmQg1
-         Dm+6x2LqfhbQ1dW+/7Xj03JBJ436n6IyR/qL8DM6FUvabGokTqspVPOxOGD/lx+YpBxE
-         jFwfpIoljOvmah4L3oUTW8tfRm1M4GfWSnyEWgSmZT5H7Yfhn/jvy9a9LB2LlBszg0bh
-         3Apw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=hi/bPxvY91tpMbomroYUdB5TmR8GTew2hRnVvF7LSD0=;
-        fh=S/JqU5Olik9Z3Q5mE8mDn4bnKe7nRGom4RyWaoivRO4=;
-        b=S6MV64GdMXRMbwfmYL6KsUhrwinjF+1c+G+55D13ZdFuTAsZCYeZl2yzFiTqqW2vZh
-         c48kK3FB0lyT3kdETOD8VdyE2/BAtN9DIzsh4DodPSGdqSnXolLrXyXR3T3tU+hV0nH8
-         fhAEC2++8qUTEx9XR53GE2yhIOGqfHoxUdPLaYUVvjkoWhCfRdrLDXwsJa9JOzD9NWi5
-         4Q0QFJnWbGZRhIcGsTJOyjKfG0y9PQHybyhdv1PWxoov5GhQuEtVuAYQ2eJK24nLdZJr
-         TkTySqbaqIzP0ELnq2pOJX+rvwWy1BY1d8oTBrmjXNoGwG4RzL4t4scDjxQKvVogSXxd
-         LDVw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KSNTE8y8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21-20020a05620a229500b0078400138351si2018179qkh.744.2024.01.29.09.43.04
+        b=EQyBuhCBxT7HEAY81v3RVm1q7qZVsg+X9HE1VNI+6WShbX1el46nuve+HIsB2+9ODj
+         y0pAsrRCPze8jA8w4gEZjUqF5f9lf709d/Cd2uhsdVnn7k84jyO45h08/7Vd4wGyK4Jq
+         ipej64naQbODeB3t6SqhcnrvagIK6fVjcDVKGf539pl+DRhcNqhEOvKDtqMyfGNIX4Vd
+         eg0Ge2BQec9UbTVnsfYpgslPyFoWXB9FsYL65d643lWgGGRamVNIjCAMIGL4gEc0PnDS
+         yopQMWkOmUXgObcWApx3TgZOJSyjdMSRsgaaRf/E2Gmq89CbyWht6BkHMcmo7xBCQgGC
+         s9fg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=ui-outboundreport:content-transfer-encoding:in-reply-to:autocrypt
+         :from:references:cc:to:content-language:subject:user-agent
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :date:message-id:dkim-signature;
+        bh=++vJSmMN6zMzDI9oDUCq9SKXjOr5QMdVCArRpDE0W0M=;
+        fh=4vL41D408HbG4zUb4E5HsY5rgaJfKa16xBtmnHD9SD0=;
+        b=dWvrqTEm/prfhWJs5l/BgOb6pcQtZE3lmuaqhBeuiWRvXPTZWJTkxSe0nJGFJRYl1s
+         LB3o1ZkHnUTv9sVP0zPt0odylrEIe4e9A46YXwkWPTg5W469ZtZNnL9/cihh6xU1ciXo
+         A9Yw0fPjNNI5u/Y3F12wzuiLclu4HUSIoEwCCbxnXaEBUL9v1t9SDr1n3MayvRnBMfOD
+         Ayrck4/+7fuRDzkkS7mBdQPMGYr3WtwKkxGSrmugRKU1Tdx3BsdDOIceLxxmjpwRWloQ
+         0K50PDwwQERKjxmoCjwtLssVkuSxRvn+jKK4/sINfYTmYkxsLUN4qiGsJBmGaiwHaahK
+         I9jw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=mRsgy2nT;
+       arc=pass (i=1 spf=pass spfdomain=gmx.de dkim=pass dkdomain=gmx.de dmarc=pass fromdomain=gmx.de);
+       spf=pass (google.com: domain of kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
+Return-Path: <kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id a21-20020a170902b59500b001d88bb0d2eesi6186047pls.108.2024.01.29.12.25.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jan 2024 09:43:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jan 2024 12:25:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KSNTE8y8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUVeo-00067j-V9; Mon, 29 Jan 2024 12:42:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rUVen-00065Z-4g
- for qemu-arm@nongnu.org; Mon, 29 Jan 2024 12:42:53 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rUVel-0000AE-0F
- for qemu-arm@nongnu.org; Mon, 29 Jan 2024 12:42:52 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-40ef207c654so15765905e9.1
- for <qemu-arm@nongnu.org>; Mon, 29 Jan 2024 09:42:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706550169; x=1707154969; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=hi/bPxvY91tpMbomroYUdB5TmR8GTew2hRnVvF7LSD0=;
- b=KSNTE8y8pv/zSbokDKVbhQwzhkcqRhJ8NGzQ/7Pba55JbvwELwkyjEWl1/iN9vxyuL
- LmHVSt+j43sXNnOm6C/97IELZbvYDTbvHkfKI/pWjsBlrLswo+ZXsOOewfXvdY5OTc1O
- wHcUmgMyvBX9ep97swum7Y9LbVmGHna0b6Mn1Q62/LKcvUijwN1TkRAuwf5b3diGzbyt
- ybVIu+mimJ+Un5+Te9VMnmLglR98A5F6FhRbnwBHjObezmAgR3nY33BWXvtE9zxs/xaX
- i9DBmULd7pfJ17P60rIethbb5Fnw+W3l4XDIZePnSwTtnsfOVjL/rEZbIL8mFUrzRb7o
- YF7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706550169; x=1707154969;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hi/bPxvY91tpMbomroYUdB5TmR8GTew2hRnVvF7LSD0=;
- b=mRwuySX6i0/iGFGM7UTQCW85SyxGPLn11Np7m2Qe2yPTOBWIf0lGWwJ8v5AYcq9Oqy
- ASWSDxFg+sxrpzmpzvLbEl1/XjcaKMrGMfgPU9hrhJCpRPKmJn7S8PLsth3H+I57dJ6H
- 4z4nBoiLCQbNnrVCXJMdyqRDZGgCSUxn4hpxRebCLAjyiP2836ehVZXoBu6733hkbyv+
- eYyk+9+piaMwRG6XpqP+WnpgEKE8pCfWJumqEsYapBDjqRWBqTKb7PcuaegeiqiO2AM8
- X05k2KKl2tv4orkpviaKTTyxGE+635nDZDYV2m/5tfKbw6al8uOFZdqIU+3GhYGutM5Y
- FU9A==
-X-Gm-Message-State: AOJu0Yz6AgZKQo42nX6PrZJ/kBV0cFk3IraIH5Y/W1P+V0wp+a0fPKeW
- YK8uB9KF95Xx2Zd62fvIb/IVcdqSvo5MNQN30SCWiG2e7A3CqfnZ4CTpTryVH+Q=
-X-Received: by 2002:a1c:4b10:0:b0:40e:6922:7960 with SMTP id
- y16-20020a1c4b10000000b0040e69227960mr6101062wma.29.1706550169185; 
- Mon, 29 Jan 2024 09:42:49 -0800 (PST)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- c17-20020a5d5291000000b0033ae4ba8ca0sm6235735wrv.82.2024.01.29.09.42.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jan 2024 09:42:48 -0800 (PST)
-Date: Mon, 29 Jan 2024 17:42:50 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- alex.williamson@redhat.com, peter.maydell@linaro.org,
- zhenzhong.duan@intel.com, peterx@redhat.com, yanghliu@redhat.com,
- mst@redhat.com, clg@redhat.com, jasowang@redhat.com
-Subject: Re: [PATCH 0/3] VIRTIO-IOMMU: Introduce an aw-bits option
-Message-ID: <20240129174250.GA1306334@myrica>
-References: <20240123181753.413961-1-eric.auger@redhat.com>
- <20240129122332.GA909471@myrica>
- <670991f9-e483-4acb-9ae9-6bad47b962b1@redhat.com>
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=mRsgy2nT;
+       arc=pass (i=1 spf=pass spfdomain=gmx.de dkim=pass dkdomain=gmx.de dmarc=pass fromdomain=gmx.de);
+       spf=pass (google.com: domain of kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7394-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 12BDE282D61
+	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 20:25:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E3BE87604A;
+	Mon, 29 Jan 2024 20:25:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=gmx.de header.i=deller@gmx.de header.b="mRsgy2nT"
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A7AC7603D
+	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 20:25:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=212.227.15.18
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1706559924; cv=none; b=X28W1OqUIseljwbc/vKA1QykATQ1s1tW+kFtcyFglr92Cjs3x0LyBL/321wAgYqFN/at3Gbe8N/XdXjnyhZXXR/Dqi41Gb9sIUI2j4/5gkpBIYUwppIwcuazjjEQvu6Itzii+7X0FDGSJajLi24sQNJfSSIqTGpFoGlabf/tPX0=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1706559924; c=relaxed/simple;
+	bh=t4y5O2v80/N1buYxN57NYKAZ0Bev0mKEYyc3wQDHke4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=A5vkgWnFNRl20FGC7cIfab3D75V/0Ti32SytAMlRFtbNovfk3WRGprFFe84YBCISfVc12Yo1u6V4MjL/qHadcSuqiDSu8J+cba0aznrwukY3zV5Ok45Jhf5uaKIjhXqNwnOkACBJGDVy65qx8VlPT86uK6+uDehOgxOMcFoPrtk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=gmx.de; spf=pass smtp.mailfrom=gmx.de; dkim=pass (2048-bit key) header.d=gmx.de header.i=deller@gmx.de header.b=mRsgy2nT; arc=none smtp.client-ip=212.227.15.18
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=gmx.de
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmx.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
+	t=1706559910; x=1707164710; i=deller@gmx.de;
+	bh=t4y5O2v80/N1buYxN57NYKAZ0Bev0mKEYyc3wQDHke4=;
+	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
+	 In-Reply-To;
+	b=mRsgy2nT6qg8doTPKWg4MJ8aGSLokAoS9T4Eafl/q8XtDYcMDg3532PQD++oGrRT
+	 3AraDvWUJgRR5EjTogtJZeR0z4N+pI1HP9KfPf45tGRecBwuxqaseu/JylHEtUBln
+	 OFyiA4eAxAnR8T5H72f2blTcWuaqIGYEgGWsjLt+6Yka3+0J9JXgnKdvfQKf2EKw2
+	 +4RD6EVxuZzZl0Eoq2dKa3VSHuDqtmXZ/xgyYWZYwp+7Bim704xg3pwU3lk4P24Zp
+	 3QQ0yEQbeGNnQtqjlCRm1XkFFSTEVv3yn41ussPVuQm5k15VaV/1H5k1P7XVXF7aN
+	 h3py3MQZrEHfAwSeLA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [192.168.20.55] ([94.134.155.171]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1Mlw3N-1qnYBx1vRz-00j11b; Mon, 29
+ Jan 2024 21:25:10 +0100
+Message-ID: <9c2e60fa-7a23-496d-bf81-8826810e6351@gmx.de>
+Date: Mon, 29 Jan 2024 21:25:09 +0100
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <670991f9-e483-4acb-9ae9-6bad47b962b1@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OJUD1Y4MHoJk
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 12/29] target/hppa: Prefer fast cpu_env() over slower
+ CPU QOM cast macro
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240129164514.73104-1-philmd@linaro.org>
+ <20240129164514.73104-13-philmd@linaro.org>
+From: Helge Deller <deller@gmx.de>
+Autocrypt: addr=deller@gmx.de; keydata=
+ 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
+In-Reply-To: <20240129164514.73104-13-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:xCtZ4NVqvrToy67dRKju7QMLsPslL2OSiWJVmyiAeOUiyCESqoD
+ utHKpaNLSE25RvMViB2HhD3ifvw/it1fJE+hDZOweA1JBACyRGeRvLOD7qfBYGjQwipvsWQ
+ LpwzihaLy0Y59ZL29TDPSaLRld7pGiLOH5/p+OPlYQdLGEpPB3auOcwJ5yPiy4zf5BzDZna
+ z5wQQw5llbjlnpHDsgVmQ==
+X-Spam-Flag: NO
+UI-OutboundReport: notjunk:1;M01:P0:5RFp/sdB+cw=;jxsVH2MuGrETdaV8Hb4NfNGRGdm
+ d9Ev6uyc5cnRIlJVbZ2yPy1Go/1UwnYnLQval1/SlifLvYoTlAwtLNbaWioe0arMG7tQUvDos
+ N3s7vntWS4eKrcUxpI1U3rvrEDX8fZrilxMnnvsfnyIlSQJdTmVQ6MRoge/LbAbP+t1t//HKa
+ roDskNom3sAoaDmCp0768gnn+O7zLtpgKtBt0JKWHM05b7bLBctGSeFXdccPG3lZ6jj/0OMpL
+ h45ywtHk1zn6ddZxKYxo5vy/LZ+i1BKpRt5gTxYaDCV2rRZb6XIKYDQRDcsGVBd2VEpyANT2M
+ ORG27OEppDmWfmPhkKamrzqbvlHk/lk/lDrA3GN+JC+o4+H7HY0C0UDsRwXlTSgWbAmu28/yS
+ uQ7IsdItn/B1X6mNsRktror78EvMNlT+Lf2pHtwkEvFB1O9tNhoP+DpwHZ9JQ1yJitFRJEgbF
+ FaYFY3GkfVU2fbv6b61h2NQfOnoKx3MPwLTaFkoMxGx24gbc02aXqmfm3m7nU1mQ43tYmHS5i
+ 488JLHtL8NOxI977NG5u0RYU3JbzjjTpfcrepr1w4dvt22bHr6d2xXAET8BHthDXm+uxBwCDW
+ xHn0Conl74rKt/FURDX+jnX2AsVLE/qJG10EXHpBI89/I+JeqIKcyy4AdTHMTD6xLrXrtsjMy
+ etlpA6Lcd62djZdAVtlI+t1kVg3j5ExSb9EYC6agW7ZAmxjkQEGulVt661/egM2HP9sQm4gJu
+ MhobtE97chh1d8+G5Hb7HgKavWGGv7rIUxZleDOzg+zmfMsimZBYBPtUhoAE8RVgSoEkhHUsW
+ vgdRYfaWZjIjUesSwyQczew5YX9qMA577tdTzziJLb/kg3a7ucr1f9KV/Tqn+VSHHxAn86Igt
+ C7FuC1HDzr8Ac65/Fp5HESPIIbi5el9xbRc7wHS5asptW0Mz3VWtCr2m29OB5Oh9B+1e9cQ6i
+ ZOQmCq4eJE3vzgQemJJVoxW8DQQ=
+X-TUID: ZfiUyK1i4IL4
 
-On Mon, Jan 29, 2024 at 03:07:41PM +0100, Eric Auger wrote:
-> Hi Jean-Philippe,
-> 
-> On 1/29/24 13:23, Jean-Philippe Brucker wrote:
-> > Hi Eric,
-> >
-> > On Tue, Jan 23, 2024 at 07:15:54PM +0100, Eric Auger wrote:
-> >> In [1] and [2] we attempted to fix a case where a VFIO-PCI device
-> >> protected with a virtio-iommu is assigned to an x86 guest. On x86
-> >> the physical IOMMU may have an address width (gaw) of 39 or 48 bits
-> >> whereas the virtio-iommu exposes a 64b input address space by default.
-> >> Hence the guest may try to use the full 64b space and DMA MAP
-> >> failures may be encountered. To work around this issue we endeavoured
-> >> to pass usable host IOVA regions (excluding the out of range space) from
-> >> VFIO to the virtio-iommu device so that the virtio-iommu driver can
-> >> query those latter during the probe request and let the guest iommu
-> >> kernel subsystem carve them out.
-> >>
-> >> However if there are several devices in the same iommu group,
-> >> only the reserved regions of the first one are taken into
-> >> account by the iommu subsystem of the guest. This generally
-> >> works on baremetal because devices are not going to
-> >> expose different reserved regions. However in our case, this
-> >> may prevent from taking into account the host iommu geometry.
-> >>
-> >> So the simplest solution to this problem looks to introduce an
-> >> input address width option, aw-bits, which matches what is
-> >> done on the intel-iommu. By default, from now on it is set
-> >> to 39 bits with pc_q35 and 64b with arm virt.
-> > Doesn't Arm have the same problem?  The TTB0 page tables limit what can be
-> > mapped to 48-bit, or 52-bit when SMMU_IDR5.VAX==1 and granule is 64kB.
-> > A Linux host driver could configure smaller VA sizes:
-> > * SMMUv2 limits the VA to SMMU_IDR2.UBS (upstream bus size) which
-> >   can go as low as 32-bit (I'm assuming we don't care about 32-bit hosts).
-> Yes I think we can ignore that use case.
-> > * SMMUv3 currently limits the VA to CONFIG_ARM64_VA_BITS, which
-> >   could be as low as 36 bits (but realistically 39, since 36 depends on
-> >   16kB pages and CONFIG_EXPERT).
-> Further reading "3.4.1 Input address size and Virtual Address size" ooks
-> indeed SMMU_IDR5.VAX gives info on the physical SMMU actual
-> implementation max (which matches intel iommu gaw). I missed that. Now I
-> am confused about should we limit VAS to 39 to accomodate of the worst
-> case host SW configuration or shall we use 48 instead?
+On 1/29/24 17:44, Philippe Mathieu-Daud=C3=A9 wrote:
+> Mechanical patch produced running the command documented
+> in scripts/coccinelle/cpu_env.cocci_template header.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/hppa/cpu.c        | 8 ++------
+>   target/hppa/int_helper.c | 8 ++------
+>   target/hppa/mem_helper.c | 3 +--
+>   3 files changed, 5 insertions(+), 14 deletions(-)
+>
+> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+> index 14e17fa9aa..3200de0998 100644
+> --- a/target/hppa/cpu.c
+> +++ b/target/hppa/cpu.c
+> @@ -106,11 +106,8 @@ void hppa_cpu_do_unaligned_access(CPUState *cs, vad=
+dr addr,
+>                                     MMUAccessType access_type, int mmu_i=
+dx,
+>                                     uintptr_t retaddr)
+>   {
+> -    HPPACPU *cpu =3D HPPA_CPU(cs);
+> -    CPUHPPAState *env =3D &cpu->env;
+> -
+>       cs->exception_index =3D EXCP_UNALIGN;
+> -    hppa_set_ior_and_isr(env, addr, MMU_IDX_MMU_DISABLED(mmu_idx));
+> +    hppa_set_ior_and_isr(cpu_env(cs), addr, MMU_IDX_MMU_DISABLED(mmu_id=
+x));
+>
+>       cpu_loop_exit_restore(cs, retaddr);
+>   }
+> @@ -145,8 +142,7 @@ static void hppa_cpu_realizefn(DeviceState *dev, Err=
+or **errp)
+>   static void hppa_cpu_initfn(Object *obj)
+>   {
+>       CPUState *cs =3D CPU(obj);
+> -    HPPACPU *cpu =3D HPPA_CPU(obj);
+> -    CPUHPPAState *env =3D &cpu->env;
+> +    CPUHPPAState *env =3D cpu_env(CPU(obj));
 
-I don't know what's best either. 48 should be fine if hosts normally
-enable VA_BITS_48 (I see debian has it [1], not sure how to find the
-others).
+Here it can become cpu_env(cs) too.
 
-[1] https://salsa.debian.org/kernel-team/linux/-/blob/master/debian/config/arm64/config?ref_type=heads#L18
+The rest looks ok, so with that changed:
+Reviewed-by: Helge Deller <deller@gmx.de>
 
-> If we set such a low 39b value, won't it prevent some guests from
-> properly working?
+Helge
 
-It's not that low, since it gives each endpoint a private 512GB address
-space, but yes there might be special cases that reach the limit. Maybe
-assign a multi-queue NIC to a 256-vCPU guest, and if you want per-vCPU DMA
-pools, then with a 39-bit address space you only get 2GB per vCPU. With
-48-bit you get 1TB which should be plenty.
-
-52-bit private IOVA space doesn't seem useful, I doubt we'll ever need to
-support that on the MAP/UNMAP interface.
-
-So I guess 48-bit can be the default, and users with special setups can
-override aw-bits.
-
-Thanks,
-Jean

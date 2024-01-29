@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp297700ejk;
-        Mon, 29 Jan 2024 08:47:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG++EIpExI8SmgEZ5WAew8C9VZYX6XUDIhnm7fg1BVu5T5AieCwy/W0Rop3+6pJoAp9aV+k
-X-Received: by 2002:a05:622a:1aa2:b0:42a:8e63:a94e with SMTP id s34-20020a05622a1aa200b0042a8e63a94emr5197952qtc.59.1706546871519;
-        Mon, 29 Jan 2024 08:47:51 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706546871; cv=pass;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp297787ejk;
+        Mon, 29 Jan 2024 08:47:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFVFdrgXPpFf+lflTlJKqbcCsO51B8BncTobjUIQSjLNScPN8s0prZATbUlu6UgpuiArMD3
+X-Received: by 2002:a17:903:124d:b0:1d7:8541:f94d with SMTP id u13-20020a170903124d00b001d78541f94dmr4534889plh.131.1706546877699;
+        Mon, 29 Jan 2024 08:47:57 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706546877; cv=pass;
         d=google.com; s=arc-20160816;
-        b=XLSpF+pkwqizPlLDCkhDg8rxvAIoBCNjDXVF30ByxfZ3kqMTG3J+Ey1ZptpW/7hr4a
-         XoHzdDKozHY+jKmdjDIU/F+Kpdhc3bYX+2NHNdVB2G0QFDNBv6BiNpb3ysa92aydxb7P
-         iaza/umSBQksITW1cAfW0yX17qB6vb8qVPrSs96n0O8Q3r2Gxko2NwARjzPwqqg+Smfn
-         sZchHT0/DFxwh2qvp3OF8S03n75Wh+I688D+4Y5xa7wx5PEx2bioatVc9sW2g4iTfwI/
-         kC4MzXIJuJz2K3NLCPaJUkgCZZke5plVK8DYW+kHrpIQ+j5QCnxaKEFLwUaV6/JPyf9/
-         YbbQ==
+        b=EvHMgQetHdjX5iKG53Ud7Sht52mg794kDtHfLT6bM5bGceHG+2VphX2OVRulZQ2DvK
+         E5jagVu+PrRSyXXHhx2U7JX110UqPO5CentkKRrRgDCZnFFtslkn0JkzNLM57mcC32Sh
+         z285mGkviZb5T+QhKAOq4vnhS0niBXTGPnGmxPmYLaq1ytKtIsxWscL/glI4lVz8Yzz1
+         SkyabCaKfS6RmoTAiyqBCKo+4VUVKREZSfHbj1xtdYsPfitvbsm7zxTp04fOwXNjjf4R
+         yqlauFV/NcIo8VgEjyz5jAJm2dqcHHWC23csB+v54o9IEQCoSgzjaWqPO54RorbF7HL4
+         uODg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=ijxQ2ToounQ2YPXKuEdEzzYCdzKOr5SyszX4l6rPtX0=;
-        fh=r5D+Hx3QzUfCN9gP2TLGSqnrUWYfDZT0BDwY0yiqj04=;
-        b=VUu2pj3AEcXztP0kF5jKdLX/YKOVA3cOPxaBeosOBxp6+v8aVqBiivlX6OmA4fpZzy
-         1LhpfqjD/Z0WP+LVFQBQuk3Ml5xFakQPkQeW6YvBDUgfuiuA3QzI28TpZlEto1rSu3Hs
-         M0MUfG2ALPzj9hqvFsyDwyHNRYMhhr44jIu2qcwAl40eKwBZA0COUXkclPa2TKxB6UEh
-         6XalpxHghJyXmzhdVcN+rmKH4b96Q6H8y2Gy2Ql/y7FDH4GSAI7eFsq04S1o2N9FpWvs
-         XbkFyyLkNG/95l6/gHA8XQLyWFPuYOCvRIqBW6LJp2AFmJOglMx30d8FBfvrQ86otwh7
-         Rkdg==
+        bh=a1GRxsPkPoYM/j9b9XVxD2Uv8+2XdiDkavqzy6v+eQw=;
+        fh=ImD8iSrLxhrnCw0/nvJ96iIW8BQZWYA7+KlpqObygLI=;
+        b=IqLL5DFumStexHCiaVki7ya7D/6stmQ/xpY2Cc0wdOVYkdDDo4/A08RMUFHExVr8V4
+         PSBM6i1zJTt7IP/xrU+jsINbRVa2W+/VtzFxHN/4vyI63Nd9UaP5dFwTuh4UuKvwQfpu
+         uGU9C/dEqMhi6GHMtGs1PtIQrZygMZ62Am7ob8UMl1oUSfJGRRrccuJY5Jdkwl31QQ1H
+         ChNoUab9d92KIDMjAWI/LLWbKbU9Ru5R5apaJ3ctl5r0vCyPZIAIs7TBcPAvuxH98+sA
+         B2/GQD2m9epOoTSACTDhubpnKZhCH39C/cyz1HJJ6Uuf9CiRd4ZoNkUpV8dDRqcXk8ya
+         W5QA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LkTxLDuU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ohwannSk;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id p7-20020a05622a048700b0042a111b261bsi7737262qtx.776.2024.01.29.08.47.51
+Return-Path: <kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id j11-20020a170902da8b00b001d704e2da3dsi6151087plx.407.2024.01.29.08.47.57
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:47:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Mon, 29 Jan 2024 08:47:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LkTxLDuU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ohwannSk;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7363-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-7364-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 314A91C214D6
-	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 16:47:51 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 1D92E288469
+	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 16:47:57 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B5527157044;
-	Mon, 29 Jan 2024 16:47:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4A87C15699D;
+	Mon, 29 Jan 2024 16:47:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LkTxLDuU"
-Received: from mail-lj1-f175.google.com (mail-lj1-f175.google.com [209.85.208.175])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ohwannSk"
+Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com [209.85.128.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D236915703F
-	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 16:47:05 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09689156989
+	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 16:47:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.50
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706546827; cv=none; b=ZB+Hjk/n5NfNP/vZlVVKO/c34qdNoXDEuluA8miZbAKHLX/tylNVu7gKHb+yeBH+SI0B0lqnPdQCEGU+p9AflS6f1gWJzKq3wnByETUZYR4/+Ll8C0C8Ey8oosZQBuNVRdu+7RNLlripKOTBnJnLEJdySDkNa746KwHRiPH2gYU=
+	t=1706546834; cv=none; b=kBl344BvJdbzqbVacIIEA4zDLYRPWATl9eZItENR4j3PXDCZMAl530xMNm99Mt2opqIh//KTrK6nhTix2GRZW6SSTN6+VsbgWOUofI7WGNLivSLETtfb2XhNTQ3g5lj/R8ZbMZtIl10KKQC8p4NvM8Hy5vJ8Jh0r4/SyWzZIxu0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706546827; c=relaxed/simple;
-	bh=jL7lBd6T1l69LSUD4xZ/qwK14PuM0TsEi8D+MrmhFko=;
+	s=arc-20240116; t=1706546834; c=relaxed/simple;
+	bh=L03amIvNw1iPWvJsVfUiQyyFoidgYwInBD5pbA/d8NU=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=rF7FDvt3WAi6wXNQfXZZg61rVs8LxBjX1JfN9+jtkqeNIHgkjTd5dIoe5qpA8LNnvOtzdQLEP4t/Cf/DeeVv+lAfQGFHpghQqKb3HTyAU6Gn7Hk5M3zhghWb3wnm8eR3Z7lryDwfCP4vQeXg4DBp4YYD2v2D4wb86g4wpVNoSzo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=LkTxLDuU; arc=none smtp.client-ip=209.85.208.175
+	 MIME-Version:Content-Type; b=MF6aPd1w6o/FHtnW19KDZSP1w+8qtbe6CZDxwrjLxj607GibMKSEkFyxuWM/Ecir9e9827js3ndu7tqwlonLaNyqZBnK68Pms/0aCQ0ZvcpYoZNgg5+8IsDtXt1Du+G8t/mSOvPkaYJRZ3IJrDPYyBTZTsz94FV91kpZIU0V+Nc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=ohwannSk; arc=none smtp.client-ip=209.85.128.50
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2cf595d5b4aso20167851fa.0
-        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 08:47:05 -0800 (PST)
+Received: by mail-wm1-f50.google.com with SMTP id 5b1f17b1804b1-40e7e2e04f0so36475035e9.1
+        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 08:47:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706546824; x=1707151624; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1706546830; x=1707151630; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ijxQ2ToounQ2YPXKuEdEzzYCdzKOr5SyszX4l6rPtX0=;
-        b=LkTxLDuUbBVLiCRIUNLC5t8UiIEEZsv+yXR9ndhKEu8fWDOQsC0lcO0aGaSwQ0s3rl
-         BqbAtccVFp0sNQJ1LkH4M8aM16vTgtrMjbmu2k+dEV8XIHjfqWYc5bPyhf2wv/R3B8nf
-         K8ap5iM5Nz2GiSgQeLDRKHVv3/SE9Mkyqq9PYha+FCV352EEJ41MTj2KLFU4//nWLyzn
-         EEP43ZkekibW0R7l8+P0RmcW860iyKTgjjB7cplzlo1hrhKY6jW45BCRTUYhREfFpaJs
-         yTkuvOh9nkCTtHQYJMJQixEYrn5K4O9dQaheW/dGX+UI1j4neZE0aHTcZv3ycYOYoAgM
-         IvxA==
+        bh=a1GRxsPkPoYM/j9b9XVxD2Uv8+2XdiDkavqzy6v+eQw=;
+        b=ohwannSkYR+jACfc8KaNMF1IIWIMFdN8YAwoS6xQ7tGPu/BsV2v8XRD4Y4N1mXOkzy
+         cXh5+JMt3dwtRKlb2UPyQU9pmregFPTLg624B1xDaUe27Upbct+pWvnlUkFZR1xKEAfe
+         hmcN5Bmgx3YOs7po8VePa2NXQs2vew+FJmR1iSug7cUBnkj533PbT8z1Xi4Ohvd5KG2w
+         8ARhc0qDFXjp9nI4TvBg4fCOBZPzAbqC3G9uCFq0zEQPpZqtQdUm1D03surAyuOZksVZ
+         Z/J4cgbykOGO2k+ezLF9EVoxnZFT/FrAhJZeCMoQGJtuEynBlje5TPwkYTvO7JpD+QR0
+         ynfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706546824; x=1707151624;
+        d=1e100.net; s=20230601; t=1706546830; x=1707151630;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ijxQ2ToounQ2YPXKuEdEzzYCdzKOr5SyszX4l6rPtX0=;
-        b=b0POXAR1f1YjM5QaWAhdVhRHxjamCnE01bBbetBeYNinA1i7MnzSK3MWIFv1u2REjY
-         FplBSRCCHWQtZgmalwgPATGnA1/8sbsnb/DHN/qRJuGYI2l9fwKPPmzhPI74iHJSXLX8
-         iVAOOJe9AE9AFsCkqXUystsPQZbALdZ0Y7R5Yp+Clm9OTpAmqP0mfoGMm6hU6UVJXLGc
-         IbutY7RHP3UjTrEalGp9l0IJ86pSfQfTM7idrNhgP2VaAU4aBA6Hvys7mV6g94aDI+P8
-         vkExXbDv/+MRxw6xzxxjCY5v18CzeQZxxHPZrKUDd9YYTvt16B1y7xIJXFIChRpZR0X2
-         y5Nw==
-X-Gm-Message-State: AOJu0Yy/NAapMaoYaJttfxiMvaKcCSeSMoWgpPAci+eRIUOlQUzso+9h
-	ueNmXX8dN1c56XXfUKkbvUw03DKiOLzD4MrwZU6lNz2A2azTZP9dlLM76mLa5R4=
-X-Received: by 2002:a05:651c:151:b0:2cf:2a82:7871 with SMTP id c17-20020a05651c015100b002cf2a827871mr4062986ljd.26.1706546823949;
-        Mon, 29 Jan 2024 08:47:03 -0800 (PST)
+        bh=a1GRxsPkPoYM/j9b9XVxD2Uv8+2XdiDkavqzy6v+eQw=;
+        b=KM3jXY1w/f9sSTVF6d6Y4pk8CgkQpwTmfJE7vKIDJhz7ZoAwCUr/Iq8HS68HwmqG8H
+         CwVUsj1bNVM/gDkQscPX49Sz34nAJqTtYRuC9GMO99NhETKuiaH6d3KFn4Ad7GIQpmK/
+         SMe4ZVNjJATqAFAvtFe6vHqgWP1b8nUtsBFjqvAZhPLDplzo2aZK4/HHV69LhjJMJAT2
+         RC6bxZETehStj5SY8djWWDwLtr/wgvyUVZ1KMmEAhajFADmpqULXEfbo+pRIR+lV0CW2
+         /mn2ZWPI49939NPYhswqXI7VrMWyeKc/HEEoV+62kV5gwja5lxiCcNeBJTpOU69M25wv
+         6S3Q==
+X-Gm-Message-State: AOJu0Yygy3OsvkC/ORkIlbBCBM/3oB3hignL88dqkc7mPtvcIPPPysnl
+	KnqipUqdcn9+XmJEUGLU0mlApsnXfycyUyqNyrzzUcGm46VVbkTYdf28AGeTWw0=
+X-Received: by 2002:adf:f5c7:0:b0:33a:f505:c0f3 with SMTP id k7-20020adff5c7000000b0033af505c0f3mr1122952wrp.2.1706546830355;
+        Mon, 29 Jan 2024 08:47:10 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.219.39])
-        by smtp.gmail.com with ESMTPSA id l6-20020a5d4806000000b003392ae3aee8sm8502273wrq.97.2024.01.29.08.47.02
+        by smtp.gmail.com with ESMTPSA id k14-20020adff28e000000b003392172fd60sm8453319wro.51.2024.01.29.08.47.08
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 29 Jan 2024 08:47:03 -0800 (PST)
+        Mon, 29 Jan 2024 08:47:09 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org,
@@ -110,10 +110,13 @@ Cc: qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH v3 17/29] target/microblaze: Prefer fast cpu_env() over slower CPU QOM cast macro
-Date: Mon, 29 Jan 2024 17:44:59 +0100
-Message-ID: <20240129164514.73104-18-philmd@linaro.org>
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Huacai Chen <chenhuacai@kernel.org>
+Subject: [PATCH v3 18/29] target/mips: Prefer fast cpu_env() over slower CPU QOM cast macro
+Date: Mon, 29 Jan 2024 17:45:00 +0100
+Message-ID: <20240129164514.73104-19-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240129164514.73104-1-philmd@linaro.org>
 References: <20240129164514.73104-1-philmd@linaro.org>
@@ -125,79 +128,296 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XPs7RegNXeq7
+X-TUID: vI/e9N3naS7h
 
 Mechanical patch produced running the command documented
 in scripts/coccinelle/cpu_env.cocci_template header.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/microblaze/gdbstub.c   | 3 +--
- target/microblaze/helper.c    | 3 +--
- target/microblaze/translate.c | 6 ++----
- 3 files changed, 4 insertions(+), 8 deletions(-)
+ target/mips/cpu.c                       | 15 ++++----------
+ target/mips/gdbstub.c                   |  6 ++----
+ target/mips/kvm.c                       | 27 +++++++++----------------
+ target/mips/sysemu/physaddr.c           |  3 +--
+ target/mips/tcg/exception.c             |  3 +--
+ target/mips/tcg/op_helper.c             |  8 +++-----
+ target/mips/tcg/sysemu/special_helper.c |  3 +--
+ target/mips/tcg/sysemu/tlb_helper.c     |  6 ++----
+ target/mips/tcg/translate.c             |  3 +--
+ 9 files changed, 24 insertions(+), 50 deletions(-)
 
-diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
-index 29ac6e9c0f..98660ed950 100644
---- a/target/microblaze/gdbstub.c
-+++ b/target/microblaze/gdbstub.c
-@@ -113,9 +113,8 @@ int mb_cpu_gdb_read_stack_protect(CPUMBState *env, GByteArray *mem_buf, int n)
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 6ced52f985..1bea76e40a 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -80,8 +80,7 @@ static void fpu_dump_state(CPUMIPSState *env, FILE *f, int flags)
  
- int mb_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+ static void mips_cpu_dump_state(CPUState *cs, FILE *f, int flags)
  {
--    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
-     CPUClass *cc = CPU_GET_CLASS(cs);
--    CPUMBState *env = &cpu->env;
-+    CPUMBState *env = cpu_env(cs);
-     uint32_t tmp;
- 
-     if (n > cc->gdb_num_core_regs) {
-diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
-index 98bdb82de8..bf955dd425 100644
---- a/target/microblaze/helper.c
-+++ b/target/microblaze/helper.c
-@@ -253,8 +253,7 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
- 
- bool mb_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
--    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
--    CPUMBState *env = &cpu->env;
-+    CPUMBState *env = cpu_env(cs);
- 
-     if ((interrupt_request & CPU_INTERRUPT_HARD)
-         && (env->msr & MSR_IE)
-diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
-index 49bfb4a0ea..354897c4a2 100644
---- a/target/microblaze/translate.c
-+++ b/target/microblaze/translate.c
-@@ -1630,7 +1630,6 @@ static void mb_tr_insn_start(DisasContextBase *dcb, CPUState *cs)
- static void mb_tr_translate_insn(DisasContextBase *dcb, CPUState *cs)
- {
-     DisasContext *dc = container_of(dcb, DisasContext, base);
--    CPUMBState *env = cpu_env(cs);
-     uint32_t ir;
- 
-     /* TODO: This should raise an exception, not terminate qemu. */
-@@ -1641,7 +1640,7 @@ static void mb_tr_translate_insn(DisasContextBase *dcb, CPUState *cs)
- 
-     dc->tb_flags_to_set = 0;
- 
--    ir = cpu_ldl_code(env, dc->base.pc_next);
-+    ir = cpu_ldl_code(cpu_env(cs), dc->base.pc_next);
-     if (!decode(dc, ir)) {
-         trap_illegal(dc, true);
-     }
-@@ -1800,8 +1799,7 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb, int *max_insns,
- 
- void mb_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- {
--    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
--    CPUMBState *env = &cpu->env;
-+    CPUMBState *env = cpu_env(cs);
-     uint32_t iflags;
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
      int i;
  
+     qemu_fprintf(f, "pc=0x" TARGET_FMT_lx " HI=0x" TARGET_FMT_lx
+@@ -123,9 +122,7 @@ void cpu_set_exception_base(int vp_index, target_ulong address)
+ 
+ static void mips_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-
+-    mips_env_set_pc(&cpu->env, value);
++    mips_env_set_pc(cpu_env(cs), value);
+ }
+ 
+ static vaddr mips_cpu_get_pc(CPUState *cs)
+@@ -137,8 +134,7 @@ static vaddr mips_cpu_get_pc(CPUState *cs)
+ 
+ static bool mips_cpu_has_work(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     bool has_work = false;
+ 
+     /*
+@@ -428,10 +424,7 @@ static void mips_cpu_reset_hold(Object *obj)
+ 
+ static void mips_cpu_disas_set_info(CPUState *s, disassemble_info *info)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(s);
+-    CPUMIPSState *env = &cpu->env;
+-
+-    if (!(env->insn_flags & ISA_NANOMIPS32)) {
++    if (!(cpu_env(s)->insn_flags & ISA_NANOMIPS32)) {
+ #if TARGET_BIG_ENDIAN
+         info->print_insn = print_insn_big_mips;
+ #else
+diff --git a/target/mips/gdbstub.c b/target/mips/gdbstub.c
+index 62d7b72407..169d47416a 100644
+--- a/target/mips/gdbstub.c
++++ b/target/mips/gdbstub.c
+@@ -25,8 +25,7 @@
+ 
+ int mips_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+ 
+     if (n < 32) {
+         return gdb_get_regl(mem_buf, env->active_tc.gpr[n]);
+@@ -78,8 +77,7 @@ int mips_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+ 
+ int mips_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     target_ulong tmp;
+ 
+     tmp = ldtul_p(mem_buf);
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index 15d0cf9adb..6c52e59f55 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -63,8 +63,7 @@ int kvm_arch_irqchip_create(KVMState *s)
+ 
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int ret = 0;
+ 
+     qemu_add_vm_change_state_handler(kvm_mips_update_state, cs);
+@@ -460,8 +459,7 @@ static inline int kvm_mips_change_one_reg(CPUState *cs, uint64_t reg_id,
+  */
+ static int kvm_mips_save_count(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     uint64_t count_ctl;
+     int err, ret = 0;
+ 
+@@ -502,8 +500,7 @@ static int kvm_mips_save_count(CPUState *cs)
+  */
+ static int kvm_mips_restore_count(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     uint64_t count_ctl;
+     int err_dc, err, ret = 0;
+ 
+@@ -590,8 +587,7 @@ static void kvm_mips_update_state(void *opaque, bool running, RunState state)
+ 
+ static int kvm_mips_put_fpu_registers(CPUState *cs, int level)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int err, ret = 0;
+     unsigned int i;
+ 
+@@ -670,8 +666,7 @@ static int kvm_mips_put_fpu_registers(CPUState *cs, int level)
+ 
+ static int kvm_mips_get_fpu_registers(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int err, ret = 0;
+     unsigned int i;
+ 
+@@ -751,8 +746,7 @@ static int kvm_mips_get_fpu_registers(CPUState *cs)
+ 
+ static int kvm_mips_put_cp0_registers(CPUState *cs, int level)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int err, ret = 0;
+ 
+     (void)level;
+@@ -974,8 +968,7 @@ static int kvm_mips_put_cp0_registers(CPUState *cs, int level)
+ 
+ static int kvm_mips_get_cp0_registers(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int err, ret = 0;
+ 
+     err = kvm_mips_get_one_reg(cs, KVM_REG_MIPS_CP0_INDEX, &env->CP0_Index);
+@@ -1181,8 +1174,7 @@ static int kvm_mips_get_cp0_registers(CPUState *cs)
+ 
+ int kvm_arch_put_registers(CPUState *cs, int level)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     struct kvm_regs regs;
+     int ret;
+     int i;
+@@ -1217,8 +1209,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ 
+ int kvm_arch_get_registers(CPUState *cs)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int ret = 0;
+     struct kvm_regs regs;
+     int i;
+diff --git a/target/mips/sysemu/physaddr.c b/target/mips/sysemu/physaddr.c
+index 05990aa5bb..56380dfe6c 100644
+--- a/target/mips/sysemu/physaddr.c
++++ b/target/mips/sysemu/physaddr.c
+@@ -230,8 +230,7 @@ int get_physical_address(CPUMIPSState *env, hwaddr *physical,
+ 
+ hwaddr mips_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     hwaddr phys_addr;
+     int prot;
+ 
+diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
+index da49a93912..13275d1ded 100644
+--- a/target/mips/tcg/exception.c
++++ b/target/mips/tcg/exception.c
+@@ -79,8 +79,7 @@ void helper_wait(CPUMIPSState *env)
+ 
+ void mips_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+ 
+     tcg_debug_assert(!(cs->tcg_cflags & CF_PCREL));
+     env->active_tc.PC = tb->pc;
+diff --git a/target/mips/tcg/op_helper.c b/target/mips/tcg/op_helper.c
+index 98935b5e64..65403f1a87 100644
+--- a/target/mips/tcg/op_helper.c
++++ b/target/mips/tcg/op_helper.c
+@@ -279,8 +279,7 @@ void mips_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+                                   MMUAccessType access_type,
+                                   int mmu_idx, uintptr_t retaddr)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     int error_code = 0;
+     int excp;
+ 
+@@ -306,9 +305,8 @@ void mips_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                     int mmu_idx, MemTxAttrs attrs,
+                                     MemTxResult response, uintptr_t retaddr)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(cpu);
+-    CPUMIPSState *env = &cpu->env;
++    MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(cs);
++    CPUMIPSState *env = cpu_env(cs);
+ 
+     if (access_type == MMU_INST_FETCH) {
+         do_raise_exception(env, EXCP_IBE, retaddr);
+diff --git a/target/mips/tcg/sysemu/special_helper.c b/target/mips/tcg/sysemu/special_helper.c
+index 93276f789d..7934f2ea41 100644
+--- a/target/mips/tcg/sysemu/special_helper.c
++++ b/target/mips/tcg/sysemu/special_helper.c
+@@ -90,8 +90,7 @@ static void debug_post_eret(CPUMIPSState *env)
+ 
+ bool mips_io_recompile_replay_branch(CPUState *cs, const TranslationBlock *tb)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+ 
+     if ((env->hflags & MIPS_HFLAG_BMASK) != 0
+         && !(cs->tcg_cflags & CF_PCREL) && env->active_tc.PC != tb->pc) {
+diff --git a/target/mips/tcg/sysemu/tlb_helper.c b/target/mips/tcg/sysemu/tlb_helper.c
+index 4ede904800..6c48c4fa80 100644
+--- a/target/mips/tcg/sysemu/tlb_helper.c
++++ b/target/mips/tcg/sysemu/tlb_helper.c
+@@ -910,8 +910,7 @@ bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool probe, uintptr_t retaddr)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+     hwaddr physical;
+     int prot;
+     int ret = TLBRET_BADADDR;
+@@ -1346,8 +1345,7 @@ void mips_cpu_do_interrupt(CPUState *cs)
+ bool mips_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ {
+     if (interrupt_request & CPU_INTERRUPT_HARD) {
+-        MIPSCPU *cpu = MIPS_CPU(cs);
+-        CPUMIPSState *env = &cpu->env;
++        CPUMIPSState *env = cpu_env(cs);
+ 
+         if (cpu_mips_hw_interrupts_enabled(env) &&
+             cpu_mips_hw_interrupts_pending(env)) {
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index 13e43fa3b6..e74b98de1c 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -15628,8 +15628,7 @@ void mips_restore_state_to_opc(CPUState *cs,
+                                const TranslationBlock *tb,
+                                const uint64_t *data)
+ {
+-    MIPSCPU *cpu = MIPS_CPU(cs);
+-    CPUMIPSState *env = &cpu->env;
++    CPUMIPSState *env = cpu_env(cs);
+ 
+     env->active_tc.PC = data[0];
+     env->hflags &= ~MIPS_HFLAG_BMASK;
 -- 
 2.41.0
 

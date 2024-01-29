@@ -1,295 +1,168 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1045336ejb;
-        Mon, 5 Feb 2024 02:46:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHgXTkwxyYbZztfMutG6xnyU8FWyWfhtx0o6cGaY+8vHnQ5s+0n7CFsfOGOmSU0MlVmBBsH
-X-Received: by 2002:a0c:e302:0:b0:68c:3df8:735e with SMTP id s2-20020a0ce302000000b0068c3df8735emr5610655qvl.63.1707130008916;
-        Mon, 05 Feb 2024 02:46:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707130008; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp55777ejk;
+        Mon, 29 Jan 2024 01:34:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGumedE3KvvbPy9jjSfs69bmzS30+/Lfp8m9vbUxHhOydnuxLGGrAZ+oQJ9OUKWrngFfrVw
+X-Received: by 2002:a81:a843:0:b0:5ff:84f1:6fe3 with SMTP id f64-20020a81a843000000b005ff84f16fe3mr3151242ywh.23.1706520860378;
+        Mon, 29 Jan 2024 01:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706520860; cv=none;
         d=google.com; s=arc-20160816;
-        b=CcCLL9oTUwROEKbC1qFOxqrPGr+NOxTf2UsQlpKl376Wm8dmb+RfBTb4LErstILrmA
-         Jej6hwzwTe3LIHNn5MB+uw4lYXzuPBDfOA0TjbyAQGGEkffD4K7v1IFB0x21McwCefBd
-         H3ETmp/8KJVBYkpvlLup23Ej4C9YO26R8VkV6VemUsRgq7GAMFN49ghN6OXL1IyajDHm
-         AEWBYOrjfqGao8BmRZ9CWxFsZXtiyy6lAkOHshjDSfYtUvM6SZDjqpPIxCx9ZHE8SYDv
-         NuXRV2sATB3yHAAt1TSPCA3KVgtrng6a2i6xYMS1DAsTcWVBA0HYgX/zhEoY+ukvxCks
-         iZmw==
+        b=ZrfKSm8cZ0sSVE+okHDYxC/PdvyfU5yxqKjxvcS1alrNzee6iN2iAblsQ3sN+VKaeK
+         hFyRoUvzIzQCj27ZiTGd2qXNc5WVBej7glVYCyJrfM1XGToGk8XCyFtHrpuiNxuURjWc
+         Z9p0PujqGvhH0dBeGNrNmIE1xAEJyYovPyx0WumvV9Jt+UlcPrPe6fOptYo+h64kuifO
+         Fp8guvuyZ97tVgjAzkZDc1KBX9TwGE+WX/bFdm6fEKBwxp+o9X0+ViWzEjWUn6uNJPe5
+         qpA+DHBUdNvL1C0gf5rgeboVprNv3jFlWYuUqWYK6VC/wrLXUmqKz1zU17vozKKeum+n
+         H4Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=eFPpLAom2QqJr6csOLyoK1+WWqo8DPzyZPd4s9incc0=;
-        fh=3FmtQphK7vBwFSy2Z9TVPo9WpOrntTBxNuPhiyReMe8=;
-        b=f22BFNn3wHDbMSP6DfYrTtU10DL51dwXeMzEmMetc7eKqRCFlck6WSnZ2OYEdIDBpL
-         aXG6DD2mApY2ZRm+VJ3qU1yHs0cs/+rBkyBtFPrHb+YKnL0MKnkFmOwGb8l6YFfrgdOS
-         ViC7ilIjPuvVZbQj5R/RdadmZ8pa9bOf0t7MWqeyRkzH5Er8hrara7vCgWPLYvE8KVni
-         Gh4Yj+KtUhncW1P/LwFyPxBhh5cpJGEbryxqwO3lKJQgE/WPhLtDdfxgxCid+0J+opLq
-         6kBA157fYt+cN6wNhX2iGhfWrsgM8Hq7UbAVqB2+72Wbg2CmYxDjbfYpj60CKbfofHkl
-         GHWA==;
-        darn=linaro.org
+        h=mime-version:content-transfer-encoding:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Uo/P5DOfd/mC752ox9LxZ0KMLZd6oY1pK+x7qsIkXEY=;
+        fh=MCCLRI7Eav0C58J4xbQiDqdrgb9nG6Ic0RkQM1eww+k=;
+        b=hXTFg/Flvuw2HzOGb5LW84RSPe4LdYN/7h1S47Tbnzvx8giOrrPOrF+bUHnPALZkKD
+         9UmwztUII2NxaqcEWK1fxLN4Hb/0IzCRy4LMPuufk3k1U8/sPue54LQdGRyCrUEYAQyA
+         bEBeFg+2HL97dD5t9aLFMNSBEc8Vyf8Hvtjo7rLhd6Prh4hSt+6MDVCkSgHOYAgDNmDs
+         7/VEwQimoUXQCkr/vYqJqPy3P3njNmqyCkX/+a/eMRf1afY7sNfNE+bV//99M3W3+J5M
+         BBXN2+aVwYMrKkl2zjSqRUuLqxL6anTu5+InlHQ4Nqyfij7CCqtO6M5l21plXOGC8IPW
+         E2yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCXcaYzJ7tB192aJrcdy+RaEvLC99hXWa8EQNuTKckGuTmKrTUYtX3fCFK19pFJPp7vl5VfLd9Vydz/+rJhVfkOPhnfRcMd0
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11-20020a0cf6cb000000b006846c97c980si5100699qvo.579.2024.02.05.02.46.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Feb 2024 02:46:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=JcrhZhzi;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id p7-20020a81ca07000000b005ffebb8231esi3174377ywi.195.2024.01.29.01.34.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 29 Jan 2024 01:34:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rWwUj-0000QL-HM; Mon, 05 Feb 2024 05:46:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWwUi-0000NR-Fv; Mon, 05 Feb 2024 05:46:32 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWwUX-0008Mb-7I; Mon, 05 Feb 2024 05:46:32 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TT32W2KQsz4wqM;
- Mon,  5 Feb 2024 21:46:11 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TT32T1TLmz4wcb;
- Mon,  5 Feb 2024 21:46:07 +1100 (AEDT)
-Message-ID: <aab5b2fb-e7f0-434b-935c-ff5ad5d39f21@kaod.org>
-Date: Mon, 5 Feb 2024 11:46:03 +0100
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=JcrhZhzi;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40T85Obw023580;
+	Mon, 29 Jan 2024 09:34:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=Uo/P5DOfd/mC752ox9LxZ0KMLZd6oY1pK+x7qsIkXEY=;
+ b=JcrhZhziQPcEz9G4bR4I38kWwu6xhNIdVZxnQCLh9+cUxeEgJekBINWbarWRMZ59UmNT
+ n5Fpeqcj3MfkxK+jox2Tfo75cbFYIK5bxku3yWG0jeTcqMBgkB5Jh5L+Y1O+A3kpeWvz
+ kQy4XEi4jmxbE++wl+RDsMccHkLdDSQIPlVb+AfKdJhPf4vcppLeZrlUyQBUr4f3XgLW
+ x4ETdWLcxoG/XWQUcqd9m6+1O1MUew/nrTR8Uk9oFXskMd3KKX9xpz6O5dsUxuTwtpDP
+ 6IBKv4pUYvrVWAFqb8J2h/30+8PVl8nGVFEsRklr/X7v0MIg8tG75FmwFM6d0A+4RNIF GA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vx86vsvtm-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 29 Jan 2024 09:34:19 +0000
+Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40T8u7ck028262;
+	Mon, 29 Jan 2024 09:34:18 GMT
+Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vx86vsvtf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 29 Jan 2024 09:34:18 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40T8UkVU010535;
+	Mon, 29 Jan 2024 09:34:17 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vwd5nfarg-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 29 Jan 2024 09:34:17 +0000
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com [10.20.54.103])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40T9YFAT48300434
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 29 Jan 2024 09:34:15 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id B764120040;
+	Mon, 29 Jan 2024 09:34:15 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2B5D22004B;
+	Mon, 29 Jan 2024 09:34:15 +0000 (GMT)
+Received: from heavy.ibm.com (unknown [9.179.7.240])
+	by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Mon, 29 Jan 2024 09:34:15 +0000 (GMT)
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        David Hildenbrand <david@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v4 0/3] linux-user: Allow gdbstub to ignore page protection
+Date: Mon, 29 Jan 2024 10:32:13 +0100
+Message-ID: <20240129093410.3151-1-iii@linux.ibm.com>
+X-Mailer: git-send-email 2.43.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: zGjFIcyXJaG8wQvH2S_g3kG3RCTnkLbV
+X-Proofpoint-ORIG-GUID: 1r95fTB8Mnr8Fz80ZUVuKMhTv8NHiDgL
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v0 1/2] aspeed: support uart controller both 0 and 1 base
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20240205091415.935686-1-jamin_lin@aspeedtech.com>
- <20240205091415.935686-2-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240205091415.935686-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=XBpg=JO=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jmcySa/M79nt
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-29_05,2024-01-25_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 spamscore=0
+ mlxlogscore=829 mlxscore=0 phishscore=0 bulkscore=0 suspectscore=0
+ adultscore=0 clxscore=1015 lowpriorityscore=0 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401290068
+X-TUID: Qey3e6gY3esF
 
-Hello Jamin,
+v3: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg02907.html
+v3 -> v4: Hide InteractiveConsole behind QEMU_TEST_INTERACTIVE (Alex).
+          Probe /proc/self/mem in the PROT_NONE test.
 
-On 2/5/24 10:14, Jamin Lin wrote:
-> According to the design of ASPEED SOCS, the uart controller
-> is 1 base for ast10x0, ast2600, ast2500 and ast2400.
->
-> However, the uart controller is 0 base for ast2700.
-> To support uart controller both 0 and 1 base,
-> adds uasrt_bases parameter in AspeedSoCClass
-> and set the default uart controller 1 base
-> for ast10x0, astt2600, ast2500 and ast2400.
+v2: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg01592.html
+v2 -> v3: Add Richard's R-b on [1/3].
+          Fix printing the architecture name and the number of failures
+          in test_gdbstub.py.
+          Patches that need review: [2/3] and [3/3].
 
-The board definition can set 'amc->uart_default' to choose a different
-default serial port for the console, or use the "bmc-console" machine
-option . Isn't it enough ? May be I am misunderstanding the need.
+v1: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg01314.html
+v1 -> v2: Use /proc/self/mem as a fallback. Handle TB invalidation
+          (Richard).
+          Test cross-page accesses.
 
-To clarify,
+RFC: https://lists.gnu.org/archive/html/qemu-devel/2023-12/msg02044.html
+RFC -> v1: Use /proc/self/mem and accept that this will not work
+           without /proc.
+           Factor out a couple functions for gdbstub testing.
+           Add a test.
 
-ASPEED_DEV_UART1 is in the first serial port on the boards.
+Hi,
 
-I think we chose to start the indexing at 1 because the Aspeed QEMU
-modeling began first with the UART model (console) and for simplicity,
-we copied the definitions of the device tree from Linux :
+I've noticed that gdbstub behaves differently from gdbserver in that it
+doesn't allow reading non-readable pages. This series improves the
+situation by using the same mechanism as gdbserver: /proc/self/mem.
 
-     serial0 = &uart1;
-     serial1 = &uart2;
-     serial2 = &uart3;
-     serial3 = &uart4;
-     serial4 = &uart5;
-     serial5 = &vuart;
+Best regards,
+Ilya
 
-We replicated this indexing starting at 1 to nearly all device models :
-  
-     ASPEED_DEV_UART1 - 13
-     ASPEED_DEV_SPI1 -2
-     ASPEED_DEV_EHCI1 -2
-     ASPEED_DEV_TIMER1 - 8
-     ASPEED_DEV_ETH1 -4
-     ASPEED_DEV_MII1 - 4
-     ASPEED_DEV_JTAG0 - 1      <--- !!
-     ASPEED_DEV_FSI1 - 2
+Ilya Leoshkevich (3):
+  linux-user: Allow gdbstub to ignore page protection
+  tests/tcg: Factor out gdbstub test functions
+  tests/tcg: Add the PROT_NONE gdbstub test
 
-I don't know what would be ASPEED_DEV_UART0 in this context.
+ cpu-target.c                                  | 78 +++++++++++++++----
+ tests/guest-debug/run-test.py                 |  7 +-
+ tests/guest-debug/test_gdbstub.py             | 60 ++++++++++++++
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +-------
+ tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +-------
+ tests/tcg/multiarch/Makefile.target           |  9 ++-
+ tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++---------
+ tests/tcg/multiarch/gdbstub/memory.py         | 41 +---------
+ tests/tcg/multiarch/gdbstub/prot-none.py      | 36 +++++++++
+ tests/tcg/multiarch/gdbstub/registers.py      | 41 ++--------
+ tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++--------
+ .../multiarch/gdbstub/test-proc-mappings.py   | 39 +---------
+ .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +--------
+ .../gdbstub/test-thread-breakpoint.py         | 37 +--------
+ tests/tcg/multiarch/prot-none.c               | 40 ++++++++++
+ tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +---------
+ tests/tcg/s390x/gdbstub/test-svc.py           | 39 +---------
+ 17 files changed, 247 insertions(+), 413 deletions(-)
+ create mode 100644 tests/guest-debug/test_gdbstub.py
+ create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
+ create mode 100644 tests/tcg/multiarch/prot-none.c
 
-May be you could send a simplified AST2700 SoC model with definitions
-of a minimum address space and IRQ space ?
-
-Or you could change the indexing to start at 0 if you prefer. Just be
-careful with the aspeed_set/get_bmc_console routines it you choose to.
-
-Thanks,
-
-C.
-
-
->  From datasheet description
-> ast2700:
-> Base Address of UART0 = 0x14c33000
-> ast1030:
-> Base Address of UART1 = 0x7e783000
-> ast2600:
-> Base Address of UART1 = 0x1E78 3000
-> ast2500:
-> Base Address of UART1 = 0x1E78 3000
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed.c             | 8 +++++---
->   hw/arm/aspeed_ast10x0.c     | 1 +
->   hw/arm/aspeed_ast2400.c     | 2 ++
->   hw/arm/aspeed_ast2600.c     | 1 +
->   hw/arm/aspeed_soc_common.c  | 4 ++--
->   include/hw/arm/aspeed_soc.h | 1 +
->   6 files changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 09b1e823ba..218b81298e 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -342,7 +342,7 @@ static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
->       int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
->   
->       aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
-> -    for (int i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-> +    for (int i = 1, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
->           if (uart == uart_chosen) {
->               continue;
->           }
-> @@ -1092,9 +1092,11 @@ static char *aspeed_get_bmc_console(Object *obj, Error **errp)
->   {
->       AspeedMachineState *bmc = ASPEED_MACHINE(obj);
->       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(obj);
-> +
->       int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
->   
-> -    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 + 1);
-> +    return g_strdup_printf("uart%d", uart_chosen - sc->uarts_base + 1);
->   }
->   
->   static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-> @@ -1114,7 +1116,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
->           error_setg(errp, "\"uart\" should be in range [1 - %d]", sc->uarts_num);
->           return;
->       }
-> -    bmc->uart_chosen = ASPEED_DEV_UART1 + val - 1;
-> +    bmc->uart_chosen = sc->uarts_base + val - 1;
->   }
->   
->   static void aspeed_machine_class_props_init(ObjectClass *oc)
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index c3b5116a6a..2634e0f654 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -436,6 +436,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
->       sc->wdts_num = 4;
->       sc->macs_num = 1;
->       sc->uarts_num = 13;
-> +    sc->uarts_base = ASPEED_DEV_UART1;
->       sc->irqmap = aspeed_soc_ast1030_irqmap;
->       sc->memmap = aspeed_soc_ast1030_memmap;
->       sc->num_cpus = 1;
-> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-> index 8829561bb6..95da85fee0 100644
-> --- a/hw/arm/aspeed_ast2400.c
-> +++ b/hw/arm/aspeed_ast2400.c
-> @@ -523,6 +523,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 2;
->       sc->macs_num     = 2;
->       sc->uarts_num    = 5;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2400_irqmap;
->       sc->memmap       = aspeed_soc_ast2400_memmap;
->       sc->num_cpus     = 1;
-> @@ -551,6 +552,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 3;
->       sc->macs_num     = 2;
->       sc->uarts_num    = 5;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2500_irqmap;
->       sc->memmap       = aspeed_soc_ast2500_memmap;
->       sc->num_cpus     = 1;
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 4ee32ea99d..f74561ecdc 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -666,6 +666,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 4;
->       sc->macs_num     = 4;
->       sc->uarts_num    = 13;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2600_irqmap;
->       sc->memmap       = aspeed_soc_ast2600_memmap;
->       sc->num_cpus     = 2;
-> diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-> index 123a0c432c..3963436c3a 100644
-> --- a/hw/arm/aspeed_soc_common.c
-> +++ b/hw/arm/aspeed_soc_common.c
-> @@ -36,7 +36,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->       SerialMM *smm;
->   
-> -    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-> +    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
->           smm = &s->uart[i];
->   
->           /* Chardev property is set by the machine. */
-> @@ -58,7 +58,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
->   void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
->   {
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> -    int i = dev - ASPEED_DEV_UART1;
-> +    int i = dev - sc->uarts_base;
->   
->       g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
->       qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 9d0af84a8c..ce2bb51682 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -140,6 +140,7 @@ struct AspeedSoCClass {
->       int wdts_num;
->       int macs_num;
->       int uarts_num;
-> +    int uarts_base;
->       const int *irqmap;
->       const hwaddr *memmap;
->       uint32_t num_cpus;
-
+-- 
+2.43.0

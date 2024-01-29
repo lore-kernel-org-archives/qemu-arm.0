@@ -1,105 +1,155 @@
-Received: by 2002:a17:906:ca92:b0:a35:2c0b:b7b4 with SMTP id js18csp52343ejb;
-        Fri, 26 Jan 2024 11:38:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFxxsPEAWjVnsMOTy34IkbypM48ojhE5QNapLTdBJgETC6zVit0fQvjiwuJj15FTB2zTvSQ
-X-Received: by 2002:a05:620a:2995:b0:783:bd62:5f92 with SMTP id r21-20020a05620a299500b00783bd625f92mr278163qkp.143.1706297881793;
-        Fri, 26 Jan 2024 11:38:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706297881; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp25376ejk;
+        Mon, 29 Jan 2024 00:15:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEPD9HRdxw/noNKAY9GwnaOkgYHSHLRAeXRTtDB3GkN+LsMcrHC+KeunEW8Ue4Tdp9BYkpg
+X-Received: by 2002:a05:620a:2a14:b0:784:38c:949f with SMTP id o20-20020a05620a2a1400b00784038c949fmr259130qkp.125.1706516150859;
+        Mon, 29 Jan 2024 00:15:50 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706516150; cv=pass;
         d=google.com; s=arc-20160816;
-        b=jyoYw0SoIvopNXPePWmfuI90fYBH+dWfLbnoZJbN62xZbELoJ27ToSQZyOYDMfEf9C
-         1M47FcLSFdrkmSAjRSfy7AT2qyw4MxbbiiRnRxuGl/IIJN+3XDGj4ZsfvFr4ocij6ArP
-         oFsROcXvzTPvyfnyusEBthW93LD91cHXTx51BvAaNQ3Y6mXvZKttUxJSxyLbNPP79dCD
-         oDIMOOLrd7S1Cd5dHr0yKW+dCvMVnfasHFG2yrlTjSnGWzU9UqFb0ieh3hFk6Z8NiK0+
-         6CI3IPe72YMLZV9fvKSuVRv4Bnuk7iHOSz/bjxHDkBD6JTJE7WRT5EOXSRlXycVt0da2
-         itEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=aFq+h6+Kg/U+EeaDnjPT1TkldNdqQ+xXPmBYPYVRq6i8dPpMKA/KesSa24UZBWNH8E
+         WVzgp2X3NhWhxZ5sBRXhhzcicjzb9xpumrdsBvBvR6MOBUjL+LXi6ewwSH4Si5iNByaY
+         M+uTglHlvoBq2d1I7VfiRvWrA5tr/yoycg0mqg9H3+xvF8a6jG3wwTNlQm6Jr6J4VuuU
+         zXnfIzizZfJjlthThXBHHrKFqRd7DXZprJcm4eF6Vn0gS6FiXSfZUmNzxCPTKugdsktD
+         ZON7lAdY/7S5yhRbqzS7c/pkBaVzX05NQ8MTedHUiPuGTriEDZf8ePSbfigspA23dy0Y
+         4drg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=sLcpi0h2CrxIGF99Co/VPvMC+y3v77u7Y6/APVqUHoI=;
-        fh=ljnq3rjsw4OgfUmEdcxBMo/6xL95ZUg0LjPOK/rT3SQ=;
-        b=YQRn/dJfuBXLZVDOJiYUAoJwrtBhG3BF2Jpz6lbpMX15wKOJ3CLyOjva1Jj/MDQcs/
-         r1n4JU7tITTV2RgkXUnOA7qz8yZTQMhoNWGNogvXG8vXwuwVKsBJH1moSWa1sn8Gtlcj
-         Mxs7dvfgNpcR6jZRp50Z27QrWPKWR+I06o3XlCjilPjLJvmde4749D7K6FX5gCuz5Qqd
-         +sSgNr799BBOs4ivy78c6ZjwaLhRYQg8kUi3LeIin16l+rla/fe8zD3M6iULfnOfgozN
-         47FCXBI6yWuxFQL/j2PN1bQuDK0WtlPqo7k6Pjt580fQ33IE70JZuSDsi4L0+4QTwGob
-         tEtg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=P5414BE0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from;
+        bh=w7VCP15G1BvqWTdQRPP3FfBZvOzet9rpsAoH/InIbt8=;
+        fh=OkLATK8hi2YX+YPW6AKTDeC/kLStSxt3T7B2h40N4Ss=;
+        b=Xz9yXP6Oc32zxKLVp09w+hed5naftItQGgT/D4HfzpO9S5E3e8EB/HlEt1hXXjScYJ
+         hRNs2CeCBZk2rNwYHLuCXGxbHo0H5QX1PBvSAPD6GW/ssKVwyK79nrll3Mzw8TiFqoIY
+         w9sRXRRhrXMKuHzB+i0iBhkcpKOLoWMVb+ixtdb+2A53/9Rp9UWNfEuv0c0EfOu9qclo
+         Lc2eFdF1KcSW7WbEV6pc3xNd8WdL29zr98kIW4b+RFUsS1UBerDdBye6jjL1MntcxEl0
+         ICyXFjEu03vAETeO2K1ZABpoE0pJWJlt/j7QsVxfTjY5zzol63e4pWcFH8n5Ira5rE+t
+         GIDA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wa3-20020a05620a4d0300b007839d57fd65si1953300qkn.145.2024.01.26.11.38.01
+        by mx.google.com with ESMTPS id t26-20020a05620a005a00b007840449a485si194772qkt.234.2024.01.29.00.15.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 11:38:01 -0800 (PST)
+        Mon, 29 Jan 2024 00:15:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=P5414BE0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rTS0o-0002Sl-TP; Fri, 26 Jan 2024 14:37:14 -0500
+	id 1rUMni-00038j-Bh; Mon, 29 Jan 2024 03:15:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rTS0m-0002Qv-Lv; Fri, 26 Jan 2024 14:37:12 -0500
-Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rUMnc-00037l-BJ; Mon, 29 Jan 2024 03:15:25 -0500
+Received: from mail-bjschn02on2061e.outbound.protection.partner.outlook.cn
+ ([2406:e500:4440:2::61e]
+ helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rTS0k-0003am-AV; Fri, 26 Jan 2024 14:37:12 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 62EB6C0D86;
- Fri, 26 Jan 2024 20:37:05 +0100 (CET)
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id pL3-P45c9Wp0; Fri, 26 Jan 2024 20:37:04 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id E4693C0DEE;
- Fri, 26 Jan 2024 20:37:04 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr E4693C0DEE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1706297824;
- bh=sLcpi0h2CrxIGF99Co/VPvMC+y3v77u7Y6/APVqUHoI=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=P5414BE04UDoQOwQkouhCRZii4oFVBS+RriFkp93+lfWDb4vtDYNnOIXY0fUTqfde
- XxE5Gye5gL0zxCnMbZHeTB+wGLPyAXXGKgjqPpYZJU7BgJL5+pX0vsYHYSYQO4WoFf
- bIuFU4YiDdlk6R3EK7HNrMSiEAogn/CecosmbPUI=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id 8AYq580aijm5; Fri, 26 Jan 2024 20:37:04 +0100 (CET)
-Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id A09E4C0D84;
- Fri, 26 Jan 2024 20:37:04 +0100 (CET)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Samuel Tardieu <sam@rfc1149.net>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-Subject: [PATCH 3/3] tests/qtest : Add testcase for DM163
-Date: Fri, 26 Jan 2024 20:31:03 +0100
-Message-ID: <20240126193657.792005-4-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
-References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rUMnU-0007by-TX; Mon, 29 Jan 2024 03:15:24 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EGpgg/2lM81m5z6gUINozqVgZswqRfp/VZzxtPb+dI02/a13EMFOzuh9nky79IOcVmJrTfwc1vv6Ouk9uCofYnTQIAMe7ZEHSewIO1s5s9YKvsiAo8LXzjAiK+XiLJ0NmnrFsCjFWzGJx9N8G1jRv92UIdbgrS6iakePmwrAOAz8P7upfaO9dKsREDm1iwjI0bDQ+gyJhuZjse2IOJJ54l2QJje3StYaqvNfYlk5zauJ+1yEn84GqPr9r2GlR4gZ8Z2woD7YLZW4Undeob7+1ctL2KFcjrzl87N25hzZdcfBLxilnWFjC4os2YFiSAtpkvoKly9QEbZ27BQE6ijehQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w7VCP15G1BvqWTdQRPP3FfBZvOzet9rpsAoH/InIbt8=;
+ b=d8L/YazOB1UpuXAncQrSmQYJg83MLYzmsArIxQuuEFTx5ZUwQEwLYGxo1Akn4AzRnIund/U0uvrTqQa8see84DDPPs8Yimo9joNJfCpYnrkpPo19o12rjt7lqAr2GiwVXDpQ22FhpftQlZP4kW3MGUIwR+Ke9t2JbYcJXsCETIeGpVB3db3wH//IRZGjdicifiB8ZsAA6U55TwiOuX2QbNVjj/0nTyFdBFhyfP9YGR/0ngEOxP3+leqJXQyVlRzwrkYMDX1BhiNmYEEW17eSmp5yXMXsL4+tBRqBi30BNaZ6RKOLORcbH6Jhkfgwa/rQSJ2h+c/nSdt5AQzyq057nQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:f::16) by BJSPR01MB0721.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:1e::23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.32; Mon, 29 Jan
+ 2024 08:14:52 +0000
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ ([fe80::3862:65b4:c857:c4a6]) by
+ BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::3862:65b4:c857:c4a6%4])
+ with mapi id 15.20.7228.029; Mon, 29 Jan 2024 08:14:52 +0000
+From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ shannon.zhaosl@gmail.com, jeeheng.sia@starfivetech.com,
+ peter.maydell@linaro.org, sunilvl@ventanamicro.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: [RFC v1 2/3] hw/riscv/virt-acpi-build.c: Generate PPTT table
+Date: Mon, 29 Jan 2024 00:14:22 -0800
+Message-Id: <20240129081423.116615-3-jeeheng.sia@starfivetech.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240129081423.116615-1-jeeheng.sia@starfivetech.com>
+References: <20240129081423.116615-1-jeeheng.sia@starfivetech.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SHXPR01CA0017.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c311:1b::26) To BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:f::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::dc;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BJSPR01MB0561:EE_|BJSPR01MB0721:EE_
+X-MS-Office365-Filtering-Correlation-Id: 947971c7-38d4-4226-b192-08dc20a25e95
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: a1q03tYDLfiGcHFOKInCDsyyIrx7wJES32aqNmhfg9Y867n0rAHsbmj+ecvIPVB423XQPMWMBkcPh+tUW2xY0aaIlJfQs1NHdo5dvzzrGm0clRdRdNHaD7L8YQaWBbG+l8YLPYUbdpZITdtKtNySTL6HYvnsS/nzPO9MQUM9sHM4Cj5OW9qZFPnmsMlgtEMkVM4ORpJmuGzjd44Pgc0oqj8Y9786FMxS158KsMrsy1CXijn0JLjxdWVoWje/iYh2wXtP638UpWCMiNv/0he59J7odLhtPVK07tjueIAozrJCv2CyFTeUmJ/5v50326ajYG38MuXWzOjMmKjCgR/e5lSm6wvyDN+X6xHTgcy/ugKTVPIUTnu613ekhtz6zfyms2iPXN9lzFBPiU9nR9vU3GJ8cN1qyoR8FK3dGkQozyAKDcn7GI5ylJ4ec5aPVL+Iy2gKQXnNLadPFSWFXZpWthDgZOZGchx1es3AODlI9t07hDthiPM5YRH5SdKONjJgnTlBpOLVLG7KaoXjPe02fk5iRGyPE87e/KvNiI2gElXWcFI1ySpK4D+SPkxGRVru
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn; PTR:;
+ CAT:NONE;
+ SFS:(13230031)(136003)(396003)(366004)(346002)(39830400003)(230922051799003)(186009)(451199024)(64100799003)(1800799012)(41320700001)(38100700002)(2906002)(36756003)(41300700001)(83380400001)(1076003)(2616005)(6666004)(26005)(40160700002)(508600001)(52116002)(40180700001)(66476007)(66556008)(66946007)(38350700005)(8676002)(8936002)(4326008)(86362001)(7416002)(5660300002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qzwHpw2XuV+5Kg5/TNp5uTCMwp5SVvY+bdUTwUhWwN8LnR2wk0Cwe8PXp9FS?=
+ =?us-ascii?Q?UTvTfaUUIZJogz0CMr3PXpPRXDU2NKQFSsWPCfBuG8VhsxhMESt0qihQWRHK?=
+ =?us-ascii?Q?JxeUlX00dEs/wWWebxBjwx43YbmVLNVe1NfH2aExwmrfQ0eL2cNXpulobWcb?=
+ =?us-ascii?Q?dPZ7IWAbN2BeBrfF/IxGfQyGAKJvCU0HV1qN/BnhJ3R8jfYnLi/qvXAB9+Z8?=
+ =?us-ascii?Q?sEtSNj5q+Sz7PZzy7xi6K7RtpJHnU3f/VTDoX1ztvPxnRsem3USLHSGLdhg4?=
+ =?us-ascii?Q?9Aiqa7nDk5nhuwh5sdAchv5hLJPKb46YqgrYKme8UDdXC/FBaSO93buF+wdY?=
+ =?us-ascii?Q?xjVoqWaYQx2fKJp6AmDiWRxckwxF/lkW/jmxY/V5Gc4VXvSZ5MAodhBUo7v3?=
+ =?us-ascii?Q?B25f/8dDLrdyhqp32Kze0wPu2KJf1BulRwQRSVlF9EgmJ/quaadoGQZUlX5R?=
+ =?us-ascii?Q?Ln3MdIi7XpnI19UVPF0JG2/dm9S0Niddz/k1XdByUdTz9B/T+V8SqEB4vNl9?=
+ =?us-ascii?Q?aVmfFOIzjdTyL1c66HROfcpy7ycPd4J8w5JRSfXugEt+4NfQ+UknLyIcOeKw?=
+ =?us-ascii?Q?k0Xsn90up65sYVbj7MBfuEc9Ftn/y6XAPCrKcYhS+oi9WMgfU9xk9aasX7L9?=
+ =?us-ascii?Q?KyyIIV5YA62oAfZREIgDBbqlG8IJ3fzFL6faRIpaoIjlQ96+Yye3SP1oORkc?=
+ =?us-ascii?Q?RR3wRntu6yLK4MMFZ9+1LThmbdr66ba8mBqqpGGhDaRNW+A+G/Yf8arTCaG1?=
+ =?us-ascii?Q?fEmDfxhqNzzYAl9C9MF2eqJFh+dRwyOy/is0fnXxaB+fvouLqxiihjbugPec?=
+ =?us-ascii?Q?a5Hsi2pz4qmkcyrDFEDgeTzxTPqI/16gXva8Z0V0Fs8h9+0Xsvc2THOsC8wd?=
+ =?us-ascii?Q?P2YrHu/cupMmanutwoO57gWJ1WMBesUhN62gfkodYGCU8XbbX0FN+t9vX+eg?=
+ =?us-ascii?Q?7O3qGzDRz9MA6WD4VpqFTtGdgtufJae3hAzKx/ux8XBLaqPTcbByJ3mLbE/g?=
+ =?us-ascii?Q?Iuxtsk/6koqnTaShYxyTm+D81N1IIMeTmw9QDDvHHyLwaz3gYe6Tf+qwfJPG?=
+ =?us-ascii?Q?MHUSBt+9yyz1ZNu9ElxdLVSmZVHw6ehsc85UQOgchpW4UL7vBKWvNySB6Qm/?=
+ =?us-ascii?Q?rX3IzUw7jk3mMU8L/cLqja1j4slKd6UwCc8XBKkVKcWx9CftlAPMiY4wfqqV?=
+ =?us-ascii?Q?5i0qtc3qVo/vqR9JHaBU6ofSstRmgNPgrHPNyVJK8C7fX4HKV9qKq2NpHoK+?=
+ =?us-ascii?Q?ljauUcTextduLfSPLc623gXslJEJ79BJgz0Efy7MMiyqSSGo1Yikqxw0w3ga?=
+ =?us-ascii?Q?nAZVAVvVLD+q6ZTARCOcl9Ggha5qyIWAZLCwiU/RDT48rPK4/QAXGNbQJErl?=
+ =?us-ascii?Q?5fC6ux/v+2REAov6BDA367DjqmrwHVDKyva2oJuMcAoKw+3k4tp8v6hZCw4o?=
+ =?us-ascii?Q?66ZVt85SLyFnzCIED7rpZUBJ6XqAA2uC9EhuELbqUa+YuDJCE0XvZycwbVSQ?=
+ =?us-ascii?Q?UBsY6PA7HdoE5iD9hAoRPdcPuTJH495UsxjNqNrdVkJjM5Ea9pGMUFyOJAbe?=
+ =?us-ascii?Q?3f3RCpfDP78I1IZ/JlcMNH/ZeDrIJnbr68dzYH236FyjaKM+65xf4zWLt4Vm?=
+ =?us-ascii?Q?Eg=3D=3D?=
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 947971c7-38d4-4226-b192-08dc20a25e95
+X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jan 2024 08:14:52.6273 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2r3szqQr9txzb8Bf0SNtwhoBJ/YQdMnyNLm2WnPAqlWEIY7WgjylopA498tC/6LPs662aHiVq+e3Cdi8J6e7+dOmnV1031SZ+FrTpxuB6/s=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0721
+Received-SPF: pass client-ip=2406:e500:4440:2::61e;
+ envelope-from=jeeheng.sia@starfivetech.com;
+ helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -115,240 +165,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bm7IRCLpi4Yh
+X-TUID: GgJaFKDjJRu+
 
-`test_dm163_bank()`
-Checks that the pin "sout" of the DM163 led driver outputs the values
-received on pin "sin" with the expected latency (depending on the bank).
+Generate the Processor Properties Topology Table (PPTT) with a
+cache type 1 structure for RISC-V virtual machine. A 3-layer
+cache topology is used.
 
-`test_dm163_gpio_connection()`
-Check that changes to relevant STM32L4x5 GPIO pins are prpagated to the
-DM163 device.
-
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 ---
- tests/qtest/dm163-test.c | 192 +++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build  |   1 +
- 2 files changed, 193 insertions(+)
- create mode 100644 tests/qtest/dm163-test.c
+ hw/riscv/virt-acpi-build.c | 49 +++++++++++++++++++++++++++++++++++++-
+ hw/riscv/virt.c            |  1 +
+ 2 files changed, 49 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/dm163-test.c b/tests/qtest/dm163-test.c
-new file mode 100644
-index 0000000000..7691ce1af0
---- /dev/null
-+++ b/tests/qtest/dm163-test.c
-@@ -0,0 +1,192 @@
-+/*
-+ * QTest testcase for DM163
-+ *
-+ * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
-+ * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+
-+#define SIN 8
-+#define DCK 9
-+#define RST_B 10
-+#define LAT_B 11
-+#define SELBK 12
-+#define EN_B 13
-+
-+#define DEVICE_NAME "/machine/soc/dm163"
-+#define GPIO_OUT(name, value) qtest_set_irq_in(qts, DEVICE_NAME, NULL, n=
-ame,   \
-+                                               value)
-+#define GPIO_PULSE(name)                                                =
-       \
-+  do {                                                                  =
-       \
-+    GPIO_OUT(name, 1);                                                  =
-       \
-+    GPIO_OUT(name, 0);                                                  =
-       \
-+  } while (0)
-+
-+
-+static void rise_gpio_pin_dck(QTestState *qts)
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index 26c7e4482d..d95ae1cf01 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -38,6 +38,7 @@
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
++#include "qemu/units.h"
+ #include "sysemu/reset.h"
+ 
+ #define ACPI_BUILD_TABLE_SIZE             0x20000
+@@ -528,12 +529,54 @@ static void build_madt(GArray *table_data,
+     acpi_table_end(linker, &table);
+ }
+ 
++static void pptt_setup(GArray *table_data, BIOSLinker *linker, MachineState *ms,
++                       const char *oem_id, const char *oem_table_id)
 +{
-+    /* Configure output mode for pin PB1 */
-+    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
-+    /* Write 1 in ODR for PB1 */
-+    qtest_writel(qts, 0x48000414, 0x00000002);
++    CPUCaches default_cache_info = {
++        .l1d_cache = &(CPUCacheInfo) {
++            .type = DATA_CACHE,
++            .size = 64 * KiB,
++            .line_size = 64,
++            .associativity = 4,
++            .sets = 256,
++            .attributes = 0x02,
++        },
++        .l1i_cache = &(CPUCacheInfo) {
++            .type = INSTRUCTION_CACHE,
++            .size = 64 * KiB,
++            .line_size = 64,
++            .associativity = 4,
++            .sets = 256,
++            .attributes = 0x04,
++        },
++        .l2_cache = &(CPUCacheInfo) {
++            .type = UNIFIED_CACHE,
++            .size = 2048 * KiB,
++            .line_size = 64,
++            .associativity = 8,
++            .sets = 4096,
++            .attributes = 0x0a,
++        },
++        .l3_cache = &(CPUCacheInfo) {
++            .type = UNIFIED_CACHE,
++            .size = 4096 * KiB,
++            .line_size = 64,
++            .associativity = 8,
++            .sets = 8192,
++            .attributes = 0x0a,
++        },
++    };
++
++    build_pptt(table_data, linker, ms, oem_id, oem_table_id,
++               &default_cache_info);
 +}
 +
-+static void lower_gpio_pin_dck(QTestState *qts)
-+{
-+    /* Configure output mode for pin PB1 */
-+    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
-+    /* Write 0 in ODR for PB1 */
-+    qtest_writel(qts, 0x48000414, 0x00000000);
-+}
+ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+ {
+     GArray *table_offsets;
+     unsigned dsdt, xsdt;
+     GArray *tables_blob = tables->table_data;
+-
++    MachineState *ms = MACHINE(s);
+     table_offsets = g_array_new(false, true,
+                                 sizeof(uint32_t));
+ 
+@@ -555,6 +598,10 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_rhct(tables_blob, tables->linker, s);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    pptt_setup(tables_blob, tables->linker, ms,
++               s->oem_id, s->oem_table_id);
 +
-+static void rise_gpio_pin_selbk(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC5 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
-+    /* Write 1 in ODR for PC5 */
-+    qtest_writel(qts, 0x48000814, 0x00000020);
-+}
-+
-+static void lower_gpio_pin_selbk(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC5 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
-+    /* Write 0 in ODR for PC5 */
-+    qtest_writel(qts, 0x48000814, 0x00000000);
-+}
-+
-+static void rise_gpio_pin_lat_b(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC4 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
-+    /* Write 1 in ODR for PC4 */
-+    qtest_writel(qts, 0x48000814, 0x00000010);
-+}
-+
-+static void lower_gpio_pin_lat_b(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC4 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
-+    /* Write 0 in ODR for PC4 */
-+    qtest_writel(qts, 0x48000814, 0x00000000);
-+}
-+
-+static void rise_gpio_pin_rst_b(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC3 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
-+    /* Write 1 in ODR for PC3 */
-+    qtest_writel(qts, 0x48000814, 0x00000008);
-+}
-+
-+static void lower_gpio_pin_rst_b(QTestState *qts)
-+{
-+    /* Configure output mode for pin PC3 */
-+    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
-+    /* Write 0 in ODR for PC3 */
-+    qtest_writel(qts, 0x48000814, 0x00000000);
-+}
-+
-+static void rise_gpio_pin_sin(QTestState *qts)
-+{
-+    /* Configure output mode for pin PA4 */
-+    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
-+    /* Write 1 in ODR for PA4 */
-+    qtest_writel(qts, 0x48000014, 0x00000010);
-+}
-+
-+static void lower_gpio_pin_sin(QTestState *qts)
-+{
-+    /* Configure output mode for pin PA4 */
-+    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
-+    /* Write 0 in ODR for PA4 */
-+    qtest_writel(qts, 0x48000014, 0x00000000);
-+}
-+
-+static void test_dm163_bank(const void *opaque)
-+{
-+    const long bank =3D (uintptr_t) opaque;
-+    const int width =3D bank ? 192 : 144;
-+
-+    QTestState *qts =3D qtest_initf("-M b-l475e-iot01a");
-+    qtest_irq_intercept_out_named(qts, DEVICE_NAME, "sout");
-+    GPIO_OUT(RST_B, 1);
-+    GPIO_OUT(EN_B, 0);
-+    GPIO_OUT(DCK, 0);
-+    GPIO_OUT(SELBK, bank);
-+    GPIO_OUT(LAT_B, 1);
-+
-+    /* Fill bank with zeroes */
-+    GPIO_OUT(SIN, 0);
-+    for (int i =3D 0; i < width; i++) {
-+        GPIO_PULSE(DCK);
-+    }
-+    /* Fill bank with ones, check that we get the previous zeroes */
-+    GPIO_OUT(SIN, 1);
-+    for (int i =3D 0; i < width; i++) {
-+        GPIO_PULSE(DCK);
-+        g_assert(!qtest_get_irq(qts, 0));
-+    }
-+
-+    /* Pulse one more bit in the bank, check that we get a one */
-+    GPIO_PULSE(DCK);
-+    g_assert(qtest_get_irq(qts, 0));
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_dm163_gpio_connection(void)
-+{
-+    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
-+    qtest_irq_intercept_in(qts, "/machine/soc/dm163");
-+
-+    g_assert_false(qtest_get_irq(qts, SIN));
-+    g_assert_false(qtest_get_irq(qts, DCK));
-+    g_assert_false(qtest_get_irq(qts, RST_B));
-+    g_assert_false(qtest_get_irq(qts, LAT_B));
-+    g_assert_false(qtest_get_irq(qts, SELBK));
-+
-+    rise_gpio_pin_dck(qts);
-+    g_assert_true(qtest_get_irq(qts, DCK));
-+    lower_gpio_pin_dck(qts);
-+    g_assert_false(qtest_get_irq(qts, DCK));
-+
-+    rise_gpio_pin_lat_b(qts);
-+    g_assert_true(qtest_get_irq(qts, LAT_B));
-+    lower_gpio_pin_lat_b(qts);
-+    g_assert_false(qtest_get_irq(qts, LAT_B));
-+
-+    rise_gpio_pin_selbk(qts);
-+    g_assert_true(qtest_get_irq(qts, SELBK));
-+    lower_gpio_pin_selbk(qts);
-+    g_assert_false(qtest_get_irq(qts, SELBK));
-+
-+    rise_gpio_pin_rst_b(qts);
-+    g_assert_true(qtest_get_irq(qts, RST_B));
-+    lower_gpio_pin_rst_b(qts);
-+    g_assert_false(qtest_get_irq(qts, RST_B));
-+
-+    rise_gpio_pin_sin(qts);
-+    g_assert_true(qtest_get_irq(qts, SIN));
-+    lower_gpio_pin_sin(qts);
-+    g_assert_false(qtest_get_irq(qts, SIN));
-+
-+    g_assert_false(qtest_get_irq(qts, DCK));
-+    g_assert_false(qtest_get_irq(qts, LAT_B));
-+    g_assert_false(qtest_get_irq(qts, SELBK));
-+    g_assert_false(qtest_get_irq(qts, RST_B));
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    qtest_add_data_func("/dm163/bank0", (void *)0, test_dm163_bank);
-+    qtest_add_data_func("/dm163/bank1", (void *)1, test_dm163_bank);
-+    qtest_add_func("/dm163/gpio_connection", test_dm163_gpio_connection)=
-;
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 5692da4fc1..e9f6ac46ef 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -22,6 +22,7 @@ qtests_generic =3D [
-   'qos-test',
-   'readconfig-test',
-   'netdev-socket',
-+  'dm163-test',
- ]
- if enable_modules
-   qtests_generic +=3D [ 'modules-test' ]
---=20
-2.43.0
+     acpi_add_table(table_offsets, tables_blob);
+     {
+         AcpiMcfgInfo mcfg = {
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index f9fd1341fc..a6f468fc22 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1710,6 +1710,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
+     mc->get_default_cpu_node_id = riscv_numa_get_default_cpu_node_id;
+     mc->numa_mem_supported = true;
++    mc->smp_props.clusters_supported = true;
+     /* platform instead of architectural choice */
+     mc->cpu_cluster_has_numa_boundary = true;
+     mc->default_ram_id = "riscv_virt_board.ram";
+-- 
+2.34.1
 

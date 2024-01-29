@@ -1,352 +1,457 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp447558ejk;
-        Mon, 29 Jan 2024 13:44:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH2KGkhVzD6jzSIMxgSs4RY/F963fhF2LT/WGhYlX4xlXFhELTV603krWFPYa73YUWDRABp
-X-Received: by 2002:a9d:481a:0:b0:6e0:d3be:39cb with SMTP id c26-20020a9d481a000000b006e0d3be39cbmr9029107otf.24.1706564677217;
-        Mon, 29 Jan 2024 13:44:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706564677; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp451014ejk;
+        Mon, 29 Jan 2024 13:54:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFU9gQkLsXe58MI/lVBp4eKRhXIcmqiT8WnUhgyjkAA785QJ86GfaVMUBYSIo3lnuoTHUoJ
+X-Received: by 2002:a17:90b:3112:b0:294:ef2:62d1 with SMTP id gc18-20020a17090b311200b002940ef262d1mr2848930pjb.19.1706565246094;
+        Mon, 29 Jan 2024 13:54:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706565246; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Yswx/WyJP6dFAsl3sJtTjCE0755lD8oXXBHMsPXt5WKbQWByj6ENjMvK6VA4Uv9nRo
-         Ii+lMapLdAdk98LARCPeEEBrY/gq0hU7UxppP8kYSTHr9Lx0CufzWU5vQSWE+gbEEr7U
-         hYmGHbocmXwp5M8J8hUbiTRlmDcsjrEera2BmJ8cU1i4OVq9sX64oOMc2/cBNqW6MTUM
-         vmTap1945k25ECOTlebFBm68408L0myUKjKNTJi5q0Cq6e3GsB2zUpEOvuZ3Vqkng2O/
-         SA/y4aVgKByGSYklxtCptUaB7ur8NA+zSR2SOMke7MBXuDNiH2WRlqHwqY1zFbrmPdGI
-         l8Gw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=veI10lYyuYNbseN0HhfyLzNbmfkodDIhyCjJhQPlH4U=;
-        fh=AbFLHYNZJ6Db6HO7rZF/3KI3CF6WX1cFPrQt/bue5Po=;
-        b=1DrXf36g9wzYn9pOV9HXNYHk2akW+ETuyA18nigbX6QrEC7kthtlPAcN/8kB6z730U
-         +6VhhwiGtQzUtxMbyptf30Yr2wtZGQK2uPm/zM3SzrbYfvIdaWCyzcBNPXphZQw4xb72
-         1b0ZV2njteUKE3HmNaSfRTR9qF6cghEEGYvv2m3hhD6P3Gf5UFjDnY8a+StX9vNl1H4W
-         8rxMecPsvagdQVpU2l2ysz+MpKVC4vjUN88T6g8qrCDEuOIsYMlwIYDAgZ8e00OOf+Si
-         s0EtaPgo9maBVUb95RLQWVIDIIaoPHlHI2Fi48f/jLvPa+6dh/0MKw5LtRew1QBldl8K
-         LElA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=sXNtKQt2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16-20020ac85e10000000b0042aa9453587si2202350qtx.100.2024.01.29.13.44.37
+        b=IVsvblJTtqj2BkDgt/rHcre5fiDlJbeXUoUH9T5fA6qcO4//ZSe+0DWX1F7OB/ZBrG
+         TvT0qWk7igWWaQEVH9FyMQMEWtaUjpdwGgxjIzu+hSrlvSOjWOf3Q1pE3hsfYZa62V86
+         p8fZYVmhKxg5C8ac4a3whuFFsqf/+aTFAuZ3HFrAnGL85LAnHvNtr00EAwWUfUkHkz7W
+         inwFUkn9De2jWeaevIaf9s+6mDCg6hik+sSmKkkUoEkNkWk5iYyqSaaqMDflQSeyBTb5
+         LIGQ+qKDiu1OOT0U+Fd4WO4S1/1GzmlS+ltUmoNfZYv0J1pK3jhqlU+vuU57ZI8IvC/s
+         mt7Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=vT/LCBfD/SStU7mQwAr6SlF2BMbRDBjqWwgGqBB0M+s=;
+        fh=c/ed4nvVgqTkWTfCIfOSXYq89hBP77km37JWSuoGB9o=;
+        b=yB1ljNDd4m4gcpnlebZoCa/eTt92Dsehyez3kHnk9SADpJhbgzzcDrpFwev4lfxiMq
+         iikWtzLKd8E1dnFWUfNALCib+O7vrVYeErV0gD+yxwWZG9sq13f8Y04c1rius4Ej8qXl
+         9RIm5X4gCvTR9+zfY4FaEXV1yuFq8NCx/yYmIg4qOYtUgEXeD7nFKuxJhWDPP6N7K9Oc
+         12NVSwxbLMpSZFkcCQplAxlOKOJBNS70WG4IFOYUw/dUTC7cAycerMdFNcRodXJn4jqD
+         iYd51udl36ZoVF7su19sA6tWx+H4ZZOwzOL1rScd9975BjiFQRCBeKKZiU9RqdYe5Pmi
+         vEPw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=GPl551cD;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id v7-20020a17090ac90700b002905eeccaf4si6165440pjt.187.2024.01.29.13.54.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jan 2024 13:44:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jan 2024 13:54:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=sXNtKQt2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUZQJ-0000fS-1e; Mon, 29 Jan 2024 16:44:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rUZQH-0000ba-GX; Mon, 29 Jan 2024 16:44:09 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rUZQF-0001Pd-BU; Mon, 29 Jan 2024 16:44:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=veI10lYyuYNbseN0HhfyLzNbmfkodDIhyCjJhQPlH4U=; b=sXNtKQt2HGf1xe43EsfKGmaW55
- ac4WFljyRTE0azonz4LSccRbxcXyJgrZpkMnDFH0CqTOkYYpOgU34rfsrPigJfIP62K6F3z2cQR7o
- wH0Ing9tnMyhdYEP2M/o/FJyqs4JsDd+W27RhnTz32bDPUpRJwJ59k2Tpucy9Sd3svnRwLTpyymAG
- mE9QnmCfSrxmdIPJ8QUCIHrFvVUy7PRwsfBxZde/8HPSGpv7RGh6nfugA6izWNF1QzsMKkkHyA2GC
- sP2jx86ysth7BHP9pL9V6XURtIJcMAZhyy8wP1rjs1AJpwa2K06Nm8eDuWe047BKrKNBQJIxiG/sq
- HeTCvtow3Cmqd4njg6hAXkQB7ohvf2m27c5TkMKjfJOyMC3hScCZW+8m0bTTg7lVM7JdwcXfzmxCJ
- 6hZb7mjLdRWDcWZyvsivnsDSndBqMcojQoY2c25spXeMk2HuBJWzbXd3HzsSkwmb/lLgLQBp/Pwis
- Wk87k3EGsBbNqib+/3thgRa2utHHNCidTq9XJRJvvX2xeib3EZoufQP/IvED7yKMVvosrkpNfzYGf
- egL9Jr6BCIJjzadXZQJtuZgziA7Pvl4v4MJngQDzIx8eVa/NALgY46WxLox8kMERjGsivxZ3sfndv
- ObMFnq+9ILoW4NlbhcEzskSa33aJ44tpFTOwVk37k=;
-Received: from [2a00:23c4:8bb2:a00:c9b9:c424:5b7e:9d9f]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1rUZPY-0004mf-A5; Mon, 29 Jan 2024 21:43:28 +0000
-Message-ID: <140c63fc-f99c-41f3-b96c-5f9d88fa82ba@ilande.co.uk>
-Date: Mon, 29 Jan 2024 21:43:59 +0000
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=GPl551cD;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7396-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 6D7A3B20C1D
+	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 21:54:03 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id CDB471586ED;
+	Mon, 29 Jan 2024 21:53:58 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b="GPl551cD"
+Received: from mail-pf1-f180.google.com (mail-pf1-f180.google.com [209.85.210.180])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C943B153BC1
+	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 21:53:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.180
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1706565238; cv=none; b=YXIqYIN2sNaFqQ45Gs5P67T0tWIoSlkquLeAaGwjxWKSoxdVT2Z3ARBtg4QN4vWOGeoKVs9Xo1Om9+eVb+CgCjnC9hz2E55biuruDb+kviQ/iXnJih3YNrKH+Uyk6f6nqnfP0hDaBiCZ4yaaCC5eILqXu27fwlL8XHAFyOA0Zt4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1706565238; c=relaxed/simple;
+	bh=/N/nE4NTyi/bU/xhtC31gRu+OOh/hhRYsiYO3W5J9UQ=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=c4W1ciglZwJb4V5xrr4+rDVmDXCYboWBLqKTf77Fhq+aKctv9YBGirrfiOjKyLdm7Fox3PdR4vNLWuCw7owM/uKI0uz0yRNnvTztZ220iSsj40hGx0+DTyMG9BcQ1Vza5ywg/e/tzPkWiklUy1Z2RjUesTjVr4B40O8FEwSjRzI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com; spf=pass smtp.mailfrom=ventanamicro.com; dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b=GPl551cD; arc=none smtp.client-ip=209.85.210.180
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ventanamicro.com
+Received: by mail-pf1-f180.google.com with SMTP id d2e1a72fcca58-6de070a4cadso1270712b3a.2
+        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 13:53:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ventanamicro.com; s=google; t=1706565236; x=1707170036; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vT/LCBfD/SStU7mQwAr6SlF2BMbRDBjqWwgGqBB0M+s=;
+        b=GPl551cDZO3EN8HXZlAgyNo1Dc2/zdAhD6pmC5aXkX3aZRxxfNYqj4S7OV4fkD4gYT
+         KDftrkzVDs22VBlV+zquCHsDknlokXBGG3BMCT2QAWqps6flbVaZeix7TZ+SsNUzfIvU
+         O6UYmAAx00BUKUNza8447IE9lfj0eCxc/uuaWT2Or4EfKNoBQ269resSZs63/5szF/lS
+         kRj6z1No0W1NLqj8llB42U9TEE/EDhl6OXDLXwjFNxORjg4805mmhMylkTUOY6DAbHnW
+         x3tMkkYYV1Mr7RDt1Is+aP2goUF/tPvpzz56oatpY2aT6E8N2QI41NSd8UqU2q++Lczq
+         ZVzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706565236; x=1707170036;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vT/LCBfD/SStU7mQwAr6SlF2BMbRDBjqWwgGqBB0M+s=;
+        b=Q1n96WssUPkRfl1DbG6RQ02hW/L4NZY8THVk9lgwY2C4bmZQIvS+seAD3djY0hJYFZ
+         tlvhTnGYFS6u/vEdc4ruu5HpUQX8nQlik5AbwwBvXu3RzsnXbRvO7T3q0YfP3cqSo2YJ
+         9llsLAOomqCi625r2doEQhrbaFyUKMlfPiytB9qsBG6ivLggcTa80vnSqUt5AGxft4Mu
+         Tc3WitKJC+nzQh5VRJ0ZfNn1fNYEPo7pYm6w0NIXcldFje4ZEaLH6t142mUX/wb300ZQ
+         whFuYj1Xa2bN89uNr66qJ6JPBsOU2rqWw84Jf4h4I1PqFmydEpAWebvsjGaP8nbNDQeP
+         EjBw==
+X-Gm-Message-State: AOJu0Yzxwn35TPfgbRTwswuTo/JkyytzQDVnM5Wb5MZekZG87XMKw/ge
+	t+nGPZn4uH/lB9EUx3qWNRAPO+u3OHrBRhsJHYogH9gRrcBWRRvp0TjhCr8x05Q=
+X-Received: by 2002:a62:b601:0:b0:6d9:af69:b704 with SMTP id j1-20020a62b601000000b006d9af69b704mr3349943pff.13.1706565236028;
+        Mon, 29 Jan 2024 13:53:56 -0800 (PST)
+Received: from [192.168.68.110] ([177.94.15.159])
+        by smtp.gmail.com with ESMTPSA id y190-20020a6364c7000000b005bd2b3a03eesm6753681pgb.6.2024.01.29.13.53.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Jan 2024 13:53:55 -0800 (PST)
+Message-ID: <c1604184-d470-43ef-9530-cb8c0e5c8901@ventanamicro.com>
+Date: Mon, 29 Jan 2024 18:53:50 -0300
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Content-Language: en-US
+Subject: Re: [PATCH v3 22/29] target/riscv: Prefer fast cpu_env() over slower
+ CPU QOM cast macro
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
-References: <20240126220407.95022-1-philmd@linaro.org>
- <20240126220407.95022-24-philmd@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <20240126220407.95022-24-philmd@linaro.org>
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20240129164514.73104-1-philmd@linaro.org>
+ <20240129164514.73104-23-philmd@linaro.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20240129164514.73104-23-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb2:a00:c9b9:c424:5b7e:9d9f
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2 23/23] target/sparc: Prefer fast cpu_env() over slower
- CPU QOM cast macro
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2hq/oex6V4xT
+X-TUID: TW9s8mXemt53
 
-On 26/01/2024 22:04, Philippe Mathieu-Daudé wrote:
+Hey Phil,
 
+This patch is giving me a conflict in target/riscv/cpu_helper.c when applying
+on top of master. Not sure if I'm missing any dependency.
+
+It's a trivial conflict though, just a FYI. As for the patch:
+
+
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+On 1/29/24 13:45, Philippe Mathieu-Daudé wrote:
 > Mechanical patch produced running the command documented
 > in scripts/coccinelle/cpu_env.cocci_template header.
 > 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/sparc/cpu.c          | 14 ++++----------
->   target/sparc/gdbstub.c      |  3 +--
->   target/sparc/int32_helper.c |  3 +--
->   target/sparc/int64_helper.c |  3 +--
->   target/sparc/ldst_helper.c  |  6 ++----
->   target/sparc/mmu_helper.c   | 15 +++++----------
->   target/sparc/translate.c    |  3 +--
->   7 files changed, 15 insertions(+), 32 deletions(-)
+>   target/riscv/arch_dump.c   |  6 ++----
+>   target/riscv/cpu.c         | 17 +++++------------
+>   target/riscv/cpu_helper.c  | 17 +++++------------
+>   target/riscv/debug.c       |  9 +++------
+>   target/riscv/gdbstub.c     |  6 ++----
+>   target/riscv/kvm/kvm-cpu.c | 11 +++--------
+>   target/riscv/tcg/tcg-cpu.c | 10 +++-------
+>   target/riscv/translate.c   |  6 ++----
+>   8 files changed, 25 insertions(+), 57 deletions(-)
 > 
-> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-> index befa7fc4eb..a53c200d8b 100644
-> --- a/target/sparc/cpu.c
-> +++ b/target/sparc/cpu.c
-> @@ -83,8 +83,7 @@ static void sparc_cpu_reset_hold(Object *obj)
->   static bool sparc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+> diff --git a/target/riscv/arch_dump.c b/target/riscv/arch_dump.c
+> index 434c8a3dbb..994709647f 100644
+> --- a/target/riscv/arch_dump.c
+> +++ b/target/riscv/arch_dump.c
+> @@ -68,8 +68,7 @@ int riscv_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+>                                  int cpuid, DumpState *s)
+>   {
+>       struct riscv64_note note;
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       int ret, i = 0;
+>       const char name[] = "CORE";
+>   
+> @@ -137,8 +136,7 @@ int riscv_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+>                                  int cpuid, DumpState *s)
+>   {
+>       struct riscv32_note note;
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       int ret, i;
+>       const char name[] = "CORE";
+>   
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index 1bd99bc5c6..8af4f7a088 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -419,8 +419,7 @@ static void riscv_any_cpu_init(Object *obj)
+>   
+>   static void riscv_max_cpu_init(Object *obj)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(obj);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(CPU(obj));
+>       RISCVMXL mlx = MXL_RV64;
+>   
+>   #ifdef TARGET_RISCV32
+> @@ -828,8 +827,7 @@ static void riscv_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+>   
+>   static void riscv_cpu_set_pc(CPUState *cs, vaddr value)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>   
+>       if (env->xl == MXL_RV32) {
+>           env->pc = (int32_t)value;
+> @@ -840,8 +838,7 @@ static void riscv_cpu_set_pc(CPUState *cs, vaddr value)
+>   
+>   static vaddr riscv_cpu_get_pc(CPUState *cs)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>   
+>       /* Match cpu_get_tb_cpu_state. */
+>       if (env->xl == MXL_RV32) {
+> @@ -853,8 +850,7 @@ static vaddr riscv_cpu_get_pc(CPUState *cs)
+>   static bool riscv_cpu_has_work(CPUState *cs)
+>   {
+>   #ifndef CONFIG_USER_ONLY
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       /*
+>        * Definition of the WFI instruction requires it to ignore the privilege
+>        * mode and delegation registers, but respect individual enables
+> @@ -1642,10 +1638,7 @@ static void rva22s64_profile_cpu_init(Object *obj)
+>   
+>   static const gchar *riscv_gdb_arch_name(CPUState *cs)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> -
+> -    switch (riscv_cpu_mxl(env)) {
+> +    switch (riscv_cpu_mxl(cpu_env(cs))) {
+>       case MXL_RV32:
+>           return "riscv:rv32";
+>       case MXL_RV64:
+> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+> index 791435d628..01b32a3f83 100644
+> --- a/target/riscv/cpu_helper.c
+> +++ b/target/riscv/cpu_helper.c
+> @@ -493,9 +493,7 @@ static int riscv_cpu_local_irq_pending(CPURISCVState *env)
+>   bool riscv_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 >   {
 >       if (interrupt_request & CPU_INTERRUPT_HARD) {
-> -        SPARCCPU *cpu = SPARC_CPU(cs);
-> -        CPUSPARCState *env = &cpu->env;
-> +        CPUSPARCState *env = cpu_env(cs);
+> -        RISCVCPU *cpu = RISCV_CPU(cs);
+> -        CPURISCVState *env = &cpu->env;
+> -        int interruptno = riscv_cpu_local_irq_pending(env);
+> +        int interruptno = riscv_cpu_local_irq_pending(cpu_env(cs));
+>           if (interruptno >= 0) {
+>               cs->exception_index = RISCV_EXCP_INT_FLAG | interruptno;
+>               riscv_cpu_do_interrupt(cs);
+> @@ -1196,8 +1194,7 @@ static void raise_mmu_exception(CPURISCVState *env, target_ulong address,
 >   
->           if (cpu_interrupts_enabled(env) && env->interrupt_index > 0) {
->               int pil = env->interrupt_index & 0xf;
-> @@ -613,8 +612,7 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
->   
->   static void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+>   hwaddr riscv_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
 >   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       int i, x;
->   
->       qemu_fprintf(f, "pc: " TARGET_FMT_lx "  npc: " TARGET_FMT_lx "\n", env->pc,
-> @@ -711,11 +709,8 @@ static void sparc_cpu_synchronize_from_tb(CPUState *cs,
->   
->   static bool sparc_cpu_has_work(CPUState *cs)
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       hwaddr phys_addr;
+>       int prot;
+>       int mmu_idx = cpu_mmu_index(env, false);
+> @@ -1223,8 +1220,7 @@ void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+>                                        int mmu_idx, MemTxAttrs attrs,
+>                                        MemTxResult response, uintptr_t retaddr)
 >   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>   
+>       if (access_type == MMU_DATA_STORE) {
+>           cs->exception_index = RISCV_EXCP_STORE_AMO_ACCESS_FAULT;
+> @@ -1244,8 +1240,7 @@ void riscv_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+>                                      MMUAccessType access_type, int mmu_idx,
+>                                      uintptr_t retaddr)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       switch (access_type) {
+>       case MMU_INST_FETCH:
+>           cs->exception_index = RISCV_EXCP_INST_ADDR_MIS;
+> @@ -1631,9 +1626,7 @@ static target_ulong riscv_transformed_insn(CPURISCVState *env,
+>   void riscv_cpu_do_interrupt(CPUState *cs)
+>   {
+>   #if !defined(CONFIG_USER_ONLY)
 > -
->       return (cs->interrupt_request & CPU_INTERRUPT_HARD) &&
-> -           cpu_interrupts_enabled(env);
-> +           cpu_interrupts_enabled(cpu_env(cs));
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       bool write_gva = false;
+>       uint64_t s;
+>   
+> diff --git a/target/riscv/debug.c b/target/riscv/debug.c
+> index 4945d1a1f2..c8df9812be 100644
+> --- a/target/riscv/debug.c
+> +++ b/target/riscv/debug.c
+> @@ -757,8 +757,7 @@ target_ulong tinfo_csr_read(CPURISCVState *env)
+>   
+>   void riscv_cpu_debug_excp_handler(CPUState *cs)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>   
+>       if (cs->watchpoint_hit) {
+>           if (cs->watchpoint_hit->flags & BP_CPU) {
+> @@ -773,8 +772,7 @@ void riscv_cpu_debug_excp_handler(CPUState *cs)
+>   
+>   bool riscv_cpu_debug_check_breakpoint(CPUState *cs)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       CPUBreakpoint *bp;
+>       target_ulong ctrl;
+>       target_ulong pc;
+> @@ -832,8 +830,7 @@ bool riscv_cpu_debug_check_breakpoint(CPUState *cs)
+>   
+>   bool riscv_cpu_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       target_ulong ctrl;
+>       target_ulong addr;
+>       int trigger_type;
+> diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
+> index 58b3ace0fe..999d815b34 100644
+> --- a/target/riscv/gdbstub.c
+> +++ b/target/riscv/gdbstub.c
+> @@ -49,8 +49,7 @@ static const struct TypeSize vec_lanes[] = {
+>   
+>   int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       target_ulong tmp;
+>   
+>       if (n < 32) {
+> @@ -75,8 +74,7 @@ int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+>   
+>   int riscv_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       int length = 0;
+>       target_ulong tmp;
+>   
+> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+> index 680a729cd8..563b371ec9 100644
+> --- a/target/riscv/kvm/kvm-cpu.c
+> +++ b/target/riscv/kvm/kvm-cpu.c
+> @@ -171,9 +171,7 @@ static void kvm_cpu_get_misa_ext_cfg(Object *obj, Visitor *v,
+>   {
+>       KVMCPUConfig *misa_ext_cfg = opaque;
+>       target_ulong misa_bit = misa_ext_cfg->offset;
+> -    RISCVCPU *cpu = RISCV_CPU(obj);
+> -    CPURISCVState *env = &cpu->env;
+> -    bool value = env->misa_ext_mask & misa_bit;
+> +    bool value = cpu_env(CPU(obj))->misa_ext_mask & misa_bit;
+>   
+>       visit_type_bool(v, name, &value, errp);
+>   }
+> @@ -184,15 +182,13 @@ static void kvm_cpu_set_misa_ext_cfg(Object *obj, Visitor *v,
+>   {
+>       KVMCPUConfig *misa_ext_cfg = opaque;
+>       target_ulong misa_bit = misa_ext_cfg->offset;
+> -    RISCVCPU *cpu = RISCV_CPU(obj);
+> -    CPURISCVState *env = &cpu->env;
+>       bool value, host_bit;
+>   
+>       if (!visit_type_bool(v, name, &value, errp)) {
+>           return;
+>       }
+>   
+> -    host_bit = env->misa_ext_mask & misa_bit;
+> +    host_bit = cpu_env(CPU(obj))->misa_ext_mask & misa_bit;
+>   
+>       if (value == host_bit) {
+>           return;
+> @@ -1583,10 +1579,9 @@ static void kvm_cpu_instance_init(CPUState *cs)
+>    */
+>   static bool kvm_cpu_realize(CPUState *cs, Error **errp)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+>       int ret;
+>   
+> -    if (riscv_has_ext(&cpu->env, RVV)) {
+> +    if (riscv_has_ext(cpu_env(cs), RVV)) {
+>           ret = prctl(PR_RISCV_V_SET_CONTROL, PR_RISCV_V_VSTATE_CTRL_ON);
+>           if (ret) {
+>               error_setg(errp, "Error in prctl PR_RISCV_V_SET_CONTROL, code: %s",
+> diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
+> index 994ca1cdf9..e0f05d898c 100644
+> --- a/target/riscv/tcg/tcg-cpu.c
+> +++ b/target/riscv/tcg/tcg-cpu.c
+> @@ -92,8 +92,7 @@ static void riscv_cpu_synchronize_from_tb(CPUState *cs,
+>                                             const TranslationBlock *tb)
+>   {
+>       if (!(tb_cflags(tb) & CF_PCREL)) {
+> -        RISCVCPU *cpu = RISCV_CPU(cs);
+> -        CPURISCVState *env = &cpu->env;
+> +        CPURISCVState *env = cpu_env(cs);
+>           RISCVMXL xl = FIELD_EX32(tb->flags, TB_FLAGS, XL);
+>   
+>           tcg_debug_assert(!(cs->tcg_cflags & CF_PCREL));
+> @@ -110,8 +109,7 @@ static void riscv_restore_state_to_opc(CPUState *cs,
+>                                          const TranslationBlock *tb,
+>                                          const uint64_t *data)
+>   {
+> -    RISCVCPU *cpu = RISCV_CPU(cs);
+> -    CPURISCVState *env = &cpu->env;
+> +    CPURISCVState *env = cpu_env(cs);
+>       RISCVMXL xl = FIELD_EX32(tb->flags, TB_FLAGS, XL);
+>       target_ulong pc;
+>   
+> @@ -1030,11 +1028,9 @@ static void cpu_get_misa_ext_cfg(Object *obj, Visitor *v, const char *name,
+>   {
+>       const RISCVCPUMisaExtConfig *misa_ext_cfg = opaque;
+>       target_ulong misa_bit = misa_ext_cfg->misa_bit;
+> -    RISCVCPU *cpu = RISCV_CPU(obj);
+> -    CPURISCVState *env = &cpu->env;
+>       bool value;
+>   
+> -    value = env->misa_ext & misa_bit;
+> +    value = cpu_env(CPU(obj))->misa_ext & misa_bit;
+>   
+>       visit_type_bool(v, name, &value, errp);
+>   }
+> diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+> index 071fbad7ef..24db9f3882 100644
+> --- a/target/riscv/translate.c
+> +++ b/target/riscv/translate.c
+> @@ -1074,9 +1074,8 @@ static uint32_t opcode_at(DisasContextBase *dcbase, target_ulong pc)
+>   {
+>       DisasContext *ctx = container_of(dcbase, DisasContext, base);
+>       CPUState *cpu = ctx->cs;
+> -    CPURISCVState *env = cpu_env(cpu);
+>   
+> -    return cpu_ldl_code(env, pc);
+> +    return cpu_ldl_code(cpu_env(cpu), pc);
 >   }
 >   
->   static char *sparc_cpu_type_name(const char *cpu_model)
-> @@ -749,8 +744,7 @@ static void sparc_cpu_realizefn(DeviceState *dev, Error **errp)
->       CPUState *cs = CPU(dev);
->       SPARCCPUClass *scc = SPARC_CPU_GET_CLASS(dev);
->       Error *local_err = NULL;
-> -    SPARCCPU *cpu = SPARC_CPU(dev);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->   
->   #if defined(CONFIG_USER_ONLY)
->       /* We are emulating the kernel, which will trap and emulate float128. */
-> diff --git a/target/sparc/gdbstub.c b/target/sparc/gdbstub.c
-> index a1c8fdc4d5..5257c49a0d 100644
-> --- a/target/sparc/gdbstub.c
-> +++ b/target/sparc/gdbstub.c
-> @@ -29,8 +29,7 @@
->   
->   int sparc_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+>   /* Include insn module translation function */
+> @@ -1265,8 +1264,7 @@ static void riscv_tr_disas_log(const DisasContextBase *dcbase,
+>                                  CPUState *cpu, FILE *logfile)
 >   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
+>   #ifndef CONFIG_USER_ONLY
+> -    RISCVCPU *rvcpu = RISCV_CPU(cpu);
+> -    CPURISCVState *env = &rvcpu->env;
+> +    CPURISCVState *env = cpu_env(cpu);
+>   #endif
 >   
->       if (n < 8) {
->           /* g0..g7 */
-> diff --git a/target/sparc/int32_helper.c b/target/sparc/int32_helper.c
-> index 058dd712b5..6b7d65b031 100644
-> --- a/target/sparc/int32_helper.c
-> +++ b/target/sparc/int32_helper.c
-> @@ -99,8 +99,7 @@ void cpu_check_irqs(CPUSPARCState *env)
->   
->   void sparc_cpu_do_interrupt(CPUState *cs)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       int cwp, intno = cs->exception_index;
->   
->       if (qemu_loglevel_mask(CPU_LOG_INT)) {
-> diff --git a/target/sparc/int64_helper.c b/target/sparc/int64_helper.c
-> index 27df9dba89..bd14c7a0db 100644
-> --- a/target/sparc/int64_helper.c
-> +++ b/target/sparc/int64_helper.c
-> @@ -130,8 +130,7 @@ void cpu_check_irqs(CPUSPARCState *env)
->   
->   void sparc_cpu_do_interrupt(CPUState *cs)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       int intno = cs->exception_index;
->       trap_state *tsptr;
->   
-> diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
-> index 09066d5487..203441bfb2 100644
-> --- a/target/sparc/ldst_helper.c
-> +++ b/target/sparc/ldst_helper.c
-> @@ -421,8 +421,7 @@ static void sparc_raise_mmu_fault(CPUState *cs, hwaddr addr,
->                                     bool is_write, bool is_exec, int is_asi,
->                                     unsigned size, uintptr_t retaddr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       int fault_type;
->   
->   #ifdef DEBUG_UNASSIGNED
-> @@ -483,8 +482,7 @@ static void sparc_raise_mmu_fault(CPUState *cs, hwaddr addr,
->                                     bool is_write, bool is_exec, int is_asi,
->                                     unsigned size, uintptr_t retaddr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->   
->   #ifdef DEBUG_UNASSIGNED
->       printf("Unassigned mem access to " HWADDR_FMT_plx " from " TARGET_FMT_lx
-> diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-> index 453498c670..a05ee22315 100644
-> --- a/target/sparc/mmu_helper.c
-> +++ b/target/sparc/mmu_helper.c
-> @@ -206,8 +206,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                           MMUAccessType access_type, int mmu_idx,
->                           bool probe, uintptr_t retaddr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       CPUTLBEntryFull full = {};
->       target_ulong vaddr;
->       int error_code = 0, access_index;
-> @@ -391,8 +390,7 @@ void dump_mmu(CPUSPARCState *env)
->   int sparc_cpu_memory_rw_debug(CPUState *cs, vaddr address,
->                                 uint8_t *buf, int len, bool is_write)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       target_ulong addr = address;
->       int i;
->       int len1;
-> @@ -759,8 +757,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                           MMUAccessType access_type, int mmu_idx,
->                           bool probe, uintptr_t retaddr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       CPUTLBEntryFull full = {};
->       int error_code = 0, access_index;
->   
-> @@ -898,8 +895,7 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
->   
->   hwaddr sparc_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       hwaddr phys_addr;
->       int mmu_idx = cpu_mmu_index(env, false);
->   
-> @@ -916,8 +912,7 @@ G_NORETURN void sparc_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
->                                                 int mmu_idx,
->                                                 uintptr_t retaddr)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->   
->   #ifdef TARGET_SPARC64
->       env->dmmu.sfsr = build_sfsr(env, mmu_idx, access_type);
-> diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-> index 9387299559..412b7d1b66 100644
-> --- a/target/sparc/translate.c
-> +++ b/target/sparc/translate.c
-> @@ -5406,8 +5406,7 @@ void sparc_restore_state_to_opc(CPUState *cs,
->                                   const TranslationBlock *tb,
->                                   const uint64_t *data)
->   {
-> -    SPARCCPU *cpu = SPARC_CPU(cs);
-> -    CPUSPARCState *env = &cpu->env;
-> +    CPUSPARCState *env = cpu_env(cs);
->       target_ulong pc = data[0];
->       target_ulong npc = data[1];
->   
-
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.
-
+>       fprintf(logfile, "IN: %s\n", lookup_symbol(dcbase->pc_first));

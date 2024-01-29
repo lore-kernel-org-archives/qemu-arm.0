@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp277099ejk;
-        Mon, 29 Jan 2024 08:10:59 -0800 (PST)
-X-Received: by 2002:a05:6512:110c:b0:510:15aa:ef16 with SMTP id l12-20020a056512110c00b0051015aaef16mr4180117lfg.58.1706544659023;
-        Mon, 29 Jan 2024 08:10:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706544658; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp277136ejk;
+        Mon, 29 Jan 2024 08:11:02 -0800 (PST)
+X-Received: by 2002:a5d:4f8c:0:b0:33a:f6ab:7854 with SMTP id d12-20020a5d4f8c000000b0033af6ab7854mr94715wru.37.1706544662530;
+        Mon, 29 Jan 2024 08:11:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706544662; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eco58eDMr6zYR0UwPeCymNj4z9nTjr6J3jKoYlhfTnS7cNX0hhHxBz5sRXhDtVvNtC
-         TtnCSTe+7VDBWDNScrUHGiCvWUN1Y3xS/FH38TfkGDLKxX1ch3emFZbCFwEfO9u61bBF
-         bvfqvANgQJ7qj0aROKd9207SOrxDRYQOOpTRaDgaocjWD0OAllcD2Av8C2U7BTZ6KcSQ
-         /P5eSuQjEU1YYzeFHsY51J81Ti7rXdXNqxV/z1eE023/gMtYyQzMyDmKJJUGUq5Pfkim
-         vI7JG/y2Nsj30tssjxjA42LrhrOtrcJXN2/05wxNCDwz47s3yaBmn82kwYjyvC3/1PES
-         hcPQ==
+        b=fHuvPUJy47LIbngRsdZ6w7W1h4kwi5Q/bzs9q8v/UBp+nKbuT3DLwA3HWVD0G8CTOl
+         5hxV3MIcrLMy08NzGtsnBQ9H3ss1KlkfFC8CIV6YoMAXbGLTsBVhuLqjVn7r4vMnD8i5
+         /JKrOXXrtcxzeJuedSN4GzNknuGLsrIgfQ0hzTzBrmEN7w1oQ1KI1jZ6JNbr6QrIzrlE
+         jCZ5BFTp0MbZISsFcWy6S4VZHs6Oqgnp1lEkRk1pfPQakfpEim+MxocT4IH/rVgz9fp7
+         rGkwkpZI9ynX1TLGuiujDLZMQIb2Le5AKEE/IwhWQ3xK9xzfzajgWEERbWhPkCYMlWdX
+         ikpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
+        bh=twCbSHojWsbr5gv/7yE94TkwwcJ8Z3GKHFCgEYch/Mg=;
         fh=Xb4KIKmbdaaiPlPH1bCESW8KkxUeVgZklsOwpxb0HGc=;
-        b=mA5NeulnD1P4Y5Z0q2vJXfBpTEmKcbBSe3+Jl3H5x1LzW1TxY8cbfA5SZ3aC5Bxk1S
-         04BKRQabwE9/xZTTGrM0HSHMFA8sZ7zmlUsTclqhClXHqMKC8JuCbf0Qf6U3vNlpfa1g
-         oQ693MGpR8HDgqEZAgkcQpfjGTcso8lYVjp925BIlEQ9Oe+RJXLSXOsw37+m7oaeGnRM
-         BXb3tll6bKHg8eodmUJ6bpnZ2FSoEZxk5BqtJHK6ChV7K/vVKz/t37tkMwtYaiApXHLv
-         t4nBvpTYJYFY157/EfzhnOvh7OAs8lwFD8LVzaTzQX5hx/0ji+Q+9Wsh8PR0ZwQL3WvB
-         QV8A==
+        b=yNVRdj3KUmJann+SRAPLlAmNFEGXUF22cayphHr1L7U+yBXm+E960nIuDzQCjwEBe5
+         VkcZkCa8Z5XUZeRjYN2Fnskr3QjiVgkG3hCscaZuqU0UrjzSpnc9F+oAhoXEVLRujlEJ
+         enDRxtb+sde2vTbVs6j5MXq/U/WSiukqB8R5Yp9sjwn73axpDzOA8F//OzbBRpi69VWj
+         0fQUlvF65VT/jtcETtx6WupQLHBebgGnwkAtkW81YYRLb0P3s65ne7+K4BaO6zDLrmtg
+         BVDXOBSVd7ylr/vayHMnvzAeSmnbvbqTtXhl8J9ILbBOL+7+McK2hZgYZqgD+ePvr/9i
+         AoNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OFyWuJTl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IsXWRf10;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 21-20020a05600c025500b0040ef9db636csor506811wmj.7.2024.01.29.08.10.58
+        by mx.google.com with SMTPS id r25-20020adfb1d9000000b00339274351dasor2584680wra.2.2024.01.29.08.11.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
+        Mon, 29 Jan 2024 08:11:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OFyWuJTl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IsXWRf10;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706544658; x=1707149458; darn=linaro.org;
+        d=linaro.org; s=google; t=1706544662; x=1707149462; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
-        b=OFyWuJTlxgz07svUXZZwpFQ/4KbeS8BXEp6MhMMOSjE1eusEHHcDRT03opccCxYXEa
-         TnJ1zwRPZpgG59yZynLuOo7qyipknIx647PVcxsaLKKnOwl/z48yTZdJunjJ8kx18rnr
-         5ZmG4z25p6G70PVKoaRK5Bgf/YzTf2F2P/ta6EJjWjEFKLZsg27DC4ZnGYzVRSaVtZ4N
-         YFFCTIfbRlw6MFNDhF4sbF9/m+BVoKrXMTnLaUvoUuNPUgvhJKtiWfuD9zTX9g0SKS+X
-         VigYr5V8m5rn5UNEJzmbEVfDtAQ6X77mniRugic0YFKcv9scN7I0GUaE6vXJJyiRjZ2k
-         LIFA==
+        bh=twCbSHojWsbr5gv/7yE94TkwwcJ8Z3GKHFCgEYch/Mg=;
+        b=IsXWRf10lfwplpKsA2Ll+T9Lzv2/Smje/B/4/P4AXBAO/h8t0WjxXSLeWdl3Gsaa1l
+         vqUx2SqDBfADZTM4X0BL465kLiHpsMETb370DyXfrswVvNHmr8HdYL8AyyMd2ySUdupW
+         V0I291YkRbDJri3MFUeGf6Y9HDKvqQTeRfhnwnOkZtO1gIkd3FPva/RgIr4/qPlP/Jk1
+         zC3T2h0HDMCU+OXThoZ7ieGH2Uvg7/kijhfnsH6/56QpYoxjVAt0spj5InAnfTDqJip2
+         zPVHThRw7WVdVf/OJ7xsLnm+p2O0/SPbNL1pFjEwALGOujCd3w+gnncGQi2910uJpLkl
+         7oOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706544658; x=1707149458;
+        d=1e100.net; s=20230601; t=1706544662; x=1707149462;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
-        b=Q4n+kkUdTqmPH7X2TPvg3OnsGOxUBObJrSEVEjNJv+Gd2iL62hK3SDxBlTB0O1orbK
-         Vx6HcxCLaSG24Zltbgyk8Hq5/bP1vFIoNDQPJsgyzAAneN/wu52ckyxTI9c6UfKfm/nA
-         spspAFV/6G7tpfXC8XH+F/o4DiBQ+Jb/cdNSiotUXswRtLVuAe91iNbT0HuS/fGi/79n
-         kL7xdO1n8zGm30K6OvKJAEZiFs8LV6HCfzT/U/xGTeOvEa4A6w2OF+8iS10tWZc9N3mH
-         F2CSDhU0qiQJVg0eJ5O6i038IZAzkKeyQvD7N5OC01+cuTetxyo7ODrqonWk7/ytqfVm
-         16Bw==
-X-Gm-Message-State: AOJu0Yx6aJhmcd/fzgyIbZ7Sum6ndODo6hNyo3VM/R76p/Zb0n75EWw5
-	03DPq8K19wPXhRKaLUcqalq6QoN4wrKLHBetkqoxfms9EekeZZBOQeFBe9U1kkEEUA==
-X-Google-Smtp-Source: AGHT+IH2u+X0jHxP0JLWVS3FK/D/Os2n9uQ6Ne/3EkPY/YogM8wr2ifOFRbEXd/GLM5pC/sG/O6R+Q==
-X-Received: by 2002:a05:600c:3547:b0:40e:f5d0:8517 with SMTP id i7-20020a05600c354700b0040ef5d08517mr3106234wmq.33.1706544658554;
-        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
+        bh=twCbSHojWsbr5gv/7yE94TkwwcJ8Z3GKHFCgEYch/Mg=;
+        b=o7VGEhtKZA+/18/H6WeiyyXRnKKT762eYnghAZ2OudByCmdvvg674GnjNg0d8tBrDb
+         xBJocRtxhbSxpfXUqg2bpOHuqXYKEJMCbCHvYLUJcH0fFEodOUk8DJP4btmfpQ1SJck0
+         LlnmhqtOgDrNAvZVfEjHib/ZKMQYfurG9rwUE6YCz440liCGBqtCt0FzxFrm/mj5/kEY
+         UIS9P85RKp4MF/PzIzKgvcW6NcNvhQS3ns2+3xNcf9SlBlxDq925KwrOYtWKFWDq+HGf
+         +dPs1rZECixKF6N5HiaFN9a/zoUnmhRssr9+Em7tyxz4iB9JjOjMwElmnBBzTwRmXgpA
+         cPpQ==
+X-Gm-Message-State: AOJu0YyOEhfzWMXTMLEHsdvlM8/PRjXQb3dqG5coDLv+OWNQlOioh0a7
+	6uS8oN7pUBh0wrAlKDgdeVM3cTmJUm1Mxg0MhT8yFe3jD2/AJfmNvN1ULUzvvLqxLQ==
+X-Google-Smtp-Source: AGHT+IFHfef60/eAVVHH0kuTs/lfrSLJKa6iuHY11S8YaJiIhT6WLh5nB2VDle+t9MxY8DzYa8+KtQ==
+X-Received: by 2002:adf:e584:0:b0:337:c097:db9f with SMTP id l4-20020adfe584000000b00337c097db9fmr5003853wrm.17.1706544662220;
+        Mon, 29 Jan 2024 08:11:02 -0800 (PST)
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr. [37.6.163.245])
-        by smtp.gmail.com with ESMTPSA id co6-20020a0560000a0600b0033af4df8e1esm1219957wrb.47.2024.01.29.08.10.56
+        by smtp.gmail.com with ESMTPSA id co6-20020a0560000a0600b0033af4df8e1esm1219957wrb.47.2024.01.29.08.11.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
+        Mon, 29 Jan 2024 08:11:01 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -81,16 +81,16 @@ Cc: peter.maydell@linaro.org,
 	Anthony Perard <anthony.perard@citrix.com>,
 	Paul Durrant <paul@xen.org>,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH v3 4/6] hw/xen/xen-mapcache.c: convert DPRINTF to tracepoints
-Date: Mon, 29 Jan 2024 18:09:40 +0200
-Message-Id: <2fbe1fbc59078e384761c932e97cfa4276a53d75.1706544115.git.manos.pitsidianakis@linaro.org>
+Subject: [PATCH v3 5/6] hw/xen/xen-hvm-common.c: convert DPRINTF to tracepoints
+Date: Mon, 29 Jan 2024 18:09:41 +0200
+Message-Id: <b000ab73022dfeb7a7ab0ee8fd0f41fb208adaf0.1706544115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-X-TUID: d54MIuiAG6SO
+X-TUID: avtSAhub1mQ8
 
 Tracing DPRINTFs to stderr might not be desired. A developer that relies
 on tracepoints should be able to opt-in to each tracepoint and rely on
@@ -101,170 +101,123 @@ into tracepoints.
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/xen/trace-events   | 11 +++++++++
- hw/xen/xen-mapcache.c | 54 +++++++++++++++++++------------------------
- 2 files changed, 35 insertions(+), 30 deletions(-)
+ hw/xen/trace-events     | 10 +++++++++-
+ hw/xen/xen-hvm-common.c | 35 ++++++++++++++++++-----------------
+ 2 files changed, 27 insertions(+), 18 deletions(-)
 
 diff --git a/hw/xen/trace-events b/hw/xen/trace-events
-index 67a6c41926..a65dc0e55f 100644
+index a65dc0e55f..d1b27f6c11 100644
 --- a/hw/xen/trace-events
 +++ b/hw/xen/trace-events
-@@ -60,3 +60,14 @@ cpu_ioreq_config_write(void *req, uint32_t sbdf, uint32_t reg, uint32_t size, ui
+@@ -42,7 +42,7 @@ xs_node_vscanf(char *path, char *value) "%s %s"
+ xs_node_watch(char *path) "%s"
+ xs_node_unwatch(char *path) "%s"
+ 
+-# xen-hvm.c
++# xen-hvm-common.c
+ xen_ram_alloc(unsigned long ram_addr, unsigned long size) "requested: 0x%lx, size 0x%lx"
+ xen_client_set_memory(uint64_t start_addr, unsigned long size, bool log_dirty) "0x%"PRIx64" size 0x%lx, log_dirty %i"
+ handle_ioreq(void *req, uint32_t type, uint32_t dir, uint32_t df, uint32_t data_is_ptr, uint64_t addr, uint64_t data, uint32_t count, uint32_t size) "I/O=%p type=%d dir=%d df=%d ptr=%d port=0x%"PRIx64" data=0x%"PRIx64" count=%d size=%d"
+@@ -55,6 +55,14 @@ cpu_ioreq_move(void *req, uint32_t dir, uint32_t df, uint32_t data_is_ptr, uint6
+ xen_map_resource_ioreq(uint32_t id, void *addr) "id: %u addr: %p"
+ cpu_ioreq_config_read(void *req, uint32_t sbdf, uint32_t reg, uint32_t size, uint32_t data) "I/O=%p sbdf=0x%x reg=%u size=%u data=0x%x"
+ cpu_ioreq_config_write(void *req, uint32_t sbdf, uint32_t reg, uint32_t size, uint32_t data) "I/O=%p sbdf=0x%x reg=%u size=%u data=0x%x"
++cpu_get_ioreq_from_shared_memory_req_not_ready(int state, int data_is_ptr, uint64_t addr, uint64_t data, uint32_t count, uint32_t size) "I/O request not ready: 0x%x, ptr: 0x%x, port: 0x%"PRIx64", data: 0x%"PRIx64", count: %u, size: %u"
++xen_main_loop_prepare_init_cpu(int id, void *cpu) "cpu_by_vcpu_id[%d]=%p"
++xen_map_ioreq_server_shared_page(long unsigned int ioreq_pfn) "shared page at pfn 0x%lx"
++xen_map_ioreq_server_buffered_io_page(long unsigned int ioreq_pfn) "buffered io page at pfn 0x%lx"
++xen_map_ioreq_server_buffered_io_evtchn(int bufioreq_evtchn) "buffered io evtchn is 0x%x"
++destroy_hvm_domain_cannot_acquire_handle(void) "Cannot acquire xenctrl handle"
++destroy_hvm_domain_failed_action(const char *action, int sts, char *errno_s) "xc_domain_shutdown failed to issue %s, sts %d, %s"
++destroy_hvm_domain_action(int xen_domid, const char *action) "Issued domain %d %s"
+ 
+ # xen-mapcache.c
  xen_map_cache(uint64_t phys_addr) "want 0x%"PRIx64
- xen_remap_bucket(uint64_t index) "index 0x%"PRIx64
- xen_map_cache_return(void* ptr) "%p"
-+xen_map_cache_init(uint64_t nr_buckets, uint64_t size) "nr_buckets = 0x%"PRIx64" size 0x%"PRIx64
-+xen_replace_cache_entry_dummy(uint64_t old_phys_addr, uint64_t new_phys_addr) "Replacing a dummy mapcache entry for 0x%"PRIx64" with 0x%"PRIx64
-+xen_invalidate_map_cache_entry_unlocked_not_found(void *p) "could not find %p"
-+xen_invalidate_map_cache_entry_unlocked_found(uint64_t addr, void *p) "   0x%"PRIx64" -> %p is present"
-+xen_invalidate_map_cache_entry_unlocked_miss(void *buffer) "Trying to unmap address %p that is not in the mapcache"
-+xen_replace_cache_entry_unlocked_could_not_update_entry(uint64_t old_phys_addr) "Unable to update a mapcache entry for 0x%"PRIx64
-+xen_ram_addr_from_mapcache_not_found(void *p) "could not find %p"
-+xen_ram_addr_from_mapcache_found(uint64_t addr, void *p) "   0x%"PRIx64" -> %p is present"
-+xen_ram_addr_from_mapcache_not_in_cache(void *p) "Trying to find address %p that is not in the mapcache"
-+xen_replace_cache_entry_unlocked(uint64_t old_phys_addr) "Trying to update an entry for 0x%"PRIx64" that is not in the mapcache"
-+xen_invalidate_map_cache(uint64_t paddr_index, void *vaddr_req) "Locked DMA mapping while invalidating mapcache 0x%"PRIx64" -> %p is present"
-diff --git a/hw/xen/xen-mapcache.c b/hw/xen/xen-mapcache.c
-index f7d974677d..336c212376 100644
---- a/hw/xen/xen-mapcache.c
-+++ b/hw/xen/xen-mapcache.c
-@@ -22,16 +22,6 @@
- #include "trace.h"
+diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
+index 47e6cb1db3..05a29c6f11 100644
+--- a/hw/xen/xen-hvm-common.c
++++ b/hw/xen/xen-hvm-common.c
+@@ -169,11 +169,12 @@ static ioreq_t *cpu_get_ioreq_from_shared_memory(XenIOState *state, int vcpu)
+     ioreq_t *req = xen_vcpu_ioreq(state->shared_page, vcpu);
  
- 
--//#define MAPCACHE_DEBUG
--
--#ifdef MAPCACHE_DEBUG
--#  define DPRINTF(fmt, ...) do { \
--    fprintf(stderr, "xen_mapcache: " fmt, ## __VA_ARGS__); \
--} while (0)
--#else
--#  define DPRINTF(fmt, ...) do { } while (0)
--#endif
--
- #if HOST_LONG_BITS == 32
- #  define MCACHE_BUCKET_SHIFT 16
- #  define MCACHE_MAX_SIZE     (1UL<<31) /* 2GB Cap */
-@@ -145,8 +135,7 @@ void xen_map_cache_init(phys_offset_to_gaddr_t f, void *opaque)
- 
-     size = mapcache->nr_buckets * sizeof (MapCacheEntry);
-     size = (size + XC_PAGE_SIZE - 1) & ~(XC_PAGE_SIZE - 1);
--    DPRINTF("%s, nr_buckets = %lx size %lu\n", __func__,
--            mapcache->nr_buckets, size);
-+    trace_xen_map_cache_init(mapcache->nr_buckets, size);
-     mapcache->entry = g_malloc0(size);
- }
- 
-@@ -286,7 +275,9 @@ tryagain:
-         test_bits(address_offset >> XC_PAGE_SHIFT,
-                   test_bit_size >> XC_PAGE_SHIFT,
-                   mapcache->last_entry->valid_mapping)) {
--        trace_xen_map_cache_return(mapcache->last_entry->vaddr_base + address_offset);
-+        trace_xen_map_cache_return(
-+            mapcache->last_entry->vaddr_base + address_offset
-+        );
-         return mapcache->last_entry->vaddr_base + address_offset;
+     if (req->state != STATE_IOREQ_READY) {
+-        DPRINTF("I/O request not ready: "
+-                "%x, ptr: %x, port: %"PRIx64", "
+-                "data: %"PRIx64", count: %u, size: %u\n",
+-                req->state, req->data_is_ptr, req->addr,
+-                req->data, req->count, req->size);
++        trace_cpu_get_ioreq_from_shared_memory_req_not_ready(req->state,
++                                                             req->data_is_ptr,
++                                                             req->addr,
++                                                             req->data,
++                                                             req->count,
++                                                             req->size);
+         return NULL;
      }
  
-@@ -368,7 +359,9 @@ tryagain:
-         QTAILQ_INSERT_HEAD(&mapcache->locked_entries, reventry, next);
-     }
+@@ -601,10 +602,9 @@ static void xen_main_loop_prepare(XenIOState *state)
+     if (evtchn_fd != -1) {
+         CPUState *cpu_state;
  
--    trace_xen_map_cache_return(mapcache->last_entry->vaddr_base + address_offset);
-+    trace_xen_map_cache_return(
-+        mapcache->last_entry->vaddr_base + address_offset
-+    );
-     return mapcache->last_entry->vaddr_base + address_offset;
- }
- 
-@@ -402,10 +395,10 @@ ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
+-        DPRINTF("%s: Init cpu_by_vcpu_id\n", __func__);
+         CPU_FOREACH(cpu_state) {
+-            DPRINTF("%s: cpu_by_vcpu_id[%d]=%p\n",
+-                    __func__, cpu_state->cpu_index, cpu_state);
++            trace_xen_main_loop_prepare_init_cpu(cpu_state->cpu_index,
++                                                 cpu_state);
+             state->cpu_by_vcpu_id[cpu_state->cpu_index] = cpu_state;
          }
+         qemu_set_fd_handler(evtchn_fd, cpu_handle_ioreq, NULL, state);
+@@ -681,7 +681,7 @@ static int xen_map_ioreq_server(XenIOState *state)
      }
-     if (!found) {
--        fprintf(stderr, "%s, could not find %p\n", __func__, ptr);
-+        trace_xen_ram_addr_from_mapcache_not_found(ptr);
-         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
--            DPRINTF("   "HWADDR_FMT_plx" -> %p is present\n", reventry->paddr_index,
--                    reventry->vaddr_req);
-+            trace_xen_ram_addr_from_mapcache_found(reventry->paddr_index,
-+                                                   reventry->vaddr_req);
-         }
-         abort();
-         return 0;
-@@ -416,7 +409,7 @@ ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
-         entry = entry->next;
+ 
+     if (state->shared_page == NULL) {
+-        DPRINTF("shared page at pfn %lx\n", ioreq_pfn);
++        trace_xen_map_ioreq_server_shared_page(ioreq_pfn);
+ 
+         state->shared_page = xenforeignmemory_map(xen_fmem, xen_domid,
+                                                   PROT_READ | PROT_WRITE,
+@@ -693,7 +693,7 @@ static int xen_map_ioreq_server(XenIOState *state)
      }
-     if (!entry) {
--        DPRINTF("Trying to find address %p that is not in the mapcache!\n", ptr);
-+        trace_xen_ram_addr_from_mapcache_not_in_cache(ptr);
-         raddr = 0;
+ 
+     if (state->buffered_io_page == NULL) {
+-        DPRINTF("buffered io page at pfn %lx\n", bufioreq_pfn);
++        trace_xen_map_ioreq_server_buffered_io_page(bufioreq_pfn);
+ 
+         state->buffered_io_page = xenforeignmemory_map(xen_fmem, xen_domid,
+                                                        PROT_READ | PROT_WRITE,
+@@ -709,7 +709,7 @@ static int xen_map_ioreq_server(XenIOState *state)
+         return -1;
+     }
+ 
+-    DPRINTF("buffered io evtchn is %x\n", bufioreq_evtchn);
++    trace_xen_map_ioreq_server_buffered_io_evtchn(bufioreq_evtchn);
+ 
+     state->bufioreq_remote_port = bufioreq_evtchn;
+ 
+@@ -737,16 +737,17 @@ void destroy_hvm_domain(bool reboot)
+ 
+     xc_handle = xc_interface_open(0, 0, 0);
+     if (xc_handle == NULL) {
+-        fprintf(stderr, "Cannot acquire xenctrl handle\n");
++        trace_destroy_hvm_domain_cannot_acquire_handle();
      } else {
-         raddr = (reventry->paddr_index << MCACHE_BUCKET_SHIFT) +
-@@ -443,9 +436,12 @@ static void xen_invalidate_map_cache_entry_unlocked(uint8_t *buffer)
-         }
-     }
-     if (!found) {
--        DPRINTF("%s, could not find %p\n", __func__, buffer);
-+        trace_xen_invalidate_map_cache_entry_unlocked_not_found(buffer);
-         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
--            DPRINTF("   "HWADDR_FMT_plx" -> %p is present\n", reventry->paddr_index, reventry->vaddr_req);
-+            trace_xen_invalidate_map_cache_entry_unlocked_found(
-+                reventry->paddr_index,
-+                reventry->vaddr_req
+         sts = xc_domain_shutdown(xc_handle, xen_domid, reason);
+         if (sts != 0) {
+-            fprintf(stderr, "xc_domain_shutdown failed to issue %s, "
+-                    "sts %d, %s\n", reboot ? "reboot" : "poweroff",
+-                    sts, strerror(errno));
++            trace_destroy_hvm_domain_failed_action(
++                reboot ? "reboot" : "poweroff", sts, strerror(errno)
++            );
+         } else {
+-            fprintf(stderr, "Issued domain %d %s\n", xen_domid,
+-                    reboot ? "reboot" : "poweroff");
++            trace_destroy_hvm_domain_action(
++                xen_domid, reboot ? "reboot" : "poweroff"
 +            );
          }
-         return;
+         xc_interface_close(xc_handle);
      }
-@@ -463,7 +459,7 @@ static void xen_invalidate_map_cache_entry_unlocked(uint8_t *buffer)
-         entry = entry->next;
-     }
-     if (!entry) {
--        DPRINTF("Trying to unmap address %p that is not in the mapcache!\n", buffer);
-+        trace_xen_invalidate_map_cache_entry_unlocked_miss(buffer);
-         return;
-     }
-     entry->lock--;
-@@ -502,9 +498,8 @@ void xen_invalidate_map_cache(void)
-         if (!reventry->dma) {
-             continue;
-         }
--        fprintf(stderr, "Locked DMA mapping while invalidating mapcache!"
--                " "HWADDR_FMT_plx" -> %p is present\n",
--                reventry->paddr_index, reventry->vaddr_req);
-+        trace_xen_invalidate_map_cache(reventry->paddr_index,
-+                                       reventry->vaddr_req);
-     }
- 
-     for (i = 0; i < mapcache->nr_buckets; i++) {
-@@ -562,24 +557,23 @@ static uint8_t *xen_replace_cache_entry_unlocked(hwaddr old_phys_addr,
-         entry = entry->next;
-     }
-     if (!entry) {
--        DPRINTF("Trying to update an entry for "HWADDR_FMT_plx \
--                "that is not in the mapcache!\n", old_phys_addr);
-+        trace_xen_replace_cache_entry_unlocked(old_phys_addr);
-         return NULL;
-     }
- 
-     address_index  = new_phys_addr >> MCACHE_BUCKET_SHIFT;
-     address_offset = new_phys_addr & (MCACHE_BUCKET_SIZE - 1);
- 
--    fprintf(stderr, "Replacing a dummy mapcache entry for "HWADDR_FMT_plx \
--            " with "HWADDR_FMT_plx"\n", old_phys_addr, new_phys_addr);
-+    trace_xen_replace_cache_entry_dummy(old_phys_addr, new_phys_addr);
- 
-     xen_remap_bucket(entry, entry->vaddr_base,
-                      cache_size, address_index, false);
-     if (!test_bits(address_offset >> XC_PAGE_SHIFT,
-                 test_bit_size >> XC_PAGE_SHIFT,
-                 entry->valid_mapping)) {
--        DPRINTF("Unable to update a mapcache entry for "HWADDR_FMT_plx"!\n",
--                old_phys_addr);
-+        trace_xen_replace_cache_entry_unlocked_could_not_update_entry(
-+            old_phys_addr
-+        );
-         return NULL;
-     }
- 
 -- 
 γαῖα πυρί μιχθήτω

@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp55803ejk;
-        Mon, 29 Jan 2024 01:34:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEGNHXe2MZhLGFmMSoRbFxpx+HWPralJWPKkDb9tiotqjOK/mQM+GKzQcfHpURIK43wFjqc
-X-Received: by 2002:a05:6a20:1590:b0:199:8389:5357 with SMTP id h16-20020a056a20159000b0019983895357mr5412228pzj.46.1706520865356;
-        Mon, 29 Jan 2024 01:34:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706520865; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp55817ejk;
+        Mon, 29 Jan 2024 01:34:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHADdNK1TSOz1PqjS3spVfa8dtUw5ZqqBRw0xne5n/IPfJsRBQSm7QTCw/Hyutyl0RE7tHV
+X-Received: by 2002:a17:902:e543:b0:1d8:f82c:c74e with SMTP id n3-20020a170902e54300b001d8f82cc74emr148196plf.42.1706520867627;
+        Mon, 29 Jan 2024 01:34:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706520867; cv=none;
         d=google.com; s=arc-20160816;
-        b=T0IUlIf/MyWcORAtFLj48FCBJj3hdXk2rlWNXZHA5Jrt3fE52l6uBMadGxaPh+x4bO
-         f4ILizSAKjXGYNwFZxwuGqcsEZax4aEwJTrK3agz58cWs0F33qIiWztqXwWm7vSMw/P4
-         61BoCTRffBv6GUaL4UTWn64k7nR/c2oJhihrgzJ67PEWlfH2K8UokPGV3n9tKeCWFtUg
-         PU8lGr9/pIEtW4/RsZefYkmb5/R7OoCycbOQJD02S/9NRfjnjFniBa+nCNZuJrbZVxtw
-         hsEs2BlSA/Sb2eBa23PIZX4l+4Kidlchj4KeMB73/eGnh5etFFBiyTf3Ugsl+/kmzJWi
-         7n+A==
+        b=KoALrQZQhxHWRvrMmScMp+zcy2zPHutabKQfLEOdb/JEkdoRLosIPVlVlCHh1uhg9E
+         fp2q++A7rFZsF6eUQtWIS9MWNptLRyI/cVhp/CEWr9cmH+nppVlT/gvjp54GVk3wk6tB
+         m8JuZ9jY+1KSQqjfpNoDVqe58kWWTaxljttDl62VXRc1+iu3rwhJkOm781tVW422V7FP
+         StMg48Rg1I6Fn+RaFyO5ymlTnzh4HgBt2BzaG7z2t1pBST/FS23iaPDS5q9nhjVTQJlV
+         dNfSVdSmgOwG55uojsvgf5kREQ0PDgHckfajeWfhtm5iGb1OEpweeyXDay2v5j69bQxn
+         BE9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jI6pEjgXLL7VhelI4BMQ2Uu80z6wLvQO3ypaqXKTrGo=;
+        bh=hWf8HnN4xTze2R4Ey95SXMooKjiKjraimhDJQ1ivWmM=;
         fh=MCCLRI7Eav0C58J4xbQiDqdrgb9nG6Ic0RkQM1eww+k=;
-        b=RMy+MLe2eCyDyGE0pg68u83+Fab6FoJ/lRWc1GCPaP0urldfzwnvoUdgqnOsEm7XZR
-         xC97ZVyLrHw9CDv0tUOZ4szUU2E/gmcDolmKrTesZlKOfwbdsl48YhQ1/sDFt/ubOxsR
-         KYR0pW35wtnZ9FI+91we0KXXmSnuDXb4Zlh4IMVc6S0AYIcHgV71mSjtPFqTdqNN535w
-         dcwjWse1pGLgfid5cADcegBdkVf5DSQFXoL4WEQ8IKFij1IlR3E57/zF4+5kapHP18h3
-         C73I9HqHxeeOIhzodqMWUJO4dlTso4L2mDad5CpAA+lYT8/jgbyfTcOeOM+U8eCDs0UZ
-         vVgg==
+        b=Acry9IOgBlYTZCTUVkBg3PxRmSJYzxEkuFERiwhA3aCzveH8QcjfQSd3zevtFyaOIp
+         O2fwxbb7W5wtFdtNUpYsyJrxo1OXIWqyduVwhH31TxxhxzAPbEiFdD4dpNh4lWHDHO/S
+         EPGe3efEsaA2M9aY3bc2geqMFXgcReqIEA3ISq3sl+ktZittYoN3VvAxsfbDwwEXl6Un
+         mXWN2yFsmpEUCXrHFjJhQFSNZRmogaYuqwH2QKMW4vsrv61Z/1Zm9GhY6Iwai7/RMMqh
+         kN3vye0V2k+LtPRnLFPdQjXBZgOjA8kN0Kpq4EQjKIo1nGQt9GYBkbnjVTBtzvoiOj5T
+         qO3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=R++Hl+aI;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=AR83oh47;
        spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <iii@linux.ibm.com>
 Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id u20-20020a170903309400b001d885fa768asi5398278plc.195.2024.01.29.01.34.24
+        by mx.google.com with ESMTPS id z20-20020a1709028f9400b001d7204a84ddsi5439629plo.499.2024.01.29.01.34.27
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Jan 2024 01:34:25 -0800 (PST)
+        Mon, 29 Jan 2024 01:34:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=R++Hl+aI;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=AR83oh47;
        spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40T8OMnn001548;
-	Mon, 29 Jan 2024 09:34:24 GMT
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40T9WL0W001658;
+	Mon, 29 Jan 2024 09:34:26 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=pp1;
- bh=jI6pEjgXLL7VhelI4BMQ2Uu80z6wLvQO3ypaqXKTrGo=;
- b=R++Hl+aIWiZ9XbIFEZdlTFgldRIdwcrqkA3jNmzJNqtrZV3EUsd6I0w60cQgEhkfZrNt
- cBuLnE+SlNubIEnRgDw0y1KwVs10P6c/u1hD68JGAVv039i5zomzxgePJXeAdYJMp2LL
- FBeFbpkXi3VrCVPAhDPl1hGTWBx83BfS2SqDBFL0/t38v9/RNAV8hscaAYTAaTLlbodD
- TUN21d26rYkqEfDD+Mjz8HG6Ua8nEv7wneGoQhttSAJpharmA5CaCTAcTkpUxUG7SM3t
- 7grbDCsPciJi7gH3/Oro5V8h2f0K4BzkvbzuTGmHTFdvPgJf82CCGXX9Mao8WR7vxB2x IQ== 
+ bh=hWf8HnN4xTze2R4Ey95SXMooKjiKjraimhDJQ1ivWmM=;
+ b=AR83oh47LESTxXIcE6VZ0eyak6DyZyvRxykd/GknoVq46qIyHucjBGiqyLTiNpt1RuWu
+ q7mkGvY9X7HVjZ+WJwPnIYURB5S41juGmTOkLsRgfzZ8jIO0w1r6tOYqVALBzsKJeM8v
+ BRxb1lZ1FPAA0LRaHlPZdtnfSnXap9Df/gwd6+qF5fVROaW7X6VwtSLd1iz3Bg8cABaw
+ AB9KvEJ6H0/MU8TKqFN+AZKMm9em8SRe4jox60X98Pwed6BfthB6hNfa3I5pznNsdr46
+ IuR3d7KyrKmJkoR77VPmc2HnnwWbxsNLXXOwYlMhdlUSdEOVhMjCoHJWXbVUpNRC+Sma gg== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vw20acerh-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vx9fkr1cj-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 29 Jan 2024 09:34:23 +0000
-Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40T86671032116;
-	Mon, 29 Jan 2024 09:34:23 GMT
-Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vw20aceqw-1
+	Mon, 29 Jan 2024 09:34:26 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40T9Wn0n002818;
+	Mon, 29 Jan 2024 09:34:26 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vx9fkr1c8-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 29 Jan 2024 09:34:23 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40T6rlit002319;
-	Mon, 29 Jan 2024 09:34:22 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
-	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vwc5symug-1
+	Mon, 29 Jan 2024 09:34:25 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40T6EXEg010884;
+	Mon, 29 Jan 2024 09:34:25 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vweck70b2-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 29 Jan 2024 09:34:22 +0000
+	Mon, 29 Jan 2024 09:34:24 +0000
 Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com [10.20.54.103])
-	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40T9YKcJ8454740
+	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40T9YNbu43909844
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 29 Jan 2024 09:34:20 GMT
+	Mon, 29 Jan 2024 09:34:23 GMT
 Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 6A04220040;
-	Mon, 29 Jan 2024 09:34:20 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 2D3A320043;
+	Mon, 29 Jan 2024 09:34:23 +0000 (GMT)
 Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id C7DE22004B;
-	Mon, 29 Jan 2024 09:34:19 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 94D9220040;
+	Mon, 29 Jan 2024 09:34:22 +0000 (GMT)
 Received: from heavy.ibm.com (unknown [9.179.7.240])
 	by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Mon, 29 Jan 2024 09:34:19 +0000 (GMT)
+	Mon, 29 Jan 2024 09:34:22 +0000 (GMT)
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Richard Henderson <richard.henderson@linaro.org>,
         Peter Maydell <peter.maydell@linaro.org>,
@@ -88,783 +88,152 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
         Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v4 2/3] tests/tcg: Factor out gdbstub test functions
-Date: Mon, 29 Jan 2024 10:32:15 +0100
-Message-ID: <20240129093410.3151-3-iii@linux.ibm.com>
+Subject: [PATCH v4 3/3] tests/tcg: Add the PROT_NONE gdbstub test
+Date: Mon, 29 Jan 2024 10:32:16 +0100
+Message-ID: <20240129093410.3151-4-iii@linux.ibm.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240129093410.3151-1-iii@linux.ibm.com>
 References: <20240129093410.3151-1-iii@linux.ibm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: ihCyClUxxWIuHx29o4XNQZ1UqKhQXbeR
-X-Proofpoint-ORIG-GUID: sZcYumcz3uMNMRm7ctYPzm6z61csqSfv
+X-Proofpoint-GUID: JkubJDxknbuiHi_AWmSGSWlB9tynwuM3
+X-Proofpoint-ORIG-GUID: u_0e3XFw6uXLKWdwZcgslyCQwu4Un5FL
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-29_05,2024-01-25_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- bulkscore=0 adultscore=0 clxscore=1015 spamscore=0 mlxlogscore=988
- phishscore=0 suspectscore=0 impostorscore=0 priorityscore=1501 mlxscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ impostorscore=0 mlxscore=0 malwarescore=0 clxscore=1015 adultscore=0
+ bulkscore=0 spamscore=0 lowpriorityscore=0 phishscore=0 mlxlogscore=907
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2311290000 definitions=main-2401290068
-X-TUID: SKaeKWmRj69w
+X-TUID: OL9LnEF9E4gv
 
-Both the report() function as well as the initial gdbstub test sequence
-are copy-pasted into ~10 files with slight modifications. This
-indicates that they are indeed generic, so factor them out. While
-at it, add a few newlines to make the formatting closer to PEP-8.
+Make sure that qemu gdbstub, like gdbserver, allows reading from and
+writing to PROT_NONE pages.
 
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
- tests/guest-debug/run-test.py                 |  7 ++-
- tests/guest-debug/test_gdbstub.py             | 60 +++++++++++++++++++
- tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +----------
- tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +---------
- tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++-------------
- tests/tcg/multiarch/gdbstub/memory.py         | 41 +------------
- tests/tcg/multiarch/gdbstub/registers.py      | 41 ++-----------
- tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++-----------
- .../multiarch/gdbstub/test-proc-mappings.py   | 39 +-----------
- .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +-----------
- .../gdbstub/test-thread-breakpoint.py         | 37 +-----------
- tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +------------
- tests/tcg/s390x/gdbstub/test-svc.py           | 39 +-----------
- 13 files changed, 100 insertions(+), 397 deletions(-)
- create mode 100644 tests/guest-debug/test_gdbstub.py
+ tests/tcg/multiarch/Makefile.target      |  9 +++++-
+ tests/tcg/multiarch/gdbstub/prot-none.py | 36 +++++++++++++++++++++
+ tests/tcg/multiarch/prot-none.c          | 40 ++++++++++++++++++++++++
+ 3 files changed, 84 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
+ create mode 100644 tests/tcg/multiarch/prot-none.c
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index b13b27d4b19..368ff8a8903 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -97,7 +97,12 @@ def log(output, msg):
-     sleep(1)
-     log(output, "GDB CMD: %s" % (gdb_cmd))
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index d31ba8d6ae4..315a2e13588 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -101,13 +101,20 @@ run-gdbstub-registers: sha512
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
+ 	checking register enumeration)
  
--    result = subprocess.call(gdb_cmd, shell=True, stdout=output, stderr=stderr)
-+    gdb_env = dict(os.environ)
-+    gdb_pythonpath = gdb_env.get("PYTHONPATH", "").split(os.pathsep)
-+    gdb_pythonpath.append(os.path.dirname(os.path.realpath(__file__)))
-+    gdb_env["PYTHONPATH"] = os.pathsep.join(gdb_pythonpath)
-+    result = subprocess.call(gdb_cmd, shell=True, stdout=output, stderr=stderr,
-+                             env=gdb_env)
++run-gdbstub-prot-none: prot-none
++	$(call run-test, $@, env PROT_NONE_PY=1 $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/prot-none.py, \
++	accessing PROT_NONE memory)
++
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
+ endif
+ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+ 	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
+-	      run-gdbstub-registers
++	      run-gdbstub-registers run-gdbstub-prot-none
  
-     # A result of greater than 128 indicates a fatal signal (likely a
-     # crash due to gdb internal failure). That's a problem for GDB and
-diff --git a/tests/guest-debug/test_gdbstub.py b/tests/guest-debug/test_gdbstub.py
+ # ARM Compatible Semi Hosting Tests
+ #
+diff --git a/tests/tcg/multiarch/gdbstub/prot-none.py b/tests/tcg/multiarch/gdbstub/prot-none.py
 new file mode 100644
-index 00000000000..7f71d34da16
+index 00000000000..e829d3ebc5f
 --- /dev/null
-+++ b/tests/guest-debug/test_gdbstub.py
-@@ -0,0 +1,60 @@
-+"""Helper functions for gdbstub testing
++++ b/tests/tcg/multiarch/gdbstub/prot-none.py
+@@ -0,0 +1,36 @@
++"""Test that GDB can access PROT_NONE pages.
 +
++This runs as a sourced script (via -x, via run-test.py).
++
++SPDX-License-Identifier: GPL-2.0-or-later
 +"""
-+from __future__ import print_function
-+import gdb
-+import os
-+import sys
-+import traceback
-+
-+fail_count = 0
++import ctypes
++from test_gdbstub import main, report
 +
 +
-+def report(cond, msg):
-+    """Report success/fail of a test"""
-+    if cond:
-+        print("PASS: {}".format(msg))
-+    else:
-+        print("FAIL: {}".format(msg))
-+        global fail_count
-+        fail_count += 1
-+
-+
-+def main(test, expected_arch=None):
-+    """Run a test function
-+
-+    This runs as the script it sourced (via -x, via run-test.py)."""
++def probe_proc_self_mem():
++    buf = ctypes.create_string_buffer(b'aaa')
 +    try:
-+        inferior = gdb.selected_inferior()
-+        arch = inferior.architecture()
-+        print("ATTACHED: {}".format(arch.name()))
-+        if expected_arch is not None:
-+            report(arch.name() == expected_arch,
-+                   "connected to {}".format(expected_arch))
-+    except (gdb.error, AttributeError):
-+        print("SKIP: not connected")
++        with open("/proc/self/mem", "rb") as fp:
++            fp.seek(ctypes.addressof(buf))
++            return fp.read(3) == b'aaa'
++    except OSError:
++        return False
++
++
++def run_test():
++    """Run through the tests one by one"""
++    if not probe_proc_self_mem:
++        print("SKIP: /proc/self/mem is not usable")
 +        exit(0)
++    gdb.Breakpoint("break_here")
++    gdb.execute("continue")
++    val = gdb.parse_and_eval("*(char[2] *)q").string()
++    report(val == "42", "{} == 42".format(val))
++    gdb.execute("set *(char[3] *)q = \"24\"")
++    gdb.execute("continue")
++    exitcode = int(gdb.parse_and_eval("$_exitcode"))
++    report(exitcode == 0, "{} == 0".format(exitcode))
 +
-+    if gdb.parse_and_eval("$pc") == 0:
-+        print("SKIP: PC not set")
-+        exit(0)
-+
-+    try:
-+        test()
-+    except:
-+        print("GDB Exception:")
-+        traceback.print_exc(file=sys.stdout)
-+        global fail_count
-+        fail_count += 1
-+        if "QEMU_TEST_INTERACTIVE" in os.environ:
-+            import code
-+            code.InteractiveConsole(locals=globals()).interact()
-+        raise
-+
-+    try:
-+        gdb.execute("kill")
-+    except gdb.error:
-+        pass
-+
-+    print("All tests complete: {} failures".format(fail_count))
-+    exit(fail_count)
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-index ee8d467e59d..a78a3a2514d 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-@@ -8,19 +8,10 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
- initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- class TestBreakpoint(gdb.Breakpoint):
-     def __init__(self, sym_name="__sve_ld_done"):
-@@ -64,26 +55,5 @@ def run_test():
- 
-     gdb.execute("c")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    report(arch.name() == "aarch64", "connected to aarch64")
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except:
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    import code
--    code.InteractiveConsole(locals=globals()).interact()
--    raise
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test, expected_arch="aarch64")
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
-index afd8ece98dd..84cdcd4a32e 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve.py
-@@ -6,20 +6,10 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
- MAGIC = 0xDEADBEEF
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -54,24 +44,5 @@ def run_test():
-             report(str(v.type) == "uint64_t", "size of %s" % (reg))
-             report(int(v) == MAGIC, "%s is 0x%x" % (reg, MAGIC))
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    report(arch.name() == "aarch64", "connected to aarch64")
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except:
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--
--print("All tests complete: %d failures" % failcount)
- 
--exit(failcount)
-+main(run_test, expected_arch="aarch64")
-diff --git a/tests/tcg/multiarch/gdbstub/interrupt.py b/tests/tcg/multiarch/gdbstub/interrupt.py
-index c016e7afbbf..90a45b5140a 100644
---- a/tests/tcg/multiarch/gdbstub/interrupt.py
-+++ b/tests/tcg/multiarch/gdbstub/interrupt.py
-@@ -8,19 +8,7 @@
- #
- 
- import gdb
--import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def check_interrupt(thread):
-@@ -59,6 +47,9 @@ def run_test():
-     Test if interrupting the code always lands us on the same thread when
-     running with scheduler-lock enabled.
-     """
-+    if len(gdb.selected_inferior().threads()) == 1:
-+        print("SKIP: set to run on a single thread")
-+        exit(0)
- 
-     gdb.execute("set scheduler-locking on")
-     for thread in gdb.selected_inferior().threads():
-@@ -66,32 +57,4 @@ def run_test():
-                "thread %d resumes correctly on interrupt" % thread.num)
- 
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--if len(gdb.selected_inferior().threads()) == 1:
--    print("SKIP: set to run on a single thread")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--# Finally kill the inferior and exit gdb with a count of failures
--gdb.execute("kill")
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/memory.py b/tests/tcg/multiarch/gdbstub/memory.py
-index fb1d06b7bb7..532b92e7fb3 100644
---- a/tests/tcg/multiarch/gdbstub/memory.py
-+++ b/tests/tcg/multiarch/gdbstub/memory.py
-@@ -9,18 +9,7 @@
- 
- import gdb
- import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def check_step():
-@@ -99,29 +88,5 @@ def run_test():
- 
-     report(cbp.hit_count == 0, "didn't reach backstop")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--# Finally kill the inferior and exit gdb with a count of failures
--gdb.execute("kill")
--exit(failcount)
 +
 +main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/registers.py b/tests/tcg/multiarch/gdbstub/registers.py
-index 688c0611072..b3d13cb077f 100644
---- a/tests/tcg/multiarch/gdbstub/registers.py
-+++ b/tests/tcg/multiarch/gdbstub/registers.py
-@@ -7,20 +7,11 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import gdb
--import sys
- import xml.etree.ElementTree as ET
-+from test_gdbstub import main, report
- 
--initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test."
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+initial_vlen = 0
- 
- 
- def fetch_xml_regmap():
-@@ -75,6 +66,7 @@ def fetch_xml_regmap():
- 
-     return reg_map
- 
+diff --git a/tests/tcg/multiarch/prot-none.c b/tests/tcg/multiarch/prot-none.c
+new file mode 100644
+index 00000000000..dc56aadb3c5
+--- /dev/null
++++ b/tests/tcg/multiarch/prot-none.c
+@@ -0,0 +1,40 @@
++/*
++ * Test that GDB can access PROT_NONE pages.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include <assert.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/mman.h>
++#include <unistd.h>
 +
- def get_register_by_regnum(reg_map, regnum):
-     """
-     Helper to find a register from the map via its XML regnum
-@@ -84,6 +76,7 @@ def get_register_by_regnum(reg_map, regnum):
-             return entry
-     return None
- 
++void break_here(void *q)
++{
++}
 +
- def crosscheck_remote_xml(reg_map):
-     """
-     Cross-check the list of remote-registers with the XML info.
-@@ -144,6 +137,7 @@ def crosscheck_remote_xml(reg_map):
-         elif "seen" not in x_reg:
-             print(f"{x_reg} wasn't seen in remote-registers")
- 
++int main(void)
++{
++    long pagesize = sysconf(_SC_PAGESIZE);
++    void *p, *q;
++    int err;
 +
- def initial_register_read(reg_map):
-     """
-     Do an initial read of all registers that we know gdb cares about
-@@ -214,27 +208,4 @@ def run_test():
-         complete_and_diff(reg_map)
- 
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/sha1.py b/tests/tcg/multiarch/gdbstub/sha1.py
-index 416728415f9..1ce711a402c 100644
---- a/tests/tcg/multiarch/gdbstub/sha1.py
-+++ b/tests/tcg/multiarch/gdbstub/sha1.py
-@@ -7,19 +7,11 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
++    p = mmap(NULL, pagesize * 2, PROT_READ | PROT_WRITE,
++             MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    assert(p != MAP_FAILED);
++    q = p + pagesize - 1;
++    strcpy(q, "42");
 +
- 
- initial_vlen = 0
--failcount = 0
- 
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def check_break(sym_name):
-     "Setup breakpoint, continue and check we stopped."
-@@ -35,6 +27,7 @@ def check_break(sym_name):
- 
-     bp.delete()
- 
++    err = mprotect(p, pagesize * 2, PROT_NONE);
++    assert(err == 0);
 +
- def run_test():
-     "Run through the tests one by one"
- 
-@@ -57,28 +50,5 @@ def run_test():
-     # finally check we don't barf inspecting registers
-     gdb.execute("info registers")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
--
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
++    break_here(q);
 +
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-index 04ec61d2197..564613fabf0 100644
---- a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-+++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-@@ -3,20 +3,7 @@
- This runs as a sourced script (via -x, via run-test.py)."""
- from __future__ import print_function
- import gdb
--import sys
--
--
--n_failures = 0
--
--
--def report(cond, msg):
--    """Report success/fail of a test"""
--    if cond:
--        print("PASS: {}".format(msg))
--    else:
--        print("FAIL: {}".format(msg))
--        global n_failures
--        n_failures += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -37,26 +24,4 @@ def run_test():
-     # report("/sha1" in mappings, "Found the test binary name in the mappings")
- 
- 
--def main():
--    """Prepare the environment and run through the tests"""
--    try:
--        inferior = gdb.selected_inferior()
--        print("ATTACHED: {}".format(inferior.architecture().name()))
--    except (gdb.error, AttributeError):
--        print("SKIPPING (not connected)")
--        exit(0)
--
--    if gdb.parse_and_eval('$pc') == 0:
--        print("SKIP: PC not set")
--        exit(0)
--
--    try:
--        # Run the actual tests
--        run_test()
--    except gdb.error:
--        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
--    print("All tests complete: %d failures" % n_failures)
--    exit(n_failures)
--
--
--main()
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-index 926fa962b77..00c26ab4a95 100644
---- a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-+++ b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-@@ -6,18 +6,8 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -26,28 +16,5 @@ def run_test():
-     report(isinstance(auxv, str), "Fetched auxv from inferior")
-     report(auxv.find("sha1"), "Found test binary name in auxv")
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-index e57d2a8db8b..4d6b6b9fbe7 100644
---- a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-+++ b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-@@ -6,18 +6,8 @@
- #
- 
- import gdb
--import sys
-+from test_gdbstub import main, report
- 
--failcount = 0
--
--def report(cond, msg):
--    "Report success/fail of test"
--    if cond:
--        print ("PASS: %s" % (msg))
--    else:
--        print ("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
- 
- def run_test():
-     "Run through the tests one by one"
-@@ -29,28 +19,5 @@ def run_test():
-     frame = gdb.selected_frame()
-     report(str(frame.function()) == "thread1_func", "break @ %s"%frame)
- 
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval('$pc') == 0:
--    print("SKIP: PC not set")
--    exit(0)
--
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print ("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/s390x/gdbstub/test-signals-s390x.py b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-index ca2bbc0b03e..b6b7b39fc46 100644
---- a/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-+++ b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-@@ -7,19 +7,7 @@
- #
- 
- import gdb
--import sys
--
--failcount = 0
--
--
--def report(cond, msg):
--    """Report success/fail of test"""
--    if cond:
--        print("PASS: %s" % (msg))
--    else:
--        print("FAIL: %s" % (msg))
--        global failcount
--        failcount += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -42,31 +30,7 @@ def run_test():
-     gdb.Breakpoint("_exit")
-     gdb.execute("c")
-     status = int(gdb.parse_and_eval("$r2"))
--    report(status == 0, "status == 0");
--
--
--#
--# This runs as the script it sourced (via -x, via run-test.py)
--#
--try:
--    inferior = gdb.selected_inferior()
--    arch = inferior.architecture()
--    print("ATTACHED: %s" % arch.name())
--except (gdb.error, AttributeError):
--    print("SKIPPING (not connected)", file=sys.stderr)
--    exit(0)
--
--if gdb.parse_and_eval("$pc") == 0:
--    print("SKIP: PC not set")
--    exit(0)
-+    report(status == 0, "status == 0")
- 
--try:
--    # Run the actual tests
--    run_test()
--except (gdb.error):
--    print("GDB Exception: %s" % (sys.exc_info()[0]))
--    failcount += 1
--    pass
- 
--print("All tests complete: %d failures" % failcount)
--exit(failcount)
-+main(run_test)
-diff --git a/tests/tcg/s390x/gdbstub/test-svc.py b/tests/tcg/s390x/gdbstub/test-svc.py
-index 804705fede9..17210b4e020 100644
---- a/tests/tcg/s390x/gdbstub/test-svc.py
-+++ b/tests/tcg/s390x/gdbstub/test-svc.py
-@@ -3,20 +3,7 @@
- This runs as a sourced script (via -x, via run-test.py)."""
- from __future__ import print_function
- import gdb
--import sys
--
--
--n_failures = 0
--
--
--def report(cond, msg):
--    """Report success/fail of a test"""
--    if cond:
--        print("PASS: {}".format(msg))
--    else:
--        print("FAIL: {}".format(msg))
--        global n_failures
--        n_failures += 1
-+from test_gdbstub import main, report
- 
- 
- def run_test():
-@@ -35,26 +22,4 @@ def run_test():
-     gdb.execute("si")
- 
- 
--def main():
--    """Prepare the environment and run through the tests"""
--    try:
--        inferior = gdb.selected_inferior()
--        print("ATTACHED: {}".format(inferior.architecture().name()))
--    except (gdb.error, AttributeError):
--        print("SKIPPING (not connected)")
--        exit(0)
--
--    if gdb.parse_and_eval('$pc') == 0:
--        print("SKIP: PC not set")
--        exit(0)
--
--    try:
--        # Run the actual tests
--        run_test()
--    except gdb.error:
--        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
--    print("All tests complete: %d failures" % n_failures)
--    exit(n_failures)
--
--
--main()
-+main(run_test)
++    err = mprotect(p, pagesize * 2, PROT_READ);
++    assert(err == 0);
++    if (getenv("PROT_NONE_PY")) {
++        assert(strcmp(q, "24") == 0);
++    }
++
++    return EXIT_SUCCESS;
++}
 -- 
 2.43.0

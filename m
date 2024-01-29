@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp297840ejk;
-        Mon, 29 Jan 2024 08:48:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEf+jw7upzQQNinwfST5RH1LbKnVezkgS6Sy8HzAKTZXYEF6wxawQLQowbJvaMy/0gm/HnJ
-X-Received: by 2002:a05:6402:22e4:b0:55e:ff4e:5447 with SMTP id dn4-20020a05640222e400b0055eff4e5447mr2043202edb.32.1706546885503;
-        Mon, 29 Jan 2024 08:48:05 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706546885; cv=pass;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp297897ejk;
+        Mon, 29 Jan 2024 08:48:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEss1tJY0XO7M46obZ8E2gxKIx2c20KjtN3OtbqUY+TzaJpbFaA5EoDOVtATc1qGHe9jNw3
+X-Received: by 2002:a17:906:41a:b0:a35:ad04:dcbc with SMTP id d26-20020a170906041a00b00a35ad04dcbcmr2213157eja.32.1706546892165;
+        Mon, 29 Jan 2024 08:48:12 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706546892; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Kd+Ev9+/ek7Mf/AokBAsVlbWi9rrl31I7keZJErVvbiUBOXWIned16sMJqnREdOPBG
-         DAyusrlgiF5t9heLisAN484A1127xrL7n+FVM+HFpsyO1QGdAxyxCn/GQZE3C26DAKQM
-         OKpVu4BWX/hhvR3VvUpXVJpBtINoIgPM4cGmILrvYWVR2i6+ER4pK83Ro2psiLoNO6No
-         byi7KbnN3yqyENU/wP41Q4nHt53aS7MSriXDkZ2HEsYL9lnSfAwz6LoQcoJKFIf7dQAU
-         2FOIt+rjjT2pvPMb4dT19uxISxFpBIGHGekhnhb5lwD46JbbJaWVu4zo9kMNIK2kEuoz
-         jbRw==
+        b=uTxHW9S5rwwIVo+7QtipgHrfYAFcmz5DpJAQzLin+kKAIfHlwZ589emnR0jMQjc1NM
+         le92PWArsDF5cjB2J/ujEtc2jZPh1z6ukZVBlX7Cb3zAiVWhQ7hWTYbyWXO7qqvYlBTk
+         eg4L4EbD7n5sPMuDHzkqpm3EJgRBkofmyIVkz9kbXG/4bIQsI/iNlJq+syMUddSTWhIH
+         Hk2kOdr43G9CY0ks7MWij4mjxF/35Um63hpnIxuI93i51x7Yjb+D/DEbtJy9ZF6egjbP
+         YbqzbFjr2daD10/K0dpHipiKkaXWsCEEGT4IhnPYZdSf+RPd+iGij7T1vrWrvPHi+Hn8
+         W+wg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=a+WHgRt8aoFwU9PH4yyhsDxrOBo9TuwHJWddMcT5sv4=;
-        fh=DqNSTEmNzPMQTM95ZyvjdMeGqHYG9HDawJibgnhiICg=;
-        b=O1DMmk4vJY1mTMwuSElAxrigFQUcRWKvX+3nHvNGimpbHMv5L1O0KITNGDZ/g8MEhF
-         e6BUedEii2l+hVVBMcCH1yLwwfEXz+CnYeU57FEd1SibJS8J1wosKeKZNhRVnTHmKZDP
-         Awsr8/Vrx25M/dvso/033vh1XGi83X3AH1KYSfN8hhqMEZsgKWLfacXNLzA1obKs9lCt
-         5T+5D8s8leNGx00tlI2Cg3jpKUDOJ1GlP0cDXwzJdgS6IP00YLI5ZbAFflvgpy+wrnZ/
-         v+NIC4HzxDxP4EYO/TZIQe7KN6yCNUxmOZhXYa0G07j8b08dDAFxfDozGIIJ8dJyMr7c
-         A9gA==
+        bh=81+lsllbL0HrT+oLcmb3UYRaeAjWMCareNwo8xEwpX8=;
+        fh=9RcQkoHhly4eekpESwGAvQDpJOwyhxdHRU0k001VpW0=;
+        b=dIYIKFRnhTJpxtIHabUG5v3UBwmlHfPG5IS5NIUIeSgliYmgRG99pCBNWgX2caJI7P
+         JlLfqLRJyRAMZPqpdcBiySb2+COL1liTD9F3T4DvUWhe7elDqgdAgiKCirosk/Ufm+hi
+         hbJhvSlTvygGDhgxQ8Bo/o5DcIVv0m+5M39ntmCBQm51CcVxpnLe54HVSyamZB8ODNlN
+         XQCboqiCL0Ec73/dlDNY2ULc50e4Mw/uvOA+WAe9qiyfGcXi2gomRyYFrDFQtfF9p3im
+         WwFzloKPvx+Mpin0KhVogXYyp1IUXI3w7zeriATGZ+82n+n7wfuonYyQ8yRspTYM8b1x
+         710Q==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xE/WKl0k";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UzcqKaRY;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id ef15-20020a05640228cf00b0055d20e00acasi3886783edb.232.2024.01.29.08.48.05
+Return-Path: <kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id ap5-20020a17090735c500b00a317f391ad4si3751818ejc.56.2024.01.29.08.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:48:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Mon, 29 Jan 2024 08:48:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xE/WKl0k";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UzcqKaRY;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-7365-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-7366-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 094BA1F223B4
-	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 16:48:05 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id AC11C1F22B50
+	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 16:48:11 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 998C415699C;
-	Mon, 29 Jan 2024 16:47:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9C406156985;
+	Mon, 29 Jan 2024 16:47:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xE/WKl0k"
-Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com [209.85.128.50])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="UzcqKaRY"
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A13CB156985
-	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 16:47:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.50
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 950BF155A50
+	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 16:47:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706546839; cv=none; b=gdAnzwa+FDN4ZOpJYR1+u8FJEKmA5hXFI3I/W8By6BX8RGyN2OBYzHnpSoXggkxjN9ztbiKo+vylAgtYhrn6tAUFiiU7LnUGygKUXHP4TUbnLWX+Ve3+p9Y2AtdsxMdatdJEqhXqj1p1UQw5vlNs17iHUNVS7TErK3fHJ2yEWjg=
+	t=1706546845; cv=none; b=fpAKe/OzWh0U8ZjKeuhCq8v61uF2sYHgquOxBfY43RcdS49J+Sl8leg/Qzq8Jc6z2d+7SUKCQ2UCp31+/WvKfdHGehQn8cYObPwFSPHqeN7FEaMOWrsGJounh9AjAI5whHdBdJ7yuwu+up6bJEF9yY16O5QHnVZ4y0shVTABWfs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706546839; c=relaxed/simple;
-	bh=ylNnxRFMpN9DqWlW/A5LGAGoiXngFYhklsimJg6JN60=;
+	s=arc-20240116; t=1706546845; c=relaxed/simple;
+	bh=140Rng9id53kS0MMxeEfVWWXO1rFeuZvm0HGWxZTiSs=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=e/Lnwp+wdBTWrsPP0EPGtA1MJKtVQIkivTNqyDAq3s2CTmfG6pmsSahiR+HDepRqTBrTcPupBGYHTqSYP5vHkIZyMec73bWOjdL5cXkK0u8CjcZaQqHHN1Cq+U8G+4H2bUVcEkrhYxT+PueVVFil6G1cP/s4y6FKqnTs204FcYY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=xE/WKl0k; arc=none smtp.client-ip=209.85.128.50
+	 MIME-Version:Content-Type; b=sWIVUsjnq3i5EOQkCu684HWGxrJsMP+JuTdgmiz5Fg+qVbkRPtdON4wCDKu0Yj8tLa2RgRjrqgYIMooMgolrsd2oFqf8kYgzYrVGvX6M2d1U81/xUSvzVGHwUuZyW60Pvy+c7w88eRvsmjMW70mCoWVTbV+kdOedawuStmHZo3k=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=UzcqKaRY; arc=none smtp.client-ip=209.85.128.46
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f50.google.com with SMTP id 5b1f17b1804b1-40eacb4bfa0so35015075e9.1
-        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 08:47:17 -0800 (PST)
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-40e5afc18f5so34957285e9.3
+        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 08:47:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706546836; x=1707151636; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1706546842; x=1707151642; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=a+WHgRt8aoFwU9PH4yyhsDxrOBo9TuwHJWddMcT5sv4=;
-        b=xE/WKl0kK4lbFfzgvOGvfp57Y1vZw684ku6W1NQ+Fv1jPz/XkVZCCRzUGNvi17astA
-         BaGKxQCANLSdBvLYe4r6y3OuC9OtqjlXIta9L1nnycTlQ3jTvsaR7h8JK88JzIBqr846
-         nl9+H4nSacJTBTU0ZEtaxkf2m3JdFX2b4iuQKAYgC0gNeFTPIGXrl0f6gT7Iuwx6VqJV
-         lOfRphbeaWmbJemDi7I8GWaiDvMIIKGECtju4vQATYvkAMf/aEEoBF+MHQxxRSBunZsC
-         3BWLz3PM7Ka1KLBJYAO4jPOMhRj33eSVBLePkMMUtR6FYf0v8kAgFkBPKDDDHFMbl1jz
-         LQpA==
+        bh=81+lsllbL0HrT+oLcmb3UYRaeAjWMCareNwo8xEwpX8=;
+        b=UzcqKaRY2Q/nfm9Jg1O7P1O51M23VsVQJWGjoo6VzSnXioGaJ2Kk4A8FljrEZ9I4X3
+         LGfv+hddWaP44QUHqf2VcPWVxkN5T2MQxER68odLUG4ktBDVmHWa3NvNrT/Pn4G+LfQs
+         XJfn+d/0qAULM4oIApSlWhgNFUYr3qzPxEmj+iCnwPly2fybRZqXyaVVXy0MwyH/BVDx
+         q5CIkm2ihazssR7bbUgSuLFbvJ5PkoSLiCetlL+FSFpmZ+jQRTjCm844fz7DREmPorvG
+         6HWvRvEwc2GPJCyt9VrteKeQ2foJ/WePGH1HMZYc0Sw0GUl8f+rWngAx+qjf0RNQd9VC
+         i6IA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706546836; x=1707151636;
+        d=1e100.net; s=20230601; t=1706546842; x=1707151642;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=a+WHgRt8aoFwU9PH4yyhsDxrOBo9TuwHJWddMcT5sv4=;
-        b=tSJRumc87+XyPPNLOQFLGNjtihIo1itqX0H2APZzsOCc0vXX4gknHmMjQzqBlbftNq
-         0lZUbnT0rKmsZIgeQ9Z8Yb5c+el976onrq21FRuoADTdWioOhe+d3jSNYpXxnclMyACB
-         hhiNetm0hEkTKjzf5ex8vabH6rIIKh3FNd8N20LX5E6Ckyga8Gv09w9IVmSSK/uV3Pwb
-         r3bidJDJM0wbAAN7Jtuz/rrterJCC/RA7/11HNuGe+cKMWBhFG+1I8A0eMMIodjHqI2I
-         Ms514xlUSFrRnn5v1rql1ytflpVCI8RAX63OT9txyBJ7FVRe6LoT55Zxq4lJtcSM447N
-         Grdg==
-X-Gm-Message-State: AOJu0Yw+HgHYh8BKwvp82BuJ89fxqZQzVg5Smhgymw1O7Qhr8KB5GBQ1
-	znka+yTpnpKfk7Z+qLxNuLK5Jdci8kta9Q09BDad3G87jWkC3cn5NYvi0dD0iws=
-X-Received: by 2002:a05:600c:4689:b0:40d:5575:a197 with SMTP id p9-20020a05600c468900b0040d5575a197mr5396356wmo.12.1706546836062;
-        Mon, 29 Jan 2024 08:47:16 -0800 (PST)
+        bh=81+lsllbL0HrT+oLcmb3UYRaeAjWMCareNwo8xEwpX8=;
+        b=CWuqIADWymSjK/Xkg4jtNuHzzetJgEqLLde/FCXEGGnQOjGj/y3+8/sOyWiztaUBS8
+         tExsherqEMBqkvSdxStGgSai+ABUCCKEncFB6DBPCeIcjkzSElRkdZcnJHM8C6JQrgMb
+         b5Hb4MpC7QGKFiLROD39F2hFw96VERAOf5Zmd6lqd4IZexPN6tHjlPMqxjJklANhJSrW
+         IqOxWNhxqSgZPuSn3mY8Lxw5lpbbvZO5V/LzTeYoSHI+AlgpWFFX+qyiU7MPjsXPTA9T
+         8A7I5lFQMHXuP0zqoa0qgo5SjAv1iKLOymgPs2e4WXU6b0xiYAL45CtI1zFQbPhp1kZ7
+         Cn0Q==
+X-Gm-Message-State: AOJu0YwGmQvvgHtJPcgWDMWCnTfhg6YqnRHWFC2Mxbn8LBVRkY1gc9au
+	poMgZ9zwwYaUw2FiqxisDLl8UirVzpyogJHj7zfSWEa1pMIFCwN+iaw1SZ2ULEI=
+X-Received: by 2002:adf:fc46:0:b0:33a:eadb:f4cd with SMTP id e6-20020adffc46000000b0033aeadbf4cdmr2748018wrs.58.1706546841883;
+        Mon, 29 Jan 2024 08:47:21 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.219.39])
-        by smtp.gmail.com with ESMTPSA id l29-20020a05600c1d1d00b0040ef8aa4822sm2704220wms.38.2024.01.29.08.47.14
+        by smtp.gmail.com with ESMTPSA id p7-20020a5d4587000000b0033af670213dsm259833wrq.110.2024.01.29.08.47.20
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 29 Jan 2024 08:47:15 -0800 (PST)
+        Mon, 29 Jan 2024 08:47:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org,
@@ -110,11 +110,10 @@ Cc: qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>
-Subject: [PATCH v3 19/29] target/nios2: Prefer fast cpu_env() over slower CPU QOM cast macro
-Date: Mon, 29 Jan 2024 17:45:01 +0100
-Message-ID: <20240129164514.73104-20-philmd@linaro.org>
+	Stafford Horne <shorne@gmail.com>
+Subject: [PATCH v3 20/29] target/openrisc: Prefer fast cpu_env() over slower CPU QOM cast macro
+Date: Mon, 29 Jan 2024 17:45:02 +0100
+Message-ID: <20240129164514.73104-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240129164514.73104-1-philmd@linaro.org>
 References: <20240129164514.73104-1-philmd@linaro.org>
@@ -126,7 +125,7 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZxGXEOahmihJ
+X-TUID: doDZs3JQgns0
 
 Mechanical patch produced running the command documented
 in scripts/coccinelle/cpu_env.cocci_template header.
@@ -134,107 +133,84 @@ in scripts/coccinelle/cpu_env.cocci_template header.
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/nios2/cpu.c        | 15 +++------------
- target/nios2/helper.c     |  3 +--
- target/nios2/nios2-semi.c |  6 ++----
- target/nios2/translate.c  |  3 +--
- 4 files changed, 7 insertions(+), 20 deletions(-)
+ target/openrisc/gdbstub.c   | 6 ++----
+ target/openrisc/interrupt.c | 6 ++----
+ target/openrisc/translate.c | 6 ++----
+ 3 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
-index 09b122e24d..b5b3773fb8 100644
---- a/target/nios2/cpu.c
-+++ b/target/nios2/cpu.c
-@@ -28,28 +28,19 @@
+diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
+index d1074a0581..c2a77d5d4d 100644
+--- a/target/openrisc/gdbstub.c
++++ b/target/openrisc/gdbstub.c
+@@ -23,8 +23,7 @@
  
- static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
+ int openrisc_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
  {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
--
--    env->pc = value;
-+    cpu_env(cs)->pc = value;
- }
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
  
- static vaddr nios2_cpu_get_pc(CPUState *cs)
+     if (n < 32) {
+         return gdb_get_reg32(mem_buf, cpu_get_gpr(env, n));
+@@ -48,9 +47,8 @@ int openrisc_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+ 
+ int openrisc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
  {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
--
--    return env->pc;
-+    return cpu_env(cs)->pc;
- }
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+     CPUClass *cc = CPU_GET_CLASS(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     uint32_t tmp;
  
- static void nios2_restore_state_to_opc(CPUState *cs,
-                                        const TranslationBlock *tb,
-                                        const uint64_t *data)
+     if (n > cc->gdb_num_core_regs) {
+diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
+index d4fdb8ce8e..b3b5b40577 100644
+--- a/target/openrisc/interrupt.c
++++ b/target/openrisc/interrupt.c
+@@ -29,8 +29,7 @@
+ 
+ void openrisc_cpu_do_interrupt(CPUState *cs)
  {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
--
--    env->pc = data[0];
-+    cpu_env(cs)->pc = data[0];
- }
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     int exception = cs->exception_index;
  
- static bool nios2_cpu_has_work(CPUState *cs)
-diff --git a/target/nios2/helper.c b/target/nios2/helper.c
-index bb3b09e5a7..ac57121afc 100644
---- a/target/nios2/helper.c
-+++ b/target/nios2/helper.c
-@@ -287,8 +287,7 @@ void nios2_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-                                    MMUAccessType access_type,
-                                    int mmu_idx, uintptr_t retaddr)
+     env->epcr = env->pc;
+@@ -105,8 +104,7 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
+ 
+ bool openrisc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
-+    CPUNios2State *env = cpu_env(cs);
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     int idx = -1;
  
-     env->ctrl[CR_BADADDR] = addr;
-     cs->exception_index = EXCP_UNALIGN;
-diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
-index 0b84fcb6b6..420702e293 100644
---- a/target/nios2/nios2-semi.c
-+++ b/target/nios2/nios2-semi.c
-@@ -75,8 +75,7 @@ static int host_to_gdb_errno(int err)
- 
- static void nios2_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
- {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
-+    CPUNios2State *env = cpu_env(cs);
-     target_ulong args = env->regs[R_ARG1];
- 
-     if (put_user_u32(ret, args) ||
-@@ -93,8 +92,7 @@ static void nios2_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
- 
- static void nios2_semi_u64_cb(CPUState *cs, uint64_t ret, int err)
- {
--    Nios2CPU *cpu = NIOS2_CPU(cs);
--    CPUNios2State *env = &cpu->env;
-+    CPUNios2State *env = cpu_env(cs);
-     target_ulong args = env->regs[R_ARG1];
- 
-     if (put_user_u32(ret >> 32, args) ||
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index e806623594..30beb303f9 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -970,7 +970,6 @@ static void nios2_tr_insn_start(DisasContextBase *dcbase, CPUState *cs)
- static void nios2_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
+     if ((interrupt_request & CPU_INTERRUPT_HARD) && (env->sr & SR_IEE)) {
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index ecff4412b7..12899c911d 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -1564,8 +1564,7 @@ static void openrisc_tr_insn_start(DisasContextBase *dcbase, CPUState *cs)
+ static void openrisc_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
  {
      DisasContext *dc = container_of(dcbase, DisasContext, base);
--    CPUNios2State *env = cpu_env(cs);
-     const Nios2Instruction *instr;
-     uint32_t code, pc;
-     uint8_t op;
-@@ -980,7 +979,7 @@ static void nios2_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
-     dc->base.pc_next = pc + 4;
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    uint32_t insn = translator_ldl(&cpu->env, &dc->base, dc->base.pc_next);
++    uint32_t insn = translator_ldl(cpu_env(cs), &dc->base, dc->base.pc_next);
  
-     /* Decode an instruction */
--    code = cpu_ldl_code(env, pc);
-+    code = cpu_ldl_code(cpu_env(cs), pc);
-     op = get_opcode(code);
+     if (!decode(dc, insn)) {
+         gen_illegal_exception(dc);
+@@ -1668,8 +1667,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
  
-     if (unlikely(op >= ARRAY_SIZE(i_type_instructions))) {
+ void openrisc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ {
+-    OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+-    CPUOpenRISCState *env = &cpu->env;
++    CPUOpenRISCState *env = cpu_env(cs);
+     int i;
+ 
+     qemu_fprintf(f, "PC=%08x\n", env->pc);
 -- 
 2.41.0
 

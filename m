@@ -1,196 +1,366 @@
-Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp1023312eja;
-        Sun, 28 Jan 2024 20:25:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHGxd05Q1IFuZq/Q3hfXM2TdoFfmbsLuI+j0EKKg1AGDz4KF6CtdltOXCw5SsMCpJ7M1LOG
-X-Received: by 2002:a17:902:cec1:b0:1d7:2fa6:bfc2 with SMTP id d1-20020a170902cec100b001d72fa6bfc2mr8067305plg.60.1706502323448;
-        Sun, 28 Jan 2024 20:25:23 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706502323; cv=pass;
+Received: by 2002:a17:906:3554:b0:a35:2c0b:b7b4 with SMTP id s20csp1036908eja;
+        Sun, 28 Jan 2024 21:13:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHs28rgG8ZID2GGLk5pQ3H1cnei4Gm++lVCirTUKh419ued2BsHq04svuGGs+FZEcA8k80m
+X-Received: by 2002:ac8:5893:0:b0:42a:8f14:7fd5 with SMTP id t19-20020ac85893000000b0042a8f147fd5mr5225603qta.116.1706505190833;
+        Sun, 28 Jan 2024 21:13:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706505190; cv=none;
         d=google.com; s=arc-20160816;
-        b=K6jB8VB6BEWABdfNO/S0ZQcGGgTVQl4TyLfBvlah7wS8z+0XVekgvSDF5W4JyTkppK
-         DN4pkAPqeaDJcAyQC18FPWQivnDQCLLjA9CsmGgU8432WnAXhmLECegvACj64s0Twaem
-         lLI0eJiUNjtuEK8Di/o0ol2rcgI66FKQWUT+w2XGdhQZbyhjqQ788NgvPTpafQpLshHE
-         PFyVpXgenWBwflLBBCXNL58r9EvafaxF7G6bDZ6jKyKBGsyWw7DATqWMmWPVhv3yU32K
-         Xbhn6PuOjXijgTGDMQLfXdBKXO4IwQCPtOPPG46nW2eH+7Hw8O2AucDjqJ+20s2YK6n2
-         p+kg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
+        b=w7L2hYCDmR3L0i6H/Hy5a1/QvFjxLtYTULtucvS9bI8fWeYtgNe34SQkRqJtccWZSg
+         oM1YGr8YWI3/SSxUlTOpWvnfuMM3Uq3iSEW37nAAT8kqPrKLXdnrfdGU/JaDGKQ6CH0N
+         MfsljWBE+q5S5VUpVthhDCpQUVwXksYcRjwIwxIRLbj2OdW8d2gHEtucDFFzXZYYnvlF
+         zAgqDODzZE56gWODmSZoRVSt+NvbDv9OuZeaOd0EO77wZGWBZlBOqTQb/U7aOzAzyzcJ
+         XUempQT/glLiD0VekbmdsaX/K1rGz0Iu7UJtia4899W7NrCcqB5QsCnjKICobZeIHnVA
+         7KJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=StWMSNsyYZRk6aJRm7neTuX5AZOzEOFCGIdrgyjYPSY=;
-        fh=BTe8GpkcComMIReHP1MFLNWGjkONmEKtVi1D4vEpaWE=;
-        b=CFGopX0X6Kl6nNVCfy4YxfTgdMoK9f3p8dYRKRYgynH0q9WXLJQMk4zcwohCY1ZH/+
-         kT4ZO+nepG3S1Z6KADfv8E1uLm7GLH7PMDGm24WJZEgSZBNEfRtTq2NCTydCjR8VljMH
-         lo5lv3FdVlebK/HVhm9bcmKgUs1GjfXc1qAjDYZffO1jkafJxL0F6yrVuS3ji1aycD1A
-         HKSr6Nu90AYE5ELP2ROlfOtTokVxkv+vhtQe+ompUhNRVP3qAGLRmyM30qNV6mv3tf2a
-         bJIyrR2meL9CBZ7cOXU62xyIKcNWRXAc9gyZex1cBVex52p8x/mlYh0hDWSSZVBbgz83
-         CXTA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SD9M+mW2;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id q18-20020a656852000000b005d8c55c031dsi1739639pgt.345.2024.01.28.20.25.22
+        bh=X3hsOXabyf7PsVosDH8kLvhsbh4Sp3r+QQ5wYl0vhHw=;
+        fh=bd6JYs+zsWylHr8uUdIOK32CzPUgRjMqojZbfvqbqVY=;
+        b=x0lXjRPMxqe00QwVw2Hm4/MRjfssyFzgEAp2JVarLw5L4utY7Y5YppejF1QmbuJhak
+         EgOiB+jfEK+bJJYAhqFQXcdodWH4LMS07rFjyGeYtwceU2njsmsqAoIIICWA/9frjxwQ
+         /fnFDrrEa11eKQcEyaryuoPvwfzYjrHmZG5zXj8uU3rKBeNXLEhWgOamIInqJq7FDdWv
+         8oZSfiBFf9kqDmhdAKJyWADDsDT981gny5SLqISmW3EpALHrhYjIw0z1+c5TiNoLG8Nm
+         kYBu0MX1cFKZfJ6uFYlOeCgO1fwKjvK7DiIfkO4g5QR3nTrCv+ddQfl1UeMIaT8co/Sb
+         tXWw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=JsJmFu3O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w3-20020ac87e83000000b0042aa6ac0db8si1148780qtj.330.2024.01.28.21.13.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 28 Jan 2024 20:25:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 28 Jan 2024 21:13:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SD9M+mW2;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7306-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 2A7C1B2214F
-	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 04:25:21 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id A6AD514F70;
-	Mon, 29 Jan 2024 04:25:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="SD9M+mW2"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA39414F98
-	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 04:25:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706502316; cv=none; b=BivFSmc0Sc1l9LyJL7ZlA6udIl3GKz7/r9Y/C46G6r5eMfgsceaqybEXhJsaio06b5tkbNZme3nDXFt33LtCWJ6rUTLyPscqN4Nfo0HEOQIm8sBFLCg6g3m125hFlrbRQMkI6P4q33qaIZiVatauGVs1KWwDBlHYcQCRVOxGMXQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706502316; c=relaxed/simple;
-	bh=qsSwdHpnLkHOvkrOauf7j84EWZXP/K+GlQjFkFR1E3c=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=kPYBsH5irONHHguVLkPbOZ6pszdGI8yrWkwAPBAGjNc6aR9PMmcUOvwIFjUTVKJ0vTf59JPI+CiIEvi9ZpF6DkxsIpB5KGTrxKQZE+M3svDmRWsLSrOdCgdw7eTvUqfG2zrvTb7GgswV+4M2LYdOaiW0/Xt7NuyS+z6+N9WMc24=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=SD9M+mW2; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1706502313;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=StWMSNsyYZRk6aJRm7neTuX5AZOzEOFCGIdrgyjYPSY=;
-	b=SD9M+mW2xi7FSSMW/WAZFmETOqndGAKRj0r0sfh2fIJHQzFIkbc+V+muL1EVted9Z0Pzu1
-	xkJ/iHNWvbOZu4PFmoo3OhCK9u9PwZVOqfqRuClgM1AxMFWPnPrk00CHamd1/Z3+FqVeg7
-	8I/73vxZS1IcNqf22BT8VCnurOe+lYY=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-458-iZVNPXvaNY6lc_dNvnAmVg-1; Sun, 28 Jan 2024 23:25:12 -0500
-X-MC-Unique: iZVNPXvaNY6lc_dNvnAmVg-1
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-68c45d1a07dso12258016d6.0
-        for <kvm@vger.kernel.org>; Sun, 28 Jan 2024 20:25:11 -0800 (PST)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=JsJmFu3O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rUJx6-0000ld-1b; Mon, 29 Jan 2024 00:13:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rUJx4-0000lM-Gg
+ for qemu-arm@nongnu.org; Mon, 29 Jan 2024 00:12:58 -0500
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rUJx2-0001df-9P
+ for qemu-arm@nongnu.org; Mon, 29 Jan 2024 00:12:58 -0500
+Received: by mail-io1-xd2d.google.com with SMTP id
+ ca18e2360f4ac-7bc332d49f6so103165639f.1
+ for <qemu-arm@nongnu.org>; Sun, 28 Jan 2024 21:12:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1706505174; x=1707109974; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=X3hsOXabyf7PsVosDH8kLvhsbh4Sp3r+QQ5wYl0vhHw=;
+ b=JsJmFu3OamyC6oh6HK6Y+IQMUhz71bcv7fE7BP4E2/NLXxKkOIGGkRzUJwnBoCRnuI
+ 5YXGYfCeZPihwLV5SvlheN8BJiWXwvDbSJZ9k2ZElhFuOwpwvUQUH+39J18x8ukwsNHc
+ A5KgGsILmdm/RddJBGZBS+39t2NAgDSLlCv7Ununyf4zHRV6tOa3+akue7hAgqz1neQf
+ 7aMGwv041lGhznBtX+MBytW8gkmijlVPITV+gxendTK3W0uDFFBHL1+4n81oYca+h0FD
+ jcUSmEoU4JxAfUT8BMkhF+BofmqnTnp+udlVLSQszDq+2vSx7MJBj5F1135kJ/Md3SPT
+ IKEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706502311; x=1707107111;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=StWMSNsyYZRk6aJRm7neTuX5AZOzEOFCGIdrgyjYPSY=;
-        b=K8326A6+Fbj6y8JZnJSPMY/X3nIToPmnDEBKPA+p9q5qcTKqcgIJaXOd8SjGFsaNFz
-         /ciABGgKicha79NGS0eyuk3dqnai2H0gT1QnMY0JlpWay2Xq6w7ce218qPf63QXnnyt9
-         dAnyWtEGmq4Trrzpr4CQrIryppUUaKODnJqGfik807M5tDg8fXNBCwn2H8u2U/d+9dn3
-         CAu5IZMChzfgFtmg28kdMhaLJP9cftUUFpR81d2iBUEImUVJOCIrVeQbpMvQEGguYbZu
-         sgoT0jQXbIdb9zrqeJpqY7h/UakuOYeIeF8CDKZZMn4zEtIf4tFPYJ7ZmFP4u1J1N/8g
-         4Eyw==
-X-Gm-Message-State: AOJu0YzX7W0Hoet9u2lVf5OZqYM82yKWUFIz07dC/Pis06XrODWAMtuy
-	A3m4HkoLfIM9AD8cRXJFdHRPIjmVAJP+XzdrTHQ1x2OPlD3MgOYPUDsSSf3jBhkCxKOOYbvQu83
-	KAiOFKXjcTU7VO4BzwpqwFOBLeG9ExOypJmAktcYfvT4G6q769w==
-X-Received: by 2002:a0c:db86:0:b0:68c:3be3:1fc1 with SMTP id m6-20020a0cdb86000000b0068c3be31fc1mr5030203qvk.29.1706502311593;
-        Sun, 28 Jan 2024 20:25:11 -0800 (PST)
-X-Received: by 2002:a0c:db86:0:b0:68c:3be3:1fc1 with SMTP id m6-20020a0cdb86000000b0068c3be31fc1mr5030183qvk.29.1706502311335;
-        Sun, 28 Jan 2024 20:25:11 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-176-119.web.vodafone.de. [109.43.176.119])
-        by smtp.gmail.com with ESMTPSA id b17-20020a0cbf51000000b0068109717d02sm3026359qvj.54.2024.01.28.20.25.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 28 Jan 2024 20:25:11 -0800 (PST)
-Message-ID: <b59c59b2-fa29-4084-89f4-966f0b9aa745@redhat.com>
-Date: Mon, 29 Jan 2024 05:25:06 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1706505174; x=1707109974;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=X3hsOXabyf7PsVosDH8kLvhsbh4Sp3r+QQ5wYl0vhHw=;
+ b=jRg4QgcjaYzAdxa0Lq27YbQwgOO3Y2wYZeTMHkdKEGmzxeZR5vjnxj5TL3de8E9AJ+
+ 8tsB4rCID/hloW8tvqN8xBNoRp7mZXYVWeINGPltVic5M3fC8tVm8NSjwZw2ULudBl2I
+ r8w++ARo3IN0PaCmxdVKzlG5KX2lwT7ikwKVRU8fUM0F0v0P5sJ+oM+gXbZXGsf9mpCF
+ QVqXmAc98tV2Q1dnpX0oRteoRRIcXmL2P/RIZyTWXfIE8W0OdO/KCU+xPa7oSTXFWyfN
+ Eo1iugopJQrBMBWyK0tqd7glUH3rpikaQS9a+46BgVIkGOUkSjelxAdQWcrwH3ZQ2G82
+ 3ybw==
+X-Gm-Message-State: AOJu0YxPXxXShDKrT6Tw/GZkcwANOE7UAKOnIVJ2VeCJehk3jpjZ7kbt
+ eW82Hv4vHBYisI0r0fMPEunHsld9T2CG38s9/NFQFWT9BVKSQ3KrPUNuwA5mvHo=
+X-Received: by 2002:a92:dcd1:0:b0:363:7379:5fde with SMTP id
+ b17-20020a92dcd1000000b0036373795fdemr5150375ilr.27.1706505174498; 
+ Sun, 28 Jan 2024 21:12:54 -0800 (PST)
+Received: from sunil-laptop ([106.51.190.212])
+ by smtp.gmail.com with ESMTPSA id
+ g21-20020a02b715000000b0046ee92bc557sm1583999jam.92.2024.01.28.21.12.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Jan 2024 21:12:54 -0800 (PST)
+Date: Mon, 29 Jan 2024 10:42:43 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: Re: [RESEND v2 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR creation
+ to common location
+Message-ID: <Zbczy87+E0gJEzgw@sunil-laptop>
+References: <20240129021440.17640-1-jeeheng.sia@starfivetech.com>
+ <20240129021440.17640-2-jeeheng.sia@starfivetech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 19/23] target/s390x: Prefer fast cpu_env() over slower
- CPU QOM cast macro
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-References: <20240126220407.95022-1-philmd@linaro.org>
- <20240126220407.95022-20-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240126220407.95022-20-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: I/qPh3n0jalJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240129021440.17640-2-jeeheng.sia@starfivetech.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-io1-xd2d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /ZkJi2iEkS8N
 
-On 26/01/2024 23.04, Philippe Mathieu-Daudé wrote:
-> Mechanical patch produced running the command documented
-> in scripts/coccinelle/cpu_env.cocci_template header.
+Hi Jee Heng,
+
+On Sun, Jan 28, 2024 at 06:14:39PM -0800, Sia Jee Heng wrote:
+> RISC-V should also generate the SPCR in a manner similar to ARM.
+> Therefore, instead of replicating the code, relocate this function
+> to the common AML build.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 > ---
->   target/s390x/cpu-dump.c        |  3 +--
->   target/s390x/gdbstub.c         |  6 ++----
->   target/s390x/helper.c          |  3 +--
->   target/s390x/kvm/kvm.c         |  6 ++----
->   target/s390x/tcg/excp_helper.c | 11 +++--------
->   target/s390x/tcg/translate.c   |  3 +--
->   6 files changed, 10 insertions(+), 22 deletions(-)
+>  hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
+>  include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+>  include/hw/acpi/aml-build.h |  4 +++
+>  4 files changed, 115 insertions(+), 41 deletions(-)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index af66bde0f5..f3904650e4 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+>      }
+>  }
+>  
+> +void build_spcr(GArray *table_data, BIOSLinker *linker,
+> +                const AcpiSpcrData *f, const uint8_t rev,
+> +                const char *oem_id, const char *oem_table_id)
+> +{
+> +    AcpiTable table = { .sig = "SPCR", .rev = rev, .oem_id = oem_id,
+> +                        .oem_table_id = oem_table_id };
+> +
+> +    acpi_table_begin(&table, table_data);
+> +    /* Interface type */
+> +    build_append_int_noprefix(table_data, f->interface_type, 1);
+> +    /* Reserved */
+> +    build_append_int_noprefix(table_data, 0, 3);
+> +    /* Base Address */
+> +    build_append_gas(table_data, f->base_addr.id, f->base_addr.width,
+> +                     f->base_addr.offset, f->base_addr.size,
+> +                     f->base_addr.addr);
+> +    /* Interrupt type */
+> +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
+> +    /* IRQ */
+> +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
+> +    /* Global System Interrupt */
+> +    build_append_int_noprefix(table_data, f->interrupt, 4);
+> +    /* Baud Rate */
+> +    build_append_int_noprefix(table_data, f->baud_rate, 1);
+> +    /* Parity */
+> +    build_append_int_noprefix(table_data, f->parity, 1);
+> +    /* Stop Bits */
+> +    build_append_int_noprefix(table_data, f->stop_bits, 1);
+> +    /* Flow Control */
+> +    build_append_int_noprefix(table_data, f->flow_control, 1);
+> +    /* Terminal Type */
+> +    build_append_int_noprefix(table_data, f->terminal_type, 1);
+> +    /* PCI Device ID  */
+> +    build_append_int_noprefix(table_data, f->pci_device_id, 2);
+> +    /* PCI Vendor ID */
+> +    build_append_int_noprefix(table_data, f->pci_vendor_id, 2);
+> +    /* PCI Bus Number */
+> +    build_append_int_noprefix(table_data, f->pci_bus, 1);
+> +    /* PCI Device Number */
+> +    build_append_int_noprefix(table_data, f->pci_device, 1);
+> +    /* PCI Function Number */
+> +    build_append_int_noprefix(table_data, f->pci_function, 1);
+> +    /* PCI Flags */
+> +    build_append_int_noprefix(table_data, f->pci_flags, 4);
+> +    /* PCI Segment */
+> +    build_append_int_noprefix(table_data, f->pci_segment, 1);
+> +    /* Reserved */
+> +    build_append_int_noprefix(table_data, 0, 4);
+> +
+I think either there should be a comment that this supports only v2 of
+SPCR spec or it should be able to create SPCR of any version. IMO, I
+think it is better to add support till v4 (latest). Since consumers like
+Linux probably doesn't support v4 yet, ARM/RISC-V can continue to create
+v2 itself for the time being but the generic build_spcr() should be able
+to create v4 also if the arch requires it.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+Thanks,
+Sunil
+> +    acpi_table_end(linker, &table);
+> +}
+>  /*
+>   * ACPI spec, Revision 6.3
+>   * 5.2.29 Processor Properties Topology Table (PPTT)
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index a22a2f43a5..195767c0f0 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -431,48 +431,34 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>   * Rev: 1.07
+>   */
+>  static void
+> -build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> +spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  {
+> -    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = vms->oem_id,
+> -                        .oem_table_id = vms->oem_table_id };
+> -
+> -    acpi_table_begin(&table, table_data);
+> -
+> -    /* Interface Type */
+> -    build_append_int_noprefix(table_data, 3, 1); /* ARM PL011 UART */
+> -    build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+> -    /* Base Address */
+> -    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 32, 0, 3,
+> -                     vms->memmap[VIRT_UART].base);
+> -    /* Interrupt Type */
+> -    build_append_int_noprefix(table_data,
+> -        (1 << 3) /* Bit[3] ARMH GIC interrupt */, 1);
+> -    build_append_int_noprefix(table_data, 0, 1); /* IRQ */
+> -    /* Global System Interrupt */
+> -    build_append_int_noprefix(table_data,
+> -                              vms->irqmap[VIRT_UART] + ARM_SPI_BASE, 4);
+> -    build_append_int_noprefix(table_data, 3 /* 9600 */, 1); /* Baud Rate */
+> -    build_append_int_noprefix(table_data, 0 /* No Parity */, 1); /* Parity */
+> -    /* Stop Bits */
+> -    build_append_int_noprefix(table_data, 1 /* 1 Stop bit */, 1);
+> -    /* Flow Control */
+> -    build_append_int_noprefix(table_data,
+> -        (1 << 1) /* RTS/CTS hardware flow control */, 1);
+> -    /* Terminal Type */
+> -    build_append_int_noprefix(table_data, 0 /* VT100 */, 1);
+> -    build_append_int_noprefix(table_data, 0, 1); /* Language */
+> -    /* PCI Device ID  */
+> -    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
+> -    /* PCI Vendor ID */
+> -    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
+> -    build_append_int_noprefix(table_data, 0, 1); /* PCI Bus Number */
+> -    build_append_int_noprefix(table_data, 0, 1); /* PCI Device Number */
+> -    build_append_int_noprefix(table_data, 0, 1); /* PCI Function Number */
+> -    build_append_int_noprefix(table_data, 0, 4); /* PCI Flags */
+> -    build_append_int_noprefix(table_data, 0, 1); /* PCI Segment */
+> -    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+> +    AcpiSpcrData serial = {
+> +        .interface_type = 3,       /* ARM PL011 UART */
+> +        .base_addr.id = AML_AS_SYSTEM_MEMORY,
+> +        .base_addr.width = 32,
+> +        .base_addr.offset = 0,
+> +        .base_addr.size = 3,
+> +        .base_addr.addr = vms->memmap[VIRT_UART].base,
+> +        .interrupt_type = (1 << 3),/* Bit[3] ARMH GIC interrupt*/
+> +        .pc_interrupt = 0,         /* IRQ */
+> +        .interrupt = (vms->irqmap[VIRT_UART] + ARM_SPI_BASE),
+> +        .baud_rate = 3,            /* 9600 */
+> +        .parity = 0,               /* No Parity */
+> +        .stop_bits = 1,            /* 1 Stop bit */
+> +        .flow_control = 1 << 1,    /* RTS/CTS hardware flow control */
+> +        .terminal_type = 0,        /* VT100 */
+> +        .language = 0,             /* Language */
+> +        .pci_device_id = 0xffff,   /* not a PCI device*/
+> +        .pci_vendor_id = 0xffff,   /* not a PCI device*/
+> +        .pci_bus = 0,
+> +        .pci_device = 0,
+> +        .pci_function = 0,
+> +        .pci_flags = 0,
+> +        .pci_segment = 0,
+> +    };
+>  
+> -    acpi_table_end(linker, &table);
+> +    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_table_id);
+>  }
+>  
+>  /*
+> @@ -930,7 +916,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      }
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+> -    build_spcr(tables_blob, tables->linker, vms);
+> +    spcr_setup(tables_blob, tables->linker, vms);
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_dbg2(tables_blob, tables->linker, vms);
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 2b42e4192b..0e6e82b339 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -90,6 +90,39 @@ typedef struct AcpiFadtData {
+>      unsigned *xdsdt_tbl_offset;
+>  } AcpiFadtData;
+>  
+> +typedef struct AcpiGas {
+> +    uint8_t id;                /* Address space ID */
+> +    uint8_t width;             /* Register bit width */
+> +    uint8_t offset;            /* Register bit offset */
+> +    uint8_t size;              /* Access size */
+> +    uint64_t addr;             /* Address */
+> +} AcpiGas;
+> +
+> +/* SPCR (Serial Port Console Redirection table) */
+> +typedef struct AcpiSpcrData {
+> +    uint8_t interface_type;
+> +    uint8_t reserved[3];
+> +    struct AcpiGas base_addr;
+> +    uint8_t interrupt_type;
+> +    uint8_t pc_interrupt;
+> +    uint32_t interrupt;        /* Global system interrupt */
+> +    uint8_t baud_rate;
+> +    uint8_t parity;
+> +    uint8_t stop_bits;
+> +    uint8_t flow_control;
+> +    uint8_t terminal_type;
+> +    uint8_t language;
+> +    uint8_t reserved1;
+> +    uint16_t pci_device_id;    /* Must be 0xffff if not PCI device */
+> +    uint16_t pci_vendor_id;    /* Must be 0xffff if not PCI device */
+> +    uint8_t pci_bus;
+> +    uint8_t pci_device;
+> +    uint8_t pci_function;
+> +    uint32_t pci_flags;
+> +    uint8_t pci_segment;
+> +    uint32_t reserved2;
+> +} AcpiSpcrData;
+> +
+>  #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
+>  #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
+>  
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index ff2a310270..a3784155cb 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -497,4 +497,8 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>  
+>  void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>                  const char *oem_id, const char *oem_table_id);
+> +
+> +void build_spcr(GArray *table_data, BIOSLinker *linker,
+> +                const AcpiSpcrData *f, const uint8_t rev,
+> +                const char *oem_id, const char *oem_table_id);
+>  #endif
+> -- 
+> 2.34.1
+> 

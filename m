@@ -1,206 +1,270 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp276830ejk;
-        Mon, 29 Jan 2024 08:10:36 -0800 (PST)
-X-Received: by 2002:a05:6512:3996:b0:510:67d:7251 with SMTP id j22-20020a056512399600b00510067d7251mr4363433lfu.47.1706544636403;
-        Mon, 29 Jan 2024 08:10:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706544636; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp277099ejk;
+        Mon, 29 Jan 2024 08:10:59 -0800 (PST)
+X-Received: by 2002:a05:6512:110c:b0:510:15aa:ef16 with SMTP id l12-20020a056512110c00b0051015aaef16mr4180117lfg.58.1706544659023;
+        Mon, 29 Jan 2024 08:10:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706544658; cv=none;
         d=google.com; s=arc-20160816;
-        b=vP8tXrhUuHW+56ktRTRfe02WOTRxKr4WcvLZmpsax0VSeYFSBeA8U9oi3DuqGNckmT
-         W6CkFbNU9lFwc/42Y8R2J3yd/AtvnKl6eaqX+hADI0WJL0cvTp+ghoaV1/6gXh2W33wb
-         8MA3EGkrqJ8jC+O6vTcqvYEopmzWdzKdjirh1WmiDVL2X4fp0RC6BNzLo2VA55JnymID
-         UM7IoGzcMVq35nAldg6WRC2dyh6/fX9YEMabl2jX2+r/lbLLunFXpIggrWxhOfZpe/sh
-         oPPEIgzFSVR5QVEQA4KMvHEAlQLbxmtEHIpEsHkiJcPicmAN4v7YWY1r+/8GXGLM2ARs
-         1d+A==
+        b=Eco58eDMr6zYR0UwPeCymNj4z9nTjr6J3jKoYlhfTnS7cNX0hhHxBz5sRXhDtVvNtC
+         TtnCSTe+7VDBWDNScrUHGiCvWUN1Y3xS/FH38TfkGDLKxX1ch3emFZbCFwEfO9u61bBF
+         bvfqvANgQJ7qj0aROKd9207SOrxDRYQOOpTRaDgaocjWD0OAllcD2Av8C2U7BTZ6KcSQ
+         /P5eSuQjEU1YYzeFHsY51J81Ti7rXdXNqxV/z1eE023/gMtYyQzMyDmKJJUGUq5Pfkim
+         vI7JG/y2Nsj30tssjxjA42LrhrOtrcJXN2/05wxNCDwz47s3yaBmn82kwYjyvC3/1PES
+         hcPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mowSEhOgZzKcBJ9VgVtTRlxzjWwdK68BxpCMYQUxiN0=;
-        fh=i8IrxfRLCV5OjP1q5SHj5PLJJsmsGE7RKBJUCNgfBeY=;
-        b=Os9WLkWKhfX3RZ+yJo6w4/wEO6BBuuNToKv3GixW+jBU982jrPpadhLyU8asj828lQ
-         Y3K9/VvuDtEpu9o5QvGyFZJiMSe0sScNvF2+iwBya6tgPgMkLqOsWhU2+jX3LwSWgdTt
-         wMkUOBTx0uYlQascIlxoA2KRcO4a/g0Bry8oetk9P5T9BDwYmGUU2UZwdHDJ5hLxTxu5
-         Sh84kBe8n28ka/64ejb1/OuGZfWcpUuGDg19SQMUIR94qZpdq5CM78175kfBQnWKc9H3
-         QuSl+O/klWAH2Tcy3GjGJ66ueLTSLdPytGPTNjsEI30umt70dNOL8oDvEk8qDqn8iuNS
-         7ibw==
+        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
+        fh=Xb4KIKmbdaaiPlPH1bCESW8KkxUeVgZklsOwpxb0HGc=;
+        b=mA5NeulnD1P4Y5Z0q2vJXfBpTEmKcbBSe3+Jl3H5x1LzW1TxY8cbfA5SZ3aC5Bxk1S
+         04BKRQabwE9/xZTTGrM0HSHMFA8sZ7zmlUsTclqhClXHqMKC8JuCbf0Qf6U3vNlpfa1g
+         oQ693MGpR8HDgqEZAgkcQpfjGTcso8lYVjp925BIlEQ9Oe+RJXLSXOsw37+m7oaeGnRM
+         BXb3tll6bKHg8eodmUJ6bpnZ2FSoEZxk5BqtJHK6ChV7K/vVKz/t37tkMwtYaiApXHLv
+         t4nBvpTYJYFY157/EfzhnOvh7OAs8lwFD8LVzaTzQX5hx/0ji+Q+9Wsh8PR0ZwQL3WvB
+         QV8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n9nPMQzn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OFyWuJTl;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l41-20020a05600c1d2900b0040ee66cfab8sor2366006wms.9.2024.01.29.08.10.36
+        by mx.google.com with SMTPS id 21-20020a05600c025500b0040ef9db636csor506811wmj.7.2024.01.29.08.10.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jan 2024 08:10:36 -0800 (PST)
+        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n9nPMQzn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OFyWuJTl;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706544636; x=1707149436; darn=linaro.org;
+        d=linaro.org; s=google; t=1706544658; x=1707149458; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mowSEhOgZzKcBJ9VgVtTRlxzjWwdK68BxpCMYQUxiN0=;
-        b=n9nPMQznjmotJY5TaJ3rhEMkK9zSLgAPr9QMiFDNDACdd5xZCpoHW5hpxk9wNwj52o
-         p4Tqe0doinRfgSFWcU7YX5I5b473STw1tVVSloDBnlSzV+0UME7nWw8T0r9o6alxYI66
-         f5sTFI92Rb7XfpjkL7MStRudl0FugaKfvF9a5Spp0QjrgziRfCyfbnBgASFYJzmyntPd
-         8RhHe8A6g/ib/krmJjp424H4U7sD6X0KGVaW93Qh7udlFB6U1IZvNfQUJQLL53dSQK7d
-         XeSL9YBC+/9ECN6ypJiDDfVkMjNpQjXAAyDHtR30SlpHn/b9EydMuQJqAS7hDTNw2ezy
-         b6Hg==
+        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
+        b=OFyWuJTlxgz07svUXZZwpFQ/4KbeS8BXEp6MhMMOSjE1eusEHHcDRT03opccCxYXEa
+         TnJ1zwRPZpgG59yZynLuOo7qyipknIx647PVcxsaLKKnOwl/z48yTZdJunjJ8kx18rnr
+         5ZmG4z25p6G70PVKoaRK5Bgf/YzTf2F2P/ta6EJjWjEFKLZsg27DC4ZnGYzVRSaVtZ4N
+         YFFCTIfbRlw6MFNDhF4sbF9/m+BVoKrXMTnLaUvoUuNPUgvhJKtiWfuD9zTX9g0SKS+X
+         VigYr5V8m5rn5UNEJzmbEVfDtAQ6X77mniRugic0YFKcv9scN7I0GUaE6vXJJyiRjZ2k
+         LIFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706544636; x=1707149436;
+        d=1e100.net; s=20230601; t=1706544658; x=1707149458;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mowSEhOgZzKcBJ9VgVtTRlxzjWwdK68BxpCMYQUxiN0=;
-        b=M3sfYEeOZdXF5LXAiEyieNtKfxhCLGphN+zhyO8p9Xn5VepM3aiiDa4nqNq7Cr4bXC
-         Adg60qtrapFH55qvEcx8GePlPzX8h4cfv/DflnkNJ9WUEN8ui6dZ4sXg/75pbo1sNnW0
-         zCKBvbJTniqFaDq1IsXGSvD8aF+pPGD3P8vAoZoQll/g/hSqZwTUzgd4LFS9L6Qd53j/
-         ATOJw7gzVDWB2HXReCZS6jy7qKL6C1614qrH2qecJmeqCrASeuiwm74xYOAa2JY6DBVa
-         hfOcw3ReP9dGAJtkB9If1YkDY5Z9/5S60OcLBfGpr3CgJwinftfvoRWm5q4t70x0URoG
-         GNaw==
-X-Gm-Message-State: AOJu0YyNqeyHMOr7AWf85kWC8xKJ73Xwick4za4SaJIwZa47+NBtF3oV
-	GW/+pdnUffi/cQiFu+DXN58P44sQHQm7lCCxpSFGc+Ig3E6EDtstwikQFLcDXQfqcA==
-X-Google-Smtp-Source: AGHT+IHJwGRqrJQIzllR5ddrn3Ul9ubdSRjAryKPH1AK1kiGYvbhTuS0azJwZJUfuup1+2wfPCWY3w==
-X-Received: by 2002:a05:6000:1544:b0:33a:ed19:9f37 with SMTP id 4-20020a056000154400b0033aed199f37mr3033204wry.47.1706544636095;
-        Mon, 29 Jan 2024 08:10:36 -0800 (PST)
+        bh=zPokHMZSaf9YJuvbqyZkKKACp6RuNQ4cINXS/c1TsXk=;
+        b=Q4n+kkUdTqmPH7X2TPvg3OnsGOxUBObJrSEVEjNJv+Gd2iL62hK3SDxBlTB0O1orbK
+         Vx6HcxCLaSG24Zltbgyk8Hq5/bP1vFIoNDQPJsgyzAAneN/wu52ckyxTI9c6UfKfm/nA
+         spspAFV/6G7tpfXC8XH+F/o4DiBQ+Jb/cdNSiotUXswRtLVuAe91iNbT0HuS/fGi/79n
+         kL7xdO1n8zGm30K6OvKJAEZiFs8LV6HCfzT/U/xGTeOvEa4A6w2OF+8iS10tWZc9N3mH
+         F2CSDhU0qiQJVg0eJ5O6i038IZAzkKeyQvD7N5OC01+cuTetxyo7ODrqonWk7/ytqfVm
+         16Bw==
+X-Gm-Message-State: AOJu0Yx6aJhmcd/fzgyIbZ7Sum6ndODo6hNyo3VM/R76p/Zb0n75EWw5
+	03DPq8K19wPXhRKaLUcqalq6QoN4wrKLHBetkqoxfms9EekeZZBOQeFBe9U1kkEEUA==
+X-Google-Smtp-Source: AGHT+IH2u+X0jHxP0JLWVS3FK/D/Os2n9uQ6Ne/3EkPY/YogM8wr2ifOFRbEXd/GLM5pC/sG/O6R+Q==
+X-Received: by 2002:a05:600c:3547:b0:40e:f5d0:8517 with SMTP id i7-20020a05600c354700b0040ef5d08517mr3106234wmq.33.1706544658554;
+        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr. [37.6.163.245])
-        by smtp.gmail.com with ESMTPSA id co6-20020a0560000a0600b0033af4df8e1esm1219957wrb.47.2024.01.29.08.10.34
+        by smtp.gmail.com with ESMTPSA id co6-20020a0560000a0600b0033af4df8e1esm1219957wrb.47.2024.01.29.08.10.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:10:35 -0800 (PST)
+        Mon, 29 Jan 2024 08:10:58 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: peter.maydell@linaro.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 3/6] hw/arm/xen_arm.c: convert DPRINTF to trace events and error/warn reports
-Date: Mon, 29 Jan 2024 18:09:38 +0200
-Message-Id: <fe5e3bd54231abe933f95a24e0e88208cd8cfd8f.1706544115.git.manos.pitsidianakis@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	xen-devel@lists.xenproject.org
+Subject: [PATCH v3 4/6] hw/xen/xen-mapcache.c: convert DPRINTF to tracepoints
+Date: Mon, 29 Jan 2024 18:09:40 +0200
+Message-Id: <2fbe1fbc59078e384761c932e97cfa4276a53d75.1706544115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1706544115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-X-TUID: L4Q84brUl0qB
+X-TUID: d54MIuiAG6SO
 
 Tracing DPRINTFs to stderr might not be desired. A developer that relies
-on trace events should be able to opt-in to each trace event and rely on
+on tracepoints should be able to opt-in to each tracepoint and rely on
 QEMU's log redirection, instead of stderr by default.
 
 This commit converts DPRINTFs in this file that are used for tracing
-into trace events. Errors or warnings are converted to error_report and
-warn_report calls.
+into tracepoints.
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/arm/trace-events |  5 +++++
- hw/arm/xen_arm.c    | 23 +++++++++++------------
- 2 files changed, 16 insertions(+), 12 deletions(-)
+ hw/xen/trace-events   | 11 +++++++++
+ hw/xen/xen-mapcache.c | 54 +++++++++++++++++++------------------------
+ 2 files changed, 35 insertions(+), 30 deletions(-)
 
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 0ff41e6c78..fd0d92762e 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -65,3 +65,8 @@ z2_lcd_enable_disable_result(const char *result) "LCD %s"
- z2_aer915_send_too_long(int8_t msg) "message too long (%i bytes)"
- z2_aer915_send(uint8_t reg, uint8_t value) "reg %d value 0x%02x"
- z2_aer915_event(int8_t event, int8_t len) "i2c event =0x%x len=%d bytes"
-+
-+# xen_arm.c
-+xen_create_virtio_mmio_devices(int i, int irq, uint64_t base) "Created virtio-mmio device %d: irq %d base 0x%"PRIx64
-+xen_init_ram(uint64_t machine_ram_size) "Initialized xen ram with size 0x%"PRIx64
-+xen_enable_tpm(uint64_t addr) "Connected tpmdev at address 0x%"PRIx64
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index a5631529d0..32776d94df 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -34,6 +34,7 @@
- #include "hw/xen/xen-hvm-common.h"
- #include "sysemu/tpm.h"
- #include "hw/xen/arch_hvm.h"
-+#include "trace.h"
+diff --git a/hw/xen/trace-events b/hw/xen/trace-events
+index 67a6c41926..a65dc0e55f 100644
+--- a/hw/xen/trace-events
++++ b/hw/xen/trace-events
+@@ -60,3 +60,14 @@ cpu_ioreq_config_write(void *req, uint32_t sbdf, uint32_t reg, uint32_t size, ui
+ xen_map_cache(uint64_t phys_addr) "want 0x%"PRIx64
+ xen_remap_bucket(uint64_t index) "index 0x%"PRIx64
+ xen_map_cache_return(void* ptr) "%p"
++xen_map_cache_init(uint64_t nr_buckets, uint64_t size) "nr_buckets = 0x%"PRIx64" size 0x%"PRIx64
++xen_replace_cache_entry_dummy(uint64_t old_phys_addr, uint64_t new_phys_addr) "Replacing a dummy mapcache entry for 0x%"PRIx64" with 0x%"PRIx64
++xen_invalidate_map_cache_entry_unlocked_not_found(void *p) "could not find %p"
++xen_invalidate_map_cache_entry_unlocked_found(uint64_t addr, void *p) "   0x%"PRIx64" -> %p is present"
++xen_invalidate_map_cache_entry_unlocked_miss(void *buffer) "Trying to unmap address %p that is not in the mapcache"
++xen_replace_cache_entry_unlocked_could_not_update_entry(uint64_t old_phys_addr) "Unable to update a mapcache entry for 0x%"PRIx64
++xen_ram_addr_from_mapcache_not_found(void *p) "could not find %p"
++xen_ram_addr_from_mapcache_found(uint64_t addr, void *p) "   0x%"PRIx64" -> %p is present"
++xen_ram_addr_from_mapcache_not_in_cache(void *p) "Trying to find address %p that is not in the mapcache"
++xen_replace_cache_entry_unlocked(uint64_t old_phys_addr) "Trying to update an entry for 0x%"PRIx64" that is not in the mapcache"
++xen_invalidate_map_cache(uint64_t paddr_index, void *vaddr_req) "Locked DMA mapping while invalidating mapcache 0x%"PRIx64" -> %p is present"
+diff --git a/hw/xen/xen-mapcache.c b/hw/xen/xen-mapcache.c
+index f7d974677d..336c212376 100644
+--- a/hw/xen/xen-mapcache.c
++++ b/hw/xen/xen-mapcache.c
+@@ -22,16 +22,6 @@
+ #include "trace.h"
  
- #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
- OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
-@@ -91,8 +92,9 @@ static void xen_create_virtio_mmio_devices(XenArmState *xam)
  
-         sysbus_create_simple("virtio-mmio", base, irq);
- 
--        DPRINTF("Created virtio-mmio device %d: irq %d base 0x%lx\n",
--                i, GUEST_VIRTIO_MMIO_SPI_FIRST + i, base);
-+        trace_xen_create_virtio_mmio_devices(i,
-+                                             GUEST_VIRTIO_MMIO_SPI_FIRST + i,
-+                                             base);
-     }
- }
- 
-@@ -101,6 +103,7 @@ static void xen_init_ram(MachineState *machine)
-     MemoryRegion *sysmem = get_system_memory();
-     ram_addr_t block_len, ram_size[GUEST_RAM_BANKS];
- 
-+    trace_xen_init_ram(machine->ram_size);
-     if (machine->ram_size <= GUEST_RAM0_SIZE) {
-         ram_size[0] = machine->ram_size;
-         ram_size[1] = 0;
-@@ -117,15 +120,10 @@ static void xen_init_ram(MachineState *machine)
-     memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo", &ram_memory,
-                              GUEST_RAM0_BASE, ram_size[0]);
-     memory_region_add_subregion(sysmem, GUEST_RAM0_BASE, &ram_lo);
--    DPRINTF("Initialized region xen.ram.lo: base 0x%llx size 0x%lx\n",
--            GUEST_RAM0_BASE, ram_size[0]);
+-//#define MAPCACHE_DEBUG
 -
-     if (ram_size[1] > 0) {
-         memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi", &ram_memory,
-                                  GUEST_RAM1_BASE, ram_size[1]);
-         memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
--        DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
--                GUEST_RAM1_BASE, ram_size[1]);
-     }
+-#ifdef MAPCACHE_DEBUG
+-#  define DPRINTF(fmt, ...) do { \
+-    fprintf(stderr, "xen_mapcache: " fmt, ## __VA_ARGS__); \
+-} while (0)
+-#else
+-#  define DPRINTF(fmt, ...) do { } while (0)
+-#endif
+-
+ #if HOST_LONG_BITS == 32
+ #  define MCACHE_BUCKET_SHIFT 16
+ #  define MCACHE_MAX_SIZE     (1UL<<31) /* 2GB Cap */
+@@ -145,8 +135,7 @@ void xen_map_cache_init(phys_offset_to_gaddr_t f, void *opaque)
+ 
+     size = mapcache->nr_buckets * sizeof (MapCacheEntry);
+     size = (size + XC_PAGE_SIZE - 1) & ~(XC_PAGE_SIZE - 1);
+-    DPRINTF("%s, nr_buckets = %lx size %lu\n", __func__,
+-            mapcache->nr_buckets, size);
++    trace_xen_map_cache_init(mapcache->nr_buckets, size);
+     mapcache->entry = g_malloc0(size);
  }
  
-@@ -158,7 +156,7 @@ static void xen_enable_tpm(XenArmState *xam)
- 
-     TPMBackend *be = qemu_find_tpm_be("tpm0");
-     if (be == NULL) {
--        DPRINTF("Couldn't fine the backend for tpm0\n");
-+        error_report("Couldn't find tmp0 backend");
-         return;
+@@ -286,7 +275,9 @@ tryagain:
+         test_bits(address_offset >> XC_PAGE_SHIFT,
+                   test_bit_size >> XC_PAGE_SHIFT,
+                   mapcache->last_entry->valid_mapping)) {
+-        trace_xen_map_cache_return(mapcache->last_entry->vaddr_base + address_offset);
++        trace_xen_map_cache_return(
++            mapcache->last_entry->vaddr_base + address_offset
++        );
+         return mapcache->last_entry->vaddr_base + address_offset;
      }
-     dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
-@@ -168,7 +166,7 @@ static void xen_enable_tpm(XenArmState *xam)
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, xam->cfg.tpm_base_addr);
  
--    DPRINTF("Connected tpmdev at address 0x%lx\n", xam->cfg.tpm_base_addr);
-+    trace_xen_enable_tpm(xam->cfg.tpm_base_addr);
+@@ -368,7 +359,9 @@ tryagain:
+         QTAILQ_INSERT_HEAD(&mapcache->locked_entries, reventry, next);
+     }
+ 
+-    trace_xen_map_cache_return(mapcache->last_entry->vaddr_base + address_offset);
++    trace_xen_map_cache_return(
++        mapcache->last_entry->vaddr_base + address_offset
++    );
+     return mapcache->last_entry->vaddr_base + address_offset;
  }
- #endif
  
-@@ -179,8 +177,9 @@ static void xen_arm_init(MachineState *machine)
-     xam->state =  g_new0(XenIOState, 1);
- 
-     if (machine->ram_size == 0) {
--        DPRINTF("ram_size not specified. QEMU machine started without IOREQ"
--                "(no emulated devices including Virtio)\n");
-+        warn_report("%s non-zero ram size not specified. QEMU machine started"
-+                    " without IOREQ (no emulated devices including virtio)",
-+                    MACHINE_CLASS(object_get_class(OBJECT(machine)))->desc);
-         return;
+@@ -402,10 +395,10 @@ ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
+         }
      }
- 
-@@ -194,7 +193,7 @@ static void xen_arm_init(MachineState *machine)
-     if (xam->cfg.tpm_base_addr) {
-         xen_enable_tpm(xam);
+     if (!found) {
+-        fprintf(stderr, "%s, could not find %p\n", __func__, ptr);
++        trace_xen_ram_addr_from_mapcache_not_found(ptr);
+         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
+-            DPRINTF("   "HWADDR_FMT_plx" -> %p is present\n", reventry->paddr_index,
+-                    reventry->vaddr_req);
++            trace_xen_ram_addr_from_mapcache_found(reventry->paddr_index,
++                                                   reventry->vaddr_req);
+         }
+         abort();
+         return 0;
+@@ -416,7 +409,7 @@ ram_addr_t xen_ram_addr_from_mapcache(void *ptr)
+         entry = entry->next;
+     }
+     if (!entry) {
+-        DPRINTF("Trying to find address %p that is not in the mapcache!\n", ptr);
++        trace_xen_ram_addr_from_mapcache_not_in_cache(ptr);
+         raddr = 0;
      } else {
--        DPRINTF("tpm-base-addr is not provided. TPM will not be enabled\n");
-+        warn_report("tpm-base-addr is not provided. TPM will not be enabled");
+         raddr = (reventry->paddr_index << MCACHE_BUCKET_SHIFT) +
+@@ -443,9 +436,12 @@ static void xen_invalidate_map_cache_entry_unlocked(uint8_t *buffer)
+         }
      }
- #endif
- }
+     if (!found) {
+-        DPRINTF("%s, could not find %p\n", __func__, buffer);
++        trace_xen_invalidate_map_cache_entry_unlocked_not_found(buffer);
+         QTAILQ_FOREACH(reventry, &mapcache->locked_entries, next) {
+-            DPRINTF("   "HWADDR_FMT_plx" -> %p is present\n", reventry->paddr_index, reventry->vaddr_req);
++            trace_xen_invalidate_map_cache_entry_unlocked_found(
++                reventry->paddr_index,
++                reventry->vaddr_req
++            );
+         }
+         return;
+     }
+@@ -463,7 +459,7 @@ static void xen_invalidate_map_cache_entry_unlocked(uint8_t *buffer)
+         entry = entry->next;
+     }
+     if (!entry) {
+-        DPRINTF("Trying to unmap address %p that is not in the mapcache!\n", buffer);
++        trace_xen_invalidate_map_cache_entry_unlocked_miss(buffer);
+         return;
+     }
+     entry->lock--;
+@@ -502,9 +498,8 @@ void xen_invalidate_map_cache(void)
+         if (!reventry->dma) {
+             continue;
+         }
+-        fprintf(stderr, "Locked DMA mapping while invalidating mapcache!"
+-                " "HWADDR_FMT_plx" -> %p is present\n",
+-                reventry->paddr_index, reventry->vaddr_req);
++        trace_xen_invalidate_map_cache(reventry->paddr_index,
++                                       reventry->vaddr_req);
+     }
+ 
+     for (i = 0; i < mapcache->nr_buckets; i++) {
+@@ -562,24 +557,23 @@ static uint8_t *xen_replace_cache_entry_unlocked(hwaddr old_phys_addr,
+         entry = entry->next;
+     }
+     if (!entry) {
+-        DPRINTF("Trying to update an entry for "HWADDR_FMT_plx \
+-                "that is not in the mapcache!\n", old_phys_addr);
++        trace_xen_replace_cache_entry_unlocked(old_phys_addr);
+         return NULL;
+     }
+ 
+     address_index  = new_phys_addr >> MCACHE_BUCKET_SHIFT;
+     address_offset = new_phys_addr & (MCACHE_BUCKET_SIZE - 1);
+ 
+-    fprintf(stderr, "Replacing a dummy mapcache entry for "HWADDR_FMT_plx \
+-            " with "HWADDR_FMT_plx"\n", old_phys_addr, new_phys_addr);
++    trace_xen_replace_cache_entry_dummy(old_phys_addr, new_phys_addr);
+ 
+     xen_remap_bucket(entry, entry->vaddr_base,
+                      cache_size, address_index, false);
+     if (!test_bits(address_offset >> XC_PAGE_SHIFT,
+                 test_bit_size >> XC_PAGE_SHIFT,
+                 entry->valid_mapping)) {
+-        DPRINTF("Unable to update a mapcache entry for "HWADDR_FMT_plx"!\n",
+-                old_phys_addr);
++        trace_xen_replace_cache_entry_unlocked_could_not_update_entry(
++            old_phys_addr
++        );
+         return NULL;
+     }
+ 
 -- 
 γαῖα πυρί μιχθήτω

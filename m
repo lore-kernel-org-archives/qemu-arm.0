@@ -1,134 +1,116 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp197771ejk;
-        Mon, 29 Jan 2024 06:08:21 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IENzyua8ZtujBsWTpeekXVB5PkNHJLohBjuiwGELNlG0LzRIEFtteAOrO7KAAa9fNtaAkKK
-X-Received: by 2002:a05:6000:512:b0:332:e68b:416c with SMTP id a18-20020a056000051200b00332e68b416cmr3643032wrf.26.1706537301518;
-        Mon, 29 Jan 2024 06:08:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706537301; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp268685ejk;
+        Mon, 29 Jan 2024 08:00:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGfLNPuLi6c0bHqZ8K7wL7tYXB6XIV1NNw8RHXG1YenIKn0eP+QuoHrCZZxLAF5nFNuvmpg
+X-Received: by 2002:ad4:5942:0:b0:68c:4e75:91bf with SMTP id eo2-20020ad45942000000b0068c4e7591bfmr2529094qvb.59.1706544049314;
+        Mon, 29 Jan 2024 08:00:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706544049; cv=none;
         d=google.com; s=arc-20160816;
-        b=vJMWfvBFKjcpfRvYb6eIt4e2P8uFRPtrg/YNIHqJEYmOq4Z3Gmn5sas9mr6kw7MfLf
-         zQEXD5F5WmftUV1Nf5vhMvaUJfvm1en8ZDcv8MSbrBay9WP6vbSVmYuDSvkJhtBMulEK
-         J9YfUYgBG0ZQ36TyqE4mBUrbkWX5b8w99zbjbBE2gcGz8BnoTHJeldgReJsvq/AMmZbB
-         f2eWJAnbZrGHBV9mnEI3lYbulfc41tcPOw/+yQ2J7S0fdDTvIGJz9QzSI2puVYFXEYCf
-         N1CVj7XqQcMKWBM1cUcspu1j78bX5q/2tJHnOP70DteWAnJ+XTvd1EXiPCvsREgepQ7z
-         NUUQ==
+        b=xdnfa1dV3/B7ckRXGu1fzIl/x3qqdROiNj5lhUEybGbxU+0bTUukG12uC8/6QKBsnt
+         npfPpuLhr0m2mt5yLr80YD2OlrhZOsR2DVhaED3EhLZqncH1i4UPlhCJbdQz/qqeO9hk
+         lV+gocLcFe4Srt1UNGQQu4AL1UtxbniO8mDYAvSOhG4DwHGp0mAbYCJbKv6EYmC6hraz
+         d+r/BO4fUF0CIpX/39GCfB7ALmh9Vnpd6NaCT6rqpOumtCOYWZGcOuwD6UpddZ/RFu6h
+         ir0l2pxPCt596GdWNMaJTKUzOpr4u2SyaTyXEosdddsBQlLAxiphRdYVkuhXPbZJpHTO
+         DgTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=WxuBZdoXUAsXj1GUkHQPVx95bUOL83JGn+VbAMej3Jk=;
-        fh=lmEVlNugKYpMmE7ME3x3XcZGnNZ8Ak2prBzg/K3rtvg=;
-        b=lNnZnmH3kyubNQmIVz5/d5bNAiNunF13/QMtEtJbnooXi3zAYZJ0lSP75S4F/Ufjcu
-         E8KdUVFHCF0XFtUOcakzHSAcZ4WO+4D6OlVrGdrm2zoD22bHxrXpU/8W0TFk+KCbv10G
-         IJUXpYf2/1pSUL7YzIaMroHWO0PxvKAr4o1FXME3eRGi3NgCqnmFPUmJ8n2JWcxFGL9E
-         DZSro5t678P8xQCj4hvdWJ5IoZEgbGpKsLqDIMiC5AkGAWBwcG4ubf0Eyw1oT7QHSW8M
-         JYKY3KMFQIhU8chu3l8FO3/65JmVMRPo9+IUxvnik2Vf3xOlsbly1sCmVwBDIZPXo30Q
-         E2FA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mBJNDAZyqhEZv/OjyuM8FGpJdQYjztNc0WQPIUrUC+c=;
+        fh=dMzOc9t0R7FxAsncZd2VpkO6WcD5Y/3HEkT1EkbuhrY=;
+        b=lRbtbyjAZIAdaEyMQz/f239KlY5qAxs8cd6qu0oxaTlFEppn7DzAfaAjg96+Wgm+KQ
+         KKscOciTTSThAWDopBEBSBcxpBRQtb28vcL0ILXYijTrlGcdZXjCIjFNuq+jucGeOosW
+         ginACq8LoklrUdjsQdUTlP+yU3n9f+wYmo4iuHzPnQ+MjfuvhVguGxx/Yf5YCey2l6Qv
+         XzpgzDGY5aLIqJA9OPqP0Eiu+BaNBtEWOEzMwLIy6c4hgj/OByNLu3yDw78Aqs5fBoX7
+         Opxpj84t+PaaQNDsqOp3tDeHKqGfD9E1s+h+cr/BhU5AZj4Q3xN/WhzmJ+4bu31CXikG
+         1kdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KscLWs8O;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bfJQ6ZjM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v15-20020a5d4b0f000000b0033ae4233c2csi2765009wrq.396.2024.01.29.06.08.21
+        by mx.google.com with ESMTPS id s14-20020a0562140cae00b0068c50d0e94esi1755175qvs.153.2024.01.29.08.00.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jan 2024 06:08:21 -0800 (PST)
+        Mon, 29 Jan 2024 08:00:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KscLWs8O;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bfJQ6ZjM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUSIn-00042x-Dv; Mon, 29 Jan 2024 09:07:57 -0500
+	id 1rUU3h-0003ih-Mn; Mon, 29 Jan 2024 11:00:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rUSIm-00042B-9F
- for qemu-arm@nongnu.org; Mon, 29 Jan 2024 09:07:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rUSIf-000085-Sx
- for qemu-arm@nongnu.org; Mon, 29 Jan 2024 09:07:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706537268;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WxuBZdoXUAsXj1GUkHQPVx95bUOL83JGn+VbAMej3Jk=;
- b=KscLWs8O28cL7ic0C35P8sZhJHb4qjMYgILGWMnRs6ePYbTbgYTfEpJvKqIQvYTNMc/Ttb
- WMDpHClc6aveMMj5kz2auUdf6In7lJqeuhggxZSy+BEVBXkiMi59gjEce07qhV9iV9SuoX
- /3jcnt3u8GH5gwxrWa1gn1H98VENXr0=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-58-OLPGz2ZwM9GNKg4s4fskrA-1; Mon, 29 Jan 2024 09:07:47 -0500
-X-MC-Unique: OLPGz2ZwM9GNKg4s4fskrA-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-7817253831cso636799385a.0
- for <qemu-arm@nongnu.org>; Mon, 29 Jan 2024 06:07:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rUU3f-0003i6-P5; Mon, 29 Jan 2024 11:00:28 -0500
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rUU3e-0000V2-3O; Mon, 29 Jan 2024 11:00:27 -0500
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-1d8e78270c1so5965675ad.0; 
+ Mon, 29 Jan 2024 08:00:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1706544023; x=1707148823; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mBJNDAZyqhEZv/OjyuM8FGpJdQYjztNc0WQPIUrUC+c=;
+ b=bfJQ6ZjMC7jJeKETpe4zdsJUpeaWG2MmdTiv4CguTGelldoa5YWJWiLQfDRL5m7aky
+ ZZ+7CwNFCgv27Bg4Dssvn4gume6dN+GjP9Sgii3kJlTB2PcGG0mm5uPe88Va7kW2wJRN
+ Lf2CmZvNob6Aw18stKsLuf1RC2qZM2gjVo+hlbUzRePK+qF+mHuSQdfqAKn6vxFhgAUM
+ DtEm/mpxLAB1ToZYr6ZLZVgwFS4REb14SPI5fbXcjijrDT/1S4nP+ykJH4jc2onUK+Jj
+ U2A17mGLOrrCFXlMVJizvBhV9P3xNduZw9AwdtWQNMUnVYP3iv0O1guTQ6xvrCnUg/5O
+ uP3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706537266; x=1707142066;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WxuBZdoXUAsXj1GUkHQPVx95bUOL83JGn+VbAMej3Jk=;
- b=JRcTRGs5wl3pCs2NPyC+zny4xUBvl5S9Z54Dpobl3Pd4v6UHiDMcXYx108WriW88QX
- T68taM4Exo2hMsfIBnUz1PI3JtuvWFJ/K9oGqtYbXvehaxflQXU7y2jw+j45VFZlBYat
- 2TOD7lt+Fz1LNUd6wOxD3XDU0SpfLZMITkvYjjGH6IwE8n8MCmIN4fJygi7iWXcLOhMN
- +wrFSFTFoQuS3GpvU7F0gWxXHqO4fsGiwmkyGgXJr+L3yITFsVA3x4zCVHP0BijmXMtL
- RyukqYscOkelWh0uop1hZ+4fPmapq1ZRqVlMsS/xhNo0PrdlYJOEZkIo561IIMj9WWEs
- d9rQ==
-X-Gm-Message-State: AOJu0YweiwNpKC2rF0T8wy2AGmRFNjCry2TT0ojkH9QYZ8R3O150zchO
- K9a9la5YCdTtg+MPDtbWrBpXO4Hwk5AccvGGNcMWnLpkIbgVtJLp173dhmKPNeW9D4UF5x+Hq7v
- AIzYH2rD++3JCtV2TITihdx/cZviN5QEa9e4pi8ZGS1rHOZuBkA==
-X-Received: by 2002:a05:620a:1441:b0:783:ebb7:fa41 with SMTP id
- i1-20020a05620a144100b00783ebb7fa41mr4773713qkl.42.1706537266682; 
- Mon, 29 Jan 2024 06:07:46 -0800 (PST)
-X-Received: by 2002:a05:620a:1441:b0:783:ebb7:fa41 with SMTP id
- i1-20020a05620a144100b00783ebb7fa41mr4773698qkl.42.1706537266246; 
- Mon, 29 Jan 2024 06:07:46 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ d=1e100.net; s=20230601; t=1706544023; x=1707148823;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mBJNDAZyqhEZv/OjyuM8FGpJdQYjztNc0WQPIUrUC+c=;
+ b=t7mR3MSDYRouWXO/XTQyGWRU4+OZZ4UNUFQkUFoCWgpfpZdAxWyeNSmU59GjqF0bN3
+ Mv0CmZbPdBWQ+/2IZREm+sbomqBKBgOjTyt/DEj+r7rifRpThDeZotGWEYnf9hFWmYF0
+ fcK14aRG7omBsZ1+FB+yn8WZZCaXSl2Q7BriDf2vM0SBgLQ30az8ZXO237naXMjKtm6h
+ vhTjOXSF3yHqnedkedTLatPTGWPXetzi9i1MedLHpimmUpZJL+IFe2j+THSukorskZ4u
+ q2JVmOwC3IbEHGOTfsY7Hejh4SHr23WJi88AHz7Tjjmk6KTQbnccvoxu+F3/GQwC7ahw
+ rDYQ==
+X-Gm-Message-State: AOJu0YyoPYad9DUK51FRF2FjhCFCutDY+meJjxrmVqN8rFhdRr/MOMIn
+ sSEh370n9IIJ8+awtJOCjOhfygUHp3I2OXEtgtMaKKPh0XhgqC7SQVO1xkt/Z3n/VQ==
+X-Received: by 2002:a17:902:dad1:b0:1d7:3e7a:718e with SMTP id
+ q17-20020a170902dad100b001d73e7a718emr5630548plx.12.1706544022640; 
+ Mon, 29 Jan 2024 08:00:22 -0800 (PST)
+Received: from localhost.localdomain ([49.47.195.100])
  by smtp.gmail.com with ESMTPSA id
- a29-20020a05620a439d00b0078400fab7a2sm633726qkp.111.2024.01.29.06.07.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jan 2024 06:07:45 -0800 (PST)
-Message-ID: <670991f9-e483-4acb-9ae9-6bad47b962b1@redhat.com>
-Date: Mon, 29 Jan 2024 15:07:41 +0100
+ e14-20020a170902cf4e00b001d8ffeb53dbsm100955plg.77.2024.01.29.08.00.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Jan 2024 08:00:22 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Rayhan Faizel <rayhan.faizel@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v2 2/2] hw/arm: Connect SPI Controller to BCM2835
+Date: Mon, 29 Jan 2024 21:25:45 +0530
+Message-Id: <20240129155541.2767068-3-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240129155541.2767068-1-rayhan.faizel@gmail.com>
+References: <20240129155541.2767068-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] VIRTIO-IOMMU: Introduce an aw-bits option
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- alex.williamson@redhat.com, peter.maydell@linaro.org,
- zhenzhong.duan@intel.com, peterx@redhat.com, yanghliu@redhat.com,
- mst@redhat.com, clg@redhat.com, jasowang@redhat.com
-References: <20240123181753.413961-1-eric.auger@redhat.com>
- <20240129122332.GA909471@myrica>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240129122332.GA909471@myrica>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.29,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,63 +124,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8npXxOpP4XwF
+X-TUID: E9AGS+wsKld/
 
-Hi Jean-Philippe,
+This patch will allow the SPI controller to be accessible from BCM2835 based
+boards as SPI0. SPI driver is usually disabled by default and config.txt does
+not work.
 
-On 1/29/24 13:23, Jean-Philippe Brucker wrote:
-> Hi Eric,
->
-> On Tue, Jan 23, 2024 at 07:15:54PM +0100, Eric Auger wrote:
->> In [1] and [2] we attempted to fix a case where a VFIO-PCI device
->> protected with a virtio-iommu is assigned to an x86 guest. On x86
->> the physical IOMMU may have an address width (gaw) of 39 or 48 bits
->> whereas the virtio-iommu exposes a 64b input address space by default.
->> Hence the guest may try to use the full 64b space and DMA MAP
->> failures may be encountered. To work around this issue we endeavoured
->> to pass usable host IOVA regions (excluding the out of range space) from
->> VFIO to the virtio-iommu device so that the virtio-iommu driver can
->> query those latter during the probe request and let the guest iommu
->> kernel subsystem carve them out.
->>
->> However if there are several devices in the same iommu group,
->> only the reserved regions of the first one are taken into
->> account by the iommu subsystem of the guest. This generally
->> works on baremetal because devices are not going to
->> expose different reserved regions. However in our case, this
->> may prevent from taking into account the host iommu geometry.
->>
->> So the simplest solution to this problem looks to introduce an
->> input address width option, aw-bits, which matches what is
->> done on the intel-iommu. By default, from now on it is set
->> to 39 bits with pc_q35 and 64b with arm virt.
-> Doesn't Arm have the same problem?  The TTB0 page tables limit what can be
-> mapped to 48-bit, or 52-bit when SMMU_IDR5.VAX==1 and granule is 64kB.
-> A Linux host driver could configure smaller VA sizes:
-> * SMMUv2 limits the VA to SMMU_IDR2.UBS (upstream bus size) which
->   can go as low as 32-bit (I'm assuming we don't care about 32-bit hosts).
-Yes I think we can ignore that use case.
-> * SMMUv3 currently limits the VA to CONFIG_ARM64_VA_BITS, which
->   could be as low as 36 bits (but realistically 39, since 36 depends on
->   16kB pages and CONFIG_EXPERT).
-Further reading "3.4.1 Input address size and Virtual Address size" ooks
-indeed SMMU_IDR5.VAX gives info on the physical SMMU actual
-implementation max (which matches intel iommu gaw). I missed that. Now I
-am confused about should we limit VAS to 39 to accomodate of the worst
-case host SW configuration or shall we use 48 instead? If we set such a
-low 39b value, won't it prevent some guests from properly working?
-Thanks Eric
->
-> But 64-bit definitely can't work for VFIO, and I suppose isn't useful for
-> virtual devices, so maybe 39 is also a reasonable default on Arm.
->
-> Thanks,
-> Jean
->
->> This replaces the
->> previous default value of 64b. So we need to introduce a compat
->> for pc_q35 machines older than 9.0 to behave similarly.
+Instead, dtmerge can be used to apply spi=on on a bcm2835 dts file.
+
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ hw/arm/Kconfig                       |  1 +
+ hw/arm/bcm2835_peripherals.c         | 17 ++++++++++++++---
+ include/hw/arm/bcm2835_peripherals.h |  3 ++-
+ 3 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 218b454e97..c8e0f2d78c 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -425,6 +425,7 @@ config RASPI
+     select PL011 # UART
+     select SDHCI
+     select USB_DWC2
++    select BCM2835_SPI
+ 
+ config STM32F100_SOC
+     bool
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 0233038b95..f259da64f7 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -144,6 +144,10 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* Power Management */
+     object_initialize_child(obj, "powermgt", &s->powermgt,
+                             TYPE_BCM2835_POWERMGT);
++
++    /* SPI */
++    object_initialize_child(obj, "bcm2835-spi0", &s->spi[0],
++                            TYPE_BCM2835_SPI);
+ }
+ 
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+@@ -399,14 +403,21 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    memory_region_add_subregion(&s->peri_mr, PM_OFFSET,
+-                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->powermgt), 0));
++    /* SPI */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[0]), errp)) {
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, SPI0_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->spi[0]), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[0]), 0,
++        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_SPI));
+ 
+     create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
+     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+-    create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+     create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
+     create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index d724a2fc28..0203bb79d8 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -31,6 +31,7 @@
+ #include "hw/gpio/bcm2835_gpio.h"
+ #include "hw/timer/bcm2835_systmr.h"
+ #include "hw/usb/hcd-dwc2.h"
++#include "hw/ssi/bcm2835_spi.h"
+ #include "hw/misc/unimp.h"
+ #include "qom/object.h"
+ 
+@@ -66,7 +67,7 @@ struct BCM2835PeripheralState {
+     BCM2835GpioState gpio;
+     Bcm2835ThermalState thermal;
+     UnimplementedDeviceState i2s;
+-    UnimplementedDeviceState spi[1];
++    BCM2835SPIState spi[1];
+     UnimplementedDeviceState i2c[3];
+     UnimplementedDeviceState otp;
+     UnimplementedDeviceState dbus;
+-- 
+2.34.1
 

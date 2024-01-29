@@ -1,270 +1,565 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp300836ejk;
-        Mon, 29 Jan 2024 08:53:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG25NL/JDlKvRmdoddg3GD5XB3sSuSKoumLL/wbcWQGj6U/O7UvHexh663At7khkSHIa/wy
-X-Received: by 2002:a05:6902:148:b0:dc2:3ae4:2180 with SMTP id p8-20020a056902014800b00dc23ae42180mr3410911ybh.129.1706547218016;
-        Mon, 29 Jan 2024 08:53:38 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706547217; cv=pass;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp293194ejk;
+        Mon, 29 Jan 2024 08:39:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGqTt3NsCCTn36FiJQ5C3XYYBh7kGI/P5bAXqu3hAKfCi8U94ghU2EO96Tm5XlEYkHw2UQz
+X-Received: by 2002:a05:6214:5192:b0:685:236a:c883 with SMTP id kl18-20020a056214519200b00685236ac883mr8739059qvb.22.1706546375348;
+        Mon, 29 Jan 2024 08:39:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706546375; cv=none;
         d=google.com; s=arc-20160816;
-        b=fl8C3tkPe/n3+DzoAmXwSWOrC8o8ZbfknSvmafhk5E13d5faX/Q9A5kWzxlWN+IQFG
-         9nR1Y2I8uhh+A2xIDsME4cdnZ2/F4G474rXrkxj8032hBnnrDMktFU0kBk9Nh/MjoOU+
-         gXaEKPzbYI5g88c2mcT4dL9oQgBZFZ7Y56WzuRganjmCByWnnx1zNttmZ+vh45lVyEnD
-         kBI+Q5wCeeF5a4lG18Kr9kLsxxxdRs1wswQtprvQQO0qw72bSrc3wBPY/JlTGqufTyLJ
-         xJtiHZayAlZFtmAldHcSIqtcSLR0iuLWuFek846OGLQ7QZ6tT8LoqDSl+pqlF+wrmCtb
-         TDdA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=7zYf6iUNFHrfxMQpPNj1mXN6dt+LxrDt3+/kg2hLKwo=;
-        fh=mKbORtPV9evsx5unJWKKGfepnvu+B10PJQezu9AX/No=;
-        b=JmLSK9o9tG0JALbY8SfQZtkwpo0tw4gW7vKq2PjXypaVC2M/oZE9tOTjFnbtMg+Fzl
-         4Xjj4ygx5rUXtUIvTYjC1qJut9mXWy1+trzLefUdBXAEeM0bUsIgwGVIlG8Cl0fhj/i4
-         ak/yDD4jr3Gk2MOWWlo4mXJ92Rb/8NVzuUxtDWdrHob3rWQj1fnv+lqPYw1/TN134W2J
-         1i8gooackYBENnkAFlj52BFTBUz+7+xR3JPfxRfdRmwFWR8XXMAKpXmYuPFfrL3YKbNz
-         lUxl0KCct2BfpRQOG13kvex+Re9H+F7UTRLlZpymPmv96CBE2RmQWrQzRKhVIQcamR+H
-         Rotw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZqnnbCU8;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id bi12-20020a05620a318c00b00783c0f3abd5si8498232qkb.98.2024.01.29.08.53.37
+        b=Wll66PhWfKLjwcjta3OHZOQbvB2fw4KTFy9D6PKHINU+7lRXx5onl2kkk2oE53CQHl
+         5ikwxjHv3UvAY+1B6AxqffppQ+f415GSh2/XTSDP5I/EJvAfI+W1QHpbgMA6SU/5WWiw
+         1QTCC8ZoXd24O9bOxkOWTcybfUr8y+gAo9vdNg21t4Ijq7og76K1zzNTrYQ1HsbkuoJ8
+         rdwRdtYUyg54eyrlrvHZ68J473R0EDG5LCbla7MXuXD4tNhKC53s+Y+XSz6Ypp6owKfF
+         LU4qUiZWNhuoszes34veuKTnfcAeaJKdEPD4yUpSpxe68CFPDe/HlYJHv4D2PH/gLUPt
+         v9mQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Pd9fV6O+Yk8prwAkquti+YkOraHzdKCNI/xJ9XUOIQw=;
+        fh=NQNDO707yORIprpMUdboWsa/iJ7NASDa+Cgk6dZqPqg=;
+        b=tlk/3nmD0K3WjT0x3jKr7PAoNTppmDmNwjtzpM3cSFEqboRBRyOGLUTZI9LfcSk0H5
+         o+UgrP+amCTlW3jDzyxeoXi9lowApsD7k6/VC1t20Qw8w66H/bonJkIsukFPDgopZR0t
+         oMQY/WYIchKCn47uH0LjJA2Ev2AKgTJsStQmhH/IlgmUwLaY8NLVXRGceJ4T2Lb9MV/+
+         qBvifdapSSB/ze46Hu/n19BrLaR0iYqjIFvm5LLo9eeJsYCa1Ca3Nlm5R0lRlnCReOxO
+         gAu/GvC4fGMHVLqJLDfr8l/AdQWYJMaNDDY6mW2TGVEXhsvw5Z8W83QoH/It6FMOG9kH
+         Cc6A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=g0bfAcwH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 7-20020a0562140dc700b00683d27b654fsi8335858qvt.78.2024.01.29.08.39.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 08:53:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Jan 2024 08:39:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZqnnbCU8;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7377-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 914C31C22324
-	for <alex.bennee@linaro.org>; Mon, 29 Jan 2024 16:53:37 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 793DE15703F;
-	Mon, 29 Jan 2024 16:53:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ZqnnbCU8"
-Received: from mail-lf1-f45.google.com (mail-lf1-f45.google.com [209.85.167.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87C08156993
-	for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 16:53:12 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.45
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706547194; cv=none; b=OUmhM4F+PJ0h14XhOthmrIyQwp5W59tS9Ejf4CFC8awgouPids+kXwsGh4gNIzZmV/rOhDByR+ymcO4je0r0qbRCUvK0fKMGeBJXNkuYgR/oxvgqOoJ2CwUOLbBojRc4IV7EYUmZho3qw2/3FdXZz7JXEWIlun5rfD1ZAvCtFs8=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706547194; c=relaxed/simple;
-	bh=nxUIBN0nLvbC5+IwHWEvU27KpU9TI+FywPen5vXP99o=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=NgaX8AxgSMXrF9kKDEh8BICsu3fsjrfXPY5dCoIrPUZgM+LWOqONgTzWP1+oMz6Leao+FMSk9eVCrp14ZXLpVT9xOx/N5jjgerOLXti4vtJDa0etXCycjhw7rja7awCWiS4OJlZkA5dl4UaIPvBhQDdWM/3GJkUvg6dd3IHGR5I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=ZqnnbCU8; arc=none smtp.client-ip=209.85.167.45
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-51117c00a69so171135e87.3
-        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 08:53:12 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=g0bfAcwH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rUUfR-0001hI-O3; Mon, 29 Jan 2024 11:39:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rUUfQ-0001fk-A4; Mon, 29 Jan 2024 11:39:28 -0500
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rUUfN-0001bD-UI; Mon, 29 Jan 2024 11:39:28 -0500
+Received: by mail-pg1-x530.google.com with SMTP id
+ 41be03b00d2f7-5cfd95130c6so1518366a12.1; 
+ Mon, 29 Jan 2024 08:39:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1706547190; x=1707151990; darn=vger.kernel.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=7zYf6iUNFHrfxMQpPNj1mXN6dt+LxrDt3+/kg2hLKwo=;
-        b=ZqnnbCU8XlX1AACdQaazNk6i2U/eyo5BiEhJMMKLRUFA8cBVWPSaJXQy+/g6QFz2yO
-         tOhO8tjtampvuqP7G8l8VMtXMWGOBvAsN8LP+Nw4Y0nR9GK+CJOMv67A2JE+a6nFpKIO
-         CXviF69fyKGcN3tP7VXxDbkmtrF1Wp4cLNG4TYq1cqSeDVuu7j0tUQY4AtOeJx/dDXmB
-         UFsOBAqsbDIbg/Wd+My76M76BT/cW9AMHwo0rfUxK8ak6YWW0Xu28Q9wh7XOj9RYmPdt
-         qa3jxyXenJcZW+ayd1sy9d3mb0IPRpT927qEd3wQ4fZ3af4xfhCmuGGH9Wx11S3dvYMb
-         2pHA==
+ d=gmail.com; s=20230601; t=1706546364; x=1707151164; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Pd9fV6O+Yk8prwAkquti+YkOraHzdKCNI/xJ9XUOIQw=;
+ b=g0bfAcwHrvPqGDKdPEzHM5fk06ZRx5UmagpbDCoz47PNsurubtRswsbtljEHVf63vV
+ iMjqgcsslvLDtaW9C+oYOsYU35co9drM56SOwMAvc1nKx0wvy0vSb+tqxZpf4rgqi95j
+ Cj9NBqaBkcqp9wzJ9uycuQ4l0JEmnm7DdRMHsI5DU3LZCU0whSC2DT4o7AuThvdDCV6P
+ mrv70otXglgqA/LJ0omn/P1+65aK4cJYmbxaUyR7dnJNuqfPxDReSdfULBP7nce9urYl
+ FMbhl1SfrND0KS5NOqt8UMq5mziLiwvNcbLC9WPqgNbAap0BdmA6CBoLh6BXSqNhqYC9
+ euRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706547190; x=1707151990;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7zYf6iUNFHrfxMQpPNj1mXN6dt+LxrDt3+/kg2hLKwo=;
-        b=igXwKR2DLJbH2xixpJ298bvDGeJl6YeEbT/TyFbTSYGw5ZiZkCUOq/IrzdOrWxQ4Nu
-         G4GM29xASPRtL2vR2ZOGx2Kt0rhlIPfyuE6vB+EAUosSPWRbdnc2IbEggqRkcZI33rZg
-         3NFhCkqS5UDvYzOZNbMECposnJutswPTNgWzhoPKDh6Kd7dLYJvqLupdXZJziEmo9iPP
-         JvMvXXP/OAxvrQkt/dqFpxDIpCcPdwaxznNaudU9cakBaqlJYKMj5Qo1/w8IMN3EG6wT
-         QLYwL4ZQ1PfLCWsCSyDky9vojVmDRIzwmBZi6UDxuYQfKfpS9AiNHMU0cEDpAHjQtESV
-         Wr9w==
-X-Gm-Message-State: AOJu0YzxWn1IAK584A82xNm9ykzP2YkKbKEr96NBroqMzBebQFBCRyHE
-	wMrBdPiPKQ7Di1VA0Rcqps22mLVrK2sGsJFUi43mMYUKZ9Uo6aSXVUi+qbXKC+0=
-X-Received: by 2002:a05:6512:1082:b0:50e:75ee:ec4c with SMTP id j2-20020a056512108200b0050e75eeec4cmr5201521lfg.11.1706547190625;
-        Mon, 29 Jan 2024 08:53:10 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.219.39])
-        by smtp.gmail.com with ESMTPSA id g8-20020a05600c310800b0040e703ad630sm14516047wmo.22.2024.01.29.08.53.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Jan 2024 08:53:09 -0800 (PST)
-Message-ID: <bb4ed4c6-ecbb-45a6-af3b-caa4fe04afb8@linaro.org>
-Date: Mon, 29 Jan 2024 17:53:08 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1706546364; x=1707151164;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Pd9fV6O+Yk8prwAkquti+YkOraHzdKCNI/xJ9XUOIQw=;
+ b=vAIVqKZAgrmS8qKrDaWprD76blRAJuUSwdZM3Y7zy10eUE8FdchN097RnB7kJpgn2G
+ M5Kaa/XrbmhjSZOKu2ptrat2s17ciWr+mpFFZJp36grKodAC7jQDt/WvaxQbvqw6Q0Ya
+ nGd9Zwy1jQf/MYaU70psCqZkag2OqtE8/wLx9kpz5yKH7MGRDF29Sq+a+L/GFjfMqzcN
+ kQSVaZ8dMuT6tPAtXLoylPeuxIky8woDmzql6ZXP4qQoKi2MoDGstkSojzX1K9hONeT/
+ GUb7z99bi1wPa8s5Yyf9qAtIFp6eVvEP1nKY60P5HFxTklc/A2PCKQ/y9cmb+VV/qoLd
+ gC9Q==
+X-Gm-Message-State: AOJu0YyE5ckas35mFeIGoRZk9tId9Efj3+V+3yiEpc6VOwNPw8VS2fUw
+ rB/+g0jodd9NYpJ15qlL0K3LhwQ8vshCWonmowGWYjkxog/o8zng72NkMZYx4gb0lw==
+X-Received: by 2002:a17:90a:d58d:b0:293:fd4d:4a87 with SMTP id
+ v13-20020a17090ad58d00b00293fd4d4a87mr3371987pju.44.1706546363766; 
+ Mon, 29 Jan 2024 08:39:23 -0800 (PST)
+Received: from localhost.localdomain ([49.47.195.100])
+ by smtp.gmail.com with ESMTPSA id
+ nb5-20020a17090b35c500b0029464b5fcdbsm6107239pjb.42.2024.01.29.08.39.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Jan 2024 08:39:23 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: rayhan.faizel@gmail.com, pbonzini@redhat.com, peter.maydell@linaro.org,
+ philmd@linaro.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH v3 1/2] hw/ssi: Implement BCM2835 SPI Controller
+Date: Mon, 29 Jan 2024 22:08:02 +0530
+Message-Id: <20240129163801.2790257-2-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240129163801.2790257-1-rayhan.faizel@gmail.com>
+References: <20240129163801.2790257-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/29] scripts/coccinelle: Add cpu_env.cocci script
-Content-Language: en-US
-To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-References: <20240129164514.73104-1-philmd@linaro.org>
- <20240129164514.73104-6-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240129164514.73104-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 3Y7IESrGk1B2
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pg1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1kbMtgh22TWv
 
-On 29/1/24 17:44, Philippe Mathieu-Daudé wrote:
-> Add a Coccinelle script to convert the following slow path
-> (due to the QOM cast macro):
-> 
->    &ARCH_CPU(..)->env
-> 
-> to the following fast path:
-> 
->    cpu_env(..)
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
+This patch adds the SPI controller for the BCM2835. Polling and interrupt modes
+of transfer are supported. DMA and LoSSI modes are currently unimplemented.
 
-Changes since v2:
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ docs/system/arm/raspi.rst    |   3 +-
+ hw/ssi/Kconfig               |   4 +
+ hw/ssi/bcm2835_spi.c         | 288 +++++++++++++++++++++++++++++++++++
+ hw/ssi/meson.build           |   1 +
+ include/hw/ssi/bcm2835_spi.h |  81 ++++++++++
+ 5 files changed, 375 insertions(+), 2 deletions(-)
+ create mode 100644 hw/ssi/bcm2835_spi.c
+ create mode 100644 include/hw/ssi/bcm2835_spi.h
 
-- Avoid templates by using coccinelle generic types
-- Deal with uaccess API (by skipping functions using it)
-
->   MAINTAINERS                      |   1 +
->   scripts/coccinelle/cpu_env.cocci | 100 +++++++++++++++++++++++++++++++
->   2 files changed, 101 insertions(+)
->   create mode 100644 scripts/coccinelle/cpu_env.cocci
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index dfaca8323e..ca3c8c18ab 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -157,6 +157,7 @@ F: accel/tcg/
->   F: accel/stubs/tcg-stub.c
->   F: util/cacheinfo.c
->   F: util/cacheflush.c
-> +F: scripts/coccinelle/cpu_env.cocci
->   F: scripts/decodetree.py
->   F: docs/devel/decodetree.rst
->   F: docs/devel/tcg*
-> diff --git a/scripts/coccinelle/cpu_env.cocci b/scripts/coccinelle/cpu_env.cocci
-> new file mode 100644
-> index 0000000000..5a70c2211a
-> --- /dev/null
-> +++ b/scripts/coccinelle/cpu_env.cocci
-> @@ -0,0 +1,100 @@
-> +/*
-> + * Convert &ARCH_CPU(..)->env to use cpu_env(..).
-> + *
-> + * Rationale: ARCH_CPU() might be slow, being a QOM cast macro.
-> + *            cpu_env() is its fast equivalent.
-> + *            CPU() macro is a no-op.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * SPDX-FileCopyrightText: Linaro Ltd 2024
-> + * SPDX-FileContributor: Philippe Mathieu-Daudé
-> + */
-> +
-> +@@
-> +type ArchCPU =~ "CPU$";
-> +identifier cpu;
-> +type CPUArchState =~ "^CPU";
-> +identifier env;
-> +@@
-> +     ArchCPU *cpu;
-> +     ...
-> +     CPUArchState *env = &cpu->env;
-> +     <...
-> +-    &cpu->env
-> ++    env
-> +     ...>
-> +
-> +
-> +/*
-> + * Due to commit 8ce5c64499 ("semihosting: Return failure from
-> + * softmmu-uaccess.h functions"), skip functions using softmmu-uaccess.h
-> + * macros (they don't pass 'env' as argument).
-> + */
-> +@ uaccess_api_used exists @
-> +identifier semihosting_func =~ "^(put|get)_user_[us](al|8|16|32)$";
-> +@@
-> +      semihosting_func(...)
-
-Hmm, s/semihosting/uaccess/
-
-> +
-> +
-> +/*
-> + * Argument is CPUState*
-> + */
-> +@ cpustate_arg depends on !uaccess_api_used @
-> +identifier cpu;
-> +type ArchCPU =~ "CPU$";
-> +type CPUArchState;
-> +identifier ARCH_CPU =~ "CPU$";
-> +identifier env;
-> +CPUState *cs;
-> +@@
-> +-    ArchCPU *cpu = ARCH_CPU(cs);
-> +     ...
-> +-    CPUArchState *env = &cpu->env;
-> ++    CPUArchState *env = cpu_env(cs);
-> +     ... when != cpu
-> +
-> +
-> +/*
-> + * Argument is not CPUState* but a related QOM object.
-> + * CPU() is not a QOM macro but a cast (See commit 0d6d1ab499).
-> + */
-> +@ depends on !uaccess_api_used  && !cpustate_arg @
-> +identifier cpu;
-> +type ArchCPU =~ "CPU$";
-> +type CPUArchState;
-> +identifier ARCH_CPU =~ "CPU$";
-> +identifier env;
-> +expression cs;
-> +@@
-> +-    ArchCPU *cpu = ARCH_CPU(cs);
-> +     ...
-> +-    CPUArchState *env = &cpu->env;
-> ++    CPUArchState *env = cpu_env(CPU(cs));
-> +     ... when != cpu
-> +
-> +
-> +/* When single use of 'env', call cpu_env() in place */
-> +@ depends on !uaccess_api_used @
-> +type CPUArchState;
-> +identifier env;
-> +expression cs;
-> +@@
-> +-    CPUArchState *env = cpu_env(cs);
-> +     ... when != env
-> +-     env
-> ++     cpu_env(cs)
-> +     ... when != env
-> +
-> +
-> +/* Both first_cpu/current_cpu are extern CPUState* */
-> +@@
-> +symbol first_cpu;
-> +symbol current_cpu;
-> +@@
-> +(
-> +-    CPU(first_cpu)
-> ++    first_cpu
-> +|
-> +-    CPU(current_cpu)
-> ++    current_cpu
-> +)
+diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
+index 922fe375a6..b8198bbd54 100644
+--- a/docs/system/arm/raspi.rst
++++ b/docs/system/arm/raspi.rst
+@@ -33,11 +33,10 @@ Implemented devices
+  * USB2 host controller (DWC2 and MPHI)
+  * MailBox controller (MBOX)
+  * VideoCore firmware (property)
+-
++ * Peripheral SPI controller (SPI)
+ 
+ Missing devices
+ ---------------
+ 
+- * Peripheral SPI controller (SPI)
+  * Analog to Digital Converter (ADC)
+  * Pulse Width Modulation (PWM)
+diff --git a/hw/ssi/Kconfig b/hw/ssi/Kconfig
+index 7d90a02181..110533255b 100644
+--- a/hw/ssi/Kconfig
++++ b/hw/ssi/Kconfig
+@@ -20,3 +20,7 @@ config XILINX_SPIPS
+ config STM32F2XX_SPI
+     bool
+     select SSI
++
++config BCM2835_SPI
++    bool
++    select SSI
+\ No newline at end of file
+diff --git a/hw/ssi/bcm2835_spi.c b/hw/ssi/bcm2835_spi.c
+new file mode 100644
+index 0000000000..757ebc90fa
+--- /dev/null
++++ b/hw/ssi/bcm2835_spi.c
+@@ -0,0 +1,288 @@
++/*
++ * BCM2835 SPI Master Controller
++ *
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/fifo8.h"
++#include "hw/ssi/bcm2835_spi.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++
++static void bcm2835_spi_update_int(BCM2835SPIState *s)
++{
++    int do_interrupt = 0;
++
++    /* Interrupt on DONE */
++    if (s->cs & BCM2835_SPI_CS_INTD && s->cs & BCM2835_SPI_CS_DONE) {
++        do_interrupt = 1;
++    }
++    /* Interrupt on RXR */
++    if (s->cs & BCM2835_SPI_CS_INTR && s->cs & BCM2835_SPI_CS_RXR) {
++        do_interrupt = 1;
++    }
++    qemu_set_irq(s->irq, do_interrupt);
++}
++
++static void bcm2835_spi_update_rx_flags(BCM2835SPIState *s)
++{
++    /* Set RXD if RX FIFO is non empty */
++    if (!fifo8_is_empty(&s->rx_fifo)) {
++        s->cs |= BCM2835_SPI_CS_RXD;
++    } else {
++        s->cs &= ~BCM2835_SPI_CS_RXD;
++    }
++
++    /* Set RXF if RX FIFO is full */
++    if (fifo8_is_full(&s->rx_fifo)) {
++        s->cs |= BCM2835_SPI_CS_RXF;
++    } else {
++        s->cs &= ~BCM2835_SPI_CS_RXF;
++    }
++
++    /* Set RXR if RX FIFO is 3/4th used or above */
++    if (fifo8_num_used(&s->rx_fifo) >= FIFO_SIZE_3_4) {
++        s->cs |= BCM2835_SPI_CS_RXR;
++    } else {
++        s->cs &= ~BCM2835_SPI_CS_RXR;
++    }
++}
++
++static void bcm2835_spi_update_tx_flags(BCM2835SPIState *s)
++{
++    /* Set TXD if TX FIFO is not full */
++    if (fifo8_is_full(&s->tx_fifo)) {
++        s->cs &= ~BCM2835_SPI_CS_TXD;
++    } else {
++        s->cs |= BCM2835_SPI_CS_TXD;
++    }
++
++    /* Set DONE if in TA mode and TX FIFO is empty */
++    if (fifo8_is_empty(&s->tx_fifo) && s->cs & BCM2835_SPI_CS_TA) {
++        s->cs |= BCM2835_SPI_CS_DONE;
++    } else {
++        s->cs &= ~BCM2835_SPI_CS_DONE;
++    }
++}
++
++static void bcm2835_spi_flush_tx_fifo(BCM2835SPIState *s)
++{
++    uint8_t tx_byte, rx_byte;
++
++    while (!fifo8_is_empty(&s->tx_fifo) && !fifo8_is_full(&s->rx_fifo)) {
++        tx_byte = fifo8_pop(&s->tx_fifo);
++        rx_byte = ssi_transfer(s->bus, tx_byte);
++        fifo8_push(&s->rx_fifo, rx_byte);
++    }
++
++    bcm2835_spi_update_tx_flags(s);
++    bcm2835_spi_update_rx_flags(s);
++}
++
++static uint64_t bcm2835_spi_read(void *opaque, hwaddr addr, unsigned size)
++{
++    BCM2835SPIState *s = opaque;
++    uint32_t readval = 0;
++
++    switch (addr) {
++    case BCM2835_SPI_CS:
++        readval = s->cs & 0xffffffff;
++        break;
++    case BCM2835_SPI_FIFO:
++        bcm2835_spi_flush_tx_fifo(s);
++        if (s->cs & BCM2835_SPI_CS_RXD) {
++            readval = fifo8_pop(&s->rx_fifo);
++            bcm2835_spi_update_rx_flags(s);
++        }
++
++        bcm2835_spi_update_int(s);
++        break;
++    case BCM2835_SPI_CLK:
++        readval = s->clk & 0xffff;
++        break;
++    case BCM2835_SPI_DLEN:
++        readval = s->dlen & 0xffff;
++        break;
++    case BCM2835_SPI_LTOH:
++        readval = s->ltoh & 0xf;
++        break;
++    case BCM2835_SPI_DC:
++        readval = s->dc & 0xffffffff;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
++    return readval;
++}
++
++static void bcm2835_spi_write(void *opaque, hwaddr addr,
++                              uint64_t value, unsigned int size)
++{
++    BCM2835SPIState *s = opaque;
++
++    switch (addr) {
++    case BCM2835_SPI_CS:
++        s->cs = (value & ~RO_MASK) | (s->cs & RO_MASK);
++        if (!(s->cs & BCM2835_SPI_CS_TA)) {
++            /* Clear DONE and RXR if TA is off */
++            s->cs &= ~(BCM2835_SPI_CS_DONE);
++            s->cs &= ~(BCM2835_SPI_CS_RXR);
++        }
++
++        /* Clear RX FIFO */
++        if (s->cs & BCM2835_SPI_CLEAR_RX) {
++            fifo8_reset(&s->rx_fifo);
++            bcm2835_spi_update_rx_flags(s);
++        }
++
++        /* Clear TX FIFO*/
++        if (s->cs & BCM2835_SPI_CLEAR_TX) {
++            fifo8_reset(&s->tx_fifo);
++            bcm2835_spi_update_tx_flags(s);
++        }
++
++        /* Set Transfer Active */
++        if (s->cs & BCM2835_SPI_CS_TA) {
++            bcm2835_spi_update_tx_flags(s);
++        }
++
++        if (s->cs & BCM2835_SPI_CS_DMAEN) {
++            qemu_log_mask(LOG_UNIMP, "%s: " \
++                          "DMA not supported\n", __func__);
++        }
++
++        if (s->cs & BCM2835_SPI_CS_LEN) {
++            qemu_log_mask(LOG_UNIMP, "%s: " \
++                          "LoSSI not supported\n", __func__);
++        }
++
++        bcm2835_spi_update_int(s);
++        break;
++    case BCM2835_SPI_FIFO:
++        /*
++         * According to documentation, writes to FIFO without TA controls
++         * CS and DLEN registers. This is supposed to be used in DMA mode
++         * which is currently unimplemented. Moreover, Linux does not make
++         * use of this and directly modifies the CS and DLEN registers.
++         */
++        if (s->cs & BCM2835_SPI_CS_TA) {
++            if (s->cs & BCM2835_SPI_CS_TXD) {
++                fifo8_push(&s->tx_fifo, value & 0xff);
++                bcm2835_spi_update_tx_flags(s);
++            }
++
++            bcm2835_spi_flush_tx_fifo(s);
++            bcm2835_spi_update_int(s);
++        }
++        break;
++    case BCM2835_SPI_CLK:
++        s->clk = value & 0xffff;
++        break;
++    case BCM2835_SPI_DLEN:
++        s->dlen = value & 0xffff;
++        break;
++    case BCM2835_SPI_LTOH:
++        s->ltoh = value & 0xf;
++        break;
++    case BCM2835_SPI_DC:
++        s->dc = value & 0xffffffff;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
++}
++
++static const MemoryRegionOps bcm2835_spi_ops = {
++    .read = bcm2835_spi_read,
++    .write = bcm2835_spi_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void bcm2835_spi_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835SPIState *s = BCM2835_SPI(dev);
++    s->bus = ssi_create_bus(dev, "spi");
++
++    memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_spi_ops, s,
++                          TYPE_BCM2835_SPI, 0x18);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++
++    fifo8_create(&s->tx_fifo, FIFO_SIZE);
++    fifo8_create(&s->rx_fifo, FIFO_SIZE);
++}
++static void bcm2835_spi_reset(DeviceState *dev)
++{
++    BCM2835SPIState *s = BCM2835_SPI(dev);
++
++    fifo8_reset(&s->tx_fifo);
++    fifo8_reset(&s->rx_fifo);
++
++    /* Reset values according to BCM2835 Peripheral Documentation */
++    s->cs = BCM2835_SPI_CS_TXD | BCM2835_SPI_CS_REN;
++    s->clk = 0;
++    s->dlen = 0;
++    s->ltoh = 0x1;
++    s->dc = 0x30201020;
++}
++
++static const VMStateDescription vmstate_bcm2835_spi = {
++    .name = TYPE_BCM2835_SPI,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_FIFO8(tx_fifo, BCM2835SPIState),
++        VMSTATE_FIFO8(rx_fifo, BCM2835SPIState),
++        VMSTATE_UINT32(cs, BCM2835SPIState),
++        VMSTATE_UINT32(clk, BCM2835SPIState),
++        VMSTATE_UINT32(dlen, BCM2835SPIState),
++        VMSTATE_UINT32(ltoh, BCM2835SPIState),
++        VMSTATE_UINT32(dc, BCM2835SPIState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_spi_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_spi_reset;
++    dc->realize = bcm2835_spi_realize;
++    dc->vmsd = &vmstate_bcm2835_spi;
++}
++
++static const TypeInfo bcm2835_spi_info = {
++    .name = TYPE_BCM2835_SPI,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835SPIState),
++    .class_init = bcm2835_spi_class_init,
++};
++
++static void bcm2835_spi_register_types(void)
++{
++    type_register_static(&bcm2835_spi_info);
++}
++
++type_init(bcm2835_spi_register_types)
+diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
+index 0aebcdd614..b999aeb027 100644
+--- a/hw/ssi/meson.build
++++ b/hw/ssi/meson.build
+@@ -11,3 +11,4 @@ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-ospi.c'))
+ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_spi.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_spi.c'))
+ system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
++system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi.c'))
+diff --git a/include/hw/ssi/bcm2835_spi.h b/include/hw/ssi/bcm2835_spi.h
+new file mode 100644
+index 0000000000..d3f8cec111
+--- /dev/null
++++ b/include/hw/ssi/bcm2835_spi.h
+@@ -0,0 +1,81 @@
++/*
++ * BCM2835 SPI Master Controller
++ *
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "hw/sysbus.h"
++#include "hw/ssi/ssi.h"
++#include "qom/object.h"
++#include "qemu/fifo8.h"
++
++#define TYPE_BCM2835_SPI "bcm2835-spi"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2835SPIState, BCM2835_SPI)
++
++/*
++ * Though BCM2835 documentation says FIFOs have a capacity of 16,
++ * FIFOs are actually 16 words in size or effectively 64 bytes when operating
++ * in non DMA mode.
++ */
++#define FIFO_SIZE               64
++#define FIFO_SIZE_3_4           48
++
++#define RO_MASK                 0x1f0000
++
++#define BCM2835_SPI_CS          0x00
++#define BCM2835_SPI_FIFO        0x04
++#define BCM2835_SPI_CLK         0x08
++#define BCM2835_SPI_DLEN        0x0c
++#define BCM2835_SPI_LTOH        0x10
++#define BCM2835_SPI_DC          0x14
++
++#define BCM2835_SPI_CS_RXF      BIT(20)
++#define BCM2835_SPI_CS_RXR      BIT(19)
++#define BCM2835_SPI_CS_TXD      BIT(18)
++#define BCM2835_SPI_CS_RXD      BIT(17)
++#define BCM2835_SPI_CS_DONE     BIT(16)
++#define BCM2835_SPI_CS_LEN      BIT(13)
++#define BCM2835_SPI_CS_REN      BIT(12)
++#define BCM2835_SPI_CS_INTR     BIT(10)
++#define BCM2835_SPI_CS_INTD     BIT(9)
++#define BCM2835_SPI_CS_DMAEN    BIT(8)
++#define BCM2835_SPI_CS_TA       BIT(7)
++#define BCM2835_SPI_CLEAR_RX    BIT(5)
++#define BCM2835_SPI_CLEAR_TX    BIT(4)
++
++struct BCM2835SPIState {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    /* <public> */
++    SSIBus *bus;
++    MemoryRegion iomem;
++    qemu_irq irq;
++
++    uint32_t cs;
++    uint32_t clk;
++    uint32_t dlen;
++    uint32_t ltoh;
++    uint32_t dc;
++
++    Fifo8 tx_fifo;
++    Fifo8 rx_fifo;
++};
+-- 
+2.34.1
 

@@ -1,526 +1,278 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp938722ejk;
-        Tue, 30 Jan 2024 08:36:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGoSJe+K8UiQn8BoEvSTbbqF6PZ/k6RNefJ4LXNTUreZE9gy5pAPKyMIqQpY+r17PlEh6yJ
-X-Received: by 2002:a05:6122:3d04:b0:4bd:67b3:fd60 with SMTP id ga4-20020a0561223d0400b004bd67b3fd60mr4573377vkb.6.1706632591219;
-        Tue, 30 Jan 2024 08:36:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706632591; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1026327ejk;
+        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEVpW4nqF0xJWLFzhQ1lP2EthJQJLJiF8KDsLtzRjmqyh5MPWRmy39r43upNh5e1oT3DL5p
+X-Received: by 2002:a05:620a:918:b0:783:24cc:e5a2 with SMTP id v24-20020a05620a091800b0078324cce5a2mr7273459qkv.45.1706641640086;
+        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706641640; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zHphkQuwm3/lek08GyHq48i6Ozi7HrgJaxHaLZr5rryQhtSGllI3MkQEburs9toWcT
-         k6dyiV/kWluHwg/Yh/M6cEwUkBGGJvLP97E0+W/7NTJwxugokn16Clklbn51x0Psg7gZ
-         zsaCcfcLISlQ3OnHL2n7uwudUp0vwXQNpU5jqCzAFnsv3eOzbAQHE8k05Jjv3bMg6IVa
-         mOnLvvaXceQiZPTYFDW30jFqbt+yQGdSWrKXUADYBi58ddRHgyTqSeWQjByJpFtoZSBu
-         UwPnlBZnw2iqI1Jr+bd2V7xjWmnYRkrEvOq9ieO+w7ABD/XJNibegIMTRffN+BgHUDp3
-         yNFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=VACJ1oYdPwZJANll60ytmb0YnqvDF35E2rgOTUqXyIM=;
-        fh=mIGDXuTSZAKvF5JxmAp3SWVhCqb6Tt970VHD8gxpFr4=;
-        b=q9pEHzLJWjGL+Pd8KmVSXFD5HRZnQnZ3TN4x/0WHAYwzwyycztzyWlEOq7Yk+AOjj1
-         GqL6g8OTPMhQWAvY+Q5KTTG53ZF7MHj75hegBf82JcQcly3bxMijnB92QtZoM/ZS0aeQ
-         Yn3oLHYMeH8N0TaZPr6hYlQTr8aCLhR+z2H3m/eBiQXSDiFpEHpXkugKg6aou8hX5EVU
-         WEFbKZ902LRqwkbyHYgnmMCAOMKQx0Pkp1Rn0Kz2f5ntvDm6A17T5QP9mkYpOJAEzvy3
-         PWSC+6xTYnwqEd2kDR5ClpXTKkEdFAyFFIJek2Tkg6Wbd1mSlIF7306QWeUKjXJkcO9Q
-         bCqg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BJWYjn22;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.93])
-        by mx.google.com with ESMTPS id dz8-20020a0561221aa800b004bd404200d0si1229507vkb.57.2024.01.30.08.36.29
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Jan 2024 08:36:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+        b=nxmOjh1R0fHiCepWx6A4xDpaXRQohvyqLxQd/PLABDe4QEcED+tTJiguY9Lch3LlDl
+         iSa96Oq6z3E0VDJfaAgFMO1XKloEouJF0HrrtbF2uGc1kDfscjqOzHF4gnV66+oiHKSM
+         xM6A71iZOI1A4isJX4Fnu0FoHbst58tBNiqIs6YN78T1cHHarOPw4Lsv60PYcfgTFMw5
+         SHI1//GAlLvKv7DBjOuD/H6n8VGPd1k/7tMxYb9OzlGXdyPHkgfN3Tn27Mo6R207hKQC
+         u9VM6PfhCog1gL7lw4LZkkF1BMu2diwnUhvMuKoSNYHqSL9KN5SmZOQTfQVG5Xd1qEo6
+         iQIQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
+        fh=jkMQz0qSvPsSrZjVJcuoqqF+WZyk+LP5MZBSBKBxaw4=;
+        b=VGSNjBCvbmYdFHCGnjJXLFCX6sVSbxoZlLqVjrFevJtHreIMzlytgPoxDzDKidvfZY
+         +gSNnY1lNxLQD7JXs7/zorPAEDgVUumW1Jvlz1XPzr/L6L+HsZR4GD6V+2e4gy9H4C0p
+         4YcOHNp6+FV/nuaLrDZg15XWUAzX3A5ee106Qo0YMRa8PNBp0gDcdaVYAdHqGQG65qay
+         iL9Vble/XBSgwYovc0Ljplk1lzotQ2MyCCwd6nSx9qJciUTL2o4obDtHeFli3l8tTTnY
+         IOcZaPxcaSNxeO+esad2gFevhvpbFh0nTAYZS3G7rwyNpAFEJa8TJ9DcYSbfsEp9Zo7z
+         wcig==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=GhuKTg+6;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=nhBqGTrv;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v18-20020a05620a0a9200b00783f3cdae82si7031525qkg.73.2024.01.30.11.07.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BJWYjn22;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1706632590; x=1738168590;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=NyAFEG3jjquojKvDEjnB8WqEC2E/nWK7KwvTxbNqhZo=;
-  b=BJWYjn22uYpyKthHgJhm//g1rJwd1kR2oGW+zKqX8fs7gqX8HRTMxMYo
-   WXzAkmvUsnSrHLNmmAConToUojv1Xivjr9dqnqNe9hJxD7hkO7bqsbJZS
-   jwGgskFDJcefDqx3DZePipGLLWYqqlqTKMjH5xKbf5BJrH6h8NTN0y84m
-   rCM2rYaB4Kuo/gtmmd0ErTL2XbN+mt6MgAuAG/HFuo5VUR24eZEVm1b3u
-   h0ldelcoy6pqw6+bdjRXO+jzyJ86lcl9YSkyf2HQ+GcUxYvY+FwxLOAy8
-   HFxUi2LEP1zv3z1IH1tfK/FKrWLaIVURLFEVhAytihaej2FZS/xiwaBuE
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="400474522"
-X-IronPort-AV: E=Sophos;i="6.05,230,1701158400"; 
-   d="scan'208";a="400474522"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jan 2024 08:35:28 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,230,1701158400"; 
-   d="scan'208";a="36550287"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa001.jf.intel.com with ESMTP; 30 Jan 2024 08:35:20 -0800
-Date: Wed, 31 Jan 2024 00:48:49 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	=?iso-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>, mzamazal@redhat.com,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>, Peter Xu <peterx@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cameron Esfahani <dirty@apple.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v3 01/29] bulk: Access existing variables initialized to
- &S->F when available
-Message-ID: <Zbkocf5XDOCsXWp6@intel.com>
-References: <20240129164514.73104-1-philmd@linaro.org>
- <20240129164514.73104-2-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=GhuKTg+6;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=nhBqGTrv;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rUtRu-0005Qw-Jq; Tue, 30 Jan 2024 14:07:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1rUtRs-0005Pq-Ee; Tue, 30 Jan 2024 14:07:08 -0500
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1rUtRq-0000us-CZ; Tue, 30 Jan 2024 14:07:08 -0500
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40UHRr2R021250; Tue, 30 Jan 2024 19:07:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references :
+ content-transfer-encoding : content-type : mime-version;
+ s=corp-2023-11-20; bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
+ b=GhuKTg+6rmNFOjeiFo4qgFFjD5AmdR1/Kgjdoh6FMzE280Vab4zu0ONjtRBXIB2w+KAx
+ bgKhetw9OfsSdI/acQjcKb9GKGOwrysovc5QD5zjT09lzr1wWBJxq8tMCsNqEqnGQKJW
+ 7GpMSrGp4vIhf7VL5LSL71WoCZAMj+InM9j7HMf1FDIwd5qVTOtySP1p/OZpwGel+hi2
+ mewgb0EKn+KvS+I31mvPLsrmOSUKnCaHC46rHNOKpRMTitBBRmCXg8zuMBzShUQGNx+H
+ FQjfQr5OKdl7W2T6dFmAeyudX8UPpHxpXeWHvPWoT3wHS5WtDJ412zRO0y+8R56ltbfL MA== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3vvtcuyta1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 30 Jan 2024 19:06:59 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
+ with ESMTP id 40UI4bIP014630; Tue, 30 Jan 2024 19:06:58 GMT
+Received: from nam12-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12lp2169.outbound.protection.outlook.com [104.47.59.169])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3vvr9dxpg5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 30 Jan 2024 19:06:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=d0o/gZh86mV26V17XDehmw0KGOkoSJN7ba2PTK3QK4Z2zC1RgbDtHguAbbcZkxFVuF5PiHvUgnIaE9qftxqT2tuKw6xPsUkINMLtKBXv0isAT1Gxu7aEfjsK4nbTq1BlADZT312/frZk+5M/TSCeM55n8Q9OciMkiFbm+2vkAWF6PwGDl8uj1P1VAeAiDVBw/DBg9Q47/zWdxg+biZBHlsevKf9zcx0IjbHq2Cpx4tJwOs+yfLytao5kAS9F9mHplMiEWtWcB6ttBcZuOyQhaAYQAtdhrMJQ5hBnIgec8SVTTH5dL9gNX7DxRy1ODTdm3gKyeTGKv/sgMc0GlepArg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
+ b=jSO6n4HsPeHP9fFc5K+4ct+1MdixRXc71xbORQPKMYkm4F4UvZ5EGT6Lu2ewS+5QdFonSWGOatdLfk2pFjAMTQ7MKWG+bosyBV62TCBfNFRW6HxXS/9VQNBoGMxBjV2x2rpytUPOofFv0/FnhfKSb3CzLkB7HhzGgE6O0CXSGmghkkn+FatersxA7NNdTipG/HTWu6JABj1jfdI3WwI3VwwuU9UeC+cHFN5XsyMOnEdGsMHCz/iozyXYBqE15kUI3MgGcSIGCdOPNW5AljzQEgbGxpTczpwfuvUBV/EK4w5jGNsKihfDNw7IVqzi8E2e0+tpAK9EThYxJihENUVhLQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
+ b=nhBqGTrvpuxz0O/V71tB0oLbXkZTAuZvsXWtJyLIvkQkN9mFPkRVd+5omSlSQeT6q3Zqj09qk1x7IynnaGjxL2opkv5bLBGCoXBQzidr6N9bFGZzD+rlk5tlBU3V4j5tAEkqe2Mpb1HO4peBcUC4Lrjec94ga8BbC+p1eit7BQ4=
+Received: from PH0PR10MB5481.namprd10.prod.outlook.com (2603:10b6:510:ea::5)
+ by SA1PR10MB6469.namprd10.prod.outlook.com (2603:10b6:806:29d::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.31; Tue, 30 Jan
+ 2024 19:06:56 +0000
+Received: from PH0PR10MB5481.namprd10.prod.outlook.com
+ ([fe80::a1c9:d6c1:b94a:595]) by PH0PR10MB5481.namprd10.prod.outlook.com
+ ([fe80::a1c9:d6c1:b94a:595%7]) with mapi id 15.20.7228.029; Tue, 30 Jan 2024
+ 19:06:56 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: qemu-devel@nongnu.org, peterx@redhat.com
+Cc: qemu-arm@nongnu.org, lizhijian@fujitsu.com, pbonzini@redhat.com,
+ quintela@redhat.com, leobras@redhat.com, joao.m.martins@oracle.com,
+ lidongchen@tencent.com, william.roche@oracle.com
+Subject: [PATCH v1 0/1] Qemu crashes on VM migration after an handled memory
+ error
+Date: Tue, 30 Jan 2024 19:06:39 +0000
+Message-Id: <20240130190640.139364-1-william.roche@oracle.com>
+X-Mailer: git-send-email 2.39.3
+In-Reply-To: <ZUwCZdZj-vZD1NJC@x1n>
+References: <ZUwCZdZj-vZD1NJC@x1n>
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240129164514.73104-2-philmd@linaro.org>
-X-TUID: f/Yz3/l4ynPc
+Content-Type: text/plain
+X-ClientProxiedBy: SJ0PR05CA0011.namprd05.prod.outlook.com
+ (2603:10b6:a03:33b::16) To PH0PR10MB5481.namprd10.prod.outlook.com
+ (2603:10b6:510:ea::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB5481:EE_|SA1PR10MB6469:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2c41730d-f326-48b6-4379-08dc21c6a04f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KVyl9ZgVN1rzr2aJMZu+40FDIygzMBTmpD6BeWj7XYQgIEsqpgBYx0oQuGvXAXWdToHER145eg1gRXDbw8bCTMknGkLLrNe1R6PJUgvDIqw3cOWRaQTeIFrJ692YQT9BsWghI20E18zH0frurnZXueEv4NkkgRhRijNxm+tISGF6pF3MBb3V7XCOAK+QgmT8A/l9fLmwvI+ZTUqPj2QkZn1Fy0bHbv/XLqEP36cHzpgYC2BuxcuJVDLGyhWy6pl31ab+pcJWrTlksBEOh5q6GVJLNTBQno1NdX6EjDeHKtdbLDVS9wHSzLYU/TVh4+uju/SyFYeM7XCIXLMJHrtQ39O5+GKZx9HUUgrsMBZcp/LqqfIg5EIpI2L/EDwNZRgDlhABhvrHMaOemZbhjXqGy9zCokZzAp6b3+RVPcN8HL14P6C3QLijNW06jn3lQ84/knlParQA21WNYV1ADbNPJHoJnWP2rF58CmSZfuxXLyT9nM4jtfepEIa0U0RFfZtHdack4801Y2nSiUfr8xz3MIOh4DRDr49to6TgE5jWEW0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR10MB5481.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376002)(136003)(346002)(39860400002)(366004)(396003)(230922051799003)(1800799012)(186009)(64100799003)(451199024)(83380400001)(2906002)(5660300002)(966005)(66556008)(6486002)(41300700001)(316002)(4326008)(66476007)(38100700002)(2616005)(1076003)(6512007)(26005)(8936002)(8676002)(107886003)(478600001)(66946007)(6666004)(6506007)(36756003)(86362001)(66899024);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cbPE98BUobtMdI9Meof1t/zzrB+JfgFvUXPvohbVhWM1XYUkLgBwUvUmOnLH?=
+ =?us-ascii?Q?MvSIJ3A9uDy0atimEfjsGnp8s0aGjFzLQSgUOXxa3xMpYWzAViO/q8I7ZFaM?=
+ =?us-ascii?Q?0PNXI7QAAN841Cb2dKoyFnz7QHUFg9aquPc9rXMJ6dvahd551yGyLRjHAfLX?=
+ =?us-ascii?Q?p89F9+IFrFflRQ6tAQCesIIJ2kc+QYfGcFBYmPJmsnhVUdJ7maXsgoXga3Es?=
+ =?us-ascii?Q?obCBOtXkosD6wGybd8vFdV+kM/K1Le1e2kXq+aqSH82p+qLVhFLfL9U1gP4U?=
+ =?us-ascii?Q?zumGMT37uFIST9CrA3tec/QUy2R916oFm4pHNKqnKGnYmhJHsnzyvl+Tkcmd?=
+ =?us-ascii?Q?Ph7r4M8nrt4m2GJMhN697A6axV2Eb/nqnLImD2ct8xsdo0MkkBC1XM7MEeHU?=
+ =?us-ascii?Q?bnHQWv70sxAY0eMHW5A8TXqhETFW6D1X6fWgeun+E/bmRguKWfNK3Z5b+mTZ?=
+ =?us-ascii?Q?d/DzsUulh++xVW/q/Gxt4t7KhUTlJHPugUrVFSP7x8BRx4VE8v8E5U54jVqB?=
+ =?us-ascii?Q?7n4WOzIhFzXlcLrWsrJOGEeyGHqrdDX19YO2YmNUduwIiVAH72ANYBs6dFza?=
+ =?us-ascii?Q?Af2lgMHwenRNMN6wh139bSNj1NU4k4dtYGmGu7hjHBC4ZLvSrowKOc/Zth7v?=
+ =?us-ascii?Q?MFWiR/Yct5XsRjzuHm7VQdxjTCMdclc8fPu3C4Fn+aoAyp9NyCsvsoaP34Vp?=
+ =?us-ascii?Q?m6kmxfQFvL0jO9bDLkqK6JnEihr7dFrkgpYcmrkScHpd1qM5prV59m1XxlRX?=
+ =?us-ascii?Q?LbdmVlBm2tbwdRKld/U2cf8IgEU9cQa8BpkVsgPir5IQ8D9yreIoBfK6MQjH?=
+ =?us-ascii?Q?+Mp5nxF+KD9bKuxbcm6h9xjpU2VU/mlukfjDXVWEPE1FdPGxhVqrAtnu84FG?=
+ =?us-ascii?Q?8GHb1BLom1gKSu1rNcn8BLzvX0UaGCzb9eeL6d49WA5xBmaJs3biLqFs/avx?=
+ =?us-ascii?Q?ro9hnXSiRkkiUDQvyv5BSW36ugugrWtgyDlHAXsHXqiTF09WVol8IlFtcXki?=
+ =?us-ascii?Q?we5lYMc09egVFI67hFMAIpoBinPNfTdFNn47K8WOJC+cesJd3Cutnqi6Libt?=
+ =?us-ascii?Q?gaLUooshy1bo6Aqezw1irRcH78fLS68tRC80iRNlYPjgDLLCX/slXJUg80ef?=
+ =?us-ascii?Q?5Mb3NAyeDYzPMnG+2wpJ0B5wGoQsGlswN6gtrEhCjSEooSmSQ9vwdIPGXQOe?=
+ =?us-ascii?Q?+mQtMyC+shlUfgUJmR9OjtKTKqJzdPLE25MJAzmZn5TG9RLvmlHoYXpeBOWm?=
+ =?us-ascii?Q?3fdqis+vITTKhJaU5MSWW50SrWBoXtE86gkZGJ346R1uGG2c3RG3cWgtY2F+?=
+ =?us-ascii?Q?/2xMXl9bAPvjQ9SAOxmwm+xuT95VnwWPBcPBMHgjtnZjYPa6O2OCovsMw39E?=
+ =?us-ascii?Q?qIzczacFfqE5jH0UaywsRhfxN+zSmeaST0IwHzGJ7CAZ9W1jxSQ2LonsaVt8?=
+ =?us-ascii?Q?63UkmZck30iECtgTwM8NRKFyTzBrkvrM72DmlyiwXsVJbw48NxrvX93zQ/s1?=
+ =?us-ascii?Q?BkuDvHFmFpEMcPwDXgPuPHl9SpdU77I1HBr7gP2l4d0XNGvSbyOfoUIbHYks?=
+ =?us-ascii?Q?XqY+vkLk+V6RM3M+42klplQpZRLrabWdEVAYIDofUdjKyGMDlhujMV+qJ/l0?=
+ =?us-ascii?Q?oQ=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +BO1IeHnaWHcBQAhCbQxXbocXbjrzGo4fcLJOkp/oL8LisWiLESWtzlSZU8VYNVQLxoTEsSXF0MLdp3sfEwzKmIFnC/DzLdO5pXZakCz5+bjYxsPlNOW9sNffjRkbUe7LXUgqIpzvP0v940vJNSVoR2rK5EqS9QL2NbFvQxh5p89GhMnI/11dh7iV4ZKw0D5BBYuzUPHPCa0pRX9OP5Ece3DxKm+QRuYgUBa3spA47QmPrPAWL2+xh1M2uUc5F//FIP2RILA9uLInYByYVGSD1qsYPB3aM/TULozTGg85+jdP8q6fCxt86lE8hSr5FGPT7CXB2aQ2KzDc1lIrODcChAb/YdNRqdD8m0bgOzwQiBEgJ/tb/ptUAwzNbywIDtqZqiQiHruTEcITLenLekmmGTMDC9O7OXHCgSxo5uFB44O8yIQVY/BsUxMlVlAgeSOKhk4veeY8SfZUBbC+4CL6A659AysqUnGe5OQsNG/9mzqVMhoAMZoljl9/8qAhkuA8Ky3GuG8yV4WnHU2uO3Sk7Kl2ZFPey4xe3RLAiGzgI06QfdpZa5tsxaVQrg8dhWDpbPNsWEKBE3aW8T6xg21Tmk6/UsVb3JwB//UOa2xW3Q=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2c41730d-f326-48b6-4379-08dc21c6a04f
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5481.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jan 2024 19:06:55.8557 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cMF7wK2t2ofrS0NlaFBns6TpqezBcG3gCoe2rneWKP+hUjaLfiiGU4PPwhbvOJWzKmYgH57OjcLOqZj5SoPfg63OOYdO27zo7c6bkVnl9qA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR10MB6469
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-30_09,2024-01-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=852
+ adultscore=0
+ bulkscore=0 malwarescore=0 suspectscore=0 phishscore=0 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401300141
+X-Proofpoint-ORIG-GUID: H78oidmYzE4KksUJx139d0AD7w81F_bx
+X-Proofpoint-GUID: H78oidmYzE4KksUJx139d0AD7w81F_bx
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=william.roche@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lrilZ0azhMXG
 
-On Mon, Jan 29, 2024 at 05:44:43PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Mon, 29 Jan 2024 17:44:43 +0100
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH v3 01/29] bulk: Access existing variables initialized to
->  &S->F when available
-> X-Mailer: git-send-email 2.41.0
-> 
-> When a variable is initialized to &struct->field, use it
-> in place. Rationale: while this makes the code more concise,
-> this also helps static analyzers.
-> 
-> Mechanical change using the following Coccinelle spatch script:
-> 
->  @@
->  type S, F;
->  identifier s, m, v;
->  @@
->       S *s;
->       ...
->       F *v = &s->m;
->       <+...
->  -    &s->m
->  +    v
->       ...+>
-> 
-> Inspired-by: Zhao Liu <zhao1.liu@intel.com>
+From: William Roche <william.roche@oracle.com>
 
-Thanks!
+Problem:
+--------
+A Qemu VM can survive a memory error, as qemu can relay the error to the
+VM kernel which could also deal with it -- poisoning/off-lining the impacted
+page. This situation creates a hole in the VM memory address space (an
+unreadable page or set of pages).
 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/display/ati.c              |  2 +-
->  hw/misc/macio/pmu.c           |  2 +-
->  hw/misc/pvpanic-pci.c         |  2 +-
->  hw/pci-bridge/cxl_root_port.c |  2 +-
->  hw/ppc/pnv.c                  | 20 ++++++++++----------
->  hw/virtio/vhost-user-gpio.c   |  8 ++++----
->  hw/virtio/vhost-user-scmi.c   |  6 +++---
->  hw/virtio/virtio-pci.c        |  2 +-
->  hw/xen/xen_pt.c               |  6 +++---
->  migration/multifd-zlib.c      |  2 +-
->  target/arm/cpu.c              |  4 ++--
->  target/arm/kvm.c              |  2 +-
->  target/arm/machine.c          |  6 +++---
->  target/i386/hvf/x86hvf.c      |  2 +-
->  target/m68k/helper.c          |  2 +-
->  target/ppc/kvm.c              |  8 ++++----
->  target/riscv/cpu_helper.c     |  2 +-
->  17 files changed, 39 insertions(+), 39 deletions(-)
-> 
-> diff --git a/hw/display/ati.c b/hw/display/ati.c
-> index 569b8f6165..8d2501bd82 100644
-> --- a/hw/display/ati.c
-> +++ b/hw/display/ati.c
-> @@ -991,7 +991,7 @@ static void ati_vga_realize(PCIDevice *dev, Error **errp)
->      }
->      vga_init(vga, OBJECT(s), pci_address_space(dev),
->               pci_address_space_io(dev), true);
-> -    vga->con = graphic_console_init(DEVICE(s), 0, s->vga.hw_ops, &s->vga);
-> +    vga->con = graphic_console_init(DEVICE(s), 0, s->vga.hw_ops, vga);
->      if (s->cursor_guest_mode) {
->          vga->cursor_invalidate = ati_cursor_invalidate;
->          vga->cursor_draw_line = ati_cursor_draw_line;
-> diff --git a/hw/misc/macio/pmu.c b/hw/misc/macio/pmu.c
-> index e9a90da88f..7fe1c4e517 100644
-> --- a/hw/misc/macio/pmu.c
-> +++ b/hw/misc/macio/pmu.c
-> @@ -737,7 +737,7 @@ static void pmu_realize(DeviceState *dev, Error **errp)
->      timer_mod(s->one_sec_timer, s->one_sec_target);
->  
->      if (s->has_adb) {
-> -        qbus_init(&s->adb_bus, sizeof(s->adb_bus), TYPE_ADB_BUS,
-> +        qbus_init(adb_bus, sizeof(s->adb_bus), TYPE_ADB_BUS,
->                    dev, "adb.0");
->          adb_register_autopoll_callback(adb_bus, pmu_adb_poll, s);
->      }
+A migration request of this VM (live migration through the network or
+pseudo-migration with the creation of a state file) will crash Qemu when
+it sequentially reads the memory address space and stumbles on the
+existing hole.
 
-I just have the similar comment as BALATON here.
+New fix proposal:
+-----------------
+Let's prevent the migration when we know that there is a poison page in
+the VM address space.
 
-But I feel like it's not easy to cover this case by script, and further
-manual cleanup for "sizeof(s->adb_bus)" is okay.
 
-Others are also okay for me.
+History:
+--------
+My first fix proposal for this crash condition (latest version:
+https://lore.kernel.org/all/20231106220319.456765-1-william.roche@oracle.com/ )
+relied on a well behaving kernel to guaranty that a known poison page is
+not accessed. It introduced an ARM platform specificity.
+I haven't received any feedback about the ARM specificity to avoid
+a possible memory corruption after a migration transforming a poisoned
+page into an all zero page.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+I also accept that when a memory error leads to memory poisoning, this
+platform functionality has to be honored as long as a physical platform
+would provide it.
 
-> diff --git a/hw/misc/pvpanic-pci.c b/hw/misc/pvpanic-pci.c
-> index c01e4ce864..83be95d0d2 100644
-> --- a/hw/misc/pvpanic-pci.c
-> +++ b/hw/misc/pvpanic-pci.c
-> @@ -48,7 +48,7 @@ static void pvpanic_pci_realizefn(PCIDevice *dev, Error **errp)
->      PVPanicPCIState *s = PVPANIC_PCI_DEVICE(dev);
->      PVPanicState *ps = &s->pvpanic;
->  
-> -    pvpanic_setup_io(&s->pvpanic, DEVICE(s), 2);
-> +    pvpanic_setup_io(ps, DEVICE(s), 2);
->  
->      pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &ps->mr);
->  }
-> diff --git a/hw/pci-bridge/cxl_root_port.c b/hw/pci-bridge/cxl_root_port.c
-> index 8f97697631..2cf2f7bf5f 100644
-> --- a/hw/pci-bridge/cxl_root_port.c
-> +++ b/hw/pci-bridge/cxl_root_port.c
-> @@ -175,7 +175,7 @@ static void cxl_rp_realize(DeviceState *dev, Error **errp)
->  
->      cxl_cstate->dvsec_offset = CXL_ROOT_PORT_DVSEC_OFFSET;
->      cxl_cstate->pdev = pci_dev;
-> -    build_dvsecs(&crp->cxl_cstate);
-> +    build_dvsecs(cxl_cstate);
->  
->      cxl_component_register_block_init(OBJECT(pci_dev), cxl_cstate,
->                                        TYPE_CXL_ROOT_PORT);
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index 0297871bdd..202a569e27 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -1257,11 +1257,11 @@ static void pnv_chip_power8_realize(DeviceState *dev, Error **errp)
->      }
->  
->      /* Processor Service Interface (PSI) Host Bridge */
-> -    object_property_set_int(OBJECT(&chip8->psi), "bar", PNV_PSIHB_BASE(chip),
-> +    object_property_set_int(OBJECT(psi8), "bar", PNV_PSIHB_BASE(chip),
->                              &error_fatal);
-> -    object_property_set_link(OBJECT(&chip8->psi), ICS_PROP_XICS,
-> +    object_property_set_link(OBJECT(psi8), ICS_PROP_XICS,
->                               OBJECT(chip8->xics), &error_abort);
-> -    if (!qdev_realize(DEVICE(&chip8->psi), NULL, errp)) {
-> +    if (!qdev_realize(DEVICE(psi8), NULL, errp)) {
->          return;
->      }
->      pnv_xscom_add_subregion(chip, PNV_XSCOM_PSIHB_BASE,
-> @@ -1292,7 +1292,7 @@ static void pnv_chip_power8_realize(DeviceState *dev, Error **errp)
->      }
->      pnv_xscom_add_subregion(chip, PNV_XSCOM_OCC_BASE, &chip8->occ.xscom_regs);
->      qdev_connect_gpio_out(DEVICE(&chip8->occ), 0,
-> -                          qdev_get_gpio_in(DEVICE(&chip8->psi), PSIHB_IRQ_OCC));
-> +                          qdev_get_gpio_in(DEVICE(psi8), PSIHB_IRQ_OCC));
->  
->      /* OCC SRAM model */
->      memory_region_add_subregion(get_system_memory(), PNV_OCC_SENSOR_BASE(chip),
-> @@ -1543,12 +1543,12 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
->                              &chip9->xive.xscom_regs);
->  
->      /* Processor Service Interface (PSI) Host Bridge */
-> -    object_property_set_int(OBJECT(&chip9->psi), "bar", PNV9_PSIHB_BASE(chip),
-> +    object_property_set_int(OBJECT(psi9), "bar", PNV9_PSIHB_BASE(chip),
->                              &error_fatal);
->      /* This is the only device with 4k ESB pages */
-> -    object_property_set_int(OBJECT(&chip9->psi), "shift", XIVE_ESB_4K,
-> +    object_property_set_int(OBJECT(psi9), "shift", XIVE_ESB_4K,
->                              &error_fatal);
-> -    if (!qdev_realize(DEVICE(&chip9->psi), NULL, errp)) {
-> +    if (!qdev_realize(DEVICE(psi9), NULL, errp)) {
->          return;
->      }
->      pnv_xscom_add_subregion(chip, PNV9_XSCOM_PSIHB_BASE,
-> @@ -1571,7 +1571,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
->      }
->      pnv_xscom_add_subregion(chip, PNV9_XSCOM_OCC_BASE, &chip9->occ.xscom_regs);
->      qdev_connect_gpio_out(DEVICE(&chip9->occ), 0, qdev_get_gpio_in(
-> -                              DEVICE(&chip9->psi), PSIHB9_IRQ_OCC));
-> +                              DEVICE(psi9), PSIHB9_IRQ_OCC));
->  
->      /* OCC SRAM model */
->      memory_region_add_subregion(get_system_memory(), PNV9_OCC_SENSOR_BASE(chip),
-> @@ -1586,7 +1586,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
->      pnv_xscom_add_subregion(chip, PNV9_XSCOM_SBE_MBOX_BASE,
->                              &chip9->sbe.xscom_mbox_regs);
->      qdev_connect_gpio_out(DEVICE(&chip9->sbe), 0, qdev_get_gpio_in(
-> -                              DEVICE(&chip9->psi), PSIHB9_IRQ_PSU));
-> +                              DEVICE(psi9), PSIHB9_IRQ_PSU));
->  
->      /* HOMER */
->      object_property_set_link(OBJECT(&chip9->homer), "chip", OBJECT(chip),
-> @@ -1627,7 +1627,7 @@ static void pnv_chip_power9_realize(DeviceState *dev, Error **errp)
->                                          PNV9_XSCOM_I2CM_SIZE,
->                                  &chip9->i2c[i].xscom_regs);
->          qdev_connect_gpio_out(DEVICE(&chip9->i2c[i]), 0,
-> -                              qdev_get_gpio_in(DEVICE(&chip9->psi),
-> +                              qdev_get_gpio_in(DEVICE(psi9),
->                                                 PSIHB9_IRQ_SBE_I2C));
->      }
->  }
-> diff --git a/hw/virtio/vhost-user-gpio.c b/hw/virtio/vhost-user-gpio.c
-> index a83437a5da..6d4e9200ff 100644
-> --- a/hw/virtio/vhost-user-gpio.c
-> +++ b/hw/virtio/vhost-user-gpio.c
-> @@ -79,9 +79,9 @@ static int vu_gpio_start(VirtIODevice *vdev)
->       * set needed for the vhost configuration. The backend may also
->       * apply backend_features when the feature set is sent.
->       */
-> -    vhost_ack_features(&gpio->vhost_dev, feature_bits, vdev->guest_features);
-> +    vhost_ack_features(vhost_dev, feature_bits, vdev->guest_features);
->  
-> -    ret = vhost_dev_start(&gpio->vhost_dev, vdev, false);
-> +    ret = vhost_dev_start(vhost_dev, vdev, false);
->      if (ret < 0) {
->          error_report("Error starting vhost-user-gpio: %d", ret);
->          goto err_guest_notifiers;
-> @@ -94,7 +94,7 @@ static int vu_gpio_start(VirtIODevice *vdev)
->       * enabling/disabling irqfd.
->       */
->      for (i = 0; i < gpio->vhost_dev.nvqs; i++) {
-> -        vhost_virtqueue_mask(&gpio->vhost_dev, vdev, i, false);
-> +        vhost_virtqueue_mask(vhost_dev, vdev, i, false);
->      }
->  
->      /*
-> @@ -114,7 +114,7 @@ static int vu_gpio_start(VirtIODevice *vdev)
->  err_guest_notifiers:
->      k->set_guest_notifiers(qbus->parent, gpio->vhost_dev.nvqs, false);
->  err_host_notifiers:
-> -    vhost_dev_disable_notifiers(&gpio->vhost_dev, vdev);
-> +    vhost_dev_disable_notifiers(vhost_dev, vdev);
->  
->      return ret;
->  }
-> diff --git a/hw/virtio/vhost-user-scmi.c b/hw/virtio/vhost-user-scmi.c
-> index 918bb7dcf7..300847e672 100644
-> --- a/hw/virtio/vhost-user-scmi.c
-> +++ b/hw/virtio/vhost-user-scmi.c
-> @@ -56,9 +56,9 @@ static int vu_scmi_start(VirtIODevice *vdev)
->          goto err_host_notifiers;
->      }
->  
-> -    vhost_ack_features(&scmi->vhost_dev, feature_bits, vdev->guest_features);
-> +    vhost_ack_features(vhost_dev, feature_bits, vdev->guest_features);
->  
-> -    ret = vhost_dev_start(&scmi->vhost_dev, vdev, true);
-> +    ret = vhost_dev_start(vhost_dev, vdev, true);
->      if (ret < 0) {
->          error_report("Error starting vhost-user-scmi: %d", ret);
->          goto err_guest_notifiers;
-> @@ -71,7 +71,7 @@ static int vu_scmi_start(VirtIODevice *vdev)
->       * enabling/disabling irqfd.
->       */
->      for (i = 0; i < scmi->vhost_dev.nvqs; i++) {
-> -        vhost_virtqueue_mask(&scmi->vhost_dev, vdev, i, false);
-> +        vhost_virtqueue_mask(vhost_dev, vdev, i, false);
->      }
->      return 0;
->  
-> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-> index 1a7039fb0c..cb6940fc0e 100644
-> --- a/hw/virtio/virtio-pci.c
-> +++ b/hw/virtio/virtio-pci.c
-> @@ -1929,7 +1929,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
->      bool modern_pio = proxy->flags & VIRTIO_PCI_FLAG_MODERN_PIO_NOTIFY;
->      uint8_t *config;
->      uint32_t size;
-> -    VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
-> +    VirtIODevice *vdev = virtio_bus_get_device(bus);
->  
->      /*
->       * Virtio capabilities present without
-> diff --git a/hw/xen/xen_pt.c b/hw/xen/xen_pt.c
-> index 36e6f93c37..10ddf6bc91 100644
-> --- a/hw/xen/xen_pt.c
-> +++ b/hw/xen/xen_pt.c
-> @@ -710,7 +710,7 @@ static void xen_pt_destroy(PCIDevice *d) {
->      uint8_t intx;
->      int rc;
->  
-> -    if (machine_irq && !xen_host_pci_device_closed(&s->real_device)) {
-> +    if (machine_irq && !xen_host_pci_device_closed(host_dev)) {
->          intx = xen_pt_pci_intx(s);
->          rc = xc_domain_unbind_pt_irq(xen_xc, xen_domid, machine_irq,
->                                       PT_IRQ_TYPE_PCI,
-> @@ -759,8 +759,8 @@ static void xen_pt_destroy(PCIDevice *d) {
->          memory_listener_unregister(&s->io_listener);
->          s->listener_set = false;
->      }
-> -    if (!xen_host_pci_device_closed(&s->real_device)) {
-> -        xen_host_pci_device_put(&s->real_device);
-> +    if (!xen_host_pci_device_closed(host_dev)) {
-> +        xen_host_pci_device_put(host_dev);
->      }
->  }
->  /* init */
-> diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
-> index 37ce48621e..237ee49928 100644
-> --- a/migration/multifd-zlib.c
-> +++ b/migration/multifd-zlib.c
-> @@ -75,7 +75,7 @@ static int zlib_send_setup(MultiFDSendParams *p, Error **errp)
->  err_free_zbuff:
->      g_free(z->zbuff);
->  err_deflate_end:
-> -    deflateEnd(&z->zs);
-> +    deflateEnd(zs);
->  err_free_z:
->      g_free(z);
->      error_setg(errp, "multifd %u: %s", p->id, err_msg);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index b60e103046..60ab8f3242 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2087,7 +2087,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->       * We rely on no XScale CPU having VFP so we can use the same bits in the
->       * TB flags field for VECSTRIDE and XSCALE_CPAR.
->       */
-> -    assert(arm_feature(&cpu->env, ARM_FEATURE_AARCH64) ||
-> +    assert(arm_feature(env, ARM_FEATURE_AARCH64) ||
->             !cpu_isar_feature(aa32_vfp_simd, cpu) ||
->             !arm_feature(env, ARM_FEATURE_XSCALE));
->  
-> @@ -2129,7 +2129,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      }
->  
->      if (cpu->cfgend) {
-> -        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
-> +        if (arm_feature(env, ARM_FEATURE_V7)) {
->              cpu->reset_sctlr |= SCTLR_EE;
->          } else {
->              cpu->reset_sctlr |= SCTLR_B;
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 81813030a5..ab85d628a8 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1888,7 +1888,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          cpu->psci_version = QEMU_PSCI_VERSION_0_2;
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
->      }
-> -    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-> +    if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
->      if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index 9d7dbaea54..b2b39b2475 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -773,7 +773,7 @@ static int cpu_pre_load(void *opaque)
->      env->irq_line_state = UINT32_MAX;
->  
->      if (!kvm_enabled()) {
-> -        pmu_op_start(&cpu->env);
-> +        pmu_op_start(env);
->      }
->  
->      return 0;
-> @@ -871,11 +871,11 @@ static int cpu_post_load(void *opaque, int version_id)
->      }
->  
->      if (!kvm_enabled()) {
-> -        pmu_op_finish(&cpu->env);
-> +        pmu_op_finish(env);
->      }
->  
->      if (tcg_enabled()) {
-> -        arm_rebuild_hflags(&cpu->env);
-> +        arm_rebuild_hflags(env);
->      }
->  
->      return 0;
-> diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
-> index 3b1ef5f49a..be2c46246e 100644
-> --- a/target/i386/hvf/x86hvf.c
-> +++ b/target/i386/hvf/x86hvf.c
-> @@ -408,7 +408,7 @@ bool hvf_inject_interrupts(CPUState *cs)
->      if (!(env->hflags & HF_INHIBIT_IRQ_MASK) &&
->          (cs->interrupt_request & CPU_INTERRUPT_HARD) &&
->          (env->eflags & IF_MASK) && !(info & VMCS_INTR_VALID)) {
-> -        int line = cpu_get_pic_interrupt(&x86cpu->env);
-> +        int line = cpu_get_pic_interrupt(env);
->          cs->interrupt_request &= ~CPU_INTERRUPT_HARD;
->          if (line >= 0) {
->              wvmcs(cs->accel->fd, VMCS_ENTRY_INTR_INFO, line |
-> diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-> index 14508dfa11..a812f328a1 100644
-> --- a/target/m68k/helper.c
-> +++ b/target/m68k/helper.c
-> @@ -972,7 +972,7 @@ bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->          access_type |= ACCESS_SUPER;
->      }
->  
-> -    ret = get_physical_address(&cpu->env, &physical, &prot,
-> +    ret = get_physical_address(env, &physical, &prot,
->                                 address, access_type, &page_size);
->      if (likely(ret == 0)) {
->          tlb_set_page(cs, address & TARGET_PAGE_MASK,
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 26fa9d0575..b95a0b4928 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -635,8 +635,8 @@ static int kvm_put_fp(CPUState *cs)
->  
->          for (i = 0; i < 32; i++) {
->              uint64_t vsr[2];
-> -            uint64_t *fpr = cpu_fpr_ptr(&cpu->env, i);
-> -            uint64_t *vsrl = cpu_vsrl_ptr(&cpu->env, i);
-> +            uint64_t *fpr = cpu_fpr_ptr(env, i);
-> +            uint64_t *vsrl = cpu_vsrl_ptr(env, i);
->  
->  #if HOST_BIG_ENDIAN
->              vsr[0] = float64_val(*fpr);
-> @@ -704,8 +704,8 @@ static int kvm_get_fp(CPUState *cs)
->  
->          for (i = 0; i < 32; i++) {
->              uint64_t vsr[2];
-> -            uint64_t *fpr = cpu_fpr_ptr(&cpu->env, i);
-> -            uint64_t *vsrl = cpu_vsrl_ptr(&cpu->env, i);
-> +            uint64_t *fpr = cpu_fpr_ptr(env, i);
-> +            uint64_t *vsrl = cpu_vsrl_ptr(env, i);
->  
->              reg.addr = (uintptr_t) &vsr;
->              reg.id = vsx ? KVM_REG_PPC_VSR(i) : KVM_REG_PPC_FPR(i);
-> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> index c7cc7eb423..791435d628 100644
-> --- a/target/riscv/cpu_helper.c
-> +++ b/target/riscv/cpu_helper.c
-> @@ -1200,7 +1200,7 @@ hwaddr riscv_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
->      CPURISCVState *env = &cpu->env;
->      hwaddr phys_addr;
->      int prot;
-> -    int mmu_idx = cpu_mmu_index(&cpu->env, false);
-> +    int mmu_idx = cpu_mmu_index(env, false);
->  
->      if (get_physical_address(env, &phys_addr, &prot, addr, NULL, 0, mmu_idx,
->                               true, env->virt_enabled, true)) {
-> -- 
-> 2.41.0
-> 
-> 
+Peter asked for a complete correction of this problem (transfering
+the memory holes information with the migration and recreating these
+holes on the destination platform).
+
+In the meantime, this is a very small fix to avoid the current crash
+situation reading the poisoned memory pages.  I'm simply preventing
+the migration when we know that it would crash, when there is a
+poisoned page in the VM address space.
+
+This is a generic protection code, avoiding a crash condition and
+reporting the following error message:
+"Error: Can't migrate this vm with hardware poisoned memory, please reboot the vm and try again"
+instead of crashing the VM.
+
+This fix is scripts/checkpatch.pl clean.
+Unit tested on ARM and x86.
+
+
+William Roche (1):
+  migration: prevent migration when VM has poisoned memory
+
+ accel/kvm/kvm-all.c    | 10 ++++++++++
+ accel/stubs/kvm-stub.c |  5 +++++
+ include/sysemu/kvm.h   |  6 ++++++
+ migration/migration.c  |  7 +++++++
+ 4 files changed, 28 insertions(+)
+
+-- 
+2.39.3
+

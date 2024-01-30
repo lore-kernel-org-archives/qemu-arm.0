@@ -1,265 +1,1004 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp564239ejk;
-        Mon, 29 Jan 2024 18:44:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG0ln//EvGVWSKPNQ3XpTwA03QfXflWvSciH7nXzLSw+DTP3W6ce0vdWXKZ1SZ5my22z5xm
-X-Received: by 2002:ac8:5f07:0:b0:42a:a2f7:1dee with SMTP id x7-20020ac85f07000000b0042aa2f71deemr4924366qta.105.1706582689045;
-        Mon, 29 Jan 2024 18:44:49 -0800 (PST)
-Return-Path: <kvm+bounces-7405-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id g13-20020ac87d0d000000b00429cceb3e6dsi4438988qtb.151.2024.01.29.18.44.48
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp661687ejk;
+        Mon, 29 Jan 2024 23:49:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFN5aUkBjoP0j1PVXYtUHK/PVxyzSuMBiuDetN4V9aYleHzvc9FHS+YjvVYNozz1bjkZdZR
+X-Received: by 2002:ad4:5ca6:0:b0:68c:5a42:41a3 with SMTP id q6-20020ad45ca6000000b0068c5a4241a3mr2386383qvh.34.1706600950941;
+        Mon, 29 Jan 2024 23:49:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706600950; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rGUNbTE2mSy/NLJ5txWbCTl1wVK0wzMTrwBPnhH5fGT0NK3KO/l71LCXLT1nrmmKwt
+         cVj6XbAzCtEBFvaaJWcx0BUu0MrtipNvjiKA0uMjq6C+YAmIJRiZxFA6lANmoOnqnl8R
+         X8GXfECIGUjso8+kcxA56wdMjO2vVEm8qFUcx4pSPxP7e2+GjVJzJZjZbLZR7z353P5A
+         IxgHiN1aHOxAlqLVpt9Oc+bHP4PnUCD0G6ZbE+p/Pw7/pGHbgvvNN/v7akzkPvRXp4gn
+         ypWGL+rNXOBeWznkFqnGnBtGSt5FiKAypZHtioQADjuNN0AhsDfguk9zGtsFmmn/fhDY
+         9x0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4H2WlUW2bCuwsVhh4JbHWVMVS6HvXXFg6AYP+U56Vqc=;
+        fh=YtT/1Z5PT+VYGC/b6dwUrvE34DXW9ollnqouesoHfKw=;
+        b=EYE17GVJnO7GUCXN9hcY6J3F26ULpBwjte13gJnanjpPNt/uvSXGPjqmb6eV+gMbTW
+         UeN2Mu6/vRyUMq2k9ur3vNG+47IuoUrCWuY2vyWOLxIoR8rLiTEzKl9mHyMEk+Kwldy5
+         0shKnHUNZkfpZLYu2nVvzk9124OsuCK9QGH+7x/vWSSNZ+QSyWmirk1eXPa+s6gKmZ98
+         19rZy5IBPIM/MDyG+WY6hZeQ+mwdefBtc8Fve4/kDX5uscakS1yDB1VKGx6kDSr93Wfv
+         nDmt7HfmiSv03q+rZ9IeTtY5liI5q16T86q9P9oGHxJBMv0wu3BKRRDqPZRQTfdRU3gj
+         b6ng==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C5Xn2Unt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e14-20020a0562141d0e00b0067f626350a6si9067130qvd.134.2024.01.29.23.49.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jan 2024 18:44:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-7405-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Jan 2024 23:49:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=oIM7QiU1;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of kvm+bounces-7405-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-7405-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A056C1C24FD3
-	for <alex.bennee@linaro.org>; Tue, 30 Jan 2024 02:44:48 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6845536133;
-	Tue, 30 Jan 2024 02:44:45 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b="oIM7QiU1"
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com [205.220.168.131])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 394D1364C6
-	for <kvm@vger.kernel.org>; Tue, 30 Jan 2024 02:44:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.168.131
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1706582685; cv=fail; b=RMOhi38yd4PHKSKX375wjGstnhKU9gkK9CPqGhYQFctdDw3BlAS4K4m1B7ZRIJgaw5YWfvxhY3Wwa7B+yoVPH2zw8PnbU5Zi7xz+YQxVv/RIQqCnD6xwW9z4wvVVGyV5K3NMyq6NeuKZkjEmlcKOWo1YH36yrl9KkAMaFz/Y3pI=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1706582685; c=relaxed/simple;
-	bh=v4/DPUGnv2NVttHk9/bNa9EH1La+0VOg5BuA1W+8Btw=;
-	h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
-	 Content-Type:MIME-Version; b=Hv08jK/nYTvPkLYwSsMFUequtJrlzzcGIDsNsnlQojk7OmDzK+LZ9HIiW1J/YKQm1TfowsB6AXr2ItWArK6tajhSqESKU8z30PqYgR8tf8DeLF7J2jdJOsJJrLVzVSBSmVnopNQ4PHoqhiJaZtvPekC8Gk2uTMwyMXcjYAKPgUk=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com; spf=pass smtp.mailfrom=quicinc.com; dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b=oIM7QiU1; arc=fail smtp.client-ip=205.220.168.131
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=quicinc.com
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 40U2A0KN016381;
-	Tue, 30 Jan 2024 02:44:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	from:to:cc:subject:date:message-id:references:in-reply-to
-	:content-type:content-transfer-encoding:mime-version; s=
-	qcppdkim1; bh=v4/DPUGnv2NVttHk9/bNa9EH1La+0VOg5BuA1W+8Btw=; b=oI
-	M7QiU1EJSrXReJ+GWupxWus+xyT/0q1wUIT2mSIYJrCE0VkY8IM7K5WOTT2gwPcv
-	5gJbyJTxHUL0EQuiKvEnrk8T6de/TV3rOrVDliAS3u6E9bm4fFnD3Mxw8mjxXy/N
-	rdRvFSAo8B0SOsC3JLYIUPRkqF7F2ReVtxvw0/nIWYvWc3SxFetT56P+FdvgGvoF
-	LmFQqqIxxcaBNxL+4pFXcmQBsXhBCrxFsoYhx7n3J0KYzlQgCkSlMEiBYqgbmOlC
-	3jNkHHXPZRuoxvLAW2eY4pGp4QLVibFCCBJ8Otz99vMf5uiGvlA+ewbJStg3mRDJ
-	qb/Hpl5m0QDcqDAZNjSw==
-Received: from nam11-co1-obe.outbound.protection.outlook.com (mail-co1nam11lp2168.outbound.protection.outlook.com [104.47.56.168])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vxr2v01pc-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 30 Jan 2024 02:44:24 +0000 (GMT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CuYzoE1t6GuHPxPyPlVbRw30a3x0WQKF3CySHKAVPmtogcAp+BgeTFGH1UtW8+raunluwX3gYWWMQ1jkzv9InqQWX4h0/cj472XDmNVY8x/XgJ16zxgvP0kBzOnx12NMuNOJ4tl3oDzrWdr8jfH+/SGKdUlIvaiRFVPu8uSOHzEGiNN4tcR5ZuUpo1BZW3WozJWVUi2boC+oCRC/4BMKHuRjliRBCodY1w73Wn924BQUryvbqOMeWlvAFJDLDvc9xcBic7MArb70kUwslyM7VJ4BC0OKP8pL4J5N7mlg/S/z10JoNWEq4vRsz+nwh6ljBFucsd8k4HVf1SY7A8irsw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v4/DPUGnv2NVttHk9/bNa9EH1La+0VOg5BuA1W+8Btw=;
- b=LmImrgsKbWCFmMxG6wZ0S4zT3fzJEocCgiEw//Z1thBIFXChwbsLzOARyYRGQMgnQWk/4ycQpMaJBSjanHNQu+px2zDA7gvxClwA+oosGE2MBYOjdAiC1NbHJKW1m8a3ELjnJtDcTEeFflXJeBIBk00TUOdK8uRq6xcQ96uomGoJtGFUm8pPFhh+f//MwURKNjnh5pVt1loUSZwhSsgSPVNNPH74q6LlSB9nLuZgqt/HXws+7pQNs1n+tRiyifj8TvM8/ATbZEWDJn67J5vLHny52l7jkLzGwhujC/2I2RSDA/5QvDvm5sMKCQH4pjiFRzfzH/US/2aiL0AlqWfJDQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-Received: from CH3PR02MB10247.namprd02.prod.outlook.com
- (2603:10b6:610:1c2::10) by CH3PR02MB10036.namprd02.prod.outlook.com
- (2603:10b6:610:19d::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.34; Tue, 30 Jan
- 2024 02:44:22 +0000
-Received: from CH3PR02MB10247.namprd02.prod.outlook.com
- ([fe80::1e37:59f7:9ae:2058]) by CH3PR02MB10247.namprd02.prod.outlook.com
- ([fe80::1e37:59f7:9ae:2058%6]) with mapi id 15.20.7228.029; Tue, 30 Jan 2024
- 02:44:22 +0000
-From: Brian Cain <bcain@quicinc.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
-        "qemu-s390x@nongnu.org"
-	<qemu-s390x@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-        "qemu-ppc@nongnu.org"
-	<qemu-ppc@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        Richard
- Henderson <richard.henderson@linaro.org>
-Subject: RE: [PATCH v3 11/29] target/hexagon: Prefer fast cpu_env() over
- slower CPU QOM cast macro
-Thread-Topic: [PATCH v3 11/29] target/hexagon: Prefer fast cpu_env() over
- slower CPU QOM cast macro
-Thread-Index: AQHaUtK3Ru8qxvWcMUCg4muoD+zR/rDxprTw
-Date: Tue, 30 Jan 2024 02:44:21 +0000
-Message-ID: 
- <CH3PR02MB102478EDAEB87976969F264AFB87D2@CH3PR02MB10247.namprd02.prod.outlook.com>
-References: <20240129164514.73104-1-philmd@linaro.org>
- <20240129164514.73104-12-philmd@linaro.org>
-In-Reply-To: <20240129164514.73104-12-philmd@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR02MB10247:EE_|CH3PR02MB10036:EE_
-x-ms-office365-filtering-correlation-id: 3495ca8e-fd3e-4dc5-8db3-08dc213d5d2e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 
- Zt1LsmTCSUV9ySvBiefzKsZdCwBaeo7JzzO9iDopoTm4VUXvyACbX7atKqGHKBTXMw0UtGMQbQP6yHw56CQy+eGdGFkduoxPzLf2C5AtVZ9BYOlA5dPAuAiWnX0Qp9guJgoWdfcHzO9nRqs5wx58PnW2c9/9lvkjWNAYn1AxpdANfdWbe3oAnv910mk+YaF8l12mslPXjHBQUmmIbQszuIsj2oQDOyU8lFmDl6+T2OF2EPpiTb3N6gmw1uihIokXTy6GSVodHpNtVE79mVTYEaWFUmAZ0IjWql6UkAaKJ4ETob9lReRgzcd9x7JaSAcYI88ht+1lA9XttEs0ndcYdNpc1VfYqpjiI8PdQMVzssFF/4TQUZA/aKBmHWIIrQpeKqR1rPtrPtGvBTywO/4QnOpLhk00/q1uR7TwCOjaC7uxfrZ9TLFeCunMBvDZjRdzZ9eVIuqLkE5SAxQPQa85SawrY7i/HcUJUY6Kb8Mh/yaBmwvnE8VLGLT7ibthwT5sNrcXnzAI8OjgjRTLQuIu5dRbpcWXSgBk4ZRTzWWNFnZ5sJouLnvk3OadskHpQxbnpMSaJ67jxfGYnGrAFUWkenED3wgKb0Y+Kyb03h8HcSYK7OUkC1gzjltRTVagGyxlfDG4xzYeMqbv6qXS7WHE0V8ZtvSTrkqi8ho9Or4tGm0=
-x-forefront-antispam-report: 
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR02MB10247.namprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39860400002)(366004)(136003)(346002)(396003)(376002)(230273577357003)(230922051799003)(230173577357003)(64100799003)(1800799012)(451199024)(186009)(55016003)(83380400001)(33656002)(86362001)(38070700009)(122000001)(66556008)(4326008)(9686003)(38100700002)(26005)(6506007)(7696005)(52536014)(66946007)(478600001)(76116006)(2906002)(41300700001)(8676002)(110136005)(316002)(66476007)(64756008)(54906003)(53546011)(71200400001)(66446008)(8936002)(5660300002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: 
- =?utf-8?B?U1VYWHdaUWwrOE1GVHl1Y3RSRVZJMXcySHNTYUdLZXptcU9Sc1p1NVdjVFNT?=
- =?utf-8?B?NldGM1loWUgxYURQS3o2aXRPWjc4cCs2TVE2RTU1SWx4ZVduS3VYeEk3azZ2?=
- =?utf-8?B?a1FGM2tlRGRXWm1xcGhMV0c2SXI0SnRwdHpISkZTSTJ1Skp0NFlYMGV3UjlL?=
- =?utf-8?B?dG82dHBjcFUweW1hUk1LalhGK2Y4dk55WGdwSE1GUUxHUXZRT1llR0ZOMlVw?=
- =?utf-8?B?TnBBMW1KVCtycDNDeDB3ekNtVlFLY1ZGeW51ck5UaDkyQkhkaU1pbkNrakRz?=
- =?utf-8?B?L2Fwcm5Jb3JiRmYybWZzRGprdDh6cUxkVXU0TWw4R2h3endwekh6ejczSDhJ?=
- =?utf-8?B?WEs5YnlJTUhtVTI5b2MwcTN4eE41SWtJd2F1eDQrT0ZBbG9NZGNpa1VtaDV4?=
- =?utf-8?B?c0xUZnZ1YVBmSjVoczQ2Qmp1dks0aW54WEd6WDZBUmJxNmxDc1RMOUpyOFox?=
- =?utf-8?B?NS8zSkw3SW1Va1dOS2JhMnp1Mjc4MWhsVGtoU2dsNTlaRStnWjhlQ2xZOUtK?=
- =?utf-8?B?WEpBY2I4ZTUxSmtWQURJWWtrQThqV0YrSkZvNDYyamQwMmJNMHJ2Y0NoMUFq?=
- =?utf-8?B?NCtWWXhNZDdid09Na2ZuRlhBSFNXQ21wUUdCV3VVT2tvcW9QQ3Z0Q1BhQU4w?=
- =?utf-8?B?bjRMVjRFUC9oUWJwc0ZSUXJRcUQzbVN4TTlJR3o4enZCZFJjblZiRDRKSk1j?=
- =?utf-8?B?Sm52NzNaNzhWL3ZLMDZYVG4rZmFYekI2WWF5aEg1Wk9UczY4N3JJRURJUGxu?=
- =?utf-8?B?WExRVmhURGhHWkR4bmszaXFxZU1TYTRYRlNkQ2lsWkFxUW9NQ013WFlTUXZE?=
- =?utf-8?B?QnFrVnBySDREVzE0TFRsc21nRk1DWkMwd29LSjlnS2hqYm1lcnJnMVl5d2dF?=
- =?utf-8?B?RVpQcjJlYldLMEZvdWR3eVNZUUxNQmtOMlR1ZjBjcE0yak52bmFjdEtlaWdL?=
- =?utf-8?B?Vk5ndGdQLzNrUHU1aEhwbmhZb3lIR2tHWDFMRVR4ZmtOMWxlZjZTS0MrcWRw?=
- =?utf-8?B?Z1RhbUhPclNxeVBCWHd1R1M1Zk5rZmROaVpmUkU4bkRvMTZoZ1RmOVBOc2tj?=
- =?utf-8?B?NVJyV20vckVKQTNGY1lYWU1iVUk5OHpqRVJmY0N2aWJVbHpVZWFuQnFlc3Nq?=
- =?utf-8?B?djlEZlNSellKN3FhRXVlR0JvTmNvUHVZZDVQZXBHSnZESlk2VFpMamJmWnEx?=
- =?utf-8?B?WGVpWDZKbFNkNDlNVldYNDlKejVsZHhma1ZLRHJWbnR5WVFueTY1WjJ6YlRJ?=
- =?utf-8?B?dUpTem9VT3JCMWJuSXp5ek9uRmZsMkcycjZHVmZ1NkVYNHFNOGVaRndSenc3?=
- =?utf-8?B?ZWRLWmRtK3lxSXNGcnlINFI5di92VkVMUmpYNzA0dThMU0p4L2p6VUwycjFI?=
- =?utf-8?B?ekIrRGx0WFgzSytxVXBDU0hVT0Nya0ZBSDRYWmQrUEhLWWxSV1NZTHBtOHIz?=
- =?utf-8?B?UDBuYjRqV1A5OFJ0T3pqU2x6YXVST1BzQUhUM2EyY1d5a1FCVDNrbVBza2kr?=
- =?utf-8?B?SDdZL21MN3VsM3dRMHBmTGRsOUhWV3RWMGFjaGdLTGJnRE9VYUsyZU5pWXlM?=
- =?utf-8?B?MytqY3dydnZQM3VZci8wMCt5WGxCN3Fwb0FUQVp6aUpEbzU4STFpeWdDL0p0?=
- =?utf-8?B?WTMxQlEyNjgyQ0RWcjB2R3pqT2FvN2M3eVFMSEF3MWVxNEFLNDRwK2xmcXFM?=
- =?utf-8?B?L3Zya1lVd3V5OEJOZkRMc0pDYjY0TzVtVjVGN0lZS2lKemZBSHdTMW01cnhM?=
- =?utf-8?B?Z2FzMm5ubURCVXlwNW5pSEgzSmloZGorSWthT2VlSktMRzlJalhLRmp2OWNK?=
- =?utf-8?B?ZGlXV1NCNURjczNnYk5Nd2FsMXk5WVE4Q285RDNIbEFUQkxtS3ZNUmRobmxy?=
- =?utf-8?B?NmxrTVg1Z20ybjJXZGs5ZlF4bjl0WDNkclg2bVNMdkYwMHpRaDQ1SDZmOGlD?=
- =?utf-8?B?ZGlYNGtEZ1pLZmVoQ1NLdEhPRHZ5d2xGaVpkRGxPUXJXK05zaGFGQjR5dHg3?=
- =?utf-8?B?UVFUTGF4SkgvVDRmRlRyZUdudnZRSHhKQUYvQ0pncWh4cC9GQXJwZkUwZHpC?=
- =?utf-8?B?aWZYaTFSTVIzM29hRHJ5ZC84bDF4UWZaVldCSkJZdEwyVEoxNjhEMUV5TmtE?=
- =?utf-8?Q?Y3jM=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C5Xn2Unt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rUirY-0000u5-V9; Tue, 30 Jan 2024 02:48:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
+ id 1rUirW-0000th-3j; Tue, 30 Jan 2024 02:48:54 -0500
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
+ id 1rUirS-0005Zc-40; Tue, 30 Jan 2024 02:48:53 -0500
+Received: by mail-oo1-xc2b.google.com with SMTP id
+ 006d021491bc7-599f5e71d85so2358395eaf.3; 
+ Mon, 29 Jan 2024 23:48:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1706600928; x=1707205728; darn=nongnu.org;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4H2WlUW2bCuwsVhh4JbHWVMVS6HvXXFg6AYP+U56Vqc=;
+ b=C5Xn2Unt9IC8o4xr/p+78gkcbwy0LOHWwWO26LP3bcVJq5v1RC34s+qHswB4FMDN0G
+ N366c1tIkEWwJ572S+C8rWr2Jx/wZjS7Md+Qjtqp1bHy2BkHQYk2ClN99bVessH1IbxN
+ +fe02NUhniXftVEwTBC88akv5C+6p5M1UWMRPgoxPVQxYgKYsugpoIDHAaxNzJSHi3l4
+ bAkGiz577Kf74lxf8RYluAUTbi8gY/4cz4gWu5bRSH31RAmXyqCvIYef5VOjVPP7G+Mv
+ ttT3O4MRfUbnu6P+Bulg1vQR3SWN73KxjPTdK2QPiXkUPjRDhpvY651aQOXZoguZ1sgC
+ nSMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706600928; x=1707205728;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4H2WlUW2bCuwsVhh4JbHWVMVS6HvXXFg6AYP+U56Vqc=;
+ b=nN4F5vRFuEq32OJKVHhxy7VLKa4qzV7TKgglnJA+UbMuhqvd7ub93ln8BK74gLkorw
+ 0o/wVmjzB/DsA0HoRl2i+jMZj/TBkRKQiRY7DoT2FzZZckwJCK3cVcAq2Y0hwi0FszwM
+ 2kLU23oS9W/RGvLlasmdoWLtyfMQitMF3DJKM0/6M93OkwzHh1ZxkyUkui4eLzriBwlU
+ /02R1CZMo5yA4ARA8mcQdvJ5DPqWqQOw1MIgXDoINt1MMk3j3PPpGHqmACAZVoY7A4TN
+ L1pnWpzZNc+ysXCxarjS8NvEn5V9n8aCJaDoTpNAhZz1pgmbOET4fVlHdKEpINKnADpf
+ NLGQ==
+X-Gm-Message-State: AOJu0YyTVeGQ3Hi8nCJwpPWErKIgCNCkUc/WlzdYMH0CKHK/OaZ+xVmU
+ 1PjAn+ch7wI/1bWXPo8oMj+XQheWeSLonmmx7rpjmQbOq1LCzxZ5BjG7v1eBYv153yp5AEgjS1L
+ uIVRKqnqjTtER9L0XrNWL0aapZ8s=
+X-Received: by 2002:a05:6358:5919:b0:178:75cb:18dc with SMTP id
+ g25-20020a056358591900b0017875cb18dcmr3220833rwf.10.1706600927406; Mon, 29
+ Jan 2024 23:48:47 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 
-	Jm2jRkoGJJmEYePOJA0tOIpMCMuygAR2i2rqGJFhUsJNasqDkDhWFu/++ggDdgkVEND8TmauuF6yrBqCLtTbGZM9xMNA+xPCmfVVGWyx8dfmClj/otG75Ui91woE2F9P3tTBjIRK8IT9XLUFdR2FwFa9C9paBpcM41Yuy/XjwASkyQRhB3FaDPeDzorccgXZ7aB9/LIuFGg0TIb2kXvG2bdghtMyLAlDOpRhFIKtXP4KzE8Z2xYsAcOCpmYPCvWiVyVDIYkcB8ThbxH2NHNllor+RCRvSyMjTGqWBWSr1TddvaUDoWu+bB0I3YFnAo1bWWaEFZBVOtSLd8MkBRmMgPlOFABzv6inZbQASmwNFHc/aNyjOwBXLFY903KiA3Oh7/BMjkh+BXqA8gODbmH3bhAuoAJgRLtUwUoA5u9/+eZmtZBQHV9xLBsy/zjvLswhq+TRXAbMnCun3h+fgVASav9PS58DCd+q5t8+kGSQQi/XNFlM9Xs79uuqh1n7S1h8F2MlznijzjPA4G10dv+AMP3bu3RrW6tRo4+ZiV4JPkSVvBkpethGZHPZFHNc1IDjlB9oLwzo6afYga6ON9/1zGpLBK3pH80/Ajy/yP3iy/y0yMFaV6M2XT2LbwS+yz4k
-X-OriginatorOrg: quicinc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR02MB10247.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3495ca8e-fd3e-4dc5-8db3-08dc213d5d2e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jan 2024 02:44:21.9661
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Kocsbhwx8INYRC3Afxw5E6Wc+CWEmheJ8F4AZHF8kTH+lZdviIxP7f//zwVmjkuecdDp90H7BFx6XsDlJHvlVw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR02MB10036
-X-Proofpoint-GUID: R1Ku94LyJJIhAN6scrRdqR5SDYJprXHA
-X-Proofpoint-ORIG-GUID: R1Ku94LyJJIhAN6scrRdqR5SDYJprXHA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-29_15,2024-01-29_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 mlxlogscore=733
- impostorscore=0 bulkscore=0 suspectscore=0 spamscore=0 malwarescore=0
- clxscore=1011 mlxscore=0 priorityscore=1501 lowpriorityscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2401190000 definitions=main-2401300018
-X-TUID: 5uKw70+dIHFM
+References: <CA+ji3pGBJBp+trjM-RhgkYjOs8rrtLJgHsaNvf=EyGtWB4gAow@mail.gmail.com>
+ <CAFEAcA-L2vepWXfgaHW=ogLAvAZjJd5yv1hm6dBU6dsEOS_gCA@mail.gmail.com>
+ <CA+ji3pGVBmDAeUoPM9Zk8pOtpxcR+92XeUBN8G=Mmmyi4Eh8-g@mail.gmail.com>
+ <CAFEAcA9AeqbWt1Q5QM_HEwi+A2KYXFs1ZEqfFJcqdktYwWujTQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9AeqbWt1Q5QM_HEwi+A2KYXFs1ZEqfFJcqdktYwWujTQ@mail.gmail.com>
+From: sanjana gogte <sanj27272@gmail.com>
+Date: Tue, 30 Jan 2024 13:18:36 +0530
+Message-ID: <CA+ji3pH4ZapKAZ+vCSw6P=svWUtfsWt8aqoTFZX_CV5DzPoOyg@mail.gmail.com>
+Subject: Re: Assistance Required for QEMU Hardfault Error with Cortex-M33 on
+ MPS2AN505
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000000d325f061024fefb"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2b;
+ envelope-from=sanj27272@gmail.com; helo=mail-oo1-xc2b.google.com
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ MANY_SPAN_IN_TEXT=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aAn6wjyKYXoO
 
-DQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFBoaWxpcHBlIE1hdGhpZXUt
-RGF1ZMOpIDxwaGlsbWRAbGluYXJvLm9yZz4NCj4gU2VudDogTW9uZGF5LCBKYW51YXJ5IDI5LCAy
-MDI0IDEwOjQ1IEFNDQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHFlbXUtcmlz
-Y3ZAbm9uZ251Lm9yZzsgcWVtdS1zMzkweEBub25nbnUub3JnOyBQYW9sbyBCb256aW5pDQo+IDxw
-Ym9uemluaUByZWRoYXQuY29tPjsga3ZtQHZnZXIua2VybmVsLm9yZzsgcWVtdS1wcGNAbm9uZ251
-Lm9yZzsNCj4gcWVtdS1hcm1Abm9uZ251Lm9yZzsgUmljaGFyZCBIZW5kZXJzb24gPHJpY2hhcmQu
-aGVuZGVyc29uQGxpbmFyby5vcmc+Ow0KPiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1k
-QGxpbmFyby5vcmc+OyBCcmlhbiBDYWluDQo+IDxiY2FpbkBxdWljaW5jLmNvbT4NCj4gU3ViamVj
-dDogW1BBVENIIHYzIDExLzI5XSB0YXJnZXQvaGV4YWdvbjogUHJlZmVyIGZhc3QgY3B1X2Vudigp
-IG92ZXIgc2xvd2VyDQo+IENQVSBRT00gY2FzdCBtYWNybw0KPiANCj4gV0FSTklORzogVGhpcyBl
-bWFpbCBvcmlnaW5hdGVkIGZyb20gb3V0c2lkZSBvZiBRdWFsY29tbS4gUGxlYXNlIGJlIHdhcnkg
-b2YNCj4gYW55IGxpbmtzIG9yIGF0dGFjaG1lbnRzLCBhbmQgZG8gbm90IGVuYWJsZSBtYWNyb3Mu
-DQo+IA0KPiBNZWNoYW5pY2FsIHBhdGNoIHByb2R1Y2VkIHJ1bm5pbmcgdGhlIGNvbW1hbmQgZG9j
-dW1lbnRlZA0KPiBpbiBzY3JpcHRzL2NvY2NpbmVsbGUvY3B1X2Vudi5jb2NjaV90ZW1wbGF0ZSBo
-ZWFkZXIuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhp
-bG1kQGxpbmFyby5vcmc+DQo+IC0tLQ0KPiAgdGFyZ2V0L2hleGFnb24vY3B1LmMgICAgIHwgMjUg
-KysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiAgdGFyZ2V0L2hleGFnb24vZ2Ric3R1Yi5jIHwg
-IDYgKystLS0tDQo+ICAyIGZpbGVzIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgMjMgZGVsZXRp
-b25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFnb24vY3B1LmMgYi90YXJnZXQv
-aGV4YWdvbi9jcHUuYw0KPiBpbmRleCAwODVkNmMwMTE1Li4xN2EyMmFhN2E1IDEwMDY0NA0KPiAt
-LS0gYS90YXJnZXQvaGV4YWdvbi9jcHUuYw0KPiArKysgYi90YXJnZXQvaGV4YWdvbi9jcHUuYw0K
-PiBAQCAtMjM2LDEwICsyMzYsNyBAQCBzdGF0aWMgdm9pZCBoZXhhZ29uX2R1bXAoQ1BVSGV4YWdv
-blN0YXRlICplbnYsDQo+IEZJTEUgKmYsIGludCBmbGFncykNCj4gDQo+ICBzdGF0aWMgdm9pZCBo
-ZXhhZ29uX2R1bXBfc3RhdGUoQ1BVU3RhdGUgKmNzLCBGSUxFICpmLCBpbnQgZmxhZ3MpDQo+ICB7
-DQo+IC0gICAgSGV4YWdvbkNQVSAqY3B1ID0gSEVYQUdPTl9DUFUoY3MpOw0KPiAtICAgIENQVUhl
-eGFnb25TdGF0ZSAqZW52ID0gJmNwdS0+ZW52Ow0KPiAtDQo+IC0gICAgaGV4YWdvbl9kdW1wKGVu
-diwgZiwgZmxhZ3MpOw0KPiArICAgIGhleGFnb25fZHVtcChjcHVfZW52KGNzKSwgZiwgZmxhZ3Mp
-Ow0KPiAgfQ0KPiANCj4gIHZvaWQgaGV4YWdvbl9kZWJ1ZyhDUFVIZXhhZ29uU3RhdGUgKmVudikN
-Cj4gQEAgLTI0OSwyNSArMjQ2LDE5IEBAIHZvaWQgaGV4YWdvbl9kZWJ1ZyhDUFVIZXhhZ29uU3Rh
-dGUgKmVudikNCj4gDQo+ICBzdGF0aWMgdm9pZCBoZXhhZ29uX2NwdV9zZXRfcGMoQ1BVU3RhdGUg
-KmNzLCB2YWRkciB2YWx1ZSkNCj4gIHsNCj4gLSAgICBIZXhhZ29uQ1BVICpjcHUgPSBIRVhBR09O
-X0NQVShjcyk7DQo+IC0gICAgQ1BVSGV4YWdvblN0YXRlICplbnYgPSAmY3B1LT5lbnY7DQo+IC0g
-ICAgZW52LT5ncHJbSEVYX1JFR19QQ10gPSB2YWx1ZTsNCj4gKyAgICBjcHVfZW52KGNzKS0+Z3By
-W0hFWF9SRUdfUENdID0gdmFsdWU7DQo+ICB9DQo+IA0KPiAgc3RhdGljIHZhZGRyIGhleGFnb25f
-Y3B1X2dldF9wYyhDUFVTdGF0ZSAqY3MpDQo+ICB7DQo+IC0gICAgSGV4YWdvbkNQVSAqY3B1ID0g
-SEVYQUdPTl9DUFUoY3MpOw0KPiAtICAgIENQVUhleGFnb25TdGF0ZSAqZW52ID0gJmNwdS0+ZW52
-Ow0KPiAtICAgIHJldHVybiBlbnYtPmdwcltIRVhfUkVHX1BDXTsNCj4gKyAgICByZXR1cm4gY3B1
-X2VudihjcyktPmdwcltIRVhfUkVHX1BDXTsNCj4gIH0NCj4gDQo+ICBzdGF0aWMgdm9pZCBoZXhh
-Z29uX2NwdV9zeW5jaHJvbml6ZV9mcm9tX3RiKENQVVN0YXRlICpjcywNCj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgVHJhbnNsYXRpb25CbG9jayAq
-dGIpDQo+ICB7DQo+IC0gICAgSGV4YWdvbkNQVSAqY3B1ID0gSEVYQUdPTl9DUFUoY3MpOw0KPiAt
-ICAgIENQVUhleGFnb25TdGF0ZSAqZW52ID0gJmNwdS0+ZW52Ow0KPiAgICAgIHRjZ19kZWJ1Z19h
-c3NlcnQoIShjcy0+dGNnX2NmbGFncyAmIENGX1BDUkVMKSk7DQo+IC0gICAgZW52LT5ncHJbSEVY
-X1JFR19QQ10gPSB0Yi0+cGM7DQo+ICsgICAgY3B1X2VudihjcyktPmdwcltIRVhfUkVHX1BDXSA9
-IHRiLT5wYzsNCj4gIH0NCj4gDQo+ICBzdGF0aWMgYm9vbCBoZXhhZ29uX2NwdV9oYXNfd29yayhD
-UFVTdGF0ZSAqY3MpDQo+IEBAIC0yNzksMTggKzI3MCwxNCBAQCBzdGF0aWMgdm9pZCBoZXhhZ29u
-X3Jlc3RvcmVfc3RhdGVfdG9fb3BjKENQVVN0YXRlDQo+ICpjcywNCj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgVHJhbnNsYXRpb25CbG9jayAqdGIsDQo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHVpbnQ2NF90
-ICpkYXRhKQ0KPiAgew0KPiAtICAgIEhleGFnb25DUFUgKmNwdSA9IEhFWEFHT05fQ1BVKGNzKTsN
-Cj4gLSAgICBDUFVIZXhhZ29uU3RhdGUgKmVudiA9ICZjcHUtPmVudjsNCj4gLQ0KPiAtICAgIGVu
-di0+Z3ByW0hFWF9SRUdfUENdID0gZGF0YVswXTsNCj4gKyAgICBjcHVfZW52KGNzKS0+Z3ByW0hF
-WF9SRUdfUENdID0gZGF0YVswXTsNCj4gIH0NCj4gDQo+ICBzdGF0aWMgdm9pZCBoZXhhZ29uX2Nw
-dV9yZXNldF9ob2xkKE9iamVjdCAqb2JqKQ0KPiAgew0KPiAgICAgIENQVVN0YXRlICpjcyA9IENQ
-VShvYmopOw0KPiAtICAgIEhleGFnb25DUFUgKmNwdSA9IEhFWEFHT05fQ1BVKGNzKTsNCj4gICAg
-ICBIZXhhZ29uQ1BVQ2xhc3MgKm1jYyA9IEhFWEFHT05fQ1BVX0dFVF9DTEFTUyhvYmopOw0KPiAt
-ICAgIENQVUhleGFnb25TdGF0ZSAqZW52ID0gJmNwdS0+ZW52Ow0KPiArICAgIENQVUhleGFnb25T
-dGF0ZSAqZW52ID0gY3B1X2Vudihjcyk7DQo+IA0KPiAgICAgIGlmIChtY2MtPnBhcmVudF9waGFz
-ZXMuaG9sZCkgew0KPiAgICAgICAgICBtY2MtPnBhcmVudF9waGFzZXMuaG9sZChvYmopOw0KPiBk
-aWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFnb24vZ2Ric3R1Yi5jIGIvdGFyZ2V0L2hleGFnb24vZ2Ri
-c3R1Yi5jDQo+IGluZGV4IDU0ZDM3ZTAwNmUuLmY3NzNmOGVhNGYgMTAwNjQ0DQo+IC0tLSBhL3Rh
-cmdldC9oZXhhZ29uL2dkYnN0dWIuYw0KPiArKysgYi90YXJnZXQvaGV4YWdvbi9nZGJzdHViLmMN
-Cj4gQEAgLTIyLDggKzIyLDcgQEANCj4gDQo+ICBpbnQgaGV4YWdvbl9nZGJfcmVhZF9yZWdpc3Rl
-cihDUFVTdGF0ZSAqY3MsIEdCeXRlQXJyYXkgKm1lbV9idWYsIGludCBuKQ0KPiAgew0KPiAtICAg
-IEhleGFnb25DUFUgKmNwdSA9IEhFWEFHT05fQ1BVKGNzKTsNCj4gLSAgICBDUFVIZXhhZ29uU3Rh
-dGUgKmVudiA9ICZjcHUtPmVudjsNCj4gKyAgICBDUFVIZXhhZ29uU3RhdGUgKmVudiA9IGNwdV9l
-bnYoY3MpOw0KPiANCj4gICAgICBpZiAobiA9PSBIRVhfUkVHX1AzXzBfQUxJQVNFRCkgew0KPiAg
-ICAgICAgICB1aW50MzJfdCBwM18wID0gMDsNCj4gQEAgLTQyLDggKzQxLDcgQEAgaW50IGhleGFn
-b25fZ2RiX3JlYWRfcmVnaXN0ZXIoQ1BVU3RhdGUgKmNzLCBHQnl0ZUFycmF5DQo+ICptZW1fYnVm
-LCBpbnQgbikNCj4gDQo+ICBpbnQgaGV4YWdvbl9nZGJfd3JpdGVfcmVnaXN0ZXIoQ1BVU3RhdGUg
-KmNzLCB1aW50OF90ICptZW1fYnVmLCBpbnQgbikNCj4gIHsNCj4gLSAgICBIZXhhZ29uQ1BVICpj
-cHUgPSBIRVhBR09OX0NQVShjcyk7DQo+IC0gICAgQ1BVSGV4YWdvblN0YXRlICplbnYgPSAmY3B1
-LT5lbnY7DQo+ICsgICAgQ1BVSGV4YWdvblN0YXRlICplbnYgPSBjcHVfZW52KGNzKTsNCj4gDQo+
-ICAgICAgaWYgKG4gPT0gSEVYX1JFR19QM18wX0FMSUFTRUQpIHsNCj4gICAgICAgICAgdWludDMy
-X3QgcDNfMCA9IGxkdHVsX3AobWVtX2J1Zik7DQo+IC0tDQo+IDIuNDEuMA0KDQpSZXZpZXdlZC1i
-eTogQnJpYW4gQ2FpbiA8YmNhaW5AcXVpY2luYy5jb20+DQo=
+--0000000000000d325f061024fefb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+I wanted to express my gratitude for your insightful solution concerning
+the INVSTATE fault I was encountering. After recompiling my code with the
+-mthumb compiler flag, the exception is no longer being raised, which marks
+a significant step forward in my project.
+
+However, I've encountered another challenge while working with a specific
+version of QEMU (QEMU emulator version 7.1.0, v2.6.0-55433-g23b643ba16).
+While the code runs flawlessly on QEMU version 8.1.50
+(v8.1.0-2375-g516fffc993), the earlier version throws a hard fault, which
+is critical to my use case.
+
+The use case involves attaching a remote port to the MPS2-AN505, and for
+this, I need to utilize Xilinx=E2=80=99s fork of QEMU, which is based on ve=
+rsion
+7.1.0 (v2.6.0-55433-g23b643ba16). The error I encounter during emulation is
+as follows:
+
+Loaded reset SP 0x0 PC 0x0 from vector table
+Loaded reset SP 0x10080000 PC 0x10000009 from vector table
+Taking exception 3 [Prefetch Abort] on CPU 0
+...at fault address 0x10800000
+...with CFSR.IBUSERR
+...taking pending secure exception 3
+...loading from element 3 000000c
+...loaded new PC 0x10000011 of secure vector table at 0x1
+Taking exception 3 [Prefetch Abort] on CPU 0
+...at fault address 0x10800000
+...with CFSR.IBUSERR
+qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
+
+Observations: When I trace it using the GDB:
+
+Remote debugging using: 1234
+
+
+Reset_Handler () at boot.s:20
+
+20          blx     helper
+
+(gdb) l
+
+15         blx     R0
+
+16
+
+17      .type Reset_Handler, function
+
+18      .global Reset_Handler
+
+19      Reset_Handler:
+
+20          blx     helper
+
+21          bx      lr
+
+22
+
+(gdb) s
+
+Remote connection closed
+
+
+
+It goes to prefetch abort as soon as I step into reset handler and the
+connection gets closed.
+What I do not understand is:
+
+1) Why is my PC going to address 0x10800000?
+
+
+2) When I use Qemu version 8.1.50 (v8.1.0-2375-g516fffc993), the PC goes to
+the right address and does not throw a prefetch abort.
+
+
+Please give me your insights on how I can fix this.
+
+
+Some of my code for your reference:
+
+
+My startup code :
+
+.syntax unified
+
+.thumb
+
+
+.section .isr_vector
+
+    .long    __StackTop
+
+    .long    Reset_Handler
+
+
+
+
+.text
+
+.type helper,function
+
+.global helper
+
+helper :
+
+   ldr     R0, =3D main
+
+   blx     R0
+
+
+.type Reset_Handler, function
+
+.global Reset_Handler
+
+Reset_Handler:
+
+    blx     helper
+
+    bx      lr
+
+
+
+( Like you mentioned  previously , In the .isr_vector section I tried makin=
+g
+the other exception handlers  point to branch-to-self instructions but that
+gives me the same error )
+
+
+My linker code :
+
+
+/* Linker script to configure memory regions. */
+
+MEMORY
+
+{
+
+   NS_CODE (rx)     : ORIGIN =3D 0x00000000, LENGTH =3D 512K
+
+   S_CODE_BOOT (rx) : ORIGIN =3D 0x10000000, LENGTH =3D 512K
+
+   RAM   (rwx) : ORIGIN =3D 0x20000000, LENGTH =3D 512K
+
+}
+
+
+/* Entry Point */
+
+ENTRY(Reset_Handler)
+
+
+SECTIONS
+
+{
+
+    .text :
+
+    {
+
+        KEEP(*(.isr_vector))
+
+        *(.text)
+
+        *(.data)
+
+    *(.bss)
+
+    } > S_CODE_BOOT
+
+    /* Set stack top to end of S_CODE_BOOT. */
+
+    __StackTop =3D ORIGIN(S_CODE_BOOT) + LENGTH(S_CODE_BOOT);
+
+
+
+
+}
+
+
+kernel.list file :
+
+
+kernel.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+10000000 <helper-0x8>:
+10000000: 10080000 .word 0x10080000
+10000004: 1000000d .word 0x1000000d
+
+10000008 <helper>:
+10000008: 4802       ldr r0, [pc, #8] @ (10000014 <Reset_Handler+0x8>)
+1000000a: 4780       blx r0
+
+1000000c <Reset_Handler>:
+1000000c: f7ff fffc bl 10000008 <helper>
+10000010: 4770       bx lr
+10000012: 0000       .short 0x0000
+10000014: 10000019 .word 0x10000019
+
+10000018 <main>:
+10000018: b480       push {r7}
+1000001a: af00       add r7, sp, #0
+1000001c: e7fe       b.n 1000001c <main+0x4>
+
+
+
+
+
+
+On Thu, 18 Jan 2024 at 15:34, Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Thu, 18 Jan 2024 at 06:30, sanjana gogte <sanj27272@gmail.com> wrote:
+> >
+> > Hi,
+> > 1) I am using QEMU Version 7.1.0. I am currently using this version wit=
+h
+> a plan to connect the remote port from Xilinx to the mps2an505 board. The
+> decision to use this specific version is heavily influenced by the fact
+> that it is the same version utilized by Xilinx's QEMU.
+> >
+> > 2) Debug Logs :
+> > guest_errors:
+> >
+> > Invalid read at addr 0x10000000, size 4, region '(null)', reason:
+> rejected
+> > Invalid read at addr 0x10000004, size 4, region '(null)', reason:
+> rejected
+> > Invalid read at addr 0x10800000, size 2, region '(null)', reason:
+> rejected
+> > qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1=
+)
+> >
+> > in_asm:
+>
+> >
+> > IN:
+> > 0x10000008:
+> > OBJD-T: 00480047
+>
+> Whoever built your QEMU didn't do it with libcapstone-dev
+> installed, so the debug logs have only binary dumps of
+> instructions, not the actual instructions, which is a pity
+> (--enable-capstone will force configure to either find the
+> necessary library or else give you an error message.)
+>
+> Also, I did not mean "do logs of every -d option separately",
+> I meant "do a single log, with -d
+> in_asm,exec,cpu,int,cpu_reset,unimp,guest_errors,nochain"
+> That way you get the different bits of logging in their
+> correct sequence relative to each other.
+>
+> Luckily, this bit is enough to figure out what's going on:
+>
+> > Loaded reset SP 0x0 PC 0x0 from vector table
+> > Loaded reset SP 0x10080000 PC 0x10000008 from vector table
+>
+> We load the PC from the vector table, but it does not
+> have the low bit set, which is not correct. (All entries
+> in the vector table must be function pointers in the
+> usual Thumb convention, where the lowest bit is set to
+> indicate Thumb mode and clear to indicate Arm mode.)
+> This means that we will start without the Thumb T bit set...
+>
+> > Taking exception 18 [v7M INVSTATE UsageFault] on CPU 0
+>
+> ...which on M-profile means we immediately take a fault trying
+> to execute the first instruction...
+>
+> > ...taking pending secure exception 3
+> > ...loading from element 3 of secure vector table at 0x1000000c
+> > ...loaded new PC 0x10000011
+>
+> ...but because your vector table includes no entry for
+> the hardfault vector, we instead load a PC value which
+> doesn't point anywhere useful...
+>
+> > Taking exception 3 [Prefetch Abort] on CPU 0
+> > ...at fault address 0x10800000
+> > ...with CFSR.IBUSERR
+> > qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1=
+)
+>
+> ...and eventually we execute off the end of the ROM memory,
+> and then take a bus fault on the instruction fetch. This
+> is a Lockup because we were already in a HardFault handler
+> when we took this fault.
+>
+> > 3) You said the vector table is too small so I tried something like thi=
+s
+> from your reference files but it gives me the same error:
+> >
+> > Boot.s ( Startup file )
+> >
+> > .thumb
+> > .syntax unified
+> >
+> > .section .isr_vector
+> >     .long __StackTop
+> >     .long Reset_Handler
+> >     .word 0
+>
+> Zeroes here aren't very helpful because the CPU will try
+> to jump to address 0 (and then immediately take another
+> fault because the Thumb bit isn't set, which will be
+> a Lockup condition again). If you at least make them point to
+> branch-to-self instructions it'll be a bit clearer when
+> you take an exception you weren't expecting, because in
+> the debugger you'll see execution looping at that insn.
+>
+> >     .word 0
+> >     .rept 7
+> >     .word 0
+> >     .endr
+> >     .word 0
+> >     .word 0
+> >     .word 0
+> >     .word 0
+> >     .word 0
+> >     .rept 32
+> >     .word 0
+> >     .endr
+> >
+> >
+> > .text
+> > .global Reset_Handler
+> > Reset_Handler:
+> >     ldr     R0, =3D main
+> >     bx      R0
+>
+> But really your problem is here. You haven't told the assembler
+> that "Reset_Handler" is a function entry point, and so it treats
+> it like a data label. That means that the least significant bit
+> is not set when you reference it in the vector table.
+>
+> Something like this will do what you want:
+>         .type Reset_Handler, function
+>         .global Reset_Handler
+> Reset_Handler:
+>
+> PS: a hint for later: your code here does not do anything
+> to enable the FPU before it jumps into C code. If your
+> C compiler is generating code to use the FPU this will
+> mean it will take an exception. So either make sure the
+> C compiler is configured not to use the FPU, or else enable
+> the FPU first.
+>
+> thanks
+> -- PMM
+>
+
+--0000000000000d325f061024fefb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p style=3D"border:0px solid rgb(217,217,227);box-sizing:b=
+order-box;margin:1.25em 0px">I wanted to express my gratitude for your insi=
+ghtful solution concerning the INVSTATE fault I was encountering. After rec=
+ompiling my code with the <code style=3D"border:0px solid rgb(217,217,227);=
+box-sizing:border-box;font-size:0.875em;font-weight:600;font-family:&quot;S=
+\0000f6hne Mono&quot;,Monaco,&quot;Andale Mono&quot;,&quot;Ubuntu Mono&quot=
+;,monospace">-mthumb</code> compiler flag, the exception is no longer being=
+ raised, which marks a significant step forward in my project.</p><p style=
+=3D"border:0px solid rgb(217,217,227);box-sizing:border-box;margin:1.25em 0=
+px">However, I&#39;ve encountered another challenge while working with a sp=
+ecific version of QEMU (QEMU emulator version 7.1.0, v2.6.0-55433-g23b643ba=
+16). While the code runs flawlessly on QEMU version 8.1.50 (v8.1.0-2375-g51=
+6fffc993), the earlier version throws a hard fault, which is critical to my=
+ use case.</p><p style=3D"border:0px solid rgb(217,217,227);box-sizing:bord=
+er-box;margin:1.25em 0px">The use case involves attaching a remote port to =
+the MPS2-AN505, and for this, I need to utilize Xilinx=E2=80=99s fork of QE=
+MU, which is based on version 7.1.0 (v2.6.0-55433-g23b643ba16). The error I=
+ encounter during emulation is as follows:</p><p style=3D"border:0px solid =
+rgb(217,217,227);box-sizing:border-box;margin:1.25em 0px">Loaded reset SP 0=
+x0 PC 0x0 from vector table<br>Loaded reset SP 0x10080000 PC 0x10000009 fro=
+m vector table<br>Taking exception 3 [Prefetch Abort] on CPU 0<br>...at fau=
+lt address 0x10800000<br>...with CFSR.IBUSERR<br>...taking pending secure e=
+xception 3<br>...loading from element 3 000000c<br>...loaded new PC 0x10000=
+011 of secure vector table at 0x1<br>Taking exception 3 [Prefetch Abort] on=
+ CPU 0<br>...at fault address 0x10800000<br>...with CFSR.IBUSERR<br>qemu: f=
+atal: Lockup: can&#39;t escalate 3 to HardFault (current priority -1)<br><b=
+r>
+
+
+
+
+
+</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neu=
+e&quot;">Observations:<span class=3D"gmail-Apple-converted-space">=C2=A0</s=
+pan>When I trace it using the GDB:</p><p class=3D"gmail-p1" style=3D"margin=
+:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-varian=
+t-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-str=
+etch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica N=
+eue&quot;">Remote debugging using: 1234</p><p class=3D"gmail-p1" style=3D"m=
+argin:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-v=
+ariant-alternates:normal;font-kerning:auto;font-feature-settings:normal;fon=
+t-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvet=
+ica Neue&quot;"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font-vari=
+ant-numeric:normal;font-variant-east-asian:normal;font-variant-alternates:n=
+ormal;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;fo=
+nt-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;">Res=
+et_Handler () at boot.s:20</p><p class=3D"gmail-p1" style=3D"margin:0px;fon=
+t-variant-numeric:normal;font-variant-east-asian:normal;font-variant-altern=
+ates:normal;font-kerning:auto;font-feature-settings:normal;font-stretch:nor=
+mal;font-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot=
+;">20<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 </span>blx <span class=3D"gmail-Apple-converted-space">=C2=A0 =
+=C2=A0 </span>helper</p><p class=3D"gmail-p1" style=3D"margin:0px;font-vari=
+ant-numeric:normal;font-variant-east-asian:normal;font-variant-alternates:n=
+ormal;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;fo=
+nt-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;">(gd=
+b) l</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:norm=
+al;font-variant-east-asian:normal;font-variant-alternates:normal;font-kerni=
+ng:auto;font-feature-settings:normal;font-stretch:normal;font-size:13px;lin=
+e-height:normal;font-family:&quot;Helvetica Neue&quot;">15 <span class=3D"g=
+mail-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=A0 </span>blx <span cl=
+ass=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>R0</p><p class=3D"=
+gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east=
+-asian:normal;font-variant-alternates:normal;font-kerning:auto;font-feature=
+-settings:normal;font-stretch:normal;font-size:13px;line-height:normal;font=
+-family:&quot;Helvetica Neue&quot;">16</p><p class=3D"gmail-p1" style=3D"ma=
+rgin:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-va=
+riant-alternates:normal;font-kerning:auto;font-feature-settings:normal;font=
+-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;Helveti=
+ca Neue&quot;">17<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =
+=C2=A0 </span>.type Reset_Handler, function</p><p class=3D"gmail-p1" style=
+=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian:normal;f=
+ont-variant-alternates:normal;font-kerning:auto;font-feature-settings:norma=
+l;font-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;H=
+elvetica Neue&quot;">18<span class=3D"gmail-Apple-converted-space">=C2=A0 =
+=C2=A0 =C2=A0 </span>.global Reset_Handler</p><p class=3D"gmail-p1" style=
+=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian:normal;f=
+ont-variant-alternates:normal;font-kerning:auto;font-feature-settings:norma=
+l;font-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;H=
+elvetica Neue&quot;">19<span class=3D"gmail-Apple-converted-space">=C2=A0 =
+=C2=A0 =C2=A0 </span>Reset_Handler:</p><p class=3D"gmail-p1" style=3D"margi=
+n:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-varia=
+nt-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-st=
+retch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica =
+Neue&quot;">20<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 </span>blx <span class=3D"gmail-Apple-converted-space">=
+=C2=A0 =C2=A0 </span>helper</p><p class=3D"gmail-p1" style=3D"margin:0px;fo=
+nt-variant-numeric:normal;font-variant-east-asian:normal;font-variant-alter=
+nates:normal;font-kerning:auto;font-feature-settings:normal;font-stretch:no=
+rmal;font-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quo=
+t;">21<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 </span>bx<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=
+=A0 =C2=A0 </span>lr</p><p class=3D"gmail-p1" style=3D"margin:0px;font-vari=
+ant-numeric:normal;font-variant-east-asian:normal;font-variant-alternates:n=
+ormal;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;fo=
+nt-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;">22<=
+/p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;fo=
+nt-variant-east-asian:normal;font-variant-alternates:normal;font-kerning:au=
+to;font-feature-settings:normal;font-stretch:normal;font-size:13px;line-hei=
+ght:normal;font-family:&quot;Helvetica Neue&quot;">(gdb) s</p><p class=3D"g=
+mail-p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east-=
+asian:normal;font-variant-alternates:normal;font-kerning:auto;font-feature-=
+settings:normal;font-stretch:normal;font-size:13px;line-height:normal;font-=
+family:&quot;Helvetica Neue&quot;">Remote connection closed</p><p class=3D"=
+gmail-p2" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east=
+-asian:normal;font-variant-alternates:normal;font-kerning:auto;font-feature=
+-settings:normal;font-stretch:normal;font-size:13px;line-height:normal;font=
+-family:&quot;Helvetica Neue&quot;;min-height:15px"><span class=3D"gmail-Ap=
+ple-converted-space">=C2=A0</span></p><p class=3D"gmail-p1" style=3D"margin=
+:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-varian=
+t-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-str=
+etch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica N=
+eue&quot;">It goes to prefetch abort as soon as I step into reset handler a=
+nd the connection gets closed.<span class=3D"gmail-Apple-converted-space">=
+=C2=A0 <br></span>What I do not understand is:</p><p class=3D"gmail-p1" sty=
+le=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian:normal=
+;font-variant-alternates:normal;font-kerning:auto;font-feature-settings:nor=
+mal;font-stretch:normal;font-size:13px;line-height:normal;font-family:&quot=
+;Helvetica Neue&quot;">1) Why is my PC going to address 0x10800000?</p><p c=
+lass=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;font-vari=
+ant-east-asian:normal;font-variant-alternates:normal;font-kerning:auto;font=
+-feature-settings:normal;font-stretch:normal;font-size:13px;line-height:nor=
+mal;font-family:&quot;Helvetica Neue&quot;"><br></p><p class=3D"gmail-p1" s=
+tyle=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian:norm=
+al;font-variant-alternates:normal;font-kerning:auto;font-feature-settings:n=
+ormal;font-stretch:normal;font-size:13px;line-height:normal;font-family:&qu=
+ot;Helvetica Neue&quot;">2) When=C2=A0I use Qemu version 8.1.50 (v8.1.0-237=
+5-g516fffc993), the PC goes to the right address and does not throw a prefe=
+tch abort.=C2=A0</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-=
+numeric:normal;font-variant-east-asian:normal;font-variant-alternates:norma=
+l;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;font-s=
+ize:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;"><br></p=
+><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;font=
+-variant-east-asian:normal;font-variant-alternates:normal;font-kerning:auto=
+;font-feature-settings:normal;font-stretch:normal;font-size:13px;line-heigh=
+t:normal;font-family:&quot;Helvetica Neue&quot;">Please give me your insigh=
+ts on how I can fix this.</p><p class=3D"gmail-p1" style=3D"margin:0px;font=
+-variant-numeric:normal;font-variant-east-asian:normal;font-variant-alterna=
+tes:normal;font-kerning:auto;font-feature-settings:normal;font-stretch:norm=
+al;font-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;=
+"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helveti=
+ca Neue&quot;">Some of my code for your reference:<span class=3D"gmail-Appl=
+e-converted-space">=C2=A0</span></p><p class=3D"gmail-p2" style=3D"margin:0=
+px;font:13px &quot;Helvetica Neue&quot;;min-height:15px"><br></p><p class=
+=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">My =
+startup code :<span class=3D"gmail-Apple-converted-space">=C2=A0</span></p>=
+<p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&qu=
+ot;">.syntax unified</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px=
+ &quot;Helvetica Neue&quot;">.thumb</p><p class=3D"gmail-p2" style=3D"margi=
+n:0px;font:13px &quot;Helvetica Neue&quot;;min-height:15px"><br></p><p clas=
+s=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">.s=
+ection .isr_vector<span class=3D"gmail-Apple-converted-space">=C2=A0<span c=
+lass=3D"gmail-Apple-tab-span" style=3D"white-space:pre">	</span></span></p>=
+<p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&qu=
+ot;"><span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>.long=
+<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>__StackTop=
+<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0</span></p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Hel=
+vetica Neue&quot;"><span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=
+=A0 </span>.long<span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 <=
+/span>Reset_Handler<span class=3D"gmail-Apple-converted-space">=C2=A0</span=
+></p><p class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Ne=
+ue&quot;;min-height:15px"><br></p><p class=3D"gmail-p2" style=3D"margin:0px=
+;font:13px &quot;Helvetica Neue&quot;;min-height:15px"><span class=3D"gmail=
+-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0</span></p><p cla=
+ss=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">.=
+text</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica=
+ Neue&quot;">.type helper,function</p><p class=3D"gmail-p1" style=3D"margin=
+:0px;font:13px &quot;Helvetica Neue&quot;">.global helper</p><p class=3D"gm=
+ail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">helper :<=
+/p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue=
+&quot;"><span class=3D"gmail-Apple-converted-space">=C2=A0=C2=A0 </span>ldr=
+ <span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>R0, =3D m=
+ain</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica =
+Neue&quot;"><span class=3D"gmail-Apple-converted-space">=C2=A0=C2=A0 </span=
+>blx <span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>R0</p=
+><p class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue&q=
+uot;;min-height:15px"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;fon=
+t:13px &quot;Helvetica Neue&quot;">.type Reset_Handler, function</p><p clas=
+s=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">.g=
+lobal Reset_Handler</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px =
+&quot;Helvetica Neue&quot;">Reset_Handler: <span class=3D"gmail-Apple-conve=
+rted-space">=C2=A0</span></p><p class=3D"gmail-p1" style=3D"margin:0px;font=
+:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-converted-spac=
+e">=C2=A0 =C2=A0 </span>blx <span class=3D"gmail-Apple-converted-space">=C2=
+=A0 =C2=A0 </span>helper</p><p class=3D"gmail-p1" style=3D"margin:0px;font:=
+13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-converted-space=
+">=C2=A0 =C2=A0 </span>bx<span class=3D"gmail-Apple-converted-space">=C2=A0=
+ =C2=A0 =C2=A0 </span>lr</p><p class=3D"gmail-p2" style=3D"margin:0px;font:=
+13px &quot;Helvetica Neue&quot;;min-height:15px"><br></p><p class=3D"gmail-=
+p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;;min-height:15p=
+x"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvet=
+ica Neue&quot;">( Like you mentioned=C2=A0 previously , In the .isr_vector =
+section I tried making<span class=3D"gmail-Apple-converted-space">=C2=A0 </=
+span>the other exception handlers<span class=3D"gmail-Apple-converted-space=
+">=C2=A0 </span>point to branch-to-self instructions=C2=A0but that gives me=
+ the same error )<span class=3D"gmail-Apple-converted-space">=C2=A0</span><=
+/p><p class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue=
+&quot;;min-height:15px"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;f=
+ont:13px &quot;Helvetica Neue&quot;">My linker code :<span class=3D"gmail-A=
+pple-converted-space">=C2=A0</span></p><p class=3D"gmail-p2" style=3D"margi=
+n:0px;font:13px &quot;Helvetica Neue&quot;;min-height:15px"><br></p><p clas=
+s=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">/*=
+ Linker script to configure memory regions. */</p><p class=3D"gmail-p1" sty=
+le=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">MEMORY</p><p class=
+=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">{</=
+p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&=
+quot;"><span class=3D"gmail-Apple-converted-space">=C2=A0=C2=A0 </span>NS_C=
+ODE (rx) <span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 </span>:=
+ ORIGIN =3D 0x00000000, LENGTH =3D 512K</p><p class=3D"gmail-p1" style=3D"m=
+argin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-=
+converted-space">=C2=A0=C2=A0 </span>S_CODE_BOOT (rx) : ORIGIN =3D 0x100000=
+00, LENGTH =3D 512K</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px =
+&quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-converted-space">=C2=
+=A0=C2=A0 </span>RAM <span class=3D"gmail-Apple-converted-space">=C2=A0 </s=
+pan>(rwx) : ORIGIN =3D 0x20000000, LENGTH =3D 512K</p><p class=3D"gmail-p1"=
+ style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;">}</p><p class=3D=
+"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;;min-hei=
+ght:15px"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot=
+;Helvetica Neue&quot;">/* Entry Point */</p><p class=3D"gmail-p1" style=3D"=
+margin:0px;font:13px &quot;Helvetica Neue&quot;">ENTRY(Reset_Handler)</p><p=
+ class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot=
+;;min-height:15px"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font:1=
+3px &quot;Helvetica Neue&quot;">SECTIONS</p><p class=3D"gmail-p1" style=3D"=
+margin:0px;font:13px &quot;Helvetica Neue&quot;">{</p><p class=3D"gmail-p1"=
+ style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"g=
+mail-Apple-converted-space">=C2=A0 =C2=A0 </span>.text :<span class=3D"gmai=
+l-Apple-converted-space">=C2=A0</span></p><p class=3D"gmail-p1" style=3D"ma=
+rgin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-c=
+onverted-space">=C2=A0 =C2=A0 </span>{</p><p class=3D"gmail-p1" style=3D"ma=
+rgin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-c=
+onverted-space">=C2=A0 =C2=A0 =C2=A0 =C2=A0 </span>KEEP(*(.isr_vector))</p>=
+<p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Helvetica Neue&qu=
+ot;"><span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 </span>*(.text)</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px =
+&quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-converted-space">=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 </span>*(.data)</p><p class=3D"gmail-p1" style=3D"=
+margin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple=
+-converted-space">=C2=A0 =C2=A0 <span class=3D"gmail-Apple-tab-span" style=
+=3D"white-space:pre">	</span></span>*(.bss)<span class=3D"gmail-Apple-conve=
+rted-space">=C2=A0</span></p><p class=3D"gmail-p1" style=3D"margin:0px;font=
+:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-Apple-converted-spac=
+e">=C2=A0 =C2=A0 </span>} &gt; S_CODE_BOOT</p><p class=3D"gmail-p1" style=
+=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;"><span class=3D"gmail-A=
+pple-converted-space">=C2=A0 =C2=A0 </span>/* Set stack top to end of S_COD=
+E_BOOT. */</p><p class=3D"gmail-p1" style=3D"margin:0px;font:13px &quot;Hel=
+vetica Neue&quot;"><span class=3D"gmail-Apple-converted-space">=C2=A0 =C2=
+=A0 </span>__StackTop =3D ORIGIN(S_CODE_BOOT) + LENGTH(S_CODE_BOOT);</p><p =
+class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;Helvetica Neue&quot;=
+;min-height:15px"><span class=3D"gmail-Apple-converted-space">=C2=A0=C2=A0 =
+=C2=A0</span></p><p class=3D"gmail-p2" style=3D"margin:0px;font:13px &quot;=
+Helvetica Neue&quot;;min-height:15px"><br></p><p class=3D"gmail-p1" style=
+=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian:normal;f=
+ont-variant-alternates:normal;font-kerning:auto;font-feature-settings:norma=
+l;font-stretch:normal;font-size:13px;line-height:normal;font-family:&quot;H=
+elvetica Neue&quot;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;f=
+ont-variant-east-asian:normal;font-variant-alternates:normal;font-kerning:a=
+uto;font-feature-settings:normal;font-stretch:normal;font-size:13px;line-he=
+ight:normal;font-family:&quot;Helvetica Neue&quot;">}</p><p class=3D"gmail-=
+p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asian=
+:normal;font-variant-alternates:normal;font-kerning:auto;font-feature-setti=
+ngs:normal;font-stretch:normal;font-size:13px;line-height:normal;font-famil=
+y:&quot;Helvetica Neue&quot;"><br></p><p class=3D"gmail-p1" style=3D"margin=
+:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-varian=
+t-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-str=
+etch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica N=
+eue&quot;">kernel.list file :</p><p class=3D"gmail-p1" style=3D"margin:0px;=
+font-variant-numeric:normal;font-variant-east-asian:normal;font-variant-alt=
+ernates:normal;font-kerning:auto;font-feature-settings:normal;font-stretch:=
+normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica Neue&q=
+uot;"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeri=
+c:normal;font-variant-east-asian:normal;font-variant-alternates:normal;font=
+-kerning:auto;font-feature-settings:normal;font-stretch:normal;font-size:13=
+px;line-height:normal;font-family:&quot;Helvetica Neue&quot;">kernel.elf: =
+=C2=A0 =C2=A0 file format elf32-littlearm<br><br><br>Disassembly of section=
+ .text:<br><br>10000000 &lt;helper-0x8&gt;:<br>10000000:	10080000 	.word	0x=
+10080000<br>10000004:	1000000d 	.word	0x1000000d<br><br>10000008 &lt;helper=
+&gt;:<br>10000008:	4802 =C2=A0 =C2=A0 =C2=A0	ldr	r0, [pc, #8]	@ (10000014 &=
+lt;Reset_Handler+0x8&gt;)<br>1000000a:	4780 =C2=A0 =C2=A0 =C2=A0	blx	r0<br>=
+<br>1000000c &lt;Reset_Handler&gt;:<br>1000000c:	f7ff fffc 	bl	10000008 &lt=
+;helper&gt;<br>10000010:	4770 =C2=A0 =C2=A0 =C2=A0	bx	lr<br>10000012:	0000 =
+=C2=A0 =C2=A0 =C2=A0	.short	0x0000<br>10000014:	10000019 	.word	0x10000019<=
+br><br>10000018 &lt;main&gt;:<br>10000018:	b480 =C2=A0 =C2=A0 =C2=A0	push	{=
+r7}<br>1000001a:	af00 =C2=A0 =C2=A0 =C2=A0	add	r7, sp, #0<br>1000001c:	e7fe=
+ =C2=A0 =C2=A0 =C2=A0	b.n	1000001c &lt;main+0x4&gt;<br></p><p class=3D"gmai=
+l-p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asi=
+an:normal;font-variant-alternates:normal;font-kerning:auto;font-feature-set=
+tings:normal;font-stretch:normal;font-size:13px;line-height:normal;font-fam=
+ily:&quot;Helvetica Neue&quot;"><br></p><p class=3D"gmail-p1" style=3D"marg=
+in:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-vari=
+ant-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-s=
+tretch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica=
+ Neue&quot;"><br></p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant=
+-numeric:normal;font-variant-east-asian:normal;font-variant-alternates:norm=
+al;font-kerning:auto;font-feature-settings:normal;font-stretch:normal;font-=
+size:13px;line-height:normal;font-family:&quot;Helvetica Neue&quot;"><br></=
+p><pre style=3D"border:0px solid rgb(217,217,227);box-sizing:border-box;fon=
+t-size:0.875em;margin-top:0px;margin-bottom:0px;background-color:transparen=
+t;border-radius:0.375rem;color:currentcolor;line-height:1.71429;overflow-x:=
+auto;padding:0px;font-family:&quot;S\0000f6hne Mono&quot;,Monaco,&quot;Anda=
+le Mono&quot;,&quot;Ubuntu Mono&quot;,monospace"><div class=3D"gmail-dark g=
+mail-bg-black gmail-rounded-md" style=3D"border:0px solid rgb(217,217,227);=
+box-sizing:border-box;border-radius:0.375rem"><div class=3D"gmail-flex gmai=
+l-items-center gmail-relative gmail-text-token-text-secondary gmail-bg-toke=
+n-surface-primary gmail-px-4 gmail-py-2 gmail-text-xs gmail-font-sans gmail=
+-justify-between gmail-rounded-t-md" style=3D"border:0px solid rgb(217,217,=
+227);box-sizing:border-box;display:flex;border-top-left-radius:0.375rem;bor=
+der-top-right-radius:0.375rem;padding:0.5rem 1rem;font-family:S=C3=B6hne,ui=
+-sans-serif,system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,Ubuntu,Cant=
+arell,&quot;Noto Sans&quot;,sans-serif,&quot;Helvetica Neue&quot;,Arial,&qu=
+ot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,&quot;Segoe UI Symbol=
+&quot;,&quot;Noto Color Emoji&quot;;font-size:0.75rem;line-height:1rem"><sp=
+an class=3D"gmail-" style=3D"border:0px solid rgb(217,217,227);box-sizing:b=
+order-box;color:rgb(197,197,210)"><br class=3D"gmail-Apple-interchange-newl=
+ine"></span></div></div></pre></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Thu, 18 Jan 2024 at 15:34, Peter Maydell &=
+lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On T=
+hu, 18 Jan 2024 at 06:30, sanjana gogte &lt;<a href=3D"mailto:sanj27272@gma=
+il.com" target=3D"_blank">sanj27272@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hi,<br>
+&gt; 1) I am using QEMU Version 7.1.0. I am currently using this version wi=
+th a plan to connect the remote port from Xilinx to the mps2an505 board. Th=
+e decision to use this specific version is heavily influenced by the fact t=
+hat it is the same version utilized by Xilinx&#39;s QEMU.<br>
+&gt;<br>
+&gt; 2) Debug Logs :<br>
+&gt; guest_errors:<br>
+&gt;<br>
+&gt; Invalid read at addr 0x10000000, size 4, region &#39;(null)&#39;, reas=
+on: rejected<br>
+&gt; Invalid read at addr 0x10000004, size 4, region &#39;(null)&#39;, reas=
+on: rejected<br>
+&gt; Invalid read at addr 0x10800000, size 2, region &#39;(null)&#39;, reas=
+on: rejected<br>
+&gt; qemu: fatal: Lockup: can&#39;t escalate 3 to HardFault (current priori=
+ty -1)<br>
+&gt;<br>
+&gt; in_asm:<br>
+<br>
+&gt;<br>
+&gt; IN:<br>
+&gt; 0x10000008:<br>
+&gt; OBJD-T: 00480047<br>
+<br>
+Whoever built your QEMU didn&#39;t do it with libcapstone-dev<br>
+installed, so the debug logs have only binary dumps of<br>
+instructions, not the actual instructions, which is a pity<br>
+(--enable-capstone will force configure to either find the<br>
+necessary library or else give you an error message.)<br>
+<br>
+Also, I did not mean &quot;do logs of every -d option separately&quot;,<br>
+I meant &quot;do a single log, with -d<br>
+in_asm,exec,cpu,int,cpu_reset,unimp,guest_errors,nochain&quot;<br>
+That way you get the different bits of logging in their<br>
+correct sequence relative to each other.<br>
+<br>
+Luckily, this bit is enough to figure out what&#39;s going on:<br>
+<br>
+&gt; Loaded reset SP 0x0 PC 0x0 from vector table<br>
+&gt; Loaded reset SP 0x10080000 PC 0x10000008 from vector table<br>
+<br>
+We load the PC from the vector table, but it does not<br>
+have the low bit set, which is not correct. (All entries<br>
+in the vector table must be function pointers in the<br>
+usual Thumb convention, where the lowest bit is set to<br>
+indicate Thumb mode and clear to indicate Arm mode.)<br>
+This means that we will start without the Thumb T bit set...<br>
+<br>
+&gt; Taking exception 18 [v7M INVSTATE UsageFault] on CPU 0<br>
+<br>
+...which on M-profile means we immediately take a fault trying<br>
+to execute the first instruction...<br>
+<br>
+&gt; ...taking pending secure exception 3<br>
+&gt; ...loading from element 3 of secure vector table at 0x1000000c<br>
+&gt; ...loaded new PC 0x10000011<br>
+<br>
+...but because your vector table includes no entry for<br>
+the hardfault vector, we instead load a PC value which<br>
+doesn&#39;t point anywhere useful...<br>
+<br>
+&gt; Taking exception 3 [Prefetch Abort] on CPU 0<br>
+&gt; ...at fault address 0x10800000<br>
+&gt; ...with CFSR.IBUSERR<br>
+&gt; qemu: fatal: Lockup: can&#39;t escalate 3 to HardFault (current priori=
+ty -1)<br>
+<br>
+...and eventually we execute off the end of the ROM memory,<br>
+and then take a bus fault on the instruction fetch. This<br>
+is a Lockup because we were already in a HardFault handler<br>
+when we took this fault.<br>
+<br>
+&gt; 3) You said the vector table is too small so I tried something like th=
+is from your reference files but it gives me the same error:<br>
+&gt;<br>
+&gt; Boot.s ( Startup file )<br>
+&gt;<br>
+&gt; .thumb<br>
+&gt; .syntax unified<br>
+&gt;<br>
+&gt; .section .isr_vector<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.long __StackTop<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.long Reset_Handler<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+<br>
+Zeroes here aren&#39;t very helpful because the CPU will try<br>
+to jump to address 0 (and then immediately take another<br>
+fault because the Thumb bit isn&#39;t set, which will be<br>
+a Lockup condition again). If you at least make them point to<br>
+branch-to-self instructions it&#39;ll be a bit clearer when<br>
+you take an exception you weren&#39;t expecting, because in<br>
+the debugger you&#39;ll see execution looping at that insn.<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.rept 7<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.endr<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.rept 32<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.word 0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0.endr<br>
+&gt;<br>
+&gt;<br>
+&gt; .text<br>
+&gt; .global Reset_Handler<br>
+&gt; Reset_Handler:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0ldr=C2=A0 =C2=A0 =C2=A0R0, =3D main<br>
+&gt;=C2=A0 =C2=A0 =C2=A0bx=C2=A0 =C2=A0 =C2=A0 R0<br>
+<br>
+But really your problem is here. You haven&#39;t told the assembler<br>
+that &quot;Reset_Handler&quot; is a function entry point, and so it treats<=
+br>
+it like a data label. That means that the least significant bit<br>
+is not set when you reference it in the vector table.<br>
+<br>
+Something like this will do what you want:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .type Reset_Handler, function<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .global Reset_Handler<br>
+Reset_Handler:<br>
+<br>
+PS: a hint for later: your code here does not do anything<br>
+to enable the FPU before it jumps into C code. If your<br>
+C compiler is generating code to use the FPU this will<br>
+mean it will take an exception. So either make sure the<br>
+C compiler is configured not to use the FPU, or else enable<br>
+the FPU first.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--0000000000000d325f061024fefb--

@@ -1,300 +1,149 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp612002ejk;
-        Mon, 29 Jan 2024 21:19:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGcUXnijVpcP8b1BJs//opDjOUUtSJBt/E/eBIvJupiNRFIM8llmKQJbifCr8qqSORImI01
-X-Received: by 2002:a05:6214:cc5:b0:68c:475c:ea25 with SMTP id 5-20020a0562140cc500b0068c475cea25mr6475617qvx.45.1706591948474;
-        Mon, 29 Jan 2024 21:19:08 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706591948; cv=pass;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp662392ejk;
+        Mon, 29 Jan 2024 23:51:28 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEffMULFGmzwZcCKhnto/wiLEZCUF557Ows/njFIRKDM92M3w+mfmfayuUDRfFvPW5h/aqW
+X-Received: by 2002:a17:902:e5cf:b0:1d5:8aa5:d782 with SMTP id u15-20020a170902e5cf00b001d58aa5d782mr9331566plf.6.1706601088520;
+        Mon, 29 Jan 2024 23:51:28 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706601088; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WNKj5eJ/lKF2P4QSn9hNSHyYqGny7XkGEgyE01QcknKZW/kbTnC1tLsk66eTmKcnOq
-         1lzpEjA/x9FW9yTnYYB9eheakbcREophP7993h5ZNWZR37pHfD2CmmmPGiMeXqqoqo4Z
-         3wLz6aQRdeSlYj3tvfGvlL190LSbrppT8TnO0KUf3T1MXrtsJNzFN3vRURJqBt/jqnI8
-         qOy0h4EAZsyGzsZ1VCMPghdAZ9lcmPgChFSbS3LDesTqRjX+xY+4NBS4fPQqaHjzLhkP
-         yb/RmGSlfUXLoAc08b9Dw7DPKc1cu/7KE8Lr3c7DTK66JxzSARxGRm486WUqwnldV03k
-         kqDA==
+        b=HmscgTYPmh7BY4NAZuCc1v94YVfsh4MapjpyAAu+ndFK9dTiLR7QdsnEOCn+5uGLzc
+         e+zo7HzgnwACydZqO+MQSf4bHcNG16hoe6CGwRLBP+rXCGYJrYlLm5KxYuN+LJNtg3jj
+         alTsVlInC3eKuv/flfU+mltKiwFODlDuWJqP9M1Ba/WuscOH6D5dj6KiTQdEdoqeowDf
+         KcJRqH5xQnh+2W2iDfWoWOlgKqZdPQfh4NYyahZyhc7iDUemHKEB8FsqcTO4y+b0L35g
+         lUsyUWrw2YHN9+fUpfiFxyOQR986jJZl2XZxPVHN3XCCsWbBnHB/Cd3Q8cWDfK45LKGq
+         +Yyg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from;
-        bh=pRpAR7hOh6XqO5fyg8rR+iNJmCJa3CqbZImjV/4wbBg=;
-        fh=u1eJjUaPrTck4Kcm1pfqY99aQU4NSNKRBlV9QzF0MhY=;
-        b=Zo6238nPGJhliF8xyFmxGKz0SxSFzc2Jyo/pOliyb3GV+GpaTK1uemnEB/uwRQaG2w
-         wwr8UHmD5EGJcCUwaamBn6RaBQnuiVeK244o/rsC99ojjXVNlPInGPODVcxNq7Dv8tVO
-         1kUWmWgFX/Dyvpm9sB5cmCRfYPvfJHAEifdUkDl3yVRcQa9GgnvG7i+cxAvP+oWCIqs6
-         ac2iyVKs+PcGSEuFi/CzunIfrRZNRjGrYUjy8b+/QtvDjSU4EJusjfw3+/Grrx/+AFsx
-         BJm4aKeWXzRZ9ko9OjXfuxxLLzaqD6WttHJ9Crcx1oSdK6ygCDFkllr7kyXbTvzWUtaG
-         WPWg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=JsLkEIfJHXL56e0Gz/0no1vs5VXLmbOPVBqPvukIiU8=;
+        fh=gKDeYTpE3Td8AuKkPwvifCReT2dWqUSnf/YF92lq4I8=;
+        b=uUBX6z+RAftC7PtpWQj9SK+iq3/NupLY1uerg7utWDVuhrnpJmee3w80KwR+gXmygO
+         OtnlTUDOkKPWI72bawsnjlpaz7IgvubRlE77Dv8w+qDpEs1knzE0IKLjamAYks6+BYRk
+         sv5CBAhLLIZNscJ9W7BwFdXYikzctDCKw8gzZCh2GN0pQVOf5gyerVLioWF2jf6tMIy5
+         RHda0S/4WPZLt6w2mgS+HwJJd7jgUAcyCq4yTnHP23oqnDWkmdApQ09wdFGBLTk9HRdi
+         pkDzAVT4nk2Zh0gg2zqdkHR70nuSmeZl8cXtWCAgvu0yaPFGgikHVFxIFBSEwkAoFvSC
+         GLFg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r10-20020a0562140c8a00b0067f906859f3si9361243qvr.427.2024.01.29.21.19.08
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIYduWub;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d6-20020a170902854600b001d7620ed2desi7060694plo.432.2024.01.29.23.51.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jan 2024 21:19:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jan 2024 23:51:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rUgWA-0005ZX-Em; Tue, 30 Jan 2024 00:18:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rUgW8-0005XC-BL; Tue, 30 Jan 2024 00:18:40 -0500
-Received: from mail-bjschn02on20614.outbound.protection.partner.outlook.cn
- ([2406:e500:4440:2::614]
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rUgW4-0004sc-SS; Tue, 30 Jan 2024 00:18:40 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D4UaAOawao/ZYT7NiKZ1SxFXSojt9J60a51UvipQSiWyOx5XE+MP9iPF7rK3hUwp5ERY9pD3iMWhMdMIaLlqeCU75tEOrYuWXhKwSJJopWxrDuyFsOXErUK9OX/qdsfsfWTi9TzpROG8bShvbm8tijJw8zK/joGhtvIx5l5wkh5DyqynC3Nx4O356RCCmeSWgpAnM2qA/15Bx9ewcw3Vxtcyl6CsfJMWPS24QAW7ricJi4cjt4W+93O5eiiGfFy4zDQSX30//j9bSDFE+R5gKRDO6lthRG4Aw/Zmtjp3gKIXmtBkYNzsJYZyT1qLY6O5nHDwwhD5VnDaoI8XzTzm9A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pRpAR7hOh6XqO5fyg8rR+iNJmCJa3CqbZImjV/4wbBg=;
- b=gs1+U1ACeUXOGLaBieMAK27QWhES5Y1JodiUvWRt0u6jovzg+qIsM7KjU59a+oVmL+7Ogsi9xcDjPDZXfZ9a+czDoT8kMzMwm6WtZQprSKo0bISyLU6ul7zkImClTUr4/vLjVT5ZVcu+LTli6DWtOYdfY0ZB8fXapqFX3WcH2StgpTEzLFFpVSdweAZjaJhwhpr+SY2Fhxyh8vsPVYah0dHNAi4J3zHRIW8PQh/wqvmBDDTl7D1ROj/jnI14C58NlHG90aAPuCAv86z2E547yQPGVuQVesfgfDHTdZpe9GxGo5fWAG1lSla2/rEjMI27Js7pcrUidbRJtF+clm/1lA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:f::16) by BJSPR01MB0657.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:1d::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.31; Tue, 30 Jan
- 2024 05:03:16 +0000
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- ([fe80::3862:65b4:c857:c4a6]) by
- BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::3862:65b4:c857:c4a6%4])
- with mapi id 15.20.7228.029; Tue, 30 Jan 2024 05:03:15 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sunilvl@ventanamicro.com" <sunilvl@ventanamicro.com>, "palmer@dabbelt.com"
- <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
- <liwei1518@gmail.com>, "dbarboza@ventanamicro.com"
- <dbarboza@ventanamicro.com>, "zhiwei_liu@linux.alibaba.com"
- <zhiwei_liu@linux.alibaba.com>
-Subject: RE: [RFC v1 3/3] hw/arm/virt-acpi-build.c: Enable CPU cache topology
-Thread-Topic: [RFC v1 3/3] hw/arm/virt-acpi-build.c: Enable CPU cache topology
-Thread-Index: AQHaUotAR3phIJDYW0aSb65J9lLXcrDwodyAgAEru/A=
-Date: Tue, 30 Jan 2024 05:03:15 +0000
-Message-ID: <BJSPR01MB056164DC332463349ACD6F3A9C7DA@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
-References: <20240129081423.116615-1-jeeheng.sia@starfivetech.com>
- <20240129081423.116615-4-jeeheng.sia@starfivetech.com>
- <20240129110823.000076df@Huawei.com>
-In-Reply-To: <20240129110823.000076df@Huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BJSPR01MB0561:EE_|BJSPR01MB0657:EE_
-x-ms-office365-filtering-correlation-id: c95f9798-0f77-4a22-ee65-08dc2150c449
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 4wCqZRO9Sky4I+8VYqgwlopHT/iBKUayiz8S/ELBOLZo0xgP3BiG/Tbz6Q2fmp6GgXdDGRxooHS5P5GDXCg9MrIv9QjkzeUKFycxe5dYHC3VfCDTA9lHBhKKexwjzP9gQ66yCmlsY9bcfX8fJLsvViowyPlr5RQKI65ziKza7BwH0Gb3qDmoHE1T41rDui1k4As77yZdWcStJifdZ26acvy02/3cRB4NLUxCvjpGTtuoWZKzgQKKa2U4G5Ex8ylG8Uqpr8WJS17+YiGjpvM5aJ8psxkPJHYE8jAwhfVoPoh9CGwqozr63RvGYtguEFR0RjSvRkYWp1lWy/LIl9rm/Mews1ODTYug9rpBunOn49n04cf3FcuFDEiGPXlsDtQqusGrbL4HuWc06Ltl+km0yqT/VcvX1R4J/BkwismrmD7o2IPqFgE+W9E72P9ypyobSmIS3v9rt2nQRNnYg0fskoyIbz5MG0s6w/0+kxQfz6qENJoKxn1yoNa0pHnTsvHIKoQKih9/V+l6gubImYIvafY3joqaiTG8ds2S4Izusw4OwRwpvJdNCmBbpzrcQrgA
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(396003)(136003)(346002)(39830400003)(366004)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(38070700009)(41300700001)(2906002)(40180700001)(5660300002)(7416002)(33656002)(41320700001)(66476007)(8936002)(66556008)(66946007)(64756008)(966005)(66446008)(54906003)(6916009)(76116006)(86362001)(9686003)(83380400001)(40160700002)(55016003)(71200400001)(508600001)(53546011)(7696005)(4326008)(8676002)(38100700002)(122000001)(26005);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?yoScppQQP2whPoaJlSnj93+R4IHaNRcP7NFphBhYGzXk5dCunLDOVCKYfSRm?=
- =?us-ascii?Q?El/0HsuGQ6vO3acy7yKA/Q+UqclHzrASeJF1OL4/fviXOx+H7in/ENHnc656?=
- =?us-ascii?Q?akO0vmBRaOGzRg5tyhLk8IqTo6voKBYZ6iB4rSQ0pfKz7Alzn/4+bJ5e9OY4?=
- =?us-ascii?Q?+ZETc4Ep/bA8D/8SP6kKsRmDfvc/wL7EdKIT9jXddbPyxfzB2fq/ZkctkomR?=
- =?us-ascii?Q?GohkJQ7H/gm+1JEmN+zSXPWlsE4shlkAIC/i7CQV3/fWKVD5HV5kQfKPtOJY?=
- =?us-ascii?Q?BsGMJ9wx8sKdqF5h9Kp/48+9A8NyIQLV+8WKzu3oz0EssgyAPC6vgoH0eFPR?=
- =?us-ascii?Q?NeSABcIfc3mmo9XWMCtiUsEE3CqL7W/xSD68VPHETPZowtaLsUsI6QVL2Jny?=
- =?us-ascii?Q?cWNeIs+XUg5VicAnavJErm+oqcdxNIowi0Sa7L3oYWgr362X7yCtI8tOrZ/l?=
- =?us-ascii?Q?8vJzuTfh1osaAdbeeXMMVgZ9Ak8HVdT9lmMcsM+ZAtaDOmIXfkEM/rGd2STz?=
- =?us-ascii?Q?Lbl0n2ItccUyJtSaS8MppiDxih0Kq5FM7DYl7SM9a0/Rr/0WPHXagdIUTb2F?=
- =?us-ascii?Q?iMQ2/URIgkggjN01s+h9uQAWo4UdML+yCJR9aHZq/VaUrBynpw7+TqWyO8qw?=
- =?us-ascii?Q?aM9UXwamTpyA026Pcb3BGTIRzD6+kS1hjzs2s03wWmhcjG2jxWdlfTK3BEtw?=
- =?us-ascii?Q?QDddePVPMXPc5U4pvI3AuGZODzq7Srchfp07MVT3vW8eJJIYQFxfJrocC0dW?=
- =?us-ascii?Q?CDRPp/qYnALGaRym8gSBipUvOQ40G4UANkFu+gfANkUNgm85I0kz/Z4VQYoM?=
- =?us-ascii?Q?2IVLEICYY0HS2HMJtLWDLjRJnKiIc0zTDbKP07lYB9hBi7D8Vb0Znsvf3TL5?=
- =?us-ascii?Q?SAhyesW8Mc9yAfd5H7+aCsF9UQakpNDuPVKXvXIyPZnhQxNhfuRlzkJRrJ4x?=
- =?us-ascii?Q?jNRzHJ+CAaCdrQbT06RS4y2LuZVLEtERclAe+l/EF5wGSKEFufsPRrFMyo7u?=
- =?us-ascii?Q?ekJsYN7DylcOQfPUgMsUAPg7AzP11UetkaJk+/57gh7lhlwWE8GX0InEBF31?=
- =?us-ascii?Q?Cx997gb5muKIifX+Wh9Le5UDLRz7Zym2RZ916HFXqCx+20U0soZIVNjV9AcD?=
- =?us-ascii?Q?uCfD2CS2syNVHIw8Hqy1P2vqXTPoOwX8nFKxK4J9O6ZnDKEGMNrcU6e2KYD0?=
- =?us-ascii?Q?hv4menot1xTMy5MzPa6K9triZDUNTbad2hR9+XgiZh0VskYB9BXxTMzaDTqa?=
- =?us-ascii?Q?OwDA6Ezfa7/AY4yrjaW1vJXCQBs3thU/3YEKYNc3T7W6tQrPgjFUqQnBFNIN?=
- =?us-ascii?Q?ZUJvZmsb910Jzkk4xIkVj96XTzbBYD+zigft1TsVrjIA9Z9qT2hpZhLy1Wt4?=
- =?us-ascii?Q?MQj+MfsAhrQQlOtYmHtXKRI/PMn/JqOjODNvByziLJUf7Ad69QzOX6QZXsFZ?=
- =?us-ascii?Q?yX6KQxbSW74o2tD55fzpHslVyw7M84l7p5N3DTI9DtU/dbSl3ThEw5//6L9R?=
- =?us-ascii?Q?//+NvQOHFGeek6SETnI3wOTcY7891IAoaUDplmNiX5d1Mw1tvd3r/1foQb5d?=
- =?us-ascii?Q?H/HK0PYonDF5lat/Eoigak/o+Czyidwa8qzlr3N00MeTG/53pQKwlThzDUy/?=
- =?us-ascii?Q?jw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIYduWub;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-7431-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 00BC22887BF
+	for <alex.bennee@linaro.org>; Tue, 30 Jan 2024 07:51:28 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E0A5C53E05;
+	Tue, 30 Jan 2024 07:51:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="bIYduWub"
+Received: from mail-lf1-f46.google.com (mail-lf1-f46.google.com [209.85.167.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3A2E5380F
+	for <kvm@vger.kernel.org>; Tue, 30 Jan 2024 07:51:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.46
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1706601084; cv=none; b=Db+Re/5m/6QnpubT5pONeEbm/9jQkATXwAAYbaMDcgt7qoNT/y6An68oAcA9qkWcW/Qi7jYTVZbdOdkSBfp2RX0jv4tKmbt/NmWw/C5wRjZZA3dgxsxF9la9RIJMeO5rBs44esxy/IHeKuNhBQAg3zJzwIt49yzcl3YFglZbncs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1706601084; c=relaxed/simple;
+	bh=swDMFpY+FHUjENwEXtHrZsjW2RnneppcoDYj9BE9mtw=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=hCvV0H3giNd2gLgcog5mRgZg7K2nxDMLXK2XyHukTTFLiL1NNprW1cRXii05f2pV7ZjBbGMZEbkPyMze6XCEgSGh/BC9T4pt7yOK8lFZtsOXV3OQGSIzgojAsDhoh5p2EZ+rlRsq9rBh8s1/EPy2eT49A5RvgM9OFEIuG7RaNCc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=bIYduWub; arc=none smtp.client-ip=209.85.167.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5111c9e48e8so339895e87.3
+        for <kvm@vger.kernel.org>; Mon, 29 Jan 2024 23:51:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1706601081; x=1707205881; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=JsLkEIfJHXL56e0Gz/0no1vs5VXLmbOPVBqPvukIiU8=;
+        b=bIYduWubBYWn7ga3HdW1rRn/+xK7ZQ/lWrUbw+A7VlumgI687NBF9au7e7tODEypzp
+         I9/Yy3BfL/5Bktil0shwroxIE3Oy+2YCALrgmn/7E5L0xtDUWZWJSso/QEkgF047A7Tq
+         8dMmpJYWJ9IRFldmQw5u3Hmk9PoEAOr+rIo3UuHVoS3wvTe9Oop+U7+sB6TLFYadcRi7
+         SlxYtGpZTcDevZy8lBOwcxplYgsG8yrfGbec9v+o/JHL6bCJlFMZJi+dws0NhruGFz1z
+         ipYVmR0jPGVy8DT1yH7uuvV4ctEuoMo71ubV9yWaxay8Xe1ffkLmXCdU/hQwJzEstsdc
+         KtUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706601081; x=1707205881;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=JsLkEIfJHXL56e0Gz/0no1vs5VXLmbOPVBqPvukIiU8=;
+        b=Iu8isV981e9K9w6Eh4a02ZAbtkS9fvN5r9paO28gozVht/1kanoOt8V6vA9qj489q0
+         9nkPoCnviHP4fc5WzL5oZrmSws3eG5RSxXBkYdkxUtDI7ssb1k4eOzPEosebd3s7ULy6
+         oXOPL2GERi3619Yr6SacFY6dFUBZ8xZep6gORNDxVV5lJvUnPaCI5DJMN534f85n+ZVj
+         INgyfiy39sIBcYppMiHQLBDPAY9SspbG1CIp1f3924V1v4+mGmozsQl3yR6u6ifYLcxd
+         QGSx4/g9ZEzjbfCOkl27R8yDmHG7hqgTUOi2zRtQweq2vESMNwMmOmzaCWJ1s6anwKJW
+         al5A==
+X-Gm-Message-State: AOJu0YwaP23gSgXYI92Xal7sDKgYIkXe1bSHBAlGMOYU1V+ZPbu3ILmL
+	J0XqwcwV5xOoZj7MriSUL2KyekBDNCKsoqf8KO0fAM0brRukV2IHg1K58Rrh6NA=
+X-Received: by 2002:a05:6512:11c7:b0:511:1ed7:61b9 with SMTP id h7-20020a05651211c700b005111ed761b9mr278683lfr.39.1706601080891;
+        Mon, 29 Jan 2024 23:51:20 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.218.134])
+        by smtp.gmail.com with ESMTPSA id eo6-20020a056000428600b0033af5086c2dsm2570237wrb.58.2024.01.29.23.51.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Jan 2024 23:51:20 -0800 (PST)
+Message-ID: <ecf81b39-0b2a-44be-a496-18557316b9b9@linaro.org>
+Date: Tue, 30 Jan 2024 08:51:18 +0100
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: c95f9798-0f77-4a22-ee65-08dc2150c449
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jan 2024 05:03:15.3420 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: fbLOeLf0o8EoTaMNVztEwnoRVrtqoEbITSQ0ydh83EuIy5QvBmdiQuFvjUx207t0QtTF3iIk2cr7pvqqyRnqJBIDMUlVsmJgWAaVwg2m9Ng=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0657
-Received-SPF: pass client-ip=2406:e500:4440:2::614;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m/RDu68PidLC
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 26/29] target/sparc: Prefer fast cpu_env() over slower
+ CPU QOM cast macro
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20240129164514.73104-1-philmd@linaro.org>
+ <20240129164514.73104-27-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240129164514.73104-27-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 6UZrpgNMq4xO
 
+On 29/1/24 17:45, Philippe Mathieu-Daudé wrote:
+> Mechanical patch produced running the command documented
+> in scripts/coccinelle/cpu_env.cocci_template header.
+> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/sparc/cpu.c          | 17 +++++------------
+>   target/sparc/gdbstub.c      |  3 +--
+>   target/sparc/int32_helper.c |  3 +--
+>   target/sparc/int64_helper.c |  3 +--
+>   target/sparc/ldst_helper.c  |  6 ++----
+>   target/sparc/mmu_helper.c   | 15 +++++----------
+>   target/sparc/translate.c    |  9 +++------
+>   7 files changed, 18 insertions(+), 38 deletions(-)
 
+Per v2:
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-> -----Original Message-----
-> From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-> Sent: Monday, January 29, 2024 7:08 PM
-> To: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; qemu-riscv@nongnu.org; ms=
-t@redhat.com; imammedo@redhat.com;
-> anisinha@redhat.com; shannon.zhaosl@gmail.com; peter.maydell@linaro.org; =
-sunilvl@ventanamicro.com; palmer@dabbelt.com;
-> alistair.francis@wdc.com; bin.meng@windriver.com; liwei1518@gmail.com; db=
-arboza@ventanamicro.com;
-> zhiwei_liu@linux.alibaba.com
-> Subject: Re: [RFC v1 3/3] hw/arm/virt-acpi-build.c: Enable CPU cache topo=
-logy
->=20
-> On Mon, 29 Jan 2024 00:14:23 -0800
-> Sia Jee Heng <jeeheng.sia@starfivetech.com> wrote:
->=20
-> > Introduced a 3-layer cache for the ARM virtual machine.
-> >
-> > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
->=20
-> There are a bunch of CPU registers that also need updating to reflect the
-> described cache.
-> https://lore.kernel.org/qemu-devel/20230808115713.2613-3-Jonathan.Cameron=
-@huawei.com/
-> It's called HACK for a reason ;)
-> But there is some discussion about this issue in the thread.
->=20
-> The l1 etc also needs to reflect the CPU model.  This stuff needs to matc=
-h.
-> Wrong information being passed to a VM is probably worse than no informat=
-ion.
->=20
-> Whilst I plan to circle back to the MPAM support (perhaps next month) the=
-re
-> is a lot more to be done here before we have useful cache descriptions fo=
-r
-> guests.
-Thanks for the info. I will spend time to look into.
->=20
-> Jonathan
->=20
-> > ---
-> >  hw/arm/virt-acpi-build.c | 44 +++++++++++++++++++++++++++++++++++++++-
-> >  1 file changed, 43 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 17aeec7a6f..c57067cd63 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -426,6 +426,48 @@ build_iort(GArray *table_data, BIOSLinker *linker,=
- VirtMachineState *vms)
-> >      g_array_free(its_idmaps, true);
-> >  }
-> >
-> > +static void pptt_setup(GArray *table_data, BIOSLinker *linker, Machine=
-State *ms,
-> > +                       const char *oem_id, const char *oem_table_id)
-> > +{
-> > +    CPUCaches default_cache_info =3D {
-> > +        .l1d_cache =3D &(CPUCacheInfo) {
-> > +            .type =3D DATA_CACHE,
-> > +            .size =3D 64 * KiB,
-> > +            .line_size =3D 64,
-> > +            .associativity =3D 4,
-> > +            .sets =3D 256,
-> > +            .attributes =3D 0x02,
-> > +        },
-> > +        .l1i_cache =3D &(CPUCacheInfo) {
-> > +            .type =3D INSTRUCTION_CACHE,
-> > +            .size =3D 64 * KiB,
-> > +            .line_size =3D 64,
-> > +            .associativity =3D 4,
-> > +            .sets =3D 256,
-> > +            .attributes =3D 0x04,
->=20
-> This is the duplication I commented on in patch 1.
-> The bit set there is the one to indicate it's an instruction
-> cache and we have type doing that as well.
-But this gives a great readability, no?
->=20
->=20
-> > +        },
-> > +        .l2_cache =3D &(CPUCacheInfo) {
-> > +            .type =3D UNIFIED_CACHE,
-> > +            .size =3D 2048 * KiB,
-> > +            .line_size =3D 64,
-> > +            .associativity =3D 8,
-> > +            .sets =3D 4096,
-> > +            .attributes =3D 0x0a,
-> > +        },
-> > +        .l3_cache =3D &(CPUCacheInfo) {
-> > +            .type =3D UNIFIED_CACHE,
-> > +            .size =3D 4096 * KiB,
-> > +            .line_size =3D 64,
-> > +            .associativity =3D 8,
-> > +            .sets =3D 8192,
-> > +            .attributes =3D 0x0a,
-> > +        },
-> > +    };
-> > +
-> > +    build_pptt(table_data, linker, ms, oem_id, oem_table_id,
-> > +               &default_cache_info);
-> > +}
-> > +
-> >  /*
-> >   * Serial Port Console Redirection Table (SPCR)
-> >   * Rev: 1.07
-> > @@ -912,7 +954,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBui=
-ldTables *tables)
-> >
-> >      if (!vmc->no_cpu_topology) {
-> >          acpi_add_table(table_offsets, tables_blob);
-> > -        build_pptt(tables_blob, tables->linker, ms,
-> > +        pptt_setup(tables_blob, tables->linker, ms,
-> >                     vms->oem_id, vms->oem_table_id);
-> >      }
-> >
-
+(https://lore.kernel.org/qemu-devel/140c63fc-f99c-41f3-b96c-5f9d88fa82ba@ilande.co.uk/)

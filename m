@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1024291ejk;
-        Tue, 30 Jan 2024 11:04:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHpZpreScQUaizo2ENNkA6xTP6zGOELFHnoEzVPS0WpnnpJ68J8RhxqVsJTrBKTlHQ4o87E
-X-Received: by 2002:a67:f51a:0:b0:46b:41fa:bcc1 with SMTP id u26-20020a67f51a000000b0046b41fabcc1mr5046430vsn.21.1706641449926;
-        Tue, 30 Jan 2024 11:04:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706641449; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1024332ejk;
+        Tue, 30 Jan 2024 11:04:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEi8jvNRH/FoV3j5KFLZL3i6Af5i0dxEUKwk/49EtyT5OEM46wRiUrfnYjUvm2cf6uu9I5i
+X-Received: by 2002:a05:620a:ce8:b0:785:352b:c295 with SMTP id c8-20020a05620a0ce800b00785352bc295mr1089946qkj.21.1706641454098;
+        Tue, 30 Jan 2024 11:04:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706641454; cv=none;
         d=google.com; s=arc-20160816;
-        b=A+/k6iCwFZJGyEPCDnvO7Ki6uMl3AJzsCQm5juc6LaEJvSNbvhHr6iRh++e/ZebuFB
-         5dn1FawCKwLaxd74XSS0MMT4YW6j59sje0gDSmKxe9SwNB2V6c0TnQsNSRzdlwTbKodc
-         QKvUPshr5v/GXP3VfOjtYapIiw1ay/GZ3KI4wO/EozPvvdTWg7Y0Phuh+0uaV+VxticQ
-         UnqGycvl6ghcJ13Oa049G2BJHymEpk29Kps9v1CQ3KiJ+tmDC1bcWwNUqGoVCRKgy712
-         MJYoRp2UikZ7JAdh0KsyMynKuUmdvFvmMRlGQcLDR8KzHyQA8e7Cre+UW5q6iDCpvcY6
-         DlHg==
+        b=mxvNHUHrO8T5fE97fGxy5peqwqzmxNxYDQBMotgIHB4iOSBx2h3q50ZfjPRZyzsVh2
+         njPuOQfnvJAAa3/RBeSAhQ5H4AqY7iayP4y+kxJgGpajD66ZUcZnRpkdr4OaXk5Q9W6i
+         Ajk7+szyLmdufXfc0n64814LNtj//X0OcJ76fc7PygnSx9+iJgWfW6BxP0K4zoWzbaPl
+         bNzYJz+55dTpVK96KEX8g2ze/8QoxRHAuZDkKKxnrDGkEZzRpDOoP8cP/N26iYfOgLKo
+         +4QXqJwlGsjiNX27QGhhUCj+YpXnvCADBHS3W+D4iDexjtvz7UAdQ4izUpCi1OjLf3/B
+         O8qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ONQQAhlWUJUIL1ohHT6vUP5FJscZaLW2vVSHJwIJiGk=;
+        bh=8Enae3717LfHgjJzKTiqqlkaB8nPVlBbey3ho9e5HGg=;
         fh=SR+8DozJdQxNforhpK7RQJlJqxcnmmBQq9YEbztxGAo=;
-        b=rove6rhtpGn3XjxkdJERHnwjNjEdPZkJrd4yP6qn4+3BulqHwNppQRG8JP3p+lpmlY
-         /zOa+icHVihBkNs8CJZfzzOWvdPSEvVXxu58tAlZM61p8SurgTCOIRck15frEevB9IQW
-         KlrOZwqVyuCMlgnbSqE3Oa2CmNrM/rNSqnP9uhq4ridR0eOyPf+pZuLn79i4zzxYLqTZ
-         0hggDWisOvIvVXakXBLc2CtBzv4zNSi6xFBQyUW7qdjxmUcqlzEOOW5nu7A5nWBUHP7+
-         s8OVJ9LbmyfFujUL6ilgpgtUARIFt/HoJQ/r6b1effpmTNG2KOlzPBHlZCAjRXHgmv7N
-         KPfg==
+        b=EEpjifPlshAUFr7GacP8cmpUAH5hGJzoeWADuqncR9UIAlKjJVD3hZrypvLoEDGlE+
+         E/+WLqwwo8ZYfkjB7fkUy5d9J6Y0+MByV/WsnvQVAQxOe1kM0GH92AoHc3hS0KO5zSnp
+         k1X0crZZLxmIvTEAWOxudQGyOpoHf8enTir6rOEtalJ/pz2Ge5uB80uqqrchT2FDSI2Y
+         eIsQnz2FuK6EHpLf5VjA2MDUvD3r5qZeXTIto77pFveIXke7a6TpKI6fl02PUY7SvZnX
+         BAmTXaysl10DNLyl7IsYw/pkMgSeQn8zbCSv7qThKpuuaaDaYpc1NYcsaS5ufFDgWFil
+         BXFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x8DGc7Qp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JulB6Hj3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20-20020a05610211f400b004670a4f959dsi1211961vsg.690.2024.01.30.11.04.09
+        by mx.google.com with ESMTPS id u12-20020a05620a454c00b0078534dc432bsi1098325qkp.369.2024.01.30.11.04.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 11:04:09 -0800 (PST)
+        Tue, 30 Jan 2024 11:04:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x8DGc7Qp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JulB6Hj3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUtOe-00013l-On; Tue, 30 Jan 2024 14:03:50 -0500
+	id 1rUtP0-0001Ms-Cv; Tue, 30 Jan 2024 14:04:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOX-000118-9H
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:42 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOh-00013w-8e
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:55 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOV-0008W9-Kc
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:40 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-55f50cf2021so984454a12.1
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 11:03:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOd-00005H-9l
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:51 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a26fa294e56so554640166b.0
+ for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 11:03:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706641418; x=1707246218; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706641426; x=1707246226; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ONQQAhlWUJUIL1ohHT6vUP5FJscZaLW2vVSHJwIJiGk=;
- b=x8DGc7Qp6PVEjevdLESY+q5E2kZnQA3pON2QZ/YpLftR2FU0fmNUzlOXS+YCxfO9Uw
- yor3vj8avrEDdl/0F2lXwAxzGGjZEBjf6Sq5H2qBJwvWo4nFv3vQzg+wKJ0V3xSTU+/K
- FgmD6tSwpu6nBwYqjB63FqXaCAy7uzZ5DkIwTaqMOvPzeBEBf/NJOlSzzEpge/bIrhVo
- OzYq30c4+f2kwlHnap3sn2RR4QivwXGPYAlslHxFPxgBWXfF2IiXuTlEkYmhpwsnbpTM
- rHNGD/G4rgPUE1jR7svaVAR1tmtuM7E9K6afsNW1N/GZuYLED62PBbmNoM+7bCQY88Uq
- ekOw==
+ bh=8Enae3717LfHgjJzKTiqqlkaB8nPVlBbey3ho9e5HGg=;
+ b=JulB6Hj3gCGVEnrr6MwGJB0z1dUhaP8TtMFqupeL9FT5aJCARaH4BGbEDV+hpfhp/O
+ +jjwST9QaY2arOpQti8vD5w/HJPsZP1fyORC+VEyfzUNMn9yVPFFBPNMKzrNqfFUv/bM
+ xuf7Qb2Ym+TEkLg2uuoF03IPTwydcCzQiAVjUOjmybvGgUuX/EvYbBy93VvP1aqWTXXE
+ esSnPGsofZCDK59jSFeXdIZxezPN+/A/3eSkmYHF2sFIl3F9sgnXUiH4g73PqiblQIy4
+ KUy+oRDoqVsWqs/7NbbsS4CTtghtgvWbWZBecuTNV8VZYSv4eFucRZi0cQJpjySWxvjm
+ VwxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706641418; x=1707246218;
+ d=1e100.net; s=20230601; t=1706641426; x=1707246226;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ONQQAhlWUJUIL1ohHT6vUP5FJscZaLW2vVSHJwIJiGk=;
- b=DKpb3ylsdbV/dDNnirC912Hy/ue6Jt/lX+msO0jPRrxfhe/t2h1PwedAs4b0tfzFCr
- ClmE04aHmHmQs6DyiF8KwYX9B5UVL2SUYg/RlzPozsL9TQs3DNNMtEEP8EovALsdQAJ/
- 48dSFihoD7m55Z9hRjz1o1OSewRRNhMKJi3wBpyuDETU2OQM06dAOtrw6sAaAaOneUTf
- c6VllkE4XUNYqvEmiURvdnJOrYaYix347LqAuqyxN1GvFN6dml1GircyIA/P/rTHtcc+
- PJbH1CXmFfpMq1gJ9MxSEs2CdWDGrtSBN0ClWjBvVoqnEewAtTYrRRPk/pzh9cbvylj1
- rreQ==
-X-Gm-Message-State: AOJu0YzQCCmaxwKctmBcORBNjRDa41oEWlj2RsrH+xjIJUZkc7xWdi+f
- S6lGiRBdNyOnoRI35Wmna5y4dSITbZWcBclySUSjMo/LWdoNYiBL1s+RAxflYLQ=
-X-Received: by 2002:a17:906:f152:b0:a36:5d54:64b1 with SMTP id
- gw18-20020a170906f15200b00a365d5464b1mr212381ejb.73.1706641418290; 
- Tue, 30 Jan 2024 11:03:38 -0800 (PST)
+ bh=8Enae3717LfHgjJzKTiqqlkaB8nPVlBbey3ho9e5HGg=;
+ b=YerhcoHrkQv9LKfDaioA7NN9+F+HhaUk1T6d4dBqVqWwsPiJYYfOTLuojSqFn1OK8W
+ fK/dLVeGNnuf4L4ma2V8TEewxKi6ObX5KKI0k2KP2WQDsRppH73Ud/MuLB0agGWhE49Y
+ E5xARkZxTr8/Zis9bGbwQ60c6mwuOMLegp9stMBALwGR+/Y0OMPDpQERu1XuKymYWsyj
+ RxIesXRps5x/x5+dwRZjGgSo/T2GkDiDSFnLPMIU43t+FjH9WQ713XRx+v52S16PN32a
+ 4TKSWJCpj1UiD132p+uvfBrV0TH/DM5HDa58OSpUg1zVZ6PuBlku1QRzEm7ADOo5TLD0
+ nK1w==
+X-Gm-Message-State: AOJu0Yz0vWPtFWb5142NHJDR+PIPMnwoiw2CMqBLyw5BwtcjF6JGczs6
+ 8e4OSWbEh4cv8IViibi/VuqF28wHuXUX1bdg8fnvy76JdJTxVHrsKrRhLW4cvP8=
+X-Received: by 2002:a17:906:7190:b0:a31:7e46:eac4 with SMTP id
+ h16-20020a170906719000b00a317e46eac4mr137038ejk.45.1706641425935; 
+ Tue, 30 Jan 2024 11:03:45 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.218.134])
  by smtp.gmail.com with ESMTPSA id
- l13-20020a1709066b8d00b00a32429e455asm5441536ejr.175.2024.01.30.11.03.36
+ vu12-20020a170907a64c00b00a3006857c55sm5359923ejc.130.2024.01.30.11.03.42
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 30 Jan 2024 11:03:37 -0800 (PST)
+ Tue, 30 Jan 2024 11:03:45 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
@@ -95,17 +95,17 @@ Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/4] hw/arm/stellaris: Add missing QOM 'machine' parent
-Date: Tue, 30 Jan 2024 20:03:16 +0100
-Message-ID: <20240130190317.25692-4-philmd@linaro.org>
+Subject: [PATCH 4/4] hw/arm/stellaris: Add missing QOM 'SoC' parent
+Date: Tue, 30 Jan 2024 20:03:17 +0100
+Message-ID: <20240130190317.25692-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240130190317.25692-1-philmd@linaro.org>
 References: <20240130190317.25692-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,42 +127,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OR73sSqK5yTE
+X-TUID: dQRodUH1xrbr
 
 QDev objects created with qdev_new() need to manually add
 their parent relationship with object_property_add_child().
 
+Since we don't model the SoC, just use a QOM container.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/stellaris.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/arm/stellaris.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 284b95005f..bb88b3ebde 100644
+index bb88b3ebde..e349981308 100644
 --- a/hw/arm/stellaris.c
 +++ b/hw/arm/stellaris.c
-@@ -1247,10 +1247,13 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-                                    &error_fatal);
+@@ -1018,6 +1018,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+      * 400fe000 system control
+      */
  
-             ssddev = qdev_new("ssd0323");
-+            object_property_add_child(OBJECT(ms), "oled", OBJECT(ssddev));
-             qdev_prop_set_uint8(ssddev, "cs", 1);
-             qdev_realize_and_unref(ssddev, bus, &error_fatal);
++    Object *soc_container;
+     DeviceState *gpio_dev[7], *nvic;
+     qemu_irq gpio_in[7][8];
+     qemu_irq gpio_out[7][8];
+@@ -1038,6 +1039,9 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     flash_size = (((board->dc0 & 0xffff) + 1) << 1) * 1024;
+     sram_size = ((board->dc0 >> 18) + 1) * 1024;
  
-             gpio_d_splitter = qdev_new(TYPE_SPLIT_IRQ);
-+            object_property_add_child(OBJECT(ms), "splitter",
-+                                      OBJECT(gpio_d_splitter));
-             qdev_prop_set_uint32(gpio_d_splitter, "num-lines", 2);
-             qdev_realize_and_unref(gpio_d_splitter, NULL, &error_fatal);
-             qdev_connect_gpio_out(
-@@ -1287,6 +1290,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-         DeviceState *gpad;
++    soc_container = object_new("container");
++    object_property_add_child(OBJECT(ms), "soc", soc_container);
++
+     /* Flash programming is done via the SCU, so pretend it is ROM.  */
+     memory_region_init_rom(flash, NULL, "stellaris.flash", flash_size,
+                            &error_fatal);
+@@ -1052,6 +1056,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+      * need its sysclk output.
+      */
+     ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
++    object_property_add_child(soc_container, "sys", OBJECT(ssys_dev));
+     /* Most devices come preprogrammed with a MAC address in the user data. */
+     macaddr = nd_table[0].macaddr.a;
+     qdev_prop_set_uint32(ssys_dev, "user0",
+@@ -1068,6 +1073,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(ssys_dev), &error_fatal);
  
-         gpad = qdev_new(TYPE_STELLARIS_GAMEPAD);
-+        object_property_add_child(OBJECT(ms), "gamepad", OBJECT(gpad));
-         for (i = 0; i < ARRAY_SIZE(gpad_keycode); i++) {
-             qlist_append_int(gpad_keycode_list, gpad_keycode[i]);
-         }
+     nvic = qdev_new(TYPE_ARMV7M);
++    object_property_add_child(soc_container, "v7m", OBJECT(nvic));
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+     qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+@@ -1101,6 +1107,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+ 
+             dev = qdev_new(TYPE_STELLARIS_GPTM);
+             sbd = SYS_BUS_DEVICE(dev);
++            object_property_add_child(soc_container, "gptm[*]", OBJECT(dev));
+             qdev_connect_clock_in(dev, "clk",
+                                   qdev_get_clock_out(ssys_dev, "SYSCLK"));
+             sysbus_realize_and_unref(sbd, &error_fatal);
+@@ -1114,7 +1121,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+ 
+     if (board->dc1 & (1 << 3)) { /* watchdog present */
+         dev = qdev_new(TYPE_LUMINARY_WATCHDOG);
+-
++        object_property_add_child(soc_container, "wdg", OBJECT(dev));
+         qdev_connect_clock_in(dev, "WDOGCLK",
+                               qdev_get_clock_out(ssys_dev, "SYSCLK"));
+ 
+@@ -1154,6 +1161,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+             SysBusDevice *sbd;
+ 
+             dev = qdev_new("pl011_luminary");
++            object_property_add_child(soc_container, "uart[*]", OBJECT(dev));
+             sbd = SYS_BUS_DEVICE(dev);
+             qdev_prop_set_chr(dev, "chardev", serial_hd(i));
+             sysbus_realize_and_unref(sbd, &error_fatal);
+@@ -1276,6 +1284,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+         qemu_check_nic_model(&nd_table[0], "stellaris");
+ 
+         enet = qdev_new("stellaris_enet");
++        object_property_add_child(soc_container, "enet", OBJECT(enet));
+         qdev_set_nic_properties(enet, &nd_table[0]);
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(enet), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(enet), 0, 0x40048000);
 -- 
 2.41.0
 

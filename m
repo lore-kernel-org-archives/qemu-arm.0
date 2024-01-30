@@ -1,111 +1,116 @@
-Received: by 2002:a17:907:9874:b0:a31:23a7:2a34 with SMTP id ko20csp962213ejc;
-        Fri, 26 Jan 2024 07:56:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGN/tX2qKxtimXIDMReUwegPXYqNNix7LdEk+KeDH9SoKRn62LHIYvLjENOf4z1ifp2xpB9
-X-Received: by 2002:a05:6214:301e:b0:686:aa71:1a86 with SMTP id ke30-20020a056214301e00b00686aa711a86mr55797qvb.47.1706284589647;
-        Fri, 26 Jan 2024 07:56:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706284589; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp725913ejk;
+        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE5eMl89CKuZeWN/sy9EhtPS/ilHoIdwBkoJiHrOWxMsQ+EJgvBcEF+2PGatJHXfxAFH+8I
+X-Received: by 2002:a05:622a:38e:b0:42a:3658:5841 with SMTP id j14-20020a05622a038e00b0042a36585841mr10363182qtx.117.1706610611477;
+        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706610611; cv=none;
         d=google.com; s=arc-20160816;
-        b=pW8j/ISgM0yVaLUZD5CfyeI6IwLOuFL9KX/tn5jYTcUhIYIEJ2BP+d/dbZGO/TDyW0
-         Feuj9iHTbvHwT2QM6imUeICnK/GPG3mswkBn2trfwq9AHslZdq8Q86vCLHmRP6ixKsLR
-         JQPj7Lj1Rllf/K0w4FzHQP0ErC9Hm8/2KzfjM6FhtlRAh3uU9walOw07n1ZEMraKypgF
-         kzsc9evf0rKWl9nees71sFE/r91NN8X6A8Pngia0aCTp1iLLY2Qvsd3DhOQlz3vSd2Nl
-         I+1qL4gEEala+5zse7xpmYw5Q3x+CAmhtiquuVtyPaa/zOoV4oqnueqFLNgkw8Lg1P8k
-         nd+A==
+        b=Hj0FHBNMdJsV7D6CZdW1m6g3s7368TmHuLqvIYPTRwJO098ro/BGBtPK85bkIiTF3J
+         iEG/7KK4hDko9PQB5/mi3deuTL6JXZ3Dq2tcW2GzPuXmXyTbIgMzTVYp/2mVXGebe/kF
+         sV+vinQagsQ1QfURTQIB9DgHxFrzvGTOop6Ms2hvoVjwvpW00s5RU8CXq2m8cbcmeQFT
+         SsFMoDM7I0TOHR5g6YajWD12hwSkeKRoNyC0tilXUh042VJ2h3METbajuLJdX6VzkOS5
+         Gev2wIRU6sHGbsTpy5/9pEmFc/pcUbu3I3iFqI7WK0UtNoy1YGacyeUeV32fJlup89qo
+         W/sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=GpvuW6VklVVM7eW1BtYVkaHnC0A1XyBpz9Sgh8jHrHY=;
-        fh=0HMtea8luuAdS4zSG2fLRt1HDJ6RwgBaS2f9YpjyZkc=;
-        b=0o8gcT7twq5hpP8gVL3tqvOaz5e2S/O+IRFuiGSjGP0ajMFxOyV3cYtoYkglHWsxT6
-         GLn2WgMCJ55uzCn99yCkmeKHFrnUPHBksZ/NOIKf0DPniTpKhankNAb96qMlIdFjYMT2
-         g8FOmdtWG4mkYzNQZXO6RNgDy7xyRSPnWWchPC8Ht/eitHKyzTBAomSCfyW7oJThwNRX
-         Y58VXUysrLcAQHVZbCH3bZJzjma0/JNKOtImyS0i/Mp7lOJUZJv5A7nYXlylIzJmExZ1
-         XSl3yvuGKYq+1JMY3d7e0v6tDIdtJm7zIonDTQcHqgx5QTJYBgd091x9Cj1sKoC+WcZ+
-         WWYg==
+        bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
+        fh=tG91SClu+OfDzmMHKkazd9TowFVdfcSb1bk7axst0w8=;
+        b=KFOzW3IBCrM6ABCWd6f2uNhg5iOdU/GtS3Jx7c/EShUU1RvplA9411Zl+l4GyfGiOd
+         rVFHq35FFAx8HLnWfuMmzVZel+K1zs52Sh7YP1yMW+EpwqB1paJy0JDk+dV0EXT7Oryy
+         wXtuxgcREDeXgP98VkATs+1ZVCWJNcBlkB8HaKpvE0wtoXivgrCWg/NHSFR7HSzavie4
+         6LCbpFUgJgqQ4uGB9pudevviTYJ5QjdChqrFxZg+K6NzMKo0BZWTISQ5Au5nRqMrU/3K
+         +c7Zp//mG+juplDEnw0BxDC/Ns2SsNmOpqw9z6vG/LsGNoh15NQ/WJXVUwhR7U3tiYr9
+         RLxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0T+bHqQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GbEsThA6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11-20020a056214040b00b0068c36bf29ecsi494132qvx.308.2024.01.26.07.56.29
+        by mx.google.com with ESMTPS id a7-20020ac85b87000000b0042a62bc0b72si6881284qta.617.2024.01.30.02.30.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jan 2024 07:56:29 -0800 (PST)
+        Tue, 30 Jan 2024 02:30:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0T+bHqQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GbEsThA6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rTOZ4-0006fg-I5; Fri, 26 Jan 2024 10:56:22 -0500
+	id 1rUlNT-0000Q5-Sf; Tue, 30 Jan 2024 05:30:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rTOZ1-0006ex-PM
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 10:56:19 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1rUlNS-0000PU-Hc
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 05:30:02 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rTOYy-0003K6-IW
- for qemu-arm@nongnu.org; Fri, 26 Jan 2024 10:56:19 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-55a179f5fa1so496374a12.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jan 2024 07:56:16 -0800 (PST)
+ id 1rUlNH-0006lY-Ra
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 05:30:02 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-55f2b0c5ae9so1431244a12.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 02:29:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706284575; x=1706889375; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706610589; x=1707215389; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GpvuW6VklVVM7eW1BtYVkaHnC0A1XyBpz9Sgh8jHrHY=;
- b=G0T+bHqQ8/kv101KNULr7w1SyYGDYtj9lqy9bw8L8t9VFF6q4OMVvtFRmbLQXhDmVL
- ji/dwcN31Uqc/LNRhWWQ5i6xStvACa3rVy29EDxn5jTRozciVIk3JzBTTOhPOwCi7S8Y
- RLnRr8mAmEW/mqPx9xyl9m6pVqIaDoC6jppjQvHvblD4bVgn2GALyud1aCbW0fFTOnSY
- omhrmyuyO0dvMVw0Urm1ZiPCM5sJVF1sjz1L+z5b3sDnT0TWr2nrVfcBjBJKNsAyQ0+O
- N55gy2tIs8xZBe1pdvCiuL9nul9cyPOg5l2kq0wcLCMlysNkzA1vTXrhrHIgQxFw9UII
- DrqA==
+ bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
+ b=GbEsThA6njFGF5WZQDeqw4ShFhuKyHHNs0IvfJdxgoaejfkUrRVH8U4yfNcQrngKSY
+ e+xyUZ3QIyKhwrUVn12dnQ/kw90V5BzF2lp14018S3hlCFcwCf/DdgxorOXPZk+PDw9t
+ qhkDcdow5hDeCXsNj6zWaCRhKPZyXA30rtXy/uL4B5K4o82HHqP2po9mif1PPb380awz
+ 9oyW+/zJnS9DYgzZTn16c69hGAI9fV8DrktIMJfFaLSwPCMomSndVBjYbkVHUtgQlK/N
+ S78QcXLgYUzHEuilqtdqzxyw1v99+5RybxFGf/iPmQMuRyW7Vo3gYO305B+F7nKJjcWt
+ PUWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706284575; x=1706889375;
+ d=1e100.net; s=20230601; t=1706610589; x=1707215389;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GpvuW6VklVVM7eW1BtYVkaHnC0A1XyBpz9Sgh8jHrHY=;
- b=GPT5JLBfuWwz181lWKmAwJH6ZOkloY2pOFKyYeCD6PCWJSuzP6DrHrKoFI7fCqj7tM
- JG66rzC8Ne9qGHhoKXVpUrkluthTJLyRQit2ZriYsyBbOWfJIVhRZB65ml5wOa/35x+A
- gp5BTfvbbl1rlYnCE0bsKtrXunLVN94UW3Ci7Cdwh+f0vOYaGQ6PJU40F23wjjNKpJYg
- XzJXrtr71IxtgBB0YXsW2T0Vn9MIRa9NNZUypmmigOG+3N79FRFtAf+h5IgsoTSxxDZS
- rj26lRYsF48HqenSGI830fwmDtD0gJQgBQtZbRULQa7YaLdeKzAqxG/nXezzQksz16fE
- h+1g==
-X-Gm-Message-State: AOJu0YzxZN/Ot/eQPuAQpf7xmcRddee0ilvLMXNfcWebTO2VsFqhVhjZ
- oFITN7f06GI2qTNEa6HuEXvpROtTkelX9xUeY3yiXJYY27aUTJhPFfer+lQ28vOoGDy7OQ8fu1V
- VO55ejq5mvHFYjT6pcHibVyRRoE7RgfX/Mxyt3Q==
-X-Received: by 2002:aa7:c611:0:b0:55c:7ab7:d357 with SMTP id
- h17-20020aa7c611000000b0055c7ab7d357mr1023716edq.14.1706284574871; Fri, 26
- Jan 2024 07:56:14 -0800 (PST)
+ bh=V3AACafdIR9mOFbk8iUl9aKL4lE+jvSmOg4nIbrA3sE=;
+ b=mqSchVO9U2Bd9JeVdCqJ7g4brhhfHj/Hip4Ntacb0D0o1ypxX1+M1u3pME8HPkuU+r
+ SupzmPyLakDQRolenpDRZmyeSj4QJPbHGKhswpFoINJ0bVYqvAyT28Q1dOzPmMK9k275
+ zaB+BRLGiFKRhPw1VXhVgsMabKfTV5w0D6XPEW79YCRKIu9L0iQb7YHxD0z1Nq3A+jA5
+ p4F39eNJ3Udbbwy5XgtoDPtB8Tq2ojI97jEZXOqLLpSCHOh87aTnusTDsiDyqxJwhTp9
+ BToY2uDA+3L2dFQAf5gXwreG+PvI3baenoJzivqgHbf96swRwbgUzM0RCRH4JoCgdPdG
+ XVbg==
+X-Gm-Message-State: AOJu0Yy5TQem1XRDWrziwPreV8HqUoYt+wvmSjOdhKcZ3c/NWIMWAb/u
+ Nq0azBZM8yScBR48hOmLZ8g7e5WEb13AijmgJZDOvbqRv27wfE8nR/1OfVVYpNFnOK/OHnX8dD0
+ 0MmvonwvOi+TXGhhHtseQOLBrnnLEMR4OK3r+dw==
+X-Received: by 2002:a05:6402:504:b0:55e:f164:7765 with SMTP id
+ m4-20020a056402050400b0055ef1647765mr4000426edv.32.1706610589713; Tue, 30 Jan
+ 2024 02:29:49 -0800 (PST)
 MIME-Version: 1.0
-References: <20240126133217.996306-1-clg@kaod.org>
-In-Reply-To: <20240126133217.996306-1-clg@kaod.org>
+References: <CA+ji3pGBJBp+trjM-RhgkYjOs8rrtLJgHsaNvf=EyGtWB4gAow@mail.gmail.com>
+ <CAFEAcA-L2vepWXfgaHW=ogLAvAZjJd5yv1hm6dBU6dsEOS_gCA@mail.gmail.com>
+ <CA+ji3pGVBmDAeUoPM9Zk8pOtpxcR+92XeUBN8G=Mmmyi4Eh8-g@mail.gmail.com>
+ <CAFEAcA9AeqbWt1Q5QM_HEwi+A2KYXFs1ZEqfFJcqdktYwWujTQ@mail.gmail.com>
+ <CA+ji3pH4ZapKAZ+vCSw6P=svWUtfsWt8aqoTFZX_CV5DzPoOyg@mail.gmail.com>
+In-Reply-To: <CA+ji3pH4ZapKAZ+vCSw6P=svWUtfsWt8aqoTFZX_CV5DzPoOyg@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jan 2024 15:56:03 +0000
-Message-ID: <CAFEAcA8Q66Qw7spMOcBju0v-=C=x10hz1rwPWxjCzYWhdkX8Ww@mail.gmail.com>
-Subject: Re: [PULL 00/17] aspeed queue
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Tue, 30 Jan 2024 10:29:38 +0000
+Message-ID: <CAFEAcA-Hsm1b2-2r=c0n0g+pJUWxLNjhGwdeomBt6=1XqZux=Q@mail.gmail.com>
+Subject: Re: Assistance Required for QEMU Hardfault Error with Cortex-M33 on
+ MPS2AN505
+To: sanjana gogte <sanj27272@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,65 +125,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kCAZy572GYIH
+X-TUID: 8kYRUzrf/qXg
 
-On Fri, 26 Jan 2024 at 13:33, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Tue, 30 Jan 2024 at 07:48, sanjana gogte <sanj27272@gmail.com> wrote:
 >
-> The following changes since commit e029fe22caad9b75c7ab69bd4e84853c11fb71=
-e0:
+> I wanted to express my gratitude for your insightful solution concerning =
+the INVSTATE fault I was encountering. After recompiling my code with the -=
+mthumb compiler flag, the exception is no longer being raised, which marks =
+a significant step forward in my project.
 >
->   Merge tag 'pull-qapi-2024-01-26' of https://repo.or.cz/qemu/armbru into=
- staging (2024-01-26 10:21:27 +0000)
+> However, I've encountered another challenge while working with a specific=
+ version of QEMU (QEMU emulator version 7.1.0, v2.6.0-55433-g23b643ba16). W=
+hile the code runs flawlessly on QEMU version 8.1.50 (v8.1.0-2375-g516fffc9=
+93), the earlier version throws a hard fault, which is critical to my use c=
+ase.
 >
-> are available in the Git repository at:
+> The use case involves attaching a remote port to the MPS2-AN505, and for =
+this, I need to utilize Xilinx=E2=80=99s fork of QEMU, which is based on ve=
+rsion 7.1.0 (v2.6.0-55433-g23b643ba16). The error I encounter during emulat=
+ion is as follows:
 >
->   https://github.com/legoater/qemu/ tags/pull-aspeed-20240126
+> Loaded reset SP 0x0 PC 0x0 from vector table
+> Loaded reset SP 0x10080000 PC 0x10000009 from vector table
+> Taking exception 3 [Prefetch Abort] on CPU 0
+> ...at fault address 0x10800000
+> ...with CFSR.IBUSERR
+> ...taking pending secure exception 3
+> ...loading from element 3 000000c
+> ...loaded new PC 0x10000011 of secure vector table at 0x1
+> Taking exception 3 [Prefetch Abort] on CPU 0
+> ...at fault address 0x10800000
+> ...with CFSR.IBUSERR
+> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
 >
-> for you to fetch changes up to b40769f4b49d15485ffaaa7acade3e3593ee6daa:
->
->   hw/fsi: Update MAINTAINER list (2024-01-26 14:22:08 +0100)
->
-> ----------------------------------------------------------------
-> aspeed queue:
->
-> * Update of buildroot images to 2023.11 (6.6.3 kernel)
-> * Check of the valid CPU type supported by aspeed machines
-> * Simplified models for the IBM's FSI bus and the Aspeed
->   controller bridge
->
-> ----------------------------------------------------------------
+> Observations: When I trace it using the GDB:
 
-Looks like you have an endianness bug, either in the device
-or in the test. From the s390 runner:
 
-https://gitlab.com/qemu-project/qemu/-/jobs/6029422595
+> It goes to prefetch abort as soon as I step into reset handler and the co=
+nnection gets closed.
+> What I do not understand is:
+>
+> 1) Why is my PC going to address 0x10800000?
+>
+>
+> 2) When I use Qemu version 8.1.50 (v8.1.0-2375-g516fffc993), the PC goes =
+to the right address and does not throw a prefetch abort.
 
-232/847 qemu:qtest+qtest-arm / qtest-arm/aspeed-fsi-test ERROR 0.38s
-killed by signal 6 SIGABRT
->>> PYTHON=3D/home/gitlab-runner/builds/-LCfcJ2T/0/qemu-project/qemu/build/=
-pyvenv/bin/python3 QTEST_QEMU_STORAGE_DAEMON_BINARY=3D./storage-daemon/qemu=
--storage-daemon QTEST_QEMU_BINARY=3D./qemu-system-arm G_TEST_DBUS_DAEMON=3D=
-/home/gitlab-runner/builds/-LCfcJ2T/0/qemu-project/qemu/tests/dbus-vmstate-=
-daemon.sh MALLOC_PERTURB_=3D82 QTEST_QEMU_IMG=3D./qemu-img /home/gitlab-run=
-ner/builds/-LCfcJ2T/0/qemu-project/qemu/build/tests/qtest/aspeed-fsi-test -=
--tap -k
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80 =E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95
-stderr:
-**
-ERROR:../tests/qtest/aspeed-fsi-test.c:152:test_fsi0_getcfam_addr0:
-assertion failed (curval =3D=3D 0x152d02c0): (3221368085 =3D=3D 355271360)
-(test program exited with status code -6)
+This strongly suggests you're running into a QEMU issue
+which we've fixed in some QEMU version after 7.1.0.
+For bugs in Xilinx's fork of QEMU, you should talk to Xilinx.
 
-where 3221368085 is 0xC0022D15, and 355271360 is 0x152D02C0...
+In terms of why your PC is going to 0x10800000, it is
+almost certainly executing a lot of NOPs from some point
+until it runs off the end of the flash memory. If you
+use the gdb 'si' command to single step single instructions
+you'll probably find this is less confusing than using
+the 's' command, which steps an entire C source line.
 
 thanks
 -- PMM

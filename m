@@ -1,129 +1,114 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1003655ejk;
-        Tue, 30 Jan 2024 10:23:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHyViVOyyY/Xxvx90Txaq419/BmEvfdtm4YSlLQGn/G3ECQ/FJuUPUGicYu3GFEwVqB9uVp
-X-Received: by 2002:a05:622a:1107:b0:42b:7b4d:9087 with SMTP id e7-20020a05622a110700b0042b7b4d9087mr1611009qty.12.1706638997549;
-        Tue, 30 Jan 2024 10:23:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706638997; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1023849ejk;
+        Tue, 30 Jan 2024 11:03:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IENF4xgsR8OZpmizc2BqwkeCghgGvzWyPjiW+y3GWi/VTAidHTexGcjuT8DqkVnhWxOlI9V
+X-Received: by 2002:a05:6214:20c1:b0:68c:6294:e74f with SMTP id 1-20020a05621420c100b0068c6294e74fmr1906218qve.33.1706641416956;
+        Tue, 30 Jan 2024 11:03:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706641416; cv=none;
         d=google.com; s=arc-20160816;
-        b=jz5n9tJB3JdWOm1jmCH0k5axQJlvlV7ofvYsOH4J1hjqrWd28cKBzLcoyPn77+xtlL
-         X90KklPaTn+jAmpEncaypIHFGfwQfYcFQNFIF/hjQ6ucfDn/gv96FBJUN9OpND5b1KlB
-         TRU8cMv2/Bg6f3xjvd3HlLSD6QgoBNy/wK2ypooqnXwiAjg4vvgID6FCgqLm2HemxBCs
-         Y+0/rfE+F4ijzcnGg+0e7rm9SocSKCVSvUC4pvjKO4zMF7oBznBKEqbes3P+d7z4ujUm
-         OBcHQq6jOW40PI2MQFAbSB4QgY60vtNi/bL0cuEl2dSi4RxNd5tDElyEwUhIGZFaaSsn
-         sHNg==
+        b=QpKHhW7QNQJm3Ypa6vVk7FvubNUgQgbj4RBhTIbPQPfYy7jDG1KYtz/lsy5qWzZi/M
+         VYvoLaL2tktgz7ZYN/Jk+kDN0dPlNj5wAD3M3S20Dkwbca048e8Ge75bFYY3e7UsoE4J
+         y/nbu+gfXy9oUZnBeRoqhuTtS6V36VWAhQG94OPXKHckfqSkTFYoQnm7ZZBQwODzPhhR
+         gH4co6O7RR3sBCI++gLiLlR/T8of+Cw7LHNKzPZMjDmH0paVjbU7QtF9uA7Il5vRsLmX
+         0KGTslGg6Zj8n8esjDNjiw0wMQgc9ViWLAb25GguddbVXew+TiTY4LoJLtY+ol5rRi1s
+         /w5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=G4Izx0gWQsWPxxN+vAB1x1DHKO2iahuZK3MEndem/T8=;
-        fh=mp/Ej3Yo9yBAeFXj9QpsLfvBMSxI/4cbSphjodAxBw4=;
-        b=0lCtVyZb1wI4luPAxkPHy3UDT0eLBvJp8QY7VJT4og1R94VMl+PGT3ityi8oljYWWr
-         zfvUnHfSAMzB26b5svNWVWouYCnX3BoqcOKkN7b+RJOXKjF9t3UQEgqEZSp8NITWUZ2s
-         MRoecCt66bo2tbf2RB6BAB9vH2S9Y4o0d53iHVVLh/4lbqMxMGRlb9noN9ltMPdzCiVy
-         jjytVbZAseGYGfr57cBwhE/FHg9Jx2HRmHWSB9STSwsJKrROf7WVZqOjN61NsoSRl/zP
-         D2hoyST/ZHqOCtKKTnG9mcsIkx8E4697CIpwgabRJNr3jzXC96UCAre5ruSqLna2yNfi
-         eqCA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gE4N+SZz6g2Nc8XtfAugEaqTsmycgrTHLFCKHFIc7Ik=;
+        fh=SR+8DozJdQxNforhpK7RQJlJqxcnmmBQq9YEbztxGAo=;
+        b=RSkxjXwO8UqBIUwloC+qGghtK/llH62CJwsldkUJcloQQAXvzq6yjpKo5d+IkJwUS9
+         vn3OjcIR7uMEFG53kAhHoLwbBZ+OuMv/jkxbCjl2MaOuv/yH4VRcpIwqj0snRO8dhM4p
+         v9CtZrfqhAlRDK30IiUJp4ADr7viQzHZiybvVD3stE8SYa1GR9ypRAAIn/LwQAgcgPMr
+         Lt4U38pqzdgC6dYnVQSI+w3/3j2Jo2xL2oFbkyR/o3UxofQrjVV+FJXt77wppFsQKgO8
+         BTI/f+fcAWXCYb7vCmeRumYidvnEmrkyCJ/Yw7r6iahKXaFdFMHTn1zsNAqvS1sGsQGh
+         NXug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=idzRlbMp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zpzCG/I9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20-20020a05622a199400b0042ab7b2e65bsi1723008qtc.7.2024.01.30.10.23.17
+        by mx.google.com with ESMTPS id fp13-20020a0561223a0d00b004bd8688c280si1372511vkb.318.2024.01.30.11.03.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 10:23:17 -0800 (PST)
+        Tue, 30 Jan 2024 11:03:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=idzRlbMp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zpzCG/I9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUskv-0005PL-Tu; Tue, 30 Jan 2024 13:22:45 -0500
+	id 1rUtON-0000wJ-5t; Tue, 30 Jan 2024 14:03:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rUsku-0005Op-DO
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 13:22:44 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOL-0000vg-76
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:29 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rUsks-0000y2-Np
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 13:22:44 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40fafd3ebb5so4658505e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 10:22:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUtOF-0008U9-C5
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 14:03:28 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-51121637524so547097e87.1
+ for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 11:03:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706638960; x=1707243760; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=G4Izx0gWQsWPxxN+vAB1x1DHKO2iahuZK3MEndem/T8=;
- b=idzRlbMp3/OkNe2eTNAU8IKMc+ljB08FZSgOSvymP/gzsnU3Oh8XDbKZsl4C8oGfJE
- ow9AmwV59E6MV56R15G5+zvelugucxSvYpk69j6QZKq79s2QRPgxB5kJkpM0lCW0TFD4
- AERXqqJLO/bQA99gwImsp96JSd0VwHsdEpf2s/3MoUi3kPkIS9Rghnn0dWuCA56KmFgW
- eWbQR8il+pW9KlLwho6JTxduZuCt2zcn+Kx8BhQC7arfwbxOnqJMbaEvIUdo1JpT+lVT
- HLsEHkF/zS53KoAYmUjsyQ0+9wc37OMhckiKm852pwrg7RWeqNtooae7XUqJpZukUfRa
- lZpw==
+ d=linaro.org; s=google; t=1706641401; x=1707246201; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gE4N+SZz6g2Nc8XtfAugEaqTsmycgrTHLFCKHFIc7Ik=;
+ b=zpzCG/I9dy1Hcdc3hMSZ6GgTU3Pvw6s6oqSv+mqUnh14mStgv11gIGppuEaqPTFjJL
+ xUeRIVhxidKbJQyRLZejDhVWW6tuy5e+kjnXMCqMsjU4ySbhiKWhaNk+vdAYg4fAfWlo
+ 3RgemX5iogntu2Y15GPRlBllhvgenHCsC/K2NhDxNZVXININ7bsKCYkKBqEMO0x2F4eI
+ 0ZnddZMJ38P9Q8DRqFblqnX5HvyRyH3gyK3UACR9KH5TTkgPpE1IW2OxDcSExOPVqfOv
+ HoxLmLWAO8hjy7ipI/hb3ff9iwwFmMtdjRc1IpS1GbhKKibiLJYMB+yZN+MHFzdaBO0J
+ EQkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706638960; x=1707243760;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=G4Izx0gWQsWPxxN+vAB1x1DHKO2iahuZK3MEndem/T8=;
- b=ViRu7RxH7k4Z19Q60RRtPXI6d8ahzaSnGox8YnlE5SN9eS7X7lAZY6a4WfLtMkmjgt
- DQQCubHUrR9LB14cNXBpY0dBZKm1M81Yikalu+d8/UejtHnqg2AoThLEvXIVjf2Omk7r
- tmIyfiE3qqwSnxMD8Nc2CGAjwGFdKNtyhiAsj4FynCjejYbHw6duzBLbVJc48/4jb+rQ
- KWxuLSiSn1IoVcWgXdjwE9pRQ8SD//7RaNPEvk8YBFwcLSqf+W8TQ0FH05ShdWZ7ObLi
- sFuVMCrY19WxOme+yzDjfPBkTTJwYLKUsYFxywmVUimzNZpCye9dn+IEQjJaHtfUFq29
- F7PQ==
-X-Gm-Message-State: AOJu0YytWwibHeCUiZMXASVj5CpDUWFk4X1d65E+VmGR1YlzgzJkzAud
- wvycabt9zdOjt/q75EfLCPqM+hr2m1SITA4ZxDJuE786XnphPu57XRC8GOJw9Mk=
-X-Received: by 2002:a05:600c:1ca3:b0:40e:f3ee:5622 with SMTP id
- k35-20020a05600c1ca300b0040ef3ee5622mr6494091wms.11.1706638959821; 
- Tue, 30 Jan 2024 10:22:39 -0800 (PST)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- bv25-20020a0560001f1900b0033aec64ba7dsm6657461wrb.78.2024.01.30.10.22.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jan 2024 10:22:39 -0800 (PST)
-Date: Tue, 30 Jan 2024 18:22:39 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "yanghliu@redhat.com" <yanghliu@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>
-Subject: Re: [RFC 0/7] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling
- for hotplugged devices
-Message-ID: <20240130182239.GA1392966@myrica>
-References: <20240117080414.316890-1-eric.auger@redhat.com>
- <SJ0PR11MB6744C50921CC63221A93C75492712@SJ0PR11MB6744.namprd11.prod.outlook.com>
- <7bc955a1-f58d-43b1-8e95-c452bb11f208@redhat.com>
- <20240125184822.GB122027@myrica>
- <db8d6171-acd2-4e1e-9c25-c7d12fa26de4@redhat.com>
+ d=1e100.net; s=20230601; t=1706641401; x=1707246201;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gE4N+SZz6g2Nc8XtfAugEaqTsmycgrTHLFCKHFIc7Ik=;
+ b=QY2UA9RSlW4HRrNt10b+h/8g8UM4tB3smkS6RM3AebZOT/5ltquWyIu8iFuqjlp+Gg
+ z76GXZ6tQLkBErvqHZ2gqHeQ3s+/ZDnKeMKtfRZokzcIWvjITs+wvAr1Y5+7NxJQO9Rs
+ Nqy2z/0nXSvBE0JIzvXXQbOdR8GsouUc2/cnqApRxzA6EanjiuD5zvDcCn7w0Pxd80yv
+ 7WAiPltSYZ94kZuR+uqsoNupbp148uQsfZEGqWox1BKLjWTX0N/ZqRNbWMK9jlgF249P
+ g2WjBXpOQ+E4YhP3IiHQc9blo9EzmgM9iND//q/jxcLwAp1IThuxBvwecQl1WrivrN8u
+ zmSg==
+X-Gm-Message-State: AOJu0YxpEFKCqg7GVcabWgDWkw+wTiTEnnVL6FqGjC3RjXLcrdQuRMin
+ Ukcc+jjaEVo72QnqeuuAuJY+qf7G/uqVK1LIvKu0dNQYS2jFUDPusLFwPyjRIcc=
+X-Received: by 2002:ac2:47f2:0:b0:50e:7702:a189 with SMTP id
+ b18-20020ac247f2000000b0050e7702a189mr7185145lfp.22.1706641400804; 
+ Tue, 30 Jan 2024 11:03:20 -0800 (PST)
+Received: from m1x-phil.lan ([176.187.218.134])
+ by smtp.gmail.com with ESMTPSA id
+ t5-20020a170906a10500b00a35cf6727c1sm2179896ejy.105.2024.01.30.11.03.19
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 30 Jan 2024 11:03:20 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/4] hw/arm/stellaris: QOM/QDev cleanups
+Date: Tue, 30 Jan 2024 20:03:13 +0100
+Message-ID: <20240130190317.25692-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <db8d6171-acd2-4e1e-9c25-c7d12fa26de4@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,72 +123,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tL6tCSWuzrvn
+X-TUID: V8eKtfjH2Z9w
 
-On Mon, Jan 29, 2024 at 05:38:55PM +0100, Eric Auger wrote:
-> > There may be a separate argument for clearing bypass. With a coldplugged
-> > VFIO device the flow is:
-> >
-> > 1. Map the whole guest address space in VFIO to implement boot-bypass.
-> >    This allocates all guest pages, which takes a while and is wasteful.
-> >    I've actually crashed a host that way, when spawning a guest with too
-> >    much RAM.
-> interesting
-> > 2. Start the VM
-> > 3. When the virtio-iommu driver attaches a (non-identity) domain to the
-> >    assigned endpoint, then unmap the whole address space in VFIO, and most
-> >    pages are given back to the host.
-> >
-> > We can't disable boot-bypass because the BIOS needs it. But instead the
-> > flow could be:
-> >
-> > 1. Start the VM, with only the virtual endpoints. Nothing to pin.
-> > 2. The virtio-iommu driver disables bypass during boot
-> We needed this boot-bypass mode for booting with virtio-blk-scsi
-> protected with virtio-iommu for instance.
-> That was needed because we don't have any virtio-iommu driver in edk2 as
-> opposed to intel iommu driver, right?
+Gustavo wants to access the QOM path of an input IRQ line
+from the NVIC, but since the device is orphan he ends up
+with this nasty path [*]:
 
-Yes. What I had in mind is the x86 SeaBIOS which doesn't have any IOMMU
-driver and accesses the default SATA device:
+  -device ivshmem-flat,chardev=ivshmem_flat,x-irq-qompath='/machine/unattached/device[1]/nvic/unnamed-gpio-in[0]',x-bus-qompath='/sysbus'
 
- $ qemu-system-x86_64 -M q35 -device virtio-iommu,boot-bypass=off
- qemu: virtio_iommu_translate sid=250 is not known!!
- qemu: no buffer available in event queue to report event
- qemu: AHCI: Failed to start FIS receive engine: bad FIS receive buffer address
+Add the missing parent so the tree is now:
 
-But it's the same problem with edk2. Also a guest OS without a
-virtio-iommu driver needs boot-bypass. Once firmware boot is complete, the
-OS with a virtio-iommu driver normally can turn bypass off in the config
-space, it's not useful anymore. If it needs to put some endpoints in
-bypass, then it can attach them to a bypass domain.
+(qemu) info qom-tree
+/machine (lm3s6965evb-machine)
+  /gamepad (stellaris-gamepad)
+  /oled (ssd0323)
+  /peripheral (container)
+  /peripheral-anon (container)
+  /soc (container)
+    /v7m (armv7m)
+      /cpu (cortex-m3-arm-cpu)
+        /unnamed-gpio-in[0] (irq)
+        /unnamed-gpio-in[1] (irq)
+        /unnamed-gpio-in[2] (irq)
+        /unnamed-gpio-in[3] (irq)
+      /cpuclk (clock)
+      /nvic (armv7m_nvic)
+        /NMI[0] (irq)
+        /nvic_sysregs[0] (memory-region)
+        /systick-trigger[0] (irq)
+        /systick-trigger[1] (irq)
+        /unnamed-gpio-in[0] (irq)
+        ...
 
-> > 3. Hotplug the VFIO device. With bypass disabled there is no need to pin
-> >    the whole guest address space, unless the guest explicitly asks for an
-> >    identity domain.
-> >
-> > However, I don't know if this is a realistic scenario that will actually
-> > be used.
-> >
-> > By the way, do you have an easy way to reproduce the issue described here?
-> > I've had to enable iommu.forcedac=1 on the command-line, otherwise Linux
-> > just allocates 32-bit IOVAs.
-> I don't have a simple generic reproducer. It happens when assigning this
-> device:
-> Ethernet Controller E810-C for QSFP (Ethernet Network Adapter E810-C-Q2)
-> 
-> I have not encountered that issue with another device yet.
-> I see on guest side in dmesg:
-> [    6.849292] ice 0000:00:05.0: Using 64-bit DMA addresses
-> 
-> That's emitted in dma-iommu.c iommu_dma_alloc_iova().
-> Looks like the guest first tries to allocate an iova in the 32-bit AS
-> and if this fails use the whole dma_limit.
-> Seems the 32b IOVA alloc failed here ;-)
+[*] https://lore.kernel.org/qemu-devel/20231127052024.435743-1-gustavo.romero@linaro.org/
 
-Interesting, are you running some demanding workload and a lot of CPUs?
-That's a lot of IOVAs used up, I'm curious about what kind of DMA pattern
-does that.
+Philippe Mathieu-Daudé (4):
+  hw/arm/stellaris: Convert ADC controller to Resettable interface
+  hw/arm/stellaris: Convert I2C controller to Resettable interface
+  hw/arm/stellaris: Add missing QOM 'machine' parent
+  hw/arm/stellaris: Add missing QOM 'SoC' parent
 
-Thanks,
-Jean
+ hw/arm/stellaris.c | 30 ++++++++++++++++++++++++------
+ 1 file changed, 24 insertions(+), 6 deletions(-)
+
+-- 
+2.41.0
+

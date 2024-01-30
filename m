@@ -1,67 +1,66 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp939881ejk;
-        Tue, 30 Jan 2024 08:38:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFBw3fC/A/T89JQT9oPGe+xN5jtBwQnD0iqynNGrt3DYDsKIqYmIIwkl/A86AsLstYQhWug
-X-Received: by 2002:a67:f58e:0:b0:46b:20ba:25c9 with SMTP id i14-20020a67f58e000000b0046b20ba25c9mr4213741vso.11.1706632707566;
-        Tue, 30 Jan 2024 08:38:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706632707; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp940423ejk;
+        Tue, 30 Jan 2024 08:39:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEDmL94kgQ9AdstMOFeF5ndJL7uDriR8sD/flZe+Krzibi9eszVpsNf0zi9iJKjCGqDZGIA
+X-Received: by 2002:a05:6214:f25:b0:682:85f9:163e with SMTP id iw5-20020a0562140f2500b0068285f9163emr9903646qvb.121.1706632769474;
+        Tue, 30 Jan 2024 08:39:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706632769; cv=none;
         d=google.com; s=arc-20160816;
-        b=r1nsgSmakDaNOlDJaWwTsDl6aElSCxXKJqiy5IAo8bpGVY3i+RFcpDP7U5pVAOdct0
-         nB2/M+jOrN3wMUaCwUy6H+f/mRykA8L53df7U3iO6JgJoufKX8ZDc9dOdZ+C/iPVO43x
-         7yoUNjdLTJ5TUuoe6u8kWe0DsIh5WB2ILLhbX/j23ZPOajmLooSi6gpgSGk/OYwH7G3e
-         yGsNjbUT4EUOFDvP9D7sZFSUGBKGaiOwqM+56jQmUlbQFGRIuilDSDhHRmOGfbjLYtzG
-         or8ZvuMlX15PGpq7YOIyli9/cTpQe9dvjOnFmsVN1mp+JLwEPGc7lBbOVE9u/0tM31tT
-         Z+Mg==
+        b=ZYcY5V8yLOEqDu8muTnQ7JIeVrBDjczrDiyBLAmn5MOxFpoyEQBd/71OWvKeynitGp
+         JvhEe4ge7COxPfTny7sV7FTPrGDm0265+awu1Bb8TTQU/3NBJGE95p8jNYSswL2yMF0u
+         PZ2sRDFdMMtxwOerFKXTlXt+QNzervLF95t0aUSXRomdtfGLYuYBZu78Lv9Xh3jnuNEe
+         +exhlZKoxCXXDk098xYJddp0nZAnTfjlJYwSWZHK5zpwv9SxUdcES/j+kuhmy+ky7Nut
+         MqYLCWD/cxNumGLMXB88pqESWFJ5nOB2vrqSEpy0uWL1PVmo9N3JzfUopPQouAWTcfRp
+         df+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=prozUp6CbhgoWSUmnTcsbU3VL3m6OxwFkVMz1Avvalo=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=j9V6CgxGZhDtMTHKVYDt6zEGjKJjt+YCyLDePP7/980=;
         fh=Urq1RoTyO+OOBujohoC2Jqp5tJKPVqUlfF3DhFITF+E=;
-        b=a+W0nieEUaMh7X48M03AJjrUpTQaiEG9mRyP2GQ6+92Vi+F31esZY/Rp1p4zgdHjPK
-         M/KI3FXEyxDcWqEwLm+S40cylXJ8+DQicO5h7He5/G4DTBNUgC0YR09FAxjlMp87Cza/
-         9y3jACCASiCJDPouFaiVZBrtMcNYOVQ2Udp9FXf4S1jLegh09t9a7BAd52eBpriZROtC
-         7HVNhucgTLRkb9T9vlFj9nuBg0zxph0R+I7eQiEnVKpuvqVjiPGrQ9SM78ucZzOMoEot
-         AzgOEXVF2wPcLZIgFAM7193Ax1JY+AChjGKUJDBgvk2bUJdmEF4A2k6o2My1cnodkHhc
-         6uog==
+        b=JFqRewErCdNMBXN/v0ULvD8YasmaZIVMOS+pNfv1EHSz8g0RU4uElmt6InsvI0f9qG
+         7zq7U6EbtdIMhNcISz7I7SHvnepILz4Ky31Jvk4bm2+1k1Cz/R320PshVfJLJK2DHiqT
+         Mf2rSG52kPSueHDdY5hgoytFeuXIxXBJZqp/oEi/zCF9hMZ4QkohiD+f74nol2bWdWIG
+         mUICLqi+CWXWAmk89d2M8TK/K2v8eOg7G1LAZpWnuxHG8eh8oNGDVzHiohuTgqwT8p+z
+         O+9uwZMtmLa0A50n9bVKWxdHfMIMDABkQYIAw+DJndvMf1L5S8xh9cNQ0HCMeBD+V2Pb
+         XH0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s29-20020a05622a1a9d00b0042be2fc5a52si175193qtc.601.2024.01.30.08.38.27
+        by mx.google.com with ESMTPS id q9-20020a056214194900b0068c56e7e713si3318707qvk.236.2024.01.30.08.39.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 08:38:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jan 2024 08:39:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rUr7b-0001a5-BT; Tue, 30 Jan 2024 11:38:03 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rUr7b-0001bS-E3; Tue, 30 Jan 2024 11:38:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUr7Y-0001QA-UK
- for qemu-devel@nongnu.org; Tue, 30 Jan 2024 11:38:00 -0500
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUr7Y-0001Q0-QF
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 11:38:00 -0500
 Received: from us-smtp-delivery-44.mimecast.com ([205.139.111.44])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUr7V-0005pu-HA
- for qemu-devel@nongnu.org; Tue, 30 Jan 2024 11:38:00 -0500
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-542-lx7CQVTENWK2PYxOROMCVg-1; Tue,
- 30 Jan 2024 11:37:48 -0500
-X-MC-Unique: lx7CQVTENWK2PYxOROMCVg-1
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUr7V-0005px-I1
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 11:38:00 -0500
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-658-0Cq1PfI_MEqMDL4w0X1CrA-1; Tue, 30 Jan 2024 11:37:45 -0500
+X-MC-Unique: 0Cq1PfI_MEqMDL4w0X1CrA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 517113C2E0B7;
- Tue, 30 Jan 2024 16:37:47 +0000 (UTC)
-Received: from bahia.redhat.com (unknown [10.39.192.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 609D3ABFD;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 25D45837227;
  Tue, 30 Jan 2024 16:37:45 +0000 (UTC)
+Received: from bahia.redhat.com (unknown [10.39.192.68])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 761988C11;
+ Tue, 30 Jan 2024 16:37:42 +0000 (UTC)
 From: Greg Kurz <groug@kaod.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -73,13 +72,12 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org, Song Gao <gaosong@loongson.cn>,
  Richard Henderson <richard.henderson@linaro.org>,
  Greg Kurz <groug@kaod.org>
-Subject: [PATCH v2 1/3] hw/i386: Add `\n` to hint message
-Date: Tue, 30 Jan 2024 17:37:39 +0100
-Message-ID: <20240130163741.145925-2-groug@kaod.org>
-In-Reply-To: <20240130163741.145925-1-groug@kaod.org>
-References: <20240130163741.145925-1-groug@kaod.org>
+Subject: [PATCH v2 0/3] acpi-build: Fix hint messages
+Date: Tue, 30 Jan 2024 17:37:38 +0100
+Message-ID: <20240130163741.145925-1-groug@kaod.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
 Received-SPF: softfail client-ip=205.139.111.44; envelope-from=groug@kaod.org;
  helo=us-smtp-delivery-44.mimecast.com
@@ -90,50 +88,40 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8j9ndk1a5T+U
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jMkxpz1czQXV
 
-error_printf() doesn't add newlines.
-
-Signed-off-by: Greg Kurz <groug@kaod.org>
----
- hw/i386/acpi-build.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index edc979379c03..e990b0ae927f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2697,7 +2697,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                         " migration may not work",
-                         tables_blob->len, legacy_table_size);
-             error_printf("Try removing CPUs, NUMA nodes, memory slots"
--                         " or PCI bridges.");
-+                         " or PCI bridges.\n");
-         }
-         g_array_set_size(tables_blob, legacy_table_size);
-     } else {
-@@ -2709,7 +2709,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                         " migration may not work",
-                         tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
-             error_printf("Try removing CPUs, NUMA nodes, memory slots"
--                         " or PCI bridges.");
-+                         " or PCI bridges.\n");
-         }
-         acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
-     }
--- 
-2.43.0
+ACPI build for ARM, i386 and Loongarch all have the=0D
+same warning report with a hint for the user. The=0D
+hint is printed with error_printf() as expected but=0D
+it lacks the terminating '\n'.=0D
+=0D
+v2:=0D
+- s/error_fprintf/error_printf in commit logs (Ani)=0D
+=0D
+Greg Kurz (3):=0D
+  hw/i386: Add `\n` to hint message=0D
+  hw/loongarch: Add `\n` to hint message=0D
+  hw/arm: Add `\n` to hint message=0D
+=0D
+ hw/arm/virt-acpi-build.c  | 2 +-=0D
+ hw/i386/acpi-build.c      | 4 ++--=0D
+ hw/loongarch/acpi-build.c | 2 +-=0D
+ 3 files changed, 4 insertions(+), 4 deletions(-)=0D
+=0D
+-- =0D
+2.43.0=0D
+=0D
 

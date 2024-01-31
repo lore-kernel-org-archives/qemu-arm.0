@@ -1,102 +1,143 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1281102ejk;
-        Tue, 30 Jan 2024 22:05:21 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGD3BVaiOt93ZlrkGOK6faFVmhpQ+3ov4kc4fKC2D7dfcfZ+cXJnDIWL8Rx5sNQRdChP7Ng
-X-Received: by 2002:a05:620a:3728:b0:784:222c:e155 with SMTP id de40-20020a05620a372800b00784222ce155mr750492qkb.69.1706681121358;
-        Tue, 30 Jan 2024 22:05:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706681121; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1285884ejk;
+        Tue, 30 Jan 2024 22:18:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHcTYkapP076ByO23SP9BS0O/3NEeiusTMnLT+ghyKDPhQgG3Fjqq59SRehWE7iRMja+zId
+X-Received: by 2002:a81:9857:0:b0:603:c5dd:4a34 with SMTP id p84-20020a819857000000b00603c5dd4a34mr567901ywg.41.1706681922944;
+        Tue, 30 Jan 2024 22:18:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706681922; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FQOUax57LAquyAKiE5vMZz8UHnzu5wMqK0vSspFrqswmiiM9lQCxEpAOIqwxJ50xMm
-         29gOtgwtXfUJRezkdlPvk92dAk3biq0sJxk4yVYAz7/ss4D/M/hufDGSBfscR5yeGuGB
-         2v7snQ+X4R0B4tDK6nTaHkAKG/n70PrUvP1g4cistQQfAGT3stPu75M+yfSVKwFmhApB
-         kfll1xw32oogYcOiusDXchx9zk/GXNFducD1PcJTp8e7Q00QqKabjJ8jW7lNGMQAFTEO
-         YbBjYUYD3UO6XKIZksfs4jkcCDi1va1nM4IDnoU1U/01Vj3PZudUTAXZJTnUAsodfZ2m
-         KNlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=rFM60Mt5N9nRUevYumtZflSE3V3qEQARu0pRchpCkrA=;
-        fh=zDtG5F514A6EWrsTv1E33irBQCazMKAL8K8ESgkuw1o=;
-        b=FPm8Nbcj8GCgdpFlLncgqLHb9YeFWVuvOkwrEF3bLiozxKYSLykCmCAFwp05zlx9NK
-         ncBeg4MEMwCj7aqQYA3EfXUb75u11ozuKkPeSwtVbnt39ifqvKRpWVxGj1QrjdfXtXQI
-         qJYHH3ajvxiam4uYIXwy8uiUMIvN5W94rTV19iYFwG05oYTDMHdNgnoGUqZ5nBCeMnpf
-         eyTKcw1hDGulQdVpqLtvgpb/Zu4kHPmFGLkTWiOjaQFJbLH2xHSlA3KRs03Dwb4a9KrY
-         pEzWz8RVzP1TRTuQqvWX963pcu9VC0JGxSa8AZAWG6FQw6NChu7UXKXZUmXQRpgxHMfs
-         6sNg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id vw20-20020a05620a565400b00783ebf59814si8327449qkn.360.2024.01.30.22.05.21
+        b=dVaDI1OpddG9hdqyOw9/iFYVSIQ66AypOdlabW/1bP3/1yE2H9R4U0f6ti+cB5YKnz
+         KuJKFqNRx8EjQZXKt8eluBRiJATzNF6KPZBwldi1lxCvbxrxEiwx9ffFJEG/lcO68W/3
+         uBvWZ9DzsbYxOzjx0EtTr/S1UmlyH1qYJBaX6jR3lW4uqZnX8MTwfumx7oJKNq+LGGRO
+         nAhp0ocITEtQEbKd6+cZ5BhbMQqwhbuCbkjzO+165+7Zl3ak18/EELD7o2M+ODnpJjoE
+         viZZMDg1/qyOcxPIu/1O3BJ4b8YYiLoL7ODSFao10pIUjHfaAN1quVX3+0E7qME1wooi
+         hjPQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
+         :dkim-signature;
+        bh=uMOJVNfR07h1/ubgQW2Q7QaaOn6H+CmbyhhDETS3nnw=;
+        fh=mmrTrST/wv2Ob1LJT04iriVVx6yVklLd6ZA5Iepplzw=;
+        b=WEpXynNtfaehzxgZmHfZmJk99RCE8LWADmed2m/ZM4uwbUwKjP1j9PyTALRU348hTt
+         AMEDZsMsfSew20N8C/uSPtXL4eOIIy+GCh08dB9pYkO5SWzaTMjRrKefITqhE/KT0OdK
+         tA7VssJGZJd5tUczgpXkwWMvl4B+PHZCmMgNxt19S+LmY9+qd2Vk2+wo6y6ykBUs1rof
+         ktICKMe4zrOzMidViNjO/japJMc/h46Aui5Z3VE2VWDSk60F6Yrz+aEjZqpaWatI24hC
+         Xgtz/sMlM2GU5SSIDz+LL6nukB+guIsUwYVT+aESk6gvvafEiBKQr1TTeU8pScwjYdJO
+         /KiQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cQ2Oekej;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id b5-20020a05622a020500b0042be3959736si1234009qtx.253.2024.01.30.22.18.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 22:05:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jan 2024 22:18:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rV3iJ-0002lx-F3; Wed, 31 Jan 2024 01:04:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV3iH-0002lN-Qu
- for qemu-arm@nongnu.org; Wed, 31 Jan 2024 01:04:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV3iF-0000cG-R6
- for qemu-arm@nongnu.org; Wed, 31 Jan 2024 01:04:45 -0500
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cQ2Oekej;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-7529-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 8A6B31C269B2
+	for <alex.bennee@linaro.org>; Wed, 31 Jan 2024 06:18:42 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 93C643E485;
+	Wed, 31 Jan 2024 06:18:38 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cQ2Oekej"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23EB33E477
+	for <kvm@vger.kernel.org>; Wed, 31 Jan 2024 06:18:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1706681918; cv=none; b=urZY0CreZe4UADsbeNT0j4cFznHEXVOnneHzFk1HGI4kqZE1zzjssZPXw6Lw8q5Y2pJQZy46s+mcmjaIREQUqvmoab1fuWgYnCfE2q3MoJCOBXUmnipzE5DOsrQAgKWnazSNKkxuM69cLNSnY9tDpUaNGdjpMpvd3xzcIXYS9HU=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1706681918; c=relaxed/simple;
+	bh=zA6aJsaDtmLd5+Y6MNNx83hN3QwgcpsGMzFn6iLlCH8=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=HemMtlAXKbBHEJzWYR13cYf6UeVKnw5sQ6PRCkA+fBT+BRaPjic8vhqOhFcgEBVjdlTbLbieObI5iIqtfcV8P2qB8UM94Zjp+IE2iHWSpRvRSWot4rEiLKYpWReAQShJ+boSnBTvLI4/XRZWEUnTEzxdHRXI2/uLDAKe8fpEqpQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cQ2Oekej; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1706681915;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=uMOJVNfR07h1/ubgQW2Q7QaaOn6H+CmbyhhDETS3nnw=;
+	b=cQ2OekejOvi2y/xyImkYJRGubNlH6hfTKXLmyin3Gw1atCuCVCi5qLOSbxufCrTJ76YLdg
+	8iMJ+ikngZLAm03pnLiFumkAJPlgY3Za9ZKheHZeCwkRbt16VHe8NlnXOan+hecXPj18xN
+	n8o/xWPQ4JCJKfjCcIYuWSA+0SNYVko=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-426-y1i_2l01M8ensHf97gf1Lg-1; Wed, 31 Jan 2024 01:04:40 -0500
-X-MC-Unique: y1i_2l01M8ensHf97gf1Lg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-40ef75adf5fso15591645e9.0
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 22:04:40 -0800 (PST)
+ us-mta-281-985ozJ5KPo-2Awla3T-LOA-1; Wed, 31 Jan 2024 01:18:32 -0500
+X-MC-Unique: 985ozJ5KPo-2Awla3T-LOA-1
+Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-67ef8bbfe89so104401926d6.0
+        for <kvm@vger.kernel.org>; Tue, 30 Jan 2024 22:18:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706681079; x=1707285879;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rFM60Mt5N9nRUevYumtZflSE3V3qEQARu0pRchpCkrA=;
- b=s7+T7fC2OBhuDYtEnPvbzCyzIAY/A8zYqtryO4K1cZwUyNyjulqX7glcku/AWcOn1W
- 3A9Y+eVHQL1B6hWxZzknvVrxf4iWen/3u9hVA8i2MdfO2pj4ZWhzguli1sDnks3/4LMX
- axBeGXdtBsgVM8A5enrQTgF+sRf0x1cQYhjuaon/BfGfED29Aw2URC5G1KSeCsSuBJvh
- wlqif0i5MYMi7B/quPa8GhNRaZs9MAyA2szPrGZr8pEbJcObA+RjMoUto6PFX/OINwf3
- yRZkjOUgtDylvPpwnFOuYtXk8lWJyjR3roLdPxhpp9V4Oh5LqmQRWcdYAV0JOoQ/0w6j
- SBPw==
-X-Gm-Message-State: AOJu0YxRW62crXINPu0bCOe3JgmjVtseHxgWK3dYVPI3FhonoZMtAQpw
- 341lOvWc/n4aAgwtfO7uVkpfgcRaUOMmru2W3AKlSJkYu8t5qHuWc2i67O8n9SIZyb3TxCHEpkO
- 1vDgg7G3meG/af0p4ALiYLNV65s/7rtSxIHhJEu/Ivy3lJN93wA==
-X-Received: by 2002:a05:600c:310d:b0:40e:e8e1:cbc3 with SMTP id
- g13-20020a05600c310d00b0040ee8e1cbc3mr493531wmo.0.1706681079515; 
- Tue, 30 Jan 2024 22:04:39 -0800 (PST)
-X-Received: by 2002:a05:600c:310d:b0:40e:e8e1:cbc3 with SMTP id
- g13-20020a05600c310d00b0040ee8e1cbc3mr493516wmo.0.1706681079200; 
- Tue, 30 Jan 2024 22:04:39 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-177-196.web.vodafone.de.
- [109.43.177.196]) by smtp.gmail.com with ESMTPSA id
- i7-20020a05600c290700b0040ecdd672fasm493417wmd.13.2024.01.30.22.04.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jan 2024 22:04:38 -0800 (PST)
-Message-ID: <5a143d3e-7fcb-45d3-ae40-744da897df83@redhat.com>
-Date: Wed, 31 Jan 2024 07:04:37 +0100
+        d=1e100.net; s=20230601; t=1706681912; x=1707286712;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uMOJVNfR07h1/ubgQW2Q7QaaOn6H+CmbyhhDETS3nnw=;
+        b=kiq9Or8vY4rG+zjgBtLy/RWvtLnSk5pkeQrp04DzmJ0yLgSVADUK/173JPiFHeOIAX
+         d6oGGe7vmufrWJX2HypoJ2RAJWKlG+5cgTcm/FdwMbm1eKDeZlN6xdNFiuDQoyZJwfPa
+         SLE6T/4Ze1B2GjWVfSj81hze6Ei3w2q5/gJsOJxtHpxqZGP015zlvcjq8B7S1Khfx87D
+         YCxf4rxcHUSzGVjpurpTqp7RYwjqFp5Rb6hx/ryTdBHPuIw2klysRJYN1pWvlXsClgv1
+         ApRlucX3V4P+KBWwZk603JyqGTl6Z9vwV7hmBiub8NcNj2+W9Vdiu84rh8xjwR4T/shM
+         GXSA==
+X-Gm-Message-State: AOJu0YxdTxAcxD2dGxJV3pKlTxHuMacs99Y/40+Yj4CigJj3YLfFXPMN
+	F7ppTQ6cFmb3uozstJgKdBwM77STJ2Hn54lVrnlyRDIiYFDONUQ9Kk22Z3YjTdxh4o5s61WgmRT
+	jtW4Ln2GdSFOIYw8R5dEPqFPOqLduNxynHt8oEncPhb1Ew6HGCg==
+X-Received: by 2002:ad4:5de3:0:b0:68c:5486:b770 with SMTP id jn3-20020ad45de3000000b0068c5486b770mr778547qvb.65.1706681912364;
+        Tue, 30 Jan 2024 22:18:32 -0800 (PST)
+X-Received: by 2002:ad4:5de3:0:b0:68c:5486:b770 with SMTP id jn3-20020ad45de3000000b0068c5486b770mr778537qvb.65.1706681912134;
+        Tue, 30 Jan 2024 22:18:32 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-177-196.web.vodafone.de. [109.43.177.196])
+        by smtp.gmail.com with ESMTPSA id lr6-20020a0562145bc600b0068189e9d3a3sm94384qvb.112.2024.01.30.22.18.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Jan 2024 22:18:31 -0800 (PST)
+Message-ID: <a63eb87f-042a-41aa-a3b8-9fed549c4ccb@redhat.com>
+Date: Wed, 31 Jan 2024 07:18:23 +0100
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 8/8] Add tests for the STM32L4x5_RCC
-To: Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Laurent Vivier <lvivier@redhat.com>
-References: <20240130160656.113112-1-arnaud.minier@telecom-paris.fr>
- <20240130161316.114675-1-arnaud.minier@telecom-paris.fr>
+Subject: Re: [PATCH v3 02/29] hw/core: Declare CPUArchId::cpu as CPUState
+ instead of Object
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Song Gao <gaosong@loongson.cn>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20240129164514.73104-1-philmd@linaro.org>
+ <20240129164514.73104-3-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -140,51 +181,24 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240130161316.114675-1-arnaud.minier@telecom-paris.fr>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <20240129164514.73104-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u6acrWM6adI7
+X-TUID: hPof6dK6tpQc
 
-On 30/01/2024 17.13, Arnaud Minier wrote:
-> Tests:
-> - the ability to change the sysclk of the device
-> - the ability to enable/disable/configure the PLLs
-> - if the clock multiplexers work
-> - the register flags and the generation of irqs
+On 29/01/2024 17.44, Philippe Mathieu-Daudé wrote:
+> Do not accept any Object for CPUArchId::cpu field,
+> restrict it to CPUState type.
 > 
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/qtest/meson.build          |   3 +-
->   tests/qtest/stm32l4x5_rcc-test.c | 207 +++++++++++++++++++++++++++++++
->   2 files changed, 209 insertions(+), 1 deletion(-)
->   create mode 100644 tests/qtest/stm32l4x5_rcc-test.c
+>   include/hw/boards.h        | 2 +-
+>   hw/core/machine.c          | 4 ++--
+>   hw/i386/x86.c              | 2 +-
+>   hw/loongarch/virt.c        | 2 +-
+>   hw/ppc/spapr.c             | 5 ++---
+>   hw/s390x/s390-virtio-ccw.c | 2 +-
+>   6 files changed, 8 insertions(+), 9 deletions(-)
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

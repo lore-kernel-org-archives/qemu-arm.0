@@ -1,221 +1,176 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1165536ejk;
-        Tue, 30 Jan 2024 16:28:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHNjeWzItpTZEmuDOsIbh1VEHlSt4K+4FHpEHbVirHOY3Ozcfe7TcbPVKKMFbwpv8AODy//
-X-Received: by 2002:a05:622a:302:b0:42a:7372:b847 with SMTP id q2-20020a05622a030200b0042a7372b847mr304787qtw.22.1706660896955;
-        Tue, 30 Jan 2024 16:28:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706660896; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1417241ejk;
+        Wed, 31 Jan 2024 03:48:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFqU2GHCG7a40q0tpCKgSB4K+R2PtqG/PUpG7JOXQdxG2CSuUGEP87hK5FMaeJ+zDO5q4NL
+X-Received: by 2002:a25:aa2c:0:b0:dc6:1735:e0ac with SMTP id s41-20020a25aa2c000000b00dc61735e0acmr1445223ybi.15.1706701704096;
+        Wed, 31 Jan 2024 03:48:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706701704; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWbDfvCBLfDkaq1MgErEqsoa1ai0PlEHV5jBv6YQa3KaiwDYe/DGcXxgru41ryh4mr
-         0EQXON17cP8f27+iUTs9llS4eGrlSCXM1Qq0EsEFDX+Oq1Ng6hWHujjI8xXl5eQTVUN2
-         Iu04qvGVfhWfqfvr2Nh7+JvOvpG0gaURRxQ6TMkv8a2/p3xFN3KDrIWN7/8mmmJ8oa10
-         kmuT4JxcUhsfpdiR4M2F15R/X3XvV9uYceD/jVKmCv1q8/TWHCH/sD091oEtrGIiMIu0
-         0HdrFloZR+yiWAQ/UugYs9aleuz5qO6JtAHYH8/mY8biFH10cAIm7xRw26OP/eKJCVRd
-         NfNA==
+        b=Fh03rw40mDS9vjPH0PUnZYr6Dh4qd1mt7/NF4bXktum4GtB0+3Ocvyu2rygxIV03nG
+         ueJKEFwtHiFPDkS/X06hkWVRx4SW6m1vZaLiN79io7geQwtUuP6CDPW5JdyhWwN5aJRI
+         1J3RKZTxDm27mhZxiCDAz/Jg9KpmFah7rRRtjcfUPCPJRhQgWDzVfv27/0gLJakH/qrt
+         aDA2nLosNIQRFgmlhsV6X/c7BbpewB45oS1Bc3VetDrv5tTqB7NfBMRotPpdfmXv4aBK
+         wIkupz5j6fWDnrzvAWLDdcQfYgIQN5sBTwOMgppRr5JReR93c66b/ApI/266h5gvDlt2
+         ZD8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
-        fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
-        b=cRfEUD82bRkfDptJGBnMzfiDAR3bqhgFtbDuyf24LigdG0n5xqSxJHuSqMa3Z90Cfp
-         7Rr7JD3jsDIN2M/uYVnb+r52v6+M3eSjlfUWsVc9BlpKHIdtuPy70UwXwTpLJh/cg1DR
-         k5Pt0O1DpkJMD548wemYHbeDtbDOzI7HY8FZjIvoXL8rmeajmiXTmrBl9diHGiXj0xQ0
-         ODtu4RL5Ix2BLDk0a8U7oPQxvOi4UIN2Kc29aepNm1bGGDQoYTGrX3IApKhTA2Ek7wbu
-         Ea0V+B1iRGKY1lW6BsTUFOBZHYxw+JdoZXZAwUbQo0Fek7bvXRfxML7ccEIwSsmGuJkl
-         gz3A==
+        h=mime-version:content-transfer-encoding:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=4FQUjQhC01Tew674/pUPpzocTQIdWIRlLkpGMzoFTpA=;
+        fh=JQc+W0jtUTepZaV4P5RVKOlUj6wNMHR6L5RQkffaadk=;
+        b=MwMP/slLiCKK+X7Q8WqfLh8el553rqTQr4YJujblRJcpjd2ngGk7Xxv+x6nZ/6hSSi
+         PreDntjpi3NxwGV7OqIomCg4Me91OVSWAYBBg9e1ToRGhKqzrRBLGEMJXhJLX6TCuskJ
+         GaWUXSyWegwt7ui6fO+Lvi/vf74flCpDNlIy45zcA+aRZsUoLKUllaQS48X16Blh4IrW
+         Ra27cHCbCH6/kHi23hLRq3eTE3YS+gnji3wsRQTiMIlxMVNIeB3axAHudbAK/yIEI5OX
+         y6OQsDEkckcTWTXaeS19IsjhDmvCTlejbo0ljEWaiw74Z6T14PdZdnabVTeyV4U/9mkB
+         xAhA==;
+        darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=E5aeAYuJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a05622a018e00b0042be5c0add1si453337qtw.701.2024.01.30.16.28.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 16:28:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="OX5mm/wx";
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+X-Forwarded-Encrypted: i=0; AJvYcCWFSg0cidwwMk7ZAhNmGvRaozByCVcvuJrajdBWy+EqiGsdaCBTmoIDSGaRvkYSgaq87//zXvuiJ/ZSf56jhXjmTMGAtriYsJdykDtfyxzKopd6Z/gkz4s9i6xno9mLB238IcJqNTIkyKZxz0HgAMyVhh7l
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id g186-20020a25dbc3000000b00dc238d90fb0si6032268ybf.55.2024.01.31.03.48.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Jan 2024 03:48:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=E5aeAYuJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rUySU-00072g-Qm; Tue, 30 Jan 2024 19:28:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com>)
- id 1rUyST-00072B-Or
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 19:28:05 -0500
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com>)
- id 1rUySS-0004IH-5D
- for qemu-arm@nongnu.org; Tue, 30 Jan 2024 19:28:05 -0500
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-60404b12af2so7898367b3.2
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 16:28:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1706660882; x=1707265682; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
- b=E5aeAYuJnRq639wuvUc/PEWsM+NIcgc5FIGenyQ98irtGpR82UlvonlNPV6yEOkCZ/
- jOuLRmgjSJLEvMcEIi8XmppvP4WDIbi8slt0p/rcM1SfHxS6HOxdJRvnY2AsnM/BzQs2
- LEqM0hqvtnaEK1nMGS/poUoF9bhFcdn5mpLKxv8AnV2oA6VLz7rbwx5rJj/2gJgM8BEh
- c2kZxQQgyD0GR48sjwiabgDtvTn0jrtrWayzgjWnmZIt9NSe+p7s/XExZZqLYVWlaaA7
- Li3ygGLrWmAuiqvzSMjdPZqFmdaBpXkJunKwMJLuKVuq6aIhlkJnkKmYWBCOjxsEL0ke
- qZZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706660882; x=1707265682;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
- b=b4L1SPQCfXhUJDEQDZA8zmvglKH19xYs+zOxB0BPtoTgkiSZjD2m6gwblprpAA9CWk
- Pg6iUBucJHdUziaRASQJo6QTTfqQKsAzx7XfPxNKdI4ceJmX6QEZcUk6WAkX9Cm1IH7x
- AHy4jseUHgwzgzUqmj/L5HyiEWdZHirYHqkcws24w6Qlov2V0ZyIJAZak0d2vpowGA3S
- ZHxqzKo24x4wy+pYmM/Jg0wDtppI9iNxCZn5Xi3XZI2yQu/qO442vo5GSIVAf4ZKeBOB
- 4cE5g1vF+munEz1r69Zc11PStYRNdfwx0NcYzBABAcNRzelLCxJ7s4Z6wGP2HoUA1Joc
- Tazg==
-X-Gm-Message-State: AOJu0YxBYGVs0FMAd39f4CQb9gkqIvELN6b8rk5CrTioqH1rystSBZzX
- 9Wyf8VTWlatohL5LormvI/ZGGdoFVJDWM+gfDJ7wXvYPw9/HMme+1BVTd4srTPWhifC3Nmtfyyo
- Xk80lcyYyLNjQKXAU9W27cXv0sg==
-X-Received: from nabihestefan.c.googlers.com
- ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:690c:397:b0:5f9:abfe:243c with
- SMTP id bh23-20020a05690c039700b005f9abfe243cmr195847ywb.3.1706660882676;
- Tue, 30 Jan 2024 16:28:02 -0800 (PST)
-Date: Wed, 31 Jan 2024 00:27:53 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.43.0.429.g432eaa2c6b-goog
-Message-ID: <20240131002800.989285-1-nabihestefan@google.com>
-Subject: [PATCH v16 0/6] Implementation of GMAC Networking Module
-From: Nabih Estefan <nabihestefan@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
- nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
- Hila.Miranda-Kuzi@nuvoton.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x1149.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6hI73OcKcwNA
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="OX5mm/wx";
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40VBaZK3008112;
+	Wed, 31 Jan 2024 11:48:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : content-type : content-transfer-encoding :
+ mime-version; s=pp1; bh=4FQUjQhC01Tew674/pUPpzocTQIdWIRlLkpGMzoFTpA=;
+ b=OX5mm/wxkQO9dg5uNjVOXIgDsJYfBAEBzknj1zhHdZ3LEWcRnfWtLbZJ1HAOWaHM4dM8
+ fndrhNCvH4hsv2o0YWFqCaXNJfBQsslZsJkLp9f5S0jwrpbXwXdQnt9Xkuonw5/6I4Mo
+ UT1lc9uNEuv6frOtx875PFg2Caaggy0J9b/Iw9kA+sYGoVo9KcvxFRxBOf17zvrXoKgk
+ EX5GXzXaRI5MQBaHNgnLFchlSZt7XSnRPuoZXQb0oKTJg2qONXi9WTI/mklxJsKiRKeb
+ 03hkULWV8fQinu2CTjyiADu9k2pTGwlk9pLZIFWymCQ1N7V9exaNH8oz9egifHnALC/N uw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vymu8195e-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 31 Jan 2024 11:48:23 +0000
+Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40VBg8Qt025207;
+	Wed, 31 Jan 2024 11:48:22 GMT
+Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vymu8194t-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 31 Jan 2024 11:48:22 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40VB0NHt002190;
+	Wed, 31 Jan 2024 11:48:20 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3vwc5tddr8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 31 Jan 2024 11:48:20 +0000
+Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
+	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40VBmJdf44172024
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 31 Jan 2024 11:48:19 GMT
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 1896E20043;
+	Wed, 31 Jan 2024 11:48:19 +0000 (GMT)
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id CC20E20040;
+	Wed, 31 Jan 2024 11:48:18 +0000 (GMT)
+Received: from black.boeblingen.de.ibm.com (unknown [9.155.200.166])
+	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 31 Jan 2024 11:48:18 +0000 (GMT)
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        David Hildenbrand <david@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v5 0/3] linux-user: Allow gdbstub to ignore page protection
+Date: Wed, 31 Jan 2024 12:46:28 +0100
+Message-ID: <20240131114817.288027-1-iii@linux.ibm.com>
+X-Mailer: git-send-email 2.43.0
+Content-Type: text/plain; charset=UTF-8
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: kRkCROWgRgL8Ehvi9FKWWtCwtbH94_0d
+X-Proofpoint-ORIG-GUID: n-1l93qGRcvnMrdz4lmbOuwXJ13NFKLp
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-31_06,2024-01-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ adultscore=0 malwarescore=0 suspectscore=0 mlxlogscore=851 bulkscore=0
+ phishscore=0 impostorscore=0 mlxscore=0 lowpriorityscore=0 spamscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401310089
+X-TUID: fCgvlX6GZXnY
 
-From: Nabih Estefan Diaz <nabihestefan@google.com>
+v4: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg05857.html
+v4 -> v5: Fix the probe_proc_self_mem vs probe_proc_self_mem() typo.
+          Add Alex's R-b and A-b.
 
-[Changes since v15]
+v3: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg02907.html
+v3 -> v4: Hide InteractiveConsole behind QEMU_TEST_INTERACTIVE (Alex).
+          Probe /proc/self/mem in the PROT_NONE test.
 
-Dropped PCI MBox patches. They were presenting a lot of problems with endianness and are not directly related to the GMAC. Breaking them apart to debug separately and let the GMAC itself be upstreamed faster.
+v2: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg01592.html
+v2 -> v3: Add Richard's R-b on [1/3].
+          Fix printing the architecture name and the number of failures
+          in test_gdbstub.py.
+          Patches that need review: [2/3] and [3/3].
 
-[Changes since v14]
-Expanded comment on chardev device and fixed comment formatting
+v1: https://lists.gnu.org/archive/html/qemu-devel/2024-01/msg01314.html
+v1 -> v2: Use /proc/self/mem as a fallback. Handle TB invalidation
+          (Richard).
+          Test cross-page accesses.
 
-[Changes since v13]
-Added a couple clarifying comments and documentation about chardev
-device expected protocol for ease of review.
+RFC: https://lists.gnu.org/archive/html/qemu-devel/2023-12/msg02044.html
+RFC -> v1: Use /proc/self/mem and accept that this will not work
+           without /proc.
+           Factor out a couple functions for gdbstub testing.
+           Add a test.
 
-[Changes since v12]
-Fix errors found when testing in big-endian host.
+Hi,
 
-[Changes since v11]
-Branch couldn't be merged with master because of issues in patchset 6.
-Fixed.
+I've noticed that gdbstub behaves differently from gdbserver in that it
+doesn't allow reading non-readable pages. This series improves the
+situation by using the same mechanism as gdbserver: /proc/self/mem.
 
-[Changes since v10]
-Fixed macOS build issue. Changed imports to not be linux-specific.
+Best regards,
+Ilya
 
-[Changes since v9]
-More cleanup and fixes based on suggestions from Peter Maydell
-(peter.maydell@linaro.org) suggestions.
 
-[Changes since v8]
-Suggestions and Fixes from Peter Maydell (peter.maydell@linaro.org),
-also cleaned up changes so nothing is deleted in a later patch that was
-added in an earlier patch. Patch count decresed by 1 because this cleanup
-led to one of the patches being irrelevant.
+Ilya Leoshkevich (3):
+  linux-user: Allow gdbstub to ignore page protection
+  tests/tcg: Factor out gdbstub test functions
+  tests/tcg: Add the PROT_NONE gdbstub test
 
-[Changes since v7]
-Fixed patch 4 declaration of new NIC based on comments by Peter Maydell
-(peter.maydell@linaro.org)
-
-[Changes since v6]
-Remove the Change-Ids from the commit messages.
-
-[Changes since v5]
-Undid remove of some qtests that seem to have been caused by a merge
-conflict.
-
-[Changes since v4]
-Added Signed-off-by tag and fixed patch 4 commit message as suggested by
-Peter Maydell (peter.maydell@linaro.org)
-
-[Changes since v3]
-Fixed comments from Hao Wu (wuhaotsh@google.com)
-
-[Changes since v2]
-Fixed bugs related to the RC functionality of the GMAC. Added and
-squashed patches related to that.
-
-[Changes since v1]
-Fixed some errors in formatting.
-Fixed a merge error that I didn't see in v1.
-Removed Nuvoton 8xx references since that is a separate patch set.
-
-[Original Cover]
-Creates NPI Mailbox Module with data verification for read and write (internal and external),
-wiring to the Nuvoton SoC, and QTests.
-
-Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
-and registers. Also includes QTests for the different functionalities.
-
-Hao Wu (2):
-  hw/net: Add NPCMXXX GMAC device
-  hw/arm: Add GMAC devices to NPCM7XX SoC
-
-Nabih Estefan Diaz (4):
-  tests/qtest: Creating qtest for GMAC Module
-  hw/net: GMAC Rx Implementation
-  hw/net: GMAC Tx Implementation
-  tests/qtest: Adding PCS Module test to GMAC Qtest
-
- hw/arm/npcm7xx.c             |  37 +-
- hw/net/meson.build           |   2 +-
- hw/net/npcm_gmac.c           | 942 +++++++++++++++++++++++++++++++++++
- hw/net/trace-events          |  19 +
- include/hw/arm/npcm7xx.h     |   2 +
- include/hw/net/npcm_gmac.h   | 343 +++++++++++++
- tests/qtest/meson.build      |   1 +
- tests/qtest/npcm_gmac-test.c | 344 +++++++++++++
- 8 files changed, 1687 insertions(+), 3 deletions(-)
- create mode 100644 hw/net/npcm_gmac.c
- create mode 100644 include/hw/net/npcm_gmac.h
- create mode 100644 tests/qtest/npcm_gmac-test.c
+ cpu-target.c                                  | 78 +++++++++++++++----
+ tests/guest-debug/run-test.py                 |  7 +-
+ tests/guest-debug/test_gdbstub.py             | 60 ++++++++++++++
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py   | 34 +-------
+ tests/tcg/aarch64/gdbstub/test-sve.py         | 33 +-------
+ tests/tcg/multiarch/Makefile.target           |  9 ++-
+ tests/tcg/multiarch/gdbstub/interrupt.py      | 47 ++---------
+ tests/tcg/multiarch/gdbstub/memory.py         | 41 +---------
+ tests/tcg/multiarch/gdbstub/prot-none.py      | 36 +++++++++
+ tests/tcg/multiarch/gdbstub/registers.py      | 41 ++--------
+ tests/tcg/multiarch/gdbstub/sha1.py           | 40 ++--------
+ .../multiarch/gdbstub/test-proc-mappings.py   | 39 +---------
+ .../multiarch/gdbstub/test-qxfer-auxv-read.py | 37 +--------
+ .../gdbstub/test-thread-breakpoint.py         | 37 +--------
+ tests/tcg/multiarch/prot-none.c               | 40 ++++++++++
+ tests/tcg/s390x/gdbstub/test-signals-s390x.py | 42 +---------
+ tests/tcg/s390x/gdbstub/test-svc.py           | 39 +---------
+ 17 files changed, 247 insertions(+), 413 deletions(-)
+ create mode 100644 tests/guest-debug/test_gdbstub.py
+ create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
+ create mode 100644 tests/tcg/multiarch/prot-none.c
 
 -- 
-2.43.0.429.g432eaa2c6b-goog
-
+2.43.0

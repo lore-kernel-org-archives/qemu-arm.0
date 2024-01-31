@@ -1,105 +1,106 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1301528ejk;
-        Tue, 30 Jan 2024 23:05:30 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGIYLsRhtBNlx5zeiHG9Vr/hZLvZlw+O7IZIrY2pUDf5cnhPPLyeZR2VAN8oYQ4ZTYeutyr
-X-Received: by 2002:a05:622a:48e:b0:42a:5038:212d with SMTP id p14-20020a05622a048e00b0042a5038212dmr968025qtx.52.1706684729867;
-        Tue, 30 Jan 2024 23:05:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706684729; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1302951ejk;
+        Tue, 30 Jan 2024 23:08:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHjhu/WsgKkN2N6NOzQpCCCeDze6JrVVRtOxPDZC4MIbMyJxNMJXJhCJ6OpLGQLnCgeSxkC
+X-Received: by 2002:ac8:5a84:0:b0:42a:4350:64c7 with SMTP id c4-20020ac85a84000000b0042a435064c7mr950987qtc.68.1706684928792;
+        Tue, 30 Jan 2024 23:08:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706684928; cv=none;
         d=google.com; s=arc-20160816;
-        b=jne74jCUf530QpSIFmwcqzhVWfJ7B8oGx+T6/M48PetDppF5m45HOyn9L3PtFYDefj
-         BCCH0EeSOSu6S+J9XgVt23F1Va6f7XUs4T2uK9Bz5qqHNEjT6Y3jOa0/towdxPc8HDvS
-         XUwKyJnjn463BmRvD4Kn+Ms9QBAx/i8w1f2xxqQTP1npvVg91aDdmbxuuAAgtiKjxa5Y
-         9oynGcg4A0MXX6HhrrMkWdwnE7lH3ns/2uXYmnR6A1g6dSDrOm7J/3q6a3V4TD5VtslZ
-         Kdir37/BVLk1kI9FFyn2k4cP2j8zH6lia8vP7LbIr3F3F5CYH1Xs7X6iY2v3hrl8WbGG
-         kOBg==
+        b=JpRBwFsyamsrIx0higCbXHqhAk0nDwzwxRi9LVgRsNGgI/5NfM7bdCaRXZVnusgjQC
+         h35aYfPD2pGfnZFx1gxz0PSQjS6lteQbkMDttfk5Dx4Ok0PMvaSUp1k/IAwYCB3+MKq3
+         20D3wKeVWEGSq00MViKb5zGtosMM/+EfLWeLsoUWX09EtYqu2MZdI9NWZ0AcVaMLqVtZ
+         w/5QUbon0rmA1POkB4BUAPnvC79CjTKGcnHNCudGw+FWccvs9ld/ZL+ht6QafRhZ+ViC
+         nyV3cEjTcJEB9qV6xBfxjl9uRX2AZXUIGgpHyU5Y/cym4OEFGDVdpDcho3VG0g651fdc
+         9/Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8AiSAaNqXgkWTRtyKOM3vJug/vLCC6s8u3kvFj9eyqI=;
-        fh=G2js+fSXD8xK50BIQs9IneEWMqm5TUrYNTbllffcVng=;
-        b=tuI4efngMtf/mp7J+TEKD66nL44m+Q/DI6TfF8d35SVQxvHxh1rbJsoVg03czJcfW0
-         tdPq32XKHJFylIR02KLCgzRmM1fcd8YDY/dwuIOsO8seQ4O4BRgzQ/9zs05Sz2ZyeGTn
-         W71fzbVJ1yC2DJrtcjwF3klHhUX5sto2jgh35oRkGkiEWJcN6pJYG7wrysfMfTNutIiz
-         BIoOG+BkhITm940lhqvtySxrrAKx9m2rSQNeLQ+9F9OLnkWnxX4pmS1aQ77D/y+AQ9Xn
-         qOg2qvp4qKYAFpAE9AtRM52Z/Y1fO7yCJT0skEzZicJE2FzHBVcHm5BQD1+kFuA22zjH
-         d6UA==
+        bh=ZsFfewjdQz3KyQi8H2vALHlt5tcxl47fZDn5dbDYUwY=;
+        fh=WoFIaa4mHIxi8i+tJbjIEJRGZ/mGca2f9f6cQYI709o=;
+        b=BNADPgrzsiIPmKQ2LmEv6yfFlhhEX7qQWsbF3Omvq0iFhq9W0QbH5jaHsypzcDdXNm
+         harjRNztYhjtRIq/cf04LGfinA/VRtWL59FTLhNYimeC1eUynZvYFIuIagozIqz/55dt
+         ffvZkoGPZfu7slckjNeoWjGMjw3cEK5JXgCp0qaCnq4h/wz9Ad7kmjCk7+cw8smTqM5U
+         Y7kl2QrmGXkyRhv5A5KB3y8rXGlIRHP+f2US3YHYcw1L2S/sPsckBhpoAHe8EDuhrxov
+         OuiKvfcdI2JwK3T57k32yB2n/t2ltusUoS2S006S+JBuoFyqVTVzWrd7mJ70itlD9F2M
+         wenQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ONXJsrH4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jm9Vw6QA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a05622a134700b0042aa70b5cb1si5943897qtk.47.2024.01.30.23.05.29
+        by mx.google.com with ESMTPS id c4-20020ac87dc4000000b0042ab1af98a8si3897499qte.387.2024.01.30.23.08.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 23:05:29 -0800 (PST)
+        Tue, 30 Jan 2024 23:08:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ONXJsrH4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jm9Vw6QA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rV4eO-0008CP-DK; Wed, 31 Jan 2024 02:04:48 -0500
+	id 1rV4iA-0001Co-Qx; Wed, 31 Jan 2024 02:08:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV4eN-0008CG-8L
- for qemu-arm@nongnu.org; Wed, 31 Jan 2024 02:04:47 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV4iA-0001Cf-2u
+ for qemu-arm@nongnu.org; Wed, 31 Jan 2024 02:08:42 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV4e7-0003Hu-S1
- for qemu-arm@nongnu.org; Wed, 31 Jan 2024 02:04:47 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rV4hu-00043g-HC
+ for qemu-arm@nongnu.org; Wed, 31 Jan 2024 02:08:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706684671;
+ s=mimecast20190719; t=1706684905;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=8AiSAaNqXgkWTRtyKOM3vJug/vLCC6s8u3kvFj9eyqI=;
- b=ONXJsrH45nvTvF5UFj4Y12zI4z52ImtxADfZR2NtmplAHtjizqbcjTomhTbXe/32QbpERD
- 84uo+eeKTseeoNNO+VSUg0roOMP/94t6L/ZVJ0mPH1F8x5aO1gVuWkQr0ne6vfW2BdQkEg
- A8ZCJXKD3lNTdmTIxzKdJuiO9kGsFa4=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZsFfewjdQz3KyQi8H2vALHlt5tcxl47fZDn5dbDYUwY=;
+ b=Jm9Vw6QAQZ50YZeJ/L7BY8vHul/1MHtM7j1+fVmwP4GsFkhhkwMwZUH8O+1LSb519DJLJu
+ f6hNWSvlD3cfJkqkpwCAchBs835Bs1Bg5X9ChrXrpbRAHURDCaoMsDmaqtzqctzACBeOSq
+ XoZRUUyW2p1E7yoiimYsoxo2O5EPO18=
+Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
+ [209.85.221.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-310-csg8GyLzOPyTGl8sL-1q5A-1; Wed, 31 Jan 2024 02:04:27 -0500
-X-MC-Unique: csg8GyLzOPyTGl8sL-1q5A-1
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-68c48383676so57135566d6.1
- for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 23:04:27 -0800 (PST)
+ us-mta-364-dIMkAZisMv2aRaFLNAfKvw-1; Wed, 31 Jan 2024 02:08:23 -0500
+X-MC-Unique: dIMkAZisMv2aRaFLNAfKvw-1
+Received: by mail-vk1-f198.google.com with SMTP id
+ 71dfb90a1353d-4bfe79255c8so359445e0c.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 23:08:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706684667; x=1707289467;
+ d=1e100.net; s=20230601; t=1706684903; x=1707289703;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8AiSAaNqXgkWTRtyKOM3vJug/vLCC6s8u3kvFj9eyqI=;
- b=vE2pVrZanV6s2AfpSHUkRq5G03cR1QPb5KIg4lUcIjS2DnPtXgB4WC8x2KLwnpwK6J
- MNf74/PUPjyuFXiwRCJhwH2obWZza2eijBDdWcdy8lLh3f/I5O1rLcJgtX+trF1PNkly
- w+TwDBW92B4Zvo8BkaNZSmiHP4WZEr/xIaqXWIKokE5ft4nRhQLC/xHZO0El/nxWOAhv
- A8LXSsyegHEXk4zI5mOVvkmvag6qcFh/jsNafr8AXCjF9AW8AnsPIBAPi1ZRu43QZIpx
- bldWSDguoCZyFWO8+Iz1ZRFTDVsmek/FXUocJG1wECVIEroAg3GHGd9dI0Zp5yYyGVkJ
- RJTQ==
-X-Gm-Message-State: AOJu0Yw/N32MqgzWD49vBUAvRyi0JqaeOH4qzUYmlyBYUQjoFZuPAdOT
- dV3fxHU9QwN+1R3ZnPAwE2FLV1cu16xx+GbNIKZ8yub9WeUQ2lOsvR8aVXU7Y/PSFGGozkbD6tI
- je6nqq/IAZ5af28vDR6ddyPI6mdxoLoC1xHqDozDGtkiEY9xWDQ==
-X-Received: by 2002:a05:620a:3cb:b0:783:d83b:f588 with SMTP id
- r11-20020a05620a03cb00b00783d83bf588mr683147qkm.17.1706684667275; 
- Tue, 30 Jan 2024 23:04:27 -0800 (PST)
-X-Received: by 2002:a05:620a:3cb:b0:783:d83b:f588 with SMTP id
- r11-20020a05620a03cb00b00783d83bf588mr683089qkm.17.1706684667032; 
- Tue, 30 Jan 2024 23:04:27 -0800 (PST)
+ bh=ZsFfewjdQz3KyQi8H2vALHlt5tcxl47fZDn5dbDYUwY=;
+ b=FWb1pFhE6TY9uddrOuIRveQLjxtBQNwHlPy2yFEX8bzzCrZWwXHjjg7c9vRLBAPN9J
+ 8n2OW3xg/60t3KDF9jcMdEjGz6veNPmKdVv7Z01woBLYg0uWpWix02F9pW3/GggsrDzn
+ LFXjsVFXZgvSzcZ/q7Ti1JWQ6R41WT8eI230HbP5cOoJatc8JsGpFanHiBaIqR4uDkYI
+ J5fXtm2Ppen13nI65V8pLxR46V6B2+1FcTXor0C/4bsGCtV0uj/Q8kQ1zM1dGb/yU9O1
+ 3suRDzMwFodAnIi0iQKb0C2/jCRgCdmEOHwcOyVGpMHz6J+W59FOfWhAlb0ltvR6eKJ+
+ ZTrw==
+X-Gm-Message-State: AOJu0YxKjCfTrP+1E1Ms6ChKNOeSLWoqxWIcjLxKu3vlrU2axyZP2pQa
+ C8X3TCNSEXlbYQJZ3L6IEHG6s32lqcc3wqfznmEPD2uJvFHPWZ4FW4KnceCXJP5IRbxLotZZY0w
+ o5fth9O5jTQyMxxwyHj346jlGwymeY9G0eH1Hkw2Vi2ncWqwnuw==
+X-Received: by 2002:a05:6122:4482:b0:4bd:6e14:f1fd with SMTP id
+ cz2-20020a056122448200b004bd6e14f1fdmr692244vkb.13.1706684903325; 
+ Tue, 30 Jan 2024 23:08:23 -0800 (PST)
+X-Received: by 2002:a05:6122:4482:b0:4bd:6e14:f1fd with SMTP id
+ cz2-20020a056122448200b004bd6e14f1fdmr692231vkb.13.1706684903040; 
+ Tue, 30 Jan 2024 23:08:23 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-177-196.web.vodafone.de.
  [109.43.177.196]) by smtp.gmail.com with ESMTPSA id
- g25-20020ae9e119000000b00783dc97436dsm4212378qkm.13.2024.01.30.23.04.12
+ kf4-20020a056214524400b006837a012417sm5280480qvb.51.2024.01.30.23.08.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jan 2024 23:04:26 -0800 (PST)
-Message-ID: <234093a8-ee10-48e3-be52-4d743e4b51e7@redhat.com>
-Date: Wed, 31 Jan 2024 08:04:10 +0100
+ Tue, 30 Jan 2024 23:08:22 -0800 (PST)
+Message-ID: <c6d9050a-80f2-4b0b-b47f-81cb3df257ea@redhat.com>
+Date: Wed, 31 Jan 2024 08:08:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 26/47] hw/net/lan9118: use qemu_configure_nic_device()
+Subject: Re: [PATCH v4 28/47] hw/arm/npcm7xx: use qemu_configure_nic_device,
+ allow emc0/emc1 as aliases
 To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Beniamino Galvani <b.galvani@gmail.com>,
@@ -121,9 +122,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Song Gao
- <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
@@ -134,14 +133,14 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  David Gibson <david@gibson.dropbear.id.au>,
  Harsh Prateek Bora <harshpb@linux.ibm.com>, Bin Meng
  <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Magnus Damm <magnus.damm@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>, Magnus Damm <magnus.damm@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
  Stefano Stabellini <sstabellini@kernel.org>,
  Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  David Woodhouse <dwmw@amazon.co.uk>
 References: <20240126173228.394202-1-dwmw2@infradead.org>
- <20240126173228.394202-27-dwmw2@infradead.org>
+ <20240126173228.394202-29-dwmw2@infradead.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -185,7 +184,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240126173228.394202-27-dwmw2@infradead.org>
+In-Reply-To: <20240126173228.394202-29-dwmw2@infradead.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -214,25 +213,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kfRqQyHORMkm
+X-TUID: AfqT9spKxUDK
 
 On 26/01/2024 18.25, David Woodhouse wrote:
 > From: David Woodhouse <dwmw@amazon.co.uk>
 > 
-> Some callers instantiate the device unconditionally, others will do so only
-> if there is a NICInfo to go with it. This appears to be fairly random, but
-> preseve the existing behaviour for now.
+> Also update the test to specify which device to attach the test socket
+> to, and remove the comment lamenting the fact that we can't do so.
 > 
 > Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 > ---
->   hw/arm/kzm.c             | 4 ++--
->   hw/arm/mps2.c            | 2 +-
->   hw/arm/realview.c        | 6 ++----
->   hw/arm/vexpress.c        | 4 ++--
->   hw/net/lan9118.c         | 5 ++---
->   include/hw/net/lan9118.h | 2 +-
->   6 files changed, 10 insertions(+), 13 deletions(-)
+>   hw/arm/npcm7xx.c               | 16 +++++++++-------
+>   tests/qtest/npcm7xx_emc-test.c | 18 ++++--------------
+>   2 files changed, 13 insertions(+), 21 deletions(-)
+> 
+> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> index 15ff21d047..ee395864e4 100644
+> --- a/hw/arm/npcm7xx.c
+> +++ b/hw/arm/npcm7xx.c
+> @@ -655,8 +655,9 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>   
+>       /*
+>        * EMC Modules. Cannot fail.
+> -     * The mapping of the device to its netdev backend works as follows:
+> -     * emc[i] = nd_table[i]
+> +     * Use the available NIC configurations in order, allowing 'emc0' and
+> +     * 'emc1' to by used as aliases for the model= parameter to override.
+> +     *
+>        * This works around the inability to specify the netdev property for the
+>        * emc device: it's not pluggable and thus the -device option can't be
+>        * used.
+> @@ -664,12 +665,13 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>       QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_emc_addr) != ARRAY_SIZE(s->emc));
+>       QEMU_BUILD_BUG_ON(ARRAY_SIZE(s->emc) != 2);
+>       for (i = 0; i < ARRAY_SIZE(s->emc); i++) {
+> -        s->emc[i].emc_num = i;
+>           SysBusDevice *sbd = SYS_BUS_DEVICE(&s->emc[i]);
+> -        if (nd_table[i].used) {
+> -            qemu_check_nic_model(&nd_table[i], TYPE_NPCM7XX_EMC);
+> -            qdev_set_nic_properties(DEVICE(sbd), &nd_table[i]);
+> -        }
+> +        char alias[6];
+> +
+> +        s->emc[i].emc_num = i;
+> +        snprintf(alias, sizeof(alias), "emc%u", i);
+> +        qemu_configure_nic_device(DEVICE(sbd), true, alias);
+> +
+>           /*
+>            * The device exists regardless of whether it's connected to a QEMU
+>            * netdev backend. So always instantiate it even if there is no
+> diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+> index b046f1d76a..f7646fae2c 100644
+> --- a/tests/qtest/npcm7xx_emc-test.c
+> +++ b/tests/qtest/npcm7xx_emc-test.c
+> @@ -225,21 +225,11 @@ static int *packet_test_init(int module_num, GString *cmd_line)
+>       g_assert_cmpint(ret, != , -1);
+>   
+>       /*
+> -     * KISS and use -nic. We specify two nics (both emc{0,1}) because there's
+> -     * currently no way to specify only emc1: The driver implicitly relies on
+> -     * emc[i] == nd_table[i].
+> +     * KISS and use -nic. The driver accepts 'emc0' and 'emc1' as aliases
+> +     * in the 'model' field to specify the device to match.
+>        */
+> -    if (module_num == 0) {
+> -        g_string_append_printf(cmd_line,
+> -                               " -nic socket,fd=%d,model=" TYPE_NPCM7XX_EMC " "
+> -                               " -nic user,model=" TYPE_NPCM7XX_EMC " ",
+> -                               test_sockets[1]);
+> -    } else {
+> -        g_string_append_printf(cmd_line,
+> -                               " -nic user,model=" TYPE_NPCM7XX_EMC " "
+> -                               " -nic socket,fd=%d,model=" TYPE_NPCM7XX_EMC " ",
+> -                               test_sockets[1]);
+> -    }
+> +    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d ",
+> +                           test_sockets[1], module_num);
+>   
+>       g_test_queue_destroy(packet_test_clear, test_sockets);
+>       return test_sockets;
+
+I like the idea to use the alias to configure a certain on-board NIC :-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 

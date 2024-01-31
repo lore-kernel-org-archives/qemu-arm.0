@@ -1,243 +1,187 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1417264ejk;
-        Wed, 31 Jan 2024 03:48:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE0sDOOvyGM5n0R5rTfZvXe9GOnll3ur1VEM4Kqg82l3Ni/9gNuLs2pXbuOMJdzxIBG4oGs
-X-Received: by 2002:a25:e08c:0:b0:dc2:2aca:6881 with SMTP id x134-20020a25e08c000000b00dc22aca6881mr1081848ybg.30.1706701707297;
-        Wed, 31 Jan 2024 03:48:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706701707; cv=none;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1731826ejk;
+        Wed, 31 Jan 2024 12:45:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGSo/ru27FjaXSyG+gUdnIoV2Qi3ZCQyfadzh1YOFATYrR/nbufz5YVcwQ4aGdDBbGXNctz
+X-Received: by 2002:a05:6a20:8812:b0:199:29c5:12f7 with SMTP id c18-20020a056a20881200b0019929c512f7mr2277801pzf.29.1706733901937;
+        Wed, 31 Jan 2024 12:45:01 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1706733901; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0lchTq0cKckqCtvAkZEgHIdT/towFVe/qX1VS8oukf1WD19NzBwnmqzEv09AONJhiS
-         fnGn8HdqBFd0KHKQ/6Q0UzdTIRBm+Mit61ZpCPgaq58TB8SNS5+l6l6no+AqMLP7QC0k
-         xwZexNL6qoifdfermAJ8G+COsy9yq9bKo7fsTiQCwVgK1IsVZksLYD8qV9mJn0L8NPxF
-         wjAA9fGhXVBySTdfeHtkov+wmJi1+ZLGydaCppZ94mk1/WFsjvpENZqf4HkzHnkuaypZ
-         RWFUrCNWA8yPGdVQQRRGY+7ySdkDOfK9GK1JFZ8jIInU6wkfrslV6xNlfIVpyskLlVO3
-         OP3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YIgqkw+qeMnZEE+5XNOrMhtie0S82f26y+LdjDCYqgU=;
-        fh=2a0nViFaHGaHSssXNkGSNXuXw5784d3G2xTLmzjSeV8=;
-        b=sjqcgD7DEIuFyPmaXVnHFtArtTWfuttGmQszmG9w2kABrjJM6pLpukawBtK9VBjthb
-         fXMdDhOdzx+f4NvNqQmCyMOx2R3gh8QdRbW9rKgcXJm5qhG+ng5pr0YqOd67cUYc4/dl
-         pibYjZ1L7IOzdJSdGrzWaMyEckX7yfl35+XZ6M//zlmizoWmeG1CJ0wWH/Vb9ZP4lau+
-         6LrMSBQpes+bAJ/zqDRMpRF+gUoiJkn+iRPfe7KeizAUyM1eSiAI7u0gVEJqNF/YTpRU
-         lmf3NJvRuuQZJhnxLxqStlAS+7Q6mooVTkr9SKBmopmHJmG2wogeL1Wq/bgC6bGLXsCj
-         ZlRQ==;
+        b=IUz0zcZsXYkniWvVv8dcZWNKCyVVjSA36bCwNyqal/RaOdUpee7D/7GdBa5PKjZszg
+         Nrq2DhXy+v1F6qR+9145ZINWWvm4IhyaEAKnloKF0Qpp+3Th4NLX5UASmAIN9hTMMeLO
+         mdSsIg5zdOGuqvmSuncpu7sCK0z3WBQV/UZdyboaRsa8wi70LYPcGZ26tJMeCtVQowf7
+         yX1gYft84M0dFHWqCZ+8UEYWxvqakcA4NwA3/oVTTnaz8HpwRpCfJqtbBfY2sd6MZdRx
+         b18+KN6hz76mUNuC8vGSTIEW3VDPUlgOB5mmbR/eR+0x1VZA5LWgx8WzX/w3y+darfQo
+         EK1Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:msip_labels:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :cc:to:from:dkim-signature;
+        bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
+        fh=KYbrub4umMWj6h4/IXj6j21ke/ZGUpa+32q0V66y+vA=;
+        b=wgUz8BfGxIiwuSop7FLouKQow1n9+RZi6qT7G21IbKWaw2jqz3XgA1TCIQq6ClOXSC
+         kCUG8orQlFvFYOVvdJAF6oaERDfKyWltwyfcBRCG7iIKtR942ze4/JgzReHBsnfwQXA9
+         UHumM/1GVQBaoXVAtH9Z2v+2eTibKwmXLXKtGm8fp2lDZ8dZg/eNDm7BXosQ2rCeviYw
+         /mafri+F37g235pfdwDoLgpDvkWBxEdAK/RL0zWG1IGBtJC2470KAsWqv43r/k0OaAki
+         AYOYBYdhV/XxiFkarchV4lVUmt6/M8QxiIE4KTI4VNR5a+knYSPdNRPuC7JHLsjpCjAL
+         c6yQ==;
         darn=linaro.org
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ajDCRHNK;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-X-Forwarded-Encrypted: i=0; AJvYcCVZxwlUezZwBh6L63rkVOemn4aDzEKbH4E1vLgovxCGLYfMVpfIMYUSpDGO8dmY52ia7kcicyPOzZCvO0Pa2oL2LLMaRMQNlWPBlk99FaG573nEtyP9GBlyh8NJd2XDOl1w1NlFr1nwdaLZ90vu+hOlsvQx
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id q184-20020a2575c1000000b00dc6a16003basi1775359ybc.59.2024.01.31.03.48.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Jan 2024 03:48:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=kXs+oPEg;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) smtp.mailfrom=mark.charney@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+X-Forwarded-Encrypted: i=1; AJvYcCWGKrETQYQj530MR/opES27yWWz01eF6zUgP7RsKd/jT1TgEZkViZwIhVkwVZc65EyCn1/2J8tq9N7atjsy5nxxivOMewicCrPH0q9d3YC/uSTx82GZBsfGJVL3WjdnLwz88jw/
+Return-Path: <mark.charney@os.amperecomputing.com>
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (mail-bn8nam12on20700.outbound.protection.outlook.com. [2a01:111:f403:2418::700])
+        by mx.google.com with ESMTPS id e16-20020a056a0000d000b006dac9462b4esi10333748pfj.175.2024.01.31.12.45.01
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Jan 2024 12:45:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) client-ip=2a01:111:f403:2418::700;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ajDCRHNK;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 40VB9PQg017450;
-	Wed, 31 Jan 2024 11:48:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=YIgqkw+qeMnZEE+5XNOrMhtie0S82f26y+LdjDCYqgU=;
- b=ajDCRHNKeCnxUQprXX+WBw+002K/AsfUFsibv8W5GTjgeqzVS3Z/BLfLbd9hAytiyaLY
- fAF9VwhtpVXhF4/5BSp9QcvpGz9hfy5bCWNgRhZxSHT8KoxxXIrY5Wrz0+Bk2BSMZxiZ
- Fm84wDDA+i6RMJ2rfoRPZjsT3quonidy2FmPrN53G0OhC9XZW1YrDMyCM1vohaFqCVAa
- x8F4lY/EtjkLj/RQGzO1dTMn/njRvhwWVHpK5lpPA4272pFkJEM7GE0rVX5d03M/ibqY
- 4Ur4PSUWBELVwOAbR05T1agKQS84YfeXD20ePJCXZCZ3wZr43XIF05RvMR44tiki6CPT PQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vyhhtpec7-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 31 Jan 2024 11:48:25 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40VB3SYD016004;
-	Wed, 31 Jan 2024 11:48:25 GMT
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vyhhtpebn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 31 Jan 2024 11:48:25 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 40VAp4Fx017712;
-	Wed, 31 Jan 2024 11:48:24 GMT
-Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vwchywaq3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 31 Jan 2024 11:48:23 +0000
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
-	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 40VBmLm623527714
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 31 Jan 2024 11:48:21 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id D0E3520043;
-	Wed, 31 Jan 2024 11:48:21 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 9187920040;
-	Wed, 31 Jan 2024 11:48:21 +0000 (GMT)
-Received: from black.boeblingen.de.ibm.com (unknown [9.155.200.166])
-	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 31 Jan 2024 11:48:21 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v5 3/3] tests/tcg: Add the PROT_NONE gdbstub test
-Date: Wed, 31 Jan 2024 12:46:31 +0100
-Message-ID: <20240131114817.288027-4-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240131114817.288027-1-iii@linux.ibm.com>
-References: <20240131114817.288027-1-iii@linux.ibm.com>
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=kXs+oPEg;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) smtp.mailfrom=mark.charney@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GfKQZKMfBDs1pa8i9lPMAzyPqAAy3b+r9zDwMvAAc4DZ7w/WsBRV+VR5UlEWWJCoHd6TPjKVcRxCwGOaysgvanor7SdhUPpxpBImOBG38rlJ/rl244/4ZkL7vfzcq36E4UCBkSHBTw9dsU1Wx/gG0PrGERODxDqONH+rq6G7qJeCEKk+MmYd6p6jZpzSXvXyM+v1e6C9xJYQRcY99eGApVUynC227My5xeqejH1tZdfFbBLeTiS/Jb12PFA+SqvNJf/UgrEl2Bk9ahimX4wy2mFOAGlQ21ftroRzOh0JX2CT33vYS1l1/mrkwWfTsI3gn3q5y2E9ezR26hBMdjyFXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
+ b=J2hS57TWo2JYuIp95P+TRSgoeexN/0VqWdsGaIGDeqoV3xqzLhE3t7JWaiiBt9BtkmQA9kmCW76FE2MQJgiCrGTm7wGqY3tHPP39Oj0omg2Rrw0mPHXrhiwObCQliawxiEfLwWKn+/AjFXUnrQ7DqSdVwys9DkEyNIck2xWFCyE8Zi9MI/D+jDlY3rmTUTHAzPICMjZnchHs5UYQd13srFgaAPfmO872WhbobMo8QsmGOv0IfRCDvAYRzCbIhJ4zXZWum25/YZJSkCrPF8zyxuW2vCkt+I4mTq8bZwHpnxaagZTKxotuvwYM1aN+OY445EafUnHIb+qmvRq/HrNfmA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
+ b=kXs+oPEgVI6BrqB8X75bIqeu8zH1xRRY7On6IVxEcmgpCs4fRr0BA3ubxm0DeUThS92ivf5InRD3OEMpYc8a3CJt2I0fJZlG9qi66Qu5IEmvSTG/IAHAVbHGg3nfzY/gXAeH/fEa+1+58qLXX+xMHGEbD3g8O9pTgGxZUUTHapI=
+Received: from BL1PR01MB7795.prod.exchangelabs.com (2603:10b6:208:39a::5) by
+ PH7PR01MB7931.prod.exchangelabs.com (2603:10b6:510:275::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7249.24; Wed, 31 Jan 2024 20:44:56 +0000
+Received: from BL1PR01MB7795.prod.exchangelabs.com
+ ([fe80::93f7:ce4f:5253:1269]) by BL1PR01MB7795.prod.exchangelabs.com
+ ([fe80::93f7:ce4f:5253:1269%7]) with mapi id 15.20.7249.024; Wed, 31 Jan 2024
+ 20:44:55 +0000
+From: Mark Charney OS <mark.charney@os.amperecomputing.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>
+CC: Aaron Lindsay OS <aaron@os.amperecomputing.com>, "alex.bennee@linaro.org"
+	<alex.bennee@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>
+Subject: QEMU 8.2.0 aarch64 sve ldff1b returning 1 byte when 16 are expected
+Thread-Topic: QEMU 8.2.0 aarch64 sve ldff1b returning 1 byte when 16 are
+ expected
+Thread-Index: AQHaVGIniO3WZ/GXMk6DS8JgnshVfA==
+Date: Wed, 31 Jan 2024 20:44:55 +0000
+Message-ID:
+ <BL1PR01MB7795E154CD5AE6ADA60C0D53A87C2@BL1PR01MB7795.prod.exchangelabs.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+msip_labels:
+ MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Enabled=True;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_SiteId=3bc2b170-fd94-476d-b0ce-4229bdc904a7;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_SetDate=2024-01-31T20:44:55.082Z;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Name=Confidential;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_ContentBits=0;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Method=Standard;
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL1PR01MB7795:EE_|PH7PR01MB7931:EE_
+x-ms-office365-filtering-correlation-id: 6bdd755f-73dc-4645-6182-08dc229d7b42
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ zB3leId2fto/2k0WKnR8GeBglT/7dRsjQvrTQqWwd8KxUMzYZmp/KjRgjeXZaRinGp6cPife2uDi0XkVUuioGltBtBeqnKVnkkUw8/FUtD0OBTIYdyWI98u9+K4TxtigcxOoOH3/YKkrXj+j7O41Iw6JZ9IBKOXUoCvEcyzAyQB0H4vkq/48OY7D3pQvnuqRBTgM+f/zrGSvn1SgZuwzvl5ZLegoNRlQR4eD/xuN3DDB2rl9HvQKqI/Yman57ftcjrqcfN6xKMBbsgB6ism/XozMeHoCVHPhaNWuHy1BW7DPK4NEhQYqNSl4pZhTgXEwnrmqENuQsIncKxqQTboShkPtpKroBjurXDRdaqw/bIES+smgSum1dFbOY4Ova4LSqYoDDOEDdFVM24G2PV7XzY2DjS/NeCsWkyUEoOEx5n54ruu0lyBGGnJH3sgjr6c4dVeHve3HYebs0mlPIOq9LSNqYp8V0w5qxnNVvTvFSWGyTMP7GaygIZb0RxJRixj7zDpLvw/5DoSdUGPRK2OjYmIOV4X0Y43kTaUD90P+CIHHlejAAmpLdtINfm61x0WvKAGM4RSLbF69P0q2h/EhyXm8sGFQx4G4BuhW4ydM5ezGSUfgwRM7cXt4AZselA7Ro3j+rK5icvS9JgelnkqEwWi5yUN+lz2oCC/WEDu1+m8=
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR01MB7795.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(376002)(346002)(366004)(396003)(39850400004)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(26005)(55016003)(41300700001)(54906003)(38070700009)(64756008)(66446008)(316002)(66556008)(66476007)(6506007)(478600001)(9686003)(38100700002)(71200400001)(7696005)(122000001)(66946007)(8936002)(5660300002)(2906002)(76116006)(91956017)(86362001)(110136005)(8676002)(33656002)(4326008)(52536014)(32563001)(357404004);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?iso-8859-1?Q?QrX2HxqV6q6p8i8EUjOif9DuB2YMNBKCIdOFvVvS4fx9WbQv9CQN4JyEvP?=
+ =?iso-8859-1?Q?vxrTn68rbFUpie0k3q23JaQiSv/wT4HhalIDPQD1fifuujh4njIOAmb/PN?=
+ =?iso-8859-1?Q?0dHjtF80q6UgBXsfXZ2pyXxjxLp2RJZ+OL2RpE1vG0gQRGPPYYVSgQ7goD?=
+ =?iso-8859-1?Q?mb/KKohbpWKRuSpuAsVdfVmFWNDxjEitmtZN0M/axB3qDBx2RmYDQyrWpW?=
+ =?iso-8859-1?Q?18nD1oMC6tT/qsXB/DBhxpB/BbWRlvCyCM72cM0X+jDsSdUhZc+SkLUaBS?=
+ =?iso-8859-1?Q?2QIFBsv/UuXky0cKXPcezD0p5GSzwXoX1dgWObSQbhFiGVMUe7cO7H/HB2?=
+ =?iso-8859-1?Q?UImvqpBg57mOkupLJPZ/Z5VD1SKF9/vjkIAcbV8SjfYdW9jrThzMmaN99U?=
+ =?iso-8859-1?Q?t6T8ZGn9yhqISSq0ACD2IglWDTf61X9i7uKaMi8naC7PzZW6n5hf9Qjgvn?=
+ =?iso-8859-1?Q?hzsw/fqwkhhXTO5LxCLARNsKGgbNdCJjZSsHZmodMAaXFCDT9HZGc0iQ8j?=
+ =?iso-8859-1?Q?Voyinal0GJor5tt+/HUTf9ZlCLYpyf8aSxRGx8UhrjQFtaChF6Xsb3aBXh?=
+ =?iso-8859-1?Q?pK/BaYSpnxUjVlMOHdl+pwnqmTup3Bm/ZuZt7X8ELyLPfx2KaOr4N78NJI?=
+ =?iso-8859-1?Q?0DbUeio2COPp6VNOzKWZvkoggRtWpkWM4wt/Un6bd7TPHHEcdP5QRq5y3R?=
+ =?iso-8859-1?Q?o6uActNhLnhksaReqetAcvIckLiAr5pwc+1ysykTbqmTgTgI7WfX4BFaDj?=
+ =?iso-8859-1?Q?1Tf1CYRvjG+vknKd0wfnFKJUpNJf0uLydipZlbTjS5/z/raJ5OLrc+SG4d?=
+ =?iso-8859-1?Q?wyldTtSF2z4Odre7H1kM1EyxL+7dauWRTRYsainuU036ebOiz1DUcrE7fl?=
+ =?iso-8859-1?Q?g+/ZGGzUcmR9+xawrnU8NYl4hvl6DbqY0gxxjIgT+WTujpYbJWFdRI+rIY?=
+ =?iso-8859-1?Q?hPyFEbUi3dqTwCXcaW5fcTwKQYzV+UKN5UTDi9NIPffDyayyN9XnI/gw++?=
+ =?iso-8859-1?Q?DM3MCLaoY4nAVMGKd8dpKdiy/oaOUbk4QNCfOdkf5T0oxPGUWMZaeBcfRQ?=
+ =?iso-8859-1?Q?UkjhY2SnwNk1oYawsKWzUvrZTzha1VLi6plu+frL1OZhC+6O+d8ageQus8?=
+ =?iso-8859-1?Q?BWllqlJ3BFjANcYc98zMVzENMsXmXGUzWZTUVirbFUpqHWdTBy2r3Pxvk/?=
+ =?iso-8859-1?Q?TxP6JEHOSK/z5my4q1Bg2P5bZDSguYz2VhdVTBjhkO9pQW4i5uVfH5svnv?=
+ =?iso-8859-1?Q?NM50CHzf1GtxnPh5SIKFdtgQUGGOFhxzLFMZQ4iuyHGC0jVb4LGSmg4ohV?=
+ =?iso-8859-1?Q?nmeyAn647akAeEIRgY5tubOV2gUXHl/0ONul0c4bJYwxDN3hJmAXRMP2jk?=
+ =?iso-8859-1?Q?dQD8Sz0KGVl74MCEORbNuItl4S9OuoWVDJRGXEY0xaw70rF/T/PcOW2qZf?=
+ =?iso-8859-1?Q?6Dwyqp+tZ2Q1Oevlwrt9zalXMCbTznBsir2dVdBBNRHEhcsRNO5YXCD4hq?=
+ =?iso-8859-1?Q?265/9qP3o1EE/cyjI35M4k6wo+ZBaByx4UHzZV4XokDUz2I7N5SMPIHuEH?=
+ =?iso-8859-1?Q?NVW++HuuBEHu+FkKxyuQ6A6HHazSVcxKH6mGQyQ3PXjVbIB2LzeDiP57tq?=
+ =?iso-8859-1?Q?QAE+4th8KB4tfBJ7dcGzaVgSs8aC2+SYodLkT3DRMqC37tOMoDb3foVVZA?=
+ =?iso-8859-1?Q?k4X8UcYdS4JvwVOzKIo=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: fqhbpY9gAx3sIy4NAyRINmdIFBfJwlS_
-X-Proofpoint-ORIG-GUID: crZwyi3eDxxxg1GfZZVHlKyUmPWw7YET
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-31_06,2024-01-30_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0
- impostorscore=0 spamscore=0 lowpriorityscore=0 mlxlogscore=973
- priorityscore=1501 clxscore=1015 adultscore=0 bulkscore=0 phishscore=0
- mlxscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401310089
-X-TUID: 63vEbNuRgidb
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL1PR01MB7795.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6bdd755f-73dc-4645-6182-08dc229d7b42
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2024 20:44:55.2864
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6oY/KfUP2FgR7eV4EsNPSCErqi+olMvoa9RAn98/20JSUsBADMiajD0mMWOq+wRsXJMNAnSWZfYfJXxSt6xJnyePDbIMraRF+bvekOByaXo8UbpqUKGs3XUCSd5HSbF8
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR01MB7931
+X-TUID: +9mgRfedFdOq
 
-Make sure that qemu gdbstub, like gdbserver, allows reading from and
-writing to PROT_NONE pages.
-
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
----
- tests/tcg/multiarch/Makefile.target      |  9 +++++-
- tests/tcg/multiarch/gdbstub/prot-none.py | 36 +++++++++++++++++++++
- tests/tcg/multiarch/prot-none.c          | 40 ++++++++++++++++++++++++
- 3 files changed, 84 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/multiarch/gdbstub/prot-none.py
- create mode 100644 tests/tcg/multiarch/prot-none.c
-
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index d31ba8d6ae4..315a2e13588 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -101,13 +101,20 @@ run-gdbstub-registers: sha512
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
- 	checking register enumeration)
- 
-+run-gdbstub-prot-none: prot-none
-+	$(call run-test, $@, env PROT_NONE_PY=1 $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/prot-none.py, \
-+	accessing PROT_NONE memory)
-+
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
- endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
- 	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
--	      run-gdbstub-registers
-+	      run-gdbstub-registers run-gdbstub-prot-none
- 
- # ARM Compatible Semi Hosting Tests
- #
-diff --git a/tests/tcg/multiarch/gdbstub/prot-none.py b/tests/tcg/multiarch/gdbstub/prot-none.py
-new file mode 100644
-index 00000000000..7e264589cb8
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/prot-none.py
-@@ -0,0 +1,36 @@
-+"""Test that GDB can access PROT_NONE pages.
-+
-+This runs as a sourced script (via -x, via run-test.py).
-+
-+SPDX-License-Identifier: GPL-2.0-or-later
-+"""
-+import ctypes
-+from test_gdbstub import main, report
-+
-+
-+def probe_proc_self_mem():
-+    buf = ctypes.create_string_buffer(b'aaa')
-+    try:
-+        with open("/proc/self/mem", "rb") as fp:
-+            fp.seek(ctypes.addressof(buf))
-+            return fp.read(3) == b'aaa'
-+    except OSError:
-+        return False
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    if not probe_proc_self_mem():
-+        print("SKIP: /proc/self/mem is not usable")
-+        exit(0)
-+    gdb.Breakpoint("break_here")
-+    gdb.execute("continue")
-+    val = gdb.parse_and_eval("*(char[2] *)q").string()
-+    report(val == "42", "{} == 42".format(val))
-+    gdb.execute("set *(char[3] *)q = \"24\"")
-+    gdb.execute("continue")
-+    exitcode = int(gdb.parse_and_eval("$_exitcode"))
-+    report(exitcode == 0, "{} == 0".format(exitcode))
-+
-+
-+main(run_test)
-diff --git a/tests/tcg/multiarch/prot-none.c b/tests/tcg/multiarch/prot-none.c
-new file mode 100644
-index 00000000000..dc56aadb3c5
---- /dev/null
-+++ b/tests/tcg/multiarch/prot-none.c
-@@ -0,0 +1,40 @@
-+/*
-+ * Test that GDB can access PROT_NONE pages.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <assert.h>
-+#include <stdlib.h>
-+#include <string.h>
-+#include <sys/mman.h>
-+#include <unistd.h>
-+
-+void break_here(void *q)
-+{
-+}
-+
-+int main(void)
-+{
-+    long pagesize = sysconf(_SC_PAGESIZE);
-+    void *p, *q;
-+    int err;
-+
-+    p = mmap(NULL, pagesize * 2, PROT_READ | PROT_WRITE,
-+             MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-+    assert(p != MAP_FAILED);
-+    q = p + pagesize - 1;
-+    strcpy(q, "42");
-+
-+    err = mprotect(p, pagesize * 2, PROT_NONE);
-+    assert(err == 0);
-+
-+    break_here(q);
-+
-+    err = mprotect(p, pagesize * 2, PROT_READ);
-+    assert(err == 0);
-+    if (getenv("PROT_NONE_PY")) {
-+        assert(strcmp(q, "24") == 0);
-+    }
-+
-+    return EXIT_SUCCESS;
-+}
--- 
-2.43.0
+Using QEMU v8.2.0 (and also the HEAD of the git master branch), I=0A=
+encountered an unexpected situation: an ldff1b is returning 1 byte=0A=
+when I run with the QEMU user level plugin (and setting FFR as if=0A=
+there was a fault).=0A=
+=0A=
+However the ldff1b actually loads 16 bytes when: (a) I run this same=0A=
+test natively on a system with SVE support (no QEMU involved) or (b)=0A=
+when I run this test interactively (logged in to a console) in GDB=0A=
+running on the QEMU (with no plugin involved).=0A=
+=0A=
+I was wondering if this one-byte-per-ldff1b was a known/expected=0A=
+behavior with plugins?  I guess it is legal to only return one byte,=0A=
+but I was wondering why QEMU did this and if there was some way to get=0A=
+QEMU to return 16 bytes in the absence of faults (or as many bytes as=0A=
+it can up until the fault).=0A=
+=0A=
+There is *no* page boundary being crossed in the examples of interest,=0A=
+and no MMIO, so a partial data return is not expected. The page=0A=
+referenced is mapped and previously referenced.=0A=
+=0A=
+Talking to Alex Bennee, he pointed out:=0A=
+=0A=
+> I'm wondering if this is a result of the fix in 6d03226b422=0A=
+> (plugins: force slow path when plugins instrument memory ops). This=0A=
+> will always force the slow path which is where we instrument the=0A=
+> operation.=0A=
+=0A=
+I attempted to revert this commit locally and no longer got memop=0A=
+callbacks for any SVE load operations, first fault, nonfault or not=0A=
+"normal" predicated SVE operations. But I believe ldff1b are returning=0A=
+16 bytes (judging by the control flow).=0A=
+=0A=
+Our goal is to use QEMU for tracing with a home-grown plugin.  For our=0A=
+purposes, we were expecting to observe control flow like what we see=0A=
+on SVE-enabled hardware where ldff1b returns 16 bytes in the absence=0A=
+of faults.=0A=
+=0A=
+If necessary, I can provide a reproducer, that includes:=0A=
+  - a sve strcpy loop from one of Alex's talks.=0A=
+  - a simple user level plugin=0A=
+=0A=
+=0A=

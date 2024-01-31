@@ -1,278 +1,221 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1026327ejk;
-        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEVpW4nqF0xJWLFzhQ1lP2EthJQJLJiF8KDsLtzRjmqyh5MPWRmy39r43upNh5e1oT3DL5p
-X-Received: by 2002:a05:620a:918:b0:783:24cc:e5a2 with SMTP id v24-20020a05620a091800b0078324cce5a2mr7273459qkv.45.1706641640086;
-        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706641640; cv=pass;
+Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1165536ejk;
+        Tue, 30 Jan 2024 16:28:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHNjeWzItpTZEmuDOsIbh1VEHlSt4K+4FHpEHbVirHOY3Ozcfe7TcbPVKKMFbwpv8AODy//
+X-Received: by 2002:a05:622a:302:b0:42a:7372:b847 with SMTP id q2-20020a05622a030200b0042a7372b847mr304787qtw.22.1706660896955;
+        Tue, 30 Jan 2024 16:28:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706660896; cv=none;
         d=google.com; s=arc-20160816;
-        b=nxmOjh1R0fHiCepWx6A4xDpaXRQohvyqLxQd/PLABDe4QEcED+tTJiguY9Lch3LlDl
-         iSa96Oq6z3E0VDJfaAgFMO1XKloEouJF0HrrtbF2uGc1kDfscjqOzHF4gnV66+oiHKSM
-         xM6A71iZOI1A4isJX4Fnu0FoHbst58tBNiqIs6YN78T1cHHarOPw4Lsv60PYcfgTFMw5
-         SHI1//GAlLvKv7DBjOuD/H6n8VGPd1k/7tMxYb9OzlGXdyPHkgfN3Tn27Mo6R207hKQC
-         u9VM6PfhCog1gL7lw4LZkkF1BMu2diwnUhvMuKoSNYHqSL9KN5SmZOQTfQVG5Xd1qEo6
-         iQIQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=IWbDfvCBLfDkaq1MgErEqsoa1ai0PlEHV5jBv6YQa3KaiwDYe/DGcXxgru41ryh4mr
+         0EQXON17cP8f27+iUTs9llS4eGrlSCXM1Qq0EsEFDX+Oq1Ng6hWHujjI8xXl5eQTVUN2
+         Iu04qvGVfhWfqfvr2Nh7+JvOvpG0gaURRxQ6TMkv8a2/p3xFN3KDrIWN7/8mmmJ8oa10
+         kmuT4JxcUhsfpdiR4M2F15R/X3XvV9uYceD/jVKmCv1q8/TWHCH/sD091oEtrGIiMIu0
+         0HdrFloZR+yiWAQ/UugYs9aleuz5qO6JtAHYH8/mY8biFH10cAIm7xRw26OP/eKJCVRd
+         NfNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
-        fh=jkMQz0qSvPsSrZjVJcuoqqF+WZyk+LP5MZBSBKBxaw4=;
-        b=VGSNjBCvbmYdFHCGnjJXLFCX6sVSbxoZlLqVjrFevJtHreIMzlytgPoxDzDKidvfZY
-         +gSNnY1lNxLQD7JXs7/zorPAEDgVUumW1Jvlz1XPzr/L6L+HsZR4GD6V+2e4gy9H4C0p
-         4YcOHNp6+FV/nuaLrDZg15XWUAzX3A5ee106Qo0YMRa8PNBp0gDcdaVYAdHqGQG65qay
-         iL9Vble/XBSgwYovc0Ljplk1lzotQ2MyCCwd6nSx9qJciUTL2o4obDtHeFli3l8tTTnY
-         IOcZaPxcaSNxeO+esad2gFevhvpbFh0nTAYZS3G7rwyNpAFEJa8TJ9DcYSbfsEp9Zo7z
-         wcig==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=GhuKTg+6;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=nhBqGTrv;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
+        fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
+        b=cRfEUD82bRkfDptJGBnMzfiDAR3bqhgFtbDuyf24LigdG0n5xqSxJHuSqMa3Z90Cfp
+         7Rr7JD3jsDIN2M/uYVnb+r52v6+M3eSjlfUWsVc9BlpKHIdtuPy70UwXwTpLJh/cg1DR
+         k5Pt0O1DpkJMD548wemYHbeDtbDOzI7HY8FZjIvoXL8rmeajmiXTmrBl9diHGiXj0xQ0
+         ODtu4RL5Ix2BLDk0a8U7oPQxvOi4UIN2Kc29aepNm1bGGDQoYTGrX3IApKhTA2Ek7wbu
+         Ea0V+B1iRGKY1lW6BsTUFOBZHYxw+JdoZXZAwUbQo0Fek7bvXRfxML7ccEIwSsmGuJkl
+         gz3A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=E5aeAYuJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18-20020a05620a0a9200b00783f3cdae82si7031525qkg.73.2024.01.30.11.07.19
+        by mx.google.com with ESMTPS id s14-20020a05622a018e00b0042be5c0add1si453337qtw.701.2024.01.30.16.28.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jan 2024 11:07:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jan 2024 16:28:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=GhuKTg+6;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=nhBqGTrv;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@google.com header.s=20230601 header.b=E5aeAYuJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rUtRu-0005Qw-Jq; Tue, 30 Jan 2024 14:07:10 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rUySU-00072g-Qm; Tue, 30 Jan 2024 19:28:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1rUtRs-0005Pq-Ee; Tue, 30 Jan 2024 14:07:08 -0500
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1rUtRq-0000us-CZ; Tue, 30 Jan 2024 14:07:08 -0500
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 40UHRr2R021250; Tue, 30 Jan 2024 19:07:00 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references :
- content-transfer-encoding : content-type : mime-version;
- s=corp-2023-11-20; bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
- b=GhuKTg+6rmNFOjeiFo4qgFFjD5AmdR1/Kgjdoh6FMzE280Vab4zu0ONjtRBXIB2w+KAx
- bgKhetw9OfsSdI/acQjcKb9GKGOwrysovc5QD5zjT09lzr1wWBJxq8tMCsNqEqnGQKJW
- 7GpMSrGp4vIhf7VL5LSL71WoCZAMj+InM9j7HMf1FDIwd5qVTOtySP1p/OZpwGel+hi2
- mewgb0EKn+KvS+I31mvPLsrmOSUKnCaHC46rHNOKpRMTitBBRmCXg8zuMBzShUQGNx+H
- FQjfQr5OKdl7W2T6dFmAeyudX8UPpHxpXeWHvPWoT3wHS5WtDJ412zRO0y+8R56ltbfL MA== 
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3vvtcuyta1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 30 Jan 2024 19:06:59 +0000
-Received: from pps.filterd
- (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 40UI4bIP014630; Tue, 30 Jan 2024 19:06:58 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2169.outbound.protection.outlook.com [104.47.59.169])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3vvr9dxpg5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 30 Jan 2024 19:06:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d0o/gZh86mV26V17XDehmw0KGOkoSJN7ba2PTK3QK4Z2zC1RgbDtHguAbbcZkxFVuF5PiHvUgnIaE9qftxqT2tuKw6xPsUkINMLtKBXv0isAT1Gxu7aEfjsK4nbTq1BlADZT312/frZk+5M/TSCeM55n8Q9OciMkiFbm+2vkAWF6PwGDl8uj1P1VAeAiDVBw/DBg9Q47/zWdxg+biZBHlsevKf9zcx0IjbHq2Cpx4tJwOs+yfLytao5kAS9F9mHplMiEWtWcB6ttBcZuOyQhaAYQAtdhrMJQ5hBnIgec8SVTTH5dL9gNX7DxRy1ODTdm3gKyeTGKv/sgMc0GlepArg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
- b=jSO6n4HsPeHP9fFc5K+4ct+1MdixRXc71xbORQPKMYkm4F4UvZ5EGT6Lu2ewS+5QdFonSWGOatdLfk2pFjAMTQ7MKWG+bosyBV62TCBfNFRW6HxXS/9VQNBoGMxBjV2x2rpytUPOofFv0/FnhfKSb3CzLkB7HhzGgE6O0CXSGmghkkn+FatersxA7NNdTipG/HTWu6JABj1jfdI3WwI3VwwuU9UeC+cHFN5XsyMOnEdGsMHCz/iozyXYBqE15kUI3MgGcSIGCdOPNW5AljzQEgbGxpTczpwfuvUBV/EK4w5jGNsKihfDNw7IVqzi8E2e0+tpAK9EThYxJihENUVhLQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ (Exim 4.90_1) (envelope-from
+ <3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com>)
+ id 1rUyST-00072B-Or
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 19:28:05 -0500
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com>)
+ id 1rUySS-0004IH-5D
+ for qemu-arm@nongnu.org; Tue, 30 Jan 2024 19:28:05 -0500
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-60404b12af2so7898367b3.2
+ for <qemu-arm@nongnu.org>; Tue, 30 Jan 2024 16:28:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MhDdhgVHyAi7zIMBbL9O0vvjtCGildFl6TnwEXIcCQI=;
- b=nhBqGTrvpuxz0O/V71tB0oLbXkZTAuZvsXWtJyLIvkQkN9mFPkRVd+5omSlSQeT6q3Zqj09qk1x7IynnaGjxL2opkv5bLBGCoXBQzidr6N9bFGZzD+rlk5tlBU3V4j5tAEkqe2Mpb1HO4peBcUC4Lrjec94ga8BbC+p1eit7BQ4=
-Received: from PH0PR10MB5481.namprd10.prod.outlook.com (2603:10b6:510:ea::5)
- by SA1PR10MB6469.namprd10.prod.outlook.com (2603:10b6:806:29d::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.31; Tue, 30 Jan
- 2024 19:06:56 +0000
-Received: from PH0PR10MB5481.namprd10.prod.outlook.com
- ([fe80::a1c9:d6c1:b94a:595]) by PH0PR10MB5481.namprd10.prod.outlook.com
- ([fe80::a1c9:d6c1:b94a:595%7]) with mapi id 15.20.7228.029; Tue, 30 Jan 2024
- 19:06:56 +0000
-From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
-To: qemu-devel@nongnu.org, peterx@redhat.com
-Cc: qemu-arm@nongnu.org, lizhijian@fujitsu.com, pbonzini@redhat.com,
- quintela@redhat.com, leobras@redhat.com, joao.m.martins@oracle.com,
- lidongchen@tencent.com, william.roche@oracle.com
-Subject: [PATCH v1 0/1] Qemu crashes on VM migration after an handled memory
- error
-Date: Tue, 30 Jan 2024 19:06:39 +0000
-Message-Id: <20240130190640.139364-1-william.roche@oracle.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <ZUwCZdZj-vZD1NJC@x1n>
-References: <ZUwCZdZj-vZD1NJC@x1n>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR05CA0011.namprd05.prod.outlook.com
- (2603:10b6:a03:33b::16) To PH0PR10MB5481.namprd10.prod.outlook.com
- (2603:10b6:510:ea::5)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB5481:EE_|SA1PR10MB6469:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2c41730d-f326-48b6-4379-08dc21c6a04f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: KVyl9ZgVN1rzr2aJMZu+40FDIygzMBTmpD6BeWj7XYQgIEsqpgBYx0oQuGvXAXWdToHER145eg1gRXDbw8bCTMknGkLLrNe1R6PJUgvDIqw3cOWRaQTeIFrJ692YQT9BsWghI20E18zH0frurnZXueEv4NkkgRhRijNxm+tISGF6pF3MBb3V7XCOAK+QgmT8A/l9fLmwvI+ZTUqPj2QkZn1Fy0bHbv/XLqEP36cHzpgYC2BuxcuJVDLGyhWy6pl31ab+pcJWrTlksBEOh5q6GVJLNTBQno1NdX6EjDeHKtdbLDVS9wHSzLYU/TVh4+uju/SyFYeM7XCIXLMJHrtQ39O5+GKZx9HUUgrsMBZcp/LqqfIg5EIpI2L/EDwNZRgDlhABhvrHMaOemZbhjXqGy9zCokZzAp6b3+RVPcN8HL14P6C3QLijNW06jn3lQ84/knlParQA21WNYV1ADbNPJHoJnWP2rF58CmSZfuxXLyT9nM4jtfepEIa0U0RFfZtHdack4801Y2nSiUfr8xz3MIOh4DRDr49to6TgE5jWEW0=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB5481.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(136003)(346002)(39860400002)(366004)(396003)(230922051799003)(1800799012)(186009)(64100799003)(451199024)(83380400001)(2906002)(5660300002)(966005)(66556008)(6486002)(41300700001)(316002)(4326008)(66476007)(38100700002)(2616005)(1076003)(6512007)(26005)(8936002)(8676002)(107886003)(478600001)(66946007)(6666004)(6506007)(36756003)(86362001)(66899024);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cbPE98BUobtMdI9Meof1t/zzrB+JfgFvUXPvohbVhWM1XYUkLgBwUvUmOnLH?=
- =?us-ascii?Q?MvSIJ3A9uDy0atimEfjsGnp8s0aGjFzLQSgUOXxa3xMpYWzAViO/q8I7ZFaM?=
- =?us-ascii?Q?0PNXI7QAAN841Cb2dKoyFnz7QHUFg9aquPc9rXMJ6dvahd551yGyLRjHAfLX?=
- =?us-ascii?Q?p89F9+IFrFflRQ6tAQCesIIJ2kc+QYfGcFBYmPJmsnhVUdJ7maXsgoXga3Es?=
- =?us-ascii?Q?obCBOtXkosD6wGybd8vFdV+kM/K1Le1e2kXq+aqSH82p+qLVhFLfL9U1gP4U?=
- =?us-ascii?Q?zumGMT37uFIST9CrA3tec/QUy2R916oFm4pHNKqnKGnYmhJHsnzyvl+Tkcmd?=
- =?us-ascii?Q?Ph7r4M8nrt4m2GJMhN697A6axV2Eb/nqnLImD2ct8xsdo0MkkBC1XM7MEeHU?=
- =?us-ascii?Q?bnHQWv70sxAY0eMHW5A8TXqhETFW6D1X6fWgeun+E/bmRguKWfNK3Z5b+mTZ?=
- =?us-ascii?Q?d/DzsUulh++xVW/q/Gxt4t7KhUTlJHPugUrVFSP7x8BRx4VE8v8E5U54jVqB?=
- =?us-ascii?Q?7n4WOzIhFzXlcLrWsrJOGEeyGHqrdDX19YO2YmNUduwIiVAH72ANYBs6dFza?=
- =?us-ascii?Q?Af2lgMHwenRNMN6wh139bSNj1NU4k4dtYGmGu7hjHBC4ZLvSrowKOc/Zth7v?=
- =?us-ascii?Q?MFWiR/Yct5XsRjzuHm7VQdxjTCMdclc8fPu3C4Fn+aoAyp9NyCsvsoaP34Vp?=
- =?us-ascii?Q?m6kmxfQFvL0jO9bDLkqK6JnEihr7dFrkgpYcmrkScHpd1qM5prV59m1XxlRX?=
- =?us-ascii?Q?LbdmVlBm2tbwdRKld/U2cf8IgEU9cQa8BpkVsgPir5IQ8D9yreIoBfK6MQjH?=
- =?us-ascii?Q?+Mp5nxF+KD9bKuxbcm6h9xjpU2VU/mlukfjDXVWEPE1FdPGxhVqrAtnu84FG?=
- =?us-ascii?Q?8GHb1BLom1gKSu1rNcn8BLzvX0UaGCzb9eeL6d49WA5xBmaJs3biLqFs/avx?=
- =?us-ascii?Q?ro9hnXSiRkkiUDQvyv5BSW36ugugrWtgyDlHAXsHXqiTF09WVol8IlFtcXki?=
- =?us-ascii?Q?we5lYMc09egVFI67hFMAIpoBinPNfTdFNn47K8WOJC+cesJd3Cutnqi6Libt?=
- =?us-ascii?Q?gaLUooshy1bo6Aqezw1irRcH78fLS68tRC80iRNlYPjgDLLCX/slXJUg80ef?=
- =?us-ascii?Q?5Mb3NAyeDYzPMnG+2wpJ0B5wGoQsGlswN6gtrEhCjSEooSmSQ9vwdIPGXQOe?=
- =?us-ascii?Q?+mQtMyC+shlUfgUJmR9OjtKTKqJzdPLE25MJAzmZn5TG9RLvmlHoYXpeBOWm?=
- =?us-ascii?Q?3fdqis+vITTKhJaU5MSWW50SrWBoXtE86gkZGJ346R1uGG2c3RG3cWgtY2F+?=
- =?us-ascii?Q?/2xMXl9bAPvjQ9SAOxmwm+xuT95VnwWPBcPBMHgjtnZjYPa6O2OCovsMw39E?=
- =?us-ascii?Q?qIzczacFfqE5jH0UaywsRhfxN+zSmeaST0IwHzGJ7CAZ9W1jxSQ2LonsaVt8?=
- =?us-ascii?Q?63UkmZck30iECtgTwM8NRKFyTzBrkvrM72DmlyiwXsVJbw48NxrvX93zQ/s1?=
- =?us-ascii?Q?BkuDvHFmFpEMcPwDXgPuPHl9SpdU77I1HBr7gP2l4d0XNGvSbyOfoUIbHYks?=
- =?us-ascii?Q?XqY+vkLk+V6RM3M+42klplQpZRLrabWdEVAYIDofUdjKyGMDlhujMV+qJ/l0?=
- =?us-ascii?Q?oQ=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +BO1IeHnaWHcBQAhCbQxXbocXbjrzGo4fcLJOkp/oL8LisWiLESWtzlSZU8VYNVQLxoTEsSXF0MLdp3sfEwzKmIFnC/DzLdO5pXZakCz5+bjYxsPlNOW9sNffjRkbUe7LXUgqIpzvP0v940vJNSVoR2rK5EqS9QL2NbFvQxh5p89GhMnI/11dh7iV4ZKw0D5BBYuzUPHPCa0pRX9OP5Ece3DxKm+QRuYgUBa3spA47QmPrPAWL2+xh1M2uUc5F//FIP2RILA9uLInYByYVGSD1qsYPB3aM/TULozTGg85+jdP8q6fCxt86lE8hSr5FGPT7CXB2aQ2KzDc1lIrODcChAb/YdNRqdD8m0bgOzwQiBEgJ/tb/ptUAwzNbywIDtqZqiQiHruTEcITLenLekmmGTMDC9O7OXHCgSxo5uFB44O8yIQVY/BsUxMlVlAgeSOKhk4veeY8SfZUBbC+4CL6A659AysqUnGe5OQsNG/9mzqVMhoAMZoljl9/8qAhkuA8Ky3GuG8yV4WnHU2uO3Sk7Kl2ZFPey4xe3RLAiGzgI06QfdpZa5tsxaVQrg8dhWDpbPNsWEKBE3aW8T6xg21Tmk6/UsVb3JwB//UOa2xW3Q=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2c41730d-f326-48b6-4379-08dc21c6a04f
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5481.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jan 2024 19:06:55.8557 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cMF7wK2t2ofrS0NlaFBns6TpqezBcG3gCoe2rneWKP+hUjaLfiiGU4PPwhbvOJWzKmYgH57OjcLOqZj5SoPfg63OOYdO27zo7c6bkVnl9qA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR10MB6469
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-30_09,2024-01-30_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=852
- adultscore=0
- bulkscore=0 malwarescore=0 suspectscore=0 phishscore=0 spamscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2401300141
-X-Proofpoint-ORIG-GUID: H78oidmYzE4KksUJx139d0AD7w81F_bx
-X-Proofpoint-GUID: H78oidmYzE4KksUJx139d0AD7w81F_bx
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=william.roche@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ d=google.com; s=20230601; t=1706660882; x=1707265682; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
+ b=E5aeAYuJnRq639wuvUc/PEWsM+NIcgc5FIGenyQ98irtGpR82UlvonlNPV6yEOkCZ/
+ jOuLRmgjSJLEvMcEIi8XmppvP4WDIbi8slt0p/rcM1SfHxS6HOxdJRvnY2AsnM/BzQs2
+ LEqM0hqvtnaEK1nMGS/poUoF9bhFcdn5mpLKxv8AnV2oA6VLz7rbwx5rJj/2gJgM8BEh
+ c2kZxQQgyD0GR48sjwiabgDtvTn0jrtrWayzgjWnmZIt9NSe+p7s/XExZZqLYVWlaaA7
+ Li3ygGLrWmAuiqvzSMjdPZqFmdaBpXkJunKwMJLuKVuq6aIhlkJnkKmYWBCOjxsEL0ke
+ qZZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706660882; x=1707265682;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=f40XfUUTa/tJMFfses+Lto4m+MDT9EIZ8dnUNgZSxqQ=;
+ b=b4L1SPQCfXhUJDEQDZA8zmvglKH19xYs+zOxB0BPtoTgkiSZjD2m6gwblprpAA9CWk
+ Pg6iUBucJHdUziaRASQJo6QTTfqQKsAzx7XfPxNKdI4ceJmX6QEZcUk6WAkX9Cm1IH7x
+ AHy4jseUHgwzgzUqmj/L5HyiEWdZHirYHqkcws24w6Qlov2V0ZyIJAZak0d2vpowGA3S
+ ZHxqzKo24x4wy+pYmM/Jg0wDtppI9iNxCZn5Xi3XZI2yQu/qO442vo5GSIVAf4ZKeBOB
+ 4cE5g1vF+munEz1r69Zc11PStYRNdfwx0NcYzBABAcNRzelLCxJ7s4Z6wGP2HoUA1Joc
+ Tazg==
+X-Gm-Message-State: AOJu0YxBYGVs0FMAd39f4CQb9gkqIvELN6b8rk5CrTioqH1rystSBZzX
+ 9Wyf8VTWlatohL5LormvI/ZGGdoFVJDWM+gfDJ7wXvYPw9/HMme+1BVTd4srTPWhifC3Nmtfyyo
+ Xk80lcyYyLNjQKXAU9W27cXv0sg==
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a05:690c:397:b0:5f9:abfe:243c with
+ SMTP id bh23-20020a05690c039700b005f9abfe243cmr195847ywb.3.1706660882676;
+ Tue, 30 Jan 2024 16:28:02 -0800 (PST)
+Date: Wed, 31 Jan 2024 00:27:53 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.43.0.429.g432eaa2c6b-goog
+Message-ID: <20240131002800.989285-1-nabihestefan@google.com>
+Subject: [PATCH v16 0/6] Implementation of GMAC Networking Module
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
+ nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
+ Hila.Miranda-Kuzi@nuvoton.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3EpS5ZQwKCFUAxy541FG12xA3BB381.zB9D19H-xE9ABA3AH.BE3@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lrilZ0azhMXG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6hI73OcKcwNA
 
-From: William Roche <william.roche@oracle.com>
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-Problem:
---------
-A Qemu VM can survive a memory error, as qemu can relay the error to the
-VM kernel which could also deal with it -- poisoning/off-lining the impacted
-page. This situation creates a hole in the VM memory address space (an
-unreadable page or set of pages).
+[Changes since v15]
 
-A migration request of this VM (live migration through the network or
-pseudo-migration with the creation of a state file) will crash Qemu when
-it sequentially reads the memory address space and stumbles on the
-existing hole.
+Dropped PCI MBox patches. They were presenting a lot of problems with endianness and are not directly related to the GMAC. Breaking them apart to debug separately and let the GMAC itself be upstreamed faster.
 
-New fix proposal:
------------------
-Let's prevent the migration when we know that there is a poison page in
-the VM address space.
+[Changes since v14]
+Expanded comment on chardev device and fixed comment formatting
 
+[Changes since v13]
+Added a couple clarifying comments and documentation about chardev
+device expected protocol for ease of review.
 
-History:
---------
-My first fix proposal for this crash condition (latest version:
-https://lore.kernel.org/all/20231106220319.456765-1-william.roche@oracle.com/ )
-relied on a well behaving kernel to guaranty that a known poison page is
-not accessed. It introduced an ARM platform specificity.
-I haven't received any feedback about the ARM specificity to avoid
-a possible memory corruption after a migration transforming a poisoned
-page into an all zero page.
+[Changes since v12]
+Fix errors found when testing in big-endian host.
 
-I also accept that when a memory error leads to memory poisoning, this
-platform functionality has to be honored as long as a physical platform
-would provide it.
+[Changes since v11]
+Branch couldn't be merged with master because of issues in patchset 6.
+Fixed.
 
-Peter asked for a complete correction of this problem (transfering
-the memory holes information with the migration and recreating these
-holes on the destination platform).
+[Changes since v10]
+Fixed macOS build issue. Changed imports to not be linux-specific.
 
-In the meantime, this is a very small fix to avoid the current crash
-situation reading the poisoned memory pages.  I'm simply preventing
-the migration when we know that it would crash, when there is a
-poisoned page in the VM address space.
+[Changes since v9]
+More cleanup and fixes based on suggestions from Peter Maydell
+(peter.maydell@linaro.org) suggestions.
 
-This is a generic protection code, avoiding a crash condition and
-reporting the following error message:
-"Error: Can't migrate this vm with hardware poisoned memory, please reboot the vm and try again"
-instead of crashing the VM.
+[Changes since v8]
+Suggestions and Fixes from Peter Maydell (peter.maydell@linaro.org),
+also cleaned up changes so nothing is deleted in a later patch that was
+added in an earlier patch. Patch count decresed by 1 because this cleanup
+led to one of the patches being irrelevant.
 
-This fix is scripts/checkpatch.pl clean.
-Unit tested on ARM and x86.
+[Changes since v7]
+Fixed patch 4 declaration of new NIC based on comments by Peter Maydell
+(peter.maydell@linaro.org)
 
+[Changes since v6]
+Remove the Change-Ids from the commit messages.
 
-William Roche (1):
-  migration: prevent migration when VM has poisoned memory
+[Changes since v5]
+Undid remove of some qtests that seem to have been caused by a merge
+conflict.
 
- accel/kvm/kvm-all.c    | 10 ++++++++++
- accel/stubs/kvm-stub.c |  5 +++++
- include/sysemu/kvm.h   |  6 ++++++
- migration/migration.c  |  7 +++++++
- 4 files changed, 28 insertions(+)
+[Changes since v4]
+Added Signed-off-by tag and fixed patch 4 commit message as suggested by
+Peter Maydell (peter.maydell@linaro.org)
+
+[Changes since v3]
+Fixed comments from Hao Wu (wuhaotsh@google.com)
+
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
+
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
+
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
+
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
+
+Hao Wu (2):
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
+
+Nabih Estefan Diaz (4):
+  tests/qtest: Creating qtest for GMAC Module
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ hw/arm/npcm7xx.c             |  37 +-
+ hw/net/meson.build           |   2 +-
+ hw/net/npcm_gmac.c           | 942 +++++++++++++++++++++++++++++++++++
+ hw/net/trace-events          |  19 +
+ include/hw/arm/npcm7xx.h     |   2 +
+ include/hw/net/npcm_gmac.h   | 343 +++++++++++++
+ tests/qtest/meson.build      |   1 +
+ tests/qtest/npcm_gmac-test.c | 344 +++++++++++++
+ 8 files changed, 1687 insertions(+), 3 deletions(-)
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm_gmac-test.c
 
 -- 
-2.39.3
+2.43.0.429.g432eaa2c6b-goog
 

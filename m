@@ -1,110 +1,116 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp353997ejb;
-        Thu, 1 Feb 2024 08:34:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFDousyH9Z9Ck/8xo6UjUh4uGoXJyXvmB95rfjEBv9O30J7wKa2DFfQMLo9Vt6s3TFqdPyq
-X-Received: by 2002:a9d:6d11:0:b0:6e1:7b0:fb99 with SMTP id o17-20020a9d6d11000000b006e107b0fb99mr5881735otp.21.1706805277758;
-        Thu, 01 Feb 2024 08:34:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706805277; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp364227ejb;
+        Thu, 1 Feb 2024 08:52:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGUaN3dVs8yyDO2QAWu1tCKFDeQKEER1drNuKniCu8TkXqvdsKHfgJV1BwfA7cUQUT2oaNp
+X-Received: by 2002:a05:620a:2950:b0:785:4f1e:8b79 with SMTP id n16-20020a05620a295000b007854f1e8b79mr1385056qkp.4.1706806334110;
+        Thu, 01 Feb 2024 08:52:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706806334; cv=none;
         d=google.com; s=arc-20160816;
-        b=XSY6XiwKfqXj4BxFW/NdZLWr0NbrcC59iCe7Ax+s/jCDKDgVFih7WdWERwxbeFT7KF
-         QwUlh7NO0zg89H0qQIr89SOvDr29iNvzx9aEGjzQ3an0NRZamJvUKBI7WMgg2rL1fq1d
-         eiI9exx6Pz6vKFO07DHbVaNyJjqsJLEReNAteY6EsYxgpc6vIfDE/450n9hXncAAEDSQ
-         LT+aDIgmraRzdY0uQug3fenLRzQ7I5IMZxWXrOAaoUkQy0YNTdvybX+SrVRzTjRKJ7D9
-         9ALjnRKslDa8WNPa9F+FXUwtqTwmIyJka+l7oU1YDOeGUd+1Au/TYalbCdgtE8umakaN
-         bRJw==
+        b=OtzYazbw/CK8Fcx5/kJvNjiWEpfk1KIJhkHI4v2Siqs6sZ7KQXCm+eW07tn5PaqWcp
+         NJNacT/Uu1EfWk5Rca/+QSyxioCC89DR1sogE2bdu9GFZO+CH7AVFLPAWStS+qY+NggF
+         2qmRKoatSGGsvmIakS62wSrjAWOE94LIneh7QXzhFQfM8MIMqiXD3wKnK+Wk33AF8Nov
+         snxkem0Z219FzbZJVX5Ov3vNHksjAhLNik+hRWYaiWwBPqSI+sjB0N1H0mMeJD5LMJO9
+         ziTrl6sJry+FIbk3FzEVVqsMCJ/3GkhEtWhyM49h6WFmwlM5JXTR2/Ug/rio7dSbS5km
+         Ygog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=b8xXIwvSW9GSTTNVm005/UCX+5VgpWafDUc44kl7NZI=;
-        fh=BcGSKS4Zqmaou1aEfhNQv9dQcotAUOjOBe7C9x3XTvI=;
-        b=0mYeGuSkY34XJp7nZ6iGWDsZl/mk5Da5lcLNEXNKvpCQZXHg54q5XH/8nKb5EZNp+8
-         g/ZKeq7GybAo5vTJWXRlY3whVR/b7oHp6JCwQA3zf+c5E97F23NSGy6axg27n79JrAiz
-         vKHr/lnfFAV9g/4ndUqoDAihmBxIEBLnbGkbPARoHpGAddO/4WjQ1sEOvQ1kGqqSw6py
-         oNzakJdAzNCs2gMirWvC1ADRnE39nofv9x1h3O/KBWPdxYbxGS6PtVnpzpq1SzCtbmvk
-         NSQ23RO/kVLygbaBSDqxbXLfV8es2mGM47pKgBAooz1Zq2NC7oSk5ZqCOUCgZfYVs12E
-         s98Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=YjMXOv+9b7sh6dM0wTgq4km9RZuOela+8yUR/J9JlWE=;
+        fh=muE+U6oPhjhhz/CZAHuzbD1To2SWcZqeekLUoiTDDFM=;
+        b=k/eXLebm/qjZdEw+LwN9oxU7J8tMJ8fiX8eFx0/ltJKtJpPXq7ey5c7xp8lDgms9B3
+         CfAD8rFjh/ooAM09NCXMnFVohCqsi6psob+HVnz+Bxg5O9eNY6Ibzqc+gPfaiw4zg/hj
+         S9Z73WRk6fKa3GxZdZVG7Xq1xGUWA4xotEOVM4BIysTj4nexV2HrE3QOFzMoCbLpmNe8
+         vm2kh765DEiklT5KKx4dl1N7rcRsP1NqMkphtffBAMCUHGNC6zRPuXb+GkcYbkjNQBji
+         UD88ja2OILAfDckHZ+UglOAUL8RK28u4W33v1yG4ff1vYq92Xc93OChvYs08UskePNMK
+         LfiQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7lymTu8;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZJDRy/mV";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=0; AJvYcCUQDrw5E2ybTWRjXyQrd+ZTSOVDcpgYsj8bzzY3HHSM6G97ndbBWXBEHq5+ES4D9j4sSCC4K00PlLTBgYuiTlTsfDityraD
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCUdwrox6924QsgZN4hONEnVmZGT3cRJrqL/36oJ3g+3fsZUWf076DMJjrHHUirPQVOLcoz9P8j3q7Gyifr94DkcLI6w1BWK
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q22-20020ab054d6000000b007d2c394db6dsi2880uaa.10.2024.02.01.08.34.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 08:34:37 -0800 (PST)
+        by mx.google.com with ESMTP id h22-20020a05620a13f600b007853f73688fsi2692949qkl.40.2024.02.01.08.52.13
+        for <alex.bennee@linaro.org>;
+        Thu, 01 Feb 2024 08:52:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7lymTu8;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZJDRy/mV";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rVa0X-0004VT-Tj; Thu, 01 Feb 2024 11:33:45 -0500
+	id 1rVaDt-0007eN-DX; Thu, 01 Feb 2024 11:47:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rVa0U-0004TO-Ge
- for qemu-devel@nongnu.org; Thu, 01 Feb 2024 11:33:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rVa0T-0006wh-1f
- for qemu-devel@nongnu.org; Thu, 01 Feb 2024 11:33:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706805220;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=b8xXIwvSW9GSTTNVm005/UCX+5VgpWafDUc44kl7NZI=;
- b=i7lymTu8evjP1lhY9bvtX3v7USiLIxJhoDNTClprCaGIxkuXsuWCHrp2V6rczU2t93eU6J
- iayPr3uQxJhjNvkW0hfojj8C1SMz8ts8Vm0uZrzfRzJfqNhc1+4j3tnQk4SMUFypxJYQM9
- hiZAa4TOYtvFUou42pD+1VnPMoXrXZg=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-OoZDtHUaNMeRsjcy_7ROdw-1; Thu,
- 01 Feb 2024 11:33:37 -0500
-X-MC-Unique: OoZDtHUaNMeRsjcy_7ROdw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BAD883C025B2;
- Thu,  1 Feb 2024 16:33:36 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.218])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 992C2492BC6;
- Thu,  1 Feb 2024 16:33:34 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, jean-philippe@linaro.org, alex.williamson@redhat.com,
- peter.maydell@linaro.org, zhenzhong.duan@intel.com, yanghliu@redhat.com
-Cc: mst@redhat.com,
-	clg@redhat.com,
-	jasowang@redhat.com
-Subject: [PATCH v2 2/3] virtio-iommu: Trace domain range limits as unsigned int
-Date: Thu,  1 Feb 2024 17:32:23 +0100
-Message-ID: <20240201163324.564525-3-eric.auger@redhat.com>
-In-Reply-To: <20240201163324.564525-1-eric.auger@redhat.com>
-References: <20240201163324.564525-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVaDc-0006uI-Df
+ for qemu-devel@nongnu.org; Thu, 01 Feb 2024 11:47:19 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVaDa-0003OY-Qv
+ for qemu-devel@nongnu.org; Thu, 01 Feb 2024 11:47:16 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-556c3f0d6c5so1409622a12.2
+ for <qemu-devel@nongnu.org>; Thu, 01 Feb 2024 08:47:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1706806033; x=1707410833; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YjMXOv+9b7sh6dM0wTgq4km9RZuOela+8yUR/J9JlWE=;
+ b=ZJDRy/mV/gfjloEGwBmTF6CxbkLybacdEK6sNJs6t2xIkiZbauKBTjK86iTbLy1/jV
+ S5CbX7c0Hrj6yYzqTibj+HsCY9GWhVWpC/r/cePsvzQlR2bcKZmIfUyj6JCya9jYZTXA
+ E47cYISoxdctPPVRlJppds6neb1dIQ0l4Iy1mO2hOfPOLk/kGOfc0Cg2+2g78CPuq/L3
+ qHERoAkZTEodicR62F+TbMfT6CiT6hG+9D7qP86IID+J4mrRCfUQ0XqCpFkfX+N5b6HJ
+ EaaW3p66OGla/rVD28E5PI9vhOYMtPc/GKcRI/W0cOs6aE/cWqPQ3TNu87P/vPIz6t55
+ DjQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706806033; x=1707410833;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YjMXOv+9b7sh6dM0wTgq4km9RZuOela+8yUR/J9JlWE=;
+ b=MSranAxjdCNNdgcJt9ziW5ansXrXibsIvu4Jlo+B9Za0w0oF4PwPQdezl39EAW5avC
+ rML+73pDw3kgiEU890NdfXH5haAybqurmZ8iL9IlYPcN8ywbrm21tqZ/Jd9RlUcbTTQG
+ HFydUiWVH4qHolIsbGUuCM1Cc+LnDqDUgXsTearONMUlEpRy3O9waLvdYYq1XDt4o3Gn
+ oSsAwh2/arna8pt+TWcRI5aEvxc9uq+LB8jcMsvAX48R/wVUrQtioCLiUGdYH3FZvXR+
+ IUuueMlUaiplIZC8WkwP7kW51h/jh41Rxy/1JHFKR6n7suYqhbcqaE/Phx0PplVkTTUe
+ dvFw==
+X-Gm-Message-State: AOJu0YxC3N586oEaT84emwMaP5Qx3+7ByqKBnrluBXHtp1unOIRGzhQH
+ q2TOYKW1KyLGNb8oLsaiy7lo4tl0ahczhMSzuFPO2P2d9G4xFHfZgYmpoiLFSzPLjdWJT1Ys811
+ yzEDH419ck/KQzEZueGDL/fYtQBCKn9tnLKZnug==
+X-Received: by 2002:aa7:d344:0:b0:55f:2c48:abe0 with SMTP id
+ m4-20020aa7d344000000b0055f2c48abe0mr2017780edr.23.1706806032977; Thu, 01 Feb
+ 2024 08:47:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20240130190317.25692-1-philmd@linaro.org>
+ <20240130190317.25692-4-philmd@linaro.org>
+In-Reply-To: <20240130190317.25692-4-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Feb 2024 16:47:02 +0000
+Message-ID: <CAFEAcA8Vop+hBsPYqtdzDL9ce2QJ0WyXgv0m-ERJHwqu7V6=GQ@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/arm/stellaris: Add missing QOM 'machine' parent
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, 
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,28 +125,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QMmsNniYixNx
+X-TUID: VbbhpxSewANX
 
-Use %u format to trace domain_range limits.
+On Tue, 30 Jan 2024 at 19:03, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> QDev objects created with qdev_new() need to manually add
+> their parent relationship with object_property_add_child().
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/arm/stellaris.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/virtio/trace-events | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 77905d1994..2350849fbd 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -111,7 +111,7 @@ virtio_iommu_device_reset(void) "reset!"
- virtio_iommu_system_reset(void) "system reset!"
- virtio_iommu_get_features(uint64_t features) "device supports features=0x%"PRIx64
- virtio_iommu_device_status(uint8_t status) "driver status = %d"
--virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_start, uint32_t domain_end, uint32_t probe_size, uint8_t bypass) "page_size_mask=0x%"PRIx64" input range start=0x%"PRIx64" input range end=0x%"PRIx64" domain range start=%d domain range end=%d probe_size=0x%x bypass=0x%x"
-+virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint32_t domain_start, uint32_t domain_end, uint32_t probe_size, uint8_t bypass) "page_size_mask=0x%"PRIx64" input range start=0x%"PRIx64" input range end=0x%"PRIx64" domain range start=%u domain range end=%u probe_size=0x%x bypass=0x%x"
- virtio_iommu_set_config(uint8_t bypass) "bypass=0x%x"
- virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
- virtio_iommu_detach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
--- 
-2.41.0
-
+thanks
+-- PMM

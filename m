@@ -1,83 +1,88 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp258146ejb;
-        Thu, 1 Feb 2024 06:13:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGlWZajgEWqTRVy2eVJGsEPG9WfpKR3wpNHlrF83hFxFiv/dmPLJMyiX4+hAtQMbxs6T9ez
-X-Received: by 2002:a05:6214:2aa4:b0:68c:46ab:c8d6 with SMTP id js4-20020a0562142aa400b0068c46abc8d6mr5058567qvb.38.1706796809061;
-        Thu, 01 Feb 2024 06:13:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706796809; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp258333ejb;
+        Thu, 1 Feb 2024 06:13:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH+K/gEBWD76SNLD3VAtIcmrjAYDg3QKuibHvFrT5CPfGLf6YEq/nF702rUVh66+WIqE7jM
+X-Received: by 2002:a05:622a:191:b0:42a:b059:d8c6 with SMTP id s17-20020a05622a019100b0042ab059d8c6mr3200553qtw.20.1706796823501;
+        Thu, 01 Feb 2024 06:13:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706796823; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZtYHM3vL0hJmP06ZoVOAg5Hseg51O1lp7HixxXsrj18grJQVjFebO0jGGDSWkcwGIE
-         FID4FB3HZFNppiRKuVo5AQ7mBcXgp8c985R6oWJTG0gNUeXv1ur208v8gPMVaOklFSk9
-         /htul8/xyE/p63g8hHO2Ht+by6PV+r6BS4MllLxgocp9WM+FpU9xa4q4lXXV3osE/wZm
-         KlaSibwaLA2V94xaqQOnnPubd/Bb0qy5zlWpoHKrt9eDwN1us+yCsFp7LUC6y3Iuma09
-         G5p3DOEtRZk4HB7N9wWgKl3x/QPk317bjBXMSTo16h1mYXt1WA+uUFe4kBGEYNQwmFF9
-         zDlw==
+        b=bjmNIkXmxAFOesMghy4c5e0nIPX2mY2y7TSeTnVpHuKDa+fOW9RPandMZ1k9aPNQjR
+         wN+eN3ucJuYkre2j9b169fFXJ3ccdtsaS9Wq1k9VV4buwLMduC0wguaCTz6xsHCibvEY
+         sCwW7ifNzZxDrRJ44liVKaHjSInIyOkm0b9i9Nymm8xFCYfFXcJ0qyrL9DV6bzu1bQfJ
+         YHFf8zHIl0WDxwoWj0J7/jfowZZ/S8R6fStXvCFAeO0voZJ9Th8CuxghKo90ch4HElzA
+         w64gkSqNyK6VwlkN8H/5GFZf9P4AXdCWUrqigyislQEy038Wz0D1lWyksAF2wBIyTZ1q
+         TBqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=tICD7uKnokN4J60EJkA6IL+LDanwZC2QFoiUPcA8olQ=;
-        fh=6OtRAyzXc73Wsp3cNa6zegRTjpN4VQ/UL5X8UMWEEUY=;
-        b=F64XEHaYlVInH8tPDcdZeVzreMzY/9F8Fkvrr59W43bCfpEFH3Azx0YlE08Y4jEapO
-         bsjFexT1O7LmlLrMHV/6LIIVvI5qVnG4BohypRY/drlGbxU6PuKHOPu/lfWLPGmQdV2s
-         UMETjOoRiJTx4upp/LHmywJhCFOi58BDYNhN41VpZWvYwAzyCjjq5jwoGvqABJ35XrhC
-         fNHiIlKrGwQGG0GahDvkpRMCbXfIVx6SWOgPRbMm88lPEz8hSddzwS8EssD/HRCUZguL
-         ToabnTgQOonRRv3W7J69xvrGZVchAxF1Uvwt1TcG0WRy9HYW9LG+/pML/NYYf3O06waN
-         HlGQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=9D25eCE6OjsqpFMSAcIqOWGsmbhZ7nRgxuYpmTvUa7o=;
+        fh=6Qn5GAD5mPXQFuNQZgDKfMSicx6C+9kA8dAK3DVpO1I=;
+        b=OIScoxv4aHHW//x5PH7QCISjpL+KyI/Ir5oGkF8bwP6nl/01kTefXxXpySoNb43HBm
+         aGflgp+p81BNg6sVJ+99EgZ5PI/CF1wpAbdvKEPQ/LNd6w/RM5FcQNWMBylmWgBYDZp2
+         rIZRm9Ew0MtLdK8QIDZw9MlK7vlgEP2VMOAmeVFGFpL2wB9mpDr/M5LGhg+0SE1uaPeT
+         iGzl6FhjHpPoM/kHZpK8HQ9IsBAsLQwtr0DVWID+5mE7yQS/xjatiL2Q1SnDRYdu1O5+
+         ETDSTnZ3iWoojLPTQw0sozQr1SimC3zHNj4nftDSCTQp0w3rTWfK3IcMxjVtV+cILIOK
+         FOOA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCV8dwXf0NrAuQ6hhGNC8YtIxDLOk+wf2JmocFGWjAWMUPkgqMBD7Tv9IvHxT4tE+VDSJkd3bct02IKnwC2f6vWkcp9kEl5a
+X-Forwarded-Encrypted: i=0; AJvYcCXA1Np577CCGdUhUZtIZJkoyjPjEmbVKBTMwQxLgQfszZ1QCAI1KZN2wxnMVGfOP52wrbamrNVArSWQimysAXNc0V5FqPuu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou39-20020a05620a622700b0078335aecfd1si14166288qkn.611.2024.02.01.06.13.28
+        by mx.google.com with ESMTPS id f16-20020ac87f10000000b0042ab04b6274si6995448qtk.555.2024.02.01.06.13.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 06:13:29 -0800 (PST)
+        Thu, 01 Feb 2024 06:13:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVXof-0000xK-2a; Thu, 01 Feb 2024 09:13:21 -0500
+	id 1rVXol-0000yi-1J; Thu, 01 Feb 2024 09:13:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXoX-0000vM-Nx; Thu, 01 Feb 2024 09:13:13 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1rVXob-0000x1-Ei; Thu, 01 Feb 2024 09:13:19 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXoR-0007kI-1S; Thu, 01 Feb 2024 09:13:13 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgq138hSz4wcQ;
- Fri,  2 Feb 2024 01:13:01 +1100 (AEDT)
+ id 1rVXoY-0007mJ-Cn; Thu, 01 Feb 2024 09:13:15 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgq80wCCz4wcT;
+ Fri,  2 Feb 2024 01:13:08 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgq018Kmz4wcM;
- Fri,  2 Feb 2024 01:12:59 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgq62KpMz4wcM;
+ Fri,  2 Feb 2024 01:13:06 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL v2 00/17] aspeed queue
-Date: Thu,  1 Feb 2024 15:12:36 +0100
-Message-ID: <20240201141253.806055-1-clg@kaod.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Gavin Shan <gshan@redhat.com>
+Subject: [PULL 03/17] hw/arm/aspeed: Set default CPU count using
+ aspeed_soc_num_cpus()
+Date: Thu,  1 Feb 2024 15:12:39 +0100
+Message-ID: <20240201141253.806055-4-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240201141253.806055-1-clg@kaod.org>
+References: <20240201141253.806055-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,102 +97,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Cr8R2eubEC5+
+X-TUID: LRtq5j2O7Yo+
 
-The following changes since commit bd2e12310b18b51aefbf834e6d54989fd175976f:
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-  Merge tag 'qga-pull-2024-01-30' of https://github.com/kostyanf14/qemu into staging (2024-01-30 15:53:46 +0000)
+Since commit b7f1a0cb76 ("arm/aspeed: Compute the number
+of CPUs from the SoC definition") Aspeed machines use the
+aspeed_soc_num_cpus() helper to set the number of CPUs.
 
-are available in the Git repository at:
+Use it for the ast1030-evb (commit 356b230ed1 "aspeed/soc:
+Add AST1030 support") and supermicrox11-bmc (commit 40a38df55e
+"hw/arm/aspeed: Add board model for Supermicro X11 BMC") machines.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20240201
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-for you to fetch changes up to 649b8ed20543f1b7f7e3dd8fd409092639bb345e:
-
-  hw/fsi: Update MAINTAINER list (2024-02-01 08:33:18 +0100)
-
-----------------------------------------------------------------
-aspeed queue:
-
-* Update of buildroot images to 2023.11 (6.6.3 kernel)
-* Check of the valid CPU type supported by aspeed machines
-* Simplified models for the IBM's FSI bus and the Aspeed
-  controller bridge
-
-Changes since v1:
-
-- Endianness fix
-- Renamed test file to match other filenames
-- Fixed file list in MAINTAINER
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 4bc292ff84fc..5b01a4dd28f8 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1212,6 +1212,8 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+     amc->i2c_init  = palmetto_bmc_i2c_init;
+     mc->default_ram_size = 256 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ }
  
-----------------------------------------------------------------
-Cédric Le Goater (1):
-      tests/avocado/machine_aspeed.py: Update buildroot images to 2023.11
+ static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
+@@ -1586,11 +1588,12 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+     mc->init = aspeed_minibmc_machine_init;
+     amc->i2c_init = ast1030_evb_i2c_init;
+     mc->default_ram_size = 0;
+-    mc->default_cpus = mc->min_cpus = mc->max_cpus = 1;
+     amc->fmc_model = "sst25vf032b";
+     amc->spi_model = "sst25vf032b";
+     amc->num_cs = 2;
+     amc->macs_mask = 0;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ }
+ 
+ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+-- 
+2.43.0
 
-Ninad Palsule (11):
-      hw/fsi: Introduce IBM's Local bus
-      hw/fsi: Introduce IBM's scratchpad device
-      hw/fsi: Introduce IBM's FSI Bus
-      hw/fsi: Introduce IBM's fsi-slave model
-      hw/fsi: Introduce IBM's cfam
-      hw/fsi: Introduce IBM's FSI master
-      hw/fsi: Aspeed APB2OPB & On-chip peripheral bus
-      hw/arm: Hook up FSI module in AST2600
-      hw/fsi: Added qtest
-      hw/fsi: Added FSI documentation
-      hw/fsi: Update MAINTAINER list
-
-Philippe Mathieu-Daudé (5):
-      hw/arm/aspeed: Remove dead code
-      hw/arm/aspeed: Set default CPU count using aspeed_soc_num_cpus()
-      hw/arm/aspeed: Init CPU defaults in a common helper
-      hw/arm/aspeed: Introduce aspeed_soc_cpu_type() helper
-      hw/arm/aspeed: Check for CPU types in machine_run_board_init()
-
- MAINTAINERS                     |   9 +
- docs/specs/fsi.rst              | 122 +++++++++++++
- docs/specs/index.rst            |   1 +
- meson.build                     |   1 +
- hw/fsi/trace.h                  |   1 +
- include/hw/arm/aspeed_soc.h     |   8 +-
- include/hw/fsi/aspeed_apb2opb.h |  46 +++++
- include/hw/fsi/cfam.h           |  34 ++++
- include/hw/fsi/fsi-master.h     |  32 ++++
- include/hw/fsi/fsi.h            |  37 ++++
- include/hw/fsi/lbus.h           |  43 +++++
- hw/arm/aspeed.c                 |  70 ++++----
- hw/arm/aspeed_ast10x0.c         |   8 +-
- hw/arm/aspeed_ast2400.c         |  15 +-
- hw/arm/aspeed_ast2600.c         |  28 ++-
- hw/arm/aspeed_soc_common.c      |   8 +
- hw/fsi/aspeed_apb2opb.c         | 367 ++++++++++++++++++++++++++++++++++++++++
- hw/fsi/cfam.c                   | 168 ++++++++++++++++++
- hw/fsi/fsi-master.c             | 170 +++++++++++++++++++
- hw/fsi/fsi.c                    | 102 +++++++++++
- hw/fsi/lbus.c                   | 117 +++++++++++++
- tests/qtest/aspeed_fsi-test.c   | 205 ++++++++++++++++++++++
- hw/Kconfig                      |   1 +
- hw/arm/Kconfig                  |   1 +
- hw/fsi/Kconfig                  |   7 +
- hw/fsi/meson.build              |   2 +
- hw/fsi/trace-events             |  13 ++
- hw/meson.build                  |   1 +
- tests/avocado/machine_aspeed.py |  18 +-
- tests/qtest/meson.build         |   1 +
- 30 files changed, 1578 insertions(+), 58 deletions(-)
- create mode 100644 docs/specs/fsi.rst
- create mode 100644 hw/fsi/trace.h
- create mode 100644 include/hw/fsi/aspeed_apb2opb.h
- create mode 100644 include/hw/fsi/cfam.h
- create mode 100644 include/hw/fsi/fsi-master.h
- create mode 100644 include/hw/fsi/fsi.h
- create mode 100644 include/hw/fsi/lbus.h
- create mode 100644 hw/fsi/aspeed_apb2opb.c
- create mode 100644 hw/fsi/cfam.c
- create mode 100644 hw/fsi/fsi-master.c
- create mode 100644 hw/fsi/fsi.c
- create mode 100644 hw/fsi/lbus.c
- create mode 100644 tests/qtest/aspeed_fsi-test.c
- create mode 100644 hw/fsi/Kconfig
- create mode 100644 hw/fsi/meson.build
- create mode 100644 hw/fsi/trace-events

@@ -1,112 +1,117 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp286101ejb;
-        Thu, 1 Feb 2024 06:59:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGkWB+9kZnj1Byr1A4QS3wP1Gme6zriFdzQ3HKvDTRBhGrrHUaONb20fKNU+ERaoySxP7GY
-X-Received: by 2002:a05:620a:2451:b0:783:e3cf:5e5b with SMTP id h17-20020a05620a245100b00783e3cf5e5bmr3304063qkn.74.1706799590856;
-        Thu, 01 Feb 2024 06:59:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706799590; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp335079ejb;
+        Thu, 1 Feb 2024 08:07:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHYVdyay0kmSYQc4obs/Sb6f5lHo0BsD81UpIma6FjfjlwAu3pN0o/d9CVN4D2+ImQz8OPS
+X-Received: by 2002:a05:620a:2006:b0:785:469c:3fd7 with SMTP id c6-20020a05620a200600b00785469c3fd7mr2390933qka.28.1706803642234;
+        Thu, 01 Feb 2024 08:07:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706803642; cv=none;
         d=google.com; s=arc-20160816;
-        b=ylnchcTqRm8jOC8fOjJm+a+51vWN05lGYPIh2a0BLS/O+xmeQsA+R9DisTNPt2gkR2
-         a8xuSsU1I+YFwc/aRrB0DKignZ00VwQvGdKDQ270DoLLiJ17IMPB0WMJdctV/EphGsm1
-         esv1ZilbeDkZt7sb6pXopz9/rjA7TeNsVrLvJizJJYqdt5DqdwsI/yOnVqi6+2+Li7ZN
-         o1AL0yaTBDgtmjzit0IqG/1YR5//CQyGHu5Rhczcm5J/RKTHbjgsGwDwGLpeG1ygxHAq
-         52+gWLLQ9AnY1Igdu88jMKzOPmdV/Xc/8kORKPVG0F7CzWBm95nAapDQbKtuz/Ano8zF
-         Lq6g==
+        b=I9aDOQcf6N+0mw7AeFnOrr1VHzOCIhVxi0Xjeu6Bk0+r0EfqXrOcPlv+4yspK7jxk9
+         NZIEaL8vpqAGG1v2bJp0Sz3qzb9OU9zejMYCRo61LAd3wrfwF1XJZqHEOba1PKZN0XsA
+         k3Dmb3+k9H0wpuRlg+sX5t59Jmr6y8gyacQdU07e+3Fb0aE6LiNQdBs+VaooJsWjm1y7
+         9Uh1igfm7sWxP44jR9SaLsTPoeDokGu5IRYCTRXQpM8Fm8hE4nzAtK7KLOSSFoLJ8IDr
+         4IRTOBcU0kqZLoyUsrJ07yg3txZPkanPBAW7zV0tRvSZop8wG3iUlWmSWgy6XqDBc42r
+         fcNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=PvE5C8HCEnxkanwInSxFVTeh2/qCg7CiB21pHrxsEPI=;
-        fh=LcuS39zFdRWtMju9vKEDkBtXM1tW10kawKy+1sEPQBk=;
-        b=kDbJalxI7qwr99Ch20FN8wbhCrjbPml3mkt/9Qq+EuofXNje3IQ/Iw48v2CCzdd2+L
-         ThdzV/Sfoe3MKBQ0yHdgAUcrvEnuMEjFaAZpZd3pYrHL+XQ5YhMF/rWTn8wDldUnnVjt
-         3Ru+TtXDIggKyHs2VaHyT/XUB4vUBTecbFx/ByxhDCapeNbIZKf7cfl0zanbJQDlQCVP
-         p3oYIuaU25lDZ5bHMWb78Et1K29Khka6Wrw3sB0z+qLI98L6mSrlS8WMwDbRqaQGsxj5
-         0BWc75MzeZl4RQUA/uTT1MvF1zKGlNccvXi/CoC3SOGkdIrku7+s1O60yKEMtFZH1pkY
-         8Pxg==;
+        bh=7m4biepq+wdTrTMcPIx64LKzglwVFghTFI7I3P3BXkA=;
+        fh=Ek6zgi+MzMP3HfZ6u1KT9TaFP8+kEkHbzaGw7mkp/j4=;
+        b=KtuGnXDbaVXZ9PwB8O+pSH3SIoIRaOx9YO61TYKNUB/Ug+Vep99RSPI86gyEr7KCiI
+         JEBtJ94lzkOmm0x8yVb50bkK/ym2t16Y04GoAiQ50Q2iIHACQIpGWv6FIK0UJa+iInfr
+         7VgkNTaGQf9BcPqtspIhxGpFCgSqmnUecjCFvWJemit5eN5Fg+uhSNLwzV4WVdq0ZGkn
+         9Q76dMsJdKwPfgEO2B3eC/uk60obu9A7X8icdeJnTUc/00MgJ4ROOCwKoDxyXpc1MCA1
+         vqJQAUGCjC6hHm4/uollA0BYKPFs6zPtJruaZ3wI+YLWFnmZJZUoiD3dEtxmju6U5FO8
+         3TlQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a4yzwCf8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iCnzWQJM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCW+aGwaM/Sy9sCloluZi3FhbflAr3bj3IbZNz/3z37aKeC/nfnJJzizxIum84sG0MprC8CfdPcbSfp9O1+99hEw+aab3TU0
+X-Forwarded-Encrypted: i=0; AJvYcCU7gBYL6XUt3zkG3WA2Y3fzX2agBpKQDsa24a4yO+m4HUukD0sq+kWSmVNeCnfaFivltVg75REX0xslmON6XKhKi8ZWGyOj
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9-20020a37db09000000b00783da2644b0si13576144qki.696.2024.02.01.06.59.50
+        by mx.google.com with ESMTPS id j2-20020a05620a146200b007840a525515si6031324qkl.203.2024.02.01.08.07.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 06:59:50 -0800 (PST)
+        Thu, 01 Feb 2024 08:07:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a4yzwCf8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iCnzWQJM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVYWy-0002dp-FB; Thu, 01 Feb 2024 09:59:08 -0500
+	id 1rVZat-0005kJ-SC; Thu, 01 Feb 2024 11:07:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rVYWp-0002cS-Gy
- for qemu-arm@nongnu.org; Thu, 01 Feb 2024 09:59:03 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1rVZaq-0005df-TW
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 11:07:13 -0500
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rVYWm-0001c4-1N
- for qemu-arm@nongnu.org; Thu, 01 Feb 2024 09:58:59 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-55f15762840so1196291a12.0
- for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 06:58:52 -0800 (PST)
+ id 1rVZam-0008IA-DK
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 11:07:11 -0500
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2cf1fd1cc5bso14840421fa.3
+ for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 08:07:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706799531; x=1707404331; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706803626; x=1707408426; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PvE5C8HCEnxkanwInSxFVTeh2/qCg7CiB21pHrxsEPI=;
- b=a4yzwCf8fAEotaL625/dQp/7MlU94v0m8wns+gr5RS3Ib3o9SiLu+NQh/0MfrQzTcf
- s8599fPwFZxrWmE2xBCRUUn3oDH9bnF5sZ9n7fWLzHY/PT0RJ8PzgmH7ywIMbBrtyU2/
- v1lcnvxFfhIlivwr65MiQhD1+6ZwNN3wnaDLlermJj3HQAKUFohL0syDegepOreusveA
- bTrD7kycPENtUZWfXIPpWq3MqhcAAb/XSd9W+n5Q57KH0u1uIX8Lh7dikDxWhcJgTntD
- vSygSO3dF/RJvIKJorl1t92m6fbVhqCIFGMuXDyt2K7dIq2Knr84dXggZcoBHNnHirk4
- qP6w==
+ bh=7m4biepq+wdTrTMcPIx64LKzglwVFghTFI7I3P3BXkA=;
+ b=iCnzWQJMgNuhQm26xq9BWNeWTAT4mv4YzOXe8VQeOnaVY0TtovA6KdPTfA6lnNoFQN
+ QC9ESTyx04SkquGgEs2lqW5JuTCBdRYfoOwMfYqVd3bSuB5bFdbMJa/cfJe4PM/G5f1N
+ yGUXvJLHTTxmyVSGSiBNBUGIM1iospPxlKBjKHt+sM+HTgYpwQMIXoTB3lRDvXIRazrl
+ BgUh/pZvvcd7bceXzzV4E9VbXmXX7BLMaXgXIAFco5Ww9sirhn/W1SLCYto61fZk2G70
+ tHXmZ3xLtJysHUvq61AMIBTDx9+wtn3OKLswTJXIQjUaQBWNRgRb/O22Q67o5FvDrChj
+ dtiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706799531; x=1707404331;
+ d=1e100.net; s=20230601; t=1706803626; x=1707408426;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=PvE5C8HCEnxkanwInSxFVTeh2/qCg7CiB21pHrxsEPI=;
- b=P1t94NnKNOtRWkwZGP7ElsYYX84jGji/ETnR6bVE2Xb5slFL0LNOpMfyfZJS6+uNRF
- CMQ6j4BdTrk77MIHJMkNWdydKM2fIsXoIO5L6ra8q/FuY4306PgnTajOq8XgXzfEHQXu
- RKkCF51X5y3JdxzhF4UEBSwYbwZSKvNaXvFWa5DAME7Cmr0WpTW8jDqUq1g6ejM9Tsdm
- Ie6xoGZU2S88DJfKHAtMH6NqSyyqhn3uLqV28w8fVVOFo2WrW2sS3THEr93E3TV9zghW
- 0Jv6BSVMgpinEbfedkCogXt7ZF3h3c6DoEjBp1RIYNl2B7G2MaBMCYyWEFgrFvaYWcA2
- XLYA==
-X-Gm-Message-State: AOJu0YwYISxvQxGIGmGWzJM7TqL/fmpLAGDeYXHBBCo8J4CO/4WZcgSf
- 1w9mIh00vmU8qEoA2Qd4d32yPRyz0iVwQraa9eJiMPweTE7yJiG9+9nUxNYK2t1D6WgHMZprmft
- 9AJ5Eo3KjjUaXo0N5A4p2Hrr5ilb59gOmFoSh4w==
-X-Received: by 2002:a50:ed91:0:b0:55f:4ce3:5988 with SMTP id
- h17-20020a50ed91000000b0055f4ce35988mr3263343edr.8.1706799531593; Thu, 01 Feb
- 2024 06:58:51 -0800 (PST)
+ bh=7m4biepq+wdTrTMcPIx64LKzglwVFghTFI7I3P3BXkA=;
+ b=B7xxcMGVu6B54ugYkHZI8VMOg0p/WNusiEAh0xTwss/0yPjSKxeC37baPXeFA19adN
+ i5PryYuTA7qydFJZj6ltzUFWOyQjnxYRec/oRWscJVDn2RCNjASe8t6+wz7caESyz4Kf
+ bBJ6Nat6Xfz3BIF4fAxnCy5DZWNnuUwjfBUyGiNsE2z+UjVRWzqU8bnNr1EyL9hQudaB
+ Z4/rmayHJWi1+WlXYOitB2+IdQloVpDdOpIVPFFh+8nvqEk8vA4HyZFugKkxFSm/cPEm
+ Y7eNNtTp6SZgpnFCj9SlFH+yUFXEOOxTDAOakSRas6mlitgbLhrIIyFQbcIziL7LsVfx
+ kBuQ==
+X-Gm-Message-State: AOJu0YxSdUrHHE/cgYXmfBGNmfN8qfoXW1qeRdHQUPlz0kt88XET14hK
+ N9IEKWnhA8MrFzYwK3kDaQLnYSMRp9v4DcpZ9kpUTx6vkRUbo0fJBGDGWCOugf5QTUQSkmBS99w
+ 35UPvmAJXniJ7PDoXxo4Imk7ZXhN3UE0tX/0+BA==
+X-Received: by 2002:a2e:994c:0:b0:2d0:6a10:e57e with SMTP id
+ r12-20020a2e994c000000b002d06a10e57emr4091165ljj.18.1706803626278; Thu, 01
+ Feb 2024 08:07:06 -0800 (PST)
 MIME-Version: 1.0
-References: <20240129060055.2616989-1-linux@roeck-us.net>
-In-Reply-To: <20240129060055.2616989-1-linux@roeck-us.net>
+References: <20240129081423.116615-1-jeeheng.sia@starfivetech.com>
+ <20240129081423.116615-4-jeeheng.sia@starfivetech.com>
+ <20240129110823.000076df@Huawei.com>
+In-Reply-To: <20240129110823.000076df@Huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Feb 2024 14:58:40 +0000
-Message-ID: <CAFEAcA-pOdoSdRPDc-cpKyoRq0s309zR_0osDaLJqcdy9iy+6w@mail.gmail.com>
-Subject: Re: [PATCH] pci-host: designware: Limit value range of iATU viewport
- register
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Date: Thu, 1 Feb 2024 16:06:55 +0000
+Message-ID: <CAFEAcA80VjwM=uKEXfwtg9SVzX947of1Go2c0ph-r0DeyKbpMA@mail.gmail.com>
+Subject: Re: [RFC v1 3/3] hw/arm/virt-acpi-build.c: Enable CPU cache topology
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, mst@redhat.com, 
+ imammedo@redhat.com, anisinha@redhat.com, shannon.zhaosl@gmail.com, 
+ sunilvl@ventanamicro.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
+ zhiwei_liu@linux.alibaba.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x233.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,64 +126,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c+qhwnk5OMgq
+X-TUID: my7cIZn5B00y
 
-On Mon, 29 Jan 2024 at 06:00, Guenter Roeck <linux@roeck-us.net> wrote:
+On Mon, 29 Jan 2024 at 11:08, Jonathan Cameron
+<Jonathan.Cameron@huawei.com> wrote:
 >
-> The latest version of qemu (v8.2.0-869-g7a1dc45af5) crashes when booting
-> the mcimx7d-sabre emulation with Linux v5.11 and later.
+> On Mon, 29 Jan 2024 00:14:23 -0800
+> Sia Jee Heng <jeeheng.sia@starfivetech.com> wrote:
 >
-> qemu-system-arm: ../system/memory.c:2750: memory_region_set_alias_offset: Assertion `mr->alias' failed.
+> > Introduced a 3-layer cache for the ARM virtual machine.
+> >
+> > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 >
-> Problem is that the Designware PCIe emulation accepts the full value range
-> for the iATU Viewport Register. However, both hardware and emulation only
-> support four inbound and four outbound viewports.
+> There are a bunch of CPU registers that also need updating to reflect the
+> described cache.
+> https://lore.kernel.org/qemu-devel/20230808115713.2613-3-Jonathan.Cameron@huawei.com/
+> It's called HACK for a reason ;)
+> But there is some discussion about this issue in the thread.
 >
-> The Linux kernel determines the number of supported viewports by writing
-> 0xff into the viewport register and reading the value back. The expected
-> value when reading the register is the highest supported viewport index.
+> The l1 etc also needs to reflect the CPU model.  This stuff needs to match.
+> Wrong information being passed to a VM is probably worse than no information.
 
-This behaviour by the kernel seems to me to be out of spec.
-Looking at the "i.MX6 6Dual/6Quad Applications Processor Referenc
-Manual IMXDQRM" it says about the PCIE_PL_iATUVR register field
-Region_Index: "Must not be set to a value greater than 3"
-(there being 4 regions in this case).
-Plus it says elsewhere that software "should" write all-0s to
-reserved fields, and bits [7:4] are reserved in this register.
+Yes. The ACPI table information, if we provide it, should be
+being generated from the CPU cache ID registers.
 
-> Match that code by masking the supported viewport value range when the
-> register is written. With this change, the Linux kernel reports
->
-> imx6q-pcie 33800000.pcie: iATU: unroll F, 4 ob, 4 ib, align 0K, limit 4G
->
-> as expected and supported.
+But I'm a bit confused about why the ACPI table has the cache
+topology in it -- can't the guest read the cache ID registers
+and figure it out for itself?
 
-However given this is presumably what the hardware does in this
-case where the guest does something out of spec, and we definitely
-need to do something to avoid asserting, we should take this patch.
-
->
-> Fixes: d64e5eabc4c7 ("pci: Add support for Designware IP block")
-> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
-> Cc: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->  hw/pci-host/designware.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index dd9e389c07..c25d50f1c6 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -340,6 +340,8 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
->          break;
->
->      case DESIGNWARE_PCIE_ATU_VIEWPORT:
-> +        val &= DESIGNWARE_PCIE_ATU_REGION_INBOUND |
-> +                (DESIGNWARE_PCIE_NUM_VIEWPORTS - 1);
->          root->atu_viewport = val;
->          break;
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

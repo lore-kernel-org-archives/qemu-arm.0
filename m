@@ -1,85 +1,87 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp259285ejb;
-        Thu, 1 Feb 2024 06:15:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEI3pInmTr+9VSJNnAyS1JEA/j6U8yf9InWMmYTUP+A3UM5ee/ZMypjnVQwQ91mmAHgsuQ+
-X-Received: by 2002:a05:620a:3db:b0:785:45c7:db3a with SMTP id r27-20020a05620a03db00b0078545c7db3amr1882546qkm.20.1706796903826;
-        Thu, 01 Feb 2024 06:15:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706796903; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp259357ejb;
+        Thu, 1 Feb 2024 06:15:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEhBcshzgaG785UT4zOosZhq3HOwoNF5bupnbSodxzCpZl84OPRybwJ5njZOMs/WTderZIr
+X-Received: by 2002:a05:622a:1007:b0:42a:ac88:afa7 with SMTP id d7-20020a05622a100700b0042aac88afa7mr5408924qte.12.1706796908197;
+        Thu, 01 Feb 2024 06:15:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706796908; cv=none;
         d=google.com; s=arc-20160816;
-        b=HjfwCO0Q2hmlh9uPRm+QEMePnhx54w4M9UR52eSeKA/Ubl81kj9a9K+LGykvFR6cZZ
-         MbuQWqmMXkhc8xMYReucf9mMEPrTHbfuK4yiywVXfeTCZWgDmJBL+kOL4x7DP5lxF/Hr
-         XYjZjbymIzOGDB9tEA5oVqkyBnRHUBRtXJY6a21h25c4ogmXqbuci/BBM77klR9IgGIJ
-         OrrBN1B5H9tKUxhksYpYah2FCUTBB1lSmX8GIhTJ5J37Vs3Y+EjRFoYLjLBrtjJMX19x
-         4E6Ugwf9P13Y/A1jvtdd/mAjVNTuQwsZalvUQQ23Mp2CcepbbmTZvi0MDOFSwcWoaSKo
-         Gewg==
+        b=Xu2Ru4FCm+5XwTljRt4EcrDXjd483rTayQ2VXCchjnkLT4YjqrATLKwc76HOHmm9Sg
+         t/KCPJMZtQ2kyWbDonQAKdNf6tM7xIfK4yHp5LABgT2fzm2AAG3B096R9H9c9eeITyDe
+         c+bTXWChvmfSEmkQpZcuRqWsaFFJv3SNYtAthyspvQDixYncdOBmFWapagp1mg8NfaTH
+         ecHxs+JwYHLAO6Dk2zmVpfN45XLMzWj4Dv4da3F1rg6oYNClR1vE0TDxO+benZCtNTQd
+         nwmhpSDH+vnxcBGl8z2YE/tg7cVKfs+4COqDdw5pr5PYBVa4uImrPdDF+Pj+2hOkwKIL
+         PbeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=LeCZUHmoqj9/Jlh1VJtw3BU2+1fwFAtndcDww9NhSWk=;
-        fh=atAdeoXMxge0ezQVCIbxi2Z7I2UKkbs6QHVxR53l/j4=;
-        b=phPvM65zY1o0fYi0a+CzxqAa9PGxC9fUZpXM3D/tWSe5kuvdvpeiATBj7QY1mttnju
-         R7IDUwbyLTNNhjHmu0a6N2q7ZKcv/soFWwXgxqM9xSzvnY6wRwo8B20JAQoUgY/+e04a
-         ht4Y0IJntQ0mUW/ghw/C6+LAiqRAIZ5nCgbgPFSneI8B3KjXqPVjLvPT4ZqUC0lmEc2p
-         8VHmKis+SJQ+kUtp9PoiLR2/sV2sml455VZD9yTn4P1BMzitNhCExdKiCiIQ3839Y9n0
-         /eMSzznjiB+TY4s6LnC1oWSw5YTL+AY7AZYoHBTwv9aMPckEiei69CDAQOjMUOJ5hr6T
-         Jzfw==;
+        bh=ZcYirumRuyZPaFy/9HFOSE2W5znoMqi8X59+loeJRSc=;
+        fh=xyN42g7zaCmyODKBCi1xsr0+hwhZQ94Xjwsr6s82SHw=;
+        b=zE+i9X64vYRM7RDVsJMjNOnGa9Pf7iSq7HD+PolfBXvXVDeGMOqOWpxz6D2lVczUPP
+         YrHv8nk+RlT7ajVOcuFCCd97HZNBzUK+FBHSMeLGOuepkwkDfirFHYVjHyfWQJNkzw1W
+         n6KqVd89Zq6ejtLiPwf9UBAZIZrjZSUtkSefL37xGgpEisHGEVnGtEnb8nWgdIAmNkDz
+         eUiaLmor12/lFmwAI+y8YPx1MrW/UedW3KP4EXpK4cRYCx82ZlXMf87D8acHPHJtbXRl
+         w8NCvoQ2A/VcKaclNTgI/RC9Qrh4K3ydjK6jg+Jt50qw7RWEfjfVjNsNtRDKFDXFOuwv
+         eluQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCWtdPGnRvAEyXzWySpjBy86T4VbDqHeaDJeRzcx/OfAg56D68KeknWXROWD6JhUevivcFgRvC0YoIKXfwjSGakJL9tZyP5A
+X-Forwarded-Encrypted: i=0; AJvYcCXg8uynPXw7pqdytZrJm5Ab8PL2v0Lm/cIgxb5B8rg9dp3VDQlgdRLFhO6xb8BwNRSvr2kZt/aBpii67PedNF+fYYuQqgnT
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt41-20020a05620a47a900b00783dae58180si13633885qkb.188.2024.02.01.06.15.03
+        by mx.google.com with ESMTPS id g21-20020ac85d55000000b00429c6bc50a4si14817972qtx.528.2024.02.01.06.15.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 06:15:03 -0800 (PST)
+        Thu, 01 Feb 2024 06:15:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rVXpF-0001OJ-UJ; Thu, 01 Feb 2024 09:13:58 -0500
+	id 1rVXoZ-0000vw-0N; Thu, 01 Feb 2024 09:13:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXp5-00014Y-83; Thu, 01 Feb 2024 09:13:47 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1rVXoV-0000us-Vy; Thu, 01 Feb 2024 09:13:12 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXon-0007oW-VF; Thu, 01 Feb 2024 09:13:34 -0500
+ id 1rVXoQ-0007kK-Tx; Thu, 01 Feb 2024 09:13:11 -0500
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgqT1Hp0z4wck;
- Fri,  2 Feb 2024 01:13:25 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgq31hwTz4wcR;
+ Fri,  2 Feb 2024 01:13:03 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgqR2pVtz4wcM;
- Fri,  2 Feb 2024 01:13:23 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgq16lH9z4wcM;
+ Fri,  2 Feb 2024 01:13:01 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Ninad Palsule <ninad@linux.ibm.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 10/17] hw/fsi: Introduce IBM's fsi-slave model
-Date: Thu,  1 Feb 2024 15:12:46 +0100
-Message-ID: <20240201141253.806055-11-clg@kaod.org>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 01/17] tests/avocado/machine_aspeed.py: Update buildroot images
+ to 2023.11
+Date: Thu,  1 Feb 2024 15:12:37 +0100
+Message-ID: <20240201141253.806055-2-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240201141253.806055-1-clg@kaod.org>
 References: <20240201141253.806055-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,177 +96,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bk+/JwSuURg2
+X-TUID: 3GKOMeCxvfta
 
-From: Ninad Palsule <ninad@linux.ibm.com>
+Compared to mainline buildroot, these images have some customization :
 
-This is a part of patchset where IBM's Flexible Service Interface is
-introduced.
+- Linux version is bumped to 6.6.3 and built with a custom config
+- U-Boot is switched to the one provided by OpenBMC for more support
+- defconfigs extra tools for dev
 
-The FSI slave: The slave is the terminal point of the FSI bus for
-FSI symbols addressed to it. Slaves can be cascaded off of one
-another. The slave's configuration registers appear in address space
-of the CFAM to which it is attached.
+See branch [1] for more details.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+There are a few changes since last update, commit ed1f5ff84209. Images
+all have a password now and I2C devices have been updated in the Linux
+ast2600-evb device tree [2]. Do the necessary adjustements.
+
+[1] https://github.com/legoater/buildroot/commits/aspeed-2023.11
+[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9deb10cf160e
+
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/fsi/fsi.h | 18 ++++++++++
- hw/fsi/fsi.c         | 84 ++++++++++++++++++++++++++++++++++++++++++--
- hw/fsi/trace-events  |  2 ++
- 3 files changed, 102 insertions(+), 2 deletions(-)
+ tests/avocado/machine_aspeed.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
-index 50e8f5c888f1..e00f6ef078c8 100644
---- a/include/hw/fsi/fsi.h
-+++ b/include/hw/fsi/fsi.h
-@@ -7,7 +7,13 @@
- #ifndef FSI_FSI_H
- #define FSI_FSI_H
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 6fa5459a07bf..cec018142453 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -155,6 +155,7 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+         time.sleep(0.1)
+         exec_command(self, 'root')
+         time.sleep(0.1)
++        exec_command(self, "passw0rd")
  
-+#include "exec/memory.h"
- #include "hw/qdev-core.h"
-+#include "hw/fsi/lbus.h"
-+#include "qemu/bitops.h"
-+
-+/* Bitwise operations at the word level. */
-+#define BE_GENMASK(hb, lb)  MAKE_64BIT_MASK((lb), ((hb) - (lb) + 1))
+     def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+@@ -167,14 +168,14 @@ def test_arm_ast2500_evb_buildroot(self):
+         """
  
- #define TYPE_FSI_BUS "fsi.bus"
- OBJECT_DECLARE_SIMPLE_TYPE(FSIBus, FSI_BUS)
-@@ -16,4 +22,16 @@ typedef struct FSIBus {
-     BusState bus;
- } FSIBus;
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2500-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('f96d11db521fe7a2787745e9e391225deeeec3318ee0fc07c8b799b8833dd474')
++                     'images/ast2500-evb/buildroot-2023.11/flash.img')
++        image_hash = ('c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
  
-+#define TYPE_FSI_SLAVE "fsi.slave"
-+OBJECT_DECLARE_SIMPLE_TYPE(FSISlaveState, FSI_SLAVE)
-+
-+#define FSI_SLAVE_CONTROL_NR_REGS ((0x40 >> 2) + 1)
-+
-+typedef struct FSISlaveState {
-+    DeviceState parent;
-+
-+    MemoryRegion iomem;
-+    uint32_t regs[FSI_SLAVE_CONTROL_NR_REGS];
-+} FSISlaveState;
-+
- #endif /* FSI_FSI_H */
-diff --git a/hw/fsi/fsi.c b/hw/fsi/fsi.c
-index 60cb03f7a24e..9a5f4e616f16 100644
---- a/hw/fsi/fsi.c
-+++ b/hw/fsi/fsi.c
-@@ -5,18 +5,98 @@
-  * IBM Flexible Service Interface
-  */
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "trace.h"
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0', 'Aspeed AST2500 EVB')
  
- #include "hw/fsi/fsi.h"
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -195,8 +196,8 @@ def test_arm_ast2600_evb_buildroot(self):
+         """
  
-+#define TO_REG(x)                               ((x) >> 2)
-+
- static const TypeInfo fsi_bus_info = {
-     .name = TYPE_FSI_BUS,
-     .parent = TYPE_BUS,
-     .instance_size = sizeof(FSIBus),
- };
+         image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2600-evb/buildroot-2022.11-2-g15d3648df9/flash.img')
+-        image_hash = ('e598d86e5ea79671ca8b59212a326c911bc8bea728dec1a1f5390d717a28bb8b')
++                     'images/ast2600-evb/buildroot-2023.11/flash.img')
++        image_hash = ('b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
  
--static void fsi_bus_register_types(void)
-+static uint64_t fsi_slave_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
-+    int reg = TO_REG(addr);
-+
-+    trace_fsi_slave_read(addr, size);
-+
-+    if (reg >= FSI_SLAVE_CONTROL_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return 0;
-+    }
-+
-+    return s->regs[reg];
-+}
-+
-+static void fsi_slave_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
-+{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
-+    int reg = TO_REG(addr);
-+
-+    trace_fsi_slave_write(addr, size, data);
-+
-+    if (reg >= FSI_SLAVE_CONTROL_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return;
-+    }
-+
-+    s->regs[reg] = data;
-+}
-+
-+static const struct MemoryRegionOps fsi_slave_ops = {
-+    .read = fsi_slave_read,
-+    .write = fsi_slave_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_slave_reset(DeviceState *dev)
-+{
-+    FSISlaveState *s = FSI_SLAVE(dev);
-+
-+    /* Initialize registers */
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void fsi_slave_init(Object *o)
-+{
-+    FSISlaveState *s = FSI_SLAVE(o);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_slave_ops,
-+                          s, TYPE_FSI_SLAVE, 0x400);
-+}
-+
-+static void fsi_slave_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->bus_type = TYPE_FSI_BUS;
-+    dc->desc = "FSI Slave";
-+    dc->reset = fsi_slave_reset;
-+}
-+
-+static const TypeInfo fsi_slave_info = {
-+    .name = TYPE_FSI_SLAVE,
-+    .parent = TYPE_DEVICE,
-+    .instance_init = fsi_slave_init,
-+    .instance_size = sizeof(FSISlaveState),
-+    .class_init = fsi_slave_class_init,
-+};
-+
-+static void fsi_register_types(void)
- {
-     type_register_static(&fsi_bus_info);
-+    type_register_static(&fsi_slave_info);
- }
+@@ -206,17 +207,17 @@ def test_arm_ast2600_evb_buildroot(self):
+                          'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+         self.vm.add_args('-device',
+                          'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
  
--type_init(fsi_bus_register_types);
-+type_init(fsi_register_types);
-diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-index c5753e27910a..8f29adb7df92 100644
---- a/hw/fsi/trace-events
-+++ b/hw/fsi/trace-events
-@@ -1,2 +1,4 @@
- fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
- fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_slave_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_slave_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+         exec_command_and_wait_for_pattern(self,
+              'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+              'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '0')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+         self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+                     property='temperature', value=18000);
+         exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon0/temp1_input', '18000')
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+ 
+         exec_command_and_wait_for_pattern(self,
+              'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
+@@ -261,7 +262,6 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+         self.vm.add_args('-device',
+                          'tpm-tis-i2c,tpmdev=tpm0,bus=aspeed.i2c.bus.12,address=0x2e')
+         self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+-        exec_command(self, "passw0rd")
+ 
+         exec_command_and_wait_for_pattern(self,
+             'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_device',
 -- 
 2.43.0
 

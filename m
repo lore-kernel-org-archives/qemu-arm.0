@@ -1,71 +1,71 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp259881ejb;
-        Thu, 1 Feb 2024 06:15:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEmA1+TKSQk1Q95TB8uXr3/FrQbWn+PfUUGa6oqneqHNjSrM8meXnsQyc6L9Zn+inE6vFjQ
-X-Received: by 2002:a05:6870:a9a2:b0:210:d67b:d62f with SMTP id ep34-20020a056870a9a200b00210d67bd62fmr5672818oab.45.1706796945312;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp259897ejb;
+        Thu, 1 Feb 2024 06:15:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEaUewhPkKj8UtuQ+hEColqCs+gtFJq+/EEwJ1XiVXhTqNTBMyxyjvZSl1XSlUzGCosf5kv
+X-Received: by 2002:a05:622a:1003:b0:42b:e73e:f105 with SMTP id d3-20020a05622a100300b0042be73ef105mr5224016qte.47.1706796945855;
         Thu, 01 Feb 2024 06:15:45 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1706796945; cv=none;
         d=google.com; s=arc-20160816;
-        b=hqapBuUHOZ9T6zBj+jInXJ9UX6HfaWKn7JzihLlGvHK5Z7Gq55JM+Mbx3Ec7H+xupZ
-         ACZ0tMH4XqrkkhVJRBZYTIlnQ3y6L/+qhlVG9xMNIDNyvtsX14BYuLlIYg/3tYLuCLrr
-         dKDdEyphG4SY7Y8KI+nAE1NblF8e1e6yLfH4E7E0B3TwUJIUEBt6vMSEebWZFS/LF4oJ
-         e15+OjQxANtAxRf/bp8Px+cQrtcOevRyJf0Ec+LdNS4AqBo8DvOqvz109Hngm27XwhGt
-         UvfoSP49pES2QmlfQ9A5E+msLPHT2TeJf1cFb5p2w5OUf5DHCIo2R1PK9L5012Er3a9D
-         0vug==
+        b=mvSqjfIITw+/y+XAKhJehYFjLih0oGDX9dtepHOi8anEpvXMZabjVx/p2iJMzBnQJi
+         5aW5mBxCn9LJc9pBrvPlvmx4qOj9jnxAlQrlgVOaam9IBonUccOVhcm8vfmj7eVBx1Kj
+         yoboM+U+XEzZgRDNN4XN17vd8yvKBAaCQ8IlKzUtMJM02KpA5cudkL1bSFAfGL1T4sxq
+         VbkVMeIfDoU4lvw/zVlfCwu5qmkZNn6289KpKLBap65iCmmzEEouySz/hRBWuqEk9ZFj
+         UG5gvxcNSNMlTh5yv/zilkqyQOI/eTwM68bAmjlg6uThYntYIjrhdQ8AhsINUH69KBzk
+         d/Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=wAFDEn9U3awOKNQebI7aY0Yw9KFckL2UXWU9dAuO85E=;
-        fh=psBSD67nX7sIS0ckbS0rMM+9pEvO2zI2upxZ9Da+Cj4=;
-        b=Oe9kbXxNcTVfXHbPFrUYU6DYiLZpDz58PX90yrPddXxTh/sRxVlkhTc6WfbPn4vHxu
-         XiuhQRzV54/6lgZiY9DwkmvlBtB9BBFlC351eOvZT1dlOtTsC+C+yNfHcNUWOzQMRiYu
-         cBeJ00tKP0gJ3CEts3nNij+55SDwKR1B/ubrCcmk/vQ7Wxgcmf/v0RalSdU5ZqFmnOAB
-         KFh1kLr4GbO3hfe/UXvzP71okjcvIY3Y8taIHsfC4+NATJF8hAACMsLslEdFdNQadoPw
-         F+qaiA/YmEuPnkCuh3k3Ht4nJYz3xAsQ/6I26PVSRUZoZlwsna0v88Zn1ee1IxR5ZJpY
-         Mo0w==;
+        bh=JLTGdwWLnbfWIH/r1K0olr5xuwKQgAzxhS/xr6akl7I=;
+        fh=vXOjomOC8+0S5Brrfc/hBJ+j2EzElC6wOsNSHY9UigA=;
+        b=K1HOEO4mpVk4tnNU0EYaGhxCeiF4Y4NdVUtCEa/2DcRO6Qb995bdC7RCPLX5K4ss1v
+         Yx4Nom+B1azGgnypkDp6kvQnNICHzu2h4s0YwCN4Mxv7ghUAbhdy6cX2VY+WGlYWvxhf
+         H26DT7FYhr4rNqreWg0ONT8RuH2Rkx/9lk0v28s6Era0Hzj/xHBOxxarfGlzNP1YfQNw
+         lpy5iPxJoFO4MWv28UQMpiXpyYXihBO9QrJ+byBbixIwL6vRQMT3Iq/fCXqqRtK0TnRm
+         piw7SD9gUcFmLm6Uy6OcxruevlIYU5uM4bij67oF2BMSF1zRUijd7A1NeGP5L8srTTon
+         Nnlw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCXJLWEJbXjvKgQcVQx+tAX/GRBT9kg9y9PW4ChKfE0zvUzcNj82vhYxJEJN7tEma9PWi1lmdCJY9U77rEc1yz2eYuFiYvGa
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+X-Forwarded-Encrypted: i=0; AJvYcCU3gdxr3tvTPHPkTw0qKz4w0Vjw+nndAfBIBOok1Z8enjfhc6xPPlb9ysHnOhswSC0fsPIQESdBAo4gGiMXoPZu1ZsKgHrA
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv15-20020a056214262f00b0068c3b03bdb8si12618562qvb.186.2024.02.01.06.15.45
+        by mx.google.com with ESMTPS id bk12-20020a05620a1a0c00b00783d48c8158si13392087qkb.169.2024.02.01.06.15.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 01 Feb 2024 06:15:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVXpK-0001WF-Sl; Thu, 01 Feb 2024 09:14:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rVXpN-0001Xd-De; Thu, 01 Feb 2024 09:14:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXp5-00015U-LB; Thu, 01 Feb 2024 09:13:48 -0500
+ id 1rVXpB-0001Iq-8d; Thu, 01 Feb 2024 09:13:53 -0500
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXoq-0007pR-Q9; Thu, 01 Feb 2024 09:13:45 -0500
+ id 1rVXp3-0007qt-Ut; Thu, 01 Feb 2024 09:13:51 -0500
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgqY5Rskz4wcm;
- Fri,  2 Feb 2024 01:13:29 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgqm707cz4wcq;
+ Fri,  2 Feb 2024 01:13:40 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgqW6z88z4wcM;
- Fri,  2 Feb 2024 01:13:27 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgql3B42z4wcM;
+ Fri,  2 Feb 2024 01:13:39 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Ninad Palsule <ninad@linux.ibm.com>, Andrew Jeffery <andrew@aj.id.au>,
+Cc: Ninad Palsule <ninad@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 12/17] hw/fsi: Introduce IBM's FSI master
-Date: Thu,  1 Feb 2024 15:12:48 +0100
-Message-ID: <20240201141253.806055-13-clg@kaod.org>
+Subject: [PULL 17/17] hw/fsi: Update MAINTAINER list
+Date: Thu,  1 Feb 2024 15:12:53 +0100
+Message-ID: <20240201141253.806055-18-clg@kaod.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240201141253.806055-1-clg@kaod.org>
 References: <20240201141253.806055-1-clg@kaod.org>
@@ -78,285 +78,57 @@ X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
 X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IAGINN5aoLHX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7bGL8eA1WPof
 
 From: Ninad Palsule <ninad@linux.ibm.com>
 
-This is a part of patchset where IBM's Flexible Service Interface is
-introduced.
+Add maintainer for IBM FSI model
 
-This commit models the FSI master. CFAM is hanging out of FSI master which is a bus controller.
-
-The FSI master: A controller in the platform service processor (e.g.
-BMC) driving CFAM engine accesses into the POWER chip. At the
-hardware level FSI is a bit-based protocol supporting synchronous and
-DMA-driven accesses of engines in a CFAM.
-
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: - move FSICFAMState object under FSIMasterState
-       - introduced fsi_master_init()
-       - reworked fsi_master_realize()
-       - dropped FSIBus definition ]
+[ clg: - slight change in commit log
+       - fixed file list ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/fsi/fsi-master.h |  32 +++++++
- hw/fsi/fsi-master.c         | 170 ++++++++++++++++++++++++++++++++++++
- hw/fsi/meson.build          |   2 +-
- hw/fsi/trace-events         |   2 +
- 4 files changed, 205 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/fsi/fsi-master.h
- create mode 100644 hw/fsi/fsi-master.c
+ MAINTAINERS | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
-new file mode 100644
-index 000000000000..68e5f56db2ea
---- /dev/null
-+++ b/include/hw/fsi/fsi-master.h
-@@ -0,0 +1,32 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2024 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface Master
-+ */
-+#ifndef FSI_FSI_MASTER_H
-+#define FSI_FSI_MASTER_H
+diff --git a/MAINTAINERS b/MAINTAINERS
+index dfaca8323e91..2f9741b898e8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3585,6 +3585,15 @@ F: tests/qtest/adm1272-test.c
+ F: tests/qtest/max34451-test.c
+ F: tests/qtest/isl_pmbus_vr-test.c
+ 
++FSI
++M: Ninad Palsule <ninad@linux.ibm.com>
++R: Cédric Le Goater <clg@kaod.org>
++S: Maintained
++F: hw/fsi/*
++F: include/hw/fsi/*
++F: docs/specs/fsi.rst
++F: tests/qtest/aspeed_fsi-test.c
 +
-+#include "exec/memory.h"
-+#include "hw/qdev-core.h"
-+#include "hw/fsi/fsi.h"
-+#include "hw/fsi/cfam.h"
-+
-+#define TYPE_FSI_MASTER "fsi.master"
-+OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
-+
-+#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
-+
-+typedef struct FSIMasterState {
-+    DeviceState parent;
-+    MemoryRegion iomem;
-+    MemoryRegion opb2fsi;
-+
-+    FSIBus bus;
-+
-+    uint32_t regs[FSI_MASTER_NR_REGS];
-+    FSICFAMState cfam;
-+} FSIMasterState;
-+
-+
-+#endif /* FSI_FSI_H */
-diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-new file mode 100644
-index 000000000000..a5f0598c98ed
---- /dev/null
-+++ b/hw/fsi/fsi-master.c
-@@ -0,0 +1,170 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2024 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface master
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+
-+#include "hw/fsi/fsi-master.h"
-+
-+#define TYPE_OP_BUS "opb"
-+
-+#define TO_REG(x)                               ((x) >> 2)
-+
-+#define FSI_MENP0                               TO_REG(0x010)
-+#define FSI_MENP32                              TO_REG(0x014)
-+#define FSI_MSENP0                              TO_REG(0x018)
-+#define FSI_MLEVP0                              TO_REG(0x018)
-+#define FSI_MSENP32                             TO_REG(0x01c)
-+#define FSI_MLEVP32                             TO_REG(0x01c)
-+#define FSI_MCENP0                              TO_REG(0x020)
-+#define FSI_MREFP0                              TO_REG(0x020)
-+#define FSI_MCENP32                             TO_REG(0x024)
-+#define FSI_MREFP32                             TO_REG(0x024)
-+
-+#define FSI_MVER                                TO_REG(0x074)
-+#define FSI_MRESP0                              TO_REG(0x0d0)
-+
-+#define FSI_MRESB0                              TO_REG(0x1d0)
-+#define   FSI_MRESB0_RESET_GENERAL              BIT(31)
-+#define   FSI_MRESB0_RESET_ERROR                BIT(30)
-+
-+static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSIMasterState *s = FSI_MASTER(opaque);
-+    int reg = TO_REG(addr);
-+
-+    trace_fsi_master_read(addr, size);
-+
-+    if (reg >= FSI_MASTER_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return 0;
-+    }
-+
-+    return s->regs[reg];
-+}
-+
-+static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
-+                             unsigned size)
-+{
-+    FSIMasterState *s = FSI_MASTER(opaque);
-+    int reg = TO_REG(addr);
-+
-+    trace_fsi_master_write(addr, size, data);
-+
-+    if (reg >= FSI_MASTER_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return;
-+    }
-+
-+    switch (reg) {
-+    case FSI_MENP0:
-+        s->regs[FSI_MENP0] = data;
-+        break;
-+    case FSI_MENP32:
-+        s->regs[FSI_MENP32] = data;
-+        break;
-+    case FSI_MSENP0:
-+        s->regs[FSI_MENP0] |= data;
-+        break;
-+    case FSI_MSENP32:
-+        s->regs[FSI_MENP32] |= data;
-+        break;
-+    case FSI_MCENP0:
-+        s->regs[FSI_MENP0] &= ~data;
-+        break;
-+    case FSI_MCENP32:
-+        s->regs[FSI_MENP32] &= ~data;
-+        break;
-+    case FSI_MRESP0:
-+        /* Perform necessary resets leave register 0 to indicate no errors */
-+        break;
-+    case FSI_MRESB0:
-+        if (data & FSI_MRESB0_RESET_GENERAL) {
-+            device_cold_reset(DEVICE(opaque));
-+        }
-+        if (data & FSI_MRESB0_RESET_ERROR) {
-+            /* FIXME: this seems dubious */
-+            device_cold_reset(DEVICE(opaque));
-+        }
-+        break;
-+    default:
-+        s->regs[reg] = data;
-+    }
-+}
-+
-+static const struct MemoryRegionOps fsi_master_ops = {
-+    .read = fsi_master_read,
-+    .write = fsi_master_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_master_init(Object *o)
-+{
-+    FSIMasterState *s = FSI_MASTER(o);
-+
-+    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
-+
-+    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
-+                          TYPE_FSI_MASTER, 0x10000000);
-+    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
-+}
-+
-+static void fsi_master_realize(DeviceState *dev, Error **errp)
-+{
-+    FSIMasterState *s = FSI_MASTER(dev);
-+
-+    if (!qdev_realize(DEVICE(&s->cfam), BUS(&s->bus), errp)) {
-+        return;
-+    }
-+
-+    /* address ? */
-+    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
-+}
-+
-+static void fsi_master_reset(DeviceState *dev)
-+{
-+    FSIMasterState *s = FSI_MASTER(dev);
-+
-+    /* Initialize registers */
-+    memset(s->regs, 0, sizeof(s->regs));
-+
-+    /* ASPEED default */
-+    s->regs[FSI_MVER] = 0xe0050101;
-+}
-+
-+static void fsi_master_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->bus_type = TYPE_OP_BUS;
-+    dc->desc = "FSI Master";
-+    dc->realize = fsi_master_realize;
-+    dc->reset = fsi_master_reset;
-+}
-+
-+static const TypeInfo fsi_master_info = {
-+    .name = TYPE_FSI_MASTER,
-+    .parent = TYPE_DEVICE,
-+    .instance_init = fsi_master_init,
-+    .instance_size = sizeof(FSIMasterState),
-+    .class_init = fsi_master_class_init,
-+};
-+
-+static void fsi_register_types(void)
-+{
-+    type_register_static(&fsi_master_info);
-+}
-+
-+type_init(fsi_register_types);
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index 96403d4efcbc..7803b3afd191 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1 +1 @@
--system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c'))
-+system_ss.add(when: 'CONFIG_FSI', if_true: files('lbus.c','fsi.c','cfam.c','fsi-master.c'))
-diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-index b542956fb38d..bf417b6dc3c8 100644
---- a/hw/fsi/trace-events
-+++ b/hw/fsi/trace-events
-@@ -7,3 +7,5 @@ fsi_cfam_config_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64
- fsi_cfam_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
- fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
- fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ Firmware schema specifications
+ M: Philippe Mathieu-Daudé <philmd@linaro.org>
+ R: Daniel P. Berrange <berrange@redhat.com>
 -- 
 2.43.0
 

@@ -1,117 +1,117 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp439645ejb;
-        Thu, 1 Feb 2024 10:53:32 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF0hYfhND+h/vAp9Cy5T/7V3AYBtA8zps52Zj7liIW3IIIfqEXMPjnVH1mZD5bv+pX5o/3s
-X-Received: by 2002:a05:6870:e411:b0:214:fd41:f449 with SMTP id n17-20020a056870e41100b00214fd41f449mr6091639oag.35.1706813612092;
-        Thu, 01 Feb 2024 10:53:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706813612; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp451970ejb;
+        Thu, 1 Feb 2024 11:13:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHtcyRayu5awmC9TkdDDd0BHU29bXlU83mFMRYoX1Jaodg0OUQfYvuYLAUOxzfGFAGGQQXq
+X-Received: by 2002:a05:6870:179a:b0:218:51de:95e8 with SMTP id r26-20020a056870179a00b0021851de95e8mr6624912oae.14.1706814797402;
+        Thu, 01 Feb 2024 11:13:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706814797; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sdg+nEHP1hmWIHJFR88SNQlsciAOyJfTu/swqAjWzL04GMfMB0elvOFb1zs0fhPkKZ
-         aSrFiAlF+DJex3RiWmwmAcDLA+RHDH3K9FjGZy2NqNzV9UtJyWNO1c6CUpJ4wrwmS3K9
-         oaFBNFun4SKDNDU+wcqVRtQArx66bfXaiOnBRWy2wAdgWy+yt91JRDmAGSMqZbz71SHx
-         7eAwk/uF5NBTblzpGN+Son8GjOHNENT4JrVdvZueaIDSwSoyKCYKpOzgtmQr6s8EZ4di
-         tHV6FMrUJW27GlllQk1Wm9EhrWROpywIiQroV0Ak3MKiBxEMROeyWn/rr1INb51tUAlV
-         gXrQ==
+        b=BoHyTlJHny3Sy6aLY0bmAr1fbKC3wbibBAH+eTKYKU0nI6V157pBuJV6hX+8jOUQOs
+         Nd2s541mIGYqfGq8NN0ToShOnjuij9wMCm3Ss9Zd1+VwAAAAx2XfR4mYiJVa8C87G/TX
+         6tMZNpVFmyn9grNqYyMl0gSx1yrj8AKr1Ew3tf8i7trJm1CxHxl5DJ2/iNl67fNYJSqI
+         O2O6gK5/fP3AuKP/3Y2HJL0KLhAW/7yc/rPvfhVFJBu/eAFiCd9Iz/G1VbC7lURkUqlz
+         4/nwj/HUc4zV/ndpeplu4QE0jRmRcgYQyvMy6rrXEy5X2JOeA/pzRqtRR77DlMKIIqZf
+         B5zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fT5v8IMyIAf/RHy2BqiO1lvyiu0e8BmCwKjeDEOSvu0=;
-        fh=K2TasX/cR4Ek9e13NrsukGNMCaIVCgtMfWctH8C3gL4=;
-        b=WTlY8j3Bfkb6fvs24jsReZ+8PuT/KRV1mcY//2Pw2KJ42ajbWIjJgqyiOCMZwpLzuw
-         ugqni1eqdhT6gYI5/FMPbFL04HQQx+abCPb2JEB7FLVbyY6K5Mz6hPY9pLpM999ypLLE
-         RDjtH3/gwaRWfIcaj8gdNOIdxZWMLOVs020I/pX6A0t079m2u9tUFLEXTsJzcdhTk7uG
-         ch9HCGE4+lcb16216LRGGbaBDpXO4bJ7V+oS+RH1SK1zwKVyyPfUyd57S5fzVKrdp5Bc
-         dRGw+6057P1F2OSE/i6taArl7ZCFs3CdQ8GPs+eiQV/MFd3ihGIWEVBxBr0j89+6CQmY
-         vi4g==;
+        bh=QeY90C/M6YFuPuQHcmNve7Rbyg/pCNt8n114D/xO/TE=;
+        fh=EuO4ue5u/sfPPnbaZL1d+QNk1SoRo57Uqen63FxshAk=;
+        b=xxahn2vJx0580y2HsOPAaa7ADkFcTCabL8pOkd6qTBnVHyYU2ZI1/iy0Xpy01c753r
+         QaQatdGuL6D3eR79K2DFuEE7BFkERHxQTIRup0F67vEbjgIbtXCziats2BYlaue6lzGI
+         CX9x+OUnaVbWY+5YMLZalb4DFUvFVvlG2PPTieGXUQC2vkmX6J7iNLumeu5TeSFx3xIn
+         zN5B+yMQ5MXaoY3kEt6w6X6G97dEB2PS2RBI0TF9Lmje9g3iykSXKo6M7Vw91hafB3ZT
+         gQJxCewFE8Ikh9XC8h0Fx9DmqgolTGlmmXWzE5Ps7LobPlND+ZE4S+Ez4dobHOR9G3Az
+         jhUw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeyeRto0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="XvudMq/x";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=0; AJvYcCXKgXZ+mU8HM1DB+8isErRlS0fa4TA+nLL6Gl3J7Uy7DshjtPa4+XY1gtCzeIQy02L09yIUD6SE1Ze6EBzyjb7CcNydhqx8
+X-Forwarded-Encrypted: i=0; AJvYcCVmprx9ddsgFUTauaD8vNFMLcU4wSU/g+sUReF8k4/MYkAnES2FVVhLaJgdva6+DgrneLlwLfmfhma0ckUtAGHZO+Hulrx1
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5-20020ac85cc5000000b0042aa8920a24si87454qta.499.2024.02.01.10.53.31
+        by mx.google.com with ESMTPS id n3-20020ad444a3000000b0068c469b28f9si134432qvt.515.2024.02.01.11.13.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 10:53:32 -0800 (PST)
+        Thu, 01 Feb 2024 11:13:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZeyeRto0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="XvudMq/x";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVcBW-0002sI-JR; Thu, 01 Feb 2024 13:53:14 -0500
+	id 1rVcUe-00073R-M6; Thu, 01 Feb 2024 14:13:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rVcBT-0002rA-45
- for qemu-arm@nongnu.org; Thu, 01 Feb 2024 13:53:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rVcUc-00070s-P1
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 14:12:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rVcBG-0001kT-Hw
- for qemu-arm@nongnu.org; Thu, 01 Feb 2024 13:53:00 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rVcUP-0003Nb-Da
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 14:12:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706813577;
+ s=mimecast20190719; t=1706814763;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=fT5v8IMyIAf/RHy2BqiO1lvyiu0e8BmCwKjeDEOSvu0=;
- b=ZeyeRto0gtv3MQJH6lDIjZGCN/bRw0TIsxYkaqra+9E/d8GHW0XH5ZmT1WBdYbzDjf6+1M
- 2Qe4/soZUFAgLrYJisJOzHsmrr9uzw9gthG9uMJv9Jwr2yMsecxvHp8Sf0QiaA+brBdHvQ
- AxXfUCBfgTZ0KApYXYzI+5oud95vKM8=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=QeY90C/M6YFuPuQHcmNve7Rbyg/pCNt8n114D/xO/TE=;
+ b=XvudMq/xxzaWRst5EYm7eM0gqjoOSMfrJ2pCSvEIcHKopRDgKjZI8TXyCfdYFmoz4cfGwm
+ Yjhs7kQTioRQDr/XeiUDPCdqf4Dbxt85ztBOo2oTRcJ+d5owGCAZ+RQIt43nXTtcRTn5IB
+ ppi+Lczlur5WyO2HPn4vpOaod/ZRzpQ=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-680-36EDbdYgNjegnNZ4Qe8CdQ-1; Thu, 01 Feb 2024 13:52:56 -0500
-X-MC-Unique: 36EDbdYgNjegnNZ4Qe8CdQ-1
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-a35247a5d8cso117201066b.2
- for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 10:52:56 -0800 (PST)
+ us-mta-637-pEtIsKBJM6uU1h7FmV23Ug-1; Thu, 01 Feb 2024 14:12:42 -0500
+X-MC-Unique: pEtIsKBJM6uU1h7FmV23Ug-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-78315f41c6cso155711285a.1
+ for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 11:12:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706813575; x=1707418375;
+ d=1e100.net; s=20230601; t=1706814761; x=1707419561;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fT5v8IMyIAf/RHy2BqiO1lvyiu0e8BmCwKjeDEOSvu0=;
- b=ua93omCTDwmO06jUEr2MJLJ0KRoe0m2Xb3a2S04Fo2uhPk5N9roR0h0+zPqgydzqXZ
- Thk4rLEgygxvYG3Y77McJaWMgguG4vgyKRRfvqbi8yiQlF22FCycweKNhoP358CCpn6+
- 0eZyiNsImhUREUZWYKmu7FMpCuKrgcICbnNGEHL4GO+acHWh+oPyMbtRA4ab00dWLGGJ
- y4ubDIpWFP3S12QElqmCTOb7npgflSHqz9KQX8FoV3yOVQItv2ebSkgm9Ha42rE1nLuy
- 3rKLzxezabv0cjhUTINNQhZ8UAdZ5Jd+Iuasn/BmelY4aWk13QtqVmgugDqsDQg0mp/D
- uU2w==
-X-Gm-Message-State: AOJu0YzGaYY7oWBys/FnBgbQBcCytnrVpUAcsTHoxtQ7EYDCRPqI6o2/
- pEWG/qInhb8UuwSrv1d8/HEnpDl5tl1aq3JsWUB0NwXcY5heB5i+lkKn1teP57IJEUmj15xKUeB
- Xagoyn8KjXHHZhWsmmVriOPti0g4XLG99yj4/PZ0gZq+NPYWhOUfFB4HYFg==
-X-Received: by 2002:a17:907:7711:b0:a36:f27b:f0f with SMTP id
- kw17-20020a170907771100b00a36f27b0f0fmr194923ejc.8.1706813575097; 
- Thu, 01 Feb 2024 10:52:55 -0800 (PST)
-X-Received: by 2002:a17:907:7711:b0:a36:f27b:f0f with SMTP id
- kw17-20020a170907771100b00a36f27b0f0fmr194917ejc.8.1706813574780; 
- Thu, 01 Feb 2024 10:52:54 -0800 (PST)
+ bh=QeY90C/M6YFuPuQHcmNve7Rbyg/pCNt8n114D/xO/TE=;
+ b=n/PVmgYAnNyB+uetdYLvULEDlYdqnh7BzhjqN0wkkpXriVxwqHVcmKIijlN8gbWMJM
+ uXFMuGLH/TLMZ2VNBr9K+SsPXTZl2sst/5pP0J5dVEp181/iCGpsB1Md5c73rLJPv5hB
+ 1gOULBDKDNa4HmggaeeH7fJeNxKSS6Z5ppk+Ravx+X1FfXBnwnYshvvae+EgLm9+pFbD
+ 8gV+eXae4Jkpluz471oiqvreWuZgc1ZTl2L5WJ4ajjtu49PBTvQrwg1/W141Jpj4IOz3
+ nnfkSpvCBZAU/7I2YlYa+JO3ShcppbYfMiV65kcpxxPMzfNAsgSNsVnK1Qt3AniEqVKg
+ 8iVA==
+X-Gm-Message-State: AOJu0Yx8cqagK9g+uPGyPnmA+vWaE+0bjyBTpRX2kDhgneDBhm1H0DFA
+ um/OiLWIJJlrQfyKr1XZRtX+PXs3+qEzygvdD1msoZB/G9Sfjjo7TFkq3sfxizUIAUOqwTDzVht
+ WKMnrwflAmrzSLv38naU3k2qJLJ70k79BjPBFQ2O3/aW0IWO+2g==
+X-Received: by 2002:a05:620a:3889:b0:785:416a:b4cd with SMTP id
+ qp9-20020a05620a388900b00785416ab4cdmr3207659qkn.60.1706814761769; 
+ Thu, 01 Feb 2024 11:12:41 -0800 (PST)
+X-Received: by 2002:a05:620a:3889:b0:785:416a:b4cd with SMTP id
+ qp9-20020a05620a388900b00785416ab4cdmr3207641qkn.60.1706814761365; 
+ Thu, 01 Feb 2024 11:12:41 -0800 (PST)
 X-Forwarded-Encrypted: i=0;
- AJvYcCXxZv2MrU2299Bmry3ybx3PeEl3cmuTpEh0P9UfW/AwxnSuNGDzLT4g6cInxFSBRdOHyovXQkF9SGjNt5tAJ8V4hJovtjug79YW/YFiCuX2crvyxgA4TzJF2DayoLW21qP0O/5bPIZUKK4=
+ AJvYcCVtdiICq4pXej8xf3PjZu9MT1K60R0zAihdWP3cfE2/PpGfXQvNG23XT9DOaIidCLMIS97wfWceSCnvvdhaM8Iy58mvJaVmbrjAwiwIakNJd4CqGvOJDH0lqkOwuGKIdeOkD1NGrLmtUCA=
 Received: from [192.168.0.9] (ip-109-43-177-196.web.vodafone.de.
  [109.43.177.196]) by smtp.gmail.com with ESMTPSA id
- v9-20020a1709060b4900b00a35cffe5498sm59030ejg.181.2024.02.01.10.52.54
+ m6-20020ae9e006000000b00783dc97436dsm68152qkk.13.2024.02.01.11.12.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Feb 2024 10:52:54 -0800 (PST)
-Message-ID: <5553d942-5da1-4930-b404-2b71a6fd37ca@redhat.com>
-Date: Thu, 1 Feb 2024 19:52:53 +0100
+ Thu, 01 Feb 2024 11:12:40 -0800 (PST)
+Message-ID: <d0ed3f33-b641-4e46-bfaa-f21fbcecbeb8@redhat.com>
+Date: Thu, 1 Feb 2024 20:12:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] target/arm: Move v7m-related code from cpu32.c
- into a separate file
+Subject: Re: [PATCH v2 2/3] target/arm/tcg/m_helper.c: Include the full
+ helpers only with CONFIG_ARM_V7M
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Fabiano Rosas <farosas@suse.de>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>
 References: <20240129081835.137726-1-thuth@redhat.com>
- <20240129081835.137726-2-thuth@redhat.com>
- <CAFEAcA_mf-iGD_P3DB=dw4n=qpFyNODtAz1jFKUdjFkM1eWVuQ@mail.gmail.com>
+ <20240129081835.137726-3-thuth@redhat.com>
+ <CAFEAcA-yL8BAdtkF2xaWJOeFPUWRoBbuvPSEeorwjyei3oFjDQ@mail.gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -155,22 +155,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <CAFEAcA_mf-iGD_P3DB=dw4n=qpFyNODtAz1jFKUdjFkM1eWVuQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-yL8BAdtkF2xaWJOeFPUWRoBbuvPSEeorwjyei3oFjDQ@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -185,139 +184,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8U8/CE9vBgEZ
+X-TUID: K5GWfYQPu+qo
 
-On 01/02/2024 15.17, Peter Maydell wrote:
+On 01/02/2024 15.19, Peter Maydell wrote:
 > On Mon, 29 Jan 2024 at 08:18, Thomas Huth <thuth@redhat.com> wrote:
 >>
->> Move the code to a separate file so that we do not have to compile
->> it anymore if CONFIG_ARM_V7M is not set.
+>> If CONFIG_ARM_V7M is not set, we don't want to include the full-fledged
+>> helper functions that require additional functions for linking. The
+>> reduced set of the linux-user functions works fine as stubs in this
+>> case, so change the #ifdef statement accordingly.
 >>
 >> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >> ---
->>   target/arm/tcg/cpu-v7m.c   | 290 +++++++++++++++++++++++++++++++++++++
->>   target/arm/tcg/cpu32.c     | 261 ---------------------------------
->>   target/arm/meson.build     |   3 +
->>   target/arm/tcg/meson.build |   3 +
->>   4 files changed, 296 insertions(+), 261 deletions(-)
->>   create mode 100644 target/arm/tcg/cpu-v7m.c
+>>   target/arm/tcg/m_helper.c | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
 >>
->> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
->> new file mode 100644
->> index 0000000000..89a25444a2
->> --- /dev/null
->> +++ b/target/arm/tcg/cpu-v7m.c
->> @@ -0,0 +1,290 @@
->> +/*
->> + * QEMU ARMv7-M TCG-only CPUs.
->> + *
->> + * Copyright (c) 2012 SUSE LINUX Products GmbH
->> + *
->> + * This code is licensed under the GNU GPL v2 or later.
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "cpu.h"
->> +#include "hw/core/tcg-cpu-ops.h"
->> +#include "internals.h"
->> +
->> +#if !defined(CONFIG_USER_ONLY)
->> +
->> +#include "hw/intc/armv7m_nvic.h"
->> +
->> +static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->> +{
->> +    CPUClass *cc = CPU_GET_CLASS(cs);
->> +    ARMCPU *cpu = ARM_CPU(cs);
->> +    CPUARMState *env = &cpu->env;
->> +    bool ret = false;
->> +
->> +    /*
->> +     * ARMv7-M interrupt masking works differently than -A or -R.
->> +     * There is no FIQ/IRQ distinction. Instead of I and F bits
->> +     * masking FIQ and IRQ interrupts, an exception is taken only
->> +     * if it is higher priority than the current execution priority
->> +     * (which depends on state like BASEPRI, FAULTMASK and the
->> +     * currently active exception).
->> +     */
->> +    if (interrupt_request & CPU_INTERRUPT_HARD
->> +        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
->> +        cs->exception_index = EXCP_IRQ;
->> +        cc->tcg_ops->do_interrupt(cs);
->> +        ret = true;
->> +    }
->> +    return ret;
->> +}
->> +
->> +#endif /* !CONFIG_USER_ONLY */
+>> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+>> index d1f1e02acc..a5a6e96fc3 100644
+>> --- a/target/arm/tcg/m_helper.c
+>> +++ b/target/arm/tcg/m_helper.c
+>> @@ -22,6 +22,7 @@
+>>   #endif
+>>   #if !defined(CONFIG_USER_ONLY)
+>>   #include "hw/intc/armv7m_nvic.h"
+>> +#include CONFIG_DEVICES
+>>   #endif
+>>
+>>   static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
+>> @@ -69,7 +70,7 @@ uint32_t arm_v7m_mrs_control(CPUARMState *env, uint32_t secure)
+>>       return value;
+>>   }
+>>
+>> -#ifdef CONFIG_USER_ONLY
+>> +#if defined(CONFIG_USER_ONLY) || !defined(CONFIG_ARM_V7M)
 > 
-> I wonder if this function could go in target/arm/tcg/m_helper.c:
-> it looks a bit odd in this file, which is mostly initfns for
-> specific CPU types. But it was in cpu32.c so I'm happy that
-> we just move it to cpu-v7m.c for now.
+> This looks a bit odd. If we don't have CONFIG_ARM_V7M
+> why are we compiling this file at all?
 
-The only user of this function are the arm_v7m_tcg_ops that are defined 
-later in the cpu-v7m.c file, so I think it makes sense to keep it here.
+We'll get failures during linking otherwise. target/arm/helper.h still 
+defines code that requires the v7m_* helper functions:
 
->> diff --git a/target/arm/meson.build b/target/arm/meson.build
->> index 46b5a21eb3..2e10464dbb 100644
->> --- a/target/arm/meson.build
->> +++ b/target/arm/meson.build
->> @@ -26,6 +26,8 @@ arm_system_ss.add(files(
->>     'ptw.c',
->>   ))
->>
->> +arm_user_ss = ss.source_set()
->> +
->>   subdir('hvf')
->>
->>   if 'CONFIG_TCG' in config_all_accel
->> @@ -36,3 +38,4 @@ endif
->>
->>   target_arch += {'arm': arm_ss}
->>   target_system_arch += {'arm': arm_system_ss}
->> +target_user_arch += {'arm': arm_user_ss}
->> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
->> index 6fca38f2cc..3b1a9f0fc5 100644
->> --- a/target/arm/tcg/meson.build
->> +++ b/target/arm/tcg/meson.build
->> @@ -55,3 +55,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
->>   arm_system_ss.add(files(
->>     'psci.c',
->>   ))
->> +
->> +arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
->> +arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
-> 
-> Why do we need to add this new arm_user_ss() sourceset,
-> when we didn't need it for the A/R profile CPUs?
+/usr/bin/ld: libqemu-arm-softmmu.fa.p/target_arm_tcg_translate.c.o: 
+qemu/target/arm/helper.h:76: undefined reference to `helper_v7m_vlldm'
+/usr/bin/ld: libqemu-arm-softmmu.fa.p/target_arm_tcg_translate.c.o: 
+qemu/target/arm/helper.h:75: undefined reference to `helper_v7m_vlstm'
+/usr/bin/ld: libqemu-arm-softmmu.fa.p/target_arm_tcg_translate.c.o: 
+qemu/target/arm/helper.h:73: undefined reference to 
+`helper_v7m_preserve_fp_state'
 
-cpu32.c gets added to the arm_ss source set which is linked into all 
-possible arm-related binaries (qemu-system-aarch64, qemu-system-arm, 
-qemu-aarch64 and qemu-arm).
+etc.
 
-The goal of this rework is to have the v7m code only linked into the 
-binaries that need it, i.e. qemu-system-arm/aarch64 if CONFIG_ARM_V7M is 
-set, or the 32-bit qemu-arm linux-user binary.
-
-> What goes wrong if we add it to arm_ss() the way we do cpu32.c?
-
-The problem is that CONFIG_ARM_V7M is not set for the linux-user builds, so 
-the code does not get included in the "qemu-arm" binary anymore.
-Now, the obvious answer to that statement is of course: Let's add 
-CONFIG_ARM_V7M to configs/targets/arm-linux-user.mak, too! ... but I tried 
-that already, and it also does not work, since then we'll suddenly try to 
-include the hw/intc/armv7m_nvic.c stuff into the qemu-arm binary, which of 
-course also does not work. It might be possible to rework that by moving 
-armv7m_nvic.c from specific_ss to system_ss, but looks like that will 
-require a *lot* of other reworks (e.g. arm_feature() is not available for 
-common code). Another solution might be to move armv7m_nvic.c into the 
-hw/arm/ directory and add it there to arm_ss instead ... it's then a little 
-bit weird that this is the only interrupt controller there, but at least the 
-changes would be quite trivial. What do you think?
+And then other files are depending on these helpers, too, e.g. 
+target/arm/tcg/translate-vfp.c calls gen_helper_v7m_preserve_fp_state() etc. 
+... I guess it might be possible to disable all those spots with some 
+#ifdefs, too, but it's getting quite ugly that way. It's way nicer to use 
+the stub functions that we have in m_helper already anyway.
 
   Thomas
+
 
 

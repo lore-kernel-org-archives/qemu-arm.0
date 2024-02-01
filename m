@@ -1,187 +1,199 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp345818ejb;
-        Thu, 1 Feb 2024 08:21:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFsEoTe9tmJeUyA80ikVEAiwaGXWFjePSQuP7cBnlgyCYyXKoTpkP8PuoklwLH1ieh11kB+
-X-Received: by 2002:a81:a0d1:0:b0:602:cced:240a with SMTP id x200-20020a81a0d1000000b00602cced240amr2483904ywg.0.1706804490921;
-        Thu, 01 Feb 2024 08:21:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706804490; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp348179ejb;
+        Thu, 1 Feb 2024 08:25:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHzATTexgA8BokLK8Yuk3eZbT4f63aE6F8KL5fcyyn7Xtz38EesipBEZhIdagmLfxmjB8zH
+X-Received: by 2002:a05:620a:118c:b0:785:445f:6ab2 with SMTP id b12-20020a05620a118c00b00785445f6ab2mr2501732qkk.22.1706804721323;
+        Thu, 01 Feb 2024 08:25:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706804721; cv=none;
         d=google.com; s=arc-20160816;
-        b=oGsUu4Yup1BTddUKqeR9HhhCwAt3Kr6kfcrueASVe+ECY9GHerrDXvFnJtTwaX2hTv
-         eAJz9ObSW7u+D4w0IpJyvUmLHZqrUdBt/6ZwCfSkLey8lV6nQ9iqm8H9hHJikukcuU/J
-         4/GSGgs9QUdlcyjWYinSfkPQEjl+MCOVPAz9ikJe1BSYS50P9FIuyyToT5gp1QzgKLNG
-         YmCvVmRRNgv3GUuqh97b0aTVAtBg8JwyXLHKVdHfKqDzM8btHiFsE/k68yBzDOKy3MdV
-         Dyr1jWJDgxziAqWKvrXwQfdrYm+fzqER4s4v0gy4j15Ykr6mD+CGzIlRwKu8t/5rskhK
-         XAtg==
+        b=MCegQCiPd6UQ0Zlw5AYU7Jnkhbk036DgMbAznBeFCnXW0V5vlraoCJslBJWJmmrg1j
+         SgcZGOxIQ4Iau6u1E3/sQWM36NIE/mm3iy7L11h/tmYh7DuJtURshuWAx8TJ1MkCLV7+
+         iskg6tEohmTjA/h1nB/92G1NPjB0DGY5SGucTBMFFco2iEIsCXQ0E4zQ14RcZ5f7BYL/
+         un1Z5dW20wIUFjMA9vOZLqJXCfY+EY5sycS4O/FamlNPcPzxTOLYZd0+wrLGC6F0XMIG
+         V2tAwnekWPrNqUMhYJWkqdsRg6gvUF/9CPZaobZKfRPkwtg42WwCEw/O7A/t3zzodSK0
+         a/Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:precedence:errors-to:list-subscribe:list-help:list-post
-         :list-unsubscribe:list-id;
-        bh=c97VJYD2KTL5VTwF9f1QXCEUfFv1WTXSZwy7XFKpxpk=;
-        fh=0X/Rl5nUmbQcxaZ9q1kaQxAkfnFnIY2wUiz0IFEOWY8=;
-        b=Vtd31hJg1Amsnnt2qL1O/ODs0QkDTZgsDmmGGgOz2uqSgpm8vbgKVB3qhlwnbpLJzP
-         dx2H4tTLh9QZbDjoM8zL3a0RZWAeCE7UDTtSQ2Z2LCgMiT/LjqbUFLw5Mkcyc74nV4ut
-         lsrHQvim/Bx+aZxn6wUqrKCmkPptmx+H9hWzcFDZmFw0bqE8j/j7J6FkCrX145dGiz5O
-         xspddcrbSAdPtuAgo2joN/v540VDuJWLUprKR3XzVDPVrcQ0xNCunB1e2pe4EwaX88BV
-         qwQoZCqu7hmu8MDhx2UN6l9+eFDiL00hcf0QBfxdn7PuwpbpgMSXPy5s3Le6mgO7w1xO
-         Xlgg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=46NHSLFImFJJig2UxV3k7PaJBS9adhECauo8jMROZHI=;
+        fh=a20p6u4mqZsCpiFeDMZVx3b+nCT9vUzZyqukJ37ooTI=;
+        b=o/GT5sv27Ov8MniLTVXiaXTGE7Nnh0fao62cb6ZQqLELKMQ/ZIjBKEdIN3L4Dn5fBU
+         z55m6PYmaQJJXgaACYEia8WU+m0E8yyUOD9DEnJfLl3wuLyI0ecY+dgIZTrfMUkEGLWo
+         K7HIBf573NEsHQbmnL8DiEJ1h16Xs/8NA/gFySjA92tsGYO0Sqqo41p9XsTTsxgJTh7f
+         C858BXpjbZxOaURBvRXuOm/M6HCu6yCyEjspbaWGCRfiaU3Y3ml/rVUGSVBsWEJan+2x
+         Ygoeb26WnysAEVPrGjROluKPVNWD6H/mV9QAlXDJP5oR2GVfPScCsXeSqDy1sRzWMcxp
+         Nbzw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-X-Forwarded-Encrypted: i=0; AJvYcCXlDcxEVJ6aK5Vt9VbylJ9OGM/kspsBqIDdAFu9mPwonIHFhTWcZjx/JBmQEzCqcv1YpgPRcQjyAEf7ftWUkQg9CO1rZjLC4Gad0NhirfPukILo7pJ9K3qeyglgPytIx/9TEu0ve8lfBZ903FEGASRG6UrEZAp7jxIpGajaiHQZUpl2rG36zydGHnP8Xsbk6J8vYNoBxxT4sW4GAjlUB4LlRqgNeMXUh322w0JsMe7mLBaXfIJXUXxZVWZWXfRbs0C511DBn+mrZ3CP/qS80/mG7MxsEkcWUVq/LlAQYTrNDm5y3GdhHWBQLk26/rGTxajKVi/DB+hYFifB6rE=
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id e3-20020a81c143000000b005ff36788df2si7899623ywl.112.2024.02.01.08.21.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 08:21:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=pass header.i=@linaro.org header.s=google header.b="XO5/dXmr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCUir4zF34b2d2Dz3OsD6JHqmgsgQjCqtzKUAMkflRkFgyXqlO59WuIGHt+36QR5+aDUVOH4K92MSGC0MQBU9xzxP2aMqGji
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y29-20020a05620a0e1d00b007838d947f3csi14250044qkm.219.2024.02.01.08.25.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Feb 2024 08:25:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.674535.1049541 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rVZnq-0002Us-F8; Thu, 01 Feb 2024 16:20:38 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 674535.1049541; Thu, 01 Feb 2024 16:20:38 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1rVZnq-0002Ul-B7; Thu, 01 Feb 2024 16:20:38 +0000
-Received: by outflank-mailman (input) for mailman id 674535;
- Thu, 01 Feb 2024 16:20:36 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVZno-0002UK-Bz
- for xen-devel@lists.xenproject.org; Thu, 01 Feb 2024 16:20:36 +0000
-Received: from gandalf.ozlabs.org (mail.ozlabs.org [2404:9400:2221:ea00::3])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id d0e4465b-c11d-11ee-98f5-efadbce2ee36;
- Thu, 01 Feb 2024 17:20:33 +0100 (CET)
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQkf30k39z4wcW;
- Fri,  2 Feb 2024 03:20:27 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQkdZ2ZRRz4wcN;
- Fri,  2 Feb 2024 03:20:02 +1100 (AEDT)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: d0e4465b-c11d-11ee-98f5-efadbce2ee36
-Message-ID: <fcd5cf8a-68f7-45c4-a09f-e7870ed7ffa1@kaod.org>
-Date: Thu, 1 Feb 2024 17:19:54 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b="XO5/dXmr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rVZrx-00005l-Rw; Thu, 01 Feb 2024 11:24:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVZrj-0008VN-DV
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 11:24:45 -0500
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVZrf-0004hz-IS
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 11:24:37 -0500
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-2cf591d22dfso13012081fa.0
+ for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 08:24:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1706804672; x=1707409472; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=46NHSLFImFJJig2UxV3k7PaJBS9adhECauo8jMROZHI=;
+ b=XO5/dXmrrYLRl48fa2VAc3qzqz115Kd2dsHsM73r52RnieePXMB6p14XkyxEVf+NN2
+ lJHH8CgA1j1i+afuckmaf+qWL39pYvnBu2cbj06YMCKMaBvXXhNiXUOrD/4gzekOl+mS
+ iYZ1tkd9fmD8ir2Gg/8lo34c/bWYPo8LDdw5jGonyHSgps7b3P6dBVHsh9mIUK/Jzbjq
+ JeA/Ju8fqDU8GyEm8u0/N/+cd63/YMAEJ/sBGe1TpiPg+8PIxgrJeiqtkUi6SGSmRJu6
+ tfO/W18gxczfCaWO8LceOv8EsLKFG2oFyZR5rWwZu//Hcc5GUGGMpA673e70WeAHb/1f
+ xWtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706804672; x=1707409472;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=46NHSLFImFJJig2UxV3k7PaJBS9adhECauo8jMROZHI=;
+ b=VinF8SaO1zq5ActM9HwsbZN+Sj+jCcFDwJW5hEfYmhMkgWG4KAZdK2zTFd1Sc1L81J
+ oXRE8FCfz6P+55lLBSHMcka9LHgOLVWs8MsubSrBqJ2SN4tV62LFxMtp99QwjxFVAVR/
+ akFaoV+JMqANtiJJG+im0303n+jIKFxP8gDt1TmMBv13POsNTdoWM+77AG27czgPAFSC
+ Y84z19pZL9em1Ghbylag9GamD/DmRwmE/kzT4oGBJNQ1J9SvyqEfiSpDwRr9L4z/oOPS
+ 689SbZ5rdqQqvtirT9fZD+cIFIhKRuOYnSvHWtk/pBxO1jijCr2msmzKly8f0G5GsfzN
+ h7Og==
+X-Gm-Message-State: AOJu0Yyn/q0oknJ5i6E3h3Ixw6RBioJYhWSQ5gZkO6lwNX5WlnyAvSO9
+ wagOU9Zxgy3WETBBOskXYAGx2Pgs1o7j8WwKCopFqm0nkFhV4XxxjyWiuOpjityo7uU4bglTdts
+ b4CLe5Xsu2E2lCGHM4Qo91XbTK5ol5q1dL7j6DA==
+X-Received: by 2002:a2e:3318:0:b0:2d0:770d:5c1c with SMTP id
+ d24-20020a2e3318000000b002d0770d5c1cmr1712965ljc.11.1706804672528; Thu, 01
+ Feb 2024 08:24:32 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/47] hw/arm/aspeed: use qemu_configure_nic_device()
-Content-Language: en-US
-To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Song Gao
- <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Bin Meng
- <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org, David Woodhouse <dwmw@amazon.co.uk>
-References: <20240126173228.394202-1-dwmw2@infradead.org>
- <20240126173228.394202-23-dwmw2@infradead.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240126173228.394202-23-dwmw2@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: U6vDmeEGYz8B
+References: <20240130190317.25692-1-philmd@linaro.org>
+ <20240130190317.25692-3-philmd@linaro.org>
+In-Reply-To: <20240130190317.25692-3-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Feb 2024 16:24:21 +0000
+Message-ID: <CAFEAcA_e3QOvfvJScUgtmjGacKZX1OHyY5a-BWSAhNURyO2Rgg@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/arm/stellaris: Convert I2C controller to
+ Resettable interface
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, 
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x231.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dYa4U09CSipE
 
-On 1/26/24 18:24, David Woodhouse wrote:
-> From: David Woodhouse <dwmw@amazon.co.uk>
-> 
-> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-> Acked-by: Cédric Le Goater <clg@kaod.org>
-
-and
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-
+On Tue, 30 Jan 2024 at 19:03, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->   hw/arm/aspeed.c | 9 ++++-----
->   1 file changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index cc59176563..bed5e4f40b 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -356,7 +356,6 @@ static void aspeed_machine_init(MachineState *machine)
->       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
->       AspeedSoCClass *sc;
->       int i;
-> -    NICInfo *nd = &nd_table[0];
->   
->       bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
->       object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
-> @@ -371,10 +370,10 @@ static void aspeed_machine_init(MachineState *machine)
->                                &error_fatal);
->   
->       for (i = 0; i < sc->macs_num; i++) {
-> -        if ((amc->macs_mask & (1 << i)) && nd->used) {
-> -            qemu_check_nic_model(nd, TYPE_FTGMAC100);
-> -            qdev_set_nic_properties(DEVICE(&bmc->soc->ftgmac100[i]), nd);
-> -            nd++;
-> +        if ((amc->macs_mask & (1 << i)) &&
-> +            !qemu_configure_nic_device(DEVICE(&bmc->soc->ftgmac100[i]),
-> +                                       true, NULL)) {
-> +            break; /* No configs left; stop asking */
->           }
->       }
->   
+>  hw/arm/stellaris.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index afbc83f1e6..284b95005f 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -607,8 +607,11 @@ static void stellaris_i2c_write(void *opaque, hwaddr=
+ offset,
+>      stellaris_i2c_update(s);
+>  }
+>
+> -static void stellaris_i2c_reset(stellaris_i2c_state *s)
+> +static void stellaris_i2c_reset_exit(Object *obj)
+>  {
+> +    stellaris_i2c_state *s =3D STELLARIS_I2C(obj);
+> +
+> +    /* ??? For now we only implement the master interface.  */
+>      if (s->mcs & STELLARIS_I2C_MCS_BUSBSY)
+>          i2c_end_transfer(s->bus);
+>
+> @@ -658,8 +661,6 @@ static void stellaris_i2c_init(Object *obj)
+>      memory_region_init_io(&s->iomem, obj, &stellaris_i2c_ops, s,
+>                            "i2c", 0x1000);
+>      sysbus_init_mmio(sbd, &s->iomem);
+> -    /* ??? For now we only implement the master interface.  */
 
+I'm not 100%, but I think this comment is a general one,
+not reset specific, so it should stay in the init function.
+
+> -    stellaris_i2c_reset(s);
+>  }
+
+I think that the i2c_end_transfer() should be in the
+"enter" phase, and the clearing of the state fields in
+"hold", and then the stellaris_i2c_update() call in "exit".
+Though usually we don't bother to do an update in reset
+if it's just "device has reset and now its outbound IRQ
+line is not set", so we could alternatively just delete that.
+
+>  /* Analogue to Digital Converter.  This is only partially implemented,
+> @@ -1382,7 +1383,9 @@ type_init(stellaris_machine_init)
+>  static void stellaris_i2c_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+>
+> +    rc->phases.exit =3D stellaris_i2c_reset_exit;
+>      dc->vmsd =3D &vmstate_stellaris_i2c;
+>  }
+
+Also on the subject of resetting i2c controllers and buses:
+https://patchew.org/QEMU/20240126005541.1839038-1-komlodi@google.com/
+That patchset proposes that the bus should basically drop
+any pending transactions on the floor at reset; it would
+also be possible for the bus to do the "end any transfer
+in progress", so the individual controller model doesn't
+have to. No idea what the overall Right Thing is, so
+let's not block this tidyup on figuring out general i2c reset
+cleanups.
+
+thanks
+-- PMM

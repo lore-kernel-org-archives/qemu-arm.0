@@ -1,88 +1,114 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp260253ejb;
-        Thu, 1 Feb 2024 06:16:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGMX7DI+wZPThtdSUjNG71VtTgS8pPJtAMXfFRmfDEyiw0Ys9TbLeVpmWuN/zmjQsFAQ5ef
-X-Received: by 2002:a05:6214:5298:b0:68c:4248:2624 with SMTP id kj24-20020a056214529800b0068c42482624mr3132883qvb.26.1706796972246;
-        Thu, 01 Feb 2024 06:16:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706796972; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp261435ejb;
+        Thu, 1 Feb 2024 06:17:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGLn6ICmdw/zmNsBvyJ2nRrI0SGEtTSfua7MkTlYL3OZo/Hq0uUavh3GwXGGkoxGLxjYc+O
+X-Received: by 2002:a05:6214:5009:b0:68c:68b9:9688 with SMTP id jo9-20020a056214500900b0068c68b99688mr5770616qvb.24.1706797075459;
+        Thu, 01 Feb 2024 06:17:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706797075; cv=none;
         d=google.com; s=arc-20160816;
-        b=MFxeMPHMLrg0xljC3A5B9DCf9cpSpd1vrc5QFGLOfENqZTNRxpHSUR08+B0lXOIKeZ
-         Zij0CMRlPNVxmnbzsyul3O+SW4LhrD//dmrH81G19zZZrnhT7tGd9a0xmtKqFW711+cg
-         xCTeo90uGYgImQjj3yjMUL0harWLoAPQSKINTH6ZSUds7UF5X8ilnMbLqvI7JPZxYDLn
-         3U9tZWd+ICTIsqvc6OX0dr3W+LJYlIptPUce3sI65g0QvkvbVGJUv7CfU0MpctZaJccu
-         V6ZDFdduG14fk/tpGrAfoCnYKPEJ2hCvPGBOfrON/r5hHqo8hrdekVHPGEIe/yZLcsg0
-         i59A==
+        b=NYnvfuvN7JMNWHA02cb+r1ZHDNrL8fT+RlMBlDyZZBDN6/xDr9x6h4crsprqrlpcWl
+         iyfGQIHVg73sV3fx1VRaX05lautyvDZKZ21XrdviWIxHLkowYk5f5pAZp77HKvxRXs06
+         ocicqd48XDIsMpLw/h9MEOjjMMbUEFY+3vefr3c7yHy10mJjEDANZDYED7coTX6Kn/Da
+         g0DQJxfBu1FoJeeLCjWu3IN8KKYd3vvPVuQF5D/FRxJmATjHCNy8TgHM1/bxU8ED6Cv4
+         dDI1U+wjeZI2i2cfmI64lNU3d7pvxLbrJ7CjkbK6nAI46WhhSImjv6RpBojv7ZD4ZZ77
+         6daw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=ARi2hzhT2OOA5NB8HQx+AXSrcCAY8/Q2dVKe7WcRL2g=;
-        fh=zrwyDaUsrfsIY0DH3dREfAmybBmYnFbKdibIfs7SFl8=;
-        b=qEhkTvHsWm7dhMfIyT1H1C4Wywt7u/GWCPAd52cxJDEz6IQcTvmJlNPmTEq/JDG1ez
-         ilhUX8xn/rZQiwXi3vwFnY6hAB+QRzA8kEzsv+mqfKrTY8JK5AAlS97jy9HgJMMUod29
-         J+CSXIqDXThE+B8EK1sRWaLFSWRZrgdgtPnJvCJMNUOMh1WFkDHOeU5RDJ21hO4l3mIo
-         Q3Mt5/ke8T/uiZbeXd/OhvLPv5oF0VksMMsnhXuWyS5XVTdsrBKjyoAqQ0WaGWF30ILg
-         iZh11aGw/a0OheBsWka8Qxr7b8uLJZFlOFmGQOhohVbSEjaH/q85h/R192lozlaXZXw9
-         oczA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=kgMqkwOZL0NhaC+GsUct74xqFdiFXpm6R7KZnq5H5pc=;
+        fh=eUOttCw7ApatsLWVj/bEcioFBs0aLG1espopQc6KZ8A=;
+        b=h7Jk7/aBcbGifqDAQWxNORvCDAuEBHBTEPYZgFtbymcRvjNvko8iXFAq6fZRjuGWRq
+         vZ+I7m581mHYm8IU8s+ZJmqO7jcsf2tLC42uMyosOJsDKVIwzhnIrxslVX8cBrW6deFL
+         9nR9qgp6vwIUz6ofYsOXBvdybr40fp+2UM+laAfNrTV2mFsZRftpz3RgxvylwtzAsBMe
+         Qpv6MG3ZRgKD4OIsCUchjUnEA8SSnVnq/h9AqjoH0peTYGii5oYAnC/P4BmPljTcni1I
+         B5zrr/pEX+d9mOVGBf4AqMFxiHwlG5iHUuY/CbFngoWPkSYuByH5qAfBSWWa2MsMuoLA
+         ARSw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCUXvVcy1ORmaTgjuONH99bu12Y9GG2NfLD+t+A0b1u/oSjQdHDmQx4AP8N9eB9XyXISJeB7V+gpzGKsGRCnVM6iMECFzOkw
+       dkim=pass header.i=@linaro.org header.s=google header.b=FK3RG0bW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCXSoI+v1pGGO9SeqJ4uydzquRlB+7WhrOTexXKUEFK8QbYVOcekh3/b2uRG0K0HgXIxL8pVQ5HsL+RsWy90dMxIK/ZWx1Dg
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3-20020a0562141d2300b0068c3d2d61f1si12241969qvd.120.2024.02.01.06.16.12
+        by mx.google.com with ESMTPS id gi5-20020a056214248500b0068c61ea9984si5862001qvb.523.2024.02.01.06.17.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 06:16:12 -0800 (PST)
+        Thu, 01 Feb 2024 06:17:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=FK3RG0bW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVXpA-0001H5-8F; Thu, 01 Feb 2024 09:13:52 -0500
+	id 1rVXst-0004bM-0V; Thu, 01 Feb 2024 09:17:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXob-0000x2-FV; Thu, 01 Feb 2024 09:13:19 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org>)
- id 1rVXoY-0007mO-D3; Thu, 01 Feb 2024 09:13:16 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TQgqB4jBCz4wcW;
- Fri,  2 Feb 2024 01:13:10 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TQgq84PdCz4wcM;
- Fri,  2 Feb 2024 01:13:08 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gavin Shan <gshan@redhat.com>
-Subject: [PULL 04/17] hw/arm/aspeed: Init CPU defaults in a common helper
-Date: Thu,  1 Feb 2024 15:12:40 +0100
-Message-ID: <20240201141253.806055-5-clg@kaod.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240201141253.806055-1-clg@kaod.org>
-References: <20240201141253.806055-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVXsn-0004Zv-Px
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 09:17:38 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVXsl-0000Kp-OA
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 09:17:37 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-55c2cf644f3so1256144a12.1
+ for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 06:17:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1706797054; x=1707401854; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=kgMqkwOZL0NhaC+GsUct74xqFdiFXpm6R7KZnq5H5pc=;
+ b=FK3RG0bWpk+Og2ZkLAMFoNPU1XzQ///Vhm8ET0+ihjcxoDf5wIqwjKEbIzw3TmJZlJ
+ 2FIffihTL8HH5ZEZjeU3C0/Z/cgAqVbKRjd+x2EHdRf/5DdP8Z994LmezgCjbldsmQMW
+ cBHal4lVFz2Nyk0ZeAjnx7Bx5WY8Ez2UoTGoQAkEaue0bTkArkr/m2Qr5mJGwstsqW/9
+ gqSqt7HSzUUoU5tPmb3A8IQ7L5f62exSIhCscFN2KR2XEHNai3A0t0b5MylrNKQtQYSo
+ +0gXGkiKgJmu9067sZAJyYi4FFx4sZ27j+InugJuemi74Ld8AqSreeVnUb18VjoMpWH8
+ UXTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706797054; x=1707401854;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kgMqkwOZL0NhaC+GsUct74xqFdiFXpm6R7KZnq5H5pc=;
+ b=drivi5D7dpyX5Mi2yfcdYMXuihcOI1M+Wm2N39OgPk64tkDM9m27cganxaO3Rct30m
+ WgIS9mMN/hDZUUzxOIMjMN348MEo54ibmCGAGJ85t2QHJi/Y1W+eEWd9s5InES1kaJi5
+ JReRzhdKOONkHCv2yMShzqfDE0qjnaNE80f86m/ViOHFqHBcTspcy/JVZlnfg5eDjMfl
+ IeNK/X3VvF6BoU5Q4IRzdP/g7HN50QTWesYz0aGEh2zwJH/W+YPKwUUL1lFwXUIrGH+t
+ ekZxZUSs12ui+wB9HzrOI5gA/lo8rT9ji/6A6eZUcMR7WXHXj9Y4IDGGjnPyDss7OBm+
+ LPdA==
+X-Gm-Message-State: AOJu0Yyoya2gTmh/9bpQviEtaU/VKr3qLZBU8axoIC6HqSjWjRYbBVwq
+ DkibCArMYIxxs3JGQ2IWneB+NHoKdWkSRk1uUyoNiwA62q1Wf5W86BV4ATgiScpD8hH8slqCqTj
+ 7XxtleuO7m0CZ6QxjMhUXiPMjDXoP2rq72AgNGQ==
+X-Received: by 2002:aa7:d5c6:0:b0:55e:dcdf:50b0 with SMTP id
+ d6-20020aa7d5c6000000b0055edcdf50b0mr3248600eds.15.1706797053934; Thu, 01 Feb
+ 2024 06:17:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=Qo6T=JK=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20240129081835.137726-1-thuth@redhat.com>
+ <20240129081835.137726-2-thuth@redhat.com>
+In-Reply-To: <20240129081835.137726-2-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Feb 2024 14:17:22 +0000
+Message-ID: <CAFEAcA_mf-iGD_P3DB=dw4n=qpFyNODtAz1jFKUdjFkM1eWVuQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] target/arm: Move v7m-related code from cpu32.c
+ into a separate file
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Fabiano Rosas <farosas@suse.de>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,252 +123,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0QOD5DIjasyJ
+X-TUID: KWOWFaQ96qKz
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Mon, 29 Jan 2024 at 08:18, Thomas Huth <thuth@redhat.com> wrote:
+>
+> Move the code to a separate file so that we do not have to compile
+> it anymore if CONFIG_ARM_V7M is not set.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  target/arm/tcg/cpu-v7m.c   | 290 +++++++++++++++++++++++++++++++++++++
+>  target/arm/tcg/cpu32.c     | 261 ---------------------------------
+>  target/arm/meson.build     |   3 +
+>  target/arm/tcg/meson.build |   3 +
+>  4 files changed, 296 insertions(+), 261 deletions(-)
+>  create mode 100644 target/arm/tcg/cpu-v7m.c
+>
+> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+> new file mode 100644
+> index 0000000000..89a25444a2
+> --- /dev/null
+> +++ b/target/arm/tcg/cpu-v7m.c
+> @@ -0,0 +1,290 @@
+> +/*
+> + * QEMU ARMv7-M TCG-only CPUs.
+> + *
+> + * Copyright (c) 2012 SUSE LINUX Products GmbH
+> + *
+> + * This code is licensed under the GNU GPL v2 or later.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "hw/core/tcg-cpu-ops.h"
+> +#include "internals.h"
+> +
+> +#if !defined(CONFIG_USER_ONLY)
+> +
+> +#include "hw/intc/armv7m_nvic.h"
+> +
+> +static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+> +{
+> +    CPUClass *cc = CPU_GET_CLASS(cs);
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +    bool ret = false;
+> +
+> +    /*
+> +     * ARMv7-M interrupt masking works differently than -A or -R.
+> +     * There is no FIQ/IRQ distinction. Instead of I and F bits
+> +     * masking FIQ and IRQ interrupts, an exception is taken only
+> +     * if it is higher priority than the current execution priority
+> +     * (which depends on state like BASEPRI, FAULTMASK and the
+> +     * currently active exception).
+> +     */
+> +    if (interrupt_request & CPU_INTERRUPT_HARD
+> +        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
+> +        cs->exception_index = EXCP_IRQ;
+> +        cc->tcg_ops->do_interrupt(cs);
+> +        ret = true;
+> +    }
+> +    return ret;
+> +}
+> +
+> +#endif /* !CONFIG_USER_ONLY */
 
-Rework aspeed_soc_num_cpus() as a new init_cpus_defaults()
-helper to reduce code duplication.
+I wonder if this function could go in target/arm/tcg/m_helper.c:
+it looks a bit odd in this file, which is mostly initfns for
+specific CPU types. But it was in cpu32.c so I'm happy that
+we just move it to cpu-v7m.c for now.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 71 +++++++++++++++++++------------------------------
- 1 file changed, 28 insertions(+), 43 deletions(-)
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 46b5a21eb3..2e10464dbb 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -26,6 +26,8 @@ arm_system_ss.add(files(
+>    'ptw.c',
+>  ))
+>
+> +arm_user_ss = ss.source_set()
+> +
+>  subdir('hvf')
+>
+>  if 'CONFIG_TCG' in config_all_accel
+> @@ -36,3 +38,4 @@ endif
+>
+>  target_arch += {'arm': arm_ss}
+>  target_system_arch += {'arm': arm_system_ss}
+> +target_user_arch += {'arm': arm_user_ss}
+> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+> index 6fca38f2cc..3b1a9f0fc5 100644
+> --- a/target/arm/tcg/meson.build
+> +++ b/target/arm/tcg/meson.build
+> @@ -55,3 +55,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>  arm_system_ss.add(files(
+>    'psci.c',
+>  ))
+> +
+> +arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
+> +arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 5b01a4dd28f8..d2d490a6d142 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1141,10 +1141,14 @@ static void aspeed_machine_class_props_init(ObjectClass *oc)
-                                           "Change the SPI Flash model");
- }
- 
--static int aspeed_soc_num_cpus(const char *soc_name)
-+static void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
- {
--   AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(soc_name));
--   return sc->num_cpus;
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(mc);
-+    AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
-+
-+    mc->default_cpus = sc->num_cpus;
-+    mc->min_cpus = sc->num_cpus;
-+    mc->max_cpus = sc->num_cpus;
- }
- 
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-@@ -1176,8 +1180,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 1;
-     amc->i2c_init  = palmetto_bmc_i2c_init;
-     mc->default_ram_size       = 256 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
-@@ -1193,8 +1196,7 @@ static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 1;
-     amc->i2c_init  = quanta_q71l_bmc_i2c_init;
-     mc->default_ram_size       = 128 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-@@ -1212,8 +1214,7 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-     amc->i2c_init  = palmetto_bmc_i2c_init;
-     mc->default_ram_size = 256 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
-@@ -1231,8 +1232,7 @@ static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-     amc->i2c_init  = palmetto_bmc_i2c_init;
-     mc->default_ram_size = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-@@ -1248,8 +1248,7 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 1;
-     amc->i2c_init  = ast2500_evb_i2c_init;
-     mc->default_ram_size       = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
-@@ -1266,8 +1265,7 @@ static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->i2c_init  = yosemitev2_bmc_i2c_init;
-     mc->default_ram_size       = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
-@@ -1283,8 +1281,7 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->i2c_init  = romulus_bmc_i2c_init;
-     mc->default_ram_size       = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void *data)
-@@ -1301,8 +1298,7 @@ static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->i2c_init  = tiogapass_bmc_i2c_init;
-     mc->default_ram_size       = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
-@@ -1318,8 +1314,7 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->i2c_init  = sonorapass_bmc_i2c_init;
-     mc->default_ram_size       = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
-@@ -1335,8 +1330,7 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 2;
-     amc->i2c_init  = witherspoon_bmc_i2c_init;
-     mc->default_ram_size = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-@@ -1355,8 +1349,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-                      ASPEED_MAC3_ON;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-@@ -1374,8 +1367,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask  = ASPEED_MAC2_ON;
-     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
-     mc->default_ram_size = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-@@ -1392,8 +1384,7 @@ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-     amc->i2c_init  = g220a_bmc_i2c_init;
-     mc->default_ram_size = 1024 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
-@@ -1410,8 +1401,7 @@ static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-     amc->i2c_init  = fp5280g2_bmc_i2c_init;
-     mc->default_ram_size = 512 * MiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-@@ -1429,8 +1419,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = rainier_bmc_i2c_init;
-     mc->default_ram_size = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- #define FUJI_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-@@ -1451,8 +1440,7 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
-     amc->i2c_init = fuji_bmc_i2c_init;
-     amc->uart_default = ASPEED_DEV_UART1;
-     mc->default_ram_size = FUJI_BMC_RAM_SIZE;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- #define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-@@ -1472,8 +1460,7 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
-     amc->macs_mask = ASPEED_MAC2_ON;
-     amc->i2c_init  = bletchley_bmc_i2c_init;
-     mc->default_ram_size = BLETCHLEY_BMC_RAM_SIZE;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- static void fby35_reset(MachineState *state, ShutdownCause reason)
-@@ -1515,6 +1502,7 @@ static void aspeed_machine_fby35_class_init(ObjectClass *oc, void *data)
-     amc->i2c_init  = fby35_i2c_init;
-     /* FIXME: Replace this macro with something more general */
-     mc->default_ram_size = FUJI_BMC_RAM_SIZE;
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
-@@ -1592,8 +1580,7 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     amc->spi_model = "sst25vf032b";
-     amc->num_cs = 2;
-     amc->macs_mask = 0;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- }
- 
- static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-@@ -1612,8 +1599,7 @@ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
-     mc->default_ram_size = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
-@@ -1632,8 +1618,7 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
-     amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
-     mc->default_ram_size = 1 * GiB;
--    mc->default_cpus = mc->min_cpus = mc->max_cpus =
--        aspeed_soc_num_cpus(amc->soc_name);
-+    aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
- static const TypeInfo aspeed_machine_types[] = {
--- 
-2.43.0
+Why do we need to add this new arm_user_ss() sourceset,
+when we didn't need it for the A/R profile CPUs?
+What goes wrong if we add it to arm_ss() the way we do cpu32.c?
 
+-- PMM

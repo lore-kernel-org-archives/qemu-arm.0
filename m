@@ -1,84 +1,189 @@
-X-Forwarded-Encrypted: i=0; AJvYcCW7NpIoj1nuyTbHJHNrUV1q1+a+ZoQR0ItTb3f/oQYUUZVrgXtgpm3dkNBK5rXiaKfVm8BWuAMykidDaVGuytEQcsOmVz3tGkXSERqR4dwFZKUnUCzV73xTpbE83xBeiETdeImZKHNIH6ea+u4r6lVOZSFjWhHnzVp9uavqI3sa+2ZzA94ITDsauWVt6gD9CopbZ0pS6h8LhBE5Dwaz1HFO7jCKyf0EdxrfYQVVBBXTB8ee/iZHtx2qomM0/TuuO8QrspDq/Ztpwq+MqHo2qezd/bng15nSGVZqYvQYNb3PR4834i+tTqsm9P4SoH4PR10YH7An0ikm/TzFFu6yR0qqV5bmi3WZQfTygoiUa09D1v4g56ixhODzhl3OFwHuZOldnZKzaOQb1NYUBew36RPn5udbwnYJERL4+FHQ39t0eyJeIjq1CjBMeHkCOHWQd8lT+ECKM0BwVOgobJZ+MO5BC5F2R9WAhzYWzVw2aVjP7OypX/LJmZaiDMyl0ONRtF1pOw87XGLmtR1qnmwragJTwVAL9leH5V+n5Hj9DZIajRpdJBR/tuUbXmRLdQVbxG/BikYO6RFDZmQUfLuSVk1Bzein4A9LnBD/jncArDmdsKk94Q0RnTT996Gohnki8u6WvdJauVFrxqB2gYoTqXswVn9p6XJufLoBtCnCRA8vzHJdfUufve46X8awnnSXqr7pHZSQidZcSh0sL/FJMrw3tHKBC0HlP3kNx6GDIV8ZjTXbOgpQmMeEyB9SHxJG1eMMmtY/tRdiGEOa5LOMzkbFsPv9twF4L0Lh6y0P8bJE6LrdA21AWQ++jemdxkcjh21HGKKozF9yNEwCCJfFBdJuJWHaaNpUTR/3r+OelPo8N6aCRzO+nFCvPhFDUUv2YLtNzDrJsouhblvhfhnRNVg/Y7K3plK+Wey+gm7jyw0hfg3kAbOIR/O1MWv7BcpJeKz1iG
- bIYk94twoIFM6+aoGniZxwXfBzBiioRQSkd5j4D5FRUEeyW5f+BYSNn9Vi9A0R+u+gK0gf3uxfmLo4Z2yTaC1KSKjbsaIlxiCI+5DJCOceZnk14NZZKJVofGzfzzlNqczLaZOnw8uxrudRktM9ecWFOZvMZ6C6ZcgmvxCaqkQPYr9HzE9B7lXSZ++cy5whD3U0pdEQGuLpYZ9U17w4b22FnOeL/8OZLjS8br6ktHWkGqKhg6AKd+HxvzIpiZy2W/07Q20R/H2+tCBoNDKoNu4It9y5FrykveU=
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u18-20020a5d4352000000b003392b1ebf5csm15989811wrr.59.2024.02.01.04.13.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 04:13:20 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id EDD6A5F7AF;
-	Thu,  1 Feb 2024 12:13:19 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  Michael Rolnik <mrolnik@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Laurent Vivier <lvivier@redhat.com>,
-  kvm@vger.kernel.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Palmer Dabbelt
- <palmer@dabbelt.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Laurent
- Vivier <laurent@vivier.eu>,  Yanan Wang <wangyanan55@huawei.com>,
-  qemu-ppc@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,
-  qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-  Peter Maydell
- <peter.maydell@linaro.org>,  Alexandre Iooss <erdnaxe@crans.org>,  John
- Snow <jsnow@redhat.com>,  Mahmoud Mandour <ma.mandourr@gmail.com>,  Wainer
- dos Santos Moschetta <wainersm@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Ilya Leoshkevich <iii@linux.ibm.com>,
-  Alistair Francis <alistair.francis@wdc.com>,  David Woodhouse
- <dwmw2@infradead.org>,  Cleber Rosa <crosa@redhat.com>,  Beraldo Leal
- <bleal@redhat.com>,  Bin Meng <bin.meng@windriver.com>,  Nicholas Piggin
- <npiggin@gmail.com>,  Aurelien Jarno <aurelien@aurel32.net>,  Daniel
- Henrique Barboza <danielhb413@gmail.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Thomas Huth <thuth@redhat.com>,  David
- Hildenbrand <david@redhat.com>,  qemu-riscv@nongnu.org,
-  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Song Gao
- <gaosong@loongson.cn>,  Eduardo Habkost <eduardo@habkost.net>,  Brian Cain
- <bcain@quicinc.com>,  Paul Durrant <paul@xen.org>
-Subject: Re: [PATCH v3 00/21] plugin updates (register access) for 9.0
- (pre-PR?)
-In-Reply-To: <20240122145610.413836-1-alex.bennee@linaro.org> ("Alex
- =?utf-8?Q?Benn=C3=A9e=22's?=
-	message of "Mon, 22 Jan 2024 14:55:49 +0000")
-References: <20240122145610.413836-1-alex.bennee@linaro.org>
-User-Agent: mu4e 1.11.27; emacs 29.1
-Date: Thu, 01 Feb 2024 12:13:19 +0000
-Message-ID: <871q9wmlgg.fsf@draig.linaro.org>
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp232144ejb;
+        Thu, 1 Feb 2024 05:34:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHEz9Bp1lpV67ezY+B+txnij8mJg99LiA2VW6LOthFtW7ZPGK6/YTqumnDp5vexm6DbGRWJ
+X-Received: by 2002:a05:620a:2405:b0:783:8b27:46f with SMTP id d5-20020a05620a240500b007838b27046fmr3224738qkn.31.1706794456533;
+        Thu, 01 Feb 2024 05:34:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706794456; cv=none;
+        d=google.com; s=arc-20160816;
+        b=L0ir1hJlcOWlF7e/GAgk2KR6UdnQ9HQ+abxzK7GmpzAEY3cRgfRVAbCIHk8O3i059L
+         4HxqM6A9/WXiV53FrmRrpUma+9tdV1NffoUKd81pwhBex5O9M97sI4139ecSNZlVNuDq
+         Iu4VEJAmI2WS36KItGa6Tnm602T6VnvrPbjccYH0CdKV31hS3lkDrmpIUjebs2/wOYp0
+         bKUIVwAvu1qZH7TD4BD3oFEvU0aRlrDCbdoIaqww/Z8S2cBvNyudXKOxx7e/LF3jye2W
+         +8jdUY6XhpRZVCwPfXndprziIjK56ntKU9iN4AxRCm8H9yk2yy4844ix1N241uyftnLE
+         XSUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=io87DHhBMjJIuCrn/6iiYfrsoMeo6aQOZ9fSI+L5OJg=;
+        fh=KBl6++/saq2hXVZb9+9+Mi9MUdOnPSamjdtwtOW5Kg4=;
+        b=YZNODRs06cb6AthGJ72dSwRAQPoeYhL9eWCeDjWpZH9iG/VXypnbhyGZr1MqGuEb+J
+         Cg1n0fOY/F9D+8LwkqVyEIZBgJ36vzChTUZg6aYWiDR1qmfTWgWDykbLBzRcZXuchgpc
+         uuRWCxpxVnMCm41MY8IAzFUoegcYuQd/ZiocdFy1yvZO2UngO44FU7DYMGeGW7pqLG2k
+         4wDzttsgfZAvKq/p4D4Htsg1SpFXaahZEhEevHRA6YeocxvL6TVN3u+9bX+mBCQGaiwz
+         6EstDxT7zBU8oJSEnMB2uaxRxe88zc7tmcgFk189TRYdDMlnEWBZ90vb4NEUT1gs7iKH
+         +jXQ==;
+        darn=linaro.org
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kPWAHYWK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCVpQamI/IvdqJEwv2LyqJMi6OGb3mUJM/3SIwyp7nCt/dttj2Zp4oPc3pjuDwZmFwRId2GlTE751OpkdgVrGQbSFZAx4idi
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e7-20020ac84e47000000b0042a519d4a5csi13894647qtw.530.2024.02.01.05.34.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Feb 2024 05:34:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kPWAHYWK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rVXCh-0001wE-S7; Thu, 01 Feb 2024 08:34:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVXCg-0001v4-17
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 08:34:06 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rVXCe-0007Tx-8y
+ for qemu-arm@nongnu.org; Thu, 01 Feb 2024 08:34:05 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-55a179f5fa1so1262390a12.0
+ for <qemu-arm@nongnu.org>; Thu, 01 Feb 2024 05:34:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1706794443; x=1707399243; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=io87DHhBMjJIuCrn/6iiYfrsoMeo6aQOZ9fSI+L5OJg=;
+ b=kPWAHYWKO4EI70yaTPybqSh2mCcSioKnGI6jT++nr9xwMUfr2/AaYmiRa26vV7NzRn
+ NG1bc6zPv3A0YflnyYej+/kp+epOMcOkQBIf0ipADh6TrH5+iNIM+rGtZK5eMl6VqRcP
+ kx18bVSMH5Or3BxWPW7qh7SwlY18FqopDw1QbWzG5GFmyHcA4KfIxpteHp7sEOe+fo/1
+ A9Cb3H1CRUJmxcqt9II49mJIbT+IpK+6sDMaukGNsGUyX1HZA0BS/uv31aO0jU12609J
+ 83wScOjkshB5JopuyaGTuO9nUtFz+3XhteO8Rj4e7cIJBVElFoJJUGy7UE3VwsRwbQiE
+ /5WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706794443; x=1707399243;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=io87DHhBMjJIuCrn/6iiYfrsoMeo6aQOZ9fSI+L5OJg=;
+ b=LjTL4vfuCLzaRyHMTrs7NGnkXtj2xWrk+brPXux98EoVvnk0Fc2ezWWCE3u8E2/v9J
+ ueJw0jUtT9pssJfGpVsdBX6Bksbr5N6vjAr98fY3WxKb4ln+CJz4zl0vdG4z3zdy89C/
+ pSsqXuEpYEJWBLdZ2YHuo3zbkDFhxMERtZKokWNFMWRmdB0QpZpE/yXzY4EFuE+CZAW1
+ YrOABbAL5JfXHyZmocK2lTqhyWT2Z7cMz2T7PtuNyfm7vr+eUbYp4anr6NBoW4iscRTX
+ LWpEeHSJpoOID+vaMdc7C7TrdOEvGeGiQSNrcKT1LIeZgsHzrLSt4fkgNSa/IrAJj+S4
+ N4TA==
+X-Gm-Message-State: AOJu0YwT1Z0HdT+ODXzXlak5fTHTnP2AL/YytYQB7usnKYVHRfZPyXbe
+ +Cd6/pYI+kC4yYTrJ03iE6GURx1KzKNrb5N5jA/2M+9EIBnIE2hhAcGirf7NAOWqZNi2FRBmj9/
+ jl2S+PBs+KMFije7Wicle7sA9Y1PCDN6L0n2JeomzjgRxsPa8
+X-Received: by 2002:a50:ee19:0:b0:55f:d5a0:749b with SMTP id
+ g25-20020a50ee19000000b0055fd5a0749bmr261166eds.39.1706794442744; Thu, 01 Feb
+ 2024 05:34:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: tmTlr60hj0xd
+References: <20240122143537.233498-1-peter.maydell@linaro.org>
+In-Reply-To: <20240122143537.233498-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Feb 2024 13:33:51 +0000
+Message-ID: <CAFEAcA_xH=fRR2iTr9+RgiA6n51FCakCsk60z=Mr6XmaujbebQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] virt: wire up NS EL2 virtual timer IRQ
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Ard Biesheuvel <ardb@kernel.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Qk4nRhhc3tIK
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Ping for code review, please?
 
-> Akihiko requested the register support not be merged in its current
-> state so it's time for another round of review. I've made a few tweaks
-> to simplify the register and CPU tracking code in execlog and removed
-> some stale API functions. However from my point of view its ready to
-> merge.
->
-> v3
-> --
->   - split from testing bits (merged)
->   - removed unused api funcs
->   - keep CPUs in a GArray instead of doing by hand
->
-> v2
-> --
->
->  - Review feedback for register API
->  - readthedocs update
->  - add expectation docs for plugins
->
-> The following still need review:
->
->   contrib/plugins: extend execlog to track register changes
->   gdbstub: expose api to find registers
+thanks
+-- PMM
 
-Gentle ping. I'm ready to merge but more review was requested:
-
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+On Mon, 22 Jan 2024 at 14:35, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset wires up the NS EL2 virtual timer IRQ on the virt
+> board, similarly to what commit 058262e0a8b2 did for the sbsa-ref board.
+>
+> Version 1 was an RFC patchset, originally sent back in autumn:
+> https://patchew.org/QEMU/20230919101240.2569334-1-peter.maydell@linaro.org/
+> The main reason for it being an RFC is that the change, while correct,
+> triggers a bug in EDK2 guest firmware that makes EDK2 assert on bootup.
+> Since the RFC, we've upgraded our in-tree version of the EDK2 binaries
+> to a version that has the fix for that bug, so I think the QEMU side of
+> these patches is ready to go in now.
+>
+> To accommodate users who might still be using older EDK2 binaries,
+> we only expose the IRQ in the DTB and ACPI tables for virt-9.0 and
+> later machine types.
+>
+> If you see in the guest:
+>      ASSERT [ArmTimerDxe] /home/kraxel/projects/qemu/roms/edk2/ArmVirtPkg/Library/ArmVirtTimerFdtClientLib/ArmVirtTimerFdtClientLib.c(72): PropSize == 36 || PropSize == 48
+>
+> then your options are:
+>  * update your EDK2 binaries to edk2-stable202311 or newer
+>  * use the 'virt-8.2' versioned machine type
+>  * not use 'virtualization=on'
+>
+> I'll put something about this into the release notes when this
+> goes into git. (There are other reasons why you probably want a
+> newer EDK2 for AArch64 guests, so this is worth flagging up to our
+> downstream distros who don't take our pre-built firmware binaries.)
+>
+> changes v1->v2:
+>  * the change in DTB and ACPI tables is now tied to the machine version
+>  * handle change of the ARCH_TIMER_*_IRQ values from PPI numbers to INTIDs
+>  * bump the FADT header to indicate ACPI v6.3, since we might be using
+>    a 6.3 feature in the GTDT
+>  * the avocado tests now all pass, because we have updated our copy
+>    of EDK2 in pc-bios/ to a version which has the fix for the bug
+>    which would otherwise cause it to assert on bootup
+>  * patch 2 commit message improved to give details of the EDK2 assert and
+>    state the options for dealing with it (this will also go into the
+>    QEMU release notes)
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (3):
+>   tests/qtest/bios-tables-test: Allow changes to virt GTDT
+>   hw/arm/virt: Wire up non-secure EL2 virtual timer IRQ
+>   tests/qtest/bios-tables-tests: Update virt golden reference
+>
+>  include/hw/arm/virt.h     |   2 ++
+>  hw/arm/virt-acpi-build.c  |  20 +++++++++----
+>  hw/arm/virt.c             |  60 ++++++++++++++++++++++++++++++++------
+>  tests/data/acpi/virt/FACP | Bin 276 -> 276 bytes
+>  tests/data/acpi/virt/GTDT | Bin 96 -> 104 bytes
+>  5 files changed, 67 insertions(+), 15 deletions(-)
+>

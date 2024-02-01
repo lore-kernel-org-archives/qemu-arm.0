@@ -1,187 +1,84 @@
-Received: by 2002:a17:906:724b:b0:a35:eedd:80b0 with SMTP id n11csp1731826ejk;
-        Wed, 31 Jan 2024 12:45:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGSo/ru27FjaXSyG+gUdnIoV2Qi3ZCQyfadzh1YOFATYrR/nbufz5YVcwQ4aGdDBbGXNctz
-X-Received: by 2002:a05:6a20:8812:b0:199:29c5:12f7 with SMTP id c18-20020a056a20881200b0019929c512f7mr2277801pzf.29.1706733901937;
-        Wed, 31 Jan 2024 12:45:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706733901; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=IUz0zcZsXYkniWvVv8dcZWNKCyVVjSA36bCwNyqal/RaOdUpee7D/7GdBa5PKjZszg
-         Nrq2DhXy+v1F6qR+9145ZINWWvm4IhyaEAKnloKF0Qpp+3Th4NLX5UASmAIN9hTMMeLO
-         mdSsIg5zdOGuqvmSuncpu7sCK0z3WBQV/UZdyboaRsa8wi70LYPcGZ26tJMeCtVQowf7
-         yX1gYft84M0dFHWqCZ+8UEYWxvqakcA4NwA3/oVTTnaz8HpwRpCfJqtbBfY2sd6MZdRx
-         b18+KN6hz76mUNuC8vGSTIEW3VDPUlgOB5mmbR/eR+0x1VZA5LWgx8WzX/w3y+darfQo
-         EK1Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:msip_labels:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :cc:to:from:dkim-signature;
-        bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
-        fh=KYbrub4umMWj6h4/IXj6j21ke/ZGUpa+32q0V66y+vA=;
-        b=wgUz8BfGxIiwuSop7FLouKQow1n9+RZi6qT7G21IbKWaw2jqz3XgA1TCIQq6ClOXSC
-         kCUG8orQlFvFYOVvdJAF6oaERDfKyWltwyfcBRCG7iIKtR942ze4/JgzReHBsnfwQXA9
-         UHumM/1GVQBaoXVAtH9Z2v+2eTibKwmXLXKtGm8fp2lDZ8dZg/eNDm7BXosQ2rCeviYw
-         /mafri+F37g235pfdwDoLgpDvkWBxEdAK/RL0zWG1IGBtJC2470KAsWqv43r/k0OaAki
-         AYOYBYdhV/XxiFkarchV4lVUmt6/M8QxiIE4KTI4VNR5a+knYSPdNRPuC7JHLsjpCjAL
-         c6yQ==;
-        darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=kXs+oPEg;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) smtp.mailfrom=mark.charney@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-X-Forwarded-Encrypted: i=1; AJvYcCWGKrETQYQj530MR/opES27yWWz01eF6zUgP7RsKd/jT1TgEZkViZwIhVkwVZc65EyCn1/2J8tq9N7atjsy5nxxivOMewicCrPH0q9d3YC/uSTx82GZBsfGJVL3WjdnLwz88jw/
-Return-Path: <mark.charney@os.amperecomputing.com>
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (mail-bn8nam12on20700.outbound.protection.outlook.com. [2a01:111:f403:2418::700])
-        by mx.google.com with ESMTPS id e16-20020a056a0000d000b006dac9462b4esi10333748pfj.175.2024.01.31.12.45.01
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 Jan 2024 12:45:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) client-ip=2a01:111:f403:2418::700;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=kXs+oPEg;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of mark.charney@os.amperecomputing.com designates 2a01:111:f403:2418::700 as permitted sender) smtp.mailfrom=mark.charney@os.amperecomputing.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GfKQZKMfBDs1pa8i9lPMAzyPqAAy3b+r9zDwMvAAc4DZ7w/WsBRV+VR5UlEWWJCoHd6TPjKVcRxCwGOaysgvanor7SdhUPpxpBImOBG38rlJ/rl244/4ZkL7vfzcq36E4UCBkSHBTw9dsU1Wx/gG0PrGERODxDqONH+rq6G7qJeCEKk+MmYd6p6jZpzSXvXyM+v1e6C9xJYQRcY99eGApVUynC227My5xeqejH1tZdfFbBLeTiS/Jb12PFA+SqvNJf/UgrEl2Bk9ahimX4wy2mFOAGlQ21ftroRzOh0JX2CT33vYS1l1/mrkwWfTsI3gn3q5y2E9ezR26hBMdjyFXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
- b=J2hS57TWo2JYuIp95P+TRSgoeexN/0VqWdsGaIGDeqoV3xqzLhE3t7JWaiiBt9BtkmQA9kmCW76FE2MQJgiCrGTm7wGqY3tHPP39Oj0omg2Rrw0mPHXrhiwObCQliawxiEfLwWKn+/AjFXUnrQ7DqSdVwys9DkEyNIck2xWFCyE8Zi9MI/D+jDlY3rmTUTHAzPICMjZnchHs5UYQd13srFgaAPfmO872WhbobMo8QsmGOv0IfRCDvAYRzCbIhJ4zXZWum25/YZJSkCrPF8zyxuW2vCkt+I4mTq8bZwHpnxaagZTKxotuvwYM1aN+OY445EafUnHIb+qmvRq/HrNfmA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9XNZZWN1GY1PJmnRTS4Yyv5+Drjpiu7QMIq1mVygUUk=;
- b=kXs+oPEgVI6BrqB8X75bIqeu8zH1xRRY7On6IVxEcmgpCs4fRr0BA3ubxm0DeUThS92ivf5InRD3OEMpYc8a3CJt2I0fJZlG9qi66Qu5IEmvSTG/IAHAVbHGg3nfzY/gXAeH/fEa+1+58qLXX+xMHGEbD3g8O9pTgGxZUUTHapI=
-Received: from BL1PR01MB7795.prod.exchangelabs.com (2603:10b6:208:39a::5) by
- PH7PR01MB7931.prod.exchangelabs.com (2603:10b6:510:275::6) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7249.24; Wed, 31 Jan 2024 20:44:56 +0000
-Received: from BL1PR01MB7795.prod.exchangelabs.com
- ([fe80::93f7:ce4f:5253:1269]) by BL1PR01MB7795.prod.exchangelabs.com
- ([fe80::93f7:ce4f:5253:1269%7]) with mapi id 15.20.7249.024; Wed, 31 Jan 2024
- 20:44:55 +0000
-From: Mark Charney OS <mark.charney@os.amperecomputing.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>
-CC: Aaron Lindsay OS <aaron@os.amperecomputing.com>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>
-Subject: QEMU 8.2.0 aarch64 sve ldff1b returning 1 byte when 16 are expected
-Thread-Topic: QEMU 8.2.0 aarch64 sve ldff1b returning 1 byte when 16 are
- expected
-Thread-Index: AQHaVGIniO3WZ/GXMk6DS8JgnshVfA==
-Date: Wed, 31 Jan 2024 20:44:55 +0000
-Message-ID:
- <BL1PR01MB7795E154CD5AE6ADA60C0D53A87C2@BL1PR01MB7795.prod.exchangelabs.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-msip_labels:
- MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Enabled=True;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_SiteId=3bc2b170-fd94-476d-b0ce-4229bdc904a7;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_SetDate=2024-01-31T20:44:55.082Z;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Name=Confidential;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_ContentBits=0;MSIP_Label_5b82cb1d-c2e0-4643-920a-bbe7b2d7cc47_Method=Standard;
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL1PR01MB7795:EE_|PH7PR01MB7931:EE_
-x-ms-office365-filtering-correlation-id: 6bdd755f-73dc-4645-6182-08dc229d7b42
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- zB3leId2fto/2k0WKnR8GeBglT/7dRsjQvrTQqWwd8KxUMzYZmp/KjRgjeXZaRinGp6cPife2uDi0XkVUuioGltBtBeqnKVnkkUw8/FUtD0OBTIYdyWI98u9+K4TxtigcxOoOH3/YKkrXj+j7O41Iw6JZ9IBKOXUoCvEcyzAyQB0H4vkq/48OY7D3pQvnuqRBTgM+f/zrGSvn1SgZuwzvl5ZLegoNRlQR4eD/xuN3DDB2rl9HvQKqI/Yman57ftcjrqcfN6xKMBbsgB6ism/XozMeHoCVHPhaNWuHy1BW7DPK4NEhQYqNSl4pZhTgXEwnrmqENuQsIncKxqQTboShkPtpKroBjurXDRdaqw/bIES+smgSum1dFbOY4Ova4LSqYoDDOEDdFVM24G2PV7XzY2DjS/NeCsWkyUEoOEx5n54ruu0lyBGGnJH3sgjr6c4dVeHve3HYebs0mlPIOq9LSNqYp8V0w5qxnNVvTvFSWGyTMP7GaygIZb0RxJRixj7zDpLvw/5DoSdUGPRK2OjYmIOV4X0Y43kTaUD90P+CIHHlejAAmpLdtINfm61x0WvKAGM4RSLbF69P0q2h/EhyXm8sGFQx4G4BuhW4ydM5ezGSUfgwRM7cXt4AZselA7Ro3j+rK5icvS9JgelnkqEwWi5yUN+lz2oCC/WEDu1+m8=
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR01MB7795.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(136003)(376002)(346002)(366004)(396003)(39850400004)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(26005)(55016003)(41300700001)(54906003)(38070700009)(64756008)(66446008)(316002)(66556008)(66476007)(6506007)(478600001)(9686003)(38100700002)(71200400001)(7696005)(122000001)(66946007)(8936002)(5660300002)(2906002)(76116006)(91956017)(86362001)(110136005)(8676002)(33656002)(4326008)(52536014)(32563001)(357404004);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?iso-8859-1?Q?QrX2HxqV6q6p8i8EUjOif9DuB2YMNBKCIdOFvVvS4fx9WbQv9CQN4JyEvP?=
- =?iso-8859-1?Q?vxrTn68rbFUpie0k3q23JaQiSv/wT4HhalIDPQD1fifuujh4njIOAmb/PN?=
- =?iso-8859-1?Q?0dHjtF80q6UgBXsfXZ2pyXxjxLp2RJZ+OL2RpE1vG0gQRGPPYYVSgQ7goD?=
- =?iso-8859-1?Q?mb/KKohbpWKRuSpuAsVdfVmFWNDxjEitmtZN0M/axB3qDBx2RmYDQyrWpW?=
- =?iso-8859-1?Q?18nD1oMC6tT/qsXB/DBhxpB/BbWRlvCyCM72cM0X+jDsSdUhZc+SkLUaBS?=
- =?iso-8859-1?Q?2QIFBsv/UuXky0cKXPcezD0p5GSzwXoX1dgWObSQbhFiGVMUe7cO7H/HB2?=
- =?iso-8859-1?Q?UImvqpBg57mOkupLJPZ/Z5VD1SKF9/vjkIAcbV8SjfYdW9jrThzMmaN99U?=
- =?iso-8859-1?Q?t6T8ZGn9yhqISSq0ACD2IglWDTf61X9i7uKaMi8naC7PzZW6n5hf9Qjgvn?=
- =?iso-8859-1?Q?hzsw/fqwkhhXTO5LxCLARNsKGgbNdCJjZSsHZmodMAaXFCDT9HZGc0iQ8j?=
- =?iso-8859-1?Q?Voyinal0GJor5tt+/HUTf9ZlCLYpyf8aSxRGx8UhrjQFtaChF6Xsb3aBXh?=
- =?iso-8859-1?Q?pK/BaYSpnxUjVlMOHdl+pwnqmTup3Bm/ZuZt7X8ELyLPfx2KaOr4N78NJI?=
- =?iso-8859-1?Q?0DbUeio2COPp6VNOzKWZvkoggRtWpkWM4wt/Un6bd7TPHHEcdP5QRq5y3R?=
- =?iso-8859-1?Q?o6uActNhLnhksaReqetAcvIckLiAr5pwc+1ysykTbqmTgTgI7WfX4BFaDj?=
- =?iso-8859-1?Q?1Tf1CYRvjG+vknKd0wfnFKJUpNJf0uLydipZlbTjS5/z/raJ5OLrc+SG4d?=
- =?iso-8859-1?Q?wyldTtSF2z4Odre7H1kM1EyxL+7dauWRTRYsainuU036ebOiz1DUcrE7fl?=
- =?iso-8859-1?Q?g+/ZGGzUcmR9+xawrnU8NYl4hvl6DbqY0gxxjIgT+WTujpYbJWFdRI+rIY?=
- =?iso-8859-1?Q?hPyFEbUi3dqTwCXcaW5fcTwKQYzV+UKN5UTDi9NIPffDyayyN9XnI/gw++?=
- =?iso-8859-1?Q?DM3MCLaoY4nAVMGKd8dpKdiy/oaOUbk4QNCfOdkf5T0oxPGUWMZaeBcfRQ?=
- =?iso-8859-1?Q?UkjhY2SnwNk1oYawsKWzUvrZTzha1VLi6plu+frL1OZhC+6O+d8ageQus8?=
- =?iso-8859-1?Q?BWllqlJ3BFjANcYc98zMVzENMsXmXGUzWZTUVirbFUpqHWdTBy2r3Pxvk/?=
- =?iso-8859-1?Q?TxP6JEHOSK/z5my4q1Bg2P5bZDSguYz2VhdVTBjhkO9pQW4i5uVfH5svnv?=
- =?iso-8859-1?Q?NM50CHzf1GtxnPh5SIKFdtgQUGGOFhxzLFMZQ4iuyHGC0jVb4LGSmg4ohV?=
- =?iso-8859-1?Q?nmeyAn647akAeEIRgY5tubOV2gUXHl/0ONul0c4bJYwxDN3hJmAXRMP2jk?=
- =?iso-8859-1?Q?dQD8Sz0KGVl74MCEORbNuItl4S9OuoWVDJRGXEY0xaw70rF/T/PcOW2qZf?=
- =?iso-8859-1?Q?6Dwyqp+tZ2Q1Oevlwrt9zalXMCbTznBsir2dVdBBNRHEhcsRNO5YXCD4hq?=
- =?iso-8859-1?Q?265/9qP3o1EE/cyjI35M4k6wo+ZBaByx4UHzZV4XokDUz2I7N5SMPIHuEH?=
- =?iso-8859-1?Q?NVW++HuuBEHu+FkKxyuQ6A6HHazSVcxKH6mGQyQ3PXjVbIB2LzeDiP57tq?=
- =?iso-8859-1?Q?QAE+4th8KB4tfBJ7dcGzaVgSs8aC2+SYodLkT3DRMqC37tOMoDb3foVVZA?=
- =?iso-8859-1?Q?k4X8UcYdS4JvwVOzKIo=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+X-Forwarded-Encrypted: i=0; AJvYcCW7NpIoj1nuyTbHJHNrUV1q1+a+ZoQR0ItTb3f/oQYUUZVrgXtgpm3dkNBK5rXiaKfVm8BWuAMykidDaVGuytEQcsOmVz3tGkXSERqR4dwFZKUnUCzV73xTpbE83xBeiETdeImZKHNIH6ea+u4r6lVOZSFjWhHnzVp9uavqI3sa+2ZzA94ITDsauWVt6gD9CopbZ0pS6h8LhBE5Dwaz1HFO7jCKyf0EdxrfYQVVBBXTB8ee/iZHtx2qomM0/TuuO8QrspDq/Ztpwq+MqHo2qezd/bng15nSGVZqYvQYNb3PR4834i+tTqsm9P4SoH4PR10YH7An0ikm/TzFFu6yR0qqV5bmi3WZQfTygoiUa09D1v4g56ixhODzhl3OFwHuZOldnZKzaOQb1NYUBew36RPn5udbwnYJERL4+FHQ39t0eyJeIjq1CjBMeHkCOHWQd8lT+ECKM0BwVOgobJZ+MO5BC5F2R9WAhzYWzVw2aVjP7OypX/LJmZaiDMyl0ONRtF1pOw87XGLmtR1qnmwragJTwVAL9leH5V+n5Hj9DZIajRpdJBR/tuUbXmRLdQVbxG/BikYO6RFDZmQUfLuSVk1Bzein4A9LnBD/jncArDmdsKk94Q0RnTT996Gohnki8u6WvdJauVFrxqB2gYoTqXswVn9p6XJufLoBtCnCRA8vzHJdfUufve46X8awnnSXqr7pHZSQidZcSh0sL/FJMrw3tHKBC0HlP3kNx6GDIV8ZjTXbOgpQmMeEyB9SHxJG1eMMmtY/tRdiGEOa5LOMzkbFsPv9twF4L0Lh6y0P8bJE6LrdA21AWQ++jemdxkcjh21HGKKozF9yNEwCCJfFBdJuJWHaaNpUTR/3r+OelPo8N6aCRzO+nFCvPhFDUUv2YLtNzDrJsouhblvhfhnRNVg/Y7K3plK+Wey+gm7jyw0hfg3kAbOIR/O1MWv7BcpJeKz1iG
+ bIYk94twoIFM6+aoGniZxwXfBzBiioRQSkd5j4D5FRUEeyW5f+BYSNn9Vi9A0R+u+gK0gf3uxfmLo4Z2yTaC1KSKjbsaIlxiCI+5DJCOceZnk14NZZKJVofGzfzzlNqczLaZOnw8uxrudRktM9ecWFOZvMZ6C6ZcgmvxCaqkQPYr9HzE9B7lXSZ++cy5whD3U0pdEQGuLpYZ9U17w4b22FnOeL/8OZLjS8br6ktHWkGqKhg6AKd+HxvzIpiZy2W/07Q20R/H2+tCBoNDKoNu4It9y5FrykveU=
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id u18-20020a5d4352000000b003392b1ebf5csm15989811wrr.59.2024.02.01.04.13.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Feb 2024 04:13:20 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id EDD6A5F7AF;
+	Thu,  1 Feb 2024 12:13:19 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  Michael Rolnik <mrolnik@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Laurent Vivier <lvivier@redhat.com>,
+  kvm@vger.kernel.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
+  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  Yanan Wang <wangyanan55@huawei.com>,
+  qemu-ppc@nongnu.org,  Weiwei Li <liwei1518@gmail.com>,
+  qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+  Peter Maydell
+ <peter.maydell@linaro.org>,  Alexandre Iooss <erdnaxe@crans.org>,  John
+ Snow <jsnow@redhat.com>,  Mahmoud Mandour <ma.mandourr@gmail.com>,  Wainer
+ dos Santos Moschetta <wainersm@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+  Alistair Francis <alistair.francis@wdc.com>,  David Woodhouse
+ <dwmw2@infradead.org>,  Cleber Rosa <crosa@redhat.com>,  Beraldo Leal
+ <bleal@redhat.com>,  Bin Meng <bin.meng@windriver.com>,  Nicholas Piggin
+ <npiggin@gmail.com>,  Aurelien Jarno <aurelien@aurel32.net>,  Daniel
+ Henrique Barboza <danielhb413@gmail.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Thomas Huth <thuth@redhat.com>,  David
+ Hildenbrand <david@redhat.com>,  qemu-riscv@nongnu.org,
+  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Song Gao
+ <gaosong@loongson.cn>,  Eduardo Habkost <eduardo@habkost.net>,  Brian Cain
+ <bcain@quicinc.com>,  Paul Durrant <paul@xen.org>
+Subject: Re: [PATCH v3 00/21] plugin updates (register access) for 9.0
+ (pre-PR?)
+In-Reply-To: <20240122145610.413836-1-alex.bennee@linaro.org> ("Alex
+ =?utf-8?Q?Benn=C3=A9e=22's?=
+	message of "Mon, 22 Jan 2024 14:55:49 +0000")
+References: <20240122145610.413836-1-alex.bennee@linaro.org>
+User-Agent: mu4e 1.11.27; emacs 29.1
+Date: Thu, 01 Feb 2024 12:13:19 +0000
+Message-ID: <871q9wmlgg.fsf@draig.linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL1PR01MB7795.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6bdd755f-73dc-4645-6182-08dc229d7b42
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2024 20:44:55.2864
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 6oY/KfUP2FgR7eV4EsNPSCErqi+olMvoa9RAn98/20JSUsBADMiajD0mMWOq+wRsXJMNAnSWZfYfJXxSt6xJnyePDbIMraRF+bvekOByaXo8UbpqUKGs3XUCSd5HSbF8
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR01MB7931
-X-TUID: +9mgRfedFdOq
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: tmTlr60hj0xd
 
-Using QEMU v8.2.0 (and also the HEAD of the git master branch), I=0A=
-encountered an unexpected situation: an ldff1b is returning 1 byte=0A=
-when I run with the QEMU user level plugin (and setting FFR as if=0A=
-there was a fault).=0A=
-=0A=
-However the ldff1b actually loads 16 bytes when: (a) I run this same=0A=
-test natively on a system with SVE support (no QEMU involved) or (b)=0A=
-when I run this test interactively (logged in to a console) in GDB=0A=
-running on the QEMU (with no plugin involved).=0A=
-=0A=
-I was wondering if this one-byte-per-ldff1b was a known/expected=0A=
-behavior with plugins?  I guess it is legal to only return one byte,=0A=
-but I was wondering why QEMU did this and if there was some way to get=0A=
-QEMU to return 16 bytes in the absence of faults (or as many bytes as=0A=
-it can up until the fault).=0A=
-=0A=
-There is *no* page boundary being crossed in the examples of interest,=0A=
-and no MMIO, so a partial data return is not expected. The page=0A=
-referenced is mapped and previously referenced.=0A=
-=0A=
-Talking to Alex Bennee, he pointed out:=0A=
-=0A=
-> I'm wondering if this is a result of the fix in 6d03226b422=0A=
-> (plugins: force slow path when plugins instrument memory ops). This=0A=
-> will always force the slow path which is where we instrument the=0A=
-> operation.=0A=
-=0A=
-I attempted to revert this commit locally and no longer got memop=0A=
-callbacks for any SVE load operations, first fault, nonfault or not=0A=
-"normal" predicated SVE operations. But I believe ldff1b are returning=0A=
-16 bytes (judging by the control flow).=0A=
-=0A=
-Our goal is to use QEMU for tracing with a home-grown plugin.  For our=0A=
-purposes, we were expecting to observe control flow like what we see=0A=
-on SVE-enabled hardware where ldff1b returns 16 bytes in the absence=0A=
-of faults.=0A=
-=0A=
-If necessary, I can provide a reproducer, that includes:=0A=
-  - a sve strcpy loop from one of Alex's talks.=0A=
-  - a simple user level plugin=0A=
-=0A=
-=0A=
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+
+> Akihiko requested the register support not be merged in its current
+> state so it's time for another round of review. I've made a few tweaks
+> to simplify the register and CPU tracking code in execlog and removed
+> some stale API functions. However from my point of view its ready to
+> merge.
+>
+> v3
+> --
+>   - split from testing bits (merged)
+>   - removed unused api funcs
+>   - keep CPUs in a GArray instead of doing by hand
+>
+> v2
+> --
+>
+>  - Review feedback for register API
+>  - readthedocs update
+>  - add expectation docs for plugins
+>
+> The following still need review:
+>
+>   contrib/plugins: extend execlog to track register changes
+>   gdbstub: expose api to find registers
+
+Gentle ping. I'm ready to merge but more review was requested:
+
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

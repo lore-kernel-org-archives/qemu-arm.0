@@ -1,205 +1,145 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp729423ejb;
-        Thu, 1 Feb 2024 22:52:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG6xYHxA4VQpSdw6XLg/5xCwPemr9AEsNS5yWci8Tag11PUCdTQ6Ie5XD9KtAdp5NtwIVFD
-X-Received: by 2002:ad4:5968:0:b0:68c:4f44:159d with SMTP id eq8-20020ad45968000000b0068c4f44159dmr7207609qvb.30.1706856752780;
-        Thu, 01 Feb 2024 22:52:32 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1706856752; cv=pass;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp774696ejb;
+        Fri, 2 Feb 2024 00:50:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFjmzIEJGvln0YesI9vNmcTy2gqBY8tLR1jIYspeudsLwv2CErrUtQ0kP0dmUOXDEEwS1bv
+X-Received: by 2002:a81:77d6:0:b0:5d3:9f2d:658c with SMTP id s205-20020a8177d6000000b005d39f2d658cmr6890353ywc.24.1706863799986;
+        Fri, 02 Feb 2024 00:49:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706863799; cv=none;
         d=google.com; s=arc-20160816;
-        b=QpJjV+NFLJxSffTRmO1mBkWCONPfedBKSupdC+UlYr9q22W7XRphpD5j6cr45Q7fLS
-         gtT3pfu9kiDSrPyRugNqfnAMcJyAzqTINcfe1UXlljpSxsc4mXKZIxocjTTYbBbCezul
-         vzZYnk+qhp5hzzkyMwvl8dCFFpAMa28yQ5KjayJeHw7OBjGd/3/tJu3jiANOT0H+eDz3
-         uyK5F9yUtpOozQHp59ZhnjYiZvsc2PhUwLZSgoTuQmf0E1emYU3+InPyFrH4hlgLa42Z
-         gobNQiEBpuc8txfEZyDPvhrKzRiygI9lxBxbjbQoNfXOGf4VT1QvMrXzv/oN6XMnvxkt
-         X6LQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=ORR0168QcM8aABhGOW2VEN4xm9ClP5GtjBpfGroEpGo=;
-        fh=7/4HlOZ+td8eSx/601VAy5MyQXRcahFAnwI29ichh7I=;
-        b=agNKFW2IpNqd1MW6JWR9aNcU7G+iHh1H2GEO1UWSs6Wet9oiC5nEWeNWGBKphD+Q1G
-         lNzCd6v+oXPXg6ODrhos5u72Nub1YWgxrmfMfj62bNsdG4u2g6UHklBltAJUW6mFfjOi
-         7wbZgBMyuXpl8ga9fqlIB+Arvqi5Cloof7rBhDV7jyVKpj0ad0t1eU8qgNPF0O8SXJZE
-         DR2nnxmkyl9+W3kVrsijv2oA0L+Rh9SB9IS9/2zjWOJfvDUCYdL/oX+iQaZwPQf+1FF2
-         aOoTYLl4qcqCMXIWOUDOe9fKZGfsOdRmTPvXo+kGHkAT3dYp+sKo5l/YaQiUxq1MgNmT
-         I6fw==;
+        b=CY+DNGeJrC9I5a8MiAJRKFNKKmii9Cs85EICSs47yRltktWfXPyG6Mivjd0ag5x+Bx
+         84POCWk7A9Ed89JV/Plyn53BRVmPeikj6l+TwHiRlk5FaMjSLecp+N4l86YGbMzn8vsL
+         EpC0aZ8gqW5NqqDo27CQmWKpUdIyGJmMBRY+9GTj4GJzG9qUVjvKv+FS7HT+RpRbPmCO
+         VgWJdKb8//I570fyrEwzR6ygjCFkAjsMQltyFvUvqNYDHhFZvRNcDQ8Umq/TnSUlLFI3
+         UFRQvTAY65/tZa5MPL649N8o5CCkqfb4ZFIbTxyTSGayh0CipzYFH9/Di4lKnaTvvJPG
+         OB+A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
+        fh=IbPVxdBQZy9bocRLDUxlRY9zTxiXdIcBMVGlkdB6fDc=;
+        b=CylQF+YF/PERJy9Hg4v2yd2LtrLqnfqXkJPXMzBis6pDq5xGBYAwYeixavdkqUtfRi
+         l6If/srvIh1ZT7yxdNYM7EF4QcEIlc48n8QCfTJaBU7LuSeWbHxVqqeCJ/27mIUVGZCr
+         yc/Klc7fQsmoJFzFPB1ZDCFauEPhQNcCoC43nNeP9AZgw67emNSrTU1Yx8Ndp2F6eOP7
+         tPjxKqOCuKkCGTMsTjALHiau4beLki4DgEWxyDTBTpc30ahh4TyciY/f71NvodIW3kSB
+         Loqb/i5bXLoNYLKRcVpAkeJN02Wg3UDeRfkPjFCEsTc0XHZXoTQGsgIV3n7LodhftZu2
+         PehA==;
         darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=IwaAR2tk;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyXoPAF3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-X-Forwarded-Encrypted: i=1; AJvYcCX88QKvUXw59V0wJb0pNBJAHyeABulutx2xBJGTqTA585L8HjK3JIMlYtTwFmP2PkLN/Li18hAcKPUh5x5LRXKu3WC7ePmB
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Forwarded-Encrypted: i=0; AJvYcCWu/2bxats6AZFHyCwzZqJT0mCtg8FNhbHu73X3H2Xfq0tpkEoKA3VWoVIB6zpfeOuVfVQdjp+6+7wQTUKUj2r0CJmT0h09
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20-20020a05620a109400b00783361132desi1328826qkk.632.2024.02.01.22.52.32
+        by mx.google.com with ESMTPS id t6-20020ac85886000000b0042bed440242si1488746qta.660.2024.02.02.00.49.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Feb 2024 22:52:32 -0800 (PST)
+        Fri, 02 Feb 2024 00:49:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=IwaAR2tk;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyXoPAF3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVnPD-0005nI-QV; Fri, 02 Feb 2024 01:52:07 -0500
+	id 1rVpEz-00015s-CR; Fri, 02 Feb 2024 03:49:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rVnPB-0005mn-Vr; Fri, 02 Feb 2024 01:52:06 -0500
-Received: from mgamail.intel.com ([192.198.163.17])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rVpEx-000155-G6
+ for qemu-arm@nongnu.org; Fri, 02 Feb 2024 03:49:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rVnP7-00040c-1v; Fri, 02 Feb 2024 01:52:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706856721; x=1738392721;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=xhezeetRjvgY+sfcGaOw6AsP7yVpeM3PU+rnnVkm5P8=;
- b=IwaAR2tkGABWKOyu2IM2N/BSvdkEjJoyuU7zJdHpe7/EIl9hISLUHw6z
- 1Nm1kF/Al5NxOyIRtoWcjMg/7uot2oOOI4bL0j2tt2QceevhEhKuOoA7j
- +YqKbqWDWiOa+NlbeglsRO/G7V2QVoPZnP1hIkDNEnY62hDYXsYuKeeyQ
- yRACe+Gs2SZB+MaNUEeqmqj0Xq1yZHXp0jSBSPcMOxAWWJIqria2MurXb
- 673evOsrcKvDDqC5bW/Vl2d7J7F2Ql2nNiarBQTTe4wz6uByvtyLY176L
- 93y0+HGCpVbNeFxZlG2lorGRlq1FOw6bsRFMumI+Hdv0Iado+PxdQrSTr w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10971"; a="10309"
-X-IronPort-AV: E=Sophos;i="6.05,237,1701158400"; 
-   d="scan'208";a="10309"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Feb 2024 22:51:59 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,237,1701158400"; 
-   d="scan'208";a="4587582"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa005.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 01 Feb 2024 22:51:59 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 1 Feb 2024 22:51:58 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 1 Feb 2024 22:51:57 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Thu, 1 Feb 2024 22:51:57 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Thu, 1 Feb 2024 22:51:57 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=R2rnk8jebpk/8c85t0lHzsCPqgDHEQOLStSk91xjM89pfEjc+hQ4ul9qEJpX1Yh86z2ywcabgEk3vCdaDmvLjO0cQkChz8XoFh0W6yuOtVdRe6dbgaJUimkTKQO0SXZCeJj4CcJFHfjDzP4YkmnAmzdR+hhDOLgspOnI61z8RRvw4HtPg/GhQdbYDezrNudz3Pug5RpUFkt/1zrRqm2zgSOD0hCEuYBGo3wztp1UtKFbt/hjirslhzG56eHoO0qYXCzZqOKvseI7lmjYnEb0DGv1qptUfEwxdQgrkQOOCpigE7pXuzykBx9oC/4GtKz+d0neyd9EuMUMGGOr8+aWEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ORR0168QcM8aABhGOW2VEN4xm9ClP5GtjBpfGroEpGo=;
- b=kWXS+dbxG7UMhkGvEgRQgUdI23lIVOPJ1I+PWOHxiXNGXS0JVd5mfADTT7ry3TqrpPjet58d6uWDBbt7eYwC0qMx7xobqUGIxPAb5gjh/hxbHa2ezAvE04YTF3YQMlAmfwZL96Qpq0zb8drslh5wucjcG4KxPAOQv56+/eq89xeIIOyEory9B5IH9WXDiP6B+cwQ7nbN77G9pZMzgMkFws5bZSp1HTARmI4WTcXC0Qez0DUa/eXy9pAfSrMPfSD2jRgXuSCFT2kftuzIbI9jbhiILwJgzscJT3JvKiztgjYlw6UCKYHiTjYugdgEkkhxzFh+rOzwzeVO35cPNsUYgw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
- by SN7PR11MB7044.namprd11.prod.outlook.com (2603:10b6:806:29b::5)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.29; Fri, 2 Feb
- 2024 06:51:55 +0000
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::d7ca:7979:6536:7ac3]) by SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::d7ca:7979:6536:7ac3%5]) with mapi id 15.20.7228.029; Fri, 2 Feb 2024
- 06:51:55 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "jean-philippe@linaro.org"
- <jean-philippe@linaro.org>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "yanghliu@redhat.com" <yanghliu@redhat.com>
-CC: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rVpEo-00034b-JH
+ for qemu-arm@nongnu.org; Fri, 02 Feb 2024 03:49:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1706863769;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
+ b=YyXoPAF3K3+JwYX+WR1OrntMZAS60gRjtPh/R4z+1OW7XHeEmFtwLYo8i40GZIiwKZNmTD
+ meupRqWs6hIfAEgAkGMlgfthbh9ZydiI0/dab0tEw47M8XXltlWP892YUoZH5XoxeOhWIJ
+ SvfCJwqN8oN4asbfRsOrHv/LkofTFDk=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-203-UvH2_uNMPeSfXb71d6ddMQ-1; Fri, 02 Feb 2024 03:49:27 -0500
+X-MC-Unique: UvH2_uNMPeSfXb71d6ddMQ-1
+Received: by mail-lf1-f69.google.com with SMTP id
+ 2adb3069b0e04-511393ca9efso156287e87.3
+ for <qemu-arm@nongnu.org>; Fri, 02 Feb 2024 00:49:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706863766; x=1707468566;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
+ b=AN9F7Sq4/1wSPvFWX3OLpvSudhJwpx9WCRhwu4XYPuNPq7x/VNWzbA2ngk6FPiXQwJ
+ sTVXxPt/Au86Bqjg7fkc5KC0vw/kS4hEvKaaLxxMZ/HLQOqCDIlhSSMbxq66UZfEK6/C
+ qVmaK3K/tcAyCv/Sg2K31JxTlvvL7aUbkzDJSqIN9XyYo8d4eF+gyVF3MSaYg84RNP2T
+ UkXYU6Stj0NoS71WkSZqdCnjwUuxNCEdLqZNvcz8ibPtLrW7/xrQahmJr+EMhs47PbGC
+ aWnENfyfW+asdXqxoNGBq9bPDI17hgPjxyqUw8DHHxlaGzc7wG5FMrcLmIwpEyk3jVnu
+ lqaQ==
+X-Gm-Message-State: AOJu0YwtmA2sdqVZdQ2JQdbZ4A7baILFHDZ2tL8OWjRe/LlFfa1yHOaz
+ YFJB4+v+JtBFHX8TBtWyySZYXf/vsgbGzRMGGhBuzw3ZQaUpeJpXn3PnaH7HJhdBvB00XCwWFc/
+ ac+BVs/YCexGUvEcrJdPxIO4BjWzlQoJzqsXI3CKhnniYvKoY3Q==
+X-Received: by 2002:a19:6912:0:b0:510:f55:fbf8 with SMTP id
+ e18-20020a196912000000b005100f55fbf8mr839678lfc.68.1706863766430; 
+ Fri, 02 Feb 2024 00:49:26 -0800 (PST)
+X-Received: by 2002:a19:6912:0:b0:510:f55:fbf8 with SMTP id
+ e18-20020a196912000000b005100f55fbf8mr839664lfc.68.1706863765991; 
+ Fri, 02 Feb 2024 00:49:25 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCXLjZiBG2E4wF/5dqDnlrgYu0lAQhR35MNKPK6JXtabl3vhVxyIFxhoLooNCO2vwhJBSrII6nMxgt2VOdJPGi0RL4TLKhEHYvPfSbPK9r08oMwnx+GayXQWUG/Awu/XQvtFxpYV1HrH4YbSwA50hq2JZQaTtwYkAMOyfaljCqlYZfU75wYkqHUz5wx9ch0m2uUiIMa1lKdcLdszk4p//yzX3gkJlbh/W2kqtYUTysVfVzHaQpjjDWGK+a/sL4TIaP/ffDed76Twke9uOlaWW8g74uYtt8Nwmc8h3Cy/Z5zt+yOKmGsv9NYSsPM5CJVBU/apP6+bQpmNVRsXnmAV1w==
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ a29-20020a056512021d00b005100ec1e3d2sm241586lfo.215.2024.02.02.00.49.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Feb 2024 00:49:25 -0800 (PST)
+Message-ID: <7ecef9bc-e263-447a-9883-49e17a7f3115@redhat.com>
+Date: Fri, 2 Feb 2024 09:49:23 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] hw: Set virtio-iommu aw-bits default value on
+ pc_q35_9.0 and arm virt
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "yanghliu@redhat.com" <yanghliu@redhat.com>
+Cc: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
  "jasowang@redhat.com" <jasowang@redhat.com>
-Subject: RE: [PATCH v2 3/3] hw: Set virtio-iommu aw-bits default value on
- pc_q35_9.0 and arm virt
-Thread-Topic: [PATCH v2 3/3] hw: Set virtio-iommu aw-bits default value on
- pc_q35_9.0 and arm virt
-Thread-Index: AQHaVSx0/jaTLU9t70OK/XVUd/iC9bD2nIQg
-Date: Fri, 2 Feb 2024 06:51:55 +0000
-Message-ID: <SJ0PR11MB67443F341958AD061E9A144D92422@SJ0PR11MB6744.namprd11.prod.outlook.com>
 References: <20240201163324.564525-1-eric.auger@redhat.com>
  <20240201163324.564525-4-eric.auger@redhat.com>
-In-Reply-To: <20240201163324.564525-4-eric.auger@redhat.com>
-Accept-Language: en-US
+ <SJ0PR11MB67443F341958AD061E9A144D92422@SJ0PR11MB6744.namprd11.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <SJ0PR11MB67443F341958AD061E9A144D92422@SJ0PR11MB6744.namprd11.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|SN7PR11MB7044:EE_
-x-ms-office365-filtering-correlation-id: 67386105-b93f-4a1a-615c-08dc23bb7197
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 0nHa8P8PHnKFYPEC0sN279GCEim0VrL8PdHaYHRTFvbr/7oowLSMLWxANBEcp1MwTKxADZmBFctgljGBrri6kN2OZecL68YldV9q2Naw4Fd6IC3frQuEn/3IuHdpTp94f3hj79/k9LOkghybYro9LhjLCBJq/tz3IzoLcEXx0QJvtBf32Sp9mPeFZzJyb6P1YXAgo0iHfOPzs9+hOqY6JFHbuSxjjPZ8mA/H27u5hJsABF9nxaOA/jncPtXsDcNtpnJ+nImFhbx5jSb2jW1FCCTZOxDXCiWmr4ltMPHyY5iPgT+Ob6mslJWgNBCtm39j3K6ENvlXVzQOOrLRjRUsygEOgRgD3qrRt/+XbEQX8FpzFMxgfZfoIHV/DUvx8eShBNFIa/2RMxCKCfErkil+LtKrD6YKZSR+fAkXMgxEhQ5OWUINay4N35UyNMO3FTDatm15qhTDhxnmtnr0Wj/Wq9WMMCMmyTbfbO10TMFbtWLNollSiwc4jscyIOjfp9DlhwIvSwRdWmaNIWKSltfSodGHH9M1f6RDTaAXE797lZIbVtVRsZt3TO8KdLxCS6EYO0exuMMb7Z+juoKUp9atdZTSLDCV6egXR6IyqoppSSZp4O3JBCO0HaF4GmybJs9B
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(39860400002)(346002)(396003)(376002)(366004)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(83380400001)(41300700001)(9686003)(26005)(38100700002)(122000001)(52536014)(8676002)(4326008)(5660300002)(8936002)(7416002)(2906002)(478600001)(316002)(76116006)(54906003)(71200400001)(64756008)(66446008)(66476007)(66556008)(6506007)(7696005)(66946007)(110136005)(38070700009)(86362001)(33656002)(82960400001)(55016003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7WLDhQhKBrkm7LbmOQzTCtMpXWHFI/TiG94mZZ48Z2QjnPR8qdJqsh93WWFI?=
- =?us-ascii?Q?LdZB+bgWSZN162sqlmBeVRTgAyA3fRNjQ/vaPT+itT9BWxFR6F7P3fBjR5an?=
- =?us-ascii?Q?spI61HS7hTpoxuNE8LBNtAm/1FzfllaI1xaJY31lyWyMFw+IbpcrL2daLoHP?=
- =?us-ascii?Q?ZlAoIjbm7/Y3Hj3xs9Cldm3kdnRhKUVBeCIoEB3j1iiDpc3sFAGenI6MA3Nf?=
- =?us-ascii?Q?rV302LQtySTcu15rfDho8d8UlwaYObbtbr8djeva+9ydKwtxjDwS8GzulITI?=
- =?us-ascii?Q?0rK+Cf8dwprzKAPhUgjv8kdRfypyrU+y5XxGXMBNghEvd8GS24jhPNPq7Kfi?=
- =?us-ascii?Q?bJaf0rvfoFRwrTp7woB63NELJn0kuP9upF+LiEic28DNZw351R1CKE8i7aZ4?=
- =?us-ascii?Q?7u0275JhO5Ky1LSIqvxqYr/pW99Rn77oJaijPbhiC3+rbzbySGjcxiOSNZQs?=
- =?us-ascii?Q?wHJjL2V0vuDjOx9F4gKt0SX6q2qrt6HlkdzYc5uTL6Gv6c5Ikr8mIGOfOaWJ?=
- =?us-ascii?Q?oAkKsjwkKBZca9SMQL7gkXSa3UoAyavqYU29nz2OzsWHckfK/0qytEbwF6bq?=
- =?us-ascii?Q?fd3FIQUR1PKnhE78vygWXlq0bKMO/cMqe9d2FX9TjVwBsT/jvfMxE3vK84/U?=
- =?us-ascii?Q?WnVISkk3KPTLiAqQYIucwrY3QyPwLAUPoYPMfKktXMA7uMItExw/5j8+eHCS?=
- =?us-ascii?Q?rht4fpSyKEwGyCjkJ8IYq1J7QWUH6EBCsxWYyggD6tVIaeZ8ofBnykGJXEk1?=
- =?us-ascii?Q?L6osYaetfmbbVOVpVXixmk5n9Xf+jRomrp0T4LVa18X1G7gc4pzcaQy2+LqB?=
- =?us-ascii?Q?8QV9TBMFgaoext29DMy2qWC/ghzgqFJRpw0coHARXNPSSXex2YELUxNB5A9E?=
- =?us-ascii?Q?gmtQ0eQk9NLVCSDFddX/mEvPH1eC3SzJtCv7hWbbzJC9Wv3rFyKsS44bhbUc?=
- =?us-ascii?Q?gdCevJ5pai98j6EBrf/0BZ+2twB5lyC256xyZ5f/1xxhvlVpJnk1C+mwBIsg?=
- =?us-ascii?Q?P1Q0w//v6HcQtFZBHR0wDW5fEDHT6B2WLJ5bh1RSfMVURRuhUNXp0nulROAe?=
- =?us-ascii?Q?4k/beSKFP/eQhj8WgitPMa/rYURcWrBoXPiT09QWTuGSo4EwSGAHVAtn+wsc?=
- =?us-ascii?Q?7tYiiQ1a5LqNohRFSwdYkbQzJ84Z4L7U7nvQG+XnRpl1hxVuW5oCNzvNEBc8?=
- =?us-ascii?Q?EY7Ik7hc3HHRhmCEVc1h46wNvCMT8PhUeXZ5N7wwCJOZQ+6LjEpwGcp51MA4?=
- =?us-ascii?Q?jA6fhyNE43cqxN24DEUkzF5iglTCey6tH4ZmTnlTVIbwwLUkGMs4GC4HCZvs?=
- =?us-ascii?Q?iRI8uZn15ou6zrs1wmPTZkQJJ70WJXffaR5/p3a0seoWwfl+voz1BYTwCRVr?=
- =?us-ascii?Q?CbR03GUx9q91/iyCSzelbL7iwQ3TRDxDCb+Oa7TguebfdU0mLBrX5ukaR9hr?=
- =?us-ascii?Q?3kbWHroVcJ2jN+yz+PQtG67W6XwwNg9i3JkwRwAi7wS+4L4ogLrQ5de9vH5d?=
- =?us-ascii?Q?StGT/n3BRWz4NAPImWVOYnKwzVIDenSR5dLs9bg/nQENEfh1i+/Uiw1eLNKD?=
- =?us-ascii?Q?3/FPdFISM2pnbe+3IrIEXErXCbTXE1a7HHzmBBkk?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 67386105-b93f-4a1a-615c-08dc23bb7197
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2024 06:51:55.0953 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: UFz8DmwxQSJHvs3IpiHYmJjlai02iXDLq+6IvxQzSsBeQpOWexAMoqksfwPUD8pTM6TqQgZoVEScqM/DW/cImwpVivtkvfK7rkeX3pLbAAc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7044
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.198.163.17;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -212,136 +152,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ji5YYe3sqysI
+X-TUID: U8n9MHvQT2Xa
 
-Hi Eric,
+Hi Zhenzhong,
 
->-----Original Message-----
->From: Eric Auger <eric.auger@redhat.com>
->pc_q35_9.0 and arm virt
+On 2/2/24 07:51, Duan, Zhenzhong wrote:
+> Hi Eric,
 >
->Currently the default input range can extend to 64 bits. On x86,
->when the virtio-iommu protects vfio devices, the physical iommu
->may support only 39 bits. Let's set the default to 39, as done
->for the intel-iommu. On ARM we set 48b as a default (matching
->SMMUv3 SMMU_IDR5.VAX =3D=3D 0).
->
->We use hw_compat_8_2 to handle the compatibility for machines
->before 9.0 which used to have a virtio-iommu default input range
->of 64 bits.
->
->Of course if aw-bits is set from the command line, the default
->is overriden.
->
->Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
->---
->
->v1 -> v2:
->- set aw-bits to 48b on ARM
->- use hw_compat_8_2 to handle the compat for older machines
->  which used 64b as a default
->---
-> hw/arm/virt.c            | 6 ++++++
-> hw/core/machine.c        | 5 ++++-
-> hw/i386/pc.c             | 6 ++++++
-> hw/virtio/virtio-iommu.c | 2 +-
-> 4 files changed, 17 insertions(+), 2 deletions(-)
->
->diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->index e6ead2c5c8..56539f2fc5 100644
->--- a/hw/arm/virt.c
->+++ b/hw/arm/virt.c
->@@ -2718,10 +2718,16 @@ static void
->virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
->errp);
->     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->+        uint8_t aw_bits =3D object_property_get_uint(OBJECT(dev),
->+                                                   "aw-bits", NULL);
->         hwaddr db_start =3D 0, db_end =3D 0;
->         QList *reserved_regions;
->         char *resv_prop_str;
->
->+        if (!aw_bits) {
->+            qdev_prop_set_uint8(dev, "aw-bits", 48);
->+        }
->+
->         if (vms->iommu !=3D VIRT_IOMMU_NONE) {
->             error_setg(errp, "virt machine does not support multiple IOMM=
-Us");
->             return;
->diff --git a/hw/core/machine.c b/hw/core/machine.c
->index fb5afdcae4..70ac96954c 100644
->--- a/hw/core/machine.c
->+++ b/hw/core/machine.c
->@@ -30,9 +30,12 @@
-> #include "exec/confidential-guest-support.h"
-> #include "hw/virtio/virtio-pci.h"
-> #include "hw/virtio/virtio-net.h"
->+#include "hw/virtio/virtio-iommu.h"
-> #include "audio/audio.h"
->
->-GlobalProperty hw_compat_8_2[] =3D {};
->+GlobalProperty hw_compat_8_2[] =3D {
->+    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
->+};
-> const size_t hw_compat_8_2_len =3D G_N_ELEMENTS(hw_compat_8_2);
->
-> GlobalProperty hw_compat_8_1[] =3D {
->diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->index 803244e5cc..0e2bcb4840 100644
->--- a/hw/i386/pc.c
->+++ b/hw/i386/pc.c
->@@ -1458,6 +1458,8 @@ static void
->pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
->errp);
->     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->+        uint8_t aw_bits =3D object_property_get_uint(OBJECT(dev),
->+                                                   "aw-bits", NULL);
->         /* Declare the APIC range as the reserved MSI region */
->         char *resv_prop_str =3D g_strdup_printf("0xfee00000:0xfeefffff:%d=
-",
->                                               VIRTIO_IOMMU_RESV_MEM_T_MSI=
-);
->@@ -1466,6 +1468,10 @@ static void
->pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->         qlist_append_str(reserved_regions, resv_prop_str);
->         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
->
->+        if (!aw_bits) {
->+            qdev_prop_set_uint8(dev, "aw-bits", 39);
->+        }
->+
->         g_free(resv_prop_str);
->     }
->
->diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->index 7870bdbeee..c468e9b13b 100644
->--- a/hw/virtio/virtio-iommu.c
->+++ b/hw/virtio/virtio-iommu.c
->@@ -1529,7 +1529,7 @@ static Property virtio_iommu_properties[] =3D {
->     DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
->                      TYPE_PCI_BUS, PCIBus *),
->     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
->-    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
->+    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 0),
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> pc_q35_9.0 and arm virt
+>>
+>> Currently the default input range can extend to 64 bits. On x86,
+>> when the virtio-iommu protects vfio devices, the physical iommu
+>> may support only 39 bits. Let's set the default to 39, as done
+>> for the intel-iommu. On ARM we set 48b as a default (matching
+>> SMMUv3 SMMU_IDR5.VAX == 0).
+>>
+>> We use hw_compat_8_2 to handle the compatibility for machines
+>> before 9.0 which used to have a virtio-iommu default input range
+>> of 64 bits.
+>>
+>> Of course if aw-bits is set from the command line, the default
+>> is overriden.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v1 -> v2:
+>> - set aw-bits to 48b on ARM
+>> - use hw_compat_8_2 to handle the compat for older machines
+>>  which used 64b as a default
+>> ---
+>> hw/arm/virt.c            | 6 ++++++
+>> hw/core/machine.c        | 5 ++++-
+>> hw/i386/pc.c             | 6 ++++++
+>> hw/virtio/virtio-iommu.c | 2 +-
+>> 4 files changed, 17 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index e6ead2c5c8..56539f2fc5 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2718,10 +2718,16 @@ static void
+>> virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+>>         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
+>> errp);
+>>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+>> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
+>> +                                                   "aw-bits", NULL);
+>>         hwaddr db_start = 0, db_end = 0;
+>>         QList *reserved_regions;
+>>         char *resv_prop_str;
+>>
+>> +        if (!aw_bits) {
+>> +            qdev_prop_set_uint8(dev, "aw-bits", 48);
+>> +        }
+>> +
+>>         if (vms->iommu != VIRT_IOMMU_NONE) {
+>>             error_setg(errp, "virt machine does not support multiple IOMMUs");
+>>             return;
+>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>> index fb5afdcae4..70ac96954c 100644
+>> --- a/hw/core/machine.c
+>> +++ b/hw/core/machine.c
+>> @@ -30,9 +30,12 @@
+>> #include "exec/confidential-guest-support.h"
+>> #include "hw/virtio/virtio-pci.h"
+>> #include "hw/virtio/virtio-net.h"
+>> +#include "hw/virtio/virtio-iommu.h"
+>> #include "audio/audio.h"
+>>
+>> -GlobalProperty hw_compat_8_2[] = {};
+>> +GlobalProperty hw_compat_8_2[] = {
+>> +    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
+>> +};
+>> const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
+>>
+>> GlobalProperty hw_compat_8_1[] = {
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 803244e5cc..0e2bcb4840 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -1458,6 +1458,8 @@ static void
+>> pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+>>         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
+>> errp);
+>>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+>> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
+>> +                                                   "aw-bits", NULL);
+>>         /* Declare the APIC range as the reserved MSI region */
+>>         char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
+>>                                               VIRTIO_IOMMU_RESV_MEM_T_MSI);
+>> @@ -1466,6 +1468,10 @@ static void
+>> pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>>         qlist_append_str(reserved_regions, resv_prop_str);
+>>         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
+>>
+>> +        if (!aw_bits) {
+>> +            qdev_prop_set_uint8(dev, "aw-bits", 39);
+>> +        }
+>> +
+>>         g_free(resv_prop_str);
+>>     }
+>>
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index 7870bdbeee..c468e9b13b 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -1529,7 +1529,7 @@ static Property virtio_iommu_properties[] = {
+>>     DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
+>>                      TYPE_PCI_BUS, PCIBus *),
+>>     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+>> -    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
+>> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 0),
+> Not clear if virtio-iommu support other archs besides x86 and arm.
+> It looks on those archs, aw_bits is default 0 on machine 9.0 above
+> and will fails the check in realize?
 
-Not clear if virtio-iommu support other archs besides x86 and arm.
-It looks on those archs, aw_bits is default 0 on machine 9.0 above
-and will fails the check in realize?
+At the moment the virtio-iommu only is supported along with q35 and
+arm-virt.
+Only those machines set the reserved-regions prop and the aw-bits, which
+are both requested for a correct behavior.
 
-Thanks
-Zhenzhong
+Thank you for the review!
 
->     DEFINE_PROP_END_OF_LIST(),
-> };
+Eric
+
 >
->--
->2.41.0
+> Thanks
+> Zhenzhong
+>
+>>     DEFINE_PROP_END_OF_LIST(),
+>> };
+>>
+>> --
+>> 2.41.0
 

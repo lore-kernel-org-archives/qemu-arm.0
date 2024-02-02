@@ -1,145 +1,97 @@
-Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp774696ejb;
-        Fri, 2 Feb 2024 00:50:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFjmzIEJGvln0YesI9vNmcTy2gqBY8tLR1jIYspeudsLwv2CErrUtQ0kP0dmUOXDEEwS1bv
-X-Received: by 2002:a81:77d6:0:b0:5d3:9f2d:658c with SMTP id s205-20020a8177d6000000b005d39f2d658cmr6890353ywc.24.1706863799986;
-        Fri, 02 Feb 2024 00:49:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706863799; cv=none;
+Received: by 2002:a17:907:7006:b0:a35:eedd:80b0 with SMTP id wr6csp1057423ejb;
+        Fri, 2 Feb 2024 09:31:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG+BlEPTWYWuEBngjh4dOuzHESHaAwomjxlQZkv/QOniyAnoyz04TjbZften3i8KDL7QsiV
+X-Received: by 2002:a05:6214:aca:b0:68c:36bf:29f1 with SMTP id g10-20020a0562140aca00b0068c36bf29f1mr7644811qvi.12.1706895081516;
+        Fri, 02 Feb 2024 09:31:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1706895081; cv=none;
         d=google.com; s=arc-20160816;
-        b=CY+DNGeJrC9I5a8MiAJRKFNKKmii9Cs85EICSs47yRltktWfXPyG6Mivjd0ag5x+Bx
-         84POCWk7A9Ed89JV/Plyn53BRVmPeikj6l+TwHiRlk5FaMjSLecp+N4l86YGbMzn8vsL
-         EpC0aZ8gqW5NqqDo27CQmWKpUdIyGJmMBRY+9GTj4GJzG9qUVjvKv+FS7HT+RpRbPmCO
-         VgWJdKb8//I570fyrEwzR6ygjCFkAjsMQltyFvUvqNYDHhFZvRNcDQ8Umq/TnSUlLFI3
-         UFRQvTAY65/tZa5MPL649N8o5CCkqfb4ZFIbTxyTSGayh0CipzYFH9/Di4lKnaTvvJPG
-         OB+A==
+        b=hQQoD2A16kDF0DFv0LMk5N7/wvadQGvgF5Vexdyma0Xbv7rDKQEPMg2qW/5OVWRu3f
+         qmIQABc7IpaD6FxG7zjltKHw6AOV8RXqXyGyKP2vC7Q6HbehweJrm1kAvpLDgfiUaUXK
+         hq9rSGhc2vgX+8wODRVQjXJySDqzjDc2ZoLmHL1yUFwibHoUuv4hLrDBCDhojZkReETh
+         IR3qWEKXxqXsx+TqXrMiQ0JyAgt0kr7uFINPzqWGEoHzwiv0i73rXOwtvyQuvexSOHxG
+         pLy6u8wJETHKV95hU5+PHbPyvJmEnUz21EEpLoLnO+6G+Bc0wHtAqiw6/5NDejUDRcpV
+         A62Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
-        fh=IbPVxdBQZy9bocRLDUxlRY9zTxiXdIcBMVGlkdB6fDc=;
-        b=CylQF+YF/PERJy9Hg4v2yd2LtrLqnfqXkJPXMzBis6pDq5xGBYAwYeixavdkqUtfRi
-         l6If/srvIh1ZT7yxdNYM7EF4QcEIlc48n8QCfTJaBU7LuSeWbHxVqqeCJ/27mIUVGZCr
-         yc/Klc7fQsmoJFzFPB1ZDCFauEPhQNcCoC43nNeP9AZgw67emNSrTU1Yx8Ndp2F6eOP7
-         tPjxKqOCuKkCGTMsTjALHiau4beLki4DgEWxyDTBTpc30ahh4TyciY/f71NvodIW3kSB
-         Loqb/i5bXLoNYLKRcVpAkeJN02Wg3UDeRfkPjFCEsTc0XHZXoTQGsgIV3n7LodhftZu2
-         PehA==;
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=tDdcJL3OxbOGX1sXxP9ZaYAtmpHb7W3q2P8XK2fGEy4=;
+        fh=1sjzkcs2IgZu4YGuOqSBoigtIHO4idZmjrHafbJsepg=;
+        b=DkZvzKCntDC9eCLMdR9QFievkcbJD80SP+vzz2TDi/Ncc268ccRBzF5+IyLSqwVokn
+         /eXWhnck02XCeYaxGtzr3T5+AQ5CXHiQDwCr2wcCOJqOMK9F0l3GWgz4X+xOSks+Payy
+         feccTKyXY2UdY8NZKtZkMp8UaVwyt+tG50VSNUY0O+JJP1WMVT1bul2BIKE0E7js73ie
+         NjxV3l5Wot+j7iFyMoiWIsBSYRyEkJEirqLlwWVQQk5c7t6vwiJ/I0Vt7E2zn5iNwVWr
+         GxQsN02J2q9BF4lSC+OANlvwCUsoRPOkaBszletdi36rRDbSNGmfAjHW6U/uCb6Ho7uX
+         nImw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyXoPAF3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=0; AJvYcCWu/2bxats6AZFHyCwzZqJT0mCtg8FNhbHu73X3H2Xfq0tpkEoKA3VWoVIB6zpfeOuVfVQdjp+6+7wQTUKUj2r0CJmT0h09
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+X-Forwarded-Encrypted: i=0; AJvYcCV4W7A9pGETQK3rqU5BNQ2WJg2WBTSzyM3mfdNB3OJqxcTmuFfRThb02B6oVB9bSTZEhErnWEic94scfzz32vI1x0U6RH1o
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6-20020ac85886000000b0042bed440242si1488746qta.660.2024.02.02.00.49.59
+        by mx.google.com with ESMTPS id w7-20020a0cf707000000b0068c79038276si2452424qvn.1.2024.02.02.09.31.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Feb 2024 00:49:59 -0800 (PST)
+        Fri, 02 Feb 2024 09:31:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyXoPAF3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rVpEz-00015s-CR; Fri, 02 Feb 2024 03:49:41 -0500
+	id 1rVxNZ-0001l3-0s; Fri, 02 Feb 2024 12:31:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rVpEx-000155-G6
- for qemu-arm@nongnu.org; Fri, 02 Feb 2024 03:49:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rVxNT-0001kg-66; Fri, 02 Feb 2024 12:31:01 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rVpEo-00034b-JH
- for qemu-arm@nongnu.org; Fri, 02 Feb 2024 03:49:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706863769;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
- b=YyXoPAF3K3+JwYX+WR1OrntMZAS60gRjtPh/R4z+1OW7XHeEmFtwLYo8i40GZIiwKZNmTD
- meupRqWs6hIfAEgAkGMlgfthbh9ZydiI0/dab0tEw47M8XXltlWP892YUoZH5XoxeOhWIJ
- SvfCJwqN8oN4asbfRsOrHv/LkofTFDk=
-Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
- [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-203-UvH2_uNMPeSfXb71d6ddMQ-1; Fri, 02 Feb 2024 03:49:27 -0500
-X-MC-Unique: UvH2_uNMPeSfXb71d6ddMQ-1
-Received: by mail-lf1-f69.google.com with SMTP id
- 2adb3069b0e04-511393ca9efso156287e87.3
- for <qemu-arm@nongnu.org>; Fri, 02 Feb 2024 00:49:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706863766; x=1707468566;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=lomaNRfIeKNH8mTcILDlIKpT2UG2+kWf+qWtwQ53gAk=;
- b=AN9F7Sq4/1wSPvFWX3OLpvSudhJwpx9WCRhwu4XYPuNPq7x/VNWzbA2ngk6FPiXQwJ
- sTVXxPt/Au86Bqjg7fkc5KC0vw/kS4hEvKaaLxxMZ/HLQOqCDIlhSSMbxq66UZfEK6/C
- qVmaK3K/tcAyCv/Sg2K31JxTlvvL7aUbkzDJSqIN9XyYo8d4eF+gyVF3MSaYg84RNP2T
- UkXYU6Stj0NoS71WkSZqdCnjwUuxNCEdLqZNvcz8ibPtLrW7/xrQahmJr+EMhs47PbGC
- aWnENfyfW+asdXqxoNGBq9bPDI17hgPjxyqUw8DHHxlaGzc7wG5FMrcLmIwpEyk3jVnu
- lqaQ==
-X-Gm-Message-State: AOJu0YwtmA2sdqVZdQ2JQdbZ4A7baILFHDZ2tL8OWjRe/LlFfa1yHOaz
- YFJB4+v+JtBFHX8TBtWyySZYXf/vsgbGzRMGGhBuzw3ZQaUpeJpXn3PnaH7HJhdBvB00XCwWFc/
- ac+BVs/YCexGUvEcrJdPxIO4BjWzlQoJzqsXI3CKhnniYvKoY3Q==
-X-Received: by 2002:a19:6912:0:b0:510:f55:fbf8 with SMTP id
- e18-20020a196912000000b005100f55fbf8mr839678lfc.68.1706863766430; 
- Fri, 02 Feb 2024 00:49:26 -0800 (PST)
-X-Received: by 2002:a19:6912:0:b0:510:f55:fbf8 with SMTP id
- e18-20020a196912000000b005100f55fbf8mr839664lfc.68.1706863765991; 
- Fri, 02 Feb 2024 00:49:25 -0800 (PST)
-X-Forwarded-Encrypted: i=0;
- AJvYcCXLjZiBG2E4wF/5dqDnlrgYu0lAQhR35MNKPK6JXtabl3vhVxyIFxhoLooNCO2vwhJBSrII6nMxgt2VOdJPGi0RL4TLKhEHYvPfSbPK9r08oMwnx+GayXQWUG/Awu/XQvtFxpYV1HrH4YbSwA50hq2JZQaTtwYkAMOyfaljCqlYZfU75wYkqHUz5wx9ch0m2uUiIMa1lKdcLdszk4p//yzX3gkJlbh/W2kqtYUTysVfVzHaQpjjDWGK+a/sL4TIaP/ffDed76Twke9uOlaWW8g74uYtt8Nwmc8h3Cy/Z5zt+yOKmGsv9NYSsPM5CJVBU/apP6+bQpmNVRsXnmAV1w==
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a29-20020a056512021d00b005100ec1e3d2sm241586lfo.215.2024.02.02.00.49.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Feb 2024 00:49:25 -0800 (PST)
-Message-ID: <7ecef9bc-e263-447a-9883-49e17a7f3115@redhat.com>
-Date: Fri, 2 Feb 2024 09:49:23 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rVxNQ-0007p6-Ig; Fri, 02 Feb 2024 12:30:58 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TRN5F4lDlz6K647;
+ Sat,  3 Feb 2024 01:27:45 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id BC1471400D4;
+ Sat,  3 Feb 2024 01:30:48 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Fri, 2 Feb
+ 2024 17:30:48 +0000
+Date: Fri, 2 Feb 2024 17:30:47 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Sia Jee Heng <jeeheng.sia@starfivetech.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <qemu-riscv@nongnu.org>, <mst@redhat.com>,
+ <imammedo@redhat.com>, <anisinha@redhat.com>, <shannon.zhaosl@gmail.com>,
+ <sunilvl@ventanamicro.com>, <palmer@dabbelt.com>, <alistair.francis@wdc.com>, 
+ <bin.meng@windriver.com>, <liwei1518@gmail.com>, <dbarboza@ventanamicro.com>, 
+ <zhiwei_liu@linux.alibaba.com>
+Subject: Re: [RFC v1 3/3] hw/arm/virt-acpi-build.c: Enable CPU cache topology
+Message-ID: <20240202173047.000053e9@Huawei.com>
+In-Reply-To: <CAFEAcA80VjwM=uKEXfwtg9SVzX947of1Go2c0ph-r0DeyKbpMA@mail.gmail.com>
+References: <20240129081423.116615-1-jeeheng.sia@starfivetech.com>
+ <20240129081423.116615-4-jeeheng.sia@starfivetech.com>
+ <20240129110823.000076df@Huawei.com>
+ <CAFEAcA80VjwM=uKEXfwtg9SVzX947of1Go2c0ph-r0DeyKbpMA@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] hw: Set virtio-iommu aw-bits default value on
- pc_q35_9.0 and arm virt
-To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "yanghliu@redhat.com" <yanghliu@redhat.com>
-Cc: "mst@redhat.com" <mst@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>
-References: <20240201163324.564525-1-eric.auger@redhat.com>
- <20240201163324.564525-4-eric.auger@redhat.com>
- <SJ0PR11MB67443F341958AD061E9A144D92422@SJ0PR11MB6744.namprd11.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <SJ0PR11MB67443F341958AD061E9A144D92422@SJ0PR11MB6744.namprd11.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,146 +104,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U8n9MHvQT2Xa
+X-TUID: zdill2KBpbpL
 
-Hi Zhenzhong,
+On Thu, 1 Feb 2024 16:06:55 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-On 2/2/24 07:51, Duan, Zhenzhong wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> pc_q35_9.0 and arm virt
->>
->> Currently the default input range can extend to 64 bits. On x86,
->> when the virtio-iommu protects vfio devices, the physical iommu
->> may support only 39 bits. Let's set the default to 39, as done
->> for the intel-iommu. On ARM we set 48b as a default (matching
->> SMMUv3 SMMU_IDR5.VAX == 0).
->>
->> We use hw_compat_8_2 to handle the compatibility for machines
->> before 9.0 which used to have a virtio-iommu default input range
->> of 64 bits.
->>
->> Of course if aw-bits is set from the command line, the default
->> is overriden.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v1 -> v2:
->> - set aw-bits to 48b on ARM
->> - use hw_compat_8_2 to handle the compat for older machines
->>  which used 64b as a default
->> ---
->> hw/arm/virt.c            | 6 ++++++
->> hw/core/machine.c        | 5 ++++-
->> hw/i386/pc.c             | 6 ++++++
->> hw/virtio/virtio-iommu.c | 2 +-
->> 4 files changed, 17 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index e6ead2c5c8..56539f2fc5 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2718,10 +2718,16 @@ static void
->> virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->>         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
->> errp);
->>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
->> +                                                   "aw-bits", NULL);
->>         hwaddr db_start = 0, db_end = 0;
->>         QList *reserved_regions;
->>         char *resv_prop_str;
->>
->> +        if (!aw_bits) {
->> +            qdev_prop_set_uint8(dev, "aw-bits", 48);
->> +        }
->> +
->>         if (vms->iommu != VIRT_IOMMU_NONE) {
->>             error_setg(errp, "virt machine does not support multiple IOMMUs");
->>             return;
->> diff --git a/hw/core/machine.c b/hw/core/machine.c
->> index fb5afdcae4..70ac96954c 100644
->> --- a/hw/core/machine.c
->> +++ b/hw/core/machine.c
->> @@ -30,9 +30,12 @@
->> #include "exec/confidential-guest-support.h"
->> #include "hw/virtio/virtio-pci.h"
->> #include "hw/virtio/virtio-net.h"
->> +#include "hw/virtio/virtio-iommu.h"
->> #include "audio/audio.h"
->>
->> -GlobalProperty hw_compat_8_2[] = {};
->> +GlobalProperty hw_compat_8_2[] = {
->> +    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
->> +};
->> const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
->>
->> GlobalProperty hw_compat_8_1[] = {
->> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->> index 803244e5cc..0e2bcb4840 100644
->> --- a/hw/i386/pc.c
->> +++ b/hw/i386/pc.c
->> @@ -1458,6 +1458,8 @@ static void
->> pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->>         virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
->> errp);
->>     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
->> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
->> +                                                   "aw-bits", NULL);
->>         /* Declare the APIC range as the reserved MSI region */
->>         char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
->>                                               VIRTIO_IOMMU_RESV_MEM_T_MSI);
->> @@ -1466,6 +1468,10 @@ static void
->> pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->>         qlist_append_str(reserved_regions, resv_prop_str);
->>         qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
->>
->> +        if (!aw_bits) {
->> +            qdev_prop_set_uint8(dev, "aw-bits", 39);
->> +        }
->> +
->>         g_free(resv_prop_str);
->>     }
->>
->> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index 7870bdbeee..c468e9b13b 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -1529,7 +1529,7 @@ static Property virtio_iommu_properties[] = {
->>     DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
->>                      TYPE_PCI_BUS, PCIBus *),
->>     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
->> -    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
->> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 0),
-> Not clear if virtio-iommu support other archs besides x86 and arm.
-> It looks on those archs, aw_bits is default 0 on machine 9.0 above
-> and will fails the check in realize?
+> On Mon, 29 Jan 2024 at 11:08, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > On Mon, 29 Jan 2024 00:14:23 -0800
+> > Sia Jee Heng <jeeheng.sia@starfivetech.com> wrote:
+> >  
+> > > Introduced a 3-layer cache for the ARM virtual machine.
+> > >
+> > > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>  
+> >
+> > There are a bunch of CPU registers that also need updating to reflect the
+> > described cache.
+> > https://lore.kernel.org/qemu-devel/20230808115713.2613-3-Jonathan.Cameron@huawei.com/
+> > It's called HACK for a reason ;)
+> > But there is some discussion about this issue in the thread.
+> >
+> > The l1 etc also needs to reflect the CPU model.  This stuff needs to match.
+> > Wrong information being passed to a VM is probably worse than no information.  
+> 
+> Yes. The ACPI table information, if we provide it, should be
+> being generated from the CPU cache ID registers.
 
-At the moment the virtio-iommu only is supported along with q35 and
-arm-virt.
-Only those machines set the reserved-regions prop and the aw-bits, which
-are both requested for a correct behavior.
+That + some additional information I think.
 
-Thank you for the review!
+> 
+> But I'm a bit confused about why the ACPI table has the cache
+> topology in it -- can't the guest read the cache ID registers
+> and figure it out for itself?
 
-Eric
+That's a philosophy question for the ARM architects :)
 
->
-> Thanks
-> Zhenzhong
->
->>     DEFINE_PROP_END_OF_LIST(),
->> };
->>
->> --
->> 2.41.0
+The registers focus on correctness (so what you need to flush etc,
+where the point of coherence is and other fun)
+not all the info needed for performance tuning. There is some stuff
+on the cache type that I guess is more perf tuning related (sets etc)
+
+
+They probably could have expanded the CPU registers to provide a lot
+more information (which is what x86 effectively does). IIRC what is
+there today for ARM is pretty much useless for anything placement
+decision related (scheduling etc)  You can't tell what shares a cache
+(or more fun cluster topology structures). 
+
+It is hard in registers to define a nice flexible graph where
+all sorts of fun topology of the system can be described.
+PPTT provides that opportunity for a richer description.
+Sure you could squirt out the equivalent table via registers,
+but what's the point given we have firmware tables for this
+sort of thing..
+
+Jonathan
+
+
+ 
+
+> 
+> thanks
+> -- PMM
 

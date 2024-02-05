@@ -1,170 +1,122 @@
-Received: by 2002:a05:7022:1187:b0:73:d412:d72c with SMTP id ov7csp2386866dlb;
-        Mon, 5 Feb 2024 01:39:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEiufHTZGnPKhmApHu8a6/0TVCXw2aCnH7JQcPlHb59g5/cWf7uSkanlPse4fqJew4lFasP
-X-Received: by 2002:a05:620a:1266:b0:785:40d6:bcb5 with SMTP id b6-20020a05620a126600b0078540d6bcb5mr9513970qkl.43.1707125991257;
-        Mon, 05 Feb 2024 01:39:51 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1707125991; cv=pass;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1032636ejb;
+        Mon, 5 Feb 2024 02:13:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE87NNZzUSq3LiH0MHdyL/hNILlg3fl/ijLsi0NA0EKaObcfirYj/hW0qCUR21UsOIkQYjk
+X-Received: by 2002:a0d:ca8a:0:b0:5ff:bb43:2a69 with SMTP id m132-20020a0dca8a000000b005ffbb432a69mr12921201ywd.40.1707128032683;
+        Mon, 05 Feb 2024 02:13:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707128032; cv=none;
         d=google.com; s=arc-20160816;
-        b=gjcCfLk3AxE202hbYJ8xOSneQ7K6rRDIuXWGlYO0D/QY4ebidwbhETcYfuySDUEUfL
-         ClKxxCbOwigVpmE/xqA7oUE03lRb5vRIYdXl7rMIhsK3NNw8HtMqKm7/jOWzvL8hmED/
-         0+CCkPDUvQp6aHn+jPbdyF2Fs5MMF5ALCPUXzV3NA+PNFQp51CMinVPrf/kH8iZv4dh2
-         Oz2w1XfMcVFglyTfuWavu2KvKWMk/vZsHneu+xDk4aLQjm7rP7eZ5ZbqBzmfjkkpzr1/
-         IVa/Lj/sjwFNbT4EkG5RCYxZjWNYt0gD36owkQNKpU7vJN9T77WOp3TMYIgfayztruIX
-         T2OQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=X1VS+gQvo43xpkcpPq1vuGYJpk0KEVhl3FoJBHkp6vMWvYI0ybA237xbpoC5Ce0RGX
+         G6UJGaEKmwLzC8RqeqP75REFnUgF600zMjBPrHWZPIfoIqRU41DuaYeEQdA9b+21oflW
+         iQj4haanpXt04Cti5XlZ7392wWNexv3VYHY+rT4c1wO6oGaCFOuNrlxYKH4HrgVhAvfu
+         NHrdpQAl39zu9eOMjixuQt9ceeoBQQjzldx9132a2KPO1P//ulBgm4mgZU1flvKDeLyr
+         j4A9mIfSUIwd3UmpClG4Jf7E7RFhhuYTT9KMD+Q2hToGeBOKc2+OO9NCuZw5/HfFZiIc
+         XwyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=5G0573CRaxDF5PzwAeLQOyFRyp6Z0Jdi5UhIemW9qvk=;
-        fh=aQoKxz9UUkq3Gb32n1HDSYFsECxix2XjLGViQ7EZwn0=;
-        b=giTLFIn4Iut+leUlNFHz6QgOnJ2VMIksojawnGIVQukkO9FgmqgtvAgZPP3oY0QF9p
-         PUtlkkuv8/c6M9fcL3p36ZGJBmj/0doC/Rt3w79eyONtbmo/WS2ESoyTYoDwhfp6Syhp
-         OgsTY7/ehOxYRwafpOr3+TqAg1I3RIJyVYLj8u+2CPgeDQKvl9rcSdxWnA+FjChUAeMm
-         XWxL6slkBLTRD+6wsI6Wk68X5C0Dm9gXHEbCtDgpk62IMsvn+Uv3MEJZBgwlmjVPF3KR
-         ede6AvPOPeVYIDGuhNFy1oANc7WtIJMqYQCFzUTSaa8wHwg2CbpCkEcg/+kiFtvVj360
-         wyqg==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=lJgt+rIcf8cWWUzO6QfRYxI8XlavmPnLi44SsOqg38k=;
+        fh=SW71O01W853Nv1k45PeuFDT9B40M7GiNrnjSVQ/xDnw=;
+        b=ydTuFlqnldnVT3oNn8OC+e/N93M06aaMyCTRX36j3SWgl8+yZq4Q54isdpN9rL2ljF
+         wrqY1r0kidV5BNpaQfuAehCeqro5qlW3FUBwnNwVOQie7Fjik81ZRCvYaH7fcix0Fa3u
+         CDvqmaXHzJabO/jI7gYIKsQfiN2TvE72lNohd+8dOLHQlV+2vcV7UlnnGNWbLo9irL6A
+         UKkmlMLcno7BnN/Av20onrglTN287O+NCrNxTjDi0phipIZaw+III0BoT77+z4/wgpMa
+         r/SdpzZ5KRRrvgLpAMMN6X/JzbDdrQxM4cNhAWjIBL/G3t8USy3rHsTWCULeUYTNuWZg
+         MZ2w==;
         darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=VSBgshAV;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="IMNg5l/K";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-X-Forwarded-Encrypted: i=1; AJvYcCXxLYYloOFrJNm9mzE0GFBjW2rwl9l4QZT4D+hkCSlpazV3CsyR0PVYiro/RBypTp9x8biS/hQ4AIBToeLlqrQyoT+C4pS6
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCVFB+EPrEfwus4LIPbMUEhqBHhr0cFLmRc9bHV4w5ZihvNJfYRD2HXK8mqX6F7u5MEPVKwiIsJeeD6vbrtaOdTFSj5cHXzB
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13-20020a05620a03cd00b00783fc517e95si7864643qkm.413.2024.02.05.01.39.51
+        by mx.google.com with ESMTPS id c10-20020a05620a164a00b007856e668245si4278906qko.474.2024.02.05.02.13.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Feb 2024 01:39:51 -0800 (PST)
+        Mon, 05 Feb 2024 02:13:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=VSBgshAV;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b="IMNg5l/K";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rWvRo-00021T-OM; Mon, 05 Feb 2024 04:39:29 -0500
+	id 1rWvyn-0001J0-2u; Mon, 05 Feb 2024 05:13:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rWvRo-00021H-2y; Mon, 05 Feb 2024 04:39:28 -0500
-Received: from mail-southeastasiaazon11020002.outbound.protection.outlook.com
- ([52.101.133.2] helo=SG2PR03CU006.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rWvRe-0004De-FW; Mon, 05 Feb 2024 04:39:27 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AdwNckVN7Qo9Sss2IOa6DG9qq98C/aVh0UCd47G3CNIxzc7WdseENaa822aKU+wyJsTTgk4h1ItX8v3eMR1CpRoht6bzza/jBJf5sGbyMhAuvtk8Dqb0UC1NS4Qg7he9VNtL4X9b4VDnWbdXOD5YPymg8/5j3YXSd9OwcJId6GoW2uL5+zCzEppY/AKPoo765j8k36H8PUbiucAB7ZYJ74iFT7nG7grnatu1fnisvi3qH6x0SpWU2DU3drZGO82jT8LtM0Et6vnYlwWYXPqsquwVSLHY0gnGEXIaP9ZfZbwrIzgsxI5jkm0lUgrQMnYJEyPHqcPLqrK7ZDOocUhMBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5G0573CRaxDF5PzwAeLQOyFRyp6Z0Jdi5UhIemW9qvk=;
- b=IVjjl+bEtV9lXk/3ZA3USoIzYQ+HMXFbdu3Y585he0wI1UuhtVOKNecfEPDrTD+oAo9hh6FTIjrpITZ6rWmWnLgABwYCHS/47UYpD3jN8c03T0SfuLdqkXoPCmNu0DKlIaUb+Os9cgUmyjgVnl4xZI6HBVdhUWJ+RzPfOCh3XCggBXF1z1SaQJ1AqifI5XZZjgh9zULdx7d9f2O/AFgqyxZJXrv0cxI1xWMipMOJZfWSRow7L/9ABADq/Us6iZWqh5LgtOaPgArsIKnhlIAQmJh4mhiEFcpdoytdrbta09iUoxoEB2WANrl8jIusxW2DvSPt1LxzCei+nFaTrqq0jA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5G0573CRaxDF5PzwAeLQOyFRyp6Z0Jdi5UhIemW9qvk=;
- b=VSBgshAVEzKRC6OAeMGGhmxhdPO2TV1RwGPdwDFId6Ctad/FHm1Cuf1xEtfHBDxRwMEV+S195wPGmiCo67rWmoKkd3jX6KsCOA41U+7bhza+tM8D6ZmcuVGQ4uW1wOTAQOhlTWvQd3E75KQ8ThbG0G515ZmC8ZpIDyA6q+qfxVF3vTKUWAp/CwHN6NgZLIP+4/5D62dBE9y3Cp2jdHp69BblSV5V+kIkL24VDLhd6Xj4v+dEgO6UKZ+XqxWDZRsiIZt9aDTUxMk8T5YooPvK/Q2Vnkv1Fot20Rmdl5phTUhf3I9efaPh4Pp5z0IwnnJ+Ls/bQRHzzkng15gZVnXAMQ==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- TYZPR06MB4127.apcprd06.prod.outlook.com (2603:1096:400:6::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7249.34; Mon, 5 Feb 2024 09:38:06 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::79a8:927d:1e03:51d0]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::79a8:927d:1e03:51d0%7]) with mapi id 15.20.7249.032; Mon, 5 Feb 2024
- 09:38:06 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v0] aspeed: support uart controller both 0 and 1 base
-Thread-Topic: [PATCH v0] aspeed: support uart controller both 0 and 1 base
-Thread-Index: AQHaWAvXQO1274e1K0yFSK+fur9+t7D7fbSg
-Date: Mon, 5 Feb 2024 09:38:06 +0000
-Message-ID: <SI2PR06MB50413C107EBCB5E9F257C8BDFC472@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20240205081757.304433-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20240205081757.304433-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|TYZPR06MB4127:EE_
-x-ms-office365-filtering-correlation-id: 91566207-85e5-4e5c-6bbc-08dc262e2828
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ClawxROUxKo7/Z+PLAMbEj4fYZiu3QrMQ1wWUFFameCwGJRkjuuHyGt4ybPqBYiF3xwWfneJy1022f+wtEgNGhAe19omACSAt5sDtYM2ELlob7wBRzQtI+PHmZ4mImUmoPkgCbRvXqM7YNotLEyoLuludMczpBxzQ9l6wy3TW5drqBO3aD+sG9Pn7iUbPbnEbGI4JRGDB2E1ZieY5FAbzyZAEyanolTeCkiofv7hp2zcqVph5x8mhGiMxmIRb9ZPfx/LUUdohqai9IY5WCrWSXC7CZIY/hstNwDKvNpEJgKye8MUl2I1eaJDSA9LNu1WBJ5peFe5Qd5TIzoHpAqkql0iUuEnkUkutqSab7+D/nlXZeoUxfCS8eljD6GvtwFcThZZ2zRdktoaJg+Xj2nJ7IK7iE+rmEkmWrlN51jLoikb75J9X0MSLmiaB6AHB/cGrQykkNz+SeaBcVX8apUXmTHiZd7Ve3yqTOXIh+gpw9va2WEEeJfdT8OgmL2z+W9bNCgQchKf7tUTMr/S5U+uLcD169S6Dlm0Z+0/N/WbEd55mVJdJywEa+Jkwv/cg8O8/d4JCxoyO8FoIZxSIgMvig/ZAZ4YQprMlQgxw8pXlFw=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(366004)(376002)(39840400004)(136003)(346002)(230922051799003)(451199024)(186009)(1800799012)(64100799003)(41300700001)(76116006)(38070700009)(2906002)(110136005)(107886003)(66556008)(71200400001)(66946007)(9686003)(7696005)(6506007)(478600001)(966005)(53546011)(66476007)(64756008)(66446008)(86362001)(52536014)(5660300002)(83380400001)(316002)(8676002)(4326008)(26005)(33656002)(8936002)(38100700002)(122000001)(55016003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?3ALIk42skx44Bq8GnNlYoh/R2Z/ujG4fRe4mVrq+ov40WyzEBcGTl6Gb+Y?=
- =?iso-8859-1?Q?hwkpXDKcHoJfxm8rnOdAWMVu0YHgPhYRVSDIypaG8U/mn0VY2ofbp3Wt0I?=
- =?iso-8859-1?Q?6WdVAWAULHUahRzs8gFsS1+jz8YKO+lMq9flsi2CLgYO5pgKUbDsjVw5g8?=
- =?iso-8859-1?Q?OX1ojzHY6F9i3VFct9UebRB3rsfmlChYvK6eNZa0Bw/GHUSqU27+ZJ4iVK?=
- =?iso-8859-1?Q?K4yq8eiE4Z2ybDy+w+ELUMah8voJdpZBSYfVum+XHJu9SoX0dj90AjWjBV?=
- =?iso-8859-1?Q?86nlySdwszeaIAkFvklD16m7pHJTReHArvmeXcYom+VwEWd5uSDArYOpih?=
- =?iso-8859-1?Q?D9rH1chOuIDbBihxYV11zJ79o9SrTGxU0dYisKtiokx7RvY3FQl+amNdmn?=
- =?iso-8859-1?Q?2JzRm+s2TUU9sCSooOnvhnczhf7gcAnpqyeGLX5NkXJpB3Hq8gAkAg0ucJ?=
- =?iso-8859-1?Q?FoUruqapZkjvfWHGYVq52E/w5bUZ13sgqHIzYks8pidODxK3cV/HJyO7oN?=
- =?iso-8859-1?Q?YadNRsUPE+Hd+rDjyyIsz+ygIv0588QtXn1jle0IQv9w/GufmN/HlF3PNc?=
- =?iso-8859-1?Q?QhMcFAVm4TZXvIbA7fWGm4HiIooSuPNd4w18vCiGr/wBoGz/8FUaYOYDNQ?=
- =?iso-8859-1?Q?SKFPKCG9e9aCYupFdMNZfmeL6SPbMfYan0IJq0aNT1d9qpwC1u47sWoRZP?=
- =?iso-8859-1?Q?o+dUGJASQvf08zAmiBoAOSbpFBWnYNWyhXygrtam9TRMzyO8iM3iXVOXNF?=
- =?iso-8859-1?Q?Ly9CKDtIABq+wlRx1U+x0HKByYRl0CM0pdkcPxOBAR27EO+FBU9DHCOMjs?=
- =?iso-8859-1?Q?+byrlgB5l69HMGqhFMvNRAcngbNbMcobUhQkjpEaHXpVQjIFD4WH64nmM8?=
- =?iso-8859-1?Q?3nHc0NfyDMIY54DR7xhkH8Aycvxk2YVOkbdmRe00AODpXXAMRt/EWLlSuy?=
- =?iso-8859-1?Q?Y97Nu0G9WrUpRtWuX5Y72ZcMK4Sr9di73SuOopqiMTlHxsxOk8pGGpLbv4?=
- =?iso-8859-1?Q?7bCQBtYWS4PlXGtcAJG7NRAicmkW1Svb9XLUpCd35u+UW8TgvFQ8VN7JKx?=
- =?iso-8859-1?Q?3mzXO3w4wFsLaR7rv/x4XE3AkLB9TkR5C9XT2vUqk6idMm+Vn8ZQAL3GCl?=
- =?iso-8859-1?Q?HMPqKiX6G5qaWe4VK5M4fbeAHMRnXNKxctzLd2ve6ev4maCj01wPywNrHp?=
- =?iso-8859-1?Q?Q5hjWV+ACJiU7MFJwGNzWOSqjUUzl/HeGw/p2YWPZWBla/IFCkEQImEp36?=
- =?iso-8859-1?Q?2VQLuYKwWacL71fU4DiLC2Nl/3oh9VGb0tFCxwernRqlPmiEaJNnVErmNE?=
- =?iso-8859-1?Q?1EljEgTgEu/SymBjuAGE1ZLA+8+AS9NbLMb0uumrLok5hui1u36w+XnZ/r?=
- =?iso-8859-1?Q?/aFWa0dn3IzHl6OOy5zF7F1wXcrtdLrWJVZVW6pX8XCje8d9TOGGs+Pdnh?=
- =?iso-8859-1?Q?q3A3fhiVnLnaYjDO6YIGTkx7tY9CSKneSpemtlrwQSObi8IcvVcysmHo9k?=
- =?iso-8859-1?Q?2zhy3S2gM/2euNGoWdjO6TTO7eeCGu72R4ZyNcNouE6P3v662jLK+Os5Fq?=
- =?iso-8859-1?Q?6+wvZH1rAYfbO1lzrrEkqcm/SHqAV+DikwZoB8/zJSd8zxsm4ex+z5j/P7?=
- =?iso-8859-1?Q?q9A1JAiJ+diETzzUSl1Zj9V0R6JKZKeTeV?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1rWvyl-0001IZ-Gx
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 05:13:31 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1rWvyj-0002Wo-Pk
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 05:13:31 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-5101cd91017so5445878e87.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 02:13:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707128008; x=1707732808; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=lJgt+rIcf8cWWUzO6QfRYxI8XlavmPnLi44SsOqg38k=;
+ b=IMNg5l/KI2VAr9tcM/MTFcb6ekGnExk7kKBSxzpiSvW/wWV6m28KTpJ18qNthzZb3F
+ GABePjswG7EoESIyKoQXy/VFA3YXs7jBmADkCQSN48/Aa8soOI38CoTChlR8+pj84cnu
+ SCcL/UqmSzsDbP9TKNVZEG2htYHc1mEwO3ptVLFQD/QyRCO5dFTZ8iVgkBGaqHnGeHpk
+ j1VHsTOuevJpBGQKB8QXMYGMxGTb9ALj5Pqbz449OeUovS3i+8wm32d6meL4bALdYNvH
+ /upsqd8sNLWtyiPa/bSoJjJvllOhp2Jbvgaxhm/gVPQHNfovZC3Z2eF/LVy1wXzIaaco
+ kAKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707128008; x=1707732808;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lJgt+rIcf8cWWUzO6QfRYxI8XlavmPnLi44SsOqg38k=;
+ b=Rwr27fbDE/QcS7MPAOSU2CvXxoqFKopDP9Mtmt0XNlQHX3WrWGsjBECU/dysqfmgng
+ Hzl0YhaeYPdcT6uiQEPFSkcUBMpG8J5I88GdJ28J+4DAO+cxOmaeZypPqg+GUKB6sX0I
+ v4tLcnJCA/TEknWx4rdYZrnZI196CgQjutZT96j5bvgP2k2dWVtVNgZ70oAWYZrHfJFY
+ BAbjS8q1bfEwBcHuBv0CNx8a6eCW1Ux2VBm1ZrrstHpqNRDViqP0PRGJH7tDwI4EsFBz
+ nZdINqt7CDJyDJJ0e8waWT8orMag8zJNzJF7/drqpKdKPuPXQFDpBzbi9PDFmvPWyrsR
+ 4Riw==
+X-Gm-Message-State: AOJu0YwezwwaG91rAH8O22G0JXST4V54JZG56ya34KGLmtmhCCpOocy0
+ VCTPcHCpoUjWSO8tyfIkpwKPqgyPfEBrMmKStCCnDM0I918vWQc0k5pUsk7KXVw=
+X-Received: by 2002:a05:6512:292:b0:511:4a3c:bc67 with SMTP id
+ j18-20020a056512029200b005114a3cbc67mr2830078lfp.9.1707128007718; 
+ Mon, 05 Feb 2024 02:13:27 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCXJLQoDNi2Q2qdYX/U6PiMl9OFuceQBj+ZoVnehK6ZdPRkztc9BWnHpIaAJo2xn5XxbatbtAvXF+1qnuNLsiQ5oE0J/xt4h6/E1YvJjhbSzgzDoPQKykT5m4zC/OtwCh+MXGtC80JDctgE/Oegsj8OY8yzYnISMBHNqUB6y/nPyDFbX01oTnG/9O5+Pi72tcYIIn7A0iDopB7UlN+Vd2srdv/AfIoQwvWe1qbjpDHQC30YEreb+3qXu8HhHWfcaPrJu+4smUHnqcNp+YOCj1u0Lp82TE29mISyw0uBNXEv5R1S0UuJ3DKY0/ph8XsgcQeOkg+7X
+Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
+ dw14-20020a0560000dce00b0033b26de0073sm6303131wrb.97.2024.02.05.02.13.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Feb 2024 02:13:27 -0800 (PST)
+Date: Mon, 5 Feb 2024 10:13:22 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, peter.maydell@linaro.org,
+ zhenzhong.duan@intel.com, yanghliu@redhat.com, mst@redhat.com,
+ clg@redhat.com, jasowang@redhat.com
+Subject: Re: [PATCH v2 1/3] virtio-iommu: Add an option to define the input
+ range width
+Message-ID: <20240205101322.GA2086490@myrica>
+References: <20240201163324.564525-1-eric.auger@redhat.com>
+ <20240201163324.564525-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 91566207-85e5-4e5c-6bbc-08dc262e2828
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Feb 2024 09:38:06.3767 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VcjT6Vh4UWV73SUr8mlzd5clK670fzCiXniY0YyrCzE8VpQWQrMkcRlLKr+BMKa20ZNdhYRTUTgmrpGOZHzoKLzmh+oRMQ9A1MOFiTaoK2M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB4127
-Received-SPF: pass client-ip=52.101.133.2;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SG2PR03CU006.outbound.protection.outlook.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=2.881,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240201163324.564525-2-eric.auger@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=jean-philippe@linaro.org; helo=mail-lf1-x12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -179,183 +131,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gVulKRsmGbQD
+X-TUID: iP5PUlz/P92S
 
-> -----Original Message-----
-> From: Jamin Lin <jamin_lin@aspeedtech.com>
-> Sent: Monday, February 5, 2024 4:18 PM
-> To: C=E9dric Le Goater <clg@kaod.org>; Peter Maydell
-> <peter.maydell@linaro.org>; Andrew Jeffery <andrew@codeconstruct.com.au>;
-> Joel Stanley <joel@jms.id.au>; open list:ASPEED BMCs
-> <qemu-arm@nongnu.org>; open list:All patches CC here
-> <qemu-devel@nongnu.org>
-> Cc: Troy Lee <troy_lee@aspeedtech.com>; Jamin Lin
-> <jamin_lin@aspeedtech.com>
-> Subject: [PATCH v0] aspeed: support uart controller both 0 and 1 base
->=20
-> According to the design of ASPEED SOCS, the uart controller is 1 base for
-> ast10x0, ast2600, ast2500 and ast2400.
->=20
-> However, the uart controller is 0 base for ast2700.
-> To support uart controller both 0 and 1 base, adds uasrt_bases parameter =
-in
-> AspeedSoCClass and set the default uart controller 1 base for ast10x0,
-> astt2600, ast2500 and ast2400.
->=20
-> From datasheet description
-> ast2700:
-> Base Address of UART0 =3D 0x14c33000
-> ast1030:
-> Base Address of UART1 =3D 0x7e783000
-> ast2600:
-> Base Address of UART1 =3D 0x1E78 3000
-> ast2500:
-> Base Address of UART1 =3D 0x1E78 3000
->=20
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Hi Eric,
+
+On Thu, Feb 01, 2024 at 05:32:22PM +0100, Eric Auger wrote:
+> aw-bits is a new option that allows to set the bit width of
+> the input address range. This value will be used as a default for
+> the device config input_range.end. By default it is set to 64 bits
+> which is the current value.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
 > ---
->  hw/arm/aspeed.c             | 8 +++++---
->  hw/arm/aspeed_ast10x0.c     | 1 +
->  hw/arm/aspeed_ast2400.c     | 2 ++
->  hw/arm/aspeed_ast2600.c     | 1 +
->  hw/arm/aspeed_soc_common.c  | 4 ++--
->  include/hw/arm/aspeed_soc.h | 1 +
->  6 files changed, 12 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
-> 09b1e823ba..218b81298e 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -342,7 +342,7 @@ static void
-> connect_serial_hds_to_uarts(AspeedMachineState *bmc)
->      int uart_chosen =3D bmc->uart_chosen ? bmc->uart_chosen :
-> amc->uart_default;
->=20
->      aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
-> -    for (int i =3D 1, uart =3D ASPEED_DEV_UART1; i < sc->uarts_num; i++,=
- uart++)
-> {
-> +    for (int i =3D 1, uart =3D sc->uarts_base; i < sc->uarts_num; i++,
-> + uart++) {
->          if (uart =3D=3D uart_chosen) {
->              continue;
->          }
-> @@ -1092,9 +1092,11 @@ static char *aspeed_get_bmc_console(Object *obj,
-> Error **errp)  {
->      AspeedMachineState *bmc =3D ASPEED_MACHINE(obj);
->      AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
-> +    AspeedSoCClass *sc =3D ASPEED_SOC_CLASS(obj);
-> +
->      int uart_chosen =3D bmc->uart_chosen ? bmc->uart_chosen :
-> amc->uart_default;
->=20
-> -    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 +
-> 1);
-> +    return g_strdup_printf("uart%d", uart_chosen - sc->uarts_base + 1);
->  }
->=20
->  static void aspeed_set_bmc_console(Object *obj, const char *value, Error
-> **errp) @@ -1114,7 +1116,7 @@ static void aspeed_set_bmc_console(Object
-> *obj, const char *value, Error **errp)
->          error_setg(errp, "\"uart\" should be in range [1 - %d]",
-> sc->uarts_num);
->          return;
->      }
-> -    bmc->uart_chosen =3D ASPEED_DEV_UART1 + val - 1;
-> +    bmc->uart_chosen =3D sc->uarts_base + val - 1;
->  }
->=20
->  static void aspeed_machine_class_props_init(ObjectClass *oc) diff --git
-> a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c index
-> c3b5116a6a..2634e0f654 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -436,6 +436,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass
-> *klass, void *data)
->      sc->wdts_num =3D 4;
->      sc->macs_num =3D 1;
->      sc->uarts_num =3D 13;
-> +    sc->uarts_base =3D ASPEED_DEV_UART1;
->      sc->irqmap =3D aspeed_soc_ast1030_irqmap;
->      sc->memmap =3D aspeed_soc_ast1030_memmap;
->      sc->num_cpus =3D 1;
-> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c index
-> 8829561bb6..95da85fee0 100644
-> --- a/hw/arm/aspeed_ast2400.c
-> +++ b/hw/arm/aspeed_ast2400.c
-> @@ -523,6 +523,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass
-> *oc, void *data)
->      sc->wdts_num     =3D 2;
->      sc->macs_num     =3D 2;
->      sc->uarts_num    =3D 5;
-> +    sc->uarts_base   =3D ASPEED_DEV_UART1;
->      sc->irqmap       =3D aspeed_soc_ast2400_irqmap;
->      sc->memmap       =3D aspeed_soc_ast2400_memmap;
->      sc->num_cpus     =3D 1;
-> @@ -551,6 +552,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass
-> *oc, void *data)
->      sc->wdts_num     =3D 3;
->      sc->macs_num     =3D 2;
->      sc->uarts_num    =3D 5;
-> +    sc->uarts_base   =3D ASPEED_DEV_UART1;
->      sc->irqmap       =3D aspeed_soc_ast2500_irqmap;
->      sc->memmap       =3D aspeed_soc_ast2500_memmap;
->      sc->num_cpus     =3D 1;
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c index
-> 4ee32ea99d..f74561ecdc 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -666,6 +666,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass
-> *oc, void *data)
->      sc->wdts_num     =3D 4;
->      sc->macs_num     =3D 4;
->      sc->uarts_num    =3D 13;
-> +    sc->uarts_base   =3D ASPEED_DEV_UART1;
->      sc->irqmap       =3D aspeed_soc_ast2600_irqmap;
->      sc->memmap       =3D aspeed_soc_ast2600_memmap;
->      sc->num_cpus     =3D 2;
-> diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-> index 123a0c432c..3963436c3a 100644
-> --- a/hw/arm/aspeed_soc_common.c
-> +++ b/hw/arm/aspeed_soc_common.c
-> @@ -36,7 +36,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error
-> **errp)
->      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
->      SerialMM *smm;
->=20
-> -    for (int i =3D 0, uart =3D ASPEED_DEV_UART1; i < sc->uarts_num; i++,=
- uart++)
-> {
-> +    for (int i =3D 0, uart =3D sc->uarts_base; i < sc->uarts_num; i++,
-> + uart++) {
->          smm =3D &s->uart[i];
->=20
->          /* Chardev property is set by the machine. */ @@ -58,7 +58,7 @@
-> bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)  void
-> aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)  {
->      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-> -    int i =3D dev - ASPEED_DEV_UART1;
-> +    int i =3D dev - sc->uarts_base;
->=20
->      g_assert(0 <=3D i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
->      qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr); diff --git
-> a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h index
-> 9d0af84a8c..ce2bb51682 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -140,6 +140,7 @@ struct AspeedSoCClass {
->      int wdts_num;
->      int macs_num;
->      int uarts_num;
-> +    int uarts_base;
->      const int *irqmap;
->      const hwaddr *memmap;
->      uint32_t num_cpus;
-> --
-> 2.34.1
+> 
+> v1 -> v2:
+> - Check the aw-bits value is within [32,64]
+> ---
+>  include/hw/virtio/virtio-iommu.h | 1 +
+>  hw/virtio/virtio-iommu.c         | 7 ++++++-
+>  2 files changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> index 781ebaea8f..5fbe4677c2 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -66,6 +66,7 @@ struct VirtIOIOMMU {
+>      bool boot_bypass;
+>      Notifier machine_done;
+>      bool granule_frozen;
+> +    uint8_t aw_bits;
+>  };
+>  
+>  #endif
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index ec2ba11d1d..7870bdbeee 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -1314,7 +1314,11 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>       */
+>      s->config.bypass = s->boot_bypass;
+>      s->config.page_size_mask = qemu_real_host_page_mask();
+> -    s->config.input_range.end = UINT64_MAX;
+> +    if (s->aw_bits < 32 || s->aw_bits > 64) {
 
-Please drop this patch, I created a new patch series here, https://patchwor=
-k.kernel.org/project/qemu-devel/list/?series=3D823082=20
-Thanks-Jamin
+I'm wondering if we should lower this to 16 bits, just to support all
+possible host SMMU configurations (the smallest address space configurable
+with T0SZ is 25-bit, or 16-bit with the STT extension).
 
+Thanks,
+Jean
+
+> +        error_setg(errp, "aw-bits must be within [32,64]");
+> +    }
+> +    s->config.input_range.end =
+> +        s->aw_bits == 64 ? UINT64_MAX : BIT_ULL(s->aw_bits) - 1;
+>      s->config.domain_range.end = UINT32_MAX;
+>      s->config.probe_size = VIOMMU_PROBE_SIZE;
+>  
+> @@ -1525,6 +1529,7 @@ static Property virtio_iommu_properties[] = {
+>      DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
+>                       TYPE_PCI_BUS, PCIBus *),
+>      DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> -- 
+> 2.41.0
+> 

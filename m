@@ -1,103 +1,102 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1148317ejb;
-        Mon, 5 Feb 2024 06:04:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG99OaRBNCJ+Q1QFpuNjNZRF1jfDjDw4BkTcVsr4h6tJTRjBTs9zVXJrBXhZkRIAnMgZU8b
-X-Received: by 2002:a05:620a:102b:b0:783:d709:54a3 with SMTP id a11-20020a05620a102b00b00783d70954a3mr13756985qkk.32.1707141894704;
-        Mon, 05 Feb 2024 06:04:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707141894; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1140193ejb;
+        Mon, 5 Feb 2024 05:53:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGCG+k8r0NgaFldrqMX3957cIO/7aCxVDto7ZYgurV4/UQTKRy4s8scFjA9VFRIKbYPvlPH
+X-Received: by 2002:a05:6808:144e:b0:3bd:e783:3df4 with SMTP id x14-20020a056808144e00b003bde7833df4mr18960466oiv.47.1707141180484;
+        Mon, 05 Feb 2024 05:53:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707141180; cv=none;
         d=google.com; s=arc-20160816;
-        b=SBB5E7+U76Y76nJ4NGeB2K731ZXhDz2bWjJZ5gtzJcpeHnrVcFv9frfILtKuI/4Pi4
-         XFseS/zjqQZ6YSLqYPGnR9nk76UA3JiFHmsss7binDlv+7Zn6MV1HoWbb7a1wqDG3Qon
-         nFqQdZ6zrPhz4F7X0FegM5o/mlTBRMH4/jiQctI5R0y/hZR/wDVENGa3JjMLv+kJ4ue2
-         UH2GFuhVxNkO3h0+cCovBxZ4oUHW31Q/9sE1RCf+7xr2/vDR6mnQIZqxyYxriT2WoXHL
-         7I5eOIvPwoTQ/DZt9pdECZWUrOX6x95YtPwL7Cexbe7qDSuxKkwFhxEOL5dVku6vwp1u
-         X3gQ==
+        b=rVm6qk4bxHj3SvBhhRR57vnQwC2QOrDHm7o9Lw3z5uyDVzWkmC+agaHYO5vH1DhMof
+         Dscgrkj4rjUmxN1dMe7r6Pp/dBm8b5LT+wi8tjj3AcgKQnLpbljUVj9JhJl7Mp0WsYqp
+         NtcLUJISdN6EtjKM5MuBNMFGBF7IMepDgBV6hP7GyLy1fy+2pMffLTo3EeYLrEtlHDpj
+         T4kg7WMYaXkxVX38CBPT5g8Il4i7ofugg9o/Q8cXUPZM7jqxVfC2zf0ZCVecnBoZFiZi
+         UKfDy96bCsoh97iJHK+5piwzYFEJR5W5TYEcwCR9wGprQlk+6XAihk663SuiRcuJ44gn
+         EG7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
-        fh=xbyuh46pQq674avqXqLJecsbHeLww+nlvgBE1RGY9Ak=;
-        b=N6u0pWVyIMjbklMHpkzZbWLgEuKec/ylXXxyvsakyyU+1Iz4veY8C43hUYizHSMOTM
-         jRXs0CBcttOuiqe9oyjWNnwS7Nw+ykLNQivQjWjkkMrcthcwRJe7iAUx7O+TCfcR6O0j
-         5MYp8j4hKVweDSa6TE9LAaFcUoSEoncmJIq/etIasSGko2t5I+oxrUtUt5GKMvf8GpRJ
-         uv4spA9czMe66bPDLozz4KCve0Vp3rpwWk1LMxltZLf7aMbPUmCm0duMEkraK80502UB
-         6W3BlgTO3DKLV+J2bvzeM1fQdqvkd+QcHslkX8x4JhMbBXKhKoryWIzt71p9uG4eIAxh
-         r3DQ==;
+        bh=HVbRqMnYEeQsQiEDTFTHE/RBaF3wOwp5DqDF4yy/N3Q=;
+        fh=At3m3nQHzhR/kEugQAwLrU6ItX/x4c3kx5nFr7DGkmo=;
+        b=ei7B6F4UxsLmNDunqot6HjNl0SmdtwUGPpiPLmXr+HwbFQT+5XYSau+lNxGaMW03ct
+         +W385YFGJigL8wYn4AIEi9qiDzWHRX8ZESn3l5Gfyd6uCi/llfaG4VwjWg2nZ/Crml2i
+         H78hABXzjMklYRzU8MtRlpL/KiBdm0BqPN4bdBYVx9yFJk20SaVcHUUod2QvbgC+f6am
+         uzzgOxR3docS48joKti0W0pbdLCXrN1HtXmOLbwg6dtrhODv7ev5MNFUCjhxD1Aru1yb
+         StXhMyt9Fmv9eK7jTl4W1JzDO0XieY2FzrVq4Trzw52lqAMZXX7Ll68WozXHy25y8ZDm
+         uO7w==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="H+j/fl55";
+       dkim=pass header.i=@linaro.org header.s=google header.b=H5U3Xtqf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCWO177JD8XBKfBx3p8p4R2CWACW374HGtnliDQXy0/ArskPnLHozuhsTkdeFlFqR4OtzCiBvErSYN/F0Z8wRwB+ebv3iIFb
+X-Forwarded-Encrypted: i=0; AJvYcCXVNLAm9pi7tYZcNhsr2mWzsxetPIAD8d9jVLpWOi8ljj8lgR4mRs418uJbkzzpMvA8lveMxUpWxmLTIB9aSkuXGeic9JTT
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b21-20020a05620a04f500b0078553473225si8270695qkh.419.2024.02.05.06.04.54
+        by mx.google.com with ESMTPS id g1-20020ac87d01000000b0042bf9849fc8si8654458qtb.31.2024.02.05.05.53.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Feb 2024 06:04:54 -0800 (PST)
+        Mon, 05 Feb 2024 05:53:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="H+j/fl55";
+       dkim=pass header.i=@linaro.org header.s=google header.b=H5U3Xtqf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rWza1-0004GQ-SU; Mon, 05 Feb 2024 09:04:13 -0500
+	id 1rWzP0-00013F-Nf; Mon, 05 Feb 2024 08:52:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzZu-0004FI-BW
- for qemu-arm@nongnu.org; Mon, 05 Feb 2024 09:04:06 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzOy-00012U-UG
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 08:52:48 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzZr-0000Je-Sw
- for qemu-arm@nongnu.org; Mon, 05 Feb 2024 09:04:05 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-55ff4dbe6a8so3540109a12.2
- for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 06:04:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzOu-0007Oh-3p
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 08:52:48 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-40efcb37373so40602565e9.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 05:52:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707141842; x=1707746642; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707141162; x=1707745962; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
- b=H+j/fl551/3zaS3CzjasbUAVlPf6QJbh4FWGlWiaLgwvL6i2JSpC1TYm9pfgyiZJmu
- rJUpRCIFK2HVHBXyHf+gsK+pkVJc7srp3AAo9n1BaELskn35aeKsH4upKZfnw2rP1H8B
- UR+GLspnn3MIxCd79GOYfliX99JOjd+nqGQ+D7zvxiFaw/7zaV4dh3aQ8cnaxxYO3jSN
- HRZtv9gFnjuHgglC04IBZrj9Jd8K2SA94jQ80BUducgDmkWTGaSdqnUpUhhnZik33/Gl
- Y+xRHzAXv+2dZYR+yhcWvCTVdXg/72+1EynVMib9l4aIvAaD69pAPh4d8p2lYzB3sOwT
- aOyQ==
+ bh=HVbRqMnYEeQsQiEDTFTHE/RBaF3wOwp5DqDF4yy/N3Q=;
+ b=H5U3XtqfSEp4C71bz9kF4b6zTHTGuaOboEIKZV2g/td6kuCZpEzt01M52Rdc5Q5ifw
+ y1ApmhP82rHSrW6C3hiOzup+vxpnG8ZjjMB5G1d73CuPW4bhqEU4Tr/6Xei3pV83l3ld
+ NUZraTj3GDYYx2by8d5YBfAj2OmEbVZ6qOvTp9W0YMRyy8PjUPzJ1G7BQNy0BwH5kbx0
+ I8PU4Yl+ZLWHdSiKODvqdWNfrwqcIS8P023+DCK8O35dIm/ixYJnmOiunTc6HpqXBm8e
+ vCpwi0Z5xcZkw1qdOGmM/e6VvohwuYBQKFAtwsvHd7R+gCiDyvGAcDxX1o0ohuQAcpwj
+ hx6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707141842; x=1707746642;
+ d=1e100.net; s=20230601; t=1707141162; x=1707745962;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
- b=B00gDnBilHuMiYeiRG6+mPTFgdMvylNKw8R2Z8cHK3UMGSf6TbReV5F6gw923P7+vS
- IEl9B/K3ygUHVKQ9NlFzSPFm2VFEQJnshAr+C/oIGWQozn52sUO/CX+TOaQUHyn+6IOb
- tD6JtT38zhMrlMhKh7MT+iEY4B7zkkcPGlKPLsrCl6LhLcvDqgZrpEX5ebz7GZoQBbz8
- gzYC+07nX1f2ygW88qtkAXOtwEqQyZd819b7IA9SjWvHSNBgtqYJ/12Ji/LTbsk1KVjR
- f7kWdP77hIcr2MuNlyseVH/ZVaTVAQ5QKxuJWRcBG2kxz8rR+iX/nstKiD7oBIYGVKBQ
- ZyHQ==
-X-Gm-Message-State: AOJu0YxH9fbv7My8gZRvD2L7ZtGtMmTnurFPf6VBbLT0aRvJgUOfQjmZ
- zgdpTHjDxGd2VuTNr27aY+syiu6ROpIKk6VabhCqgJcmWF1eY51rPSZI622mZFU=
-X-Received: by 2002:a05:6402:5245:b0:560:5d7e:4061 with SMTP id
- t5-20020a056402524500b005605d7e4061mr2612761edd.29.1707141841944; 
- Mon, 05 Feb 2024 06:04:01 -0800 (PST)
+ bh=HVbRqMnYEeQsQiEDTFTHE/RBaF3wOwp5DqDF4yy/N3Q=;
+ b=qbOz7NLOdmoaZeJOGaxEIJTASxHtjMNwpbcAr65NhfQ5WTH273nUQfih1PAAXnq/+Z
+ 0d64xMsUMeg89ycClRcSpsfyQwawCPZhoISPWt7ZZYcquGzCiHcG/eJ87Khb790iLywK
+ /ohhqEchzQRPkBXE1zRHZQdf+2Qh2Gh4uA60SBD2De0hymjXV/7YvTkjv8f2qJhYQknY
+ vVrO9kXEx5AsuFUI7m3a1hEi1FJea3twi5oyUEaA4NLAiDUcFQ21nkY6tHc2K/oHUwkX
+ 85s4joicje/pQqOJFtj55STvp+C6+IPtISH3XpTIIq6eDHzCwMm4KUnMJeIbnPYxO7dg
+ 07hw==
+X-Gm-Message-State: AOJu0YywGV0WPHN8eY4gmHR3qZHxHFPcykUU6LSpyqM63KUQvgQoc7Nc
+ Tqx1pIYP332HtO57PTIyoY0UpLmkcxmLJcFbpa2jh/FW5HaHHc19lmCQZXzLEMk=
+X-Received: by 2002:a05:600c:4507:b0:40f:df31:6cac with SMTP id
+ t7-20020a05600c450700b0040fdf316cacmr69897wmo.4.1707141162022; 
+ Mon, 05 Feb 2024 05:52:42 -0800 (PST)
 X-Forwarded-Encrypted: i=0;
- AJvYcCXIWNZBuxzeRp7c2tz9tmaGe/oJUFBhTJE0rEJGvRcHB9joYcvYwGeoBGNIaLtRcnEP43cpq3pkb1d6ORIRBy6Yra9W/WTvbRHYrlHmySbr5wawbi6jj2h4AkAKes05GPigUExp8/QzeZe13YE9ngalhNIMouQ4Sn6/TaoE1y2VorYgVWtfsMm/HQcRp9177XHqv92QCP6aAfCW8DeDILMEZuYKGelrQBiCBSzqGVCO/NIyQhKLOV9HxTGOJoujtpNMb0IDnlPqzct3rZb/Aeq2Z+KTiwnj7ZUvfp5um6EnJuUHpivWVnbnXJzE1UOIHaxYVAtKZg==
+ AJvYcCWpior6GQUz12W/5pOp0gKAtrNIgbZJlZ14UXG8yRyg8wZvOQS6SFLqaKOs7Gb1VmRaPe4lATM9Cab2uIavTAF4Ki3qsH3WH68WKA0dU8faR/Oyvyfz4wN3DvjX/0BkV0L3Oj8CT5PGfF1ZjGXq+N3OyC8+jBwO8IxMFlchEcbGpMAjQpZ2tvffyD559Fd+jXXVbc2hfkQ63sQgtzharAGoBZq0zFgMWLnc5QtdD3LweIwkVoz4AENjxghdoG8lP22W+rxHHsVaqQEF427TLJ3RI1SJV9GDGXI=
 Received: from [192.168.197.175] ([92.88.170.125])
  by smtp.gmail.com with ESMTPSA id
- g9-20020aa7d1c9000000b005606b3d835fsm1002764edp.50.2024.02.05.06.04.00
+ k26-20020a05600c1c9a00b0040fd3121c4asm6753455wms.46.2024.02.05.05.52.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Feb 2024 06:04:01 -0800 (PST)
-Message-ID: <f20a325e-7998-4065-b4ed-d43da7d4b5df@linaro.org>
-Date: Mon, 5 Feb 2024 15:03:59 +0100
+ Mon, 05 Feb 2024 05:52:41 -0800 (PST)
+Message-ID: <909745ef-b3dd-4af0-b4dc-e2be9e76cd83@linaro.org>
+Date: Mon, 5 Feb 2024 14:52:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] Add device DM163 (led driver, matrix colors shield &
- display)
+Subject: Re: [PATCH 3/3] tests/qtest : Add testcase for DM163
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
  qemu-devel@nongnu.org
@@ -105,22 +104,22 @@ Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  Samuel Tardieu <sam@rfc1149.net>, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+ Laurent Vivier <lvivier@redhat.com>
 References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+ <20240126193657.792005-4-ines.varhol@telecom-paris.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240126193657.792005-4-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,48 +134,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A6af+xPNDgRJ
+X-TUID: yVtjBWxvRuer
 
 Hi Inès,
 
 On 26/1/24 20:31, Inès Varhol wrote:
-> This device implements the IM120417002 colors shield v1.1 for Arduino
-> (which relies on the DM163 8x3-channel led driving logic) and features
-> a simple display of an 8x8 RGB matrix.
+> `test_dm163_bank()`
+> Checks that the pin "sout" of the DM163 led driver outputs the values
+> received on pin "sin" with the expected latency (depending on the bank).
 > 
-> This color shield can be plugged on the Arduino board (or the
-> B-L475E-IOT01A board) to drive an 8x8 RGB led matrix.
-
-Nice. Do you have an example? Or better, a test :)
-
-> This RGB led matrix takes advantage of retinal persistance to
-> seemingly display different colors in each row.
-> 
-> It'd be convenient to set the QEMU console's refresh rate
-> in order to ensure that the delay before turning off rows
-> (2 frames currently) isn't too short. However
-> `dpy_ui_info_supported(s->console)` can't be used.
-
-Cc'ing Marc-André Lureau.
-
-> I saw that Kconfig configurable components aren't visible in C files,
-> does that mean it's impossible to make the DM163 device optional when
-> using the B-L475E-IOT01A board?
-
-You could (but shouldn't) use for build-time:
-
-   #include CONFIG_DEVICES
-
-But better at run-time using [module_]object_class_by_name().
-
-> Based-on: 20240123122505.516393-1-ines.varhol@telecom-paris.fr
-> ([PATCH v3 0/3] Add device STM32L4x5 GPIO)
+> `test_dm163_gpio_connection()`
+> Check that changes to relevant STM32L4x5 GPIO pins are prpagated to the
+> DM163 device.
 > 
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
-> 
-> Inès Varhol (3):
->    hw/display : Add device DM163
->    hw/arm : Connect DM163 to STM32L4x5
->    tests/qtest : Add testcase for DM163
+> ---
+>   tests/qtest/dm163-test.c | 192 +++++++++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build  |   1 +
+>   2 files changed, 193 insertions(+)
+>   create mode 100644 tests/qtest/dm163-test.c
 
+
+> +static void test_dm163_gpio_connection(void)
+> +{
+> +    QTestState *qts = qtest_init("-M b-l475e-iot01a");
+
+This machine is only available in ARM binaries, ...
+
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    g_test_init(&argc, &argv, NULL);
+> +    qtest_add_data_func("/dm163/bank0", (void *)0, test_dm163_bank);
+> +    qtest_add_data_func("/dm163/bank1", (void *)1, test_dm163_bank);
+> +    qtest_add_func("/dm163/gpio_connection", test_dm163_gpio_connection);
+> +    return g_test_run();
+> +}
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 5692da4fc1..e9f6ac46ef 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -22,6 +22,7 @@ qtests_generic = [
+>     'qos-test',
+>     'readconfig-test',
+>     'netdev-socket',
+> +  'dm163-test',
+... so I'd expect the test to be restricted to ARM & DM163
+availability:
+
+-- >8 --
+@@ -206,2 +206,3 @@ qtests_stm32l4x5 = \
+  qtests_arm = \
++  (config_all_devices.has_key('CONFIG_DM163') ? ['dm163-test'] : []) + \
+    (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : 
+[]) + \
+---
+
+BTW please consider enabling scripts/git.orderfile to ease reviewing
+your series :)
+
+Regards,
+
+Phil.

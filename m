@@ -1,162 +1,234 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1162924ejb;
-        Mon, 5 Feb 2024 06:25:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFSq6Zhf7IY6qQfgnr5ZDxRWbmCBxyMlSqeaEaS5eSUbUDqXWKq9ZzbLhsKBSeEhLkXIXnK
-X-Received: by 2002:ac8:408b:0:b0:42a:ad1d:e6f9 with SMTP id p11-20020ac8408b000000b0042aad1de6f9mr6572012qtl.60.1707143145571;
-        Mon, 05 Feb 2024 06:25:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707143145; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1237183ejb;
+        Mon, 5 Feb 2024 08:24:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGIa5WnpvdBqEChAjrNh2ioYC+0qlhjGBcnFNmCMGVKmE275YybZjIOiI9C0yxhCDWvnYGU
+X-Received: by 2002:ac8:5807:0:b0:42c:7da:9bee with SMTP id g7-20020ac85807000000b0042c07da9beemr7449508qtg.22.1707150253657;
+        Mon, 05 Feb 2024 08:24:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707150253; cv=none;
         d=google.com; s=arc-20160816;
-        b=e1MAe4/mj08vArjc1xl7d1YgawWQCmKGIntByzO7myY071edsK5bwVcWj9qg8w2wbk
-         Wtibx4D0d6s/NygiuGirvDjS6xHqYx9Pxr/G/srmN9lkUt8VFqt4DpCIqmSFVDrxVgwL
-         BrS8NB5tIb6QhKNQdjuXhGLz0/a/CcETr8i8COeJy/KoyIhzNGQ9rUHQMDsgKPQ0btkn
-         DeE1iioab7myKgqrItk/vfOZAuBJfXiAKBIabXS0zRYkp6IOb2i5ddp6RZeq4/V+ML6Z
-         f982fQZ1WKQQEB9s+s0qP/qGcXintK2t/PSPRj+B0HO1V3ZN4xINWzb1X+DT91N6gjQL
-         f3nQ==
+        b=NaZt3geAM3eul1sS8/+t1brpexorEJOcXGeXIGJIv9zP6HRUmgsxcYeVaIz3wpyE9V
+         E6gJc+ZXB7B1jyDCEbNqHdYJZ7/rxHNtttJJP526yIshQ8V+88v794E5eLHEXfWmoRMR
+         DDSoBZ5Yy4jkl+DYpBGSQAF3o1FG+Y1s+BQ8YGii+/RS0GgLGWfW9CB+rjSeh979AZt/
+         IYZgzJq/5XjfmnYugfndGKzlpb4AIFw62KZWG6V+ZOqFJk2auR0ADpM3GSMKkQ9jFdLt
+         A4tKvaEdLei9f/WuYnoq/jWK8+/2OdhPa6uD+/f/8vJ/VuNpjcdyzESFQ7CNy2tGnajM
+         C8uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=NhRwfXN0hDUwfush7jIVHmU0MYw8BgomwkSFxxTx92o=;
-        fh=BzWVr0m8SwZyr3ia/Ap9LWIw/XoHYEvEjJDa0jBLpHk=;
-        b=MEGrMC5NQPQfrLIwjhYJs3wDnMj97neub1EsSPi9ieHgTIJGK/5E/CjXvSmhf2y5Hx
-         B6QV2iUylQY8evV5N676VnIvV7P8hh20z6jMawuJirYfD5SSEm4TwjjcXY5Ed/I+y4Aa
-         0iFdScSMv0CiWXEENRNfoXR5LZ6ysT/uvr22A2sMUHGyZ45qw2g6eaZBQH0GI/Zf8EAJ
-         UmkCLSedJ4p6M5hhBjl07/HTdwqcAZ71L03SbmJ0dv6RuYyhzJ93cs9uBrhHZ0Svs3nK
-         QZ/MDjHalVfVIPgm3OSNYpNVRioLBvaPLnWOXQMSxsk1D+jXQKFbgGJC0m319kAj2t3u
-         Ha2Q==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=UVUzUhq1mlN9+ApWt8fAm937WttibYcQ3x62aI1sh8Y=;
+        fh=wkjAZZRVIbuM0fK36O7OqN95bGACuJAI82LrThyKkyw=;
+        b=YYC+Qy2VbHHkVoDQvJOzjHy/rLMDZytIxM4Q1hHVBDjqfp33GSfMwozU1ZBzr6EHq9
+         coooxWRzBd1b5X7TJsUKWENwXei66uEzX8o7nR5ovoJFyxrTG4xsQPX2HvTNt04z2Syh
+         AOKPqGXEkkBHUs1a+BRv/JWxLNAVnmroRIxbk6mAwrB1HLi43ZjuUQx8T3zf+HJK7Li6
+         ILbj1wIHedvho7dTJBHLjnIbu+jWYeZrBkUUhUKesTaid1xEJw160m2Vj0BwfKauasTv
+         X1HIys6NEcxDDqaY1Dr8dMM/+iqQH1PBkET8cKBbL0p5N7nAViBsQB+G63XhZkY9Mjck
+         tyiA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCVEyDgp061gZvqNdxcrKRPAzWpzbWSTfN9qTtZsQOs0jgrm6cu6iNPUiyi7M+xD0VEhQx6BHyNmkDr8QFHzOW0YQG1M4iEm
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Udh8gtb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Forwarded-Encrypted: i=0; AJvYcCV3JHb4jLuuWA4o8aGK91z4ydh1c/L+N8QROdG5mQeGoHpDWVUztIa3T+MQaRF6K2bq01hCqCRW7sqidURhFtKCJ+48RWeB
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20-20020ac87f94000000b0042ab594e31esi8773916qtj.361.2024.02.05.06.25.45
+        by mx.google.com with ESMTPS id u15-20020a05622a14cf00b0042c1258cedesi168149qtx.547.2024.02.05.08.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Feb 2024 06:25:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Feb 2024 08:24:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Udh8gtb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rWzuZ-00020X-Ek; Mon, 05 Feb 2024 09:25:27 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rX1kx-0005Wq-H7; Mon, 05 Feb 2024 11:23:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWzuW-0001yN-CV; Mon, 05 Feb 2024 09:25:24 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rX1kv-0005WL-9c
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 11:23:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWzuT-0004N0-IS; Mon, 05 Feb 2024 09:25:23 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TT7vH3vF3z4wxx;
- Tue,  6 Feb 2024 01:25:15 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TT7vF2nZ7z4wp3;
- Tue,  6 Feb 2024 01:25:13 +1100 (AEDT)
-Message-ID: <30e7e323-369b-4ee3-994e-a6cb9205a4f9@kaod.org>
-Date: Mon, 5 Feb 2024 15:25:10 +0100
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rX1ks-0000Qo-2g
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 11:23:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1707150212;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UVUzUhq1mlN9+ApWt8fAm937WttibYcQ3x62aI1sh8Y=;
+ b=Udh8gtb5uJiws87G0VUmvceQcSE8VmktxzJ6mCNMq83IDh8lhl3W8VFM4PLRSrdKwRzTL0
+ UKMrWqVEIJmaUzzJ0UF6G0CACeeAQ5bsUX+BHlBSwwvsmtU0044rgc/Vhwc+GuJT1ZIjAy
+ L4xjWiBP4J8+tkMA9WKD1TBmLE7KJ6M=
+Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
+ [209.85.217.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-204-oqo7VwjSMZ6vIgOley62GQ-1; Mon, 05 Feb 2024 11:23:31 -0500
+X-MC-Unique: oqo7VwjSMZ6vIgOley62GQ-1
+Received: by mail-vs1-f72.google.com with SMTP id
+ ada2fe7eead31-46d3a2ac07aso126182137.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 08:23:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707150210; x=1707755010;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UVUzUhq1mlN9+ApWt8fAm937WttibYcQ3x62aI1sh8Y=;
+ b=l7KrBt59fydJ4tUq6DEpeFPNrhPVArUgzk9E9HX0iL/8hEqYCGdX1dP1NsBTJClLHy
+ 2wj7lCmJww0/2OxjQVUKycnIKvZfCxI8jYT9gyedRP3v6VN9TvFT13TreMv4+xv7yA5Y
+ hEt07TIntCPwOKF1y4J6VXLauPmhtwx5uh39V3Y5aXt/B/chws3MxHxaC8Eloboq24lp
+ 0oFVCPFKa8PYvUB4CeIKl0jE8hyrYoteNs9gUT0kwQkAcnCSSb6jFP+jOwtmfIW3iA+g
+ P1zfSOLXkfEWV9VXE6DgaU2oPh1sQ5HFn/96bqTPbv5j9VjzSmpj699//B3+c2km+g5b
+ ehsA==
+X-Gm-Message-State: AOJu0Yw4i2YfRNS2rvEhsZ7LRXJnWZpFbr7UleM8yZBeKBUrhy4aXm0l
+ mSrMfAzAqkxJTigN2gwISwXuac63ifhTX0cQ7US3jkc6sYDuqiELT5fs//3VKGkmM2T9SKTkth9
+ 66z0yDzsOQ0mgT3h7DN54Uz7oP+PFqYuMGvfOqez0+/sXi1thbg==
+X-Received: by 2002:a05:6102:34e3:b0:46d:238b:7b5e with SMTP id
+ bi3-20020a05610234e300b0046d238b7b5emr367973vsb.0.1707150210659; 
+ Mon, 05 Feb 2024 08:23:30 -0800 (PST)
+X-Received: by 2002:a05:6102:34e3:b0:46d:238b:7b5e with SMTP id
+ bi3-20020a05610234e300b0046d238b7b5emr367946vsb.0.1707150210348; 
+ Mon, 05 Feb 2024 08:23:30 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCXsVaHsdJfNi+Cg71oYIhYjE+4RFgkOymurVRQPyHJRwqsoHhwYfsQqtH8PnyN+uYWbzjJ/X4zcwPZJDORKWZr7Qwde9ADvkWhuTCokk1Ys4Ky8awM/8Y2YPtlAT+i+nN6qFS60CxLlGZazfNZxKl0CDfiDd+IZdIU1p3LqVDLT/hYQ1TlstSDV/rfRSMWxkKiji5sGfS4KOfvrMFtJgegL4eYxVSio2lo2YPfarFc/eTOAldSzCBJZpQnwAtyhvHBUkLNp0TDCUKrBF9XkhS+rgqp4xcaM0d/OLaE/eeshp31tFhbNov1sQg8U4CHEGOmavj9o
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ j20-20020a0cf514000000b0068c440bc7d0sm109511qvm.105.2024.02.05.08.23.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Feb 2024 08:23:29 -0800 (PST)
+Message-ID: <e5c70c36-d309-4a28-8649-67cfb701dd4c@redhat.com>
+Date: Mon, 5 Feb 2024 17:23:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v0 1/2] aspeed: support uart controller both 0 and 1 base
+Subject: Re: [PATCH v2 1/3] virtio-iommu: Add an option to define the input
+ range width
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, peter.maydell@linaro.org,
+ zhenzhong.duan@intel.com, yanghliu@redhat.com, mst@redhat.com,
+ clg@redhat.com, jasowang@redhat.com
+References: <20240201163324.564525-1-eric.auger@redhat.com>
+ <20240201163324.564525-2-eric.auger@redhat.com>
+ <20240205101322.GA2086490@myrica>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240205101322.GA2086490@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20240205091415.935686-1-jamin_lin@aspeedtech.com>
- <20240205091415.935686-2-jamin_lin@aspeedtech.com>
- <aab5b2fb-e7f0-434b-935c-ff5ad5d39f21@kaod.org>
-In-Reply-To: <aab5b2fb-e7f0-434b-935c-ff5ad5d39f21@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=XBpg=JO=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.285,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QyjTRE1PlHRi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: htbJFqlfMNOy
 
-On 2/5/24 11:46, Cédric Le Goater wrote:
-> Hello Jamin,
-> 
-> On 2/5/24 10:14, Jamin Lin wrote:
->> According to the design of ASPEED SOCS, the uart controller
->> is 1 base for ast10x0, ast2600, ast2500 and ast2400.
+Hi Jean,
+
+On 2/5/24 11:13, Jean-Philippe Brucker wrote:
+> Hi Eric,
+>
+> On Thu, Feb 01, 2024 at 05:32:22PM +0100, Eric Auger wrote:
+>> aw-bits is a new option that allows to set the bit width of
+>> the input address range. This value will be used as a default for
+>> the device config input_range.end. By default it is set to 64 bits
+>> which is the current value.
 >>
->> However, the uart controller is 0 base for ast2700.
->> To support uart controller both 0 and 1 base,
->> adds uasrt_bases parameter in AspeedSoCClass
->> and set the default uart controller 1 base
->> for ast10x0, astt2600, ast2500 and ast2400.
-> 
-> The board definition can set 'amc->uart_default' to choose a different
-> default serial port for the console, or use the "bmc-console" machine
-> option . Isn't it enough ? May be I am misunderstanding the need.
-> 
-> To clarify,
-> 
-> ASPEED_DEV_UART1 is in the first serial port on the boards.
-> 
-> I think we chose to start the indexing at 1 because the Aspeed QEMU
-> modeling began first with the UART model (console) and for simplicity,
-> we copied the definitions of the device tree from Linux :
-> 
->      serial0 = &uart1;
->      serial1 = &uart2;
->      serial2 = &uart3;
->      serial3 = &uart4;
->      serial4 = &uart5;
->      serial5 = &vuart;
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>>
+>> v1 -> v2:
+>> - Check the aw-bits value is within [32,64]
+>> ---
+>>  include/hw/virtio/virtio-iommu.h | 1 +
+>>  hw/virtio/virtio-iommu.c         | 7 ++++++-
+>>  2 files changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+>> index 781ebaea8f..5fbe4677c2 100644
+>> --- a/include/hw/virtio/virtio-iommu.h
+>> +++ b/include/hw/virtio/virtio-iommu.h
+>> @@ -66,6 +66,7 @@ struct VirtIOIOMMU {
+>>      bool boot_bypass;
+>>      Notifier machine_done;
+>>      bool granule_frozen;
+>> +    uint8_t aw_bits;
+>>  };
+>>  
+>>  #endif
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index ec2ba11d1d..7870bdbeee 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -1314,7 +1314,11 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>       */
+>>      s->config.bypass = s->boot_bypass;
+>>      s->config.page_size_mask = qemu_real_host_page_mask();
+>> -    s->config.input_range.end = UINT64_MAX;
+>> +    if (s->aw_bits < 32 || s->aw_bits > 64) {
+> I'm wondering if we should lower this to 16 bits, just to support all
+> possible host SMMU configurations (the smallest address space configurable
+> with T0SZ is 25-bit, or 16-bit with the STT extension).
+I have no objection relaxing that check. Alex suggested this 32b low
+limit with his knowledge of x86. I am a bit reluctant to add extra
+machine specific checks though. Anyway I assume that some [low] aw-bits
+will fail with some guests and this will be difficult to understand from
+bug reports.
 
-The uart definitions on the AST2700 are different :
-   
-   https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-g7.dtsi
+Thanks
 
-	serial0 = &uart0;
-	serial1 = &uart1;
-	serial2 = &uart2;
-	serial3 = &uart3;
-	serial4 = &uart4;
-	serial5 = &uart5;
-	serial6 = &uart6;
-	serial7 = &uart7;
-	serial8 = &uart8;
-         ...
+Eric
+>
+> Thanks,
+> Jean
+>
+>> +        error_setg(errp, "aw-bits must be within [32,64]");
+>> +    }
+>> +    s->config.input_range.end =
+>> +        s->aw_bits == 64 ? UINT64_MAX : BIT_ULL(s->aw_bits) - 1;
+>>      s->config.domain_range.end = UINT32_MAX;
+>>      s->config.probe_size = VIOMMU_PROBE_SIZE;
+>>  
+>> @@ -1525,6 +1529,7 @@ static Property virtio_iommu_properties[] = {
+>>      DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
+>>                       TYPE_PCI_BUS, PCIBus *),
+>>      DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+>> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
+>>      DEFINE_PROP_END_OF_LIST(),
+>>  };
+>>  
+>> -- 
+>> 2.41.0
+>>
 
-I think the names in the DT (and consequently in the QEMU models)
-follow the IP names in the datasheet.
-
-I don't think we care in QEMU, so I would be inclined to change the
-indexing of the device names in QEMU and start at 0, which would
-introduce a discrepancy for the AST2400, AST2600, AST2600 SoC.
-
-Let's see what the other maintainers have to say.
-
-Thanks,
-
-C.

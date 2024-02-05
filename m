@@ -1,90 +1,126 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1130387ejb;
-        Mon, 5 Feb 2024 05:35:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGfOlzf81OHS+ZXoH9fV3Mf6xwjAQEAl11xC86XeAd9genZAoRzjOzbMpdDdFaAhrciZwcC
-X-Received: by 2002:a05:6830:1d62:b0:6e1:ff3:d369 with SMTP id l2-20020a0568301d6200b006e10ff3d369mr13495337oti.25.1707140113084;
-        Mon, 05 Feb 2024 05:35:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707140113; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1148317ejb;
+        Mon, 5 Feb 2024 06:04:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG99OaRBNCJ+Q1QFpuNjNZRF1jfDjDw4BkTcVsr4h6tJTRjBTs9zVXJrBXhZkRIAnMgZU8b
+X-Received: by 2002:a05:620a:102b:b0:783:d709:54a3 with SMTP id a11-20020a05620a102b00b00783d70954a3mr13756985qkk.32.1707141894704;
+        Mon, 05 Feb 2024 06:04:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707141894; cv=none;
         d=google.com; s=arc-20160816;
-        b=nlvdpd/CyeaCFXvL4VkFsOuWlS919mLuppuNSq6ioJshkyfooFsNV8Iit2Sgdgue7v
-         Err/ZoNqud9w3ppzy0qdK2H2z5K3sZfK64rPLeuRNRyc4BA8CP29gHoc4xEEGIjpLZML
-         Gt0UXYlf/XtwoQqlZ3eY4LJ9nuOWzbjIP9SN+wT7K395MozjQhdX8sAWEuD8W5BevK2G
-         69T5hf2x4kiHu92WA4s3s8D+XKk+gNKAB65paJ/5kXMF2hHZuIpzoiKHFTX0/x8kIMjR
-         IIlV2BEZfU+P1hpJU9CW1vv13MgFwNQnIseVPX4dWw1A/M1h1Kz2VkLe9Hk6K6BkipiK
-         jolw==
+        b=SBB5E7+U76Y76nJ4NGeB2K731ZXhDz2bWjJZ5gtzJcpeHnrVcFv9frfILtKuI/4Pi4
+         XFseS/zjqQZ6YSLqYPGnR9nk76UA3JiFHmsss7binDlv+7Zn6MV1HoWbb7a1wqDG3Qon
+         nFqQdZ6zrPhz4F7X0FegM5o/mlTBRMH4/jiQctI5R0y/hZR/wDVENGa3JjMLv+kJ4ue2
+         UH2GFuhVxNkO3h0+cCovBxZ4oUHW31Q/9sE1RCf+7xr2/vDR6mnQIZqxyYxriT2WoXHL
+         7I5eOIvPwoTQ/DZt9pdECZWUrOX6x95YtPwL7Cexbe7qDSuxKkwFhxEOL5dVku6vwp1u
+         X3gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=b9H5VwlguMsjQWFMLAeqleJBMNsjUUOE/3TqNNHZIyI=;
-        fh=KMzqgv9TNlCcvYcEFQfb8tfTG18MToJSM5w7/gFkEB0=;
-        b=gemdxI7DNxrLPRCrQwf4YxpvusnFCP7GJvovzhgBUrl12toh5OuHvJzAQHcoMwJmhe
-         PzFtBixo94LOOI/2Z3mjuEnpdkokk2klhvIea9vLpiWYeA98uuBZnsaUZ7jqc4/p4sYv
-         YyEnyMr+mllvokEUKZnRWtPmboxULGFu6H7gVYmcAr2oW9/x9+eWBxVE5L/7633cKXQS
-         3RWZwV2n+WXsmw0gd5lM0ff7hg6Uw6pUh5DksO+nqsdQTuPVptSTWxPS+66Lcr4CzisF
-         fIzA8AQGObKUwUw4XhOz7vo5oFZEZi5V33lJDJNOwOrjLG8c6YOt8Mq4i8r5VDsmWr9U
-         Zfqg==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
+        fh=xbyuh46pQq674avqXqLJecsbHeLww+nlvgBE1RGY9Ak=;
+        b=N6u0pWVyIMjbklMHpkzZbWLgEuKec/ylXXxyvsakyyU+1Iz4veY8C43hUYizHSMOTM
+         jRXs0CBcttOuiqe9oyjWNnwS7Nw+ykLNQivQjWjkkMrcthcwRJe7iAUx7O+TCfcR6O0j
+         5MYp8j4hKVweDSa6TE9LAaFcUoSEoncmJIq/etIasSGko2t5I+oxrUtUt5GKMvf8GpRJ
+         uv4spA9czMe66bPDLozz4KCve0Vp3rpwWk1LMxltZLf7aMbPUmCm0duMEkraK80502UB
+         6W3BlgTO3DKLV+J2bvzeM1fQdqvkd+QcHslkX8x4JhMbBXKhKoryWIzt71p9uG4eIAxh
+         r3DQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCWzcFgDzRx7ibmTRfSy9oRQ8XCY3uLXx18j3MxwVdjf/EW5t0FgzGOQcPbrACMNJ/zKpG6Ndnyjn6vADKRChctSl03TlPR4
+       dkim=pass header.i=@linaro.org header.s=google header.b="H+j/fl55";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCWO177JD8XBKfBx3p8p4R2CWACW374HGtnliDQXy0/ArskPnLHozuhsTkdeFlFqR4OtzCiBvErSYN/F0Z8wRwB+ebv3iIFb
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19-20020ac85e13000000b0042aa458abcasi8503634qtx.215.2024.02.05.05.35.12
+        by mx.google.com with ESMTPS id b21-20020a05620a04f500b0078553473225si8270695qkh.419.2024.02.05.06.04.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Feb 2024 05:35:13 -0800 (PST)
+        Mon, 05 Feb 2024 06:04:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="H+j/fl55";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rWz7f-0002AC-EP; Mon, 05 Feb 2024 08:34:55 -0500
+	id 1rWza1-0004GQ-SU; Mon, 05 Feb 2024 09:04:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWz7c-000293-PH; Mon, 05 Feb 2024 08:34:52 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=XBpg=JO=kaod.org=clg@ozlabs.org>)
- id 1rWz7Z-000352-Mp; Mon, 05 Feb 2024 08:34:51 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TT6n02Kfnz4wp3;
- Tue,  6 Feb 2024 00:34:44 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TT6mx5m1hz4wcC;
- Tue,  6 Feb 2024 00:34:22 +1100 (AEDT)
-Message-ID: <7b35d498-0669-4b54-8111-a598b60981a1@kaod.org>
-Date: Mon, 5 Feb 2024 14:34:18 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzZu-0004FI-BW
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 09:04:06 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rWzZr-0000Je-Sw
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 09:04:05 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-55ff4dbe6a8so3540109a12.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 06:04:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707141842; x=1707746642; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
+ b=H+j/fl551/3zaS3CzjasbUAVlPf6QJbh4FWGlWiaLgwvL6i2JSpC1TYm9pfgyiZJmu
+ rJUpRCIFK2HVHBXyHf+gsK+pkVJc7srp3AAo9n1BaELskn35aeKsH4upKZfnw2rP1H8B
+ UR+GLspnn3MIxCd79GOYfliX99JOjd+nqGQ+D7zvxiFaw/7zaV4dh3aQ8cnaxxYO3jSN
+ HRZtv9gFnjuHgglC04IBZrj9Jd8K2SA94jQ80BUducgDmkWTGaSdqnUpUhhnZik33/Gl
+ Y+xRHzAXv+2dZYR+yhcWvCTVdXg/72+1EynVMib9l4aIvAaD69pAPh4d8p2lYzB3sOwT
+ aOyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707141842; x=1707746642;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RhzBM03iuYGJapSmajdfOvxaccvCR3jZDmUfTcGvZoQ=;
+ b=B00gDnBilHuMiYeiRG6+mPTFgdMvylNKw8R2Z8cHK3UMGSf6TbReV5F6gw923P7+vS
+ IEl9B/K3ygUHVKQ9NlFzSPFm2VFEQJnshAr+C/oIGWQozn52sUO/CX+TOaQUHyn+6IOb
+ tD6JtT38zhMrlMhKh7MT+iEY4B7zkkcPGlKPLsrCl6LhLcvDqgZrpEX5ebz7GZoQBbz8
+ gzYC+07nX1f2ygW88qtkAXOtwEqQyZd819b7IA9SjWvHSNBgtqYJ/12Ji/LTbsk1KVjR
+ f7kWdP77hIcr2MuNlyseVH/ZVaTVAQ5QKxuJWRcBG2kxz8rR+iX/nstKiD7oBIYGVKBQ
+ ZyHQ==
+X-Gm-Message-State: AOJu0YxH9fbv7My8gZRvD2L7ZtGtMmTnurFPf6VBbLT0aRvJgUOfQjmZ
+ zgdpTHjDxGd2VuTNr27aY+syiu6ROpIKk6VabhCqgJcmWF1eY51rPSZI622mZFU=
+X-Received: by 2002:a05:6402:5245:b0:560:5d7e:4061 with SMTP id
+ t5-20020a056402524500b005605d7e4061mr2612761edd.29.1707141841944; 
+ Mon, 05 Feb 2024 06:04:01 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCXIWNZBuxzeRp7c2tz9tmaGe/oJUFBhTJE0rEJGvRcHB9joYcvYwGeoBGNIaLtRcnEP43cpq3pkb1d6ORIRBy6Yra9W/WTvbRHYrlHmySbr5wawbi6jj2h4AkAKes05GPigUExp8/QzeZe13YE9ngalhNIMouQ4Sn6/TaoE1y2VorYgVWtfsMm/HQcRp9177XHqv92QCP6aAfCW8DeDILMEZuYKGelrQBiCBSzqGVCO/NIyQhKLOV9HxTGOJoujtpNMb0IDnlPqzct3rZb/Aeq2Z+KTiwnj7ZUvfp5um6EnJuUHpivWVnbnXJzE1UOIHaxYVAtKZg==
+Received: from [192.168.197.175] ([92.88.170.125])
+ by smtp.gmail.com with ESMTPSA id
+ g9-20020aa7d1c9000000b005606b3d835fsm1002764edp.50.2024.02.05.06.04.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Feb 2024 06:04:01 -0800 (PST)
+Message-ID: <f20a325e-7998-4065-b4ed-d43da7d4b5df@linaro.org>
+Date: Mon, 5 Feb 2024 15:03:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v0 2/2] aspeed: fix hardcode boot address 0
+Subject: Re: [PATCH 0/3] Add device DM163 (led driver, matrix colors shield &
+ display)
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20240205091415.935686-1-jamin_lin@aspeedtech.com>
- <20240205091415.935686-3-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240205091415.935686-3-jamin_lin@aspeedtech.com>
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Samuel Tardieu <sam@rfc1149.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=XBpg=JO=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,61 +135,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nWxaBFj4cYqi
+X-TUID: A6af+xPNDgRJ
 
-On 2/5/24 10:14, Jamin Lin wrote:
-> In the previous design of QEMU model for ASPEED SOCs, it set the boot
-> address at 0 which was the hardcode setting for ast10x0, ast2600,
-> ast2500 and ast2400.
+Hi Inès,
+
+On 26/1/24 20:31, Inès Varhol wrote:
+> This device implements the IM120417002 colors shield v1.1 for Arduino
+> (which relies on the DM163 8x3-channel led driving logic) and features
+> a simple display of an 8x8 RGB matrix.
 > 
-> According to the design of ast2700, it has bootmcu which is used for
-> executing SPL and initialize DRAM, then, CPUs(cortex-a35)
-> execute u-boot, kernel and rofs. QEMU will only support CPU(coretax-a35)
-> parts and the boot address is "0x400000000" for ast2700.
+> This color shield can be plugged on the Arduino board (or the
+> B-L475E-IOT01A board) to drive an 8x8 RGB led matrix.
 
-On the previous SoC, the ASPEED_DEV_SPI_BOOT region is an alias, at 0x0,
-to the FMC CE0 region, mapped at 0x20000000.
+Nice. Do you have an example? Or better, a test :)
 
-Is 0x400000000 (or 0x40000000 ?) the address for FMC CE0 region on the
-ast2700 ? or an alias ?
-
-What is the cortex-a35 reset address ?
-
-It would help to also introduce a basic skeleton of the ast2700 SoC.
-
-Anyhow, this change makes sense. Could you please respin and also
-remove ASPEED_SOC_SPI_BOOT_ADDR. ?
-
-Thanks,
-
-C.
-
-> Therefore, fixed hardcode boot address 0.
+> This RGB led matrix takes advantage of retinal persistance to
+> seemingly display different colors in each row.
 > 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+> It'd be convenient to set the QEMU console's refresh rate
+> in order to ensure that the delay before turning off rows
+> (2 frames currently) isn't too short. However
+> `dpy_ui_info_supported(s->console)` can't be used.
+
+Cc'ing Marc-André Lureau.
+
+> I saw that Kconfig configurable components aren't visible in C files,
+> does that mean it's impossible to make the DM163 device optional when
+> using the B-L475E-IOT01A board?
+
+You could (but shouldn't) use for build-time:
+
+   #include CONFIG_DEVICES
+
+But better at run-time using [module_]object_class_by_name().
+
+> Based-on: 20240123122505.516393-1-ines.varhol@telecom-paris.fr
+> ([PATCH v3 0/3] Add device STM32L4x5 GPIO)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 218b81298e..82a92e8142 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -289,12 +289,14 @@ static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
->                                       uint64_t rom_size)
->   {
->       AspeedSoCState *soc = bmc->soc;
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(soc);
->   
->       memory_region_init_rom(&bmc->boot_rom, NULL, "aspeed.boot_rom", rom_size,
->                              &error_abort);
->       memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
->                                           &bmc->boot_rom, 1);
-> -    write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
-> +    write_boot_rom(blk, sc->memmap[ASPEED_DEV_SPI_BOOT],
-> +                   rom_size, &error_abort);
->   }
->   
->   void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> 
+> Inès Varhol (3):
+>    hw/display : Add device DM163
+>    hw/arm : Connect DM163 to STM32L4x5
+>    tests/qtest : Add testcase for DM163
 

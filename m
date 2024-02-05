@@ -1,177 +1,602 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp100528ejb;
-        Sat, 3 Feb 2024 03:56:39 -0800 (PST)
-X-Received: by 2002:a17:903:11cd:b0:1d8:fb03:a01e with SMTP id q13-20020a17090311cd00b001d8fb03a01emr13421622plh.32.1706961399048;
-        Sat, 03 Feb 2024 03:56:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1706961399; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp833782ejb;
+        Sun, 4 Feb 2024 16:10:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH8i+qKSKYTqiEsjwc3LzPqKzpEiFvm6XI7IMCTMBjhmr3cr+Rk6kpF9e4c8+HEbpw6iota
+X-Received: by 2002:a05:620a:1486:b0:783:fa37:1ffe with SMTP id w6-20020a05620a148600b00783fa371ffemr8996216qkj.40.1707091814557;
+        Sun, 04 Feb 2024 16:10:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707091814; cv=none;
         d=google.com; s=arc-20160816;
-        b=i4zRyBaHJwKi7GDhwpIP5y+qmJZghBBqbZ8NyhASaj2R4/AmZ2b3KRakba0TaEICBf
-         Jz24sJZ5JK59dEaTSHTnw1c8LI1NvBHpqS3jzbqHeuZDlP2/VAOoIBhguYp8NaU/UKJW
-         vnHSN1fPriDWbj6NN8MHNGa0b9UGIXayrVEDBPpx/rvpNYZasS83YiLmpsMueZ49whn2
-         TtpqygW6wDfy/e4X7lI9pqcvzpGxgf/QO3MD14Z34WYMoe/5ZfMVqUyrwMU1uT/xI6NQ
-         VGBqGd1z4DwxF0Fd3KrUyqY911vdXmPCGkCCHSXE0PeuWqJxZdCkIyjv9+NjKJZnYJJp
-         cXCg==
+        b=vTFrWnOrx0kk3AsP2yrfmV9KLpO4PBBWfGe6SuvyXFK7BEQ0mOM+sgDkbNHACmZ/sP
+         N4DAn7qtNLFgp0MjoQBVQWwa8SsQL5XV/48DZQT0Gu2a5ydsQnZ19fJYRfiXne10vflp
+         TEI8xSNalgXGYFBMEf5+HQThC7bYhsL6ewJBEuO5IRF6Odz+bMWrbMgQqHXpPyhd0DAL
+         3U5w2ExGCKKSMgscJT3o33OOgmMEm2U18pNsbfPJGwJrP+VQyoXnwYcperc1JTetxajf
+         XMGTRMpacetF67uwLge4A5pEkRBv6msSj3Fs+1R9x8LqNaxtwfTu+n55kNxaaB470lYb
+         d0Jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=bkQjBftO9m+++qBi2Wr4fsXvHgz/k5Iqw3XhapBO21g=;
-        fh=BlIQGdfdcJVLP7VjRRsDVJE2CTxO0lVKBqNL5Ntpg74=;
-        b=PJzvymhnZStVWT8UTjvQ6AqUeHKlOLAOKNkWTZndEOPiZ+t+IA9Vq4Icte1tVH+Leu
-         HnxMI8J94dKARN3LJR5GbyBd6ypzLImABRjcrmnNO3ai39kyUVNZnfQRwEkXpoDPVlWz
-         zaEksh/x9G0KX8cmHzVf/5iF5rFQLqdiFYz+LaCtQ6Y9rtm8HIn6bQboCu9nd6Ton2xF
-         z2Gimv/xo1zclJwXOiocJFtVN/vYt64I+xC37ENJvleuT4ZlVSjnPuDFbTRuho2viY65
-         FuLvoI5mjZuup5lX/HAFnr2QSkWBDROP9UmzdcgdYBUZIik/RiQ6hVX4Ni1Ix5u+rNi1
-         lnbg==;
+        bh=gUzFHCOJpN3HKFVR4AuVJuPiKGpMrz0euio/avhtkGo=;
+        fh=emkjSHPbZczkanHnNmchLbqf8J08R9ExCT9RLhXX7gw=;
+        b=rK/dzYSaCeg0wrEAYPI6OufoHdUii/8CgVJr3hpUF2CSp6X0zdPrPHXC0KKwLagc6l
+         iJVLtKcoUBFC2rRD92BWl2SvlQya4i0QTL81GqPLtIoWRhgicokqQmfZXjt20K1owdAL
+         mQxWk2GHX3qu91ERmKAGk1eUBfYvD86ibJZ0mmBayMfhHshWpfET6nB0euETUq3uJlbs
+         AKLhjmaNWgIlrvMj9q8dTLG/egeztBvbLo4i6ssYD5ZSVDjU+TucBDr38HvhKUHN8pIt
+         tP1WxfI5/8pd0irFdYmWLvufVHgWn/A8DHtE8W4n2HoQqdYg6VFuurde8veDkqKBRnmm
+         VMxQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="Tf62p1+/";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c9-20020a170902d48900b001d8ffd8481asor2857653plg.15.2024.02.03.03.56.38
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hI8ndN3O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+X-Forwarded-Encrypted: i=0; AJvYcCW4ZDlHWXROiK8D+U6FefWaTvmaN3YgGwaG4u9EMUlpXu+eeE56Tz78jCl7iv809/7DSq3F56WT/UMwPobh1yi9lfa2r+vv
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v23-20020a05620a0a9700b0078401ba2c2esi7094723qkg.128.2024.02.04.16.10.14
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 03 Feb 2024 03:56:39 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 04 Feb 2024 16:10:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="Tf62p1+/";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hI8ndN3O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rWmYp-0003zR-QX; Sun, 04 Feb 2024 19:10:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rWmYo-0003zA-2A; Sun, 04 Feb 2024 19:10:06 -0500
+Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rWmYc-0000hN-40; Sun, 04 Feb 2024 19:10:04 -0500
+Received: by mail-vs1-xe2b.google.com with SMTP id
+ ada2fe7eead31-467ed334c40so1209580137.0; 
+ Sun, 04 Feb 2024 16:09:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1706961398; x=1707566198; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bkQjBftO9m+++qBi2Wr4fsXvHgz/k5Iqw3XhapBO21g=;
-        b=Tf62p1+/1/wLlSHl4La7kp00MeWdiUt6Y6yDDlJWCWw3AJFaHgJc+20bdLvZzzZ7GL
-         nL1DRf7DWWqorjRZ8jLO97E6n5eQL7UaZIml84S6XqqN1Y8aZECaGdhi6Zcvie0u6ISG
-         FJG4MGjKnvOmo1r9lIZBFNci4eJpsDc5L2+wOuW01BfluozE27jmZ+eTWC3oindeJbm2
-         1fYNYBPpb4hbOnVTuYcQKWT7Qg03BLtUplYAQEt4Gb7Ju9I4hAKatHDXZ+Md5ERdwudp
-         +ipPmAS6YJHUoGjJOGrCoH9xsTt94qtoqlyP3w2/lZS+oyhER763cVMRx+u3WBeb1orH
-         9NNw==
+ d=gmail.com; s=20230601; t=1707091792; x=1707696592; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gUzFHCOJpN3HKFVR4AuVJuPiKGpMrz0euio/avhtkGo=;
+ b=hI8ndN3OSAug0fKC8oeY/K3QkPtd7B8l8BiqQOwJ5Hun3G/m49pJS2rpgsci3wHuLm
+ cfZuVEd8t3I6mxEU2Qh4fTjLp1li8mbD0ezTNMCMihchmzGsdQtAC4YHJryGNs+l6ybn
+ Y4Okz2znSDxsuwuj9tpYOpRlVY5ttyNQwfNsq2Qjvkxjrt1HyMD+iX5RUAAodFEVcNaq
+ vhD1TyQfiESlRGthXnRq2mFw+J4jSOY2uQ7P+MAWgIJ4xRuP6YeQVpWAr3eZbhrmD+83
+ y5rpJqj6HGF6qyo74fdOkkey/cq10ijZRptw3SznnMXyjIFg5YQc+LXhXjCDxbYaGdD7
+ zYfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706961398; x=1707566198;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bkQjBftO9m+++qBi2Wr4fsXvHgz/k5Iqw3XhapBO21g=;
-        b=mo00E8McdNtXbFmE1dbX5kim3mJAIYDeF2G0sTr1habZmcr0DsgY+f6aw8AL066RzD
-         ZrfSLLuHL5tzF/NZM2Vy9CcO/45lsk/md0HE+izaBVBm3LgP1QTjHnLOs1MdCUIwM5YZ
-         0XQc4VBfqxYQknXifdXkrADbMafyCFX5d64OrSQ38tr6tOviej/CreeyRU9DmBBuWOL1
-         /zqtQ4eCyJXNj25I7E+lP9bP3E7g6LeYKHhiXcNbdHqfU/a5A6cejZ7x7Y1GBRxxpKcR
-         MM/JzFb2OpJqYaVbmTTZIMtQPDfq0jFwX/le9R/k/+Zoe4qnf4XrVu7A6PzYGqlyKu4Z
-         gmCQ==
-X-Gm-Message-State: AOJu0YyxIXNVJSJWQTqD92CsTu1lxGoj2fyTv4dNvf2OkuOGlD0Uk5OI
-	/COAmMjk31Ohky/tJ0txK++uqDJKYLXVeDB77/3FCytQxl981pxfToavMurAzQ8h0QdrkzHcucE
-	X
-X-Google-Smtp-Source: AGHT+IHB+AmjSBxtv5wYPSJMbqsO9run7tNYs9Khwxwkq68D/UBBem7OVeFSqNuKg8auq+cu2CpFdA==
-X-Received: by 2002:a17:903:2114:b0:1d9:8ac8:d79d with SMTP id o20-20020a170903211400b001d98ac8d79dmr1339459ple.19.1706961398378;
-        Sat, 03 Feb 2024 03:56:38 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCU9w6jw97GTrrv2YrzHdBM9dTeWQ3vVHTI56/t5JZ3zc41gPoVX+1fgSED7vAQySu4hIf6KJcJO25caBrCb2bc4uPWYpDkKZo76S3gu0PCoBNWXYvcf98BFBkYi6CumHUVWOmuSXKQBJuyu8GXAeYRqC4R7lySSP32Ill/st0sOdtQQLfxXQ+68gn1ZXKUWDSNPRRbGgE+kBdbd+SvBUmooxD2s7W8TfRIz7W73Xgz3uCPZeY+xRalhm36fPJtLdk0ev8OOx5tdaCCjTMKgX0D9113dxr9Sse5+lGDTC0EQrWzfFOj/aLgU70mnENuxu5dBPZ0nAIOENnJV90PjrOdyk9cS3Sg2jSKxRTLeXVy6QSpZPe8/nJfZ5Iz0rYnfmRl1DskPHm3Ys16ui3CgVg5Yncrh49RujvCFamU7utyWnt0reuYzY434JFD1mbr5orJR1gsxeKo0YC+/M/DY7OxL6ah7jFiI3c9U1qozWLbF8hfhleWTwNxgWeWLlCJ6HmuT+E2PiG5JtSuqtBQmI8z3cOFBu0FUlu5i2uQ6yR5ogi9hmJeOcqIM/BQ8Atg1/G92t+WraYM9SFzyQwuMQHvETJo4j6J3MPtfkvtGYHcTiq9XKbjhiVw4KxwiP+H6x1EmbsZZgwd4EdF3kVhq1KbY8eWQwtmySGMTMc6RiuGTbH4EMMaaKK2zZziUWA86NWX9xYsmgrKZvi+biDgxXFU+e83WqQVPhTIVAwqAccqTpuZNYHmLTfEHCm6YEl3iiNWiq5j9x0NQOajkmvVx15TPuKI/ne3DS+aQiHa8nrxBmOYdbnfR7B5qcEVXNW9JeuvFh7IGm/St7fpXXXNHGUtC9bUTp94dnNbDU1Ciz1uSn0PWaw3aP9JR+cN24Ftcrr9HjQGVaZWwhPkMMBoDync9/+u63uxS5R9v9uQzbOqboWE+5cxQo0J6snNoVO9SZJroY9
- aXreSYG0y7+bBFPJOZHO8NvCI1L9LA+274wPonY7qpn7cBhFLyYV2lOYMZuIYlcBrG24h/I1JWwJ9zECGQMSXrVxWZ8Z4mz4kTnYoKeKpvqT/F/Pp9gGtSwyVn/ayVr8/h/erlkDjltIwjj4cAtYxxdyg8ZuGuemnE9XSbxp2UDxZtmFniE+8mJk0uXyfh37pcPvBS1bRE8NX+QuKgC6kvL2d2D5FmAPoeYI3Xmh85WWDp48Smp7rfOnGAC6TGDYOcfeSHysujFEycXMvJWulSAQOLLyOu9bS4JWC25fRguqK8NlKTJ4eWmL91uygH31Jhqouo
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.200.138] ([157.82.200.138])
-        by smtp.gmail.com with ESMTPSA id mo14-20020a1709030a8e00b001d965cf6a9bsm1216785plb.252.2024.02.03.03.56.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Feb 2024 03:56:38 -0800 (PST)
-Message-ID: <4291ba65-8a25-4242-a7de-bc403749531c@daynix.com>
-Date: Sat, 3 Feb 2024 20:56:28 +0900
+ d=1e100.net; s=20230601; t=1707091792; x=1707696592;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gUzFHCOJpN3HKFVR4AuVJuPiKGpMrz0euio/avhtkGo=;
+ b=DrmFiHAetHV1H8aMYVmdtIT82G0dD+oH0EGhDhFqhpLpyvh2H4iJz6MTTfwLod9dbx
+ Gk2vb0opnLlbFSlC6K4Gu3eG5UrVyu45IMcGn51YioZo/L7tAMSEohk6YGaoN5iOgmSf
+ +Sp3GVhlqaKzCnRe8Bi2eNHtuWmBxIxbs9gM3vFSxFngi6WF/YM56Gt+E3pMKHLDyQHV
+ pqYNTB0bkJKpg4QzPpJz1OoddIhWG6uSxJ/G57AWBuvcF+FpstVApHOdwJHKovfva1TG
+ g5i6QSe/t9roY04oyakdh1bNHH66J/WPRDd/sDWIFa9bHnJiXdXo8ImGIoFpZjEjvTU6
+ iBOQ==
+X-Gm-Message-State: AOJu0YxH7hlx4j8D6kPa4o4bt4M8BBlcngddpuaQyx2OYM38efmCR3EB
+ 9T+6fpHwLcPxxubQeIkT8DqZV9PyX1z8ELx31f/HV92Q+6st1BXkb7SQXYyjPr2ry2eH9rsY1Nl
+ eHikaUQ44dEXkjwAm+13p4IBEGxEJsfK/EOs=
+X-Received: by 2002:a05:6102:dc7:b0:46d:3043:92de with SMTP id
+ e7-20020a0561020dc700b0046d304392demr751276vst.4.1707091791836; Sun, 04 Feb
+ 2024 16:09:51 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/21] gdbstub: expose api to find registers
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, kvm@vger.kernel.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Laurent Vivier
- <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
- qemu-ppc@nongnu.org, Weiwei Li <liwei1518@gmail.com>, qemu-s390x@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Alexandre Iooss
- <erdnaxe@crans.org>, John Snow <jsnow@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- David Woodhouse <dwmw2@infradead.org>, Cleber Rosa <crosa@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Nicholas Piggin <npiggin@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
- Paul Durrant <paul@xen.org>
-References: <20240122145610.413836-1-alex.bennee@linaro.org>
- <20240122145610.413836-17-alex.bennee@linaro.org>
- <1c9a2e94-0c54-446b-99a2-69e25e9725df@daynix.com>
- <875xz5pyaq.fsf@draig.linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <875xz5pyaq.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: MjMc7t3u3+0f
+References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+ <20240126193657.792005-2-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240126193657.792005-2-ines.varhol@telecom-paris.fr>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 5 Feb 2024 10:09:25 +1000
+Message-ID: <CAKmqyKMt=GbObvc-oasr_s8a09OT-zxr99Y5ayRdz7hPF_4K8g@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/display : Add device DM163
+To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
+Cc: qemu-devel@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Samuel Tardieu <sam@rfc1149.net>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2b;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe2b.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vAlAY5pV+RqE
 
-On 2024/02/03 20:44, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/01/22 23:56, Alex Bennée wrote:
->>> Expose an internal API to QEMU to return all the registers for a vCPU.
->>> The list containing the details required to called gdb_read_register().
->>> Based-on: <20231025093128.33116-15-akihiko.odaki@daynix.com>
->>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>> Message-Id: <20240103173349.398526-38-alex.bennee@linaro.org>
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> ---
->>> v3
->>>     - rm unused api functions left over
->>> ---
->>>    include/exec/gdbstub.h | 28 ++++++++++++++++++++++++++++
->>>    gdbstub/gdbstub.c      | 27 ++++++++++++++++++++++++++-
->>>    2 files changed, 54 insertions(+), 1 deletion(-)
->>> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
->>> index da9ddfe54c5..eb14b91139b 100644
->>> --- a/include/exec/gdbstub.h
->>> +++ b/include/exec/gdbstub.h
->>> @@ -111,6 +111,34 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
->>>     */
->>>    const GDBFeature *gdb_find_static_feature(const char *xmlname);
->>>    +/**
->>> + * gdb_read_register() - Read a register associated with a CPU.
->>> + * @cpu: The CPU associated with the register.
->>> + * @buf: The buffer that the read register will be appended to.
->>> + * @reg: The register's number returned by gdb_find_feature_register().
->>> + *
->>> + * Return: The number of read bytes.
->>> + */
->>> +int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->>> +
->>> +/**
->>> + * typedef GDBRegDesc - a register description from gdbstub
->>> + */
->>> +typedef struct {
->>
->> nit: Add struct name; docs/devel/style.rst says struct has a CamelCase
->> name *and* corresponding typedef, though this rule is apparently not
->> strictly enforced.
-> 
-> I think the wording is a little ambiguous here, especially with the
-> reference to typedefs.h where the anonymous structure typedefs are held.
-> In this case we don't need the structname because there is no internal
-> reference to itself.
-> 
+On Sat, Jan 27, 2024 at 5:38=E2=80=AFAM In=C3=A8s Varhol
+<ines.varhol@telecom-paris.fr> wrote:
+>
+> This device implements the IM120417002 colors shield v1.1 for Arduino
+> (which relies on the DM163 8x3-channel led driving logic) and features
+> a simple display of an 8x8 RGB matrix. The columns of the matrix are
+> driven by the DM163 and the rows are driven externally.
+>
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-The majority of structure typedefs have tag names though; grep "typedef 
-struct".
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-That said, I'm fine even without a tag name. As I mentioned earlier, 
-this convention in QEMU is not consistent, and I have no other reason to 
-have a tag name.
+Alistair
+
+> ---
+>  hw/display/Kconfig         |   3 +
+>  hw/display/dm163.c         | 307 +++++++++++++++++++++++++++++++++++++
+>  hw/display/meson.build     |   1 +
+>  hw/display/trace-events    |  13 ++
+>  include/hw/display/dm163.h |  57 +++++++
+>  5 files changed, 381 insertions(+)
+>  create mode 100644 hw/display/dm163.c
+>  create mode 100644 include/hw/display/dm163.h
+>
+> diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+> index 1aafe1923d..4dbfc6e7af 100644
+> --- a/hw/display/Kconfig
+> +++ b/hw/display/Kconfig
+> @@ -139,3 +139,6 @@ config XLNX_DISPLAYPORT
+>      bool
+>      # defaults to "N", enabled by specific boards
+>      depends on PIXMAN
+> +
+> +config DM163
+> +    bool
+> diff --git a/hw/display/dm163.c b/hw/display/dm163.c
+> new file mode 100644
+> index 0000000000..565fc84ddf
+> --- /dev/null
+> +++ b/hw/display/dm163.c
+> @@ -0,0 +1,307 @@
+> +/*
+> + * QEMU DM163 8x3-channel constant current led driver
+> + * driving columns of associated 8x8 RGB matrix.
+> + *
+> + * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
+> + * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> + * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +/*
+> + * The reference used for the DM163 is the following :
+> + * http://www.siti.com.tw/product/spec/LED/DM163.pdf
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/irq.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/display/dm163.h"
+> +#include "ui/console.h"
+> +#include "trace.h"
+> +
+> +#define LED_SQUARE_SIZE 100
+> +/* Number of frames a row stays visible after being turned off. */
+> +#define ROW_PERSISTANCE 2
+> +
+> +static const VMStateDescription vmstate_dm163 =3D {
+> +    .name =3D TYPE_DM163,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .fields =3D (const VMStateField[]) {
+> +        VMSTATE_UINT8(activated_rows, DM163State),
+> +        VMSTATE_UINT64_ARRAY(bank0_shift_register, DM163State, 3),
+> +        VMSTATE_UINT64_ARRAY(bank1_shift_register, DM163State, 3),
+> +        VMSTATE_UINT16_ARRAY(latched_outputs, DM163State, DM163_NUM_LEDS=
+),
+> +        VMSTATE_UINT16_ARRAY(outputs, DM163State, DM163_NUM_LEDS),
+> +        VMSTATE_UINT8(dck, DM163State),
+> +        VMSTATE_UINT8(en_b, DM163State),
+> +        VMSTATE_UINT8(lat_b, DM163State),
+> +        VMSTATE_UINT8(rst_b, DM163State),
+> +        VMSTATE_UINT8(selbk, DM163State),
+> +        VMSTATE_UINT8(sin, DM163State),
+> +        VMSTATE_UINT32_2DARRAY(buffer, DM163State,
+> +            COLOR_BUFFER_SIZE + 1, RGB_MATRIX_NUM_COLS),
+> +        VMSTATE_UINT8(last_buffer_idx, DM163State),
+> +        VMSTATE_UINT8_ARRAY(buffer_idx_of_row, DM163State, RGB_MATRIX_NU=
+M_ROWS),
+> +        VMSTATE_UINT8_ARRAY(age_of_row, DM163State, RGB_MATRIX_NUM_ROWS)=
+,
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void dm163_reset_hold(Object *obj)
+> +{
+> +    DM163State *s =3D DM163(obj);
+> +
+> +    /* Reset only stops the PWM. */
+> +    memset(s->outputs, 0, sizeof(s->outputs));
+> +
+> +    /* The last row of the buffer stores a turned off row */
+> +    memset(s->buffer[COLOR_BUFFER_SIZE], 0, sizeof(s->buffer[0]));
+> +}
+> +
+> +static void dm163_dck_gpio_handler(void *opaque, int line, int new_state=
+)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    if (new_state && !s->dck) {
+> +        /*
+> +         * On raising dck, sample selbk to get the bank to use, and
+> +         * sample sin for the bit to enter into the bank shift buffer.
+> +         */
+> +        uint64_t *sb =3D
+> +            s->selbk ? s->bank1_shift_register : s->bank0_shift_register=
+;
+> +        /* Output the outgoing bit on sout */
+> +        const bool sout =3D (s->selbk ? sb[2] & MAKE_64BIT_MASK(63, 1) :
+> +                           sb[2] & MAKE_64BIT_MASK(15, 1)) !=3D 0;
+> +        qemu_set_irq(s->sout, sout);
+> +        /* Enter sin into the shift buffer */
+> +        sb[2] =3D (sb[2] << 1) | ((sb[1] >> 63) & 1);
+> +        sb[1] =3D (sb[1] << 1) | ((sb[0] >> 63) & 1);
+> +        sb[0] =3D (sb[0] << 1) | s->sin;
+> +    }
+> +
+> +    s->dck =3D new_state;
+> +    trace_dm163_dck(new_state);
+> +}
+> +
+> +static void dm163_propagate_outputs(DM163State *s)
+> +{
+> +    s->last_buffer_idx =3D (s->last_buffer_idx + 1) % COLOR_BUFFER_SIZE;
+> +    /* Values are output when reset and enable are both high. */
+> +    if (s->rst_b && !s->en_b) {
+> +        memcpy(s->outputs, s->latched_outputs, sizeof(s->outputs));
+> +    } else {
+> +        memset(s->outputs, 0, sizeof(s->outputs));
+> +    }
+> +    for (unsigned x =3D 0; x < RGB_MATRIX_NUM_COLS; x++) {
+> +        trace_dm163_channels(3 * x, (uint8_t)(s->outputs[3 * x] >> 6));
+> +        trace_dm163_channels(3 * x + 1, (uint8_t)(s->outputs[3 * x + 1] =
+>> 6));
+> +        trace_dm163_channels(3 * x + 2, (uint8_t)(s->outputs[3 * x + 2] =
+>> 6));
+> +        s->buffer[s->last_buffer_idx][x] =3D
+> +            (s->outputs[3 * x + 2] >> 6) |
+> +            ((s->outputs[3 * x + 1] << 2) & 0xFF00) |
+> +            (((uint32_t)s->outputs[3 * x] << 10) & 0xFF0000);
+> +    }
+> +    for (unsigned row =3D 0; row < RGB_MATRIX_NUM_ROWS; row++) {
+> +        if (s->activated_rows & (1 << row)) {
+> +            s->buffer_idx_of_row[row] =3D s->last_buffer_idx;
+> +        }
+> +    }
+> +}
+> +
+> +static void dm163_en_b_gpio_handler(void *opaque, int line, int new_stat=
+e)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    s->en_b =3D new_state;
+> +    dm163_propagate_outputs(s);
+> +    trace_dm163_en_b(new_state);
+> +}
+> +
+> +static inline uint8_t dm163_bank0(const DM163State *s, uint8_t led)
+> +{
+> +    /*
+> +     * Bank 1 uses 6 bits per led, so a value may be stored accross
+> +     * two uint64_t entries.
+> +     */
+> +    const uint8_t low_bit =3D 6 * led;
+> +    const uint8_t low_word =3D low_bit / 64;
+> +    const uint8_t high_word =3D (low_bit + 5) / 64;
+> +    const uint8_t low_shift =3D low_bit % 64;
+> +
+> +    if (low_word =3D=3D high_word) {
+> +        /* Simple case: the value belongs to one entry. */
+> +        return (s->bank0_shift_register[low_word] &
+> +                MAKE_64BIT_MASK(low_shift, 6)) >> low_shift;
+> +    }
+> +
+> +    const uint8_t bits_in_low_word =3D 64 - low_shift;
+> +    const uint8_t bits_in_high_word =3D 6 - bits_in_low_word;
+> +    return ((s->bank0_shift_register[low_word] &
+> +             MAKE_64BIT_MASK(low_shift, bits_in_low_word)) >>
+> +            low_shift) |
+> +           ((s->bank0_shift_register[high_word] &
+> +             MAKE_64BIT_MASK(0, bits_in_high_word))
+> +         << bits_in_low_word);
+> +}
+> +
+> +static inline uint8_t dm163_bank1(const DM163State *s, uint8_t led)
+> +{
+> +    const uint64_t entry =3D s->bank1_shift_register[led / 8];
+> +    const unsigned shift =3D 8 * (led % 8);
+> +    return (entry & MAKE_64BIT_MASK(shift, 8)) >> shift;
+> +}
+> +
+> +static void dm163_lat_b_gpio_handler(void *opaque, int line, int new_sta=
+te)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    if (s->lat_b && !new_state) {
+> +        for (int led =3D 0; led < DM163_NUM_LEDS; led++) {
+> +            s->latched_outputs[led] =3D dm163_bank0(s, led) * dm163_bank=
+1(s, led);
+> +        }
+> +        dm163_propagate_outputs(s);
+> +    }
+> +
+> +    s->lat_b =3D new_state;
+> +    trace_dm163_lat_b(new_state);
+> +}
+> +
+> +static void dm163_rst_b_gpio_handler(void *opaque, int line, int new_sta=
+te)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    s->rst_b =3D new_state;
+> +    dm163_propagate_outputs(s);
+> +    trace_dm163_rst_b(new_state);
+> +}
+> +
+> +static void dm163_selbk_gpio_handler(void *opaque, int line, int new_sta=
+te)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    s->selbk =3D new_state;
+> +    trace_dm163_selbk(new_state);
+> +}
+> +
+> +static void dm163_sin_gpio_handler(void *opaque, int line, int new_state=
+)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    s->sin =3D new_state;
+> +    trace_dm163_sin(new_state);
+> +}
+> +
+> +static void dm163_rows_gpio_handler(void *opaque, int line, int new_stat=
+e)
+> +{
+> +    DM163State *s =3D DM163(opaque);
+> +
+> +    if (new_state) {
+> +        s->activated_rows |=3D (1 << line);
+> +        s->buffer_idx_of_row[line] =3D s->last_buffer_idx;
+> +        s->age_of_row[line] =3D 0;
+> +    } else {
+> +        s->activated_rows &=3D ~(1 << line);
+> +        s->age_of_row[line] =3D ROW_PERSISTANCE;
+> +    }
+> +    trace_dm163_activated_rows(s->activated_rows);
+> +}
+> +
+> +static void dm163_invalidate_display(void *opaque)
+> +{
+> +}
+> +
+> +static void dm163_update_display(void *opaque)
+> +{
+> +    DM163State *s =3D (DM163State *)opaque;
+> +    DisplaySurface *surface =3D qemu_console_surface(s->console);
+> +    uint32_t *dest;
+> +    unsigned bits_ppi =3D surface_bits_per_pixel(surface);
+> +
+> +    trace_dm163_bits_ppi(bits_ppi);
+> +    g_assert((bits_ppi =3D=3D 32));
+> +    dest =3D surface_data(surface);
+> +    for (unsigned y =3D 0; y < RGB_MATRIX_NUM_ROWS; y++) {
+> +        for (unsigned _ =3D 0; _ < LED_SQUARE_SIZE; _++) {
+> +            for (int x =3D RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE - 1; x =
+>=3D 0; x--) {
+> +                *dest++ =3D s->buffer[s->buffer_idx_of_row[y]][x / LED_S=
+QUARE_SIZE];
+> +            }
+> +        }
+> +        if (s->age_of_row[y]) {
+> +            s->age_of_row[y]--;
+> +            if (!s->age_of_row[y]) {
+> +                /*
+> +                 * If the ROW_PERSISTANCE delay is up,
+> +                 * the row is turned off.
+> +                 * (s->buffer[COLOR_BUFFER] is filled with 0)
+> +                 */
+> +                s->buffer_idx_of_row[y] =3D COLOR_BUFFER_SIZE;
+> +            }
+> +        }
+> +    }
+> +    /*
+> +     * Ideally set the refresh rate so that the row persistance
+> +     * doesn't need to be changed.
+> +     *
+> +     * Currently `dpy_ui_info_supported(s->console)` returns false
+> +     * which makes it impossible to get or set UIInfo.
+> +     *
+> +     * if (dpy_ui_info_supported(s->console)) {
+> +     *     trace_dm163_refresh_rate(dpy_get_ui_info(s->console)->refresh=
+_rate);
+> +     * } else {
+> +     *     trace_dm163_refresh_rate(0);
+> +     * }
+> +     */
+> +    dpy_gfx_update(s->console, 0, 0, RGB_MATRIX_NUM_COLS * LED_SQUARE_SI=
+ZE,
+> +                   RGB_MATRIX_NUM_ROWS * LED_SQUARE_SIZE);
+> +}
+> +
+> +static const GraphicHwOps dm163_ops =3D {
+> +    .invalidate  =3D dm163_invalidate_display,
+> +    .gfx_update  =3D dm163_update_display,
+> +};
+> +
+> +static void dm163_realize(DeviceState *dev, Error **errp)
+> +{
+> +    DM163State *s =3D DM163(dev);
+> +
+> +    qdev_init_gpio_in(dev, dm163_rows_gpio_handler, 8);
+> +    qdev_init_gpio_in(dev, dm163_sin_gpio_handler, 1);
+> +    qdev_init_gpio_in(dev, dm163_dck_gpio_handler, 1);
+> +    qdev_init_gpio_in(dev, dm163_rst_b_gpio_handler, 1);
+> +    qdev_init_gpio_in(dev, dm163_lat_b_gpio_handler, 1);
+> +    qdev_init_gpio_in(dev, dm163_selbk_gpio_handler, 1);
+> +    qdev_init_gpio_in(dev, dm163_en_b_gpio_handler, 1);
+> +    qdev_init_gpio_out_named(dev, &s->sout, "sout", 1);
+> +
+> +    s->console =3D graphic_console_init(dev, 0, &dm163_ops, s);
+> +    qemu_console_resize(s->console, RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZ=
+E,
+> +                        RGB_MATRIX_NUM_ROWS * LED_SQUARE_SIZE);
+> +}
+> +
+> +static void dm163_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+> +
+> +    dc->desc =3D "DM163";
+> +    dc->vmsd =3D &vmstate_dm163;
+> +    dc->realize =3D dm163_realize;
+> +    rc->phases.hold =3D dm163_reset_hold;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+> +}
+> +
+> +static const TypeInfo dm163_types[] =3D {
+> +    {
+> +        .name =3D TYPE_DM163,
+> +        .parent =3D TYPE_DEVICE,
+> +        .instance_size =3D sizeof(DM163State),
+> +        .class_init =3D dm163_class_init
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(dm163_types)
+> diff --git a/hw/display/meson.build b/hw/display/meson.build
+> index f93a69f70f..71e489308e 100644
+> --- a/hw/display/meson.build
+> +++ b/hw/display/meson.build
+> @@ -38,6 +38,7 @@ system_ss.add(when: 'CONFIG_NEXTCUBE', if_true: files('=
+next-fb.c'))
+>
+>  system_ss.add(when: 'CONFIG_VGA', if_true: files('vga.c'))
+>  system_ss.add(when: 'CONFIG_VIRTIO', if_true: files('virtio-dmabuf.c'))
+> +system_ss.add(when: 'CONFIG_DM163', if_true: files('dm163.c'))
+>
+>  if (config_all_devices.has_key('CONFIG_VGA_CIRRUS') or
+>      config_all_devices.has_key('CONFIG_VGA_PCI') or
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index 2336a0ca15..444b014d6e 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -177,3 +177,16 @@ macfb_ctrl_write(uint64_t addr, uint64_t value, unsi=
+gned int size) "addr 0x%"PRI
+>  macfb_sense_read(uint32_t value) "video sense: 0x%"PRIx32
+>  macfb_sense_write(uint32_t value) "video sense: 0x%"PRIx32
+>  macfb_update_mode(uint32_t width, uint32_t height, uint8_t depth) "setti=
+ng mode to width %"PRId32 " height %"PRId32 " size %d"
+> +
+> +# dm163.c
+> +dm163_dck(int new_state) "dck : %d"
+> +dm163_en_b(int new_state) "en_b : %d"
+> +dm163_rst_b(int new_state) "rst_b : %d"
+> +dm163_lat_b(int new_state) "lat_b : %d"
+> +dm163_sin(int new_state) "sin : %d"
+> +dm163_selbk(int new_state) "selbk : %d"
+> +dm163_activated_rows(int new_state) "Activated rows : 0x%" PRIx32 ""
+> +dm163_bits_ppi(unsigned dest_width) "dest_width : %u"
+> +dm163_leds(int led, uint32_t value) "led %d: 0x%x"
+> +dm163_channels(int channel, uint8_t value) "channel %d: 0x%x"
+> +dm163_refresh_rate(uint32_t rr) "refresh rate %d"
+> diff --git a/include/hw/display/dm163.h b/include/hw/display/dm163.h
+> new file mode 100644
+> index 0000000000..aa775e51e1
+> --- /dev/null
+> +++ b/include/hw/display/dm163.h
+> @@ -0,0 +1,57 @@
+> +/*
+> + * QEMU DM163 8x3-channel constant current led driver
+> + * driving columns of associated 8x8 RGB matrix.
+> + *
+> + * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
+> + * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> + * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_DISPLAY_DM163_H
+> +#define HW_DISPLAY_DM163_H
+> +
+> +#include "qom/object.h"
+> +#include "hw/qdev-core.h"
+> +
+> +#define TYPE_DM163 "dm163"
+> +OBJECT_DECLARE_SIMPLE_TYPE(DM163State, DM163);
+> +
+> +#define DM163_NUM_LEDS 24
+> +#define RGB_MATRIX_NUM_ROWS 8
+> +#define RGB_MATRIX_NUM_COLS (DM163_NUM_LEDS / 3)
+> +#define COLOR_BUFFER_SIZE RGB_MATRIX_NUM_ROWS
+> +
+> +typedef struct DM163State {
+> +    DeviceState parent_obj;
+> +
+> +    /* DM163 driver */
+> +    uint64_t bank0_shift_register[3];
+> +    uint64_t bank1_shift_register[3];
+> +    uint16_t latched_outputs[DM163_NUM_LEDS];
+> +    uint16_t outputs[DM163_NUM_LEDS];
+> +    qemu_irq sout;
+> +
+> +    uint8_t dck;
+> +    uint8_t en_b;
+> +    uint8_t lat_b;
+> +    uint8_t rst_b;
+> +    uint8_t selbk;
+> +    uint8_t sin;
+> +
+> +    /* IM120417002 colors shield */
+> +    uint8_t activated_rows;
+> +
+> +    /* 8x8 RGB matrix */
+> +    QemuConsole *console;
+> +    /* Rows currently being displayed on the matrix. */
+> +    /* The last row is filled with 0 (turned off row) */
+> +    uint32_t buffer[COLOR_BUFFER_SIZE + 1][RGB_MATRIX_NUM_COLS];
+> +    uint8_t last_buffer_idx;
+> +    uint8_t buffer_idx_of_row[RGB_MATRIX_NUM_ROWS];
+> +    /* Used to simulate retinal persistance of rows */
+> +    uint8_t age_of_row[RGB_MATRIX_NUM_ROWS];
+> +} DM163State;
+> +
+> +#endif /* HW_DISPLAY_DM163_H */
+> --
+> 2.43.0
+>
+>

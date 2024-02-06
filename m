@@ -1,116 +1,116 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1944634ejb;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1944639ejb;
         Tue, 6 Feb 2024 09:13:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHEaKN52Es1f9uhsFjarILibBV463CH/PsATkQczPWFEhBfnrFOEXLuieVvG4W2mvXUD9BM
-X-Received: by 2002:a0c:f5c9:0:b0:68c:8525:f91a with SMTP id q9-20020a0cf5c9000000b0068c8525f91amr2487736qvm.60.1707239619808;
-        Tue, 06 Feb 2024 09:13:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707239619; cv=none;
+X-Google-Smtp-Source: AGHT+IEtJn5Xw3ctKhHs3gZxfl7/uCC4QM+mVprxNNHCxvxm0DpVrZXgs+npTd9QhN+AJNAu8WC2
+X-Received: by 2002:ac8:5784:0:b0:42c:75c:6b63 with SMTP id v4-20020ac85784000000b0042c075c6b63mr3504866qta.51.1707239620262;
+        Tue, 06 Feb 2024 09:13:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707239620; cv=none;
         d=google.com; s=arc-20160816;
-        b=kWRXWEaVNgpuyv//uLZ/Z6oUZWL+t9fg8IvWDzDNdnjlOk4lCY3/bwDJzywxd5jqef
-         dS/TcLBsfs939d3YutjKzzT6xeXqid1pmSBBtvEZ/DHXcztM5FzaCqMMVQVbhcEYrAoB
-         ywidEkeY6+EPGyP075lO++3dc2sTijdN5gRHGjQQtOYUR39zTMmBM+fUxE6KBYTV37wG
-         IMo9nDJGdttIl1x7vbCXIAWzLraO0OfA88i4zQw22KdVrdKpJcbWVbNJPj/Joe8BsWwG
-         e15nvFRpXiSPhEvPgqbsSGytvOSxbopmwfACenh/zSZfaLiauatS77YHd9uL0ILbNNbu
-         JQLA==
+        b=rD4EOk+Xbm2blalcaIWqYxayksg4hCU99Hn/LLFJhakztYc/ITvDkKbq5i1LFqPkd0
+         3jlFTOQRkRR58EflB4FW6FAT5w3dsruckbLFEtkIdcNFV1e1ZyYjHz0wnPAYeQhQHDcT
+         rNoj/S9nlRM8o0pT71NJCjXsP2Sq33UW6bC26bQSKkkMEx0UfqHnBSIEeqlcBWODyiZA
+         HUtofodIed5g4Vv1WCizCRNjhmcdzOMjoJNYaiHVhhb3SPDnhiJwGrwfn+/ndjVAiwun
+         UH2rzhGyLhuT8iUJ2PMO2oP1hojLXH9mYLfF64L82MwM2ThY7GLvkoj3EPnsrqnc05uP
+         JsKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
-        fh=eBbBm0UnxpLFINEoHtgIQMtVCCa8MTW08o1upCw03pE=;
-        b=AXTz9ONG+HWM44tcCydaEMxo4nuwwa7MXdFcL/W52EMMmTPK9I5qpA0W3mUd7KjTI5
-         91O34VHsQl2OSVdhieoWJp0AKDrQ99wviRScp/4mGvdYIRLvX2sGB4/ZtaJ0vgjx3fbv
-         7arz1PBNsr4IpbIu26910gHuTAgUgJtCx2sD661KPhjr4rM6COXaW4mYnyW8vK0IWesv
-         TawgjAhqCH62uvBG0qe2SouXabsJEYxQjucbUPSCa+g2/3xrBvZdZHYVKVXiCX1xhFIg
-         wCNhVpSw6+OEoGpkx6Q/Ym/lKrZbeaGCGjEY2HE8hQjeFmpBwj3UZedAuegcpGnCvkcu
-         fgzw==;
+        bh=PrRJ5d76QadE8MBCkQGSm2LWsORcf86H/9Nb7qmGBtc=;
+        fh=Ib15d1Lt4m7nWUJQXpAhfhsYO6quO5T0/FGhSd7za9o=;
+        b=d3UsIhAdzoYLue8AIAUYcaO2Xnr0jdBINaYtNeplOFQ521dlQYV1GzdNCDsuhYs6SD
+         43pyTgIbZByMjNY0rGmND3Z+ct3Z4khgK+Tat82v+PC75sSOuHzdN1AOw+HM57QanCdg
+         umKGDvZmLxnLCshKrgNM5Oy3nQP0fVmmqbI7jCWjE/gp+W3jNW7r+bSyuvzPvEuOqJQR
+         L08L8j9VltP0SZPnPJPzVN0eGiH93wYRYEwmpFpvyaAjylMANmIX4SsTwudutdcD6wDX
+         HseWrNME29PNLAsoIYzxM7SDT1fIau49zo5mBwBdzEgqTMSRm93YdaMVxh3r6NRsKQ1H
+         0rAA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n6CxjObG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojx3gydl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCXR2dLGJHx4B1YqpNIWIes1oCSYyNOd/eMtisjaZSYmYcIvX7eLlDrJoNRUvYBJXW2WD/fiD9D+s3Ep/g8UA+L0mgqV5rr5
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-Forwarded-Encrypted: i=0; AJvYcCWA9Ugr+xLJ8iqcmcxkchkKtgocJUIwrlXh3TNVXbHcxuALHSd3xBgi4ZrEGxnouYZhnTwgP7y7X/Sd3EpZNMX7jSZ9pMXZ
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14-20020a0cf9ce000000b0067f3acb6c6asi2709382qvo.113.2024.02.06.09.13.39
+        by mx.google.com with ESMTPS id c10-20020ac87dca000000b0042c29a9ba91si2779467qte.604.2024.02.06.09.13.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 09:13:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Feb 2024 09:13:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n6CxjObG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojx3gydl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rXOzu-0003pB-IQ; Tue, 06 Feb 2024 12:12:38 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rXOzv-0003pv-Jo; Tue, 06 Feb 2024 12:12:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXOzt-0003on-LT
- for qemu-devel@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1rXOzt-0003op-Lv
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXOzr-0003Xk-4G
- for qemu-devel@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-40ffd94a707so893045e9.1
- for <qemu-devel@nongnu.org>; Tue, 06 Feb 2024 09:12:34 -0800 (PST)
+ id 1rXOzr-0003XX-M4
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40fe59b22dbso5906005e9.3
+ for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 09:12:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707239554; x=1707844354; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707239553; x=1707844353; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
- b=n6CxjObGleqwMRriOnpzRu81mjCflQa5feqBYbaH2GRaU713fP/4Ud6eOUojWwB8lR
- 9KJd5ScFa8IjDXCEtZGPJOl4//483tGckgtIeHvdZ6ITUWlIX9gKGNF5CRD79Zoyp4pC
- cXWJIwFxU6DeCkk0TIsnDiKQfwhyEt1G4k6TOw9PUO6M19iJEZWNj73SpiHF9vkC3Ii8
- L8f7lIZUi1vxq2sa0RBugAaXPICi8JUAT/8JrRH3wxNGsIfRKRNdzqFnXJ/tHPBLkCzx
- +pC3hykk6vkr1FMn/G2+6/+3VX2kByj4Fq3sDNLd2EYi2SpetQ1u/xsglgFglO67zO+1
- FRvA==
+ bh=PrRJ5d76QadE8MBCkQGSm2LWsORcf86H/9Nb7qmGBtc=;
+ b=ojx3gydlZ84j1rkyFXhGxr2oYHB73q3gjJeAEjmLek46Mgz3kLbhPbq87jObFmfxzA
+ 2IIeWYw3oLQHNS927OusX48HhIZEGHIixzP4s5DLm9CXboxSCztFT8hgRn4Epz8CBst9
+ 2AIqDRzqEOuGgCeYJTg/v4q+KtWHkSHwPmZyiv4Uzmmm+0TgxRak51c9G26n6zCKTI0K
+ 6L0ag67z24xV+vo0hlCrXW3cV+3IMjDi9SoaCwuG7oCCx8Ab022sNF9DHFAfrjLRcVZF
+ 5XObIFUvaWsMyi9ZA+TgTVRmMTQSsLJSW7Z02pkkWdSCMlNiLe7UjNVvCbavmFstULXx
+ +MMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707239554; x=1707844354;
+ d=1e100.net; s=20230601; t=1707239553; x=1707844353;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
- b=Cq5TIwxLjgOq3BIx65NU1+weX0Y/ufRP9HU3ML4KZv83UMKUt35WLbUs17FSSBl7Y0
- 0/zBXYpauB6jHnF3HPlHbXVpdqqBDqGwOGDAOvBhBOs9kBWYD+CW60uyy/SUDIFZA9n3
- drLs2EjElz0A/9+Efe/X0CoxqyeOelj44kbZrwvnQSn86RvOWaO+ZOOK5/BvTAaJ/JaU
- UzNl/xgAGioF4LOAZFuX/KLXw/QhqT/3qrpZeqH5GHFtTJ8NYxAd6+uuozdDKaxMOiob
- jZ5xEIf8k4VzkUwuimC6NHAttfAHuugTtBhucVGSFxh9QuTYwPm4iMUAz1NzoDNcre6k
- VPpg==
-X-Gm-Message-State: AOJu0YyE0JffuWfsdlI5dBvs5Axk9cS8iy3sOyGhxB874r/N8JX/Y5yf
- m8OHyaT/HoKXcxp4yVDZYKcRcvQqQqb0X+VLyjDgnH/GZW8/YhY+agkyL+wP+Ug89w8KQk5yYPg
- 7
-X-Received: by 2002:adf:ce0f:0:b0:33b:21e4:68d5 with SMTP id
- p15-20020adfce0f000000b0033b21e468d5mr1757035wrn.34.1707239553719; 
+ bh=PrRJ5d76QadE8MBCkQGSm2LWsORcf86H/9Nb7qmGBtc=;
+ b=V9QlvOBaLX4oe8KuCkYOEwuT8farq2MYxntH7lLdOlJHipTd/H/5ByOM5GMbixmbSi
+ 8M6zxH2xrShnmTDmyhP+hd8sfPBy4qWlaQMbqVbT7R3TpqkK6fbRshgM8/DJza4ZjfqV
+ 6IYX7MKyPK6C20hxk8N1HtxNEvsHyazM8f6pIOxa93ItGj2Hdo6VRYGARoEN/1dDr0nq
+ LjtsTtCS2XXURQd77n39sJDs+HtPpvrh+NG8OuS4Y6Gy0P6y7543W3K5ckdb5+jHdCv6
+ XPPP916Qh+yjPpmrRNr0lPJaPAIFIHn+EemJH97L/PvZvj8S1hZ5TGBcrwAijvXum3uj
+ lOnQ==
+X-Gm-Message-State: AOJu0Yx+BEmetGPnCQBDyht5gMIiBhC+Tp5em+F0UMenTHyARV63dIf1
+ /vk9MmsWWItzH+e3gqTH+Cxaojr3GborTpAVEw+PrzdJWMDvMJrPIzC0mNtPJJspfiyqaOZ4B9D
+ c
+X-Received: by 2002:adf:cc8d:0:b0:336:76de:c171 with SMTP id
+ p13-20020adfcc8d000000b0033676dec171mr1726208wrj.62.1707239553103; 
  Tue, 06 Feb 2024 09:12:33 -0800 (PST)
 X-Forwarded-Encrypted: i=0;
- AJvYcCWjoe4nxjJudTv3JMKkultf+xyz2bo4vKQlN5voMvzq4tv+9Rtb5n27S1VJTVTvhEmjZhvFYy1ynmx/kFtB5o+wBIy0IVxD6jUlAFutQZ8bTDz29+cIXfkolx9u74zSscViTCxKBiYVdVCLJIddSyffbKpE
+ AJvYcCWrtJt+URG6QvNQSw7sNjxDtAWWtLTan3pIGQKX7+MclM8g4YZyfgLNZ5F+SWfrzDbMwfhwMa/rRzwieUPjjca8A0Wqq8BpyJ7/W+cltLz8HuyQHB2DGK5Io2WagPOeL7sCqZKSivf6rS6PgT/DZBlxxmGg
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l12-20020a5d4bcc000000b0033905a60689sm2561284wrt.45.2024.02.06.09.12.33
+ l12-20020a5d4bcc000000b0033905a60689sm2561284wrt.45.2024.02.06.09.12.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Feb 2024 09:12:33 -0800 (PST)
+ Tue, 06 Feb 2024 09:12:32 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: David Woodhouse <dwmw@amazon.co.uk>,
  Nabih Estefan <nabihestefan@google.com>, Hao Wu <wuhaotsh@google.com>
-Subject: [PATCH 2/2] tests/qtest/npcm7xx_emc-test: Connect all NICs to a
- backend
-Date: Tue,  6 Feb 2024 17:12:31 +0000
-Message-Id: <20240206171231.396392-3-peter.maydell@linaro.org>
+Subject: [PATCH 1/2] hw/arm/npcm7xx: Call qemu_configure_nic_device() for GMAC
+ modules
+Date: Tue,  6 Feb 2024 17:12:30 +0000
+Message-Id: <20240206171231.396392-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240206171231.396392-1-peter.maydell@linaro.org>
 References: <20240206171231.396392-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,55 +119,47 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 00C8dnI+fLWy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MaRJ3HJH9RyT
 
-Currently QEMU will warn if there is a NIC on the board that
-is not connected to a backend. By default the '-nic user' will
-get used for all NICs, but if you manually connect a specific
-NIC to a specific backend, then the other NICs on the board
-have no backend and will be warned about:
+The patchset adding the GMAC ethernet to this SoC crossed in the
+mail with the patchset cleaning up the NIC handling. When we
+create the GMAC modules we must call qemu_configure_nic_device()
+so that the user has the opportunity to use the -nic commandline
+option to create a network backend and connect it to the GMACs.
 
-qemu-system-arm: warning: nic npcm7xx-emc.1 has no peer
-qemu-system-arm: warning: nic npcm-gmac.0 has no peer
-qemu-system-arm: warning: nic npcm-gmac.1 has no peer
+Add the missing call.
 
-So suppress those warnings by manually connecting every NIC
-on the board to some backend.
-
+Fixes: 21e5326a7c ("hw/arm: Add GMAC devices to NPCM7XX SoC")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/npcm7xx_emc-test.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ hw/arm/npcm7xx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
-index f7646fae2c9..63f6cadb5cc 100644
---- a/tests/qtest/npcm7xx_emc-test.c
-+++ b/tests/qtest/npcm7xx_emc-test.c
-@@ -228,7 +228,10 @@ static int *packet_test_init(int module_num, GString *cmd_line)
-      * KISS and use -nic. The driver accepts 'emc0' and 'emc1' as aliases
-      * in the 'model' field to specify the device to match.
-      */
--    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d ",
-+    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d "
-+                           "-nic user,model=npcm7xx-emc "
-+                           "-nic user,model=npcm-gmac "
-+                           "-nic user,model=npcm-gmac",
-                            test_sockets[1], module_num);
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index ff3ecde9043..cc68b5d8f12 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -710,6 +710,7 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
+         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->gmac[i]);
  
-     g_test_queue_destroy(packet_test_clear, test_sockets);
++        qemu_configure_nic_device(DEVICE(sbd), false, NULL);
+         /*
+          * The device exists regardless of whether it's connected to a QEMU
+          * netdev backend. So always instantiate it even if there is no
 -- 
 2.34.1
 

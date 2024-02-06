@@ -1,105 +1,113 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1841469ejb;
-        Tue, 6 Feb 2024 06:46:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH4M84TuCEQ2nbnrCU8Sy6kTp9cPX013JNEfiBrYFqF2iei9PlWMivKLFxkmfTcfvRRuxLJ
-X-Received: by 2002:ac8:428b:0:b0:42c:2623:f38f with SMTP id o11-20020ac8428b000000b0042c2623f38fmr2484946qtl.26.1707230797284;
-        Tue, 06 Feb 2024 06:46:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707230797; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1530831ejb;
+        Mon, 5 Feb 2024 19:06:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHE77BDwRe9QevtEU2qg9+Bg7gueEl5kbMqpESrq800ncXHYCzoVOLwdxvCeVmRUKjjwHld
+X-Received: by 2002:a05:6214:e45:b0:68c:6cc5:5159 with SMTP id o5-20020a0562140e4500b0068c6cc55159mr1404632qvc.2.1707188795851;
+        Mon, 05 Feb 2024 19:06:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707188795; cv=none;
         d=google.com; s=arc-20160816;
-        b=WvcfZBM8oCTfCdv6r+0X3R2Zt6LekSP9q9Zhm0X87ZjOOOoSvqGVd76vt3epn2U9HD
-         HS7UAfPsFAqypyFzFYncXl+E1si12jPX8yTvJlfNUYwKwKA3Nc7l34/pwnlbBrYDAkBr
-         GeaNGUokILqmwX6s/j+Zw6PvoW8qMGzZ2SupA/S13Fbp7l9j1fgDEi7jIJD3qZg43ZU0
-         isZv8JoDTzXqXcMYTsQM1/Rd1zv96H8cqqlHaUohJTi5j3QR3sh3HN2cyr9mpNt1GG0r
-         rd7KIVN0FUzNLeCKOm9/dTCgG3cLbTQdTzUX/0lIPyZdKumVIquud1lIpDeR3Gi89p3M
-         +8sA==
+        b=NMYKG6IfN6Zdh/17YuSxqxhzmv80iZW7HgHFKQEZcxmf0pjAYfN4fUkvhqsEI7/o16
+         byfUWuCreS/icIHcFtKbX/kXFjCOhHb1lRWl16CK1tyjlFZAS2anYlei8GAfN2z9Ot1Z
+         hajDh39l4AGVkULzVucbzozrZESTS4Rc0gNFapBPPci6aadi/LCpvSmcTKMSqkOuJcrl
+         8+TYx6jddElX9MTFrFgdrxxaZsRRvJ2fZiHe1F4A6REn0rwCyZQ5tGWz1aVvPAN+/VZe
+         nfvHjinc0uOrIvaGh19BEEFZ7dzevi/b9gBq8+mvs1G08cox2rRdOuaqg+9DUbmdUrh/
+         Ygpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=oy2y0w18hYt/0SqQFdw8z2ZQCuNGCTXvISsnSPy1zIw=;
-        fh=BuamBhdLx2+l/inDlT/J7e5q02TNnA0krsxH8agOsDM=;
-        b=FwIV594x6YkwEcZ8PH/nS30jC+fV6dhab2d8a42iPuqztU39PiyOFaQhxAOmVd9JO4
-         UnWiJD9yBbeBvXPskqHyO4Le9gcaT2pjfrszXvAfTVzxbuHy99wo4QSSWjOGN838CDye
-         zqax+ccdXEeJYi7z4Y+nHfS3cJUuRYQ103vcaNqlEljUVC3JRLbzw/f2oGn2Z5HgG7eT
-         ATRien6NoV4ZeRuV2dHSnjeIgtFrcXH6A5ORiEbpXHNZoQPI1AGN30A+CzIlFwbFc4dv
-         1hOnfiMM46BzQwkwyjBxuIbw4VAV9IgXMg5wlfk5WAzUGCfvYPXvfer4MMwjKNoQpnI+
-         UTdA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=AqRQXC9e1yIrSAcLNE1gvR7WQ2p8XFPS+9BATHPSGv4=;
+        fh=6oOBiSWdtOgp+PHZKu7ckf1uK4vs13jV7NOUU86Za+E=;
+        b=l6MnttZUJWXuk9Pfe6H0bqJciVfBTSx3QkJH2Ih5I4a/uWVeOQKzJ0u28VclWbbFM6
+         ovUKBirPNzxVmiqq4oRWgCnDY94Z727ZME/1U9b62t1DWeiU85H0YZYPAYQMa0/xnDQ7
+         dwGmEGqO23lguHUD+ycZOplkjW4ym1ZpjrJlD6DRVBr0Z0RxXUB2Iab1xVLL9pjP81hG
+         52Ckksk7ivM25lN0yN87UKJ70qNYNM40JZFgrpYz3bzjKEzyMQ8kJNLUwFdXdXvQ4+jH
+         WyKUJYoCZaef8ifzb9aDjf3qe70QsCpxEYUO+RNF+zKTpDxaxeB77gj6pWQD4xntsFjQ
+         Wt6A==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="v7z0s/I9";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mAzSzR8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCU7LHcR9qf4G0rPWuuKhXwG+QRTAse2bUYxYZfM0usT0j4oR8+Pgaugl00zjGNDk9JkxLiUCj0ovCPCP7pUZ3z9ENMeABdq
+X-Forwarded-Encrypted: i=0; AJvYcCU5drRbtGrllUbbnIQxsXXHp60/n26H5egO+XE4mxnD6jhmL2wwgkdm2WvJgxyKraZXJvv8cIMdD1HmjGT8hUJ7KWDnt3LA
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10-20020a05622a118a00b0042c3335941dsi2156725qtk.742.2024.02.06.06.46.37
+        by mx.google.com with ESMTPS id k10-20020a05621414ea00b0068caf67a43asi1113041qvw.204.2024.02.05.19.06.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 06:46:37 -0800 (PST)
+        Mon, 05 Feb 2024 19:06:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="v7z0s/I9";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mAzSzR8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXMiH-00017D-Jz; Tue, 06 Feb 2024 09:46:17 -0500
+	id 1rXBmU-0006uu-DS; Mon, 05 Feb 2024 22:05:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXMiH-00016x-4K
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 09:46:17 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rXBmS-0006sn-Tr
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 22:05:52 -0500
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXMiF-0008BP-GK
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 09:46:16 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-55f279dca99so8217641a12.3
- for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 06:46:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rXBmQ-0003EI-3l
+ for qemu-arm@nongnu.org; Mon, 05 Feb 2024 22:05:52 -0500
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-6daf694b439so395017b3a.1
+ for <qemu-arm@nongnu.org>; Mon, 05 Feb 2024 19:05:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707230773; x=1707835573; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=oy2y0w18hYt/0SqQFdw8z2ZQCuNGCTXvISsnSPy1zIw=;
- b=v7z0s/I9NxhSPoCzgx2KuH666HO9FL5SKqOS7cjaMUBAMt0+s+1tXfKdFm2HQ+XXbI
- lgLEvwAGiAV76A7d1XtO7Q716FjvpROsSnAcT0Q4lrs1MN1D1tRStdkvGK6+GrVENa4g
- D8w1A79YVqlvbH4hABAgxY5lRqj2XB4kpmZKyBpos8svff2pzAR+Sp2ST8cP53JWA9Pd
- mNhhINsiv9+WF5+N2ylFYA6+gWJVSQufLh+KuUZ0LBEJcbqYr7kRYeFErrbsin1cDrkw
- +ns0wUzJadTPTie+gqGoou8Cv0IIAH1U4YMiO3edQWbCfyNFyxFoq4hNX0/pvBkB+5Y/
- LzCQ==
+ d=linaro.org; s=google; t=1707188738; x=1707793538; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AqRQXC9e1yIrSAcLNE1gvR7WQ2p8XFPS+9BATHPSGv4=;
+ b=mAzSzR8QPg97G3Y+N95tjnHJQoY6EiI1KX3esKCT+y0QBXkrnlKRYMPMhdB0IIdfAF
+ Hp57b1zl0L7hmkW1Ebt/npDOvkY8YCjgub391hHdoejbk1WQNTrkZVFwxwGUKG4sGwYd
+ 0V1vEb+ZRdPbvNxW7qRzbyOYqF/3ZaoeaWPpaLM9AcFcTAmeI+xGkxvCDMshLmLCrFEY
+ cXPNWDK0Ob/B0C0Ris2ziipU5qxFkipeDLLmTKE2zeOzhvSZUEjSzJx7xmbSpqVyZbx2
+ lJubaBamTsVNu0eu+CQxhfepSoA4xhXjr4s3+CYBb5l2K4xWmVpPUKu6ph4J43SsLlWP
+ TN5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707230773; x=1707835573;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oy2y0w18hYt/0SqQFdw8z2ZQCuNGCTXvISsnSPy1zIw=;
- b=Z0TkL1CyEYEDtfbHMcAGHWS/aCl4MXVTuPB44ykRSum6TpFaKLB896D2U//VDTvfYJ
- nJHdwI6ZP1uclyxhvH89nLMcE0xBR0mXfqF9lCmlyvxq41iNIw+OjFSFezfIOiGd055i
- goQUITk3iE0KU6/WiE2Q+DP7gI1cD9ayHcI0IFi3Hz2R+mUkcorqwgBcD0LCSeBG6bHP
- aGtB4IbZL4BgLwh1iUUEf/iNha8TsIfKg7/wj3rlLyFIBcN01Y2TWj4bZViZXv/e5oTt
- y9xVa2blO/TB0aNloDKaD8T7em0+nPAM3J5jJepfiGhn2BmGh2x3E9P4ev4cmSHB5ciV
- p7BQ==
-X-Gm-Message-State: AOJu0Yw6qWddLPoQXiHTH4rRw82vOZCceYqFHQn4+zV/cWIbFlsh6kkG
- nyEb4aN8LB5K+qB66KL/uinqjiEgPsTcsjb/896lAx8FBcsiNTdsk5JK1tUAKKkfGQ0Q8O4T4vW
- aQTOaptpNI5g0z7HDXD8rFKUsycHOu9iTve2x6Q==
-X-Received: by 2002:a05:6402:1485:b0:55f:9bb6:b205 with SMTP id
- e5-20020a056402148500b0055f9bb6b205mr1983775edv.34.1707230773233; Tue, 06 Feb
- 2024 06:46:13 -0800 (PST)
-MIME-Version: 1.0
+ d=1e100.net; s=20230601; t=1707188738; x=1707793538;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AqRQXC9e1yIrSAcLNE1gvR7WQ2p8XFPS+9BATHPSGv4=;
+ b=srWDqqBcQ7+Fm4I2PYi0HPdh4aJyjgJ+H52Tn6nOUIy1qn9GGGedT4rNjG9da/ax2U
+ 2rUgSWcXzqQv5NSvbH/A7ePllzt9GY0sGhvw5Xd15IzFEFLlYolthmuHK8f7uljGpxPz
+ ibeORUL1cbJUDQTu9VMKH1LtCEaUdNpXHQmubb8os2wBZb07+1OLlEfrK2Na7YP96pVg
+ bkzd5aEcZthC1mJMX62xIcYyb5+NLPeq4D8+X20OdplLqNjWFprPH4bTzlO+JqX1zMYJ
+ lYk4KhB96LQApjnHhUpyfJiCfjhr3Ynn24TcoAHr2f3riHoBmhn4xqcqvluOfKXqD/ob
+ hMlw==
+X-Gm-Message-State: AOJu0YyuP238zMQ8IGxu0qDWwUsfh+zD7vqayyxDSowmveCKKDwzs0yO
+ /nHtairDhRi7NJY5IZviGfGCXJpoGpzyd8mMnjqJXqS0jNnYPoMKZ7FI5o6kvBA=
+X-Received: by 2002:a05:6a20:939d:b0:19c:9ea1:692b with SMTP id
+ x29-20020a056a20939d00b0019c9ea1692bmr524716pzh.10.1707188738443; 
+ Mon, 05 Feb 2024 19:05:38 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCVyt1Y3IExw8JrgxPhbkw35x8dsDv1Uy4dNgqfJFktsplP9lQgtfPlq/HuYzf3kwqc2Ng3pGZnDPwdvDWOSkM9dm3tmj5z/eUo0JWCUxSaidEMIULQJMsUa3iwGy8ujQowH
+Received: from stoup.. ([43.252.112.200]) by smtp.gmail.com with ESMTPSA id
+ r14-20020a62e40e000000b006e025030700sm627478pfh.190.2024.02.05.19.05.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Feb 2024 19:05:38 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	gustavo.romero@linaro.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH v2 2/6] target/arm: Fix nregs computation in do_ld_zpa
+Date: Tue,  6 Feb 2024 13:05:23 +1000
+Message-Id: <20240206030527.169147-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240206030527.169147-1-richard.henderson@linaro.org>
 References: <20240206030527.169147-1-richard.henderson@linaro.org>
- <20240206030527.169147-3-richard.henderson@linaro.org>
-In-Reply-To: <20240206030527.169147-3-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Feb 2024 14:46:01 +0000
-Message-ID: <CAFEAcA-ZNwm=OJ6u+e57kyRFnjyR+Br=ZCbOodbQwBZzrjVnhA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/6] target/arm: Fix nregs computation in do_ld_zpa
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, gustavo.romero@linaro.org, 
- qemu-stable@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,70 +129,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h2ANc5E/C6WE
+X-TUID: 5YmeKHJtjxJI
 
-On Tue, 6 Feb 2024 at 03:06, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The field is encoded as [0-3], which is convenient for
-> indexing our array of function pointers, but the true
-> value is [1-4].  Adjust before calling do_mem_zpa.
->
-> Add an assert, and move the comment re passing ZT to
-> the helper back next to the relevant code.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 206adacfb8d ("target/arm: Add mte helpers for sve scalar + int loads")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/translate-sve.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-> index 296e7d1ce2..f50a426c98 100644
-> --- a/target/arm/tcg/translate-sve.c
-> +++ b/target/arm/tcg/translate-sve.c
-> @@ -4445,11 +4445,7 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
->      TCGv_ptr t_pg;
->      int desc = 0;
->
-> -    /*
-> -     * For e.g. LD4, there are not enough arguments to pass all 4
-> -     * registers as pointers, so encode the regno into the data field.
-> -     * For consistency, do this even for LD1.
-> -     */
-> +    assert(mte_n >= 1 && mte_n <= 4);
->      if (s->mte_active[0]) {
->          int msz = dtype_msz(dtype);
->
-> @@ -4463,6 +4459,11 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
->          addr = clean_data_tbi(s, addr);
->      }
->
-> +    /*
-> +     * For e.g. LD4, there are not enough arguments to pass all 4
-> +     * registers as pointers, so encode the regno into the data field.
-> +     * For consistency, do this even for LD1.
-> +     */
->      desc = simd_desc(vsz, vsz, zt | desc);
->      t_pg = tcg_temp_new_ptr();
->
-> @@ -4600,7 +4601,7 @@ static void do_ld_zpa(DisasContext *s, int zt, int pg,
->       * accessible via the instruction encoding.
->       */
->      assert(fn != NULL);
-> -    do_mem_zpa(s, zt, pg, addr, dtype, nreg, false, fn);
-> +    do_mem_zpa(s, zt, pg, addr, dtype, nreg + 1, false, fn);
->  }
->
->  static bool trans_LD_zprr(DisasContext *s, arg_rprr_load *a)
+The field is encoded as [0-3], which is convenient for
+indexing our array of function pointers, but the true
+value is [1-4].  Adjust before calling do_mem_zpa.
 
-What about do_st_zpa() ? It's not obvious what the 'nreg'
-encoding is in the a->nreg field in arg_rprr_store, but
-it's definitely confusing that do_st_zpa() calls
-do_mem_zpa() passing "nreg" whereas do_ld_zpa() now
-passes it "nreg + 1". Can we make it so the handling
-in these two functions lines up?
+Add an assert, and move the comment re passing ZT to
+the helper back next to the relevant code.
 
-thanks
--- PMM
+Cc: qemu-stable@nongnu.org
+Fixes: 206adacfb8d ("target/arm: Add mte helpers for sve scalar + int loads")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/translate-sve.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 296e7d1ce2..f50a426c98 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -4445,11 +4445,7 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
+     TCGv_ptr t_pg;
+     int desc = 0;
+ 
+-    /*
+-     * For e.g. LD4, there are not enough arguments to pass all 4
+-     * registers as pointers, so encode the regno into the data field.
+-     * For consistency, do this even for LD1.
+-     */
++    assert(mte_n >= 1 && mte_n <= 4);
+     if (s->mte_active[0]) {
+         int msz = dtype_msz(dtype);
+ 
+@@ -4463,6 +4459,11 @@ static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
+         addr = clean_data_tbi(s, addr);
+     }
+ 
++    /*
++     * For e.g. LD4, there are not enough arguments to pass all 4
++     * registers as pointers, so encode the regno into the data field.
++     * For consistency, do this even for LD1.
++     */
+     desc = simd_desc(vsz, vsz, zt | desc);
+     t_pg = tcg_temp_new_ptr();
+ 
+@@ -4600,7 +4601,7 @@ static void do_ld_zpa(DisasContext *s, int zt, int pg,
+      * accessible via the instruction encoding.
+      */
+     assert(fn != NULL);
+-    do_mem_zpa(s, zt, pg, addr, dtype, nreg, false, fn);
++    do_mem_zpa(s, zt, pg, addr, dtype, nreg + 1, false, fn);
+ }
+ 
+ static bool trans_LD_zprr(DisasContext *s, arg_rprr_load *a)
+-- 
+2.34.1
+

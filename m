@@ -1,183 +1,173 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1933287ejb;
-        Tue, 6 Feb 2024 08:59:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFU6cvQ7TZfqkMdVa4v0uverQ0w+XJoFntv+jzy58G8GudHybukqkwoGlEmm40JTfsi8C+X
-X-Received: by 2002:a05:6808:3c87:b0:3bf:e797:a71e with SMTP id gs7-20020a0568083c8700b003bfe797a71emr1197008oib.20.1707238795206;
-        Tue, 06 Feb 2024 08:59:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707238795; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1944634ejb;
+        Tue, 6 Feb 2024 09:13:40 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHEaKN52Es1f9uhsFjarILibBV463CH/PsATkQczPWFEhBfnrFOEXLuieVvG4W2mvXUD9BM
+X-Received: by 2002:a0c:f5c9:0:b0:68c:8525:f91a with SMTP id q9-20020a0cf5c9000000b0068c8525f91amr2487736qvm.60.1707239619808;
+        Tue, 06 Feb 2024 09:13:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707239619; cv=none;
         d=google.com; s=arc-20160816;
-        b=DR8aN5ebW+29+/eefRN3gVnXBMlAWQtzf0BgVNyPTLi80RdGEtHEe1njIXV0+tEl5L
-         ArU2l7ISO+eHWY+JjKcN5JXQFChYOTYHfjVfhNy34vwcIS9MW6B4HcyVv3oIiXHCrZ4m
-         cbaQuhK7vvBUgae4OMoQJs/iGuJPqpy/TgUc6TJpOGhtDP3PcgQlwSEZHVPWrQ4gzHf6
-         tj+swZ5/Uu4Pt9PLwZvGxYoEj75+pMhWxsynJg6KYIQScnz1Zns2y9hJyXwJu2JSC2iZ
-         P2r42Tk+Qen7QCxQkt/dnFENpMvhy4TA1ajQqGlDSLWg0jjflRjAH6CuavcHqEU/Yq7G
-         gQXg==
+        b=kWRXWEaVNgpuyv//uLZ/Z6oUZWL+t9fg8IvWDzDNdnjlOk4lCY3/bwDJzywxd5jqef
+         dS/TcLBsfs939d3YutjKzzT6xeXqid1pmSBBtvEZ/DHXcztM5FzaCqMMVQVbhcEYrAoB
+         ywidEkeY6+EPGyP075lO++3dc2sTijdN5gRHGjQQtOYUR39zTMmBM+fUxE6KBYTV37wG
+         IMo9nDJGdttIl1x7vbCXIAWzLraO0OfA88i4zQw22KdVrdKpJcbWVbNJPj/Joe8BsWwG
+         e15nvFRpXiSPhEvPgqbsSGytvOSxbopmwfACenh/zSZfaLiauatS77YHd9uL0ILbNNbu
+         JQLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=w5ug/n1fM2pXd2yCC7Yhtmjx1k1u4uESr5PJ8MFe5wQ=;
-        fh=nP6haPbm0lE+PzJrUU7zfqMxZBEALjd0uwE3Vz93huU=;
-        b=IkzuRJu3i5Y6+8spI31oal/lHqRpd44l/rAM3azgiso+rZVU5OCSIdYDsBDx3IQi81
-         M7WJgnvPLfnmD9bFqK8Csr7iF1IsyYEcNhjLYOV7fST5oEdozqXndCkMTHriJopIizvE
-         r9J8K0HX7sZ0moWVPRRj6pEBRo7eEXjJVnX0Yh9a/6cwpPHtNad4hsi+TxiX8EGblZN3
-         0JLTmxCBXaSozUMmHGSO4JrRzQE6GWT/4ev9SwvsJ3eFgNXSx/v1l8HTzICzay/DXNyj
-         pYN6S2y4vLXxm1/Raz5VJbm9UUXrjMos358Ey2FrRvDWdTu2ykg0ofR4n2SbNV7ipSl6
-         wfDA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
+        fh=eBbBm0UnxpLFINEoHtgIQMtVCCa8MTW08o1upCw03pE=;
+        b=AXTz9ONG+HWM44tcCydaEMxo4nuwwa7MXdFcL/W52EMMmTPK9I5qpA0W3mUd7KjTI5
+         91O34VHsQl2OSVdhieoWJp0AKDrQ99wviRScp/4mGvdYIRLvX2sGB4/ZtaJ0vgjx3fbv
+         7arz1PBNsr4IpbIu26910gHuTAgUgJtCx2sD661KPhjr4rM6COXaW4mYnyW8vK0IWesv
+         TawgjAhqCH62uvBG0qe2SouXabsJEYxQjucbUPSCa+g2/3xrBvZdZHYVKVXiCX1xhFIg
+         wCNhVpSw6+OEoGpkx6Q/Ym/lKrZbeaGCGjEY2HE8hQjeFmpBwj3UZedAuegcpGnCvkcu
+         fgzw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=0; AJvYcCUfVIOg7m/IpHtMvhafRAMUVoQzSYlyaqw7NlVj0qtuxE0nNT+ES1Alc/jTl0/JkPDdd2Y83t0D4Dk2KYSVLmrX7KnbbBnJ
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=n6CxjObG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=0; AJvYcCXR2dLGJHx4B1YqpNIWIes1oCSYyNOd/eMtisjaZSYmYcIvX7eLlDrJoNRUvYBJXW2WD/fiD9D+s3Ep/g8UA+L0mgqV5rr5
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z34-20020a05620a262200b007855387679bsi3036686qko.122.2024.02.06.08.59.55
+        by mx.google.com with ESMTPS id j14-20020a0cf9ce000000b0067f3acb6c6asi2709382qvo.113.2024.02.06.09.13.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 08:59:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Feb 2024 09:13:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=n6CxjObG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXOnS-0005SD-Gh; Tue, 06 Feb 2024 11:59:46 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rXOzu-0003pB-IQ; Tue, 06 Feb 2024 12:12:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=f3tV=JP=kaod.org=clg@ozlabs.org>)
- id 1rXOnR-0005Rl-33; Tue, 06 Feb 2024 11:59:45 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=f3tV=JP=kaod.org=clg@ozlabs.org>)
- id 1rXOnO-0000TR-Qd; Tue, 06 Feb 2024 11:59:44 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TTqGx0gw4z4wyp;
- Wed,  7 Feb 2024 03:59:37 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TTqGv08ckz4wcB;
- Wed,  7 Feb 2024 03:59:34 +1100 (AEDT)
-Message-ID: <21cf49a2-8e3a-4dc5-9b3c-841818b20469@kaod.org>
-Date: Tue, 6 Feb 2024 17:59:32 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rXOzt-0003on-LT
+ for qemu-devel@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rXOzr-0003Xk-4G
+ for qemu-devel@nongnu.org; Tue, 06 Feb 2024 12:12:37 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-40ffd94a707so893045e9.1
+ for <qemu-devel@nongnu.org>; Tue, 06 Feb 2024 09:12:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707239554; x=1707844354; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
+ b=n6CxjObGleqwMRriOnpzRu81mjCflQa5feqBYbaH2GRaU713fP/4Ud6eOUojWwB8lR
+ 9KJd5ScFa8IjDXCEtZGPJOl4//483tGckgtIeHvdZ6ITUWlIX9gKGNF5CRD79Zoyp4pC
+ cXWJIwFxU6DeCkk0TIsnDiKQfwhyEt1G4k6TOw9PUO6M19iJEZWNj73SpiHF9vkC3Ii8
+ L8f7lIZUi1vxq2sa0RBugAaXPICi8JUAT/8JrRH3wxNGsIfRKRNdzqFnXJ/tHPBLkCzx
+ +pC3hykk6vkr1FMn/G2+6/+3VX2kByj4Fq3sDNLd2EYi2SpetQ1u/xsglgFglO67zO+1
+ FRvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707239554; x=1707844354;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MH56YTCLqm7CWs23iAH4TIELKHifi0GITJ752eBfDjw=;
+ b=Cq5TIwxLjgOq3BIx65NU1+weX0Y/ufRP9HU3ML4KZv83UMKUt35WLbUs17FSSBl7Y0
+ 0/zBXYpauB6jHnF3HPlHbXVpdqqBDqGwOGDAOvBhBOs9kBWYD+CW60uyy/SUDIFZA9n3
+ drLs2EjElz0A/9+Efe/X0CoxqyeOelj44kbZrwvnQSn86RvOWaO+ZOOK5/BvTAaJ/JaU
+ UzNl/xgAGioF4LOAZFuX/KLXw/QhqT/3qrpZeqH5GHFtTJ8NYxAd6+uuozdDKaxMOiob
+ jZ5xEIf8k4VzkUwuimC6NHAttfAHuugTtBhucVGSFxh9QuTYwPm4iMUAz1NzoDNcre6k
+ VPpg==
+X-Gm-Message-State: AOJu0YyE0JffuWfsdlI5dBvs5Axk9cS8iy3sOyGhxB874r/N8JX/Y5yf
+ m8OHyaT/HoKXcxp4yVDZYKcRcvQqQqb0X+VLyjDgnH/GZW8/YhY+agkyL+wP+Ug89w8KQk5yYPg
+ 7
+X-Received: by 2002:adf:ce0f:0:b0:33b:21e4:68d5 with SMTP id
+ p15-20020adfce0f000000b0033b21e468d5mr1757035wrn.34.1707239553719; 
+ Tue, 06 Feb 2024 09:12:33 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCWjoe4nxjJudTv3JMKkultf+xyz2bo4vKQlN5voMvzq4tv+9Rtb5n27S1VJTVTvhEmjZhvFYy1ynmx/kFtB5o+wBIy0IVxD6jUlAFutQZ8bTDz29+cIXfkolx9u74zSscViTCxKBiYVdVCLJIddSyffbKpE
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ l12-20020a5d4bcc000000b0033905a60689sm2561284wrt.45.2024.02.06.09.12.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Feb 2024 09:12:33 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: David Woodhouse <dwmw@amazon.co.uk>,
+ Nabih Estefan <nabihestefan@google.com>, Hao Wu <wuhaotsh@google.com>
+Subject: [PATCH 2/2] tests/qtest/npcm7xx_emc-test: Connect all NICs to a
+ backend
+Date: Tue,  6 Feb 2024 17:12:31 +0000
+Message-Id: <20240206171231.396392-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240206171231.396392-1-peter.maydell@linaro.org>
+References: <20240206171231.396392-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v0 1/2] aspeed: support uart controller both 0 and 1 base
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20240205091415.935686-1-jamin_lin@aspeedtech.com>
- <20240205091415.935686-2-jamin_lin@aspeedtech.com>
- <aab5b2fb-e7f0-434b-935c-ff5ad5d39f21@kaod.org>
- <30e7e323-369b-4ee3-994e-a6cb9205a4f9@kaod.org>
- <SI2PR06MB5041FC68062741DB853B979EFC462@SI2PR06MB5041.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041FC68062741DB853B979EFC462@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=f3tV=JP=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zbd8t3tAKxbV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 00C8dnI+fLWy
 
-On 2/6/24 04:29, Jamin Lin wrote:
->> -----Original Message-----
->> The uart definitions on the AST2700 are different :
->>
->>
->> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm
->> 64/boot/dts/aspeed/aspeed-g7.dtsi
->>
->> 	serial0 = &uart0;
->> 	serial1 = &uart1;
->> 	serial2 = &uart2;
->> 	serial3 = &uart3;
->> 	serial4 = &uart4;
->> 	serial5 = &uart5;
->> 	serial6 = &uart6;
->> 	serial7 = &uart7;
->> 	serial8 = &uart8;
->>           ...
->>
->> I think the names in the DT (and consequently in the QEMU models) follow the
->> IP names in the datasheet.
->>
->> I don't think we care in QEMU, so I would be inclined to change the indexing of
->> the device names in QEMU and start at 0, which would introduce a
->> discrepancy for the AST2400, AST2600, AST2600 SoC.
->>
->> Let's see what the other maintainers have to say.
->>
->> Thanks,
->>
->> C.
-> Hi Cedric,
-> 
-> Did you mean to change the naming of uart device to 0 base for all ASPEED SOCs?
-> If yes, it seems we need to do the following changes.
-> 1. add ASPEED_DEV_UART0 in aspeed_soc.h
-> 2. Re-defined uart memory map for ast2600, ast10x0, ast2500 and ast2400(uart0 -> ASPEED_DEV_UART0)
-> Take ast2600 for example:
-> static const hwaddr aspeed_soc_ast2600_memmap[] = {
->      [ASPEED_DEV_UART1]     = 0x1E783000, ---> [ASPEED_DEV_UART0]
->      [ASPEED_DEV_UART2]     = 0x1E78D000, ---> [ASPEED_DEV_UART1]
->      [ASPEED_DEV_UART3]     = 0x1E78E000,
->      [ASPEED_DEV_UART4]     = 0x1E78F000,
->      [ASPEED_DEV_UART5]     = 0x1E784000,
->      [ASPEED_DEV_UART6]     = 0x1E790000,
->      [ASPEED_DEV_UART7]     = 0x1E790100,
->      [ASPEED_DEV_UART8]     = 0x1E790200,
->      [ASPEED_DEV_UART9]     = 0x1E790300,
->      [ASPEED_DEV_UART10]    = 0x1E790400,
->      [ASPEED_DEV_UART11]    = 0x1E790500,
->      [ASPEED_DEV_UART12]    = 0x1E790600,
->      [ASPEED_DEV_UART13]    = 0x1E790700, ---> [ASPEED_DEV_UART12]
-> };
-> If no, could you please descript it more detail? So, I can change it and re-send this patch series.
+Currently QEMU will warn if there is a NIC on the board that
+is not connected to a backend. By default the '-nic user' will
+get used for all NICs, but if you manually connect a specific
+NIC to a specific backend, then the other NICs on the board
+have no backend and will be warned about:
 
-Let's keep the datasheet names. I had forgotten the reason initially
-and from an HW POV it makes sense to keep them in sync. I will add
-some more comments to the patch.
-  
-> By the way, I will send a new patch series to support AST2700 in two weeks.
-> We encountered GIC issues. It seems that QEMU support GIC v3 but SPI did not support, yet.
->
-> https://github.com/qemu/qemu/blob/master/hw/intc/arm_gicv3_dist.c#L383
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-g7.dtsi#L229
+qemu-system-arm: warning: nic npcm7xx-emc.1 has no peer
+qemu-system-arm: warning: nic npcm-gmac.0 has no peer
+qemu-system-arm: warning: nic npcm-gmac.1 has no peer
 
-If you did any hacks or workarounds in the QEMU models, please keep them
-separate from the other patches so that we can discuss.
+So suppress those warnings by manually connecting every NIC
+on the board to some backend.
 
-> It think that we can discuss it in a new AST2700 patch series.
-Sure.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/qtest/npcm7xx_emc-test.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Thanks,
-
-C.
-
+diff --git a/tests/qtest/npcm7xx_emc-test.c b/tests/qtest/npcm7xx_emc-test.c
+index f7646fae2c9..63f6cadb5cc 100644
+--- a/tests/qtest/npcm7xx_emc-test.c
++++ b/tests/qtest/npcm7xx_emc-test.c
+@@ -228,7 +228,10 @@ static int *packet_test_init(int module_num, GString *cmd_line)
+      * KISS and use -nic. The driver accepts 'emc0' and 'emc1' as aliases
+      * in the 'model' field to specify the device to match.
+      */
+-    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d ",
++    g_string_append_printf(cmd_line, " -nic socket,fd=%d,model=emc%d "
++                           "-nic user,model=npcm7xx-emc "
++                           "-nic user,model=npcm-gmac "
++                           "-nic user,model=npcm-gmac",
+                            test_sockets[1], module_num);
+ 
+     g_test_queue_destroy(packet_test_clear, test_sockets);
+-- 
+2.34.1
 

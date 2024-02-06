@@ -1,120 +1,115 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp2056548ejb;
-        Tue, 6 Feb 2024 12:34:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW9LBAW/vFpHL98NFkvHNInE85E376ZuEC7I6yZjqrqsr/R4Ov8JIwkBzMnxTO1tNpC0QcI+HgEHW2OePKhUitNHsgybAOH
-X-Google-Smtp-Source: AGHT+IGUZIHa2Le0kUBvlrvY9CGCvjbD+IxxVY0cPTk4Q7IV4P00ApXq7tk7CMysTkYAT5O53HDL
-X-Received: by 2002:a05:622a:341:b0:42c:2fa1:1b0d with SMTP id r1-20020a05622a034100b0042c2fa11b0dmr8566087qtw.13.1707251699686;
-        Tue, 06 Feb 2024 12:34:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707251699; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp2058139ejb;
+        Tue, 6 Feb 2024 12:38:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFFMWRwPsDxMisKRSyE+e9u30ahwmw4GYHAZ8Prz+unu9rv2UQDSzrh91ugGwfbLFMgp7Nn
+X-Received: by 2002:ac8:4742:0:b0:42c:3731:e45e with SMTP id k2-20020ac84742000000b0042c3731e45emr2436076qtp.64.1707251933148;
+        Tue, 06 Feb 2024 12:38:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707251933; cv=none;
         d=google.com; s=arc-20160816;
-        b=wJMpnRciuZIrSq/E2c9cTlyZtCRvUQ4ld6l3iqXUQWr0bG8B5arLmZVMYtgDpg2n52
-         wlzfPsWj0ynyyKtEc+I3ryLikdejeYAY/KE41r1ixjLwikB745Bf5VuZDMYgxBVjnOKw
-         yoegwHbDKnrcWktbC3r9Hqn4pwgTsEUYnsOBL5jf1yrFQqDNL2DYUncKv9/MTXlgwY6u
-         wNwHD3bhP/p2Xr9irbSMEBTBaz9GvEu5oPiwGID3qpXFNE91f1V3r74U7SxKm1YWhMbs
-         kIB1dcMfXY1hgJu4HAU/EOYEQRsdLUaPhNUgDa6MzMmuNRlyrN2CCnG36wFvepFzZt6i
-         hIJw==
+        b=lE5J7U9xTAsiXdpiprSAdG9m4dVg+zHi2dUyuEbfSBJE7d/FF7M6hhv2f+Tyir9AMr
+         skLYU2yqXT8bA4iZPYmauAZ5Blf07yiQEazCtyowFuDquzYtqEc7HJ2Y/ep4VyPZWmcs
+         1Xspy8wvJem7XE8YkpSjV9OlHBiE8VDvAlJZ5cIJu40Mnda2KGKjuwN8HA0Up/oXtY6V
+         xH4CxkitKXmrq3ecZvpusc+Fl0JC1HdwnfK8h5iPyg2FHqVfypIykQ2fSmJrOwnPoR62
+         FfAFaVaMb9T4yGKNXLdRgIjIIpw0lQXio2KgjpLt9IOA2QoI8EefWHPoV72zBj2Jp4P4
+         HNBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=CEt5J+6LdVSAOxfzeXKE68Kf+C7F2HF5Hao2SVqblEY=;
-        fh=k8KDxRlM4sflI+WAFabVfHOVchc9M5Bw9XpSc2edbGU=;
-        b=RmYqmW+o6jYMoTLJwEzGYYobery5lckl5N/Yi5sSDovHVjmcg3TAcCPE1Xkk95AsD9
-         LHI7aC/JwdRO0ndeS/6CBLXklFFYE0B7GAKGfqceFB2EPVbg5I6IImtRyVUK0V41+UM8
-         O4mVK5jpjQzjgEdQH/yBqCv7G4b7py9Pi2iij3xcwiFHTQGtoM2eD16gzmk2dqUkn+it
-         VGEBXMN92o9T+C7Y09t8WuR2LqvxMDL4DPXAtod5V/P63YCoWYlRd3RmahFTNjQPyvCp
-         eqtUFDQN5xzEAxQtst732Q5rOIwKd7Kp7rlZAQ3fUbzO9VS2FlyDh6DuSFtdVHILeWVe
-         rRHg==;
+        bh=QPZ4nDHu4Px4WR+0uxKo54dRmPzuN2VdMewUhXIXBr0=;
+        fh=F+FH1wq7kV52YFnE83pJs/mQC38kkPwbqkpGTyVV6XI=;
+        b=gavkf7tnduKAXDV7eiiyJZwRe782I5ty1IfZ79vh2Y/DGyq473zGPHNYwVSgc7WfF0
+         ZRgJkNF5NXJi1FaOCIPo0gWzow+Wq/uJnPqOUHxKACbEh5lCveVZ0WWmOpHpq2heeBAT
+         gNynUq7oUbHO/omWrT36QGL6k9gig5jSnW4UX2ZBGRcNsKlnbF48mB46ZAuusdpi8F5v
+         u2YLqLNxBLsV6GOU3jpLVf2t1a56I61mnxoFshWmvI6K13mxjnGDTkTxGYYRoCJzMCGj
+         V4rvSALMJhLMwt5eVRSwk6RuRsV7+5R2w0FH+B/MqnjVYv9qUiy/u2U3TAbkkfc/RfvR
+         9ZSA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VNmmyxGx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jQFNRU0O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCX0silbIhzd3neEPEli7NzZYZZHq636EiAdDHOBSZADXmqBExMB+/3jdTHJBHH/1hSrBWbEl7cDr0/omCtTG1MGFRp76yhr
+X-Forwarded-Encrypted: i=0; AJvYcCUELQcRNN2HeIIs9IVv9zW91JuIFsNi2dM8zT6/0C/UCahh9KDRFioGOgPuVXxqHd8ARURnzE6e4yOUoVHXZ/9clfm4Y1Kn
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n3-20020a05622a11c300b0042c3306518esi2827193qtk.261.2024.02.06.12.34.59
+        by mx.google.com with ESMTPS id w9-20020ac857c9000000b0042c37acc03bsi1802959qta.701.2024.02.06.12.38.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 12:34:59 -0800 (PST)
+        Tue, 06 Feb 2024 12:38:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VNmmyxGx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jQFNRU0O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXS9S-0000Rz-5p; Tue, 06 Feb 2024 15:34:42 -0500
+	id 1rXSDI-0001fZ-9T; Tue, 06 Feb 2024 15:38:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rXS9Q-0000Qz-64
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 15:34:40 -0500
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1rXSDG-0001fH-FL
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 15:38:38 -0500
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rXS9O-0007k0-Nn
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 15:34:39 -0500
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-1d99c5f6bfeso7817025ad.1
- for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 12:34:38 -0800 (PST)
+ id 1rXSDD-0008SI-RW
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 15:38:37 -0500
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-296c827b42dso902155a91.1
+ for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 12:38:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707251677; x=1707856477; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707251914; x=1707856714; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=CEt5J+6LdVSAOxfzeXKE68Kf+C7F2HF5Hao2SVqblEY=;
- b=VNmmyxGxm4SJUjNGv2jCGC0rFnTXqqNuPBefavhRdaz+EXFVnSk+Nkmj41ZKxdvXlA
- P38m2bCcCF8EqfEpF60LjZswpt4DSTHFj7Ia8teLCRejSz35FH0LDZKmU5Iqr3RpLJ50
- fWykQkTgVqe0jKThCrluNCEAIdIZ412G+KPsf0tMa9Ph5TUsV1Be925xzNqtMdzQ8fES
- y9l7nJvPiY5je1XiNiKYvde7BrCXm5/JRt8oeFNg+n+LPDOln49+pov5rE/h57KH5bsD
- LifmmvAtPhXn+z99if30W5dhCKHqkccRdBaAHxmICKhtao0Hx9p4Q6HlvRg9+4sXeq2R
- GkJA==
+ bh=QPZ4nDHu4Px4WR+0uxKo54dRmPzuN2VdMewUhXIXBr0=;
+ b=jQFNRU0O8N9HFdAndTeUM8MN6P5kQ5vglU0pUIirVHQPklsb/ZEGE+UBQBz/jiFJB6
+ lqOEs4jUMXLz4RuB4VoCr0V6btiR/ETrf1tuix52Nk2sZvCRvhjJt9EY4TpdmBcNqpzC
+ kKotoMV+sIYnlqRWf5OSn5AQxZvYZ77WCJzyxE5b39QB3KB9IuBj3a1Qc3LJkPEpS4qE
+ 4t7nWY9WeUxIvHO8cdmP02B4A7pDBiGNRUWL5fAXXbvPM6zihHuDMZdoOlc2J/AaGYeU
+ IneT/DnD3Mz6K/jhwhSN3fMjnd3TC6SQQq72cW70B7FqHgUQI+PtUVHe6hvFXwxwIPnv
+ 1Q0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707251677; x=1707856477;
+ d=1e100.net; s=20230601; t=1707251914; x=1707856714;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CEt5J+6LdVSAOxfzeXKE68Kf+C7F2HF5Hao2SVqblEY=;
- b=WbQayK9lkjhpsYJhcpryFes3yWPnSkQeOPmn6CTHLeB8yHFTp4hvtXRNRw4CJsM7Yd
- xIPrOiT8lyDKjNaDc0nMgf2jDiPSYuviQW+lADu7s+DA+sVynB1qoXdqIQFmy1Cf8TKR
- h+QBYczhuBYMLWkIkXCZifvklyqC3rsujdt8IEYc/0BL8zzzGpfd6Wv4cChIfD5tmRPP
- cGSyHhpeizXz1pC2GkWaulS1qKiP/tZEvxP9eReVm0ubgv1pcZGS1kWqkfVnK+WIn3F8
- FbWUqgYSH7r7nStzV+YFhGTB5cpZculvhiP13pQpvn+9b/Be/ryhl+3GUMZy/C5WGWKY
- MebA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUMH3HuUwd76ITSbv2JsHapqw81Jb4HgNjrQioDEh5HCfVwKPRmoiLrV2n0beO0OYB8N49z7kkC8GtFwSXx/FH6PsO0
-X-Gm-Message-State: AOJu0YwToOKdWaRPA3n6tnAPdBP7Qk2LqWOYNxVbIbsA8/GpvovN95/Y
- 8uU+ppJIsHcP7DPRTXQYigdNRttbba7MeOQLpCjHX6/pOwJX8j0AvKk4/pfKropJgn/VdS7gfGQ
- RWSs=
-X-Received: by 2002:a17:902:d546:b0:1d9:e181:51b0 with SMTP id
- z6-20020a170902d54600b001d9e18151b0mr3139225plf.23.1707251676904; 
- Tue, 06 Feb 2024 12:34:36 -0800 (PST)
+ bh=QPZ4nDHu4Px4WR+0uxKo54dRmPzuN2VdMewUhXIXBr0=;
+ b=GPrU1xVCuNXat+QKvxxtKxmpCSQgwTj13P2OYUDGgQQNRg+uVft8Nj18gU5xZePU8Q
+ e9I1G55ZIl65Fi62SHl7Ru1Lv9TCuTgB09aVG1hywJnH4MydfazML67js6kS0tFvtdyJ
+ urgQ9cNXJCXYGh8R9vOesGkayf2Ts19Xvr2kJJFNNjCAlRY9LXsld3+ZVub8G+FO6tcb
+ eLlmCw/Z0nMvHcommq+amj90vt81q6YoiUj5ZTt9K5G3UlbSwuKQOZU6zVyCM9ZJdWlI
+ RGMhDB5Y9yh051IfRaxv4vEvfP3cLJrWzVZNgVVAZn9hLqD5yBWfPHGeVkr7MjQm21ML
+ KzYA==
+X-Gm-Message-State: AOJu0Yy1MiHGQ7r06reEH3hSWy8KQLu2A82ECfo9fT3khG9+Xem/HzyY
+ gTDD68gAjVNDN4+HcmAEPw3/1KCkVoFErzMkPdNr3bklEaDSPtpgHscKFbRhvL0=
+X-Received: by 2002:a17:90b:4f42:b0:296:12df:a93a with SMTP id
+ pj2-20020a17090b4f4200b0029612dfa93amr643643pjb.46.1707251914053; 
+ Tue, 06 Feb 2024 12:38:34 -0800 (PST)
 X-Forwarded-Encrypted: i=0;
- AJvYcCU6Hmf4JzgodANkiQ+nRr44uH98gYpw4wNEoyDOCJcb/GfiiJXzMJ7vvHVhZafvGbxsFxTRm5/eYkL7VkuJKb5y0ZB7DvqIsEx1XGOx6xPqGiGTyTtTd7JjhgY=
+ AJvYcCWBIRvlNQcIfA7GhgcfXISj3HWTO+j9F/XKaBi/tBh4g9FUWyKJ8u88j8MWaajk6+27qHoJ+XpN9WzJ0V+kiiX2SG61FU3J5WTb2hJECEVRh07n8iQIMZneZmw=
 Received: from [192.168.0.100] ([43.252.112.200])
  by smtp.gmail.com with ESMTPSA id
- kx15-20020a170902f94f00b001d8f82c61cdsm2297697plb.231.2024.02.06.12.34.34
+ qa7-20020a17090b4fc700b00296a7abe2aasm2199219pjb.8.2024.02.06.12.38.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Feb 2024 12:34:36 -0800 (PST)
-Message-ID: <768c7884-1a59-461c-a810-4f8a89d4bfda@linaro.org>
-Date: Wed, 7 Feb 2024 06:34:32 +1000
+ Tue, 06 Feb 2024 12:38:33 -0800 (PST)
+Message-ID: <668729ae-4305-4a6d-9f95-c92fea6cfcbd@linaro.org>
+Date: Wed, 7 Feb 2024 06:38:28 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/13] target/arm: Use new CBAR encoding for all v8 CPUs, 
- not all aarch64 CPUs
+Subject: Re: [PATCH 02/13] target/arm: The Cortex-R52 has a read-only CBAR
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20240206132931.38376-1-peter.maydell@linaro.org>
- <20240206132931.38376-2-peter.maydell@linaro.org>
+ <20240206132931.38376-3-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240206132931.38376-2-peter.maydell@linaro.org>
+In-Reply-To: <20240206132931.38376-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,41 +131,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zuikDCbGoe21
+X-TUID: re7gC8XcVtsh
 
 On 2/6/24 23:29, Peter Maydell wrote:
-> We support two different encodings for the AArch32 IMPDEF
-> CBAR register -- older cores like the Cortex A9, A7, A15
-> have this at 4, c15, c0, 0; newer cores like the
-> Cortex A35, A53, A57 and A72 have it at 1 c15 c0 0.
+> The Cortex-R52 implements the Configuration Base Address Register
+> (CBAR), as a read-only register.  Add ARM_FEATURE_CBAR_RO to this CPU
+> type, so that our implementation provides the register and the
+> associated qdev property.
 > 
-> When we implemented this we picked which encoding to
-> use based on whether the CPU set ARM_FEATURE_AARCH64.
-> However this isn't right for three cases:
->   * the qemu-system-arm 'max' CPU, which is supposed to be
->     a variant on a Cortex-A57; it ought to use the same
->     encoding the A57 does and which the AArch64 'max'
->     exposes to AArch32 guest code
->   * the Cortex-R52, which is AArch32-only but has the CBAR
->     at the newer encoding (and where we incorrectly are
->     not yet setting ARM_FEATURE_CBAR_RO anyway)
->   * any possible future support for other v8 AArch32
->     only CPUs, or for supporting "boot the CPU into
->     AArch32 mode" on our existing cores like the A57 etc
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/arm/tcg/cpu32.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> Make the decision of the encoding be based on whether
-> the CPU implements the ARM_FEATURE_V8 flag instead.
-> 
-> This changes the behaviour only for the qemu-system-arm
-> '-cpu max'. We don't expect anybody to be relying on the
-> old behaviour because:
->   * it's not what the real hardware Cortex-A57 does
->     (and that's what our ID register claims we are)
+> diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+> index 11253051156..311d654cdce 100644
+> --- a/target/arm/tcg/cpu32.c
+> +++ b/target/arm/tcg/cpu32.c
+> @@ -809,6 +809,7 @@ static void cortex_r52_initfn(Object *obj)
+>       set_feature(&cpu->env, ARM_FEATURE_PMSA);
+>       set_feature(&cpu->env, ARM_FEATURE_NEON);
+>       set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
 
-Not even that, because max resets MIDR.
-
-Anyway,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+I just noticed that arm_cpu_post_init can be simplified to not check CBAR_RO, now that we 
+have arm_cpu_propagate_feature_implications.
 
 
 r~
+

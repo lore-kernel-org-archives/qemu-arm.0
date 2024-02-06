@@ -1,120 +1,120 @@
-Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1790993ejb;
-        Tue, 6 Feb 2024 05:31:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGXQtX/eQOYghpyl1EFlnWu7QMzFLSzYVY79EBZjYvjklDGhpke3zCYKUFmFJG+su5P/azv
-X-Received: by 2002:a05:6102:5d0:b0:46d:408f:6055 with SMTP id v16-20020a05610205d000b0046d408f6055mr1607953vsf.6.1707226277996;
-        Tue, 06 Feb 2024 05:31:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707226277; cv=none;
+Received: by 2002:a17:906:755:b0:a37:6271:4f3c with SMTP id z21csp1791127ejb;
+        Tue, 6 Feb 2024 05:31:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHj3sBrvcpsYxSR9JZy+MF7FIF0anT6l2Vivu+cbcmDHNKphfz9LTMysvH4JgcC/olKuaMz
+X-Received: by 2002:ac8:460a:0:b0:42c:25fd:de75 with SMTP id p10-20020ac8460a000000b0042c25fdde75mr2095041qtn.6.1707226290844;
+        Tue, 06 Feb 2024 05:31:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707226290; cv=none;
         d=google.com; s=arc-20160816;
-        b=plkqMVAkfB3/dGBE871k+vRWgkoRkyX2Vn2ct8zVtIa70lhe4eAbsPHr8TMZ+OFuQv
-         z55F4sipvYvjMygeFhn0oJnxfPL2lLnwGvUCRjLuA/ekZXsyLuUMIAvyuJzI1QD0/chn
-         X7XSbOZCChk/q27Z9OT8DJQx/45IG2/uR2OBh8wRzJ57tQFXu3snNimZfgUsUshH4IgZ
-         +A70S6aXfqEtiDk4fR1AD6eEfR/deaYOGZzmLjxrrHzbWeC82s0yPZkEOY44oX13KwEq
-         Kd1Zsg6WqTUG1dl/r5cF/Rgvh1pooXJVXkUkweCq986A6YWO25k2H/TjIvRZN/XhuauJ
-         kgvA==
+        b=c5AoAhD8zJzOu6SRUFJOOL1r80ITH2hKzsVRpLrWZz9x7iXpu2u/Fb+x3nyUNtdBxL
+         X8hQr5mCFvpweXVUcfNn3aQDwnf92gJoo3MDH1paTF2ffbRTxzyWbBtoNQ93XORjp0ED
+         0n5KaHVoZjAD5Um59/bhhA/242tYCr04RZOjl2X/hESBXSUVNOoQ3i2yd2jG1SJASOdH
+         0xymqTXzeH1H7sePcgHH56zwxz2njo+KztDdvgVXo4kA/Y4jC92f3UhtpihnBErr4aQ9
+         Q9ZzWCAsiSqMpaSuyHuPap7qiE2UzZEWIVPiAR+joQgoAl/5V+MnblDPji4qf01er6ZN
+         Od5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=J5yMl9ruByZ2cE+u8xokLZN5yHG5tcwG0U9htQdpN5s=;
-        fh=DRntsk1GR7at3e9jyhIjOduhtgwXNsCHD9N8bW2CkDo=;
-        b=fXVVleJurtkeM9FEqnJuJaJpgN75PmqVnXyPIkPRsqaVYOwbx/NHuBFSU8vdGIdxhY
-         cWeaseTA4cjfcpWWQIBSxb01x3OawM6g2/PLp659U6J5Jxr3j02WwWFa8LuBOTIC44Rp
-         V6ZF/ZKD8iRKFK1lPf3XTGLXAkVqcmjXY/8pEGJIPPui1Tq8fvCpkENEuQhLtq3VRiTu
-         FOGyD9uFfvbDz3t9WE8oWSJak2UmumQ9yF42faQSNAHJWIixMJY+58dVsKEQ6donNXTp
-         TQOIPR8I4lMvi4nVedJ9RHUcOCzC+Pw7il7wJYgV+JXIl736ocy2GBdCBgCjF+35MrHY
-         T5kg==;
+        bh=i5+zyl23hVZuAKNLfLW8qwmlrpXibq7GbXzW+djyeAc=;
+        fh=/ZHIhKi8CxsF2mR36kk7URgelocUzELNpX399Zr5NAM=;
+        b=Njo6ZeQkBOc7x8Mn81sFBvE0otbR6uPxJcZ+L2bxawii4SXfRgHDjIj6GmL1yQjjCt
+         mxncVfvRu3+Rp8vfj5f+fVZGTYnNQmGqY3e2yXFYhD766wHiOKP5CHhKo7fVS0KToaNd
+         mOOiS0nA8IPZhU2dqGHCBPimWqAtJ75tIEoNDJmdYmUbY2PxFE7Aj8lwoyEvbrpx0eHt
+         xFgucMgOpMr16oCzWrm0VzIskTzWBVGcuWHR9skLEcZ1I8EHHwjLRGNQR4uG62ZP/lxS
+         spS8DT54qzph/ugidhTQcFHRu6D17B+4onUopRRNZSrfETAtAwPGCO9dv3wo2NrFMYHF
+         NA/Q==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4jwr3tI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wy8dvwnG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCW8g69ts0w3ioeKdy98KyV8HGUK4VPURX/KcYB4pZBlomaJsOFSHOocN28naJpEKoT0v0IS6PmP5YNn0lvu/SsN7z97tpwp
+X-Forwarded-Encrypted: i=0; AJvYcCXk2aJZUEtpRmCNrkFlE3wKW4A5+uTpl05kzKOkWfCTLWNyVqNz5Yh3dIbdVfEK4gwCqDTPGTO2QVf/cbwwq5vIzCUmpqgq
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hx3-20020a67e783000000b0046d291a5636si295346vsb.358.2024.02.06.05.31.17
+        by mx.google.com with ESMTPS id g17-20020ac85811000000b0042c3b7b7908si45318qtg.350.2024.02.06.05.31.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 05:31:17 -0800 (PST)
+        Tue, 06 Feb 2024 05:31:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=C4jwr3tI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wy8dvwnG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXLWF-0000m1-3M; Tue, 06 Feb 2024 08:29:47 -0500
+	id 1rXLWJ-0000rP-MM; Tue, 06 Feb 2024 08:29:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXLWD-0000fA-0S
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 08:29:45 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1rXLWE-0000iX-Gv
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 08:29:46 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rXLW7-0008Fb-AA
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 08:29:44 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-40fc6578423so37492645e9.0
- for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 05:29:38 -0800 (PST)
+ id 1rXLW8-0008G3-5w
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 08:29:46 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-40fc6578423so37492805e9.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 05:29:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707226178; x=1707830978; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707226179; x=1707830979; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=J5yMl9ruByZ2cE+u8xokLZN5yHG5tcwG0U9htQdpN5s=;
- b=C4jwr3tIuzk9Hwwqph03lWD6AOZ2oaIWffPAJIgdU4w3QiokXpr78aDkunZpiYA7+l
- FMZQ6RspLhjjsJBUM2kRSKZ+NgvVaJAYqYmemYEC39MdvKY0mFNsKkMCalxaNHsdeR36
- v8sSsBol54JRttECsE3yyFPV5/6Iwo13y7HrbGRhW1tMZYLiecS6V6XkaOZKEOX1FTnI
- pTWPm3lFukf4kvVmZqCWlu3dHomci5A1qWcn8UX0VkwzrYGLne4LjBXhkvhd/cB6h1s4
- 6LxDKIO1UXoIgO8Bwgs52FkZbVha0UESX5SjZlamLnXH6hOeXOzqw7f2bdZwBnFGNMQq
- 7tsg==
+ :reply-to; bh=i5+zyl23hVZuAKNLfLW8qwmlrpXibq7GbXzW+djyeAc=;
+ b=Wy8dvwnGA+5VjV6Wv+iaQcV03x9idvLGSikV0kCTYNIZt0KW4dAjwwXAbFYf2Rge+d
+ 7sWIqwT5Y+WA2oRF573VqPxISh04iFFFza+WfVC/AT5ePT3xwxFaxXUkV0ZJ/h4AjEtA
+ nzc+si36ZYBp8HDqqItibgVtM/GPXQTQeNkzedaclAyrx2RZ2WVctqcN4xRl74Qfqz/x
+ bxbgOKNeMa9bqncz2R2fVruu5A093CuG2NJZf88o9r+FUQT3ZthbsokMhawdN+k+izcA
+ ZtM6nSTFerdUVewf8Jwgq5Sd9Cm74QPCM0qrCH0PAy3ZK/5dyZtXi9RHUlYYcJCS1Ek7
+ mmWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707226178; x=1707830978;
+ d=1e100.net; s=20230601; t=1707226179; x=1707830979;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=J5yMl9ruByZ2cE+u8xokLZN5yHG5tcwG0U9htQdpN5s=;
- b=k6tzLOp6w/WW1LlzcD5eT5HQKhU1b0C0LEPhDAt7Drw50/ARpf9pt35i2sUApMhGdT
- clKzqN3zjF3WPQZ+1MfPDSAS/alai4ZH8SrwwaykVqVIR2sTXcGGvViLs1fvcgMGKo06
- nwOStouuP7LPXserWaHUhEHz1aMEfw43Xp67faWu200HDmO8eY8LGQBduAyaYNuzuKmD
- 0RvlPUKKOUGKgQUsMwHqP4gI8BI7awh6j2uqr3PBbizwoXcfnMPQUTICag8RVd3OMttu
- DSrpOxZupifokfaYYNmpPNIks6kUZpqtPSQh9Wpfo+NfRWuS4SKdqg9J0tYGE/1iJw0/
- G/Kg==
-X-Gm-Message-State: AOJu0YxKlK7AP8CgtIirrvyU0R7Z6zHrrFb+fb3A6vclWO7KY6Vv8aaL
- lNLZNHbGZNcJgMTNOiqCX+JsZ2adWifcwkqhr9PTR8BVZKw7nbAb2MHKauPlH5wsLkpDr85/555
- k
-X-Received: by 2002:a5d:6149:0:b0:33b:3bad:d3ee with SMTP id
- y9-20020a5d6149000000b0033b3badd3eemr1086210wrt.43.1707226177904; 
- Tue, 06 Feb 2024 05:29:37 -0800 (PST)
+ bh=i5+zyl23hVZuAKNLfLW8qwmlrpXibq7GbXzW+djyeAc=;
+ b=XOHEfio7DhDbuexCxJBW5SV4IX0v290hpWEJLo8P42LVgaWGSgaiFOQi6Klw8rCRO+
+ wTBlrZstHPTqWFFhF2fIjVaA9pZqNlSUM1ghGK8uYKDs40X/EgiaYUavgUSjGhkLvPgA
+ K5gxMIwZzb9LQza11WJPKAXufgJNe76oezEIQKCUKpBUPuq46PoVgXxphHRYJKDW+slt
+ dh75wM6lkNQbSJn/+jhOxGHEwU+5sEsaWnnKgs7VdDYjASlAWmPMiayK0Ubm3NQ1+p7v
+ mjH4b5OL/4ykkbzmwVbyRJxsfkWxJIebJwfLmUfF2EErKhFlPsnZB9EN+rrMDd3LX5nv
+ NUcw==
+X-Gm-Message-State: AOJu0YzJIuYsPUmmz6UWqBsDiPbgRorjexA8QKLjTuWYkjR+aoCFSd62
+ w0K+xxCPhzd69U1qTRlqbv+U7WXsD06M+2QsbSr89ISSbdpIdNE5FxIYwVucCYCc+1RpdRbnsaT
+ N
+X-Received: by 2002:a05:6000:1208:b0:33b:3ceb:99cf with SMTP id
+ e8-20020a056000120800b0033b3ceb99cfmr1167924wrx.67.1707226178817; 
+ Tue, 06 Feb 2024 05:29:38 -0800 (PST)
 X-Forwarded-Encrypted: i=0;
- AJvYcCUm3OJ+YgXMLd6kJSMRIxqT4sbIwJIZMJrMnDjLXvXMlACoLZFW3VVz/n6UR6uveoXDeeEmUZtD2D6m5ViNreTKdhtzkc4=
+ AJvYcCWC4xecCLiqv1PUBtXswhEAx7qbwncmvQ70KK11G8lL00ywQnQzlU0WOfEqVkp9ASqU8Jo/BZ6hJbUfKnPvMK/LLtOboNM=
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- y7-20020a056000108700b0033b470a137esm1492932wrw.79.2024.02.06.05.29.37
+ y7-20020a056000108700b0033b470a137esm1492932wrw.79.2024.02.06.05.29.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Feb 2024 05:29:37 -0800 (PST)
+ Tue, 06 Feb 2024 05:29:38 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/13] hw/arm/mps3r: Add GPIO, watchdog, dual-timer,
- I2C devices
-Date: Tue,  6 Feb 2024 13:29:29 +0000
-Message-Id: <20240206132931.38376-12-peter.maydell@linaro.org>
+Subject: [PATCH 13/13] docs: Add documentation for the mps3-an536 board
+Date: Tue,  6 Feb 2024 13:29:31 +0000
+Message-Id: <20240206132931.38376-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240206132931.38376-1-peter.maydell@linaro.org>
 References: <20240206132931.38376-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,113 +129,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mksh3mlppevz
+X-TUID: xOwXUdWJKJNJ
 
-Add the GPIO, watchdog, dual-timer and I2C devices to the mps3-an536
-board.  These are all simple devices that just need to be created and
-wired up.
+Add documentation for the mps3-an536 board type.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps3r.c | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 59 insertions(+)
+ docs/system/arm/mps2.rst | 37 ++++++++++++++++++++++++++++++++++---
+ 1 file changed, 34 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/mps3r.c b/hw/arm/mps3r.c
-index 8c790313790..803ed0ffb5c 100644
---- a/hw/arm/mps3r.c
-+++ b/hw/arm/mps3r.c
-@@ -33,11 +33,16 @@
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
- #include "hw/or-irq.h"
-+#include "hw/qdev-clock.h"
- #include "hw/qdev-properties.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/bsa.h"
- #include "hw/char/cmsdk-apb-uart.h"
-+#include "hw/i2c/arm_sbcon_i2c.h"
- #include "hw/intc/arm_gicv3.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/timer/cmsdk-apb-dualtimer.h"
-+#include "hw/watchdog/cmsdk-apb-watchdog.h"
+diff --git a/docs/system/arm/mps2.rst b/docs/system/arm/mps2.rst
+index 8a75beb3a08..a305935cc49 100644
+--- a/docs/system/arm/mps2.rst
++++ b/docs/system/arm/mps2.rst
+@@ -1,7 +1,7 @@
+-Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``, ``mps3-an547``)
+-=========================================================================================================================================================
++Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``, ``mps3-an536``, ``mps3-an547``)
++=========================================================================================================================================================================
  
- /* Define the layout of RAM and ROM in a board */
- typedef struct RAMInfo {
-@@ -97,6 +102,10 @@ struct MPS3RMachineState {
-     CMSDKAPBUART uart[MPS3R_CPU_MAX + MPS3R_UART_MAX];
-     OrIRQState cpu_uart_oflow[MPS3R_CPU_MAX];
-     OrIRQState uart_oflow;
-+    CMSDKAPBWatchdog watchdog;
-+    CMSDKAPBDualTimer dualtimer;
-+    ArmSbconI2CState i2c[5];
-+    Clock *clk;
- };
+-These board models all use Arm M-profile CPUs.
++These board models use Arm M-profile or R-profile CPUs.
  
- #define TYPE_MPS3R_MACHINE "mps3r"
-@@ -329,6 +338,9 @@ static void mps3r_common_init(MachineState *machine)
-     MemoryRegion *sysmem = get_system_memory();
-     DeviceState *gicdev;
+ The Arm MPS2, MPS2+ and MPS3 dev boards are FPGA based (the 2+ has a
+ bigger FPGA but is otherwise the same as the 2; the 3 has a bigger
+@@ -13,6 +13,8 @@ FPGA image.
  
-+    mms->clk = clock_new(OBJECT(machine), "CLK");
-+    clock_set_hz(mms->clk, CLK_FRQ);
-+
-     for (const RAMInfo *ri = mmc->raminfo; ri->name; ri++) {
-         MemoryRegion *mr = mr_for_raminfo(mms, ri);
-         memory_region_add_subregion(sysmem, ri->base, mr);
-@@ -421,6 +433,53 @@ static void mps3r_common_init(MachineState *machine)
-                     qdev_get_gpio_in(gicdev, combirq));
-     }
+ QEMU models the following FPGA images:
  
-+    for (int i = 0; i < 4; i++) {
-+        /* CMSDK GPIO controllers */
-+        g_autofree char *s = g_strdup_printf("gpio%d", i);
-+        create_unimplemented_device(s, 0xe0000000 + i * 0x1000, 0x1000);
-+    }
++FPGA images using M-profile CPUs:
 +
-+    object_initialize_child(OBJECT(mms), "watchdog", &mms->watchdog,
-+                            TYPE_CMSDK_APB_WATCHDOG);
-+    qdev_connect_clock_in(DEVICE(&mms->watchdog), "WDOGCLK", mms->clk);
-+    sysbus_realize(SYS_BUS_DEVICE(&mms->watchdog), &error_fatal);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&mms->watchdog), 0,
-+                       qdev_get_gpio_in(gicdev, 0));
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&mms->watchdog), 0, 0xe0100000);
+ ``mps2-an385``
+   Cortex-M3 as documented in Arm Application Note AN385
+ ``mps2-an386``
+@@ -30,6 +32,11 @@ QEMU models the following FPGA images:
+ ``mps3-an547``
+   Cortex-M55 on an MPS3, as documented in Arm Application Note AN547
+ 
++FPGA images using R-profile CPUs:
 +
-+    object_initialize_child(OBJECT(mms), "dualtimer", &mms->dualtimer,
-+                            TYPE_CMSDK_APB_DUALTIMER);
-+    qdev_connect_clock_in(DEVICE(&mms->dualtimer), "TIMCLK", mms->clk);
-+    sysbus_realize(SYS_BUS_DEVICE(&mms->dualtimer), &error_fatal);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 0,
-+                       qdev_get_gpio_in(gicdev, 3));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 1,
-+                       qdev_get_gpio_in(gicdev, 1));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 2,
-+                       qdev_get_gpio_in(gicdev, 2));
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&mms->dualtimer), 0, 0xe0101000);
++``mps3-an536``
++  Dual Cortex-R52 on an MPS3, as documented in Arm Application Note AN536
 +
-+    for (int i = 0; i < ARRAY_SIZE(mms->i2c); i++) {
-+        static const hwaddr i2cbase[] = {0xe0102000,    /* Touch */
-+                                         0xe0103000,    /* Audio */
-+                                         0xe0107000,    /* Shield0 */
-+                                         0xe0108000,    /* Shield1 */
-+                                         0xe0109000};   /* DDR4 EEPROM */
-+        g_autofree char *s = g_strdup_printf("i2c%d", i);
+ Differences between QEMU and real hardware:
+ 
+ - AN385/AN386 remapping of low 16K of memory to either ZBT SSRAM1 or to
+@@ -45,6 +52,30 @@ Differences between QEMU and real hardware:
+   flash, but only as simple ROM, so attempting to rewrite the flash
+   from the guest will fail
+ - QEMU does not model the USB controller in MPS3 boards
++- AN536 does not support runtime control of CPU reset and halt via
++  the SCC CFG_REG0 register.
++- AN536 does not support enabling or disabling the flash and ATCM
++  interfaces via the SCC CFG_REG1 register.
++- AN536 does not support setting of the initial vector table
++  base address via the SCC CFG_REG6 and CFG_REG7 register config,
++  and does not provide a mechanism for specifying these values at
++  startup, so all guest images must be built to start from TCM
++  (i.e. to expect the interrupt vector base at 0 from reset).
++- AN536 defaults to only creating a single CPU; this is the equivalent
++  of the way the real FPGA image usually runs with the second Cortex-R52
++  held in halt via the initial SCC CFG_REG0 register setting. You can
++  create the second CPU with ``-smp 2``; both CPUs will then start
++  execution immediately on startup.
 +
-+        object_initialize_child(OBJECT(mms), s, &mms->i2c[i],
-+                                TYPE_ARM_SBCON_I2C);
-+        sysbus_realize(SYS_BUS_DEVICE(&mms->i2c[i]), &error_fatal);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&mms->i2c[i]), 0, i2cbase[i]);
-+        if (i != 2 && i != 3) {
-+            /*
-+             * internal-only bus: mark it full to avoid user-created
-+             * i2c devices being plugged into it.
-+             */
-+            qbus_mark_full(qdev_get_child_bus(DEVICE(&mms->i2c[i]), "i2c"));
-+        }
-+    }
-+
-     mms->bootinfo.ram_size = machine->ram_size;
-     mms->bootinfo.board_id = -1;
-     mms->bootinfo.loader_start = mmc->loader_start;
++Note that for the AN536 the first UART is accessible only by
++CPU0, and the second UART is accessible only by CPU1. The
++first UART accessible shared between both CPUs is the third
++UART. Guest software might therefore be built to use either
++the first UART or the third UART; if you don't see any output
++from the UART you are looking at, try one of the others.
++(Even if the AN536 machine is started with a single CPU and so
++no "CPU1-only UART", the UART numbering remains the same,
++with the third UART being the first of the shared ones.)
+ 
+ Machine-specific options
+ """"""""""""""""""""""""
 -- 
 2.34.1
 

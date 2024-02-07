@@ -1,112 +1,87 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp739407ejb;
-        Wed, 5 Apr 2023 17:25:28 -0700 (PDT)
-X-Google-Smtp-Source: AKy350asyrLRlIgA+euZ0jhRqExTGQMNdYvbUD04w+HiTPPYBgFtCiKYKYP81GgEqXgF8p1IG9ti
-X-Received: by 2002:a05:6214:1312:b0:5c4:cacf:9c4e with SMTP id pn18-20020a056214131200b005c4cacf9c4emr2437249qvb.6.1680740727864;
-        Wed, 05 Apr 2023 17:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680740727; cv=none;
+Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp629797eji;
+        Wed, 7 Feb 2024 12:03:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFhs5VOQkwt6Z617RjcMxqblonxPCFkdrUIllkX6QX28J+DXOauSa0W6pNoBLZoLOfXtqRl
+X-Received: by 2002:a0c:e0cf:0:b0:68c:c611:7693 with SMTP id x15-20020a0ce0cf000000b0068cc6117693mr363920qvk.44.1707336215994;
+        Wed, 07 Feb 2024 12:03:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707336215; cv=none;
         d=google.com; s=arc-20160816;
-        b=U5IC77gtnZb5Ljvn53WSLBjPUVhQeiWTJnXSTJyWK/s9pF7Izxp9LXK/cAktHEBBDh
-         c/+0r4+qqKut2pg+CettwqtnVAKmy/6b4uRFrq1dfN3mD0yMM31NrTV9/Vbj+N+bNZVI
-         qrTkU2RqqH1uTP29Hhmgi39srZ80ulyMhQCC0EPhzn2i0QQw+eHG1nimJnvpwSD5N7fE
-         IV3JEzi4Bi5Wkn/2taCzDHPwdTyFhX5oAWaJjVA1oP2Cvh5RCexxGOoiy94gEPosoB/v
-         EuDiQU5IiRKPd0OY8CldNqkV8Ga06clUfZYiOEWC/rts0aXlyke+oXyk9Ovpz+dDho8s
-         asqQ==
+        b=Je5xmLSifbz5uqMZTzwd1yJKYu6blMERIwcEW+ZIpEiDvUobVUAPUkkBh86Nw+aE2w
+         cF8OzFcvadd8pxPUjQLG1qt2Lx2V9F7XUGLk0jrH88nmhnepamCYsQjE0GW0XWXbEhAS
+         IzV0RCUGg97PQ4Kh1tdohcCgcX9eKljXis5XAUMuTr0vpLZNvI7isNErgODn0OHTh+Lr
+         aKVWF6DD6fNOdQ8m7SafCF51bMApv/vd3wdj9lqad1+8+SqDEfeILwlcUKq1DG7mJyMF
+         /io0A78tfvJ11ajlcKYlset9mQfK9pEnTDA3cTapdugnaxVfzVJoJrot5lNlVORs7OcJ
+         B3iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
-        b=XfPXD4Qr/OSHEM9Ep0xXMCI8tVF4hC+M0ElzcDFOA7Z4Yqqa4o5IxD5vH4nT/TjYIn
-         8CC9mn1EJbNptxRhH3QWD0qYZ5wMoEPB3dJ6bzevcmaHMVwWVQ8x9HMBaJfU/9kB8cdE
-         f1sf2dNT+adbJ/e3gam+q6d/QXzibP7//xWVs3pO5Sk47GmgHxSKa+DxYRryspim4n0f
-         z3xJHU6TamvcJFsbGBrqBCc99kzjEr2rPTlCLw47fqz35VCoWUzzmnUeG0S7B3B83s3o
-         ZPrK9dF7vAUaYzUDz94GLZ4K9owGrD/GyEOTIpCYb1233Ky+Bdn5s2obBvBQBcEj62N4
-         qE8w==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=KGGiL5MFeiGJlfH3VQJrH/2ve5E4kEuDOzY3Nlc72q0=;
+        fh=2/F0W8EJ8OyJG1yiLPS49EymbDpVHn/stP1heMEY0F4=;
+        b=Ll2wRML5zg+auNexTSi7luYKuMzo4M5I9mxnQDefiEDINhQtrS4hP94jkS+DQcAh3z
+         4a7Uz8rnfY6c5BqcjWzEHVXsH9NCxAksMH1hO/ZiwrLJGYyiHVdlWO9qgHeYiNwCgKKq
+         JchV2E1JKm9zVchQHrh7BJnhZ6G7lBXlkgji61YbcMWvyUcrqUqQ1JcoUUjv6H7fepx+
+         bNeIBJE4JejJFtvFQ6e6nglu6zZ5f6CbjFt7s4NW4UwXGa6SFoKkVbLUFSJZbiGk1D2x
+         aEoeOpMqxa1rDOXdifVFk8o/e2RpaIdaA2uiw4SpJuHjujfzNmkFi5go423y1ziim4GU
+         SU6A==;
+        darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=f3brdb2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+X-Forwarded-Encrypted: i=1; AJvYcCX4ZSnwuUkpaURCzQ6U2kHbqKYsHw5b6LucO1a9PWIeoVcxElFMjhIDIt69vlqFzBYRzD8H7Iz8Z6yTTsYVIXl+MMVxJUcD
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9-20020a0562141c0900b0056eec5bab7fsi194440qvc.492.2023.04.05.17.25.27
+        by mx.google.com with ESMTPS id i11-20020ad44bab000000b0068cb086b330si1716698qvw.412.2024.02.07.12.03.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Apr 2023 17:25:27 -0700 (PDT)
+        Wed, 07 Feb 2024 12:03:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=f3brdb2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pkDR5-0004rW-UO; Wed, 05 Apr 2023 20:25:07 -0400
+	id 1rXo7u-0002WF-3N; Wed, 07 Feb 2024 15:02:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com>)
- id 1pkDR3-0004mr-5b
- for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:05 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com>)
- id 1pkDR0-0005ES-Fj
- for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:04 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id
- o89-20020a17090a0a6200b0023b3d3acdd6so17938106pjo.3
- for <qemu-arm@nongnu.org>; Wed, 05 Apr 2023 17:24:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1680740693;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
- b=f3brdb2gLxSeDXEv9Rrq13ek9vvvxJF8IrGVCxBDmTZgX7wlmqA5MewnZrXUm9y+o1
- DfOv2FDGT+PC7OOw06XpBN2C0kbgNrIajdxylQojMTOjvE/7bKDi6kYFO8kY11s7Zd1c
- DOdEYeq/WhU1Zn3eF5wprYgSxeIXrA/383C6RBt8YX5CHqC32WDukOL30ywarXxipmzk
- R8Ssv0umqHzXqWgU/geGyomVWmft9+4UqbchmCc9vMFO+q2ujJJYdRn8jczyES1R9tUP
- HNfnWMCm7dpm0gt20LYj1QWVqri/lyCXGS3jM3BHlhuRrnWSpTPl5wT1aR41y+4QeueK
- lQMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680740693;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
- b=iJWIYG2KPyYIqvZ53vbGU3xWOF2SDB3jBRkhKp1ODAgSEdSx7XCBQB6bOBXJyGlvoh
- 4nsmJWjT8mVpq9GgxK5UjSP5YVazbHc0495pG5cOpIl5ldBH46DjG6+CEtFRysa1bj3H
- jEBPy1irfMpUHN3o3NRETjjT3A0XdAFq5xCoddYbfO4X4iDF9PvET1phKy0m8M+flz50
- HmxSg+Kyie+QRZ7Q0gjg5fhgEci11fplFW6iQBmyxWQL0dDKr5LA+HW2kmOw2eoZ5xd8
- j76QZ7+Pj29WjIR3zuOLryZYg7rfmyDEl0GZOg8DNkNB6XGMoDnsNfryEnOVdUX6THbB
- lqew==
-X-Gm-Message-State: AAQBX9eFrTrEXCOn0EIfYCvuS5STY23h1G72+z41/ZZrSJ/3SLnnOSR6
- huLSImO32u7DwT5wNIuKMgGq0dxiUPBi
-X-Received: from komlodi.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:35ee])
- (user=komlodi job=sendgmr) by 2002:a65:5887:0:b0:513:f8ae:5bf6 with SMTP id
- d7-20020a655887000000b00513f8ae5bf6mr2573288pgu.6.1680740693100; Wed, 05 Apr
- 2023 17:24:53 -0700 (PDT)
-Date: Thu,  6 Apr 2023 00:24:47 +0000
-In-Reply-To: <20230406002447.4046378-1-komlodi@google.com>
-Mime-Version: 1.0
-References: <20230406002447.4046378-1-komlodi@google.com>
-X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
-Message-ID: <20230406002447.4046378-3-komlodi@google.com>
-Subject: [PATCH 2/2] hw/gpio/npcm7xx: Support qom-get on GPIO pin level
-From: Joe Komlodi <komlodi@google.com>
-To: qemu-devel@nongnu.org
-Cc: komlodi@google.com, wuhaotsh@google.com, kfting@nuvoton.com, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rXo7r-0002Tk-Rc; Wed, 07 Feb 2024 15:02:31 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rXo7q-0003Ra-Dl; Wed, 07 Feb 2024 15:02:31 -0500
+Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
+ (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 8 Feb
+ 2024 04:02:23 +0800
+Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 8 Feb 2024 04:02:23 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 2/2] aspeed: fix hardcode boot address 0
+Date: Thu, 8 Feb 2024 04:02:19 +0800
+Message-ID: <20240207200220.453244-3-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240207200220.453244-1-jamin_lin@aspeedtech.com>
+References: <20240207200220.453244-1-jamin_lin@aspeedtech.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=twmbx02.aspeed.com;
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,39 +94,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5otSCBtC7M6H
+X-TUID: VLgixELol4rd
 
-This goes along with input pin modification. In some cases it's easier
-to know the state of all pins on the GPIO controller before modifying
-input pins, rather than knowing only the state of input pins.
+In the previous design of ASPEED SOCs QEMU model, it set the boot
+address at "0" which was the hardcode setting for ast10x0, ast2600,
+ast2500 and ast2400.
 
-For example over QMP:
-{"execute":"qom-get","arguments":{
-    "path":"/machine/soc/gpio[0]",
-    "property":"gpio-pin-level"
-}}
+According to the design of ast2700, it has bootmcu which is used for
+executing SPL and initialize DRAM, then, CPUs(cortex-a35)
+execute u-boot, kernel and rofs. QEMU will only support CPU(cortex-a35)
+parts and the boot address is "0x4 00000000" for ast2700.
+Therefore, fixed hardcode boot address 0.
 
-Signed-off-by: Joe Komlodi <komlodi@google.com>
+Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/gpio/npcm7xx_gpio.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/arm/aspeed.c             | 4 +++-
+ hw/arm/aspeed_ast2400.c     | 4 ++--
+ hw/arm/aspeed_ast2600.c     | 2 +-
+ include/hw/arm/aspeed_soc.h | 2 --
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/gpio/npcm7xx_gpio.c b/hw/gpio/npcm7xx_gpio.c
-index 2a7be60d8d..58db3a8d64 100644
---- a/hw/gpio/npcm7xx_gpio.c
-+++ b/hw/gpio/npcm7xx_gpio.c
-@@ -399,6 +399,9 @@ static void npcm7xx_gpio_init(Object *obj)
-     object_property_add(obj, "gpio-pins-in", "uint32",
-                         npcm7xx_gpio_get_pins_in,  npcm7xx_gpio_set_pins_in,
-                         NULL, &s->regs[NPCM7XX_GPIO_DIN]);
-+
-+    object_property_add_uint32_ptr(obj, "gpio-pin-level", &s->pin_level,
-+                                   OBJ_PROP_FLAG_READ);
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 06d863958b..39758557be 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -289,12 +289,14 @@ static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
+                                     uint64_t rom_size)
+ {
+     AspeedSoCState *soc = bmc->soc;
++    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(soc);
+ 
+     memory_region_init_rom(&bmc->boot_rom, NULL, "aspeed.boot_rom", rom_size,
+                            &error_abort);
+     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
+                                         &bmc->boot_rom, 1);
+-    write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
++    write_boot_rom(blk, sc->memmap[ASPEED_DEV_SPI_BOOT],
++                   rom_size, &error_abort);
  }
  
- static const VMStateDescription vmstate_npcm7xx_gpio = {
+ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
+diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+index 95da85fee0..d125886207 100644
+--- a/hw/arm/aspeed_ast2400.c
++++ b/hw/arm/aspeed_ast2400.c
+@@ -26,7 +26,7 @@
+ #define ASPEED_SOC_IOMEM_SIZE       0x00200000
+ 
+ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+-    [ASPEED_DEV_SPI_BOOT]  =  ASPEED_SOC_SPI_BOOT_ADDR,
++    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
+     [ASPEED_DEV_IOMEM]  = 0x1E600000,
+     [ASPEED_DEV_FMC]    = 0x1E620000,
+     [ASPEED_DEV_SPI1]   = 0x1E630000,
+@@ -61,7 +61,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+ };
+ 
+ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+-    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
++    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
+     [ASPEED_DEV_IOMEM]  = 0x1E600000,
+     [ASPEED_DEV_FMC]    = 0x1E620000,
+     [ASPEED_DEV_SPI1]   = 0x1E630000,
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index f74561ecdc..174be53770 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -22,7 +22,7 @@
+ #define ASPEED_SOC_DPMCU_SIZE       0x00040000
+ 
+ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+-    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
++    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
+     [ASPEED_DEV_SRAM]      = 0x10000000,
+     [ASPEED_DEV_DPMCU]     = 0x18000000,
+     /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 5ab0902da0..bf43ad8351 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -224,8 +224,6 @@ enum {
+     ASPEED_DEV_FSI2,
+ };
+ 
+-#define ASPEED_SOC_SPI_BOOT_ADDR 0x0
+-
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
+ void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr);
 -- 
-2.40.0.348.gf938b09366-goog
+2.25.1
 

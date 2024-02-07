@@ -1,141 +1,217 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp926400ejb;
-        Thu, 6 Apr 2023 00:50:43 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Z8m08JDyC1Z+SrvBxbP8RdhjvrE4b4iDe8RuqeI9iQCm0U75ghca5BDk4OgWhjm23oqoFl
-X-Received: by 2002:a05:6214:19e8:b0:56b:f28e:628a with SMTP id q8-20020a05621419e800b0056bf28e628amr3477137qvc.6.1680767443433;
-        Thu, 06 Apr 2023 00:50:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680767443; cv=none;
+Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp630296eji;
+        Wed, 7 Feb 2024 12:04:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCViz/8/HBo159nqHMu8rDsiCyYPdECmysSO9mLY1v9yh1gbU322wnQXRKzro15SxIltG2FXOSnZZ7pkmwctjhMZmazzy71O
+X-Google-Smtp-Source: AGHT+IGtubrGRdPk75/dc4EKJwJCHOPvPu/o76Y5J3llQyMMHnSn4b8xkrzseA2TtlWoJcWt4LVi
+X-Received: by 2002:a05:620a:2993:b0:785:3749:7cba with SMTP id r19-20020a05620a299300b0078537497cbamr9538205qkp.65.1707336265413;
+        Wed, 07 Feb 2024 12:04:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707336265; cv=none;
         d=google.com; s=arc-20160816;
-        b=lL0+AD5l/MIgvrT6YZDKZJRM7QLAd+VoePSoSNV83WNnU6ViHev3weu7nfG/JHn4kI
-         eZ1XtVk0xATfo+mD2qrHVA7V0v9wvNZFi/T+pk3QX8mJooFInmJ6RyNK+0RnP7ndQcwY
-         OhckRgzz1YFnBNLmnsDZQpBM90sz51mK14Foi5l5kI0lCbGNCSR2iRivP1yfTGHid23z
-         QWxxSeKRRPfquYn7KTIsyy2Ebinbr85V6H9NgiCJV6EwCgidxyZh2CXP/TevazmEeFXc
-         8LpWiPE6aigam7jymPVtWqppBH7e3CRxlX7LXSZL1j3Si2g3lDSXluCAkrVD3gzbALzj
-         fByg==
+        b=jiejn9NNiMha2l0TL6eIsLbllV2w9r+R1jAAdSw9iKjgl269ztJzCAocDGPAPwrEEC
+         3tCbmLxbKoppQXbrkXxJEY7XcjausA3IGGyViFj+taYxm+3l0Vkwopqgrcu0WmTsRn/U
+         0XBkh0T8wkCEJ8hsWdY717rJKALHvu3mfXbHpSGMnWyRUKYwthf5WhnaiJutq+vfXLs2
+         6i7OCtW8qd2acRUHoePButFTEwvDhczIbwYyuF+RtOlcHfC2xyuM+PsRGHb7qnHaX4xu
+         WtZkxf74HwtARCOUMhfN4Q+kILV46Fa7/pBa1TNArS6J7ix1ViI5jUTvKILk8A50asST
+         0RNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
-        b=oKS/c5/QSyhfhBM4BWRrFG9KIUlxaB1t4XKbjlNM4+T6S6Jt/mUB4mfHruiPD7Y1Dv
-         A1EaNxkvtFvyKc34X+L5y/yZdJ6aJJoT7O48LIBOmvO7XQitQN+jqbI03+QHU5F2eWYb
-         Dnxs+Siw6rE5yxB5WcppcZWx1/cYOlyWX8Jeh8PUGItlxCOv7A9b08CBzHbPhVpKMmMX
-         l9E/grTAUDbBnEHslkrBqbB0NMqRhXYS/FFNQB2USIq8vxxWcgrS5+ftYdGpugkYTb5F
-         alvJxcBKdE4KI2E9MvVsdo5WexC2svmSJmp3LhU/hd5UwtdKsjFjesNSkzOpot6Utarb
-         WCSg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=ioKl1Fdwa9P3L3uKTM+GqEAzOADfMNO4SBTyXhL2C0I=;
+        fh=0L0tcfby0BM2NC/CVhyj0VzuGYWx04QyiwjW01OR8XE=;
+        b=K+MKBquA5qhsEpYI9WltHGQ72f4ykdlQpwVXYpbhuvEIhsFGRGzhsssVfQ7DBGgcKV
+         MWdWorWqpg+4dFjW4v6ciG/8rbQCVjWEWgVKLKbSt0qgRHo14CrHthQ1RbDDJbZRx5Vb
+         lI6w1IOR/Zq9UcalzNcHr9LCzBhjq0KU8JE32Izdy36cJoG2VC1F1akwLpZkDH4Zbiln
+         e5MWablOQEOWTAhyYp8+DTolbqf/k7TCtFOGgxvyqyEjbC2lz3G2S9JwnmMHWYu57Jsx
+         I6OIgxJgqMsSOZHkRvK5Lfumx2VZRAf1YoD/aKm3bd4+G3p/Pb9ErThI5l5044UZJE4j
+         n6Qw==;
+        darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdXSE1zl;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id gf2-20020a056214250200b005e66a8c31c3si311552qvb.94.2023.04.06.00.50.43
+       dkim=pass header.i=@linaro.org header.s=google header.b=Y4l4U8Ps;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=1; AJvYcCXXC108hWw05EyisYhjtJnFb9saPJtjwbiRve3NDlw+dZITrgqxo4USvaVe3cwKIYKSyokdw5evHdhQLqLPxpGJVQ+5Ip69
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b7-20020a05620a04e700b007859ebf2434si1474332qkh.599.2024.02.07.12.04.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Apr 2023 00:50:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Feb 2024 12:04:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdXSE1zl;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1680767443;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
-	b=CdXSE1zlSnfXN4yIK3R51Ko5+6TVHy7MPmZ0n1rOtqgtpI7fuSvd26qbCSBnX2+GSlgQGy
-	u+GF5W+niaczqLX1HnAM97kpQ3Zhg+qXdI/f3C0/owUDX6pyB5sB9xd55tFwFO0mVgv7m3
-	Bb+GmJIlELW7gIjUyH30Qnf1Uo9vfXQ=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-491--4C1HsL6NqmF4USZQ9eifQ-1; Thu, 06 Apr 2023 03:50:41 -0400
-X-MC-Unique: -4C1HsL6NqmF4USZQ9eifQ-1
-Received: by mail-qv1-f72.google.com with SMTP id r4-20020ad44044000000b005ad0ce58902so17466905qvp.5
-        for <alex.bennee@linaro.org>; Thu, 06 Apr 2023 00:50:41 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Y4l4U8Ps;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rXo9U-0004ei-0s; Wed, 07 Feb 2024 15:04:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1rXo9N-0004cN-Uf
+ for qemu-devel@nongnu.org; Wed, 07 Feb 2024 15:04:06 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1rXo9M-0003hs-4A
+ for qemu-devel@nongnu.org; Wed, 07 Feb 2024 15:04:05 -0500
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-1d98fc5ebceso7039325ad.1
+ for <qemu-devel@nongnu.org>; Wed, 07 Feb 2024 12:04:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707336242; x=1707941042; darn=nongnu.org;
+ h=content-transfer-encoding:content-language:in-reply-to:mime-version
+ :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ioKl1Fdwa9P3L3uKTM+GqEAzOADfMNO4SBTyXhL2C0I=;
+ b=Y4l4U8PsDQIKtBk8+nQ/MKnVSe6jhpGyJEINZd4Rkm0IqSkR9FSkPdC0BAmvqek5pk
+ Ib4NIDvq1oC6/dz9LFHJlXOtdisRFmXHBUMxMOY65wHmLpoPDkORWzEQSM34iwPLbqN7
+ GjTDH+B6g4U39RDVoek02z4mgBO8/0cVeCzVe4SAPCm7L0i27ocDuBydN15OLOWZYJFr
+ +kDnzzIUmfneeYWyYYJ/Y7k+Q4RbBghox6+1mFRWUDEiUcccz6EN0O/nVUenqCd84baK
+ YJNe29LnMQzixBEYxWuPiYQSQ6W2f8N/9+B8SNbHXbnn++nBMqynn/+vjXWoI6XQECnV
+ qMAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680767441;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
-        b=RT8Jk3I6nd90agtDtNhaTjCiJkiCQBhGyxIyyuIrBdPMUQjWEY/vEKDJ7RXTwFjAc2
-         rJsc3A7pBPGQfhr51yZRxnE6DfUWBSHrPR6MVcXTfNMZxNWg1uyOg8n/viYVafJ773Zu
-         edCM+YbM7fZa9tGPIm9PhTw/oo0+Ldsi2lR4AE77T46sxccPNX4GFFsKKYKVIvEdafIq
-         2kK6Wf0MfjvGHYVxCbNDYVHnv1AzqtaBGl5durcGVzAVxjbCa1QTjcAE1f7aGDyy5f7j
-         W+K0vhCP7SfEbUy2kH7r9h1meBEF+x+U2Sen1JOPNqzMGH4EGo/ZCNB1F9kykwV7vC4g
-         Pb4g==
-X-Gm-Message-State: AAQBX9dsIlaODrWi36E6HaGArCt8VuBkgXbZvud+rD+R9mxcyqbuGeS8
-	at6UaW2vjGmbII8wkTkX9s5EDC26tlIfhawoEh0cakALzprfRjIiNTvehvTDYK23DDplhnFLZns
-	Pfo9cVzn9XGdOBrT2
-X-Received: by 2002:a05:6214:19c3:b0:5a5:b269:bfd7 with SMTP id j3-20020a05621419c300b005a5b269bfd7mr3536299qvc.8.1680767441140;
-        Thu, 06 Apr 2023 00:50:41 -0700 (PDT)
-X-Received: by 2002:a05:6214:19c3:b0:5a5:b269:bfd7 with SMTP id j3-20020a05621419c300b005a5b269bfd7mr3536276qvc.8.1680767440725;
-        Thu, 06 Apr 2023 00:50:40 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.3] (ip-109-43-178-193.web.vodafone.de. [109.43.178.193])
-        by smtp.gmail.com with ESMTPSA id 65-20020a370c44000000b00746777fd176sm297041qkm.26.2023.04.06.00.50.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Apr 2023 00:50:40 -0700 (PDT)
-Message-ID: <3cccc7e6-3a39-b3b4-feaf-85a3faa58570@redhat.com>
-Date: Thu, 6 Apr 2023 09:50:36 +0200
+ d=1e100.net; s=20230601; t=1707336242; x=1707941042;
+ h=content-transfer-encoding:content-language:in-reply-to:mime-version
+ :user-agent:date:message-id:from:references:cc:to:subject
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ioKl1Fdwa9P3L3uKTM+GqEAzOADfMNO4SBTyXhL2C0I=;
+ b=nQHvJ8yX5xC0lbqnNbdk39pvK0PKiPUi/f46yZDo+dDY25laUWCORgpogYHCepPZ3i
+ /ioFo6n4X9IrxCMB99XwWsJsjLcE6y9yUqCMUYkY17KdbjRvJpJY97b5kAP+Z/lhLib8
+ nMToee2MxSB/UymjFeXIO4aLhfTk41AxG8x7Dac0SZ6reLga+EzPo0bpYwEeeSlRe5YQ
+ l+QYhMBo4eV47szXzfCVTlkXgQbmnVDkF5I0Qio8mxs5NaEmbt7v05FpqQFO/P6/3DC0
+ WbN7zbG6b1iVW0I8RLY4dxAye8uR0lH26ZXEfT23e85BQYK9cMC1Tm9oSa9/XQQ8qpPd
+ 09jw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVmsTtwkw+xJIzlZH2R1cjEi6KFMHHFIUkyNWo0WY0+tJfM/O2+BeCsd4kDymx5lK1KOEmLJBvztfjPqSfIlr96Tvy1f8M=
+X-Gm-Message-State: AOJu0YxxKFabBfP2ND5EnoBYhOMXaf6eraDcfRVuQBsd48EeJ9CicnQF
+ ZQq828N7YY3fnomNd9rQw005xTAefE28h/nDNt3zfoPOmy6BtUkHOFmEoC6aXBc=
+X-Received: by 2002:a17:902:7406:b0:1d8:ed67:c360 with SMTP id
+ g6-20020a170902740600b001d8ed67c360mr5378051pll.65.1707336242093; 
+ Wed, 07 Feb 2024 12:04:02 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVvG2sxrEFk4s2plYd2i4SEUnAZieGcyi8AKybQxlwUeo7THpbF09KuEUacakoE1q7A8/CNHE/EFOMXG0vpvD1syfu7IcPPTVZotyKCKugI0Vi3znE7UlONSQtoX0M=
+Received: from ?IPv6:2804:7f0:b402:df90:2add:f1b6:5717:16e1?
+ ([2804:7f0:b402:df90:2add:f1b6:5717:16e1])
+ by smtp.gmail.com with ESMTPSA id
+ jz4-20020a170903430400b001d8fe6cd0f0sm1844373plb.150.2024.02.07.12.04.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Feb 2024 12:04:01 -0800 (PST)
+Subject: Re: [PATCH v3 1/6] linux-user/aarch64: Choose SYNC as the preferred
+ MTE mode
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org
+References: <20240207025210.8837-1-richard.henderson@linaro.org>
+ <20240207025210.8837-2-richard.henderson@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <2ba0228b-fec3-0710-11a1-18825bc1476d@linaro.org>
+Date: Wed, 7 Feb 2024 17:03:59 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 10/10] hw/s390x: Rename pv.c -> pv-kvm.c
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Claudio Imbrenda <imbrenda@linux.ibm.com>,
- Janosch Frank <frankja@linux.ibm.com>
-Cc: qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- kvm@vger.kernel.org, qemu-ppc@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
-References: <20230405160454.97436-1-philmd@linaro.org>
- <20230405160454.97436-11-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230405160454.97436-11-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20240207025210.8837-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: Byz9Wbr3ONTu
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x631.google.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.632,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W/72wgFkFM1z
 
-On 05/04/2023 18.04, Philippe Mathieu-Daudé wrote:
-> Protected Virtualization is specific to KVM.
-> Rename the file as 'pv-kvm.c' to make this clearer.
+
+On 2/6/24 11:52 PM, Richard Henderson wrote:
+> The API does not generate an error for setting ASYNC | SYNC; that merely
+> constrains the selection vs the per-cpu default.  For qemu linux-user,
+> choose SYNC as the default.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Cc: qemu-stable@nongnu.org
+> Reported-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   hw/s390x/{pv.c => pv-kvm.c} | 0
->   hw/s390x/meson.build        | 2 +-
->   2 files changed, 1 insertion(+), 1 deletion(-)
->   rename hw/s390x/{pv.c => pv-kvm.c} (100%)
+>   linux-user/aarch64/target_prctl.h | 29 +++++++++++++++++------------
+>   1 file changed, 17 insertions(+), 12 deletions(-)
 > 
-> diff --git a/hw/s390x/pv.c b/hw/s390x/pv-kvm.c
-> similarity index 100%
-> rename from hw/s390x/pv.c
-> rename to hw/s390x/pv-kvm.c
-> diff --git a/hw/s390x/meson.build b/hw/s390x/meson.build
-> index f291016fee..2f43b6c473 100644
-> --- a/hw/s390x/meson.build
-> +++ b/hw/s390x/meson.build
-> @@ -22,7 +22,7 @@ s390x_ss.add(when: 'CONFIG_KVM', if_true: files(
->     'tod-kvm.c',
->     's390-skeys-kvm.c',
->     's390-stattrib-kvm.c',
-> -  'pv.c',
-> +  'pv-kvm.c',
->     's390-pci-kvm.c',
->   ))
->   s390x_ss.add(when: 'CONFIG_TCG', if_true: files(
+> diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
+> index 5067e7d731..aa8e203c15 100644
+> --- a/linux-user/aarch64/target_prctl.h
+> +++ b/linux-user/aarch64/target_prctl.h
+> @@ -173,21 +173,26 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+>       env->tagged_addr_enable = arg2 & PR_TAGGED_ADDR_ENABLE;
+>   
+>       if (cpu_isar_feature(aa64_mte, cpu)) {
+> -        switch (arg2 & PR_MTE_TCF_MASK) {
+> -        case PR_MTE_TCF_NONE:
+> -        case PR_MTE_TCF_SYNC:
+> -        case PR_MTE_TCF_ASYNC:
+> -            break;
+> -        default:
+> -            return -EINVAL;
+> -        }
+> -
+>           /*
+>            * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
+> -         * Note that the syscall values are consistent with hw.
+> +         *
+> +         * The kernel has a per-cpu configuration for the sysadmin,
+> +         * /sys/devices/system/cpu/cpu<N>/mte_tcf_preferred,
+> +         * which qemu does not implement.
+> +         *
+> +         * Because there is no performance difference between the modes, and
+> +         * because SYNC is most useful for debugging MTE errors, choose SYNC
+> +         * as the preferred mode.  With this preference, and the way the API
+> +         * uses only two bits, there is no way for the program to select
+> +         * ASYMM mode.
+>            */
+> -        env->cp15.sctlr_el[1] =
+> -            deposit64(env->cp15.sctlr_el[1], 38, 2, arg2 >> PR_MTE_TCF_SHIFT);
+> +        unsigned tcf = 0;
+> +        if (arg2 & PR_MTE_TCF_SYNC) {
+> +            tcf = 1;
+> +        } else if (arg2 & PR_MTE_TCF_ASYNC) {
+> +            tcf = 2;
+> +        }
+> +        env->cp15.sctlr_el[1] = deposit64(env->cp15.sctlr_el[1], 38, 2, tcf);
+>   
+>           /*
+>            * Write PR_MTE_TAG to GCR_EL1[Exclude].
+> 
 
-Hmmm, maybe we should rather move it to target/s390x/kvm/ instead?
+ok, so no ASYMM in QEMU user-mode, plus if both SYNC and ASYNC flags are
+specified by the user SYNC is selected. Contrary to what happens by default
+on Linux, because of the mte_tcf_preferred value, which is ASYNC, and the
+final value selected is define by:
 
-Janosch, what's your opinion?
+resolved_mte_tcf = (mte_ctrl & pref) ? pref : mte_ctrl; [0]
 
-  Thomas
+where pref is mte_tcf_preferred (CPU, the value set in sys /mte_tcf_preferred)
+and mte_ctr comes from the process, i.e. is the value specified by the user in
+the flags -- hence the default on Linux if both flags are specified is ASYNC,
+not SYNC.
+
+(just some notes for the records).
+
+Thanks.
+
+
+[0] https://github.com/torvalds/linux/blob/master/arch/arm64/kernel/mte.c#L180-L186

@@ -1,151 +1,126 @@
-Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp172207eji;
-        Tue, 6 Feb 2024 21:03:48 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWFc14Eg0rYGC07JgXlwaX249+rx8KG4bHiBlbzZoLelHOEJujCFE85F3khDlDAg+D80qKCVPxs7d2SX5resnZdR1+2SkNt
-X-Google-Smtp-Source: AGHT+IHr/0/tjykDtP/3zhTsGxYK9ym90k2nQpQeeKPb2zVbbvjFV+uGqkrc/rSLEmFxVjrczl9B
-X-Received: by 2002:a05:622a:118f:b0:42c:3d81:6d9d with SMTP id m15-20020a05622a118f00b0042c3d816d9dmr1664907qtk.6.1707282228199;
-        Tue, 06 Feb 2024 21:03:48 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1707282228; cv=pass;
+Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp263744eji;
+        Wed, 7 Feb 2024 01:03:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCViQ5CJF6lxryNLYL7Q+aeuwJYqdglHQiN0RvwnMFeusmSCVRn6hWpREkL0eCC809pwMrPdQumkvjv+UnlAt5FZN7lY7b9F
+X-Google-Smtp-Source: AGHT+IFItEzMXmQnwykkAq7Sx2XwoKMbGKwo0+nIS7YOqywImmW6CSQIjOw2uIlqS8i75eg3eD2L
+X-Received: by 2002:a05:6214:5186:b0:686:aa7a:784f with SMTP id kl6-20020a056214518600b00686aa7a784fmr5037468qvb.50.1707296590936;
+        Wed, 07 Feb 2024 01:03:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707296590; cv=none;
         d=google.com; s=arc-20160816;
-        b=PI0mUCLKG3ozizJ8zJoHoFlfspFhGX5UDFwEiY/jW6vgd6/an3ADeG695EmiClLtQp
-         SG0D4luknnQPpzcXKqQdS/p71N0NgIZGiiF7VTRgv+r1yqZSgFAt4r00Z1Gtp4wRbvOS
-         wgnpJIeyOsbgLQuMAqBoCtmmC+LWLlJGr5r2xFMExtp2nrk2qvazZPxGIfnuqs82ByAs
-         rtaUxG5DxFbgvaQkuKK8SY5BEvu1qvMqykVd46zwuF2AeNVXAwLYS2rWbx43WqTmJUgB
-         bG5cCOHBtAntnoZjvaG3iQhXUPrDs3VFkUJOG5gtMJ/g7SmHAupp7+Hh/GciejL4UOAX
-         jaTA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=oS19X4/g852KFfwgaFubLlV+gX5CsJZC2ennD9S0O4I8JW70ZX2uPHOjh7g8wKXmFz
+         yd9iqI+H+W+R+BCFKn2yd430UP6ceNU4XBaPuOqEr3FEOoT70ilrSGCKF+Vh1QTMsnbF
+         tvhfCST1fPZ+mpNl8I3RYXrQejaO3Bkjo0ibmdEw8P4xv7P87Ynx5nf8c4WrwORy/g+O
+         gIhQBRD7XS1kNQriRBLfnOBEnjqT6w3yz2YG1WtYRz6mWoCDh6umr+KOHAOlR+20ss9E
+         3zsYbyyZpH3kEG8AZhwc92omOYQOhxSkiSitw2tmFu1ks5IA76+yxNjsc/q6eTYAp066
+         N8OQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=a2O0fD9H/7OxCGOXVCEsk9fEmsriQA2ok6LgnRtZ1oM=;
-        fh=EMEU7VDpuUoQy7KxcXchkDdJo79wcsKUo+JBRuOHkxc=;
-        b=DonTH13jmsrSFiEM1yZSyqFegZ52ngPKrSzF+egvV3RBErw4ReWSn6IRKFydmU2rX3
-         YwS7sN7etN+4yusqZjxOSeUWlfAlo4/Ib++vQY13QaISOvR39QPYUrA1U3ZFBWdQ3lAW
-         cNXaLHd/XJtIlBvgzfHlj53nsoE4RYbve7Ne0JwwrTH5t9S7SKtdUc6dJ1dA5rBgzrMv
-         k86fJQKsLA6hbT68u7Aojay0mQb9fRs82aRRdttCBDND80UieusgaDZiMPQA58jKjGB+
-         YR8c6X3DVNNnLagYXs0A5wZQg01QowF0tcg8eUbt68Zeos+fQzWKjRpI9rnOzfvCJWO5
-         ojBg==;
+         :in-reply-to:from:cc:references:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
+        fh=h3gRpty2WwWES401byNzoa5m6yDUQkO3z0dxQznBUEo=;
+        b=s2x9IyP7K8whtwaJPxzdOS74lhZ6diT+gPdmCCavVw8Mhbf3u65QyuD4+7py2G8f1z
+         sRwJZ4yEfWEcAJ3AoudUMCEiIDNYrypCdVx0Zr60L4pZ5qcm3ScLFg+kp3EXMp8w6t3x
+         xzhBEdmWPB2qcniN9/9okRxTnFIBih35wa7IaH9RP1rqxKH/qKNm8vM3aKln6Rh6rLcI
+         ehwp3kLAGimd9AJRcZQxNwqGQ+hdjMdDyRGcBeVcp7/0DW8epsPaMszUPxIC75O/pe4t
+         rqYO45Oqr0j9JcGjXeWDCU/6eCYJATVM1tLxTUs44KM3LHxmNfKiOmR/4yQxBXj9g/X3
+         +V0w==;
         darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="hYwg/jGM";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WDbg4sLT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-X-Forwarded-Encrypted: i=2; AJvYcCUjtIHZVh27KGm6bnT3KPodHd5QSSfLAO1AuJ4E7cDUss6GgyucoGTTbWsQBklwlSVKyLbXagUAzYGTarikN5OYonWDmU5E
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=1; AJvYcCW3m7n/5bcRE+m3mAPU4V4dREtDhMggAAzhYlBqYIGmTWAaHSVAw8ovRkaa1zLhAyRXvO57cCIp3a5am0ZJS6jPtPVmyMEd
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4-20020a05622a004400b0042c3be69e97si459440qtw.151.2024.02.06.21.03.48
+        by mx.google.com with ESMTPS id 6-20020a05621420c600b0068cbf72c8ecsi383398qve.486.2024.02.07.01.03.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 21:03:48 -0800 (PST)
+        Wed, 07 Feb 2024 01:03:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="hYwg/jGM";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=WDbg4sLT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXa5g-0004zE-F9; Wed, 07 Feb 2024 00:03:20 -0500
+	id 1rXdpa-0002tv-KK; Wed, 07 Feb 2024 04:03:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1rXa5e-0004yK-9c; Wed, 07 Feb 2024 00:03:18 -0500
-Received: from mail-dm3nam02on20600.outbound.protection.outlook.com
- ([2a01:111:f403:2405::600]
- helo=NAM02-DM3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1rXa5b-0000ho-VK; Wed, 07 Feb 2024 00:03:18 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cyLxxOzougZXTXRVQJ3vXLCxAWibUpB/YqusVMwIKr93E2Kav0HL5tIvYz6dLliVkLKf0IgkfTUeJV3KMUUd8lCkGbeirj3/TpmMwVQKLrTrTloGRylINFQ1up3NqsstZxCOZA6MNdSWjt/egq2SRvrYZwo0rfxZH+q74+Y4gyon6ZMe2DSI3gsXsev+ZEGg/EIWVy7ZpjO21bj82TX40pYnhIcV4kK3vPEY0nX+WrBSpQI1TILQNZ0B6mOS18N9dWS+voUj+Axvcqyn6BizVTzDVap7PuihWsjO3zlg9/0jpW3fhQGALeWKWgHuIQDm2LEoqgCKsimjlFGG5iGkUw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a2O0fD9H/7OxCGOXVCEsk9fEmsriQA2ok6LgnRtZ1oM=;
- b=RxXoHnhNR9/rsVKMEJ2RSHYWtL6PBYuu1nAREpNa1qH9p/ugrxukejBhx1I5eWTemLbLslHESIRxu6ZlZqxvxTb2y5u4gP/bVEI1ARWU9cfQCl/rlw9f7xrnrnvx5AnczFvRKZVYSEBVF/g1qx96ZAPGXst6L3ObFtlygrYTk2xpWCNgBMfP0tNTmQVP7H8Z20hGJQ7C+KIL9ZhmaPRZOsZo7IdcT/pTlUfG/PVi4EMDTb55AdQ87g8QlNRFQMTVMmM42UXHdnw3ddCKO7f5s87DoSv5iDbjQ6JDtvUAQBytk2JGwvHbvrIkLy3zBXCw/JFY/umtwXvVc1PMRdY1Fw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a2O0fD9H/7OxCGOXVCEsk9fEmsriQA2ok6LgnRtZ1oM=;
- b=hYwg/jGM5+h6YFjfh5BRLsVm7G6CssOw/sNIOurU9hSA0iboL+kCA8xJRaCSphj57LQwbt6jOSwcgy9fJVc/t2L+4f1M4vFGwoBQEDwfF6gCbSd/wg+FlKoNDDn64Do7oxbe05M43dNj6ni4n8gGzeNstVKKGih7UE+K/wViGnw=
-Received: from CYZPR14CA0014.namprd14.prod.outlook.com (2603:10b6:930:8f::12)
- by DM4PR12MB5184.namprd12.prod.outlook.com (2603:10b6:5:397::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7270.16; Wed, 7 Feb
- 2024 05:03:10 +0000
-Received: from CY4PEPF0000E9D9.namprd05.prod.outlook.com
- (2603:10b6:930:8f:cafe::86) by CYZPR14CA0014.outlook.office365.com
- (2603:10b6:930:8f::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.38 via Frontend
- Transport; Wed, 7 Feb 2024 05:03:10 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CY4PEPF0000E9D9.mail.protection.outlook.com (10.167.241.77) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7249.19 via Frontend Transport; Wed, 7 Feb 2024 05:03:10 +0000
-Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Tue, 6 Feb
- 2024 23:03:09 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
- (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Tue, 6 Feb
- 2024 23:03:09 -0600
-Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.34 via Frontend
- Transport; Tue, 6 Feb 2024 23:03:08 -0600
-From: Tong Ho <tong.ho@amd.com>
-To: <qemu-arm@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
- <marcandre.lureau@redhat.com>, <pbonzini@redhat.com>, <tong.ho@amd.com>
-Subject: [PATCH] hw/char/pl011: Add support for loopback
-Date: Tue, 6 Feb 2024 21:03:08 -0800
-Message-ID: <20240207050308.3221396-1-tong.ho@amd.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rXdpV-0002tL-1e
+ for qemu-arm@nongnu.org; Wed, 07 Feb 2024 04:02:53 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rXdpR-0005yw-D8
+ for qemu-arm@nongnu.org; Wed, 07 Feb 2024 04:02:51 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a30e445602cso308158266b.0
+ for <qemu-arm@nongnu.org>; Wed, 07 Feb 2024 01:02:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707296568; x=1707901368; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
+ b=WDbg4sLTFXMcZddxbgPfuqN5sMplGBTGc33dykKNduBvx5GNOEBI+p7Z4ifiqMU+xP
+ Cu3omVNgbnh0TS6v1qNa5+hZ2qBP2kIL7Bh8OWo01vlgDo6SsBu+MAsmRkNtHoUuCwTY
+ 473vHgQnRD46tCrlIVOI6iQ6H/yTPtQtsLci4PF4CsiSrKwg6f/O8LA728PsJMZegByu
+ //zuIS2/TmiP8mbFVkfYu90O3kOuV8uMvTsEQzA1/a5/kjefbONnI+hDHXVOyl4evSW1
+ eBsPxCnYcAlDWfR2SaHIzqcdNPN10NhBbivhCCGqjIEfN22e+242mjPpABtWFTMhBA/j
+ FNWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707296568; x=1707901368;
+ h=content-transfer-encoding:in-reply-to:from:cc:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
+ b=iadJwa1sYpV2mpouJWfyQNcNdDHuhU80wcB4T2F3wi75byqjS3XIMZNll0+e1nG8Hx
+ zEKtBlxtSALqrmlp3vRlAfhgvi29MSApKGyMaAG9gDiSuHkQaFm9VbaQspZJc6b1p4++
+ SgFyDk6n0c/Q7mZ31J8ByAahiTQTqkzxNkh+XYus2yXaTMu5L1qAly+YNamHCB6UGPXf
+ 9Ll5oMIpmpCOkk+M+ABaNwkLEsvuDlRoLgnGJD2xsk3/I4WRmhgWwlbNkvvbKR+RWIeC
+ XwAMpCSYV+oVX9x/HUX/S8JxGBQ04Irbe5VHhviCcnbAh8xYqi3I4EuG5sWSOmkG/yQN
+ YW7A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWND0r35EFu+wlPk25I/aHq+gXOb+2hPhZkR+clS8hAQD6lAjuJJMSgXL3UI1G85KbGhMadCI5wISq4sKqSAX4kGUlM
+X-Gm-Message-State: AOJu0YxfBMzPbtvnpQzlOTGgJRHp87syr6oMcQXMxOT97Upf8R+zBPAx
+ nHLqvbLcHWzxEI5kmL1HTtBjOASp8QdiSoZ38ZW0E6dmSmxrmWK2IfEiJiwYgqFn3JWbYOO+23x
+ E
+X-Received: by 2002:a17:906:eb07:b0:a35:e5bf:b585 with SMTP id
+ mb7-20020a170906eb0700b00a35e5bfb585mr5424550ejb.35.1707296567862; 
+ Wed, 07 Feb 2024 01:02:47 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUI4Y1gynNcQwOPQ09t+oZ1RUDWJUh3tzfWrA5Efy6jOpoRS+2mqrHfMfuapl9Y2HiBxPdS5ib3OtIZ0+QBgVR53HxejwXR565bWeEDVnsEEL64wrZU27ckiqjs45fQxKF3BWX+/hDRJFJC6He4PxEYE2DU5BbrREj3bnaS//Y=
+Received: from [192.168.69.100] ([176.176.170.22])
+ by smtp.gmail.com with ESMTPSA id
+ vh10-20020a170907d38a00b00a3875804883sm459014ejc.124.2024.02.07.01.02.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Feb 2024 01:02:47 -0800 (PST)
+Message-ID: <b8fbf313-1b24-4cf3-b5c1-f9289b413a75@linaro.org>
+Date: Wed, 7 Feb 2024 10:02:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/13] hw/arm/mps3r: Initial skeleton for mps3-an536 board
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240206132931.38376-1-peter.maydell@linaro.org>
+ <20240206132931.38376-9-peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240206132931.38376-9-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D9:EE_|DM4PR12MB5184:EE_
-X-MS-Office365-Filtering-Correlation-Id: 670866d2-0a41-4117-cd65-08dc279a1490
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: F6fuWKnm6TNSEEBWMlV8xcC2e2JQdmGHvhGpANNevvL/D4ZLXZsBNI9DOPAnr1aUGmicouBjkSw/poRKB42pmMI2DMrE/Hqrno/mCynygVvhS6vY8uCJ+x2g7Zi5F4N+qZXgcsJSG9Lxs/75C70hC5+pb3Lg07RF30j8SBuj+aJ6Zb7P/mld2W/1vGsfHFLYXbukzY59Zgc/u1RGxKQ6+P+hNwjMJ72uniAphtTjgrxnO141+7/XhMIf5zNVirUf4oWor/6XpbYA3EwfQsILCWxTPz+H+0zv0gey27iKpu10sb3UUqJolh9Y8F/W4C/rpcX7OHyk3uFHwQ7kN+8OQZNwQ8H9rc5IikLIhK0AxfweYGTHD0iMZJINDySQKD7SEu9Yg+Dui7vchagSWXqZIb66dCQLc7MyeCDnvWYByTpv4woqrcV+QICBAjZlF1JtIMlkBdm9QsxvVOQLNqZWhT4Oc+WvXImkG7L1P8QjI0FqeLrFAnzJ1HwU8N2+X5JPlqRQnDpIeKyyRHUi6mMFSYlUx/6TtuHbOEY8BhBhXDDyi4ClHyYukxYCNbdXimlCSjnlKCGK36RPyfxMKde4Y1gdqbGPE/5jp9PAxlYOaT0oWaKKnv1mBjTmGzg+n46ZHPYDbeFnfO9qCsAN4UC/2oP4AUmc80bR/jhelzkKJ7PTJ5agaf021bylEokbh/6kxDDSnPTJ9HhzEdp6gTqh0+s3lv0fMz2nJ9HdFbi4uegNm1zjJBKAacGdW/Q9xzdwzOvAZEnSlxR61J1tRxfOrw==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(376002)(346002)(39860400002)(396003)(136003)(230922051799003)(82310400011)(1800799012)(64100799003)(186009)(451199024)(36840700001)(40470700004)(46966006)(40460700003)(40480700001)(41300700001)(478600001)(86362001)(36756003)(83380400001)(426003)(47076005)(336012)(356005)(82740400003)(26005)(2616005)(1076003)(81166007)(44832011)(70586007)(2906002)(5660300002)(70206006)(8936002)(6916009)(8676002)(54906003)(36860700001)(4326008)(316002)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2024 05:03:10.2155 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 670866d2-0a41-4117-cd65-08dc279a1490
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D9.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5184
-Received-SPF: softfail client-ip=2a01:111:f403:2405::600;
- envelope-from=tong.ho@amd.com;
- helo=NAM02-DM3-obe.outbound.protection.outlook.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.294,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,105 +135,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3lYCeMZxBVuH
+X-TUID: p7B9xyNk3R3b
 
-This patch adds loopback for sent characters as well as
-modem-control signals.
+On 6/2/24 14:29, Peter Maydell wrote:
+> The AN536 is another FPGA image for the MPS3 development board. Unlike
+> the existing FPGA images we already model, this board uses a Cortex-R
+> family CPU, and it does not use any equivalent to the M-profile
+> "Subsystem for Embedded" SoC-equivalent that we model in hw/arm/armsse.c.
+> It's therefore more convenient for us to model it as a completely
+> separate C file.
+> 
+> This commit adds the basic skeleton of the board model, and the
+> code to create all the RAM and ROM. We assume that we're probably
+> going to want to add more images in future, so use the same
+> base class/subclass setup that mps2-tz.c uses, even though at
+> the moment there's only a single subclass.
+> 
+> Following commits will add the CPUs and the peripherals.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   MAINTAINERS                             |   3 +-
+>   configs/devices/arm-softmmu/default.mak |   1 +
+>   hw/arm/mps3r.c                          | 239 ++++++++++++++++++++++++
+>   hw/arm/Kconfig                          |   5 +
+>   hw/arm/meson.build                      |   1 +
+>   5 files changed, 248 insertions(+), 1 deletion(-)
+>   create mode 100644 hw/arm/mps3r.c
 
-Loopback of send and modem-control is often used for uart
-self tests in real hardware but missing from current pl011
-model, resulting in self-test failures when running in QEMU.
 
-Signed-off-by: Tong Ho <tong.ho@amd.com>
-Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
----
- hw/char/pl011.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 49 insertions(+), 2 deletions(-)
+> +/*
+> + * The MPS3 DDR is 3GiB, but on a 32-bit host QEMU doesn't permit
+> + * emulation of that much guest RAM, so artificially make it smaller.
+> + */
+> +#if HOST_LONG_BITS == 32
+> +#define MPS3_DDR_SIZE (1 * GiB)
+> +#else
+> +#define MPS3_DDR_SIZE (3 * GiB)
+> +#endif
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 855cb82d08..3c0e07aa35 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -121,6 +121,51 @@ static void pl011_update(PL011State *s)
-     }
- }
- 
-+static void pl011_put_fifo(void *opaque, uint32_t value);
-+
-+static bool pl011_is_loopback(PL011State *s)
-+{
-+    return !!(s->cr & (1U << 7));
-+}
-+
-+static void pl011_tx_loopback(PL011State *s, uint32_t value)
-+{
-+    if (pl011_is_loopback(s)) {
-+        pl011_put_fifo(s, value);
-+    }
-+}
-+
-+static uint32_t pl011_cr_loopback(PL011State *s, bool update)
-+{
-+    uint32_t cr = s->cr;
-+    uint32_t fr = s->flags;
-+    uint32_t ri = 1 << 8, dcd = 1 << 2, dsr = 1 << 1, cts = 0;
-+    uint32_t out2 = 1 << 13, out1 = 1 << 12, rts = 1 << 11, dtr = 1 << 10;
-+
-+    if (!pl011_is_loopback(s)) {
-+        return fr;
-+    }
-+
-+    fr &= ~(ri | dcd | dsr | cts);
-+    fr |= (cr & out2) ?  ri : 0;   /* FR.RI  <= CR.Out2 */
-+    fr |= (cr & out1) ? dcd : 0;   /* FR.DCD <= CR.Out1 */
-+    fr |= (cr &  rts) ? cts : 0;   /* FR.CTS <= CR.RTS */
-+    fr |= (cr &  dtr) ? dsr : 0;   /* FR.DSR <= CR.DTR */
-+
-+    if (!update) {
-+        return fr;
-+    }
-+
-+    s->int_level &= ~(INT_DSR | INT_DCD | INT_CTS | INT_RI);
-+    s->int_level |= (fr & dsr) ? INT_DSR : 0;
-+    s->int_level |= (fr & dcd) ? INT_DCD : 0;
-+    s->int_level |= (fr & cts) ? INT_CTS : 0;
-+    s->int_level |= (fr &  ri) ? INT_RI  : 0;
-+    pl011_update(s);
-+
-+    return fr;
-+}
-+
- static bool pl011_is_fifo_enabled(PL011State *s)
- {
-     return (s->lcr & LCR_FEN) != 0;
-@@ -172,7 +217,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
-         r = s->rsr;
-         break;
-     case 6: /* UARTFR */
--        r = s->flags;
-+        r = pl011_cr_loopback(s, false);
-         break;
-     case 8: /* UARTILPR */
-         r = s->ilpr;
-@@ -267,6 +312,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-          * qemu_chr_fe_write and background I/O callbacks */
-         qemu_chr_fe_write_all(&s->chr, &ch, 1);
-         s->int_level |= INT_TX;
-+        pl011_tx_loopback(s, ch);
-         pl011_update(s);
-         break;
-     case 1: /* UARTRSR/UARTECR */
-@@ -300,8 +346,9 @@ static void pl011_write(void *opaque, hwaddr offset,
-         pl011_set_read_trigger(s);
-         break;
-     case 12: /* UARTCR */
--        /* ??? Need to implement the enable and loopback bits.  */
-+        /* ??? Need to implement the enable bit.  */
-         s->cr = value;
-+        pl011_cr_loopback(s, true);
-         break;
-     case 13: /* UARTIFS */
-         s->ifl = value;
--- 
-2.25.1
+Generically, can we migrate a VM started on a 32-bit host to a 64-bit
+one?
+
+> +static void mps3r_set_default_ram_info(MPS3RMachineClass *mmc)
+> +{
+> +    /*
+> +     * Set mc->default_ram_size and default_ram_id from the
+> +     * information in mmc->raminfo.
+> +     */
+> +    MachineClass *mc = MACHINE_CLASS(mmc);
+> +    const RAMInfo *p;
+> +
+> +    for (p = mmc->raminfo; p->name; p++) {
+> +        if (p->mrindex < 0) {
+> +            /* Found the entry for "system memory" */
+> +            mc->default_ram_size = p->size;
+> +            mc->default_ram_id = p->name;
+
+Nice.
+
+> +            return;
+> +        }
+> +    }
+> +    g_assert_not_reached();
+> +}
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

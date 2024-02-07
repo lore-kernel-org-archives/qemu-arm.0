@@ -1,120 +1,117 @@
-Received: by 2002:a05:7022:108d:b0:73:d412:d72c with SMTP id ep13csp702542dlb;
-        Tue, 6 Feb 2024 13:51:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVijPMU1RW7/mIsaKHXtkIhUNd3SE0mFBOSuVZUm/T7mqcxg06EYBZb64hQGiurqSCczbhWwtuU4KWMBdD2IpnsHgOlPWwK
-X-Google-Smtp-Source: AGHT+IHAOPBY5WGQZ0VhrWlBNqqcCCZVH4qdIKYurWMIsVH6YnbfOfI5UApfKulS/Uing8RJbmnQ
-X-Received: by 2002:a05:6871:5825:b0:210:ab2a:8e0d with SMTP id oj37-20020a056871582500b00210ab2a8e0dmr4765653oac.32.1707256290343;
-        Tue, 06 Feb 2024 13:51:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707256290; cv=none;
+Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp111616eji;
+        Tue, 6 Feb 2024 18:10:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGPxojK7A8EHqPois/vRlq4DI7+e6ZrnPWT4jC1K9oLigmFaXIqfVTmDe20KAIRXZ598Wi7
+X-Received: by 2002:a05:6214:519b:b0:68c:9b50:b839 with SMTP id kl27-20020a056214519b00b0068c9b50b839mr4727197qvb.61.1707271834469;
+        Tue, 06 Feb 2024 18:10:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707271834; cv=none;
         d=google.com; s=arc-20160816;
-        b=QohpTBg0PBlLQnvcM/ZB5mv9Fh0DxpvOhmDpl4Nh6rHw0NwS/IVuvfFYXhpm7Y0N0/
-         yBcp37AuvgtlnARcuEBp2q+iwC+qZuhoZig97jNg1MPG3Ul58RpdehbsOchSQN4BwOtD
-         7zPX9O39o4HY5UGegk0NB26Mgz5TvEEfvEIyUoD1nwQ1WPhcgJnxW9N+KWotAWy3FRZ5
-         Vb1FDlDsRL/f/x/cn6Teu5EZIswAmT7BUy3NcW1bh1HoeSD3kjxnnSR0kPFL7Z+w2EEe
-         qP6wLZ52ELdr6eNPy+hp9HeapJvebJ1JpwFyu2Li/16KQ9Z93RhhfF7AkJ13QNuL/cMm
-         t7RA==
+        b=EmjUqO95g6+ykSIwiDsOxuW2jDNUdkJss20eBCQbHOkCOnYAYDBErDHqWBobOhS+rh
+         5LyAS6AOmY+5ukjwejswr0nj4mAtcGXIieLSdE5Hlw6gOh/d+8Z1s6FS22jRFVR4yF+i
+         PzdzUl2V8INVF9sTlMMBL3PcjkMGMBR71bCyim+eUHpxhJfihsJ9AqNe9/ClkXO7ThRC
+         BDu5iRIsj7sCve5U8H7IuD089CBL/S9uFHYUqF4l4rZjLoO1wOK3IwvfWTiC0yBvF4gz
+         DHoPZW5O1FTD0YZiEBtGID8r5YOS3yT0D5+rkupDz8enYyrPojG+buNAGYvkyVABnEh8
+         A07A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=lO1js4YTTotuzqoFGlHNRmsl+7c1P8LmWDHVkpLbSHI=;
-        fh=NfukWYwof8NRuCKckFHR6i1o6+LtpqJsOC7hOIWnp70=;
-        b=dbYn+V+hCTjlzXjIyaPJ3zDb8DJVEfV+7BQ+0L8Jx1wzUScYBLOWYbOoUEAMRmento
-         GExIDddKI3DZ5VLtd62Vf5rZP6+zsvdPDiT2f6IQKewizEuynFX8h6lOZFHfFkv7/53r
-         QECvGefMdb6RNV8eQVd/I2VL/jvjixD+YUXmHEve6ApEuoj9nLY7me564lk60yq//IBl
-         aGv5hD8/08wAnqvZOVHiu9NJNYtpFFYlyFoUdjb7KxfflDWZayhE1hcW4KH6AiNsKZWm
-         oDPUInP9VSIIPArzJpRXPPQLyfrQpbx6pZkrC6OjIH3TW+YUvrfC9yQi4jGrbkby0H3r
-         hf6Q==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EVQKN/Pi5kHdlmu4AcjjVSVeVN6r0rU/9RwRvbWg3Z0=;
+        fh=9XP/sSz6Wu4GpPHqa7FPsHpzyw352eBooE0zrjz94bM=;
+        b=OAZQIPBja/9O8We/QSylNPzuHQT4hIov2f9wFBjvKpLp55h94LJ0KcU8Qt2VKAtuJ3
+         nFBq/GEj0VoHBZOIMyAX+vURUY/c+Ixi9L1k8d5h15LGV0wZilcS9rgeedHJU81AQPdf
+         tb/59yCr/m+HifgR2TKsSFJbdCiarPeJ5aiIw703mruA48AvYkUcSAvXBKbOc6k7zV5H
+         yoAEFWYv8Upg1UWdKoXujvNo7ng4I4NCXetylY3UnkEtTT+wtw/zsr/NTfmEuTgIALkb
+         V1sungrQWP6KwRE1iDJqdiUIuvML2yH7u1PZ/ubqmFm+Wf3U3cnVBg9DK8FKNA7B4cg0
+         ZDDQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lbtlw7Km;
+       dkim=pass header.i=@linaro.org header.s=google header.b=edNGb1au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=0; AJvYcCWrco9rNZHvnh8zuL2kGvHARz4suKQajHXYnjOPbfjuSHe7HuH/7pA5lvb9PPRJSnizDiUoea21Eth4tYu9L0ybrWvNzUpU
+X-Forwarded-Encrypted: i=1; AJvYcCXic3sJvxsBA0txivZ9X6VJtsWeNR//fcNVhA359GMsah0dIQgMPTMYPSUMPE7PiJtAsUaUP3rlG7vf1zmafPYrh8+6G6g/
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6-20020ac87e86000000b0042aacc878b9si3209684qtj.655.2024.02.06.13.51.30
+        by mx.google.com with ESMTPS id y12-20020a0cec0c000000b0068c4223caaasi231412qvo.224.2024.02.06.18.10.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Feb 2024 13:51:30 -0800 (PST)
+        Tue, 06 Feb 2024 18:10:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lbtlw7Km;
+       dkim=pass header.i=@linaro.org header.s=google header.b=edNGb1au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXTLQ-0007wi-Cl; Tue, 06 Feb 2024 16:51:08 -0500
+	id 1rXXOL-00023s-B9; Tue, 06 Feb 2024 21:10:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rXTLO-0007wB-GG
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 16:51:06 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1rXXOK-00021o-3W
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 21:10:24 -0500
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rXTLM-00086h-Vc
- for qemu-arm@nongnu.org; Tue, 06 Feb 2024 16:51:06 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1d746ce7d13so113965ad.0
- for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 13:51:04 -0800 (PST)
+ id 1rXXOG-0000Bd-6E
+ for qemu-arm@nongnu.org; Tue, 06 Feb 2024 21:10:23 -0500
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-5cddfe0cb64so61317a12.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Feb 2024 18:10:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707256263; x=1707861063; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1707271818; x=1707876618; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=lO1js4YTTotuzqoFGlHNRmsl+7c1P8LmWDHVkpLbSHI=;
- b=lbtlw7KmMi20NjBqpOVD9+xyoIddHpaQZyFHIkyQkSAZIABPrP5Sr0nxz/TG3ThoEv
- ThXX1N/40J5XfWgk96fv0SjF72v0tqm/t3u49fZMM3PoF4SBhdjsFeiP2DQUHOZnDhl4
- pFCxzEXTVIXVBnZGIF+0PbtuDHzoskyBghxz3Xc9IC5Lx35mUtENxdhC/r+dQfOIZZXN
- YpL7LMku2k4vtXPKYzIHmhCdCYtgyeU4+U++e2rojckuO9Ph+MaN2Y5i1Ik+KDW70aFJ
- wcr/30jQqGsxGwhSn1sYYxH8UdOGsGpP3iLM+jRpytFjd5E2yaPRosPrBPGeBFQDDubf
- Fk1A==
+ bh=EVQKN/Pi5kHdlmu4AcjjVSVeVN6r0rU/9RwRvbWg3Z0=;
+ b=edNGb1audfszmPie/yYSY3G2FTJE+JiWgGu/TPZ0O1sfEv1LfdbvHWvUE5cGkFKf8X
+ g6oQTpiB8txZNUXzLTGxwbm2TCKHZYSpSXfOh4rT1xLyZ8KtNaRC/zYOs7CXrdHIpwdV
+ 9rRNaPleTjiTGgMitVw8MSaxsXHfhoxlULJdFz8Zj6H2g8q5oYx5366SRUArwrCFFPAu
+ UfgrEO5fwjKFE4Nb259BL+Vxv+wF1dcvoP79+5Z4S70ZRQdpmf2iao1r1ID5hggrBAtm
+ jtXjNwSLtBwvUJrS4AVNHzONSJzatoFvv3PgR1dWF2d5z/RnmcMY6i8ii3QCTVSn1bkI
+ gEGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707256263; x=1707861063;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1707271818; x=1707876618;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=lO1js4YTTotuzqoFGlHNRmsl+7c1P8LmWDHVkpLbSHI=;
- b=Iep01Ei9riTTkunx+ukixrg4IzUYxhYk2G6W2dUkjCJYAmVEHsBwhu/ErG5bBTY5SJ
- UUfVYyY9tAIb4ZmcdigXCxO56ZLddbncu/sstm1SLzAdxUdpap4X+mm+7nBOGv16CK3C
- P5jesx4ziPxWyA6qkD6oUTr2PGDf5TH83eVUsG7/74Lr0KgXkr8/Cs/rja2+CWN4pTRU
- 3dl2laiXoSv8umogJYgl6M40RlJ8NAxbYJr2iFjAqzDP9WPe7Z/nApLNpWslqkrZBjI/
- sxdwPrB2hYIpu3AtI5cx7C3gDNbJKpjnVinoBOPFoUzooUWID+oAcc35UurdxnkcLXlZ
- imOw==
+ bh=EVQKN/Pi5kHdlmu4AcjjVSVeVN6r0rU/9RwRvbWg3Z0=;
+ b=kqsau2WTEMkjAO3/gMf2NTeOMcPpD0i/gbqyzBzsCc2AGoo6kCqVr1mEZn9/e/xxxK
+ 4tEuTKt6EBPwWeDJUTXUAInaOTSEeTG3bJGwNFXumThhiNCmo3Bhr7ARftzPSSkzBcYe
+ +BtNbURri+fEkRmBCahb1bC2fnHVJx0QdD1+zPCO4MZs/+cNzkAomX4ih+Gk9CmCJl3d
+ Uhk6EHoti2rOQ35RN0WXogKfma3RLkBF/UqZrWCVa0BoaFbm+IzkyCJoecPQ28d8w7B/
+ efMKxs356iZxfgAgrvcAt2O5CEDJavYHLiDXMQX4S6vs5CHiYoRPXAvjuzmOhV90z4Ah
+ uC0Q==
+X-Gm-Message-State: AOJu0YymaVY+NSBCLg0dox/74YngyW3YkpRZ6TQjBMeG08Ca/1s0WrJC
+ pkqBMbzFRESJ5RUgSIEiiHzav3Zzw8tEBTun99dpYNv15lFHvykz7EcbpbXJVVk=
+X-Received: by 2002:a05:6a21:2d86:b0:19e:9f2d:9818 with SMTP id
+ ty6-20020a056a212d8600b0019e9f2d9818mr2058491pzb.57.1707271818288; 
+ Tue, 06 Feb 2024 18:10:18 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCUCO0fnyjn3r4/D88c8ugObmbSxHLHDD8xnJQKB7GdURMYrCu4M91+eiHeVnkD4Az6grVVTWMa5yATbua+ofXeGv6e0
-X-Gm-Message-State: AOJu0Yx6DSnakhZgMbpB1/tt/hSmnbfa0OtNesDMKO/lb3pYqI6ljyzx
- UW6ewpeYLntCTVXPbDqemanc+mcJoV7b+hVdPqGs/X4k2S8c1y0OxJgXD8EtQGk3LgUOUgDqNwQ
- fIGs=
-X-Received: by 2002:a17:902:ebcd:b0:1d9:df9d:bcd3 with SMTP id
- p13-20020a170902ebcd00b001d9df9dbcd3mr2959332plg.46.1707256263382; 
- Tue, 06 Feb 2024 13:51:03 -0800 (PST)
-X-Forwarded-Encrypted: i=0;
- AJvYcCXGYuJvgQhJAFPd1hdveV1BRy/oT3lQISqzU7j+vB/SnKytt98ny8Ch3LxXSrIrOdAOTIgxKKXyreOwibEHF02ubfjOHdfkTRZ9uG2zBXHISza/WAhL8t+bDJQ=
-Received: from [192.168.0.100] ([43.252.112.200])
- by smtp.gmail.com with ESMTPSA id
- o9-20020a17090323c900b001d94a3f3987sm2356974plh.184.2024.02.06.13.51.01
+ AJvYcCWd85tV07kuOwngxEoHDV0qR2G6YXMBmCgv63M3LBtxbcU6Tb4QkXxuUglNFeOJy/kh2G3T/zlKp5jz4UQRf9TdpjpFby/LCo7PRRx1KTeOFc5R2wCW/ZKZZVCnBAd2
+Received: from [192.168.188.227] (60-242-98-186.static.tpgi.com.au.
+ [60.242.98.186]) by smtp.gmail.com with ESMTPSA id
+ sl12-20020a17090b2e0c00b0029649f4ceb9sm244090pjb.54.2024.02.06.18.10.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Feb 2024 13:51:03 -0800 (PST)
-Message-ID: <94d96365-1d93-40f4-96ee-e3fcb14a8040@linaro.org>
-Date: Wed, 7 Feb 2024 07:50:57 +1000
+ Tue, 06 Feb 2024 18:10:17 -0800 (PST)
+Message-ID: <4fee3af5-eeab-42b8-b5e0-1f36235ebc3d@linaro.org>
+Date: Wed, 7 Feb 2024 12:10:11 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/13] hw/misc/mps2-scc: Make changes needed for AN536
- FPGA image
+Subject: Re: [PATCH v2 1/6] linux-user/aarch64: Extend PR_SET_TAGGED_ADDR_CTRL
+ for FEAT_MTE3
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, gustavo.romero@linaro.org
+References: <20240206030527.169147-1-richard.henderson@linaro.org>
+ <20240206030527.169147-2-richard.henderson@linaro.org>
+ <CAFEAcA8AuQZNbT=7WFXVPDzDywPPp1YZ=Bkow7Dgq2pC9=9X-g@mail.gmail.com>
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240206132931.38376-1-peter.maydell@linaro.org>
- <20240206132931.38376-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240206132931.38376-8-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA8AuQZNbT=7WFXVPDzDywPPp1YZ=Bkow7Dgq2pC9=9X-g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,49 +133,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sRqsDsBfMvyL
+X-TUID: WxfB6puTIHqz
 
-On 2/6/24 23:29, Peter Maydell wrote:
-> The MPS2 SCC device is broadly the same for all FPGA images, but has
-> minor differences in the behaviour of the CFG registers depending on
-> the image. In many cases we don't really care about the functionality
-> controlled by these registers and a reads-as-written or similar
-> behaviour is sufficient for the moment.
+On 2/7/24 00:23, Peter Maydell wrote:
+>> +++ b/linux-user/aarch64/target_prctl.h
+>> @@ -173,21 +173,22 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+>>       env->tagged_addr_enable = arg2 & PR_TAGGED_ADDR_ENABLE;
+>>
+>>       if (cpu_isar_feature(aa64_mte, cpu)) {
+>> -        switch (arg2 & PR_MTE_TCF_MASK) {
+>> -        case PR_MTE_TCF_NONE:
+>> -        case PR_MTE_TCF_SYNC:
+>> -        case PR_MTE_TCF_ASYNC:
+>> -            break;
+>> -        default:
+>> -            return -EINVAL;
+>> -        }
 > 
-> For the AN536 the required behaviour is:
-> 
->   * A_CFG0 has CPU reset and halt bits
->      - implement as reads-as-written for the moment
->   * A_CFG1 has flash or ATCM address 0 remap handling
->      - QEMU doesn't model this; implement as reads-as-written
->   * A_CFG2 has QSPI select (like AN524)
->      - implemented (no behaviour, as with AN524)
->   * A_CFG3 is MCC_MSB_ADDR "additional MCC addressing bits"
->      - QEMU doesn't care about these, so use the existing
->        RAZ behaviour for convenience
->   * A_CFG4 is board rev (like all other images)
->      - no change needed
->   * A_CFG5 is ACLK frq in hz (like AN524)
->      - implemented as reads-as-written, as for other boards
->   * A_CFG6 is core 0 vector table base address
->      - implemented as reads-as-written for the moment
->   * A_CFG7 is core 1 vector table base address
->      - implemented as reads-as-written for the moment
-> 
-> Make the changes necessary for this; leave TODO comments where
-> appropriate to indicate where we might want to come back and
-> implement things like CPU reset.
-> 
-> The other aspects of the device specific to this FPGA image (like the
-> values of the board ID and similar registers) will be set via the
-> device's qdev properties.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   include/hw/misc/mps2-scc.h |   1 +
->   hw/misc/mps2-scc.c         | 101 +++++++++++++++++++++++++++++++++----
->   2 files changed, 92 insertions(+), 10 deletions(-)
+> We should probably check here and reject unknown bits being
+> set in arg2, as set_tagged_addr_ctrl() does; but the old
+> code didn't get that right either.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This is done higher up in this function:
+
+     if (arg2 & ~valid_mask) {
+         return -TARGET_EINVAL;
+     }
+
+The rejection of ASYNC | SYNC here was either a bug in my original implementation, or the 
+kernel API changed since the initial implementation in June 2020 (not worth digging to 
+find out).
+
 
 r~
+

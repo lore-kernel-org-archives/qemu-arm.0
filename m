@@ -1,116 +1,115 @@
-Received: by 2002:a17:907:c68a:b0:84d:2074:29bb with SMTP id ue10csp3964692ejc;
-        Tue, 24 Jan 2023 13:54:45 -0800 (PST)
-X-Google-Smtp-Source: AK7set/tf4EhMrAtiqxyhU1uavKUfYgFmyl2tv21a1HfTve55iUJ0s0uVzJxfoDtEPgag7XfbRpa
-X-Received: by 2002:a05:6214:713:b0:537:6285:e548 with SMTP id c19-20020a056214071300b005376285e548mr8641589qvz.5.1674597285549;
-        Tue, 24 Jan 2023 13:54:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1674597285; cv=none;
+Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp541713eji;
+        Wed, 7 Feb 2024 09:25:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWfUMAJ63kxbMsqwE6mq8uajroaOUdfM4pFpr1IBYtLIHTipkIZr3ZhiRXoTwq1nQK/+XbVM2mLbgv4TUxRJtZQm7dpLDZK
+X-Google-Smtp-Source: AGHT+IHoFq6aH1sS6yvlOuBsJlml8eSTbBXS0mcaUyx4Ifbe/LHklXnWiJAHLi3/Y23fqt/ZDak2
+X-Received: by 2002:a05:6808:1929:b0:3bf:1a8c:75b3 with SMTP id bf41-20020a056808192900b003bf1a8c75b3mr7880057oib.26.1707326728371;
+        Wed, 07 Feb 2024 09:25:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707326728; cv=none;
         d=google.com; s=arc-20160816;
-        b=JFQoyr2l5M17AFlOYKAvJvwhONU0s5NTjf9kxlDFKbZLvUX3AscdeY3+C9EmPY0rpD
-         0UFFtabZRgp3QDAsxRQgBv6FbhZ6pXBaz8+hOFWbBntANgintzYDpCJHl7Xnr0puYLgC
-         kpOptC+O09zvujygGsNLd+KSZSBJ42rgZIWVjocjvGOurNOWP61fb+7g6ujUUSJqM56Z
-         JtX8bvCAtD7Do2bcZ8nvbLwB8RHm1lUv7DZkw4xYDDnhlrLoq8rvYI6X0eSko4NQfOku
-         u2832WexTLjmWm5TeL0Lp4btg0vjYF05R4zXS7Pzkg9E9zcn3LoT06p8/qCJbwL6d7Vy
-         3ygg==
+        b=hVg4lJ8C2n/8RQW1tiHLrjY/yUVU9w5iXIvalldihXYGrw4DHRmRhucZKK7zbj4zWf
+         X+e8nM3WwmW9S5gKuugUArVeTAp/kIdTryZxVuAiVBpsb5Um31r6yv19rdYEGeFBRVXh
+         zSTPHUmgfUyAmE4B0maKzEaP0TP7Xqy+RNqq7WBLu4Ve/ocPq+VnX8ZHIRcSAUwtH6v9
+         dRQ5S8G5u13HSw74uU5pWs42eHYXB9QDrKa3eK5ibDiWOEnamr5MGiSPzkut+dIKlMEy
+         dtcD95CPPnT+jzjSq6Rcok6BgIc4DqDj918XT3Ac2EOi443Ji4T243aMeSAKHez7UNh3
+         TAYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=33I3gmOMrqXDAgIkPqkp+uQ5domRkC5NGptWhMIhogg=;
-        b=kFoXbELLO3gkaNa6JLJAeGPHv8IvSIMsWjHytTO+/lQvrfNTNsuaflKEkwZ628I8T7
-         J/yaEJMlk245dtVTBoBsfiJsaIezOVWbOFmGJ6ZmoArfZYl0M2xyhf+avCRJ1GmHB+Xb
-         mEY7oMvdjMq6Af3dn/7x27xHBAY0Po2dbu+WX1ldpNGvuQbW84VsojaKaiHgQAEGQQnP
-         SDZAXomnj6wuxjQwXo8gt5xHN0GwJkZ3fl39FRnMOjQiFu2sP8Znaaki3jhkh0uuzRue
-         gGIZ03msUyM5/jbp/zIryjsp16Fbvq9PidFw6noSJIDxEAlg1MMcaVC21Gmyb/jfyjdq
-         ILNQ==
+         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
+        bh=Wq2Af0a9zWJ82wJuePhM6JjSsKF7cUO4CiI/Rp2Xnus=;
+        fh=Pr21SOiYJ8LgamAATK+SEzebY6tb4f4VucTpdRaku+s=;
+        b=BNXhE+VcWxqY+xh0Ajw1vyQO3n0Xrx8S9Se0M2x1dN/gAIl9uT3bw5TV9pGl7N3Hdo
+         7QxAY1WwoYMIXKFf0N7hPONisnTuHpZd++xLODRVnv2gXLED4uGIeaGar5w32NdYVr73
+         lYojzOhqgCt8DfetHLNnZpKwmmj94AI+evQvBjuSv+X+kEQ9W/RyFnF5D0LvnSt8TAiu
+         c5kwrSoK8qIaCbZsRfpARb1wRyJTXcB9swfh0RdbCuOLcGn2omUejAS+r/ZsP0fOsxXu
+         zhTW/v55oMgKl4eITlOQBPDrGb7zQC6XKZyrnpV+zBDXA1CxVMKoF5hUd5v2O/7xvZvV
+         re0w==;
+        darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U5wHs2p3;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=jbAi6WTl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+X-Forwarded-Encrypted: i=1; AJvYcCVbtuYllqO32LNKWYlaSkzoMLoqiLvEpLZw0uBVxwsTb6mgyDd0J/uZisGOCpOHlVR2wuELAiPAMTHklf0gohArnqt+ilvy
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a0cc247000000b0053717829134si2136415qvh.325.2023.01.24.13.54.45
+        by mx.google.com with ESMTPS id f37-20020a05622a1a2500b0042aa019739dsi1581440qtb.277.2024.02.07.09.25.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Jan 2023 13:54:45 -0800 (PST)
+        Wed, 07 Feb 2024 09:25:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U5wHs2p3;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=jbAi6WTl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pKRFM-0005Hf-53; Tue, 24 Jan 2023 16:54:28 -0500
+	id 1rXlfl-0001zk-1N; Wed, 07 Feb 2024 12:25:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pKRFL-0005Gj-2C
- for qemu-arm@nongnu.org; Tue, 24 Jan 2023 16:54:27 -0500
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pKRFI-00054i-Hc
- for qemu-arm@nongnu.org; Tue, 24 Jan 2023 16:54:26 -0500
-Received: by mail-pj1-x1031.google.com with SMTP id lp10so13103184pjb.4
- for <qemu-arm@nongnu.org>; Tue, 24 Jan 2023 13:54:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=33I3gmOMrqXDAgIkPqkp+uQ5domRkC5NGptWhMIhogg=;
- b=U5wHs2p3QtL3fW7wbrxQmXxNAqb4wBp2iWS60BzdogxkZJBB2UYiLDWU3OL4X4EywO
- tngiXdj/DHWAMZIiAdvDAuFmyjscdAwn7ya1ItxKVR0Ki2UvBK0ReEIszPW6jZWopIxW
- +Bp3fS9gKWLrhsxpyVQAu4KrrcilQqWGmfwU1/fYLT9dTdNw1ZBliCbOC0tdcobXc7oI
- ZGSKudJs6mw6LACWb+qWhisJHSj3W8DNuvIZ+gVrgizgKIgIoyEPJOh0U1pilQFOI3Pn
- +Bmq8dArqt23Rqt0/QC0/qQ+VGFyFViFLr2VYPgoCeklFIqZxd+dIijie8TtXp26RvQc
- 4AQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=33I3gmOMrqXDAgIkPqkp+uQ5domRkC5NGptWhMIhogg=;
- b=vkOvN9DJvmzw29XGpIYNVxEpTNKy08cWcNSu/C8QuQ2ATCaJUG3ttH+VKzFCsuRgbM
- oUTXuszEUbyeN2gVer0iYHj5dPomyjKFPiiFsMMK8+EA+NU1NjTtFsykEnCdZlMWgK3A
- T05NaChOpnFuqGLLND38anVE28NyI/QHyfVnjh3Gyn4DH2HIRd6fYEofTdYRR2RwOGlk
- Se+nlOBuHG8/l0nWefQAx3yOtoI0FkDudljBYUt1ORzq0/6QOlevbkIeH01td62yGfje
- 8LjBCwozD8vuX9RYLJ7/yw85GKjGZWEKEzbfVTYzHMQTxZ86i5pl6V/0Kce16Vx+vPrP
- l2CA==
-X-Gm-Message-State: AO0yUKXjX5VVa3tk7kWBZxDH6n/uOU1P2oAZ3+qe7P3HRt6nJUUn/HhI
- sgtUWkXrwbP31D0kqPkf4AOszg==
-X-Received: by 2002:a17:903:1107:b0:196:191b:6b22 with SMTP id
- n7-20020a170903110700b00196191b6b22mr3760694plh.59.1674597262967; 
- Tue, 24 Jan 2023 13:54:22 -0800 (PST)
-Received: from [192.168.5.146] (rrcs-173-198-77-218.west.biz.rr.com.
- [173.198.77.218]) by smtp.gmail.com with ESMTPSA id
- z2-20020aa791c2000000b0058a7bacd31fsm2083427pfa.32.2023.01.24.13.54.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Jan 2023 13:54:22 -0800 (PST)
-Message-ID: <4068c032-2210-65c7-3f5c-04f89b778e04@linaro.org>
-Date: Tue, 24 Jan 2023 11:54:18 -1000
+ (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
+ id 1rXlfi-0001zK-QF; Wed, 07 Feb 2024 12:25:18 -0500
+Received: from zproxy4.enst.fr ([137.194.2.223])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
+ id 1rXlfg-0006jF-BA; Wed, 07 Feb 2024 12:25:18 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id DF7D220711;
+ Wed,  7 Feb 2024 18:25:10 +0100 (CET)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id gdFCzteI6p0S; Wed,  7 Feb 2024 18:25:10 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 061F720719;
+ Wed,  7 Feb 2024 18:25:10 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 061F720719
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707326710;
+ bh=Wq2Af0a9zWJ82wJuePhM6JjSsKF7cUO4CiI/Rp2Xnus=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=jbAi6WTlGo/ubt8rfG90vkSH0OpJNoUuLxJQ/JTUzEXKHv/etcPkWtC7TmRf99Wcw
+ pKkoviF2NL4BFc7/H/npVoJjtsR1iPON5qTPizgYudLDubuPAsowKnQVff1eaeHS3z
+ YKZXi44MnZ3u1e7sSqc9t4D7GLfRX59t9G6TtK38=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id y114GT9DGWV2; Wed,  7 Feb 2024 18:25:09 +0100 (CET)
+Received: from zmail-tp2.enst.fr (zmail-tp2.enst.fr [137.194.2.199])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 3F42020711;
+ Wed,  7 Feb 2024 18:25:09 +0100 (CET)
+Date: Wed, 7 Feb 2024 18:25:08 +0100 (CET)
+From: =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, 
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ Samuel Tardieu <sam@rfc1149.net>, 
+ peter maydell <peter.maydell@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Message-ID: <2124605303.230522.1707326708850.JavaMail.zimbra@enst.fr>
+In-Reply-To: <22defe7a-6c67-4aae-b028-838ee6aa4e1a@linaro.org>
+References: <20240126193657.792005-1-ines.varhol@telecom-paris.fr>
+ <20240126193657.792005-3-ines.varhol@telecom-paris.fr>
+ <22defe7a-6c67-4aae-b028-838ee6aa4e1a@linaro.org>
+Subject: Re: [PATCH 2/3] hw/arm : Connect DM163 to STM32L4x5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-Subject: Re: [PATCH v4 00/36] tcg: Support for Int128 with helpers
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net
-References: <20230108023719.2466341-1-richard.henderson@linaro.org>
-In-Reply-To: <20230108023719.2466341-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.148,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [::ffff:80.125.0.74]
+X-Mailer: Zimbra 9.0.0_GA_4583 (ZimbraWebClient - FF122 (Linux)/9.0.0_GA_4583)
+Thread-Topic: hw/arm : Connect DM163 to STM32L4x5
+Thread-Index: Az504CBTFdo4vraccJ8mb6QpSnn+eQ==
+Received-SPF: pass client-ip=137.194.2.223; envelope-from=ivarhol-21@enst.fr;
+ helo=zproxy4.enst.fr
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,34 +124,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CZJmyMP6AdDn
+X-TUID: pSk4DZhZIJPp
 
-On 1/7/23 16:36, Richard Henderson wrote:
-> Patches requiring review:
->    01-tcg-Define-TCG_TYPE_I128-and-related-helper-macro.patch
->    02-tcg-Handle-dh_typecode_i128-with-TCG_CALL_-RET-AR.patch
->    03-tcg-Allocate-objects-contiguously-in-temp_allocat.patch
->    05-tcg-Add-TCG_CALL_-RET-ARG-_BY_REF.patch
->    07-tcg-Add-TCG_CALL_RET_BY_VEC.patch
->    08-include-qemu-int128-Use-Int128-structure-for-TCI.patch
->    09-tcg-i386-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
->    10-tcg-tci-Fix-big-endian-return-register-ordering.patch
->    11-tcg-tci-Add-TCG_TARGET_CALL_-RET-ARG-_I128.patch
->    13-tcg-Add-temp-allocation-for-TCGv_i128.patch
->    14-tcg-Add-basic-data-movement-for-TCGv_i128.patch
->    15-tcg-Add-guest-load-store-primitives-for-TCGv_i128.patch
->    16-tcg-Add-tcg_gen_-non-atomic_cmpxchg_i128.patch
->    17-tcg-Split-out-tcg_gen_nonatomic_cmpxchg_i-32-64.patch
->    24-target-s390x-Use-a-single-return-for-helper_divs3.patch
->    31-target-s390x-Use-Int128-for-passing-float128.patch
->    32-target-s390x-Use-tcg_gen_atomic_cmpxchg_i128-for-.patch
->    33-target-s390x-Implement-CC_OP_NZ-in-gen_op_calc_cc.patch
->    34-target-i386-Split-out-gen_cmpxchg8b-gen_cmpxchg16.patch
->    35-target-i386-Inline-cmpxchg8b.patch
->    36-target-i386-Inline-cmpxchg16b.patch
+Hello !
 
-Ping.  Only 2, 3, 10, 14 reviewed in the past 2 weeks.
-There is a very minor patch conflict now in patch 4, nothing worth re-posting over.
+> De: "Philippe Mathieu-Daud=C3=A9" <philmd@linaro.org>
+> Envoy=C3=A9: Lundi 5 F=C3=A9vrier 2024 14:46:58
+>
+> Hi In=C3=A8s,
+>=20
+> On 26/1/24 20:31, In=C3=A8s Varhol wrote:
+> > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> > ---
+> >   hw/arm/Kconfig                 |  1 +
+> >   hw/arm/stm32l4x5_soc.c         | 55 +++++++++++++++++++++++++++++++++=
+-
+> >   include/hw/arm/stm32l4x5_soc.h |  3 ++
+> >   3 files changed, 58 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index 3e49b913f8..818aa2f1a2 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -463,6 +463,7 @@ config STM32L4X5_SOC
+> >       select STM32L4X5_SYSCFG
+> >       select STM32L4X5_RCC
+> >       select STM32L4X5_GPIO
+> > +    select DM163
+>=20
+>=20
+> > +/*
+> > + * There are actually 14 input pins in the DM163 device.
+> > + * Here the DM163 input pin EN isn't connected to the STM32L4x5
+> > + * GPIOs as the IM120417002 colors shield doesn't actually use
+> > + * this pin to drive the RGB matrix.
+> > + */
+> > +#define NUM_DM163_INPUTS 13
+> > +
+> > +static const int dm163_input[NUM_DM163_INPUTS] =3D {
+> > +    1 * 16 + 2,  /* ROW0  PB2       */
+> > +    0 * 16 + 15, /* ROW1  PA15      */
+> > +    0 * 16 + 2,  /* ROW2  PA2       */
+> > +    0 * 16 + 7,  /* ROW3  PA7       */
+> > +    0 * 16 + 6,  /* ROW4  PA6       */
+> > +    0 * 16 + 5,  /* ROW5  PA5       */
+> > +    1 * 16 + 0,  /* ROW6  PB0       */
+> > +    0 * 16 + 3,  /* ROW7  PA3       */
+> > +    0 * 16 + 4,  /* SIN (SDA) PA4   */
+> > +    1 * 16 + 1,  /* DCK (SCK) PB1   */
+> > +    2 * 16 + 3,  /* RST_B (RST) PC3 */
+> > +    2 * 16 + 4,  /* LAT_B (LAT) PC4 */
+> > +    2 * 16 + 5,  /* SELBK (SB)  PC5 */
+> > +};
+> > +
+> > +
+> >   static const uint32_t gpio_addr[] =3D {
+> >       0x48000000,
+> >       0x48000400,
+> > @@ -116,6 +143,8 @@ static void stm32l4x5_soc_initfn(Object *obj)
+> >           g_autofree char *name =3D g_strdup_printf("gpio%c", 'a' + i);
+> >           object_initialize_child(obj, name, &s->gpio[i], TYPE_STM32L4X=
+5_GPIO);
+> >       }
+> > +
+> > +    object_initialize_child(obj, "dm163", &s->dm163, TYPE_DM163);
+>=20
+> The DM163 is another chip, not a component part of the SoC;
+> it belongs to the machine and should be created/wired in
+> b_l475e_iot01a_init(). Similarly to the IRQ splitters.
+>=20
+> Keeping board component states in a Bl475eMachineState structure
+> could help organizing your model. You can find an example on how
+> extend the MachineState in hw/avr/arduino.c.
+>=20
 
+Yes thank you ! that's done :)
 
-r~
+> You might call qdev_pass_gpios() to exposes the SysCfg lines out
+> of the SoC.
+
+I was wondering what's the reason to expose Syscfg lines and not Gpio lines=
+?
+(Should GPIOs also be moved to the machine ?)
+
+Best regards,
+
+Ines

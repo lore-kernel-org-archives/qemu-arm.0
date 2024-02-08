@@ -1,265 +1,209 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp39724ejb;
-        Thu, 8 Feb 2024 03:37:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEdrl0NCNQVe+s3ZMSPNoFXvYfCQxuFC5gEOd8k/1NV7uVLgvfPNLOimuJXgEMe6nWjWMOl
-X-Received: by 2002:a05:6808:1a18:b0:3bf:f395:818d with SMTP id bk24-20020a0568081a1800b003bff395818dmr2030915oib.55.1707392220618;
-        Thu, 08 Feb 2024 03:37:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707392220; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp213354ejb;
+        Thu, 8 Feb 2024 08:18:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWxIJ3bBU/HkD3gvp4PzRMHdLxTvscCDvW6DOYCDR7Q942wX6AqhkXCpqNEa+5qvnDc2ZC6+93qyrSI86tLmxGHGiWZoIzz
+X-Google-Smtp-Source: AGHT+IGUThvUZeA+qWTnfnCUdJ86Dw/kYjXH+M4cH4sXmSonLjsTRUKIRTQEPv72Fx+kbjirgvlw
+X-Received: by 2002:a05:620a:31a4:b0:785:a14a:ee18 with SMTP id bi36-20020a05620a31a400b00785a14aee18mr6303551qkb.48.1707409137993;
+        Thu, 08 Feb 2024 08:18:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707409137; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pu761Q0XYuXektRYQ/KMoq370fj/h2KcLPjeQD3zuoK1hcgKwnauj//C2qVCVLZ+G0
-         qEaBewZGYmMO4dC9m9AQusxui9/66yjsa7AUVctnhGfdyM7hSc5bj3m1anawYxP+4G6r
-         b2D1Tc4FTTBQvheuOembQFZVQkpheEMS/NwHPzHgjz4tvpSeMjagmDOv17PUm6ipGeNj
-         0RY1OJVXrxCxiMPwp23EoNxExtysD5+cWQWzZ0MpnEdfeYFFrpAUtygYy6B7fHW2gpYd
-         FoewCiDQsgUlhWiYpuQo2pLWHvauSWNUUeH1y6G0KmpTKEVZWgRIRICqO1JvCcTTb8Hn
-         SFPg==
+        b=x4u9wjhdlYKnBnTOW+2i0sNkmO9MPh9I/s4WTaVzAfiIVxmJLt+3hSwbVViw3elZUy
+         VUaPeTTMc/5EFVAfPaNCa91QbGw5Ko530VCtgBO7gEcTx/QBx+ExvnJEhsBPXQQc2tCB
+         etnPF0ZOjDNkKxt3hihbz8L/ljBBWDPbTP1t3ZpAsv31DRXOKitiLBxkY7TxYxBbt/1N
+         ycs0Ev7BsrB19En8cBZA67cP8iPDEGxtiWndP5kx/jVAaoCMRHRGFHNGEl2h24ptuqhr
+         ucYLYaQkQv/wz3iR6nM98wOrC1yJ8okCtekBcQKiTca0aaI6C1BnFRnftlAY2/6iEurS
+         YcGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8x/YgZw1AGkDrc//lQ1l/l9Zb/CYBXjpvIK5sQ8j7Mg=;
-        fh=yWJriInIEy/d542exoj1kJyyEQ5i1YfXMfzQ30gjvGA=;
-        b=b/Mj7ZPRj1PK2XVCtBFQ9V97hDD8T1JZN184y6+Pm4vAsHuaGKJ4Z7TVKEA4JdOIDJ
-         C5m558y+Rm1AeFcq/6mTq6gq3pRN0n7whzgjUN4G2sayE3bzL+Wpxs+T8Ni/AOEhiUSD
-         O1iJkpAriOJxIQPQXisISkCvPn5T9gYSA2ONHIAfFB1pMwbHokrARQ1kZlorwKQSZUOh
-         8wL1eV4ocy50OyBj2fpPixlcPFq/iEh/uBJkSrtoDbakdLeh26zfxU0wzaZI437RDn7n
-         +icoqPBniSdJGBtFAjIcnjuJO1Sph2nzpdpYWcKxXAynzs6CEQzuVwtO2SnPATh3wmXT
-         lzjA==;
+        bh=/kgdJeQt4MBqghYPonWPma9RVweCOkevn0geEFBQVuY=;
+        fh=XtUAS/qOLyKfaQ4m1HHzMqg6XhgXPnVc/9arQjERu3A=;
+        b=Fzo9AyxIcpvE4tbkFkugv07D9jtRqfs45A+057c/xp1Aq9uO9GOcm+QKNR4fEodn7j
+         pbvukxyfKo6SXTuwQedWGzv5D8Rqc9Wj6p05+iriyDVOB/chbWBWLlw7n0mXQCzuxRCA
+         S8Er5By3Fw0OJQjmLOO5rYDgHADqIjR3oNjtQd4O9BNlAiIkbXLN3+RHoYBqoPTPsj4z
+         grfbQsqXgVq1pm4B4dzx6xq+53YQZoa/F7UdZ5Sv1PvDA/5kyxLWfOoiWexBr8jjQYnt
+         1S9kzcyfPMlLKYsb7LqQgQOXW/uCQk+E7yY0PkU7XEomHgD3VNO4ORR5DKlndws+MiZJ
+         DM6Q==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v4DA128w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=crTZIcev;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCVCMokafxudLcAt5PLg1FGsWFND6SVM3ORj8Lv/sv9xeuEWr8gkZ5FeP08d5hfUZ9Yy4qRvr3Y7XjkbLEkK1rEO4gPLrhro
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-Forwarded-Encrypted: i=1; AJvYcCXSaPg0KAEGyOJTwSsig02F0Hko3ZwI7ezJXHLbQ2y91fXS3TNmjdSUCzfLYiavaEtkHLRZSY51editZofOUGE2gBN8GqA5
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14-20020ac85a8e000000b0042bdc3f52b2si3215717qtc.386.2024.02.08.03.37.00
+        by mx.google.com with ESMTPS id pe16-20020a05620a851000b007859d41c8c9si277855qkn.279.2024.02.08.08.18.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 03:37:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 08 Feb 2024 08:18:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v4DA128w;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=crTZIcev;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rY2hy-0001LP-GD; Thu, 08 Feb 2024 06:36:48 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rY76w-0003Cj-7U; Thu, 08 Feb 2024 11:18:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY2hu-0001KQ-Vt
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 06:36:43 -0500
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1rY76t-00034D-Se
+ for qemu-devel@nongnu.org; Thu, 08 Feb 2024 11:18:47 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY2hs-0006Z8-Cy
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 06:36:42 -0500
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-55fe4534e9bso2051161a12.0
- for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 03:36:39 -0800 (PST)
+ id 1rY76p-0002mt-Tq
+ for qemu-devel@nongnu.org; Thu, 08 Feb 2024 11:18:45 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-55a179f5fa1so69773a12.0
+ for <qemu-devel@nongnu.org>; Thu, 08 Feb 2024 08:18:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707392198; x=1707996998; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707409122; x=1708013922; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8x/YgZw1AGkDrc//lQ1l/l9Zb/CYBXjpvIK5sQ8j7Mg=;
- b=v4DA128wj1T8bPBX98MzWJSMDWWkcRbSVKo8bkGltMgfZVKXaq43oLHRCLUxO6TFpy
- b2MYzDsi5F6UbguLXevoNG1jl0/bCHxgv3XO4GE9CR/lL2v+IdSbHykG9oUHA/UXtueH
- LcgP0HfhOoKCvacxjWAx07iWM0BzvxeV+bEION2K9AaZ7HOobZnfIiiUfIZz6qVvTDVe
- +4SopAlRwYnmar7IBiNMc2zOFZS7beBq70XEX+6TKXirzxy29E+345Wb6jxH6HjOLu/U
- YSODt7H3RfIG9RgZnEqjpkipj3//XOJtbk0aOt8+cR4+/SwnHJ2OYksPB3XLYDBSfJbo
- GDIg==
+ bh=/kgdJeQt4MBqghYPonWPma9RVweCOkevn0geEFBQVuY=;
+ b=crTZIcevXUWPv9nTbzfjRzyM4Yo3/lzoM2ras5YGRecxBG8lOlmLQ/oz2al7QEoYcE
+ 8Wxu/e93rEgv3XBoUhA/RI0pbGkTQg1DhDxCZaPeOmnqFQCbgvIOMX9xBlhzzHfNbTHa
+ RuXV5nuIN0L/U7+CTsBw8GGyGoSQRW08Y6lB3BKbmRBBJjekHyiFKGNmJIFqTA4HCsk4
+ NL3EZqPgMqFmaQ+uRTkMXOCD3BhK1Hvi8rTuk2GxXhWiYhsh6L3giiJEo36yLzfD9Ick
+ yJAJf8qZ2s5WaAWHB/jWPajveNORkwlf+gA8EGh5vUi53rfrTRoYMk0/+W4hMGfnmBd4
+ debQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707392198; x=1707996998;
+ d=1e100.net; s=20230601; t=1707409122; x=1708013922;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=8x/YgZw1AGkDrc//lQ1l/l9Zb/CYBXjpvIK5sQ8j7Mg=;
- b=L7khHe+uxSkvtVr1UdYDP8/UAucCz6rqYm9M2TKnTMxn3k428cGtH2ThYCJUMIPnvY
- B7e92A4yZqzwUSXQ6W+xhbHwuMFPlUyTe6/xIKRzII8YukKX9p5vWVIKNKhIdNd8sC+1
- enF5joPOq9Pj5rb7i34iUNc+C2V2LkJi36Nyi00aUtaBFsgsv3XuLTI0Pz0yfhwNPbn9
- MiQSp8KsFii20wFcJvmiVFO/KrH4eaWou15gOuuYrc1JjIGM45vQC/VqjE+dcxv9rBhk
- CLpZur8yJjosuSy8IC2vOSzNbEXB9bUOQ+SrdBfaPnkvIry/y1bzpnmLVcMDknU6UkHE
- odaQ==
-X-Gm-Message-State: AOJu0YyrRlqTdlIiSD+YtwOfvb0k7JpjT7G9Vz1BeQqdk1pX8ZlMi0Gp
- zKVmFdZNhUUy6/AggKB599J8BKmClFVlRnc29qizDZGfa5GJO+QXAHNZ3b8rkSs1rgCOcMsfyZ4
- oTU4uLNXTmwqIcsi73B86UNFRIcKphqoVbutbMg==
-X-Received: by 2002:a05:6402:1b1c:b0:55f:99:c895 with SMTP id
- by28-20020a0564021b1c00b0055f0099c895mr5580279edb.20.1707392197849; Thu, 08
- Feb 2024 03:36:37 -0800 (PST)
+ bh=/kgdJeQt4MBqghYPonWPma9RVweCOkevn0geEFBQVuY=;
+ b=omFZ583dSyp1wDGlcfgsZ3I3KM4OKgsBGNAYhy7uXXFcttNYEoD9YTBaUJ8VlSpNzd
+ tzhYrV2GjKTUHTvgxDUpYuBY5sm7vEF3eF6jGCHpml1ojUdV7MkJDviQpxIAicMZFOQz
+ Q6YhrpcifO9T9cqjUlzAVNPmiMD6PcWDXLQqdw/UzlComITM46lvIEDPew9vczmmyX8+
+ itGqXkmcVTV94gfa2rDaozrI+CprFF415kiJaAWB/d60Ydhoq9VBtM5jgADJbyr7VO/1
+ GE0L3DlrN3BCQelVLY63ifeazIWpZQXM7+6QT7Q/d49bOn4noJI/k+2q+Tcp35N2QYh6
+ Bb7g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWvdTI3Fj/vm5xjlkdxY1+8d5LyEtX2fnZYa69hBcnpcqWAtBxJvoai26JLA1SE6TMHW9FYIJ+PNGoL98+MxI/j1VDYrpY=
+X-Gm-Message-State: AOJu0Yw90xILKUXTCi2TnoYwIYR05a1bfGihGAwateT87Cfm1fN1ClRc
+ 8B7X1wg7b/A+f6jHFeTqd6fk5cdFoAsunH0JOGWZ5leQyeW7lJNIoYk+gIGqXcdXw7HVTZreyrq
+ j4sJHk8jPCrMtqgDq0RS6W7bZyRMcBGs45IJdIA==
+X-Received: by 2002:aa7:c886:0:b0:55f:1728:3b33 with SMTP id
+ p6-20020aa7c886000000b0055f17283b33mr5648305eds.40.1707409122298; Thu, 08 Feb
+ 2024 08:18:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20240207050308.3221396-1-tong.ho@amd.com>
-In-Reply-To: <20240207050308.3221396-1-tong.ho@amd.com>
+References: <20240207025210.8837-1-richard.henderson@linaro.org>
+ <20240207025210.8837-2-richard.henderson@linaro.org>
+ <2ba0228b-fec3-0710-11a1-18825bc1476d@linaro.org>
+In-Reply-To: <2ba0228b-fec3-0710-11a1-18825bc1476d@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2024 11:36:26 +0000
-Message-ID: <CAFEAcA-JnKM9TCbp5=_Ogsnz+GSO96CcP1T-_5jTrSEXAyXc2Q@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/pl011: Add support for loopback
-To: Tong Ho <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, marcandre.lureau@redhat.com, 
- pbonzini@redhat.com
+Date: Thu, 8 Feb 2024 16:18:31 +0000
+Message-ID: <CAFEAcA-8bejJb+Ch=_SWhgNKi_xJkMmvtQs_G=bev9_QH_y_aA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/6] linux-user/aarch64: Choose SYNC as the preferred
+ MTE mode
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wml1zK5xpWmt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CmUoT7tPTpxe
 
-On Wed, 7 Feb 2024 at 05:03, Tong Ho <tong.ho@amd.com> wrote:
+On Wed, 7 Feb 2024 at 20:04, Gustavo Romero <gustavo.romero@linaro.org> wrote:
 >
-> This patch adds loopback for sent characters as well as
-> modem-control signals.
 >
-> Loopback of send and modem-control is often used for uart
-> self tests in real hardware but missing from current pl011
-> model, resulting in self-test failures when running in QEMU.
+> On 2/6/24 11:52 PM, Richard Henderson wrote:
+> > The API does not generate an error for setting ASYNC | SYNC; that merely
+> > constrains the selection vs the per-cpu default.  For qemu linux-user,
+> > choose SYNC as the default.
+> >
+> > Cc: qemu-stable@nongnu.org
+> > Reported-by: Gustavo Romero <gustavo.romero@linaro.org>
+> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> > ---
+> >   linux-user/aarch64/target_prctl.h | 29 +++++++++++++++++------------
+> >   1 file changed, 17 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
+> > index 5067e7d731..aa8e203c15 100644
+> > --- a/linux-user/aarch64/target_prctl.h
+> > +++ b/linux-user/aarch64/target_prctl.h
+> > @@ -173,21 +173,26 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+> >       env->tagged_addr_enable = arg2 & PR_TAGGED_ADDR_ENABLE;
+> >
+> >       if (cpu_isar_feature(aa64_mte, cpu)) {
+> > -        switch (arg2 & PR_MTE_TCF_MASK) {
+> > -        case PR_MTE_TCF_NONE:
+> > -        case PR_MTE_TCF_SYNC:
+> > -        case PR_MTE_TCF_ASYNC:
+> > -            break;
+> > -        default:
+> > -            return -EINVAL;
+> > -        }
+> > -
+> >           /*
+> >            * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
+> > -         * Note that the syscall values are consistent with hw.
+> > +         *
+> > +         * The kernel has a per-cpu configuration for the sysadmin,
+> > +         * /sys/devices/system/cpu/cpu<N>/mte_tcf_preferred,
+> > +         * which qemu does not implement.
+> > +         *
+> > +         * Because there is no performance difference between the modes, and
+> > +         * because SYNC is most useful for debugging MTE errors, choose SYNC
+> > +         * as the preferred mode.  With this preference, and the way the API
+> > +         * uses only two bits, there is no way for the program to select
+> > +         * ASYMM mode.
+> >            */
+> > -        env->cp15.sctlr_el[1] =
+> > -            deposit64(env->cp15.sctlr_el[1], 38, 2, arg2 >> PR_MTE_TCF_SHIFT);
+> > +        unsigned tcf = 0;
+> > +        if (arg2 & PR_MTE_TCF_SYNC) {
+> > +            tcf = 1;
+> > +        } else if (arg2 & PR_MTE_TCF_ASYNC) {
+> > +            tcf = 2;
+> > +        }
+> > +        env->cp15.sctlr_el[1] = deposit64(env->cp15.sctlr_el[1], 38, 2, tcf);
+> >
+> >           /*
+> >            * Write PR_MTE_TAG to GCR_EL1[Exclude].
+> >
 >
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
-> Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
-
-Hi; thanks for this patch.
-
-> ---
->  hw/char/pl011.c | 51 +++++++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 49 insertions(+), 2 deletions(-)
+> ok, so no ASYMM in QEMU user-mode, plus if both SYNC and ASYNC flags are
+> specified by the user SYNC is selected. Contrary to what happens by default
+> on Linux, because of the mte_tcf_preferred value, which is ASYNC, and the
+> final value selected is define by:
 >
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index 855cb82d08..3c0e07aa35 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -121,6 +121,51 @@ static void pl011_update(PL011State *s)
->      }
->  }
->
-> +static void pl011_put_fifo(void *opaque, uint32_t value);
-> +
-> +static bool pl011_is_loopback(PL011State *s)
-> +{
-> +    return !!(s->cr & (1U << 7));
-> +}
-> +
-> +static void pl011_tx_loopback(PL011State *s, uint32_t value)
-> +{
-> +    if (pl011_is_loopback(s)) {
-> +        pl011_put_fifo(s, value);
-> +    }
-> +}
-> +
-> +static uint32_t pl011_cr_loopback(PL011State *s, bool update)
-> +{
-> +    uint32_t cr = s->cr;
-> +    uint32_t fr = s->flags;
-> +    uint32_t ri = 1 << 8, dcd = 1 << 2, dsr = 1 << 1, cts = 0;
-> +    uint32_t out2 = 1 << 13, out1 = 1 << 12, rts = 1 << 11, dtr = 1 << 10;
+> resolved_mte_tcf = (mte_ctrl & pref) ? pref : mte_ctrl;
 
-Please don't use local variables for these -- define some
-CR_whatever constants at the top of the file for the CR bits,
-as we already do for eg LCR bits.
+Yes; the kernel default mte_tcf_preferred is 'async', but as the comment
+notes we do the equivalent of the sysadmin having set mte_tcf_preferred
+to 'sync'. (The idea of the tunable is that you can set it to whatever
+is a good balance between performance and debugging precision depending
+on what your CPU implementation happens to be; for QEMU since there is
+no performance gain from 'async' or 'asymm' we might as well act like
+the sysadmin set the tunable to 'sync'.)
 
-We already have some PL011_FLAG_* constants for FR bit values;
-you can extend those to cover the new bits you want to set here.
-
-> +
-> +    if (!pl011_is_loopback(s)) {
-> +        return fr;
-> +    }
-> +
-> +    fr &= ~(ri | dcd | dsr | cts);
-> +    fr |= (cr & out2) ?  ri : 0;   /* FR.RI  <= CR.Out2 */
-> +    fr |= (cr & out1) ? dcd : 0;   /* FR.DCD <= CR.Out1 */
-> +    fr |= (cr &  rts) ? cts : 0;   /* FR.CTS <= CR.RTS */
-> +    fr |= (cr &  dtr) ? dsr : 0;   /* FR.DSR <= CR.DTR */
-> +
-> +    if (!update) {
-> +        return fr;
-> +    }
-> +
-> +    s->int_level &= ~(INT_DSR | INT_DCD | INT_CTS | INT_RI);
-> +    s->int_level |= (fr & dsr) ? INT_DSR : 0;
-> +    s->int_level |= (fr & dcd) ? INT_DCD : 0;
-> +    s->int_level |= (fr & cts) ? INT_CTS : 0;
-> +    s->int_level |= (fr &  ri) ? INT_RI  : 0;
-> +    pl011_update(s);
-> +
-> +    return fr;
-> +}
-
-I think we should not call this function "pl011_cr_loopback()",
-because it handles all cases, not merely the "loopback enabled"
-case. It also seems to be doing double duty as both
-"return the flags register value" and "handle a write to
-the cr register" -- I think it wolud be clearer to separate
-those two out.
-
-> +
->  static bool pl011_is_fifo_enabled(PL011State *s)
->  {
->      return (s->lcr & LCR_FEN) != 0;
-> @@ -172,7 +217,7 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
->          r = s->rsr;
->          break;
->      case 6: /* UARTFR */
-> -        r = s->flags;
-> +        r = pl011_cr_loopback(s, false);
->          break;
->      case 8: /* UARTILPR */
->          r = s->ilpr;
-> @@ -267,6 +312,7 @@ static void pl011_write(void *opaque, hwaddr offset,
->           * qemu_chr_fe_write and background I/O callbacks */
->          qemu_chr_fe_write_all(&s->chr, &ch, 1);
->          s->int_level |= INT_TX;
-> +        pl011_tx_loopback(s, ch);
-
-This implementation will send the transmitted characters
-to the QEMU chardev and also loop them back into the UART
-when loopback is enabled. Similarly if we receive a character
-from the real input we will put it into the FIFO still, so
-the FIFO will get both looped-back and real input together.
-
-I think we only have one other UART where loopback is implemented,
-and that is hw/char/serial.c. In that device we make loopback not
-send transmitted characters out when in loopback mode, because
-the 16550 datasheet explicitly says that's how its loopback
-mode works. The PL011 datasheet is unfortunately silent on
-this question. Do you have a real hardware PL011 that you
-can check to see whether when it is in loopback mode
-transmitted data is also sent to the output port as well
-as looped back? Similarly for input: we should check whether
-the UART continues to accept real input or if the real input
-is completely disconnected while in loopback mode.
-
->          pl011_update(s);
->          break;
->      case 1: /* UARTRSR/UARTECR */
-> @@ -300,8 +346,9 @@ static void pl011_write(void *opaque, hwaddr offset,
->          pl011_set_read_trigger(s);
->          break;
->      case 12: /* UARTCR */
-> -        /* ??? Need to implement the enable and loopback bits.  */
-> +        /* ??? Need to implement the enable bit.  */
->          s->cr = value;
-> +        pl011_cr_loopback(s, true);
->          break;
->      case 13: /* UARTIFS */
->          s->ifl = value;
-> --
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

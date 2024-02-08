@@ -1,138 +1,115 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp6616ejb;
-        Thu, 8 Feb 2024 02:21:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW266f1AyqXLNebDQGijPUvUCBEXriW+nMsEAFYlNAQGyTAvNl26TNqsUGCA1aeJaQCYrUFSOYJ5m1Lzel3/N8lh3oMvUoK
-X-Google-Smtp-Source: AGHT+IFra9JDhn3lwxFFO+AkN68v7K3NLNf7QB/XpFFrh7TMVGRXiveJhVTKD+RuwCDJn0jxJB5D
-X-Received: by 2002:a25:a28d:0:b0:dc6:d808:cf75 with SMTP id c13-20020a25a28d000000b00dc6d808cf75mr7272761ybi.20.1707387696493;
-        Thu, 08 Feb 2024 02:21:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707387696; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp11848ejb;
+        Thu, 8 Feb 2024 02:35:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH53fGpQ738tJT2EKRP4q2TCRDwIDnAaI1gIzUlkF5PTDASCb+9LdXnqg0i5y+gcqmfL/oC
+X-Received: by 2002:a05:6902:2609:b0:dbf:238b:add3 with SMTP id dw9-20020a056902260900b00dbf238badd3mr7997913ybb.39.1707388511065;
+        Thu, 08 Feb 2024 02:35:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707388511; cv=none;
         d=google.com; s=arc-20160816;
-        b=v0W0OKECj466bCnA3yEfIALNtM+MPEsWj+WJspmAP9BJzGGdtyVckcGazAqyFl2NZI
-         wfFjmfXQDYs0KSrhMoq6SZUXkkmzTnGhNZ+mST/8/rOf5qnVbFko2dH/UbyU8mSBNXXL
-         /fakRuXRIVwxHEnMDsslP3FuhBtyV0UqCZv9TAk/v2aq4cFa3CpISSIPdyKagPiHgO/g
-         n3nCgbLa26mwaOHxkE5iess9EbxXExxXjBrfigRi/ekv+/6c6F3UsiXDsaBLj99+b0Fz
-         kMmPwaL63BFTeFDdbhudQ1+mqrixE1S5ZGS0MK6MVtR+eG4/QqFy6rqFQBU8IRWc4eJ4
-         l3rQ==
+        b=MfhHjCiuWzm/SK1LQEDf2+sbQF6wvIaXdbyQ6XAtX+umE5fJM2BF2NDLcaTjoogXDL
+         4k3DMowgMqgVkUmj9XB6uzJPwSJxD+tjXuq9XlsG2N1n6dzfPrLRHR3PKqbdMmohxxaX
+         m6diMjiBKWfqWpdCHfIBKx7Mza0F4BR+QcHu4nZpHQvM2YTHedHOiXgN59Ty0uPnBQPi
+         h2vS0CDVkp9lIobWMamNdoLC/KZ19pVwvGCq3+LuRxZR1BLjFmCgZbPPaClZkfDru2T+
+         nffwiw0uTQ5+dt8nSbjjE26WeERqIRiPYMKi3vEnKn5G9kEtCebrKiiP2UDUcs+HFxLe
+         n4KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Uyhl4gljIvylUxxsk4RjoaeNUwT3guyr/FMP3HOu0OI=;
-        fh=f3U1NKg/n1jgtCyDc3j3yW5e5PJ1Usw5NYRl8mymxpo=;
-        b=yv4L7TQycH8VZdYwuM6detjay13og0GUaQmIviz67lLBLrwDXsqnhKJRKmzU/YIwgh
-         dx/3i/4JwK5og5VzEo+7fnE47m0IijCaoo6G8MPnt888eJx5bExj/Wf2Epb+yCXIFL5R
-         XUSKD0K+DSMbE8+tWxbqwvhvGaJ3/yo7/qtfy5MzkiOU+j8Z9h4uxj0C1gBbvKiNlz6L
-         o0XpIXksIaforHoIw4cFKAATvy+HpE1/d6lXc/KiTsaXkFj4n2CtGG/1SXNwRRUtqDxh
-         Ovp7PZcs6cg3OZZPGCeRufr7KgfKLvpD/SfXR688haYPmo1izjv5PLpzRUYUhWP95s1G
-         Zd6w==;
+         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
+         :mime-version:subject:references:in-reply-to:message-id:cc:to:from
+         :date:dkim-signature:dkim-filter;
+        bh=VGDfsgpdvlXAJDDyzZSMSv3Gd8qzky2HHnBllKZxmLM=;
+        fh=3PQNOJAZqqk1g2JUgr9TT6HldYN8XS2KiqizP+shd1E=;
+        b=xTBaSHPs87eM9LSu/5MHagNAxNo9M1LId8Ngl3b3xjO9EHTSYHhlF5mQmvA/kEbtW+
+         VhSeJjN429w923HAaNOJgZZnxMEBjPAyHO+ywvPVeNUpMre5p8CwTh955XDiDchz8Vqd
+         Xv1wTgbwARi7KP1KRHXdXle2Lmc9AZEV3mENNLzrcgaTkVlibbpIEEaXTFonasOWS6TZ
+         wl3Eg3qjJAG7aYCCemkemcoLhBcuNFTLaRQWKgqkNCZapNzKDZnf8sTFSWIozyxLgJHx
+         nz5aDkMQSNid5rfkj6FleH7WtLNMYB0L/4pnQ12vUQtr4/inceCqjHdtTA4pHkBWc0gu
+         AcQw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fgRVq/bT";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=wpjxOHfv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=1; AJvYcCU/hMfTu98+RjhO07lkOY0Ft/ya+XN7ix+Vw5i9KZEktuMgyKPytAzYanGyjAqFRjPlZ3LfnltwNIhcE9erXXgTPwQYdynF
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+X-Forwarded-Encrypted: i=1; AJvYcCUeBjYWEXwTeoHOeBs7htMH8pAhqsBM+NwdDvd0SZfrHBsvkwK7qQLLExr6WbrrlqupHGaP0GCDmTbr06/dXaN22uY7LVdt
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17-20020a05622a165100b0042c4a131193si1164373qtj.362.2024.02.08.02.21.36
+        by mx.google.com with ESMTPS id w9-20020a05622a190900b0042c2a0c24b0si3015478qtc.550.2024.02.08.02.35.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 02:21:36 -0800 (PST)
+        Thu, 08 Feb 2024 02:35:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fgRVq/bT";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=wpjxOHfv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rY1X8-0001bt-SD; Thu, 08 Feb 2024 05:21:30 -0500
+	id 1rY1kC-0006BG-Jk; Thu, 08 Feb 2024 05:35:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rY1X7-0001bM-7i
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 05:21:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
+ id 1rY1kC-0006Az-0g; Thu, 08 Feb 2024 05:35:00 -0500
+Received: from zproxy3.enst.fr ([137.194.2.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rY1X5-00022L-Mw
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 05:21:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1707387686;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Uyhl4gljIvylUxxsk4RjoaeNUwT3guyr/FMP3HOu0OI=;
- b=fgRVq/bTR7saiL4HG3teXA239U5IeJ/KY6maY3vvWm0JOnyf1+XrHeo1UXAM0oQLbw/mic
- We/IOsaSbEZs/Har4UkWICUslMO0qsdgnX8h+hgRXWXFeIeQr2XkfJUQ/9Uvxa56LELUkV
- BQffdlBfvTLzG0QjO883uv5hhLUrWdc=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-364-rLaow1gCMh6sWyLuvMozJA-1; Thu, 08 Feb 2024 05:21:25 -0500
-X-MC-Unique: rLaow1gCMh6sWyLuvMozJA-1
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-785448c774fso138307585a.2
- for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 02:21:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707387684; x=1707992484;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Uyhl4gljIvylUxxsk4RjoaeNUwT3guyr/FMP3HOu0OI=;
- b=vuF5aE+3+dndZAmiUaf6Dwc+ePUdf19djeMh3cWSv2CWuN8o6pIoDmd3wYAOtsuJl8
- YlSUvRpoW6HCoLxpdI4UEXMKGU/tFtsCCsWhTNXebtpCpU7t/6UgdCJIPnwzPsPGwy/s
- CH5eznRxCr7pl//A38Y+7Zl5GYxLxffQ9IRZj6rO4AZ6kWFjhv3NqjcpMjclnWzyYpf0
- 8DJL1QgNckJdwO6sjBproRk7T/n5qsdEd5LX7FEuItAWH0tFtW1LlCqa1cetnpNC9z6e
- df7twrpttNgYyFFbjh/JxlCDZRCyjMrayZ9QHjboYPnKXS7H0GkfrjYRovFhqbRfg4hH
- zOkQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXf93MwGow0JrByc64nY6QE/8rcPt4dWZMQMXDGOozgKNgzr2+ZEZGbjbraslJo6cP9eqXOYEy9mixfLKZLkwbgtFIZ
-X-Gm-Message-State: AOJu0YxEUkAOh4Q9ayD4vnQeBhTRBxdZGL76tBQBevd1GSA5GkqH4cVD
- hG8ISWnjV2PzjPlLPO/tNZG1LIqL8pD0fQpENSKs3zkeeP8Db5I0D5gkEU5lopkgyn46268psbi
- 3I9p9K6q+KgIdXRXLFug4XWbbGNcqMmpqtNzjVJaE3apJyOZ4aQ==
-X-Received: by 2002:a05:620a:21c7:b0:785:5fde:bf32 with SMTP id
- h7-20020a05620a21c700b007855fdebf32mr7869467qka.68.1707387683916; 
- Thu, 08 Feb 2024 02:21:23 -0800 (PST)
-X-Received: by 2002:a05:620a:21c7:b0:785:5fde:bf32 with SMTP id
- h7-20020a05620a21c700b007855fdebf32mr7869446qka.68.1707387683525; 
- Thu, 08 Feb 2024 02:21:23 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXXfg+U6omYLmE9pV2gaJm8GDpBHjBClhpAZPkgYIiIBnjcWq+bjhZT9kIWZ2tXySRhZRJZCMN7+DJcgRFuxI9a/5ZiVFrIzBXA+8Pcmqr7fTxoENx05uxC7Kamja9l/U99wZiFiB84dP3vnZANl/6iivV5inlw/jd+tNwzs/BBL1RnK7q2C9Tw/RFNyH5a1yocvDgkEBNWEHzoDEqM6/469RUbyFiKHmgtErk8jEoVKRpFdmmgqNrkefikG2DczgIEM+aoiev6uZi2ao/wEKMgoXA08ypIGMsTgZYJ36AUNw2e3eBdbOThMk184TmvcVYmTLf8K32yu5gfnG0=
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- oo20-20020a05620a531400b00783f534706esm1283323qkn.61.2024.02.08.02.21.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Feb 2024 02:21:23 -0800 (PST)
-Message-ID: <8c0ac34a-58cb-4301-8293-e58596c208f2@redhat.com>
-Date: Thu, 8 Feb 2024 11:21:20 +0100
+ (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
+ id 1rY1k9-0004Cw-E3; Thu, 08 Feb 2024 05:34:59 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id C94FBA06FC;
+ Thu,  8 Feb 2024 11:34:54 +0100 (CET)
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id AH66khSCDzEv; Thu,  8 Feb 2024 11:34:54 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id 2C1F1A06EF;
+ Thu,  8 Feb 2024 11:34:54 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 2C1F1A06EF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707388494;
+ bh=VGDfsgpdvlXAJDDyzZSMSv3Gd8qzky2HHnBllKZxmLM=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=wpjxOHfvjLeFF0FsICVRjwB4fhV3TUuspVi6R4RfJi8xG56/OYeH2wxJcdEJSalEq
+ XyATvrQJRXFf4zFccKaL1X6/jr5Pb7Sy7pAgsBDVSaMroSrQsA76B63dUZlh08hODK
+ G2yB6zy7vSDP8V6lwmL980Nhvkc3ij4swldOwfII=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id D6AQ2QA_r4kW; Thu,  8 Feb 2024 11:34:54 +0100 (CET)
+Received: from zmail-tp2.enst.fr (zmail-tp2.enst.fr [137.194.2.199])
+ by zproxy3.enst.fr (Postfix) with ESMTP id BF83DA06C0;
+ Thu,  8 Feb 2024 11:34:53 +0100 (CET)
+Date: Thu, 8 Feb 2024 11:34:53 +0100 (CET)
+From: =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-devel@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+ qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Alistair Francis <alistair.francis@wdc.com>
+Message-ID: <1921238046.591194.1707388492770.JavaMail.zimbra@enst.fr>
+In-Reply-To: <5a7594d9-3fbd-4d90-a5f9-81b7b845fba7@linaro.org>
+References: <20240109160658.311932-1-ines.varhol@telecom-paris.fr>
+ <20240109160658.311932-3-ines.varhol@telecom-paris.fr>
+ <5a7594d9-3fbd-4d90-a5f9-81b7b845fba7@linaro.org>
+Subject: Re: [PATCH v8 2/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] hw: Set virtio-iommu aw-bits default value on
- pc_q35 and arm virt
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jean-philippe@linaro.org,
- mst@redhat.com, peter.maydell@linaro.org, zhenzhong.duan@intel.com,
- yanghliu@redhat.com
-Cc: alex.williamson@redhat.com, jasowang@redhat.com
-References: <20240208101128.655167-1-eric.auger@redhat.com>
- <20240208101128.655167-4-eric.auger@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20240208101128.655167-4-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.106,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: multipart/alternative; 
+ boundary="=_0c589f4e-91b5-4b54-be9b-d5d761903ff9"
+X-Originating-IP: [::ffff:80.125.0.74]
+X-Mailer: Zimbra 9.0.0_GA_4583 (ZimbraModernWebClient - FF122
+ (Linux)/9.0.0_GA_4583)
+Thread-Topic: hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
+Thread-Index: IOgIHmd0TWUC9N/BQ6cWQF1+AdeUCA==
+Received-SPF: pass client-ip=137.194.2.222; envelope-from=ivarhol-21@enst.fr;
+ helo=zproxy3.enst.fr
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ HTML_MESSAGE=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,125 +124,283 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e18iDZW0c3yw
+X-TUID: 0bjnpVa11CoW
 
-On 2/8/24 11:10, Eric Auger wrote:
-> Currently the default input range can extend to 64 bits. On x86,
-> when the virtio-iommu protects vfio devices, the physical iommu
-> may support only 39 bits. Let's set the default to 39, as done
-> for the intel-iommu. On ARM we set 48b as a default (matching
-> SMMUv3 SMMU_IDR5.VAX == 0).
-> 
-> We use hw_compat_8_2 to handle the compatibility for machines
-> before 9.0 which used to have a virtio-iommu default input range
-> of 64 bits.
-> 
-> Of course if aw-bits is set from the command line, the default
-> is overriden.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> Tested-by: Yanghang Liu<yanghliu@redhat.com>
+--=_0c589f4e-91b5-4b54-be9b-d5d761903ff9
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Thanks,
+=20
+=20
+Hi,
 
-C.
+=20
+> De: Philippe <philmd@linaro.org>=20
+> Envoy=C3=A9: mercredi 7 f=C3=A9vrier 2024 23:02 CET=20
+>=C2=A0=20
+> Hi In=C3=A8s,=20
+>=C2=A0=20
+> (this is now commit 52671f69f7).=20
+>=C2=A0=20
+> On 9/1/24 17:06, In=C3=A8s Varhol wrote:=20
+> > Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>=20
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>=20
+> > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>=20
+> > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>=20
+> > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>=20
+> > ---=20
+> > hw/arm/Kconfig | 1 +=20
+> > hw/arm/stm32l4x5_soc.c | 52 +++++++++++++++++++++++++++++++++-=20
+> > include/hw/arm/stm32l4x5_soc.h | 3 ++=20
+> > 3 files changed, 55 insertions(+), 1 deletion(-)=20
+>=C2=A0=20
+>=C2=A0=20
+> > +#define NUM_EXTI_IRQ 40=20
+> > +/* Match exti line connections with their CPU IRQ number */=20
+> > +/* See Vector Table (Reference Manual p.396) */=20
+> > +static const int exti_irq[NUM_EXTI_IRQ] =3D {=20
+> > + 6, /* GPIO[0] */=20
+> > + 7, /* GPIO[1] */=20
+> > + 8, /* GPIO[2] */=20
+> > + 9, /* GPIO[3] */=20
+> > + 10, /* GPIO[4] */=20
+> > + 23, 23, 23, 23, 23, /* GPIO[5..9] */=20
+> > + 40, 40, 40, 40, 40, 40, /* GPIO[10..15] */=20
+>=C2=A0=20
+> I'm sorry because I missed that earlier, and I'm surprised=20
+> you aren't chasing weird bugs. Due to how QEMU IRQs are=20
+> implemented, we can not wire multiple input lines to the same=20
+> output without using an intermediate "OR gate". We model it=20
+> as TYPE_OR_IRQ. See the comment in "hw/qdev-core.h" added in=20
+> commit cd07d7f9f5 ("qdev: Document GPIO related functions"):=20
+=C2=A0=20
+Better fixing it now than later :)
+I must admit I didn't pay attention to the particularity of EXTI5 to 15.=20
+Current exti tests don't even use these lines, a testcase will have=20
+to be added. Otherwise we mostly ran executables using GPIOs as output,=20
+so no weird bugs encountered.=20
+=C2=A0=20
+Thank you for noticing !=20
+Ines=20
+=C2=A0=20
+>=C2=A0=20
+> * It is not valid to try to connect one outbound GPIO to multiple=20
+> * qemu_irqs at once, or to connect multiple outbound GPIOs to the=20
+> * same qemu_irq. (Warning: there is no assertion or other guard to=20
+> * catch this error: the model will just not do the right thing.)=20
+> * Instead, for fan-out you can use the TYPE_SPLIT_IRQ device: connect=20
+> * a device's outbound GPIO to the splitter's input, and connect each=20
+> * of the splitter's outputs to a different device. For fan-in you=20
+> * can use the TYPE_OR_IRQ device, which is a model of a logical OR=20
+> * gate with multiple inputs and one output.=20
+>=C2=A0=20
+> So for example for the GPIO[10..15] you need to create a 6-line=20
+> OR gate as (totally untested):=20
+>=C2=A0=20
+> /* 6-line OR IRQ gate */=20
+> Object *orgate40 =3D object_new(TYPE_OR_IRQ);=20
+> object_property_set_int(orgate40, "num-lines", 6, &error_fatal);=20
+> qdev_realize(DEVICE(orgate), NULL, &error_fatal);=20
+>=C2=A0=20
+> /* OR gate -> IRQ #40 */=20
+> qdev_connect_gpio_out(DEVICE(orgate40), 0,=20
+> qdev_get_gpio_in(armv7m, 40));=20
+>=C2=A0=20
+> /* EXTI GPIO[10..15] -> OR gate */=20
+> for (unsigned i =3D 0; i < 6; i++) {=20
+> sysbus_connect_irq(SYS_BUS_DEVICE(&s->exti), 10 + i,=20
+> qdev_get_gpio_in(DEVICE(orgate40), i));=20
+> }=20
+>=C2=A0=20
+> > + 1, /* PVD */=20
+> > + 67, /* OTG_FS_WKUP, Direct */=20
+> > + 41, /* RTC_ALARM */=20
+> > + 2, /* RTC_TAMP_STAMP2/CSS_LSE */=20
+> > + 3, /* RTC wakeup timer */=20
+> > + 63, /* COMP1 */=20
+> > + 63, /* COMP2 */=20
+> > + 31, /* I2C1 wakeup, Direct */=20
+> > + 33, /* I2C2 wakeup, Direct */=20
+> > + 72, /* I2C3 wakeup, Direct */=20
+> > + 37, /* USART1 wakeup, Direct */=20
+> > + 38, /* USART2 wakeup, Direct */=20
+> > + 39, /* USART3 wakeup, Direct */=20
+> > + 52, /* UART4 wakeup, Direct */=20
+> > + 53, /* UART4 wakeup, Direct */=20
+> > + 70, /* LPUART1 wakeup, Direct */=20
+> > + 65, /* LPTIM1, Direct */=20
+> > + 66, /* LPTIM2, Direct */=20
+> > + 76, /* SWPMI1 wakeup, Direct */=20
+> > + 1, /* PVM1 wakeup */=20
+> > + 1, /* PVM2 wakeup */=20
+> > + 1, /* PVM3 wakeup */=20
+> > + 1, /* PVM4 wakeup */=20
+> > + 78 /* LCD wakeup, Direct */=20
+> > +};=20
+>=C2=A0=20
+> > + busdev =3D SYS_BUS_DEVICE(&s->exti);=20
+> > + if (!sysbus_realize(busdev, errp)) {=20
+> > + return;=20
+> > + }=20
+> > + sysbus_mmio_map(busdev, 0, EXTI_ADDR);=20
+> > + for (unsigned i =3D 0; i < NUM_EXTI_IRQ; i++) {=20
+> > + sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[i]));=
+=20
+>=C2=A0=20
+> ^^^^^^^^^^=20
+> > + }=20
+> Regards,=20
+>=C2=A0=20
+> Phil.=C2=A0 =20
 
-> ---
-> 
-> v2 -> v3:
-> - collected Zhenzhong's R-b
-> - use &error_abort instead of NULL error handle
->    on object_property_get_uint() call (Cédric)
-> - use VTD_HOST_AW_39BIT (Cédric)
-> 
-> v1 -> v2:
-> - set aw-bits to 48b on ARM
-> - use hw_compat_8_2 to handle the compat for older machines
->    which used 64b as a default
-> ---
->   hw/arm/virt.c            | 6 ++++++
->   hw/core/machine.c        | 5 ++++-
->   hw/i386/pc.c             | 6 ++++++
->   hw/virtio/virtio-iommu.c | 2 +-
->   4 files changed, 17 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 368c2a415a..0994f2a560 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2716,10 +2716,16 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->           virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
-> +                                                   "aw-bits", &error_abort);
->           hwaddr db_start = 0, db_end = 0;
->           QList *reserved_regions;
->           char *resv_prop_str;
->   
-> +        if (!aw_bits) {
-> +            qdev_prop_set_uint8(dev, "aw-bits", 48);
-> +        }
-> +
->           if (vms->iommu != VIRT_IOMMU_NONE) {
->               error_setg(errp, "virt machine does not support multiple IOMMUs");
->               return;
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index fb5afdcae4..70ac96954c 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -30,9 +30,12 @@
->   #include "exec/confidential-guest-support.h"
->   #include "hw/virtio/virtio-pci.h"
->   #include "hw/virtio/virtio-net.h"
-> +#include "hw/virtio/virtio-iommu.h"
->   #include "audio/audio.h"
->   
-> -GlobalProperty hw_compat_8_2[] = {};
-> +GlobalProperty hw_compat_8_2[] = {
-> +    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
-> +};
->   const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
->   
->   GlobalProperty hw_compat_8_1[] = {
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 196827531a..ee2d379c90 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1456,6 +1456,8 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->           virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-> +        uint8_t aw_bits = object_property_get_uint(OBJECT(dev),
-> +                                                   "aw-bits", &error_abort);
->           /* Declare the APIC range as the reserved MSI region */
->           char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
->                                                 VIRTIO_IOMMU_RESV_MEM_T_MSI);
-> @@ -1464,6 +1466,10 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->           qlist_append_str(reserved_regions, resv_prop_str);
->           qdev_prop_set_array(dev, "reserved-regions", reserved_regions);
->   
-> +        if (!aw_bits) {
-> +            qdev_prop_set_uint8(dev, "aw-bits", VTD_HOST_AW_39BIT);
-> +        }
-> +
->           g_free(resv_prop_str);
->       }
->   
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index 7870bdbeee..c468e9b13b 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -1529,7 +1529,7 @@ static Property virtio_iommu_properties[] = {
->       DEFINE_PROP_LINK("primary-bus", VirtIOIOMMU, primary_bus,
->                        TYPE_PCI_BUS, PCIBus *),
->       DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
-> -    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
-> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 0),
->       DEFINE_PROP_END_OF_LIST(),
->   };
->   
+--=_0c589f4e-91b5-4b54-be9b-d5d761903ff9
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+<html><body><div style=3D"font-size: 12pt; font-family: arial, helvetica, s=
+ans-serif; color: rgb(0, 0, 0);"><div>
+<div>
+<div>Hi,<br><br></div>
+<div>&gt; De: Philippe &lt;philmd@linaro.org&gt;</div>
+<div>&gt; Envoy=C3=A9: mercredi 7 f=C3=A9vrier 2024 23:02 CET</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; Hi In=C3=A8s,</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; (this is now commit 52671f69f7).</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; On 9/1/24 17:06, In=C3=A8s Varhol wrote:</div>
+<div>&gt; &gt; Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;philmd@linaro.org=
+&gt;</div>
+<div>&gt; &gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;philmd@linaro.o=
+rg&gt;</div>
+<div>&gt; &gt; Reviewed-by: Alistair Francis &lt;alistair.francis@wdc.com&g=
+t;</div>
+<div>&gt; &gt; Signed-off-by: Arnaud Minier &lt;arnaud.minier@telecom-paris=
+.fr&gt;</div>
+<div>&gt; &gt; Signed-off-by: In=C3=A8s Varhol &lt;ines.varhol@telecom-pari=
+s.fr&gt;</div>
+<div>&gt; &gt; ---</div>
+<div>&gt; &gt; hw/arm/Kconfig | 1 +</div>
+<div>&gt; &gt; hw/arm/stm32l4x5_soc.c | 52 ++++++++++++++++++++++++++++++++=
++-</div>
+<div>&gt; &gt; include/hw/arm/stm32l4x5_soc.h | 3 ++</div>
+<div>&gt; &gt; 3 files changed, 55 insertions(+), 1 deletion(-)</div>
+<div>&gt;&nbsp;</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; &gt; +#define NUM_EXTI_IRQ 40</div>
+<div>&gt; &gt; +/* Match exti line connections with their CPU IRQ number */=
+</div>
+<div>&gt; &gt; +/* See Vector Table (Reference Manual p.396) */</div>
+<div>&gt; &gt; +static const int exti_irq[NUM_EXTI_IRQ] =3D {</div>
+<div>&gt; &gt; + 6, /* GPIO[0] */</div>
+<div>&gt; &gt; + 7, /* GPIO[1] */</div>
+<div>&gt; &gt; + 8, /* GPIO[2] */</div>
+<div>&gt; &gt; + 9, /* GPIO[3] */</div>
+<div>&gt; &gt; + 10, /* GPIO[4] */</div>
+<div>&gt; &gt; + 23, 23, 23, 23, 23, /* GPIO[5..9] */</div>
+<div>&gt; &gt; + 40, 40, 40, 40, 40, 40, /* GPIO[10..15] */</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; I'm sorry because I missed that earlier, and I'm surprised</div>
+<div>&gt; you aren't chasing weird bugs. Due to how QEMU IRQs are</div>
+<div>&gt; implemented, we can not wire multiple input lines to the same</di=
+v>
+<div>&gt; output without using an intermediate "OR gate". We model it</div>
+<div>&gt; as TYPE_OR_IRQ. See the comment in "hw/qdev-core.h" added in</div=
+>
+<div>&gt; commit cd07d7f9f5 ("qdev: Document GPIO related functions"):</div=
+>
+<div>&nbsp;</div>
+<div>Better fixing it now than later :)<br>I must admit I didn't pay attent=
+ion to the particularity of EXTI5 to 15.</div>
+<div>Current exti tests don't even use these lines, a testcase will have</d=
+iv>
+<div>to be added. Otherwise we mostly ran executables using GPIOs as output=
+,</div>
+<div>so no weird bugs encountered.</div>
+<div>&nbsp;</div>
+<div>Thank you for noticing !</div>
+<div>Ines</div>
+<div>&nbsp;</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; * It is not valid to try to connect one outbound GPIO to multiple=
+</div>
+<div>&gt; * qemu_irqs at once, or to connect multiple outbound GPIOs to the=
+</div>
+<div>&gt; * same qemu_irq. (Warning: there is no assertion or other guard t=
+o</div>
+<div>&gt; * catch this error: the model will just not do the right thing.)<=
+/div>
+<div>&gt; * Instead, for fan-out you can use the TYPE_SPLIT_IRQ device: con=
+nect</div>
+<div>&gt; * a device's outbound GPIO to the splitter's input, and connect e=
+ach</div>
+<div>&gt; * of the splitter's outputs to a different device. For fan-in you=
+</div>
+<div>&gt; * can use the TYPE_OR_IRQ device, which is a model of a logical O=
+R</div>
+<div>&gt; * gate with multiple inputs and one output.</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; So for example for the GPIO[10..15] you need to create a 6-line</=
+div>
+<div>&gt; OR gate as (totally untested):</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; /* 6-line OR IRQ gate */</div>
+<div>&gt; Object *orgate40 =3D object_new(TYPE_OR_IRQ);</div>
+<div>&gt; object_property_set_int(orgate40, "num-lines", 6, &amp;error_fata=
+l);</div>
+<div>&gt; qdev_realize(DEVICE(orgate), NULL, &amp;error_fatal);</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; /* OR gate -&gt; IRQ #40 */</div>
+<div>&gt; qdev_connect_gpio_out(DEVICE(orgate40), 0,</div>
+<div>&gt; qdev_get_gpio_in(armv7m, 40));</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; /* EXTI GPIO[10..15] -&gt; OR gate */</div>
+<div>&gt; for (unsigned i =3D 0; i &lt; 6; i++) {</div>
+<div>&gt; sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;exti), 10 + i,</div>
+<div>&gt; qdev_get_gpio_in(DEVICE(orgate40), i));</div>
+<div>&gt; }</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; &gt; + 1, /* PVD */</div>
+<div>&gt; &gt; + 67, /* OTG_FS_WKUP, Direct */</div>
+<div>&gt; &gt; + 41, /* RTC_ALARM */</div>
+<div>&gt; &gt; + 2, /* RTC_TAMP_STAMP2/CSS_LSE */</div>
+<div>&gt; &gt; + 3, /* RTC wakeup timer */</div>
+<div>&gt; &gt; + 63, /* COMP1 */</div>
+<div>&gt; &gt; + 63, /* COMP2 */</div>
+<div>&gt; &gt; + 31, /* I2C1 wakeup, Direct */</div>
+<div>&gt; &gt; + 33, /* I2C2 wakeup, Direct */</div>
+<div>&gt; &gt; + 72, /* I2C3 wakeup, Direct */</div>
+<div>&gt; &gt; + 37, /* USART1 wakeup, Direct */</div>
+<div>&gt; &gt; + 38, /* USART2 wakeup, Direct */</div>
+<div>&gt; &gt; + 39, /* USART3 wakeup, Direct */</div>
+<div>&gt; &gt; + 52, /* UART4 wakeup, Direct */</div>
+<div>&gt; &gt; + 53, /* UART4 wakeup, Direct */</div>
+<div>&gt; &gt; + 70, /* LPUART1 wakeup, Direct */</div>
+<div>&gt; &gt; + 65, /* LPTIM1, Direct */</div>
+<div>&gt; &gt; + 66, /* LPTIM2, Direct */</div>
+<div>&gt; &gt; + 76, /* SWPMI1 wakeup, Direct */</div>
+<div>&gt; &gt; + 1, /* PVM1 wakeup */</div>
+<div>&gt; &gt; + 1, /* PVM2 wakeup */</div>
+<div>&gt; &gt; + 1, /* PVM3 wakeup */</div>
+<div>&gt; &gt; + 1, /* PVM4 wakeup */</div>
+<div>&gt; &gt; + 78 /* LCD wakeup, Direct */</div>
+<div>&gt; &gt; +};</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; &gt; + busdev =3D SYS_BUS_DEVICE(&amp;s-&gt;exti);</div>
+<div>&gt; &gt; + if (!sysbus_realize(busdev, errp)) {</div>
+<div>&gt; &gt; + return;</div>
+<div>&gt; &gt; + }</div>
+<div>&gt; &gt; + sysbus_mmio_map(busdev, 0, EXTI_ADDR);</div>
+<div>&gt; &gt; + for (unsigned i =3D 0; i &lt; NUM_EXTI_IRQ; i++) {</div>
+<div>&gt; &gt; + sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, ext=
+i_irq[i]));</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; ^^^^^^^^^^</div>
+<div>&gt; &gt; + }</div>
+<div>&gt; Regards,</div>
+<div>&gt;&nbsp;</div>
+<div>&gt; Phil.&nbsp;</div>
+</div>
+</div></div></body></html>
+--=_0c589f4e-91b5-4b54-be9b-d5d761903ff9--

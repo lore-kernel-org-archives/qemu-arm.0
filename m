@@ -1,117 +1,92 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp241786ejb;
-        Thu, 8 Feb 2024 09:03:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG5E++pqsQg9ppipbKPNUgIIQSKyrllfLGhzeLBe9HIRdUu2/QSs7fQcKHqwQUUTSZXtUuY
-X-Received: by 2002:a05:6214:19ce:b0:68c:9605:458a with SMTP id j14-20020a05621419ce00b0068c9605458amr12923270qvc.20.1707411820368;
-        Thu, 08 Feb 2024 09:03:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707411820; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp245243ejb;
+        Thu, 8 Feb 2024 09:07:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpTyeO1GgepVlZnF1GNFGUQM0R6RHjpPK18jRnEojsNqqfGnnQuEb0lkZF+pG8+okm6Zxq12EHIqvah2zgYca+oc/Ji5fx
+X-Google-Smtp-Source: AGHT+IFHef3U42zlofIUB250hg2axRm3Lk4Up+/i4ct7HadpHIvauFHW3s50sHNHesTtUten/5wh
+X-Received: by 2002:a05:620a:4009:b0:783:48a3:c0c7 with SMTP id h9-20020a05620a400900b0078348a3c0c7mr105340qko.44.1707412056854;
+        Thu, 08 Feb 2024 09:07:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707412056; cv=none;
         d=google.com; s=arc-20160816;
-        b=FVEDOcyKeXapuwWHwee7hJ4sOmyHuE9ecFiy6/1Tn88h7kJO1yBcUGbW5PKT2y24D+
-         LDLxfiQ7WvSzCV292gG0TtzhhFjvAmuDMdxieEJcNuKRduM2gauFUHcoBnAdeo+HQLWM
-         yR+VsZzWCEVsmejdK7vcKid9NBXMsKurq/USOxJP8/zgSpdOKNEtFKAEX8wKd0ppeAC2
-         tAty5mFruIXz+h01HLwg/YhYGkoooNALaQ/FuHr2vlkZZjmU+9ANkmM4xxpovI9GBilb
-         GRfudHee0NHyOQLSaZqas6GVo2UEJ3mWAMZIo41ywE8Q+1oLjoscUzCMrDmfn5oc4Ili
-         51zw==
+        b=n9okRRZphzKZsElVpU5EoPWCRZ6zJ7Ha+5t31PJ3V7g8mSAapkspSGWeQAIwM2UTm2
+         PrwWtGXlab8ghnqxbwySI4T4isNZnvvn13xRxedr7yKsyMcgo5M9iSFugKvD1nbazJJw
+         PGCm90R1Tj5hJNGQxSOW7TPOZY81IS6JUPAbm3opgdsjDPmn8kKpURvtYGH+PWI+zn+v
+         LIh/lD3k06CU6O5VVM5rimR3LOk5BKQACtFb/vp8d6UTa894IuVDzzE7ND6GQC0Zf/cf
+         v96zZHxREhy+vAUZrc4osfzLpja49g3EImn9GsO5wYu7nh9+N8XvebDvr/lnhcozOh9u
+         EJcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=oz9YJ0k5/LxPewQzp/IOnMItidEE4Xau/bFwmErfle8=;
-        fh=P2t275wjpzBfTUytcA+eyjT033PUR7tleK+YQ6rw5CM=;
-        b=wD95TDHey5ZqwhLghs5eXMfzN4NBgKzxTXMKcbToCPv/fP3j3vLNVg+2MovdTuPAyg
-         l6EKne16DDCEzhHo643xms/jy4+w4INuTKKPG5K3qOrYdm/t3T87UOXqCdDePuzpJ/2h
-         GTs9g4eaLkhobo9PpTE4pnPnbK7qc7FcnbSmTSpypTryJVG/u8x/qS1bafJLhcKWGvqs
-         NNHJsYCTeFcDo060G1ZefmHiULWQxzOiezqgPsc87OTlsqD8RprevaV1X2IXY21mP982
-         srqr0qD4F/0DWMzDpnsayHH5589NsBPMZrp3yFWE2LBwKOZnGVR8y9ljnNtIem4zSuYE
-         y9Qg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=o5tT5qe3Yo7UxCE9qJiNbYIWTlmaFuQtNXGcvXjgkAw=;
+        fh=vFbx+rvudLoeYi93tVSfFCDBT/BifQLkk2qvEfp+UBc=;
+        b=yzGlyXND0Iz2mg+9T4BTs7+3B1IhYrGYeeCuJTzr3bzxmMMIPlJtafHU+xKFPe2qqw
+         QSf5E3RqMHq2+GQAFCXOghoSnnGImkta/kJMR9kUhy3TCNO0I5ATUHVG4aoIS6hg5wts
+         XN+xFn+p+4vyeRI1A6Na47BT8zDBwKGVdBbWCQy5AQxCNan/5QX5/JrD1xOLtbA1K5ty
+         f8oPMiqCFlN3qB7WVxdlKQyePY2z9AXkSdMfaRZ1IpWcLFjzAM3iU90PndjUjpCQ23v8
+         807/qxHzpa6Yi3fYub71o6Vcdb+rbgE1YrL0Qoj3/q0w5JEIg0V60IvFcOeD0tcK6g85
+         0ZWA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=amo1GPFX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCWMMqnmNUZsbkAujZl+YOhWAJ9NS0xjFn2PRGm8DrlZt9uSqv+PWpfPBxKC6cPeHKlOhNn94VNEeGgZGycSR8PcKXaQB9Nl
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+X-Forwarded-Encrypted: i=1; AJvYcCVs6yAJOmC72YlcUi9CVatku6bHBEE+zcs4cKO2dvysC5U845voakrlMdPTUZ7bwwZdt8xOy6I5HjK27tze9HW0DkuUtAM9
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gh6-20020a05621429c600b0068c9733d2f8si371960qvb.257.2024.02.08.09.03.40
+        by mx.google.com with ESMTPS id o8-20020a05620a2a0800b0078591a5bdd2si442857qkp.221.2024.02.08.09.07.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 09:03:40 -0800 (PST)
+        Thu, 08 Feb 2024 09:07:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=amo1GPFX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rY7nP-0006GC-AN; Thu, 08 Feb 2024 12:02:43 -0500
+	id 1rY7rr-0001Tz-Uo; Thu, 08 Feb 2024 12:07:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY7nM-0006Bn-VG
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 12:02:41 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY7nK-0002WU-Pa
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 12:02:40 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5600d950442so114910a12.1
- for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 09:02:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707411755; x=1708016555; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oz9YJ0k5/LxPewQzp/IOnMItidEE4Xau/bFwmErfle8=;
- b=amo1GPFXKrSaBAP0iNSnSTlYs3+Coyz6otWBqRr6Yi2f4zeW5iZt8Nek2tSkiGAc2H
- +uZ8HaNTR8ShAt5SRYw2vZypFMriwQRdXZb40Nj/cRtoPrUTzkDFKqzqTxMX3Vzb9JqC
- 27kvd36txgi97m5J5frJJksucuFpcCB2gUSQC9bmTsEH4lVsmc/Uuawi9gr10OGZOB16
- 6zYGjWFizcE+C62a8osRwB4LhCTHjVtpjdTmVIWEm1vB+nRZMTl/jpLSeqKYr36yslho
- UlchxnBFOEtHtQ93m7dYRM0b6467I9DwuACgK31WvoCazVJPXd6L49h2F0itdShgd47p
- DzJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707411755; x=1708016555;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oz9YJ0k5/LxPewQzp/IOnMItidEE4Xau/bFwmErfle8=;
- b=vU/eP6K6W/IOJH/qQUdrXfEbp2a4bzVFcb3Gt+tE+ph4PjDZVrzTJUXD34pgxzzpPB
- N/ap/5rxERnL9Rd1yd0ctdLrBH4hB0xmivpq9enJY1fyguYq/tIizUFvt45ztF6Whctc
- /x1O9uc+QqtKGIdozKsZ+VYlqcDAD2+ZqC8ATvJdxGhQ7+G/Pa1knANpQnj5dGpvK7Yv
- 3YoYszdb8jZy+ox3fcPC2a7v1HTE5a9ULwYCcrILDeiZO4LiYH0PRltBOqWN+E2RDbK/
- FfWRIHeKPcFurKDj2ojZH2Nr4BD2+PQ1XBAM5ZPlXYzt1RJXuPqGu7yJBebzEj6qFWys
- 4YYw==
-X-Gm-Message-State: AOJu0Ywd04yzyjF9/3Zl8Vuc7+uDi6HEZj0y7RokosA4Zdnd3TT+4gkB
- vk18SQo2X2eyuVnCkPRHEdgM+zcWqL5lWtyOCO+7YltI2rKCaBXCIg6zXBERxNlHmS3b0D+PnW9
- xt/wnsHBaghWy0Ckrqs3hJpXVG5A0kIb+vNaxiA==
-X-Received: by 2002:aa7:d902:0:b0:55f:f500:35ee with SMTP id
- a2-20020aa7d902000000b0055ff50035eemr6374859edr.40.1707411755113; Thu, 08 Feb
- 2024 09:02:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <SRS0=cJ39=JR=kaod.org=clg@ozlabs.org>)
+ id 1rY7rp-0001Tg-VN; Thu, 08 Feb 2024 12:07:17 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=cJ39=JR=kaod.org=clg@ozlabs.org>)
+ id 1rY7ro-0003Fl-B7; Thu, 08 Feb 2024 12:07:17 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4TW3Lh0ZQTz4wcq;
+ Fri,  9 Feb 2024 04:07:08 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4TW3Ld6KDBz4wcL;
+ Fri,  9 Feb 2024 04:07:05 +1100 (AEDT)
+Message-ID: <17a2931a-5b3e-4eed-ae63-63b14032db6f@kaod.org>
+Date: Thu, 8 Feb 2024 18:07:01 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/13] hw/arm/mps3r: Initial skeleton for mps3-an536 board
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>, 
+ Fabiano Rosas <farosas@suse.de>
 References: <20240206132931.38376-1-peter.maydell@linaro.org>
  <20240206132931.38376-9-peter.maydell@linaro.org>
  <b8fbf313-1b24-4cf3-b5c1-f9289b413a75@linaro.org>
-In-Reply-To: <b8fbf313-1b24-4cf3-b5c1-f9289b413a75@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2024 17:02:23 +0000
-Message-ID: <CAFEAcA8UqeGKf8pP90i6Jn=AYgqtzFw141ptir=5BEZtpwjD2Q@mail.gmail.com>
-Subject: Re: [PATCH 08/13] hw/arm/mps3r: Initial skeleton for mps3-an536 board
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <CAFEAcA8UqeGKf8pP90i6Jn=AYgqtzFw141ptir=5BEZtpwjD2Q@mail.gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAFEAcA8UqeGKf8pP90i6Jn=AYgqtzFw141ptir=5BEZtpwjD2Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=cJ39=JR=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,93 +101,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S0yRguz9NiMq
+X-TUID: RqtTBbcfrCOg
 
-On Wed, 7 Feb 2024 at 09:02, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> On 6/2/24 14:29, Peter Maydell wrote:
-> > The AN536 is another FPGA image for the MPS3 development board. Unlike
-> > the existing FPGA images we already model, this board uses a Cortex-R
-> > family CPU, and it does not use any equivalent to the M-profile
-> > "Subsystem for Embedded" SoC-equivalent that we model in hw/arm/armsse.=
-c.
-> > It's therefore more convenient for us to model it as a completely
-> > separate C file.
-> >
-> > This commit adds the basic skeleton of the board model, and the
-> > code to create all the RAM and ROM. We assume that we're probably
-> > going to want to add more images in future, so use the same
-> > base class/subclass setup that mps2-tz.c uses, even though at
-> > the moment there's only a single subclass.
-> >
-> > Following commits will add the CPUs and the peripherals.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   MAINTAINERS                             |   3 +-
-> >   configs/devices/arm-softmmu/default.mak |   1 +
-> >   hw/arm/mps3r.c                          | 239 +++++++++++++++++++++++=
-+
-> >   hw/arm/Kconfig                          |   5 +
-> >   hw/arm/meson.build                      |   1 +
-> >   5 files changed, 248 insertions(+), 1 deletion(-)
-> >   create mode 100644 hw/arm/mps3r.c
->
->
-> > +/*
-> > + * The MPS3 DDR is 3GiB, but on a 32-bit host QEMU doesn't permit
-> > + * emulation of that much guest RAM, so artificially make it smaller.
-> > + */
-> > +#if HOST_LONG_BITS =3D=3D 32
-> > +#define MPS3_DDR_SIZE (1 * GiB)
-> > +#else
-> > +#define MPS3_DDR_SIZE (3 * GiB)
-> > +#endif
->
-> Generically, can we migrate a VM started on a 32-bit host to a 64-bit
-> one?
 
-I think it's one of those things that in theory is supposed
-to be possible and in practice nobody tests so it might well
-not work. At any rate, this is the same thing we do already
-in mps2-tz.c for the 2GB DRAM those boards have.
+>>> +/*
+>>> + * The MPS3 DDR is 3GiB, but on a 32-bit host QEMU doesn't permit
+>>> + * emulation of that much guest RAM, so artificially make it smaller.
+>>> + */
+>>> +#if HOST_LONG_BITS == 32
+>>> +#define MPS3_DDR_SIZE (1 * GiB)
+>>> +#else
+>>> +#define MPS3_DDR_SIZE (3 * GiB)
+>>> +#endif
+>>
+>> Generically, can we migrate a VM started on a 32-bit host to a 64-bit
+>> one?
+> 
+> I think it's one of those things that in theory is supposed
+> to be possible and in practice nobody tests so it might well
+> not work. At any rate, this is the same thing we do already
+> in mps2-tz.c for the 2GB DRAM those boards have.
 
-> > +static void mps3r_set_default_ram_info(MPS3RMachineClass *mmc)
-> > +{
-> > +    /*
-> > +     * Set mc->default_ram_size and default_ram_id from the
-> > +     * information in mmc->raminfo.
-> > +     */
-> > +    MachineClass *mc =3D MACHINE_CLASS(mmc);
-> > +    const RAMInfo *p;
-> > +
-> > +    for (p =3D mmc->raminfo; p->name; p++) {
-> > +        if (p->mrindex < 0) {
-> > +            /* Found the entry for "system memory" */
-> > +            mc->default_ram_size =3D p->size;
-> > +            mc->default_ram_id =3D p->name;
->
-> Nice.
->
-> > +            return;
-> > +        }
-> > +    }
-> > +    g_assert_not_reached();
-> > +}
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+We could have a common helper may be. Aspeed does:
 
-Thanks.
+   /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+   #if HOST_LONG_BITS == 32
+   #define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
+   #else
+   #define ASPEED_RAM_SIZE(sz) (sz)
+   #endif
 
-I have remembered why we don't pass the MachineState as the
-owner pointer for memory_region_init_ram(): in that function
-we do a cast of the owner pointer to a DeviceState, so we
-can hand it to vmstate_register_ram(). And a MachineState
-inherits directly from Object, not from DeviceState.
-There's a paragraph in the doc-comment for
-memory_region_init_ram() explaining this: currently we
-require the owner pointer to be either NULL or a DeviceState.
+Thanks,
 
-thanks
--- PMM
+C.
+

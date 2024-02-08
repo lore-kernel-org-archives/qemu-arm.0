@@ -1,107 +1,111 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp149611ejb;
-        Thu, 8 Feb 2024 06:43:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVWGMDupPKVsRO5tsxudTaVrxKacyr1RUao3t1EHngsMTO51/rlDM2jnv1m3ZpcMQUlXlUNsKVfYwOeDwUD+lUTlbSQPEI2
-X-Google-Smtp-Source: AGHT+IGcr/YCzZ920U3prtK6pPMi7achYfAtwUXlHZjwzK/SPYQvgYqEbhDfCTH4Jz7up8wQHojr
-X-Received: by 2002:adf:f350:0:b0:33a:eb35:6317 with SMTP id e16-20020adff350000000b0033aeb356317mr5388679wrp.43.1707403416108;
-        Thu, 08 Feb 2024 06:43:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707403416; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp183710ejb;
+        Thu, 8 Feb 2024 07:34:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF8z7xV2umuvFPW7+wMY7+DoATvVINWiMthe1TLjWmNXHcofyxcU5961Jhn0tegCKT1KucD
+X-Received: by 2002:a0c:cc10:0:b0:68c:b9e1:409a with SMTP id r16-20020a0ccc10000000b0068cb9e1409amr5833149qvk.18.1707406460760;
+        Thu, 08 Feb 2024 07:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707406460; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xj05iNuWcOVJBO35f9UhlUZaBR5yLnSMG7GNSdJXY3SGO1frfhhkDVfp/ioBbomfks
-         ewrvRJpXctfafAvvPcL/MMhZ7kXlG9jCTmjmA2j9UG0Uq7pRA+/nlsNYxcGyeMt9AyNk
-         xXpvsBaloN1sLRuk9hh1ySWW/4UllC9LU/vyKsKM+1wn/Z1gvlULfAKCj3rq2mmwGcvh
-         E2V1gjWeFECyCsWNVNPaZyOGC+t6SftACoBHmSgCVj1k6n4+FTOD0pQaqWnXPEvRDhxW
-         oP1nRiM+0Pj+ePjb/rSttBlGdNOXT0891Ka3xabFbwC5OZuoEcVyoVJbUOSHN5TnooLI
-         QQ9w==
+        b=d0+JX5IA2/sfsp8q0uTRRADQv4NjcLpoJGVqzIzy+nXoRk84sd0l4ht8jOfIK6LcHv
+         32P4a6Xl7ooAzUO5vDteJ3xhY8MZY+YWSF/zHQ75yxsbkCs6nO8UdkqXIUXo+N00wa+h
+         BbIm5d/MW3IUEdbzONkZDewHGQKKCb3vaEaaFgWAchRDRUNCFFAwjCUz5fDJRC80Redy
+         sqL6nwO1qJbThHAWYJBaEVLS4C3Xdbum0TxXPCds0BwZq7kL/UuTM25XTNFCH4b/H6o2
+         CUYBbeMZ35gUZ5Gf6Yu0HWXWaHSoombF6Wyg0kWSkU1DdENC4rOb9g4RI9yCi+5nweeN
+         OmVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=DDEzf0VLlSmb+7qiyrgB4qv8T95Iv7kpgIkLoN8gBwQ=;
-        fh=YXlt18RgwavtBuzGD66GFevyJFBU9S2w2TjJJE6TkHo=;
-        b=nP+f8U8ecT2LjkxK/TffX64UnxZyoyl/pOxh1SAjwj7IAXNtyAaaZW0NaVBGkygNH0
-         y4NTHtZ10qHn57W8rnW9igp1Mc7tPQ+YU9OWFDyqlJtqA+jAGFs5KdrLeHoqbnca/Lm3
-         WTjvmBT3FoS39CFcGUrG85Zl80aPbqguyi5U48RDJrkSuFThXUHMC1wBaZWlfmqUnFyQ
-         Pq1OgDltYS2I6cNc+ocUterVl1ZBC4MXWGKcwSZL3Y/kFw7gRGggKgIyw7WCq2uP/6Tq
-         l9TjJBYpJFWEf/OPE2sp6zfczuYXU73I9ZDL4QyLsXD72kyBJ2pSG4L4lxyyLWqREWYi
-         YcUw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0rPlltwQ8J1j/tv8D8hVqi9IU8hTllCxiImaZrOMGqA=;
+        fh=lbv90YjMnB9kH6jw1eYFYdp53nA2AF3NdnvdqGdT+2w=;
+        b=Ne/d0kytnZVNTK7AIHIykQ7r2vsVkZtotBrZfyjwAxrbAp97JWynBg8AKcvlAZKCjy
+         jkvoPF8aHM+z9COgYLL1uwTEv6daki6ODP3jKcGwomubcGJbbjiwujoRNnFI2YACUjmg
+         tkRGSuDMYaaMmtaOxZyEq0Rffs+D1RQ85VwBOHXWjZdkFxobOIPsXGMJxLff+oYWe618
+         ip6Keom85NeCAdRfa7aU6k7SamTlUz3sdri3k65UOjIFlH18hpTRlrTwPUlgqmKsDQXB
+         V+QctWyOCZIXjjTrt4NtPeeU3V6Fv68TEWa+UyyWzpPCUfPdGc2w5lziGP9nV8iDBQJd
+         uoMA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="t7wQ+F/g";
+       dkim=pass header.i=@linaro.org header.s=google header.b=baQ3JJD2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCXGJBmnAnP2OZzAZ9XerHtvPQT2o+hlevD/xKyQOHtG26w17ftHEkGbfPX8bT0jnUwYbG4KNcB79l3WvgQk8mz8CXEQmdjr
+X-Forwarded-Encrypted: i=1; AJvYcCW+guj/adt6TBdOvfRc4EawCzk1+5uKg65qYaKsU9N9TP9cQ9r1skix6uKcG54ybMYuy//k2V7jku0btHvkB+Z2U4JoKNem
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dd21-20020a0560001e9500b0033b21d0ff63si1906536wrb.537.2024.02.08.06.43.36
+        by mx.google.com with ESMTPS id u5-20020a0562141c0500b0068cc6581525si231015qvc.355.2024.02.08.07.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 06:43:36 -0800 (PST)
+        Thu, 08 Feb 2024 07:34:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="t7wQ+F/g";
+       dkim=pass header.i=@linaro.org header.s=google header.b=baQ3JJD2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rY5cX-0007iz-Nc; Thu, 08 Feb 2024 09:43:22 -0500
+	id 1rY6PS-00029d-Ba; Thu, 08 Feb 2024 10:33:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY5cU-0007i6-5M
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:43:19 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1rY6PQ-000295-T6
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 10:33:52 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY5cS-0001sD-Id
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:43:17 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5605c7b0ca2so2113415a12.3
- for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 06:43:15 -0800 (PST)
+ id 1rY6PO-0003Cd-H0
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 10:33:52 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-33b2960ff60so633503f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 07:33:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707403394; x=1708008194; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=DDEzf0VLlSmb+7qiyrgB4qv8T95Iv7kpgIkLoN8gBwQ=;
- b=t7wQ+F/g0Kt6OCXClzfEktvNGfrhYSJn/9bSb/Z8cEynQVcFAPUXii4cQ1ZLQ1bWD3
- YuqccDz+5vQ2Btj9HK2EJQjpTcjB3LaJLkurao9BZorb/uAuRIr+WwVhwzs8dyFjfyyq
- MQPcUC7agwDlZfHvlopvR0Iot6OWW1COsBGXNmpWWqrTkLLjGqenXXEDzEjC88EyCw8l
- 2Vz3HKfIwS7jXt5n1qaGYLDE8Yzm3lj++0hxSn6hQnpC5lFOPkaKtFnCbzJtbXoEwrTD
- LeORXGeVVD2OQnfm+U63OENTeGz94PmqNKIn5xMeU/iiZwu4B0VZGK1NTLJRDwocrF99
- WMRw==
+ d=linaro.org; s=google; t=1707406428; x=1708011228; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0rPlltwQ8J1j/tv8D8hVqi9IU8hTllCxiImaZrOMGqA=;
+ b=baQ3JJD2JnqW99d6mwVOp2hvjEdLZ6OuMm1UsIeD1i7nvWDsWWjtYl0NrMvnKOT3JB
+ Esd0TiMilPGtTb3oWqjdtSsFlZMLCbSSzLMPa4KMSI8tf2fvUxto7AWr2Pxm1tRyLCM+
+ gn1D4lcZpJXjlQ1AaL+oZQyvTXaL6ozqnhy5cx+DS9ZwebEONqC7+dmJU8Dkax23MsDY
+ DAaNjU+NlnabgqwimrjdCSKP4/1Doovg3pEz7ylRGOP5G/8ZT9XgsdhlkWBWd54OOhyW
+ fnqx7evsCn/wILCPfTasqdAIDnEMOTUpcbZbJDEqErcUTsAySy1MEia4jjkfSInfNqNF
+ adFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707403394; x=1708008194;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1707406428; x=1708011228;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=DDEzf0VLlSmb+7qiyrgB4qv8T95Iv7kpgIkLoN8gBwQ=;
- b=Ih8CbCW+G1he22QvMmHwgQmuPlmH3gmoaVmpvkye2hw+jpG2EmGiN7E1CzU9yB20Aw
- JWxkkU16egYtZXMGSnr+c6NhkAXfOk3tVjLeq3lC3P993atBpSAWdKKKI2xat8DwGPjc
- 1drsHlAZmGIeA06mVTdAXQMdVgzidtRD2R/l5jdirzGKFfLEVV0TTN7XNoMBSGFDLgGQ
- TS00oWJ+SbCMjn/tbbbLrRUrxNwhy4cWyk9NGMY+BwYsmSPZfuEDvmOh3KevPPbuPuJ5
- f8MDZ93SFFhrNQFvDLe73N0crCWQTDBnup3NNKEpB0dzTC8osmVF8VLCYBrVTBPenwDx
- DrEw==
-X-Gm-Message-State: AOJu0YyVM6aL4EchE5taD32jEOC9vfLA4PQnd0uanG8Bj1BUDQ4cSrTW
- lvQ9+S3O1epKjadfFV3pDGR+Ywsj95KA5WJwGRP/TpnMHBJFpQOnr+cSPLEkWrAjE5fF3UOHd8L
- qFoztqGZ8/2l9MSylMWu/fw4w8jMkcO6DChP5+Q==
-X-Received: by 2002:aa7:de04:0:b0:55e:f9c4:3525 with SMTP id
- h4-20020aa7de04000000b0055ef9c43525mr6686403edv.30.1707403394624; Thu, 08 Feb
- 2024 06:43:14 -0800 (PST)
-MIME-Version: 1.0
-References: <20240206232337.1043760-1-nabihestefan@google.com>
-In-Reply-To: <20240206232337.1043760-1-nabihestefan@google.com>
+ bh=0rPlltwQ8J1j/tv8D8hVqi9IU8hTllCxiImaZrOMGqA=;
+ b=HALI2uEIEv1hIgcFSMC8/9USYJO0qn4aF1/aX2/OuZHhEnvDAhPpCcxKjI3UWP5vl1
+ yR35gqAo18Fk4IBzbw8a101ixiP+d2z2vj+g1VoUHHhi6jTXxTu+iPu3ZpUS9MuaqUnW
+ xqNawD1EG2lYxy1ONA/+9WXQMpDFFEGZ+0ku8ypinWARqGBaDoile0WzjhD6nCkmXEik
+ dHPdcFQf02k3crdKaNE9zn3iS7ebBAsUavE6GqE6fTi+ZPaghaHkONx46jXGVsQvzLaN
+ VfEFR0W31bDT9aBa8ep1ImMym83pkS1ZYd/hC1P/ZEsSGqrzcXN4igSm5SZGp9PqID1V
+ SEVA==
+X-Gm-Message-State: AOJu0Yx1ifMczQ05/P92/UgsGjF34HMQNjxOQr9mshloIj+XE/YxLd0N
+ 0+l01cmgCPz3QPqPipFyWtNTZ3dRp+0XGUAcYVsNDKnqg3CRwiJADGIdtsbAmU7on/wGUTiNGMF
+ x
+X-Received: by 2002:a5d:58d6:0:b0:33b:5a40:d4c4 with SMTP id
+ o22-20020a5d58d6000000b0033b5a40d4c4mr1719077wrf.17.1707406427851; 
+ Thu, 08 Feb 2024 07:33:47 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUezog/jxPrkF0mCYLLQY8YqLV961TtNvZtdRdHbcpv5AFzesWBgWxssMbmuS0V1PIeNvVaQ4stACxRFZo16/BYPvoY2rI=
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ j8-20020a5d6e48000000b0033929310ae4sm3824570wrz.73.2024.02.08.07.33.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Feb 2024 07:33:47 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2024 14:43:03 +0000
-Message-ID: <CAFEAcA_mpxnXWX=9mYTUPnrqPrwK+VWgJxb4p07Q9y-xuZY5ng@mail.gmail.com>
-Subject: Re: [PATCH 0/1] Sending small fix for NPCM GMAC test to properly test
- on Nuvoton 7xx
-To: Nabih Estefan <nabihestefan@google.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
- kwliu@nuvoton.com, tomer.maimon@nuvoton.com, Hila.Miranda-Kuzi@nuvoton.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: Don't get MDCR_EL2 in pmu_counter_enabled()
+ before checking ARM_FEATURE_PMU
+Date: Thu,  8 Feb 2024 15:33:46 +0000
+Message-Id: <20240208153346.970021-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,51 +127,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OiHpXSNEXAva
+X-TUID: FL+a6SU12+Y+
 
-On Tue, 6 Feb 2024 at 23:23, Nabih Estefan <nabihestefan@google.com> wrote:
->
->
-> Nabih Estefan (1):
->   tests/qtest: Fixing GMAC test to run in 7xx
+It doesn't make sense to read the value of MDCR_EL2 on a non-A-profile
+CPU, and in fact if you try to do it we will assert:
 
-This fails "make check". Perhaps you forgot to configure QEMU with
-the arm-softmmu target enabled when doing your build and test?
+#6  0x00007ffff4b95e96 in __GI___assert_fail
+    (assertion=0x5555565a8c70 "!arm_feature(env, ARM_FEATURE_M)", file=0x5555565a6e5c "../../target/arm/helper.c", line=12600, function=0x5555565a9560 <__PRETTY_FUNCTION__.0> "arm_security_space_below_el3") at ./assert/assert.c:101
+#7  0x0000555555ebf412 in arm_security_space_below_el3 (env=0x555557bc8190) at ../../target/arm/helper.c:12600
+#8  0x0000555555ea6f89 in arm_is_el2_enabled (env=0x555557bc8190) at ../../target/arm/cpu.h:2595
+#9  0x0000555555ea942f in arm_mdcr_el2_eff (env=0x555557bc8190) at ../../target/arm/internals.h:1512
 
+We might call pmu_counter_enabled() on an M-profile CPU (for example
+from the migration pre/post hooks in machine.c); this should always
+return false because these CPUs don't set ARM_FEATURE_PMU.
 
-=================================== 34/357 ===================================
-test:         qemu:qtest+qtest-arm / qtest-arm/npcm_gmac-test
-start time:   14:32:48
-duration:     0.34s
-result:       killed by signal 6 SIGABRT
-command:      MALLOC_PERTURB_=46 QTEST_QEMU_BINARY=./qemu-system-arm
-PYTHON=/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/pyvenv/bin/python3
-QTEST_QEMU_IMG=./qemu-img
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon
-G_TEST_DBUS_DAEMON=/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/tests/dbus-vmstate-daemon.sh
-/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/qtest/npcm_gmac-test
---tap -k
------------------------------------ stdout -----------------------------------
-# random seed: R02S12ecd459925511b522511dd789dfb6d8
-1..2
-# Start of arm tests
-# Start of npcm7xx_gmac tests
-# Start of gmac[0] tests
-# starting QEMU: exec ./qemu-system-arm -qtest
-unix:/tmp/qtest-797739.sock -qtest-log /dev/null -chardev
-socket,path=/tmp/qtest-797739.qmp,id=char0 -mon
-chardev=char0,mode=control -display none -audio none -machine
-npcm750-evb -accel qtest
-Bail out! ERROR:../../tests/qtest/npcm_gmac-test.c:254:test_init:
-assertion failed (pcs_read(qts, mod, (NPCM_PCS_SR_CTL_ID1)) ==
-(0x699e)): (0x00000000 == 0x0000699e)
------------------------------------ stderr -----------------------------------
-**
-ERROR:../../tests/qtest/npcm_gmac-test.c:254:test_init: assertion
-failed (pcs_read(qts, mod, (NPCM_PCS_SR_CTL_ID1)) == (0x699e)):
-(0x00000000 == 0x0000699e)
+Avoid the assertion by not calling arm_mdcr_el2_eff() before we
+have done the early return for "PMU not present".
 
-(test program exited with status code -6)
-==============================================================================
+This fixes an assertion failure if you try to do a loadvm or
+savevm for an M-profile board.
 
--- PMM
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2155
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8c1ff16f0d9..7c531ee9cff 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1187,13 +1187,21 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+     bool enabled, prohibited = false, filtered;
+     bool secure = arm_is_secure(env);
+     int el = arm_current_el(env);
+-    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+-    uint8_t hpmn = mdcr_el2 & MDCR_HPMN;
++    uint64_t mdcr_el2;
++    uint8_t hpmn;
+ 
++    /*
++     * We might be called for M-profile cores where MDCR_EL2 doesn't
++     * exist and arm_mdcr_el2_eff() will assert, so this early-exit check
++     * must be before we read that value.
++     */
+     if (!arm_feature(env, ARM_FEATURE_PMU)) {
+         return false;
+     }
+ 
++    mdcr_el2 = arm_mdcr_el2_eff(env);
++    hpmn = mdcr_el2 & MDCR_HPMN;
++
+     if (!arm_feature(env, ARM_FEATURE_EL2) ||
+             (counter < hpmn || counter == 31)) {
+         e = env->cp15.c9_pmcr & PMCRE;
+-- 
+2.34.1
+

@@ -1,120 +1,125 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp140778ejb;
-        Thu, 8 Feb 2024 06:30:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXz477YLY6kNOhis4BRT9ydLfMiBMQsSDvlZQj54hUnrOz2aLsOUTbuKgIIFzd+LDOW+1z/wD2z4dQkdM8FXLPCl5uzqWFh
-X-Google-Smtp-Source: AGHT+IHVbMotS3/odBkrCAGFUv14264K+1DAaqeTEZeZHDhjA+1ErfWsgCqK3ahXAMwCXl+R839j
-X-Received: by 2002:ac8:5c01:0:b0:42c:2990:c42 with SMTP id i1-20020ac85c01000000b0042c29900c42mr11132419qti.65.1707402600135;
-        Thu, 08 Feb 2024 06:30:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707402600; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp149548ejb;
+        Thu, 8 Feb 2024 06:43:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUj0YWl8BBG21IWrgOmMZjwCdFl1g+IKjHyQeCs2gk4Xcsqj3vfzkfTQntUzLE1q4OfT9zkCs6n2p+hAihH/+/JUcS3wY+N
+X-Google-Smtp-Source: AGHT+IHupyM7OjRkOGlucc6rmKVQpc8lAU7m2BIWZ0/hKdzXuXYlrtc1BE0sgjzEtEvz7oEtwpw3
+X-Received: by 2002:a05:600c:28c:b0:40f:44b5:111c with SMTP id 12-20020a05600c028c00b0040f44b5111cmr8252607wmk.41.1707403410330;
+        Thu, 08 Feb 2024 06:43:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707403410; cv=none;
         d=google.com; s=arc-20160816;
-        b=UggxvnLriv99hm0CBc1d7rAeFE9zqSBJwsdMWagENhgmbWDrdh2VAe+qjLcaiwzMss
-         qysCqDhCQ04z70WR5ubIn47GYlapco1H7FYJxo/RAimU8GcFBJizxLL+m9/fCkUmcEUn
-         X3aeOjI6adSSMdwmzB6bnQxhO79cMEkKAgJTY40b/FLvNv2TZW3HpGwutMT3/jPQ+Ud7
-         VFcEQ7NRNLGcXDreI0VlRC6dMiHATfYkHQVOI+SLGCB/EzQy9xXESxLHCTYscQQSTH9T
-         bmn3yCsyxUsJ+JBhWsOqICuYYxooxBnCh+vsBs+cRbko67vkkE4s7EmY275sHDaHKH0m
-         BreQ==
+        b=AN8rxeXdf41FgO9Tt8flrZhbkKXRiv4sLgUdPD9Aa7IKotZnOPmXC/DUvRXIeZEjlq
+         hIjIqmovYjxDkFkcVo1vzH5UgiKsP3Ig9nrnp0Tl02K7fwnlJ6c7QIGc7f6nDupK4z0l
+         d4DdIqn/Ew8WOOibyWpJhOJ2Bzj8KoCHAOB071Qvmng223epxSh3shpV0r1/k2ufbEef
+         C+Wr/AO/az0TknSak/q7IewR5qb66HhfQQyCaQ3wdMj3yHPqWJeD8Lxy2AJGBS0kDmC9
+         QBuTZFZ2Pvkv3rtSHV1Q1YLMQVY1dJkdMr69SvfpVaubTNp0qjOFwWiBNtJM9ne1Vo3/
+         Q8qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=uswSyOm1D4WQ+dn1PI8wLnB3SL0ieGuRJZq33vNjcvQ=;
-        fh=SeiJb+2EF9pX3Qt+eIyEkAkG0S7kdEooXoTPpuTd1pY=;
-        b=HbmiTagT3iwueJNOZ5uzT3iQkLF8mQUl5GurGefbrsWfYkI8IUpZTmWnvwV3xDyYyi
-         hG7ZBwAY1Mq0Gb7P6kGWR3ZjAoFD4VK9x6/+V2bZVV9tRJKtIc/oA0WsyZ7qEbE6479H
-         N4tmjTo43ySrYWDp3I93zDlzPp+MlvGfBf6iklVrlXAE6Scifb6FzvQDHVWY6arjo+99
-         GL+49qnVYbIYRMgwdT1/VVmjq2Jlq57W6GyVLS62fOpiNrAMJLL+lMFgheH7UOsaazKS
-         0AV+QdTnRqynxl9i36mKR6NJW1ApANVqNinM2RP3FZuje/AJXm0qsXOAVUjZPpvuTTmz
-         bpsw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=y1S4UelR9CNPx0frZBsgWPnXiIkVW38h5UY4dbA5Chc=;
+        fh=sQgUaq0WT1u5Au8G/mL+9oMwNBhppMq0udEMfhydyLY=;
+        b=wLb6Uztw3k8Y/kgM5VfpKbXpeE3wGtEl5gCY57I/USwlhMkbpoucM+JvxXx5Lq2sH3
+         LwMOXb4BMOTuiml+PCnk1w465nH1z6xz+4wVGGnsqwhayY29i1RefpZMjCIDyHMpKTb6
+         oePqMJ0BuGxEd1TJRRLFbCFxIGr/wNHeMuLilO7hU3UtZAlGpvUKEXPR2QV4V4Hyu8Lp
+         jyOwPMXYXXVFKIRe5unGgcKso8mmtEdN8cH1Cz5sgbjY3IYjJoQJwDWDZE80r1t5ysJn
+         2ke1eR2XJnzUahx4qTX/Vyt8Es/jTNPR58glM7zPiaHaAyTQr+4rit945DZ4OZgXGrNn
+         XMyg==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIAgp4c5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FdFJcPrU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCWG1UI4ZFj5lG0c7L61u0uM4Anvu9OaL93yHJWdf6D/SD0HYzfxsYDYlHhYH5E6VRISsyUHWib3d4GRMLBleAhD+Qns1GT6
+X-Forwarded-Encrypted: i=1; AJvYcCURb/9U+2a1saioPY5j617YQYxFNWSWbUByzVCOQB202dSJfa9iDXnY/pR8wD5iEgiqXuTHP2rjReKbJuhGJAQ7aUG3ZCB2
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 9-20020ac85949000000b0042c25feb7d8si85495qtz.684.2024.02.08.06.29.59
+        by mx.google.com with ESMTPS id r17-20020a5d4991000000b0033b18257d04si1897226wrq.595.2024.02.08.06.43.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 06:30:00 -0800 (PST)
+        Thu, 08 Feb 2024 06:43:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIAgp4c5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FdFJcPrU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rY5P1-0003UG-SQ; Thu, 08 Feb 2024 09:29:23 -0500
+	id 1rY5cL-0007hN-Jv; Thu, 08 Feb 2024 09:43:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY5Ov-0003QK-Sv
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:29:17 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1rY5cJ-0007gV-U5
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:43:07 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY5Oo-0006vN-HH
- for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:29:15 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-560c696ccffso1756502a12.1
- for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 06:29:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1rY5cI-0001qq-5D
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 09:43:07 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-33b0ecb1965so1234781f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 06:43:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707402547; x=1708007347; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uswSyOm1D4WQ+dn1PI8wLnB3SL0ieGuRJZq33vNjcvQ=;
- b=fIAgp4c5gxEs9YAkIHNgaLL5AdosKEhVDDpG508+Ns7MhPPLC/z4JJKzFLiGfNtYWo
- t4QGzlsFFgaGe+a8CJRZObGAZweatSKiTxCg+cbfta7EufK8cjalxsFkeGaboJ3DyBJF
- wsfiuQ0Ur6Qhdl5rUzuTZ/S15Bwyg8+6gIfByf5D4X9lcCh57spM1Gtl+6vqspGVbDHH
- qLxKEkpBPNWgdrqirZJAbyHG7OObiPJOc2yEcUW/4/E9wFa+m5HM64mxPby4qajcksh2
- EwG/kSEx0gM8n8Ux/A6oRdjokyjfUpQ/BQ/Da7LoLeC+pP3WYo8IyvSRrcTOa8jtzdnb
- fO7g==
+ d=linaro.org; s=google; t=1707403384; x=1708008184; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=y1S4UelR9CNPx0frZBsgWPnXiIkVW38h5UY4dbA5Chc=;
+ b=FdFJcPrU1frbjz80DHuFGeGXgUJRSOV1WvEqPUtrgPL7OYxPCh9c7RWl1fcKIWdxZE
+ QkLU3A1c6HW6ohLyh3t/PWxBDzwAXmRwaEr6rZn40mRWS8s1fNo3Cnn9vyLctDstCDyQ
+ qkWlnusNE0yHWBx5b48DuqCNsQ9KQn4S6rt2xSa38IOAeKXtY1VvdJUZcAimJ1xlD1ap
+ TnEi0ahVZzwfXZDXMa3YzOF8xjOrPUL0SuiEeMvnJzlfdQhFhM3ZunZPV2nD5E1uYaNw
+ QVBWIw/tbb3AqH7YaT31Yu66j2TUvbKzvviSQJsy8hb7BmR/AKE5Izv2yTEwQGTcIAhm
+ yI/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707402547; x=1708007347;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uswSyOm1D4WQ+dn1PI8wLnB3SL0ieGuRJZq33vNjcvQ=;
- b=l02KlTgtWwcuJsrZek2uwFFgqSO19qm513tbYty6fpTtLxxe0nGqkW4GN3+jXBTAvB
- QmZcvifsHV5BEBghWQKekcqiH/KKGasoe62MyiN/q0RBASDrKuoFxpkb82t0VVLNgMJ8
- VBe82wdgo5nsvvA+PnIYMtPV+YGnG2CiX+4sCszso/muYmjBxBNfdr+047oRr8TUjeCn
- ZwdFzXlbIBQD8R5/SmsTaR6+HsqgeGf9BxKymvAZhURs4AOhk9B2ITKN3ZqKrikRiMFB
- QoYKGrHBQFW0Y1wJbmh29AuncMdYIUHAW5FcWiSbp6u4UoqyITGIEjnFFlA1FzprFKD+
- FT+g==
+ d=1e100.net; s=20230601; t=1707403384; x=1708008184;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=y1S4UelR9CNPx0frZBsgWPnXiIkVW38h5UY4dbA5Chc=;
+ b=WL4Sllcm4u03V9kDr9gFjzJ/paI/l7R63KsJeBHFFpzsg3OnrUn+kw7zyMOhmcD5kR
+ SV0qocAYN0bf4yCKotjrfQugwn21R5c/vQxUUx9QWWHJ5org8U2jVq8UO8N/A7cME2Dv
+ Zo3zPr6+h93LGThJjrHdqmuEeoVFHQJ3hSJSzc+Q9mqUdU5g6UoYV4SzBvcn05wSi+Zv
+ NdfhprIJgBalbwQ9oJtsKv2lWEy2lzd3ZBNLhVeRg462pF4R302b2aE0EB2ermE/J/Pn
+ x8oqg03J9AUNW65knwIiQC9HLc4glW+/eCgAyDrR1y9I312Pxi5pe/V9ESH419d4y5fm
+ Z0ag==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWi8KLyx+qSJUvUYnXVmUkuM/A6CRURg4wWO/awWteZZf1Y6Ifj5jHibMxdTibA2TjdUL5FzsxzdlFlYp3dOZR+97QO
-X-Gm-Message-State: AOJu0YwTtqxVK08QKrY4S7zKH3E7XE+sVD7NIzNn/ypOW+q+LFHnDibL
- 0sxmKAlyQXzXsaVoYae8iU6TfIdTPFAwH3Sbd20nU2LBG5hRx4gCmTBw/wIA//yZAPz+xoP+PgC
- z1nB7DvSU9vBpQ3CWUtCta/0Vd3g8qhfgiRjH0w==
-X-Received: by 2002:a05:6402:180a:b0:560:24d8:d2d1 with SMTP id
- g10-20020a056402180a00b0056024d8d2d1mr2773675edy.11.1707402547443; Thu, 08
- Feb 2024 06:29:07 -0800 (PST)
+ AJvYcCU7hBaxCmqFU6hM4ab3ykN1roTQBbXWBSD2oj9bLOwkKm02SGOmMPcvhgzCH9mCyjJl4n6oTXfjhPuxzYc70A29L+ux
+X-Gm-Message-State: AOJu0YxHNlcyj6yxiZzaWF4s55m6liWd+b0r65TdZl7Wg9Yqp0oPz8ED
+ 6rXgONdzicsqLr3f7lW9CFIc09CMa9B9q6Rd7BH5kAFJi4gSx+NXpgTzar257Y0=
+X-Received: by 2002:a5d:498a:0:b0:33b:24b3:83d1 with SMTP id
+ r10-20020a5d498a000000b0033b24b383d1mr7243822wrq.27.1707403384582; 
+ Thu, 08 Feb 2024 06:43:04 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWPa5KaQbqKb80SgJeKxEYDaZsVh69t7UIE1OE2+FyfFC8Eot8Ug9IBIML0zPGQ//FU6Ww2F/LxqsKcsssIHbOifazMrMpbqHB166x4Wz3pJxn7lkggSrts6p8/I1I4RTvrQwX5MGzxwvjjEAgpQTp5ywt4vbz3nhEGo4f+zqAOCl01xEGvwv98bNlKDVxAAizZwk3Gf729PoIaGvqSHB+RjnlS27A/3jzaDEHWxXamfeE7R51dyfSBFD4H1K5lT2HH6iItPc1CdqHvdLO1IbfaEAXbH587uynsNFLl1NVdcG8QaZnl7tnFy0tHYMtqSyC1wTkQ
+Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
+ c13-20020a056000184d00b0033b07f428b6sm3777501wri.0.2024.02.08.06.43.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Feb 2024 06:43:04 -0800 (PST)
+Date: Thu, 8 Feb 2024 14:42:57 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ mst@redhat.com, peter.maydell@linaro.org, clg@redhat.com,
+ zhenzhong.duan@intel.com, yanghliu@redhat.com,
+ alex.williamson@redhat.com, jasowang@redhat.com
+Subject: Re: [PATCH v3 0/3] VIRTIO-IOMMU: Introduce an aw-bits option
+Message-ID: <20240208144257.GA2863476@myrica>
+References: <20240208101128.655167-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20240208101657.15962-1-kwolf@redhat.com>
- <ffe07fee-0cda-4517-a64b-031cb922d806@linaro.org>
- <ZcTjlNeibKUnIDcL@redhat.com>
-In-Reply-To: <ZcTjlNeibKUnIDcL@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2024 14:28:56 +0000
-Message-ID: <CAFEAcA_qnVdTh96KsxPRguy--SLD1-xD=Uxp6MzE6dK6e98Cew@mail.gmail.com>
-Subject: Re: [PATCH] iothread: Simplify expression in qemu_in_iothread()
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org, 
- qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240208101128.655167-1-eric.auger@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,58 +134,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UxHrY54aRQgx
+X-TUID: A04uCzEuLGzK
 
-On Thu, 8 Feb 2024 at 14:22, Kevin Wolf <kwolf@redhat.com> wrote:
->
-> Am 08.02.2024 um 11:48 hat Philippe Mathieu-Daud=C3=A9 geschrieben:
-> > BTW using the same pattern:
-> >
-> > -- >8 --
-> > diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.=
-c
-> > index ec98456e5d..d074762a25 100644
-> > --- a/hw/nvram/xlnx-zynqmp-efuse.c
-> > +++ b/hw/nvram/xlnx-zynqmp-efuse.c
-> > @@ -582,7 +582,7 @@ static uint64_t
-> > zynqmp_efuse_cache_load_prew(RegisterInfo *reg,
-> >
-> >  static uint64_t zynqmp_efuse_wr_lock_prew(RegisterInfo *reg, uint64_t =
-val)
-> >  {
-> > -    return val =3D=3D 0xDF0D ? 0 : 1;
-> > +    return val !=3D 0xDF0D;
-> >  }
->
-> Maybe. I would have to know that device to tell if this is really meant
-> as boolean. Or maybe it should be written 0x0 and 0x1 to signify that
-> it's a register value or something.
+On Thu, Feb 08, 2024 at 11:10:16AM +0100, Eric Auger wrote:
+> In [1] and [2] we attempted to fix a case where a VFIO-PCI device
+> protected with a virtio-iommu is assigned to an x86 guest. On x86
+> the physical IOMMU may have an address width (gaw) of 39 or 48 bits
+> whereas the virtio-iommu exposes a 64b input address space by default.
+> Hence the guest may try to use the full 64b space and DMA MAP
+> failures may be encountered. To work around this issue we endeavoured
+> to pass usable host IOVA regions (excluding the out of range space) from
+> VFIO to the virtio-iommu device so that the virtio-iommu driver can
+> query those latter during the probe request and let the guest iommu
+> kernel subsystem carve them out. 
+> 
+> However if there are several devices in the same iommu group,
+> only the reserved regions of the first one are taken into
+> account by the iommu subsystem of the guest. This generally
+> works on baremetal because devices are not going to
+> expose different reserved regions. However in our case, this
+> may prevent from taking into account the host iommu geometry.
+> 
+> So the simplest solution to this problem looks to introduce an
+> input address width option, aw-bits, which matches what is
+> done on the intel-iommu. By default, from now on it is set
+> to 39 bits with pc_q35 and 48 with arm virt. This replaces the
+> previous default value of 64b. So we need to introduce a compat
+> for machines older than 9.0 to behave similarly. We use
+> hw_compat_8_2 to acheive that goal.
 
-This is a RegisterAccessinfo pre_write hook. The docs say:
- * @pre_write: Pre write callback. Passed the value that's to be written,
- * immediately before the actual write. The returned value is what is writt=
-en,
- * giving the handler a chance to modify the written value.
+For the series:
 
-So it is indeed returning a register value, not a boolean flag
-masquerading as a uint64_t.
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-> > diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-> > index 301e61d0dd..bdd73bd181 100644
-> > --- a/tests/tcg/aarch64/sysregs.c
-> > +++ b/tests/tcg/aarch64/sysregs.c
-> > @@ -183,5 +183,5 @@ int main(void)
-> >          return 1;
-> >      }
-> >
-> > -    return should_fail_count =3D=3D 6 ? 0 : 1;
-> > +    return should_fail_count !=3D 6;
-> >  }
->
-> This one isn't unclear to me, though. This is EXIT_SUCCESS and
-> EXIT_FAILURE, just open-coded. I think making your change would make it
-> only more confusing.
-
-I agree on this one.
-
--- PMM
+> 
+> Outstanding series [2] remains useful to let resv regions beeing
+> communicated on time before the probe request.
+> 
+> [1] [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
+>     https://lore.kernel.org/all/20231019134651.842175-1-eric.auger@redhat.com/
+>     - This is merged -
+> 
+> [2] [RFC 0/7] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling for hotplugged devices
+>     https://lore.kernel.org/all/20240117080414.316890-1-eric.auger@redhat.com/
+>     - This is pending for review on the ML -
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/virtio-iommu-aw-bits-v3
+> previous
+> https://github.com/eauger/qemu/tree/virtio-iommu-aw-bits-v2
+> 
+> Applied on top of [3]
+> [PATCH v2] virtio-iommu: Use qemu_real_host_page_mask as default page_size_mask
+> https://lore.kernel.org/all/20240117132039.332273-1-eric.auger@redhat.com/
+> 
+> History:
+> v2 -> v3:
+> - Collected Zhenzhong and Cédric's R-b + Yanghang's T-b
+> - use &error_abort instead of NULL error handle
+>   on object_property_get_uint() call (Cédric)
+> - use VTD_HOST_AW_39BIT (Cédric)
+> 
+> v1 -> v2
+> - Limit aw to 48b on ARM
+> - Check aw is within [32,64]
+> - Use hw_compat_8_2
+> 
+> 
+> Eric Auger (3):
+>   virtio-iommu: Add an option to define the input range width
+>   virtio-iommu: Trace domain range limits as unsigned int
+>   hw: Set virtio-iommu aw-bits default value on pc_q35 and arm virt
+> 
+>  include/hw/virtio/virtio-iommu.h | 1 +
+>  hw/arm/virt.c                    | 6 ++++++
+>  hw/core/machine.c                | 5 ++++-
+>  hw/i386/pc.c                     | 6 ++++++
+>  hw/virtio/virtio-iommu.c         | 7 ++++++-
+>  hw/virtio/trace-events           | 2 +-
+>  6 files changed, 24 insertions(+), 3 deletions(-)
+> 
+> -- 
+> 2.41.0
+> 

@@ -1,140 +1,117 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp628582ejb;
-        Fri, 9 Feb 2024 00:27:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVBR5MTzeT9oYJRGgCuKywgR0YQ1itIXGN9qnlJgpTvigTt4aRYLWjuX7nhA+rX7hCg9ElHKWYKaaTELqa4fRANpfoUKuaH
-X-Google-Smtp-Source: AGHT+IFfWSPL/+SNf2+CF35ba37xS5anAi5m4l9gE3OGh0Q0u2iHXdbzvhxv1FcyQ0xt+JlmnjVQ
-X-Received: by 2002:a05:622a:2d6:b0:42b:fd08:b9ed with SMTP id a22-20020a05622a02d600b0042bfd08b9edmr1141344qtx.12.1707467278252;
-        Fri, 09 Feb 2024 00:27:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707467278; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp334595ejb;
+        Thu, 8 Feb 2024 11:37:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXIpl6gKAK4oe5qslR+D81hQJPje22uc/AjbxSWLjY6nZ5m2OVKVt8y+cvHV5e1C/2Xm9Bjdi3Tj9tGn/t5wnpBszgUDT77
+X-Google-Smtp-Source: AGHT+IFWrZhf5XcalwkcpEFcpM+bUzrK+YndgzW/U+RgCI98T8DKZ/Lp1kMIgKyKHS3umHu24+pa
+X-Received: by 2002:a05:6808:130c:b0:3bf:d1fb:556b with SMTP id y12-20020a056808130c00b003bfd1fb556bmr367913oiv.46.1707421065180;
+        Thu, 08 Feb 2024 11:37:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707421065; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ttum/gzMfjsEq0ydcFWRyYhxhTCbyhTckiLiac4ZvFkZGHF1fglCffpTBYTbV3f72i
-         1phNo6fwE7BfJc497/lnlkOnV80yrfyOrMqzFWS6hW7kFZUdpHAEM4LKTbiC70MiSv9P
-         ZgXhIW7hO+FVuN2texGoK5uUAlmEuDw/hfLNJSlc1M2s3YPgSsol+oAnPA2xwpWmu8XY
-         GRyIZr1WVhG3u7bn5l0cBjT/Go9bs78cicaHK4JcRWykS2f6SG1lwDttlS6VicFxNUZ0
-         KRp3uzOGloTogDq1LK5ej2A0ldKeSg2ECgvTxZB8+nPlti8qIES1CkttRPyqD4aoCR1t
-         VcoA==
+        b=OJDxpebm/V202YnAR1fmsF8KKRJkw51lCGJKXfBaOVsmV8yEFs71qnl1PriwKuqWEl
+         tgAmEpvWISxWXzwigvgimOMOtpGvr4PwlrwuUVL5P7/G0el+w90r659zPXezky6ZdNVj
+         fxJvLJKPpH6gHQa5EwXqIFf1/Dib6QAR4Fevaf6PHX5HbZpsLrmyRNYQ3SG4b2X3dLnw
+         eDCn+NB5VfjIf3UVU5sPtMlaon7E9FX68Q+cgGQZf5FJPec7h6NX+FSPUvQ4q5OWlfE5
+         TXgh73kQPo4RG4YAlKx8OCtL5O1rtg+jG3iAmvvf6xR0L2NIUajGqvDNaEVw2ePfnO5v
+         0j4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3dr/MZ8+SYKXNDot7XxX1t4zyBOQblQSE6knKnLkqCc=;
-        fh=6eV1AfaZ1DejdJytKErx4jV3RvXRZYmr3i8KY1HOyf0=;
-        b=NIb0G0OK9uzIRAFugjADkdZzLVI8gt8iDx7YIKpivKAaJib+KvfNE2T+HvNdz4l3yS
-         pn8eg9LSFP2WdIbAzulfkagNbSzxHQOVIEh+dWDwX8fqOpYn5RbRtTX5VrmUorOg+qNU
-         Ae9IhcsjtjYfTuydJkbD3UqvwNG99sIfJz57qrljVVdhrUwcbU8UXDtlFTRHNQCeqY2g
-         t5ZBXtiarYS9efOqAuvVz7pSiB2wc3syhY+Nn8yWi1d3E5kFo7k4mZ92mgtxK5lFJyE2
-         5Q+WGqBS/4fdUZw2gXsdXil2uCngV1zGQ33ytdYAEp0nnIZVMtZftkR8pkvtljyV1xQW
-         i92w==;
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=92fOOnHCkanWg80V2hAwSCwodLG+3/RgTATFlOBrVEc=;
+        fh=Vhl2FbdkDcu5C3gMiwNuzDf+x8sD70PJGDjsUF/Abl0=;
+        b=pTVyvTVFID+GbzAMKx6u9fmSO2syjZ2AyxghenlNUEvg4G0ZH08261ObpEl/SWr7sA
+         6Mc7Sf5oFaQOiW/6KkGjK0C5jT5H9j7QJVINf4UIrGSTw7F2sSvzEYGa8tjdRlXSCLDq
+         TNbR81KfFNhHqf0vRqvWaZo/DkBD6p4YLgPGagR7cjSl0WcDRf9LiC4s8FLpGSr5bcha
+         PM0+C+dbazckAieW6VN1YBFAjV2GWSqc4Xfub25yIp7NP9Vw3g3wXP6raOIWzWjSEfeM
+         1nWSxVLUSx93TOdpxXuLiL28lIA8zW8v6ODwHwivY3IEB/61EJ7pgfT/KJ8ljG3J6D5O
+         JZiQ==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVdEf4PG;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=uonYE1le;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=1; AJvYcCUR6KAOZR3AoUWEGPcX+rXq/bVtVri8XNiw9qp/5kCIbSnJWybQAyCkCczPseHGxFQIDffdIHT4xQmySBu5ch6wwrqROA86
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+X-Forwarded-Encrypted: i=1; AJvYcCWhl4SUVUKRebsuidTm1B9Y3iT4dCcv9/zDpDgN9PklwjwkCodcFieQo7su9FzjKCe7pZJvE+Vy6NTK99P5AuDtJhXleHP4
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n3-20020a05622a11c300b00429d470ea36si1378360qtk.592.2024.02.09.00.27.58
+        by mx.google.com with ESMTPS id os4-20020a05620a810400b007812c8e4f2esi267339qkn.510.2024.02.08.11.37.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Feb 2024 00:27:58 -0800 (PST)
+        Thu, 08 Feb 2024 11:37:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YVdEf4PG;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=uonYE1le;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rYMER-0003lK-WF; Fri, 09 Feb 2024 03:27:36 -0500
+	id 1rYADM-0007dS-2C; Thu, 08 Feb 2024 14:37:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
- id 1rYMEQ-0003kc-0g
- for qemu-arm@nongnu.org; Fri, 09 Feb 2024 03:27:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
- id 1rYMEO-0000kV-4K
- for qemu-arm@nongnu.org; Fri, 09 Feb 2024 03:27:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1707467250;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3dr/MZ8+SYKXNDot7XxX1t4zyBOQblQSE6knKnLkqCc=;
- b=YVdEf4PGD0ZxgaRPs3QN/3A4igUCmwpK/B6vMfZKUrh93ZUZAS403X8qc1YUk+W4WMTSjn
- 8LpZaBkzg3EJWguso1vHNfbQDGmuzS3eMRi+KzE1O6OgQ8hovVekjUAjil9lY/ekrEXBI/
- 1eBIzSZjWhz/8EPuptq0q1zA5CKM+mM=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-639-0HaW0c7uPNW0Itb6S5AQkQ-1; Fri, 09 Feb 2024 03:27:27 -0500
-X-MC-Unique: 0HaW0c7uPNW0Itb6S5AQkQ-1
-Received: by mail-yw1-f199.google.com with SMTP id
- 00721157ae682-60482420605so11211177b3.3
- for <qemu-arm@nongnu.org>; Fri, 09 Feb 2024 00:27:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3fi3FZQwKCCMM9AHGDRSDE9MFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--nabihestefan.bounces.google.com>)
+ id 1rYADK-0007d6-M5
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 14:37:38 -0500
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3fi3FZQwKCCMM9AHGDRSDE9MFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--nabihestefan.bounces.google.com>)
+ id 1rYADJ-0005FL-Cw
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 14:37:38 -0500
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-6049f0f9856so4605887b3.2
+ for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 11:37:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1707421054; x=1708025854; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=92fOOnHCkanWg80V2hAwSCwodLG+3/RgTATFlOBrVEc=;
+ b=uonYE1leyPJN8S+akq0QDUYFPONU5tPfve28krn6TzSaKYLgF+Cx8aDlWuBnXOaPbb
+ ZLV379hCmNvJXdXhOiB+O3/DmHkVwTmS/XZ49mr9y+1jaxGQm64urFhfvhx1OPyKKVHg
+ TiStClUO0161Xt4ksYwk35Ne4mQp2IzvmHd534E0K99QUN+y7ICiy7ejOcs/Jo4QkKpb
+ 6CbyOBxo8PJ1HZDCbVAiFh1FkisScjAidADcJNbrkVX++vLeR5RU2nwiz3WtlSmFXPQV
+ Wr8VkK7mc9cWVF6DgI5s4FLCGaL/BkT910iczaMOkL/DxBkZAr+17Tc6QFOn9dA1CsMW
+ jtkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707467247; x=1708072047;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3dr/MZ8+SYKXNDot7XxX1t4zyBOQblQSE6knKnLkqCc=;
- b=fyUOIMNQpUi5Nid7+M+8MBo6yVd8G0LE8Cj6SYtQzsFk+59v1E4cCs87klZUE8oSC9
- Cs102RNbtE05h/cuorcr5JzNDZWw/u/TSsJZoHcBd85dLxwSriZxDTRLgiWzYDMKwrBG
- wi/f/fVjeUUB5hNBzoUKyaWOWpFad1Va8Hkbxn9OWhVVX2bxGwdc6/pjGeOHx82HC6/d
- PyFW6LwvzxjJqJ2Xj0Lc1MNmnzsGpjMwvia3OhlnOo1lPyxl7r0jgfR3ZMroRKDu7Qal
- Riij//1Ag0eIGc0Z3iHBgfns83sWevGOG0y5o2jpsQouxbUToPfbwBCAhfI2RMjdLkpt
- 24zQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXomUQTfteAhKmifHMc54UKV0Vx5Z36Ga9DgPN26o/uasvP52yGbZpkj88GiKQvqJmDnxZLf2YFBHZyNxuh3S7FRk/Z
-X-Gm-Message-State: AOJu0YxtXdeglBCqLGtgQTJOTsjpDDWQKyxzVnnmYvnl8wtDm+TJir1u
- 38Schx8N7XbqLC6r7+3njTbGo+aNlU5BzmTG73d9v4UkdMuTW3ziWik+Wrw3t/pKl7ee5LrkXbR
- cJ1WCOfBKRpJ4iLQDalOBZieI+mnDqlnuHOXtrc6uGgK87SdkJA==
-X-Received: by 2002:a0d:e5c5:0:b0:602:b810:c837 with SMTP id
- o188-20020a0de5c5000000b00602b810c837mr871306ywe.47.1707467246726; 
- Fri, 09 Feb 2024 00:27:26 -0800 (PST)
-X-Received: by 2002:a0d:e5c5:0:b0:602:b810:c837 with SMTP id
- o188-20020a0de5c5000000b00602b810c837mr871287ywe.47.1707467246350; 
- Fri, 09 Feb 2024 00:27:26 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCVj7HBYetuDBr8dgYAAvpyDBD+KMO+hXUPNp171V8OZ2qKIuDxK5hCRuU7PURa7Ct/t2vHK6guGrUJGlKUbAUkHh3SK/3wcHQzccs3xqsTGpdjD9WUrv7E38UsEV50tFpW4xygeXdrfZKlt47u1gw3obHeQGP1mCEVXRfW2oY/S1gHO/7gciQJnG8uRJbCo5u+d3PWRdTtozy1aUmE4zT6mINKtas2JLn52jxpczrti
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- x7-20020a814a07000000b006040a13db84sm234591ywa.48.2024.02.09.00.27.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Feb 2024 00:27:25 -0800 (PST)
-Message-ID: <589b2a36-89fa-4187-b0b6-887740d7e2fe@redhat.com>
-Date: Fri, 9 Feb 2024 09:27:23 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] aspeed: introduce a new UART0 device name
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com
-References: <20240207200220.453244-1-jamin_lin@aspeedtech.com>
- <20240207200220.453244-2-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>
-In-Reply-To: <20240207200220.453244-2-jamin_lin@aspeedtech.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clegoate@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.213,
+ d=1e100.net; s=20230601; t=1707421054; x=1708025854;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=92fOOnHCkanWg80V2hAwSCwodLG+3/RgTATFlOBrVEc=;
+ b=MoFirSxY98v73DrI84SKcBPmiNMFMxcvNM2mBK+ZjHVg3Gdjs6iT4ZbdnmYr5FBpdA
+ BVKgwEalFNa10vfW8+3wnbem6AvHF0ICYfoVL42rGp9Y6YEeyNk1xJGQlwKrF3oFiSCR
+ BR9Y09eM7eq5WHkZQZ16w7V+EIQ+qUhuLNC1SPGykWjpG/VUxpaXHuVC8U6+/GW2UOHd
+ urkC4H35NcJoW6COX25t/lB25Wxnkyq1Hd1kLagsWVydMohLBc4UNfSHIqXmcyGuNe8i
+ o3L/fPWEU3NfLM0Bc4vuxwbX8i7cqFIfWYKn/EDTe4W6ukKOhXrRoyRn6UFKmC2aXUOT
+ J5sg==
+X-Gm-Message-State: AOJu0YzdYhiWlgtpLxrwPeLdVyv1++OkkSoVJfAgLLOZ+DP3ozkFQ1MQ
+ Olqs6DExT48ODh0+e1PAkT7J8ulLTvbOHJYmVXdQz1LxaVmVxqP23k1kGfa739y7To7xDUF5NEp
+ iHsqHXcNGMnlRFwAnD03QAR/QgA==
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a81:9284:0:b0:602:d17a:7f60 with SMTP
+ id j126-20020a819284000000b00602d17a7f60mr58779ywg.10.1707421054552; Thu, 08
+ Feb 2024 11:37:34 -0800 (PST)
+Date: Thu,  8 Feb 2024 19:37:26 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.43.0.687.g38aa6559b0-goog
+Message-ID: <20240208193730.2777982-1-nabihestefan@google.com>
+Subject: [PATCH v2 0/1] Sending small fix for NPCM GMAC test to properly test
+ on Nuvoton 7xx
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, Nabih Estefan <nabihestefan@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3fi3FZQwKCCMM9AHGDRSDE9MFNNFKD.BNLPDLT-9QLMNMFMT.NQF@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,208 +126,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CIiT6pf5ebzS
+X-TUID: 1JscFhlxUKOr
 
-Hello Jamin,
+Removing testing for PCS registers since that doesn't exist on 7xx.
 
-On 2/7/24 21:02, Jamin Lin via wrote:
-> The Aspeed datasheet refers to the UART controllers
-> as UART1 - UART13 for the ast10x0, ast2600, ast2500
-> and ast2400 SoCs and the Aspeed ast2700 introduces an UART0
-> and the UART controllers as UART0 - UART12.
-> 
-> To keep the naming in the QEMU models
-> in sync with the datasheet, let's introduce a new  UART0 device name
-> and do the required adjustements, etc ...
+Nabih Estefan (1):
+  tests/qtest: Fixing GMAC test to run in 7xx
 
-Please drop the etc...
+ obmc-phosphor-image-gsj.static.mtd | Bin 0 -> 33554432 bytes
+ tests/qtest/meson.build            |   4 +-
+ tests/qtest/npcm_gmac-test.c       |  84 +----------------------------
+ 3 files changed, 4 insertions(+), 84 deletions(-)
+ create mode 100644 obmc-phosphor-image-gsj.static.mtd
 
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed.c             | 13 ++++++++-----
->   hw/arm/aspeed_ast10x0.c     |  1 +
->   hw/arm/aspeed_ast2400.c     |  2 ++
->   hw/arm/aspeed_ast2600.c     |  1 +
->   hw/arm/aspeed_soc_common.c  | 14 +++++++++-----
->   include/hw/arm/aspeed_soc.h |  2 ++
->   6 files changed, 23 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 09b1e823ba..06d863958b 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -342,7 +342,7 @@ static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
->       int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
->   
->       aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
-> -    for (int i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-> +    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
->           if (uart == uart_chosen) {
->               continue;
->           }
-> @@ -1094,7 +1094,7 @@ static char *aspeed_get_bmc_console(Object *obj, Error **errp)
->       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->       int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
->   
-> -    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 + 1);
-> +    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART0);
->   }
->   
->   static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-> @@ -1103,6 +1103,8 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
->       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->       AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
->       int val;
-> +    int start = sc->uarts_base - ASPEED_DEV_UART0;
-> +    int end = start + sc->uarts_num;
-
-
-To help the reader, I would introduce these helpers at the end of
-aspeed_soc.h :
-
-     static inline int aspeed_uart_index(int uart_dev)
-     {
-         return uart_dev - ASPEED_DEV_UART0;
-     }
-     
-     static inline int aspeed_uart_first(AspeedSoCClass *sc)
-     {
-         return aspeed_uart_index(sc->uarts_base);
-     }
-     
-     static inline int aspeed_uart_last(AspeedSoCClass *sc)
-     {
-         return aspeed_uart_first(sc) + sc->uarts_num - 1;
-     }
-     
-
->       if (sscanf(value, "uart%u", &val) != 1) {
->           error_setg(errp, "Bad value for \"uart\" property");
-> @@ -1110,11 +1112,12 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
->       }
->   
->       /* The number of UART depends on the SoC */
-> -    if (val < 1 || val > sc->uarts_num) {
-> -        error_setg(errp, "\"uart\" should be in range [1 - %d]", sc->uarts_num);
-> +    if (val < start || val >= end) {
-> +        error_setg(errp, "\"uart\" should be in range [%d - %d]",
-> +                   start, end - 1);
->           return;
->       }
-> -    bmc->uart_chosen = ASPEED_DEV_UART1 + val - 1;
-> +    bmc->uart_chosen = val + ASPEED_DEV_UART0;
->   }
->   
->   static void aspeed_machine_class_props_init(ObjectClass *oc)
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index c3b5116a6a..2634e0f654 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -436,6 +436,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
->       sc->wdts_num = 4;
->       sc->macs_num = 1;
->       sc->uarts_num = 13;
-> +    sc->uarts_base = ASPEED_DEV_UART1;
->       sc->irqmap = aspeed_soc_ast1030_irqmap;
->       sc->memmap = aspeed_soc_ast1030_memmap;
->       sc->num_cpus = 1;
-> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-> index 8829561bb6..95da85fee0 100644
-> --- a/hw/arm/aspeed_ast2400.c
-> +++ b/hw/arm/aspeed_ast2400.c
-> @@ -523,6 +523,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 2;
->       sc->macs_num     = 2;
->       sc->uarts_num    = 5;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2400_irqmap;
->       sc->memmap       = aspeed_soc_ast2400_memmap;
->       sc->num_cpus     = 1;
-> @@ -551,6 +552,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 3;
->       sc->macs_num     = 2;
->       sc->uarts_num    = 5;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2500_irqmap;
->       sc->memmap       = aspeed_soc_ast2500_memmap;
->       sc->num_cpus     = 1;
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 4ee32ea99d..f74561ecdc 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -666,6 +666,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
->       sc->wdts_num     = 4;
->       sc->macs_num     = 4;
->       sc->uarts_num    = 13;
-> +    sc->uarts_base   = ASPEED_DEV_UART1;
->       sc->irqmap       = aspeed_soc_ast2600_irqmap;
->       sc->memmap       = aspeed_soc_ast2600_memmap;
->       sc->num_cpus     = 2;
-> diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-> index 123a0c432c..54c875c8d5 100644
-> --- a/hw/arm/aspeed_soc_common.c
-> +++ b/hw/arm/aspeed_soc_common.c
-> @@ -36,7 +36,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->       SerialMM *smm;
->   
-> -    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-> +    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
->           smm = &s->uart[i];
->   
->           /* Chardev property is set by the machine. */
-> @@ -58,10 +58,14 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
->   void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
->   {
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> -    int i = dev - ASPEED_DEV_UART1;
-> -
-> -    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
-> -    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-> +    int uart_num = dev - ASPEED_DEV_UART0;
-> +    int start = sc->uarts_base - ASPEED_DEV_UART0;
-> +    int end = start + sc->uarts_num;
-> +    int index = uart_num - start;
-> +
-> +    g_assert(uart_num >= start && uart_num < end);
-
-I don't think this assert is necessary. Only the second one is.
-
-If you want to check the range and return an error, please add an
-Error **errp argument and have the callers pass &error_fatal. It would
-have the same effect.
-
-
-Thanks,
-
-C.
-
-
-> +    g_assert(index < ARRAY_SIZE(s->uart));
-> +    qdev_prop_set_chr(DEVICE(&s->uart[index]), "chardev", chr);
->   }
->   
->   /*
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 9d0af84a8c..5ab0902da0 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -140,6 +140,7 @@ struct AspeedSoCClass {
->       int wdts_num;
->       int macs_num;
->       int uarts_num;
-> +    int uarts_base;
->       const int *irqmap;
->       const hwaddr *memmap;
->       uint32_t num_cpus;
-> @@ -151,6 +152,7 @@ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
->   enum {
->       ASPEED_DEV_SPI_BOOT,
->       ASPEED_DEV_IOMEM,
-> +    ASPEED_DEV_UART0,
->       ASPEED_DEV_UART1,
->       ASPEED_DEV_UART2,
->       ASPEED_DEV_UART3,
+-- 
+2.43.0.687.g38aa6559b0-goog
 

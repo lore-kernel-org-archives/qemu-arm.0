@@ -1,104 +1,103 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp339470ejb;
-        Thu, 8 Feb 2024 11:48:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUkqN7L6a6AE8JT8a+YzFmTkwwo/uHII+PDzSDIG/1kSBx6x+KxW/v3f0VoZ364ehfwi5WxyCSsRv2SQCM7gqjZepWQUUzy
-X-Google-Smtp-Source: AGHT+IG00wTH+Zr7QyeU1xlfnorUGb+jFy49OoBotNV7lVb2UUxVBvq6agNFoN0kGRTCDXfPJvrG
-X-Received: by 2002:a05:620a:3622:b0:785:41a6:72c5 with SMTP id da34-20020a05620a362200b0078541a672c5mr490274qkb.64.1707421733093;
-        Thu, 08 Feb 2024 11:48:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707421733; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp339546ejb;
+        Thu, 8 Feb 2024 11:49:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUHgFVDfqIOKWOoFTNFFM/QfDRbTtVwc0rAgIJdS5uTw6EPt8TmLXoVpAwmcakpy42VXn9UJL+3cjQ800+6+o4fcCht1Da7
+X-Google-Smtp-Source: AGHT+IEx4vKPzIAtXh2lW8/1P7O79bxTpXzf0juryfM+GZkaU0tVtl7dVnVUHTr+jr6g4MMBN+ds
+X-Received: by 2002:a05:620a:2295:b0:785:b304:9711 with SMTP id o21-20020a05620a229500b00785b3049711mr197892qkh.12.1707421739928;
+        Thu, 08 Feb 2024 11:48:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707421739; cv=none;
         d=google.com; s=arc-20160816;
-        b=j33Kl1AllcyPzOsrHWZr9ToxtSRBoo+cmDElraDD2vpec9OO3tOdjhihzAPIkd5+wY
-         y9M7U62AHhMisZuUzusZkzwFV3KNiUEq2ILYeLuv4kz0mYOS8VUcwBp1LS5if9HERx2t
-         wUjlpIBccv1rW1jhz+bR22Chtei9gAY++gE0LOFNtvqhlcrl+wEZe76MCH9GxtKJ1iIG
-         qxqrabJtZUyxtSEiinon+zMKLzxyuvbM8I4GIVECNZfiElZQNCUQQ1Q2T5JgwL8B34Jj
-         0dOlo87rY2KMgg+l7Kydie9Ookk9eY3mWj7hVnPtfVD9r6U8CnOz20Tt3Sq0QoVQooD5
-         v9Kg==
+        b=QwwA+FEbdd+XUX5ThhowE+JH+qjpEETZDh3MpYAsMnwtm5j32ebE2eMzXUpaWtUKwN
+         o53AyqcxMu62pUGlkQx0Vdrh7nD14l5XjO1fmk9lIWNk5wZUl/1HnCzYm13L+Ps23Jyz
+         Xa2lcqZdSUaO5RK/gSb8gnFIMfodkOhn9LPMHMirkOQ3jAxNatKyrGs6K5rZ5LkLKzXT
+         avXJBO6YUJNEfgvWYpFh02w9DuG20fJ744dehvVggyeyF1wdJ3GOuX/zwHpNeVwrX4ap
+         Z7fmssegCmQNaRFJxsqOb5zobP7P0RcE0yCGbi8N6WP3ItUHSiFSrfnkbAUI6+VC2mzt
+         lv7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=aJWdE8dgJBmLhnOvg9g09ld9xcg39OqcH+vA2Kb7ro4=;
-        fh=U4aaaihIH3xTAXvLHFBAYNppdpJQllFXmczMq2XDptU=;
-        b=F7qiPnpDXLrqT14gX8g3vmEmAVFNjSGm6DrP2fX2DhRBcrpAFGk4VCUQ38CemRywQn
-         vJTuZ85VXkpND5FD1HI137UpCclyanxwuM1XitTRsGS/y8xfPNl/L0/GdqItz9Giv1oq
-         sYD/JJ0dIjoTgIq9reqJHG8T4UBX/4U2iA7D5RCdgutjFP7S4Ph6rcbzTGHL7we0kG47
-         FOY4HJOV2s3rxJQ5mV2QaWVmNE6XV/MCSgZ1xMH4RZsGAsENSyLTg543kdE4Gz+wBYrl
-         0Dq4cgyALdg04VoOVb6uhPBp/ERTP/Gmw/RCB5aOThsQT8Nec8lg0AGQo3jDQ0HlqoE8
-         lREA==;
+         :mime-version:date:dkim-signature;
+        bh=/dUY9x+67FvkVBEF/XyJqYKGwZN4xMXS3WjbK5pVzbc=;
+        fh=QwRS/pT7rZY+TLzfZqntccvXkgrP9vYdGal2xmPn8tI=;
+        b=Iptou5sUP938mX+B3Obyq9JXT04XYC+/LnVa7hSNPVuFiXC4agdZHa4ZnqhSYmsBBt
+         aPd4dzsSyD1d0hzto68UEqfVEfJPjOOF/vb66Z1qb4WJt2438eOb0SPZ4B//09KThf1d
+         m1oR+H1VsxTgGm7r32PnAj7umPkUJMDdVYhTmciaRhTyv2Qj00hkP6mhnv318Y4VikLa
+         IIaupP08BhHTFOvBJFtB++3GkYVRO7U3z/+gO0m9qTL21YRpCbFertTLeV2JtepbqOaT
+         YOZ0rZuHrz0AvI0eB4mQSKX4oAYuf/6XmxoNDbUadk4M/0A7VuGkP4hgqh0xyW41g3Yl
+         omVA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=vDPi5vOw;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=S2AjgUKH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-X-Forwarded-Encrypted: i=1; AJvYcCXofuLePx0q2CN4+PvXAmpnfBuPAW9vVhAtUdlk3AP95TQZUqNxV45xCqZpykLrFbfoRD3ABbC+jijVwgeLkA1B7X3fc9D4
+X-Forwarded-Encrypted: i=1; AJvYcCW4Zb1tT1N1KeP8OZEFAuqTBknjvV2eO9ncm2y7M3GH78EQsQsfFFs2FXx8G6OLgjGkZxKurZjj57VTHTu/bULc2WbXIlbn
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9-20020ae9e509000000b007859b42dfa7si306548qkf.308.2024.02.08.11.48.52
+        by mx.google.com with ESMTPS id p14-20020a05620a112e00b007859ebf2434si299030qkk.599.2024.02.08.11.48.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Feb 2024 11:48:53 -0800 (PST)
+        Thu, 08 Feb 2024 11:48:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=vDPi5vOw;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=S2AjgUKH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rYANV-0001a2-GP; Thu, 08 Feb 2024 14:48:11 -0500
+	id 1rYANU-0001Zv-AZ; Thu, 08 Feb 2024 14:48:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <38y_FZQwKCpwJ67EDAOPAB6JCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--nabihestefan.bounces.google.com>)
- id 1rYANT-0001Ze-De
- for qemu-devel@nongnu.org; Thu, 08 Feb 2024 14:48:07 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <38i_FZQwKCpsI56DC9NO9A5IBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--nabihestefan.bounces.google.com>)
+ id 1rYANS-0001ZS-Ci
+ for qemu-devel@nongnu.org; Thu, 08 Feb 2024 14:48:06 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <38y_FZQwKCpwJ67EDAOPAB6JCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--nabihestefan.bounces.google.com>)
- id 1rYANR-00071Y-AQ
- for qemu-devel@nongnu.org; Thu, 08 Feb 2024 14:48:07 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-dc64f63d768so303225276.2
- for <qemu-devel@nongnu.org>; Thu, 08 Feb 2024 11:48:04 -0800 (PST)
+ <38i_FZQwKCpsI56DC9NO9A5IBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--nabihestefan.bounces.google.com>)
+ id 1rYANR-00071Q-1T
+ for qemu-devel@nongnu.org; Thu, 08 Feb 2024 14:48:06 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id
+ 41be03b00d2f7-5cfd94f9433so111091a12.2
+ for <qemu-devel@nongnu.org>; Thu, 08 Feb 2024 11:48:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1707421683; x=1708026483; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=aJWdE8dgJBmLhnOvg9g09ld9xcg39OqcH+vA2Kb7ro4=;
- b=vDPi5vOwQVyll73GKSadjR4Yix1ig2PkPY768Z3z4puH9yORhaFd+u460wjB8jHrjH
- X43TYBDQTgjdYmFPTsnOjn/nZ4MFFul2CSdbUZCsKxhSrNvdMlSByhUSdjUltzp0ltoC
- R1uhS3wp/5pYD/b0Rlfcc+8nFf+Bzg+LXakdXMJeKM02X0KyWKgNuDu+hgmstTnOg227
- etRVVsEq5tC+3LSXGHWsqIGkQvgc43do2qYwuzLExxOxgfaIHxVieKORMBrBApNkGWx4
- 0EpBZ9LQwiO3/GvgqfUPtjm8nVBuZOHyqxFK388yjmMg/hhCGJGSPG7vfU/Zg746kgoZ
- rIbA==
+ d=google.com; s=20230601; t=1707421682; x=1708026482; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=/dUY9x+67FvkVBEF/XyJqYKGwZN4xMXS3WjbK5pVzbc=;
+ b=S2AjgUKHrV7pdHsSVlx4EaFbK7Ke4FHKIUe/rozzJSDQ/2wVXOFMAAD8fPzTRq48rb
+ 9fjOCXOhDCXna7mU22OAoC24bel+LxSPpgKmbHKd2p8cX3rugngn3cpK3Ox/hW2aa4Vs
+ FsbT4MF+P55uiKCiLWrYu9SDrsh7ZlxDbQgoeVcaySY0hPYp21h61yEVrbupKCwSq/bt
+ wySfJPpZeitkUsesUXKV0Mkqr9WvkfCCC8nV66ckw72p1ozj7E0DQlqVusNamXAWTucY
+ CvroyW0hSsaxab0Tq6ltk3pg7hJeWFTHM4m3GH3pAf9pbdJJiun9ci2GaU30JCjnwyV5
+ fCSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707421683; x=1708026483;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=aJWdE8dgJBmLhnOvg9g09ld9xcg39OqcH+vA2Kb7ro4=;
- b=sZAI43eoUGopAX5KHOvXdABBzyREFoOapUeNCVjX9pVGl2qhC492DE7GT8/X9Eijk1
- Cjd5Sg29JDZ02f1q4erYoEyLEVKb/3L3Y4fs8m/b2UAwNQNUfwqfSGmw1INtElYf2SN9
- r0Dnly+toaz0ZJwnnbBz7xq8nPEW5E+CM5FpkZlBnxAl5aMKgMU3/ZHl18ZdTLnEL9ED
- bpls9Ei6x7cvIPYKYezguIdqLfUKOZdGwQAOG+IyX8r6OCa43NYJ0ycw8ZR5jbnwmK2M
- 125Rbf7jAqq/j22tY+QgcsH91WxXILy/0UZnY1O6Ts/ErEidkbBdkk9NyiDphTOAdl3W
- 71MQ==
+ d=1e100.net; s=20230601; t=1707421682; x=1708026482;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/dUY9x+67FvkVBEF/XyJqYKGwZN4xMXS3WjbK5pVzbc=;
+ b=l2P2+c6Fs8/q83sfTP3BI9db+h3dTykPMlJm/ke3opMapOXHtl6VlDeZHvVIpgKhxT
+ /QdUbb8goC1XHN4IY6OI8Isa4roAuSZBBwI9qIDNbT+NniIsR1olWVYw7JURbmjHaTtn
+ xrWZESuNQP4YM/nu4E5EJAP7l6ShSd884bANQUPsP/NAcmjAzilGDq3e2FsPr3fn/Mh9
+ KvwvuqBHinf8FRxgBgPLxadW0Q2uY/ryaAQYCX0oldkUN8oCvSeRd6tjRWUGAJLDK6oD
+ 9JPVSE2TeWYBXxpQ4ra7OgvkxDjvuMfFabMRtHSWyCvmCsgxg3rwjITCg2LPDA6DKeto
+ EbNg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUVGl2vC0a2axp01GtC87vWU/rFx2DI4caQvp/kXxUFOy9dC7OQNMKDlChjLeefS01AG0mdyWz4rfWpuHL2tqeXpl1zUH8=
-X-Gm-Message-State: AOJu0Yx6q+Bp2NCeN3bWfOnrPdZdknE8wKatrz+ydZFnnX5F4q8MMbje
- ymRsJcNRpxkfIV1Lgv/zKUnpZbxdvXWbIhrYHDD5HQDBEuNi/jMYtOT6YL36bflhHbw3sGyhixr
- CmebdRe66m1ymj7iOgTEhjijaDg==
+ AJvYcCV8/4f09zDGn6TtaKftI3chDIIsLkhe4G2U0dRo+YR61FLkLRctxYAJNgLE+GuWbv7WZM+qOMNk8EaMTFNs9Y5WG+uSX7s=
+X-Gm-Message-State: AOJu0YwM1EkWa5wlHgBFrmgLNeiwf51QgD8hu6uKj753Nj+p4omAkum2
+ B4kE/uPRpr+hNUJV6QzOLETR9xJSeEligoJ0WPuttmDLI+850B38O5+z9+QYTVrh8SLlJCZAzwG
+ vFplvNKpAD/rg8cHebCYtiz8+EA==
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:6902:124a:b0:dc2:23f5:1791 with
- SMTP id t10-20020a056902124a00b00dc223f51791mr108234ybu.6.1707421683752; Thu,
- 08 Feb 2024 11:48:03 -0800 (PST)
-Date: Thu,  8 Feb 2024 19:47:59 +0000
-In-Reply-To: <20240208194759.2858582-1-nabihestefan@google.com>
+ (user=nabihestefan job=sendgmr) by 2002:a05:6a02:f98:b0:5dc:1cc9:36ab with
+ SMTP id dq24-20020a056a020f9800b005dc1cc936abmr8705pgb.12.1707421682224; Thu,
+ 08 Feb 2024 11:48:02 -0800 (PST)
+Date: Thu,  8 Feb 2024 19:47:58 +0000
 Mime-Version: 1.0
-References: <20240208194759.2858582-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.43.0.687.g38aa6559b0-goog
-Message-ID: <20240208194759.2858582-2-nabihestefan@google.com>
-Subject: [PATCH v3 1/1] tests/qtest: Fixing GMAC test to run in 7xx
+Message-ID: <20240208194759.2858582-1-nabihestefan@google.com>
+Subject: [PATCH v3 0/1] Sending small fix for NPCM GMAC test to properly test
+ on Nuvoton 7xx
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
@@ -106,9 +105,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
  nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
  Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=38y_FZQwKCpwJ67EDAOPAB6JCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=38i_FZQwKCpsI56DC9NO9A5IBJJBG9.7JHL9HP-89Q9GIJIBIP.JMB@flex--nabihestefan.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -131,168 +130,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jnup80I+LAw2
+X-TUID: c8wf+zdKJs05
 
-Fixing the nocm_gmac-test.c file to run on a nuvoton 7xx machine instead
-of 8xx. Also fixing comments referencing this and values expecting 8xx.
+Accidentally added extra file to v2 that broke email sending (and was
+not meant to be upstreamed). Sending our v3 to skip that confusion.
 
-Change-Id: Iabd0fba14910c3f1e883c4a9521350f3db9ffab8
-Signed-Off-By: Nabih Estefan <nabihestefan@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
----
+Removing testing for PCS registers since that doesn't exist on 7xx.
+
+Nabih Estefan (1):
+  tests/qtest: Fixing GMAC test to run in 7xx
+
  tests/qtest/meson.build      |  4 +-
  tests/qtest/npcm_gmac-test.c | 84 +-----------------------------------
  2 files changed, 4 insertions(+), 84 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 39557d5ecb..2b89e8634b 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -192,7 +192,8 @@ qtests_npcm7xx = \
-    'npcm7xx_sdhci-test',
-    'npcm7xx_smbus-test',
-    'npcm7xx_timer-test',
--   'npcm7xx_watchdog_timer-test'] + \
-+   'npcm7xx_watchdog_timer-test',
-+   'npcm_gmac-test'] + \
-    (slirp.found() ? ['npcm7xx_emc-test'] : [])
- qtests_aspeed = \
-   ['aspeed_hace-test',
-@@ -231,7 +232,6 @@ qtests_aarch64 = \
-   (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
-   ['arm-cpu-features',
-    'numa-test',
-    'boot-serial-test',
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-index 9e58b15ca1..c28b471ab2 100644
---- a/tests/qtest/npcm_gmac-test.c
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -36,7 +36,7 @@ typedef struct TestData {
-     const GMACModule *module;
- } TestData;
- 
--/* Values extracted from hw/arm/npcm8xx.c */
-+/* Values extracted from hw/arm/npcm7xx.c */
- static const GMACModule gmac_module_list[] = {
-     {
-         .irq        = 14,
-@@ -46,14 +46,6 @@ static const GMACModule gmac_module_list[] = {
-         .irq        = 15,
-         .base_addr  = 0xf0804000
-     },
--    {
--        .irq        = 16,
--        .base_addr  = 0xf0806000
--    },
--    {
--        .irq        = 17,
--        .base_addr  = 0xf0808000
--    }
- };
- 
- /* Returns the index of the GMAC module. */
-@@ -182,32 +174,18 @@ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-     return qtest_readl(qts, mod->base_addr + regno);
- }
- 
--static uint16_t pcs_read(QTestState *qts, const GMACModule *mod,
--                          NPCMRegister regno)
--{
--    uint32_t write_value = (regno & 0x3ffe00) >> 9;
--    qtest_writel(qts, PCS_BASE_ADDRESS + NPCM_PCS_IND_AC_BA, write_value);
--    uint32_t read_offset = regno & 0x1ff;
--    return qtest_readl(qts, PCS_BASE_ADDRESS + read_offset);
--}
--
- /* Check that GMAC registers are reset to default value */
- static void test_init(gconstpointer test_data)
- {
-     const TestData *td = test_data;
-     const GMACModule *mod = td->module;
--    QTestState *qts = qtest_init("-machine npcm845-evb");
-+    QTestState *qts = qtest_init("-machine npcm750-evb");
- 
- #define CHECK_REG32(regno, value) \
-     do { \
-         g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
-     } while (0)
- 
--#define CHECK_REG_PCS(regno, value) \
--    do { \
--        g_assert_cmphex(pcs_read(qts, mod, (regno)), ==, (value)); \
--    } while (0)
--
-     CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
-     CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
-     CHECK_REG32(NPCM_DMA_RCV_POLL_DEMAND, 0);
-@@ -257,64 +235,6 @@ static void test_init(gconstpointer test_data)
-     CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
-     CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
- 
--    /* TODO Add registers PCS */
--    if (mod->base_addr == 0xf0802000) {
--        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID1, 0x699e);
--        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID2, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_CTL_STS, 0x8000);
--
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_CTRL, 0x1140);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_STS, 0x0109);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID1, 0x699e);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID2, 0x0ced0);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_ADV, 0x0020);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_LP_BABL, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_EXPN, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_MII_EXT_STS, 0xc000);
--
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_ABL, 0x0003);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x0038);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x0038);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x0058);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x0048);
--        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0);
--
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x2400);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_CTRL, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_INTR_STS, 0x000a);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_TC, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_DBG_CTRL, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x899c);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_TXTIMER, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_RXTIMER, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL1, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_STS, 0x0010);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MISC_STS, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_RX_LSTS, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x00a);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x007f);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x0001);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_STS, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0100);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x1100);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x000e);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0100);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0032);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x0001);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x0019);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_CTRL2, 0);
--        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0);
--    }
--
-     qtest_quit(qts);
- }
- 
 -- 
 2.43.0.687.g38aa6559b0-goog
 

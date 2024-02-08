@@ -1,131 +1,134 @@
-Received: by 2002:a05:7300:232a:b0:178:84eb:402c with SMTP id r42csp2411478dye;
-        Mon, 30 Jun 2025 04:48:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU/PqJZuDqFToPH76zV5l95WIcUho+3j+ddkbejsLrxwSmKToCtdr0ERjAWL/A50ewYJ3ZFDgn1vRYZqA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFmTOttmgXgRO3Gh7do2ATwIFLSDCSKsPTTll/dRVtP9wRZvIjEWRFErytmX1FX2XbNAjsl
-X-Received: by 2002:a05:6214:5193:b0:6f8:d223:3c14 with SMTP id 6a1803df08f44-70002ee6ebamr239193436d6.25.1751284089842;
-        Mon, 30 Jun 2025 04:48:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1751284089; cv=none;
-        d=google.com; s=arc-20240605;
-        b=kFINO5sjGcc6/cm4NMHqSM2OfeJoaiZO6Gke++cOR0JRruA/+sUDG2HwF7jeV5ndY/
-         JxoAbo+l/G6OcwWkk2ELPGcvMLnyQQEFBJLAx8M8/UYci3FsM7k2YaTHInaUhf6vnW5X
-         nejOsF23WehEdfGaOCBc5j1PlDARWXmnEGTkwCulveqJEYFzhFDSMhbVeZHRmXbwP2PF
-         qYrLxz65jMiaiXLo8lGoR1Bi1kZv4DBDan5H+qDfSExXyXXnRGrgNGfbXqAcWQeCrA77
-         la7kbPSg/5Ok/qQsPdgFBw+TvZ/smC7zVr6Rskhq5oOe20iaz1EADqceXigE9H3qtkgj
-         0iKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp236083ejb;
+        Thu, 8 Feb 2024 08:56:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGsgdAEaqOOQH3+XGsgHqBFr794HIa5N4m2tWj+yyDuDZAHJGCnHbBwTYnpJrHBHMu+8kYI
+X-Received: by 2002:a05:6214:260f:b0:686:7256:c9f4 with SMTP id gu15-20020a056214260f00b006867256c9f4mr13752996qvb.9.1707411364487;
+        Thu, 08 Feb 2024 08:56:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707411364; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0VEJXCM0nZZVDSdL5nD8157a8u4QXSAJIp01WrmS0XNhi2g8g9NyFqqxqxSl3tvwT/
+         OtBHX8/SKH705ZuyyQIbpjvDcMSLb5tk9dfZF4Yk4hl0jmuQFsk5CvocuC94h2jh7886
+         ZIdZGuHrMB1ct1zc++D13NyuFDZHC0L3lVusgu7xLw/Olqd3VUSGbGIe56ehxXw+3pPX
+         ewJbWddrgNPHaLEjWOkG41ImV3WeG8C/tA+14KcDA26UIO20YXb9ioBS6axfsxKl0MJ8
+         TOb803nO6ZXohknoy3RZU2MgkYwMNT6Y/SCmfQQ0oFhWW4E2Sv/fcxIa+/aKsoyYFdXM
+         1Ztw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=y9G9ZDDvSaG3VTKzCkSM3/CvXAxVLIOGCNrm6waJ4VA=;
-        fh=DyvdtmUxHz9RKUypO9vmuR47H+AfDsxGoHmG0gR8J1o=;
-        b=fiJrNy8aupEfdg8nBzbwRrmA+opfzA+HPBaqJamDlgaEZtniynxN2atfAncG5hWj3X
-         fCyOF+v7LWrmpRQq4mYMmzNQNj5u725UfyV7b/iyo62vkS5rk+95bwjrVSh+3o0oXfix
-         nzCvH8xmEnS/Xyyw0H1V2ow0/zpyAKX8YY5JFdKXOO/vq7Gf4VPWiaVX+qhAf+skv/hN
-         BrDd/nPzfLPnga/8jhIS4BxGubAYJJ74005Lqip4KyIb2ZPw4e9n3ZbySP0tSpP+qD/O
-         FAGtSQ9Rv84kPf3tZx5bv8fJ38afRTFJnugv8Z2CRpSHph+PzuJaxM97ktFIEnUVgphJ
-         J0bA==;
-        dara=google.com
+         :content-language:in-reply-to:from:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=pMoXHXY4+qZJUeESHsnlS6as99TdnkReAv8/2YwmyFc=;
+        fh=0fIH2GokTlsF9SBfgWnmQKy0IYQutnkLn0VD/Lvea/Q=;
+        b=l7ddZ70HiTAL+DDiprAPhfQxxQ8NIkARBHJfYMdZ2Ulnyn7zEBEWtsrg+ZFL3Rng2J
+         n+2ObeMxoSZWhHdF8W5yepUzzsaroXG6uQse9vLJi/sQ+omC9o6sYOVgqYHukl8ReVoM
+         vrtJRDn0RJOqKlZFk6fdoNMpuFFi+TBuDL2j+L85slQZYo1L8vvFnHTd3ajOErzajOL8
+         mvkMaFU8nPvv9XACwMAiFGzzZ+tgGhtvfbcHbQesbxkUow/Fj1VeiLCnOYXb3Vk+yuPO
+         wGAypm2EbVCN82+Rwelj9QRW3mD5zsgNzmiqEIWmmvM0oj6ojYqqiOfVi/VHDEMxkCs+
+         2jQQ==;
+        darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LFqLGFD+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Forwarded-Encrypted: i=1; AJvYcCVZn1c2qS1xGuW2OBDD0pUL8nnAvgsMk7pTWoHmsDgKlZOeEtJhzDXLHSBpirpkP7YDEnbz/bewJmNoaCEoyFg78TDHbxm/
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6fd7736ae72si94658976d6.267.2025.06.30.04.48.09
+        by mx.google.com with ESMTPS id j20-20020a05620a411400b007853f72dd4fsi428351qko.286.2024.02.08.08.56.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Jun 2025 04:48:09 -0700 (PDT)
+        Thu, 08 Feb 2024 08:56:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LFqLGFD+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uWCzK-0005Tt-Qz; Mon, 30 Jun 2025 07:47:55 -0400
+	id 1rY7gT-0001qE-Ge; Thu, 08 Feb 2024 11:55:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org>)
- id 1uWCzH-0005TO-Ec; Mon, 30 Jun 2025 07:47:52 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1rY7gS-0001q5-GB
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 11:55:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org>)
- id 1uWCzB-0007cI-KL; Mon, 30 Jun 2025 07:47:49 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4bW4CY6L1sz4xQ2;
- Mon, 30 Jun 2025 21:47:37 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4bW4CS5xqDz4wbX;
- Mon, 30 Jun 2025 21:47:32 +1000 (AEST)
-Message-ID: <8fd8738e-8ecf-4fcc-adbe-9af8ba51b0b4@kaod.org>
-Date: Mon, 30 Jun 2025 13:47:29 +0200
+ (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1rY7gQ-0001Ma-Sa
+ for qemu-arm@nongnu.org; Thu, 08 Feb 2024 11:55:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1707411329;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pMoXHXY4+qZJUeESHsnlS6as99TdnkReAv8/2YwmyFc=;
+ b=LFqLGFD+xqNtf1eaP78561ZAmBi5L999MMlyBITl6LgIJ5d4D+ldKLLbtx3we++4aitWHo
+ 2JEaaQuP3ybzMGR0ajSuS/GBPZoKbO1q/wX+7/OvQiGS2pdab9+b6uhkfey6zXYvQznVY0
+ aM31sfFuN/6Rj6BDuj/KboiREipriBk=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-311-7auRZxGRPS6E_RRKeiWeaQ-1; Thu, 08 Feb 2024 11:55:28 -0500
+X-MC-Unique: 7auRZxGRPS6E_RRKeiWeaQ-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-42c33d3601cso230521cf.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Feb 2024 08:55:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707411328; x=1708016128;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=pMoXHXY4+qZJUeESHsnlS6as99TdnkReAv8/2YwmyFc=;
+ b=dNCQy6J1I8KiMO7yRYwoKeIZT7rzZA6H4TL4prjDnQEs0RuwnqFCahS9YLvGmCTWj1
+ Xn2jC805Z9zvidRZ82gPi6G/K2+cvpOzl7ra48avZy8X8YAlJ9nwMIC9kqGfnuBCXdnZ
+ C22tZ+eUan2kQIyPvvgHoMpk3Q/94CTJtWfn6E8qadtIwxt9lLiwfM7wPMlQ+7Kf0ECA
+ m8TdFHB+a3PjrfniYKRQYcp7RxYymF3Vz9KbIUb1AByt3XUR/l11/HzT77gM2GdoqVsF
+ IAv14vAU2Ny3SrG3lKkXIfMZHfrsw4cNmrn9uqe+gEhPMOHyPmJmVgyRmFo16qOkUqWr
+ VmnQ==
+X-Gm-Message-State: AOJu0YytgjccIlf2Aw5jvBp8fSV7L6F2II2DXXnTpnxBW2mq5f+XcakC
+ DAZWgq81uIZTWcNF69qWZFqg8zKkGZLYNOAbo+Ib15FqGmdxzyoWtbsDu6gxnC/pXm1GkY5FV4h
+ bReoimgSBCsnSxzndXnKSAtcy1d3xmx0pKlo5XG8GTiBAb6OMVQ==
+X-Received: by 2002:ac8:48c2:0:b0:42c:35e4:3cc6 with SMTP id
+ l2-20020ac848c2000000b0042c35e43cc6mr8166346qtr.3.1707411327953; 
+ Thu, 08 Feb 2024 08:55:27 -0800 (PST)
+X-Received: by 2002:ac8:48c2:0:b0:42c:35e4:3cc6 with SMTP id
+ l2-20020ac848c2000000b0042c35e43cc6mr8166327qtr.3.1707411327686; 
+ Thu, 08 Feb 2024 08:55:27 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV0MsbI4sXkZ9EFzkklzZHbdlraq6P1pZFfv11g5LJ0Ac6oud/PoQh/z0Jr7I953hvqsvKrFejLdLpFPkcMTZl8pH7LzX6u1nIfkpefR2hGtT/abz+9scooBMx2EVJulbAYZYh06hD0boFsRH3XXqxzFK5dQOW06WnvfKrh6imAvFMiqIs26SGwhPNiIdTlTDTJlqy2qZo01TjL0nsVCBEMeSveqI1KCGMN+3+19GbMKSeFj9bOZhe3t98r7SDM5XQdeHLCXR/+EtahhAuypFcRQGcr5TkryosL1b1gQI74sCMa7/J2
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ gx11-20020a05622a27cb00b0042bf5ec20f0sm148876qtb.30.2024.02.08.08.55.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 08 Feb 2024 08:55:26 -0800 (PST)
+Message-ID: <5ede0197-4587-43e8-976f-d3001f42b8b9@redhat.com>
+Date: Thu, 8 Feb 2024 17:55:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] tests/qtest: Add test for ASPEED SCU
-To: Tan Siewert <tan@siewert.io>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+Subject: Re: [RFC PATCH 0/5] QEMU v7.2.0 aarch64 Nested Virtualization Support
+To: Miguel Luis <miguel.luis@oracle.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
-References: <20250630112646.74944-1-tan@siewert.io>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20250630112646.74944-1-tan@siewert.io>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=bKmi=ZN=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>,
+ Andrew Jones <drjones@redhat.com>, Marc Zyngier <maz@kernel.org>
+References: <20230227163718.62003-1-miguel.luis@oracle.com>
+From: Eric Auger <eauger@redhat.com>
+In-Reply-To: <20230227163718.62003-1-miguel.luis@oracle.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.213,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_SORBS_WEB=1.5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,292 +143,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m9KGcLBp6pX5
+X-TUID: tG/juzVqi5H3
 
-+Thomas for more qtest expertise,
+Hi Miguel,
 
-On 6/30/25 13:26, Tan Siewert wrote:
-> This adds basic tests for the ASPEED System Control Unit (SCU) and its
-> protection mechanism on the AST2500 and AST2600 platforms.
+On 2/27/23 17:37, Miguel Luis wrote:
+> This series adds ARMv8.3/8.4 nested virtualization support in KVM mode.
+>     
+> To enable nested virtualization for a guest, the host must expose EL2
+> support via QEMU command line switches:
 > 
-> The tests verify:
->    - That SCU protection registers can be unlocked and locked again
->    - That modifying the primary protection register on AST2600 also
->      affects the secondary one
->    - That writes to protected SCU registers are blocked unless
->      protection registers are unlocked explicitly
+> -machine virt,accel=kvm,virtualization=on
 > 
-> These tests ensure proper emulation of hardware locking behaviour
-> and help catch regressions in SCU access logic.
+> Inspired on Haibo Xu's previous work [0][1], Marc Zyngier's kvmtool branch [2]
+> and kernel patches [3] on nested virtualization for aarch64, this has been
+> tested on an Ampere implementation.
 > 
-> Signed-off-by: Tan Siewert <tan@siewert.io>
-> ---
-> V2:
->    - Merge unnecessary aspeed-scu-utils into aspeed_scu-test
->      file [Cedric]
+> This series adapts previous work on top of v7.2.0, it considers comments given
+> at the time and preserves authorship of the original patches.
 > 
->   tests/qtest/aspeed_scu-test.c | 231 ++++++++++++++++++++++++++++++++++
->   tests/qtest/meson.build       |   3 +-
->   2 files changed, 233 insertions(+), 1 deletion(-)
->   create mode 100644 tests/qtest/aspeed_scu-test.c
+> [0]: https://lore.kernel.org/qemu-devel/cover.1616052889.git.haibo.xu@linaro.org/
+> [1]: https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
+> [2]: https://git.kernel.org/pub/scm/linux/kernel/git/maz/kvmtool.git/log/?h=arm64/nv-5.16
+> [3]: https://lore.kernel.org/linux-arm-kernel/20230131092504.2880505-1-maz@kernel.org/
+
+I rebased the series on top of v8.2. I was able to boot some L2 guests
+with it, although it still does not work with guests featuring edk2.
+
+Do you plan to send a respin or may I do?
+
+Thanks
+
+Eric
 > 
-> diff --git a/tests/qtest/aspeed_scu-test.c b/tests/qtest/aspeed_scu-test.c
-> new file mode 100644
-> index 0000000000..ca09f9171f
-> --- /dev/null
-> +++ b/tests/qtest/aspeed_scu-test.c
-> @@ -0,0 +1,231 @@
-> +/*
-> + * QTest testcase for the ASPEED AST2500 and AST2600 SCU.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Copyright (C) 2025 Tan Siewert
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "libqtest-single.h"
-> +
-> +/*
-> + * SCU base, as well as protection key are
-> + * the same on AST2500 and 2600.
-> + */
-> +#define AST_SCU_BASE                    0x1E6E2000
-> +#define AST_SCU_PROT_LOCK_STATE         0x0
-> +#define AST_SCU_PROT_LOCK_VALUE         0x2
-> +#define AST_SCU_PROT_UNLOCK_STATE       0x1
-> +#define AST_SCU_PROT_UNLOCK_VALUE       0x1688A8A8
-> +
-> +#define AST2500_MACHINE                 "-machine ast2500-evb"
-> +#define AST2500_SCU_PROT_REG            0x00
-> +#define AST2500_SCU_MISC_2_CONTROL_REG  0x4C
-> +
-> +#define AST2600_MACHINE                 "-machine ast2600-evb"
-> +/* AST2600 has two protection registers */
-> +#define AST2600_SCU_PROT_REG            0x000
-> +#define AST2600_SCU_PROT_REG2           0x010
-> +#define AST2600_SCU_MISC_2_CONTROL_REG  0x0C4
-> +
-> +#define TEST_LOCK_ARBITRARY_VALUE       0xABCDEFAB
-> +
-> +/**
-> + * Assert that a given register matches an expected value.
-> + *
-> + * Reads the register and checks if its value equals the expected value.
-> + *
-> + * @param *s - QTest machine state
-> + * @param reg - Address of the register to be checked
-> + * @param expected - Expected register value
-> + */
-> +static inline void assert_register_eq(QTestState *s,
-> +                                      uint32_t reg,
-> +                                      uint32_t expected)
-> +{
-> +    uint32_t value = qtest_readl(s, reg);
-> +    g_assert_cmphex(value, ==, expected);
-> +}
-> +
-> +/**
-> + * Assert that a given register does not match a specific value.
-> + *
-> + * Reads the register and checks that its value is not equal to the
-> + * provided value.
-> + *
-> + * @param *s - QTest machine state
-> + * @param reg - Address of the register to be checked
-> + * @param not_expected - Value the register must not contain
-> + */
-> +static inline void assert_register_neq(QTestState *s,
-> +                                       uint32_t reg,
-> +                                       uint32_t not_expected)
-> +{
-> +    uint32_t value = qtest_readl(s, reg);
-> +    g_assert_cmphex(value, !=, not_expected);
-> +}
-> +
-> +/**
-> + * Test whether the SCU can be locked and unlocked correctly.
-> + *
-> + * When testing multiple registers, this function assumes that writing
-> + * to the first register also affects the others. However, writing to
-> + * any other register only affects itself.
-> + *
-> + * @param *machine - input machine configuration, passed directly
-> + *                   to QTest
-> + * @param regs[] - List of registers to be checked
-> + * @param regc - amount of arguments for registers to be checked
-> + */
-> +static void test_protection_register(const char *machine,
-> +                                     const uint32_t regs[],
-> +                                     const int regc)
-> +{
-> +    QTestState *s = qtest_init(machine);
-> +
-> +    for (int i = 0; i < regc; i++) {
-> +        uint32_t reg = regs[i];
-> +
-> +        qtest_writel(s, reg, AST_SCU_PROT_UNLOCK_VALUE);
-> +        assert_register_eq(s, reg, AST_SCU_PROT_UNLOCK_STATE);
-> +
-> +        /**
-> +         * Check that other registers are unlocked too, if more
-> +         * than one is available.
-> +         */
-> +        if (regc > 1 && i == 0) {
-> +            /* Initialise at 1 instead of 0 to skip first */
-> +            for (int j = 1; j < regc; j++) {
-> +                uint32_t add_reg = regs[j];
-> +                assert_register_eq(s, add_reg, AST_SCU_PROT_UNLOCK_STATE);
-> +            }
-> +        }
-> +
-> +        /* Lock the register again */
-> +        qtest_writel(s, reg, AST_SCU_PROT_LOCK_VALUE);
-> +        assert_register_eq(s, reg, AST_SCU_PROT_LOCK_STATE);
-> +
-> +        /* And the same for locked state */
-> +        if (regc > 1 && i == 0) {
-> +            /* Initialise at 1 instead of 0 to skip first */
-> +            for (int j = 1; j < regc; j++) {
-> +                uint32_t add_reg = regs[j];
-> +                assert_register_eq(s, add_reg, AST_SCU_PROT_LOCK_STATE);
-> +            }
-> +        }
-> +    }
-> +
-> +    qtest_quit(s);
-> +}
-> +
-> +static void test_2500_protection_register(void)
-> +{
-> +    uint32_t regs[] = { AST_SCU_BASE + AST2500_SCU_PROT_REG };
-> +
-> +    test_protection_register(AST2500_MACHINE,
-> +                             regs,
-> +                             ARRAY_SIZE(regs));
-> +}
-> +
-> +static void test_2600_protection_register(void)
-> +{
-> +    /**
-> +     * The AST2600 has two protection registers, both
-> +     * being required to be unlocked to do any operation.
-> +     *
-> +     * Modifying SCU000 also modifies SCU010, but modifying
-> +     * SCU010 only will keep SCU000 untouched.
-> +     */
-> +    uint32_t regs[] = { AST_SCU_BASE + AST2600_SCU_PROT_REG,
-> +                        AST_SCU_BASE + AST2600_SCU_PROT_REG2 };
-> +
-> +    test_protection_register(AST2600_MACHINE,
-> +                             regs,
-> +                             ARRAY_SIZE(regs));
-> +}
-> +
-> +/**
-> + * Test if SCU register writes are correctly allowed or blocked
-> + * depending on the protection register state.
-> + *
-> + * The test first locks the protection register and verifies that
-> + * writes to the target SCU register are rejected. It then unlocks
-> + * the protection register and confirms that the written value is
-> + * retained when unlocked.
-> + *
-> + * @param *machine - input machine configuration, passed directly
-> + *                   to QTest
-> + * @param protection_register - first SCU protection key register
-> + *                              (only one for keeping it simple)
-> + * @param test_register - Register to be used for writing arbitrary
-> + *                        values
-> + */
-> +static void test_write_permission_lock_state(const char *machine,
-> +                                             const uint32_t protection_register,
-> +                                             const uint32_t test_register)
-> +{
-> +    QTestState *s = qtest_init(machine);
-> +
-> +    /* Arbitrary value to lock provided SCU protection register */
-> +    qtest_writel(s, protection_register, AST_SCU_PROT_LOCK_VALUE);
-> +
-> +    /* Ensure that the SCU is really locked */
-> +    assert_register_eq(s, protection_register, AST_SCU_PROT_LOCK_STATE);
-> +
-> +    /* Write a known arbitrary value to test that the write is blocked */
-> +    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-> +
-> +    /* We do not want to have the written value to be saved */
-> +    assert_register_neq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-> +
-> +    /**
-> +     * Unlock the SCU and verify that it can be written to.
-> +     * Assumes that the first SCU protection register is sufficient to
-> +     * unlock all protection registers, if multiple are present.
-> +     */
-> +    qtest_writel(s, protection_register, AST_SCU_PROT_UNLOCK_VALUE);
-> +    assert_register_eq(s, protection_register, AST_SCU_PROT_UNLOCK_STATE);
-> +
-> +    /* Write a known arbitrary value to test that the write works */
-> +    qtest_writel(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-> +
-> +    /* Ensure that the written value is retained */
-> +    assert_register_eq(s, test_register, TEST_LOCK_ARBITRARY_VALUE);
-> +
-> +    qtest_quit(s);
-> +}
-> +
-> +static void test_2500_write_permission_lock_state(void)
-> +{
-> +    test_write_permission_lock_state(
-> +            AST2500_MACHINE,
-> +            AST_SCU_BASE + AST2500_SCU_PROT_REG,
-> +            AST_SCU_BASE + AST2500_SCU_MISC_2_CONTROL_REG
-> +    );
-> +}
-> +
-> +static void test_2600_write_permission_lock_state(void)
-> +{
-> +    test_write_permission_lock_state(
-> +            AST2600_MACHINE,
-> +            AST_SCU_BASE + AST2600_SCU_PROT_REG,
-> +            AST_SCU_BASE + AST2600_SCU_MISC_2_CONTROL_REG
-> +    );
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +    g_test_init(&argc, &argv, NULL);
-> +
-> +    qtest_add_func("/ast2500/scu/protection_register",
-> +                   test_2500_protection_register);
-> +    qtest_add_func("/ast2600/scu/protection_register",
-> +                   test_2600_protection_register);
-> +
-> +    qtest_add_func("/ast2500/scu/write_permission_lock_state",
-> +                   test_2500_write_permission_lock_state);
-> +    qtest_add_func("/ast2600/scu/write_permission_lock_state",
-> +                   test_2600_write_permission_lock_state);
-> +
-> +    return g_test_run();
-> +}
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 8ad849054f..8c5fcc4fc1 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -215,7 +215,8 @@ qtests_npcm8xx = \
->   qtests_aspeed = \
->     ['aspeed_gpio-test',
->      'aspeed_hace-test',
-> -   'aspeed_smc-test']
-> +   'aspeed_smc-test',
-> +   'aspeed_scu-test']
-
-Sorry I should have mentioned that :/ Could you please maintain the
-alphabetic order ?
-
-With that,
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
+> Miguel Luis (5):
+>   linux-headers: [kvm,arm64] add the necessary definitions to match host
+>     kernel
+>   hw/intc/gicv3: add support for setting KVM vGIC maintenance IRQ
+>   target/arm/kvm: add helper to detect EL2 when using KVM
+>   target/arm: enable feature ARM_FEATURE_EL2 if EL2 is supported
+>   arm/virt: provide virtualization extensions to the guest
+> 
+>  hw/arm/virt.c                      |  8 +++++++-
+>  hw/intc/arm_gicv3_common.c         |  1 +
+>  hw/intc/arm_gicv3_kvm.c            | 25 +++++++++++++++++++++++++
+>  include/hw/intc/arm_gicv3_common.h |  1 +
+>  linux-headers/asm-arm64/kvm.h      |  2 ++
+>  linux-headers/linux/kvm.h          |  1 +
+>  target/arm/cpu.h                   |  2 +-
+>  target/arm/kvm64.c                 | 21 +++++++++++++++++++++
+>  target/arm/kvm_arm.h               | 12 ++++++++++++
+>  9 files changed, 71 insertions(+), 2 deletions(-)
+> 
 

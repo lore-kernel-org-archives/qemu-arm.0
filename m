@@ -1,151 +1,109 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp664864ejb;
-        Fri, 9 Feb 2024 02:02:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFYl1P8hJp2j1j2SMML1V5mpnQM9qMPB/weT8OKw6P0NpQAqKM4ZhA1r8qNesljvVLhPSGo
-X-Received: by 2002:a0c:e1c1:0:b0:68c:9b63:bc5e with SMTP id v1-20020a0ce1c1000000b0068c9b63bc5emr956289qvl.59.1707472963337;
-        Fri, 09 Feb 2024 02:02:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1707472963; cv=pass;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp863319ejb;
+        Fri, 9 Feb 2024 08:01:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUPS67BKKX2rYytIcEof4XJVs0ggbSG5ELCwAbYGpKp+EFeMWIIju59jpYaHGyBKBjLg7BnhaUFFX53YiVzkeEMLhFHsd3/
+X-Google-Smtp-Source: AGHT+IEB+Z7Sx3shukgfEAdbs4L+hGtyhbYlfrdQz2RcP/Qsdvf9wvWtboee2Ji8KN2hwNodIIQ3
+X-Received: by 2002:a0c:f291:0:b0:68c:a4a8:b134 with SMTP id k17-20020a0cf291000000b0068ca4a8b134mr2038212qvl.45.1707494503794;
+        Fri, 09 Feb 2024 08:01:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707494503; cv=none;
         d=google.com; s=arc-20160816;
-        b=RlYkqKpORn3I82fHrMwso8cQLc3lkh9DSMHFdSoMyof4pqxc7hPOaAlzHWFQiALPT8
-         zgklS1LiFBkJSdjh+YOHCIbXB9eZHOelbWRh0DbeO32m10t2spopSa8lSZ8xJT3OBi0r
-         /cG40K31ujBrLndZVs+p0RIdYPEK2SC6Z+IOosn6IX/rrCix+CHDUx70bc+CvSfay90U
-         H+qtN1wDwkzrhmJuki+uXGimKH/5xmpJyC1qE8rmTOMuINe9cxVzTuRvcXV4YjidMP6X
-         Mi44ttoGWyBRe75wekaD3CnAhvkdiCAHA+GFQlvFvN1nR19n9tvVGpaLpAgW8vXgZTID
-         iCDQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=jveR7tor7OaS9GHxd5W9LDu7xKEuCuSAn51zBBrIBxR2iNpuk/7Gqi/jdogO/zj7s/
+         ipZCcTSOUjX5TETKqBNAPsiuDzSZHEEo/YkNpow237uGezOuiw+agkFB5qI2ACl+nK0h
+         AxI4qXjOr2OVtBJ4luJkKKNhhpZcEHN3ur4TZpZJf6THNdREXR6g37enuYOMwoPznE1w
+         wWu+kACFOJAuMMuCdIRNnjS9WpRsPXnEK1xuO2f4tr8jTnnCT2IsFj9r8K596laX9IHU
+         wQQ/ZrLmGDnmPEInweRg+fnFb3HF9uGaz7FT/EKq6LfGdNj22PcbJ7b+dXZdrtKhYp+E
+         5OYQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yHRDIhNvq2dLxlbiRi/N+0ycFHcjg7Lo272ubtl+kZA=;
-        fh=o1nCEgEfJfDptp/NT2xTpIAD1N2mASRlNO/gnPYOuEQ=;
-        b=zEgoXhQ6xXmaSIWGixu5sFMyNUFJEqSJV7/JpQdRDKGSS/egtetvt/jvTYWJncxr4L
-         Yz7v/GzMFj/3ZJHRsXM1alYj1kC6kZ2TqIflDKzpepSyV6vJLmtAU08XSdRBE5mEmtFD
-         wWFZ9HXU5mTwIjP54tqXKAQThS8bLcFg+QxxayW+n78b1t9A1fo8xu9267qRMlMKsre+
-         pXQ4vdbGPYItYCwfoYWT6+IRI8xUOJaYzNP3D/26sth+NHdH2jCe2Z30H6HmBky7juWT
-         ZeAGyvG4YNpPz+q56+KNs+G9BMknj+2e7ORcnRwjaFVIGDw1nFuJVauxocoetYmyjvzj
-         TWrQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=NBtPtUTLr4gACY8ONXPAct8+BhGOhDuuMtWRt+FduVo=;
+        fh=flBayqCcpGH27+q0z3bhhxslZoS8n0NxpkLBPyjHTlE=;
+        b=Cq3hr/f4HkjtuAPQeA4cIsSpPoiXbTs/XJ/wd5VhOx9ez40Ms8O9TIOWAFtl1t1gWj
+         3uQj58ZN2rAfJp/NN/1xfjjTuJF4UBiFVe4I2JIna7Ez7lDhsHSd/Dugfki5k0jmzV0C
+         pjzTcJAPZNt4lQtzwhUHYrf5OygvuMYtNSHPOXyHcFOi1c+cvEjvg6VkCpph6lqsG8E7
+         ERdlrvHpEqjH3iHzAh1pt+XI01R3IEBmYg6i80vhg36/joX0+JVeT6+Gv4Zd/mZGiVrq
+         PWBpAzGaUxL3oOZvRZEQRijw/XVQxNgOM34JfMIfffjIu51HBaQ60X+nla8FwiWG++i7
+         Oa5g==;
         darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=MABJXdNy;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLHvi3gS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-X-Forwarded-Encrypted: i=2; AJvYcCWOD5RCJ8qRbkw7Ow2FgaGgEjVSPVfxXKbAG1My5Ngroox1dfLZP4AlDtttqkiRpM9dgERGG3BVzb6AGAUG76ejro4K904n
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Forwarded-Encrypted: i=1; AJvYcCVprl3oxPCemXx504PsFYOo0aPNuP71sN9LNjYK5u0eIS/xR26GdNjepTtfcYzzJa2wWLGLvkAheazTELCfWeVjWm/hfR5W
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020ad45aaa000000b0068cc2054432si1553363qvg.495.2024.02.09.02.02.43
+        by mx.google.com with ESMTPS id iu10-20020ad45cca000000b0068cc029025fsi2218428qvb.304.2024.02.09.08.01.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Feb 2024 02:02:43 -0800 (PST)
+        Fri, 09 Feb 2024 08:01:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=MABJXdNy;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLHvi3gS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rYNhx-0001Hb-59; Fri, 09 Feb 2024 05:02:09 -0500
+	id 1rYTJX-000186-EJ; Fri, 09 Feb 2024 11:01:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1rYNhl-0001Go-ML; Fri, 09 Feb 2024 05:01:59 -0500
-Received: from mail-bn8nam11on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2414::601]
- helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rYTJQ-00016h-P3
+ for qemu-arm@nongnu.org; Fri, 09 Feb 2024 11:01:12 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1rYNhe-0004JU-0M; Fri, 09 Feb 2024 05:01:57 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Vi2f42mFDW7UC6cGcDfdxkMfS0ovJoCenBn/dcJ2MNrAV8SSsXLzd+sFDOVelwXF9G0y6iD/cjY+7Nzj/Vy40K4jA9z7nYk9OW2KENTUVlp/Tip9cNAzTKTMAS3IROnMCqWhZdUXYGsGSy0jNcUCj0Axi2WLvWOvEIGJjTICuTIM1yv0qLQC9ULETxGJW7004L8ZG0lJHiTjMi3xGb4bvUWFToSqr+9j/SRj9uW8HUukfBffr6ZUnU+now5nbKBsIpO+PR5xkHBtjj3Zd9zGkWBnY48IWukcjegzk0AIIXzShfYhJf8evNK8e2U+2RI+Qhj9gapBjWJLFH1GfbJQdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yHRDIhNvq2dLxlbiRi/N+0ycFHcjg7Lo272ubtl+kZA=;
- b=TjozXjJmbm5EgH+812DxBF6xbAc1jzHMMArmSsZay9zP40jL2aJQ5AL99txtRFWhKIco8APJJfk6LwFDIVqv8oFRedoBlENoh0LTdwJWSHZtBrzhEiiA+gYOnKlXOjft2F3GluhOWJa0lw1HEre9cPzYyNHfIlTPc2chvJRhRVNp0BKOGQzmiFHsJIyYKTunSTxX1ggyM8lx+k9GaOumhfMGtXiJP2Qu1Lp4nNW1JothcmNA2Lh78uucsY+Inz5vpB4OvBv7efMgBYeKkPdBFIYGOdit0MU1GIQDYYBAX+yZqjJXOVcHOPJnrOrty+TciyJJTrwFIyD4657y5JMOrQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yHRDIhNvq2dLxlbiRi/N+0ycFHcjg7Lo272ubtl+kZA=;
- b=MABJXdNyfLZmdewbBIk9hVeGcSyeUYkKP8JTbUhXByMT2wcKH6HKR3BvICGiM7UIy+6Xf/C1PpVC6dYuTMFubSrV1VS+LOwz0Qqd5oC8KJtWPRu6Nq5+bbcSxCVnKVW7iY1LgOkpYnpQkdKtkc+mGHga7ZRiwm2jk/2nNSRrefo=
-Received: from SJ0PR03CA0058.namprd03.prod.outlook.com (2603:10b6:a03:33e::33)
- by MN2PR12MB4424.namprd12.prod.outlook.com (2603:10b6:208:26a::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.14; Fri, 9 Feb
- 2024 10:01:42 +0000
-Received: from SJ1PEPF00001CE4.namprd03.prod.outlook.com
- (2603:10b6:a03:33e:cafe::f8) by SJ0PR03CA0058.outlook.office365.com
- (2603:10b6:a03:33e::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.39 via Frontend
- Transport; Fri, 9 Feb 2024 10:01:41 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- SJ1PEPF00001CE4.mail.protection.outlook.com (10.167.242.20) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7249.19 via Frontend Transport; Fri, 9 Feb 2024 10:01:41 +0000
-Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Fri, 9 Feb
- 2024 04:01:30 -0600
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB08.amd.com
- (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Fri, 9 Feb
- 2024 02:01:30 -0800
-Received: from luc-work-vm.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.34 via Frontend
- Transport; Fri, 9 Feb 2024 04:01:29 -0600
-From: Luc Michel <luc.michel@amd.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: Luc Michel <luc.michel@amd.com>, Eric Auger <eric.auger@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Francisco Iglesias
- <francisco.iglesias@amd.com>
-Subject: [PATCH] hw/arm/smmuv3: add support for stage 1 access fault
-Date: Fri, 9 Feb 2024 11:01:01 +0100
-Message-ID: <20240209100101.3631468-1-luc.michel@amd.com>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rYTJC-000655-7L
+ for qemu-arm@nongnu.org; Fri, 09 Feb 2024 11:01:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1707494457;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NBtPtUTLr4gACY8ONXPAct8+BhGOhDuuMtWRt+FduVo=;
+ b=dLHvi3gSBwgZwAc/BSXaX//O/wM6fjcDrECX33z6a6TYioo8zYHzYrf06PhUiYecsYMBpk
+ 2SMW5uwCuRJ1/C+NeyvRnA3rwx96ScGYOJT2Ddxihb7dvDVyz6mLLWsh7agd/oMq3+kUnh
+ M2v7cV6Es8Q9hoke4NPffex0GY4fG8Q=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-532-LLLbaW6yNa-XtsvAFpG_rw-1; Fri, 09 Feb 2024 11:00:54 -0500
+X-MC-Unique: LLLbaW6yNa-XtsvAFpG_rw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6F8E48489A0;
+ Fri,  9 Feb 2024 16:00:50 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A82BF492BC6;
+ Fri,  9 Feb 2024 16:00:48 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, miguel.luis@oracle.com, haibo.xu@linaro.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, maz@kernel.org,
+ gkulkarni@amperecomputing.com
+Subject: [RFC v2 3/5] target/arm/kvm: Add helper to detect EL2 when using KVM
+Date: Fri,  9 Feb 2024 16:59:15 +0100
+Message-ID: <20240209160039.677865-4-eric.auger@redhat.com>
+In-Reply-To: <20240209160039.677865-1-eric.auger@redhat.com>
+References: <20240209160039.677865-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF00001CE4:EE_|MN2PR12MB4424:EE_
-X-MS-Office365-Filtering-Correlation-Id: 04598c4e-25da-4a4b-712b-08dc29561d1f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: f6RtlOyIiDu+VxFFM+m+fIX1BWW9Iu3MJUBZMI9n0CzGQv1TUV9qqaZJXXLb2pp1LATDSJtc1Qvzhb14J0Mz8vGRgfWA/4nvdAClQWCpz1F7Qx9wIxZPyCC9XlyahXp7lTjsfSMfudVa6FQJQWGkf49ufJWtlxnnHcoIa9ptjsq17/aGiNH9o1dJ21icsrglbn6TKDftN00i5jVm4E0e9wv7v2spyf2pkPg86s6CfvswWfqUb5MEdBKQPzqNFppnKKhlYabvo0XRl6ViamoHOTU8dsJlrefL0lXQEd7LmjOWR1jtuUCyRsasY8fTucZKXhBYXPCS01syk2otuwC6A4NnsTUO15xwhn1UIgHlzA9wHqQMqzlfPF0oj586EGpwD2jxnUEFO8UC+mt6e0Y6yqdpCYkELKM7TBACkv54mqIzwWVrKbeOUUpc/HoAlPrD+8GTcW7TeebX7+yoNGj70/0w4UgFEJ0OSzvZXCd/urQLC/H+JeYsDHISnX0FP3eOGixL6UpCbuGlfqXx+/1bjoDg8RkcMmfRSoajvKqzJFgaguqn4UmMxM/wCHbCSo29ODGsfgkHDcbhmxV7wPZU7mbKudCKoCilUoT+JhEGCMc=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(376002)(136003)(346002)(396003)(39860400002)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(82310400011)(40470700004)(46966006)(36840700001)(478600001)(83380400001)(1076003)(26005)(2616005)(41300700001)(426003)(336012)(44832011)(2906002)(5660300002)(110136005)(54906003)(6666004)(316002)(70586007)(70206006)(8936002)(8676002)(4326008)(36756003)(81166007)(82740400003)(356005)(86362001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Feb 2024 10:01:41.0418 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 04598c4e-25da-4a4b-712b-08dc29561d1f
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00001CE4.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4424
-Received-SPF: softfail client-ip=2a01:111:f403:2414::601;
- envelope-from=Luc.Michel@amd.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.213,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.269,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,102 +118,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yz8md+fu5asj
+X-TUID: 9li8HprjpTY0
 
-An access fault is raised when the Access Flag is not set in the
-looked-up PTE and the AFFD field is not set in the corresponding context
-descriptor. This was already implemented for stage 2. Implement it for
-stage 1 as well.
+From: Haibo Xu <haibo.xu@linaro.org>
 
-Signed-off-by: Luc Michel <luc.michel@amd.com>
+Introduce query support for KVM_CAP_ARM_EL2.
+
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/arm/smmuv3-internal.h     |  1 +
- include/hw/arm/smmu-common.h |  1 +
- hw/arm/smmu-common.c         | 10 ++++++++++
- hw/arm/smmuv3.c              |  1 +
- roms/SLOF                    |  2 +-
- 5 files changed, 14 insertions(+), 1 deletion(-)
+ target/arm/kvm.c     |  5 +++++
+ target/arm/kvm_arm.h | 12 ++++++++++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index e987bc4686b..e4dd11e1e62 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -622,10 +622,11 @@ static inline int pa_range(STE *ste)
- #define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
- #define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
- #define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
- #define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
- #define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
-+#define CD_AFFD(x)       extract32((x)->word[1], 3 , 1)
- #define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
- #define CD_HD(x)         extract32((x)->word[1], 10 , 1)
- #define CD_HA(x)         extract32((x)->word[1], 11 , 1)
- #define CD_S(x)          extract32((x)->word[1], 12, 1)
- #define CD_R(x)          extract32((x)->word[1], 13, 1)
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index fd8d772da11..5ec2e6c1a43 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -90,10 +90,11 @@ typedef struct SMMUTransCfg {
-     /* Shared fields between stage-1 and stage-2. */
-     int stage;                 /* translation stage */
-     bool disabled;             /* smmu is disabled */
-     bool bypassed;             /* translation is bypassed */
-     bool aborted;              /* translation is aborted */
-+    bool affd;                 /* AF fault disable */
-     uint32_t iotlb_hits;       /* counts IOTLB hits */
-     uint32_t iotlb_misses;     /* counts IOTLB misses*/
-     /* Used by stage-1 only. */
-     bool aa64;                 /* arch64 or aarch32 translation table */
-     bool record_faults;        /* record fault events */
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 9a8ac45431a..09ff72e55f5 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -362,10 +362,20 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
-                                         &block_size);
-             trace_smmu_ptw_block_pte(stage, level, baseaddr,
-                                      pte_addr, pte, iova, gpa,
-                                      block_size >> 20);
-         }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 81813030a5..0996866afe 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1791,6 +1791,11 @@ bool kvm_arm_aarch32_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL1_32BIT);
+ }
+ 
++bool kvm_arm_el2_supported(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL2);
++}
 +
-+        /*
-+         * If AFFD and PTE.AF are 0 => fault. (5.4. Context Descriptor)
-+         * An Access fault takes priority over a Permission fault.
-+         */
-+        if (!PTE_AF(pte) && !cfg->affd) {
-+            info->type = SMMU_PTW_ERR_ACCESS;
-+            goto error;
-+        }
+ bool kvm_arm_sve_supported(void)
+ {
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index cfaa0d9bc7..36e4b37ec0 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
+  */
+ bool kvm_arm_sve_supported(void);
+ 
++/**
++ * kvm_arm_el2_supported:
++ *
++ * Returns true if KVM can enable EL2 and false otherwise.
++ */
++bool kvm_arm_el2_supported(void);
 +
-         ap = PTE_AP(pte);
-         if (is_permission_fault(ap, perm)) {
-             info->type = SMMU_PTW_ERR_PERMISSION;
-             goto error;
-         }
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 68eeef3e1d4..c416b8c0030 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -682,10 +682,11 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+ /**
+  * kvm_arm_get_max_vm_ipa_size:
+  * @ms: Machine state handle
+@@ -235,6 +242,11 @@ static inline bool kvm_arm_sve_supported(void)
+     return false;
+ }
  
-     cfg->oas = oas2bits(CD_IPS(cd));
-     cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
-     cfg->tbi = CD_TBI(cd);
-     cfg->asid = CD_ASID(cd);
-+    cfg->affd = CD_AFFD(cd);
- 
-     trace_smmuv3_decode_cd(cfg->oas);
- 
-     /* decode data dependent on TT */
-     for (i = 0; i <= 1; i++) {
-diff --git a/roms/SLOF b/roms/SLOF
-index 3a259df2449..6b6c16b4b40 160000
---- a/roms/SLOF
-+++ b/roms/SLOF
-@@ -1 +1 @@
--Subproject commit 3a259df2449fc4a4e43ab5f33f0b2c66484b4bc3
-+Subproject commit 6b6c16b4b40763507cf1f518096f3c3883c5cf2d
++static inline bool kvm_arm_el2_supported(void)
++{
++    return false;
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
 -- 
-2.39.2
+2.41.0
 

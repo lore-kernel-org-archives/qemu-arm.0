@@ -1,82 +1,83 @@
-Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp17849ejb;
-        Mon, 12 Feb 2024 08:35:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGuyuKEtrar6e41cjbXnS5s3s0UsBgGijk981slM1mbza7gQIDcYpQJ7wpp1SrAADikBHMD
-X-Received: by 2002:a05:622a:144b:b0:42c:7671:f6c1 with SMTP id v11-20020a05622a144b00b0042c7671f6c1mr5225892qtx.30.1707755727626;
-        Mon, 12 Feb 2024 08:35:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707755727; cv=none;
+Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp18075ejb;
+        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXequ2UFOfUTWiDMGvGi0Jpz0wEb10rmxpDTdsdEGPkvoXqz71YsXsESpHt6Vl+Ru6n3baoaWv5Y84Z1Pqp0QS+lrkL7it6
+X-Google-Smtp-Source: AGHT+IG1EZdm+6FW6ch69fSOdJkaJ6bTbkJojDMknZy/Po4qhwseKXaBnPjKdcIhKABU1u1xqBKl
+X-Received: by 2002:a05:620a:16a8:b0:785:c158:7b4d with SMTP id s8-20020a05620a16a800b00785c1587b4dmr120718qkj.0.1707755753699;
+        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707755753; cv=none;
         d=google.com; s=arc-20160816;
-        b=s02SdJHYG4fSD8zhanY00/XdCeDaeJUN9aUBxpyniKAyaaynqDyCp909Kwgoc4RCmw
-         VzHlKrRxBKitoDxw6WRz91/9gark0nfTjXCJOwtijQHr4E1li5w9496/1ioHr/+COc29
-         xqaeQfHFLYYhcD6yNWhi+5ZiigxIRF1bRUSl3PcIykiGwHv77RRoI4mQSNeGqoQRhKhk
-         gjnpx8Dm97XWENzswVMTvWARq08ydUI9Z0HDrjeGEJncWXQut42EezcpeODB02zg82mq
-         mOv9PYt9CC29GL9DlPS5OGjPWloweq4LgRIqufENOgqtgCZ0EEVNYkmSqXws4K0AcW1x
-         91qA==
+        b=tGTeet36+5fzho2NqVRh4tEwvgBgR1w4ZrHOdzfu2hAf+8JcB4DHfHUbAVfTuI239I
+         oCsAbmZhXSEtNbUGJpCg3DLAL77zm2pYbX7WfXWkthK4URwh6gokcWw8wt2CZyNcAcni
+         ySd65iXg52vI5vHnX04xtwCrl/BlwgNmQB35Q+4owbGbvg0qYP5kX7ui27IubTyseTM0
+         9CkqTfs9D6cemdi8VZC5b0d0IsR3h1MlngotDKreKW8q6HBsmHfqKOfD0fi1LjFiBl8y
+         t0g+1ZYFUjoyBoK9TO/bZwzA5v4TZizyCnvLMxmxbKDdNGTGDMOJzQhgqe8l6/W/aGtU
+         bOcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=scyeiFfkQka8Kw8QvyJDLFkJvhFstNYunlYlNOr7e6o=;
-        fh=TKv+cusdhLKxIT3P0Mk5jV32MXyZ2Gd+Rl11hGv+2zo=;
-        b=OM9Xx0wU1Et8LVvm43stIiCn81mope/hZxapNVnE49Vr4tzy7PBL9m+HqU0KiJWWl7
-         coDJjxQGpVQlfSD2MM1XYmHuuxOKvc6x7+dEFZiV1yU65qM5ai/1O91n+XYZHIRVetnp
-         BgLfW5GLjgiYAybtOLnLCKP82OrwFiveOpnPEw/AhGTiYvWtZBUwLL3/bBnML7KHaAkZ
-         AmU8r89hcCbcm9xF9NsGfL1r5gO1TDp2+MzogjmASNq0AmtGMJN6e9/oWnrI3ui5ejR8
-         uXJwqUzvU5oX9qipY65eHkOkCN6BkjCPISjG5RpAS+KkKJ5F/6up9PypfmbQVjg0+mcN
-         t91w==;
+        bh=tDuvgN94LTs349m7HZdr3iifrkazFs5Y7mCnx8rIHEM=;
+        fh=rQDzeQaNnW/C+TN7bKYOTUfG+Cuv6NQbvpor4yNlLlI=;
+        b=YlumEpgHaYHcYhFhjHrwil0Yjs2PGvDFedhIdImGtiOZCRcEnWRGb9RWbH+RtDfOEP
+         YuzX/4DaJU+WgJiR6a2ARP4jKzyoqpF8LuxG80MTJ2mCiNKa37vyby2Oz0x3Re/f5zP9
+         WN7BZz1jH4RvAq8OVBD6LAMLA3qEpv8SUOKNIxS8cVaCyjQXLw+uY4YRvixFwCWetaEI
+         Q18dVnMbwzzEsE/NI2uyhYhg9OS8FR3lVXMtGyP5VWuF2Wc8rxaWv8ot8av4Urxhc/z1
+         P/kFq4zvMdsJNQC7+aNJVHsmv3mayMsbyhTgn7UrvRP8Mx3qnZv1fzOqI1DJ6+Yu0x11
+         LEhA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=HbHPrZXo;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=1UQXaI3Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-X-Forwarded-Encrypted: i=1; AJvYcCVisYMFlKPCrbtjIil597kHA7FGRYuO3Vs33eysTaJYeGWCK1NxsIl6BfnhGoEj5KwIhW/lpdF3z2JrjV2JqGDHBbL2DuSW
+X-Forwarded-Encrypted: i=1; AJvYcCXdQZq/SBH9oVDw8J+RYdNqc/nHAp47HxjdF0pOh3itrVACmM26vBk2LUqHm0IjZMLtgzRFXx/Js9z3IF0x3ce4v6Ue6aR/
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020ac847cc000000b0042c75a66b95si662367qtr.799.2024.02.12.08.35.27
+        by mx.google.com with ESMTPS id d19-20020a05620a167300b00785d7f24cb9si2183167qko.640.2024.02.12.08.35.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Feb 2024 08:35:27 -0800 (PST)
+        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=HbHPrZXo;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=1UQXaI3Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rZZGw-0001qS-3H; Mon, 12 Feb 2024 11:35:10 -0500
+	id 1rZZGv-0001pn-8X; Mon, 12 Feb 2024 11:35:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rZZGs-0001oV-GQ; Mon, 12 Feb 2024 11:35:06 -0500
-Received: from zproxy3.enst.fr ([2001:660:330f:2::de])
+ id 1rZZGs-0001oO-61; Mon, 12 Feb 2024 11:35:06 -0500
+Received: from zproxy3.enst.fr ([137.194.2.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rZZGp-0005QC-NW; Mon, 12 Feb 2024 11:35:06 -0500
+ id 1rZZGo-0005QE-H1; Mon, 12 Feb 2024 11:35:04 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 85CEDA05CA;
+ by zproxy3.enst.fr (Postfix) with ESMTP id BFA8CA05A3;
  Mon, 12 Feb 2024 17:34:58 +0100 (CET)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id zL45G7oJ_mLp; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
+ id WgX8N4b8V3_B; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 16EB2A05A3;
+ by zproxy3.enst.fr (Postfix) with ESMTP id 475CAA056F;
  Mon, 12 Feb 2024 17:34:58 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 16EB2A05A3
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 475CAA056F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
  s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707755698;
- bh=scyeiFfkQka8Kw8QvyJDLFkJvhFstNYunlYlNOr7e6o=;
+ bh=tDuvgN94LTs349m7HZdr3iifrkazFs5Y7mCnx8rIHEM=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=HbHPrZXoY56kVu0wd5mEh9LIa+DEYGmXF0Z2cpAsVAuaKDJISF5bx6L7x427eHksd
- LL5HTYLuieFrIbhyNcwKUzXOyxug53kX+Av5mvdAKC19FuITJS04BTyDUjZoAk8v5J
- twMb7/lt14gGW+oaik1jldAwZx2Con1fMk9+o9aE=
+ b=1UQXaI3Qi9wXzHTvqSwS7PA9CrfzfO6faiPzZcpruVnZqzFwVOYrqpraVG2JBFcKi
+ DHeOkAnGTH8hR66QRgAb88BBvosI3Eb6uI/yTk8jYNYUs0s4zIOCw1Oe9ua/5SvodD
+ pF5NkW62MvwnxiFydVgABpQJWFvA8xfPcVYUd/XM=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id gBkBp8hBzfaY; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
+ id OQacUv1X5wql; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id BC342A056F;
- Mon, 12 Feb 2024 17:34:57 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 094FFA0562;
+ Mon, 12 Feb 2024 17:34:58 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -85,17 +86,17 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-Subject: [PATCH 1/2] hw/arm: Use TYPE_OR_IRQ when connecting STM32L4x5 EXTI
- fan-in IRQs
-Date: Mon, 12 Feb 2024 17:31:18 +0100
-Message-ID: <20240212163446.227802-2-ines.varhol@telecom-paris.fr>
+Subject: [PATCH 2/2] tests/qtest: Check that EXTI fan-in irqs are correctly
+ connected
+Date: Mon, 12 Feb 2024 17:31:19 +0100
+Message-ID: <20240212163446.227802-3-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240212163446.227802-1-ines.varhol@telecom-paris.fr>
 References: <20240212163446.227802-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::de;
+Received-SPF: pass client-ip=137.194.2.222;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -117,130 +118,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GwsH126IcAHj
+X-TUID: 4YzGZxALWbX9
 
-Fixes: 52671f69f7a4 ("[PATCH v8 0/3] Add device STM32L4x5 EXTI")
+This commit adds a QTest that verifies each input line of a specific
+EXTI OR gate can influence the output line.
+
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/arm/stm32l4x5_soc.c | 69 ++++++++++++++++++++++++++++++++++++------
- 1 file changed, 59 insertions(+), 10 deletions(-)
+ tests/qtest/stm32l4x5_exti-test.c | 97 +++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
 
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index f470ff74ec..df5bb02315 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -26,6 +26,7 @@
- #include "qapi/error.h"
- #include "exec/address-spaces.h"
- #include "sysemu/sysemu.h"
-+#include "hw/or-irq.h"
- #include "hw/arm/stm32l4x5_soc.h"
- #include "hw/qdev-clock.h"
- #include "hw/misc/unimp.h"
-@@ -48,15 +49,14 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
-     8,                      /* GPIO[2]                 */
-     9,                      /* GPIO[3]                 */
-     10,                     /* GPIO[4]                 */
--    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
--    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
--    1,                      /* PVD                     */
-+    -1, -1, -1, -1, -1,     /* GPIO[5..9] OR gate 23   */
-+    -1, -1, -1, -1, -1, -1, /* GPIO[10..15] OR gate 40 */
-+    -1,                     /* PVD OR gate 1           */
-     67,                     /* OTG_FS_WKUP, Direct     */
-     41,                     /* RTC_ALARM               */
-     2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
-     3,                      /* RTC wakeup timer        */
--    63,                     /* COMP1                   */
--    63,                     /* COMP2                   */
-+    -1, -1,                 /* COMP[1..2] OR gate 63   */
-     31,                     /* I2C1 wakeup, Direct     */
-     33,                     /* I2C2 wakeup, Direct     */
-     72,                     /* I2C3 wakeup, Direct     */
-@@ -69,13 +69,29 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
-     65,                     /* LPTIM1, Direct          */
-     66,                     /* LPTIM2, Direct          */
-     76,                     /* SWPMI1 wakeup, Direct   */
--    1,                      /* PVM1 wakeup             */
--    1,                      /* PVM2 wakeup             */
--    1,                      /* PVM3 wakeup             */
--    1,                      /* PVM4 wakeup             */
-+    -1, -1, -1, -1,         /* PVM[1..4] OR gate 1     */
-     78                      /* LCD wakeup, Direct      */
- };
+diff --git a/tests/qtest/stm32l4x5_exti-test.c b/tests/qtest/stm32l4x5_ex=
+ti-test.c
+index c390077713..276b7adc7a 100644
+--- a/tests/qtest/stm32l4x5_exti-test.c
++++ b/tests/qtest/stm32l4x5_exti-test.c
+@@ -31,6 +31,11 @@
 =20
-+#define NUM_EXTI_OR_GATES 4
-+static const int exti_or_gates_out[NUM_EXTI_OR_GATES] =3D {
-+    23, 40, 63, 1,
-+};
-+
-+#define NUM_EXTI_SIMPLE_FANIN_IRQ 3
-+static const int exti_or_gates_num_lines_in[NUM_EXTI_SIMPLE_FANIN_IRQ] =3D=
- {
-+    5, 6, 2,
-+};
-+
-+static const int exti_or_gates_first_line_in[NUM_EXTI_SIMPLE_FANIN_IRQ] =
-=3D {
-+    5, 10, 21,
-+};
-+
-+#define NUM_EXTI_OR_GATE1_NUM_LINES_IN 5
-+static const int exti_or_gate1_lines_in[NUM_EXTI_OR_GATE1_NUM_LINES_IN] =
-=3D {
-+    16, 35, 36, 37, 38,
-+};
-+
- static void stm32l4x5_soc_initfn(Object *obj)
- {
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
-@@ -175,8 +191,41 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
-         return;
-     }
-     sysbus_mmio_map(busdev, 0, EXTI_ADDR);
-+
-+    /* IRQs with fan-in that require an OR gate */
-+    for (unsigned i =3D 0; i < NUM_EXTI_OR_GATES; i++) {
-+        Object *orgate =3D object_new(TYPE_OR_IRQ);
-+        object_property_set_int(orgate, "num-lines",
-+            exti_or_gates_num_lines_in[i], &error_fatal);
-+        /* Should unref be used? */
-+        qdev_realize(DEVICE(orgate), NULL, &error_fatal);
-+
-+        qdev_connect_gpio_out(DEVICE(orgate), 0,
-+            qdev_get_gpio_in(armv7m, exti_or_gates_out[i]));
-+
-+        /* consecutive inputs for OR gates 23, 40, 63 */
-+        if (i < NUM_EXTI_SIMPLE_FANIN_IRQ) {
-+            for (unsigned j =3D 0; j < exti_or_gates_num_lines_in[i]; j+=
-+) {
-+                sysbus_connect_irq(SYS_BUS_DEVICE(&s->exti),
-+                    exti_or_gates_first_line_in[i] + j,
-+                    qdev_get_gpio_in(DEVICE(orgate), j));
-+            }
-+        /* non-consecutive inputs for OR gate 1 */
-+        } else {
-+            for (unsigned j =3D 0; j < NUM_EXTI_OR_GATE1_NUM_LINES_IN; j=
-++) {
-+                sysbus_connect_irq(SYS_BUS_DEVICE(&s->exti),
-+                    exti_or_gate1_lines_in[j],
-+                    qdev_get_gpio_in(DEVICE(orgate), j));
-+            }
-+        }
-+    }
-+
-+    /* IRQs that don't require fan-in */
-     for (unsigned i =3D 0; i < NUM_EXTI_IRQ; i++) {
--        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
-+        if (exti_irq[i] !=3D -1) {
-+            sysbus_connect_irq(busdev, i,
-+                               qdev_get_gpio_in(armv7m, exti_irq[i]));
-+        }
-     }
+ #define EXTI0_IRQ 6
+ #define EXTI1_IRQ 7
++#define EXTI5_IRQ 23
++#define EXTI6_IRQ 23
++#define EXTI7_IRQ 23
++#define EXTI8_IRQ 23
++#define EXTI9_IRQ 23
+ #define EXTI35_IRQ 1
 =20
-     for (unsigned i =3D 0; i < 16; i++) {
+ static void enable_nvic_irq(unsigned int n)
+@@ -499,6 +504,96 @@ static void test_interrupt(void)
+     g_assert_false(check_nvic_pending(EXTI1_IRQ));
+ }
+=20
++static void test_orred_interrupts(void)
++{
++    /*
++     * For lines EXTI5..9 (fanned-in to NVIC irq 23),
++     * test that rising the line pends interrupt
++     * 23 in NVIC.
++     */
++    enable_nvic_irq(EXTI5_IRQ);
++    /* Check that there are no interrupts already pending in PR */
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    /* Check that this specific interrupt isn't pending in NVIC */
++    g_assert_false(check_nvic_pending(EXTI5_IRQ));
++
++    /* Enable interrupt lines EXTI[5..9] */
++    exti_writel(EXTI_IMR1, (0x1F << 5));
++
++    /* Configure interrupt on rising edge */
++    exti_writel(EXTI_RTSR1, (0x1F << 5));
++
++    /* Simulate rising edge from GPIO line 7 */
++    exti_set_irq(7, 1);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 7);
++    g_assert_true(check_nvic_pending(EXTI7_IRQ));
++
++    /* Clear the pending bit in PR */
++    exti_writel(EXTI_PR1, 1 << 7);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    g_assert_true(check_nvic_pending(EXTI7_IRQ));
++
++    /* Clean NVIC */
++    unpend_nvic_irq(EXTI7_IRQ);
++    g_assert_false(check_nvic_pending(EXTI7_IRQ));
++
++    /* Simulate rising edge from GPIO line 6 */
++    exti_set_irq(6, 1);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 6);
++    g_assert_true(check_nvic_pending(EXTI6_IRQ));
++
++    /* Clear the pending bit in PR */
++    exti_writel(EXTI_PR1, 1 << 6);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    g_assert_true(check_nvic_pending(EXTI6_IRQ));
++
++    /* Clean NVIC */
++    unpend_nvic_irq(EXTI6_IRQ);
++    g_assert_false(check_nvic_pending(EXTI6_IRQ));
++
++    /* Simulate rising edge from GPIO line 5 */
++    exti_set_irq(5, 1);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 5);
++    g_assert_true(check_nvic_pending(EXTI5_IRQ));
++
++    /* Clear the pending bit in PR */
++    exti_writel(EXTI_PR1, 1 << 5);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    g_assert_true(check_nvic_pending(EXTI5_IRQ));
++
++    /* Clean NVIC */
++    unpend_nvic_irq(EXTI5_IRQ);
++    g_assert_false(check_nvic_pending(EXTI5_IRQ));
++
++    /* Simulate rising edge from GPIO line 8 */
++    exti_set_irq(8, 1);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 8);
++    g_assert_true(check_nvic_pending(EXTI8_IRQ));
++
++    /* Clear the pending bit in PR */
++    exti_writel(EXTI_PR1, 1 << 8);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    g_assert_true(check_nvic_pending(EXTI8_IRQ));
++
++    /* Clean NVIC */
++    unpend_nvic_irq(EXTI8_IRQ);
++    g_assert_false(check_nvic_pending(EXTI8_IRQ));
++
++    /* Simulate rising edge from GPIO line 9 */
++    exti_set_irq(9, 1);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 9);
++    g_assert_true(check_nvic_pending(EXTI9_IRQ));
++
++    /* Clear the pending bit in PR */
++    exti_writel(EXTI_PR1, 1 << 9);
++    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
++    g_assert_true(check_nvic_pending(EXTI9_IRQ));
++
++    /* Clean NVIC */
++    unpend_nvic_irq(EXTI9_IRQ);
++    g_assert_false(check_nvic_pending(EXTI9_IRQ));
++}
++
+ int main(int argc, char **argv)
+ {
+     int ret;
+@@ -515,6 +610,8 @@ int main(int argc, char **argv)
+     qtest_add_func("stm32l4x5/exti/masked_interrupt", test_masked_interr=
+upt);
+     qtest_add_func("stm32l4x5/exti/interrupt", test_interrupt);
+     qtest_add_func("stm32l4x5/exti/test_edge_selector", test_edge_select=
+or);
++    qtest_add_func("stm32l4x5/exti/test_orred_interrupts",
++                   test_orred_interrupts);
+=20
+     qtest_start("-machine b-l475e-iot01a");
+     ret =3D g_test_run();
 --=20
 2.43.0
 

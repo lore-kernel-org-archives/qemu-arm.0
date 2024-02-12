@@ -1,258 +1,548 @@
-Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp18075ejb;
-        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXequ2UFOfUTWiDMGvGi0Jpz0wEb10rmxpDTdsdEGPkvoXqz71YsXsESpHt6Vl+Ru6n3baoaWv5Y84Z1Pqp0QS+lrkL7it6
-X-Google-Smtp-Source: AGHT+IG1EZdm+6FW6ch69fSOdJkaJ6bTbkJojDMknZy/Po4qhwseKXaBnPjKdcIhKABU1u1xqBKl
-X-Received: by 2002:a05:620a:16a8:b0:785:c158:7b4d with SMTP id s8-20020a05620a16a800b00785c1587b4dmr120718qkj.0.1707755753699;
-        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707755753; cv=none;
+Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp112465ejb;
+        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEie7/SKn7rCOtG1hjYqROHaSe6OnszRb64n8Xu6+VpCcDmctWoWqNeGDBwX+syLmfLqV6G
+X-Received: by 2002:a05:620a:a0a:b0:785:932f:a6ef with SMTP id i10-20020a05620a0a0a00b00785932fa6efmr8085561qka.64.1707766455482;
+        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707766455; cv=none;
         d=google.com; s=arc-20160816;
-        b=tGTeet36+5fzho2NqVRh4tEwvgBgR1w4ZrHOdzfu2hAf+8JcB4DHfHUbAVfTuI239I
-         oCsAbmZhXSEtNbUGJpCg3DLAL77zm2pYbX7WfXWkthK4URwh6gokcWw8wt2CZyNcAcni
-         ySd65iXg52vI5vHnX04xtwCrl/BlwgNmQB35Q+4owbGbvg0qYP5kX7ui27IubTyseTM0
-         9CkqTfs9D6cemdi8VZC5b0d0IsR3h1MlngotDKreKW8q6HBsmHfqKOfD0fi1LjFiBl8y
-         t0g+1ZYFUjoyBoK9TO/bZwzA5v4TZizyCnvLMxmxbKDdNGTGDMOJzQhgqe8l6/W/aGtU
-         bOcg==
+        b=rPVFjhB1n6etO01LXZ6buRyL8OvFBM7EJEuKuXyPdh3xCHgHG4DqIVsyR2HoRUVdjf
+         wf31RYKEnuqHd5l18tlUHqZUzyjuKBCvEiWf3yWH8iVnv8kHR23J2NQhgk7eMkEysFfZ
+         F9MUKf5IlXvFGPgCY1lqRSAG68tE+S33N+X94694fPCIct/P28B3ixfMDXW1670nYAOB
+         rWMtWQtgLZVKCx/AA9H/UfmKPo1fQ3AkfR2FiCea/Blid0rclLsFxpMeA6c0pB+NLzaV
+         K0OWyLt698I1I4NK0sj68QosXV0mkfuHbC1yUOvGL85Dw7FRVrYx4Zpm8MvzuB1euDUk
+         lxGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=tDuvgN94LTs349m7HZdr3iifrkazFs5Y7mCnx8rIHEM=;
-        fh=rQDzeQaNnW/C+TN7bKYOTUfG+Cuv6NQbvpor4yNlLlI=;
-        b=YlumEpgHaYHcYhFhjHrwil0Yjs2PGvDFedhIdImGtiOZCRcEnWRGb9RWbH+RtDfOEP
-         YuzX/4DaJU+WgJiR6a2ARP4jKzyoqpF8LuxG80MTJ2mCiNKa37vyby2Oz0x3Re/f5zP9
-         WN7BZz1jH4RvAq8OVBD6LAMLA3qEpv8SUOKNIxS8cVaCyjQXLw+uY4YRvixFwCWetaEI
-         Q18dVnMbwzzEsE/NI2uyhYhg9OS8FR3lVXMtGyP5VWuF2Wc8rxaWv8ot8av4Urxhc/z1
-         P/kFq4zvMdsJNQC7+aNJVHsmv3mayMsbyhTgn7UrvRP8Mx3qnZv1fzOqI1DJ6+Yu0x11
-         LEhA==;
+         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
+        bh=gCHr35eWqluFFRqghgutTDvIxifmqx4Yg1Ipsp5H5sc=;
+        fh=DsOhA2fFbE2HzwsGc8kvlDV0b86TiJ+NHVnZU5fDrVw=;
+        b=D0n9BAvz0P9nuk76sIPAsuMDsL1/WU2klvGIKD6XSRuhLYzDlhZf11vqmjK8CUh9Wm
+         4OObeKhqDbqWY0gQZrrcdM9Nf1Uhmz+Tt+CECuhyFGr1lXpyyj9JP+nocYSFnXzYLqxV
+         k/MP12CsWI8CiieQnZs2ZAayfCvOXPiEnvTj+cL16Q4lg7z7V+aBUe3UpTIj8Z8GO56g
+         zzdR5BeoKGzvQ09+55Be1abH99tAjLrTe945b/maqTjx4C1QGI4Kg47DZrnI5N/sV1uB
+         fUgY3e8lra4F3H6Yt2X/TE3cMj2U1URKyWm0+TYWCneqQPpRtI0/HGfqQ/aEJIa7ElJD
+         on2A==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=1UQXaI3Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dBcfTPZe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-X-Forwarded-Encrypted: i=1; AJvYcCXdQZq/SBH9oVDw8J+RYdNqc/nHAp47HxjdF0pOh3itrVACmM26vBk2LUqHm0IjZMLtgzRFXx/Js9z3IF0x3ce4v6Ue6aR/
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-Forwarded-Encrypted: i=1; AJvYcCVUJ3Bq41k27MDXpIYOK52AAUlSrnDCRwO6X9KN4J6XbZUg/RkKyRhftEZFGnmXh9mXoyGrNF3yf+Pl49c01vZM3Ikrsl09
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d19-20020a05620a167300b00785d7f24cb9si2183167qko.640.2024.02.12.08.35.53
+        by mx.google.com with ESMTPS id z1-20020ae9e601000000b007831ed5564fsi6258206qkf.321.2024.02.12.11.34.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Feb 2024 08:35:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=1UQXaI3Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dBcfTPZe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rZZGv-0001pn-8X; Mon, 12 Feb 2024 11:35:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rZc3p-00031F-9T; Mon, 12 Feb 2024 14:33:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rZZGs-0001oO-61; Mon, 12 Feb 2024 11:35:06 -0500
-Received: from zproxy3.enst.fr ([137.194.2.222])
+ (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
+ id 1rZc3g-0002zO-Dl; Mon, 12 Feb 2024 14:33:42 -0500
+Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rZZGo-0005QE-H1; Mon, 12 Feb 2024 11:35:04 -0500
+ (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
+ id 1rZc3d-00070R-8f; Mon, 12 Feb 2024 14:33:39 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id BFA8CA05A3;
- Mon, 12 Feb 2024 17:34:58 +0100 (CET)
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id WgX8N4b8V3_B; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
+ by zproxy4.enst.fr (Postfix) with ESMTP id D9A3420562;
+ Mon, 12 Feb 2024 20:33:30 +0100 (CET)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id HB1m1Vc7IdBi; Mon, 12 Feb 2024 20:33:29 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 475CAA056F;
- Mon, 12 Feb 2024 17:34:58 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 475CAA056F
+ by zproxy4.enst.fr (Postfix) with ESMTP id 657DC2057A;
+ Mon, 12 Feb 2024 20:33:29 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 657DC2057A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707755698;
- bh=tDuvgN94LTs349m7HZdr3iifrkazFs5Y7mCnx8rIHEM=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=1UQXaI3Qi9wXzHTvqSwS7PA9CrfzfO6faiPzZcpruVnZqzFwVOYrqpraVG2JBFcKi
- DHeOkAnGTH8hR66QRgAb88BBvosI3Eb6uI/yTk8jYNYUs0s4zIOCw1Oe9ua/5SvodD
- pF5NkW62MvwnxiFydVgABpQJWFvA8xfPcVYUd/XM=
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707766409;
+ bh=gCHr35eWqluFFRqghgutTDvIxifmqx4Yg1Ipsp5H5sc=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=dBcfTPZewGfJEan3/9tkJHmhFE6bhXKIR9K1WshxAssqxnXGiyelv/+xNBMKxbApM
+ sMfqf53nnlfzNOFv3+fHxSR+E1bjiJJV2hugTOI5JXBs1fM34PCCkeW6+dTdIEwHQ1
+ k1imwB5NPnHcAdauQeOp0IlDEmP2ArtH95gefeZo=
 X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id OQacUv1X5wql; Mon, 12 Feb 2024 17:34:58 +0100 (CET)
-Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id 094FFA0562;
- Mon, 12 Feb 2024 17:34:58 +0100 (CET)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-Subject: [PATCH 2/2] tests/qtest: Check that EXTI fan-in irqs are correctly
- connected
-Date: Mon, 12 Feb 2024 17:31:19 +0100
-Message-ID: <20240212163446.227802-3-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240212163446.227802-1-ines.varhol@telecom-paris.fr>
-References: <20240212163446.227802-1-ines.varhol@telecom-paris.fr>
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id UF697HyZTI1R; Mon, 12 Feb 2024 20:33:29 +0100 (CET)
+Received: from zmail-tp1.enst.fr (zmail-tp1.enst.fr [137.194.2.198])
+ by zproxy4.enst.fr (Postfix) with ESMTP id AAC3020562;
+ Mon, 12 Feb 2024 20:33:28 +0100 (CET)
+Date: Mon, 12 Feb 2024 20:33:28 +0100 (CET)
+From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+To: Alistair Francis <alistair23@gmail.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+ qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
+Message-ID: <20228324.1964026.1707766408557.JavaMail.zimbra@enst.fr>
+In-Reply-To: <CAKmqyKNy7+7JN6CFEqOuXHYFENL6geaS5H6sweXhcDLnLpJC7w@mail.gmail.com>
+References: <20240130160656.113112-1-arnaud.minier@telecom-paris.fr>
+ <20240130160656.113112-4-arnaud.minier@telecom-paris.fr>
+ <CAKmqyKNy7+7JN6CFEqOuXHYFENL6geaS5H6sweXhcDLnLpJC7w@mail.gmail.com>
+Subject: Re: [PATCH v4 3/8] Add an internal PLL Clock object
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.222;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [::ffff:46.193.4.103]
+X-Mailer: Zimbra 9.0.0_GA_4583 (ZimbraWebClient - FF122 (Linux)/9.0.0_GA_4583)
+Thread-Topic: Add an internal PLL Clock object
+Thread-Index: 0mCoQpImtdbtMy88OdVPq7wlivXcAA==
+Received-SPF: pass client-ip=2001:660:330f:2::df;
+ envelope-from=aminier-21@enst.fr; helo=zproxy4.enst.fr
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4YzGZxALWbX9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QNCs6dvLUFda
 
-This commit adds a QTest that verifies each input line of a specific
-EXTI OR gate can influence the output line.
+Hello Alistair,
 
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- tests/qtest/stm32l4x5_exti-test.c | 97 +++++++++++++++++++++++++++++++
- 1 file changed, 97 insertions(+)
+Yes, I think we should bail out if pll_set_vco_multiplier receives an inval=
+id value to respect the hardware defined bounds.
+I actually intended to add a return there but I missed it. It will be added=
+ in the next version.
 
-diff --git a/tests/qtest/stm32l4x5_exti-test.c b/tests/qtest/stm32l4x5_ex=
-ti-test.c
-index c390077713..276b7adc7a 100644
---- a/tests/qtest/stm32l4x5_exti-test.c
-+++ b/tests/qtest/stm32l4x5_exti-test.c
-@@ -31,6 +31,11 @@
-=20
- #define EXTI0_IRQ 6
- #define EXTI1_IRQ 7
-+#define EXTI5_IRQ 23
-+#define EXTI6_IRQ 23
-+#define EXTI7_IRQ 23
-+#define EXTI8_IRQ 23
-+#define EXTI9_IRQ 23
- #define EXTI35_IRQ 1
-=20
- static void enable_nvic_irq(unsigned int n)
-@@ -499,6 +504,96 @@ static void test_interrupt(void)
-     g_assert_false(check_nvic_pending(EXTI1_IRQ));
- }
-=20
-+static void test_orred_interrupts(void)
-+{
-+    /*
-+     * For lines EXTI5..9 (fanned-in to NVIC irq 23),
-+     * test that rising the line pends interrupt
-+     * 23 in NVIC.
-+     */
-+    enable_nvic_irq(EXTI5_IRQ);
-+    /* Check that there are no interrupts already pending in PR */
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    /* Check that this specific interrupt isn't pending in NVIC */
-+    g_assert_false(check_nvic_pending(EXTI5_IRQ));
-+
-+    /* Enable interrupt lines EXTI[5..9] */
-+    exti_writel(EXTI_IMR1, (0x1F << 5));
-+
-+    /* Configure interrupt on rising edge */
-+    exti_writel(EXTI_RTSR1, (0x1F << 5));
-+
-+    /* Simulate rising edge from GPIO line 7 */
-+    exti_set_irq(7, 1);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 7);
-+    g_assert_true(check_nvic_pending(EXTI7_IRQ));
-+
-+    /* Clear the pending bit in PR */
-+    exti_writel(EXTI_PR1, 1 << 7);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    g_assert_true(check_nvic_pending(EXTI7_IRQ));
-+
-+    /* Clean NVIC */
-+    unpend_nvic_irq(EXTI7_IRQ);
-+    g_assert_false(check_nvic_pending(EXTI7_IRQ));
-+
-+    /* Simulate rising edge from GPIO line 6 */
-+    exti_set_irq(6, 1);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 6);
-+    g_assert_true(check_nvic_pending(EXTI6_IRQ));
-+
-+    /* Clear the pending bit in PR */
-+    exti_writel(EXTI_PR1, 1 << 6);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    g_assert_true(check_nvic_pending(EXTI6_IRQ));
-+
-+    /* Clean NVIC */
-+    unpend_nvic_irq(EXTI6_IRQ);
-+    g_assert_false(check_nvic_pending(EXTI6_IRQ));
-+
-+    /* Simulate rising edge from GPIO line 5 */
-+    exti_set_irq(5, 1);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 5);
-+    g_assert_true(check_nvic_pending(EXTI5_IRQ));
-+
-+    /* Clear the pending bit in PR */
-+    exti_writel(EXTI_PR1, 1 << 5);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    g_assert_true(check_nvic_pending(EXTI5_IRQ));
-+
-+    /* Clean NVIC */
-+    unpend_nvic_irq(EXTI5_IRQ);
-+    g_assert_false(check_nvic_pending(EXTI5_IRQ));
-+
-+    /* Simulate rising edge from GPIO line 8 */
-+    exti_set_irq(8, 1);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 8);
-+    g_assert_true(check_nvic_pending(EXTI8_IRQ));
-+
-+    /* Clear the pending bit in PR */
-+    exti_writel(EXTI_PR1, 1 << 8);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    g_assert_true(check_nvic_pending(EXTI8_IRQ));
-+
-+    /* Clean NVIC */
-+    unpend_nvic_irq(EXTI8_IRQ);
-+    g_assert_false(check_nvic_pending(EXTI8_IRQ));
-+
-+    /* Simulate rising edge from GPIO line 9 */
-+    exti_set_irq(9, 1);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 1 << 9);
-+    g_assert_true(check_nvic_pending(EXTI9_IRQ));
-+
-+    /* Clear the pending bit in PR */
-+    exti_writel(EXTI_PR1, 1 << 9);
-+    g_assert_cmpuint(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
-+    g_assert_true(check_nvic_pending(EXTI9_IRQ));
-+
-+    /* Clean NVIC */
-+    unpend_nvic_irq(EXTI9_IRQ);
-+    g_assert_false(check_nvic_pending(EXTI9_IRQ));
-+}
-+
- int main(int argc, char **argv)
- {
-     int ret;
-@@ -515,6 +610,8 @@ int main(int argc, char **argv)
-     qtest_add_func("stm32l4x5/exti/masked_interrupt", test_masked_interr=
-upt);
-     qtest_add_func("stm32l4x5/exti/interrupt", test_interrupt);
-     qtest_add_func("stm32l4x5/exti/test_edge_selector", test_edge_select=
-or);
-+    qtest_add_func("stm32l4x5/exti/test_orred_interrupts",
-+                   test_orred_interrupts);
-=20
-     qtest_start("-machine b-l475e-iot01a");
-     ret =3D g_test_run();
---=20
-2.43.0
+Thanks,
+Arnaud Minier
 
+
+----- Mail original -----
+De: "Alistair Francis" <alistair23@gmail.com>
+=C3=80: "Arnaud Minier" <arnaud.minier@telecom-paris.fr>
+Cc: "qemu-devel" <qemu-devel@nongnu.org>, "Laurent Vivier" <lvivier@redhat.=
+com>, "Alistair Francis" <alistair@alistair23.me>, "In=C3=A8s Varhol" <ines=
+.varhol@telecom-paris.fr>, "Peter Maydell" <peter.maydell@linaro.org>, "Pao=
+lo Bonzini" <pbonzini@redhat.com>, "Thomas Huth" <thuth@redhat.com>, qemu-a=
+rm@nongnu.org
+Envoy=C3=A9: Jeudi 1 F=C3=A9vrier 2024 01:18:22
+Objet: Re: [PATCH v4 3/8] Add an internal PLL Clock object
+
+On Wed, Jan 31, 2024 at 2:09=E2=80=AFAM Arnaud Minier
+<arnaud.minier@telecom-paris.fr> wrote:
+>
+> This object represents the PLLs and their channels. The PLLs allow for a
+> more fine-grained control of the clocks frequency.
+>
+> Wasn't sure about how to handle the reset and the migration so used the
+> same appproach as the BCM2835 CPRMAN.
+>
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>  hw/misc/stm32l4x5_rcc.c                   | 175 ++++++++++++++++++++++
+>  hw/misc/trace-events                      |   5 +
+>  include/hw/misc/stm32l4x5_rcc.h           |  40 +++++
+>  include/hw/misc/stm32l4x5_rcc_internals.h |  22 +++
+>  4 files changed, 242 insertions(+)
+>
+> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
+> index ed10832f88..fb0233c3e9 100644
+> --- a/hw/misc/stm32l4x5_rcc.c
+> +++ b/hw/misc/stm32l4x5_rcc.c
+> @@ -162,6 +162,156 @@ static void clock_mux_set_source(RccClockMuxState *=
+mux, RccClockMuxSource src)
+>      clock_mux_update(mux);
+>  }
+>
+> +static void pll_update(RccPllState *pll)
+> +{
+> +    uint64_t vco_freq, old_channel_freq, channel_freq;
+> +    int i;
+> +
+> +    /* The common PLLM factor is handled by the PLL mux */
+> +    vco_freq =3D muldiv64(clock_get_hz(pll->in), pll->vco_multiplier, 1)=
+;
+> +
+> +    for (i =3D 0; i < RCC_NUM_CHANNEL_PLL_OUT; i++) {
+> +        if (!pll->channel_exists[i]) {
+> +            continue;
+> +        }
+> +
+> +        old_channel_freq =3D clock_get_hz(pll->channels[i]);
+> +        if (!pll->enabled ||
+> +            !pll->channel_enabled[i] ||
+> +            !pll->channel_divider[i]) {
+> +            channel_freq =3D 0;
+> +        } else {
+> +            channel_freq =3D muldiv64(vco_freq,
+> +                                    1,
+> +                                    pll->channel_divider[i]);
+> +        }
+> +
+> +        /* No change, early continue to avoid log spam and useless propa=
+gation */
+> +        if (old_channel_freq =3D=3D channel_freq) {
+> +            continue;
+> +        }
+> +
+> +        clock_update_hz(pll->channels[i], channel_freq);
+> +        trace_stm32l4x5_rcc_pll_update(pll->id, i, vco_freq,
+> +            old_channel_freq, channel_freq);
+> +    }
+> +}
+> +
+> +static void pll_src_update(void *opaque, ClockEvent event)
+> +{
+> +    RccPllState *s =3D opaque;
+> +    pll_update(s);
+> +}
+> +
+> +static void pll_init(Object *obj)
+> +{
+> +    RccPllState *s =3D RCC_PLL(obj);
+> +    size_t i;
+> +
+> +    s->in =3D qdev_init_clock_in(DEVICE(s), "in",
+> +                               pll_src_update, s, ClockUpdate);
+> +
+> +    const char *names[] =3D {
+> +        "out-p", "out-q", "out-r",
+> +    };
+> +
+> +    for (i =3D 0; i < RCC_NUM_CHANNEL_PLL_OUT; i++) {
+> +        s->channels[i] =3D qdev_init_clock_out(DEVICE(s), names[i]);
+> +    }
+> +}
+> +
+> +static void pll_reset_hold(Object *obj)
+> +{ }
+> +
+> +static const VMStateDescription pll_vmstate =3D {
+> +    .name =3D TYPE_RCC_PLL,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_UINT32(id, RccPllState),
+> +        VMSTATE_CLOCK(in, RccPllState),
+> +        VMSTATE_ARRAY_CLOCK(channels, RccPllState,
+> +                            RCC_NUM_CHANNEL_PLL_OUT),
+> +        VMSTATE_BOOL(enabled, RccPllState),
+> +        VMSTATE_UINT32(vco_multiplier, RccPllState),
+> +        VMSTATE_BOOL_ARRAY(channel_enabled, RccPllState, RCC_NUM_CHANNEL=
+_PLL_OUT),
+> +        VMSTATE_BOOL_ARRAY(channel_exists, RccPllState, RCC_NUM_CHANNEL_=
+PLL_OUT),
+> +        VMSTATE_UINT32_ARRAY(channel_divider, RccPllState, RCC_NUM_CHANN=
+EL_PLL_OUT),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void pll_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+> +
+> +    rc->phases.hold =3D pll_reset_hold;
+> +    dc->vmsd =3D &pll_vmstate;
+> +}
+> +
+> +static void pll_set_vco_multiplier(RccPllState *pll, uint32_t vco_multip=
+lier)
+> +{
+> +    if (pll->vco_multiplier =3D=3D vco_multiplier) {
+> +        return;
+> +    }
+> +
+> +    if (vco_multiplier < 8 || vco_multiplier > 86) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "%s: VCO multiplier is out of bound (%u) for PLL %u\n",
+> +            __func__, vco_multiplier, pll->id);
+
+Should we bail out with an invalid value?
+
+Alistair
+
+> +    }
+> +
+> +    trace_stm32l4x5_rcc_pll_set_vco_multiplier(pll->id,
+> +        pll->vco_multiplier, vco_multiplier);
+> +
+> +    pll->vco_multiplier =3D vco_multiplier;
+> +    pll_update(pll);
+> +}
+> +
+> +static void pll_set_enable(RccPllState *pll, bool enabled)
+> +{
+> +    if (pll->enabled =3D=3D enabled) {
+> +        return;
+> +    }
+> +
+> +    pll->enabled =3D enabled;
+> +    pll_update(pll);
+> +}
+> +
+> +static void pll_set_channel_enable(RccPllState *pll,
+> +                                   PllCommonChannels channel,
+> +                                   bool enabled)
+> +{
+> +    if (pll->channel_enabled[channel] =3D=3D enabled) {
+> +        return;
+> +    }
+> +
+> +    if (enabled) {
+> +        trace_stm32l4x5_rcc_pll_channel_enable(pll->id, channel);
+> +    } else {
+> +        trace_stm32l4x5_rcc_pll_channel_disable(pll->id, channel);
+> +    }
+> +
+> +    pll->channel_enabled[channel] =3D enabled;
+> +    pll_update(pll);
+> +}
+> +
+> +static void pll_set_channel_divider(RccPllState *pll,
+> +                                    PllCommonChannels channel,
+> +                                    uint32_t divider)
+> +{
+> +    if (pll->channel_divider[channel] =3D=3D divider) {
+> +        return;
+> +    }
+> +
+> +    trace_stm32l4x5_rcc_pll_set_channel_divider(pll->id,
+> +        channel, pll->channel_divider[channel], divider);
+> +
+> +    pll->channel_divider[channel] =3D divider;
+> +    pll_update(pll);
+> +}
+> +
+>  static void rcc_update_irq(Stm32l4x5RccState *s)
+>  {
+>      if (s->cifr & CIFR_IRQ_MASK) {
+> @@ -465,6 +615,11 @@ static void stm32l4x5_rcc_init(Object *obj)
+>
+>      qdev_init_clocks(DEVICE(s), stm32l4x5_rcc_clocks);
+>
+> +    for (i =3D 0; i < RCC_NUM_PLL; i++) {
+> +        object_initialize_child(obj, "pll[*]",
+> +                                &s->plls[i], TYPE_RCC_PLL);
+> +    }
+> +
+>      for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
+>
+>          object_initialize_child(obj, "clock[*]",
+> @@ -528,6 +683,16 @@ static void stm32l4x5_rcc_realize(DeviceState *dev, =
+Error **errp)
+>              return;
+>          }
+>
+> +    for (i =3D 0; i < RCC_NUM_PLL; i++) {
+> +        RccPllState *pll =3D &s->plls[i];
+> +
+> +        clock_set_source(pll->in, s->clock_muxes[RCC_CLOCK_MUX_PLL_INPUT=
+].out);
+> +
+> +        if (!qdev_realize(DEVICE(pll), NULL, errp)) {
+> +            return;
+> +        }
+> +    }
+> +
+>      for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
+>          RccClockMuxState *clock_mux =3D &s->clock_muxes[i];
+>
+> @@ -548,6 +713,10 @@ static void stm32l4x5_rcc_realize(DeviceState *dev, =
+Error **errp)
+>      clock_mux_set_source(&s->clock_muxes[0], RCC_CLOCK_MUX_SRC_GND);
+>      clock_mux_set_enable(&s->clock_muxes[0], true);
+>      clock_mux_set_factor(&s->clock_muxes[0], 1, 1);
+> +    pll_set_channel_divider(&s->plls[0], 0, 1);
+> +    pll_set_enable(&s->plls[0], true);
+> +    pll_set_channel_enable(&s->plls[0], 0, true);
+> +    pll_set_vco_multiplier(&s->plls[0], 1);
+>  }
+>
+>  static Property stm32l4x5_rcc_properties[] =3D {
+> @@ -585,6 +754,12 @@ static const TypeInfo stm32l4x5_rcc_types[] =3D {
+>          .instance_size =3D sizeof(RccClockMuxState),
+>          .instance_init =3D clock_mux_init,
+>          .class_init =3D clock_mux_class_init,
+> +    }, {
+> +        .name =3D TYPE_RCC_PLL,
+> +        .parent =3D TYPE_DEVICE,
+> +        .instance_size =3D sizeof(RccPllState),
+> +        .instance_init =3D pll_init,
+> +        .class_init =3D pll_class_init,
+>      }
+>  };
+>
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index d5e471811c..1b6054d88a 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -182,6 +182,11 @@ stm32l4x5_rcc_mux_disable(uint32_t mux_id) "RCC: Mux=
+ %d disabled"
+>  stm32l4x5_rcc_mux_set_factor(uint32_t mux_id, uint32_t old_multiplier, u=
+int32_t new_multiplier, uint32_t old_divider, uint32_t new_divider) "RCC: M=
+ux %d factor changed: multiplier (%u -> %u), divider (%u -> %u)"
+>  stm32l4x5_rcc_mux_set_src(uint32_t mux_id, uint32_t old_src, uint32_t ne=
+w_src) "RCC: Mux %d source changed: from %u to %u"
+>  stm32l4x5_rcc_mux_update(uint32_t mux_id, uint32_t src, uint64_t src_fre=
+q, uint64_t new_freq) "RCC: Mux %d src %d update: src_freq %" PRIu64 " new_=
+freq %" PRIu64 ""
+> +stm32l4x5_rcc_pll_set_vco_multiplier(uint32_t pll_id, uint32_t old_multi=
+plier, uint32_t new_multiplier) "RCC: PLL %u: vco_multiplier changed (%u ->=
+ %u)"
+> +stm32l4x5_rcc_pll_channel_enable(uint32_t pll_id, uint32_t channel_id) "=
+RCC: PLL %u, channel %u enabled"
+> +stm32l4x5_rcc_pll_channel_disable(uint32_t pll_id, uint32_t channel_id) =
+"RCC: PLL %u, channel %u disabled"
+> +stm32l4x5_rcc_pll_set_channel_divider(uint32_t pll_id, uint32_t channel_=
+id, uint32_t old_divider, uint32_t new_divider) "RCC: PLL %u, channel %u: d=
+ivider changed (%u -> %u)"
+> +stm32l4x5_rcc_pll_update(uint32_t pll_id, uint32_t channel_id, uint64_t =
+vco_freq, uint64_t old_freq, uint64_t new_freq) "RCC: PLL %d channel %d upd=
+ate: vco_freq %" PRIu64 " old_freq %" PRIu64 " new_freq %" PRIu64 ""
+>
+>  # tz-mpc.c
+>  tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC r=
+egs read: offset 0x%x data 0x%" PRIx64 " size %u"
+> diff --git a/include/hw/misc/stm32l4x5_rcc.h b/include/hw/misc/stm32l4x5_=
+rcc.h
+> index 6719be9fbe..0fbfba5c40 100644
+> --- a/include/hw/misc/stm32l4x5_rcc.h
+> +++ b/include/hw/misc/stm32l4x5_rcc.h
+> @@ -26,6 +26,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5RccState, STM32L4X=
+5_RCC)
+>
+>  /* In the Stm32l4x5 clock tree, mux have at most 7 sources */
+>  #define RCC_NUM_CLOCK_MUX_SRC 7
+> +
+> +typedef enum PllCommonChannels {
+> +    RCC_PLL_COMMON_CHANNEL_P =3D 0,
+> +    RCC_PLL_COMMON_CHANNEL_Q =3D 1,
+> +    RCC_PLL_COMMON_CHANNEL_R =3D 2,
+> +
+> +    RCC_NUM_CHANNEL_PLL_OUT =3D 3
+> +} PllCommonChannels;
+> +
+>  /* NB: Prescaler are assimilated to mux with one source and one output *=
+/
+>  typedef enum RccClockMux {
+>      /* Internal muxes that arent't exposed publicly to other peripherals=
+ */
+> @@ -124,6 +133,14 @@ typedef enum RccClockMux {
+>      RCC_NUM_CLOCK_MUX
+>  } RccClockMux;
+>
+> +typedef enum RccPll {
+> +    RCC_PLL_PLL,
+> +    RCC_PLL_PLLSAI1,
+> +    RCC_PLL_PLLSAI2,
+> +
+> +    RCC_NUM_PLL
+> +} RccPll;
+> +
+>  typedef struct RccClockMuxState {
+>      DeviceState parent_obj;
+>
+> @@ -142,6 +159,26 @@ typedef struct RccClockMuxState {
+>      struct RccClockMuxState *backref[RCC_NUM_CLOCK_MUX_SRC];
+>  } RccClockMuxState;
+>
+> +typedef struct RccPllState {
+> +    DeviceState parent_obj;
+> +
+> +    RccPll id;
+> +    Clock *in;
+> +    uint32_t vco_multiplier;
+> +    Clock *channels[RCC_NUM_CHANNEL_PLL_OUT];
+> +    /* Global pll enabled flag */
+> +    bool enabled;
+> +    /* 'enabled' refers to the runtime configuration */
+> +    bool channel_enabled[RCC_NUM_CHANNEL_PLL_OUT];
+> +    /*
+> +     * 'exists' refers to the physical configuration
+> +     * It should only be set at pll initialization.
+> +     * e.g. pllsai2 doesn't have a Q output.
+> +     */
+> +    bool channel_exists[RCC_NUM_CHANNEL_PLL_OUT];
+> +    uint32_t channel_divider[RCC_NUM_CHANNEL_PLL_OUT];
+> +} RccPllState;
+> +
+>  struct Stm32l4x5RccState {
+>      SysBusDevice parent_obj;
+>
+> @@ -187,6 +224,9 @@ struct Stm32l4x5RccState {
+>      Clock *sai1_extclk;
+>      Clock *sai2_extclk;
+>
+> +    /* PLLs */
+> +    RccPllState plls[RCC_NUM_PLL];
+> +
+>      /* Muxes ~=3D outputs */
+>      RccClockMuxState clock_muxes[RCC_NUM_CLOCK_MUX];
+>
+> diff --git a/include/hw/misc/stm32l4x5_rcc_internals.h b/include/hw/misc/=
+stm32l4x5_rcc_internals.h
+> index 4aa836848b..a9da5e3be7 100644
+> --- a/include/hw/misc/stm32l4x5_rcc_internals.h
+> +++ b/include/hw/misc/stm32l4x5_rcc_internals.h
+> @@ -22,7 +22,10 @@
+>  #include "hw/misc/stm32l4x5_rcc.h"
+>
+>  #define TYPE_RCC_CLOCK_MUX "stm32l4x5-rcc-clock-mux"
+> +#define TYPE_RCC_PLL "stm32l4x5-rcc-pll"
+> +
+>  OBJECT_DECLARE_SIMPLE_TYPE(RccClockMuxState, RCC_CLOCK_MUX)
+> +OBJECT_DECLARE_SIMPLE_TYPE(RccPllState, RCC_PLL)
+>
+>  /* Register map */
+>  REG32(CR, 0x00)
+> @@ -285,6 +288,25 @@ REG32(CSR, 0x94)
+>                              R_CSR_FWRSTF_MASK   | \
+>                              R_CSR_LSIRDY_MASK)
+>
+> +/* Pll Channels */
+> +enum PllChannels {
+> +    RCC_PLL_CHANNEL_PLLSAI3CLK =3D 0,
+> +    RCC_PLL_CHANNEL_PLL48M1CLK =3D 1,
+> +    RCC_PLL_CHANNEL_PLLCLK =3D 2,
+> +};
+> +
+> +enum PllSai1Channels {
+> +    RCC_PLLSAI1_CHANNEL_PLLSAI1CLK =3D 0,
+> +    RCC_PLLSAI1_CHANNEL_PLL48M2CLK =3D 1,
+> +    RCC_PLLSAI1_CHANNEL_PLLADC1CLK =3D 2,
+> +};
+> +
+> +enum PllSai2Channels {
+> +    RCC_PLLSAI2_CHANNEL_PLLSAI2CLK =3D 0,
+> +    /* No Q channel */
+> +    RCC_PLLSAI2_CHANNEL_PLLADC2CLK =3D 2,
+> +};
+> +
+>  typedef enum RccClockMuxSource {
+>      RCC_CLOCK_MUX_SRC_GND =3D 0,
+>      RCC_CLOCK_MUX_SRC_HSI,
+> --
+> 2.34.1
+>
+>

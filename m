@@ -1,126 +1,109 @@
-Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp263744eji;
-        Wed, 7 Feb 2024 01:03:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCViQ5CJF6lxryNLYL7Q+aeuwJYqdglHQiN0RvwnMFeusmSCVRn6hWpREkL0eCC809pwMrPdQumkvjv+UnlAt5FZN7lY7b9F
-X-Google-Smtp-Source: AGHT+IFItEzMXmQnwykkAq7Sx2XwoKMbGKwo0+nIS7YOqywImmW6CSQIjOw2uIlqS8i75eg3eD2L
-X-Received: by 2002:a05:6214:5186:b0:686:aa7a:784f with SMTP id kl6-20020a056214518600b00686aa7a784fmr5037468qvb.50.1707296590936;
-        Wed, 07 Feb 2024 01:03:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707296590; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp2322502ejb;
+        Mon, 12 Feb 2024 04:32:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGBRICs1KR0e+KSp+sizKRBWbhqD4n9GxJdU1w/m1CB1favyTvSJ9gmuKeu2IBjmB6bUnBb
+X-Received: by 2002:a05:620a:1647:b0:785:d921:41a1 with SMTP id c7-20020a05620a164700b00785d92141a1mr1369361qko.70.1707741161999;
+        Mon, 12 Feb 2024 04:32:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707741161; cv=none;
         d=google.com; s=arc-20160816;
-        b=oS19X4/g852KFfwgaFubLlV+gX5CsJZC2ennD9S0O4I8JW70ZX2uPHOjh7g8wKXmFz
-         yd9iqI+H+W+R+BCFKn2yd430UP6ceNU4XBaPuOqEr3FEOoT70ilrSGCKF+Vh1QTMsnbF
-         tvhfCST1fPZ+mpNl8I3RYXrQejaO3Bkjo0ibmdEw8P4xv7P87Ynx5nf8c4WrwORy/g+O
-         gIhQBRD7XS1kNQriRBLfnOBEnjqT6w3yz2YG1WtYRz6mWoCDh6umr+KOHAOlR+20ss9E
-         3zsYbyyZpH3kEG8AZhwc92omOYQOhxSkiSitw2tmFu1ks5IA76+yxNjsc/q6eTYAp066
-         N8OQ==
+        b=TBhdNFOJlKzUzz+/THJZkt414ObszDcuJBypqaqyn/+yNr61zB/3xPAp7GEWTQmCrZ
+         9nyzVeqG4fKJKmU5qH5CiFhoF5gb/VdpRcj/IXfaGK1ckFbXaZ1frhG/xwHvTppMm4Hs
+         9o07S/HkojJrzHuFsOVm23ylezJ0HZoPdnYXGnBvah4dxEJO8MIc/1JRePVfAxWLSkti
+         6vZIpJIHeVDz2nDwKMhgjbkZK2Yh+nO+/puhUWNw7TP4Fh3gzeFkKzdT6wV4/Eolpa2j
+         Ply9cApOKWxJvwgYYVpWbkYU1pUqgyQxC1FkuFKiEnFhIVTOE4ztSFyPuADhPaaI8b2p
+         ncDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:cc:references:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
-        fh=h3gRpty2WwWES401byNzoa5m6yDUQkO3z0dxQznBUEo=;
-        b=s2x9IyP7K8whtwaJPxzdOS74lhZ6diT+gPdmCCavVw8Mhbf3u65QyuD4+7py2G8f1z
-         sRwJZ4yEfWEcAJ3AoudUMCEiIDNYrypCdVx0Zr60L4pZ5qcm3ScLFg+kp3EXMp8w6t3x
-         xzhBEdmWPB2qcniN9/9okRxTnFIBih35wa7IaH9RP1rqxKH/qKNm8vM3aKln6Rh6rLcI
-         ehwp3kLAGimd9AJRcZQxNwqGQ+hdjMdDyRGcBeVcp7/0DW8epsPaMszUPxIC75O/pe4t
-         rqYO45Oqr0j9JcGjXeWDCU/6eCYJATVM1tLxTUs44KM3LHxmNfKiOmR/4yQxBXj9g/X3
-         +V0w==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:mime-version:dkim-signature;
+        bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
+        fh=OxaZDo/6l1Ydf1jZnKmE6qo6Zz4NDTMS8VtwutV6vXE=;
+        b=O/TOrQJB4JjyITe3fckNNMlnFvCItgTuR+j2+pKR2K/7eTYdn9449lGO092k8svpbh
+         1ySyZm3eoRoNvwm/rJwWw8CeidgehNguQoWo+J5Fo4XigFUdGZzxMlNMt1JUYd7huH4a
+         OPppjtL6xqLXic2H3dmOILDQmHqi//5PdVrP6qSsE4XW/AuPsE4dU0dUL8A1fgnb5/W6
+         H0kNGOQwpmyh9U2eloLG6FXLq9KcY6PP8kfEDDvaJdUhOqDPH5Xxq8PKn5pZhd/9OoOP
+         EdqrStrGb4XKa+qkHIJ/0cRS868BNCAWZYqe5VnGN9ApO2PlpPs77ddN5pqd8CT6Ikio
+         JZbw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WDbg4sLT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uUQpgjqr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCW3m7n/5bcRE+m3mAPU4V4dREtDhMggAAzhYlBqYIGmTWAaHSVAw8ovRkaa1zLhAyRXvO57cCIp3a5am0ZJS6jPtPVmyMEd
+X-Forwarded-Encrypted: i=1; AJvYcCWzrU8Uvsx77zdVWRLGud7BQVhYXHR3oOrOGuH3c6inUaJW8rmSVekjFhXfDt7TcXoZkgxPQqOa2NCwzivuevavgccrCmEf
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6-20020a05621420c600b0068cbf72c8ecsi383398qve.486.2024.02.07.01.03.10
+        by mx.google.com with ESMTPS id bk29-20020a05620a1a1d00b007858fccf35esi6337833qkb.125.2024.02.12.04.32.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Feb 2024 01:03:10 -0800 (PST)
+        Mon, 12 Feb 2024 04:32:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WDbg4sLT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uUQpgjqr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXdpa-0002tv-KK; Wed, 07 Feb 2024 04:03:00 -0500
+	id 1rZVU9-0005aT-MU; Mon, 12 Feb 2024 07:32:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rXdpV-0002tL-1e
- for qemu-arm@nongnu.org; Wed, 07 Feb 2024 04:02:53 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rZVU7-0005a1-QY
+ for qemu-arm@nongnu.org; Mon, 12 Feb 2024 07:32:32 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rXdpR-0005yw-D8
- for qemu-arm@nongnu.org; Wed, 07 Feb 2024 04:02:51 -0500
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a30e445602cso308158266b.0
- for <qemu-arm@nongnu.org>; Wed, 07 Feb 2024 01:02:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rZVU6-0004qL-9z
+ for qemu-arm@nongnu.org; Mon, 12 Feb 2024 07:32:31 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-561587ce966so3846115a12.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Feb 2024 04:32:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707296568; x=1707901368; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
- b=WDbg4sLTFXMcZddxbgPfuqN5sMplGBTGc33dykKNduBvx5GNOEBI+p7Z4ifiqMU+xP
- Cu3omVNgbnh0TS6v1qNa5+hZ2qBP2kIL7Bh8OWo01vlgDo6SsBu+MAsmRkNtHoUuCwTY
- 473vHgQnRD46tCrlIVOI6iQ6H/yTPtQtsLci4PF4CsiSrKwg6f/O8LA728PsJMZegByu
- //zuIS2/TmiP8mbFVkfYu90O3kOuV8uMvTsEQzA1/a5/kjefbONnI+hDHXVOyl4evSW1
- eBsPxCnYcAlDWfR2SaHIzqcdNPN10NhBbivhCCGqjIEfN22e+242mjPpABtWFTMhBA/j
- FNWg==
+ d=linaro.org; s=google; t=1707741148; x=1708345948; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
+ b=uUQpgjqrnMmykiD49T3QFJJdJK5iUZVzJ4bALx0epwiAJvOoJtF+IWO0QRliBVima/
+ 9FxyBBtE8nMQfcG96BlvNNk7V1MNMUDozISZHbrH1aUyzZ/9xf5TgHfIewmtyTG1aqgV
+ 5J7KexkRhVG7g5mm+m4aHFmNI3XilcpSbOX6k9iEgSdnN4WTPwYzPoSj/UlHxKheeySW
+ n5tpBunUVeDLVARJdxhiyziM/GADaPHICjoHUwat018FTI730SvfWeE3RY0tTGYV1Szb
+ 1I40eBDleoOzzW7aovUcyYTy7cuCJZUeIIdfTIOwitbatydcles8ArILHkyDyy26u7Qf
+ n7gQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707296568; x=1707901368;
- h=content-transfer-encoding:in-reply-to:from:cc:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fHwGSjHVXVHNUiahUB2RJJ0LQ7CGSwuntWOhWSUPVbM=;
- b=iadJwa1sYpV2mpouJWfyQNcNdDHuhU80wcB4T2F3wi75byqjS3XIMZNll0+e1nG8Hx
- zEKtBlxtSALqrmlp3vRlAfhgvi29MSApKGyMaAG9gDiSuHkQaFm9VbaQspZJc6b1p4++
- SgFyDk6n0c/Q7mZ31J8ByAahiTQTqkzxNkh+XYus2yXaTMu5L1qAly+YNamHCB6UGPXf
- 9Ll5oMIpmpCOkk+M+ABaNwkLEsvuDlRoLgnGJD2xsk3/I4WRmhgWwlbNkvvbKR+RWIeC
- XwAMpCSYV+oVX9x/HUX/S8JxGBQ04Irbe5VHhviCcnbAh8xYqi3I4EuG5sWSOmkG/yQN
- YW7A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWND0r35EFu+wlPk25I/aHq+gXOb+2hPhZkR+clS8hAQD6lAjuJJMSgXL3UI1G85KbGhMadCI5wISq4sKqSAX4kGUlM
-X-Gm-Message-State: AOJu0YxfBMzPbtvnpQzlOTGgJRHp87syr6oMcQXMxOT97Upf8R+zBPAx
- nHLqvbLcHWzxEI5kmL1HTtBjOASp8QdiSoZ38ZW0E6dmSmxrmWK2IfEiJiwYgqFn3JWbYOO+23x
- E
-X-Received: by 2002:a17:906:eb07:b0:a35:e5bf:b585 with SMTP id
- mb7-20020a170906eb0700b00a35e5bfb585mr5424550ejb.35.1707296567862; 
- Wed, 07 Feb 2024 01:02:47 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCUI4Y1gynNcQwOPQ09t+oZ1RUDWJUh3tzfWrA5Efy6jOpoRS+2mqrHfMfuapl9Y2HiBxPdS5ib3OtIZ0+QBgVR53HxejwXR565bWeEDVnsEEL64wrZU27ckiqjs45fQxKF3BWX+/hDRJFJC6He4PxEYE2DU5BbrREj3bnaS//Y=
-Received: from [192.168.69.100] ([176.176.170.22])
- by smtp.gmail.com with ESMTPSA id
- vh10-20020a170907d38a00b00a3875804883sm459014ejc.124.2024.02.07.01.02.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Feb 2024 01:02:47 -0800 (PST)
-Message-ID: <b8fbf313-1b24-4cf3-b5c1-f9289b413a75@linaro.org>
-Date: Wed, 7 Feb 2024 10:02:45 +0100
+ d=1e100.net; s=20230601; t=1707741148; x=1708345948;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
+ b=XcoglUwdmNSbnHspbo0837ayf/EnN5+IO4FiHbuP9sIVbnvCHnZatCwAfJON1QQK7o
+ kijc/fp4crDl61g555umqQahi9WXtM6AsPFfOsQcH0TVDthKIAkdkiCoO2MVNOpnICqn
+ Zkmz3qiKtvRnuCO0vpPNDIVD8NWgnOgQ9oBNUbYwEF5jPQEmCqdcMd0AZ6gxInGcPa0s
+ MmfPhaZdx8uuIxwWs+kOFO9GCVtCiPhl4DqHyoJGuY3D8ikpu400xjVpxOx5G5StGQTg
+ bUCiSPLbVBaHBV+VcKnkrLneGRhMgDlz0IX8+ZnMCHcUiXWFKrSXKoY/ZQhh+9i4PyAv
+ auNQ==
+X-Gm-Message-State: AOJu0Yw8RRoLqO5OXKjK61kfrFo0pXohIA8QNCbsBHCIfhBF6VckE6Rs
+ k9UX55dWufFz/uDQ3d6WrkLmP0EZePfXY7cqh7ZcNDq4potV2SPBRvzwYSFbLoqRDspOhhus9cO
+ SF0ewHIwVHgXOezAUI6lG/y+Q/Zm9QLYxRJFSyA==
+X-Received: by 2002:a05:6402:35d2:b0:561:841f:ed03 with SMTP id
+ z18-20020a05640235d200b00561841fed03mr5879014edc.14.1707741148266; Mon, 12
+ Feb 2024 04:32:28 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/13] hw/arm/mps3r: Initial skeleton for mps3-an536 board
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240206132931.38376-1-peter.maydell@linaro.org>
- <20240206132931.38376-9-peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240206132931.38376-9-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Feb 2024 12:32:16 +0000
+Message-ID: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
+Subject: possible deprecation and removal of some old QEMU Arm machine types
+ (pxa2xx, omap, sa1110)
+To: QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Guenter Roeck <linux@roeck-us.net>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,70 +118,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p7B9xyNk3R3b
+X-TUID: mlj2pl5tCUQr
 
-On 6/2/24 14:29, Peter Maydell wrote:
-> The AN536 is another FPGA image for the MPS3 development board. Unlike
-> the existing FPGA images we already model, this board uses a Cortex-R
-> family CPU, and it does not use any equivalent to the M-profile
-> "Subsystem for Embedded" SoC-equivalent that we model in hw/arm/armsse.c.
-> It's therefore more convenient for us to model it as a completely
-> separate C file.
-> 
-> This commit adds the basic skeleton of the board model, and the
-> code to create all the RAM and ROM. We assume that we're probably
-> going to want to add more images in future, so use the same
-> base class/subclass setup that mps2-tz.c uses, even though at
-> the moment there's only a single subclass.
-> 
-> Following commits will add the CPUs and the peripherals.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   MAINTAINERS                             |   3 +-
->   configs/devices/arm-softmmu/default.mak |   1 +
->   hw/arm/mps3r.c                          | 239 ++++++++++++++++++++++++
->   hw/arm/Kconfig                          |   5 +
->   hw/arm/meson.build                      |   1 +
->   5 files changed, 248 insertions(+), 1 deletion(-)
->   create mode 100644 hw/arm/mps3r.c
+QEMU includes some models of old Arm machine types which are
+a bit problematic for us because:
+ * they're written in a very old way that uses numerous APIs that we
+   would like to get away from (eg they don't use qdev, they use
+   qemu_system_reset_request(), they use vmstate_register(), etc)
+ * they've been that way for a decade plus and nobody particularly has
+   stepped up to try to modernise the code (beyond some occasional
+   work here and there)
+ * we often don't have test cases for them, which means that if we
+   do try to do the necessary refactoring work on them we have no
+   idea if they even still work at all afterwards
 
+All these machine types are also of hardware that has largely passed
+away into history and where I would not be surprised to find that
+e.g. the Linux kernel support was never tested on real hardware
+any more.
 
-> +/*
-> + * The MPS3 DDR is 3GiB, but on a 32-bit host QEMU doesn't permit
-> + * emulation of that much guest RAM, so artificially make it smaller.
-> + */
-> +#if HOST_LONG_BITS == 32
-> +#define MPS3_DDR_SIZE (1 * GiB)
-> +#else
-> +#define MPS3_DDR_SIZE (3 * GiB)
-> +#endif
+So I would like to explore whether we can deprecate-and-drop
+some or all of them. This would let us delete the code entirely
+rather than spending a long time trying to bring it up to scratch
+for a probably very small to nonexistent userbase. The aim of this
+email is to see if anybody is still using any of these and would be
+upset if they went away. Reports of "I tried to use this machine
+type and it's just broken" are also interesting as they would
+strongly suggest that the machine has no real users and can be
+removed.
 
-Generically, can we migrate a VM started on a 32-bit host to a 64-bit
-one?
+The machines I have in mind are:
 
-> +static void mps3r_set_default_ram_info(MPS3RMachineClass *mmc)
-> +{
-> +    /*
-> +     * Set mc->default_ram_size and default_ram_id from the
-> +     * information in mmc->raminfo.
-> +     */
-> +    MachineClass *mc = MACHINE_CLASS(mmc);
-> +    const RAMInfo *p;
-> +
-> +    for (p = mmc->raminfo; p->name; p++) {
-> +        if (p->mrindex < 0) {
-> +            /* Found the entry for "system memory" */
-> +            mc->default_ram_size = p->size;
-> +            mc->default_ram_id = p->name;
+PXA2xx machines:
 
-Nice.
+akita                Sharp SL-C1000 (Akita) PDA (PXA270)
+borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
+connex               Gumstix Connex (PXA255)
+mainstone            Mainstone II (PXA27x)
+spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
+terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
+tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
+verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
+z2                   Zipit Z2 (PXA27x)
 
-> +            return;
-> +        }
-> +    }
-> +    g_assert_not_reached();
-> +}
+OMAP1 machines:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+sx1                  Siemens SX1 (OMAP310) V2
+sx1-v1               Siemens SX1 (OMAP310) V1
 
+OMAP2 machines:
+
+n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+
+The one SA1110 machine:
+
+collie               Sharp SL-5500 (Collie) PDA (SA-1110)
+
+Obviously if we can remove all the machines that used a given
+SoC, that's much more effective than if we just delete one or two.
+
+I don't have any test images for the SA1110 or OMAP1 machines,
+so those are the ones I am most keen to be able to drop.
+I do have test images for a few of the pxa2xx and the OMAP2 machines.
+
+thanks
+-- PMM

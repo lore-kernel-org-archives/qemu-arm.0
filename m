@@ -1,109 +1,167 @@
-Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp2322502ejb;
-        Mon, 12 Feb 2024 04:32:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGBRICs1KR0e+KSp+sizKRBWbhqD4n9GxJdU1w/m1CB1favyTvSJ9gmuKeu2IBjmB6bUnBb
-X-Received: by 2002:a05:620a:1647:b0:785:d921:41a1 with SMTP id c7-20020a05620a164700b00785d92141a1mr1369361qko.70.1707741161999;
-        Mon, 12 Feb 2024 04:32:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707741161; cv=none;
+Received: by 2002:a17:906:c945:b0:a38:6d10:c5dd with SMTP id fw5csp2372246ejb;
+        Mon, 12 Feb 2024 06:03:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGKR541T3FbWsaxA285JTvBHC/+IeVD5qQFubWQ9fC+2mU7YqUnsCcJZ1d+KuwgPe03oQb3
+X-Received: by 2002:a05:6808:201f:b0:3c0:34de:4247 with SMTP id q31-20020a056808201f00b003c034de4247mr5017005oiw.4.1707746635228;
+        Mon, 12 Feb 2024 06:03:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707746635; cv=none;
         d=google.com; s=arc-20160816;
-        b=TBhdNFOJlKzUzz+/THJZkt414ObszDcuJBypqaqyn/+yNr61zB/3xPAp7GEWTQmCrZ
-         9nyzVeqG4fKJKmU5qH5CiFhoF5gb/VdpRcj/IXfaGK1ckFbXaZ1frhG/xwHvTppMm4Hs
-         9o07S/HkojJrzHuFsOVm23ylezJ0HZoPdnYXGnBvah4dxEJO8MIc/1JRePVfAxWLSkti
-         6vZIpJIHeVDz2nDwKMhgjbkZK2Yh+nO+/puhUWNw7TP4Fh3gzeFkKzdT6wV4/Eolpa2j
-         Ply9cApOKWxJvwgYYVpWbkYU1pUqgyQxC1FkuFKiEnFhIVTOE4ztSFyPuADhPaaI8b2p
-         ncDw==
+        b=us6MRGbcYyWhsRx4dBtBKiFUnu63hurnFoWJhnF2p3rS3dda5dncbTu+PR+ml6E4JS
+         RnJ1J25SXPb3HBzvLWzXqmsu/cbSz7UQIyvwI45/slN9BK1QlJOriAf/+Bx8E0ihMdXI
+         a+gmJFPXKU9MCd5MEwRYl6sslrK7WEIkN2ADWQprMrxq4/Rxi9jmBXvzL4Jnzu681UbM
+         botqcfMg9nBdhsVY8W0YMaaqnENfvflQpMHbJFli+0c5/9f6+2Z7k3wTi625f0u8pyYo
+         28xmTmbPa3rBiAaFNPkuuFKKKe1PRTPj7506+Ibk5uXQXBmHXXT4pRWGr26t7/dF6OtO
+         g5ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:mime-version:dkim-signature;
-        bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
-        fh=OxaZDo/6l1Ydf1jZnKmE6qo6Zz4NDTMS8VtwutV6vXE=;
-        b=O/TOrQJB4JjyITe3fckNNMlnFvCItgTuR+j2+pKR2K/7eTYdn9449lGO092k8svpbh
-         1ySyZm3eoRoNvwm/rJwWw8CeidgehNguQoWo+J5Fo4XigFUdGZzxMlNMt1JUYd7huH4a
-         OPppjtL6xqLXic2H3dmOILDQmHqi//5PdVrP6qSsE4XW/AuPsE4dU0dUL8A1fgnb5/W6
-         H0kNGOQwpmyh9U2eloLG6FXLq9KcY6PP8kfEDDvaJdUhOqDPH5Xxq8PKn5pZhd/9OoOP
-         EdqrStrGb4XKa+qkHIJ/0cRS868BNCAWZYqe5VnGN9ApO2PlpPs77ddN5pqd8CT6Ikio
-         JZbw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=0fDwCuMc1thS1g21GHEWZZso75s6fwtaIeUP5pf+VOo=;
+        fh=B+azlWxN13G96gCtGo+ZqHHha8SB4juaEV+H1I8mUsk=;
+        b=MyJ7BZk8uXU12EznmR/ZjbiMQYRd3Ml5iMLnn8sENVoK+r1XKiu8CcnlMjQ86RO72z
+         nHXSXXQIqnM2toNoFC+GH6rNukHz0JFO/bhnCMTAlj8eJ0GgRXuJE8PEd4mdf6PTzIIu
+         Pqddxs8DEv7+ck5LWUGMMAKEvMdQnFKXjlD8AtRPygFt2NBCvQeiW8FDT8pkT5SWkiHg
+         oc+4QNslH8PbR1VEu3KhWa4TL5v62/CnKY9izTMC0/yu8qs4zDq0KTxWPqIzUaGoJGRc
+         e7o5dyYrf+TjKdmoDLgEPEX990a8wKcIrJowAsFXgNpJqxIMcz91x8HBS8/iGIrHaGYO
+         w1Fw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUQpgjqr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCWzrU8Uvsx77zdVWRLGud7BQVhYXHR3oOrOGuH3c6inUaJW8rmSVekjFhXfDt7TcXoZkgxPQqOa2NCwzivuevavgccrCmEf
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=VdFz8lzW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+X-Forwarded-Encrypted: i=1; AJvYcCWmHfMku1vB4F+GcRsQIkqpkxPl50mHUdqyXGP/EZuLxtEzogIJkxmar5md/9l6O1yeyHk6JbtMtZ7fHgC6aQxttQjUSajM
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk29-20020a05620a1a1d00b007858fccf35esi6337833qkb.125.2024.02.12.04.32.41
+        by mx.google.com with ESMTPS id b15-20020a67e98f000000b0046b16152f9csi609041vso.466.2024.02.12.06.03.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Feb 2024 04:32:41 -0800 (PST)
+        Mon, 12 Feb 2024 06:03:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUQpgjqr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=VdFz8lzW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rZVU9-0005aT-MU; Mon, 12 Feb 2024 07:32:33 -0500
+	id 1rZWuK-00063k-OT; Mon, 12 Feb 2024 09:03:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rZVU7-0005a1-QY
- for qemu-arm@nongnu.org; Mon, 12 Feb 2024 07:32:32 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1rZWuD-0005ow-FF; Mon, 12 Feb 2024 09:03:33 -0500
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rZVU6-0004qL-9z
- for qemu-arm@nongnu.org; Mon, 12 Feb 2024 07:32:31 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-561587ce966so3846115a12.1
- for <qemu-arm@nongnu.org>; Mon, 12 Feb 2024 04:32:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1rZWuA-0000Yv-C9; Mon, 12 Feb 2024 09:03:33 -0500
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-6e0a37751cbso1124846b3a.2; 
+ Mon, 12 Feb 2024 06:03:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707741148; x=1708345948; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
- b=uUQpgjqrnMmykiD49T3QFJJdJK5iUZVzJ4bALx0epwiAJvOoJtF+IWO0QRliBVima/
- 9FxyBBtE8nMQfcG96BlvNNk7V1MNMUDozISZHbrH1aUyzZ/9xf5TgHfIewmtyTG1aqgV
- 5J7KexkRhVG7g5mm+m4aHFmNI3XilcpSbOX6k9iEgSdnN4WTPwYzPoSj/UlHxKheeySW
- n5tpBunUVeDLVARJdxhiyziM/GADaPHICjoHUwat018FTI730SvfWeE3RY0tTGYV1Szb
- 1I40eBDleoOzzW7aovUcyYTy7cuCJZUeIIdfTIOwitbatydcles8ArILHkyDyy26u7Qf
- n7gQ==
+ d=gmail.com; s=20230601; t=1707746608; x=1708351408; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=0fDwCuMc1thS1g21GHEWZZso75s6fwtaIeUP5pf+VOo=;
+ b=VdFz8lzWzP1WciEAcxJD1a+2RFjDUtKXXul5ZZ30X8ePH1aWIzba+l5TQBlP67TsUS
+ 46QN4CXow/YJQbcIYNAimXNuKJYlYNlg/Ey3CR5BxMJn7op7yCZdSCUsXYV4hEZ7Sydv
+ 3TgRbL81KCWN10yrCcanXRAmon6dM4C+vXpuQ0ViBqLz2pP9RBl7FTz1EloABjej1PLy
+ n9OTtvKoYPIS/6J7WHBPy+YFlct5IBwSw6A8FbH010o2SpgLImJxqX2j84OqnaoW/UTa
+ vlRgFlRLIOUr06C2L/f+nqGNiIwtRafWrSpWfQZdq0w3OMHRW5EX81JYuxflFYJQjjFQ
+ zF2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707741148; x=1708345948;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=n5+OP/V+bXhIhPzeg7Q+fZwnwG9v8oGGXWdd6REyCoM=;
- b=XcoglUwdmNSbnHspbo0837ayf/EnN5+IO4FiHbuP9sIVbnvCHnZatCwAfJON1QQK7o
- kijc/fp4crDl61g555umqQahi9WXtM6AsPFfOsQcH0TVDthKIAkdkiCoO2MVNOpnICqn
- Zkmz3qiKtvRnuCO0vpPNDIVD8NWgnOgQ9oBNUbYwEF5jPQEmCqdcMd0AZ6gxInGcPa0s
- MmfPhaZdx8uuIxwWs+kOFO9GCVtCiPhl4DqHyoJGuY3D8ikpu400xjVpxOx5G5StGQTg
- bUCiSPLbVBaHBV+VcKnkrLneGRhMgDlz0IX8+ZnMCHcUiXWFKrSXKoY/ZQhh+9i4PyAv
- auNQ==
-X-Gm-Message-State: AOJu0Yw8RRoLqO5OXKjK61kfrFo0pXohIA8QNCbsBHCIfhBF6VckE6Rs
- k9UX55dWufFz/uDQ3d6WrkLmP0EZePfXY7cqh7ZcNDq4potV2SPBRvzwYSFbLoqRDspOhhus9cO
- SF0ewHIwVHgXOezAUI6lG/y+Q/Zm9QLYxRJFSyA==
-X-Received: by 2002:a05:6402:35d2:b0:561:841f:ed03 with SMTP id
- z18-20020a05640235d200b00561841fed03mr5879014edc.14.1707741148266; Mon, 12
- Feb 2024 04:32:28 -0800 (PST)
+ d=1e100.net; s=20230601; t=1707746608; x=1708351408;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :sender:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0fDwCuMc1thS1g21GHEWZZso75s6fwtaIeUP5pf+VOo=;
+ b=W6LCRH55nWEW9x8I5XMmXeiuHQ+aw1FJitUebFybNVtZauBCmjKXT1gHNJZgk+iazb
+ 6XZpEcFVBmn5B8n1OIipMTBGDKS53yNE04AdviUvSykmIChR5VJ7yUEJlmd/LuWg//YT
+ edfOIN+2G3yYqRCh4Lq/g94UUZ1+nl0cTt1ooN75IYy60uI3dFKD7ICkGS+8imZg0V6a
+ 9AHvmuJcsLVUmU69Z8tXaZrksAqc2Oj2IjNTjp3uTle/fMCNcXqmlh632EaUceZnG2KE
+ GwfDzZyRU4gpBT43Rc/f6QVdIGw4RWtIJ2vr7cRjH0UYbLpHR2fgIJAYogNdKLFJ2Onn
+ iD8Q==
+X-Gm-Message-State: AOJu0Yx2Y5+5DDLFpjHjpESvLHRt+pvIqzOFeCtOAYCXc4qcE8ajjLhj
+ tXMCYcAyA1nLrst0MrnlvMpLer87XbBz9mgMc6FurUyZdsFq7A2w
+X-Received: by 2002:a05:6a00:390e:b0:6db:d2f5:9e28 with SMTP id
+ fh14-20020a056a00390e00b006dbd2f59e28mr6382544pfb.10.1707746608011; 
+ Mon, 12 Feb 2024 06:03:28 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX2uuTymWBL/rmRsLA+QT7HSE1ByqAajPhKyHxL+XFLnlmXaJzSv5XNc3H9thkm7YzljQ88jKK4vbyU+9pWmrPWSCSp3ECIrTcrOeBgw9I4CddiOWBT1IaY9iYRT8n5+tFd19Nl
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ w12-20020a056a0014cc00b006e03c68ae9asm5739807pfu.16.2024.02.12.06.03.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Feb 2024 06:03:27 -0800 (PST)
+Message-ID: <f5a561bf-31b0-4fb9-acaf-efc83d232a9c@roeck-us.net>
+Date: Mon, 12 Feb 2024 06:03:25 -0800
 MIME-Version: 1.0
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Feb 2024 12:32:16 +0000
-Message-ID: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
-Subject: possible deprecation and removal of some old QEMU Arm machine types
- (pxa2xx, omap, sa1110)
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Guenter Roeck <linux@roeck-us.net>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: possible deprecation and removal of some old QEMU Arm machine
+ types (pxa2xx, omap, sa1110)
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
+ RYHA7RCEK2dh6dDccykQk3bC90xXMPg+O3R+C/SkwcnUak1UZaeK/SwQbq/t0tkMzYDRxfJ7
+ nyFiKxUehbNF3r9qlJgPqONwX5vJy4/GvDHdddSCxV41P/ejsZ8PykxyJs98UWhF54tGRWFl
+ 7i1xvaDB9lN5WTLRKSO7wICuLiSz5WZHXMkyF4d+/O5ll7yz/o/JxK5vO/sduYDIlFTvBZDh
+ gzaEtNf5tQjsjG4io8E0Yq0ViobLkS2RTNZT8ICq/Jmvl0SpbHRvYwa2DhNsK0YjHFQBB0FX
+ IdhdUEzNefcNcYvqigJpdICoP2e4yJSyflHFO4dr0OrdnGLe1Zi/8Xo/2+M1dSSEt196rXaC
+ kwu2KgIgmkRBb3cp2vIBBIIowU8W3qC1+w+RdMUrZxKGWJ3juwcgveJlzMpMZNyM1jobSXZ0
+ VHGMNJ3MwXlrEFPXaYJgibcg6brM6wGfX/LBvc/haWw4yO24lT5eitm4UBdIy9pKkKmHHh7s
+ jfZJkB5fWKVdoCv/omy6UyH6ykLOPFugl+hVL2Prf8xrXuZe1CMS7ID9Lc8FaL1ROIN/W8Vk
+ BIsJMaWOhks//7d92Uf3EArDlDShwR2+D+AMon8NULuLBHiEUQARAQABzTJHdWVudGVyIFJv
+ ZWNrIChMaW51eCBhY2NvdW50KSA8bGludXhAcm9lY2stdXMubmV0PsLBgQQTAQIAKwIbAwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4ACGQEFAlVcphcFCRmg06EACgkQyx8mb86fmYFg0RAA
+ nzXJzuPkLJaOmSIzPAqqnutACchT/meCOgMEpS5oLf6xn5ySZkl23OxuhpMZTVX+49c9pvBx
+ hpvl5bCWFu5qC1jC2eWRYU+aZZE4sxMaAGeWenQJsiG9lP8wkfCJP3ockNu0ZXXAXwIbY1O1
+ c+l11zQkZw89zNgWgKobKzrDMBFOYtAh0pAInZ9TSn7oA4Ctejouo5wUugmk8MrDtUVXmEA9
+ 7f9fgKYSwl/H7dfKKsS1bDOpyJlqhEAH94BHJdK/b1tzwJCFAXFhMlmlbYEk8kWjcxQgDWMu
+ GAthQzSuAyhqyZwFcOlMCNbAcTSQawSo3B9yM9mHJne5RrAbVz4TWLnEaX8gA5xK3uCNCeyI
+ sqYuzA4OzcMwnnTASvzsGZoYHTFP3DQwf2nzxD6yBGCfwNGIYfS0i8YN8XcBgEcDFMWpOQhT
+ Pu3HeztMnF3HXrc0t7e5rDW9zCh3k2PA6D2NV4fews9KDFhLlTfCVzf0PS1dRVVWM+4jVl6l
+ HRIAgWp+2/f8dx5vPc4Ycp4IsZN0l1h9uT7qm1KTwz+sSl1zOqKD/BpfGNZfLRRxrXthvvY8
+ BltcuZ4+PGFTcRkMytUbMDFMF9Cjd2W9dXD35PEtvj8wnEyzIos8bbgtLrGTv/SYhmPpahJA
+ l8hPhYvmAvpOmusUUyB30StsHIU2LLccUPPOwU0ETofVZwEQALlLbQeBDTDbwQYrj0gbx3bq
+ 7kpKABxN2MqeuqGr02DpS9883d/t7ontxasXoEz2GTioevvRmllJlPQERVxM8gQoNg22twF7
+ pB/zsrIjxkE9heE4wYfN1AyzT+AxgYN6f8hVQ7Nrc9XgZZe+8IkuW/Nf64KzNJXnSH4u6nJM
+ J2+Dt274YoFcXR1nG76Q259mKwzbCukKbd6piL+VsT/qBrLhZe9Ivbjq5WMdkQKnP7gYKCAi
+ pNVJC4enWfivZsYupMd9qn7Uv/oCZDYoBTdMSBUblaLMwlcjnPpOYK5rfHvC4opxl+P/Vzyz
+ 6WC2TLkPtKvYvXmdsI6rnEI4Uucg0Au/Ulg7aqqKhzGPIbVaL+U0Wk82nz6hz+WP2ggTrY1w
+ ZlPlRt8WM9w6WfLf2j+PuGklj37m+KvaOEfLsF1v464dSpy1tQVHhhp8LFTxh/6RWkRIR2uF
+ I4v3Xu/k5D0LhaZHpQ4C+xKsQxpTGuYh2tnRaRL14YMW1dlI3HfeB2gj7Yc8XdHh9vkpPyuT
+ nY/ZsFbnvBtiw7GchKKri2gDhRb2QNNDyBnQn5mRFw7CyuFclAksOdV/sdpQnYlYcRQWOUGY
+ HhQ5eqTRZjm9z+qQe/T0HQpmiPTqQcIaG/edgKVTUjITfA7AJMKLQHgp04Vylb+G6jocnQQX
+ JqvvP09whbqrABEBAAHCwWUEGAECAA8CGwwFAlVcpi8FCRmg08MACgkQyx8mb86fmYHNRQ/+
+ J0OZsBYP4leJvQF8lx9zif+v4ZY/6C9tTcUv/KNAE5leyrD4IKbnV4PnbrVhjq861it/zRQW
+ cFpWQszZyWRwNPWUUz7ejmm9lAwPbr8xWT4qMSA43VKQ7ZCeTQJ4TC8kjqtcbw41SjkjrcTG
+ wF52zFO4bOWyovVAPncvV9eGA/vtnd3xEZXQiSt91kBSqK28yjxAqK/c3G6i7IX2rg6pzgqh
+ hiH3/1qM2M/LSuqAv0Rwrt/k+pZXE+B4Ud42hwmMr0TfhNxG+X7YKvjKC+SjPjqp0CaztQ0H
+ nsDLSLElVROxCd9m8CAUuHplgmR3seYCOrT4jriMFBtKNPtj2EE4DNV4s7k0Zy+6iRQ8G8ng
+ QjsSqYJx8iAR8JRB7Gm2rQOMv8lSRdjva++GT0VLXtHULdlzg8VjDnFZ3lfz5PWEOeIMk7Rj
+ trjv82EZtrhLuLjHRCaG50OOm0hwPSk1J64R8O3HjSLdertmw7eyAYOo4RuWJguYMg5DRnBk
+ WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
+ HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,70 +176,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mlj2pl5tCUQr
+X-TUID: 5gUQFUkjz0lW
 
-QEMU includes some models of old Arm machine types which are
-a bit problematic for us because:
- * they're written in a very old way that uses numerous APIs that we
-   would like to get away from (eg they don't use qdev, they use
-   qemu_system_reset_request(), they use vmstate_register(), etc)
- * they've been that way for a decade plus and nobody particularly has
-   stepped up to try to modernise the code (beyond some occasional
-   work here and there)
- * we often don't have test cases for them, which means that if we
-   do try to do the necessary refactoring work on them we have no
-   idea if they even still work at all afterwards
+On 2/12/24 04:32, Peter Maydell wrote:
+> QEMU includes some models of old Arm machine types which are
+> a bit problematic for us because:
+>   * they're written in a very old way that uses numerous APIs that we
+>     would like to get away from (eg they don't use qdev, they use
+>     qemu_system_reset_request(), they use vmstate_register(), etc)
+>   * they've been that way for a decade plus and nobody particularly has
+>     stepped up to try to modernise the code (beyond some occasional
+>     work here and there)
+>   * we often don't have test cases for them, which means that if we
+>     do try to do the necessary refactoring work on them we have no
+>     idea if they even still work at all afterwards
+> 
+> All these machine types are also of hardware that has largely passed
+> away into history and where I would not be surprised to find that
+> e.g. the Linux kernel support was never tested on real hardware
+> any more.
+> 
+> So I would like to explore whether we can deprecate-and-drop
+> some or all of them. This would let us delete the code entirely
+> rather than spending a long time trying to bring it up to scratch
+> for a probably very small to nonexistent userbase. The aim of this
+> email is to see if anybody is still using any of these and would be
+> upset if they went away. Reports of "I tried to use this machine
+> type and it's just broken" are also interesting as they would
+> strongly suggest that the machine has no real users and can be
+> removed.
+> 
+> The machines I have in mind are:
+> 
+> PXA2xx machines:
+> 
+> akita                Sharp SL-C1000 (Akita) PDA (PXA270)
+> borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
+> connex               Gumstix Connex (PXA255)
+> mainstone            Mainstone II (PXA27x)
+> spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
+> terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
+> tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
+> verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
+> z2                   Zipit Z2 (PXA27x)
+> 
+> OMAP1 machines:
+> 
+> cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+> sx1                  Siemens SX1 (OMAP310) V2
+> sx1-v1               Siemens SX1 (OMAP310) V1
+> 
+> OMAP2 machines:
+> 
+> n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+> n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+> 
+> The one SA1110 machine:
+> 
+> collie               Sharp SL-5500 (Collie) PDA (SA-1110)
+> 
+> Obviously if we can remove all the machines that used a given
+> SoC, that's much more effective than if we just delete one or two.
+> 
+> I don't have any test images for the SA1110 or OMAP1 machines,
+> so those are the ones I am most keen to be able to drop.
+> I do have test images for a few of the pxa2xx and the OMAP2 machines.
+> 
+> thanks
+> -- PMM
 
-All these machine types are also of hardware that has largely passed
-away into history and where I would not be surprised to find that
-e.g. the Linux kernel support was never tested on real hardware
-any more.
-
-So I would like to explore whether we can deprecate-and-drop
-some or all of them. This would let us delete the code entirely
-rather than spending a long time trying to bring it up to scratch
-for a probably very small to nonexistent userbase. The aim of this
-email is to see if anybody is still using any of these and would be
-upset if they went away. Reports of "I tried to use this machine
-type and it's just broken" are also interesting as they would
-strongly suggest that the machine has no real users and can be
-removed.
-
-The machines I have in mind are:
-
-PXA2xx machines:
-
-akita                Sharp SL-C1000 (Akita) PDA (PXA270)
-borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
-connex               Gumstix Connex (PXA255)
-mainstone            Mainstone II (PXA27x)
-spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
-terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
-tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
-verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
-z2                   Zipit Z2 (PXA27x)
-
-OMAP1 machines:
-
-cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
-sx1                  Siemens SX1 (OMAP310) V2
-sx1-v1               Siemens SX1 (OMAP310) V1
-
-OMAP2 machines:
-
-n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
-n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
-
-The one SA1110 machine:
-
-collie               Sharp SL-5500 (Collie) PDA (SA-1110)
-
-Obviously if we can remove all the machines that used a given
-SoC, that's much more effective than if we just delete one or two.
-
-I don't have any test images for the SA1110 or OMAP1 machines,
-so those are the ones I am most keen to be able to drop.
-I do have test images for a few of the pxa2xx and the OMAP2 machines.
-
-thanks
--- PMM

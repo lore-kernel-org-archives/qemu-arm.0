@@ -1,127 +1,147 @@
-Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp379308ejb;
-        Tue, 13 Feb 2024 00:14:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWXFD8MBdr+pKgl2GCWkFp/2pW0SaO8x0mOGAqFo6TWXOyKEuGeMjG1Ex4xozc3Kamu7clgxKhpridO2/KndpAxLPz4SAfV
-X-Google-Smtp-Source: AGHT+IFmiI4LJYWSxnlN+c4ODepGN+KOq8uUTj67cuxzCKZE0U9YB6nre2VJtYP2sUMFtTVUoMoX
-X-Received: by 2002:a05:6808:648a:b0:3c0:3966:625b with SMTP id fh10-20020a056808648a00b003c03966625bmr5176321oib.30.1707812067349;
-        Tue, 13 Feb 2024 00:14:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707812067; cv=none;
+Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp382432ejb;
+        Tue, 13 Feb 2024 00:22:47 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVz1nVp0MtMgwnvO6uHDJqwMbLWN52yTZyIsYq78mUrQx0yhlH9OaZ5aC3s3UpwQ5hESgMill7lkt5EdbNkoqcpDQ2/X1kW
+X-Google-Smtp-Source: AGHT+IE7dNVLsQ/NAb7Z7FMprbQmlUbGc7tJf3BcRCHOkaMpRisryXqT/QY0KRRoaEsugKu5Zxd1
+X-Received: by 2002:a05:620a:22b:b0:787:188e:f15d with SMTP id u11-20020a05620a022b00b00787188ef15dmr3047669qkm.28.1707812566932;
+        Tue, 13 Feb 2024 00:22:46 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1707812566; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uyrydB7ujQ5ojelfFGDehkluCUVXre8wYX3hDU5O1aGuvcYI6noBGj7IYrqs04lSlD
-         AQUYGF5tMjUQIS3hEObir6BskY0oQOIaqOZ3KVlc5ALMo06OFAlvUHlJb14HdaPhMCwm
-         45BkX8adbLlCThbj71R+bvTk+u9J8J9Lplz8GYUy/ZdeWAXmjceanOZdg8ih2ZyMdq/w
-         ftpHjB0WrNBykudXJqCOLwR/sRi5rbsuseA1WCsaGtWmU0VhDESLQRbKzw5JVdX05hIx
-         klA2ck/jLY4FFPaErXby96iIx50tPL1fLhQa9gZtaiBIOnZtZgbIz8NugYwxne8t3/V2
-         aL0w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=lY18Guf7FL80lVyib7nsGLggzXj6pxA+Y15Xu666aw57reI/zKhWQkLX3HDEh/IUI6
+         oXd2i7AsP74nSTVKb/dpO4OEVE6aoPoNv1bJmALWLXPh2EQH+DH7w08VwRTjSXhZL2Z6
+         EwgjnGcjsbJn+DqQvk7P/vPNrXjYdSA8dqVrrU07wB0rVjZHoOPsn075tqDhY4lu1lqe
+         7Ar06GNg77eR++cO7V9o/f5efWX6giP5J7KqcNoSehl/QOmeABFYRkxoJVRlVnpY3TJE
+         BcMoPO1pnd3pphITuBE9TjbiFlKO+ex0YaILuFA7/RIWyoJaD9x1JhB8jIMDSOlFX073
+         lIvQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=a4ug+gqIzlvgMFvPTiM99Fr6Vu5lvApMTDFifyvx+0U=;
-        fh=j3rfC+V7WXFIhVR8HpncNuB/enMBX8StF9v8lUv1kDk=;
-        b=TWAsy0/QRngpEYYU7sVoNiyMFRElVCGxqiBZnec1EpZjVw4KMjJQZ/9UHTGlAbLsWc
-         PQm0pyl7tG/UE9efTCIEGBUYDAgNHKDZewUHIrVL/By1Da89669RFVGOR0etIz5Ch0Dp
-         3kGSH32PxW0OQdA72hduVPnKVB2HsrpIOy7vp/G5w8QqgQ3RhBolksmNYcpeWbGbEkZm
-         lKi4TZe/mgZy1jgaW2MX4N2Y05ga4DRsynj6VjKXTOTyEe750QVeOZZ4QNU4/vivjX7Z
-         AGpJ/2sAYyFCDFt3jESNVcWIOD174Qe3+/eV9InpIiWLasiQUqS1j6F+RHUBY+idt+IG
-         xkMA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hFSF+J+ZYSITdqlDhl9Cfky96JCt+BheB6vpDXKkfNs=;
+        fh=Bk6O5CgBho8i4oHou/+u1wF/AC8g3U7q4gvGr8Qz4Rs=;
+        b=joOEScJkitGhQhIOiSWkQKQ3Jyj+ViINap3lapxW4OkKMqpK25/pUiH2pxS5tDfFV9
+         JM5nlLuoDxXeycGGj5Ivo7ehvH3Ydnev2nFP6FoyQm43PRmX9+xIZyABWNGJu4tqmi5P
+         jcrgwEdTyvdXPLcqZTbhxSV9jD+9GDNZerwiiyaxEU3fVccWw9KsMuyI+8rdF9ze4+fx
+         swxlyDlDzWtpMPSyk4z33BTQPKtG24cecTZGiIdz8TBuqiHImtCWh6alwa2shE7hLEx/
+         vKaSlApCeAhU9ttNBxtkD84S7jlHLwjk74UOeXXxQmeI24SgiI6+RkiL11ZJ8wvsJJh/
+         Cjyw==;
         darn=linaro.org
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="hJl4/HnI";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=EEVLeK6a;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCWhRfb3IhM0FHWTzgPv8vlnGBraXLEfFjTGP+gQ5Z9KCwNIl09cp4xfmt4/TJhNpLL3tzLAqmeaYSqLFuZQYJ8vEX9TSTdd
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+X-Forwarded-Encrypted: i=2; AJvYcCUzBlZf/5BBqsMh1DnyYN7dlZU9v/U0sut3qi9ZS4flOdbL4Lc0Y4MwyFdTzFrtP9VKGu+EGsotOj0ojPrCAeCA5+uD9zI0
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12-20020ac8480c000000b0042dace44a88si1032302qtq.457.2024.02.13.00.14.27
+        by mx.google.com with ESMTPS id g11-20020ac85d4b000000b0042a86d2e689si2492797qtx.786.2024.02.13.00.22.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 00:14:27 -0800 (PST)
+        Tue, 13 Feb 2024 00:22:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="hJl4/HnI";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=EEVLeK6a;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rZnuH-0000bY-Uu; Tue, 13 Feb 2024 03:12:46 -0500
+	id 1rZo3q-0000ex-T6; Tue, 13 Feb 2024 03:22:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZnuC-0000YM-Ew
- for qemu-arm@nongnu.org; Tue, 13 Feb 2024 03:12:43 -0500
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZnuA-0000sq-SA
- for qemu-arm@nongnu.org; Tue, 13 Feb 2024 03:12:40 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id
- 38308e7fff4ca-2d0a4e1789cso48384991fa.3
- for <qemu-arm@nongnu.org>; Tue, 13 Feb 2024 00:12:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707811957; x=1708416757; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=a4ug+gqIzlvgMFvPTiM99Fr6Vu5lvApMTDFifyvx+0U=;
- b=hJl4/HnIRU9x3VmCmxM5Z8T/YkhtZbh5hcTPb9q8aWZFzMXcw6d70z5/eLM/3s025o
- ldyVN3XBbDC/gs0Eoi8z01F5AZrd2BvliFPciS8/md782TwExvsRN2K7vXwHDHljkztu
- xluKixYyA5VfP2wLuRO+uswJx04DeZMw0ZgAfHHAdT3XwO99AN0F1LgR74UnzwZOlIQm
- Tt0CVKHGWHR5UsBY8lOwwG0EjeeAjGlMb1gxpC0dSJcac7sA0vm/xMoWJlOkqLRcdGeA
- v3np/E5OwOCKW5CaiyWkEceLqgGZCdF5YRPV0CvbMWDIrSl+kM3nqOWpL87Z9Pa71Tw4
- plxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707811957; x=1708416757;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=a4ug+gqIzlvgMFvPTiM99Fr6Vu5lvApMTDFifyvx+0U=;
- b=cDeHL8k3hQtFajpHs4SY1IL5oTikNgF44t6yNLizFB25fKSb7AtJpwehqhZ+guaYDp
- w1IUKytHfbKHbQjmdprqAqW/1WeDK0Rw+LMzAEFlftOQIQLY0VDqsftE9YG4qpyS5j5M
- mFZL7TwmZiq3AZCXxp7J6H1ZlaJW/zmKUv92MzLFHbh/i2PLlcXqValGRMLjp7DdXUhx
- Fq8U+G5W8kF2LJ9TZitVIxW8GwdQoLhl4n8DcX5EvzYOZLkZ/MEU2GXxpsC51oLlTJqv
- jIbHdZdTuhrF+R2bv4xIpB7ERc3SH7bbuNLG9zEK3MhfYQuoXnuABQI2xjRq3fArz0Ym
- PlJw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU6mrniK1D2AENTqHXNGku5vjL4ucCrRf7Grfk7J5sIckdVXU2iqmOD1h1elQgsK97PlRYnOmcjezvcptdYbqki2xaw
-X-Gm-Message-State: AOJu0Yy0gSYZDziu8VswZxINXwAR2m6Q6t+GbXLDe5hwP4m2IfX7Atid
- 4cS8n9gx3gi4+AEn8BwM8U9bC//RT0lbaMnpNXiLhA68YJS4rpgBuiadxfNjAKw=
-X-Received: by 2002:a2e:86c5:0:b0:2d0:f8d7:a91c with SMTP id
- n5-20020a2e86c5000000b002d0f8d7a91cmr3119336ljj.52.1707811957191; 
- Tue, 13 Feb 2024 00:12:37 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXEBS51Yaa0dYKasaqeIyfMKcL4ZSG91xMTOHjNyeFwjuSoeUHGg2W0J45PZpF5sfTAWq4O7AamRSKu609B/uMQ0dwdKcligWmgyYw+B1eZ1e0o1Qyo4jN+2Ca5SrEGs+QpQDodMAsoIXcuPsdTshJicxnT3SzNCyXxIOat2WLZCrvklPdpd4yk2fjH4fAN4rE2LDHyB4g0zgdPmpfvQF3wIHKYtNGLnrPcVvbo5Q4pmqJlW13N9k2pymquFbpYzntB00J7RTT+2KF/cbG+KPcHwz3/gzptU3ilBaIfZ1+Aund3yXUmu2L89n1kPqnkORWVYvUcHMYBoFo+n8y87PvH9xABqy0aSv3GKQ==
-Received: from m1x-phil.lan ([176.176.128.243])
- by smtp.gmail.com with ESMTPSA id
- fa1-20020a056000258100b0033b79d385f6sm6566745wrb.47.2024.02.13.00.12.35
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 Feb 2024 00:12:36 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- John Snow <jsnow@redhat.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-block@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Subject: [PATCH 5/9] hw/ide/ahci: Pass AHCI context to ahci_ide_create_devs()
-Date: Tue, 13 Feb 2024 09:11:56 +0100
-Message-ID: <20240213081201.78951-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240213081201.78951-1-philmd@linaro.org>
-References: <20240213081201.78951-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1rZo3p-0000e8-8r; Tue, 13 Feb 2024 03:22:37 -0500
+Received: from mail-bn8nam12on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:2418::601]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1rZo3m-0002cR-NH; Tue, 13 Feb 2024 03:22:37 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UyBnv1F2HlVkmcWpLZW3+jIiQy8LmDU7eHWU95e2h/ZhsQN4wDH3NBzB4663fnMUNMeKs5RkXS9bo9+KOmf/o9iFo8gSLjLQjlVU6uAI7XcG3vVhWinaMXc+R2qYz3x0H4vaUHW6vfwmioi8FZsXZcsPH++McWjn261Ki1rErZHWvA4WPmU7B3qhVM7R283HKrW5liCPCd32Brf9XMpO1MnWTBMjqUrqChaUnB10q2dvfPYSYb6tzCJ65zNWZQzt3twym5yMRfV2rIMlxuABlPxtvQRKRbo3TR6myUftc18IGMcJCP/IhPjKJSi2kdfLP+pWUjfk2HlKpXKrK/oL3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hFSF+J+ZYSITdqlDhl9Cfky96JCt+BheB6vpDXKkfNs=;
+ b=TY2k97ZKib0W5Chceyzim/WpNFiwYQmUcGtXQCIzabWcyDJSTmTzrk/RoNxUqkc+6iqc+MpA5ly+hV8e+eCcTdFAYQfmAGKSEnLbgegVS6m58FwJsMNRAKqO9NDCTCvVoGmBuTznCASo1YMtwYwK8ufr0Euo/qyj/CQhrUhxMd+lh1+JYi2ZPvH/hwcVkiW65V/epZVbeYpeuE1R60Bl5lIaDhirQgZ2H6auSCttXHgGfjfDd51YQJKFRW4oSh0L5nilAiSFt7fptF8qU53UtPYRxnAb+frlbawgOLby8i10UV2tYl/9KK0uVkQluGCOWv/Lmfdy1ma2Ow3mwYkf6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hFSF+J+ZYSITdqlDhl9Cfky96JCt+BheB6vpDXKkfNs=;
+ b=EEVLeK6aSKGQuGsmO4/ZzhoR7R5786vRNoaBdkGZG6RCqTRJvo/+zgCp8Hhq6B2MGFgtaaYz3Ph3IJBBE28KRAOTRnyrSWdPTMmZztuNhXblCSyGsmQ2o9HfcFWyDwBaiVb1DFZ7euoAb+fXH95ny3fikvinBqP3GFdE52iiZlE=
+Received: from CH5PR03CA0003.namprd03.prod.outlook.com (2603:10b6:610:1f1::19)
+ by DS0PR12MB8443.namprd12.prod.outlook.com (2603:10b6:8:126::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.25; Tue, 13 Feb
+ 2024 08:22:29 +0000
+Received: from CH1PEPF0000A345.namprd04.prod.outlook.com
+ (2603:10b6:610:1f1:cafe::42) by CH5PR03CA0003.outlook.office365.com
+ (2603:10b6:610:1f1::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7270.39 via Frontend
+ Transport; Tue, 13 Feb 2024 08:22:29 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ CH1PEPF0000A345.mail.protection.outlook.com (10.167.244.8) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7292.25 via Frontend Transport; Tue, 13 Feb 2024 08:22:28 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 13 Feb
+ 2024 02:22:28 -0600
+Received: from luc-work-vm.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.35 via Frontend
+ Transport; Tue, 13 Feb 2024 02:22:27 -0600
+From: Luc Michel <luc.michel@amd.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Luc Michel <luc.michel@amd.com>, Eric Auger <eric.auger@redhat.com>,
+ "Peter Maydell" <peter.maydell@linaro.org>, Francisco Iglesias
+ <francisco.iglesias@amd.com>
+Subject: [PATCH v2] hw/arm/smmuv3: add support for stage 1 access fault
+Date: Tue, 13 Feb 2024 09:22:11 +0100
+Message-ID: <20240213082211.3330400-1-luc.michel@amd.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH1PEPF0000A345:EE_|DS0PR12MB8443:EE_
+X-MS-Office365-Filtering-Correlation-Id: 94ccec07-03dc-4b7d-b46f-08dc2c6ceadd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: QQO3NoxLHZ2D2NuKYd1vasIMCCEgfroN7Gmv41RsQJCL1zuJYVufJ9SljRiVqon+PAxX0XIzOK4qc63ORgdxF5DvoWOA7GRW/koGHU9ikzq8uEBNkQNne3Gdc27nmjp7whRjB7zmWeIeXYrg94DyCKgHi70JHUtER/1muLDHycpMC7K9+khb4bU4yW5Tct24JyoeaktXRxOzRT5Z5DKLZCiL8gM50RYquvFMyDl0IfCnAnFK87g0O5DEqxyp0J+QXPzc8FjIfbFJXWRCa7sp4tZ+5j5QS6AQyd5PT5pDb73ybUPyGa59Kv3904pDoe8tfa8yB4Ka6EfKzNITFLEQcLK3ioC05DVlnoanVKzKiB2W6k4KTsMKDccNwQ+/Mlsjsbg6RWwAZyYaB+bZhekSS2fSg0C8OdIy9kxqtUdCVD/ZlYk5TmxoyPdE3XCs523tNFP/bYoNsK0BxYKeLAglnMoqKhows9kJVpOpd8wDHzBI9Qdkhd/ZtA6jna/imzwRxQHsTe1s9Fcd+hvAmPJxK3WkD3hj/U0zqDt3lwu8pfKoLoLm6UeIIXf8vLK84ttsTPFk8/4cS8PyFmYf2payoeOq2rY9qUd5kAZ5hXJN3fk=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(346002)(39860400002)(376002)(396003)(136003)(230922051799003)(64100799003)(451199024)(186009)(1800799012)(82310400011)(46966006)(36840700001)(40470700004)(478600001)(41300700001)(8936002)(8676002)(5660300002)(44832011)(2906002)(4326008)(54906003)(6666004)(110136005)(70206006)(70586007)(316002)(83380400001)(2616005)(336012)(426003)(86362001)(81166007)(356005)(26005)(1076003)(36756003)(82740400003);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Feb 2024 08:22:28.7631 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 94ccec07-03dc-4b7d-b46f-08dc2c6ceadd
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH1PEPF0000A345.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8443
+Received-SPF: softfail client-ip=2a01:111:f403:2418::601;
+ envelope-from=Luc.Michel@amd.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.774,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,80 +157,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cR8tLPuMI34T
+X-TUID: gs+209xfXOUy
 
-Since ahci_ide_create_devs() is not PCI specific, pass
-it an AHCIState argument instead of PCIDevice.
+An access fault is raised when the Access Flag is not set in the
+looked-up PTE and the AFFD field is not set in the corresponding context
+descriptor. This was already implemented for stage 2. Implement it for
+stage 1 as well.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Luc Michel <luc.michel@amd.com>
 ---
- include/hw/ide/ahci.h | 2 +-
- hw/i386/pc_q35.c      | 2 +-
- hw/ide/ahci.c         | 5 +----
- hw/mips/boston.c      | 2 +-
- 4 files changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/ide/ahci.h b/include/hw/ide/ahci.h
-index dbef377f3d..8cd55b1333 100644
---- a/include/hw/ide/ahci.h
-+++ b/include/hw/ide/ahci.h
-@@ -52,7 +52,7 @@ typedef struct AHCIState {
- } AHCIState;
- 
- 
--void ahci_ide_create_devs(PCIDevice *dev, DriveInfo **hd);
-+void ahci_ide_create_devs(AHCIState *ahci, DriveInfo **hd);
- 
- #define TYPE_SYSBUS_AHCI "sysbus-ahci"
- OBJECT_DECLARE_SIMPLE_TYPE(SysbusAHCIState, SYSBUS_AHCI)
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index c50e3bfc42..7f4f51fcdf 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -316,7 +316,7 @@ static void pc_q35_init(MachineState *machine)
-         idebus[1] = qdev_get_child_bus(DEVICE(pdev), "ide.1");
-         g_assert(MAX_SATA_PORTS == ich9->ahci.ports);
-         ide_drive_get(hd, ich9->ahci.ports);
--        ahci_ide_create_devs(pdev, hd);
-+        ahci_ide_create_devs(&ich9->ahci, hd);
-     } else {
-         idebus[0] = idebus[1] = NULL;
-     }
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 8b97c6b0e7..bac1871a31 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1896,10 +1896,8 @@ static void sysbus_ahci_register_types(void)
- 
- type_init(sysbus_ahci_register_types)
- 
--void ahci_ide_create_devs(PCIDevice *dev, DriveInfo **hd)
-+void ahci_ide_create_devs(AHCIState *ahci, DriveInfo **hd)
- {
--    AHCIPCIState *d = ICH9_AHCI(dev);
--    AHCIState *ahci = &d->ahci;
-     int i;
- 
-     for (i = 0; i < ahci->ports; i++) {
-@@ -1908,5 +1906,4 @@ void ahci_ide_create_devs(PCIDevice *dev, DriveInfo **hd)
+v2: drop erroneous submodule modification
+
+---
+
+ hw/arm/smmuv3-internal.h     |  1 +
+ include/hw/arm/smmu-common.h |  1 +
+ hw/arm/smmu-common.c         | 10 ++++++++++
+ hw/arm/smmuv3.c              |  1 +
+ 4 files changed, 13 insertions(+)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index e987bc4686b..e4dd11e1e62 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -622,10 +622,11 @@ static inline int pa_range(STE *ste)
+ #define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+ #define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+ #define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
+ #define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
+ #define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
++#define CD_AFFD(x)       extract32((x)->word[1], 3 , 1)
+ #define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
+ #define CD_HD(x)         extract32((x)->word[1], 10 , 1)
+ #define CD_HA(x)         extract32((x)->word[1], 11 , 1)
+ #define CD_S(x)          extract32((x)->word[1], 12, 1)
+ #define CD_R(x)          extract32((x)->word[1], 13, 1)
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index fd8d772da11..5ec2e6c1a43 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -90,10 +90,11 @@ typedef struct SMMUTransCfg {
+     /* Shared fields between stage-1 and stage-2. */
+     int stage;                 /* translation stage */
+     bool disabled;             /* smmu is disabled */
+     bool bypassed;             /* translation is bypassed */
+     bool aborted;              /* translation is aborted */
++    bool affd;                 /* AF fault disable */
+     uint32_t iotlb_hits;       /* counts IOTLB hits */
+     uint32_t iotlb_misses;     /* counts IOTLB misses*/
+     /* Used by stage-1 only. */
+     bool aa64;                 /* arch64 or aarch32 translation table */
+     bool record_faults;        /* record fault events */
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 9a8ac45431a..09ff72e55f5 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -362,10 +362,20 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+                                         &block_size);
+             trace_smmu_ptw_block_pte(stage, level, baseaddr,
+                                      pte_addr, pte, iova, gpa,
+                                      block_size >> 20);
          }
-         ide_bus_create_drive(&ahci->dev[i].port, 0, hd[i]);
-     }
--
- }
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index a6c7bc18ff..1b44fb354c 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -775,7 +775,7 @@ static void boston_mach_init(MachineState *machine)
-     ich9 = ICH9_AHCI(pdev);
-     g_assert(ARRAY_SIZE(hd) == ich9->ahci.ports);
-     ide_drive_get(hd, ich9->ahci.ports);
--    ahci_ide_create_devs(pdev, hd);
-+    ahci_ide_create_devs(&ich9->ahci, hd);
++
++        /*
++         * If AFFD and PTE.AF are 0 => fault. (5.4. Context Descriptor)
++         * An Access fault takes priority over a Permission fault.
++         */
++        if (!PTE_AF(pte) && !cfg->affd) {
++            info->type = SMMU_PTW_ERR_ACCESS;
++            goto error;
++        }
++
+         ap = PTE_AP(pte);
+         if (is_permission_fault(ap, perm)) {
+             info->type = SMMU_PTW_ERR_PERMISSION;
+             goto error;
+         }
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 68eeef3e1d4..c416b8c0030 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -682,10 +682,11 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
  
-     if (machine->firmware) {
-         fw_size = load_image_targphys(machine->firmware,
+     cfg->oas = oas2bits(CD_IPS(cd));
+     cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
+     cfg->tbi = CD_TBI(cd);
+     cfg->asid = CD_ASID(cd);
++    cfg->affd = CD_AFFD(cd);
+ 
+     trace_smmuv3_decode_cd(cfg->oas);
+ 
+     /* decode data dependent on TT */
+     for (i = 0; i <= 1; i++) {
 -- 
-2.41.0
+2.39.2
 

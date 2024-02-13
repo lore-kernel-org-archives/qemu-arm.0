@@ -1,139 +1,132 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp362909eje;
-        Tue, 13 Feb 2024 12:12:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU8F5cgUxMq88z/Woda5OOqjvh2MzdFE5v8+1v4KXIUGLeYLkR5pmrVyCcPARYJWFFq7MAR7UpzwReKNIZ3A7YgmMksYYAF
-X-Google-Smtp-Source: AGHT+IGEK+WRdTB2m3fZKaHzojTazw8j7pPireTSxm2NNb/BalCspex72quylsGCn6Zk/vH4tsiE
-X-Received: by 2002:a05:6808:14cc:b0:3c0:3d8d:7f6e with SMTP id f12-20020a05680814cc00b003c03d8d7f6emr634212oiw.5.1707855150713;
-        Tue, 13 Feb 2024 12:12:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707855150; cv=none;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp397334eje;
+        Tue, 13 Feb 2024 13:28:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVijdXeax6vUK7uPAJl2/d9Cx1c88yH8XJMMdHh+ok3HDceY5i4fuNPPQcpXCbSQorv+AEyOy9pP6UNxV0xk8BGQk5Kr7pO
+X-Google-Smtp-Source: AGHT+IHtf0kKdK6KmOZF8liXTcOiCOkkH6XThjjrrrOdhnnq2INL46OZMbP91MZq9gHjSuIlxUOV
+X-Received: by 2002:a05:620a:c84:b0:785:d9b4:ad4a with SMTP id q4-20020a05620a0c8400b00785d9b4ad4amr793758qki.4.1707859681011;
+        Tue, 13 Feb 2024 13:28:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707859680; cv=none;
         d=google.com; s=arc-20160816;
-        b=fGGpquQNefcv16fz2iVAwAxx/pciMFzKSS/m1yAwT4rx+o7OYRTmmufz8glwc1JhU8
-         pImBQ/WxAqWAk1amkuNLCubUOMaVmat2OYdK8K/AgVDk778KmlxjEAJZesbwQ0r42Ok7
-         Y+i7jy3aDHafdYylyqaIo1QTbNnbtLGi4lMf6+IsAyP85v5/B2tblgV7UZ7sVUUkZPe2
-         RXQnTMesnHw4ZdnDrB7fvpVan5AL9EiCk/fK6rayc6EiNyi/VbQKF6sCLlk1QpM992op
-         7hv1n7YfhaobJB+5h3NE7LdQMJ4CZOh1WCZTg/iZPfB1vc+w5Ye+DDk/jj5D/Z/De6vF
-         InUw==
+        b=hrrmz/myfFrrO0a06emvaDtxaq0yM0F/00kJAmBTql/PqR3DcaAc4LuGbupOVGUl6C
+         x7x95XyHPfxmlFzkRMy0SAe6NSOVFa2z5qFAswWWr+uzGhxOdVigfaMz5mI3kCMfpcoY
+         G23q/MkGpfuq8gH/Q8CAPkxnrCAYDdY5s8urfkKDcu+W772nqz03cvuFyNuAejZwwMBl
+         rWrpoLbGZF91/bywDUMzLPxG5+rg0saIhyadbtcPAj0K56CPlg+u7CpK5t/AQxy5zU1f
+         RmL5Cggnpimeajt9LrB7lVjJvVXpnGBYu+juyDGLQFsSeiJcEFmXZcet3Lzrxe2zDkMS
+         mVBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:cc:to:from:date
-         :references:in-reply-to:message-id:mime-version:user-agent
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=6XgfZLq/8lT+ICPCdLSnFWbgNYDzIi+HJw7RYxPU5Os=;
-        fh=2Ad5M+s2KKK8NXfUw8v3HcjPomzFm7GBhFwMzKta2LU=;
-        b=p2bwxfbPaLWObi6SjjNusTsX73YnKdM5bWKobUGAeXU4Az3FUrmZw9d7y/BCvA95Pe
-         jWfqP9OLFWhSB5pZ2jdCKbb1R8F3FIJTgY4oYHFNPdOa/C/LMavTULsQnWZ8Dpd7Hhqr
-         6iW7UA+pT+3T3J23iFPA02s3rBSr3v6ggOfDNuDOPJYe9DNgxVtXyjFCdRuBwXGUtrDQ
-         X1h4/fhwfyObpCmD9VXjK9pWh6xP0dAMNk7uzlGpAGhzLqM7FiToUc1cMR9FoM18PxgV
-         yGvGeMrPOgxFYk5i84LSYL+R6lQudagOxKaaepcOgU4iDKy5N78Cg37BmaSpGgU51/vU
-         PdPg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=DlHB/C070gQJYtZKeDqoDoUjH6sfS2fU7WC1adPgbS0=;
+        fh=L479KsxpZJCW9hkcoknxpJ7nUHImzJZvBR41zwzsrS0=;
+        b=BE/cy/rL9eZ4DSLsc8VXwQKoryi13X9Y95NmwXwm0sGu3apQobpQ6VwI6voXfdGle/
+         KgIJGR9BLXsF4eETYinZ2uMvQ5bAGQLmJnQqGxPnrXrtIAkihSHJo2oCOKp/vqivaIRV
+         WAILSSRf++VsuQSxpz9XXuN5kFi9IwOk7yny/+ZiMdLmCvfXUoo2dUDRTRofaRRhLLmQ
+         Le7tH5ZUB/sqTy/PXZMIwMgGFxTqwwz/1s36KwdabKxyf4vasSBzoR58PQIW2jC3CKL4
+         EB4u2Pj9dhQLq0E2N0yd7j2lKS8zCc0abmTZgmRFS3b62NtJVvHWUaJ1m7+soEqmcAE1
+         mMUw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@arndb.de header.s=fm3 header.b=FnCL2QCh;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=aiHH+K4t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oiWznPyM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arndb.de
-X-Forwarded-Encrypted: i=1; AJvYcCVjnjBDwX39imB7QK+G2FX5PkzktJ8fRObGfIOJlMLnpC3f/+Nxv3050Pc7fWpGBlm1Sqj9rGBY8ddXM2a/PmdYkapRSmIM
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+X-Forwarded-Encrypted: i=1; AJvYcCUu/aJr9YGwRKPT7YKLNJ+8daF0C8eNP+u1ORO0vjt7P45GILkLY5wanl7xBRdM87nc7jf17+Hj+QzG7kcZbOvAE8cplStF
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6-20020a05622a008600b0042c67f0653dsi3888321qtw.221.2024.02.13.12.12.30
+        by mx.google.com with ESMTPS id c13-20020a05620a0ced00b007856fcf3292si8509348qkj.77.2024.02.13.13.28.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 12:12:30 -0800 (PST)
+        Tue, 13 Feb 2024 13:28:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@arndb.de header.s=fm3 header.b=FnCL2QCh;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=aiHH+K4t;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oiWznPyM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arndb.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rZz8c-0006FU-Cn; Tue, 13 Feb 2024 15:12:20 -0500
+	id 1ra0JR-0003ci-J3; Tue, 13 Feb 2024 16:27:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1rZz8W-00066T-UI; Tue, 13 Feb 2024 15:12:13 -0500
-Received: from wfhigh5-smtp.messagingengine.com ([64.147.123.156])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
- id 1rZz8P-0003f2-VT; Tue, 13 Feb 2024 15:12:11 -0500
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailfhigh.west.internal (Postfix) with ESMTP id 2745E180021E;
- Tue, 13 Feb 2024 15:12:01 -0500 (EST)
-Received: from imap51 ([10.202.2.101])
- by compute5.internal (MEProxy); Tue, 13 Feb 2024 15:12:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
- :cc:content-type:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to; s=fm3; t=1707855120; x=1707941520; bh=6XgfZLq/8l
- T+ICPCdLSnFWbgNYDzIi+HJw7RYxPU5Os=; b=FnCL2QCh9cTaeZhBhtO7x394sh
- Xxrm26lecN8AHh6RLOIVT/XRe9sfIQzADbT7uPnyRgXqgxSgoyvIfGlgBP98ThTe
- jaonJ0iBiQP8tEE2C92+R344hqvfasAU4XR+p59ScHTc94wmp9uEnbpjIjCHZ64C
- RHdAcX7I/dpNlUnw56I5a1n2GlDmKldJKZx08h+ToE3eZZ0azz5QLg2px5M3RlMv
- Tssdrbu+YE/KH1EQt/CJmv5ijlJLjkORGSA7xwKOxLZdY7je7doM+5eZ+UzpKEAA
- xGWuWXGV3z8utZkcjBlI/NdY25AhFQB2TtfqMUWLOr2nPa9AzvjJ8/6nIajQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1707855120; x=1707941520; bh=6XgfZLq/8lT+ICPCdLSnFWbgNYDz
- Ii+HJw7RYxPU5Os=; b=aiHH+K4tTbrTP/X85/c3UbqSE0/fBcTHK83YAp41iCPJ
- VHWaQ64PkWV4wF30Xf+pFYAwxKacQKcz1DdxaU1/KEFjs2lGdJhtEJEoWr79il0b
- jNy+eaIx6U0mi1ocCS9Dl+zwfZhYD3yC2CYYSoEpD7wFR78UGkCo9gqM4ZMxrVrw
- IHb3Rwc99DomuTkYlMBV3s6uOScW6vkayDf4/0A9hMZAdOnTX+ZGoxif93ga+ojT
- ulAssApAeSs83qSw78gdZ/YNr/uOK0v4cL5Tilc7ERrW8m1ZcrGrIzo+yU1LlXtH
- gpzfyAm0/ifUVTzyOw6DIABGfdIUqs5e+LLKIFKMGA==
-X-ME-Sender: <xms:EM3LZTNoyMsAJ-IF9DZur3I71qkG--7DqAXEhTXZPdf2yXDSRoJbaQ>
- <xme:EM3LZd9L7GKmKzM5x59D0ae4cQgtYsHFnmUQztHA1a7pJanX8DR2vDd8w_ogTT8q7
- m4ZrIvn50X_tAF9HRI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudehgddufeefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvfevufgtsehttdertderredtnecuhfhrohhmpedftehr
- nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
- htvghrnhepffehueegteeihfegtefhjefgtdeugfegjeelheejueethfefgeeghfektdek
- teffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
- hrnhgusegrrhhnuggsrdguvg
-X-ME-Proxy: <xmx:EM3LZSQAu7XOcH0UmLJ0F4yBR4ZfPkXWP9rgq0n0br4dsrhG5ukeXQ>
- <xmx:EM3LZXvT0gBDacLImceImAXcRwvvDBpAYoY-3vjZN93j3AgaBXUXXw>
- <xmx:EM3LZbdRbJ86I8dtqO0-oV8dIKUbXqkuk-PaAjMBDXNMrO66FXC0yA>
- <xmx:EM3LZW9QEBRIHTh6yzolh69eiqqf3eds4ORZXHqdJUMMUvCs32nscdtLls4>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 24472B6008D; Tue, 13 Feb 2024 15:12:00 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.11.0-alpha0-144-ge5821d614e-fm-20240125.002-ge5821d61
+ (Exim 4.90_1) (envelope-from <linus.walleij@linaro.org>)
+ id 1ra0JP-0003aN-V0
+ for qemu-arm@nongnu.org; Tue, 13 Feb 2024 16:27:31 -0500
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <linus.walleij@linaro.org>)
+ id 1ra0JN-0000IC-Cy
+ for qemu-arm@nongnu.org; Tue, 13 Feb 2024 16:27:31 -0500
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-dc236729a2bso1271536276.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Feb 2024 13:27:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707859648; x=1708464448; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DlHB/C070gQJYtZKeDqoDoUjH6sfS2fU7WC1adPgbS0=;
+ b=oiWznPyMTjnq353rR0exH09Jmfeg6D9LbKSqIBGCvaqjdQyw7cnSOSLasAFpJVWftz
+ YmvrqgKbxZCPCqP/ZOkweH7R/aNHj2y675LTXEbfEXID+kz5gQ0uuyFx1ejn4tQRq7Hr
+ k7jTVKbhJcXwnOY0/xnkv9XMoDikVIIMo0UNAuIsAiwI2p9Cls8MWd0EdfMBZUhZxNuw
+ q2jfIddiFguznM8/jDRp2XplxZxBqiBCmdAv0Gw9c1PaDP/UHyY41SGcWtFpiBDuipSn
+ 0Is9ak/0GoSDfu8cJw/48R1c4BFedDCEmGkrUzftJxWcE5fnp0k8sFPNnhZWODDDoY0Q
+ VeCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707859648; x=1708464448;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DlHB/C070gQJYtZKeDqoDoUjH6sfS2fU7WC1adPgbS0=;
+ b=ikVr+qBpJgyb1KHlXnLJ7Pm1cmIzuo5waMxWWQ9tsMhyIT3SlsNGVXZXejqVy/npdA
+ ogTWYzxO4Qs+6/PVY9WpHpE05z0YhCpafTtUqAlwwxEI18f7PjhK1lJjJaweaMOuKI9q
+ N3RCMyaKhAZv8RCBNaQnHAU1RoFC0/3oaQCsDoHhmmjPY+TlrcVu/r7jHAQ6aArR5d3T
+ dgksyicyCRiNB7gWVhmeEbj+02jCxLC40wmN6DN1jZoDMrrkG/SWV4bhRJYxTG4vb6ZP
+ TWCvUHvQUW0HXUMVmAuXu1EyL+aT1qNtTUp/TEPSEBBUy8NDprStoVVkqjppg9/80q07
+ C1mA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWUsBTabocekfljvod/YGdtM8bVixKWc/+p57AVm/1/Dda+FOLt+xEISPVjq/fi+/Xdfr6Hq43ASutba0pg0H+3aqnY
+X-Gm-Message-State: AOJu0YxBzppeZAXjk7X5gc/tBYxmNdLyuNUb104TywGsDbxEB4ft9Y82
+ /YySmVwo2v0KOrsiUndOHsp+xJwvZywsF5dVUREw71p6MyiHFOkQrHjf7QiaoA6ShtdG5QApVTn
+ SNmpsuTEZOLyrws9Uz3uLTKApzpXHVVNhTSM/JiDmlmWeMy3A0ylsYQ==
+X-Received: by 2002:a5b:54a:0:b0:dc6:cd76:5ddf with SMTP id
+ r10-20020a5b054a000000b00dc6cd765ddfmr468191ybp.39.1707859321685; Tue, 13 Feb
+ 2024 13:22:01 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
-In-Reply-To: <7bd858a2-9983-4ddf-8749-09c9b2e261f9@roeck-us.net>
 References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <fe5476c7-82e0-4353-a943-7f39b14e1b5b@roeck-us.net>
  <CAFEAcA-bqOM4Ptws-tsEwo2HDZ6YSX1Y+xGkR0WueRD_dUd0+Q@mail.gmail.com>
  <7bd858a2-9983-4ddf-8749-09c9b2e261f9@roeck-us.net>
-Date: Tue, 13 Feb 2024 21:11:38 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Guenter Roeck" <linux@roeck-us.net>,
- "Peter Maydell" <peter.maydell@linaro.org>
-Cc: "QEMU Developers" <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>,
- "Aaro Koskinen" <aaro.koskinen@iki.fi>,
- "Janusz Krzysztofik" <jmkrzyszt@gmail.com>,
- "Tony Lindgren" <tony@atomide.com>, Linux-OMAP <linux-omap@vger.kernel.org>,
- "Daniel Mack" <daniel@zonque.org>, "Robert Jarzmik" <robert.jarzmik@free.fr>, 
- "Haojian Zhuang" <haojian.zhuang@gmail.com>,
- "Linus Walleij" <linus.walleij@linaro.org>,
- "Stefan Lehner" <stefan-lehner@aon.at>
+ <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
+In-Reply-To: <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 13 Feb 2024 22:21:50 +0100
+Message-ID: <CACRpkdbmJe8ZE7N0p_utWucyw+3mp1Qrb0bQEKcJPmwNFtVA_g@mail.gmail.com>
 Subject: Re: possible deprecation and removal of some old QEMU Arm machine
  types (pxa2xx, omap, sa1110)
-Content-Type: text/plain
-Received-SPF: pass client-ip=64.147.123.156; envelope-from=arnd@arndb.de;
- helo=wfhigh5-smtp.messagingengine.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+To: Arnd Bergmann <arnd@arndb.de>, paul.eggleton@linux.intel.com, 
+ Andrea Adami <andrea.adami@gmail.com>,
+ Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>, 
+ Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>, 
+ Linux-OMAP <linux-omap@vger.kernel.org>, Daniel Mack <daniel@zonque.org>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, 
+ Stefan Lehner <stefan-lehner@aon.at>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=linus.walleij@linaro.org; helo=mail-yb1-xb31.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,149 +142,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8fCpSr41pLXV
+X-TUID: t3T1ELBObshB
 
-On Tue, Feb 13, 2024, at 16:36, Guenter Roeck wrote:
-> On Tue, Feb 13, 2024 at 03:14:21PM +0000, Peter Maydell wrote:
->> On Mon, 12 Feb 2024 at 14:36, Guenter Roeck <linux@roeck-us.net> wrote:
->> > On 2/12/24 04:32, Peter Maydell wrote:
->> > > The machines I have in mind are:
->> > >
->> > > PXA2xx machines:
->> > >
->> > > akita                Sharp SL-C1000 (Akita) PDA (PXA270)
->> > > borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
->> > > connex               Gumstix Connex (PXA255)
->> > > mainstone            Mainstone II (PXA27x)
->> > > spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
->> > > terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
->> > > tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
->> > > verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
->> > > z2                   Zipit Z2 (PXA27x)
->> > >
->> > I test akita, borzoi, spitz, and terrier. Upstream Linux removed support
->> > for mainstone, tosa, and z2 from the Linux kernel as of version 6.0, so
+On Tue, Feb 13, 2024 at 9:12=E2=80=AFPM Arnd Bergmann <arnd@arndb.de> wrote=
+:
+> On Tue, Feb 13, 2024, at 16:36, Guenter Roeck wrote:
+> > On Tue, Feb 13, 2024 at 03:14:21PM +0000, Peter Maydell wrote:
+> >> On Mon, 12 Feb 2024 at 14:36, Guenter Roeck <linux@roeck-us.net> wrote=
+:
+> >> > On 2/12/24 04:32, Peter Maydell wrote:
 
-It was 6.3 (about one year ago).
-
->> > I am no longer testing those.
->> >
->> > I never managed to boot connex or verdex.
-
-I kept specifically the pxa boards that would be sensible to port
-to devicetree because they had qemu support. gumstix verdex is the
-one with the most RAM out of those; spitz, sharpsl and their
-variants are the ones that some of us still have around.
-
-Robert had working devicetree support for some machines out of tree
-that he has not submitted, and presumably not worked on since.
-
-Unless someone starts working on converting the remaining
-pxa board files to DT, we can probably remove them after the
-next LTS kernel a year from now.
-
-I have no objection to removing them from qemu if that helps,
-the existing qemu releases should be sufficient for anyone
-trying the conversion.
-
->> > > OMAP1 machines:
->> > >
->> > > cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
->> > > sx1                  Siemens SX1 (OMAP310) V2
->> > > sx1-v1               Siemens SX1 (OMAP310) V1
->> > >
->> > I test sx1. I don't think I ever tried cheetah, and I could not get sx1-v1
->> > to work.
-
-This is similar. omap1 development is slightly more active
-than pxa, but then again they have no DT support today and
-are unlikely to ever get there at this point.
-
-Out of the five machines that are still supported in the
-kernel, I think three still run on hardware (osk, ams-delta
-and nokia770), while the other ones were left there only
-for their qemu support. I don't mind removing them from
-the kernel as well if they are gone from qemu.
-
->> > > OMAP2 machines:
->> > >
->> > > n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
->> > > n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
->> > >
->> > I never managed to get those to boot the Linux kernel.
-
-I think Tony still tests these on both hardware and qemu.
-The platform side here is much more modern than any of the
-others above since it does use DT and it has enough RAM
-to be somewhat usable.
-
-On the other hand, this is the one platform actually using
-the cursed arm1136r0 core (not counting imx31 and
-realview here as I'm not aware of any real users), and
-anything that would get us closer to dropping support for
-this CPU would be welcome ;-)
-
->> > > The one SA1110 machine:
->> > >
->> > > collie               Sharp SL-5500 (Collie) PDA (SA-1110)
->> > >
->> > I do test collie.
-
-Adding Linus Walleij and Stefan Lehner to Cc, as they were
-interested in modernizing sa1100 back in 2022. If they
-are still interested in that, they might want to keep collie
-support.
-
-Surprisingly, at the time I removed unused old board files,
-there was a lot more interest in sa1100 than in the newer
-pxa platform, which I guess wasn't as appealing for
-retrocomputing yet.
-
->> > All the ones I use still boot the latest Linux kernel.
->> >
->> > > Obviously if we can remove all the machines that used a given
->> > > SoC, that's much more effective than if we just delete one or two.
->> > >
->> > > I don't have any test images for the SA1110 or OMAP1 machines,
->> > > so those are the ones I am most keen to be able to drop.
->> > > I do have test images for a few of the pxa2xx and the OMAP2 machines.
->> > >
->> > I don't mind dropping them, just listing what I use for testing the
->> > Linux kernel. I suspect I may be the only "user" of those boards,
->> > though, both in Linux and qemu.
->> 
->> Mmm; there's not much point in both QEMU and the kernel
->> maintaining code that nobody's using. Are you considering
->> dropping support for any of these SoC families from the kernel?
->> 
-> Not me personally. Arnd is the one mostly involved in dropping
-> support of obsolete hardware from the kernel
-
-These are all clearly among the least maintained boards we have
-left in the kernel after the last purge. At the time I asked
-for remaining users in 2022, I kept pretty much anything that
-had the slightest chance of still being used and I was already
-planning another round for the next LTS kernel in early 2023
-that would be more aggressive about removing things that
-nobody is working on modernizing.
-
->> It sounds like between the two of us we do have at least one
->> test image per SoC type if we do keep any of these, but
->> if it isn't going to inconvenience kernel testing I'm
->> inclined to go ahead with deprecate-and-drop for the whole lot.
->> (With QEMU's deprecate-and-drop policy, that would be "announce
->> deprecation now for 9.0, keep in 9.1, remove before 9.2 release
->> at the end of the year".) At a minimum I would like to drop
->> the OMAP1 and OMAP2 boards, as that's the biggest code burden.
+> >> > > The one SA1110 machine:
+> >> > >
+> >> > > collie               Sharp SL-5500 (Collie) PDA (SA-1110)
+> >> > >
+> >> > I do test collie.
 >
-> I am copying Arnd, the OMAP1 Linux kernel maintainers, PXA2 maintainers,
-> and the Linux omap mailing list for input. Sorry for the noise for those
-> who don't care, but I think it is useful to have your voices heard.
->
-> Personally I think it very unlikely that anyone is using the latest Linux
-> kernel on any of the affected machines, but I may be wrong.
+> Adding Linus Walleij and Stefan Lehner to Cc, as they were
+> interested in modernizing sa1100 back in 2022. If they
+> are still interested in that, they might want to keep collie
+> support.
 
-I imagine that the Nokia machines are the most likely to still
-be used somewhere.
+I'm not personally interested in the Collie, I have a SA1100 hardware
+but not that one.
 
-       Arnd 
+> Surprisingly, at the time I removed unused old board files,
+> there was a lot more interest in sa1100 than in the newer
+> pxa platform, which I guess wasn't as appealing for
+> retrocomputing yet.
+
+Andrea Adami and Dmitry Eremin-Solenikov did the work in 2017 to
+modernize it a bit, and Russell helped out. I was under the impression
+that they only used real hardware though!
+
+The Collie is popular because it is/was easy to get hold of and
+easy to hack. PXA was in candybar phones (right?) which
+are just veritable fortresses and really hard to hack so that is why
+there is no interest (except for the occasional hyperfocused Harald
+Welte), so those are a bit like the iPhones: you *can* boot something
+custom on them, but it won't be easy or quick, and not as fun and
+rewarding.
+
+The thriving world of PostmarketOS only exist because Google was
+clever to realize devices should have a developer mode.
+
+Yours,
+Linus Walleij

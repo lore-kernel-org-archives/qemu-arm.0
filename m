@@ -1,113 +1,185 @@
-Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp112465ejb;
-        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEie7/SKn7rCOtG1hjYqROHaSe6OnszRb64n8Xu6+VpCcDmctWoWqNeGDBwX+syLmfLqV6G
-X-Received: by 2002:a05:620a:a0a:b0:785:932f:a6ef with SMTP id i10-20020a05620a0a0a00b00785932fa6efmr8085561qka.64.1707766455482;
-        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707766455; cv=none;
+Received: by 2002:a17:906:2499:b0:a38:6d10:c5dd with SMTP id e25csp292135ejb;
+        Mon, 12 Feb 2024 19:32:36 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXcAEC4o9Er5vfVLo2NPO6ilOSN1ZiNtlQQ2H17fzrEmhRjbaK5mxi5eLEyeXIQeiRvaPdYlDAUt14kcKKDJxMIxPfaZXJF
+X-Google-Smtp-Source: AGHT+IEB6MBA4+pUY7PCo0Za6vh6NFpl9+bqWMA8RAvFGORraJJHK4eoKxpPOBuMUVtIAVe+acmB
+X-Received: by 2002:a05:6808:a03:b0:3c0:3e75:c4bc with SMTP id n3-20020a0568080a0300b003c03e75c4bcmr2417525oij.48.1707795156372;
+        Mon, 12 Feb 2024 19:32:36 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1707795156; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rPVFjhB1n6etO01LXZ6buRyL8OvFBM7EJEuKuXyPdh3xCHgHG4DqIVsyR2HoRUVdjf
-         wf31RYKEnuqHd5l18tlUHqZUzyjuKBCvEiWf3yWH8iVnv8kHR23J2NQhgk7eMkEysFfZ
-         F9MUKf5IlXvFGPgCY1lqRSAG68tE+S33N+X94694fPCIct/P28B3ixfMDXW1670nYAOB
-         rWMtWQtgLZVKCx/AA9H/UfmKPo1fQ3AkfR2FiCea/Blid0rclLsFxpMeA6c0pB+NLzaV
-         K0OWyLt698I1I4NK0sj68QosXV0mkfuHbC1yUOvGL85Dw7FRVrYx4Zpm8MvzuB1euDUk
-         lxGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=agZnBrZBrDvWu1ZOdAGeykL3mlpcU4Q6FA3YVQHLkBDkuMr2iSuUrC3d7lbmvX0uLJ
+         7L0ZR+THRizBmEZ3kGCcO4bB11CgvvZqpAL9TPeHxa9fKw/qkJkpbgTPBIKKmBolxC2f
+         cgZM3peU9PR7ovPdAkO6VTZViIZlt/cYqkjvUghApxuOhVqFxWnJteqfuGLWSCEEfwXg
+         FQMKG6y9sBB3y8zbpSxMoVrjKrNm1/3VcYlmoadptSS2kJugPTL4VqGsR62ebxnJkNeA
+         /qxOAHEzHViV7x6pMJHRqshhWEMqWmRxoH1bcVzn6ddAqgW2tVgUgEAHPi0m498B/KD6
+         3+TQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
-        bh=gCHr35eWqluFFRqghgutTDvIxifmqx4Yg1Ipsp5H5sc=;
-        fh=DsOhA2fFbE2HzwsGc8kvlDV0b86TiJ+NHVnZU5fDrVw=;
-        b=D0n9BAvz0P9nuk76sIPAsuMDsL1/WU2klvGIKD6XSRuhLYzDlhZf11vqmjK8CUh9Wm
-         4OObeKhqDbqWY0gQZrrcdM9Nf1Uhmz+Tt+CECuhyFGr1lXpyyj9JP+nocYSFnXzYLqxV
-         k/MP12CsWI8CiieQnZs2ZAayfCvOXPiEnvTj+cL16Q4lg7z7V+aBUe3UpTIj8Z8GO56g
-         zzdR5BeoKGzvQ09+55Be1abH99tAjLrTe945b/maqTjx4C1QGI4Kg47DZrnI5N/sV1uB
-         fUgY3e8lra4F3H6Yt2X/TE3cMj2U1URKyWm0+TYWCneqQPpRtI0/HGfqQ/aEJIa7ElJD
-         on2A==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=vCqf0s7oUQoWcdN8l6JIENB2DO8QqWdZCukbBlRWUWY=;
+        fh=IQp3Sy9NqG7a4YAQQp7LoEJfzDDDweWDO9sJbq/FZRo=;
+        b=Y294nYq26rZ92WIPrT3t+b6boE9lnDTx6o5yhc77WthtcGLcGhyp/T2D0EqaRpaprK
+         EtK/gR1QE4xmqR9EyidnqYVci4qP2JMkEj3K7uc9gF2lTDOj1IoRoK6+EAGVJ/xaYUe+
+         55/yjymGxHef9MXd8LDWAPCqEXQCXmlLs+YjYqH7ST4P7tMWqbQlQcmRo3jvpmvOvZoq
+         5ApYcvPI7kCUwEAXLrh1CNk4tSt2/RiVNzWgiiJORlwlNxyqvsjxwLyjavYsNa+hGumL
+         GCNAPz7IgLnCSxeswYj+OGZAvFp2T4M1+z8wqkPNttAemzFip0xRxAjhsjgmyEawo4ie
+         Um5Q==;
         darn=linaro.org
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dBcfTPZe;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="Qd/AeEhs";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-X-Forwarded-Encrypted: i=1; AJvYcCVUJ3Bq41k27MDXpIYOK52AAUlSrnDCRwO6X9KN4J6XbZUg/RkKyRhftEZFGnmXh9mXoyGrNF3yf+Pl49c01vZM3Ikrsl09
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+X-Forwarded-Encrypted: i=2; AJvYcCWFdOaGHHDOCfAlQPMxiNxYoaSDo1GxZcmYtKJwRNK+1WTlLeY0wHdo4gCmjaGHJD0VryQ/d27HAOSVjw43Zl1r3WbPVi+5
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1-20020ae9e601000000b007831ed5564fsi6258206qkf.321.2024.02.12.11.34.15
+        by mx.google.com with ESMTPS id u39-20020a05622a19a700b004283ab4f730si2041626qtc.798.2024.02.12.19.32.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Feb 2024 11:34:15 -0800 (PST)
+        Mon, 12 Feb 2024 19:32:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dBcfTPZe;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="Qd/AeEhs";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rZc3p-00031F-9T; Mon, 12 Feb 2024 14:33:50 -0500
+	id 1rZjWr-0003h1-76; Mon, 12 Feb 2024 22:32:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
- id 1rZc3g-0002zO-Dl; Mon, 12 Feb 2024 14:33:42 -0500
-Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rZjWo-0003gf-I7; Mon, 12 Feb 2024 22:32:14 -0500
+Received: from mail-bn8nam11on20600.outbound.protection.outlook.com
+ ([2a01:111:f403:2414::600]
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
- id 1rZc3d-00070R-8f; Mon, 12 Feb 2024 14:33:39 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id D9A3420562;
- Mon, 12 Feb 2024 20:33:30 +0100 (CET)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id HB1m1Vc7IdBi; Mon, 12 Feb 2024 20:33:29 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 657DC2057A;
- Mon, 12 Feb 2024 20:33:29 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 657DC2057A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1707766409;
- bh=gCHr35eWqluFFRqghgutTDvIxifmqx4Yg1Ipsp5H5sc=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=dBcfTPZewGfJEan3/9tkJHmhFE6bhXKIR9K1WshxAssqxnXGiyelv/+xNBMKxbApM
- sMfqf53nnlfzNOFv3+fHxSR+E1bjiJJV2hugTOI5JXBs1fM34PCCkeW6+dTdIEwHQ1
- k1imwB5NPnHcAdauQeOp0IlDEmP2ArtH95gefeZo=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id UF697HyZTI1R; Mon, 12 Feb 2024 20:33:29 +0100 (CET)
-Received: from zmail-tp1.enst.fr (zmail-tp1.enst.fr [137.194.2.198])
- by zproxy4.enst.fr (Postfix) with ESMTP id AAC3020562;
- Mon, 12 Feb 2024 20:33:28 +0100 (CET)
-Date: Mon, 12 Feb 2024 20:33:28 +0100 (CET)
-From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- qemu-arm@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-Message-ID: <20228324.1964026.1707766408557.JavaMail.zimbra@enst.fr>
-In-Reply-To: <CAKmqyKNy7+7JN6CFEqOuXHYFENL6geaS5H6sweXhcDLnLpJC7w@mail.gmail.com>
-References: <20240130160656.113112-1-arnaud.minier@telecom-paris.fr>
- <20240130160656.113112-4-arnaud.minier@telecom-paris.fr>
- <CAKmqyKNy7+7JN6CFEqOuXHYFENL6geaS5H6sweXhcDLnLpJC7w@mail.gmail.com>
-Subject: Re: [PATCH v4 3/8] Add an internal PLL Clock object
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rZjWm-0003HO-MH; Mon, 12 Feb 2024 22:32:14 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GrX7G9v4ZY7uAE/2akVOD7AX9br45zz5umcpc71PISDw1HUzFq9t8qXNAG1pmLLbb6FqAXxl8lrLwmbCLitQnUM4UafgNv37CofDvZ5OaYjZ0Pq9bNKcv8Dht3oizFmIY4Kbuc0PAn8nAoIWFfQmmg/Xn+F0bDlZjPkonJOz+4ECNJDsIwQDwZCTdX/XkAVhco57rAGQu2KcoBGpntkk+I/1gbw0eWRTby+JHJcLkghWWXI7FmcX9m72yZkdR2bBrwtnDirQ0kD66ejMCUBREp6Pk9xkKIS2cWIBL9lYYwEFijvJXAGQnDHtRTKCw7EjOGRxfljhM6s/rhsc2u06pA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vCqf0s7oUQoWcdN8l6JIENB2DO8QqWdZCukbBlRWUWY=;
+ b=NEX/wGMM8YgYF/S+gnpPFrwG74T7YnUEcdlh65yPR+LduHxgbaDhAJKoNrTK9b7a09HEUgdECebO/qN7LIqv3O3q2sDFyeQNC8EPJePcdAOXjxpR9EGJJatNywwu+fCFFyU6GRILcbM+bNMrXvFJWnyhzyL7ANCV0rAdiO7iizsPnAHfwSvWT00G5jnmJoR4IZcw8xZPBeVx0dSM9QpRHngmGrIjtRXfqKceoLAMyFqB6g40QlNJQZx+bCoQ5xEULaOZ9MZDNBswS4GL336GDphb/ffln0ChOpY259HY+23AfmmQhU+MsQqpBC0kJNsWimIg1FHXxpvia7BQ60N2LQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vCqf0s7oUQoWcdN8l6JIENB2DO8QqWdZCukbBlRWUWY=;
+ b=Qd/AeEhs5U1gn3G2q9PLL0DOUzCjqb6n1zU0pMOOcC0DaFaA1+4e96tXCXL8+fzvKSj4W/BxblwhqsdErFLAK97XXbUdf9q0DwI80xfDWVrf9HLYsjtcG3Cku0yQJSi5RO1cm4IrFFnCzLGzUm3oRvmylk8surv40iEz8+W7qUI5vWs0mPgkQh1Q32ynEwNc8Kew0GDSXKPrfvXgC36RmbDGZ13TQSkiL+pdkgFN80uLimTF722WAK53ppBxTM0oy1BCed7e9mls1iasZKQGzGBAgjpTyYDhf5vHjei/cB+jpzEn3ejv8SyuDsyIY1x/oIh5+NxRnmcaVK+oxNARhA==
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
+ by CY8PR12MB7195.namprd12.prod.outlook.com (2603:10b6:930:59::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7270.35; Tue, 13 Feb
+ 2024 03:32:07 +0000
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7292.013; Tue, 13 Feb 2024
+ 03:32:07 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+CC: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "shannon.zhaosl@gmail.com"
+ <shannon.zhaosl@gmail.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "ani@anisinha.ca" <ani@anisinha.ca>,
+ "berrange@redhat.com" <berrange@redhat.com>, "eduardo@habkost.net"
+ <eduardo@habkost.net>, "imammedo@redhat.com" <imammedo@redhat.com>,
+ "eblake@redhat.com" <eblake@redhat.com>, "armbru@redhat.com"
+ <armbru@redhat.com>, "david@redhat.com" <david@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, Aniket Agashe <aniketa@nvidia.com>,
+ Neo Jia <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun
+ Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
+ Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
+ <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v6 0/2] acpi: report numa nodes for device memory using GI
+Thread-Topic: [PATCH v6 0/2] acpi: report numa nodes for device memory using GI
+Thread-Index: AQHaNu672iZ2n2fqDk6q3KiBRYyGcbDGgWuAgAKGIYSAPiVFAIAAvv24
+Date: Tue, 13 Feb 2024 03:32:07 +0000
+Message-ID: <SA1PR12MB71995CE9AE5C9DEBA899CE0BB04F2@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20231225045603.7654-1-ankita@nvidia.com>
+ <20240102123143.00006486@Huawei.com>
+ <SA1PR12MB71990557668BDE5878845A8AB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <20240212110526-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20240212110526-mutt-send-email-mst@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|CY8PR12MB7195:EE_
+x-ms-office365-filtering-correlation-id: 4dbf9492-f894-4132-fa5b-08dc2c445ad9
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JX/5zlUo9aIuTDBD7NX8B8cVqkMR6PlP1UmbGVPlGcVM05ql+itrSP5R8Gm7FPIFMltsHCpVhCc/6cJI2DM155bQ4F0dXXQFgxBSHKbNEYFiW+aR15ZhsDzEKR0zJb5rsOhqyTMmqsJjZlRJchxsAm+WCvUY+JDqvR1AHjAsm6JWD9tY1YO958zFfh7cMRRXZ/JGutJR/MECT6wz8uq2QgTXcJ5F5KHD3WjQPPPhDSAc2L0RnIdBtcnJkJlQbSOCL24GCwGl97PoOBLDVb7hIeDVlPtmCSO+yGlumInIarc5cHH7KH/CCfgrJQxF4n9YO6M8Maq+pPn7X+HocTWR3mVLY/qp6qqFBUjllS0HLYQ9ToCk+bC2DDTJZQOkyk7OcEP7nUgzZ9o1Kkq36OE8XV/aDuXl6VDKhmo6K5DWWa+S3c4jS6zoZM5zJCKG+QGjvW+0NqBowD0bRpQ1Qa0TdSaIWo5odUGb1ryOnmMUzL+exp7pSUCOXktWPgplZJgrYMHhD6Ht3otIEZMjKhQ9/3LNh1JXuzqz3vEpmjAx9AyMiQRcB3OEc7ByOM9bv+yScuqAU94CZ6btPOD5ib54yFrJBzD5CGlrrgfmFvNcXJYUHuHqJE94bBMuD6ZATJKE
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(39860400002)(346002)(366004)(376002)(136003)(396003)(230922051799003)(1800799012)(451199024)(64100799003)(186009)(478600001)(71200400001)(86362001)(41300700001)(55016003)(52536014)(4744005)(2906002)(5660300002)(7416002)(316002)(91956017)(76116006)(38070700009)(33656002)(54906003)(66476007)(66946007)(6916009)(7696005)(6506007)(4326008)(8936002)(8676002)(66446008)(66556008)(64756008)(38100700002)(9686003)(26005)(122000001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Y+TtkSAyBL4W8v0THtjrcZZWyh7idr9iWZ5+TMMZne8gqrVbze3RA2bf87?=
+ =?iso-8859-1?Q?a+nUWtFwhZhwxORHKJ5iBmihNGli2A+fXwpYTVE9UQTAKCw0EYG8Xp9Ox4?=
+ =?iso-8859-1?Q?GAgcWHgWFnRpAhZZexfUd7Chnf7OIWteNHNuu5najDGKbE/MpcxdfKbMut?=
+ =?iso-8859-1?Q?lc7YPFRDMtkCWZUnc0gW2QQcwodnLrn+Tj1gYJRdbHAEGf5x9Ayo6X9MaG?=
+ =?iso-8859-1?Q?Q1qvkW+wLNESDXp9mlul8iT7ZPzPBHlnTciKAo6S5fmlUCc+ml3Ej3Tspz?=
+ =?iso-8859-1?Q?EKKa9vT38vSBB4aaz9bc5wI74JUKJKZLXBxKNPB7xZwbZakxt19hPI0mFp?=
+ =?iso-8859-1?Q?jGhCx9oJYI1PkQlsnj1LE9OsoS9mcnc4urMT2aqJ1rWViE1tw/jZ7J4Fgz?=
+ =?iso-8859-1?Q?Pv+BhiyVHCymxyeq6Mtv74g/IujWTQP0U9bPYu5/ux1ThBTqMM+F7BDMPL?=
+ =?iso-8859-1?Q?L1ooEfQjzs0sJW/8oa9xsMZsbpjbk0LQeCxauoyXTD/5zEsRI5A8gpH5k6?=
+ =?iso-8859-1?Q?JJmLY4IqrNhmS7tfVQyDMb3e6dlAvTHVy41X/l5AnlMXc6s1fZLEHO++wm?=
+ =?iso-8859-1?Q?w6l0FuFW2ZmV3w/mqeWH1+9EuHggmQNgWbff4BMcqEcvgl+u/f8sCWbUyw?=
+ =?iso-8859-1?Q?O6JQt2M97Rxvgad9Dp2mIUKPMxDNKh6sc2pr+lpkLwgA7UEcpZ1iPzt3Ok?=
+ =?iso-8859-1?Q?K8Tycz3An0ZEjL2r3k46xrS/MJh+nJ8I1dr17HJzIEE1trlqzQE9wn9q2w?=
+ =?iso-8859-1?Q?R2/G/rm9Xp/ebG5oi2HqwUKZr2r4Dkxv8ENFsn5tRL7LgnnEpg3ScHvLVe?=
+ =?iso-8859-1?Q?WwSZI5sPY3f/Si1SCUq6B07UB15Rd6o4cZGrzGhJEE1yKoVAJaw2QQbkaQ?=
+ =?iso-8859-1?Q?wLerH7WqbPlzPIISYd4WfB12O6csliYNTNZKThN30pZdcShbGFfZ1buvK5?=
+ =?iso-8859-1?Q?QNV0beoOayplCVl79v119xYbhBgqP/KtuOHHUBfJWfLmuBflJKxhaJOvQO?=
+ =?iso-8859-1?Q?LAPu18ZVjwnI51kFO43pRQdu9IGiK3unE5s74XOCxgMMFj37yY8/do4ZSz?=
+ =?iso-8859-1?Q?04K/oydIiyVxXefHIF7guvOeEBfJSkICfghTrJozdPJnDt7Yuxs3FOPkbc?=
+ =?iso-8859-1?Q?mgNmlGuB0dLYZU3dVv996AbWmFwsSPwnngfTpapYcnpaMCO+Sjc0JEnM05?=
+ =?iso-8859-1?Q?CfQ0ry+Fgw2uNVzVwKz9Obl7ds9Y9ux8F6hqoKVfBWL56O/fxUk+uh4s+f?=
+ =?iso-8859-1?Q?TiXW5rP/mjR/BG54OdB7n3fn0r31isdopN7ICY4pjF2z70dPme4CiNNqbO?=
+ =?iso-8859-1?Q?43curDl6uogUIqOMsua9prbGnP3SfLc1ZQYqDOQXnF1fAcCI4K8IYpC367?=
+ =?iso-8859-1?Q?yIb9ky4yT6wrc5tuE3X1pQ9CpEQeUbI2st0NoZu5yKOtrFENUWqDeqEe1k?=
+ =?iso-8859-1?Q?dJcMR4n4v1GGvSywPLxDy3Hu7jPBqmCYy/1l9COcoSrT8n0J55FJ7yOtlI?=
+ =?iso-8859-1?Q?Pp+C6hpVfAiZI6Fm3wbFj3pNLbQdyivRyfnY3Nh1V1j8KpHH1f+wsdX1/V?=
+ =?iso-8859-1?Q?4JRxmuOnsRO/7gFeYA8QaXuwSINjpy/23cDFY90Rm95LrhhyTMXH9IbeC1?=
+ =?iso-8859-1?Q?uj3woflt4MKf8=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [::ffff:46.193.4.103]
-X-Mailer: Zimbra 9.0.0_GA_4583 (ZimbraWebClient - FF122 (Linux)/9.0.0_GA_4583)
-Thread-Topic: Add an internal PLL Clock object
-Thread-Index: 0mCoQpImtdbtMy88OdVPq7wlivXcAA==
-Received-SPF: pass client-ip=2001:660:330f:2::df;
- envelope-from=aminier-21@enst.fr; helo=zproxy4.enst.fr
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4dbf9492-f894-4132-fa5b-08dc2c445ad9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Feb 2024 03:32:07.3017 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: LtOayjKUx8s+jJ7KhUxoZTDYVEdnMVzmPY+DJaBMxLiPfvhrueoWetnnMQyjRjHv6B2q3cDRnN6BVO4tE0wC7Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7195
+Received-SPF: softfail client-ip=2a01:111:f403:2414::600;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.774,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,427 +194,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QNCs6dvLUFda
+X-TUID: /XxlCEQI+WdJ
 
-Hello Alistair,
-
-Yes, I think we should bail out if pll_set_vco_multiplier receives an inval=
-id value to respect the hardware defined bounds.
-I actually intended to add a return there but I missed it. It will be added=
- in the next version.
-
-Thanks,
-Arnaud Minier
-
-
------ Mail original -----
-De: "Alistair Francis" <alistair23@gmail.com>
-=C3=80: "Arnaud Minier" <arnaud.minier@telecom-paris.fr>
-Cc: "qemu-devel" <qemu-devel@nongnu.org>, "Laurent Vivier" <lvivier@redhat.=
-com>, "Alistair Francis" <alistair@alistair23.me>, "In=C3=A8s Varhol" <ines=
-.varhol@telecom-paris.fr>, "Peter Maydell" <peter.maydell@linaro.org>, "Pao=
-lo Bonzini" <pbonzini@redhat.com>, "Thomas Huth" <thuth@redhat.com>, qemu-a=
-rm@nongnu.org
-Envoy=C3=A9: Jeudi 1 F=C3=A9vrier 2024 01:18:22
-Objet: Re: [PATCH v4 3/8] Add an internal PLL Clock object
-
-On Wed, Jan 31, 2024 at 2:09=E2=80=AFAM Arnaud Minier
-<arnaud.minier@telecom-paris.fr> wrote:
->
-> This object represents the PLLs and their channels. The PLLs allow for a
-> more fine-grained control of the clocks frequency.
->
-> Wasn't sure about how to handle the reset and the migration so used the
-> same appproach as the BCM2835 CPRMAN.
->
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> ---
->  hw/misc/stm32l4x5_rcc.c                   | 175 ++++++++++++++++++++++
->  hw/misc/trace-events                      |   5 +
->  include/hw/misc/stm32l4x5_rcc.h           |  40 +++++
->  include/hw/misc/stm32l4x5_rcc_internals.h |  22 +++
->  4 files changed, 242 insertions(+)
->
-> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index ed10832f88..fb0233c3e9 100644
-> --- a/hw/misc/stm32l4x5_rcc.c
-> +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -162,6 +162,156 @@ static void clock_mux_set_source(RccClockMuxState *=
-mux, RccClockMuxSource src)
->      clock_mux_update(mux);
->  }
->
-> +static void pll_update(RccPllState *pll)
-> +{
-> +    uint64_t vco_freq, old_channel_freq, channel_freq;
-> +    int i;
-> +
-> +    /* The common PLLM factor is handled by the PLL mux */
-> +    vco_freq =3D muldiv64(clock_get_hz(pll->in), pll->vco_multiplier, 1)=
-;
-> +
-> +    for (i =3D 0; i < RCC_NUM_CHANNEL_PLL_OUT; i++) {
-> +        if (!pll->channel_exists[i]) {
-> +            continue;
-> +        }
-> +
-> +        old_channel_freq =3D clock_get_hz(pll->channels[i]);
-> +        if (!pll->enabled ||
-> +            !pll->channel_enabled[i] ||
-> +            !pll->channel_divider[i]) {
-> +            channel_freq =3D 0;
-> +        } else {
-> +            channel_freq =3D muldiv64(vco_freq,
-> +                                    1,
-> +                                    pll->channel_divider[i]);
-> +        }
-> +
-> +        /* No change, early continue to avoid log spam and useless propa=
-gation */
-> +        if (old_channel_freq =3D=3D channel_freq) {
-> +            continue;
-> +        }
-> +
-> +        clock_update_hz(pll->channels[i], channel_freq);
-> +        trace_stm32l4x5_rcc_pll_update(pll->id, i, vco_freq,
-> +            old_channel_freq, channel_freq);
-> +    }
-> +}
-> +
-> +static void pll_src_update(void *opaque, ClockEvent event)
-> +{
-> +    RccPllState *s =3D opaque;
-> +    pll_update(s);
-> +}
-> +
-> +static void pll_init(Object *obj)
-> +{
-> +    RccPllState *s =3D RCC_PLL(obj);
-> +    size_t i;
-> +
-> +    s->in =3D qdev_init_clock_in(DEVICE(s), "in",
-> +                               pll_src_update, s, ClockUpdate);
-> +
-> +    const char *names[] =3D {
-> +        "out-p", "out-q", "out-r",
-> +    };
-> +
-> +    for (i =3D 0; i < RCC_NUM_CHANNEL_PLL_OUT; i++) {
-> +        s->channels[i] =3D qdev_init_clock_out(DEVICE(s), names[i]);
-> +    }
-> +}
-> +
-> +static void pll_reset_hold(Object *obj)
-> +{ }
-> +
-> +static const VMStateDescription pll_vmstate =3D {
-> +    .name =3D TYPE_RCC_PLL,
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(id, RccPllState),
-> +        VMSTATE_CLOCK(in, RccPllState),
-> +        VMSTATE_ARRAY_CLOCK(channels, RccPllState,
-> +                            RCC_NUM_CHANNEL_PLL_OUT),
-> +        VMSTATE_BOOL(enabled, RccPllState),
-> +        VMSTATE_UINT32(vco_multiplier, RccPllState),
-> +        VMSTATE_BOOL_ARRAY(channel_enabled, RccPllState, RCC_NUM_CHANNEL=
-_PLL_OUT),
-> +        VMSTATE_BOOL_ARRAY(channel_exists, RccPllState, RCC_NUM_CHANNEL_=
-PLL_OUT),
-> +        VMSTATE_UINT32_ARRAY(channel_divider, RccPllState, RCC_NUM_CHANN=
-EL_PLL_OUT),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void pll_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> +
-> +    rc->phases.hold =3D pll_reset_hold;
-> +    dc->vmsd =3D &pll_vmstate;
-> +}
-> +
-> +static void pll_set_vco_multiplier(RccPllState *pll, uint32_t vco_multip=
-lier)
-> +{
-> +    if (pll->vco_multiplier =3D=3D vco_multiplier) {
-> +        return;
-> +    }
-> +
-> +    if (vco_multiplier < 8 || vco_multiplier > 86) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +            "%s: VCO multiplier is out of bound (%u) for PLL %u\n",
-> +            __func__, vco_multiplier, pll->id);
-
-Should we bail out with an invalid value?
-
-Alistair
-
-> +    }
-> +
-> +    trace_stm32l4x5_rcc_pll_set_vco_multiplier(pll->id,
-> +        pll->vco_multiplier, vco_multiplier);
-> +
-> +    pll->vco_multiplier =3D vco_multiplier;
-> +    pll_update(pll);
-> +}
-> +
-> +static void pll_set_enable(RccPllState *pll, bool enabled)
-> +{
-> +    if (pll->enabled =3D=3D enabled) {
-> +        return;
-> +    }
-> +
-> +    pll->enabled =3D enabled;
-> +    pll_update(pll);
-> +}
-> +
-> +static void pll_set_channel_enable(RccPllState *pll,
-> +                                   PllCommonChannels channel,
-> +                                   bool enabled)
-> +{
-> +    if (pll->channel_enabled[channel] =3D=3D enabled) {
-> +        return;
-> +    }
-> +
-> +    if (enabled) {
-> +        trace_stm32l4x5_rcc_pll_channel_enable(pll->id, channel);
-> +    } else {
-> +        trace_stm32l4x5_rcc_pll_channel_disable(pll->id, channel);
-> +    }
-> +
-> +    pll->channel_enabled[channel] =3D enabled;
-> +    pll_update(pll);
-> +}
-> +
-> +static void pll_set_channel_divider(RccPllState *pll,
-> +                                    PllCommonChannels channel,
-> +                                    uint32_t divider)
-> +{
-> +    if (pll->channel_divider[channel] =3D=3D divider) {
-> +        return;
-> +    }
-> +
-> +    trace_stm32l4x5_rcc_pll_set_channel_divider(pll->id,
-> +        channel, pll->channel_divider[channel], divider);
-> +
-> +    pll->channel_divider[channel] =3D divider;
-> +    pll_update(pll);
-> +}
-> +
->  static void rcc_update_irq(Stm32l4x5RccState *s)
->  {
->      if (s->cifr & CIFR_IRQ_MASK) {
-> @@ -465,6 +615,11 @@ static void stm32l4x5_rcc_init(Object *obj)
->
->      qdev_init_clocks(DEVICE(s), stm32l4x5_rcc_clocks);
->
-> +    for (i =3D 0; i < RCC_NUM_PLL; i++) {
-> +        object_initialize_child(obj, "pll[*]",
-> +                                &s->plls[i], TYPE_RCC_PLL);
-> +    }
-> +
->      for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
->
->          object_initialize_child(obj, "clock[*]",
-> @@ -528,6 +683,16 @@ static void stm32l4x5_rcc_realize(DeviceState *dev, =
-Error **errp)
->              return;
->          }
->
-> +    for (i =3D 0; i < RCC_NUM_PLL; i++) {
-> +        RccPllState *pll =3D &s->plls[i];
-> +
-> +        clock_set_source(pll->in, s->clock_muxes[RCC_CLOCK_MUX_PLL_INPUT=
-].out);
-> +
-> +        if (!qdev_realize(DEVICE(pll), NULL, errp)) {
-> +            return;
-> +        }
-> +    }
-> +
->      for (i =3D 0; i < RCC_NUM_CLOCK_MUX; i++) {
->          RccClockMuxState *clock_mux =3D &s->clock_muxes[i];
->
-> @@ -548,6 +713,10 @@ static void stm32l4x5_rcc_realize(DeviceState *dev, =
-Error **errp)
->      clock_mux_set_source(&s->clock_muxes[0], RCC_CLOCK_MUX_SRC_GND);
->      clock_mux_set_enable(&s->clock_muxes[0], true);
->      clock_mux_set_factor(&s->clock_muxes[0], 1, 1);
-> +    pll_set_channel_divider(&s->plls[0], 0, 1);
-> +    pll_set_enable(&s->plls[0], true);
-> +    pll_set_channel_enable(&s->plls[0], 0, true);
-> +    pll_set_vco_multiplier(&s->plls[0], 1);
->  }
->
->  static Property stm32l4x5_rcc_properties[] =3D {
-> @@ -585,6 +754,12 @@ static const TypeInfo stm32l4x5_rcc_types[] =3D {
->          .instance_size =3D sizeof(RccClockMuxState),
->          .instance_init =3D clock_mux_init,
->          .class_init =3D clock_mux_class_init,
-> +    }, {
-> +        .name =3D TYPE_RCC_PLL,
-> +        .parent =3D TYPE_DEVICE,
-> +        .instance_size =3D sizeof(RccPllState),
-> +        .instance_init =3D pll_init,
-> +        .class_init =3D pll_class_init,
->      }
->  };
->
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index d5e471811c..1b6054d88a 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -182,6 +182,11 @@ stm32l4x5_rcc_mux_disable(uint32_t mux_id) "RCC: Mux=
- %d disabled"
->  stm32l4x5_rcc_mux_set_factor(uint32_t mux_id, uint32_t old_multiplier, u=
-int32_t new_multiplier, uint32_t old_divider, uint32_t new_divider) "RCC: M=
-ux %d factor changed: multiplier (%u -> %u), divider (%u -> %u)"
->  stm32l4x5_rcc_mux_set_src(uint32_t mux_id, uint32_t old_src, uint32_t ne=
-w_src) "RCC: Mux %d source changed: from %u to %u"
->  stm32l4x5_rcc_mux_update(uint32_t mux_id, uint32_t src, uint64_t src_fre=
-q, uint64_t new_freq) "RCC: Mux %d src %d update: src_freq %" PRIu64 " new_=
-freq %" PRIu64 ""
-> +stm32l4x5_rcc_pll_set_vco_multiplier(uint32_t pll_id, uint32_t old_multi=
-plier, uint32_t new_multiplier) "RCC: PLL %u: vco_multiplier changed (%u ->=
- %u)"
-> +stm32l4x5_rcc_pll_channel_enable(uint32_t pll_id, uint32_t channel_id) "=
-RCC: PLL %u, channel %u enabled"
-> +stm32l4x5_rcc_pll_channel_disable(uint32_t pll_id, uint32_t channel_id) =
-"RCC: PLL %u, channel %u disabled"
-> +stm32l4x5_rcc_pll_set_channel_divider(uint32_t pll_id, uint32_t channel_=
-id, uint32_t old_divider, uint32_t new_divider) "RCC: PLL %u, channel %u: d=
-ivider changed (%u -> %u)"
-> +stm32l4x5_rcc_pll_update(uint32_t pll_id, uint32_t channel_id, uint64_t =
-vco_freq, uint64_t old_freq, uint64_t new_freq) "RCC: PLL %d channel %d upd=
-ate: vco_freq %" PRIu64 " old_freq %" PRIu64 " new_freq %" PRIu64 ""
->
->  # tz-mpc.c
->  tz_mpc_reg_read(uint32_t offset, uint64_t data, unsigned size) "TZ MPC r=
-egs read: offset 0x%x data 0x%" PRIx64 " size %u"
-> diff --git a/include/hw/misc/stm32l4x5_rcc.h b/include/hw/misc/stm32l4x5_=
-rcc.h
-> index 6719be9fbe..0fbfba5c40 100644
-> --- a/include/hw/misc/stm32l4x5_rcc.h
-> +++ b/include/hw/misc/stm32l4x5_rcc.h
-> @@ -26,6 +26,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5RccState, STM32L4X=
-5_RCC)
->
->  /* In the Stm32l4x5 clock tree, mux have at most 7 sources */
->  #define RCC_NUM_CLOCK_MUX_SRC 7
-> +
-> +typedef enum PllCommonChannels {
-> +    RCC_PLL_COMMON_CHANNEL_P =3D 0,
-> +    RCC_PLL_COMMON_CHANNEL_Q =3D 1,
-> +    RCC_PLL_COMMON_CHANNEL_R =3D 2,
-> +
-> +    RCC_NUM_CHANNEL_PLL_OUT =3D 3
-> +} PllCommonChannels;
-> +
->  /* NB: Prescaler are assimilated to mux with one source and one output *=
-/
->  typedef enum RccClockMux {
->      /* Internal muxes that arent't exposed publicly to other peripherals=
- */
-> @@ -124,6 +133,14 @@ typedef enum RccClockMux {
->      RCC_NUM_CLOCK_MUX
->  } RccClockMux;
->
-> +typedef enum RccPll {
-> +    RCC_PLL_PLL,
-> +    RCC_PLL_PLLSAI1,
-> +    RCC_PLL_PLLSAI2,
-> +
-> +    RCC_NUM_PLL
-> +} RccPll;
-> +
->  typedef struct RccClockMuxState {
->      DeviceState parent_obj;
->
-> @@ -142,6 +159,26 @@ typedef struct RccClockMuxState {
->      struct RccClockMuxState *backref[RCC_NUM_CLOCK_MUX_SRC];
->  } RccClockMuxState;
->
-> +typedef struct RccPllState {
-> +    DeviceState parent_obj;
-> +
-> +    RccPll id;
-> +    Clock *in;
-> +    uint32_t vco_multiplier;
-> +    Clock *channels[RCC_NUM_CHANNEL_PLL_OUT];
-> +    /* Global pll enabled flag */
-> +    bool enabled;
-> +    /* 'enabled' refers to the runtime configuration */
-> +    bool channel_enabled[RCC_NUM_CHANNEL_PLL_OUT];
-> +    /*
-> +     * 'exists' refers to the physical configuration
-> +     * It should only be set at pll initialization.
-> +     * e.g. pllsai2 doesn't have a Q output.
-> +     */
-> +    bool channel_exists[RCC_NUM_CHANNEL_PLL_OUT];
-> +    uint32_t channel_divider[RCC_NUM_CHANNEL_PLL_OUT];
-> +} RccPllState;
-> +
->  struct Stm32l4x5RccState {
->      SysBusDevice parent_obj;
->
-> @@ -187,6 +224,9 @@ struct Stm32l4x5RccState {
->      Clock *sai1_extclk;
->      Clock *sai2_extclk;
->
-> +    /* PLLs */
-> +    RccPllState plls[RCC_NUM_PLL];
-> +
->      /* Muxes ~=3D outputs */
->      RccClockMuxState clock_muxes[RCC_NUM_CLOCK_MUX];
->
-> diff --git a/include/hw/misc/stm32l4x5_rcc_internals.h b/include/hw/misc/=
-stm32l4x5_rcc_internals.h
-> index 4aa836848b..a9da5e3be7 100644
-> --- a/include/hw/misc/stm32l4x5_rcc_internals.h
-> +++ b/include/hw/misc/stm32l4x5_rcc_internals.h
-> @@ -22,7 +22,10 @@
->  #include "hw/misc/stm32l4x5_rcc.h"
->
->  #define TYPE_RCC_CLOCK_MUX "stm32l4x5-rcc-clock-mux"
-> +#define TYPE_RCC_PLL "stm32l4x5-rcc-pll"
-> +
->  OBJECT_DECLARE_SIMPLE_TYPE(RccClockMuxState, RCC_CLOCK_MUX)
-> +OBJECT_DECLARE_SIMPLE_TYPE(RccPllState, RCC_PLL)
->
->  /* Register map */
->  REG32(CR, 0x00)
-> @@ -285,6 +288,25 @@ REG32(CSR, 0x94)
->                              R_CSR_FWRSTF_MASK   | \
->                              R_CSR_LSIRDY_MASK)
->
-> +/* Pll Channels */
-> +enum PllChannels {
-> +    RCC_PLL_CHANNEL_PLLSAI3CLK =3D 0,
-> +    RCC_PLL_CHANNEL_PLL48M1CLK =3D 1,
-> +    RCC_PLL_CHANNEL_PLLCLK =3D 2,
-> +};
-> +
-> +enum PllSai1Channels {
-> +    RCC_PLLSAI1_CHANNEL_PLLSAI1CLK =3D 0,
-> +    RCC_PLLSAI1_CHANNEL_PLL48M2CLK =3D 1,
-> +    RCC_PLLSAI1_CHANNEL_PLLADC1CLK =3D 2,
-> +};
-> +
-> +enum PllSai2Channels {
-> +    RCC_PLLSAI2_CHANNEL_PLLSAI2CLK =3D 0,
-> +    /* No Q channel */
-> +    RCC_PLLSAI2_CHANNEL_PLLADC2CLK =3D 2,
-> +};
-> +
->  typedef enum RccClockMuxSource {
->      RCC_CLOCK_MUX_SRC_GND =3D 0,
->      RCC_CLOCK_MUX_SRC_HSI,
-> --
-> 2.34.1
->
->
+>> >=0A=
+>> > I'd find it helpful to see the resulting chunk of SRAT for these examp=
+les=0A=
+>> > (disassembled) in this cover letter and the patches (where there are m=
+ore examples).=0A=
+>>=0A=
+>> Ack. I'll document the resulting SRAT table as well.=0A=
+>=0A=
+> Still didn't happen so this is dropped for now.=0A=
+=0A=
+Hi Michael, does this mean it is dropped from Qemu v9.0?=0A=
+FWIW, I'll post the next version incorporating the feedbacks by next week.=

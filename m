@@ -1,240 +1,352 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp42597eje;
-        Tue, 13 Feb 2024 02:38:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEENxVPAZVInFGI4k7i5TOJ4yBHaqBiIjX9yXFV2W9FZjFaX8MkjzkTfPOKzEUF8A3DEj5v
-X-Received: by 2002:ac8:5891:0:b0:42c:6b42:6970 with SMTP id t17-20020ac85891000000b0042c6b426970mr9632630qta.6.1707820708735;
-        Tue, 13 Feb 2024 02:38:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707820708; cv=none;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp52862eje;
+        Tue, 13 Feb 2024 03:03:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFV9WdzB1gWt8m2P/IctRs8vlfrbVhIufiZfx5foJqV0+5L1Tn1i1FAhkjazMp+zldhtamq
+X-Received: by 2002:a05:6808:3c94:b0:3c0:3280:397d with SMTP id gs20-20020a0568083c9400b003c03280397dmr11226955oib.15.1707822185687;
+        Tue, 13 Feb 2024 03:03:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707822185; cv=none;
         d=google.com; s=arc-20160816;
-        b=uh33+zHSca9gb5BKFZvDMWgaLJvOLBidovLP4paHxNN+iIjxUXe5xUjX3F3v5oS5ME
-         UU8fYdSid9bSh3xWJ6mVYB8cqSfcj67+G6EsA2hWc4ToVI7FM2x7G9P1VoNPYnvINC/8
-         WKxtVKV6L1+MQx+9d1Q1IalcbjyRI7/SbaumuOh3Xt1xXBIueEP0l0fEEuFji71AI+sV
-         yKUmkw9pbOuvzCGphVRdu7DLl9IUm1rsfdSvmY94+pFVHhupLt7t+gx3wOJI7/h1HPt+
-         VtkRXswVYbNZUh6ukdA9dfzO3oCm/KG9/xGaA7yCo8DsHa7xNx8nXdQEF08ozxyEXCqn
-         7Kag==
+        b=j/3XH1Kjx1vJy/nG26INtAuNS6XEuJflcbSDaot/ftelwXq2aeBEKmzejBUmdszj6C
+         WQUtokDjpdHuwQ5zHzsf/NT+Vf5OpEELBG20oSZLO8HhoghBofwwl6FBH0WDmQt6mFyr
+         WaJCDk1tHCQfQv9At7RpU7T70HxT4+4bFKJsK6hH/zQ2iTJoVKBZ46/JAlI0fI2kknJV
+         3rYaOh9VoNQaTniauArG053n3qv1310IcUNoIRQ2it2b8oPp7xTpaolb/4cK8SiAmMKy
+         aN4yUgX+apqC/QIFkvuFHm51QagiD9ctW+ut59oBRmcVWthSmzmIaQ987e4R4L1Da255
+         /WPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=0kttHkiSTsszLZqmx06RlazAmG/SduE8/h3JYqH1GYo=;
-        fh=okPNv9m9flo9hpMnrDnI3dFNC/p7vYT5yXwGz0/MSWw=;
-        b=CPMNx4tInIfDbbLKwlb4d5MdFDeCCO2LNGqYf15u+3sWaiweEzYgDvvaivlu7gS+Ha
-         Lvmxlt9M7giCV/wHntTdFbeVebz5MZAno0LjzDOtRUa+FLfKLf1MWNBYWaaU2XTsu8ac
-         6c9rrine62o5c3JpR8HodfQUM5vpjWRgFXV7fyNYJhoBXceSvDStpJmQZ6HQVU/3be9Q
-         DlmRpFGtaSX8tyuWkm/s+EBZH2dAY9MoyI3dhil6S+F4Cl2EUkhKjnCoOsgVmDlrGYrc
-         Ubwonvb83k6al4AOHVpy2huTXIHDqHl1/biFhORzsfh1HcFf/wiP3CnjRPEPRgx7udhU
-         hciw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Qlpo+NljcDbJnqJhBaPGBqPEqBm1fmlkOzWknR9lYrc=;
+        fh=UjEGGgVb17zokGlgyXleVMbguB1e0t1MuUBeF7MmbM4=;
+        b=sxmL0qDJZQVnpu87no6k4OUjypVkejseyHw8xy7RElvfPMGc71XObegvsaDkbYx1SJ
+         FHwnQa2zLmzgep2Q4/M4VbB+9+0f2yks1EI1afnwvdP6orTpQrONDRWQOW3WUqFzFxWa
+         78GW6jYJnA9/1mG7qtmV18KQ/aEmgXxRb17e+9YR8Ogj9G9Hlnfcrv2QupBXa1iK56do
+         jeGMZ6G4VWgGJYJ3RcFMnKbkizIRYO1ZHZPeAAmjv5mxRKyQ8Fdx32r/hIBmlIUYb7b+
+         mrBe7TPqZW72lLyMwQZ1CZwXBCBPuRM1gPYHC6vIC2k6tIP/esanOxWVxMGUxuJrF+E7
+         OFlA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa2HN6lb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Forwarded-Encrypted: i=1; AJvYcCWHw9btcuvNtlPbgY57E//fzQKTuLt0C/Hqm3nlUQQIQ9x0W5SHV5ekWFS6mXafOJ9F0DV+kzhxB3TsPlnzabq1/50KYeFs
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=l0L61AIj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+X-Forwarded-Encrypted: i=1; AJvYcCXlcROBpn3UGohWuo1FEGHFtiZaH+uf+4Gc3RspEO4l+V+/cvMzXFsS18UKeJNyLIoSNr08n76/a4T3Y2EPMzqxwmZCMY4g
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h21-20020ac85495000000b0042cfd3cd456si2446971qtq.332.2024.02.13.02.38.28
+        by mx.google.com with ESMTPS id iw12-20020a0562140f2c00b0068c6fed7aa3si2654697qvb.161.2024.02.13.03.03.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 02:38:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Feb 2024 03:03:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa2HN6lb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=l0L61AIj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rZqB9-0004NM-5g; Tue, 13 Feb 2024 05:38:19 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rZqYx-0005UJ-UR; Tue, 13 Feb 2024 06:02:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rZqB6-0004N1-UT
- for qemu-arm@nongnu.org; Tue, 13 Feb 2024 05:38:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1rZqYs-0005Jg-Lz; Tue, 13 Feb 2024 06:02:50 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rZqB4-0002BC-PM
- for qemu-arm@nongnu.org; Tue, 13 Feb 2024 05:38:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1707820694;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0kttHkiSTsszLZqmx06RlazAmG/SduE8/h3JYqH1GYo=;
- b=Fa2HN6lbovZUQoQv0dRprFnwSglDu4QnQjsVyMNn79OqM9vYlRMPHvR2Q0DRTiFjJTNf0d
- qbLwK9tCeFoOBsZRj88cY7zKGarSZjAgz3G+sR/tbQnyRdyqB838ojTl5LSWplamrA7Sjq
- XYyQ2QaqcrDBISIInxrq8C4I31F83TU=
-Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com
- [209.85.210.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-186-6wJSN2MoNgivWJvbcmf5oQ-1; Tue, 13 Feb 2024 05:38:12 -0500
-X-MC-Unique: 6wJSN2MoNgivWJvbcmf5oQ-1
-Received: by mail-ot1-f72.google.com with SMTP id
- 46e09a7af769-6dde168a7aeso3869367a34.1
- for <qemu-arm@nongnu.org>; Tue, 13 Feb 2024 02:38:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707820691; x=1708425491;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0kttHkiSTsszLZqmx06RlazAmG/SduE8/h3JYqH1GYo=;
- b=B1mILz6ojlXsgPfRhcpjeWseo3TIuTWXG/YVNksSyqWlZSuLfHZxvXMhzrkG6oq85x
- FecOHRGrSthLTig2fX9ezJnjWkd8nJphPUm74moVQ1OXhgMaBraaPeuADog9hRbJE6WU
- 83QFYTm8RFoFWrohytTWFr4gQCEGx9sUsp4P9mXeMH14TUuHeoix7SLZEiU6v/Th0ueG
- af2/H4YdJLyv6dQWDghoHxkYSGwgLkxR5ownxCYLgVNVWgfLCN1X/PPjJQg/NO4USqAV
- rI9wHoTCSB9Z0sRhYxjBbvxGjRDu0OtfUXNOeIJZFZ06Z7sZQyfKhEro2ERavOsyAE5d
- oLTg==
-X-Gm-Message-State: AOJu0YxttZd3HGaxdyI3PIhM2DIeu0ozSPdymPzuCkB8G5TGbNs6joLO
- 6d/SDMipuM4/lOoorfKeYvJWdETzdGDNxJlNPUqfGpgCe3N2BIMDNR3SX2CZ6hDZnNbl7ehIqNH
- 8O7SKlH7PFzQZckiT1ZjKyUUJ9DhluYr4z7/HwMJbUS95MqxDyw==
-X-Received: by 2002:a9d:6e95:0:b0:6e2:dde8:890a with SMTP id
- a21-20020a9d6e95000000b006e2dde8890amr7405441otr.14.1707820691781; 
- Tue, 13 Feb 2024 02:38:11 -0800 (PST)
-X-Received: by 2002:a9d:6e95:0:b0:6e2:dde8:890a with SMTP id
- a21-20020a9d6e95000000b006e2dde8890amr7405416otr.14.1707820691530; 
- Tue, 13 Feb 2024 02:38:11 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCWzifjVKAEhxqC2yLfj5G0+BySeqjThnJ7v42rsgD756rbgWUQjA/rZReR7y9lLd8KAOe70CvoGmFn9xt3VurZbuuH1OdAeVGE61ceoyfD/NbvORtnbQ3+rcbTj8yCH8mFDH3hPFqK/hYxz7GfpKrdTjXJMrDUE5Blyv6UhMg22lc3iZKGhHVE4uFD68UHf7y1gDmdqgN4GC9VmqKEKe/Z9p1zr26sxP7xMTnnjOM/G1MGD4wnkTsVsUv1ZOiLnZDRnzzJVMWgIwJt3LmbH31lOwTgpwRhHoisZUtvj7JCWgix1yMz5PBYfaxi7MqpSsCRV9CYjhoTHlIDNjdHREg==
-Received: from ?IPV6:2a01:e0a:59e:9d80:4685:ff:fe66:ea36?
- ([2a01:e0a:59e:9d80:4685:ff:fe66:ea36])
- by smtp.gmail.com with ESMTPSA id
- om13-20020a0562143d8d00b0068cd7247806sm1140935qvb.121.2024.02.13.02.38.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Feb 2024 02:38:11 -0800 (PST)
-Message-ID: <63c2eb75-6379-4c84-8b83-24392bcf3e35@redhat.com>
-Date: Tue, 13 Feb 2024 11:38:06 +0100
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1rZqYo-0006ij-TW; Tue, 13 Feb 2024 06:02:48 -0500
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id
+ 41D6wNbK009875; Tue, 13 Feb 2024 11:02:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ message-id:date:mime-version:subject:to:cc:references:from
+ :in-reply-to:content-type:content-transfer-encoding; s=
+ qcppdkim1; bh=Qlpo+NljcDbJnqJhBaPGBqPEqBm1fmlkOzWknR9lYrc=; b=l0
+ L61AIjVmFv56LV6ZQ4rq0H8ldtM6WcLX/hU8gJHHRn2oX3ixN2socmXZNNw18Jv3
+ nq0FpKcrpKZ6re9GnV2P7tv8YSOats/nowAyAIXHCt2bOMVFz7wZbYnFGsoPQb7c
+ Dvmx00s0C8bM75Y8i21i4qPm6lbPQ3kZe+AwM8ta6H0UqTdQVT+rLegEEtSz6ArN
+ cLTcIi6Ez+ZlC/HxkXJXbD4sAk1hw3GIMoItROKlEwjtTEtmRNfkhhEDYz7NYtkZ
+ 5rHcH0tJGdEUW2k7zbmbbVArykP1YOYUcNYlzC3gHmzSrf2vE4kak7nHA/6mUUFG
+ T8w3p4qn5ijZ/1jRcWBg==
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3w7gse2rm5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 13 Feb 2024 11:02:33 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 41DB2XvA019663
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 13 Feb 2024 11:02:33 GMT
+Received: from [10.111.132.144] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Tue, 13 Feb
+ 2024 03:02:29 -0800
+Message-ID: <eaab2e45-924f-4d9f-89e5-1c0f300e78f7@quicinc.com>
+Date: Tue, 13 Feb 2024 11:02:25 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/3] VIRTIO-IOMMU: Introduce an aw-bits option
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, peter.maydell@linaro.org, clg@redhat.com,
- zhenzhong.duan@intel.com, yanghliu@redhat.com, alex.williamson@redhat.com,
- jasowang@redhat.com
-References: <20240208101128.655167-1-eric.auger@redhat.com>
- <20240213053502-mutt-send-email-mst@kernel.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240213053502-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH 9/9] hw/ide/ahci: Move SysBus definitions to
+ 'ahci-sysbus.h'
+Content-Language: en-GB
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: Richard Henderson <richard.henderson@linaro.org>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,
+ John Snow <jsnow@redhat.com>, <qemu-arm@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, <qemu-block@nongnu.org>, Eduardo Habkost
+ <eduardo@habkost.net>, Rob Herring <robh@kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>, Marcin
+ Juszkiewicz <marcin.juszkiewicz@linaro.org>, Beniamino Galvani
+ <b.galvani@gmail.com>, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>
+References: <20240213081201.78951-1-philmd@linaro.org>
+ <20240213081201.78951-10-philmd@linaro.org>
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <20240213081201.78951-10-philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.774,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: 7kxB3S0C6Cu4reS6_SaNTY5o4DpTTZv6
+X-Proofpoint-ORIG-GUID: 7kxB3S0C6Cu4reS6_SaNTY5o4DpTTZv6
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-02-13_05,2024-02-12_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0
+ suspectscore=0 adultscore=0 spamscore=0 clxscore=1011 phishscore=0
+ malwarescore=0 mlxscore=0 bulkscore=0 mlxlogscore=559 lowpriorityscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2401310000 definitions=main-2402130086
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wNaSFzy1p094
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9gTjWt5ezdfy
 
-Hi Michael,
-On 2/13/24 11:35, Michael S. Tsirkin wrote:
-> On Thu, Feb 08, 2024 at 11:10:16AM +0100, Eric Auger wrote:
->> In [1] and [2] we attempted to fix a case where a VFIO-PCI device
->> protected with a virtio-iommu is assigned to an x86 guest. On x86
->> the physical IOMMU may have an address width (gaw) of 39 or 48 bits
->> whereas the virtio-iommu exposes a 64b input address space by default.
->> Hence the guest may try to use the full 64b space and DMA MAP
->> failures may be encountered. To work around this issue we endeavoured
->> to pass usable host IOVA regions (excluding the out of range space) from
->> VFIO to the virtio-iommu device so that the virtio-iommu driver can
->> query those latter during the probe request and let the guest iommu
->> kernel subsystem carve them out. 
->>
->> However if there are several devices in the same iommu group,
->> only the reserved regions of the first one are taken into
->> account by the iommu subsystem of the guest. This generally
->> works on baremetal because devices are not going to
->> expose different reserved regions. However in our case, this
->> may prevent from taking into account the host iommu geometry.
->>
->> So the simplest solution to this problem looks to introduce an
->> input address width option, aw-bits, which matches what is
->> done on the intel-iommu. By default, from now on it is set
->> to 39 bits with pc_q35 and 48 with arm virt. This replaces the
->> previous default value of 64b. So we need to introduce a compat
->> for machines older than 9.0 to behave similarly. We use
->> hw_compat_8_2 to acheive that goal.
->>
->> Outstanding series [2] remains useful to let resv regions beeing
->> communicated on time before the probe request.
->>
->> [1] [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
->>     https://lore.kernel.org/all/20231019134651.842175-1-eric.auger@redhat.com/
->>     - This is merged -
->>
->> [2] [RFC 0/7] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling for hotplugged devices
->>     https://lore.kernel.org/all/20240117080414.316890-1-eric.auger@redhat.com/
->>     - This is pending for review on the ML -
->>
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/virtio-iommu-aw-bits-v3
->> previous
->> https://github.com/eauger/qemu/tree/virtio-iommu-aw-bits-v2
->>
->> Applied on top of [3]
->> [PATCH v2] virtio-iommu: Use qemu_real_host_page_mask as default page_size_mask
->> https://lore.kernel.org/all/20240117132039.332273-1-eric.auger@redhat.com/
-> So, I applied this without that patch until we agree whether there are
-> compat issues in that one. Seems to work without or did I miss anything?
-To me it works without compat by checking the input stream version and
-if <= 3 apply the previous default.
+On 2024-02-13 08:12, Philippe Mathieu-Daudé wrote:
+> Keep "hw/ide/ahci.h" AHCI-generic.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/arm/allwinner-a10.h |  2 +-
+>   include/hw/arm/allwinner-r40.h |  2 +-
+>   include/hw/arm/xlnx-zynqmp.h   |  2 +-
+>   include/hw/ide/ahci-sysbus.h   | 35 ++++++++++++++++++++++++++++++++++
+>   include/hw/ide/ahci.h          | 29 +---------------------------
+>   hw/arm/highbank.c              |  2 +-
+>   hw/arm/sbsa-ref.c              |  1 +
 
-maybe I miss something but I tested mig between v2 and v3 and that worked
+Obviously, if the actual functional change happens, I'd be happy for 
+sbsa-ref to keep building, so for that aspect:
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
 
-Eric
->
->
->> History:
->> v2 -> v3:
->> - Collected Zhenzhong and Cédric's R-b + Yanghang's T-b
->> - use &error_abort instead of NULL error handle
->>   on object_property_get_uint() call (Cédric)
->> - use VTD_HOST_AW_39BIT (Cédric)
->>
->> v1 -> v2
->> - Limit aw to 48b on ARM
->> - Check aw is within [32,64]
->> - Use hw_compat_8_2
->>
->>
->> Eric Auger (3):
->>   virtio-iommu: Add an option to define the input range width
->>   virtio-iommu: Trace domain range limits as unsigned int
->>   hw: Set virtio-iommu aw-bits default value on pc_q35 and arm virt
->>
->>  include/hw/virtio/virtio-iommu.h | 1 +
->>  hw/arm/virt.c                    | 6 ++++++
->>  hw/core/machine.c                | 5 ++++-
->>  hw/i386/pc.c                     | 6 ++++++
->>  hw/virtio/virtio-iommu.c         | 7 ++++++-
->>  hw/virtio/trace-events           | 2 +-
->>  6 files changed, 24 insertions(+), 3 deletions(-)
->>
->> -- 
->> 2.41.0
+/
+     Leif
+
+>   hw/ide/ahci-allwinner.c        |  3 +--
+>   hw/ide/ahci.c                  |  1 +
+>   9 files changed, 43 insertions(+), 34 deletions(-)
+>   create mode 100644 include/hw/ide/ahci-sysbus.h
+> 
+> diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+> index 2eb83a17ea..67a9a17b86 100644
+> --- a/include/hw/arm/allwinner-a10.h
+> +++ b/include/hw/arm/allwinner-a10.h
+> @@ -5,7 +5,7 @@
+>   #include "hw/intc/allwinner-a10-pic.h"
+>   #include "hw/net/allwinner_emac.h"
+>   #include "hw/sd/allwinner-sdhost.h"
+> -#include "hw/ide/ahci.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "hw/usb/hcd-ohci.h"
+>   #include "hw/usb/hcd-ehci.h"
+>   #include "hw/rtc/allwinner-rtc.h"
+> diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
+> index 66c38e7d90..614e74b7ed 100644
+> --- a/include/hw/arm/allwinner-r40.h
+> +++ b/include/hw/arm/allwinner-r40.h
+> @@ -22,7 +22,7 @@
+>   
+>   #include "qom/object.h"
+>   #include "hw/timer/allwinner-a10-pit.h"
+> -#include "hw/ide/ahci.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "hw/intc/arm_gic.h"
+>   #include "hw/sd/allwinner-sdhost.h"
+>   #include "hw/misc/allwinner-r40-ccu.h"
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index 96358d51eb..48f7948092 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -22,7 +22,7 @@
+>   #include "hw/net/cadence_gem.h"
+>   #include "hw/char/cadence_uart.h"
+>   #include "hw/net/xlnx-zynqmp-can.h"
+> -#include "hw/ide/ahci.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "hw/sd/sdhci.h"
+>   #include "hw/ssi/xilinx_spips.h"
+>   #include "hw/dma/xlnx_dpdma.h"
+> diff --git a/include/hw/ide/ahci-sysbus.h b/include/hw/ide/ahci-sysbus.h
+> new file mode 100644
+> index 0000000000..7ed6cad496
+> --- /dev/null
+> +++ b/include/hw/ide/ahci-sysbus.h
+> @@ -0,0 +1,35 @@
+> +/*
+> + * QEMU AHCI Emulation (MMIO-mapped devices)
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef HW_IDE_AHCI_SYSBUS_H
+> +#define HW_IDE_AHCI_SYSBUS_H
+> +
+> +#include "qom/object.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/ide/ahci.h"
+> +
+> +#define TYPE_SYSBUS_AHCI "sysbus-ahci"
+> +OBJECT_DECLARE_SIMPLE_TYPE(SysbusAHCIState, SYSBUS_AHCI)
+> +
+> +struct SysbusAHCIState {
+> +    SysBusDevice parent_obj;
+> +
+> +    AHCIState ahci;
+> +};
+> +
+> +#define TYPE_ALLWINNER_AHCI "allwinner-ahci"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AllwinnerAHCIState, ALLWINNER_AHCI)
+> +
+> +#define ALLWINNER_AHCI_MMIO_OFF  0x80
+> +#define ALLWINNER_AHCI_MMIO_SIZE 0x80
+> +
+> +struct AllwinnerAHCIState {
+> +    SysbusAHCIState parent_obj;
+> +
+> +    MemoryRegion mmio;
+> +    uint32_t regs[ALLWINNER_AHCI_MMIO_SIZE/4];
+> +};
+> +
+> +#endif
+> diff --git a/include/hw/ide/ahci.h b/include/hw/ide/ahci.h
+> index c0b10c2bb4..ba31e75ff9 100644
+> --- a/include/hw/ide/ahci.h
+> +++ b/include/hw/ide/ahci.h
+> @@ -24,8 +24,7 @@
+>   #ifndef HW_IDE_AHCI_H
+>   #define HW_IDE_AHCI_H
+>   
+> -#include "hw/sysbus.h"
+> -#include "qom/object.h"
+> +#include "exec/memory.h"
+>   
+>   typedef struct AHCIDevice AHCIDevice;
+>   
+> @@ -54,30 +53,4 @@ typedef struct AHCIState {
+>   
+>   void ahci_ide_create_devs(AHCIState *ahci, DriveInfo **hd);
+>   
+> -#define TYPE_SYSBUS_AHCI "sysbus-ahci"
+> -OBJECT_DECLARE_SIMPLE_TYPE(SysbusAHCIState, SYSBUS_AHCI)
+> -
+> -struct SysbusAHCIState {
+> -    /*< private >*/
+> -    SysBusDevice parent_obj;
+> -    /*< public >*/
+> -
+> -    AHCIState ahci;
+> -};
+> -
+> -#define TYPE_ALLWINNER_AHCI "allwinner-ahci"
+> -OBJECT_DECLARE_SIMPLE_TYPE(AllwinnerAHCIState, ALLWINNER_AHCI)
+> -
+> -#define ALLWINNER_AHCI_MMIO_OFF  0x80
+> -#define ALLWINNER_AHCI_MMIO_SIZE 0x80
+> -
+> -struct AllwinnerAHCIState {
+> -    /*< private >*/
+> -    SysbusAHCIState parent_obj;
+> -    /*< public >*/
+> -
+> -    MemoryRegion mmio;
+> -    uint32_t regs[ALLWINNER_AHCI_MMIO_SIZE/4];
+> -};
+> -
+>   #endif /* HW_IDE_AHCI_H */
+> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+> index 9fdac1cc81..c71b1a8db3 100644
+> --- a/hw/arm/highbank.c
+> +++ b/hw/arm/highbank.c
+> @@ -30,7 +30,7 @@
+>   #include "hw/boards.h"
+>   #include "qemu/error-report.h"
+>   #include "hw/char/pl011.h"
+> -#include "hw/ide/ahci.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "hw/cpu/a9mpcore.h"
+>   #include "hw/cpu/a15mpcore.h"
+>   #include "qemu/log.h"
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index f2adf30337..5d3a574664 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -38,6 +38,7 @@
+>   #include "hw/boards.h"
+>   #include "hw/ide/internal.h"
+>   #include "hw/ide/ahci_internal.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "hw/intc/arm_gicv3_common.h"
+>   #include "hw/intc/arm_gicv3_its_common.h"
+>   #include "hw/loader.h"
+> diff --git a/hw/ide/ahci-allwinner.c b/hw/ide/ahci-allwinner.c
+> index b173121006..9620de8ce8 100644
+> --- a/hw/ide/ahci-allwinner.c
+> +++ b/hw/ide/ahci-allwinner.c
+> @@ -19,9 +19,8 @@
+>   #include "qemu/error-report.h"
+>   #include "qemu/module.h"
+>   #include "sysemu/dma.h"
+> -#include "hw/ide/internal.h"
+>   #include "migration/vmstate.h"
+> -#include "ahci_internal.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   
+>   #include "trace.h"
+>   
+> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+> index 041cc87c11..54c9685495 100644
+> --- a/hw/ide/ahci.c
+> +++ b/hw/ide/ahci.c
+> @@ -37,6 +37,7 @@
+>   #include "hw/ide/internal.h"
+>   #include "hw/ide/pci.h"
+>   #include "hw/ide/ahci-pci.h"
+> +#include "hw/ide/ahci-sysbus.h"
+>   #include "ahci_internal.h"
+>   
+>   #include "trace.h"
 

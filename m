@@ -1,114 +1,123 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp215640eje;
-        Tue, 13 Feb 2024 07:53:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHxkI01XwZHVGNY9FXJbZf6FAVakg/uV2SSaVDne3xsxB+Pfwq+zNpaekbnwm3B88IAnVHP
-X-Received: by 2002:ac8:57d0:0:b0:42d:ae83:e319 with SMTP id w16-20020ac857d0000000b0042dae83e319mr2357758qta.18.1707839589510;
-        Tue, 13 Feb 2024 07:53:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707839589; cv=none;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp242343eje;
+        Tue, 13 Feb 2024 08:32:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWQ69Hddnd/ptb4hbEchNoO3ag4RDEXzJNXhVXiDTh3kr//sSep6gB/557JDt7k61kUUPDiojnk8HDPKV1KfQZimFVE/njD
+X-Google-Smtp-Source: AGHT+IEYgTaQB9VMOLkmHxBUqkH/Tg6zOlOmvT2doGZG82DjZScahJ6wRiS1npr2OKCTLgVKEUy2
+X-Received: by 2002:a05:6808:13d2:b0:3c0:33b5:986d with SMTP id d18-20020a05680813d200b003c033b5986dmr8971467oiw.15.1707841953282;
+        Tue, 13 Feb 2024 08:32:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707841953; cv=none;
         d=google.com; s=arc-20160816;
-        b=bRSV1MkMR7sPiiZkMh87Q9XjHARiTBgtnhD38LgcMSrTw+QzxsHOAbQeYGt1V3rJeM
-         5FNzmCaicJ91lknTCyxfCGWkRVu9PsjcNqiw/vQ9ThpZY+jcHaMwesa6DwMn0mrm5TCv
-         7NLN03m5rrxf7Nh937WG8f8Nt+9x44jaloxvbws8oG2HytSAIQxbXZLv+wRIvxlWa/nj
-         ptWFIJVY/jaV5I3BDSW2SDXypJIoyfQeLECYrwP7gWHar4N/xvcY34a4lVB0EiBFGNYc
-         Ww+Jsu/CMZa79XpybpYKXANKF3macPaW0I8kzdqYG0/4X1aAC1wAfcHr290is/5JPtIP
-         NWwg==
+        b=BITv6nPwZU6O9ikxz7P7mKUDWCG+qMF9mQl+zv/2QoeU1M8UM+kvlycGhbZXWIINYN
+         e0BnDPfeH/t2gETNvo0w0LML6ckFiKd8o3uH5D6Q6Rw1lbEBPuIM2rI1jIe5t8aC5b9g
+         Zw/s5i/UKm+zmXSXhRGji4tt8E5WXzQ1cdN8Q5i+cqKkBcwdzCgJyfIpi+f49XdKFLJa
+         3cJaR4tOx2c9YpIW8Fzd46hQXB+u+Av3p1qNZOKChNI+VqA7v/Vf2sRy0YdfLq8biOW/
+         eO6tffD2ITGnHV2mOfRWiH/i6QSsiDNE16/D0kQuWRYlmyz3uzt1VhevsYuaOUhllG3p
+         1egg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=+WO+U/cdRoubxdgTYbsdCfwDQVIWpi3TD0ntR/eAxO0=;
-        fh=JzdV5S9lgebcAT1R/+4dNU6Er8pFLoQ9wcZsd72WJ7o=;
-        b=e8vSK2vI98oRx/gju8gCxn1wELlzN0wkhMpG/cHlVE1MbMyENfcBf/tlFzaMJYHO0v
-         YihH4yFNfY54vuJM3KyX5VVWIavcgMEvkU1o/rx1Zy/fIDQG0xhucEodqVzCr5VF1OWG
-         yecaqHOXzEdGhTfgSHRzV/TxfbCPISiZROp/DhJgZ9W6kjXuD6H8MFoZ+fZYIEnkKZ3L
-         LOkBqb/W0NrEBBtRToDSXiTPPLkUVdmuDGpfaUnO5WakzyEJWjbpRk413CG6CXUqX/HZ
-         Qj/1k6T+5FnUcnDEUaPabXRRoNzwlIDLoh1TqqLpvTS+0/9aYpVynPHXVSVnhlZM2fHq
-         K2ww==;
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=3jrflwpsNYryW7c+u3iTCPd9IBXRPClz7Eg6m1Ub3YQ=;
+        fh=0B7x+XyrX6WDP3zwChVP4WFSSbXOdr76FvVn9lkYITg=;
+        b=gvVGVoTIXi0IvsSk/oMYfKJOQubAUYGTtG+pIBr6PBpbLE5anHRI4IgpiRaWZPddjN
+         RqKO5T/SvzDpIsV4sbMLSbgsCUqn82ie2BrNcHlFJKS6dlCS+6hMlhOkbFAGWfWFjLA2
+         Q6dDf4Dvuqk51dakOFnUxxjUwra48goWo8rRWkR6Mtd2+Cy9HuVODCXNh5YaWuOQE4dO
+         xpv3a2KD8or6nnrD6/93xWTTWUlLWmfi7JRMpg+4L/fPv7G1zaJPIjFVGmL2taqeGua7
+         LX8Vu73SoT+6WUT+suJCLnRMyLYFrVrGlPFi3mfTX7xxhsngSgPvBudNLXgEpXDmsOj+
+         SRgA==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TgQv+149;
+       dkim=pass header.i=@linaro.org header.s=google header.b="kmFlCsm/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCWyiKZggvVKp5VWDleE1sBCcmjn6DmS4aT8QZqIkzS4K1pWj9PWXjO5xnlpvSeNPfdUIkCcjNmibla9cjvWtKh94GM9qMVX
+X-Forwarded-Encrypted: i=1; AJvYcCX4GpmAPcg53SUsj/A7JRryb4LolZ6koLMuyxonr/a/21k/sB9GPFufRP5giZiG2NaaWvfs+uZoO49ZfMNpnKsoVYx5M4NT
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020ac85b81000000b0042db439fc96si547178qta.514.2024.02.13.07.53.09
+        by mx.google.com with ESMTPS id jp13-20020ad45f8d000000b0068efb5d3adbsi210679qvb.165.2024.02.13.08.32.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 07:53:09 -0800 (PST)
+        Tue, 13 Feb 2024 08:32:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TgQv+149;
+       dkim=pass header.i=@linaro.org header.s=google header.b="kmFlCsm/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rZv5S-0001mP-5U; Tue, 13 Feb 2024 10:52:46 -0500
+	id 1rZvh8-0001mW-6w; Tue, 13 Feb 2024 11:31:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZv5P-0001jS-Vu
- for qemu-devel@nongnu.org; Tue, 13 Feb 2024 10:52:44 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rZvh6-0001lW-2g
+ for qemu-devel@nongnu.org; Tue, 13 Feb 2024 11:31:40 -0500
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZv5O-0005qQ-Ee
- for qemu-devel@nongnu.org; Tue, 13 Feb 2024 10:52:43 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-33b86bc4bbaso1017152f8f.0
- for <qemu-devel@nongnu.org>; Tue, 13 Feb 2024 07:52:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rZvh4-00053D-Cq
+ for qemu-devel@nongnu.org; Tue, 13 Feb 2024 11:31:39 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1d7431e702dso39287205ad.1
+ for <qemu-devel@nongnu.org>; Tue, 13 Feb 2024 08:31:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707839561; x=1708444361; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+WO+U/cdRoubxdgTYbsdCfwDQVIWpi3TD0ntR/eAxO0=;
- b=TgQv+149C3sg1m9l4Xc1SGrOORe/CLY65Wo+7bhPpBkjHZtlFgwRYAIwz8fP3E8DpG
- s3qfhNf7/ar1kOHaKguVFJtQhXb94oAXLJ5CNiBHZBv0t64uMvVctpmN5JSofOmg5jqW
- VDObuReY5v17W9Pnhg66JFNgUd33bWfGtyl1YtAVNZaARjcZc7eFYUWRH56fgkt9Pnr+
- VXpOVwAORwUf6iclBXzBQ4KYiHLCFud6KFkSO4ILAXbcvYEtnmjkqIuHn5RCbPZa1rOl
- a6Bm8srRKwEdUadEu8wFXbPnuqO2sq/OTZ/UoDYlBJN9qbgFMdKnulsFXsu1r14HCDmu
- YbRg==
+ d=linaro.org; s=google; t=1707841895; x=1708446695; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3jrflwpsNYryW7c+u3iTCPd9IBXRPClz7Eg6m1Ub3YQ=;
+ b=kmFlCsm/FYaWrT2nyIEMeN8U6mMGSPsG1H1CwDqkgxNja9aGyB2Mdo57A4EM159vmn
+ mGoPmG0/KZsbI0NOj/ztvkPbj8+qEa08kxeiBXQsa+lI7WlfNV1rGQyxiGmw9rHvZRI9
+ WA6je+WnRT7a+vnJaGS7n/aE9LkIvSJBwA0EcH3VCYFKthfwEqio9ZB/0C7n7QBvujrO
+ pGTklSDcGGQtRuVjh2SaRd1EpQFD7fIOrKDCjShmTPfHDp6uF1oCa93161eerM2Ajd3q
+ bAfTCHH6YLJ42DTf6XYok497O+SYDeCdxvyZJvj75bhaXxGCpNgTJmcDSvPMZwZyLNg5
+ tKWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707839561; x=1708444361;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+WO+U/cdRoubxdgTYbsdCfwDQVIWpi3TD0ntR/eAxO0=;
- b=SCclwq7NnL3BF9jTzUtN2AIrZrPHZRq9vO+XUOpqWBhi+tDCIc6ZtuHcC3N04L3vbB
- fT+l5oNvVi/LhHe7fwftZAMgWqfRDE5BEhCudChy40sWfYjplJ35OT0jagwghOda/64a
- 90j89V7fnPobCVRoh7WzrpzeZYt6iwdPs496gz530R4gEPb/SchWtmxgsbktiyczZEjM
- fpDjP66bkoMr9040Xoa7wqyJ0dJWrjpVDZsk7hQFGIajXisRfykEGazA0HokQ7P+pG/L
- UHoOMIB1L78cf4qQu1stcJlz8kYfQKVg3+iMLdRBjOrb07eup7FmAIELEL5nJoMwcKkX
- JWxg==
-X-Gm-Message-State: AOJu0Yx+yLk6XwJMiN6vz+JU+7vJ5yoH8xQI4DS9QN/twiLyEs7RDzL6
- 58PQiykWT5CRWLydgCp00My0LuIZvxaLezqSgguxCgfyj1ZWdT5W6wwYPYMYr/PggSFGgNnXNB4
- Q
-X-Received: by 2002:a5d:4041:0:b0:33c:e2ff:6c85 with SMTP id
- w1-20020a5d4041000000b0033ce2ff6c85mr404562wrp.49.1707839561003; 
- Tue, 13 Feb 2024 07:52:41 -0800 (PST)
+ d=1e100.net; s=20230601; t=1707841895; x=1708446695;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3jrflwpsNYryW7c+u3iTCPd9IBXRPClz7Eg6m1Ub3YQ=;
+ b=ZOGXy+zLwgs0aowBXY3N660gHBdeYyjYhdHeyJXYloZ1YkC/7STWtze3W/vGFgKgEs
+ cetRuBcg6NgIWzItrNe9oYRkufihJg+o5CyyhCkvH4PybbsChxG5N3XFkhhfZeDJxtA5
+ lYgAd08O0BShYCwUEy5ypxfOe5M5fcIN945ozduqAhDSEnFuggWeu/bJJt/zm8Tpa4hs
+ BM8tpkvcgJ6dfPYw8w7UZtz+CAuIiLnuh6rtz/OoUE0SIXoxxkxFU02aFUW2uFnHSLuk
+ JVDp20eirkSzukqHrZBM5HoahwozQaCprsTmYE2HAHb9GPaVh1tQZr2+Z0tmK6LKbY8a
+ E1Bw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWuhi63JoJf7Hfb60531BHbj9k6yJtyJsKRjX8qXWSp/rOSmT/+PHCgezmXIenmTz+Jt0OZIZ+GxKZOF0aPmt1AMrvdyebU1wKovZMHvuXlbIzuFTsZQXU1dDrtew3Yv6zN3c7oeVphpBR1Z8FP+BT3Rg==
-Received: from m1x-phil.lan ([176.176.128.243])
- by smtp.gmail.com with ESMTPSA id
- i14-20020a5d558e000000b0033929310ae4sm9873011wrv.73.2024.02.13.07.52.39
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 Feb 2024 07:52:40 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 4/4] hw/arm/stellaris: Add missing QOM 'SoC' parent
-Date: Tue, 13 Feb 2024 16:52:14 +0100
-Message-ID: <20240213155214.13619-5-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240213155214.13619-1-philmd@linaro.org>
-References: <20240213155214.13619-1-philmd@linaro.org>
+ AJvYcCWSnxEs+gi9XsAmCqeLbiqvT3A4PWb93RflSPDX1tuOVNJ0ACY2nU9VLUBGvI29v/b7hcRL8KRBCE/CDQ+kH4U1vfbph2c=
+X-Gm-Message-State: AOJu0YwZ4MwGk48s4vkn1JjQnb6O6cbTSNK6Jc9Ft6RjiDu+Cas3hVaT
+ 4c45vB0RoDzmR+L5k0fp9FdFehNUtVTibeF2Avb73Tb0ADuAX/BnD8zrQkkYDNE=
+X-Received: by 2002:a17:903:120f:b0:1d9:a4bb:29f2 with SMTP id
+ l15-20020a170903120f00b001d9a4bb29f2mr7972plh.46.1707841894772; 
+ Tue, 13 Feb 2024 08:31:34 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUdlUEc3atu/jY070lNE2o05DkLMARLsgUehbo1qddultCTvNBXn798gYTGkgQPF1m0Br0xVmQKZlgFBZ1WsjJOXNq38aiZ7w0bnjFndCcn9J+unnjG2tNI5HbJT+bFGpw2vPZNmHR3oeNOBeV5ElfVAEGxgN0JmXK9/mh8u3K2GvKjiMwv8XMugIB9ds49jK/ElHW6NsSwXTtuRU0FWpOmCxna0p3btfko6wnOiZ6sWui6nZXjPPP+GSG+CxI=
+Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
+ [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
+ jx4-20020a170903138400b001d741873e4bsm2288247plb.95.2024.02.13.08.31.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Feb 2024 08:31:34 -0800 (PST)
+Message-ID: <99f43538-8a7d-46c6-946d-0fe1cba0ec9f@linaro.org>
+Date: Tue, 13 Feb 2024 06:31:28 -1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/9] hw/i386/q35: Use DEVICE() cast macro with PCIDevice
+ object
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ John Snow <jsnow@redhat.com>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-block@nongnu.org, Eduardo Habkost <eduardo@habkost.net>
+References: <20240213081201.78951-1-philmd@linaro.org>
+ <20240213081201.78951-2-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240213081201.78951-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,90 +139,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eAhi7hRxgMJn
+X-TUID: WaxOKZKhXMbD
 
-QDev objects created with qdev_new() need to manually add
-their parent relationship with object_property_add_child().
+On 2/12/24 22:11, Philippe Mathieu-Daudé wrote:
+> QDev API provides the DEVICE() macro to access the
+> 'qdev' parent field of the PCIDevice structure.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   hw/i386/pc_q35.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-Since we don't model the SoC, just use a QOM container.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/stellaris.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index d9884286b3..a2f998bf9e 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1031,6 +1031,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-      * 400fe000 system control
-      */
- 
-+    Object *soc_container;
-     DeviceState *gpio_dev[7], *nvic;
-     qemu_irq gpio_in[7][8];
-     qemu_irq gpio_out[7][8];
-@@ -1052,6 +1053,9 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     flash_size = (((board->dc0 & 0xffff) + 1) << 1) * 1024;
-     sram_size = ((board->dc0 >> 18) + 1) * 1024;
- 
-+    soc_container = object_new("container");
-+    object_property_add_child(OBJECT(ms), "soc", soc_container);
-+
-     /* Flash programming is done via the SCU, so pretend it is ROM.  */
-     memory_region_init_rom(flash, NULL, "stellaris.flash", flash_size,
-                            &error_fatal);
-@@ -1066,6 +1070,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-      * need its sysclk output.
-      */
-     ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
-+    object_property_add_child(soc_container, "sys", OBJECT(ssys_dev));
- 
-     /*
-      * Most devices come preprogrammed with a MAC address in the user data.
-@@ -1092,6 +1097,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(ssys_dev), &error_fatal);
- 
-     nvic = qdev_new(TYPE_ARMV7M);
-+    object_property_add_child(soc_container, "v7m", OBJECT(nvic));
-     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
-     qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
-     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
-@@ -1125,6 +1131,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
- 
-             dev = qdev_new(TYPE_STELLARIS_GPTM);
-             sbd = SYS_BUS_DEVICE(dev);
-+            object_property_add_child(soc_container, "gptm[*]", OBJECT(dev));
-             qdev_connect_clock_in(dev, "clk",
-                                   qdev_get_clock_out(ssys_dev, "SYSCLK"));
-             sysbus_realize_and_unref(sbd, &error_fatal);
-@@ -1138,7 +1145,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
- 
-     if (board->dc1 & (1 << 3)) { /* watchdog present */
-         dev = qdev_new(TYPE_LUMINARY_WATCHDOG);
--
-+        object_property_add_child(soc_container, "wdg", OBJECT(dev));
-         qdev_connect_clock_in(dev, "WDOGCLK",
-                               qdev_get_clock_out(ssys_dev, "SYSCLK"));
- 
-@@ -1178,6 +1185,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-             SysBusDevice *sbd;
- 
-             dev = qdev_new("pl011_luminary");
-+            object_property_add_child(soc_container, "uart[*]", OBJECT(dev));
-             sbd = SYS_BUS_DEVICE(dev);
-             qdev_prop_set_chr(dev, "chardev", serial_hd(i));
-             sysbus_realize_and_unref(sbd, &error_fatal);
-@@ -1298,6 +1306,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-         DeviceState *enet;
- 
-         enet = qdev_new("stellaris_enet");
-+        object_property_add_child(soc_container, "enet", OBJECT(enet));
-         if (nd) {
-             qdev_set_nic_properties(enet, nd);
-         } else {
--- 
-2.41.0
-
+r~

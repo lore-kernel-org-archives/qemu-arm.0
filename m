@@ -1,122 +1,108 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp625829eje;
-        Tue, 13 Feb 2024 23:49:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV9XttgUDgqrXPeGcdLlEcSi7BZjtx4sx6Z5KvQ62MUCQ2ndxW0/IFf73N9DiOsi9FVuvNoMll/0FSjBmgtY8gpDp904rfv
-X-Google-Smtp-Source: AGHT+IF2ZBhQa6yat71Tnvkq7NZD4WqeZff3MSKM7CIPUGONY0/kVdru/EpRZDqlFgJlkRY1UGUR
-X-Received: by 2002:ac8:5a84:0:b0:42d:b436:d318 with SMTP id c4-20020ac85a84000000b0042db436d318mr2081233qtc.44.1707896979595;
-        Tue, 13 Feb 2024 23:49:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707896979; cv=none;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp651734eje;
+        Wed, 14 Feb 2024 00:56:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW9s/7ZY/KWCAgidfTmmIjIsiHhLJVXYMPRC+hnwXrw6xVtlZPTIe286b4AXIcNIdE5BRm3PSSQ8P7nXYjRrGcYbuPFYStB
+X-Google-Smtp-Source: AGHT+IGUu5Tpq7cI9z+cCDBqtnk0dvaab+8C83iqZBdylY36QjMPgYzVW7WSQt6ZyL3+jtevov2f
+X-Received: by 2002:a05:6214:130a:b0:68c:ba1b:e495 with SMTP id pn10-20020a056214130a00b0068cba1be495mr2645993qvb.43.1707900974531;
+        Wed, 14 Feb 2024 00:56:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707900974; cv=none;
         d=google.com; s=arc-20160816;
-        b=HZE0LmDDrj6qi7m/Dr1B0KX3gknPWfso1ZakjpecguNpCe02+/vaHZy17wsyNus56y
-         axlWYnajVzc6gKYNgb5mj6d+pG6XalLWbLHG8Ieo6c/XMY6wshE0ZEN03DG0JbFEbzCP
-         p8+XyEK3n04r+kXlmZq196LtwHMu84FHMiYBt2T4aKZzMH+Ef60lM1mNDiv6PbfNZmsn
-         zDmk7qHzSv23CUUI5m5kXy0hZzcOcWL7StJrC9M72E6wiMH0W48ZEi2tPaQKixp3ZzC/
-         x1yCPgxr2pCooA+H8UQH436ZFjZOnOdja5flDAaG8SN6gmUMxGJQSJ5nsEH5PZRGZBm3
-         2GEw==
+        b=W2sdZ3NcVtEX3H6Je9zRHY3DTJDq84U2GjxuHRdt03QjBzxO0nsP7hVK1rEOUykGSE
+         PaIvfUjFGGKKF+mDFmg8AI2nUvq7aDbuVM/+miX/ZCCiVJtmPpYifnwvDq7kyz0D6ha9
+         qpg82cbElrEgUtazpq/yIHLqrSqzkwoLaw62yDix/y5861hDCD6BZ5u35krDIIVeUSLu
+         8yHaUl/ysxeW8CWHYmHwBdPKeo0E7jyfvAwniV6TWa7hlZsKCOQqQu6iNUWSVrtjIWSL
+         YwKpIXAW1lgIokbo8QRHtEPAydiMO6QsN8yrMLKhK5G+J8t6srfOG8Hay8LCexLvjODD
+         bk6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BQ6+HEUrpsiIOObbu51RsCVLPpL/i6+IPJ70mWBq6cg=;
-        fh=bXUDzHkxpX1S4YhfbkOaySPMQi8iAF6aKkPXs2BH0Zk=;
-        b=AYhFcQ7c1GJTePFuy4CHz+VcTWeNrKv2eBt7AKEt3pfT7L17Qle/z/dWuP9m85sGH3
-         ALnxOdi9TcvKYUjnP/tdSL9jZhrmfSEUd+q3t2rlDZKO4XSSuIpPAwc73RLSDbCmqb9x
-         yok3kcEQDGe28hjlmS/BDqUMFQZVBxTXjqLHMakH3bqBdSQXT1F2EK+Q1Q2qqAEPjH5g
-         VFrDx+li8wLUZtgVOdhU1K+7FQV/PNuSw34C+8WnGWujCLDBAqRONR/Sm0vZJx3iCP7/
-         P2uW0EEksuraGssHcG+YhtplSU4WmkPbZvU0zOTL+fWRBiaIu60Q4Ebdemrg1xhGXPdM
-         eTnQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=lZ7eMPPqvFTCxlHHkNE4XCNcUtRm+ZuyIAioeF4xV44=;
+        fh=A3sJlXjDbaGUX5X1fjI5EZ/GBicJ6Hn22L5KQZwgFgk=;
+        b=OFU7nm4M5cRO95ufnRzOl5kkee8+G+lDOMnHEaY0Dw3P0V/rjqiENhF54K2ZnbkU8z
+         38/T4HA8zdlmgB7LwIR/PbF7tOHwftRnXzsffhLwAZCaq+5hGGRKM7yZFWPSJq9svw5g
+         Z20h0wMLnszIJzOHiIJ2yJyE3B3bQ5OuW7q4bR0xc7AwWdkID01fWq4sHiQyxZmOQk45
+         IrZUuXA3hCZzebrmw8tNmTHKT6CvSbhIXRhe/pTNr4mf80nwuAFnsgyz1bOVv6j9e4AC
+         4x8ciE7GvjX3LN+IAkljQL0+gvCZc9EZ2w0EuYK578dxm9XIhxCG/VGgkcgm0uVlwGg4
+         Yz9Q==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WLtQyNEW;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ix48GOZn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCU7s4uhUboNLuCKazgLdL85MgSWt1z4o33Z4tcXs2F5OZyLBefofLibMNJTp8L/d7hFo/4r6bvjW87sYxdO6VObyNhB2c9A
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+X-Forwarded-Encrypted: i=1; AJvYcCWbzOdErvZPgT5S3WfwiZiYaxexR5J0/LzYoQ9EULPW/3ItnsF9uZPC8YMJ2A9De+CQ0XnBoayWYLZlR1BQ3ca3w34bSEVe
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19-20020ac85153000000b0042c36f44980si4469824qtn.427.2024.02.13.23.49.39
+        by mx.google.com with ESMTPS id i12-20020ad45c6c000000b0068cd943bc70si5222430qvh.199.2024.02.14.00.56.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 23:49:39 -0800 (PST)
+        Wed, 14 Feb 2024 00:56:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WLtQyNEW;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ix48GOZn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1raA15-00087a-GS; Wed, 14 Feb 2024 02:49:15 -0500
+	id 1raB3n-0007cZ-Jk; Wed, 14 Feb 2024 03:56:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raA14-00087K-U9
- for qemu-arm@nongnu.org; Wed, 14 Feb 2024 02:49:14 -0500
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raA11-0000Ut-LT
- for qemu-arm@nongnu.org; Wed, 14 Feb 2024 02:49:14 -0500
-Received: by mail-lj1-x230.google.com with SMTP id
- 38308e7fff4ca-2d109e82bd0so20169961fa.3
- for <qemu-arm@nongnu.org>; Tue, 13 Feb 2024 23:49:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707896949; x=1708501749; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BQ6+HEUrpsiIOObbu51RsCVLPpL/i6+IPJ70mWBq6cg=;
- b=WLtQyNEWtDIsHYwZxuHCpJ+PVNdvhIswnPZhr7r7MdpCou/HThJc1cEYe87cjl6Fy1
- BNNpYHYJNE7jfN79w/BqVzTSH6o2iup3hzJXnG9a/xPNoKB2uEk7RegpuYwjnOdfAVuh
- 6W86h9kD25a3FPphv5aasyukxdPeNLpowqZ1UO56Nqhg6h9YxS1Atpzzrnc3UXf/2CMQ
- UiIz+/W/RWdHBzZySJJDYuH+HpjfQgAC2qi123TGmTLhzrmvuipaNmJYRgZttFA9wB+o
- lDN9TN7UqVBR4Uws2kvlrh+5waE7acMma0W6b1P5u5JT6N6PcE+0+w359k4Wdfp7b0iN
- WmTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707896949; x=1708501749;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BQ6+HEUrpsiIOObbu51RsCVLPpL/i6+IPJ70mWBq6cg=;
- b=w/g7q7JIZnHAWACcdnRRqgC7HRAlwjoGpOGqvdwgoi/VKPLBgARxiKapN5ahYLrJJr
- s4nyYWYxtQWm5POlgWD4R8FrLSpqUSLR6w88nrOKtdy6V2X+CpV4J4sJiESQC6giQbdo
- NRcdfbDOfhQCLz+3GhD3qYZfQi6/Noi05ksjBHM4QV/nnCqEAtKuSyR4rnPwSyboUDRw
- Kwn0hcbmMEIngnDDSbjhIkHNwOYLsZsEi3pLzT/fJy1v7I3VLJ9qjzr5bpb9yd1nx/sM
- rtZCMCbOugJCJjuUUh/ubB0LG4qLVuQHLmiwqNmtJmQ9IMxjVOZX3luk4iTm84gO8EFg
- nWBw==
-X-Gm-Message-State: AOJu0YybVnraE1zmcZzPjQaVG8G3X0egFlKg68w+jhchJuBzSlabrsyh
- NPslAZF7LraOoDG7KFOHLCPh37qmWJ2RzUcWRQ824VttMf+g8bSexQh+6RX2IJSiS8R3SY4SKV8
- F
-X-Received: by 2002:a2e:94d7:0:b0:2d0:e5cc:5795 with SMTP id
- r23-20020a2e94d7000000b002d0e5cc5795mr1258690ljh.0.1707896949149; 
- Tue, 13 Feb 2024 23:49:09 -0800 (PST)
-Received: from [192.168.69.100] (mau49-h01-176-184-41-88.dsl.sta.abo.bbox.fr.
- [176.184.41.88]) by smtp.gmail.com with ESMTPSA id
- o4-20020a05600c510400b0040ef95e1c78sm1104675wms.3.2024.02.13.23.49.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Feb 2024 23:49:08 -0800 (PST)
-Message-ID: <f95fec4c-a520-4476-b63c-5387b0948ac4@linaro.org>
-Date: Wed, 14 Feb 2024 08:49:06 +0100
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1raB3l-0007bg-MS; Wed, 14 Feb 2024 03:56:05 -0500
+Received: from sin.source.kernel.org ([145.40.73.55])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1raB3g-0007ut-VL; Wed, 14 Feb 2024 03:56:05 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 3F737CE1C6E;
+ Wed, 14 Feb 2024 08:55:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80C7BC433C7;
+ Wed, 14 Feb 2024 08:55:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1707900948;
+ bh=dIEMdbt4uVH+SLcKL2HAfT6xds6Yg5ZGi16KuJ+Ap8c=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Ix48GOZnRUmmE4lVcPA3k4gNd4WJlJEhRt+G0TYvbqkmKZfINf138KKyTzSyQ5G9O
+ qaIB9G2dzT9FylNpw+ab+WO4VQjWWMBEAzi2tXeje1sQ4eme3C6ebzKSSiyGhgrAZy
+ 8iP49dTxgQ1LhxSUhDib7wBhQ390NnelfxzVCB5wd8JhIVY5W1Y+qZAKLI5m/S2up/
+ 0xTDP5dqUiIJiKee6UiejWp+VeJJd3YRpS4yirFCUA52/d3O4Z2pNZTMNXbEMDPlXk
+ zc41O9H6wsvXAsksRjBqfZL8MYRzw4WvF2bHgR9eXr0ednGYAHxK0CP/wt6gLzbSvc
+ C+JU5QKN+ZhJA==
+Received: by mail-lf1-f43.google.com with SMTP id
+ 2adb3069b0e04-51182f8590bso4485560e87.0; 
+ Wed, 14 Feb 2024 00:55:48 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWPWt/+13Wj9jFFPuiPtFHEFaziyUkoOZLCaeD+7l8wpEZmgKEFayFldtClpSNdGRN9u6lEx1s5H9W1s2FnxXz5DdDUvng=
+X-Gm-Message-State: AOJu0YzCgDB/0nRVGe51GDPXTvtAyAFsbDuc316fCaCvC201Vvb0PYeH
+ XZxMFR7xNwzxcqWBG3WWLSZ+I0RJWUm+c4hYz7tAM5vejONQwZGFYPqAObSOQke1k5e7UM7s4fz
+ vSCjeW2z5OqxUKTWEkHd+SUkxLNk=
+X-Received: by 2002:a05:6512:1590:b0:511:a206:8fee with SMTP id
+ bp16-20020a056512159000b00511a2068feemr1676763lfb.64.1707900946712; Wed, 14
+ Feb 2024 00:55:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: possible deprecation and removal of some old QEMU Arm machine
- types (pxa2xx, omap, sa1110)
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Guenter Roeck <linux@roeck-us.net>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
- <1003f634-f13d-4a9e-af7a-34edc26e22a4@linaro.org>
-In-Reply-To: <1003f634-f13d-4a9e-af7a-34edc26e22a4@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::230;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x230.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20240122143537.233498-1-peter.maydell@linaro.org>
+In-Reply-To: <20240122143537.233498-1-peter.maydell@linaro.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 14 Feb 2024 09:55:35 +0100
+X-Gmail-Original-Message-ID: <CAMj1kXHTcYB0K7f7S6F3SqSye3XAJemTt6qAb8cgmcThYshrWA@mail.gmail.com>
+Message-ID: <CAMj1kXHTcYB0K7f7S6F3SqSye3XAJemTt6qAb8cgmcThYshrWA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] virt: wire up NS EL2 virtual timer IRQ
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=145.40.73.55; envelope-from=ardb@kernel.org;
+ helo=sin.source.kernel.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,469 +118,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PHCPjsYWdQfb
+X-TUID: CSZdxyeFRy/C
 
-On 14/2/24 08:37, Philippe Mathieu-Daudé wrote:
-> On 12/2/24 13:32, Peter Maydell wrote:
-> 
->> So I would like to explore whether we can deprecate-and-drop
->> some or all of them. This would let us delete the code entirely
->> rather than spending a long time trying to bring it up to scratch
->> for a probably very small to nonexistent userbase. The aim of this
->> email is to see if anybody is still using any of these and would be
->> upset if they went away. Reports of "I tried to use this machine
->> type and it's just broken" are also interesting as they would
->> strongly suggest that the machine has no real users and can be
->> removed.
->>
->> The machines I have in mind are:
+On Mon, 22 Jan 2024 at 15:35, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset wires up the NS EL2 virtual timer IRQ on the virt
+> board, similarly to what commit 058262e0a8b2 did for the sbsa-ref board.
+>
+> Version 1 was an RFC patchset, originally sent back in autumn:
+> https://patchew.org/QEMU/20230919101240.2569334-1-peter.maydell@linaro.org/
+> The main reason for it being an RFC is that the change, while correct,
+> triggers a bug in EDK2 guest firmware that makes EDK2 assert on bootup.
+> Since the RFC, we've upgraded our in-tree version of the EDK2 binaries
+> to a version that has the fix for that bug, so I think the QEMU side of
+> these patches is ready to go in now.
+>
+> To accommodate users who might still be using older EDK2 binaries,
+> we only expose the IRQ in the DTB and ACPI tables for virt-9.0 and
+> later machine types.
+>
+> If you see in the guest:
+>      ASSERT [ArmTimerDxe] /home/kraxel/projects/qemu/roms/edk2/ArmVirtPkg/Library/ArmVirtTimerFdtClientLib/ArmVirtTimerFdtClientLib.c(72): PropSize == 36 || PropSize == 48
+>
+> then your options are:
+>  * update your EDK2 binaries to edk2-stable202311 or newer
+>  * use the 'virt-8.2' versioned machine type
+>  * not use 'virtualization=on'
+>
+> I'll put something about this into the release notes when this
+> goes into git. (There are other reasons why you probably want a
+> newer EDK2 for AArch64 guests, so this is worth flagging up to our
+> downstream distros who don't take our pre-built firmware binaries.)
+>
+> changes v1->v2:
+>  * the change in DTB and ACPI tables is now tied to the machine version
+>  * handle change of the ARCH_TIMER_*_IRQ values from PPI numbers to INTIDs
+>  * bump the FADT header to indicate ACPI v6.3, since we might be using
+>    a 6.3 feature in the GTDT
+>  * the avocado tests now all pass, because we have updated our copy
+>    of EDK2 in pc-bios/ to a version which has the fix for the bug
+>    which would otherwise cause it to assert on bootup
+>  * patch 2 commit message improved to give details of the EDK2 assert and
+>    state the options for dealing with it (this will also go into the
+>    QEMU release notes)
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (3):
+>   tests/qtest/bios-tables-test: Allow changes to virt GTDT
+>   hw/arm/virt: Wire up non-secure EL2 virtual timer IRQ
+>   tests/qtest/bios-tables-tests: Update virt golden reference
+>
 
-
->> OMAP2 machines:
->>
->> n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
->> n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
-> 
-> For me these are broken since 2020 (commit 7998beb9c2 "arm/nseries:
-> use memdev for RAM"), this was discussed in
-> https://lore.kernel.org/qemu-devel/f2f276a9-a6ad-a2f8-2fbc-f1aca5423f79@amsat.org/
-> but there was no clear consensus so I gave up testing them.
-
-Eh good news the tests work again:
-
-$ make check-avocado AVOCADO_TAGS='machine:n800 machine:n810' 
-AVOCADO_ALLOW_UNTRUSTED_CODE=1 QEMU_TEST_FLAKY_TESTS=1 
-AVOCADO_SHOW=app,console
-   AVOCADO tests/avocado
-JOB ID     : e089badc8daeae0882eb48e452164d00e8e19c18
-JOB LOG    : job-2024-02-14T07.44-e089bad/job.log
-  (1/2) tests/avocado/machine_arm_n8x0.py:N8x0Machine.test_n800: \
-console: [    0.000000] Linux version 2.6.35~rc4-129.1-n8x0 
-(abuild@build08) (gcc version 4.4.2 20091027 (MeeGo 4.4.2-7) (GCC) ) #1 
-PREEMPT Mon Jul 12 15:04:46 UTC 2010
-console: [    0.000000] CPU: ARMv6-compatible processor [4107b362] 
-revision 2 (ARMv6TEJ), cr=00c5387f
-console: [    0.000000] CPU: VIPT aliasing data cache, VIPT aliasing 
-instruction cache
-console: [    0.000000] Machine: Nokia N800
-console: [    0.000000] Memory policy: ECC disabled, Data cache writeback
-console: [    0.000000] OMAP2420
-console: [    0.000000]
-console: [    0.000000] SRAM: Mapped pa 0x40200000 to va 0xfe400000 
-size: 0x100000
-console: [    0.000000] Built 1 zonelists in Zone order, mobility 
-grouping on.  Total pages: 32512
-console: [    0.000000] Kernel command line: printk.time=0 console=ttyS1
-console: PID hash table entries: 512 (order: -1, 2048 bytes)
-console: Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
-console: Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
-console: Memory: 128MB = 128MB total
-console: Memory: 124008k/124008k available, 7064k reserved, 0K highmem
-console: Virtual kernel memory layout:
-console: vector  : 0xffff0000 - 0xffff1000   (   4 kB)
-console: fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
-console: DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
-console: vmalloc : 0xc8800000 - 0xf8000000   ( 760 MB)
-console: lowmem  : 0xc0000000 - 0xc8000000   ( 128 MB)
-console: modules : 0xbf000000 - 0xc0000000   (  16 MB)
-console: .init : 0xc0008000 - 0xc0029000   ( 132 kB)
-console: .text : 0xc0029000 - 0xc0379000   (3392 kB)
-console: .data : 0xc038e000 - 0xc03ba2e0   ( 177 kB)
-console: SLUB: Genslabs=11, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, 
-Nodes=1
-console: Hierarchical RCU implementation.
-console: RCU-based detection of stalled CPUs is disabled.
-console: Verbose stalled-CPUs detection is disabled.
-console: NR_IRQS:368
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock iva1_ifck parent core_ck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1c ]---
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock dsp_fck parent core_ck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1d ]---
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock dsp_irate_ick parent 
-dsp_fck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1e ]---
-console: Clocking rate (Crystal/DPLL/MPU): 19.2/658/329 MHz
-console: omap_hwmod: l3_hwmod: cannot be enabled (3)
-console: omap_hwmod: l4_core_hwmod: cannot be enabled (3)
-console: omap_hwmod: l4_wkup_hwmod: cannot be enabled (3)
-console: GPMC revision 2.0
-console: IRQ: Found an INTC at 0xfa0fe000 (revision 2.1) with 96 interrupts
-console: Total of 96 interrupts on 1 active controller
-console: OMAP GPIO hardware version 1.8
-console: OMAP clockevent source: GPTIMER1 at 32000 Hz
-console: Console: colour dummy device 80x30
-console: Calibrating delay loop... 897.01 BogoMIPS (lpj=3506176)
-console: pid_max: default: 32768 minimum: 301
-console: Mount-cache hash table entries: 512
-console: CPU: Testing write buffer coherency: ok
-console: devtmpfs: initialized
-console: NET: Registered protocol family 16
-console: MUX: setup L15_24XX_I2C1_SDA (0xfa000112): 0x0018 -> 0x0000
-console: MUX: setup M19_24XX_I2C1_SCL (0xfa000111): 0x0018 -> 0x0000
-console: MUX: setup H19_24XX_I2C2_SDA (0xfa000114): 0x001f -> 0x0000
-console: MUX: setup J15_24XX_I2C2_SCL (0xfa000113): 0x001f -> 0x0010
-console: N8x0 MIPID config loaded
-console: N8x0 Blizzard initialized
-console: MUX: setup H18_24XX_MMC_CMD (0xfa0000f4): 0x001f -> 0x0000
-console: MUX: setup H15_24XX_MMC_CLKI (0xfa0000fe): 0x001f -> 0x0000
-console: MUX: setup G19_24XX_MMC_CLKO (0xfa0000f3): 0x000f -> 0x0000
-console: MUX: setup F20_24XX_MMC_DAT0 (0xfa0000f5): 0x000f -> 0x0000
-console: MUX: setup F19_24XX_MMC_DAT_DIR0 (0xfa0000f9): 0x000f -> 0x0000
-console: MUX: setup G18_24XX_MMC_CMD_DIR (0xfa0000fd): 0x000f -> 0x0000
-console: MUX: setup H14_24XX_MMC_DAT1 (0xfa0000f6): 0x001f -> 0x0000
-console: MUX: setup E19_24XX_MMC_DAT2 (0xfa0000f7): 0x000f -> 0x0000
-console: MUX: setup D19_24XX_MMC_DAT3 (0xfa0000f8): 0x000f -> 0x0000
-console: MUX: setup E20_24XX_MMC_DAT_DIR1 (0xfa0000fa): 0x000f -> 0x0000
-console: MUX: setup F18_24XX_MMC_DAT_DIR2 (0xfa0000fb): 0x000f -> 0x0000
-console: MUX: setup E18_24XX_MMC_DAT_DIR3 (0xfa0000fc): 0x001f -> 0x0000
-console: MUX: setup AA10_242X_DMAREQ0 (0xfa0000e5): 0x001f -> 0x0002
-console: MUX: setup AA6_242X_DMAREQ1 (0xfa0000e6): 0x000f -> 0x0002
-console: MUX: setup E4_242X_DMAREQ2 (0xfa000074): 0x0018 -> 0x0002
-console: MUX: setup G4_242X_DMAREQ3 (0xfa000073): 0x0018 -> 0x0002
-console: MUX: setup D3_242X_DMAREQ4 (0xfa000072): 0x0018 -> 0x0002
-console: MUX: setup E3_242X_DMAREQ5 (0xfa000071): 0x0018 -> 0x0002
-console: TUSB 6010
-console: OMAP DMA hardware revision 4.0
-console: bio: create slab <bio-0> at 0
-console: SCSI subsystem initialized
-console: i2c_omap i2c_omap.1: bus 1 rev3.4 at 400 kHz
-console: i2c_omap i2c_omap.2: bus 2 rev3.4 at 400 kHz
-console: Tahvo/Betty driver initialising
-console: Betty v2.1 found
-console: Retu/Vilma driver initialising
-console: Vilma v1.5 found
-console: Bluetooth: Core ver 2.15
-console: NET: Registered protocol family 31
-console: Bluetooth: HCI device and connection manager initialized
-console: Bluetooth: HCI socket layer initialized
-console: Switching to clocksource 32k_counter
-console: musb_hdrc: version 6.0, tusb-omap-dma, peripheral, debug=0
-console: tusb: Unable to detect TUSB6010
-console: Could not start tusb6010 (-19)
-console: musb_hdrc musb_hdrc: musb_init_controller failed with status -19
-console: NET: Registered protocol family 2
-console: IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
-console: TCP established hash table entries: 4096 (order: 3, 32768 bytes)
-console: TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
-console: TCP: Hash tables configured (established 4096 bind 4096)
-console: TCP reno registered
-console: UDP hash table entries: 256 (order: 0, 4096 bytes)
-console: UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
-console: NET: Registered protocol family 1
-console: PMU: registered new PMU device of type 0
-console: NetWinder Floating Point Emulator V0.97 (double precision)
-console: squashfs: version 4.0 (2009/01/31) Phillip Lougher
-console: JFFS2 version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
-console: fuse init (API version 7.14)
-console: msgmni has been set to 242
-console: alg: No test for stdrng (krng)
-console: io scheduler noop registered
-console: io scheduler cfq registered (default)
-console: omapfb: ls041y3 rev 8f LCD detected, 24 data lines
-console: omapfb: configured for panel ls041y3
-console: omapfb: DISPC version 2.0 initialized
-console: omapfb: RFBI version 1.0 initialized
-console: omapfb: s1d13745 LCD controller rev 1 initialized (CNF pins 3)
-console: omapfb omapfb: s1d1374x: setting update mode to auto
-console: Console: switching to colour frame buffer device 100x30
-console: omapfb: Framebuffer initialized. Total vram 770048 planes 1
-console: omapfb: Pixclock 21940 kHz hfreq 24.9 kHz vfreq 51.0 Hz
-console: omap_rng omap_rng: OMAP Random Number Generator ver. 00
-console: Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
-console: serial8250.0: ttyS0 at MMIO 0x4806a000 (irq = 72) is a 16550A
-console: serial8250.1: ttyS1 at MMIO 0x4806c000 (irq = 73) is a 16550A
-console: console [ttyS1] enabled
-console: serial8250.2: ttyS2 at MMIO 0x4806e000 (irq = 74) is a 16550A
-console: brd: module loaded
-console: loop: module loaded
-console: Menelaus rev 2.2
-console: OneNAND driver initializing
-console: omap2-onenand omap2-onenand: initializing on CS0, phys base 
-0x04000000, virtual base c8880000
-console: Muxed OneNAND(DDP) 256MB 1.8V 16-bit (0x48)
-console: OneNAND version = 0x0000
-console: Scanning device for bad blocks
-console: Creating 5 MTD partitions on "omap2-onenand":
-console: 0x000000000000-0x000000020000 : "bootloader"
-console: 0x000000020000-0x000000080000 : "config"
-console: 0x000000080000-0x000000280000 : "kernel"
-console: 0x000000280000-0x000000680000 : "initfs"
-console: 0x000000680000-0x000010000000 : "rootfs"
-console: PPP generic driver version 2.4.2
-console: PPP Deflate Compression module registered
-console: PPP BSD Compression module registered
-console: tun: Universal TUN/TAP device driver, 1.6
-console: tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
-console: mice: PS/2 mouse device common for all mice
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sending read cmd 0x82 failed
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 3 bytes of -121 total
-console: lm8323 2-0045: sent 3 bytes of -121 total
-console: lm8323 2-0045: sending read cmd 0x80 failed
-console: lm8323 2-0045: device not found
-console: TSC2005 driver initializing
-PASS (2.61 s)
-  (2/2) tests/avocado/machine_arm_n8x0.py:N8x0Machine.test_n810: /
-console: [    0.000000] Linux version 2.6.35~rc4-129.1-n8x0 
-(abuild@build08) (gcc version 4.4.2 20091027 (MeeGo 4.4.2-7) (GCC) ) #1 
-PREEMPT Mon Jul 12 15:04:46 UTC 2010
-console: [    0.000000] CPU: ARMv6-compatible processor [4107b362] 
-revision 2 (ARMv6TEJ), cr=00c5387f
-console: [    0.000000] CPU: VIPT aliasing data cache, VIPT aliasing 
-instruction cache
-console: [    0.000000] Machine: Nokia N810
-console: [    0.000000] Memory policy: ECC disabled, Data cache writeback
-console: [    0.000000] OMAP2420
-console: [    0.000000]
-console: [    0.000000] SRAM: Mapped pa 0x40200000 to va 0xfe400000 
-size: 0x100000
-console: [    0.000000] Built 1 zonelists in Zone order, mobility 
-grouping on.  Total pages: 32512
-console: [    0.000000] Kernel command line: printk.time=0 console=ttyS1
-console: PID hash table entries: 512 (order: -1, 2048 bytes)
-console: Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
-console: Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
-console: Memory: 128MB = 128MB total
-console: Memory: 124008k/124008k available, 7064k reserved, 0K highmem
-console: Virtual kernel memory layout:
-console: vector  : 0xffff0000 - 0xffff1000   (   4 kB)
-console: fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
-console: DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
-console: vmalloc : 0xc8800000 - 0xf8000000   ( 760 MB)
-console: lowmem  : 0xc0000000 - 0xc8000000   ( 128 MB)
-console: modules : 0xbf000000 - 0xc0000000   (  16 MB)
-console: .init : 0xc0008000 - 0xc0029000   ( 132 kB)
-console: .text : 0xc0029000 - 0xc0379000   (3392 kB)
-console: .data : 0xc038e000 - 0xc03ba2e0   ( 177 kB)
-console: SLUB: Genslabs=11, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, 
-Nodes=1
-console: Hierarchical RCU implementation.
-console: RCU-based detection of stalled CPUs is disabled.
-console: Verbose stalled-CPUs detection is disabled.
-console: NR_IRQS:368
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock iva1_ifck parent core_ck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1c ]---
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock dsp_fck parent core_ck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1d ]---
-console: ------------[ cut here ]------------
-console: WARNING: at arch/arm/mach-omap2/clkt_clksel.c:194 
-omap2_clksel_recalc+0xcc/0xe0()
-console: clock: Could not find fieldval 0 for clock dsp_irate_ick parent 
-dsp_fck
-console: Modules linked in:
-console: [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from [<c0053850>] 
-(warn_slowpath_common+0x4c/0x64)
-console: [<c0053850>] (warn_slowpath_common+0x4c/0x64) from [<c00538e8>] 
-(warn_slowpath_fmt+0x2c/0x3c)
-console: [<c00538e8>] (warn_slowpath_fmt+0x2c/0x3c) from [<c00388b4>] 
-(omap2_clksel_recalc+0xcc/0xe0)
-console: [<c00388b4>] (omap2_clksel_recalc+0xcc/0xe0) from [<c003a91c>] 
-(propagate_rate+0x20/0x50)
-console: [<c003a91c>] (propagate_rate+0x20/0x50) from [<c003a928>] 
-(propagate_rate+0x2c/0x50)
-console: ---[ end trace 1b75b31a2719ed1e ]---
-console: Clocking rate (Crystal/DPLL/MPU): 19.2/658/329 MHz
-console: omap_hwmod: l3_hwmod: cannot be enabled (3)
-console: omap_hwmod: l4_core_hwmod: cannot be enabled (3)
-console: omap_hwmod: l4_wkup_hwmod: cannot be enabled (3)
-console: GPMC revision 2.0
-console: IRQ: Found an INTC at 0xfa0fe000 (revision 2.1) with 96 interrupts
-console: Total of 96 interrupts on 1 active controller
-console: OMAP GPIO hardware version 1.8
-console: OMAP clockevent source: GPTIMER1 at 32000 Hz
-console: Console: colour dummy device 80x30
-console: Calibrating delay loop... 803.49 BogoMIPS (lpj=3137536)
-console: pid_max: default: 32768 minimum: 301
-console: Mount-cache hash table entries: 512
-console: CPU: Testing write buffer coherency: ok
-console: devtmpfs: initialized
-console: NET: Registered protocol family 16
-console: MUX: setup L15_24XX_I2C1_SDA (0xfa000112): 0x0018 -> 0x0000
-console: MUX: setup M19_24XX_I2C1_SCL (0xfa000111): 0x0018 -> 0x0000
-console: MUX: setup H19_24XX_I2C2_SDA (0xfa000114): 0x001f -> 0x0000
-console: MUX: setup J15_24XX_I2C2_SCL (0xfa000113): 0x001f -> 0x0010
-console: N8x0 MIPID config loaded
-console: N8x0 Blizzard initialized
-console: MUX: setup H18_24XX_MMC_CMD (0xfa0000f4): 0x001f -> 0x0000
-console: MUX: setup H15_24XX_MMC_CLKI (0xfa0000fe): 0x001f -> 0x0000
-console: MUX: setup G19_24XX_MMC_CLKO (0xfa0000f3): 0x000f -> 0x0000
-console: MUX: setup F20_24XX_MMC_DAT0 (0xfa0000f5): 0x000f -> 0x0000
-console: MUX: setup F19_24XX_MMC_DAT_DIR0 (0xfa0000f9): 0x000f -> 0x0000
-console: MUX: setup G18_24XX_MMC_CMD_DIR (0xfa0000fd): 0x000f -> 0x0000
-console: MUX: setup H14_24XX_MMC_DAT1 (0xfa0000f6): 0x001f -> 0x0000
-console: MUX: setup E19_24XX_MMC_DAT2 (0xfa0000f7): 0x000f -> 0x0000
-console: MUX: setup D19_24XX_MMC_DAT3 (0xfa0000f8): 0x000f -> 0x0000
-console: MUX: setup E20_24XX_MMC_DAT_DIR1 (0xfa0000fa): 0x000f -> 0x0000
-console: MUX: setup F18_24XX_MMC_DAT_DIR2 (0xfa0000fb): 0x000f -> 0x0000
-console: MUX: setup E18_24XX_MMC_DAT_DIR3 (0xfa0000fc): 0x001f -> 0x0000
-console: MUX: setup AA10_242X_DMAREQ0 (0xfa0000e5): 0x001f -> 0x0002
-console: MUX: setup AA6_242X_DMAREQ1 (0xfa0000e6): 0x000f -> 0x0002
-console: MUX: setup E4_242X_DMAREQ2 (0xfa000074): 0x0018 -> 0x0002
-console: MUX: setup G4_242X_DMAREQ3 (0xfa000073): 0x0018 -> 0x0002
-console: MUX: setup D3_242X_DMAREQ4 (0xfa000072): 0x0018 -> 0x0002
-console: MUX: setup E3_242X_DMAREQ5 (0xfa000071): 0x0018 -> 0x0002
-console: TUSB 6010
-console: OMAP DMA hardware revision 4.0
-console: bio: create slab <bio-0> at 0
-console: SCSI subsystem initialized
-console: i2c_omap i2c_omap.1: bus 1 rev3.4 at 400 kHz
-console: i2c_omap i2c_omap.2: bus 2 rev3.4 at 400 kHz
-console: Tahvo/Betty driver initialising
-console: Betty v2.1 found
-console: Retu/Vilma driver initialising
-console: Vilma v1.5 found
-console: Bluetooth: Core ver 2.15
-console: NET: Registered protocol family 31
-console: Bluetooth: HCI device and connection manager initialized
-console: Bluetooth: HCI socket layer initialized
-console: Switching to clocksource 32k_counter
-console: musb_hdrc: version 6.0, tusb-omap-dma, peripheral, debug=0
-console: tusb: Unable to detect TUSB6010
-console: Could not start tusb6010 (-19)
-console: musb_hdrc musb_hdrc: musb_init_controller failed with status -19
-console: NET: Registered protocol family 2
-console: IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
-console: TCP established hash table entries: 4096 (order: 3, 32768 bytes)
-console: TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
-console: TCP: Hash tables configured (established 4096 bind 4096)
-console: TCP reno registered
-console: UDP hash table entries: 256 (order: 0, 4096 bytes)
-console: UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
-console: NET: Registered protocol family 1
-console: PMU: registered new PMU device of type 0
-console: NetWinder Floating Point Emulator V0.97 (double precision)
-console: squashfs: version 4.0 (2009/01/31) Phillip Lougher
-console: JFFS2 version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
-console: fuse init (API version 7.14)
-console: msgmni has been set to 242
-console: alg: No test for stdrng (krng)
-console: io scheduler noop registered
-console: io scheduler cfq registered (default)
-console: omapfb: ls041y3 rev 8f LCD detected, 24 data lines
-console: omapfb: configured for panel ls041y3
-console: omapfb: DISPC version 2.0 initialized
-console: omapfb: RFBI version 1.0 initialized
-console: omapfb: s1d13745 LCD controller rev 1 initialized (CNF pins 3)
-console: omapfb omapfb: s1d1374x: setting update mode to auto
-console: Console: switching to colour frame buffer device 100x30
-console: omapfb: Framebuffer initialized. Total vram 770048 planes 1
-console: omapfb: Pixclock 21940 kHz hfreq 24.9 kHz vfreq 51.0 Hz
-console: omap_rng omap_rng: OMAP Random Number Generator ver. 00
-console: Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
-console: serial8250.0: ttyS0 at MMIO 0x4806a000 (irq = 72) is a 16550A
-console: serial8250.1: ttyS1 at MMIO 0x4806c000 (irq = 73) is a 16550A
-console: console [ttyS1] enabled
-console: serial8250.2: ttyS2 at MMIO 0x4806e000 (irq = 74) is a 16550A
-console: brd: module loaded
-console: loop: module loaded
--console: Menelaus rev 2.2
-console: OneNAND driver initializing
-console: omap2-onenand omap2-onenand: initializing on CS0, phys base 
-0x04000000, virtual base c8880000
-console: Muxed OneNAND(DDP) 256MB 1.8V 16-bit (0x48)
-console: OneNAND version = 0x0000
-console: Scanning device for bad blocks
-console: Creating 5 MTD partitions on "omap2-onenand":
-console: 0x000000000000-0x000000020000 : "bootloader"
-console: 0x000000020000-0x000000080000 : "config"
-console: 0x000000080000-0x000000280000 : "kernel"
-console: 0x000000280000-0x000000680000 : "initfs"
-console: 0x000000680000-0x000010000000 : "rootfs"
-console: PPP generic driver version 2.4.2
-console: PPP Deflate Compression module registered
-console: PPP BSD Compression module registered
-console: tun: Universal TUN/TAP device driver, 1.6
-console: tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
-console: mice: PS/2 mouse device common for all mice
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sending read cmd 0x82 failed
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 2 bytes of -121 total
-console: lm8323 2-0045: sent 3 bytes of -121 total
-console: lm8323 2-0045: sent 3 bytes of -121 total
-console: lm8323 2-0045: sending read cmd 0x80 failed
-console: lm8323 2-0045: device not found
-console: TSC2005 driver initializing
-PASS (2.30 s)
-RESULTS    : PASS 2 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | 
-CANCEL 0
-JOB TIME   : 5.49 s
-
+Reviewed-by: Ard Biesheuvel <ardb@kernel.org>

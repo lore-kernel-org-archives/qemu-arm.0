@@ -1,106 +1,79 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp496841eje;
-        Tue, 13 Feb 2024 17:28:33 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCX06mYZl6ORVHX8vMmHRPAN/gDioCxzd6P9OU7yVuh39muGyO7gvhzdk2mnVOXYTG3K8fxOJp5QOXNNMOYITssrq51MblFH
-X-Google-Smtp-Source: AGHT+IEZTDdfDbGCJy6qfWga95fArzbOq4nzs29wCvJ6r949QUa2YnnE6NaWSiwxyEDLyMMsbZ6E
-X-Received: by 2002:a05:6214:2582:b0:68c:6b44:1f25 with SMTP id fq2-20020a056214258200b0068c6b441f25mr1626709qvb.52.1707874113037;
-        Tue, 13 Feb 2024 17:28:33 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1707874113; cv=pass;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp583823eje;
+        Tue, 13 Feb 2024 21:54:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUsdSV3UPqWcJ/kVjuH5Dusq+IOixR/E5lXKIuI8+VxUHuGDlWGgJdx3KxPM3rIcJhVRn4S6+rVtYC8YQIG9hkc5eObFYFM
+X-Google-Smtp-Source: AGHT+IH5ySDV+MGkRitUm3POzLfwNb8GdLjBHqJRaL8oNgLhMSLeNNtGgmGoaYR2edYVOFwIjkdA
+X-Received: by 2002:ae9:e701:0:b0:784:3a5:1c58 with SMTP id m1-20020ae9e701000000b0078403a51c58mr1862086qka.37.1707890097595;
+        Tue, 13 Feb 2024 21:54:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707890097; cv=none;
         d=google.com; s=arc-20160816;
-        b=VLASgMOKkfrU/2CtVjd0N+hgNDo3CyY+dkJSXm+EviLb99ZZSL+aAtY7NorGGPmQJ9
-         RMyTeT5vU9FitHvx7smu52/rwbqH6RzY6caqUE0s3etpvaTbsRb3zSVV9tj6B2Ne7Flm
-         JNaMUBB/L0O+BwU+C5sTMHiDhbCsc4TyuvVdgjgOksRZ9uFcgphYwL+oLX2MyB15oKf2
-         KHFPEPVRwV2e1eVRjASgKELHjWWy0tuVojjy/+ovWPSKAXF33moemyHS0riuTNQKffcc
-         EuXAxiloYB1WevaZN/0bVsYuHSG0h3ABcTioSUbuWpbVOobcRb0qiKGQxexFv/q8XFBT
-         c2WA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=IpcNzsPECk3eZRpwy8+sEerDTmh54gYKaWp0kCa/eGwtGFQ7y4sYQG354yug0gUCan
+         Vqn4voDmC6aDpmfGN1bnsZpcOSKWTN9ia6VYj23mZ9X1jCd+PITf6IKaZOu64OiEnQuI
+         SAI8FpUVdtmUrBCREvNaJ2V22unaLaLtgC7fqy3mdNbwpmZG5E/28kx8N8hWyXvm1S7E
+         2EypRuDefbTFhtawzBKdILoeDszohtxf938HCo+7MqXuoUxSO7lqGuS2wF0DgDg4wvXY
+         ZtgzuNDXFXP5pA28vPEOiKUeESHdoetBeGtPC/6PScUj+i/Fdzh1fSgtqo5mwyZdY1K3
+         LNPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=4114BJ6W6i8Bsstwtgpj1rAy65HGfORfmM3A0e8Aa4k=;
-        fh=XjTXC6zTUSfWwefTGIwhPpfQLBmfd6lffyXx8OFC3hU=;
-        b=rLRcFmodQjCCOewvwD3pZrdl0+BPCCB6Qh3Ofs6b/D8Fq1e0jHzxocrZ8JxYLceCgF
-         Q14O3jig7PVYmnjtEiJ2GfVk9cNdERqspGIkLGbxGOlP0QG9TTyj3B1OUFxYiOGwmd4p
-         XuFn/SHPVbcgBmqiWKjW1ysc43u7X9YRDGiBhD3nBrOIZXlJlmvnH7n3ApAp472YQNX7
-         SSAy7gPDKOxA0ZaAW/cTYrs+3Y5yWNsMjW9OpR0MLCutMacu0vBU4PRmozIpXIDq6Rn1
-         A4lNTRcIxuw5az4MlwDGf4FdJVZEIhNeNq8vemhNdnJupB7O/P1kC2tVOLNjmSClQFeH
-         oCYA==;
+        bh=R414xVJ5SAz6KLk1XJB0Zl4GPjEHnid7votgXS0hgwA=;
+        fh=VlEq6dFuMex8BrnTe9RMTEY2GDI/KW4nfX8gZ3Gwaq4=;
+        b=WD/3w09+BsCwalSZzoU4dMOdrzJwf6a2+WYxdRkMFg7+F1rPtXNZ4lbi1H+BLZIVt2
+         yzdmNrQAtKeI9uDNC0rArMTasuw4bzZaz1P+d+yY6E+6pS85g3Qu1rLiCEZWsSD6FohT
+         2UD2E+mIs9IkVu3O2QnJ1rShRM+/t0Xsh8X5M1TKYqiwnJO/5iz4Ybhc+m4XCh7G5CW9
+         52Ng+RH59yyryaOmvOm/vPAHohhM8U9BdIlVPkQektaG/2UOwnEF4KZfFKR2mtF1HNj3
+         dmztVI1nL1vuRHdWycVYKr+S1mo5ReHkDZkUR5xdx29Yhf4cAfpEEdgYIrzaMP6YPksn
+         xeoA==;
         darn=linaro.org
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@iki.fi header.s=lahtoruutu header.b=qFSEtE3o;
-       arc=pass (i=1);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@atomide.com header.s=25mailst header.b=kmOQU0I4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-X-Forwarded-Encrypted: i=2; AJvYcCUJyEjFcGj073nKLcTIQhIH63rcrf+6POUU7wHYdT9XaJJRqQZ0gHceWXXTwuDT1e+VaIHo5Sod7W3cFDckii3jHGA+bPu1
+X-Forwarded-Encrypted: i=1; AJvYcCWUvXV4YaI7uq/ibO8ghLHJ0pd6DS6jqCRHmRFpJqjvD02lnDsCXLOQPIvuX2fM+WggqlsBhoVRXwNz7yoycNQ31UIEme3U
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a13-20020a056214062d00b0068ccc63d00bsi4049352qvx.410.2024.02.13.17.28.32
+        by mx.google.com with ESMTPS id w2-20020a05620a148200b00787286ef019si1104991qkj.714.2024.02.13.21.54.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Feb 2024 17:28:33 -0800 (PST)
+        Tue, 13 Feb 2024 21:54:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@iki.fi header.s=lahtoruutu header.b=qFSEtE3o;
-       arc=pass (i=1);
+       dkim=fail header.i=@atomide.com header.s=25mailst header.b=kmOQU0I4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ra44M-0000lG-Kw; Tue, 13 Feb 2024 20:28:14 -0500
+	id 1ra8Dn-0001XR-7q; Wed, 14 Feb 2024 00:54:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaro.koskinen@iki.fi>)
- id 1ra44H-0000kp-9s; Tue, 13 Feb 2024 20:28:09 -0500
-Received: from lahtoruutu.iki.fi ([2a0b:5c81:1c1::37])
+ (Exim 4.90_1) (envelope-from <tony@atomide.com>)
+ id 1ra8Dk-0001Wx-EH; Wed, 14 Feb 2024 00:54:12 -0500
+Received: from mail5.25mail.st ([74.50.62.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaro.koskinen@iki.fi>)
- id 1ra44E-0001Uy-TK; Tue, 13 Feb 2024 20:28:08 -0500
-Received: from darkstar.musicnaut.iki.fi (85-76-160-177-nat.elisa-mobile.fi
- [85.76.160.177])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits)
- server-digest SHA256) (No client certificate requested)
- (Authenticated sender: aaro.koskinen)
- by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4TZLD71hD6z49PyJ;
- Wed, 14 Feb 2024 03:27:51 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu; 
- t=1707874072;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4114BJ6W6i8Bsstwtgpj1rAy65HGfORfmM3A0e8Aa4k=;
- b=qFSEtE3oeD972ocZ9UxJbiLMfVGTpOdndOtwRw8Kz1jaX1Cp+f9DirjIqCYohMnPbD8G/B
- fimJ5CVWHO9jTBZERDsMy145V/AToZtUu3vDt+9mMBAEEHVhFy7H7fDs9U9nZRnZTE6YEE
- /HolOg78Ng0woGsf37RWIx27Sd3P07tzaEieQDx/Gwnso/uRrnsbtHcsNbTrXpUBZniHxD
- jxBNvKkAVcwF18UNEKq4mGzesMBoa3oJQl8/BS1oMAr+ADhvurh5Epq1mofD/vdm4wnF4C
- G9CH5PcIWGXx7qN3AAjw4UtWsLHKQoVHYLsRojfhPMQPzbHxG0xg8qjDu/emSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
- s=lahtoruutu; t=1707874072;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4114BJ6W6i8Bsstwtgpj1rAy65HGfORfmM3A0e8Aa4k=;
- b=TcPn2+J6WWZYMl/Nw1NwxP5KG7gcYjK+SyqxfbWuT8+oa34PrREG0pr01H43zQVnfEpNRQ
- 6QznGJWRuHzWCOqCUvXl3YxBrWZQDI+er3ZdSyiF5K+62e/Ms1fqymHVPpPfKvB21iBkmS
- 0SC7upcO2OOH5hK2cwOyln2h2GT5hWar+bf0/cvA3uvTOILdJBUSqI3GuNwRVT8uGkXP15
- p+Sv0ECvwxlsPaGuo0D69gSBcf4Cjpehqke2cEvrbXbyUL6Y4Riexz07pCryuTQSRiy4gS
- UPH2Pp1UdnsYeiHf9SHBa98aEf9xkCpMd6UNjl4o29qmIe9YqQuFOQOsVeiFaQ==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=aaro.koskinen smtp.mailfrom=aaro.koskinen@iki.fi
-ARC-Seal: i=1; s=lahtoruutu; d=iki.fi; t=1707874072; a=rsa-sha256; cv=none;
- b=sXIVf8RChiAZ7SLD2ivPhWO3VF0xTCe+uQqwok+lOGrLXO8KV5gVQ6iLxu36gccJuGQSaT
- euTU21km4HU1TljjcjKEddC8s6o0VbrGPiKKYXSeVNQPne1Qc19SP7VTB+0MmBoRX5x/xY
- DRKDzeuV6/zJMrvZAjVCZGTiY/Z9C8IZjsIvgDz+yzlaDjnOAtmTpd7PYam9pNnOqFbWzR
- UJTOPzNN2A3TyfACH0V3wOy1CWwSl2wNASBrF4X0cnvys51UFOj4yV89d1Bq1m+pHxAaz/
- U0aXUGTvMkEFxQlSBUVW5mv7Wo/lTDetoWnHvuojb+KF0uxlBLwIeTBYbgfMEQ==
-Date: Wed, 14 Feb 2024 03:27:49 +0200
-From: Aaro Koskinen <aaro.koskinen@iki.fi>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Guenter Roeck <linux@roeck-us.net>,
+ (Exim 4.90_1) (envelope-from <tony@atomide.com>)
+ id 1ra8Di-0007pN-TJ; Wed, 14 Feb 2024 00:54:12 -0500
+Received: from localhost (91-158-86-216.elisa-laajakaista.fi [91.158.86.216])
+ by mail5.25mail.st (Postfix) with ESMTPSA id 238AC60476;
+ Wed, 14 Feb 2024 05:53:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=atomide.com;
+ s=25mailst; t=1707890047;
+ bh=Fw5oQJ5HFO1ECMibd3OJwI8fxtVq/TOpOYMhoS5tAZY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kmOQU0I4oJFiUx/7Ocp1oV0U029yuPjmVuTvIgts4mq+VS57ZlO6BiRampfUYIF2f
+ lNDfC3pCeowqAzniITV5/dyWDMGtgP9ZpZw4+EynxVsnFG7q1LLSzStNxHAJ4MNWjO
+ IpevMOFtYXvP1vglmOOrs3Oh6clkfm7U60Y2r3l/PRpiimTuA7WNB4Z8wcpugUdpFV
+ h+VxKH4WkVYSRPaVNnbEIyglrN3Pp/gnS/ZBaA/dOxuqQlnmIB+RjjFPsrv157JAQu
+ WGfnXmW/Ym8F6wvxPYR8MM36pvll6f2jI0xrQ7FCvGJyO0qPQplVvXvMsqZ2Ao6Eon
+ jDPwoc+ufnKCg==
+Date: Wed, 14 Feb 2024 07:53:16 +0200
+From: Tony Lindgren <tony@atomide.com>
+To: Aaro Koskinen <aaro.koskinen@iki.fi>
+Cc: Arnd Bergmann <arnd@arndb.de>, Guenter Roeck <linux@roeck-us.net>,
  Peter Maydell <peter.maydell@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
+ Janusz Krzysztofik <jmkrzyszt@gmail.com>,
  Linux-OMAP <linux-omap@vger.kernel.org>, Daniel Mack <daniel@zonque.org>,
  Robert Jarzmik <robert.jarzmik@free.fr>,
  Haojian Zhuang <haojian.zhuang@gmail.com>,
@@ -108,25 +81,26 @@ Cc: Guenter Roeck <linux@roeck-us.net>,
  Stefan Lehner <stefan-lehner@aon.at>
 Subject: Re: possible deprecation and removal of some old QEMU Arm machine
  types (pxa2xx, omap, sa1110)
-Message-ID: <20240214012749.GA203324@darkstar.musicnaut.iki.fi>
+Message-ID: <20240214055316.GL52537@atomide.com>
 References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <fe5476c7-82e0-4353-a943-7f39b14e1b5b@roeck-us.net>
  <CAFEAcA-bqOM4Ptws-tsEwo2HDZ6YSX1Y+xGkR0WueRD_dUd0+Q@mail.gmail.com>
  <7bd858a2-9983-4ddf-8749-09c9b2e261f9@roeck-us.net>
  <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
+ <20240214012749.GA203324@darkstar.musicnaut.iki.fi>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
-Received-SPF: pass client-ip=2a0b:5c81:1c1::37;
- envelope-from=aaro.koskinen@iki.fi; helo=lahtoruutu.iki.fi
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+In-Reply-To: <20240214012749.GA203324@darkstar.musicnaut.iki.fi>
+Received-SPF: permerror client-ip=74.50.62.9; envelope-from=tony@atomide.com;
+ helo=mail5.25mail.st
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,63 +115,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RKHxNHiqUtDt
+X-TUID: mFLXI3mVKrBM
 
-Hi,
-
-On Tue, Feb 13, 2024 at 09:11:38PM +0100, Arnd Bergmann wrote:
-> On Tue, Feb 13, 2024, at 16:36, Guenter Roeck wrote:
-> >> > > OMAP1 machines:
-> >> > >
-> >> > > cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
-> >> > > sx1                  Siemens SX1 (OMAP310) V2
-> >> > > sx1-v1               Siemens SX1 (OMAP310) V1
-> >> > >
-> >> > I test sx1. I don't think I ever tried cheetah, and I could not get sx1-v1
-> >> > to work.
+* Aaro Koskinen <aaro.koskinen@iki.fi> [240214 01:27]:
+> On Tue, Feb 13, 2024 at 09:11:38PM +0100, Arnd Bergmann wrote:
+> > I think Tony still tests these on both hardware and qemu.
+> > The platform side here is much more modern than any of the
+> > others above since it does use DT and it has enough RAM
+> > to be somewhat usable.
 > 
-> This is similar. omap1 development is slightly more active
-> than pxa, but then again they have no DT support today and
-> are unlikely to ever get there at this point.
-> 
-> Out of the five machines that are still supported in the
-> kernel, I think three still run on hardware (osk, ams-delta
-> and nokia770), while the other ones were left there only
-> for their qemu support. I don't mind removing them from
-> the kernel as well if they are gone from qemu.
+> I have also these boards (real hardware) and test them frequently with
+> mainline Linux. However, QEMU support I haven't used/needed. I recall it
+> was a bit buggy, and some changes in mainline made the kernel unbootable.
+> Unless Tony needs the support, I guess they are good to go.
 
-I'm one of the OMAP1 Linux kernel maintainers, and I have Palm TE which
-I have been using for testing and development (and reporting bugs,
-regressions) along with those other boards you mentioned.
+I've only used real hardware to test omap1 for at least 10 years, and I
+have currently no omap1 devices booting. Still hoping to add n770 and
+osk back at some point though for basic boot testing.
 
-Since I have the real Palm HW, I haven't used QEMU for that particular
-board. But however I use QEMU SX1 support frequently as it's quickest way
-to check if OMAP1 is bootable, and if the basic peripherals are working.
-SX1 is close to Palm/AMS-Delta, and also it's ARMv4T which is rare these
-days. I think it's useful to keep it in QEMU as long there are hardware
-that people use.
+I could see qemu being handy for automating boot testing for git bisect,
+but as far as I'm concerned no objections to dropping old device support
+for qemu.
 
-So my wish is to keep at least SX1 support in QEMU as long as ARMv4T
-supported in the Linux kernel.
+IMO it's best to concentrate on where there is activity and users, and try
+to make thing easier to maintain in the long run. Anything with users and
+active development happening we should try to help and encourage :)
 
-> >> > > OMAP2 machines:
-> >> > >
-> >> > > n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
-> >> > > n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
-> >> > >
-> >> > I never managed to get those to boot the Linux kernel.
-> 
-> I think Tony still tests these on both hardware and qemu.
-> The platform side here is much more modern than any of the
-> others above since it does use DT and it has enough RAM
-> to be somewhat usable.
+Regards,
 
-I have also these boards (real hardware) and test them frequently with
-mainline Linux. However, QEMU support I haven't used/needed. I recall it
-was a bit buggy, and some changes in mainline made the kernel unbootable.
-Unless Tony needs the support, I guess they are good to go.
-
-(Arnd: RAM isn't everything. Some of the OMAP1 boards today are still
-more useful than N800/N810, even with modern bloaty Linux.)
-
-A.
+Tony

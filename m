@@ -1,175 +1,214 @@
-Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp789754eje;
-        Wed, 14 Feb 2024 05:39:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXMLgd17RkZ+I9DiUtIKmWOeaw1WHbojLDPlgFgm31TuquyH5A99N12q1EntJ+0wm65k/fozPj+sh5hR/eQK+GgqENs8yFe
-X-Google-Smtp-Source: AGHT+IGknJAP3fIcvQQWhVHkJefGto9nZvs89yFLVRoQJ1pC8OTPZtCiccs+U7st9mK4JsHVYIak
-X-Received: by 2002:a05:6808:2017:b0:3c1:3427:fef3 with SMTP id q23-20020a056808201700b003c13427fef3mr225760oiw.48.1707917981879;
-        Wed, 14 Feb 2024 05:39:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707917981; cv=none;
+Received: by 2002:a17:906:3953:b0:a3d:1c09:7d3d with SMTP id g19csp837928eje;
+        Wed, 14 Feb 2024 06:58:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX04Xj5Z5dy++JyJk864akV8r4wEltVfy0K72x3xVM1PdaUeCMkxxxV/2j7ZPxxsWwfmMt0ES6vao3qljXqz3S97ltv1mLK
+X-Google-Smtp-Source: AGHT+IHZ2qDvV5MKLQdy48NU9oLatbynKIjyRFu7r6xpOSF/FpsD1kfJTyWFAHWhrlLK4RDyfdmN
+X-Received: by 2002:a05:622a:242:b0:42c:7a8e:378c with SMTP id c2-20020a05622a024200b0042c7a8e378cmr3135677qtx.6.1707922725269;
+        Wed, 14 Feb 2024 06:58:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707922725; cv=none;
         d=google.com; s=arc-20160816;
-        b=J5ANiMUAbBZujrqhYFYsmB3Fqf7itI0rslFeqkGizmU9JL61bhHpFjnZ2/RCisEjgD
-         pwE0O/mSrjr/JsUjSvDAzcwYebgka0Wg7XxJRGG7CQ8gKCQk/Hj8BqNPrfSP2CdVH9um
-         PA3m+HfkFHtWt9RhC8m3YnAQqksNuZVBnL7dgziCSkDKehc4m0m7jQr5+MLaw7L8fBTF
-         oS+4pOE4NJECUpeMc6RMMxm+4u34P8Iq43/iV5DgUO75qk4hvGRjipjiPp02Avp/2qre
-         mfpJIgbK2c0qYOdZiQwjsTqoLXfPgMT3uqFYLL94/jPnpd/xsAlhU+ORjwqO6Zj+TxMg
-         h4ww==
+        b=gnbmQ6+T8phub+7mq4Hc0L6w40Z5nkfEEbS7iEugjb+XxBV5LoScMnQNjzn2SrYGrr
+         ECHug59z3s6JCdEzDN8lp90eraUVq190EqQg4ZnMS6VFEkhoqzSzwp0Hj8NZ8ctI4YVn
+         /diibOy8a4i65KTR1XZkKar5hIxnAsNLcJfgRd8GSKUPMT2lCusi7Uj1PaXAAVDLvv2d
+         4V7yXbNYn08wQ2AVh1XH1RdEz56TrrtiB69bQeoUwlcSdT2Y0XjlpoULJG3ImmreG4vz
+         RUn3lSaWIT6Z3OO2HiKxD1nzwjDRTiF/Qt37WrOOWvRHQYr5Pa/ORsv6ZATQ0WidiGKW
+         4t8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=LggHhwi3m1WRsUhddvjIokNLKTx/WSiLR+NxAO/q2io=;
-        fh=VinsWtbQxrJvEnHuCpT0M4iShEhrtWr+BSRgthRZfYg=;
-        b=ft+E3mD0sKbOYX4KI01CJ3wmel1wy5jO13X7Ywf2blwya4PwMLBqoOYuZIb95j+EGZ
-         578up5sMuDXiAghRX9jytL0PzJbV+A2oaeJgURJITvVVgpwvDZOmBxbMtdhcKtotbCls
-         yi6kb3hr+Oow0xWoShDF+s070XY1D3jT5zKLtUth8nbN9NUDMIag+KIblLX3/VyZ/QEy
-         w2jUKOiahyIWXTkKV58BChkf7M/lnTbAR6mtg2rF/gwBhP8rUO/ZMBOHDGTc7kqliMjy
-         zVT2vE5x1LSXb2GCWBeAhbJNU3XPbmmcRgXta40ZNfiH/9qcnkelBZk4RLj+szFJkru0
-         kodg==;
+         :list-unsubscribe:list-id:precedence:subject:cc:to:from:date
+         :references:in-reply-to:message-id:mime-version:user-agent
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=uDmfOsg9gUtVPfRB+2sWNwn5yu3xkUXEF+MG27C5Dtc=;
+        fh=u+GAJOKIHfdzm5oNb2cFSuvux6qIV/DL/pirTKcjVOE=;
+        b=WrYKzmBDGV4/7Oc2cpdBeSVIJ/vrFpW+9g9ORU7A0FAsgGysBCjXPnr5YdA14QTjeo
+         d5qBKf4ZSW7w9+QLPU39fcX5YrWwZrMHlVNim17zK9jZlYe6htO0rKml3Vx+jG08BCl5
+         JJto5ykVz2FLlriyIDdICKYn+GcSs3lz7vctpYQXZNnFSgbc1adCLqgIyR13Zs+hXdJm
+         ESk35TPX2p3ZfVB+4/UGTz9yShZs9MMlVaC1EPDSAIdJpeNQGV7txnwWD7X/jkV6gcUI
+         DdBMqZ9clBeetFOlCCCIcNi6YqjKOoGwBdEUJVCpzYROSOC7LL99qBMq1dnRMtwFivkw
+         OcCw==;
         darn=linaro.org
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UvUxQ181;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-X-Forwarded-Encrypted: i=1; AJvYcCXLax7ZgauQLq4Gct8uE7b5XKCY2MEGtMeAL61jpppTgkUHFPcSD9H4zParqUIQ4iHUUKsnFx9zhZjSl3zDxMJzGiJ74gSm
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@arndb.de header.s=fm3 header.b=rjNYeC12;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=pGI2V3GL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arndb.de
+X-Forwarded-Encrypted: i=1; AJvYcCVwyjITq/vxEHjar4m5ozAwk/mi4q7iW2mceSeLHTd0UVDAYNj8NtZirJpZdfWIRaDSg3xriCia3Q/lXIDFKvbeGNWv1gJO
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk3-20020ad45d43000000b0068cbcf48e43si5726323qvb.49.2024.02.14.05.39.41
+        by mx.google.com with ESMTPS id c8-20020ac86e88000000b0042c57060220si5284023qtv.20.2024.02.14.06.58.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Feb 2024 05:39:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 14 Feb 2024 06:58:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UvUxQ181;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@arndb.de header.s=fm3 header.b=rjNYeC12;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=pGI2V3GL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arndb.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1raFUA-0004RW-FH; Wed, 14 Feb 2024 08:39:38 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1raGiR-0007YG-MO; Wed, 14 Feb 2024 09:58:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1raFU8-0004Op-5y
- for qemu-arm@nongnu.org; Wed, 14 Feb 2024 08:39:36 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1raFU6-0000kV-Ez
- for qemu-arm@nongnu.org; Wed, 14 Feb 2024 08:39:35 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-a2a17f3217aso705577466b.2
- for <qemu-arm@nongnu.org>; Wed, 14 Feb 2024 05:39:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707917972; x=1708522772; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=LggHhwi3m1WRsUhddvjIokNLKTx/WSiLR+NxAO/q2io=;
- b=UvUxQ181Eqo1G06DgGbKG+mVHxkqTj0fPDddrM6j2SAaGd/eoM5EUDyt3aqqD6wMN0
- r06dIWyLc+R0TfktADrnAl5IR0yQ2LSMBxw0JQZMSRv2pyFqX8W2+5pG9dRnwF/Ia0zT
- 5vxL04z1Uwns7f/oXIuqJKgYuBL5AAWCLR4cR4IZ1Z/SbRGesrSLw2ebFlNz0xBYf2zt
- iQKVYfoqyl5vMsOdZEuw6bHy2uwau6zUph8nhr6iTrZ7rHD7IZ1UDYlWB7y2SmNTuVDv
- 7tqypDFiTNxJ79mQrvKsfeyzg8WyF715+7ooBdDAtsK0gmHMtHm+glB5a7enG8IitS+N
- bYew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707917972; x=1708522772;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LggHhwi3m1WRsUhddvjIokNLKTx/WSiLR+NxAO/q2io=;
- b=cY27wp7JRJ7f1NEtQ5jqJCElBq4PbSFscJ6fKKx5TK1yjfDBfC5XKUWbHprA0AJwE9
- dmYrh/Ie3566Z/6zMazXenrhFun/oPaDzfhkMosTJbSj//2vJOR/XFKjRfgKUCwYrFa1
- Or8+2XpkTuAX4Y35NAi60tq8ju70sNApICu7KPVhhm1I9KkC6cNSsg/B5T/gvyimsfa7
- FrqJ7Rm9ap1VvkV4TMn70iexj3oFbGduz4dURoWMc8MdkS6MsywZ8mIUyt91A75XJOkT
- 7IsIPxUBcyX3+Q/kib3K+oGbM4ldFv5FFRt0tU81a4XUVQh1nbjROZaLRF6yyU6UIXpP
- HDAw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWfQdLeUd5nPeit7yjacEL+sx0R3gQ3u75V2h2NdP0FR7QlLrdH9yI7aLKmeuw0ojDLQd2qcXeSi+Pme4z7KEGitQI5
-X-Gm-Message-State: AOJu0YwRNhd+ZHAqbNva99MiPlNlIot0leYs2q83zzwp6V99IhN3b3CX
- YTMFTg12WzRKSb7rj7ZROJQyHkiDsp/t0pwvzJxcUs2/tBf6VXls8T8H9iXcdU8=
-X-Received: by 2002:a17:906:5589:b0:a3c:edf6:a735 with SMTP id
- y9-20020a170906558900b00a3cedf6a735mr1936289ejp.47.1707917972495; 
- Wed, 14 Feb 2024 05:39:32 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCX0tgkHYOIoiME2Z+tJNPcYcVzP/fojlHePP5zXMs6K2bBngkU0lk4Gmu7Is0ep84jGi534r0JEwwiSwDSKc3QmcDn8TysnM6YcepFmZNjpZArdIXY+AI0pGq4l4XzPbUyQJ5efXI6dJqA+v2Jxt3WZrJ8/3YbxbD2OVug9GwYKPqWNR6UztA9/JadzVO4KJldLOJnxHwa6zQiSGuQ7XGJn3ZJ/Hg9MGJ6JWkx4ox7r2RoABvQsVNtV3SUpGAwhKQCAiiAgH5jW0eVlNlmO/54O8vGHYhno5Msr8h5RjvhKA+RJePKH2JJbWv5QcXIioF2AekpK6MOKZP5dQAUkR72K0MFDiMKzLJEJlMytIQ1RQ4tK0hAkn1p3OZDrPelBEptnr1gRydW/dXWtI9FRs4hZ6VkAunAXWnAq3Z7BcblHqZdHqQ0gnzaRiebGuAflPGTQHXaW9dEk8hvbm56YgDjA8iaTb87h9Az3GntkAPWsNd49DrWxW0rVfa1C3YcpwT5x+mzS7Nr2Rpt6Qths
-Received: from [192.168.200.206] (83.11.29.216.ipv4.supernova.orange.pl.
- [83.11.29.216]) by smtp.gmail.com with ESMTPSA id
- tb16-20020a1709078b9000b00a3ce9081547sm2051268ejc.39.2024.02.14.05.39.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Feb 2024 05:39:32 -0800 (PST)
-Message-ID: <4781f6c5-4a0c-4b24-bf8f-5fdc17b074b2@linaro.org>
-Date: Wed, 14 Feb 2024 14:39:25 +0100
+ (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
+ id 1raGiP-0007Xe-Bb; Wed, 14 Feb 2024 09:58:25 -0500
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <arnd@arndb.de>)
+ id 1raGiD-0004Cg-Tz; Wed, 14 Feb 2024 09:58:25 -0500
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id 909EF3200392;
+ Wed, 14 Feb 2024 09:58:10 -0500 (EST)
+Received: from imap51 ([10.202.2.101])
+ by compute5.internal (MEProxy); Wed, 14 Feb 2024 09:58:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+ :cc:content-type:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:subject
+ :subject:to:to; s=fm3; t=1707922690; x=1708009090; bh=uDmfOsg9gU
+ tVPfRB+2sWNwn5yu3xkUXEF+MG27C5Dtc=; b=rjNYeC12XR01H737Y39uCh/un7
+ h+k+7rvPsh/l250F8FM1N97OFbD59aBSu18Bupi7vNc8qYOr4iZo+BGCmTvFgQ4C
+ 2Y5anjFNO4Aj2XOiZXRaKtoAkr2tEsX+Ci5t37PoChOb0HKQhJS+ksD0XpCK4emj
+ j26WnowC0Bqnerz8PANjdwk+jr4WGRU9tBXhHbts73nVyG0icaBA9A7nGES7IMGs
+ WM3l0gVRNm4utZOM6habjtRFzU8PRbWt3BNZJlx4cP5UWmudV7EVv2d5f8do7ezJ
+ 5IYMRuo9aICx32wb8DXw4ayHCC16DRDU2F0y1d4PPc1TmPQw+CcKj0eGbftw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1707922690; x=1708009090; bh=uDmfOsg9gUtVPfRB+2sWNwn5yu3x
+ kUXEF+MG27C5Dtc=; b=pGI2V3GLyNYFup6/YmJUkWU83lP5R3rTwThzRyTCmEjt
+ yBzm3kBcOk6kYYaBD3/dbPOdgUMjnSZUiNUYp00f5JECLcBg0XO/zgbUGAD6roIe
+ JD+JE0omtgMkmGoFiGG1kdhXlbfYssLeQWw3+8yl4/qWiQSXeCxsvUCPEdtCO1iN
+ yh4f3Ra0lRdrRWeu1ez2AuatYX13rI6DITBHPWs6WJMJQ5KLCi138zUHpS/C54T5
+ H/k8hUJDX0tcerKjEdOMCYSF//xfnZAsaG9kMO4+DRVLQopPRGwTJ7vllGkAR8N8
+ Y5Gdgq1i50S9JSnZDy9tb8zrh1YbzasQZEzkqNXRfw==
+X-ME-Sender: <xms:AdXMZTYxcc4dpVQ4ctlSARACqDNe9AgVQYiyBh_cL3wzrsO7p6tPzg>
+ <xme:AdXMZSaUJhJp6ie9-mLwUmrFduJNHYFYMpNE5CjlFa3o3zrRe4hSgLdTl0hzyobyZ
+ ApA1lyFjApBeYfTfNE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudejgdejudcutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomhepfdetrhhn
+ ugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrghtth
+ gvrhhnpeffheeugeetiefhgeethfejgfdtuefggeejleehjeeutefhfeeggefhkedtkeet
+ ffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrrh
+ hnugesrghrnhgusgdruggv
+X-ME-Proxy: <xmx:AdXMZV-Q7-HjMFByKcFClo-jqyEZyiJe9f25HSLLQFJwrsmsGYRUYA>
+ <xmx:AdXMZZo-LS2PeA2lLmSAAYz_0V7ZwjGrdVfzyMKMzwBDf7J4mzL0YQ>
+ <xmx:AdXMZerHvWACUsNWccPL8vjOEHU5nh2t2YewQHGg2m6Si4nVrLNRag>
+ <xmx:AtXMZUieTMLYWDSgJVKe_O1rwJnlT25wtsGI5ejnXYulQxs0TPVfBQ>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 6CC73B6008D; Wed, 14 Feb 2024 09:58:09 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-144-ge5821d614e-fm-20240125.002-ge5821d61
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: possible deprecation and removal of some old QEMU Arm machine
- types (pxa2xx, omap, sa1110)
-To: Dmitry Baryshkov <dbaryshkov@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, paul.eggleton@linux.intel.com,
- Andrea Adami <andrea.adami@gmail.com>, Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Aaro Koskinen <aaro.koskinen@iki.fi>,
- Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
- Linux-OMAP <linux-omap@vger.kernel.org>, Daniel Mack <daniel@zonque.org>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Haojian Zhuang <haojian.zhuang@gmail.com>,
- Stefan Lehner <stefan-lehner@aon.at>
+Message-Id: <5214dd7c-0472-4ce8-bc41-ad565ddcc7a9@app.fastmail.com>
+In-Reply-To: <20240214012749.GA203324@darkstar.musicnaut.iki.fi>
 References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <fe5476c7-82e0-4353-a943-7f39b14e1b5b@roeck-us.net>
  <CAFEAcA-bqOM4Ptws-tsEwo2HDZ6YSX1Y+xGkR0WueRD_dUd0+Q@mail.gmail.com>
  <7bd858a2-9983-4ddf-8749-09c9b2e261f9@roeck-us.net>
  <fbab8e59-6d2d-4193-a5ca-9fea3c524229@app.fastmail.com>
- <CACRpkdbmJe8ZE7N0p_utWucyw+3mp1Qrb0bQEKcJPmwNFtVA_g@mail.gmail.com>
- <CALT56yOT_U9jVkhTP=zZu-32B4pta5zaJocn9695N7ari4cFyQ@mail.gmail.com>
-Content-Language: pl-PL, en-GB, en-HK
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Organization: Linaro
-In-Reply-To: <CALT56yOT_U9jVkhTP=zZu-32B4pta5zaJocn9695N7ari4cFyQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x62e.google.com
+ <20240214012749.GA203324@darkstar.musicnaut.iki.fi>
+Date: Wed, 14 Feb 2024 15:57:49 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Aaro Koskinen" <aaro.koskinen@iki.fi>
+Cc: "Guenter Roeck" <linux@roeck-us.net>,
+ "Peter Maydell" <peter.maydell@linaro.org>,
+ "QEMU Developers" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>,
+ "Janusz Krzysztofik" <jmkrzyszt@gmail.com>,
+ "Tony Lindgren" <tony@atomide.com>, Linux-OMAP <linux-omap@vger.kernel.org>,
+ "Daniel Mack" <daniel@zonque.org>, "Robert Jarzmik" <robert.jarzmik@free.fr>, 
+ "Haojian Zhuang" <haojian.zhuang@gmail.com>,
+ "Linus Walleij" <linus.walleij@linaro.org>,
+ "Stefan Lehner" <stefan-lehner@aon.at>
+Subject: Re: possible deprecation and removal of some old QEMU Arm machine
+ types (pxa2xx, omap, sa1110)
+Content-Type: text/plain
+Received-SPF: pass client-ip=64.147.123.25; envelope-from=arnd@arndb.de;
+ helo=wout2-smtp.messagingengine.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sfCSBE2Eedts
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ck/3m279qvyr
 
-W dniu 14.02.2024 o 1:26 PM, Dmitry Baryshkov pisze:
->> The thriving world of PostmarketOS only exist because Google was
->> clever to realize devices should have a developer mode.
+On Wed, Feb 14, 2024, at 02:27, Aaro Koskinen wrote:
+> On Tue, Feb 13, 2024 at 09:11:38PM +0100, Arnd Bergmann wrote:
+>
+> I'm one of the OMAP1 Linux kernel maintainers, and I have Palm TE which
+> I have been using for testing and development (and reporting bugs,
+> regressions) along with those other boards you mentioned.
+>
+> Since I have the real Palm HW, I haven't used QEMU for that particular
+> board. But however I use QEMU SX1 support frequently as it's quickest way
+> to check if OMAP1 is bootable, and if the basic peripherals are working.
+> SX1 is close to Palm/AMS-Delta, and also it's ARMv4T which is rare these
+> days. I think it's useful to keep it in QEMU as long there are hardware
+> that people use.
+>
+> So my wish is to keep at least SX1 support in QEMU as long as ARMv4T
+> supported in the Linux kernel.
 
-> There were two projects that worked on reenabling phones and PDAs from
-> that era, hack'n'dev and handhelds.org. I think both of them were dead
-> when the Zaurus was still alive and kicking.
+Makes sense. We have a couple of other ARMv4T systems in the kernel
+that are still being tested (ep93xx, at91rm9200, clps71xx, imx1,
+nspire, integrator/ap), but none of the others have any qemu
+support apparently unless you count "-Mintegratorpb -cpu arm925".
+All of these are are using DT or getting there (ep93xx), so we'll
+probably keep them around for a while.
 
-I left handhelds.org developer community in 2007 due to trademark wars 
-when admins wanted to take control of several projects hosted there.
+Similarly, we support a couple of ARMv4 (non-T) targets in the
+kernel (footbridge, sa1100, rpc, moxart, gemini), but the only
+one with qemu support here is sa1100/collie.
 
-LinuxToGo was created in 2006 and some projects moved there from hh.org 
-server.
+>> >> > > OMAP2 machines:
+>> >> > >
+>> >> > > n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+>> >> > > n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+>> >> > >
+>> >> > I never managed to get those to boot the Linux kernel.
+>> 
+>> I think Tony still tests these on both hardware and qemu.
+>> The platform side here is much more modern than any of the
+>> others above since it does use DT and it has enough RAM
+>> to be somewhat usable.
+>
+> I have also these boards (real hardware) and test them frequently with
+> mainline Linux. However, QEMU support I haven't used/needed. I recall it
+> was a bit buggy, and some changes in mainline made the kernel unbootable.
+> Unless Tony needs the support, I guess they are good to go.
 
-Most of OpenZaurus/Ångström developers abandoned Zaurus devices in 2008. 
-Usually in favour of Nokia 770/n800/n810 tablets.
+Thanks for confirming.
 
-Both OpenZaurus and Ångström used own hosting in handhelds.org era.
+> (Arnd: RAM isn't everything. Some of the OMAP1 boards today are still
+> more useful than N800/N810, even with modern bloaty Linux.)
+
+Obviously RAM isn't everything, but the machines with just 32MB
+or less do seem very small for real workloads, so I admit I
+dismiss them easily. I am curious what you run on those, are
+there any embedded distros that maintain good support for 32MB
+systems on modern kernel/musl/Xorg/..., or are you using
+omething older or highly customized?
+
+     Arnd

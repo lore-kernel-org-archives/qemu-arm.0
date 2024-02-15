@@ -1,116 +1,118 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739809ejb;
-        Thu, 15 Feb 2024 10:04:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU4Yqgc7uUFX5P0mvtN4k4R/KiO9fwGwloLyWl2yK+/P+0lQdlxq6Y5VpIFZ5IfBHK279hEuGOKQEVopKmROB36daIwgA/+
-X-Google-Smtp-Source: AGHT+IGsPMQwjO4b7ExFlBhq1wGxU2LWojE+hxGEpMxMS7lyxVgwEGeAamRmD3mYbcvINiSIEW/g
-X-Received: by 2002:a05:6808:1184:b0:3c0:3309:2057 with SMTP id j4-20020a056808118400b003c033092057mr3588807oil.26.1708020283894;
-        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708020283; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739960ejb;
+        Thu, 15 Feb 2024 10:04:55 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXFQX/1u4hBfau/WzTaR14+sLUL7ePISBfU0j6bLKE3nCcpwkpVnIA3ISgqajnDSUhCVtHRcswBobB5iA8TZ1QFhCmr8W2d
+X-Google-Smtp-Source: AGHT+IGO+B9zA122l3NZgn9gT9bbcgLrdQDBldT+TI4gRyD1walGlI43X3fonnRiR4Pfrw8Vad1h
+X-Received: by 2002:a05:6870:1687:b0:21e:2fa3:5572 with SMTP id j7-20020a056870168700b0021e2fa35572mr2452003oae.11.1708020294899;
+        Thu, 15 Feb 2024 10:04:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708020294; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmQJmdo27XqFuVfMf0riGYRbwIZvFla0GfEgfFKqRJDwm8i32tOjibU72E/k+v6SmF
-         J9XC5W+mPa6dS/8NvxK7fwt5ANXCVmw27gWGSow0P3+nYKFnde3Qw6x7UfhwPjPY3oFv
-         Uh2BJArsggaOHFKfNk7L0VZC4eQRXiwSoS0bJYyeOK/csMHmwGXcTcPTYRMIgjPUx+Bp
-         xP3wt5rHu1d3zzIhebTvcpC2IIkRdlU3SexbRkqqyOrBjMUWnZG360s0DKFKVeJCStDf
-         i0iThcimHhIkVsULjmnOAZN4k9lfllfjAokp9agpkYqSIVs4mCrNHsdqlqtwYBKYjckZ
-         aq6w==
+        b=vce26OW8l4Dh2jIrgc+3oYlntR/THJl/iFhJTMQSXaPZ3LD1TjJNhpR3BdQIPlnqda
+         BpgARwT4AP6rNCBIJsxzFZX3MbFamN7o5CrCAJxUAWUeSvV/wo+kvoIOzyXRvc1um0Bz
+         ioprX37ucTk+fZ2ChmEenQ8dzWDboJxIDQQubsoinVE4FnxtlYXhZmKG5da0UFnZUkiW
+         UL+js5S0LeVmPfIZySwY+oyUBPShUUOazEF5tnubTMYXHZBTN82OpHdyiiEBKuyF2QUJ
+         HvJjDdR6qbFvbDdGM2dYXssPwCq4SQxTe79fik7lbifYa5m/Lx7DnwAI5pO0xgMg9RbB
+         hT5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
-        fh=ySkeD0cMS5l7FSy0x0WaxGntPkHf6TA0RKgBwNZqK9g=;
-        b=1E8m3tGSzK0fSj8+/Xf2t9us9lsv8sgEv6o54JaXadf3mdXS1/yUjhh30aNMaUJiXX
-         jL0VfEfgkVyBlayMvTL208iECzp2U9aIb+nbl/QlBxAUeYh9CJZGrKks+mWloO97Z7ay
-         6Ivv0YsJYtZAajfglNQTcrQll2i5syZISJQ+H0cBuLwmNq3AVwyA/lCEtR9Fc0MaLJOh
-         bs3nTWIPaR5Lhd5gaLmy5O6eqef6wuyEPTFoCmggbgTqrpMJfuPKwWJjtUek4gMBsyl+
-         oS8TFnkhPv9CKDrqe4//odWLoQv+J2lnCWgDg+3Mna/TrW+jEiT9Brj/SpA9c2CkzOYt
-         B6tg==;
+        bh=qOBFGHotMZNhpz8RBtUCz5soAiP+H2PcJ6i2ywIfEBI=;
+        fh=1+wSm+VIM/N/g7cyslg7h6D2EEkejJhOVJYA2v0agHk=;
+        b=QMAWtkyeL4nuwNn3QQ0Y+YrvPKsw3YGX1rXIBmG7KwGum/frTRlRWi4AQg9WV1aQUw
+         Gh4gdfvZoBipsOVCPVa5y9btO1gCSQ0v3msQQoAV28ON7Bb73m61rYCb9Kbd+HxYqyNA
+         k8QK4BjdiShzw51AG1DocwIS9EiUwmVWnRXY3uG4pDQqr1ON/g6FE6AUflq7HEVZZzqM
+         Gjuz80kUTJu2IPM7+6Y12rxNLXrIFWD44zE9hW/TNsw8ipifygIOlqrmzAkNPRHahaxk
+         UsqHrgGbCO3A495e4Do+5Zui22FHkdA68qJvFsRp9psz6vX1yMFaWe3TtE3kmuf9V4ml
+         xQUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L2xmsA7O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSVy1YA5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j4-20020a0561023e0400b0046d1c59f198si418024vsv.250.2024.02.15.10.04.43
+        by mx.google.com with ESMTPS id i20-20020ac5c2d4000000b004c0303f5e2fsi404050vkk.10.2024.02.15.10.04.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Feb 2024 10:04:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L2xmsA7O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSVy1YA5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rag5g-0003Z5-J5; Thu, 15 Feb 2024 13:04:12 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rag3y-00048V-Fo; Thu, 15 Feb 2024 13:02:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5Q-0001yu-6Z
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:03:52 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3J-00032w-J6
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:45 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5O-0003Dm-FX
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:03:51 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-56399fb02b3so1545131a12.1
- for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 10:03:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3F-0002Z0-Gs
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:41 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4121aa78aa2so6120985e9.0
+ for <qemu-devel@nongnu.org>; Thu, 15 Feb 2024 10:01:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708020229; x=1708625029; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708020096; x=1708624896; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
- b=L2xmsA7OzIxFYSMqiDkrrEsCWcChHteAtGCiR2/B3sDD0T3YFPmn0Z++yCAiELAEXr
- C4wl7TCHIwpiaOUjiknUK6M26nH8ax2a+Kx4+d2n94o0DbHTzfm7n8uj+qgyDTfARuxd
- 9NCQPFsBRT3mqTbSm0JbcjTO1V8Y0MQW/XbMODRMKaVmAMXCy0Ua8D2jD9M3EQrK+sJl
- GaEq+HuB/8aA2sdhcgn2dFnhnNVb2hqIo3VTxJ3MJWJui37O6GbVL4Gc7llGpRwPgsYM
- 5KJABNmFbmalqXLVGbUKx9QETBZY4PDuZYd4HK+yvh9Ls7r/ffIbIwKAy1qJo0LAwkM7
- IKDg==
+ bh=qOBFGHotMZNhpz8RBtUCz5soAiP+H2PcJ6i2ywIfEBI=;
+ b=vSVy1YA5FttZ2OLuHH3kNoZAoH8H9anDU+amRUzZhfeS87/wYkNTd3EO/CjZjX6Prs
+ ANG6JprVzeaMAdGhpO72xCMf370ZyNRbRLH+XMfLyoqJNFIHmL7DbpnS4qzDVE80MRI8
+ wjyAAXna7MzKt8ukj9dcma6KIAhwmQPCU8q70fpYaFmw9YdhfVkXxjzJSwUVVYJUGiH9
+ GhD69BuWdRoBHuQYZlzCyOpxnZpV8TMsPZolKDA1jf64EEEAeXAoIEu6AT0LNzSAyYdi
+ npwyAlV+mH+R7D2QvtHYJY9ly96OvXLsLn3VNbsiblL1yWRn8rrynwnHxloM7W5+J+nk
+ gI5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708020229; x=1708625029;
+ d=1e100.net; s=20230601; t=1708020096; x=1708624896;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
- b=cz3JuQaHHXGtWhv/h5QMTXKUsvaG/VnslMxCLD21NoCB/lkdpFVDX9y9aSeZNJNIVm
- 1tE76J0iDtvpTcQ+qQyOgha9xH4eKOQ5SCCxu3ug9jLovVBPSFUO3aedKHn21C5eMKBm
- ibUsF/gjIhqDZmymqK+ZrIXkrNc3pZgdWekokTo1L+3zG7hJcR9xFa4uqKJK+o47fmnF
- exTxGh0u1srXl11ID52YfLhvqu9Fh4vCwWsYKjoKn0fJObO3SxPYG4eLG7r6223q0mX4
- 4kuIZ3QNhacbjui/8MxmOv83pIgQUIaZaDFzQDuH6t4J1kwPogyVMQO6igwQUlIds9iv
- H52A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWJmL4RKfDgaFDkbwkhYu/IEb97PJikZrFiwmY6XfJmDKwrbKgIktr8JARSZo6WS0Stt08joYQQlHq0E69/pPI07cLc
-X-Gm-Message-State: AOJu0YzOQYFZmHPi3vHmZsCTeCyGdTy7UM98dOXLODTZ3lExoI8xIH3l
- UGtkrXtE813Qsy1zAOMLkP7FW1f8RqMhPg1nCFxiHHwVHnSVeGGjJl8nmjFygQc=
-X-Received: by 2002:a17:906:4a1a:b0:a3c:ff93:e12d with SMTP id
- w26-20020a1709064a1a00b00a3cff93e12dmr1965936eju.74.1708020229262; 
- Thu, 15 Feb 2024 10:03:49 -0800 (PST)
+ bh=qOBFGHotMZNhpz8RBtUCz5soAiP+H2PcJ6i2ywIfEBI=;
+ b=IcE4reNWTt65uRsK8FnigjrozGgJ2haOa7TnNyBPmJ0hDRLZlJ0g0Fc/ZuX4+4QXiU
+ TFL5l0lQVKhAXPl7r1MCFyGAGOMBF4j6OFdrHuP4G7hqVsWezaAvyND+pokKqBY4L2OQ
+ 3H2dGGIy5I6GG02RosGqjk2lIGWecDYzlxYyBhrn3b2hZsxFxl5JZQFVFA7sTSHSE/BV
+ sOi6SzJderwu57S5JmFlD0gfsOhpx8jhwzc+PfniPivS+yT8jMjDFsvl4vxHqSJPD9jm
+ eOB+4h3ikXyO6GuG6PvU0G09k9zgG/RRAGf6fVpGnFFC8i1A7cn8YVLPp0kJ0CJJ8MYt
+ AZcw==
+X-Gm-Message-State: AOJu0YyJWkWZxnZjN5ZOBfjAxMU2lOxHlZUbHWtVPFwvi+QOHOwuAFnL
+ ZWFBmjfKiBo7HdzGEJ+HHte/9EeuRPlsrG9qOer8UfE5wHmVuoG2jh1JWUJE0vbdRBwE2/oxfS/
+ lVdU=
+X-Received: by 2002:a05:600c:198f:b0:411:f8f8:a0b1 with SMTP id
+ t15-20020a05600c198f00b00411f8f8a0b1mr2001688wmq.2.1708020095497; 
+ Thu, 15 Feb 2024 10:01:35 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- vi17-20020a170907d41100b00a3d782d885dsm782424ejc.121.2024.02.15.10.03.47
+ b11-20020a05600003cb00b0033d07edbaa6sm2087249wrg.110.2024.02.15.10.01.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 10:03:48 -0800 (PST)
+ Thu, 15 Feb 2024 10:01:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- John Snow <jsnow@redhat.com>
-Subject: [PULL 53/56] hw/ide/ahci: Do not pass 'ports' argument to
- ahci_realize()
-Date: Thu, 15 Feb 2024 18:57:47 +0100
-Message-ID: <20240215175752.82828-54-philmd@linaro.org>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PULL 33/56] hw/sparc/grlib: split out the headers for each
+ peripherals
+Date: Thu, 15 Feb 2024 18:57:27 +0100
+Message-ID: <20240215175752.82828-34-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,92 +121,261 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Dc0/GLkKJXRY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yBhHrKoguwL8
 
-Explicitly set AHCIState::ports before calling ahci_realize().
+From: Clément Chigot <chigot@adacore.com>
 
+Split out the headers for each peripherals and move them in their
+right hardware directory.
+
+Update Copyright and add SPDX-License-Identifier at the same time.
+
+Co-developed-by: Frederic Konrad <konrad.frederic@yahoo.fr>
+Signed-off-by: Clément Chigot <chigot@adacore.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240131085047.18458-2-chigot@adacore.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240213081201.78951-8-philmd@linaro.org>
 ---
- hw/ide/ahci_internal.h | 2 +-
- hw/ide/ahci.c          | 9 +++++----
- hw/ide/ich.c           | 3 ++-
- 3 files changed, 8 insertions(+), 6 deletions(-)
+ include/hw/char/grlib_uart.h                  | 32 +++++++++++++++++++
+ .../hw/{sparc/grlib.h => intc/grlib_irqmp.h}  | 16 ++++------
+ include/hw/timer/grlib_gptimer.h              | 32 +++++++++++++++++++
+ hw/char/grlib_apbuart.c                       |  6 ++--
+ hw/intc/grlib_irqmp.c                         |  6 ++--
+ hw/sparc/leon3.c                              |  8 +++--
+ hw/timer/grlib_gptimer.c                      |  6 ++--
+ 7 files changed, 88 insertions(+), 18 deletions(-)
+ create mode 100644 include/hw/char/grlib_uart.h
+ rename include/hw/{sparc/grlib.h => intc/grlib_irqmp.h} (86%)
+ create mode 100644 include/hw/timer/grlib_gptimer.h
 
-diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
-index 4dc2805d21..4e13329bb2 100644
---- a/hw/ide/ahci_internal.h
-+++ b/hw/ide/ahci_internal.h
-@@ -377,7 +377,7 @@ typedef struct SDBFIS {
-     uint32_t payload;
- } QEMU_PACKED SDBFIS;
+diff --git a/include/hw/char/grlib_uart.h b/include/hw/char/grlib_uart.h
+new file mode 100644
+index 0000000000..7496f8fd5e
+--- /dev/null
++++ b/include/hw/char/grlib_uart.h
+@@ -0,0 +1,32 @@
++/*
++ * QEMU GRLIB UART
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2024 AdaCore
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef GRLIB_UART_H
++#define GRLIB_UART_H
++
++#define TYPE_GRLIB_APB_UART "grlib-apbuart"
++
++#endif
+diff --git a/include/hw/sparc/grlib.h b/include/hw/intc/grlib_irqmp.h
+similarity index 86%
+rename from include/hw/sparc/grlib.h
+rename to include/hw/intc/grlib_irqmp.h
+index ef1946c7f8..c5a90cbb3e 100644
+--- a/include/hw/sparc/grlib.h
++++ b/include/hw/intc/grlib_irqmp.h
+@@ -1,7 +1,9 @@
+ /*
+  * QEMU GRLIB Components
+  *
+- * Copyright (c) 2010-2019 AdaCore
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2010-2024 AdaCore
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -22,8 +24,8 @@
+  * THE SOFTWARE.
+  */
  
--void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports);
-+void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as);
- void ahci_init(AHCIState *s, DeviceState *qdev);
- void ahci_uninit(AHCIState *s);
+-#ifndef GRLIB_H
+-#define GRLIB_H
++#ifndef GRLIB_IRQMP_H
++#define GRLIB_IRQMP_H
  
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 2c3306dae4..33f7e83687 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -1614,14 +1614,14 @@ void ahci_init(AHCIState *s, DeviceState *qdev)
-                           "ahci-idp", 32);
- }
+ #include "hw/sysbus.h"
  
--void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports)
-+void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as)
- {
-     qemu_irq *irqs;
-     int i;
+@@ -36,10 +38,4 @@
  
-     s->as = as;
--    s->ports = ports;
--    s->dev = g_new0(AHCIDevice, ports);
-+    assert(s->ports > 0);
-+    s->dev = g_new0(AHCIDevice, s->ports);
-     ahci_reg_init(s);
-     irqs = qemu_allocate_irqs(ahci_irq_set, s, s->ports);
-     for (i = 0; i < s->ports; i++) {
-@@ -1862,7 +1862,8 @@ static void sysbus_ahci_realize(DeviceState *dev, Error **errp)
- {
-     SysbusAHCIState *s = SYSBUS_AHCI(dev);
+ void grlib_irqmp_ack(DeviceState *dev, int intno);
  
--    ahci_realize(&s->ahci, dev, &address_space_memory, s->num_ports);
-+    s->ahci.ports = s->num_ports;
-+    ahci_realize(&s->ahci, dev, &address_space_memory);
- }
+-/* GPTimer */
+-#define TYPE_GRLIB_GPTIMER "grlib-gptimer"
+-
+-/* APB UART */
+-#define TYPE_GRLIB_APB_UART "grlib-apbuart"
+-
+-#endif /* GRLIB_H */
++#endif /* GRLIB_IRQMP_H */
+diff --git a/include/hw/timer/grlib_gptimer.h b/include/hw/timer/grlib_gptimer.h
+new file mode 100644
+index 0000000000..e56f1b8bf3
+--- /dev/null
++++ b/include/hw/timer/grlib_gptimer.h
+@@ -0,0 +1,32 @@
++/*
++ * QEMU GRLIB GPTimer
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2024 AdaCore
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef GRLIB_GPTIMER_H
++#define GRLIB_GPTIMER_H
++
++#define TYPE_GRLIB_GPTIMER "grlib-gptimer"
++
++#endif
+diff --git a/hw/char/grlib_apbuart.c b/hw/char/grlib_apbuart.c
+index 82ff40a530..515b65bc07 100644
+--- a/hw/char/grlib_apbuart.c
++++ b/hw/char/grlib_apbuart.c
+@@ -1,7 +1,9 @@
+ /*
+  * QEMU GRLIB APB UART Emulator
+  *
+- * Copyright (c) 2010-2019 AdaCore
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2010-2024 AdaCore
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -26,7 +28,7 @@
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/qdev-properties-system.h"
+-#include "hw/sparc/grlib.h"
++#include "hw/char/grlib_uart.h"
+ #include "hw/sysbus.h"
+ #include "qemu/module.h"
+ #include "chardev/char-fe.h"
+diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
+index 3bfe2544b7..11eef62457 100644
+--- a/hw/intc/grlib_irqmp.c
++++ b/hw/intc/grlib_irqmp.c
+@@ -3,7 +3,9 @@
+  *
+  * (Multiprocessor and extended interrupt not supported)
+  *
+- * Copyright (c) 2010-2019 AdaCore
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2010-2024 AdaCore
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -29,7 +31,7 @@
+ #include "hw/sysbus.h"
  
- static Property sysbus_ahci_properties[] = {
-diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-index d190012a95..122fc7e0ab 100644
---- a/hw/ide/ich.c
-+++ b/hw/ide/ich.c
-@@ -113,7 +113,8 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
-     d = ICH9_AHCI(dev);
-     int ret;
+ #include "hw/qdev-properties.h"
+-#include "hw/sparc/grlib.h"
++#include "hw/intc/grlib_irqmp.h"
  
--    ahci_realize(&d->ahci, DEVICE(dev), pci_get_address_space(dev), 6);
-+    d->ahci.ports = 6;
-+    ahci_realize(&d->ahci, DEVICE(dev), pci_get_address_space(dev));
+ #include "trace.h"
+ #include "qapi/error.h"
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index fa4fbe4b30..e80b9410d4 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -1,7 +1,9 @@
+ /*
+  * QEMU Leon3 System Emulator
+  *
+- * Copyright (c) 2010-2019 AdaCore
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2010-2024 AdaCore
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -40,7 +42,9 @@
+ #include "elf.h"
+ #include "trace.h"
  
-     pci_config_set_prog_interface(dev->config, AHCI_PROGMODE_MAJOR_REV_1);
+-#include "hw/sparc/grlib.h"
++#include "hw/timer/grlib_gptimer.h"
++#include "hw/char/grlib_uart.h"
++#include "hw/intc/grlib_irqmp.h"
+ #include "hw/misc/grlib_ahb_apb_pnp.h"
  
+ /* Default system clock.  */
+diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
+index 5c4923c1e0..4990885451 100644
+--- a/hw/timer/grlib_gptimer.c
++++ b/hw/timer/grlib_gptimer.c
+@@ -1,7 +1,9 @@
+ /*
+  * QEMU GRLIB GPTimer Emulator
+  *
+- * Copyright (c) 2010-2019 AdaCore
++ * SPDX-License-Identifier: MIT
++ *
++ * Copyright (c) 2010-2024 AdaCore
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -23,7 +25,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/sparc/grlib.h"
++#include "hw/timer/grlib_gptimer.h"
+ #include "hw/sysbus.h"
+ #include "qemu/timer.h"
+ #include "hw/irq.h"
 -- 
 2.41.0
 

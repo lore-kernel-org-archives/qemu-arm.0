@@ -1,114 +1,116 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp735467ejb;
-        Thu, 15 Feb 2024 09:59:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX2lKdavtIDycfIWFo/+pZ2LwvhI1IL+VJ3ljmm0QvPjqP447dMADcqNpU2lTZ7yQS3c2Dnh9kYhu6sw21crOyOxNgqccIz
-X-Google-Smtp-Source: AGHT+IEWx0Cg68BuDlwP6lXPJadKrLaEkrkv/wAZKNECaqjM5fiFRi5iN3hI0+PGfse2OdXoKxwr
-X-Received: by 2002:a05:6870:1716:b0:21a:3c94:7489 with SMTP id h22-20020a056870171600b0021a3c947489mr2408781oae.39.1708019997769;
-        Thu, 15 Feb 2024 09:59:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708019997; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp735547ejb;
+        Thu, 15 Feb 2024 10:00:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVGPR1V0I9V+Zki8SgYTWcSnDAywbeNqvqKrEzHCu/APVnfcC7tu7XQzSOP+CA9ia2KLOA5xuobt9pV9jDMqlexXXHNPXMu
+X-Google-Smtp-Source: AGHT+IEH6dWu4tZL9e3Eb1A1RzdTnZqbzQXu4ypFpUvnbkhtvy/u2W41Z64jSvjxSn8GmPyfKWDB
+X-Received: by 2002:ac8:7d81:0:b0:42d:c864:4fd with SMTP id c1-20020ac87d81000000b0042dc86404fdmr2661383qtd.6.1708020004876;
+        Thu, 15 Feb 2024 10:00:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708020004; cv=none;
         d=google.com; s=arc-20160816;
-        b=x40wfPOvQph7e3U/+U3gkdJuhos67ypbusVWjE8pbUTumGrpq0uUAHacwdpe/OwDOm
-         dIzBWz4Fxp/ILS7g3j93CGaZu8ypmrby5wrWvnhC2GjRX+dFrWWg708YQQ0bwwgB1bRB
-         orqR36Q3yUnSkVMfIMJsx4P4+HlQoOzIFfifHWorJPJbkaM4nM/t97vlODi2uGVQpNLJ
-         Ty68W88/j1OlEZbM0MxuQUyULZANdONxXDQDYekQV4jPqnkp6XXZyMAinN7MOqfqcDDm
-         kEcNMuneUFSbF2JsVwHgbIjLONKQvk1KiHptmngN86bwAQu1cJ42Jl/8iyb3kpylNW+H
-         tMXg==
+        b=WE2TMO1343RPb8XK3bROL0kqCz0BfDBtlDeX/p5Mqv7LM4ajGwOB/BeiIu0JmoDymg
+         0l0ooZluCriHyoYyM28hbid76MiKx64LBkWztYldq87ZcDY8dfx0x8FoghVyw8NdvnCz
+         4+5E276HsIqHgqgYAaqkxKFd2fTfzWH+UCMuLvKqzf9NsDz1aU1SQcxOEECzZbvYT2Hq
+         q4tc/4ebjHaqGOkF9uAcyIxNUAg26jWYDrx8C506gcGPXI45TTADV3sD4rnPQr9nSJ/9
+         U6H8IGHwxXQtjGHq/XhhUnDa5eAOVJMcs7mMESqcF9pRbbCpswEVYvH9dhUjJ2x5si1A
+         /7ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hD8QAEO8EbU5eNO1CRG3i0Yg3oXr277vzzBLMpE0y8U=;
-        fh=9OEigYyeQuXaY5BohipyGpVUjq4Ysjv2UahERfKegZM=;
-        b=Rr7cBugjGLIozZzGzD2FpYpZnaODiOKT0gMgJhcBUtx8DzgHFahkNPY59pCdxk1XGe
-         lgvLapgpcRFUbcmktpH1vIBwHKpxmbU9GpEfh5kexF2qjKZKIM3gWBG9pTwt8WSQNAUS
-         7CNY2cewpGyCMzbR4FrOA5eRvuZFnr9RXi9YwKd/eNlCPiifDtCS92wHA3OIXWGu1n73
-         AxHKWkSzdALa10be3HH84u+xDuo7Tk0Me5kom/E7rT1QJ/z7TSxczhZEERssZ0yXvZE5
-         8bXUx8d5L/7D6HgghDCIbQ6oiyuOSWq7g5yH4b5mnpS9vXceJqqeTdp3MnH98HTxkPMP
-         DVlw==;
+        bh=8KRNAN7J6jVrW+a5YkWZvl2JIbNfjxd3JGHRrNe6AUc=;
+        fh=wwIkG/R7c5p9xHi5wYEcw4twPRXQ118nLR8YaoJ+VQY=;
+        b=W8cEIrqjSf1Ue2hXdMuLDgtIpSGN9s9C/5oki2+WICKeHLBvcjRUa5t6E1BSTmLbdd
+         fhaXTfKZrAKuCKN9BpnIn+iykGPqF9ymC9eIFVV90igkC2u7lCENZURSVsYkrDsTvqw7
+         BOQC1rzn6gc4/PQ5cPd9oPuIaW9v7JInmy3qNPd9x+cTiCR131BFzBP/dw2LsqQ2rutr
+         lIQn3fyl3+AmHViy+GeRDXEpgWwNl1dc8pFjNReROTQ/iAl60kI+Ez1N7TcYfTHlLxC2
+         NsOXuDXAS4apr6LjTOKgTkpt8sTvzkiMZVYnWpDvAPFsAwDQDVI5vE4gIT2ZtZ5hqNFu
+         KrUw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=scyoVn6H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XwckSceF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7-20020a05622a050700b0042c2ada4b7dsi2023919qtx.749.2024.02.15.09.59.57
+        by mx.google.com with ESMTPS id r10-20020a05622a034a00b0042c7e0bbcfesi1988702qtw.546.2024.02.15.10.00.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 09:59:57 -0800 (PST)
+        Thu, 15 Feb 2024 10:00:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=scyoVn6H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XwckSceF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rag0h-0002zA-IY; Thu, 15 Feb 2024 12:58:59 -0500
+	id 1rag1Q-0004wF-W7; Thu, 15 Feb 2024 12:59:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag0f-0002u7-1w
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 12:58:57 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag13-0004Py-Hv
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 12:59:21 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag0d-0001dq-1A
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 12:58:56 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-411f895c8b6so9985435e9.1
- for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 09:58:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag0w-0001jn-9Y
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 12:59:21 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-2d208be133bso11347561fa.2
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 09:59:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708019933; x=1708624733; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708019952; x=1708624752; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hD8QAEO8EbU5eNO1CRG3i0Yg3oXr277vzzBLMpE0y8U=;
- b=scyoVn6Ham4tZol/QCpB1xrrnDs/nLkG3EBS7sOoEp9dhb9kSY1TS6/EDoiNAiaW4h
- bwsKDZdQKMF1ywawiHVSU33SGBuHoVu/QVeY+EnMleVk34UtXyR7aoeczBV7SCSewqQQ
- 6vetTpj5AQfMUr+lGrWXJw3VRfUceIn8RGgVgIOCu2sDKoRU1fCZSbCxTIz9PPSo/ba6
- VT5OM2CKTfwGU+cQ0JucKwzig29qOV7H1Y+ZxD7QUvS7Q+b7lHjQUa957zklMIGsE20m
- NE08a1aKeG7XsnfJGmabR0raWHaYXaxXdJt7CPJDyYdcitxXYGlgR4ZoRASJUcJNfAbS
- Hc2A==
+ bh=8KRNAN7J6jVrW+a5YkWZvl2JIbNfjxd3JGHRrNe6AUc=;
+ b=XwckSceFGVkZ5LLhJ+dnl+6hw9goj7dHawTxXt8MhWaOJ/0EVV/R7XCVpeRzEja8+D
+ uMVxDtGZooeYAR71+3Mj13ETEbwG9eRyEGs5byjkJGV7x8XS5X5H9kT8W0YOR79GFMdS
+ ZdQ+bOAm3bzA82my1ye1Ov8jq7TM8aJve9QhDtqnRmlKU1iqHlhmJ594aQw0Ye1+XbXn
+ viVA2/P6s0T0SIzftbff8Oyj0aomOn2i8QmHjA5IcK4hpqVV6rL8x3Q+runs1FIJmWk1
+ ezwElO45+IcNVzm8hbaddoAUkJYs8+drb9BWcqNchvGzscf3mkuztvJ96HXPqDvx0i5N
+ 2sWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708019933; x=1708624733;
+ d=1e100.net; s=20230601; t=1708019952; x=1708624752;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hD8QAEO8EbU5eNO1CRG3i0Yg3oXr277vzzBLMpE0y8U=;
- b=Z8cgO+zioRxpruSpiAmt+Is6YL2Vvt2VcU/AzNe+inCoF4D166426MbQ4EigY+S5wf
- A2WwxAESaHatLIgML/P6df3vAh2mouR9kJS6O1x4CxeA+cvsHK/3D/u6ShaNDLWQzqbg
- E5nakMYasn2xus/uuk/pgFcqNNsw0phjoE6rFFaBDvXkL+zN3HeF4dq2NbpLWQuaY6WK
- 3gEJLne5bziR78e7/FR57nT2845148y/739DuJzpNDYoX7oEtZ3NplUrJ9qefLRatW8M
- xy3DwMEvkXX8IcO/oQ+x3q7cPNmzfLzmf/jw4CLxoN2xuN6g3k7rVpO24l4uEoo97nJn
- uEdQ==
+ bh=8KRNAN7J6jVrW+a5YkWZvl2JIbNfjxd3JGHRrNe6AUc=;
+ b=w8SVqDJ6vX//+FAI3uUPbk9CEmRxfMIRdzcicIkQN2dwCWwGfowY7m0/Psk9Gvjh1a
+ F5e54S8xofIiDI4B5k9OrCQqaWZ7fN6qaFW6zq/NXWWUSl1kGm79j7knFIONm4ovg3Dv
+ emvDiGzuyHpp869rUe+aL9UbSJ3wUTIBwKFD2HHC5hUTqXhWobE4HgOmQejwnnguxtMn
+ y5+bhFzFmQIWRWtsG3KxR1QjlY8npTpRs+ayujGtc8ScCvkvKFh9JxcQX13P+CidhJC6
+ C+7XUxOzIMobNSwBGKgcjKazLIpRmbCZ4RnMlsWH4tesHsxSMwgIyt/ueg0QWn11xhAx
+ M++A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0vI1t5BuYV7n1y+yD2G1Sae+KE7E0OO33XrUNPWUDtplS3oNeobRQsJaQ5NKQgJFXmDRdMd0Wec7nUbKbYYJlfegj
-X-Gm-Message-State: AOJu0YzTucZgrdW7H/3C78NgBY5ubBZGgRxMmZzfBgZtB/vbtY2NtWU/
- 1k5DiSmENFwtKzuiDtLZyJ40qRHItZIsBph9fxxBGtYiiLBS8lcNR0TXhyFAbIc=
-X-Received: by 2002:a05:600c:46cd:b0:410:cf60:d857 with SMTP id
- q13-20020a05600c46cd00b00410cf60d857mr1896947wmo.18.1708019933682; 
- Thu, 15 Feb 2024 09:58:53 -0800 (PST)
+ AJvYcCVbUBkhQJcbI8J75uENAmOsHLbUEONYBOY88vFI6Ve3FuDRTdIc4fu8YxBOS8K/ozrb7tIt1UwqGKwsiMLehqNsoAzc
+X-Gm-Message-State: AOJu0YymY47ojIgW5B6jydHSoel4/ZZznbAzihJyE+JmxGhKdJ8LKCh3
+ z0YSVOqSmq31A9760Mku9riwRlxzYxp7KfEdP+/fPfE91onqPbEz6YDS4P4nJ+Q=
+X-Received: by 2002:a2e:8018:0:b0:2d0:d3ec:a545 with SMTP id
+ j24-20020a2e8018000000b002d0d3eca545mr1850052ljg.50.1708019952746; 
+ Thu, 15 Feb 2024 09:59:12 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- by7-20020a056000098700b0033b684d6d5csm2601836wrb.20.2024.02.15.09.58.52
+ y5-20020a7bcd85000000b00410ab50f70fsm5604008wmj.15.2024.02.15.09.59.11
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 09:58:53 -0800 (PST)
+ Thu, 15 Feb 2024 09:59:12 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: [PULL 09/56] hw/misc/mips_itu: Remove MIPSITUState::saar field
-Date: Thu, 15 Feb 2024 18:57:03 +0100
-Message-ID: <20240215175752.82828-10-philmd@linaro.org>
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Subject: [PULL 12/56] target/mips: Remove helpers accessing SAARI register
+Date: Thu, 15 Feb 2024 18:57:06 +0100
+Message-ID: <20240215175752.82828-13-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,82 +132,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZE+n2Eumrz/G
+X-TUID: /WNpHMWtLeeO
 
-This field is not set. Remove it along with the dead
-code it was guarding.
+DisasContext::saar boolean is never set, so this code
+is not reachable. Remove it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240209090513.9401-7-philmd@linaro.org>
+Message-Id: <20240209090513.9401-9-philmd@linaro.org>
 ---
- include/hw/misc/mips_itu.h |  3 ---
- hw/misc/mips_itu.c         | 22 +++-------------------
- 2 files changed, 3 insertions(+), 22 deletions(-)
+ target/mips/tcg/sysemu_helper.h.inc |  1 -
+ target/mips/tcg/sysemu/cp0_helper.c |  8 --------
+ target/mips/tcg/translate.c         | 20 --------------------
+ 3 files changed, 29 deletions(-)
 
-diff --git a/include/hw/misc/mips_itu.h b/include/hw/misc/mips_itu.h
-index de7400c1fe..27c9a1090d 100644
---- a/include/hw/misc/mips_itu.h
-+++ b/include/hw/misc/mips_itu.h
-@@ -70,9 +70,6 @@ struct MIPSITUState {
- 
-     /* ITU Control Register */
-     uint64_t icr0;
--
--    /* SAAR */
--    uint64_t *saar;
- };
- 
- /* Get ITC Configuration Tag memory region. */
-diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
-index 9705efeafe..f8acfb3ee2 100644
---- a/hw/misc/mips_itu.c
-+++ b/hw/misc/mips_itu.c
-@@ -94,12 +94,6 @@ static void itc_reconfigure(MIPSITUState *tag)
-     uint64_t size = (1 * KiB) + (am[1] & ITC_AM1_ADDR_MASK_MASK);
-     bool is_enabled = (am[0] & ITC_AM0_EN_MASK) != 0;
- 
--    if (tag->saar) {
--        address = (tag->saar[0] & 0xFFFFFFFFE000ULL) << 4;
--        size = 1ULL << ((tag->saar[0] >> 1) & 0x1f);
--        is_enabled = tag->saar[0] & 1;
--    }
--
-     memory_region_transaction_begin();
-     if (!(size & (size - 1))) {
-         memory_region_set_size(mr, size);
-@@ -158,12 +152,7 @@ static inline ITCView get_itc_view(hwaddr addr)
- static inline int get_cell_stride_shift(const MIPSITUState *s)
- {
-     /* Minimum interval (for EntryGain = 0) is 128 B */
--    if (s->saar) {
--        return 7 + ((s->icr0 >> ITC_ICR0_BLK_GRAIN) &
--                    ITC_ICR0_BLK_GRAIN_MASK);
--    } else {
--        return 7 + (s->ITCAddressMap[1] & ITC_AM1_ENTRY_GRAIN_MASK);
--    }
-+    return 7 + (s->ITCAddressMap[1] & ITC_AM1_ENTRY_GRAIN_MASK);
+diff --git a/target/mips/tcg/sysemu_helper.h.inc b/target/mips/tcg/sysemu_helper.h.inc
+index 78f7272208..1861d538de 100644
+--- a/target/mips/tcg/sysemu_helper.h.inc
++++ b/target/mips/tcg/sysemu_helper.h.inc
+@@ -100,7 +100,6 @@ DEF_HELPER_2(mtc0_srsconf4, void, env, tl)
+ DEF_HELPER_2(mtc0_hwrena, void, env, tl)
+ DEF_HELPER_2(mtc0_pwctl, void, env, tl)
+ DEF_HELPER_2(mtc0_count, void, env, tl)
+-DEF_HELPER_2(mtc0_saari, void, env, tl)
+ DEF_HELPER_2(mtc0_entryhi, void, env, tl)
+ DEF_HELPER_2(mttc0_entryhi, void, env, tl)
+ DEF_HELPER_2(mtc0_compare, void, env, tl)
+diff --git a/target/mips/tcg/sysemu/cp0_helper.c b/target/mips/tcg/sysemu/cp0_helper.c
+index f8883a3515..ded6c78e9a 100644
+--- a/target/mips/tcg/sysemu/cp0_helper.c
++++ b/target/mips/tcg/sysemu/cp0_helper.c
+@@ -1077,14 +1077,6 @@ void helper_mtc0_count(CPUMIPSState *env, target_ulong arg1)
+     cpu_mips_store_count(env, arg1);
  }
  
- static inline ITCStorageCell *get_cell(MIPSITUState *s,
-@@ -535,15 +524,10 @@ static void mips_itu_reset(DeviceState *dev)
- {
-     MIPSITUState *s = MIPS_ITU(dev);
- 
--    if (s->saar) {
--        s->saar[0] = 0x11 << 1;
--        s->icr0 = get_num_cells(s) << ITC_ICR0_CELL_NUM;
--    } else {
--        s->ITCAddressMap[0] = 0;
--        s->ITCAddressMap[1] =
-+    s->ITCAddressMap[0] = 0;
-+    s->ITCAddressMap[1] =
-             ((ITC_STORAGE_ADDRSPACE_SZ - 1) & ITC_AM1_ADDR_MASK_MASK) |
-             (get_num_cells(s) << ITC_AM1_NUMENTRIES_OFS);
+-void helper_mtc0_saari(CPUMIPSState *env, target_ulong arg1)
+-{
+-    uint32_t target = arg1 & 0x3f;
+-    if (target <= 1) {
+-        env->CP0_SAARI = target;
 -    }
-     itc_reconfigure(s);
- 
-     itc_reset_cells(s);
+-}
+-
+ void helper_mtc0_entryhi(CPUMIPSState *env, target_ulong arg1)
+ {
+     target_ulong old, val, mask;
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index 173b19a090..3ba2101647 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -5653,11 +5653,6 @@ static void gen_mfc0(DisasContext *ctx, TCGv arg, int reg, int sel)
+             ctx->base.is_jmp = DISAS_EXIT;
+             register_name = "Count";
+             break;
+-        case CP0_REG09__SAARI:
+-            CP0_CHECK(ctx->saar);
+-            gen_mfc0_load32(arg, offsetof(CPUMIPSState, CP0_SAARI));
+-            register_name = "SAARI";
+-            break;
+         default:
+             goto cp0_unimplemented;
+         }
+@@ -6374,11 +6369,6 @@ static void gen_mtc0(DisasContext *ctx, TCGv arg, int reg, int sel)
+             gen_helper_mtc0_count(tcg_env, arg);
+             register_name = "Count";
+             break;
+-        case CP0_REG09__SAARI:
+-            CP0_CHECK(ctx->saar);
+-            gen_helper_mtc0_saari(tcg_env, arg);
+-            register_name = "SAARI";
+-            break;
+         default:
+             goto cp0_unimplemented;
+         }
+@@ -7143,11 +7133,6 @@ static void gen_dmfc0(DisasContext *ctx, TCGv arg, int reg, int sel)
+             ctx->base.is_jmp = DISAS_EXIT;
+             register_name = "Count";
+             break;
+-        case CP0_REG09__SAARI:
+-            CP0_CHECK(ctx->saar);
+-            gen_mfc0_load32(arg, offsetof(CPUMIPSState, CP0_SAARI));
+-            register_name = "SAARI";
+-            break;
+         default:
+             goto cp0_unimplemented;
+         }
+@@ -7850,11 +7835,6 @@ static void gen_dmtc0(DisasContext *ctx, TCGv arg, int reg, int sel)
+             gen_helper_mtc0_count(tcg_env, arg);
+             register_name = "Count";
+             break;
+-        case CP0_REG09__SAARI:
+-            CP0_CHECK(ctx->saar);
+-            gen_helper_mtc0_saari(tcg_env, arg);
+-            register_name = "SAARI";
+-            break;
+         default:
+             goto cp0_unimplemented;
+         }
 -- 
 2.41.0
 

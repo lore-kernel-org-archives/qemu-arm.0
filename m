@@ -1,156 +1,162 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp652149ejb;
-        Thu, 15 Feb 2024 07:46:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXxDfNfnww9bIz0npufN6ESRQW63HM8cZvexaXEgfKXxomyq3IJ+TtAioWsHyZOoDgcHXzjTibtvu1fz2MawV/Wemrgpfzu
-X-Received: by 2002:a19:3814:0:b0:511:3a13:158 with SMTP id f20-20020a193814000000b005113a130158mr1311823lfa.35.1708011970290;
-        Thu, 15 Feb 2024 07:46:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708011970; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp682010ejb;
+        Thu, 15 Feb 2024 08:31:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWAjIr8WDk/UFpJo0wV9ssn9dBQzxomz+nPKxn26QU2lDjD+5SBfOY8kyGjj+HAFOD+CsI5cJxsDb/fX5AtTtOGHHHxkeIJ
+X-Google-Smtp-Source: AGHT+IHJH9cZLh0H7d5F1wOMne6ii11DSaq81uCNWpsKpOq/xvlNtHB/9ijjiEkwqu4HTxKJ4ndm
+X-Received: by 2002:a67:c788:0:b0:46d:372a:d114 with SMTP id t8-20020a67c788000000b0046d372ad114mr1622704vsk.16.1708014672796;
+        Thu, 15 Feb 2024 08:31:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708014672; cv=none;
         d=google.com; s=arc-20160816;
-        b=KYMQTBxjWIUm9Ktg1JsyZD+iB8ZOloDyBM6haPvIR2W+45WcODfMgU5mTdg7Sj619O
-         bEYO83SQP7ZeAgkAirD4+Z3EIQvNKOhI081c9nofvmwBhG1mu5IA21cYw9/P14AUnEEc
-         S8Fh23bompb+a0Rx4wgHlLlKxKh4G/K0nfo4NV47MfEEIynD/iPJ6goopTqfDmd5IGk9
-         ABVvSjVvgKJT43jc9/gKH7tAtOyS3KHlu4q6lD9kOowoj9iCBmtmElAVvdMUp+RdW3jm
-         R6nI8yDjos+3sRS2ZcFxzpUMwWNvZPHIaBf2908LG88HkoKZWTzRNoU/SZxkGfpJ5Ta6
-         sT5Q==
+        b=GKRgwhkZ5A4U9jt0xR2iHum03CGS3nsEUhTbVtvGDtK4iPQjA/fW9pO/z9r6uThidU
+         S1AbM+BHBVT+09vE4a9NVxZW9gOo/Ji5lI5xHtDtj6dHponJFU1kRa6uYZGrEmj+UNjj
+         Jw7iz+REnP5Q1hQgyEbDoSp5oZvypAmI93EMunfg+QzZz72AQF0mRm0CX4sgHKMQKkOe
+         XzZ6yV4/el8F8rL35bf221XFax1allCr9RSmJa8Zsu5ENiSqN3+UhyOAX4X9iaVy4xOx
+         DC1HxlLFZ4sYcV98M7kHoEtCXp7/9xYWcJdUEI3pQdq8cOFscqFEXord1OLvVfCKIJGh
+         qhkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=4rBSgrX5YVivbEpiuFCj+73HjrmHSxalYOXOHIQ6N48=;
-        fh=zgjKQyhMGkZRIlyatji/6o5c9egcjaqMhpKolCIqUsw=;
-        b=HKffyjzECmIlmxbYBvcrQVUCR6LwQ9sgfTkecWb+c3bN/ewYFo4jEcqZ3iN9MOz2LJ
-         tP7akPQgS7sNuBSZlXooGKf2kajoJ5lAEYtkDxt5zdSOfdXcAeQUon8o7w1QBCzmni1y
-         Jpl7aWPvopR/pPIRV4zzqYuu5z2b5tYjnOdny28sOPGY2Osm3RqEdUYjqhgtk9Ou11uI
-         rxDm4V1DHM+5N5JGu8qqcMYP5pMYlJgFNa+fZJPTHkkeYM10kb6Ltmpm860Imv6xfvUm
-         6NKhbAUbYRQNusOxJYpcrWbrdPoBPzwDRbTJtHzgOdeezHP5uEf2WOVlCgPdef3uohtb
-         lVMQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=ZxJ82GKHsUgKCva8HlVuPOEU7TH3AeI5O3T89aBX7P0=;
+        fh=Z8N+w7CAEblwq9KYpl4JRBPYzI/90IdS8kqBQlDP49A=;
+        b=ANLCHOd2GtA6p8CKA6622OutakgIzF+FEpDhREP+fTX2ET3vEUuCWtaT4FNbeWw+da
+         fKN+9zHsBFlJw1VzNNm3BMcDX5HO1zZQx+Hr7UMrp8ezFMQHcuzWrmdKcBjDX8/jJ6MF
+         PJ8ZfjDwkeXobzzhJ7pXNROUftZslJOcFH5kNO7kw/3TkhIq39PuOtxVy1cR7XY/1dY0
+         VWLEzR4pxXThwDoREx+8/5rk2euSG7nvYXcAlJRDmDifoN4l0YjVs2K0Zk+VOOPV8U3W
+         PFH6/G9QMyeQJayIVQ68GT/DLnOXyTEBkFqFhUht0f+Q3FYXr3C3OYQSUzAVIeym3/pv
+         oDWQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nlD1HF9j;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y11-20020a19914b000000b005119d5420a9sor520216lfj.10.2024.02.15.07.46.10
+       dkim=pass header.i=@google.com header.s=20230601 header.b=jz1OP7sI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x26-20020a056102091a00b0046d65b547c8si325822vsh.50.2024.02.15.08.31.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 15 Feb 2024 07:46:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Feb 2024 08:31:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nlD1HF9j;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@google.com header.s=20230601 header.b=jz1OP7sI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1raedU-0004dj-Lp; Thu, 15 Feb 2024 11:30:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3ijXOZQgKCGMBSEC+HJUHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--ardb.bounces.google.com>)
+ id 1raeBr-0001am-UI
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 11:02:23 -0500
+Received: from mail-wm1-x34a.google.com ([2a00:1450:4864:20::34a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3ijXOZQgKCGMBSEC+HJUHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--ardb.bounces.google.com>)
+ id 1raeBp-0001rr-24
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 11:02:23 -0500
+Received: by mail-wm1-x34a.google.com with SMTP id
+ 5b1f17b1804b1-410d0660929so5287145e9.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 08:02:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708011970; x=1708616770; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4rBSgrX5YVivbEpiuFCj+73HjrmHSxalYOXOHIQ6N48=;
-        b=nlD1HF9jmsAG3ZkLOBpOndcrh7DDQh40zHTTzslbj0DGIC1gyDNJabuiAzYSNuEYat
-         ni+7Gok7tMOn3LhIm7E/2i9wUpyoTeDxchuDF0TMe49bgwfiNW+HFCYn8FVFv42e5eDz
-         5Ik5JAdgpgII1zFXVaTQQ64MhWMNpAUmfLBiw7ftF4as71s7MeKIihMHxTLR6EoVrRDj
-         ufUwG3q0JPUZY1mU5OcOg+CqQ2lVP3oGZdD1eOrWCZxSVN5u6F/2vDhL3qTai6Tm4DIc
-         i3KdxTuVENvTExAuX/f1a7HkJX223i1+pxRErb8/UkJwxv50xVNMZmV7Rj5e3ClltrAV
-         R6+g==
+ d=google.com; s=20230601; t=1708012939; x=1708617739; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=ZxJ82GKHsUgKCva8HlVuPOEU7TH3AeI5O3T89aBX7P0=;
+ b=jz1OP7sIt8hbtsqIKGvG5du/+F7FfgDUqSOI0T7KTQRhp2iz1S6/kuArnVzm7AO8/f
+ MKyACRpnaE3IvtHKzu9Eg7VBy/0W1BHJJUSsHSPmyIKUsYHqbyaGJx2FAR/ddcp9Du00
+ Rs7xiKATHUXIMBp2MKltLSLnY0DmRjf3O7vw2IoGJ6CrHS392JQ2XxHwgOXSj+Iz+Yr+
+ RtPegCs1H4WQXZq9N0R5BNgyZznf0M8cEM9AF6V6mN2dKicVu0ld4AQLL2+ibhJaO29i
+ 2qUT771MmG2hH6DKP+UWlaUkhcscyblKXHCHbFUcId0sxhLzGtvyI8cA1fQ1H7nJWJQn
+ 1/UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708011970; x=1708616770;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4rBSgrX5YVivbEpiuFCj+73HjrmHSxalYOXOHIQ6N48=;
-        b=ucDLdPFTG+goq8/v5bA8MRzoGoG1DltYn9eKVfhkhWEe6UX97SC3sbvXEz4WkffsE+
-         DQ0Rr7ylf17tsvKup9+Ec0Xy4PEfoxwnagAMgs4tP3Lk/USVIUn7jZ015De2r/kEbyT8
-         jgoVemm489x7fMfpzf+tg9Mtn3JTvAZpbxTbe1+vFUBxZdZpqYfurIjmr+S/JQeOpkcl
-         8gUCJQVG4CSTgfDx6muLDtWhctzik3F0O0TV243YNcTsobypDoJSeHNnynUAE44Mx6dM
-         XwzSEYZ3Sp3SiqvGyyqQUaQOXzVIHcwsT0L8au1K967dNLwbaGDOO+j4MqEz7FWWu/rd
-         QH4w==
-X-Forwarded-Encrypted: i=1; AJvYcCX+gJcjEgtinvBYJpnRb+ecENW+p/P4VPEsTlmVZ+9z2pre7npYI5w0U47A0Jm61+nTjQsnagVRem2Ta5dBawIGn4lPOzzz
-X-Gm-Message-State: AOJu0Yz87HBNctQ9Z0qtqzrJxZjEeAFlnMIotr+i9y1Xhs4CSpJLu3L9
-	GRo8cjRxQpHNrCCpI+ZpoxQZZzaBGjXMmN0mFh4tYQzWo6qiyEXdTGUUUBaT0RPapBrTkNCSbSi
-	pTWdyUTYZt3ZbPzYP0YeGXVEaX+rD9+VSx9jc/dH4
-X-Google-Smtp-Source: AGHT+IERVKkfp9+r3RR8EamMBaAVeDZmMBnIM3VV1wDnqIAEzDXRbv0S+MnmCkslT/Ub4r1yMGquQcLzMR7LQ3JKSSc=
-X-Received: by 2002:ac2:5333:0:b0:511:4e6a:12e7 with SMTP id
- f19-20020ac25333000000b005114e6a12e7mr1675056lfh.58.1708011969851; Thu, 15
- Feb 2024 07:46:09 -0800 (PST)
-MIME-Version: 1.0
-References: <20240215151804.2426-1-Jonathan.Cameron@huawei.com> <20240215151804.2426-2-Jonathan.Cameron@huawei.com>
-In-Reply-To: <20240215151804.2426-2-Jonathan.Cameron@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Feb 2024 15:45:58 +0000
-Message-ID: <CAFEAcA8YgJ-m6D6QZFsGCw9H0orF=DHKgs8t8Vaz=502+eXdcw@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/1] arm/ptw: Handle atomic updates of page tables
- entries in MMIO during PTW.
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, Gregory Price <gregory.price@memverge.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	richard.henderson@linaro.org, linux-cxl@vger.kernel.org, qemu-arm@nongnu.org, 
-	linuxarm@huawei.com
+ d=1e100.net; s=20230601; t=1708012939; x=1708617739;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZxJ82GKHsUgKCva8HlVuPOEU7TH3AeI5O3T89aBX7P0=;
+ b=s1EzSKaUPT6EeHGvZX+WvxxFPg7jN3aoT1f5Lp8MHWbWolUSy0fzfcwWYNDuWlRSYk
+ Nc5AnC2uB1478z5l1SG807zfogXjrLmc3J+vqFglPEo/k9LrljOaItGOjap1nULFyx2e
+ zMSUK1d6JiqO+IaWO3dXLgibdhaKHQY0thA5fzCLiOrwRTNCjNhI1iFSEOMKsNA5j3lb
+ /k3kDAkr4vyqsVbL4qjY7SFxMsBUkut56QfpbUq2bAv6lmx/IlXlmDyu5Jg+e2i/3E7J
+ OJc8BKSIgwHgoZ4T3+L7/8J3h1M4WVy+1z9ECsvqcegV0G6BAAqKV93iNwktWLKcCstI
+ FYHA==
+X-Gm-Message-State: AOJu0YyAIo+mXnoJqrDG7DFzXEs8jKpF1788LA6ny5GTNMiz9OWnwfB8
+ jFIayVS7YwOFKK6pKcZJvPzcs9JDnQbz6hO7HoqR9f+P3solfa/00VBnpA1XNxizCEJrZOKeUGL
+ KAdHMZ5YtzSNWPIijNnqnkJdCaIBVhZes4qwxVsABsnIesPaszgx3GabxZoAKiG6XVsS3OiejY1
+ fo9E8HlLGpBsGryMmylw==
+X-Received: from palermo.c.googlers.com
+ ([fda3:e722:ac3:cc00:28:9cb1:c0a8:118a])
+ (user=ardb job=sendgmr) by 2002:a05:600c:3512:b0:412:913:54c7 with SMTP id
+ h18-20020a05600c351200b00412091354c7mr76803wmq.4.1708012938539; Thu, 15 Feb
+ 2024 08:02:18 -0800 (PST)
+Date: Thu, 15 Feb 2024 17:02:02 +0100
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.43.0.687.g38aa6559b0-goog
+Message-ID: <20240215160202.2803452-1-ardb+git@google.com>
+Subject: [PATCH] target/arm: Advertise Cortex-A53 erratum #843419 fix via
+ REVIDR
+From: Ard Biesheuvel <ardb+git@google.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org, 
+ richard.henderson@linaro.org, Ard Biesheuvel <ardb@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: LyF8cXMq2BsS
+Received-SPF: pass client-ip=2a00:1450:4864:20::34a;
+ envelope-from=3ijXOZQgKCGMBSEC+HJUHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--ardb.bounces.google.com;
+ helo=mail-wm1-x34a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 15 Feb 2024 11:30:55 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tJDqbcduaDZS
 
-On Thu, 15 Feb 2024 at 15:18, Jonathan Cameron
-<Jonathan.Cameron@huawei.com> wrote:
->
-> I'm far from confident this handling here is correct. Hence
-> RFC.  In particular not sure on what locks I should hold for this
-> to be even moderately safe.
+From: Ard Biesheuvel <ardb@kernel.org>
 
-> The function already appears to be inconsistent in what it returns
-> as the CONFIG_ATOMIC64 block returns the endian converted 'eventual'
-> value of the cmpxchg whereas the TCG_OVERSIZED_GUEST case returns
-> the previous value.
->
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> ---
->  target/arm/ptw.c | 34 ++++++++++++++++++++++++++++++++--
->  1 file changed, 32 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 5eb3577bcd..37ddb4a4db 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -711,8 +711,38 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
->      void *host = ptw->out_host;
->
->      if (unlikely(!host)) {
-> -        fi->type = ARMFault_UnsuppAtomicUpdate;
-> -        return 0;
-> +        /* Can I do a load and store via the physical address */
-> +
-> +        bool locked = bql_locked();
-> +        if (!locked) {
-> +            bql_lock();
-> +        }
-> +        /* Page table in MMIO Memory Region */
-> +        if (ptw->out_be) {
-> +            old_val = cpu_to_be64(old_val);
-> +            new_val = cpu_to_be64(new_val);
-> +            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
+The Cortex-A53 r0p4 revision that QEMU emulates is affected by a CatA
+erratum #843419 (i.e., the most severe), which requires workarounds in
+the toolchain as well as the OS.
 
-This is definitely wrong because it takes no account of
-address spaces. You need to also account for ptw->out_space.
-Compare what arm_ldq_ptw() does.
+Since the emulation is obviously not affected in the same way, we can
+indicate this via REVIDR bit #8, which on r0p4 has the meaning that no
+workarounds for erratum #843419 are needed.
 
-> +            if (cur_val == old_val) {
-> +                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
-> +                cur_val = be64_to_cpu(new_val);
-> +            } else {
-> +                cur_val = be64_to_cpu(cur_val);
-> +            }
-> +        } else {
-> +            old_val = cpu_to_le64(old_val);
-> +            new_val = cpu_to_le64(new_val);
-> +            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
-> +            if (cur_val == old_val) {
-> +                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
-> +                cur_val = le64_to_cpu(new_val);
-> +            } else {
-> +                cur_val = le64_to_cpu(cur_val);
-> +            }
-> +        }
-> +        if (!locked) {
-> +            bql_unlock();
-> +        }
-> +        return cur_val;
->      }
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+---
+ target/arm/cpu64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 8e30a7993e..0f7a44a28f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -663,7 +663,7 @@ static void aarch64_a53_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+     cpu->midr = 0x410fd034;
+-    cpu->revidr = 0x00000000;
++    cpu->revidr = 0x00000100;
+     cpu->reset_fpsid = 0x41034070;
+     cpu->isar.mvfr0 = 0x10110222;
+     cpu->isar.mvfr1 = 0x12111111;
+-- 
+2.43.0.687.g38aa6559b0-goog
 
-thanks
--- PMM

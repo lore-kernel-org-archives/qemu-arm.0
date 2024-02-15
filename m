@@ -1,115 +1,114 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp740107ejb;
-        Thu, 15 Feb 2024 10:05:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWGfckxgc80oRGSHyIckx9UHuwy/qywHnfLxW1D4CDZu0IzapXFMhvtSRj5k/pth99cueu/HtRJJeSxhr74HU6qpGnDFWsp
-X-Google-Smtp-Source: AGHT+IF86nltFz7OE/kDHmz8/hYU6sCd5QypvmP/z9qmVBt7rw30Vt9ZcAXd7KJt7qt630ac01NZ
-X-Received: by 2002:a9d:7d05:0:b0:6e4:20dd:1f96 with SMTP id v5-20020a9d7d05000000b006e420dd1f96mr2702976otn.25.1708020306639;
-        Thu, 15 Feb 2024 10:05:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708020306; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp740190ejb;
+        Thu, 15 Feb 2024 10:05:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWkM/9RY3GhJTbLkZ31fq5bpVzwTET7M0oq9boHhDU3F+a9atjOjtBhTfJzK9HzCf/SUccxjBcfGFLJHJ5SbSttmccl9d4+
+X-Google-Smtp-Source: AGHT+IH79uZnJGVLD0i7WPlzK8xZXBPqlql+r6t8s6R4PbSdYwEVqJWRwWJtdBAIcKNGhYKdXJx6
+X-Received: by 2002:a05:690c:d1a:b0:607:6634:cfcc with SMTP id cn26-20020a05690c0d1a00b006076634cfccmr2654903ywb.51.1708020312466;
+        Thu, 15 Feb 2024 10:05:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708020312; cv=none;
         d=google.com; s=arc-20160816;
-        b=s+Wy9OC3yXYdQxRaPRV+puq9xTx6M182+zEQUpZYRSn9x0QzbZm5gyc/JEjlihRo8D
-         Gf0EGd2S4tzyN/oTbxT+WvPhBHhN9bng3EkOrIq7bDPBUe+mJFPjoXNORwrinxTTaWaR
-         +If+Oq7YfQ1PtIbu+3S3yjNEO1UTlHFnKS48kGdrQu2C4/3tj9bl7R9sdxUQxG+8e9Wg
-         DXHPDL4o6oXOEKdOQArm0jGOfFc0hY78iWJei+nOii48kQqvFK2W86+8sjY854DNo5Re
-         AXCqHrZDIAJMfEB9XF3QNXcM2vIUNiY/Txmhh6ysavzFQDEi94vp6GtNBUZAjU9ls/C6
-         XQXg==
+        b=rJr/WE4iD0QrPxigyAf2aFff9C1cHlJ4GOUHghGBawF0MbOKZqWxYESgaYzN3GE280
+         KgvONqgtlfBs7l6vGjzHsr1/8tlWHgEovRXjCHPaUY1HogPYOYCcMnsuwqQE5ZZT1j62
+         zwP1dMB2bXaQ/ZRQ+U6vaZp9MthYmJyvQAT2sD0mFSq0PRNLY+BWM2mJ99e9HjUnFl1A
+         wN3toElVv3B/LY2m9SmQFJPGP4STjZXXBNOIyHcu/RUGsP/pdb/yYBzulo6rrwsf4ndD
+         vdJxTuBNaIrjFNG/0cNCQb3l5k7t3v7iVxZeOMhsY42RiNy3LNzSCp24N8BMmEiTltP/
+         s7+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YTTtBw/s0faU+3j1Lg8q8e01VXsKvPyBNLyd6bIBBuE=;
-        fh=r+mbcaIVBB+d5Ke8c8av/RXIbk1kcul/Ph9l9m3Dfks=;
-        b=u1wFq9w+GiIz2aSCT5xhC03M96ovRsW7GC03UWsnrPIlbPNdvl/0Z69ZwBxNqkXUsI
-         CENjf4MI7LLf31ItyWA5yiEXhJwf3yikR1YYwOE5/BbC1S+W9y1QeWGQhXcbEl2z9PZ+
-         pxGsmf6OxH5b/Ww+cDGcB/17XYdIm0u32CdngPCJMfVsO26WKIrVbbxLG2dh+0Y8megr
-         wTlTOC4Ulx3JEUm5Zjt9FUSo+eL69jTdqPzIqjMyynQx0LoLme+chQTbrRDW5zxB7BHT
-         OTyMyL4bBQrpL2Q1kGdw/NADteJk6bnaUMYF5gxumfppSv1yjhpqOkROZ12XnRrMxh9A
-         yBFg==;
+        bh=LO7EQ9/NcsUn+L+LcRsaAULB8zo1/K9N0sf9+N40e+k=;
+        fh=rAqSx9LNv277eMDkz7BnoWiv8X80FuWnwDQ88ZeCgmI=;
+        b=Ji8LRV/as6eR3JmxQWHaw7m9CwExQsp4OB60f4s3/0Vtdw6Yxfh70KfyeaaRQcyBaW
+         HQuMeAXvFmOTSeVE0YizKA2h1Oe4qMBbCHX3i2H1ZGWZDloqJGNsCoUv12RgKrfdGWl3
+         8NuZiTmN6SL8heh4mVQbO4yPBQMRIYZB7PZrOQ9PLtvYy53IUzqN7EyqbYYVcyTvuMtB
+         UkN4J6u+4XysT7wwqYBgFpiCIWmpnkHq0BKEK+CN2lXoVX8yjS24v946e900GrWm6jRb
+         Wkfxgf0Rv4VTl3v9tQr0axoafyQOkczys8G7gdfpJqdQp3WFN/ZlLBShCPZC70nelZc9
+         ybOQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SlgQmDBA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VNNCDr2A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5-20020a67ff85000000b0046ee13a2673si341489vsq.650.2024.02.15.10.05.05
+        by mx.google.com with ESMTPS id o20-20020a817e14000000b00607c714cdccsi828490ywn.496.2024.02.15.10.05.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 10:05:05 -0800 (PST)
+        Thu, 15 Feb 2024 10:05:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SlgQmDBA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VNNCDr2A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rag4F-0006Fk-KC; Thu, 15 Feb 2024 13:02:39 -0500
+	id 1rag6B-0004Se-Ac; Thu, 15 Feb 2024 13:04:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag4C-0005kh-F9
- for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:02:36 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5l-0003e6-Jt
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:04:15 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag40-0002mF-SZ
- for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:02:36 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-411fc50e4e9so9097455e9.0
- for <qemu-devel@nongnu.org>; Thu, 15 Feb 2024 10:02:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5i-0003Hn-Mp
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:04:13 -0500
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-55f0b2c79cdso1874048a12.3
+ for <qemu-devel@nongnu.org>; Thu, 15 Feb 2024 10:04:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708020143; x=1708624943; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708020248; x=1708625048; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YTTtBw/s0faU+3j1Lg8q8e01VXsKvPyBNLyd6bIBBuE=;
- b=SlgQmDBAoOSWuzi8AtiCigGdia1KyzLMo5oeKHGp2I+k6boOX3Q/oT/4K+MQJcuO1v
- R8u/S57/Su5Ukxy+YQsJWXjPJIPAYu4hV4d5DH+gBCKj0Y4fXaluLxsHyXnATBfl2X7Y
- q1a4k0TEqtnBRUewtDYXMSdZlFumLacCsXGBR+Td+zMzy8ST8qlyUjPvop+CgCXApWf3
- 6dNV0Fjw1jwaKsEyRoQEZoAyZIanQMhvND0fJ6xsP537L0uY1GBs2ayGD9JVEvv+uU7L
- 6+jQpn75BcP8NMWViKfSd1d9dAV3IjfwdXDjc+glwyPVRAQ0uTp5oJfFEnvaUcX3FA+s
- YeDA==
+ bh=LO7EQ9/NcsUn+L+LcRsaAULB8zo1/K9N0sf9+N40e+k=;
+ b=VNNCDr2AE6NqTlGkRxwFkj3qIAcerrb4fHwcFqkKXMANa/hHn/dktJiozLuDAKCMmc
+ +AFkYCsaJj86V4yORy3UW/p/x0zrhQD/lGu0X/vfBr1oSKEm8VHE9NalYLUmr106Ga8l
+ U2wsXynC+lUYXhTH/465tBNP10rY+kEAY0uil2xBmoTc2hAFLQ2ASygPFLRtJq71x8Tv
+ uKTF9pZFpdMGKf3Cm60n5xZjVl+e7M4SVlewar9khidGPgYNBsH09yY9gAUj4wlKYsXN
+ xCqduRyrf2nZ+iWFSdnPLYYJIS2EvETaHvkKQpUM7b660SiWmeZB2MiWaBoeZlKkDnsX
+ fNmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708020143; x=1708624943;
+ d=1e100.net; s=20230601; t=1708020248; x=1708625048;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YTTtBw/s0faU+3j1Lg8q8e01VXsKvPyBNLyd6bIBBuE=;
- b=p9p7lrYaksoJWYsrFt1Zha2LR/c+qBHv2JCUI4JR7yqIxSsb3DA7fhxiU/R58KPNzK
- 6XD+z3pNmtSMVc0Wd9ski27JmVX1GSIebnKTB++aYpVp3NXYVYwUCuR+YrpJK/ztUImI
- 69xh5ayEPcJPxstQGRmZrT5TkX8b+heNahDAlbdnSxLLENHr9taLjB3NByWLAyd3MBQK
- jqDsIsXZv02RqQ3vp7MRx0ZKb1NrwbN7DyD/g/oJhz10pEvk6wrva0rvWPzbiC6S7Y6q
- vFnvSpznxz4/LPSYXRSW7HngKzPxvEvjUzh9tjJ5Zs90np71Xw51AOx0hj98oSbfIe+y
- ACgA==
-X-Gm-Message-State: AOJu0YxmD6L60Wb/v+5PdujmyrjR+P314vr40AhnVUTxDhnRZREbu8e4
- Wj0hTGpKVYuhTzGtj/Vu2kVuz5Q6hQUWYTvjZX9ef26Ulk3AznkfpWCPvdzu+aVVUmxPsz4SaTB
- djlo=
-X-Received: by 2002:a05:600c:6008:b0:410:c127:62fe with SMTP id
- az8-20020a05600c600800b00410c12762femr2036267wmb.1.1708020143112; 
- Thu, 15 Feb 2024 10:02:23 -0800 (PST)
+ bh=LO7EQ9/NcsUn+L+LcRsaAULB8zo1/K9N0sf9+N40e+k=;
+ b=qxPysDDJWLHlzXD5M+a5D2LetxvPZzTI7heHCo0Sgu5WLdVF6yfvE1ylAwoRwffqKX
+ KBDmejO7P4S1Kc+/fBzO29oeejm+tbQcwlBH4/5OW16nUMa0vBhg9u+KN0iCfqSo1QOl
+ KWa2WPgHtxm/J0Ya3TyQ8FbnEOgomOdZD7tlmUegbvECdw3jtj1Qx5wM/YF24HNqvHCT
+ pE9+dlZu1Q4V/+NHCN+eE83ezJztZA2Qxpdfu992EvdnaxhJfOWevhq8EPIcf7FOhr+8
+ a4elqN7y0EOjhwEy0ACfuqGlVnarIxYlMJiVK+1n4Y8BTEVHUZX20MS9zj0xWM81iOyU
+ +ssw==
+X-Gm-Message-State: AOJu0YwNcHgYecm0EXBEyVcCcRcBm+BGyZyzkQdOOpYibUMUh/ycOpz1
+ nv21KsnVTZxSqZAyVyrTXuaaQdCBAI+Z8hZJNj5yK8Jlr08880qo/BI70yC94d5dWG2bxzGIRX1
+ +NU8=
+X-Received: by 2002:aa7:cf0d:0:b0:55c:d503:764c with SMTP id
+ a13-20020aa7cf0d000000b0055cd503764cmr1899966edy.22.1708020248315; 
+ Thu, 15 Feb 2024 10:04:08 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- n18-20020a5d67d2000000b0033cf0f5a01fsm2390836wrw.33.2024.02.15.10.02.21
+ ec55-20020a0564020d7700b0055c85e6d75dsm772448edb.87.2024.02.15.10.04.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 10:02:22 -0800 (PST)
+ Thu, 15 Feb 2024 10:04:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PULL 40/56] hw/sparc/leon3: check cpu_id in the tiny bootloader
-Date: Thu, 15 Feb 2024 18:57:34 +0100
-Message-ID: <20240215175752.82828-41-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ John Snow <jsnow@redhat.com>
+Subject: [PULL 56/56] hw/ide/ich9: Use AHCIPCIState typedef
+Date: Thu, 15 Feb 2024 18:57:50 +0100
+Message-ID: <20240215175752.82828-57-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,66 +130,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jyGCs6jOGw2Z
+X-TUID: f1fkspxEQ68U
 
-From: Clément Chigot <chigot@adacore.com>
+QEMU coding style recommend using structure typedefs:
+https://www.qemu.org/docs/master/devel/style.html#typedefs
 
-Now that SMP is possible, the asr17 must be checked in the little boot
-code or the secondary CPU will reinitialize the Timer and the Uart.
-
-Co-developed-by: Frederic Konrad <konrad.frederic@yahoo.fr>
-Signed-off-by: Clément Chigot <chigot@adacore.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240131085047.18458-9-chigot@adacore.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240208181245.96617-2-philmd@linaro.org>
 ---
- hw/sparc/leon3.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ hw/ide/ich.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index 1637900162..bea84f3ad6 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -99,12 +99,26 @@ static uint32_t *gen_store_u32(uint32_t *code, hwaddr addr, uint32_t val)
+diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+index 122fc7e0ab..3ea793d790 100644
+--- a/hw/ide/ich.c
++++ b/hw/ide/ich.c
+@@ -100,14 +100,14 @@ static void pci_ich9_reset(DeviceState *dev)
  
- /*
-  * When loading a kernel in RAM the machine is expected to be in a different
-- * state (eg: initialized by the bootloader). This little code reproduces
-- * this behavior.
-+ * state (eg: initialized by the bootloader).  This little code reproduces
-+ * this behavior.  Also this code can be executed by the secondary cpus as
-+ * well since it looks at the %asr17 register before doing any
-+ * initialization, it allows to use the same reset address for all the
-+ * cpus.
-  */
- static void write_bootloader(void *ptr, hwaddr kernel_addr)
+ static void pci_ich9_ahci_init(Object *obj)
  {
-     uint32_t *p = ptr;
-+    uint32_t *sec_cpu_branch_p = NULL;
-+
-+    /* If we are running on a secondary CPU, jump directly to the kernel.  */
-+
-+    stl_p(p++, 0x85444000); /* rd %asr17, %g2      */
-+    stl_p(p++, 0x8530a01c); /* srl  %g2, 0x1c, %g2 */
-+    stl_p(p++, 0x80908000); /* tst  %g2            */
-+    /* Filled below.  */
-+    sec_cpu_branch_p = p;
-+    stl_p(p++, 0x0BADC0DE); /* bne xxx             */
-+    stl_p(p++, 0x01000000); /* nop */
+-    struct AHCIPCIState *d = ICH9_AHCI(obj);
++    AHCIPCIState *d = ICH9_AHCI(obj);
  
-     /* Initialize the UARTs                                        */
-     /* *UART_CONTROL = UART_RECEIVE_ENABLE | UART_TRANSMIT_ENABLE; */
-@@ -118,6 +132,10 @@ static void write_bootloader(void *ptr, hwaddr kernel_addr)
-     /* *GPTIMER0_CONFIG = GPTIMER_ENABLE | GPTIMER_RESTART;        */
-     p = gen_store_u32(p, 0x80000318, 3);
+     ahci_init(&d->ahci, DEVICE(obj));
+ }
  
-+    /* Now, the relative branch above can be computed.  */
-+    stl_p(sec_cpu_branch_p, 0x12800000
-+          + (p - sec_cpu_branch_p));
-+
-     /* JUMP to the entry point                                     */
-     stl_p(p++, 0x82100000); /* mov %g0, %g1 */
-     stl_p(p++, 0x03000000 + extract32(kernel_addr, 10, 22));
+ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+ {
+-    struct AHCIPCIState *d;
++    AHCIPCIState *d;
+     int sata_cap_offset;
+     uint8_t *sata_cap;
+     d = ICH9_AHCI(dev);
+@@ -156,7 +156,7 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+ 
+ static void pci_ich9_uninit(PCIDevice *dev)
+ {
+-    struct AHCIPCIState *d;
++    AHCIPCIState *d;
+     d = ICH9_AHCI(dev);
+ 
+     msi_uninit(dev);
 -- 
 2.41.0
 

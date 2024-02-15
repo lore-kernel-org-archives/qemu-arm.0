@@ -1,116 +1,116 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739802ejb;
-        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWm4K00Vr2YbaAPtuhcL7y4OM2ss0yx13exOTQwnX8TvXBOL8v6yjr+/sz43wNv/PGfCoboLwawxdOw3TvxLvMjJMxWzT6K
-X-Google-Smtp-Source: AGHT+IGcptlTXAF0CfN2s1zvlXF7YvMDogxEH4yLup/jr3LEtnnF0I6UC1GhVFMd9eZXz8SxAtLW
-X-Received: by 2002:a1f:6602:0:b0:4c0:7d26:58da with SMTP id a2-20020a1f6602000000b004c07d2658damr2400374vkc.2.1708020283369;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739809ejb;
+        Thu, 15 Feb 2024 10:04:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU4Yqgc7uUFX5P0mvtN4k4R/KiO9fwGwloLyWl2yK+/P+0lQdlxq6Y5VpIFZ5IfBHK279hEuGOKQEVopKmROB36daIwgA/+
+X-Google-Smtp-Source: AGHT+IGsPMQwjO4b7ExFlBhq1wGxU2LWojE+hxGEpMxMS7lyxVgwEGeAamRmD3mYbcvINiSIEW/g
+X-Received: by 2002:a05:6808:1184:b0:3c0:3309:2057 with SMTP id j4-20020a056808118400b003c033092057mr3588807oil.26.1708020283894;
         Thu, 15 Feb 2024 10:04:43 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1708020283; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvJuyJgl3eHY8nS0IYEKjxYXC+chjq/0KkKP9D6UzqizeIUMYq6/S9EMZm2xowwWK5
-         Z/nwkwCMakqDfUgxBCBGbZ4JF4ddsqZgUGxrbuABzJ/mlZTHzvsMIM9Uw/ipRqLFMRau
-         GO945ZQZ+lO19rLGHqORZtDD50Z/8P68sCXu7VuYwjilvYfw1CGIacF2K//E+8/huNXK
-         xK5QGdMbr5LqWLDt579W5Ojik+9R6qZeNFJtydIl97JnD2Qqii0TtdQxOhJZHcPoLI0T
-         VS/plGjyOhETX4stJZhrd639ml8hPqZmEnq5D/m7VROrMoRl9EP52r9feabHptkaVPG6
-         JoYw==
+        b=YmQJmdo27XqFuVfMf0riGYRbwIZvFla0GfEgfFKqRJDwm8i32tOjibU72E/k+v6SmF
+         J9XC5W+mPa6dS/8NvxK7fwt5ANXCVmw27gWGSow0P3+nYKFnde3Qw6x7UfhwPjPY3oFv
+         Uh2BJArsggaOHFKfNk7L0VZC4eQRXiwSoS0bJYyeOK/csMHmwGXcTcPTYRMIgjPUx+Bp
+         xP3wt5rHu1d3zzIhebTvcpC2IIkRdlU3SexbRkqqyOrBjMUWnZG360s0DKFKVeJCStDf
+         i0iThcimHhIkVsULjmnOAZN4k9lfllfjAokp9agpkYqSIVs4mCrNHsdqlqtwYBKYjckZ
+         aq6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
-        fh=YP1OlSQK5sAU6c7jpOseqoOmi3Ukq/ghTEDPwTgFHjs=;
-        b=KKBD4MaWWOHE0NsXO/PGWyV/T5nrYsuk9iVKRYDhSZhEfXaKPRgvWJOaXGd7dd7/xl
-         fLAkFqERr2cX6WHtehJm4bN2if5iIuXaDv3dtjQcbwjL9yqfezM3PirAvRUcaUF6rNXF
-         YCM1ofFN2haNrwfhF+5BMwQZ5qSxiLUMZ6GCfxP031RFMXn+3drUlPP7V5CyhL3O7AJx
-         JhwfLlmr9lh8ojy1Hgzyw3SK+aicFpM1BLliGMuDb2WhgJVygIog7zCFUaUe0IqySWOQ
-         P4SQnOb93OnPUFFprB8YfA2u5QiVCZyHcMVJbu3hJfl8imH0AxxKLS1nsvE6sM76/wB7
-         8mZw==;
+        bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
+        fh=ySkeD0cMS5l7FSy0x0WaxGntPkHf6TA0RKgBwNZqK9g=;
+        b=1E8m3tGSzK0fSj8+/Xf2t9us9lsv8sgEv6o54JaXadf3mdXS1/yUjhh30aNMaUJiXX
+         jL0VfEfgkVyBlayMvTL208iECzp2U9aIb+nbl/QlBxAUeYh9CJZGrKks+mWloO97Z7ay
+         6Ivv0YsJYtZAajfglNQTcrQll2i5syZISJQ+H0cBuLwmNq3AVwyA/lCEtR9Fc0MaLJOh
+         bs3nTWIPaR5Lhd5gaLmy5O6eqef6wuyEPTFoCmggbgTqrpMJfuPKwWJjtUek4gMBsyl+
+         oS8TFnkhPv9CKDrqe4//odWLoQv+J2lnCWgDg+3Mna/TrW+jEiT9Brj/SpA9c2CkzOYt
+         B6tg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eSLdhUi4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2xmsA7O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g26-20020ac5c85a000000b004c021303babsi390622vkm.302.2024.02.15.10.04.43
+        by mx.google.com with ESMTPS id j4-20020a0561023e0400b0046d1c59f198si418024vsv.250.2024.02.15.10.04.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 15 Feb 2024 10:04:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eSLdhUi4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2xmsA7O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rag1j-0006zy-QO; Thu, 15 Feb 2024 13:00:04 -0500
+	id 1rag5g-0003Z5-J5; Thu, 15 Feb 2024 13:04:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag1g-0006cE-FB
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:00:00 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5Q-0001yu-6Z
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:03:52 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag1e-0001t8-E6
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:00:00 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-411d3c75026so9348275e9.0
- for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 09:59:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag5O-0003Dm-FX
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:03:51 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-56399fb02b3so1545131a12.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 10:03:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708019992; x=1708624792; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708020229; x=1708625029; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
- b=eSLdhUi4QXO3Q4APHbiB67wLcgis0wcTKvILLJ6Aw1XL43jad83bipoBhnWZaakNxK
- InhpHO0sXjpyZIAMIPcNbX3dQxzitCiveCWYq/96L1aHH3N/rwkUbvwEavL13a8P+Y5q
- bxBDw4Tvw05plZ0t+vfnPbx7lm1XfWS+qFxYBLy4ARdO1Q8yRLtE3ZaVJwTSX8156sk9
- AHXJjXWkashzsb5nsjSVvCqdxjsqA0ePxiD5hXORPJZjGoDoMlT2G371BoRzI3jbAbaX
- GpkPeNRvAM5LGvIC9x+FPCbskY+pxFmuzEwHzkt4rZiiyGK411jXS5lmei5Bp4tal3Hp
- +RDQ==
+ bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
+ b=L2xmsA7OzIxFYSMqiDkrrEsCWcChHteAtGCiR2/B3sDD0T3YFPmn0Z++yCAiELAEXr
+ C4wl7TCHIwpiaOUjiknUK6M26nH8ax2a+Kx4+d2n94o0DbHTzfm7n8uj+qgyDTfARuxd
+ 9NCQPFsBRT3mqTbSm0JbcjTO1V8Y0MQW/XbMODRMKaVmAMXCy0Ua8D2jD9M3EQrK+sJl
+ GaEq+HuB/8aA2sdhcgn2dFnhnNVb2hqIo3VTxJ3MJWJui37O6GbVL4Gc7llGpRwPgsYM
+ 5KJABNmFbmalqXLVGbUKx9QETBZY4PDuZYd4HK+yvh9Ls7r/ffIbIwKAy1qJo0LAwkM7
+ IKDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708019992; x=1708624792;
+ d=1e100.net; s=20230601; t=1708020229; x=1708625029;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
- b=ug6cXIN849q+dSzIbxZNyUfUERG2R6DqnUB4+TOf+X6SLbO00kPLzY8indRDdRzO22
- bPbYz+5AP7KaNaONKYi8pG0IQ+A+23VzbID6eTbO44qCKqWPRJqEzrzuE36MeOOsYEZY
- iqcCh2BYfCoSNZqKGPVE4Fupa5p5AFLmOr5ZOtrOwNhxQenBhg2bcOgjuw/pa5XZNtHe
- 4TpPjgs2xGQuAFNHbBWmWRAqQZx/xs7vzGXxnLbGEQwFsO7ve5DuN0sSldPOEC0wd5Fa
- 8PTHeUoZdCvICGsqmk6S5Z+heFuTJlgUtTOr6sR30WhE6aZhVnUi7tFqXRiXxKsAkOLN
- Yiqw==
+ bh=6J7vJKQXa+8iZQt74/J2PIq4S7PNQU5OOBph7QaqNT8=;
+ b=cz3JuQaHHXGtWhv/h5QMTXKUsvaG/VnslMxCLD21NoCB/lkdpFVDX9y9aSeZNJNIVm
+ 1tE76J0iDtvpTcQ+qQyOgha9xH4eKOQ5SCCxu3ug9jLovVBPSFUO3aedKHn21C5eMKBm
+ ibUsF/gjIhqDZmymqK+ZrIXkrNc3pZgdWekokTo1L+3zG7hJcR9xFa4uqKJK+o47fmnF
+ exTxGh0u1srXl11ID52YfLhvqu9Fh4vCwWsYKjoKn0fJObO3SxPYG4eLG7r6223q0mX4
+ 4kuIZ3QNhacbjui/8MxmOv83pIgQUIaZaDFzQDuH6t4J1kwPogyVMQO6igwQUlIds9iv
+ H52A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU9I/vrNckY7mkLpA4pmd9wA+wLzuetQXEqZMTNNndlz7m5fq4BS0HaDIUun6oBPDjCdeqIon5d5km8ON/kZOBcJksA
-X-Gm-Message-State: AOJu0YwB2G09bW5ACFPkMJAyxdaXENsF8oM1YquwpWYeNmpY0hOq20Fg
- PbTU+2u2HwsyPgrB+VFBfbxuzZbSvUB3ukt4M/qqkbnE8IVt0uvvJkMA2gHS9UQ=
-X-Received: by 2002:a05:600c:91a:b0:40e:f46d:ad35 with SMTP id
- m26-20020a05600c091a00b0040ef46dad35mr2161791wmp.36.1708019992628; 
- Thu, 15 Feb 2024 09:59:52 -0800 (PST)
+ AJvYcCWJmL4RKfDgaFDkbwkhYu/IEb97PJikZrFiwmY6XfJmDKwrbKgIktr8JARSZo6WS0Stt08joYQQlHq0E69/pPI07cLc
+X-Gm-Message-State: AOJu0YzOQYFZmHPi3vHmZsCTeCyGdTy7UM98dOXLODTZ3lExoI8xIH3l
+ UGtkrXtE813Qsy1zAOMLkP7FW1f8RqMhPg1nCFxiHHwVHnSVeGGjJl8nmjFygQc=
+X-Received: by 2002:a17:906:4a1a:b0:a3c:ff93:e12d with SMTP id
+ w26-20020a1709064a1a00b00a3cff93e12dmr1965936eju.74.1708020229262; 
+ Thu, 15 Feb 2024 10:03:49 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- z11-20020a7bc7cb000000b00411b7c91470sm5630301wmk.12.2024.02.15.09.59.50
+ vi17-20020a170907d41100b00a3d782d885dsm782424ejc.121.2024.02.15.10.03.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 09:59:52 -0800 (PST)
+ Thu, 15 Feb 2024 10:03:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 18/56] hw/isa: specify instance_size in isa_superio_type_info
-Date: Thu, 15 Feb 2024 18:57:12 +0100
-Message-ID: <20240215175752.82828-19-philmd@linaro.org>
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ John Snow <jsnow@redhat.com>
+Subject: [PULL 53/56] hw/ide/ahci: Do not pass 'ports' argument to
+ ahci_realize()
+Date: Thu, 15 Feb 2024 18:57:47 +0100
+Message-ID: <20240215175752.82828-54-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,59 +132,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NNwO4eR3oVIb
+X-TUID: Dc0/GLkKJXRY
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+Explicitly set AHCIState::ports before calling ahci_realize().
 
-Right now all subclasses of TYPE_ISA_SUPERIO have to specify an instance_size,
-because the ISASuperIODevice struct adds fields to ISADevice but the type does
-not include the increased instance size.  Failure to do so results in an access
-past the bounds of struct ISADevice as soon as isa_superio_realize is called.
-Fix this by specifying the instance_size already in the superclass.
-
-Fixes: 4c3119a6e3 ("hw/isa/superio: Factor out the parallel code from pc87312.c")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Bernhard Beschow <shentey@gmail.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20240213155005.109954-6-pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240213081201.78951-8-philmd@linaro.org>
 ---
- hw/isa/isa-superio.c       | 2 +-
- hw/isa/smc37c669-superio.c | 1 -
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ hw/ide/ahci_internal.h | 2 +-
+ hw/ide/ahci.c          | 9 +++++----
+ hw/ide/ich.c           | 3 ++-
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
-index 7dbfc374da..d85f22db1a 100644
---- a/hw/isa/isa-superio.c
-+++ b/hw/isa/isa-superio.c
-@@ -185,6 +185,7 @@ static const TypeInfo isa_superio_type_info = {
-     .abstract = true,
-     .class_size = sizeof(ISASuperIOClass),
-     .class_init = isa_superio_class_init,
-+    .instance_size = sizeof(ISASuperIODevice),
- };
+diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
+index 4dc2805d21..4e13329bb2 100644
+--- a/hw/ide/ahci_internal.h
++++ b/hw/ide/ahci_internal.h
+@@ -377,7 +377,7 @@ typedef struct SDBFIS {
+     uint32_t payload;
+ } QEMU_PACKED SDBFIS;
  
- /* SMS FDC37M817 Super I/O */
-@@ -201,7 +202,6 @@ static void fdc37m81x_class_init(ObjectClass *klass, void *data)
- static const TypeInfo fdc37m81x_type_info = {
-     .name          = TYPE_FDC37M81X_SUPERIO,
-     .parent        = TYPE_ISA_SUPERIO,
--    .instance_size = sizeof(ISASuperIODevice),
-     .class_init    = fdc37m81x_class_init,
- };
+-void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports);
++void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as);
+ void ahci_init(AHCIState *s, DeviceState *qdev);
+ void ahci_uninit(AHCIState *s);
  
-diff --git a/hw/isa/smc37c669-superio.c b/hw/isa/smc37c669-superio.c
-index 18287741cb..9e59dc1603 100644
---- a/hw/isa/smc37c669-superio.c
-+++ b/hw/isa/smc37c669-superio.c
-@@ -103,7 +103,6 @@ static void smc37c669_class_init(ObjectClass *klass, void *data)
- static const TypeInfo smc37c669_type_info = {
-     .name          = TYPE_SMC37C669_SUPERIO,
-     .parent        = TYPE_ISA_SUPERIO,
--    .instance_size = sizeof(ISASuperIODevice),
-     .class_size    = sizeof(ISASuperIOClass),
-     .class_init    = smc37c669_class_init,
- };
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 2c3306dae4..33f7e83687 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1614,14 +1614,14 @@ void ahci_init(AHCIState *s, DeviceState *qdev)
+                           "ahci-idp", 32);
+ }
+ 
+-void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports)
++void ahci_realize(AHCIState *s, DeviceState *qdev, AddressSpace *as)
+ {
+     qemu_irq *irqs;
+     int i;
+ 
+     s->as = as;
+-    s->ports = ports;
+-    s->dev = g_new0(AHCIDevice, ports);
++    assert(s->ports > 0);
++    s->dev = g_new0(AHCIDevice, s->ports);
+     ahci_reg_init(s);
+     irqs = qemu_allocate_irqs(ahci_irq_set, s, s->ports);
+     for (i = 0; i < s->ports; i++) {
+@@ -1862,7 +1862,8 @@ static void sysbus_ahci_realize(DeviceState *dev, Error **errp)
+ {
+     SysbusAHCIState *s = SYSBUS_AHCI(dev);
+ 
+-    ahci_realize(&s->ahci, dev, &address_space_memory, s->num_ports);
++    s->ahci.ports = s->num_ports;
++    ahci_realize(&s->ahci, dev, &address_space_memory);
+ }
+ 
+ static Property sysbus_ahci_properties[] = {
+diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+index d190012a95..122fc7e0ab 100644
+--- a/hw/ide/ich.c
++++ b/hw/ide/ich.c
+@@ -113,7 +113,8 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+     d = ICH9_AHCI(dev);
+     int ret;
+ 
+-    ahci_realize(&d->ahci, DEVICE(dev), pci_get_address_space(dev), 6);
++    d->ahci.ports = 6;
++    ahci_realize(&d->ahci, DEVICE(dev), pci_get_address_space(dev));
+ 
+     pci_config_set_prog_interface(dev->config, AHCI_PROGMODE_MAJOR_REV_1);
+ 
 -- 
 2.41.0
 

@@ -1,128 +1,145 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp635568ejb;
-        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU5g5u1SAekxFs9A/3LgwCeTKCJvO9RG2VK0nXNpEtra33AZcEUd0Qy/C1QPrpDPLrGlqSIiDfP+EPfK45jEWsba0TPVS3G
-X-Google-Smtp-Source: AGHT+IEh3MCBACWDBsuKpOQalXA35wU2Jk2BBg0zCK3rzZ1VuPvBxjGyhrkG/v0SG/b/fN9GHSaj
-X-Received: by 2002:a5d:5046:0:b0:33c:f677:a637 with SMTP id h6-20020a5d5046000000b0033cf677a637mr2015085wrt.18.1708010316089;
-        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708010316; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp646786ejb;
+        Thu, 15 Feb 2024 07:36:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV9T3o4cBxME7YkYTz95oAlSheIGE8R3S1hgtEsfFKRo6ttRq2qWrtkI52GTdJbycSD0mHl583ZiTLPgoFIsKULV37uE0R5
+X-Google-Smtp-Source: AGHT+IGL9WQqHWMw48UayBeQWWG+FBWYKPR4M2+aOwZHiygEfHYLVDq0bP8/q7SgZyw5yU/lV8BC
+X-Received: by 2002:a05:6808:2f17:b0:3c0:39ed:4384 with SMTP id gu23-20020a0568082f1700b003c039ed4384mr2549724oib.20.1708011393194;
+        Thu, 15 Feb 2024 07:36:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708011393; cv=none;
         d=google.com; s=arc-20160816;
-        b=nLRn0ddOkYOEGDHfFA4CAdkJDesx+ZR3ISnuE8+/P+iDnK+ODZZGMh1UOzx/r7cvsN
-         I1jEP6x+6Uro/vsqsxus/AaUFLJaqd3HpbjXIVKYI6+HCB78f8e5VDnf8lRSPovF9Jhp
-         aDbOESRtDIQtYqKxPDdHHNf3nFOB32J2UL/nh2m0L8j5P+qBHHX5dnunF6M02jfL5qlx
-         zL84xVvPgy1/6L4FrFn9fcSMYbNSQ7smE5yy7uBqMhKK4LYd7eBzd9x6CZRjpcdLufQ0
-         F+jQdflInY73FvKsxJaDOJ6CXfWOy0xHJtz1ZdOWMV+AhDRItSY4nLoIX5x1vBuWR/mG
-         ZFNQ==
+        b=zQ7mFaKOMUZ8ZTqJlrn4vKwkUuthsA+A3pddbFZd7KO1ggfYf7A6uUG3dN3D0e9T9A
+         KYLAaS1QzvnmCATBOcxVbZAoYTljMgwU6tKEd6wtTlBvu+JxeW9nGZzABErU1sBwHjWk
+         f5rSz1OofynQTufXdh18jpdhvyD0SPRkKtyRXt9vDoNUkdeA1RroqbIwHMbgcHwgZGFf
+         OPTbgyuFBZ5KbLhG8BKF+Kt39akm6LTvBKn8nezC6jcMi24UZXMc0uDM5ltwHzjQbqcs
+         O4VNLJkHRZETHsCCAbufgx36ZXF7mNNleey7MeUOdeG0LEA45R7koNvwFAbGN8wZhkrV
+         ZwoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=y9RfYvGcKmJEHeO7Q7A+afZQ3ur0mgqnAL9/HxpSRa4=;
-        fh=Vg2yBWlikDPSwYiCI/Uk6oY6b+moM58ISSo3pIJ9eYM=;
-        b=ciwEyfBVp/PkidH8YGeGKCReZUIHvstV7SqmyLLftcAKGizY+10xQlL9TOoh0yZjiL
-         7DIqgx9GnyOwDv8ePv7A50IyY//ACOh2sMcbpftmRu0hyvJuX9Qc+VDQzMAtJ044Stsy
-         claP4ETn92stwlxWkCcIzFfFAEa9OgfuW1oroCp4SRwesXvSkouaPPeqwaTvtYDRbQl/
-         ZbJVynommkh508QVnckeMy8EvreSceyx3maclzMhwGgjCJlyDx34sWr4BaUHJSNyAKGa
-         uEvMipqFy5IuV+fv3y9Ypf2obF1dlK7xtap7N/FAqtFxH9RXyVWZwqBqqXIMifI+ubAH
-         OA0Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=gmJegsZZbC62SRmjMFtg6AwsWREQyOdJx3WRnV4HBfk=;
+        fh=KVD7oeVOoaG8TNdoVqxd0mP9JaEKQmL4zoPXB93xZBk=;
+        b=ohtxlOaIuOfcww6mFriY2QsiKH4Vh8SiTpeidFfGqIhnNwLk7HU85UHrV5btXkI+uC
+         hQ2yeeNJ2g0Kzh2uKc9lKBXJfM1dW9mzE2mt+8syGcYgDJTKqVSeXSEMUWCoLjR+K8aI
+         2LFIZss6isVS0Gdvoe5mFsYimU5ql33hkN7KYj2s96EneGPdR57B+/PSS1ZpdxGG2DtH
+         /O53ZnMx9FqVsw0iDJ2zTQlsbduGdfbdaTYIoxPxRRpqMABhFMW9YLDRvDeWE8xozgfW
+         /wxhTMRmc4FhzPaEk2mXr/jIFyM2v4Uz1XMziNkuwsbR1CS6Q3giXS/9i1i5jkj3Y6+Z
+         CFNw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id b7-20020a5d4b87000000b0033d1123db6csi354584wrt.56.2024.02.15.07.18.36
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pJnglQ3A;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gg15-20020a056214252f00b0068c82493a00si1689785qvb.25.2024.02.15.07.36.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Feb 2024 07:36:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TbJWt5spZz689Hq;
-	Thu, 15 Feb 2024 23:14:50 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 4D6EF1400CD;
-	Thu, 15 Feb 2024 23:18:35 +0800 (CST)
-Received: from SecurePC-101-06.china.huawei.com (10.122.247.231) by
- lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 15 Feb 2024 15:18:34 +0000
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, Gregory
- Price <gregory.price@memverge.com>, =?UTF-8?q?Alex=20Benn=C3=A9e?=
-	<alex.bennee@linaro.org>, <richard.henderson@linaro.org>
-CC: <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: [RFC PATCH 1/1] arm/ptw: Handle atomic updates of page tables entries in MMIO during PTW.
-Date: Thu, 15 Feb 2024 15:18:04 +0000
-Message-ID: <20240215151804.2426-2-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240215151804.2426-1-Jonathan.Cameron@huawei.com>
-References: <20240215151804.2426-1-Jonathan.Cameron@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=pJnglQ3A;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1radmM-000695-BU; Thu, 15 Feb 2024 10:36:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1radmL-00068R-7a
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 10:36:01 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1radmJ-0002mv-M6
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 10:36:00 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-33cf7812777so560018f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 07:35:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708011358; x=1708616158; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gmJegsZZbC62SRmjMFtg6AwsWREQyOdJx3WRnV4HBfk=;
+ b=pJnglQ3AqCvjo7nzdczYSK3c98aY5e50RBDEEJqsaVU+13dH9pEC7cEZJHPW9DEy2k
+ 4FJ0J4wBBlx9ZyBFssLxLmxA5ylBFtJLDJNQfe6Rgno3vu3DnKLlzFNjNVHpa3PpY7Yw
+ /mj6LuC+q8t4zssGue61R4udD1B6iUsFgB+hvVIt6s6bxnvvE65wbdN4IUWHasmUcM+S
+ lqgMZ9MZtZ9u9AxdTHnQKpwGNh4WRqXw5OemNSScZuY1kZdRKQb0xCQmExE89KFrqdJo
+ HgYgjZ7I4b+rfZpSq3mOqkDf4PNIK0pFpZ+2APAmP9Zhu3bbZzH5xJgXAw5ensMBpoA0
+ 8SJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708011358; x=1708616158;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gmJegsZZbC62SRmjMFtg6AwsWREQyOdJx3WRnV4HBfk=;
+ b=RYfLQeJ4CA6le5nLFs2KdNjqnddm7e1MkoRHyciWEhZ5SIVDo8SAA0KPUAyD/CoLtS
+ 567fTlEqxpvuG+OM8+R4Lw0jXd+v6C2/qxvO2BVm+PXuVPvLcCXbphxq+dBCUZHX+NE4
+ KqD8viFwU/V9VmCV810Ax8Ow9goqHz4nOoZJ73eC2L407DCoXC/elaBx+l+IJerkl+k3
+ sd1lGrWIxeCcS5TzjXOL2z7orcUqO8DvS8pbUUvM1TXnJPMqQV+ZKwtKOKvjQzzrFA0f
+ r4RZlEApO9JGFBrTVkVcalIHwSRu80MMlZCMhA3eu8k6Z01cqkfTUHg9DuuXeCHA846/
+ df6w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXWExwDprxonqHaxgV+U/XkOlee49aaMQBnKHWl5W9+woR7CVnSWM1VXlyItwJtihbtfHm6Y4PaM79G/k/VYuhoPOR9
+X-Gm-Message-State: AOJu0YxcwogTk+1Id65sVk3S1cJOGF5PSmPbWj1jIYBDHLP8xQ98sV1J
+ QAt8Bj+X0HXWJtco4+R3CQlTUEkdna/67xaLj0sZt8lIHsN4C9LrY4Yu8Cdez+k=
+X-Received: by 2002:a5d:4fc1:0:b0:33b:d225:3640 with SMTP id
+ h1-20020a5d4fc1000000b0033bd2253640mr1688604wrw.59.1708011357968; 
+ Thu, 15 Feb 2024 07:35:57 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.193.50])
+ by smtp.gmail.com with ESMTPSA id
+ co16-20020a0560000a1000b0033d0fbaf5d2sm1394986wrb.27.2024.02.15.07.35.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Feb 2024 07:35:57 -0800 (PST)
+Message-ID: <3cd6e296-80eb-4466-9cce-a01b8db9c189@linaro.org>
+Date: Thu, 15 Feb 2024 16:35:56 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Simplify init since PCIe is always
+ enabled
+Content-Language: en-US
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
+References: <20240215153311.186772-1-marcin.juszkiewicz@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240215153311.186772-1-marcin.juszkiewicz@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.122.247.231]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: LIp2AqgFz4Yj
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wOqJPPWX9Fs8
 
-I'm far from confident this handling here is correct. Hence
-RFC.  In particular not sure on what locks I should hold for this
-to be even moderately safe.
+On 15/2/24 16:33, Marcin Juszkiewicz wrote:
+> There is no point in checking do we have PCIe if first thing after check
+> is adding PCIe card without checking.
+> 
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> ---
+>   hw/arm/sbsa-ref.c | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The function already appears to be inconsistent in what it returns
-as the CONFIG_ATOMIC64 block returns the endian converted 'eventual'
-value of the cmpxchg whereas the TCG_OVERSIZED_GUEST case returns
-the previous value.
-
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- target/arm/ptw.c | 34 ++++++++++++++++++++++++++++++++--
- 1 file changed, 32 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 5eb3577bcd..37ddb4a4db 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -711,8 +711,38 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
-     void *host = ptw->out_host;
- 
-     if (unlikely(!host)) {
--        fi->type = ARMFault_UnsuppAtomicUpdate;
--        return 0;
-+        /* Can I do a load and store via the physical address */
-+
-+        bool locked = bql_locked();
-+        if (!locked) {
-+            bql_lock();
-+        }
-+        /* Page table in MMIO Memory Region */
-+        if (ptw->out_be) {
-+            old_val = cpu_to_be64(old_val);
-+            new_val = cpu_to_be64(new_val);
-+            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
-+            if (cur_val == old_val) {
-+                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
-+                cur_val = be64_to_cpu(new_val);
-+            } else {
-+                cur_val = be64_to_cpu(cur_val);
-+            }
-+        } else {
-+            old_val = cpu_to_le64(old_val);
-+            new_val = cpu_to_le64(new_val);
-+            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
-+            if (cur_val == old_val) {
-+                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
-+                cur_val = le64_to_cpu(new_val);
-+            } else {
-+                cur_val = le64_to_cpu(cur_val);
-+            }
-+        }
-+        if (!locked) {
-+            bql_unlock();
-+        }
-+        return cur_val;
-     }
- 
-     /*
--- 
-2.39.2

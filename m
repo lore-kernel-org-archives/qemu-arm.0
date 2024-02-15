@@ -1,245 +1,190 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739703ejb;
-        Thu, 15 Feb 2024 10:04:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7mFR75Y3OEehMuX1vZ+6mnMmfoFpL81WV6rbvl0QMfQa0s0cwjHxGhXwIcc55b3FQqPONhzCAP5M4BU+EhbTeZYVUVZf0
-X-Google-Smtp-Source: AGHT+IGhAqfVJT09d6vm2nd7vE48N30s5jijv45Z8CF1wroO6J7idSix3gJVZhvKi18XGsNA3oJ/
-X-Received: by 2002:a67:e945:0:b0:46d:28b4:95a2 with SMTP id p5-20020a67e945000000b0046d28b495a2mr2927039vso.32.1708020276656;
-        Thu, 15 Feb 2024 10:04:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708020276; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739802ejb;
+        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWm4K00Vr2YbaAPtuhcL7y4OM2ss0yx13exOTQwnX8TvXBOL8v6yjr+/sz43wNv/PGfCoboLwawxdOw3TvxLvMjJMxWzT6K
+X-Google-Smtp-Source: AGHT+IGcptlTXAF0CfN2s1zvlXF7YvMDogxEH4yLup/jr3LEtnnF0I6UC1GhVFMd9eZXz8SxAtLW
+X-Received: by 2002:a1f:6602:0:b0:4c0:7d26:58da with SMTP id a2-20020a1f6602000000b004c07d2658damr2400374vkc.2.1708020283369;
+        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708020283; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7KIM199UmNn3rklzNAABExhFK1JzbEqk+TDFoXmg+Q5OuWqOpsSJ/H2kuQBwQ5CJ6
-         4xS5FMRcAYBoz+WlZGc/RDYQawGoot6wo3GKun/hlmgrM/bevfc+fRe3JpgwtPTcivhk
-         BUb8QDgByLXwwARjtVoyq96wA83CsCv2AGkilV8W5x8CtWaJwUy/ARE2JvJkSeozIswd
-         bdtEYKbGwaGa452vB03fyhFEFKU0+u98lTk9GnWq41zWQYQGcJeSUzSlAAVyt+UQl1KD
-         KWcud5c0dMXQ96sq5UCdWw+ar3PWEAlqX0euXSO9P/W0g6AC7lY8ewR7FdRXpc8AOgLf
-         ClYQ==
+        b=JvJuyJgl3eHY8nS0IYEKjxYXC+chjq/0KkKP9D6UzqizeIUMYq6/S9EMZm2xowwWK5
+         Z/nwkwCMakqDfUgxBCBGbZ4JF4ddsqZgUGxrbuABzJ/mlZTHzvsMIM9Uw/ipRqLFMRau
+         GO945ZQZ+lO19rLGHqORZtDD50Z/8P68sCXu7VuYwjilvYfw1CGIacF2K//E+8/huNXK
+         xK5QGdMbr5LqWLDt579W5Ojik+9R6qZeNFJtydIl97JnD2Qqii0TtdQxOhJZHcPoLI0T
+         VS/plGjyOhETX4stJZhrd639ml8hPqZmEnq5D/m7VROrMoRl9EP52r9feabHptkaVPG6
+         JoYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
-        fh=r+mbcaIVBB+d5Ke8c8av/RXIbk1kcul/Ph9l9m3Dfks=;
-        b=A5nI/i9k0anC7ImWu1XUneb8ggvjXPlmKE8Wskmn+t220PUZw5SOHraNJEnedAR4Cd
-         dCU4V5HncsAjJ63OYG+aq3M7gQt0jbEs9WRyzzRYnYLNiNcf+kqn9fgadfb6922fk1La
-         PVgiYudcAaU/slXpmnB6hSh3bD8sON9cTM0K2Garnal7bTsYSD9IM/96/T+JElgY0j55
-         fd/ZlYQLSl/1fWP6H1SIHjtC3CBEi4s+eFJyc2RgGWxg+gyOzGMJVznEfbe3zUOsUY7h
-         EZIHK+n4DScwQnEH9RwLdQINuMbZy4IrGx6iqaScvkcx1SuiTL5znp4edN5QBXfpJwAT
-         b3XA==;
+        bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
+        fh=YP1OlSQK5sAU6c7jpOseqoOmi3Ukq/ghTEDPwTgFHjs=;
+        b=KKBD4MaWWOHE0NsXO/PGWyV/T5nrYsuk9iVKRYDhSZhEfXaKPRgvWJOaXGd7dd7/xl
+         fLAkFqERr2cX6WHtehJm4bN2if5iIuXaDv3dtjQcbwjL9yqfezM3PirAvRUcaUF6rNXF
+         YCM1ofFN2haNrwfhF+5BMwQZ5qSxiLUMZ6GCfxP031RFMXn+3drUlPP7V5CyhL3O7AJx
+         JhwfLlmr9lh8ojy1Hgzyw3SK+aicFpM1BLliGMuDb2WhgJVygIog7zCFUaUe0IqySWOQ
+         P4SQnOb93OnPUFFprB8YfA2u5QiVCZyHcMVJbu3hJfl8imH0AxxKLS1nsvE6sM76/wB7
+         8mZw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hOI1M3o3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eSLdhUi4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h29-20020a056102209d00b0046d1303f8a3si350585vsr.764.2024.02.15.10.04.35
+        by mx.google.com with ESMTPS id g26-20020ac5c85a000000b004c021303babsi390622vkm.302.2024.02.15.10.04.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 10:04:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Feb 2024 10:04:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hOI1M3o3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eSLdhUi4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rag3y-00046h-D0; Thu, 15 Feb 2024 13:02:22 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rag1j-0006zy-QO; Thu, 15 Feb 2024 13:00:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3Q-00036Z-65
- for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:49 -0500
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag1g-0006cE-FB
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:00:00 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3M-0002cw-F1
- for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:47 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id
- 38308e7fff4ca-2d1025717c7so13584431fa.2
- for <qemu-devel@nongnu.org>; Thu, 15 Feb 2024 10:01:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag1e-0001t8-E6
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:00:00 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-411d3c75026so9348275e9.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 09:59:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708020102; x=1708624902; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708019992; x=1708624792; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
- b=hOI1M3o3q8YkX1TJw4hk7FpfS30B9odCwTpiUYRav0slATxtzhMhHcN4kXR6+bvVUL
- GSWpo6Jkr1GLfhyefDS+Hi6AgX3gg/FW5pLzEoznNepSAhfpk/v98FXsHUGF6Cl8msWE
- Q3jIm1HRWoFdowT8vJeDucf9hZGY8j+jLUDkLfdS0f63VyvmmoNw3+5he2Fb+3EU4rML
- bA/vJbn9p+kDEQV4PKOvRZT7vURuWqLeh4K0H3xhZVSFr6G8McSE2lApV3C0xbIKutgc
- v2884sok21qrRl9dKOWYVWUwkNlYIwBkw/GSA15anwHVTsW8bcXPaIFy8p+EFESbKbU1
- +JEQ==
+ bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
+ b=eSLdhUi4QXO3Q4APHbiB67wLcgis0wcTKvILLJ6Aw1XL43jad83bipoBhnWZaakNxK
+ InhpHO0sXjpyZIAMIPcNbX3dQxzitCiveCWYq/96L1aHH3N/rwkUbvwEavL13a8P+Y5q
+ bxBDw4Tvw05plZ0t+vfnPbx7lm1XfWS+qFxYBLy4ARdO1Q8yRLtE3ZaVJwTSX8156sk9
+ AHXJjXWkashzsb5nsjSVvCqdxjsqA0ePxiD5hXORPJZjGoDoMlT2G371BoRzI3jbAbaX
+ GpkPeNRvAM5LGvIC9x+FPCbskY+pxFmuzEwHzkt4rZiiyGK411jXS5lmei5Bp4tal3Hp
+ +RDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708020102; x=1708624902;
+ d=1e100.net; s=20230601; t=1708019992; x=1708624792;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
- b=HWv0fVyVhPzFTSm54zXuWbQsliCSdqg/okE5fU0jWfWQZSASU8T9BaM9zARO+fiv2M
- QUgNBfS9BpKkTux3c/l6BY1F9E73kfNG+nUJUIf2ShdGDns098pYe5n3JlygNortVwUM
- mvmJXjQgUsJrQ1BZ8bDvETd6TZU06MJFLHE8GKJzCoBVjQVBfJRqoyjxcE+X6bjuupKj
- 5SPcTzgRknZ/pHghEuMBpgL0q6Vy2XWDpkc2F83Sidj2hyFD9FeFlVyR7mSVFSxtMe2M
- H5PME7BOygLxB/nAjMd4SFz0HuyvMa9AQFg6fr1hSr+1p40894H8xFILqLB+yXeAT++m
- JMmA==
-X-Gm-Message-State: AOJu0YzE7WN/sRPMPkGygJnPXDRkWvQSys5Scy19gRyxWT29CDKfcDby
- 9enC1KxRTAcj+9nA2ZudQNnxESr9a4ilTB2x227ktt/sm/P7zFYvlMaVH6xoYK0QKXEmWj7hsuy
- Cw9k=
-X-Received: by 2002:a2e:9058:0:b0:2d1:1c54:12d with SMTP id
- n24-20020a2e9058000000b002d11c54012dmr1857104ljg.38.1708020102325; 
- Thu, 15 Feb 2024 10:01:42 -0800 (PST)
+ bh=KrDWAyGRgS7V1HXGadIwipz2b43fHU+C3C1ocsMbGSU=;
+ b=ug6cXIN849q+dSzIbxZNyUfUERG2R6DqnUB4+TOf+X6SLbO00kPLzY8indRDdRzO22
+ bPbYz+5AP7KaNaONKYi8pG0IQ+A+23VzbID6eTbO44qCKqWPRJqEzrzuE36MeOOsYEZY
+ iqcCh2BYfCoSNZqKGPVE4Fupa5p5AFLmOr5ZOtrOwNhxQenBhg2bcOgjuw/pa5XZNtHe
+ 4TpPjgs2xGQuAFNHbBWmWRAqQZx/xs7vzGXxnLbGEQwFsO7ve5DuN0sSldPOEC0wd5Fa
+ 8PTHeUoZdCvICGsqmk6S5Z+heFuTJlgUtTOr6sR30WhE6aZhVnUi7tFqXRiXxKsAkOLN
+ Yiqw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU9I/vrNckY7mkLpA4pmd9wA+wLzuetQXEqZMTNNndlz7m5fq4BS0HaDIUun6oBPDjCdeqIon5d5km8ON/kZOBcJksA
+X-Gm-Message-State: AOJu0YwB2G09bW5ACFPkMJAyxdaXENsF8oM1YquwpWYeNmpY0hOq20Fg
+ PbTU+2u2HwsyPgrB+VFBfbxuzZbSvUB3ukt4M/qqkbnE8IVt0uvvJkMA2gHS9UQ=
+X-Received: by 2002:a05:600c:91a:b0:40e:f46d:ad35 with SMTP id
+ m26-20020a05600c091a00b0040ef46dad35mr2161791wmp.36.1708019992628; 
+ Thu, 15 Feb 2024 09:59:52 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- j12-20020a05600c190c00b00410bca333b7sm5918918wmq.27.2024.02.15.10.01.40
+ z11-20020a7bc7cb000000b00411b7c91470sm5630301wmk.12.2024.02.15.09.59.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 10:01:41 -0800 (PST)
+ Thu, 15 Feb 2024 09:59:52 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PULL 34/56] hw/intc/grlib_irqmp: add ncpus property
-Date: Thu, 15 Feb 2024 18:57:28 +0100
-Message-ID: <20240215175752.82828-35-philmd@linaro.org>
+ Bernhard Beschow <shentey@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 18/56] hw/isa: specify instance_size in isa_superio_type_info
+Date: Thu, 15 Feb 2024 18:57:12 +0100
+Message-ID: <20240215175752.82828-19-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aObjr1mRj4DD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NNwO4eR3oVIb
 
-From: Clément Chigot <chigot@adacore.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-This adds a "ncpus" property to the "grlib-irqmp" device to be used
-later, this required a little refactoring of how we initialize the
-device (ie: use realize instead of init).
+Right now all subclasses of TYPE_ISA_SUPERIO have to specify an instance_size,
+because the ISASuperIODevice struct adds fields to ISADevice but the type does
+not include the increased instance size.  Failure to do so results in an access
+past the bounds of struct ISADevice as soon as isa_superio_realize is called.
+Fix this by specifying the instance_size already in the superclass.
 
-Co-developed-by: Frederic Konrad <konrad.frederic@yahoo.fr>
-Signed-off-by: Clément Chigot <chigot@adacore.com>
+Fixes: 4c3119a6e3 ("hw/isa/superio: Factor out the parallel code from pc87312.c")
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240131085047.18458-3-chigot@adacore.com>
+Reviewed-by: Bernhard Beschow <shentey@gmail.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20240213155005.109954-6-pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/intc/grlib_irqmp.c | 30 +++++++++++++++++++++---------
- hw/sparc/leon3.c      |  2 +-
- 2 files changed, 22 insertions(+), 10 deletions(-)
+ hw/isa/isa-superio.c       | 2 +-
+ hw/isa/smc37c669-superio.c | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
-index 11eef62457..744cd64c58 100644
---- a/hw/intc/grlib_irqmp.c
-+++ b/hw/intc/grlib_irqmp.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU GRLIB IRQMP Emulator
-  *
-- * (Multiprocessor and extended interrupt not supported)
-+ * (Extended interrupt not supported)
-  *
-  * SPDX-License-Identifier: MIT
-  *
-@@ -63,6 +63,7 @@ struct IRQMP {
- 
-     MemoryRegion iomem;
- 
-+    unsigned int ncpus;
-     IRQMPState *state;
-     qemu_irq irq;
- };
-@@ -326,33 +327,44 @@ static void grlib_irqmp_reset(DeviceState *d)
-     irqmp->state->parent = irqmp;
- }
- 
--static void grlib_irqmp_init(Object *obj)
-+static void grlib_irqmp_realize(DeviceState *dev, Error **errp)
- {
--    IRQMP *irqmp = GRLIB_IRQMP(obj);
--    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
-+    IRQMP *irqmp = GRLIB_IRQMP(dev);
- 
--    qdev_init_gpio_in(DEVICE(obj), grlib_irqmp_set_irq, MAX_PILS);
--    qdev_init_gpio_out_named(DEVICE(obj), &irqmp->irq, "grlib-irq", 1);
--    memory_region_init_io(&irqmp->iomem, obj, &grlib_irqmp_ops, irqmp,
-+    if ((!irqmp->ncpus) || (irqmp->ncpus > IRQMP_MAX_CPU)) {
-+        error_setg(errp, "Invalid ncpus properties: "
-+                   "%u, must be 0 < ncpus =< %u.", irqmp->ncpus,
-+                   IRQMP_MAX_CPU);
-+    }
-+
-+    qdev_init_gpio_in(dev, grlib_irqmp_set_irq, MAX_PILS);
-+    qdev_init_gpio_out_named(dev, &irqmp->irq, "grlib-irq", 1);
-+    memory_region_init_io(&irqmp->iomem, OBJECT(dev), &grlib_irqmp_ops, irqmp,
-                           "irqmp", IRQMP_REG_SIZE);
- 
-     irqmp->state = g_malloc0(sizeof *irqmp->state);
- 
--    sysbus_init_mmio(dev, &irqmp->iomem);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &irqmp->iomem);
- }
- 
-+static Property grlib_irqmp_properties[] = {
-+    DEFINE_PROP_UINT32("ncpus", IRQMP, ncpus, 1),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void grlib_irqmp_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->realize = grlib_irqmp_realize;
-     dc->reset = grlib_irqmp_reset;
-+    device_class_set_props(dc, grlib_irqmp_properties);
- }
- 
- static const TypeInfo grlib_irqmp_info = {
-     .name          = TYPE_GRLIB_IRQMP,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(IRQMP),
--    .instance_init = grlib_irqmp_init,
-     .class_init    = grlib_irqmp_class_init,
+diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+index 7dbfc374da..d85f22db1a 100644
+--- a/hw/isa/isa-superio.c
++++ b/hw/isa/isa-superio.c
+@@ -185,6 +185,7 @@ static const TypeInfo isa_superio_type_info = {
+     .abstract = true,
+     .class_size = sizeof(ISASuperIOClass),
+     .class_init = isa_superio_class_init,
++    .instance_size = sizeof(ISASuperIODevice),
  };
  
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index e80b9410d4..bc6a85be9c 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -264,11 +264,11 @@ static void leon3_generic_hw_init(MachineState *machine)
+ /* SMS FDC37M817 Super I/O */
+@@ -201,7 +202,6 @@ static void fdc37m81x_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo fdc37m81x_type_info = {
+     .name          = TYPE_FDC37M81X_SUPERIO,
+     .parent        = TYPE_ISA_SUPERIO,
+-    .instance_size = sizeof(ISASuperIODevice),
+     .class_init    = fdc37m81x_class_init,
+ };
  
-     /* Allocate IRQ manager */
-     irqmpdev = qdev_new(TYPE_GRLIB_IRQMP);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(irqmpdev), &error_fatal);
-     qdev_init_gpio_in_named_with_opaque(DEVICE(cpu), leon3_set_pil_in,
-                                         env, "pil", 1);
-     qdev_connect_gpio_out_named(irqmpdev, "grlib-irq", 0,
-                                 qdev_get_gpio_in_named(DEVICE(cpu), "pil", 0));
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(irqmpdev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(irqmpdev), 0, LEON3_IRQMP_OFFSET);
-     env->irq_manager = irqmpdev;
-     env->qemu_irq_ack = leon3_irq_manager;
+diff --git a/hw/isa/smc37c669-superio.c b/hw/isa/smc37c669-superio.c
+index 18287741cb..9e59dc1603 100644
+--- a/hw/isa/smc37c669-superio.c
++++ b/hw/isa/smc37c669-superio.c
+@@ -103,7 +103,6 @@ static void smc37c669_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo smc37c669_type_info = {
+     .name          = TYPE_SMC37C669_SUPERIO,
+     .parent        = TYPE_ISA_SUPERIO,
+-    .instance_size = sizeof(ISASuperIODevice),
+     .class_size    = sizeof(ISASuperIOClass),
+     .class_init    = smc37c669_class_init,
+ };
 -- 
 2.41.0
 

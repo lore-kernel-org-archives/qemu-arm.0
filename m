@@ -1,94 +1,120 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp435043ejb;
-        Thu, 15 Feb 2024 00:53:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMgMXAI2SqXKOTcYIB/qBxJL83QSUcurGtcJVqMcVdWlvpOjG5afOGRm6UouoM7gauZaK0ZyJy0hjVy4wZMrbFYzeJkdj/
-X-Google-Smtp-Source: AGHT+IGkdrHOnGwloh8JrbFwSQxPWAfps96wi+lXLyl8Wgb/99GG6W2+4IgNbr2m3e3c1ruv/xSM
-X-Received: by 2002:a0c:f3d2:0:b0:68f:1aa5:fb2f with SMTP id f18-20020a0cf3d2000000b0068f1aa5fb2fmr615844qvm.20.1707987216971;
-        Thu, 15 Feb 2024 00:53:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707987216; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp464663ejb;
+        Thu, 15 Feb 2024 02:06:55 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVIyTCcOfYg8aPMMWPIT7YfhJNMQdPFUad9it4S5wBSJCt1iXEDJId48TRvkSBPMF+Clwsr30/6hEyAJIuT1ujnTBOHyhqg
+X-Google-Smtp-Source: AGHT+IHx6LeF3psdnkIFR7FlaolibOIP+/O2RoF85PNA4JhM3Wc/gflqzBr9UxaXEbdAOLFL7FZW
+X-Received: by 2002:a05:6214:4103:b0:68f:262:df10 with SMTP id kc3-20020a056214410300b0068f0262df10mr1784383qvb.53.1707991615238;
+        Thu, 15 Feb 2024 02:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1707991615; cv=none;
         d=google.com; s=arc-20160816;
-        b=mlmm2M4mIcM+K7yvtk+6782EYVbjU1mTJyCKvRDQCELR5HrvJQyGtlKcDdy3f179wk
-         GOef5zijtLyL9XTL6c1gjEhL6K4DrbU44nyveQm1i8JYEpc6basky63oGknR6HsxOmbl
-         fI31O4o0Gzx7K74FTZy2bBIsDIcVh0EfUfkkKGLITCFp8xeOoAQa7RANcWOkDU2hQMyO
-         UcrLQy7+IXBCHYiKZv2Bx+ku3tb8EQotoeenmD0GR9S8+fZm+CBMIrOlUQpjaUqJkeUk
-         hsbweJoBcsTEXfdZHDb1CJI5+IUkY5bYKCJSOdotgwQs4O7B2UvweN6RnrH57zlZ0/eK
-         GBEQ==
+        b=vIUpRg3iN1FaN/UORmNba+zLkmdFYX9VdM+ce3PYhGt+suv03Orn8ZoPUoS9ZL5Nde
+         FKLVgPI48hHqSaS9QpBlmJJ5y7DNeBtaKi2wt8lLPndvf7DBydLIHKTpUrJS2UU16ikf
+         9o4zlgBxI15mqy7tnZ3CLDgUXExVQZfhEzThymgMmG+9e8nnyVhQlcVCphE9d7IWYulc
+         GCaYyaG+IAq7Fl29g67qvtoUBIP6PiCNC23XbDHCE9At//rFZXfZm9Bf+hEB1sk5bbq9
+         Qf2H2k2AkauEFdAn/3zTlPUuWEsA3K1R0PU8fxpo+sNQrs8PIUPKaZiT+LIm7c9FRDkf
+         slog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=sjLQlaV8w7UBEfwH5YcxubeTHfuUmicctdfDV7dwdTE=;
-        fh=+8xgoj29zG1tPwghck/jOw9R9qbVDi2KtgCHE7pJZ2M=;
-        b=sKUhuZSkowsBB98KG8tjB5OAXsBjXcmbl8RJUNBWiInVDkYKdjWYUrvdLqVAJBxUg3
-         PYHyc0JavunRShfUpHM8mUjipM+X1UvMYWmnA7xNjNU7khzgrDAfKpwFhp7fSoc1YT5c
-         WDYX9MPyCG4/JjCtQRcc2656tEd8cQiN0P6VDmwbJrOcacuhIx65Lp2PMjmXqociTMPJ
-         N587UPx/RktgeiW/YeYW8si22h7sUCPZew2vQNPQlGHixZuT8eTVHTF5PC2b2bFkRKkn
-         jD1RZGHzokeDgvlX1gASme0qR1enSFh15gca+3YW7Ev02M5NrgLRGlsxJmwsr2qL0LK6
-         j5oA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=h7j7BDbf/2XTLgGFB+o6WPYFGjyq3xmN0zRxSIya6Co=;
+        fh=hnNpbAjQX5mVNt/Dn8Bs5lPKfcp8MB8lRthPSg6A4rU=;
+        b=m2R2Sha5jfSkM/nzjs6PLTqnQ1vyMSbHkFQWgQ4PoabgqSwJ8AnIzTdP0OHabFdcuo
+         ZagaEouCzKUqkseAjvUJKSOyG6+yuxOQzArsOFo7KtKMr1W8vZ4q5bytVfqNFAR/R1IL
+         rml5AwfCZSLIMi5pm5v/gwxV2sGlR87ttgR4UdTTCsJxGCT22wx4lgKDeGWKMmTlgH7/
+         AKuAfPNPxRdrJkY/Y01jbsmCjnbRABuVsUeSPkC9zc0MugrYHKdSOua5SfglyG6LX+JT
+         dwqk9JeR6dV/YGPZg6E54H2z150j4nBlANvBoXM/+1po79D9SS/LMvy79nB+3XVqLQia
+         hGAA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=m0dL2TZ3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=oqdHqpnX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge15-20020a05621427cf00b0068cae96f029si975500qvb.32.2024.02.15.00.53.36
+        by mx.google.com with ESMTPS id u15-20020ad45aaf000000b0068c6deb83c5si1041733qvg.615.2024.02.15.02.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 00:53:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Feb 2024 02:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=m0dL2TZ3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=oqdHqpnX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1raXUR-00018n-F6; Thu, 15 Feb 2024 03:53:07 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1raYdW-00011r-Rb; Thu, 15 Feb 2024 05:06:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbaryshkov@gmail.com>)
- id 1raXUP-00016y-Ek; Thu, 15 Feb 2024 03:53:05 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1raYdV-00011Q-Bx
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 05:06:33 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbaryshkov@gmail.com>)
- id 1raXUN-0004LS-It; Thu, 15 Feb 2024 03:53:05 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-563b7b3e3ecso253065a12.0; 
- Thu, 15 Feb 2024 00:53:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1raYdT-0004FU-RO
+ for qemu-arm@nongnu.org; Thu, 15 Feb 2024 05:06:33 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a293f2280c7so93137466b.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 02:06:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1707987181; x=1708591981; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sjLQlaV8w7UBEfwH5YcxubeTHfuUmicctdfDV7dwdTE=;
- b=m0dL2TZ3Zh68sASdlyaSVN78+ISjysCezBlNnNWtsDT0fJ/XmpccCWungfOsHjc8Oa
- Nzh/nh3D7XFq41mU5/uFPa38gFUAE4UEddoMXeLdyBKtCuugbMOUEbuWdhgw6PQ3TUOY
- hv08jOJ7e6Tf0CHwBl1y5CW0lt+LRnLdVeeiOy/gRMTx+bIMslQnSjFalsJEqpPCe43g
- O9H45eyqAkY49t61UisuW+Rozpr85ck3DJNFWaixYicZEU5VucpNpC0VJ5q3n1nEpYo0
- hoP9FdkBCYlFJyjiZ3cVJLZqXiDf2htpEl4Dvl6EDhAI7HujvIYOY7OUCQc3U5QNaJBv
- DIZQ==
+ d=linaro.org; s=google; t=1707991590; x=1708596390; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=h7j7BDbf/2XTLgGFB+o6WPYFGjyq3xmN0zRxSIya6Co=;
+ b=oqdHqpnXSSJqP0h5OCYP3CKaZYdsjEX5W45sX2OPNBLODpopvQR9eTHgI8Vin4URRX
+ hpUkeUQYGoYEP1nzlncSpUWYs1mAn1nw4eJ+n4TYz/e0dHMg0EPbkeeysFXZKwys0RGs
+ DBywzelVrk5dD7mNtpS7cSwh49NDIQ3MzaxgrREtOnnjNP1vRiEFddsDU9k59UqqWggi
+ fj3QqRTE5tQPsPjM58z/kGeHtP7824RwcbZvtgFP+ozIWrk0c8vna5zummH1emYsH5iG
+ jVmKVUd/dDuBwMXo7JDifnFbrmYC9SmERbJ0dU1ATr4ajTEbwAmP5vai67qsN1DlT+W3
+ ijaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707987181; x=1708591981;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sjLQlaV8w7UBEfwH5YcxubeTHfuUmicctdfDV7dwdTE=;
- b=XiLWmr8FYewNAHFW/W0H3TzSiPxHmUNa575ZoOcr6ut44G81j+UslrU8Xuxoe5yOO5
- 0Jt1/dJ0mTDhlo9+27Oo3ls6CzMa+luwI6Pxp0lagBDr4lS4oljd9+TlWKI1sd5quiLG
- oH09KNoQh24eyjomMQizfve3EohMdOhPJN51TDXxFsYIljVThj4fVPGJtmOgbfA69iwN
- B9PecUADbqW820Lw9QYucxXWZP1PLdN7TpN6vKyLiAE0MoAf1dFaksc4EdduutgDjn8i
- Krsxv+5lDjEEUmS2tMt8R+dOoPhyoKv76pTQOWMNePyca+0mqhjLNOpbQTQetj9edduN
- H7/Q==
+ d=1e100.net; s=20230601; t=1707991590; x=1708596390;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=h7j7BDbf/2XTLgGFB+o6WPYFGjyq3xmN0zRxSIya6Co=;
+ b=NHkixTGWrIt46uraz6SPEXpBh3AUx846wb51FfT3J6h4AlzS4XW1XF0ru/NUrMS5tu
+ kn0vcRPvI1HPSxqxzn9zArrzrz3jHexAwUUvRqqnkib4797SdeZc8pPPzNaH7p55svk3
+ WwVZNAU/rJ9j1Bf8Lv3+0f5SGeb0sYly+VfnryosYegocDZFCD3QCJBo8HRic7kzCW6J
+ OaWGwfFJP3B4rozZZCfPEQ+ok5Apuleq9W0AUGSYa5jSrjLXmVcL2FxCeyo/bfShsgk4
+ xSQp5z15tyHmWl2M+s8CNdUK5RM+RQ8XTTwL4QDTIPnhyyNXa7h6kaw88R0sr1xmVHHl
+ xZuw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUxABuh7K2W5co1zpUIdUvUqlJJgin1fLqhPzKVJ6kX4Y3GfUYCbU9+APZDa3x2UMWGWcb497bRU3HaCCzajB+m0kFpwdLtUgyePpTScOAIZN0H8lu5r0oG+q8=
-X-Gm-Message-State: AOJu0YzsmhxIooxsxcBAFrZru3k4xsTSmSUXCZ9cvj0JKTCZRtSnStAb
- dbAhsHmM0GWYtOrpdbEopFvjLX427A842MTj9mlDsISgiwDze/RU1ZAMPYWnwzCoK6l8vw7QM2S
- EVTep2rND2dUITI9tuv0Bvddz4sI=
-X-Received: by 2002:a50:ee89:0:b0:561:f4e1:8424 with SMTP id
- f9-20020a50ee89000000b00561f4e18424mr667308edr.42.1707987180975; Thu, 15 Feb
- 2024 00:53:00 -0800 (PST)
+ AJvYcCUUPG+Io5wI1zExdsxSRPkamPDgBnspWG+JWg16wUXnxBgxtFyAgKVk3PDnCdug15rHhOXrfaxweMN05m4i8t5j3cnd
+X-Gm-Message-State: AOJu0Yw7iPu9UgldjxyV9xBgGoZ99CdC0RAT3M9sAP5TArpmj/3LGqZ6
+ cTvUGUU88j/7mr5bouX7s0v7LTGvjfHhey83YfTf/Kakd6jKICryrgxJZJ6KvgQ=
+X-Received: by 2002:a17:906:e089:b0:a3c:f531:4514 with SMTP id
+ gh9-20020a170906e08900b00a3cf5314514mr971601ejb.62.1707991589675; 
+ Thu, 15 Feb 2024 02:06:29 -0800 (PST)
+Received: from [192.168.200.206] (83.11.22.32.ipv4.supernova.orange.pl.
+ [83.11.22.32]) by smtp.gmail.com with ESMTPSA id
+ fj15-20020a1709069c8f00b00a3d26805852sm393944ejc.17.2024.02.15.02.06.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Feb 2024 02:06:29 -0800 (PST)
+Message-ID: <6c27e4ba-34dc-4ba6-95fb-39989d0c2cc3@linaro.org>
+Date: Thu, 15 Feb 2024 11:06:27 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: possible deprecation and removal of some old QEMU Arm machine
+ types (pxa2xx, omap, sa1110)
+Content-Language: pl-PL, en-GB, en-HK
+To: Dmitry Baryshkov <dbaryshkov@gmail.com>, Arnd Bergmann <arnd@arndb.de>
+Cc: Andreas Kemnade <andreas@kemnade.info>,
+ Linus Walleij <linus.walleij@linaro.org>, paul.eggleton@linux.intel.com,
+ Andrea Adami <andrea.adami@gmail.com>, Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>,
+ Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
+ Linux-OMAP <linux-omap@vger.kernel.org>, Daniel Mack <daniel@zonque.org>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Stefan Lehner <stefan-lehner@aon.at>
 References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <fe5476c7-82e0-4353-a943-7f39b14e1b5b@roeck-us.net>
  <CAFEAcA-bqOM4Ptws-tsEwo2HDZ6YSX1Y+xGkR0WueRD_dUd0+Q@mail.gmail.com>
@@ -99,151 +125,61 @@ References: <CAFEAcA88UGhjh8-iBvhxx6GdWg74dinYouiguTcz=qEe51L7Ag@mail.gmail.com>
  <be4038e1-a578-4439-a9bf-e936484c64cc@app.fastmail.com>
  <20240215093113.5c58cabe@aktux>
  <7c8a5c5b-a94a-4b87-a043-f1e398b55872@app.fastmail.com>
-In-Reply-To: <7c8a5c5b-a94a-4b87-a043-f1e398b55872@app.fastmail.com>
-From: Dmitry Baryshkov <dbaryshkov@gmail.com>
-Date: Thu, 15 Feb 2024 10:52:50 +0200
-Message-ID: <CALT56yPLobsL699K9+DDMBWwi7-iLzaYwuDwV7NmecaTY7Z6Tw@mail.gmail.com>
-Subject: Re: possible deprecation and removal of some old QEMU Arm machine
- types (pxa2xx, omap, sa1110)
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Andreas Kemnade <andreas@kemnade.info>,
- Linus Walleij <linus.walleij@linaro.org>, 
- paul.eggleton@linux.intel.com, Andrea Adami <andrea.adami@gmail.com>, 
- Guenter Roeck <linux@roeck-us.net>, Peter Maydell <peter.maydell@linaro.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Aaro Koskinen <aaro.koskinen@iki.fi>, 
- Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>, 
- Linux-OMAP <linux-omap@vger.kernel.org>, Daniel Mack <daniel@zonque.org>, 
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Haojian Zhuang <haojian.zhuang@gmail.com>, 
- Stefan Lehner <stefan-lehner@aon.at>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=dbaryshkov@gmail.com; helo=mail-ed1-x532.google.com
+ <CALT56yPLobsL699K9+DDMBWwi7-iLzaYwuDwV7NmecaTY7Z6Tw@mail.gmail.com>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Organization: Linaro
+In-Reply-To: <CALT56yPLobsL699K9+DDMBWwi7-iLzaYwuDwV7NmecaTY7Z6Tw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 90HdIQ/NAwos
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3lDJZlfG3ICu
 
-On Thu, 15 Feb 2024 at 10:45, Arnd Bergmann <arnd@arndb.de> wrote:
->
-> On Thu, Feb 15, 2024, at 09:31, Andreas Kemnade wrote:
-> > On Wed, 14 Feb 2024 23:42:58 +0100
-> > "Arnd Bergmann" <arnd@arndb.de> wrote:
-> >> On Wed, Feb 14, 2024, at 13:26, Dmitry Baryshkov wrote:
-> >> > On Tue, 13 Feb 2024 at 23:22, Linus Walleij <linus.walleij@linaro.or=
-g> wrote:
-> >> >> On Tue, Feb 13, 2024 at 9:12=E2=80=AFPM Arnd Bergmann <arnd@arndb.d=
-e> wrote:
-> >> >> > On Tue, Feb 13, 2024, at 16:36, Guenter Roeck wrote:
-> >> >> > > On Tue, Feb 13, 2024 at 03:14:21PM +0000, Peter Maydell wrote:
-> >> >>
-> >> >> Andrea Adami and Dmitry Eremin-Solenikov did the work in 2017 to
-> >> >> modernize it a bit, and Russell helped out. I was under the impress=
-ion
-> >> >> that they only used real hardware though!
-> >> >
-> >> > I used both Qemu and actual hardware (having collie, poodle, tosa an=
-d
-> >> > c860 that was easy).
-> >> >
-> >> > The biggest issue with Zaurus PDAs was that supporting interesting
-> >> > parts of the platform (PCMCIA, companion chips) required almost
-> >> > rebootstrapping of the corresponding drivers.
-> >> > E.g. I had a separate driver for the LoCoMo chip which worked proper=
-ly
-> >> > with the DT systems.
-> >> > PCMCIA was a huuuge trouble and it didn't play well at all. The driv=
-er
-> >> > must be rewritten to use the component framework.
-> >>
-> >> If we want to actually go there, I think the best option for PCMCIA
-> >> support is likely to replace the entire "soc_common" pcmcia driver
-> >> with a simple drivers/pata/ storage driver and no support for
-> >> other cards. There was a driver until commit 38943cbd25a2
-> >> ("ata: remove palmld pata driver") that could serve as an
-> >> template.
-> >>
-> > hmm, main usage for PCMCIA/CF in those devices was often something else=
-,
-> > not storage, at least on the IPAQ h2200. Wondering wether that road is
-> > actually good. When I was mainly using those devices, I was not good in
-> > mainlining things.
->
-> Do we still support any non-storage CF devices that someone might
-> actually use? Do you have a specific example in mind? These are
-> the currently supported devices that I see:
+W dniu 15.02.2024 o 9:52 AM, Dmitry Baryshkov pisze:
+>>>> If we want to actually go there, I think the best option for PCMCIA
+>>>> support is likely to replace the entire "soc_common" pcmcia driver
+>>>> with a simple drivers/pata/ storage driver and no support for
+>>>> other cards.
 
-The Bluetooth over the PCMCIA UART worked last time I checked it and
-according to your grep it is still a valid user.
+>>> hmm, main usage for PCMCIA/CF in those devices was often something else,
+>>> not storage,
 
-If we are talking about re-bootstrap of the PCMCIA subsystem, hostap
-and orinoco come to my mind. We dropped those drivers a while ago, but
-back at that time they were very useful. Also I had the out-of-tree
-driver for Sharp 0.3 MP cameras using CF interface (yeah, sure, all of
-those are out-of-tree nowadays).
+>> Do we still support any non-storage CF devices that someone might
+>> actually use? Do you have a specific example in mind? These are
+>> the currently supported devices that I see:
 
->
-> git grep -B4 -w depends.*PCMCIA | grep "Kconfig-\(config\|menuconfig\)" |=
- grep -v ^drivers/pcmcia
-> drivers/ata/Kconfig-config PATA_PCMCIA
-> drivers/bluetooth/Kconfig-config BT_HCIDTL1
-> drivers/bluetooth/Kconfig-config BT_HCIBT3C
-> drivers/bluetooth/Kconfig-config BT_HCIBLUECARD
-> drivers/comedi/Kconfig-menuconfig COMEDI_PCMCIA_DRIVERS
-> drivers/mmc/host/Kconfig-config MMC_SDRICOH_CS
-> drivers/mtd/maps/Kconfig-config MTD_PCMCIA
-> drivers/mtd/maps/Kconfig-config MTD_PCMCIA_ANONYMOUS
-> drivers/net/arcnet/Kconfig-menuconfig ARCNET
-> drivers/net/arcnet/Kconfig-config ARCNET_COM20020_CS
-> drivers/net/can/sja1000/Kconfig-config CAN_EMS_PCMCIA
-> drivers/net/can/sja1000/Kconfig-config CAN_PEAK_PCMCIA
-> drivers/net/can/softing/Kconfig-config CAN_SOFTING_CS
-> drivers/net/ethernet/3com/Kconfig-config NET_VENDOR_3COM
-> drivers/net/ethernet/3com/Kconfig-config PCMCIA_3C574
-> drivers/net/ethernet/3com/Kconfig-config PCMCIA_3C589
-> drivers/net/ethernet/8390/Kconfig-config PCMCIA_AXNET
-> drivers/net/ethernet/8390/Kconfig-config APNE
-> drivers/net/ethernet/8390/Kconfig-config PCMCIA_PCNET
-> drivers/net/ethernet/amd/Kconfig-config PCMCIA_NMCLAN
-> drivers/net/ethernet/fujitsu/Kconfig-config NET_VENDOR_FUJITSU
-> drivers/net/ethernet/fujitsu/Kconfig-config PCMCIA_FMVJ18X
-> drivers/net/ethernet/smsc/Kconfig-config PCMCIA_SMC91C92
-> drivers/net/ethernet/xircom/Kconfig-config NET_VENDOR_XIRCOM
-> drivers/net/ethernet/xircom/Kconfig-config PCMCIA_XIRC2PS
-> drivers/parport/Kconfig-config PARPORT_PC_PCMCIA
-> drivers/scsi/pcmcia/Kconfig-menuconfig SCSI_LOWLEVEL_PCMCIA
-> drivers/ssb/Kconfig-config SSB_PCMCIAHOST_POSSIBLE
-> drivers/tty/Kconfig-config IPWIRELESS
-> drivers/tty/serial/8250/Kconfig-config SERIAL_8250_CS
-> drivers/usb/host/Kconfig-config USB_SL811_CS
-> sound/pcmcia/Kconfig-menuconfig SND_PCMCIA
->
->      Arnd
+> The Bluetooth over the PCMCIA UART worked last time I checked it and
+> according to your grep it is still a valid user.
 
+If we want to keep those pda devices in Linux kernel then dropping 
+whatever PCMCIA which is not a storage sounds like sane way.
 
+No one is going to use such old PDA as daily tool nowadays. And if they 
+want then 6.6 LTS kernel would work better due to WiFi drivers being 
+still present.
 
---=20
-With best wishes
-Dmitry
+Bluetooth CF cards are old, v1.x tech. WiFi is 802.11b unless you manage 
+to get one of those libertas_cs cards but they were rare even when new 
+(I was involved in starting 2.6 driver for it). Camera cards had own 
+out-of-tree drivers at that time.

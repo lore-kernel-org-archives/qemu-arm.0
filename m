@@ -1,161 +1,245 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739636ejb;
-        Thu, 15 Feb 2024 10:04:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU09r7PwMggMoE1UvLtzgrRpuAVZPXqSiQ3Bx0kN/CoE3sM++o2WsQmEHBZDh+OcoIDYzeGrI+Z4XfGsMKR8jOimTLK01qs
-X-Google-Smtp-Source: AGHT+IFud1tWxAKkzw5MKCrmWB6elqDYjeCC7V8NmljWLjHMi39lePjD880+SxRyaNo8Yx347xPe
-X-Received: by 2002:a05:6102:665:b0:46e:e826:941e with SMTP id z5-20020a056102066500b0046ee826941emr4425374vsf.9.1708020272930;
-        Thu, 15 Feb 2024 10:04:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708020272; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp739703ejb;
+        Thu, 15 Feb 2024 10:04:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX7mFR75Y3OEehMuX1vZ+6mnMmfoFpL81WV6rbvl0QMfQa0s0cwjHxGhXwIcc55b3FQqPONhzCAP5M4BU+EhbTeZYVUVZf0
+X-Google-Smtp-Source: AGHT+IGhAqfVJT09d6vm2nd7vE48N30s5jijv45Z8CF1wroO6J7idSix3gJVZhvKi18XGsNA3oJ/
+X-Received: by 2002:a67:e945:0:b0:46d:28b4:95a2 with SMTP id p5-20020a67e945000000b0046d28b495a2mr2927039vso.32.1708020276656;
+        Thu, 15 Feb 2024 10:04:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708020276; cv=none;
         d=google.com; s=arc-20160816;
-        b=1G+TzBYD2gsemUIpUYGQWKhc8F4TOoaePkQI6UsIX+jNnjUKb7xkXeqPv8AHD3iAbI
-         iQi2brsKvR1xamnv8/SUoXTqvoxl49OzL+ryBOn1LITlg4nZM6UM2p7z8VFV1cwkX7Ql
-         im2wj1z8hflePNDSo8bNYrdjbHqjafGLkhi+9spNtZ/bJmPFIhgGxUo6ME8Dv+lsG1Gi
-         h6VWwBAgTAfImzPpRjxfjIBlGqdb9nE+zFAP0uy3NEIALJ8zVd0mwqYoZi2Qiks90oDn
-         qRc6Vmsma6RsEqagVsVUIPXMJ0OJkulI3a9pXCzRz9dirgwKDmsDEVzFo0YwHYIOytRl
-         t0ag==
+        b=B7KIM199UmNn3rklzNAABExhFK1JzbEqk+TDFoXmg+Q5OuWqOpsSJ/H2kuQBwQ5CJ6
+         4xS5FMRcAYBoz+WlZGc/RDYQawGoot6wo3GKun/hlmgrM/bevfc+fRe3JpgwtPTcivhk
+         BUb8QDgByLXwwARjtVoyq96wA83CsCv2AGkilV8W5x8CtWaJwUy/ARE2JvJkSeozIswd
+         bdtEYKbGwaGa452vB03fyhFEFKU0+u98lTk9GnWq41zWQYQGcJeSUzSlAAVyt+UQl1KD
+         KWcud5c0dMXQ96sq5UCdWw+ar3PWEAlqX0euXSO9P/W0g6AC7lY8ewR7FdRXpc8AOgLf
+         ClYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=h+kbuqXqvCRZ8Tf5uJ9Kz/BLctdAvrq0mkkiLJY8x1o=;
-        fh=eg554/wN9JdRoL8m5vc7pYsz+4sHK7JT3j5kjbSQ8nY=;
-        b=fD6lwt9NqSbTYjH8RTNzIw2hncRyalJYc/bbY2xKIV3qmsP5HpKVJ8EHqpQoc/b9B+
-         R5lPsdEGwJ0it0T8KYDn+NzQNIBm+KIGsoJ/kuNP2yXGEfYrR5dhqYytUwuHtrzVPiV+
-         Jgn4+z6NMUQ1j6hT4gwQHy7zKni8Qoz0IqxCPJgYCxi9KJMSOld9phIlDy38HY04Nk/u
-         vKBfxIO/FwPZqr1c9c6VBr9ofuJKIcr6fx3+Tnt59QbgNDz4aetWcB7SOp8BLxgUXrkQ
-         7j/qc7TexXXSjGzlG1koPP0VfskYay82PlkOZnNat18fGQyVzHSiyFbw6ZZfLJBKGMvR
-         QcWQ==;
+        bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
+        fh=r+mbcaIVBB+d5Ke8c8av/RXIbk1kcul/Ph9l9m3Dfks=;
+        b=A5nI/i9k0anC7ImWu1XUneb8ggvjXPlmKE8Wskmn+t220PUZw5SOHraNJEnedAR4Cd
+         dCU4V5HncsAjJ63OYG+aq3M7gQt0jbEs9WRyzzRYnYLNiNcf+kqn9fgadfb6922fk1La
+         PVgiYudcAaU/slXpmnB6hSh3bD8sON9cTM0K2Garnal7bTsYSD9IM/96/T+JElgY0j55
+         fd/ZlYQLSl/1fWP6H1SIHjtC3CBEi4s+eFJyc2RgGWxg+gyOzGMJVznEfbe3zUOsUY7h
+         EZIHK+n4DScwQnEH9RwLdQINuMbZy4IrGx6iqaScvkcx1SuiTL5znp4edN5QBXfpJwAT
+         b3XA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wv111npn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOI1M3o3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib25-20020a0561022b9900b0046b2f7369d2si471104vsb.230.2024.02.15.10.04.32
+        by mx.google.com with ESMTPS id h29-20020a056102209d00b0046d1303f8a3si350585vsr.764.2024.02.15.10.04.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Feb 2024 10:04:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Feb 2024 10:04:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wv111npn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOI1M3o3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rag4Y-00088s-UC; Thu, 15 Feb 2024 13:02:58 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rag3y-00046h-D0; Thu, 15 Feb 2024 13:02:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag4Y-00084q-1C
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:02:58 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3Q-00036Z-65
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:49 -0500
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag4W-0002yq-99
- for qemu-arm@nongnu.org; Thu, 15 Feb 2024 13:02:57 -0500
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-a26fa294e56so176004966b.0
- for <qemu-arm@nongnu.org>; Thu, 15 Feb 2024 10:02:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rag3M-0002cw-F1
+ for qemu-devel@nongnu.org; Thu, 15 Feb 2024 13:01:47 -0500
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2d1025717c7so13584431fa.2
+ for <qemu-devel@nongnu.org>; Thu, 15 Feb 2024 10:01:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708020173; x=1708624973; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708020102; x=1708624902; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=h+kbuqXqvCRZ8Tf5uJ9Kz/BLctdAvrq0mkkiLJY8x1o=;
- b=Wv111npnzA8HRnLQS/dO+XtTNFlSUy25gFkdlupWEUG1ut/xGaupEo98+gO1/5NZEj
- /yVnJenhVVX6asCKB9qgXKZXslcO2e/hhbiWSudtdRMQFbRJTS5JKm212muYlmZfrF+p
- ZBDWd4R8216nP2/CuRS8YTlIEUfYVhhZNw/TW1+0fl0q67g7JB1TQTnmr8PY9ik4RgCY
- WmYi0WzXD8y6vaa1+guxwuTiCyzFZzILT/fEP+U8AHvkV6FSY2NQd5pu+E4n/CI3QBL8
- 6W+RWllk5LbPhdt/MJ7NtwsOuLHws38kBPUutDSjoAIhsic1wQETH3uHMXP3JOwDdBQG
- R2Nw==
+ bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
+ b=hOI1M3o3q8YkX1TJw4hk7FpfS30B9odCwTpiUYRav0slATxtzhMhHcN4kXR6+bvVUL
+ GSWpo6Jkr1GLfhyefDS+Hi6AgX3gg/FW5pLzEoznNepSAhfpk/v98FXsHUGF6Cl8msWE
+ Q3jIm1HRWoFdowT8vJeDucf9hZGY8j+jLUDkLfdS0f63VyvmmoNw3+5he2Fb+3EU4rML
+ bA/vJbn9p+kDEQV4PKOvRZT7vURuWqLeh4K0H3xhZVSFr6G8McSE2lApV3C0xbIKutgc
+ v2884sok21qrRl9dKOWYVWUwkNlYIwBkw/GSA15anwHVTsW8bcXPaIFy8p+EFESbKbU1
+ +JEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708020174; x=1708624974;
+ d=1e100.net; s=20230601; t=1708020102; x=1708624902;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=h+kbuqXqvCRZ8Tf5uJ9Kz/BLctdAvrq0mkkiLJY8x1o=;
- b=Hy67xMRubvk1IdRXlUtGa3REVBrHPOs0NPc420QcgICOjCU5rmkcUuplJ7tGY9vN9L
- Ff04ghp7y4ZF0KX92moZ2B2YhESmLmC+kL+GV4/uKMcZQjaAMX+t+rAdQwqSJUrxBddX
- WSbsSukh3QFVb2TzNiiXlKNf0X01hsvGeZzWx7ZX97Vdo+e9hBHLRAdTyMxcv71DH2cm
- W4ztE+EOqxI0rzi/kxsoEfTnSucM1WMjbCYxxgUZ1PrZWQZYZPbmv+xjgZv4JhFYDTUb
- m78x+yHPeLp2GjvI7tIJm9yS+ENa/Hm2/K4rTmFiSJOiijNd/bxMv033s615G5PXcBuH
- PeHQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUKHAFxV9f/LDKmmgqUBmoEUhAeRqm+zEVvaK5omCP/hD9+sqhrFhkkhPlvbPYivJBVCsARyX+vV0IeNEKrfaGZFxJM
-X-Gm-Message-State: AOJu0YzalT1laZ2j7n1VWuf2wEFc1+BtYMNEtnLWxqvJTHy/LHJJVT08
- 4W7wFNsUVfNbl7gUGAJwhgMtq5GQQM3+aYkO0pAuohjtWHpc5fttqrw9V0NTYWE=
-X-Received: by 2002:a17:906:c44a:b0:a38:40fc:2bcf with SMTP id
- ck10-20020a170906c44a00b00a3840fc2bcfmr1876968ejb.60.1708020173711; 
- Thu, 15 Feb 2024 10:02:53 -0800 (PST)
+ bh=ruX53CbVKYFd9a03NjcuApvlZnuC4B/Alw04ClG0uNE=;
+ b=HWv0fVyVhPzFTSm54zXuWbQsliCSdqg/okE5fU0jWfWQZSASU8T9BaM9zARO+fiv2M
+ QUgNBfS9BpKkTux3c/l6BY1F9E73kfNG+nUJUIf2ShdGDns098pYe5n3JlygNortVwUM
+ mvmJXjQgUsJrQ1BZ8bDvETd6TZU06MJFLHE8GKJzCoBVjQVBfJRqoyjxcE+X6bjuupKj
+ 5SPcTzgRknZ/pHghEuMBpgL0q6Vy2XWDpkc2F83Sidj2hyFD9FeFlVyR7mSVFSxtMe2M
+ H5PME7BOygLxB/nAjMd4SFz0HuyvMa9AQFg6fr1hSr+1p40894H8xFILqLB+yXeAT++m
+ JMmA==
+X-Gm-Message-State: AOJu0YzE7WN/sRPMPkGygJnPXDRkWvQSys5Scy19gRyxWT29CDKfcDby
+ 9enC1KxRTAcj+9nA2ZudQNnxESr9a4ilTB2x227ktt/sm/P7zFYvlMaVH6xoYK0QKXEmWj7hsuy
+ Cw9k=
+X-Received: by 2002:a2e:9058:0:b0:2d1:1c54:12d with SMTP id
+ n24-20020a2e9058000000b002d11c54012dmr1857104ljg.38.1708020102325; 
+ Thu, 15 Feb 2024 10:01:42 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- uz16-20020a170907119000b00a3d2ccea999sm788056ejb.35.2024.02.15.10.02.51
+ j12-20020a05600c190c00b00410bca333b7sm5918918wmq.27.2024.02.15.10.01.40
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 15 Feb 2024 10:02:52 -0800 (PST)
+ Thu, 15 Feb 2024 10:01:41 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 44/56] MAINTAINERS: replace Fabien by myself as Leon3 maintainer
-Date: Thu, 15 Feb 2024 18:57:38 +0100
-Message-ID: <20240215175752.82828-45-philmd@linaro.org>
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PULL 34/56] hw/intc/grlib_irqmp: add ncpus property
+Date: Thu, 15 Feb 2024 18:57:28 +0100
+Message-ID: <20240215175752.82828-35-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240215175752.82828-1-philmd@linaro.org>
 References: <20240215175752.82828-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rDDd2OFXOTQ9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aObjr1mRj4DD
 
 From: Clément Chigot <chigot@adacore.com>
 
-CC: Fabien Chouteau <chouteau@adacore.com>
+This adds a "ncpus" property to the "grlib-irqmp" device to be used
+later, this required a little refactoring of how we initialize the
+device (ie: use realize instead of init).
+
+Co-developed-by: Frederic Konrad <konrad.frederic@yahoo.fr>
 Signed-off-by: Clément Chigot <chigot@adacore.com>
-Reviewed-by: Fabien Chouteau <chouteau@adacore.com>
-Message-ID: <20240131085047.18458-10-chigot@adacore.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240131085047.18458-3-chigot@adacore.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/intc/grlib_irqmp.c | 30 +++++++++++++++++++++---------
+ hw/sparc/leon3.c      |  2 +-
+ 2 files changed, 22 insertions(+), 10 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8920ba403d..0ab73b265a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1709,7 +1709,7 @@ F: hw/rtc/sun4v-rtc.c
- F: include/hw/rtc/sun4v-rtc.h
+diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
+index 11eef62457..744cd64c58 100644
+--- a/hw/intc/grlib_irqmp.c
++++ b/hw/intc/grlib_irqmp.c
+@@ -1,7 +1,7 @@
+ /*
+  * QEMU GRLIB IRQMP Emulator
+  *
+- * (Multiprocessor and extended interrupt not supported)
++ * (Extended interrupt not supported)
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -63,6 +63,7 @@ struct IRQMP {
  
- Leon3
--M: Fabien Chouteau <chouteau@adacore.com>
-+M: Clément Chigot <chigot@adacore.com>
- M: Frederic Konrad <konrad.frederic@yahoo.fr>
- S: Maintained
- F: hw/sparc/leon3.c
+     MemoryRegion iomem;
+ 
++    unsigned int ncpus;
+     IRQMPState *state;
+     qemu_irq irq;
+ };
+@@ -326,33 +327,44 @@ static void grlib_irqmp_reset(DeviceState *d)
+     irqmp->state->parent = irqmp;
+ }
+ 
+-static void grlib_irqmp_init(Object *obj)
++static void grlib_irqmp_realize(DeviceState *dev, Error **errp)
+ {
+-    IRQMP *irqmp = GRLIB_IRQMP(obj);
+-    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
++    IRQMP *irqmp = GRLIB_IRQMP(dev);
+ 
+-    qdev_init_gpio_in(DEVICE(obj), grlib_irqmp_set_irq, MAX_PILS);
+-    qdev_init_gpio_out_named(DEVICE(obj), &irqmp->irq, "grlib-irq", 1);
+-    memory_region_init_io(&irqmp->iomem, obj, &grlib_irqmp_ops, irqmp,
++    if ((!irqmp->ncpus) || (irqmp->ncpus > IRQMP_MAX_CPU)) {
++        error_setg(errp, "Invalid ncpus properties: "
++                   "%u, must be 0 < ncpus =< %u.", irqmp->ncpus,
++                   IRQMP_MAX_CPU);
++    }
++
++    qdev_init_gpio_in(dev, grlib_irqmp_set_irq, MAX_PILS);
++    qdev_init_gpio_out_named(dev, &irqmp->irq, "grlib-irq", 1);
++    memory_region_init_io(&irqmp->iomem, OBJECT(dev), &grlib_irqmp_ops, irqmp,
+                           "irqmp", IRQMP_REG_SIZE);
+ 
+     irqmp->state = g_malloc0(sizeof *irqmp->state);
+ 
+-    sysbus_init_mmio(dev, &irqmp->iomem);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &irqmp->iomem);
+ }
+ 
++static Property grlib_irqmp_properties[] = {
++    DEFINE_PROP_UINT32("ncpus", IRQMP, ncpus, 1),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void grlib_irqmp_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    dc->realize = grlib_irqmp_realize;
+     dc->reset = grlib_irqmp_reset;
++    device_class_set_props(dc, grlib_irqmp_properties);
+ }
+ 
+ static const TypeInfo grlib_irqmp_info = {
+     .name          = TYPE_GRLIB_IRQMP,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(IRQMP),
+-    .instance_init = grlib_irqmp_init,
+     .class_init    = grlib_irqmp_class_init,
+ };
+ 
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index e80b9410d4..bc6a85be9c 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -264,11 +264,11 @@ static void leon3_generic_hw_init(MachineState *machine)
+ 
+     /* Allocate IRQ manager */
+     irqmpdev = qdev_new(TYPE_GRLIB_IRQMP);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(irqmpdev), &error_fatal);
+     qdev_init_gpio_in_named_with_opaque(DEVICE(cpu), leon3_set_pil_in,
+                                         env, "pil", 1);
+     qdev_connect_gpio_out_named(irqmpdev, "grlib-irq", 0,
+                                 qdev_get_gpio_in_named(DEVICE(cpu), "pil", 0));
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(irqmpdev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(irqmpdev), 0, LEON3_IRQMP_OFFSET);
+     env->irq_manager = irqmpdev;
+     env->qemu_irq_ack = leon3_irq_manager;
 -- 
 2.41.0
 

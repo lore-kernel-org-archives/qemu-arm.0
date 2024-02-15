@@ -1,94 +1,128 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp635255ejb;
-        Thu, 15 Feb 2024 07:18:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCURQJteIMUmcU/BGT8O4lnw6nSFp67JO/8QQqF6cPloSg4MA/uG4Wjspnb76S3byU3Nq7ZtOapCUUFElZYcTgWPtpl37xq1
-X-Google-Smtp-Source: AGHT+IGW76xYRd/huQYQwt6FFE/Rr8E96TtH9pJz3hC/56lZk2TvsBujp6euw4ipEqy8iLqD5p2z
-X-Received: by 2002:a5d:6984:0:b0:33a:ead3:6438 with SMTP id g4-20020a5d6984000000b0033aead36438mr4745052wru.33.1708010286393;
-        Thu, 15 Feb 2024 07:18:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708010286; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp635568ejb;
+        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU5g5u1SAekxFs9A/3LgwCeTKCJvO9RG2VK0nXNpEtra33AZcEUd0Qy/C1QPrpDPLrGlqSIiDfP+EPfK45jEWsba0TPVS3G
+X-Google-Smtp-Source: AGHT+IEh3MCBACWDBsuKpOQalXA35wU2Jk2BBg0zCK3rzZ1VuPvBxjGyhrkG/v0SG/b/fN9GHSaj
+X-Received: by 2002:a5d:5046:0:b0:33c:f677:a637 with SMTP id h6-20020a5d5046000000b0033cf677a637mr2015085wrt.18.1708010316089;
+        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708010316; cv=none;
         d=google.com; s=arc-20160816;
-        b=k2LrxsSL9949j8NBfuyKbrQ621s3Cqr6joC8t1+Yh+vbCr6mZd1EOtVV1W782o/RPC
-         aRIAnT+lRbcET7LqFo+rG3Zsbf0z2pvRP4jQMPdl4G9hdtlyiJfxZREjWIFDzMnBE/1X
-         RZ/FE9AFtVAUnl8MubRFyIebLftwQRNgJmHn4uAudiRekia36Nx5u7UyjHLfEUpHTcie
-         YPyK9s5aBA2oGkw2IMFOuPJNdD+olzwhuMHuzf6D8l3mPB/eEWlzPymcmtvfDz/tqIs4
-         tHDq6sGQGIb6GjmqhqsATxM7+arjRBu+anCqt9QLvakm1Lja3eyC8Reig1U0qD/nmggy
-         W+yA==
+        b=nLRn0ddOkYOEGDHfFA4CAdkJDesx+ZR3ISnuE8+/P+iDnK+ODZZGMh1UOzx/r7cvsN
+         I1jEP6x+6Uro/vsqsxus/AaUFLJaqd3HpbjXIVKYI6+HCB78f8e5VDnf8lRSPovF9Jhp
+         aDbOESRtDIQtYqKxPDdHHNf3nFOB32J2UL/nh2m0L8j5P+qBHHX5dnunF6M02jfL5qlx
+         zL84xVvPgy1/6L4FrFn9fcSMYbNSQ7smE5yy7uBqMhKK4LYd7eBzd9x6CZRjpcdLufQ0
+         F+jQdflInY73FvKsxJaDOJ6CXfWOy0xHJtz1ZdOWMV+AhDRItSY4nLoIX5x1vBuWR/mG
+         ZFNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=hkEty1XAftLMcC9iCJYMOfZCq+33Pu1LuDhVsZTQqXY=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=y9RfYvGcKmJEHeO7Q7A+afZQ3ur0mgqnAL9/HxpSRa4=;
         fh=Vg2yBWlikDPSwYiCI/Uk6oY6b+moM58ISSo3pIJ9eYM=;
-        b=mSlhsa2jt/9k9yfuTyAu4LgKtVTyufXjpnRVANyU3LwYAstywi63L5EJUIyjubDKkL
-         PcnvI70Tz9hgg1YwUQLtO1cZL5PhKBJens7WhoVQVGprilXMS2/ocXO7Iml9lOrjzN3k
-         yIT6JAFNBqHZb6gbDHOhLCIum2MJ9MQ/iFbI28USt/DRS9kcO/tOkGoyo6M9/z4InqhE
-         wOm1vS6EJdVGgBiCI/vc8sH6LWX2+9DAptVCXYM6MMjMvs82wk/n3IU9cjqv7DnKYD0d
-         VQEUD0covpxheKagN5uVvAo8t4zYkB4D1jPSw7JCYPrydcJoZCIAegYfjAcvUpsa9dys
-         hhmQ==;
+        b=ciwEyfBVp/PkidH8YGeGKCReZUIHvstV7SqmyLLftcAKGizY+10xQlL9TOoh0yZjiL
+         7DIqgx9GnyOwDv8ePv7A50IyY//ACOh2sMcbpftmRu0hyvJuX9Qc+VDQzMAtJ044Stsy
+         claP4ETn92stwlxWkCcIzFfFAEa9OgfuW1oroCp4SRwesXvSkouaPPeqwaTvtYDRbQl/
+         ZbJVynommkh508QVnckeMy8EvreSceyx3maclzMhwGgjCJlyDx34sWr4BaUHJSNyAKGa
+         uEvMipqFy5IuV+fv3y9Ypf2obF1dlK7xtap7N/FAqtFxH9RXyVWZwqBqqXIMifI+ubAH
+         OA0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <jonathan.cameron@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id o1-20020a5d62c1000000b0033cf254873fsi840033wrv.678.2024.02.15.07.18.06
+        by mx.google.com with ESMTPS id b7-20020a5d4b87000000b0033d1123db6csi354584wrt.56.2024.02.15.07.18.36
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Feb 2024 07:18:06 -0800 (PST)
+        Thu, 15 Feb 2024 07:18:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TbJWd0DZXz6K8xR;
-	Thu, 15 Feb 2024 23:14:37 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TbJWt5spZz689Hq;
+	Thu, 15 Feb 2024 23:14:50 +0800 (CST)
 Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id D0D2F140DAF;
-	Thu, 15 Feb 2024 23:18:04 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 4D6EF1400CD;
+	Thu, 15 Feb 2024 23:18:35 +0800 (CST)
 Received: from SecurePC-101-06.china.huawei.com (10.122.247.231) by
  lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 15 Feb 2024 15:18:04 +0000
+ 15.1.2507.35; Thu, 15 Feb 2024 15:18:34 +0000
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, Gregory
  Price <gregory.price@memverge.com>, =?UTF-8?q?Alex=20Benn=C3=A9e?=
 	<alex.bennee@linaro.org>, <richard.henderson@linaro.org>
 CC: <linux-cxl@vger.kernel.org>, <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: [RFC PATCH 0/1] target/arm: Fix FEAT_HADFS when page tables are in MMIO (cxl)
-Date: Thu, 15 Feb 2024 15:18:03 +0000
-Message-ID: <20240215151804.2426-1-Jonathan.Cameron@huawei.com>
+Subject: [RFC PATCH 1/1] arm/ptw: Handle atomic updates of page tables entries in MMIO during PTW.
+Date: Thu, 15 Feb 2024 15:18:04 +0000
+Message-ID: <20240215151804.2426-2-Jonathan.Cameron@huawei.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240215151804.2426-1-Jonathan.Cameron@huawei.com>
+References: <20240215151804.2426-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.122.247.231]
 X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: MOHqDhaJWDV0
+X-TUID: LIp2AqgFz4Yj
 
-https://lore.kernel.org/qemu-devel/20240215150133.2088-1-Jonathan.Cameron@huawei.com/
-gives more details of the reason the CXL emulation uses MMIO space
-(short answer is it has very fine grained address routing).
+I'm far from confident this handling here is correct. Hence
+RFC.  In particular not sure on what locks I should hold for this
+to be even moderately safe.
 
-Obviously this one is lower priority for me to upstream as the ARM support in
-general is only in my CXL staging tree (I'll get back to that soonish).
+The function already appears to be inconsistent in what it returns
+as the CONFIG_ATOMIC64 block returns the endian converted 'eventual'
+value of the cmpxchg whereas the TCG_OVERSIZED_GUEST case returns
+the previous value.
 
-The equivalent tests with CXL memory and forcing applications to run from it
-on ARM64 TCG ran into an additional issue.  We need to be able to do
-atomic compare and swap to update the access and dirty flags as part of
-a page walk if we have the ARM 8.1 FEAT_HADFS (note you can disable this in
-the kernel then this problem isn't hit but that's not a viable long term
-solution though it did help me diagnose the problem)
-
-As the patch says I'm far from confident on this fix. Whilst it 'works'
-for little endian at least I'm hoping someone more familiar with the locking
-requirements etc can let me know if the BQL is the right option here and
-people can give a general opinion on whether such a hack is the right
-solution.
-
-Jonathan Cameron (1):
-  arm/ptw: Handle atomic updates of page tables entries in MMIO during
-    PTW.
-
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
  target/arm/ptw.c | 34 ++++++++++++++++++++++++++++++++--
  1 file changed, 32 insertions(+), 2 deletions(-)
 
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 5eb3577bcd..37ddb4a4db 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -711,8 +711,38 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+     void *host = ptw->out_host;
+ 
+     if (unlikely(!host)) {
+-        fi->type = ARMFault_UnsuppAtomicUpdate;
+-        return 0;
++        /* Can I do a load and store via the physical address */
++
++        bool locked = bql_locked();
++        if (!locked) {
++            bql_lock();
++        }
++        /* Page table in MMIO Memory Region */
++        if (ptw->out_be) {
++            old_val = cpu_to_be64(old_val);
++            new_val = cpu_to_be64(new_val);
++            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
++            if (cur_val == old_val) {
++                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
++                cur_val = be64_to_cpu(new_val);
++            } else {
++                cur_val = be64_to_cpu(cur_val);
++            }
++        } else {
++            old_val = cpu_to_le64(old_val);
++            new_val = cpu_to_le64(new_val);
++            cpu_physical_memory_read(ptw->out_phys, &cur_val, 8);
++            if (cur_val == old_val) {
++                cpu_physical_memory_write(ptw->out_phys, &new_val, 8);
++                cur_val = le64_to_cpu(new_val);
++            } else {
++                cur_val = le64_to_cpu(cur_val);
++            }
++        }
++        if (!locked) {
++            bql_unlock();
++        }
++        return cur_val;
+     }
+ 
+     /*
 -- 
 2.39.2

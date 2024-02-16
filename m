@@ -1,96 +1,97 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1307867ejb;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1307877ejb;
+        Fri, 16 Feb 2024 07:37:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXcKzK5s8bOYk6ggmJtibi3PLa2BqpB3srUznl0+BQ683Se4O+u2G+XGXVXUqQSCp5xeVhDoc9X8UXZKY1KbXenma0rhxwu
+X-Google-Smtp-Source: AGHT+IHXgpE2+WG5rIor66Yd/YzfVONGCYH/O5p8oYtAQGvjcaacx6OtsGNEApHp4b1j33VgAaSq
+X-Received: by 2002:a05:6214:5c49:b0:68e:fd3d:fadb with SMTP id lz9-20020a0562145c4900b0068efd3dfadbmr6766846qvb.41.1708097822768;
         Fri, 16 Feb 2024 07:37:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXuh9wfuzwbwsKLzElNZ0eYbuVV/d/uY1SvrrCw2q0fVphC93dsG0rBA21vl9FIb0Ybenx6pxMWqtG+vyL/TDhcSZNAVzso
-X-Google-Smtp-Source: AGHT+IGvOOrJCGvLVTqtEvOrCKSrJfwqlbUw2rkZ6afMNhgCSogbnCFNcq7wgZ8RZ/nVQxDu7zXT
-X-Received: by 2002:a05:622a:1747:b0:42d:a88f:1cf6 with SMTP id l7-20020a05622a174700b0042da88f1cf6mr6740607qtk.5.1708097821969;
-        Fri, 16 Feb 2024 07:37:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708097821; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1708097822; cv=none;
         d=google.com; s=arc-20160816;
-        b=BvTEc7e7yY0VhwisAsUXfe9G/izTSWP4hhSwedkdVcIEMNKVpIAsAEc9gg8XzdT2NS
-         0KDb6Pto6fjL9jF+J07QTzwNSaoVzosBVu/tUXySMusa1MLdCMtTFtsnq8bLu9RnMNzb
-         A0crln4gbcNv6CU8C5kf7hd9ZQdGHuHsF5hr1Kkw//kSrFzPItAQz/rb/v28yzpWxTyo
-         Zg4SLe44AuJCNSDfPgrotajbAEgHISrLctc4qmUAbNvfyTfEyj3pLesT+PaP+oOUeW1B
-         grs6W6ur3zGR3Nndyv1chPuvxzYt10Eu8TDgz/Jjv7noJBiOC+h7dk8peir3BtrnHJYf
-         +qvw==
+        b=PBf8zqfrQAYItRwZaOX4lAiWuzMAQImJ/nMB3CSf5jpAoayPQC9ik9y3n9oVoXQrcP
+         Y3cDCtevALeM9nnENlL43uedOMNkl0E0fCrawvQXePZeCm+O3Y4BoyoBBZlBHA0oKk5J
+         BL4D1jls/LxSJJ8Ntw9Z9GSkC6mmkN0Hc6Hnq2q0z5L6Aj8ByACwv/oyqCNr5SXaHoco
+         LA+aao5FUZ4rWg6NdxTA/v4aHuaOrZljMRmj64JisliZOvpivL701CPUvMfSlyILjKJE
+         +xySt+MScdB8jUj3vXqprOY3qlVZHIm8myexpMU6ScBdsJcZNQrojPPowl+kKAAejGlW
+         Tt/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hOmGAqEBBOEy9P6DsYyadVIEFCheEXAYvta8nSQ9bhE=;
-        fh=Xd4+DjwsSB15CDSuGqGdsywYntTmak9IX+7zMshVrOw=;
-        b=Sq2/Bmw3RX2+bGrP0VdVaMkSjrAdgHlYDOOxTlToPL94S8f7PDM5Dyma9zy2MTWT4b
-         bhzIM7YPicXHdSBNoBVxQ7VFKu/9htZ6PSEF5UBjvcXLkQERXNhydr1OoTpM4TohGSC5
-         KHc8z/FKWZpfRDT64HXebyuEH83U26QmvQCqLo2gxo/3INfnzxepHCT3X8UgDOEW3puu
-         5v2deXfmnHzjMT+2YEh9oHINLmp9xJJnzqHBwfKXCkGU7e3KajSsF93ykZLsUDUGR8pE
-         j59MrtRKVWNvvXf6sEjAnWPzdfi9ZK1yScqmAB8mVxV6Ee7ndaoYDAnrLi1wb7j0LBV/
-         7Nzg==;
+        bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
+        fh=uMY8WrrG4rf5woj9ob9mzQHpvMlqXpHLtJDnG6Nsxcc=;
+        b=QA4BkafepzyPyi1VDBrYoJarna2DFtaE8pUKizhRLxb/fWxmlDEZIsLrOHQxZdCDLf
+         K64VpZR48gyTVYoVSE2O7T+3YF5nPPZbDUThsrwu5V488F/eeHKjmtGOMySb3owgQI3z
+         UTR5F0PEo49dY5AXqwmAtEZVfr/BeDnkzyjai6zHMVNarl1fWTrCB+cOyQCtK6C5EuWd
+         xQCmrmc1kiCrIUTxooQ3FypWEzHy9KXc4iuGouTS57i8w0z0vCBr1WOoW6DupIlff5ut
+         uD88Ee6rpaF0QuQKe8zjpEnPp6/6sABQNcMK0jo3Skc4DZXGYdGTV+MHQApYKPb2bxE0
+         dWZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Il9PjfY1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zpab49Gd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020ac85383000000b0042dd20db0c4si50326qtp.386.2024.02.16.07.37.01
+        by mx.google.com with ESMTPS id im12-20020a056214246c00b0068f2bb8bf9esi11842qvb.65.2024.02.16.07.37.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Feb 2024 07:37:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Feb 2024 07:37:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Il9PjfY1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zpab49Gd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rb0Fu-0004If-UF; Fri, 16 Feb 2024 10:36:02 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rb0Fr-0004GZ-Mb; Fri, 16 Feb 2024 10:36:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fs-0004HQ-LK
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 10:36:00 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fp-0004DJ-8F
+ for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:58 -0500
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fq-0008L5-Lp
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 10:35:59 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a293f2280c7so306499866b.1
- for <qemu-devel@nongnu.org>; Fri, 16 Feb 2024 07:35:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fk-0008Jq-Dp
+ for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:54 -0500
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-5129859c6b3so798507e87.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Feb 2024 07:35:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708097756; x=1708702556; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708097750; x=1708702550; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hOmGAqEBBOEy9P6DsYyadVIEFCheEXAYvta8nSQ9bhE=;
- b=Il9PjfY1GBNrm1H293ZJGyUpt6q+yo6054KPUfrdvkQIPsbWvqWcH5zQYS/5Fol+FA
- QmgHa0uAzzGuDEX792phmJpBUeTZJvL7JdZ/lbdh1SZfy7diLp1PGHpg3wjGzpLR9hy1
- eS8+j0fg7zTlKZU/pTYlf2cTgq2vX0t0mNIPvd+SULimOlZfR0ywlrUFKiYL+IrTEj+O
- kYDFAyMrHUYpT2e74iCph96d8xGgDyIDlizB1iYRCa5nJ0sFOg0NHRsaDcPS3KveG8BR
- 0P2YcsTd1tHzYYe4KmpqRWmteowe+pVqDCYc6rKsFVfUmJFFl2/tRGDCp7wiyZdugoA3
- QFoQ==
+ bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
+ b=zpab49GdHR407PIxh5Gd0ldme4YocbRxvc/IrE1JsLfO29RoA+en4LtQ/YGwzhEk77
+ 52+E4OE0qrGgKBtDIdbnbLwLiD5rsGXzEdqwe79M/iLoF0KfmWSdDbaIQJMj43l8+Mv+
+ P77mzyX8JiZC29066OSSQQDdNY+3dcpr454PAC6buUD+PTdYkF9E3JH2uhet8om/BkJ/
+ mPNG9QKNG+R8E/VLcU6yrlfKifhnvgUxtBCPoanApzWEwrocshA6Pwt2G6GeajKtG6P/
+ PO4BqHdgN2qgK9N5/VLBW9/eODa1rZIFyCTNd6nrEj7+qhi9DZJfzJk2oj2T17hwYO5f
+ LypA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708097756; x=1708702556;
+ d=1e100.net; s=20230601; t=1708097750; x=1708702550;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hOmGAqEBBOEy9P6DsYyadVIEFCheEXAYvta8nSQ9bhE=;
- b=WktRJyzJ0PSzKX6nBqIb8+TbnOGJh2EApNmZnE8Vl3ziBZ8K4nNBoOrmYjhEfBPMP5
- GUsBu/p6LdHAY695HjJsyQNwQrdEZrW+lJplrvlvL6VMrDYwCXJC3nkE8mbAa3q+bKjh
- JH9MCLFSm8dxZsWEOBYu1HJwUnZElYEaI53zIgj0AZF4HX0skteLvcksbnUUhOvTVzqQ
- 2GvkRpWAwQAimlpFzMQgebN5gbMmyqjMQkSxw7+mzJWNTDert5KYXFuoaKDnsZtBlBRK
- ufaQT0KSBGLF1ZKX8/HLNI9Jvcka5DDhcvIfbEf6fBsEBFp26DKw2N9BbPw1HmG7hrUJ
- q3UQ==
-X-Gm-Message-State: AOJu0YxR2qgvJemsiB8TvDTqwlJxnSBsDKEmAYXm5XD2cJC8GIjM9gkb
- 6lLRq2u+H6CX5Z/TSgEVoxK7055AqQvfJnX/Qm+GuSzOkUrLLrYFPnaGY/9LLN5Y6xnzYEcJRzU
- B
-X-Received: by 2002:a17:906:c415:b0:a3d:7d6b:2dc3 with SMTP id
- u21-20020a170906c41500b00a3d7d6b2dc3mr3608466ejz.73.1708097756627; 
- Fri, 16 Feb 2024 07:35:56 -0800 (PST)
+ bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
+ b=Er6D9WQhIG0y//1lokGgtsoG2ioZ0CAtBK57LzA5QVAaa/8n9JHS4cczlqI1h3ImT0
+ YXkvIWo9ky17K7iKUxD9rtoiRW//60hC9ZYUsGnX3Xt74YXF0b/mchiuQATJ5J3ZBjgz
+ tGqxnVb8jFfVR8Ep0wJ19sPxyvL89mWOZ4GG+q1TsdcsdccUf3pEtO+Z2zFLgzoNZDMi
+ NAYk+SRKAsGOsExC3BBc7HIOk+4vD8a8BfFluaS+Q0jjUHwBQ330Nyw+4zobzrgpVcls
+ KKGaXMlZWWrvfReySmDEpECofR7HvkUP02ysHYKJ4REckRg14qZsBCv4vJfr3pJOAilI
+ XCbw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8w2edzDH+9QVaFdkILMXidHycFYb5aW7hU0HATlGNy9qQ15NIj2LtrzHKauzB4zoQiGrIfAPjRF7evd2vRFsUXbOV
+X-Gm-Message-State: AOJu0YyjJQGkjtLvLOFdnP+XrMzqZgmUdg385k3TeNXB7A1xIDGLJsun
+ eGrirJ1LacVOi7Ujfhbowbsrv99kvHiK1DkhRKITriBCp3tRorCokAH1lfTQ+SA=
+X-Received: by 2002:a05:6512:224d:b0:512:99ad:d465 with SMTP id
+ i13-20020a056512224d00b0051299add465mr995055lfu.16.1708097750674; 
+ Fri, 16 Feb 2024 07:35:50 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.210.246])
  by smtp.gmail.com with ESMTPSA id
- fy22-20020a170906b7d600b00a3cf4e8fdf5sm44841ejb.150.2024.02.16.07.35.55
+ e1-20020aa7d7c1000000b005621b45daffsm85225eds.28.2024.02.16.07.35.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 16 Feb 2024 07:35:56 -0800 (PST)
+ Fri, 16 Feb 2024 07:35:50 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -102,17 +103,17 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/6] hw/sysbus: Remove now unused sysbus_address_space()
-Date: Fri, 16 Feb 2024 16:35:17 +0100
-Message-ID: <20240216153517.49422-7-philmd@linaro.org>
+Subject: [PATCH 5/6] hw/i386/kvmvapic: Inline sysbus_address_space()
+Date: Fri, 16 Feb 2024 16:35:16 +0100
+Message-ID: <20240216153517.49422-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240216153517.49422-1-philmd@linaro.org>
 References: <20240216153517.49422-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,57 +122,85 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +z6pyH4/rgU4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gVTPqs+ac4CM
 
-sysbus_address_space() is not more used, remove it.
+sysbus_address_space(...) is a simple wrapper to
+get_system_memory(). Use it in place, since KVM
+VAPIC doesn't distinct address spaces.
+
+Rename the 'as' variable as 'mr' since it is a
+MemoryRegion type, not an AddressSpace one.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/sysbus.h | 1 -
- hw/core/sysbus.c    | 5 -----
- 2 files changed, 6 deletions(-)
+ hw/i386/kvmvapic.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index 3564b7b6a2..01d4a400c6 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -85,7 +85,6 @@ void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
- void sysbus_mmio_unmap(SysBusDevice *dev, int n);
- void sysbus_add_io(SysBusDevice *dev, hwaddr addr,
-                    MemoryRegion *mem);
--MemoryRegion *sysbus_address_space(SysBusDevice *dev);
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index f2b0aff479..25321d4f66 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -16,6 +16,7 @@
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/runstate.h"
++#include "exec/address-spaces.h"
+ #include "hw/i386/apic_internal.h"
+ #include "hw/sysbus.h"
+ #include "hw/boards.h"
+@@ -57,6 +58,7 @@ typedef struct GuestROMState {
  
- bool sysbus_realize(SysBusDevice *dev, Error **errp);
- bool sysbus_realize_and_unref(SysBusDevice *dev, Error **errp);
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 35f902b582..5524287730 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -304,11 +304,6 @@ void sysbus_add_io(SysBusDevice *dev, hwaddr addr,
-     memory_region_add_subregion(get_system_io(), addr, mem);
- }
- 
--MemoryRegion *sysbus_address_space(SysBusDevice *dev)
--{
--    return get_system_memory();
--}
--
- static void sysbus_device_class_init(ObjectClass *klass, void *data)
+ struct VAPICROMState {
+     SysBusDevice busdev;
++
+     MemoryRegion io;
+     MemoryRegion rom;
+     uint32_t state;
+@@ -580,19 +582,17 @@ static int vapic_map_rom_writable(VAPICROMState *s)
  {
-     DeviceClass *k = DEVICE_CLASS(klass);
+     hwaddr rom_paddr = s->rom_state_paddr & ROM_BLOCK_MASK;
+     MemoryRegionSection section;
+-    MemoryRegion *as;
++    MemoryRegion *mr = get_system_memory();
+     size_t rom_size;
+     uint8_t *ram;
+ 
+-    as = sysbus_address_space(&s->busdev);
+-
+     if (s->rom_mapped_writable) {
+-        memory_region_del_subregion(as, &s->rom);
++        memory_region_del_subregion(mr, &s->rom);
+         object_unparent(OBJECT(&s->rom));
+     }
+ 
+     /* grab RAM memory region (region @rom_paddr may still be pc.rom) */
+-    section = memory_region_find(as, 0, 1);
++    section = memory_region_find(mr, 0, 1);
+ 
+     /* read ROM size from RAM region */
+     if (rom_paddr + 2 >= memory_region_size(section.mr)) {
+@@ -613,7 +613,7 @@ static int vapic_map_rom_writable(VAPICROMState *s)
+ 
+     memory_region_init_alias(&s->rom, OBJECT(s), "kvmvapic-rom", section.mr,
+                              rom_paddr, rom_size);
+-    memory_region_add_subregion_overlap(as, rom_paddr, &s->rom, 1000);
++    memory_region_add_subregion_overlap(mr, rom_paddr, &s->rom, 1000);
+     s->rom_mapped_writable = true;
+     memory_region_unref(section.mr);
+ 
 -- 
 2.41.0
 

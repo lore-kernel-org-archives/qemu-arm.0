@@ -1,113 +1,124 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1153780ejb;
-        Fri, 16 Feb 2024 03:09:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWoPLsE705oC+c94N3a91fuzsAjZNc7BOfa3QvfWPJ4F09Ock+w9K6C2DoHszfUfu1wRnO0NlOr58MgwfujFuNROj7sxNGi
-X-Google-Smtp-Source: AGHT+IE0BuCfZ3o5fkmVNybjCpjMChwlc+icZzU2wtqE1qC19Izh4Ap7uc1Y/+5AsH3LlK1VpiWm
-X-Received: by 2002:a05:6808:3209:b0:3c0:354b:1559 with SMTP id cb9-20020a056808320900b003c0354b1559mr6215309oib.53.1708081750432;
-        Fri, 16 Feb 2024 03:09:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708081750; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1153895ejb;
+        Fri, 16 Feb 2024 03:09:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXWsnSop7jZwahQkiJoyeP0DAYvhY0JSJI0vNznegq6FCw+XxlpIEs+5C3tovS6Czp0YpspdA5B3HAe4+JJ45id/0CeVXud
+X-Google-Smtp-Source: AGHT+IHqWS9+8frwJImOGnuLlq8z61Im2x0tvGA/i82/Sep9iBNrMIxGZqD/TgFz4Qo4NuG1+obo
+X-Received: by 2002:a05:620a:51ce:b0:787:2270:fa52 with SMTP id cx14-20020a05620a51ce00b007872270fa52mr4413132qkb.45.1708081762513;
+        Fri, 16 Feb 2024 03:09:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708081762; cv=none;
         d=google.com; s=arc-20160816;
-        b=y168VuANbfdAqm6o1vHvEpEth0IDxaBA4s/1SEH8vFM4ipukeS9WUvnw1We4NYHMn9
-         AVqv+i9WorogN1fuprNqnuSijkHz7LV1UUqTLXrSv4mAvhGtdJdhFJ96s//LgJf6sfax
-         2eErDVmQ3jl7tBF6GFux+gCJzSNWxSr1f6J+yoR+cPyoE748bmHs4PZzx5Fl3Bgs4cT6
-         dwVVXIAJ5VXmYFuP2pj5Ti4wCRbunSuz+rSUBghshuLw/9gVbifL5hwFQMt0PYvbkA6A
-         yz/0cHC2TAuHiMATZf5qZF0BtWO29zKir/Dsmv+hK3t3rPZyIWYe3ZzK/5NOySxbMGfk
-         sToQ==
+        b=cpOTEia+X8agCOahYs1dIr3zPSvhFoRi5x5Ge843jaz+I0uKBj9P8JqOLb/1XmkpUm
+         snozv1UijImV4bdO4Uez459yCnK0++kjKNT4OJZQov9sqcENSymIKTffqlPCz2QuBouS
+         gVl12eODrqemrW2plJhKRjB2WvDm4hk/hXA6oc6alN9qMAJ0TKyhFK/nNiuZt3m9dQ13
+         9JsouCyKT/H142f7heLxV47CJc4LBRiKFFvFOaGh1wOt6w3ba54YQymcI+Crg2wbt2Ha
+         SYdxgQcJI1TFfBDpDUw0KpX5bPsVh4YnrEYDhGINXR4YaPFTuOhwQWlV3PxK1NEFJKpi
+         APcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1f6J2H1K9VOhN8YiJnj6i61rwEdmxKhJYj3MwXMwmEA=;
-        fh=5Qnrw9e8qimJRC/V5In/+KXUd+bIKApPagk/4KwBjmQ=;
-        b=qfqrO3L89Whe7ZXdhV87Ui7WfsViBOe2S8y3wgDf2blTQ6U4qv7ncD8hvcLv9UqW1t
-         tCZw47Dh2ZNdsygrTspo1qDbuW2i7QJQBaICzZvHfPGBTAEHX6edVyl2liqoTD4qC6hG
-         qQFTK0kUXpVlbo4U7wig2kHCeIAz+zXNIcJ7rdmOzA1qhPeisMmMtEfCyiVlh7wiMqJw
-         jihwRo2dJDhFmxUAA70+A9ydNYGmCAP/d9kFwOqL/jVz01iEY2L4VHsocV2rAh62jglH
-         5XgxdhWJcdXuO0DSyKBcQX8m0cNYRY3wRMBL5yKYx2G2su6vQCkBppxRZqow7/XDF/Bz
-         pFXA==;
+        bh=F6ajeUmTQmKHExarjmIHQmgeLAwEfZL4L6fDKfFyi0M=;
+        fh=ZKKgbbU8WVqPGHC0Cm5TsGKB0jx8PKipJZhIfpuaAW4=;
+        b=Ek3EB4Ft0chGTDWXWeyeBIxya3xROLtuWxdkXRSvEO3nTHbdCL3rKmrmPVqcC08fPa
+         6locQmlXSOiqJusZiRvRa4Z9FEQ1M6oKSKgurujL2QZxi+XCYDjIEIx171nSQMs1gxpl
+         BfoJWHPNo5o46jdxu7pNo2UAmeNDQD7SRG2UyvzN3u+7WOmQL1Ue1t+cODVfY4EfeAAd
+         IWxDIMYPOKuxG/i4H585blfL/EFitLzEH4wDMWZrt+ZcGOiQ3LMCG5MkbNUh2phCk/Uq
+         QFNBZA850f+fDsLWHZY23oXBzUWgdeJ8jP76POhFHbNR9JfM63eopF3e9rSA+UBKB0m6
+         Pn8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aklU6aCR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dWLtbfh1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16-20020ac85c10000000b0042c78302a0dsi459080qti.219.2024.02.16.03.09.10
+        by mx.google.com with ESMTPS id l4-20020a05620a210400b007840449a485si3646707qkl.234.2024.02.16.03.09.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Feb 2024 03:09:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Feb 2024 03:09:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aklU6aCR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dWLtbfh1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1raw15-0007Cd-BA; Fri, 16 Feb 2024 06:04:27 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1raw2M-0003Mr-SU; Fri, 16 Feb 2024 06:05:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw13-00077l-WD
- for qemu-arm@nongnu.org; Fri, 16 Feb 2024 06:04:26 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw2H-0002kS-D4
+ for qemu-devel@nongnu.org; Fri, 16 Feb 2024 06:05:41 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw11-000134-Q0
- for qemu-arm@nongnu.org; Fri, 16 Feb 2024 06:04:25 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-33adec41b55so979311f8f.0
- for <qemu-arm@nongnu.org>; Fri, 16 Feb 2024 03:04:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw2E-0001W3-4p
+ for qemu-devel@nongnu.org; Fri, 16 Feb 2024 06:05:41 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-41211097adcso13376235e9.3
+ for <qemu-devel@nongnu.org>; Fri, 16 Feb 2024 03:05:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708081462; x=1708686262; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708081536; x=1708686336; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1f6J2H1K9VOhN8YiJnj6i61rwEdmxKhJYj3MwXMwmEA=;
- b=aklU6aCRgVVkS4G4qnszjyTTv5IvY/xbh8JwrkXQjUznalKUIvh7LMV/FuwUMv8qwT
- qPyUkgwuQ1RF9CgV5iEKCgtVjtHoPAghDMs3D4pegzbUspx9nnUV+1y/61YUCwFSelVr
- pYLGNo4POjhX1n7amesa143IGUtbKy3rPZOXozLnJ1wT54xkewGPjn4AGxart7IJ8GXg
- T2ErzLyQ8r9ZrxjweRz5e3yAncECGMHnbh60x6qWIIwnqXd0S7t0peR16jF5KOQZmffW
- IXfOV8bFpTjr50/2VFgVdUPx5Zwms1SuF6/KSqE9P0zCo4NisOwo9Vo66QVKuDon7uCd
- QTHg==
+ bh=F6ajeUmTQmKHExarjmIHQmgeLAwEfZL4L6fDKfFyi0M=;
+ b=dWLtbfh1Gmr6bwIP2lCRTT6tGAslqKGAd5oAfkaSRPDMUCRyTqrHaOGoSpQq9ioStb
+ Zo9NDQ0ilplfg58JEJ9G+W8gDEftqg10W9VITYfrbK25DD40K2bPSp3PxxMd9p2DOKTi
+ 5zzyWXTpXBDo1MpFRnNRLiAI6AsdvhnaB0qVUMV72LrQ28NhRKR5SUgjSeGkLxxapIxr
+ YxbG+y8RZW2ny7sivB4uNUYLOwlcXnr17Sc56bQYA+7CZ/XpoUaaCl6KUsGo5DqdP1cf
+ Um63Hnh9nc7+vBnal5rnbsWfAr0KlvwWm4PMTM/9dDoQHcRTCRn0h6tl++kZ50gXV8Kw
+ yP1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708081462; x=1708686262;
+ d=1e100.net; s=20230601; t=1708081536; x=1708686336;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1f6J2H1K9VOhN8YiJnj6i61rwEdmxKhJYj3MwXMwmEA=;
- b=rhEJ+t40W4Oyj6pA9F6R6j3iwy8nAIJcZuGCSWnkwgd7WPEVspqPz8F8AEnmKw4rGK
- 3agrchnaxQZjRL4GmmMNwNqmGR2qiSNLoKdKjCqOmb1ovz/p2UdZv9J3oWVbiE6dfZvk
- a94SlK9QHvIFaFUxnO4qiGFgrUhi/ZcaHSSd++ecrbJHTUcjdQLacCIDucgb6B6rFjHl
- 3XZTrjtc60kJFb0Ud/b/TY7P59/Z5wRiqclf676ikrBQkVAqK0RbKcYBhlyImop/H6T0
- 02KSlpZuk18avFp1p+Fq7T7Ul6WbGDvJQUkfaZa3fAEbOpZv4YD6YPYCsCFYjGAXG+16
- pglQ==
-X-Gm-Message-State: AOJu0YwyXUdthl8Oq61dPrr/4BLEZFJ1PtMZjaOugtSt1dFRmHjW1YEm
- fGD9F+mQjmlUU1RSkClF6LuajpZhmWbJtto/Ov3CCw+6Rzj9OKI9cnmW4gfg9NI=
-X-Received: by 2002:a05:6000:1e8f:b0:33d:2120:1011 with SMTP id
- dd15-20020a0560001e8f00b0033d21201011mr550180wrb.54.1708081462196; 
- Fri, 16 Feb 2024 03:04:22 -0800 (PST)
+ bh=F6ajeUmTQmKHExarjmIHQmgeLAwEfZL4L6fDKfFyi0M=;
+ b=LCSpljAMvxZIgpStSfmAF7n0hTY/1uCiLWxuhGt8MAirGYQwO8GlepFg6+7Pimvqep
+ I+Zmye2yUEOpoOglANa6VV1h5pDr+8dJF6xk0fK0fnJzxSECXpRsh+QwMiuw2QL1UugL
+ WfNdyLZDAZd7dwov/RBrSuEdJBriCa1qiUNNlnIrtxqMcILwN/qG8UyppyEcXXEeBrmx
+ pQmBLJQCUVWMb8EfATyMUQbdpZXFqKvDpF+KJAGVc6WyYfwBimeXSmpYUUCk4WWrGuLG
+ 1HQFn1X2F48CrnrN17aE769Fb+Zc75dIFPmzWO/CPaP46lg94skT9uvx+RvVrYqaVxHy
+ XR8w==
+X-Gm-Message-State: AOJu0YyWgYVbqyUAb9Roke0s9LtEc8PYhyC1xHGxqXw/5egr7okA57KS
+ 2K0FoKaineQv0UpSRRrmWtpMpdyjsGT9xQunNwDOr0490bOZJdGjqJk826UZ/We5uYWHifUZIdR
+ p
+X-Received: by 2002:a1c:7918:0:b0:411:a802:700f with SMTP id
+ l24-20020a1c7918000000b00411a802700fmr3604707wme.39.1708081536016; 
+ Fri, 16 Feb 2024 03:05:36 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.210.246])
  by smtp.gmail.com with ESMTPSA id
- az1-20020adfe181000000b0033d1f992ae3sm1275770wrb.112.2024.02.16.03.04.20
+ 13-20020a05600c020d00b00410dd253008sm1927267wmi.42.2024.02.16.03.05.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 16 Feb 2024 03:04:21 -0800 (PST)
+ Fri, 16 Feb 2024 03:05:35 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>
-Subject: [PATCH 10/21] hw/usb: Inline usb_new()
-Date: Fri, 16 Feb 2024 12:03:01 +0100
-Message-ID: <20240216110313.17039-11-philmd@linaro.org>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Subject: [PATCH 21/21] hw: Add QOM parentship relation with CPUs
+Date: Fri, 16 Feb 2024 12:03:12 +0100
+Message-ID: <20240216110313.17039-22-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240216110313.17039-1-philmd@linaro.org>
 References: <20240216110313.17039-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,89 +127,119 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: b1uHKLs315oE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7TOp2UGugtDE
 
-Inline the 2 uses of usb_new().
+QDev objects created with object_new() need to manually add
+their parent relationship with object_property_add_child().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/usb.h    | 1 -
- hw/usb/bus.c        | 9 ++-------
- hw/usb/dev-serial.c | 2 +-
- 3 files changed, 3 insertions(+), 9 deletions(-)
+ hw/i386/x86.c                            | 1 +
+ hw/microblaze/petalogix_ml605_mmu.c      | 1 +
+ hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 +
+ hw/mips/cps.c                            | 1 +
+ hw/nios2/10m50_devboard.c                | 1 +
+ hw/ppc/e500.c                            | 1 +
+ hw/ppc/spapr.c                           | 1 +
+ 7 files changed, 7 insertions(+)
 
-diff --git a/include/hw/usb.h b/include/hw/usb.h
-index 32c23a5ca2..2d820685cc 100644
---- a/include/hw/usb.h
-+++ b/include/hw/usb.h
-@@ -500,7 +500,6 @@ void usb_bus_release(USBBus *bus);
- USBBus *usb_bus_find(int busnr);
- void usb_legacy_register(const char *typename, const char *usbdevice_name,
-                          USBDevice *(*usbdevice_init)(void));
--USBDevice *usb_new(const char *name);
- bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp);
- USBDevice *usb_create_simple(USBBus *bus, const char *name);
- USBDevice *usbdevice_create(const char *cmdline);
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 148224f06a..a599e2552b 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -329,11 +329,6 @@ void usb_legacy_register(const char *typename, const char *usbdevice_name,
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index 684dce90e9..7021419d91 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -102,6 +102,7 @@ void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id, Error **errp)
+     if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
+         goto out;
      }
- }
++    object_property_add_child(OBJECT(x86ms), "cpu[*]", OBJECT(cpu));
+     qdev_realize(DEVICE(cpu), NULL, errp);
  
--USBDevice *usb_new(const char *name)
--{
--    return USB_DEVICE(qdev_new(name));
--}
--
- bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp)
- {
-     return qdev_realize_and_unref(&dev->qdev, &bus->qbus, errp);
-@@ -341,7 +336,7 @@ bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp)
+ out:
+diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+index 0f5fabc32e..dfd881322d 100644
+--- a/hw/microblaze/petalogix_ml605_mmu.c
++++ b/hw/microblaze/petalogix_ml605_mmu.c
+@@ -83,6 +83,7 @@ petalogix_ml605_init(MachineState *machine)
  
- USBDevice *usb_create_simple(USBBus *bus, const char *name)
- {
--    USBDevice *dev = usb_new(name);
-+    USBDevice *dev = USB_DEVICE(qdev_new(name));
+     /* init CPUs */
+     cpu = MICROBLAZE_CPU(object_new(TYPE_MICROBLAZE_CPU));
++    object_property_add_child(OBJECT(machine), "cpu", OBJECT(cpu));
+     object_property_set_str(OBJECT(cpu), "version", "8.10.a", &error_abort);
+     /* Use FPU but don't use floating point conversion and square
+      * root instructions
+diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+index dad46bd7f9..255d8d4d47 100644
+--- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
++++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+@@ -70,6 +70,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
+     MemoryRegion *sysmem = get_system_memory();
  
-     usb_realize_and_unref(dev, bus, &error_abort);
-     return dev;
-@@ -693,7 +688,7 @@ USBDevice *usbdevice_create(const char *driver)
-         return NULL;
-     }
+     cpu = MICROBLAZE_CPU(object_new(TYPE_MICROBLAZE_CPU));
++    object_property_add_child(OBJECT(machine), "cpu", OBJECT(cpu));
+     object_property_set_str(OBJECT(cpu), "version", "7.10.d", &error_abort);
+     qdev_realize(DEVICE(cpu), NULL, &error_abort);
  
--    dev = f->usbdevice_init ? f->usbdevice_init() : usb_new(f->name);
-+    dev = f->usbdevice_init ? f->usbdevice_init() : USB_DEVICE(qdev_new(f->name));
-     if (!dev) {
-         error_report("Failed to create USB device '%s'", f->name);
-         return NULL;
-diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
-index 63047d79cf..6e79c46d53 100644
---- a/hw/usb/dev-serial.c
-+++ b/hw/usb/dev-serial.c
-@@ -624,7 +624,7 @@ static USBDevice *usb_braille_init(void)
-         return NULL;
-     }
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index 07b73b0a1f..6b4e918807 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -84,6 +84,7 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+         /* All cores use the same clock tree */
+         qdev_connect_clock_in(DEVICE(cpu), "clk-in", s->clock);
  
--    dev = usb_new("usb-braille");
-+    dev = USB_DEVICE(qdev_new("usb-braille"));
-     qdev_prop_set_chr(&dev->qdev, "chardev", cdrv);
-     return dev;
- }
++        object_property_add_child(OBJECT(dev), "cpu[*]", OBJECT(cpu));
+         if (!qdev_realize_and_unref(DEVICE(cpu), NULL, errp)) {
+             return;
+         }
+diff --git a/hw/nios2/10m50_devboard.c b/hw/nios2/10m50_devboard.c
+index 6cb32f777b..f6a691d340 100644
+--- a/hw/nios2/10m50_devboard.c
++++ b/hw/nios2/10m50_devboard.c
+@@ -95,6 +95,7 @@ static void nios2_10m50_ghrd_init(MachineState *machine)
+     cpu->exception_addr = 0xc8000120;
+     cpu->fast_tlb_miss_addr = 0xc0000100;
+ 
++    object_property_add_child(OBJECT(machine), "cpu", OBJECT(cpu));
+     qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
+ 
+     if (nms->vic) {
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index 3bd12b54ab..77b7d2858c 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -956,6 +956,7 @@ void ppce500_init(MachineState *machine)
+          */
+         object_property_set_bool(OBJECT(cs), "start-powered-off", i != 0,
+                                  &error_abort);
++        object_property_add_child(OBJECT(machine), "cpu[*]", OBJECT(cpu));
+         qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
+ 
+         if (!firstenv) {
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 0d72d286d8..b6e5caa0d2 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -2715,6 +2715,7 @@ static void spapr_init_cpus(SpaprMachineState *spapr)
+                                     &error_fatal);
+             object_property_set_int(core, CPU_CORE_PROP_CORE_ID, core_id,
+                                     &error_fatal);
++            object_property_add_child(OBJECT(spapr), "cpu[*]", OBJECT(core));
+             qdev_realize(DEVICE(core), NULL, &error_fatal);
+ 
+             object_unref(core);
 -- 
 2.41.0
 

@@ -1,96 +1,97 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1307719ejb;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1307720ejb;
         Fri, 16 Feb 2024 07:36:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUjynyy943R0X1v6B5p32+RUosv/1Owy1ZTo5X07WJ3VFnvLkwySOG1wTqALJkfvMv1H6tYa6/fkWks5l8R7GW0ycJai/uq
-X-Google-Smtp-Source: AGHT+IHzCFQZCPxkNo6m2903Pv6fjKW5Tne7/JedDGqX95A1PyJqAY68f8v41FWuDSLYWlJgK/ot
-X-Received: by 2002:ac8:5e52:0:b0:42d:ab2a:e3f3 with SMTP id i18-20020ac85e52000000b0042dab2ae3f3mr6112597qtx.30.1708097807272;
+X-Forwarded-Encrypted: i=2; AJvYcCV2aNnZOV4nTqbj2WjdajN0pnzE826Ph5Fdkmam+wNu9MzHJkw2ji56PehRtUIhyd8T8NVN7uiSXXoqF1iPR5qk2K2JsquF
+X-Google-Smtp-Source: AGHT+IGa5ZAWQYhpMsjdmJetJU8Cts+IRQn9zD7f3yzYHbrTZeYr5SoKs/SjGCjJehf2g16ytBcX
+X-Received: by 2002:ad4:5743:0:b0:68f:280f:175a with SMTP id q3-20020ad45743000000b0068f280f175amr4908805qvx.12.1708097807354;
         Fri, 16 Feb 2024 07:36:47 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1708097807; cv=none;
         d=google.com; s=arc-20160816;
-        b=eerKAaJYfdLQQVIA2NbzchPCF7c1awxqPNO5r9uH5yQ82bMrhydsBEWP8Enw89eZIM
-         dBfwadr7CZyN8DBVxT1eepLUwmmcLLDld7BRm0lCzczjkIJhSsbXO9pBdb4zyAA14+1T
-         4gPklaV6usWk1K9ZM6uOoyP5HbNIgK4MrIrztpsr2Atb3Z0ODsDfgSTMKzvX4hZVMT+b
-         Iyt8I70mIwa1QitCVluci7P5/txWLRyJ3SPw6XROckiuK2jvkC1YGpxSkOEOtozM2BNt
-         /FST8ZKNtazXYPYu0e6PWz37r9+lWSGS+P9VG2/E7He95PehUdvnCXwzd5iLXHKAVBy1
-         NiLw==
+        b=RAHPBE5L4JIe5SgjbpN2uBw8UFxgqCPX7/znVcc8SAI/I5uM2U6uC5MUb93ocFhAhy
+         bKIXv0fkY91Yy3nwN75ZuQzWNKPdFuiG6Uv2jkgFUhM5bK4rBwUp3L0iap4cxPulKJ+E
+         ruuQWj694hiJKnMhEBLNyXEPiBj5WY9jIPZ/hRe6RU13+uoQ8PF/h6eIPR0oe7k1T8V3
+         W54J0e9IZyXOq2tcID1N1Q2EUm++mc18UobDf1mMb0+nqyXZKcwn4rD437vvJCvyyqrP
+         2O7VNjM6RjpsjepbOI3a1dP74J1FpBj7bCgp1J5K1229esNhajZrt5hoPzv8PJUR8XhI
+         xzYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kV0Ad1FDMlSK0WAR0PyajC3eAS8o+2asLjvJepPvncc=;
-        fh=Xd4+DjwsSB15CDSuGqGdsywYntTmak9IX+7zMshVrOw=;
-        b=WZFOJpht8c8bbxn+k2iz9Flb6wYZHYuwo8QtjMOuNtD9DTJi2nubWSTPbkLylmWGZR
-         Pmc9vFJha9sSBqisNi1cnFsQMEMfxf+ESAfFKwIOqkSME4Y/FFk3jQrphGa4kip5uCs2
-         w3xLDt+dS4pKwmqnymdjUleB0OCUNNyuq8llaFg/G34oPuVjYCLNVF/azY5BldtM36Wp
-         eZMx7lZW6WOiPmLDHV12f8wKcNljAXO9/x4Eisn58GJET8aqF9+F+IxwAT86rrWi8RZh
-         6pHlOwIzkjokNvoYgJFpJyJJs/U4Vefs6lqaRFBQF2rghGmm3Fk/CpFcbLDvOsJ4PiwO
-         JrMA==;
+        bh=FHq12xVLql3ZjDkC8k2lRJAF5RJwUJ4vzRZ5Ca5vbxw=;
+        fh=/61VYDF76+LM0uVHdxtDTLdUV0q5iGy0r0mTfph67Cs=;
+        b=umZ0/2GNPJbLX8XVM54KWjQ+vxDyY8IbajtQtS2W53ts5TljNmuBu594ccVV7F1Qsh
+         KkCQhCtB+/aS79fZpDtuY9zoD3PKVkJZeT262ZbZJZcdZAxSZptiyDusq5KIBv3eUn+Z
+         c660o8PLxP/lDUpjvab0E2jWR+P2RvjzoMMjhTs2av+L8ZJIIg3qJxxKBZ+T3+WU0BAX
+         DeLmbGrL33zC2cU8d4XxUduUL6RtJtZoH0Wn8ruHs89siRvECLYM+Vrc/AdaJVpJsytK
+         UKvWk1aYdSNyJ3KXaB6YCS8fE6xd6Rie8bO6gDCd2P9bAfumgYKpdn9Br8OdIEfPEFev
+         BdYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HpUsT+Rl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aGUvTxVn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jt40-20020a05622aa02800b0042dd4e0a9d1si52485qtb.359.2024.02.16.07.36.47
+        by mx.google.com with ESMTPS id 1-20020ad45b81000000b0068f131028e8si4139666qvp.286.2024.02.16.07.36.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 16 Feb 2024 07:36:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HpUsT+Rl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aGUvTxVn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rb0FT-00044N-GF; Fri, 16 Feb 2024 10:35:35 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rb0Fd-00049J-Od; Fri, 16 Feb 2024 10:35:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0FQ-000437-L4
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 10:35:33 -0500
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fa-000472-Tf
+ for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:43 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0FN-0008AI-Ry
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 10:35:32 -0500
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2d220e39907so2713421fa.1
- for <qemu-devel@nongnu.org>; Fri, 16 Feb 2024 07:35:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0FZ-0008F7-FF
+ for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:42 -0500
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-a2f79e79f0cso326103766b.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Feb 2024 07:35:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708097727; x=1708702527; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708097739; x=1708702539; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kV0Ad1FDMlSK0WAR0PyajC3eAS8o+2asLjvJepPvncc=;
- b=HpUsT+RlZVpYnQ6h9RCN+nUP1cq60oJ5XTz2Wtf557ztUG3ojkGYgh7iQLX4BVIO3o
- UkNYCbIMSd81wxIGBl6GGgQuNJyuM/CcY7MocFJlllFzvm8BbH4d6JWMKFEerpciD18R
- g10EnuZHiVpMCb8fp08hs2iBjoGAVdNOzjMQkO3dpc67UlaK7KeS35wBBumbHvWV43io
- 7PlQ2KuqGI/OhY4shGkiws4MZm3hkkKn5N5B2RTk7Q4o1p1n8Ab1Wpj2UWTvAtUeCz0a
- v8264ovUU+OX/Jc4esMED2EQgeqGOuputz3ngcaDf507JyoY7L6OqntbM2vz2tztaj+Y
- cvJw==
+ bh=FHq12xVLql3ZjDkC8k2lRJAF5RJwUJ4vzRZ5Ca5vbxw=;
+ b=aGUvTxVn0CSevQHyBDA9cVw+UVglgY2WrUoRExucsmzbM/eRtrS5afWbUMOl5saiC0
+ DFasHe2Rr9+TBowErSS1Z8yGmXrQD7zEolWAVbCv3u/pB6icUh03uVvzxSWYi/9GFmGb
+ BP6EInDIox0XWaz7Yp+j+YWO419I9+jWTsAIS5LE6Re2hd5XbihKkBlAQot/4bQEfHbZ
+ /w4luttgu7EWUA9KVsmHc9R1d8NI7mDDKcl5+XcbFZ1KVzA+ZN51Kf3bMD8okv1c4nAj
+ z7aahlG9hehfiZbh8Ys/psowuFQ2tCEiLN30UMG7XBTvZ6kpbggx4yTxdig7KKvFj7aL
+ +UpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708097727; x=1708702527;
+ d=1e100.net; s=20230601; t=1708097739; x=1708702539;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kV0Ad1FDMlSK0WAR0PyajC3eAS8o+2asLjvJepPvncc=;
- b=rhooZrIReiuYjf/RmtdtS5TkVWQlLTAwkWCiAk+ZRNxgffinsq2zUnKRfYjIj1Wr4c
- nAgECbpuem/Magi83/EAH3GiRKo/+rcF8hX6ZOOPWly7k78luftYdXpmo7h2u4EdjaSO
- boN8cQdIcuC3XrrCApczZ4siH3R9r0HQS8qrvuuahQ1RDt/uxJ0VDaPOQ17RlL10qgfw
- sDPdweOBM9JOHRBMfib2pc7V+CzbIh3eP5vN5/saff/55f4YcZXzWYFAe9fU9Tt0qjZb
- UUVbFU59AaxYh4kmcxKCjTvW2G0+9eawu8pifMqPg6KhFvM3pFzOce52IdkGZx9kHb/7
- B3ag==
-X-Gm-Message-State: AOJu0Yy6mzoPpBZygBmhkxaMWs5X0zHRgjiwpNyLJ+Xdlw9BmlwgsLUP
- Iz4x8yy/1QvAmW86h/mphW2uKi2SbClEm7o3MPkyqATQiw5BbarLcQfHDmd4s8wSnjMZA62q2fX
- f
-X-Received: by 2002:a05:6512:20ce:b0:511:78bb:1a4d with SMTP id
- u14-20020a05651220ce00b0051178bb1a4dmr3559454lfr.17.1708097727158; 
- Fri, 16 Feb 2024 07:35:27 -0800 (PST)
+ bh=FHq12xVLql3ZjDkC8k2lRJAF5RJwUJ4vzRZ5Ca5vbxw=;
+ b=Jndm35iA0nVyhBm35TnIRxxD+lS3xyZsfUPgKf16uHgfQM+QBk2zjXwymrDnfX4CWH
+ U92FBVj8+9XZZqVIB/vrUYaGLtoQa6kzbbsTnVE9rcg9gxWKG2Z/NRAVXxXeZyeBfohC
+ h48I0Gs9loaJmLbCXT6FUjSW/WHX4A5kfSzWbXL6Jl0fr/B9Cg+BNRj6WjTko430CaZN
+ LBguqbzPZ9/N2EXc8govfAQvnmavVvk5f+OZrEKahkxyjrkyLH16lE7WcrZkB/+3MXKW
+ lYEXm3dq1KMV0ot3ah8JzzujVCdtTuZFYekrM6Nkd8tRi/hOXNJiaBy+ydd1x5+Dp4U3
+ 1tyg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXMKjWWAP4XMRMJzqC+v/N8y4nvfvSebH7qG+gcYirSRUM/p4NRYmkavzcbuBTNiyUZMILuX+788IrZS3E540vNmgnA
+X-Gm-Message-State: AOJu0YzVca9ksCl0slFD5uRcr7eoKMbJGCFRszThODQFjahEJV0T+H/Q
+ 9bkbN3PkUmG0PpD3es5mmcf7dgrzuOvndqGBh2BMm42PV8N/7DtOhJQWqv2WS/I=
+X-Received: by 2002:a17:907:b9c6:b0:a3d:2e34:30a5 with SMTP id
+ xa6-20020a170907b9c600b00a3d2e3430a5mr3626388ejc.29.1708097738898; 
+ Fri, 16 Feb 2024 07:35:38 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.210.246])
  by smtp.gmail.com with ESMTPSA id
- rn28-20020a170906d93c00b00a36c5b01ef3sm42951ejb.225.2024.02.16.07.35.25
+ tl7-20020a170907c30700b00a3d1458523esm52110ejc.29.2024.02.16.07.35.37
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 16 Feb 2024 07:35:26 -0800 (PST)
+ Fri, 16 Feb 2024 07:35:38 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -102,17 +103,18 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-Date: Fri, 16 Feb 2024 16:35:12 +0100
-Message-ID: <20240216153517.49422-2-philmd@linaro.org>
+Subject: [PATCH 3/6] hw/arm/exynos4210: Inline
+ sysbus_create_varargs(EXYNOS4210_FIMD)
+Date: Fri, 16 Feb 2024 16:35:14 +0100
+Message-ID: <20240216153517.49422-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240216153517.49422-1-philmd@linaro.org>
 References: <20240216153517.49422-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x234.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,101 +123,54 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TQrK1G5j/cb9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: y9iSS5RHbOZ5
 
-We want to set another qdev property (a link) for the pl110
-and pl111 devices, we can not use sysbus_create_simple() which
-only passes sysbus base address and IRQs as arguments. Inline
+We want to set another qdev property (a link) for the FIMD
+device, we can not use sysbus_create_varargs() which only
+passes sysbus base address and IRQs as arguments. Inline
 it so we can set the link property in the next commit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/realview.c    |  5 ++++-
- hw/arm/versatilepb.c |  6 +++++-
- hw/arm/vexpress.c    | 10 ++++++++--
- 3 files changed, 17 insertions(+), 4 deletions(-)
+ hw/arm/exynos4210.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 9058f5b414..77300e92e5 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
-     sysbus_create_simple("pl061", 0x10014000, pic[7]);
-     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index 57c77b140c..ab18836943 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -769,11 +769,13 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
+     }
  
--    sysbus_create_simple("pl111", 0x10020000, pic[23]);
-+    dev = qdev_new("pl111");
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
+     /*** Display controller (FIMD) ***/
+-    sysbus_create_varargs("exynos4210.fimd", EXYNOS4210_FIMD0_BASE_ADDR,
+-            s->irq_table[exynos4210_get_irq(11, 0)],
+-            s->irq_table[exynos4210_get_irq(11, 1)],
+-            s->irq_table[exynos4210_get_irq(11, 2)],
+-            NULL);
++    dev = qdev_new("exynos4210.fimd");
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_realize_and_unref(busdev, &error_fatal);
++    sysbus_mmio_map(busdev, 0, EXYNOS4210_FIMD0_BASE_ADDR);
++    for (n = 0; n < 3; n++) {
++        sysbus_connect_irq(busdev, n, s->irq_table[exynos4210_get_irq(11, n)]);
++    }
  
-     dev = sysbus_create_varargs("pl181", 0x10005000, pic[17], pic[18], NULL);
-     /* Wire up MMC card detect and read-only signals. These have
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index d10b75dfdb..7e04b23af8 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -299,7 +299,11 @@ static void versatile_init(MachineState *machine, int board_id)
- 
-     /* The versatile/PB actually has a modified Color LCD controller
-        that includes hardware cursor support from the PL111.  */
--    dev = sysbus_create_simple("pl110_versatile", 0x10120000, pic[16]);
-+    dev = qdev_new("pl110_versatile");
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10120000);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[16]);
-+
-     /* Wire up the mux control signals from the SYS_CLCD register */
-     qdev_connect_gpio_out(sysctl, 0, qdev_get_gpio_in(dev, 0));
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index aa5f3ca0d4..671986c21e 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -276,6 +276,7 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
- {
-     MachineState *machine = MACHINE(vms);
-     MemoryRegion *sysmem = get_system_memory();
-+    DeviceState *dev;
- 
-     if (ram_size > 0x40000000) {
-         /* 1GB is the maximum the address space permits */
-@@ -297,7 +298,9 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
-     /* Daughterboard peripherals : 0x10020000 .. 0x20000000 */
- 
-     /* 0x10020000 PL111 CLCD (daughterboard) */
--    sysbus_create_simple("pl111", 0x10020000, pic[44]);
-+    dev = qdev_new("pl111");
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[44]);
- 
-     /* 0x10060000 AXI RAM */
-     /* 0x100e0000 PL341 Dynamic Memory Controller */
-@@ -650,7 +653,10 @@ static void vexpress_common_init(MachineState *machine)
- 
-     /* VE_COMPACTFLASH: not modelled */
- 
--    sysbus_create_simple("pl111", map[VE_CLCD], pic[14]);
-+    dev = qdev_new("pl111");
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, map[VE_CLCD]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[14]);
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     pflash0 = ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flash0",
+     sysbus_create_simple(TYPE_EXYNOS4210_EHCI, EXYNOS4210_EHCI_BASE_ADDR,
+             s->irq_table[exynos4210_get_irq(28, 3)]);
 -- 
 2.41.0
 

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f2-20020adfe902000000b0033cf24700e5sm2622794wrm.39.2024.02.16.08.37.32
+        by smtp.gmail.com with ESMTPSA id m4-20020a05600c280400b0040fe308ff25sm2733004wmb.24.2024.02.16.08.37.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Feb 2024 08:37:32 -0800 (PST)
+        Fri, 16 Feb 2024 08:37:35 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6A5A85F9E7;
-	Fri, 16 Feb 2024 16:30:28 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id C73195F9E1;
+	Fri, 16 Feb 2024 16:30:27 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
@@ -43,51 +43,64 @@ Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: [PATCH 21/23] docs/devel: lift example and plugin API sections up
-Date: Fri, 16 Feb 2024 16:30:23 +0000
-Message-Id: <20240216163025.424857-22-alex.bennee@linaro.org>
+Subject: [PATCH 15/23] cpu: call plugin init hook asynchronously
+Date: Fri, 16 Feb 2024 16:30:17 +0000
+Message-Id: <20240216163025.424857-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240216163025.424857-1-alex.bennee@linaro.org>
 References: <20240216163025.424857-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 43XuKhE8hqd1
+X-TUID: KEwYx1zvj3eS
 
-This makes them a bit more visible in the TCG emulation menu rather
-than hiding them away bellow the ToC limit.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Message-Id: <20240103173349.398526-43-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+This ensures we run during a cpu_exec, which allows to call start/end
+exclusive from this init hook (needed for new scoreboard API introduced
+later).
+
+async work is run before any tb is translated/executed, so we can
+guarantee plugin init will be called before any other hook.
+
+The previous change made sure that any idle/resume cb call will not be
+done before initializing plugin for a given vcpu.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240213094009.150349-5-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/devel/tcg-plugins.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/core/cpu-common.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
-index fa7421279f5..535a74684c5 100644
---- a/docs/devel/tcg-plugins.rst
-+++ b/docs/devel/tcg-plugins.rst
-@@ -143,7 +143,7 @@ requested. The plugin isn't completely uninstalled until the safe work
- has executed while all vCPUs are quiescent.
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index fe16d0d9df8..68786360ea5 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -194,6 +194,11 @@ static void cpu_common_parse_features(const char *typename, char *features,
+     }
+ }
  
- Example Plugins
-----------------
-+===============
++static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
++{
++    qemu_plugin_vcpu_init_hook(cpu);
++}
++
+ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ {
+     CPUState *cpu = CPU(dev);
+@@ -217,9 +222,9 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+         cpu_resume(cpu);
+     }
  
- There are a number of plugins included with QEMU and you are
- encouraged to contribute your own plugins plugins upstream. There is a
-@@ -591,8 +591,8 @@ The plugin has a number of arguments, all of them are optional:
-   configuration arguments implies ``l2=on``.
-   (default: N = 2097152 (2MB), B = 64, A = 16)
+-    /* Plugin initialization must wait until the cpu is fully realized. */
++    /* Plugin initialization must wait until the cpu start executing code */
+     if (tcg_enabled()) {
+-        qemu_plugin_vcpu_init_hook(cpu);
++        async_run_on_cpu(cpu, qemu_plugin_vcpu_init__async, RUN_ON_CPU_NULL);
+     }
  
--API
-----
-+Plugin API
-+==========
- 
- The following API is generated from the inline documentation in
- ``include/qemu/qemu-plugin.h``. Please ensure any updates to the API
+     /* NOTE: latest generic point where the cpu is fully realized */
 -- 
 2.39.2

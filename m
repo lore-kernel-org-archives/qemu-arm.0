@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05600c280400b0040fe308ff25sm2716578wmb.24.2024.02.16.08.30.26
+        by smtp.gmail.com with ESMTPSA id u7-20020a05600c00c700b0040fb783ad93sm2701787wmm.48.2024.02.16.08.30.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 16 Feb 2024 08:30:27 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6D5E45F9D0;
+	by draig.lan (Postfix) with ESMTP id A8DA55F9D4;
 	Fri, 16 Feb 2024 16:30:26 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -44,230 +44,95 @@ Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 04/23] target/riscv: Use GDBFeature for dynamic XML
-Date: Fri, 16 Feb 2024 16:30:06 +0000
-Message-Id: <20240216163025.424857-5-alex.bennee@linaro.org>
+Subject: [PATCH 06/23] gdbstub: Use GDBFeature for GDBRegisterState
+Date: Fri, 16 Feb 2024 16:30:08 +0000
+Message-Id: <20240216163025.424857-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240216163025.424857-1-alex.bennee@linaro.org>
 References: <20240216163025.424857-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bSzwer9tXRib
+X-TUID: 5Mlwu4/fq1q1
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-In preparation for a change to use GDBFeature as a parameter of
-gdb_register_coprocessor(), convert the internal representation of
-dynamic feature from plain XML to GDBFeature.
+Simplify GDBRegisterState by replacing num_regs and xml members with
+one member that points to GDBFeature.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-29-alex.bennee@linaro.org>
-Message-Id: <20231213-gdb-v17-3-777047380591@daynix.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20240103173349.398526-31-alex.bennee@linaro.org>
+Message-Id: <20231213-gdb-v17-5-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/riscv/cpu.h     |  5 +--
- target/riscv/cpu.c     |  4 +--
- target/riscv/gdbstub.c | 81 +++++++++++++++++++-----------------------
- 3 files changed, 41 insertions(+), 49 deletions(-)
+ gdbstub/gdbstub.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index f52dce78baa..5d291a70925 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -24,6 +24,7 @@
- #include "hw/registerfields.h"
- #include "hw/qdev-properties.h"
- #include "exec/cpu-defs.h"
-+#include "exec/gdbstub.h"
- #include "qemu/cpu-float.h"
- #include "qom/object.h"
- #include "qemu/int128.h"
-@@ -445,8 +446,8 @@ struct ArchCPU {
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 256599c8dfb..0ea417b2c9a 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -47,10 +47,9 @@
  
-     CPURISCVState env;
+ typedef struct GDBRegisterState {
+     int base_reg;
+-    int num_regs;
+     gdb_get_reg_cb get_reg;
+     gdb_set_reg_cb set_reg;
+-    const char *xml;
++    const GDBFeature *feature;
+ } GDBRegisterState;
  
--    char *dyn_csr_xml;
--    char *dyn_vreg_xml;
-+    GDBFeature dyn_csr_feature;
-+    GDBFeature dyn_vreg_feature;
- 
-     /* Configuration Settings */
-     RISCVCPUConfig cfg;
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 1b8d001d237..1b62e269b90 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -2305,9 +2305,9 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
-     RISCVCPU *cpu = RISCV_CPU(cs);
- 
-     if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_xml;
-+        return cpu->dyn_csr_feature.xml;
-     } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_xml;
-+        return cpu->dyn_vreg_feature.xml;
-     }
- 
-     return NULL;
-diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-index ca9b71f7bbc..d8da84fa52e 100644
---- a/target/riscv/gdbstub.c
-+++ b/target/riscv/gdbstub.c
-@@ -214,14 +214,15 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
-+static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
- {
-     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
--    GString *s = g_string_new(NULL);
-+    GDBFeatureBuilder builder;
-     riscv_csr_predicate_fn predicate;
-     int bitsize = riscv_cpu_max_xlen(mcc);
-+    const char *name;
-     int i;
- 
- #if !defined(CONFIG_USER_ONLY)
-@@ -233,9 +234,9 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
-         bitsize = 64;
-     }
- 
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.csr\">");
-+    gdb_feature_builder_init(&builder, &cpu->dyn_csr_feature,
-+                             "org.gnu.gdb.riscv.csr", "riscv-csr.xml",
-+                             base_reg);
- 
-     for (i = 0; i < CSR_TABLE_SIZE; i++) {
-         if (env->priv_ver < csr_ops[i].min_priv_ver) {
-@@ -243,72 +244,64 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
-         }
-         predicate = csr_ops[i].predicate;
-         if (predicate && (predicate(env, i) == RISCV_EXCP_NONE)) {
--            if (csr_ops[i].name) {
--                g_string_append_printf(s, "<reg name=\"%s\"", csr_ops[i].name);
--            } else {
--                g_string_append_printf(s, "<reg name=\"csr%03x\"", i);
-+            g_autofree char *dynamic_name = NULL;
-+            name = csr_ops[i].name;
-+            if (!name) {
-+                dynamic_name = g_strdup_printf("csr%03x", i);
-+                name = dynamic_name;
+ GDBState gdbserver_state;
+@@ -391,7 +390,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
+                     g_ptr_array_add(
+                         xml,
+                         g_markup_printf_escaped("<xi:include href=\"%s\"/>",
+-                                                r->xml));
++                                                r->feature->xmlname));
+                 }
              }
--            g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
--            g_string_append_printf(s, " regnum=\"%d\"/>", base_reg + i);
-+
-+            gdb_feature_builder_append_reg(&builder, name, bitsize, i,
-+                                           "int", NULL);
+             g_ptr_array_add(xml, g_strdup("</target>"));
+@@ -513,7 +512,7 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+     if (cpu->gdb_regs) {
+         for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+             r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+                 return r->get_reg(env, buf, reg - r->base_reg);
+             }
          }
-     }
+@@ -534,7 +533,7 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
+     if (cpu->gdb_regs) {
+         for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+             r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+                 return r->set_reg(env, mem_buf, reg - r->base_reg);
+             }
+         }
+@@ -553,7 +552,7 @@ void gdb_register_coprocessor(CPUState *cpu,
+         for (i = 0; i < cpu->gdb_regs->len; i++) {
+             /* Check for duplicates.  */
+             s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (strcmp(s->xml, feature->xmlname) == 0) {
++            if (s->feature == feature) {
+                 return;
+             }
+         }
+@@ -565,10 +564,9 @@ void gdb_register_coprocessor(CPUState *cpu,
+     g_array_set_size(cpu->gdb_regs, i + 1);
+     s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+     s->base_reg = cpu->gdb_num_regs;
+-    s->num_regs = feature->num_regs;
+     s->get_reg = get_reg;
+     s->set_reg = set_reg;
+-    s->xml = feature->xml;
++    s->feature = feature;
  
--    g_string_append_printf(s, "</feature>");
--
--    cpu->dyn_csr_xml = g_string_free(s, false);
-+    gdb_feature_builder_end(&builder);
- 
- #if !defined(CONFIG_USER_ONLY)
-     env->debugger = false;
- #endif
- 
--    return CSR_TABLE_SIZE;
-+    return &cpu->dyn_csr_feature;
- }
- 
--static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
-+static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
--    GString *s = g_string_new(NULL);
--    g_autoptr(GString) ts = g_string_new("");
--    int reg_width = cpu->cfg.vlenb << 3;
--    int num_regs = 0;
-+    int reg_width = cpu->cfg.vlenb;
-+    GDBFeatureBuilder builder;
-     int i;
- 
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.vector\">");
-+    gdb_feature_builder_init(&builder, &cpu->dyn_vreg_feature,
-+                             "org.gnu.gdb.riscv.vector", "riscv-vector.xml",
-+                             base_reg);
- 
-     /* First define types and totals in a whole VL */
-     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-         int count = reg_width / vec_lanes[i].size;
--        g_string_printf(ts, "%s", vec_lanes[i].id);
--        g_string_append_printf(s,
--                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
--                               ts->str, vec_lanes[i].gdb_type, count);
-+        gdb_feature_builder_append_tag(
-+            &builder, "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
-+            vec_lanes[i].id, vec_lanes[i].gdb_type, count);
-     }
- 
-     /* Define unions */
--    g_string_append_printf(s, "<union id=\"riscv_vector\">");
-+    gdb_feature_builder_append_tag(&builder, "<union id=\"riscv_vector\">");
-     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
--        g_string_append_printf(s, "<field name=\"%c\" type=\"%s\"/>",
--                               vec_lanes[i].suffix,
--                               vec_lanes[i].id);
-+        gdb_feature_builder_append_tag(&builder,
-+                                       "<field name=\"%c\" type=\"%s\"/>",
-+                                       vec_lanes[i].suffix, vec_lanes[i].id);
-     }
--    g_string_append(s, "</union>");
-+    gdb_feature_builder_append_tag(&builder, "</union>");
- 
-     /* Define vector registers */
-     for (i = 0; i < 32; i++) {
--        g_string_append_printf(s,
--                               "<reg name=\"v%d\" bitsize=\"%d\""
--                               " regnum=\"%d\" group=\"vector\""
--                               " type=\"riscv_vector\"/>",
--                               i, reg_width, base_reg++);
--        num_regs++;
-+        gdb_feature_builder_append_reg(&builder, g_strdup_printf("v%d", i),
-+                                       reg_width, i, "riscv_vector", "vector");
-     }
- 
--    g_string_append_printf(s, "</feature>");
-+    gdb_feature_builder_end(&builder);
- 
--    cpu->dyn_vreg_xml = g_string_free(s, false);
--    return num_regs;
-+    return &cpu->dyn_vreg_feature;
- }
- 
- void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
-@@ -324,10 +317,9 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
-                                  32, "riscv-32bit-fpu.xml", 0);
-     }
-     if (env->misa_ext & RVV) {
--        int base_reg = cs->gdb_num_regs;
-         gdb_register_coprocessor(cs, riscv_gdb_get_vector,
-                                  riscv_gdb_set_vector,
--                                 ricsv_gen_dynamic_vector_xml(cs, base_reg),
-+                                 ricsv_gen_dynamic_vector_feature(cs, cs->gdb_num_regs)->num_regs,
-                                  "riscv-vector.xml", 0);
-     }
-     switch (mcc->misa_mxl_max) {
-@@ -347,9 +339,8 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
-     }
- 
-     if (cpu->cfg.ext_zicsr) {
--        int base_reg = cs->gdb_num_regs;
-         gdb_register_coprocessor(cs, riscv_gdb_get_csr, riscv_gdb_set_csr,
--                                 riscv_gen_dynamic_csr_xml(cs, base_reg),
-+                                 riscv_gen_dynamic_csr_feature(cs, cs->gdb_num_regs)->num_regs,
-                                  "riscv-csr.xml", 0);
-     }
- }
+     /* Add to end of list.  */
+     cpu->gdb_num_regs += feature->num_regs;
 -- 
 2.39.2

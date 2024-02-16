@@ -1,160 +1,145 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1153656ejb;
-        Fri, 16 Feb 2024 03:08:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWR1BeOpkBi9WT0Xyos3GgiRZtNovnrhcJJU553Pcf80hxISkBy89cq34ml5QL+mvtj+b6MFn1EJmUUsiMXPHbad/Ixy8bJ
-X-Google-Smtp-Source: AGHT+IHfzugcGb8UXYgHDd/ZmbJxIFLMRBdR0jVzZ221DxmHgboKpO4SWkC9Hlbw+eH9qPIwLILh
-X-Received: by 2002:a05:6122:3691:b0:4c0:9edc:8403 with SMTP id ec17-20020a056122369100b004c09edc8403mr5513985vkb.8.1708081736221;
-        Fri, 16 Feb 2024 03:08:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708081736; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1154321ejb;
+        Fri, 16 Feb 2024 03:10:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVAY1gSdc64BCf+PXa5kqiwjsQXBeIIFsahWGUtERyQPR83A2ibqRzT23OoWwz/KVcLg4DEByLnzuRlun1U09OcCvJniMGP
+X-Google-Smtp-Source: AGHT+IEyJe4yt3zKgPER0XvPAswScn5bwkX0xFPUfQX6rauAoUbGiqeJ8RNSmTQqpEXZfMyj7k9d
+X-Received: by 2002:a0c:e20c:0:b0:68c:e799:ef4a with SMTP id q12-20020a0ce20c000000b0068ce799ef4amr4205799qvl.49.1708081812694;
+        Fri, 16 Feb 2024 03:10:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708081812; cv=none;
         d=google.com; s=arc-20160816;
-        b=zmFqJ6mL4ldb548eSmAoFHsufQHcMGNQkF2v1f2xGs0NYIIdSaQF1fxLsW2XUAn6DZ
-         8mByDcgNxc5GJqmVhIRPDVlX6jDUJ7ycRl+ORJzLFhD13DJxDLpTg+nYRNbdtVqwfVIj
-         0aZEZVc7MMQkGH6s81cDBbe7+3kwtnX0iziemxXnYbgSoYG+WxOScKW5hI5j4XNa5xw8
-         B6CEbeE8JzGB7k0MNMBmEJFRWdM7ypXvlhqYrD7i9hdflpzxezwUF1RjfEEUcUrtXQ9j
-         O4eUPjFLMosCbvbwsOFfz3cWC9I6MUCBtcSjtnA67XS31ynrv6uA4Vv4vN1TlaTLwm9c
-         2g1A==
+        b=FQAU9n58HCA7G2i1o6V4YXaXJueWSeLOCzY+C0lmqGNWvd4x2bQWxVhgQqdD8sBEZF
+         gLkggiD/6kBBoSILX4VS160E7EgpTf72mtafd51QNlynwCVyUCuK6m0yST6v0Hzip0Jy
+         BWSoFqbfTJneeM4U/Ut7mWKQv01H88aRowYljZh7HrURFoYU+tvf0uVHjRmz9ycXfxLd
+         2FsjSkr4SUNPaKu+MLu6JgFA/z890MW1VULKq6Wvt9IPNBhjbjExqVLm2V/bvXAbNKd0
+         +4BNRuar/HXt6wLRxXYNDJVcmG7Uq1c98/+y4/EN08Zh6ZiCVbYwBkra7lVFhAdni5KY
+         gZQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=48d0wm1jd8E2EcPt+QBeCr00l3Febl6qelXBQC6Tkz0=;
-        fh=RuZcrAlzwN5RJ2iLXMhHhFkm+3yNgenuDEXMjnG1cFs=;
-        b=sACk7rUsHiVMTjnIgthxZPlBO1QECxQcTsQPJ+1yqz2MzriqFNWvwxyJwpyr0Rr9Xz
-         Lurqmx/KGg25iUX7b9Aa3CWGokbpDZo3hW0hlR4KXUW12LGBzBjYX0Y6JJIKFv0OtjSw
-         +BI1L0tcD4s04KOVpm2/dHknthobLnveg89Pyu1s6bp1A6MjYWej+WUZ3WeeOBjSeqD4
-         r1c4ZmciZWydqRKQA1wGGRMkO55mSTHhAwj+BaY9oW9HrkCyKq/ysg8LMVN3ViCvxUF9
-         ZwzsB9E8OPYtjIsAy9Lvqw4VehtW4/dB65riGmlF86sf2oBQ2wiqER8LcKvIDfjZxca8
-         9BrQ==;
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=ayb72fTLc+P5DZxInFVQe9fe5BaOeWxKJSsQvczUXNs=;
+        fh=d2ODzflfrnUzg+lCxMMukAHD7V6Syq/VuZoajNQKHPw=;
+        b=OtY7jBqCTn6MUKCtPCeAGY+xA1348J7q5Q5jt6ROcbKc7jFGM2FiLZJ/TjN+gEkf9b
+         s4W8C9kaVUjmp4nWo5QgNKw7GLJSQYpqFAb5Z53pmMtf2xzulDDxTIDJOlpMXXuAL8fj
+         +RU2gKeIQF1bi6G9Z2K99JuI/6c64O5cGQjjN1A3eI0ewk3lebQ+xCJO1vcSj+u1+QMl
+         HyIw0XbB8B5ODawSXTpUJJGcW1JMMSIkYzbgalM6PNzrlnJpC8qQqvUbfRDQy/xlQIbI
+         J402auclKBn1xOoiHoxCt/CxtTyJZs/qvwohn6trY7rXRtDkEg+s7Rn/2olK8nLrpgEz
+         6lzQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p8uKsUMA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9-20020a05621419e900b0068d0760cfcfsi3824311qvc.153.2024.02.16.03.08.56
+        by mx.google.com with ESMTPS id 12-20020a0562140d4c00b0068efbbe2ebbsi3560855qvr.179.2024.02.16.03.10.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Feb 2024 03:08:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Feb 2024 03:10:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p8uKsUMA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1raw1w-0000yl-1b; Fri, 16 Feb 2024 06:05:20 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1raw51-0001oC-MU; Fri, 16 Feb 2024 06:08:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw1s-0000jp-H9
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 06:05:16 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raw1f-0001C1-QQ
- for qemu-devel@nongnu.org; Fri, 16 Feb 2024 06:05:16 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-33b28aadb28so1011208f8f.3
- for <qemu-devel@nongnu.org>; Fri, 16 Feb 2024 03:05:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708081501; x=1708686301; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=48d0wm1jd8E2EcPt+QBeCr00l3Febl6qelXBQC6Tkz0=;
- b=p8uKsUMA3UkpnF4XwBkE7tJapWa2ePRHGARhy3jA+bfHqxZKHz1pVa0Ow8w7HmwY6J
- tYZdkmvmTDJiP+kh/bUai9Sfht2Og6D9ZM7WAPhebwQAzVu+u5qOIHi6bLtwvnotnLys
- IoxPJHNHwfLiir4Ye4QjE0e7McEAzNZFPFR/WTlaAbH3NXIVQBGvQpH/DoqOzimKt/YY
- 3aF+/S8Jg8d+SDfFWiN4UGw7jcb1Kq33HgOXuJsSEf8AY0Y8xz27qyhUMtScmlE8AzcI
- vzWj37XV2C95kIkgcF0uWA/hQyr5C47IxL2uev2a8rEuGEPVvDA/qCp3CCQzXNvsnOc0
- BRCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708081501; x=1708686301;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=48d0wm1jd8E2EcPt+QBeCr00l3Febl6qelXBQC6Tkz0=;
- b=uOjww+USZdVlx8lzxN5t9/Yh5t0ezjfGYFPbD0vkzB7GfmbdKo6TOEv6I0nuffQx7a
- GBMf4WwszUQd0t2I2sbE89YIC5yVWC6qvcjCpeTwLdr9O9eAkoTf2LPK6l5ncb2Dr+AK
- OMMAzGhZBiwSfQeeoGKi2l0qn0t6sLjZFPjDUg/7ny6O+T8Usm3cKIQTvqAkPEj+2PPG
- n+1zmdx1Jx9SYJFT+UAF5GcS6Kwz7zi+G2DMyypwJf2flJw4SM+SKBFcRs8y7CaGS/fP
- Sc7wHKKlmb9aAWPsNPLqH1gJjTAOyGjqXYSYZzhzQRCXulsxbyYlJvbXyO292iP6gWxU
- ueMQ==
-X-Gm-Message-State: AOJu0YyApFpcdbtNnjpCW3w9kKPOo42vMxjOt9nt1KLgzBVAaGdL8WUQ
- nQBylshABqYKooWH32XFD9pR8IkMYG++ps3l4q5lM1qdYQQ/Y7iHGzRjhEHo7M0298b26LWKr8d
- +
-X-Received: by 2002:a5d:6a8b:0:b0:33a:e9dd:5b6b with SMTP id
- s11-20020a5d6a8b000000b0033ae9dd5b6bmr3133003wru.9.1708081501246; 
- Fri, 16 Feb 2024 03:05:01 -0800 (PST)
-Received: from m1x-phil.lan ([176.187.210.246])
- by smtp.gmail.com with ESMTPSA id
- i5-20020a05600011c500b0033cf095b9a2sm1872339wrx.78.2024.02.16.03.04.59
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 16 Feb 2024 03:05:00 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Jason Wang <jasowang@redhat.com>
-Subject: [PATCH 16/21] hw/net/can/versal: Prefer object_initialize_child over
- object_initialize
-Date: Fri, 16 Feb 2024 12:03:07 +0100
-Message-ID: <20240216110313.17039-17-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240216110313.17039-1-philmd@linaro.org>
-References: <20240216110313.17039-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=8DrN=JZ=kaod.org=clg@ozlabs.org>)
+ id 1raw50-0001jv-D9; Fri, 16 Feb 2024 06:08:30 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=8DrN=JZ=kaod.org=clg@ozlabs.org>)
+ id 1raw4y-0002Cn-EK; Fri, 16 Feb 2024 06:08:30 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Tbq111sLvz4wcv;
+ Fri, 16 Feb 2024 22:08:21 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Tbq0x3FDhz4wcl;
+ Fri, 16 Feb 2024 22:08:17 +1100 (AEDT)
+Message-ID: <6ffab72b-c790-48c1-93cc-fffeb067dd5e@kaod.org>
+Date: Fri, 16 Feb 2024 12:08:10 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/21] hw/ppc/pnv_bmc: Use qdev_new() instead of QOM API
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-block@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>
+References: <20240216110313.17039-1-philmd@linaro.org>
+ <20240216110313.17039-6-philmd@linaro.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240216110313.17039-6-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=8DrN=JZ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G4mSskgxBTNv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: omtPbFrXbmbK
 
-When the QOM parent is available, prefer object_initialize_child()
-over object_initialize(), since it create the parent relationship.
+On 2/16/24 12:02, Philippe Mathieu-Daudé wrote:
+> Prefer QDev API for QDev objects, avoid the underlying QOM layer.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/net/can/xlnx-versal-canfd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/can/xlnx-versal-canfd.c b/hw/net/can/xlnx-versal-canfd.c
-index 47a14cfe63..f8e4bd75e4 100644
---- a/hw/net/can/xlnx-versal-canfd.c
-+++ b/hw/net/can/xlnx-versal-canfd.c
-@@ -1900,7 +1900,7 @@ static int canfd_populate_regarray(XlnxVersalCANFDState *s,
-         int index = rae[i].addr / 4;
-         RegisterInfo *r = &s->reg_info[index];
- 
--        object_initialize(r, sizeof(*r), TYPE_REGISTER);
-+        object_initialize_child(OBJECT(s), "reg[*]", r, TYPE_REGISTER);
- 
-         *r = (RegisterInfo) {
-             .data = &s->regs[index],
--- 
-2.41.0
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/ppc/pnv_bmc.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
+> index 99f1e8d7f9..0c1274df21 100644
+> --- a/hw/ppc/pnv_bmc.c
+> +++ b/hw/ppc/pnv_bmc.c
+> @@ -269,13 +269,13 @@ void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pnor)
+>    */
+>   IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
+>   {
+> -    Object *obj;
+> +    DeviceState *dev;
+>   
+> -    obj = object_new(TYPE_IPMI_BMC_SIMULATOR);
+> -    qdev_realize(DEVICE(obj), NULL, &error_fatal);
+> -    pnv_bmc_set_pnor(IPMI_BMC(obj), pnor);
+> +    dev = qdev_new(TYPE_IPMI_BMC_SIMULATOR);
+> +    qdev_realize(dev, NULL, &error_fatal);
+> +    pnv_bmc_set_pnor(IPMI_BMC(dev), pnor);
+>   
+> -    return IPMI_BMC(obj);
+> +    return IPMI_BMC(dev);
+>   }
+>   
+>   typedef struct ForeachArgs {
 

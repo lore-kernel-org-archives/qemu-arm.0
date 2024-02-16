@@ -1,126 +1,94 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1307877ejb;
-        Fri, 16 Feb 2024 07:37:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXcKzK5s8bOYk6ggmJtibi3PLa2BqpB3srUznl0+BQ683Se4O+u2G+XGXVXUqQSCp5xeVhDoc9X8UXZKY1KbXenma0rhxwu
-X-Google-Smtp-Source: AGHT+IHXgpE2+WG5rIor66Yd/YzfVONGCYH/O5p8oYtAQGvjcaacx6OtsGNEApHp4b1j33VgAaSq
-X-Received: by 2002:a05:6214:5c49:b0:68e:fd3d:fadb with SMTP id lz9-20020a0562145c4900b0068efd3dfadbmr6766846qvb.41.1708097822768;
-        Fri, 16 Feb 2024 07:37:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708097822; cv=none;
+Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1368410ejb;
+        Fri, 16 Feb 2024 09:15:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXDQzK6/T8WKFO4ngnkkp7GGYqk4dDd9hIazhR+gE1pEu2Yk7vTId9/r4NfU5+hIfq82o3s+gerlzLjrKtS8BN1I/KlXiX6
+X-Google-Smtp-Source: AGHT+IEpHRvpsJP+6lDoZqiQirAgGmI+Po8sSPNb/hDaD5Zg46lu/MW59CBBWAsC2mDwH6e2ZQrb
+X-Received: by 2002:ad4:5cab:0:b0:68f:3ae9:284 with SMTP id q11-20020ad45cab000000b0068f3ae90284mr1818747qvh.14.1708103712049;
+        Fri, 16 Feb 2024 09:15:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708103712; cv=none;
         d=google.com; s=arc-20160816;
-        b=PBf8zqfrQAYItRwZaOX4lAiWuzMAQImJ/nMB3CSf5jpAoayPQC9ik9y3n9oVoXQrcP
-         Y3cDCtevALeM9nnENlL43uedOMNkl0E0fCrawvQXePZeCm+O3Y4BoyoBBZlBHA0oKk5J
-         BL4D1jls/LxSJJ8Ntw9Z9GSkC6mmkN0Hc6Hnq2q0z5L6Aj8ByACwv/oyqCNr5SXaHoco
-         LA+aao5FUZ4rWg6NdxTA/v4aHuaOrZljMRmj64JisliZOvpivL701CPUvMfSlyILjKJE
-         +xySt+MScdB8jUj3vXqprOY3qlVZHIm8myexpMU6ScBdsJcZNQrojPPowl+kKAAejGlW
-         Tt/A==
+        b=vskUG7J8zES/i4C80DJY3/vh+RqRgLqIgHwx1OSdvUzQdfXwYQHmpi9aqN+lsTvUKi
+         67wX1NChMlsCXfzW8kg85s/xuzuQRkEjnoYgvMdRGjhIJ/tyQT7UzRMqSQ5VtkK/+uWU
+         z4Gh4NpvmgcLF2wkw3UtNMnf8EMw4CqerD+MclWQmWC6KxfksGxy+kHZCRC48oROU9Z4
+         m+nAfOEbAvGMzSQAvC4b6kgIfzdyrP8oOwf7yXKNANou5SQJ6twpIcVWw3BRlPVO7J74
+         BbXFU9nDDopKNBbME5yeKpou7VYlINdQMB+GnqPY77ySAr4dZ32NR5cDhlg3xDKFchcn
+         6PvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
-        fh=uMY8WrrG4rf5woj9ob9mzQHpvMlqXpHLtJDnG6Nsxcc=;
-        b=QA4BkafepzyPyi1VDBrYoJarna2DFtaE8pUKizhRLxb/fWxmlDEZIsLrOHQxZdCDLf
-         K64VpZR48gyTVYoVSE2O7T+3YF5nPPZbDUThsrwu5V488F/eeHKjmtGOMySb3owgQI3z
-         UTR5F0PEo49dY5AXqwmAtEZVfr/BeDnkzyjai6zHMVNarl1fWTrCB+cOyQCtK6C5EuWd
-         xQCmrmc1kiCrIUTxooQ3FypWEzHy9KXc4iuGouTS57i8w0z0vCBr1WOoW6DupIlff5ut
-         uD88Ee6rpaF0QuQKe8zjpEnPp6/6sABQNcMK0jo3Skc4DZXGYdGTV+MHQApYKPb2bxE0
-         dWZA==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=k6m8v1SdCSop3w31B/Y9UzWD/cFci8vMTBo+2bO6XH8=;
+        fh=d8nWeoF+r/mAWsaUvSrt56EaLlktWIg/I62oH1P65Ss=;
+        b=d+4iZBomb4gwosTVoBYGxqcYf37ekcmxErj8VX4BVObP9uhmMFZqfdiA6GVgKL/61V
+         ldDdHPVSWAYQ7rrUSV+T2RzQFPJSXpmpE6SyAHU05u0Utj4cJDrHigvEBJ2VAzt4eVYs
+         ecA9h2j6xY/hDm1tXQTsorJSmhYmLgmE6FrGtn836GDZB+qVPS5j9V+ZVABOHS7ixp6E
+         3wlrwTRxKGRwOPGyemjWdPZhU+W21uBS60UJdyA1OwOoyM32KTTKO0u+n5nnmVzYTUAK
+         jG723ZRA/7sC6uFchJiNR0MqZfXnaazWtJ0A9G7ITcOhlDDdhocYgv/6YKSHGTZ/o0Dg
+         59dQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zpab49Gd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id im12-20020a056214246c00b0068f2bb8bf9esi11842qvb.65.2024.02.16.07.37.02
+        by mx.google.com with ESMTPS id g6-20020a0562140ac600b0068c64a838b8si186087qvi.417.2024.02.16.09.15.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Feb 2024 07:37:02 -0800 (PST)
+        Fri, 16 Feb 2024 09:15:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zpab49Gd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rb0Fr-0004GZ-Mb; Fri, 16 Feb 2024 10:36:00 -0500
+	id 1rb1nL-0003sw-6L; Fri, 16 Feb 2024 12:14:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fp-0004DJ-8F
- for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:58 -0500
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rb0Fk-0008Jq-Dp
- for qemu-arm@nongnu.org; Fri, 16 Feb 2024 10:35:54 -0500
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-5129859c6b3so798507e87.2
- for <qemu-arm@nongnu.org>; Fri, 16 Feb 2024 07:35:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708097750; x=1708702550; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
- b=zpab49GdHR407PIxh5Gd0ldme4YocbRxvc/IrE1JsLfO29RoA+en4LtQ/YGwzhEk77
- 52+E4OE0qrGgKBtDIdbnbLwLiD5rsGXzEdqwe79M/iLoF0KfmWSdDbaIQJMj43l8+Mv+
- P77mzyX8JiZC29066OSSQQDdNY+3dcpr454PAC6buUD+PTdYkF9E3JH2uhet8om/BkJ/
- mPNG9QKNG+R8E/VLcU6yrlfKifhnvgUxtBCPoanApzWEwrocshA6Pwt2G6GeajKtG6P/
- PO4BqHdgN2qgK9N5/VLBW9/eODa1rZIFyCTNd6nrEj7+qhi9DZJfzJk2oj2T17hwYO5f
- LypA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708097750; x=1708702550;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=6fLBBhh1GSx7gD4Lvttkm3NNOOv+Jojp8q0UUHVCrGQ=;
- b=Er6D9WQhIG0y//1lokGgtsoG2ioZ0CAtBK57LzA5QVAaa/8n9JHS4cczlqI1h3ImT0
- YXkvIWo9ky17K7iKUxD9rtoiRW//60hC9ZYUsGnX3Xt74YXF0b/mchiuQATJ5J3ZBjgz
- tGqxnVb8jFfVR8Ep0wJ19sPxyvL89mWOZ4GG+q1TsdcsdccUf3pEtO+Z2zFLgzoNZDMi
- NAYk+SRKAsGOsExC3BBc7HIOk+4vD8a8BfFluaS+Q0jjUHwBQ330Nyw+4zobzrgpVcls
- KKGaXMlZWWrvfReySmDEpECofR7HvkUP02ysHYKJ4REckRg14qZsBCv4vJfr3pJOAilI
- XCbw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU8w2edzDH+9QVaFdkILMXidHycFYb5aW7hU0HATlGNy9qQ15NIj2LtrzHKauzB4zoQiGrIfAPjRF7evd2vRFsUXbOV
-X-Gm-Message-State: AOJu0YyjJQGkjtLvLOFdnP+XrMzqZgmUdg385k3TeNXB7A1xIDGLJsun
- eGrirJ1LacVOi7Ujfhbowbsrv99kvHiK1DkhRKITriBCp3tRorCokAH1lfTQ+SA=
-X-Received: by 2002:a05:6512:224d:b0:512:99ad:d465 with SMTP id
- i13-20020a056512224d00b0051299add465mr995055lfu.16.1708097750674; 
- Fri, 16 Feb 2024 07:35:50 -0800 (PST)
-Received: from m1x-phil.lan ([176.187.210.246])
- by smtp.gmail.com with ESMTPSA id
- e1-20020aa7d7c1000000b005621b45daffsm85225eds.28.2024.02.16.07.35.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 16 Feb 2024 07:35:50 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
- kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 5/6] hw/i386/kvmvapic: Inline sysbus_address_space()
-Date: Fri, 16 Feb 2024 16:35:16 +0100
-Message-ID: <20240216153517.49422-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240216153517.49422-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rb1nK-0003sj-Cp; Fri, 16 Feb 2024 12:14:38 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rb1nI-0002p5-24; Fri, 16 Feb 2024 12:14:38 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 5C6E74E602C;
+ Fri, 16 Feb 2024 18:14:30 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id EYdyYLLXg6O4; Fri, 16 Feb 2024 18:14:28 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 5FF054E601F; Fri, 16 Feb 2024 18:14:28 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 5AD457456B4;
+ Fri, 16 Feb 2024 18:14:28 +0100 (CET)
+Date: Fri, 16 Feb 2024 18:14:28 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, 
+ =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
+ kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
+In-Reply-To: <20240216153517.49422-2-philmd@linaro.org>
+Message-ID: <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu>
 References: <20240216153517.49422-1-philmd@linaro.org>
+ <20240216153517.49422-2-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-368854593-1708103668=:41653"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,72 +103,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gVTPqs+ac4CM
+X-TUID: Y6jnwQCISPi1
 
-sysbus_address_space(...) is a simple wrapper to
-get_system_memory(). Use it in place, since KVM
-VAPIC doesn't distinct address spaces.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Rename the 'as' variable as 'mr' since it is a
-MemoryRegion type, not an AddressSpace one.
+--3866299591-368854593-1708103668=:41653
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/i386/kvmvapic.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+On Fri, 16 Feb 2024, Philippe Mathieu-Daudé wrote:
+> We want to set another qdev property (a link) for the pl110
+> and pl111 devices, we can not use sysbus_create_simple() which
+> only passes sysbus base address and IRQs as arguments. Inline
+> it so we can set the link property in the next commit.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> hw/arm/realview.c    |  5 ++++-
+> hw/arm/versatilepb.c |  6 +++++-
+> hw/arm/vexpress.c    | 10 ++++++++--
+> 3 files changed, 17 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> index 9058f5b414..77300e92e5 100644
+> --- a/hw/arm/realview.c
+> +++ b/hw/arm/realview.c
+> @@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
+>     sysbus_create_simple("pl061", 0x10014000, pic[7]);
+>     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
+>
+> -    sysbus_create_simple("pl111", 0x10020000, pic[23]);
+> +    dev = qdev_new("pl111");
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
 
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index f2b0aff479..25321d4f66 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -16,6 +16,7 @@
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm.h"
- #include "sysemu/runstate.h"
-+#include "exec/address-spaces.h"
- #include "hw/i386/apic_internal.h"
- #include "hw/sysbus.h"
- #include "hw/boards.h"
-@@ -57,6 +58,7 @@ typedef struct GuestROMState {
- 
- struct VAPICROMState {
-     SysBusDevice busdev;
-+
-     MemoryRegion io;
-     MemoryRegion rom;
-     uint32_t state;
-@@ -580,19 +582,17 @@ static int vapic_map_rom_writable(VAPICROMState *s)
- {
-     hwaddr rom_paddr = s->rom_state_paddr & ROM_BLOCK_MASK;
-     MemoryRegionSection section;
--    MemoryRegion *as;
-+    MemoryRegion *mr = get_system_memory();
-     size_t rom_size;
-     uint8_t *ram;
- 
--    as = sysbus_address_space(&s->busdev);
--
-     if (s->rom_mapped_writable) {
--        memory_region_del_subregion(as, &s->rom);
-+        memory_region_del_subregion(mr, &s->rom);
-         object_unparent(OBJECT(&s->rom));
-     }
- 
-     /* grab RAM memory region (region @rom_paddr may still be pc.rom) */
--    section = memory_region_find(as, 0, 1);
-+    section = memory_region_find(mr, 0, 1);
- 
-     /* read ROM size from RAM region */
-     if (rom_paddr + 2 >= memory_region_size(section.mr)) {
-@@ -613,7 +613,7 @@ static int vapic_map_rom_writable(VAPICROMState *s)
- 
-     memory_region_init_alias(&s->rom, OBJECT(s), "kvmvapic-rom", section.mr,
-                              rom_paddr, rom_size);
--    memory_region_add_subregion_overlap(as, rom_paddr, &s->rom, 1000);
-+    memory_region_add_subregion_overlap(mr, rom_paddr, &s->rom, 1000);
-     s->rom_mapped_writable = true;
-     memory_region_unref(section.mr);
- 
--- 
-2.41.0
+Not directly related to this patch but this blows up 1 line into 4 just to 
+allow setting a property. Maybe just to keep some simplicity we'd rather 
+need either a sysbus_realize_simple function that takes a sysbus device 
+instead of the name and does not create the device itself or some way to 
+pass properties to sysbus create simple (but the latter may not be easy to 
+do in a generic way so not sure about that). What do you think?
 
+Regards,
+BALATON Zoltan
+--3866299591-368854593-1708103668=:41653--

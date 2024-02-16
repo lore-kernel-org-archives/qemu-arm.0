@@ -1,126 +1,169 @@
-Received: by 2002:a17:906:d9da:b0:a3d:1c09:7d3d with SMTP id qk26csp1233713ejb;
-        Fri, 16 Feb 2024 05:44:27 -0800 (PST)
-X-Received: by 2002:aa7:de10:0:b0:561:f757:631c with SMTP id h16-20020aa7de10000000b00561f757631cmr4468496edv.6.1708091067497;
-        Fri, 16 Feb 2024 05:44:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708091067; cv=none;
-        d=google.com; s=arc-20160816;
-        b=WizchJCx1UuMSZu8FqW6Qxw4Hd24eXc6SDhrX7wRj9599OxcBLZLVlxsXa6vAIUBi/
-         FhfWFW0fuJnBn75iX3BdkZU/eNGbTfUieFeku0P+WLdtri3r9hzHsa4eUYVvHCpAq2G+
-         tduvbBDZX9XkICLou7Eg3u+zunSJ0ErVTRGdRdDPpN+ggLL6Kd6Z7HKtJJSHYoS0cDDo
-         b9D1GsS/dLMeZDXOGNmBlanl9g5Y8Oil8zWbMMVlAnnsU8jTvfFd1ISUgqTbDk9cnB/H
-         N/DXgPQvxP3roshYIxgeA36dtKMhnX8O5uljoKfaGnYizObySe38JRPBbUQjqNF/8Kim
-         yNVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=f+Zl3vqJANsD9DOyRY06p8VIQhTm2yVMUTc1AEOdVGM=;
-        fh=AeBU7gq8ZiNHvDWWkjzDkAECRcvLyzGzCRLlZ56wn08=;
-        b=bmZ4H8pVz2wVgvneFWoQoUU2D2yA3KTL9XDkJlVVvPb5Tt6yzsW61E1/1Wb6CgBTob
-         Uvc7yK39uwFgiJSWpOArF8fyNlO2PeYCX5e+v4Omu/H1wGbGWb1wBQufOzCl5xa1xfvJ
-         hSlp5iIabBAUy0r1WdImYfTkRQ+H7hq6WbPHP8VWRK68lOGkQOFJ99hW9AO7otxE8d++
-         kTEnjnDVCCXk169YZtR6pOXraGoI//Vi3oaBi5Ndxi4EshRWZKQAVPPKzg8raT52iRTf
-         HKU4eeK2+8nXgDyAG/8iBw2RNoDZpX9pa4W7XuyS3J/rvXOc2m792LrYB5DuvUokTXN9
-         4wIw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fRRNOiTQ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id di1-20020a056402318100b00563dcd82a8csor877078edb.2.2024.02.16.05.44.27
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 16 Feb 2024 05:44:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fRRNOiTQ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708091067; x=1708695867; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=f+Zl3vqJANsD9DOyRY06p8VIQhTm2yVMUTc1AEOdVGM=;
-        b=fRRNOiTQa7yeZTUBD8UhKAnqSgFdA8ZePOkFgy7FdPfsatLBc/t076Knx4Ex7DDZ74
-         Pm7lm9IW4e0M3qbEa1rFqfCzbTZYZVegPmaFqvl5I25QwpOhQ/wyI9n+LctwAZwr9hl6
-         qtbz3TDThSxejJ24jCd9pkBjm3CjCRwCTcOXX4yEXPyWHg/WCca2QJv4aoq/BXNWpo+y
-         i/gf2tP8wRU5PVvt4+wJEdYEXza4iG5/hqQXUzwU5+cwydMMZwY3su3EjAu60yPAlqAT
-         6i3d2RpdA9pT/xfwWQLoPBfIp4ZgRm17WrowAFmf01TnNctbMovVSjhDJXYN+tX6DFAu
-         n2uA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708091067; x=1708695867;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=f+Zl3vqJANsD9DOyRY06p8VIQhTm2yVMUTc1AEOdVGM=;
-        b=mBbG+sPozm78ZjmJ4lZwUUnUXLZSFyKSHwOhVDPMnVCXNJ3IP6uEDLGdhBgmmcvu12
-         yUtXWkrq9vsnVvJQ7dnqDeQzz3br27/FQtfJuiuq4WTpRhWryC8p60+0sxUQz1xzDILA
-         2YQrSS0itey7QeU/NuOs3BMVd82WKLPiWX+vE1cy1acUjPt4B2RhwW/m8PtnmFtePWUz
-         +s0F097INnlLzOS+rdi8ZO0uQwvGjbFgWL4pPh+VY+PUuzKxO/eSL77JUgaSYk2dLUgT
-         brZUDCEwZeaggXlGLzsDde37SVw1VP70qDX7QVRvZgH/rseHLS6Fr1OG01wtO0uApzNa
-         zRqg==
-X-Gm-Message-State: AOJu0YxK2zQCQKNHuafMpkYyUippiDe4o5DmnQR2nQkPRG9qlUiwAzrO
-	vB4BRCAJ3c3b04IcfomiOf9Qs0B+1stkItkVQB/F+8ztPfgW2/HYECmD+9cBPl9ctxdI3ClEvGw
-	1+R4RKNAhEnH3IQ8iy4kGMp1w+9Y1OdqKL0fybRsMeGaTZlqhBEJ2ww==
-X-Google-Smtp-Source: AGHT+IEEuqvHGYXJ80mHqDSfLfNRZi6KIYSbK8sKRTQ/+LGiS6Cp5T8zuike/pOHphQ6Ltbl6zXC81MnPpOVbz0Vtgk=
-X-Received: by 2002:a05:6402:38c:b0:561:f4bc:606 with SMTP id
- o12-20020a056402038c00b00561f4bc0606mr4538154edv.0.1708091067149; Fri, 16 Feb
- 2024 05:44:27 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id u10-20020a5d6daa000000b0033d170a5d6dsm2642195wrs.98.2024.02.16.08.30.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Feb 2024 08:30:26 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id EB44F5F83F;
+	Fri, 16 Feb 2024 16:30:25 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
+	David Hildenbrand <david@redhat.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-riscv@nongnu.org,
+	Cleber Rosa <crosa@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Song Gao <gaosong@loongson.cn>,
+	qemu-arm@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	John Snow <jsnow@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	qemu-s390x@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Brian Cain <bcain@quicinc.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: [PATCH 00/23] maintainer updates for 9.0 pre-PR (tests, plugin register support)
+Date: Fri, 16 Feb 2024 16:30:02 +0000
+Message-Id: <20240216163025.424857-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <BL1PR01MB7795E154CD5AE6ADA60C0D53A87C2@BL1PR01MB7795.prod.exchangelabs.com>
- <87mss04oyi.fsf@draig.linaro.org>
-In-Reply-To: <87mss04oyi.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Feb 2024 13:44:15 +0000
-Message-ID: <CAFEAcA9nMPs7WdXzmwM-m0VSte9nmvtJFVWAUKmqZr4YYZPVtw@mail.gmail.com>
-Subject: Re: QEMU 8.2.0 aarch64 sve ldff1b returning 1 byte when 16 are expected
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Mark Charney OS <mark.charney@os.amperecomputing.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
-	Aaron Lindsay OS <aaron@os.amperecomputing.com>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ugtQ/0USDomp
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Tut/G2jPyNie
 
-On Fri, 16 Feb 2024 at 11:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> Mark Charney OS <mark.charney@os.amperecomputing.com> writes:
-> > Talking to Alex Bennee, he pointed out:
-> >
-> >> I'm wondering if this is a result of the fix in 6d03226b422
-> >> (plugins: force slow path when plugins instrument memory ops). This
-> >> will always force the slow path which is where we instrument the
-> >> operation.
+The test patch is a simple house keeping one to clean up some
+inadvertent GPLv3 tagging to GPLv2-or-later.
 
-Yes, this sounds like it. The implementation of the SVE first-fault
-instructions is that we probe the TLB to see if the address for bytes
-beyond the first load is backed by host memory. If it's actually backed
-by MMIO then we will not load from that. A comment in sve_ldnfff1_r()
-explains why:
+The main bulk of this series is register reading support for TCG
+plugins. The main change to the API is that the get/read_register
+functions are now implicitly vCPU context only so have dropped the
+vcpu index parameter and use current_cpu instead. This avoids the need
+for locking the gdbstub structures in case there is a cross-vCPU
+access.
 
-     * Per the MemSingleNF pseudocode, a no-fault load from Device memory
-     * must not actually hit the bus -- it returns (UNKNOWN, FAULT) instead=
-.
-     *
-     * Unfortuately we do not have access to the memory attributes from the
-     * PTE to tell Device memory from Normal memory.  So we make a mostly
-     * correct check, and indicate (UNKNOWN, FAULT) for any MMIO.
-     * This gives the right answer for the common cases of "Normal memory,
-     * backed by host RAM" and "Device memory, backed by MMIO".
-     * The architecture allows us to suppress an NF load and return
-     * (UNKNOWN, FAULT) for any reason, so our behaviour for the corner
-     * case of "Normal memory, backed by MMIO" is permitted.  The case we
-     * get wrong is "Device memory, backed by host RAM", for which we
-     * should return (UNKNOWN, FAULT) for but do not.
+I've pulled in some patches from Pierrick's inline enhancement series
+that allow this to happen (making sure the init callback is in the
+vCPU context).
 
-Unfortunately because the plugin memory-access handling forces the
-slow-path it is TLB_MMIO here, and so it ends up in the "normal memory,
-backed by MMIO" corner case, where we do the architecturally-permitted
-but perhaps unexpected thing of only loading one byte.
+The following still need review:
 
-thanks
--- PMM
+  contrib/plugins: extend execlog to track register changes
+  gdbstub: expose api to find registers
+
+But I'd like to get this merged soon so its not a mad rush before soft
+freeze and so we can get the new inline support stabilised and merged.
+
+Alex.
+
+Akihiko Odaki (11):
+  target/arm: Use GDBFeature for dynamic XML
+  target/ppc: Use GDBFeature for dynamic XML
+  target/riscv: Use GDBFeature for dynamic XML
+  gdbstub: Use GDBFeature for gdb_register_coprocessor
+  gdbstub: Use GDBFeature for GDBRegisterState
+  gdbstub: Change gdb_get_reg_cb and gdb_set_reg_cb
+  gdbstub: Simplify XML lookup
+  gdbstub: Infer number of core registers from XML
+  hw/core/cpu: Remove gdb_get_dynamic_xml member
+  gdbstub: Add members to identify registers to GDBFeature
+  plugins: Use different helpers when reading registers
+
+Alex Bennée (7):
+  tests/tcg: update licenses to GPLv2 as intended
+  gdbstub: expose api to find registers
+  plugins: add an API to read registers
+  contrib/plugins: fix imatch
+  contrib/plugins: extend execlog to track register changes
+  docs/devel: lift example and plugin API sections up
+  docs/devel: document some plugin assumptions
+
+Pierrick Bouvier (5):
+  plugins: remove previous n_vcpus functions from API
+  plugins: add qemu_plugin_num_vcpus function
+  plugins: fix order of init/idle/resume callback
+  cpu: call plugin init hook asynchronously
+  docs/devel: plugins can trigger a tb flush
+
+ docs/devel/multi-thread-tcg.rst               |   1 +
+ docs/devel/tcg-plugins.rst                    |  72 +++-
+ accel/tcg/plugin-helpers.h                    |   3 +-
+ include/exec/gdbstub.h                        |  43 ++-
+ include/hw/core/cpu.h                         |   7 +-
+ include/qemu/plugin.h                         |   1 +
+ include/qemu/qemu-plugin.h                    |  59 +++-
+ plugins/plugin.h                              |   6 +-
+ target/arm/cpu.h                              |  27 +-
+ target/arm/internals.h                        |  14 +-
+ target/hexagon/internal.h                     |   4 +-
+ target/microblaze/cpu.h                       |   4 +-
+ target/ppc/cpu-qom.h                          |   1 +
+ target/ppc/cpu.h                              |   5 +-
+ target/riscv/cpu.h                            |   5 +-
+ target/s390x/cpu.h                            |   2 -
+ tests/tcg/aarch64/semicall.h                  |   4 +-
+ tests/tcg/arm/semicall.h                      |   4 +-
+ tests/tcg/multiarch/float_helpers.h           |   4 +-
+ tests/tcg/riscv64/semicall.h                  |   4 +-
+ accel/tcg/plugin-gen.c                        |  43 ++-
+ contrib/plugins/cache.c                       |   2 +-
+ contrib/plugins/execlog.c                     | 318 +++++++++++++++---
+ gdbstub/gdbstub.c                             | 169 ++++++----
+ hw/core/cpu-common.c                          |  14 +-
+ plugins/api.c                                 | 148 ++++++--
+ plugins/core.c                                |  15 +-
+ target/arm/cpu.c                              |   2 -
+ target/arm/cpu64.c                            |   1 -
+ target/arm/gdbstub.c                          | 230 ++++++-------
+ target/arm/gdbstub64.c                        | 122 +++----
+ target/avr/cpu.c                              |   1 -
+ target/hexagon/cpu.c                          |   4 +-
+ target/hexagon/gdbstub.c                      |  10 +-
+ target/i386/cpu.c                             |   2 -
+ target/loongarch/cpu.c                        |   2 -
+ target/loongarch/gdbstub.c                    |  13 +-
+ target/m68k/cpu.c                             |   1 -
+ target/m68k/helper.c                          |  26 +-
+ target/microblaze/cpu.c                       |   6 +-
+ target/microblaze/gdbstub.c                   |   9 +-
+ target/ppc/cpu_init.c                         |   7 -
+ target/ppc/gdbstub.c                          | 114 ++++---
+ target/riscv/cpu.c                            |  15 -
+ target/riscv/gdbstub.c                        | 145 ++++----
+ target/rx/cpu.c                               |   1 -
+ target/s390x/cpu.c                            |   1 -
+ target/s390x/gdbstub.c                        | 105 +++---
+ .../multiarch/arm-compat-semi/semiconsole.c   |   4 +-
+ .../multiarch/arm-compat-semi/semihosting.c   |   4 +-
+ tests/tcg/multiarch/float_convd.c             |   4 +-
+ tests/tcg/multiarch/float_convs.c             |   4 +-
+ tests/tcg/multiarch/float_madds.c             |   4 +-
+ tests/tcg/multiarch/libs/float_helpers.c      |   4 +-
+ plugins/qemu-plugins.symbols                  |   5 +-
+ scripts/feature_to_c.py                       |  14 +-
+ tests/tcg/i386/system/boot.S                  |   6 +-
+ tests/tcg/x86_64/system/boot.S                |   6 +-
+ 58 files changed, 1216 insertions(+), 635 deletions(-)
+
+-- 
+2.39.2

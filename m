@@ -1,263 +1,295 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp701343ejb;
-        Mon, 19 Feb 2024 05:57:56 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVPrpk4zeP2MUi8tgTYl7Ays4AZatMuHfQot98sSAkc8a9SPwbAC+W7LVNBX/NtOm7c9J2J0El55AbC8DfQ/vmqIXLM6Pqj
-X-Google-Smtp-Source: AGHT+IExj30hwDIaszKAmerKBHjAWjmRza+yTO2DtxgmccQGwEni1wme0GLprQ6CpOVVNKUUXpwt
-X-Received: by 2002:a17:906:390a:b0:a3e:5c88:4514 with SMTP id f10-20020a170906390a00b00a3e5c884514mr3372652eje.7.1708351076824;
-        Mon, 19 Feb 2024 05:57:56 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708351076; cv=pass;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp706864ejb;
+        Mon, 19 Feb 2024 06:05:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWJ4aAC96pM0c93Jf4Eygi5V4M/G4QdiLaA1CW1NGTy0wrCQQ3/fYJeV5BNQvOcGBW+46r+lZE0Bq0mn0rBVCp3WrlFKbv4
+X-Google-Smtp-Source: AGHT+IEqf0TJVxDEBypmGdZSXPsTFqmgTSawMPA7OdWe11K5m5OnrvsbV1ChTDS9sKnbvlS2eNb4
+X-Received: by 2002:a67:f94c:0:b0:470:40d8:6ae1 with SMTP id u12-20020a67f94c000000b0047040d86ae1mr3653611vsq.28.1708351500341;
+        Mon, 19 Feb 2024 06:05:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708351500; cv=none;
         d=google.com; s=arc-20160816;
-        b=K2u913Q1znzZsSxAiu2q32NpGt7tQQhOBXlLUo2e6OyOoAZYV6gzTuA08GntMTZj2Z
-         myZ6SYlFtDa/tZRXN571o2kuZy1a0GO9JZp/wvz48wzGEf/ny9JnbMBL4dM4aNptaHyv
-         CTdpASMn0cSqT/pzzixLLQK9S+yi5rIZtezvQB3F/MwAkOWWhU7cr9PWGnJrurd8h4+0
-         vS4QsEnfCuj4QU9ooVk5NfpVAcz3DKl/6clTKbSVdqrMrNJ93ZvNQ4QPW9gAydJDKAw8
-         vW7sfqTLKZAIVElzWCK999xlOMSwMTEJElY/IHadwVEeHTj84+hQvWBuSI5AwtvHrZMA
-         /eHA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:in-reply-to:subject:cc:to:from:date;
-        bh=Wek0IQLdxA6XvUPxI7iodzLhelfH6yAPQJPue7GOBYU=;
-        fh=XvUcYeCiFXchAJ/MQS8cnLyE4fKPYbOtflsp5Ah2cnc=;
-        b=IQy2KJcVdmfPNRrhVNjqcDZ6mQjUYmpDlqOyrWKfAgqBvDJtSZZyX8dcRg371+5muA
-         T7V711gYdvHlnQ6fi1sqSTU2WZUqmdoxcu6kHkmwT6iOJJZTlpP/8FkeR1cTduObJuUL
-         pdMgrk6ZsPQ2N8vMQ+/M4Z1YX0XqkbSs1AB5ceJXuUk7AjU+HO05jU1nEBoF1dpwM6l5
-         gYE3jdeNI1V8D+kemJc/uhNWJeJDLDFZOFKEE/p24hct8ABPII0RbHFtnh/RuhC3+SHH
-         XFmt+62+wwGVL+6wUwbvnJ3Xl3MoJH6Yidp2bw3aEob/NgEui84gg/a/WYMzoNSpZfl8
-         cvkA==;
+        b=0CQDMOGXLJKb+EUSRFSbq2/fcL5mMyagW3N8au8uAaTdPSEn6Qa4ms9ORgv6i4BQYR
+         h3laerErEdASLuxC9COAmWZV0tPcpiqu4hl+KtkAaWc8nMlhUhe9zShE2pnLePJNhI34
+         +KIyIeuvirjlBBXNdvtFA3/PxFfixxboKzQhLRXv73iq1dhp4g1lzgcIt50uSCw+wDNO
+         cPTDQaCm/30INkReid5TxaAENzTCMXnbd55lKB3KvFp4MPuaWujylAZ/GhsxEM0W8U3w
+         RCaKqCaLYuPZfW0CQzKAAOTi9mzMpDaPFgi3lVy10X/i0ffHpTUdLcKL5eXqOs6fNm9E
+         btoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=4xPMvllzBCgc7KYC5/MOa2eoS/ye7mk4rZsmxF0dPRQ=;
+        fh=ENiqS4qA4i/ZdMyBFokpmYBNy8uUXmCi5WyTH8MZESA=;
+        b=uO+Vgoth1kWhCcqdj1zuFv+i5dMcW3by5ZcEng68icROLluyGO8IjuPTzWBFgnszDO
+         IC+9PS02vhv/cKDOhxsayr2MoYO9YR90PCBhmB0cE7nDjv5/Vyh8SWaSZv708VhZmsFv
+         onLmJpZt9XR/uiSjEClaw1HAdLF+YP+17BgdAPiXED6GXNRarF7poR+rQZnvtSH4e8zc
+         vR+2FKANCcVjwLFCwb0mNvOSr9yOrRqI1KSbtdhw/fvUAhO1CryNRZ0CDNK248c+vMVN
+         A/45/VEDapywB0GQdckNdcQxemRznygF2U9sHYWSwFWzenNQbUmbcKAtmyco+/Ggn0xC
+         ph0g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
-       spf=pass (google.com: domain of kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id qk19-20020a1709077f9300b00a3e7dbcdca4si1140984ejc.903.2024.02.19.05.57.56
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KMHm1BYc;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id g30-20020a056102159e00b0046d2b701c1fsi934381vsv.724.2024.02.19.06.04.59
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Feb 2024 05:57:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Mon, 19 Feb 2024 06:05:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
-       spf=pass (google.com: domain of kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-9090-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 5FD791F22FE1
-	for <alex.bennee@linaro.org>; Mon, 19 Feb 2024 13:57:56 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 785B4364C6;
-	Mon, 19 Feb 2024 13:57:51 +0000 (UTC)
-Received: from zero.eik.bme.hu (zero.eik.bme.hu [152.66.115.2])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D58336AE5
-	for <kvm@vger.kernel.org>; Mon, 19 Feb 2024 13:57:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=152.66.115.2
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708351071; cv=none; b=Ec9jHJ7v8shsHsoEY1hpkEMZ+LpDWR0REITiwqEcL6jSU9zAvFzpVHm1iJkwDFuvXhKQNKDr64Yg9tiri33TpkyxKHWCMXqu2bZgeF2b8NAD13mP6yOgJH36Wxio/jC9T77CHIT/kKEGF0xHSDL2WcvDKXnmA3D0laF94Xhl2vg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708351071; c=relaxed/simple;
-	bh=BeUu/qQFvclzINoiIygX1xMRl3wAMHAndB9HhbHAVV8=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=T5RuDWLV7EZql7jlWN56vGfZzLGptRcf/KUGW49rzb2OtUD7YfGfOaaXmK7f389hJ2K2Meb5PdJTDoUfpQPQxJVKIi6cASSN0XsMB9+gnj9o332ligueAB/4XdWf8eVlEl+t2O63jgwVaZIOETUDLYymi0MeyDSRnWZpVOahhAg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu; spf=pass smtp.mailfrom=eik.bme.hu; arc=none smtp.client-ip=152.66.115.2
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=eik.bme.hu
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 6FEF84E6003;
-	Mon, 19 Feb 2024 14:57:45 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
-	by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
-	with ESMTP id TUwGnDj7pJuX; Mon, 19 Feb 2024 14:57:43 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 69CEB4E6013; Mon, 19 Feb 2024 14:57:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 642A57456B4;
-	Mon, 19 Feb 2024 14:57:43 +0100 (CET)
-Date: Mon, 19 Feb 2024 14:57:43 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-cc: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
-    qemu-devel@nongnu.org, 
-    =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
-    Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
-    kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>, 
-    Igor Mitsyanko <i.mitsyanko@gmail.com>, 
-    "Michael S. Tsirkin" <mst@redhat.com>, 
-    Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-    Paolo Bonzini <pbonzini@redhat.com>, 
-    Richard Henderson <richard.henderson@linaro.org>, 
-    Markus Armbruster <armbru@redhat.com>, 
-    Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-In-Reply-To: <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk>
-Message-ID: <8115d26c-458a-74d0-6c85-bc03b2f99011@eik.bme.hu>
-References: <20240216153517.49422-1-philmd@linaro.org> <20240216153517.49422-2-philmd@linaro.org> <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu> <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org> <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
- <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu> <2b9ea923-c4f9-4ee4-8ed2-ba9f62c15579@linaro.org> <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu> <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KMHm1BYc;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1708351499;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=4xPMvllzBCgc7KYC5/MOa2eoS/ye7mk4rZsmxF0dPRQ=;
+	b=KMHm1BYcgZFWTK50zUPlv/B4zQsmfKj1XnlmF5NWXlXT2MriG1fjOfGZDObTFuIKrD6o0B
+	DWXttu9zBCVDjULvypPBG3QnF1qFc+JEJy6TbgV4MW4E7I4OAh9woLUcGnz6XKE/znWqp9
+	zvPXxePfvuWobS5JMd3jRRaEu2u4/Dk=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-557-0G7mqt7mP9S-uPd_n2tuZg-1; Mon, 19 Feb 2024 09:04:58 -0500
+X-MC-Unique: 0G7mqt7mP9S-uPd_n2tuZg-1
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-68f892ca388so1689816d6.2
+        for <alex.bennee@linaro.org>; Mon, 19 Feb 2024 06:04:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708351498; x=1708956298;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4xPMvllzBCgc7KYC5/MOa2eoS/ye7mk4rZsmxF0dPRQ=;
+        b=DopLMlylo/0WbvSNhZQVX5ok0rw2heO6x/DrZxZ37PxUi5e+FYgDkx0en27xxIyF61
+         LhFYM+nCf11HmXnF6413KsZScVQqZHBBQLY7wW6RhZbDOlkA9SGsoM5bcJdz/qAptsWV
+         PxjsBgXqa+coHVi+/sOAnBLkHoMpJ3WJCGLd72X/03c/KwQFQ24rRd8eadl3SwOdFOGM
+         IovCquyh4hnTsflCxF4PtucgbSUFHhMyhPQENL5jaQmzhpQuiHMtH9XCe7HPOFFK40KN
+         v3ZY9c3I5YeL2E0nx3IeBNLNYGpIRg4cLDxEnMDB7LZi8Eqy+yYI0Kzsm5qWEUpO2qL7
+         ocfA==
+X-Forwarded-Encrypted: i=1; AJvYcCW5HZFGH9EXgNU+W4cgcQwQvNyXHnatEG/l37ZKKeUeaVCO8jUqK61Dg626DO9RMdX/vGMtddjahS7SXScVFRnz1yHeu3k+
+X-Gm-Message-State: AOJu0YzfYe5QIRXjT2X21JyECWUzLhjZCqI8+ibp7aeziOIJNm3jnlXl
+	BYrE3GZpseBr3FgRTFkaPHXk2MEdWQIl/36d2HGFRoCC8spXNNcUyc2wn1gBwCxGVMmMABFY6eU
+	FHZNO6nxCh3p3Oa2DyHc9kgzgisQzuA2acw+z1zDilYGaW+/zw9wIyA==
+X-Received: by 2002:a0c:9792:0:b0:68f:5091:872f with SMTP id l18-20020a0c9792000000b0068f5091872fmr6062420qvd.53.1708351498024;
+        Mon, 19 Feb 2024 06:04:58 -0800 (PST)
+X-Received: by 2002:a0c:9792:0:b0:68f:5091:872f with SMTP id l18-20020a0c9792000000b0068f5091872fmr6062395qvd.53.1708351497735;
+        Mon, 19 Feb 2024 06:04:57 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.9] (ip-109-43-177-48.web.vodafone.de. [109.43.177.48])
+        by smtp.gmail.com with ESMTPSA id mc7-20020a056214554700b0068caf901c9bsm3260832qvb.17.2024.02.19.06.04.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Feb 2024 06:04:57 -0800 (PST)
+Message-ID: <91aad72f-825f-47c1-a253-cefead336553@redhat.com>
+Date: Mon, 19 Feb 2024 15:04:52 +0100
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3866299591-1125001828-1708351063=:77986"
-X-TUID: oNVU2JfhW1PV
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-1125001828-1708351063=:77986
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 6/6] tests/qtest: Add ivshmem-flat test
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ alex.bennee@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Anton Kochkov <anton.kochkov@proton.me>, richard.henderson@linaro.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20240216144456.34992-1-philmd@linaro.org>
+ <20240216144456.34992-7-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240216144456.34992-7-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 8bit
+X-TUID: UbDl2RdBb7Ht
 
-On Mon, 19 Feb 2024, Mark Cave-Ayland wrote:
-> On 19/02/2024 12:00, BALATON Zoltan wrote:
->> On Mon, 19 Feb 2024, Philippe Mathieu-Daudé wrote:
->>> On 19/2/24 12:27, BALATON Zoltan wrote:
->>>> On Mon, 19 Feb 2024, Philippe Mathieu-Daudé wrote:
->>>>> On 16/2/24 20:54, Philippe Mathieu-Daudé wrote:
->>>>>> On 16/2/24 18:14, BALATON Zoltan wrote:
->>>>>>> On Fri, 16 Feb 2024, Philippe Mathieu-Daudé wrote:
->>>>>>>> We want to set another qdev property (a link) for the pl110
->>>>>>>> and pl111 devices, we can not use sysbus_create_simple() which
->>>>>>>> only passes sysbus base address and IRQs as arguments. Inline
->>>>>>>> it so we can set the link property in the next commit.
->>>>>>>> 
->>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>>>>>> ---
->>>>>>>> hw/arm/realview.c    |  5 ++++-
->>>>>>>> hw/arm/versatilepb.c |  6 +++++-
->>>>>>>> hw/arm/vexpress.c    | 10 ++++++++--
->>>>>>>> 3 files changed, 17 insertions(+), 4 deletions(-)
->>>>>>>> 
->>>>>>>> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
->>>>>>>> index 9058f5b414..77300e92e5 100644
->>>>>>>> --- a/hw/arm/realview.c
->>>>>>>> +++ b/hw/arm/realview.c
->>>>>>>> @@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
->>>>>>>>     sysbus_create_simple("pl061", 0x10014000, pic[7]);
->>>>>>>>     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
->>>>>>>> 
->>>>>>>> -    sysbus_create_simple("pl111", 0x10020000, pic[23]);
->>>>>>>> +    dev = qdev_new("pl111");
->>>>>>>> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>>>>>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
->>>>>>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
->>>>>>> 
->>>>>>> Not directly related to this patch but this blows up 1 line into 4 
->>>>>>> just to allow setting a property. Maybe just to keep some simplicity 
->>>>>>> we'd rather need either a sysbus_realize_simple function that takes a 
->>>>>>> sysbus device instead of the name and does not create the device 
->>>>>>> itself or some way to pass properties to sysbus create simple (but the 
->>>>>>> latter may not be easy to do in a generic way so not sure about that). 
->>>>>>> What do you think?
->>>>>> 
->>>>>> Unfortunately sysbus doesn't scale in heterogeneous setup.
->>>>> 
->>>>> Regarding the HW modelling API complexity you are pointing at, we'd
->>>>> like to move from the current imperative programming paradigm to a
->>>>> declarative one, likely DSL driven. Meanwhile it is being investigated
->>>>> (as part of "Dynamic Machine"), I'm trying to get the HW APIs right
->>>> 
->>>> I'm aware of that activity but we're currently still using board code to 
->>>> construct machines and probably will continue to do so for a while. Also 
->>>> because likely not all current machines will be converted to new 
->>>> declarative way so having a convenient API for that is still useful.
->>>> 
->>>> (As for the language to describe the devices of a machine and their 
->>>> connections declaratively the device tree does just that but dts is not a 
->>>> very user friendly descrtiption language so I haven't brought that up as 
->>>> a possibility. But you may still could get some clues by looking at the 
->>>> problems it had to solve to at least get a requirements for the machine 
->>>> description language.)
->>>> 
->>>>> for heterogeneous emulation. Current price to pay is a verbose
->>>>> imperative QDev API, hoping we'll get later a trivial declarative one
->>>>> (like this single sysbus_create_simple call), where we shouldn't worry
->>>>> about the order of low level calls, whether to use link or not, etc.
->>>> 
->>>> Having a detailed low level API does not prevent a more convenient for 
->>>> current use higher level API on top so keeping that around for current 
->>>> machines would allow you to chnage the low level API without having to 
->>>> change all the board codes because you's only need to update the simple 
->>>> high level API.
->>> 
->>> So what is your suggestion here, add a new complex helper to keep
->>> a one-line style?
->>> 
->>> DeviceState *sysbus_create_simple_dma_link(const char *typename,
->>>                                           hwaddr baseaddr,
->>>                                           const char *linkname,
->>>                                           Object *linkobj,
->>>                                           qemu_irq irq);
->> 
->> I think just having sysbus_realize_simple that does the same as 
->> sysbus_create_simple minus creating the device would be enough because then 
->> the cases where you need to set properties could still use it after 
->> qdev_new or init and property_set but hide the realize and connecting the 
->> device behind this single call.
->
-> I can't say I'm a fan of sysbus_create_simple() because its use of varargs to 
-> populate qdev properties is based upon the assumptions that the properties 
-> defined with device_class_set_props() are stored in a list. I can see there 
-> could be potential in future to store properties in other structures such as 
-> a hash, and keeping this API would prevent this change. FWIW my personal 
-> preference would be to remove this API completely.
->
->>> I wonder why this is that important since you never modified
->>> any of the files changed by this series:
->> 
->> For new people trying to contribute to QEMU QDev is overwhelming so having 
->> some way to need less of it to do simple things would help them to get 
->> started.
->
-> It depends what how you define "simple": for QEMU developers most people 
-> search for similar examples in the codebase and copy/paste them. I'd much 
-> rather have a slightly longer, but consistent API for setting properties 
-> rather than coming up with many special case wrappers that need to be 
-> maintained just to keep the line count down for "simplicity".
+On 16/02/2024 15.44, Philippe Mathieu-Daudé wrote:
+> From: Gustavo Romero <gustavo.romero@linaro.org>
+> 
+> Add qtest for the ivshmem-flat device.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Message-ID: <20231127052024.435743-4-gustavo.romero@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   tests/qtest/ivshmem-flat-test.c | 320 ++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build         |   2 +
+>   2 files changed, 322 insertions(+)
+>   create mode 100644 tests/qtest/ivshmem-flat-test.c
+> 
+> diff --git a/tests/qtest/ivshmem-flat-test.c b/tests/qtest/ivshmem-flat-test.c
+> new file mode 100644
+> index 0000000000..5489a0d915
+> --- /dev/null
+> +++ b/tests/qtest/ivshmem-flat-test.c
+> @@ -0,0 +1,320 @@
+> +/*
+> + * Inter-VM Shared Memory Flat Device qtests
+> + *
+> + * SPDX-FileCopyrightText: 2023 Linaro Ltd.
+> + * SPDX-FileContributor: Gustavo Romero <gustavo.romero@linaro.org>
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + */
+> +
+> +#include "ivshmem-utils.h"
+> +
+> +#define IVSHMEM_FLAT_MMR_ADDR 0x400FF000
+> +#define IVSHMEM_FLAT_SHM_ADDR 0x40100000
+> +#define SHM_SIZE 131072 /* 128k */
+> +
+> +static ServerThread thread;
+> +
+> +uint32_t *shm_ptr;
+> +char *shm_rel_path;
+> +char *server_socket_path;
+> +
+> +static void cleanup(void)
+> +{
+> +    if (shm_ptr) {
+> +        munmap(shm_ptr, SHM_SIZE);
+> +        shm_ptr = NULL;
+> +    }
+> +
+> +    if (shm_rel_path) {
+> +        shm_unlink(shm_rel_path);
+> +        shm_rel_path = NULL;
+> +    }
+> +
+> +    if (server_socket_path) {
+> +        unlink(server_socket_path);
+> +        server_socket_path = NULL;
+> +    }
+> +}
+> +
+> +static void abort_handler(void *data)
+> +{
+> +    test_ivshmem_server_stop(&thread);
+> +    cleanup();
+> +}
+> +
+> +/*
+> + * Check if exactly 1 positive pulse (low->high->low) on 'irq' IRQ line happens
+> + * in 'timeout' second(s). 'irq' must be intercepted using qtest_irq_intercept_*
+> + * before this function can be used on it. It returns 0 when pulse is detected,
+> + * otherwise 1.
+> + */
+> +static int test_ivshmem_flat_irq_positive_pulse(QTestState *qts, int irq,
+> +                                                int timeout)
+> +{
+> +    uint64_t num_raises = 0;
+> +    uint64_t num_lows = 0;
+> +    uint64_t end_time;
+> +
+> +    end_time = g_get_monotonic_time() + timeout * G_TIME_SPAN_SECOND;
+> +    do {
+> +        num_raises = qtest_get_irq_raised_counter(qts, 0);
+> +        if (num_raises) {
+> +            num_lows = qtest_get_irq_lowered_counter(qts, 0);
+> +            /* Check for 1 raise and 1 low IRQ event. */
+> +            if (num_raises == num_lows && num_lows == 1) {
+> +                return 0;
+> +            } else {
+> +                g_message("%s: Timeout expired", __func__);
+> +                return 1;
+> +            }
+> +        }
+> +        qtest_clock_step(qts, 10000);
+> +    } while (g_get_monotonic_time() < end_time);
+> +
+> +    return 1;
+> +}
 
-It's not just about keeping the line count down, although that helps with 
-readablility, it's simpler to see what the code does if one has to go 
-through less QDev and QOM details, and new people are unfamiliar with 
-those so when they see the five lines creating the single device they 
-won't get what it does while a sysbus_create_simple call is very self 
-explaining. Maybe sysbus_create_simple is not the best API and not one we 
-can keep but by point is that as long as we have board code and it's the 
-main way to create machines that developers have to work with then we 
-should have some simple API to do that and don't leave them with only low 
-level QOM and QDev calls that are not high level enough to creare a 
-machine conveniently. If the direction is to eventually don't need any 
-code to create a machine then don't spend much time on designing that API 
-but at least keep what we have as long as it's possible. Removing the 
-device creation from sysbus_create_simple is not a big change but allows 
-board code to keep using it for now instead of ending up an unreadable low 
-level calls that makes it harder to see at a glance what a board consists 
-of.
+The timeout stuff looks like it will be quite sensitive to slow CI runners. 
+Timeout is set to 2 seconds in most callers - but on very loaded systems, it 
+can easily happen that a job gets interrupted for two seconds.
 
-> I think that Phil's approach here is the best one for now, particularly given 
-> that it allows us to take another step towards heterogeneous machines. As the 
-> work in this area matures it might be that we can consider other approaches, 
-> but that's not a decision that can be made right now and so shouldn't be a 
-> reason to block this change.
+I think you should either increase the 2 seconds to something bigger (maybe 
+use a #define for it), or instead of using g_get_monotonic_time(), rather 
+loop a certain number of iterations and use a g_sleep(10000) in the loop 
+body - that will also relax the host CPU while the test waits for QEMU to 
+progress?
 
-I did not say this patch should not be accepred or anything like that. 
-Just if there's a way with not too much work to make this simpler (as in 
-more readable and understandable for people not familiar with low levels 
-of QEMU) then I think that's worth trying and keeping at least most of the 
-functions of sysbus_create_simple as sysbus_realize_simple is not much 
-work to do but avoids blowing up the board code with a lot of low level 
-QOM stuff that I'd rather keep out of there unless it could be made less 
-overwhelming and verbose. Also keeping a higher level API for board code 
-would help this refactoring because if the low level calls are not all 
-over the board code then they would need to change less as the changes 
-could be done within the higher level API implementation.
+> +static inline uint32_t read_reg(QTestState *qts, enum Reg reg)
+> +{
+> +    uint32_t v;
+> +
+> +    qtest_memread(qts, IVSHMEM_FLAT_MMR_ADDR + reg, &v, sizeof(v));
+> +
+> +    return v;
+> +}
+> +
+> +static inline void write_reg(QTestState *qts, enum Reg reg, uint32_t v)
+> +{
+> +    qtest_memwrite(qts, IVSHMEM_FLAT_MMR_ADDR + reg, &v, sizeof(v));
+> +}
+> +
+> +/*
+> + * Setup a test VM with ivshmem-flat device attached, IRQ properly set, and
+> + * connected to the ivshmem-server.
+> + */
+> +static QTestState *setup_vm(void)
+> +{
+> +    QTestState *qts;
+> +    const char *cmd_line;
+> +
+> +    cmd_line = g_strdup_printf("-machine lm3s6965evb "
 
-But at the end this is just my opinion and Philippe is free to do what he 
-wants. I ust shared this view point in case he can take it into account 
-but if not then it's not the end of the world.
+Could you please add a check, either in meson.build or in main(), to make 
+sure that the lm3s6965evb machine is really available when running this 
+test? ... it might have been disabled in the build ...
 
-Regards,
-BALATON Zoltan
---3866299591-1125001828-1708351063=:77986--
+> +                               "-chardev socket,path=%s,id=ivshm "
+> +                               "-device ivshmem-flat,chardev=ivshm,"
+> +                               "x-irq-qompath='/machine/unattached/device[1]/nvic/unnamed-gpio-in[0]',"
+> +                               "x-bus-qompath='/sysbus',shmem-size=%d",
+> +                               server_socket_path, SHM_SIZE);
+> +    qts = qtest_init(cmd_line);
+> +
+> +    return qts;
+> +}
+
+  Thomas

@@ -1,116 +1,97 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424745ejb;
-        Sun, 18 Feb 2024 17:23:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXD0rtzXxrR66wlC6CqCL56hcIltoyWGTmmIK/T1sEqZDXhI58YF/N1o81igO7EBC6o/ek26KjIO/WsL+M3C+HDPJSuLMNF
-X-Google-Smtp-Source: AGHT+IGIXbg7d7cZd/WAGsoPeSK4Je61FBhj0T4ue4Bx3x3SBTZ9sp7fIHveTUZTjviFz9dtt8TS
-X-Received: by 2002:a05:6808:140e:b0:3c0:3a17:b9d4 with SMTP id w14-20020a056808140e00b003c03a17b9d4mr13137420oiv.36.1708305780968;
-        Sun, 18 Feb 2024 17:23:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305780; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp640188ejb;
+        Mon, 19 Feb 2024 03:59:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUemG0Xsbl1O44gyc4N+nTaUmSxJJR0EwqvsTk4xb6sz4wYje2nmpOBrWsthK5BeYER6wRexhHplheUBI0kM+i4BKix2XVu
+X-Google-Smtp-Source: AGHT+IGk23G/LV8M6b6LJ2zKO5Dn384O+n9Eoi9bRqO1GzO/LbrLo9qm32FaGUkVhSqBYGqyMfSe
+X-Received: by 2002:a05:6808:23d4:b0:3c1:578a:9a17 with SMTP id bq20-20020a05680823d400b003c1578a9a17mr3906131oib.4.1708343989125;
+        Mon, 19 Feb 2024 03:59:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708343989; cv=none;
         d=google.com; s=arc-20160816;
-        b=zcuMfkOidhfjruhFOLuzXL2dvmnAO5swn/uPVtbROJ0fNkL2ebWYly012AbcVRphvN
-         tHeWjdWaqtRCK59A7AneSi5UbR8oNnmJ90aEs6WSNjWoLyTDYSNj1ff3BZRSyJO9A9Aj
-         wZXkrNpxOElf1fK5VnfXj6AiGDQf08hgmO5uKm3uzu8KKFwThwDqWuvwnupLzYMDBQEF
-         PRqmBcoz37o6WZJVkSxbxy6x+VMGIRaiSGyajKm1s+PjK7Z4xVsrvnpOPARN+ydI4jE2
-         J5midvlW+TcrdRtXEexWaCYqNgacD8M4LQk2FJc660qw4VUYPG+/+qp5j6yY3k3n5jY1
-         8tBw==
+        b=p2lDBoDAsZa2+do9Q6fjc+8rSRpRk19i1svkrxm3bijLoSafvr1Lli2hJ8K2xcRmw3
+         mo8mJ/M5v53feZ17g9izy4fsMMFqo5kfHfADyQ9sK5c4dLei9Src6jSs0IVqNIxTPbJn
+         cI2JimMfnKpudUHwLrVY55lowsXKTb3kPi2KfdnEUuA9TnfXHet8zLIKwkuD4BnTefn8
+         88gs7/qMrKhhZFATKTG7pN2XPc9v8fLKlFH3yjSxo3bmwLXzv7lV21y9JnKL+dN7FqiW
+         4Ya4tHuBA3vM1TWh1efvvI1tPLsA0LysbA0SCTMdf5iUEklMnnvNW5EPNNjG8cdEn6hm
+         I92Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=v1gR/KAa53/oE2iH7GhO3G8Sk5ViFxF2SsXmdhHxpKI=;
-        fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=Owp52SA9k4DEvV+V9Bg09ilAKhSYKsAcPgD7IZd+9jTVD1FhXM+ldSlkIJusWvG4Qs
-         2Qpg71d+giADzLRFuH4dW8W0CEYQGGlcyJvGIe+zwDMzJ734l+YCyj16u4IVDreX7fic
-         nV2ZeUoWMWs+eBUA91Pxjajx+5wAYgAeldt30w8eLybGqSrJ+dC4fGxI8KJa1XgyCNqC
-         qj9l10cLZxqrHSQIKuihlgOyIr35NPeJhnQ5VriQUG/BH2zfg+Sc/ROEjtzJQMNVNdtU
-         oucwYTTrbTTM7gbTsVPcmqSyIYlCLBPI7MT24h1fRjDlOkHQKZaN9SMgHCavLcqtPWKT
-         FXvA==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=n/Fk6y2y09w8y65NaOgWtW2+8pkTitKt0znH9ReCj7Q=;
+        fh=byQIDlh+NLakNuK1fOLCtl65Pnc+M+xpz6lf/4BneC4=;
+        b=GBbwejVd7CcxZ4BB9Km8Hk8ITByqsSYdT3Ga0jRXpS0uqpqa2YvU8aFZFI0LfyqPl4
+         k3V/rn2XVIqoSvKXZO+6+m9jhXkla8cmgDEHRNiPNPEg7gJPyaYo/0oxANkw/pqlxlMS
+         +MBkDfSiP4JOexMY52sH02ELLWiV+uB2QpvSIraJVh6/IHN4yVZiYmV9i5fxne6lpuGN
+         yLKtVDXasDknyF6D50rjdAqHHqfgWTTw2jqLK3MYtOU5BLRwj6KKCQgsYyuJ3aIAM9dm
+         cz+y6HWrrdRgJ4fo6mcInVqJa51U6hWuPfc4Gsn689OatijPydzSJl9DXJna9NSXJ2wO
+         LLOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NU9YpyK3;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=F6teIfHu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gu8-20020a056214260800b0068c7251fe66si5444262qvb.568.2024.02.18.17.23.00
+        by mx.google.com with ESMTPS id w7-20020a05620a148700b007873abc7a7dsi5840421qkj.483.2024.02.19.03.59.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:23:00 -0800 (PST)
+        Mon, 19 Feb 2024 03:59:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NU9YpyK3;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=F6teIfHu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rbsJM-0004mV-Nm; Sun, 18 Feb 2024 20:19:12 -0500
+	id 1rc2J0-0002dl-8x; Mon, 19 Feb 2024 06:59:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIj-0003bd-Tw; Sun, 18 Feb 2024 20:18:34 -0500
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIh-0004MA-5c; Sun, 18 Feb 2024 20:18:32 -0500
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-607a84acf6aso15163117b3.2; 
- Sun, 18 Feb 2024 17:18:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305509; x=1708910309; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=v1gR/KAa53/oE2iH7GhO3G8Sk5ViFxF2SsXmdhHxpKI=;
- b=NU9YpyK3tfgX2zqgtbJwGxfU/dB2PvzuvwE1m3aIWboU4lQB2jtt0eExpCF0PLLvkQ
- CTMG6G9CKjfDe5LS/83p+ptoV9EKerGmtC+yGluAqIpl6I90pk0EuE7x931tp5mQmJGu
- bGnUKATnCP+8F7IENIOMchuFMo1zZpi6wXgqiPfNl8SHeUoZ64dEC82dNN2nvccb78qd
- YAMX/m3g4RLqh7RXrcNRRt0DzzjiV+sa+5v3oqXJFMNRa389M1yNEtm4r+UQjzAean4x
- +MLOi2/z2eGEJjS+dUjvn14JVOfHkvzq/V9omiQXP/0rV6U51TEsB/6OHtT4QWivSuVJ
- WI+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305509; x=1708910309;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=v1gR/KAa53/oE2iH7GhO3G8Sk5ViFxF2SsXmdhHxpKI=;
- b=IoaNCkLWuZgiQkKhidEWeM96CkVKzgeBT8w8nhpvQmAu/27Y3eVRmcS14nIkORgHdT
- BY9baredxgqYIDScsr14yCkwsvfqKffZwTPruX4O18QXnIpuIx/hW+dFPJfB5BszZ4D+
- IZAJ6sWTbI8LnNkO3R1fvME+xvIHaFsHqHezmuaiDJi5L/dWt0ys2NQ4fnAum1om8tQr
- zSw+FRUKflHnkhv4nc5/6gwyW5WKvJV4qvsBthg4RBU6+YfZ/rkA1hz2Zu4n2LCl9DPL
- 8fryxhY/u2lqNRxbKjEHakzorK2sqvzm9aFciJBtfNtsO+Y+xdeG1mNNXrmO4Xg5NGnx
- 3mNQ==
-X-Gm-Message-State: AOJu0YxEUvNK6lnIQiQEk7TLYw0TTIhTuTq9CWzmF6boQPB8PJuyhc4i
- fCflzdpVVzZOg5cQjRsjyQuSwQ9zcBr584qj2EnQ69AQGLOoRyiANJEWZEFHOgk=
-X-Received: by 2002:a81:ac4a:0:b0:607:fe2f:34af with SMTP id
- z10-20020a81ac4a000000b00607fe2f34afmr4563996ywj.2.1708305509574; 
- Sun, 18 Feb 2024 17:18:29 -0800 (PST)
-Received: from localhost.localdomain ([201.203.117.224])
- by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:18:29 -0800 (PST)
-From: Sergey Kambalin <serg.oker@gmail.com>
-X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 41/41] Add RPi4B to paspi.rst
-Date: Sun, 18 Feb 2024 19:17:39 -0600
-Message-Id: <20240219011739.2316619-42-sergey.kambalin@auriga.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
-References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1rc2Iz-0002dO-8q; Mon, 19 Feb 2024 06:59:29 -0500
+Received: from zuban.uni-paderborn.de ([2001:638:502:c003::17])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1rc2Ix-0005P4-BT; Mon, 19 Feb 2024 06:59:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=n/Fk6y2y09w8y65NaOgWtW2+8pkTitKt0znH9ReCj7Q=; b=F6teIfHuqQRx30FlzQ8eu2n9km
+ 8OHmZfy7jOTS6y/PgfaINOD3x7N8f7hNXQHiIRTOr7/PnZDufSwsNibTgjxO+As/lvBtAB9NCoa6/
+ vSVnOHTW0SVnE/Bj9iSA/hdwe1/8zaQqxuzK+HiBnPhdENKbS7JKwXE+XYx5P1eMgZvY=;
+Date: Mon, 19 Feb 2024 12:59:11 +0100
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org, 
+ qemu-ppc@nongnu.org, qemu-block@nongnu.org
+Subject: Re: [PATCH 04/21] hw/tricore/testboard: Use qdev_new() instead of
+ QOM basic API
+Message-ID: <xbyrix3d5l2tbroqoow7umnwiwxq5akfr5rltmbcfmwz6deu75@27r6aiyljgao>
+References: <20240216110313.17039-1-philmd@linaro.org>
+ <20240216110313.17039-5-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+In-Reply-To: <20240216110313.17039-5-philmd@linaro.org>
+X-IMT-Source: Extern
+X-IMT-rspamd-score: -25
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2024.1.27.235115, AntiVirus-Engine: 6.0.2,
+ AntiVirus-Data: 2024.1.26.602001
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::17;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=zuban.uni-paderborn.de
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, SUSPICIOUS_RECIPS=2.51,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,50 +107,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LeNyDlG/zlUw
+X-TUID: 922KEInYDMCb
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
----
- docs/system/arm/raspi.rst | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+On Fri, Feb 16, 2024 at 12:02:55PM +0100, Philippe Mathieu-Daudé wrote:
+> Prefer QDev API for QDev objects, avoid the underlying QOM layer.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/hw/tricore/tricore_testdevice.h | 3 ---
+>  hw/tricore/tricore_testboard.c          | 4 +---
+>  2 files changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
-index d0a6f08b2b..c21b27744e 100644
---- a/docs/system/arm/raspi.rst
-+++ b/docs/system/arm/raspi.rst
-@@ -1,5 +1,5 @@
--Raspberry Pi boards (``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b``)
--======================================================================================
-+Raspberry Pi boards (``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b``, ``raspi4b-2g``)
-+======================================================================================================
- 
- 
- QEMU provides models of the following Raspberry Pi boards:
-@@ -12,12 +12,13 @@ QEMU provides models of the following Raspberry Pi boards:
-   Cortex-A53 (4 cores), 512 MiB of RAM
- ``raspi3b``
-   Cortex-A53 (4 cores), 1 GiB of RAM
--
-+``raspi4b-2g``
-+  Cortex-A72 (4 cores), 2 GiB of RAM
- 
- Implemented devices
- -------------------
- 
-- * ARM1176JZF-S, Cortex-A7 or Cortex-A53 CPU
-+ * ARM1176JZF-S, Cortex-A7, Cortex-A53 or Cortex-A72 CPU
-  * Interrupt controller
-  * DMA controller
-  * Clock and reset controller (CPRMAN)
-@@ -34,6 +35,8 @@ Implemented devices
-  * MailBox controller (MBOX)
-  * VideoCore firmware (property)
-  * Peripheral SPI controller (SPI)
-+ * PCIE Root Port (raspi4b-2g)
-+ * GENET Ethernet Controller (raspi4b-2g)
- 
- 
- Missing devices
--- 
-2.34.1
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 
+Cheers,
+Bastian

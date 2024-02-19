@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp423556ejb;
-        Sun, 18 Feb 2024 17:18:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVlQ+7zEMg9rwH1stCesv2WbkYzJ7/hFt7LtcDyFaAvxdViiEkkQ/Nr/kUdmG7JAzovHxV4JK1Y/TNwBCIAD0IHRoR0HA9+
-X-Google-Smtp-Source: AGHT+IEOTVkymgahzcxOvZ4mQoFPAegl7xLm57z1ZmisLmfzdNUzo10iWvEgDnve2RazX0ZkaatI
-X-Received: by 2002:a05:620a:199b:b0:784:3802:9a41 with SMTP id bm27-20020a05620a199b00b0078438029a41mr13818010qkb.6.1708305529799;
-        Sun, 18 Feb 2024 17:18:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305529; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp423608ejb;
+        Sun, 18 Feb 2024 17:19:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVGjJaVzPzncW6Awp/2IpRZ0r23ouWbFEe9Az8jYJgQqTdWfEbb4ubM1qu2JdBcFNA8jdJadFboG+zYdZwaSXlOEg5cYs8F
+X-Google-Smtp-Source: AGHT+IFVX/FD/N5JZcNwOr96h0LMz0rZhs6XweNmva56iTfgwrVYwCC7Z/IarBnDuba9bIzQ5bEE
+X-Received: by 2002:a05:620a:16cf:b0:785:962d:a6a9 with SMTP id a15-20020a05620a16cf00b00785962da6a9mr10013423qkn.45.1708305540765;
+        Sun, 18 Feb 2024 17:19:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708305540; cv=none;
         d=google.com; s=arc-20160816;
-        b=EmmWUOJl8+Vwi52F6G8LHpSOME+4b+u1j7PjXbo7Z5Ljh0WIfSBffJ6pdooTNQPayS
-         4rTxFSDFDbVNJEk8P2CWzE/tFBIEGZbzVJ4OrhTqALinGV0+41Nm3FJVQF5zgxj28szu
-         y8X4BezbMMj551hSmLULwBah8TbyQ3UUyqJ5oGR7O2NxvgrXEyD70UbF/Ye4BmjVNp0C
-         pEbUdP0SQH8rXf4BUYGhufnwjWgtjxQld8wKIrV32i1yRaKugpHkNVoA9vPPhhaNiHRQ
-         PRPagueDOcWTdO9kzAhiHGwcAbFWqL8/iYWqT2MA95/eMomezz5e3a4XVBljBNgoyyj0
-         wk9Q==
+        b=GCLnt3av0HwoSLUESLcFIB5xEVBiVfdbaKM6EjL/Ct9YaJkC0k5w2wAB2JJUm5Dj7x
+         nF9lGosxtZGumXwVN73zJQFqz0XzqEy3+/MUCDRtBsBPcW++MEjFTF51AchFDRC6LEG7
+         9qPFwFimB87jKV+4M3BwwY12Lm1CaqO+69ZyBIpbeB3mrMTEKVHQfvPJCrm1Nn0T8hmp
+         khejg3BJ3KHmdG558CTMi01fs6z4usieBx4idA4KQ/IkTAzzrz+suchHSfRVDKqNuPcY
+         I+1iLhF8O90sVjksfpa2LWGIzLau9HVMjUIsDXtRpVzVsmXCZHuzUvN/RmqsDYToKO5n
+         Pd0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jCuXLoF/jYrUq9wGAd2LL4H1wbrYwKDhVdG2Nb+bSXk=;
+        bh=Dwk0FgkXCaWEFgOaQN4mVrw7fgMGpMn7mGwZfTNL03o=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=QOgdKSkSkF1eWdxvIMZ0fNXm7lTI0lnbPRUt/+Oz+l9NImSUxTognGc3toZqZ3f7zo
-         zFIzQNsaxFaARNgVSU/pIOnMxpT7TD9GEEbVcrmtHi9VJLKbLzxoMu+J2l6drTADIVoR
-         +gGpe0uaEpd0nKOX5AvMNG/ddFQ4O3C/2fxfJxL1zYPu88NAOKCVcsWYdL+BowtLKFzs
-         N0zQWKXi8HkDtN7kziSzRsoqfvf3xkWEiyjIw3ML0G0GHeJ9Fno+jv3mQcG5ibqVsl03
-         cuFrhsVRTTqI5Ftjoclh48YAgg6l6Ks0Q3KBQnVdgTFa4yj677HTcHddu0zxINqKOwhf
-         OnaQ==;
+        b=VGm+60aLVmtHUSOiaiNIuno27f04EwLJVET18J+ycTHYZoD0cSxTaHLxzTLOpDF/BQ
+         sRE0G0rdvVN5ot3Tn0YWX/ODq3zeeKrV3oYrspCiM3xqpARrs4qZIZHSMbBEAWrmK+Bu
+         KuYIqpDp227gTVV1Op2vbjOO0JWGh/33EMhhBtEGzu6yFUoVYakrZ1zbwTtWy3UuPgCT
+         qAnk08ZWjFg4ad+IszoixfKMP6XDtxgiDblsnSstEo5294QPd6GQxcTIiwISYwC3Gmqw
+         EkxnjedOJFEvUw6ia/Q5DfRDvXIk2HW/Ve9NFk/bq104JgkBU16twCL21JPktCQZmmSo
+         hJcg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=INWoe6BT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gKZUX+gK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020a05620a441100b00785db64faa1si5847065qkp.672.2024.02.18.17.18.49
+        by mx.google.com with ESMTPS id c17-20020a37e111000000b007871ffd03ccsi5082587qkm.235.2024.02.18.17.19.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:18:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 18 Feb 2024 17:19:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=INWoe6BT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gKZUX+gK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rbsIF-0003IJ-R1; Sun, 18 Feb 2024 20:18:03 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rbsID-0003GL-PV; Sun, 18 Feb 2024 20:18:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsID-0003GG-In; Sun, 18 Feb 2024 20:18:01 -0500
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1rbsIB-0003EZ-Rh; Sun, 18 Feb 2024 20:17:59 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIB-0004FI-Uv; Sun, 18 Feb 2024 20:18:01 -0500
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-60843233278so305507b3.3; 
- Sun, 18 Feb 2024 17:17:59 -0800 (PST)
+ id 1rbsIA-0004Eg-15; Sun, 18 Feb 2024 20:17:59 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-60495209415so35368277b3.3; 
+ Sun, 18 Feb 2024 17:17:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305478; x=1708910278; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708305476; x=1708910276; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jCuXLoF/jYrUq9wGAd2LL4H1wbrYwKDhVdG2Nb+bSXk=;
- b=INWoe6BTS+zNuCFkg4lbi7H5ch1uSmTj0U4gU7RfYxp3h1Nb40qj8cxa8tw5ew/BUq
- iuxtABLJhZpUqU9WLyzbo79JKFwJBzHGo1SW53fLTnsVoHATpu8ZTlXoZGMsmZ/ei4UM
- UKPDD01IDybcILYDM8YDSodBuBCLt+3PmskClzpmILsHjBfznske8l7imRKUJSenIdCj
- QEaCl99lNurhXYK/ezPzqczxGz/yFSFdCKDPPsEsMYcMBfwC820jreHgdBZlIAw0Az6t
- o/tZBHPG7Fyg4o2gW46izYHaesZSmu8dE/cadfmHQD2a+GT6LrIzn+4b4xt4Yuw/BEy9
- HXaQ==
+ bh=Dwk0FgkXCaWEFgOaQN4mVrw7fgMGpMn7mGwZfTNL03o=;
+ b=gKZUX+gKaK5wTpylcdLgTaKq3rHtUdysAH4NhlT5hsR9tdBBWccA+g3T0xo6uFchmK
+ OOOeArOvVpKX8XObswtXn8TFkTIPRdDQhObpgUmUdVi4UIgBOuO2Svu40Dz1auhYNSin
+ 9Bu/nCmfnwK2R8RhDBAvVtR5X4tv+sypnSkq/tXkk+uUQP0TZgRw3RWdv2+7Af5ccOvt
+ PYQhrEpGeaJLPH0iDuB7NIlrLkbdQ9RvtcCR8hBq96Owz1Pv1vWPMqvINsJW9UmL/GlF
+ bxRk9fQ1cNFq1hdmKL2SjTVAxYGBAUai5Z5JJXIKOGciHPCOd7Cf+xYTCOkqlMV97ygu
+ gihQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305478; x=1708910278;
+ d=1e100.net; s=20230601; t=1708305476; x=1708910276;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jCuXLoF/jYrUq9wGAd2LL4H1wbrYwKDhVdG2Nb+bSXk=;
- b=vVhMR+TM1TsTMb8wf/c8HGXA+9fQJcpJwiszah2b/7qbQJ5Qv829UIGsnD5o89xky4
- RJ3LsBc/ypJoPx0qzHL6G6gFHIe0OdTZVhFLYo4mPUZtfAEMTixUCYWGnkoukwxsnqdz
- ay9rV4VJMqbuvjFSLlrBBDqGwqieub0pdz/VmUnRmToQiRSca8igZmqJmIFEy3S63g/S
- UkEOpKhKzWfkDZtlwaUNOhgdZp25oPVTmkDM2BUYW484s5XF2YzsW6PExmEaAK2Uu121
- YnEweATmQYuWT29i2Hh/cqRrl2xAG1vpxZnRR2LVqqcJgm0D+3lPSwhoeUcPuEJxdajg
- k0hQ==
-X-Gm-Message-State: AOJu0YxOKtD5//eJAQiubgi4KEt6H/a7TRpuAczSGCJ5f5ZquGKSCaMJ
- eKH2GlPf9yqqa++h7s312klKtZWYlo6ERTgllyB56GYl7jFQg94LJBmueUxb2ig=
-X-Received: by 2002:a81:c252:0:b0:607:9e4b:f0e9 with SMTP id
- t18-20020a81c252000000b006079e4bf0e9mr11644068ywg.31.1708305478342; 
- Sun, 18 Feb 2024 17:17:58 -0800 (PST)
+ bh=Dwk0FgkXCaWEFgOaQN4mVrw7fgMGpMn7mGwZfTNL03o=;
+ b=oWgTHpkJnBTvDVe3OoK1nEyV8lUQIm+FP9/5OwtEK6EDU8e7FEw2O+iejxZz47Pve7
+ SAaLAhhQ5qFi0La7s6yNA6tJcafF7qMdTgQyK6mp8TMRBxch0L56PFzHtgcv8RQMJMmc
+ 6ncm43Gv/M0X00O1t7kq2OLH9r8LEZuw8/H7nIEYPylwNsD3imoKxBiuZRrn8u/k+Peb
+ TqMF5+Qz2TRsiDJDZmxuGMzpt7HD9JxrTizfyGdurk6DhswmnSpI6r6gyc3man9x6ZLJ
+ eZm4kFeqTAlA2PI1mpFY8eGaoC3Pcfx+yQDlP3P3DuOsCFvc5YBlvP8lR+/jWdF/9Xby
+ ZtqA==
+X-Gm-Message-State: AOJu0Yy9MlKjs3l08yPfvLLQc+yiPGJWcFcCNo0XScsIjK5xp0BnkKzZ
+ 3FfQyCtnVUp7dSTYhFBte/b/mSsAmLTK86B3WnTtcPKE2XVhq7p+QHM+seHx7Ws=
+X-Received: by 2002:a81:4902:0:b0:607:ce8e:fe26 with SMTP id
+ w2-20020a814902000000b00607ce8efe26mr10201067ywa.14.1708305476360; 
+ Sun, 18 Feb 2024 17:17:56 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.17.57
+ m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.17.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:17:58 -0800 (PST)
+ Sun, 18 Feb 2024 17:17:56 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 08/41] Connect SD controller to BCM2838 GPIO
-Date: Sun, 18 Feb 2024 19:17:06 -0600
-Message-Id: <20240219011739.2316619-9-sergey.kambalin@auriga.com>
+Subject: [PATCH v5 06/41] Add BCM2838 GPIO stub
+Date: Sun, 18 Feb 2024 19:17:04 -0600
+Message-Id: <20240219011739.2316619-7-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,148 +113,250 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9wxAWF0MQen+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: I5Vf2E9+AV38
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/gpio/bcm2838_gpio.c         | 52 +++++++++++++++++++++++++++++++++-
- include/hw/gpio/bcm2838_gpio.h |  5 ++++
- 2 files changed, 56 insertions(+), 1 deletion(-)
+ hw/gpio/bcm2838_gpio.c         | 153 +++++++++++++++++++++++++++++++++
+ hw/gpio/meson.build            |   5 +-
+ include/hw/gpio/bcm2838_gpio.h |  40 +++++++++
+ 3 files changed, 197 insertions(+), 1 deletion(-)
+ create mode 100644 hw/gpio/bcm2838_gpio.c
+ create mode 100644 include/hw/gpio/bcm2838_gpio.h
 
 diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
-index 69d15dbb49..2ddf62f695 100644
---- a/hw/gpio/bcm2838_gpio.c
+new file mode 100644
+index 0000000000..a312490bbd
+--- /dev/null
 +++ b/hw/gpio/bcm2838_gpio.c
-@@ -17,6 +17,7 @@
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
-+#include "hw/sd/sd.h"
- #include "hw/gpio/bcm2838_gpio.h"
- #include "hw/irq.h"
- 
-@@ -63,6 +64,16 @@
- 
- #define BYTES_IN_WORD        4
- 
-+/* bcm,function property */
-+#define BCM2838_FSEL_GPIO_IN    0
-+#define BCM2838_FSEL_GPIO_OUT   1
-+#define BCM2838_FSEL_ALT5       2
-+#define BCM2838_FSEL_ALT4       3
-+#define BCM2838_FSEL_ALT0       4
-+#define BCM2838_FSEL_ALT1       5
-+#define BCM2838_FSEL_ALT2       6
-+#define BCM2838_FSEL_ALT3       7
+@@ -0,0 +1,153 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
- static uint32_t gpfsel_get(BCM2838GpioState *s, uint8_t reg)
- {
-     int i;
-@@ -86,6 +97,31 @@ static void gpfsel_set(BCM2838GpioState *s, uint8_t reg, uint32_t value)
-             s->fsel[index] = fsel;
-         }
-     }
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "hw/gpio/bcm2838_gpio.h"
 +
-+    /* SD controller selection (48-53) */
-+    if (s->sd_fsel != BCM2838_FSEL_GPIO_IN
-+        && (s->fsel[48] == BCM2838_FSEL_GPIO_IN)
-+        && (s->fsel[49] == BCM2838_FSEL_GPIO_IN)
-+        && (s->fsel[50] == BCM2838_FSEL_GPIO_IN)
-+        && (s->fsel[51] == BCM2838_FSEL_GPIO_IN)
-+        && (s->fsel[52] == BCM2838_FSEL_GPIO_IN)
-+        && (s->fsel[53] == BCM2838_FSEL_GPIO_IN)
-+       ) {
-+        /* SDHCI controller selected */
-+        sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
-+        s->sd_fsel = BCM2838_FSEL_GPIO_IN;
-+    } else if (s->sd_fsel != BCM2838_FSEL_ALT0
-+               && (s->fsel[48] == BCM2838_FSEL_ALT0) /* SD_CLK_R */
-+               && (s->fsel[49] == BCM2838_FSEL_ALT0) /* SD_CMD_R */
-+               && (s->fsel[50] == BCM2838_FSEL_ALT0) /* SD_DATA0_R */
-+               && (s->fsel[51] == BCM2838_FSEL_ALT0) /* SD_DATA1_R */
-+               && (s->fsel[52] == BCM2838_FSEL_ALT0) /* SD_DATA2_R */
-+               && (s->fsel[53] == BCM2838_FSEL_ALT0) /* SD_DATA3_R */
-+              ) {
-+        /* SDHost controller selected */
-+        sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
-+        s->sd_fsel = BCM2838_FSEL_ALT0;
-+    }
- }
- 
- static int gpfsel_is_out(BCM2838GpioState *s, int index)
-@@ -266,6 +302,11 @@ static void bcm2838_gpio_reset(DeviceState *dev)
- 
-     memset(s->fsel, 0, sizeof(s->fsel));
- 
-+    s->sd_fsel = 0;
++#define GPFSEL0   0x00
++#define GPFSEL1   0x04
++#define GPFSEL2   0x08
++#define GPFSEL3   0x0C
++#define GPFSEL4   0x10
++#define GPFSEL5   0x14
++#define GPSET0    0x1C
++#define GPSET1    0x20
++#define GPCLR0    0x28
++#define GPCLR1    0x2C
++#define GPLEV0    0x34
++#define GPLEV1    0x38
++#define GPEDS0    0x40
++#define GPEDS1    0x44
++#define GPREN0    0x4C
++#define GPREN1    0x50
++#define GPFEN0    0x58
++#define GPFEN1    0x5C
++#define GPHEN0    0x64
++#define GPHEN1    0x68
++#define GPLEN0    0x70
++#define GPLEN1    0x74
++#define GPAREN0   0x7C
++#define GPAREN1   0x80
++#define GPAFEN0   0x88
++#define GPAFEN1   0x8C
 +
-+    /* SDHCI is selected by default */
-+    sdbus_reparent_card(&s->sdbus, s->sdbus_sdhci);
++#define GPIO_PUP_PDN_CNTRL_REG0 0xE4
++#define GPIO_PUP_PDN_CNTRL_REG1 0xE8
++#define GPIO_PUP_PDN_CNTRL_REG2 0xEC
++#define GPIO_PUP_PDN_CNTRL_REG3 0xF0
 +
-     s->lev0 = 0;
-     s->lev1 = 0;
- 
-@@ -304,6 +345,8 @@ static void bcm2838_gpio_init(Object *obj)
-     DeviceState *dev = DEVICE(obj);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-+    qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS, DEVICE(s), "sd-bus");
++#define RESET_VAL_CNTRL_REG0 0xAAA95555
++#define RESET_VAL_CNTRL_REG1 0xA0AAAAAA
++#define RESET_VAL_CNTRL_REG2 0x50AAA95A
++#define RESET_VAL_CNTRL_REG3 0x00055555
 +
-     memory_region_init_io(&s->iomem, obj, &bcm2838_gpio_ops, s,
-                           "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
-     sysbus_init_mmio(sbd, &s->iomem);
-@@ -312,7 +355,14 @@ static void bcm2838_gpio_init(Object *obj)
- 
- static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
- {
--    /* Temporary stub. Do nothing */
++#define BYTES_IN_WORD        4
++
++static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t value = 0;
++
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++
++    return value;
++}
++
++static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
++                               unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++}
++
++static void bcm2838_gpio_reset(DeviceState *dev)
++{
 +    BCM2838GpioState *s = BCM2838_GPIO(dev);
-+    Object *obj;
 +
-+    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &error_abort);
-+    s->sdbus_sdhci = SD_BUS(obj);
++    s->lev0 = 0;
++    s->lev1 = 0;
 +
-+    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &error_abort);
-+    s->sdbus_sdhost = SD_BUS(obj);
- }
- 
- static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
++    memset(s->fsel, 0, sizeof(s->fsel));
++
++    s->pup_cntrl_reg[0] = RESET_VAL_CNTRL_REG0;
++    s->pup_cntrl_reg[1] = RESET_VAL_CNTRL_REG1;
++    s->pup_cntrl_reg[2] = RESET_VAL_CNTRL_REG2;
++    s->pup_cntrl_reg[3] = RESET_VAL_CNTRL_REG3;
++}
++
++static const MemoryRegionOps bcm2838_gpio_ops = {
++    .read = bcm2838_gpio_read,
++    .write = bcm2838_gpio_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2838_gpio = {
++    .name = "bcm2838_gpio",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(fsel, BCM2838GpioState, BCM2838_GPIO_NUM),
++        VMSTATE_UINT32(lev0, BCM2838GpioState),
++        VMSTATE_UINT32(lev1, BCM2838GpioState),
++        VMSTATE_UINT8(sd_fsel, BCM2838GpioState),
++        VMSTATE_UINT32_ARRAY(pup_cntrl_reg, BCM2838GpioState,
++                             GPIO_PUP_PDN_CNTRL_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2838_gpio_init(Object *obj)
++{
++    BCM2838GpioState *s = BCM2838_GPIO(obj);
++    DeviceState *dev = DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2838_gpio_ops, s,
++                          "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++    qdev_init_gpio_out(dev, s->out, BCM2838_GPIO_NUM);
++}
++
++static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
++{
++    /* Temporary stub. Do nothing */
++}
++
++static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_bcm2838_gpio;
++    dc->realize = &bcm2838_gpio_realize;
++    dc->reset = &bcm2838_gpio_reset;
++}
++
++static const TypeInfo bcm2838_gpio_info = {
++    .name          = TYPE_BCM2838_GPIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2838GpioState),
++    .instance_init = bcm2838_gpio_init,
++    .class_init    = bcm2838_gpio_class_init,
++};
++
++static void bcm2838_gpio_register_types(void)
++{
++    type_register_static(&bcm2838_gpio_info);
++}
++
++type_init(bcm2838_gpio_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 066ea96480..8a8d03d885 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -9,6 +9,9 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+-system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files(
++    'bcm2835_gpio.c',
++    'bcm2838_gpio.c'
++))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
 diff --git a/include/hw/gpio/bcm2838_gpio.h b/include/hw/gpio/bcm2838_gpio.h
-index 06d48e0c19..f2a57a697f 100644
---- a/include/hw/gpio/bcm2838_gpio.h
+new file mode 100644
+index 0000000000..06d48e0c19
+--- /dev/null
 +++ b/include/hw/gpio/bcm2838_gpio.h
-@@ -14,6 +14,7 @@
- #ifndef BCM2838_GPIO_H
- #define BCM2838_GPIO_H
- 
-+#include "hw/sd/sd.h"
- #include "hw/sysbus.h"
- #include "qom/object.h"
- 
-@@ -29,6 +30,10 @@ struct BCM2838GpioState {
- 
-     MemoryRegion iomem;
- 
-+    /* SDBus selector */
-+    SDBus sdbus;
-+    SDBus *sdbus_sdhci;
-+    SDBus *sdbus_sdhost;
- 
-     uint8_t fsel[BCM2838_GPIO_NUM];
-     uint32_t lev0, lev1;
+@@ -0,0 +1,40 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2838_GPIO_H
++#define BCM2838_GPIO_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2838_GPIO "bcm2838-gpio"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GpioState, BCM2838_GPIO)
++
++#define BCM2838_GPIO_REGS_SIZE 0x1000
++#define BCM2838_GPIO_NUM       58
++#define GPIO_PUP_PDN_CNTRL_NUM 4
++
++struct BCM2838GpioState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++
++    uint8_t fsel[BCM2838_GPIO_NUM];
++    uint32_t lev0, lev1;
++    uint8_t sd_fsel;
++    qemu_irq out[BCM2838_GPIO_NUM];
++    uint32_t pup_cntrl_reg[GPIO_PUP_PDN_CNTRL_NUM];
++};
++
++#endif
 -- 
 2.34.1
 

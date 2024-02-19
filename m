@@ -1,187 +1,198 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp559590ejb;
-        Mon, 19 Feb 2024 00:39:22 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXwAl1UwnfxP2RJjZcDCMSFiKQvKwOrMqtQbV5/2DNSQPxsDEp78+hY7EM67nuzGZ7fPLkqvGO8aEpw74SM5sxebj15XZLl
-X-Google-Smtp-Source: AGHT+IF/jSyA8ynHJfqtNVf02BOXD0M+JWwtXpWBRIsYNFsOLjXBiE9+z1U3pexvyoCRU7u7MBFU
-X-Received: by 2002:a17:90a:d192:b0:299:51db:33aa with SMTP id fu18-20020a17090ad19200b0029951db33aamr3181134pjb.6.1708331962213;
-        Mon, 19 Feb 2024 00:39:22 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708331962; cv=pass;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp612832ejb;
+        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXWgpBAlkH5nxjAri0wax5bWldM09StWXsSH5cKfWEJu/5FxfQPqgMvX/nVLwiZZlgL9noF/2RLl/TcNbOTQ0ZfYB6JzH+/
+X-Google-Smtp-Source: AGHT+IEHFFEatJ3CZ2IZo9KbCnBr7/Tm0PVAxyxUK+jk/2O4bMva0XS1j9o8i6iv+BTiePgp09vI
+X-Received: by 2002:ac8:5a0e:0:b0:42c:80f3:6a44 with SMTP id n14-20020ac85a0e000000b0042c80f36a44mr14659414qta.37.1708340261255;
+        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1708340261; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Hf/NnoDj7OFAeHgvB/0FM1FM5a9/Bc44DmQBS88p4uBv7H3R2XIga68pfZAEHmgqG+
-         HTf4We532mc4xrHtkPBeBGVJL13aFZojO2VsZAm/ltHA5Jd28FBxKDYX3P/Z22l12ZY0
-         uGooxpItndD6gVaB3h3uPd3lw8U1mlQPZnKvVLqbwLdnSQlWL25+f9b08LyQy+8BOkig
-         DDTO707Wwfumh0go86CF2NijDcu3WseT8odGnQ/Abm7JtMVzwEK2MzywiF4B4TCAJ7J7
-         lZjnFFsWyx94swAo0Jp6RGVeTK7hiLI66IJYDT8QI5b7oZImS5OeWdR2Ha0qM04ErU/N
-         2a9g==
+        b=ZgFSpsDZ0xurY71/Q7UcIPIln1Nrqrzi1XphDjbce6WddYRVsmn9LlPufF4Yj/qG2v
+         FfipR+sBKVMXzx6U3xRDSUS2xIvEs+l6d9zHC6UyiPKz4fnujtGu9H4r7PPzZ84jMoPq
+         mmFeX9CvnV6n6xnHkD6ctZTToKsfvgW6XFUQQ51lVOza2ueiuCkKg1xnrUREZtmmSQ1g
+         MRPP598EX5CwMTuSwQp6RBcEjGW736lPIdq6lHOTYLU/0vP1eZ9T0QeCEoy4UAN6Xokt
+         1hWrUqGaehdnFolUya4g7ekrpV7ArXBhuCuEef0aNpkbbdzchECmOWFL4beoJ/ZU14nf
+         PR3w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=CYXFroxxpCnwAYN1gM2WM91eHQq25PtJZrWxJ2nunuU=;
-        fh=RN6TP6uSlBsknCGcVZpHtE/oTCicI7DnxjVsxH+2WKc=;
-        b=KLSLz42REerGolBIPHQ8tGNr+AOGsbdfkhytsb7oiFQuYngWSehKwQSk41aeC2pjVK
-         94v/oxY9yrw08iZ1StMuYlUIPyVJn4PuIlAlD2e5VmZvVD+F63WRvh0Kyd/Yg2cMPsKl
-         Muse4uFwUYHM3v6c1WHBHyMtfTVPIg8WgyEoAs94rWLd9Mrlr3xIDT3R3qe34tAQxOxR
-         Tu+5ZDmoPB2KiBW+rESTzGfXpqgyMY3fV6pFFtXESoAjFKpKArpNNMble0sOdInVKMNo
-         f+M3TvXdb2eoYq7HswVx9w/D5qgjfuc6u7+RnEBXM5cLm8LC5gVy+AkSxsblb37n6F07
-         KImQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
+        fh=I0lkCgkmx1xzGh4IAw0+/exZU1w8D7UAXzuzM95vWeU=;
+        b=Ktp5z9gh/TNO6WomjEJoWUbft6L/c5f922jC30/nvlOn52mLv+1uJCDC/V7bGjflkJ
+         wJmnysk0f+hRQRKs5GfK97FJyr50HPj5//FCspzIhHUvJZCKkCwWDfak7mDl8kQaHMB5
+         BFQBJIs260LH0/sRUXjyGO+NmqzZJ4pK1HgCk0mhJvZHtVtzzy/pd04zJCu04RnL0onF
+         mO6ZiNjLLx5WMVui67xwpu6jGMN4pAmBc3UYIshfyO44fcirH06SGr+kWcXDeWwhJd7T
+         0ECnCibM2Ldxg5wdCxqqJIsOgetyOdTlCu5HCdfJr71kGPBuwS3NlOXfF/jLju8jhezI
+         15jw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RDEiNksv;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id rr11-20020a17090b2b4b00b00296fc31a361si4200152pjb.66.2024.02.19.00.39.21
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=ufgkB4xC;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o22-20020ac85556000000b0042ded3fdb64si5649038qtr.41.2024.02.19.02.57.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Feb 2024 00:39:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RDEiNksv;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-9043-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id B632F2823F8
-	for <alex.bennee@linaro.org>; Mon, 19 Feb 2024 08:39:21 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7772C219E9;
-	Mon, 19 Feb 2024 08:39:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="RDEiNksv"
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71DA021362
-	for <kvm@vger.kernel.org>; Mon, 19 Feb 2024 08:39:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.54
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708331956; cv=none; b=cuYIMwRbqxgsZIliwaP8MP+7UyhLuCGNBmAmBJI0a6JgJ9V6YuNVJqXnMBX75IrawN/Wv/LmgcahThh88SH42emIhqry7CsiLN+7FRs74WcHDmIPORB6A4MpdBcEX0jt5lwhxZjsGynKbTw1hMaHICm/30DYdCzsd3haXnZ2qO8=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708331956; c=relaxed/simple;
-	bh=A3xd3HuCyyZaK0uqA6PRWXE2toVSmHjxUzOhRICX9bM=;
-	h=Message-ID:Date:MIME-Version:Subject:From:To:Cc:References:
-	 In-Reply-To:Content-Type; b=do1xUV2WChGYudhGFd2inMshprX9D4f/Gg2Y2WLmmYqXhQOnH1yvkkuZeu/MZbnlGaKQNX7b4NT468VYKhFOSSlVtLDyvt+W7XFfb5+XuQMnGCnhT41uwlS6H1qk9X5y+kgo5u4qIw90bjyFGw0a9+Ai9umb04dU4e5GCHU4hIQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=RDEiNksv; arc=none smtp.client-ip=209.85.128.54
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-412698cdd77so1020345e9.1
-        for <kvm@vger.kernel.org>; Mon, 19 Feb 2024 00:39:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708331953; x=1708936753; darn=vger.kernel.org;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=CYXFroxxpCnwAYN1gM2WM91eHQq25PtJZrWxJ2nunuU=;
-        b=RDEiNksv8bQFmkMq9lKEVRl1ydmZX6r5/9pJHS80PDCwUv5+BtHTwjkcFeswl3DbbV
-         4UUBn4F0WF7xyp+n2IBpt7OS0vrrK+ni3XQa5uCDG/c3+9lBTXcaLXlO7buAWLuzTa7F
-         /ABQfVti4RZNXX/E1XVDZvxsjDN6GWtNPb4tC2b/zUl5KXanEAIMZgm/OphWIGsQ4hX4
-         zWCTOLB9df0Pa3OSFcn685v865WdQ8hgQz6OzRrhS9HIBwxC5EvmkzL074Ekuaxx9Voo
-         hpMXEUCXySNaBiObCq6u/hPCqw5snTU+Fgs+jxJDFBK01Cc2iSawhm8h3EQAWwn6thcK
-         1ovg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708331953; x=1708936753;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CYXFroxxpCnwAYN1gM2WM91eHQq25PtJZrWxJ2nunuU=;
-        b=UFZFQ8Al2WBKt4EfBEMd8Gra6pxgGkrirsqYZ0iZCfvtaJniMa2rbj9GdBjvtxBc/N
-         ybbHXsphbWVMtgfYKOws7bvDW8fV3ezDrOPY7vjUJZFOIvk+dn0+6UG0dKp3LocwIBbx
-         IniD8xJC35xsBTQeLTxLg0kApMjZocxRVosRmE4B4z8Rkni46DUfGn53NzckTECETJ/m
-         5+U2Dd8xQ2XWWS327Fgd0wXasf1VuwwQyiZW3nnXOU/Y/tMTcwEQMlElcy5jqOSuyHvU
-         lUItqljUnGKIAFzLabpVupJdqxRqN4cxwDK1NRuudbbHibb3Qdg5+3RCgOewfwGiiGVF
-         UPpQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWaKuoGWS5u0kmva5Ab0xDDtdvNHkfdQDtwHCUBqQ616/rZsEgOSaVLKjXxNC7yEsrhKUkU6ViiXR4wUUD9A78m/P7i
-X-Gm-Message-State: AOJu0YyyRq5ZZli0MuIEYfUi27mi/V+9gc+eAD6Uu8uA9eypKN7dohC6
-	fZGU7tTFarasUHXldAj9APOUaFqoW9y7EwafQGaAJzSY2rdZ0i019x119yx/I6w=
-X-Received: by 2002:a05:600c:3591:b0:412:41:bb3d with SMTP id p17-20020a05600c359100b004120041bb3dmr9611111wmq.3.1708331952833;
-        Mon, 19 Feb 2024 00:39:12 -0800 (PST)
-Received: from [192.168.69.100] ([176.176.181.220])
-        by smtp.gmail.com with ESMTPSA id w3-20020a05600c014300b0040fccf7e8easm10567009wmm.36.2024.02.19.00.39.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Feb 2024 00:39:12 -0800 (PST)
-Message-ID: <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
-Date: Mon, 19 Feb 2024 09:39:10 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=ufgkB4xC;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rc1Kj-00021M-Dh; Mon, 19 Feb 2024 05:57:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rc1Kh-00020X-Cw; Mon, 19 Feb 2024 05:57:11 -0500
+Received: from mail-dm6nam12on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:2417::601]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rc1KX-0002o8-R9; Mon, 19 Feb 2024 05:57:08 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=T3NYeeCav+89qcQVau3jcoG/uEiSHyQjfbIwYWFr6zCdBU++pqO2gABb4qbwe2QFlL3JaLjrKMWBPZ/A9pV19wbpEOA3kIYgxo3Px/tLpBD9xCBMIz4rWBJ+N8uNBF+65t6YBiWL8vsIk2lmfHmhXwfQWpjf+8DHEd+gotGrn6bzMMngl6XQ8HhRqFtiWReamSqUP6km+gV2FzhWJzu6GVpsTG8nkGwcjYmNQA1i92HkMHponXbMaSNHZsvAoFFMa6KXVjE8Xm72Ki0peoaYfBQ9UvBAF6ZUKfIgP7RsWvNa17rAf8jJ16z5PD65XrC2d1/X4YM6WvxUX0RpeXRmFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
+ b=c5dWWymctO+4TNXwQc/075RCMc+AJQCaP695+/PKkDDgKIpwynQJGmP0UoGpCpJDLVMUPANdsXw/TcQ5poNs++oYJl9lYW7eeunkdxZZc668ktlEwDV9GT535iPYNHRzSBypXq+m7ip8EfpyygP+0dfCsoxjZDZAw6Btl2nFoskNE4AKK+Zus/EmrKJJIq3L0zT5wqW3JtZcQ9Ltdni6t2SdiPdTDr/5U3aN8r4kAuBfWajgXjCwcczfloJpAnW8i9czKgPR3oN3EQb9YOKOX9BdTrXhpKLPEpPfhIU8gMJnrleGjw4jSwEpyvrPB2xuev4l4Oyx1Nls5SWs1wFNDg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=temperror (sender ip
+ is 165.204.84.17) smtp.rcpttodomain=nongnu.org
+ smtp.mailfrom=amd.com; 
+ dmarc=temperror action=none header.from=amd.com; dkim=none (message not
+ signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
+ b=ufgkB4xCbvcmz3w0/f6zDU2u7bPhDzGUnoA1n0WjbS9KIclu8U40jCbji41/Utcth3EJlR2LiJwV++8VyTFnxXXeVqvcusRr3FHYSdfl0dNn9ur6j1oeRt4f3hdIEakk2GtwqLqB6kJx62B5wkxbvpee+iAfb0YuRv0izGplGt4=
+Received: from SJ0PR03CA0177.namprd03.prod.outlook.com (2603:10b6:a03:338::32)
+ by SN7PR12MB7980.namprd12.prod.outlook.com (2603:10b6:806:341::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.17; Mon, 19 Feb
+ 2024 10:56:54 +0000
+Received: from SJ1PEPF00001CEA.namprd03.prod.outlook.com
+ (2603:10b6:a03:338:cafe::f5) by SJ0PR03CA0177.outlook.office365.com
+ (2603:10b6:a03:338::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.38 via Frontend
+ Transport; Mon, 19 Feb 2024 10:56:54 +0000
+X-MS-Exchange-Authentication-Results: spf=temperror (sender IP is
+ 165.204.84.17) smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=temperror action=none header.from=amd.com;
+Received-SPF: TempError (protection.outlook.com: error in processing during
+ lookup of amd.com: DNS Timeout)
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ SJ1PEPF00001CEA.mail.protection.outlook.com (10.167.242.26) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7292.25 via Frontend Transport; Mon, 19 Feb 2024 10:56:53 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 19 Feb
+ 2024 04:56:52 -0600
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 19 Feb
+ 2024 02:56:52 -0800
+Received: from xhdvaralaxm41-docker.xilinx.com (10.180.168.240) by
+ SATLEXMB03.amd.com (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.35
+ via Frontend Transport; Mon, 19 Feb 2024 04:56:50 -0600
+From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Kevin Wolf <kwolf@redhat.com>, Francisco Iglesias
+ <frasse.iglesias@gmail.com>, <sai.pavan.boddu@amd.com>
+Subject: [PATCH v2] xlnx-versal-ospi: disable reentrancy detection for
+ iomem_dac
+Date: Mon, 19 Feb 2024 10:56:37 +0000
+Message-ID: <20240219105637.65052-1-sai.pavan.boddu@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20240216153517.49422-1-philmd@linaro.org>
- <20240216153517.49422-2-philmd@linaro.org>
- <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu>
- <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org>
-In-Reply-To: <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: EMlUe1ighcbv
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF00001CEA:EE_|SN7PR12MB7980:EE_
+X-MS-Office365-Filtering-Correlation-Id: b3e890a0-1288-42d2-28fe-08dc31397b8b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Ea/OIU7PlpGTvIggnKtK3FlUd0KX/ZfE1nCaK/I2cTLuwt0AdYhuNYgrhbmOQmCY6RKMrdhzwGlOOOgKJ/Ygl07Kqh77N/zAVLZxNEPECbJLe3yGrcme7P/+HefXW4NBCY3sQXQD3+mHp6mcE65JBXErdYjeQ0qENwB4wq7MCCllsygZY+LgLHwAXNJjhMgsi51aDz2SoFQkmLWOjI8pSPEA7qbG5hJHsNC8AsIyBss+y00vNljp52YmDcwJUTwfpOWGdoLaCwSUosjjUYOXLmpgKrr5Ym3Sdj8bR3bft1KQ73E6ubSDc+T2/gnbL8SR2ntikaKJFSOl/cqFXammNV3iHbMxoIrQBh8eQB0/96T7ecL7bdzmRVCATtvXTSaahefN3TPbCYt0r9FParLs/9MWUxE1vBYXxFFT2JgI9gvc6zxsnkH6r3KRZ+EzOs29di0Ii1R9+734a1XXL/5GrtvTywUNqa+Xa8ME5mF32KboU9b8oY62Ex3Wvp9Jw2aeRZlEe/l94SvP9wJL1Ru7LZ+yji3GSpvpOaJdnBlyFK81yMVg5ERz035kzdcgI2WIvB1ZhWvVO6/jt/QYPniNNGOPYuv0kfd0Zf9EqqenXgJ86nMlp8K3ckgHcAJ8JbkQbpqVEO/94Bx80+gcq7UIu8ltaOshvnS259aGG7dE7tI=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(36860700004)(40470700004)(46966006); DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2024 10:56:53.4132 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b3e890a0-1288-42d2-28fe-08dc31397b8b
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00001CEA.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7980
+Received-SPF: softfail client-ip=2a01:111:f403:2417::601;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: 3
+X-Spam_score: 0.3
+X-Spam_bar: /
+X-Spam_report: (0.3 / 5.0 requ) AC_FROM_MANY_DOTS=2.5, BAYES_00=-1.9,
+ DKIMWL_WL_HIGH=-0.077, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SAGhkP24jRzx
 
-On 16/2/24 20:54, Philippe Mathieu-Daudé wrote:
-> On 16/2/24 18:14, BALATON Zoltan wrote:
->> On Fri, 16 Feb 2024, Philippe Mathieu-Daudé wrote:
->>> We want to set another qdev property (a link) for the pl110
->>> and pl111 devices, we can not use sysbus_create_simple() which
->>> only passes sysbus base address and IRQs as arguments. Inline
->>> it so we can set the link property in the next commit.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>> hw/arm/realview.c    |  5 ++++-
->>> hw/arm/versatilepb.c |  6 +++++-
->>> hw/arm/vexpress.c    | 10 ++++++++--
->>> 3 files changed, 17 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
->>> index 9058f5b414..77300e92e5 100644
->>> --- a/hw/arm/realview.c
->>> +++ b/hw/arm/realview.c
->>> @@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
->>>     sysbus_create_simple("pl061", 0x10014000, pic[7]);
->>>     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
->>>
->>> -    sysbus_create_simple("pl111", 0x10020000, pic[23]);
->>> +    dev = qdev_new("pl111");
->>> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
->>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
->>
->> Not directly related to this patch but this blows up 1 line into 4 
->> just to allow setting a property. Maybe just to keep some simplicity 
->> we'd rather need either a sysbus_realize_simple function that takes a 
->> sysbus device instead of the name and does not create the device 
->> itself or some way to pass properties to sysbus create simple (but the 
->> latter may not be easy to do in a generic way so not sure about that). 
->> What do you think?
-> 
-> Unfortunately sysbus doesn't scale in heterogeneous setup.
+The OSPI DMA reads flash data through the OSPI linear address space (the
+iomem_dac region), because of this the reentrancy guard introduced in
+commit a2e1753b ("memory: prevent dma-reentracy issues") is disabled for
+the memory region.
 
-Regarding the HW modelling API complexity you are pointing at, we'd
-like to move from the current imperative programming paradigm to a
-declarative one, likely DSL driven. Meanwhile it is being investigated
-(as part of "Dynamic Machine"), I'm trying to get the HW APIs right
-for heterogeneous emulation. Current price to pay is a verbose
-imperative QDev API, hoping we'll get later a trivial declarative one
-(like this single sysbus_create_simple call), where we shouldn't worry
-about the order of low level calls, whether to use link or not, etc.
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+---
+Changes for V2:
+	Added code comments.
 
-For the big list of issues we are trying to improve, see:
-https://lore.kernel.org/qemu-devel/87o7d1i7ky.fsf@pond.sub.org/
+ hw/ssi/xlnx-versal-ospi.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/hw/ssi/xlnx-versal-ospi.c b/hw/ssi/xlnx-versal-ospi.c
+index c7b95b1f37..c479138ec1 100644
+--- a/hw/ssi/xlnx-versal-ospi.c
++++ b/hw/ssi/xlnx-versal-ospi.c
+@@ -1772,6 +1772,12 @@ static void xlnx_versal_ospi_init(Object *obj)
+     memory_region_init_io(&s->iomem_dac, obj, &ospi_dac_ops, s,
+                           TYPE_XILINX_VERSAL_OSPI "-dac", 0x20000000);
+     sysbus_init_mmio(sbd, &s->iomem_dac);
++    /*
++     * The OSPI DMA reads flash data through the OSPI linear address space (the
++     * iomem_dac region), because of this the reentrancy guard needs to be
++     * disabled.
++     */
++    s->iomem_dac.disable_reentrancy_guard = true;
+ 
+     sysbus_init_irq(sbd, &s->irq);
+ 
+-- 
+2.25.1
+

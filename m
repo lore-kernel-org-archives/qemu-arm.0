@@ -1,110 +1,111 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424238ejb;
-        Sun, 18 Feb 2024 17:21:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXpkjOM2sPUvhBbfE/gs2rv2esbiSS/eFdZcuo+MP9yYeRARjQ6F2J3yn+L5oovvSbWR/eToktP4t4RKvF3Q4+w9aJ1998e
-X-Google-Smtp-Source: AGHT+IHde6tahcjnyY7gsONsve0GFXqn7I0YdniuHn5ErNDLEBThp76ZFLYANZ7J8V6or2l0Hg7i
-X-Received: by 2002:a25:4685:0:b0:dcc:5f1b:cc4f with SMTP id t127-20020a254685000000b00dcc5f1bcc4fmr8556759yba.6.1708305672863;
-        Sun, 18 Feb 2024 17:21:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305672; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424320ejb;
+        Sun, 18 Feb 2024 17:21:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVtpPIegs4OMCBB4KIpcdZQZC0g7zkYeOdVFhbhCAUtQr5liwhTS9+SUG+UWqsKKGTn/gDtgQIdPoTzcdufoRmrphOyKUEz
+X-Google-Smtp-Source: AGHT+IFAgG12+1TPaCxIhdAeQNHTVzTEq42vUwJXOJbUCw7/H/y+ngwUkDc5LeRh8KySPUsAbvhz
+X-Received: by 2002:a0c:f38f:0:b0:68e:f8c9:ea5b with SMTP id i15-20020a0cf38f000000b0068ef8c9ea5bmr12459269qvk.62.1708305692677;
+        Sun, 18 Feb 2024 17:21:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708305692; cv=none;
         d=google.com; s=arc-20160816;
-        b=pyWRwWrCtFABf2vlHeRB1ruIZgZaca93O0kxBzF0L9JxO0Ln6SEp+zIJC/ta7OAO4G
-         OjJ4xOzdw7CcyNQ069nBQl4tvZZBR9G4uOthV7I8itP9Or7rAHPd+bNZYS6zmbNuePWx
-         BlKI2DQ54xxkvNQXdtGD8s97AlhZrylaTEviblp8jV9PGOD7V+2rcV8VLTvx1zdl7vaM
-         ZhBVLFMq9GJ29EuDIbUV1oOCVP3Ty66gu8Kk/8fwbgiU2acfjGQFahqlbwp8JmKzM6Mr
-         8TsOGUBj1+P7ePEEzLSJhA+ATJhhxjx66TiNblax20XsmiIcGZ0QhwyZRMv5efAxLJBr
-         SWYg==
+        b=IeV2YbFwQNY5fEbKug6P8O6HxJdWjYLH3znB6lvsgScRBD3hVIQtOG/yCNJ61KCTIp
+         AVTUX2RaexcLXL63r75FceCcQr7qzx07Xps/lHLY32tmTblkcGuGSZ2Ywi7Xr/3zKe5x
+         oveItFn0PTZCRjYvsDUI8QSB7Ayo5iUimR1WkAPhGVghTQvKYKVqHqlkoX3RVFSs/cGy
+         wEHQyZ6HqEuyssaRZy+9BNSgyuM9mnWqxV5g+tVjkEk/q52g5MxhbyHMLWF2QlopMwk9
+         6hUuTF+6jo+BaGJz0/cXQ/dwsOHKLcjTu2U0QI3tXCheu3OYEz8qLDRih+CxMS+fOBus
+         SD8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=N5v3rqQLdf3b5YXiRwBfIAauAiypwurxDmQ+q45Unrk=;
+        bh=2CueCYsqSwb3G/pINz9ba8ckfA4y3LuTtwsy3F6OqrI=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=UgLtmwQhLCCTtuYB+rqBGvvYD5VpX1dkVLGVOGiPLMCM1KP5U4l+3pRoHhkBabc09Y
-         R3lZ6PYhH6emSjkvksQokMZW7KxlnqZ/Z0CDEsR5unRLUdq7u2ZyyEnBGpHHTsBpiYWk
-         +Ogp7QOaCodIG4WZV6zGg2H5W/1CP3+njwCxw42HkIK9T1H6Ou73vqiDGPfotWosDXeQ
-         CpbZoLzC4voY4aSM0ZjgEsaptePPYmfadTvWQ4pK/CuyyI2dl8dyEuvwDrKw92DbHR+9
-         h+QrMgWdFLeV4WpSZPvd9Jw14GRAnzA4r9h9kt02mSUJDOyj9Qb9PIjSE/nftunrXErt
-         d7vw==;
+        b=bIFsYQ8e7+C3p632iTSiVtVn5dc+r2EhDy/Ce6iDLED3gnbF6zKR1gF5Rdp8SrpOQD
+         pkp6SFKyR3770F1SOq7AeDEAvYg3eNwfHhrUCM3rrYmhYf5sXOFQQXwurZIXemMKFoZr
+         M1OInPerVXiU6Z4apc33n2H/vcfuLtM8445NaaNEKrPhu430hhVzJTCk1xkJHdk/uVI4
+         I7fuUzpnLreJ7JB523EFjup+X+WnlMRnLqJhEXEsgAOBSmz979/GqoNVXnEkqdA1MGGx
+         X1kNvXWofkYo/CrdFguQhmN11DPKKc3DDD9mmyETpfS+pb8+zlm4pPGGDZ5du0kdxU9A
+         9j4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Da0qadC1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KGxjLGVQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10-20020a05620a0b4a00b0078734f61fdfsi5044119qkg.503.2024.02.18.17.21.12
+        by mx.google.com with ESMTPS id f3-20020a056214076300b0068f144bdd81si5378391qvz.358.2024.02.18.17.21.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:21:12 -0800 (PST)
+        Sun, 18 Feb 2024 17:21:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Da0qadC1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KGxjLGVQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rbsJI-0004Ur-RP; Sun, 18 Feb 2024 20:19:08 -0500
+	id 1rbsIm-0003hi-4E; Sun, 18 Feb 2024 20:18:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIh-0003Zk-1J; Sun, 18 Feb 2024 20:18:33 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1rbsIP-0003Mb-Oa; Sun, 18 Feb 2024 20:18:15 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIe-0004K0-NX; Sun, 18 Feb 2024 20:18:30 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-607f8482b88so22613817b3.0; 
- Sun, 18 Feb 2024 17:18:21 -0800 (PST)
+ id 1rbsIN-0004HT-Cb; Sun, 18 Feb 2024 20:18:13 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-607c5679842so37594427b3.2; 
+ Sun, 18 Feb 2024 17:18:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305500; x=1708910300; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708305487; x=1708910287; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=N5v3rqQLdf3b5YXiRwBfIAauAiypwurxDmQ+q45Unrk=;
- b=Da0qadC1+XK2LK2Ek0Hvbn5xMY7NWaGHDqmIDwVgLucW8reDhplGxbEbpICtGCs1Z8
- IVo5q2Jkr93Mv+L7SYfaNlazsWdVD1bdbCSYRHcTnYJdHkPZCWCXO3hoLbabWvdNRHWm
- +f5DEkqQc9Brb10KwmsXTMh9fRo/sBUJ8BOk+xly19WL6qx/sOgxEVatMjMFDuSubReG
- yzZY9+1dlwEeDFK/CkIZasn8chUAGlHssmruaeHvNr/0FZs/mxzhY/1XMbQ6w31wi5DU
- wXkRX5ufykzUDvcpzwIC5La8wDov+LLy0xMGA7GM5ZRQZQmy93WgglblpEnDd09Kqa8m
- CzpA==
+ bh=2CueCYsqSwb3G/pINz9ba8ckfA4y3LuTtwsy3F6OqrI=;
+ b=KGxjLGVQAfZdywiz90ZAO/bQa5NTgNKAnGtYkN6VHKSAhtVtSRwVHKy4/CtfiXk16Y
+ ztGL6fhwUJjDj/ae2yffK4oV+QtkIHXckwMBE8Wj0jnLDQRyAeCjP0TBQ3PS8RJxr5JC
+ nVBz4DwXTm+uxk0QhZqyvksmioFJ8GEyQ8LkN/QcMAVnFZxqxV5F3jjAJ/vpQ/Zu8U/m
+ hquktR5Dxce+6E8TYoS4qvsSc+XX1pi3W3qGpDQfhJm2d/xdV2bvpNk0I4kvaGUa+DlN
+ Uc3P+VZvfpe6AWrMxWUVuZwEifTAQSwg0NoUmmhD+XJ9QyPx5Ozhlj7yJHARq8awdP7L
+ /iWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305500; x=1708910300;
+ d=1e100.net; s=20230601; t=1708305487; x=1708910287;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=N5v3rqQLdf3b5YXiRwBfIAauAiypwurxDmQ+q45Unrk=;
- b=OPjk04YVnZi+6NlImO6DIrYIhdx1u/0vBtflc3RW8eBzc4qDqntCbR+7VfoEhm4qr1
- WPzmQ7VQugx+QJJMFRznSTqbTwkFAWDGJYz6sT6KDMf7xqaqPRgnWqkoEJeq66Y0YX8N
- oAJioJZZFTmVbGNFTcYtdBYnMZvTQaRsSQ485UyIBziRxAQJfx/XPfwtKGvO7Bk/sokG
- jKaoGDQnCV8ICKdQU4ES4QEKq7Dfg6QG84Mi5Ka/GoufHSLcgSxPB+WXFi9KKamko+VY
- vBSUAuDgwzT+vSLMQvO2WJBOPEUQy0LBoW3ZH/1r8opX7K3HugZF8I7ElibCuQl68Wbo
- Yngg==
-X-Gm-Message-State: AOJu0YwOqrnyMBcgzb0XB6LVr+vRAy1qnCKv5uATPRmLNBkxokQiB6yZ
- v5gOBekIuLg6r0PvVX7bNG5TglIcqZnhJQJ0eQF7tysmMFQZqvJ3wztZfiH5S4w=
-X-Received: by 2002:a0d:e816:0:b0:608:21a0:229c with SMTP id
- r22-20020a0de816000000b0060821a0229cmr2754743ywe.35.1708305500342; 
- Sun, 18 Feb 2024 17:18:20 -0800 (PST)
+ bh=2CueCYsqSwb3G/pINz9ba8ckfA4y3LuTtwsy3F6OqrI=;
+ b=izsyktObCtccamqNcC2vnvHFy0vL9PA0IJRt/h5wZ0ICDXgjdFr6KDxoj1pVW/V/fd
+ rdihJipzf8MioOxzkUc4p9FHbKEur4aW8q7OfyOPJONzJcPuQOfmo0ucQbA7tAbEs2Ly
+ AtXTMyO//njixwWaZ/vVvAyy6cFT1RN8uP292rGo67xAZoNVEhKGOuoA1RnxIuqJZ7bL
+ lDFO9lP/nbUEXeqSaDKWDXP+45/5/EzDwOgdRAzIPlUMsjFgV4PyPs6Uyh9VCKjjmm9/
+ YWAJ4N6Fs/hIQjGIMhmZ8rPwsmrxhQqWvZhiEgNvDMrnoaXQ3ACeFK99gIHL5CVUz6vK
+ AHxA==
+X-Gm-Message-State: AOJu0Yw526+t0LAy3MQfRpGRw1W2vSkqkANbhvLc33lpMJNkuGNvwYid
+ LV4sgFlr41m/hhP+dqZQEwJpgDMcWopLD5QWCLM8J4GzHRorE1JXmLu5MH/hlZY=
+X-Received: by 2002:a05:690c:4442:b0:608:1b39:245a with SMTP id
+ gq2-20020a05690c444200b006081b39245amr3771920ywb.1.1708305487142; 
+ Sun, 18 Feb 2024 17:18:07 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.19
+ m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:18:20 -0800 (PST)
+ Sun, 18 Feb 2024 17:18:06 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 31/41] Add mailbox test stub
-Date: Sun, 18 Feb 2024 19:17:29 -0600
-Message-Id: <20240219011739.2316619-32-sergey.kambalin@auriga.com>
+Subject: [PATCH v5 17/41] Implement BCM2838 thermal sensor
+Date: Sun, 18 Feb 2024 19:17:15 -0600
+Message-Id: <20240219011739.2316619-18-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,138 +127,259 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PhgIqMb4dW1l
+X-TUID: h9L7w82JMLK4
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.c | 60 +++++++++++++++++++++++++++++++++++
- tests/qtest/bcm2838-mailbox.h | 37 +++++++++++++++++++++
- tests/qtest/meson.build       |  1 +
- 3 files changed, 98 insertions(+)
- create mode 100644 tests/qtest/bcm2838-mailbox.c
- create mode 100644 tests/qtest/bcm2838-mailbox.h
+ hw/arm/bcm2838_peripherals.c         | 27 ++++++--
+ hw/arm/raspi4b.c                     |  1 -
+ hw/misc/bcm2838_thermal.c            | 98 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                  |  3 +-
+ include/hw/arm/bcm2838_peripherals.h |  2 +
+ include/hw/misc/bcm2838_thermal.h    | 24 +++++++
+ 6 files changed, 147 insertions(+), 8 deletions(-)
+ create mode 100644 hw/misc/bcm2838_thermal.c
+ create mode 100644 include/hw/misc/bcm2838_thermal.h
 
-diff --git a/tests/qtest/bcm2838-mailbox.c b/tests/qtest/bcm2838-mailbox.c
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index 6b4c840c5b..48c5fd5978 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -37,6 +37,9 @@ static void bcm2838_peripherals_init(Object *obj)
+     /* Random Number Generator */
+     object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
+ 
++    /* Thermal */
++    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2838_THERMAL);
++
+     /* PCIe Host Bridge */
+     object_initialize_child(obj, "pcie-host", &s->pcie_host,
+                             TYPE_BCM2838_PCIE_HOST);
+@@ -78,6 +81,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
+     MemoryRegion *regs_mr;
+     MemoryRegion *mmio_mr;
++    MemoryRegion *rng200_mr;
++    MemoryRegion *thermal_mr;
++    qemu_irq rng_200_irq;
+ 
+     int n;
+ 
+@@ -95,12 +101,20 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng200), errp)) {
+         return;
+     }
+-    memory_region_add_subregion(
+-        &s_base->peri_mr, RNG_OFFSET,
+-        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0));
+-    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0,
+-        qdev_get_gpio_in_named(DEVICE(&s_base->ic), BCM2835_IC_GPU_IRQ,
+-                               INTERRUPT_RNG));
++    rng200_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0);
++    memory_region_add_subregion(&s_base->peri_mr, RNG_OFFSET, rng200_mr);
++
++    rng_200_irq = qdev_get_gpio_in_named(DEVICE(&s_base->ic),
++                                         BCM2835_IC_GPU_IRQ, INTERRUPT_RNG);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0, rng_200_irq);
++        
++
++    /* THERMAL */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
++        return;
++    }
++    thermal_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0);
++    memory_region_add_subregion( &s->peri_low_mr, 0x15D2000, thermal_mr);
+ 
+     /* Extended Mass Media Controller 2 */
+     object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
+@@ -201,6 +215,7 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+                              BCM2838_MPHI_SIZE);
+     memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
+                                 &s->mphi_mr_alias);
++
+     /* PCIe Root Complex */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_host), errp)) {
+         return;
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 3c71fa9a9a..175fd2c4fa 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -67,7 +67,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ 
+     /* Temporarily disable following devices until they are implemented */
+     const char *nodes_to_remove[] = {
+-        "brcm,bcm2711-thermal",
+         "brcm,bcm2711-genet-v5",
+     };
+ 
+diff --git a/hw/misc/bcm2838_thermal.c b/hw/misc/bcm2838_thermal.c
 new file mode 100644
-index 0000000000..0928a3dff8
+index 0000000000..3764d55b59
 --- /dev/null
-+++ b/tests/qtest/bcm2838-mailbox.c
-@@ -0,0 +1,60 @@
++++ b/hw/misc/bcm2838_thermal.c
+@@ -0,0 +1,98 @@
 +/*
-+ * Helper functions to work with BCM2838 mailbox via qtest interface.
++ * BCM2838 dummy thermal sensor
 + *
-+ * Copyright (c) 2023 Auriga LLC
++ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
 + *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "hw/misc/bcm2838_thermal.h"
 +#include "hw/registerfields.h"
-+#include "libqtest-single.h"
-+#include "bcm2838-mailbox.h"
++#include "migration/vmstate.h"
++#include "qemu/error-report.h"
 +
-+REG32(MBOX_EXCHNG_REG,          0)
-+FIELD(MBOX_EXCHNG_REG, CHANNEL, 0, 4)
-+FIELD(MBOX_EXCHNG_REG, DATA,    4, 28)
++REG32(STAT, 0x200)
++FIELD(STAT, DATA, 0, 10)
++FIELD(STAT, VALID_1, 10, 1)
++FIELD(STAT, VALID_2, 16, 1)
 +
-+static uint32_t qtest_mbox0_read_reg32(QTestState *s, uint32_t offset)
++#define BCM2838_THERMAL_SIZE 0xf00
++
++#define THERMAL_OFFSET_C 410040
++#define THERMAL_COEFF  (-487.0f)
++#define MILLIDEGREE_COEFF 1000
++
++static uint16_t bcm2838_thermal_temp2adc(int temp_C)
 +{
-+    return qtest_readl(s, MBOX0_BASE + offset);
++    return (temp_C * MILLIDEGREE_COEFF - THERMAL_OFFSET_C) / THERMAL_COEFF;
 +}
 +
-+static void qtest_mbox1_write_reg32(QTestState *s, uint32_t offset, uint32_t value)
++static uint64_t bcm2838_thermal_read(void *opaque, hwaddr addr, unsigned size)
 +{
-+    return qtest_writel(s, MBOX1_BASE + offset, value);
++    uint32_t val = 0;
++
++    switch (addr) {
++    case A_STAT:
++        /* Temperature is always 25°C */
++        val = FIELD_DP32(val, STAT, DATA, bcm2838_thermal_temp2adc(25));
++        val = FIELD_DP32(val, STAT, VALID_1, 1);
++        val = FIELD_DP32(val, STAT, VALID_2, 1);
++
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s can't access addr: 0x%"HWADDR_PRIx,
++                     TYPE_BCM2838_THERMAL, addr);
++    }
++    return val;
 +}
 +
-+static void qtest_mbox1_write(QTestState *s, uint8_t channel, uint32_t data)
++static void bcm2838_thermal_write(void *opaque, hwaddr addr,
++                                      uint64_t value, unsigned size)
 +{
-+    uint32_t mbox_reg = 0;
-+
-+    mbox_reg = FIELD_DP32(mbox_reg, MBOX_EXCHNG_REG, CHANNEL, channel);
-+    mbox_reg = FIELD_DP32(mbox_reg, MBOX_EXCHNG_REG, DATA, data);
-+    qtest_mbox1_write_reg32(s, MBOX_REG_WRITE, mbox_reg);
++    qemu_log_mask(LOG_GUEST_ERROR, "%s: write 0x%" PRIx64
++                                " to 0x%" HWADDR_PRIx "\n",
++                __func__, value, addr);
 +}
 +
-+int qtest_mbox0_has_data(QTestState *s) {
-+    return !(qtest_mbox0_read_reg32(s, MBOX_REG_STATUS) & MBOX_READ_EMPTY);
-+}
++static const MemoryRegionOps bcm2838_thermal_ops = {
++    .read = bcm2838_thermal_read,
++    .write = bcm2838_thermal_write,
++    .impl.max_access_size = 4,
++    .valid.min_access_size = 4,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
 +
-+void qtest_mbox0_read_message(QTestState *s,
-+                              uint8_t channel,
-+                              void *msgbuf,
-+                              size_t msgbuf_size)
++static void bcm2838_thermal_realize(DeviceState *dev, Error **errp)
 +{
-+    uint32_t mbox_reg;
-+    uint32_t msgaddr;
++    Bcm2838ThermalState *s = BCM2838_THERMAL(dev);
 +
-+    g_assert(qtest_mbox0_has_data(s));
-+    mbox_reg = qtest_mbox0_read_reg32(s, MBOX_REG_READ);
-+    g_assert_cmphex(FIELD_EX32(mbox_reg, MBOX_EXCHNG_REG, CHANNEL), ==, channel);
-+    msgaddr = FIELD_EX32(mbox_reg, MBOX_EXCHNG_REG, DATA) << 4;
-+    qtest_memread(s, msgaddr, msgbuf, msgbuf_size);
++    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2838_thermal_ops,
++                          s, TYPE_BCM2838_THERMAL, BCM2838_THERMAL_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
 +}
 +
-+void qtest_mbox1_write_message(QTestState *s, uint8_t channel, uint32_t msg_addr)
++static void bcm2838_thermal_class_init(ObjectClass *klass, void *data)
 +{
-+    qtest_mbox1_write(s, channel, msg_addr >> 4);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = bcm2838_thermal_realize;
++
++    /* This device has no state: no need for vmstate or reset */
 +}
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
++
++static const TypeInfo bcm2838_thermal_info = {
++    .name = TYPE_BCM2838_THERMAL,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(Bcm2838ThermalState),
++    .class_init = bcm2838_thermal_class_init,
++};
++
++static void bcm2838_thermal_register_types(void)
++{
++    type_register_static(&bcm2838_thermal_info);
++}
++
++type_init(bcm2838_thermal_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 7c769fd2a4..8a8c5ce659 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -91,7 +91,8 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_thermal.c',
+   'bcm2835_cprman.c',
+   'bcm2835_powermgt.c',
+-  'bcm2838_rng200.c'
++  'bcm2838_rng200.c',
++  'bcm2838_thermal.c'
+ ))
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 914a287af2..49bb4fab08 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -11,6 +11,7 @@
+ 
+ #include "hw/arm/bcm2835_peripherals.h"
+ #include "hw/misc/bcm2838_rng200.h"
++#include "hw/misc/bcm2838_thermal.h"
+ #include "hw/arm/bcm2838_pcie.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
+@@ -66,6 +67,7 @@ struct BCM2838PeripheralState {
+     MemoryRegion mphi_mr_alias;
+ 
+     BCM2838Rng200State rng200;
++    Bcm2838ThermalState thermal;
+     SDHCIState emmc2;
+     BCM2838PcieHostState pcie_host;
+     BCM2838GpioState gpio;
+diff --git a/include/hw/misc/bcm2838_thermal.h b/include/hw/misc/bcm2838_thermal.h
 new file mode 100644
-index 0000000000..e9e1f53bc9
+index 0000000000..bb6302a037
 --- /dev/null
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -0,0 +1,37 @@
++++ b/include/hw/misc/bcm2838_thermal.h
+@@ -0,0 +1,24 @@
 +/*
-+ * Declarations for BCM2838 mailbox test.
++ * BCM2838 dummy thermal sensor
 + *
-+ * Copyright (c) 2023 Auriga LLC
++ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
 +
-+typedef struct {
-+    uint32_t size;
-+    uint32_t req_resp_code;
-+} MboxBufHeader;
++#ifndef BCM2838_THERMAL_H
++#define BCM2838_THERMAL_H
 +
-+#define DECLARE_TAG_TYPE(TypeName, RequestValueType, ResponseValueType) \
-+typedef struct {                                                        \
-+    uint32_t id;                                                        \
-+    uint32_t value_buffer_size;                                         \
-+    union {                                                             \
-+        struct {                                                        \
-+            uint32_t zero;                                              \
-+            RequestValueType value;                                     \
-+        } request;                                                      \
-+        struct {                                                        \
-+            uint32_t size_stat;                                         \
-+            ResponseValueType value;                                    \
-+        } response;                                                     \
-+    };                                                                  \
-+} TypeName
++#include "hw/sysbus.h"
++#include "qom/object.h"
 +
++#define TYPE_BCM2838_THERMAL "bcm2838-thermal"
++OBJECT_DECLARE_SIMPLE_TYPE(Bcm2838ThermalState, BCM2838_THERMAL)
 +
-+int mbox0_has_data(void);
-+void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size);
-+void mbox1_write_message(uint8_t channel, uint32_t msg_addr);
-+int qtest_mbox0_has_data(QTestState *s);
-+void qtest_mbox0_read_message(QTestState *s, uint8_t channel, void *msgbuf, size_t msgbuf_size);
-+void qtest_mbox1_write_message(QTestState *s, uint8_t channel, uint32_t msg_addr);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 2b89e8634b..e312634963 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -333,6 +333,7 @@ qtests = {
-   'virtio-net-failover': files('migration-helpers.c'),
-   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
-   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
-+  'bcm2838-mbox-property-test' : files('bcm2838-mailbox.c'),
- }
- 
- if vnc.found()
++struct Bcm2838ThermalState {
++    SysBusDevice busdev;
++    MemoryRegion iomem;
++};
++
++#endif /* BCM2838_THERMAL_H */
 -- 
 2.34.1
 

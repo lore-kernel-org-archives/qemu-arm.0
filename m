@@ -1,258 +1,288 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp713744ejb;
-        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVtoadQC6LhIx8BjQS2wbEKScmgqR3O5a+GZD/myB6APTewNwLyCJ1as0yx+Y2xk4Mcj/SGUcybk54yCTCDRXO8S0uextlU
-X-Google-Smtp-Source: AGHT+IHc93qGTh16MPbNa0sm48QdmHL2eJe8/zaUxptmOkYtBBbZDYbzMHB8W0BZlJqM9wjR32Ds
-X-Received: by 2002:a05:6870:a54d:b0:219:44b3:c6b0 with SMTP id p13-20020a056870a54d00b0021944b3c6b0mr14017861oal.45.1708352037657;
-        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708352037; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp718437ejb;
+        Mon, 19 Feb 2024 06:21:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVekLk5RtERlSJUv9lfwTbrsNQ0/7uhS698wtzCiimwTvQ+6Gy/49dCIoKZjafzqTtxJlbc3r8RwSy9ktnsidCYPbl6qzsk
+X-Google-Smtp-Source: AGHT+IGm0WKRyktuk04ShUtmh1QH5qvYjslWL2O954DG8rK5oAZaKXLVIc2VkN/M9WWinPhsBK/E
+X-Received: by 2002:a05:620a:c8b:b0:787:4e73:13d2 with SMTP id q11-20020a05620a0c8b00b007874e7313d2mr6723887qki.44.1708352480125;
+        Mon, 19 Feb 2024 06:21:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708352480; cv=none;
         d=google.com; s=arc-20160816;
-        b=iRY/TdCk6skphHY+ClYpZExBP9qA2K7O+l/RnOLbmCJpoFH5jWan0IOnik+OIk3ksW
-         EI0MiglbAouWkbNVkh+otyrUcfGuGjGEUS1SLis9+m4eOejwWKvdFFvnlAI0W9jwtfiP
-         YizBftVwoKOWWWa8fQ2Ww/1LpREv/fGdoX/xbXvWjYi7PK9aUx/aQt6HZxSKMh1a/kDB
-         fpDCSvZWYJQ6inaX3zo+zRaeW/sI91zIb1tTG2f5nEzGfzWljunDP1VQ5fBtuURfgf8M
-         YYUCv7AbboHVzR1HuTJrRdjbdzSRK+5iYWf4JQH+03WCA20lF9yMy/z2soWx1PLgpK4G
-         YNyA==
+        b=fVfEOhdg9jYnklo+waCHTawT1LVjApnsfGCsTfaOTUIwCX8SvLhZmH7xDhsNQJoDJ7
+         D9mxsdBY8ghHJG2nOvhQvcx9L1j2s1i7L+nLekCy9fCzj85je2BgrhFnOtS9r1oJ5/0I
+         C2NfAzxqY7A+Ucph0rAQQoeNyM7ws622xJ8N3kNOMPWdVimU2lHFtNlxn0IZy4hD3VzL
+         n/84SNlvFQOHN9r+naNw3z0xxbjI8ZFIiMKXDjxjIIF6rgHvMkcmN1rB5NWNr1s3A9hh
+         7V+dI51xekqqVrBx+bB+ODIfNKBmfmn0AgCl9X2iKatqp/UjW3AR/QjA2qQzv2y2zcgI
+         ocDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
-        bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
-        fh=9vDvmKf8Anv68B6Xo/WlmMlAeTeHDkFIIGvIfjOUbos=;
-        b=m/ulOoe8C1hqT4+GO1dIjER2io2cNLEudRnHerbOghAStWrcbAkqm+z8puH6TQboOm
-         yX7oBAa1bvw236AmbtcEVR+BCRtD7BBIwG2FGIH75UfXXCk+FrdCwb+c+hco+yuuM1X1
-         nZPqbIa/Niw0WM07l+2ZF8oII7LDJlULRpQ5H70EOHxrepqRR6YjA8VZaW66GxBbK0vK
-         ChpHQS14LwXoQccTgWnOAYC72P+pX8eFGGYLhRXcoR+4855d1Q3fRr9dLM+IfvY+WtGt
-         dGQjRgIzTB0Hz+7xTayyHftmIbJRL66rJauDuxhjUpByM/Wl3YUEoYeLgbwVeXUVsaD9
-         iNWg==;
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=aUQ2JMLIVHpVte9U6jW+XZsF/MeL6vQZTZM7HcQExt0=;
+        fh=mHB71qR0/LlLLXGMA76FOVNv2vYZf239+kZW9JczA0Y=;
+        b=X/IHCG8twCssOr4OZ6IIEa9srFPOY39jhDdUQLDZ02C1wjir7EQb9pFDTLKADggmDZ
+         kLcgVEO3A0bBonqXDLrXvtPY0MoGtK1sQe6WpAwund4Owg9FbaEQcwx64v0gEEnj0pVn
+         2r7G0LuduYrbnBjtHgIul8M6hD7t7PHdzNU0i/qn9eiIWSvvAPjY+39HU5wxwHkJrNhO
+         Phe4Lz/M4LvTAU3gedFaSFiOla3rQBQbOTI78Z+3eZEwlSNUJS0IeBD4zbt8Lj389Ezq
+         5GCvKS/agj6F8Ovkz2HtovUpQ1fBiVo1otxheA7VBoIEqzzKLgI3lBgCxWc/+ZEOUv7w
+         ivQw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL5qBdQF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b63-20020a1fcb42000000b004b28c87427fsi841031vkg.253.2024.02.19.06.13.57
+        by mx.google.com with ESMTPS id e23-20020a05620a12d700b007871be6741asi6424140qkl.560.2024.02.19.06.21.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Feb 2024 06:21:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL5qBdQF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rc4Oz-0002mW-Sh; Mon, 19 Feb 2024 09:13:49 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rc4W4-00060I-5Z; Mon, 19 Feb 2024 09:21:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1rc4Ox-0002ll-GP; Mon, 19 Feb 2024 09:13:47 -0500
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1rc4Ov-0008Nv-S1; Mon, 19 Feb 2024 09:13:47 -0500
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 3A7FA21EEC;
- Mon, 19 Feb 2024 14:13:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1708352021; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc4W2-0005zc-3p
+ for qemu-arm@nongnu.org; Mon, 19 Feb 2024 09:21:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc4Vy-0001MS-JK
+ for qemu-arm@nongnu.org; Mon, 19 Feb 2024 09:21:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708352461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
- b=ELwSIhaVztP6GGd0OxYwRYesZ5tsgS0NIDlwN8X/vmum6kBmWqn9A0rfOUZytex38O5f+E
- Qj2AyA/JyAdtdRXPYnUk21MTSHoh/KK6hEbDQoah8QVvevVoJ5k6u9KApdH2Ze2yAJ5XFk
- KUQCxPd30t5V9jpm3ELdt7Ff0ozYjKU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1708352021;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
- b=IuQKbZp5WQcDhrjDdcRN0Z1Fad9+Gc4iPUl+vEfzKruqHyOt3JAD8DYm/IkXsCaVeoTOcL
- otlUnk/6M9xxLqBQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1708352021; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
- b=ELwSIhaVztP6GGd0OxYwRYesZ5tsgS0NIDlwN8X/vmum6kBmWqn9A0rfOUZytex38O5f+E
- Qj2AyA/JyAdtdRXPYnUk21MTSHoh/KK6hEbDQoah8QVvevVoJ5k6u9KApdH2Ze2yAJ5XFk
- KUQCxPd30t5V9jpm3ELdt7Ff0ozYjKU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1708352021;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
- b=IuQKbZp5WQcDhrjDdcRN0Z1Fad9+Gc4iPUl+vEfzKruqHyOt3JAD8DYm/IkXsCaVeoTOcL
- otlUnk/6M9xxLqBQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B9DB6139D0;
- Mon, 19 Feb 2024 14:13:40 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id y+X9HxRi02VZXQAAD6G6ig
- (envelope-from <farosas@suse.de>); Mon, 19 Feb 2024 14:13:40 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Cc: peterx@redhat.com, qemu-devel@nongnu.org, =?utf-8?Q?Daniel_P_=2E_Berra?=
- =?utf-8?Q?ng=C3=A9?=
- <berrange@redhat.com>, Sebastian Ott <sebott@redhat.com>, Eric Auger
- <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v2 1/3] tests/migration-test: Stick with gicv3 in
- aarch64 test
-In-Reply-To: <CAFEAcA-AVjn5JdG+6eBd69o5BiJjmA1G6i4F2wVPSmRSw-X=Yg@mail.gmail.com>
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=aUQ2JMLIVHpVte9U6jW+XZsF/MeL6vQZTZM7HcQExt0=;
+ b=OL5qBdQFFZXKmjUiVvRDZdvZao/m9UxgmSRCEj0a09AUG63PjZqJgLGJfbSYh3kfMZ+uwX
+ KcS+4/dp6HLoX2iyvy/J0KBcZLI/PPJ/Y+aBNXlZMrLUkneEtCzQqeWJlJRu7itqgiRkUd
+ 42jgP/4BHWEjmz2mEOfD1IzSdWz6auc=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-287-SENorvbdNzSwr0eQntLHyg-1; Mon, 19 Feb 2024 09:21:00 -0500
+X-MC-Unique: SENorvbdNzSwr0eQntLHyg-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-68f38f3cb86so42985196d6.3
+ for <qemu-arm@nongnu.org>; Mon, 19 Feb 2024 06:21:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708352460; x=1708957260;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=aUQ2JMLIVHpVte9U6jW+XZsF/MeL6vQZTZM7HcQExt0=;
+ b=sWICtnatDHe4hUPlfNUjU7Ndkiv5ruj2Rpnv2wW2SQrah++Jv0oyhWThWbrGUd8DAe
+ NBBreDVXjkqj83jpAhMWyONPPluINvahhE3XGj3AFLpBkl+SoBqFkxLz47j0dJjmEOuS
+ B/4x6jKHjBLfI2jNKeLagSv5/TFlZQ5a4vCY2TNnM8m3OUpmKJg+6KVlUKe6Sbn9Jq4V
+ Le97vDgcwnaSzjJEZ52W5P4Pg4Af8zrc4cZ0r6mKVC+Wgr6wXMRSszoT+q6Cxab1mHdq
+ m806fIOsabdmWKfKANqDVwATgiqVVYZ6VfYxDSwD9esaWQSxsjG+kGv7BRXFqAWA8Yx8
+ QY1g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXz/z4/XERFIsxN47tJIFtleC5gZeI6DEpgGp+DwCDz5m14UEMJWcL49BmWICIGNNX+FFAijpeSnwWLAPdlM08josqI
+X-Gm-Message-State: AOJu0YyEZlf3pgin5VS/Kjz+oLURm7dE3RKkBEarh0tuEcSySk+fNq6W
+ qwEoKHZMpEnSS0HPZnuq5bsHH0wP00gp9JWaHfYHy5FjRWXz9R+voSleyZyu4H8LYXdQhMx4dl0
+ dEqcXptBCLrEMpKgmMFWrz76FkbO3Ixt8shjosR/OOS58pZZUJQ==
+X-Received: by 2002:a05:6214:21e8:b0:68f:60fd:d328 with SMTP id
+ p8-20020a05621421e800b0068f60fdd328mr4885065qvj.43.1708352459917; 
+ Mon, 19 Feb 2024 06:20:59 -0800 (PST)
+X-Received: by 2002:a05:6214:21e8:b0:68f:60fd:d328 with SMTP id
+ p8-20020a05621421e800b0068f60fdd328mr4885048qvj.43.1708352459680; 
+ Mon, 19 Feb 2024 06:20:59 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-177-48.web.vodafone.de.
+ [109.43.177.48]) by smtp.gmail.com with ESMTPSA id
+ mu19-20020a056214329300b0068f0a287159sm3279112qvb.87.2024.02.19.06.20.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Feb 2024 06:20:59 -0800 (PST)
+Message-ID: <0c7c448d-a651-4fa9-99d1-b08fcbaf5d5f@redhat.com>
+Date: Mon, 19 Feb 2024 15:20:55 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] tests/migration-test: Stick with gicv3 in aarch64
+ test
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: peterx@redhat.com, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Sebastian Ott <sebott@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
 References: <20240207005403.242235-1-peterx@redhat.com>
  <20240207005403.242235-2-peterx@redhat.com>
  <13862227-d782-46fe-b10f-94587c74745e@redhat.com>
  <CAFEAcA-AVjn5JdG+6eBd69o5BiJjmA1G6i4F2wVPSmRSw-X=Yg@mail.gmail.com>
-Date: Mon, 19 Feb 2024 11:13:38 -0300
-Message-ID: <87o7cch78t.fsf@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=ELwSIhaV;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=IuQKbZp5
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-4.51 / 50.00]; ARC_NA(0.00)[];
- RCVD_VIA_SMTP_AUTH(0.00)[];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
- FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; BAYES_HAM(-3.00)[100.00%];
- MIME_GOOD(-0.10)[text/plain]; NEURAL_HAM_LONG(-1.00)[-1.000];
- RCVD_COUNT_THREE(0.00)[3];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- DKIM_TRACE(0.00)[suse.de:+]; MX_GOOD(-0.01)[];
- RCPT_COUNT_SEVEN(0.00)[8];
- DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,suse.de:dkim];
- FUZZY_BLOCKED(0.00)[rspamd.com]; FROM_EQ_ENVFROM(0.00)[];
- MIME_TRACE(0.00)[0:+]; NEURAL_HAM_SHORT(-0.20)[-1.000];
- RCVD_TLS_ALL(0.00)[]; MID_RHS_MATCH_FROM(0.00)[]
-X-Spam-Score: -4.51
-X-Rspamd-Queue-Id: 3A7FA21EEC
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
- envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAFEAcA-AVjn5JdG+6eBd69o5BiJjmA1G6i4F2wVPSmRSw-X=Yg@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.072,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_SORBS_WEB=1.5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mVkGkXMMQdE8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zyjN4V1axglO
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
+On 19/02/2024 13.50, Peter Maydell wrote:
 > On Mon, 19 Feb 2024 at 11:54, Thomas Huth <thuth@redhat.com> wrote:
 >>
 >> On 07/02/2024 01.54, peterx@redhat.com wrote:
->> > From: Peter Xu <peterx@redhat.com>
->> >
->> > Recently we introduced cross-binary migration test.  It's always wanted
->> > that migration-test uses stable guest ABI for both QEMU binaries in th=
-is
->> > case, so that both QEMU binaries will be compatible on the migration
->> > stream with the cmdline specified.
->> >
->> > Switch to a static gic version "3" rather than using version "max", so=
- that
->> > GIC should be stable now across any future QEMU binaries for migration=
--test.
->> >
->> > Here the version can actually be anything as long as the ABI is stable=
-.  We
->> > choose "3" because it's the majority of what we already use in QEMU wh=
-ile
->> > still new enough: "git grep gic-version=3D3" shows 6 hit, while versio=
-n 4 has
->> > no direct user yet besides "max".
->> >
->> > Note that even with this change, aarch64 won't be able to work yet with
->> > migration cross binary test, but then the only missing piece will be t=
-he
->> > stable CPU model.
->> >
->> > Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->> > Signed-off-by: Peter Xu <peterx@redhat.com>
->> > ---
->> >   tests/qtest/migration-test.c | 2 +-
->> >   1 file changed, 1 insertion(+), 1 deletion(-)
->> >
->> > diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test=
-.c
->> > index 7675519cfa..8a5bb1752e 100644
->> > --- a/tests/qtest/migration-test.c
->> > +++ b/tests/qtest/migration-test.c
->> > @@ -819,7 +819,7 @@ static int test_migrate_start(QTestState **from, Q=
-TestState **to,
->> >       } else if (strcmp(arch, "aarch64") =3D=3D 0) {
->> >           memory_size =3D "150M";
->> >           machine_alias =3D "virt";
->> > -        machine_opts =3D "gic-version=3Dmax";
->> > +        machine_opts =3D "gic-version=3D3";
->> >           arch_opts =3D g_strdup_printf("-cpu max -kernel %s", bootpat=
-h);
->> >           start_address =3D ARM_TEST_MEM_START;
->> >           end_address =3D ARM_TEST_MEM_END;
+>>> From: Peter Xu <peterx@redhat.com>
+>>>
+>>> Recently we introduced cross-binary migration test.  It's always wanted
+>>> that migration-test uses stable guest ABI for both QEMU binaries in this
+>>> case, so that both QEMU binaries will be compatible on the migration
+>>> stream with the cmdline specified.
+>>>
+>>> Switch to a static gic version "3" rather than using version "max", so that
+>>> GIC should be stable now across any future QEMU binaries for migration-test.
+>>>
+>>> Here the version can actually be anything as long as the ABI is stable.  We
+>>> choose "3" because it's the majority of what we already use in QEMU while
+>>> still new enough: "git grep gic-version=3" shows 6 hit, while version 4 has
+>>> no direct user yet besides "max".
+>>>
+>>> Note that even with this change, aarch64 won't be able to work yet with
+>>> migration cross binary test, but then the only missing piece will be the
+>>> stable CPU model.
+>>>
+>>> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+>>> Signed-off-by: Peter Xu <peterx@redhat.com>
+>>> ---
+>>>    tests/qtest/migration-test.c | 2 +-
+>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+>>> index 7675519cfa..8a5bb1752e 100644
+>>> --- a/tests/qtest/migration-test.c
+>>> +++ b/tests/qtest/migration-test.c
+>>> @@ -819,7 +819,7 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+>>>        } else if (strcmp(arch, "aarch64") == 0) {
+>>>            memory_size = "150M";
+>>>            machine_alias = "virt";
+>>> -        machine_opts = "gic-version=max";
+>>> +        machine_opts = "gic-version=3";
+>>>            arch_opts = g_strdup_printf("-cpu max -kernel %s", bootpath);
+>>>            start_address = ARM_TEST_MEM_START;
+>>>            end_address = ARM_TEST_MEM_END;
 >>
->> Looks like the migration test now fails on aarch64 when "configure" has =
-been
->> run with "--without-default-devices", since that disables the gicv3 in t=
-he
->> binary ... is there a way to check whether the gicv3 is available, and u=
-se
->> "=3Dmax" instead if it is not?
-
-How about adding aarch64 to the set of targets on the without-defaults
-CI job?
-
->
+>> Looks like the migration test now fails on aarch64 when "configure" has been
+>> run with "--without-default-devices", since that disables the gicv3 in the
+>> binary ... is there a way to check whether the gicv3 is available, and use
+>> "=max" instead if it is not?
+> 
 > A QEMU for AArch64 with no GICv3 is of very little practical use,
 > so I'm not sure it makes sense to allow users to build one like that.
-> (I'm also a little surprised that it worked with 'max', because
-> without a GICv3 it would try to fall back to GICv2, and if we're
-> going to allow users to compile-time disable one of the GICs then
-> we should definitely allow them to choose to not build GICv2.)
->
-> I think I would go for disabling the migration test entirely if
-> the build doesn't include the GICv3.
 
-Makes sense. I've got my hands full right now, but I'll work on it later
-this week along with your other suggestion to only test TCG.
+Ok, if it doesn't make too much sense to build without GICv3, maybe a patch 
+like this could be the right solution:
 
-Thanks
+diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
+--- a/hw/intc/Kconfig
++++ b/hw/intc/Kconfig
+@@ -12,10 +12,6 @@ config IOAPIC
+      bool
+      select I8259
+
+-config ARM_GIC
+-    bool
+-    select MSI_NONBROKEN
+-
+  config OPENPIC
+      bool
+      select MSI_NONBROKEN
+@@ -25,14 +21,18 @@ config APIC
+      select MSI_NONBROKEN
+      select I8259
+
++config ARM_GIC
++    bool
++    select ARM_GICV3_TCG if TCG
++    select ARM_GIC_KVM if KVM
++    select MSI_NONBROKEN
++
+  config ARM_GICV3_TCG
+      bool
+-    default y
+      depends on ARM_GIC && TCG
+
+  config ARM_GIC_KVM
+      bool
+-    default y
+      depends on ARM_GIC && KVM
+
+  config XICS
+
+?
+
+At least this seems to fix the the migration-test when compiling with 
+--without-default-devices.
+
+  Thomas
 

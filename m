@@ -1,183 +1,258 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp707534ejb;
-        Mon, 19 Feb 2024 06:05:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXdQBvpqANTeW3Vh6FajDEOsaBOcVObWjaUmAbKQCA//uzmM7jLh//0P/NeNiVEWALD9xXau7aplJK5MBpfgNSwU/c6g4jF
-X-Google-Smtp-Source: AGHT+IH0WE44yoC8jv00cPgIka5bRJRoMjldo7K0WqEMk0dkhxUP8H9xmyD5O/aOI71QE7ZMzA5a
-X-Received: by 2002:ac8:4f57:0:b0:42d:c2b4:8af4 with SMTP id i23-20020ac84f57000000b0042dc2b48af4mr12611048qtw.50.1708351550134;
-        Mon, 19 Feb 2024 06:05:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708351550; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp713744ejb;
+        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVtoadQC6LhIx8BjQS2wbEKScmgqR3O5a+GZD/myB6APTewNwLyCJ1as0yx+Y2xk4Mcj/SGUcybk54yCTCDRXO8S0uextlU
+X-Google-Smtp-Source: AGHT+IHc93qGTh16MPbNa0sm48QdmHL2eJe8/zaUxptmOkYtBBbZDYbzMHB8W0BZlJqM9wjR32Ds
+X-Received: by 2002:a05:6870:a54d:b0:219:44b3:c6b0 with SMTP id p13-20020a056870a54d00b0021944b3c6b0mr14017861oal.45.1708352037657;
+        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708352037; cv=none;
         d=google.com; s=arc-20160816;
-        b=lscCeXV5Eb0Wmks5UIMpBBf4VAn1If4GCanQSzFdFKFeZ7PMbQ4bQ8yEH1BxdgzHpD
-         rnHXHS+7SfqRLxXi/O0Oz1hyNgcXLaikOYifFwCEce9mDUO092ruXMl9oshZGD/SQAD5
-         LXYbqiw9Z8NUcdmrR3POZK6OR0ch/g12ndJHncDWDnzU4NSQRxXYBHqFRZYhnlddtQhm
-         n22ypLpPURMyBKDSexohYe3TsmBp/ZVn0zC8VXzbWsaT82uwPHR38kqy2jH6c/wjR/06
-         c8PDCFzc+bJxWvJHQTIEo+IlD9nGMB+VhP4OcKjRe3Nqr2LDqk2ZX/CvcjSyrT2WcSAM
-         uc1A==
+        b=iRY/TdCk6skphHY+ClYpZExBP9qA2K7O+l/RnOLbmCJpoFH5jWan0IOnik+OIk3ksW
+         EI0MiglbAouWkbNVkh+otyrUcfGuGjGEUS1SLis9+m4eOejwWKvdFFvnlAI0W9jwtfiP
+         YizBftVwoKOWWWa8fQ2Ww/1LpREv/fGdoX/xbXvWjYi7PK9aUx/aQt6HZxSKMh1a/kDB
+         fpDCSvZWYJQ6inaX3zo+zRaeW/sI91zIb1tTG2f5nEzGfzWljunDP1VQ5fBtuURfgf8M
+         YYUCv7AbboHVzR1HuTJrRdjbdzSRK+5iYWf4JQH+03WCA20lF9yMy/z2soWx1PLgpK4G
+         YNyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=U7h8MBkBnbcz3bj/hq+acmRqThPmwY2rSl3yo+4Qs+E=;
-        fh=t0mzi0/DLZ2Ec1eCmWqPEtFapxnSOCReih1FxBKjBrw=;
-        b=gWBxhRhGQOaRHoClDNx5lhTaPmh+vgUVtI5/8AVGntRvGf2ylp8bi+0LpcuSPaGbCb
-         G9pb023R0+rhxGNDRnYmo8woWG4zXGoXuF045FifPArMpqp8JVdX7mqj6w2zuImIY+fh
-         tbNvO6j7psczfxYBqn51B0mbJHevrK/e00vYuSkuBuMexiW333hWsY1oBHaOxnJTposc
-         gpwsXAtlnCyzQFyotYviBq2/XkjsshiEX/Ach69LPrDOolrnoQuRdkYLH7bXULc+Ow5R
-         /AHZelK9L4fmCgCix989V8WJNwdA6fMP72k2qOeNFA9PKocVcn++9aZGlSuPr5j1eXc3
-         RvWA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
+        bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
+        fh=9vDvmKf8Anv68B6Xo/WlmMlAeTeHDkFIIGvIfjOUbos=;
+        b=m/ulOoe8C1hqT4+GO1dIjER2io2cNLEudRnHerbOghAStWrcbAkqm+z8puH6TQboOm
+         yX7oBAa1bvw236AmbtcEVR+BCRtD7BBIwG2FGIH75UfXXCk+FrdCwb+c+hco+yuuM1X1
+         nZPqbIa/Niw0WM07l+2ZF8oII7LDJlULRpQ5H70EOHxrepqRR6YjA8VZaW66GxBbK0vK
+         ChpHQS14LwXoQccTgWnOAYC72P+pX8eFGGYLhRXcoR+4855d1Q3fRr9dLM+IfvY+WtGt
+         dGQjRgIzTB0Hz+7xTayyHftmIbJRL66rJauDuxhjUpByM/Wl3YUEoYeLgbwVeXUVsaD9
+         iNWg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13-20020a05622a038d00b0042c574e2766si6772589qtx.727.2024.02.19.06.05.49
+        by mx.google.com with ESMTPS id b63-20020a1fcb42000000b004b28c87427fsi841031vkg.253.2024.02.19.06.13.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Feb 2024 06:05:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Feb 2024 06:13:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=ELwSIhaV;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rc4Gm-00035a-Di; Mon, 19 Feb 2024 09:05:20 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rc4Oz-0002mW-Sh; Mon, 19 Feb 2024 09:13:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1rc4Gl-00035L-K7; Mon, 19 Feb 2024 09:05:19 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1rc4Gg-0006QR-Ow; Mon, 19 Feb 2024 09:05:19 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id CD0BB4E601F;
- Mon, 19 Feb 2024 15:05:10 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id yNIdNJq4B-s2; Mon, 19 Feb 2024 15:05:08 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id D826B4E602B; Mon, 19 Feb 2024 15:05:08 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id D67E97456B4;
- Mon, 19 Feb 2024 15:05:08 +0100 (CET)
-Date: Mon, 19 Feb 2024 15:05:08 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-cc: Peter Maydell <peter.maydell@linaro.org>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, 
- =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
- kvm@vger.kernel.org, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-In-Reply-To: <0a31f410-415d-474b-bcea-9cb18f41aeb2@ilande.co.uk>
-Message-ID: <9ef2075b-b26b-41d2-a7d0-456cec3b104a@eik.bme.hu>
-References: <20240216153517.49422-1-philmd@linaro.org>
- <20240216153517.49422-2-philmd@linaro.org>
- <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu>
- <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org>
- <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
- <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu>
- <2b9ea923-c4f9-4ee4-8ed2-ba9f62c15579@linaro.org>
- <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu>
- <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk>
- <CAFEAcA-Mvd4NVY2yDgNEdjZ_YPrN93PDZRyfCi7JyCjmPs4gAQ@mail.gmail.com>
- <0a31f410-415d-474b-bcea-9cb18f41aeb2@ilande.co.uk>
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1rc4Ox-0002ll-GP; Mon, 19 Feb 2024 09:13:47 -0500
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1rc4Ov-0008Nv-S1; Mon, 19 Feb 2024 09:13:47 -0500
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 3A7FA21EEC;
+ Mon, 19 Feb 2024 14:13:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1708352021; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
+ b=ELwSIhaVztP6GGd0OxYwRYesZ5tsgS0NIDlwN8X/vmum6kBmWqn9A0rfOUZytex38O5f+E
+ Qj2AyA/JyAdtdRXPYnUk21MTSHoh/KK6hEbDQoah8QVvevVoJ5k6u9KApdH2Ze2yAJ5XFk
+ KUQCxPd30t5V9jpm3ELdt7Ff0ozYjKU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1708352021;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
+ b=IuQKbZp5WQcDhrjDdcRN0Z1Fad9+Gc4iPUl+vEfzKruqHyOt3JAD8DYm/IkXsCaVeoTOcL
+ otlUnk/6M9xxLqBQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1708352021; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
+ b=ELwSIhaVztP6GGd0OxYwRYesZ5tsgS0NIDlwN8X/vmum6kBmWqn9A0rfOUZytex38O5f+E
+ Qj2AyA/JyAdtdRXPYnUk21MTSHoh/KK6hEbDQoah8QVvevVoJ5k6u9KApdH2Ze2yAJ5XFk
+ KUQCxPd30t5V9jpm3ELdt7Ff0ozYjKU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1708352021;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2OdCcVlDVyB6Rl/n48Fllehgc6/oTTxOrnlT7G0ZP5s=;
+ b=IuQKbZp5WQcDhrjDdcRN0Z1Fad9+Gc4iPUl+vEfzKruqHyOt3JAD8DYm/IkXsCaVeoTOcL
+ otlUnk/6M9xxLqBQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B9DB6139D0;
+ Mon, 19 Feb 2024 14:13:40 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id y+X9HxRi02VZXQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Mon, 19 Feb 2024 14:13:40 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
+Cc: peterx@redhat.com, qemu-devel@nongnu.org, =?utf-8?Q?Daniel_P_=2E_Berra?=
+ =?utf-8?Q?ng=C3=A9?=
+ <berrange@redhat.com>, Sebastian Ott <sebott@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v2 1/3] tests/migration-test: Stick with gicv3 in
+ aarch64 test
+In-Reply-To: <CAFEAcA-AVjn5JdG+6eBd69o5BiJjmA1G6i4F2wVPSmRSw-X=Yg@mail.gmail.com>
+References: <20240207005403.242235-1-peterx@redhat.com>
+ <20240207005403.242235-2-peterx@redhat.com>
+ <13862227-d782-46fe-b10f-94587c74745e@redhat.com>
+ <CAFEAcA-AVjn5JdG+6eBd69o5BiJjmA1G6i4F2wVPSmRSw-X=Yg@mail.gmail.com>
+Date: Mon, 19 Feb 2024 11:13:38 -0300
+Message-ID: <87o7cch78t.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=ELwSIhaV;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=IuQKbZp5
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-4.51 / 50.00]; ARC_NA(0.00)[];
+ RCVD_VIA_SMTP_AUTH(0.00)[];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
+ TO_MATCH_ENVRCPT_ALL(0.00)[]; BAYES_HAM(-3.00)[100.00%];
+ MIME_GOOD(-0.10)[text/plain]; NEURAL_HAM_LONG(-1.00)[-1.000];
+ RCVD_COUNT_THREE(0.00)[3];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ DKIM_TRACE(0.00)[suse.de:+]; MX_GOOD(-0.01)[];
+ RCPT_COUNT_SEVEN(0.00)[8];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,suse.de:dkim];
+ FUZZY_BLOCKED(0.00)[rspamd.com]; FROM_EQ_ENVFROM(0.00)[];
+ MIME_TRACE(0.00)[0:+]; NEURAL_HAM_SHORT(-0.20)[-1.000];
+ RCVD_TLS_ALL(0.00)[]; MID_RHS_MATCH_FROM(0.00)[]
+X-Spam-Score: -4.51
+X-Rspamd-Queue-Id: 3A7FA21EEC
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CNM3An6rJUZY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mVkGkXMMQdE8
 
-On Mon, 19 Feb 2024, Mark Cave-Ayland wrote:
-> On 19/02/2024 13:05, Peter Maydell wrote:
->> On Mon, 19 Feb 2024 at 12:49, Mark Cave-Ayland
->> <mark.cave-ayland@ilande.co.uk> wrote:
->>> 
->>> On 19/02/2024 12:00, BALATON Zoltan wrote:
->>>> For new people trying to contribute to QEMU QDev is overwhelming so 
->>>> having some way
->>>> to need less of it to do simple things would help them to get started.
->>> 
->>> It depends what how you define "simple": for QEMU developers most people 
->>> search for
->>> similar examples in the codebase and copy/paste them. I'd much rather have 
->>> a slightly
->>> longer, but consistent API for setting properties rather than coming up 
->>> with many
->>> special case wrappers that need to be maintained just to keep the line 
->>> count down for
->>> "simplicity".
->>> 
->>> I think that Phil's approach here is the best one for now, particularly 
->>> given that it
->>> allows us to take another step towards heterogeneous machines. As the work 
->>> in this
->>> area matures it might be that we can consider other approaches, but that's 
->>> not a
->>> decision that can be made right now and so shouldn't be a reason to block 
->>> this change.
->> 
->> Mmm. It's unfortunate that we're working with C, so we're a bit limited
->> in what tools we have to try to make a better and lower-boilerplate
->> interface for the "create, configure, realize and wire up devices" task.
->> (I think you could do much better in a higher level language...)
->> sysbus_create_simple() was handy at the time, but it doesn't work so
->> well for more complicated SoC-based boards. It's noticeable that
->> if you look at the code that uses it, it's almost entirely the older
->> and less maintained board models, especially those which don't actually
->> model an SoC and just have the board code create all the devices.
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On Mon, 19 Feb 2024 at 11:54, Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> On 07/02/2024 01.54, peterx@redhat.com wrote:
+>> > From: Peter Xu <peterx@redhat.com>
+>> >
+>> > Recently we introduced cross-binary migration test.  It's always wanted
+>> > that migration-test uses stable guest ABI for both QEMU binaries in th=
+is
+>> > case, so that both QEMU binaries will be compatible on the migration
+>> > stream with the cmdline specified.
+>> >
+>> > Switch to a static gic version "3" rather than using version "max", so=
+ that
+>> > GIC should be stable now across any future QEMU binaries for migration=
+-test.
+>> >
+>> > Here the version can actually be anything as long as the ABI is stable=
+.  We
+>> > choose "3" because it's the majority of what we already use in QEMU wh=
+ile
+>> > still new enough: "git grep gic-version=3D3" shows 6 hit, while versio=
+n 4 has
+>> > no direct user yet besides "max".
+>> >
+>> > Note that even with this change, aarch64 won't be able to work yet with
+>> > migration cross binary test, but then the only missing piece will be t=
+he
+>> > stable CPU model.
+>> >
+>> > Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+>> > Signed-off-by: Peter Xu <peterx@redhat.com>
+>> > ---
+>> >   tests/qtest/migration-test.c | 2 +-
+>> >   1 file changed, 1 insertion(+), 1 deletion(-)
+>> >
+>> > diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test=
+.c
+>> > index 7675519cfa..8a5bb1752e 100644
+>> > --- a/tests/qtest/migration-test.c
+>> > +++ b/tests/qtest/migration-test.c
+>> > @@ -819,7 +819,7 @@ static int test_migrate_start(QTestState **from, Q=
+TestState **to,
+>> >       } else if (strcmp(arch, "aarch64") =3D=3D 0) {
+>> >           memory_size =3D "150M";
+>> >           machine_alias =3D "virt";
+>> > -        machine_opts =3D "gic-version=3Dmax";
+>> > +        machine_opts =3D "gic-version=3D3";
+>> >           arch_opts =3D g_strdup_printf("-cpu max -kernel %s", bootpat=
+h);
+>> >           start_address =3D ARM_TEST_MEM_START;
+>> >           end_address =3D ARM_TEST_MEM_END;
+>>
+>> Looks like the migration test now fails on aarch64 when "configure" has =
+been
+>> run with "--without-default-devices", since that disables the gicv3 in t=
+he
+>> binary ... is there a way to check whether the gicv3 is available, and u=
+se
+>> "=3Dmax" instead if it is not?
+
+How about adding aarch64 to the set of targets on the without-defaults
+CI job?
+
 >
-> Yeah I was thinking that you'd use the DSL (e.g. YAML templates or similar) 
-> to provide some of the boilerplating around common actions, rather than the C 
-> API itself. Even better, once everything has been moved to use a DSL then the 
-> C API shouldn't really matter so much as it is no longer directly exposed to 
-> the user.
+> A QEMU for AArch64 with no GICv3 is of very little practical use,
+> so I'm not sure it makes sense to allow users to build one like that.
+> (I'm also a little surprised that it worked with 'max', because
+> without a GICv3 it would try to fall back to GICv2, and if we're
+> going to allow users to compile-time disable one of the GICs then
+> we should definitely allow them to choose to not build GICv2.)
+>
+> I think I would go for disabling the migration test entirely if
+> the build doesn't include the GICv3.
 
-That may be a few more releases away (although Philippe is doing an 
-excellent job with doing this all alone and as efficient as he is it might 
-be reached sooner). So I think board code will stay for a while therefore 
-if something can be done to keep it simple with not much work then maybe 
-that's worth considering. That's why I did not propose to keep 
-sysbus_create_simple and add properties to it because that might need 
-something like a properties array with values that's hard to describe in C 
-so it would be a bit more involved to implement and defining such arrays 
-would only make it a litle less cluttered. So just keeping the parts that 
-work for simple devices in sysbus_realize_simple and also keep 
-sysbus_create_simple where it's already used is probably enough now 
-rather than converting those to low level calls everywhere now.
+Makes sense. I've got my hands full right now, but I'll work on it later
+this week along with your other suggestion to only test TCG.
 
-Then we'll see how well the declarative machines will turn out and then if 
-we no longer need to write board code these wrappers could go away then 
-but for now it may be too early when we still have a lot of board code to 
-maintain.
+Thanks
 
-Regards,
-BALATON Zoltan

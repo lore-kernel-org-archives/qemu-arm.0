@@ -1,102 +1,85 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp658690ejb;
-        Mon, 19 Feb 2024 04:34:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVvM0p0iwG0d4tcg4i4oDrEf0fVtA1lW8GMVUcdbN4BMMN0elApBb82TNOrgGUTIRVBSuoCosiixREXVFB6+W4dJUG/eVS8
-X-Google-Smtp-Source: AGHT+IH4Klum7442/WvjPwhawdEMrh8T7X7tOcXAhvSUjjny2Vy0mMTsNNn5VglgDBh0c6QhmsLa
-X-Received: by 2002:a05:620a:4151:b0:787:5f6d:88a5 with SMTP id k17-20020a05620a415100b007875f6d88a5mr5439631qko.61.1708346047903;
-        Mon, 19 Feb 2024 04:34:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708346047; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp665869ejb;
+        Mon, 19 Feb 2024 04:49:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUzCJ6W9dUA5W0EQtNgxS0XXvZsBT59XqZXTL4vrU61JWmHQGZkvRTz1XBEuEeqtRlBk+uaxtXFcI/FpOldSYBXGhB5FQQ2
+X-Google-Smtp-Source: AGHT+IGo7UytgjNgln8WCqRv8DZuY6UzdKUMLudDS6Asyc99EKsAzTZ6H7juYJXe4/2xz1cKWmOY
+X-Received: by 2002:a05:6808:1a27:b0:3c1:5d20:7fef with SMTP id bk39-20020a0568081a2700b003c15d207fefmr1895818oib.11.1708346964077;
+        Mon, 19 Feb 2024 04:49:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708346964; cv=none;
         d=google.com; s=arc-20160816;
-        b=FhD+KcDRsF5eRGnAZ6aIq/kO+RLa5aFdqaAClCnAKKC0yAys24fyyEiO225SfU0Hop
-         rX5kJoXzzUqabiOxj4tMDZcY6KUKfiE471tMWsfYsZQ4WKVRSGGpBV3XCl3GTkmOItKi
-         sHfCnIoeURAH0KUTlLNiUiKdDIYY+SI330FoufCl5bNr6+eGePPmcFCld+A4O/M6jANG
-         6awebW1iWxdgNbQzuwMeuOIXDhTzfd0eU5O01wcDvPpv9a2WqbKP5cX1wDoDZfV/mW6x
-         NOVrVWzM9zFibevBhXOVqRvpSO0JpTvb5d985MASjGdR0D9j5c3hiJjNcUcxso/WQmPZ
-         vE3g==
+        b=gELtplqV6/1G3dE4vR3aL/MViSspl05RRgXwfZNdayTSHwiWst0Dk/JzZM6HeahNsg
+         mGh9NL98DTRIhCsnwyDfobFZ2pVK91Mcrm+eV4GW1njutLIO62N/jLdEBEhV+JI4Uz6b
+         xHhioASk+b3Pw5fwfAw7HsR34cLcWUpX5jEjfwg+CIPcqxWy76o9Xx+bjXJrn6q7rLUl
+         wPW16AoW5OCe1eDVvlI1/6478goabY+wGcY6m0EnI/SFcjhmTPu2N7q3RNr0apCuy1eZ
+         6OXwqhjxnrG1bn818drxuCk9PUn9pxXYwREO6s5SoXj3aa8zkxuZtd3X4HUWoJizuwh6
+         2H6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=S4E0yzAO2ngkn+tDnZ9rriKrakxyWrEzizN7ZdrHINY=;
-        fh=NEU2UCfxhl0Wf1th5F6DaU2wAVRjT5hQYYcoDXcDj8o=;
-        b=CFGZOIic/DwEaWiL16Kc5bL1hg1wenjgctPhvag4ESoksQIrOhTR6k2b0atGa5EOu8
-         slogT7bU6ALkvWh9DraVRAUtVn+jtfgGxOqjWHkjNRw4ufqoheMlwdmvFNfcWb3zQuOS
-         b3PQubVZfjtblklqB41BSZH1ePPztZppvTIc6aPVo5FrNtj+thdm7fqOU/wFHaBK4ide
-         Jh8+nLVOSWkB/1iOPKsfXH8nGw0L9/TMqhqJ82oeTotLIFTgQKsSJ4wd8zHNg7G8oDg8
-         6QVNZI66w+vDw867+Jw7BIUp4SI6nVHJgXICZL2GbjmoGdwgRHdOeOMwC9Hb1GioZBAA
-         F5dA==;
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=oJGPiRT63+hXY9RNoSTiKodQ4PAZPM7uwa2SnQiaCP0=;
+        fh=KaCj6XU4Xcu8+0/PnLeCV5B3Iv4ebeQh9e26rNC4OoE=;
+        b=daa5jf55aq4DOH/aRgioX8OgmYFdYmanJFPsbG5Ar3miQB4+54vAcTx2VPzpNWdmQw
+         38cu5ENJiYuxsGD6Lwe563ZQMSoUuGDtBWpeTXrLdoUz68i1jLA6p6NnjJMK0p4A4vbL
+         wXHjfnHV+aK5wru8KKVhlBaPZsMOyepM3WLPoBwjTBgHODUkM4z0YO5oyORAf7q+/87T
+         mcoz7/Tls/tk8KoY5v8II/LyI/UcMwtsje4KACa1/JIDJ5uv8lKbrHxi1hVNN0dVuWuk
+         9pWp05519ilUpqNUjY0CyyGxzIIzdQ3RuP709Ttx50399bfohqXPCUBINk4CkEN71njQ
+         Ukkg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TErCjBlW;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=fqsWckxX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1-20020ae9e641000000b007869b71e5afsi5730051qkl.540.2024.02.19.04.34.07
+        by mx.google.com with ESMTPS id 11-20020ad45b8b000000b0068f480d8aabsi4855356qvp.264.2024.02.19.04.49.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Feb 2024 04:34:07 -0800 (PST)
+        Mon, 19 Feb 2024 04:49:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TErCjBlW;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=fqsWckxX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rc2qA-0008UY-Ip; Mon, 19 Feb 2024 07:33:46 -0500
+	id 1rc34y-0007UJ-Nr; Mon, 19 Feb 2024 07:49:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rc2q9-0008UH-Ck
- for qemu-devel@nongnu.org; Mon, 19 Feb 2024 07:33:45 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rc2q7-0004dl-Dp
- for qemu-devel@nongnu.org; Mon, 19 Feb 2024 07:33:45 -0500
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-a3e82664d53so125727266b.3
- for <qemu-devel@nongnu.org>; Mon, 19 Feb 2024 04:33:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708346022; x=1708950822; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=S4E0yzAO2ngkn+tDnZ9rriKrakxyWrEzizN7ZdrHINY=;
- b=TErCjBlWK/bDUkdJ63rXMbU3BFCzqT+YtwIRoAP0xWFCQYmZnLwOsKpgTAIRmYUN+T
- VbpGejWkRUp1k68Q6QOnpCFMIYjfHnXSuFlRn1Z8d4n+zt6tI6y8W8HR/VVxrW/nD1Si
- 9Lw5Vml0WCY/vLK45JtekbrHEJo4H5Llc1Dp/W+QWNxo6eJA9kYRjqzaVa35B1gBuqpl
- OSjWzEZ1KQBwD1rbHChNef3qdwcuXv+gx3055hDeyhkClv3NyLhkMrKQlWPDtjOs3c4h
- BY6q5xgXQ11TiasTpL5MjFa1bV0G8VBNQCvAWjKZ9hPGAOeSOfkrIfqWEEu+tcYvoH5o
- zXOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708346022; x=1708950822;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=S4E0yzAO2ngkn+tDnZ9rriKrakxyWrEzizN7ZdrHINY=;
- b=B9KiHf2en0jswt9Ddbb+AFikX3PoZXDd1TU/PGQuT7psgNrIAtqep2dwhNskX1Tnzi
- jr9XJq35ZNvUfYdnBO7IKHr2/3CakhEVQd/llMREIKL8y0fFn5T84MR5DNUkPlH0x8xJ
- I0M3XwQPsqwQ7ngi7Iii3rDVjFdr8J1m8erRZELhbBbULU8tsxkXNQ0E5CBZsA+dQv2e
- dfB76bDz8htBCsW/7aSPI+c0pXl5rFp240RpJHC66Pkw9+n+pI0h+ZiOTcStQH126Elk
- 2IYTAEzPTyDPIrD5p9buW3jTJvTv8Bw/cmeQgBFBGqh66TjvQHj5hIRvV1cDcwgnU78z
- r7Pg==
-X-Gm-Message-State: AOJu0Yx1w8LazkbB4ss8IQ35DkrHqhuiKxQ58IU1XleXtJ/3/icWxxVZ
- aemrf80xf/1V0toOVAPXr5YVpTZy/beJbY3mA9X+Pzrrt0XkqAkYCsjuTOlVwhw=
-X-Received: by 2002:a17:906:f1c5:b0:a3e:5d06:be57 with SMTP id
- gx5-20020a170906f1c500b00a3e5d06be57mr2978095ejb.41.1708346021695; 
- Mon, 19 Feb 2024 04:33:41 -0800 (PST)
-Received: from [192.168.69.100] ([176.176.181.220])
- by smtp.gmail.com with ESMTPSA id
- s8-20020a170906500800b00a3de4c7bf00sm2903610ejj.79.2024.02.19.04.33.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Feb 2024 04:33:41 -0800 (PST)
-Message-ID: <e3c5dc3f-8e66-4e69-86c0-89e35a8a6b8e@linaro.org>
-Date: Mon, 19 Feb 2024 13:33:38 +0100
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rc34w-0007N7-J1; Mon, 19 Feb 2024 07:49:02 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rc34u-0007OW-GX; Mon, 19 Feb 2024 07:49:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=oJGPiRT63+hXY9RNoSTiKodQ4PAZPM7uwa2SnQiaCP0=; b=fqsWckxXc/rbC1kgLWQQkiTbzP
+ 5sDtVVh0r3Dqkzm+K8VfKkr3s2fA0LZqARTLvG3Ly2TU9mDTCWZROFkY2/0CLBKHIlc1/RlNjtxgr
+ liss5BU3Y041/fu64MRiZQE6tMElUnOPgBGO/KXfsfPq3TWPlh9wWTqZrGG55B4RKIAA2Bi3XXrYu
+ gKlOUdvdD2TVThvtt4BvzGcEayqtWW6AvqTfDS0yR1loqcDTmtoaQ0plYY0HZEBg95cPqp5wtKprh
+ jSZVaxNFlk9edr2OtfgjtneacxLuqJUG+gBwdt0IBf/hY0DaOzotOaZtK3SejKf49BwXz3ZTtKSJi
+ 7o7p+WGTNLPZ0WN5efQzVlh3z5x19iFMfeF0v2P5eIm5rHXk8Ek+zN5lwmAVuQ2+rnNWbMvNqlFH/
+ YcJsSvOR9lcbrg103ymUJ6+0AZmGkLRD+2+jLso15g3R518sw3JJSs8LbJH5Zs8MTVVp2xPwzBnS7
+ EJusgBDb+TbvZJWUY+2OuwITfHPd94cKcUeKvkBE2k4+lgA4AudTnELKA9dGs1GJITAvvtMfI0Kh6
+ ALYo9VbpSW0fKsIYuXojoVeAZ7jRJNPzJZxZgWPOMgG8s/9fhImGkMz1IEXWYIALfJkuIGQDaIDwS
+ JjZKPf+RNn0DIDhLs5gi7G6OsXXKADnlKU8P54ziM=;
+Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rc345-0001rZ-KD; Mon, 19 Feb 2024 12:48:13 +0000
+Message-ID: <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk>
+Date: Mon, 19 Feb 2024 12:48:48 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org,
@@ -115,19 +98,48 @@ References: <20240216153517.49422-1-philmd@linaro.org>
  <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu>
  <2b9ea923-c4f9-4ee4-8ed2-ba9f62c15579@linaro.org>
  <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
 In-Reply-To: <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
+X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,9 +154,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Plh0QzUp60f8
+X-TUID: qWdTogw/4ktB
 
-On 19/2/24 13:00, BALATON Zoltan wrote:
+On 19/02/2024 12:00, BALATON Zoltan wrote:
+
 > On Mon, 19 Feb 2024, Philippe Mathieu-Daudé wrote:
 >> On 19/2/24 12:27, BALATON Zoltan wrote:
 >>> On Mon, 19 Feb 2024, Philippe Mathieu-Daudé wrote:
@@ -167,8 +180,7 @@ On 19/2/24 13:00, BALATON Zoltan wrote:
 >>>>>>> index 9058f5b414..77300e92e5 100644
 >>>>>>> --- a/hw/arm/realview.c
 >>>>>>> +++ b/hw/arm/realview.c
->>>>>>> @@ -238,7 +238,10 @@ static void realview_init(MachineState 
->>>>>>> *machine,
+>>>>>>> @@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
 >>>>>>>     sysbus_create_simple("pl061", 0x10014000, pic[7]);
 >>>>>>>     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
 >>>>>>>
@@ -178,13 +190,12 @@ On 19/2/24 13:00, BALATON Zoltan wrote:
 >>>>>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
 >>>>>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
 >>>>>>
->>>>>> Not directly related to this patch but this blows up 1 line into 4 
->>>>>> just to allow setting a property. Maybe just to keep some 
->>>>>> simplicity we'd rather need either a sysbus_realize_simple 
->>>>>> function that takes a sysbus device instead of the name and does 
->>>>>> not create the device itself or some way to pass properties to 
->>>>>> sysbus create simple (but the latter may not be easy to do in a 
->>>>>> generic way so not sure about that). What do you think?
+>>>>>> Not directly related to this patch but this blows up 1 line into 4 just to 
+>>>>>> allow setting a property. Maybe just to keep some simplicity we'd rather need 
+>>>>>> either a sysbus_realize_simple function that takes a sysbus device instead of 
+>>>>>> the name and does not create the device itself or some way to pass properties 
+>>>>>> to sysbus create simple (but the latter may not be easy to do in a generic way 
+>>>>>> so not sure about that). What do you think?
 >>>>>
 >>>>> Unfortunately sysbus doesn't scale in heterogeneous setup.
 >>>>
@@ -193,29 +204,26 @@ On 19/2/24 13:00, BALATON Zoltan wrote:
 >>>> declarative one, likely DSL driven. Meanwhile it is being investigated
 >>>> (as part of "Dynamic Machine"), I'm trying to get the HW APIs right
 >>>
->>> I'm aware of that activity but we're currently still using board code 
->>> to construct machines and probably will continue to do so for a 
->>> while. Also because likely not all current machines will be converted 
->>> to new declarative way so having a convenient API for that is still 
->>> useful.
+>>> I'm aware of that activity but we're currently still using board code to construct 
+>>> machines and probably will continue to do so for a while. Also because likely not 
+>>> all current machines will be converted to new declarative way so having a 
+>>> convenient API for that is still useful.
 >>>
->>> (As for the language to describe the devices of a machine and their 
->>> connections declaratively the device tree does just that but dts is 
->>> not a very user friendly descrtiption language so I haven't brought 
->>> that up as a possibility. But you may still could get some clues by 
->>> looking at the problems it had to solve to at least get a 
->>> requirements for the machine description language.)
+>>> (As for the language to describe the devices of a machine and their connections 
+>>> declaratively the device tree does just that but dts is not a very user friendly 
+>>> descrtiption language so I haven't brought that up as a possibility. But you may 
+>>> still could get some clues by looking at the problems it had to solve to at least 
+>>> get a requirements for the machine description language.)
 >>>
 >>>> for heterogeneous emulation. Current price to pay is a verbose
 >>>> imperative QDev API, hoping we'll get later a trivial declarative one
 >>>> (like this single sysbus_create_simple call), where we shouldn't worry
 >>>> about the order of low level calls, whether to use link or not, etc.
 >>>
->>> Having a detailed low level API does not prevent a more convenient 
->>> for current use higher level API on top so keeping that around for 
->>> current machines would allow you to chnage the low level API without 
->>> having to change all the board codes because you's only need to 
->>> update the simple high level API.
+>>> Having a detailed low level API does not prevent a more convenient for current use 
+>>> higher level API on top so keeping that around for current machines would allow 
+>>> you to chnage the low level API without having to change all the board codes 
+>>> because you's only need to update the simple high level API.
 >>
 >> So what is your suggestion here, add a new complex helper to keep
 >> a one-line style?
@@ -226,40 +234,37 @@ On 19/2/24 13:00, BALATON Zoltan wrote:
 >>                                           Object *linkobj,
 >>                                           qemu_irq irq);
 > 
-> I think just having sysbus_realize_simple that does the same as 
-> sysbus_create_simple minus creating the device would be enough because 
-> then the cases where you need to set properties could still use it after 
-> qdev_new or init and property_set but hide the realize and connecting 
-> the device behind this single call.
+> I think just having sysbus_realize_simple that does the same as sysbus_create_simple 
+> minus creating the device would be enough because then the cases where you need to 
+> set properties could still use it after qdev_new or init and property_set but hide 
+> the realize and connecting the device behind this single call.
 
-So you suggest splitting sysbus_create_simple() as
-sysbus_create_simple() + sysbus_realize_simple(), so we can set
-properties between the 2 calls? IOW extract qdev_new() from
-sysbus_create_varargs() and rename it as sysbus_realize_simple()?
-
-So we need a massive refactoring of:
-
-- dev = sysbus_create_simple(typename, addr, irq);
-+ dev = qdev_new(typename);
-+ // optionally set properties
-+ sysbus_realize_simple(dev, addr, irq);
-
-- dev = sysbus_create_varargs(typename, addr, irqA, irqB, ...);
-+ dev = qdev_new(typename);
-+ // optionally set properties
-+ sysbus_realize_varargs(dev, addr, irqA, irqB, ...);
-
-I'm not sure it is worth it because we want to move away from
-sysbus, merging the non-sysbus specific API to qdev (like indexed
-memory regions and IRQs to named ones).
+I can't say I'm a fan of sysbus_create_simple() because its use of varargs to 
+populate qdev properties is based upon the assumptions that the properties defined 
+with device_class_set_props() are stored in a list. I can see there could be 
+potential in future to store properties in other structures such as a hash, and 
+keeping this API would prevent this change. FWIW my personal preference would be to 
+remove this API completely.
 
 >> I wonder why this is that important since you never modified
 >> any of the files changed by this series:
 > 
-> For new people trying to contribute to QEMU QDev is overwhelming so 
-> having some way to need less of it to do simple things would help them 
-> to get started.
-> 
-> Regards,
-> BALATON Zoltan
+> For new people trying to contribute to QEMU QDev is overwhelming so having some way 
+> to need less of it to do simple things would help them to get started.
+
+It depends what how you define "simple": for QEMU developers most people search for 
+similar examples in the codebase and copy/paste them. I'd much rather have a slightly 
+longer, but consistent API for setting properties rather than coming up with many 
+special case wrappers that need to be maintained just to keep the line count down for 
+"simplicity".
+
+I think that Phil's approach here is the best one for now, particularly given that it 
+allows us to take another step towards heterogeneous machines. As the work in this 
+area matures it might be that we can consider other approaches, but that's not a 
+decision that can be made right now and so shouldn't be a reason to block this change.
+
+
+ATB,
+
+Mark.
 

@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424815ejb;
-        Sun, 18 Feb 2024 17:23:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWARwvzr45QGCgB25yFYRdAtBaqnAa4/T9/eB3jccrd/LoS7edmdcE+MgSDNDojyZTUd2ojqxivpj74SfOvZY9q2NxsUnor
-X-Google-Smtp-Source: AGHT+IFwe2OhjO/FeC16A5gSReFkvyMY/o0QLjF/dyxPiAioEeDUKEmOHG5h6sD+mMq10P/ob0KL
-X-Received: by 2002:a05:620a:12c1:b0:785:530d:14c6 with SMTP id e1-20020a05620a12c100b00785530d14c6mr20100385qkl.15.1708305793550;
-        Sun, 18 Feb 2024 17:23:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305793; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424835ejb;
+        Sun, 18 Feb 2024 17:23:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVrJ1yRxpQm5J2MCAW8ZNq5Kh6wpRNEyCDmoTapYIGJEcoHcizLIg06/k7KiKj/LLXVQpD8n7H6yF3iPiEwW61LRLopA0W6
+X-Google-Smtp-Source: AGHT+IE2l7fX9YPhuzGZEqH6NrgT4Z69ukprjrntY6ObTAnfSMNahZgIo4kH68Fo1EkEr1J8TwJe
+X-Received: by 2002:a05:622a:3d0:b0:42c:71ea:9b28 with SMTP id k16-20020a05622a03d000b0042c71ea9b28mr15432746qtx.32.1708305796843;
+        Sun, 18 Feb 2024 17:23:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708305796; cv=none;
         d=google.com; s=arc-20160816;
-        b=VTx/ZyEbItxPY7barMDlX/G1bhMh+35vLKdbmIOFIJPzs0CWP5rS9WUFrkDYruwfdv
-         P7y+dny4wr+4QtbfUhcqPOY9SEsWLKAsbrJzT0CSSwjksU6EyVAA/+RvtyzkJ3TPSG4g
-         otuolxbrMjYRW0H2BMxqn0xRWQ97KEef3pscndtbU9Kgews0aiqMuB/E4BEwa612vu2y
-         K0KD2n1vbVFBP0S6/K3/ncPkDFFuvEo4CjvhFBM+0hYcGaSwsBYLPG1kggwrLw1FpayZ
-         Go6k3AVzo78sw5NtLB+Q3wfnD1hPBGr4KP4QAhlrCGwnuaT2DBSKo+Ayk8RGzwcP4nLZ
-         UinA==
+        b=QK2BqLGWmoyzQxJwDUSg4Xf1/4fVY9SaroGAPQtYT4WnHMY+IbCp5PaZuiSbweyo60
+         s8RtPKoJWoD9ZwUQmM988HX9uxYN4G6JbmSGROy+tTXu1pFiQO+ZhpIMmbk5UDDfTozQ
+         SWOkVuFdYNceavfAXvo4KfS648D6xy8yJATqcR52Lwzn9ZvD25Vyc4RX4g/ZE4dI8Tfv
+         93don12KFqf0lkHdImtxvV7omqNLZ8jkmtIq4DXoVgp18Rka1787Rhnp4nsq5l8D4OCh
+         CRSTAc+ucVHG8bXhukH/boJHtzl8YaXsiXhJWjV0JciC5qySMyApS/yvzz0eBMSyXHJY
+         /WRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
+        bh=+hjmG1A2tPvmGc3N2NipyVPILE0g9ff37LS2A1O0hS0=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=iPeU8EaMQrXw3l7Ices/9a5QxNMZ0tyMFJysuH3+JcRJgr4j5m+heZoTZDwpKWIMXn
-         ehS8kgR69RBm1LndNOq95wmCRzyZIpEJyzL00cGdOeYKtFMgVjJ+/E7eyES8/1mEybJv
-         uGMrupP1amK9knRA2eIyRis1AX5ioZSHOurnulkOLwA2OO7oYLl8WBW3XaMHHZSkOpXK
-         yHoDM3GzbMS51qa64VQPr/i6JBi1ebmNSRJvxpaOlm7Sc7U+fWuEVb5XZLf+yNEwt4RD
-         Q6lIj5nz4R0bB3lXC42ooh+MgaqL+zUjiabqEgJlfyCqXTDhd8Rsc5sMAtideM7Gf6kg
-         3jXQ==;
+        b=gBb+Qyzsq6zZNpFrAn5OILt8oEH6V4IUkuX6YDk7D3LJV+3BOuNCVLSCfNwT/PmVIS
+         DJUJ2k/57kpad68IyJl7WokturIVxOlzBb4LNwp3BR3WCEtram+dy4HGbuxOK21kitNE
+         iG9pHt8z8S4PGbxvNNTWdm+772zflWWqQeoQ/IxqooTU7SC1DNVCl08KAxo69o8XTT/s
+         NWx+n5YkrF431ZEuZKdgDBFV609hz+gyvm/JTnsww4zoUlRfgsDfiOreaC2DhUdyvZ0R
+         6KGNXAheJ3qCa3lNcJDYaKwExn/gpMgE3KarM4gfaNPd3mtdsYDpXrUkPbFcN1mrRmuo
+         4rsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Sekq0a0a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AXwD1TD0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n20-20020a05620a295400b007858fe37453si6042754qkp.248.2024.02.18.17.23.13
+        by mx.google.com with ESMTPS id c17-20020ac853d1000000b0042beb743fcbsi5047577qtq.446.2024.02.18.17.23.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:23:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 18 Feb 2024 17:23:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Sekq0a0a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AXwD1TD0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rbsID-0003Fy-Fs; Sun, 18 Feb 2024 20:18:01 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rbsIx-0003zB-Ck; Sun, 18 Feb 2024 20:18:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsI9-0003Bi-94; Sun, 18 Feb 2024 20:17:57 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1rbsIe-0003YC-Kg; Sun, 18 Feb 2024 20:18:29 -0500
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsI7-0004CQ-85; Sun, 18 Feb 2024 20:17:57 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-603fd31f5c2so40092087b3.0; 
- Sun, 18 Feb 2024 17:17:54 -0800 (PST)
+ id 1rbsIW-0004JW-PN; Sun, 18 Feb 2024 20:18:23 -0500
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-6080f44d128so11745967b3.2; 
+ Sun, 18 Feb 2024 17:18:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305473; x=1708910273; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708305496; x=1708910296; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
- b=Sekq0a0afK6nAdYGoqHOTf8IFYO86wnWMGhhwrv4w23meCSw+bcVZfNnTa7rwsQeto
- NnK3SNvx6lxFoBeybqZxl5JMiW6Ua0ivxvvCSQ/Szp52sgHOTosTub7FLkpwTCju1Od9
- FNuneYH+z2Ijbz/ileuPbk7osjUe4QdOmNmsPkA4qXBoFx83Xj7XK2EWT1gaRNKFGiHu
- 47xPdmuqsudPoZal/HrRv2fhBvRzGgMlsFclPez114ZzdmgI/2Fo1Dfa8b4e770eFA8I
- pIPbaTmu7XnSalHbAS/tr/2R1BdeIdDKWcgdkUMy6WsVqAfvAWIUKa4mlU6WGUVo8/2f
- TPaw==
+ bh=+hjmG1A2tPvmGc3N2NipyVPILE0g9ff37LS2A1O0hS0=;
+ b=AXwD1TD0rtl5V3Vl8smKCSC822FpuGgmSsfgD26tn/brgvQ6kjwIkCm8pA1eb/xfS3
+ ac/JChV7yy3j7HmPmnB0ZtCo1RMh5UzRNBymfGBTfjlTndAyZenr6R/hSVSdTmy/eYmQ
+ tQ3R+wUyMlO96QEK4aZYMkeJtaRlS5U3dxzIGZiUH87RdD3bWH17WeAc+MLvqmTYbSJG
+ UHlren1SnYc7eFYdL4Vw7BCEPd0mRFUIFKufJ5lGx+13GclX9fcCYyYakrmmldMdtHWv
+ kcBrlfHH8QH85fILQBndKGvk5JmAi3Oc7qyV1KZ60JR10W6UKxOqSXvYrsQQZKW+S43V
+ 9Lmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305473; x=1708910273;
+ d=1e100.net; s=20230601; t=1708305496; x=1708910296;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
- b=iaZEBa8dOfeMHK0oV3NChxIonw6tt9m6YIB5YCX3u054m1suiXZkjK9TWtxyzerrNp
- qHzO6KGfqc1ibDvSHNxidsDQderp4vsclo2I/VxafrWHllVfR2dMfY/CJv/QAUGOMNuI
- cH6SA1Z7iubtzV1YEGQG+hSe2JCKaPD/AzFhK8m+VxdLxuvccFice8cDRu/rJX+7v5+7
- mBOVAJsmMgRHzrfELI+FyN143SPo2vR5qwIwuwnDipGtWuIl3uI4geCtfXKx+0iGSYF4
- JyJFAVtrKp1/J9+t+AMjdayDGqWL/qavm1QYPeIfwH5KYx/tETSYe7mktq6AkpPgF1iq
- xijw==
-X-Gm-Message-State: AOJu0YyGPau2XwHiKT41YsGl/HTJ1WeOZdrkdgBpOpbKWgblUpWaxss3
- zon+S2J4wMonQh0juafCEclWjduTkjTswWNUJEO6d/liMvXKLBYRGTQBiTiTpik=
-X-Received: by 2002:a0d:eb0f:0:b0:607:eab4:e038 with SMTP id
- u15-20020a0deb0f000000b00607eab4e038mr6789087ywe.23.1708305473536; 
- Sun, 18 Feb 2024 17:17:53 -0800 (PST)
+ bh=+hjmG1A2tPvmGc3N2NipyVPILE0g9ff37LS2A1O0hS0=;
+ b=ibkyElysZq5EAVAZ91qqh9QkM+NKG5zmzm5VyCU0+Y3fiHtuwbRl9rzYvPuobTIsfM
+ 47epFYfLTFMkTjx5Z4mZKxV1KAeHy7JhdzEKXSprwi56enAMSkUpy4WIZTjbmkGpqy3l
+ VNaMZ/2P4XcefiWz8Hz/BiZOCG/qO3XHcrB84TUfZZjB+mf8OUja3IxEmn2FB/6fVBLW
+ RqIfkzaylRbFSFSroSl9G9zHU/+Uvewg8Bvl3/cGnaz8ewMkVV2RmRuliufqoNoqo+2Z
+ rUEc3E5D7oCIx1Ok8mCWcGrdt5BPTdv8AhtZV12ednPYjc6RU6KEBYuTyX7+RL4Ff+BJ
+ 5dZQ==
+X-Gm-Message-State: AOJu0Yy8W5eOfeBuEbQQWSIelqbWYTOfrYkwFUfIdiWlBSnU6VpBR5Vu
+ EcLvMchfLpiaWR0rlOlBj2hw/z0Wit7zB/DyAPY/H+DG6ESj4uK7Tt2QRpmaI3E=
+X-Received: by 2002:a05:690c:93:b0:607:d5f3:f02 with SMTP id
+ be19-20020a05690c009300b00607d5f30f02mr14564314ywb.18.1708305496653; 
+ Sun, 18 Feb 2024 17:18:16 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.17.52
+ m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:17:53 -0800 (PST)
+ Sun, 18 Feb 2024 17:18:16 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 03/41] Split out raspi machine common part
-Date: Sun, 18 Feb 2024 19:17:01 -0600
-Message-Id: <20240219011739.2316619-4-sergey.kambalin@auriga.com>
+Subject: [PATCH v5 27/41] Implement GENET TX path
+Date: Sun, 18 Feb 2024 19:17:25 -0600
+Message-Id: <20240219011739.2316619-28-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,305 +113,308 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C+crEjImonLs
-
-Pre-setup for raspberry pi 4 introduction
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tlgBTLDfKSXf
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/raspi.c                  | 112 ++++++++++++++++++--------------
- include/hw/arm/raspi_platform.h |  21 ++++++
- 2 files changed, 85 insertions(+), 48 deletions(-)
+ hw/net/bcm2838_genet.c         | 221 ++++++++++++++++++++++++++++++++-
+ include/hw/net/bcm2838_genet.h |  17 +++
+ 2 files changed, 237 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index af866ebce2..7d04734cd2 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -18,6 +18,7 @@
- #include "qapi/error.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/bcm2836.h"
-+#include "hw/arm/raspi_platform.h"
- #include "hw/registerfields.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
-@@ -25,6 +26,9 @@
- #include "hw/arm/boot.h"
- #include "qom/object.h"
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 1fae3ecbc2..4c9b39a3ca 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -234,6 +234,13 @@ REG16(GENET_PHY_EXP_SEL,           0)
+ FIELD(GENET_PHY_EXP_SEL, REG_ID,   0, 8)
+ FIELD(GENET_PHY_EXP_SEL, BLOCK_ID, 8, 8)
  
-+#define TYPE_RASPI_MACHINE  MACHINE_TYPE_NAME("raspi-common")
-+OBJECT_DECLARE_SIMPLE_TYPE(RaspiMachineState, RASPI_MACHINE)
++REG32(GENET_TX_CSUM_INFO,            0)
++FIELD(GENET_TX_CSUM_INFO, OFFSET,    0, 15)
++FIELD(GENET_TX_CSUM_INFO, PROTO_UDP, 15, 1)
++FIELD(GENET_TX_CSUM_INFO, START,     16, 15)
++FIELD(GENET_TX_CSUM_INFO, LV,        30, 1)
 +
- #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
- #define MVBAR_ADDR      0x400 /* secure vectors */
- #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
-@@ -37,25 +41,10 @@
- 
- struct RaspiMachineState {
-     /*< private >*/
--    MachineState parent_obj;
-+    RaspiBaseMachineState parent_obj;
-     /*< public >*/
-     BCM283XState soc;
--    struct arm_boot_info binfo;
--};
--typedef struct RaspiMachineState RaspiMachineState;
--
--struct RaspiMachineClass {
--    /*< private >*/
--    MachineClass parent_obj;
--    /*< public >*/
--    uint32_t board_rev;
- };
--typedef struct RaspiMachineClass RaspiMachineClass;
--
--#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
--DECLARE_OBJ_CHECKERS(RaspiMachineState, RaspiMachineClass,
--                     RASPI_MACHINE, TYPE_RASPI_MACHINE)
--
- 
- /*
-  * Board revision codes:
-@@ -83,6 +72,11 @@ static const struct {
-     [PROCESSOR_ID_BCM2837] = {TYPE_BCM2837, BCM283X_NCPUS},
- };
- 
-+static void raspi_base_machine_init(MachineState *machine,
-+                             BCM283XBaseState *soc);
-+static void raspi_machine_class_common_init(MachineClass *mc,
-+                                     uint32_t board_rev);
 +
- static uint64_t board_ram_size(uint32_t board_rev)
+ static void bcm2838_genet_set_qemu_mac(BCM2838GenetState *s)
  {
-     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-@@ -200,13 +194,12 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-     cpu_set_pc(cs, info->smp_loader_start);
+     const MACAddr *addr = &s->nic_conf.macaddr;
+@@ -387,6 +394,218 @@ static uint64_t bcm2838_genet_mdio_cmd(BCM2838GenetState *s, uint64_t cmd)
+     return cmd;
  }
  
--static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
--                       size_t ram_size)
-+static void setup_boot(MachineState *machine, ARMCPU *cpu,
-+                       RaspiProcessorId processor_id, size_t ram_size)
- {
--    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineState *s = RASPI_BASE_MACHINE(machine);
-     int r;
- 
--    s->binfo.board_id = MACH_TYPE_BCM2708;
-     s->binfo.ram_size = ram_size;
- 
-     if (processor_id <= PROCESSOR_ID_BCM2836) {
-@@ -252,13 +245,13 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
-         s->binfo.firmware_loaded = true;
-     }
- 
--    arm_load_kernel(&s->soc.parent_obj.cpu[0].core, machine, &s->binfo);
-+    arm_load_kernel(cpu, machine, &s->binfo);
- }
- 
--static void raspi_machine_init(MachineState *machine)
-+static void raspi_base_machine_init(MachineState *machine,
-+                             BCM283XBaseState *soc)
- {
--    RaspiMachineClass *mc = RASPI_MACHINE_GET_CLASS(machine);
--    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-     uint32_t board_rev = mc->board_rev;
-     uint64_t ram_size = board_ram_size(board_rev);
-     uint32_t vcram_size;
-@@ -279,19 +272,17 @@ static void raspi_machine_init(MachineState *machine)
-                                         machine->ram, 0);
- 
-     /* Setup the SOC */
--    object_initialize_child(OBJECT(machine), "soc", &s->soc,
--                            board_soc_type(board_rev));
--    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(machine->ram));
--    object_property_set_int(OBJECT(&s->soc), "board-rev", board_rev,
-+    object_property_add_const_link(OBJECT(soc), "ram", OBJECT(machine->ram));
-+    object_property_set_int(OBJECT(soc), "board-rev", board_rev,
-                             &error_abort);
--    object_property_set_str(OBJECT(&s->soc), "command-line",
-+    object_property_set_str(OBJECT(soc), "command-line",
-                             machine->kernel_cmdline, &error_abort);
--    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-+    qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     /* Create and plug in the SD cards */
-     di = drive_get(IF_SD, 0, 0);
-     blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    bus = qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
-+    bus = qdev_get_child_bus(DEVICE(soc), "sd-bus");
-     if (bus == NULL) {
-         error_report("No SD bus found in SOC object");
-         exit(1);
-@@ -300,19 +291,32 @@ static void raspi_machine_init(MachineState *machine)
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-     qdev_realize_and_unref(carddev, bus, &error_fatal);
- 
--    vcram_size = object_property_get_uint(OBJECT(&s->soc), "vcram-size",
-+    vcram_size = object_property_get_uint(OBJECT(soc), "vcram-size",
-                                           &error_abort);
--    setup_boot(machine, board_processor_id(mc->board_rev),
-+    setup_boot(machine, &soc->cpu[0].core, board_processor_id(board_rev),
-                machine->ram_size - vcram_size);
- }
- 
--static void raspi_machine_class_common_init(MachineClass *mc,
--                                            uint32_t board_rev)
-+static void raspi_machine_init(MachineState *machine)
++static void bcm2838_genet_xmit_packet(NetClientState *s, void *packet,
++                                      size_t size)
 +{
-+    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineState *s_base = RASPI_BASE_MACHINE(machine);
-+    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-+    BCM283XState *soc = &s->soc;
++    uint8_t *buf = packet + sizeof(BCM2838GenetXmitStatus);
++    size_t len = size;
++    uint16_t len_type = 0;
 +
-+    s_base->binfo.board_id = MACH_TYPE_BCM2708;
++    len -= sizeof(BCM2838GenetXmitStatus);
++    net_checksum_calculate(buf, len, CSUM_ALL);
 +
-+    object_initialize_child(OBJECT(machine), "soc", soc,
-+                            board_soc_type(mc->board_rev));
-+    raspi_base_machine_init(machine, &soc->parent_obj);
++    memcpy(&len_type, &buf[12], sizeof(len_type));
++    len_type = ntohs(len_type);
++    if (len_type < MAX_PAYLOAD_SIZE) {
++        len_type = len;
++        len_type = htons(len_type);
++        memcpy(&buf[12], &len_type, sizeof(len_type));
++    }
++
++    qemu_send_packet(s, buf, len);
 +}
 +
-+void raspi_machine_class_common_init(MachineClass *mc,
-+                                     uint32_t board_rev)
- {
-     mc->desc = g_strdup_printf("Raspberry Pi %s (revision 1.%u)",
-                                board_type(board_rev),
-                                FIELD_EX32(board_rev, REV_CODE, REVISION));
--    mc->init = raspi_machine_init;
-     mc->block_default_type = IF_SD;
-     mc->no_parallel = 1;
-     mc->no_floppy = 1;
-@@ -322,50 +326,57 @@ static void raspi_machine_class_common_init(MachineClass *mc,
-     mc->default_ram_id = "ram";
- };
- 
-+static void raspi_machine_class_init(MachineClass *mc,
-+                                     uint32_t board_rev)
++static uint64_t bcm2838_genet_tx(BCM2838GenetState *s, unsigned int ring_index,
++                                 uint32_t prod_index,
++                                 uint32_t cons_index)
 +{
-+    raspi_machine_class_common_init(mc, board_rev);
-+    mc->init = raspi_machine_init;
-+};
++    const unsigned int DESC_SIZE_WORDS
++        = sizeof(BCM2838GenetTdmaDesc) / sizeof(uint32_t);
++    const uint64_t RING_START_ADDR
++        = ((uint64_t)s->regs.tdma.rings[ring_index].start_addr_hi << 32)
++            + s->regs.tdma.rings[ring_index].start_addr;
++    const uint64_t RING_END_ADDR
++        = ((uint64_t)s->regs.tdma.rings[ring_index].end_addr_hi << 32)
++            + s->regs.tdma.rings[ring_index].end_addr;
 +
- static void raspi0_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x920092; /* Revision 1.2 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi1ap_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x900021; /* Revision 1.1 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0xa21041;
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- #ifdef TARGET_AARCH64
- static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x9020e0; /* Revision 1.0 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0xa02082;
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- #endif /* TARGET_AARCH64 */
- 
-@@ -394,9 +405,14 @@ static const TypeInfo raspi_machine_types[] = {
- #endif
-     }, {
-         .name           = TYPE_RASPI_MACHINE,
--        .parent         = TYPE_MACHINE,
-+        .parent         = TYPE_RASPI_BASE_MACHINE,
-         .instance_size  = sizeof(RaspiMachineState),
--        .class_size     = sizeof(RaspiMachineClass),
-+        .abstract       = true,
-+    }, {
-+        .name           = TYPE_RASPI_BASE_MACHINE,
-+        .parent         = TYPE_MACHINE,
-+        .instance_size  = sizeof(RaspiBaseMachineState),
-+        .class_size     = sizeof(RaspiBaseMachineClass),
-         .abstract       = true,
-     }
- };
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index ede98e63c3..3018e8fcf3 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -28,6 +28,27 @@
- #ifndef HW_ARM_RASPI_PLATFORM_H
- #define HW_ARM_RASPI_PLATFORM_H
- 
-+#include "hw/boards.h"
-+#include "hw/arm/boot.h"
++    hwaddr data_addr;
++    uint64_t desc_index;
++    uint32_t desc_status = 0;
++    uint32_t buflength = 0;
++    uint64_t num_descs = 0;
++    uint64_t read_ptr
++        = ((uint64_t)s->regs.tdma.rings[ring_index].read_ptr_hi << 32)
++            + s->regs.tdma.rings[ring_index].read_ptr;
++    off_t packet_off = 0;
 +
-+#define TYPE_RASPI_BASE_MACHINE MACHINE_TYPE_NAME("raspi-base")
-+OBJECT_DECLARE_TYPE(RaspiBaseMachineState, RaspiBaseMachineClass,
-+                    RASPI_BASE_MACHINE)
++    uint32_t prod_index_fld = FIELD_EX32(prod_index,
++                                         GENET_DMA_PROD_INDEX, INDEX);
++    uint32_t cons_index_fld = FIELD_EX32(cons_index,
++                                        GENET_DMA_CONS_INDEX, INDEX);
 +
-+struct RaspiBaseMachineState {
-+    /*< private >*/
-+    MachineState parent_obj;
-+    /*< public >*/
-+    struct arm_boot_info binfo;
-+};
++    while (cons_index_fld != prod_index_fld) {
++        desc_index = read_ptr / DESC_SIZE_WORDS;
++        if (desc_index >= BCM2838_GENET_DMA_DESC_CNT) {
++            qemu_log_mask(
++                LOG_GUEST_ERROR,
++                "%s: invalid TX descriptor index %" PRIu64 " (exceeds %u)\n",
++                __func__, desc_index, BCM2838_GENET_DMA_DESC_CNT - 1);
++            break;
++        }
++        desc_status = s->regs.tdma.descs[desc_index].length_status;
++        data_addr = ((uint64_t)s->regs.tdma.descs[desc_index].address_hi << 32)
++            + s->regs.tdma.descs[desc_index].address_lo;
++        trace_bcm2838_genet_tx(ring_index, desc_index, desc_status,
++                               data_addr);
 +
-+struct RaspiBaseMachineClass {
-+    /*< private >*/
-+    MachineClass parent_obj;
-+    /*< public >*/
-+    uint32_t board_rev;
-+};
++        if (FIELD_EX32(desc_status, GENET_RDMA_LENGTH_STATUS, SOP) != 0) {
++            packet_off = 0;
++        }
 +
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
- #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
- #define INTE_OFFSET             0x2000   /* VC Interrupt controller */
++        buflength = FIELD_EX32(desc_status,
++                               GENET_RDMA_LENGTH_STATUS, BUFLENGTH);
++
++        /* TODO: Add address_space_read() return value check */
++        address_space_read(&s->dma_as, data_addr,
++                                        MEMTXATTRS_UNSPECIFIED,
++                                        s->tx_packet + packet_off,
++                                        buflength);
++        packet_off += buflength;
++
++        if (FIELD_EX32(desc_status, GENET_RDMA_LENGTH_STATUS, EOP) != 0) {
++            bcm2838_genet_xmit_packet(qemu_get_queue(s->nic), s->tx_packet,
++                                                     packet_off);
++            packet_off = 0;
++        }
++
++        num_descs++;
++        cons_index_fld++;
++        s->regs.tdma.descs[desc_index].length_status =
++            FIELD_DP32(s->regs.tdma.descs[desc_index].length_status,
++                       GENET_RDMA_LENGTH_STATUS, OWN, 1);
++        read_ptr = read_ptr == RING_END_ADDR + 1 - DESC_SIZE_WORDS
++            ? RING_START_ADDR : read_ptr + DESC_SIZE_WORDS;
++    }
++
++    s->regs.tdma.rings[ring_index].read_ptr = read_ptr;
++    s->regs.tdma.rings[ring_index].read_ptr_hi = read_ptr >> 32;
++
++    return num_descs;
++}
++
++static bool bcm2838_genet_tdma_ring_active(BCM2838GenetState *s,
++                                           unsigned int ring_index)
++{
++    uint32_t ctrl_reg = s->regs.tdma.ctrl;
++    uint32_t ring_cfg_reg = s->regs.tdma.ring_cfg;
++    uint32_t ring_mask = 1 << ring_index;
++    bool dma_en = FIELD_EX32(ctrl_reg, GENET_DMA_CTRL, EN) != 0;
++    bool ring_en =
++        (FIELD_EX32(ring_cfg_reg, GENET_DMA_CTRL, EN) & ring_mask) != 0;
++    bool ring_buf_en =
++        (FIELD_EX32(ctrl_reg, GENET_DMA_CTRL, RING_BUF_EN) & ring_mask) != 0;
++    bool active = dma_en && ring_en && ring_buf_en;
++
++    trace_bcm2838_genet_tx_dma_ring_active(ring_index,
++                                           active ? "active" : "halted");
++    return active;
++}
++
++static void bcm2838_genet_tdma(BCM2838GenetState *s, hwaddr offset,
++                               uint64_t value)
++{
++    hwaddr ring_offset;
++    uint64_t num_descs_tx;
++    unsigned int ring_index;
++     uint32_t tx_intrs;
++    uint32_t cons_index;
++    uint32_t prod_index = value;
++    uint32_t ring_cfg = value;
++    uint32_t dma_ctrl = value;
++
++    uint32_t cons_index_fld;
++    uint32_t prod_index_fld =
++        FIELD_EX32(prod_index, GENET_DMA_PROD_INDEX, INDEX);
++
++    uint32_t exst_tdma_en =
++        FIELD_EX32(s->regs.tdma.ctrl, GENET_DMA_CTRL, EN);
++    uint32_t exst_ring_en =
++        FIELD_EX32(s->regs.tdma.ring_cfg, GENET_DMA_RING_CFG, EN);
++    uint32_t incm_tdma_en =
++        FIELD_EX32(dma_ctrl, GENET_DMA_CTRL, EN);
++    uint32_t incm_ring_en =
++        FIELD_EX32(ring_cfg, GENET_DMA_RING_CFG, EN);
++    uint32_t incm_ring_buf_en =
++        FIELD_EX32(dma_ctrl, GENET_DMA_CTRL, RING_BUF_EN);
++
++    switch (offset) {
++    case BCM2838_GENET_TDMA_RINGS
++        ... BCM2838_GENET_TDMA_RINGS + sizeof(s->regs.tdma.rings) - 1:
++        ring_index = (offset - BCM2838_GENET_TDMA_RINGS)
++            / sizeof(BCM2838GenetTdmaRing);
++        if (bcm2838_genet_tdma_ring_active(s, ring_index)) {
++            ring_offset = offset - BCM2838_GENET_TDMA_RINGS
++                - ring_index * sizeof(BCM2838GenetTdmaRing);
++            switch (ring_offset) {
++            case BCM2838_GENET_TRING_PROD_INDEX:
++                cons_index = s->regs.tdma.rings[ring_index].cons_index;
++                cons_index_fld = FIELD_EX32(cons_index,
++                                            GENET_DMA_CONS_INDEX, INDEX);
++                if (cons_index_fld != prod_index_fld) {
++                    trace_bcm2838_genet_tx_request(ring_index,
++                                                   prod_index_fld,
++                                                   cons_index_fld);
++                    num_descs_tx = bcm2838_genet_tx(s, ring_index, prod_index,
++                                                    cons_index);
++                    if (num_descs_tx > 0) {
++                        s->regs.tdma.rings[ring_index].cons_index =
++                            FIELD_DP32(s->regs.tdma.rings[ring_index].cons_index,
++                                       GENET_DMA_CONS_INDEX, INDEX,
++                                       cons_index + num_descs_tx);
++
++                        if (ring_index == BCM2838_GENET_DMA_RING_DEFAULT) {
++                            s->regs.intrl0.stat =
++                                FIELD_DP32(s->regs.intrl0.stat, GENET_INTRL_0,
++                                           TXDMA_MBDONE, 1);
++                        } else {
++                            tx_intrs =  FIELD_EX32(s->regs.intrl1.stat,
++                                                   GENET_INTRL_1, TX_INTRS);
++                            s->regs.intrl1.stat =
++                                FIELD_DP32(s->regs.intrl1.stat,
++                                           GENET_INTRL_1, TX_INTRS,
++                                           tx_intrs | 1 << ring_index);
++                        }
++                    }
++                }
++                break;
++            default:
++                break;
++            }
++        }
++        break;
++    case BCM2838_GENET_TDMA_RING_CFG:
++        if (exst_ring_en != incm_ring_en) {
++            trace_bcm2838_genet_tx_dma_ring(incm_ring_en);
++        }
++        break;
++    case BCM2838_GENET_TDMA_CTRL:
++        if (exst_tdma_en != incm_tdma_en) {
++            s->regs.tdma.status = FIELD_DP32(s->regs.tdma.status,
++                                             GENET_DMA_STATUS,
++                                             DISABLED, !exst_tdma_en);
++            trace_bcm2838_genet_tx_dma(incm_tdma_en == 1
++                                       ? "enabled"
++                                       : "disabled");
++        }
++        if (exst_ring_en != incm_ring_buf_en) {
++            trace_bcm2838_genet_tx_dma_ring_buf(incm_ring_buf_en);
++        }
++        break;
++    default:
++        break;
++    }
++}
++
+ static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint64_t value = ~0;
+@@ -477,7 +696,7 @@ static void bcm2838_genet_write(void *opaque, hwaddr offset, uint64_t value,
+             break;
+         case BCM2838_GENET_TDMA_REGS
+             ... BCM2838_GENET_TDMA_REGS + sizeof(BCM2838GenetRegsTdma) - 1:
+-            qemu_log_mask(LOG_UNIMP, "TDMA isn't implemented yet");
++            bcm2838_genet_tdma(s, offset, value);
+             break;
+         default:
+             break;
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 7a483bd265..f96ea3a145 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -108,6 +108,21 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
+ #define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
+ 
++#define MAX_FRAME_SIZE                  0xFFF
++#define MAX_PACKET_SIZE                 1518
++#define MAX_PAYLOAD_SIZE                1500
++#define TX_MIN_PKT_SIZE                 60
++
++
++typedef struct BCM2838GenetXmitStatus {
++    uint32_t  length_status;  /* length and peripheral status */
++    uint32_t  ext_status;     /* Extended status */
++    uint32_t  rx_csum;        /* partial rx checksum */
++    uint32_t  unused1[9];     /* unused */
++    uint32_t  tx_csum_info;   /* Tx checksum info. */
++    uint32_t  unused2[3];     /* unused */
++} BCM2838GenetXmitStatus;
++
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -403,6 +418,8 @@ struct BCM2838GenetState {
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
++
++    uint8_t tx_packet[MAX_FRAME_SIZE];
+ };
+ 
+ #endif /* BCM2838_GENET_H */
 -- 
 2.34.1
 

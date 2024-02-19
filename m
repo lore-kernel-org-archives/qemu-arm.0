@@ -1,198 +1,181 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp612832ejb;
-        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXWgpBAlkH5nxjAri0wax5bWldM09StWXsSH5cKfWEJu/5FxfQPqgMvX/nVLwiZZlgL9noF/2RLl/TcNbOTQ0ZfYB6JzH+/
-X-Google-Smtp-Source: AGHT+IEHFFEatJ3CZ2IZo9KbCnBr7/Tm0PVAxyxUK+jk/2O4bMva0XS1j9o8i6iv+BTiePgp09vI
-X-Received: by 2002:ac8:5a0e:0:b0:42c:80f3:6a44 with SMTP id n14-20020ac85a0e000000b0042c80f36a44mr14659414qta.37.1708340261255;
-        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708340261; cv=pass;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp627488ejb;
+        Mon, 19 Feb 2024 03:28:13 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVSTDxJK6B0Eg4kP+Wmrp0wxpq8p2la48eBipqdKxsUWWneVuMzSKTXpqk8SharU6g47Wj5MhVqwxYXD5bqfOZeDDJ1T27b
+X-Google-Smtp-Source: AGHT+IEFYjyf9YiMMSNbgKlgkiJ+2Al7Y7kpvRLW+B1SZjWkhboT38criq1V+33p3WPUHmQz818s
+X-Received: by 2002:a92:d34b:0:b0:363:ad00:106d with SMTP id a11-20020a92d34b000000b00363ad00106dmr13141276ilh.4.1708342093339;
+        Mon, 19 Feb 2024 03:28:13 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1708342093; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ZgFSpsDZ0xurY71/Q7UcIPIln1Nrqrzi1XphDjbce6WddYRVsmn9LlPufF4Yj/qG2v
-         FfipR+sBKVMXzx6U3xRDSUS2xIvEs+l6d9zHC6UyiPKz4fnujtGu9H4r7PPzZ84jMoPq
-         mmFeX9CvnV6n6xnHkD6ctZTToKsfvgW6XFUQQ51lVOza2ueiuCkKg1xnrUREZtmmSQ1g
-         MRPP598EX5CwMTuSwQp6RBcEjGW736lPIdq6lHOTYLU/0vP1eZ9T0QeCEoy4UAN6Xokt
-         1hWrUqGaehdnFolUya4g7ekrpV7ArXBhuCuEef0aNpkbbdzchECmOWFL4beoJ/ZU14nf
-         PR3w==
+        b=iI11NyFAYAUnP9l5SrRNMjxoX5vpaGsJJu6NO2PBl2WoR+JPR4BsXb0Wu5s9s6Tbej
+         jod/RF9O+AUAaFeikOaWBdH6NJAbrvL3My3gwrHGehLUUC5PT6sIPtdZOFmiu/dn5Z9I
+         ExtdSwJw/bWCz0l4o/MGVh28XtArTih8tqQjfKZeLUtctTRa4Eosln/leujLBKRiLsGb
+         9fk8e5rqzU0sbH330s+M33IqZGEcU1iRRxf809bc93xlRtlDrIpyyt75jyDSir9bU1D8
+         UkufsWPeh5m/fcNgc7VGcO10VtXnI5Cm9lx+/IRN66OSNX8zXSKBlI036n1RrkhCZ3Q6
+         h6dw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
-        fh=I0lkCgkmx1xzGh4IAw0+/exZU1w8D7UAXzuzM95vWeU=;
-        b=Ktp5z9gh/TNO6WomjEJoWUbft6L/c5f922jC30/nvlOn52mLv+1uJCDC/V7bGjflkJ
-         wJmnysk0f+hRQRKs5GfK97FJyr50HPj5//FCspzIhHUvJZCKkCwWDfak7mDl8kQaHMB5
-         BFQBJIs260LH0/sRUXjyGO+NmqzZJ4pK1HgCk0mhJvZHtVtzzy/pd04zJCu04RnL0onF
-         mO6ZiNjLLx5WMVui67xwpu6jGMN4pAmBc3UYIshfyO44fcirH06SGr+kWcXDeWwhJd7T
-         0ECnCibM2Ldxg5wdCxqqJIsOgetyOdTlCu5HCdfJr71kGPBuwS3NlOXfF/jLju8jhezI
-         15jw==;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:in-reply-to:subject:cc:to:from:date;
+        bh=CquV0sxoVd0UBXjoz5VhS08IEblbK/nKg2tDxegxD3c=;
+        fh=2EkYgGc6JBEuJEHLkCYJgIjEaKtKqkk4EF8znv4UTSk=;
+        b=a2n1+tnXSRNn9Rb+aTr9hsLSUH/T1fRXKvgxp9iqWJCTsTN+6yyBsuk/Qj5O8475M+
+         0sPIUHUzQ7v1Kdx4vwyWxsBnug0/E8IO+327W6cRmAWUqYWRnO0r1N/Ipzjy2BtVE8YZ
+         P3SqWO6FdG1XwtX5Rnry80pb8Rnttx72lRJtZSJylueTUwE8jQkNVnZURKWOQtV4/Bc6
+         +ivQtF4Ja/gY57OVTXp3Oj7h6OYd3xmVYTsxjlFtPJduqZbpB2vOv1L6LKvr6/iAx/GD
+         RwMwnmkWGlKK23HU90n/y4x39zSjpOM64jbMwE1NawK5M3labI/6XJJNy/YtAr3TSXQ2
+         jJaw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=ufgkB4xC;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22-20020ac85556000000b0042ded3fdb64si5649038qtr.41.2024.02.19.02.57.41
+       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
+       spf=pass (google.com: domain of kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id w22-20020a63af16000000b005e220e5132bsi2193615pge.749.2024.02.19.03.28.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Feb 2024 02:57:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Feb 2024 03:28:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=ufgkB4xC;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rc1Kj-00021M-Dh; Mon, 19 Feb 2024 05:57:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1rc1Kh-00020X-Cw; Mon, 19 Feb 2024 05:57:11 -0500
-Received: from mail-dm6nam12on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2417::601]
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1rc1KX-0002o8-R9; Mon, 19 Feb 2024 05:57:08 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=T3NYeeCav+89qcQVau3jcoG/uEiSHyQjfbIwYWFr6zCdBU++pqO2gABb4qbwe2QFlL3JaLjrKMWBPZ/A9pV19wbpEOA3kIYgxo3Px/tLpBD9xCBMIz4rWBJ+N8uNBF+65t6YBiWL8vsIk2lmfHmhXwfQWpjf+8DHEd+gotGrn6bzMMngl6XQ8HhRqFtiWReamSqUP6km+gV2FzhWJzu6GVpsTG8nkGwcjYmNQA1i92HkMHponXbMaSNHZsvAoFFMa6KXVjE8Xm72Ki0peoaYfBQ9UvBAF6ZUKfIgP7RsWvNa17rAf8jJ16z5PD65XrC2d1/X4YM6WvxUX0RpeXRmFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
- b=c5dWWymctO+4TNXwQc/075RCMc+AJQCaP695+/PKkDDgKIpwynQJGmP0UoGpCpJDLVMUPANdsXw/TcQ5poNs++oYJl9lYW7eeunkdxZZc668ktlEwDV9GT535iPYNHRzSBypXq+m7ip8EfpyygP+0dfCsoxjZDZAw6Btl2nFoskNE4AKK+Zus/EmrKJJIq3L0zT5wqW3JtZcQ9Ltdni6t2SdiPdTDr/5U3aN8r4kAuBfWajgXjCwcczfloJpAnW8i9czKgPR3oN3EQb9YOKOX9BdTrXhpKLPEpPfhIU8gMJnrleGjw4jSwEpyvrPB2xuev4l4Oyx1Nls5SWs1wFNDg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=temperror (sender ip
- is 165.204.84.17) smtp.rcpttodomain=nongnu.org
- smtp.mailfrom=amd.com; 
- dmarc=temperror action=none header.from=amd.com; dkim=none (message not
- signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ir9LL6Y8dp+8cQbN1onlzdFfGuZy2WRa8uUHH2ZH/A4=;
- b=ufgkB4xCbvcmz3w0/f6zDU2u7bPhDzGUnoA1n0WjbS9KIclu8U40jCbji41/Utcth3EJlR2LiJwV++8VyTFnxXXeVqvcusRr3FHYSdfl0dNn9ur6j1oeRt4f3hdIEakk2GtwqLqB6kJx62B5wkxbvpee+iAfb0YuRv0izGplGt4=
-Received: from SJ0PR03CA0177.namprd03.prod.outlook.com (2603:10b6:a03:338::32)
- by SN7PR12MB7980.namprd12.prod.outlook.com (2603:10b6:806:341::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.17; Mon, 19 Feb
- 2024 10:56:54 +0000
-Received: from SJ1PEPF00001CEA.namprd03.prod.outlook.com
- (2603:10b6:a03:338:cafe::f5) by SJ0PR03CA0177.outlook.office365.com
- (2603:10b6:a03:338::32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.38 via Frontend
- Transport; Mon, 19 Feb 2024 10:56:54 +0000
-X-MS-Exchange-Authentication-Results: spf=temperror (sender IP is
- 165.204.84.17) smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=temperror action=none header.from=amd.com;
-Received-SPF: TempError (protection.outlook.com: error in processing during
- lookup of amd.com: DNS Timeout)
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- SJ1PEPF00001CEA.mail.protection.outlook.com (10.167.242.26) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7292.25 via Frontend Transport; Mon, 19 Feb 2024 10:56:53 +0000
-Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 19 Feb
- 2024 04:56:52 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
- (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 19 Feb
- 2024 02:56:52 -0800
-Received: from xhdvaralaxm41-docker.xilinx.com (10.180.168.240) by
- SATLEXMB03.amd.com (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.35
- via Frontend Transport; Mon, 19 Feb 2024 04:56:50 -0600
-From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, Alistair Francis
- <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Kevin Wolf <kwolf@redhat.com>, Francisco Iglesias
- <frasse.iglesias@gmail.com>, <sai.pavan.boddu@amd.com>
-Subject: [PATCH v2] xlnx-versal-ospi: disable reentrancy detection for
- iomem_dac
-Date: Mon, 19 Feb 2024 10:56:37 +0000
-Message-ID: <20240219105637.65052-1-sai.pavan.boddu@amd.com>
-X-Mailer: git-send-email 2.25.1
+       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
+       spf=pass (google.com: domain of kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9072-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 28679B23DD2
+	for <alex.bennee@linaro.org>; Mon, 19 Feb 2024 11:28:11 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B41A22C1A0;
+	Mon, 19 Feb 2024 11:28:06 +0000 (UTC)
+Received: from zero.eik.bme.hu (zero.eik.bme.hu [152.66.115.2])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D663E847A
+	for <kvm@vger.kernel.org>; Mon, 19 Feb 2024 11:28:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=152.66.115.2
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1708342086; cv=none; b=THZKtrAvg2I86Y0qxTSRa8HmTJ3JIDyZ+08Kl5D/yF9IcRvbfbRIlqF93YClUGi+ZxpT1joXvSOX/TGD1cE1oAIVwK9iZSdPfhjIERyY+fNzyWfk/qENW8RMwTwOuC08Nws/A9DXpK5o5DqiiI18ZUJextH1wQtVxtdzKAHmjEg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1708342086; c=relaxed/simple;
+	bh=4Cvud7QyiAKhb7TutEh2G1s4OpY3N/BteMZqGcYZ1Jo=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=tuWj8wRJPww3W6Pu7FIHX0yZEHvx9A6RL/OKcqLHnPXY6fyx3b5dPvg26U9NUfr5D5Q3SisD23tGjE8Bi4IaoS5DNEwu5Y9wSumuIrir395mEigMFDGVb1zz7dvKu0Ylso6La0+quZAVz1JV8ZeiXd1nLvM7D+2Tb77L55CtO3I=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu; spf=pass smtp.mailfrom=eik.bme.hu; arc=none smtp.client-ip=152.66.115.2
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=eik.bme.hu
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id C27344E6012;
+	Mon, 19 Feb 2024 12:27:53 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+	by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+	with ESMTP id ZCiph4DT3mu7; Mon, 19 Feb 2024 12:27:51 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id C80734E6003; Mon, 19 Feb 2024 12:27:51 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id C65637456B4;
+	Mon, 19 Feb 2024 12:27:51 +0100 (CET)
+Date: Mon, 19 Feb 2024 12:27:51 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, 
+    =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+    Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
+    kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>, 
+    Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+    "Michael S. Tsirkin" <mst@redhat.com>, 
+    Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+    Paolo Bonzini <pbonzini@redhat.com>, 
+    Richard Henderson <richard.henderson@linaro.org>, 
+    Markus Armbruster <armbru@redhat.com>, 
+    Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
+In-Reply-To: <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
+Message-ID: <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu>
+References: <20240216153517.49422-1-philmd@linaro.org> <20240216153517.49422-2-philmd@linaro.org> <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu> <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org> <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF00001CEA:EE_|SN7PR12MB7980:EE_
-X-MS-Office365-Filtering-Correlation-Id: b3e890a0-1288-42d2-28fe-08dc31397b8b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Ea/OIU7PlpGTvIggnKtK3FlUd0KX/ZfE1nCaK/I2cTLuwt0AdYhuNYgrhbmOQmCY6RKMrdhzwGlOOOgKJ/Ygl07Kqh77N/zAVLZxNEPECbJLe3yGrcme7P/+HefXW4NBCY3sQXQD3+mHp6mcE65JBXErdYjeQ0qENwB4wq7MCCllsygZY+LgLHwAXNJjhMgsi51aDz2SoFQkmLWOjI8pSPEA7qbG5hJHsNC8AsIyBss+y00vNljp52YmDcwJUTwfpOWGdoLaCwSUosjjUYOXLmpgKrr5Ym3Sdj8bR3bft1KQ73E6ubSDc+T2/gnbL8SR2ntikaKJFSOl/cqFXammNV3iHbMxoIrQBh8eQB0/96T7ecL7bdzmRVCATtvXTSaahefN3TPbCYt0r9FParLs/9MWUxE1vBYXxFFT2JgI9gvc6zxsnkH6r3KRZ+EzOs29di0Ii1R9+734a1XXL/5GrtvTywUNqa+Xa8ME5mF32KboU9b8oY62Ex3Wvp9Jw2aeRZlEe/l94SvP9wJL1Ru7LZ+yji3GSpvpOaJdnBlyFK81yMVg5ERz035kzdcgI2WIvB1ZhWvVO6/jt/QYPniNNGOPYuv0kfd0Zf9EqqenXgJ86nMlp8K3ckgHcAJ8JbkQbpqVEO/94Bx80+gcq7UIu8ltaOshvnS259aGG7dE7tI=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(36860700004)(40470700004)(46966006); DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2024 10:56:53.4132 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b3e890a0-1288-42d2-28fe-08dc31397b8b
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00001CEA.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7980
-Received-SPF: softfail client-ip=2a01:111:f403:2417::601;
- envelope-from=sai.pavan.boddu@amd.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
-X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) AC_FROM_MANY_DOTS=2.5, BAYES_00=-1.9,
- DKIMWL_WL_HIGH=-0.077, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SAGhkP24jRzx
+Content-Type: multipart/mixed; boundary="3866299591-507710864-1708342071=:44613"
+X-TUID: t5NtGZXiJL8L
 
-The OSPI DMA reads flash data through the OSPI linear address space (the
-iomem_dac region), because of this the reentrancy guard introduced in
-commit a2e1753b ("memory: prevent dma-reentracy issues") is disabled for
-the memory region.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
----
-Changes for V2:
-	Added code comments.
+--3866299591-507710864-1708342071=:44613
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
- hw/ssi/xlnx-versal-ospi.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+On Mon, 19 Feb 2024, Philippe Mathieu-Daudé wrote:
+> On 16/2/24 20:54, Philippe Mathieu-Daudé wrote:
+>> On 16/2/24 18:14, BALATON Zoltan wrote:
+>>> On Fri, 16 Feb 2024, Philippe Mathieu-Daudé wrote:
+>>>> We want to set another qdev property (a link) for the pl110
+>>>> and pl111 devices, we can not use sysbus_create_simple() which
+>>>> only passes sysbus base address and IRQs as arguments. Inline
+>>>> it so we can set the link property in the next commit.
+>>>> 
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>> ---
+>>>> hw/arm/realview.c    |  5 ++++-
+>>>> hw/arm/versatilepb.c |  6 +++++-
+>>>> hw/arm/vexpress.c    | 10 ++++++++--
+>>>> 3 files changed, 17 insertions(+), 4 deletions(-)
+>>>> 
+>>>> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+>>>> index 9058f5b414..77300e92e5 100644
+>>>> --- a/hw/arm/realview.c
+>>>> +++ b/hw/arm/realview.c
+>>>> @@ -238,7 +238,10 @@ static void realview_init(MachineState *machine,
+>>>>     sysbus_create_simple("pl061", 0x10014000, pic[7]);
+>>>>     gpio2 = sysbus_create_simple("pl061", 0x10015000, pic[8]);
+>>>> 
+>>>> -    sysbus_create_simple("pl111", 0x10020000, pic[23]);
+>>>> +    dev = qdev_new("pl111");
+>>>> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x10020000);
+>>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[23]);
+>>> 
+>>> Not directly related to this patch but this blows up 1 line into 4 just to 
+>>> allow setting a property. Maybe just to keep some simplicity we'd rather 
+>>> need either a sysbus_realize_simple function that takes a sysbus device 
+>>> instead of the name and does not create the device itself or some way to 
+>>> pass properties to sysbus create simple (but the latter may not be easy to 
+>>> do in a generic way so not sure about that). What do you think?
+>> 
+>> Unfortunately sysbus doesn't scale in heterogeneous setup.
+>
+> Regarding the HW modelling API complexity you are pointing at, we'd
+> like to move from the current imperative programming paradigm to a
+> declarative one, likely DSL driven. Meanwhile it is being investigated
+> (as part of "Dynamic Machine"), I'm trying to get the HW APIs right
 
-diff --git a/hw/ssi/xlnx-versal-ospi.c b/hw/ssi/xlnx-versal-ospi.c
-index c7b95b1f37..c479138ec1 100644
---- a/hw/ssi/xlnx-versal-ospi.c
-+++ b/hw/ssi/xlnx-versal-ospi.c
-@@ -1772,6 +1772,12 @@ static void xlnx_versal_ospi_init(Object *obj)
-     memory_region_init_io(&s->iomem_dac, obj, &ospi_dac_ops, s,
-                           TYPE_XILINX_VERSAL_OSPI "-dac", 0x20000000);
-     sysbus_init_mmio(sbd, &s->iomem_dac);
-+    /*
-+     * The OSPI DMA reads flash data through the OSPI linear address space (the
-+     * iomem_dac region), because of this the reentrancy guard needs to be
-+     * disabled.
-+     */
-+    s->iomem_dac.disable_reentrancy_guard = true;
- 
-     sysbus_init_irq(sbd, &s->irq);
- 
--- 
-2.25.1
+I'm aware of that activity but we're currently still using board code to 
+construct machines and probably will continue to do so for a while. Also 
+because likely not all current machines will be converted to new 
+declarative way so having a convenient API for that is still useful.
 
+(As for the language to describe the devices of a machine and their 
+connections declaratively the device tree does just that but dts is not a 
+very user friendly descrtiption language so I haven't brought that up as a 
+possibility. But you may still could get some clues by looking at the 
+problems it had to solve to at least get a requirements for the machine 
+description language.)
+
+> for heterogeneous emulation. Current price to pay is a verbose
+> imperative QDev API, hoping we'll get later a trivial declarative one
+> (like this single sysbus_create_simple call), where we shouldn't worry
+> about the order of low level calls, whether to use link or not, etc.
+
+Having a detailed low level API does not prevent a more convenient for 
+current use higher level API on top so keeping that around for current 
+machines would allow you to chnage the low level API without having to 
+change all the board codes because you's only need to update the simple 
+high level API.
+
+Regards,
+BALATON Zoltan
+--3866299591-507710864-1708342071=:44613--

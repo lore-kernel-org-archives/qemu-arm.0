@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424526ejb;
-        Sun, 18 Feb 2024 17:22:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUGG2DM15n98f7gWvc9Ok8rPKJFWE5u+N1sFQEsT1j5wjQ0VZSa2y50vkORydmBZQZKtII8q8GpezNFrRZdh04DwVljZ+ad
-X-Google-Smtp-Source: AGHT+IHCjgIK73leDm7kfZFc5hWoe6LS5Gg6vRCxn21hdYLyc2FrxXUCELTIAetl/2htrnzcv8cV
-X-Received: by 2002:ac8:5dc9:0:b0:42c:78bd:5207 with SMTP id e9-20020ac85dc9000000b0042c78bd5207mr15483525qtx.2.1708305735692;
-        Sun, 18 Feb 2024 17:22:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305735; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424547ejb;
+        Sun, 18 Feb 2024 17:22:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVTmTnaUGnydB45qxMQ2P1YJk6NvKamumNepGazzJ+kjMOhfdKTtyxItlJenrlFhJL+D6E4VLpD6evggcTb6vtTuUMOXPB1
+X-Google-Smtp-Source: AGHT+IHam/x2YbUZAp8ov7yq8zYYl1Aj0324ssKTSB8XddktpetV/afLWVee61ReI2q6LG5W5QTD
+X-Received: by 2002:ac8:7d4d:0:b0:42d:73e5:e11a with SMTP id h13-20020ac87d4d000000b0042d73e5e11amr14404039qtb.57.1708305739124;
+        Sun, 18 Feb 2024 17:22:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708305739; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVqU3QZpAk2RQ7jnl1IoVFT3JgM/rIOvw0VM1m0KWcCJEIZIAhXMP9DgA4pzhr59qw
-         seHHmYzdWCs6jhwprS2xPXKWJT13czSsxvw+Ygm/PcCxp7oKUJ1n+4dVdwrOOwzMNS8V
-         tRzev0CDOL63uXbj1pqvVRjigTMCaG9xT7ORZ9nLUCJjWnKdKCgrAYcag1C/o6DPReHr
-         qSME4kTVZ4CFZYUEu9RnClGuGVugVaXXkaO7/0oQoVNiHF8V21E7hoWoZ0wqTogqOhD5
-         KLon0M/L662zDg/dxKTlEtnlirq4QdON3PYYgAqCNAUiyMz/CM5Q+6wiO7zp+qLI5i/Y
-         nIXA==
+        b=Jj4fs1g1JH8S7kOeZ/l6iPQsjfdg2V++z50vrhAxoJmI/5qULXB5hY7wGeriS/pm+C
+         mThUm4mrQa1aB3w4psQbjAWa0GV5lrQtI3kxQ1XUxUJSTANfi4pezyLXz+6MMQU09vJo
+         WhqOpbpbXCXBJVxWo7/XhD5aJlX/ZnxgctkIg4tWeCXDWgeXKSE/hDnI+hU7YdiZsh6V
+         0F4dohshIPpaBJ+U1SoANFmGludPHXkpCOQyjwXLoRdwSK1dNQPaWGKDfg5Q/a6o3xXq
+         z+TVDGAjkJF20ldrVkQr4UdQ6yGdHe6ubwpzgzmHx6fgrLXs8P2HY1MPQ57cgK6/OjOC
+         4a0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
+        bh=gLCgNe8tzKgwcvsw5l260FdcvaTVAG0BWiHATsCjss4=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=irBTDlgK11w0dZK7hEMeVBFXnQMQ90e36EhvsTTi4a0DgKsNvYV16Oy41mgOV8aKM2
-         iMJ/jUY740E1knnhi17wIjgocPUBe++xvSvugUOD7zdbz3wX7wHPyMboFh0Lqc2BWr3S
-         p048lw8Cix6ohZWnWy9j6okpg6USye0xWSM0lQzuPGQpCY0pk+O+T0S20gC6irsffVs2
-         hkY0bYM6fB7ifDg60kwbqm4TKnyaSak2+Pf1WETplLnedJMVwxlb8ug01y8TFiCeYURP
-         71HCXFLoKoCAw9qxPknLsaJAyiC/og5JYzpGKSDO1BPY8EsZcizmZBo0Hdmn0TxejP/l
-         crQw==;
+        b=fGAQ4WLHwLq7SyRU35D5fGNUg9RcDNWKoyEMdjkPPklQOJumruYHVb+O06bS7uNKOP
+         U+OfF00kDA0McLk92lMysvzvmHrlrSYoze5awvcuhJgArpd5RaB87UTTzvphKFpA/kIr
+         aPynYTOjNQVtdW+Rf4ft/JmBYqlSX2YypIrWGjXC1OADsis8RUVEoRFl+EIF7w8asBVQ
+         /UYZmehGQLjMiLxkUhw0QjHWD2mNxeoZcfuP7XHky9HXbAVoEud1gwb3lqIHCWCf8Afd
+         vaE0MLISJALcXeU8YI24yG1b4vCLA97qElNx8ZHND7nRLC8hKbQRQJuzKC2wfZfgB/o+
+         Yfug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=T78IK6Wh;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JJyePyWd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y1-20020a05622a004100b0042c70667b36si5630532qtw.104.2024.02.18.17.22.15
+        by mx.google.com with ESMTPS id dw8-20020a05620a600800b00787559404f6si4138162qkb.274.2024.02.18.17.22.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:22:15 -0800 (PST)
+        Sun, 18 Feb 2024 17:22:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=T78IK6Wh;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JJyePyWd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rbsJJ-0004eD-V9; Sun, 18 Feb 2024 20:19:09 -0500
+	id 1rbsIy-00040W-OK; Sun, 18 Feb 2024 20:18:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIh-0003a1-TR; Sun, 18 Feb 2024 20:18:33 -0500
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ id 1rbsIK-0003La-4q; Sun, 18 Feb 2024 20:18:10 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIf-0004LU-9I; Sun, 18 Feb 2024 20:18:31 -0500
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-60837b7a8ddso4278687b3.3; 
- Sun, 18 Feb 2024 17:18:28 -0800 (PST)
+ id 1rbsIH-0004Gi-QE; Sun, 18 Feb 2024 20:18:07 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-6080beb19ddso14100587b3.1; 
+ Sun, 18 Feb 2024 17:18:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305508; x=1708910308; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708305484; x=1708910284; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
- b=T78IK6WhS/MUQYx0NAeqrJMCTYVce+NqIRId8GE+POY2TlPlAUABp7uYb/xqHU+Cri
- QTegRR+aYAQx0K/uodP8X4cH1l0B6T+j7bL09PK1cWF6jNG59kJR3YK9vlQJ2IgzKEbx
- +91zmekr92zkJwSDAMZvRuh0CkvJl4KhGkoK+jDkjcrYCRBDlc/0Q1l0ZWG45RwEpsEM
- aoDmhfpmEU861ILrpkYrQpXYvcD/7E8YNqa0B0Lxzd3B66bFBjg6M6suS4cbKz6mV/os
- 5VtePrC3itmaadOtDQw5Nobv2pH9e8hRm+5ko3SScJzbee0wVpAeir5FGJ+kpvexrsI6
- xBXg==
+ bh=gLCgNe8tzKgwcvsw5l260FdcvaTVAG0BWiHATsCjss4=;
+ b=JJyePyWd4WRMcXGWvO5dgyys62UTsR78w2SaKLYiyp5rCAKo4dfnedsT3A2L6gE8LC
+ 17hJKsUhbUpl2PiYrT7gl+8W+ygg3wja1X+zv8zl4ApWh48Y5qZGM5MCzNj0gS/o5tYB
+ jQYwNYPwurvYUqbQet9RVq1hPgxzyf3MmfSRamvtZS7YLdHG/4JtyBhFOUWIgvScBjML
+ sexLiK9u+3sHYxwL/LF70c1d5xi+sWV9VKs3qU2dNVpBnwl3nI4y5zaOj8YtvA7MLGSk
+ mAfvZTixLpTilCcagFkMVu3+HHSH/qurG8pjZuIjt5/f03qyhEOnOB4HbW1ZXf/GxlId
+ IseQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305508; x=1708910308;
+ d=1e100.net; s=20230601; t=1708305484; x=1708910284;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
- b=vFzt76uOmn1RFdKGDLT5UWPBHAxXFyvaUDVzEMJ97Kr4BGwraL/fzfmhxf1FS9clcC
- LowaII96zSUJeQNzP9hcO1L2xaI9LrjClhIGQX9g8yg2TMs1qJGgmd4dfqiHhwzKUOZo
- oUIA8t7KAsWSviotbMHAdsqiqhlLRdsm0/g4PesCwtSSn7UxkX/s7ECW18KdSEC8x/TB
- eeE3p1RH5jTAG5QDD+RbvDpCe/jL+gj7Z9DmJ7U9sP0qF+icreJbIP5A12eCKGovJRbg
- W6kQnXJrYPyD1CYk03912dAJOeUGyPqBbEy7mqv/RGtvuy/aTut1hLsD47b0sCwrMiCA
- XfGg==
-X-Gm-Message-State: AOJu0YyuemuzUsfEg9ohZGvvvRJ4XcrEw22C4RzrDhH+U4HhhmiQduKK
- Zbiyl5QteCLgzNUlplHtoadoAuGNq0Lvvt5HKB6vsnXwvdNDP8B3X3B2vtg793Y=
-X-Received: by 2002:a81:ad1d:0:b0:604:a47e:6e52 with SMTP id
- l29-20020a81ad1d000000b00604a47e6e52mr10905607ywh.32.1708305507805; 
- Sun, 18 Feb 2024 17:18:27 -0800 (PST)
+ bh=gLCgNe8tzKgwcvsw5l260FdcvaTVAG0BWiHATsCjss4=;
+ b=rL+rcJFmU44fnlAMkp/5HgVKvhRwb3kj4rW9rlgZfQJkMc4dTGhy+wtvovHwidnuNu
+ imfHjV4cHeOdoQOTrE8ewsVpcvgPms4MT+qfESW1yUSD+l9VFpiAxSUxdfXRaeqEmq85
+ MztKx9oJH/hSlnZXADPrGsOy/KzqW8n7FN8TecF1K8IZGkZzrUPo6h9pQwMPAbcqVx+i
+ wuaGqfpD60Ie972g/PT2qhjNWM1wRG8Njfi9tsfkx93jwBYrzaHzJUp4kxXPTiT/R+5g
+ nTp76LE7ELGsVxfei2ytHlCq7gNib64fn1G/jbLkUwGpjD4mqG5pGng6MrgKuDzAyhZG
+ QQvA==
+X-Gm-Message-State: AOJu0YwzN9wtSg4ZHvU7q4/1l35CZkoOA6YEB1hxliCFpbnKRvZodRwE
+ oxZ3QKaZrIbi4qFEcjPCdgU6zn6iatg5LKsZ0z6OugDFyQ5ikQvNrhFyAz9M8PQ=
+X-Received: by 2002:a81:ad16:0:b0:604:7c04:5795 with SMTP id
+ l22-20020a81ad16000000b006047c045795mr11016104ywh.26.1708305484181; 
+ Sun, 18 Feb 2024 17:18:04 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.27
+ m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:18:27 -0800 (PST)
+ Sun, 18 Feb 2024 17:18:03 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 39/41] Add missed BCM2835 properties
-Date: Sun, 18 Feb 2024 19:17:37 -0600
-Message-Id: <20240219011739.2316619-40-sergey.kambalin@auriga.com>
+Subject: [PATCH v5 14/41] Add BCM2838 PCIE host
+Date: Sun, 18 Feb 2024 19:17:12 -0600
+Message-Id: <20240219011739.2316619-15-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,87 +126,310 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T8lU2loxZbQV
+X-TUID: HT5eAY8+nqfh
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/misc/bcm2835_property.c           | 21 +++++++++++++++++++++
- include/hw/arm/raspberrypi-fw-defs.h | 11 +++++++++++
- 2 files changed, 32 insertions(+)
+ hw/arm/bcm2838_pcie.c         | 217 +++++++++++++++++++++++++++++++++-
+ hw/arm/trace-events           |   4 +
+ include/hw/arm/bcm2838_pcie.h |  22 ++++
+ 3 files changed, 241 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 5c48f8d743..bdd9a6bbce 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -19,6 +19,8 @@
+diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
+index cb1370433e..348263d9fb 100644
+--- a/hw/arm/bcm2838_pcie.c
++++ b/hw/arm/bcm2838_pcie.c
+@@ -12,11 +12,220 @@
+ #include "hw/irq.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/qdev-properties.h"
+-#include "migration/vmstate.h"
+-#include "qemu/module.h"
+ #include "hw/arm/bcm2838_pcie.h"
  #include "trace.h"
- #include "hw/arm/raspi_platform.h"
  
-+#define VCHI_BUSADDR_SIZE       sizeof(uint32_t)
++static uint32_t bcm2838_pcie_config_read(PCIDevice *d,
++                                         uint32_t address, int len)
++{
++    return pci_default_read_config(d, address, len);
++}
 +
- /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
- 
- static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-@@ -138,6 +140,13 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 8;
-             break;
- 
-+        case RPI_FWREQ_GET_CLOCKS:
-+            /* TODO: add more clock IDs if needed */
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_ARM_CLK_ID);
-+            resplen = 8;
++static void bcm2838_pcie_config_write(PCIDevice *d, uint32_t addr, uint32_t val,
++                                      int len)
++{
++    return pci_default_write_config(d, addr, val, len);
++}
++
++static uint64_t bcm2838_pcie_host_read(void *opaque, hwaddr offset,
++                                       unsigned size) {
++    hwaddr mmcfg_addr;
++    uint64_t value = ~0;
++    BCM2838PcieHostState *s = opaque;
++    PCIExpressHost *pcie_hb = PCIE_HOST_BRIDGE(s);
++    uint8_t *root_regs = s->root_port.regs;
++    uint32_t *cfg_idx = (uint32_t *)(root_regs + BCM2838_PCIE_EXT_CFG_INDEX
++                                     - PCIE_CONFIG_SPACE_SIZE);
++
++    if (offset - PCIE_CONFIG_SPACE_SIZE + size <= sizeof(s->root_port.regs)) {
++        switch (offset) {
++        case BCM2838_PCIE_EXT_CFG_DATA
++            ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
++            mmcfg_addr = *cfg_idx
++                | PCIE_MMCFG_CONFOFFSET(offset - BCM2838_PCIE_EXT_CFG_DATA);
++            value = pcie_hb->mmio.ops->read(opaque, mmcfg_addr, size);
 +            break;
++        default:
++            memcpy(&value, root_regs + offset - PCIE_CONFIG_SPACE_SIZE, size);
++        }
++    } else {
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
++            __func__, size, offset);
++    }
 +
-         case RPI_FWREQ_SET_CLOCK_RATE:
-         case RPI_FWREQ_SET_MAX_CLOCK_RATE:
-         case RPI_FWREQ_SET_MIN_CLOCK_RATE:
-@@ -276,6 +285,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             resplen = 4;
-             break;
++    trace_bcm2838_pcie_host_read(size, offset, value);
++    return value;
++}
 +
-         case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
-@@ -301,6 +311,17 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-                                     resplen);
-             break;
- 
-+        case RPI_FWREQ_GET_THROTTLED:
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            resplen = 4;
++static void bcm2838_pcie_host_write(void *opaque, hwaddr offset,
++                                    uint64_t value, unsigned size) {
++    hwaddr mmcfg_addr;
++    BCM2838PcieHostState *s = opaque;
++    PCIExpressHost *pcie_hb = PCIE_HOST_BRIDGE(s);
++    uint8_t *root_regs = s->root_port.regs;
++    uint32_t *cfg_idx = (uint32_t *)(root_regs + BCM2838_PCIE_EXT_CFG_INDEX
++                                     - PCIE_CONFIG_SPACE_SIZE);
++
++    trace_bcm2838_pcie_host_write(size, offset, value);
++
++    if (offset - PCIE_CONFIG_SPACE_SIZE + size <= sizeof(s->root_port.regs)) {
++        switch (offset) {
++        case BCM2838_PCIE_EXT_CFG_DATA
++            ... BCM2838_PCIE_EXT_CFG_DATA + PCIE_CONFIG_SPACE_SIZE - 1:
++            mmcfg_addr = *cfg_idx
++                | PCIE_MMCFG_CONFOFFSET(offset - BCM2838_PCIE_EXT_CFG_DATA);
++            pcie_hb->mmio.ops->write(opaque, mmcfg_addr, value, size);
 +            break;
++        default:
++            memcpy(root_regs + offset - PCIE_CONFIG_SPACE_SIZE, &value, size);
++        }
++    } else {
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
++            __func__, size, offset);
++    }
++}
 +
-+        case RPI_FWREQ_VCHIQ_INIT:
-+            stl_le_phys(&s->dma_as,
-+                        value + offsetof(rpi_firmware_prop_request_t, payload),
-+                        0);
-+            resplen = VCHI_BUSADDR_SIZE;
-+            break;
-         default:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: unhandled tag 0x%08x\n", tag);
-diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
-index 579cf0d554..8b404e0533 100644
---- a/include/hw/arm/raspberrypi-fw-defs.h
-+++ b/include/hw/arm/raspberrypi-fw-defs.h
-@@ -159,4 +159,15 @@ enum rpi_firmware_clk_id {
-     RPI_FIRMWARE_NUM_CLK_ID,
- };
- 
-+struct rpi_firmware_property_tag_header {
-+    uint32_t tag;
-+    uint32_t buf_size;
-+    uint32_t req_resp_size;
++static const MemoryRegionOps bcm2838_pcie_host_ops = {
++    .read = bcm2838_pcie_host_read,
++    .write = bcm2838_pcie_host_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {.max_access_size = sizeof(uint64_t)},
 +};
 +
-+typedef struct rpi_firmware_prop_request {
-+    struct rpi_firmware_property_tag_header hdr;
-+    uint8_t payload[0];
-+} rpi_firmware_prop_request_t;
++int bcm2838_pcie_host_set_irq_num(BCM2838PcieHostState *s, int index, int spi)
++{
++    if (index >= BCM2838_PCIE_NUM_IRQS) {
++        return -EINVAL;
++    }
 +
- #endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
++    s->irq_num[index] = spi;
++    return 0;
++}
++
++static void bcm2838_pcie_host_set_irq(void *opaque, int irq_num, int level)
++{
++    BCM2838PcieHostState *s = opaque;
++
++    qemu_set_irq(s->irq[irq_num], level);
++}
++
++static PCIINTxRoute bcm2838_pcie_host_route_intx_pin_to_irq(void *opaque,
++                                                            int pin)
++{
++    PCIINTxRoute route;
++    BCM2838PcieHostState *s = opaque;
++
++    route.irq = s->irq_num[pin];
++    route.mode = route.irq < 0 ? PCI_INTX_DISABLED : PCI_INTX_ENABLED;
++
++    return route;
++}
++
++static int bcm2838_pcie_host_map_irq(PCIDevice *pci_dev, int pin)
++{
++    return pin;
++}
++
++static void bcm2838_pcie_host_realize(DeviceState *dev, Error **errp)
++{
++    PCIHostState *pci = PCI_HOST_BRIDGE(dev);
++    BCM2838PcieHostState *s = BCM2838_PCIE_HOST(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    int i;
++
++    memory_region_init_io(&s->cfg_regs, OBJECT(s), &bcm2838_pcie_host_ops, s,
++                          "bcm2838_pcie_cfg_regs", BCM2838_PCIE_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->cfg_regs);
++
++    /*
++     * The MemoryRegions io_mmio and io_ioport that we pass to
++     * pci_register_root_bus() are not the same as the MemoryRegions
++     * io_mmio_window and io_ioport_window that we expose as SysBus MRs.
++     * The difference is in the behavior of accesses to addresses where no PCI
++     * device has been mapped.
++     *
++     * io_mmio and io_ioport are the underlying PCI view of the PCI address
++     * space, and when a PCI device does a bus master access to a bad address
++     * this is reported back to it as a transaction failure.
++     *
++     * io_mmio_window and io_ioport_window implement "unmapped addresses read as
++     * -1 and ignore writes"; this is a traditional x86 PC behavior, which is
++     * not mandated properly by the PCI spec but expected by the majority of
++     * PCI-using guest software, including Linux.
++     *
++     * We implement it in the PCIe host controller, by providing the *_window
++     * MRs, which are containers with io ops that implement the 'background'
++     * behavior and which hold the real PCI MRs as sub-regions.
++     */
++    memory_region_init(&s->io_mmio, OBJECT(s), "bcm2838_pcie_mmio", UINT64_MAX);
++    memory_region_init(&s->io_ioport, OBJECT(s), "bcm2838_pcie_ioport",
++                       64 * 1024);
++
++    memory_region_init_io(&s->io_mmio_window, OBJECT(s),
++                            &unassigned_io_ops, OBJECT(s),
++                            "bcm2838_pcie_mmio_window", UINT64_MAX);
++    memory_region_init_io(&s->io_ioport_window, OBJECT(s),
++                            &unassigned_io_ops, OBJECT(s),
++                            "bcm2838_pcie_ioport_window", 64 * 1024);
++
++    memory_region_add_subregion(&s->io_mmio_window, 0, &s->io_mmio);
++    memory_region_add_subregion(&s->io_ioport_window, 0, &s->io_ioport);
++    sysbus_init_mmio(sbd, &s->io_mmio_window);
++    sysbus_init_mmio(sbd, &s->io_ioport_window);
++
++    for (i = 0; i < BCM2838_PCIE_NUM_IRQS; i++) {
++        sysbus_init_irq(sbd, &s->irq[i]);
++        s->irq_num[i] = -1;
++    }
++
++    pci->bus = pci_register_root_bus(dev, "pcie.0", bcm2838_pcie_host_set_irq,
++                                     bcm2838_pcie_host_map_irq, s, &s->io_mmio,
++                                     &s->io_ioport, 0, BCM2838_PCIE_NUM_IRQS,
++                                     TYPE_PCIE_BUS);
++    pci_bus_set_route_irq_fn(pci->bus, bcm2838_pcie_host_route_intx_pin_to_irq);
++    qdev_realize(DEVICE(&s->root_port), BUS(pci->bus), &error_fatal);
++}
++
++static const char *bcm2838_pcie_host_root_bus_path(PCIHostState *host_bridge,
++                                                   PCIBus *rootbus)
++{
++    return "0000:00";
++}
++
++static void bcm2838_pcie_host_class_init(ObjectClass *class, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(class);
++    PCIHostBridgeClass *hc = PCI_HOST_BRIDGE_CLASS(class);
++
++    hc->root_bus_path = bcm2838_pcie_host_root_bus_path;
++    dc->realize = bcm2838_pcie_host_realize;
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
++    dc->fw_name = "pci";
++}
++
++static void bcm2838_pcie_host_initfn(Object *obj)
++{
++    BCM2838PcieHostState *s = BCM2838_PCIE_HOST(obj);
++    BCM2838PcieRootState *root = &s->root_port;
++
++    object_initialize_child(obj, "root_port", root, TYPE_BCM2838_PCIE_ROOT);
++    qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
++    qdev_prop_set_bit(DEVICE(root), "multifunction", false);
++}
++
++static const TypeInfo bcm2838_pcie_host_info = {
++    .name       = TYPE_BCM2838_PCIE_HOST,
++    .parent     = TYPE_PCIE_HOST_BRIDGE,
++    .instance_size = sizeof(BCM2838PcieHostState),
++    .instance_init = bcm2838_pcie_host_initfn,
++    .class_init = bcm2838_pcie_host_class_init,
++};
++
+ /*
+  * RC root part (D0:F0)
+  */
+@@ -62,6 +271,9 @@ static void bcm2838_pcie_root_class_init(ObjectClass *class, void *data)
+     k->device_id = BCM2838_PCIE_DEVICE_ID;
+     k->revision = BCM2838_PCIE_REVISION;
+ 
++    k->config_read = bcm2838_pcie_config_read;
++    k->config_write = bcm2838_pcie_config_write;
++
+     rpc->exp_offset = BCM2838_PCIE_EXP_CAP_OFFSET;
+     rpc->aer_offset = BCM2838_PCIE_AER_CAP_OFFSET;
+ }
+@@ -77,6 +289,7 @@ static const TypeInfo bcm2838_pcie_root_info = {
+ static void bcm2838_pcie_register(void)
+ {
+     type_register_static(&bcm2838_pcie_root_info);
++    type_register_static(&bcm2838_pcie_host_info);
+ }
+ 
+ type_init(bcm2838_pcie_register)
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index f1a54a02df..2f24d9528d 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -73,3 +73,7 @@ xen_enable_tpm(uint64_t addr) "Connected tpmdev at address 0x%"PRIx64
+ 
+ # bcm2838.c
+ bcm2838_gic_set_irq(int irq, int level) "gic irq:%d lvl:%d"
++
++# bcm2838_pcie.c
++bcm2838_pcie_host_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
++bcm2838_pcie_host_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
+diff --git a/include/hw/arm/bcm2838_pcie.h b/include/hw/arm/bcm2838_pcie.h
+index 39828f817f..58c3a0efe7 100644
+--- a/include/hw/arm/bcm2838_pcie.h
++++ b/include/hw/arm/bcm2838_pcie.h
+@@ -16,6 +16,9 @@
+ #include "hw/pci/pcie_port.h"
+ #include "qom/object.h"
+ 
++#define TYPE_BCM2838_PCIE_HOST "bcm2838-pcie-host"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2838PcieHostState, BCM2838_PCIE_HOST)
++
+ #define TYPE_BCM2838_PCIE_ROOT "bcm2838-pcie-root"
+ OBJECT_DECLARE_TYPE(BCM2838PcieRootState, BCM2838PcieRootClass,
+                     BCM2838_PCIE_ROOT)
+@@ -50,4 +53,23 @@ struct BCM2838PcieRootClass {
+ };
+ 
+ 
++struct BCM2838PcieHostState {
++    /*< private >*/
++    PCIExpressHost parent_obj;
++
++    /*< public >*/
++    BCM2838PcieRootState root_port;
++
++    MemoryRegion cfg_regs;
++    MemoryRegion io_ioport;
++    MemoryRegion io_mmio;
++    MemoryRegion io_ioport_window;
++    MemoryRegion io_mmio_window;
++
++    qemu_irq irq[BCM2838_PCIE_NUM_IRQS];
++    int irq_num[BCM2838_PCIE_NUM_IRQS];
++};
++
++int bcm2838_pcie_host_set_irq_num(BCM2838PcieHostState *s, int index, int spi);
++
+ #endif /* BCM2838_PCIE_H */
 -- 
 2.34.1
 

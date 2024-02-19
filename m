@@ -1,117 +1,118 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424636ejb;
-        Sun, 18 Feb 2024 17:22:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCViOqXjuABPL5ZiSbrfmqm1t40wfiWhfz87TQ7AvHCgsFLJ1Jw4nDGP8AuXVuTrnM5FaXuhBWrYf2NfpsoZeRIrSoO2NO7a
-X-Google-Smtp-Source: AGHT+IG4buT30uPZ/p71jApUkobz2Xkj1S5P1UoXmlppZ57cX/hPY1XmGZXP2s9G6n2+586o7Z1K
-X-Received: by 2002:a05:620a:370f:b0:787:34f6:a6fe with SMTP id de15-20020a05620a370f00b0078734f6a6femr16541928qkb.30.1708305752507;
-        Sun, 18 Feb 2024 17:22:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708305752; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp424701ejb;
+        Sun, 18 Feb 2024 17:22:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUBq2g2BX7z12tboxH4PBeA09zLvovSiP7DKHaFZWHPfE7qWj6WMZv+LhDgysKZ1trjUS7jn9RYV2h566kcZlXtoOTsGtPv
+X-Google-Smtp-Source: AGHT+IGbbXAulde/F61fomFoPE/g3wlpo3RWWTWl+x1w2eaX6ha7ukwU2Fwarx9EOol2y7wZ7WCp
+X-Received: by 2002:a05:620a:44c5:b0:785:d89a:df51 with SMTP id y5-20020a05620a44c500b00785d89adf51mr14205850qkp.6.1708305767474;
+        Sun, 18 Feb 2024 17:22:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708305767; cv=none;
         d=google.com; s=arc-20160816;
-        b=cc++L/Qt3ylPLQYIO5+eSDBlE7jt/b3J42aD+7PEcyPWn7aTFdHPmPwGwXoY3pdnEd
-         LhPPc5Tspq7tcw9GlOVzY9C+zsoZNEPhFfYlJAe0SSQODUyQT0WN5TkYI3D2kFMm7043
-         Ir7mn7jBQobFGRbJMI8ByFuQSAbNvOCDhSMOMdjJ9wUmPrQF+NzgZXjOXVb/Du9kei9E
-         bcstC0HrW4t/+SANyIOI4GC9sR0Ces0D8SQwXlg99IlqJLOzUxSm2a2WpHmV2IisKdNW
-         iNW/q00fJXP0QXemEQAnidkccEvf4pEA13W5sx0yWfBtwXaDMzjL6sJvMdl5DhW2L7uv
-         mLPA==
+        b=eCDKlPHrQymHoAombhpgUnw9gsOAQbIMkscBC1daJoz19LIbOOE+bTX0T6Sn9qm0Y4
+         UCI33SLdydkCPov5aeVm1+i9WN28HRfRAXpvj4QSd9F3TD4/Z2kMzTqD/QJtIVgFkGjy
+         O1VfU1H3gKk3QTWMKuzAshrf5+hQaE06JbZJzDZCBZZVfHUjHpezGKF3RWNHeAneX6y+
+         5xXl0OwZ4gPhneVV6LEE+GLHN3cuPb3O+7B0i7kaGsJb1L0KvZuigfx4NMcErZcT6Urt
+         4hDtkwPbPsJ5aIQk60VENBwJBENuY316sBm0OZ1egbEzyTbUZG9WlEJNFCYdJ9CF9kx7
+         rT6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=BRYxAbHjzjGyq61Vh8zjRNXfYYfpjMlQcbfIi2bBIxM=;
+        bh=kP3rP5kDO6a2F7RySUKQZtGqTq+p08N2Zl2emdCf9Jg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=g6LgRioD81EDRs+3lcm4DdPA8IrTLLXlB0e9efgN8UujbbIVNUy4WSAa139wvVjeYn
-         Uv91fi1fqtp6uPsgogQIW7ZbgBebSpX3o/DN9PVMRCxWk6CxIY7qmfTMNdicfAnzXnyI
-         QgVC4grLxkGBesVd3fJ+n0LvEGHSwgQFZc0Yzt0VsQpe0RqP1glCJ+PYz4ZCZQZyLLzH
-         ve+r1ja+8kYlt5T+l2N/S+D0xDDMKDYMchK5HJFcJEonburtzFrZqImyJIg5hMxK1C1D
-         PN0vF1/GmSeJ1enz9AeLH/Z6iRBFIVlM4miL/ezeI92rN+Zynu/xZR2ZxO7nq5oF1w/C
-         QcFA==;
+        b=iq/b6KCxMMvPWYc6519bOR7T0zS4J1UAEYQKWmXBKzv0KjeEeSR6DAuxqlOXC0SjfG
+         oD4NNVbW3QfdDhK+smNeda+COrBWfZaXyJfRi63y9UgbAT9Im+1y7DC6/XiphBwwO4Qd
+         0ILoIAq54v/w0lRr6Fzh38J5fN8AgmvJkgltAV6TaMDnJugmfrbKMjPiVrl9WSkWJeEa
+         WPI1i4dH5FF4mwhoReRGXQsZqaXRP0aLx2RcZ2p4LznzyWT6uqC8Sftb1aUjPGDF3VyR
+         VH8/CfF7IysFKDYauRJzOHihlvQMoLZGt/Hlh5feHlgsIjsd+8fj38SfDvbAvQb+HcWt
+         2tEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZD3jMblP;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DtsuwPzS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7-20020a05620a0a4700b00787305a1315si5134207qka.309.2024.02.18.17.22.32
+        by mx.google.com with ESMTPS id b9-20020a05620a118900b007853c0bc590si4935692qkk.271.2024.02.18.17.22.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Feb 2024 17:22:32 -0800 (PST)
+        Sun, 18 Feb 2024 17:22:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZD3jMblP;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DtsuwPzS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rbsIH-0003Ju-0N; Sun, 18 Feb 2024 20:18:05 -0500
+	id 1rbsJN-0004nl-3Y; Sun, 18 Feb 2024 20:19:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIE-0003HL-MK; Sun, 18 Feb 2024 20:18:02 -0500
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ id 1rbsIg-0003Zi-Rm; Sun, 18 Feb 2024 20:18:33 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rbsIC-0004FV-Qy; Sun, 18 Feb 2024 20:18:02 -0500
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-607f94d0b7cso26249557b3.3; 
- Sun, 18 Feb 2024 17:18:00 -0800 (PST)
+ id 1rbsIe-0004L2-N7; Sun, 18 Feb 2024 20:18:30 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-6080a3eecd4so16645997b3.2; 
+ Sun, 18 Feb 2024 17:18:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708305479; x=1708910279; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708305506; x=1708910306; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BRYxAbHjzjGyq61Vh8zjRNXfYYfpjMlQcbfIi2bBIxM=;
- b=ZD3jMblPFvRDGGrJa3kLhO5pXJHQpCX3vqAb/avXa2F5oo01FCZzngRREhV5fEEzhs
- Pkf5tYlDH9XhT4Epfm5gk8Q7fuw/69NZK77HOm7XYFr7E+9r23AF83hinj555K8ftVuM
- amev50REKwGNEX3GaO45vAnkQpqYd7t6e5Hvw5o4X8G5nR0ngrtln/sM2Ye07Spiq7bK
- mDPzbTXHlbmEcqgx1KmQW1qIHbu21ZxCFzqzLyDp5DQ6X2qhO85xtiozfFD29bsM3Anx
- uTRc10iXWiqOtwnkLQSNKRRF0Li1y0/iNhrBDHc+S+RVOvdlPqIq8+juh/9C4AO5B238
- QDtw==
+ bh=kP3rP5kDO6a2F7RySUKQZtGqTq+p08N2Zl2emdCf9Jg=;
+ b=DtsuwPzS9320XgK1GXMbILQYF1mg0bz1zde+3meZxwh5gtaYdXei8K3jNrJyHyF8aM
+ 7oWVHth/Ic0ojDj4W7ddkldFbJ6UQ+AONnQXSdrzJRYSQ0ewy+RzVx107f2VIaCuOiTi
+ j/1IdY30+t0jOXhPLnxA4MvEnTVp1W7B7IAgBGSt1OektwTGuvyhlhXMXVzGDR5Z5swP
+ kh7VE/NuwzOG6X8H/kMzMCACTUfqslM9jjDrHZGzu6X/y+8cnU/0wZolFySSQjglePP/
+ AdHr5+jbOPCRf2/oOYxTao3NsYD727VufMPLDpi+6ZL5gVUzaXdaPueBu2jsdv+tSOyW
+ UKZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708305479; x=1708910279;
+ d=1e100.net; s=20230601; t=1708305506; x=1708910306;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BRYxAbHjzjGyq61Vh8zjRNXfYYfpjMlQcbfIi2bBIxM=;
- b=CNOXF0s2rJaKwWSDStPaMplYMt7Xf2YkSVfvp6xqWXmWYPwc/KiEIOV+P6EhUB3/Tl
- H49YzvWH35iekHqj6J/E5j//+TBrRtBPVZcWbbAp6X/1gMKfkYf3Z4yoB1fsT3hquJDV
- 3cCm1X7u7cx56eXdQftUczaz0M6i9NLXgKjkHeL+5uNrgvoaJCJ564LL4yV0xsjKfkGu
- YTqQ8mQdc74WGGDS8wCGqp7nCmsmYt6762ckn4doPvI1o3CNBIlOjT8bJN3UbLzZteLt
- erTbJvjyowopMNFFAjAenpK+47cR46josRliDYlf8tri5j47MQlLziCUqMQdTFw8S2sO
- 2UxA==
-X-Gm-Message-State: AOJu0YzEiLFKSTKbFTDhgR9KkHoPSoEkh0wEi8zwVIUyjcbJ4awOWfN3
- NHNgXCbY6C6CVNUbc9Ly7Q6C6N0dkINjNR7PK2xn788rIOYyakNevIeM+/oAtCI=
-X-Received: by 2002:a81:a193:0:b0:608:3797:5ac8 with SMTP id
- y141-20020a81a193000000b0060837975ac8mr1420497ywg.32.1708305479299; 
- Sun, 18 Feb 2024 17:17:59 -0800 (PST)
+ bh=kP3rP5kDO6a2F7RySUKQZtGqTq+p08N2Zl2emdCf9Jg=;
+ b=e+4K3gR5ZxkExDQ+6ax5xPeruYEKoH1H+ZmvRmt8RznVv7JPaifiXiG5lDsaMey+Fo
+ Na6z19bgbohgL2fqoKdnNBZYjzGTCmZOUxVyo1As4wudfvzOy//1xydgm2mGCxNGL81N
+ zWhSoum0PvEwgQ50P+qs1xNqeEHRjjV22LV9nPC7aJx7btTN5+wglNfoUImej+mJO1WF
+ fNAVYA1tJ5a37+4fug1Oc3mWz3EwZnO/9ExOv2YU54tJKwMUvSHmCNkHv8nq6RMwXsbk
+ aFoWSNixj6KyDaq4Xhv7MHmZJWprPLE249hYxFMQ0NZ8g0y9RVwVf3mcflG2szFZPjDw
+ +Adg==
+X-Gm-Message-State: AOJu0Yz3D/nkWxdE4ypenue7QXU/6NJuP8cldfEriBv4oHGiCGgkHqJz
+ Mv1qtlWCxIvqwf5X1b7JC4xXtPWp1bc0rPI3K6dZvV+haDENcBUmSZhLiqaCHU0=
+X-Received: by 2002:a81:ad1f:0:b0:607:b0d3:ebc0 with SMTP id
+ l31-20020a81ad1f000000b00607b0d3ebc0mr10602186ywh.21.1708305505974; 
+ Sun, 18 Feb 2024 17:18:25 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.17.58
+ m12-20020a819e0c000000b00607ff905ed3sm1204704ywj.58.2024.02.18.17.18.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Feb 2024 17:17:59 -0800 (PST)
+ Sun, 18 Feb 2024 17:18:25 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v5 09/41] Add GPIO and SD to BCM2838 periph
-Date: Sun, 18 Feb 2024 19:17:07 -0600
-Message-Id: <20240219011739.2316619-10-sergey.kambalin@auriga.com>
+Subject: [PATCH v5 37/41] Add mailbox property tests. Part 2
+Date: Sun, 18 Feb 2024 19:17:35 -0600
+Message-Id: <20240219011739.2316619-38-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,224 +127,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8qolCecNOgMN
+X-TUID: Px6T8WNw2kGK
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 143 +++++++++++++++++++++++++++
- include/hw/arm/bcm2838_peripherals.h |   8 ++
- 2 files changed, 151 insertions(+)
+ tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
+ 1 file changed, 195 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index 06110c724f..55ae56733f 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -15,22 +15,56 @@
- /* Lower peripheral base address on the VC (GPU) system bus */
- #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
- 
-+/* Capabilities for SD controller: no DMA, high-speed, default clocks etc. */
-+#define BCM2835_SDHC_CAPAREG 0x52134b4
-+
- static void bcm2838_peripherals_init(Object *obj)
- {
-     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(obj);
-     BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_GET_CLASS(obj);
-+    BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(obj);
- 
-     /* Lower memory region for peripheral devices (exported to the Soc) */
-     memory_region_init(&s->peri_low_mr, obj, "bcm2838-peripherals",
-                        bc->peri_low_size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
- 
-+    /* Extended Mass Media Controller 2 */
-+    object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
-+
-+    /* GPIO */
-+    object_initialize_child(obj, "gpio", &s->gpio, TYPE_BCM2838_GPIO);
-+
-+    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
-+                                   OBJECT(&s_base->sdhci.sdbus));
-+    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
-+                                   OBJECT(&s_base->sdhost.sdbus));
-+
-+    object_initialize_child(obj, "mmc_irq_orgate", &s->mmc_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->mmc_irq_orgate), "num-lines", 2,
-+                            &error_abort);
-+
-+    object_initialize_child(obj, "dma_7_8_irq_orgate", &s->dma_7_8_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->dma_7_8_irq_orgate), "num-lines", 2,
-+                            &error_abort);
-+
-+    object_initialize_child(obj, "dma_9_10_irq_orgate", &s->dma_9_10_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->dma_9_10_irq_orgate), "num-lines", 2,
-+                            &error_abort);
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+index acb421915b..b251d3f552 100644
+--- a/tests/qtest/bcm2838-mbox-property-test.c
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -50,7 +50,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
+                       (TEST_TAG_TYPE(testname) * tag);                         \
+     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
+                              (TEST_TAG_TYPE(testname) *tag);                   \
+-    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
++    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
++    {                                                                          \
+         struct {                                                               \
+             MboxBufHeader header;                                              \
+             TEST_TAG_TYPE(testname) tag;                                       \
+@@ -189,6 +190,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
  }
  
- static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+ /*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
++}
++DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_ALLOCATE) {
++    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
++    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_ALLOCATE) {
++    tag->request.value.alignment = ALIGN_4K;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_RELEASE) {
++    /* No special checks are needed for this test */
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_BLANK) {
++    g_assert_cmphex(tag->response.value.on, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_BLANK) {
++    tag->request.value.on = 0;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++//==============================================================================
+ int main(int argc, char **argv)
  {
-+    DeviceState *mmc_irq_orgate;
-+    DeviceState *dma_7_8_irq_orgate;
-+    DeviceState *dma_9_10_irq_orgate;
-+    MemoryRegion *mphi_mr;
-     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
-     BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
-+    int n;
+     g_test_init(&argc, &argv, NULL);
+@@ -202,6 +376,26 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_ALLOCATE);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_RELEASE);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_BLANK);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT, INITIAL);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT, INITIAL);
++    QTEST_ADD_TEST_CASE(FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT);
  
-     bcm_soc_peripherals_common_realize(dev, errp);
- 
-@@ -42,6 +76,115 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-                                         BCM2838_VC_PERI_LOW_BASE,
-                                         &s->peri_low_mr_alias, 1);
- 
-+    /* Extended Mass Media Controller 2 */
-+    object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
-+                             &error_abort);
-+    object_property_set_uint(OBJECT(&s->emmc2), "capareg",
-+                             BCM2835_SDHC_CAPAREG, &error_abort);
-+    object_property_set_bool(OBJECT(&s->emmc2), "pending-insert-quirk", true,
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->emmc2), errp)) {
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&s_base->peri_mr, EMMC2_OFFSET,
-+                                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->emmc2),
-+                                0));
-+
-+    /* According to DTS, EMMC and EMMC2 share one irq */
-+    if (!qdev_realize(DEVICE(&s->mmc_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+
-+    mmc_irq_orgate = DEVICE(&s->mmc_irq_orgate);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc2), 0,
-+                       qdev_get_gpio_in(mmc_irq_orgate, 0));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->sdhci), 0,
-+                       qdev_get_gpio_in(mmc_irq_orgate, 1));
-+
-+   /* Connect EMMC and EMMC2 to the interrupt controller */
-+    qdev_connect_gpio_out(mmc_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 INTERRUPT_ARASANSDIO));
-+
-+    /* Connect DMA 0-6 to the interrupt controller */
-+    for (n = 0; n < 7; n++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), n,
-+                           qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                  BCM2835_IC_GPU_IRQ,
-+                                                  GPU_INTERRUPT_DMA0 + n));
-+    }
-+
-+   /* According to DTS, DMA 7 and 8 share one irq */
-+    if (!qdev_realize(DEVICE(&s->dma_7_8_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+    dma_7_8_irq_orgate = DEVICE(&s->dma_7_8_irq_orgate);
-+
-+    /* Connect DMA 7-8 to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 7,
-+                       qdev_get_gpio_in(dma_7_8_irq_orgate, 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 8,
-+                       qdev_get_gpio_in(dma_7_8_irq_orgate, 1));
-+
-+    qdev_connect_gpio_out(dma_7_8_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 GPU_INTERRUPT_DMA7_8));
-+
-+     /* According to DTS, DMA 9 and 10 share one irq */
-+    if (!qdev_realize(DEVICE(&s->dma_9_10_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+    dma_9_10_irq_orgate = DEVICE(&s->dma_9_10_irq_orgate);
-+
-+   /* Connect DMA 9-10 to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 9,
-+                       qdev_get_gpio_in(dma_9_10_irq_orgate, 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 10,
-+                       qdev_get_gpio_in(dma_9_10_irq_orgate, 1));
-+
-+    qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 GPU_INTERRUPT_DMA9_10));
-+
-+    /* Connect DMA 11-14 to the interrupt controller */
-+    for (n = 11; n < 15; n++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), n,
-+                           qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                  BCM2835_IC_GPU_IRQ,
-+                                                  GPU_INTERRUPT_DMA11 + n
-+                                                  - 11));
-+    }
-+
-+    /*
-+     * Connect DMA 15 to the interrupt controller, it is physically removed
-+     * from other DMA channels and exclusively used by the GPU
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 15,
-+                        qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                               BCM2835_IC_GPU_IRQ,
-+                                               GPU_INTERRUPT_DMA15));
-+
-+    /* Map MPHI to BCM2838 memory map */
-+    mphi_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s_base->mphi), 0);
-+    memory_region_init_alias(&s->mphi_mr_alias, OBJECT(s), "mphi", mphi_mr, 0,
-+                             BCM2838_MPHI_SIZE);
-+    memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
-+                                &s->mphi_mr_alias);
-+
-+    /* GPIO */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(
-+        &s_base->peri_mr, GPIO_OFFSET,
-+        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
-+
-+    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+     return g_test_run();
  }
- 
- static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index d07831753a..86b0d96944 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -10,6 +10,8 @@
- #define BCM2838_PERIPHERALS_H
- 
- #include "hw/arm/bcm2835_peripherals.h"
-+#include "hw/sd/sdhci.h"
-+#include "hw/gpio/bcm2838_gpio.h"
- 
- /* SPI */
- #define GIC_SPI_INTERRUPT_MBOX         33
-@@ -45,6 +47,9 @@
- #define GPU_INTERRUPT_DMA14     28
- #define GPU_INTERRUPT_DMA15     31
- 
-+#define BCM2838_MPHI_OFFSET     0xb200
-+#define BCM2838_MPHI_SIZE       0x200
-+
- #define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
- OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
-                     BCM2838_PERIPHERALS)
-@@ -58,6 +63,9 @@ struct BCM2838PeripheralState {
-     MemoryRegion peri_low_mr_alias;
-     MemoryRegion mphi_mr_alias;
- 
-+    SDHCIState emmc2;
-+    BCM2838GpioState gpio;
-+
-     OrIRQState mmc_irq_orgate;
-     OrIRQState dma_7_8_irq_orgate;
-     OrIRQState dma_9_10_irq_orgate;
 -- 
 2.34.1
 

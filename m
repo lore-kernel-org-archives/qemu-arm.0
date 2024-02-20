@@ -1,165 +1,392 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1299748ejb;
-        Tue, 20 Feb 2024 05:43:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWQXzKr04zNeAg/+Kqx1orTlVdJENG3JVkBub2ztuf0AVZMWR9vDYftS5mhG76pknXxVWlJG+Y0hLQkhTwwX//ApWCOPb3z
-X-Google-Smtp-Source: AGHT+IG2oOVuzKncMGiah/3VZ3fjWMTGlwUFO5zMAw8Llz+0M/G2JRl7uyhomxzPqTyUfcbb/70F
-X-Received: by 2002:ac8:5cc2:0:b0:42e:202a:77ff with SMTP id s2-20020ac85cc2000000b0042e202a77ffmr3579975qta.14.1708436638900;
-        Tue, 20 Feb 2024 05:43:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708436638; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1318217ejb;
+        Tue, 20 Feb 2024 06:12:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWChu0qBJFxZRrdT1M7zYndO/I6Nn2H1MMW/2ySHebMVt4x0wTRds+jmXzXDm/cH0RC7uwGb0G+/TYn74Mzid4QU5dww8cZ
+X-Google-Smtp-Source: AGHT+IE9TCmDkZ0mZG8ERQptanB/PKnkWjhJypmLTVGwxil8oHRFMU22tgYFJEadJLk3LNPQ3GTi
+X-Received: by 2002:a05:6214:29c3:b0:68f:8bcc:2cb8 with SMTP id gh3-20020a05621429c300b0068f8bcc2cb8mr2153619qvb.7.1708438340972;
+        Tue, 20 Feb 2024 06:12:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708438340; cv=none;
         d=google.com; s=arc-20160816;
-        b=F3WLj8qqH7LKEFG8i9dI9P67dSiV+MDxPQY/OyImzHyo9xxAK+ZnhtPaqCSH9UIfWd
-         qZhHOJ7lXatsTQ70yWU/ozbQK5x16hfpKX1PNssbA25oBZmSYRjSEYbBbXl4Y6aLMeHd
-         5wb5Tn6O3b+EUhGIi5IFqaf96k9skUyaSaAV29KmjQiZ6+jC/uws/yKNpFMtlFvWSckU
-         PSU+hYQ1lrRsOCiBJCr7hAeGC7X/HhVSaT6+xwh1CWAEIGlj6kxbnlogJZtW2rpwaEEY
-         qWGiDtsuLCPN/ufJEUdaJFDwPXbZ6SDHHEzVGbIvdS89uiq+Wb47nWefLSF7l4Znm2wZ
-         zX3w==
+        b=luIZHO2nctr1CO0E2YKDmvXaQH+NcNGr/hxk8A4PIaSyJlQk+z0rMLDzhwKJg866iR
+         QvDXWiqDfKCT7NAlkL1KqJx8sg+aIoD+SWdJNk42y7qFpslVZ1pvMkp8OeXE+uYe1XsO
+         fbNRReXkeRbS3s1Zvu8+Q9LrEnpmeCqhKQ4j1IQZqbV+TrUpYiQ/clj5AG6wSnXlzRuK
+         wdBApnr5UZHKFbaDb8ORa0ecdzliXKRYILPsm+/it1yk13BXiJKN7J+nk9m1YtydVWGS
+         /QIBBi2o+RYC20p9s5WHbQ1Uf6af+asjawOjSIulvlx7sv6XYabzg8k/36goxE2S3cd0
+         kr8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yzJTQOoc+BFQ9VReGpVoE36YvrjBFqEn7yvCGMeFGIg=;
-        fh=IZ3w+xoOSOdqGOXmeHP3o7v5xIHIspwk9p7cwC2fA8s=;
-        b=KbEXiotwtn0kgZNKzT7OJnR6nOrTtYzCPB5CuWqjS5SZ9qOlvcWwr9j7DLrvtLyLuO
-         hyVPCY2XmTxaVZl+DVuDT9dkUc9pIzb3kwW7l3paXbZqyM/HYdwffnYvaD8iw2B7IJSU
-         ifS0O0DlfplPYGdruSej4RpuRHhvdut/8UNTcMYVepWfJiMCNil9UCABmRkPEdMSl8gj
-         pByNs8FfuPrDa2jtqRwG3pZ9AKI38dwFNpJv3LtNBhUR3y85VZFc1F3wl1aLHEJSk4zj
-         lhfVW9fQVQcrhd1vxgqo31mqNeOlodHjVurkUIAFhvMWIVktNiu8Jw+sMqvryfG5iGbn
-         jCEw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=FXWsnM+l36piBZlynwMafM4grzffv1GjyLqpm2j/GDk=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=Y4oLb/3BT957KOWbVRm34979ovUEG9nYOf+zJ7reodhxxC4IDwJW/Ts9vYpQPqP1bS
+         80Ac0cYRxAeeidMV7aRFIkle5Xzlw3CRFjoH6ipdK4HPUEvKtemnuKTKUyBYoWc0CL76
+         NsAfe2RK3NiVvBu1e0zWMOqvT1alEXzUmwoFSaZFCjND2Mo9m626lgjUMcagnO8uiEwB
+         +cgymG39l0G4TL133oLQ293YcZgGmZCZzHKzoNKy5OGfZ/2xiSL9LvzOGhz5X/vGW6Oe
+         PXznIJHkJQS6cEmG40+eQ7CAYojJKbcdkkheJK6o7MRjlL//8vU8JrsG4uhKLXwJGIwx
+         xwNQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZlPTHLc6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a18-20020ac85b92000000b0042db072a6d7si8800306qta.712.2024.02.20.05.43.58
+        by mx.google.com with ESMTPS id d8-20020a05621421c800b0068f7e322364si3263039qvh.176.2024.02.20.06.12.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Feb 2024 05:43:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Feb 2024 06:12:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZlPTHLc6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcQOH-0007ua-KO; Tue, 20 Feb 2024 08:42:33 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rcQr1-0001TN-8d; Tue, 20 Feb 2024 09:12:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rcQOG-0007uA-47; Tue, 20 Feb 2024 08:42:32 -0500
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rcQO4-0004Bg-AP; Tue, 20 Feb 2024 08:42:31 -0500
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-a3d484a58f6so720905266b.3; 
- Tue, 20 Feb 2024 05:42:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708436538; x=1709041338; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=yzJTQOoc+BFQ9VReGpVoE36YvrjBFqEn7yvCGMeFGIg=;
- b=ZlPTHLc6uaGi+wy3a3NpP1GorO9tyoCcyJ0HotArddXlU9r//PmF5gcd6+x0Dh6xSj
- A8SGsclm64TtLK0xtyxcKWuG4NNL6ofgwWQ0QN/v6G3amx9ssCRjOA3rhIff4CU9Jnoc
- x8ncpnvpeSOd5QqV5zgBMrxD6Dp/npj03I+pkUk4sAoeBtdd19N/Q85yqDh/tYNS/IzJ
- W4HDpVOBMFf65pNlN2eHGuaeg9OkqdcKo4+kh50z/7EZLK8YWi1EwmxLxC40mRPgkYHj
- 9EUExZIpMYK0GFs/pgMwMOWgJA/hLOhM83J1B9YRq0lLuNdiXh4svsBm0rAbX5gz11IA
- jZ1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708436538; x=1709041338;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=yzJTQOoc+BFQ9VReGpVoE36YvrjBFqEn7yvCGMeFGIg=;
- b=V4zuyqomHwUhKFCaQYlCV9IhQtJoAke99q7cwZgpXUCQaBQ4hKQD5WSST9OsmckJL+
- DLRi8BnDLaq0Y0egAh2bm5cKJ3xyDTwAATjGVdRIiPLnm1Xt8mH3yRshRg12uz0VkkHX
- yhRYnrRBxQh6UGjmyJhW3Dvnvx0RcrFuyhpFfLP0gb/hXf426UCwjEG3bSEXoMeHr74/
- gG/rZ6ZpouH4HYMUISXr6lQpV8CXWW+UrXEatAWJ5NZagzk3bmF7h/K9DEzBr73Lojz0
- wzHqpb44gJMCb7QLVbkJuK+wMli6RpEeaJPyykFVduAPa6gwKvm3xZWBAqG8GVAnUO8f
- oNtw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVlmpbM9eKwLpiPK+ESccqV9fFgNvBL9SH/u0259aa+0rG6/5jZU06Dnra8sSEc2ST0noufy+wlthNj6Ov6hH4TF174
-X-Gm-Message-State: AOJu0YwLZc9GuJo5+v8jw3GWvEVO7/jr5cAup30YIsNbJ+0J8aB054Qd
- TQWtx0rcOZi+KDKgMZFeVRtDerd6rexm0T/R1wq20HZAa3nYTuuna7v3mMo/
-X-Received: by 2002:a17:906:dce:b0:a3e:63bd:3ae1 with SMTP id
- p14-20020a1709060dce00b00a3e63bd3ae1mr4597371eji.9.1708436537674; 
- Tue, 20 Feb 2024 05:42:17 -0800 (PST)
-Received: from localhost.localdomain ([37.186.51.232])
- by smtp.gmail.com with ESMTPSA id
- h23-20020a170906591700b00a3ef17464b1sm728449ejq.9.2024.02.20.05.42.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 05:42:17 -0800 (PST)
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, philmd@linaro.org, pbonzini@redhat.com,
- qemu-arm@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>
-Subject: [PATCH v3 0/3] Add support for I2C in BCM2835 boards
-Date: Tue, 20 Feb 2024 19:11:17 +0530
-Message-Id: <20240220134120.2961059-1-rayhan.faizel@gmail.com>
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcP5f-0008Tw-3v; Tue, 20 Feb 2024 07:19:15 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcP5b-0004MQ-Ct; Tue, 20 Feb 2024 07:19:14 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4TfJLD4PPGz1X2lH;
+ Tue, 20 Feb 2024 20:16:52 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id EE7F6140118;
+ Tue, 20 Feb 2024 20:19:00 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 20 Feb
+ 2024 20:19:00 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH 2/3] target/arm: Add NMI exception and handle
+ PSTATE.ALLINT on taking an exception
+Date: Tue, 20 Feb 2024 12:17:51 +0000
+Message-ID: <20240220121752.490665-3-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240220121752.490665-1-ruanjinjie@huawei.com>
+References: <20240220121752.490665-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Tue, 20 Feb 2024 09:12:14 -0500
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WjYjGbhaoZ7g
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QCofZZRd+Hsn
 
-This patch series implements support for the Broadcom Serial Controller used
-by BCM2835 based boards for I2C.
+Add a new exception called NMI for Arm PE.
 
-[Changes in v3]
+Set/clear PSTATE.ALLINT on taking an exception to ELx according to the
+SCTLR_ELx.SPINTMASK bit.
 
-- Add SPDX license identifiers.
-- Fix a few minor whitespace issues.
+Mask IRQ/FIQ/NMI with ALLINT and PSTATE.SP & SCTLR_SPINTMASK in addition
+to PSTATE.DAIF.
 
-[Changes in v2]
+Save to and restore from SPSR_ELx with PSTATE.ALLINT on taking an exception
+to ELx and executing an exception return operation in ELx.
 
-- Fixed and simplified writing to status register
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ target/arm/cpu-qom.h   |  1 +
+ target/arm/cpu.c       | 43 +++++++++++++++++++++++++++++++++++++-----
+ target/arm/cpu.h       | 10 ++++++++--
+ target/arm/helper.c    | 26 ++++++++++++++++++++++++-
+ target/arm/internals.h |  3 +++
+ 5 files changed, 75 insertions(+), 8 deletions(-)
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/481
-Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
-
-Rayhan Faizel (3):
-  hw/i2c: Implement Broadcom Serial Controller (BSC)
-  hw/arm: Connect BSC to BCM2835 board as I2C0, I2C1 and I2C2
-  tests/qtest: Add testcase for BCM2835 BSC
-
- docs/system/arm/raspi.rst            |   1 +
- hw/arm/Kconfig                       |   1 +
- hw/arm/bcm2835_peripherals.c         |  32 ++-
- hw/i2c/Kconfig                       |   4 +
- hw/i2c/bcm2835_i2c.c                 | 278 +++++++++++++++++++++++++++
- hw/i2c/meson.build                   |   1 +
- include/hw/arm/bcm2835_peripherals.h |   3 +-
- include/hw/i2c/bcm2835_i2c.h         |  80 ++++++++
- tests/qtest/bcm2835-i2c-test.c       | 107 +++++++++++
- tests/qtest/meson.build              |   2 +-
- 10 files changed, 504 insertions(+), 5 deletions(-)
- create mode 100644 hw/i2c/bcm2835_i2c.c
- create mode 100644 include/hw/i2c/bcm2835_i2c.h
- create mode 100644 tests/qtest/bcm2835-i2c-test.c
-
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 8e032691db..5a7f876bf8 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -41,6 +41,7 @@ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+ #define ARM_CPU_FIQ 1
+ #define ARM_CPU_VIRQ 2
+ #define ARM_CPU_VFIQ 3
++#define ARM_CPU_NMI 4
+ 
+ /* For M profile, some registers are banked secure vs non-secure;
+  * these are represented as a 2-element array where the first element
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5fa86bc8d5..947efa76c1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -128,7 +128,7 @@ static bool arm_cpu_has_work(CPUState *cs)
+ 
+     return (cpu->power_state != PSCI_OFF)
+         && cs->interrupt_request &
+-        (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
++        (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD | CPU_INTERRUPT_NMI
+          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VSERR
+          | CPU_INTERRUPT_EXITTB);
+ }
+@@ -357,6 +357,10 @@ static void arm_cpu_reset_hold(Object *obj)
+     }
+     env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
+ 
++    if (cpu_isar_feature(aa64_nmi, cpu)) {
++        env->allint = PSTATE_ALLINT;
++    }
++
+     /* AArch32 has a hard highvec setting of 0xFFFF0000.  If we are currently
+      * executing as AArch32 then check if highvecs are enabled and
+      * adjust the PC accordingly.
+@@ -668,6 +672,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+     CPUARMState *env = cpu_env(cs);
+     bool pstate_unmasked;
+     bool unmasked = false;
++    bool nmi_unmasked = false;
+ 
+     /*
+      * Don't take exceptions if they target a lower EL.
+@@ -678,13 +683,29 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+         return false;
+     }
+ 
++    nmi_unmasked = (!(env->allint & PSTATE_ALLINT)) &
++                   (!((env->cp15.sctlr_el[target_el] & SCTLR_SPINTMASK) &&
++                   (env->pstate & PSTATE_SP) && cur_el == target_el));
++
+     switch (excp_idx) {
++    case EXCP_NMI:
++        pstate_unmasked = nmi_unmasked;
++        break;
++
+     case EXCP_FIQ:
+-        pstate_unmasked = !(env->daif & PSTATE_F);
++        if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++            pstate_unmasked = (!(env->daif & PSTATE_F)) & nmi_unmasked;
++        } else {
++            pstate_unmasked = !(env->daif & PSTATE_F);
++        }
+         break;
+ 
+     case EXCP_IRQ:
+-        pstate_unmasked = !(env->daif & PSTATE_I);
++        if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++            pstate_unmasked = (!(env->daif & PSTATE_I)) & nmi_unmasked;
++        } else {
++            pstate_unmasked = !(env->daif & PSTATE_I);
++        }
+         break;
+ 
+     case EXCP_VFIQ:
+@@ -804,6 +825,16 @@ static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ 
+     /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
+ 
++    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++        if (interrupt_request & CPU_INTERRUPT_NMI) {
++            excp_idx = EXCP_NMI;
++            target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
++            if (arm_excp_unmasked(cs, excp_idx, target_el,
++                                  cur_el, secure, hcr_el2)) {
++                goto found;
++            }
++        }
++    }
+     if (interrupt_request & CPU_INTERRUPT_FIQ) {
+         excp_idx = EXCP_FIQ;
+         target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
+@@ -929,7 +960,8 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
+         [ARM_CPU_IRQ] = CPU_INTERRUPT_HARD,
+         [ARM_CPU_FIQ] = CPU_INTERRUPT_FIQ,
+         [ARM_CPU_VIRQ] = CPU_INTERRUPT_VIRQ,
+-        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ
++        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ,
++        [ARM_CPU_NMI] = CPU_INTERRUPT_NMI
+     };
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2) &&
+@@ -957,6 +989,7 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
+         break;
+     case ARM_CPU_IRQ:
+     case ARM_CPU_FIQ:
++    case ARM_CPU_NMI:
+         if (level) {
+             cpu_interrupt(cs, mask[irq]);
+         } else {
+@@ -1355,7 +1388,7 @@ static void arm_cpu_initfn(Object *obj)
+          */
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
+     } else {
+-        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
++        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 5);
+     }
+ 
+     qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ea6e8d6501..b6af1380d3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -60,6 +60,7 @@
+ #define EXCP_DIVBYZERO      23   /* v7M DIVBYZERO UsageFault */
+ #define EXCP_VSERR          24
+ #define EXCP_GPC            25   /* v9 Granule Protection Check Fault */
++#define EXCP_NMI            26
+ /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
+ 
+ #define ARMV7M_EXCP_RESET   1
+@@ -79,6 +80,7 @@
+ #define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
+ #define CPU_INTERRUPT_VFIQ  CPU_INTERRUPT_TGT_EXT_3
+ #define CPU_INTERRUPT_VSERR CPU_INTERRUPT_TGT_INT_0
++#define CPU_INTERRUPT_NMI   CPU_INTERRUPT_TGT_EXT_4
+ 
+ /* The usual mapping for an AArch64 system register to its AArch32
+  * counterpart is for the 32 bit world to have access to the lower
+@@ -1471,6 +1473,8 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
+ #define CPSR_N (1U << 31)
+ #define CPSR_NZCV (CPSR_N | CPSR_Z | CPSR_C | CPSR_V)
+ #define CPSR_AIF (CPSR_A | CPSR_I | CPSR_F)
++#define ISR_FS (1U << 9)
++#define ISR_IS (1U << 10)
+ 
+ #define CPSR_IT (CPSR_IT_0_1 | CPSR_IT_2_7)
+ #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
+@@ -1557,7 +1561,8 @@ FIELD(VTCR, SL2, 33, 1)
+ #define PSTATE_N (1U << 31)
+ #define PSTATE_NZCV (PSTATE_N | PSTATE_Z | PSTATE_C | PSTATE_V)
+ #define PSTATE_DAIF (PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F)
+-#define CACHED_PSTATE_BITS (PSTATE_NZCV | PSTATE_DAIF | PSTATE_BTYPE)
++#define CACHED_PSTATE_BITS (PSTATE_NZCV | PSTATE_DAIF | PSTATE_ALLINT | \
++                            PSTATE_BTYPE)
+ /* Mode values for AArch64 */
+ #define PSTATE_MODE_EL3h 13
+ #define PSTATE_MODE_EL3t 12
+@@ -1597,7 +1602,7 @@ static inline uint32_t pstate_read(CPUARMState *env)
+     ZF = (env->ZF == 0);
+     return (env->NF & 0x80000000) | (ZF << 30)
+         | (env->CF << 29) | ((env->VF & 0x80000000) >> 3)
+-        | env->pstate | env->daif | (env->btype << 10);
++        | env->pstate | env->allint | env->daif | (env->btype << 10);
+ }
+ 
+ static inline void pstate_write(CPUARMState *env, uint32_t val)
+@@ -1607,6 +1612,7 @@ static inline void pstate_write(CPUARMState *env, uint32_t val)
+     env->CF = (val >> 29) & 1;
+     env->VF = (val << 3) & 0x80000000;
+     env->daif = val & PSTATE_DAIF;
++    env->allint = val & PSTATE_ALLINT;
+     env->btype = (val >> 10) & 3;
+     env->pstate = val & ~CACHED_PSTATE_BITS;
+ }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 1194e1e2db..8d525c6b82 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2022,6 +2022,10 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+         if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
+             ret |= CPSR_I;
+         }
++
++        if (cs->interrupt_request & CPU_INTERRUPT_NMI) {
++            ret |= ISR_IS;
++        }
+     }
+ 
+     if (hcr_el2 & HCR_FMO) {
+@@ -2032,6 +2036,10 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+         if (cs->interrupt_request & CPU_INTERRUPT_FIQ) {
+             ret |= CPSR_F;
+         }
++
++        if (cs->interrupt_request & CPU_INTERRUPT_NMI) {
++            ret |= ISR_FS;
++        }
+     }
+ 
+     if (hcr_el2 & HCR_AMO) {
+@@ -4626,6 +4634,11 @@ static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
+ 
++static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return env->allint & PSTATE_ALLINT;
++}
++
+ static CPAccessResult aa64_allint_access(CPUARMState *env,
+                                          const ARMCPRegInfo *ri, bool isread)
+ {
+@@ -5464,7 +5477,8 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .type = ARM_CP_NO_RAW,
+       .access = PL1_RW, .accessfn = aa64_allint_access,
+       .fieldoffset = offsetof(CPUARMState, allint),
+-      .writefn = aa64_allint_write, .resetfn = arm_cp_reset_ignore },
++      .writefn = aa64_allint_write, .readfn = aa64_allint_read,
++      .resetfn = arm_cp_reset_ignore },
+     { .name = "FPCR", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .opc2 = 0, .crn = 4, .crm = 4,
+       .access = PL0_RW, .type = ARM_CP_FPU | ARM_CP_SUPPRESS_TB_END,
+@@ -10622,6 +10636,7 @@ void arm_log_exception(CPUState *cs)
+             [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
+             [EXCP_VSERR] = "Virtual SERR",
+             [EXCP_GPC] = "Granule Protection Check",
++            [EXCP_NMI] = "NMI"
+         };
+ 
+         if (idx >= 0 && idx < ARRAY_SIZE(excnames)) {
+@@ -11517,6 +11532,15 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+         }
+     }
+ 
++    if (cpu_isar_feature(aa64_nmi, cpu) &&
++        (env->cp15.sctlr_el[new_el] & SCTLR_NMI)) {
++        if (!(env->cp15.sctlr_el[new_el] & SCTLR_SPINTMASK)) {
++            new_mode |= PSTATE_ALLINT;
++        } else {
++            new_mode &= ~PSTATE_ALLINT;
++        }
++    }
++
+     pstate_write(env, PSTATE_DAIF | new_mode);
+     env->aarch64 = true;
+     aarch64_restore_sp(env, new_el);
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2b9f287c52..28894ba6ea 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1078,6 +1078,9 @@ static inline uint32_t aarch64_pstate_valid_mask(const ARMISARegisters *id)
+     if (isar_feature_aa64_mte(id)) {
+         valid |= PSTATE_TCO;
+     }
++    if (isar_feature_aa64_nmi(id)) {
++        valid |= PSTATE_ALLINT;
++    }
+ 
+     return valid;
+ }
 -- 
 2.34.1
 

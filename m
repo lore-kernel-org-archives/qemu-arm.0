@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1378164ejb;
-        Tue, 20 Feb 2024 07:50:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVg7koss6sjVnXayyYFV2aJNwRWXwexpspuryviwl0nPEhcEarqKGFMaqqrzuhQ76374Baq97hJLbP49E5iWr5PcqpKYhqK
-X-Received: by 2002:a05:6a21:2d06:b0:19e:cc6e:fcc3 with SMTP id tw6-20020a056a212d0600b0019ecc6efcc3mr16116645pzb.46.1708444206146;
-        Tue, 20 Feb 2024 07:50:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708444206; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1385887ejb;
+        Tue, 20 Feb 2024 08:02:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVNeQe+9ALh0IK55jvje8+T2/t55v3hjklIsD3PUid2sFj+dOd1tDkbNIdHdB51LOfp0VT4KShw1ERb5vJPdo8dlozfMgK2
+X-Received: by 2002:a05:6a00:1d01:b0:6e4:69f3:f7eb with SMTP id a1-20020a056a001d0100b006e469f3f7ebmr4240959pfx.25.1708444966478;
+        Tue, 20 Feb 2024 08:02:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708444966; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZWpVox1ZUh9j8lSlVc5mEEF890vB3+e0UvamdhWPcwpUPn95uHk/4Ico5qthRhW1YT
-         Qk6t06yFPdGbgb0R1Lbb5SBtkDvN6tQUJ+LImCWnd2aj6M7/vDDPGpd6P3cZYfJVx0xn
-         fFBrMU0m8/30GSvoVrDy7KNYvlPPv3HzW+bCWednrJWhzY6h0PgKTuhYKxNujRYDaVa+
-         ChiWmbhbT0VvKh4H88ecAE8QycldLzJDMGm1ApTM9ilm3zqFGIFsGBNy++FteRDBIy8M
-         /R8bLX1I8g9F4fCHUp3XnJtr3ILLLypauNYv6QggTyCBBd+6UVGFajeWZZdVZGiecUAX
-         gJEw==
+        b=dnHSZnGVXwwqknNzuZ5RRRcFAzBztvQPmYeStpvwtz2f86OvwVR0bdSeyOXVlDzP/O
+         qWZFOUSL89xUSa2GKuaPfC686iuKzU2TEKNjR5GXtlHocuO0zrRa6+80WYtyztQeXKby
+         1D9ye6ezM4pdpQmeBbPYdNNzHA3uF6BV+B4xDHDqMOV3lo0Vb2mNgi9CMj9GFzLas1bf
+         L/kAi0uK+BbbAx6hOw9qXaiyrPtUH3u7wveA0Uady4b0dJP68fhKhganuMKgtzQKne6Q
+         KiMVHjs9yhX+s28zCicNIjK/zw5HfFrgufA8Ke901GgHjUk6Z7UeFRYxKQzrXGBwX+IK
+         0Hrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=awtmUp4GqYdw2gwk9y923Fqr+yt7wdv/rO1gx6b3W9c=;
-        fh=M4ob/qCXpnWDtm7CZEZs0D9RX2DQifB2sD8WFyEf+PM=;
-        b=z8Sl6+8gyqTEj6RVaFsicbSmdd6gOBuHr4k49x5R80iYXGbqqjYIUQJJ97rkevwBmY
-         nE3iKEMKx39UUb8gxFx51Zen5TDYm3k0hSzi2PKI9FftMMpTeAAJnT9S3TTKYFKWgOVS
-         xJi0hXubE7zRB0zztx9CF8bG6ayNN6ZWf++sDA0yAOvE1spKGy1Yvn6DXSgbc3Ofl7Wq
-         wYSI1IxSPYRTaPK1g85no9bG56XBfYiGd6ODxGob3C3eRtw7u4pDuooKQBWpGQTCVjZV
-         CRVE9hnEnKC0M1HimGnWPwRVk7VaYguEa4O20D56O9Rh3YjWuy61nI5O2mVge6dERm6o
-         xcgQ==;
+        bh=6ydl/S6u/9OOgEpSmetY2JCK7UwKLm1TyTlvWnqCN2E=;
+        fh=vFOEblM6/e1vEw/gpArR7BR08hG7+tpEG/Am08EGPqA=;
+        b=r3MX7u0UnQmcx2Wi5obrmRglqVU2yMkktZfmFGnxNzlINKF5fsn14VB2kfyq1T7bKk
+         3PW+kyO9euFFShKahgWduOrATDLI1vXyiH1wEslsFe2t/bfbbRMvke7y6YbHqCsgiR1o
+         4IGqMnGQU0YFpcYI0tNItXWu0rd20YulFtipf+g6nGm44HwOqEBO3Gj7D3yA9XhlFlYC
+         SDfOl/+iOgNjJvvn/YsnN6wWChkOZ1PqR25N/dj+5t8Sds1fSuI51mKM85G3PoaQMare
+         XU4ywrmIGJUkEqRMDxGT6BP0rtYR6z8u9IZqiWxz9UV+ALFxCkGvnK2xaszryT6ddPAU
+         9W/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wl7ZonTh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AXSzUXYa;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h189-20020a6253c6000000b006e02f39ea00sor4203152pfb.6.2024.02.20.07.50.05
+        by mx.google.com with SMTPS id e3-20020a056a0000c300b006e36af4a651sor2189745pfj.8.2024.02.20.08.02.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 20 Feb 2024 07:50:06 -0800 (PST)
+        Tue, 20 Feb 2024 08:02:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wl7ZonTh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AXSzUXYa;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708444205; x=1709049005; darn=linaro.org;
+        d=linaro.org; s=google; t=1708444966; x=1709049766; darn=linaro.org;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=awtmUp4GqYdw2gwk9y923Fqr+yt7wdv/rO1gx6b3W9c=;
-        b=wl7ZonThay0zckKygiHtWSyvDoacf1Tcd+/cFxc0lvI9NgSObUCRja3ZdnoYSduHxL
-         HLIKnJ6zIlmP7EZrFtpMWUhDovQoyRN0zfaWEfcI2NHronP0kYzFMj28TO+WgKQ2TQLT
-         3XWdIB5qzrG42yk60QwJpnqJLMyidJKQQl4awgjrDUO+TTxaXwug5lakYwLnG+nIFrwl
-         +ta22dc79tCZzj6CVgQYMvBim5ng/j5M3ALSv0GwGBjJ41NtnL/SVXPOvi2/3Kp/q728
-         eSzT+1ovxciiYXCWyiveJOAGXSnX9XMxD/nEmPyoHvOLBWdWGPgqubnamRsxh+0gK3U8
-         Enzg==
+        bh=6ydl/S6u/9OOgEpSmetY2JCK7UwKLm1TyTlvWnqCN2E=;
+        b=AXSzUXYaIVG3BeXwmzNKtIS1YIa5Yg3IrPbgKf0XplMoAz6lzKXA9XQEBWOsdZAP7k
+         DP8V/3zoh4w8qH0fJ9l15lChj3+OKfNFBjy7Ufn+pWPZbAE2jVrth52QHi+Sf/5Cs7dr
+         9Gg0SMg3CtkoRzkLggFw6srxwn9IzRfk/kD4SHBlZgTgM2hR2Lmsc+I8ew8Cc+USvcf3
+         eOGutQIKB8Prw3WBButHACyERTiwjOXHVKwkcRd91vlJ7wtTxLuQ+n/5tj8n0bUrEZZ0
+         sF65zrhOXamFnN0DDD5m2EM+hMtA8qR/+mBioObTSFAWWtT3SSc1r9mkSRCBnBJz7xtQ
+         V+Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708444205; x=1709049005;
+        d=1e100.net; s=20230601; t=1708444966; x=1709049766;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=awtmUp4GqYdw2gwk9y923Fqr+yt7wdv/rO1gx6b3W9c=;
-        b=drR/OU1Y0PRs6MYvm6Fyy6yBmP1yACCqRrG7JCXVw95BF51UgXKG5dYB4SCKxCmWHe
-         ynUbMtIe5h7UeaqWwqdlhwEUmL/AUkN0jk8O4uk+lML98HJbzphzGivapfR9PnVRdCkT
-         BbrijcyTgO//Am91dTPsU9Uy35sXdD5XvLmkIHL5D+BkHUJRd3KoiQFbWitciwiuA2dV
-         eKyW+5ACMwooT9sCLTMiJmVorp3TgV80r6RIx2klyz7Ka8FBHA2dChqASoOGIlf+7Goy
-         LNm3bEdlv/FvvU3JORx178Wsy3isDhr6+p2GVe5qbMO8t5DpQmlHGD5f/Xe8fpd3Uf8Y
-         yBWg==
-X-Forwarded-Encrypted: i=1; AJvYcCUYM4mwx4YeWZjbL7e/+0G3mCQyavNdekUS98+63kzvi+hXzq2Ih4CdbqLhNREHoHLwkbrnXNnuSYrgPJFrE7VKqA2gVKXw
-X-Gm-Message-State: AOJu0YyCPaf9CyE9jJlkuviKvvPzfZqorVVAZv+KsZJXF8raXwaWfDWd
-	r+WrXXTa9t9qDjs6E45FhzunIVgHTLgeXs+z0vtIYLCYrtj4rLZIXLG3nbsaRP9MdQ==
-X-Google-Smtp-Source: AGHT+IEjbkyz3MN53LNesbTcwSXP8/S3BOlbOMHSbZ51MTR13gntG7C4cZWl41W5tiT4MAcKl6p+7w==
-X-Received: by 2002:a05:6a00:1911:b0:6e0:708c:165a with SMTP id y17-20020a056a00191100b006e0708c165amr17465604pfi.5.1708444205374;
-        Tue, 20 Feb 2024 07:50:05 -0800 (PST)
+        bh=6ydl/S6u/9OOgEpSmetY2JCK7UwKLm1TyTlvWnqCN2E=;
+        b=qlRlnVbZd3eSpFZ5suPHAS+0y7rv843WpQvDEQAUdjS/ztFGicOWijobGrxuUl6Kgg
+         D7vxNh2wkUA+n+MzXh34pO5Rfy29Hdpg9jc6B9s6aqWW2T1u7c4krunCxw5fqQbkbPFq
+         Qjj2QKl6CzMPLNEt/JUEvwtp4NApoJK8icbDCBR+t9Hm0y2gh+I0tAbdTaEhJkTnYKEu
+         mnQWe2SaNCNv5ZXvPsij3MERDg1bGVAWfwmQBsL89YTigkn8/laSmI3XgSbmCucse/tF
+         sSIzkmgWalHESLF3+su68XzLUAp/UNZK9bKxNNXQcap1EmhXrt+Vie1gCGCRQPSvRkUC
+         +sKA==
+X-Forwarded-Encrypted: i=1; AJvYcCWxCdKfkPprw+9GAqnPHggdQxdkWmD2zN59FlCw0GenViSr0S6HDuhXtCiGvyZ25GCLs1qLlra/S5AFGntXDRZ0x/ZMQ0a9
+X-Gm-Message-State: AOJu0YxKM8mOuXPI/HoZtf8MUZLhIwNUuEDTRF7ekrSzriQQHy0Rsfzk
+	9voe5dsPd5CjVc3jf0RgmaHerrrEbX4jopguBY8wAeFFCc2x7nMofY18seVeBTrCPw==
+X-Google-Smtp-Source: AGHT+IEyErO/NpglJns6VC9ddup/MrqmSaIxMwDgnj5X/6lCRzT9OV34D4SXiLedgNdh+nFFOq25Ew==
+X-Received: by 2002:a05:6a00:291b:b0:6e4:76cf:190c with SMTP id cg27-20020a056a00291b00b006e476cf190cmr3355185pfb.11.1708444965897;
+        Tue, 20 Feb 2024 08:02:45 -0800 (PST)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from ?IPv6:2804:7f0:b400:1b59:1a6a:7944:fbd6:3f71? ([2804:7f0:b400:1b59:1a6a:7944:fbd6:3f71])
-        by smtp.gmail.com with ESMTPSA id l5-20020a62be05000000b006e091a254adsm6991839pff.30.2024.02.20.07.50.02
+        by smtp.gmail.com with ESMTPSA id k19-20020aa788d3000000b006e464b8aa38sm3999518pff.168.2024.02.20.08.02.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Feb 2024 07:50:05 -0800 (PST)
+        Tue, 20 Feb 2024 08:02:45 -0800 (PST)
 Subject: Re: [PATCH v2 2/6] hw/misc/ivshmem-flat: Allow device to wire itself
  on sysbus
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
@@ -86,8 +86,8 @@ Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
 References: <20240216144456.34992-1-philmd@linaro.org>
  <20240216144456.34992-3-philmd@linaro.org>
 From: Gustavo Romero <gustavo.romero@linaro.org>
-Message-ID: <c68e86e2-32d5-7351-2aff-c6ef314a0936@linaro.org>
-Date: Tue, 20 Feb 2024 12:50:01 -0300
+Message-ID: <b03a659f-fef6-bb4e-b258-3e5a82b7edb4@linaro.org>
+Date: Tue, 20 Feb 2024 13:02:41 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
@@ -95,7 +95,7 @@ In-Reply-To: <20240216144456.34992-3-philmd@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: hJ4bJS1K0mEP
+X-TUID: tfsyMN3LKLoH
 
 
 
@@ -111,14 +111,6 @@ On 2/16/24 11:44 AM, Philippe Mathieu-Daudé wrote:
 >                    -chardev socket,path=/tmp/ivshmem_socket,id=ivf
 >                    -device ivshmem-flat,x-irq-qompath=/machine/unattached/device[1]/nvic/unnamed-gpio-in[0],x-bus-qompath="/sysbus",chardev=ivf
 >                    -kernel zephyr_qemu.elf
-
-We need to tweak this example, since prop 'x-bus-qompath' doesn't
-exist anymore. Also, the 'x-irq-qompath' for Stellaris machines looks
-better now, i.e.:
-
-x-irq-qompath='/machine/soc/v7m/nvic/unnamed-gpio-in[0]'
-
-
 > 
 > The IRQ QOM path for the target machine can be determined by creating
 > the VM without the ivshmem-flat device, going to the QEMU console and
@@ -164,6 +156,10 @@ x-irq-qompath='/machine/soc/v7m/nvic/unnamed-gpio-in[0]'
 > +.. parsed-literal::
 > +
 > +    |qemu-system-arm| -chardev socket,path=/tmp/ivshmem_socket,id=ivshmem_flat -device ivshmem-flat,x-bus-qompath="/sysbus",chardev=ivshmem_flat
+
+The doc need to be tweak now as well.
+
+
 > +
 > +The other options are for fine tuning the device.
 > +
@@ -283,12 +279,6 @@ x-irq-qompath='/machine/soc/v7m/nvic/unnamed-gpio-in[0]'
 > +        trace_ivshmem_flat_shmem_map(s->x_sysbus_shmem_addr);
 > +        sysbus_mmio_map(sbd, 1, s->x_sysbus_shmem_addr);
 > +    }
-
-If we can't map the MMRs or the shmem, then I think we should
-not create the device. I understand these two resources are
-the base requirements for this device. Are you ok with that?
-
-
 > +
 > +    /* Check for input IRQ line, if it's provided, connect it. */
 > +    if (s->x_sysbus_irq_qompath) {

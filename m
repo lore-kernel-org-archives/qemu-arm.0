@@ -1,119 +1,147 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1166965ejb;
-        Tue, 20 Feb 2024 00:55:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWUl++Fv1IyxVP3S1AX71ylS+Nhs/uc4bhnbRHfTtIlHunKOM9kIr/rIAsMWCrn80yqYaiRiDS8oBY4XkxRweLIe46fQWQb
-X-Google-Smtp-Source: AGHT+IFNp0ynRrNo5htEbeU/eqZHAUjdNUIO49tc8RonriBsXjUH+pQvZvAMsU+s6ejDilUnl8k7
-X-Received: by 2002:a0c:f014:0:b0:68f:8ddd:aad4 with SMTP id z20-20020a0cf014000000b0068f8dddaad4mr1727309qvk.35.1708419312840;
-        Tue, 20 Feb 2024 00:55:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708419312; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1176903ejb;
+        Tue, 20 Feb 2024 01:17:51 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVm1m55eLj8KREXn9lWTe+8yJhyyrXhjXAAio6bCVY+O/DBN8O5/1ip6XrqkcyHD4wX4gslpgT4v4lipiIioSWK2nIpwrGL
+X-Google-Smtp-Source: AGHT+IHZFpLeGtdyIGs3+LJX1CbZxpGyEfw5I5hGfmMmenU9IRyxsAfeq69yM9iZ8/QQkCIonek3
+X-Received: by 2002:a05:6214:21ad:b0:68f:1608:1b0d with SMTP id t13-20020a05621421ad00b0068f16081b0dmr17535576qvc.0.1708420671298;
+        Tue, 20 Feb 2024 01:17:51 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1708420671; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FWgTSJdCF6LpJdVSgx6zjeT6k3Q/qu8zyYFrIxpDc/d2BU4+spuwI+jYmZaoy1ew5h
-         0j5u/ehDepaluwY5dsaXcUlB4dNEAUIFVGX71aPIDcK/3ncnEGA5vQEFnO8EySrQJMkN
-         j2JC889AiZzyOzcP6KT28Io0WJg4tCXHvlzguLGa51xpLIXA0W5eNKKNV+rQKYGea32g
-         Kprzc+kRs30FkHOgEEqGgoqOjDQxpaFwuGlDnuFZqhaQzoqDUNgKqf5C60D5OUL8Eqd6
-         ETkywRZVyqKCMXMSiWygx02xvuk+KSHjkxsbT9WSJbtbNIteD10a+tEUlqL+5JdxGl60
-         dpVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=IR2lD5BCMkTTXKJWZYuW4L84zHht7JpfU/A0Rp5uCdRGbFGPtXx3cPe5KKpU5d2HZ6
+         NgphsXhzo2gqm8IlYFQGTOzCWdRB92nsFIV630UDM35QfISsb1jYGjqQ66ATA0kekDwu
+         VRIJu9L5l2i3IY4jVwO5iCCANHQcUvFi5K0ABDLNtspVaq4guGNUTG+vOoV3zzYfRHQP
+         Bx+9AKe/8QqF5Ds2a46Mh6/bZGnQ0kg5EjaAaoseitQdEI0gL5krzStswLwrAEL4er2p
+         vd5s6cAuZmEpeVWBttkZ5gpScsw8SYNDMRo/beuoKSlIEJmLBriD+oeQv2Zspd2FbrX0
+         1n8A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=kfSQCPN1GGM5Zej4RQdSlhjLn3KZeYb7da7sMakzv6E=;
-        fh=JVZezg2fL77UgyHtJluzTAtsDQ7AeEpU1rdRUX7CEDk=;
-        b=hBUrhqWBs3hHvphju7J5hoAmvJJPObTNIltyV2OSbO5d6ZEzlmL4+Mtas/o+DdiQ6J
-         oYelSv2e1YFT7RQWchLabE4ygjCy6I0hoc4OqDWscDlXof4ItIA4dLBarBWcTLzXU9bo
-         WT+jPk0XYilKdIzmz46gRhiTyK0rA/8Qxa77Vj5mVxJ3UWrsXhlb+DaWedgw+Y/ptpmB
-         keBlvu4s/jwEInuGDRVNgGzVlnTMpPIePKUzd+5S+/Ngf501tHWRNx2T4Ea+kFDv7/Cz
-         G0dPhbuZRYdBIyd4mG90hNMZ7n1BRaJ74VIL2V+uCi9vdHD4znRodS0z0stC1s0HItzX
-         rqbA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OkMOjYGwbM8JwIJAAyX7yMvEzDX+KLpy0ANZ7XB4HUk=;
+        fh=I0lkCgkmx1xzGh4IAw0+/exZU1w8D7UAXzuzM95vWeU=;
+        b=gQdhoBQcfKhHzyK77vZNghluvw7LxNwV+PuCl1zA40T2/Jn27HItKX6LKng+T+eG56
+         7bfBhuiuKesKiDEYmk7B4E7kubaQp2f35YTjvHcYrkRA8LWgaA3SWefANCkMQHVOVGdS
+         VB7P9GT1AeTdSNtHOho6F0UrPQ2Z067VBqgXv3wtmVjt+8ATdN8RTHsN3MfRX9zGk+Zc
+         ygfBUC0+slMBYAXMfSvLefTeIJwKqD8PzMgiIaFCmf5cPHyiQANYCif5tZ5x19ijsgWw
+         kkSZmbF+yCMR95a/3Utib/HoBxkMSB299pYgcfdLImQqJ8fg4JXwGcdvszGTlK26WKBu
+         5nBg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WGXkxvlZ;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=HBc3pNTu;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv4-20020ad45ce4000000b0068f98b6c5c3si200535qvb.60.2024.02.20.00.55.12
+        by mx.google.com with ESMTPS id f6-20020a0562141d2600b0068c45c2c82fsi6335826qvd.370.2024.02.20.01.17.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Feb 2024 00:55:12 -0800 (PST)
+        Tue, 20 Feb 2024 01:17:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WGXkxvlZ;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=HBc3pNTu;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcLsY-0000PY-OQ; Tue, 20 Feb 2024 03:53:30 -0500
+	id 1rcMFt-0001Sn-SC; Tue, 20 Feb 2024 04:17:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsV-0000Eg-7c
- for qemu-devel@nongnu.org; Tue, 20 Feb 2024 03:53:27 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsO-0008Cq-RY
- for qemu-devel@nongnu.org; Tue, 20 Feb 2024 03:53:26 -0500
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-a26fa294e56so819094366b.0
- for <qemu-devel@nongnu.org>; Tue, 20 Feb 2024 00:53:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419199; x=1709023999; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=kfSQCPN1GGM5Zej4RQdSlhjLn3KZeYb7da7sMakzv6E=;
- b=WGXkxvlZ6X0ljqBuDLkDQUKYHZPNkK4xEiK0Q7QpmgnM2c8+/UnKk/TtuxEQOxlfBw
- /OJF9aQZRgw1rpTdv45AEImJTSo36yLxKRAjCR5VgGTDl7G/Dnkh8S4zlEiUy8SrjMEW
- 9OzUbgsSU0AsRlSSoQ1iB6T5C6xTpjeBc2cteKU6QG6MzAGOyNveJ2ZBOsKTPHyYVfUk
- PRTKpS7g4T4QMBhrkqEciDwMelQ6TP04kQu7xuXeO93TxoicO+Y7p1LOLm7VTdvfcPOh
- WJjSGhRvHo6XqRkNym5YsWAL5nLqMKJ5CgKrJjyDG6M4L7BJtMVGpMBHqTrR4mtfMczn
- yfRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419199; x=1709023999;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=kfSQCPN1GGM5Zej4RQdSlhjLn3KZeYb7da7sMakzv6E=;
- b=xE0EDVIytp3ETEiy4RPIMvFl0BPIlH7lJegBTXxlLI3M/1f1vatSKg5IzqzPONL9N/
- MMybOp/CwSiKSjIfCgG7E2DzTUX6YTrPDMalvJlHaIqI1F+lbwI/omiF8FRFuqFhT77U
- 7bK25b1Lo3Nq9RsU5mbI7ZmT75rm0UAEqj6EJqfsSfJvjmOM7PiiapTtSviELaUB0K9N
- 1F3EwFK8UTnLC9sSjwVRHtpxHR6DObm2kOxb39a5wZfzCsSON+63LbWG7OUJhc/chR1j
- qYjJV/+soiw/H4JO3civpItb9osWj2ybCU+xmJ7mpvkZHwBBJhCHBZw4iTD3zHtMvmhA
- la5w==
-X-Gm-Message-State: AOJu0YxMzRDP/ErIRZwn1MpVlrsaQDUX9dJgLfAALg8l3DSDgbQVP42R
- aF2Xt4Si+Mk1YvrygcG50dH4oQmum36lK45DS9aJOy+XM51vnN9M4TbDHA8NBmc=
-X-Received: by 2002:a17:906:f44:b0:a3d:d7f1:35fd with SMTP id
- h4-20020a1709060f4400b00a3dd7f135fdmr10250515ejj.9.1708419199506; 
- Tue, 20 Feb 2024 00:53:19 -0800 (PST)
-Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
- [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:19 -0800 (PST)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v1 10/21] hw/arm/omap.h: correct typos
-Date: Tue, 20 Feb 2024 10:52:17 +0200
-Message-Id: <3a8b80f6427bf84580eec8f7c5c411fab5419e1f.1708419115.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
-References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rcMFs-0001SU-DX; Tue, 20 Feb 2024 04:17:36 -0500
+Received: from mail-bn8nam12on20600.outbound.protection.outlook.com
+ ([2a01:111:f403:2418::600]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rcMFq-0004LN-7w; Tue, 20 Feb 2024 04:17:36 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fFUTHyTQP2dcSYCb1SvV3ijZ9grw9V8scxZpm0XXAD2iTqX2WhHzowZFcSEWh/s1JAzY1TGhWn9YKg7QK+NtRek/JBnG+VnUAZ6xa6G4wg605tLQwcSuBfGTQlpRWY4lJN6wtIU5DNhVHuZwgjjxqPOn2BBerbzpkIOdoQTpeViQQBcTvmaExbHEsHuM6VDeJEbvYIjOQE80V6HkhyHq+LU4oYazgJAlJAijH6rUCUywaF+462SJKgVJqaw/lG4pvY5pXIuebSctdHbGw78f3XmQXtMxlEErcPbCBJC9blhG22cdeJKn2pMcKhqQddFJvDVsgRgsLCPZwVQnCDiiww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OkMOjYGwbM8JwIJAAyX7yMvEzDX+KLpy0ANZ7XB4HUk=;
+ b=mSJUJPnVV1lmVsMCpzWsz25THgDElWFzblCGWF6D1szZ7zJoPrW7xkWfRwOz+1mHjbEMguHf7gKgoK9RHa7AKWlEBzoZtoBodYw+k0/ARsZMUj31gDkAbQgjda3JhdoJf7qr9vsGzQvKfPIPvCrgLIB+D9fEnOnrPc4x3782F5eYOTPPYC4uto3bmdX1+xO5pvUNRIO7Zmi1O0S1woa2RfyZ7v6emQ6LEnuYWjhR2obF+E2nDRlf1sT6zvVOPT3DojloK6UZnPR3CBUrEb7DeMHxGrKxTg1Fw9Cku58FqJpv/Ia1erlAaSFHmpb0FHfQLJVWJ/0PTP9jvIncHZ2UVQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OkMOjYGwbM8JwIJAAyX7yMvEzDX+KLpy0ANZ7XB4HUk=;
+ b=HBc3pNTuiI/JbZtVrZDF5ZXj+G7k664TkkfapxI/8nAnoiKE6xD3jrK09hA5H8AW62i2QLwtjsLlmZ4iXroaN63ZkKs3pwHN5PL/R3Kb1ZXolsZTFWBLvNvDanGw9BBn+8UiJlEDYn7aqa8epYC1y7M1jG8s50+xWog/IThlnt0=
+Received: from CY5P221CA0120.NAMP221.PROD.OUTLOOK.COM (2603:10b6:930:1f::9) by
+ CY8PR12MB7124.namprd12.prod.outlook.com (2603:10b6:930:5f::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7316.20; Tue, 20 Feb 2024 09:17:29 +0000
+Received: from CY4PEPF0000E9DA.namprd05.prod.outlook.com
+ (2603:10b6:930:1f:cafe::82) by CY5P221CA0120.outlook.office365.com
+ (2603:10b6:930:1f::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.39 via Frontend
+ Transport; Tue, 20 Feb 2024 09:17:29 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CY4PEPF0000E9DA.mail.protection.outlook.com (10.167.241.79) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7292.25 via Frontend Transport; Tue, 20 Feb 2024 09:17:29 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 20 Feb
+ 2024 03:17:28 -0600
+Received: from xhdvaralaxm41-docker.xilinx.com (10.180.168.240) by
+ SATLEXMB04.amd.com (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.35
+ via Frontend Transport; Tue, 20 Feb 2024 03:17:26 -0600
+From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Kevin Wolf <kwolf@redhat.com>, Francisco Iglesias
+ <frasse.iglesias@gmail.com>, <sai.pavan.boddu@amd.com>
+Subject: [PATCH v2 0/2] OSPI updates
+Date: Tue, 20 Feb 2024 09:17:19 +0000
+Message-ID: <20240220091721.82954-1-sai.pavan.boddu@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9DA:EE_|CY8PR12MB7124:EE_
+X-MS-Office365-Filtering-Correlation-Id: 39bc85e9-c2e2-4da0-18c8-08dc31f4c2fd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Y1LeBHjWjIjkIdR18sWFeRn66PROM291Ot4gA7Gg55K5RPoilu2SrXtUKVRlE9RXli0E8STyCUbTkpjgKkSqXDAXB+EaPWW2FKIP9iEJmDXFbAhCiKCneigUhIW9+OrcqER+XdMY3HjP7XDu/7P0kBl4vy4b8KNejARtUHcLrz3w8CujyII9gnKudTZWGPC12f8d2aJC2tPrLpPEBtrBqtYdmCPVfwdjEDWSEk020x/QWMxkOliLScpEicvP3aN3Ome2v2wBgyG9wsnKPqM5tJ9aPv8BRskuIUd7aWd7gOQZgFBkbVZGpSqmIfhd7/+m7glf5l54ZDioDzfbBdAS8Ojo09MQyjNaPyybGzpWl5FuPcJwjJwEWOnOrCuUefv4eY7sdMPrYJx/TQtMXomqusMKSpKLZV6CJikhKb5ytATnEVIAbUee1KGhJbQvP2guHIUofUBIrPxhaw/FfwBsu1iFvsi9gnebxd0yD2WtYwth0UEkYMHox1RXZ4pYW9fCnVpwn7iKvSZaaRdclqG7AwQTczPINUvIDSJ8AJZaUl0GybtnByJA3Ua9fPzFQWZcZ6zu5xf102rcdtS/wtcI8kCzaEkVtLihoEL6ypAx52bIdWqfwWgxuq3Eo4Wm50JrcvT3vuolywNk1Hvr3dFKr7M2sK3J9/p6r09oY6b6VAc=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(36860700004)(40470700004)(46966006); DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2024 09:17:29.1822 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 39bc85e9-c2e2-4da0-18c8-08dc31f4c2fd
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9DA.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7124
+Received-SPF: softfail client-ip=2a01:111:f403:2418::600;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: 3
+X-Spam_score: 0.3
+X-Spam_bar: /
+X-Spam_report: (0.3 / 5.0 requ) AC_FROM_MANY_DOTS=2.499, BAYES_00=-1.9,
+ DKIMWL_WL_HIGH=-0.072, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,29 +156,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E7VrnFcjH63o
+X-TUID: 7wdd6dEWd5l1
 
-Correct typos automatically found with the `typos` tool
-<https://crates.io/crates/typos>
+Add a new 2Gib octal flash mt35xu02gbba. Add an interface for versal
+virt board to swap the default flash.
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- include/hw/arm/omap.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes for V2:
+  Added type checks for provided flash part name.
 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 067e9419f7..2f59220c0e 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -1008,7 +1008,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
-                       __func__, paddr)
- 
- /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
--   (Board-specifc tags are not here)  */
-+   (Board-specific tags are not here)  */
- #define OMAP_TAG_CLOCK		0x4f01
- #define OMAP_TAG_MMC		0x4f02
- #define OMAP_TAG_SERIAL_CONSOLE	0x4f03
+Sai Pavan Boddu (2):
+  block: m25p80: Add support of mt35xu02gbba
+  arm: xlnx-versal-virt: Add machine property ospi-flash
+
+ hw/block/m25p80_sfdp.h    |  1 +
+ hw/arm/xlnx-versal-virt.c | 44 ++++++++++++++++++++++++++++++++++++++-
+ hw/block/m25p80.c         |  3 +++
+ hw/block/m25p80_sfdp.c    | 36 ++++++++++++++++++++++++++++++++
+ 4 files changed, 83 insertions(+), 1 deletion(-)
+
 -- 
-γαῖα πυρί μιχθήτω
+2.25.1
 

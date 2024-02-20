@@ -1,158 +1,556 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1259582ejb;
-        Tue, 20 Feb 2024 04:31:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWFWlCag2J+hoGr/FfJr2PcPA50/aBVnw4aXL2qVCvrQ5pw41MO+YteGfo0DXkTRh1Yvb9rgJomhL6Vg+LtxcqHIykL5vo6
-X-Google-Smtp-Source: AGHT+IFCfe91gomEfLH62mBF1uJTeBcL3HJv/2UXrpknkyo/wUCBLU8T1bkCBKiYZno3WiSC3viL
-X-Received: by 2002:a05:620a:a47:b0:787:262e:9a7d with SMTP id j7-20020a05620a0a4700b00787262e9a7dmr16038637qka.25.1708432293098;
-        Tue, 20 Feb 2024 04:31:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708432293; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1299273ejb;
+        Tue, 20 Feb 2024 05:43:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWlM8QDvHdIC0VNfs5w6XrpzzCVPA+l9xI96dv+TN/KsMWMEvCoMf8Hq3Mj6/x/BhL4YtHk47j1a6d11h1u+lZJuw9YLg2z
+X-Google-Smtp-Source: AGHT+IH/Ha1RSCdTfQQfxCQS2LgajnYlUdazIgJP0Eg/sSluYMl9lLVF5L8VDVtXI0DTaTaRHFXi
+X-Received: by 2002:a05:620a:3cb:b0:787:2f5e:a217 with SMTP id r11-20020a05620a03cb00b007872f5ea217mr16710099qkm.45.1708436586791;
+        Tue, 20 Feb 2024 05:43:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708436586; cv=none;
         d=google.com; s=arc-20160816;
-        b=spOUksfvR0SzrCVDfW9BSbYiupuNJ5yLl4ykOJ6ZAMuE85jBWqacx3Ovy408y8NYea
-         Q3j1f1QQFSWwLvzuhTpt3ZVT9YLCifvU8sOUoCcRq6nm2OP0jCDwpOyc1JUTqaqA2gjy
-         uHFzgxY7BSU06gQP0I2uBaExMrIiSraHc26Se79Aj1JfIQJ7jjQW4KxJQaezSXUMUkW0
-         2kiIyLx1lWCDShOa9TjoomjHcf/YNwVbbqkaia72hGR9rG2kDkF/7zg1s8pjzV3NdzlB
-         qKBj0c3uNZ2OC4y0Wrt2bPaBmp/VadJrYZPLUhuWr8JQ2TvCcU5MQb3ETvQw/4fFj+Y3
-         8ckg==
+        b=eJ2/CS8CBv0WFcZb1x0Fu7grJBtUv/AS4vHA4MAF/dsJpPvA1MWhAk9Tmdcs15Lv4e
+         deOrQJ3KH+TkLap7kkDqYsjI/keL7ohMla7eV3uelKFbqdZ/rTt5ZObmEfgJXj4KEW0A
+         oZjbESqRw4836gTTxFPs48565da15cogBvVOzXvtjOQLzA7D9jTf95arEGeBPQoOwfNf
+         ATcKG2EmZoZl6y8kh861qgQ0XpPGMYp7hbJ5nXgR3rMFpiZ8ZBOAjD/vsZMVkJk7Sl2/
+         PRXfe+4kDa9FVWcLrIHJk1RUAXEPAyTI+JbZCzukFVca2c4tr0BfvGDPv22gBxI3Fn/b
+         cpRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HIStiYXkXTcOJyvv/atc2ADxmhvcM7xyvK8iIss2cic=;
-        fh=YAxCJiUDuMQzKfatS/lWwyo6fi9HaN8cTSmR4WmfOs4=;
-        b=l4xozfeFTLAok35j8lESiIaZ0o07wmWHA56O8XlpddUjVisUaOWRME0gHNGDYTvbdo
-         1BIkuziRvmj6L5is7P2X+8CwQF0bex/egFLNz+KXm+RS1npVJQkzuo0Jp6iAVwhlVkPJ
-         lu8qdX019hX6vEQ2KKVHl/MgcsIhTFroRucNpn2kYqy3K7P7Tsk68VlmgL/zveD/z03N
-         xAkVChAlLKEfCkUolmxQKRd/QqaDu46km63rpvStsB//uhMKFME2VtQ0nt3hGrdfZiJ1
-         WKvgzLURPU9NsL0stUJzgq3m5/adFDeiiTVmmyPZdDQGv6WvEbiRRgn04boF1bucCBgf
-         kxfw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=IQ6XwSAjva49cmwTUlopjulzt/RruLvkkCiwYvTtDUk=;
+        fh=pAfI4qH2SRd65w7KVmWS6KDcEA2ZCNY9GaDoyv/DUkU=;
+        b=fJD5IvX4+7jBCccqLTYq77SJVtfJZv659LZa313lxfBcYp2G2VudLDKRD9IW22xjbZ
+         cIQ6O1tH5t8KNbMY0A/qQMSYLmy8ojJDsYwS+cnBYkkUDCVCecl9KBlWcBXI83eEix7Y
+         QtUrsIpC+IVnnvCxQK8RyeQPm6q4v8YaPfm9rFdXm6I17vJ7bsxdAeE7aG/4n3zF+1Tx
+         CTjd7CKg4znfo5JdPJPJUGUUTis+2l3/FfDPe93YSq9imt6ftxaO+ORAOVbOqg/3/5By
+         WiFlUrPhGU4NcdsX5lufCRG47JxfKgNjVOfnCKD8vThRhzErGsqJ2LA6IaagYrJdq90t
+         i/IA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XMEUh4AU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kd9YSwl6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c29-20020a05620a269d00b007871fec8208si9270318qkp.477.2024.02.20.04.31.32
+        by mx.google.com with ESMTPS id m3-20020a05620a24c300b0078591a8cc6bsi9700100qkn.609.2024.02.20.05.43.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Feb 2024 04:31:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Feb 2024 05:43:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XMEUh4AU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kd9YSwl6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcPHN-0007rj-9P; Tue, 20 Feb 2024 07:31:23 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rcQOA-0007sK-W7; Tue, 20 Feb 2024 08:42:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rcPHM-0007r8-Kr
- for qemu-arm@nongnu.org; Tue, 20 Feb 2024 07:31:20 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rcQO8-0007ps-TW; Tue, 20 Feb 2024 08:42:24 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rcPHL-000764-2B
- for qemu-arm@nongnu.org; Tue, 20 Feb 2024 07:31:20 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-564d9b0e96dso406085a12.2
- for <qemu-arm@nongnu.org>; Tue, 20 Feb 2024 04:31:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rcQO6-0004C3-9k; Tue, 20 Feb 2024 08:42:24 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-564d9b0e96dso505310a12.2; 
+ Tue, 20 Feb 2024 05:42:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708432277; x=1709037077; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=HIStiYXkXTcOJyvv/atc2ADxmhvcM7xyvK8iIss2cic=;
- b=XMEUh4AUf8d9slXLuN1GiM2OtN8RBWKi4PN1Vkc9HCXI9WK/flyWdU9fQxCCfytvOz
- V06rWlGVD/TriEMtrUJPrW+urH3TCq2LC7rzHeTVzFGI9sHTQImVoCeJ+mmXHMPzeelr
- i5kIqzNf3x6K/vMHYrzm7u2jfyYgFe0MZAA5kDP+HJneb98rR9CaSft8AnwrUkIrU/gy
- UwPqmrg+un9+925kF1oD6Y9EMh722S+cZ9U2hEve4yVbTj3/a/LMXCbr1imzzvp2bbnI
- OTYBZu8+ACUSjsf0hvKHBaylRnE6esaNUrreCQaxYwuE1ke1uoJo9/4vKqbr12kJka4J
- R4nQ==
+ d=gmail.com; s=20230601; t=1708436540; x=1709041340; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IQ6XwSAjva49cmwTUlopjulzt/RruLvkkCiwYvTtDUk=;
+ b=kd9YSwl6CkVJ1YT8APf2DxbebER8Z0Z0mJmcLXPAmwP5qhdWUxbP7o73Ft+jfwo8kP
+ o5ZWD43QKmQBRAlFuvHGvvIBgJNMtHvUpps80ctrCevk0XT10hysXizSvS1wXm+SUjgm
+ tjXLv66/ZFnGCRMM4ZshqI3ep2Mzv8bE1B3LEcqxroIhMQIqsjOQ7S/CF1nU9GEJOZBV
+ +EE80p/DNxFdCcmdAYlwsXwY5wk3kEQhEr1739e89QysIk3lol/C98nub9WBAiUS6l7h
+ jVa0dATC+McduOBD1PVY63g5AuNAT4umbciEIWFdBIbrbM+SRe5KUBDmT+sZJ7t4bIbF
+ ITJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708432277; x=1709037077;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HIStiYXkXTcOJyvv/atc2ADxmhvcM7xyvK8iIss2cic=;
- b=FCYpB9BxZa1EHrUBYTPhkM5P4Gd39QdexNr2OnGKzWM0lrXlmvOGNYmAAw16Ggkk7A
- 4Jxzv5r9mplxaj7FYGrZWodOboH1GkqXDXdovmRYmGXm8j55H+CD/3SBGvYDva23cAYs
- eiIiEWr7IwwsULPWumK1wzttS0LCokg+gac6rsb2sr2hT332Xp63ZqLAB0qBysKnWco8
- 99ArjFIAWXX7V2jU8n3h7XA/lc6JZ6yh3stjEuQrz9WXCeYhwpyBsgd6ezri4mH9kUcP
- kfruO6vHUQhvX5ZCDg65/D70FDIZN9l3r66F+YrgzNqR6XpvdQh3GWumZp7qpnXEIosU
- KAYw==
+ d=1e100.net; s=20230601; t=1708436540; x=1709041340;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=IQ6XwSAjva49cmwTUlopjulzt/RruLvkkCiwYvTtDUk=;
+ b=lF9lHq2BM64gPfQnFYcDGPle4EPY+OGhGLug05YF/+MhlbwQwRjW6YQ7jno6296i7R
+ KEyeHlzjFmUKSKqPWkv1TYUok4VW+LDUo9TJ8JGsMEdtPPbQORiT7+5PYUI6oZ5E4bPs
+ qcVeIHvscAYkBc8SJ8mw3AbfK+HaRNumMBlYxJN9Z3PxZfwPW6dma54aKYmnU3kIWB/5
+ g2AWrdCTFGzC2cNTTztCrCZhtm80TVPweY6WGVBKRroE1NecYrjBYKVHYd7PxnxRgQV3
+ TA20w3ahRWTa0hE4eNIPCXqAJsSN9M4+aPIaPP2nHHDnmpiLsic0CX+/WyMVPE/X3tkj
+ E2OQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUoiH5u6AknLloHDO1OWajlUQcfLMuTloNrcFHM5bS8nZUY8/pOoZfVp4XUrngNSIIY/nZNndsz65sUWyyrievGWIOP
-X-Gm-Message-State: AOJu0YxZxUCXtD860Qw+xIHvndopSHm0bx1YK7AaV0/lWFmJGp0lw/Vv
- z8+uRXeznd1M7F1JlTCyAJ/VARrdnQZzok15kdLfbR3Kbm/p6YOg5hbW5V++60WRZ+trsF9xUus
- weKaVQoOZcZGqmmvsziBWRZVcIjbs6pVC91qcdQ==
-X-Received: by 2002:a50:ed03:0:b0:564:7350:cac8 with SMTP id
- j3-20020a50ed03000000b005647350cac8mr3664227eds.15.1708432276797; Tue, 20 Feb
- 2024 04:31:16 -0800 (PST)
+ AJvYcCWam0tg3biuxxs4yBXgSDc97xWNaljzkZ2BIttJgY8hsejWFkyuhWjYz18a7zU4r67hJ353LoIzKSSy0/jdM/9KSD1N
+X-Gm-Message-State: AOJu0Yx5tlnpc5zJHEh+PFb5Kcu66a9+9bPenU7BjqLNhoowq7LDBsUq
+ pVffFWAazHX6DR0gb6UzT+8OzlfU3w4NFy4VjZk8wiKstAH1yF1JUo5ZzgLF
+X-Received: by 2002:a17:906:b154:b0:a3e:cb72:b6fd with SMTP id
+ bt20-20020a170906b15400b00a3ecb72b6fdmr2648242ejb.23.1708436539844; 
+ Tue, 20 Feb 2024 05:42:19 -0800 (PST)
+Received: from localhost.localdomain ([37.186.51.232])
+ by smtp.gmail.com with ESMTPSA id
+ h23-20020a170906591700b00a3ef17464b1sm728449ejq.9.2024.02.20.05.42.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Feb 2024 05:42:19 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, philmd@linaro.org, pbonzini@redhat.com,
+ qemu-arm@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>
+Subject: [PATCH v3 1/3] hw/i2c: Implement Broadcom Serial Controller (BSC)
+Date: Tue, 20 Feb 2024 19:11:18 +0530
+Message-Id: <20240220134120.2961059-2-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240220134120.2961059-1-rayhan.faizel@gmail.com>
+References: <20240220134120.2961059-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
-References: <20240220121752.490665-1-ruanjinjie@huawei.com>
- <20240220121752.490665-2-ruanjinjie@huawei.com>
-In-Reply-To: <20240220121752.490665-2-ruanjinjie@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Feb 2024 12:31:05 +0000
-Message-ID: <CAFEAcA8jef+ZqSaj7MOwkneuj5aLayA6MZA=-LH+VvcDuFCtZA@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/3] target/arm: Implement FEAT_NMI to support
- Non-maskable Interrupt
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
- wangyanan55@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZDp0zTsfOysE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ey4vAi07mYet
 
-On Tue, 20 Feb 2024 at 12:19, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
->
-> Enable Non-maskable Interrupt feature.
->
-> Enable HCRX register feature to support TALLINT read/write.
->
-> Add support for enable/disable NMI at qemu startup as below:
->
->         qemu-system-aarch64 -cpu cortex-a53/a57/a72/a76,nmi=[on/off]
->
-> Add support for allint read/write as follow:
->
->         mrs <xt>, ALLINT        // read allint
->         msr ALLINT, <xt>        // write allint with imm
->         msr ALLINT, #<imm>      // write allint with 1 or 0
+A few deficiencies in the current device model need to be noted.
 
-Can I ask you to break this patchset down into smaller
-coherent pieces, please? When you write a commit message
-that has this sort of "list of four different things the
-patch does" structure, that's a sign that really it ought to
-be multiple different patches that do one thing each.
+1. FIFOs are not used. All sends and receives are done directly.
+2. Repeated starts are not emulated. Repeated starts can be triggered in real
+hardware by sending a new read transfer request in the window time between
+transfer active set of write transfer request and done bit set of the same.
 
-Do we really need the command line option? Mostly we
-don't add that for new CPU features, unless there's a
-strong reason why users might need to turn it off: instead
-we just implement it if the CPU type and/or the board has
-the feature.
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ docs/system/arm/raspi.rst    |   1 +
+ hw/i2c/Kconfig               |   4 +
+ hw/i2c/bcm2835_i2c.c         | 278 +++++++++++++++++++++++++++++++++++
+ hw/i2c/meson.build           |   1 +
+ include/hw/i2c/bcm2835_i2c.h |  80 ++++++++++
+ 5 files changed, 364 insertions(+)
+ create mode 100644 hw/i2c/bcm2835_i2c.c
+ create mode 100644 include/hw/i2c/bcm2835_i2c.h
 
-thanks
--- PMM
+diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
+index d0a6f08b2b..f2c0d6d6b8 100644
+--- a/docs/system/arm/raspi.rst
++++ b/docs/system/arm/raspi.rst
+@@ -34,6 +34,7 @@ Implemented devices
+  * MailBox controller (MBOX)
+  * VideoCore firmware (property)
+  * Peripheral SPI controller (SPI)
++ * Broadcom Serial Controller (I2C)
+ 
+ 
+ Missing devices
+diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+index 14886b35da..596a7a3165 100644
+--- a/hw/i2c/Kconfig
++++ b/hw/i2c/Kconfig
+@@ -45,3 +45,7 @@ config PCA954X
+ config PMBUS
+     bool
+     select SMBUS
++
++config BCM2835_I2C
++    bool
++    select I2C
+diff --git a/hw/i2c/bcm2835_i2c.c b/hw/i2c/bcm2835_i2c.c
+new file mode 100644
+index 0000000000..d6b9bf887a
+--- /dev/null
++++ b/hw/i2c/bcm2835_i2c.c
+@@ -0,0 +1,278 @@
++/*
++ * Broadcom Serial Controller (BSC)
++ *
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/i2c/bcm2835_i2c.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++
++static void bcm2835_i2c_update_interrupt(BCM2835I2CState *s)
++{
++    int do_interrupt = 0;
++    /* Interrupt on RXR (Needs reading) */
++    if (s->c & BCM2835_I2C_C_INTR && s->s & BCM2835_I2C_S_RXR) {
++        do_interrupt = 1;
++    }
++
++    /* Interrupt on TXW (Needs writing) */
++    if (s->c & BCM2835_I2C_C_INTT && s->s & BCM2835_I2C_S_TXW) {
++        do_interrupt = 1;
++    }
++
++    /* Interrupt on DONE (Transfer complete) */
++    if (s->c & BCM2835_I2C_C_INTD && s->s & BCM2835_I2C_S_DONE) {
++        do_interrupt = 1;
++    }
++    qemu_set_irq(s->irq, do_interrupt);
++}
++
++static void bcm2835_i2c_begin_transfer(BCM2835I2CState *s)
++{
++    int direction = s->c & BCM2835_I2C_C_READ;
++    if (i2c_start_transfer(s->bus, s->a, direction)) {
++        s->s |= BCM2835_I2C_S_ERR;
++    }
++    s->s |= BCM2835_I2C_S_TA;
++
++    if (direction) {
++        s->s |= BCM2835_I2C_S_RXR | BCM2835_I2C_S_RXD;
++    } else {
++        s->s |= BCM2835_I2C_S_TXW;
++    }
++}
++
++static void bcm2835_i2c_finish_transfer(BCM2835I2CState *s)
++{
++    /*
++     * STOP is sent when DLEN counts down to zero.
++     *
++     * https://github.com/torvalds/linux/blob/master/drivers/i2c/busses/i2c-bcm2835.c#L223-L261
++     * It is possible to initiate repeated starts on real hardware.
++     * However, this requires sending another ST request before the bytes in
++     * TX FIFO are shifted out.
++     *
++     * This is not emulated currently.
++     */
++    i2c_end_transfer(s->bus);
++    s->s |= BCM2835_I2C_S_DONE;
++
++    /* Ensure RXD is cleared, otherwise the driver registers an error */
++    s->s &= ~(BCM2835_I2C_S_TA | BCM2835_I2C_S_RXR |
++              BCM2835_I2C_S_TXW | BCM2835_I2C_S_RXD);
++}
++
++static uint64_t bcm2835_i2c_read(void *opaque, hwaddr addr, unsigned size)
++{
++    BCM2835I2CState *s = opaque;
++    uint32_t readval = 0;
++
++    switch (addr) {
++    case BCM2835_I2C_C:
++        readval = s->c;
++        break;
++    case BCM2835_I2C_S:
++        readval = s->s;
++        break;
++    case BCM2835_I2C_DLEN:
++        readval = s->dlen;
++        break;
++    case BCM2835_I2C_A:
++        readval = s->a;
++        break;
++    case BCM2835_I2C_FIFO:
++        /* We receive I2C messages directly instead of using FIFOs */
++        if (s->s & BCM2835_I2C_S_TA) {
++            readval = i2c_recv(s->bus);
++            s->dlen -= 1;
++
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_DIV:
++        readval = s->div;
++        break;
++    case BCM2835_I2C_DEL:
++        readval = s->del;
++        break;
++    case BCM2835_I2C_CLKT:
++        readval = s->clkt;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
++
++    return readval;
++}
++
++static void bcm2835_i2c_write(void *opaque, hwaddr addr,
++                              uint64_t value, unsigned int size)
++{
++    BCM2835I2CState *s = opaque;
++    uint32_t writeval = value;
++
++    switch (addr) {
++    case BCM2835_I2C_C:
++        /* ST is a one-shot operation; it must read back as 0 */
++        s->c = writeval & ~BCM2835_I2C_C_ST;
++
++        /* Start transfer */
++        if (writeval & (BCM2835_I2C_C_ST | BCM2835_I2C_C_I2CEN)) {
++            bcm2835_i2c_begin_transfer(s);
++            /*
++             * Handle special case where transfer starts with zero data length.
++             * Required for zero length i2c quick messages to work.
++             */
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
++
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_S:
++        if (writeval & BCM2835_I2C_S_DONE && s->s & BCM2835_I2C_S_DONE) {
++            /* When DONE is cleared, DLEN should read last written value. */
++            s->dlen = s->last_dlen;
++        }
++
++        /* Clear DONE, CLKT and ERR by writing 1 */
++        s->s &= ~(writeval & (BCM2835_I2C_S_DONE |
++                  BCM2835_I2C_S_ERR | BCM2835_I2C_S_CLKT));
++        break;
++    case BCM2835_I2C_DLEN:
++        s->dlen = writeval;
++        s->last_dlen = writeval;
++        break;
++    case BCM2835_I2C_A:
++        s->a = writeval;
++        break;
++    case BCM2835_I2C_FIFO:
++        /* We send I2C messages directly instead of using FIFOs */
++        if (s->s & BCM2835_I2C_S_TA) {
++            if (s->s & BCM2835_I2C_S_TXD) {
++                if (!i2c_send(s->bus, writeval & 0xff)) {
++                    s->dlen -= 1;
++                } else {
++                    s->s |= BCM2835_I2C_S_ERR;
++                }
++            }
++
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_DIV:
++        s->div = writeval;
++        break;
++    case BCM2835_I2C_DEL:
++        s->del = writeval;
++        break;
++    case BCM2835_I2C_CLKT:
++        s->clkt = writeval;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
++}
++
++static const MemoryRegionOps bcm2835_i2c_ops = {
++    .read = bcm2835_i2c_read,
++    .write = bcm2835_i2c_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void bcm2835_i2c_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835I2CState *s = BCM2835_I2C(dev);
++    s->bus = i2c_init_bus(dev, NULL);
++
++    memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_i2c_ops, s,
++                          TYPE_BCM2835_I2C, 0x24);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++}
++
++static void bcm2835_i2c_reset(DeviceState *dev)
++{
++    BCM2835I2CState *s = BCM2835_I2C(dev);
++
++    /* Reset values according to BCM2835 Peripheral Documentation */
++    s->c = 0x0;
++    s->s = BCM2835_I2C_S_TXD | BCM2835_I2C_S_TXE;
++    s->dlen = 0x0;
++    s->a = 0x0;
++    s->div = 0x5dc;
++    s->del = 0x00300030;
++    s->clkt = 0x40;
++}
++
++static const VMStateDescription vmstate_bcm2835_i2c = {
++    .name = TYPE_BCM2835_I2C,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(c, BCM2835I2CState),
++        VMSTATE_UINT32(s, BCM2835I2CState),
++        VMSTATE_UINT32(dlen, BCM2835I2CState),
++        VMSTATE_UINT32(a, BCM2835I2CState),
++        VMSTATE_UINT32(div, BCM2835I2CState),
++        VMSTATE_UINT32(del, BCM2835I2CState),
++        VMSTATE_UINT32(clkt, BCM2835I2CState),
++        VMSTATE_UINT32(last_dlen, BCM2835I2CState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_i2c_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_i2c_reset;
++    dc->realize = bcm2835_i2c_realize;
++    dc->vmsd = &vmstate_bcm2835_i2c;
++}
++
++static const TypeInfo bcm2835_i2c_info = {
++    .name = TYPE_BCM2835_I2C,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835I2CState),
++    .class_init = bcm2835_i2c_class_init,
++};
++
++static void bcm2835_i2c_register_types(void)
++{
++    type_register_static(&bcm2835_i2c_info);
++}
++
++type_init(bcm2835_i2c_register_types)
+diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+index b58bc167db..c459adcb59 100644
+--- a/hw/i2c/meson.build
++++ b/hw/i2c/meson.build
+@@ -17,4 +17,5 @@ i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
+ i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
++i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c.c'))
+ system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
+diff --git a/include/hw/i2c/bcm2835_i2c.h b/include/hw/i2c/bcm2835_i2c.h
+new file mode 100644
+index 0000000000..0a56df4720
+--- /dev/null
++++ b/include/hw/i2c/bcm2835_i2c.h
+@@ -0,0 +1,80 @@
++/*
++ * Broadcom Serial Controller (BSC)
++ *
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "hw/sysbus.h"
++#include "hw/i2c/i2c.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2835_I2C "bcm2835-i2c"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2835I2CState, BCM2835_I2C)
++
++#define BCM2835_I2C_C       0x0                   /* Control */
++#define BCM2835_I2C_S       0x4                   /* Status */
++#define BCM2835_I2C_DLEN    0x8                   /* Data Length */
++#define BCM2835_I2C_A       0xc                   /* Slave Address */
++#define BCM2835_I2C_FIFO    0x10                  /* FIFO */
++#define BCM2835_I2C_DIV     0x14                  /* Clock Divider */
++#define BCM2835_I2C_DEL     0x18                  /* Data Delay */
++#define BCM2835_I2C_CLKT    0x20                  /* Clock Stretch Timeout */
++
++#define BCM2835_I2C_C_I2CEN     BIT(15)           /* I2C enable */
++#define BCM2835_I2C_C_INTR      BIT(10)           /* Interrupt on RXR */
++#define BCM2835_I2C_C_INTT      BIT(9)            /* Interrupt on TXW */
++#define BCM2835_I2C_C_INTD      BIT(8)            /* Interrupt on DONE */
++#define BCM2835_I2C_C_ST        BIT(7)            /* Start transfer */
++#define BCM2835_I2C_C_CLEAR     (BIT(5) | BIT(4)) /* Clear FIFO */
++#define BCM2835_I2C_C_READ      BIT(0)            /* I2C read mode */
++
++#define BCM2835_I2C_S_CLKT      BIT(9)            /* Clock stretch timeout */
++#define BCM2835_I2C_S_ERR       BIT(8)            /* Slave error */
++#define BCM2835_I2C_S_RXF       BIT(7)            /* RX FIFO full */
++#define BCM2835_I2C_S_TXE       BIT(6)            /* TX FIFO empty */
++#define BCM2835_I2C_S_RXD       BIT(5)            /* RX bytes available */
++#define BCM2835_I2C_S_TXD       BIT(4)            /* TX space available */
++#define BCM2835_I2C_S_RXR       BIT(3)            /* RX FIFO needs reading */
++#define BCM2835_I2C_S_TXW       BIT(2)            /* TX FIFO needs writing */
++#define BCM2835_I2C_S_DONE      BIT(1)            /* I2C Transfer complete */
++#define BCM2835_I2C_S_TA        BIT(0)            /* I2C Transfer active */
++
++struct BCM2835I2CState {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    /* <public> */
++    MemoryRegion iomem;
++    I2CBus *bus;
++    qemu_irq irq;
++
++    uint32_t c;
++    uint32_t s;
++    uint32_t dlen;
++    uint32_t a;
++    uint32_t div;
++    uint32_t del;
++    uint32_t clkt;
++
++    uint32_t last_dlen;
++};
+-- 
+2.34.1
+

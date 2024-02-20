@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1318360ejb;
-        Tue, 20 Feb 2024 06:12:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVK4ikAp6gS6+JFfP6iwt77yGsAuuI6NATylO/loWNYzeImZtRtXwPMVWlv/yyfwjrdeFm8YQoDEfXeqLV5ijpMGLg2SXib
-X-Google-Smtp-Source: AGHT+IFYMQP7DqbdcT+zaVkiorSiXereNvCGdnKGyFtUQGhX5TH97VfhBVRj/Ki875mRgpsVXjFz
-X-Received: by 2002:a05:620a:1d0a:b0:787:4161:c8ff with SMTP id dl10-20020a05620a1d0a00b007874161c8ffmr15438901qkb.40.1708438352888;
-        Tue, 20 Feb 2024 06:12:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708438352; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1318375ejb;
+        Tue, 20 Feb 2024 06:12:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVHlysm5Gbx814z8NUq+Hdi8uyeGfmcF7IYExsF53hcPckgIqAFqIwAQnn6o+y43n13DWAxteaz4+3Zej/udB6X+qUAyvvS
+X-Google-Smtp-Source: AGHT+IHW5aak/mxYI4YgKaat2L6UHWLhGXp5UMNUABfxLotorsur1PFCbZAQuyjtTuX2KDpCqo7x
+X-Received: by 2002:a05:6214:c28:b0:68f:60fd:d319 with SMTP id a8-20020a0562140c2800b0068f60fdd319mr9103145qvd.22.1708438354123;
+        Tue, 20 Feb 2024 06:12:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708438354; cv=none;
         d=google.com; s=arc-20160816;
-        b=bOIrFnUfjKAAIgxD8xKhRn6dNxw7MOJwgDEe9Aq+4LH1WgbcRHplE+x8q8y5UlDmCu
-         xrJ+EcXcOBgX3raa8BcuXes7ZqFYy2RJbzNJ126XMmr6nTrPP8wfDvCo/d1Ut2oFiK0K
-         1qlaHNzN0y0rwVJIMcGTInM0DKwcCfTvvFdPiCcXFjmgsGy76FOwKCKGHRP88EjR8wvH
-         StrcPP4xozAJDkYQGvHlw68CfRF8QB0b3hBDHw67t2htZxR05D6v3Y3gjgUmoUuFiztP
-         DNQgiBrlZT3PV8LS8qm+Jv0OQ3X8NAwm2+U7AORM6l4sV7OgiVg8lpuOYimKJJ/k6tHz
-         bR/A==
+        b=0RviAf/JtppnlxTPF6XSP9DNi0xatyvqAyUykF6tpp3DjgjheYZmoIZkcZA76/eE9p
+         UNwdbYTyY2zAass+aO4zwGZD5q5Q4t+lahVyDTHc74jci/hCVeh8qnupuw47la8PlMvV
+         F4v7Bw9MxTQUL4RDuK9YlXhOAeUMniqrxUBRg4Dmn7N3ZGvvdMKz8x2hpPEAwOFmoBx8
+         yFgQXH6yuxhd0VPPrTqb0QHB+5XxUKHSz7fZ22AAXjE4Ch3YJM9uWWP46fhUvTkFOHQ7
+         JDogy7DxuUnUkfDfGj1zaDWfHbYucz1VY44lsIEzP3IuhqmHDX8ZPa1RD2RTQLew/RZT
+         VhOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=3oy1cTPiODjDyZVTXKgWROO+B+tLSOmUJ82ad3KEC3Q=;
-        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=BZYaRREXbr2eTAVmO/DyztSl5AEAc8dfqIApjlZ+RJKAGaafPzFgxfWzmfbCfHER+P
-         QZcfDc4zm+BLRq4/nZVxtUyQDxzdPjfc+uI8pR80goEfuTc710ckwfYe7wGz++X8hAJS
-         BnMNzX9HqGoL4Rhfd1vMYztoePCgyYCNe5BFsHX8zr6GK6oXXBCt8DdCAXPm3Wu4E7cn
-         +T4H4vSd2pa+jppvAMjEE5Dg4Onp+2U67Kfmqq2cHfRQoOASsfg4uSGuaQRc86Adzdmz
-         eQxZutaBQeCL5dyuTyzNX6bPqVIpdGSd43tRf/FjLzHEYAPjzxClCRhZuLoc5G0yD5Mp
-         PFxg==;
+         :content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:user-agent:mime-version:date:message-id;
+        bh=qh+OvLiS60SdyrV2uak+9ZHRGs/LmUZTbStwXew8IO4=;
+        fh=EOMINcdX/xEh/qGqF/XCghBTTl8XxgVXk/m5N/u9a0Y=;
+        b=dcAbfgPxOLBnM+8S6cUgVw+2A6RXit/9oQIiSWf9PaeOmbez064BJ60LRh+VCLeCP7
+         9p9K3MIqun9fKOcKsVyfjBw75ZwUhL+z3P8dJGsU28NB5/mYVFQYxoVIctuk9nYuXpS0
+         uR9QxtUul5jwsUGlCYhFbYGjn5JlZhfOuQ/0Sg9JyKrSrHcEYNqCfy0tatHrKmUE1n5r
+         l88vwcrk/gaTdieAxtT/aShTSVAU/XA+fCPLp1isJNJM7pPmTdcrA7kyUf8QD1G3zrTj
+         hbog9kXu+3T0TqDBgKsskt3zQjgdtfy+x5Z4ctENm9ZHlBA8q6C3PhKYaySGKaXr20bu
+         y3Uw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d19-20020a05620a167300b00786cb786cb7si8576134qko.499.2024.02.20.06.12.32
+        by mx.google.com with ESMTPS id pn20-20020a056214131400b0068c6fa95b48si8407448qvb.466.2024.02.20.06.12.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Feb 2024 06:12:32 -0800 (PST)
+        Tue, 20 Feb 2024 06:12:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,50 +42,54 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcQr3-0001Up-Ui; Tue, 20 Feb 2024 09:12:17 -0500
+	id 1rcQr2-0001U8-7E; Tue, 20 Feb 2024 09:12:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcP5i-00006M-9S; Tue, 20 Feb 2024 07:19:18 -0500
+ id 1rcPZT-000874-2E; Tue, 20 Feb 2024 07:50:03 -0500
 Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcP5b-0004ML-Ev; Tue, 20 Feb 2024 07:19:15 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.44])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TfJH52HHpz1FL8R;
- Tue, 20 Feb 2024 20:14:09 +0800 (CST)
+ id 1rcPZN-0001jl-8B; Tue, 20 Feb 2024 07:50:00 -0500
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TfJyj50NZz1FKqW;
+ Tue, 20 Feb 2024 20:45:01 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 071F6140118;
- Tue, 20 Feb 2024 20:19:00 +0800 (CST)
-Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Tue, 20 Feb
- 2024 20:18:59 +0800
-To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH 1/3] target/arm: Implement FEAT_NMI to support
- Non-maskable Interrupt
-Date: Tue, 20 Feb 2024 12:17:50 +0000
-Message-ID: <20240220121752.490665-2-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240220121752.490665-1-ruanjinjie@huawei.com>
-References: <20240220121752.490665-1-ruanjinjie@huawei.com>
+ by mail.maildlp.com (Postfix) with ESMTPS id 6BC5E14040F;
+ Tue, 20 Feb 2024 20:49:52 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 20 Feb 2024 20:49:51 +0800
+Message-ID: <51e60b23-039f-6c88-e141-f14148ec5846@huawei.com>
+Date: Tue, 20 Feb 2024 20:49:51 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.55]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RFC PATCH 1/3] target/arm: Implement FEAT_NMI to support
+ Non-maskable Interrupt
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, 
+ <wangyanan55@huawei.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20240220121752.490665-1-ruanjinjie@huawei.com>
+ <20240220121752.490665-2-ruanjinjie@huawei.com>
+ <CAFEAcA8jef+ZqSaj7MOwkneuj5aLayA6MZA=-LH+VvcDuFCtZA@mail.gmail.com>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA8jef+ZqSaj7MOwkneuj5aLayA6MZA=-LH+VvcDuFCtZA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
 Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -74
+X-Spam_score: -7.5
+X-Spam_bar: -------
+X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 20 Feb 2024 09:12:14 -0500
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,334 +107,46 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DXYDU+Q6vYaz
+X-TUID: JODve4VjkePv
 
-Enable Non-maskable Interrupt feature.
 
-Enable HCRX register feature to support TALLINT read/write.
 
-Add support for enable/disable NMI at qemu startup as below:
+On 2024/2/20 20:31, Peter Maydell wrote:
+> On Tue, 20 Feb 2024 at 12:19, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+>>
+>> Enable Non-maskable Interrupt feature.
+>>
+>> Enable HCRX register feature to support TALLINT read/write.
+>>
+>> Add support for enable/disable NMI at qemu startup as below:
+>>
+>>         qemu-system-aarch64 -cpu cortex-a53/a57/a72/a76,nmi=[on/off]
+>>
+>> Add support for allint read/write as follow:
+>>
+>>         mrs <xt>, ALLINT        // read allint
+>>         msr ALLINT, <xt>        // write allint with imm
+>>         msr ALLINT, #<imm>      // write allint with 1 or 0
+> 
+> Can I ask you to break this patchset down into smaller
+> coherent pieces, please? When you write a commit message
+> that has this sort of "list of four different things the
+> patch does" structure, that's a sign that really it ought to
+> be multiple different patches that do one thing each.
 
-	qemu-system-aarch64 -cpu cortex-a53/a57/a72/a76,nmi=[on/off]
+Thank you very much! I'll break up the patches so that each one does
+only one thing.
 
-Add support for allint read/write as follow:
+> 
+> Do we really need the command line option? Mostly we
+> don't add that for new CPU features, unless there's a
+> strong reason why users might need to turn it off: instead
+> we just implement it if the CPU type and/or the board has
+> the feature.
 
-	mrs <xt>, ALLINT	// read allint
-	msr ALLINT, <xt>	// write allint with imm
-	msr ALLINT, #<imm>	// write allint with 1 or 0
+Right! Thank you. I'll remove the command line option and just implement
+it if the CPU has the feature.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
- target/arm/cpu-features.h      |  5 +++++
- target/arm/cpu.h               |  2 ++
- target/arm/cpu64.c             | 31 +++++++++++++++++++++++++++++++
- target/arm/helper.c            | 33 +++++++++++++++++++++++++++++++++
- target/arm/internals.h         |  1 +
- target/arm/tcg/a64.decode      |  1 +
- target/arm/tcg/cpu64.c         | 11 +++++++++++
- target/arm/tcg/helper-a64.c    | 25 +++++++++++++++++++++++++
- target/arm/tcg/helper-a64.h    |  1 +
- target/arm/tcg/translate-a64.c | 10 ++++++++++
- 10 files changed, 120 insertions(+)
-
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 7567854db6..2ad1179be7 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -681,6 +681,11 @@ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
- }
- 
-+static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, NMI) != 0;
-+}
-+
- static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
- {
-     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 63f31e0d98..ea6e8d6501 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -261,6 +261,7 @@ typedef struct CPUArchState {
-     uint32_t btype;  /* BTI branch type.  spsr[11:10].  */
-     uint64_t daif; /* exception masks, in the bits they are in PSTATE */
-     uint64_t svcr; /* PSTATE.{SM,ZA} in the bits they are in SVCR */
-+    uint64_t allint; /* All IRQ or FIQ interrupt mask, in the bit in PSTATE */
- 
-     uint64_t elr_el[4]; /* AArch64 exception link regs  */
-     uint64_t sp_el[4]; /* AArch64 banked stack pointers */
-@@ -1543,6 +1544,7 @@ FIELD(VTCR, SL2, 33, 1)
- #define PSTATE_D (1U << 9)
- #define PSTATE_BTYPE (3U << 10)
- #define PSTATE_SSBS (1U << 12)
-+#define PSTATE_ALLINT (1U << 13)
- #define PSTATE_IL (1U << 20)
- #define PSTATE_SS (1U << 21)
- #define PSTATE_PAN (1U << 22)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 8e30a7993e..3a5a3fda1b 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -295,6 +295,22 @@ static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
-     cpu->isar.id_aa64pfr0 = t;
- }
- 
-+static bool cpu_arm_get_nmi(Object *obj, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    return cpu_isar_feature(aa64_nmi, cpu);
-+}
-+
-+static void cpu_arm_set_nmi(Object *obj, bool value, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint64_t t;
-+
-+    t = cpu->isar.id_aa64pfr1;
-+    t = FIELD_DP64(t, ID_AA64PFR1, NMI, value);
-+    cpu->isar.id_aa64pfr1 = t;
-+}
-+
- void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
- {
-     uint32_t vq_map = cpu->sme_vq.map;
-@@ -472,6 +488,11 @@ void aarch64_add_sme_properties(Object *obj)
- #endif
- }
- 
-+void aarch64_add_nmi_properties(Object *obj)
-+{
-+    object_property_add_bool(obj, "nmi", cpu_arm_get_nmi, cpu_arm_set_nmi);
-+}
-+
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
- {
-     ARMPauthFeature features = cpu_isar_feature(pauth_feature, cpu);
-@@ -593,9 +614,14 @@ void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
- 
- static void aarch64_a57_initfn(Object *obj)
- {
-+    uint64_t t;
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     cpu->dtb_compatible = "arm,cortex-a57";
-+    t = cpu->isar.id_aa64mmfr1;
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
-+    cpu->isar.id_aa64mmfr1 = t;
-+    aarch64_add_nmi_properties(obj);
-     set_feature(&cpu->env, ARM_FEATURE_V8);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-@@ -650,9 +676,14 @@ static void aarch64_a57_initfn(Object *obj)
- 
- static void aarch64_a53_initfn(Object *obj)
- {
-+    uint64_t t;
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     cpu->dtb_compatible = "arm,cortex-a53";
-+    t = cpu->isar.id_aa64mmfr1;
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
-+    cpu->isar.id_aa64mmfr1 = t;
-+    aarch64_add_nmi_properties(obj);
-     set_feature(&cpu->env, ARM_FEATURE_V8);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 90c4fb72ce..1194e1e2db 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4618,6 +4618,28 @@ static void aa64_daif_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->daif = value & PSTATE_DAIF;
- }
- 
-+static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                              uint64_t value)
-+{
-+    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-+        env->allint = value & PSTATE_ALLINT;
-+    }
-+}
-+
-+static CPAccessResult aa64_allint_access(CPUARMState *env,
-+                                         const ARMCPRegInfo *ri, bool isread)
-+{
-+    if (arm_current_el(env) == 0) {
-+        return CP_ACCESS_TRAP_UNCATEGORIZED;
-+    }
-+
-+    if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
-+        cpu_isar_feature(aa64_hcx, env_archcpu(env)) &&
-+        (env->cp15.hcrx_el2 & HCRX_TALLINT))
-+        return CP_ACCESS_TRAP_EL2;
-+    return CP_ACCESS_OK;
-+}
-+
- static uint64_t aa64_pan_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     return env->pstate & PSTATE_PAN;
-@@ -5437,6 +5459,12 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .access = PL0_RW, .accessfn = aa64_daif_access,
-       .fieldoffset = offsetof(CPUARMState, daif),
-       .writefn = aa64_daif_write, .resetfn = arm_cp_reset_ignore },
-+    { .name = "ALLINT", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .opc2 = 0, .crn = 4, .crm = 3,
-+      .type = ARM_CP_NO_RAW,
-+      .access = PL1_RW, .accessfn = aa64_allint_access,
-+      .fieldoffset = offsetof(CPUARMState, allint),
-+      .writefn = aa64_allint_write, .resetfn = arm_cp_reset_ignore },
-     { .name = "FPCR", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .opc2 = 0, .crn = 4, .crm = 4,
-       .access = PL0_RW, .type = ARM_CP_FPU | ARM_CP_SUPPRESS_TB_END,
-@@ -6056,6 +6084,11 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         valid_mask |= HCRX_MSCEN | HCRX_MCE2;
-     }
- 
-+    /* FEAT_NMI adds TALLINT */
-+    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-+        valid_mask |= HCRX_TALLINT;
-+    }
-+
-     /* Clear RES0 bits.  */
-     env->cp15.hcrx_el2 = value & valid_mask;
- }
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 50bff44549..2b9f287c52 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1466,6 +1466,7 @@ void aarch64_max_tcg_initfn(Object *obj);
- void aarch64_add_pauth_properties(Object *obj);
- void aarch64_add_sve_properties(Object *obj);
- void aarch64_add_sme_properties(Object *obj);
-+void aarch64_add_nmi_properties(Object *obj);
- #endif
- 
- /* Read the CONTROL register as the MRS instruction would. */
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8a20dce3c8..3588080024 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010 11111 @msr_i
- MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
- MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
- MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
-+MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
- MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
- 
- # MRS, MSR (register), SYS, SYSL. These are all essentially the
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 5fba2c0f04..e08eb0ce94 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -293,9 +293,14 @@ static void aarch64_a55_initfn(Object *obj)
- 
- static void aarch64_a72_initfn(Object *obj)
- {
-+    uint64_t t;
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     cpu->dtb_compatible = "arm,cortex-a72";
-+    t = cpu->isar.id_aa64mmfr1;
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
-+    cpu->isar.id_aa64mmfr1 = t;
-+    aarch64_add_nmi_properties(obj);
-     set_feature(&cpu->env, ARM_FEATURE_V8);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-@@ -348,9 +353,14 @@ static void aarch64_a72_initfn(Object *obj)
- 
- static void aarch64_a76_initfn(Object *obj)
- {
-+    uint64_t t;
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     cpu->dtb_compatible = "arm,cortex-a76";
-+    t = cpu->isar.id_aa64mmfr1;
-+    t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
-+    cpu->isar.id_aa64mmfr1 = t;
-+    aarch64_add_nmi_properties(obj);
-     set_feature(&cpu->env, ARM_FEATURE_V8);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-@@ -1175,6 +1185,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
-     t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
-     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
-+    t = FIELD_DP64(t, ID_AA64PFR1, NMI, 0);       /* FEAT_NMI */
-     cpu->isar.id_aa64pfr1 = t;
- 
-     t = cpu->isar.id_aa64mmfr0;
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index ebaa7f00df..9b2a7cd891 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -66,6 +66,31 @@ void HELPER(msr_i_spsel)(CPUARMState *env, uint32_t imm)
-     update_spsel(env, imm);
- }
- 
-+static void allint_check(CPUARMState *env, uint32_t op,
-+                       uint32_t imm, uintptr_t ra)
-+{
-+    /* ALLINT update to PSTATE.*/
-+    if (arm_current_el(env) == 0) {
-+        raise_exception_ra(env, EXCP_UDEF,
-+                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
-+                                               extract32(op, 3, 3), 4,
-+                                               imm, 0x1f, 0),
-+                           exception_target_el(env), ra);
-+    }
-+    /* todo */
-+}
-+
-+void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
-+{
-+    allint_check(env, 0x8, imm, GETPC());
-+    if (imm == 1) {
-+        env->allint |= PSTATE_ALLINT;
-+    } else {
-+        env->allint &= ~PSTATE_ALLINT;
-+    }
-+    arm_rebuild_hflags(env);
-+}
-+
- static void daif_check(CPUARMState *env, uint32_t op,
-                        uint32_t imm, uintptr_t ra)
- {
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 575a5dab7d..3aec703d4a 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -22,6 +22,7 @@ DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_2(msr_i_spsel, void, env, i32)
- DEF_HELPER_2(msr_i_daifset, void, env, i32)
- DEF_HELPER_2(msr_i_daifclear, void, env, i32)
-+DEF_HELPER_2(msr_i_allint, void, env, i32)
- DEF_HELPER_3(vfp_cmph_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmpeh_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 340265beb0..f1800f7c71 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2036,6 +2036,16 @@ static bool trans_MSR_i_DAIFCLEAR(DisasContext *s, arg_i *a)
-     return true;
- }
- 
-+static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
-+{
-+    if (!dc_isar_feature(aa64_nmi, s) || s->current_el == 0) {
-+        return false;
-+    }
-+    gen_helper_msr_i_allint(tcg_env, tcg_constant_i32(a->imm));
-+    s->base.is_jmp = DISAS_TOO_MANY;
-+    return true;
-+}
-+
- static bool trans_MSR_i_SVCR(DisasContext *s, arg_MSR_i_SVCR *a)
- {
-     if (!dc_isar_feature(aa64_sme, s) || a->mask == 0) {
--- 
-2.34.1
-
+> 
+> thanks
+> -- PMM

@@ -1,112 +1,169 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1205587ejb;
-        Tue, 20 Feb 2024 02:31:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXDyVsGkCbhvSlHJkY4XFCsNPkcv4GMWzFM9gppeKmF40I7i48dmqHKCMhoelBKmej5zl0xlFIwo0fovrzVDaby8kVbOiBw
-X-Google-Smtp-Source: AGHT+IE57lP4zADoeCWRgVGCY5K9QaIoJ5HjZyPJQZtibObiljdaT2FraMhyES5rOImu02opM9fw
-X-Received: by 2002:a05:6830:16c6:b0:6e4:30f1:3f25 with SMTP id l6-20020a05683016c600b006e430f13f25mr14074997otr.7.1708425110644;
-        Tue, 20 Feb 2024 02:31:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708425110; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1209566ejb;
+        Tue, 20 Feb 2024 02:41:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXamSbDHulukf9CjM9P7BPZf9B+Xrahgobu78ckkZFNBIIvPcTAVl+CIyRZQMkfSkXat48VpsEnwRQvJd2wfrouMHBPxtM3
+X-Google-Smtp-Source: AGHT+IG6J9y8Y5HFqBZRLo797SAeA+xvpJDw6WoIh4p+zCtZCEvmKR1+KLGahLMthFabzVLvyvGG
+X-Received: by 2002:ac8:5bc7:0:b0:42e:21ed:43ec with SMTP id b7-20020ac85bc7000000b0042e21ed43ecmr3118531qtb.23.1708425702657;
+        Tue, 20 Feb 2024 02:41:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708425702; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ox7VKe8pK/30JJdAGkZUYp6shDOj3Q4kGGGdL99cvO7meFzD4bJVmz43Xg0+6nl4gM
-         dHjMQ95JQRNAcj3fQfPwysfRPeIz01wSwSzH4//YHDpRj3/K1a5T4OGJevwCcb80bPxF
-         leAnXyUDYgZ5eD+6AxSHDJqRNwLAU7iqG57LjLeZ7zzDIq6rp3lnufXPor7IOqAIn+nw
-         Esdg1HOvPIKEeJ5Y+kplBzl2Cv7Ce72eZW02Ivz2HMesbqPEIxx/rpFyU6xYxtz9Onm0
-         hugC+SNG8mpSytXYmhXD3DoHkg3NYgChExpjzIcFYSkHrQE10rv82BUPXuHXmS8g4EWY
-         LnhA==
+        b=ngB4DiKJwzvezzEjule6AiasuN9VJ50ZUoTlTod/CBCll/NMGbK3J3roiP8smzr89m
+         nYTa7TntxQhEDqFXSMeGUdGZNb+s1MKR7S6XukNUkRrSjVLN7F9I5utw1pXAfJr8pBC9
+         j4X+2oEEhU0zUkMC9j/YWqbNMn/3C/H+W0YwRNOguezTsKh6E4d31LX+nF92UdNRybk7
+         gKSFazm3qbkIg9jecu9JsJaww4WQVavB6hv2Ymxbu1aWHZqMqBx4sdbMU4Q5NSSS1FPM
+         hWLYTOeaKU4WcVn/ShwqwvKf6uxkzTGCeVCHZp1wMoZ3DplyNBfB/DagMJF++mjEUKOY
+         IIfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=fyzB5YCU69e9aRpVkB+NNMXTDYsdgwjqpgK8fMoXVPc=;
-        fh=BgS1tXcS1ZxhW/ZwPm8h6xOr7A39WFt0WCsEGYsxofU=;
-        b=QMxwsqDxrRueTiy//+qwiT8V+pKUWAJW02mFcjvXDEyTuj6LbpPn3obECx/lwvSbpT
-         jvrFI8XrIKzVCdr4ZBYjF0ijZuEt1qDtkiNV4RUkAfVhvMS3fYG0dmbxN5Ml3LPUmkcy
-         tgiCH+nAiwZZWonhIylIb0Z7MWbuH3CwEhlp2ELtkvAldedSI8RImUzHCBOmh9ZyLx5w
-         hAwMnFrLxMXi4cZUSxrzJov1D4JYLqsMl2w9MH0MwwEIdYNXBiDhvC6ZX94pd0yJfWG5
-         prf5Hwr7hmxxq8S4aUlS3JJwRgejAHWABZhUrrn2fmb7DEKvQus2e6Bcm5y7FzGb3a39
-         r5MQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=tS28AKmYaQCY4E+wjJOUAKHL1MXT7cM3NTOL2MiU4+I=;
+        fh=TtlmLaVN6xWSEyK4RrzoUJiiSocvJe30p0W4BLgDXDg=;
+        b=l1ERpbiBY5zxvsUrSvl1yh+LqutD4bKmMQcS6q88t1H+oZXDDrb2bljC+YRTjFBbyK
+         HhqJW4e8nH9Gu0iGxlGj4a0fnlYT2fdEhTQ0f0PaZ7xAxckttAA0yTTXEntgNdPmlVEn
+         xS3lkTmE6aVSXPNj2I+0h+3ihcPyc1z8m+7i6/w6u6VxyxqxfpoF55PZT8VlfVhgeW8I
+         3N2Lwhi/96GTaqg7LC9/bIvWK5lnZWARNR7HhZrn69FOf08aoUVI7QCvqSaDm5FDwGJp
+         grmNBY/6m4qTfN79b9gjsuspP3VIDkG4hqmKMyxqm6m5NkogpXMquHK7HoyjHdJpM7iK
+         4O8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JxJpRSxm;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="a/YF/1I5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17-20020ac84891000000b0042e124eafe6si3845982qtq.146.2024.02.20.02.31.50
+        by mx.google.com with ESMTPS id v34-20020a05622a18a200b0042e2d462880si355076qtc.425.2024.02.20.02.41.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Feb 2024 02:31:50 -0800 (PST)
+        Tue, 20 Feb 2024 02:41:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JxJpRSxm;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="a/YF/1I5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcNOw-00077R-B5; Tue, 20 Feb 2024 05:31:02 -0500
+	id 1rcNZ8-00057s-2I; Tue, 20 Feb 2024 05:41:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rcNOh-00075d-HV; Tue, 20 Feb 2024 05:30:47 -0500
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rcNOf-0000Is-Mk; Tue, 20 Feb 2024 05:30:47 -0500
-Received: by mail-oa1-x35.google.com with SMTP id
- 586e51a60fabf-21e2673a206so3401431fac.2; 
- Tue, 20 Feb 2024 02:30:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708425044; x=1709029844; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fyzB5YCU69e9aRpVkB+NNMXTDYsdgwjqpgK8fMoXVPc=;
- b=JxJpRSxmLh3RfqM5iSOb+AJ4t6VV4J7uWHKFYt3nvNOMO3694pOTFO/FdbAqiCFzj9
- FxpbSiVUaNwyGweYNeu8D4ChCK9Zjirr6bGL5vN50/D9WmTW+DkcUYmXNa3TTW7I9AiF
- eR2IP+AnCMc7fpsQHVXegVL7iqOmfnC5dm0kNE1WSWOwuvmGq/fEPZXZR3GoRGZC5N/C
- qZORJkx2p//DKL7Ct9wI8mmGWLgU8oId6c2QCBKIG2wxti7G6+XJUgQTOtULcfOK2emO
- 3J9u0iXyC2xyqltyyR8sjHAwqAfHV5vpOlF8s6+4Vrg8zTmAcXLlG+OiTcCpYRQ810Hf
- EHfg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rcNZ6-00057S-JJ
+ for qemu-devel@nongnu.org; Tue, 20 Feb 2024 05:41:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rcNZ5-0001y5-1S
+ for qemu-devel@nongnu.org; Tue, 20 Feb 2024 05:41:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708425690;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=tS28AKmYaQCY4E+wjJOUAKHL1MXT7cM3NTOL2MiU4+I=;
+ b=a/YF/1I5b53+EzO2j1eZ24Eczu7AVYjc8LVEa4mmkRTAPqSFJDgTkx22BW9AjbSmSUA6IN
+ ivltexAQ5qG1C2xua09VRIEcIa2HJ4XwwEJX/V5UI6ifIqAHs4j+YB+Zu/oXTd2mB6hVbj
+ ZCV/VoWRmIc5Os0Hl4M7ETJhuc+rJ/E=
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-541-72J6aYuPO2eudVNIUPYR7Q-1; Tue, 20 Feb 2024 05:41:28 -0500
+X-MC-Unique: 72J6aYuPO2eudVNIUPYR7Q-1
+Received: by mail-oi1-f200.google.com with SMTP id
+ 5614622812f47-3c15bef104bso2403228b6e.1
+ for <qemu-devel@nongnu.org>; Tue, 20 Feb 2024 02:41:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708425044; x=1709029844;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fyzB5YCU69e9aRpVkB+NNMXTDYsdgwjqpgK8fMoXVPc=;
- b=e38h9jBzN0tV3M7X2Yffui9ygHF/xbqtD2V4Rz9Uo60dDBTKXwSiqdgzp3afQ6JrtL
- msq+THbHJdViT5Mu5nKJ4s2XtIAjlf47O6bHir+zJ6ZRF3c0OrfaZYJTu+f5bPzgg1xO
- IQKfhZ5OAQlY3O++en2LnvMU82x6GnHlVAwj1vx3KKELNCvBS09Yndem7LXU65JvK2Ob
- jb0tauFcK3ndZDBD/UIgPfgN5LkzCyYwkKBvsexlrvJI5iVkOwRqYb0HEhgpL8v5kXxw
- Cz1PwrcI+3ewQY6+A/dBecFBqCFpn4ru2Z7X5WGpG57rJ9TCsEJ51f8IcqlbFpgQb6uV
- zwlw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUg0ZrW39tobUSI6pxaCcvmZRng94tOK6U+wNUJwyyg5bAnGMnUosnN+MH2Rc7+CwwKADVzJmfKlus/6awAV20Zmvxb
-X-Gm-Message-State: AOJu0YwxY9cZyK7jEBuztEmKP5Bs7IcNmldSXLviHJAyjj5GgzHjSiay
- 4Hj0WesshCB/D7xfyUKBBLKWvx+sfpVhaStAlVIoksbfHZ+hLdAeU4gTQE7XxJFFjm8cxVoat81
- oJMQ7mNjF5YdtcDx8uiFKedD0uDo=
-X-Received: by 2002:a05:6871:411:b0:21e:7fa5:c58a with SMTP id
- d17-20020a056871041100b0021e7fa5c58amr11677523oag.30.1708425043958; Tue, 20
- Feb 2024 02:30:43 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708425687; x=1709030487;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tS28AKmYaQCY4E+wjJOUAKHL1MXT7cM3NTOL2MiU4+I=;
+ b=Pg331QnI1bleRTTSko89Cp6S8SVHZbnNM/WA/036+1VIFYRTcrWe5LK4qfVeGSA0Hj
+ FIV2TxYHXEM0CbY+bliNNx/NDRHS719VSElf/E8NAB5omv1UTNNqFbjxnzLqiKBrc2iR
+ NSrK1IzWTRCKZ+5nr1kf3Pj2VaaQ+d/dyloOxlqQCYuDuzX10n1+M2fJfGATSGzDD/0i
+ UsmqXqINKVI+QaE8yPa9mfZ4AWVhtcSOGT9MikzpQM60CzKrz5G1dTTtyJu12jr6RzXc
+ MB4vp88X1zgFWqqMXaDXj8mbHk9qpBDAMGABuODFKMoSJhdeikDo53wRQSE3nFcolfY3
+ Wiuw==
+X-Gm-Message-State: AOJu0YwX2CGoPWsUFGF816WH5ieADBuNjRJKxcB/4NtS+zIjTKj1eUrH
+ pIAdE3AYKf9zDivzi25ygpB0ULHzC9yRZeUlGH9itXm46GnoMgiSogdGUT9n0QrUTZvjc3XV2/P
+ kiFuk0j5nwEdi+goJR+ffVefGGg4tZh4ySfrFcwB2rdlnX3hT/wHU
+X-Received: by 2002:a05:6808:3092:b0:3c1:5f15:2c74 with SMTP id
+ bl18-20020a056808309200b003c15f152c74mr4366917oib.40.1708425687793; 
+ Tue, 20 Feb 2024 02:41:27 -0800 (PST)
+X-Received: by 2002:a05:6808:3092:b0:3c1:5f15:2c74 with SMTP id
+ bl18-20020a056808309200b003c15f152c74mr4366900oib.40.1708425687445; 
+ Tue, 20 Feb 2024 02:41:27 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-178-100.web.vodafone.de.
+ [109.43.178.100]) by smtp.gmail.com with ESMTPSA id
+ ld11-20020a056214418b00b00686ac3c9db4sm4251417qvb.98.2024.02.20.02.41.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Feb 2024 02:41:27 -0800 (PST)
+Message-ID: <ac390641-2588-4b9a-8d77-91753f79e851@redhat.com>
+Date: Tue, 20 Feb 2024 11:41:22 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] tests/qtest: Add testcase for BCM2835 BSC
+Content-Language: en-US
+To: Rayhan Faizel <rayhan.faizel@gmail.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
+ pbonzini@redhat.com, qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>
 References: <20240219225958.2421873-1-rayhan.faizel@gmail.com>
  <20240219225958.2421873-4-rayhan.faizel@gmail.com>
  <e61e02ee-e181-4ea3-b079-638b50889742@redhat.com>
-In-Reply-To: <e61e02ee-e181-4ea3-b079-638b50889742@redhat.com>
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
-Date: Tue, 20 Feb 2024 13:30:33 +0300
-Message-ID: <CAKUh+Qf5=kgUC3H9uWy6fAxB=76Tai28D6hPQ=qMwxc92YpNyA@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] tests/qtest: Add testcase for BCM2835 BSC
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org, 
- pbonzini@redhat.com, qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000dee10c0611cdb38c"
-Received-SPF: pass client-ip=2001:4860:4864:20::35;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-oa1-x35.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAKUh+Qf5=kgUC3H9uWy6fAxB=76Tai28D6hPQ=qMwxc92YpNyA@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAKUh+Qf5=kgUC3H9uWy6fAxB=76Tai28D6hPQ=qMwxc92YpNyA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.072,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -122,170 +179,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Tx8tkoH/EYwn
+X-TUID: xZkwc/Cy1z0M
 
---000000000000dee10c0611cdb38c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 20/02/2024 11.30, Rayhan Faizel wrote:
+> Hi Thomas,
+> 
+> Do you want me to add an SPDX line to the other two commits or will just 
+> this one suffice?
 
-Hi Thomas,
+I think it wouldn't hurt to add them to the new files there, too, but 
+there's no rule in the QEMU development process that you have to do it, so 
+it's up to you.
 
-Do you want me to add an SPDX line to the other two commits or will just
-this one suffice?
+  Thomas
 
-On Tue, Feb 20, 2024 at 9:45=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
-e:
 
-> On 19/02/2024 23.59, Rayhan Faizel wrote:
-> > Simple testcase for validating proper operation of read and write for a=
-ll
-> > three BSC controllers.
-> >
-> > Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
-> > ---
-> >   tests/qtest/bcm2835-i2c-test.c | 105 ++++++++++++++++++++++++++++++++=
-+
-> >   tests/qtest/meson.build        |   2 +-
-> >   2 files changed, 106 insertions(+), 1 deletion(-)
-> >   create mode 100644 tests/qtest/bcm2835-i2c-test.c
-> >
-> > diff --git a/tests/qtest/bcm2835-i2c-test.c
-> b/tests/qtest/bcm2835-i2c-test.c
-> > new file mode 100644
-> > index 0000000000..6ec15b8976
-> > --- /dev/null
-> > +++ b/tests/qtest/bcm2835-i2c-test.c
-> > @@ -0,0 +1,105 @@
-> > +/*
-> > + * QTest testcase for Broadcom Serial Controller (BSC)
-> > + *
-> > + * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
-> > + *
-> > + * Permission is hereby granted, free of charge, to any person
-> obtaining a copy
-> > + * of this software and associated documentation files (the
-> "Software"), to deal
-> > + * in the Software without restriction, including without limitation
-> the rights
-> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
-r
-> sell
-> > + * copies of the Software, and to permit persons to whom the Software =
-is
-> > + * furnished to do so, subject to the following conditions:
-> > + *
-> > + * The above copyright notice and this permission notice shall be
-> included in
-> > + * all copies or substantial portions of the Software.
-> > + *
-> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> EXPRESS OR
-> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-> MERCHANTABILITY,
-> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-> SHALL
-> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
-R
-> OTHER
-> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-> ARISING FROM,
-> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-> DEALINGS IN
-> > + * THE SOFTWARE.
-> > + */
->
-> Could you maybe also add a SPDX license line, so that it is more obvious
-> at
-> a quick glance what license this is?
->
-> Anyway,
-> Acked-by: Thomas Huth <thuth@redhat.com>
->
->
-
---=20
-Rayhan Faizel
-
---000000000000dee10c0611cdb38c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Thomas,<div><br></div><div>Do you want me to add an SPD=
-X line to the other two commits or will just this one suffice?</div></div><=
-br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue,=
- Feb 20, 2024 at 9:45=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailto:thuth@re=
-dhat.com">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-le=
-ft-style:solid;border-left-color:rgb(204,204,204);padding-left:1ex">On 19/0=
-2/2024 23.59, Rayhan Faizel wrote:<br>
-&gt; Simple testcase for validating proper operation of read and write for =
-all<br>
-&gt; three BSC controllers.<br>
-&gt; <br>
-&gt; Signed-off-by: Rayhan Faizel &lt;<a href=3D"mailto:rayhan.faizel@gmail=
-.com" target=3D"_blank">rayhan.faizel@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0tests/qtest/bcm2835-i2c-test.c | 105 +++++++++++++++++++++=
-++++++++++++<br>
-&gt;=C2=A0 =C2=A0tests/qtest/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0=
- =C2=A02 +-<br>
-&gt;=C2=A0 =C2=A02 files changed, 106 insertions(+), 1 deletion(-)<br>
-&gt;=C2=A0 =C2=A0create mode 100644 tests/qtest/bcm2835-i2c-test.c<br>
-&gt; <br>
-&gt; diff --git a/tests/qtest/bcm2835-i2c-test.c b/tests/qtest/bcm2835-i2c-=
-test.c<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..6ec15b8976<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/tests/qtest/bcm2835-i2c-test.c<br>
-&gt; @@ -0,0 +1,105 @@<br>
-&gt; +/*<br>
-&gt; + * QTest testcase for Broadcom Serial Controller (BSC)<br>
-&gt; + *<br>
-&gt; + * Copyright (c) 2024 Rayhan Faizel &lt;<a href=3D"mailto:rayhan.faiz=
-el@gmail.com" target=3D"_blank">rayhan.faizel@gmail.com</a>&gt;<br>
-&gt; + *<br>
-&gt; + * Permission is hereby granted, free of charge, to any person obtain=
-ing a copy<br>
-&gt; + * of this software and associated documentation files (the &quot;Sof=
-tware&quot;), to deal<br>
-&gt; + * in the Software without restriction, including without limitation =
-the rights<br>
-&gt; + * to use, copy, modify, merge, publish, distribute, sublicense, and/=
-or sell<br>
-&gt; + * copies of the Software, and to permit persons to whom the Software=
- is<br>
-&gt; + * furnished to do so, subject to the following conditions:<br>
-&gt; + *<br>
-&gt; + * The above copyright notice and this permission notice shall be inc=
-luded in<br>
-&gt; + * all copies or substantial portions of the Software.<br>
-&gt; + *<br>
-&gt; + * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF AN=
-Y KIND, EXPRESS OR<br>
-&gt; + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTAB=
-ILITY,<br>
-&gt; + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT =
-SHALL<br>
-&gt; + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES =
-OR OTHER<br>
-&gt; + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, AR=
-ISING FROM,<br>
-&gt; + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL=
-INGS IN<br>
-&gt; + * THE SOFTWARE.<br>
-&gt; + */<br>
-<br>
-Could you maybe also add a SPDX license line, so that it is more obvious at=
- <br>
-a quick glance what license this is?<br>
-<br>
-Anyway,<br>
-Acked-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=3D"_bl=
-ank">thuth@redhat.com</a>&gt;<br>
-<br>
-</blockquote></div><br clear=3D"all"><div><br></div><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">Ra=
-yhan Faizel<br></div>
-
---000000000000dee10c0611cdb38c--

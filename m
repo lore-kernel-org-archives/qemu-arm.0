@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2173841ejb;
-        Wed, 21 Feb 2024 13:19:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW031Oqj8qxYXDzKKsn7xFhxK+KNv/LFxlIZ1vrQLBO1cV4zb4p24ekm6Qv2gfOoUp9eXu973gauAdnfyXkSN0LJjT/KivJ
-X-Google-Smtp-Source: AGHT+IHCtBtAUJUG5nxm41RgEzUjgi9EqKvn4tP1ovOa7u2Ls62YD9G9PwRfFwA4sn2I2gn5OA+K
-X-Received: by 2002:a05:620a:24d2:b0:783:ae0c:5e8f with SMTP id m18-20020a05620a24d200b00783ae0c5e8fmr22954324qkn.71.1708550350284;
-        Wed, 21 Feb 2024 13:19:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708550350; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2174065ejb;
+        Wed, 21 Feb 2024 13:19:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVGuqsNj5+ra86nsAuacWzU2UxLPMeKLJpECrLe1FBDCGZxpXb2ETy1rmcMOwhASiwgLHosTiUfMZaYljJJ8L2ksPdTiToQ
+X-Google-Smtp-Source: AGHT+IFEJIXkXVfI2TYeX8dpgAMQDDEprLU5ytjTAjXI0tmEHZO94w+B8V0NJL87vjPmT6hwFnX3
+X-Received: by 2002:a25:dd47:0:b0:dc7:483c:7e64 with SMTP id u68-20020a25dd47000000b00dc7483c7e64mr509626ybg.54.1708550382977;
+        Wed, 21 Feb 2024 13:19:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708550382; cv=none;
         d=google.com; s=arc-20160816;
-        b=nko30E7+mqx9mz7G0C+1zNXsewQ403pckFkKlbA+JNEaa1NLDJNMY+1Q1KUrL4sbH9
-         NtXBLPM/6lR1FqAwE657s716NcojKObj0SVfyL1xY6kkxgajaSOdhyW5A4q8xSh+fm0o
-         zbTUORl8Uxlrjl6fpZVVMPq4oWoK6pHSDnGIVp0H96KYrhN/4pG3mivEWXoInN7IQbCs
-         QB+ySDIohz+czIZJs/RHjcg99kR27heKBjxp+ZgxhCrJm/wRRIPVz3rYY1N1rbyWz5yr
-         Qa2Jf56iY4FmjdwzpzPCaKxWIobvk3CR4ZCalJJ3FnhyS1Ds+p3n3EpYY45jIUrt1fuG
-         YS/g==
+        b=lh9MuAykaeW5p8EZoyMy70TSm9eDG723lbh+YnCjSlIDFlMUBwQm+JBFEgukqgeJCt
+         zYRqw94Sjk+PBlEQz3Waf7C3ZHJLrxeugleIsaUAwnqgmSlz4+d9PC32Rfhho9tlkLQ1
+         UxsyhFIRcTj+65DWdogC4Y2DcH7y9cZw4WmOkKl43Ok5+XB4baIhxTX9vFrmtV34j5AJ
+         NWs7egWa5MnwHLwttUjyoJNhPYmUnZ2Nc0Ljpqp0MgrNdNV25Vpxwa+8rqg1Xx05h8Pm
+         uVxi5522Q1j3aVJV0F7iLxryE4vWyDGzCDRpp8auWFvFYw+0fHcpBUY7pm5Fd74KYvL6
+         a+rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=B1hBOWCBa8Kc+AFXTCFEtySegdqlIvAldt191B4hj40=;
+        bh=AbWaENVXrPEDOnkXsgR9cEbYG3NY0XwtRW+JhFfX4HQ=;
         fh=oiq67qnM8BqA32ksqeHh/BJ2xCOd1MIE3GFJJBbt894=;
-        b=ubjSEfmUm+tTIo0/Etvb+gQkBw8Cs+bWqcuzfEJxoBbvTgx2ha8VhBX36Iwbn6vCGI
-         SmYscINq/TGcG2VOuV7TTPrcDSpiBeMTpcw/VfLAXP8ktOLrORYtz+9eiYwzDOx3B2op
-         Db14Yb0s+vYhLDU9CAUGtJafHQlcl8xY5geeT/VvLZaS0tnUBwkk5k1TrIRwpoX9JdUm
-         01MS9x65yRxa1fXa8HXnwKg6g+cqCWtlwkk9P8gxCwLXHwpk/EsOHJaw55pSmny/F/5q
-         kgD8kDzBjWcefMag13Qfvh3dBz1GQeiTDNTb+UtkAZPrY9mEqiL+QrrVDQEp0YMxW9p3
-         itmA==;
+        b=zj6V6dFffUU5TbUob5soMqqbW1f2OT0qPeaUpbIqRbljq3qJt5Mw5qWlY9zi/P8nDc
+         PAxNQXmijH0cCFyf+CTKxqUTnXSIIaR2r7CUGV1eJ/MCeCbqEJmQpJKlhgND5/Z5PNak
+         GFZWCmh0wcyvcMdNIQIYoTleP4UdE4NimlU2ZaMBhniJckzmOt7LDCTODBMzpQDLEdWj
+         h1ZYkDJxQKDDpvEaaSSC7IM9n0boagybzTp6h5PRj9U6TydiMxo+4k5xKrZeglVWqi1k
+         aE1bB7PAoV1HZBaRLxf4pe1jp9fHTkVV5jDJtALnfU9fS4baXU4ND08CXkNpM1r7Wvl3
+         ZWuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bxlRPqzI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h68HLyeh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq6-20020a05620a468600b00787821d327bsi3142433qkb.777.2024.02.21.13.19.10
+        by mx.google.com with ESMTPS id v4-20020a05620a440400b007877668d231si5473492qkp.428.2024.02.21.13.19.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:19:10 -0800 (PST)
+        Wed, 21 Feb 2024 13:19:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bxlRPqzI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h68HLyeh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rctym-0005zz-Jh; Wed, 21 Feb 2024 16:18:12 -0500
+	id 1rctz3-0007nD-Nv; Wed, 21 Feb 2024 16:18:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctyi-0005Tt-1p
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:08 -0500
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctyy-0007GL-M3
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:24 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctyf-000145-6g
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:07 -0500
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2d09cf00214so80603461fa.0
- for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:18:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctyw-00017z-0c
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:24 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4126f48411dso1366555e9.0
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:18:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708550283; x=1709155083; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708550300; x=1709155100; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=B1hBOWCBa8Kc+AFXTCFEtySegdqlIvAldt191B4hj40=;
- b=bxlRPqzIWBooO6TMuH4aztPfAbHTT1axJyOtQibOOq8zFfeY2ppC9KmFb41u2P8Skl
- cpxXphpQlh7QKvdlFyxhat7g+/6Ayxr2JYGpKqAirG+2yHXRuyE2+6ZvH8PTjqzW5SVL
- 58RcIJX8QeExsFrpp/+Z2oU6o5rGyx+T56X5nwgWcntoMZybbD9vvyljH8xIQN8wqwiE
- WDyY0qoqXSr6K+oJLkaaqOG4fST0y9dupmergl2sjpvrAnvcAMtl+n25u5A0YVIZZoVs
- u1Rm3jouQ1qjubnfnPlw8wgUY8joBDwqBzMqnOn9Amy53OH/bq4vYIlcnIX1hCz0H6Ka
- BY6Q==
+ bh=AbWaENVXrPEDOnkXsgR9cEbYG3NY0XwtRW+JhFfX4HQ=;
+ b=h68HLyehp/sb1F348DsrxBHvI+gwHeXPYbxRRPQyGc2Cp7tibkHTL95Yslhije+exx
+ vp85F7ZfldhmcK4J9ZKRvJR6sQnCpRWM19O5rXiciGDZ/y7zctc51nywtAt8wJb2ZKCA
+ Z2/rK9ZhNJ2w5lMvpw7sXBMTuAXsanmMM4rHQd6bMVsT6P7EdFaVJ8tNSVh0zJlZCeS+
+ tPm7B1l5v+85Tdj68hh73BoVz8TXpudVzwrZbi010556OY8N/pTY6DC4X7UAkY1TvEh7
+ H/4nw3GY43QN6YJzWcxBYLKRBh14/5UtYymgQUl6fmFP7ITjPujldOwYDoulInw5ogW1
+ ZWiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708550283; x=1709155083;
+ d=1e100.net; s=20230601; t=1708550300; x=1709155100;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=B1hBOWCBa8Kc+AFXTCFEtySegdqlIvAldt191B4hj40=;
- b=SYrPi21cGCpi3qfucxu9gxcb0OEyzkPvFoXhTBYMrWoaqBFVVDUyfH+xfSmK4/8K8x
- dJN0r+ucpumKVr285cJliMsL4rwdeIw5TWN9gxBa+RniagEaVHV0eG8c+muFx3o/RkeW
- zuZ66bG4V9J1DMjzvyuGU2YxThqE9wtI8ub9Liq0Zw7oA90fiaikbHfj76VtRyRPp6On
- aOgA4QZ65z+1kZ14qDlwj/KmKVFJe6fTT11jA4QdK7HS7UaCrvIJQAAzoGrnpXl6w6sP
- FhBdA3E9/KybEKkgEmXhcu94OAYCec7v0W4t9Hr9nBRdCDIA47Rk5azuGnSSkqCaLCHk
- wBtg==
-X-Gm-Message-State: AOJu0YwE1d8w26vWNqZY5NmVGgqGnM8VwVTuMKusCUV+bj6f7ek340Js
- 5OhnA8dVIhCz+6kv56GU7oD9xigOrv7N3wwJ9fy/OgrU/Sm3qBi9HkbMKc9y3r5MZFgDVhv+UeS
- jTCM=
-X-Received: by 2002:a05:651c:1543:b0:2d2:47e0:4427 with SMTP id
- y3-20020a05651c154300b002d247e04427mr4972111ljp.41.1708550283044; 
- Wed, 21 Feb 2024 13:18:03 -0800 (PST)
+ bh=AbWaENVXrPEDOnkXsgR9cEbYG3NY0XwtRW+JhFfX4HQ=;
+ b=eAJsnIGYyf1jx9VBIZGq0IaKMcgoMH+lVQ87i4FIxidbitzjYTgg29MRboH8PNDoLd
+ M+70iKFlNUD1c2rp9zH04GsnBme9A2ghcASYaKXs5K2iKbrzOn8r2lWnsaIr99710KJU
+ CSMJKf/qSGSpU53cUa526r61uTXndFVa9QMvkvvCIfWjI+16h55ERq9Zju3sanAbHHcg
+ cQNRwumy1PUDLZJUHlFANEDvmzJkzGBbHA3pilhtG5m2UnEfT+eVD9SjUnqrodcyX+XR
+ FYCmE45+AMeOe84iLH66Nqx7l9Sl01U2eUe6nn1bFVhqT/CEIzizT0D9TOonswcor2r6
+ 5ucA==
+X-Gm-Message-State: AOJu0YwjzQIrBPVLayJnXmSocaRaHLqKL6ql7BfH9PQOOdEJo371rsLH
+ LI9c80WCFCzly5cuWzBJ74vtvVs9IOz9aH5bR5mzJBZIMM26e+680kZinP7XtVXZBzp04OwjnpT
+ 5Wus=
+X-Received: by 2002:a05:600c:6029:b0:412:6e83:b89d with SMTP id
+ az41-20020a05600c602900b004126e83b89dmr603451wmb.8.1708550300263; 
+ Wed, 21 Feb 2024 13:18:20 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.211.34])
  by smtp.gmail.com with ESMTPSA id
- t11-20020a05600c198b00b0041270c2b95esm5969210wmq.29.2024.02.21.13.18.01
+ m2-20020a5d6a02000000b0033d071c0477sm17903145wru.59.2024.02.21.13.18.18
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 21 Feb 2024 13:18:02 -0800 (PST)
+ Wed, 21 Feb 2024 13:18:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
@@ -101,18 +101,17 @@ Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>
-Subject: [PULL 11/25] hw/i386/x86: Turn apic_xrupt_override into class
- attribute
-Date: Wed, 21 Feb 2024 22:16:11 +0100
-Message-ID: <20240221211626.48190-12-philmd@linaro.org>
+Subject: [PULL 14/25] hw/i386/pc: Confine system flash handling to pc_sysfw
+Date: Wed, 21 Feb 2024 22:16:14 +0100
+Message-ID: <20240221211626.48190-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240221211626.48190-1-philmd@linaro.org>
 References: <20240221211626.48190-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,96 +133,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hq4c3FspApRl
+X-TUID: gVYMGkc+IU3L
 
 From: Bernhard Beschow <shentey@gmail.com>
 
-The attribute isn't user-changeable and only true for pc-based machines. Turn it
-into a class attribute which allows for inlining pc_guest_info_init() into
-pc_machine_initfn().
+Rather than distributing PC system flash handling across three files, let's
+confine it to one. Now, pc_system_firmware_init() creates, configures and cleans
+up the system flash which makes the code easier to understand. It also avoids
+the extra call to pc_system_flash_cleanup_unused() in the Xen case.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240208220349.4948-4-shentey@gmail.com>
+Message-ID: <20240208220349.4948-7-shentey@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/i386/x86.h | 3 ++-
- hw/i386/acpi-common.c | 3 ++-
- hw/i386/pc.c          | 5 ++---
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ include/hw/i386/pc.h | 2 --
+ hw/i386/pc.c         | 1 -
+ hw/i386/pc_piix.c    | 1 -
+ hw/i386/pc_sysfw.c   | 6 ++++--
+ 4 files changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index da19ae1546..8e306db7bb 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -34,6 +34,8 @@ struct X86MachineClass {
-     bool save_tsc_khz;
-     /* use DMA capable linuxboot option rom */
-     bool fwcfg_dma_enabled;
-+    /* CPU and apic information: */
-+    bool apic_xrupt_override;
- };
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 0a8a96600c..e8f4af5d5c 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -193,8 +193,6 @@ void pc_i8259_create(ISABus *isa_bus, qemu_irq *i8259_irqs);
+ #define TYPE_PORT92 "port92"
  
- struct X86MachineState {
-@@ -57,7 +59,6 @@ struct X86MachineState {
-     uint64_t above_4g_mem_start;
- 
-     /* CPU and apic information: */
--    bool apic_xrupt_override;
-     unsigned pci_irq_mask;
-     unsigned apic_id_limit;
-     uint16_t boot_cpus;
-diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
-index 43dc23f7e0..cea4b3d71c 100644
---- a/hw/i386/acpi-common.c
-+++ b/hw/i386/acpi-common.c
-@@ -100,6 +100,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
-     int i;
-     bool x2apic_mode = false;
-     MachineClass *mc = MACHINE_GET_CLASS(x86ms);
-+    X86MachineClass *x86mc = X86_MACHINE_GET_CLASS(x86ms);
-     const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
-     AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = oem_id,
-                         .oem_table_id = oem_table_id };
-@@ -122,7 +123,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
-                      IO_APIC_SECONDARY_ADDRESS, IO_APIC_SECONDARY_IRQBASE);
-     }
- 
--    if (x86ms->apic_xrupt_override) {
-+    if (x86mc->apic_xrupt_override) {
-         build_xrupt_override(table_data, 0, 2,
-             0 /* Flags: Conforms to the specifications of the bus */);
-     }
+ /* pc_sysfw.c */
+-void pc_system_flash_create(PCMachineState *pcms);
+-void pc_system_flash_cleanup_unused(PCMachineState *pcms);
+ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
+ bool pc_system_ovmf_table_find(const char *entry, uint8_t **data,
+                                int *data_len);
 diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 1733dffc00..d7183780bd 100644
+index e526498164..1ee41a5e56 100644
 --- a/hw/i386/pc.c
 +++ b/hw/i386/pc.c
-@@ -700,9 +700,6 @@ void pc_machine_done(Notifier *notifier, void *data)
+@@ -1733,7 +1733,6 @@ static void pc_machine_initfn(Object *obj)
+ #endif
+     pcms->default_bus_bypass_iommu = false;
  
- void pc_guest_info_init(PCMachineState *pcms)
- {
--    X86MachineState *x86ms = X86_MACHINE(pcms);
--
--    x86ms->apic_xrupt_override = true;
-     pcms->machine_done.notify = pc_machine_done;
-     qemu_add_machine_init_done_notifier(&pcms->machine_done);
+-    pc_system_flash_create(pcms);
+     pcms->pcspk = isa_new(TYPE_PC_SPEAKER);
+     object_property_add_alias(OBJECT(pcms), "pcspk-audiodev",
+                               OBJECT(pcms->pcspk), "audiodev");
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 34203927e1..ec7c07b362 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -231,7 +231,6 @@ static void pc_init1(MachineState *machine,
+         assert(machine->ram_size == x86ms->below_4g_mem_size +
+                                     x86ms->above_4g_mem_size);
+ 
+-        pc_system_flash_cleanup_unused(pcms);
+         if (machine->kernel_filename != NULL) {
+             /* For xen HVM direct kernel boot, load linux here */
+             xen_load_linux(pcms);
+diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+index c8d9e71b88..b4c3833352 100644
+--- a/hw/i386/pc_sysfw.c
++++ b/hw/i386/pc_sysfw.c
+@@ -91,7 +91,7 @@ static PFlashCFI01 *pc_pflash_create(PCMachineState *pcms,
+     return PFLASH_CFI01(dev);
  }
-@@ -1795,6 +1792,7 @@ static bool pc_hotplug_allowed(MachineState *ms, DeviceState *dev, Error **errp)
- static void pc_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-+    X86MachineClass *x86mc = X86_MACHINE_CLASS(oc);
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(oc);
-     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
  
-@@ -1814,6 +1812,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     pcmc->pvh_enabled = true;
-     pcmc->kvmclock_create_always = true;
-     pcmc->resizable_acpi_blob = true;
-+    x86mc->apic_xrupt_override = true;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = pc_get_hotplug_handler;
-     mc->hotplug_allowed = pc_hotplug_allowed;
+-void pc_system_flash_create(PCMachineState *pcms)
++static void pc_system_flash_create(PCMachineState *pcms)
+ {
+     PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+ 
+@@ -103,7 +103,7 @@ void pc_system_flash_create(PCMachineState *pcms)
+     }
+ }
+ 
+-void pc_system_flash_cleanup_unused(PCMachineState *pcms)
++static void pc_system_flash_cleanup_unused(PCMachineState *pcms)
+ {
+     char *prop_name;
+     int i;
+@@ -212,6 +212,8 @@ void pc_system_firmware_init(PCMachineState *pcms,
+         return;
+     }
+ 
++    pc_system_flash_create(pcms);
++
+     /* Map legacy -drive if=pflash to machine properties */
+     for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+         pflash_cfi01_legacy_drive(pcms->flash[i],
 -- 
 2.41.0
 

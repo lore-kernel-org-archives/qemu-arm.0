@@ -1,167 +1,271 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2173226ejb;
-        Wed, 21 Feb 2024 13:17:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWPzcAUYk05Q/8ukSE+bV3qTJS+ExrSBZKOS6wtDLJMDSEQUCMTbK6zK3wo1xQRx7WdVCHjUlqOtQTwByUPiE8Xy1Y0pXST
-X-Google-Smtp-Source: AGHT+IERkAkG8RVOaZaik7x2AgAzErqGMuIpEN1oIlV6RiTJeLUkRdjpnKKcV9pEpDQrGv4m8w2a
-X-Received: by 2002:a05:622a:4f:b0:42c:7bfc:8068 with SMTP id y15-20020a05622a004f00b0042c7bfc8068mr27856870qtw.11.1708550272250;
-        Wed, 21 Feb 2024 13:17:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708550272; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2173259ejb;
+        Wed, 21 Feb 2024 13:17:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWTm6uHzp5YnoliUUtjOedBqoru69j1/CgAxfMX47QPd2i9YBiHQH5CJOiZ6NbCCni8Xf8DBX48VyaupkCYGkdSWftPBwM2
+X-Google-Smtp-Source: AGHT+IHjF149Zt4PJjPDtzUP1A6cISrBiYeDEQziXINhESA4Mj/6PS+REgo3/z11Pc+K9CkxWv45
+X-Received: by 2002:a05:6808:2e92:b0:3c1:5a79:36ea with SMTP id gt18-20020a0568082e9200b003c15a7936eamr12292529oib.19.1708550276237;
+        Wed, 21 Feb 2024 13:17:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708550276; cv=none;
         d=google.com; s=arc-20160816;
-        b=DSc5yg7lkbh8yuxBnDY2Ym7pP/RsC289BwhA3xt0gaQPV85mPXq+H9Ymo52utleCuw
-         aei2WNfpokDxJOFNwDtS6wkdqiEtvxNM4EmYdf2pW6M8vaAB7KvgN273yXiac1jBNUlH
-         LfqS0OAayrQM3FRPj7Af36lJDpl4COGYKLyqwZ/BTg1VbKveyNwcCgVLgVdIgfnzOQuK
-         bQerU8BzW5dQwg/3D9c2hubHFtZ01raOk8UmN1kfHKDkcHcp8DN5dxcpkKuag/Faer5K
-         aJ9DISEUqkx1N+55bv8o3OIp5wqpt0pxu12jZgRSORFvP1IA/MDsm27m1OEySdShq5cw
-         bfEA==
+        b=v01VMClkdEyXWBtNIe5VmbV0qbh6HYLdBlRD4+6dtm/ugIDF3W4szngRN5zjas3Zf0
+         D+AfVaiwoXZBCRlO+HXXEcpu/X+EKJEI8vMuslyGO5zpTj7bXJnwzs5SLgnYX2Fs00+c
+         dRNW2bg6vy5p8UcmLpgJWrzt6DPrG0A8oCjGI3WVH2xI2CboolRnn6k0VkGsg91vv+2l
+         sGFK72fx9MU6ZkD8Dew1eMmnvG6R+2GhVfHNwO+PH2mcgOXH8EPuPOKmRPaSgP7ae6Fh
+         0PgaB0tKsv5ZfhXWL4ef3vRG+hyiyvFOnN1s72LWqe3fl2AX8GhhkgkpPhBSAfeQsh4H
+         jaBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=4TRvCQivHf+BGM6I7nL2pwFghFnMYw5aVlLSb0J/9JI=;
-        fh=Tm1JBeIpbRgXIQbzR7Pxs7dfN0JWk+aR4tRoAkqiPTU=;
-        b=H1ye7DLZAu5qCkYz73iJm5QisxW6LPDXsKoeJxcwN0OXHgdknoqwtXYrACtcTDHqhk
-         uWgtyJqZikfZTUo8eesV/H2DmSAjOzD9HIKNpCte1Vw6mlnWl6qjRCgc/Js0R/eb0O0J
-         z1XXAXSalG/N+M73AAIK7iDUcW9yE7JK6ah+APuC1jf2tcjLyXIFX/YMCPUWugFfGOoQ
-         wuOv1gwjqUZqs+bpk07+4W9YBUOovkc5vxbsNAvCJb6pvlxzybcu+SAh3kIToztBdwO2
-         2rfUztJZ0KOH4gqN/kUmW2rtqWrQl464OAdpcrLg7sFKgKcUhm48c+eTfKwxCZA/t0jl
-         ka4Q==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8uBLISnHsBy7pnbye/AKpsaEy5lYoO5sp8diPx57aqA=;
+        fh=sUmKl6kuK1QEm1H6mIwPRtJgzX8TTCQJruBb8zwn0+E=;
+        b=m5oQpLANPAg1MrO5w9aLVDY0zSwOxtUYaGw35iWO6eywSgX4ZR6vRRbOf5uFv295QB
+         gtdWjVeaBXeuz3t7ds3rdMkHTCgzvGrl3wbXaYvcD7DktfQ9ZEHvfH/HNtxsWh5RmR91
+         /lFl5jddJ3Ww97Z7t3ZnUTU8DO/k6CZQDpXpXBLGHKMqirRGK8mYXuqUv43SKYbcI0sl
+         gJ5BHY7zxrjMGoeayzZ9mr4a891JmYjVzHkOUUO6VoAiv0XFmlUMcv3vtWpuBLlZDvqo
+         BBWU6OQPbTiKlNvClubaAKIok1P82RI65Uo6wCaDbbfgzVWXFJ0LmaJ7VWnHrFdJt8Am
+         U4kg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qsM2Tz+l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xoS+Pi5a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6-20020a05622a170600b0042dc7d3ccd8si9230128qtk.619.2024.02.21.13.17.52
+        by mx.google.com with ESMTPS id h20-20020ac85154000000b0042e28dea973si4202025qtn.171.2024.02.21.13.17.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:17:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Feb 2024 13:17:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qsM2Tz+l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xoS+Pi5a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rctxX-0002Qc-Rh; Wed, 21 Feb 2024 16:16:56 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rctxO-00026Q-EU; Wed, 21 Feb 2024 16:16:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctxU-0002Jc-A3
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:16:53 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctxD-00020Y-0Z
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:16:36 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctxS-0000nk-2J
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:16:51 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-3392b045e0aso4652045f8f.2
- for <qemu-arm@nongnu.org>; Wed, 21 Feb 2024 13:16:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctx9-0000je-ED
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:16:34 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-41275855dc4so8155495e9.0
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:16:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708550208; x=1709155008; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4TRvCQivHf+BGM6I7nL2pwFghFnMYw5aVlLSb0J/9JI=;
- b=qsM2Tz+ldd3LESpb8XP0unrIoiDe02oSiS82cEthbN3bIOm2BDEdguOyOG5NGF/Uoj
- ewL2t/sU8008nHPzSPb951RnpGsGqR/HCQ+1dIXsDn3NLat/0X9XCphhUkj5mcM3VIqe
- CBvkllWdlxVcNufvPBAfjOtenFYy81ESfie9jTSIX5u9k3aV3/MU+eKof5PhyNlBtmC8
- DDqwqTBC4/6bLSsdHURy50y/Df1HfepHYPtgjpOr04chg3hfF2QS2Jn7A2RQLVwe3obs
- NYAaIa/gnx/p2astKirRsbREcmmmlv9A4e3PhTSefmDDqzu93JrObr22V8MP0Wg8RAAZ
- NZ+g==
+ d=linaro.org; s=google; t=1708550189; x=1709154989; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8uBLISnHsBy7pnbye/AKpsaEy5lYoO5sp8diPx57aqA=;
+ b=xoS+Pi5av2NJI4+Smnujn7Z+rQkWXAtj/qnAuW57IcQeK1KR/7QZPkFYygG/n/MQjj
+ bPgNZDrIL7RKS9xvy6UNcr1pkB5u5t9odAVuzHyNj6w2vCqT3uxiAaDvRiaqKnBptjNg
+ l9rCl4haoziod1WQLVFNz226bdqPuAT+xdDr+Aq+I2DZJTrILBRTjM5yM+YThfpuNzgK
+ iUmBItjVuA6iZf0ASCDDLR8AkVjIKs/jy/nMkXZQcAIelx31dpmBGcxGeHBJnO44NMvi
+ jLb7IpATtpEpAGOE53wodctEO4A3o46YkreeQ9dB20vgKrZRYB+61jN6rW1BYOP9gtkm
+ nscw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708550208; x=1709155008;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4TRvCQivHf+BGM6I7nL2pwFghFnMYw5aVlLSb0J/9JI=;
- b=XtHA76AWI2xxHT0/j8oKTVff7K0traSWTv2PT16DyK1rIURq7/jKAYj9qvK65E2d81
- lxiO6Eq+jIp2pHuNXWUxwn3Q5338RH429hWQZC4wb6ote176xhUbdvWTiHHfyduEpub8
- 969tapHQKYHuJ7wySU6lmbkAmGH1g1xuBCr1chhUOb16WjLVsIxPefrNRHn5Gas0gOLn
- wp6V3Kul/R7xvyBj46FLNCZgMWw6CfAR0yebRWkRXC7a8zkILT11C768JgCCOR2UqLGM
- RaHZIa1NldccfEMm3W3wUqVFpRIZ0quTCz5ALPihcm/S8XmMj5m+3VXPjdEXSECfLibZ
- GMvw==
-X-Gm-Message-State: AOJu0YzoaGN5vDsBkaBXeTF+qGk6xnek1Yf0wjkSHa5FthP8WStphKQj
- LwX7VoktCdIZsYukLc5virsx8tUr9DV72XmbjeNlhauGSzZbxOqQIaGZBSaYyAY=
-X-Received: by 2002:a5d:64c8:0:b0:33d:545b:a74 with SMTP id
- f8-20020a5d64c8000000b0033d545b0a74mr10313634wri.33.1708550208078; 
- Wed, 21 Feb 2024 13:16:48 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708550189; x=1709154989;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8uBLISnHsBy7pnbye/AKpsaEy5lYoO5sp8diPx57aqA=;
+ b=b8AQifBiRTiEGPNrge6HOnYYhckM+/nLiPULb7gauwOp6UsWclMUhPq/natCjJp8gs
+ 3OkqLF96TX59orvhD2nV1Se+fWTZlCu+dZBhu6w4FhCUQPnhhucxB4jafu+9VGp2N1Cw
+ W4BnY1g9A4CDuqdNVgznfdG6nktZt/sAT8uetTiCx6Uordyx/4oVh8CiKfb0cmj0MwQh
+ bVlmTedpDnfvH+lZah0qQT/RVeHce+f7IjIXtmW/p0u9zAAzDJE8RhC+sy7uBH9Xu6vp
+ DND0bJsWiUNOmyiL3JZFVuqgAEKP2DcufVAq4GBq0cvRWnFzdVgBrTaZnmDOHAAELGDE
+ s4qQ==
+X-Gm-Message-State: AOJu0YzgP5VljCDt8XFuf0BJhHjBcTEyiRF3I/luEZ7qFBauDcgMc/Jo
+ LCOoHr+X9WWSTFCekH9dbqp+f/MsKMe5cyzit4kOW88z4dGdbmK+hazDsazCc8uRDIbBvuA9bsS
+ 4fKg=
+X-Received: by 2002:a05:600c:3506:b0:411:df3b:b43d with SMTP id
+ h6-20020a05600c350600b00411df3bb43dmr12906488wmq.8.1708550189315; 
+ Wed, 21 Feb 2024 13:16:29 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.211.34])
  by smtp.gmail.com with ESMTPSA id
- ba20-20020a0560001c1400b0033d640c8942sm7735486wrb.10.2024.02.21.13.16.46
+ ay17-20020a05600c1e1100b004127876647fsm2545192wmb.41.2024.02.21.13.16.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 21 Feb 2024 13:16:47 -0800 (PST)
+ Wed, 21 Feb 2024 13:16:28 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- BALATON Zoltan <balaton@eik.bme.hu>, Thomas Huth <thuth@redhat.com>
-Subject: [PULL 03/25] hw/ppc/ppc4xx_pci: Remove unused "hw/ppc/ppc.h" header
-Date: Wed, 21 Feb 2024 22:16:03 +0100
-Message-ID: <20240221211626.48190-4-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 00/25] Misc HW patches for 2024-02-21
+Date: Wed, 21 Feb 2024 22:16:00 +0100
+Message-ID: <20240221211626.48190-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240221211626.48190-1-philmd@linaro.org>
-References: <20240221211626.48190-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3drPM4DcEaUX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +Lc01rHCWG3d
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20240215105017.57748-2-philmd@linaro.org>
----
- hw/ppc/ppc440_pcix.c | 1 -
- hw/ppc/ppc4xx_pci.c  | 1 -
- 2 files changed, 2 deletions(-)
+The following changes since commit 760b4dcdddba4a40b9fa0eb78fdfc7eda7cb83d0:
 
-diff --git a/hw/ppc/ppc440_pcix.c b/hw/ppc/ppc440_pcix.c
-index df4ee374d0..d84418cb7b 100644
---- a/hw/ppc/ppc440_pcix.c
-+++ b/hw/ppc/ppc440_pcix.c
-@@ -25,7 +25,6 @@
- #include "qemu/module.h"
- #include "qemu/units.h"
- #include "hw/irq.h"
--#include "hw/ppc/ppc.h"
- #include "hw/ppc/ppc4xx.h"
- #include "hw/pci/pci_device.h"
- #include "hw/pci/pci_host.h"
-diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-index 0a07aab5d1..e4101398c9 100644
---- a/hw/ppc/ppc4xx_pci.c
-+++ b/hw/ppc/ppc4xx_pci.c
-@@ -24,7 +24,6 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "hw/irq.h"
--#include "hw/ppc/ppc.h"
- #include "hw/ppc/ppc4xx.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
+  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging (2024-02-20 10:11:08 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/philmd/qemu.git tags/hw-misc-20240221
+
+for you to fetch changes up to df07f6bb563f25f39f4f5887adab557e42bdee59:
+
+  hw/sparc/leon3: Fix wrong usage of DO_UPCAST macro (2024-02-21 22:13:03 +0100)
+
+Following checkpatch.pl error ignored:
+
+  ERROR: Macros with complex values should be enclosed in parenthesis
+  #62: FILE: include/hw/ide/ide-dev.h:31:
+  +#define DEFINE_IDE_DEV_PROPERTIES()                     \
+  +    DEFINE_BLOCK_PROPERTIES(IDEDrive, dev.conf),        \
+  +    DEFINE_BLOCK_ERROR_PROPERTIES(IDEDrive, dev.conf),  \
+  +    DEFINE_PROP_STRING("ver",  IDEDrive, dev.version),  \
+  +    DEFINE_PROP_UINT64("wwn",  IDEDrive, dev.wwn, 0),   \
+  +    DEFINE_PROP_STRING("serial",  IDEDrive, dev.serial),\
+  +    DEFINE_PROP_STRING("model", IDEDrive, dev.model)
+
+----------------------------------------------------------------
+Misc HW patch queue
+
+- Remove sysbus_add_io (Phil)
+- Build PPC 4xx PCI host bridges once (Phil)
+- Display QOM path while debugging SMBus targets (Joe)
+- Simplify x86 PC code (Bernhard)
+- Remove qemu_[un]register_reset() calls in x86 PC CMOS (Peter)
+- Fix wiring of ICH9 LPC interrupts (Bernhard)
+- Split core IDE as device / bus / dma (Thomas)
+- Fix invalid use of DO_UPCAST() in Leon3 (Thomas)
+
+----------------------------------------------------------------
+
+Bernhard Beschow (8):
+  hw/i386/pc_piix: Share pc_cmos_init() invocation between pc and isapc
+    machines
+  hw/i386/x86: Turn apic_xrupt_override into class attribute
+  hw/i386/pc: Merge pc_guest_info_init() into pc_machine_initfn()
+  hw/i386/pc: Defer smbios_set_defaults() to machine_done
+  hw/i386/pc: Confine system flash handling to pc_sysfw
+  hw/i386/pc_sysfw: Inline pc_system_flash_create() and remove it
+  hw/i386/pc_q35: Populate interrupt handlers before realizing LPC PCI
+    function
+  hw/isa/meson.build: Sort alphabetically
+
+Joe Komlodi (1):
+  hw/i2c/smbus_slave: Add object path on error prints
+
+Peter Maydell (2):
+  hw/i386/pc: Store pointers to IDE buses in PCMachineState
+  hw/i386/pc: Do pc_cmos_init_late() from pc_machine_done()
+
+Philippe Mathieu-Daudé (6):
+  hw/input/pckbd: Open-code i8042_setup_a20_line() wrapper
+  hw/sysbus: Inline and remove sysbus_add_io()
+  hw/ppc/ppc4xx_pci: Remove unused "hw/ppc/ppc.h" header
+  hw/ppc/ppc4xx_pci: Extract PCI host definitions to
+    hw/pci-host/ppc4xx.h
+  hw/ppc/ppc4xx_pci: Move ppc4xx_pci.c to hw/pci-host/
+  hw/ppc/ppc440_pcix: Move ppc440_pcix.c to hw/pci-host/
+
+Thomas Huth (8):
+  hw/ide: Add the possibility to disable the CompactFlash device in the
+    build
+  hw/ide: Split qdev.c into ide-bus.c and ide-dev.c
+  hw/ide: Move IDE DMA related definitions to a separate header
+    ide-dma.h
+  hw/ide: Move IDE device related definitions to ide-dev.h
+  hw/ide: Move IDE bus related definitions to a new header ide-bus.h
+  hw/ide: Remove the include/hw/ide.h legacy file
+  hw/ide: Stop exposing internal.h to non-IDE files
+  hw/sparc/leon3: Fix wrong usage of DO_UPCAST macro
+
+ MAINTAINERS                        |   5 +-
+ hw/i386/fw_cfg.h                   |   3 +-
+ include/hw/i386/pc.h               |   9 +-
+ include/hw/i386/x86.h              |   3 +-
+ include/hw/ide.h                   |   9 --
+ include/hw/ide/ide-bus.h           |  42 ++++++
+ include/hw/ide/ide-dev.h           | 184 +++++++++++++++++++++++++
+ include/hw/ide/ide-dma.h           |  37 +++++
+ include/hw/ide/internal.h          | 211 +----------------------------
+ include/hw/ide/pci.h               |   2 +-
+ include/hw/input/i8042.h           |   1 -
+ include/hw/pci-host/ppc4xx.h       |  17 +++
+ include/hw/ppc/ppc4xx.h            |   5 -
+ include/hw/sysbus.h                |   2 -
+ hw/core/sysbus.c                   |   6 -
+ hw/i2c/smbus_slave.c               |   8 +-
+ hw/i386/acpi-common.c              |   3 +-
+ hw/i386/fw_cfg.c                   |  12 +-
+ hw/i386/kvmvapic.c                 |   2 +-
+ hw/i386/pc.c                       |  60 ++++----
+ hw/i386/pc_piix.c                  |  31 +----
+ hw/i386/pc_q35.c                   |  22 +--
+ hw/i386/pc_sysfw.c                 |  17 +--
+ hw/ide/cf.c                        |  58 ++++++++
+ hw/ide/cmd646.c                    |   1 +
+ hw/ide/ide-bus.c                   | 111 +++++++++++++++
+ hw/ide/{qdev.c => ide-dev.c}       | 137 +------------------
+ hw/ide/pci.c                       |   1 +
+ hw/ide/piix.c                      |   1 +
+ hw/ide/sii3112.c                   |   1 +
+ hw/ide/via.c                       |   1 +
+ hw/input/pckbd.c                   |   5 -
+ hw/mips/mipssim.c                  |   2 +-
+ hw/nvram/fw_cfg.c                  |   5 +-
+ hw/{ppc => pci-host}/ppc440_pcix.c |   3 +-
+ hw/{ppc => pci-host}/ppc4xx_pci.c  |   3 +-
+ hw/pci-host/ppce500.c              |   2 +-
+ hw/ppc/ppc440_bamboo.c             |   1 +
+ hw/ppc/ppc440_uc.c                 |   1 +
+ hw/ppc/sam460ex.c                  |   1 +
+ hw/sparc/leon3.c                   |   2 +-
+ hw/arm/Kconfig                     |   2 +
+ hw/ide/Kconfig                     |  32 +++--
+ hw/ide/meson.build                 |   4 +-
+ hw/isa/meson.build                 |   2 +-
+ hw/pci-host/Kconfig                |   8 ++
+ hw/pci-host/meson.build            |   2 +
+ hw/pci-host/trace-events           |  12 ++
+ hw/ppc/Kconfig                     |   3 +-
+ hw/ppc/meson.build                 |   3 +-
+ hw/ppc/trace-events                |  12 --
+ 51 files changed, 591 insertions(+), 516 deletions(-)
+ delete mode 100644 include/hw/ide.h
+ create mode 100644 include/hw/ide/ide-bus.h
+ create mode 100644 include/hw/ide/ide-dev.h
+ create mode 100644 include/hw/ide/ide-dma.h
+ create mode 100644 include/hw/pci-host/ppc4xx.h
+ create mode 100644 hw/ide/cf.c
+ create mode 100644 hw/ide/ide-bus.c
+ rename hw/ide/{qdev.c => ide-dev.c} (67%)
+ rename hw/{ppc => pci-host}/ppc440_pcix.c (99%)
+ rename hw/{ppc => pci-host}/ppc4xx_pci.c (99%)
+
 -- 
 2.41.0
 

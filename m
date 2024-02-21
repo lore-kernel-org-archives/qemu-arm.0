@@ -1,114 +1,115 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2175176ejb;
-        Wed, 21 Feb 2024 13:22:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVtWjN3nrAEIRhzB97zy8VV2eplD1pXu4ysgZgFWxWOLg9oGUSGp/Z3WtUuW+f/XJcr6Sso8PPOhlloJ8IBby7iI4f2pF/3
-X-Google-Smtp-Source: AGHT+IGwWn4L084D7YSGw3Pj16cTIX8ld5UUwQm6hGH1Ha1sVTW9LML5mLXVjb2foA8RHf83RiaO
-X-Received: by 2002:ad4:5e87:0:b0:68f:786f:35fd with SMTP id jl7-20020ad45e87000000b0068f786f35fdmr10275769qvb.25.1708550520902;
-        Wed, 21 Feb 2024 13:22:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708550520; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2175338ejb;
+        Wed, 21 Feb 2024 13:22:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWowKmrr0+Ny2UvCcgpr7dKjdmqrZdiC3EFgcvrhj7fapuPmrO1UpQd6aaPOAyke+xSNu3u3+w7evY9uXiasGCk0rxYlH0T
+X-Google-Smtp-Source: AGHT+IEGJKEok7CuC+CTq0NHL2zU7R2CJX2gFPZVVO44wyxQjZXJN+n342yTMYk04cCFU23n0v+Q
+X-Received: by 2002:a05:6808:2e8b:b0:3c1:5c06:7e8b with SMTP id gt11-20020a0568082e8b00b003c15c067e8bmr15624427oib.2.1708550546909;
+        Wed, 21 Feb 2024 13:22:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708550546; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wgzy+Lk2Aw5digeb1x1q5GKFCbOn3S1GcyKMCqYyj0bKUNn7/HyDq0TbKJXjXbpHLX
-         yeN8RJRF+Sh4rwmlBLHOHCghJAUkbwTVRfnJmBbk1Z/mIwYAKilopqvArINOesFPqtZO
-         wU4BsiC82/5WVkXJ1SI2xpG5Y19Nh07KPFQIjKHSlp+JfbiIQ0rAJdKvxaLEwBUSZ4or
-         fVsCKtL3rbgJTHJ02vtpksOEqylV5IHuzoSEpg+KI5qYssB1jAVvwx26dAIkcVRfQ/xu
-         S4ywqfDn6K2GHKBni1jSB0OYvLFGA5jnVLlSbA1NOZPoNiFginVEyTeCTPjMUmAd79Dq
-         SMlQ==
+        b=NS24L1nEcTuldOmPcTU0jFnww0suVzlWfGJGMd6tu0jthvbL1uw4OJ9sIBxYlFsupJ
+         XiUH90oujmxhQekQUSgzWtEYVfzBegvbgEcX2JMT6rqdUHIPbXo+b9+5YXVBPRC1VdPN
+         +ELYRa9RRN5sVgb2OcMhynTimxgGVNmz6KZdzlVtWzuv95WyH9JpL9pFEiyFPlLvFIs6
+         6p48MuA/zUWXVn8BN8WtCGVtSwuEyK7QCZKDgez9DM72a2A4X8AHw8cme6lK3Op4tfh5
+         PDRSmZq0Sogl9+oW5ADCVBBO35gy7LLMHTXiiLKHUz7Woj6SGUDmVT0Vy26Q10yd4ekj
+         J+aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xFzn/uz4uT8liK1wRCr+n2ERXfHQX8sWgAYNC3jQl+0=;
-        fh=5cA6FzatP5fS6W/Tt18xlG6cH7utM3ZrQCPKoe4O9n0=;
-        b=dLpXslmdbLsmsgdAOz5nGlvuzkXiV0qKEvExjv0T7zdUz/1dzSrXpBDUBG2Zp9bvg0
-         mfrrXmQuiy+Pi9XLNXiJw5G6T1Y+ST8XRJ6sBY3aiLfUOuZLGOz3jIn19X4pzvVVfjEO
-         50Q1uOz5O6NDjJT3oaLrQ0X4geNQjrMis4q3tzL04JsS+dk5taO7n7GVWsFCNQrepv0n
-         +Kl0ce3bOaobnsc3Y1jJLqlpkAzV/AlpwhNDMcwvgSzRCkjMO9GyERcW8JlXgU+kBghj
-         MDT07/pYlRU17fDo/sEX2+9VuWf2Gx09fV15Nv5AibfRLEKnj8oXKQKdr6Ih2IiQKL2D
-         XjWA==;
+        bh=8/bWYrGiGEWbiVuhkyiTI2lY8MFAALvypRNrUgC8WXQ=;
+        fh=H7sks7HDBvRmAqttFv3tBcgYm/TSOOJpPVxr8Ia2q8E=;
+        b=S82+gf6wWjVfwD2TC84wktHs96dV/bCTtYmAZAPrevYJwQ23VQoAsCXy9ffdtAkDvD
+         C+2A2TWVynj+kJ6cw1cBCTadhafCuLdUQj/s11sgw1T5YTmtgMdUd+X3UQcWtiiWoO9J
+         Htns6nQ8pN4FSGfwNoOgy+WR6KInBzaEHlJVJUvMbKSluMBeSig7ursOx0twRTbhjQLW
+         +XgIjgekdtNx7MC4qljfPwwHy0Z3edS3wG3bpgr5kvJ4Fj8Od/mHK1APKEUWNjCS73nH
+         Mq3DHphLfDfpkADXb+MKzb1MVqEdnArXDoZVxeG9bJs9YShfoB3PZylmSgDzYJG1V9Pn
+         fqRg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n2dttVdB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M6GoplIu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv4-20020a056214240400b0068f2b1e5a40si12180682qvb.308.2024.02.21.13.22.00
+        by mx.google.com with ESMTPS id u21-20020a05620a085500b0078735aa2219si11553235qku.198.2024.02.21.13.22.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:22:00 -0800 (PST)
+        Wed, 21 Feb 2024 13:22:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n2dttVdB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M6GoplIu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rctzw-0004D4-LU; Wed, 21 Feb 2024 16:19:26 -0500
+	id 1rctzi-0003GV-Ns; Wed, 21 Feb 2024 16:19:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzf-0002lS-6K
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:19:07 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzS-0001Yc-GK
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:55 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctza-0001Jj-TX
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:19:06 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-412698ac6f9so1289045e9.0
- for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:19:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzP-0001G3-Ce
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:54 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-41278553016so7281805e9.2
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:18:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708550341; x=1709155141; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708550329; x=1709155129; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xFzn/uz4uT8liK1wRCr+n2ERXfHQX8sWgAYNC3jQl+0=;
- b=n2dttVdBCvZ3XNufC5L9oz2YztjKdNL8T24gkYt5DLdIBJqg1UTz9fuNtn4hLFfk9n
- +PvxjYaCDXoPAZdo9FaYdC8EJkoPROnWXhWqL4+eXYPFN7RdbMghWtoFwUwhJl/Yv9G2
- Da/EG1l8RiNLd8flO2JsQTg8bry2tNi3b+Ng6RNzHiedbThRnSDcUXzeNUhNIW4gSUqB
- YhlgpTwKPt2rLqyfDobEETEAsW4uJcHnoV6xkNOktyedThsqIlUQokOk1bWQ5eCUroJt
- RwBow/tZiLpWx4Tog8GmRqP0UA7lltQGCIZCq9r6ZCQUbqnuaRb9tsb2ed2xBLfUVbNt
- g2+Q==
+ bh=8/bWYrGiGEWbiVuhkyiTI2lY8MFAALvypRNrUgC8WXQ=;
+ b=M6GoplIu/4g4e/IxtZiQHiQW2XL8OauYwCApC45ZYurAvJAWNZ4bPBy1ojnnolz6Qe
+ /0PWFkwb9/4pFkOEJf5jyOJh6tVFt32XW0foHG1GtzlVJ2l43QxoelRpntYnzK5R15oC
+ WGcm4jFh2yoJwaReRJgdXg/7wPX5h5aSihI9SFyNAsi2s/bBedV9roG0Q7BJQKpYXVf0
+ CvB+5JLeNnyx0EFeO8BiDFWyDuL49VNSD3aFEH1UaRPZm8hPeKg3rZv+ODGma3svG8cW
+ UMa06RedVY4wfs8jwbPCkrSs5S0WzgjR6m/dt7bqSNdvWuYIsdDRL8bsV4JoiRVr9Y3t
+ aGSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708550341; x=1709155141;
+ d=1e100.net; s=20230601; t=1708550329; x=1709155129;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xFzn/uz4uT8liK1wRCr+n2ERXfHQX8sWgAYNC3jQl+0=;
- b=ojIlMfdyHPXQVcGQqlgHWgtaiUGTnqbKJIYvmhvfgt9e5PtfJdZDpeEsM8UyWSpCk9
- 3NhV0cHoeys5JSU7eGOnLCCAUiajCZ7i/9V5XOerxxaY2S9pb/ltlABsZ6HUoMMt593G
- rq1GmjwrBGLq8yjlkMWYHuk6MBxpovlZjuyT6391HzUVQkKnMF1ccd4gPcUsRhVSVKTO
- s0DbJ/EK837w3N10Nib18fHNgkRyZ48j6ep9DCHhzX/Bk490pez2JKsWg9NHHaCthabk
- 12cGqG6Lpsaj//6zFHmdbjbjBSwfYBdYJ+3Gxn94C/jotUhKXM6jaYrbxUTKK68+B2rA
- TONw==
-X-Gm-Message-State: AOJu0YwK/Bv0qnL0eCqYGoOAlTNvYsvgazVUMbJW/v7OAYU5uwn6RJtq
- vk9K4lwG/imc92nrtYvZn1zIIMh+fwWyuE6q5hheB6mGYlsSXwVam4PAXrtIoGcC7LzL/0CKSst
- uuP0=
-X-Received: by 2002:a5d:4d8e:0:b0:33d:2012:6d64 with SMTP id
- b14-20020a5d4d8e000000b0033d20126d64mr609702wru.4.1708550340703; 
- Wed, 21 Feb 2024 13:19:00 -0800 (PST)
+ bh=8/bWYrGiGEWbiVuhkyiTI2lY8MFAALvypRNrUgC8WXQ=;
+ b=u5/WQWepTQzGntiDTfaA9iWaQt6p2x+EhogLUT+xtZg8OlHR+BM+5YvtXwkSDfO5fD
+ MrQks/oMtm1DatbW/F+Q/GoGTToazReS2c6a2LWxNenLVDcHbVzx5i6VV1SrDjnO0Ik0
+ Cxl14CXYlL0AADi/YJRHx10RWMQSV0w0IvOypCwrf4MTppK1oJW5HfPg6d2oZTTx3V/a
+ jflRv8PTy3Rp0tfEwj733X5nY4++RDO062MVVlJgiM3fBvIWe5/JFk0+E32Ec5wsrW7J
+ fDGCBxCsvxIw1J1WT0AGUoLrYkbOEjoIkHSPg1ve9p/uyb2v6DmgeRTzeIk+x3Wrsb9a
+ ngjg==
+X-Gm-Message-State: AOJu0YycgTLJQeF/Ou7SJa+TX2s1bLib/g05wUiJjt6hdrHFL9EhUgyu
+ 90jh5hBnRleuBPO80RTKdj5K8VtsmppTymDmtEFF0stacrQFFV8JuALSxFUjPDLOotiNSyzbVhi
+ mQpA=
+X-Received: by 2002:a05:600c:35d2:b0:410:8ab6:8c72 with SMTP id
+ r18-20020a05600c35d200b004108ab68c72mr13531087wmq.31.1708550329348; 
+ Wed, 21 Feb 2024 13:18:49 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.211.34])
  by smtp.gmail.com with ESMTPSA id
- r2-20020a05600c35c200b004123b049f86sm19731963wmq.37.2024.02.21.13.18.59
+ d2-20020adfef82000000b0033b75b39aebsm18035057wro.11.2024.02.21.13.18.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 21 Feb 2024 13:19:00 -0800 (PST)
+ Wed, 21 Feb 2024 13:18:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- John Snow <jsnow@redhat.com>
-Subject: [PULL 21/25] hw/ide: Move IDE device related definitions to ide-dev.h
-Date: Wed, 21 Feb 2024 22:16:21 +0100
-Message-ID: <20240221211626.48190-22-philmd@linaro.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>
+Subject: [PULL 19/25] hw/ide: Split qdev.c into ide-bus.c and ide-dev.c
+Date: Wed, 21 Feb 2024 22:16:19 +0100
+Message-ID: <20240221211626.48190-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240221211626.48190-1-philmd@linaro.org>
 References: <20240221211626.48190-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,377 +131,399 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4oZG+ZIq8hud
+X-TUID: w/0GpRxiUxlC
 
 From: Thomas Huth <thuth@redhat.com>
 
-Untangle internal.h by moving public IDE device related
-definitions to ide-dev.h.
+qdev.c is a mixture between IDE bus specific functions and IDE device
+functions. Let's split it up to make it more obvious which part is
+related to bus handling and which part is related to device handling.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240220085505.30255-5-thuth@redhat.com>
+Message-ID: <20240220085505.30255-3-thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/ide/ide-dev.h  | 143 +++++++++++++++++++++++++++++++++++++-
- include/hw/ide/internal.h | 143 +-------------------------------------
- hw/ide/ide-dev.c          |   1 +
- 3 files changed, 144 insertions(+), 143 deletions(-)
+ hw/ide/ide-bus.c             | 111 +++++++++++++++++++++++++++++++++++
+ hw/ide/{qdev.c => ide-dev.c} |  87 +--------------------------
+ hw/arm/Kconfig               |   2 +
+ hw/ide/Kconfig               |  30 ++++++----
+ hw/ide/meson.build           |   3 +-
+ 5 files changed, 134 insertions(+), 99 deletions(-)
+ create mode 100644 hw/ide/ide-bus.c
+ rename hw/ide/{qdev.c => ide-dev.c} (78%)
 
-diff --git a/include/hw/ide/ide-dev.h b/include/hw/ide/ide-dev.h
-index 7e9663cda9..1f62e58ebc 100644
---- a/include/hw/ide/ide-dev.h
-+++ b/include/hw/ide/ide-dev.h
-@@ -20,9 +20,150 @@
- #ifndef IDE_DEV_H
- #define IDE_DEV_H
- 
-+#include "sysemu/dma.h"
- #include "hw/qdev-properties.h"
- #include "hw/block/block.h"
--#include "hw/ide/internal.h"
+diff --git a/hw/ide/ide-bus.c b/hw/ide/ide-bus.c
+new file mode 100644
+index 0000000000..57fe67b29c
+--- /dev/null
++++ b/hw/ide/ide-bus.c
+@@ -0,0 +1,111 @@
++/*
++ * ide bus support for qdev.
++ *
++ * Copyright (c) 2009 Gerd Hoffmann <kraxel@redhat.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
 +
-+typedef struct IDEDevice IDEDevice;
-+typedef struct IDEState IDEState;
-+typedef struct IDEBus IDEBus;
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "hw/ide/internal.h"
++#include "sysemu/block-backend.h"
++#include "sysemu/blockdev.h"
++#include "sysemu/runstate.h"
 +
-+typedef void EndTransferFunc(IDEState *);
++static char *idebus_get_fw_dev_path(DeviceState *dev);
++static void idebus_unrealize(BusState *qdev);
 +
-+#define MAX_IDE_DEVS 2
++static void ide_bus_class_init(ObjectClass *klass, void *data)
++{
++    BusClass *k = BUS_CLASS(klass);
 +
-+#define TYPE_IDE_DEVICE "ide-device"
-+OBJECT_DECLARE_TYPE(IDEDevice, IDEDeviceClass, IDE_DEVICE)
++    k->get_fw_dev_path = idebus_get_fw_dev_path;
++    k->unrealize = idebus_unrealize;
++}
 +
-+typedef enum { IDE_HD, IDE_CD, IDE_CFATA } IDEDriveKind;
++static void idebus_unrealize(BusState *bus)
++{
++    IDEBus *ibus = IDE_BUS(bus);
 +
-+struct unreported_events {
-+    bool eject_request;
-+    bool new_media;
++    if (ibus->vmstate) {
++        qemu_del_vm_change_state_handler(ibus->vmstate);
++    }
++}
++
++static const TypeInfo ide_bus_info = {
++    .name = TYPE_IDE_BUS,
++    .parent = TYPE_BUS,
++    .instance_size = sizeof(IDEBus),
++    .class_init = ide_bus_class_init,
 +};
 +
-+enum ide_dma_cmd {
-+    IDE_DMA_READ = 0,
-+    IDE_DMA_WRITE,
-+    IDE_DMA_TRIM,
-+    IDE_DMA_ATAPI,
-+    IDE_DMA__COUNT
-+};
++void ide_bus_init(IDEBus *idebus, size_t idebus_size, DeviceState *dev,
++                 int bus_id, int max_units)
++{
++    qbus_init(idebus, idebus_size, TYPE_IDE_BUS, dev, NULL);
++    idebus->bus_id = bus_id;
++    idebus->max_units = max_units;
++}
 +
-+/* NOTE: IDEState represents in fact one drive */
-+struct IDEState {
-+    IDEBus *bus;
-+    uint8_t unit;
-+    /* ide config */
-+    IDEDriveKind drive_kind;
-+    int drive_heads, drive_sectors;
-+    int cylinders, heads, sectors, chs_trans;
-+    int64_t nb_sectors;
-+    int mult_sectors;
-+    int identify_set;
-+    uint8_t identify_data[512];
-+    int drive_serial;
-+    char drive_serial_str[21];
-+    char drive_model_str[41];
-+    uint64_t wwn;
-+    /* ide regs */
-+    uint8_t feature;
-+    uint8_t error;
-+    uint32_t nsector;
-+    uint8_t sector;
-+    uint8_t lcyl;
-+    uint8_t hcyl;
-+    /* other part of tf for lba48 support */
-+    uint8_t hob_feature;
-+    uint8_t hob_nsector;
-+    uint8_t hob_sector;
-+    uint8_t hob_lcyl;
-+    uint8_t hob_hcyl;
++static char *idebus_get_fw_dev_path(DeviceState *dev)
++{
++    char path[30];
 +
-+    uint8_t select;
-+    uint8_t status;
++    snprintf(path, sizeof(path), "%s@%x", qdev_fw_name(dev),
++             ((IDEBus *)dev->parent_bus)->bus_id);
 +
-+    bool io8;
-+    bool reset_reverts;
++    return g_strdup(path);
++}
 +
-+    /* set for lba48 access */
-+    uint8_t lba48;
-+    BlockBackend *blk;
-+    char version[9];
-+    /* ATAPI specific */
-+    struct unreported_events events;
-+    uint8_t sense_key;
-+    uint8_t asc;
-+    bool tray_open;
-+    bool tray_locked;
-+    uint8_t cdrom_changed;
-+    int packet_transfer_size;
-+    int elementary_transfer_size;
-+    int32_t io_buffer_index;
-+    int lba;
-+    int cd_sector_size;
-+    int atapi_dma; /* true if dma is requested for the packet cmd */
-+    BlockAcctCookie acct;
-+    BlockAIOCB *pio_aiocb;
-+    QEMUIOVector qiov;
-+    QLIST_HEAD(, IDEBufferedRequest) buffered_requests;
-+    /* ATA DMA state */
-+    uint64_t io_buffer_offset;
-+    int32_t io_buffer_size;
-+    QEMUSGList sg;
-+    /* PIO transfer handling */
-+    int req_nb_sectors; /* number of sectors per interrupt */
-+    EndTransferFunc *end_transfer_func;
-+    uint8_t *data_ptr;
-+    uint8_t *data_end;
-+    uint8_t *io_buffer;
-+    /* PIO save/restore */
-+    int32_t io_buffer_total_len;
-+    int32_t cur_io_buffer_offset;
-+    int32_t cur_io_buffer_len;
-+    uint8_t end_transfer_fn_idx;
-+    QEMUTimer *sector_write_timer; /* only used for win2k install hack */
-+    uint32_t irq_count; /* counts IRQs when using win2k install hack */
-+    /* CF-ATA extended error */
-+    uint8_t ext_error;
-+    /* CF-ATA metadata storage */
-+    uint32_t mdata_size;
-+    uint8_t *mdata_storage;
-+    int media_changed;
-+    enum ide_dma_cmd dma_cmd;
-+    /* SMART */
-+    uint8_t smart_enabled;
-+    uint8_t smart_autosave;
-+    int smart_errors;
-+    uint8_t smart_selftest_count;
-+    uint8_t *smart_selftest_data;
-+    /* AHCI */
-+    int ncq_queues;
-+};
++IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
++{
++    DeviceState *dev;
 +
-+struct IDEDeviceClass {
-+    DeviceClass parent_class;
-+    void (*realize)(IDEDevice *dev, Error **errp);
-+};
++    dev = qdev_new(drive->media_cd ? "ide-cd" : "ide-hd");
++    qdev_prop_set_uint32(dev, "unit", unit);
++    qdev_prop_set_drive_err(dev, "drive", blk_by_legacy_dinfo(drive),
++                            &error_fatal);
++    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
++    return DO_UPCAST(IDEDevice, qdev, dev);
++}
 +
-+struct IDEDevice {
-+    DeviceState qdev;
-+    uint32_t unit;
-+    BlockConf conf;
-+    int chs_trans;
-+    char *version;
-+    char *serial;
-+    char *model;
-+    uint64_t wwn;
-+    /*
-+     * 0x0000        - rotation rate not reported
-+     * 0x0001        - non-rotating medium (SSD)
-+     * 0x0002-0x0400 - reserved
-+     * 0x0401-0xffe  - rotations per minute
-+     * 0xffff        - reserved
-+     */
-+    uint16_t rotation_rate;
-+};
- 
- typedef struct IDEDrive {
-     IDEDevice dev;
-diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
-index a3a6702eec..1aab89b27b 100644
---- a/include/hw/ide/internal.h
-+++ b/include/hw/ide/internal.h
-@@ -8,23 +8,17 @@
++int ide_get_geometry(BusState *bus, int unit,
++                     int16_t *cyls, int8_t *heads, int8_t *secs)
++{
++    IDEState *s = &DO_UPCAST(IDEBus, qbus, bus)->ifs[unit];
++
++    if (s->drive_kind != IDE_HD || !s->blk) {
++        return -1;
++    }
++
++    *cyls = s->cylinders;
++    *heads = s->heads;
++    *secs = s->sectors;
++    return 0;
++}
++
++int ide_get_bios_chs_trans(BusState *bus, int unit)
++{
++    return DO_UPCAST(IDEBus, qbus, bus)->ifs[unit].chs_trans;
++}
++
++static void ide_bus_register_type(void)
++{
++    type_register_static(&ide_bus_info);
++}
++
++type_init(ide_bus_register_type)
+diff --git a/hw/ide/qdev.c b/hw/ide/ide-dev.c
+similarity index 78%
+rename from hw/ide/qdev.c
+rename to hw/ide/ide-dev.c
+index 4189313d30..15d088fd06 100644
+--- a/hw/ide/qdev.c
++++ b/hw/ide/ide-dev.c
+@@ -1,5 +1,5 @@
+ /*
+- * ide bus support for qdev.
++ * IDE device functions
+  *
+  * Copyright (c) 2009 Gerd Hoffmann <kraxel@redhat.com>
+  *
+@@ -18,71 +18,21 @@
   */
  
- #include "hw/ide.h"
+ #include "qemu/osdep.h"
 -#include "sysemu/dma.h"
--#include "hw/block/block.h"
- #include "exec/ioport.h"
- #include "hw/ide/ide-dma.h"
-+#include "hw/ide/ide-dev.h"
- 
- /* debug IDE devices */
- #define USE_DMA_CDROM
- #include "qom/object.h"
- 
--typedef struct IDEDevice IDEDevice;
--typedef struct IDEState IDEState;
--
- #define TYPE_IDE_BUS "IDE"
- OBJECT_DECLARE_SIMPLE_TYPE(IDEBus, IDE_BUS)
- 
--#define MAX_IDE_DEVS 2
--
- /* Device/Head ("select") Register */
- #define ATA_DEV_SELECT          0x10
- /* ATA1,3: Defined as '1'.
-@@ -327,23 +321,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(IDEBus, IDE_BUS)
- #define SMART_DISABLE         0xd9
- #define SMART_STATUS          0xda
- 
--typedef enum { IDE_HD, IDE_CD, IDE_CFATA } IDEDriveKind;
--
--typedef void EndTransferFunc(IDEState *);
--
--struct unreported_events {
--    bool eject_request;
--    bool new_media;
--};
--
--enum ide_dma_cmd {
--    IDE_DMA_READ = 0,
--    IDE_DMA_WRITE,
--    IDE_DMA_TRIM,
--    IDE_DMA_ATAPI,
--    IDE_DMA__COUNT
--};
--
- extern const char *IDE_DMA_CMD_lookup[IDE_DMA__COUNT];
- 
- extern const MemoryRegionPortio ide_portio_list[];
-@@ -361,97 +338,6 @@ typedef struct IDEBufferedRequest {
-     bool orphaned;
- } IDEBufferedRequest;
- 
--/* NOTE: IDEState represents in fact one drive */
--struct IDEState {
--    IDEBus *bus;
--    uint8_t unit;
--    /* ide config */
--    IDEDriveKind drive_kind;
--    int drive_heads, drive_sectors;
--    int cylinders, heads, sectors, chs_trans;
--    int64_t nb_sectors;
--    int mult_sectors;
--    int identify_set;
--    uint8_t identify_data[512];
--    int drive_serial;
--    char drive_serial_str[21];
--    char drive_model_str[41];
--    uint64_t wwn;
--    /* ide regs */
--    uint8_t feature;
--    uint8_t error;
--    uint32_t nsector;
--    uint8_t sector;
--    uint8_t lcyl;
--    uint8_t hcyl;
--    /* other part of tf for lba48 support */
--    uint8_t hob_feature;
--    uint8_t hob_nsector;
--    uint8_t hob_sector;
--    uint8_t hob_lcyl;
--    uint8_t hob_hcyl;
--
--    uint8_t select;
--    uint8_t status;
--
--    bool io8;
--    bool reset_reverts;
--
--    /* set for lba48 access */
--    uint8_t lba48;
--    BlockBackend *blk;
--    char version[9];
--    /* ATAPI specific */
--    struct unreported_events events;
--    uint8_t sense_key;
--    uint8_t asc;
--    bool tray_open;
--    bool tray_locked;
--    uint8_t cdrom_changed;
--    int packet_transfer_size;
--    int elementary_transfer_size;
--    int32_t io_buffer_index;
--    int lba;
--    int cd_sector_size;
--    int atapi_dma; /* true if dma is requested for the packet cmd */
--    BlockAcctCookie acct;
--    BlockAIOCB *pio_aiocb;
--    QEMUIOVector qiov;
--    QLIST_HEAD(, IDEBufferedRequest) buffered_requests;
--    /* ATA DMA state */
--    uint64_t io_buffer_offset;
--    int32_t io_buffer_size;
--    QEMUSGList sg;
--    /* PIO transfer handling */
--    int req_nb_sectors; /* number of sectors per interrupt */
--    EndTransferFunc *end_transfer_func;
--    uint8_t *data_ptr;
--    uint8_t *data_end;
--    uint8_t *io_buffer;
--    /* PIO save/restore */
--    int32_t io_buffer_total_len;
--    int32_t cur_io_buffer_offset;
--    int32_t cur_io_buffer_len;
--    uint8_t end_transfer_fn_idx;
--    QEMUTimer *sector_write_timer; /* only used for win2k install hack */
--    uint32_t irq_count; /* counts IRQs when using win2k install hack */
--    /* CF-ATA extended error */
--    uint8_t ext_error;
--    /* CF-ATA metadata storage */
--    uint32_t mdata_size;
--    uint8_t *mdata_storage;
--    int media_changed;
--    enum ide_dma_cmd dma_cmd;
--    /* SMART */
--    uint8_t smart_enabled;
--    uint8_t smart_autosave;
--    int smart_errors;
--    uint8_t smart_selftest_count;
--    uint8_t *smart_selftest_data;
--    /* AHCI */
--    int ncq_queues;
--};
--
- struct IDEBus {
-     BusState qbus;
-     IDEDevice *master;
-@@ -475,33 +361,6 @@ struct IDEBus {
-     VMChangeStateEntry *vmstate;
- };
- 
--#define TYPE_IDE_DEVICE "ide-device"
--OBJECT_DECLARE_TYPE(IDEDevice, IDEDeviceClass, IDE_DEVICE)
--
--struct IDEDeviceClass {
--    DeviceClass parent_class;
--    void (*realize)(IDEDevice *dev, Error **errp);
--};
--
--struct IDEDevice {
--    DeviceState qdev;
--    uint32_t unit;
--    BlockConf conf;
--    int chs_trans;
--    char *version;
--    char *serial;
--    char *model;
--    uint64_t wwn;
--    /*
--     * 0x0000        - rotation rate not reported
--     * 0x0001        - non-rotating medium (SSD)
--     * 0x0002-0x0400 - reserved
--     * 0x0401-0xffe  - rotations per minute
--     * 0xffff        - reserved
--     */
--    uint16_t rotation_rate;
--};
--
- /* These are used for the error_status field of IDEBus */
- #define IDE_RETRY_MASK 0xf8
- #define IDE_RETRY_DMA  0x08
-diff --git a/hw/ide/ide-dev.c b/hw/ide/ide-dev.c
-index 15d088fd06..c8e2033469 100644
---- a/hw/ide/ide-dev.c
-+++ b/hw/ide/ide-dev.c
-@@ -23,6 +23,7 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-types-block.h"
  #include "qemu/error-report.h"
+-#include "qemu/main-loop.h"
  #include "qemu/module.h"
  #include "hw/ide/ide-dev.h"
-+#include "hw/ide/internal.h"
  #include "sysemu/block-backend.h"
  #include "sysemu/blockdev.h"
  #include "sysemu/sysemu.h"
+-#include "sysemu/runstate.h"
+ #include "qapi/visitor.h"
+ 
+-/* --------------------------------- */
+-
+-static char *idebus_get_fw_dev_path(DeviceState *dev);
+-static void idebus_unrealize(BusState *qdev);
+-
+ static Property ide_props[] = {
+     DEFINE_PROP_UINT32("unit", IDEDevice, unit, -1),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+-static void ide_bus_class_init(ObjectClass *klass, void *data)
+-{
+-    BusClass *k = BUS_CLASS(klass);
+-
+-    k->get_fw_dev_path = idebus_get_fw_dev_path;
+-    k->unrealize = idebus_unrealize;
+-}
+-
+-static void idebus_unrealize(BusState *bus)
+-{
+-    IDEBus *ibus = IDE_BUS(bus);
+-
+-    if (ibus->vmstate) {
+-        qemu_del_vm_change_state_handler(ibus->vmstate);
+-    }
+-}
+-
+-static const TypeInfo ide_bus_info = {
+-    .name = TYPE_IDE_BUS,
+-    .parent = TYPE_BUS,
+-    .instance_size = sizeof(IDEBus),
+-    .class_init = ide_bus_class_init,
+-};
+-
+-void ide_bus_init(IDEBus *idebus, size_t idebus_size, DeviceState *dev,
+-                 int bus_id, int max_units)
+-{
+-    qbus_init(idebus, idebus_size, TYPE_IDE_BUS, dev, NULL);
+-    idebus->bus_id = bus_id;
+-    idebus->max_units = max_units;
+-}
+-
+-static char *idebus_get_fw_dev_path(DeviceState *dev)
+-{
+-    char path[30];
+-
+-    snprintf(path, sizeof(path), "%s@%x", qdev_fw_name(dev),
+-             ((IDEBus*)dev->parent_bus)->bus_id);
+-
+-    return g_strdup(path);
+-}
+-
+ static void ide_qdev_realize(DeviceState *qdev, Error **errp)
+ {
+     IDEDevice *dev = IDE_DEVICE(qdev);
+@@ -121,40 +71,6 @@ static void ide_qdev_realize(DeviceState *qdev, Error **errp)
+     dc->realize(dev, errp);
+ }
+ 
+-IDEDevice *ide_bus_create_drive(IDEBus *bus, int unit, DriveInfo *drive)
+-{
+-    DeviceState *dev;
+-
+-    dev = qdev_new(drive->media_cd ? "ide-cd" : "ide-hd");
+-    qdev_prop_set_uint32(dev, "unit", unit);
+-    qdev_prop_set_drive_err(dev, "drive", blk_by_legacy_dinfo(drive),
+-                            &error_fatal);
+-    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+-    return DO_UPCAST(IDEDevice, qdev, dev);
+-}
+-
+-int ide_get_geometry(BusState *bus, int unit,
+-                     int16_t *cyls, int8_t *heads, int8_t *secs)
+-{
+-    IDEState *s = &DO_UPCAST(IDEBus, qbus, bus)->ifs[unit];
+-
+-    if (s->drive_kind != IDE_HD || !s->blk) {
+-        return -1;
+-    }
+-
+-    *cyls = s->cylinders;
+-    *heads = s->heads;
+-    *secs = s->sectors;
+-    return 0;
+-}
+-
+-int ide_get_bios_chs_trans(BusState *bus, int unit)
+-{
+-    return DO_UPCAST(IDEBus, qbus, bus)->ifs[unit].chs_trans;
+-}
+-
+-/* --------------------------------- */
+-
+ void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **errp)
+ {
+     IDEBus *bus = DO_UPCAST(IDEBus, qbus, dev->qdev.parent_bus);
+@@ -347,7 +263,6 @@ static const TypeInfo ide_device_type_info = {
+ 
+ static void ide_register_types(void)
+ {
+-    type_register_static(&ide_bus_info);
+     type_register_static(&ide_hd_info);
+     type_register_static(&ide_cd_info);
+     type_register_static(&ide_device_type_info);
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 29abe1da29..b372b819a4 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -275,6 +275,8 @@ config SBSA_REF
+     select USB_XHCI_SYSBUS
+     select WDT_SBSA
+     select BOCHS_DISPLAY
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config SABRELITE
+     bool
+diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
+index b93d6743d5..6dfc5a2129 100644
+--- a/hw/ide/Kconfig
++++ b/hw/ide/Kconfig
+@@ -1,51 +1,58 @@
+ config IDE_CORE
+     bool
+ 
+-config IDE_QDEV
++config IDE_BUS
+     bool
+     select IDE_CORE
+ 
++config IDE_DEV
++    bool
++    depends on IDE_BUS
++
+ config IDE_PCI
+     bool
+     depends on PCI
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config IDE_ISA
+     bool
+     depends on ISA_BUS
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config IDE_PIIX
+     bool
+     select IDE_PCI
+-    select IDE_QDEV
+ 
+ config IDE_CMD646
+     bool
+     select IDE_PCI
+-    select IDE_QDEV
+ 
+ config IDE_MACIO
+     bool
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config IDE_MMIO
+     bool
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config IDE_VIA
+     bool
+     select IDE_PCI
+-    select IDE_QDEV
+ 
+ config MICRODRIVE
+     bool
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+     depends on PCMCIA
+ 
+ config AHCI
+     bool
+-    select IDE_QDEV
++    select IDE_BUS
++    select IDE_DEV
+ 
+ config AHCI_ICH9
+     bool
+@@ -56,8 +63,7 @@ config AHCI_ICH9
+ config IDE_SII3112
+     bool
+     select IDE_PCI
+-    select IDE_QDEV
+ 
+ config IDE_CF
+     bool
+-    default y if IDE_QDEV
++    default y if IDE_BUS
+diff --git a/hw/ide/meson.build b/hw/ide/meson.build
+index d2e5b45c9e..d09705cac0 100644
+--- a/hw/ide/meson.build
++++ b/hw/ide/meson.build
+@@ -1,15 +1,16 @@
+ system_ss.add(when: 'CONFIG_AHCI', if_true: files('ahci.c'))
+ system_ss.add(when: 'CONFIG_AHCI_ICH9', if_true: files('ich.c'))
+ system_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('ahci-allwinner.c'))
++system_ss.add(when: 'CONFIG_IDE_BUS', if_true: files('ide-bus.c'))
+ system_ss.add(when: 'CONFIG_IDE_CF', if_true: files('cf.c'))
+ system_ss.add(when: 'CONFIG_IDE_CMD646', if_true: files('cmd646.c'))
+ system_ss.add(when: 'CONFIG_IDE_CORE', if_true: files('core.c', 'atapi.c'))
++system_ss.add(when: 'CONFIG_IDE_DEV', if_true: files('ide-dev.c'))
+ system_ss.add(when: 'CONFIG_IDE_ISA', if_true: files('isa.c', 'ioport.c'))
+ system_ss.add(when: 'CONFIG_IDE_MACIO', if_true: files('macio.c'))
+ system_ss.add(when: 'CONFIG_IDE_MMIO', if_true: files('mmio.c'))
+ system_ss.add(when: 'CONFIG_IDE_PCI', if_true: files('pci.c'))
+ system_ss.add(when: 'CONFIG_IDE_PIIX', if_true: files('piix.c', 'ioport.c'))
+-system_ss.add(when: 'CONFIG_IDE_QDEV', if_true: files('qdev.c'))
+ system_ss.add(when: 'CONFIG_IDE_SII3112', if_true: files('sii3112.c'))
+ system_ss.add(when: 'CONFIG_IDE_VIA', if_true: files('via.c'))
+ system_ss.add(when: 'CONFIG_MICRODRIVE', if_true: files('microdrive.c'))
 -- 
 2.41.0
 

@@ -1,285 +1,330 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1523056ejb;
-        Tue, 20 Feb 2024 12:07:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUdGTBvOtNYJFjGz45wirt4Y2MXypbwOGCsitJcFVoIu1dmDdyCuJGxmsTAhvQ1eJxk2Dui2omTTP0G91/9a48xtk/uurmb
-X-Received: by 2002:a05:6512:ba0:b0:512:cad4:243 with SMTP id b32-20020a0565120ba000b00512cad40243mr2017424lfv.17.1708459645040;
-        Tue, 20 Feb 2024 12:07:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708459645; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1715014ejb;
+        Tue, 20 Feb 2024 20:45:25 -0800 (PST)
+X-Received: by 2002:a05:6a21:3116:b0:19e:378a:124c with SMTP id yz22-20020a056a21311600b0019e378a124cmr23114252pzb.12.1708490725266;
+        Tue, 20 Feb 2024 20:45:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708490725; cv=none;
         d=google.com; s=arc-20160816;
-        b=aeBwif4lsG2JZyM8QY9Cj2p991TGZX8yBH/plmjls8qyyrnMFcMqXZZzp9OAR5vsVs
-         sTWqCILJPSTnvbL7u/MMqpweSpiVPGlui7zTHZ7/flOduvKxhQYjysCTzABxjv9zabI3
-         AGJjZhB6FjRZnSvtN1SrddxfCZmXAudTFmYM9cdJLcexIAXmmyoUPkCByTP086YzSGzm
-         oshAiOAimUgpi/B79ro8RDxkSzZ92XOyJHQhjMiMN7/aQ9d/yYmQtmEtkKl1vUSS7PBl
-         /R2qjgS+xr44mWvFb/Rf/IH7aLXV9mnShtPh0+PSH5U5CLuzcTiThXQl625FvQSs2fqH
-         q9vg==
+        b=OfWvPFz+sbvVI9tZNB5hxGkDwOWHKCWThfaziu4DZDEr817lwiPpBhJesgG8968omA
+         B+EB6PISjWNyOa6sCVU7+CxFuVrnv+DYtLpAWCznXFOueCPQkkakGCY+rrKsWmteP/ZT
+         qgzeN18D5v8Mw/Q8q+WoZGlT6XRkvOayjxTltFqfQ+ORmgcJvdjAa88rIcwWFU+wHd2i
+         ai9AXHx2pEllWmQ3Bp8l/cGk+LyQ4KKpqKbUDodkF0DTpoN0I2e/CQsa3rQZGScVkPSF
+         uVS/qytDa2d3z8FoM/X/WY2BV7khaElVk+2Y8FGYpd3Kr6T1ZIJ2wsVCPQvu/pwc9+Fp
+         BguA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=k6QpmIrhO156cbOXHJUpDUKmevIjeRjpwIrR8hjtAbQ=;
-        fh=OFYr5ZsqNDAiHo9rfJonKvo7SODQ/bGDDlXuZ0Mbm5Q=;
-        b=oMO+dmPB3coRagZDSYQxH4jrrpBvjCy0jXw0AeUSVQ9BvxTxw7tsWK1W66Wwqd4tp4
-         Kwnx8c0FOCTRIIbLt9KoTiEcH924TheCgtUwi/h1NpD6ro0lvDnHQzCYk6gTCKas9YVC
-         mtBgazaZgVmeJmI+tGYjpjd37AvggOAyi2FNpSn+BUt4W46qMAVM1wVwFxhcMDMPiVsB
-         A/wdpgunW9MqjJ8DNKGqUc6zBV+XgxnboMJ68WEqWTMqh7NIM/IMCyiuhCAFOxXdC0di
-         My5q6cwb/iVYVowy7MFydS/EyRRK4Ei5FspGjg2yNknKY3+j6b20wkPU7zNOTLMaNlTU
-         WUew==;
+        bh=lfLJWsa65ASUYlZui0NxNUFsMoaCE+gG01MijQygC9g=;
+        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
+        b=qmawCyfH9MRJRAxaIk6z/hdY77gE3HPM13p9zFuqleXeSjsUDaSi2x0YwtOx4X9re2
+         Qoi3lGnVz7fWD8YZlDylFy8i9Ialc0Bu7YoWyo00vibxRn+g8zvz6QkIqv1DMLdRKHUB
+         sRNBbSzPoAqu7gvDRn5DTFNxqbXewO51u34TaAJdnXCIbo7Tn1R0sGNVMtp0aXPx1AWQ
+         rHS+m99SvoxZ/RtQOkY2D1HruXlDj3pYZ8kosRfz4uIcPHQ+L8Rz7a55GNE3NHexxgRi
+         NQswCg6ZRXrtorrmGSnwJ1csPUg6QqnJ1nS/j55Kn+S9yosC4db+riOuxIjfN5gLtu9P
+         ogHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bmz7WEla;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="KlP2Vxe/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o16-20020a05600c4fd000b0040ee2e4f6fdsor2901275wmq.7.2024.02.20.12.07.24
+        by mx.google.com with SMTPS id t1-20020a17090ae50100b002993b78fcc8sor4628487pjy.5.2024.02.20.20.45.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 20 Feb 2024 12:07:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 20 Feb 2024 20:45:25 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bmz7WEla;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="KlP2Vxe/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708459644; x=1709064444; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708490724; x=1709095524; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=k6QpmIrhO156cbOXHJUpDUKmevIjeRjpwIrR8hjtAbQ=;
-        b=bmz7WEla23FHTWZwJsdxysPR9jjqUGlOvm7/gFRkG6dWWhOq+jVUjebvaVkBPH882v
-         XjtWqZq0k/iqilTnGlZA82T52ffQMroJBIV//enspRCc2+FiO34m7l9SDdTYee6J9TbZ
-         XEzlex1A/mibBLR8i8534k2OSDxnVy9BUvji+4338G8fY0yAIFLMUDLGUNwmCoXORrYE
-         4h4vMHobwOWX0pXfIfJhin4W94oYqmaT4wyiDunf5REbsRY1FURWBobLosEzAlKnZeSL
-         uL2/dTFG/D7aKrzOgQULom9HE8cCW5ZMt9l1OxPCUXGHab7E1lfaBKAeHg6/Bitzptzf
-         ArBQ==
+        bh=lfLJWsa65ASUYlZui0NxNUFsMoaCE+gG01MijQygC9g=;
+        b=KlP2Vxe/M4mhZB9+ozmwyzkeX3iHx/jQad/JYRjjMSjKcsjEF0rAMhMIGMbw5PNE4z
+         QKR2GWoQ1jU0fa2q+X5zQzVsL4PPdGrebd7SLm0Ojp9lh9uQxr1/6QtGQA3K4nK5YNz/
+         ZQOMCdiZ5zl+D8hlx8CXOZ/AtmSN/QfjLKYWwWF32tUL+Erzy6vo/YO/51FoZadT8PSL
+         YgdCQrVhwVDYgoTA9eG1bKeePnp8YUugztPTdLjg81EE4IQ09bAGMCAyd03g5POdLFWM
+         826LZbOZeWrGJQYo+IqGS+UmZCqCITB+OCUgZxmXGkZ/e2vITYqqbh0c14S7j7DDU08W
+         68oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708459644; x=1709064444;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1708490724; x=1709095524;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=k6QpmIrhO156cbOXHJUpDUKmevIjeRjpwIrR8hjtAbQ=;
-        b=XA79ca2mCmrlAljSxsue3b/v/+8GNBrRcZw0DmOjn2PRYfKO/K8z5D1co1ij87NMaf
-         Rcj3bZkVtNcxuLYhR1bzhj/DdU+KdRKVp3GHtsYNotSXsXxxIjhyfcf91BVPqifL2Ydf
-         hgcFZLD77cFZEXkIeB5tV72BXb+2SI9MU5M2FZbp+Zg7n0G2/NNEMHe90AqqlCtIJrOX
-         EFkIxAMBnowRUpPEmkFz2wGFpEP7P0Lgxl//XeDHjwPA5rBQgLu6mxgrDlDshDJinRnL
-         MuoftXqmBANEDMfa8wjhsVJYvU2D9+wVlwAeM8DoUZMWVcnDvSAOQ+wcxl8ayDQOIgQC
-         E2qg==
-X-Forwarded-Encrypted: i=1; AJvYcCWLAINaPxzOyHtU0jkBM/AHW8r2Wu9ixAIslwoxcvPXw5Jg6Ataama8S63KhcL1BqXpN41bTKuG+JP6LbRjhH/h6CfO2kj9
-X-Gm-Message-State: AOJu0Yw2vv7iG7Qgpi1We53duJkDo0+qqq4XuTD81W6PYzHvBDTamdVl
-	XIh7crtirbc8Ox1mlN/cmcfRlfxKAf7VVLBcCg5ewfZKxTP6btOwrOQdsPaeYbEhgQ==
-X-Google-Smtp-Source: AGHT+IEK4McQ9T2zv4lpqwKdXmWgKuJpwjl6tPduodUX7Bi2cOqfM4N4H1y3ia21UAyHWI4vOXM/4A==
-X-Received: by 2002:a05:600c:3550:b0:412:6e2f:5f9c with SMTP id i16-20020a05600c355000b004126e2f5f9cmr2164615wmq.7.1708459644586;
-        Tue, 20 Feb 2024 12:07:24 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr. [176.184.23.7])
-        by smtp.gmail.com with ESMTPSA id v16-20020a05600c471000b004126f8c68eesm3020698wmo.3.2024.02.20.12.07.21
+        bh=lfLJWsa65ASUYlZui0NxNUFsMoaCE+gG01MijQygC9g=;
+        b=e36dVateOcG37d9+4pMq1s1B7XZyfRF0JnRqi6DuYSYaBbbcrBd24Q+/qb5JneVCmp
+         kEKmqUhiHc4doKfi3RZB82hlFFQD53uBfrk65oofh/IIUIFq4qmNxsc3Jdv2gwpn9K7+
+         KJpdOj43pX2flmAaJmA3P4fHdR3045k8oxmrIO2fvG9V/ZiSuY+y+b0e1jhOZopBviyY
+         5hvTLELL98pkdNKhvcpOa1v8j2V4yH20yLHFUlkpmqhdrl/tegtZIA5J62scH9AU1jrO
+         7tIDrs44tpRAv/NA7LvDzye8cRfPkjngKEY9PkeTNVEgCCRnQO5wFzRzzH5cpZU2/c+T
+         z5Yg==
+X-Gm-Message-State: AOJu0YxsFdMdMb+HVtgbArx89aXROxtP76TrXuiWewGkicQvqU0rtuMH
+	n6C99578wKvSeibbjSe2glTKiZH6AO/FFMxQusi5a3CB3ZM9+uJRS+ZYP3nVx2kpy+PTbmaa9Kg
+	D
+X-Google-Smtp-Source: AGHT+IFxkvhTpn7WYr15xsK9Opo2pt7EBMmd0rceTM0c9yO5qCdM3SZM2ZOJ7mKoEimRnvCYGUfNOw==
+X-Received: by 2002:a17:90a:bf82:b0:299:ecba:cc6a with SMTP id d2-20020a17090abf8200b00299ecbacc6amr2709783pjs.40.1708490724411;
+        Tue, 20 Feb 2024 20:45:24 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.203.206] ([157.82.203.206])
+        by smtp.gmail.com with ESMTPSA id b23-20020a17090a489700b00298ca46547fsm8201030pjh.36.2024.02.20.20.45.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Feb 2024 12:07:23 -0800 (PST)
-Message-ID: <66cf4c35-5f19-4e5e-a0a1-adb1ab7cf8f4@linaro.org>
-Date: Tue, 20 Feb 2024 21:07:21 +0100
+        Tue, 20 Feb 2024 20:45:24 -0800 (PST)
+Message-ID: <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
+Date: Wed, 21 Feb 2024 13:45:16 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 0/8] Introduce SMP Cache Topology
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+Subject: Re: [PATCH 18/23] plugins: add an API to read registers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>,
- Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
- Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
+ Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
+ <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20240216163025.424857-1-alex.bennee@linaro.org>
+ <20240216163025.424857-19-alex.bennee@linaro.org>
+ <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
+ <87il2jcje8.fsf@draig.linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <87il2jcje8.fsf@draig.linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: bXG0u/zWYAgK
+Content-Transfer-Encoding: 8bit
+X-TUID: Xq25DyYyDiZL
 
-+Igor
+On 2024/02/20 23:14, Alex Bennée wrote:
+> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+> 
+>> On 2024/02/17 1:30, Alex Bennée wrote:
+>>> We can only request a list of registers once the vCPU has been
+>>> initialised so the user needs to use either call the get function on
+>>> vCPU initialisation or during the translation phase.
+>>> We don't expose the reg number to the plugin instead hiding it
+>>> behind
+>>> an opaque handle. This allows for a bit of future proofing should the
+>>> internals need to be changed while also being hashed against the
+>>> CPUClass so we can handle different register sets per-vCPU in
+>>> hetrogenous situations.
+>>> Having an internal state within the plugins also allows us to expand
+>>> the interface in future (for example providing callbacks on register
+>>> change if the translator can track changes).
+>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> <snip>
+>>> +/*
+>>> + * Register handles
+>>> + *
+>>> + * The plugin infrastructure keeps hold of these internal data
+>>> + * structures which are presented to plugins as opaque handles. They
+>>> + * are global to the system and therefor additions to the hash table
+>>> + * must be protected by the @reg_handle_lock.
+>>> + *
+>>> + * In order to future proof for up-coming heterogeneous work we want
+>>> + * different entries for each CPU type while sharing them in the
+>>> + * common case of multiple cores of the same type.
+>>> + */
+>>> +
+>>> +static QemuMutex reg_handle_lock;
+>>> +
+>>> +struct qemu_plugin_register {
+>>> +    const char *name;
+>>> +    int gdb_reg_num;
+>>> +};
+>>> +
+>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
+>>> +
+>>> +/* Generate a stable key - would xxhash be overkill? */
+>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+>>> +{
+>>> +    uintptr_t key = (uintptr_t) cs->cc;
+>>> +    key ^= gdb_regnum;
+>>> +    return GUINT_TO_POINTER(key);
+>>> +}
+>>
+>> I have pointed out this is theoretically prone to collisions and
+>> unsafe.
+> 
+> How is it unsafe? The aim is to share handles for the same CPUClass
+> rather than having a unique handle per register/cpu combo.
 
-On 20/2/24 10:24, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
+THe intention is legitimate, but the implementation is not safe. It 
+assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such 
+guarantee. The key of GHashTable must be unique; generating hashes of 
+keys should be done with hash_func given to g_hash_table_new().
+
 > 
-> Hi list,
+> Indeed if I add the following:
 > 
-> This's our proposal for supporting (SMP) cache topology in -smp as
-> the following example:
+> --8<---------------cut here---------------start------------->8---
+>     plugins/api.c
+> @@ -482,6 +482,9 @@ static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
+>                   val->name = g_intern_string(grd->name);
+>   
+>                   g_hash_table_insert(reg_handles, key, val);
+> +            } else {
+> +                /* make sure its not a clash */
+> +                g_assert(val->gdb_reg_num == grd->gdb_reg);
+>               }
+>   
+>               /* Create a record for the plugin */
+> modified   tests/plugin/insn.c
+> @@ -46,6 +46,25 @@ typedef struct {
+>       char *disas;
+>   } Instruction;
+>   
+> +/*
+> + * Initialise a new vcpu with reading the register list
+> + */
+> +static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
+> +{
+> +    g_autoptr(GArray) reg_list = qemu_plugin_get_registers();
+> +    g_autoptr(GByteArray) reg_value = g_byte_array_new();
+> +
+> +    if (reg_list) {
+> +        for (int i = 0; i < reg_list->len; i++) {
+> +            qemu_plugin_reg_descriptor *rd = &g_array_index(
+> +                reg_list, qemu_plugin_reg_descriptor, i);
+> +            int count = qemu_plugin_read_register(rd->handle, reg_value);
+> +            g_assert(count > 0);
+> +        }
+> +    }
+> +}
+> +
+> +
+>   static void vcpu_insn_exec_before(unsigned int cpu_index, void *udata)
+>   {
+>       unsigned int i = cpu_index % MAX_CPUS;
+> @@ -212,6 +231,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+>           sizes = g_array_new(true, true, sizeof(unsigned long));
+>       }
+>   
+> +    /* Register init, translation block and exit callbacks */
+> +    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+>       qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
+>       qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+>       return 0;
+> --8<---------------cut here---------------end--------------->8---
 > 
-> -smp 32,sockets=2,dies=2,modules=2,cores=2,threads=2,maxcpus=32,\
->       l1d-cache=core,l1i-cache=core,l2-cache=core,l3-cache=die
+> Nothing trips up during check-tcg (after I fixed "gdbstub: Infer number
+> of core registers from XML" to remove the microblaze check on
+> cc->gdb_num_core_regs).
 > 
-> With the new cache topology options ("l1d-cache", "l1i-cache",
-> "l2-cache" and "l3-cache"), we could adjust the cache topology via -smp.
-> 
-> This patch set is rebased on our i386 module series:
-> https://lore.kernel.org/qemu-devel/20240131101350.109512-1-zhao1.liu@linux.intel.com/
-> 
-> Since the ARM [1] and RISC-V [2] folks have similar needs for the cache
-> topology, I also cc'd the ARM and RISC-V folks and lists.
-> 
-> 
-> Welcome your feedback!
-> 
-> 
-> Introduction
-> ============
-> 
-> Background
-> ----------
-> 
-> Intel client platforms (ADL/RPL/MTL) and E core server platforms (SRF)
-> share the L2 cache domain among multiple E cores (in the same module).
-> 
-> Thus we need a way to adjust the cache topology so that users could
-> create the cache topology for Guest that is nearly identical to Host.
-> 
-> This is necessary in cases where there are bound vCPUs, especially
-> considering that Guest scheduling often takes into account the cache
-> topology as well (e.g. Linux cluster aware scheduling, i.e. L2 cache
-> scheduling).
-> 
-> Previously, we introduced a x86 specific option to adjust the cache
-> topology:
-> 
-> -cpu x-l2-cache-topo=[core|module] [3]
-> 
-> However, considering the needs of other arches, we re-implemented the
-> generic cache topology (aslo in response to Michael's [4] and Daniel's
-> comment [5]) in this series.
-> 
-> 
-> Cache Topology Representation
-> -----------------------------
-> 
-> We consider to define the cache topology based on CPU topology level for
-> two reasons:
-> 
-> 1. In practice, a cache will always be bound to the CPU container -
->     "CPU container" indicates to a set of CPUs that refer to a certain
->     level of CPU topology - where the cache is either private in that
->     CPU container or shared among multiple containers.
-> 
-> 2. The x86's cache-related CPUIDs encode cache topology based on APIC
->     ID's CPU topology layout. And the ACPI PPTT table that ARM/RISCV
->     relies on also requires CPU containers (CPU topology) to help
->     indicate the private shared hierarchy of the cache.
-> 
-> Therefore, for SMP systems, it is natural to use the CPU topology
-> hierarchy directly in QEMU to define the cache topology.
-> 
-> And currently, separated L1 cache (L1 data cache and L1 instruction
-> cache) with unified higher-level caches (e.g., unified L2 and L3
-> caches), is the most common cache architectures.
-> 
-> Thus, we define the topology for L1 D-cache, L1 I-cache, L2 cache and L3
-> cache in MachineState as the basic cache topology support:
-> 
-> typedef struct CacheTopology {
->      CPUTopoLevel l1d;
->      CPUTopoLevel l1i;
->      CPUTopoLevel l2;
->      CPUTopoLevel l3;
-> } CacheTopology;
-> 
-> Machines may also only support a subset of the cache topology
-> to be configured in -smp by setting the SMP property of MachineClass:
-> 
-> typedef struct {
->      ...
->      bool l1_separated_cache_supported;
->      bool l2_unified_cache_supported;
->      bool l3_unified_cache_supported;
-> } SMPCompatProps;
-> 
-> 
-> Cache Topology Configuration in -smp
-> ------------------------------------
-> 
-> Further, we add new parameters to -smp:
-> * l1d-cache=level
-> * l1i-cache=level
-> * l2-cache=level
-> * l3-cache=level
-> 
-> These cache topology parameters accept the strings of CPU topology
-> levels (such as "drawer", "book", "socket", "die", "cluster", "module",
-> "core" or "thread"). Exactly which topology level strings could be
-> accepted as the parameter depends on the machine's support for the
-> corresponding CPU topology level.
-> 
-> Unsupported cache topology parameters will be omitted, and
-> correspondingly, the target CPU's cache topology will use the its
-> default cache topology setting.
-> 
-> In this series, we add the cache topology support in -smp for x86 PC
-> machine.
-> 
-> The following example defines a 3-level cache topology hierarchy (L1
-> D-cache per core, L1 I-cache per core, L2 cache per core and L3 cache per
-> die) for PC machine.
-> 
-> -smp 32,sockets=2,dies=2,modules=2,cores=2,threads=2,maxcpus=32,\
->       l1d-cache=core,l1i-cache=core,l2-cache=core,l3-cache=die
-> 
-> 
-> Reference
-> ---------
-> 
-> [1]: [ARM] Jonathan's proposal to adjust cache topology:
->       https://lore.kernel.org/qemu-devel/20230808115713.2613-2-Jonathan.Cameron@huawei.com/
-> [2]: [RISC-V] Discussion between JeeHeng and Jonathan about cache
->       topology:
->       https://lore.kernel.org/qemu-devel/20240131155336.000068d1@Huawei.com/
-> [3]: Previous x86 specific cache topology option:
->       https://lore.kernel.org/qemu-devel/20230914072159.1177582-22-zhao1.liu@linux.intel.com/
-> [4]: Michael's comment about generic cache topology support:
->       https://lore.kernel.org/qemu-devel/20231003085516-mutt-send-email-mst@kernel.org/
-> [5]: Daniel's question about how x86 support L2 cache domain (cluster)
->       configuration:
->       https://lore.kernel.org/qemu-devel/ZcUG0Uc8KylEQhUW@redhat.com/
-> 
-> Thanks and Best Regards,
-> Zhao
-> 
-> ---
-> Zhao Liu (8):
->    hw/core: Rename CpuTopology to CPUTopology
->    hw/core: Move CPU topology enumeration into arch-agnostic file
->    hw/core: Define cache topology for machine
->    hw/core: Add cache topology options in -smp
->    i386/cpu: Support thread and module level cache topology
->    i386/cpu: Update cache topology with machine's configuration
->    i386/pc: Support cache topology in -smp for PC machine
->    qemu-options: Add the cache topology description of -smp
-> 
->   MAINTAINERS                     |   2 +
->   hw/core/cpu-topology.c          |  56 ++++++++++++++
->   hw/core/machine-smp.c           | 128 ++++++++++++++++++++++++++++++++
->   hw/core/machine.c               |   9 +++
->   hw/core/meson.build             |   1 +
->   hw/i386/pc.c                    |   3 +
->   hw/s390x/cpu-topology.c         |   6 +-
->   include/hw/boards.h             |  33 +++++++-
->   include/hw/core/cpu-topology.h  |  40 ++++++++++
->   include/hw/i386/topology.h      |  18 +----
->   include/hw/s390x/cpu-topology.h |   6 +-
->   qapi/machine.json               |  14 +++-
->   qemu-options.hx                 |  54 ++++++++++++--
->   system/vl.c                     |  15 ++++
->   target/i386/cpu.c               |  55 ++++++++++----
->   target/i386/cpu.h               |   2 +-
->   tests/unit/meson.build          |   3 +-
->   tests/unit/test-smp-parse.c     |  14 ++--
->   18 files changed, 399 insertions(+), 60 deletions(-)
->   create mode 100644 hw/core/cpu-topology.c
->   create mode 100644 include/hw/core/cpu-topology.h
+>>
+>>> +
+>>> +/*
+>>> + * Create register handles.
+>>> + *
+>>> + * We need to create a handle for each register so the plugin
+>>> + * infrastructure can call gdbstub to read a register. We also
+>>> + * construct a result array with those handles and some ancillary data
+>>> + * the plugin might find useful.
+>>> + */
+>>> +
+>>> +static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
+>>> +{
+>>> +    GArray *find_data = g_array_new(true, true,
+>>> +                                    sizeof(qemu_plugin_reg_descriptor));
+>>> +
+>>> +    WITH_QEMU_LOCK_GUARD(&reg_handle_lock) {
+>>> +
+>>> +        if (!reg_handles) {
+>>> +            reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
+>>> +        }
+>>> +
+>>> +        for (int i = 0; i < gdbstub_regs->len; i++) {
+>>> +            GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
+>>> +            gpointer key = cpu_plus_reg_to_key(cs, grd->gdb_reg);
+>>> +            struct qemu_plugin_register *val = g_hash_table_lookup(reg_handles,
+>>> +                                                                   key);
+>>> +
+>>> +            /* skip "un-named" regs */
+>>> +            if (!grd->name) {
+>>> +                continue;
+>>> +            }
+>>> +
+>>> +            /* Doesn't exist, create one */
+>>> +            if (!val) {
+>>> +                val = g_new0(struct qemu_plugin_register, 1);
+>>> +                val->gdb_reg_num = grd->gdb_reg;
+>>> +                val->name = g_intern_string(grd->name);
+>>> +
+>>> +                g_hash_table_insert(reg_handles, key, val);
+>>> +            }
+>>> +
+>>> +            /* Create a record for the plugin */
+>>> +            qemu_plugin_reg_descriptor desc = {
+>>> +                .handle = val,
+>>> +                .name = val->name,
+>>> +                .feature = g_intern_string(grd->feature_name)
+>>> +            };
+>>> +            g_array_append_val(find_data, desc);
+>>> +        }
+>>> +    }
+>>> +
+>>> +    return find_data;
+>>> +}
+>>> +
+>>> +GArray *qemu_plugin_get_registers(void)
+>>> +{
+>>> +    g_assert(current_cpu);
+>>> +
+>>> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
+>>> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
+>>> +}
+>>> +
+>>> +int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
+>>> +{
+>>> +    g_assert(current_cpu);
+>>> +
+>>> +    return gdb_read_register(current_cpu, buf, reg->gdb_reg_num);
+>>> +}
+>>> +
+>>> +static void __attribute__((__constructor__)) qemu_api_init(void)
+>>> +{
+>>> +    qemu_mutex_init(&reg_handle_lock);
+>>> +
+>>> +}
+>>> diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+>>> index adb67608598..27fe97239be 100644
+>>> --- a/plugins/qemu-plugins.symbols
+>>> +++ b/plugins/qemu-plugins.symbols
+>>> @@ -3,6 +3,7 @@
+>>>      qemu_plugin_end_code;
+>>>      qemu_plugin_entry_code;
+>>>      qemu_plugin_get_hwaddr;
+>>> +  qemu_plugin_get_registers;
+>>>      qemu_plugin_hwaddr_device_name;
+>>>      qemu_plugin_hwaddr_is_io;
+>>>      qemu_plugin_hwaddr_phys_addr;
+>>> @@ -19,6 +20,7 @@
+>>>      qemu_plugin_num_vcpus;
+>>>      qemu_plugin_outs;
+>>>      qemu_plugin_path_to_binary;
+>>> +  qemu_plugin_read_register;
+>>>      qemu_plugin_register_atexit_cb;
+>>>      qemu_plugin_register_flush_cb;
+>>>      qemu_plugin_register_vcpu_exit_cb;
 > 

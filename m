@@ -1,184 +1,157 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m17-20020a5d4a11000000b0033cf4e47496sm16878284wrq.51.2024.02.21.06.14.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Feb 2024 06:14:22 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 739375F875;
-	Wed, 21 Feb 2024 14:14:21 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  David Hildenbrand <david@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,
-  Richard Henderson <richard.henderson@linaro.org>,  Michael Rolnik
- <mrolnik@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-riscv@nongnu.org,  Cleber Rosa
- <crosa@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Song Gao
- <gaosong@loongson.cn>,  qemu-arm@nongnu.org,  Pierrick Bouvier
- <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Nicholas Piggin <npiggin@gmail.com>,
-  qemu-s390x@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Yanan Wang <wangyanan55@huawei.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Mahmoud
- Mandour <ma.mandourr@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
-  Bin Meng <bin.meng@windriver.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Alistair Francis
- <alistair.francis@wdc.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-In-Reply-To: <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com> (Akihiko
-	Odaki's message of "Wed, 21 Feb 2024 19:11:05 +0900")
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
-	<20240216163025.424857-19-alex.bennee@linaro.org>
-	<c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
-	<87il2jcje8.fsf@draig.linaro.org>
-	<bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
-	<87bk8ab0f4.fsf@draig.linaro.org>
-	<bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
-User-Agent: mu4e 1.11.28; emacs 29.1
-Date: Wed, 21 Feb 2024 14:14:21 +0000
-Message-ID: <87zfvtaoqq.fsf@draig.linaro.org>
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1973098ejb;
+        Wed, 21 Feb 2024 07:03:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUiXnXChoPZNuUJ1tq6GH31iZmBOKZ930JICkudYMD9G3xP0dMDw13C3aevjv0oC2qY1EQzAbWNZx8Jy7lLRM9agYnfjD9I
+X-Google-Smtp-Source: AGHT+IFwMBfC1eBTiR0MLmBce2BdLhJge3M3X2Ix+/1pLUfoOWrV71gT2u8KtW0SoEoLJp4NAIW3
+X-Received: by 2002:a05:620a:2283:b0:785:6fea:907a with SMTP id o3-20020a05620a228300b007856fea907amr15634808qkh.31.1708527828233;
+        Wed, 21 Feb 2024 07:03:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708527828; cv=none;
+        d=google.com; s=arc-20160816;
+        b=w3Y7lIYkakg6DfkCtvjqjAedRuMSdMcMZRi2Wf1ZWUI83HJEF/zPdZyTujVPP+c//f
+         AmIBUynOgKSOeGDnZceViU1m2zESP3h2T8IzQqSfx55hSvlN2TRqPY6FvTFiHyPJxc7T
+         EQAGIb4QuWjKyoYnxPgUyVWz6VtQwkwvV0h7J/rq8hxYs1vfON/0ESeaRNnlEgZ5gEDJ
+         4QKMGEDnvR6ug0QKtqPdUV8/3nmz82M5blas+CqkU5cQw6iDVzYB7bgowvEmyPCkqO8c
+         TJllAjgll+LmWWxPI+cct+iFiSvP54pib7l+Ruymg1cP24YI1S5WDOwsLWV3xnunFZJj
+         X/3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=FrRHH9rEWcdcu63c3eIhUTthKozhGq8AYwLzZgz9RfM=;
+        fh=/SuGyH9Z+2qdudrF3MMchhydDowkh6kG2XbW0DvYvXM=;
+        b=NDCwWhSRPsGkgqYR3p2IeAciOqyd13cnKmsHl8QChj5N9PR/tb7gc5B0ADNyLk5RQU
+         AXPhU5mahogAvpWBs09PlZu/v7f7c+ErX0qLOmCPvG4OWrgmzsnFZyX1U8eW4H5ON9xU
+         jNW8ffrwV/CVVFEjHxUNc5bXpydR1D/14qmeH8zVB6PULITL2fELZIG4AZfvbAGSueR6
+         9UC2znQV1PDw1TKpvXyrmwa3061HoMhOsvg1eeKxCisiBjNA/apcYgPADwgXjft7ZsJB
+         q9UobY1u/GinLNAmfZVH9fLbjA/WaCBGzpLqtBP1xUz2dhYHVQHwasLBgAPTH1UTbI4/
+         mvlQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=T4PqPjV9;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@linux.intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.7])
+        by mx.google.com with ESMTPS id f17-20020ac85d11000000b0042c711416c1si12210034qtx.697.2024.02.21.07.03.46
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Feb 2024 07:03:48 -0800 (PST)
+Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.198.163.7;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=T4PqPjV9;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1708527828; x=1740063828;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=icf79m790ezLNPPZJLTw/l5EOQt2t+L55q4q0lXCEZI=;
+  b=T4PqPjV9VLl08b/LB5uAXPFJ+M9r+J/4udGgC4dN/yGo+4+gDw8cj2rK
+   bxKe/vKrY7TYnKxS8VWz47LpNaGauL+pa9GYRho1DdbCbxirENdnUwHA/
+   JOPB9qLlJP9NW6AgvJNChC0N2xMtzC6vJ7rlia92YvitcKhDVRFiocvcW
+   qrj2Nh6nWRittmdbCLMbMygzc75xqh4EWcExz5NMmmmDWJSUcEPuEy8rE
+   BMaNy3GGISMm5a/pDpnYtVGrNJ2Jg2c0cdftaxKBDzf6d/+SjGviHh9Ca
+   ABGfGp0Sm6e0JT+nh8AVXAfoGEVYLd/kJ9m669EdILbxirChzcAtlIpj4
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="28131334"
+X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
+   d="scan'208";a="28131334"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Feb 2024 07:03:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="827362818"
+X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
+   d="scan'208";a="827362818"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orsmga001.jf.intel.com with ESMTP; 21 Feb 2024 07:03:31 -0800
+Date: Wed, 21 Feb 2024 23:17:11 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
+Message-ID: <ZdYT94zKGTgG/ipH@intel.com>
+References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
+ <20240220092504.726064-5-zhao1.liu@linux.intel.com>
+ <871q9656jm.fsf@pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: O+QRbtAEAn9y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <871q9656jm.fsf@pond.sub.org>
+X-TUID: xg/pkKXeKpkH
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+On Wed, Feb 21, 2024 at 01:46:21PM +0100, Markus Armbruster wrote:
+> Date: Wed, 21 Feb 2024 13:46:21 +0100
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
+> 
+> Zhao Liu <zhao1.liu@linux.intel.com> writes:
+> 
+> > From: Zhao Liu <zhao1.liu@intel.com>
+> >
+> > Add "l1d-cache", "l1i-cache". "l2-cache", and "l3-cache" options in
+> > -smp to define the cache topology for SMP system.
+> >
+> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> 
+> [...]
+> 
+> > diff --git a/qapi/machine.json b/qapi/machine.json
+> > index d0e7f1f615f3..0a923ac38803 100644
+> > --- a/qapi/machine.json
+> > +++ b/qapi/machine.json
+> > @@ -1650,6 +1650,14 @@
+> >  #
+> >  # @threads: number of threads per core
+> >  #
+> > +# @l1d-cache: topology hierarchy of L1 data cache (since 9.0)
+> > +#
+> > +# @l1i-cache: topology hierarchy of L1 instruction cache (since 9.0)
+> > +#
+> > +# @l2-cache: topology hierarchy of L2 unified cache (since 9.0)
+> > +#
+> > +# @l3-cache: topology hierarchy of L3 unified cache (since 9.0)
+> > +#
+> 
+> Too terse, just like my review ;-P
 
-> On 2024/02/21 19:02, Alex Benn=C3=A9e wrote:
->> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>=20
->>> On 2024/02/20 23:14, Alex Benn=C3=A9e wrote:
->>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>
->>>>> On 2024/02/17 1:30, Alex Benn=C3=A9e wrote:
->>>>>> We can only request a list of registers once the vCPU has been
->>>>>> initialised so the user needs to use either call the get function on
->>>>>> vCPU initialisation or during the translation phase.
->>>>>> We don't expose the reg number to the plugin instead hiding it
->>>>>> behind
->>>>>> an opaque handle. This allows for a bit of future proofing should the
->>>>>> internals need to be changed while also being hashed against the
->>>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>>> hetrogenous situations.
->>>>>> Having an internal state within the plugins also allows us to expand
->>>>>> the interface in future (for example providing callbacks on register
->>>>>> change if the translator can track changes).
->>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>> <snip>
->>>>>> +/*
->>>>>> + * Register handles
->>>>>> + *
->>>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>>> + * structures which are presented to plugins as opaque handles. They
->>>>>> + * are global to the system and therefor additions to the hash table
->>>>>> + * must be protected by the @reg_handle_lock.
->>>>>> + *
->>>>>> + * In order to future proof for up-coming heterogeneous work we want
->>>>>> + * different entries for each CPU type while sharing them in the
->>>>>> + * common case of multiple cores of the same type.
->>>>>> + */
->>>>>> +
->>>>>> +static QemuMutex reg_handle_lock;
->>>>>> +
->>>>>> +struct qemu_plugin_register {
->>>>>> +    const char *name;
->>>>>> +    int gdb_reg_num;
->>>>>> +};
->>>>>> +
->>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>>> +
->>>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>>>>> +{
->>>>>> +    uintptr_t key =3D (uintptr_t) cs->cc;
->>>>>> +    key ^=3D gdb_regnum;
->>>>>> +    return GUINT_TO_POINTER(key);
->>>>>> +}
->>>>>
->>>>> I have pointed out this is theoretically prone to collisions and
->>>>> unsafe.
->>>> How is it unsafe? The aim is to share handles for the same CPUClass
->>>> rather than having a unique handle per register/cpu combo.
->>>
->>> THe intention is legitimate, but the implementation is not safe. It
->>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
->>> guarantee. The key of GHashTable must be unique; generating hashes of
->>> keys should be done with hash_func given to g_hash_table_new().
->> This isn't a hash its a non-unique key. It is however unique for
->> the same register on the same class of CPU so for each vCPU in a system
->> can share the same opaque handles.
->> The hashing is done internally by glib. We would assert if there was
->> a
->> duplicate key referring to a different register.
->> I'm unsure what you want here? Do you have a suggestion for the key
->> generation algorithm? As the comment notes I did consider a more complex
->> mixing algorithm using xxhash but that wouldn't guarantee no clash
->> either.
->
-> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
-> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
+;-) Yes, I'll add more information to improve the readability of the
+code and comments.
 
-We already do:
+Thanks,
+Zhao
 
-        if (!reg_handles) {
-            reg_handles =3D g_hash_table_new(g_direct_hash, g_direct_equal);
-        }
-
-But we can't use g_direct_equal with something that exceeds the width of
-gpointer as it is a straight equality test of the key. What you are
-suggesting requires allocating memory for each key and de-referencing
-with a custom GEqualFunc.=20
-
-This seems overkill for something that as I have said doesn't happen.
-The reason it doesn't happen is you will never see two CPUClass
-instances so close to each other they share all bits apart from where
-gdb_regnum is being xor'd. We could assert that is the case with
-something like:
-
-  #define MAX_GDBREGS 300
-
-  /* Generate a stable key - would xxhash be overkill? */
-  static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
-  {
-      uintptr_t key =3D (uintptr_t) cs->cc;
-
-      qemu_build_assert(sizeof(*cs->cc) >=3D MAX_GDBREGS);
-      g_assert(gdb_regnum < MAX_GDBREGS);
-
-      key ^=3D gdb_regnum;
-      return GUINT_TO_POINTER(key);
-  }
-
-although MAX_GDBREGS is currently a guess based on aarch64. In practice
-though there are so many allocations thing are much farther apart. As we
-can see in the one heterogeneous model we support at the moment (the
-last 2 CPUs are cortex-r5f's):
-
-  ./qemu-system-aarch64 -M xlnx-zcu102 -audio none -smp 6 -serial mon:stdio=
- -s -S -smp 6
-  cpu_common_class_init: k =3D 0x5565bebf10f0
-  arm_cpu_initfn: 0x7f32ee0a8360 -> klass =3D 0x5565bee50e00
-  aarch64_cpu_instance_init: 0x7f32ee0a8360 -> klass =3D 0x5565bee50e00
-  arm_cpu_initfn: 0x7f32ee0be1f0 -> klass =3D 0x5565bee50e00
-  aarch64_cpu_instance_init: 0x7f32ee0be1f0 -> klass =3D 0x5565bee50e00
-  arm_cpu_initfn: 0x7f32ee0d4080 -> klass =3D 0x5565bee50e00
-  aarch64_cpu_instance_init: 0x7f32ee0d4080 -> klass =3D 0x5565bee50e00
-  arm_cpu_initfn: 0x7f32ee0e9f10 -> klass =3D 0x5565bee50e00
-  aarch64_cpu_instance_init: 0x7f32ee0e9f10 -> klass =3D 0x5565bee50e00
-  arm_cpu_initfn: 0x7f32ee0ffda0 -> klass =3D 0x5565bed0fad0
-  arm_cpu_initfn: 0x7f32ee115c30 -> klass =3D 0x5565bed0fad0
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> 
+> >  # Since: 6.1
+> >  ##
+> >  { 'struct': 'SMPConfiguration', 'data': {
+> > @@ -1662,7 +1670,11 @@
+> >       '*modules': 'int',
+> >       '*cores': 'int',
+> >       '*threads': 'int',
+> > -     '*maxcpus': 'int' } }
+> > +     '*maxcpus': 'int',
+> > +     '*l1d-cache': 'str',
+> > +     '*l1i-cache': 'str',
+> > +     '*l2-cache': 'str',
+> > +     '*l3-cache': 'str' } }
+> >  
+> >  ##
+> >  # @x-query-irq:
+> 
+> [...]
+> 

@@ -1,116 +1,118 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2175604ejb;
-        Wed, 21 Feb 2024 13:23:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUS8XV8GP91tHnEJSIgvPSb1Y3SrQbX56YrGvPufSncvlzW0/+qNcPoB5zu/6XNkxyi6EkasWbpmEOldaEUUMGibpSvbZ4R
-X-Google-Smtp-Source: AGHT+IGZ9tbMto8eiN3ArfAm+ZFAcbX8BNVIh3V82yWhqcwoJR3aRQ8jZYPIPewNSN22y0E2+gCe
-X-Received: by 2002:a05:620a:4691:b0:787:9300:d4f8 with SMTP id bq17-20020a05620a469100b007879300d4f8mr1952861qkb.5.1708550587728;
-        Wed, 21 Feb 2024 13:23:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708550587; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2175674ejb;
+        Wed, 21 Feb 2024 13:23:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVQb2SOpD2hEMcDjOIxGkeVJI8HW1+fGFp70fIIjJWCwAX9vRoFujCEuUT2HB8DDkCZgCKiKOSEZCI2ZdEO7twZnlQkmR0A
+X-Google-Smtp-Source: AGHT+IHbAMS/QIavq2CeIqMz2OmYsCh3HbqAbZjSfCBwfZTfu1Yo2KpysLX1q2nGrMjwpl/9oK2j
+X-Received: by 2002:a81:8341:0:b0:5ff:796e:481f with SMTP id t62-20020a818341000000b005ff796e481fmr18751288ywf.11.1708550596155;
+        Wed, 21 Feb 2024 13:23:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708550596; cv=none;
         d=google.com; s=arc-20160816;
-        b=CayQl+MS3pd05vkbH6eXtlBN4s3RLnFABpSCFCMeg+lpvhNBoNerpQSu8RQ+pvBLdh
-         6KN5LLY8fT0OkUQl9uox1/B0iqGRPpAp7ODcZw2aAEIh7/wGsp85S65XyVqY6QcPYurC
-         JA+P+OTp9FCch+f7MeWzeM1CtU3T4EB0zN62ISjtDy3oX0gZuKRCwxL5fAq/Xlzpk7k4
-         m5rwVv5mjQzzONDQdS9IT75RUvaYn2H+Fx5ljdkS8mv691moDZu7aNov3Bc+4jv522zW
-         G9hVCLXFszixg8NQbxT6gJt8o7rr9MprwAHLJn2s1Zn94VPDzBKw0AMxktCy44BS2w8g
-         lauA==
+        b=DItFjlXkqOt7Yk3i4KqVfn6HtvlMGVVv8ST0LOK2MmT8wIAcUBXmOPZ8kBcuhUOoNw
+         gLYd7l+czuKPCYEyCtei3LJA3BoRfXrFf1f7hBxO7TIQq3Vb38XeezvP0rL5mJDnnYVC
+         5zbxv3lBp0iX8z7Ih0AqYWjCHY7+j48eQCwD0q7kYfBw9o90zSqghs+ABwn6aolYxSFR
+         YJW/oBPv6sfekRfuHlXMliAkpZ2NReXDtPZLQEPGI84nXdJJBeqdaFwZZTPNHJYoh+5V
+         W1fKNgbxFGIh0vYAiKvGjD+3+BouSZF4daaTGrFQ/3GarG0kpICJWbCMm0tlijclZLOW
+         8b9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=sLfZpWFmUrIxb5MFBtRdJN/JWNE9nzn+dX12WPG4KxI=;
-        fh=GawiptvJb7o9bGga/mMyyBFf/OAZE8PqwxJmwb9VAD0=;
-        b=MYywxDt22gxJns6uYB9+PaCBQS4MyUil7TGqtyNTkJ9qqblyVkC5ATjXRCK3H/1Y8+
-         8p0QfLUTzlyQb2D1y6mN4IpPw1ld3DDuRee+hpu7eEetlHgO5MNbZuGK8BkIEjRwkN8R
-         GTRRy3LWlMcEc4e8pn0GTD8sJlqID9zcoPoVmszLrG71cDQSwwM37ZfI3zUm4QEY82F1
-         xr6eyJPLvhBRw0MkxF6E6vpeGqfXkstaBhFLxdUxLu6jWRyKut6+8yo3m4xTiwRrFPXG
-         +2i1wsdDqg4fvhb0P0Qz+gOU9B+dpQoa0qcOAxd2Hy/aijDwQqyBbBl6AzcJhQWayZUx
-         w60w==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=el8jSU/WeUKeTdfPo2BhG3KsHF8nK1ocI6Kjqh4/a/E=;
+        fh=oiq67qnM8BqA32ksqeHh/BJ2xCOd1MIE3GFJJBbt894=;
+        b=lsqUAz9wGNrwBqcfBr3wHYEjj5iX1fZAx2vc55USogvWUZ5zsTu0BwkVX0tpHiAAZ2
+         K9L76MLyM289Ri4VCQ6D42Rl/+JpfIv3Jjaf4PtSL+GIZYlberGO6xCRy0XxkJwY0oBV
+         iB/x+rur8psFMwAlnW6TGkG+AeOEH3dkb4G2HC7oMPzq84nz0amGTutYg5wu9ovH5t3+
+         BFmfvfA6/sapI9nklkezZWQTz9ZbvAKMQsJtO2fHYkzpPYBPI6ee+qvI4aeFzA98Nng7
+         XtMgdcTRG1JvUB0UFD0pMDGt6XjkM3iNPbd6JsNBkaUjEOIT9qsdr3+0vscxPLNcW5v9
+         yL/w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lzYjsa60;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ThuE/8q9";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dz19-20020a05620a2b9300b0078763dd50dcsi9222369qkb.28.2024.02.21.13.23.07
+        by mx.google.com with ESMTPS id g4-20020ac87d04000000b0042c384540d3si12203244qtb.595.2024.02.21.13.23.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:23:07 -0800 (PST)
+        Wed, 21 Feb 2024 13:23:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lzYjsa60;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ThuE/8q9";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcu3N-0007Ol-BE; Wed, 21 Feb 2024 16:22:57 -0500
+	id 1rctz6-0007tD-J1; Wed, 21 Feb 2024 16:18:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rcu3B-0007Hz-HM
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:22:46 -0500
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctz4-0007oV-NC
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:30 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rcu2f-0002Io-Ty
- for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:22:42 -0500
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-2909978624eso4334564a91.1
- for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:22:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctz2-00019d-6I
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:18:30 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-41275971886so8637945e9.3
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:18:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708550530; x=1709155330; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sLfZpWFmUrIxb5MFBtRdJN/JWNE9nzn+dX12WPG4KxI=;
- b=lzYjsa60cCkFh28fJujbx1TDThUo+vvrKBqhjunc+I1+fb1SHjycuSx9ihdYrEYmPd
- Jndzwn5xlnIsHtJcqRjWuPOa0ETtt8NKq3Pq+KxY6IK2CHaoPUNHArnAy/7ZhjaHQSVt
- 4SuRm0kYooHl3VxZaIrryOlmMdJ6Jz+c6dt/n6t9NY8bSIE6MNCZa/gk+evxngRrckNp
- SuWM0zoDuCsNmmY09r6/vYw2ZGsSAmMUKc0kvIGnDbTW4+QRKoENE8pZwke8BH9kKDmg
- PFL/NLna0dy817kcvdtJHkNAYX8Dl+baAhu8ETWacYXgrBuNqRQCDHUJVZva5FU7cQKn
- 7n2w==
+ d=linaro.org; s=google; t=1708550306; x=1709155106; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=el8jSU/WeUKeTdfPo2BhG3KsHF8nK1ocI6Kjqh4/a/E=;
+ b=ThuE/8q9DfSfcpFLvOukCe4ulkoRZK3mM1OqWxQrdxnhqFcPx29NhOcdkYUO5oYdBE
+ xc9dX4ZidNbyghsr+Q8BswaK2+P7Xa2RNxnY05wJSFGQP9hfPBTKrZDfYiy7WbuKqZyG
+ LXO00XquRWqSYHkz90vPvbXuthFMdAXmzax72zhwRK3SegzPUVm/46bt17ilDkcn62wA
+ Tl0T9EGZAm+Qw/jLxezKzMhjl2xh+Skc2nPwlQADriB2CCtlL5avdHonkQq7M0niQeH9
+ jlWghRNxGwZTsTej5w9vhWaCVUmSaw8L4/+fTRYeF4MNppnCu0z3lf3SFZXTi9KvKjCe
+ VWJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708550530; x=1709155330;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sLfZpWFmUrIxb5MFBtRdJN/JWNE9nzn+dX12WPG4KxI=;
- b=AQJdbTuJpBmhkxzALpcftMu8E6ReBTwJPg7eSfKInHi4+nR+d0+Zcd6XxX8dD00uyS
- 1DufIloaHWJwIB1M2AU66XvAdZYAhNnlbjQUt6VCIcPQJWZ6ZsmwqYD4XurEoa6enHeI
- Pxr8BI7n1RghehQdPSxXEg8M41aCN08oSovlFaPHiEYgPufJt20iYAJKTfm9OJidju3B
- BSOGWfazbpRWbHxnIikcL0FGKRn/C93FS7ryb6v+ukCyYBUvmzv00IFZbnHCUTjtwhWO
- DGMrWo+LWMCSd4IR2+SES7A2I6L7wSN4csvstgNe5Uef6/0tzncotB+KNE34svSGHJux
- eJlw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXEIETywH33cdTRtfd51O9+WsZ8Y0w4eyKKs44K2KfC+BCQtrJQJf9wKAnb1aRfJwt5zT5TZXDvfL5SPJbFG3d2glTgC0c=
-X-Gm-Message-State: AOJu0YzBX+Zo97fCUvfNq5dsKysYD8HpgTbUL1a+HYn9mZAEWMRJzRzH
- 22v5mtGfsU+zoyNViw9q6xpvwE6gjJIsY3XcTlc7NqHN8nz7auG5CIXllXj0doM=
-X-Received: by 2002:a17:90b:f0a:b0:299:ecd0:483b with SMTP id
- br10-20020a17090b0f0a00b00299ecd0483bmr5420927pjb.10.1708550530139; 
- Wed, 21 Feb 2024 13:22:10 -0800 (PST)
-Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
- [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
- pt5-20020a17090b3d0500b002994f848bc9sm2342212pjb.43.2024.02.21.13.22.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Feb 2024 13:22:09 -0800 (PST)
-Message-ID: <c6271668-1bee-4ff4-9a9c-5fe6acee4937@linaro.org>
-Date: Wed, 21 Feb 2024 11:22:06 -1000
+ d=1e100.net; s=20230601; t=1708550306; x=1709155106;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=el8jSU/WeUKeTdfPo2BhG3KsHF8nK1ocI6Kjqh4/a/E=;
+ b=NB8zG9Z4Zdd7nqqC+xbfp6Kr+4jiThS50jAqQcauEgjZLKVQo8JJRJjKX2MuNc4VXi
+ wbj5vrRdNiPEkEdx4szRfi8iCxr1GodrgC/ei0BYQl098r9p3VBogoXQVJNet4iNIERx
+ IjB2mG6nf7lEwAfmOzSAPlCKeXFpnEgtwRwkheFphAfYuvg1HPgE/sZWRnLWOTlBDUSh
+ 1y8wfZx458RR586U4dS2MlNwQoG0tId25z6tpu2Qeg/23MwCyQ3FtLnDj0rcFcRCR95w
+ 1CdpjxJX3bkLvv3Aq+UT30zNbfvhueDgJ6I07AMs4cnNRFOWVZV/Tep7xVtB7q2+ny/n
+ AvcA==
+X-Gm-Message-State: AOJu0YzAZPVqskN4x2kQGATMT49aH9x+7NISZmFalJbZRfi0TP4nl8o1
+ 4HzxwT5FyC2JgTBen0J1h/By1/9zXhxMcEjxD1YXcB62YGEt5NzVaKf5MywydYMMHTGYRogRdNn
+ /1pw=
+X-Received: by 2002:a05:600c:a01a:b0:412:78da:8abe with SMTP id
+ jg26-20020a05600ca01a00b0041278da8abemr1487738wmb.30.1708550306443; 
+ Wed, 21 Feb 2024 13:18:26 -0800 (PST)
+Received: from m1x-phil.lan ([176.187.211.34])
+ by smtp.gmail.com with ESMTPSA id
+ n3-20020a05600c4f8300b00410395dc7d1sm3817423wmq.7.2024.02.21.13.18.24
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 21 Feb 2024 13:18:25 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PULL 15/25] hw/i386/pc_sysfw: Inline pc_system_flash_create() and
+ remove it
+Date: Wed, 21 Feb 2024 22:16:15 +0100
+Message-ID: <20240221211626.48190-16-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240221211626.48190-1-philmd@linaro.org>
+References: <20240221211626.48190-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 01/22] target/arm: Add FEAT_NMI to max
-Content-Language: en-US
-To: Jinjie Ruan <ruanjinjie@huawei.com>, peter.maydell@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
- <20240221130823.677762-2-ruanjinjie@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240221130823.677762-2-ruanjinjie@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,47 +134,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E14TVgYiPHWv
+X-TUID: LpW/mrGhIYrn
 
-On 2/21/24 03:08, Jinjie Ruan via wrote:
-> Enable FEAT_NMI on the 'max' CPU.
-> 
-> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> ---
->   docs/system/arm/emulation.rst | 1 +
->   target/arm/tcg/cpu64.c        | 1 +
->   2 files changed, 2 insertions(+)
+From: Bernhard Beschow <shentey@gmail.com>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+pc_system_flash_create() checked for pcmc->pci_enabled which is redundant since
+its caller already checked it. The method can be turned into just two lines, so
+inline and remove it.
 
-However, this patch must be sorted last, after all support for FEAT_NMI is present.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240208220349.4948-8-shentey@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/pc_sysfw.c | 15 ++-------------
+ 1 file changed, 2 insertions(+), 13 deletions(-)
 
-
-r~
-
-> 
-> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-> index f67aea2d83..91baf7ad69 100644
-> --- a/docs/system/arm/emulation.rst
-> +++ b/docs/system/arm/emulation.rst
-> @@ -63,6 +63,7 @@ the following architecture extensions:
->   - FEAT_MTE (Memory Tagging Extension)
->   - FEAT_MTE2 (Memory Tagging Extension)
->   - FEAT_MTE3 (MTE Asymmetric Fault Handling)
-> +- FEAT_NMI (Non-maskable Interrupt)
->   - FEAT_NV (Nested Virtualization)
->   - FEAT_NV2 (Enhanced nested virtualization support)
->   - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index 5fba2c0f04..60f0dcd799 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -1175,6 +1175,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->       t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
->       t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
->       t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
-> +    t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
->       cpu->isar.id_aa64pfr1 = t;
->   
->       t = cpu->isar.id_aa64mmfr0;
+diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+index b4c3833352..2dcaa116ad 100644
+--- a/hw/i386/pc_sysfw.c
++++ b/hw/i386/pc_sysfw.c
+@@ -91,18 +91,6 @@ static PFlashCFI01 *pc_pflash_create(PCMachineState *pcms,
+     return PFLASH_CFI01(dev);
+ }
+ 
+-static void pc_system_flash_create(PCMachineState *pcms)
+-{
+-    PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+-
+-    if (pcmc->pci_enabled) {
+-        pcms->flash[0] = pc_pflash_create(pcms, "system.flash0",
+-                                          "pflash0");
+-        pcms->flash[1] = pc_pflash_create(pcms, "system.flash1",
+-                                          "pflash1");
+-    }
+-}
+-
+ static void pc_system_flash_cleanup_unused(PCMachineState *pcms)
+ {
+     char *prop_name;
+@@ -212,7 +200,8 @@ void pc_system_firmware_init(PCMachineState *pcms,
+         return;
+     }
+ 
+-    pc_system_flash_create(pcms);
++    pcms->flash[0] = pc_pflash_create(pcms, "system.flash0", "pflash0");
++    pcms->flash[1] = pc_pflash_create(pcms, "system.flash1", "pflash1");
+ 
+     /* Map legacy -drive if=pflash to machine properties */
+     for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+-- 
+2.41.0
 

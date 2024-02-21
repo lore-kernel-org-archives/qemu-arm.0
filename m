@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1983408ejb;
-        Wed, 21 Feb 2024 07:18:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX4sVE24FkUce294rEgcrR8W8wxsoj0DH6BeKCivqmvc6gcB6e7jd1mm+Ya2qzo4L0RXLyCU7tY0MO5DrTW5jVP1hpJIrXB
-X-Google-Smtp-Source: AGHT+IFc1d7QfOVss2WFiF4TWO0spQA+sx1vfya5t+Qu8m4/LoyqlimfD6/E6RSvjpENKP3m2Z7d
-X-Received: by 2002:a05:6830:454:b0:6e2:e526:b0d9 with SMTP id d20-20020a056830045400b006e2e526b0d9mr17283284otc.16.1708528688164;
-        Wed, 21 Feb 2024 07:18:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708528688; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1984369ejb;
+        Wed, 21 Feb 2024 07:19:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW0GAvObprTqd0VbeiTy8plS+CFhW6OfD0jO+ATcfuQI401ACz9Zehu9Q4ui48APng3t/AKB/W5F7u9voOnR7+vvmegsG6r
+X-Google-Smtp-Source: AGHT+IH9OVmsu+GwBMUxgpaCnqAeLMbACTmAG/V1ad9znuQs5IAN9zB6JF1mFlDFX48nT45Wx+Mh
+X-Received: by 2002:a05:620a:383:b0:785:d9bb:b321 with SMTP id q3-20020a05620a038300b00785d9bbb321mr17226100qkm.18.1708528787691;
+        Wed, 21 Feb 2024 07:19:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708528787; cv=none;
         d=google.com; s=arc-20160816;
-        b=CUa/Is7yjB1+1febDE9FNGCfk/MNE9VFdWgSaMBWx2hgWyDFYLX7dqSzytX3LsUq2O
-         1YhsknFsmIGLUA3c0cUkhlsvHPfeS3+Y/vRnUyaYte8t+eC6vyrlIhRZ7dMx+kI9v+Vx
-         MXHKtW0H9GrNxAPCFQJ4TB5oHMuqI91mY7IZ6sLLAFZG4gt17fFpQpOPPWb0ZizZIoHA
-         lSJ6+YkclE3PlmbKSDvJIrDLUS5BPgvZfiNOO1iZFl40geOKXuHianC4vHGz1v6ROHsS
-         ES2jSbRu1pa7iFcD9VGBJut/qH9vqNLDr3G+KFH0t4WYndChYjwpuuA887HdifZ9/Aed
-         t96A==
+        b=MOSa8UkxAop8qa5yWnNXJSYSjVI+l2dZiSo6p/16T0IHIDYCjuiX02fw+BJBcuBUvw
+         YqNUXjcQbQm4lT36KTt5R5J0lRM7UL80RA8JFe29nzghjdWWyq18/o6elBSo1dydyY2E
+         Z4APN0Z1qVVVbWjCraFnAPOEYV/1GbQI0qhbZak3W45BsqRiGjQMcF6lZyEx4DwNZbrB
+         58z2Mw4+sylP6ewWAo44kGqi0JkXJ7wyzGP6s/Wjs5m0vSgeWPjzklo9l8q4c4m4s3+2
+         /lBLwTRV+gk5e7UH4hj8IDJz1imrIXtJpUBZgmInFGtDZN7tz9hmaI5DxMF2igbO6CgY
+         XRng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=6Yum+q/IRqPNdwxv/xPpV6q0TLFk5Elh/NZohT0ncDQ=;
+        bh=9Xg8xyYhjyqIozLz6GbKNPd7FbNGpPDKNDZd6y/ImkQ=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=CQMbOe/Nm13ArASJZ5Hux62gEIQlXnr2S6FEin3if0T1wMTbIol2RF4DsO/IzwF4gj
-         +f2dIUB1wDM5LsNsMPMkXa00GzzERAv/naYeuISZmaW0NnXpPI5UNveUIg/v50VJlmP3
-         bWzwfgDQenSFjRX7dtthmTihScaTJ5docZoZ/U5pchTXH0HY1NkiT8hLuxNiwQnkUtoP
-         G5KGl/aTVmKoXtviErjtFnnzq3t6WpnUC406AkAuvokIcJN/ViKyY0fYRkYjpOVr1VK8
-         7JeZSWLzeRhROkHjUQaaGmVPjCNINhxG+hb8uoujGnkbe1Xk2aSl28oeAi3uXd/Xw1I/
-         1/Fw==;
+        b=ASxaKrzE72oX1eH5QW+2392YW+Fyzo3KlNTDeicvQNHG13T9elAQ2ovEFkOgz6NkKL
+         LmvRZUYs2G+ssQ2SYN+UWiUmiHS5ZE+wg+/py1IHpmnp2L+eM0cmVTC8ADaF0gYBKRTw
+         KSLOUT35PBizSJR0IlIT5ramYpqiYPuys8YiAdqQVD0g4GRR5I36V4EkviFg21+g31PG
+         VK/IBcYKmGdVWX0VgdQKnejGZZwu/qOrQYKC5QAwlbQA3qRvTxMQSrUp27g5KdJwxbz+
+         9IObNtKkEvcmyc2xBMZSGnaRKr9nYLLcxd2iZ0tHtTOtRIzqpLaTtFciqkapmBnwrewL
+         kfag==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jr14-20020a05622a800e00b0042c44c065e6si10534221qtb.733.2024.02.21.07.18.07
+        by mx.google.com with ESMTPS id c8-20020a05620a164800b00786117e1cffsi10933236qko.7.2024.02.21.07.19.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 07:18:08 -0800 (PST)
+        Wed, 21 Feb 2024 07:19:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,32 +42,32 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcoKk-0002Ht-Hd; Wed, 21 Feb 2024 10:16:31 -0500
+	id 1rcoNS-0007N7-Sa; Wed, 21 Feb 2024 10:19:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcoJv-0000sX-2c; Wed, 21 Feb 2024 10:15:44 -0500
+ id 1rcoKw-0001hh-C1; Wed, 21 Feb 2024 10:16:43 -0500
 Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcmLz-0004p2-KD; Wed, 21 Feb 2024 08:09:42 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TfxQp0br0z1xnml;
- Wed, 21 Feb 2024 21:08:02 +0800 (CST)
+ id 1rcmLv-0004qt-WE; Wed, 21 Feb 2024 08:09:37 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TfxQy2QSbz1xp0F;
+ Wed, 21 Feb 2024 21:08:10 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id C4CF31A0172;
- Wed, 21 Feb 2024 21:09:24 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 0F830140154;
+ Wed, 21 Feb 2024 21:09:33 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 21 Feb
- 2024 21:09:24 +0800
+ 2024 21:09:32 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v2 03/22] target/arm: Add PSTATE.ALLINT
-Date: Wed, 21 Feb 2024 13:08:04 +0000
-Message-ID: <20240221130823.677762-4-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v2 13/22] hw/intc/arm_gicv3: Add external IRQ lines for NMI
+Date: Wed, 21 Feb 2024 13:08:14 +0000
+Message-ID: <20240221130823.677762-14-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240221130823.677762-1-ruanjinjie@huawei.com>
 References: <20240221130823.677762-1-ruanjinjie@huawei.com>
@@ -101,91 +101,56 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s4AaikxhflvU
+X-TUID: afcz5YFUtlYx
 
-The ALLINT bit in PSTATE is used to mask all IRQ or FIQ interrupts.
-
-Place this in its own field within ENV, as that will
-make it easier to reset from within TCG generated code.
-
-With the change to pstate_read/write, exception entry
-and return are automatically handled.
+Augment the GICv3's QOM device interface by adding one
+new set of sysbus IRQ line, to signal NMI to each CPU.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- target/arm/cpu.c | 3 +++
- target/arm/cpu.h | 9 +++++++--
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ hw/intc/arm_gicv3_common.c         | 3 +++
+ include/hw/intc/arm_gic_common.h   | 1 +
+ include/hw/intc/arm_gicv3_common.h | 1 +
+ 3 files changed, 5 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5fa86bc8d5..5e5978c302 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1104,6 +1104,9 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     if (cpu_isar_feature(aa64_bti, cpu)) {
-         qemu_fprintf(f, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index cb55c72681..6249c3edc9 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -299,6 +299,9 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+     for (i = 0; i < s->num_cpu; i++) {
+         sysbus_init_irq(sbd, &s->cpu[i].parent_vfiq);
      }
-+    if (cpu_isar_feature(aa64_nmi, cpu)) {
-+        qemu_fprintf(f, "  ALLINT=%d", (psr & PSTATE_ALLINT) >> 13);
++    for (i = 0; i < s->num_cpu; i++) {
++        sysbus_init_irq(sbd, &s->cpu[i].parent_nmi);
 +    }
-     qemu_fprintf(f, "%s%s%s",
-                  (hcr & HCR_NV) ? " NV" : "",
-                  (hcr & HCR_NV1) ? " NV1" : "",
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 63f31e0d98..f9646dbbfb 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -224,6 +224,7 @@ typedef struct CPUArchState {
-      *    semantics as for AArch32, as described in the comments on each field)
-      *  nRW (also known as M[4]) is kept, inverted, in env->aarch64
-      *  DAIF (exception masks) are kept in env->daif
-+     *  ALLINT (all IRQ or FIQ interrupts masks) are kept in env->allint
-      *  BTYPE is kept in env->btype
-      *  SM and ZA are kept in env->svcr
-      *  all other bits are stored in their correct places in env->pstate
-@@ -261,6 +262,7 @@ typedef struct CPUArchState {
-     uint32_t btype;  /* BTI branch type.  spsr[11:10].  */
-     uint64_t daif; /* exception masks, in the bits they are in PSTATE */
-     uint64_t svcr; /* PSTATE.{SM,ZA} in the bits they are in SVCR */
-+    uint64_t allint; /* All IRQ or FIQ interrupt mask, in the bit in PSTATE */
  
-     uint64_t elr_el[4]; /* AArch64 exception link regs  */
-     uint64_t sp_el[4]; /* AArch64 banked stack pointers */
-@@ -1543,6 +1545,7 @@ FIELD(VTCR, SL2, 33, 1)
- #define PSTATE_D (1U << 9)
- #define PSTATE_BTYPE (3U << 10)
- #define PSTATE_SSBS (1U << 12)
-+#define PSTATE_ALLINT (1U << 13)
- #define PSTATE_IL (1U << 20)
- #define PSTATE_SS (1U << 21)
- #define PSTATE_PAN (1U << 22)
-@@ -1555,7 +1558,8 @@ FIELD(VTCR, SL2, 33, 1)
- #define PSTATE_N (1U << 31)
- #define PSTATE_NZCV (PSTATE_N | PSTATE_Z | PSTATE_C | PSTATE_V)
- #define PSTATE_DAIF (PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F)
--#define CACHED_PSTATE_BITS (PSTATE_NZCV | PSTATE_DAIF | PSTATE_BTYPE)
-+#define CACHED_PSTATE_BITS (PSTATE_NZCV | PSTATE_DAIF | PSTATE_BTYPE | \
-+                            PSTATE_ALLINT)
- /* Mode values for AArch64 */
- #define PSTATE_MODE_EL3h 13
- #define PSTATE_MODE_EL3t 12
-@@ -1595,7 +1599,7 @@ static inline uint32_t pstate_read(CPUARMState *env)
-     ZF = (env->ZF == 0);
-     return (env->NF & 0x80000000) | (ZF << 30)
-         | (env->CF << 29) | ((env->VF & 0x80000000) >> 3)
--        | env->pstate | env->daif | (env->btype << 10);
-+        | env->pstate | env->allint | env->daif | (env->btype << 10);
- }
+     memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
+                           "gicv3_dist", 0x10000);
+diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+index 7080375008..fc89be96d4 100644
+--- a/include/hw/intc/arm_gic_common.h
++++ b/include/hw/intc/arm_gic_common.h
+@@ -71,6 +71,7 @@ struct GICState {
+     qemu_irq parent_fiq[GIC_NCPU];
+     qemu_irq parent_virq[GIC_NCPU];
+     qemu_irq parent_vfiq[GIC_NCPU];
++    qemu_irq parent_nmi[GIC_NCPU];
+     qemu_irq maintenance_irq[GIC_NCPU];
  
- static inline void pstate_write(CPUARMState *env, uint32_t val)
-@@ -1604,6 +1608,7 @@ static inline void pstate_write(CPUARMState *env, uint32_t val)
-     env->NF = val;
-     env->CF = (val >> 29) & 1;
-     env->VF = (val << 3) & 0x80000000;
-+    env->allint = val & PSTATE_ALLINT;
-     env->daif = val & PSTATE_DAIF;
-     env->btype = (val >> 10) & 3;
-     env->pstate = val & ~CACHED_PSTATE_BITS;
+     /* GICD_CTLR; for a GIC with the security extensions the NS banked version
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 4e2fb518e7..1eb8c39239 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -155,6 +155,7 @@ struct GICv3CPUState {
+     qemu_irq parent_fiq;
+     qemu_irq parent_virq;
+     qemu_irq parent_vfiq;
++    qemu_irq parent_nmi;
+ 
+     /* Redistributor */
+     uint32_t level;                  /* Current IRQ level */
 -- 
 2.34.1
 

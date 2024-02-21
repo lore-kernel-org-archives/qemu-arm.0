@@ -1,115 +1,90 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1995489ejb;
-        Wed, 21 Feb 2024 07:38:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX8GJhybVrvKQQYe06MquY3E4tiqgLNiV7/MzqwdaXo1iMpdQO1j4ccnlUCpCXMGuJgFdPThPVDwWlPZ99bMTXLAS+YQkdb
-X-Google-Smtp-Source: AGHT+IEODiSDQ/DceM+pK3gIwNCHwLl5BoWAdpSfADiwQUklYW5U72QVtg6rZosEMaGO4RMCH3v0
-X-Received: by 2002:a05:6808:15a9:b0:3c1:5c6b:571f with SMTP id t41-20020a05680815a900b003c15c6b571fmr9802074oiw.42.1708529900516;
-        Wed, 21 Feb 2024 07:38:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708529900; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1995536ejb;
+        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGVnfzLcdTq4DX208qgNzq9F1bnrXnl1bYaCAm5rcfXpUSJR4WOixN9iUYvy04ngD2kS6wJmTjEpPuNFEVZFGg8LxWQEOY
+X-Google-Smtp-Source: AGHT+IFRnggj+3yeaqXlqZFXSRXiHKHD0T6SjbpAVOSUyWBRyBa09GjggBP0ViSLJ1aFBi8THmyi
+X-Received: by 2002:a05:620a:148e:b0:787:1cfc:73e3 with SMTP id w14-20020a05620a148e00b007871cfc73e3mr20466667qkj.54.1708529905280;
+        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708529905; cv=none;
         d=google.com; s=arc-20160816;
-        b=K25FE/kZu+ZDIia0SIlWZLzHbz2gG52TF1rHMA0Wu4NcC7UV8afElHCLFrs2KTABao
-         Cg5M2Dn2MOeiCzE3RhWXXKggL+mbTmsaHbVMfA/NQQiSsnwbf6yxTkPVMc7PxqNyAL8f
-         /shzQJu0GD3W378RzP2ED58TJCU4DGFzfLH9grvEr5OH/OKS15KzBzZrH6YZEVem6lSv
-         7tAKT/c7HpZD6hziVpa+iw3FUUWO2BVyxfyxH3asekd3zewBja4iQUuvcjKddmCYOU1X
-         SKzlN+RYe0tQzHe4cv2ETanuSr6POKUD/GQLssxDUHJznLjEf3RNza2QlI4CZdlEVKSJ
-         hQSQ==
+        b=pp629gTBgFGDQoFYvi7R409os0g/QHEewLuGYxYynkKCyiArYI0s85TvzP6RYcX+a0
+         8KJ4W4jy6vvGlXlRHa776HiQcu5ENSXcQVHkJaTmcZRddEPHXndIFfLuh4iIcRkUUzDA
+         LuoZY0SCFXldb7Il+boZhqSBdwQNP3jlzwhr/pDYrxFaZq73sFp+N7DA7iZZ6Sq0drGG
+         hnQsjqArRJPevb+SjdJdtYKEwCrBF0+riDGUHoLq21FzAF0uiDYePe8zRdnzUdNOV+A8
+         xn8ODAxDYas2UwRbFQ4mhc76hGZdPj+pMomyPYl/iWNqCwUGZ+c4HETUb+7hoWeTCFg7
+         YE0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=qeq0JcjjKRSCt4xWJAJHwXeUlebb45AWcVdSKpcHt+g=;
-        fh=0iw/UlccmZ9ywTIouiTxMlYBb4YYQ/NaKx8KfIMUVZU=;
-        b=01IrU684XyN2hOwnP1uk0JgBrlwg4NM+sf845dyYFWHDbnRPQ5FvHmhi0p4UTKbEfE
-         i8W0yJnyfblyPq6NxvNC4tQyKQAxN5QnKU/OkJMAQ6oX+JsHo6Kx347ItqWrg6yQAIMk
-         mOlVLnk/BpxtAWAtQL/9rgiMX/IslKmw/0U6Jp2uqLB4fh6IpxvhldZd3odVucwHAY0T
-         7j0gpQZMEB2mAOY12If5n7OoID1hs9G70akdrxSojdi/8eA0DkWNP1IHyuchiGBilicd
-         ftovNVqZs9So6SY74GDoxFtqrDMRF5BwJOzsIQyYVMMrCM6MFFgaBGHzjAwaGJ5N+iBK
-         3zcg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=T2tHN8saFSr4L9MZ2aqAIMcAisD2Omx0vZ3SJ7Tgs60=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=uCt2CdTHbOka+GQdkCPI3hGMabqrXQD5G8RS08HjpJXn36fz0KeQYSofutbuOiIufl
+         x73TiJH5TsN2gqp2zkrwEkQ2Wx3XroTwx5H0PkrIf2J95NxkOwZn4XQWTn5oCZBNW5Md
+         aw6A1Cv0b2gTDpcD9qNw9hom7Gw4KdFuRXP+5kZZx1i5lfVyBS2A3bjh7++UFSGBz8wN
+         a5cMXmdzMaGLlww6/HywRnfIRO1MhXQZsvg3oGXPfBmRALokeTkEwhnOykMwWtbLcoCf
+         BowujqRfU50fVpQt6+MV0qKzVx2ZWBlX9f8h1uxK8P92eNifDfHzBAmjTzHg4mziZWJa
+         PaCQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Syj4Q5Ku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g22-20020ac84696000000b00425c3b740b8si10869913qto.766.2024.02.21.07.38.20
+        by mx.google.com with ESMTPS id z25-20020a05620a101900b0078716472ccesi10732246qkj.646.2024.02.21.07.38.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 07:38:20 -0800 (PST)
+        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Syj4Q5Ku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcocq-0007TB-Ni; Wed, 21 Feb 2024 10:35:12 -0500
+	id 1rcoZg-0003H6-Eg; Wed, 21 Feb 2024 10:31:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcoa5-0005fH-Tm; Wed, 21 Feb 2024 10:32:21 -0500
-Received: from mgamail.intel.com ([198.175.65.19])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcoPq-0006qP-Mi; Wed, 21 Feb 2024 10:21:46 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rco3f-0007g1-Dg; Wed, 21 Feb 2024 09:58:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708527532; x=1740063532;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=XbDKq8C3hMQma9UmSzPUYiX8Eifflw1sLxBgBoa5q9E=;
- b=Syj4Q5KuYdnX6hz5RJFY75s0L8mMTBXSvmIHLKD/YDOdCpttmIi3kYG8
- 1MU//ZbdB6vI5IMPDYCCs7o5L2orFbFkd5ojENkx7zOiO6l8jjEf2BnCw
- XkV5gGFLd1ZItSIMAmQXYAnND6UfwAd6b8OZT4eyo2y4xnDUX/44knmXL
- 74xUBKAnvjI/aP6SRG9c0ZOcA4UqdlVPUfUCoV2xdH3EmdSDOepA0jjWV
- Nxr/llLjMOvjWZqAVgWHZp1e1bshJY8x3MSucuJxUuqf3cOehnUkIOuBR
- nOj3nFumflTBWUxkhkw/EhNKkLgd+1LQP+EnpJwbvakILVqntOicvHQg7 g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2552253"
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="2552253"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2024 06:58:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="913319102"
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; d="scan'208";a="913319102"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmsmga002.fm.intel.com with ESMTP; 21 Feb 2024 06:58:42 -0800
-Date: Wed, 21 Feb 2024 23:12:22 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH 6/6] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
- iommufd_cdev_getfd()
-Message-ID: <ZdYS1reX+nN9UvhK@intel.com>
-References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
- <20240221094317.994454-7-zhao1.liu@linux.intel.com>
- <87h6i2uj89.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcmLw-0004qf-TO; Wed, 21 Feb 2024 08:09:39 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4TfxQK4zbyzWk4Q;
+ Wed, 21 Feb 2024 21:07:37 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 45AFD1404DB;
+ Wed, 21 Feb 2024 21:09:32 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 21 Feb
+ 2024 21:09:31 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v2 12/22] hw/arm/virt: Wire NMI irq line from GIC to CPU
+Date: Wed, 21 Feb 2024 13:08:13 +0000
+Message-ID: <20240221130823.677762-13-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240221130823.677762-1-ruanjinjie@huawei.com>
+References: <20240221130823.677762-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87h6i2uj89.fsf@pond.sub.org>
-Received-SPF: none client-ip=198.175.65.19;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,81 +97,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f4quq1fUN6w1
+X-TUID: lsckhzSwhZkg
 
-On Wed, Feb 21, 2024 at 12:53:10PM +0100, Markus Armbruster wrote:
-> Date: Wed, 21 Feb 2024 12:53:10 +0100
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 6/6] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
->  iommufd_cdev_getfd()
-> 
-> Zhao Liu <zhao1.liu@linux.intel.com> writes:
-> 
-> > From: Zhao Liu <zhao1.liu@intel.com>
-> >
-> > As the comment in qapi/error, dereferencing @errp requires
-> > ERRP_GUARD():
-> >
-> > * = Why, when and how to use ERRP_GUARD() =
-> > *
-> > * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> > * - It must not be dereferenced, because it may be null.
-> > * - It should not be passed to error_prepend() or
-> > *   error_append_hint(), because that doesn't work with &error_fatal.
-> > * ERRP_GUARD() lifts these restrictions.
-> > *
-> > * To use ERRP_GUARD(), add it right at the beginning of the function.
-> > * @errp can then be used without worrying about the argument being
-> > * NULL or &error_fatal.
-> > *
-> > * Using it when it's not needed is safe, but please avoid cluttering
-> > * the source with useless code.
-> >
-> > Currently, since vfio_attach_device() - the caller of
-> > iommufd_cdev_getfd() - is always called in DeviceClass.realize() context
-> > and won't get the NULL errp parameter, iommufd_cdev_getfd()
-> > doesn't trigger the dereference issue.
-> >
-> > To follow the requirement of errp, add missing ERRP_GUARD() in
-> > iommufd_cdev_getfd().
-> >
-> > Suggested-by: Markus Armbruster <armbru@redhat.com>
-> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> > ---
-> > Suggested by credit:
-> >  Markus: Referred his explanation about ERRP_GUARD().
-> > ---
-> >  hw/vfio/iommufd.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-> > index 9bfddc136089..7baf49e6ee9e 100644
-> > --- a/hw/vfio/iommufd.c
-> > +++ b/hw/vfio/iommufd.c
-> > @@ -116,6 +116,7 @@ static void iommufd_cdev_unbind_and_disconnect(VFIODevice *vbasedev)
-> >  
-> >  static int iommufd_cdev_getfd(const char *sysfs_path, Error **errp)
-> >  {
-> > +    ERRP_GUARD();
-> >      long int ret = -ENOTTY;
-> >      char *path, *vfio_dev_path = NULL, *vfio_path = NULL;
-> >      DIR *dir = NULL;
-> 
-> The problematic use is
-> 
->        if (*errp) {
->            error_prepend(errp, VFIO_MSG_PREFIX, path);
->        }
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->
+Wire the new NMI interrupt line from the GIC to each CPU.
 
-Thanks! Will also add the description of problematic use in commit
-message to make review easier. ;-)
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ hw/arm/virt.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Regards,
-Zhao
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0af1943697..c442652d0f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -804,7 +804,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     /* Wire the outputs from each CPU's generic timer and the GICv3
+      * maintenance interrupt signal to the appropriate GIC PPI inputs,
+-     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
++     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI interrupt outputs to the CPU's
++     * inputs.
+      */
+     for (i = 0; i < smp_cpus; i++) {
+         DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
+@@ -848,6 +849,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+                            qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
+                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
+     }
+ 
+     fdt_add_gic_node(vms);
+-- 
+2.34.1
 

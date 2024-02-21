@@ -1,195 +1,226 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1827968ejb;
-        Wed, 21 Feb 2024 02:11:14 -0800 (PST)
-X-Received: by 2002:a92:c749:0:b0:365:bee:2563 with SMTP id y9-20020a92c749000000b003650bee2563mr15847627ilp.32.1708510274581;
-        Wed, 21 Feb 2024 02:11:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708510274; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1755955ejb;
+        Tue, 20 Feb 2024 22:56:38 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXP+hezvCK26HbOHiaLYatpei8/XqHyqjrbMYxW75gh8X9u6iEisVLdpJhM3w4eLXiaizpfGl52R5RyzwZhxLL5b5vZLleM
+X-Google-Smtp-Source: AGHT+IFSLToaGv/OGEd+BnGnQOQ/7JTH7zgwA+Cy5/T42ZkBW0zAXV9hORMqENT9l0iyGk0wy6j0
+X-Received: by 2002:ac8:7d03:0:b0:42b:ff38:775d with SMTP id g3-20020ac87d03000000b0042bff38775dmr25350846qtb.58.1708498597917;
+        Tue, 20 Feb 2024 22:56:37 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1708498597; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NKjLRQLp7atNJuV2jhAvya694R//UsCf3p3NP+K6HGntSZn4DxgYu7/OvVK0Pgzz/q
-         dNGfMp3hi5xHgnZbW1bL5bP7NE21/o4F6XBPnlGvo9NdABoKSTHYswaW+mrkv7owo1gY
-         lZ0qQNITQMjcq0grfMqOk0NETLn0JSgf8pwf7Kfp0uosyEhGTt2NUsGCjr3grNn4bpjX
-         avpqPd99/V3L8RMotZqo0jPCwRyerlD08La3rbZiwYMNivIqt7pdj6DWowF2BRxWfZUP
-         CmHu0HibMR/IbXRdxctyE4GXPFrqTEeeW4MW8Qq8lUnlLmeMHhXT733+GmTzJypQkbTK
-         Ga6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=XPD8jhIbDSZIaggwaCTJVQeh546LjhKhNB7LZ3iOLyU=;
-        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
-        b=jbT7qAz4fKWTLFvtzxakJo2gwFFlpp6nQ3oja2UMoapzXLZ+tC3HN04LhRi3kfV6lJ
-         hzSk5AoFnMDCrehzbuqeVBBvZ5/6zH59b7i0UXmUT3QlbufMr6O9VUlDeUP5TPVbeg82
-         q346/OtrYKaDnTm5zEhMnyDxgBZgBrckCcvgAEejgKoI7fNBvOKS2koLTV5u3KjnU8VH
-         JhCMcmoSFE1IBUZmXdyZzN2PGPqZD3zuqIbVwZ7CAr+sutVEkUZ2cTacWIN1hZPwZPrJ
-         XRCOew4hNWpeO25On6PJw5tFsGRz8qu2mWxK0zV+WGWCrEileQhpz9/GdlZw/JTFUdIh
-         x5Ng==;
+        b=zOzxkASp53RBmRjz3yV60fQX0KEXPzpSiTSpO4trNVST8STSepS3SytW3aPGdLgDxp
+         reGXsZHpU5d7lhzBSCSB1pfyXGc3V/5kN5+DdkZKdjd6eX2MSol/srbJW6wHRVkK/Saz
+         KHf3eCCrd+hRSUbbiaUM8HshP+HCvdb2b7h01tLdAWPV9UbueViMj/Kx+gTLXno+Kwhs
+         P3zLMmFKtTz5pNLNJ4N3GRHIO0SwOyGw92URNErGuoBLQ8c0bojrmHSO/zYcOqzzFaNC
+         iBAphdHyYVczGdhHpWXG3UlmJnSB5GxoSKSvxE0bDnPCFuCwM0yFSgNWmytmkcLhYpkY
+         3F/w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=WbALR0gp6Mjs8DJ4LRfs8MjuN0jzebzMtfw12O8aVg8=;
+        fh=eJaJF0VZ1VLsjhlbGGsilh5T761zJcszQUeTV99qNE8=;
+        b=S9FrtnpUfQngQawjJWyPxs5DWy4hJlUL/le60KUr+BI0s/vOlYbuItmikHx9OpJ6xg
+         FfwdbPJ1l7MoT0hJN5GqS5HvBX4864cH4x2t6iOTddnMa7oGduhpWZaVGheY3B5VQ6aP
+         FLAPZulGRTdSpTRzx8aJEF1vr5RCrZSS5KpnwPPPtyhnDRF46XJdkLFYL3vneSvcXRfg
+         v0K0wRqBOtGmFIABZkpB5QkvzByV0vWcJ+kVx2t6BUxmZM4JM7f1MBvk8qPlsPJcQReN
+         8lVIIHQdqgUn6Zdc2oxoPlqUpDb2ZKyV8bh3iF/AqjFneJ1BXn2v7O1O8hqQbQ538kmD
+         BlDg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=gdR2cfM+;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d15-20020a056e021c4f00b00363861a90bfsor2359741ilg.15.2024.02.21.02.11.14
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=FoDsEpKn;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pt19-20020a056214049300b0068efe8cf6dasi10335421qvb.12.2024.02.20.22.56.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 21 Feb 2024 02:11:14 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 Feb 2024 22:56:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=gdR2cfM+;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708510274; x=1709115074; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XPD8jhIbDSZIaggwaCTJVQeh546LjhKhNB7LZ3iOLyU=;
-        b=gdR2cfM+5NAZKOrl3l/8zI8j0FdVOFUnaE1P3E4m/UfT9saK3cDaeu0F7BdNVdO/EW
-         X26hzAAwSD83ovo/CswlsWNxbytG0RnXCx159aapgNSzWM8I1HoFbobTge2OtKDECWCo
-         ya4vSkl9c8nBCltskKbZtkO7zM3fScV3ZXz5GyPj5Ejs1Dl3FiOqLv+oGTNtJCMQkUyx
-         iVyXQYqs5xPgJG29F0iqR76u4gLEZK2F/4SMCtLsBLabs2iLB8ZOcz4gWhyTZM9bN6mM
-         WgLJ27Lmi64fBHOY9BGHQN1SbqlFe1G0fTuns3SISBl7hdo7E4g4/w/JP2G3ZR4NFI5m
-         fFUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708510274; x=1709115074;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XPD8jhIbDSZIaggwaCTJVQeh546LjhKhNB7LZ3iOLyU=;
-        b=wg9yB2CSaa0pImFkit6QzWgs4MQ8Z9NlAWYcM4jDwpyNRJqsEtl/A5gQiExPs8EsuF
-         asrjeU/TyKF8HRo2MOb355W8Z/ldPBLyFnlydMJiTj22Yc5hskLHCt6xRGl7evLDrqt7
-         FlM1d1/F4al7IhE4iSUVx7KxeiWOMREdprneZ7DHo9/SH6EPgch/+59HOUXyzOrE57I2
-         lBI4fyjtgyZNgGeRSE2Ed3sJDgRVtVrPcDmutVgpDLmGCbnGXoaJfhjgw8z+lpLuCZsE
-         a+wX7h3XL3vsnRqWu0PZDNHAGqdjJ8A6WzhIpKU4buqp2HVHcCyJG+mVsanhaY5OdiNV
-         Oo4A==
-X-Gm-Message-State: AOJu0Yw4oP2pGwarG9p5DHl/5CgKMoYrVvRqaK6nhpUr75xCFXcxj1Wm
-	8Tu92uj9Qw/soDobn8dYSoCF4ylNfS74cxD7elzcQtfogSi2mWwZw5VwDVcj3+Y0utM1SOmQy2S
-	+
-X-Google-Smtp-Source: AGHT+IE7unUuLCbAK2t/Rvu+pMjVTIQBGYWgnPs3uyfsRXfNtlQE9xB+W0G6Wq5Jmoc53U6R0JsUzA==
-X-Received: by 2002:a05:6e02:214e:b0:364:2239:a89b with SMTP id d14-20020a056e02214e00b003642239a89bmr19188267ilv.11.1708510273879;
-        Wed, 21 Feb 2024 02:11:13 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id d188-20020a6336c5000000b005dc89957e06sm8034185pga.71.2024.02.21.02.11.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Feb 2024 02:11:13 -0800 (PST)
-Message-ID: <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
-Date: Wed, 21 Feb 2024 19:11:05 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
- <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alistair Francis <alistair.francis@wdc.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
- <20240216163025.424857-19-alex.bennee@linaro.org>
- <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
- <87il2jcje8.fsf@draig.linaro.org>
- <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
- <87bk8ab0f4.fsf@draig.linaro.org>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=FoDsEpKn;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rcgWi-00033U-3U; Wed, 21 Feb 2024 01:56:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1rcgWh-000335-26; Wed, 21 Feb 2024 01:56:19 -0500
+Received: from mail-mw2nam04on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:240a::601]
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1rcgWd-0003ZZ-V0; Wed, 21 Feb 2024 01:56:18 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SQcRawYbaC0koM8Nt2gEcj7Za5qemnjoYA12WLJP/jQy6AW1Qnr2szf5ZsSupZndGC5YRd4LYcpBNEbVPMZITWGSSO4zE3JUxqHf88WWLUmPTv/ZGHr14NZ8kqw+6Aak8ojaJQYerDJeyCdjmHsd+eh/yQmJzsQsS4/JK/QPF69+A3WpeONMuKXJQbIBmMRaV+me39msiFtfGSj7KAlRN0nMn7r3/MUNDcgiX5br8tfEFZ62q0uTKjNBk+CLo7clV4uZQMFOURhfoNnGRv1XqxWTXPUF2f4memmnRCfCPqbZ3bAJGMRDPmKiSJaSEPhCp0R2scStiHYaAETUZdtPxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WbALR0gp6Mjs8DJ4LRfs8MjuN0jzebzMtfw12O8aVg8=;
+ b=Y1bCdja8KyusqeDRbPY3JHYaxDxgViELOtP1lP3sA23+k9/gYtJuc8MzlAYo6VRyhhiKANPMx1kFDlviPPJE67lnBCYjNBsS500UCkgIJnCbMsqTnroXX3M+BnRgNLqiU5ZvdlD1MJqUUku9+reo7vPbOXfHcHhT2Dj+4KmUxNDjAwKG2Zon5g7RILX30IX4MrdyyHkgkGcx0LLQTKhiNfFE1Z15KGI4M1FkwHbF9p56+sw5nKtbkYZqeEyqYKRP2dnuuYU3fDKpmJaSd5rgugtdhvTP8WbuBiLHZdypYULdKQOsaLjUst5AzmKuiYjvdqCqeYAXTjcvhfnaz6Bm1Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WbALR0gp6Mjs8DJ4LRfs8MjuN0jzebzMtfw12O8aVg8=;
+ b=FoDsEpKndTIY6KGCKldDHn+fBQAJvNoh0on9eYYP+AVOsLhTlJSbaUnECzNC/VxatmKfS3QNlOKncyA8gQTlipIENVYgWLIuXR1BFWlRGK8bPsS6yTQLL1a40CCteRLqoZPKFyK4ple4o/L3Cay5MQ2mvVrO1avIBTXNEkZJluw=
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com (2603:10b6:208:1c3::10)
+ by SJ2PR12MB8876.namprd12.prod.outlook.com (2603:10b6:a03:539::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.19; Wed, 21 Feb
+ 2024 06:56:04 +0000
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::966b:10b0:c403:7c8]) by BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::966b:10b0:c403:7c8%7]) with mapi id 15.20.7316.018; Wed, 21 Feb 2024
+ 06:56:04 +0000
+From: "Ho, Tong" <tong.ho@amd.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "marcandre.lureau@redhat.com"
+ <marcandre.lureau@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>
+Subject: Re: [PATCH] hw/char/pl011: Add support for loopback
+Thread-Topic: [PATCH] hw/char/pl011: Add support for loopback
+Thread-Index: AQHaWYL20Hdq88DgJEK63my40I/IYrEAUxMAgBQYSvo=
+Date: Wed, 21 Feb 2024 06:56:04 +0000
+Message-ID: <BL0PR12MB488255D9C3286058E51CBC3AE6572@BL0PR12MB4882.namprd12.prod.outlook.com>
+References: <20240207050308.3221396-1-tong.ho@amd.com>
+ <CAFEAcA-JnKM9TCbp5=_Ogsnz+GSO96CcP1T-_5jTrSEXAyXc2Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA-JnKM9TCbp5=_Ogsnz+GSO96CcP1T-_5jTrSEXAyXc2Q@mail.gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87bk8ab0f4.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: /dulXsWh9cKR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR12MB4882:EE_|SJ2PR12MB8876:EE_
+x-ms-office365-filtering-correlation-id: d9fdacaf-5fdd-4464-7bf4-08dc32aa2c18
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Zj+jk4Gozjf+mUlfNY/iamIIItjY48OUAZ1HjxoVYh4JgFQ0IPXqtUlB2Y1g1KYz/4gEnhWnEOb+Np6fLNBDHrEmD946ShQFeHLDRwyHDWYKqkvwhkcGU7Xt5XPko1p3+gDGvf4VP9kDWHs3J0BDgy/jZr6skWROsjyd2Kv3mXmAhLp1zQZOLrY/vpNvuCUy2MOc/JhuotnJwlkJ200ifC4Z/UQQo8dIPsWuDdHr5lX1IVSfDNOxld4VLklXwEgN06qSboTs/Qmzm/l7JWBsEmUzQ7pXzw5UI5MQph9TFQdc4DV5PU0VXV+T4I8c8qeOFOlvnJpkCABkMgMPv1yks582NprdeGWYaj1zcUf2CG1iHOL57fGHUgXuYLkJ5wwLm2mrgqkMOhMdnITXT7a7fQniN2epZ+zzD71Wg/WqokpvQQNZ9QKJ+swrWLvmiqDMWnHSWgD/FFUMvp4zzK5YhVG4rL2L4Pi1BIPcZuTQyuLZ34qpZbxfHPBj1pz2xKB/QoE77E8zqGvRZdfurf4H2N7a+p8UdXWKu0YoCfIz00DVWQFUsLLC0s2B+KLoZq42VHj4cz1h0YVEf6zaEFGb8iDwKwQIwpeXxA5+ZcjxNek=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB4882.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(38070700009); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?5bfaouJD0jujr5ODyFCZa9c8MmTc0YxK+ffOwInk8jRrIH/baHev/rC49W?=
+ =?iso-8859-1?Q?6+vZdH1DDwKmMlycP77M/bZ0TeBnQB0m3RAT+QKh7JkTqLN+3jOxiKHjCI?=
+ =?iso-8859-1?Q?xNmrHhCviSlujer+mX8h81697LYVgMUV/e/cvqPF2vLQajIoasehy+uI9/?=
+ =?iso-8859-1?Q?Cwe6dUUrN0lZpjD7bkYXYbdMHWZUQUhfKmVaZTUjKsrCo1Pw1iy8GlL7qy?=
+ =?iso-8859-1?Q?GFDOQpYL3MfdMJiBXTlIt/aRm9+y/Ol9vtztabQf8eiJjNLnV1fPXbMcL4?=
+ =?iso-8859-1?Q?hMZJB61eQa/un/o7h/gX2ZV3Zot1pSLQrf8RI6f+yMnfgw2MkmGjYYPCPO?=
+ =?iso-8859-1?Q?xjWp/7fIYyZn14NT+qv83guei3EEiNAL6Q41x4YGG5AMwYLi4jRI09+IUR?=
+ =?iso-8859-1?Q?qwBBAub0mqDuRVnKTthexuAvwVa+00XqGX9X5gZ4tQedF/830DPubA6uic?=
+ =?iso-8859-1?Q?tSrMQtOwjAlHnzhx926ZvdvjHojOfNu5rWv8kq+rjJ5I3TYvc21Hp/HxYw?=
+ =?iso-8859-1?Q?bHzx+yW3A/dZrupBf5VltwmPh/RJENDgXRrJYVzQD6ccfA5oOMGNNZOI6K?=
+ =?iso-8859-1?Q?Mo6WreCZmT2feNTmeR2CJTJkRg/3SI8mJNijFNZboBjeyVFHFq2C5RMeaF?=
+ =?iso-8859-1?Q?MPe45Yay7KUQCwF/RWwV+B14DB19IU6dhUienRLnuJMkpWAoctvEG1cx46?=
+ =?iso-8859-1?Q?NjHvXXLl/L6L1fEJoXSPBuZUOOr01rFEzc6oujfx6wRIxsl9/vQy/Yp2Ut?=
+ =?iso-8859-1?Q?Pi1tNtNZEx+NtktFiH7QzORFar6e5XcenZoR82dYpgdg9Rpsn2ZONZUlxj?=
+ =?iso-8859-1?Q?iZTtLTsWOix7lwy6jRZDV+6BYSU4vPhS7eAM/RRBXKNAjYveTDSA1FnKpB?=
+ =?iso-8859-1?Q?+gWADZuQWtxyQ78PnCiwNWTRGuZ1QbkYXlM4y3OUdse14iCQYXl/1SZ4ey?=
+ =?iso-8859-1?Q?jC0TZwgkuAvwoBLS0tFBR7FgnqyQLMvzvOOhlW/bsIaFLDMntjOevh9nuY?=
+ =?iso-8859-1?Q?7HF+kl+gY4EpaM+enymEo11HOH6miZVcSgIPMEbDD63I4KoYH7JqobmNJC?=
+ =?iso-8859-1?Q?1g31XCQomcPxOyISvNvo1PX3cC6nCB/I1kU8e2UQRMS9fApkFVEfzQOva0?=
+ =?iso-8859-1?Q?r7GTv8lD2Zc8YaH1ZC40Voj6d7PlKaQ4amNpEERvzL+FkWGljQ08TRMIQw?=
+ =?iso-8859-1?Q?kSASNoLtXbq6FLUxV7C7rHvIxNBXm44ulndt+S43J21uCHecOboj6fcSGM?=
+ =?iso-8859-1?Q?phpSMXjmgkTYBrkJpZrdiYIIU3YcCQ4kkQ3TU9b8Ue4RmkAsPxxBCWJeL0?=
+ =?iso-8859-1?Q?5sO3eRa097iqIwUIqEosmfNLv81tNG3kE/g2uTPb5eNHuF4zvRElvmjJab?=
+ =?iso-8859-1?Q?QRpwQT9dn+nnrfiZmYLI5xOyOMcd/sWjVmNwIaHWJoo9N39k6V5GszoUP7?=
+ =?iso-8859-1?Q?hrTDq13cDKeHtE4rlefX/sSWp5asqZqDno/FFe6Mcsf/rGH6dtsvQ/raFV?=
+ =?iso-8859-1?Q?72L0GH+rowvRsV4RTFswIbsJtjYIC3CoURTxVcVHzMk/wcsvskIt3rEPOb?=
+ =?iso-8859-1?Q?4CDSNcJ7GGk32OgumCIGlSmX0Y/fytrdWdRpfrkb4uldwHW8NcvcUwEpIJ?=
+ =?iso-8859-1?Q?sJa81bD80MEps=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB4882.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d9fdacaf-5fdd-4464-7bf4-08dc32aa2c18
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Feb 2024 06:56:04.4924 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: RGQzV52k0WYWvYAEIa+ZeZh64qmQxRt++6rswUf8eb/j6Y3c5/aFdVDBPSkIxg6U
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8876
+Received-SPF: softfail client-ip=2a01:111:f403:240a::601;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9+YDIVDDRIMs
 
-On 2024/02/21 19:02, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/02/20 23:14, Alex Bennée wrote:
->>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>
->>>> On 2024/02/17 1:30, Alex Bennée wrote:
->>>>> We can only request a list of registers once the vCPU has been
->>>>> initialised so the user needs to use either call the get function on
->>>>> vCPU initialisation or during the translation phase.
->>>>> We don't expose the reg number to the plugin instead hiding it
->>>>> behind
->>>>> an opaque handle. This allows for a bit of future proofing should the
->>>>> internals need to be changed while also being hashed against the
->>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>> hetrogenous situations.
->>>>> Having an internal state within the plugins also allows us to expand
->>>>> the interface in future (for example providing callbacks on register
->>>>> change if the translator can track changes).
->>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> <snip>
->>>>> +/*
->>>>> + * Register handles
->>>>> + *
->>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>> + * structures which are presented to plugins as opaque handles. They
->>>>> + * are global to the system and therefor additions to the hash table
->>>>> + * must be protected by the @reg_handle_lock.
->>>>> + *
->>>>> + * In order to future proof for up-coming heterogeneous work we want
->>>>> + * different entries for each CPU type while sharing them in the
->>>>> + * common case of multiple cores of the same type.
->>>>> + */
->>>>> +
->>>>> +static QemuMutex reg_handle_lock;
->>>>> +
->>>>> +struct qemu_plugin_register {
->>>>> +    const char *name;
->>>>> +    int gdb_reg_num;
->>>>> +};
->>>>> +
->>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>> +
->>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>>>> +{
->>>>> +    uintptr_t key = (uintptr_t) cs->cc;
->>>>> +    key ^= gdb_regnum;
->>>>> +    return GUINT_TO_POINTER(key);
->>>>> +}
->>>>
->>>> I have pointed out this is theoretically prone to collisions and
->>>> unsafe.
->>> How is it unsafe? The aim is to share handles for the same CPUClass
->>> rather than having a unique handle per register/cpu combo.
->>
->> THe intention is legitimate, but the implementation is not safe. It
->> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
->> guarantee. The key of GHashTable must be unique; generating hashes of
->> keys should be done with hash_func given to g_hash_table_new().
-> 
-> This isn't a hash its a non-unique key. It is however unique for
-> the same register on the same class of CPU so for each vCPU in a system
-> can share the same opaque handles.
-> 
-> The hashing is done internally by glib. We would assert if there was a
-> duplicate key referring to a different register.
-> 
-> I'm unsure what you want here? Do you have a suggestion for the key
-> generation algorithm? As the comment notes I did consider a more complex
-> mixing algorithm using xxhash but that wouldn't guarantee no clash
-> either.
-
-I suggest using a struct that holds both of cs->cc and gdb_regnum, and 
-pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
+On Thu, Feb 8, 2024 at 3:36 AM, Peter Maydell <peter.maydell@linaro.org> wr=
+ote:=0A=
+=0A=
+> This implementation will send the transmitted characters=0A=
+> to the QEMU chardev and also loop them back into the UART=0A=
+> when loopback is enabled. Similarly if we receive a character=0A=
+> from the real input we will put it into the FIFO still, so=0A=
+> the FIFO will get both looped-back and real input together.=0A=
+=0A=
+> I think we only have one other UART where loopback is implemented,=0A=
+> and that is hw/char/serial.c. In that device we make loopback not=0A=
+> send transmitted characters out when in loopback mode, because=0A=
+> the 16550 datasheet explicitly says that's how its loopback=0A=
+> mode works. The PL011 datasheet is unfortunately silent on=0A=
+> this question. Do you have a real hardware PL011 that you=0A=
+> can check to see whether when it is in loopback mode=0A=
+> transmitted data is also sent to the output port as well=0A=
+> as looped back? Similarly for input: we should check whether=0A=
+> the UART continues to accept real input or if the real input=0A=
+> is completely disconnected while in loopback mode.=0A=
+=0A=
+Hi Peter,=0A=
+=0A=
+Here is what I found using hardware I have access to.=0A=
+=0A=
+When loopback is enabled:=0A=
+=0A=
+1. Receive is disconnected from the real input and=0A=
+    only accepts transmit from loopback.=0A=
+=0A=
+2. Transmitted characters is sent to both physical=0A=
+    output and loopback to receive.=0A=
+=0A=
+#2 is also collaborated by commit message for=0A=
+   https://github.com/torvalds/linux/commit/734745ca=0A=
+=0A=
+However, the same message also suggested that=0A=
+#2 may not be the case in other implementations of pl011.=0A=
+=0A=
+I will work on v2 to address you other comments=0A=
+as well, with a property for customizing whether=0A=
+transmit will send to both in loopback mode.=0A=
+=0A=
+Regards,=0A=
+Tong Ho=0A=

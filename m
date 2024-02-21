@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2174907ejb;
-        Wed, 21 Feb 2024 13:21:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXVmdgMXAhv2WGtKvVNHQ6QC0wTNTF9z02RI9/suyE3vNGdFICb0U/J6QbaEnh8RYzVKG1djBwByVmGQmX5Gd+XP5NlT0f6
-X-Google-Smtp-Source: AGHT+IEoK6N/dmp/fawlA5iGooMbmfKmJBRaJf+0zWZB808PxoT44r4KvdkouvQCdVOyabin7cRS
-X-Received: by 2002:a5b:810:0:b0:dbf:15a:c9e4 with SMTP id x16-20020a5b0810000000b00dbf015ac9e4mr538424ybp.48.1708550483019;
-        Wed, 21 Feb 2024 13:21:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708550483; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2174966ejb;
+        Wed, 21 Feb 2024 13:21:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWnRFgoOZUu0iDvb2yNf5jxT/+++MpzZZUoyORyLUVwi2MldEHT1cgEO2ike7jH25aS8Dl8ZIeT6cp25tJZhHYOLJNKOpiK
+X-Google-Smtp-Source: AGHT+IF6SMo7Xymj6An0VA/baXPqiqc1KFKcyZVP5N0VABH/BAiV51l4x+qZhVg11C0MSTw5q6dK
+X-Received: by 2002:a05:690c:c16:b0:608:1be7:6e5c with SMTP id cl22-20020a05690c0c1600b006081be76e5cmr11966790ywb.49.1708550490271;
+        Wed, 21 Feb 2024 13:21:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708550490; cv=none;
         d=google.com; s=arc-20160816;
-        b=nqsH7L+27yiUE9cSNgn5gDHP03co4ffl6zviHc9V7gjpG3NGviUnFHPiMoJKsjx2J3
-         73UkTWV049mUBFi0wMrwWC16veoK6Qdb71D1hnpSc9cqrDA/4dA6ic7PpYOzrpmkb1Q2
-         sx60H82RMlR8Wne4/T4SAbKL0Ep7iHVJtArFBDXjPe4ELqG8b+ldeQzT0tZqju2IgLLW
-         8pjdI5nCItyFBgUVPyq+7JShGahI0E3tetoRYQ8MrfHoperUco2V3NaJBvCU5sW9zupv
-         5KQdGXdFjmRMq5VQW7vQAj3+mHCfWdQTIfARyuVT+JtoorZ2OcpRfLOAl2G56/m9LQ/O
-         OqAQ==
+        b=odvabvUrFieH8W1lA9kJ+EGHg9V9uwMD9FPs2HyYSFkkL2LDtIQsuMKEt0CyE11W5o
+         fbJaG6WpKT+NYUUdUegeLUvycb+ejqN62wHOkHMRy5SrP7xO2oJ2TqMOQP95VoH0V2rt
+         ivlSygkhZGQz7Sa6tYjG/mAUoi9STXfFxnEdo+LLESoR4IJKOybJmNswJV8jz/VVFEHI
+         7Do5JnsDNw+1Aoir40KZmGvg+1I4bdlgH7XL8B18qIjIXbSPKQDtzXJTrRUmW1XcVdjO
+         PsoLBF3Fs9P+Fcc4K1FNZ2wfiEDEmedNm1f1FuBvdMmg1TFmX7+qQJtTHGHdzg9r42+a
+         I1oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vfxMxGGGcVex8fdynjVIKbNEXslFjUR/0YwN6ul07SQ=;
-        fh=o9ubtuYrudZSzwlqCtLLkyChA0aIwKGGleHPII5m6vc=;
-        b=mwE74JZLUTROyeWJrZKcjZSJR9k630YAQjiJVIMxOewpP6L8Su1Q2XhABRzsDTBBWN
-         6fATzl1dq/ugwfheAxuzE1WsZoCAYMKPplOVPAAKr4tS1dlUfNJPwqwjcs1O7tVBmZK8
-         UUa8+fJW/YAkluRKvQmAQA9sGmrO6xEXJLXeQ4fDA2lSSd5mVZeMxEAgLobFQ7mPcfZa
-         y7FLNRSZ3Zd2XW4KxNLYutYinxVe1qxRmBi3SR4DnJhbqVl4+WpxqxcmR3QwHBJBGuQZ
-         82FQHkQ9Nzj8uPv3P3ezSd+LG+/KdHUERZad+aUWMIz58LctYFl2WnGN1lmU4qWNQGZm
-         ZEfg==;
+        bh=w/0nxiYdmkxhHFcoyS3JZWxjubFyxLiPoIZ7GwIxEsQ=;
+        fh=pFT2F0T6nJrV/heHTjP7d7LJQ1K3VhIRtJG/CsMnjrI=;
+        b=kDZ7beDxrDGiCwZ8ULB++CJF/b6opbV6Zwhs9qXuqll76BYQ0Q7yda2V9HkXSLhNlM
+         Vr4IMDBDfRbRz0UD1NQPxmmHOvkQukQIsnigmEAZFz/SvNL5YmtOo3UCClfpBtRNEUGB
+         ujYce7VGN6C6qeD5OFR6NXVVEiRhEfqN3/9o0AE1yV0JedBwJx1B9WsH1TsZeCuipPI3
+         8IbaiUCX+RYxOALZCN+mGCrQ61RnMfdLkXgi+6BoZrg30W94C7njdjSTtzPQxdlRCTKh
+         oy959ul+3fN+NfTDk94MkwZhVB5CJ2TMUztVNwSCNhATNh1HzNstvNAwJQXhYhDZ3FuF
+         Z//A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WcwmGaNb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gsel+bvN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pb11-20020a05620a838b00b0078784bc4e64si2424724qkn.615.2024.02.21.13.21.22
+        by mx.google.com with ESMTPS id l4-20020ac87244000000b0042c7bf8c2dasi41041qtp.315.2024.02.21.13.21.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:21:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Feb 2024 13:21:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WcwmGaNb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gsel+bvN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rctzg-0002wY-9a; Wed, 21 Feb 2024 16:19:08 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rcu0Q-0005Sm-33; Wed, 21 Feb 2024 16:19:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzO-0001P2-5k
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:18:55 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzp-0004M7-VP
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:19:20 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzK-0001Dn-5l
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:18:49 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-41272d42207so12280135e9.2
- for <qemu-arm@nongnu.org>; Wed, 21 Feb 2024 13:18:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rctzm-0001MF-Ud
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 16:19:17 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4127a0d8ae1so3995335e9.2
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 13:19:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708550323; x=1709155123; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708550352; x=1709155152; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vfxMxGGGcVex8fdynjVIKbNEXslFjUR/0YwN6ul07SQ=;
- b=WcwmGaNbrsJ+LjDufUCLGA347RjWRYf5kVuIQIHlU9nBhVgdG8tKcjOwQFzAxm+AA+
- jnkRui0VVIU10WuPVODy5PwtE7GhgHr7P79gDj5ode2YIBYVv4tT55la6AbXT8O1JWQP
- 7Id385EoHEQ1l6NtI3SJESSRozI/D3LR6qrvBf00fB36VRC+kENHSjRxPj5Pqvxsx7QO
- WyE+JwLOLsGRYxVZIF6W/m5N7q/HbVBqCrmMdmw0rfDvnESBVnkpt+3zrUbo9/Xxe35F
- qqpdxLP0hfGoTALERZRvwvwrqtMrDsxt467SyUp9sU3gGd8WzafgsP78sV8WXBC3CxsJ
- 1H6g==
+ bh=w/0nxiYdmkxhHFcoyS3JZWxjubFyxLiPoIZ7GwIxEsQ=;
+ b=Gsel+bvNel7e5S+Im07IoAfEHdZcNSfwCNeXu2AQlCGD1vnkntdGhimisb02DgI/zO
+ BIKD//3A3mZusoKRyNhAFs3eu5k4vxOzpAYz1ELUr6xAWlQSSN47H/K/UZCugHJ1ZWrL
+ UodzjUQvprVTE4N9iSusTiGdY2SweNZFVBph/DB8Vq1Ld/ufDlA7gsKFF4M+eGQCEgig
+ nkfczsDwYVM2z4DP0hnVBI8TWnokIM/+BXhQmAauDec/9kaBujGljtiw285VAsEwhhbV
+ rzmQZoHj1jwGpvopXa3mVp6Udq6nflwr/WNtZzqah1oPCEbmGQxiIJafoRilHybkjNh/
+ +Ruw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708550323; x=1709155123;
+ d=1e100.net; s=20230601; t=1708550352; x=1709155152;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vfxMxGGGcVex8fdynjVIKbNEXslFjUR/0YwN6ul07SQ=;
- b=FlkiEAVrXePQolX2X6Z0BvHJ0nsuSWDtbhfsQl0UE7t2xqqWIEyDcIm6zuzEPgLObt
- zsXPu0VsFZZwACoLHRAvF+cwMIfmxWl4Cgd3Rt4Yux4YdfvMlL8xVtx9yM3fasPpWYvt
- yykdKjO1V3CowGy4LeTTQMjMJvkjcTeZX35rXHrie/Hm/LdMLTzw0bUji4ZWkgH2JNWO
- ZTZ+oleYjUx2FXU2MvI92+p7Uf06HF/f1NC5GucNu4tFu7nCjonb7d7YtS6DSy4q68zA
- 4GbwQ6M6A/hFiayyIJ1n0uDTAJUHQYPQFmzxgQRbh8H0NrDCgBY9WMol2D81lLJjZCo3
- 6y0g==
-X-Gm-Message-State: AOJu0YzzKsfFV+4J1knSV6ytfEDhzPIrYXB3yvYWAsg4JkzltZnbFkNr
- 70evNSXGGMVgcod9IJ4nPDlxaWNy2RJyNq/Q/LDbwEVY6IZD0cuebJmOJnIOKhY=
-X-Received: by 2002:a05:6000:118a:b0:33d:66be:6da4 with SMTP id
- g10-20020a056000118a00b0033d66be6da4mr4380687wrx.29.1708550323494; 
- Wed, 21 Feb 2024 13:18:43 -0800 (PST)
+ bh=w/0nxiYdmkxhHFcoyS3JZWxjubFyxLiPoIZ7GwIxEsQ=;
+ b=BzL/nJWz5ZJxmV/f8bk8XzV/qICwTgEWjzzD8D0D8qFnSipWQUE6qzOgeItc+vb7ez
+ khEKdrG0qjBx86K1LkMgUGwGTBfx53GsEFFZ+PZkwUxPNxYXUnzEPne4j3fNSuPDmgT1
+ w0WWuv5wNG8O5S45vKtrHH46k38mFy7HDFlg+EN9oy9hLRkYWbZynsmLeIn4iQaL4S7U
+ AzaXQf6nlRlIFquxvQ/OC3/D4Hl24H4lE5xkbN6NVLxEaMV7U03t60XLf4dUQteWgmFA
+ uKLtGTtcH8QrC8DlIiQrRg0EoY2ZUb01wBiGv4Ad6/4K7228Zs36RkiZlcvknxy6hB7c
+ IYxQ==
+X-Gm-Message-State: AOJu0YwiZBrpTa65cyAmJefxtGY/99mxkZWlfh0dT82PKdT88dTgPK/U
+ YOvDiBX4+uSpEo12zSywa8LZL0iEdVe6Mx0fcSS74ZbE58VMWH4iku3PPhMQc2QsljHt4CG2ym/
+ DOFM=
+X-Received: by 2002:a05:6000:1542:b0:33d:28a9:2fd8 with SMTP id
+ 2-20020a056000154200b0033d28a92fd8mr13726735wry.39.1708550351870; 
+ Wed, 21 Feb 2024 13:19:11 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.211.34])
  by smtp.gmail.com with ESMTPSA id
- x4-20020adff644000000b0033b792ed609sm18116174wrp.91.2024.02.21.13.18.42
+ bk26-20020a0560001d9a00b0033d568f8310sm10168971wrb.89.2024.02.21.13.19.10
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 21 Feb 2024 13:18:43 -0800 (PST)
+ Wed, 21 Feb 2024 13:19:11 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: [PULL 18/25] hw/ide: Add the possibility to disable the CompactFlash
- device in the build
-Date: Wed, 21 Feb 2024 22:16:18 +0100
-Message-ID: <20240221211626.48190-19-philmd@linaro.org>
+ John Snow <jsnow@redhat.com>
+Subject: [PULL 23/25] hw/ide: Remove the include/hw/ide.h legacy file
+Date: Wed, 21 Feb 2024 22:16:23 +0100
+Message-ID: <20240221211626.48190-24-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240221211626.48190-1-philmd@linaro.org>
 References: <20240221211626.48190-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,271 +117,93 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G8Se0cx5bNQf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: i7/AQDo0wYgd
 
 From: Thomas Huth <thuth@redhat.com>
 
-For distros like downstream RHEL, it would be helpful to allow to disable
-the CompactFlash device. For making this possible, we need a separate
-Kconfig switch for this device, and the code should reside in a separate
-file. Let's also introduce a new header ide-dev.h which can be used to
-collect definitions related to IDE devices.
+There was only one prototype left in this legacy file. Move it to
+ide-dev.h to finally get rid of it.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <20240220085505.30255-2-thuth@redhat.com>
+Message-ID: <20240220085505.30255-7-thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/ide/ide-dev.h | 41 ++++++++++++++++++++++++++++
- hw/ide/cf.c              | 58 ++++++++++++++++++++++++++++++++++++++++
- hw/ide/qdev.c            | 51 ++---------------------------------
- hw/ide/Kconfig           |  4 +++
- hw/ide/meson.build       |  1 +
- 5 files changed, 106 insertions(+), 49 deletions(-)
- create mode 100644 include/hw/ide/ide-dev.h
- create mode 100644 hw/ide/cf.c
+ MAINTAINERS               | 1 -
+ include/hw/ide.h          | 9 ---------
+ include/hw/ide/ide-dev.h  | 2 ++
+ include/hw/ide/internal.h | 3 +--
+ 4 files changed, 3 insertions(+), 12 deletions(-)
+ delete mode 100644 include/hw/ide.h
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5535df4487..9dd98a923f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1937,7 +1937,6 @@ IDE
+ M: John Snow <jsnow@redhat.com>
+ L: qemu-block@nongnu.org
+ S: Odd Fixes
+-F: include/hw/ide.h
+ F: include/hw/ide/
+ F: hw/ide/
+ F: hw/block/block.c
+diff --git a/include/hw/ide.h b/include/hw/ide.h
+deleted file mode 100644
+index db963bdb77..0000000000
+--- a/include/hw/ide.h
++++ /dev/null
+@@ -1,9 +0,0 @@
+-#ifndef HW_IDE_H
+-#define HW_IDE_H
+-
+-#include "exec/memory.h"
+-
+-/* ide/core.c */
+-void ide_drive_get(DriveInfo **hd, int max_bus);
+-
+-#endif /* HW_IDE_H */
 diff --git a/include/hw/ide/ide-dev.h b/include/hw/ide/ide-dev.h
-new file mode 100644
-index 0000000000..7e9663cda9
---- /dev/null
+index 1f62e58ebc..708cc0fda3 100644
+--- a/include/hw/ide/ide-dev.h
 +++ b/include/hw/ide/ide-dev.h
-@@ -0,0 +1,41 @@
-+/*
-+ * ide device definitions
-+ *
-+ * Copyright (c) 2009 Gerd Hoffmann <kraxel@redhat.com>
-+ *
-+ * This code is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef IDE_DEV_H
-+#define IDE_DEV_H
-+
-+#include "hw/qdev-properties.h"
-+#include "hw/block/block.h"
-+#include "hw/ide/internal.h"
-+
-+typedef struct IDEDrive {
-+    IDEDevice dev;
-+} IDEDrive;
-+
-+#define DEFINE_IDE_DEV_PROPERTIES()                     \
-+    DEFINE_BLOCK_PROPERTIES(IDEDrive, dev.conf),        \
-+    DEFINE_BLOCK_ERROR_PROPERTIES(IDEDrive, dev.conf),  \
-+    DEFINE_PROP_STRING("ver",  IDEDrive, dev.version),  \
-+    DEFINE_PROP_UINT64("wwn",  IDEDrive, dev.wwn, 0),   \
-+    DEFINE_PROP_STRING("serial",  IDEDrive, dev.serial),\
-+    DEFINE_PROP_STRING("model", IDEDrive, dev.model)
-+
-+void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **errp);
-+
-+#endif
-diff --git a/hw/ide/cf.c b/hw/ide/cf.c
-new file mode 100644
-index 0000000000..2a425cb0f2
---- /dev/null
-+++ b/hw/ide/cf.c
-@@ -0,0 +1,58 @@
-+/*
-+ * ide CompactFlash support
-+ *
-+ * This code is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/ide/ide-dev.h"
-+#include "qapi/qapi-types-block.h"
-+
-+static void ide_cf_realize(IDEDevice *dev, Error **errp)
-+{
-+    ide_dev_initfn(dev, IDE_CFATA, errp);
-+}
-+
-+static Property ide_cf_properties[] = {
-+    DEFINE_IDE_DEV_PROPERTIES(),
-+    DEFINE_BLOCK_CHS_PROPERTIES(IDEDrive, dev.conf),
-+    DEFINE_PROP_BIOS_CHS_TRANS("bios-chs-trans",
-+                IDEDrive, dev.chs_trans, BIOS_ATA_TRANSLATION_AUTO),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void ide_cf_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    IDEDeviceClass *k = IDE_DEVICE_CLASS(klass);
-+
-+    k->realize  = ide_cf_realize;
-+    dc->fw_name = "drive";
-+    dc->desc    = "virtual CompactFlash card";
-+    device_class_set_props(dc, ide_cf_properties);
-+}
-+
-+static const TypeInfo ide_cf_info = {
-+    .name          = "ide-cf",
-+    .parent        = TYPE_IDE_DEVICE,
-+    .instance_size = sizeof(IDEDrive),
-+    .class_init    = ide_cf_class_init,
-+};
-+
-+static void ide_cf_register_type(void)
-+{
-+    type_register_static(&ide_cf_info);
-+}
-+
-+type_init(ide_cf_register_type)
-diff --git a/hw/ide/qdev.c b/hw/ide/qdev.c
-index 1b3b4da01d..4189313d30 100644
---- a/hw/ide/qdev.c
-+++ b/hw/ide/qdev.c
-@@ -24,12 +24,9 @@
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
--#include "hw/ide/internal.h"
--#include "hw/qdev-properties.h"
--#include "hw/qdev-properties-system.h"
-+#include "hw/ide/ide-dev.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/blockdev.h"
--#include "hw/block/block.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/runstate.h"
- #include "qapi/visitor.h"
-@@ -158,11 +155,7 @@ int ide_get_bios_chs_trans(BusState *bus, int unit)
+@@ -179,4 +179,6 @@ typedef struct IDEDrive {
  
- /* --------------------------------- */
+ void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **errp);
  
--typedef struct IDEDrive {
--    IDEDevice dev;
--} IDEDrive;
--
--static void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **errp)
-+void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **errp)
- {
-     IDEBus *bus = DO_UPCAST(IDEBus, qbus, dev->qdev.parent_bus);
-     IDEState *s = bus->ifs + dev->unit;
-@@ -283,19 +276,6 @@ static void ide_cd_realize(IDEDevice *dev, Error **errp)
-     ide_dev_initfn(dev, IDE_CD, errp);
- }
- 
--static void ide_cf_realize(IDEDevice *dev, Error **errp)
--{
--    ide_dev_initfn(dev, IDE_CFATA, errp);
--}
--
--#define DEFINE_IDE_DEV_PROPERTIES()                     \
--    DEFINE_BLOCK_PROPERTIES(IDEDrive, dev.conf),        \
--    DEFINE_BLOCK_ERROR_PROPERTIES(IDEDrive, dev.conf),  \
--    DEFINE_PROP_STRING("ver",  IDEDrive, dev.version),  \
--    DEFINE_PROP_UINT64("wwn",  IDEDrive, dev.wwn, 0),   \
--    DEFINE_PROP_STRING("serial",  IDEDrive, dev.serial),\
--    DEFINE_PROP_STRING("model", IDEDrive, dev.model)
--
- static Property ide_hd_properties[] = {
-     DEFINE_IDE_DEV_PROPERTIES(),
-     DEFINE_BLOCK_CHS_PROPERTIES(IDEDrive, dev.conf),
-@@ -346,32 +326,6 @@ static const TypeInfo ide_cd_info = {
-     .class_init    = ide_cd_class_init,
- };
- 
--static Property ide_cf_properties[] = {
--    DEFINE_IDE_DEV_PROPERTIES(),
--    DEFINE_BLOCK_CHS_PROPERTIES(IDEDrive, dev.conf),
--    DEFINE_PROP_BIOS_CHS_TRANS("bios-chs-trans",
--                IDEDrive, dev.chs_trans, BIOS_ATA_TRANSLATION_AUTO),
--    DEFINE_PROP_END_OF_LIST(),
--};
--
--static void ide_cf_class_init(ObjectClass *klass, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(klass);
--    IDEDeviceClass *k = IDE_DEVICE_CLASS(klass);
--
--    k->realize  = ide_cf_realize;
--    dc->fw_name = "drive";
--    dc->desc    = "virtual CompactFlash card";
--    device_class_set_props(dc, ide_cf_properties);
--}
--
--static const TypeInfo ide_cf_info = {
--    .name          = "ide-cf",
--    .parent        = TYPE_IDE_DEVICE,
--    .instance_size = sizeof(IDEDrive),
--    .class_init    = ide_cf_class_init,
--};
--
- static void ide_device_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *k = DEVICE_CLASS(klass);
-@@ -396,7 +350,6 @@ static void ide_register_types(void)
-     type_register_static(&ide_bus_info);
-     type_register_static(&ide_hd_info);
-     type_register_static(&ide_cd_info);
--    type_register_static(&ide_cf_info);
-     type_register_static(&ide_device_type_info);
- }
- 
-diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-index dd85fa3619..b93d6743d5 100644
---- a/hw/ide/Kconfig
-+++ b/hw/ide/Kconfig
-@@ -57,3 +57,7 @@ config IDE_SII3112
-     bool
-     select IDE_PCI
-     select IDE_QDEV
++void ide_drive_get(DriveInfo **hd, int max_bus);
 +
-+config IDE_CF
-+    bool
-+    default y if IDE_QDEV
-diff --git a/hw/ide/meson.build b/hw/ide/meson.build
-index e050eef942..d2e5b45c9e 100644
---- a/hw/ide/meson.build
-+++ b/hw/ide/meson.build
-@@ -1,6 +1,7 @@
- system_ss.add(when: 'CONFIG_AHCI', if_true: files('ahci.c'))
- system_ss.add(when: 'CONFIG_AHCI_ICH9', if_true: files('ich.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('ahci-allwinner.c'))
-+system_ss.add(when: 'CONFIG_IDE_CF', if_true: files('cf.c'))
- system_ss.add(when: 'CONFIG_IDE_CMD646', if_true: files('cmd646.c'))
- system_ss.add(when: 'CONFIG_IDE_CORE', if_true: files('core.c', 'atapi.c'))
- system_ss.add(when: 'CONFIG_IDE_ISA', if_true: files('isa.c', 'ioport.c'))
+ #endif
+diff --git a/include/hw/ide/internal.h b/include/hw/ide/internal.h
+index d3ec16a945..20dde37f45 100644
+--- a/include/hw/ide/internal.h
++++ b/include/hw/ide/internal.h
+@@ -4,10 +4,9 @@
+ /*
+  * QEMU IDE Emulation -- internal header file
+  * only files in hw/ide/ are supposed to include this file.
+- * non-internal declarations are in hw/ide.h
++ * non-internal declarations are in hw/include/ide-*.h
+  */
+ 
+-#include "hw/ide.h"
+ #include "hw/ide/ide-bus.h"
+ 
+ /* debug IDE devices */
 -- 
 2.41.0
 

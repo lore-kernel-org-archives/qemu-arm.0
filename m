@@ -1,143 +1,90 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1993643ejb;
-        Wed, 21 Feb 2024 07:35:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXz6vVHPFW5QDaLvQhNOGANP+5i8GQktsZFqIc41qxQ+CtkNSqEt2LkADHc4exQsKk5qkfH4rolE8oDtpPpfCeS7QtwOy9Y
-X-Google-Smtp-Source: AGHT+IGYq9rSAIAfCZcZlhJ2/52BpgTSu5Hc3+n4Liful/LMF8Iw0500UiITiXp077X4MyQFAjgR
-X-Received: by 2002:a05:6214:1249:b0:68d:1d9:2be8 with SMTP id r9-20020a056214124900b0068d01d92be8mr25539857qvv.51.1708529713350;
-        Wed, 21 Feb 2024 07:35:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708529713; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1994422ejb;
+        Wed, 21 Feb 2024 07:36:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVLZXitp81Fio+W5GFqKkr+UA91SfFnX4eJ4ql9e+2g9pk8+/LojSag9yVc15PLshOL8Cp+2WR1LmPJmTaI8mu97XgVEw9z
+X-Google-Smtp-Source: AGHT+IG4ZDto7Asf9wHywA5EDTUrME3I9GWf3b++t903GRA9ZjA0cCy6q6g4XLhq2hLsQ+n42afm
+X-Received: by 2002:a05:6808:2288:b0:3bf:f1da:633 with SMTP id bo8-20020a056808228800b003bff1da0633mr22672474oib.54.1708529789401;
+        Wed, 21 Feb 2024 07:36:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708529789; cv=none;
         d=google.com; s=arc-20160816;
-        b=RKmOKS7zStund+vk2fpMiA6p5qvJwLf3zCZn5ZVNtpDD20pHn/gzH/qHpbE9e4FMiB
-         yYPVsT0H1KLvhgLEBMly4B8k4XZZXuFtkvkPc4/zJObvlQmxZ3meYUXIMSvIzrvnC0BN
-         Vwj7H/rQmK/RwgNf/sUgq4Fv8u+QCxKWb/uF3uEP5Iz/svOVA6IyMN8rlGkWT5K1SKZx
-         qo+pJbrSY41QAgOv3nNJiDfRXBvVlafRKuL0OddjcVcOZaV98e8bQar41LXoMwYVYcn4
-         5sHeVCVrDiYDNYm/XpWleHSaVqH9z3NqngOuL+86Ay2qr3B2ZTDHi/yqANZf0wil7VN9
-         G90w==
+        b=MB18onSLYwlEPVgvKPfY0LtbLbWolgHYTEEjMCrVcmlGZaZ6q3RsZDgWkGyk4spJn4
+         2cIMY6m478BzYm3S6ODstBeSXM6uetRE37bFkIhg/NfnrfCzJ65W9RJ6YRD0qUWqQpdK
+         KMdUW8DbR57yRVibC59JJfUPinidXgJt0DdCNeb00988jUztijCOMKaFE93zHwj3BRrz
+         97qjFFrUVeAkcokOisvKUhF7Z7ZvLXHrBSZYk/uDnV3cVPj/OWjuEiRDDxe0J4fNibQP
+         5nzDXK4eflSg1ck25fqoh5rnXKY/9RnkgCldsJC3pCIbelPUeWElfBxVZbEA7qKZW2ZP
+         DTwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Nsnmg5mi/lerDRFafL3w6XSxkCdhTGMidZW9pcicK2c=;
-        fh=YMNmD06cT6N9ldlPbEZkzkuPCivnfl0qGI468za2X0I=;
-        b=VixTE7C438o0DCZrcxpSb2djxMvDVKdB0OR3L1R8jvs4rx2Gd1KHUbh6TKdH7ze26N
-         pLV59PoK38T+Q9eY/9xMabNWKjY9S9nbhBg7aiwiERnVpzHGFGHZj53ecI9Pk8E25fTq
-         yHs92tK7ZGbYrR6o4TzCNlF21EwaeGWDpCgkkBE1XLOZ68ojl6Fj9Ox0m+1wd1adjksY
-         iGyariNm1/9IWkOvojf/rjCosgXCUT3LrayniHEYo29M2xQumAvX5+aUIkfVQPXUMbbL
-         yDczjqMWgzNgQ/Fq79XR8nDQxSmpXsQOdmBpfb1YHwtoiAZ0EXSbrk0HQnFPdmhdCclK
-         GDtg==;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=eTOAE7MzRCJbGl9LSN6U9Oq7O5H7ZV4owxf3RnSUykI=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=XtOCOEgXsIzXXLVvklFJwij8e2Nvx5L3Zz/IJBpVpuWW43MAJys1JF2Y4ptem2CJlv
+         E8C3w96qWaPnrt5Cv9FCR3d4E3Mob2ZaN1QKbXsRNAXywVed6MIOfBZiY9NKBn3ogpds
+         lnfVkdAHWSm+EEc3f1qg3cxi4Y3h5YyPNcCwppTEsNudPvd4K/szsVPQu4pXJ7bNpAq+
+         05xPKNTB8f/C2EN9B5N5QhEpsi68J7rymBEpIKptuUhgVfTwaFtTbQRYGHu1IDK3V76o
+         k6ncd+s+qECCL7CAtwXfJlTvRg/2ibJ83Ry3QYja6zgLYsm287guD9iVeptjF696DT1U
+         DpMQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VNybrzs+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu15-20020ad45ccf000000b0068f765ab5c7si6277862qvb.292.2024.02.21.07.35.13
+        by mx.google.com with ESMTPS id bp39-20020a05622a1ba700b0042daa920d4esi11578686qtb.305.2024.02.21.07.36.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 07:35:13 -0800 (PST)
+        Wed, 21 Feb 2024 07:36:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VNybrzs+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcoQg-0001GS-Nc; Wed, 21 Feb 2024 10:22:38 -0500
+	id 1rcoZy-0004x6-1A; Wed, 21 Feb 2024 10:32:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rcoM9-0000nB-4F
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 10:17:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcoQb-0000ae-ER; Wed, 21 Feb 2024 10:22:33 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rck3B-0006Nm-DT
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 05:42:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708512124;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Nsnmg5mi/lerDRFafL3w6XSxkCdhTGMidZW9pcicK2c=;
- b=VNybrzs+7gZBVLakd9HYn+Ko27tLQUgf1cvOqqYcLwOt2HNfKBblrfODrmqC1bGZtc+L8Y
- xhEb4FsqOztnnLOdKHBFdNri7dUbMfB1WontyDfv6wJ5XYwEHRuiMwFzs8woB4QJZoF5vh
- kf8tnmGV52WVSRZ/23KfJ19NXc6n7ZM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-484-V622L1jNMMepAdBQsxieWw-1; Wed, 21 Feb 2024 05:42:01 -0500
-X-MC-Unique: V622L1jNMMepAdBQsxieWw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4125670e7d1so18584915e9.1
- for <qemu-arm@nongnu.org>; Wed, 21 Feb 2024 02:42:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708512120; x=1709116920;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Nsnmg5mi/lerDRFafL3w6XSxkCdhTGMidZW9pcicK2c=;
- b=PFumWRY6TwhEAaDRwLcJJKmbc/Ykv/QTMN1q/Kf03iyzuzMWisY5BUYNhnWotU+jF/
- 9rbbNOTujCF0oLO4pPGCIsbiiuGC4+lgNCqu/Nq8pzN6LeqlvWDYAzyYqFPg7dk9Btih
- 17vecFZsAThcX2MK8NgDsnqTBH9vvn7ggA/ZGKJAM7nakL2lmM5ESw0M5N4TQY+EMC07
- m//2ya03EhSR5NjzhzQMUh0lPp9eHPEhKGtLqzWuVlMyYIaHF47JMhGMCVAlFvEiwDxu
- W8FoURon4M73MMo7KFt5c/HuKXfUr5d/+hTuVm28kT3bwrwGAlK4vJMnVBjFF8WpGMo9
- PzmA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVY2NdFUigAAswQ/VWCfInyOpHPIEqn+LLxEOJI2EhHbHrZBHrdO24ifSuy/Fd9HqmQIo32mE3lhfv6iB6hhHANlzXR
-X-Gm-Message-State: AOJu0YymwxnTeDZFuaka3sn7Lu9lPLBr4+gL91JhBlpj73/X+mIheQhw
- +so3ZCg5uZPJEygMGk+br51VFZR0kxolcRiq3Je/q94e4Ue3+TSk5w2TmiEY4Z0ADMK4AePxpTY
- i712gw9pMOFRYWC8fDjFXDGlv0radHXteI8xfp3iEra8I1zS3OA==
-X-Received: by 2002:adf:ff8c:0:b0:33d:251c:78b2 with SMTP id
- j12-20020adfff8c000000b0033d251c78b2mr11514082wrr.28.1708512119871; 
- Wed, 21 Feb 2024 02:41:59 -0800 (PST)
-X-Received: by 2002:adf:ff8c:0:b0:33d:251c:78b2 with SMTP id
- j12-20020adfff8c000000b0033d251c78b2mr11514063wrr.28.1708512119575; 
- Wed, 21 Feb 2024 02:41:59 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- bt21-20020a056000081500b0033d1f25b798sm16542591wrb.82.2024.02.21.02.41.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Feb 2024 02:41:59 -0800 (PST)
-Message-ID: <8c0f6a91-7ae2-46c6-a8ad-18ca096a6115@redhat.com>
-Date: Wed, 21 Feb 2024 11:41:57 +0100
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcmLw-0004od-JB; Wed, 21 Feb 2024 08:09:38 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TfxQm2hfpz1xnkp;
+ Wed, 21 Feb 2024 21:08:00 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 18F4E140154;
+ Wed, 21 Feb 2024 21:09:23 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 21 Feb
+ 2024 21:09:22 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v2 01/22] target/arm: Add FEAT_NMI to max
+Date: Wed, 21 Feb 2024 13:08:02 +0000
+Message-ID: <20240221130823.677762-2-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240221130823.677762-1-ruanjinjie@huawei.com>
+References: <20240221130823.677762-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] virtio-iommu: Use qemu_real_host_page_mask as default
- page_size_mask
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- jean-philippe@linaro.org, alex.williamson@redhat.com, clg@redhat.com,
- peter.maydell@linaro.org, Peter Xu <peterx@redhat.com>
-References: <20240117132039.332273-1-eric.auger@redhat.com>
- <20240213044312-mutt-send-email-mst@kernel.org>
- <6d4b5766-f8e2-4889-827d-01d3509239f7@redhat.com>
- <20240213060731-mutt-send-email-mst@kernel.org>
- <417ea71e-fb45-4e1d-b8e5-9d54d93dba3b@redhat.com>
- <20240213064017-mutt-send-email-mst@kernel.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240213064017-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,48 +97,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iiyzQl8asrNU
+X-TUID: CEkACsIkClSs
 
-Hi,
+Enable FEAT_NMI on the 'max' CPU.
 
-On 2/13/24 13:00, Michael S. Tsirkin wrote:
-> On Tue, Feb 13, 2024 at 12:24:22PM +0100, Eric Auger wrote:
->> Hi Michael,
->> On 2/13/24 12:09, Michael S. Tsirkin wrote:
->>> On Tue, Feb 13, 2024 at 11:32:13AM +0100, Eric Auger wrote:
->>>> Do you have an other concern?
->>> I also worry a bit about migrating between hosts with different
->>> page sizes. Not with kvm I am guessing but with tcg it does work I think?
->> I have never tried but is it a valid use case? Adding Peter in CC.
->>> Is this just for vfio and vdpa? Can we limit this to these setups
->>> maybe?
->> I am afraid we know the actual use case too later. If the VFIO device is
->> hotplugged we have started working with 4kB granule.
->>
->> The other way is to introduce a min_granule option as done for aw-bits.
->> But it is heavier.
->>
->> Thanks
->>
->> Eric
-> Let's say, if you are changing the default then we definitely want
-> a way to get the cmpatible behaviour for tcg.
-> So the compat machinery should be user-accessible too and documented.
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+ docs/system/arm/emulation.rst | 1 +
+ target/arm/tcg/cpu64.c        | 1 +
+ 2 files changed, 2 insertions(+)
 
-I guess I need to add a new option to guarantee the machine compat.
-
-I was thinking about an enum GranuleMode property taking the following
-values, 4KB, 64KB, host
-Jean, do you think there is a rationale offering something richer?
-
-Obviously being able to set the exact page_size_mask + host mode would
-be better but this does not really fit into any std property type.
-
-Thanks
-
-Eric
->
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index f67aea2d83..91baf7ad69 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -63,6 +63,7 @@ the following architecture extensions:
+ - FEAT_MTE (Memory Tagging Extension)
+ - FEAT_MTE2 (Memory Tagging Extension)
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
++- FEAT_NMI (Non-maskable Interrupt)
+ - FEAT_NV (Nested Virtualization)
+ - FEAT_NV2 (Enhanced nested virtualization support)
+ - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 5fba2c0f04..60f0dcd799 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1175,6 +1175,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
+     t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
+     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
++    t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
+     cpu->isar.id_aa64pfr1 = t;
+ 
+     t = cpu->isar.id_aa64mmfr0;
+-- 
+2.34.1
 

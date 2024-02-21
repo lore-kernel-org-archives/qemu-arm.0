@@ -1,90 +1,121 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2001460ejb;
-        Wed, 21 Feb 2024 07:49:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVBqkM9HTpfQzfiykWHY0dxlzY5GiWXj0WjivqratDpu22XSNzcSDsaQgxv+OehChZ4VIKHja9h66szw1MXf4zzyrGXRpd+
-X-Google-Smtp-Source: AGHT+IHC6XlWGCCRSwiMyyL/ys2vtdH7J/SA89dsEIzi3SLpefb4F3guzUs6BD9y44w8mHvsD+xx
-X-Received: by 2002:a67:fa55:0:b0:470:4de7:20a2 with SMTP id j21-20020a67fa55000000b004704de720a2mr8749831vsq.33.1708530592761;
-        Wed, 21 Feb 2024 07:49:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708530592; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2044095ejb;
+        Wed, 21 Feb 2024 09:01:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUmBAKWeiqXMizsirIz6yzYQ17zjwfa4yyps3tNP20ewESWM+NiNPZ/irYewP0o1d5m0e8ds7qdJP2oOFibVGjYOjhsWgmn
+X-Google-Smtp-Source: AGHT+IGEH+OD2oNl6aOYIsyIPR3DADJPgspNLe6iPJav0Du51m65FCgSA9ycDwQBvxCsaxO1eb/i
+X-Received: by 2002:a81:b666:0:b0:607:81ca:ccc with SMTP id h38-20020a81b666000000b0060781ca0cccmr17309481ywk.42.1708534876549;
+        Wed, 21 Feb 2024 09:01:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708534876; cv=none;
         d=google.com; s=arc-20160816;
-        b=VCn9D8vn/TSQ2sKtKSTZ5+C8gNUh9tNznl7pRz1PR0YUz6euceRjCyo+q5bnaucPjI
-         xILTEMD2cUGsAGCGo/WNkbpR2BcJnaL9gX7kgkh3t6oIlVnj9uA2MjTsbtJN0LUWYZW2
-         PReHlxViy0FFs+WmD9JRzXF6DLp4GQZrnnwWZZETF6i0cL7kEyli6aNG5RxfvMRWCuPH
-         Nav3nJgsyfgoFZvU+Va/i0UOvvibioVbD7sNqy90sPHT27xfuVZxR3lOlllfMJqOFUCW
-         v5RJnoXPc3xzVI22BrUBIYkJIZxk3h+VueoSgXiHLTsXzI/tRhBScfbo6DwwFRum1U4r
-         pa3w==
+        b=SupVzfu0lVujbHjL47wONR5L4ep//WMOVcHUh/kNXiPRLPKbCWSK1v+hvX0uc2fC26
+         +IwePHZHYVOzWKbCqiIkim6njX9glfMH8IvUXZK2JWlh5RpSOdvCNTQfSMLMkx8B8+kw
+         O33mK5mmorOmpuu3k5sH/dNudWDtcB1LLjsCi5tKF0HxNgtwJ7pTZ14e8q5V6kWhoRFH
+         foeFqeJlLNSffVxwoAGT/Y3ac9BkUtNb7mAbC26HhRZDTmTrP3JmkTYRoJIhrLn4Cpsc
+         DTLAMJPG/ZDcSqwFtjRAe/kL48ttDgbSfHW9dM4rz1jcUVProqXEwWrpdn+qzxdCXyw+
+         rIbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=2W8mHaqmrMIZ3RNvo2p+wgm5lRPT6Am7LWfhqqNaeGk=;
-        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=jmFNrsNajDH6gkbWWWjYkttasi6E8IH/H8nkXQpYk7n+xt8LvsJg3IBcMGtiPGjhYh
-         Kb+t8YKi1GxlhLdrl6YtiWUldATtOiV7INNepm4KEYAsoUrZUdOmCS5Du8o1Zo78w8rD
-         hX5r8C9qabTly8OR6v68+CS9AnLcsc5Y11SqJbtC38idpIhEDly3rpsO1E4PIvAVeG+9
-         9j+ux0Y1YzIbZwZtPfeD65vnxmfDDYEebJaJwIRzSmRDd/pg+SQYigjihFe8GmWfOPg1
-         CDIChIRyaDggkgnC5cjknWsfflUo/g9AvNWUB4HmwB0Dh8v/prn778nq03Sp6UfMiBJo
-         7JcA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=Mbb6F/kEymqfJxvlakPQcJAgpZqMaRxUss3YZiC7LPU=;
+        fh=Hxza+DeRgbR3cB3GqmpIQcw4ItHqgW4f765pGd9y23o=;
+        b=q7Q8TueppDykkxS6Zxc35j0F7Oz2dUE3rLj9Tlj1yX4nCnFZkuV+elz6l0p4ky1rVO
+         inDsQko99CfoIvT3OY/HiMSshFoqlx3OOl98fwvZ7SQoavuBX1LvsEbvhw8LBUbzqqDD
+         9IOaLHyDl3VrR3+WF8Qo8YvrM6vAXNYZ8/Kc3OX8D6i4GoDJ8BQmc6pwHsvCD7Wro+o9
+         K7Oq0/suPQtZ1aG8BzgK22Z4697pqAPQInjdiAihnhhNMj7dEu84T6KCo57I/dPDljmT
+         PNqmT3N2iZcHIiu07cIXpuhLGIttCACY7d7js5ZFSsf3llZtNIgMEVM0pr89gD70eMTf
+         Md0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="sJ/c7HSa";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9-20020ac86e89000000b0042c2f2b1e47si10743191qtv.296.2024.02.21.07.49.52
+        by mx.google.com with ESMTPS id be5-20020a05690c008500b00607df0aa678si5247371ywb.132.2024.02.21.09.01.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 07:49:52 -0800 (PST)
+        Wed, 21 Feb 2024 09:01:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b="sJ/c7HSa";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcobv-0004tg-78; Wed, 21 Feb 2024 10:34:16 -0500
+	id 1rcpxb-0006VB-UW; Wed, 21 Feb 2024 12:00:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcoUP-0002Dm-0k; Wed, 21 Feb 2024 10:26:29 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcmLu-0004pA-AB; Wed, 21 Feb 2024 08:09:37 -0500
-Received: from mail.maildlp.com (unknown [172.19.162.112])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TfxQp6YVQz1xnn0;
- Wed, 21 Feb 2024 21:08:02 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 9BA8A14011B;
- Wed, 21 Feb 2024 21:09:25 +0800 (CST)
-Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 21 Feb
- 2024 21:09:25 +0800
-To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v2 04/22] target/arm: Implement ALLINT MSR (immediate)
-Date: Wed, 21 Feb 2024 13:08:05 +0000
-Message-ID: <20240221130823.677762-5-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240221130823.677762-1-ruanjinjie@huawei.com>
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.55]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3MSzWZQwKChgByz652GH23yB4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--nabihestefan.bounces.google.com>)
+ id 1rcpxW-0006Mr-Ki
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 12:00:40 -0500
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3MSzWZQwKChgByz652GH23yB4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--nabihestefan.bounces.google.com>)
+ id 1rcpxU-00037P-7x
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 12:00:37 -0500
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-607cd6c11d7so101458267b3.0
+ for <qemu-devel@nongnu.org>; Wed, 21 Feb 2024 09:00:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1708534833; x=1709139633; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Mbb6F/kEymqfJxvlakPQcJAgpZqMaRxUss3YZiC7LPU=;
+ b=sJ/c7HSaj6d9qA/gmF2W7UGWRM4Z2GMCScw6ex2t0VOXOHVh2GdQhYKqLcASXZI8sq
+ hmzh137v7g7gVhYxEuUFlVtKkOMztIjL+W+e/5/PCLg8sOYT06hoKHDmToLWO+dXyebO
+ JfFhGLVR4D090yRSTyAU+UDskHBp/SO47kqoD8IepjruebPeAS4hPfDrq9q/dHf9Ousm
+ SNoAzgtiMWytRdRC4vJCzCxAbyT+2xFDKOEifQ3zUx+AmfRmk5I2P8IuN34hQNT/XKy2
+ 3WCauzVL6qf37jAEGTORkjDjlMPYosoJnKrDu9pLFBRz9+tSzPSIoj4xBsgx+pC/6lVU
+ 6e9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708534833; x=1709139633;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Mbb6F/kEymqfJxvlakPQcJAgpZqMaRxUss3YZiC7LPU=;
+ b=IMXDIlY2D86PSS05NOpU+s/3LV2q++8qJBUsxYi00TVQfJ1S+ZkHBsH+sLvSCrBu2t
+ x660/Ikn0tNhI2xwRMIAS8LZxZkcREf9cyFFrZShbV18YTr/M0lmPwvd/C6zdXbmwJoN
+ GI9+J8xnJ67q6Kisj8CnFaDarP4HAxHbVX0rNZFhGwmIC1GjTVBWms6WX/JLyVDUxqou
+ 83qvgrzcHz8Fori8VzMq7Lw4lrD/r5ARlnBtNOKLNBURbvfjlRHZGLsZHempHaNVgZQw
+ dmiMYkPG5F7YCIA2uxb3AG1DTOGB+mgSsRq86r4TQ/8v1r5mefvVbmNqa9MnLePbbkrC
+ emeA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCViVZ753cFtbZ8a16I1qG7aQz7+C/YCQ+thuQS/TzTLlSCvBEyqmSYrYckr10zN8/jMesFcuvaMVytSE9Wh9LlAg76E4fs=
+X-Gm-Message-State: AOJu0YzSefuJpT38o691B+f1tiaRvXag495kXEMN+WHptDxntl345nFA
+ gtLmpnpdA7GOzu226RQcOGWa9jcp1hh+1WHt5WwCiDVxsccXWlu/qIIWII9kFZV6qFNgpETZ/WT
+ Mb8imkW1R+K0+hm29e7M1ICF3Ng==
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a81:f20f:0:b0:608:788f:8cfa with SMTP
+ id i15-20020a81f20f000000b00608788f8cfamr609080ywm.1.1708534833092; Wed, 21
+ Feb 2024 09:00:33 -0800 (PST)
+Date: Wed, 21 Feb 2024 17:00:26 +0000
+In-Reply-To: <20240221170027.1027325-1-nabihestefan@google.com>
+Mime-Version: 1.0
+References: <20240221170027.1027325-1-nabihestefan@google.com>
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
+Message-ID: <20240221170027.1027325-2-nabihestefan@google.com>
+Subject: [PATCH 1/2] Implement base of SMBIOS type 9 descriptor.
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+ its@irrelevant.dk, kbusch@kernel.org, eric.auger@redhat.com, mst@redhat.com, 
+ imammedo@redhat.com, anisinha@redhat.com, flwu@google.com, 
+ nabihestefan@google.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3MSzWZQwKChgByz652GH23yB4CC492.0CAE2AI-12J29BCB4BI.CF4@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,104 +128,205 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D6DNmK2UEROs
+X-TUID: ckNJBAgvmQ0Y
 
-Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
-to ALLINT. Avoid the unconditional write to pc and use raise_exception_ra
-to unwind.
+From: Felix Wu <flwu@google.com>
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Version 2.1+.
+
+Signed-off-by: Felix Wu <flwu@google.com>
+Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 ---
- target/arm/tcg/a64.decode      |  1 +
- target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
- target/arm/tcg/helper-a64.h    |  1 +
- target/arm/tcg/translate-a64.c | 10 ++++++++++
- 4 files changed, 36 insertions(+)
+ hw/smbios/smbios.c           | 99 ++++++++++++++++++++++++++++++++++++
+ include/hw/firmware/smbios.h | 13 +++++
+ qemu-options.hx              |  3 ++
+ 3 files changed, 115 insertions(+)
 
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8a20dce3c8..3588080024 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010 11111 @msr_i
- MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
- MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
- MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
-+MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
- MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index a3c4e52ce9..38b3ea172c 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -121,6 +121,16 @@ struct type8_instance {
+ };
+ static QTAILQ_HEAD(, type8_instance) type8 = QTAILQ_HEAD_INITIALIZER(type8);
  
- # MRS, MSR (register), SYS, SYSL. These are all essentially the
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index ebaa7f00df..3686926ada 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -66,6 +66,30 @@ void HELPER(msr_i_spsel)(CPUARMState *env, uint32_t imm)
-     update_spsel(env, imm);
++/* type 9 instance for parsing */
++struct type9_instance {
++    const char *slot_designation;
++    uint8_t slot_type, slot_data_bus_width, current_usage, slot_length,
++            slot_characteristics1, slot_characteristics2;
++    uint16_t slot_id;
++    QTAILQ_ENTRY(type9_instance) next;
++};
++static QTAILQ_HEAD(, type9_instance) type9 = QTAILQ_HEAD_INITIALIZER(type9);
++
+ static struct {
+     size_t nvalues;
+     char **values;
+@@ -380,6 +390,54 @@ static const QemuOptDesc qemu_smbios_type8_opts[] = {
+     { /* end of list */ }
+ };
+ 
++static const QemuOptDesc qemu_smbios_type9_opts[] = {
++    {
++        .name = "type",
++        .type = QEMU_OPT_NUMBER,
++        .help = "SMBIOS element type",
++    },
++    {
++        .name = "slot_designation",
++        .type = QEMU_OPT_STRING,
++        .help = "string number for reference designation",
++    },
++    {
++        .name = "slot_type",
++        .type = QEMU_OPT_NUMBER,
++        .help = "connector type",
++    },
++    {
++        .name = "slot_data_bus_width",
++        .type = QEMU_OPT_NUMBER,
++        .help = "port type",
++    },
++    {
++        .name = "current_usage",
++        .type = QEMU_OPT_NUMBER,
++        .help = "current usage",
++    },
++    {
++        .name = "slot_length",
++        .type = QEMU_OPT_NUMBER,
++        .help = "system slot length",
++    },
++    {
++        .name = "slot_id",
++        .type = QEMU_OPT_NUMBER,
++        .help = "system slot id",
++    },
++    {
++        .name = "slot_characteristics1",
++        .type = QEMU_OPT_NUMBER,
++        .help = "slot characteristics1, see the spec",
++    },
++    {
++        .name = "slot_characteristics2",
++        .type = QEMU_OPT_NUMBER,
++        .help = "slot characteristics2, see the spec",
++    },
++};
++
+ static const QemuOptDesc qemu_smbios_type11_opts[] = {
+     {
+         .name = "type",
+@@ -609,6 +667,7 @@ bool smbios_skip_table(uint8_t type, bool required_table)
+ #define T2_BASE 0x200
+ #define T3_BASE 0x300
+ #define T4_BASE 0x400
++#define T9_BASE 0x900
+ #define T11_BASE 0xe00
+ 
+ #define T16_BASE 0x1000
+@@ -807,6 +866,28 @@ static void smbios_build_type_8_table(void)
+     }
  }
  
-+static void allint_check(CPUARMState *env, uint32_t op,
-+                       uint32_t imm, uintptr_t ra)
++static void smbios_build_type_9_table(void)
 +{
-+    /* ALLINT update to PSTATE. */
-+    if (arm_current_el(env) == 0) {
-+        raise_exception_ra(env, EXCP_UDEF,
-+                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
-+                                               extract32(op, 3, 3), 4,
-+                                               imm, 0x1f, 0),
-+                           exception_target_el(env), ra);
++    unsigned instance = 0;
++    struct type9_instance *t9;
++
++    QTAILQ_FOREACH(t9, &type9, next) {
++        SMBIOS_BUILD_TABLE_PRE(9, T9_BASE + instance, true);
++
++        SMBIOS_TABLE_SET_STR(9, slot_designation, t9->slot_designation);
++        t->slot_type = t9->slot_type;
++        t->slot_data_bus_width = t9->slot_data_bus_width;
++        t->current_usage = t9->current_usage;
++        t->slot_length = t9->slot_length;
++        t->slot_id = t9->slot_id;
++        t->slot_characteristics1 = t9->slot_characteristics1;
++        t->slot_characteristics2 = t9->slot_characteristics2;
++
++        SMBIOS_BUILD_TABLE_POST;
++        instance++;
 +    }
 +}
 +
-+void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
-+{
-+    allint_check(env, 0x8, imm, GETPC());
-+    if (imm == 1) {
-+        env->allint |= PSTATE_ALLINT;
-+    } else {
-+        env->allint &= ~PSTATE_ALLINT;
-+    }
-+    arm_rebuild_hflags(env);
-+}
-+
- static void daif_check(CPUARMState *env, uint32_t op,
-                        uint32_t imm, uintptr_t ra)
+ static void smbios_build_type_11_table(void)
  {
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 575a5dab7d..3aec703d4a 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -22,6 +22,7 @@ DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_2(msr_i_spsel, void, env, i32)
- DEF_HELPER_2(msr_i_daifset, void, env, i32)
- DEF_HELPER_2(msr_i_daifclear, void, env, i32)
-+DEF_HELPER_2(msr_i_allint, void, env, i32)
- DEF_HELPER_3(vfp_cmph_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmpeh_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 340265beb0..f1800f7c71 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2036,6 +2036,16 @@ static bool trans_MSR_i_DAIFCLEAR(DisasContext *s, arg_i *a)
-     return true;
- }
+     char count_str[128];
+@@ -1126,6 +1207,7 @@ void smbios_get_tables(MachineState *ms,
+         }
  
-+static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
-+{
-+    if (!dc_isar_feature(aa64_nmi, s) || s->current_el == 0) {
-+        return false;
-+    }
-+    gen_helper_msr_i_allint(tcg_env, tcg_constant_i32(a->imm));
-+    s->base.is_jmp = DISAS_TOO_MANY;
-+    return true;
-+}
+         smbios_build_type_8_table();
++        smbios_build_type_9_table();
+         smbios_build_type_11_table();
+ 
+ #define MAX_DIMM_SZ (16 * GiB)
+@@ -1460,6 +1542,23 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+             t8_i->port_type = qemu_opt_get_number(opts, "port_type", 0);
+             QTAILQ_INSERT_TAIL(&type8, t8_i, next);
+             return;
++        case 9: {
++            if (!qemu_opts_validate(opts, qemu_smbios_type9_opts, errp)) {
++                return;
++            }
++            struct type9_instance *t;
++            t = g_new0(struct type9_instance, 1);
++            save_opt(&t->slot_designation, opts, "slot_designation");
++            t->slot_type = qemu_opt_get_number(opts, "slot_type", 0);
++            t->slot_data_bus_width = qemu_opt_get_number(opts, "slot_data_bus_width", 0);
++            t->current_usage = qemu_opt_get_number(opts, "current_usage", 0);
++            t->slot_length = qemu_opt_get_number(opts, "slot_length", 0);
++            t->slot_id = qemu_opt_get_number(opts, "slot_id", 0);
++            t->slot_characteristics1 = qemu_opt_get_number(opts, "slot_characteristics1", 0);
++            t->slot_characteristics2 = qemu_opt_get_number(opts, "slot_characteristics2", 0);
++            QTAILQ_INSERT_TAIL(&type9, t, next);
++            return;
++        }
+         case 11:
+             if (!qemu_opts_validate(opts, qemu_smbios_type11_opts, errp)) {
+                 return;
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 6e514982d4..9ab114aea2 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -211,6 +211,19 @@ struct smbios_type_8 {
+     uint8_t port_type;
+ } QEMU_PACKED;
+ 
++/* SMBIOS type 9 - System Slots (v2.1+) */
++struct smbios_type_9 {
++    struct smbios_structure_header header;
++    uint8_t slot_designation;
++    uint8_t slot_type;
++    uint8_t slot_data_bus_width;
++    uint8_t current_usage;
++    uint8_t slot_length;
++    uint16_t slot_id;
++    uint8_t slot_characteristics1;
++    uint8_t slot_characteristics2;
++} QEMU_PACKED;
 +
- static bool trans_MSR_i_SVCR(DisasContext *s, arg_MSR_i_SVCR *a)
- {
-     if (!dc_isar_feature(aa64_sme, s) || a->mask == 0) {
+ /* SMBIOS type 11 - OEM strings */
+ struct smbios_type_11 {
+     struct smbios_structure_header header;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 8547254dbf..9ddb1b1fb3 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2717,6 +2717,9 @@ SRST
+ ``-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str][,asset=str][,part=str][,processor-family=%d][,processor-id=%d]``
+     Specify SMBIOS type 4 fields
+ 
++``-smbios type=9[,slot_designation=str][,slot_type=%d][,slot_data_bus_width=%d][,current_usage=%d][,slot_length=%d][,slot_id=%d][,slot_characteristics1=%d][,slot_characteristics12=%d]``
++    Specify SMBIOS type 9 fields
++
+ ``-smbios type=11[,value=str][,path=filename]``
+     Specify SMBIOS type 11 fields
+ 
 -- 
-2.34.1
+2.44.0.rc0.258.g7320e95886-goog
 

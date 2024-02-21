@@ -1,138 +1,166 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1995536ejb;
-        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXGVnfzLcdTq4DX208qgNzq9F1bnrXnl1bYaCAm5rcfXpUSJR4WOixN9iUYvy04ngD2kS6wJmTjEpPuNFEVZFGg8LxWQEOY
-X-Google-Smtp-Source: AGHT+IFRnggj+3yeaqXlqZFXSRXiHKHD0T6SjbpAVOSUyWBRyBa09GjggBP0ViSLJ1aFBi8THmyi
-X-Received: by 2002:a05:620a:148e:b0:787:1cfc:73e3 with SMTP id w14-20020a05620a148e00b007871cfc73e3mr20466667qkj.54.1708529905280;
-        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708529905; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp1995926ejb;
+        Wed, 21 Feb 2024 07:39:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUS25GfM0iQegowTO2qUCQsMHJdbrm3hmb6l+gExjbfaQjcOC8PWwYG13jHCmhHmtZYoxENw0yJ3zwTZAQUPbRD3PZBiRrU
+X-Google-Smtp-Source: AGHT+IEds8yjDY/9jWf+Wa7Z8vVPY3z62M3oOW9z9X3mYQEIkY3TKcsFvErheXIAjdnM9As5ioxf
+X-Received: by 2002:a1f:4fc5:0:b0:4c0:1cc8:8821 with SMTP id d188-20020a1f4fc5000000b004c01cc88821mr16811475vkb.9.1708529951665;
+        Wed, 21 Feb 2024 07:39:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708529951; cv=none;
         d=google.com; s=arc-20160816;
-        b=pp629gTBgFGDQoFYvi7R409os0g/QHEewLuGYxYynkKCyiArYI0s85TvzP6RYcX+a0
-         8KJ4W4jy6vvGlXlRHa776HiQcu5ENSXcQVHkJaTmcZRddEPHXndIFfLuh4iIcRkUUzDA
-         LuoZY0SCFXldb7Il+boZhqSBdwQNP3jlzwhr/pDYrxFaZq73sFp+N7DA7iZZ6Sq0drGG
-         hnQsjqArRJPevb+SjdJdtYKEwCrBF0+riDGUHoLq21FzAF0uiDYePe8zRdnzUdNOV+A8
-         xn8ODAxDYas2UwRbFQ4mhc76hGZdPj+pMomyPYl/iWNqCwUGZ+c4HETUb+7hoWeTCFg7
-         YE0A==
+        b=ZxLRKve5rXjPbg1/K5/kwLTQ6DtDdGd0j0sP4Rtw/4BMOPLYwr19skoKZiCsGFEvph
+         EUszwXK8LHHeS6lonFG+ue+heI+eM1CE4GJHW8K5uqid4iAp2SwtKZziBaM9tTKgwEDJ
+         uwwbduAEN0s2JYWPpS4rwmb50xheAAG1lIY6fp9JWYUIU3BhJTJRgd02ElK1YmzQrU9X
+         Gdr91h9ALhYwfMmYyp9e4bo24ZsGNBq3Ux8OgpldAW0ucPuz/h+83zoL7y6Ni9OPyAmO
+         4K2zrnZ0tkUN3xG7NdMDLgb+sgQ09jEXqEObcQIa4RL51sM0/87Nts2W8r2tZdKp38jv
+         Hzlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=T2tHN8saFSr4L9MZ2aqAIMcAisD2Omx0vZ3SJ7Tgs60=;
-        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=uCt2CdTHbOka+GQdkCPI3hGMabqrXQD5G8RS08HjpJXn36fz0KeQYSofutbuOiIufl
-         x73TiJH5TsN2gqp2zkrwEkQ2Wx3XroTwx5H0PkrIf2J95NxkOwZn4XQWTn5oCZBNW5Md
-         aw6A1Cv0b2gTDpcD9qNw9hom7Gw4KdFuRXP+5kZZx1i5lfVyBS2A3bjh7++UFSGBz8wN
-         a5cMXmdzMaGLlww6/HywRnfIRO1MhXQZsvg3oGXPfBmRALokeTkEwhnOykMwWtbLcoCf
-         BowujqRfU50fVpQt6+MV0qKzVx2ZWBlX9f8h1uxK8P92eNifDfHzBAmjTzHg4mziZWJa
-         PaCQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OMHhrbAanmo5lu+1OAkkg62WenW49sTgp4urIrYlrhY=;
+        fh=IdnJT1ZTPFFQP+b/F4hVzCBqB+EkaP2hT3dxgu7w/BQ=;
+        b=nudMnkU9DeuK0+HyAFOcsA5cV8zqB7kixsLhsFZr0XqvKb2JI+cioin59GfIVoZHVZ
+         tIyh/eT8/eppDwRmGvmBMKlLeDLCRIGY8R1E2vPEH54FmscUcnK9GSsM/t0RqcaOTmFK
+         NnFac8tPRzY+G1xa0qHnoTmDZNEgEnG9/IcmR5gRzi+4rZwwMG21NCndUXa+vZYrV16v
+         Hy1mmNSABaNuYxgu4qnwWaaKkhmJQgs3UhEhxFJq8daXZka31Pp1EcAnd253mlWiOa1r
+         wLryRAkotOeQA0Zdsu10pS5Lzs2B8u2B+TCGy3AfPKlq+gXsn/oBP+N9vYqVHCnTihlz
+         xxFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Qmrpo/df";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z25-20020a05620a101900b0078716472ccesi10732246qkj.646.2024.02.21.07.38.25
+        by mx.google.com with ESMTPS id gi8-20020a056214248800b0068cb64ecfd3si11623636qvb.86.2024.02.21.07.39.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 07:38:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Feb 2024 07:39:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Qmrpo/df";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcoZg-0003H6-Eg; Wed, 21 Feb 2024 10:31:56 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rcoak-0001gk-8J; Wed, 21 Feb 2024 10:33:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcoPq-0006qP-Mi; Wed, 21 Feb 2024 10:21:46 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rcoU5-0000w0-5P
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 10:26:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcmLw-0004qf-TO; Wed, 21 Feb 2024 08:09:39 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4TfxQK4zbyzWk4Q;
- Wed, 21 Feb 2024 21:07:37 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 45AFD1404DB;
- Wed, 21 Feb 2024 21:09:32 +0800 (CST)
-Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 21 Feb
- 2024 21:09:31 +0800
-To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v2 12/22] hw/arm/virt: Wire NMI irq line from GIC to CPU
-Date: Wed, 21 Feb 2024 13:08:13 +0000
-Message-ID: <20240221130823.677762-13-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240221130823.677762-1-ruanjinjie@huawei.com>
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rckLa-0000xt-Hn
+ for qemu-devel@nongnu.org; Wed, 21 Feb 2024 06:01:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708513264;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=OMHhrbAanmo5lu+1OAkkg62WenW49sTgp4urIrYlrhY=;
+ b=Qmrpo/dfpRUGANuWiqRjRNRhq3vsTMxHX+I+kZATBGyTyvsFPGw+oX7/PX7c6QHxAT/1qM
+ yk3s7Bsx702q+SLwEEC2AdVkxP0h3fkulSOYPlcWP4mmkTMpQJQA0kAqvE6eK/ikW27D/s
+ 0DAPWC6CrvTWfWcPNeNsXEhcb/xoKWQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-580-S4ruVI8iNoq71RCxv7i-OA-1; Wed, 21 Feb 2024 06:01:02 -0500
+X-MC-Unique: S4ruVI8iNoq71RCxv7i-OA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2C13E811E81;
+ Wed, 21 Feb 2024 11:01:02 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.194.110])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C69371C060AF;
+ Wed, 21 Feb 2024 11:01:00 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH] hw/intc/Kconfig: Fix GIC settings when using
+ "--without-default-devices"
+Date: Wed, 21 Feb 2024 12:00:59 +0100
+Message-ID: <20240221110059.152665-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.55]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lsckhzSwhZkg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ljprCRzjGTks
 
-Wire the new NMI interrupt line from the GIC to each CPU.
+When using "--without-default-devices", the ARM_GICV3_TCG and ARM_GIC_KVM
+settings currently get disabled, though the arm virt machine is only of
+very limited use in that case. This also causes the migration-test to
+fail in such builds. Let's make sure that we always keep the GIC switches
+enabled in the --without-default-devices builds, too.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/virt.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ hw/intc/Kconfig | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0af1943697..c442652d0f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -804,7 +804,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
+index 97d550b06b..2b5b2d2301 100644
+--- a/hw/intc/Kconfig
++++ b/hw/intc/Kconfig
+@@ -12,10 +12,6 @@ config IOAPIC
+     bool
+     select I8259
  
-     /* Wire the outputs from each CPU's generic timer and the GICv3
-      * maintenance interrupt signal to the appropriate GIC PPI inputs,
--     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI interrupt outputs to the CPU's
-+     * inputs.
-      */
-     for (i = 0; i < smp_cpus; i++) {
-         DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-@@ -848,6 +849,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-+        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-     }
+-config ARM_GIC
+-    bool
+-    select MSI_NONBROKEN
+-
+ config OPENPIC
+     bool
+     select MSI_NONBROKEN
+@@ -25,14 +21,18 @@ config APIC
+     select MSI_NONBROKEN
+     select I8259
  
-     fdt_add_gic_node(vms);
++config ARM_GIC
++    bool
++    select ARM_GICV3_TCG if TCG
++    select ARM_GIC_KVM if KVM
++    select MSI_NONBROKEN
++
+ config ARM_GICV3_TCG
+     bool
+-    default y
+     depends on ARM_GIC && TCG
+ 
+ config ARM_GIC_KVM
+     bool
+-    default y
+     depends on ARM_GIC && KVM
+ 
+ config XICS
 -- 
-2.34.1
+2.43.2
 

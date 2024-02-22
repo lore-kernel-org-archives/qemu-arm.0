@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2298722ejb;
-        Wed, 21 Feb 2024 18:35:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVLgUFK0E2ZKYtOb5+H4dwzA05peM1jeNwPESrle5fAUhakdCZziLgb2RBZhKa2vUqsI/Xro+JzK23U0CjSDy2ol7wxa02w
-X-Google-Smtp-Source: AGHT+IHCS+D3SjGITZ/4gV83BhHdWMgfsXEJBe5LsU01tyJIt70aTFUA0p2Pry5bWbLRAqzt8h4I
-X-Received: by 2002:a05:6214:2482:b0:68f:3b2e:3c0b with SMTP id gi2-20020a056214248200b0068f3b2e3c0bmr19645535qvb.4.1708569328242;
-        Wed, 21 Feb 2024 18:35:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708569328; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2300489ejb;
+        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWQqV7t1An9HzVPtYaJO1Y2A8v6CNHicoCNmWHrpaolplUEQmX1sNqHKumqC10dpvAJ6CscfIlAVhv4I3+T20+fc5vK1ml9
+X-Google-Smtp-Source: AGHT+IFmWK+9usYvwYEIMOp7cvQbai+u3wgtmsoZqFILkz7jfR7Cr2ZE1z4rNP4uD5HN7cahWa0X
+X-Received: by 2002:ae9:e90c:0:b0:785:dae5:b029 with SMTP id x12-20020ae9e90c000000b00785dae5b029mr19122536qkf.31.1708569663187;
+        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708569663; cv=none;
         d=google.com; s=arc-20160816;
-        b=dXh6f+Khv3+pMper3TAmK8DK3zbnB9dhNMYqb7gkj1Cl09OXiqKz8GjzrhrvbxllHl
-         hhbTP6JEFxUuhPwGcf6ZipWFKdhXk6lFqmbvhISP205YoWrmBx+MYiT5G4TlRGI7zvIS
-         icDUvtUuMtll9cZ62Ktc/93f8Fqt7tEmfU/LwwYqNG7CYqar/m9ZWKSpSoeQBxyGqtah
-         AuGzXPyLGOeN3E2wD/sT08or94T4MVYa2HjhdoQePAH3Tz7SOM9YCfhqwnCzy37ntXiK
-         DiesN/lUyVwA41VcU88HzAOSaAzBaRvggkLqcIDfMXlumG3mho5bjnOSiYOnen3UyZAV
-         4Hzw==
+        b=cFrmas9LK/a5vz+lmAk/jTws/dNlhY+ETQrd2vDlnmw92rkip5jtO5VZTXNahVdoRT
+         dU3RIG5rlZz6yeBhDurV+0kJyIZVV0jXGKPnO5B3feaaaCEfF8x3f3eDVzxdkVCu0RIj
+         nH12nGJj1z818Iy/M56Q9wAYUfxrGFTPgrXQnM23GiuavOyzmV/6cyPbJzU/3yNJaWBS
+         MGvnN9VH26/jpoC+GDqn0uThgfoX8spnbxLt+L/K4fk1LZLDQXkN5b3qt2SEJMZR2fWK
+         ucFIbDOkOtMyvvObB8Gt73JVJCbDhuBXSoB637QjtLH5lfgkIauaPV60knkA0ViCgbPm
+         OvFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:references:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=FHIIYGMw59dEwdwtIG7NRk+60LMjA5SK9n76u5XwXwQ=;
+        bh=WcsKV8DAiu/1uhH3qhJHhGbwUcCpZ4qSIR5e1d+lubU=;
         fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
-        b=NFljpNEY8eWqK/p3vg3WTS1ikutONiET+c1fWN+pzYbHeJpyhLVUUGsCHwi76wOxdU
-         jmnA1Ypy9f0v055S1hl36j32XGC3y2nxciXUfgfqHvGpfNORoOQflF3R5qzZUbYVIZTD
-         Bi3otPOpXa3AbzF/id1Tp+KvPRTj58TFGzOZOTYBPIp002zt88cdS6U+xsNC2wPCHzmg
-         kDc7OrpbacLrZj8435G1MvbGZnNgFOQs8DKfhZV17VZrudOLARKezfnNShkVL6DZBn10
-         Ps+UyKS/EVW4CfjZYGmDxcWALi0P4koD7qTrvNxa9B+EI+EuufV82QQfvMx5AWjSQfep
-         7leQ==;
+        b=mhgFCMgeEdRbC5Ra5Ll+A61kkpyXOF2diBwfhD8lFoHrzMb9D/x0GknSV8OELD76T4
+         OrxgwbZEbCp0fe2YcE+8K3IciIo/SaQeT7jDUHbOY/t+zaTf/aHy/PuRC+OZDSiCVqFA
+         zPBYrKt089iY1UOCadZ5AH/B5s5bI3uGjWQLVin59zi0fbY/N6CO+gkN15ZFmUFqXrFN
+         kTI3A3c2WlFfd+xEsgKnXcc22V2pzc0/NHPdyyaFf3KrSoNiz0S5fb66xDiTfMQ5ABmB
+         2xcdyDswD1uArb9gxxRG0G+BybNO/ozua5k0EwTCqmyQhWtYmFmNo2drG5E84ZJtysL/
+         fkWA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3-20020a0562140e4300b0068d15511a8dsi12320109qvc.74.2024.02.21.18.35.28
+        by mx.google.com with ESMTPS id e25-20020a05620a209900b0078769913662si7797332qka.60.2024.02.21.18.41.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 18:35:28 -0800 (PST)
+        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,27 +42,27 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcyvc-0003Tp-2W; Wed, 21 Feb 2024 21:35:17 -0500
+	id 1rcz0v-0004Yc-Pu; Wed, 21 Feb 2024 21:40:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcyva-0003Rt-0d; Wed, 21 Feb 2024 21:35:14 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ id 1rcz0u-0004Y2-62; Wed, 21 Feb 2024 21:40:44 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcyvR-0000Cu-3y; Wed, 21 Feb 2024 21:35:12 -0500
-Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TgHHN2jtHz1h04l;
- Thu, 22 Feb 2024 10:32:48 +0800 (CST)
+ id 1rcz0r-000154-RU; Wed, 21 Feb 2024 21:40:43 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TgHPv1kLsz2Bd2d;
+ Thu, 22 Feb 2024 10:38:27 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 9C6341402CD;
- Thu, 22 Feb 2024 10:34:57 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id AB42B1A0172;
+ Thu, 22 Feb 2024 10:40:36 +0800 (CST)
 Received: from [10.67.109.254] (10.67.109.254) by
  kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 22 Feb 2024 10:34:56 +0800
-Message-ID: <8978f3e1-b5b3-1a39-fe18-9e294b1bce07@huawei.com>
-Date: Thu, 22 Feb 2024 10:34:56 +0800
+ 15.1.2507.35; Thu, 22 Feb 2024 10:40:36 +0800
+Message-ID: <ab2e74b1-31f6-807d-430f-22a2cc63291c@huawei.com>
+Date: Thu, 22 Feb 2024 10:40:35 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
@@ -75,14 +75,15 @@ To: Richard Henderson <richard.henderson@linaro.org>,
 References: <20240221130823.677762-1-ruanjinjie@huawei.com>
  <20240221130823.677762-5-ruanjinjie@huawei.com>
  <9fb9c74e-e4d3-4a8b-b736-c8603414245c@linaro.org>
-In-Reply-To: <9fb9c74e-e4d3-4a8b-b736-c8603414245c@linaro.org>
+ <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
+In-Reply-To: <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -74
 X-Spam_score: -7.5
 X-Spam_bar: -------
@@ -106,113 +107,90 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fe3i4MESKAlu
+X-TUID: 2ZJLZu/JknYK
 
 
 
-On 2024/2/22 3:09, Richard Henderson wrote:
-> On 2/21/24 03:08, Jinjie Ruan via wrote:
->> Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
->> to ALLINT. Avoid the unconditional write to pc and use raise_exception_ra
->> to unwind.
+On 2024/2/22 4:41, Richard Henderson wrote:
+> On 2/21/24 09:09, Richard Henderson wrote:
+>> On 2/21/24 03:08, Jinjie Ruan via wrote:
+>>> Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
+>>> to ALLINT. Avoid the unconditional write to pc and use
+>>> raise_exception_ra
+>>> to unwind.
+>>>
+>>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>>> ---
+>>>   target/arm/tcg/a64.decode      |  1 +
+>>>   target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
+>>>   target/arm/tcg/helper-a64.h    |  1 +
+>>>   target/arm/tcg/translate-a64.c | 10 ++++++++++
+>>>   4 files changed, 36 insertions(+)
+>>>
+>>> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+>>> index 8a20dce3c8..3588080024 100644
+>>> --- a/target/arm/tcg/a64.decode
+>>> +++ b/target/arm/tcg/a64.decode
+>>> @@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 ....
+>>> 010 11111 @msr_i
+>>>   MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
+>>>   MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
+>>>   MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
+>>> +MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
+>>>   MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
+>>>   # MRS, MSR (register), SYS, SYSL. These are all essentially the
+>>> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+>>> index ebaa7f00df..3686926ada 100644
+>>> --- a/target/arm/tcg/helper-a64.c
+>>> +++ b/target/arm/tcg/helper-a64.c
+>>> @@ -66,6 +66,30 @@ void HELPER(msr_i_spsel)(CPUARMState *env,
+>>> uint32_t imm)
+>>>       update_spsel(env, imm);
+>>>   }
+>>> +static void allint_check(CPUARMState *env, uint32_t op,
+>>> +                       uint32_t imm, uintptr_t ra)
+>>> +{
+>>> +    /* ALLINT update to PSTATE. */
+>>> +    if (arm_current_el(env) == 0) {
+>>> +        raise_exception_ra(env, EXCP_UDEF,
+>>> +                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
+>>> +                                               extract32(op, 3, 3), 4,
+>>> +                                               imm, 0x1f, 0),
+>>> +                           exception_target_el(env), ra);
+>>> +    }
+>>> +}
 >>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
->> ---
->>   target/arm/tcg/a64.decode      |  1 +
->>   target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
->>   target/arm/tcg/helper-a64.h    |  1 +
->>   target/arm/tcg/translate-a64.c | 10 ++++++++++
->>   4 files changed, 36 insertions(+)
+>> A runtime check for EL0 is not necessary; you've already handled that
+>> in trans_MSR_i_ALLINT().  However, what *is* missing here is the test
+>> against TALLINT for EL1.
 >>
->> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
->> index 8a20dce3c8..3588080024 100644
->> --- a/target/arm/tcg/a64.decode
->> +++ b/target/arm/tcg/a64.decode
->> @@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010
->> 11111 @msr_i
->>   MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
->>   MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
->>   MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
->> +MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
->>   MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
->>     # MRS, MSR (register), SYS, SYSL. These are all essentially the
->> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
->> index ebaa7f00df..3686926ada 100644
->> --- a/target/arm/tcg/helper-a64.c
->> +++ b/target/arm/tcg/helper-a64.c
->> @@ -66,6 +66,30 @@ void HELPER(msr_i_spsel)(CPUARMState *env, uint32_t
->> imm)
->>       update_spsel(env, imm);
->>   }
->>   +static void allint_check(CPUARMState *env, uint32_t op,
->> +                       uint32_t imm, uintptr_t ra)
->> +{
->> +    /* ALLINT update to PSTATE. */
->> +    if (arm_current_el(env) == 0) {
->> +        raise_exception_ra(env, EXCP_UDEF,
->> +                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
->> +                                               extract32(op, 3, 3), 4,
->> +                                               imm, 0x1f, 0),
->> +                           exception_target_el(env), ra);
->> +    }
->> +}
+>>> +
+>>> +void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
+>>> +{
+>>> +    allint_check(env, 0x8, imm, GETPC());
+>>> +    if (imm == 1) {
+>>> +        env->allint |= PSTATE_ALLINT;
+>>> +    } else {
+>>> +        env->allint &= ~PSTATE_ALLINT;
+>>> +    }
+>>
+>> I think you should not write an immediate-specific helper, but one
+>> which can also handle the variable "MSR allint, <xt>".  This is no
+>> more difficult than
+>>
+>> void HELPER(msr_allint)(CPUARMState *env, target_ulong val)
+>> {
+>>      ... check ...
+>>      env->pstate = (env->pstate & ~PSTATE_ALLINT) | (val &
+>> PSTATE_ALLINT);
+>> }
 > 
-> A runtime check for EL0 is not necessary; you've already handled that in
-> trans_MSR_i_ALLINT().  However, what *is* missing here is the test
-> against TALLINT for EL1.
+> Ho hum..  I just noticed that TALLINT only traps immediate write of 1,
+> not also immediate write of 0.  So one helper for both MSR Xt and MSR
+> imm is not practical.
 
-Thank you! I'll fix it.
+it is a real problem.
 
-> 
->> +
->> +void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
->> +{
->> +    allint_check(env, 0x8, imm, GETPC());
->> +    if (imm == 1) {
->> +        env->allint |= PSTATE_ALLINT;
->> +    } else {
->> +        env->allint &= ~PSTATE_ALLINT;
->> +    }
-> 
-> I think you should not write an immediate-specific helper, but one which
-> can also handle the variable "MSR allint, <xt>".  This is no more
-> difficult than
-
-The kernel patches now uses the immediate-specific helper only, so it is
-necessary for test.
-
-> 
-> void HELPER(msr_allint)(CPUARMState *env, target_ulong val)
-> {
->     ... check ...
->     env->pstate = (env->pstate & ~PSTATE_ALLINT) | (val & PSTATE_ALLINT);
-> }
-> 
->> +    arm_rebuild_hflags(env);
->> +}
-> 
-> allint does not affect hflags; no rebuild required.
-
-Thank you! I'll fix it.
-
-> 
->> +static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
->> +{
->> +    if (!dc_isar_feature(aa64_nmi, s) || s->current_el == 0) {
->> +        return false;
->> +    }
->> +    gen_helper_msr_i_allint(tcg_env, tcg_constant_i32(a->imm));
-> 
-> You're passing all of #imm4, not #imm1, which meant the test in your
-> msr_i_allint helper was wrong.
-
-In fact, it's either 0 or 1 for CRm according to the arm manual, so it
-is not necessary.
-
-> 
-> To work with the generalized helper above, this would be
-> 
->     tcg_constant_tl((a->imm & 1) * PSTATE_ALLINT);
 > 
 > 
 > r~

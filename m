@@ -1,329 +1,258 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp149907eja;
-        Thu, 22 Feb 2024 02:23:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXLZuY3WFvaC4O975kJHPg+PBOAB4GbYGdkc15OwN58xBy4N0/n2N7w4yzu1fcV7j92HdfUc8ZUJqguIHjT/d9R/qJSd6w1
-X-Google-Smtp-Source: AGHT+IHceV5AnJcryerrlWJbsnm4JgutxBGaypuy+iPjyUQWyggpWMMivg+lE5EOPKEFUFjCt1Cw
-X-Received: by 2002:a67:f8c7:0:b0:470:7a7c:2d1c with SMTP id c7-20020a67f8c7000000b004707a7c2d1cmr5834860vsp.8.1708597395978;
-        Thu, 22 Feb 2024 02:23:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708597395; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp236024eja;
+        Thu, 22 Feb 2024 05:22:44 -0800 (PST)
+X-Received: by 2002:a17:902:6545:b0:1db:930e:e755 with SMTP id d5-20020a170902654500b001db930ee755mr21962332pln.35.1708608163965;
+        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708608163; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uozyf4No53O86F4zSfifSa/hXppvvXCDlFrzrveFP6Ni1W0oREm4qXQZ+65I3WC0Ub
-         BCIBrREpBUEhCa4TCk1GyUExgWfY2/767H//VHTpWBljo9LNvN/0RKBM0zhJ+1dnz90x
-         CbR5dY/Jwbj68BGCP0buRT+3yoosYKTJj3bUNnKA5T98i/BQTcNZhjW2wEjdIDAw8kIp
-         77w3Y7v8bzqlva9wReZ0U+rzj4YF7UwHOEiYtedxSke0quQ7wsK0xr4bagm+stXwRAKU
-         p8YR4ez64u1s4L5e9hv3r+iBPxGnbq6pS6/+jsz/TB43KLRamPp6Hel6FCAl/3KdhH2N
-         xe6g==
+        b=Rr/elmYpsv+5o6coQEj7oWVGGn/RxEheI4gRfAtRCl/VjAWM1HGsoiepn4BHBloRsS
+         zpL5kM7eyxyZyoSBd5nkH5qncovLlgHV8EppSoD3cQuaDtXWgsQyhU9+Ia9cMmH+cRsE
+         OC/mXuppctlzmP7AmM2oOOVLuVDmDEWMuBU0PSWDyDyBsyPda2mdEUOkFAMeIGpyKcx7
+         NaqXntO4iG3izhGt++YOHcS+PfLE5s8a8AacoaCI6HT2SijTZ+mECmsbJIzcDlaTpXla
+         ee1oYZggkaVsT6o+WtXfl2TvMWPQ7vYP6ohlOEVh+vuPneiW7qbllQlUb6LYnqc3NWOM
+         7DZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:references:cc:to:from:content-language
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3G5ZtWCruqMJib0Gry4WXYDIi8znaKzNdaMj3icRiKA=;
-        fh=XU0mkv5jlVB/hys95UZzPB8ctK96Y79TE8l0ggDN2lc=;
-        b=IKa1XScrBIiSwiXtPsdIdtOjOTP65OpkDVBfd1AFf7n0UvsM0VZFNNNJ5CZhU9/9og
-         KPlQW5BHfR+/RRCDnNKKBVCndj7bF2CBgw58JxmXZk8WdDxDdOQ0izn81lj9KMFsNHcl
-         1nIyKuH9pRhChEqlqSuaMPlbDwR7w0QQGDDlF/qEqXJKDl7ZzSp4oCyeBYbUupyya6jy
-         bcpkhGpB02qb0hWZ5wY1yqGPvz+5UEgTGgrTVd6KH1QcSe3PoHHCcI1F4sqkLskeW6kU
-         iTNlFwnRWM5tu3efH84sNxCkITqroxpnJtfzYYP4STK9KopV7Y6GdPkdgx9Fb+QXqz5D
-         RjiQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
+        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
+        b=0OUdErnkllXiNh0bk09QAGFmworqYGgQWj9+YnbkthVcbEvfRbb0sIOyyzuMeUU8GV
+         ovrF9kTP8rofSLmnlQS6gzvdvUgxxTMgpSRlUV/CRF54ET2MDGZEy97Q7Pt4n5kFax6w
+         cpOSWi+yBA58ZSFcTkB8EoUIFiVyJx2v64/HLnoDuLV7FSHbX9Sh/NnA6ejVblu13uRq
+         aPq3zVFyec0NL5UUaAlSuVby8ZOmlgDxuY8e3XHDhK7Y+P9wN7uz28v4r5jZlwasGQRN
+         SDz32evDRUQls9DqRSGySuZkQUdZiNNF7Cn7HhsWCmAVcWWV10aRXPBpMel3Lp+lfWn8
+         U/fQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDUG+Pzx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18-20020a05622a001200b0042e470c2276si1556915qtw.421.2024.02.22.02.23.15
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="O/LY3U/x";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y23-20020a17090264d700b001db561fa154sor5669265pli.16.2024.02.22.05.22.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 02:23:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDUG+Pzx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rd6EO-0007Y0-0B; Thu, 22 Feb 2024 05:23:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rd6EK-0007Sv-LS
- for qemu-devel@nongnu.org; Thu, 22 Feb 2024 05:23:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rd6EI-0003Uu-UP
- for qemu-devel@nongnu.org; Thu, 22 Feb 2024 05:23:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708597382;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=3G5ZtWCruqMJib0Gry4WXYDIi8znaKzNdaMj3icRiKA=;
- b=eDUG+Pzxk03e8cvJAVLQl/0CuqrJ/mlV5yc7gZfzTxxIo+0tb5/UbzIyJ3Xyg1I/+jnLRA
- 24Hf/02s1nfMsUy1jAJTUGIqG+wZyXJPBBHpiSkuGSVHfpCYG69wk7BH2EbqFIBjEY4yaP
- yzmiSfRyTzT8cXZhJxr+d64E930TOtE=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-570-oRfIkoQ6MzOiV9AjYLRAzA-1; Thu, 22 Feb 2024 05:22:56 -0500
-X-MC-Unique: oRfIkoQ6MzOiV9AjYLRAzA-1
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-a2f71c83b7eso626785066b.1
- for <qemu-devel@nongnu.org>; Thu, 22 Feb 2024 02:22:56 -0800 (PST)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="O/LY3U/x";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708608163; x=1709212963; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
+        b=O/LY3U/xbkBna8UdzQPi0DEgb3WIw1Mtq3CgkIjOWr/GkhT9ti93rJHcCMJ+0LCRSj
+         UO1Eu/ngQLSug98Xz+qvHVJdJSvaz3j9Qbm/vQvydV++yZOU8769KdcBupZGKE8RM9V0
+         WZoi8UbpW7CznbVOgEqMBb/OElezeCGMpoWjiGUwcjGoTQ9/Fu6GEcfRJ8wRTHSyY2gA
+         YTFn0zDX/XE/SRXxpflanVyfN2U06y/Fz06j2NKmZbaOZOI4yIxMqtLT8zma88GppBNC
+         A4r+gxMHE4Z3NOQopXoCQ6QO88pUhC9LkTbOiI++SSGS7Noed3EgxbORzoaW33znBnmZ
+         6zBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708597375; x=1709202175;
- h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3G5ZtWCruqMJib0Gry4WXYDIi8znaKzNdaMj3icRiKA=;
- b=GiV888jnr7rcfEeEpF3pejtehNLCW3U8j52ZTpuVNtHBW8s9kn0qoJrauB63/jL2Bo
- kSP4xEKGPv+7PXIqI7jjglJ3q1YJh5+yvjjbHBoxnupi8QaiOiwGuaTneWjjKxgFX/f3
- 2tHlcCVSjTS6T00r2gQ6DUyM6Ot6vRaHzoX++6Xa+Ign874ENQt8TJn4/arUxHpDPxqa
- x7yJG6yPkwl275GmnINyu4oyM6Yb3KRBd/zeJPnj39tSUyiRAe+6maWs1kqsojJfWh56
- kqzmLvm4mElSG1gocvofGib2FS+3HaMH5/uscnkoP+2GKmyZft6yJXG1WrS3M3BWyxKp
- XdLA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV6eCEPOez99sDOgaLl5mk0iUjLOP2HYNrnAW4nSun9oyEZtfhIJZxT7goyKRNi9Uke8p0xUepLZ86XfIpFN73CoNVl5hw=
-X-Gm-Message-State: AOJu0Yxxvtq5ZwBDyLoFjWXIQBBOzkRTluhHs6DYD+0LVtERe2vk8uFD
- T+Uz+zu4X+O8yF0F0iAqF5QhtTzvBIiZkK1KyUHzXFCxLlPgjALLzY6cVo/Vb0GZz8pfuRn3ifc
- O/g2bsNOzJi4UDnGZF9XbhKV8IzvScINbFik+Z4OACwHHeHgdEnZx
-X-Received: by 2002:a05:6402:4301:b0:564:27a5:4289 with SMTP id
- m1-20020a056402430100b0056427a54289mr10379556edc.18.1708597375647; 
- Thu, 22 Feb 2024 02:22:55 -0800 (PST)
-X-Received: by 2002:a05:6402:4301:b0:564:27a5:4289 with SMTP id
- m1-20020a056402430100b0056427a54289mr10379539edc.18.1708597375235; 
- Thu, 22 Feb 2024 02:22:55 -0800 (PST)
-Received: from [192.168.52.107] ([37.84.174.18])
- by smtp.gmail.com with ESMTPSA id
- cq27-20020a056402221b00b005648b000e91sm3346586edb.92.2024.02.22.02.22.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Feb 2024 02:22:54 -0800 (PST)
-Message-ID: <5ca0dad5-4cae-4d47-91c2-d7f54a31b031@redhat.com>
-Date: Thu, 22 Feb 2024 11:22:53 +0100
+        d=1e100.net; s=20230601; t=1708608163; x=1709212963;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
+        b=HsSdkeVYv4UnpmOQi2mta0ILz7aEFECGvqU5Ycdcl1XgUnSEZdops3ok5v2vS4CCX4
+         CyTp7+z+wPsK0HHC8tmWKO8uEuX33ij1zJma4dOzBBb788uOl40LznyJEkbtL5KLm7/R
+         54dnJ2NMuUAbZT0tbo5sp+StdrZyhlQPo/D1pMzOmeOn/ksgik3g9lI3n2odj5n670bH
+         qjdPhbj1xTarPN2JSeijhaERt5B03O7RyjmxqRhmsRAtdU0pMLkkF5iWBjcMhJsVrykL
+         tn3tDW3CS9lyNUlUh46ZBahz90MmInUp+SNzgMhj7y+LhBd7NCCbhxwTCRjh3n6zbc1s
+         gR0g==
+X-Gm-Message-State: AOJu0YzaGcJ3txOOZpekLA8gb2k6jkO9fnp11JaJd8m0urgWzR28fFBz
+	WXJf1IOZoSlajyjBgWjpwXlEyhAw7RqTfTcTqG0i/2PJNv33XFeP+PlwThRA4zZeeDiQykOhwtV
+	r
+X-Google-Smtp-Source: AGHT+IENTkBmQg0olIk0ilHX/sAMRTJBq14FrztFn4Wr4bbHecyeeBVSssBP0UmZaWhYwEN/dAnNBg==
+X-Received: by 2002:a17:903:32c3:b0:1dc:b64:13c8 with SMTP id i3-20020a17090332c300b001dc0b6413c8mr12147274plr.56.1708608163115;
+        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with ESMTPSA id jh18-20020a170903329200b001db3a0c52b1sm9937675plb.88.2024.02.22.05.22.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Feb 2024 05:22:42 -0800 (PST)
+Message-ID: <f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com>
+Date: Thu, 22 Feb 2024 22:22:35 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] target/arm: Move v7m-related code from cpu32.c
- into a separate file
+Subject: Re: [PATCH 18/23] plugins: add an API to read registers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
+ <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20240216163025.424857-1-alex.bennee@linaro.org>
+ <20240216163025.424857-19-alex.bennee@linaro.org>
+ <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
+ <87il2jcje8.fsf@draig.linaro.org>
+ <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
+ <87bk8ab0f4.fsf@draig.linaro.org>
+ <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
+ <87zfvtaoqq.fsf@draig.linaro.org>
+ <7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
+ <87cysoajhl.fsf@draig.linaro.org>
 Content-Language: en-US
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Fabiano Rosas <farosas@suse.de>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-References: <20240129081835.137726-1-thuth@redhat.com>
- <20240129081835.137726-2-thuth@redhat.com>
- <CAFEAcA_mf-iGD_P3DB=dw4n=qpFyNODtAz1jFKUdjFkM1eWVuQ@mail.gmail.com>
- <5553d942-5da1-4930-b404-2b71a6fd37ca@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <5553d942-5da1-4930-b404-2b71a6fd37ca@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <87cysoajhl.fsf@draig.linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fMNz4wl6tAK0
+X-TUID: cbE3QqAjRzE5
 
-On 01/02/2024 19.52, Thomas Huth wrote:
-> On 01/02/2024 15.17, Peter Maydell wrote:
->> On Mon, 29 Jan 2024 at 08:18, Thomas Huth <thuth@redhat.com> wrote:
+On 2024/02/22 19:20, Alex Bennée wrote:
+> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+> 
+>> On 2024/02/21 23:14, Alex Bennée wrote:
+>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 >>>
->>> Move the code to a separate file so that we do not have to compile
->>> it anymore if CONFIG_ARM_V7M is not set.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>   target/arm/tcg/cpu-v7m.c   | 290 +++++++++++++++++++++++++++++++++++++
->>>   target/arm/tcg/cpu32.c     | 261 ---------------------------------
->>>   target/arm/meson.build     |   3 +
->>>   target/arm/tcg/meson.build |   3 +
->>>   4 files changed, 296 insertions(+), 261 deletions(-)
->>>   create mode 100644 target/arm/tcg/cpu-v7m.c
->>>
->>> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
->>> new file mode 100644
->>> index 0000000000..89a25444a2
->>> --- /dev/null
->>> +++ b/target/arm/tcg/cpu-v7m.c
->>> @@ -0,0 +1,290 @@
->>> +/*
->>> + * QEMU ARMv7-M TCG-only CPUs.
->>> + *
->>> + * Copyright (c) 2012 SUSE LINUX Products GmbH
->>> + *
->>> + * This code is licensed under the GNU GPL v2 or later.
->>> + *
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "cpu.h"
->>> +#include "hw/core/tcg-cpu-ops.h"
->>> +#include "internals.h"
->>> +
->>> +#if !defined(CONFIG_USER_ONLY)
->>> +
->>> +#include "hw/intc/armv7m_nvic.h"
->>> +
->>> +static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->>> +{
->>> +    CPUClass *cc = CPU_GET_CLASS(cs);
->>> +    ARMCPU *cpu = ARM_CPU(cs);
->>> +    CPUARMState *env = &cpu->env;
->>> +    bool ret = false;
->>> +
->>> +    /*
->>> +     * ARMv7-M interrupt masking works differently than -A or -R.
->>> +     * There is no FIQ/IRQ distinction. Instead of I and F bits
->>> +     * masking FIQ and IRQ interrupts, an exception is taken only
->>> +     * if it is higher priority than the current execution priority
->>> +     * (which depends on state like BASEPRI, FAULTMASK and the
->>> +     * currently active exception).
->>> +     */
->>> +    if (interrupt_request & CPU_INTERRUPT_HARD
->>> +        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
->>> +        cs->exception_index = EXCP_IRQ;
->>> +        cc->tcg_ops->do_interrupt(cs);
->>> +        ret = true;
->>> +    }
->>> +    return ret;
->>> +}
->>> +
->>> +#endif /* !CONFIG_USER_ONLY */
+>>>> On 2024/02/21 19:02, Alex Bennée wrote:
+>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>>>>
+>>>>>> On 2024/02/20 23:14, Alex Bennée wrote:
+>>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>>>>>>
+>>>>>>>> On 2024/02/17 1:30, Alex Bennée wrote:
+>>>>>>>>> We can only request a list of registers once the vCPU has been
+>>>>>>>>> initialised so the user needs to use either call the get function on
+>>>>>>>>> vCPU initialisation or during the translation phase.
+>>>>>>>>> We don't expose the reg number to the plugin instead hiding it
+>>>>>>>>> behind
+>>>>>>>>> an opaque handle. This allows for a bit of future proofing should the
+>>>>>>>>> internals need to be changed while also being hashed against the
+>>>>>>>>> CPUClass so we can handle different register sets per-vCPU in
+>>>>>>>>> hetrogenous situations.
+>>>>>>>>> Having an internal state within the plugins also allows us to expand
+>>>>>>>>> the interface in future (for example providing callbacks on register
+>>>>>>>>> change if the translator can track changes).
+>>>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>>>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>>>>> <snip>
+>>>>>>>>> +/*
+>>>>>>>>> + * Register handles
+>>>>>>>>> + *
+>>>>>>>>> + * The plugin infrastructure keeps hold of these internal data
+>>>>>>>>> + * structures which are presented to plugins as opaque handles. They
+>>>>>>>>> + * are global to the system and therefor additions to the hash table
+>>>>>>>>> + * must be protected by the @reg_handle_lock.
+>>>>>>>>> + *
+>>>>>>>>> + * In order to future proof for up-coming heterogeneous work we want
+>>>>>>>>> + * different entries for each CPU type while sharing them in the
+>>>>>>>>> + * common case of multiple cores of the same type.
+>>>>>>>>> + */
+>>>>>>>>> +
+>>>>>>>>> +static QemuMutex reg_handle_lock;
+>>>>>>>>> +
+>>>>>>>>> +struct qemu_plugin_register {
+>>>>>>>>> +    const char *name;
+>>>>>>>>> +    int gdb_reg_num;
+>>>>>>>>> +};
+>>>>>>>>> +
+>>>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
+>>>>>>>>> +
+>>>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
+>>>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+>>>>>>>>> +{
+>>>>>>>>> +    uintptr_t key = (uintptr_t) cs->cc;
+>>>>>>>>> +    key ^= gdb_regnum;
+>>>>>>>>> +    return GUINT_TO_POINTER(key);
+>>>>>>>>> +}
+>>>>>>>>
+>>>>>>>> I have pointed out this is theoretically prone to collisions and
+>>>>>>>> unsafe.
+>>>>>>> How is it unsafe? The aim is to share handles for the same CPUClass
+>>>>>>> rather than having a unique handle per register/cpu combo.
+>>>>>>
+>>>>>> THe intention is legitimate, but the implementation is not safe. It
+>>>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
+>>>>>> guarantee. The key of GHashTable must be unique; generating hashes of
+>>>>>> keys should be done with hash_func given to g_hash_table_new().
+>>>>> This isn't a hash its a non-unique key. It is however unique for
+>>>>> the same register on the same class of CPU so for each vCPU in a system
+>>>>> can share the same opaque handles.
+>>>>> The hashing is done internally by glib. We would assert if there was
+>>>>> a
+>>>>> duplicate key referring to a different register.
+>>>>> I'm unsure what you want here? Do you have a suggestion for the key
+>>>>> generation algorithm? As the comment notes I did consider a more complex
+>>>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
+>>>>> either.
+>>>>
+>>>> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
+>>>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
+>>> We already do:
+>>>           if (!reg_handles) {
+>>>               reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
+>>>           }
+>>> But we can't use g_direct_equal with something that exceeds the
+>>> width of
+>>> gpointer as it is a straight equality test of the key. What you are
+>>> suggesting requires allocating memory for each key and de-referencing
+>>> with a custom GEqualFunc.
 >>
->> I wonder if this function could go in target/arm/tcg/m_helper.c:
->> it looks a bit odd in this file, which is mostly initfns for
->> specific CPU types. But it was in cpu32.c so I'm happy that
->> we just move it to cpu-v7m.c for now.
-> 
-> The only user of this function are the arm_v7m_tcg_ops that are defined 
-> later in the cpu-v7m.c file, so I think it makes sense to keep it here.
-> 
->>> diff --git a/target/arm/meson.build b/target/arm/meson.build
->>> index 46b5a21eb3..2e10464dbb 100644
->>> --- a/target/arm/meson.build
->>> +++ b/target/arm/meson.build
->>> @@ -26,6 +26,8 @@ arm_system_ss.add(files(
->>>     'ptw.c',
->>>   ))
->>>
->>> +arm_user_ss = ss.source_set()
->>> +
->>>   subdir('hvf')
->>>
->>>   if 'CONFIG_TCG' in config_all_accel
->>> @@ -36,3 +38,4 @@ endif
->>>
->>>   target_arch += {'arm': arm_ss}
->>>   target_system_arch += {'arm': arm_system_ss}
->>> +target_user_arch += {'arm': arm_user_ss}
->>> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
->>> index 6fca38f2cc..3b1a9f0fc5 100644
->>> --- a/target/arm/tcg/meson.build
->>> +++ b/target/arm/tcg/meson.build
->>> @@ -55,3 +55,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
->>>   arm_system_ss.add(files(
->>>     'psci.c',
->>>   ))
->>> +
->>> +arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
->>> +arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
+>> My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It
+>> indeed seems to need a more complicated solution.
 >>
->> Why do we need to add this new arm_user_ss() sourceset,
->> when we didn't need it for the A/R profile CPUs?
+>> It is possible to write a GEqualFunc and a GHashFunc that consumes a
+>> struct but it is a chore. How about having a two-level GHashTable?
+>> reg_handles will be a GHashTable keyed with cs->cc, and another
+>> GHashTable will be keyed with gdb_regnum.
 > 
-> cpu32.c gets added to the arm_ss source set which is linked into all 
-> possible arm-related binaries (qemu-system-aarch64, qemu-system-arm, 
-> qemu-aarch64 and qemu-arm).
+> That still seems overkill for a clash that can't happen. What do you
+> think about the following:
 > 
-> The goal of this rework is to have the v7m code only linked into the 
-> binaries that need it, i.e. qemu-system-arm/aarch64 if CONFIG_ARM_V7M is 
-> set, or the 32-bit qemu-arm linux-user binary.
+>    /*
+>     * Generate a stable key shared across CPUs of the same class
+>     *
+>     * In order to future proof for up-coming heterogeneous work we want
+>     * different entries for each CPU type while sharing them in the
+>     * common case of multiple cores of the same type. This makes the
+>     * assumption you won't see two CPUClass pointers that are similar
+>     * enough that the low bits mixed with different registers numbers
+>     * will give you the same key.
+>     *
+>     * The build time assert will fire if CPUClass goes on a sudden diet
+>     * and we assert further down if we detect two keys representing
+>     * different regnums. In practice allocations of CPUClass are much
+>     * farther apart making clashes practically impossible.
+>     */
+>    static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+>    {
+>        uintptr_t key = (uintptr_t) cs->cc;
 > 
->> What goes wrong if we add it to arm_ss() the way we do cpu32.c?
+>        /* this protects some of the assumptions above */
+>        qemu_build_assert(sizeof(*cs->cc) >= 256);
 > 
-> The problem is that CONFIG_ARM_V7M is not set for the linux-user builds, so 
-> the code does not get included in the "qemu-arm" binary anymore.
-> Now, the obvious answer to that statement is of course: Let's add 
-> CONFIG_ARM_V7M to configs/targets/arm-linux-user.mak, too! ... but I tried 
-> that already, and it also does not work, since then we'll suddenly try to 
-> include the hw/intc/armv7m_nvic.c stuff into the qemu-arm binary, which of 
-> course also does not work. It might be possible to rework that by moving 
-> armv7m_nvic.c from specific_ss to system_ss, but looks like that will 
-> require a *lot* of other reworks (e.g. arm_feature() is not available for 
-> common code). Another solution might be to move armv7m_nvic.c into the 
-> hw/arm/ directory and add it there to arm_ss instead ... it's then a little 
-> bit weird that this is the only interrupt controller there, but at least the 
-> changes would be quite trivial. What do you think?
+>        key ^= gdb_regnum;
+>        return GUINT_TO_POINTER(key);
+>    }
 
-  Hi Peter!
 
-Any hints how to continue here? Respin the series with changes? Or is the 
-current shape OK? Or are these changes rather unwanted and I should rather 
-forget about these patches?
+I think the assertion and comments are overkill. Doesn't having a nested 
+GHashTable save some words you have to wrote for the assumption?
 
-  Thomas
-
+I'm also not quite convinced that the comments and assertions are enough 
+to say this hack is safe; what if some sort of pointer authentication is 
+added and shuffles bits? Will this hack be compatible with static and 
+dynamic checkers we may have in the future?

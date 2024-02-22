@@ -1,82 +1,83 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp117327eja;
-        Thu, 22 Feb 2024 01:03:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWltoRhAD9xiWCf1s4uyebL9l7EBuihy0yg7ONR7Lxw1B1ameOFBDmWDSDXnkW5Nx3pnObaP26mkzZyO1M5v9tQc0O1WakI
-X-Google-Smtp-Source: AGHT+IEd8dRt2F719W9a9CxvKioKimsabA6uDMCRBCHanwLAGpk6pvN+sIDUusCD2SvZzgvxapP0
-X-Received: by 2002:a0c:aa51:0:b0:68f:30ec:f357 with SMTP id e17-20020a0caa51000000b0068f30ecf357mr2350966qvb.32.1708592621091;
-        Thu, 22 Feb 2024 01:03:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708592621; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp121286eja;
+        Thu, 22 Feb 2024 01:12:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWAanNrhXZq7pEG6ExQ/YGgyujttpRh74cKs7C28d/gJqfndAYp1h/oniGltDcQs/Yujsx/mUmdC/l4l6i+snYc6+iZWaZ6
+X-Google-Smtp-Source: AGHT+IFLuCcAhAjW+s+3V5ZPlHey+1G2ZmoUuQeoN85+ZcQ2MT1BPh55b7SJcb3d2Zl2DYhLbqGo
+X-Received: by 2002:ac8:5fd3:0:b0:42e:1299:3d6d with SMTP id k19-20020ac85fd3000000b0042e12993d6dmr11295693qta.19.1708593133604;
+        Thu, 22 Feb 2024 01:12:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708593133; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZWCACkdq//mfV5IT68bKo2S7dJun0T5KOIODzv9fuWDpLvTTIYSrtJNP5VsoSRuzb
-         0/D4cjwC/u7WhSKAT5cSU4kgXFtrI7xcOu17H+UVLOUX+/uN6UpIj6LHi4BRx1pFJq3W
-         n2owO8loet/VYaxGMcnCxJljxE8oUFIFB7Uqq9o4b2lS1fJAmaV59SgMWI68Dog7Kkql
-         pBRBiBvPUwlQZooy/4LyLVQq1UkjWGfn92a/6FHPj+/MOQbbLyDTZ0PVREUVQHg0Cgkz
-         t+50EKRokg9lsc8PzuVe50XY6Q013NOhhKPA9K1CKs/xA2YwqxcXYIHtG5dPs6vCf5Bk
-         42AA==
+        b=OZK/7BWd8YIYLkB1a2ZzzOtHM2kBSMCO2hRVOuiqSyabazVzTgNj/9PALDYV6GhZZS
+         nePfrIIgPYre8ty5i1My9e9cjdZQxwjHeJIY/vQW6UwAqNwwFZaE4D1arMrycjSSlH/U
+         AcXvrkbs7DtEGdvDMaZVwH1erRGPV/dPSE7uOjtpoC3xbnnv70CXoqjT2xpUo7NoijFt
+         SP18JPIixU+EFyVDbz5Dy+Nnhtq4oQl9+kB/4L81Ga8UegBEyIXzJh+Nok1N4N1VOpp+
+         pM+Sz5YpToWsmO+Fa00cDh6t4QbTOC7LusoR3AGaspsML+o0+oU5NlnUo2P6diHTSN9R
+         1MmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=pzejEWCQNcvfY0rXjzPvrBNdPKQMQixc/cY+wxb8pnU=;
+        bh=Yv6KYTRZywulRq/q/bBsrgVccuYRpv7YXgt2+QyuC6c=;
         fh=08Y8NipebI+FU6g12LieC5gvDAmYh7VFR6cLSAJhdlo=;
-        b=alPA89mp/FUqepN3GxM18P79Vo56hLQmwi4jBt4ucbCfvNtr/4vatshovbsBewp3cC
-         /rbXWNvOFXcBVj/1sUMbOEWZnG5jWDUzoajAUFuuQfr8cQAzPNvykv33K4T1AaqwNg4s
-         cpL0zx3zO6uefsqKddk8u5Np9yblzou8p7ByWlxpI6wRpZ2sWDW0q/ZuQ8jr6H2pPPk6
-         Hxv3F+S1lU51yfCYmeLh8nr1ReHn1ZAhBElgmFifCwkT8upzhKwInMx56h+Sqq0ew2xp
-         FoiqhhR7WPsuRdA4ZpiVrpxKnbVZBdcMC07ivs6op/jnkr7SO8gaDn1ikFcw1jd17L2A
-         wKBg==;
+        b=uOajlGW9QBijDN/aBEH62yj7AJ3lXHkGAlMTTxaS6kgVpAsDPFsRcG2JG9yRvFNwJQ
+         xwKarME4ZMt7xT5g9adp9Z8VCG55dGzBTvu5r3CGukzi/dXKJ2Lpg1I3IxzD56InbSsL
+         JLA29GLTTF/UvIlVDrrsx7t0RM6Wkh7nWr/KifKau343BlTO2g1W/lzkbHF5V/jdOh6A
+         U5RoSpxQvkfXzpXn8P7CGZrPYK7Olj0mzczijMq7fhrykd8qQzS5eMzr8xUkGJjdHQ1A
+         /+DJzcssSGGovjQVslyThAZk2M3B72gHqhVrAHdyX6gyK02A91vUVUa8Rgr2emz7Dmeu
+         3qbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=EsXl89AE;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=n5QCPuSw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5-20020a0562140da500b0068fa303de0csi3030566qvh.465.2024.02.22.01.03.40
+        by mx.google.com with ESMTPS id b18-20020ac85412000000b0042c2a78d9absi12207487qtq.373.2024.02.22.01.12.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 01:03:41 -0800 (PST)
+        Thu, 22 Feb 2024 01:12:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=EsXl89AE;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=n5QCPuSw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd4yv-0006NV-3w; Thu, 22 Feb 2024 04:03:05 -0500
+	id 1rd57I-00016x-19; Thu, 22 Feb 2024 04:11:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd4yt-0006Mw-OK; Thu, 22 Feb 2024 04:03:03 -0500
-Received: from mgamail.intel.com ([192.198.163.14])
+ id 1rd574-0000xX-J5; Thu, 22 Feb 2024 04:11:32 -0500
+Received: from mgamail.intel.com ([192.198.163.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd4ys-0007R8-6F; Thu, 22 Feb 2024 04:03:03 -0500
+ id 1rd56x-0000JW-9b; Thu, 22 Feb 2024 04:11:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708592582; x=1740128582;
+ t=1708593083; x=1740129083;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=pVCsK+Qv4FAZytRcJKKh5xEgXldDFEQHKJuro//Rm0c=;
- b=EsXl89AEbW/bX7NmHEtOv36M80Hv9WIWVIDti1q6l8HcKpTO1Nnj8M5n
- GdV5MI1yJyBfNKgmX3N4EPP84hE1gK1RhBWR1IPWqMAen151xx9HVw9U4
- qKqx+dXxjk/9RzKl+cmjoJ5gFCbUfN1qaLpw1N2qTO6M64A7WfaFjqXzJ
- l3rxdBNiZ3jarMnH1zpSRg58/LZbMB+CEI6Gxoui/rpC9fcspJG7hIz05
- 9Edzlew0CMDM/UmJyzU8XpAY6/qEOhOkxL1NJX9fnSFfH9bZnEDcudhJ1
- u91p51TS/RSL3Thj/kLAsqySJs/6qXTh3jweAZ5Xl5mGTLyY+bBFltyXc Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="2956273"
+ bh=csgdIDIEe+p+QSO7aSnhEL+gvYE3xf6SLHunqV3yQ9M=;
+ b=n5QCPuSwCMgEeLz3hNrcMyntOmKcSDfKXUjIAY+T3F+Tmc0gD3WsBrth
+ p8zf45SuBjU3hkD7I4wmtLsIhyFE7OJ2KCSMoaLIILwZORiWOQPiqX7/T
+ dX5L8ImsmH2ISVFr81dB4ZTbdbOJyD5CY/dkmJULe82nEe2C5nyklT/7x
+ 0lJPTmftXEvNPKzbznIXGevsOdX29WndsbxlgOitOIB2GlrDzHJdCEfYS
+ 5l+yPs4mKMVNfcMkXYSMogW87HVxC5jGan6UrTqP0rFfTxp3Q0iKNVcUS
+ wKTLe5be84NniScUTYVqO2QcVoEZDATsyvFb++LFCOeCzLqEBvdXVm7I+ w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="2690449"
 X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; 
-   d="scan'208";a="2956273"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2024 01:02:58 -0800
+   d="scan'208";a="2690449"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2024 01:11:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; d="scan'208";a="36260438"
+X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; 
+   d="scan'208";a="5804246"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by orviesa002.jf.intel.com with ESMTP; 22 Feb 2024 01:02:55 -0800
-Date: Thu, 22 Feb 2024 17:16:35 +0800
+ by orviesa008.jf.intel.com with ESMTP; 22 Feb 2024 01:11:10 -0800
+Date: Thu, 22 Feb 2024 17:24:50 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -86,17 +87,17 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH 02/21] hw/i386/pc_sysfw: Use qdev_is_realized() instead
- of QOM API
-Message-ID: <ZdcQ8wk6rPmivHWO@intel.com>
+Subject: Re: [PATCH 17/21] hw/i386/iommu: Prefer object_initialize_child over
+ object_initialize
+Message-ID: <ZdcS4qWnUt2vSqHT@intel.com>
 References: <20240216110313.17039-1-philmd@linaro.org>
- <20240216110313.17039-3-philmd@linaro.org>
+ <20240216110313.17039-18-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240216110313.17039-3-philmd@linaro.org>
-Received-SPF: pass client-ip=192.198.163.14; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240216110313.17039-18-philmd@linaro.org>
+Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -119,49 +120,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Pi60exmKem9Q
+X-TUID: ewjPl6ikXpgd
 
-On Fri, Feb 16, 2024 at 12:02:53PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Fri, 16 Feb 2024 12:02:53 +0100
+Hi Philippe,
+
+On Fri, Feb 16, 2024 at 12:03:08PM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Fri, 16 Feb 2024 12:03:08 +0100
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 02/21] hw/i386/pc_sysfw: Use qdev_is_realized() instead of
->  QOM API
+> Subject: [PATCH 17/21] hw/i386/iommu: Prefer object_initialize_child over
+>  object_initialize
 > X-Mailer: git-send-email 2.41.0
 > 
-> Prefer QDev API for QDev objects, avoid the underlying QOM layer.
+> When the QOM parent is available, prefer object_initialize_child()
+> over object_initialize(), since it create the parent relationship.
+> 
+> Rename the 'klass' variable as 'obj' since the argument holds a
+> reference to an instance object and not a class one.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  hw/i386/pc_sysfw.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-
+>  hw/i386/amd_iommu.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-> index c8d9e71b88..3efabbbab2 100644
-> --- a/hw/i386/pc_sysfw.c
-> +++ b/hw/i386/pc_sysfw.c
-> @@ -107,17 +107,15 @@ void pc_system_flash_cleanup_unused(PCMachineState *pcms)
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 7329553ad3..c3afbc4130 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1616,11 +1616,11 @@ static const VMStateDescription vmstate_amdvi_sysbus = {
+>      .unmigratable = 1
+>  };
+>  
+> -static void amdvi_sysbus_instance_init(Object *klass)
+> +static void amdvi_sysbus_instance_init(Object *obj)
 >  {
->      char *prop_name;
->      int i;
-> -    Object *dev_obj;
+> -    AMDVIState *s = AMD_IOMMU_DEVICE(klass);
+> +    AMDVIState *s = AMD_IOMMU_DEVICE(obj);
 >  
->      assert(PC_MACHINE_GET_CLASS(pcms)->pci_enabled);
+> -    object_initialize(&s->pci, sizeof(s->pci), TYPE_AMD_IOMMU_PCI);
+> +    object_initialize_child(obj, "iommu", &s->pci, TYPE_AMD_IOMMU_PCI);
+
+What about this name "amd-iommu"?
+
+This is more accurate and differentiates it from the other intel-iommu
+related implementations.
+
+>  }
 >  
->      for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
-> -        dev_obj = OBJECT(pcms->flash[i]);
-> -        if (!object_property_get_bool(dev_obj, "realized", &error_abort)) {
-> +        if (!qdev_is_realized(DEVICE(pcms->flash[i]))) {
->              prop_name = g_strdup_printf("pflash%d", i);
->              object_property_del(OBJECT(pcms), prop_name);
->              g_free(prop_name);
-> -            object_unparent(dev_obj);
-> +            object_unparent(OBJECT(pcms->flash[i]));
->              pcms->flash[i] = NULL;
->          }
->      }
+>  static void amdvi_sysbus_class_init(ObjectClass *klass, void *data)
 > -- 
 > 2.41.0
 > 

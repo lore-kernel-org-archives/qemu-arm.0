@@ -1,185 +1,144 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp10251eja;
-        Wed, 21 Feb 2024 19:51:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXi33MYfhr77XOV9J05+jPzCDvXVquhOhn8E5H6pr3p59+xNqzuOJE7i6uVdiMiRPTnbOKmhiAtcnvUc9BsSlOU/irWHznR
-X-Google-Smtp-Source: AGHT+IGW1ZIgdjL1UW+Oz7lTPT0QJo+0XVddbjxmLpwJA7eufBYg9g6BU4HXjhUJzw5WuuCMuY29
-X-Received: by 2002:a05:620a:1135:b0:787:3ac2:15ab with SMTP id p21-20020a05620a113500b007873ac215abmr20631577qkk.37.1708573865378;
-        Wed, 21 Feb 2024 19:51:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708573865; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp53105eja;
+        Wed, 21 Feb 2024 22:04:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWN7M5Ia85Es9ZmfxI6ivaQ/f85/H4thN6Bio5O9DmETOu4TwOO3bCv0stmTciTRQfrZIvDfuYhKRHJXHoPUwiCcRXC/yFP
+X-Google-Smtp-Source: AGHT+IE1FOL820QhCp4wMmqf4h9YoM1l+FOBc48FYVY9fawpMNTv/YNBDYG6eW1Uzv1PQ7+gONd/
+X-Received: by 2002:ac8:59ce:0:b0:42d:c63d:dde7 with SMTP id f14-20020ac859ce000000b0042dc63ddde7mr25225711qtf.17.1708581883956;
+        Wed, 21 Feb 2024 22:04:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708581883; cv=none;
         d=google.com; s=arc-20160816;
-        b=ok1Nj79wZXDmQ5hCVntGuUpRGqWtvH63IGSMgRaPcbPXFnMAbQVHXsJwj5IDkYKiB3
-         FiXF6mHBj5xkCUXZ10TTTvMAQGEEh9XK0RO+8nYBp3b3j8PdYJKsSaUITQ/v0ji9NgxS
-         f1aI1QsD7W7r9g++ELo+OcKyJkoWyTsB0mE/On9/51BQCPHAHj0wUzAM/GGOXtGjdZFt
-         sy2sPNfhVGidCCqPeF0f0m/y6aLP3/Rxwq41o5U1DesefzIzfaTlKJaFlvXsmSfdP0IF
-         rLM7r6QaKKOCa4oBI7fjiqg0jgX9yxB0ZjsyFTh+iZY0MKrYBEApFPeFdrFpi2xn7B8r
-         Zy/w==
+        b=LZ+qZLqZprp1s9ZE7QAcs6K14LDJr66mhdNU3yOqDNzMK7hTbFNUrICeEqD0ooJcfb
+         akrYn7Ds53g7DDf9niXKzs9+HDE4KjRWOUA7muotKMPjMgtSCwfyTjNVlft5IjY9u1ym
+         EvvFx3b+O322SBPHeAks8hsleXXPK5GEmwIat2REbajNSMt/ZA9mUCaDknIGNPpGyfFT
+         E1fJt9KbWqKYyT+wCUVlE9mxkH1NDmpjf5DsBZtAXtlOxftqD5M6fwfr2fV+fONa44Lv
+         l6+/ynvPoYdftuFjughI2w971xHpSk9E8wFWw1PGj3mJ1iRkeGLXeMuornEqMJDFco+0
+         O6Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=MT+AYhRUF1XpPy0C0+MO3Dsi0MSkoJaHCM5rTuJV4Ao=;
-        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
-        b=v0NgjRWoEQRKaZ9lPVKE7Ad1M0QulDRM7RccuDJVMsi9fuRkb6ivDE7ABG8dId6JXO
-         wO8TwegMHAgRlLNKbJ1k/6a09SyXUihva9HxtwBSxc+CKDQO/unv21ZKvgIkVQ6ASLL2
-         LG9KsNfQvmVFcxA/eJQi0157QvwFhgGKNq7I3Ea8GV1nqY1wyGZ1b9u7MGG2AgfOYlPK
-         hhS9lMVE+GWsXDvsWX7CLLq80bzOSfIWHcU+e/DY7NBEczpUl71nsYczDz/aGgXkK/J1
-         /CPfdVRJMcNX9ybVRWDJ8oAN9xS6sgbVOABeT+Nvny7oKUtrKkxZEyRzkellu477dS+I
-         sUDg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id;
+        bh=1Z3fQwZce6c4EAJ3cRok9d+8xp2LyAhnrMu+6DB3U/A=;
+        fh=XC2TqlEyHcZYTUoNUcigPBdXwDuE4SlR/HZOPwUjYic=;
+        b=XQW2roahrFlt8P4nfWr0kVGcBICzI0h7wEqX0ptPg6iv0Lm0chRglTqdlOibuYXyMa
+         lTmKYtTvhFBftNCjCYdPQL32CKRo7PdW8Z1oz0xEZBhURYGbS5Q+mw6WZov53q3sG8SZ
+         k5JbpHe3oRA1mZOvgcSPyrhIDNY2DN5bM76u3GQJ36bDLsjwG/zyiYT7K0vvoGvnEh+J
+         7ZiPsWB+0WaNGDBUtaK/j0/Mid9jhNxnUx8eMNPddna8vOQApMTWxB87yJrY40bsyC1h
+         Gt8um2cXXLAZYEaJ5owchRrcKW1+FpN2iejyxLAxWZlAtp6+lZ0XrUUyxq8ApVqvbMfV
+         ShHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m22-20020a05620a291600b0078790ff4921si1956028qkp.75.2024.02.21.19.51.05
+        by mx.google.com with ESMTPS id s24-20020ac87598000000b0042e50c47cafsi210805qtq.47.2024.02.21.22.04.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 19:51:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Feb 2024 22:04:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd06s-0007Rt-7b; Wed, 21 Feb 2024 22:50:58 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rd2Bw-0000YL-Ar; Thu, 22 Feb 2024 01:04:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rd06r-0007Re-5j; Wed, 21 Feb 2024 22:50:57 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rd2Bt-0000Rr-Qy; Thu, 22 Feb 2024 01:04:17 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rd06o-0004MD-8m; Wed, 21 Feb 2024 22:50:56 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4TgJzl4qspzNlmc;
- Thu, 22 Feb 2024 11:49:23 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 794AD14011D;
- Thu, 22 Feb 2024 11:50:47 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 22 Feb 2024 11:50:46 +0800
-Message-ID: <09fde4c7-2000-5e78-f33d-c80fbcd49405@huawei.com>
-Date: Thu, 22 Feb 2024 11:50:46 +0800
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rd2Bs-0000Hl-8m; Thu, 22 Feb 2024 01:04:17 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 341554FA15;
+ Thu, 22 Feb 2024 09:04:37 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1F42786C80;
+ Thu, 22 Feb 2024 09:04:14 +0300 (MSK)
+Message-ID: <34f501b4-94d3-4cb1-96b8-1d2a77013817@tls.msk.ru>
+Date: Thu, 22 Feb 2024 09:04:14 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [RFC PATCH v2 05/22] target/arm: Support MSR access to ALLINT
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/6] [PATCH 0/6] Fix missing ERRP_GUARD() when dereference
+ @errp
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>,
- <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
- <20240221130823.677762-6-ruanjinjie@huawei.com>
- <699fbf87-8f24-4d3d-b230-f956ce371f20@linaro.org>
-In-Reply-To: <699fbf87-8f24-4d3d-b230-f956ce371f20@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=ruanjinjie@huawei.com; helo=szxga03-in.huawei.com
-X-Spam_score_int: -74
-X-Spam_score: -7.5
-X-Spam_bar: -------
-X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1bpBpWa0LyCR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yfQoJJpVZTVr
 
+21.02.2024 12:43, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
+> 
+> Hi all,
+> 
+> Thanks to Markus's explanation about ERRP_GUARD() on my previsou
+> patch [1],
+> 
+> I realize that perhaps more @errp dereference cases need to be
+> double-checked to ensure that ERRP_GUARD() is being used correctly.
+> 
+> Therefore, there're the patches to add more missing ERRP_GUARD().
+> 
+> [1]: https://lore.kernel.org/qemu-devel/875xz0ojg7.fsf@pond.sub.org/
 
+Hi!
 
-On 2024/2/22 3:28, Richard Henderson wrote:
-> On 2/21/24 03:08, Jinjie Ruan via wrote:
->> Support ALLINT msr access as follow:
->>     mrs <xt>, ALLINT    // read allint
->>     msr ALLINT, <xt>    // write allint with imm
->>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
->> ---
->>   target/arm/helper.c | 32 ++++++++++++++++++++++++++++++++
->>   1 file changed, 32 insertions(+)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index a3062cb2ad..211156d640 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -4618,6 +4618,31 @@ static void aa64_daif_write(CPUARMState *env,
->> const ARMCPRegInfo *ri,
->>       env->daif = value & PSTATE_DAIF;
->>   }
->>   +static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo
->> *ri,
->> +                              uint64_t value)
->> +{
->> +    env->allint = value & PSTATE_ALLINT;
->> +}
->> +
->> +static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo
->> *ri)
->> +{
->> +    return env->allint & PSTATE_ALLINT;
->> +}
->> +
->> +static CPAccessResult aa64_allint_access(CPUARMState *env,
->> +                                         const ARMCPRegInfo *ri, bool
->> isread)
->> +{
->> +    if (arm_current_el(env) == 0) {
->> +        return CP_ACCESS_TRAP_UNCATEGORIZED;
->> +    }
-> 
-> This is handled by .access PL1_RW.
-> 
->> +
->> +    if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
->> +        cpu_isar_feature(aa64_hcx, env_archcpu(env)) &&
->> +        (env->cp15.hcrx_el2 & HCRX_TALLINT))
->> +        return CP_ACCESS_TRAP_EL2;
-> 
-> You should be using arm_hcrx_el2_eff(env).
-> Missing braces.
+Since you're going to respin (it looks like), please include the initial
+patch (hw/intc one) into the series as well, so it's all in one go.
 
-I'll fix it, thank you!
+I'm not sure this should come via trivial-patches tree though.  Looks
+trivial enough :)
 
-> 
->> @@ -5437,6 +5462,13 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
->>         .access = PL0_RW, .accessfn = aa64_daif_access,
->>         .fieldoffset = offsetof(CPUARMState, daif),
->>         .writefn = aa64_daif_write, .resetfn = arm_cp_reset_ignore },
->> +    { .name = "ALLINT", .state = ARM_CP_STATE_AA64,
->> +      .opc0 = 3, .opc1 = 0, .opc2 = 0, .crn = 4, .crm = 3,
->> +      .type = ARM_CP_NO_RAW,
->> +      .access = PL1_RW, .accessfn = aa64_allint_access,
->> +      .fieldoffset = offsetof(CPUARMState, allint),
->> +      .writefn = aa64_allint_write, .readfn = aa64_allint_read,
->> +      .resetfn = arm_cp_reset_ignore },
-> 
-> You cannot add ALLINT here in v8_cp_reginfo[].
-> Compare fgt_reginfo[], and how it is registered.
-
-I'll fix it, thank you!
-
-> 
-> 
-> r~
+/mjt

@@ -1,107 +1,105 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp254447eja;
-        Thu, 22 Feb 2024 05:58:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWzx94zLpNuEue36zcMr7UxOxZ+wb6ZsXEVPgvhc9AgGyAiw571ReBDsNx2CZYMV9wJwBOkqvyBwVFl3BRm4KANv8c/girH
-X-Google-Smtp-Source: AGHT+IGSk7/epUf2B1LtSBica+q+ly63cJnXha6qkmHGI2N03Q5BE1CSAoNfsudzkth8Qfgp7aP/
-X-Received: by 2002:a05:6214:4001:b0:68f:301b:5485 with SMTP id kd1-20020a056214400100b0068f301b5485mr21341804qvb.5.1708610314316;
-        Thu, 22 Feb 2024 05:58:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708610314; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp254775eja;
+        Thu, 22 Feb 2024 05:59:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWtRicg9ymqA6GORUbFx+sYwFxCNzFAw42vwmpUoB1yJyaA85lVAyXQZsDJm1L1cspn6qJL1aFbzCq4Vho1oVcjQm7/3JIh
+X-Google-Smtp-Source: AGHT+IGcISZJadhh89Jdt8gwftGPd/Ck7ishIbmKncevbv5VL1HK6Aw/y7ioOJqmJ0S2DFEd9AXs
+X-Received: by 2002:a05:620a:1a23:b0:787:8aea:512d with SMTP id bk35-20020a05620a1a2300b007878aea512dmr5570287qkb.78.1708610350750;
+        Thu, 22 Feb 2024 05:59:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708610350; cv=none;
         d=google.com; s=arc-20160816;
-        b=KvDOImF6icLjAf/La14uNxkdokFlPGJ6Q16cM7IwEmwwiWcX4qYENxhE0hYi03ZYuA
-         zgXWB7baMlSTyEf6A66j59YPsn9xXt5HPFipnhBER3We/qsBQx9lGYPqGkKu8knGhqqd
-         5j6NbXGK7kcXXmoLy6jtX4GvwK1G+Eg7EDvVGCpg38weFtBz6avqae1MFnuvhsCp5QDA
-         +mZARAQ4/AVcxjKlFEy/OKw+g35eGE02Upl/03zqhGQ7nYKBb/ULMZ4klH6IEII3pfjS
-         xjXyCNFnwxivBoNcgKknaBDJDSd39AofOsWZ71LP/atm3WbG8sJaAa7d+9uk6TL6msar
-         F3eg==
+        b=r4PvEbGf8Eg7QxZmOKtygvj15JK/8oyPZVLTb1FIDVNYUAET295pxIsUh6z9CU5D5+
+         SktzDxFIesSgIvzOLmwYbStM4MFRoVG+t1h1hjdkaNVsEG3wl9k6aK6lkLoexL/J08Vt
+         JCwQ+9J2zFkWh+lIUmEHFhvMH9YbTuUmZKk9ESmIAPbcytnZio37EltEx3ngaDkAZmTb
+         convxwzu+jDxE1yeiE5/90d/JNOaRpkiuFcHi78H7c9c/pS4ExIrtLYWwreEH9E6rtNL
+         lIQTOlXSiybeS8LbHEtsGhjBU41sRQZbAV4fI54lDRfh5vbfS+bC4JN5vrRwl6t1DwR4
+         99Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=jDPcUci35H3C/VnE3OFjdHJIAfHNt88JWRtO5LfoxiM=;
-        fh=YEZkz5xE9XsHqQ98J3jWBds8Am+BoXM5EH5ZHLsfabI=;
-        b=jT7ECXMpCxelcTJZLJbX08juAB5QsnSb24n9ge0exLuEFDQiRNIypXKFXBNeUX25Jr
-         5Twvnli5MZ9QMaW53OQqrgUTzgyR2Y3bEO7VrtqjpKjZpty8stmEXzGW/ntQMizDgn0X
-         8BWD0vXa78F922Z1to1jxcBfQ3vEKTfqYnDgep4U7WqnlTA1XEWZt9zStlpogzCPQvY7
-         VtgEFDwfaPFd6AXyJb2rIpqgpuu0FrpTqEW8tbDknEfTfL9kE1s+t5+SYTICm7Xc5B2I
-         d6g5lMMu3zKwRxrAcWKTr5ndDaLB4z4/XZZHgBq3IHiluxUTlRbMjtQBMCgUkEZvNY/U
-         ipUA==;
+        bh=f4A5QTEiDWI+EfdbbvxQ+LWL8OIiOi+Y61Valh+/N3Q=;
+        fh=wxzeESFP/cptHoyIb0uKR5nhxyWK8wRHxu7nE7/TY1E=;
+        b=sB2TklL0qZeQgm0+BcNu8OAivuS7u11hHalQLLAYcWLVXojSciG+VHOyh2GFWRp37r
+         EQc/qhCFPAutlOZxoLJowvV+5TMLeNZh4fIaIS6ELDdqLo0Z5e4VcMQ3v6VnJ+IhmXfL
+         GCa8a/6zCaSt5CyTxAGuaHQST3QBFxpc0L+iHnM32MgMUR4L/foNlpJUnd/GIravw/SS
+         v9femIEeFdWU/y4FHcBi8lLRU6uHBqZ9+9ANlCua9XQXVKhIgx/wkAbZTdxyZ6RCOnwM
+         /ZNhYRCwbJUqHIeAJcvZ8qEqNPcSTWaSyKK+zFM2Tgk4WzI4Epq1+4s0Dtwxpfdhr7gZ
+         ShcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ihG4pOj+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UGaSoyKh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8-20020ad45f48000000b0068f99fe364dsi4962813qvg.483.2024.02.22.05.58.34
+        by mx.google.com with ESMTPS id c19-20020ae9e213000000b007876a58f82bsi8274619qkc.270.2024.02.22.05.59.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 05:58:34 -0800 (PST)
+        Thu, 22 Feb 2024 05:59:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ihG4pOj+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UGaSoyKh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd9a7-0007wp-NO; Thu, 22 Feb 2024 08:57:48 -0500
+	id 1rd9bA-00010R-0E; Thu, 22 Feb 2024 08:58:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rd9a2-0007w8-3z
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 08:57:42 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1rd9b8-0000vB-2k
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 08:58:50 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rd9Zy-0000Fr-Hw
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 08:57:40 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-564647bcdbfso2118120a12.2
- for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 05:57:37 -0800 (PST)
+ id 1rd9b6-0000Op-KS
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 08:58:49 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-563c0f13cabso10135505a12.3
+ for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 05:58:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708610256; x=1709215056; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708610326; x=1709215126; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jDPcUci35H3C/VnE3OFjdHJIAfHNt88JWRtO5LfoxiM=;
- b=ihG4pOj+2z24Y+3FmaNskBYWA2yzXACyPA0MrOT1Qm6TJ72xfVA+2V7wRvFTD1QIPo
- kyF4E6I3xz0y1YSM5hisLXTpTKllgAQMYOyQEQE9zdYvfG03AA8Py83Z/g9EX64XXw4t
- ojBaK85rYccm+ICiTB/TzbV3LaPKjEN47J8Hw3Ku6pePZj2/QAKmbHF/OUN4ZAi9oMa4
- MoeHeQ0idEXj2N9RDIRsrsRzVaqIx2Svq4OGXPI0Vg2O4ikpYSnyen588LBm0qXmPq6Y
- X2H0zg1cIYWbLkorOD5N8aK+bp1lVa38sAbobpr8EG3O+C2ckrsXVeHaurmPJ6Wte0wS
- a16w==
+ bh=f4A5QTEiDWI+EfdbbvxQ+LWL8OIiOi+Y61Valh+/N3Q=;
+ b=UGaSoyKhP4K89t3GwugN4+FezHSrvof1uLCwjf/dfPsjgQDLJt+HqxMpVmc3yi7ruV
+ dIRTIVBS8iLGotSZRaErEgGXKFfPIRE55Bx0RXAm0TO7Qz80yq3dXluXUh9gipzCWGCz
+ OUh2COq3H5kpnkT29wxumEByRLIoBHU2PyOQDVFiV1vsQdOnGxzA78IHQT2Mo1cqU1PE
+ q0bEQrbTzt1/NkUPT+sEtTgleGmJKSlQy71/idqW9DK+gHnh8ipWswa5v1hWKRhvhrsL
+ 1yiud0jt2x5ytxyWG065AWBsiTLdJ3ryqUpiZ6nFOpqYIIob1D+igbiYzpBJudypx7c3
+ xxvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708610256; x=1709215056;
+ d=1e100.net; s=20230601; t=1708610326; x=1709215126;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=jDPcUci35H3C/VnE3OFjdHJIAfHNt88JWRtO5LfoxiM=;
- b=M8nlOrdvZWugoxVgW1aV6NJXB95OhROgZt1xGqIINrZHr2GNCFeAEhnvoVAMpwW2e4
- Rckq768FJz8LsP1+d1ffJOl4aI8iq1IdVlsie46otvQ39pjIZKLa/yDVV0L0Ow9udaUw
- nmVEALeQ8Iv/CuCSH4WMZsH3f3X+bG6CABFTH/xwvLX9vDBTf1+NgZcaeofOm+mnbKpR
- fMFURAktLB4/2XvC2oajhu4LzQXGZUlPc1VAlunw5SCvQ44Uh37zqB0ckmRu5cbAbNVO
- P0Fc6fL+pkrVBuRovIPMz17XurujAdnIm3pMpWApzuxEz2HxexmkZKwTE2cz4Mb4ZLAn
- cA1A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUiSYB5Mi4G4I+apAjiKeeN2LLSyFWJm+Hd73BgiutVBiFk6QlrhyXSLr1VteQBHMjQAtxTrHlbA8wJ5/tvE4s6rV1h
-X-Gm-Message-State: AOJu0YxyUhj6oPKd5ZQirWIcPuzccNFjTUEVqernugC9oa4k6z9BISl2
- LzvAr6AZzVVoMrJNWGH8darEbGNEkNFS64cqNLJA/veRGaYHmcTr/TadWVWjzS608lHEKn9EX1A
- vZ8mRLOzrBTC61hh7FgKta3NKUg2+fnujTl6z/Q==
-X-Received: by 2002:aa7:c643:0:b0:565:3a0e:5455 with SMTP id
- z3-20020aa7c643000000b005653a0e5455mr1260547edr.37.1708610255383; Thu, 22 Feb
- 2024 05:57:35 -0800 (PST)
+ bh=f4A5QTEiDWI+EfdbbvxQ+LWL8OIiOi+Y61Valh+/N3Q=;
+ b=EkjMHBo5+O682Ae3kKi3+7oBfGanE1c78gCaC4qOEMW4D0K2CAixiO7gWY8dzR7pEF
+ DHjUmsEU6ZeWk3gEKnXQdtLMF5Ez7PJMY6t6h0DGmPpmsWzRnAV023JYTQvVl0/EWw2x
+ igOsXhbl10AmKkcOxN6Ek6tSNMgOWd/yAxSpq7UjzbTSWQ759b5eP9KONNoMSA9jce70
+ 0tapXgIm0A/j+qVRq77EcSYdl4g2F40es4fcIhkzUSorCI68WhzPlrvF5sVvUZBgqXYN
+ qaX26vMsuHCG/npo1PZAdSQSOVqOVZPWardwvxAzjm9pytFVAqyC+aBmf92aBqT7D4Pv
+ o3iA==
+X-Gm-Message-State: AOJu0YwBGe8AYs82E1ZpWTK5isw6Qhhdo4i3MGLBQmXYfy5g6h9uqJ29
+ /orY5GMqxZa/8qE0pUhewGuh0Yt2ipAUOQibS1MtTI1dfQbbwnk16mOwiQ+BvKk+DBEnBBMHe1p
+ DUuz4r9/XmBDkbRRvTPJaEAv1XzQBYEmkmiKw9A==
+X-Received: by 2002:aa7:cfda:0:b0:564:f9f3:801c with SMTP id
+ r26-20020aa7cfda000000b00564f9f3801cmr2928331edy.33.1708610326159; Thu, 22
+ Feb 2024 05:58:46 -0800 (PST)
 MIME-Version: 1.0
-References: <20240215153311.186772-1-marcin.juszkiewicz@linaro.org>
-In-Reply-To: <20240215153311.186772-1-marcin.juszkiewicz@linaro.org>
+References: <20240215160202.2803452-1-ardb+git@google.com>
+In-Reply-To: <20240215160202.2803452-1-ardb+git@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Feb 2024 13:57:24 +0000
-Message-ID: <CAFEAcA8UAeCPN6bJXZhprvESDaXG0DqoXbtdF3_6ZnKwM4inQw@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: Simplify init since PCIe is always
- enabled
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
+Date: Thu, 22 Feb 2024 13:58:35 +0000
+Message-ID: <CAFEAcA8z-xqsBt4rFOkY0Rqj+7wJs+KLsCC9VFogxFthi=iKyQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Advertise Cortex-A53 erratum #843419 fix via
+ REVIDR
+To: Ard Biesheuvel <ardb+git@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org, 
+ richard.henderson@linaro.org, Ard Biesheuvel <ardb@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,18 +121,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2mkD/CjipJZB
+X-TUID: dB7Z/PHKZhxy
 
-On Thu, 15 Feb 2024 at 15:33, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
+On Thu, 15 Feb 2024 at 16:02, Ard Biesheuvel <ardb+git@google.com> wrote:
 >
-> There is no point in checking do we have PCIe if first thing after check
-> is adding PCIe card without checking.
+> From: Ard Biesheuvel <ardb@kernel.org>
 >
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> ---
->  hw/arm/sbsa-ref.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+> The Cortex-A53 r0p4 revision that QEMU emulates is affected by a CatA
+> erratum #843419 (i.e., the most severe), which requires workarounds in
+> the toolchain as well as the OS.
+>
+> Since the emulation is obviously not affected in the same way, we can
+> indicate this via REVIDR bit #8, which on r0p4 has the meaning that no
+> workarounds for erratum #843419 are needed.
+>
+> Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
 
 
 

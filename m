@@ -1,266 +1,164 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp218583eja;
-        Thu, 22 Feb 2024 04:55:34 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWFzrbzRRM+xju/CIxMGVLKYLYzXWiW2S4K+COOlxe6+ISEqphp6jl96np6xZfE268PQFH431kQvlrFpJR+XrnusgDGyL/I
-X-Google-Smtp-Source: AGHT+IGlcfDTPsmuD58590wGG4L5jywuuzoaxYxY6Lo+txKX5Lcguj6BYtYsJMYuMF2blzbU9r3l
-X-Received: by 2002:a05:6808:1481:b0:3c1:5f35:38a4 with SMTP id e1-20020a056808148100b003c15f3538a4mr11049660oiw.6.1708606534552;
-        Thu, 22 Feb 2024 04:55:34 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708606534; cv=pass;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp218730eja;
+        Thu, 22 Feb 2024 04:55:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVT3K8cz/E65OYItf0BvzgenZt/6MinqU8cHrxAoFhfHveM0yo+aS2vA5FU6pZrZ5V6EeUke1gWll7q9CpULKvgOgdem7VU
+X-Google-Smtp-Source: AGHT+IHlS/a0PFNJ23z3bugqUZ6SYYI2hJ5v1Q5uTsPLOsgoypmahqq4du6+veqE6/CZm/YPUI/g
+X-Received: by 2002:a05:6214:529a:b0:68f:634d:4433 with SMTP id kj26-20020a056214529a00b0068f634d4433mr14814509qvb.31.1708606554313;
+        Thu, 22 Feb 2024 04:55:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708606554; cv=none;
         d=google.com; s=arc-20160816;
-        b=JHU2faXQgCprfUT3NhpDx4BOnv2L+g65tlJBT6HZG5SP3lyGorI9t1DQ2kcWGXWOwc
-         H7RQhdoqNT35oL7azwXRkkUnCw9DfBVffKT50xqeBfTrTYdFgX/ltVL+3j3tj5DmT+hu
-         TQW6DMj7T0idrYGpBmLPPKt6LDjq80VOIh8r9Iiy3timVP1+WF2cCIQnqih18WjMv7fB
-         0MdO+513ybB4Uib00ukJhQ26iH/NFsvDNYit27g8ikW5O2vvV1wHDuCllvph/h3ZWZ5L
-         HTXJUSp83Z8mt+wpbuCLPldQRxhQOfwo/V/dn2wcZ+QXuT4qw4WVXLyV6qGx3ZRF8EWi
-         ty/A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+        b=EHM7tUoYtevsOFDCws++UC3IevD/wrqv/+mTVrOY+Fqgs36hUubTCyVMuxTunJmA0m
+         hxh9tv3KClNxQ0A9WqiJfd7e19ePjOjb6KulHUBh3OPta4iUo11o05T1dxRcg2CsPNmx
+         GBYiVwhJrY9PFDtCzRwUxOlZ44GVg2ekfFeDlgwekC6CltaLUWX5S6xSOmtZKaXvSnpo
+         d9vI4fJXyGMbB092VEJJdMqSXhjMn8jA/Ul9c/1u/X0AAS/2Py2gZrWPubEXj5aYEyGx
+         TO5PyUdt0j+4BsYatMw5s/hfEOFPgkZL5eNSb5x9HmWNItgmxYCl1kPgfJVFy2ZqZfSn
+         vYjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+ZxPkAn9Il3IN8rHQ8R89Mlj+pjG0aoXx4zL2lsx2sI=;
-        fh=VvXo8ri41W3EzWaqHFDpzK5/D0ENd9CiEsa2kpn5A9s=;
-        b=NA9tqGIG79sbuDeskeLCi9pz4KM8QzybLD5bBBdzgxaCClaNTPSD4VacI2fKAq1w41
-         KwR6Q8lp84MRh7RAHG1N0VzkbqjZptGIpkiuuUkoghcEDuCXPG3quGX0r0lxqlOCYTcO
-         ee9PG0yOqujZL8WcUR9RDxnFev1q1n+9F6kxaM7vcFaxHZaQ+ZU1eK59w2f4o7EbxMtl
-         aVje8dWM/m7sEaVCkv27IqW5yjTeTdXCdvrKAndDlVgGR/jkVp1bsqQGgu7Mnhzo0d0s
-         V59TUGlknv+R8JMevqHGIkiADvbK86NFHVUK6tfveH2HYTu+gBqRSoGmaU3BseO2Eh7b
-         owYQ==;
+        bh=sTbUaEgNgo7IbUetOjGywYbHIYWFMzt0Rp2Y/fJHQw4=;
+        fh=S0VSofkT5PDLJi36qRkgp30cY5dqz1BP93ot+25ZE2Y=;
+        b=yWjrlT3Fx/aZbEIwpzobSUqNeTsYmZu7pFGd3CnjX0GYhCsdRKWWttiGVtNXooq/Y3
+         s8CMakFNyyjadHzY5W2ekHQNZGBVtmC22qKqmKnOat0GDHaVfdPUWnEI/1PybAd3ioSo
+         AeEJtM8pJDJsuX1oxjYOVxhhgsDhri942m6j8JKGuZS0KHoSyzv2IuBWEOZXBVZUUwJv
+         W5h9d1Olz5KeW4/jgUQ0XKkA+XWaxnpOWzUIWmA8TlPeaEVAlF/CwE9H+847oWjDtW88
+         /k9zqm3QoYyy1Q7kejHydk9wKkmKyvWrXP4rYfM67lb+kUClxe6DV18uM6B9epUgDqZo
+         G9Qw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xlriqtqx;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fFek2Rt8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id dt18-20020a05620a479200b00787a6b110d4si420919qkb.672.2024.02.22.04.55.34
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gu12-20020a056214260c00b0068fc7e637d2si443200qvb.264.2024.02.22.04.55.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Feb 2024 04:55:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Feb 2024 04:55:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xlriqtqx;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9386-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fFek2Rt8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 20E7D1C23BCF
-	for <alex.bennee@linaro.org>; Thu, 22 Feb 2024 12:55:34 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7998412EBDC;
-	Thu, 22 Feb 2024 12:55:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xlriqtqx"
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4AF5712E1CF
-	for <kvm@vger.kernel.org>; Thu, 22 Feb 2024 12:55:22 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.51
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708606524; cv=none; b=kYjXheLAdY/OJCeJ6m4vAUrpkCD2TCyT2oekFivANu3GnKsn8qYq1iADV+Lhw2OCswjxrfcJTmKAUp3LZ6MBt6vd9ihHMTpssNlks/ssTboo0ic1mjHrjJqOx89lr5HzL6Eqrm1rvUiqKAsJYYLf7G/XMMbBdJHlTRKC1WZEWb4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708606524; c=relaxed/simple;
-	bh=V002//gIur4N+NUBd0RRHxjo9K/oZ2rYYU/NjuCO5K0=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=aDWFAifM7yTQhkYttHR70vL1/4xLUIYOjEDqrmNNM+5qw4CSv8JT//ZXcG9gkAr4UGw46eN73QTN1ehqAU8rI/A5TKxOukG3X/ds6+I8Ph4LWmqjWJHy6yWCyMLWnnU91PWzANIy+5Exjo0S49ZFZ2EePkEXoGAED97LlohC7jg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=xlriqtqx; arc=none smtp.client-ip=209.85.128.51
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-4128d15ae56so2156615e9.1
-        for <kvm@vger.kernel.org>; Thu, 22 Feb 2024 04:55:22 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rd8c9-00063S-DL; Thu, 22 Feb 2024 07:55:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rd8bq-0005z5-Sk
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 07:55:33 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rd8bp-0004ka-3H
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 07:55:30 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-41272d42207so17108765e9.2
+ for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 04:55:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708606520; x=1709211320; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+ZxPkAn9Il3IN8rHQ8R89Mlj+pjG0aoXx4zL2lsx2sI=;
-        b=xlriqtqxMmHtkXd1OxAPUdu2F2Tc5KwBhOddmY3q+5kvTMuwiPPuBnu8miyfrlZjDO
-         xundPFIzg454mJcFGu0NYI1CtdB4/hd4jI0d/ePwc9YfRa61tbHEtLtAtkPqNW+A6JRO
-         KRy0g9uG7MVuJ8eY2b5oei8sLPveX7wm5gXTKtna9a45V7HM5sIXz/JqZCqw3cC2QRva
-         esCi6MZqsNnZeJiqcOJpkI3/6itVqxxIYDTnQ0mogs3GPef76fWbSzn9Emz44L15emB+
-         1RWAuAQtYEdOgwVpIyayG30y7tPmpi6qtHavpZsztw4OW8vK7BMbBSiqOXyXHZWXZMzM
-         GQOA==
+ d=linaro.org; s=google; t=1708606526; x=1709211326; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sTbUaEgNgo7IbUetOjGywYbHIYWFMzt0Rp2Y/fJHQw4=;
+ b=fFek2Rt8y+7XcwctElbLG9CYv1Rz+85hP4Ev8syfC6g9XZjNm4wu8/9sRizbWHuF56
+ b4qd3UD6J2jK/Afi6p5SFpaqhNtCMSiCp8LN9OP4pJRHG4OBUuo4+zrecnY6EKIcv8Dt
+ zcIpoySsCpfh1D6pH8W2NuQ+zobvKbvlQQpaH+9E7kYMwUyhs9oSl0pW8Oaey5bhjRJG
+ jHmjaZuN5FsmYkCXrhvg9T4vNQXjm8hELlvBEJZe9YnsdInyjjG9tLE5UopdP2S85Ung
+ 747ldvVdQYZVsS1i9iaXx4iAoYUd4BjKAPUaO3FahjmndFygfCqGTIc2nlLCXcu45nUA
+ x/WQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708606520; x=1709211320;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+ZxPkAn9Il3IN8rHQ8R89Mlj+pjG0aoXx4zL2lsx2sI=;
-        b=mnnX9Zf4OiyGOlf2I1mkuCTcqof7JHWbLfW+PpfwH9kCg4CeCRmsD+pSc4LODtBccg
-         NJz9DfqV5dNkJme3K0xP0pqGTKs0qTTPznGyAw26W1zTPoAlO8YNu3Nw+KUzOS69lfTH
-         s7nK9doQftfi2iYXDOuIDEcxG2pOCldAXI1qxokbU0PHZsSIe7CGp6Ok9PAUQYt9U21W
-         TqK02sa/vBV4T4PnAqFIcBHhkhEVfEkwK4+AO3/BX7UcVMYAL67eYu0/R2Ayy0iK1bPA
-         AbnVi93OB3bk92N0UL0EfIvcfD571Vw98I6FWeQ5WW6VgsA4Qi2YKlIbDvltiOC/uk46
-         x9Jg==
-X-Forwarded-Encrypted: i=1; AJvYcCWE5Iq0tVSCcJsv1hnbDZsWteHE5ATf25woeD2G6Sg77tJP2GbtMZ4D+s70eQjbXAyZE93RSK6GzaKhhHzWMuWL6fG9
-X-Gm-Message-State: AOJu0YxzcBj94ba0wppzSzaXdabuRrF3zXEgAzSXLuOTtcXC9QS3SQ0L
-	83We7I+skBlTai8eHJb4nfhOGov6CLFHeQbjHoQrEx0EJTXaFVlLghp/dWEoJV8=
-X-Received: by 2002:a05:6000:10c6:b0:33d:7d88:bd3e with SMTP id b6-20020a05600010c600b0033d7d88bd3emr3316027wrx.43.1708606520647;
-        Thu, 22 Feb 2024 04:55:20 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708606526; x=1709211326;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sTbUaEgNgo7IbUetOjGywYbHIYWFMzt0Rp2Y/fJHQw4=;
+ b=jmzVN/qgkHa0H8IGUrfACP/7vvuiHlfuJ8ChVJOE/HhffVALKCs6GOv/FYDBw9Sgcf
+ DjfbTKHgMV4kS4B0oMCq3xCqOP1qdZS4wzv0ZM+w72+EMKQ54WLk/CsFvwf98XOZwHoK
+ 2kesYffw42XAjLKijCgy5wNP3CIqlV26AX590hp6FL42Vo6hWc0MwFUBJggWCEwaCO/O
+ n1qZGJYt3Xe7beFhk4VJ2W2r96otP046fQPynrusGSq/hHX0tH3dWVJ8EUN4JetVZkw3
+ YcTxUsYB9F8BQKUWlUQJWzFd1hj69ptPZ/g5GIW8pyYV1a5jGX2F0jrlnA9orshpD1Ts
+ YUiQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUw6gyFHcX4SYwI7+/ws5Lww5AcNkJJeeYBYobDhzeUaq7R9qj/JQXjLtH8+tLtufDLjrmyKZXb6/N8D8c5o3/+RJvH
+X-Gm-Message-State: AOJu0Yxv3Min/ghtn7g9Tpi152TBHTHVRTWDRfP32M9EPp23wRpNrfAz
+ A0QwfSpYAh3SO2AFOZ02LUrRomA+cOsEvxjHAa6SNzmOI2KJQ184QQ0EAHt6Oe4=
+X-Received: by 2002:a05:600c:21d8:b0:411:e398:ca7a with SMTP id
+ x24-20020a05600c21d800b00411e398ca7amr16491946wmj.39.1708606526348; 
+ Thu, 22 Feb 2024 04:55:26 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.211.34])
-        by smtp.gmail.com with ESMTPSA id k1-20020adfe3c1000000b0033afc81fc00sm20170135wrm.41.2024.02.22.04.55.18
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 22 Feb 2024 04:55:20 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id
+ v1-20020a5d59c1000000b0033d9c5c5557sm944138wry.15.2024.02.22.04.55.24
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 22 Feb 2024 04:55:25 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	kvm@vger.kernel.org
-Subject: [PULL 02/32] hw/sysbus: Inline and remove sysbus_add_io()
-Date: Thu, 22 Feb 2024 13:55:08 +0100
-Message-ID: <20240222125517.67131-1-philmd@linaro.org>
+Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Subject: [PULL 07/32] hw/ppc/spapr_cpu: Use qdev_is_realized() instead of QOM
+ API
+Date: Thu, 22 Feb 2024 13:55:09 +0100
+Message-ID: <20240222125517.67131-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+In-Reply-To: <20240222125517.67131-1-philmd@linaro.org>
+References: <20240222125517.67131-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bdXwIG9ub0ga
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +Ihruh7FsoQq
 
-sysbus_add_io(...) is a simple wrapper to
-memory_region_add_subregion(get_system_io(), ...).
-It is used in 3 places; inline it directly.
+Prefer QDev API for QDev objects, avoid the underlying QOM layer.
 
-Rationale: we want to move to an explicit I/O bus,
-rather that an implicit one. Besides in heterogeneous
-setup we can have more than one I/O bus.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20240216150441.45681-1-philmd@linaro.org>
-[PMD: Include missing "exec/address-spaces.h" header]
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Message-Id: <20240216110313.17039-4-philmd@linaro.org>
 ---
- include/hw/sysbus.h | 2 --
- hw/core/sysbus.c    | 6 ------
- hw/i386/kvmvapic.c  | 3 ++-
- hw/mips/mipssim.c   | 3 ++-
- hw/nvram/fw_cfg.c   | 6 ++++--
- 5 files changed, 8 insertions(+), 12 deletions(-)
+ hw/ppc/spapr_cpu_core.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index 3564b7b6a2..14dbc22d0c 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -83,8 +83,6 @@ void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr);
- void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
-                              int priority);
- void sysbus_mmio_unmap(SysBusDevice *dev, int n);
--void sysbus_add_io(SysBusDevice *dev, hwaddr addr,
--                   MemoryRegion *mem);
- MemoryRegion *sysbus_address_space(SysBusDevice *dev);
- 
- bool sysbus_realize(SysBusDevice *dev, Error **errp);
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index 35f902b582..9f1d5b2d6d 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -298,12 +298,6 @@ static char *sysbus_get_fw_dev_path(DeviceState *dev)
-     return g_strdup(qdev_fw_name(dev));
- }
- 
--void sysbus_add_io(SysBusDevice *dev, hwaddr addr,
--                       MemoryRegion *mem)
--{
--    memory_region_add_subregion(get_system_io(), addr, mem);
--}
--
- MemoryRegion *sysbus_address_space(SysBusDevice *dev)
- {
-     return get_system_memory();
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index f2b0aff479..20b0300357 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -16,6 +16,7 @@
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm.h"
- #include "sysemu/runstate.h"
-+#include "exec/address-spaces.h"
- #include "hw/i386/apic_internal.h"
- #include "hw/sysbus.h"
- #include "hw/boards.h"
-@@ -727,7 +728,7 @@ static void vapic_realize(DeviceState *dev, Error **errp)
-     VAPICROMState *s = VAPIC(dev);
- 
-     memory_region_init_io(&s->io, OBJECT(s), &vapic_ops, s, "kvmvapic", 2);
--    sysbus_add_io(sbd, VAPIC_IO_PORT, &s->io);
-+    memory_region_add_subregion(get_system_io(), VAPIC_IO_PORT, &s->io);
-     sysbus_init_ioports(sbd, VAPIC_IO_PORT, 2);
- 
-     option_rom[nb_option_roms].name = "kvmvapic.bin";
-diff --git a/hw/mips/mipssim.c b/hw/mips/mipssim.c
-index a12427b6c8..9170d6c474 100644
---- a/hw/mips/mipssim.c
-+++ b/hw/mips/mipssim.c
-@@ -28,6 +28,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/datadir.h"
-+#include "exec/address-spaces.h"
- #include "hw/clock.h"
- #include "hw/mips/mips.h"
- #include "hw/char/serial.h"
-@@ -226,7 +227,7 @@ mips_mipssim_init(MachineState *machine)
-         qdev_prop_set_uint8(dev, "endianness", DEVICE_LITTLE_ENDIAN);
-         sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, env->irq[4]);
--        sysbus_add_io(SYS_BUS_DEVICE(dev), 0x3f8,
-+        memory_region_add_subregion(get_system_io(), 0x3f8,
-                       sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
-     }
- 
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index e85493d513..fc0263f349 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -27,6 +27,7 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/dma.h"
- #include "sysemu/reset.h"
-+#include "exec/address-spaces.h"
- #include "hw/boards.h"
- #include "hw/nvram/fw_cfg.h"
- #include "hw/qdev-properties.h"
-@@ -1142,6 +1143,7 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
-     SysBusDevice *sbd;
-     FWCfgIoState *ios;
-     FWCfgState *s;
-+    MemoryRegion *iomem = get_system_io();
-     bool dma_requested = dma_iobase && dma_as;
- 
-     dev = qdev_new(TYPE_FW_CFG_IO);
-@@ -1155,7 +1157,7 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
-     sbd = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(sbd, &error_fatal);
-     ios = FW_CFG_IO(dev);
--    sysbus_add_io(sbd, iobase, &ios->comb_iomem);
-+    memory_region_add_subregion(iomem, iobase, &ios->comb_iomem);
- 
-     s = FW_CFG(dev);
- 
-@@ -1163,7 +1165,7 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
-         /* 64 bits for the address field */
-         s->dma_as = dma_as;
-         s->dma_addr = 0;
--        sysbus_add_io(sbd, dma_iobase, &s->dma_iomem);
-+        memory_region_add_subregion(iomem, dma_iobase, &s->dma_iomem);
-     }
- 
-     return s;
+diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
+index 0c0fb3f1b0..40b7c52f7f 100644
+--- a/hw/ppc/spapr_cpu_core.c
++++ b/hw/ppc/spapr_cpu_core.c
+@@ -245,8 +245,7 @@ static void spapr_cpu_core_unrealize(DeviceState *dev)
+              * spapr_cpu_core_realize(), make sure we only unrealize
+              * vCPUs that have already been realized.
+              */
+-            if (object_property_get_bool(OBJECT(sc->threads[i]), "realized",
+-                                         &error_abort)) {
++            if (qdev_is_realized(DEVICE(sc->threads[i]))) {
+                 spapr_unrealize_vcpu(sc->threads[i], sc);
+             }
+             spapr_delete_vcpu(sc->threads[i]);
 -- 
 2.41.0
 

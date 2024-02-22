@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp114762eja;
-        Thu, 22 Feb 2024 00:59:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVzl/BCv7ePVwgYS2rfJXVKm/7F88BoX9naLHDT7Hav8V48XTHEx539qBZnQqBy5G5pWsQTpfinVLS3CCb1itDrqkGzDAdo
-X-Google-Smtp-Source: AGHT+IGX/D2SmBMawjioYhthfzs31o1uNNggVIvNpkDXqiaVtN0MX9HIBAH0tReem72zra26OFSt
-X-Received: by 2002:a0c:aa5c:0:b0:68f:a78f:bf1d with SMTP id e28-20020a0caa5c000000b0068fa78fbf1dmr3424204qvb.39.1708592349439;
-        Thu, 22 Feb 2024 00:59:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708592349; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp133159eja;
+        Thu, 22 Feb 2024 01:43:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW+GDKUKbBHwg9iN+PAzycJw3KhbCL0krthHgEQTrMsI2WyPejbNT7zl3lG+bHuvaijh01QBd06vmxZXlzapKZZXmKNEv8B
+X-Google-Smtp-Source: AGHT+IELj93d0L67q2M/Q9WTuw947ePW1veRtCskbMsl01DHeNFJs2NLy9NlXCexgFhjikrnDZ6h
+X-Received: by 2002:a25:aaac:0:b0:dcc:3a23:8a20 with SMTP id t41-20020a25aaac000000b00dcc3a238a20mr1925379ybi.42.1708595013905;
+        Thu, 22 Feb 2024 01:43:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708595013; cv=none;
         d=google.com; s=arc-20160816;
-        b=roYxeaPocrdvTmrChiSaghsfOWcQZ9nQk1pk7u9nKx04TzjQFMv8qSbVvwwBEWTQO+
-         gb5RrRTM/Mo/v9KFPLxWbvxN7mh6MBmG41H+IWdcOiBRmtnhwzXukObDUPHVF235VRQ+
-         NoFJl0V5e4L442S7QKwb6PCNkDMnbWVJ0g+hVrc/u7gR6baT0MqkxleebuV56Ex1pfs3
-         /fIkcRgMjNeXANURbJCF4R3T2stPxZNfG5SslaBDst++sTsVxK/jA5hlkfFkAFIPwS0X
-         VNDWBXbpzTYgFIBPNf1Tw4jcjgE7uM1vJKOuJQ165nslqjOwmpviM4m8N6fcP9Ihl44a
-         wcxA==
+        b=EzT1cqy1VnNL6upJaq0+p/PWTDDbtP8hhQR23oEVPVhuQ0FUN7vywNIhKlVNO4/9QW
+         DRdDLygwxuPjTvRrf3xIUi7ftBnUHVJaBirjvmXOBrCb+EMGgGkjub134SQC8pOrhMWT
+         UD89RFqwH4ChBsbx0LpTtKGa9ZG8/Q4FWRQTL5VPfpWn/pqn0pFTF5ZC1jipPHlWecoj
+         Zts8XnFaPjHsD1IODyF97y/UDy82P5z1TbNML62skEMZVjkvBoCWM0MSLr6ZD+Z7VV1H
+         DP+mqMcgVdsvRslIXh7SmxXbC3DB7oULFxatzrSQ8FXikmkTz/WXfHPygk+seRdVEBCN
+         HVOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=hs4UrH4UWn0WWrBdFo0py5QJjbqznYE7e5/gUs+WdOY=;
-        fh=08Y8NipebI+FU6g12LieC5gvDAmYh7VFR6cLSAJhdlo=;
-        b=gDzIHa+vJB2Iv0pVMeYil4rOxf/1+vnG7lFzDVnOUnckk6ZH+aNJq7HOZTplUlKzkm
-         MhcBKGoP1yVC2kcZrm3cHau+yjMBdi0tCy1LGwmm2Dl8JByR1XyRJic1dv5LOlGBVEri
-         1mt1mibnSpQMSHIN4WO2wxBvoRcKqJ+rXr7D1U7wdOEYWeo8uzeXAKxWGoq28MsLi6tN
-         rbP5Qcegc3XJLbbXSrrKARonKRegiCm/NKRguoOj1B9ovYgiP64jS9T8C8CAnxF5sn0a
-         EAPz+y7Ig6hcT+eqjhx/escNFKkVn8JhZsZDc++J1JMJsMXNohlCOQHcVCpcgy51ynx9
-         sNhQ==;
+        bh=5hMdJKptxKpq97gQtdEapt4obI5KN0NlBOtR3sErdiw=;
+        fh=YncejYJTruau1aTrwkNKZceekwa4rqP+00xPhh7s3zw=;
+        b=iK3mAB/Ro69Out5WmqXtHipXYpcoTVKVwHwgiphXyBwtfmQgKSYDmpJrxecClBV446
+         EviU3s4x9ml0K7AkjfpHsp8EHL1THCZyHleeYsqhDZ5m+zryd44C0rFYul/dYGbUYT9A
+         hq0KNjHZls4/ufSri71cfUfJXpt7pLErSEYcAEQvEq+c8uza3hy22QcUeJK5SldEz2mE
+         Ui9l1xqCzXkj6jI9sdUU/ZOA7IWxYa5qPgqjHhzQmPFho1HJeY+8K7iUmLjxs0YvC3qb
+         gAySgvr+aCX4JZhGeKQKXFwfHVAfW8aHuIN06YmlVn3HIy7woXYzZpWhPG5OcMdfH6yU
+         AJ+g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Y0wAjawU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HvxZ7SSy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gh10-20020a05621429ca00b0068f715dcd75si8337915qvb.591.2024.02.22.00.59.09
+        by mx.google.com with ESMTPS id f24-20020ac84998000000b0042e2b4fbdccsi4629556qtq.689.2024.02.22.01.43.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 00:59:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Feb 2024 01:43:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Y0wAjawU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=HvxZ7SSy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd4ur-0005AJ-D2; Thu, 22 Feb 2024 03:58:53 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rd5br-0004fQ-LA; Thu, 22 Feb 2024 04:43:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd4up-00059Y-LD; Thu, 22 Feb 2024 03:58:51 -0500
-Received: from mgamail.intel.com ([192.198.163.18])
+ id 1rd5bq-0004eC-4i; Thu, 22 Feb 2024 04:43:18 -0500
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd4um-0006fr-Nj; Thu, 22 Feb 2024 03:58:51 -0500
+ id 1rd5bo-0005Aj-M2; Thu, 22 Feb 2024 04:43:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708592329; x=1740128329;
+ t=1708594997; x=1740130997;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=tK9iJX/PGYxRl6fiAZa/42LQrJHsPlP9pIA09b3Rftw=;
- b=Y0wAjawUA+QHx1QjsjkegLtW6ZLCErZU0alCpEia8M79bmQUOnbqa1lN
- Mo3ZWxOvFv86JXAPPgBXpORc8iHgo6faxVD+s3IVNQsvtG6+7F+iOB/SU
- 5H/LZ0BczXAs4pB+y484+K0nB9IKOb+gihVEkIKGSMac/GYK4B+J05Wdb
- Q7Vx12KPK2ujj/kKV0QClqiqO1yYyXy9CeQi9FcufpHrQkULJiNVPd7Ou
- 1aeh6PcqbqO5CXSuf6sboQTYCAu2DPyPynjoeaRFZHtfSPNMvo6d3XFiS
- NGP1ttqPbMwmJhD8XolwvXipK2W7JwSYSUCnJ9c7V83TqdMCxndWMwkQz A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="2688574"
-X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; 
-   d="scan'208";a="2688574"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2024 00:58:42 -0800
+ bh=IBPgxBEpIJj/+jCChNv2u4FJt0jG9vpTC9/aQPVRmx4=;
+ b=HvxZ7SSyeph8bpabyZqrCUgC/jjJ1qGIYquPXEwOfjLC17ZrTUHlWY1Q
+ F8ZZFSTtzHeqo3bYj/I54au9il9JCX1NvqHeHmOjsehs94o5svEDVuchb
+ PfRODSRGBpfa3BnsYbGrz/WEv9C86sOMeQINL4oq7cylY3D65rvQzDyqj
+ VPJUufM2AQNroK0ZApzgRIKoe9oD4R+9/JJhDObPetQfAMLAkJ2LNlISF
+ 6RTv2t4IZo2rYmnVHyOU6Qjs40qJ1eD4tzvxQgnev5m9D64ZdNIMPsrFE
+ /5OqP1UiGwsvgKROPRVOjqO7fK8BAD5STpSdFu5I1l9JxpWB00ZnxXUgM A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="28250062"
+X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; d="scan'208";a="28250062"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2024 01:43:13 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; 
-   d="scan'208";a="5367625"
+   d="scan'208";a="5402604"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmviesa009.fm.intel.com with ESMTP; 22 Feb 2024 00:58:39 -0800
-Date: Thu, 22 Feb 2024 17:12:20 +0800
+ by fmviesa010.fm.intel.com with ESMTP; 22 Feb 2024 01:43:10 -0800
+Date: Thu, 22 Feb 2024 17:56:50 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH 01/21] hw/i386/pc: Do not use C99 mixed-declarations style
-Message-ID: <ZdcP9A7n5w7RJqii@intel.com>
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Subject: Re: [PATCH 03/21] hw/ppc/spapr_cpu: Use qdev_is_realized() instead
+ of QOM API
+Message-ID: <ZdcaYsPpzGp0Rej8@intel.com>
 References: <20240216110313.17039-1-philmd@linaro.org>
- <20240216110313.17039-2-philmd@linaro.org>
+ <20240216110313.17039-4-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240216110313.17039-2-philmd@linaro.org>
-Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240216110313.17039-4-philmd@linaro.org>
+Received-SPF: pass client-ip=192.198.163.7; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -106,63 +106,53 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hcBbVi5O9aLO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fmh05ljW3Nfv
 
-Hi Philippe,
-
-On Fri, Feb 16, 2024 at 12:02:52PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Fri, 16 Feb 2024 12:02:52 +0100
+On Fri, Feb 16, 2024 at 12:02:54PM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Fri, 16 Feb 2024 12:02:54 +0100
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 01/21] hw/i386/pc: Do not use C99 mixed-declarations style
+> Subject: [PATCH 03/21] hw/ppc/spapr_cpu: Use qdev_is_realized() instead of
+>  QOM API
 > X-Mailer: git-send-email 2.41.0
 > 
-> QEMU's coding style generally forbids C99 mixed declarations.
+> Prefer QDev API for QDev objects, avoid the underlying QOM layer.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  hw/i386/pc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/ppc/spapr_cpu_core.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
 > 
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 196827531a..3c00a87317 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1227,6 +1227,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
->       */
->      if (pcms->hpet_enabled) {
->          qemu_irq rtc_irq;
-> +        uint8_t compat;
->  
->          hpet = qdev_try_new(TYPE_HPET);
->          if (!hpet) {
-> @@ -1238,8 +1239,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
->           * use IRQ16~23, IRQ8 and IRQ2.  If the user has already set
->           * the property, use whatever mask they specified.
->           */
-> -        uint8_t compat = object_property_get_uint(OBJECT(hpet),
-> -                HPET_INTCAP, NULL);
-> +        compat = object_property_get_uint(OBJECT(hpet), HPET_INTCAP, NULL);
->          if (!compat) {
->              qdev_prop_set_uint32(hpet, HPET_INTCAP, hpet_irqs);
->          }
-
-"compat" is only used here to check. So, what about getting rid of this
-variable?
-
-if (!object_property_get_uint(OBJECT(hpet), HPET_INTCAP, NULL)) {
-    qdev_prop_set_uint32(hpet, HPET_INTCAP, hpet_irqs);
-}
-
+> diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
+> index 0c0fb3f1b0..40b7c52f7f 100644
+> --- a/hw/ppc/spapr_cpu_core.c
+> +++ b/hw/ppc/spapr_cpu_core.c
+> @@ -245,8 +245,7 @@ static void spapr_cpu_core_unrealize(DeviceState *dev)
+>               * spapr_cpu_core_realize(), make sure we only unrealize
+>               * vCPUs that have already been realized.
+>               */
+> -            if (object_property_get_bool(OBJECT(sc->threads[i]), "realized",
+> -                                         &error_abort)) {
+> +            if (qdev_is_realized(DEVICE(sc->threads[i]))) {
+>                  spapr_unrealize_vcpu(sc->threads[i], sc);
+>              }
+>              spapr_delete_vcpu(sc->threads[i]);
+> -- 
+> 2.41.0
+> 
+> 

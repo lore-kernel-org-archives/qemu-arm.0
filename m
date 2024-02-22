@@ -1,196 +1,217 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2300489ejb;
-        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWQqV7t1An9HzVPtYaJO1Y2A8v6CNHicoCNmWHrpaolplUEQmX1sNqHKumqC10dpvAJ6CscfIlAVhv4I3+T20+fc5vK1ml9
-X-Google-Smtp-Source: AGHT+IFmWK+9usYvwYEIMOp7cvQbai+u3wgtmsoZqFILkz7jfR7Cr2ZE1z4rNP4uD5HN7cahWa0X
-X-Received: by 2002:ae9:e90c:0:b0:785:dae5:b029 with SMTP id x12-20020ae9e90c000000b00785dae5b029mr19122536qkf.31.1708569663187;
-        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708569663; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp63738eja;
+        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
+X-Received: by 2002:a17:902:c947:b0:1db:d7bf:70 with SMTP id i7-20020a170902c94700b001dbd7bf0070mr13294472pla.20.1708583839280;
+        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708583839; cv=none;
         d=google.com; s=arc-20160816;
-        b=cFrmas9LK/a5vz+lmAk/jTws/dNlhY+ETQrd2vDlnmw92rkip5jtO5VZTXNahVdoRT
-         dU3RIG5rlZz6yeBhDurV+0kJyIZVV0jXGKPnO5B3feaaaCEfF8x3f3eDVzxdkVCu0RIj
-         nH12nGJj1z818Iy/M56Q9wAYUfxrGFTPgrXQnM23GiuavOyzmV/6cyPbJzU/3yNJaWBS
-         MGvnN9VH26/jpoC+GDqn0uThgfoX8spnbxLt+L/K4fk1LZLDQXkN5b3qt2SEJMZR2fWK
-         ucFIbDOkOtMyvvObB8Gt73JVJCbDhuBXSoB637QjtLH5lfgkIauaPV60knkA0ViCgbPm
-         OvFA==
+        b=ICQZk8U50XlWdUXO2wKFXFFgWmjv5EjVmoxTzyND+WTPZ2v6ErY0MFziERrQrWYKM5
+         fExc5ljAwDF5rEYwTpJ7cgp59zrhQOpUpdyJ6bWf1rfQc0ni5N40++L/mZy/MiFkAqRu
+         g1KgJ0p2V5CHHGsGLQi79KNVkoh987ufoGfKD2NiLYJZ2VYFFE8ES5g+a3Ad42UBvdOE
+         gMoq9ZW0dFgy7kNJU8uOq1NxeDXW2cpOT59LcbAlJe8lZ7xv/Zwkqd8k3JWxalBnT/Hh
+         OljGvtfT4bYf5Zc3mOtOFdki7DmBoMYoTQHDQsg3L6Qq1vK3tpY82SY2F/psrh/Ej2+L
+         i2Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=WcsKV8DAiu/1uhH3qhJHhGbwUcCpZ4qSIR5e1d+lubU=;
-        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
-        b=mhgFCMgeEdRbC5Ra5Ll+A61kkpyXOF2diBwfhD8lFoHrzMb9D/x0GknSV8OELD76T4
-         OrxgwbZEbCp0fe2YcE+8K3IciIo/SaQeT7jDUHbOY/t+zaTf/aHy/PuRC+OZDSiCVqFA
-         zPBYrKt089iY1UOCadZ5AH/B5s5bI3uGjWQLVin59zi0fbY/N6CO+gkN15ZFmUFqXrFN
-         kTI3A3c2WlFfd+xEsgKnXcc22V2pzc0/NHPdyyaFf3KrSoNiz0S5fb66xDiTfMQ5ABmB
-         2xcdyDswD1uArb9gxxRG0G+BybNO/ozua5k0EwTCqmyQhWtYmFmNo2drG5E84ZJtysL/
-         fkWA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
+        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
+        b=LHWjri5MyMZReUDlJ/LlekDIu2z2rx4zXU+7tPLkXbTNKLyh4tWZmlMIB727TeuVod
+         AWygAXU/iYzQLsl9Txskh+jedbEQqTv7C4XW/Z7fflUQ4BgFmYghw3LAXf2JxbK7jhOe
+         MuujN89h8s148lxluy/ew7NJxCIFko1KAqV3eDwfW5iHuYtupfZRmGzrKZJGPQm7DSjQ
+         0DYaHjDCT5utZh3BY59q0IwDYgeQOtt2tFDrbH8GhKn5WIiTNNsK+8UBniNx7yCSteRq
+         uwM5hl4NhAhhM0gG7a1trIFkKfVH+odOyX1DDvxqnnAfIwo8WSV28XmALClfaCVkbVFK
+         FAKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e25-20020a05620a209900b0078769913662si7797332qka.60.2024.02.21.18.41.03
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=cgfd2rsx;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id kf16-20020a17090305d000b001d92a50f95esor7072280plb.8.2024.02.21.22.37.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 18:41:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcz0v-0004Yc-Pu; Wed, 21 Feb 2024 21:40:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcz0u-0004Y2-62; Wed, 21 Feb 2024 21:40:44 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rcz0r-000154-RU; Wed, 21 Feb 2024 21:40:43 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4TgHPv1kLsz2Bd2d;
- Thu, 22 Feb 2024 10:38:27 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id AB42B1A0172;
- Thu, 22 Feb 2024 10:40:36 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 22 Feb 2024 10:40:36 +0800
-Message-ID: <ab2e74b1-31f6-807d-430f-22a2cc63291c@huawei.com>
-Date: Thu, 22 Feb 2024 10:40:35 +0800
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=cgfd2rsx;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708583838; x=1709188638; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
+        b=cgfd2rsxr7q+4o1D343NiFmBm5jJfa6o5n83WUNiN+LSdJuFIwhh+AYFUSXi5XH/R5
+         DMXNy9N9di7ZA/6jtTNj5vcm+4foLh9K+FXtPeK7xf0d6s3cbBnFqRpRtFiVoB+IYP+H
+         58SEUKYOZ3mNiLkhjSAeW8EhGb+7M/3Pzfwhg54027ZLlz9/AdCS6+gh9ZXPifK+nAtb
+         5vwOcwldDWIjCYEIHpg02Mx/5/AkROr8vV6nPPL7BhD2+PE1rwcnDrX6QhpsfpaKpMOa
+         c5vJ9pwPT65OC+s3lfXztPNAnBV/hMXzzSe13yjww+QUk8bD3Ott9MzrOfhLUaQunAIy
+         4lmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708583838; x=1709188638;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
+        b=HFgWTn/dsHw+cluQ1EAK6yWRd0NSLAhxLMwgtyoN6Mn8jOELwU9doKQCEztdOmdBYu
+         BYKmopJxhZZPt7Kay6tEQjak4X2HzVrosO55jXSvvcgmLzi7HrYYUJ8wRfvPIrRFfgY4
+         gMT2TvbCAxMKJ9oUuRO8BHlRX7N7E8hENnr+Z6vOpBB0r+qYXWnzd6A/TYbjFsGqfjTB
+         xCD3qSXlYKfJoBon5pZ4Fv4TiyhoM2aQkC7sDM9pw4Z5D+ZE7Mv3pa7Skv0Qv5wxS24Q
+         PSadRx0U/UdJjgmNvegircmCkczYR2/YJx/Ikgn/CBppwWShlAPWaKKkaKgAYb5dDgPa
+         q6Rw==
+X-Gm-Message-State: AOJu0Yzb5Y7h2hsJQdqAoLow/IPOJCI6sxIuXJA++3PxFVXxfAQwqx7c
+	N+8BTRC/OoIxVQdL85o9xbntNbKy5jPOJC3uSVpwShQSMRjNUz2L9f62IaY6M+tyGmB8WvHmtwd
+	Q
+X-Google-Smtp-Source: AGHT+IF4O25LMrfr5cKmZpDOT1LBxKto4EFWbnhcbXh/aqoIlqGIXhg34IDcGYHRkkraYVZBK+AmOw==
+X-Received: by 2002:a05:6a21:594:b0:1a0:bb45:415a with SMTP id lw20-20020a056a21059400b001a0bb45415amr4830565pzb.28.1708583838595;
+        Wed, 21 Feb 2024 22:37:18 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.203.206] ([157.82.203.206])
+        by smtp.gmail.com with ESMTPSA id y18-20020a056a00181200b006e3f62e1fbbsm8436227pfa.24.2024.02.21.22.37.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 Feb 2024 22:37:18 -0800 (PST)
+Message-ID: <7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
+Date: Thu, 22 Feb 2024 15:37:10 +0900
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [RFC PATCH v2 04/22] target/arm: Implement ALLINT MSR (immediate)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 18/23] plugins: add an API to read registers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
+ <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20240216163025.424857-1-alex.bennee@linaro.org>
+ <20240216163025.424857-19-alex.bennee@linaro.org>
+ <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
+ <87il2jcje8.fsf@draig.linaro.org>
+ <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
+ <87bk8ab0f4.fsf@draig.linaro.org>
+ <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
+ <87zfvtaoqq.fsf@draig.linaro.org>
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>,
- <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
- <20240221130823.677762-5-ruanjinjie@huawei.com>
- <9fb9c74e-e4d3-4a8b-b736-c8603414245c@linaro.org>
- <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
-In-Reply-To: <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <87zfvtaoqq.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -74
-X-Spam_score: -7.5
-X-Spam_bar: -------
-X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2ZJLZu/JknYK
+X-TUID: gEDT0a9yuI7v
 
-
-
-On 2024/2/22 4:41, Richard Henderson wrote:
-> On 2/21/24 09:09, Richard Henderson wrote:
->> On 2/21/24 03:08, Jinjie Ruan via wrote:
->>> Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
->>> to ALLINT. Avoid the unconditional write to pc and use
->>> raise_exception_ra
->>> to unwind.
+On 2024/02/21 23:14, Alex Bennée wrote:
+> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+> 
+>> On 2024/02/21 19:02, Alex Bennée wrote:
+>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 >>>
->>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
->>> ---
->>>   target/arm/tcg/a64.decode      |  1 +
->>>   target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
->>>   target/arm/tcg/helper-a64.h    |  1 +
->>>   target/arm/tcg/translate-a64.c | 10 ++++++++++
->>>   4 files changed, 36 insertions(+)
->>>
->>> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
->>> index 8a20dce3c8..3588080024 100644
->>> --- a/target/arm/tcg/a64.decode
->>> +++ b/target/arm/tcg/a64.decode
->>> @@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 ....
->>> 010 11111 @msr_i
->>>   MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
->>>   MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
->>>   MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
->>> +MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
->>>   MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
->>>   # MRS, MSR (register), SYS, SYSL. These are all essentially the
->>> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
->>> index ebaa7f00df..3686926ada 100644
->>> --- a/target/arm/tcg/helper-a64.c
->>> +++ b/target/arm/tcg/helper-a64.c
->>> @@ -66,6 +66,30 @@ void HELPER(msr_i_spsel)(CPUARMState *env,
->>> uint32_t imm)
->>>       update_spsel(env, imm);
->>>   }
->>> +static void allint_check(CPUARMState *env, uint32_t op,
->>> +                       uint32_t imm, uintptr_t ra)
->>> +{
->>> +    /* ALLINT update to PSTATE. */
->>> +    if (arm_current_el(env) == 0) {
->>> +        raise_exception_ra(env, EXCP_UDEF,
->>> +                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
->>> +                                               extract32(op, 3, 3), 4,
->>> +                                               imm, 0x1f, 0),
->>> +                           exception_target_el(env), ra);
->>> +    }
->>> +}
+>>>> On 2024/02/20 23:14, Alex Bennée wrote:
+>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>>>>
+>>>>>> On 2024/02/17 1:30, Alex Bennée wrote:
+>>>>>>> We can only request a list of registers once the vCPU has been
+>>>>>>> initialised so the user needs to use either call the get function on
+>>>>>>> vCPU initialisation or during the translation phase.
+>>>>>>> We don't expose the reg number to the plugin instead hiding it
+>>>>>>> behind
+>>>>>>> an opaque handle. This allows for a bit of future proofing should the
+>>>>>>> internals need to be changed while also being hashed against the
+>>>>>>> CPUClass so we can handle different register sets per-vCPU in
+>>>>>>> hetrogenous situations.
+>>>>>>> Having an internal state within the plugins also allows us to expand
+>>>>>>> the interface in future (for example providing callbacks on register
+>>>>>>> change if the translator can track changes).
+>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>>> <snip>
+>>>>>>> +/*
+>>>>>>> + * Register handles
+>>>>>>> + *
+>>>>>>> + * The plugin infrastructure keeps hold of these internal data
+>>>>>>> + * structures which are presented to plugins as opaque handles. They
+>>>>>>> + * are global to the system and therefor additions to the hash table
+>>>>>>> + * must be protected by the @reg_handle_lock.
+>>>>>>> + *
+>>>>>>> + * In order to future proof for up-coming heterogeneous work we want
+>>>>>>> + * different entries for each CPU type while sharing them in the
+>>>>>>> + * common case of multiple cores of the same type.
+>>>>>>> + */
+>>>>>>> +
+>>>>>>> +static QemuMutex reg_handle_lock;
+>>>>>>> +
+>>>>>>> +struct qemu_plugin_register {
+>>>>>>> +    const char *name;
+>>>>>>> +    int gdb_reg_num;
+>>>>>>> +};
+>>>>>>> +
+>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
+>>>>>>> +
+>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
+>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+>>>>>>> +{
+>>>>>>> +    uintptr_t key = (uintptr_t) cs->cc;
+>>>>>>> +    key ^= gdb_regnum;
+>>>>>>> +    return GUINT_TO_POINTER(key);
+>>>>>>> +}
+>>>>>>
+>>>>>> I have pointed out this is theoretically prone to collisions and
+>>>>>> unsafe.
+>>>>> How is it unsafe? The aim is to share handles for the same CPUClass
+>>>>> rather than having a unique handle per register/cpu combo.
+>>>>
+>>>> THe intention is legitimate, but the implementation is not safe. It
+>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
+>>>> guarantee. The key of GHashTable must be unique; generating hashes of
+>>>> keys should be done with hash_func given to g_hash_table_new().
+>>> This isn't a hash its a non-unique key. It is however unique for
+>>> the same register on the same class of CPU so for each vCPU in a system
+>>> can share the same opaque handles.
+>>> The hashing is done internally by glib. We would assert if there was
+>>> a
+>>> duplicate key referring to a different register.
+>>> I'm unsure what you want here? Do you have a suggestion for the key
+>>> generation algorithm? As the comment notes I did consider a more complex
+>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
+>>> either.
 >>
->> A runtime check for EL0 is not necessary; you've already handled that
->> in trans_MSR_i_ALLINT().  However, what *is* missing here is the test
->> against TALLINT for EL1.
->>
->>> +
->>> +void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
->>> +{
->>> +    allint_check(env, 0x8, imm, GETPC());
->>> +    if (imm == 1) {
->>> +        env->allint |= PSTATE_ALLINT;
->>> +    } else {
->>> +        env->allint &= ~PSTATE_ALLINT;
->>> +    }
->>
->> I think you should not write an immediate-specific helper, but one
->> which can also handle the variable "MSR allint, <xt>".  This is no
->> more difficult than
->>
->> void HELPER(msr_allint)(CPUARMState *env, target_ulong val)
->> {
->>      ... check ...
->>      env->pstate = (env->pstate & ~PSTATE_ALLINT) | (val &
->> PSTATE_ALLINT);
->> }
+>> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
+>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
 > 
-> Ho hum..  I just noticed that TALLINT only traps immediate write of 1,
-> not also immediate write of 0.  So one helper for both MSR Xt and MSR
-> imm is not practical.
+> We already do:
+> 
+>          if (!reg_handles) {
+>              reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
+>          }
+> 
+> But we can't use g_direct_equal with something that exceeds the width of
+> gpointer as it is a straight equality test of the key. What you are
+> suggesting requires allocating memory for each key and de-referencing
+> with a custom GEqualFunc.
 
-it is a real problem.
+My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It 
+indeed seems to need a more complicated solution.
 
-> 
-> 
-> r~
+It is possible to write a GEqualFunc and a GHashFunc that consumes a 
+struct but it is a chore. How about having a two-level GHashTable? 
+reg_handles will be a GHashTable keyed with cs->cc, and another 
+GHashTable will be keyed with gdb_regnum.

@@ -1,222 +1,301 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r17-20020a05600c459100b004124907f43fsm21956884wmo.12.2024.02.22.09.27.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Feb 2024 09:27:18 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D005A5F89B;
-	Thu, 22 Feb 2024 17:27:17 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  David Hildenbrand <david@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,
-  Richard Henderson <richard.henderson@linaro.org>,  Michael Rolnik
- <mrolnik@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-riscv@nongnu.org,  Cleber Rosa
- <crosa@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Song Gao
- <gaosong@loongson.cn>,  qemu-arm@nongnu.org,  Pierrick Bouvier
- <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Nicholas Piggin <npiggin@gmail.com>,
-  qemu-s390x@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Yanan Wang <wangyanan55@huawei.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Mahmoud
- Mandour <ma.mandourr@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
-  Bin Meng <bin.meng@windriver.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Alistair Francis
- <alistair.francis@wdc.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-In-Reply-To: <f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com> (Akihiko
-	Odaki's message of "Thu, 22 Feb 2024 22:22:35 +0900")
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
-	<20240216163025.424857-19-alex.bennee@linaro.org>
-	<c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
-	<87il2jcje8.fsf@draig.linaro.org>
-	<bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
-	<87bk8ab0f4.fsf@draig.linaro.org>
-	<bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
-	<87zfvtaoqq.fsf@draig.linaro.org>
-	<7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
-	<87cysoajhl.fsf@draig.linaro.org>
-	<f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com>
-User-Agent: mu4e 1.11.28; emacs 29.1
-Date: Thu, 22 Feb 2024 17:27:17 +0000
-Message-ID: <87plwo8l56.fsf@draig.linaro.org>
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp114828ejf;
+        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUovxOKFCGZzT/i+pAMxpNgNW5siVpF5MXV3HhPklGJeCa1idQVAh0eeXuv9bLLTpP04J1YgjvxxIKMaav6KW7/oKo7WSD5
+X-Google-Smtp-Source: AGHT+IF/zceG/64RcP1YryVm/tf0hIwQ5vR3C8H0FmWSG3swORZlau28Su4Gvw3NROmbKtdcLoUz
+X-Received: by 2002:adf:e448:0:b0:33b:4b0f:b989 with SMTP id t8-20020adfe448000000b0033b4b0fb989mr13880687wrm.0.1708626071626;
+        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708626071; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wHdpz7HajwaLohLAMg/1mNtfVfh0ZpgLkVgRSxT+Z7DWoboaJOUGCJzg41KLM6eXNe
+         BgwgDt/1RDtjNzkE1fS6NwLmO/Izl+lKxtVeL16hVhGxwlufGK76QXwrm5xXF+K4anN5
+         uBSZE+hAdS2c8k+8uTXf3jJx9Y+Rt4A/Q05uaOXbW9dcmyBZSI69xErkQQrh4drfdamE
+         CBrVvoZmkkZHxeORCxDJzv19dusJS1qdtdHPtDWx7XllSx6ylWvGMmVLejyMgOXSINTi
+         Isvh+F4lpYspSjkTQkcsJp7C3UECxTJrVbsHbO/nBwkGuh04gIHJ0Xz0BlEr2gZ6XJSp
+         YEeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=32ukLAwAHrxvPhax7nUNH1DYtaZw2310oT7RzCek5vM=;
+        fh=Yypr2VkbhmjuXW0VooRn9Uxrx6H7o63tNy03R06JsZ0=;
+        b=hJU/EKcUXsjqy7IWsfJAzGEnwDXUMaf94JDQstvd6Q4nwKOI7PV5ZYHsHIx9TncTqk
+         uQFGgXOpt0ejBVlOKBGqWLWjSOlkyGeYLRirb3UhYGM5QsiSH6T3W8V8OK7cq35+dPh3
+         pJSQJwKp2m1GJFPsekmAVGez3UC2b85zdQvLnwJQaQKGHTahhCzdaw8ylebwt3ROudLo
+         z0dL9Vm4Bojw7RLIP2VKk9BPLur0R/O574wuM/A2eQ5ZP6CJJ+QRB/iQuOAMcbchuCFH
+         zx5pj+Rjmjb78I3Ruu19Zj9LLXmQPZU8fG4Pdha6pd+gLjd46aZgfCFF6XxrDWld0Rud
+         KvHg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p10-20020adfe60a000000b0033d06a3094bsi5429267wrm.593.2024.02.22.10.21.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdDgk-0002VC-Jk; Thu, 22 Feb 2024 13:20:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1rdDgj-0002Uv-E4; Thu, 22 Feb 2024 13:20:53 -0500
+Received: from hq-ms.auriga.com ([82.97.202.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1rdDgh-00045P-2X; Thu, 22 Feb 2024 13:20:53 -0500
+Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
+ hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.28; Thu, 22 Feb 2024 21:15:39 +0300
+Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
+ hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%7]) with mapi id
+ 15.02.1258.028; Thu, 22 Feb 2024 21:15:39 +0300
+From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Sergey Kambalin
+ <serg.oker@gmail.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 00/41] Raspberry Pi 4B machine
+Thread-Topic: [PATCH v5 00/41] Raspberry Pi 4B machine
+Thread-Index: AQHaYtGCfqkL7B0Tb0KILu02iBHW8bEWbf6AgABB86g=
+Date: Thu, 22 Feb 2024 18:15:39 +0000
+Message-ID: <caf1110f9e9445cab3aa00ebab24d263@auriga.com>
+References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>,
+ <CAFEAcA-Wir3M7dVV5247uMPxCtrYs8j4Z3S7nucCx3Ha8pA1dg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-Wir3M7dVV5247uMPxCtrYs8j4Z3S7nucCx3Ha8pA1dg@mail.gmail.com>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.55.54.50]
+x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-28208.000
+x-tm-as-result: No-10--23.857400-8.000000
+x-tmase-matchedrid: h5TVo972vkSJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
+ DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
+ ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8p0fmBwOcEOYMwrh
+ SFC/dJGEZSxU13SYvpALYX+A8A0O0PTrDKsCYT0OKLvlSV0+r2rLALtod6A6ZmNqUsn94Y20FEM
+ +pwiCobBt8n8fEuJJVX0KLFo/pn8fp4lWjAX1OzlOneJcroAxT3Oai+medFbKlOQjQcrzOl1jOm
+ H0YwN7E45PBNB8uybZsbsj1AjTF7LdR5g5YGhzKj5gmRCefvLmHWZvjZxlUH33Nl3elSfsrGdRf
+ PKx6LHMD46MsbWPCAmEKHz5YiYlQf0H3tYJmWPRMXUu1hb2VrrB85uDT3cKRvKpAGRBjcb9nfJr
+ USEbFDd4EWkOs0kBZq+rSiPqZuvsQTSPZE5H8gOIQ9GP2P2u8cDDLReGt4PZTYluj+pBVBngIgp
+ j8eDcAPEIloOPJwnn0GyL/mi/M8OMB0shqXhHpB7zALuogCGAYqv4YJG1FYtRdrdgLuMyW7mZq8
+ BJXPF1kSgZIgXtrH
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--23.857400-8.000000
+x-tmase-version: SMEX-14.0.0.1158-9.0.1002-28208.000
+x-tm-snts-smtp: 87E843C24A95885FD72591806D2F0CB8A0A582E6A0C336A4E8704232656EEB592000:8
+Content-Type: multipart/alternative;
+ boundary="_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Received-SPF: pass client-ip=82.97.202.32;
+ envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mQ3D0rIT2QKv
+
+--_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_
+Content-Type: text/plain; charset="koi8-r"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 6Nlf/+c3qBXV
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+Hi Peter!
 
-> On 2024/02/22 19:20, Alex Benn=C3=A9e wrote:
->> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>=20
->>> On 2024/02/21 23:14, Alex Benn=C3=A9e wrote:
->>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>
->>>>> On 2024/02/21 19:02, Alex Benn=C3=A9e wrote:
->>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>
->>>>>>> On 2024/02/20 23:14, Alex Benn=C3=A9e wrote:
->>>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>>>
->>>>>>>>> On 2024/02/17 1:30, Alex Benn=C3=A9e wrote:
->>>>>>>>>> We can only request a list of registers once the vCPU has been
->>>>>>>>>> initialised so the user needs to use either call the get functio=
-n on
->>>>>>>>>> vCPU initialisation or during the translation phase.
->>>>>>>>>> We don't expose the reg number to the plugin instead hiding it
->>>>>>>>>> behind
->>>>>>>>>> an opaque handle. This allows for a bit of future proofing shoul=
-d the
->>>>>>>>>> internals need to be changed while also being hashed against the
->>>>>>>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>>>>>>> hetrogenous situations.
->>>>>>>>>> Having an internal state within the plugins also allows us to ex=
-pand
->>>>>>>>>> the interface in future (for example providing callbacks on regi=
-ster
->>>>>>>>>> change if the translator can track changes).
->>>>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>>>>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>>>> <snip>
->>>>>>>>>> +/*
->>>>>>>>>> + * Register handles
->>>>>>>>>> + *
->>>>>>>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>>>>>>> + * structures which are presented to plugins as opaque handles.=
- They
->>>>>>>>>> + * are global to the system and therefor additions to the hash =
-table
->>>>>>>>>> + * must be protected by the @reg_handle_lock.
->>>>>>>>>> + *
->>>>>>>>>> + * In order to future proof for up-coming heterogeneous work we=
- want
->>>>>>>>>> + * different entries for each CPU type while sharing them in the
->>>>>>>>>> + * common case of multiple cores of the same type.
->>>>>>>>>> + */
->>>>>>>>>> +
->>>>>>>>>> +static QemuMutex reg_handle_lock;
->>>>>>>>>> +
->>>>>>>>>> +struct qemu_plugin_register {
->>>>>>>>>> +    const char *name;
->>>>>>>>>> +    int gdb_reg_num;
->>>>>>>>>> +};
->>>>>>>>>> +
->>>>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>>>>>>> +
->>>>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnu=
-m)
->>>>>>>>>> +{
->>>>>>>>>> +    uintptr_t key =3D (uintptr_t) cs->cc;
->>>>>>>>>> +    key ^=3D gdb_regnum;
->>>>>>>>>> +    return GUINT_TO_POINTER(key);
->>>>>>>>>> +}
->>>>>>>>>
->>>>>>>>> I have pointed out this is theoretically prone to collisions and
->>>>>>>>> unsafe.
->>>>>>>> How is it unsafe? The aim is to share handles for the same CPUClass
->>>>>>>> rather than having a unique handle per register/cpu combo.
->>>>>>>
->>>>>>> THe intention is legitimate, but the implementation is not safe. It
->>>>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
->>>>>>> guarantee. The key of GHashTable must be unique; generating hashes =
-of
->>>>>>> keys should be done with hash_func given to g_hash_table_new().
->>>>>> This isn't a hash its a non-unique key. It is however unique for
->>>>>> the same register on the same class of CPU so for each vCPU in a sys=
-tem
->>>>>> can share the same opaque handles.
->>>>>> The hashing is done internally by glib. We would assert if there was
->>>>>> a
->>>>>> duplicate key referring to a different register.
->>>>>> I'm unsure what you want here? Do you have a suggestion for the key
->>>>>> generation algorithm? As the comment notes I did consider a more com=
-plex
->>>>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
->>>>>> either.
->>>>>
->>>>> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
->>>>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
->>>> We already do:
->>>>           if (!reg_handles) {
->>>>               reg_handles =3D g_hash_table_new(g_direct_hash, g_direct=
-_equal);
->>>>           }
->>>> But we can't use g_direct_equal with something that exceeds the
->>>> width of
->>>> gpointer as it is a straight equality test of the key. What you are
->>>> suggesting requires allocating memory for each key and de-referencing
->>>> with a custom GEqualFunc.
->>>
->>> My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It
->>> indeed seems to need a more complicated solution.
->>>
->>> It is possible to write a GEqualFunc and a GHashFunc that consumes a
->>> struct but it is a chore. How about having a two-level GHashTable?
->>> reg_handles will be a GHashTable keyed with cs->cc, and another
->>> GHashTable will be keyed with gdb_regnum.
->> That still seems overkill for a clash that can't happen. What do you
->> think about the following:
->>    /*
->>     * Generate a stable key shared across CPUs of the same class
->>     *
->>     * In order to future proof for up-coming heterogeneous work we want
->>     * different entries for each CPU type while sharing them in the
->>     * common case of multiple cores of the same type. This makes the
->>     * assumption you won't see two CPUClass pointers that are similar
->>     * enough that the low bits mixed with different registers numbers
->>     * will give you the same key.
->>     *
->>     * The build time assert will fire if CPUClass goes on a sudden diet
->>     * and we assert further down if we detect two keys representing
->>     * different regnums. In practice allocations of CPUClass are much
->>     * farther apart making clashes practically impossible.
->>     */
->>    static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>    {
->>        uintptr_t key =3D (uintptr_t) cs->cc;
->>        /* this protects some of the assumptions above */
->>        qemu_build_assert(sizeof(*cs->cc) >=3D 256);
->>        key ^=3D gdb_regnum;
->>        return GUINT_TO_POINTER(key);
->>    }
+Sorry, it wasn't intentional.
+
+
+How can I keep the tags from v4?
+
+
+Thanks,
+Sergey Kambalin
+Software Developer,
+Auriga Inc.
+
+
+________________________________
+=EF=D4: Peter Maydell <peter.maydell@linaro.org>
+=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 22 =C6=C5=D7=D2=C1=CC=D1 2024 =C7. 11:17:07
+=EB=CF=CD=D5: Sergey Kambalin
+=EB=CF=D0=C9=D1: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambalin, Serg=
+ey
+=F4=C5=CD=C1: Re: [PATCH v5 00/41] Raspberry Pi 4B machine
+
+On Mon, 19 Feb 2024 at 01:19, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
+> Introducing Raspberry Pi 4B model.
+> It contains new BCM2838 SoC, PCIE subsystem,
+> RNG200, Thermal sensor and Genet network controller.
 >
-> I think the assertion and comments are overkill. Doesn't having a
-> nested GHashTable save some words you have to wrote for the
-> assumption?
+> It can work with recent linux kernels 6.x.x.
+> Two avocado tests was added to check that.
+>
+> Unit tests has been made as read/write operations
+> via mailbox properties.
+>
+> Genet integration test is under development.
+>
+> Every single commit
+> 1) builds without errors
+> 2) passes regression tests
+> 3) passes style check*
+> *the only exception is bcm2838-mbox-property-test.c file
+> containing heavy macros usage which cause a lot of
+> false-positives of checkpatch.pl.
+>
+> I did my best to keep the commits less than 200 changes,
+> but had to make some of them a bit more in order to
+> keep their integrity.
+>
+> This is v5 patchset with the most of v1..v4 comments fixed.
 
-A nested hash table for a single entry is overkill.
+I reviewed quite a lot of v4, but I don't see any of
+my Reviewed-by tags in this version. Did you really change
+every patch so much you had to drop the tags?
 
-> I'm also not quite convinced that the comments and assertions are
-> enough to say this hack is safe; what if some sort of pointer
-> authentication is added and shuffles bits? Will this hack be
-> compatible with static and dynamic checkers we may have in the future?
+thanks
+-- PMM
 
-We are not using the value as a pointer so that should be irrelevant
-although generally those bits tend to be at the top of pointers so they
-can be masked off.
+--_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_
+Content-Type: text/html; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
 
-I'm not sure what we are trying to achieve here. I've got something that
-works, doesn't fail any tests and has some guards in for potential
-future problems. At the same time I'm not prepared to over-engineer the
-solution for a theoretical future problem we haven't got yet.
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
+ding-left: 4pt; border-left: #800000 2px solid; } --></style>
+</head>
+<body>
+<meta content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css" style=3D"">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p>Hi Peter!&nbsp;<br>
+<br>
+<span>Sorry, it wasn't intentional</span>.<br>
+<br>
+</p>
+<p>How can I keep the tags from v4?</p>
+<p><br>
+</p>
+<div id=3D"x_Signature">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:rgb(0,0,0); font-family:Calibri,Helvetica,sans-serif,EmojiFont,&quot;App=
+le Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe =
+UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
+<p><span lang=3D"en-US"><font size=3D"3" face=3D"Calibri,Helvetica,sans-ser=
+if" color=3D"black" style=3D"font-family:Calibri,Helvetica,sans-serif,serif=
+,&quot;EmojiFont&quot;"><span dir=3D"ltr" id=3D"x_divtagdefaultwrapper" sty=
+le=3D"font-size:12pt"><font size=3D"3" face=3D"Calibri,Helvetica,sans-serif=
+,EmojiFont,Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,=
+Android Emoji,EmojiSymbols" color=3D"black"><span id=3D"x_divtagdefaultwrap=
+per" style=3D"font-size:12pt"></span></font></span></font></span></p>
+<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif" color=3D"black" styl=
+e=3D"font-family:Calibri,Helvetica,sans-serif,serif,&quot;EmojiFont&quot;">=
+<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif,EmojiFont,Apple Color=
+ Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSym=
+bols" color=3D"black">
+<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
+pt">Thanks,</span></i></div>
+<i><span style=3D"font-size:10pt"></span></i>
+<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
+pt">Sergey Kambalin</span></i><i><br>
+</i></div>
+<i><span style=3D"font-size:10pt"></span></i>
+<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
+pt">Software Developer,</span></i></div>
+<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
+pt"><span>Auriga Inc.</span><br>
+</span></i></div>
+</font></font><br>
+<p></p>
+</div>
+</div>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
+;peter.maydell@linaro.org&gt;<br>
+<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 22 =C6=C5=D7=D2=C1=CC=D1 2024 =C7. 1=
+1:17:07<br>
+<b>=EB=CF=CD=D5:</b> Sergey Kambalin<br>
+<b>=EB=CF=D0=C9=D1:</b> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambali=
+n, Sergey<br>
+<b>=F4=C5=CD=C1:</b> Re: [PATCH v5 00/41] Raspberry Pi 4B machine</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On Mon, 19 Feb 2024 at 01:19, Sergey Kambalin &lt;=
+serg.oker@gmail.com&gt; wrote:<br>
+&gt;<br>
+&gt; Introducing Raspberry Pi 4B model.<br>
+&gt; It contains new BCM2838 SoC, PCIE subsystem,<br>
+&gt; RNG200, Thermal sensor and Genet network controller.<br>
+&gt;<br>
+&gt; It can work with recent linux kernels 6.x.x.<br>
+&gt; Two avocado tests was added to check that.<br>
+&gt;<br>
+&gt; Unit tests has been made as read/write operations<br>
+&gt; via mailbox properties.<br>
+&gt;<br>
+&gt; Genet integration test is under development.<br>
+&gt;<br>
+&gt; Every single commit<br>
+&gt; 1) builds without errors<br>
+&gt; 2) passes regression tests<br>
+&gt; 3) passes style check*<br>
+&gt; *the only exception is bcm2838-mbox-property-test.c file<br>
+&gt; containing heavy macros usage which cause a lot of<br>
+&gt; false-positives of checkpatch.pl.<br>
+&gt;<br>
+&gt; I did my best to keep the commits less than 200 changes,<br>
+&gt; but had to make some of them a bit more in order to<br>
+&gt; keep their integrity.<br>
+&gt;<br>
+&gt; This is v5 patchset with the most of v1..v4 comments fixed.<br>
+<br>
+I reviewed quite a lot of v4, but I don't see any of<br>
+my Reviewed-by tags in this version. Did you really change<br>
+every patch so much you had to drop the tags?<br>
+<br>
+thanks<br>
+-- PMM<br>
+</div>
+</span></font>
+</body>
+</html>
 
-What about if I just key based of gdb_regnum and we accept that that
-might break the one heterogeneous system we model today?
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+--_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_--

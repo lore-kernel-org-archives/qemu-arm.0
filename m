@@ -1,258 +1,141 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp236024eja;
-        Thu, 22 Feb 2024 05:22:44 -0800 (PST)
-X-Received: by 2002:a17:902:6545:b0:1db:930e:e755 with SMTP id d5-20020a170902654500b001db930ee755mr21962332pln.35.1708608163965;
-        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708608163; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp43012ejf;
+        Thu, 22 Feb 2024 08:22:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXm2nHv/XBZId0wnK7mKMDJXgTTA8OvwwR/57Tx7JanG+A1O+/3d7QFbE0cAXOZ8f4FjbjJby02uQM/3HWgN3USL5sHJns6
+X-Google-Smtp-Source: AGHT+IEUN36y8nMGiNM0VE+zj+gA3o/Fw4WHN/zMOyHjcX1H9NteDMvnzSu32KXdbVPrf/wX7dPK
+X-Received: by 2002:a05:620a:610f:b0:787:4e6a:4ed0 with SMTP id oq15-20020a05620a610f00b007874e6a4ed0mr17230216qkn.2.1708618976663;
+        Thu, 22 Feb 2024 08:22:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708618976; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rr/elmYpsv+5o6coQEj7oWVGGn/RxEheI4gRfAtRCl/VjAWM1HGsoiepn4BHBloRsS
-         zpL5kM7eyxyZyoSBd5nkH5qncovLlgHV8EppSoD3cQuaDtXWgsQyhU9+Ia9cMmH+cRsE
-         OC/mXuppctlzmP7AmM2oOOVLuVDmDEWMuBU0PSWDyDyBsyPda2mdEUOkFAMeIGpyKcx7
-         NaqXntO4iG3izhGt++YOHcS+PfLE5s8a8AacoaCI6HT2SijTZ+mECmsbJIzcDlaTpXla
-         ee1oYZggkaVsT6o+WtXfl2TvMWPQ7vYP6ohlOEVh+vuPneiW7qbllQlUb6LYnqc3NWOM
-         7DZA==
+        b=zkDDk4dIZUL0/Tu09ugtNqxwOJmvSnez5/VZq3MWAOZ0VLNek9NovgASXBTVkG/W0J
+         881ByGfYlF6+Fn3a/wlOpOjKgGqzKyBwrxFxgUBGtD6Vind5oFIAnac+qp1eb2SJxZTu
+         avpaur+wdg1k1AEUpTRFBz1ZYPWCA1dAY0BtaIlQf0b01r7wZw9t+Npo1/uwUIh60+Eq
+         Xl8bF8HfW49TuPsbVoSmfO/+2qRg19nEeIsas6oE+CdCfwXWWL/bemlAeH8ihNOxoFLu
+         18qD5pNkCVni/Ij61xhXEyhRDkSZropxtR8cOe4AKUExP/5GMK0rXn0/4CdUc/QZDdO7
+         wM+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
-        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
-        b=0OUdErnkllXiNh0bk09QAGFmworqYGgQWj9+YnbkthVcbEvfRbb0sIOyyzuMeUU8GV
-         ovrF9kTP8rofSLmnlQS6gzvdvUgxxTMgpSRlUV/CRF54ET2MDGZEy97Q7Pt4n5kFax6w
-         cpOSWi+yBA58ZSFcTkB8EoUIFiVyJx2v64/HLnoDuLV7FSHbX9Sh/NnA6ejVblu13uRq
-         aPq3zVFyec0NL5UUaAlSuVby8ZOmlgDxuY8e3XHDhK7Y+P9wN7uz28v4r5jZlwasGQRN
-         SDz32evDRUQls9DqRSGySuZkQUdZiNNF7Cn7HhsWCmAVcWWV10aRXPBpMel3Lp+lfWn8
-         U/fQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=8pBG7l/XuxDSAATZdauPDIwLeX6LrNnMLPODy+LAl0Q=;
+        fh=jrXTaT3sPoFNeobz2cPYY0sa9MRMSqgcuVn1lEh5BqI=;
+        b=zAYorc/WanLAlUPgcobDvZ40V0KrX1R00PzsGqjzNG1DoMEEXDzr3TJzvU9rRed6Ez
+         1TYAd8k8GcsHm/0Kl1estO9JxX91NywWT5dfRYMIuk0n0cTHAsRMZhjlbZW/HSTdXyYS
+         YwR+Q+3NDNEWC/vutSLp5PgUgDo7sRhI/g2mDVuFWUuhnGYCNlP4kblIt7TogWBQn5/G
+         EgtaxcEQsnxOLm+zy034W0uYOZhLLV3TP4gcCm6aU/4g0rKE1wA2IRf8EnleVr0UJLS+
+         vA3BjF3lnO38+CNLjZ8l76qeNFu5MMDuuI2tezS8Ku9GSVryW2SG7eYgKr/R6QDvuJZe
+         knpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="O/LY3U/x";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y23-20020a17090264d700b001db561fa154sor5669265pli.16.2024.02.22.05.22.43
+       dkim=pass header.i=@linaro.org header.s=google header.b=eyF0wyaj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id de40-20020a05620a372800b00787a63f79d5si962372qkb.657.2024.02.22.08.22.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Feb 2024 08:22:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="O/LY3U/x";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=eyF0wyaj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdBq2-0008BS-H2; Thu, 22 Feb 2024 11:22:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rdBq1-0008Ah-6f
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 11:22:21 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rdBpz-0006Iq-LY
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 11:22:20 -0500
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-5645960cd56so6669088a12.1
+ for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 08:22:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708608163; x=1709212963; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
-        b=O/LY3U/xbkBna8UdzQPi0DEgb3WIw1Mtq3CgkIjOWr/GkhT9ti93rJHcCMJ+0LCRSj
-         UO1Eu/ngQLSug98Xz+qvHVJdJSvaz3j9Qbm/vQvydV++yZOU8769KdcBupZGKE8RM9V0
-         WZoi8UbpW7CznbVOgEqMBb/OElezeCGMpoWjiGUwcjGoTQ9/Fu6GEcfRJ8wRTHSyY2gA
-         YTFn0zDX/XE/SRXxpflanVyfN2U06y/Fz06j2NKmZbaOZOI4yIxMqtLT8zma88GppBNC
-         A4r+gxMHE4Z3NOQopXoCQ6QO88pUhC9LkTbOiI++SSGS7Noed3EgxbORzoaW33znBnmZ
-         6zBA==
+ d=linaro.org; s=google; t=1708618936; x=1709223736; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8pBG7l/XuxDSAATZdauPDIwLeX6LrNnMLPODy+LAl0Q=;
+ b=eyF0wyajQKzxLGTe+G7fMgUZXXxIhMx5y/VkSIUciAvbDoJThv+e2bCk+J8N+PyGKJ
+ ZO7kDkZLWNI8xJrXqdiBYw2m6CULH7cXp/cOI7zOoJMDgd+7wjyYYXmXztekdTzc/b8Q
+ +iDv/3Qb3JWgyeiD0wUScmm4LlzlOLj++CbJy2svN2U9YaXcStLdEqNDPpHgcvJFR7gK
+ dBwasF56nsleEYQBZ1S+SV74MmYXptjvFlWInk3iKgFKmwdNieGq0f+9L7VzJQ9lz/0G
+ u640NYRt1eKl5Gu6PxRiUqGxGnvLdY5DWmBUuTHN61Dyd4Wwt3D5K7eVchEm/02HMWYe
+ O6dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708608163; x=1709212963;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=B3S3Bpb421BlK3Vq+EDzCtqJrCcNQN5oK9MmjMf9Dgw=;
-        b=HsSdkeVYv4UnpmOQi2mta0ILz7aEFECGvqU5Ycdcl1XgUnSEZdops3ok5v2vS4CCX4
-         CyTp7+z+wPsK0HHC8tmWKO8uEuX33ij1zJma4dOzBBb788uOl40LznyJEkbtL5KLm7/R
-         54dnJ2NMuUAbZT0tbo5sp+StdrZyhlQPo/D1pMzOmeOn/ksgik3g9lI3n2odj5n670bH
-         qjdPhbj1xTarPN2JSeijhaERt5B03O7RyjmxqRhmsRAtdU0pMLkkF5iWBjcMhJsVrykL
-         tn3tDW3CS9lyNUlUh46ZBahz90MmInUp+SNzgMhj7y+LhBd7NCCbhxwTCRjh3n6zbc1s
-         gR0g==
-X-Gm-Message-State: AOJu0YzaGcJ3txOOZpekLA8gb2k6jkO9fnp11JaJd8m0urgWzR28fFBz
-	WXJf1IOZoSlajyjBgWjpwXlEyhAw7RqTfTcTqG0i/2PJNv33XFeP+PlwThRA4zZeeDiQykOhwtV
-	r
-X-Google-Smtp-Source: AGHT+IENTkBmQg0olIk0ilHX/sAMRTJBq14FrztFn4Wr4bbHecyeeBVSssBP0UmZaWhYwEN/dAnNBg==
-X-Received: by 2002:a17:903:32c3:b0:1dc:b64:13c8 with SMTP id i3-20020a17090332c300b001dc0b6413c8mr12147274plr.56.1708608163115;
-        Thu, 22 Feb 2024 05:22:43 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with ESMTPSA id jh18-20020a170903329200b001db3a0c52b1sm9937675plb.88.2024.02.22.05.22.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Feb 2024 05:22:42 -0800 (PST)
-Message-ID: <f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com>
-Date: Thu, 22 Feb 2024 22:22:35 +0900
+ d=1e100.net; s=20230601; t=1708618936; x=1709223736;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8pBG7l/XuxDSAATZdauPDIwLeX6LrNnMLPODy+LAl0Q=;
+ b=tBC+NQKPp5Oy5zOb3UbRIQdBnWetAoSRqDQAlHbPely2sXXpDAQCqYI+A27RhSMagX
+ i3rag8iOBCEte+gGqIeG8CfO8X0p/13SwuPXdZFiao/KIgfZirss3wtuY7SsgD/0IlFr
+ 7TqsZDxFP8mavj4+zUo1vKaBnroDz3IPeBgeLGeghq65hLaZqOtJ41vseLSOqNxYQntM
+ qnoZwbyuevUxhsdAeivPdVn4CVPdzpkVJeyUHT2qbi4W3zJbf8dti7X922vJKOtSquvv
+ CZZ7fJ8A2dPnMKxf5d7OFdQY2gPnQeBLlndQ5RtfbxoLH0SlRzHEl+pCDHppwxFOh367
+ YY2w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWw6J+9nJFBlfHf63T97+NXuCR5TefDG6c11h58VCpMYU0BSgR3MRycTTWyg78enpygZ+j7dlE2cA3XLjrtO1rdFXyw
+X-Gm-Message-State: AOJu0Yw0w+ukvAnREjd3rwGscLikSFxu/TC6cEIBPsguXNCCMmJt8n1u
+ KbMv7ys3oFCvo4CYWNJggPaseHJJtxU8dZ4dDKVusZj6f3hccmKHPk+9v4sbpNBEtyO9TNhmiMa
+ zweYjq9e9t2DoSATiDqFNFTCjmmYdbo2FqsuKQw==
+X-Received: by 2002:a50:ed03:0:b0:564:7350:cac8 with SMTP id
+ j3-20020a50ed03000000b005647350cac8mr8126183eds.15.1708618936163; Thu, 22 Feb
+ 2024 08:22:16 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
- <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alistair Francis <alistair.francis@wdc.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
- <20240216163025.424857-19-alex.bennee@linaro.org>
- <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
- <87il2jcje8.fsf@draig.linaro.org>
- <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
- <87bk8ab0f4.fsf@draig.linaro.org>
- <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
- <87zfvtaoqq.fsf@draig.linaro.org>
- <7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
- <87cysoajhl.fsf@draig.linaro.org>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87cysoajhl.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: cbE3QqAjRzE5
+References: <20240222000341.1562443-1-jrtc27@jrtc27.com>
+In-Reply-To: <20240222000341.1562443-1-jrtc27@jrtc27.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Feb 2024 16:22:04 +0000
+Message-ID: <CAFEAcA-yJyfHdp9OPTG+iSduoQC6nAmWMbTgzcHvxD7pewAdqg@mail.gmail.com>
+Subject: Re: [PATCH] pl031: Update last RTCLR value on write in case it's read
+ back
+To: Jessica Clarke <jrtc27@jrtc27.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RxcnRjkLdLgf
 
-On 2024/02/22 19:20, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/02/21 23:14, Alex Bennée wrote:
->>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>
->>>> On 2024/02/21 19:02, Alex Bennée wrote:
->>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>
->>>>>> On 2024/02/20 23:14, Alex Bennée wrote:
->>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>>
->>>>>>>> On 2024/02/17 1:30, Alex Bennée wrote:
->>>>>>>>> We can only request a list of registers once the vCPU has been
->>>>>>>>> initialised so the user needs to use either call the get function on
->>>>>>>>> vCPU initialisation or during the translation phase.
->>>>>>>>> We don't expose the reg number to the plugin instead hiding it
->>>>>>>>> behind
->>>>>>>>> an opaque handle. This allows for a bit of future proofing should the
->>>>>>>>> internals need to be changed while also being hashed against the
->>>>>>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>>>>>> hetrogenous situations.
->>>>>>>>> Having an internal state within the plugins also allows us to expand
->>>>>>>>> the interface in future (for example providing callbacks on register
->>>>>>>>> change if the translator can track changes).
->>>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>>> <snip>
->>>>>>>>> +/*
->>>>>>>>> + * Register handles
->>>>>>>>> + *
->>>>>>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>>>>>> + * structures which are presented to plugins as opaque handles. They
->>>>>>>>> + * are global to the system and therefor additions to the hash table
->>>>>>>>> + * must be protected by the @reg_handle_lock.
->>>>>>>>> + *
->>>>>>>>> + * In order to future proof for up-coming heterogeneous work we want
->>>>>>>>> + * different entries for each CPU type while sharing them in the
->>>>>>>>> + * common case of multiple cores of the same type.
->>>>>>>>> + */
->>>>>>>>> +
->>>>>>>>> +static QemuMutex reg_handle_lock;
->>>>>>>>> +
->>>>>>>>> +struct qemu_plugin_register {
->>>>>>>>> +    const char *name;
->>>>>>>>> +    int gdb_reg_num;
->>>>>>>>> +};
->>>>>>>>> +
->>>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>>>>>> +
->>>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>>>>>>>> +{
->>>>>>>>> +    uintptr_t key = (uintptr_t) cs->cc;
->>>>>>>>> +    key ^= gdb_regnum;
->>>>>>>>> +    return GUINT_TO_POINTER(key);
->>>>>>>>> +}
->>>>>>>>
->>>>>>>> I have pointed out this is theoretically prone to collisions and
->>>>>>>> unsafe.
->>>>>>> How is it unsafe? The aim is to share handles for the same CPUClass
->>>>>>> rather than having a unique handle per register/cpu combo.
->>>>>>
->>>>>> THe intention is legitimate, but the implementation is not safe. It
->>>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
->>>>>> guarantee. The key of GHashTable must be unique; generating hashes of
->>>>>> keys should be done with hash_func given to g_hash_table_new().
->>>>> This isn't a hash its a non-unique key. It is however unique for
->>>>> the same register on the same class of CPU so for each vCPU in a system
->>>>> can share the same opaque handles.
->>>>> The hashing is done internally by glib. We would assert if there was
->>>>> a
->>>>> duplicate key referring to a different register.
->>>>> I'm unsure what you want here? Do you have a suggestion for the key
->>>>> generation algorithm? As the comment notes I did consider a more complex
->>>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
->>>>> either.
->>>>
->>>> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
->>>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
->>> We already do:
->>>           if (!reg_handles) {
->>>               reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
->>>           }
->>> But we can't use g_direct_equal with something that exceeds the
->>> width of
->>> gpointer as it is a straight equality test of the key. What you are
->>> suggesting requires allocating memory for each key and de-referencing
->>> with a custom GEqualFunc.
->>
->> My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It
->> indeed seems to need a more complicated solution.
->>
->> It is possible to write a GEqualFunc and a GHashFunc that consumes a
->> struct but it is a chore. How about having a two-level GHashTable?
->> reg_handles will be a GHashTable keyed with cs->cc, and another
->> GHashTable will be keyed with gdb_regnum.
-> 
-> That still seems overkill for a clash that can't happen. What do you
-> think about the following:
-> 
->    /*
->     * Generate a stable key shared across CPUs of the same class
->     *
->     * In order to future proof for up-coming heterogeneous work we want
->     * different entries for each CPU type while sharing them in the
->     * common case of multiple cores of the same type. This makes the
->     * assumption you won't see two CPUClass pointers that are similar
->     * enough that the low bits mixed with different registers numbers
->     * will give you the same key.
->     *
->     * The build time assert will fire if CPUClass goes on a sudden diet
->     * and we assert further down if we detect two keys representing
->     * different regnums. In practice allocations of CPUClass are much
->     * farther apart making clashes practically impossible.
->     */
->    static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->    {
->        uintptr_t key = (uintptr_t) cs->cc;
-> 
->        /* this protects some of the assumptions above */
->        qemu_build_assert(sizeof(*cs->cc) >= 256);
-> 
->        key ^= gdb_regnum;
->        return GUINT_TO_POINTER(key);
->    }
+On Thu, 22 Feb 2024 at 00:04, Jessica Clarke <jrtc27@jrtc27.com> wrote:
+>
+> The PL031 allows you to read RTCLR, which is meant to give you the last
+> value written. PL031State has an lr field which is used when reading
+> from RTCLR, and is present in the VM migration state, but we never
+> actually update it, so it always reads as its initial 0 value.
+>
+> Signed-off-by: Jessica Clarke <jrtc27@jrtc27.com>
+> ---
 
+Thanks for the patch -- looks like this bug has been present since
+the first version of the pl031 emulation was added back in 2007...
+Applied to target-arm.next.
 
-I think the assertion and comments are overkill. Doesn't having a nested 
-GHashTable save some words you have to wrote for the assumption?
-
-I'm also not quite convinced that the comments and assertions are enough 
-to say this hack is safe; what if some sort of pointer authentication is 
-added and shuffles bits? Will this hack be compatible with static and 
-dynamic checkers we may have in the future?
+-- PMM

@@ -1,301 +1,784 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp114828ejf;
-        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUovxOKFCGZzT/i+pAMxpNgNW5siVpF5MXV3HhPklGJeCa1idQVAh0eeXuv9bLLTpP04J1YgjvxxIKMaav6KW7/oKo7WSD5
-X-Google-Smtp-Source: AGHT+IF/zceG/64RcP1YryVm/tf0hIwQ5vR3C8H0FmWSG3swORZlau28Su4Gvw3NROmbKtdcLoUz
-X-Received: by 2002:adf:e448:0:b0:33b:4b0f:b989 with SMTP id t8-20020adfe448000000b0033b4b0fb989mr13880687wrm.0.1708626071626;
-        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708626071; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp230542ejf;
+        Thu, 22 Feb 2024 14:24:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVMVhgrv/ZiZpHjQolmI+t4hYgfK3SVFnOAvP1TirbQWVlj8aSIMeNWhi0JOXmQs/+iSPKjUSyXeJaMYyv/0J8S0gCWd4h2
+X-Received: by 2002:a17:902:8649:b0:1dc:4d63:7a0d with SMTP id y9-20020a170902864900b001dc4d637a0dmr160399plt.41.1708640661094;
+        Thu, 22 Feb 2024 14:24:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708640661; cv=none;
         d=google.com; s=arc-20160816;
-        b=wHdpz7HajwaLohLAMg/1mNtfVfh0ZpgLkVgRSxT+Z7DWoboaJOUGCJzg41KLM6eXNe
-         BgwgDt/1RDtjNzkE1fS6NwLmO/Izl+lKxtVeL16hVhGxwlufGK76QXwrm5xXF+K4anN5
-         uBSZE+hAdS2c8k+8uTXf3jJx9Y+Rt4A/Q05uaOXbW9dcmyBZSI69xErkQQrh4drfdamE
-         CBrVvoZmkkZHxeORCxDJzv19dusJS1qdtdHPtDWx7XllSx6ylWvGMmVLejyMgOXSINTi
-         Isvh+F4lpYspSjkTQkcsJp7C3UECxTJrVbsHbO/nBwkGuh04gIHJ0Xz0BlEr2gZ6XJSp
-         YEeg==
+        b=IOCpJBQaQjP53qrMq8tUy65TrTVLi1AIJCiDI5esQ3E2bT+3Q1fcAK1CKzULj3zMJ0
+         hX8yHIjMJUqwrE/rYVqt/cTfAikDfzfxb40eh1vNokAJIhT1aTTeiy0IoEAAtYupNRAQ
+         jgs6TEhcdgf3lhoSR+w0Vg2eanyexW0+zz4RKWZb4CFh0L6hzfl1x62Ib/wNcWVl70F4
+         2+ExLiicK4/gqPYWfbH6qb+DvV+qVo4rXaY9bbxSaTgzYjEtpy/k3Mulhl8svBjoVPn+
+         wNJwfnj3PSwkmQAhY4KoFMByNJK3RHc7mf5xNPaTl5WA9k/i2a+lbEuw8RfX9Y9A/yK9
+         giEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=32ukLAwAHrxvPhax7nUNH1DYtaZw2310oT7RzCek5vM=;
-        fh=Yypr2VkbhmjuXW0VooRn9Uxrx6H7o63tNy03R06JsZ0=;
-        b=hJU/EKcUXsjqy7IWsfJAzGEnwDXUMaf94JDQstvd6Q4nwKOI7PV5ZYHsHIx9TncTqk
-         uQFGgXOpt0ejBVlOKBGqWLWjSOlkyGeYLRirb3UhYGM5QsiSH6T3W8V8OK7cq35+dPh3
-         pJSQJwKp2m1GJFPsekmAVGez3UC2b85zdQvLnwJQaQKGHTahhCzdaw8ylebwt3ROudLo
-         z0dL9Vm4Bojw7RLIP2VKk9BPLur0R/O574wuM/A2eQ5ZP6CJJ+QRB/iQuOAMcbchuCFH
-         zx5pj+Rjmjb78I3Ruu19Zj9LLXmQPZU8fG4Pdha6pd+gLjd46aZgfCFF6XxrDWld0Rud
-         KvHg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=2/xMTkt4H9928R+Sycr3uemIyeVCofAaI2nXM9aL6oM=;
+        fh=2W7eZRXl8MYLa64n8BO80GCCA698iitkQREX1ZRIrxo=;
+        b=OIZtxXJCwbQ/evhPKPjzjKj05u0TWd2BQ/FqFxxbcMF6B+X4GnffcVed+UvxptwHCV
+         s5/J514H9gSeWq4ILyGzGOBdkAy4DlFf3dxJpv4V7TPidADP0wPfvE1c5oFt8C3Dz6DT
+         0qaMjxAL+pxz6eZ/6lpEiBVvd6EDSncwq8+1PD7yJvqJm61RuIy0uuQOUVixm3iO3XxW
+         pBwJJ8ehzwKHsZb5/6UOmx3xftn9Qhic1RmpIoiWSoKXs/Jkdj+v3ZzYlAQBmvvlCxXX
+         8oX3zwBugwFLZPmXTPr6HPn+KrtxkZWqZcr03TjW66D3w7QV9L2NdZe8ny0gTzEZ4BIs
+         yrGQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10-20020adfe60a000000b0033d06a3094bsi5429267wrm.593.2024.02.22.10.21.11
+       dkim=pass header.i=@linaro.org header.s=google header.b=SFlA0iNX;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h13-20020a170902680d00b001dc693b5abcsor217060plk.16.2024.02.22.14.24.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 10:21:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 22 Feb 2024 14:24:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdDgk-0002VC-Jk; Thu, 22 Feb 2024 13:20:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rdDgj-0002Uv-E4; Thu, 22 Feb 2024 13:20:53 -0500
-Received: from hq-ms.auriga.com ([82.97.202.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rdDgh-00045P-2X; Thu, 22 Feb 2024 13:20:53 -0500
-Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
- hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Thu, 22 Feb 2024 21:15:39 +0300
-Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
- hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%7]) with mapi id
- 15.02.1258.028; Thu, 22 Feb 2024 21:15:39 +0300
-From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Sergey Kambalin
- <serg.oker@gmail.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 00/41] Raspberry Pi 4B machine
-Thread-Topic: [PATCH v5 00/41] Raspberry Pi 4B machine
-Thread-Index: AQHaYtGCfqkL7B0Tb0KILu02iBHW8bEWbf6AgABB86g=
-Date: Thu, 22 Feb 2024 18:15:39 +0000
-Message-ID: <caf1110f9e9445cab3aa00ebab24d263@auriga.com>
-References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>,
- <CAFEAcA-Wir3M7dVV5247uMPxCtrYs8j4Z3S7nucCx3Ha8pA1dg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-Wir3M7dVV5247uMPxCtrYs8j4Z3S7nucCx3Ha8pA1dg@mail.gmail.com>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.55.54.50]
-x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-28208.000
-x-tm-as-result: No-10--23.857400-8.000000
-x-tmase-matchedrid: h5TVo972vkSJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
- DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
- ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8p0fmBwOcEOYMwrh
- SFC/dJGEZSxU13SYvpALYX+A8A0O0PTrDKsCYT0OKLvlSV0+r2rLALtod6A6ZmNqUsn94Y20FEM
- +pwiCobBt8n8fEuJJVX0KLFo/pn8fp4lWjAX1OzlOneJcroAxT3Oai+medFbKlOQjQcrzOl1jOm
- H0YwN7E45PBNB8uybZsbsj1AjTF7LdR5g5YGhzKj5gmRCefvLmHWZvjZxlUH33Nl3elSfsrGdRf
- PKx6LHMD46MsbWPCAmEKHz5YiYlQf0H3tYJmWPRMXUu1hb2VrrB85uDT3cKRvKpAGRBjcb9nfJr
- USEbFDd4EWkOs0kBZq+rSiPqZuvsQTSPZE5H8gOIQ9GP2P2u8cDDLReGt4PZTYluj+pBVBngIgp
- j8eDcAPEIloOPJwnn0GyL/mi/M8OMB0shqXhHpB7zALuogCGAYqv4YJG1FYtRdrdgLuMyW7mZq8
- BJXPF1kSgZIgXtrH
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--23.857400-8.000000
-x-tmase-version: SMEX-14.0.0.1158-9.0.1002-28208.000
-x-tm-snts-smtp: 87E843C24A95885FD72591806D2F0CB8A0A582E6A0C336A4E8704232656EEB592000:8
-Content-Type: multipart/alternative;
- boundary="_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_"
+       dkim=pass header.i=@linaro.org header.s=google header.b=SFlA0iNX;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1708640660; x=1709245460; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2/xMTkt4H9928R+Sycr3uemIyeVCofAaI2nXM9aL6oM=;
+        b=SFlA0iNXogAQ3FgeSUmfCDqljU1NrimFUHereIx1f3JiKzcF9M/L81L1eFbsP1ugbc
+         ppkDDhisr5La3h2gotwFF9j5wLO0D+JwWkRZ1oxWo5EGdVj5B8Sg1fNQMqKcVsyqkWVy
+         VYioYBkLbuEzuEzvGAeBmxo59LLGNKVKgLLHkr7oH7vHrWrpSEjogttXVM5/atLtHWlW
+         3DmhDpeD75bY+3gpIxdVXxr2yifkh0kiGynUQSnNOTuPsxSE/qyXuqFDCKnNqNPIatny
+         1CzQDikWDRF41vLtHTW/0CpWJTj3DZfzQ1ptLiug9yuqWpzpJ/Q/fYo1QSAXilPO559B
+         M7Cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708640660; x=1709245460;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2/xMTkt4H9928R+Sycr3uemIyeVCofAaI2nXM9aL6oM=;
+        b=u8y0f3l9bLQ8aNcRBNOhl8gWItZt3WCS6HBwEJdebOR9SkqhzFbLrSH4EhBToHU82P
+         xZk+sSt4gZs1uRzXfYO1z4O53hsIohlGoI7MIKAGjIYIC1NlUEoJIGZtjMhJq9Itr3hf
+         z3mj2cxbQC9N6pzwDTD9hhcvMoa7fc8ihwCDf52I/uMhXFhboKiACG71CwcqkaGTrrU8
+         +U9rAYdBDI+n3atbmg26Py/wv1WgvPmYWWJo2LrkSAH8FqfvfEAlg7GI9xNnMx4Eq4Ok
+         nmSgyHSSd/g7VUswrXjHqa5H1HWuG0125SpIIv0U57zZqBUB+Fe1HrpavjMmDTJ/MhFH
+         B8xw==
+X-Forwarded-Encrypted: i=1; AJvYcCWqKSzsmuMlv0RQS+O2ci1nfE7gL+1cZx58FpuCMgHzXuW3dWU3tVkBCreEsw3gZRbNXleFVZYGwYXwn7gcRpkcU7qJEnlN
+X-Gm-Message-State: AOJu0YyrNaDj4QiF1zbziM9kpRY7rCjDXSihH5EzvHc4FsplS4LbxoQz
+	XVGEOsxuI+szSjYWsyvkFRwV+xUmAAnkEhi4cO+N0bMWSU4y3YUGC6WovrbUXnj1/Q==
+X-Google-Smtp-Source: AGHT+IGICRFtXzu0M9+XjVHV/bVU4oPPSePsWmRHPUtswF6mw7hyTCwangKSmfHxA2ZI+GAd+hJsdw==
+X-Received: by 2002:a17:902:c402:b0:1db:f941:c9a with SMTP id k2-20020a170902c40200b001dbf9410c9amr234719plk.45.1708640660462;
+        Thu, 22 Feb 2024 14:24:20 -0800 (PST)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from amd.. ([2804:7f0:b400:285a:3e7c:3fff:fe7a:e83b])
+        by smtp.gmail.com with ESMTPSA id ji7-20020a170903324700b001d7057c2fbasm10457210plb.100.2024.02.22.14.24.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Feb 2024 14:24:19 -0800 (PST)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	philmd@linaro.org
+Cc: thuth@redhat.com,
+	lvivier@redhat.com,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	pbonzini@redhat.com,
+	anton.kochkov@proton.me,
+	richard.henderson@linaro.org,
+	peter.maydell@linaro.org,
+	gustavo.romero@linaro.org
+Subject: [PATCH 1/6] hw/misc/ivshmem: Add ivshmem-flat device
+Date: Thu, 22 Feb 2024 22:22:13 +0000
+Message-Id: <20240222222218.2261956-2-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240222222218.2261956-1-gustavo.romero@linaro.org>
+References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=82.97.202.32;
- envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mQ3D0rIT2QKv
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Dbp9QkFsvWo+
 
---_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_
-Content-Type: text/plain; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
+Add a new device, ivshmem-flat, which is similar to the ivshmem PCI but
+does not require a PCI bus. It's meant to be used on machines like those
+with Cortex-M MCUs, which usually lack a PCI/PCIe bus, e.g. lm3s6965evb
+and mps2-an385.
 
-Hi Peter!
+The device currently only supports the sysbus bus.
 
-Sorry, it wasn't intentional.
+The new device, just like the ivshmem PCI device, supports both peer
+notification via hardware interrupts and shared memory.
 
+The device shared memory size can be set using the 'shmem-size' option
+and it defaults to 4 MiB, which is the default size of shmem allocated
+by the ivshmem server.
 
-How can I keep the tags from v4?
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1134
+Message-ID: <20231127052024.435743-2-gustavo.romero@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ docs/system/devices/ivshmem-flat.rst |  33 ++
+ hw/misc/Kconfig                      |   5 +
+ hw/misc/ivshmem-flat.c               | 463 +++++++++++++++++++++++++++
+ hw/misc/meson.build                  |   2 +
+ hw/misc/trace-events                 |  17 +
+ include/hw/misc/ivshmem-flat.h       |  85 +++++
+ 6 files changed, 605 insertions(+)
+ create mode 100644 docs/system/devices/ivshmem-flat.rst
+ create mode 100644 hw/misc/ivshmem-flat.c
+ create mode 100644 include/hw/misc/ivshmem-flat.h
 
-
-Thanks,
-Sergey Kambalin
-Software Developer,
-Auriga Inc.
-
-
-________________________________
-=EF=D4: Peter Maydell <peter.maydell@linaro.org>
-=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 22 =C6=C5=D7=D2=C1=CC=D1 2024 =C7. 11:17:07
-=EB=CF=CD=D5: Sergey Kambalin
-=EB=CF=D0=C9=D1: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambalin, Serg=
-ey
-=F4=C5=CD=C1: Re: [PATCH v5 00/41] Raspberry Pi 4B machine
-
-On Mon, 19 Feb 2024 at 01:19, Sergey Kambalin <serg.oker@gmail.com> wrote:
->
-> Introducing Raspberry Pi 4B model.
-> It contains new BCM2838 SoC, PCIE subsystem,
-> RNG200, Thermal sensor and Genet network controller.
->
-> It can work with recent linux kernels 6.x.x.
-> Two avocado tests was added to check that.
->
-> Unit tests has been made as read/write operations
-> via mailbox properties.
->
-> Genet integration test is under development.
->
-> Every single commit
-> 1) builds without errors
-> 2) passes regression tests
-> 3) passes style check*
-> *the only exception is bcm2838-mbox-property-test.c file
-> containing heavy macros usage which cause a lot of
-> false-positives of checkpatch.pl.
->
-> I did my best to keep the commits less than 200 changes,
-> but had to make some of them a bit more in order to
-> keep their integrity.
->
-> This is v5 patchset with the most of v1..v4 comments fixed.
-
-I reviewed quite a lot of v4, but I don't see any of
-my Reviewed-by tags in this version. Did you really change
-every patch so much you had to drop the tags?
-
-thanks
--- PMM
-
---_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_
-Content-Type: text/html; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
-<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
-<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
-ding-left: 4pt; border-left: #800000 2px solid; } --></style>
-</head>
-<body>
-<meta content=3D"text/html; charset=3DUTF-8">
-<style type=3D"text/css" style=3D"">
-<!--
-p
-	{margin-top:0;
-	margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:#000000; font-family:Calibri,Helvetica,sans-serif">
-<p>Hi Peter!&nbsp;<br>
-<br>
-<span>Sorry, it wasn't intentional</span>.<br>
-<br>
-</p>
-<p>How can I keep the tags from v4?</p>
-<p><br>
-</p>
-<div id=3D"x_Signature">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:rgb(0,0,0); font-family:Calibri,Helvetica,sans-serif,EmojiFont,&quot;App=
-le Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe =
-UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
-<p><span lang=3D"en-US"><font size=3D"3" face=3D"Calibri,Helvetica,sans-ser=
-if" color=3D"black" style=3D"font-family:Calibri,Helvetica,sans-serif,serif=
-,&quot;EmojiFont&quot;"><span dir=3D"ltr" id=3D"x_divtagdefaultwrapper" sty=
-le=3D"font-size:12pt"><font size=3D"3" face=3D"Calibri,Helvetica,sans-serif=
-,EmojiFont,Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,=
-Android Emoji,EmojiSymbols" color=3D"black"><span id=3D"x_divtagdefaultwrap=
-per" style=3D"font-size:12pt"></span></font></span></font></span></p>
-<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif" color=3D"black" styl=
-e=3D"font-family:Calibri,Helvetica,sans-serif,serif,&quot;EmojiFont&quot;">=
-<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif,EmojiFont,Apple Color=
- Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSym=
-bols" color=3D"black">
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Thanks,</span></i></div>
-<i><span style=3D"font-size:10pt"></span></i>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Sergey Kambalin</span></i><i><br>
-</i></div>
-<i><span style=3D"font-size:10pt"></span></i>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Software Developer,</span></i></div>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt"><span>Auriga Inc.</span><br>
-</span></i></div>
-</font></font><br>
-<p></p>
-</div>
-</div>
-</div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
-;peter.maydell@linaro.org&gt;<br>
-<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 22 =C6=C5=D7=D2=C1=CC=D1 2024 =C7. 1=
-1:17:07<br>
-<b>=EB=CF=CD=D5:</b> Sergey Kambalin<br>
-<b>=EB=CF=D0=C9=D1:</b> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambali=
-n, Sergey<br>
-<b>=F4=C5=CD=C1:</b> Re: [PATCH v5 00/41] Raspberry Pi 4B machine</font>
-<div>&nbsp;</div>
-</div>
-</div>
-<font size=3D"2"><span style=3D"font-size:10pt;">
-<div class=3D"PlainText">On Mon, 19 Feb 2024 at 01:19, Sergey Kambalin &lt;=
-serg.oker@gmail.com&gt; wrote:<br>
-&gt;<br>
-&gt; Introducing Raspberry Pi 4B model.<br>
-&gt; It contains new BCM2838 SoC, PCIE subsystem,<br>
-&gt; RNG200, Thermal sensor and Genet network controller.<br>
-&gt;<br>
-&gt; It can work with recent linux kernels 6.x.x.<br>
-&gt; Two avocado tests was added to check that.<br>
-&gt;<br>
-&gt; Unit tests has been made as read/write operations<br>
-&gt; via mailbox properties.<br>
-&gt;<br>
-&gt; Genet integration test is under development.<br>
-&gt;<br>
-&gt; Every single commit<br>
-&gt; 1) builds without errors<br>
-&gt; 2) passes regression tests<br>
-&gt; 3) passes style check*<br>
-&gt; *the only exception is bcm2838-mbox-property-test.c file<br>
-&gt; containing heavy macros usage which cause a lot of<br>
-&gt; false-positives of checkpatch.pl.<br>
-&gt;<br>
-&gt; I did my best to keep the commits less than 200 changes,<br>
-&gt; but had to make some of them a bit more in order to<br>
-&gt; keep their integrity.<br>
-&gt;<br>
-&gt; This is v5 patchset with the most of v1..v4 comments fixed.<br>
-<br>
-I reviewed quite a lot of v4, but I don't see any of<br>
-my Reviewed-by tags in this version. Did you really change<br>
-every patch so much you had to drop the tags?<br>
-<br>
-thanks<br>
--- PMM<br>
-</div>
-</span></font>
-</body>
-</html>
-
---_000_caf1110f9e9445cab3aa00ebab24d263aurigacom_--
+diff --git a/docs/system/devices/ivshmem-flat.rst b/docs/system/devices/ivshmem-flat.rst
+new file mode 100644
+index 0000000000..1f97052804
+--- /dev/null
++++ b/docs/system/devices/ivshmem-flat.rst
+@@ -0,0 +1,33 @@
++Inter-VM Shared Memory Flat Device
++----------------------------------
++
++The ivshmem-flat device is meant to be used on machines that lack a PCI bus,
++making them unsuitable for the use of the traditional ivshmem device modeled as
++a PCI device. Machines like those with a Cortex-M MCU are good candidates to use
++the ivshmem-flat device. Also, since the flat version maps the control and
++status registers directly to the memory, it requires a quite tiny "device
++driver" to interact with other VMs, which is useful in some RTOSes, like
++Zephyr, which usually run on constrained resource targets.
++
++Similar to the ivshmem device, the ivshmem-flat device supports both peer
++notification via HW interrupts and Inter-VM shared memory. This allows the
++device to be used together with the traditional ivshmem, enabling communication
++between, for instance, an aarch64 VM  (using the traditional ivshmem device and
++running Linux), and an arm VM (using the ivshmem-flat device and running Zephyr
++instead).
++
++The ivshmem-flat device does not support the use of a ``memdev`` option (see
++ivshmem.rst for more details). It relies on the ivshmem server to create and
++distribute the proper shared memory file descriptor and the eventfd(s) to notify
++(interrupt) the peers. Therefore, to use this device, it is always necessary to
++have an ivshmem server up and running for proper device creation.
++
++Although the ivshmem-flat supports both peer notification (interrupts) and
++shared memory, the interrupt mechanism is optional. If no input IRQ is
++specified for the device it is disabled, preventing the VM from notifying or
++being notified by other VMs (a warning will be displayed to the user to inform
++the IRQ mechanism is disabled). The shared memory region is always present.
++
++The MMRs (INTRMASK, INTRSTATUS, IVPOSITION, and DOORBELL registers) offsets at
++the MMR region, and their functions, follow the ivshmem spec, so they work
++exactly as in the ivshmem PCI device (see ./specs/ivshmem-spec.txt).
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 4fc6b29b43..a643cfac3a 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -68,6 +68,11 @@ config IVSHMEM_DEVICE
+     default y if PCI_DEVICES
+     depends on PCI && LINUX && IVSHMEM && MSI_NONBROKEN
+ 
++config IVSHMEM_FLAT_DEVICE
++    bool
++    default y
++    depends on LINUX && IVSHMEM
++
+ config ECCMEMCTL
+     bool
+     select ECC
+diff --git a/hw/misc/ivshmem-flat.c b/hw/misc/ivshmem-flat.c
+new file mode 100644
+index 0000000000..833ee2fefb
+--- /dev/null
++++ b/hw/misc/ivshmem-flat.c
+@@ -0,0 +1,463 @@
++/*
++ * Inter-VM Shared Memory Flat Device
++ *
++ * SPDX-FileCopyrightText: 2023 Linaro Ltd.
++ * SPDX-FileContributor: Gustavo Romero <gustavo.romero@linaro.org>
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties-system.h"
++#include "hw/sysbus.h"
++#include "chardev/char-fe.h"
++#include "exec/address-spaces.h"
++#include "trace.h"
++
++#include "hw/misc/ivshmem-flat.h"
++
++static int64_t ivshmem_flat_recv_msg(IvshmemFTState *s, int *pfd)
++{
++    int64_t msg;
++    int n, ret;
++
++    n = 0;
++    do {
++        ret = qemu_chr_fe_read_all(&s->server_chr, (uint8_t *)&msg + n,
++                                   sizeof(msg) - n);
++        if (ret < 0) {
++            if (ret == -EINTR) {
++                continue;
++            }
++            exit(1);
++        }
++        n += ret;
++    } while (n < sizeof(msg));
++
++    if (pfd) {
++        *pfd = qemu_chr_fe_get_msgfd(&s->server_chr);
++    }
++    return le64_to_cpu(msg);
++}
++
++static void ivshmem_flat_irq_handler(void *opaque)
++{
++    VectorInfo *vi = opaque;
++    EventNotifier *e = &vi->event_notifier;
++    uint16_t vector_id;
++    const VectorInfo (*v)[64];
++
++    assert(e->initialized);
++
++    vector_id = vi->id;
++
++    /*
++     * The vector info struct is passed to the handler via the 'opaque' pointer.
++     * This struct pointer allows the retrieval of the vector ID and its
++     * associated event notifier. However, for triggering an interrupt using
++     * qemu_set_irq, it's necessary to also have a pointer to the device state,
++     * i.e., a pointer to the IvshmemFTState struct. Since the vector info
++     * struct is contained within the IvshmemFTState struct, its pointer can be
++     * used to obtain the pointer to IvshmemFTState through simple pointer math.
++     */
++    v = (void *)(vi - vector_id); /* v =  &IvshmemPeer->vector[0] */
++    IvshmemPeer *own_peer = container_of(v, IvshmemPeer, vector);
++    IvshmemFTState *s = container_of(own_peer, IvshmemFTState, own);
++
++    /* Clear event  */
++    if (!event_notifier_test_and_clear(e)) {
++        return;
++    }
++
++    trace_ivshmem_flat_irq_handler(vector_id);
++
++    /*
++     * Toggle device's output line, which is connected to interrupt controller,
++     * generating an interrupt request to the CPU.
++     */
++    qemu_irq_pulse(s->irq);
++}
++
++static IvshmemPeer *ivshmem_flat_find_peer(IvshmemFTState *s, uint16_t peer_id)
++{
++    IvshmemPeer *peer;
++
++    /* Own ID */
++    if (s->own.id == peer_id) {
++        return &s->own;
++    }
++
++    /* Peer ID */
++    QTAILQ_FOREACH(peer, &s->peer, next) {
++        if (peer->id == peer_id) {
++            return peer;
++        }
++    }
++
++    return NULL;
++}
++
++static IvshmemPeer *ivshmem_flat_add_peer(IvshmemFTState *s, uint16_t peer_id)
++{
++    IvshmemPeer *new_peer;
++
++    new_peer = g_malloc0(sizeof(*new_peer));
++    new_peer->id = peer_id;
++    new_peer->vector_counter = 0;
++
++    QTAILQ_INSERT_TAIL(&s->peer, new_peer, next);
++
++    trace_ivshmem_flat_new_peer(peer_id);
++
++    return new_peer;
++}
++
++static void ivshmem_flat_remove_peer(IvshmemFTState *s, uint16_t peer_id)
++{
++    IvshmemPeer *peer;
++
++    peer = ivshmem_flat_find_peer(s, peer_id);
++    assert(peer);
++
++    QTAILQ_REMOVE(&s->peer, peer, next);
++    for (int n = 0; n < peer->vector_counter; n++) {
++        int efd;
++        efd = event_notifier_get_fd(&(peer->vector[n].event_notifier));
++        close(efd);
++    }
++
++    g_free(peer);
++}
++
++static void ivshmem_flat_add_vector(IvshmemFTState *s, IvshmemPeer *peer,
++                                    int vector_fd)
++{
++    if (peer->vector_counter >= IVSHMEM_MAX_VECTOR_NUM) {
++        trace_ivshmem_flat_add_vector_failure(peer->vector_counter,
++                                              vector_fd, peer->id);
++        close(vector_fd);
++
++        return;
++    }
++
++    trace_ivshmem_flat_add_vector_success(peer->vector_counter,
++                                          vector_fd, peer->id);
++
++    /*
++     * Set vector ID and its associated eventfd notifier and add them to the
++     * peer.
++     */
++    peer->vector[peer->vector_counter].id = peer->vector_counter;
++    g_unix_set_fd_nonblocking(vector_fd, true, NULL);
++    event_notifier_init_fd(&peer->vector[peer->vector_counter].event_notifier,
++                           vector_fd);
++
++    /*
++     * If it's the device's own ID, register also the handler for the eventfd
++     * so the device can be notified by the other peers.
++     */
++    if (peer == &s->own) {
++        qemu_set_fd_handler(vector_fd, ivshmem_flat_irq_handler, NULL,
++                            &peer->vector);
++    }
++
++    peer->vector_counter++;
++}
++
++static void ivshmem_flat_process_msg(IvshmemFTState *s, uint64_t msg, int fd)
++{
++    uint16_t peer_id;
++    IvshmemPeer *peer;
++
++    peer_id = msg & 0xFFFF;
++    peer = ivshmem_flat_find_peer(s, peer_id);
++
++    if (!peer) {
++        peer = ivshmem_flat_add_peer(s, peer_id);
++    }
++
++    if (fd >= 0) {
++        ivshmem_flat_add_vector(s, peer, fd);
++    } else { /* fd == -1, which is received when peers disconnect. */
++        ivshmem_flat_remove_peer(s, peer_id);
++    }
++}
++
++static int ivshmem_flat_can_receive_data(void *opaque)
++{
++    IvshmemFTState *s = opaque;
++
++    assert(s->msg_buffered_bytes < sizeof(s->msg_buf));
++    return sizeof(s->msg_buf) - s->msg_buffered_bytes;
++}
++
++static void ivshmem_flat_read_msg(void *opaque, const uint8_t *buf, int size)
++{
++    IvshmemFTState *s = opaque;
++    int fd;
++    int64_t msg;
++
++    assert(size >= 0 && s->msg_buffered_bytes + size <= sizeof(s->msg_buf));
++    memcpy((unsigned char *)&s->msg_buf + s->msg_buffered_bytes, buf, size);
++    s->msg_buffered_bytes += size;
++    if (s->msg_buffered_bytes < sizeof(s->msg_buf)) {
++        return;
++    }
++    msg = le64_to_cpu(s->msg_buf);
++    s->msg_buffered_bytes = 0;
++
++    fd = qemu_chr_fe_get_msgfd(&s->server_chr);
++
++    ivshmem_flat_process_msg(s, msg, fd);
++}
++
++static uint64_t ivshmem_flat_iomem_read(void *opaque,
++                                        hwaddr offset, unsigned size)
++{
++    IvshmemFTState *s = opaque;
++    uint32_t ret;
++
++    trace_ivshmem_flat_read_mmr(offset);
++
++    switch (offset) {
++    case INTMASK:
++        ret = 0; /* Ignore read since all bits are reserved in rev 1. */
++        break;
++    case INTSTATUS:
++        ret = 0; /* Ignore read since all bits are reserved in rev 1. */
++        break;
++    case IVPOSITION:
++        ret = s->own.id;
++        break;
++    case DOORBELL:
++        trace_ivshmem_flat_read_mmr_doorbell(); /* DOORBELL is write-only */
++        ret = 0;
++        break;
++    default:
++        /* Should never reach out here due to iomem map range being exact */
++        trace_ivshmem_flat_read_write_mmr_invalid(offset);
++        ret = 0;
++    }
++
++    return ret;
++}
++
++static int ivshmem_flat_interrupt_peer(IvshmemFTState *s,
++                                       uint16_t peer_id, uint16_t vector_id)
++{
++    IvshmemPeer *peer;
++
++    peer = ivshmem_flat_find_peer(s, peer_id);
++    if (!peer) {
++        trace_ivshmem_flat_interrupt_invalid_peer(peer_id);
++        return 1;
++    }
++
++    event_notifier_set(&(peer->vector[vector_id].event_notifier));
++
++    return 0;
++}
++
++static void ivshmem_flat_iomem_write(void *opaque, hwaddr offset,
++                                     uint64_t value, unsigned size)
++{
++    IvshmemFTState *s = opaque;
++    uint16_t peer_id = (value >> 16) & 0xFFFF;
++    uint16_t vector_id = value & 0xFFFF;
++
++    trace_ivshmem_flat_write_mmr(offset);
++
++    switch (offset) {
++    case INTMASK:
++        break;
++    case INTSTATUS:
++        break;
++    case IVPOSITION:
++        break;
++    case DOORBELL:
++        trace_ivshmem_flat_interrupt_peer(peer_id, vector_id);
++        ivshmem_flat_interrupt_peer(s, peer_id, vector_id);
++        break;
++    default:
++        /* Should never reach out here due to iomem map range being exact. */
++        trace_ivshmem_flat_read_write_mmr_invalid(offset);
++        break;
++    }
++
++    return;
++}
++
++static const MemoryRegionOps ivshmem_flat_ops = {
++    .read = ivshmem_flat_iomem_read,
++    .write = ivshmem_flat_iomem_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = { /* Read/write aligned at 32 bits. */
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void ivshmem_flat_instance_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    IvshmemFTState *s = IVSHMEM_FLAT(obj);
++
++    /*
++     * Init mem region for 4 MMRs (ivshmem_registers),
++     * 32 bits each => 16 bytes (0x10).
++     */
++    memory_region_init_io(&s->iomem, obj, &ivshmem_flat_ops, s,
++                          "ivshmem-mmio", 0x10);
++    sysbus_init_mmio(sbd, &s->iomem);
++
++    /*
++     * Create one output IRQ that will be connect to the
++     * machine's interrupt controller.
++     */
++    sysbus_init_irq(sbd, &s->irq);
++
++    QTAILQ_INIT(&s->peer);
++}
++
++static bool ivshmem_flat_connect_server(DeviceState *dev, Error **errp)
++{
++    IvshmemFTState *s = IVSHMEM_FLAT(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    int64_t protocol_version, msg;
++    int shmem_fd;
++    uint16_t peer_id;
++    struct stat fdstat;
++
++    /* Check ivshmem server connection. */
++    if (!qemu_chr_fe_backend_connected(&s->server_chr)) {
++        error_setg(errp, "ivshmem server socket not specified or incorret."
++                         " Can't create device.");
++        return false;
++    }
++
++    /*
++     * Message sequence from server on new connection:
++     *  _____________________________________
++     * |STEP| uint64_t msg  | int fd         |
++     *  -------------------------------------
++     *
++     *  0    PROTOCOL        -1              \
++     *  1    OWN PEER ID     -1               |-- Header/Greeting
++     *  2    -1              shmem fd        /
++     *
++     *  3    PEER IDx        Other peer's Vector 0 eventfd
++     *  4    PEER IDx        Other peer's Vector 1 eventfd
++     *  .                    .
++     *  .                    .
++     *  .                    .
++     *  N    PEER IDy        Other peer's Vector 0 eventfd
++     *  N+1  PEER IDy        Other peer's Vector 1 eventfd
++     *  .                    .
++     *  .                    .
++     *  .                    .
++     *
++     *  ivshmem_flat_recv_msg() calls return 'msg' and 'fd'.
++     *
++     *  See ./docs/specs/ivshmem-spec.txt for details on the protocol.
++     */
++
++    /* Step 0 */
++    protocol_version = ivshmem_flat_recv_msg(s, NULL);
++
++    /* Step 1 */
++    msg = ivshmem_flat_recv_msg(s, NULL);
++    peer_id = 0xFFFF & msg;
++    s->own.id = peer_id;
++    s->own.vector_counter = 0;
++
++    trace_ivshmem_flat_proto_ver_own_id(protocol_version, s->own.id);
++
++    /* Step 2 */
++    msg = ivshmem_flat_recv_msg(s, &shmem_fd);
++    /* Map shmem fd and MMRs into memory regions. */
++    if (msg != -1 || shmem_fd < 0) {
++        error_setg(errp, "Could not receive valid shmem fd."
++                         " Can't create device!");
++        return false;
++    }
++
++    if (fstat(shmem_fd, &fdstat) != 0) {
++        error_setg(errp, "Could not determine shmem fd size."
++                         " Can't create device!");
++        return false;
++    }
++    trace_ivshmem_flat_shmem_size(shmem_fd, fdstat.st_size);
++
++    /*
++     * Shmem size provided by the ivshmem server must be equal to
++     * device's shmem size.
++     */
++    if (fdstat.st_size != s->shmem_size) {
++        error_setg(errp, "Can't map shmem fd: shmem size different"
++                         " from device size!");
++        return false;
++    }
++
++    /*
++     * Beyond step 2 ivshmem_process_msg, called by ivshmem_flat_read_msg
++     * handler -- when data is available on the server socket -- will handle
++     * the additional messages that will be generated by the server as peers
++     * connect or disconnect.
++     */
++    qemu_chr_fe_set_handlers(&s->server_chr, ivshmem_flat_can_receive_data,
++                             ivshmem_flat_read_msg, NULL, NULL, s, NULL, true);
++
++    memory_region_init_ram_from_fd(&s->shmem, OBJECT(s),
++                                   "ivshmem-shmem", s->shmem_size,
++                                   RAM_SHARED, shmem_fd, 0, NULL);
++    sysbus_init_mmio(sbd, &s->shmem);
++
++    return true;
++}
++
++static void ivshmem_flat_realize(DeviceState *dev, Error **errp)
++{
++    if (!ivshmem_flat_connect_server(dev, errp)) {
++        return;
++    }
++}
++
++static Property ivshmem_flat_props[] = {
++    DEFINE_PROP_CHR("chardev", IvshmemFTState, server_chr),
++    DEFINE_PROP_UINT32("shmem-size", IvshmemFTState, shmem_size, 4 * MiB),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void ivshmem_flat_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->hotpluggable = true;
++    dc->realize = ivshmem_flat_realize;
++
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    device_class_set_props(dc, ivshmem_flat_props);
++
++    /* Reason: Must be wired up in code (sysbus MRs and IRQ) */
++    dc->user_creatable = false;
++}
++
++static const TypeInfo ivshmem_flat_info = {
++    .name = TYPE_IVSHMEM_FLAT,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IvshmemFTState),
++    .instance_init = ivshmem_flat_instance_init,
++    .class_init = ivshmem_flat_class_init,
++};
++
++static void ivshmem_flat_register_types(void)
++{
++    type_register_static(&ivshmem_flat_info);
++}
++
++type_init(ivshmem_flat_register_types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index e4ef1da5a5..84dff09f5d 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -38,7 +38,9 @@ system_ss.add(when: 'CONFIG_SIFIVE_U_PRCI', if_true: files('sifive_u_prci.c'))
+ 
+ subdir('macio')
+ 
++# ivshmem devices
+ system_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
++system_ss.add(when: 'CONFIG_IVSHMEM_FLAT_DEVICE', if_true: files('ivshmem-flat.c'))
+ 
+ system_ss.add(when: 'CONFIG_ALLWINNER_SRAMC', if_true: files('allwinner-sramc.c'))
+ system_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 5f5bc92222..cba03743dd 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -341,3 +341,20 @@ djmemc_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRI
+ # iosb.c
+ iosb_read(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
+ iosb_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
++
++# ivshmem-flat.c
++ivshmem_flat_irq_handler(uint16_t vector_id) "Caught interrupt request: vector %d"
++ivshmem_flat_new_peer(uint16_t peer_id) "New peer ID: %d"
++ivshmem_flat_add_vector_failure(uint16_t vector_id, uint32_t vector_fd, uint16_t peer_id) "Failed to add vector %u (fd = %u) to peer ID %u, maximum number of vectors reached"
++ivshmem_flat_add_vector_success(uint16_t vector_id, uint32_t vector_fd, uint16_t peer_id) "Successful addition of vector %u (fd = %u) to peer ID %u"
++ivshmem_flat_irq_resolved(const char *irq_qompath) "IRQ QOM path '%s' correctly resolved"
++ivshmem_flat_proto_ver_own_id(uint64_t proto_ver, uint16_t peer_id) "Protocol Version = 0x%"PRIx64", Own Peer ID = %u"
++ivshmem_flat_shmem_size(int fd, uint64_t size) "Shmem fd (%d) total size is %"PRIu64" byte(s)"
++ivshmem_flat_shmem_map(uint64_t addr) "Mapping shmem @ 0x%"PRIx64
++ivshmem_flat_mmio_map(uint64_t addr) "Mapping MMRs @ 0x%"PRIx64
++ivshmem_flat_read_mmr(uint64_t addr_offset) "Read access at offset %"PRIu64
++ivshmem_flat_read_mmr_doorbell(void) "DOORBELL register is write-only!"
++ivshmem_flat_read_write_mmr_invalid(uint64_t addr_offset) "No ivshmem register mapped at offset %"PRIu64
++ivshmem_flat_interrupt_invalid_peer(uint16_t peer_id) "Can't interrupt non-existing peer %u"
++ivshmem_flat_write_mmr(uint64_t addr_offset) "Write access at offset %"PRIu64
++ivshmem_flat_interrupt_peer(uint16_t peer_id, uint16_t vector_id) "Interrupting peer ID %u, vector %u..."
+diff --git a/include/hw/misc/ivshmem-flat.h b/include/hw/misc/ivshmem-flat.h
+new file mode 100644
+index 0000000000..97ca0ddce6
+--- /dev/null
++++ b/include/hw/misc/ivshmem-flat.h
+@@ -0,0 +1,85 @@
++/*
++ * Inter-VM Shared Memory Flat Device
++ *
++ * SPDX-FileCopyrightText: 2023 Linaro Ltd.
++ * SPDX-FileContributor: Gustavo Romero <gustavo.romero@linaro.org>
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ */
++
++#ifndef IVSHMEM_FLAT_H
++#define IVSHMEM_FLAT_H
++
++#include "qemu/queue.h"
++#include "qemu/event_notifier.h"
++#include "chardev/char-fe.h"
++#include "exec/memory.h"
++#include "qom/object.h"
++#include "hw/sysbus.h"
++
++#define IVSHMEM_MAX_VECTOR_NUM 64
++
++/*
++ * QEMU interface:
++ *  + QOM property "chardev" is the character device id of the ivshmem server
++ *    socket
++ *  + QOM property "shmem-size" sets the size of the RAM region shared between
++ *    the device and the ivshmem server
++ *  + sysbus MMIO region 0: device I/O mapped registers
++ *  + sysbus MMIO region 1: shared memory with ivshmem server
++ *  + sysbus IRQ 0: single output interrupt
++ */
++
++#define TYPE_IVSHMEM_FLAT "ivshmem-flat"
++typedef struct IvshmemFTState IvshmemFTState;
++
++DECLARE_INSTANCE_CHECKER(IvshmemFTState, IVSHMEM_FLAT, TYPE_IVSHMEM_FLAT)
++
++/* Ivshmem registers. See ./docs/specs/ivshmem-spec.txt for details. */
++enum ivshmem_registers {
++    INTMASK = 0,
++    INTSTATUS = 4,
++    IVPOSITION = 8,
++    DOORBELL = 12,
++};
++
++typedef struct VectorInfo {
++    EventNotifier event_notifier;
++    uint16_t id;
++} VectorInfo;
++
++typedef struct IvshmemPeer {
++    QTAILQ_ENTRY(IvshmemPeer) next;
++    VectorInfo vector[IVSHMEM_MAX_VECTOR_NUM];
++    int vector_counter;
++    uint16_t id;
++} IvshmemPeer;
++
++struct IvshmemFTState {
++    SysBusDevice parent_obj;
++
++    uint64_t msg_buf;
++    int msg_buffered_bytes;
++
++    QTAILQ_HEAD(, IvshmemPeer) peer;
++    IvshmemPeer own;
++
++    CharBackend server_chr;
++
++    /* IRQ */
++    qemu_irq irq;
++
++    /* I/O registers */
++    MemoryRegion iomem;
++    uint32_t intmask;
++    uint32_t intstatus;
++    uint32_t ivposition;
++    uint32_t doorbell;
++
++    /* Shared memory */
++    MemoryRegion shmem;
++    int shmem_fd;
++    uint32_t shmem_size;
++};
++
++#endif /* IVSHMEM_FLAT_H */
+-- 
+2.34.1

@@ -1,217 +1,306 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp63738eja;
-        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
-X-Received: by 2002:a17:902:c947:b0:1db:d7bf:70 with SMTP id i7-20020a170902c94700b001dbd7bf0070mr13294472pla.20.1708583839280;
-        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708583839; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp89617eja;
+        Wed, 21 Feb 2024 23:53:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXorTMDpvopBzTR4oz8dO6IsYnSRgzqtTqthyrwC236tzg81JWS4hsGZe2TRT4YnaoD4XjgR1m12q/2zBT60M51ulb4SoA7
+X-Google-Smtp-Source: AGHT+IHt6NqQTNcRIr680lG7LAy3+ekKEw49D1xnf05fx3afjyBhzRi1XVNI8TRCSAGcJkgb4nQj
+X-Received: by 2002:a05:620a:1928:b0:787:54a5:9047 with SMTP id bj40-20020a05620a192800b0078754a59047mr16976653qkb.34.1708588426181;
+        Wed, 21 Feb 2024 23:53:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708588426; cv=none;
         d=google.com; s=arc-20160816;
-        b=ICQZk8U50XlWdUXO2wKFXFFgWmjv5EjVmoxTzyND+WTPZ2v6ErY0MFziERrQrWYKM5
-         fExc5ljAwDF5rEYwTpJ7cgp59zrhQOpUpdyJ6bWf1rfQc0ni5N40++L/mZy/MiFkAqRu
-         g1KgJ0p2V5CHHGsGLQi79KNVkoh987ufoGfKD2NiLYJZ2VYFFE8ES5g+a3Ad42UBvdOE
-         gMoq9ZW0dFgy7kNJU8uOq1NxeDXW2cpOT59LcbAlJe8lZ7xv/Zwkqd8k3JWxalBnT/Hh
-         OljGvtfT4bYf5Zc3mOtOFdki7DmBoMYoTQHDQsg3L6Qq1vK3tpY82SY2F/psrh/Ej2+L
-         i2Bg==
+        b=I7mNQA0xj1aPmUrO5P+YusZ6zbEtSyG3QJzsQOLKE9iwF46oyP4vGXj3b0AMfsLmj6
+         9fuGcC7l/kdeoi/ifStkN18DbEd9naKdasHQZS15265ZPvCpem31o7+A5fDaQJJEtXFg
+         SSpwI316qNUEkwTGk7S6ZygR/39jMzZ/5udzlMzUf9cZEX6kGxKzaBw/m45D/nRTj7RE
+         VLOY1bgPITnOQU/nDsO9g6A6fJGKZCV7/iddCLYuaJbl0lq4Kci14Kg+PsfpDd4u0txv
+         +G/Cslw7mXMbCOOApK9MKHd7iO/y8NgU6g5AA1/xNtbSiJ3mwPcgqRHUWlJpfMtNMShX
+         GPEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
-        fh=8cuZ7vqpV859GmXJMo8BdyTx8PFbjG1t2be5aGq38dE=;
-        b=LHWjri5MyMZReUDlJ/LlekDIu2z2rx4zXU+7tPLkXbTNKLyh4tWZmlMIB727TeuVod
-         AWygAXU/iYzQLsl9Txskh+jedbEQqTv7C4XW/Z7fflUQ4BgFmYghw3LAXf2JxbK7jhOe
-         MuujN89h8s148lxluy/ew7NJxCIFko1KAqV3eDwfW5iHuYtupfZRmGzrKZJGPQm7DSjQ
-         0DYaHjDCT5utZh3BY59q0IwDYgeQOtt2tFDrbH8GhKn5WIiTNNsK+8UBniNx7yCSteRq
-         uwM5hl4NhAhhM0gG7a1trIFkKfVH+odOyX1DDvxqnnAfIwo8WSV28XmALClfaCVkbVFK
-         FAKA==;
+        bh=gLlORS3eA79Wwl5NVJief4WfuY3RNYq5UngtR7IMK5I=;
+        fh=RUqJ4qkvE30kwpjFSnkB4FSEtlDIkIPpqxDQrx6YMGw=;
+        b=s93rp+vsgnbI+eESW5EHu01PvvleNAbz+xQeoITDfim2bVDzL04xRZCNTtx37J9/G8
+         g//pFV2AMf12P06krVJppDXacdX4+M96SCymqDL6a4uaprwgeBuQgJrULxzLmHJO/CMP
+         x997OHxs9WBxqqn0VoVksgtkMCvgvcEt1PdMC5AUUOc1+XWHULkHL9AOjgzpsO5wcta+
+         gcR8kngnyzlWotJuGtM4TnCunH/WVYHnSrxO1iyL2Db07/US56MIs2Fo8C6r8eViFJWo
+         TyIBXmCxiLW/+HfkkKcmykEinHG8gbb0XKLZSwr494OR3FxmKTJ0MIeP8vJjlAT4pwAp
+         3iTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=cgfd2rsx;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id kf16-20020a17090305d000b001d92a50f95esor7072280plb.8.2024.02.21.22.37.19
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bflg8+lL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x27-20020a05620a099b00b0078753d43ec8si11378084qkx.50.2024.02.21.23.53.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 21 Feb 2024 22:37:19 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 21 Feb 2024 23:53:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=cgfd2rsx;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708583838; x=1709188638; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
-        b=cgfd2rsxr7q+4o1D343NiFmBm5jJfa6o5n83WUNiN+LSdJuFIwhh+AYFUSXi5XH/R5
-         DMXNy9N9di7ZA/6jtTNj5vcm+4foLh9K+FXtPeK7xf0d6s3cbBnFqRpRtFiVoB+IYP+H
-         58SEUKYOZ3mNiLkhjSAeW8EhGb+7M/3Pzfwhg54027ZLlz9/AdCS6+gh9ZXPifK+nAtb
-         5vwOcwldDWIjCYEIHpg02Mx/5/AkROr8vV6nPPL7BhD2+PE1rwcnDrX6QhpsfpaKpMOa
-         c5vJ9pwPT65OC+s3lfXztPNAnBV/hMXzzSe13yjww+QUk8bD3Ott9MzrOfhLUaQunAIy
-         4lmg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bflg8+lL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rd3td-000170-Js; Thu, 22 Feb 2024 02:53:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rd3tc-00016l-Sf
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 02:53:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rd3tY-0004yt-B3
+ for qemu-arm@nongnu.org; Thu, 22 Feb 2024 02:53:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708588406;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gLlORS3eA79Wwl5NVJief4WfuY3RNYq5UngtR7IMK5I=;
+ b=Bflg8+lLEqy/RdnUkT9i5qwKHyJhpD2Uh4yTVWPbZi8eZpcpgG2QYTTtTAO1YpsyrWDAMg
+ L1jCE5SuVwoGKv/WbdYI/duxwlrRsPGA1gcdiBptbQwt38N5ZH9lFG4linqdziXRfYKSIK
+ jvd5weQad6YVSFO4Y7Tz+3966cBaroc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-519-fGyV6K4_OGGbICluAIyHgw-1; Thu, 22 Feb 2024 02:53:25 -0500
+X-MC-Unique: fGyV6K4_OGGbICluAIyHgw-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-33d7fcb70c2so243656f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 21 Feb 2024 23:53:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708583838; x=1709188638;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T/b0vPnGvrvn3JM0mQUk+THTOazfpt2hjrIbWxL2JwQ=;
-        b=HFgWTn/dsHw+cluQ1EAK6yWRd0NSLAhxLMwgtyoN6Mn8jOELwU9doKQCEztdOmdBYu
-         BYKmopJxhZZPt7Kay6tEQjak4X2HzVrosO55jXSvvcgmLzi7HrYYUJ8wRfvPIrRFfgY4
-         gMT2TvbCAxMKJ9oUuRO8BHlRX7N7E8hENnr+Z6vOpBB0r+qYXWnzd6A/TYbjFsGqfjTB
-         xCD3qSXlYKfJoBon5pZ4Fv4TiyhoM2aQkC7sDM9pw4Z5D+ZE7Mv3pa7Skv0Qv5wxS24Q
-         PSadRx0U/UdJjgmNvegircmCkczYR2/YJx/Ikgn/CBppwWShlAPWaKKkaKgAYb5dDgPa
-         q6Rw==
-X-Gm-Message-State: AOJu0Yzb5Y7h2hsJQdqAoLow/IPOJCI6sxIuXJA++3PxFVXxfAQwqx7c
-	N+8BTRC/OoIxVQdL85o9xbntNbKy5jPOJC3uSVpwShQSMRjNUz2L9f62IaY6M+tyGmB8WvHmtwd
-	Q
-X-Google-Smtp-Source: AGHT+IF4O25LMrfr5cKmZpDOT1LBxKto4EFWbnhcbXh/aqoIlqGIXhg34IDcGYHRkkraYVZBK+AmOw==
-X-Received: by 2002:a05:6a21:594:b0:1a0:bb45:415a with SMTP id lw20-20020a056a21059400b001a0bb45415amr4830565pzb.28.1708583838595;
-        Wed, 21 Feb 2024 22:37:18 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id y18-20020a056a00181200b006e3f62e1fbbsm8436227pfa.24.2024.02.21.22.37.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Feb 2024 22:37:18 -0800 (PST)
-Message-ID: <7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
-Date: Thu, 22 Feb 2024 15:37:10 +0900
+ d=1e100.net; s=20230601; t=1708588384; x=1709193184;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gLlORS3eA79Wwl5NVJief4WfuY3RNYq5UngtR7IMK5I=;
+ b=sLHyDKW9iw3IByHgAew15AWihXZpR1uYv3cznhz+x9VEjnbVuZrCQYVkFLcoWGKR5W
+ UyitLpGZO80Ni/WNhi3Iwgv40up2v8mI5pcp1QJNjcr61PIdcM7kHLFOL5X33pKFKRXj
+ NLPshb59hbtaKewvFaFybRhhNfmfRTrtQhtePOYe3Y0zDyua8lTLQmNYKtzkI6JNFsuL
+ CkuNgb+R94Ebur3gvqUXUHPWu+fAUpIexWlc6zkYRE1GZ7vf2qHuM75vgzv5Cp32XP68
+ VSWgZbMd0rVrUfWKPDxbkYkL6PWTMlc/byolCnuz6bJSSCgQahYQ18ZkxZ8YJSUF06jq
+ TP5w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW5qDaIt1BCMP6UAZ748plaPWixczkjq4oWV7Ln613o4Y5nQ0UpoOIRT/ttKYJE7YlkR22GEZnxeSojHhirzx7YoBOL
+X-Gm-Message-State: AOJu0YxBYMd74oYt8c3gmxnm0+yPdsPVAyIuGkSNPHbxvko1ALTtKxKi
+ HWrlTb8uEOz2jUNpPF1G+N7hAEGBxY/vw0OrOAnoKzlZcZEJ71QYqMRX8VuLu4OcVETiGmZePxK
+ ONdFrzkpqa+I4Bd6q+iDhC42l2Cl1g8maPrnE97AwrckYw8N4hA==
+X-Received: by 2002:a5d:6a07:0:b0:33d:61c7:9b2c with SMTP id
+ m7-20020a5d6a07000000b0033d61c79b2cmr1517943wru.34.1708588384768; 
+ Wed, 21 Feb 2024 23:53:04 -0800 (PST)
+X-Received: by 2002:a5d:6a07:0:b0:33d:61c7:9b2c with SMTP id
+ m7-20020a5d6a07000000b0033d61c79b2cmr1517921wru.34.1708588384373; 
+ Wed, 21 Feb 2024 23:53:04 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ m15-20020a056000008f00b0033b728190c1sm19405972wrx.79.2024.02.21.23.53.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Feb 2024 23:53:04 -0800 (PST)
+Message-ID: <5e2bc3c2-e7f3-4ef1-be59-b6b9fcb58b8d@redhat.com>
+Date: Thu, 22 Feb 2024 08:53:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Song Gao <gaosong@loongson.cn>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Yanan Wang <wangyanan55@huawei.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Brian Cain
- <bcain@quicinc.com>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Bin Meng <bin.meng@windriver.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alistair Francis <alistair.francis@wdc.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
- <20240216163025.424857-19-alex.bennee@linaro.org>
- <c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
- <87il2jcje8.fsf@draig.linaro.org>
- <bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
- <87bk8ab0f4.fsf@draig.linaro.org>
- <bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
- <87zfvtaoqq.fsf@draig.linaro.org>
+Subject: Re: [PATCH v3 1/3] qdev: Add a granule_mode property
+To: Richard Henderson <richard.henderson@linaro.org>,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ mst@redhat.com, jean-philippe@linaro.org, peter.maydell@linaro.org,
+ clg@redhat.com, yanghliu@redhat.com
+Cc: alex.williamson@redhat.com, zhenzhong.duan@intel.com,
+ jasowang@redhat.com, pbonzini@redhat.com, berrange@redhat.com
+References: <20240221205926.40066-1-eric.auger@redhat.com>
+ <20240221205926.40066-2-eric.auger@redhat.com>
+ <a3cefe21-f988-4269-9048-ffe4c5d18508@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <a3cefe21-f988-4269-9048-ffe4c5d18508@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87zfvtaoqq.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gEDT0a9yuI7v
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mXIzvVMXcf+y
 
-On 2024/02/21 23:14, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/02/21 19:02, Alex Bennée wrote:
->>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>
->>>> On 2024/02/20 23:14, Alex Bennée wrote:
->>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>
->>>>>> On 2024/02/17 1:30, Alex Bennée wrote:
->>>>>>> We can only request a list of registers once the vCPU has been
->>>>>>> initialised so the user needs to use either call the get function on
->>>>>>> vCPU initialisation or during the translation phase.
->>>>>>> We don't expose the reg number to the plugin instead hiding it
->>>>>>> behind
->>>>>>> an opaque handle. This allows for a bit of future proofing should the
->>>>>>> internals need to be changed while also being hashed against the
->>>>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>>>> hetrogenous situations.
->>>>>>> Having an internal state within the plugins also allows us to expand
->>>>>>> the interface in future (for example providing callbacks on register
->>>>>>> change if the translator can track changes).
->>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>> <snip>
->>>>>>> +/*
->>>>>>> + * Register handles
->>>>>>> + *
->>>>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>>>> + * structures which are presented to plugins as opaque handles. They
->>>>>>> + * are global to the system and therefor additions to the hash table
->>>>>>> + * must be protected by the @reg_handle_lock.
->>>>>>> + *
->>>>>>> + * In order to future proof for up-coming heterogeneous work we want
->>>>>>> + * different entries for each CPU type while sharing them in the
->>>>>>> + * common case of multiple cores of the same type.
->>>>>>> + */
->>>>>>> +
->>>>>>> +static QemuMutex reg_handle_lock;
->>>>>>> +
->>>>>>> +struct qemu_plugin_register {
->>>>>>> +    const char *name;
->>>>>>> +    int gdb_reg_num;
->>>>>>> +};
->>>>>>> +
->>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>>>> +
->>>>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>>>>>> +{
->>>>>>> +    uintptr_t key = (uintptr_t) cs->cc;
->>>>>>> +    key ^= gdb_regnum;
->>>>>>> +    return GUINT_TO_POINTER(key);
->>>>>>> +}
->>>>>>
->>>>>> I have pointed out this is theoretically prone to collisions and
->>>>>> unsafe.
->>>>> How is it unsafe? The aim is to share handles for the same CPUClass
->>>>> rather than having a unique handle per register/cpu combo.
->>>>
->>>> THe intention is legitimate, but the implementation is not safe. It
->>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
->>>> guarantee. The key of GHashTable must be unique; generating hashes of
->>>> keys should be done with hash_func given to g_hash_table_new().
->>> This isn't a hash its a non-unique key. It is however unique for
->>> the same register on the same class of CPU so for each vCPU in a system
->>> can share the same opaque handles.
->>> The hashing is done internally by glib. We would assert if there was
->>> a
->>> duplicate key referring to a different register.
->>> I'm unsure what you want here? Do you have a suggestion for the key
->>> generation algorithm? As the comment notes I did consider a more complex
->>> mixing algorithm using xxhash but that wouldn't guarantee no clash
->>> either.
+Hi Richard,
+
+On 2/21/24 22:58, Richard Henderson wrote:
+> On 2/21/24 10:58, Eric Auger wrote:
+>> Introduce a new enum type property allowing to set an
+>> IOMMU granule. Values are 4K, 16K, 64K and host. This
+>> latter indicates the vIOMMU granule will matches the
+>> host page size.
 >>
->> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
->> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
-> 
-> We already do:
-> 
->          if (!reg_handles) {
->              reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
->          }
-> 
-> But we can't use g_direct_equal with something that exceeds the width of
-> gpointer as it is a straight equality test of the key. What you are
-> suggesting requires allocating memory for each key and de-referencing
-> with a custom GEqualFunc.
+>> A subsequent patch will add such a property to the
+>> virtio-iommu device.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>   include/hw/qdev-properties-system.h |  3 +++
+>>   include/hw/virtio/virtio-iommu.h    | 11 +++++++++++
+>>   hw/core/qdev-properties-system.c    | 15 +++++++++++++++
+>>   hw/virtio/virtio-iommu.c            | 10 ++++++++++
+>>   4 files changed, 39 insertions(+)
+>>
+>> diff --git a/include/hw/qdev-properties-system.h
+>> b/include/hw/qdev-properties-system.h
+>> index 06c359c190..626be87dd3 100644
+>> --- a/include/hw/qdev-properties-system.h
+>> +++ b/include/hw/qdev-properties-system.h
+>> @@ -8,6 +8,7 @@ extern const PropertyInfo qdev_prop_macaddr;
+>>   extern const PropertyInfo qdev_prop_reserved_region;
+>>   extern const PropertyInfo qdev_prop_multifd_compression;
+>>   extern const PropertyInfo qdev_prop_mig_mode;
+>> +extern const PropertyInfo qdev_prop_granule_mode;
+>>   extern const PropertyInfo qdev_prop_losttickpolicy;
+>>   extern const PropertyInfo qdev_prop_blockdev_on_error;
+>>   extern const PropertyInfo qdev_prop_bios_chs_trans;
+>> @@ -47,6 +48,8 @@ extern const PropertyInfo
+>> qdev_prop_iothread_vq_mapping_list;
+>>   #define DEFINE_PROP_MIG_MODE(_n, _s, _f, _d) \
+>>       DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_mig_mode, \
+>>                          MigMode)
+>> +#define DEFINE_PROP_GRANULE_MODE(_n, _s, _f, _d) \
+>> +    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_granule_mode,
+>> GranuleMode)
+>>   #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+>>       DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
+>>                           LostTickPolicy)
+>> diff --git a/include/hw/virtio/virtio-iommu.h
+>> b/include/hw/virtio/virtio-iommu.h
+>> index 5fbe4677c2..a82c4fa471 100644
+>> --- a/include/hw/virtio/virtio-iommu.h
+>> +++ b/include/hw/virtio/virtio-iommu.h
+>> @@ -31,6 +31,16 @@ OBJECT_DECLARE_SIMPLE_TYPE(VirtIOIOMMU, VIRTIO_IOMMU)
+>>     #define TYPE_VIRTIO_IOMMU_MEMORY_REGION "virtio-iommu-memory-region"
+>>   +typedef enum GranuleMode {
+>> +    GRANULE_MODE_4K,
+>> +    GRANULE_MODE_16K,
+>> +    GRANULE_MODE_64K,
+>> +    GRANULE_MODE_HOST,
+>> +    GRANULE_MODE__MAX,
+>> +} GranuleMode;
+>> +
+>> +extern const QEnumLookup GranuleMode_lookup;
+>> +
+>>   typedef struct IOMMUDevice {
+>>       void         *viommu;
+>>       PCIBus       *bus;
+>> @@ -67,6 +77,7 @@ struct VirtIOIOMMU {
+>>       Notifier machine_done;
+>>       bool granule_frozen;
+>>       uint8_t aw_bits;
+>> +    GranuleMode granule_mode;
+>>   };
+>>     #endif
+>> diff --git a/hw/core/qdev-properties-system.c
+>> b/hw/core/qdev-properties-system.c
+>> index 1a396521d5..3a0b36a7a7 100644
+>> --- a/hw/core/qdev-properties-system.c
+>> +++ b/hw/core/qdev-properties-system.c
+>> @@ -34,6 +34,7 @@
+>>   #include "net/net.h"
+>>   #include "hw/pci/pci.h"
+>>   #include "hw/pci/pcie.h"
+>> +#include "hw/virtio/virtio-iommu.h"
+>>   #include "hw/i386/x86.h"
+>>   #include "util/block-helpers.h"
+>>   @@ -679,6 +680,20 @@ const PropertyInfo qdev_prop_mig_mode = {
+>>       .set_default_value = qdev_propinfo_set_default_value_enum,
+>>   };
+>>   +/* --- GranuleMode --- */
+>> +
+>> +QEMU_BUILD_BUG_ON(sizeof(GranuleMode) != sizeof(int));
+>> +
+>> +const PropertyInfo qdev_prop_granule_mode = {
+>> +    .name = "GranuleMode",
+>> +    .description = "granule_mode values, "
+>> +                   "4K, 16K, 64K, host",
+>> +    .enum_table = &GranuleMode_lookup,
+>> +    .get = qdev_propinfo_get_enum,
+>> +    .set = qdev_propinfo_set_enum,
+>> +    .set_default_value = qdev_propinfo_set_default_value_enum,
+>> +};
+>> +
+>>   /* --- Reserved Region --- */
+>>     /*
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index 2ec5ef3cd1..2ce5839c60 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -44,6 +44,16 @@
+>>   #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+>>   #define VIOMMU_PROBE_SIZE 512
+>>   +const QEnumLookup GranuleMode_lookup = {
+>> +    .array = (const char *const[]) {
+>> +        [GRANULE_MODE_4K]  = "4K",
+>> +        [GRANULE_MODE_16K] = "16K",
+>> +        [GRANULE_MODE_64K] = "64K",
+>> +        [GRANULE_MODE_HOST] = "host",
+>> +    },
+>> +    .size = GRANULE_MODE__MAX
+>> +};
+>
+> Does it ever make sense to use anything other than host?
+> Especially since 4k fails on a 64k host, as you report.
+Let me reuse Jean-Philippe's support matrix:
+Before this series, 4KB granule was always used by the virtio-iommu.
+The support matrix was:
 
-My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It 
-indeed seems to need a more complicated solution.
+ Host | Guest | virtio-net | IGB passthrough
+  4k  | 4k    | Y          | Y
+  64k | 64k   | Y          | N
+  64k | 4k    | Y          | N
+  4k  | 64k   | Y          | Y
 
-It is possible to write a GEqualFunc and a GHashFunc that consumes a 
-struct but it is a chore. How about having a two-level GHashTable? 
-reg_handles will be a GHashTable keyed with cs->cc, and another 
-GHashTable will be keyed with gdb_regnum.
+with this series, host becomes the default. It fixes the 64KB/64KB config by default. It allows 64KB/4KB (virtio only) with manual 4K granule setting. If we don't have this 4K granule we cannot support that use case.
+
+ Host | Guest | virtio-net | IGB passthrough
+  4k  | 4k    | Y          | Y
+  64k | 64k   | Y          | Y
+  64k | 4k    | 4K         | N
+  4k  | 64k   | Y          | Y
+
+Besides I need 4KB to handle the compat for older machine types.
+
+> Why would we want to be able to select a granule that doesn't work?
+
+> There are a few older hosts with 8k pages, e.g. Alpha, MIPS, Sparc.
+OK. those are not integrated with virtio-iommu but I can definitively add 8K
+
+Eric
+>
+>
+> r~
+>
+

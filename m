@@ -1,187 +1,196 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp144663eja;
-        Thu, 22 Feb 2024 02:10:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVODl0yuQkL7RIQT5wVBW+6+lYP2e8Ngc9NpH+jyJUWvEcjZIxGwRt/Bs/l9bmpEKWOM4TtDGS2SRXWFT/UEvirvXOUiL7f
-X-Google-Smtp-Source: AGHT+IFjlQK4QhBqoEhZdfGlQMfm2JycQZFSLidF676zXd4HzysiHGgFWYLTl+Qd2OabpbcSCKLE
-X-Received: by 2002:a05:622a:2c2:b0:42e:1245:d5eb with SMTP id a2-20020a05622a02c200b0042e1245d5ebmr12652716qtx.46.1708596651735;
-        Thu, 22 Feb 2024 02:10:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708596651; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Wpi7HVHr3RcJr/nYt3dyK4JVqWC/NQcRExPxIT1+3dIDjrk4A5SFGgWoCFNOnR8258
-         cmziu7qXOQ/BWVaRsSTEH+c4IwM7RGbojhSwVll9dRQYdbeJZ2ghFs2tyLgS+a2NDrEg
-         JQFzmJrCLA+ckwZSLZioJ3373Hc7WmyJPAEH86e4EDVjeKsc/U2hjRpJwEO1pTSHu7WT
-         YkrsbAdj/H8VnEXxa0mCgpeOcSmNCrErKBFW9vWlIcZwMnAyPHcTG/10+9vCWTPVZNxU
-         BMK6oX/uvz+cJovpizoxamCQVSBHJxZUg0TvTWW1kHk+FSTzFVDj2Jzv0HNBFmsizsJS
-         FJdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=MpRQRvPMdTz33T7Nn52zSwd0okxqNSiTPY20Y4YiyDw=;
-        fh=9LTQT4EG35QNdMxHKJoANPJIR6LO4OxTaFkT79epfX4=;
-        b=XMHwn+6lK1L3BrGbLt/XoOyxkpTVcqoMEwwkPhD0KZROD7nxAMgsxEN9Ib6/P6PRV9
-         avNwWMvpD+M9I3SavUz5qZDDpRIfHTWzpct7v/TVboLbeMdS5/OK+UojJCD+yK/y02pY
-         wbe6EdZrbWE0mqAslR8W1G2z54f1FbBNId/Gsn5q9Mr//y3ebhL3ZrzBGtPDULO5QLr+
-         GCk3P4SY7nEv+OqDuJRd9Ok7HAxRn5+DsRuhoAgSVu7L8t8a/m/vyQsuiwWXK5li+1Yv
-         Ov8zeloWkmhHJT02rCuihJiaP/F+S2usu5GhxoqYogTmXDTDzgyVxpENHwrJDVKKxdC0
-         h1ww==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cc2cq064;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14-20020ac8464e000000b0042c5d1612a1si11828698qto.152.2024.02.22.02.10.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 02:10:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cc2cq064;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd629-00070v-0r; Thu, 22 Feb 2024 05:10:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rd628-00070i-4q
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 05:10:28 -0500
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rd61p-0001I7-7c
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 05:10:26 -0500
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-512be6fda52so4761232e87.0
- for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 02:10:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708596607; x=1709201407; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MpRQRvPMdTz33T7Nn52zSwd0okxqNSiTPY20Y4YiyDw=;
- b=Cc2cq064id9+h/nB1gAeieR/2SUI+/Lj3v1jg9DtFiCIte5iNFgkNhnTSnPWP4b5vo
- 5f/Y2B435FTLUCj2qYmjgcrmWMo2OTwxvJlK2NbN4ocRwaBUjZ4wm3hRDEJB7FTaff6z
- AzLu9eZAxF/6M1Aa8l9GZZ0lY1Z1p+3Awqk2Mz8e6B2j+DXNyBZr913ioVgMSXNtTxIL
- VfOQWzP5Y3NbX3YzmYBLdr9hcbz8twV0kL3K0w9Vfilf8RpnWNod7LeoDUIlDfVs7lG8
- zRnZURHMboC5tNfdyRwmVuZuK5Fa1k/TNeIdH/U82YY/TGxvStWHSK7hVE7LPFWJDreB
- KdeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708596607; x=1709201407;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MpRQRvPMdTz33T7Nn52zSwd0okxqNSiTPY20Y4YiyDw=;
- b=OApcAZtiYLiAZEa3jvLfbtHA+ky/ra1Q3UBwAeIfbe/c30EcJvxtR5h2vDGNS7iu6a
- oGPmD/YUgPkYXykWPm/WxCydVdYlTxWEzIjO2kPi3SNdrg3dbI4qmdHCl8xLi4w3ZUzc
- JCYVdRoswpCwrx7suw/OyDRRikjWeXsjcgA/RavbTIHQ7muvbsBWN2qHfx9MJvZmizXg
- 8ioHKK1S7zd3OLQrQQtG9wuXgoL4L7ePVlvUysde9cDRzWWn1ffA7tin9sf8XcLTs7Kl
- XtpCpb5J/hFguA8HFi7vPWGV9yFy5NZmDfXxR/WLnrA5KNsyOiBP4eTvyBJeKuQRqbS8
- 68Rg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWkFUoUK3qGFXDOqew8zMcqtvpdj2aWhwdOECjb8XhZCtk1OxUfaD7xNkvXlvVAr/dFShufU3klBjHy0DRZ8hcGsNM1
-X-Gm-Message-State: AOJu0YxcAPrZoKBv4pl2wChsMXLzNHAswuk5oAJgy0y85JmzHFvinO1O
- BPYJBZ2T6lfxX8iK5X5pb1MHu2ULoT+weSw55IAISAHY8DzJIKcoAFE45SjEzjy58PNlMfJ2+Yr
- st2c=
-X-Received: by 2002:a05:6512:398f:b0:512:dde1:2226 with SMTP id
- j15-20020a056512398f00b00512dde12226mr911157lfu.47.1708596607205; 
- Thu, 22 Feb 2024 02:10:07 -0800 (PST)
-Received: from [192.168.247.175] (41.red-95-127-32.staticip.rima-tde.net.
- [95.127.32.41]) by smtp.gmail.com with ESMTPSA id
- f21-20020ac25335000000b00512d86c2c78sm375667lfh.88.2024.02.22.02.10.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Feb 2024 02:10:06 -0800 (PST)
-Message-ID: <caa10a96-729a-4ee8-93f4-9bfd2b032e2b@linaro.org>
-Date: Thu, 22 Feb 2024 11:10:03 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id k14-20020a5d428e000000b0033ce5b3390esm19846382wrq.38.2024.02.22.02.20.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Feb 2024 02:20:06 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 2FAB35F89B;
+	Thu, 22 Feb 2024 10:20:06 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
+  David Hildenbrand <david@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,
+  Richard Henderson <richard.henderson@linaro.org>,  Michael Rolnik
+ <mrolnik@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  qemu-riscv@nongnu.org,  Cleber Rosa
+ <crosa@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Song Gao
+ <gaosong@loongson.cn>,  qemu-arm@nongnu.org,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,
+  =?utf-8?Q?C=C3=A9dric?= Le
+ Goater <clg@kaod.org>,  Nicholas Piggin <npiggin@gmail.com>,
+  qemu-s390x@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Yanan Wang <wangyanan55@huawei.com>,  Palmer
+ Dabbelt <palmer@dabbelt.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Mahmoud
+ Mandour <ma.mandourr@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
+  Bin Meng <bin.meng@windriver.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?=
+ <philmd@linaro.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
+  Eduardo Habkost <eduardo@habkost.net>,  Alistair Francis
+ <alistair.francis@wdc.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: Re: [PATCH 18/23] plugins: add an API to read registers
+In-Reply-To: <7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com> (Akihiko
+	Odaki's message of "Thu, 22 Feb 2024 15:37:10 +0900")
+References: <20240216163025.424857-1-alex.bennee@linaro.org>
+	<20240216163025.424857-19-alex.bennee@linaro.org>
+	<c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
+	<87il2jcje8.fsf@draig.linaro.org>
+	<bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
+	<87bk8ab0f4.fsf@draig.linaro.org>
+	<bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
+	<87zfvtaoqq.fsf@draig.linaro.org>
+	<7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
+User-Agent: mu4e 1.11.28; emacs 29.1
+Date: Thu, 22 Feb 2024 10:20:06 +0000
+Message-ID: <87cysoajhl.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/21] hw/i386/pc: Do not use C99 mixed-declarations style
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
-References: <20240216110313.17039-1-philmd@linaro.org>
- <20240216110313.17039-2-philmd@linaro.org> <ZdcP9A7n5w7RJqii@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <ZdcP9A7n5w7RJqii@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::131;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x131.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lFoLZx6P4UaR
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Al/4UMgLWrzy
 
-On 22/2/24 10:12, Zhao Liu wrote:
-> Hi Philippe,
-> 
-> On Fri, Feb 16, 2024 at 12:02:52PM +0100, Philippe Mathieu-Daudé wrote:
->> Date: Fri, 16 Feb 2024 12:02:52 +0100
->> From: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Subject: [PATCH 01/21] hw/i386/pc: Do not use C99 mixed-declarations style
->> X-Mailer: git-send-email 2.41.0
->>
->> QEMU's coding style generally forbids C99 mixed declarations.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/i386/pc.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->> index 196827531a..3c00a87317 100644
->> --- a/hw/i386/pc.c
->> +++ b/hw/i386/pc.c
->> @@ -1227,6 +1227,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
->>        */
->>       if (pcms->hpet_enabled) {
->>           qemu_irq rtc_irq;
->> +        uint8_t compat;
->>   
->>           hpet = qdev_try_new(TYPE_HPET);
->>           if (!hpet) {
->> @@ -1238,8 +1239,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
->>            * use IRQ16~23, IRQ8 and IRQ2.  If the user has already set
->>            * the property, use whatever mask they specified.
->>            */
->> -        uint8_t compat = object_property_get_uint(OBJECT(hpet),
->> -                HPET_INTCAP, NULL);
->> +        compat = object_property_get_uint(OBJECT(hpet), HPET_INTCAP, NULL);
->>           if (!compat) {
->>               qdev_prop_set_uint32(hpet, HPET_INTCAP, hpet_irqs);
->>           }
-> 
-> "compat" is only used here to check. So, what about getting rid of this
-> variable?
-> 
-> if (!object_property_get_uint(OBJECT(hpet), HPET_INTCAP, NULL)) {
->      qdev_prop_set_uint32(hpet, HPET_INTCAP, hpet_irqs);
-> }
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-Ah yeah, I didn't noticed, thanks!
+> On 2024/02/21 23:14, Alex Benn=C3=A9e wrote:
+>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>=20
+>>> On 2024/02/21 19:02, Alex Benn=C3=A9e wrote:
+>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>>>
+>>>>> On 2024/02/20 23:14, Alex Benn=C3=A9e wrote:
+>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>>>>>
+>>>>>>> On 2024/02/17 1:30, Alex Benn=C3=A9e wrote:
+>>>>>>>> We can only request a list of registers once the vCPU has been
+>>>>>>>> initialised so the user needs to use either call the get function =
+on
+>>>>>>>> vCPU initialisation or during the translation phase.
+>>>>>>>> We don't expose the reg number to the plugin instead hiding it
+>>>>>>>> behind
+>>>>>>>> an opaque handle. This allows for a bit of future proofing should =
+the
+>>>>>>>> internals need to be changed while also being hashed against the
+>>>>>>>> CPUClass so we can handle different register sets per-vCPU in
+>>>>>>>> hetrogenous situations.
+>>>>>>>> Having an internal state within the plugins also allows us to expa=
+nd
+>>>>>>>> the interface in future (for example providing callbacks on regist=
+er
+>>>>>>>> change if the translator can track changes).
+>>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>>>>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>>>> <snip>
+>>>>>>>> +/*
+>>>>>>>> + * Register handles
+>>>>>>>> + *
+>>>>>>>> + * The plugin infrastructure keeps hold of these internal data
+>>>>>>>> + * structures which are presented to plugins as opaque handles. T=
+hey
+>>>>>>>> + * are global to the system and therefor additions to the hash ta=
+ble
+>>>>>>>> + * must be protected by the @reg_handle_lock.
+>>>>>>>> + *
+>>>>>>>> + * In order to future proof for up-coming heterogeneous work we w=
+ant
+>>>>>>>> + * different entries for each CPU type while sharing them in the
+>>>>>>>> + * common case of multiple cores of the same type.
+>>>>>>>> + */
+>>>>>>>> +
+>>>>>>>> +static QemuMutex reg_handle_lock;
+>>>>>>>> +
+>>>>>>>> +struct qemu_plugin_register {
+>>>>>>>> +    const char *name;
+>>>>>>>> +    int gdb_reg_num;
+>>>>>>>> +};
+>>>>>>>> +
+>>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
+>>>>>>>> +
+>>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
+>>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+>>>>>>>> +{
+>>>>>>>> +    uintptr_t key =3D (uintptr_t) cs->cc;
+>>>>>>>> +    key ^=3D gdb_regnum;
+>>>>>>>> +    return GUINT_TO_POINTER(key);
+>>>>>>>> +}
+>>>>>>>
+>>>>>>> I have pointed out this is theoretically prone to collisions and
+>>>>>>> unsafe.
+>>>>>> How is it unsafe? The aim is to share handles for the same CPUClass
+>>>>>> rather than having a unique handle per register/cpu combo.
+>>>>>
+>>>>> THe intention is legitimate, but the implementation is not safe. It
+>>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no such
+>>>>> guarantee. The key of GHashTable must be unique; generating hashes of
+>>>>> keys should be done with hash_func given to g_hash_table_new().
+>>>> This isn't a hash its a non-unique key. It is however unique for
+>>>> the same register on the same class of CPU so for each vCPU in a system
+>>>> can share the same opaque handles.
+>>>> The hashing is done internally by glib. We would assert if there was
+>>>> a
+>>>> duplicate key referring to a different register.
+>>>> I'm unsure what you want here? Do you have a suggestion for the key
+>>>> generation algorithm? As the comment notes I did consider a more compl=
+ex
+>>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
+>>>> either.
+>>>
+>>> I suggest using a struct that holds both of cs->cc and gdb_regnum, and
+>>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
+>> We already do:
+>>          if (!reg_handles) {
+>>              reg_handles =3D g_hash_table_new(g_direct_hash, g_direct_eq=
+ual);
+>>          }
+>> But we can't use g_direct_equal with something that exceeds the
+>> width of
+>> gpointer as it is a straight equality test of the key. What you are
+>> suggesting requires allocating memory for each key and de-referencing
+>> with a custom GEqualFunc.
+>
+> My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It
+> indeed seems to need a more complicated solution.
+>
+> It is possible to write a GEqualFunc and a GHashFunc that consumes a
+> struct but it is a chore. How about having a two-level GHashTable?
+> reg_handles will be a GHashTable keyed with cs->cc, and another
+> GHashTable will be keyed with gdb_regnum.
 
+That still seems overkill for a clash that can't happen. What do you
+think about the following:
+
+  /*
+   * Generate a stable key shared across CPUs of the same class
+   *
+   * In order to future proof for up-coming heterogeneous work we want
+   * different entries for each CPU type while sharing them in the
+   * common case of multiple cores of the same type. This makes the
+   * assumption you won't see two CPUClass pointers that are similar
+   * enough that the low bits mixed with different registers numbers
+   * will give you the same key.
+   *
+   * The build time assert will fire if CPUClass goes on a sudden diet
+   * and we assert further down if we detect two keys representing
+   * different regnums. In practice allocations of CPUClass are much
+   * farther apart making clashes practically impossible.
+   */
+  static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
+  {
+      uintptr_t key =3D (uintptr_t) cs->cc;
+
+      /* this protects some of the assumptions above */
+      qemu_build_assert(sizeof(*cs->cc) >=3D 256);
+
+      key ^=3D gdb_regnum;
+      return GUINT_TO_POINTER(key);
+  }
+
+
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

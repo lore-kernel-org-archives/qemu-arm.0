@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp230566ejf;
-        Thu, 22 Feb 2024 14:24:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUzkubC+e/F+ceJ8Ssl2tC9RmJyIuAjjJGK0H4XG511Tq/LApBNrUoFEwpgnmrc/ZgqxqrNF8gaUg9Afk3Lths3mciIR2CL
-X-Received: by 2002:a17:902:b208:b0:1dc:66ac:c342 with SMTP id t8-20020a170902b20800b001dc66acc342mr166960plr.59.1708640664260;
-        Thu, 22 Feb 2024 14:24:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708640664; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp230589ejf;
+        Thu, 22 Feb 2024 14:24:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUKfuGy/mwQ/7EvT2YMYRlLOhbT8vwQGBW+a52Rg5mrfvclxd3t1A4OP2K5Yg82TRsVwy3I38m4wdzV+SyCCqtLohF1oH7l
+X-Received: by 2002:a17:903:2447:b0:1dc:51ac:88f5 with SMTP id l7-20020a170903244700b001dc51ac88f5mr166799pls.65.1708640667342;
+        Thu, 22 Feb 2024 14:24:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708640667; cv=none;
         d=google.com; s=arc-20160816;
-        b=vyLOKQ0awwnS4sRFIHKNiW6u/wS+ern31QvswqmOEgKUeaTkojafuGdM//uqUl/Xjn
-         8n062CVWt7duepla6FtJhWxC26s23ECTYf4Kiat7PSlYcsYN6ssgLEZAFsa6Hkz2rCM5
-         cLtCMlmk+6wmtS4w9lT12ql+3PiAPcf2nBqsdyZRor2+i0vAI8yV53fjP72pwJakKhKP
-         WRHg6bH4nh4FxlWffEERE+91XG6/DoPPo2u20VDmYSM63rc3HA2cErcXiyfpdLjvBXtd
-         yGEwPO+QKrxRHBS1JgesEbKANd/1vvodKDPW2zEMrdGwJsYMh9+g6vDtXa/Ro8Umwda6
-         T80Q==
+        b=nusfMeKge2cU16nHabjwRIvmIvKjkoPa+M572X8SiSKeQlay67NHQcT24SjeuCbGbT
+         21CLqgkV4hbsWtnSRbwppqHXhrr/clkibEcPTRfB+b86ZD8eMaBXd7yngWmDVG71PS5M
+         nrDzefXptK4E7JawRWWl2W8DYXDdul2h8BusPrZaTxsIEu7ecY9SffkfUlN/3OWMdPuW
+         VfN7tfTz60e3jxE7EwRT19WKOOCmm4GS32tpXwUAJDKm1g100QeTIdL5ywTQA/G0neq+
+         C6Awawa8+3HfGNrfyFWL1Fqtsc4iNrF6KUU0Xcde0fJspJHBayp4vCHn4IBIoWTjpM7H
+         o2rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=98kHt0liMmpLoahi1BP6lbVmFWWdBBy/kfZQvJ/NECc=;
-        fh=blLt7krUxElofag2MvVlIW8jva6p90LwFJX2bngLISU=;
-        b=bHWd5g3csc7MYeTLQqDl6IDqQm0f48/+1VDMcxFR16kFuFq/+vIA/MFzHQeho71Vja
-         LdiyRUDK+8CgfIKXL3V7yY3M4ow0HF4j3rXAPPAMNPMuNqjPBU78HTD0XlHU/k5mdHnV
-         9KqCp87sbWq+GSxv9626rilyyETOhnrWLm5pPKlIBxFQ574Nj4KkqOPtVNnTHKKcxxJ5
-         Cj8u8hEkFRo3c2QTY2+ukOEuxxUAshXyX4FPW8e24MoVK5U+YdiaTQv6bMm+2Q6ECqZe
-         jru4B5ziZqS5BHunH/zY3LiXY1dFvITliDS1qlloB5Qs4KSG49Hxz/eFEb7Cb+ZYzhQB
-         BXwA==;
+        bh=Q9UcYHsblrSFfrXQA46NbgNay0fShjw8qDCj70T3uHM=;
+        fh=5WKTnSHlwExzq3/Yp/T9HE8H7SabaQMJE8PunEHTRPo=;
+        b=vPCEYxWrPec5Dl0JHgaH5utVj3q8wB1WhZ8MmY4nTYcizc8u6QWlw7GJo+i34d8sCK
+         eh5vK21J4Fb9ACutrIi48Ptw+Q9q4PAkIFX+EHzn5gIMnYlWCRxNjXfZhwx4gDRi1Xub
+         nVX/nU3z2nkpk4evxigorQHV/CbF8TybGoQokpXCPiBXJJ1wroXY2PsiafNyql7C7VeO
+         m6P05TKpvCcq26E0yswKBJ53GpyOC5dua4Lloq7P+L/9J4bJ6jp5Mn9ph7a19qcVjH9v
+         zjdJ2kK4lsp6Pjbt0I6FfIzoMDe61DNjEks990XmepzB9vYFXLLquMOj5rmfrV0N4T2X
+         H/Gw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N0nHhDOJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NBwI6iiX;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <gustavo.romero@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id im23-20020a170902bb1700b001dc1e481c11sor3219002plb.10.2024.02.22.14.24.24
+        by mx.google.com with SMTPS id l17-20020a170902e2d100b001da34154363sor6305547plc.12.2024.02.22.14.24.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 22 Feb 2024 14:24:24 -0800 (PST)
+        Thu, 22 Feb 2024 14:24:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N0nHhDOJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NBwI6iiX;
        spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708640664; x=1709245464; darn=linaro.org;
+        d=linaro.org; s=google; t=1708640667; x=1709245467; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=98kHt0liMmpLoahi1BP6lbVmFWWdBBy/kfZQvJ/NECc=;
-        b=N0nHhDOJQKsNnBuKr5WnuM/hfrc7GyDDnfnb/ffXQ31D/GONdrlUJbet/HJdNm8aLp
-         W19N5/06nfZuU8/8Rcw570W90nKi+wjHBglGqmUGH6mtlgX5FwJh+xx2Lb4GRqcLnb9F
-         leNXIDAptuB+J0jBYXfWvki+q4kFoHTJbl5Ib+kl+zJdyKLMJ8jptD694End+NQZRfz8
-         tzwXFRHqbNlHdwSA1Hwx0IevgOJ7rf12WukVqwO8nhrnKlaqlOwjMEPa7BhgaF2AyEYX
-         a/I8MGCsY5JD/T9tg+GJWs1lj0/nnL+7sur+YU6Y0unMN7VmCK0S5+DoKz3AJNnIl+rS
-         mYsg==
+        bh=Q9UcYHsblrSFfrXQA46NbgNay0fShjw8qDCj70T3uHM=;
+        b=NBwI6iiXDgS24L52GpR4YNhi9JbVDd2NGXlNSTA9yk11854C/UVvS6Eij6Q7wwBtqm
+         3LAiWOoyTDRIYCpgbo+1bgs6zzDgkVpHSvWQq6CZt7rteojB/3KAXrqtfolHibT15rPc
+         pKKx7nufR6zahHZhMQ6z2h+RDeHruYHcDLdvkdiGt3qcqvnKr8/d6Vi91K1CQuwbsoZC
+         zpP9KJXytwbeuFjJmiZcEBHcQzvvvi0SLaKjg1xc8xkshRdzY5Rh3vKJA6DyJbvEJsTC
+         hi5bBJ3qd4sn/v5YgYfqq+1i9ImglMCPEhfAdnCojmq22XrkPQirSfmiLWKgNSU2XeZa
+         1Hqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708640664; x=1709245464;
+        d=1e100.net; s=20230601; t=1708640667; x=1709245467;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=98kHt0liMmpLoahi1BP6lbVmFWWdBBy/kfZQvJ/NECc=;
-        b=ecO81N3YKxK1oA9wUtIW9cMDUSfDbiRdQmoI8Jl8HW3Pjgax9l46/J8nZ3cZwXDfj/
-         4Sxq6mMLua/GMc+pCEMqsgsDUyXJq4WBb8fFmJ2DSJGmRL/10G9lHIQKIG1gJVT2L8GB
-         teYgN5t9vYSsFjszMzSE9gALgJRRb5LAABybQ4SBggH0esoc5AbL7EpLtTvoJ592nz/M
-         XpK6PyPn+Yvav8wj0AxW8x54uVahbBE610Nrh04CckvgKQgTHjziRr23S6IXDPCUuw7m
-         wc7UBWqVDzLwrseGIwIlJ3LmTwj8Ndc2v2ay7EMQnvNn3R1wnU9KZaqrO+L1UB8IrfEU
-         XHUw==
-X-Forwarded-Encrypted: i=1; AJvYcCUe5KCyuSA6Yj2xl3n1FtMxb5qKxINNtukvAMXlxm3cz9GyShhihgfxaV9cQyUAXwyc8grE+z0VXPIRcCPgdEtTlooPf631
-X-Gm-Message-State: AOJu0Ywp7925NpFsZkVtPJGN0pmqwbpQrx9t/TbdvSjp9m7MkW9I5ggs
-	gBz0zWEWB+F2Vi6nbBOUCIU6qm7DIuAzr24Lg1G6ZQSUZ2kz1ZIgKuJeImNliRAbSA==
-X-Google-Smtp-Source: AGHT+IFRjKhixdX6oHkfeLbSg6fz23FY6ir93kR1ZVN52kmG+ItsK/kVvWhCO0cpODVOgDkw49CZrQ==
-X-Received: by 2002:a17:902:e810:b0:1dc:f0e:4e with SMTP id u16-20020a170902e81000b001dc0f0e004emr246883plg.12.1708640663674;
-        Thu, 22 Feb 2024 14:24:23 -0800 (PST)
+        bh=Q9UcYHsblrSFfrXQA46NbgNay0fShjw8qDCj70T3uHM=;
+        b=uiR0IBAcuKBXeDf838RqJzvwk0njb+/UOGQwV8YxqJTvZgpGlG6lXJDNN3zPWLhBRX
+         XLqL48rEWjusYqSMd2LMXNVF46zxc/i8cR4g1cb/OlprUSmjaA4Dyj0df37A5k8vJp6L
+         ULFzpmbFIRBKH5i7FOpuBVJfs6XYPu/RTkpjhi957MPU818YOPMxsW7/DJL3KHe73I4Y
+         hxTo/eWAyCcDBdzEzLuOk7jUt/uzZL7GL0Mtf9oUYuC6e9RI+La60murrxhfocHRjZ1v
+         jkEwyEfBxK+Z/jPSgvY4NiHmeNyY97jC+JLsETRGSBcxdnia4B6vR9HV6ebX+gE3b+zT
+         2H4g==
+X-Forwarded-Encrypted: i=1; AJvYcCUMdkQA5KZBEE8V4pu/rcTqxVc1lECCtUHcYl66u6hdbvFEYXdDUdChCJzmi4cvcSH2bC6aR4c3QuDixR3FqPL60/loVg+C
+X-Gm-Message-State: AOJu0YznokTkJbLiyyEoverkKAkPiMk6HRhNCqQ/wa3FGYTVvnfysgaP
+	EL8Myzy8+LgFFUjd/XKYTLNFtwyDiAgY9p/sIjK4slKfjw4A6eMYo6c9TwJJ1tIBlQ==
+X-Google-Smtp-Source: AGHT+IF6WHTLqjO8wD41svY+GPvvNrqoH+RkTQt4RKYpbj+vqdRJvLt2zAavEvaGPZyYCG776QzMuA==
+X-Received: by 2002:a17:902:7895:b0:1dc:139:8488 with SMTP id q21-20020a170902789500b001dc01398488mr199012pll.5.1708640666890;
+        Thu, 22 Feb 2024 14:24:26 -0800 (PST)
 Return-Path: <gustavo.romero@linaro.org>
 Received: from amd.. ([2804:7f0:b400:285a:3e7c:3fff:fe7a:e83b])
-        by smtp.gmail.com with ESMTPSA id ji7-20020a170903324700b001d7057c2fbasm10457210plb.100.2024.02.22.14.24.20
+        by smtp.gmail.com with ESMTPSA id ji7-20020a170903324700b001d7057c2fbasm10457210plb.100.2024.02.22.14.24.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Feb 2024 14:24:23 -0800 (PST)
+        Thu, 22 Feb 2024 14:24:26 -0800 (PST)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org,
 	philmd@linaro.org
@@ -85,286 +85,90 @@ Cc: thuth@redhat.com,
 	richard.henderson@linaro.org,
 	peter.maydell@linaro.org,
 	gustavo.romero@linaro.org
-Subject: [PATCH 2/6] hw/misc/ivshmem-flat: Allow device to wire itself on sysbus
-Date: Thu, 22 Feb 2024 22:22:14 +0000
-Message-Id: <20240222222218.2261956-3-gustavo.romero@linaro.org>
+Subject: [PATCH 3/6] hw/arm: Allow some machines to use the ivshmem-flat device
+Date: Thu, 22 Feb 2024 22:22:15 +0000
+Message-Id: <20240222222218.2261956-4-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240222222218.2261956-1-gustavo.romero@linaro.org>
 References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: VDZ4pN8btqpb
+X-TUID: MjnYDkU0LEGS
 
-This commit enables the ivshmem-flat device to wire itself on sysbus. It
-maps the device's Memory-Mapped Registers (MMRs) and shared memory
-(shmem) into the VM's memory layout and also allows connection to an
-input IRQ so that the device can trigger an interrupt for notification.
-
-Three device options are introduced to control how this is done:
-x-bus-address-iomem, x-bus-address-shmem, and x-irq-qompath.
-
-The following is an example on how to create the ivshmem-flat device on
-a Stellaris machine:
-
-$ qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic
-                  -net none -chardev stdio,id=con,mux=on
-                  -serial chardev:con -mon chardev=con,mode=readline
-                  -chardev socket,path=/tmp/ivshmem_socket,id=ivshmem_flat
-                  -device ivshmem-flat,chardev=ivshmem_flat,x-irq-qompath='/machine/soc/v7m/nvic/unnamed-gpio-in[0]',x-bus-address-iomem=0x400FF000,x-bus-address-shmem=0x40100000
-                  -kernel zephyr_kernel.elf
-
-The IRQ QOM path option for the target machine can be determined by
-creating the VM without the ivshmem-flat device, going to the QEMU
-console and listing the QOM nodes with 'info qom-tree'. In the Stellaris
-example above the input IRQ is in the machine's NVIC Interrupt
-Controller.
-
-If 'x-irq-qompath' is not provided the device won't be able to be
-interrupted by other VMs (peers) and only the shared memory (shmem)
-feature will be supported.
-
-The MMRs for status and control (notification) are mapped to the MMIO
-region at 'x-bus-address-iomem', whilst the shared memory region start
-is mapped at address specified by 'x-bus-address-shmem'.
+Allow Arm machine lm3s6965evb and the mps2 ones, like the mps2-an385, to
+use the ivshmem-flat device.
 
 Message-ID: <20231127052024.435743-2-gustavo.romero@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- docs/system/devices/ivshmem-flat.rst | 57 +++++++++++++++++++++
- hw/core/sysbus-fdt.c                 |  2 +
- hw/misc/ivshmem-flat.c               | 74 ++++++++++++++++++++++++++--
- include/hw/misc/ivshmem-flat.h       |  9 ++++
- 4 files changed, 139 insertions(+), 3 deletions(-)
+ hw/arm/mps2.c      | 3 +++
+ hw/arm/stellaris.c | 3 +++
+ hw/arm/virt.c      | 2 ++
+ 3 files changed, 8 insertions(+)
 
-diff --git a/docs/system/devices/ivshmem-flat.rst b/docs/system/devices/ivshmem-flat.rst
-index 1f97052804..ddc3477f52 100644
---- a/docs/system/devices/ivshmem-flat.rst
-+++ b/docs/system/devices/ivshmem-flat.rst
-@@ -31,3 +31,60 @@ the IRQ mechanism is disabled). The shared memory region is always present.
- The MMRs (INTRMASK, INTRSTATUS, IVPOSITION, and DOORBELL registers) offsets at
- the MMR region, and their functions, follow the ivshmem spec, so they work
- exactly as in the ivshmem PCI device (see ./specs/ivshmem-spec.txt).
-+
-+
-+Device Options
-+--------------
-+
-+The required options to create an ivshmem-flat device are: (a) the UNIX
-+socket where the ivshmem server is listening, usually ``/tmp/ivshmem_socket``;
-+(b) the address where to map the MMRs (``x-bus-address-iomem=``) in the VM
-+memory layout; and (c) the address where to map the shared memory in the VM
-+memory layout (``x-bus-address-shmem=``). Both (a) and (b) depend on the VM
-+being used, as the MMRs and shmem must be mapped to a region not previously
-+occupied in the VM.
-+
-+Example:
-+
-+.. parsed-literal::
-+
-+    |qemu-system-arm| -chardev socket,path=/tmp/ivshmem_socket,id=ivshmem_flat -device ivshmem-flat,chardev=ivshmem_flat,x-irq-qompath='/machine/soc/v7m/nvic/unnamed-gpio-in[0]',x-bus-address-iomem=0x400FF000,x-bus-address-shmem=0x40100000
-+
-+The other option, ``x-irq-qompath=``, is not required if the user doesn't want
-+the device supporting notifications.
-+
-+``x-irq-qompath``. Used to inform the device which IRQ input line it can attach
-+to enable the notification mechanism (IRQ). The ivshmem-flat device currently
-+only supports notification via vector 0. Notifications via other vectors are
-+ignored. (optional)
-+
-+Two examples for different machines follow.
-+
-+Stellaris machine (``- machine lm3s6965evb``):
-+
-+::
-+
-+    x-irq-qompath=/machine/soc/v7m/nvic/unnamed-gpio-in[0]
-+
-+Arm mps2-an385 machine (``-machine mps2-an385``):
-+
-+::
-+
-+    x-irq-qompath=/machine/armv7m/nvic/unnamed-gpio-in[0]
-+
-+The available IRQ input lines on a given VM that the ivshmem-flat device can be
-+attached to can be found from the QEMU monitor (Ctrl-a + c) with:
-+
-+(qemu) info qom-tree
-+
-+``x-bus-address-iomem``. Allows changing the address where the MMRs are mapped
-+into the VM memory layout. (required)
-+
-+ ``x-bus-address-shmem``. Allows changing the address where the shared memory
-+region is mapped into the VM memory layout. (required)
-+
-+``shmem-size``. Allows changing the size (in bytes) of shared memory region.
-+Default is 4 MiB, which is the same default used by the ivshmem server, so
-+usually it's not necessary to change it. The size must match the size of the
-+shared memory reserverd and informed by the ivshmem server, otherwise device
-+creation fails. (optional)
-diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-index eebcd28f9a..40d7356cae 100644
---- a/hw/core/sysbus-fdt.c
-+++ b/hw/core/sysbus-fdt.c
-@@ -31,6 +31,7 @@
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/tpm.h"
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 50919ee46d..fe158dfbc0 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -42,6 +42,7 @@
+ #include "hw/timer/cmsdk-apb-dualtimer.h"
+ #include "hw/misc/mps2-scc.h"
+ #include "hw/misc/mps2-fpgaio.h"
 +#include "hw/misc/ivshmem-flat.h"
- #include "hw/platform-bus.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
-@@ -495,6 +496,7 @@ static const BindingEntry bindings[] = {
-     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
+ #include "hw/ssi/pl022.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/net/lan9118.h"
+@@ -472,6 +473,8 @@ static void mps2_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 1;
+     mc->default_ram_size = 16 * MiB;
+     mc->default_ram_id = "mps.ram";
++
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_IVSHMEM_FLAT);
+ }
+ 
+ static void mps2_an385_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index a2f998bf9e..e25858f232 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -28,6 +28,7 @@
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
+ #include "migration/vmstate.h"
+ #include "hw/misc/unimp.h"
++#include "hw/misc/ivshmem-flat.h"
+ #include "hw/timer/stellaris-gptm.h"
+ #include "hw/qdev-clock.h"
+ #include "qom/object.h"
+@@ -1404,6 +1405,8 @@ static void lm3s6965evb_class_init(ObjectClass *oc, void *data)
+     mc->init = lm3s6965evb_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
++
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_IVSHMEM_FLAT);
+ }
+ 
+ static const TypeInfo lm3s6965evb_type = {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0af1943697..6c0917f3b2 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -84,6 +84,7 @@
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
+ #include "qemu/guest-random.h"
++#include "hw/misc/ivshmem-flat.h"
+ 
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -2973,6 +2974,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_IVSHMEM_FLAT);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
  #endif
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-+    TYPE_BINDING(TYPE_IVSHMEM_FLAT, no_fdt_node),
-     TYPE_BINDING("", NULL), /* last element */
- };
- 
-diff --git a/hw/misc/ivshmem-flat.c b/hw/misc/ivshmem-flat.c
-index 833ee2fefb..972281ca57 100644
---- a/hw/misc/ivshmem-flat.c
-+++ b/hw/misc/ivshmem-flat.c
-@@ -420,16 +420,86 @@ static bool ivshmem_flat_connect_server(DeviceState *dev, Error **errp)
-     return true;
- }
- 
-+static bool ivshmem_flat_sysbus_wire(DeviceState *dev, Error **errp)
-+{
-+    IvshmemFTState *s = IVSHMEM_FLAT(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    if (s->x_sysbus_mmio_addr != UINT64_MAX) {
-+        trace_ivshmem_flat_mmio_map(s->x_sysbus_mmio_addr);
-+        sysbus_mmio_map(sbd, 0, s->x_sysbus_mmio_addr);
-+    } else {
-+        error_setg(errp, "No address for iomem (MMRs) specified. Can't create"
-+                         " ivshmem-flat device. Use 'x-bus-address-iomem'"
-+                         " option.");
-+        return false;
-+    }
-+
-+    if (s->x_sysbus_shmem_addr != UINT64_MAX) {
-+        trace_ivshmem_flat_shmem_map(s->x_sysbus_shmem_addr);
-+        sysbus_mmio_map(sbd, 1, s->x_sysbus_shmem_addr);
-+    } else {
-+        error_setg(errp, "No address for shmem specified. Can't create"
-+                         " ivshmem-flat device. Use 'x-bus-address-shmem'"
-+                         " option.");
-+        return false;
-+    }
-+
-+    /* Check for input IRQ line, if it's provided, connect it. */
-+    if (s->x_sysbus_irq_qompath) {
-+        Object *oirq;
-+        bool ambiguous = false;
-+        qemu_irq irq;
-+
-+        oirq = object_resolve_path_type(s->x_sysbus_irq_qompath, TYPE_IRQ,
-+                                        &ambiguous);
-+        if (ambiguous) {
-+            error_setg(errp, "Specified IRQ is ambiguous. Can't create"
-+                             " ivshmem-flat device.");
-+            return false;
-+        }
-+
-+        if (!oirq) {
-+            error_setg(errp, "Can't resolve IRQ QOM path.");
-+            return false;
-+        }
-+        irq = (qemu_irq)oirq;
-+        trace_ivshmem_flat_irq_resolved(s->x_sysbus_irq_qompath);
-+
-+        /*
-+         * Connect device out irq line to interrupt controller input irq line.
-+         */
-+        sysbus_connect_irq(sbd, 0, irq);
-+    } else {
-+       /*
-+        * If input IRQ is not provided, warn user the device won't be able
-+        * to trigger any interrupts.
-+        */
-+        warn_report("Input IRQ not specified, device won't be able"
-+                    " to handle IRQs!");
-+    }
-+
-+    return true;
-+}
-+
- static void ivshmem_flat_realize(DeviceState *dev, Error **errp)
- {
-     if (!ivshmem_flat_connect_server(dev, errp)) {
-         return;
-     }
-+    if (!ivshmem_flat_sysbus_wire(dev, errp)) {
-+        return;
-+    }
- }
- 
- static Property ivshmem_flat_props[] = {
-     DEFINE_PROP_CHR("chardev", IvshmemFTState, server_chr),
-     DEFINE_PROP_UINT32("shmem-size", IvshmemFTState, shmem_size, 4 * MiB),
-+    DEFINE_PROP_STRING("x-irq-qompath", IvshmemFTState, x_sysbus_irq_qompath),
-+    DEFINE_PROP_UINT64("x-bus-address-iomem", IvshmemFTState,
-+                       x_sysbus_mmio_addr, UINT64_MAX),
-+    DEFINE_PROP_UINT64("x-bus-address-shmem", IvshmemFTState,
-+                       x_sysbus_shmem_addr, UINT64_MAX),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-@@ -438,13 +508,11 @@ static void ivshmem_flat_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->hotpluggable = true;
-+    dc->user_creatable = true;
-     dc->realize = ivshmem_flat_realize;
- 
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-     device_class_set_props(dc, ivshmem_flat_props);
--
--    /* Reason: Must be wired up in code (sysbus MRs and IRQ) */
--    dc->user_creatable = false;
- }
- 
- static const TypeInfo ivshmem_flat_info = {
-diff --git a/include/hw/misc/ivshmem-flat.h b/include/hw/misc/ivshmem-flat.h
-index 97ca0ddce6..d5b6d99ae4 100644
---- a/include/hw/misc/ivshmem-flat.h
-+++ b/include/hw/misc/ivshmem-flat.h
-@@ -25,6 +25,12 @@
-  *    socket
-  *  + QOM property "shmem-size" sets the size of the RAM region shared between
-  *    the device and the ivshmem server
-+ *  + QOM property "x-bus-address-iomem" is the base address of the I/O region
-+ *    on the main system bus
-+ *  + QOM property "x-bus-address-shmem" is the base address of the shared RAM
-+ *    region on the main system bus
-+ *  + QOM property "x-irq-qompath" is the QOM path of the interrupt being
-+ *    notified
-  *  + sysbus MMIO region 0: device I/O mapped registers
-  *  + sysbus MMIO region 1: shared memory with ivshmem server
-  *  + sysbus IRQ 0: single output interrupt
-@@ -68,9 +74,11 @@ struct IvshmemFTState {
- 
-     /* IRQ */
-     qemu_irq irq;
-+    char *x_sysbus_irq_qompath;
- 
-     /* I/O registers */
-     MemoryRegion iomem;
-+    uint64_t x_sysbus_mmio_addr;
-     uint32_t intmask;
-     uint32_t intstatus;
-     uint32_t ivposition;
-@@ -80,6 +88,7 @@ struct IvshmemFTState {
-     MemoryRegion shmem;
-     int shmem_fd;
-     uint32_t shmem_size;
-+    uint64_t x_sysbus_shmem_addr;
- };
- 
- #endif /* IVSHMEM_FLAT_H */
 -- 
 2.34.1

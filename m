@@ -1,137 +1,161 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2243015ejb;
-        Wed, 21 Feb 2024 16:04:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+NVe6lxXTDg4CDVkdPCZ4/kqJVzhbAqBmAts+Y3ttvl2bV8/XvVhSA9ZWgPH8HlKzDM5wzlT3s0OxfbofiD5teqsMzgk5
-X-Google-Smtp-Source: AGHT+IHqAyjeTSobZgbIq1yReYdS7XKn1gfeofhItNtp9l6mTQ6QDmYIgO8ilyrvvMMMwAXJszs3
-X-Received: by 2002:a05:6102:1610:b0:470:51ab:3e46 with SMTP id cu16-20020a056102161000b0047051ab3e46mr11385441vsb.30.1708560298733;
-        Wed, 21 Feb 2024 16:04:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708560298; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2284382ejb;
+        Wed, 21 Feb 2024 17:53:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVebH8IZes0LA/z6PFoRJ3wUTHpLZd67QdMJSE7d/W0U+nM5M54oo1xzqxt1oR6v15dTUzaifVmNSl9iUlAoXB2/zwA6YFi
+X-Google-Smtp-Source: AGHT+IEZgj/HXo+eVYPg5GBDsknex0GDiMOH8qbVE5igKsxSYXF2MKru/PW6rQxz27DaRch1CR0O
+X-Received: by 2002:ac8:7fc4:0:b0:42a:62e5:7733 with SMTP id b4-20020ac87fc4000000b0042a62e57733mr25458105qtk.23.1708566787106;
+        Wed, 21 Feb 2024 17:53:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708566787; cv=none;
         d=google.com; s=arc-20160816;
-        b=KJ1i0E540PgNlSpO4NTeaVIMJs/YAN/fMsJ2qacemRML8utsX42mJXb51C5XfnzzqR
-         JholGCK/DPPxLD1qz5GqGT5xYdRPPQhSr1t6eTbzGXF/8CpQhfi5o9lguEN7tGgV8ehk
-         bF2AhckTaiYIF57p7Ma5ACT3OthRqavetMfbyfMrUoFLs9DiX73TXXnep67OuI5rn68H
-         0kudr3XlHgIzKWmSn84Z/dMTehjCeHmDhqYWfDUCbZP+76J2MXdqGt8EPjsd2GGWKaPQ
-         Axa0ngtDeAXiVBdkWto7btA2/DiS2DF73am8mLUQXtHGb7cAG2Y466hhVwfgcNCj3Fbi
-         02rg==
+        b=zH3wLcCAq9ktWYF06ovr8ob/AlMgxGV7ldl16wo81RtpdPHRX25MRgR26qwKOAMBrt
+         0L9CMIE/RRd0dUktncFE1ANwPRLDGsC5uAg87RpDINpWL/NR17rLgLu0hJP0A3fW83ac
+         PNRdAXWj10Ln2wg6OCqWwd7psxK/JJ9KPGmOqAxB5H3QBL0gZbLagDhfu733uQmi+I4X
+         hR9vbeff2CLJoQ7o4e1Eh6+gTviPT5A2uH4qHbuSOvTQQOgpMI/IA4U7v3SkhzqknW0o
+         Ofhaiq8Uo5SzZSrfI0I9KvYr6uixdRa0IQDikKPLmrXt4/dM+TIVrvbgY37wVE7+u4sF
+         MkUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uOqpFpRHeNTJkIs3ZCo+XPQx0TPFGZAjY2V7pgRTXhg=;
-        fh=iEAsG9dCqS+2cVy9uTyNWfPGqEHl61dBFUbj0ZXFowI=;
-        b=QIrh4zlHSU6aW7vgtH5keNLC640XDA7948n5mYZpXnq6aZhA3j7KiDr9P9QW+D7aSv
-         ynJaBTZ1Lb5U/Ne/Ac80nBxIfa/4ggYvkN3ftExfpqGXCTlSs33laMiPOpBM98u/P5yr
-         K+V3EzioB/WB8Sau9JkNJcIbwhqvRKM+HJzPv7ySfSaWPUpoxPllmsbu5BykBf/6G7J9
-         r1DCTYcVosv9R1G8xOw015ag7jNSI1Eqr+I3Sa5Amtktz1y9f7LPpDL1oJ8BnJGfQLlO
-         g6VDO5Mu8nZORQUXO6JrHjnk+laHTk6qM5yPWs8CBAR4htNrU/WAwB9bJcCu6l/EeYgl
-         qzOQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=bhXpOovEX8SfVDN6CzG+XSYIZKcmYyPEHB7vqETgHdU=;
+        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
+        b=H3r6iy4zsLLfQ5GuenrimQCEevp155cuJRwyNm2hsjW6rzNgoE46gYVA6ck00gLqqa
+         PfzIG55pu8oRiJQ4CMzUEjoJl7ht9GTV6CABLb4ABvMvutPau/NM+ZsahB3hC6kICaRI
+         Lk2qgg9pxXoxiiEafYBj49vJXqzCZDQJneKyvEmTAAWOAhmqupLNkeA5Xlmsz+LV1VMK
+         O+CZybJ3/mdFsZ1e96e/8/02gy4BPwJPkMgyvgipxzt7CV08jbA0HolWrKT7GbTX5bTr
+         /xv4FEGTMwl+kNtffCrJ3hXTLFTwX+rNDJ4cXdnQVbXAPKbIKhk/IApf+54SrPyZEhaY
+         h7yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@cl.cam.ac.uk header.s=mta3 header.b=NssVUuuY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020a67c78a000000b0046d1ca7dbe6si1443673vsk.350.2024.02.21.16.04.58
+        by mx.google.com with ESMTPS id q23-20020ac84517000000b0042c3e04578bsi10996701qtn.688.2024.02.21.17.53.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 16:04:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Feb 2024 17:53:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@cl.cam.ac.uk header.s=mta3 header.b=NssVUuuY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rcwZS-0007Y8-J7; Wed, 21 Feb 2024 19:04:14 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rcyGV-0004nj-GI; Wed, 21 Feb 2024 20:52:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jrtc4@cl.cam.ac.uk>)
- id 1rcwZQ-0007Xq-Nk; Wed, 21 Feb 2024 19:04:12 -0500
-Received: from mta0.cl.cam.ac.uk ([2a05:b400:110::25:0])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcyGT-0004fq-W1; Wed, 21 Feb 2024 20:52:46 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jrtc4@cl.cam.ac.uk>)
- id 1rcwZO-0004oW-MN; Wed, 21 Feb 2024 19:04:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=cl.cam.ac.uk; s=mta3; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=uOqpFpRHeNTJkIs3ZCo+XPQx0TPFGZAjY2V7pgRTXhg=; t=1708560247; x=1709424247; 
- b=NssVUuuYlpPQK1LRMcVMpFo2NEErxEXEh4sDRhJTek5ol/Nbr8cED28HcMFnHgTPEKpcSI+pynI
- 9I76pPZ21JOR7r3/F7AbMtt4n2jd066hAVemjcx9nZWceUyAmrBuJdGb9qxLb1vu/CufwBC2hRMoS
- QVpyzZeFVnCP7iDhXY4bjQ9WGZybjfiJ3fvbzHgdGkn+HahOZ76GStyz+GmaM2R59CpkpOKBxDsy1
- Hc2+Bcty7HVIKm3HtvQoKXTxfjjJMx25cgif6LvV5dytClba/0Tqpvu4ru2XeyBJb3drnuRpBmpa8
- +0a0brA0mBZUHrGvCyIvGrxlq+iIxPxft+TA==;
-X-CL-Received-SPF: pass (mta0.cl.cam.ac.uk: )
- client-ip=2001:630:212:238:e63d:1aff:fe8d:4a70;
- envelope-from=jrtc4@cl.cam.ac.uk; helo=technos.cl.cam.ac.uk
-Received-SPF: pass (mta0.cl.cam.ac.uk: )
- client-ip=2001:630:212:238:e63d:1aff:fe8d:4a70;
- envelope-from=jrtc4@cl.cam.ac.uk; helo=technos.cl.cam.ac.uk
-Received: from technos.cl.cam.ac.uk
- ([2001:630:212:238:e63d:1aff:fe8d:4a70]:34906) (dnseec=no)
- by mta0.cl.cam.ac.uk:25 [2a05:b400:110::25:0] with esmtp
- (Exim 4.95) id 1rcwZD-00HXhZ-SY (envelope-from <jrtc4@cl.cam.ac.uk>);
- Thu, 22 Feb 2024 00:03:59 +0000
-Received: from jrtc4 by technos.cl.cam.ac.uk with local (Exim 4.95)
- (envelope-from <jrtc4@cl.cam.ac.uk>) id 1rcwZD-006YTc-3J;
- Thu, 22 Feb 2024 00:03:59 +0000
-From: Jessica Clarke <jrtc27@jrtc27.com>
-To: qemu-devel@nongnu.org
-Cc: Jessica Clarke <jrtc27@jrtc27.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] pl031: Update last RTCLR value on write in case it's read back
-Date: Thu, 22 Feb 2024 00:03:41 +0000
-Message-Id: <20240222000341.1562443-1-jrtc27@jrtc27.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcyGR-0007pY-JD; Wed, 21 Feb 2024 20:52:45 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TgGHQ1g5fz1FKns;
+ Thu, 22 Feb 2024 09:47:46 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 9C2D9140383;
+ Thu, 22 Feb 2024 09:52:38 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 22 Feb 2024 09:52:37 +0800
+Message-ID: <531a573e-fab3-930c-6cf6-cc69846817a8@huawei.com>
+Date: Thu, 22 Feb 2024 09:52:37 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RFC PATCH v2 01/22] target/arm: Add FEAT_NMI to max
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>,
+ <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20240221130823.677762-1-ruanjinjie@huawei.com>
+ <20240221130823.677762-2-ruanjinjie@huawei.com>
+ <c6271668-1bee-4ff4-9a9c-5fe6acee4937@linaro.org>
+In-Reply-To: <c6271668-1bee-4ff4-9a9c-5fe6acee4937@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a05:b400:110::25:0;
- envelope-from=jrtc4@cl.cam.ac.uk; helo=mta0.cl.cam.ac.uk
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -74
+X-Spam_score: -7.5
+X-Spam_bar: -------
+X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jaH2I7FgVdqd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X92o4kgcpQ7q
 
-The PL031 allows you to read RTCLR, which is meant to give you the last
-value written. PL031State has an lr field which is used when reading
-from RTCLR, and is present in the VM migration state, but we never
-actually update it, so it always reads as its initial 0 value.
 
-Signed-off-by: Jessica Clarke <jrtc27@jrtc27.com>
----
- hw/rtc/pl031.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-index 837b0bdf9b..563bb4b446 100644
---- a/hw/rtc/pl031.c
-+++ b/hw/rtc/pl031.c
-@@ -141,6 +141,7 @@ static void pl031_write(void * opaque, hwaddr offset,
-         g_autofree const char *qom_path = object_get_canonical_path(opaque);
-         struct tm tm;
- 
-+        s->lr = value;
-         s->tick_offset += value - pl031_get_count(s);
- 
-         qemu_get_timedate(&tm, s->tick_offset);
--- 
-2.34.1
+On 2024/2/22 5:22, Richard Henderson wrote:
+> On 2/21/24 03:08, Jinjie Ruan via wrote:
+>> Enable FEAT_NMI on the 'max' CPU.
+>>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> ---
+>>   docs/system/arm/emulation.rst | 1 +
+>>   target/arm/tcg/cpu64.c        | 1 +
+>>   2 files changed, 2 insertions(+)
+> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> However, this patch must be sorted last, after all support for FEAT_NMI
+> is present.
 
+Good suggestion! Placed it last is more reasonable.
+
+> 
+> 
+> r~
+> 
+>>
+>> diff --git a/docs/system/arm/emulation.rst
+>> b/docs/system/arm/emulation.rst
+>> index f67aea2d83..91baf7ad69 100644
+>> --- a/docs/system/arm/emulation.rst
+>> +++ b/docs/system/arm/emulation.rst
+>> @@ -63,6 +63,7 @@ the following architecture extensions:
+>>   - FEAT_MTE (Memory Tagging Extension)
+>>   - FEAT_MTE2 (Memory Tagging Extension)
+>>   - FEAT_MTE3 (MTE Asymmetric Fault Handling)
+>> +- FEAT_NMI (Non-maskable Interrupt)
+>>   - FEAT_NV (Nested Virtualization)
+>>   - FEAT_NV2 (Enhanced nested virtualization support)
+>>   - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED
+>> algorithm)
+>> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+>> index 5fba2c0f04..60f0dcd799 100644
+>> --- a/target/arm/tcg/cpu64.c
+>> +++ b/target/arm/tcg/cpu64.c
+>> @@ -1175,6 +1175,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>>       t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 +
+>> FEAT_DoubleFault */
+>>       t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
+>>       t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
+>> +    t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
+>>       cpu->isar.id_aa64pfr1 = t;
+>>         t = cpu->isar.id_aa64mmfr0;
+> 

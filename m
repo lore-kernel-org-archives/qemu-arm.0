@@ -1,167 +1,266 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp157554ejf;
-        Thu, 22 Feb 2024 11:42:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUp/ww0DhwfTstqyTxx1wdguMUyDd2stq4nPV4yE3i4Od98Vu972B2/j7LwTYmplDhYlkARcxy/bzBi8ZaoxR3pUNNdQNEN
-X-Google-Smtp-Source: AGHT+IGDZ25NC6+JmeoiDUahwoeP5hEExTXgB9OFOkQY52MMEXlr66G1EH/f4XdSKlbf3NAJUWcX
-X-Received: by 2002:a5b:d0a:0:b0:dcd:30f9:eb6d with SMTP id y10-20020a5b0d0a000000b00dcd30f9eb6dmr149935ybp.57.1708630952719;
-        Thu, 22 Feb 2024 11:42:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708630952; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp230510ejf;
+        Thu, 22 Feb 2024 14:24:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVCvMSl04+S1UzKRmd0zTW2ve3ZgNexu71ytNcTzG+3KISX08o6z9Y1/iaSjRGSG8PfT8jvrnVDCSKaYwGOCUKxB28h9izZ
+X-Received: by 2002:a17:902:a502:b0:1db:e792:bb38 with SMTP id s2-20020a170902a50200b001dbe792bb38mr168406plq.63.1708640657739;
+        Thu, 22 Feb 2024 14:24:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708640657; cv=none;
         d=google.com; s=arc-20160816;
-        b=uF2nAgHYA3lsc7hqzcikAzr86O3mWaaQTQR2/2eX/L3De27uqybImuCr8Iv8RLUNKs
-         uwjT5oo8LQDWzfmk0JLbTLOReF0itX53GEu6oTQj6ONDv2bgbZc1fcUdR9ME0XkRYiNl
-         qwzXqFEbjFNNrm8OxRMU/l+bGEE7SGt19vSUxYIoj4oYa0nr9xVUuICG+QLPiz4mnhG1
-         M7TlYdoGSgFfRlEhlY32Ui4s6Qt5I/ymeamHhhgQlEYcG3gSIjcumUwNuaGZEO3SAUwf
-         wA4PJ/vQZUvxH0ulRQG+N+1EDTrjPVYbE45tEQhZISuMVDMrpdldSLDcf8yR8HA14UM+
-         auUg==
+        b=k4fzSB/sTYqufPtMsztdbv+d+q3G2Ax52THVV/Dhx9NVLHyUWJSSSRdjSM7L0hgOh6
+         zQsBe+5BqHmtc+jnuzKhApjFuio3MyPukltbNGCAWF52c1phPxd1n06rYEsFdhu6YU5i
+         ri9GnRWQ5TSyBx9fD7/Fl5pM6Dpu38y/zMp+a9EERDrnEiYj4A1KEivokZh35eoy2CiN
+         jMNm96iq/msU/UGVUmzB5ic3xe7eOmd0ZlxzcesibGIoA2xP4H72jomuIRPo0IXDDsbq
+         B+u3fGY/t5CIrJq9BXHcgiFacRUy4/v99c8Ne9KDgFexMG6CZCtufyus2qDPPd3riHYX
+         qmOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:to:from:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=a14YzswJfF0EVEHKLUWnJPofJa7eJqbabN6+JNQY+fU=;
-        fh=JYuZacsKwUV96lYWPdPnCOZldtbq5CiqsxJR4kmUgLA=;
-        b=oIAwoP7/fhBoivnK2afZL4vDpzP+JfJ4MXQoYu8+w1yWAURN86/JFw+JWR8+iCofpr
-         EUtijHcp6jt3RDRbtSw2DsJPnGLtSvyTTmMeB7i73Q0HH0QfngFWpfHiz++7QP8drsqz
-         GcSD22gUP5+zwcX2jLvIWc+itbkJ8+ry0+B2GC5O6FWroqMRoNdzPDxcOuxvabo1cz1/
-         n7cdG3i9Hl3RUxp2l5p45ehrQQyGeGAiF+yWwm9PyI171yuJrKywgVHKbRQBZh3dUKMP
-         S3UPq4kHo+gq3jimmYnzHHNBKc8x1Q/lQWEvSiEpYg6YclbkAdVcTCmACPQeqpyQd78f
-         fryw==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=odmBrfxrVJqhwVA+IUSN99OoFSVOcM+f5audJj2ZfrI=;
+        fh=KbXrFzt0uLmGywcD+4CLGlJxnh1oUQ6VbgHItiac3ZM=;
+        b=bnLQbs2C7QN9q1qUkwg3pmEFZTRSB8SGcspd+0cr/icVeR9wprvxwb0ncWSgoI+oWD
+         OTQIYn9sYL1p4VAJtYcO9Up9zKQcuUleChCphPxO77/btqI/IPUBNJokwBALIeKKtGjg
+         VMPLyK1zgbMZjk0yKyYbH6TOGPw4iWT49XDpEyWlxbL/4LMUlPqi6yZmvtXThyq2wHF0
+         0gjQXXaS8O6U77yeUlPG5vFJ3CAZ4uKCEQ74JMTVgmZ0NYAcHe0+KoISUzCic9kY+z3m
+         BGnmxLiZgOfVOjVlmM24pLZsQwcdtroguuQuc7jWJT/XUnz59NoF2K32NDx6AOKmqo6m
+         PWsg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fI9lpwMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wUSyBVAd;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15-20020a05620a02ef00b007876f55c2a5si8071884qko.752.2024.02.22.11.42.32
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b15-20020a170902650f00b001dbb1379e2csor5878282plk.12.2024.02.22.14.24.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 11:42:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 22 Feb 2024 14:24:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fI9lpwMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wUSyBVAd;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdExc-0000Bz-Kl; Thu, 22 Feb 2024 14:42:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rdExa-000066-Q8
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 14:42:22 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rdExZ-0008BO-7d
- for qemu-arm@nongnu.org; Thu, 22 Feb 2024 14:42:22 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1d93edfa76dso17365ad.1
- for <qemu-arm@nongnu.org>; Thu, 22 Feb 2024 11:42:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708630939; x=1709235739; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=a14YzswJfF0EVEHKLUWnJPofJa7eJqbabN6+JNQY+fU=;
- b=fI9lpwMk1jOLwFGNMxxk70hh5ssDSETHXHqPr7XvRcrJa63S7mqFyROnuEH1VW+xQO
- 8ooIanYTC3lJIDw6gw5puUDzsbw6n7h8FdMZmYu+g6U47OWMIUQhkSWHFpYXlfk7PigW
- nzOydzE8BFCm8DlMMJD1VtyQ2Nhs2Ve913FDDN1dv3jEtSDSXSejj38HaxAKY2rxWSsZ
- lobdQE+AuNn2h+ra483JuUXwFhBoLDLqUAnXh50zrHl0XD2avBWOFm+fFeCXdeHuWRTA
- mn6ITJpYUqd1Uu9ANpSVEEtfKuORwGrTL2FvOJ5EQVvefGT8daKixM1XRgZJfkY1e/xP
- b8HQ==
+        d=linaro.org; s=google; t=1708640657; x=1709245457; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=odmBrfxrVJqhwVA+IUSN99OoFSVOcM+f5audJj2ZfrI=;
+        b=wUSyBVAdyYM7Rc7FqsjEj6oqb6dtHwX2fFaSAXEUEfW7GvxtnHGihpuxgqC0bxMTcW
+         cG+PPS6w+KmSfzTf0s0wz+48aCI6TrZb/scJmQwP0au7Qi4AnTg6LIPeAZOd/m9eLr8B
+         V2Yhet7k7HCsptItZTtKDttBr0QR6IWTI7dKdi8F8xgvwUFX4u8ZwgvPh1SnIszUmJXh
+         iDQbu2UJrt6ONZ+68OAq7uoWJj+HWWj76aTHExMDZ9jmtQwmF6rkOppa5lzwBRaEEhEp
+         jfcGCPRrmWUJTDm3j0U/vKjCMd6LfYt3e9WQKvjvJJMCIajY/4SrbCEqGzplseUq3M0+
+         KB2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708630939; x=1709235739;
- h=content-transfer-encoding:in-reply-to:references:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=a14YzswJfF0EVEHKLUWnJPofJa7eJqbabN6+JNQY+fU=;
- b=h7hL4zhGfmviss7qDU9GnZS/1tqEnuwXwO3y4irwXQUjkSVx6vgok7wKxdxZPqgHKo
- RVujTU40jzyNPG26nGGnFFdp79K7XYPLwSJVrarxTZ8Y2aG5AHdmVJAU7W5tWLhcYq0b
- mOV2/18Ds0SPzUjzDvMP89jkUUr1CyFvHOfHxVKfqSfbNy5pivXuZ22lE8FE9y5lnh3N
- sPHzVWu7Lk3nQiFgS+KDlnS9NH2nipZv4ol7KmZdiAdzy5Jxq3DecstGLVAzYAK1mG98
- 0jKkAfepluxJNBh6mb/4+HbdsczfyI37gidUu1D32t1SP7TRIt4m3/6SePVkD5c/qC78
- qYqQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW95FHHhN2cMaOmEGeTQxLCVdJLYx/jHy5M5TOoSpq22Aw17zk00hfkvH7ZHYhA5Ip6R9YRbmy8mJc54doRbBpYxmH8
-X-Gm-Message-State: AOJu0YygLDVlMQKED82KVl2iFsaQ5GYQUw6DkPzqHaZICr+rMeRnQoga
- VAFfqNWSu7xcKrvxy9zsg1XwGq+q3op4q8+FksFgSsHBF5UztU491MA83vGyMuI=
-X-Received: by 2002:a17:902:db06:b0:1db:8fd6:915e with SMTP id
- m6-20020a170902db0600b001db8fd6915emr10523752plx.33.1708630939286; 
- Thu, 22 Feb 2024 11:42:19 -0800 (PST)
-Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
- [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
- 6-20020a170902e9c600b001db70183611sm10248011plk.270.2024.02.22.11.42.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Feb 2024 11:42:18 -0800 (PST)
-Message-ID: <7a8e193b-c266-4723-9dae-198a975d77f7@linaro.org>
-Date: Thu, 22 Feb 2024 09:42:15 -1000
+        d=1e100.net; s=20230601; t=1708640657; x=1709245457;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=odmBrfxrVJqhwVA+IUSN99OoFSVOcM+f5audJj2ZfrI=;
+        b=Y1aZB4fbMWwZ/TV1HvKef18ec7/qN6QtnHflphG5yKjmpnhvuaknLo5m/wlDO8sE/3
+         ewv7BVwqdVtQ5tejzON0N9ZTYFURqgqtxnktvSGIzuro1Jq40GcGJK5d5b5bn81fxv7e
+         7jWG9Csy2cIVccj8cdkExATCJEuoPlDAOm5GHiO1Fj5ywrYnWgo8YDfnnd7F/dC0mvqa
+         9b+q5GqcTd/JBGSCg4Oo7dMF/cKRvWMK4sCe0vC5PvtVrjd1ky/EOLyq10m0MRwwhrW4
+         uaMaDQMY8ub88IzoAP7al0JUcTtyThqK9PV4B/+3qdguQzi39NVQOF8h+KKvuImQAHWz
+         cw9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVdEpzHGPBr/LCypX7eRxqDsWM0ZJzZT/zuq5Dx5/mz9eb66LFYiKkWpBeGSx9BcrWSd4hQNjruNY4Tz3XAnZmcdf0sHifN
+X-Gm-Message-State: AOJu0Yxo6UP+z6Lk9G6NjLAsod0WRCBqXZKWSc15Lhx8Uyuah1fe9BYC
+	nPWHI8lTirVG0Q+ClmD7abrBKQNGdFEVo9O3rleIf15pj6Ki0b8vCyQg66c6wUOnuQ==
+X-Google-Smtp-Source: AGHT+IHFqLrcw/KANkMAQvECqMQhVS7dpdsPVJlM2RLEIlbDAoquX2rq27vi8H8SzxBqVZJ7wpykAg==
+X-Received: by 2002:a17:902:6548:b0:1d5:f36c:8737 with SMTP id d8-20020a170902654800b001d5f36c8737mr168930pln.68.1708640657196;
+        Thu, 22 Feb 2024 14:24:17 -0800 (PST)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from amd.. ([2804:7f0:b400:285a:3e7c:3fff:fe7a:e83b])
+        by smtp.gmail.com with ESMTPSA id ji7-20020a170903324700b001d7057c2fbasm10457210plb.100.2024.02.22.14.24.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Feb 2024 14:24:16 -0800 (PST)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-devel@nongnu.org,
+	philmd@linaro.org
+Cc: thuth@redhat.com,
+	lvivier@redhat.com,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	pbonzini@redhat.com,
+	anton.kochkov@proton.me,
+	richard.henderson@linaro.org,
+	peter.maydell@linaro.org,
+	gustavo.romero@linaro.org
+Subject: [PATCH 0/6] Add ivshmem-flat device
+Date: Thu, 22 Feb 2024 22:22:12 +0000
+Message-Id: <20240222222218.2261956-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 04/22] target/arm: Implement ALLINT MSR (immediate)
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-To: Jinjie Ruan <ruanjinjie@huawei.com>, peter.maydell@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20240221130823.677762-1-ruanjinjie@huawei.com>
- <20240221130823.677762-5-ruanjinjie@huawei.com>
- <9fb9c74e-e4d3-4a8b-b736-c8603414245c@linaro.org>
- <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
-In-Reply-To: <0911d6a4-7fd6-4d0f-83a8-ec4ba8420297@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KVYjBkepHL1p
+X-TUID: nSPEktxxYo7B
 
-On 2/21/24 10:41, Richard Henderson wrote:
-> Ho hum..  I just noticed that TALLINT only traps immediate write of 1, not also immediate 
-> write of 0.  So one helper for both MSR Xt and MSR imm is not practical.
+Since v1:
+- Correct code style
+- Correct trace event format strings
+- Include minimum headers in ivshmem-flat.h
+- Allow ivshmem_flat_recv_msg() take NULL
+- Factored ivshmem_flat_connect_server() out
+- Split sysbus-auto-wire controversial code in different patch
+- Document QDev interface
 
-Quick follow up to say that means you can do
+Since v2:
+- Addressed all comments from Thomas Huth about qtest:
+  1) Use of g_usleep + number of attemps for timeout
+  2) Use of g_get_tmp_dir instead of hard-coded /tmp
+  3) Test if machine lm3s6965evb is available, if not skip test
+- Use of qemu_irq_pulse instead of 2x qemu_set_irq
+- Fixed all tests for new device options and IRQ name change
+- Updated doc and commit messages regarding new/deleted device options
+- Turned device options 'x-bus-address-iomem' and 'x-bus-address-shmem' mandatory
 
-static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
-{
-     if (!dc_isar_feature(aa64_nmi, s)
-         || s->current_el == 0
-         || (a->imm & ~1)) {
-         return false;
-     }
-     if (!a->imm) {
-         clear_pstate_bits(PSTATE_ALLINT);
-     } else if (arm_dc_feature(s, ARM_FEATURE_EL2) && s->current_el == 1) {
-         /* Use helper for runtime check against HCRX_EL2.TALLINT. */
-         gen_helper_msr_set_allint_el1(tcg_env);
-     } else {
-         set_pstate_bits(PSTATE_ALLINT);
-     }
-     return true;
-}
+--
 
-Generate inline bit ops whenever TALLINT does not apply.
-This also means the helper need not check current_el, because we've already done it here.
+This patchset introduces a new device, ivshmem-flat, which is similar to the
+current ivshmem device but does not require a PCI bus. It implements the ivshmem
+status and control registers as MMRs and the shared memory as a directly
+accessible memory region in the VM memory layout. It's meant to be used on
+machines like those with Cortex-M MCUs, which usually lack a PCI bus, e.g.,
+lm3s6965evb and mps2-an385. Additionally, it has the benefit of requiring a tiny
+'device driver,' which is helpful on some RTOSes, like Zephyr, that run on
+memory-constrained resource targets.
 
+The patchset includes a QTest for the ivshmem-flat device, however, it's also
+possible to experiment with it in two ways:
 
-r~
+(a) using two Cortex-M VMs running Zephyr; or
+(b) using one aarch64 VM running Linux with the ivshmem PCI device and another
+    arm (Cortex-M) VM running Zephyr with the new ivshmem-flat device.
+
+Please note that for running the ivshmem-flat QTests the following patch, which
+is not committed to the tree yet, must be applied:
+
+https://lists.nongnu.org/archive/html/qemu-devel/2023-11/msg03176.html
+
+--
+
+To experiment with (a), clone this Zephyr repo [0], set the Zephyr build
+environment [1], and follow the instructions in the 'ivshmem' sample main.c [2].
+
+[0] https://github.com/gromero/zephyr/tree/ivshmem
+[1] https://docs.zephyrproject.org/latest/develop/getting_started/index.html
+[2] https://github.com/gromero/zephyr/commit/73fbd481e352b25ae5483ba5048a2182b90b7f00#diff-16fa1f481a49b995d0d1a62da37b9f33033f5ee477035e73465e7208521ddbe0R9-R70
+[3] https://lore.kernel.org/qemu-devel/20231127052024.435743-1-gustavo.romero@linaro.org/
+
+To experiment with (b):
+
+$ git clone -b uio_ivshmem --single-branch https://github.com/gromero/linux.git
+$ cd linux
+$ wget https://people.linaro.org/~gustavo.romero/ivshmem/arm64_uio_ivshmem.config -O .config
+
+If in an x86_64 machine, cross compile the kernel, for instance:
+
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j 36
+
+Install image in some directory, let's say, in ~/linux:
+
+$ mkdir ~/linux
+$ export INSTALL_PATH=~/linux
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j 36 install
+
+or, if you prefer, download the compiled image from:
+
+$ wget https://people.linaro.org/~gustavo.romero/ivshmem/vmlinuz-6.6.0-rc1-g28f3f88ee261
+
+... and then the rootfs:
+
+$ wget https://people.linaro.org/~gustavo.romero/ivshmem/rootfs.qcow2
+
+Now, build QEMU with this patchset applied:
+
+$ mkdir build && cd build
+$ ../configure --target-list=arm-softmmu,aarch64-softmmu
+$ make -j 36
+
+Start the ivshmem server:
+
+$ contrib/ivshmem-server/ivshmem-server -F
+
+Start the aarch64 VM + Linux + ivshmem PCI device:
+
+$ ./qemu-system-aarch64 -kernel ~/linux/vmlinuz-6.6.0-rc1-g28f3f88ee261 -append "root=/dev/vda initrd=/bin/bash console=ttyAMA0,115200" -drive file=~/linux/rootfs.qcow2,media=disk,if=virtio -machine virt-6.2 -nographic -accel tcg -cpu cortex-a57 -m 8192 -netdev bridge,id=hostnet0,br=virbr0,helper=/usr/lib/qemu/qemu-bridge-helper -device pcie-root-port,port=8,chassis=1,id=pci.1,bus=pcie.0,multifunction=on,addr=0x1 -device virtio-net-pci,netdev=hostnet0,id=net0,mac=52:54:00:d9:d1:12,bus=pci.1,addr=0x0 -device ivshmem-doorbell,vectors=2,chardev=ivshmem -chardev socket,path=/tmp/ivshmem_socket,id=ivshmem
+
+Log into the VM with user/pass: root/abc123
+
+should show:
+
+[    2.656367] uio_ivshmem 0000:00:02.0: ivshmem-mmr at 0x0000000010203000, size 0x0000000000001000
+[    2.656931] uio_ivshmem 0000:00:02.0: ivshmem-shmem at 0x0000008000000000, size 0x0000000000400000
+[    2.662554] uio_ivshmem 0000:00:02.0: module successfully loaded
+
+In another console, clone and build Zephyr image from 'uio_ivhsmem' branch:
+
+$ git clone -b uio_ivshmem --single-branch https://github.com/gromero/zephyr
+$ west -v --verbose build -p always -b qemu_cortex_m3 ./samples/uio_ivshmem/
+
+... and then start the arm VM + Zephyr image + ivshmem-flat device:
+
+$ ./qemu-system-arm -machine lm3s6965evb -nographic -net none -chardev socket,path=/tmp/ivshmem_socket,id=ivshmem_flat -device ivshmem-flat,chardev=ivshmem_flat,x-irq-qompath='/machine/unattached/device[1]/nvic/unnamed-gpio-in[0]',x-bus-qompath='/sysbus' -kernel ~/zephyrproject/zephyr/build/qemu_cortex_m3/uio_ivshmem/zephyr/zephyr.elf
+
+You should see something like:
+
+*** Booting Zephyr OS build zephyr-v3.3.0-8350-gfb003e583600 ***
+*** Board: qemu_cortex_m3
+*** Installing direct IRQ handler for external IRQ0 (Exception #16)...
+*** Enabling IRQ0 in the NVIC logic...
+*** Received IVSHMEM PEER ID: 7
+*** Waiting notification from peers to start...
+
+Now, from the Linux terminal, notify the arm VM (use the "IVSHMEM PEER ID"
+reported by Zephyr as the third arg, in this example: 7):
+
+MMRs mapped at 0xffff8fb28000 in VMA.
+shmem mapped at 0xffff8f728000 in VMA.
+mmr0: 0 0
+mmr1: 0 0
+mmr2: 6 6
+mmr3: 0 0
+Data ok. 4194304 byte(s) checked.
+
+The arm VM should report something like:
+
+*** Got interrupt at vector 0!
+*** Writting constant 0xb5b5b5b5 to shmem... done!
+*** Notifying back peer ID 6 at vector 0...
+
+Cheers,
+Gustavo
+
+Gustavo Romero (6):
+  hw/misc/ivshmem: Add ivshmem-flat device
+  hw/misc/ivshmem-flat: Allow device to wire itself on sysbus
+  hw/arm: Allow some machines to use the ivshmem-flat device
+  hw/misc/ivshmem: Rename ivshmem to ivshmem-pci
+  tests/qtest: Reorganize common code in ivshmem-test
+  tests/qtest: Add ivshmem-flat test
+
+ docs/system/devices/ivshmem-flat.rst |  90 +++++
+ hw/arm/mps2.c                        |   3 +
+ hw/arm/stellaris.c                   |   3 +
+ hw/arm/virt.c                        |   2 +
+ hw/core/sysbus-fdt.c                 |   2 +
+ hw/misc/Kconfig                      |   5 +
+ hw/misc/ivshmem-flat.c               | 531 +++++++++++++++++++++++++++
+ hw/misc/{ivshmem.c => ivshmem-pci.c} |   0
+ hw/misc/meson.build                  |   4 +-
+ hw/misc/trace-events                 |  17 +
+ include/hw/misc/ivshmem-flat.h       |  94 +++++
+ tests/qtest/ivshmem-flat-test.c      | 338 +++++++++++++++++
+ tests/qtest/ivshmem-test.c           | 113 +-----
+ tests/qtest/ivshmem-utils.c          | 156 ++++++++
+ tests/qtest/ivshmem-utils.h          |  56 +++
+ tests/qtest/meson.build              |   8 +-
+ 16 files changed, 1312 insertions(+), 110 deletions(-)
+ create mode 100644 docs/system/devices/ivshmem-flat.rst
+ create mode 100644 hw/misc/ivshmem-flat.c
+ rename hw/misc/{ivshmem.c => ivshmem-pci.c} (100%)
+ create mode 100644 include/hw/misc/ivshmem-flat.h
+ create mode 100644 tests/qtest/ivshmem-flat-test.c
+ create mode 100644 tests/qtest/ivshmem-utils.c
+ create mode 100644 tests/qtest/ivshmem-utils.h
+
+-- 
+2.34.1

@@ -1,124 +1,94 @@
-Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2186504ejb;
-        Wed, 21 Feb 2024 13:49:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW7t5AkX7HQUEA6LfK4cprrilTGs8IAHbWD9brniqrDSgVLsye0k/+VkTu/6bfq5LI/OTskqBv8Qz7qsKH/vjDU09dD6CmQ
-X-Google-Smtp-Source: AGHT+IHio1EHExJQ7pW7VOE8s8ALn19gE32AzsUAfGNgxAC2WQMzMgUZ/7chgwrsNsIuvDz5qRKz
-X-Received: by 2002:a05:6000:1f89:b0:33d:4bc4:a6a with SMTP id bw9-20020a0560001f8900b0033d4bc40a6amr8210536wrb.42.1708552149339;
-        Wed, 21 Feb 2024 13:49:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708552149; cv=none;
+Received: by 2002:a17:906:c8d8:b0:a3e:79c1:d636 with SMTP id gc24csp2283167ejb;
+        Wed, 21 Feb 2024 17:49:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWPTH81zz7yy949SKtaq5TGPxBsyma+sKVaj12p5mEjwoLISDFsWnmMdGJiB4/mbRx2Mat3mvZNchvlto3DFu8dfTEakys5
+X-Google-Smtp-Source: AGHT+IH9bN9six8H5YnSsyZIdsk9ZpmaVrqHoszdbk9gRWhRhfKpgoS81qiw6gtK9qKTZGBTyY1n
+X-Received: by 2002:a0c:9792:0:b0:68f:b9b8:6a87 with SMTP id l18-20020a0c9792000000b0068fb9b86a87mr544713qvd.12.1708566563318;
+        Wed, 21 Feb 2024 17:49:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708566563; cv=none;
         d=google.com; s=arc-20160816;
-        b=B8NfX1xBm6Oc4iAP4d8pNwmwR4xVk+DjTtPrKgc+89HpmyK9J3sv56P/GralRogkjX
-         KhD0/fnTgYJRY0AdxpP6pDGrC1PjBEnxarxahIHnfvU1rpREQJiVI65YzwWmRj1gBO6n
-         K5jhoQHmNpXPcqEDDDzpJpi1u+GQ+LKMUxnwIoZ94c+s/lZMs0SNT5qUuF6dzwBRbVCD
-         EgMc9MoWtfR9q5QthyBvILWgbcvKDTpnt7IwMmmI3jqNeY6enQgaoyyy8XAaBPxBlqk6
-         1nyahlmUMKd3cuS70hH71Zt00OVnZNWkRgVuUgQc0MyIBdasNIpGcObn3PPtv0eans0t
-         mfLw==
+        b=05+QKal6E6UWOa1JTo/LWKuCo1vCTEQbB9vwJSnffmRXzohO+otY0uNsmUcUPvASEp
+         FoPbyo+cBzYTIluOGcVOtdrkZ4QxpTCClt/zSzaj7SFZKjjh41X/K2CzpDNKw9kvtWMq
+         kAn/lRjDyYlR5xfb2E6hqttEiziQRY4hqnK3yyCXKX1xX2fVFFEqSvUBX3uemSnHIMAn
+         nLITEmwueUTeAJjQYs5e8gyVPBkJOB5en+mEDitGhkE5EcxCOTGg7o6c5oxJazrQAfHx
+         s5TEn56UpSNreBZ0tZwWjwdRmDfoto/vNk1PGEvJFZDB1/Y3c6APptbYEL6Ys2C6YhId
+         w6zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=hlxAVMQey/7xdYaZGT3WiiNZ5rWp9+/Qa2oiSDnORXc=;
-        fh=qmKF+T5CyNgcrBusr9udIe2qdhj38LmAtyYKv3lOj1s=;
-        b=btrPthpwCVUvqxjrQKNfRDN2l2Ct8268Td8MCgYbHFDkv3F6Bkf3T3dA4bJX53HpFi
-         zF5XZXFbEGxmGKSyGBoFeedKmiQfCGZz+zAPX9CKXM5o274h913XNHcG4PiUENeTmxXd
-         +31Mmh88WpdnP1Zk9qcs29+TdqAuBPPZrqlvwaAt2srugcC8pkDna/YqRt6CXFk79yil
-         2OwCUD1twYVYOYOM2rzNghgJ4G4A1fZ9Q/BpHmlENGe6IRzWlPOuS/HXzRMtz/vDATZP
-         v6U17Nd0ECDnIz4FJzdKvF2W1LZ7lNr2K4oAoOoHSYur3jLtTQFg1sLnTWUKkKThSkoD
-         ZJdg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:content-language:references
+         :to:subject:user-agent:mime-version:date:message-id;
+        bh=tMXM7tPgVC4IHB5cVYof0JrdxcqlYCL1fMAUIwkOfxA=;
+        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
+        b=F4db2LmjKSpFvPhrQlMwUNj/TooPqxAojv2eioy9JFI++HNRQq6kCMZHWPOaDtxb2/
+         CVW3L6IlI7qzsyXhLHVkRt5nYwLJQh9K38OT17ix8khCSsfjzwlIR+b9NyXyQwrgdkrA
+         Wxi1o3D0w0UoCYBWLuG1ncHeRG3LttFR1dQeKx+spWvM/RGbTaHuXh8cvFp2KLO7/sF9
+         vJS7IK+nNz3+BJTsMM7gRuJNL5kMYkCOxIOoNYIMs5tzCt22ZOLG9B7/eoyB8m12db7p
+         id69c60utiV1ob4MSINI1xns+vWlkkruXIq2KIfd5bNObZ39w+sEL/plPm/7E2VmoI+k
+         JWKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bCnCZo+u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d1-20020adff841000000b0033d22755e50si6497382wrq.243.2024.02.21.13.49.09
+        by mx.google.com with ESMTPS id 2-20020a05621420c200b0068eeeabaa8fsi13287004qve.144.2024.02.21.17.49.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Feb 2024 13:49:09 -0800 (PST)
+        Wed, 21 Feb 2024 17:49:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bCnCZo+u;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rcuSB-0003SL-Re; Wed, 21 Feb 2024 16:48:35 -0500
+	id 1rcyCz-0001Kp-Pn; Wed, 21 Feb 2024 20:49:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rcuS9-00032c-3p
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:48:33 -0500
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rcuRv-0007Ty-Ge
- for qemu-arm@nongnu.org; Wed, 21 Feb 2024 16:48:32 -0500
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-1dc139ed11fso1962045ad.0
- for <qemu-arm@nongnu.org>; Wed, 21 Feb 2024 13:48:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708552097; x=1709156897; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hlxAVMQey/7xdYaZGT3WiiNZ5rWp9+/Qa2oiSDnORXc=;
- b=bCnCZo+uyy+2xGEtQNuGqmzfbnQCOzXD5QlHoQlg7UJiwrTmu1+FIGb6wPftLwTfX/
- EU4605k/L1AuZ07xyU+wd9xgdOT+DMRkpmP9eShqEPx96rlJcIfEk62TPNdDCsU1omjm
- dlVBSsTRq96fnOHSbhiuxPnK8IsMKLZiyXeeVQRHg2kwqD0L9YflNAuxOvQtRy3Lb861
- AYDmPAjdUfCCjoTV+iPbIB5m+zVE8n3o4yu619nd6ry+0XCOrQyzKyoyZMs9Bj+Ug5Gi
- ryR9/NXkRXKLCQDda84x5QsveBOqlAZ+3d2R0GRYuHicjYi62QjuywWvZmSIBtJxaoQC
- Yyqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708552097; x=1709156897;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hlxAVMQey/7xdYaZGT3WiiNZ5rWp9+/Qa2oiSDnORXc=;
- b=OP0iED3wcDhUr0veIQ7UDrLfN0ADQxr8wTvFix4YNWD+GqCzNsqilh1GJwDLed1sUR
- GkJN58m2UlBWPgHSWxGnNZhvTEBr8lGDrA/lCIsV7XBhJTB4gsqjnam/OhxXWBqQcLPR
- ycPpZn1Mj4snLROH+DsuHn06LFA0djirojuDnAtxpzD5sV+5ydr7gINqVpPqubIwwU5F
- mB6b5kaxTM+HnnZj3GGWYoWaYeoJwk1pY3+ZkOPrUCM/y8x2kf1C3Ku0CbnNeMHvKjg3
- 7SIuEi+2yBemVOIuF3jqKSVT1NAnOoY6ien9C8L2UCOcywwsItXHr5cFTa4mvslaX5My
- 4dng==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXtqrWiiyyEErGtWw35yBx14rSG9hrOAOvXSMQe92ILv6A4On2k3xi1WBfVcCzOhI/1EfQVV10cnu5RxDaoj+zKumkL
-X-Gm-Message-State: AOJu0YwfVhtjfVyWbF3EO8tR19UFZN4p5HBcW8gvwaqzHXr0xP62mpTh
- H/wmPJocqZkmLbeknM+ShjI4mA3qhaVX/Dk3zsDP5oQoVFp2GSbpn2D+kf0U3BE=
-X-Received: by 2002:a17:903:22cb:b0:1db:e41f:bab with SMTP id
- y11-20020a17090322cb00b001dbe41f0babmr979199plg.32.1708552096832; 
- Wed, 21 Feb 2024 13:48:16 -0800 (PST)
-Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
- [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
- ke8-20020a170903340800b001d901c2087esm8577345plb.302.2024.02.21.13.48.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Feb 2024 13:48:16 -0800 (PST)
-Message-ID: <d2f050c9-070a-4cff-b9c0-754f5d30afab@linaro.org>
-Date: Wed, 21 Feb 2024 11:48:13 -1000
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcyCy-0001KF-S9; Wed, 21 Feb 2024 20:49:08 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rcyCu-0005mv-Q6; Wed, 21 Feb 2024 20:49:08 -0500
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4TgGHC53ZBzNlp4;
+ Thu, 22 Feb 2024 09:47:35 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 6A5D418007D;
+ Thu, 22 Feb 2024 09:48:59 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 22 Feb 2024 09:48:58 +0800
+Message-ID: <7e42f863-0079-18bd-94b5-83f3f40191a5@huawei.com>
+Date: Thu, 22 Feb 2024 09:48:58 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 19/22] hw/intc/arm_gicv3: Add irq superpriority
- information
-Content-Language: en-US
-To: Jinjie Ruan <ruanjinjie@huawei.com>, peter.maydell@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RFC PATCH v2 03/22] target/arm: Add PSTATE.ALLINT
+To: Richard Henderson <richard.henderson@linaro.org>,
+ <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 References: <20240221130823.677762-1-ruanjinjie@huawei.com>
- <20240221130823.677762-20-ruanjinjie@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240221130823.677762-20-ruanjinjie@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <20240221130823.677762-4-ruanjinjie@huawei.com>
+ <5f25d9cf-3ca0-4adb-860e-71a8fac3b504@linaro.org>
+Content-Language: en-US
+In-Reply-To: <5f25d9cf-3ca0-4adb-860e-71a8fac3b504@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -74
+X-Spam_score: -7.5
+X-Spam_bar: -------
+X-Spam_report: (-7.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,22 +101,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eYKQqv66ia2J
+X-TUID: BJ9iPH+H9n6F
 
-On 2/21/24 03:08, Jinjie Ruan via wrote:
-> A SPI, PPI or SGI interrupt can have a superpriority property. So
-> maintain superpriority information in PendingIrq and GICR/GICD.
+
+
+On 2024/2/22 2:50, Richard Henderson wrote:
+> On 2/21/24 03:08, Jinjie Ruan via wrote:
+>> The ALLINT bit in PSTATE is used to mask all IRQ or FIQ interrupts.
+>>
+>> Place this in its own field within ENV, as that will
+>> make it easier to reset from within TCG generated code.
+>>
+>> With the change to pstate_read/write, exception entry
+>> and return are automatically handled.
+>>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> ---
+>>   target/arm/cpu.c | 3 +++
+>>   target/arm/cpu.h | 9 +++++++--
+>>   2 files changed, 10 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 5fa86bc8d5..5e5978c302 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1104,6 +1104,9 @@ static void aarch64_cpu_dump_state(CPUState *cs,
+>> FILE *f, int flags)
+>>       if (cpu_isar_feature(aa64_bti, cpu)) {
+>>           qemu_fprintf(f, "  BTYPE=%d", (psr & PSTATE_BTYPE) >> 10);
+>>       }
+>> +    if (cpu_isar_feature(aa64_nmi, cpu)) {
+>> +        qemu_fprintf(f, "  ALLINT=%d", (psr & PSTATE_ALLINT) >> 13);
+>> +    }
 > 
-> Signed-off-by: Jinjie Ruan<ruanjinjie@huawei.com>
-> ---
->   include/hw/intc/arm_gicv3_common.h | 4 ++++
->   1 file changed, 4 insertions(+)
+> This is one bit -- !!(psr & ALLINT) is better
+> 
+> We don't individually print DAIF either; why is this bit more special?
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+That makes sense, it should be removed.
 
-Though this patch is mis-ordered compared to its uses.
+> 
+>> @@ -224,6 +224,7 @@ typedef struct CPUArchState {
+>>        *    semantics as for AArch32, as described in the comments on
+>> each field)
+>>        *  nRW (also known as M[4]) is kept, inverted, in env->aarch64
+>>        *  DAIF (exception masks) are kept in env->daif
+>> +     *  ALLINT (all IRQ or FIQ interrupts masks) are kept in env->allint
+>>        *  BTYPE is kept in env->btype
+>>        *  SM and ZA are kept in env->svcr
+>>        *  all other bits are stored in their correct places in
+>> env->pstate
+>> @@ -261,6 +262,7 @@ typedef struct CPUArchState {
+>>       uint32_t btype;  /* BTI branch type.  spsr[11:10].  */
+>>       uint64_t daif; /* exception masks, in the bits they are in
+>> PSTATE */
+>>       uint64_t svcr; /* PSTATE.{SM,ZA} in the bits they are in SVCR */
+>> +    uint64_t allint; /* All IRQ or FIQ interrupt mask, in the bit in
+>> PSTATE */
+> 
+> Why is this split out from env->pstate?
+> 
+> The allint bit matches the documentation for SPSR_EL1, which is how
+> env->pstate is documented.  The other exclusions have some performance
+> imperative which I don't see for allint.
 
+It seems to me that allint is a bit like daif, so it is reasonable to
+maintain it separately in ENV as what daif do it.
 
-r~
+> 
+> 
+> r~

@@ -1,100 +1,98 @@
-Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp132302eja;
-        Thu, 22 Feb 2024 01:41:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWu2BlQJWjjMrkqWDAHGH9dSW0MusgjC4qIpE3WT8wTFAoj7vkCMi8JXNpcJvPk0DIXR1m/bvNunix147rzAG4Vsylcz3GF
-X-Google-Smtp-Source: AGHT+IEqcOIW4ie6zUs82Twu6TZj2xQgx96etEqt8rcclLH6aI6vwWYqxU9IT4DKY5JRciu4CQFr
-X-Received: by 2002:a05:6214:2268:b0:68f:7f3b:5ef7 with SMTP id gs8-20020a056214226800b0068f7f3b5ef7mr13686663qvb.17.1708594877285;
-        Thu, 22 Feb 2024 01:41:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708594877; cv=none;
+Received: by 2002:a17:906:2317:b0:a3e:79c1:d636 with SMTP id l23csp132727eja;
+        Thu, 22 Feb 2024 01:42:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXBM/Q4GxFctB0KT1PI0T8DwSswdeodlqoVSPOJQjwdCkrYQQGXg7LfmSN3nZYrhzEBpwkCZXf/Ff2Ue8rhBGomzlyxrWuc
+X-Google-Smtp-Source: AGHT+IFqp0bIuaAol2x8UAlL5tFT037WsfBjKRnPWTTdDrrsffrplZ6K60DQwPzCoPlONqwcDTHL
+X-Received: by 2002:a05:6214:d42:b0:68f:7eea:b827 with SMTP id 2-20020a0562140d4200b0068f7eeab827mr13563945qvr.46.1708594944200;
+        Thu, 22 Feb 2024 01:42:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708594944; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5vpNIdgaLwoGotHhMzIezPihooDvcojQnvsDyS1y4PyiNDr88rD+t5R8IIh/2CsqT
-         iaVQLTf9tQQuOvE/m+moK6bc72+kGQeve02mlWp9irnLF+/WIlbau1DUB/xFRaB54vEA
-         0XOOaPRd3Hl1v+xO6JB+e6I3qMlcYPG/Hgbv5FrBfJT61J3ankpI7VLjeOMw4FoWY4/y
-         KGnLJvCcwYiBet3IygVFNptIxJjLds0CqQV4JnwX2Re/E/CY1f6QG2DcP5eYP4P7J7mJ
-         PkSnBzmjzqTv259fcxAoQ97ltBtt84c0GwdkBKeJF+ky6dZKjyaExy9dVTq5xoGFTkm0
-         mKsQ==
+        b=Vd/cysr3qaPljWPpU3Sw4J/L5mO6WAyeCdu306ntMgZCncDdLofVPjU2l2z6v7dr+I
+         mvz0GtTYoQiI9MRXRK+IU1/G/GL/EBztzBa37BOoJUaJpMT1CHrFuQu+KLUavXyifN21
+         W9epYPkIvhtu6zvTsWvpAHW96RVsrpM9lY0SzxfY9YKp7/sZ9twoJbvk6OzHJyxOYeXt
+         N3Fs3U+v/RviX5lRjnoSuQObTDteIpG96pd9d9RvCyfhBEG8R+sl9JnAq3W/iqmuH9jX
+         Gx991ZLYkM72YCT1iLJbTsQiwppT4/0fqOWemyhbVfpoBMGYPi+pFs7HFnczKmutq+ka
+         UNxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=e4qQNAmko1syAdAkczkLkHGu8RgoJ/abE2rejXhT/bk=;
-        fh=OEJtowJauWSYbNXimmT2OA95p4z0HFKgueSgbq3tDLI=;
-        b=kWS+JDaL6ifsll/3DqPT7PwqvW+RVONPZjFBbK3K4rzB3V8YGprqkPBwErSJBBIEMi
-         9SiWi8pD2d5IISmzPC/JX9XffyHY+rzUR69820l7TcFS6PThQ/XCkRZXmy/K3/DNZdmD
-         2altLkOpRpOxKlcH37IFgrAwYMeAGpHMq/Jjgh/o0HmideBFdlq4AlbLdYsGtFBsDUOc
-         rlZBeVDszRlI/0c8HXAeXcAynCpWAwOLAYKJTROjSsTqU1IBO1NTaAtIxe8k21yLCrXz
-         mxKsBmCxkjhNzSoTxgRAn84vQOKXvcGO5z3E34XVlnMY1P5jK+n+n0wDPMJs2twgRm78
-         E2gw==;
+        bh=9y6wxunYy5ZXD6otlYevGNUswXAbI3kr++H+Vfzm+jo=;
+        fh=5GYlaMcdPYjrEd7Ilw+YRJxslToJWsDh54Bro/puDqc=;
+        b=lAsUYbYHQDw32QcuZDCAw4Aac6N8IdnS2HBWr0DCosvq0sSLMM3VAPDmDX85cwhV+f
+         gK+gJQb+0+uU9vs5O+C5gFUeOwwsmOeFjryKbLCx527PfqlNMDXRrm45LzkeXxnLQRtG
+         X4k8TlR2q4bxO+lskpCl8Qevyj4vFbsbwg8E1DLd2wrDEuMCWsHGk3SLIn1DfiZLrEw1
+         NtGmb00W4MDZuAKeCLVX+I7hM2umFh8Lnpu38TsCLHfXnRgo2M94SJjF0CO04phjNucs
+         wNdWcjHrLADsj8hLg5l/7GHE+2blxEoKSJCgyGHTxoV5UJrAGTdPBYuNNBQ1B4qrhiZI
+         fI8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=WJFUQ1Sd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=M64bS3hN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pt15-20020a056214048f00b0068efb778ba9si12911967qvb.349.2024.02.22.01.41.17
+        by mx.google.com with ESMTPS id iw12-20020a0562140f2c00b0068c7d55794bsi12726978qvb.135.2024.02.22.01.42.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Feb 2024 01:41:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Feb 2024 01:42:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=WJFUQ1Sd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=M64bS3hN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rd5Zr-0002CB-Ba; Thu, 22 Feb 2024 04:41:15 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rd5am-0003mC-Co; Thu, 22 Feb 2024 04:42:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd5Zq-0002BP-1W; Thu, 22 Feb 2024 04:41:14 -0500
-Received: from mgamail.intel.com ([198.175.65.13])
+ id 1rd5al-0003lg-65; Thu, 22 Feb 2024 04:42:11 -0500
+Received: from mgamail.intel.com ([192.198.163.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rd5Zl-00051A-5r; Thu, 22 Feb 2024 04:41:13 -0500
+ id 1rd5ai-000556-Hs; Thu, 22 Feb 2024 04:42:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708594869; x=1740130869;
+ t=1708594928; x=1740130928;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=//cILPlV8ZtEIE5OOllf2iCg88j8tXpTlvuQ7BDcJRY=;
- b=WJFUQ1SdFjh3Xmnfo/Z6EN3r6AQ5kP+q1hb3zKs2Sfx+BXwZ6ryHJJGB
- 52NOuCbXLlLvZxKT7IB1OmgXjFWRCxyKgnEqbbsUT/r/jO2ADPNk1WP+7
- 7sHaanUhO8J3cvvkmxef8MqawpjYGOYt0u/QMbomQ/yRvQQ3+3UIqk6az
- T5nDKox4vvWhn1pZBSNHLEIXijZgd+9DlVP1l3OzS1P4btQDsXGvWKA6h
- PqLbeNXVdo4umOEdT6lZrzBj9iNchX6npNEFlaTZa/oY6gfM9gBZIqqy0
- pmMcTuOwLlVIgCvDYD4ZZb70IGVLX1hoKv803aH1Yey7SdELNVByCNN4X g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="13936000"
-X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; d="scan'208";a="13936000"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2024 01:41:04 -0800
+ bh=VE+AO8expNQv4N6ileIqZhZJt4t/WBQa7Vz+9zXa078=;
+ b=M64bS3hNblRf0u/HRj3b4vACZaqRP4/vRMO9Y+7GUGNLScvjuNLeH5/p
+ eSq1w2vZyJof2HPO6u0lHMOh9bekrvr69zeX3glsInhnorf43I/OJMwM1
+ tY11AX0Y1BocEPZAFD4rov3vPnKzJbaHjQQBN5qcC35UfyOWPRdY5um2D
+ BSFPVeGqDgSpHkB5E7uIvlciEJiAEZ1SIBqAyxBDtQjDxmBkd/mqeiZuQ
+ 7m5EgX/DH3IB5VZ2Bffjk6F4/K9atKQp6bNIOgsc+uy4RhqH3Ze26BwZY
+ Q75P5H7EkjsDjFzrCE+HSyDZUhAkdpp9nxIp4rx1VSvP1PHnqwy6HYhgv Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10991"; a="14224125"
+X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; d="scan'208";a="14224125"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2024 01:42:03 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,177,1705392000"; 
-   d="scan'208";a="5805540"
+   d="scan'208";a="5379949"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by orviesa006.jf.intel.com with ESMTP; 22 Feb 2024 01:41:02 -0800
-Date: Thu, 22 Feb 2024 17:54:41 +0800
+ by fmviesa009.fm.intel.com with ESMTP; 22 Feb 2024 01:42:01 -0800
+Date: Thu, 22 Feb 2024 17:55:41 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Max Filippov <jcmvbkbc@gmail.com>
-Subject: Re: [PATCH 07/21] target: Replace DEVICE(object_new) -> qdev_new()
-Message-ID: <ZdcZ4TPGX9ZJ0GRL@intel.com>
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>
+Subject: Re: [PATCH 10/21] hw/usb: Inline usb_new()
+Message-ID: <ZdcaHXUFaAN9E+4F@intel.com>
 References: <20240216110313.17039-1-philmd@linaro.org>
- <20240216110313.17039-8-philmd@linaro.org>
+ <20240216110313.17039-11-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240216110313.17039-8-philmd@linaro.org>
-Received-SPF: pass client-ip=198.175.65.13; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240216110313.17039-11-philmd@linaro.org>
+Received-SPF: pass client-ip=192.198.163.10; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -104,64 +102,98 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2k4m74Wl+Hbb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6J45su+gEayS
 
-On Fri, Feb 16, 2024 at 12:02:58PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Fri, 16 Feb 2024 12:02:58 +0100
+On Fri, Feb 16, 2024 at 12:03:01PM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Fri, 16 Feb 2024 12:03:01 +0100
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 07/21] target: Replace DEVICE(object_new) -> qdev_new()
+> Subject: [PATCH 10/21] hw/usb: Inline usb_new()
 > X-Mailer: git-send-email 2.41.0
 > 
-> Prefer QDev API for QDev objects, avoid the underlying QOM layer.
+> Inline the 2 uses of usb_new().
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  target/mips/cpu.c   | 2 +-
->  target/xtensa/cpu.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  include/hw/usb.h    | 1 -
+>  hw/usb/bus.c        | 9 ++-------
+>  hw/usb/dev-serial.c | 2 +-
+>  3 files changed, 3 insertions(+), 9 deletions(-)
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 > 
-> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-> index d644adbc77..6b3909ee08 100644
-> --- a/target/mips/cpu.c
-> +++ b/target/mips/cpu.c
-> @@ -649,7 +649,7 @@ MIPSCPU *mips_cpu_create_with_clock(const char *cpu_type, Clock *cpu_refclk)
+> diff --git a/include/hw/usb.h b/include/hw/usb.h
+> index 32c23a5ca2..2d820685cc 100644
+> --- a/include/hw/usb.h
+> +++ b/include/hw/usb.h
+> @@ -500,7 +500,6 @@ void usb_bus_release(USBBus *bus);
+>  USBBus *usb_bus_find(int busnr);
+>  void usb_legacy_register(const char *typename, const char *usbdevice_name,
+>                           USBDevice *(*usbdevice_init)(void));
+> -USBDevice *usb_new(const char *name);
+>  bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp);
+>  USBDevice *usb_create_simple(USBBus *bus, const char *name);
+>  USBDevice *usbdevice_create(const char *cmdline);
+> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+> index 148224f06a..a599e2552b 100644
+> --- a/hw/usb/bus.c
+> +++ b/hw/usb/bus.c
+> @@ -329,11 +329,6 @@ void usb_legacy_register(const char *typename, const char *usbdevice_name,
+>      }
+>  }
+>  
+> -USBDevice *usb_new(const char *name)
+> -{
+> -    return USB_DEVICE(qdev_new(name));
+> -}
+> -
+>  bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp)
 >  {
->      DeviceState *cpu;
+>      return qdev_realize_and_unref(&dev->qdev, &bus->qbus, errp);
+> @@ -341,7 +336,7 @@ bool usb_realize_and_unref(USBDevice *dev, USBBus *bus, Error **errp)
 >  
-> -    cpu = DEVICE(object_new(cpu_type));
-> +    cpu = qdev_new(cpu_type);
->      qdev_connect_clock_in(cpu, "clk-in", cpu_refclk);
->      qdev_realize(cpu, NULL, &error_abort);
->  
-> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-> index 79f91819df..4f9408e1a0 100644
-> --- a/target/xtensa/cpu.c
-> +++ b/target/xtensa/cpu.c
-> @@ -205,7 +205,7 @@ XtensaCPU *xtensa_cpu_create_with_clock(const char *cpu_type, Clock *cpu_refclk)
+>  USBDevice *usb_create_simple(USBBus *bus, const char *name)
 >  {
->      DeviceState *cpu;
+> -    USBDevice *dev = usb_new(name);
+> +    USBDevice *dev = USB_DEVICE(qdev_new(name));
 >  
-> -    cpu = DEVICE(object_new(cpu_type));
-> +    cpu = qdev_new(cpu_type);
->      qdev_connect_clock_in(cpu, "clk-in", cpu_refclk);
->      qdev_realize(cpu, NULL, &error_abort);
+>      usb_realize_and_unref(dev, bus, &error_abort);
+>      return dev;
+> @@ -693,7 +688,7 @@ USBDevice *usbdevice_create(const char *driver)
+>          return NULL;
+>      }
 >  
+> -    dev = f->usbdevice_init ? f->usbdevice_init() : usb_new(f->name);
+> +    dev = f->usbdevice_init ? f->usbdevice_init() : USB_DEVICE(qdev_new(f->name));
+>      if (!dev) {
+>          error_report("Failed to create USB device '%s'", f->name);
+>          return NULL;
+> diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
+> index 63047d79cf..6e79c46d53 100644
+> --- a/hw/usb/dev-serial.c
+> +++ b/hw/usb/dev-serial.c
+> @@ -624,7 +624,7 @@ static USBDevice *usb_braille_init(void)
+>          return NULL;
+>      }
+>  
+> -    dev = usb_new("usb-braille");
+> +    dev = USB_DEVICE(qdev_new("usb-braille"));
+>      qdev_prop_set_chr(&dev->qdev, "chardev", cdrv);
+>      return dev;
+>  }
 > -- 
 > 2.41.0
 > 

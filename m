@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p11-20020a05600c468b00b004128812dcb6sm2976921wmo.28.2024.02.23.08.22.04
+        by smtp.gmail.com with ESMTPSA id n37-20020a05600c3ba500b004126ca2a1cbsm3014058wms.48.2024.02.23.08.22.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 23 Feb 2024 08:22:06 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 849975F92D;
-	Fri, 23 Feb 2024 16:22:03 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id E3BAD5F929;
+	Fri, 23 Feb 2024 16:22:02 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Song Gao <gaosong@loongson.cn>,
@@ -44,251 +44,230 @@ Cc: Song Gao <gaosong@loongson.cn>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Michael Rolnik <mrolnik@gmail.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 10/27] gdbstub: Infer number of core registers from XML
-Date: Fri, 23 Feb 2024 16:21:45 +0000
-Message-Id: <20240223162202.1936541-11-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/27] target/riscv: Use GDBFeature for dynamic XML
+Date: Fri, 23 Feb 2024 16:21:40 +0000
+Message-Id: <20240223162202.1936541-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240223162202.1936541-1-alex.bennee@linaro.org>
 References: <20240223162202.1936541-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: M//vSvDKIgne
+X-TUID: lxFgiSwaVbXZ
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-GDBFeature has the num_regs member so use it where applicable to
-remove magic numbers.
+In preparation for a change to use GDBFeature as a parameter of
+gdb_register_coprocessor(), convert the internal representation of
+dynamic feature from plain XML to GDBFeature.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-34-alex.bennee@linaro.org>
-Message-Id: <20231213-gdb-v17-8-777047380591@daynix.com>
-[AJB: remove core reg check from microblaze read reg]
+Message-Id: <20240103173349.398526-29-alex.bennee@linaro.org>
+Message-Id: <20231213-gdb-v17-3-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/core/cpu.h       | 3 ++-
- target/s390x/cpu.h          | 2 --
- gdbstub/gdbstub.c           | 5 ++++-
- target/arm/cpu.c            | 1 -
- target/arm/cpu64.c          | 1 -
- target/avr/cpu.c            | 1 -
- target/hexagon/cpu.c        | 1 -
- target/i386/cpu.c           | 2 --
- target/loongarch/cpu.c      | 2 --
- target/m68k/cpu.c           | 1 -
- target/microblaze/cpu.c     | 1 -
- target/microblaze/gdbstub.c | 5 -----
- target/riscv/cpu.c          | 1 -
- target/rx/cpu.c             | 1 -
- target/s390x/cpu.c          | 1 -
- 15 files changed, 6 insertions(+), 22 deletions(-)
+ target/riscv/cpu.h     |  5 +--
+ target/riscv/cpu.c     |  4 +--
+ target/riscv/gdbstub.c | 81 +++++++++++++++++++-----------------------
+ 3 files changed, 41 insertions(+), 49 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 4385ce54c99..1bbf21b2201 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -126,7 +126,8 @@ struct SysemuCPUOps;
-  * @gdb_adjust_breakpoint: Callback for adjusting the address of a
-  *       breakpoint.  Used by AVR to handle a gdb mis-feature with
-  *       its Harvard architecture split code and data.
-- * @gdb_num_core_regs: Number of core registers accessible to GDB.
-+ * @gdb_num_core_regs: Number of core registers accessible to GDB or 0 to infer
-+ *                     from @gdb_core_xml_file.
-  * @gdb_core_xml_file: File name for core registers GDB XML description.
-  * @gdb_stop_before_watchpoint: Indicates whether GDB expects the CPU to stop
-  *           before the insn which triggers a watchpoint rather than after it.
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index d37a49b4d92..43a46a5a068 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -491,8 +491,6 @@ static inline void cpu_get_tb_cpu_state(CPUS390XState *env, vaddr *pc,
- #define S390_R13_REGNUM 15
- #define S390_R14_REGNUM 16
- #define S390_R15_REGNUM 17
--/* Total Core Registers. */
--#define S390_NUM_CORE_REGS 18
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index f52dce78baa..5d291a70925 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -24,6 +24,7 @@
+ #include "hw/registerfields.h"
+ #include "hw/qdev-properties.h"
+ #include "exec/cpu-defs.h"
++#include "exec/gdbstub.h"
+ #include "qemu/cpu-float.h"
+ #include "qom/object.h"
+ #include "qemu/int128.h"
+@@ -445,8 +446,8 @@ struct ArchCPU {
  
- static inline void setcc(S390CPU *cpu, uint64_t cc)
- {
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index d573f808d2e..f766ee277a0 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -546,9 +546,12 @@ void gdb_init_cpu(CPUState *cpu)
-         gdb_register_feature(cpu, 0,
-                              cc->gdb_read_register, cc->gdb_write_register,
-                              feature);
-+        cpu->gdb_num_regs = cpu->gdb_num_g_regs = feature->num_regs;
-     }
+     CPURISCVState env;
  
--    cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
-+    if (cc->gdb_num_core_regs) {
-+        cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
-+    }
- }
+-    char *dyn_csr_xml;
+-    char *dyn_vreg_xml;
++    GDBFeature dyn_csr_feature;
++    GDBFeature dyn_vreg_feature;
  
- void gdb_register_coprocessor(CPUState *cpu,
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5fa86bc8d55..84887084d95 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2515,7 +2515,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
--    cc->gdb_num_core_regs = 26;
-     cc->gdb_arch_name = arm_gdb_arch_name;
-     cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 8e30a7993ea..869d8dd24ee 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -793,7 +793,6 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
- 
-     cc->gdb_read_register = aarch64_cpu_gdb_read_register;
-     cc->gdb_write_register = aarch64_cpu_gdb_write_register;
--    cc->gdb_num_core_regs = 34;
-     cc->gdb_core_xml_file = "aarch64-core.xml";
-     cc->gdb_arch_name = aarch64_gdb_arch_name;
- 
-diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-index a40f445af21..a50170bc69a 100644
---- a/target/avr/cpu.c
-+++ b/target/avr/cpu.c
-@@ -251,7 +251,6 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_read_register = avr_cpu_gdb_read_register;
-     cc->gdb_write_register = avr_cpu_gdb_write_register;
-     cc->gdb_adjust_breakpoint = avr_cpu_gdb_adjust_breakpoint;
--    cc->gdb_num_core_regs = 35;
-     cc->gdb_core_xml_file = "avr-cpu.xml";
-     cc->tcg_ops = &avr_tcg_ops;
- }
-diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-index ebe804e2931..a10d87b8220 100644
---- a/target/hexagon/cpu.c
-+++ b/target/hexagon/cpu.c
-@@ -362,7 +362,6 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
-     cc->get_pc = hexagon_cpu_get_pc;
-     cc->gdb_read_register = hexagon_gdb_read_register;
-     cc->gdb_write_register = hexagon_gdb_write_register;
--    cc->gdb_num_core_regs = TOTAL_PER_THREAD_REGS;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->gdb_core_xml_file = "hexagon-core.xml";
-     cc->disas_set_info = hexagon_cpu_disas_set_info;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index bca776e1fe9..f0ccad3bf98 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7981,10 +7981,8 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->gdb_arch_name = x86_gdb_arch_name;
- #ifdef TARGET_X86_64
-     cc->gdb_core_xml_file = "i386-64bit.xml";
--    cc->gdb_num_core_regs = 66;
- #else
-     cc->gdb_core_xml_file = "i386-32bit.xml";
--    cc->gdb_num_core_regs = 50;
- #endif
-     cc->disas_set_info = x86_disas_set_info;
- 
-diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-index 7dc50bf35fc..bc2684179f2 100644
---- a/target/loongarch/cpu.c
-+++ b/target/loongarch/cpu.c
-@@ -815,7 +815,6 @@ static void loongarch32_cpu_class_init(ObjectClass *c, void *data)
- {
-     CPUClass *cc = CPU_CLASS(c);
- 
--    cc->gdb_num_core_regs = 35;
-     cc->gdb_core_xml_file = "loongarch-base32.xml";
-     cc->gdb_arch_name = loongarch32_gdb_arch_name;
- }
-@@ -829,7 +828,6 @@ static void loongarch64_cpu_class_init(ObjectClass *c, void *data)
- {
-     CPUClass *cc = CPU_CLASS(c);
- 
--    cc->gdb_num_core_regs = 35;
-     cc->gdb_core_xml_file = "loongarch-base64.xml";
-     cc->gdb_arch_name = loongarch64_gdb_arch_name;
- }
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index 8a8392e6945..e228a0b18b2 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -568,7 +568,6 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
- #endif
-     cc->disas_set_info = m68k_cpu_disas_set_info;
- 
--    cc->gdb_num_core_regs = 18;
-     cc->tcg_ops = &m68k_tcg_ops;
- }
- 
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index 2c62cf048c2..e533e7a95ec 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -444,7 +444,6 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &mb_sysemu_ops;
- #endif
-     device_class_set_props(dc, mb_properties);
--    cc->gdb_num_core_regs = 32 + 25;
-     cc->gdb_core_xml_file = "microblaze-core.xml";
- 
-     cc->disas_set_info = mb_disas_set_info;
-diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
-index 6ffc5ad0752..eb168d10070 100644
---- a/target/microblaze/gdbstub.c
-+++ b/target/microblaze/gdbstub.c
-@@ -49,14 +49,9 @@ enum {
- int mb_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
--    CPUClass *cc = CPU_GET_CLASS(cs);
-     CPUMBState *env = &cpu->env;
-     uint32_t val;
- 
--    if (n > cc->gdb_num_core_regs) {
--        return 0;
--    }
--
-     switch (n) {
-     case 1 ... 31:
-         val = env->regs[n];
+     /* Configuration Settings */
+     RISCVCPUConfig cfg;
 diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 1b62e269b90..dd8a0e94897 100644
+index 1b8d001d237..1b62e269b90 100644
 --- a/target/riscv/cpu.c
 +++ b/target/riscv/cpu.c
-@@ -2352,7 +2352,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_pc = riscv_cpu_get_pc;
-     cc->gdb_read_register = riscv_cpu_gdb_read_register;
-     cc->gdb_write_register = riscv_cpu_gdb_write_register;
--    cc->gdb_num_core_regs = 33;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = riscv_cpu_disas_set_info;
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-index 5205167da17..2f878d08d6d 100644
---- a/target/rx/cpu.c
-+++ b/target/rx/cpu.c
-@@ -221,7 +221,6 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
-     cc->gdb_write_register = rx_cpu_gdb_write_register;
-     cc->disas_set_info = rx_cpu_disas_set_info;
+@@ -2305,9 +2305,9 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     RISCVCPU *cpu = RISCV_CPU(cs);
  
--    cc->gdb_num_core_regs = 26;
-     cc->gdb_core_xml_file = "rx-core.xml";
-     cc->tcg_ops = &rx_tcg_ops;
+     if (strcmp(xmlname, "riscv-csr.xml") == 0) {
+-        return cpu->dyn_csr_xml;
++        return cpu->dyn_csr_feature.xml;
+     } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
+-        return cpu->dyn_vreg_xml;
++        return cpu->dyn_vreg_feature.xml;
+     }
+ 
+     return NULL;
+diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
+index ca9b71f7bbc..d8da84fa52e 100644
+--- a/target/riscv/gdbstub.c
++++ b/target/riscv/gdbstub.c
+@@ -214,14 +214,15 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
+     return 0;
  }
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 49a2341accf..f7194534aeb 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -368,7 +368,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     s390_cpu_class_init_sysemu(cc);
- #endif
-     cc->disas_set_info = s390_cpu_disas_set_info;
--    cc->gdb_num_core_regs = S390_NUM_CORE_REGS;
-     cc->gdb_core_xml_file = "s390x-core64.xml";
-     cc->gdb_arch_name = s390_gdb_arch_name;
  
+-static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
++static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+-    GString *s = g_string_new(NULL);
++    GDBFeatureBuilder builder;
+     riscv_csr_predicate_fn predicate;
+     int bitsize = riscv_cpu_max_xlen(mcc);
++    const char *name;
+     int i;
+ 
+ #if !defined(CONFIG_USER_ONLY)
+@@ -233,9 +234,9 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         bitsize = 64;
+     }
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.csr\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_csr_feature,
++                             "org.gnu.gdb.riscv.csr", "riscv-csr.xml",
++                             base_reg);
+ 
+     for (i = 0; i < CSR_TABLE_SIZE; i++) {
+         if (env->priv_ver < csr_ops[i].min_priv_ver) {
+@@ -243,72 +244,64 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         }
+         predicate = csr_ops[i].predicate;
+         if (predicate && (predicate(env, i) == RISCV_EXCP_NONE)) {
+-            if (csr_ops[i].name) {
+-                g_string_append_printf(s, "<reg name=\"%s\"", csr_ops[i].name);
+-            } else {
+-                g_string_append_printf(s, "<reg name=\"csr%03x\"", i);
++            g_autofree char *dynamic_name = NULL;
++            name = csr_ops[i].name;
++            if (!name) {
++                dynamic_name = g_strdup_printf("csr%03x", i);
++                name = dynamic_name;
+             }
+-            g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+-            g_string_append_printf(s, " regnum=\"%d\"/>", base_reg + i);
++
++            gdb_feature_builder_append_reg(&builder, name, bitsize, i,
++                                           "int", NULL);
+         }
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
+-
+-    cpu->dyn_csr_xml = g_string_free(s, false);
++    gdb_feature_builder_end(&builder);
+ 
+ #if !defined(CONFIG_USER_ONLY)
+     env->debugger = false;
+ #endif
+ 
+-    return CSR_TABLE_SIZE;
++    return &cpu->dyn_csr_feature;
+ }
+ 
+-static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
++static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    g_autoptr(GString) ts = g_string_new("");
+-    int reg_width = cpu->cfg.vlenb << 3;
+-    int num_regs = 0;
++    int reg_width = cpu->cfg.vlenb;
++    GDBFeatureBuilder builder;
+     int i;
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.vector\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_vreg_feature,
++                             "org.gnu.gdb.riscv.vector", "riscv-vector.xml",
++                             base_reg);
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+         int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "%s", vec_lanes[i].id);
+-        g_string_append_printf(s,
+-                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+-                               ts->str, vec_lanes[i].gdb_type, count);
++        gdb_feature_builder_append_tag(
++            &builder, "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
++            vec_lanes[i].id, vec_lanes[i].gdb_type, count);
+     }
+ 
+     /* Define unions */
+-    g_string_append_printf(s, "<union id=\"riscv_vector\">");
++    gdb_feature_builder_append_tag(&builder, "<union id=\"riscv_vector\">");
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"%s\"/>",
+-                               vec_lanes[i].suffix,
+-                               vec_lanes[i].id);
++        gdb_feature_builder_append_tag(&builder,
++                                       "<field name=\"%c\" type=\"%s\"/>",
++                                       vec_lanes[i].suffix, vec_lanes[i].id);
+     }
+-    g_string_append(s, "</union>");
++    gdb_feature_builder_append_tag(&builder, "</union>");
+ 
+     /* Define vector registers */
+     for (i = 0; i < 32; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"v%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" group=\"vector\""
+-                               " type=\"riscv_vector\"/>",
+-                               i, reg_width, base_reg++);
+-        num_regs++;
++        gdb_feature_builder_append_reg(&builder, g_strdup_printf("v%d", i),
++                                       reg_width, i, "riscv_vector", "vector");
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
++    gdb_feature_builder_end(&builder);
+ 
+-    cpu->dyn_vreg_xml = g_string_free(s, false);
+-    return num_regs;
++    return &cpu->dyn_vreg_feature;
+ }
+ 
+ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+@@ -324,10 +317,9 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+                                  32, "riscv-32bit-fpu.xml", 0);
+     }
+     if (env->misa_ext & RVV) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_vector,
+                                  riscv_gdb_set_vector,
+-                                 ricsv_gen_dynamic_vector_xml(cs, base_reg),
++                                 ricsv_gen_dynamic_vector_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-vector.xml", 0);
+     }
+     switch (mcc->misa_mxl_max) {
+@@ -347,9 +339,8 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+     }
+ 
+     if (cpu->cfg.ext_zicsr) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_csr, riscv_gdb_set_csr,
+-                                 riscv_gen_dynamic_csr_xml(cs, base_reg),
++                                 riscv_gen_dynamic_csr_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-csr.xml", 0);
+     }
+ }
 -- 
 2.39.2

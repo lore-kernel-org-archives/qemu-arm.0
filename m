@@ -1,165 +1,198 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp725038ejf;
-        Fri, 23 Feb 2024 10:01:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUbX1sFFCTUp22ZBKYZ2NEmIaptF/mzvhI4lypOM8b7/Qmziek9rAAbZeF85a803EStpOrWVPqdnJhCH1Vs6JtTB1sx11xJ
-X-Google-Smtp-Source: AGHT+IFdHJM26Zixieffi6W3jBpb8VINyqklijMH3ivc9uBaI7dSeLUgdDHe1KecmUA3VCvvganM
-X-Received: by 2002:a05:620a:22f3:b0:787:9e72:fdb9 with SMTP id p19-20020a05620a22f300b007879e72fdb9mr541460qki.68.1708711308614;
-        Fri, 23 Feb 2024 10:01:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708711308; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp766162ejf;
+        Fri, 23 Feb 2024 11:18:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEb0PAnHKGOhgOUKYWEDL7i+E6Y2c2iu+4VsRbxn1+vzhWG6ZMQzb/zajrBw7Ng9fcSCqox
+X-Received: by 2002:a81:ae06:0:b0:608:c5ca:ccba with SMTP id m6-20020a81ae06000000b00608c5caccbamr753046ywh.42.1708715884033;
+        Fri, 23 Feb 2024 11:18:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708715884; cv=none;
         d=google.com; s=arc-20160816;
-        b=BvriTvDURGBzKGhFgmiTyZhmjERJBfNiDlxLVujayVp87KWnc25eF50CNvOvlJBD4e
-         v0QWDu8sg/iL96CDycS7JR2CBpMq0WUKIOsz8/sna8VcIOFHbT3sfidpyysokfc8Cl43
-         N0FxrpnTFJjGg8td0HBZiAzUvmn9A1xYofMAGxPxHlf0F1febkdw4vEKIglT3cFCOgc8
-         +qT0TITenstpAuYdGT9I1N42JC1x3ebt5KgJdALd7kfeeJOPo/HRRg21BLaKEQ/6+G+8
-         rlYrerEeCKYqPJh3aW8Pnb+J0hfYQEKZDFRW/udUGIGvBI35yl1giOpYN0hq0SinvCvb
-         7grA==
+        b=NZgEIMQi2zFdKkoSzaiDhQUK0WMGXr6ESRUzAa7rHqFguzbB02UKlYIfQTh7oFa/Ml
+         Rt8cYwqXGNoH6vt6SN/uYTm1R5oDfFUC2ILUdjOh7Iq8g6CREcefuSsDofjUGkgpXBaF
+         mvOBFVJQdealJqqXKDJ9YPSDHe9U7xalluoRyNjmVKz0JrCufCdV0hZMeC9l+wa5FWOC
+         uGGDEQ15c7kYF6uRGAphDreUDmHFc3V9paafVQygyjbywMRmQN9X0rS+x0oTI58sEq8l
+         pvJwwFhIHSmXr/N7OPnRjibn7vkACwdJWw3Gx8qm+BG0bpoA/Slnf8FDBZGHbOd6iaN1
+         nCIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Dc0dCMziFbBR5ys92M7RMKGPfrVHJeCpcr0ldbOMoew=;
-        fh=/nWUipsP9lTVle34uI+a6+utL/QXw41AIeDIDM6rXMQ=;
-        b=q+yWRkzYzwlRgpjPdd+yUdlzAulze77qxBMAYi+b9dYb9ntoGwK/Dub/Je65IKeySW
-         8KLsPJXCYXa573EgfucRXUbCoisRpjTUn5ZZvjtUgBZbMWfhZPcTudGFWXOw2cuwHZEs
-         DzXCWtFftjvdI6La5qsfbKFXwP68yDzCyqyk8F1ORneNH2coTe+DkRckFULK+shXTTzs
-         SDfk+XtfZ0dUZwn/VhG8ymgTrq6a7PrVpI4sKkPyyOUukYyEbrK/5LXFyqsn9m7zfgsR
-         wcB2ZVPjuUolsOlGN4sZoPzBQZkMgqDbLrUcba5xitKfVyJjMyD7/vrKbljHI8rNwi37
-         i7qg==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=itQAUMMOZcJtxJNZcr/T1fsAp5e++SkYNEcWquRoLuQ=;
+        fh=aa7KqWuBBkG0uohUf8uotd2UoQqKUNCpu8IcHCdvQdY=;
+        b=O11Lck0Hg7FS8JKHd4KIz7rnQb3NvqF+v4sxV1eBuaVz3P5E3DLdDiy0IGjZDNzXg7
+         nBZ1H6Ip5SM23J0O2tT46IkSEtEOP+o1wzUSGyRjZxigC2vOkvrHS1UMY1rDL7fL8goo
+         sk4bM9f1tk5RANIHO+H3fwSSeU/PH+qGvwdnRQwEbktU1yiswIgAIlap+xQCHs4qrxxh
+         LN+xPiZlHIGX+lIaFh+S9YMfzAkOP7xt8DTMIFZMQV0GyAp1GrqzfVfeZD5Z45vJVGhj
+         LSdvKu1TY6YhmHRKsaioesNfzLyYAgGOxXD4Pw2fgcGEGUygFzfgMWXz7E7tiK8g4djx
+         Bu8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RqzkwfcO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x7-20020a05620a448700b007879b91f029si4595428qkp.497.2024.02.23.10.01.48
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSEoaacl;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id s17-20020a05622a179100b0042dacda1996si17273520qtk.579.2024.02.23.11.18.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 10:01:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Feb 2024 11:18:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RqzkwfcO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdZrL-0001RH-Ua; Fri, 23 Feb 2024 13:01:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZis-0002ig-4H
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 12:52:34 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZip-0005mT-DZ
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 12:52:33 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-41241f64c6bso8682535e9.0
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 09:52:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708710749; x=1709315549; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Dc0dCMziFbBR5ys92M7RMKGPfrVHJeCpcr0ldbOMoew=;
- b=RqzkwfcOoFaUSjGgynYmxS0OFI/tbU05RbmelXtJ00/2YzOFA57w54DGhINX4CHDrN
- 8bzdFBDHndApvfbFTcisf1UWlwIqctU94yIAFjPt6qe8mbs8c9jZkRqk81saRbZQlwld
- zidQL/W96Fr+O4GK2CbOffqInJGj+jd0X8sd/EGga0g8mxFm0s/3+aUaaXNUKicVSo8l
- +mEJy3Bso8xw1y3Qssx/7bAcZIAZkIADueVDhcu7Q/amwNUydlVKU1BqUC9ZK1PA4+z3
- E1ujH/kmfHrsUKwg/i0hZIxQNvobbgazDmgIFSXA8WayyqKOI6yFrg4sjEHrYRFEs4u8
- zbAg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSEoaacl;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1708715883;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=itQAUMMOZcJtxJNZcr/T1fsAp5e++SkYNEcWquRoLuQ=;
+	b=FSEoaacl5O5d4xwrtmI/jtiROUE1t+zCu8fYSR8mJX5cpG7S3DGB8rQ7hQuUw5fBEpl2xI
+	WFhb+jsLDTznfzmOe9bbvBiTChmVnlLG/5q3zVsnxPcdbQiMZ1m7YRtkJsqfkjeWw295iK
+	fJQ5a57bbI2ZSYGOML1aVvDc0cxgIck=
+Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
+ [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-9-CMvP9ziNObqjayiwy1bHog-1; Fri, 23 Feb 2024 14:18:00 -0500
+X-MC-Unique: CMvP9ziNObqjayiwy1bHog-1
+Received: by mail-lj1-f200.google.com with SMTP id 38308e7fff4ca-2d22e2f9a0cso5561371fa.3
+        for <alex.bennee@linaro.org>; Fri, 23 Feb 2024 11:18:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708710749; x=1709315549;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Dc0dCMziFbBR5ys92M7RMKGPfrVHJeCpcr0ldbOMoew=;
- b=EortHp3oCAFi4QggPmfNfWLSAU/CbaYKTNGkEmVei65K5Gg2iSJMn7ZKhZsSrUBVVC
- Nnl2pQat3MpHQv+1yoJp5str4rvcxMJn7I4W22009HpoZPfGyLsAQrGftdX2STix91rB
- HcBTJWyIS22h76a2ftg6jPxHqH8RtZAxaPNAbum4lctoH+CUGFuzFZZljQzkabdmSsSB
- uJXgv5RyltXc93AL1+SiMZqUHoGVZUIDbaXJcmh3tbcCt68ZKPJcpSaZ7eiK3m+3e0Ve
- FvQ0O4tQm6DpacIfKF+Dg8BHH/8QAVhYv4+TPlBRWk3FoN5meI7glmELRNv9NfK7YEZn
- 2tGw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVq+UqgnfzKHaIYuwFhPP7NyCNXPz3D0sBsgGbzjd3NqqVKdV7ft/mIzaJMYF2bbUQO1zVeXiiKnhJbTKsnAfkSrGgs
-X-Gm-Message-State: AOJu0Yypj+9nSNT4CZFaKCcb1y+i+kH87+BNfQXH/P15BbuALI55zseZ
- TikGcjVRuqdrrGW8m2d7if1pwuyp70Hj4pKfmXNgVkiCej1mzWUSdlo1dN2pRGA=
-X-Received: by 2002:a05:600c:548a:b0:412:84d0:6a71 with SMTP id
- iv10-20020a05600c548a00b0041284d06a71mr382393wmb.18.1708710749234; 
- Fri, 23 Feb 2024 09:52:29 -0800 (PST)
-Received: from [192.168.69.100] (xbn44-h02-176-184-35-109.dsl.sta.abo.bbox.fr.
- [176.184.35.109]) by smtp.gmail.com with ESMTPSA id
- fm23-20020a05600c0c1700b00412952d3cc6sm2858181wmb.7.2024.02.23.09.52.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 09:52:28 -0800 (PST)
-Message-ID: <26daecfd-4216-4a70-a680-22fe69b42f9b@linaro.org>
-Date: Fri, 23 Feb 2024 18:52:26 +0100
+        d=1e100.net; s=20230601; t=1708715879; x=1709320679;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=itQAUMMOZcJtxJNZcr/T1fsAp5e++SkYNEcWquRoLuQ=;
+        b=VcK4kQThcqJGKrb16ieR1t3sYYuJgKtld2ACkI2Edknf9VO6D06ca9fgH6oDb4H3oj
+         9XQBcCviYkLr0Q8ggdqEGf/sDNv2uZ0LxTsZyMoD5vpUW8r/meTdcQsfyAV5k6rIGaGM
+         Ni+sRbbSM/e0Y8MrMLUYRSsuQF1vd63POlQJjkKoAR+Y58FqJqEn5ybGWIY+METbo8gn
+         Q8NT2s29WeqaaH0NLvCxSl8OhTcgwufpx541bRgEWaWkmLilJjOSl4nP73210NSA/qP9
+         QqhhI1rDtFeOHqtJikMu4R5eDVacIerEKqXbg2UDRO1ahTGKGCQ0iTG07Ny1M16PglQm
+         /KGg==
+X-Gm-Message-State: AOJu0YzCtxp3jWoTXjaRH0kFawbYz7mLAGBv13lOGQiUAV8piS+i7eUg
+	7wQ7+WZ1a7eC3fJCDbu0Uf2L7905vnUY6mQbw7swnlHU2bB51YZ7Z5lWmBBt25bswXYV3OViQPv
+	azboJkcLig4xAKMt03jETPhk29f3DdQEPL+CiATJsupIa10izCM9ng3uhIkKuHHh4Mwe4p9YbPd
+	POiR0nnRO+ZywTIe/oE+gM/dYrEL7guUnUyQ==
+X-Received: by 2002:a2e:9003:0:b0:2d2:5275:b40d with SMTP id h3-20020a2e9003000000b002d25275b40dmr49965ljg.31.1708715878840;
+        Fri, 23 Feb 2024 11:17:58 -0800 (PST)
+X-Received: by 2002:a2e:9003:0:b0:2d2:5275:b40d with SMTP id h3-20020a2e9003000000b002d25275b40dmr49918ljg.31.1708715878409;
+        Fri, 23 Feb 2024 11:17:58 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.9] (ip-109-43-176-215.web.vodafone.de. [109.43.176.215])
+        by smtp.gmail.com with ESMTPSA id jl20-20020a05600c6a9400b004126101915esm3320007wmb.4.2024.02.23.11.17.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Feb 2024 11:17:57 -0800 (PST)
+Message-ID: <aed34f97-f2d9-4e4a-bfbe-9e90e1f96037@redhat.com>
+Date: Fri, 23 Feb 2024 20:17:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 7/7] hw/intc: Check @errp to handle the error of
- IOAPICCommonClass.realize()
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>,
- Laurent Vivier <laurent@vivier.eu>, Alistair Francis
- <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
+Subject: Re: [PATCH v2 02/27] tests/tcg: bump TCG test timeout to 120s
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ David Hildenbrand <david@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Cleber Rosa <crosa@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <20240223085653.1255438-8-zhao1.liu@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240223085653.1255438-8-zhao1.liu@linux.intel.com>
+ Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, John Snow <jsnow@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>, Alistair Francis
+ <alistair.francis@wdc.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Michael Rolnik <mrolnik@gmail.com>
+References: <20240223162202.1936541-1-alex.bennee@linaro.org>
+ <20240223162202.1936541-3-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240223162202.1936541-3-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D+MN/Y7ojsyU
+X-TUID: if7QteY/E8SU
 
-On 23/2/24 09:56, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
+On 23/02/2024 17.21, Alex Bennée wrote:
+> This is less than ideal but easier than making sure we get all the
+> iterations of the memory test. Update the comment accordingly.
 > 
-> IOAPICCommonClass implements its own private realize(), and this private
-> realize() allows error.
-> 
-> Since IOAPICCommonClass.realize() returns void, to check the error,
-> dereference @errp with ERRP_GUARD().
-> 
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
-> v2:
->   * Add the missing ERRP_GUARD(). (Markus)
->   * Move this single patch into @errp fixing series. (Micheal)
-> ---
->   hw/intc/ioapic_common.c | 4 ++++
->   1 file changed, 4 insertions(+)
+>   tests/tcg/Makefile.target | 9 +++------
+>   1 file changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+> index 8cf65f68dd8..a4c25908fb7 100644
+> --- a/tests/tcg/Makefile.target
+> +++ b/tests/tcg/Makefile.target
+> @@ -93,12 +93,9 @@ QEMU_OPTS=
+>   
+>   
+>   # If TCG debugging, or TCI is enabled things are a lot slower
+> -# ??? Makefile no longer has any indication that TCI is enabled,
+> -# but for the record:
+> -#   15s    original default
+> -#   60s    with --enable-debug
+> -#   90s    with --enable-tcg-interpreter
+> -TIMEOUT=90
+> +# so we have to set our timeout for that. The current worst case
+> +# offender is the system memory test running under TCI.
+> +TIMEOUT=120
+>   
+>   ifeq ($(filter %-softmmu, $(TARGET)),)
+>   # The order we include is important. We include multiarch first and
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

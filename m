@@ -1,108 +1,116 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp433782ejf;
-        Fri, 23 Feb 2024 00:43:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUWWu0+kYjXDxDLCorRXW7QxRv5zCynDg1O0b0Z7d9ebB4EcDyxnBSBRjbmf5TcGb3pZVwpDpFflQu6q8gpe7ol/oE2STyB
-X-Google-Smtp-Source: AGHT+IGTb6JLFepzVPjstLlJqjOBkOQFAmYl/AnVGm/Gr9GNzunRiURTEh564B/Mt6KCDtxXYe9F
-X-Received: by 2002:a81:6c56:0:b0:608:aecb:1a66 with SMTP id h83-20020a816c56000000b00608aecb1a66mr1440582ywc.20.1708677835003;
-        Fri, 23 Feb 2024 00:43:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708677834; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp458837ejf;
+        Fri, 23 Feb 2024 01:54:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWU4lvVEtNNa1Vij+9rsY2XPHlg3dj2x8rOkCjdLScnhUnQYraLPUykk3fcWFu76QsHEcTSgEdTBQ1FrrpDpolYK8EvNSrk
+X-Google-Smtp-Source: AGHT+IEj1TbBebb6ZEfGQZJn2yJJspE8CVMChH8+lumc6A7U92CeIrF/O7NZJF+oxBbnawRZ8QWH
+X-Received: by 2002:a25:1846:0:b0:dcc:1449:71ea with SMTP id 67-20020a251846000000b00dcc144971eamr1491123yby.50.1708682097462;
+        Fri, 23 Feb 2024 01:54:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708682097; cv=none;
         d=google.com; s=arc-20160816;
-        b=TgIG/ynCfVUSFhWm8PmQi+bHRms0vM/DG2PwxOBqrbo3bNc67tFKi4xT2N3i4fHRp3
-         BE727pLlt21Jb9IiRmHLC3dhY9OEsCY5bd4bAeyH+QYv5PTXWlc9P/KKfQm6B8UMuGaq
-         rOv3XN54kPbWyjay4uNP6/F7y4CqG/WumghxIpBLTP9W1zGGo9MwrDwdoZZSxlvSkbmT
-         psyzpXcOGrqPudyZBkPPN1A+fse2VBNMD7jE6NDBZJPW8Ps6HgLM+XiLjipn5+Qwhgv0
-         YXGQRfsrVhfUSLEbHBEWtwmm5zydPNv8MZ5Am+S7pzW0rBHpDK3o9MSnRySYfDdepwn7
-         9PKw==
+        b=MfW8JLnbIUtQ67tJO5Eq3Fw35lhAOYTAcHFT54sBA4F4Lgikwb2nmeW9n3qTZpoagO
+         NU5oSzbAl4YHSrYdAxuJ91/3mu2/cQUqF3CsRoFRnPaETVLpDxcwRIYBr7bkLRoa3est
+         bIZaLz1sI+1xs/MG39s4YK6if+zvVDZQEUm6OyR3JtrseDwnQdZpTsJ0G5Si4kZDf8hS
+         Eo/FLQBenJHWH0ditp7hOf77w0NdRrxGjQxk+YqAh2/6n+0svTPiBaMSaWyeyVF09M/E
+         ikUn8XRm74bpDX1Kj0Xd00RD3k4afUcINoAdHJGJrsIEXMf9lw9SigWLn796DXhG4DQt
+         /ECg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lEEZ930gZR/bS8GQaMHCqUW9Wbif3rAt9f1RCwnLWY8=;
-        fh=sHfxWuxL10Um/OtTTHeE8w8S6jWQrkWHHuDkXWsOwTg=;
-        b=VKlm9jjrJaihBD7pw15YJ3Z0KZLYyuQ1gFJmJh81LXiXR3OAmogdN4QslZdmCMLLD1
-         3uooLtg9hX2hgwPMZz4Lm546VJxttF76bFBm0xew5zJgx+hn2qHmHdvttWRuhZKGihao
-         Et/2mYogiLaShg9eRjoXHojW6N5i0nWkD2Qk3/U/j5zPFyA/GmNXwio8pabzaTFKbdtz
-         19nbuZvF/HkXgjjMZaxYxuRlpdlxXN6VNE95IB5ovFkxCJnaZfRRFSnxnJd7hbR5hxbm
-         mKME8qn/zcIXR5dX6JU583fw/5fLprGgIi4mdET8AVBM+j/ZEcNhron/hWDcMqisWxYc
-         SxYg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=UfSa1JIPQDgOPcjSwttNa4K0v5842px0GxwssmihDe0=;
+        fh=s/7rU05GOkNzFqUzkfujwtN2mdjJftdkFqYIuxcB5X0=;
+        b=WGKCSD5PJMPF0YaNtZDNB+8PP+JZ++FAYrIeGcU0Pv5XhqaW16wGr/D6Vp7jEsgwXc
+         wrCNXpoHCzCJQ47IL5YJE0UuXx49kAOmp/3rSflCjmcxs4OyTbnJnrfWrvTUyNKdEZYZ
+         lWMEG+vbIT1zt5BEgxaZfbgKEKCR60nTrGwejXZgt9B48W7cP6FY8FtphAap4jFU1OcX
+         zvqeZuxvrWH+txnq4C6X9wd1tEriZYbjgl4FJHZtr913+PhRJhCoYsPMzb4Wua7HHEtT
+         MaE2JNyS781C8aTUJmaFCHt3hk7PxbGsI2ZUQaejiH6rZXggXD0G35yxAYW8YgtgDvzm
+         avrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=eu1nVhwa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MH3MMRpP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15-20020a05622a000f00b0042c0509f5e9si15841097qtw.324.2024.02.23.00.43.54
+        by mx.google.com with ESMTPS id t22-20020a05622a149600b0042e67bf0ee1si250634qtx.650.2024.02.23.01.54.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 00:43:54 -0800 (PST)
+        Fri, 23 Feb 2024 01:54:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=eu1nVhwa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MH3MMRpP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdR9X-0003FH-7j; Fri, 23 Feb 2024 03:43:31 -0500
+	id 1rdSGT-0007X8-EU; Fri, 23 Feb 2024 04:54:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdR9V-0003Ew-U2; Fri, 23 Feb 2024 03:43:29 -0500
-Received: from mgamail.intel.com ([192.198.163.7])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdR9T-000050-Lr; Fri, 23 Feb 2024 03:43:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708677808; x=1740213808;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=GxcEpKUJhcD8tp/cNKnafhshJBtXmwMwR7V4Pnc77B4=;
- b=eu1nVhwa2mO53YNnul35/Zfwk21St744Aig2WH2n36BgXSdfyJkcWcsj
- cgnODusfgyFQXT4LwJW284cEQL4RoOtR17jgdKykRjLt41i+zW01GgEkz
- RHxItTR9roAHvaXTZuD6ioghMgGCdy8ws09sFqBJkwrUYgkWZ1jjharFm
- vLqmB4p1uTP1uJGLEkUQN706htr+ivG2mDS3syZBVLgQVebZ4fdx/hK84
- Y83V8G0vvXycyAEPP2HCPNLt/6Bmgbz2akl8mDdU7tQrsloboMuRophgS
- Y2TUlDEhKBgdWCW9Mgv2GVQhVZD7IBj3U8M6fjCHrICeg+Mwu3LgMw5e6 A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="28413789"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="28413789"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2024 00:43:23 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="5731723"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa007.fm.intel.com with ESMTP; 23 Feb 2024 00:43:19 -0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 0/7] Cleanup and fix @errp dereference
-Date: Fri, 23 Feb 2024 16:56:46 +0800
-Message-Id: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rdSGQ-0007Wb-B1
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 04:54:42 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rdSGA-0003WZ-Hi
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 04:54:42 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-563c0f13cabso200747a12.3
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 01:54:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708682053; x=1709286853; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UfSa1JIPQDgOPcjSwttNa4K0v5842px0GxwssmihDe0=;
+ b=MH3MMRpPGwqcco/7TDFd3x3XD8wGgv0hxE7hXJxxkQn7OSv73Kfl16SV0Jm/dYb9gc
+ FKW0KnrYtN0+hEpb19ejJVxAnCy09Bk3BYneB3MJK+KwYbL5kVDY6cwZB5tbl6J475o0
+ cSoft3Xwqw37U//ceXuw5Uhgf/AIVbWrEuj9PJv786VkFFPOL0xpmnW/wss9g08nh3RP
+ OlPvQN4lM37CTbvmdLSWo9HJZciGPnEqJyBrlwwH2Ana3UCRYnkdoSrV91IDbG1tsCvy
+ sE76q+gkAmspJ4q2FuzgU8LySdUBLUtLHXXzIGsoFw+XTJzrztQrzbh8B/tSrtpzfarn
+ jeDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708682053; x=1709286853;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UfSa1JIPQDgOPcjSwttNa4K0v5842px0GxwssmihDe0=;
+ b=fy6Mm+ugJEsvYszlWIW5C2L4R6X5UfQeoRyrkMHNZh5PXsY9WimVp9rEV/UrqIMeGW
+ tDKNQwDcDazhTy/EmNn4uc/5yvQle/CbvbpshlUdZsblhi+HAEBcRcjuzVdOYcKIzHlP
+ WMPoF9nn1DbgAGDNTGl/X/O6DftIAJYILFacri5w5pzr9W8qppOCJHLwQWRKgLxbGj+a
+ 49LwG+5h1IEMBN2aPxWDxb34PCiif8BHfkjEPElnerS/xFW+cavxgueIf5qB10tPeJk4
+ roh7mvyU1yoGeoH9qui8BNmkaLXGEuUvv7UXnAxT1SPya45I4TcUk717TD09YXxJB0kO
+ DEag==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU9Pdd7Y8ceUlCjdBL0bC8JuUVlrcjalMsjoLI2h1YvhuNYAGu2MEOK1w7ZMMgsEQjkXftw+jRaUMf3AcT+CMWRLU9C
+X-Gm-Message-State: AOJu0Yzp+q+yHgAzjgkK0Ke6e/YpCHDzJgAy6Qe4D3O4sA87LMDhIyNX
+ qT3TojrbCpM8BCAvLKR+SmfYX/6uW3gMb73nN6kmgZkDguAApAUfzeVW1IrVc/+X44bnU/2IHNC
+ VUq0aIGqIJWBeGGxApBupJjVdMAel+Dd4WBQ9L4sYambhbnHp
+X-Received: by 2002:aa7:c990:0:b0:564:e278:60d2 with SMTP id
+ c16-20020aa7c990000000b00564e27860d2mr856753edt.2.1708682053226; Fri, 23 Feb
+ 2024 01:54:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=192.198.163.7;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
+ <CAFEAcA-Wir3M7dVV5247uMPxCtrYs8j4Z3S7nucCx3Ha8pA1dg@mail.gmail.com>
+ <caf1110f9e9445cab3aa00ebab24d263@auriga.com>
+In-Reply-To: <caf1110f9e9445cab3aa00ebab24d263@auriga.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Feb 2024 09:54:02 +0000
+Message-ID: <CAFEAcA8uDn6v+6jTDY_wbSmcFq=5Rao8LB=ce_RU8GCtuHzq+g@mail.gmail.com>
+Subject: Re: [PATCH v5 00/41] Raspberry Pi 4B machine
+To: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+Cc: Sergey Kambalin <serg.oker@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.002,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,71 +125,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5rnb1fdYNbPq
+X-TUID: 3O2Pho1TL8VO
 
-From: Zhao Liu <zhao1.liu@intel.com>
+On Thu, 22 Feb 2024 at 18:15, Kambalin, Sergey
+<sergey.kambalin@auriga.com> wrote:
+>
+> Hi Peter!
+>
+> Sorry, it wasn't intentional.
+>
+> How can I keep the tags from v4?
 
-Hi all,
+If I reply with a 'Reviewed-by:' tag on a patch, and you
+don't make major changes for the next version, copy that
+tag into the commit message so it appears there under
+your 'Signed-off-by:' tag when you post a subsequent
+version of the patchset.
 
-This is my v2 series to clean and fix @errp dereference.
-
-Introduction
-============
-
-The patches 1-6 fix the cases that deference @errp without
-ERRP_GUARD(), and they are based on my previsous v1 [1].
-
-The patch 7 is merged in this series from another single patch [2].
-
-Based on v1, v2 mainly add more description about problematic codes to
-make review easier (with Markus' suggestion) and avoid dereferencing
-@errp in patch 3's special case.
-
-
-Future Work
-===========
-
-Additionally, I realized that my journey to fix @errp with ERRP_GUARD()
-is still not over, because @errp's second restriction said:
-
-* Without ERRP_GUARD(), use of the @errp parameter is restricted:
-...
-* - It should not be passed to error_prepend() or
-*   error_append_hint(), because that doesn't work with &error_fatal.
-* ERRP_GUARD() lifts these restrictions.
-
-With this restrication, there're still many places need to add missing
-ERRP_GUARD().
-
-[1]: https://lore.kernel.org/qemu-devel/20240221094317.994454-1-zhao1.liu@linux.intel.com/
-[2]: https://lore.kernel.org/qemu-devel/20240221073948.768828-1-zhao1.liu@linux.intel.com/
-
-Thanks and Best Regards,
-Zhao
-
----
-Zhao Liu (7):
-  hw/cxl/cxl-host: Fix missing ERRP_GUARD() in
-    cxl_fixed_memory_window_config()
-  hw/display/macfb: Fix missing ERRP_GUARD() in macfb_nubus_realize()
-  hw/mem/cxl_type3: Fix missing ERRP_GUARD() in ct3_realize()
-  hw/misc/xlnx-versal-trng: Check returned bool in
-    trng_prop_fault_event_set()
-  hw/pci-bridge/cxl_upstream: Fix missing ERRP_GUARD() in
-    cxl_usp_realize()
-  hw/vfio/iommufd: Fix missing ERRP_GUARD() in iommufd_cdev_getfd()
-  hw/intc: Check @errp to handle the error of
-    IOAPICCommonClass.realize()
-
- hw/cxl/cxl-host.c            | 1 +
- hw/display/macfb.c           | 1 +
- hw/intc/ioapic_common.c      | 4 ++++
- hw/mem/cxl_type3.c           | 1 +
- hw/misc/xlnx-versal-trng.c   | 3 +--
- hw/pci-bridge/cxl_upstream.c | 1 +
- hw/vfio/iommufd.c            | 1 +
- 7 files changed, 10 insertions(+), 2 deletions(-)
-
--- 
-2.34.1
-
+thanks
+-- PMM

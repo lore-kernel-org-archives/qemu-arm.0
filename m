@@ -1,234 +1,191 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp432106ejf;
-        Fri, 23 Feb 2024 00:38:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXC9RENRVuhYEJICuV5Wh2MUsWnihWBthmbhufjk2kkCjFXTtcbg4H5+oQglrmwvHtxS0ZgQzR+r0D19MUhrMRv/ic/IxXT
-X-Google-Smtp-Source: AGHT+IECFoPHb2dRNyLBD2THgWvXq8NI3+PI/VsgbmjmMUZMnMlMtjibvCgJ2VwJENUjTpeXbh7I
-X-Received: by 2002:a05:620a:2689:b0:787:1cc5:949c with SMTP id c9-20020a05620a268900b007871cc5949cmr1581294qkp.72.1708677514639;
-        Fri, 23 Feb 2024 00:38:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708677514; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp433763ejf;
+        Fri, 23 Feb 2024 00:43:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXa7fiYRfXXXzh32/hJky4mG1+cBIOB9zAT1TMaUn1P4A41ScNszPQxWEXBEtGjJ7OjTsGlhCkMV5ZCVDcxGYS8b7tMWiA3
+X-Google-Smtp-Source: AGHT+IHBA5i5vXce6tdSGKdlbIufeIWfdBRWw6BGSNCPkzGrEMpy5D+J/ony4OSzfHTPUV7LJeS3
+X-Received: by 2002:a05:622a:40e:b0:42d:dab2:c283 with SMTP id n14-20020a05622a040e00b0042ddab2c283mr1765864qtx.39.1708677831934;
+        Fri, 23 Feb 2024 00:43:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708677831; cv=none;
         d=google.com; s=arc-20160816;
-        b=HLpw9uuyyFv1PAQJKcU+RKTKv/EVysX0pPfco5H0QCmctcjVXmw7pLhQ6f2vAOLn99
-         4214J2z6Vax1GQBx+GX0IWsKVSiuFdek7sDHigbMGt7MAFKZN6OnB5JM90qdTDYSV+YP
-         uf6lcdQKqdJaefn8I7xA+BqjXFK7wyvGtqyXi4/quYd94cwNkv6KrCQY838InAKocNHE
-         NzNQkxnIK3cP5/PF03yZWl6Agq58N7srUFOCmwGMTXPycmJ4DL3gBns/xE0UFJgHiYXD
-         F2TirSqrTiItXtbUhv29zYQuKX4zADDNbeutkp0pCAoWTlXAgedEK5DU26lSwXQ0KJlK
-         4z4g==
+        b=qpgxXzB9yxGXASX3fmt67VeZf77dD8hE4hO4YOE28JNJoXfQ89XrSwTUGb1afbIdmR
+         4bh3iPKxFs4CGLsH0P7oaUSt/rNJD0sOYmhqvxjTSPmgG7MtgihFsbxPl7sZliBEfkqe
+         D4MkeT14rIAn+8ICVVzLNKWBfNUBTDiwPjqDPL/ygVv3XyL/st39oqPDdXowd35tDcJx
+         1jfSKYvuAqD2uT2FrXP2MBET16cJKHkWPFP9VriP9b+A1kLmyAw1LExGSCsGILQNw+jD
+         hhgZOXAVgrYOybjrDPEp2x+2oInosNflXUBViITfwe7xYddrsyXv3m/M2vMut/FRGRSx
+         qUJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BmzESXaHkihpPVFRXL/jKinH8c8bgeSFI8rWJ5sEJbg=;
-        fh=KV25oPkj7lt6YmHcCIISiSUCOIsE5ywJ1dLsFTPXTzc=;
-        b=Ub64oKY5ZEK9VNzYIwVPlL6DwI0lYHNMoSoCYeJ7cU6LLQCibazGbRUkW5gZlWOWF3
-         8l8hpMy1rs8O76z7ohE6/yvHCQN4RIuqJjpMhP5AxspGoqYVHCbEaYpKEDoiIe0mBf39
-         FPyycUQempW7c7dc1pPsAtBeE8iQCY4nBGOWRR6CE4WIOFVTnPpBJo7yg7NYj+RhN3Fj
-         XL/II145lMb8tT/LkZqpEwF2ptlTdDt+EJkH21Tg6yT5KVxbzhIL+LpnX0j0G8MZuti7
-         KOefujf22O06wwq5x+S2TSACRaAQkjV8CNA6o6VYrLyN8zQ71LZcdnUNaperZcGXzgIT
-         VY2g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=1YNSjsjEdYRwkJtJvO7Pa+gTfATl+wQ1290TPC4JqB0=;
+        fh=sHfxWuxL10Um/OtTTHeE8w8S6jWQrkWHHuDkXWsOwTg=;
+        b=zC+J9B/A63t2DPpdBXSWs1dHlVCHnAwHbt2pW/7kMprCe7mFi1zbgXTcCCuGwPb5v6
+         aDt5R1sDxJ23w6zrmteTa9acNjkeXQQ85PT7/c19l8OaiDwuSG9pfKhQwtUjgRXjN0Vx
+         Pksp5Z97Fz9t3HwBGJZBCvBtYOl0Mr0GGKaGt7UYNATWqIeUpTpcXT6jjkKMOeJcfvDY
+         bPY3izxZ2UWrJ/KIuBs5IbFNPq28zrnOUKt9+ptC1GzH5J5qy+/uSxrWJ/94k+YdM8N+
+         W1AnCECRMishj6AuePvsCHFk4LHSZUAzQlF9TqsBmuEJKTZGu3P5oA2T3lXz3ZRLYJzS
+         vljg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RAXgyDKj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=SRjkvBZ1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z13-20020ae9e60d000000b0078735b271afsi15107796qkf.135.2024.02.23.00.38.34
+        by mx.google.com with ESMTPS id ju1-20020a05622aa04100b0042cfd3cd456si13952945qtb.332.2024.02.23.00.43.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 00:38:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Feb 2024 00:43:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RAXgyDKj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=SRjkvBZ1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rdR4b-0006bX-NF; Fri, 23 Feb 2024 03:38:25 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdR9j-0003Lp-V0; Fri, 23 Feb 2024 03:43:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rdR4Z-0006YQ-O3
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 03:38:23 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rdR9i-0003K6-K5; Fri, 23 Feb 2024 03:43:42 -0500
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rdR4Y-0007hp-5w
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 03:38:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708677501;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BmzESXaHkihpPVFRXL/jKinH8c8bgeSFI8rWJ5sEJbg=;
- b=RAXgyDKjpJtV8t774kYdufhROmjU4wxxy8BmytlnfqUWqo6oJ1PyaA0089THqFhnRNG9lt
- 2Pnf1TIk2BY02WIZBiXV8uTB9HPFBHoj6ye9UXk03p/6+vHCFPAG132KmYeD9BgAETmEZ/
- lOKc6tQoua/qzEQOerUqcYlCz4IYOt0=
-Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
- [209.85.128.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-539-LH8d4SQqOtW7JxZULjN41g-1; Fri, 23 Feb 2024 03:38:19 -0500
-X-MC-Unique: LH8d4SQqOtW7JxZULjN41g-1
-Received: by mail-yw1-f200.google.com with SMTP id
- 00721157ae682-608a1a2723cso10141037b3.0
- for <qemu-devel@nongnu.org>; Fri, 23 Feb 2024 00:38:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708677499; x=1709282299;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BmzESXaHkihpPVFRXL/jKinH8c8bgeSFI8rWJ5sEJbg=;
- b=L65uz/Y54iYaL8LNxwpUY8Ga+5O1/8jjKivzGtUdAOSH/H/A1BuT1iUbP2KAmBzE0J
- nbIycxyavPsMxVoDax8WtxM8aQKEgOXYDF1Fc6psMdqGDvyrM2sqU9zKwmBDjs0DYpnM
- 8U0RwaddIiiD1I47aM25VDMfmII0fmwgRrrF/KeZkwdCnfsc7aGb8sKx3SlUnWp3bLVP
- AOqGbOf1ihD0r7/sb3qQB+wJd1oBgOzuWdFVqKxyC6QAZOshiXoYpQ5rWD9jYdPzsTF6
- jQUIAIAdjj0PvKc+ZZJgNJgnZQyXGjOmO2x+ywLILBQQtV8c2NQDuQoVp4NggaLx4TKk
- oW5A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXX2ZBXrlSYsFiqo6PV4OfjujGDmNDEo19BzCe8qUlAUUsWXggzIG0gIckqr2KP68i2pAJKR9UCeBRYpsf64Ymz8Y84XEs=
-X-Gm-Message-State: AOJu0YxXLBsIXSrzqYnp84+ykEd5w/mg8PipGP5bptqHQipmscv/NuKV
- FXNdHuOCwcaSuJdtH5tGut4uAX6vtOn93m7SKmYIDdDI4ZNvAA1Yvmb0xFY6ZMAoIqHMFnEVhw/
- jdlM+od0ownVtsYoWXGIJ5pUjJpVusgSxFppcE3PJKYCDPXqJE64U
-X-Received: by 2002:a81:b71e:0:b0:607:6ad3:8746 with SMTP id
- v30-20020a81b71e000000b006076ad38746mr1426838ywh.46.1708677498869; 
- Fri, 23 Feb 2024 00:38:18 -0800 (PST)
-X-Received: by 2002:a81:b71e:0:b0:607:6ad3:8746 with SMTP id
- v30-20020a81b71e000000b006076ad38746mr1426818ywh.46.1708677498211; 
- Fri, 23 Feb 2024 00:38:18 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- p20-20020a05622a049400b0042c6ec8247bsm6174121qtx.94.2024.02.23.00.38.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 00:38:17 -0800 (PST)
-Message-ID: <c12ba73f-5eeb-47b7-bd16-cf686f13d108@redhat.com>
-Date: Fri, 23 Feb 2024 09:38:13 +0100
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rdR9g-00006f-VD; Fri, 23 Feb 2024 03:43:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708677821; x=1740213821;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=7QWx7fmzjgK24CK+pej4cEHInJmThr5dADvX24YS+7Q=;
+ b=SRjkvBZ1KSXYHA/6xy45UcNOt96PUwxErF6URpeys7x8Ie4hKsCcsP+c
+ ar40p/o9YQPPddQ/G6QIT1xgYUJsh2sAmewIOfEqE4rzLGPtIQBChu0e1
+ jadgASs2gp5skH+iMh3FvzTZDs9lG2VWN5w6NE3y5gz7k72anzvikNtYw
+ 1e7Fx34tCxUhCA3pId6GoItqtZL5/Zj8u3efNbrRPmZxxXFACIRASpnMw
+ /EDSur5NUu8bVp32lsUEf/Ft2T91J1hZ3KoDLpBefKOEurdQwuGnIzJHJ
+ rOf4uKpiPVn37GzW0K0e/CLcFoF/H148nJZqGNP3iKj/0xymPEvvCDz84 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="28413855"
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="28413855"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2024 00:43:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
+   d="scan'208";a="5731812"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+ by fmviesa007.fm.intel.com with ESMTP; 23 Feb 2024 00:43:35 -0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v2 4/7] hw/misc/xlnx-versal-trng: Check returned bool in
+ trng_prop_fault_event_set()
+Date: Fri, 23 Feb 2024 16:56:50 +0800
+Message-Id: <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
+References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/3] virtio-iommu: Change the default granule to the
- host page size
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- mst@redhat.com, jean-philippe@linaro.org, peter.maydell@linaro.org,
- clg@redhat.com, yanghliu@redhat.com,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: alex.williamson@redhat.com, zhenzhong.duan@intel.com,
- jasowang@redhat.com, pbonzini@redhat.com, berrange@redhat.com
-References: <20240223074459.63422-1-eric.auger@redhat.com>
- <20240223074459.63422-4-eric.auger@redhat.com>
- <bdab51cf-fca8-4fe7-9e47-31bd10259dfa@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <bdab51cf-fca8-4fe7-9e47-31bd10259dfa@linaro.org>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: none client-ip=192.198.163.7;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.002,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.002,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: giFFhzVO1Xn5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DU5OYhh9LnIg
 
+From: Zhao Liu <zhao1.liu@intel.com>
 
+As the comment in qapi/error, dereferencing @errp requires
+ERRP_GUARD():
 
-On 2/23/24 09:08, Philippe Mathieu-Daudé wrote:
-> Hi Eric,
->
-> On 23/2/24 08:27, Eric Auger wrote:
->> We used to set the default granule to 4KB but with VFIO assignment
->> it makes more sense to use the actual host page size.
->>
->> Indeed when hotplugging a VFIO device protected by a virtio-iommu
->> on a 64kB/64kB host/guest config, we current get a qemu crash:
->>
->> "vfio: DMA mapping failed, unable to continue"
->>
->> This is due to the hot-attached VFIO device calling
->> memory_region_iommu_set_page_size_mask() with 64kB granule
->> whereas the virtio-iommu granule was already frozen to 4KB on
->> machine init done.
->>
->> Set the granule property to "host" and introduce a new compat.
->>
->> Note that the new default will prevent 4kB guest on 64kB host
->> because the granule will be set to 64kB which would be larger
->> than the guest page size. In that situation, the virtio-iommu
->> driver fails on viommu_domain_finalise() with
->> "granule 0x10000 larger than system page size 0x1000".
->>
->> In that case the workaround is to request 4K granule.
->>
->> The current limitation of global granule in the virtio-iommu
->> should be removed and turned into per domain granule. But
->> until we get this upgraded, this new default is probably
->> better because I don't think anyone is currently interested in
->> running a 4KB page size guest with virtio-iommu on a 64KB host.
->> However supporting 64kB guest on 64kB host with virtio-iommu and
->> VFIO looks a more important feature.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   hw/core/machine.c        | 1 +
->>   hw/virtio/virtio-iommu.c | 2 +-
->>   2 files changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/core/machine.c b/hw/core/machine.c
->> index 70ac96954c..38851df4b8 100644
->> --- a/hw/core/machine.c
->> +++ b/hw/core/machine.c
->> @@ -35,6 +35,7 @@
->>     GlobalProperty hw_compat_8_2[] = {
->>       { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
->> +    { TYPE_VIRTIO_IOMMU_PCI, "granule", "4K" },
->
-> IIUC the current value is qemu_target_page_mask(), not 4KiB.
-> Could this be an issue for arm / mips / mips / sparc64 guests?
-The virtio-iommu currently is only supported on ARM and x86 where
-qemu_target_page_mask() corresponds to a 4K granule. So I don't think it
-makes any issue.
+* = Why, when and how to use ERRP_GUARD() =
+*
+* Without ERRP_GUARD(), use of the @errp parameter is restricted:
+* - It must not be dereferenced, because it may be null.
+...
+* ERRP_GUARD() lifts these restrictions.
+*
+* To use ERRP_GUARD(), add it right at the beginning of the function.
+* @errp can then be used without worrying about the argument being
+* NULL or &error_fatal.
+*
+* Using it when it's not needed is safe, but please avoid cluttering
+* the source with useless code.
 
-Thanks
+But in trng_prop_fault_event_set, @errp is dereferenced without
+ERRP_GUARD():
 
-Eric
->
->>   };
->>   const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
->>   diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index 0461b87ef2..e9e44a8ad8 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -1558,7 +1558,7 @@ static Property virtio_iommu_properties[] = {
->>       DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
->>       DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 0),
->>       DEFINE_PROP_GRANULE_MODE("granule", VirtIOIOMMU, granule_mode,
->> -                             GRANULE_MODE_4K),
->> +                             GRANULE_MODE_HOST),
->>       DEFINE_PROP_END_OF_LIST(),
->>   };
->>   
->
+visit_type_uint32(v, name, events, errp);
+if (*errp) {
+    return;
+}
+
+Currently, since trng_prop_fault_event_set() doesn't get the NULL @errp
+parameter as a "set" method of object property, it hasn't triggered the
+bug that dereferencing the NULL @errp.
+
+And since visit_type_uint32() returns bool, check the returned bool
+directly instead of dereferencing @errp, then we needn't the add missing
+ERRP_GUARD().
+
+Suggested-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+---
+Suggested by credit:
+ Markus: Referred his explanation about ERRP_GUARD().
+---
+v2:
+ * Add the @errp dereference code in commit message to make review
+   easier. (Markus)
+ * Check the returned bool instead of dereferencing @errp. (Markus)
+---
+ hw/misc/xlnx-versal-trng.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+index b8111b8b6626..6495188dc748 100644
+--- a/hw/misc/xlnx-versal-trng.c
++++ b/hw/misc/xlnx-versal-trng.c
+@@ -644,8 +644,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
+     Property *prop = opaque;
+     uint32_t *events = object_field_prop_ptr(obj, prop);
+ 
+-    visit_type_uint32(v, name, events, errp);
+-    if (*errp) {
++    if (!visit_type_uint32(v, name, events, errp)) {
+         return;
+     }
+ 
+-- 
+2.34.1
 

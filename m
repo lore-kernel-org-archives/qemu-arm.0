@@ -1,101 +1,102 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp617235ejf;
-        Fri, 23 Feb 2024 07:07:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXgYQ9ksBaWs8XE+R3d8UFCL0jpm2ZCpocdHJeUpjbDDBvDWm0zpJH2g98ht11rK4Ehft2j6QqjXKUQ5noh/sClGFR8d1cL
-X-Google-Smtp-Source: AGHT+IEDH7OkLUyfYUyiVOa/EIBvvxFK1SCjZ1Sjiw6zQXCdt6KPE6e3GqNs56LE+84CyA8qaBpx
-X-Received: by 2002:a05:6214:21ac:b0:68f:89da:a42f with SMTP id t12-20020a05621421ac00b0068f89daa42fmr70828qvc.19.1708700847709;
-        Fri, 23 Feb 2024 07:07:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708700847; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp626816ejf;
+        Fri, 23 Feb 2024 07:20:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWA6eUNPv0D7Y+179iQ+F4SLOOF1JQ6Ov8UH3yX9LdnVgtmU1unCcjnUzzkioeKQlGZwglZ5hjTytSNcYOOd/s7OIK+RD2c
+X-Google-Smtp-Source: AGHT+IGJ4Id8icbZ96BdgFOw9ZqqOvvgdSNNgctsyDrS+E1dDpuuY6dJse/E31i+vH0KM9zdsMDL
+X-Received: by 2002:a05:6830:20c3:b0:6e4:81c2:a794 with SMTP id z3-20020a05683020c300b006e481c2a794mr128258otq.12.1708701648988;
+        Fri, 23 Feb 2024 07:20:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708701648; cv=none;
         d=google.com; s=arc-20160816;
-        b=FljRZO7DtGzkL4gFdTjeKly7WJZVlqKCjlUzHzIgkBjRAX9Ky0DV9sPaU7mv1cbwMA
-         x56QYRf11JOHh31UgJAphZaKMpv6LUzo+2oAX4r55rFcdjvOlsKO6C8eA4dJ5JbkqYBf
-         AIe90wVI0mIwf2iBqxM+TZ0Uwft+fQjYBrYnNrljgczMZpfQFnj2Aj1ji+snu8IlZNxG
-         PF2D1RJIF9CXMUMl0ClfnaORB1iXc4QNAm4Z2eLbISQTZJxBEl9UeSByJV0Y1gXAbFnt
-         TNiiSToeGhyOccvzRVpB8Q0+01ZeRz6UFfhopRcjYhwu2OhN5NixSp2W3ZzS4F4dwmGv
-         1AAg==
+        b=LizviKxuxHRdt6o9169bLWXKVXS+rRzzjLVizOIpdKK2s9HLREyjGML+l91u1Yv0Wk
+         sah88C8TDKulDFak/Wk+a2nxVMr7S37wKr6Hn5Y+c8/DNqcaIci762/J5ZBggTRaKcXM
+         03mu4BSNBQBQ+Nz4dlOHZni6KLzfbBlTZYS4V37i7T7cG1t1iuMIgWQwO0DumSAZr3gm
+         CvuJcm3bo7SybGBN/lnjf8CWT2kzfk4+FPaOCDM69i+n7NnDbBi4xFT+/DW22Oyesu6V
+         TLwsCyj9h50fHUF+cmUWXKnB6UweN76kJ5YTMtLtaU4XcLbjCkCioSguPmdIENmeCbUG
+         /u9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=YhchQYK3xHNaMo+pI6y4G3x/L4qt4KFgd4CPdCCxneo=;
-        fh=+0x0gu1Eao4bPgId98k30a3lx+6k3khZyNS2m5oZ404=;
-        b=NUF5cPjahiVC8u8q8G7CT3iB/e4t9rNG9OahML2FmUr9v00JCi2oGtHyq8pBdFOt3U
-         1Z4TeQSvzn3ircrtANmzmNsQHFfc+c/8k4fVDO7MbXwQ3O/jJXe8AJ1nD04rp3fxo8yt
-         mMNT+AO8zZ61YQPzvjT5TwUP/nXYCslYhq5gadMqlZI9RQlECDKFXIV9TFWkX4Q9EkGu
-         tMmhoRgiaoHaQFDTTA68VCPEMj0s18QuKPg57eo9KMQP0xeS0+P9An1+3Yn2mlE9JmlI
-         Hw7M5gUq0cJy5/PK9BxynsMRuD7A8Glc4+vHRktHcVBxpX1nocH6iNk1UZgMhA38hWan
-         RAqQ==;
+        bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
+        fh=P2qEowBANoz7W3TASvgjWQ3Kpno1ihvvDShSbjIoRU8=;
+        b=OJWrq2YjC0T0wUFJgOfdqTy27qBK2hDxTAe2AFxbGCmA9TCKVlyL7sdaHPOcYj2Hub
+         /iEDHYvZKVbZdL6O1OtvXMhV9YRt86yEuZOwnRQR2OmoA26coai0mleSNPHofNc/cOJV
+         eplYns3d4xDnZGd4h24x0pvbyPiVD8zvF8DW58+bFrrjdjGuFKx94ltmN032nyqJI0f3
+         anL5h9Zw5gTpbypXwNFlRCMRfDAbzmSex4uwUG2Q7gXGrO5lgcidli5LOYJ/X3eYbJlr
+         b1tbPQUDGHJ8m4QShKLgg1Uu+HjaGMRYgKLQuUkiovqYUqLHr0DUFvcNdZsU0Uf0RQ0m
+         /tXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dK2KRFdB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Qoe//JRj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv4-20020a056214240400b0068f3deec538si16137770qvb.254.2024.02.23.07.07.27
+        by mx.google.com with ESMTPS id ee16-20020a05620a801000b00787510a3df2si15348128qkb.384.2024.02.23.07.20.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 07:07:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Feb 2024 07:20:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dK2KRFdB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Qoe//JRj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rdX89-0002Pi-OE; Fri, 23 Feb 2024 10:06:29 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdXLu-0002R0-RG; Fri, 23 Feb 2024 10:20:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdX1D-0004Tf-Gg
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 09:59:19 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1rdX9Y-0003yr-Pn
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:07:57 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdX19-000789-RD
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 09:59:18 -0500
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-563b7b3e3ecso1167348a12.0
- for <qemu-devel@nongnu.org>; Fri, 23 Feb 2024 06:59:15 -0800 (PST)
+ id 1rdX9X-00008y-Ah
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:07:56 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-5640fef9fa6so1194993a12.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 07:07:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708700354; x=1709305154; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708700872; x=1709305672; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YhchQYK3xHNaMo+pI6y4G3x/L4qt4KFgd4CPdCCxneo=;
- b=dK2KRFdBLHo5vuGIVaBi9vijbfPNjO/GrFBffUEqjuQHxj75rtfGtrGWPWStlzcO+e
- s/mTvyImMset+71UiOpO0a/UGkOan0PwUFvtiNfyzoyFCe9DClt4cH5FZj57ULeLVJbr
- ISMvok6XRxi8zbYXVUp5xeO0JhzgH3fMVChrhTYUbLMlCgtFxMXSIaPHFujwkx4a7d/4
- INbXksuejfuOMgvV2uE8ieRT/N+u+qW58ZDzCrgOevi+QZt8XAth2mz9RGKVMlIqnXVW
- Fuy59xwBzT9s2Q1XAXeGrESDHR2/EPLl47VsHmk1sv27gOOLu39pz7BSXMIkAs9hfNba
- Ughw==
+ bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
+ b=Qoe//JRjwV6wk5fUAyiqD5ayaZDoLHEec8lq43e+5yBAWlAIewzhP6a7KAYcyo4HvZ
+ oz8Xq3P7LPzV7WA2MPrThZHWsNw6JV+S0sSkeX2C5xx2MpOHvwYJHX7agWTsZKB6CubE
+ MN93nM1G1tQOHsubpcmAYhu1eeLaqiJ+3hqW3Cx0JTQ2Igt0IjLq7/Z4/l36snT+Y74r
+ zGy5IYX28UQx1QVRrQw8vttgdVQVHsy5kNbYsJ+Y7ITCH0Ud/Sh5j+ysCwVeEZN2WSOK
+ XS+GdqDo303qqz/acaR8E7xIRqVtwW0yDSDbyRMKBtrp/B9KiodS4LtmXeGKPTQOeXy5
+ CEkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708700354; x=1709305154;
+ d=1e100.net; s=20230601; t=1708700872; x=1709305672;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YhchQYK3xHNaMo+pI6y4G3x/L4qt4KFgd4CPdCCxneo=;
- b=aeOTBblMuG+62GowHvEJen/7NEVPyUcjOK+651VNUy6wKtuNZZxP7V3ZTVcv4+5nZQ
- ImcBM8T33k4zpjUlKNO6904ElSgpEe6k0asame7xinMX4LY+t+AI5ZyrMSnrVAJNHsOB
- JXgLWildYiIJ+wR3q3I+aXkcwHRCgcjhT7i/E9SUsHTwNJvQj6MOCPcSQbDCOBazN3Dj
- +pRyWq3R/H9uTT5hx78IrfsRClSSL0+qJ7Wx74CojXVu2M/hlnfA07wuYDPPGl9RbwBe
- xbPWWr3elEHRRmx2fZe3gJ+8a1uZ+rnVRsBE99IEcsGVoyY8T0TxKJiFcsgmriUUNUXx
- HqtA==
-X-Gm-Message-State: AOJu0Yzxj/XZIAfmOZLY8qE+TlArZWQ5/BclCpguK0IGBzQwhWbtBtzy
- JOfIfGeiIZet7oBnvYw7fExnBERpnkahkNXKaAWSkwIc/ruAF/4NWc7NHHQ7bgXT9vWBi+FaybO
- Ces8I7JJXALdjCuh8fsv6GXGwECvv+A1qLQi2CYz9LajE/LTc
-X-Received: by 2002:aa7:d297:0:b0:563:ccd1:26bd with SMTP id
- w23-20020aa7d297000000b00563ccd126bdmr54907edq.2.1708700353897; Fri, 23 Feb
- 2024 06:59:13 -0800 (PST)
+ bh=oIv1Gk06z9tD/JisRcZsFGEjcZYehPqjDSC/Xnt5HDE=;
+ b=YEr5hs+lvVDoTbUctm8wLggMlde8/qf03tsvGpQgnwgRWyRosY4Pa4wbVkR8A9M9v4
+ fwCaBrk0lX/wIbY6D9gm5j4s9f1K12JM+VMmmCvSdnH3zrGDuWNEVPW/NlSW0HnZwsq4
+ YWvTBV1AJfJF0KEzO4V4rRbul/j8dhxF2ArW/aY8wKf9wBmdfK3LJPTLC4E+rMDaE23S
+ 8ZUI+JK1EvyFcnjcrfbCeuwidgOewxTWr5uCS9gvySy+Mb1B24tCNVzCBkqplX+Hi2hD
+ b7v3rwdogC6sWUI0Hg/BPNfV+EsYu2OBzf3d1fgBLtoHLRWzMBJv8oCn3PO8kvlldnsv
+ Fx2Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUY1NPlUse3eXmlRHW29W/U2qy/PzpsTfCF1M0qxS1M0hABiJHSb9Y2zt9h+q9i73B+Nv6EYexfvA34kDzkcfsf8v7b
+X-Gm-Message-State: AOJu0YxWXfmNtKS1qdQfz6/jO5/CEI+tC+J4duzsDhqK0HrUiQ/t9Itw
+ RCqk5Ikcwtc4p9xl+W7sPyj7d3kcUuesQsP7GTxwx4N6HO5ryOxGPo+JtnsMHfuzMTYnoH1fXZR
+ iD6mA7BGxWV9nbN02dLg4NlgVRagCTpeqxywPpg==
+X-Received: by 2002:aa7:d912:0:b0:565:6c31:9a47 with SMTP id
+ a18-20020aa7d912000000b005656c319a47mr88048edr.39.1708700872202; Fri, 23 Feb
+ 2024 07:07:52 -0800 (PST)
 MIME-Version: 1.0
 References: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
- <20240219200908.49551-7-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240219200908.49551-7-arnaud.minier@telecom-paris.fr>
+In-Reply-To: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2024 14:59:03 +0000
-Message-ID: <CAFEAcA_B=soMv78uDsDv-F5-0XQWDXfUr-i0iTUJHr0=VHmvkA@mail.gmail.com>
-Subject: Re: [PATCH v5 6/8] Add write protections to CR register
+Date: Fri, 23 Feb 2024 15:07:40 +0000
+Message-ID: <CAFEAcA9Lhw3KLEKwra86JskDrNgvi8N91efTH1aZO=YTHUknAA@mail.gmail.com>
+Subject: Re: [PATCH v5 0/8] Add device STM32L4x5 RCC
 To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
  Laurent Vivier <lvivier@redhat.com>,
@@ -104,129 +105,63 @@ Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T97mVX7aEsJb
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NZHIktiYuk71
 
-On Mon, 19 Feb 2024 at 20:16, Arnaud Minier
+On Mon, 19 Feb 2024 at 20:09, Arnaud Minier
 <arnaud.minier@telecom-paris.fr> wrote:
 >
-> Add write protections for the fields in the CR register.
-> PLL configuration write protections (among others) have not
-> been handled yet. This is planned in a future patch set.
-
-Can you make sure you include a suitable prefix (eg
-"hw/misc/stm32l4x5_rcc: ") at the front of patch subjects, please?
-
+> This patch adds the STM32L4x5 RCC (Reset and Clock Control) device and is=
+ part
+> of a series implementing the STM32L4x5 with a few peripherals.
 >
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> ---
->  hw/misc/stm32l4x5_rcc.c | 164 ++++++++++++++++++++++++++++------------
->  1 file changed, 114 insertions(+), 50 deletions(-)
+> Due to the high number of lines, I tried to split the patch into several =
+independent commits.
+> Each commit compiles on its own but I had to add temporary workarounds in=
+ intermediary commits to allow them to compile even if some functions are n=
+ot used. However, they have been removed once the functions were used. Tell=
+ me if this is ok or if I should remove them.
 >
-> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index a3b192e61b..198c6238b6 100644
-> --- a/hw/misc/stm32l4x5_rcc.c
-> +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -346,9 +346,47 @@ static void rcc_update_irq(Stm32l4x5RccState *s)
->      }
->  }
->
-> -static void rcc_update_cr_register(Stm32l4x5RccState *s)
-> +static void rcc_update_msi(Stm32l4x5RccState *s, uint32_t previous_value=
-)
-> +{
-> +    uint32_t val;
-> +
-> +    static const uint32_t msirange[] =3D {
-> +        100000, 200000, 400000, 800000, 1000000, 2000000,
-> +        4000000, 8000000, 16000000, 24000000, 32000000, 48000000
-> +    };
-> +    /* MSIRANGE and MSIRGSEL */
-> +    val =3D extract32(s->cr, R_CR_MSIRGSEL_SHIFT, R_CR_MSIRGSEL_LENGTH);
+> Also, the tests are not very exhaustive for the moment. I have not found =
+a way to test the clocks' frequency from the qtests, which limits severely =
+the exhaustiveness of the tests.
 
-registerfields.h provides macros for "extract a named field", so you
-can write this
-    val =3D FIELD_EX32(s->cr, CR, MSIRGSEL);
+Where you have a device connected to an output clock that produces some
+useful behaviour dependent on the clock frequency it is given (eg if
+it is a timer device that has a timer count register you can read or
+which will fire an interrupt or set a status bit after a certain time),
+you can do something like:
+ * configure the RCC for a given frequency
+ * advance the simulation time with clock_step()
+ * check that the device connected to that clock has changed
+   in the way you expect it to
 
-> +    if (val) {
-> +        /* MSIRGSEL is set, use the MSIRANGE field */
-> +        val =3D extract32(s->cr, R_CR_MSIRANGE_SHIFT, R_CR_MSIRANGE_LENG=
-TH);
+But you're right that we don't have any handy way to look specifically
+at the outputs of a clock-controller to check the frequency they're set to.
+It would probably be possible to add one, but we'd need to enhance
+the qtest protocol to add a "for the Clock specified by this QOM path,
+return the period it's currently set to".
 
-and these as val =3D extract32(s->cr, CR, MSIRANGE)
-and so on.
-
-> +    } else {
-> +        /* MSIRGSEL is not set, use the MSISRANGE field */
-> +        val =3D extract32(s->csr, R_CSR_MSISRANGE_SHIFT, R_CSR_MSISRANGE=
-_LENGTH);
-> +    }
-> +
-> +    if (val < ARRAY_SIZE(msirange)) {
-> +        clock_update_hz(s->msi_rc, msirange[val]);
-> +    } else {
-> +        /*
-> +         * There is a hardware write protection if the value is out of b=
-ound.
-> +         * Restore the previous value.
-> +         */
-> +        s->cr =3D (s->cr & ~R_CSR_MSISRANGE_MASK) |
-> +                (previous_value & R_CSR_MSISRANGE_MASK);
-> +    }
-> +}
-> +
-
-> -    /* HSEON and update HSERDY */
-> +    /*
-> +     * HSEON and update HSERDY.
-> +     * HSEON cannot be reset if the HSE oscillator is used directly or
-> +     * indirectly as the system clock.
-> +     */
->      val =3D extract32(s->cr, R_CR_HSEON_SHIFT, R_CR_HSEON_LENGTH);
-> -    s->cr =3D (s->cr & ~R_CR_HSERDY_MASK) |
-> -            (val << R_CR_HSERDY_SHIFT);
-> -    if (val) {
-> -        clock_update_hz(s->hse, s->hse_frequency);
-> -        if (s->cier & R_CIER_HSERDYIE_MASK) {
-> -            s->cifr |=3D R_CIFR_HSERDYF_MASK;
-> +    if (extract32(s->cfgr, R_CFGR_SWS_SHIFT, R_CFGR_SWS_LENGTH) !=3D 0b1=
-0 &&
-> +        current_pll_src !=3D RCC_CLOCK_MUX_SRC_HSE) {
-> +        s->cr =3D (s->cr & ~R_CR_HSERDY_MASK) |
-> +                (val << R_CR_HSERDY_SHIFT);
-> +        if (val) {
-> +            clock_update_hz(s->hse, s->hse_frequency);
-> +            if (s->cier & R_CIER_HSERDYIE_MASK) {
-> +                s->cifr |=3D R_CIFR_HSERDYF_MASK;
-> +            }
-> +        } else {
-> +            clock_update_hz(s->hse, 0);
-
-As I mentioned earlier, please avoid clock_update_hz() for
-clock calculations if possible.
-
-thanks
 -- PMM

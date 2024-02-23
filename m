@@ -1,119 +1,117 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp502934ejf;
-        Fri, 23 Feb 2024 03:40:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWGOqOv0rG1/hWVBbJ/vN7fzNpHh65s2MkWc3+hVloFwiWthBe7XSaMK/sJbJ5577XnPByfZDuSGsKacc2T1TcwY4Z961nF
-X-Google-Smtp-Source: AGHT+IGf8/6I2adsNBTLB2c8lmmODi+2Dw033CGuDGOPX29Kxr6Fu+xKvSfzBYbyStj/nYITnGL/
-X-Received: by 2002:a05:620a:46a6:b0:783:f683:ee26 with SMTP id bq38-20020a05620a46a600b00783f683ee26mr2341114qkb.31.1708688430435;
-        Fri, 23 Feb 2024 03:40:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708688430; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp521389ejf;
+        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWygvY7XLO1QytM/CSb1WTeJamJnoR0PYLJ5xiH/VNJxSd+6zQIifxd2iibBzHGNJ4CjJvEf5hGoZz6E/kQEbv+yNLMX6Pu
+X-Google-Smtp-Source: AGHT+IHdnyEMYySoVsX2LIOYfgLkHrt/203k3UQqaxZYVv7Emhg2s7KZF2mrvuVxaWzVOX+qOfba
+X-Received: by 2002:ac8:5dc8:0:b0:42e:1387:8e6 with SMTP id e8-20020ac85dc8000000b0042e138708e6mr1799932qtx.42.1708690711269;
+        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708690711; cv=none;
         d=google.com; s=arc-20160816;
-        b=GU50Wf+88HnjgDN8ffl1GmJadbzSN9K2o3fV2c34qT3C7S8PM+R9Ut15C3Uw/VnMVf
-         GyXc7bWueprjf9sfrC2mB0aHJVpPBRTdEWn7xNS+MUy99o0LTc4ByWnpQDAjhkNrrL/9
-         +nv3D+9Ip/nsHmOVHssUH3hOjKRkAciox1HMgyohB4HZkeRtfjTk45TitNqNohLA5lKy
-         GbfLwZtzBGoN63xTb+1nzJUvUnX2iQ3UouCUKvNCEa2FZPSj8/qE3LORCszR+6IasYsB
-         tg0L+wNqf1kr2AkWI1aIny+DHNMjz8XBgjwVeUz7BvnpcOmNcGjdmzHBtOiAfCjni+IH
-         /9xA==
+        b=h9zgkeEiKX9eJoLgYy04j9UNqONnBJ++V48ytU3qliOorbk/YtntkQsmFeBWjVgyW9
+         iWf/hneHnyFUX89MPdycLQLB4xt7dY6mIX/1DF0qs3kJ25VSyqJihSspEmvXX/OifwPZ
+         l+mE6shAR+akIHljCVjtZInF79DEhlLPWL8amlKiUIrzmavqKnKzJ0bI19yr8CQrURih
+         hzSSErWufbVxM4CDk3OCVspfM0n6jpdbDNMCA8e0pjWRGoESQiEaeh80JR0anK6web7m
+         3vmaFH1F4c7T5446KD+hXGOvdU5sQbBnqxOSy0A39t+u3DpPE0fhtJAZueSU0gle/+rT
+         6pwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=vFrTC68/Vm1sl9Kf1uhunphqhN11iyt5Dx2XdhQzjgA=;
-        fh=Vu8RXI75y0YDcsuggpN8qYbfCxX7DdF3vrD7tzAjs2k=;
-        b=yxeaQV5dE/4puUnMAzs66OuAQopKA8Oc1f200Ryt1mxOS5JiSJLPzJcjOu88+AFr2o
-         yGbkQfho1WyspHEYuOByVPQf3jUzhTbuksRxV+QiKwOf0Pgp+pP0V95XoNkxma07ooue
-         PyqUvpngLcizA0JouWasnYOk4jzDk0aiZmkYrnQzXXc3TxWAqdSFnWrEhUmMxmu+2UgJ
-         AurQ81pQ86V9zrqcU7+WHwRJSVP6N4h7yKu8AsWAmqk0y1bIdGEDtDJoWutcECP8J/3k
-         bghIvYbuLdPw6+dtuRrA/QwZ9GXsoIArl4PJEaV3sZaUky4d2UACbNE7CY6IUyRtnASr
-         /pyQ==;
+        bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
+        fh=NzHT1zli0NSjL1HfuceSHymolyCFY2nEd3hPf6oVDX4=;
+        b=0AfcFSgLi9lxz/NyyrBjtgHtYFiafOcExEDiEFd/KNnpZyyvrJMxVoP1H4FzaRpxSd
+         sfV26K+eInT5b5s4ZW5k3N/cTY0jj1cUUTy/7pRvENzxLRUxLQxRnxB5vVAL6nmQdz/U
+         t2cEx++ZDY+W+4UevaQeTwO2LyJjWZAHFY7hEMRUpbu9oqmzLbG25ZfKYdsC8+v8pWw8
+         7oUAdBiM4ESWZZUoUd4vpJgRxr/DHxvA/53VqWhuzBZRo9WKbNCOYEBm7krv5zcNkx5m
+         k4DQ67rlJxKMtS65jmmFZt5clOIPFVnrM4W7jUZ9OyVRA4Xs7P7FX7LNFN/RLwceoFWD
+         dbNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pnA8tjwc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E6c0IsR3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s13-20020a05620a29cd00b007879b80f197si3772327qkp.680.2024.02.23.03.40.30
+        by mx.google.com with ESMTPS id h18-20020ac85852000000b0042e6893ccf0si396871qth.358.2024.02.23.04.18.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 03:40:30 -0800 (PST)
+        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pnA8tjwc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E6c0IsR3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdTuY-0002DU-KV; Fri, 23 Feb 2024 06:40:14 -0500
+	id 1rdUVN-0001G3-RH; Fri, 23 Feb 2024 07:18:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdTu8-00026F-4q
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 06:39:48 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUUY-0000IC-53
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:17:27 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdTu5-0007FU-Tm
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 06:39:47 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-33d568fbf62so142532f8f.3
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 03:39:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUUL-0006QI-Sb
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:17:25 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a3e5d82ad86so105227166b.2
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 04:17:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708688384; x=1709293184; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708690629; x=1709295429; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=vFrTC68/Vm1sl9Kf1uhunphqhN11iyt5Dx2XdhQzjgA=;
- b=pnA8tjwcoy9IQi60p/k0XDBHhZIPTpcAQnEp8O1zJ7oad4B8MHTaHrZXB3QCK181Nw
- NTTeceJxcTZ9CcRtiFFx6pqvLhDq37V07+GIBgJWvR9t5z2DOtJcGORkx9kH+NEV/4mH
- wTO1CjNz35naioN4b7C1TSxO/XZ2WfNKJIc2SKYYdtlPkrh4w9eI6RvEufZ2y0pdTvJb
- 9N9FZs+mTra0nNMGQg+24T5G84SXasgISFut0gPznDe5mSoQQKrOxWAp8fWEFaRCrwci
- JDyNy5hgc3K3PDpGCKUYOafwRMG5nbHAX53w2FEJ6tZ1xutWrms4nxfnSL3qzJdaMGki
- qqFQ==
+ bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
+ b=E6c0IsR3kdTWEZg7aL7nEJr+PHgyB+HHwVJMU2E/MTY1fkGM2K73uV+Punn4nJm2uN
+ uZ79F1XQFBG/Sn+M9XJV9WUfr2TVqpVhDFDoXLbq5InQ47Pq8VpMytd2Znhuzfe3cApT
+ WEGrLnIqFkhjPUBIjxdYiSZ2ztVo/+hIgXrHjSSgZukJ7FVuv2JSs9EIy3hsYFwxwkG8
+ kEnua/gDDkSBFjagG94leeOGptVgNJYY7tGEWdgX12lAGfUQ8pmu7CcnTotyaKK9BI3D
+ wtGPcJOhg2X9loeA4K5p6nJ9QsoloAXcG1mv6JusRo4GAO0o9xIG0/9ImvTsSxfvuxSO
+ Ms+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708688384; x=1709293184;
+ d=1e100.net; s=20230601; t=1708690629; x=1709295429;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vFrTC68/Vm1sl9Kf1uhunphqhN11iyt5Dx2XdhQzjgA=;
- b=jNXeN8gwiKEbuiwKpQaE8vkoUyzY2TmfQqk726tkrZ4E6HEPsSYKVdMcvrCj114u8O
- 16VNdI9wFVe+Yki1PyMRzoaBps1ASTx0Yubfiltt/ZFbNx7tkfMVoQo2xTDZIWrz5USs
- ZjrnXpz43jVgxPicQjUUyKpXZWIOi0GQCrLzmcx7zCFJnH4nkjFd7jlnRDsXntBNfJ8s
- cTcv6jnwMbXxPsut44roDVNEDGjnam36hyWY0BnUo7bpq1QpNWFdTNjgq2W8q6D1zTi0
- eusTNlmmJmevMh8IQLKuGCQIIKhMpaaW3/F3PSPWkXiMksKcoWlqf+biSKyktsKVwr9C
- xPEw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUl131dhSGEyI8MxVFJzPyXfbaYLOhdp/ljteNMOumGwG36BMtZNditK9wQ81GKXC0GO4OXDAPXzoj4rnwqh9rHJ65p
-X-Gm-Message-State: AOJu0Yy+spIoqMPBpktzRnELr/7gqqVnMluD0wqTiJopx2yXkKSqE7NZ
- 9hjayJp2GYHwuzw16NvPdOIK+0FDBF/DB/N/PYsZcMo5PaUVRlXEkWFQwtzcKm8=
-X-Received: by 2002:adf:e0c4:0:b0:33d:28a9:2fd8 with SMTP id
- m4-20020adfe0c4000000b0033d28a92fd8mr1091529wri.39.1708688383663; 
- Fri, 23 Feb 2024 03:39:43 -0800 (PST)
+ bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
+ b=GtpGKG5PHtkaWtdzObFZWMkGCL4Ukcx2XLt5Bs6rOaZfC8nbkANKNl20fHFriegJ1A
+ iJRIA6v4Vxr8d6KVnuXa+vZPvzcYU/Cm5/XIkBHXXpzDlV/ruolIQYvxbmPqavo9Nrgg
+ BX6a2aBMevDBJiT6+NK33f2a3hidepLqIAYAIwRHx/oOa2DnYbgFTF4a9u5UNpMdu6nC
+ RYtmhhKRZ88Jci02vJ7IMjj+ZeOnV4EB9yaK8zpL9vIFuloOl0PsN8SgWY2VQ4HvpMQr
+ KwGtWEcnnbfFIoHI8ffD1C45+9tQg9Hm+HOD2BosFqD7IZTYSJIusKxohaJTXblwIvUf
+ yFcQ==
+X-Gm-Message-State: AOJu0Yx+pALpy3yBGKk8qEixagPeXlLGnw/hIathVCAICM4atdMJ653i
+ qodSQMynzHmnO66W4HrOIfwUuKYUxXdr3Zm1or+HsrdW0eQS0/g/GpIPiZQcDkk=
+X-Received: by 2002:a17:906:bcdb:b0:a3e:849b:abab with SMTP id
+ lw27-20020a170906bcdb00b00a3e849bababmr1155854ejb.27.1708690629072; 
+ Fri, 23 Feb 2024 04:17:09 -0800 (PST)
 Received: from [192.168.69.100] (sto95-h01-176-184-18-96.dsl.sta.abo.bbox.fr.
  [176.184.18.96]) by smtp.gmail.com with ESMTPSA id
- q25-20020a056000137900b0033ce06c303csm2469799wrz.40.2024.02.23.03.39.41
+ ts4-20020a170907c5c400b00a3e0119b4a3sm6982858ejc.140.2024.02.23.04.17.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 03:39:43 -0800 (PST)
-Message-ID: <26eb60f4-d9e6-4be5-b114-5a695ab89509@linaro.org>
-Date: Fri, 23 Feb 2024 12:39:40 +0100
+ Fri, 23 Feb 2024 04:17:08 -0800 (PST)
+Message-ID: <07c76db3-b52a-46a9-8b0f-9230ba771bc7@linaro.org>
+Date: Fri, 23 Feb 2024 13:17:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] qdev: Add a granule_mode property
+Subject: Re: [PATCH v4 1/3] hw/gpio: Implement STM32L4x5 GPIO
 Content-Language: en-US
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com,
- Markus Armbruster <armbru@redhat.com>
-Cc: alex.williamson@redhat.com, zhenzhong.duan@intel.com,
- jasowang@redhat.com, pbonzini@redhat.com, berrange@redhat.com
-References: <20240223074459.63422-1-eric.auger@redhat.com>
- <20240223074459.63422-2-eric.auger@redhat.com>
- <07d4a2a4-1880-4402-a12a-94eeb649f8b0@linaro.org>
- <fd894834-622f-4d1e-b594-87beb35deebf@redhat.com>
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Alistair Francis <alistair@alistair23.me>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Thomas Huth <thuth@redhat.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>
+References: <20240207132517.198348-1-ines.varhol@telecom-paris.fr>
+ <20240207132517.198348-2-ines.varhol@telecom-paris.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <fd894834-622f-4d1e-b594-87beb35deebf@redhat.com>
+In-Reply-To: <20240207132517.198348-2-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,120 +133,218 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8skAr2BtXuzT
+X-TUID: U6rsqnLVbB7O
 
-On 23/2/24 09:30, Eric Auger wrote:
-> Hi Philippe,
+Hi Inès,
+
+On 7/2/24 14:23, Inès Varhol wrote:
+> Features supported :
+> - the 8 STM32L4x5 GPIOs are initialized with their reset values
+>      (except IDR, see below)
+> - input mode : setting a pin in input mode "externally" (using input
+>      irqs) results in an out irq (transmitted to SYSCFG)
+> - output mode : setting a bit in ODR sets the corresponding out irq
+>      (if this line is configured in output mode)
+> - pull-up, pull-down
+> - push-pull, open-drain
 > 
-> On 2/23/24 08:52, Philippe Mathieu-Daudé wrote:
->> Hi Eric,
->>
->> On 23/2/24 08:27, Eric Auger wrote:
->>> Introduce a new enum type property allowing to set an
->>> IOMMU granule. Values are 4K, 8K, 16K, 64K and host.
->>> This latter indicates the vIOMMU granule will match
->>> the host page size.
->>>
->>> A subsequent patch will add such a property to the
->>> virtio-iommu device.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> ---
->>>
->>> v3 -> v4:
->>> - Add 8K
->>> ---
->>>    include/hw/qdev-properties-system.h |  3 +++
->>>    include/hw/virtio/virtio-iommu.h    | 11 +++++++++++
->>>    hw/core/qdev-properties-system.c    | 15 +++++++++++++++
->>>    hw/virtio/virtio-iommu.c            | 11 +++++++++++
->>>    4 files changed, 40 insertions(+)
->>
->>
->>> diff --git a/include/hw/virtio/virtio-iommu.h
->>> b/include/hw/virtio/virtio-iommu.h
->>> index 5fbe4677c2..e22327548f 100644
->>> --- a/include/hw/virtio/virtio-iommu.h
->>> +++ b/include/hw/virtio/virtio-iommu.h
->>> @@ -31,6 +31,17 @@ OBJECT_DECLARE_SIMPLE_TYPE(VirtIOIOMMU, VIRTIO_IOMMU)
->>>      #define TYPE_VIRTIO_IOMMU_MEMORY_REGION "virtio-iommu-memory-region"
->>>    +typedef enum GranuleMode {
->>> +    GRANULE_MODE_4K,
->>> +    GRANULE_MODE_8K,
->>> +    GRANULE_MODE_16K,
->>> +    GRANULE_MODE_64K,
->>> +    GRANULE_MODE_HOST,
->>> +    GRANULE_MODE__MAX,
->>> +} GranuleMode;
->>> +
->>> +extern const QEnumLookup GranuleMode_lookup;
->>
->> Aren't this, ...
->>
->>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->>> index 2ec5ef3cd1..a9bdc03d12 100644
->>> --- a/hw/virtio/virtio-iommu.c
->>> +++ b/hw/virtio/virtio-iommu.c
->>> @@ -44,6 +44,17 @@
->>>    #define VIOMMU_DEFAULT_QUEUE_SIZE 256
->>>    #define VIOMMU_PROBE_SIZE 512
->>>    +const QEnumLookup GranuleMode_lookup = {
->>> +    .array = (const char *const[]) {
->>> +        [GRANULE_MODE_4K]   = "4K",
->>> +        [GRANULE_MODE_8K]   = "8K",
->>> +        [GRANULE_MODE_16K]  = "16K",
->>> +        [GRANULE_MODE_64K]  = "64K",
->>> +        [GRANULE_MODE_HOST] = "host",
->>> +    },
->>> +    .size = GRANULE_MODE__MAX
->>> +};
->> ... and this supposed to be QAPI generated?
-> If I remove both, it does not compile. How do you make it generated?
+> Difference with the real GPIOs :
+> - Alternate Function and Analog mode aren't implemented :
+>      pins in AF/Analog behave like pins in input mode
+> - floating pins stay at their last value
+> - register IDR reset values differ from the real one :
+>      values are coherent with the other registers reset values
+>      and the fact that AF/Analog modes aren't implemented
+> - setting I/O output speed isn't supported
+> - locking port bits isn't supported
+> - ADC function isn't supported
+> - GPIOH has 16 pins instead of 2 pins
+> - writing to registers LCKR, AFRL, AFRH and ASCR is ineffective
+> 
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>   MAINTAINERS                        |   1 +
+>   docs/system/arm/b-l475e-iot01a.rst |   2 +-
+>   include/hw/gpio/stm32l4x5_gpio.h   |  70 +++++
+>   hw/gpio/stm32l4x5_gpio.c           | 456 +++++++++++++++++++++++++++++
+>   hw/gpio/Kconfig                    |   3 +
+>   hw/gpio/meson.build                |   1 +
+>   hw/gpio/trace-events               |   6 +
+>   7 files changed, 538 insertions(+), 1 deletion(-)
+>   create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
+>   create mode 100644 hw/gpio/stm32l4x5_gpio.c
 
-The following:
 
--- >8 --
-diff --git a/qapi/virtio.json b/qapi/virtio.json
-index 19c7c36e36..c8d38d23e2 100644
---- a/qapi/virtio.json
-+++ b/qapi/virtio.json
-@@ -959 +959,19 @@
-    'data': { 'unused-iothread-vq-mapping': ['IOThreadVirtQueueMapping'] } }
-+
-+##
-+# @GranuleMode:
-+#
-+# @4k: granule page size of 4KiB
-+#
-+# @8k: granule page size of 8KiB
-+#
-+# @16k: granule page size of 16KiB
-+#
-+# @64k: granule page size of 64KiB
-+#
-+# @host: granule matches the host page size
-+#
-+# Since: 9.0
-+##
-+{ 'enum': 'GranuleMode',
-+  'data': [ '4k', '8k', '16k', '64k', 'host' ] }
----
+> +static void update_gpio_idr(Stm32l4x5GpioState *s)
+> +{
+> +    uint32_t new_idr_mask = 0;
+> +    uint32_t new_idr = s->odr;
+> +
+> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
+> +        /* output mode */
+> +        if (extract32(s->moder, 2 * i, 2) == 1) {
+> +            if (extract32(s->otyper, i, 1) == 0) {
+> +                /* push-pull */
+> +                new_idr_mask |= (1 << i);
+> +            } else if (!(s->odr & (1 << i))) {
+> +                /* open-drain ODR 0 */
+> +                new_idr_mask |= (1 << i);
+> +            } else if ((s->disconnected_pins & (1 << i)) &&
+> +                       (extract32(s->pupdr, 2 * i, 2) == 1)) {
+> +                /* open-drain pull-up ODR 1 with disconnected pin */
+> +                new_idr_mask |= (1 << i);
+> +            } else if ((s->disconnected_pins & (1 << i)) &&
+> +                       (extract32(s->pupdr, 2 * i, 2) == 2)) {
+> +                /* open-drain pull-down ODR 1 with disconnected pin */
+> +                new_idr_mask |= (1 << i);
+> +                new_idr &= ~(1 << i);
+> +            } else if (!(s->pins_connected_high & (1 << i))) {
+> +                /* open-drain ODR 1 with pin connected low */
+> +                new_idr_mask |= (1 << i);
+> +                new_idr &= ~(1 << i);
+> +            }
+> +            /*
+> +             * The only case left is for open-drain ODR 1
+> +             * with disconnected pin without pull-up or pull-down :
+> +             * the value is floating.
+> +             */
+> +        /* input or analog mode with connected pin */
+> +        } else if (!(s->disconnected_pins & (1 << i))) {
+> +            if (s->pins_connected_high & (1 << i)) {
+> +                /* pin high */
+> +                new_idr_mask |= (1 << i);
+> +                new_idr |= (1 << i);
+> +            } else {
+> +                /* pin low */
+> +                new_idr_mask |= (1 << i);
+> +                new_idr &= ~(1 << i);
+> +            }
+> +        /* input or analog mode with disconnected pin */
+> +        } else {
+> +            if (extract32(s->pupdr, 2 * i, 2) == 1) {
+> +                /* pull-up */
+> +                new_idr_mask |= (1 << i);
+> +                new_idr |= (1 << i);
+> +            } else if (extract32(s->pupdr, 2 * i, 2) == 2) {
+> +                /* pull-down */
 
-generates in "qapi/qapi-types-virtio.h":
+You can extract for clarity:
 
----
-typedef enum GranuleMode {
-     GRANULE_MODE_4K,
-     GRANULE_MODE_8K,
-     GRANULE_MODE_16K,
-     GRANULE_MODE_64K,
-     GRANULE_MODE_HOST,
-     GRANULE_MODE__MAX,
-} GranuleMode;
+   static bool is_pull_up(Stm32l4x5GpioState *s, unsigned pin)
+   {
+       return extract32(s->pupdr, 2 * pin, 2) == 1;
+   }
 
-#define GranuleMode_str(val) \
-     qapi_enum_lookup(&GranuleMode_lookup, (val))
+   static bool is_pull_down(Stm32l4x5GpioState *s, unsigned pin)
+   {
+       return extract32(s->pupdr, 2 * pin, 2) == 2;
+   }
 
-extern const QEnumLookup GranuleMode_lookup;
----
+> +                new_idr_mask |= (1 << i);
+> +                new_idr &= ~(1 << i);
+> +            }
+> +            /*
+> +             * The only case left is for a disconnected pin
+> +             * without pull-up or pull-down :
+> +             * the value is floating.
+> +             */
+> +        }
+> +    }
+> +
+> +    uint32_t old_idr = s->idr;
+
+Please declare new variable at the beginning of the function.
+(https://www.qemu.org/docs/master/devel/style.html#declarations)
+
+> +    s->idr = (old_idr & ~new_idr_mask) | (new_idr & new_idr_mask);
+> +    trace_stm32l4x5_gpio_update_idr(s->name, old_idr, s->idr);
+> +
+> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
+> +        if (new_idr_mask & (1 << i)) {
+
+Maybe evaluate (new_idr & (1 << i)) and (old_idr & (1 << i)) once
+in local variables?
+
+> +            if ((new_idr & (1 << i)) > (old_idr & (1 << i))) {
+> +                qemu_irq_raise(s->pin[i]);
+> +            } else if ((new_idr & (1 << i)) < (old_idr & (1 << i))) {
+> +                qemu_irq_lower(s->pin[i]);
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +/*
+> + * Return
+
+"mask of"
+
+> pins both configured in output mode
+> + * and externally driven (except pins in open-drain
+> + * mode externally set to 0).
+> + */
+> +static uint32_t get_gpio_pins_to_disconnect(Stm32l4x5GpioState *s)
+
+Maybe get_gpio_pinmask_to_disconnect() is clearer.
+
+> +{
+> +    uint32_t pins_to_disconnect = 0;
+
+> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
+> +        /* for each connected pin in output mode */
+> +        if ((~s->disconnected_pins & (1 << i)) &&
+> +            (extract32(s->moder, 2 * i, 2) == 1)) {
+> +            /* if either push-pull or high level */
+> +            if ((extract32(s->otyper, i, 1) == 0) ||
+> +                (extract16(s->pins_connected_high, i, 1)) == 1) { > +                pins_to_disconnect |= (1 << i);
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "Line %d can't be driven externally\n",
+> +                              i);
+> +            }
+> +        }
+> +    }
+> +    return pins_to_disconnect;
+> +}
+
+
+> +static void stm32l4x5_gpio_init(Object *obj)
+> +{
+> +    Stm32l4x5GpioState *s = STM32L4X5_GPIO(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &stm32l4x5_gpio_ops, s,
+> +                          TYPE_STM32L4X5_GPIO, 0x400);
+> +
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +
+> +    qdev_init_gpio_out(DEVICE(obj), s->pin, GPIO_NUM_PINS);
+> +    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_gpio_set, GPIO_NUM_PINS);
+> +
+> +    s->clk = qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
+> +
+> +    object_property_add(obj, "disconnected-pins", "uint16",
+> +        disconnected_pins_get, disconnected_pins_set, NULL,
+> +        &s->disconnected_pins);
+
+(alignment is off)
+
+> +    object_property_add(obj, "clock-freq-hz", "uint32",
+> +        clock_freq_get, NULL, NULL, NULL);
+
+(Ditto)
+
+> +}
+> +
+> +static void stm32l4x5_gpio_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Stm32l4x5GpioState *s = STM32L4X5_GPIO(dev);
+
+> +    if (!clock_has_source(s->clk)) {
+> +        error_setg(errp, "GPIO: clk input must be connected");
+> +        return;
+> +    }
+> +}
+
+Mostly style comments, otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

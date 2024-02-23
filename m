@@ -1,132 +1,108 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp731253ejf;
-        Fri, 23 Feb 2024 10:10:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUo3xVmLI+htVWC4yCGw05ipwh/d0iRTT9v7TUuD9k4jwEYw1CnOEKo52Egk3W6dz2U8/XoSW3WkGtlU6rzgfEiryey4MYk
-X-Google-Smtp-Source: AGHT+IGFc5MH0A85qczYC3YqUARV50rWWPVWEJndLULBtf6SEt42I869ARmS8XAANGxsbOtWczen
-X-Received: by 2002:a05:620a:1342:b0:787:2e1c:c076 with SMTP id c2-20020a05620a134200b007872e1cc076mr563473qkl.47.1708711822843;
-        Fri, 23 Feb 2024 10:10:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708711822; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp746527ejf;
+        Fri, 23 Feb 2024 10:38:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVY6WHsN3fb4yKgYsfrvtOE4F9YBNMfuuEoc3ipA5KTj9iOVw2WCXnz3OThy7pXEbyhQk11ijiJvjTEwrcY8oFrpbIXa0T6
+X-Google-Smtp-Source: AGHT+IFSmbJhw082aqv9Nbdg3lxlIuIJGtcKZ/ZKZ84XEcrLZPXX2HjtY6sGofw7dXJ6PiiidO+n
+X-Received: by 2002:ac8:58cd:0:b0:42c:63ba:2685 with SMTP id u13-20020ac858cd000000b0042c63ba2685mr617650qta.60.1708713503704;
+        Fri, 23 Feb 2024 10:38:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708713503; cv=none;
         d=google.com; s=arc-20160816;
-        b=eOXv39B/ix43ZmEvrL16FyhhVL1hg6MqldFvVrh/TtENaHq88Lg26BRfdo+6hW/CBq
-         Z/iwXINSKVhamI47AEDHVsCTuB43WcVX3ZQdP+q1mIqGLFpAkuG8yCRmhXsn46BTwtxg
-         Ba+BQ7GGeOtD+hKAy72zOONA9MKpT5MrqLvP/p6MQZq6whPAkFdYs1HFq12p06aSIM3X
-         kYTyYirk7Jp3M2hNUZIkhCcFIm9am5xjNN0x+KAbOK2E8BQY6x0ytJep9xG4zTCuuoo6
-         jy2kTb0s9/GBE8mrAboa4V4vrq/aZd37qGKgDUUk9H8mHlKkB6y4LhONZDBiCyUeziwx
-         gGyg==
+        b=J4g03wlXSPR9sVSFZoZAkAyLk/vkTmbyZOg7sBi06mKSgXadps6M6u28W1Eeu5odez
+         beWgtgG3Od6+cTMLhokXuMhbBL40RPislGTnSfR8S3EsDPxgMmrj80zmlfyvCsgaua2x
+         /R0aRVTPjkTJ3ui04vI00B+rt7lABEzYJPdUZSenVTy87szuPnZEeS14NcaEs6YS2oMU
+         lF6qWf0PlHfW8kxapPFqMCntpTMASfZWZbwwaYpyQuXxRyzwLCZMm4TS2WxyUbu7+05Y
+         Lg3MHXXNrgfVpOvsvCsBnUzdafUf/bGTAzFRE1ecKAfykRnMosSMJNYIlmteLsJ619Q9
+         ufPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Wm/3VqJy4JV8D9Jtr6AJYVH6S+lLPzfbWwpJolkV9H8=;
-        fh=zMDzlnXHaBSkqJy84g6y9+eu36Ml/2RQbflscoDklyU=;
-        b=ZvM4gRK2HyjnWxMtDbEog9nrexYJgZLG6sX4X6YNLz9jbeBTOga4k+B4Lw91F4mvJU
-         tpnHupzytbHpWpAOOElxeDJWAcKSBjBvtD2C1s2Z6ToypbPQC7OvA9Vb69bjv27TZK6J
-         ejVcBbxSU4USeEhcRs0DYDY83Fb5qpHqZiV4SCDPF10jC/H/4HxOPWq0PSgIBzx00OsE
-         hSwTpdZ2oo6ikqY1vyzeEVlLNWfGBXZIWwDvwKZ2SdJyu9HqFDeLnLh57jiLawTXpKT1
-         3W8BzuzW4I5VvOFG/RYxOIspU7KyZoBlFH1bqjb7AnFjsBk0UJnKBp7Vhr3c30Giv7VK
-         BQ0w==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=r4DROEhiYxLGPNrdVokg8xjeEyMCgaMdYHuioHxgv1s=;
+        fh=2nAR1YnCdEPoyID6kfU6ATASsiJ5fCH1yv92muQVcUU=;
+        b=rCj06cFXNen1P21L5gPrfB6gir+BcWHNKZ2yw0bAPHy7ecWb0/efDIDmgQNm72f5QT
+         cWDOtC0+17zu3lUJc+Crf9RYdheXzb2R685ZsjF7t8k/skucTSs5KP8fab6qNETtcRZx
+         5xgdMSvt3z6Hu/pveetSgTLcuOzFgDyzb2/jr8UOAh+ARstLToZRj+J9al+er/A6944L
+         6+ZvTrWOKtmpnhzXigGT2/jukoPw+F0mgjxX33bT0AS9lnLwyKa7TfNy1uqUleyHP5m1
+         VkmA1eY29i3chMuwhJb/INDkuGzxvO3uZbch0biD4kzDR4S+inHQkQUfiWc7jPtamhID
+         NOtA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tdKGK5lt;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Qow+yfDp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z13-20020ae9e60d000000b0078735b271afsi16046400qkf.135.2024.02.23.10.10.22
+        by mx.google.com with ESMTPS id i23-20020ac860d7000000b0042e62320c05si1552872qtm.71.2024.02.23.10.38.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 10:10:22 -0800 (PST)
+        Fri, 23 Feb 2024 10:38:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tdKGK5lt;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Qow+yfDp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdZzh-0007Zp-Pg; Fri, 23 Feb 2024 13:09:57 -0500
+	id 1rdaQp-0000Hl-I1; Fri, 23 Feb 2024 13:38:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZkI-0003O2-2X
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 12:54:02 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZkF-0005z4-4U
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 12:54:01 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-412984360faso1720555e9.1
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 09:53:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708710837; x=1709315637; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Wm/3VqJy4JV8D9Jtr6AJYVH6S+lLPzfbWwpJolkV9H8=;
- b=tdKGK5ltVgOm2k6g1hrIyRg+ys2PIJLY6qJKgh7EUwCueQpvExy92J/PlZTBhDF+6F
- OiBnUw8Dp1Bg6UKkHmcR2Hg4vitMh1sDp850zSHMMsBmjrzpnKyRBBktLu8N2JR7tPVh
- MEk5Jyar4gwTSrVPcVKrhISR7+GvyZWgRcXS2MF0uN8x+IwrwJS88ooEL6a9TyMbCOLX
- spgXpvg9ZNje0i3XqYM1dTWIZWX08kAHzNuBd+CDhGsNcil0BtfDng5R0sU5K/IEplq3
- 21yHeptmlHKossriaB1Bv9BMJMhWZ0MsxsPOWd9dTmn1/9MNlYRj5jQB2rjncTFniVXX
- xrsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708710837; x=1709315637;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Wm/3VqJy4JV8D9Jtr6AJYVH6S+lLPzfbWwpJolkV9H8=;
- b=v2kUbKgmPhUKolRQNCMz4FvHl7hOTeANb0EML0a53NRPCovdnnwdjDRqcZhYzui7rY
- NKiMrYjmdM1Rnyl4S/9hLWcvCrNgPdFIAthtqfbd2Px1AOZ4Che9L0JU5n032/je2I0h
- bSOUnpdAx0YawVa6MUHwtMJTtgQPKJBRynPGVa7S7Y6a6tlxAoa2ei/YIkpdN7ozkB3Y
- 84sM16dp59Q+gooyMhlH2MagMD3nUM4G84B7n+/EetqggLIx9ouCBtB63xCjsfys1uBL
- b78+YIoymmBH3djhhLbTJHG1Je1OKl+rixdgvovTqDhPHGF4D2ayTmSiBYoHeFc9zLlw
- hJZw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXqGciczM4CQi33IFod3N26n4opsYqzM6iCjfnxV1kfJTkFXxOO4KH18wWHL+fdoGt3ZEflcBqUrsPeXnJIKSxWKtUQ
-X-Gm-Message-State: AOJu0YyRMwWxYddtUppHw3j7BQ26OiFE1T7VhvDDVR81TYlNToQscwQn
- Ybhh6bHD/eggNHFTtdhsXWDSHGNlQuEm4GTRRg2QrrHKP/N4zDCRS4JqB4bnM+Y=
-X-Received: by 2002:a05:600c:45ca:b0:412:9051:9429 with SMTP id
- s10-20020a05600c45ca00b0041290519429mr345105wmo.26.1708710837298; 
- Fri, 23 Feb 2024 09:53:57 -0800 (PST)
-Received: from [192.168.69.100] (xbn44-h02-176-184-35-109.dsl.sta.abo.bbox.fr.
- [176.184.35.109]) by smtp.gmail.com with ESMTPSA id
- fm23-20020a05600c0c1700b00412952d3cc6sm2858181wmb.7.2024.02.23.09.53.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 09:53:56 -0800 (PST)
-Message-ID: <f5c5a0f7-c7c9-49d2-abe9-da94c6f05d19@linaro.org>
-Date: Fri, 23 Feb 2024 18:53:54 +0100
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rdaC4-0007f6-Qc; Fri, 23 Feb 2024 13:22:47 -0500
+Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rdaC1-0002RQ-1I; Fri, 23 Feb 2024 13:22:42 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 4289120759;
+ Fri, 23 Feb 2024 19:22:36 +0100 (CET)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id HiEGFlop6uYj; Fri, 23 Feb 2024 19:22:35 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 09D902073A;
+ Fri, 23 Feb 2024 19:22:35 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 09D902073A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1708712555;
+ bh=r4DROEhiYxLGPNrdVokg8xjeEyMCgaMdYHuioHxgv1s=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=Qow+yfDpQnVhtfnCTp/eqVWFbAp6uj6nleZyxDf6A+dnm7eZfb027MQWNinkgF0Wv
+ l/UKTErloGlvbAzkk6vOr7TwvrMiUOlxtWYwUS3eXhw3uEw0PYp3JQNhUMGFg8nZw3
+ dk2+v/SBoRKrdS2C9ignUBCT1nhBS9tGmk4UPtTA=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id uiM3Biy5p8g9; Fri, 23 Feb 2024 19:22:34 +0100 (CET)
+Received: from inesv-Inspiron-3501.lan (unknown
+ [IPv6:2001:861:4680:b1b0:946f:f726:4968:ea36])
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id 3366420697;
+ Fri, 23 Feb 2024 19:22:34 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v5 0/3] Add device STM32L4x5 GPIO
+Date: Fri, 23 Feb 2024 19:22:03 +0100
+Message-ID: <20240223182229.293802-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/7] hw/misc/xlnx-versal-trng: Check returned bool in
- trng_prop_fault_event_set()
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>,
- Laurent Vivier <laurent@vivier.eu>, Alistair Francis
- <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2001:660:330f:2::df;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,57 +117,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TE2I/H41C+Pc
+X-TUID: +rqRSPa9cx3h
 
-On 23/2/24 09:56, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
-> 
-> As the comment in qapi/error, dereferencing @errp requires
-> ERRP_GUARD():
-> 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> * - It must not be dereferenced, because it may be null.
-> ...
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> *
-> * Using it when it's not needed is safe, but please avoid cluttering
-> * the source with useless code.
-> 
-> But in trng_prop_fault_event_set, @errp is dereferenced without
-> ERRP_GUARD():
-> 
-> visit_type_uint32(v, name, events, errp);
-> if (*errp) {
->      return;
-> }
-> 
-> Currently, since trng_prop_fault_event_set() doesn't get the NULL @errp
-> parameter as a "set" method of object property, it hasn't triggered the
-> bug that dereferencing the NULL @errp.
-> 
-> And since visit_type_uint32() returns bool, check the returned bool
-> directly instead of dereferencing @errp, then we needn't the add missing
-> ERRP_GUARD().
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
-> Suggested by credit:
->   Markus: Referred his explanation about ERRP_GUARD().
-> ---
-> v2:
->   * Add the @errp dereference code in commit message to make review
->     easier. (Markus)
->   * Check the returned bool instead of dereferencing @errp. (Markus)
-> ---
->   hw/misc/xlnx-versal-trng.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
+This patch adds a new device STM32L4x5 GPIO device and is part
+of a series implementing the STM32L4x5 with a few peripherals.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Changes from v4 :
+- gpio.c : use helpers `is_pull_up()`, `is_pull_down()`, `is_output()`
+for more clarity
+- gpio.c : correct `update_gpio_idr()` in case of open-drain pin
+set to 1 in ODR and set to 0 externally
+- gpio.c : rename `get_gpio_pins_to_disconnect()` to
+`get_gpio_pinmask_to_disconnect()` and associated comments
+- gpio.c : correct coding style issues (alignment and declaration)
+- soc.c : unite structs `gpio_addr` and `stm32l4x5_gpio_initval`
+
+Changes from v3 :
+- replacing occurences of '16' with the correct macro `GPIO_NUM_PINS`
+- updating copyright year
+- rebasing on latest version of STM32L4x5 RCC
+
+Changes from v2 :
+- correct memory leaks caused by re-assigning a `g_autofree`
+pointer without freeing it
+- gpio-test : test that reset values (and not just initialization
+values) are correct, correct `stm32l4x5_gpio_reset()` accordingly
+- adding a `clock-freq-hz` object property to test that
+enabling GPIO clock in RCC sets the GPIO clocks
+
+Changes from v1 :
+- replacing test GPIO register `DISCONNECTED_PINS` with an object
+property accessed using `qtest_qmp()` in the qtest (through helpers
+`get_disconnected_pins()` and `disconnect_all_pins()`)
+- removing GPIO subclasses and storing MODER, OSPEEDR and PUPDR reset
+values in properties
+- adding a `name` property and using it for more lisible traces
+- using `g_strdup_printf()` to facilitate setting irqs in the qtest,
+and initializing GPIO children in soc_initfn
+
+Changes from RFC v1 :
+- `stm32l4x5-gpio-test.c` : correct typos, make the test generic,
+add a test for bitwise writing in register ODR
+- `stm32l4x5_soc.c` : connect gpios to their clock, use an
+array of GpioState
+- `stm32l4x5_gpio.c` : correct comments in `update_gpio_idr()`,
+correct `get_gpio_pins_to_disconnect()`, correct `stm32l4x5_gpio_init()`
+and initialize the clock, add a realize function
+- update MAINAINERS
+
+Based-on: 20240219200908.49551-1-arnaud.minier@telecom-paris.fr
+([PATCH v5 0/8] Add device STM32L4x5 RCC)
+
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+
+In=C3=A8s Varhol (3):
+  hw/gpio: Implement STM32L4x5 GPIO
+  hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
+  tests/qtest: Add STM32L4x5 GPIO QTest testcase
+
+ MAINTAINERS                        |   1 +
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ include/hw/arm/stm32l4x5_soc.h     |   2 +
+ include/hw/gpio/stm32l4x5_gpio.h   |  70 ++++
+ hw/arm/stm32l4x5_soc.c             |  68 +++-
+ hw/gpio/stm32l4x5_gpio.c           | 477 +++++++++++++++++++++++
+ tests/qtest/stm32l4x5_gpio-test.c  | 586 +++++++++++++++++++++++++++++
+ hw/arm/Kconfig                     |   3 +-
+ hw/gpio/Kconfig                    |   3 +
+ hw/gpio/meson.build                |   1 +
+ hw/gpio/trace-events               |   6 +
+ tests/qtest/meson.build            |   3 +-
+ 12 files changed, 1205 insertions(+), 17 deletions(-)
+ create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
+ create mode 100644 hw/gpio/stm32l4x5_gpio.c
+ create mode 100644 tests/qtest/stm32l4x5_gpio-test.c
+
+--=20
+2.43.2
 

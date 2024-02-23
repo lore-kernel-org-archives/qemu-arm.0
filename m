@@ -1,231 +1,136 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp693727ejf;
-        Fri, 23 Feb 2024 09:07:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6vAyvLDxYPDzozy5XWykNbPXhZv2NmG9Cp4NXdewiLWgBCPAODVOKfSXmtAJ1/1YBsW/aNAlIQ5wv/sFotBEenPerOoB9
-X-Google-Smtp-Source: AGHT+IGccrELI9nOF9JJW24qU/edCcxkgJntmL08e9v9gaZ77WZ/7AlFF1KIv0HZB1fo6e++Giio
-X-Received: by 2002:a05:622a:40e:b0:42c:6fb6:8d3b with SMTP id n14-20020a05622a040e00b0042c6fb68d3bmr390705qtx.66.1708708042927;
-        Fri, 23 Feb 2024 09:07:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708708042; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp696854ejf;
+        Fri, 23 Feb 2024 09:11:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWNqL8qDUBAZEeGqYdDCuIEfjd88IlzE5BFOmRAkQFARpGb8G8E7n8vA1Rww4bppt7Fkglm6x5S3px07zOU6nKMAHulkV8Z
+X-Google-Smtp-Source: AGHT+IHk1Zksj0bzqeKAGSc1/IFFLsjJQEPORXxTLtfSz8JJTrt8U1RmG4ivrJI8Q1hV2V9b8FKu
+X-Received: by 2002:a05:6214:4b04:b0:68f:5d7f:6a8d with SMTP id pj4-20020a0562144b0400b0068f5d7f6a8dmr902523qvb.3.1708708295488;
+        Fri, 23 Feb 2024 09:11:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708708295; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pi7b56/iWfiVEeu+nw+/LF4MT+R7BZJoN9sLEI54JeaLGQHU4L8nV7vQl+qX6ghX4M
-         X5Eve4zhdjaKZRX22ST6aOkCZovj45HxkzU7AVAYFJbs7gPw9au8L4ICR/Dbw1YuS++y
-         z8xZIa9E04g1VJbly6XRFZ/JJ8+qp2dWH8aR3RAFCU8HNYmN3ZBsop26OUL/s7Qi8oVE
-         SCqd0kavRmsnPsHQxelW8mdH1g0DZA9rcVI9+aMysSurTt/zphxEvhBqcXF7ZD5WC6c5
-         g0brSygc2i8hYpIanBrtKjb6GUzO9adBErZVGHbKLuvbGRe00vnUwreozHO55TNLBrEL
-         klGA==
+        b=gUzcgG/mBBimybNTlfPTby13tFaytVbl+PxvRWuFkvzF82YbLry6U0V5i7eZZEkZrf
+         c3CeMh6CX68NED7PpQLCkGCDof1S7P8KEwQe+Mmau5LKolGLrzBcjD2yYZV0fA5LAIGg
+         rNM7053UaXgUoDojdtLecA8ALcpSdWdsLIpF7MQZMkRQPlW6MSV+ziLea/dAoflHRMRf
+         TgDEe0P3lW3OJ37jt0X/6cT4KMIFMUOB+P8UcH4yreKPd9zcUE/t5awp2KB4zwIWoL3q
+         cOLAVoMLFCtqpsz4cPsQUYBYJH+JZxwD7Ds5k/y+1XOVXIHhscnVKZaVJvdpeve767DI
+         wlgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=UE0Xd9bdykHpEmQMOX2ZhjBeXUGnR/Lfv6lcw5+pgys=;
-        fh=i4+NtsTiPGXu+psNEzQPKO8wz0W/h/NmR7TMl/+kXNo=;
-        b=ujGRfW5r7KxLgrorQbQjeSv7SX03m9kj58RI8B5NvcvdhT7lFXOhfODkeVOhGmhIT2
-         QmBV9s/FY9S40SBVRm5jjvRZoZGEbWqVxjdXucR49Csv9EGcTXyjcNzH8Qv/P/AN8t+a
-         OvsnnG22cqVXF4RXlkSjOagMyiVL9nwBfuy72Bdn8WWa9DsqunOCBvj62hsj7mRTfngy
-         ZOG6OTbnGf1QsBzh9oTZKGyMWbOQULdDRUrQG+sDBEn23Ak/7H023vAeVK3ZGM1yAMld
-         9MV8q/TAs2mxwgnJD5idHIhMQYP7ZFQtaNEqG09m9DZfRwTA5Eg30VMsh1HUXLOHfqsj
-         QLzw==;
+        bh=xsDhYDGOw5CqhnAyZ1mUQnkbXRXKZJFQMDnbXbJP7ck=;
+        fh=gdBed72JnSifzQdV0PLkUCrNnp2PjbNCgzXbyzmTG1w=;
+        b=RYBpEdjInMPini+xLXXNRlSLjq/nbDarzJoJRBWKUW1/szXBEobYJf63EKrncs8+h3
+         ZBpkK6pkDnn91ipdww/jUSBuC55wTATZxbeQFd1TR0g4QV+C583VndBb6gt0F4k1uUk8
+         Hso99bqi/oSr74Hm4vGwghzQPDQuFp8RmBGlE8fqJs6WCRDCzoXr/YI7yez+wCMAVT60
+         1PKc8oBVu0rfahk8VoJXcoHIdfMRaA9rZAAM4WvEZNUz99HM4CDDXnuzm2uOAH0xbKTU
+         OSX+jFgGm/PMtrrd1zKHDEScAxdL86dGqF958+cKp3sNk3hM2vc7Q6MwHkFAx+zpMBfL
+         MOJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O3HJmwIn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cpvI2nBY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk4-20020a05622a2c0400b0042dda2ccd8csi14794025qtb.50.2024.02.23.09.07.22
+        by mx.google.com with ESMTPS id kk6-20020a056214508600b0068cb7b24a38si11397586qvb.339.2024.02.23.09.11.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 09:07:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Feb 2024 09:11:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O3HJmwIn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cpvI2nBY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rdZ0O-0006WJ-8d; Fri, 23 Feb 2024 12:06:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdZ4F-0007mQ-Gl; Fri, 23 Feb 2024 12:10:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdYod-0007Bf-5F
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 11:54:27 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1rdYrd-0000QW-VD
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 11:57:34 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdYoN-0003a7-0N
- for qemu-devel@nongnu.org; Fri, 23 Feb 2024 11:54:26 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5658082d2c4so881947a12.1
- for <qemu-devel@nongnu.org>; Fri, 23 Feb 2024 08:54:09 -0800 (PST)
+ id 1rdYrO-0004LK-Mw
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 11:57:33 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-56533e30887so756699a12.1
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 08:57:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708707248; x=1709312048; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708707429; x=1709312229; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=UE0Xd9bdykHpEmQMOX2ZhjBeXUGnR/Lfv6lcw5+pgys=;
- b=O3HJmwInn7TQZjAgQZFPAc2CeWo/J8hCjits6io88Kk82yYQladgZBsHCil/GscUKL
- gn368g2JwBeJRpOVGrAqMSiXyS76R5r24Tcj5cK9cPgfW5CGAi7/z5imhBpHevWI2jta
- ikBU/yHHDiQQ8EaJylS6IyQh6RUUSG3HMfGrUdpNqsI3a6mEkTLu0dKmmDcW481ZcPnG
- jvEgCF1gSylFAEHYfAB5LSDrE1AXkfKIxsQ1ORbuOk9V4up0APXZBWt8pfKyPbcoP9sw
- zTxOKDvRF9bRUg30x61lyai91+MjGEQxG+4Amxxmr50oBRHkctmlyQMaeJ3vX6l/w3e7
- TgMg==
+ bh=xsDhYDGOw5CqhnAyZ1mUQnkbXRXKZJFQMDnbXbJP7ck=;
+ b=cpvI2nBY9jmCV7SHejOX8n9n8JG+RlrFnju5+Ocv5oh6dHBE5+m6wdtqEnKd6sB2Uu
+ ldfnTpp7hjcTsMjkTwLlz+2HN9W4y5IUUC+PxaeQgMxITKPlfmHGwKLZD0Wvz9iaNEWr
+ EmNaEeCrEJZ0HJmRlrQSOQkbBn1gQ5aaKaZb0C/C0X/UR8Pds/tGQ7TzCHq5SWRvW6SD
+ X/DrbP1WZF8ZBTUNAKI/TR+gRzs09TM3R4aABV5l5rRhZTxBZEunle1SjsIFzSzFJiin
+ O0AtPr04adN7p4se0MhzL6pkuI8VsZQom6ihKs6+/73sXkWClPwapNpY0qTa/aPK6Ccg
+ w3aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708707248; x=1709312048;
+ d=1e100.net; s=20230601; t=1708707429; x=1709312229;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=UE0Xd9bdykHpEmQMOX2ZhjBeXUGnR/Lfv6lcw5+pgys=;
- b=H5UvqyReZBbH0Pak7Vy7lUzY3pPy2l3yVLHkcEno2cJ812POYFeIMQ4eYxbh1bZAAq
- xk7d6uAA4qLEKP8gOKC9o88377qoEsSPP8iB4csBCM1aL/9o33rylQOTY2i66gbjZfOx
- cvEw+lTek+SAInYOj0xZw9Jg3YAtv7aURiv6apB86pYxSFXiWf+OE0o534TLZ+yI3KyK
- pE7NDOS49EbZLcyIrh0RVvQ1tOh1lpyjZ77U918cnGlYkiRghh+BXHIxVvZgaSv9dl0x
- lt3Kfdw+UULnz3Pr+WTZoQzC3xWw+DskFlUrYpXpzHtlEneW7no59eLIdlR90B0i4jXw
- f/7Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWUbJJb2Vou0LmQ15l55a5ImI1BhtBjSLqf1ZRJycNj5m4uyUHh9l432KrwSvV47KpY+yuPGejf817oagI65q0ptQwS4pM=
-X-Gm-Message-State: AOJu0YzvZFDz1XgEdoQQj6fgPodDAyzCjJVtB2SUnyW55Y6dossjLti+
- gxWAgQT8Ql9u8qXsDzdJB9sDIz2DfWKs0dUFBWNkV7ENeahguMt2u5eSVTgg3HbbUczwaLdPjlG
- d9hDRBaNqjuKS7cetyMYAwo7nOVuILcRuvboHyw==
-X-Received: by 2002:aa7:d907:0:b0:564:b822:9204 with SMTP id
- a7-20020aa7d907000000b00564b8229204mr263335edr.17.1708707247871; Fri, 23 Feb
- 2024 08:54:07 -0800 (PST)
+ bh=xsDhYDGOw5CqhnAyZ1mUQnkbXRXKZJFQMDnbXbJP7ck=;
+ b=qoYlGzHwcoNediqzvbyQ6ysxjEE0jj6bwi3dJrgtVM6OxLnGyNfHqaF2zwBxl/1keP
+ +QIPmknO17LqYpQWuDFxALSRkw1bkgUp9CeBLyUCnKjDbkstse/ELzgw8p0mnk6vQ9HE
+ y1n5Mq0grHyoLzPU8BwFZ2Gf8eU5H4tM7PlqkawMnaowXWCPJIUWQwEqjxSNkYew1XrC
+ 9DROSbP9W1NQ4Xwyg1MSZ4D5Sve45MrI0gxRznvjRdS+yTU0JpxtOHKI+By7M3GxyCFy
+ 8wDpnGXhHs1RxHWlTYCQdvTDsYkVsziy2/K3zGt+62v0cSSmY2XMRkah/o2tKLZe5Hxn
+ bFAA==
+X-Gm-Message-State: AOJu0Yzhkkf25MiSOng9qgqyZYSGC4oGG0JKZ0hYMBmdERk+zV1otWac
+ /iFVLslLgbQ3mfTz8eDzeA6R05X37V/huA/WVcLhh62EJy58XrhuHLJ6pDCunIaWRVe9EZVfJdG
+ QVM1jTT1NK18ZuNpnn0tTuAU6TuF+DwtzdLE0/Q==
+X-Received: by 2002:aa7:d0d4:0:b0:565:665b:9c82 with SMTP id
+ u20-20020aa7d0d4000000b00565665b9c82mr247097edo.8.1708707429234; Fri, 23 Feb
+ 2024 08:57:09 -0800 (PST)
 MIME-Version: 1.0
 References: <20240219011739.2316619-1-sergey.kambalin@auriga.com>
- <20240219011739.2316619-18-sergey.kambalin@auriga.com>
-In-Reply-To: <20240219011739.2316619-18-sergey.kambalin@auriga.com>
+ <20240219011739.2316619-42-sergey.kambalin@auriga.com>
+In-Reply-To: <20240219011739.2316619-42-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2024 16:53:57 +0000
-Message-ID: <CAFEAcA9e+7aB7PdxfHLDmhBfhvDy2Njtj4BMXbssJi+6E=WkZw@mail.gmail.com>
-Subject: Re: [PATCH v5 17/41] Implement BCM2838 thermal sensor
+Date: Fri, 23 Feb 2024 16:56:57 +0000
+Message-ID: <CAFEAcA9Ly8PVajPtjuPiuBejwjTf34sgNArJjL+vxFUefwRmMA@mail.gmail.com>
+Subject: Re: [PATCH v5 41/41] Add RPi4B to paspi.rst
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fY474Sd9IJut
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g7u4fA4FM8+k
 
-On Mon, 19 Feb 2024 at 01:21, Sergey Kambalin <serg.oker@gmail.com> wrote:
+On Mon, 19 Feb 2024 at 01:23, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  hw/arm/bcm2838_peripherals.c         | 27 ++++++--
->  hw/arm/raspi4b.c                     |  1 -
->  hw/misc/bcm2838_thermal.c            | 98 ++++++++++++++++++++++++++++
->  hw/misc/meson.build                  |  3 +-
->  include/hw/arm/bcm2838_peripherals.h |  2 +
->  include/hw/misc/bcm2838_thermal.h    | 24 +++++++
->  6 files changed, 147 insertions(+), 8 deletions(-)
->  create mode 100644 hw/misc/bcm2838_thermal.c
->  create mode 100644 include/hw/misc/bcm2838_thermal.h
->
-> diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-> index 6b4c840c5b..48c5fd5978 100644
-> --- a/hw/arm/bcm2838_peripherals.c
-> +++ b/hw/arm/bcm2838_peripherals.c
-> @@ -37,6 +37,9 @@ static void bcm2838_peripherals_init(Object *obj)
->      /* Random Number Generator */
->      object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
->
-> +    /* Thermal */
-> +    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2838_THERMAL);
-> +
->      /* PCIe Host Bridge */
->      object_initialize_child(obj, "pcie-host", &s->pcie_host,
->                              TYPE_BCM2838_PCIE_HOST);
-> @@ -78,6 +81,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
->      BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
->      MemoryRegion *regs_mr;
->      MemoryRegion *mmio_mr;
-> +    MemoryRegion *rng200_mr;
-> +    MemoryRegion *thermal_mr;
-> +    qemu_irq rng_200_irq;
->
->      int n;
->
-> @@ -95,12 +101,20 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng200), errp)) {
->          return;
->      }
-> -    memory_region_add_subregion(
-> -        &s_base->peri_mr, RNG_OFFSET,
-> -        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0));
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0,
-> -        qdev_get_gpio_in_named(DEVICE(&s_base->ic), BCM2835_IC_GPU_IRQ,
-> -                               INTERRUPT_RNG));
-> +    rng200_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0);
-> +    memory_region_add_subregion(&s_base->peri_mr, RNG_OFFSET, rng200_mr);
-> +
-> +    rng_200_irq = qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-> +                                         BCM2835_IC_GPU_IRQ, INTERRUPT_RNG);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0, rng_200_irq);
+>  docs/system/arm/raspi.rst | 11 +++++++----
+>  1 file changed, 7 insertions(+), 4 deletions(-)
 
-These are RNG200 related and look like they should be squashed into
-the patch that added the RNG200 to the SoC.
-
-> +
-> +
-> +    /* THERMAL */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
-> +        return;
-> +    }
-> +    thermal_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0);
-> +    memory_region_add_subregion( &s->peri_low_mr, 0x15D2000, thermal_mr);
->
->      /* Extended Mass Media Controller 2 */
->      object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
-> @@ -201,6 +215,7 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
->                               BCM2838_MPHI_SIZE);
->      memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
->                                  &s->mphi_mr_alias);
-> +
-
-Stray whitespace change: should be in some other patch, I suspect
-(maybe the one adding the pcie to the SoC?)
-
->      /* PCIe Root Complex */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_host), errp)) {
->          return;
-
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 7c769fd2a4..8a8c5ce659 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -91,7 +91,8 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
->    'bcm2835_thermal.c',
->    'bcm2835_cprman.c',
->    'bcm2835_powermgt.c',
-> -  'bcm2838_rng200.c'
-> +  'bcm2838_rng200.c',
-> +  'bcm2838_thermal.c'
-
-If you always keep a trailing comma on the end of this kind of list,
-then you don't have to modify the preceding line when you add a new one.
-
->  ))
->  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
->  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-
+Still has the typo in the commit message subject.
 Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

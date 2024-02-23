@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp521389ejf;
-        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWygvY7XLO1QytM/CSb1WTeJamJnoR0PYLJ5xiH/VNJxSd+6zQIifxd2iibBzHGNJ4CjJvEf5hGoZz6E/kQEbv+yNLMX6Pu
-X-Google-Smtp-Source: AGHT+IHdnyEMYySoVsX2LIOYfgLkHrt/203k3UQqaxZYVv7Emhg2s7KZF2mrvuVxaWzVOX+qOfba
-X-Received: by 2002:ac8:5dc8:0:b0:42e:1387:8e6 with SMTP id e8-20020ac85dc8000000b0042e138708e6mr1799932qtx.42.1708690711269;
-        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708690711; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp525694ejf;
+        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUXh79tw0Vy2VgVYirktdAwe+UKMru8BfJyQg9oATtm8kspXoWa4/mK71nLdBRALD9XuxKlP9gkDzMwksqekkXd4lRqcXqr
+X-Google-Smtp-Source: AGHT+IEtgsOEgkHLHBh5T2RFMA7clc9Bxi/MxJTmvH3eptA6d/lSKFcb9f0GaLl4oOIPr1jm7eL+
+X-Received: by 2002:a05:6902:1351:b0:dc7:1d:5db4 with SMTP id g17-20020a056902135100b00dc7001d5db4mr2092551ybu.34.1708691233063;
+        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708691233; cv=none;
         d=google.com; s=arc-20160816;
-        b=h9zgkeEiKX9eJoLgYy04j9UNqONnBJ++V48ytU3qliOorbk/YtntkQsmFeBWjVgyW9
-         iWf/hneHnyFUX89MPdycLQLB4xt7dY6mIX/1DF0qs3kJ25VSyqJihSspEmvXX/OifwPZ
-         l+mE6shAR+akIHljCVjtZInF79DEhlLPWL8amlKiUIrzmavqKnKzJ0bI19yr8CQrURih
-         hzSSErWufbVxM4CDk3OCVspfM0n6jpdbDNMCA8e0pjWRGoESQiEaeh80JR0anK6web7m
-         3vmaFH1F4c7T5446KD+hXGOvdU5sQbBnqxOSy0A39t+u3DpPE0fhtJAZueSU0gle/+rT
-         6pwQ==
+        b=fZsJGAiUkA5AAtbSuDAbF6wFxvH8CZNNWOgoylgpbmpsy8h1sp/SoZslu7jstKVIX1
+         u4J6D+8L0itm5gQOfXhNVexkleffT3zn16u3w7SkBBbiE4ETklNQk+ImruaSCMI5AzV7
+         dlkKhCBIERpThLSZRrD5T4whttlPkavooPLVxSfeBewHPmxetEVzkreP5jpLsaPV5NZy
+         K01+Wfrkabkd0PFiyFwIDYygX06aQi8VjuF5LSgFhWsM2cL9DwQu8RgpDalqgdEU7AEx
+         F0teeCR1YcN9oi8lEZnLmBLxjpolZo6hFPmU9gJ6SMwFy2vPc5h1AkQ4psAS3wDFg2c9
+         jqfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
+        bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
         fh=NzHT1zli0NSjL1HfuceSHymolyCFY2nEd3hPf6oVDX4=;
-        b=0AfcFSgLi9lxz/NyyrBjtgHtYFiafOcExEDiEFd/KNnpZyyvrJMxVoP1H4FzaRpxSd
-         sfV26K+eInT5b5s4ZW5k3N/cTY0jj1cUUTy/7pRvENzxLRUxLQxRnxB5vVAL6nmQdz/U
-         t2cEx++ZDY+W+4UevaQeTwO2LyJjWZAHFY7hEMRUpbu9oqmzLbG25ZfKYdsC8+v8pWw8
-         7oUAdBiM4ESWZZUoUd4vpJgRxr/DHxvA/53VqWhuzBZRo9WKbNCOYEBm7krv5zcNkx5m
-         k4DQ67rlJxKMtS65jmmFZt5clOIPFVnrM4W7jUZ9OyVRA4Xs7P7FX7LNFN/RLwceoFWD
-         dbNg==;
+        b=c0l9S1HbqgUEmuxUfmOQy/HOClUCXy/qflxdVnLWIbkREoeJxCIkH2++8YdIwvLoYn
+         YpoBKVebhYaFBJ8kOo8g1L9hYeNrVPtZV+TqWP35Hoye1ypB5Muxi+RyUk+hKsCV+pNf
+         /yr5Hmy5dHL0QDOOM/MFhkxvremw+vp/yXj2K9dUhwhdla97qEJcrMg+LqiaVP50Su8k
+         GnMI72+d9AvvVfp+T9NSgcIEYYNhfgwMSuBFdJXhN/uCVLlroLcD5n3XRxyLXDL3EVy6
+         mGGOjvBWIvZ4qvZzAtoErjEvQFQxkp/qcRnhJETcI2/mbpy348UedOYa7t3lqWySk1g1
+         CbsQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E6c0IsR3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vCgbjEtj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18-20020ac85852000000b0042e6893ccf0si396871qth.358.2024.02.23.04.18.31
+        by mx.google.com with ESMTPS id c19-20020ac85a93000000b0042df364fbd7si15331769qtc.546.2024.02.23.04.27.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 04:18:31 -0800 (PST)
+        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E6c0IsR3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vCgbjEtj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdUVN-0001G3-RH; Fri, 23 Feb 2024 07:18:20 -0500
+	id 1rdUde-0002nJ-Jv; Fri, 23 Feb 2024 07:26:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUUY-0000IC-53
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:17:27 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUcA-0007Jx-59
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:25:18 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUUL-0006QI-Sb
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:17:25 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-a3e5d82ad86so105227166b.2
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 04:17:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUc8-0000Uq-Ir
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:25:17 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4128fe4b8c8so5420575e9.1
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 04:25:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708690629; x=1709295429; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708691115; x=1709295915; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
- b=E6c0IsR3kdTWEZg7aL7nEJr+PHgyB+HHwVJMU2E/MTY1fkGM2K73uV+Punn4nJm2uN
- uZ79F1XQFBG/Sn+M9XJV9WUfr2TVqpVhDFDoXLbq5InQ47Pq8VpMytd2Znhuzfe3cApT
- WEGrLnIqFkhjPUBIjxdYiSZ2ztVo/+hIgXrHjSSgZukJ7FVuv2JSs9EIy3hsYFwxwkG8
- kEnua/gDDkSBFjagG94leeOGptVgNJYY7tGEWdgX12lAGfUQ8pmu7CcnTotyaKK9BI3D
- wtGPcJOhg2X9loeA4K5p6nJ9QsoloAXcG1mv6JusRo4GAO0o9xIG0/9ImvTsSxfvuxSO
- Ms+w==
+ bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
+ b=vCgbjEtjHGJaJHoWUMuMA7uLXovXPiJqTaAHqtvbW7VFMG0A9d8fBYmHsxI/bFEhqw
+ NxmGfdZBGWr02gC0UzHAyC+hFGz8rg0goWDRdF0TEL+ncNuJEUePl5loZ7Q8UZBjr/+t
+ fDneHj2DZrH/Kp0emlQVG5mJS+3XJwaqSl1/ZQOSafeGnyG1GSKOivy+BH0eODgRP3gU
+ sExGKp0mQa/TNx/YjB5DSlyLN/XLgAvgzwy80RT0wVlI8WiyoebU6TQYF9yPjk+8yqrO
+ EQGEqaRDLk9+tkz1p+BtLmx7iBZyT3NYKyou9DUQGegRGQcPjXBYPAQz7rRbC9Zv1fy1
+ d9qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708690629; x=1709295429;
+ d=1e100.net; s=20230601; t=1708691115; x=1709295915;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=e2Gxu7VThFBCq3d6GPEOXRRcZ9fy6TogGFJxSBoCh7Q=;
- b=GtpGKG5PHtkaWtdzObFZWMkGCL4Ukcx2XLt5Bs6rOaZfC8nbkANKNl20fHFriegJ1A
- iJRIA6v4Vxr8d6KVnuXa+vZPvzcYU/Cm5/XIkBHXXpzDlV/ruolIQYvxbmPqavo9Nrgg
- BX6a2aBMevDBJiT6+NK33f2a3hidepLqIAYAIwRHx/oOa2DnYbgFTF4a9u5UNpMdu6nC
- RYtmhhKRZ88Jci02vJ7IMjj+ZeOnV4EB9yaK8zpL9vIFuloOl0PsN8SgWY2VQ4HvpMQr
- KwGtWEcnnbfFIoHI8ffD1C45+9tQg9Hm+HOD2BosFqD7IZTYSJIusKxohaJTXblwIvUf
- yFcQ==
-X-Gm-Message-State: AOJu0Yx+pALpy3yBGKk8qEixagPeXlLGnw/hIathVCAICM4atdMJ653i
- qodSQMynzHmnO66W4HrOIfwUuKYUxXdr3Zm1or+HsrdW0eQS0/g/GpIPiZQcDkk=
-X-Received: by 2002:a17:906:bcdb:b0:a3e:849b:abab with SMTP id
- lw27-20020a170906bcdb00b00a3e849bababmr1155854ejb.27.1708690629072; 
- Fri, 23 Feb 2024 04:17:09 -0800 (PST)
+ bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
+ b=b4b8iidWjDMXD/EH9rIdnbDwqcsEA1bJ0kqNhEL48OKJUTJxN8drStn/RnMHaVZGK+
+ w4xlWy0Z5foNoA/BkpVfIYt/XogHKM/O0L40bYWvNmFijwMxbT4jA/TU+BsvCqQ7HlqS
+ bt4xrw/I+h/gNXCr97JNZlXE+aXhSDDOiLwnMlqrsrxEB/FNV8FTAYEFj43W9VYIH6Tj
+ g6NlCMPVSGn38fHNo077oE7/pENU/5XKYxS98+81KD0t03TN+IWnbk7EaRpKZFKH+wbu
+ hRIqnAc2Rk4Whpe4FTSoC5CItjUUc2XwdwK2hNLcoGpd/P+6pkjIHKqkAAeGQK0v25Fz
+ /ZCw==
+X-Gm-Message-State: AOJu0YxGDDCqhkY48S0eOKfAKZ4zl8BEcY8IbTaIjiBE4SolkehGpSgt
+ /friFe5v158IPf91Mdkh0chMpdM9Ud21MqBlq/JZyYdYdEbppPqgpkHxQPqaFOA=
+X-Received: by 2002:adf:eb51:0:b0:33d:88c1:31b8 with SMTP id
+ u17-20020adfeb51000000b0033d88c131b8mr1378718wrn.60.1708691114979; 
+ Fri, 23 Feb 2024 04:25:14 -0800 (PST)
 Received: from [192.168.69.100] (sto95-h01-176-184-18-96.dsl.sta.abo.bbox.fr.
  [176.184.18.96]) by smtp.gmail.com with ESMTPSA id
- ts4-20020a170907c5c400b00a3e0119b4a3sm6982858ejc.140.2024.02.23.04.17.07
+ v11-20020a5d4b0b000000b0033d90b314e7sm2631441wrq.101.2024.02.23.04.25.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 04:17:08 -0800 (PST)
-Message-ID: <07c76db3-b52a-46a9-8b0f-9230ba771bc7@linaro.org>
-Date: Fri, 23 Feb 2024 13:17:06 +0100
+ Fri, 23 Feb 2024 04:25:14 -0800 (PST)
+Message-ID: <f350fbb7-b954-4bb2-abf4-05ad049ceeae@linaro.org>
+Date: Fri, 23 Feb 2024 13:25:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] hw/gpio: Implement STM32L4x5 GPIO
+Subject: Re: [PATCH v4 2/3] hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
  qemu-devel@nongnu.org
@@ -105,13 +105,13 @@ Cc: qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>
 References: <20240207132517.198348-1-ines.varhol@telecom-paris.fr>
- <20240207132517.198348-2-ines.varhol@telecom-paris.fr>
+ <20240207132517.198348-3-ines.varhol@telecom-paris.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240207132517.198348-2-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240207132517.198348-3-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,218 +133,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U6rsqnLVbB7O
-
-Hi Inès,
+X-TUID: X/SqCe2e8IXq
 
 On 7/2/24 14:23, Inès Varhol wrote:
-> Features supported :
-> - the 8 STM32L4x5 GPIOs are initialized with their reset values
->      (except IDR, see below)
-> - input mode : setting a pin in input mode "externally" (using input
->      irqs) results in an out irq (transmitted to SYSCFG)
-> - output mode : setting a bit in ODR sets the corresponding out irq
->      (if this line is configured in output mode)
-> - pull-up, pull-down
-> - push-pull, open-drain
-> 
-> Difference with the real GPIOs :
-> - Alternate Function and Analog mode aren't implemented :
->      pins in AF/Analog behave like pins in input mode
-> - floating pins stay at their last value
-> - register IDR reset values differ from the real one :
->      values are coherent with the other registers reset values
->      and the fact that AF/Analog modes aren't implemented
-> - setting I/O output speed isn't supported
-> - locking port bits isn't supported
-> - ADC function isn't supported
-> - GPIOH has 16 pins instead of 2 pins
-> - writing to registers LCKR, AFRL, AFRH and ASCR is ineffective
-> 
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
 > ---
->   MAINTAINERS                        |   1 +
->   docs/system/arm/b-l475e-iot01a.rst |   2 +-
->   include/hw/gpio/stm32l4x5_gpio.h   |  70 +++++
->   hw/gpio/stm32l4x5_gpio.c           | 456 +++++++++++++++++++++++++++++
->   hw/gpio/Kconfig                    |   3 +
->   hw/gpio/meson.build                |   1 +
->   hw/gpio/trace-events               |   6 +
->   7 files changed, 538 insertions(+), 1 deletion(-)
->   create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
->   create mode 100644 hw/gpio/stm32l4x5_gpio.c
+>   include/hw/arm/stm32l4x5_soc.h |  2 +
+>   hw/arm/stm32l4x5_soc.c         | 78 ++++++++++++++++++++++++++++------
+>   hw/arm/Kconfig                 |  3 +-
+>   3 files changed, 68 insertions(+), 15 deletions(-)
 
 
-> +static void update_gpio_idr(Stm32l4x5GpioState *s)
-> +{
-> +    uint32_t new_idr_mask = 0;
-> +    uint32_t new_idr = s->odr;
+> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+> index 347a5377e5..ff38585dd6 100644
+> --- a/hw/arm/stm32l4x5_soc.c
+> +++ b/hw/arm/stm32l4x5_soc.c
+> @@ -78,6 +78,32 @@ static const int exti_irq[NUM_EXTI_IRQ] = {
+>   #define RCC_BASE_ADDRESS 0x40021000
+>   #define RCC_IRQ 5
+>   
+> +static const uint32_t gpio_addr[
+
+NUM_GPIOS
+
+> ] = {
+> +    0x48000000,
+> +    0x48000400,
+> +    0x48000800,
+> +    0x48000C00,
+> +    0x48001000,
+> +    0x48001400,
+> +    0x48001800,
+> +    0x48001C00,
+> +};
 > +
-> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
-> +        /* output mode */
-> +        if (extract32(s->moder, 2 * i, 2) == 1) {
-> +            if (extract32(s->otyper, i, 1) == 0) {
-> +                /* push-pull */
-> +                new_idr_mask |= (1 << i);
-> +            } else if (!(s->odr & (1 << i))) {
-> +                /* open-drain ODR 0 */
-> +                new_idr_mask |= (1 << i);
-> +            } else if ((s->disconnected_pins & (1 << i)) &&
-> +                       (extract32(s->pupdr, 2 * i, 2) == 1)) {
-> +                /* open-drain pull-up ODR 1 with disconnected pin */
-> +                new_idr_mask |= (1 << i);
-> +            } else if ((s->disconnected_pins & (1 << i)) &&
-> +                       (extract32(s->pupdr, 2 * i, 2) == 2)) {
-> +                /* open-drain pull-down ODR 1 with disconnected pin */
-> +                new_idr_mask |= (1 << i);
-> +                new_idr &= ~(1 << i);
-> +            } else if (!(s->pins_connected_high & (1 << i))) {
-> +                /* open-drain ODR 1 with pin connected low */
-> +                new_idr_mask |= (1 << i);
-> +                new_idr &= ~(1 << i);
-> +            }
-> +            /*
-> +             * The only case left is for open-drain ODR 1
-> +             * with disconnected pin without pull-up or pull-down :
-> +             * the value is floating.
-> +             */
-> +        /* input or analog mode with connected pin */
-> +        } else if (!(s->disconnected_pins & (1 << i))) {
-> +            if (s->pins_connected_high & (1 << i)) {
-> +                /* pin high */
-> +                new_idr_mask |= (1 << i);
-> +                new_idr |= (1 << i);
-> +            } else {
-> +                /* pin low */
-> +                new_idr_mask |= (1 << i);
-> +                new_idr &= ~(1 << i);
-> +            }
-> +        /* input or analog mode with disconnected pin */
-> +        } else {
-> +            if (extract32(s->pupdr, 2 * i, 2) == 1) {
-> +                /* pull-up */
-> +                new_idr_mask |= (1 << i);
-> +                new_idr |= (1 << i);
-> +            } else if (extract32(s->pupdr, 2 * i, 2) == 2) {
-> +                /* pull-down */
+> +static const struct {
 
-You can extract for clarity:
+gpio_addr[] should be moved in this same struct (eventually
+naming it stm32l4x5_gpio_cfg), since the init val are related
+to the gpio peripheral / base addr.
 
-   static bool is_pull_up(Stm32l4x5GpioState *s, unsigned pin)
-   {
-       return extract32(s->pupdr, 2 * pin, 2) == 1;
-   }
+> +    uint32_t moder;
+> +    uint32_t ospeedr;
+> +    uint32_t pupdr;
+> +} stm32l4x5_gpio_initval[NUM_GPIOS] = {
+> +    { 0xABFFFFFF, 0x0C000000, 0x64000000 },
+> +    { 0xFFFFFEBF, 0x00000000, 0x00000100 },
+> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
+> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
+> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
+> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
+> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
+> +    { 0x0000000F, 0x00000000, 0x00000000 },
+> +};
 
-   static bool is_pull_down(Stm32l4x5GpioState *s, unsigned pin)
-   {
-       return extract32(s->pupdr, 2 * pin, 2) == 2;
-   }
-
-> +                new_idr_mask |= (1 << i);
-> +                new_idr &= ~(1 << i);
-> +            }
-> +            /*
-> +             * The only case left is for a disconnected pin
-> +             * without pull-up or pull-down :
-> +             * the value is floating.
-> +             */
-> +        }
-> +    }
-> +
-> +    uint32_t old_idr = s->idr;
-
-Please declare new variable at the beginning of the function.
-(https://www.qemu.org/docs/master/devel/style.html#declarations)
-
-> +    s->idr = (old_idr & ~new_idr_mask) | (new_idr & new_idr_mask);
-> +    trace_stm32l4x5_gpio_update_idr(s->name, old_idr, s->idr);
-> +
-> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
-> +        if (new_idr_mask & (1 << i)) {
-
-Maybe evaluate (new_idr & (1 << i)) and (old_idr & (1 << i)) once
-in local variables?
-
-> +            if ((new_idr & (1 << i)) > (old_idr & (1 << i))) {
-> +                qemu_irq_raise(s->pin[i]);
-> +            } else if ((new_idr & (1 << i)) < (old_idr & (1 << i))) {
-> +                qemu_irq_lower(s->pin[i]);
-> +            }
-> +        }
-> +    }
-> +}
-> +
-> +/*
-> + * Return
-
-"mask of"
-
-> pins both configured in output mode
-> + * and externally driven (except pins in open-drain
-> + * mode externally set to 0).
-> + */
-> +static uint32_t get_gpio_pins_to_disconnect(Stm32l4x5GpioState *s)
-
-Maybe get_gpio_pinmask_to_disconnect() is clearer.
-
-> +{
-> +    uint32_t pins_to_disconnect = 0;
-
-> +    for (int i = 0; i < GPIO_NUM_PINS; i++) {
-> +        /* for each connected pin in output mode */
-> +        if ((~s->disconnected_pins & (1 << i)) &&
-> +            (extract32(s->moder, 2 * i, 2) == 1)) {
-> +            /* if either push-pull or high level */
-> +            if ((extract32(s->otyper, i, 1) == 0) ||
-> +                (extract16(s->pins_connected_high, i, 1)) == 1) { > +                pins_to_disconnect |= (1 << i);
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "Line %d can't be driven externally\n",
-> +                              i);
-> +            }
-> +        }
-> +    }
-> +    return pins_to_disconnect;
-> +}
-
-
-> +static void stm32l4x5_gpio_init(Object *obj)
-> +{
-> +    Stm32l4x5GpioState *s = STM32L4X5_GPIO(obj);
-> +
-> +    memory_region_init_io(&s->mmio, obj, &stm32l4x5_gpio_ops, s,
-> +                          TYPE_STM32L4X5_GPIO, 0x400);
-> +
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-> +
-> +    qdev_init_gpio_out(DEVICE(obj), s->pin, GPIO_NUM_PINS);
-> +    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_gpio_set, GPIO_NUM_PINS);
-> +
-> +    s->clk = qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
-> +
-> +    object_property_add(obj, "disconnected-pins", "uint16",
-> +        disconnected_pins_get, disconnected_pins_set, NULL,
-> +        &s->disconnected_pins);
-
-(alignment is off)
-
-> +    object_property_add(obj, "clock-freq-hz", "uint32",
-> +        clock_freq_get, NULL, NULL, NULL);
-
-(Ditto)
-
-> +}
-> +
-> +static void stm32l4x5_gpio_realize(DeviceState *dev, Error **errp)
-> +{
-> +    Stm32l4x5GpioState *s = STM32L4X5_GPIO(dev);
-
-> +    if (!clock_has_source(s->clk)) {
-> +        error_setg(errp, "GPIO: clk input must be connected");
-> +        return;
-> +    }
-> +}
-
-Mostly style comments, otherwise:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

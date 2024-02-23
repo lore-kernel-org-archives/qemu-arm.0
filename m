@@ -1,88 +1,105 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ba16-20020a0560001c1000b0033b2799815csm3561519wrb.86.2024.02.23.08.24.18
+        by smtp.gmail.com with ESMTPSA id z6-20020a05600c0a0600b0041266f5b041sm2984923wmp.34.2024.02.23.08.28.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Feb 2024 08:24:18 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 80FBD5F781;
-	Fri, 23 Feb 2024 16:24:18 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  David Hildenbrand <david@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,
-  Richard Henderson <richard.henderson@linaro.org>,  Michael Rolnik
- <mrolnik@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-riscv@nongnu.org,  Cleber Rosa
- <crosa@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Song Gao
- <gaosong@loongson.cn>,  qemu-arm@nongnu.org,  Pierrick Bouvier
- <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Nicholas Piggin <npiggin@gmail.com>,
-  qemu-s390x@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Yanan Wang <wangyanan55@huawei.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Mahmoud
- Mandour <ma.mandourr@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
-  Bin Meng <bin.meng@windriver.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Alistair Francis
- <alistair.francis@wdc.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-In-Reply-To: <87jzmv8kwx.fsf@draig.linaro.org> ("Alex =?utf-8?Q?Benn=C3=A9?=
- =?utf-8?Q?e=22's?= message of
-	"Fri, 23 Feb 2024 11:44:30 +0000")
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
-	<20240216163025.424857-19-alex.bennee@linaro.org>
-	<c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
-	<87il2jcje8.fsf@draig.linaro.org>
-	<bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
-	<87bk8ab0f4.fsf@draig.linaro.org>
-	<bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
-	<87zfvtaoqq.fsf@draig.linaro.org>
-	<7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
-	<87cysoajhl.fsf@draig.linaro.org>
-	<f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com>
-	<87plwo8l56.fsf@draig.linaro.org>
-	<308de8f7-5871-4d3d-847c-f4f55fb6f790@daynix.com>
-	<87jzmv8kwx.fsf@draig.linaro.org>
-User-Agent: mu4e 1.11.28; emacs 29.1
-Date: Fri, 23 Feb 2024 16:24:18 +0000
-Message-ID: <878r3b87yl.fsf@draig.linaro.org>
+        Fri, 23 Feb 2024 08:28:46 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 9C7235F938;
+	Fri, 23 Feb 2024 16:22:04 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Song Gao <gaosong@loongson.cn>,
+	qemu-s390x@nongnu.org,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	qemu-ppc@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	John Snow <jsnow@redhat.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Brian Cain <bcain@quicinc.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Michael Rolnik <mrolnik@gmail.com>
+Subject: [PATCH v2 22/27] tests/tcg: expand insn test case to exercise register API
+Date: Fri, 23 Feb 2024 16:21:57 +0000
+Message-Id: <20240223162202.1936541-23-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240223162202.1936541-1-alex.bennee@linaro.org>
+References: <20240223162202.1936541-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: mZbrbDC2bu6L
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: EeIJkKiSBDg6
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+This ensure we at least read every register the plugin API reports at
+least once during the check-tcg checks.
 
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-<snip>
->>> What about if I just key based of gdb_regnum and we accept that that
->>> might break the one heterogeneous system we model today?
->>>=20
->>
->> That's the best option in my opinion. gdbstub won't work well with
->> such a system anyway, and fixing it will need something similar to
->> GHashTable. But if I would fix gdbstub for a heterogeneous system, I
->> would add a field to CPUClass instead of having a GHashTable keyed
->> with tuples of CPUClass pointers and register numbers. It should be
->> fine considering that CPUState already has gdbstub-specific fields
->> like gdb_regs.
->
-> It would be nice to move all register code into CPUClass to avoid
-> repeating ourselves but I suspect that is quite an invasive change for a
-> later series. Currently all the CPUClass values are set on init and
-> shouldn't really be changed after that otherwise we'll have to start
-> messing with locking.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/plugin/insn.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-Peter pointed out we can see different register sets for the same
-CPUClass but with different features enabled which kills that idea. I've
-just sent v2 which re-factors the plugin data a little and stores a per
-CPUPluginState hash table.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c
+index 5fd3017c2b3..54da06fcf26 100644
+--- a/tests/plugin/insn.c
++++ b/tests/plugin/insn.c
+@@ -46,6 +46,25 @@ typedef struct {
+     char *disas;
+ } Instruction;
+ 
++/*
++ * Initialise a new vcpu with reading the register list
++ */
++static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
++{
++    g_autoptr(GArray) reg_list = qemu_plugin_get_registers();
++    g_autoptr(GByteArray) reg_value = g_byte_array_new();
++
++    if (reg_list) {
++        for (int i = 0; i < reg_list->len; i++) {
++            qemu_plugin_reg_descriptor *rd = &g_array_index(
++                reg_list, qemu_plugin_reg_descriptor, i);
++            int count = qemu_plugin_read_register(rd->handle, reg_value);
++            g_assert(count > 0);
++        }
++    }
++}
++
++
+ static void vcpu_insn_exec_before(unsigned int cpu_index, void *udata)
+ {
+     unsigned int i = cpu_index % MAX_CPUS;
+@@ -212,6 +231,8 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+         sizes = g_array_new(true, true, sizeof(unsigned long));
+     }
+ 
++    /* Register init, translation block and exit callbacks */
++    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
+     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+     return 0;
+-- 
+2.39.2

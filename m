@@ -1,255 +1,123 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x1-20020a05600c2a4100b0041292306f2csm2019847wme.16.2024.02.23.03.44.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Feb 2024 03:44:31 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 95A3D5F88C;
-	Fri, 23 Feb 2024 11:44:30 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  David Hildenbrand <david@redhat.com>,  Weiwei Li <liwei1518@gmail.com>,
-  Richard Henderson <richard.henderson@linaro.org>,  Michael Rolnik
- <mrolnik@gmail.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-riscv@nongnu.org,  Cleber Rosa
- <crosa@redhat.com>,  Thomas Huth <thuth@redhat.com>,  Song Gao
- <gaosong@loongson.cn>,  qemu-arm@nongnu.org,  Pierrick Bouvier
- <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,
-  =?utf-8?Q?C=C3=A9dric?= Le
- Goater <clg@kaod.org>,  Nicholas Piggin <npiggin@gmail.com>,
-  qemu-s390x@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>,  Yanan Wang <wangyanan55@huawei.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Mahmoud
- Mandour <ma.mandourr@gmail.com>,  Alexandre Iooss <erdnaxe@crans.org>,
-  Bin Meng <bin.meng@windriver.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Alistair Francis
- <alistair.francis@wdc.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH 18/23] plugins: add an API to read registers
-In-Reply-To: <308de8f7-5871-4d3d-847c-f4f55fb6f790@daynix.com> (Akihiko
-	Odaki's message of "Fri, 23 Feb 2024 19:58:40 +0900")
-References: <20240216163025.424857-1-alex.bennee@linaro.org>
-	<20240216163025.424857-19-alex.bennee@linaro.org>
-	<c38a22b5-01e8-40f1-bfc4-4bba9bf7b516@daynix.com>
-	<87il2jcje8.fsf@draig.linaro.org>
-	<bf31a250-9539-448c-9c64-4168ab8741f1@daynix.com>
-	<87bk8ab0f4.fsf@draig.linaro.org>
-	<bf5e9471-c09f-47f2-a5a3-83713255c47a@daynix.com>
-	<87zfvtaoqq.fsf@draig.linaro.org>
-	<7e4b4ba6-3683-464f-ac37-3b7f19455643@daynix.com>
-	<87cysoajhl.fsf@draig.linaro.org>
-	<f4b0b535-9e2b-47c7-a84b-afd851deb88a@daynix.com>
-	<87plwo8l56.fsf@draig.linaro.org>
-	<308de8f7-5871-4d3d-847c-f4f55fb6f790@daynix.com>
-User-Agent: mu4e 1.11.28; emacs 29.1
-Date: Fri, 23 Feb 2024 11:44:30 +0000
-Message-ID: <87jzmv8kwx.fsf@draig.linaro.org>
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp524670ejf;
+        Fri, 23 Feb 2024 04:25:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUE5aLhrT+PiTjGh7xg7VtI+3Y/7lpqov50LpCvqbrHMQ67ObHgs1FikxwKX3SkWtEw2oe+EcpAlXIWLorjQOrMh8SoZc6D
+X-Google-Smtp-Source: AGHT+IFY5YPNALr9E0knjizDPEX2Wcc1tP991nvYc4t3IwSDRk6D7s9KG/9cJsIf/sDm2meWbK1A
+X-Received: by 2002:a05:620a:16b7:b0:787:18cc:722f with SMTP id s23-20020a05620a16b700b0078718cc722fmr1890252qkj.32.1708691099997;
+        Fri, 23 Feb 2024 04:24:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708691099; cv=none;
+        d=google.com; s=arc-20160816;
+        b=muq7EQVCcwbULYQqy7dzvIzXXaaSLoySTQ3IS62q9AD6JwHJ9UIEHmXjqoYhKaLH21
+         jyBSyuP7fn7Klowvzkb9+EN/bdPIoMUaRNUHFlfn5XNkHomX4RQ6ttRqtIxQI/GE4Kbl
+         2mhuiTaBjNIpPIh3SVsnOrS2zitAwWpecDN8dxAxO1KtGPU6SKm9hHgg6abmnMN08sCw
+         SAOZE/AAz2JFT/fWtINpRE2eJkfrSNleayg07UUNvyJgc7DaCOIvd4F/pas6lPPj3O5A
+         YBh1kRfiLxa3sgSs4NzvFoVQYMfiqwd+R7MbMNzf6mdRRamBKnmuzmGnjh7CcdBbJi7n
+         QXng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:message-id
+         :content-disposition:content-transfer-encoding:mime-version
+         :in-reply-to:references:cc:user-agent:date:subject:to;
+        bh=ItPr9qUB+GjntLufq9Xu8K+RE6F6Dz8Yj70r61DhBTg=;
+        fh=NWXK+soNBNwUlRKo/DNqaPDpwxgBgYocd8nbduM0pME=;
+        b=uNXO32T0+H1CtTdCynvBr2CpEY6FtGdBF87rWnU8H3cJymYmqGovqpDwuBTf5VeyLh
+         +4hX7Pp89Ajgi31Yjs2v5xuuGeaLkjcpP8ZEdLuC0eiB5x+tp5yukUVCDGPr41DVHqCQ
+         xbooDoUl6pM9SgKRqs1jSahC47tao//BMozU12m5FS5Lx97rw9LhGxdYePWKqhc5Y06r
+         GXrlmokRZFxtY+F/cVfw6R/Pwen6zcgymqDRzmrkrigzx10us3ukUWiOEu6VXj1ExzKe
+         XVZjBFCPWPo9iRt8Qga++QRQIsBTTnxQZsmPS983nXtTMz9r6NJQpA6q3xgEXsqt2f7B
+         /f7g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z24-20020ae9c118000000b00787b3743293si924754qki.236.2024.02.23.04.24.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 23 Feb 2024 04:24:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdUbi-0006qt-CW; Fri, 23 Feb 2024 07:24:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1rdUaX-0006L9-8k; Fri, 23 Feb 2024 07:23:37 -0500
+Received: from smtpx.feld.cvut.cz ([147.32.210.153] helo=smtpx.fel.cvut.cz)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
+ (Exim 4.90_1) (envelope-from <pisa@cmp.felk.cvut.cz>)
+ id 1rdUaV-00006o-6J; Fri, 23 Feb 2024 07:23:37 -0500
+Received: from localhost (unknown [192.168.200.27])
+ by smtpx.fel.cvut.cz (Postfix) with ESMTP id 0C61D3AD52;
+ Fri, 23 Feb 2024 13:23:23 +0100 (CET)
+X-Virus-Scanned: IMAP STYX AMAVIS
+Received: from smtpx.fel.cvut.cz ([192.168.200.2])
+ by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
+ with ESMTP id nXzd0wcDCi4W; Fri, 23 Feb 2024 13:23:22 +0100 (CET)
+Received: from baree.pikron.com (ip-78-102-109-231.bb.vodafone.cz
+ [78.102.109.231])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pisa)
+ by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id 959EB3ABD4;
+ Fri, 23 Feb 2024 13:23:21 +0100 (CET)
+To: Francisco Iglesias <francisco.iglesias@amd.com>
+Subject: Re: [PATCH 16/21] hw/net/can/versal: Prefer object_initialize_child
+ over object_initialize
+Date: Fri, 23 Feb 2024 13:23:49 +0100
+User-Agent: KMail/1.9.10
+Cc: "Philippe =?utf-8?q?Mathieu-Daud=C3=A9?=" <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>
+References: <20240216110313.17039-1-philmd@linaro.org>
+ <20240216110313.17039-17-philmd@linaro.org>
+ <9f3cb497-d49c-4a35-b365-847ae1b60b08@amd.com>
+In-Reply-To: <9f3cb497-d49c-4a35-b365-847ae1b60b08@amd.com>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: Text/Plain;
+  charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: VvpbZuTdpRE8
+Content-Disposition: inline
+Message-Id: <202402231323.49183.pisa@cmp.felk.cvut.cz>
+Received-SPF: none client-ip=147.32.210.153;
+ envelope-from=pisa@cmp.felk.cvut.cz; helo=smtpx.fel.cvut.cz
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, KHOP_HELO_FCRDNS=0.257,
+ NICE_REPLY_A=-2.533, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Pavel Pisa <pisa@cmp.felk.cvut.cz>
+From:  Pavel Pisa via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HeTekLXQfRGl
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+On Friday 23 of February 2024 12:06:34 Francisco Iglesias wrote:
+> On 2024-02-16 12:03, Philippe Mathieu-Daud=C3=A9 wrote:
+> > When the QOM parent is available, prefer object_initialize_child()
+> > over object_initialize(), since it create the parent relationship.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+> Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
 
-> On 2024/02/23 2:27, Alex Benn=C3=A9e wrote:
->> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>=20
->>> On 2024/02/22 19:20, Alex Benn=C3=A9e wrote:
->>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>
->>>>> On 2024/02/21 23:14, Alex Benn=C3=A9e wrote:
->>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>
->>>>>>> On 2024/02/21 19:02, Alex Benn=C3=A9e wrote:
->>>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>>>
->>>>>>>>> On 2024/02/20 23:14, Alex Benn=C3=A9e wrote:
->>>>>>>>>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>>>>>>>>
->>>>>>>>>>> On 2024/02/17 1:30, Alex Benn=C3=A9e wrote:
->>>>>>>>>>>> We can only request a list of registers once the vCPU has been
->>>>>>>>>>>> initialised so the user needs to use either call the get funct=
-ion on
->>>>>>>>>>>> vCPU initialisation or during the translation phase.
->>>>>>>>>>>> We don't expose the reg number to the plugin instead hiding it
->>>>>>>>>>>> behind
->>>>>>>>>>>> an opaque handle. This allows for a bit of future proofing sho=
-uld the
->>>>>>>>>>>> internals need to be changed while also being hashed against t=
-he
->>>>>>>>>>>> CPUClass so we can handle different register sets per-vCPU in
->>>>>>>>>>>> hetrogenous situations.
->>>>>>>>>>>> Having an internal state within the plugins also allows us to =
-expand
->>>>>>>>>>>> the interface in future (for example providing callbacks on re=
-gister
->>>>>>>>>>>> change if the translator can track changes).
->>>>>>>>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>>>>>>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>>>>>>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>>>>>>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>>>>>>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>>>>>>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>>>>>> <snip>
->>>>>>>>>>>> +/*
->>>>>>>>>>>> + * Register handles
->>>>>>>>>>>> + *
->>>>>>>>>>>> + * The plugin infrastructure keeps hold of these internal data
->>>>>>>>>>>> + * structures which are presented to plugins as opaque handle=
-s. They
->>>>>>>>>>>> + * are global to the system and therefor additions to the has=
-h table
->>>>>>>>>>>> + * must be protected by the @reg_handle_lock.
->>>>>>>>>>>> + *
->>>>>>>>>>>> + * In order to future proof for up-coming heterogeneous work =
-we want
->>>>>>>>>>>> + * different entries for each CPU type while sharing them in =
-the
->>>>>>>>>>>> + * common case of multiple cores of the same type.
->>>>>>>>>>>> + */
->>>>>>>>>>>> +
->>>>>>>>>>>> +static QemuMutex reg_handle_lock;
->>>>>>>>>>>> +
->>>>>>>>>>>> +struct qemu_plugin_register {
->>>>>>>>>>>> +    const char *name;
->>>>>>>>>>>> +    int gdb_reg_num;
->>>>>>>>>>>> +};
->>>>>>>>>>>> +
->>>>>>>>>>>> +static GHashTable *reg_handles; /* hash table of PluginReg */
->>>>>>>>>>>> +
->>>>>>>>>>>> +/* Generate a stable key - would xxhash be overkill? */
->>>>>>>>>>>> +static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_reg=
-num)
->>>>>>>>>>>> +{
->>>>>>>>>>>> +    uintptr_t key =3D (uintptr_t) cs->cc;
->>>>>>>>>>>> +    key ^=3D gdb_regnum;
->>>>>>>>>>>> +    return GUINT_TO_POINTER(key);
->>>>>>>>>>>> +}
->>>>>>>>>>>
->>>>>>>>>>> I have pointed out this is theoretically prone to collisions and
->>>>>>>>>>> unsafe.
->>>>>>>>>> How is it unsafe? The aim is to share handles for the same CPUCl=
-ass
->>>>>>>>>> rather than having a unique handle per register/cpu combo.
->>>>>>>>>
->>>>>>>>> THe intention is legitimate, but the implementation is not safe. =
-It
->>>>>>>>> assumes (uintptr)cs->cc ^ gdb_regnum is unique, but there is no s=
-uch
->>>>>>>>> guarantee. The key of GHashTable must be unique; generating hashe=
-s of
->>>>>>>>> keys should be done with hash_func given to g_hash_table_new().
->>>>>>>> This isn't a hash its a non-unique key. It is however unique for
->>>>>>>> the same register on the same class of CPU so for each vCPU in a s=
-ystem
->>>>>>>> can share the same opaque handles.
->>>>>>>> The hashing is done internally by glib. We would assert if there w=
-as
->>>>>>>> a
->>>>>>>> duplicate key referring to a different register.
->>>>>>>> I'm unsure what you want here? Do you have a suggestion for the key
->>>>>>>> generation algorithm? As the comment notes I did consider a more c=
-omplex
->>>>>>>> mixing algorithm using xxhash but that wouldn't guarantee no clash
->>>>>>>> either.
->>>>>>>
->>>>>>> I suggest using a struct that holds both of cs->cc and gdb_regnum, =
-and
->>>>>>> pass g_direct_equal() and g_direct_hash() to g_hash_table_new().
->>>>>> We already do:
->>>>>>            if (!reg_handles) {
->>>>>>                reg_handles =3D g_hash_table_new(g_direct_hash, g_dir=
-ect_equal);
->>>>>>            }
->>>>>> But we can't use g_direct_equal with something that exceeds the
->>>>>> width of
->>>>>> gpointer as it is a straight equality test of the key. What you are
->>>>>> suggesting requires allocating memory for each key and de-referencing
->>>>>> with a custom GEqualFunc.
->>>>>
->>>>> My bad. I wrongly remembered g_direct_equal() and g_direct_hash(). It
->>>>> indeed seems to need a more complicated solution.
->>>>>
->>>>> It is possible to write a GEqualFunc and a GHashFunc that consumes a
->>>>> struct but it is a chore. How about having a two-level GHashTable?
->>>>> reg_handles will be a GHashTable keyed with cs->cc, and another
->>>>> GHashTable will be keyed with gdb_regnum.
->>>> That still seems overkill for a clash that can't happen. What do you
->>>> think about the following:
->>>>     /*
->>>>      * Generate a stable key shared across CPUs of the same class
->>>>      *
->>>>      * In order to future proof for up-coming heterogeneous work we wa=
-nt
->>>>      * different entries for each CPU type while sharing them in the
->>>>      * common case of multiple cores of the same type. This makes the
->>>>      * assumption you won't see two CPUClass pointers that are similar
->>>>      * enough that the low bits mixed with different registers numbers
->>>>      * will give you the same key.
->>>>      *
->>>>      * The build time assert will fire if CPUClass goes on a sudden di=
-et
->>>>      * and we assert further down if we detect two keys representing
->>>>      * different regnums. In practice allocations of CPUClass are much
->>>>      * farther apart making clashes practically impossible.
->>>>      */
->>>>     static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
->>>>     {
->>>>         uintptr_t key =3D (uintptr_t) cs->cc;
->>>>         /* this protects some of the assumptions above */
->>>>         qemu_build_assert(sizeof(*cs->cc) >=3D 256);
->>>>         key ^=3D gdb_regnum;
->>>>         return GUINT_TO_POINTER(key);
->>>>     }
->>>
->>>
->>> I think the assertion and comments are overkill. Doesn't having a
->>> nested GHashTable save some words you have to wrote for the
->>> assumption?
->> A nested hash table for a single entry is overkill.
->
-> You mean that the first level will be indexed by only one CPUClass (or
-> few if we support a heterogeneous system).
->
-> I think it's still OK though. It's not like we will need more code
-> when having few entries.
->
->>=20
->>> I'm also not quite convinced that the comments and assertions are
->>> enough to say this hack is safe; what if some sort of pointer
->>> authentication is added and shuffles bits? Will this hack be
->>> compatible with static and dynamic checkers we may have in the future?
->> We are not using the value as a pointer so that should be irrelevant
->> although generally those bits tend to be at the top of pointers so they
->> can be masked off.
->> I'm not sure what we are trying to achieve here. I've got something
->> that
->> works, doesn't fail any tests and has some guards in for potential
->> future problems. At the same time I'm not prepared to over-engineer the
->> solution for a theoretical future problem we haven't got yet.
->> What about if I just key based of gdb_regnum and we accept that that
->> might break the one heterogeneous system we model today?
->>=20
->
-> That's the best option in my opinion. gdbstub won't work well with
-> such a system anyway, and fixing it will need something similar to
-> GHashTable. But if I would fix gdbstub for a heterogeneous system, I
-> would add a field to CPUClass instead of having a GHashTable keyed
-> with tuples of CPUClass pointers and register numbers. It should be
-> fine considering that CPUState already has gdbstub-specific fields
-> like gdb_regs.
-
-It would be nice to move all register code into CPUClass to avoid
-repeating ourselves but I suspect that is quite an invasive change for a
-later series. Currently all the CPUClass values are set on init and
-shouldn't really be changed after that otherwise we'll have to start
-messing with locking.=20
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>

@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp475764ejf;
-        Fri, 23 Feb 2024 02:36:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXBpp/BPfbvklJ3HAfIw1hnbpOY+QeML948h5qy8NsUCpuOxlwVnQllUcXaGgRg1siK73mPt4WHUdyOMwBTC9YpKDyIfCXJ
-X-Google-Smtp-Source: AGHT+IEA7YFam04Qdn2aDMzl4ZUN0e3Ox5I7Zu6326id2NO2SzZaP+ffpAL9MnHL+IIblT+v1a8a
-X-Received: by 2002:a05:620a:4ad9:b0:787:34f6:a706 with SMTP id sq25-20020a05620a4ad900b0078734f6a706mr1604249qkn.28.1708684575356;
-        Fri, 23 Feb 2024 02:36:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708684575; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp475775ejf;
+        Fri, 23 Feb 2024 02:36:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVpq/i9Qludqujxj3wvbEK/MyT44YJ2oB2VVse13fLGFAJYUQMkYWfyugCR3rmtumub5gIIFkC7OMRPiEfGuRHKnx0/04KZ
+X-Google-Smtp-Source: AGHT+IHz7kn1loR+tMIq7h+C0v5Rq9BP2rhp2sJMae7vkdkDyMIwCTrV6+uzg6QHYZ4JkOFqTWyX
+X-Received: by 2002:ae9:c00d:0:b0:787:54a5:9047 with SMTP id u13-20020ae9c00d000000b0078754a59047mr1568324qkk.34.1708684576628;
+        Fri, 23 Feb 2024 02:36:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708684576; cv=none;
         d=google.com; s=arc-20160816;
-        b=l4ZXhtheqOvRmI9q9n1Stedoj1g1EDUzGun9NDLHh3cCeQo48rbrsCXCP/M7m2WLqe
-         xeGCMSEYQXxEKu5sP2ylTSPoxFfcjD3xNFrq+QPq7pjLdTT5O5wQMKwU0I0tsNa5QO/W
-         w7Cmmsjf+3R4bJg5W0mVCHC3P4QZmHO6bmzSeUmXwQPuzIOgZmidQ/L36Xg1gdJ4DkE9
-         xX4Fput/Gv0buNCoAO4NE0EFjcwDXOUBg9pOi1+vyG/2dOXYw2PkERHA84MZlrx3nL9j
-         AcVNV0f9J2rRgll0io2X3Sn7opLl6j/1Xg3j/KCj36Zo+UfgaLDSpKnlqu1mfVntzCN1
-         2Yhw==
+        b=0WwPyGnqrcwbsYFxW7bfALDlzc3Bxvo/uQH77iuIoHPtgyXqSCxQnBXzW/GbE4gTjk
+         EhpJ4ZlL0RqPjIxniXGsUaiceHASpq7uorkuqtaWjONlERgsc8nsc4lixrH67c3b/HXj
+         I/tO7Q69cnvr2ERVPTbqPF++CaBj8KhydXE8nIEVEW79xPl+HuhJs9TTIN2NNHucBUO+
+         Pr4fnERDp8l6Jk8x7dhAZ9u+RWjeZ1XdklzMHbftAbfkf6PtVtPiVD/qYAHBBk6VVcGi
+         2DQxnTKL++sz6WE/GGG7kR1PKzhbpezeag7PVIN0Gu21Y53XYgm4SAWZrTj5TjVBOM0x
+         PIog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=eRsUkGa7Jvv79xD9g59IGAS3tdFCCgpcqm7xCLyO4I4=;
+        bh=AP0vRndxyzavblfdljz8Ch5ekNLwcxhz21EI1N0rnLo=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=Rux5D9AV/i3GPV/Pg0C3CqtCLn+eBT/fCiXXmre2cGd+VOh+wxKGdQOYi2/p6QH1jZ
-         4cygIPcWHwkRaQ9kgZ8LObsllZCV1UvWC8qs8oO41GIK532Z7ei+iDgs/3barpSQ2p3B
-         9XXYy+6CCaDFbghTplddGdarbOR/1rY9p8Z3PIHjdXa+I9EmXJ9okCKHYnhFnnNMt1kP
-         joH47NXCELk63e50SuBnDP8G0HWZcmmziek3Xo3Gq+Lcp0TB9fJTC65yuqYk0wa7l/In
-         AmO6emtGS5gqBLNU0I6dh8XdAd/V3kNp98rNJHrE8Nn9T8i+Yok3Qs4lLLOHxeiZwaHC
-         qYzA==;
+        b=t3AslrSmAD2qYJ0mkutveKSZ4XV7MOcyy/L04UhAFbF3+Rwhz9syboKFAlZr1AYPZG
+         NCZLLyszASmRgBXTU41wFyWNM1RYoQBb5ptwY6Dp4eiAilHBkMVBxjgVRcGWDf2j5JMv
+         rketXstaKuKTLKzWVdrKunqKwYA34VETQM4C+idu5k1UBCOxzmVxsQXDfGLUJoJDIJrn
+         Ag2iTmnk1jJ5C5sUW9hsxpsTVNKYxV+5Qx0/BV6g0meyv9USvjIkZW5jGynxFIIQzSng
+         zFlTWv9HxpMzTVrWeQrdLs40OssUInboo1MK4/E6scZdPd16BxYJek3Z1lPxPFFyOLkr
+         kpjQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id os9-20020a05620a810900b0078734fe5612si14793482qkn.656.2024.02.23.02.36.15
+        by mx.google.com with ESMTPS id h6-20020a05620a13e600b007875c8bb93csi12545273qkl.554.2024.02.23.02.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 02:36:15 -0800 (PST)
+        Fri, 23 Feb 2024 02:36:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,32 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdSsv-0003r6-VN; Fri, 23 Feb 2024 05:34:30 -0500
+	id 1rdStB-0004CY-2z; Fri, 23 Feb 2024 05:34:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rdSsY-0003eK-Oe; Fri, 23 Feb 2024 05:34:08 -0500
+ id 1rdSsV-0003c9-Ua; Fri, 23 Feb 2024 05:34:05 -0500
 Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rdSsP-0001wP-PO; Fri, 23 Feb 2024 05:34:06 -0500
+ id 1rdSsP-0001wr-PM; Fri, 23 Feb 2024 05:34:02 -0500
 Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Th5sJ2bZ3z1h05D;
- Fri, 23 Feb 2024 18:31:32 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Th5pF1gF8z1FLGr;
+ Fri, 23 Feb 2024 18:28:53 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id C420F1400CC;
- Fri, 23 Feb 2024 18:33:42 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 1A8851400CC;
+ Fri, 23 Feb 2024 18:33:47 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Fri, 23 Feb
- 2024 18:33:42 +0800
+ 2024 18:33:46 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v3 09/21] target/arm: Handle PSTATE.ALLINT on taking an
- exception
-Date: Fri, 23 Feb 2024 10:32:09 +0000
-Message-ID: <20240223103221.1142518-10-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v3 14/21] hw/intc/arm_gicv3_redist: Implement GICR_INMIR0
+Date: Fri, 23 Feb 2024 10:32:14 +0000
+Message-ID: <20240223103221.1142518-15-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240223103221.1142518-1-ruanjinjie@huawei.com>
 References: <20240223103221.1142518-1-ruanjinjie@huawei.com>
@@ -102,40 +101,76 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lu0zLDfxwA6z
+X-TUID: igQqfgFKLvBv
 
-Set or clear PSTATE.ALLINT on taking an exception to ELx according to the
-SCTLR_ELx.SPINTMASK bit.
+Add GICR_INMIR0 register and support access GICR_INMIR0.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3:
-- Add Reviewed-by.
----
- target/arm/helper.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/intc/arm_gicv3_redist.c | 23 +++++++++++++++++++++++
+ hw/intc/gicv3_internal.h   |  1 +
+ 2 files changed, 24 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index eb97ce0356..0a69638651 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11532,6 +11532,15 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-         }
-     }
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 8153525849..87e7823f34 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -35,6 +35,15 @@ static int gicr_ns_access(GICv3CPUState *cs, int irq)
+     return extract32(cs->gicr_nsacr, irq * 2, 2);
+ }
  
-+    if (cpu_isar_feature(aa64_nmi, cpu) &&
-+        (env->cp15.sctlr_el[new_el] & SCTLR_NMI)) {
-+        if (!(env->cp15.sctlr_el[new_el] & SCTLR_SPINTMASK)) {
-+            new_mode |= PSTATE_ALLINT;
-+        } else {
-+            new_mode &= ~PSTATE_ALLINT;
-+        }
-+    }
++static void gicr_write_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
++                                  uint32_t *reg, uint32_t val)
++{
++    /* Helper routine to implement writing to a "set" register */
++    val &= mask_group(cs, attrs);
++    *reg = val;
++    gicv3_redist_update(cs);
++}
 +
-     pstate_write(env, PSTATE_DAIF | new_mode);
-     env->aarch64 = true;
-     aarch64_restore_sp(env, new_el);
+ static void gicr_write_set_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
+                                       uint32_t *reg, uint32_t val)
+ {
+@@ -406,6 +415,13 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
+         *data = value;
+         return MEMTX_OK;
+     }
++    case GICR_INMIR0:
++        if (!cs->gic->nmi_support) {
++            *data = 0;
++            return MEMTX_OK;
++        }
++        *data = gicr_read_bitmap_reg(cs, attrs, cs->gicr_isuperprio);
++        return MEMTX_OK;
+     case GICR_ICFGR0:
+     case GICR_ICFGR1:
+     {
+@@ -555,6 +571,13 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+         gicv3_redist_update(cs);
+         return MEMTX_OK;
+     }
++    case GICR_INMIR0:
++        if (!cs->gic->nmi_support) {
++            return MEMTX_OK;
++        }
++        gicr_write_bitmap_reg(cs, attrs, &cs->gicr_isuperprio, value);
++        return MEMTX_OK;
++
+     case GICR_ICFGR0:
+         /* Register is all RAZ/WI or RAO/WI bits */
+         return MEMTX_OK;
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 29d5cdc1b6..f35b7d2f03 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -109,6 +109,7 @@
+ #define GICR_ICFGR1           (GICR_SGI_OFFSET + 0x0C04)
+ #define GICR_IGRPMODR0        (GICR_SGI_OFFSET + 0x0D00)
+ #define GICR_NSACR            (GICR_SGI_OFFSET + 0x0E00)
++#define GICR_INMIR0           (GICR_SGI_OFFSET + 0x0F80)
+ 
+ /* VLPI redistributor registers, offsets from VLPI_base */
+ #define GICR_VPROPBASER       (GICR_VLPI_OFFSET + 0x70)
 -- 
 2.34.1
 

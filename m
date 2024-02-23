@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp525694ejf;
-        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUXh79tw0Vy2VgVYirktdAwe+UKMru8BfJyQg9oATtm8kspXoWa4/mK71nLdBRALD9XuxKlP9gkDzMwksqekkXd4lRqcXqr
-X-Google-Smtp-Source: AGHT+IEtgsOEgkHLHBh5T2RFMA7clc9Bxi/MxJTmvH3eptA6d/lSKFcb9f0GaLl4oOIPr1jm7eL+
-X-Received: by 2002:a05:6902:1351:b0:dc7:1d:5db4 with SMTP id g17-20020a056902135100b00dc7001d5db4mr2092551ybu.34.1708691233063;
-        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708691233; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp525755ejf;
+        Fri, 23 Feb 2024 04:27:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXFY+xG0AJQ5lvMkJsPAK0Y08lTAglL13SVCetoEI+UqOgjD8u4jBun+U24G6e7ERnO2LcEz1J5ba/B1/gzKMQdo5T3YA5t
+X-Google-Smtp-Source: AGHT+IElRk6z0+YK1oMHx37LOFMUnEwmwXkN5XcP64GYbIE+teEeI6CMynSUQBJNh2omqwoxKUIV
+X-Received: by 2002:a05:622a:1056:b0:42e:5a82:2956 with SMTP id f22-20020a05622a105600b0042e5a822956mr2482889qte.33.1708691241529;
+        Fri, 23 Feb 2024 04:27:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708691241; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZsJGAiUkA5AAtbSuDAbF6wFxvH8CZNNWOgoylgpbmpsy8h1sp/SoZslu7jstKVIX1
-         u4J6D+8L0itm5gQOfXhNVexkleffT3zn16u3w7SkBBbiE4ETklNQk+ImruaSCMI5AzV7
-         dlkKhCBIERpThLSZRrD5T4whttlPkavooPLVxSfeBewHPmxetEVzkreP5jpLsaPV5NZy
-         K01+Wfrkabkd0PFiyFwIDYygX06aQi8VjuF5LSgFhWsM2cL9DwQu8RgpDalqgdEU7AEx
-         F0teeCR1YcN9oi8lEZnLmBLxjpolZo6hFPmU9gJ6SMwFy2vPc5h1AkQ4psAS3wDFg2c9
-         jqfw==
+        b=TDCGx+xiJ0KlVwan6VlIZ8tEhdLr6gNWRXobT2/UIMHjLOZPbYbguBW05LIKjykpuf
+         fklcuIIGbg1/GHaGCAac0NJk5ZYpzUCH3ZBpmS9A4l2rFYgUPCc0LTdDynXUHUXMdVr2
+         i1cZ90xfQCx93giPm0heH2tyD4Wp7e5OaqH9kCRHIiT8/VsF03Ex0Gi3tjpa5WivapJg
+         nPGs9ElIMcV6AVSc/DKbzt/zNzOd/kbZz3qauTE5BzRlyAajUySyIPvu1ynxxG+BZfmX
+         YiSkkCM9HgJVfR32J0JceS1q99K7kVr+6F3FBVCXAVd4xU5xCDKC8oZ3GknTwcjhuwMx
+         Yj8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
+        bh=idKcpIcniaL8IAn26qKaZe0/gBqZXOItKcX8UBMnGYY=;
         fh=NzHT1zli0NSjL1HfuceSHymolyCFY2nEd3hPf6oVDX4=;
-        b=c0l9S1HbqgUEmuxUfmOQy/HOClUCXy/qflxdVnLWIbkREoeJxCIkH2++8YdIwvLoYn
-         YpoBKVebhYaFBJ8kOo8g1L9hYeNrVPtZV+TqWP35Hoye1ypB5Muxi+RyUk+hKsCV+pNf
-         /yr5Hmy5dHL0QDOOM/MFhkxvremw+vp/yXj2K9dUhwhdla97qEJcrMg+LqiaVP50Su8k
-         GnMI72+d9AvvVfp+T9NSgcIEYYNhfgwMSuBFdJXhN/uCVLlroLcD5n3XRxyLXDL3EVy6
-         mGGOjvBWIvZ4qvZzAtoErjEvQFQxkp/qcRnhJETcI2/mbpy348UedOYa7t3lqWySk1g1
-         CbsQ==;
+        b=jG91xRKEyIclaq3+n4Oa0gxQ+GKnw5pQHI/kcLv1TKWuHMFJBYRagr3/mVRUlc3qGe
+         VrT54lQNh6ZVriOCG4Dzh/mdaYhieu7Q1nOQGdCJcA7XTcs5wL2wiffS35WUUpEA9Lji
+         mXKdP8ou/6Z2Kxa1C7rAnOfz3biWQpNXfap0L4rBCxOl+UaPiukLz0ov0nma7KBvIxc4
+         DdjKJDz7wfE5Htdpa66ZiAffIMvZcXR3jN3A/UgEGtEhJdrsf2d87TKNXfKipe7TtC5j
+         OKMVg942qX/aRDRqpQSVuz9KyuFcGXU0r9gaaG8QI9G9kz0YTMUAP5MQz6L24p90waCR
+         Wz/w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vCgbjEtj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eMCfVHgZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c19-20020ac85a93000000b0042df364fbd7si15331769qtc.546.2024.02.23.04.27.12
+        by mx.google.com with ESMTPS id w21-20020ac843d5000000b0042e165bf5fbsi9855699qtn.724.2024.02.23.04.27.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 04:27:13 -0800 (PST)
+        Fri, 23 Feb 2024 04:27:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vCgbjEtj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eMCfVHgZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdUde-0002nJ-Jv; Fri, 23 Feb 2024 07:26:50 -0500
+	id 1rdUdz-0003mz-8m; Fri, 23 Feb 2024 07:27:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUcA-0007Jx-59
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:25:18 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUd7-0000x0-4g
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:26:17 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUc8-0000Uq-Ir
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:25:17 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4128fe4b8c8so5420575e9.1
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 04:25:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdUd4-0000iH-BO
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 07:26:16 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-41276a43dc3so5610895e9.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 04:26:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708691115; x=1709295915; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708691172; x=1709295972; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
- b=vCgbjEtjHGJaJHoWUMuMA7uLXovXPiJqTaAHqtvbW7VFMG0A9d8fBYmHsxI/bFEhqw
- NxmGfdZBGWr02gC0UzHAyC+hFGz8rg0goWDRdF0TEL+ncNuJEUePl5loZ7Q8UZBjr/+t
- fDneHj2DZrH/Kp0emlQVG5mJS+3XJwaqSl1/ZQOSafeGnyG1GSKOivy+BH0eODgRP3gU
- sExGKp0mQa/TNx/YjB5DSlyLN/XLgAvgzwy80RT0wVlI8WiyoebU6TQYF9yPjk+8yqrO
- EQGEqaRDLk9+tkz1p+BtLmx7iBZyT3NYKyou9DUQGegRGQcPjXBYPAQz7rRbC9Zv1fy1
- d9qg==
+ bh=idKcpIcniaL8IAn26qKaZe0/gBqZXOItKcX8UBMnGYY=;
+ b=eMCfVHgZr6CMQ92pKVaJzLYxK3/CQUfj9Wbi5zkO57bwsTW/DhlfAX/vmXRXZ67pX2
+ zSrNuQjFbefJfV+++fyZFjLkgTimO3y49WoBxbBL6GCbp0ZAdAKtJh5rPafVNB6fuIh7
+ zULYQD2S0pHd71B1hecgyLgrWA0D+Y1ae01I8oIRiinzF87Rs6SFAaok8Ubbt9ivvEaL
+ odG6V6SknD0g7N+ABok4RfRhh1EwaS+cBRx7oKDBTStGw6z3pPDwocpZ9A8AKLJy6GE0
+ 2KpgIwd6Xu7IvaeZz6yAeHs06/AiTTpJRpDeMW5ll4XZ+hlARdAtxHXZFPfCp1DeL78A
+ oTcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708691115; x=1709295915;
+ d=1e100.net; s=20230601; t=1708691172; x=1709295972;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zfoVqz9hrWMYTu3FBjcdg+zNi/5qfs8T/qrZe8dDN4Y=;
- b=b4b8iidWjDMXD/EH9rIdnbDwqcsEA1bJ0kqNhEL48OKJUTJxN8drStn/RnMHaVZGK+
- w4xlWy0Z5foNoA/BkpVfIYt/XogHKM/O0L40bYWvNmFijwMxbT4jA/TU+BsvCqQ7HlqS
- bt4xrw/I+h/gNXCr97JNZlXE+aXhSDDOiLwnMlqrsrxEB/FNV8FTAYEFj43W9VYIH6Tj
- g6NlCMPVSGn38fHNo077oE7/pENU/5XKYxS98+81KD0t03TN+IWnbk7EaRpKZFKH+wbu
- hRIqnAc2Rk4Whpe4FTSoC5CItjUUc2XwdwK2hNLcoGpd/P+6pkjIHKqkAAeGQK0v25Fz
- /ZCw==
-X-Gm-Message-State: AOJu0YxGDDCqhkY48S0eOKfAKZ4zl8BEcY8IbTaIjiBE4SolkehGpSgt
- /friFe5v158IPf91Mdkh0chMpdM9Ud21MqBlq/JZyYdYdEbppPqgpkHxQPqaFOA=
-X-Received: by 2002:adf:eb51:0:b0:33d:88c1:31b8 with SMTP id
- u17-20020adfeb51000000b0033d88c131b8mr1378718wrn.60.1708691114979; 
- Fri, 23 Feb 2024 04:25:14 -0800 (PST)
+ bh=idKcpIcniaL8IAn26qKaZe0/gBqZXOItKcX8UBMnGYY=;
+ b=p4yqPtx3Mob2s6kNnD0JSPEIxlzmjlkqPLZNPbielKCkXBZtKPCQHL1+/ypxKfhNjM
+ slT6KbrcCs4QRxgvCqlQ6qobgMIG7sslGYg6hWr7em8qROKi+5mTd7T2ri1EPAbIoxnP
+ K82o0KqQq7SGVVNC7ErLrJXfNZs5ezEe0SD/krNsFa4TBSNGMTqWhHTYjQePBig8N+0i
+ MKazL9sG5sE2U9dj3Qx6Ez+igpHI0NjQ3103bZ9GZH0ABn/4a4tO/kvJMgbH3SYFjh5P
+ s4LydFde64arHmUPwnaRpfoidxp+LQZhpyteRrkKfZPn6PQ2nWhBHgU+2KdJIhQIww0o
+ 3xuA==
+X-Gm-Message-State: AOJu0YwtcoXCK6wpIYi84PDySC8uSlxpcebGCLXtRJAFVH53gwajg4Ls
+ NPvX21IMY8MIJDoTtuhurg0gc9gAVix+lQGppK6xpA20wGVInnRTyX+PsmuY2x8=
+X-Received: by 2002:a5d:4203:0:b0:33d:a011:ae42 with SMTP id
+ n3-20020a5d4203000000b0033da011ae42mr1282215wrq.38.1708691172532; 
+ Fri, 23 Feb 2024 04:26:12 -0800 (PST)
 Received: from [192.168.69.100] (sto95-h01-176-184-18-96.dsl.sta.abo.bbox.fr.
  [176.184.18.96]) by smtp.gmail.com with ESMTPSA id
- v11-20020a5d4b0b000000b0033d90b314e7sm2631441wrq.101.2024.02.23.04.25.13
+ v11-20020a5d4b0b000000b0033d90b314e7sm2631441wrq.101.2024.02.23.04.26.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 04:25:14 -0800 (PST)
-Message-ID: <f350fbb7-b954-4bb2-abf4-05ad049ceeae@linaro.org>
-Date: Fri, 23 Feb 2024 13:25:12 +0100
+ Fri, 23 Feb 2024 04:26:11 -0800 (PST)
+Message-ID: <1a71aa6a-0fe0-4407-a2f3-3fb9bacaed8c@linaro.org>
+Date: Fri, 23 Feb 2024 13:26:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
+Subject: Re: [PATCH v4 3/3] tests/qtest: Add STM32L4x5 GPIO QTest testcase
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
  qemu-devel@nongnu.org
@@ -105,13 +105,13 @@ Cc: qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>
 References: <20240207132517.198348-1-ines.varhol@telecom-paris.fr>
- <20240207132517.198348-3-ines.varhol@telecom-paris.fr>
+ <20240207132517.198348-4-ines.varhol@telecom-paris.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240207132517.198348-3-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240207132517.198348-4-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,60 +133,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X/SqCe2e8IXq
+X-TUID: tTPMTxZmTBjC
 
 On 7/2/24 14:23, Inès Varhol wrote:
+> The testcase contains :
+> - `test_idr_reset_value()` :
+> Checks the reset values of MODER, OTYPER, PUPDR, ODR and IDR.
+> - `test_gpio_output_mode()` :
+> Checks that writing a bit in register ODR results in the corresponding
+> pin rising or lowering, if this pin is configured in output mode.
+> - `test_gpio_input_mode()` :
+> Checks that a input pin set high or low externally results
+> in the pin rising and lowering.
+> - `test_pull_up_pull_down()` :
+> Checks that a floating pin in pull-up/down mode is actually high/down.
+> - `test_push_pull()` :
+> Checks that a pin set externally is disconnected when configured in
+> push-pull output mode, and can't be set externally while in this mode.
+> - `test_open_drain()` :
+> Checks that a pin set externally high is disconnected when configured
+> in open-drain output mode, and can't be set high while in this mode.
+> - `test_bsrr_brr()` :
+> Checks that writing to BSRR and BRR has the desired result in ODR.
+> - `test_clock_enable()` :
+> Checks that GPIO clock is at the right frequency after enabling it.
+> 
+> Acked-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
 > ---
->   include/hw/arm/stm32l4x5_soc.h |  2 +
->   hw/arm/stm32l4x5_soc.c         | 78 ++++++++++++++++++++++++++++------
->   hw/arm/Kconfig                 |  3 +-
->   3 files changed, 68 insertions(+), 15 deletions(-)
+>   tests/qtest/stm32l4x5_gpio-test.c | 586 ++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build           |   3 +-
+>   2 files changed, 588 insertions(+), 1 deletion(-)
+>   create mode 100644 tests/qtest/stm32l4x5_gpio-test.c
 
-
-> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-> index 347a5377e5..ff38585dd6 100644
-> --- a/hw/arm/stm32l4x5_soc.c
-> +++ b/hw/arm/stm32l4x5_soc.c
-> @@ -78,6 +78,32 @@ static const int exti_irq[NUM_EXTI_IRQ] = {
->   #define RCC_BASE_ADDRESS 0x40021000
->   #define RCC_IRQ 5
->   
-> +static const uint32_t gpio_addr[
-
-NUM_GPIOS
-
-> ] = {
-> +    0x48000000,
-> +    0x48000400,
-> +    0x48000800,
-> +    0x48000C00,
-> +    0x48001000,
-> +    0x48001400,
-> +    0x48001800,
-> +    0x48001C00,
-> +};
-> +
-> +static const struct {
-
-gpio_addr[] should be moved in this same struct (eventually
-naming it stm32l4x5_gpio_cfg), since the init val are related
-to the gpio peripheral / base addr.
-
-> +    uint32_t moder;
-> +    uint32_t ospeedr;
-> +    uint32_t pupdr;
-> +} stm32l4x5_gpio_initval[NUM_GPIOS] = {
-> +    { 0xABFFFFFF, 0x0C000000, 0x64000000 },
-> +    { 0xFFFFFEBF, 0x00000000, 0x00000100 },
-> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-> +    { 0xFFFFFFFF, 0x00000000, 0x00000000 },
-> +    { 0x0000000F, 0x00000000, 0x00000000 },
-> +};
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+LGTM!

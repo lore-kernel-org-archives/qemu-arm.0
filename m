@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp433978ejf;
-        Fri, 23 Feb 2024 00:44:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV38uAoIacbSEtMpp7E/+TrmrrcfU8wEwNydXeACgmap/iaJsOIfpoJxeLKafOAq+lfmgVz0iYNim0AF/s6AoRCowaaB60F
-X-Google-Smtp-Source: AGHT+IG6XLXxpAse9qbad4hXRe+RC48RF0Fnv9i6UZUrLShc0TBAyUfspAng+FHxtfriaucXmK/k
-X-Received: by 2002:ac8:5e52:0:b0:42d:ad3f:6c3f with SMTP id i18-20020ac85e52000000b0042dad3f6c3fmr1846671qtx.49.1708677867835;
-        Fri, 23 Feb 2024 00:44:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708677867; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp434087ejf;
+        Fri, 23 Feb 2024 00:44:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVvK27RqWRcrLL8WjUJ3B8+TDH5p4/rDaA3kb3KowGFmnZioQXXaFKJRERL3E0vFR0/PCVVvGntNMtM5pG5UqTgzXAGz0L4
+X-Google-Smtp-Source: AGHT+IEeU/JKD56168Np8l5+d32iPKWMd8nB7LH57HtGPOckR/SIxgwXGFrdXNC0hy7iDwdVyBOn
+X-Received: by 2002:a05:620a:c86:b0:787:a901:ecb4 with SMTP id q6-20020a05620a0c8600b00787a901ecb4mr1203154qki.71.1708677887989;
+        Fri, 23 Feb 2024 00:44:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708677887; cv=none;
         d=google.com; s=arc-20160816;
-        b=KxhuGs0IUFtvFs7F6VF0/Y1IzjZ+tpTMRQl6JMXwhepd+VZdxg6tQuryTwB66R0nZR
-         Nb6AbbNDoL8awy1IU5MYUFFZu77y5UuUQFl/O2EWZcK1n1aIWQ9mPmTyGdlY6Wd92Hmo
-         RF0O2ITSMsjDRCXrJqybJkfV30nTv3CoRiw+Pa190ioZU27nJxeir4pIeEQvPHHTnZ12
-         rQUizRoxhscNV4ZihxvI4lQp9vlhoCJMeWAzzTltGgDTBDaiREb4gTQXDAadzaFxT+Lj
-         ti0a8KBamXlRlrbwpwsGRnR+sOS3xa3V5iiQa0QreqQbi0BlkJmyT9zCj7c/E8pmF5/o
-         CVqA==
+        b=1AVIUEub17C+5hgfvGSRgTFU0I8CHVhs2ddeMADXSYSufz/pPQqetrfAdM/CXhDj3Q
+         buTkcuf/JeaB+Ka+sUzREqIERc+/qLt9v1fz/odpb2vHo1gLaJVHTIQuHGkd9dJUHgbR
+         beoJZhzDO3+8FxSj4RQ/07Ds1BmUefsJoM7+gUtVcbAzZSanEpVMxo5vVYl9AqwDplLM
+         6SFfuACtVcDV/uJFiH9s+wCkHuDu2dTPtVo9amGVcd9iqyK9phJM+XlPZWb0EnyIUbI5
+         QuwpvGGI+18jhdjT/Y5rQhVsmuNuumrVHYglWYQ1D9Tl4VzEV+qhgubX/Q5+/XzYESA4
+         JJXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=O3eMcOY5hSz/Ip/PhGBn4sRZOEG9NbboarseVlbK3Vw=;
+        bh=kg/kv2RmI7GX32ESQ634+OAzn+IOCXfMSkNJ8wYPIE0=;
         fh=sHfxWuxL10Um/OtTTHeE8w8S6jWQrkWHHuDkXWsOwTg=;
-        b=O1MZmty0TLM1Ey2EYtL3T/x14kyrx7M0J0ZZJ9pebqAjNYye4psfNvNS7fe551EiWf
-         zjkAQIbUD2MA0gemuV8jg7h0wShI0OJJrFh7ImRN1r8/yLtRGo2VbizPfCK6YLG97DzN
-         wSEGKFxA1YJfVuv//UGmGPNptP+YI4Exts7Cciasw9EueUso3s5kYsqWpvk7asCnwMoe
-         uwzGywAX2r9WRA6hKUy7iidBIenMTtM9a0A8m7/cG8lqKArkaMlQaUH8lOgUQ/7JIQS8
-         +53Nru0y+AVu9CUWlBly/EjBjXNsxgguUgtjZgsZ2PUmedcMaVXMLlyzgTQDeJxCBoyS
-         bu3A==;
+        b=BMYAbaFGskqP2bxQSrJowi2smxvtWghX4ieA4E5CuXEs3pSPaJCIz9+0ZsqBG0QgBk
+         6h55cpHWZ0dwQngSuNVNbfX0JMRCAljIjHKBfwc3KrDCo6a5JKQlTp15xeno0hUdsSVN
+         zk1mGugB54ud+N0WKZO/I4TcRm5CBC5IO7GAKIl8bvRvEDwGZeJ4e6mrOgegdCtoRmuB
+         /kCoYZTpSNsTDHr0PO7CQ4BC0uCOTdwWVbbCUZCiTFPi+nnddYjcjIlJhpf8qgu2SQF/
+         b/q/dfYlB3Zh2KOL/opQVYlGLE1UPMu8iu0IKzZsNwdFHZA4T09c5dsQw9+qm2VRJhwd
+         +F0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LYrd125r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=JUCrwAi9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x21-20020ac85395000000b0042c6f5c5470si14521036qtp.248.2024.02.23.00.44.27
+        by mx.google.com with ESMTPS id f24-20020a05620a12f800b00787466474c2si545286qkl.340.2024.02.23.00.44.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 00:44:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Feb 2024 00:44:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LYrd125r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=JUCrwAi9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdRA4-0003n8-G0; Fri, 23 Feb 2024 03:44:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rdRA6-0003o5-22; Fri, 23 Feb 2024 03:44:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdRA0-0003la-KT; Fri, 23 Feb 2024 03:44:02 -0500
+ id 1rdRA0-0003lb-RG; Fri, 23 Feb 2024 03:44:02 -0500
 Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdR9x-0000Bk-Of; Fri, 23 Feb 2024 03:43:59 -0500
+ id 1rdR9z-0000BO-7B; Fri, 23 Feb 2024 03:44:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708677838; x=1740213838;
+ t=1708677839; x=1740213839;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=6V97dsmp4JAIBUgFfbzez7o/O5Yd5Mg3yF5DrdVp9Q8=;
- b=LYrd125rsjKyo0dRsUoemLhJvyaK3IWVEPDBc2rHoGT41XIGRwguXNGk
- Taw62Er00YbS6vD9IjBJkScFRxptQS2lyZPjq0V8mVEi9gX9fRsT9Kn/J
- O2XVmx4CaULHmjncOxu2g8MlFDP1leLcloei0xe5PNpf0ZCKzCVjJha6I
- +3puC3k2ls1oRCMqBgqaRn9150dAh2BfgXwP9WlAi3sv85WkMS4pV6//8
- fLtQEYkyyZya/yPSWrrI6JAUJ8a0SMnmpHuJr4N918ysvwqmWeNQRrwQy
- CFht5ncR+2bQNw1n65xlJjhCxt05gcbeNeeq2MASiG68HWcnEYNfzNabn A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="28413893"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="28413893"
+ bh=MdIfh/jYydArR3D22MnTaJm9imdQCnDqtGGlbaFl++w=;
+ b=JUCrwAi9HXFCrFIz9r7w0S/eZ3/WNjN+rEZE1zrp/wNGnZuACQ3u3lu9
+ vzUEZeQklvzHG8TFgFhXEPqHwvmxox3OAHanNxY1mEbzQQ/uJAnHQjUoR
+ 74KDJZsGygFQjX/LBYUnwXzF9aPAy+G4zMx2N/Pqs0qcKYaM2wlvX1cFu
+ uTugGlgPv6dCErZZ1PncweFQeGdsxICjbXjEj0hF75hJRXGTYnL4jwsFU
+ OlRzEn9Mk25fb2V5HlYbiEMa1QTo5RL82SPvy2BQ+b08bBRHheQJGsZ/F
+ Q20iWGNVGy3hq7OUHl2g/V9mvjEwVMPsce5mkXitw+HHBmVdbLYuDvNlz w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="28413916"
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="28413916"
 Received: from fmviesa007.fm.intel.com ([10.60.135.147])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2024 00:43:48 -0800
+ 23 Feb 2024 00:43:52 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="5731867"
+   d="scan'208";a="5731881"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa007.fm.intel.com with ESMTP; 23 Feb 2024 00:43:44 -0800
+ by fmviesa007.fm.intel.com with ESMTP; 23 Feb 2024 00:43:48 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -90,10 +90,10 @@ To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Michael Tokarev <mjt@tls.msk.ru>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 6/7] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
- iommufd_cdev_getfd()
-Date: Fri, 23 Feb 2024 16:56:52 +0800
-Message-Id: <20240223085653.1255438-7-zhao1.liu@linux.intel.com>
+Subject: [PATCH v2 7/7] hw/intc: Check @errp to handle the error of
+ IOAPICCommonClass.realize()
+Date: Fri, 23 Feb 2024 16:56:53 +0800
+Message-Id: <20240223085653.1255438-8-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
 References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
@@ -108,80 +108,60 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.002,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hYa9M1HSazVx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: y8dlfklyaAbo
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-As the comment in qapi/error, dereferencing @errp requires
-ERRP_GUARD():
+IOAPICCommonClass implements its own private realize(), and this private
+realize() allows error.
 
-* = Why, when and how to use ERRP_GUARD() =
-*
-* Without ERRP_GUARD(), use of the @errp parameter is restricted:
-* - It must not be dereferenced, because it may be null.
-...
-* ERRP_GUARD() lifts these restrictions.
-*
-* To use ERRP_GUARD(), add it right at the beginning of the function.
-* @errp can then be used without worrying about the argument being
-* NULL or &error_fatal.
-*
-* Using it when it's not needed is safe, but please avoid cluttering
-* the source with useless code.
+Since IOAPICCommonClass.realize() returns void, to check the error,
+dereference @errp with ERRP_GUARD().
 
-But in iommufd_cdev_getfd(), @errp is dereferenced without ERRP_GUARD():
-
-if (*errp) {
-    error_prepend(errp, VFIO_MSG_PREFIX, path);
-}
-
-Currently, since vfio_attach_device() - the caller of
-iommufd_cdev_getfd() - is always called in DeviceClass.realize() context
-and doesn't get the NULL @errp parameter, iommufd_cdev_getfd()
-hasn't triggered the bug that dereferencing the NULL @errp.
-
-To follow the requirement of @errp, add missing ERRP_GUARD() in
-iommufd_cdev_getfd().
-
-Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
----
-Suggested by credit:
- Markus: Referred his explanation about ERRP_GUARD().
 ---
 v2:
- * Add the @errp dereference code in commit message to make review
-   easier. (Markus)
+ * Add the missing ERRP_GUARD(). (Markus)
+ * Move this single patch into @errp fixing series. (Micheal)
 ---
- hw/vfio/iommufd.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/intc/ioapic_common.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index 9bfddc136089..7baf49e6ee9e 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -116,6 +116,7 @@ static void iommufd_cdev_unbind_and_disconnect(VFIODevice *vbasedev)
+diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
+index cb9bf6214608..efbe6958c8d7 100644
+--- a/hw/intc/ioapic_common.c
++++ b/hw/intc/ioapic_common.c
+@@ -152,6 +152,7 @@ static int ioapic_dispatch_post_load(void *opaque, int version_id)
  
- static int iommufd_cdev_getfd(const char *sysfs_path, Error **errp)
+ static void ioapic_common_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-     long int ret = -ENOTTY;
-     char *path, *vfio_dev_path = NULL, *vfio_path = NULL;
-     DIR *dir = NULL;
+     IOAPICCommonState *s = IOAPIC_COMMON(dev);
+     IOAPICCommonClass *info;
+ 
+@@ -162,6 +163,9 @@ static void ioapic_common_realize(DeviceState *dev, Error **errp)
+ 
+     info = IOAPIC_COMMON_GET_CLASS(s);
+     info->realize(dev, errp);
++    if (*errp) {
++        return;
++    }
+ 
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->io_memory);
+     ioapic_no++;
 -- 
 2.34.1
 

@@ -1,114 +1,106 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp608724ejf;
-        Fri, 23 Feb 2024 06:55:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV2Egrx80BD4xYIJBHUkAVa2oi+OJRBriddoqxW0m4KB/ka1D0YajSOjokPg/lRAJP6X/3J1mWqgZ49iTLipKtjbYCmyFr4
-X-Google-Smtp-Source: AGHT+IFAj3uOHHHsAXi0LUfw/qoU2GJIVZejy4pARrgN8uNILwJZzJgwxJ9SFQt+iR8MuS4XRnPH
-X-Received: by 2002:a05:6870:524f:b0:21e:6d57:81f7 with SMTP id o15-20020a056870524f00b0021e6d5781f7mr18725oai.17.1708700134699;
-        Fri, 23 Feb 2024 06:55:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708700134; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp640544ejf;
+        Fri, 23 Feb 2024 07:43:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUrv3OWjpl8uuCmnrEyfqu54jLi9aJJs2TuprVJgJJ824ofDcxW3MjWw/IPxQxcK60Fx8+ZLvUpOl6m2MVq4tDYYGesYBtm
+X-Google-Smtp-Source: AGHT+IEffnL3qxMOEkcDLbu5l+KBg7l5QDODNmoUDAx/w4AK8bZ2hDNewqfBdvIdnIVpDcrkLztf
+X-Received: by 2002:a0c:b681:0:b0:68f:2e5d:5d29 with SMTP id u1-20020a0cb681000000b0068f2e5d5d29mr116325qvd.40.1708702992196;
+        Fri, 23 Feb 2024 07:43:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708702992; cv=none;
         d=google.com; s=arc-20160816;
-        b=C89rjRVBpArwIS5vZKSU23GAFpgszmRYWZ4B0Ow2xqDz7IJE/uYsdm3CHR6hwbxIpe
-         MQEBdUW/M17ZKtcGdHZFxYdg7AiLvslHuEdESVe6ifERTO3rAMIqF1WmGY1UyQLdYUc3
-         fQyzyLihL4rceqSAEZOXGdnJNiAQ1mhyjtyr4ZpxQtf9avLBsuh18HfNxUco9CD1yLEC
-         wUKzGFoFNt/lPrl9vqSHM03k1FLlJUg+4HAJ/d3udHRIptoDNvyobyC7wmlM+0dl3HwO
-         Qq4GSTwQX71LDfO8gSHweclp7NKSU4k4j0VdRciEkYppmKG43BtZvv/wr+3ZvC+HYu0T
-         E+Ig==
+        b=X5q4MbB0Sreiiks5wGvfo26rzelTkPTx5ZuA/eiYyZF+c+VtV+EL6XJR+XjWkEZrmU
+         G0olxbQzp3fJfcKKsVTtIIniwEpUKWj3MSoA40VNbpsi85HPpRjaBgc7wqvohJDdQ4HX
+         DMCkOhDK4x0UScK0HAUiM/adeyNFTHWAMOoGQVG8U9FQe+F5dvZ6xvxQDDntPKVjen53
+         ZGV/vCx2+FtKj4aqHltftq9HQ8irBjuVFy61WNGgvYIFbPZ6o6BKRLw2uMe0bI3za7ii
+         QH3L9PAZErdE0NJ4oI4UMZWa5Q4myXspMZr22wDAD80iF/926Jzp3pBfKQd8W1q/SvhW
+         OPyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=SVrfzhpcE1N1cO/77qkeeLpyBFhnWsyghu2a7bD9Nxc=;
-        fh=ODGVi5NGGLIcxW9pZqsfP0aqOG+XOKUjw+q5q4lJqQA=;
-        b=Y/Mu+fZnZJ43bMFzaxBPtERPtHy5t7terEWosmBSnsA2UBsz+2mYqpxLoUBICbk3gf
-         acuSmxnFgrJrlmZKh3JOFCy8g4og759Bcx32nzqqM5usUN7TwDLo9cqTKzXockBxALsU
-         6da6G16s5sedOxv0H8sLMzb5lHjDrDmKDwf/ZPjC12+dXK+tm5L04bpOv1HqWV/pCUbp
-         htvjz2vxS3s5sF9r2mhxCLBkIODh3CFQBq2uVpnPYyN9yMsishXqjSjCRl6fCYccif56
-         xXZhViQ1MIN3mb6c5+i8VSqYK4S6Foka9QeqVV+Y2wAcYRdIytdY5/792zv+Hx4+oBgB
-         Mz4w==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=yBUCS7B8iy7ibXpK9yUUdtBoP55z0gbi12cHeE1kR7g=;
+        fh=KhV850wtWN4G5xkUxbLw9rvzY40R9RzCzMQhG5cdjvE=;
+        b=T12J1QPxkQOsPe990UtWIL/Huexoo/cG+E9nZOAC/ptxdelokrHvufyW8NuMWRIe2J
+         d25qpolzHE0Oaccssh275ZctGu6bPVEftL7Gtd6GoMHv5Rd4FvHlOE6u1yD6zwvFsLzS
+         BKYmfEGHi5GIJGXQYcOYqHgVu3NKfVg5XLnUYNMfC0BmXrFrvv2rjpJMRYTGb0nCa2Po
+         fPTNy6Vo0WkuEDbmb5DRdf0PXybT6XNODmBnYWzMVZx1T9bi++jQYNKDVxQva2yA4m6W
+         G+takDgyskYteJte6fwU7mWpWYZHisTdys+ngH8aSAqRstyIJRFgaQq1UwL7n5cprP8e
+         5yAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=heuJDTTN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MfqZFNyS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16-20020a05620a441000b00787b9838ee6si545246qkp.134.2024.02.23.06.55.34
+        by mx.google.com with ESMTPS id j12-20020a05621419cc00b0068f9ce3fbeesi6974443qvc.362.2024.02.23.07.43.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Feb 2024 06:55:34 -0800 (PST)
+        Fri, 23 Feb 2024 07:43:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=heuJDTTN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MfqZFNyS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdWx0-0000ef-Io; Fri, 23 Feb 2024 09:55:00 -0500
+	id 1rdXhM-0004hZ-Um; Fri, 23 Feb 2024 10:42:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdWna-0005wN-Vd
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 09:45:15 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1rdXPE-00066c-T8
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:24:08 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rdWnY-0004B7-V4
- for qemu-arm@nongnu.org; Fri, 23 Feb 2024 09:45:14 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-563f675be29so546820a12.0
- for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 06:45:12 -0800 (PST)
+ id 1rdXP7-0002Wo-8K
+ for qemu-arm@nongnu.org; Fri, 23 Feb 2024 10:24:08 -0500
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-563d32ee33aso1154559a12.2
+ for <qemu-arm@nongnu.org>; Fri, 23 Feb 2024 07:24:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708699511; x=1709304311; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SVrfzhpcE1N1cO/77qkeeLpyBFhnWsyghu2a7bD9Nxc=;
- b=heuJDTTNQGzFjTl5GjotT8C4zsfCkKMGGYbvQWxvcYRGR+espzt2B7trPCYo0d031K
- e57eMwUOWRO/GTvmi+U6adyrTYl2S2Fe7UFQtExJ9OESKxRT1bZXlOpFiLyDl4OCxTNE
- NyOcxGo12KYFB6MRdZVQHB42vVCFiSQK1M1YpHgbnIr65mV7d2n6KSNWnK61+lolzk8D
- zQMXWZjYl9EpQ/dEedaoEZT1MRO0OBsgz1NCPtLVLALZulBbCGHsWiIOwbM3vjcDjeuS
- 40U0fglm+Koi6idEweB4TcX1QKRSQ2CTbTHwJelCEx9BnDpu5ogQYtMqrhKu9GokJHUG
- BDmQ==
+ d=linaro.org; s=google; t=1708701839; x=1709306639; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=yBUCS7B8iy7ibXpK9yUUdtBoP55z0gbi12cHeE1kR7g=;
+ b=MfqZFNySox3w1GxCoKY8jc3HoE37XAlcJ6LNQ9wVnvo/CHdwGd5Jmy3KC/SrhcwLZZ
+ 5X3vk0cp3KzMqBqiXQC7tuDCbUpNV2x8bZIO8auJxJGZoFbx9vtIzYWAfAuwayXhzoHi
+ NLiqN71q9AvGZeBX4RiIXnVOr33wICwRyFTt6yqQJkm1monu5VL43FMkxbVM/SGRwPJN
+ klGKLdYX6qerjVN02+1F/pTaIpaAUcKNfrfabjYUPf4oH9sM4sRno7/nuN2M3Jhb5I/w
+ b+dQ1uh316bKf0FBHIVeXtlGb1o+4eL1R+33TUEj2luyM+AHuAuxrVEDZJ3qQNhYUcXc
+ Cywg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708699511; x=1709304311;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=SVrfzhpcE1N1cO/77qkeeLpyBFhnWsyghu2a7bD9Nxc=;
- b=ogp/V6ODi30TZJ8jrFOJZ8jG2CjIycRjdufQvLZZz3O+WGTDbu16CHIJf2mtXbj/AF
- IsaZaCFmdP8ybtV57e9GsThAuvalPAsAeJxw0u/zA/Th4EunEKbL2MXF1zyEeU2kT7uP
- ZT0A4DwwHWUfaUmpFykHTPJupqY247BjfQF5nFdtMxMnQIgV4f9jnGlR3wCB+hRS69LL
- 7C8Jbi5IpUcaDV1JhLmn98IUtmEIQ2w+of0N1yjO0mwor5+Mp3n8Kw3CGhsIPegJCsbU
- P0JJApmWptAPhESx6VNwQcVgBFXG3c9mSKpF5pLmAnCLUv/sEbjq4EWybHQwF8M+EFwD
- iddQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWuKZa0apbA9xcry1oUdeFKCL2w15y76tRC4GTsalB//Jv7S/Cp7Z5gTjnQNHje7ES8qI5LexcDP+bhofK4ckj+6zhd
-X-Gm-Message-State: AOJu0YwO1GN6EHiFc1Tf0weA7vq3TN2kgO7rlj3aKEnRHbx46P2q7TTO
- FTZrSuAvjadHDp/ILO5B1HV6nrs86QTRLJz8fCXKRqiloD7zZ8qf0RRTI3FJlAM1ZOxMriwO9o2
- fWznKGlsLGAGYfvOEC0fiPER8zh6sGNvTZuPtKA==
-X-Received: by 2002:aa7:cccd:0:b0:565:8130:5b91 with SMTP id
- y13-20020aa7cccd000000b0056581305b91mr15722edt.34.1708699511173; Fri, 23 Feb
- 2024 06:45:11 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708701839; x=1709306639;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yBUCS7B8iy7ibXpK9yUUdtBoP55z0gbi12cHeE1kR7g=;
+ b=fEF7jDLekVhfz7b4rDkaPzsS+or8O29Y3SxhGF6i+u3b38oolHiGbNW5HujMjyVtJs
+ g89toQnR9NaIL64PDuSLIq9hDT5WQdq+Wx3GspmCtVhq9UaRyFYdCsttART8Q998uTX+
+ CV47RpwegOLNZTT0iN5/fn2CCtHqCnoiR+zLH/0wlHkq/ZGVGxEVRi11lR+m5jKWFgMc
+ SIQEdloLLbLlRmXPL1tfLcgmM/3gSz3EjXh+TRALoMijN5bUrj3XLiV5+meD1SNA2sqT
+ JMZgxqONcIyKkopB/tzBvMDKbGPXjhU9gn4q3ZVAFconiRxJ9EcG5+n77TtPUap8uBLw
+ crkw==
+X-Gm-Message-State: AOJu0Yw1akunekmBLFCWbo/nMNKoSbfUYlIt4r0DSYcOeGcYD2GtP3Gv
+ +aVwpCA7wwxPvgPK+Z/nCln4Q3Qdz0r8EvKoNXNDxZ2unUYoZSkghd0pYu1dpdS4VPIRxOwrcjZ
+ 7xx1g//UIMV5LHLyDc+626mNV7UAV/YL7ofirBg==
+X-Received: by 2002:a05:6402:695:b0:564:21fd:2710 with SMTP id
+ f21-20020a056402069500b0056421fd2710mr97916edy.37.1708701839147; Fri, 23 Feb
+ 2024 07:23:59 -0800 (PST)
 MIME-Version: 1.0
-References: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
- <20240219200908.49551-3-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240219200908.49551-3-arnaud.minier@telecom-paris.fr>
+References: <20240221173325.1494895-1-nabihestefan@google.com>
+ <20240221173325.1494895-3-nabihestefan@google.com>
+In-Reply-To: <20240221173325.1494895-3-nabihestefan@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Feb 2024 14:44:59 +0000
-Message-ID: <CAFEAcA_EVoayec6Qec4EoU6atXhG7fdqb+QtFEvSQge88xJNPg@mail.gmail.com>
-Subject: Re: [PATCH v5 2/8] Add an internal clock multiplexer object
-To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, qemu-arm@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
+Date: Fri, 23 Feb 2024 15:23:48 +0000
+Message-ID: <CAFEAcA_peQktO-PHcyEcGZrvDN7_Zdg-x_ZBwJ5OCETE9hBr-Q@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/intc/arm_gicv3_its: Use send_msi in the
+ GITS_TRANSLATER write
+To: Nabih Estefan <nabihestefan@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+ its@irrelevant.dk, kbusch@kernel.org, roqueh@google.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,172 +122,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OeYH9z2uOHdE
+X-TUID: MmSh4oLcUtpV
 
-On Mon, 19 Feb 2024 at 20:12, Arnaud Minier
-<arnaud.minier@telecom-paris.fr> wrote:
+On Wed, 21 Feb 2024 at 17:33, Nabih Estefan <nabihestefan@google.com> wrote:
 >
-> This object is used to represent every multiplexer in the clock tree as
-> well as every clock output, every presecaler, frequency multiplier, etc.
-> This allows to use a generic approach for every component of the clock tr=
-ee
-> (except the PLLs).
+> From: Roque Arcudia Hernandez <roqueh@google.com>
 >
-> Wasn't sure about how to handle the reset and the migration so used the
-> same appproach as the BCM2835 CPRMAN.
+> This is trying to achieve 2 things: To be able to redefine the send_msi in a
+> derived class of arm_gicv3_its and/or to expose a method call interface to
+> inject interrupts from another device.
 
-I think hw/misc/zynq_sclr.c is also probably a good model to look at.
-
-AIUI the way it works is:
- * input Clock objects must be migrated
- * output Clock objects do not need to be migrated
- * your reset needs to be a three-phase one:
-   - in the 'enter' method you reset register values (including
-     all the values that define oscillator frequencies, enable bits, etc)
-   - in the 'hold' method you compute the values for the output clocks
-     as if the input clock is disabled, and propagate them
-   - in the 'exit' method you compute the values for the output clocks
-     according to the value of the input clock, and propagate them
-
-
-
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> ---
->  hw/misc/stm32l4x5_rcc.c                   | 158 ++++++++++++++++++++++
->  hw/misc/trace-events                      |   5 +
->  include/hw/misc/stm32l4x5_rcc.h           | 119 ++++++++++++++++
->  include/hw/misc/stm32l4x5_rcc_internals.h |  29 ++++
->  4 files changed, 311 insertions(+)
->
-> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index 38ca8aad7d..ed10832f88 100644
-> --- a/hw/misc/stm32l4x5_rcc.c
-> +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -36,6 +36,132 @@
->  #define LSE_FRQ 32768ULL
->  #define LSI_FRQ 32000ULL
->
-> +static void clock_mux_update(RccClockMuxState *mux)
-> +{
-> +    uint64_t src_freq, old_freq, freq;
-> +
-> +    src_freq =3D clock_get_hz(mux->srcs[mux->src]);
-> +    old_freq =3D clock_get_hz(mux->out);
-
-You should try to avoid using clock_get_hz() and clock_update_hz()
-when doing clock calculations like this. There is inherently
-rounding involved if the clock isn't running at an exact number of Hz.
-It's best to use clock_get() and clock_set(), which work with
-the clock period specified in units of 2^-32ns.
-
-
-> +
-> +    if (!mux->enabled || !mux->divider) {
-> +        freq =3D 0;
-> +    } else {
-> +        freq =3D muldiv64(src_freq, mux->multiplier, mux->divider);
-
-Consider whether you can use the Clock's builtin period
-multiplier/divider (clock_set_mul_div()).
-
-> +    }
-> +
-> +    /* No change, early return to avoid log spam and useless propagation=
- */
-> +    if (old_freq =3D=3D freq) {
-> +        return;
-> +    }
-> +
-> +    clock_update_hz(mux->out, freq);
-> +    trace_stm32l4x5_rcc_mux_update(mux->id, mux->src, src_freq, freq);
-> +}
-> +
-> +static void clock_mux_src_update(void *opaque, ClockEvent event)
-> +{
-> +    RccClockMuxState **backref =3D opaque;
-> +    RccClockMuxState *s =3D *backref;
-> +    /*
-> +     * The backref value is equal to:
-> +     * s->backref + (sizeof(RccClockMuxState *) * update_src).
-> +     * By subtracting we can get back the index of the updated clock.
-> +     */
-> +    const uint32_t update_src =3D backref - s->backref;
-> +    /* Only update if the clock that was updated is the current source*/
-> +    if (update_src =3D=3D s->src) {
-> +        clock_mux_update(s);
-> +    }
-> +}
-> +
-> +static void clock_mux_init(Object *obj)
-> +{
-> +    RccClockMuxState *s =3D RCC_CLOCK_MUX(obj);
-> +    size_t i;
-> +
-> +    for (i =3D 0; i < RCC_NUM_CLOCK_MUX_SRC; i++) {
-> +        char *name =3D g_strdup_printf("srcs[%zu]", i);
-> +        s->backref[i] =3D s;
-> +        s->srcs[i] =3D qdev_init_clock_in(DEVICE(s), name,
-> +                                        clock_mux_src_update,
-> +                                        &s->backref[i],
-> +                                        ClockUpdate);
-> +        g_free(name);
-> +    }
-> +
-> +    s->out =3D qdev_init_clock_out(DEVICE(s), "out");
-> +}
-> +
-> +static void clock_mux_reset_hold(Object *obj)
-> +{ }
-> +
-> +static const VMStateDescription clock_mux_vmstate =3D {
-> +    .name =3D TYPE_RCC_CLOCK_MUX,
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(id, RccClockMuxState),
-> +        VMSTATE_ARRAY_CLOCK(srcs, RccClockMuxState,
-> +                            RCC_NUM_CLOCK_MUX_SRC),
-> +        VMSTATE_CLOCK(out, RccClockMuxState),
-
-Output clocks don't need VMSTATE_CLOCK lines. (We trust
-the device on the other end to migrate its state as needed.)
-
-> +        VMSTATE_BOOL(enabled, RccClockMuxState),
-> +        VMSTATE_UINT32(src, RccClockMuxState),
-> +        VMSTATE_UINT32(multiplier, RccClockMuxState),
-> +        VMSTATE_UINT32(divider, RccClockMuxState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-
-
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index 62a7599353..d5e471811c 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -177,6 +177,11 @@ stm32l4x5_exti_write(uint64_t addr, uint64_t data) "=
-reg write: addr: 0x%" PRIx64
->  # stm32l4x5_rcc.c
->  stm32l4x5_rcc_read(uint64_t addr, uint32_t data) "RCC: Read <0x%" PRIx64=
- "> -> 0x%" PRIx32 ""
->  stm32l4x5_rcc_write(uint64_t addr, uint32_t data) "RCC: Write <0x%" PRIx=
-64 "> <- 0x%" PRIx32 ""
-> +stm32l4x5_rcc_mux_enable(uint32_t mux_id) "RCC: Mux %d enabled"
-> +stm32l4x5_rcc_mux_disable(uint32_t mux_id) "RCC: Mux %d disabled"
-> +stm32l4x5_rcc_mux_set_factor(uint32_t mux_id, uint32_t old_multiplier, u=
-int32_t new_multiplier, uint32_t old_divider, uint32_t new_divider) "RCC: M=
-ux %d factor changed: multiplier (%u -> %u), divider (%u -> %u)"
-> +stm32l4x5_rcc_mux_set_src(uint32_t mux_id, uint32_t old_src, uint32_t ne=
-w_src) "RCC: Mux %d source changed: from %u to %u"
-> +stm32l4x5_rcc_mux_update(uint32_t mux_id, uint32_t src, uint64_t src_fre=
-q, uint64_t new_freq) "RCC: Mux %d src %d update: src_freq %" PRIu64 " new_=
-freq %" PRIu64 ""
-
-You don't need the trailing "" in this kind of string
-concatenation with a PRIu64 or similar: adding the empty
-string on the end of a string has no effect.
+But there is no such derived class, so what's the purpose of
+this infrastructure? If you have a specific device model you want
+to upstream that uses this, you should include this in the patchset
+adding that device model, so that we have the context to see what
+the change is trying to and whether it's the best way to do it.
 
 thanks
 -- PMM

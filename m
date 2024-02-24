@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1062709ejf;
-        Sat, 24 Feb 2024 02:54:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVWSrFR1+VoWzOCEPIuv27e0VhPr5qbKMM4dHecvfHZ6awpTlv+bBwS8WcOAwKWMcgjZBVGa7fq2nrbC2at0kt2XzX1gi5q
-X-Google-Smtp-Source: AGHT+IEoIkqXC5UMpk1qfPYaEatkRKIKy/I6v5s/J/K4XaHM91pOWJn164bm3ZF43X8BbSIiqI2w
-X-Received: by 2002:a05:620a:4d7:b0:787:a7f8:8a0d with SMTP id 23-20020a05620a04d700b00787a7f88a0dmr2451230qks.18.1708772090272;
-        Sat, 24 Feb 2024 02:54:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708772090; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1062731ejf;
+        Sat, 24 Feb 2024 02:54:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWfMum9qZdnZtpmrdDQkcbXF+jyoPwPbKBJHtqOalQb1d0AOkrV7TQj7T4S9tOXmNTHSBO1O7CkgAxc4CchGRvK0xhC8jSb
+X-Google-Smtp-Source: AGHT+IEjMbezfjc3fWmSLZNPqPrk/my046GpUZjeTUxtZHqLT2VlKHDVnw5d4HJ5Ay+RRc7FrQ37
+X-Received: by 2002:ac8:7f46:0:b0:42e:7609:a250 with SMTP id g6-20020ac87f46000000b0042e7609a250mr815482qtk.36.1708772096431;
+        Sat, 24 Feb 2024 02:54:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708772096; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZOvZ6/mgOpWbV5aaXPp/zU2zuTOff5CbmwR9OL46ijJwTM1RKllgkNcHV/OY0O//W
-         dKPZrUaHgoy5+Ksv9gu/6k2236jBrv0IJHtH0i4Eer+dtr1agkf/JulR0+GEPLCeIWyG
-         QWLGwWGkYrXiUR7UaB1sTHtEfJcEN4gKzxH4qPtiu5dAUQ89Nx+VTrEYoLsnWiX8pysc
-         epTtfrnYuBgeTP1s2YPWDMWk/ZyMZgVMCh4qMEqVCR2dKyYafnn7NAreT1j2i49x1Ywj
-         pL//MIDElNvRCVST/EuFeWOQ4SJK1Fnnf/ug3t9XE9vrjReXU5YSBFwysHKWyCyHMFgZ
-         AffQ==
+        b=bW986ydCf33zKAAkFgT+gvXWmZtfOMwCU3DF6m3xSfYW0TqQrPYfKjaUuF1HihCJH6
+         5PbFycHGWTtUkMIOtWHpLzHzrfhL92Cm7Jbc4iNZ+pP9Oo6oHnFXclEGDLDKdbTr/2qB
+         lq0qaAFUqyK62sC5FonwHapH+L0FGUW4+lp5ljJqqhdgxBmu5eEokjkQZTuaBHyZEmb1
+         99PH9AO+/pj9OnKAEKxcrp9XuAKWZphjb+S04eWXt/UN4PWAkeNjbqj1Qt1tYToRuKje
+         2RKBTOr6u0oaeSGLXNXwzBnMpyLvjYkuqZsD2n3TAeq/zB1e1nSQCdgBjJUPKgGLkuPA
+         vXiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=rlIBKUWHMCyK390gV6GPZ9CchpT3gUWWalv+BjQFQuM=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=aPcc7JOhQRBPYJ0O4vbJVBvXNe6xZ+TUkYH7f9RLaFg=;
         fh=Xv0TwLrmls6IwIhNl47EFnHRl/jgf5uVZfENH530Szc=;
-        b=pYvMYC6epOjXFSSafkjXY/La2Ues1s3KJPJ3VGLC5+Ruti0+50Il/UbgUqeVGa4F2l
-         WgM9Z4aDGLVqSxlcdmIzJ5eL6+2PppPfbBlS2vdGy9/zrRa9sf9ATk1E+cRXSd8Am227
-         +cwCMR0C6oINC46IKum6M6vssxsbh7zemMw+yQL84ll/BK/BrFQdQwj0Y43FviWiGNxw
-         sjswWLXaj3wPfTuFME0RZmXQAAmcgqcIrs4xZtPD4YoDa610pBCdlUix4CXIQS2Ysul9
-         O2BBeuPK2neEU4/ev4veUmeiJ89r8tWpsNSXr1IecpyX3uv2SDfF66n9SU8CcrTUfQAl
-         lfaA==;
+        b=JcMuwPpbQbN8FcccjNwgcISmHUDyiaJ2D2S1XIi6R7JEzBWuK1XE1DaqYU7q5kfB38
+         7mM/m1Pp1wb9O6+bo2I45aV4qtuQFpXRSJ4h3go4Cp7gTsLjkJ+RLisQEvU23XcLAHEf
+         uHGN0xxISLhQiTk5pmdRH9BdS6M5fhkvq2XLV8FzEn/cEdxrG4a9H1xbsmAja1AhATPc
+         GCZnBOXE3uDMs2UYDrW+2Ip/b48JQJcYUeftB2ad5E1+HpoxzIv0Zc3PWkMmDSlDlISy
+         1BMcQSEGukfwslQE9CmpA9KnnSKz7amxGuropWfBAkSEHTnoKwW9xsUqGdz/z27xV6M0
+         0dfw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ASJRs5QB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Im1siKSu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c29-20020a05620a201d00b00787bf9b5b0asi769439qka.44.2024.02.24.02.54.50
+        by mx.google.com with ESMTPS id kq3-20020ac86183000000b0042e6969ed17si790041qtb.718.2024.02.24.02.54.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Feb 2024 02:54:50 -0800 (PST)
+        Sat, 24 Feb 2024 02:54:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ASJRs5QB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Im1siKSu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdpfs-0004BS-N4; Sat, 24 Feb 2024 05:54:32 -0500
+	id 1rdpft-0004Bt-Jw; Sat, 24 Feb 2024 05:54:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rdpfr-0004Aw-KT; Sat, 24 Feb 2024 05:54:31 -0500
-Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
+ id 1rdpfr-0004Au-Fn; Sat, 24 Feb 2024 05:54:31 -0500
+Received: from zproxy1.enst.fr ([137.194.2.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rdpfp-0003MU-3c; Sat, 24 Feb 2024 05:54:31 -0500
+ id 1rdpfp-0003MT-3B; Sat, 24 Feb 2024 05:54:31 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 71797C0CB6;
+ by zproxy1.enst.fr (Postfix) with ESMTP id 595D5C07A3;
  Sat, 24 Feb 2024 11:54:26 +0100 (CET)
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id p-NDimm5yUFl; Sat, 24 Feb 2024 11:54:25 +0100 (CET)
+ id 2WH-2omtthdW; Sat, 24 Feb 2024 11:54:25 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id DA4A7C0CAC;
+ by zproxy1.enst.fr (Postfix) with ESMTP id 71718C0C92;
  Sat, 24 Feb 2024 11:54:25 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr DA4A7C0CAC
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 71718C0C92
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
  s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1708772065;
- bh=rlIBKUWHMCyK390gV6GPZ9CchpT3gUWWalv+BjQFQuM=;
+ bh=aPcc7JOhQRBPYJ0O4vbJVBvXNe6xZ+TUkYH7f9RLaFg=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=ASJRs5QBlQRqd7Bjdarg0fa35P8kCa4kBXWjOSOa8ly39HW/oC548fl/n3jhQ6Mo4
- jVQfMrajtmka1OfnD0/Ka1jHwRcl8Euoer3SorAkQtJnkGTqoZlNXqgLpnskiy1anq
- 7IXliIuu8zuGRriYfzJtwsZ3gaSu/qvNv2EFipso=
+ b=Im1siKSulEFBKBjm7Gyl+cUkvtm2P8cIexYN+HYTMzErff/l4O795twxAAdG8OwJV
+ 4Yh+OfN7eIhECq9LMa7A0QBn6wBpfHLVgXKllKsDnqN/3jCePJ3SU9aRPQw6liWH/c
+ pvKlaPq0ERv+DtzPyi5DpnR3hmfDrAlLl5XLCnXk=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id NKGIoi6A9gA2; Sat, 24 Feb 2024 11:54:25 +0100 (CET)
+ id 1LbHAA6AbB48; Sat, 24 Feb 2024 11:54:25 +0100 (CET)
 Received: from inesv-Inspiron-3501.lan (unknown
  [IPv6:2001:861:4680:b1b0:34c1:5884:a33c:51fd])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 9A50CC0642;
- Sat, 24 Feb 2024 11:54:25 +0100 (CET)
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 0826CC0642;
+ Sat, 24 Feb 2024 11:54:24 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
@@ -88,16 +88,14 @@ Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org
-Subject: [PATCH v6 2/3] hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
-Date: Sat, 24 Feb 2024 11:47:33 +0100
-Message-ID: <20240224105417.195674-3-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v6 0/3] Add device STM32L4x5 GPIO
+Date: Sat, 24 Feb 2024 11:47:31 +0100
+Message-ID: <20240224105417.195674-1-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240224105417.195674-1-ines.varhol@telecom-paris.fr>
-References: <20240224105417.195674-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::dc;
+Received-SPF: pass client-ip=137.194.2.220;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -119,239 +117,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kf1k1pGzsvcU
+X-TUID: VY/94YV5n0m/
+
+This patch adds a new device STM32L4x5 GPIO device and is part
+of a series implementing the STM32L4x5 with a few peripherals.
+
+Changes from v5 :
+- remove duplicate macro constant `GPIO_NUM_PINS` from syscfg.h
+(it's defined in gpio.h)
+- moving definition of constant `NUM_GPIOS` from syscfg.h to gpio.h
+- soc.c : replacing a hardcoded 16 by the correct `GPIO_NUM_PINS`
+
+Changes from v4 :
+- gpio.c : use helpers `is_pull_up()`, `is_pull_down()`, `is_output()`
+for more clarity
+- gpio.c : correct `update_gpio_idr()` in case of open-drain pin
+set to 1 in ODR and set to 0 externally
+- gpio.c : rename `get_gpio_pins_to_disconnect()` to
+`get_gpio_pinmask_to_disconnect()` and associated comments
+- gpio.c : correct coding style issues (alignment and declaration)
+- soc.c : unite structs `gpio_addr` and `stm32l4x5_gpio_initval`
+
+Changes from v3 :
+- replacing occurences of '16' with the correct macro `GPIO_NUM_PINS`
+- updating copyright year
+- rebasing on latest version of STM32L4x5 RCC
+
+Changes from v2 :
+- correct memory leaks caused by re-assigning a `g_autofree`
+pointer without freeing it
+- gpio-test : test that reset values (and not just initialization
+values) are correct, correct `stm32l4x5_gpio_reset()` accordingly
+- adding a `clock-freq-hz` object property to test that
+enabling GPIO clock in RCC sets the GPIO clocks
+
+Changes from v1 :
+- replacing test GPIO register `DISCONNECTED_PINS` with an object
+property accessed using `qtest_qmp()` in the qtest (through helpers
+`get_disconnected_pins()` and `disconnect_all_pins()`)
+- removing GPIO subclasses and storing MODER, OSPEEDR and PUPDR reset
+values in properties
+- adding a `name` property and using it for more lisible traces
+- using `g_strdup_printf()` to facilitate setting irqs in the qtest,
+and initializing GPIO children in soc_initfn
+
+Changes from RFC v1 :
+- `stm32l4x5-gpio-test.c` : correct typos, make the test generic,
+add a test for bitwise writing in register ODR
+- `stm32l4x5_soc.c` : connect gpios to their clock, use an
+array of GpioState
+- `stm32l4x5_gpio.c` : correct comments in `update_gpio_idr()`,
+correct `get_gpio_pins_to_disconnect()`, correct `stm32l4x5_gpio_init()`
+and initialize the clock, add a realize function
+- update MAINAINERS
+
+Based-on: 20240219200908.49551-1-arnaud.minier@telecom-paris.fr
+([PATCH v5 0/8] Add device STM32L4x5 RCC)
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
----
- include/hw/arm/stm32l4x5_soc.h     |  2 +
- include/hw/gpio/stm32l4x5_gpio.h   |  1 +
- include/hw/misc/stm32l4x5_syscfg.h |  3 +-
- hw/arm/stm32l4x5_soc.c             | 71 +++++++++++++++++++++++-------
- hw/misc/stm32l4x5_syscfg.c         |  1 +
- hw/arm/Kconfig                     |  3 +-
- 6 files changed, 63 insertions(+), 18 deletions(-)
 
-diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-index 1f71298b45..cb4da08629 100644
---- a/include/hw/arm/stm32l4x5_soc.h
-+++ b/include/hw/arm/stm32l4x5_soc.h
-@@ -29,6 +29,7 @@
- #include "hw/misc/stm32l4x5_syscfg.h"
- #include "hw/misc/stm32l4x5_exti.h"
- #include "hw/misc/stm32l4x5_rcc.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
- #include "qom/object.h"
-=20
- #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
-@@ -45,6 +46,7 @@ struct Stm32l4x5SocState {
-     Stm32l4x5ExtiState exti;
-     Stm32l4x5SyscfgState syscfg;
-     Stm32l4x5RccState rcc;
-+    Stm32l4x5GpioState gpio[NUM_GPIOS];
-=20
-     MemoryRegion sram1;
-     MemoryRegion sram2;
-diff --git a/include/hw/gpio/stm32l4x5_gpio.h b/include/hw/gpio/stm32l4x5=
-_gpio.h
-index 0d361f3410..878bd19fc9 100644
---- a/include/hw/gpio/stm32l4x5_gpio.h
-+++ b/include/hw/gpio/stm32l4x5_gpio.h
-@@ -25,6 +25,7 @@
- #define TYPE_STM32L4X5_GPIO "stm32l4x5-gpio"
- OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5GpioState, STM32L4X5_GPIO)
-=20
-+#define NUM_GPIOS 8
- #define GPIO_NUM_PINS 16
-=20
- struct Stm32l4x5GpioState {
-diff --git a/include/hw/misc/stm32l4x5_syscfg.h b/include/hw/misc/stm32l4=
-x5_syscfg.h
-index 29c3522f9d..23bb564150 100644
---- a/include/hw/misc/stm32l4x5_syscfg.h
-+++ b/include/hw/misc/stm32l4x5_syscfg.h
-@@ -26,12 +26,11 @@
-=20
- #include "hw/sysbus.h"
- #include "qom/object.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
-=20
- #define TYPE_STM32L4X5_SYSCFG "stm32l4x5-syscfg"
- OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5SyscfgState, STM32L4X5_SYSCFG)
-=20
--#define NUM_GPIOS 8
--#define GPIO_NUM_PINS 16
- #define SYSCFG_NUM_EXTICR 4
-=20
- struct Stm32l4x5SyscfgState {
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index 347a5377e5..072671bdfb 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -27,6 +27,7 @@
- #include "exec/address-spaces.h"
- #include "sysemu/sysemu.h"
- #include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
- #include "hw/qdev-clock.h"
- #include "hw/misc/unimp.h"
-=20
-@@ -78,6 +79,22 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
- #define RCC_BASE_ADDRESS 0x40021000
- #define RCC_IRQ 5
-=20
-+static const struct {
-+    uint32_t addr;
-+    uint32_t moder_reset;
-+    uint32_t ospeedr_reset;
-+    uint32_t pupdr_reset;
-+} stm32l4x5_gpio_cfg[NUM_GPIOS] =3D {
-+    { 0x48000000, 0xABFFFFFF, 0x0C000000, 0x64000000 },
-+    { 0x48000400, 0xFFFFFEBF, 0x00000000, 0x00000100 },
-+    { 0x48000800, 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x48000C00, 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x48001000, 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x48001400, 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x48001800, 0xFFFFFFFF, 0x00000000, 0x00000000 },
-+    { 0x48001C00, 0x0000000F, 0x00000000, 0x00000000 },
-+};
-+
- static void stm32l4x5_soc_initfn(Object *obj)
- {
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
-@@ -85,6 +102,11 @@ static void stm32l4x5_soc_initfn(Object *obj)
-     object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-     object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SY=
-SCFG);
-     object_initialize_child(obj, "rcc", &s->rcc, TYPE_STM32L4X5_RCC);
-+
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        g_autofree char *name =3D g_strdup_printf("gpio%c", 'a' + i);
-+        object_initialize_child(obj, name, &s->gpio[i], TYPE_STM32L4X5_G=
-PIO);
-+    }
- }
-=20
- static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
-@@ -93,8 +115,9 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc=
-, Error **errp)
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
-     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
-     MemoryRegion *system_memory =3D get_system_memory();
--    DeviceState *armv7m;
-+    DeviceState *armv7m, *dev;
-     SysBusDevice *busdev;
-+    uint32_t pin_index;
-=20
-     if (!memory_region_init_rom(&s->flash, OBJECT(dev_soc), "flash",
-                                 sc->flash_size, errp)) {
-@@ -135,17 +158,43 @@ static void stm32l4x5_soc_realize(DeviceState *dev_=
-soc, Error **errp)
-         return;
-     }
-=20
-+    /* GPIOs */
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        g_autofree char *name =3D g_strdup_printf("%c", 'A' + i);
-+        dev =3D DEVICE(&s->gpio[i]);
-+        qdev_prop_set_string(dev, "name", name);
-+        qdev_prop_set_uint32(dev, "mode-reset",
-+                             stm32l4x5_gpio_cfg[i].moder_reset);
-+        qdev_prop_set_uint32(dev, "ospeed-reset",
-+                             stm32l4x5_gpio_cfg[i].ospeedr_reset);
-+        qdev_prop_set_uint32(dev, "pupd-reset",
-+                            stm32l4x5_gpio_cfg[i].pupdr_reset);
-+        busdev =3D SYS_BUS_DEVICE(&s->gpio[i]);
-+        g_free(name);
-+        name =3D g_strdup_printf("gpio%c-out", 'a' + i);
-+        qdev_connect_clock_in(DEVICE(&s->gpio[i]), "clk",
-+            qdev_get_clock_out(DEVICE(&(s->rcc)), name));
-+        if (!sysbus_realize(busdev, errp)) {
-+            return;
-+        }
-+        sysbus_mmio_map(busdev, 0, stm32l4x5_gpio_cfg[i].addr);
-+    }
-+
-     /* System configuration controller */
-     busdev =3D SYS_BUS_DEVICE(&s->syscfg);
-     if (!sysbus_realize(busdev, errp)) {
-         return;
-     }
-     sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
--    /*
--     * TODO: when the GPIO device is implemented, connect it
--     * to SYCFG using `qdev_connect_gpio_out`, NUM_GPIOS and
--     * GPIO_NUM_PINS.
--     */
-+
-+    for (unsigned i =3D 0; i < NUM_GPIOS; i++) {
-+        for (unsigned j =3D 0; j < GPIO_NUM_PINS; j++) {
-+            pin_index =3D GPIO_NUM_PINS * i + j;
-+            qdev_connect_gpio_out(DEVICE(&s->gpio[i]), j,
-+                                  qdev_get_gpio_in(DEVICE(&s->syscfg),
-+                                  pin_index));
-+        }
-+    }
-=20
-     /* EXTI device */
-     busdev =3D SYS_BUS_DEVICE(&s->exti);
-@@ -157,7 +206,7 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-         sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
-     }
-=20
--    for (unsigned i =3D 0; i < 16; i++) {
-+    for (unsigned i =3D 0; i < GPIO_NUM_PINS; i++) {
-         qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
-                               qdev_get_gpio_in(DEVICE(&s->exti), i));
-     }
-@@ -242,14 +291,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
-     /* RESERVED:    0x40024400, 0x7FDBC00 */
-=20
-     /* AHB2 BUS */
--    create_unimplemented_device("GPIOA",     0x48000000, 0x400);
--    create_unimplemented_device("GPIOB",     0x48000400, 0x400);
--    create_unimplemented_device("GPIOC",     0x48000800, 0x400);
--    create_unimplemented_device("GPIOD",     0x48000C00, 0x400);
--    create_unimplemented_device("GPIOE",     0x48001000, 0x400);
--    create_unimplemented_device("GPIOF",     0x48001400, 0x400);
--    create_unimplemented_device("GPIOG",     0x48001800, 0x400);
--    create_unimplemented_device("GPIOH",     0x48001C00, 0x400);
-     /* RESERVED:    0x48002000, 0x7FDBC00 */
-     create_unimplemented_device("OTG_FS",    0x50000000, 0x40000);
-     create_unimplemented_device("ADC",       0x50040000, 0x400);
-diff --git a/hw/misc/stm32l4x5_syscfg.c b/hw/misc/stm32l4x5_syscfg.c
-index fd68cb800b..3dafc00b49 100644
---- a/hw/misc/stm32l4x5_syscfg.c
-+++ b/hw/misc/stm32l4x5_syscfg.c
-@@ -27,6 +27,7 @@
- #include "hw/irq.h"
- #include "migration/vmstate.h"
- #include "hw/misc/stm32l4x5_syscfg.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
-=20
- #define SYSCFG_MEMRMP 0x00
- #define SYSCFG_CFGR1 0x04
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 92b72d56dc..5776dbb19f 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -463,9 +463,10 @@ config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-     select OR_IRQ
--    select STM32L4X5_SYSCFG
-     select STM32L4X5_EXTI
-+    select STM32L4X5_SYSCFG
-     select STM32L4X5_RCC
-+    select STM32L4X5_GPIO
-=20
- config XLNX_ZYNQMP_ARM
-     bool
+In=C3=A8s Varhol (3):
+  hw/gpio: Implement STM32L4x5 GPIO
+  hw/arm: Connect STM32L4x5 GPIO to STM32L4x5 SoC
+  tests/qtest: Add STM32L4x5 GPIO QTest testcase
+
+ MAINTAINERS                        |   1 +
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ include/hw/arm/stm32l4x5_soc.h     |   2 +
+ include/hw/gpio/stm32l4x5_gpio.h   |  71 ++++
+ include/hw/misc/stm32l4x5_syscfg.h |   3 +-
+ hw/arm/stm32l4x5_soc.c             |  71 +++-
+ hw/gpio/stm32l4x5_gpio.c           | 477 +++++++++++++++++++++++
+ hw/misc/stm32l4x5_syscfg.c         |   1 +
+ tests/qtest/stm32l4x5_gpio-test.c  | 586 +++++++++++++++++++++++++++++
+ hw/arm/Kconfig                     |   3 +-
+ hw/gpio/Kconfig                    |   3 +
+ hw/gpio/meson.build                |   1 +
+ hw/gpio/trace-events               |   6 +
+ tests/qtest/meson.build            |   3 +-
+ 14 files changed, 1210 insertions(+), 20 deletions(-)
+ create mode 100644 include/hw/gpio/stm32l4x5_gpio.h
+ create mode 100644 hw/gpio/stm32l4x5_gpio.c
+ create mode 100644 tests/qtest/stm32l4x5_gpio-test.c
+
 --=20
 2.43.2
 

@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1282371ejf;
-        Sat, 24 Feb 2024 12:25:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUuQke5wvbTjPLpA23U5eev0MnDn5piN20zb96R1/TmbnfOsTNylTumhx0PkKKNu1zxcVal7JTTrAoGjRXXHzz1LWLj9xAM
-X-Google-Smtp-Source: AGHT+IHII0WTQaDSmAX9FIhMxwdsHNRik7CWN5zBKIC+KrNc2tbuArZqvv/pvsMBvjRmw4AHtpOW
-X-Received: by 2002:ae9:c30a:0:b0:787:b5e7:6c72 with SMTP id n10-20020ae9c30a000000b00787b5e76c72mr4375531qkg.66.1708806305659;
-        Sat, 24 Feb 2024 12:25:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708806305; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1284436ejf;
+        Sat, 24 Feb 2024 12:32:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVz7WosP+nJWw1J3YEBMEwC85Qcx6nAVaUjusxHU8whpq5jWGs20bO5IKCpuJ+jeF4A8ExqbbUtEWKBIxpvIF9jwQFhuhzQ
+X-Google-Smtp-Source: AGHT+IGwKdyyfuAe9oj9GUkecmTjuSqPAB7bcR4PwovVhZVS17Xl3Lhq//I/app4dnMon0JULPXb
+X-Received: by 2002:a05:6214:f06:b0:68f:67b3:731b with SMTP id gw6-20020a0562140f0600b0068f67b3731bmr4509685qvb.58.1708806767947;
+        Sat, 24 Feb 2024 12:32:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708806767; cv=none;
         d=google.com; s=arc-20160816;
-        b=OWjkwS8fFdXB0WJt8HnDUIKHmKAY8FP4Oe88IfN+uuBG6sQixmOhUcYfVErX7nF4D5
-         0zhGRpng7iotqI0cd1JTISso0qDPBeNp+5w805FXVq8mAulS8ooKy2dyPHl9WysUXX8v
-         NAQOAzk3Yrq59kiCnMl1uB8Er4Hiaz3182zTsfbvRKjg3K77fvTZ/0LpIG8bLZwJ6kG5
-         6X+eLHpHvcZE6ub2JTqqwVWR9co8IUzTlrKgqjlmXho9sU8DzuO3PDHT0YV4qFnbI3Iw
-         ZqS8WfVIA1/Nh4PXzwA1GhBIewE5AI8YpWBKHChZOpA9cZ9nIvM99ULrEBYGO+AeNI/+
-         4fZw==
+        b=FANZu/d6MkujCAL6g6n/ETCUc95qlm/p/C3jk46Wgi6TSRLxCEOZF/iork+bQtG3ke
+         XdfU4J41G18CCsd0yYbfrE/o9+y3grbxfJgZsScKepIIRYGwOwABPgIb/u9+smAOxvH5
+         LnGcVix7GAQdMXK1MyiYNLYtbRj2cDnYpIdaX81OuKvhPoSVE/N/KZvm1yz7cETz76Z3
+         XVBERK5UAUjZxnUKFVaLt4xcPU0468Q9auapdbepf5xu3TLVsENRxsyyCZKHK60A+yrm
+         rIfis8Y5k5f/dlS8Q4bJxu9ySkMJeR/FlME0AMe/QWKYCklJBVwDhur9E5WzcHdGM27Y
+         31bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=swlI7PRB250VIrfVaxWLmLFtXrAzrbSEgzAoIdtMN+c=;
-        fh=mPb0kgRKRMXyQf1doXT0J9h63aokjDxWBaxytGWn63g=;
-        b=Wp1y0XnQ02JFdHBA8qvlHFiecpAhsT52s6FHJ49PW1RNfoZLAu2r11sZaUWzFZ/rEb
-         PduBNrVgA8cVE21MJ4gTJRvunFcjJxY7B/NEi6Z639ztxhe0vjosQprGdD1TxtHg/MHJ
-         GWP4V11ecE0pc7GILwFh5YIbAwf9LHxDmt1UPyrh+xmEuvE6my/WDLmdS3nQ344BzKBj
-         Svv0OpVliuHjzUCtq/Yl+4qP7ICc3Zas4fcSq1EUSKpyu1qx+KVrTBBgBMyG6r+F2aSC
-         +CYgD+KwYVmb+08W4QgEhRBhQBbXNW8r+qD4akI08KAm/YwYVVDcUw8CjR4CxAacfPk2
-         fncA==;
+        bh=uO/1+DSLbdpP01ytLRRf3V5DtpTT0RYEyj28N1ovinE=;
+        fh=kDdTGuMlh9LHfDCtDgiHr1Cim8MVG4W5dIWcgfUzJgU=;
+        b=F5SeGReSDhhPELiMNtdP2LqT7HN2UQNxj2Hkyu4xYrTpjxf5gdwftz5YrNPH+uBbmH
+         D57EsG5tr/1X/Al4uV1WSNEaEJ/TRcOG6npvbwEnZmF1seLArAhc+vg3wFGhZW0ks4e4
+         l2cJ2hJpC/MYjoNeWtQXZ8wCyJaaXmRc60CEl0bZhn51b8zSidxzCQ+OYGxtwJUvApPc
+         IYbve83ZKpkBzIjRXMgInGzTLIftWUkIknorp7OLEAam3XEklRh4QHPss09lu0FFQBjC
+         QJiVk3cBfseV5lwhL2Q+dI5N6a04y6Kp7Rr39ta3N1cFnHiBWCj7Bnleqggqz2TXUitw
+         Y0iQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S1CUzunt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iyat8vot;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11-20020a05620a440b00b00787c8fb6c5esi1019723qkp.256.2024.02.24.12.25.05
+        by mx.google.com with ESMTPS id c11-20020ad45aeb000000b0068fe057717fsi1808672qvh.139.2024.02.24.12.32.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Feb 2024 12:25:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 24 Feb 2024 12:32:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S1CUzunt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iyat8vot;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rdyYd-0006y6-Tp; Sat, 24 Feb 2024 15:23:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rdygo-0003sJ-MF; Sat, 24 Feb 2024 15:32:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rdyYb-0006xP-FQ; Sat, 24 Feb 2024 15:23:37 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1rdygk-0003nd-4A; Sat, 24 Feb 2024 15:32:02 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1rdyYX-0004HS-5l; Sat, 24 Feb 2024 15:23:37 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-564e4df00f3so2345340a12.3; 
- Sat, 24 Feb 2024 12:23:32 -0800 (PST)
+ id 1rdygi-00062l-Hg; Sat, 24 Feb 2024 15:32:01 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-563d32ee33aso2389220a12.2; 
+ Sat, 24 Feb 2024 12:31:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708806209; x=1709411009; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708806718; x=1709411518; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=swlI7PRB250VIrfVaxWLmLFtXrAzrbSEgzAoIdtMN+c=;
- b=S1CUzuntRE/VqRLrGQAzaX3YV1ye+r+NuTKpWjgtvVbHXgQccw3icdcJWEnPbrWB2z
- mXcoKGgNOtMPD539wd+oaR7QLOIgj1PI/hdf5AHVCSpZZIEcxaUNyIu5SnhWJAMwTECz
- nCHUALmRLN/ogTLJvMfukOhrcOdBoX7UlrjD+pu8p5Te0gpemdr5mADYmtVoH7rAwRyb
- BfggZTZeFfVteClkMoK3lfIYQ+1gSUWKU7ZFxiFWkmt7bAp823+nug2EFGU0AOC/E2kv
- uilptLpEcF/wlvTmWeXFQ4c53a3Tt6ESCwCYl8U1rmYZQdTPE/+08NrdwoQgyIKiZPAA
- x28Q==
+ bh=uO/1+DSLbdpP01ytLRRf3V5DtpTT0RYEyj28N1ovinE=;
+ b=iyat8votN7ng3UTTdpnpaD4Hlp+v81/s7ODOA2ialbGEipR9Zks5sTFYmcViK5cYIe
+ D/IzMF36XawDsl6ralO6/3TyMkd6tiq0p4dZth6Nn83r3lmLdBh6iM47EIrDB1M7DWuz
+ sZV1q5nvWC4ETEqImAz3LL2JCT/Zr7ZM6RFT6Qks5+VwYW92g+4vycK0n9WVohZwoRzM
+ WbTRi66uRQd3FHIuQl4TF6xEL+U+i4/za+zuGPGhrAz2eUL+Di12lyh8Ng5UWt4eU/U5
+ poxaZkPHBTFsJ6v7qrXj94ZuOUiUHekqfjB6v7XL9Mro31vpVohOoRi+Uq/w+uGphAbi
+ fpVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708806209; x=1709411009;
+ d=1e100.net; s=20230601; t=1708806718; x=1709411518;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=swlI7PRB250VIrfVaxWLmLFtXrAzrbSEgzAoIdtMN+c=;
- b=Ik5esGRloFH2qcUxSeFe+itrbd66RBtveZFuqml+f/PHpdWp3G7u0XHKhD/ACF0piA
- ch+Xf1rBCThxuJ1ZrGDLBZ7phGd08WiccjI/fEn0xVD7aPm9RoPeZNGdpWoetxXyq8Yz
- EKAibnADR0568rdFw2PoQmgTcT9FOGBvTzrpqf3EMwgJO7XzL7pMr6KtvYdX07OaQKiK
- reQwmVUj/XkUiRIlgC2KW9TpbOiwNFOrzBJAuwO3YQLKDtO2AkFwCm901xRVj56Fazzu
- VVT7tfK3w39dihlpw8xYLZQuWCL8tYNr9oFx1Hux2N9QcC0+DFgPb81T5z2n3uTcng98
- DO+Q==
+ bh=uO/1+DSLbdpP01ytLRRf3V5DtpTT0RYEyj28N1ovinE=;
+ b=MyNPq+1RorZtRME43UgfHQj2V9K1tsL9DmQ+Jq+6NdC76cNMzrU/JoZ9EV9BEPl8GK
+ n8YTRtiRp2Hs5YzqdmP7GSlTvK6URGk61cuAocbclJducLaXiqi25yedwTNPAO1Su1EF
+ sjb240hjJhyBlGzS6MnFizU5EzSCBGOoW941u/bEQVzTdnWdsdnwTxDdjVVJQiE9I5xM
+ n+9eTPyQw5JW3wI8SaGFEt2xkeRJfxx9s9zpAQAjtQjRP5zeMZDiQzwb8+V6WMAfSgoT
+ MECHzoyBUwYhvbYBDnXHj2JUTfycIeQqMAFLShFBhICdu4ts3yvHPfXXs5jHi4HuJ6zK
+ 4A5w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXzfevObDK6POCCpZDHK/JvbtdAyUEKcIzeO22ViUQJS04ZFo+H7DII7o0USNAxx2se38aM/8kylWbDmVVuUb5KT+Ym
-X-Gm-Message-State: AOJu0Yy4UWKDkScb01GFSpNBATorwmVvqv8HPpjkZxx7uuzCOkp5+NGY
- 0oRHs3kWqz3CCE7oVwJVkor4//xNBcxT2i+qtoSQbwkUIaRYxKVbCFzC3fTs
-X-Received: by 2002:aa7:d297:0:b0:563:ccd1:26bd with SMTP id
- w23-20020aa7d297000000b00563ccd126bdmr2054363edq.2.1708806209175; 
- Sat, 24 Feb 2024 12:23:29 -0800 (PST)
+ AJvYcCVMetDpkGqw/l+p8AoR6kjdWUGo8uvCn+8Msqu3yGaFKnxLrEoi4mBPFgX4+aX3PYb6wGEW24yitzZbeoC2CzGhB74G
+X-Gm-Message-State: AOJu0YwTT1iBTCwhNNJdtGvEKJENjS8WmsWzgvsRjYxBC3DMgS9aiNLD
+ U29vmlUkDwgU1EwK/WUTsCn+aBBj1t5pj7iB2DF3TimpacGmKsrpM1OGyVLz
+X-Received: by 2002:a17:906:5959:b0:a40:75e8:3891 with SMTP id
+ g25-20020a170906595900b00a4075e83891mr2045889ejr.7.1708806717698; 
+ Sat, 24 Feb 2024 12:31:57 -0800 (PST)
 Received: from localhost.localdomain ([212.70.108.232])
  by smtp.gmail.com with ESMTPSA id
- g2-20020a50ee02000000b00560c6ff443esm816108eds.66.2024.02.24.12.23.27
+ n11-20020a170906088b00b00a3d636e412bsm863405eje.123.2024.02.24.12.31.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Feb 2024 12:23:28 -0800 (PST)
+ Sat, 24 Feb 2024 12:31:57 -0800 (PST)
 From: Rayhan Faizel <rayhan.faizel@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, philmd@linaro.org, pbonzini@redhat.com,
  qemu-arm@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>
-Subject: [PATCH v4 0/3] Add support for I2C in BCM2835 boards
-Date: Sun, 25 Feb 2024 00:32:42 +0530
-Message-Id: <20240224190245.2405016-1-rayhan.faizel@gmail.com>
+Subject: [PATCH v5 0/3] Add support for I2C in BCM2835 boards
+Date: Sun, 25 Feb 2024 00:40:35 +0530
+Message-Id: <20240224191038.2409945-1-rayhan.faizel@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,23 +110,27 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gK1oCeXPAg3H
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uvlkF232xJiv
 
 This patch series implements support for the Broadcom Serial Controller used
 by BCM2835 based boards for I2C.
+
+[Changes in v5]
+
+- Improper whitespace again.
 
 [Changes in v4]
 

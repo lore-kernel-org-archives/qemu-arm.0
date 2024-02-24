@@ -1,110 +1,118 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1062841ejf;
-        Sat, 24 Feb 2024 02:55:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUv9DzTo5q9nWQ3TtrbzU0bfhXw7dJw5VPUruxgtm6ep1mAAzMDt9DMplIfxh8CCN+D7Nv5igbkqfpXJ61s4cBXPChF4k9W
-X-Google-Smtp-Source: AGHT+IF9/yAiMAg12jsV84PW4VgHJGwSnPduRT9Y5Ae7MXB30JRetImeE+DF8ZXyAUYJkaCRL2N2
-X-Received: by 2002:a05:622a:19a0:b0:42e:4521:44dd with SMTP id u32-20020a05622a19a000b0042e452144ddmr2200552qtc.6.1708772123401;
-        Sat, 24 Feb 2024 02:55:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708772123; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1282146ejf;
+        Sat, 24 Feb 2024 12:24:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWkkT0UK/fhIgmAMsKfGR/I18XqVnYZSBF8ALFCeLsRUq7QfsUwhhoZpyh2aHxuRwYGjChNip8k1vUxlph+h+X7prLRs13N
+X-Google-Smtp-Source: AGHT+IFt9C42OPxqt0wPSFSm8FAPK7rXbxA3CqoKZoYvhH+StaT7NxjlZvk2TZPcIMx1kH5Qoc+e
+X-Received: by 2002:a0c:f109:0:b0:68f:72db:e894 with SMTP id i9-20020a0cf109000000b0068f72dbe894mr3469717qvl.17.1708806252721;
+        Sat, 24 Feb 2024 12:24:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708806252; cv=none;
         d=google.com; s=arc-20160816;
-        b=sjYR2a54B8O/ImQkEaGJZ8JHJEEcBneiLq86Ns7YCEQsqf5iCYB4F8NJCXJoE6IjGG
-         XxkyU4lK8RWUEZSy/BxPQDWQeWsWMdbZg0rJKgzvzA6yy5xACVj0KyILJiUkfcd3HXzT
-         ++nzSENLt1rQQ/Fsvienr6rq6JXw6Q/dkKkCHwGmx1mFbIimcSBADW2ofeiT/J5mlGe1
-         /MKgUEk9sq6/wmVFcEXTmcQWZsPXoELO1IOGXV8E1CByM/pV2glU0Hpk6WnPqWg7ZIWD
-         MaqRPB16vASFFmeIl0R1jsLl7LNWWER954bhaWXs9owE1cZwvuL2rd+2VBWx/0HUcfgk
-         XUdw==
+        b=TiAFlrsdAbnL7yees/et47RK1CSgqGhrKal4zBIu7q3/G29axDTn34+GZ/pDM1auYF
+         8C7QHAxgxk+IzOJVAFGYHCZ/h8TnGoO7bOgc3lN7CbPR6gfICr0g1EDrUfOIy5o1x3Cc
+         rHw9hjwGBzcc/f6jFxBVgHLzHmSQBinNYe/9HdWSlRiHRPd3m9NgQzNwBoaovCoBda2A
+         6oQ+2QgeON2T0aror6cE1Ya5zO839Cr2dlukoZQ25ry1hPos9DiAK2ba7vTvKBFaIipw
+         nAwLqkl/ZbFQluEWfOiKsZ1tSZ+9NAWAE5EHaxXXxLXUzm6KZxK31yU68ATEfNI++KLl
+         O6zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=Pi91m21mnhBqn/uuGpliofumCaQV1a8OylOgpMKo3AE=;
-        fh=Xv0TwLrmls6IwIhNl47EFnHRl/jgf5uVZfENH530Szc=;
-        b=WsYwxbhiEGe+0Q7thZ0sK1uh4TAz4I9J0bvgBjfmcckbCSoxNFQ/jJiwNLMfgULK15
-         1SYNfUGNR66jcAeBQmXpBwl5rTTEBF/Pzd6FW0L9jc/eaT2G3Cd2YEGsuy5lWpOtsnQQ
-         jumF8vxbTY9p3I5PqALYkadUsl9PxO3tWcokJP94Pi+gPy++3L0RzPVvMmymw7cx/VBG
-         rcRxuWPWjd2IbFoaCmEOstgvX6MmWqUagEkIjnL6z7Pd6jRbsBhRwX+7T3b/nYoxpNdF
-         zxugzSwXCerspY0r6E4fIVvMVcRz89KlwiKTMCsVSaNjsVzHG2lNu+A5rdggJXplBYh2
-         /Nnw==;
+         :from:dkim-signature;
+        bh=qxx8rQKYfraslaYyKwdGIO4V2NDujCMxU7+I2hvizZs=;
+        fh=zq9peBspj/q8HSuHcpr2QOz34CRmn0H2AWpJmeQ94d8=;
+        b=vzbvrIA/QwRGQM6qcO2yPrakxLvPl1Np1dLfkCh7sVQ1PTAwtg7SAn0LQyRtUbBzoM
+         L7RVEmfqxXdWbXx0GRI6XfLh88EAY/XzXNlGabZ7gc/mZB1MNT4A9KbFkbuTZYgqRS9b
+         vq9rpDWpFIjrSFxxfFiXyupe2RDsAeffjNCqwCR/VZYoSiU4x3zJRGXa9awbGYSVJsxN
+         Dg1nx5VkjdqZU89vDFGwN4h8KxhulQMlL+AV+e6k6ZU/Oro9WpmFGEnJ/6h+Cjgs4ZvC
+         ebJI6syk6zxTwkXKpj0tMlVCccWlAK4lyGiZRfAGD5c074deN7krGmVJnOI4pSq3KfGo
+         kCqw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=XSwjo71e;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LhFFMmdu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10-20020ac8554a000000b0042c4cbe76aesi834598qtr.302.2024.02.24.02.55.23
+        by mx.google.com with ESMTPS id kc16-20020a056214411000b0068fc31d090esi1763185qvb.210.2024.02.24.12.24.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Feb 2024 02:55:23 -0800 (PST)
+        Sat, 24 Feb 2024 12:24:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=XSwjo71e;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LhFFMmdu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rdpfv-0004Cs-5G; Sat, 24 Feb 2024 05:54:35 -0500
+	id 1rdyYe-0006zS-HQ; Sat, 24 Feb 2024 15:23:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rdpfu-0004CH-79; Sat, 24 Feb 2024 05:54:34 -0500
-Received: from zproxy1.enst.fr ([137.194.2.220])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rdpfp-0003MX-8P; Sat, 24 Feb 2024 05:54:33 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 07A24C05D6;
- Sat, 24 Feb 2024 11:54:27 +0100 (CET)
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id fGNA8ZAS___l; Sat, 24 Feb 2024 11:54:26 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 21A8CC0642;
- Sat, 24 Feb 2024 11:54:26 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 21A8CC0642
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1708772066;
- bh=Pi91m21mnhBqn/uuGpliofumCaQV1a8OylOgpMKo3AE=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=XSwjo71ekhpgVw2AcacL2LLnA1H5udu79vrTkUFEHgaQXctIw8OA7saXXqfsrmA3e
- JBWDusXFbnTqeGXVRktpx+VQ2Lx0lI4QD0+XBryVwzNPDLaUhbHjoWdXh6VUXI8oeQ
- PkysjsGIw7INe2g+NSA1nnFBKu4S/e/1dT04ZOHE=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id VTT-5Vv5CqHI; Sat, 24 Feb 2024 11:54:26 +0100 (CET)
-Received: from inesv-Inspiron-3501.lan (unknown
- [IPv6:2001:861:4680:b1b0:34c1:5884:a33c:51fd])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id CF787C07A3;
- Sat, 24 Feb 2024 11:54:25 +0100 (CET)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rdyYb-0006xW-LX; Sat, 24 Feb 2024 15:23:37 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1rdyYX-0004He-FB; Sat, 24 Feb 2024 15:23:37 -0500
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-565a3910f86so947345a12.3; 
+ Sat, 24 Feb 2024 12:23:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1708806211; x=1709411011; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qxx8rQKYfraslaYyKwdGIO4V2NDujCMxU7+I2hvizZs=;
+ b=LhFFMmdub3QV/Ks82JMMQU+MDjqO4plLuxZdS0dOL5myjFXB+oEfJQGKGUAwVZeQnP
+ aSzB9Omg+K0bbW9tytVJdtU4bZ2LZFTY0caqSOgPZT6RJ0U14TFBV0WPGFPqZbPn6ETv
+ Sdz5U53oTLiZExu1NgxOdt03DlUkqFc6AhnKmNOrICiOrwk1V310p69rVEHp09rEF5ju
+ vFj4UhoRbs98G5WJltbAqS5yKSst1J9ebXPviHAbeZw+rb+SKUgCilFJPfVN8niDAaS6
+ rlDoZoyzpk7lTJMCCwjiE2GeLQgjJmOyzIg/7oxk3aRu9CHSbGDPMlFdgARF3ULUqoBW
+ fOGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708806211; x=1709411011;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qxx8rQKYfraslaYyKwdGIO4V2NDujCMxU7+I2hvizZs=;
+ b=IzxbGkz0i6+vln4dHWFYCuYtjTBNiUMCphMhIMxrKKiGUt447x/jdaHYtWWp4N7x9i
+ CV64xEhAo8t3idVoQYRkMzXornK7U22dAfVMAr/tQyYRAbikgfX42s/JFSb7S1Tdibed
+ x3UNWYYfpyk3eAMn5Yeho3oTWOu1r3GFUFUeUpO38ka725hqJn6UcQ/CWfPKNDjsYwpD
+ uPs1NvqkK9wYJ6I4EedYcTF+botC5Z5qjEeqMSh0pIn9zREG4+dWFXaouhjbDWod8I8i
+ 053tCmajwKv8XCYCbD8rYHbiKjBdeSzuD7aWHJEfTIg4sVVHqan/x0GFAiN9og/9BvgU
+ 85pw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWO5DSOR6icaG5DagGtkboKv/pCsns3rrCksFnRSfshvSRYtNKbYjRhQuzmd4jduEVhnN2bqFujHgD49wQXXbXf3KqO
+X-Gm-Message-State: AOJu0YzkeaC8GPKWDrr/+JYDaPMWi7jyYNgKFEyfXL1YgvB3+4jQAz7r
+ BFHogAXfq7Ptou7XOfbKhjmasQTSlCvidCs8iDBk2FwIFKPKJ3XE2mNe0oWM
+X-Received: by 2002:a05:6402:3456:b0:564:3b2e:2a2e with SMTP id
+ l22-20020a056402345600b005643b2e2a2emr1988711edc.9.1708806211346; 
+ Sat, 24 Feb 2024 12:23:31 -0800 (PST)
+Received: from localhost.localdomain ([212.70.108.232])
+ by smtp.gmail.com with ESMTPSA id
+ g2-20020a50ee02000000b00560c6ff443esm816108eds.66.2024.02.24.12.23.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 24 Feb 2024 12:23:31 -0800 (PST)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org
-Subject: [PATCH v6 3/3] tests/qtest: Add STM32L4x5 GPIO QTest testcase
-Date: Sat, 24 Feb 2024 11:47:34 +0100
-Message-ID: <20240224105417.195674-4-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240224105417.195674-1-ines.varhol@telecom-paris.fr>
-References: <20240224105417.195674-1-ines.varhol@telecom-paris.fr>
+Cc: peter.maydell@linaro.org, philmd@linaro.org, pbonzini@redhat.com,
+ qemu-arm@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>
+Subject: [PATCH v4 1/3] hw/i2c: Implement Broadcom Serial Controller (BSC)
+Date: Sun, 25 Feb 2024 00:32:43 +0530
+Message-Id: <20240224190245.2405016-2-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240224190245.2405016-1-rayhan.faizel@gmail.com>
+References: <20240224190245.2405016-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.220;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,679 +127,435 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6xeun3AuGj89
+X-TUID: Ie2kdV91nFny
 
-The testcase contains :
-- `test_idr_reset_value()` :
-Checks the reset values of MODER, OTYPER, PUPDR, ODR and IDR.
-- `test_gpio_output_mode()` :
-Checks that writing a bit in register ODR results in the corresponding
-pin rising or lowering, if this pin is configured in output mode.
-- `test_gpio_input_mode()` :
-Checks that a input pin set high or low externally results
-in the pin rising and lowering.
-- `test_pull_up_pull_down()` :
-Checks that a floating pin in pull-up/down mode is actually high/down.
-- `test_push_pull()` :
-Checks that a pin set externally is disconnected when configured in
-push-pull output mode, and can't be set externally while in this mode.
-- `test_open_drain()` :
-Checks that a pin set externally high is disconnected when configured
-in open-drain output mode, and can't be set high while in this mode.
-- `test_bsrr_brr()` :
-Checks that writing to BSRR and BRR has the desired result in ODR.
-- `test_clock_enable()` :
-Checks that GPIO clock is at the right frequency after enabling it.
+A few deficiencies in the current device model need to be noted.
 
-Acked-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+1. FIFOs are not used. All sends and receives are done directly.
+2. Repeated starts are not emulated. Repeated starts can be triggered in real
+hardware by sending a new read transfer request in the window time between
+transfer active set of write transfer request and done bit set of the same.
+
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/stm32l4x5_gpio-test.c | 586 ++++++++++++++++++++++++++++++
- tests/qtest/meson.build           |   3 +-
- 2 files changed, 588 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32l4x5_gpio-test.c
+ docs/system/arm/raspi.rst    |   1 +
+ hw/i2c/Kconfig               |   4 +
+ hw/i2c/bcm2835_i2c.c         | 282 +++++++++++++++++++++++++++++++++++
+ hw/i2c/meson.build           |   1 +
+ include/hw/i2c/bcm2835_i2c.h |  80 ++++++++++
+ 5 files changed, 368 insertions(+)
+ create mode 100644 hw/i2c/bcm2835_i2c.c
+ create mode 100644 include/hw/i2c/bcm2835_i2c.h
 
-diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gp=
-io-test.c
+diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
+index d0a6f08b2b..f2c0d6d6b8 100644
+--- a/docs/system/arm/raspi.rst
++++ b/docs/system/arm/raspi.rst
+@@ -34,6 +34,7 @@ Implemented devices
+  * MailBox controller (MBOX)
+  * VideoCore firmware (property)
+  * Peripheral SPI controller (SPI)
++ * Broadcom Serial Controller (I2C)
+ 
+ 
+ Missing devices
+diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
+index 14886b35da..596a7a3165 100644
+--- a/hw/i2c/Kconfig
++++ b/hw/i2c/Kconfig
+@@ -45,3 +45,7 @@ config PCA954X
+ config PMBUS
+     bool
+     select SMBUS
++
++config BCM2835_I2C
++    bool
++    select I2C
+diff --git a/hw/i2c/bcm2835_i2c.c b/hw/i2c/bcm2835_i2c.c
 new file mode 100644
-index 0000000000..cd4fd9bae2
+index 0000000000..20ec46eeab
 --- /dev/null
-+++ b/tests/qtest/stm32l4x5_gpio-test.c
-@@ -0,0 +1,586 @@
++++ b/hw/i2c/bcm2835_i2c.c
+@@ -0,0 +1,282 @@
 +/*
-+ * QTest testcase for STM32L4x5_GPIO
++ * Broadcom Serial Controller (BSC)
 + *
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
 + *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: MIT
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "libqtest-single.h"
++#include "qemu/log.h"
++#include "hw/i2c/bcm2835_i2c.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
 +
-+#define GPIO_BASE_ADDR 0x48000000
-+#define GPIO_SIZE      0x400
-+#define NUM_GPIOS      8
-+#define NUM_GPIO_PINS  16
-+
-+#define GPIO_A 0x48000000
-+#define GPIO_B 0x48000400
-+#define GPIO_C 0x48000800
-+#define GPIO_D 0x48000C00
-+#define GPIO_E 0x48001000
-+#define GPIO_F 0x48001400
-+#define GPIO_G 0x48001800
-+#define GPIO_H 0x48001C00
-+
-+/*
-+ * MSI is used as system clock source after startup
-+ * from Reset, configured at 4 MHz.
-+ */
-+#define SYSCLK_FREQ_HZ 4000000
-+#define RCC_AHB2ENR 0x4002104C
-+
-+#define MODER 0x00
-+#define OTYPER 0x04
-+#define PUPDR 0x0C
-+#define IDR 0x10
-+#define ODR 0x14
-+#define BSRR 0x18
-+#define BRR 0x28
-+
-+#define MODER_INPUT 0
-+#define MODER_OUTPUT 1
-+
-+#define PUPDR_NONE 0
-+#define PUPDR_PULLUP 1
-+#define PUPDR_PULLDOWN 2
-+
-+#define OTYPER_PUSH_PULL 0
-+#define OTYPER_OPEN_DRAIN 1
-+
-+const uint32_t moder_reset[NUM_GPIOS] =3D {
-+    0xABFFFFFF,
-+    0xFFFFFEBF,
-+    0xFFFFFFFF,
-+    0xFFFFFFFF,
-+    0xFFFFFFFF,
-+    0xFFFFFFFF,
-+    0xFFFFFFFF,
-+    0x0000000F
-+};
-+
-+const uint32_t pupdr_reset[NUM_GPIOS] =3D {
-+    0x64000000,
-+    0x00000100,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000
-+};
-+
-+const uint32_t idr_reset[NUM_GPIOS] =3D {
-+    0x0000A000,
-+    0x00000010,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000,
-+    0x00000000
-+};
-+
-+static uint32_t gpio_readl(unsigned int gpio, unsigned int offset)
++static void bcm2835_i2c_update_interrupt(BCM2835I2CState *s)
 +{
-+    return readl(gpio + offset);
-+}
-+
-+static void gpio_writel(unsigned int gpio, unsigned int offset, uint32_t=
- value)
-+{
-+    writel(gpio + offset, value);
-+}
-+
-+static void gpio_set_bit(unsigned int gpio, unsigned int reg,
-+                         unsigned int pin, uint32_t value)
-+{
-+    uint32_t mask =3D 0xFFFFFFFF & ~(0x1 << pin);
-+    gpio_writel(gpio, reg, (gpio_readl(gpio, reg) & mask) | value << pin=
-);
-+}
-+
-+static void gpio_set_2bits(unsigned int gpio, unsigned int reg,
-+                           unsigned int pin, uint32_t value)
-+{
-+    uint32_t offset =3D 2 * pin;
-+    uint32_t mask =3D 0xFFFFFFFF & ~(0x3 << offset);
-+    gpio_writel(gpio, reg, (gpio_readl(gpio, reg) & mask) | value << off=
-set);
-+}
-+
-+static unsigned int get_gpio_id(uint32_t gpio_addr)
-+{
-+    return (gpio_addr - GPIO_BASE_ADDR) / GPIO_SIZE;
-+}
-+
-+static void gpio_set_irq(unsigned int gpio, int num, int level)
-+{
-+    g_autofree char *name =3D g_strdup_printf("/machine/soc/gpio%c",
-+                                            get_gpio_id(gpio) + 'a');
-+    qtest_set_irq_in(global_qtest, name, NULL, num, level);
-+}
-+
-+static void disconnect_all_pins(unsigned int gpio)
-+{
-+    g_autofree char *path =3D g_strdup_printf("/machine/soc/gpio%c",
-+                                            get_gpio_id(gpio) + 'a');
-+    QDict *r;
-+
-+    r =3D qtest_qmp(global_qtest, "{ 'execute': 'qom-set', 'arguments': =
-"
-+        "{ 'path': %s, 'property': 'disconnected-pins', 'value': %d } }"=
-,
-+        path, 0xFFFF);
-+    g_assert_false(qdict_haskey(r, "error"));
-+    qobject_unref(r);
-+}
-+
-+static uint32_t get_disconnected_pins(unsigned int gpio)
-+{
-+    g_autofree char *path =3D g_strdup_printf("/machine/soc/gpio%c",
-+                                            get_gpio_id(gpio) + 'a');
-+    uint32_t disconnected_pins =3D 0;
-+    QDict *r;
-+
-+    r =3D qtest_qmp(global_qtest, "{ 'execute': 'qom-get', 'arguments':"
-+        " { 'path': %s, 'property': 'disconnected-pins'} }", path);
-+    g_assert_false(qdict_haskey(r, "error"));
-+    disconnected_pins =3D qdict_get_int(r, "return");
-+    qobject_unref(r);
-+    return disconnected_pins;
-+}
-+
-+static uint32_t get_clock_freq_hz(unsigned int gpio)
-+{
-+    g_autofree char *path =3D g_strdup_printf("/machine/soc/gpio%c",
-+                                            get_gpio_id(gpio) + 'a');
-+    uint32_t clock_freq_hz =3D 0;
-+    QDict *r;
-+
-+    r =3D qtest_qmp(global_qtest, "{ 'execute': 'qom-get', 'arguments':"
-+        " { 'path': %s, 'property': 'clock-freq-hz'} }", path);
-+    g_assert_false(qdict_haskey(r, "error"));
-+    clock_freq_hz =3D qdict_get_int(r, "return");
-+    qobject_unref(r);
-+    return clock_freq_hz;
-+}
-+
-+static uint32_t reset(uint32_t gpio, unsigned int offset)
-+{
-+    switch (offset) {
-+    case MODER:
-+        return moder_reset[get_gpio_id(gpio)];
-+    case PUPDR:
-+        return pupdr_reset[get_gpio_id(gpio)];
-+    case IDR:
-+        return idr_reset[get_gpio_id(gpio)];
++    int do_interrupt = 0;
++    /* Interrupt on RXR (Needs reading) */
++    if (s->c & BCM2835_I2C_C_INTR && s->s & BCM2835_I2C_S_RXR) {
++        do_interrupt = 1;
 +    }
-+    return 0x0;
++
++    /* Interrupt on TXW (Needs writing) */
++    if (s->c & BCM2835_I2C_C_INTT && s->s & BCM2835_I2C_S_TXW) {
++        do_interrupt = 1;
++    }
++
++    /* Interrupt on DONE (Transfer complete) */
++    if (s->c & BCM2835_I2C_C_INTD && s->s & BCM2835_I2C_S_DONE) {
++        do_interrupt = 1;
++    }
++    qemu_set_irq(s->irq, do_interrupt);
 +}
 +
-+static void system_reset(void)
++static void bcm2835_i2c_begin_transfer(BCM2835I2CState *s)
 +{
-+    QDict *r;
-+    r =3D qtest_qmp(global_qtest, "{'execute': 'system_reset'}");
-+    g_assert_false(qdict_haskey(r, "error"));
-+    qobject_unref(r);
++    int direction = s->c & BCM2835_I2C_C_READ;
++    if (i2c_start_transfer(s->bus, s->a, direction)) {
++        s->s |= BCM2835_I2C_S_ERR;
++    }
++    s->s |= BCM2835_I2C_S_TA;
++
++    if (direction) {
++        s->s |= BCM2835_I2C_S_RXR | BCM2835_I2C_S_RXD;
++    } else {
++        s->s |= BCM2835_I2C_S_TXW;
++    }
 +}
 +
-+static void test_idr_reset_value(void)
++static void bcm2835_i2c_finish_transfer(BCM2835I2CState *s)
 +{
 +    /*
-+     * Checks that the values in MODER, OTYPER, PUPDR and ODR
-+     * after reset are correct, and that the value in IDR is
-+     * coherent.
-+     * Since AF and analog modes aren't implemented, IDR reset
-+     * values aren't the same as with a real board.
++     * STOP is sent when DLEN counts down to zero.
 +     *
-+     * Register IDR contains the actual values of all GPIO pins.
-+     * Its value depends on the pins' configuration
-+     * (intput/output/analog : register MODER, push-pull/open-drain :
-+     * register OTYPER, pull-up/pull-down/none : register PUPDR)
-+     * and on the values stored in register ODR
-+     * (in case the pin is in output mode).
-+     */
-+
-+    gpio_writel(GPIO_A, MODER, 0xDEADBEEF);
-+    gpio_writel(GPIO_A, ODR, 0xDEADBEEF);
-+    gpio_writel(GPIO_A, OTYPER, 0xDEADBEEF);
-+    gpio_writel(GPIO_A, PUPDR, 0xDEADBEEF);
-+
-+    gpio_writel(GPIO_B, MODER, 0xDEADBEEF);
-+    gpio_writel(GPIO_B, ODR, 0xDEADBEEF);
-+    gpio_writel(GPIO_B, OTYPER, 0xDEADBEEF);
-+    gpio_writel(GPIO_B, PUPDR, 0xDEADBEEF);
-+
-+    gpio_writel(GPIO_C, MODER, 0xDEADBEEF);
-+    gpio_writel(GPIO_C, ODR, 0xDEADBEEF);
-+    gpio_writel(GPIO_C, OTYPER, 0xDEADBEEF);
-+    gpio_writel(GPIO_C, PUPDR, 0xDEADBEEF);
-+
-+    gpio_writel(GPIO_H, MODER, 0xDEADBEEF);
-+    gpio_writel(GPIO_H, ODR, 0xDEADBEEF);
-+    gpio_writel(GPIO_H, OTYPER, 0xDEADBEEF);
-+    gpio_writel(GPIO_H, PUPDR, 0xDEADBEEF);
-+
-+    system_reset();
-+
-+    uint32_t moder =3D gpio_readl(GPIO_A, MODER);
-+    uint32_t odr =3D gpio_readl(GPIO_A, ODR);
-+    uint32_t otyper =3D gpio_readl(GPIO_A, OTYPER);
-+    uint32_t pupdr =3D gpio_readl(GPIO_A, PUPDR);
-+    uint32_t idr =3D gpio_readl(GPIO_A, IDR);
-+    /* 15: AF, 14: AF, 13: AF, 12: Analog ... */
-+    /* here AF is the same as Analog and Input mode */
-+    g_assert_cmphex(moder, =3D=3D, reset(GPIO_A, MODER));
-+    g_assert_cmphex(odr, =3D=3D, reset(GPIO_A, ODR));
-+    g_assert_cmphex(otyper, =3D=3D, reset(GPIO_A, OTYPER));
-+    /* 15: pull-up, 14: pull-down, 13: pull-up, 12: neither ... */
-+    g_assert_cmphex(pupdr, =3D=3D, reset(GPIO_A, PUPDR));
-+    /* 15 : 1, 14: 0, 13: 1, 12 : reset value ... */
-+    g_assert_cmphex(idr, =3D=3D, reset(GPIO_A, IDR));
-+
-+    moder =3D gpio_readl(GPIO_B, MODER);
-+    odr =3D gpio_readl(GPIO_B, ODR);
-+    otyper =3D gpio_readl(GPIO_B, OTYPER);
-+    pupdr =3D gpio_readl(GPIO_B, PUPDR);
-+    idr =3D gpio_readl(GPIO_B, IDR);
-+    /* ... 5: Analog, 4: AF, 3: AF, 2: Analog ... */
-+    /* here AF is the same as Analog and Input mode */
-+    g_assert_cmphex(moder, =3D=3D, reset(GPIO_B, MODER));
-+    g_assert_cmphex(odr, =3D=3D, reset(GPIO_B, ODR));
-+    g_assert_cmphex(otyper, =3D=3D, reset(GPIO_B, OTYPER));
-+    /* ... 5: neither, 4: pull-up, 3: neither ... */
-+    g_assert_cmphex(pupdr, =3D=3D, reset(GPIO_B, PUPDR));
-+    /* ... 5 : reset value, 4 : 1, 3 : reset value ... */
-+    g_assert_cmphex(idr, =3D=3D, reset(GPIO_B, IDR));
-+
-+    moder =3D gpio_readl(GPIO_C, MODER);
-+    odr =3D gpio_readl(GPIO_C, ODR);
-+    otyper =3D gpio_readl(GPIO_C, OTYPER);
-+    pupdr =3D gpio_readl(GPIO_C, PUPDR);
-+    idr =3D gpio_readl(GPIO_C, IDR);
-+    /* Analog, same as Input mode*/
-+    g_assert_cmphex(moder, =3D=3D, reset(GPIO_C, MODER));
-+    g_assert_cmphex(odr, =3D=3D, reset(GPIO_C, ODR));
-+    g_assert_cmphex(otyper, =3D=3D, reset(GPIO_C, OTYPER));
-+    /* no pull-up or pull-down */
-+    g_assert_cmphex(pupdr, =3D=3D, reset(GPIO_C, PUPDR));
-+    /* reset value */
-+    g_assert_cmphex(idr, =3D=3D, reset(GPIO_C, IDR));
-+
-+    moder =3D gpio_readl(GPIO_H, MODER);
-+    odr =3D gpio_readl(GPIO_H, ODR);
-+    otyper =3D gpio_readl(GPIO_H, OTYPER);
-+    pupdr =3D gpio_readl(GPIO_H, PUPDR);
-+    idr =3D gpio_readl(GPIO_H, IDR);
-+    /* Analog, same as Input mode */
-+    g_assert_cmphex(moder, =3D=3D, reset(GPIO_H, MODER));
-+    g_assert_cmphex(odr, =3D=3D, reset(GPIO_H, ODR));
-+    g_assert_cmphex(otyper, =3D=3D, reset(GPIO_H, OTYPER));
-+    /* no pull-up or pull-down */
-+    g_assert_cmphex(pupdr, =3D=3D, reset(GPIO_H, PUPDR));
-+    /* reset value */
-+    g_assert_cmphex(idr, =3D=3D, reset(GPIO_H, IDR));
-+}
-+
-+static void test_clock_enable(void)
-+{
-+    g_assert_cmpuint(get_clock_freq_hz(GPIO_B), =3D=3D, 0);
-+    g_assert_cmpuint(get_clock_freq_hz(GPIO_F), =3D=3D, 0);
-+
-+    writel(RCC_AHB2ENR, readl(RCC_AHB2ENR) | (0x22 << 0));
-+
-+    g_assert_cmpuint(get_clock_freq_hz(GPIO_B), =3D=3D, SYSCLK_FREQ_HZ);
-+    g_assert_cmpuint(get_clock_freq_hz(GPIO_F), =3D=3D, SYSCLK_FREQ_HZ);
-+}
-+
-+static void test_gpio_output_mode(const void *data)
-+{
-+    /*
-+     * Checks that setting a bit in ODR sets the corresponding
-+     * GPIO line high : it should set the right bit in IDR
-+     * and send an irq to syscfg.
-+     * Additionally, it checks that values written to ODR
-+     * when not in output mode are stored and not discarded.
-+     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
-+    unsigned int gpio_id =3D get_gpio_id(gpio);
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+
-+    /* Set a bit in ODR and check nothing happens */
-+    gpio_set_bit(gpio, ODR, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR));
-+    g_assert_false(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Configure the relevant line as output and check the pin is high *=
-/
-+    gpio_set_2bits(gpio, MODER, pin, MODER_OUTPUT);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) | (1=
- << pin));
-+    g_assert_true(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Reset the bit in ODR and check the pin is low */
-+    gpio_set_bit(gpio, ODR, pin, 0);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+    g_assert_false(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Clean the test */
-+    gpio_writel(gpio, ODR, reset(gpio, ODR));
-+    gpio_writel(gpio, MODER, reset(gpio, MODER));
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR));
-+    g_assert_false(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+}
-+
-+static void test_gpio_input_mode(const void *data)
-+{
-+    /*
-+     * Test that setting a line high/low externally sets the
-+     * corresponding GPIO line high/low : it should set the
-+     * right bit in IDR and send an irq to syscfg.
-+     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
-+    unsigned int gpio_id =3D get_gpio_id(gpio);
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+
-+    /* Configure a line as input, raise it, and check that the pin is hi=
-gh */
-+    gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) | (1=
- << pin));
-+    g_assert_true(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Lower the line and check that the pin is low */
-+    gpio_set_irq(gpio, pin, 0);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+    g_assert_false(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Clean the test */
-+    gpio_writel(gpio, MODER, reset(gpio, MODER));
-+    disconnect_all_pins(gpio);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR));
-+}
-+
-+static void test_pull_up_pull_down(const void *data)
-+{
-+    /*
-+     * Test that a floating pin with pull-up sets the pin
-+     * high and vice-versa.
-+     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
-+    unsigned int gpio_id =3D get_gpio_id(gpio);
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+
-+    /* Configure a line as input with pull-up, check the line is set hig=
-h */
-+    gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-+    gpio_set_2bits(gpio, PUPDR, pin, PUPDR_PULLUP);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) | (1=
- << pin));
-+    g_assert_true(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Configure the line with pull-down, check the line is low */
-+    gpio_set_2bits(gpio, PUPDR, pin, PUPDR_PULLDOWN);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+    g_assert_false(get_irq(gpio_id * NUM_GPIO_PINS + pin));
-+
-+    /* Clean the test */
-+    gpio_writel(gpio, MODER, reset(gpio, MODER));
-+    gpio_writel(gpio, PUPDR, reset(gpio, PUPDR));
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR));
-+}
-+
-+static void test_push_pull(const void *data)
-+{
-+    /*
-+     * Test that configuring a line in push-pull output mode
-+     * disconnects the pin, that the pin can't be set or reset
-+     * externally afterwards.
-+     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
-+    uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+
-+    /* Setting a line high externally, configuring it in push-pull outpu=
-t */
-+    /* And checking the pin was disconnected */
-+    gpio_set_irq(gpio, pin, 1);
-+    gpio_set_2bits(gpio, MODER, pin, MODER_OUTPUT);
-+    g_assert_cmphex(get_disconnected_pins(gpio), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+
-+    /* Setting a line low externally, configuring it in push-pull output=
- */
-+    /* And checking the pin was disconnected */
-+    gpio_set_irq(gpio2, pin, 0);
-+    gpio_set_bit(gpio2, ODR, pin, 1);
-+    gpio_set_2bits(gpio2, MODER, pin, MODER_OUTPUT);
-+    g_assert_cmphex(get_disconnected_pins(gpio2), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio2, IDR), =3D=3D, reset(gpio2, IDR) | =
-(1 << pin));
-+
-+    /* Trying to set a push-pull output pin, checking it doesn't work */
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(get_disconnected_pins(gpio), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+
-+    /* Trying to reset a push-pull output pin, checking it doesn't work =
-*/
-+    gpio_set_irq(gpio2, pin, 0);
-+    g_assert_cmphex(get_disconnected_pins(gpio2), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio2, IDR), =3D=3D, reset(gpio2, IDR) | =
-(1 << pin));
-+
-+    /* Clean the test */
-+    gpio_writel(gpio, MODER, reset(gpio, MODER));
-+    gpio_writel(gpio2, ODR, reset(gpio2, ODR));
-+    gpio_writel(gpio2, MODER, reset(gpio2, MODER));
-+}
-+
-+static void test_open_drain(const void *data)
-+{
-+    /*
-+     * Test that configuring a line in open-drain output mode
-+     * disconnects a pin set high externally and that the pin
-+     * can't be set high externally while configured in open-drain.
++     * https://github.com/torvalds/linux/blob/v6.7/drivers/i2c/busses/i2c-bcm2835.c#L223-L261
++     * It is possible to initiate repeated starts on real hardware.
++     * However, this requires sending another ST request before the bytes in
++     * TX FIFO are shifted out.
 +     *
-+     * However a pin set low externally shouldn't be disconnected,
-+     * and it can be set low externally when in open-drain mode.
++     * This is not emulated currently.
 +     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
-+    uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
++    i2c_end_transfer(s->bus);
++    s->s |= BCM2835_I2C_S_DONE;
 +
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+
-+    /* Setting a line high externally, configuring it in open-drain outp=
-ut */
-+    /* And checking the pin was disconnected */
-+    gpio_set_irq(gpio, pin, 1);
-+    gpio_set_bit(gpio, OTYPER, pin, OTYPER_OPEN_DRAIN);
-+    gpio_set_2bits(gpio, MODER, pin, MODER_OUTPUT);
-+    g_assert_cmphex(get_disconnected_pins(gpio), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+
-+    /* Setting a line low externally, configuring it in open-drain outpu=
-t */
-+    /* And checking the pin wasn't disconnected */
-+    gpio_set_irq(gpio2, pin, 0);
-+    gpio_set_bit(gpio2, ODR, pin, 1);
-+    gpio_set_bit(gpio2, OTYPER, pin, OTYPER_OPEN_DRAIN);
-+    gpio_set_2bits(gpio2, MODER, pin, MODER_OUTPUT);
-+    g_assert_cmphex(get_disconnected_pins(gpio2), =3D=3D, 0xFFFF & ~(1 <=
-< pin));
-+    g_assert_cmphex(gpio_readl(gpio2, IDR), =3D=3D,
-+                               reset(gpio2, IDR) & ~(1 << pin));
-+
-+    /* Trying to set a open-drain output pin, checking it doesn't work *=
-/
-+    gpio_set_irq(gpio, pin, 1);
-+    g_assert_cmphex(get_disconnected_pins(gpio), =3D=3D, 0xFFFF);
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR) & ~(=
-1 << pin));
-+
-+    /* Trying to reset a open-drain output pin, checking it works */
-+    gpio_set_bit(gpio, ODR, pin, 1);
-+    gpio_set_irq(gpio, pin, 0);
-+    g_assert_cmphex(get_disconnected_pins(gpio2), =3D=3D, 0xFFFF & ~(1 <=
-< pin));
-+    g_assert_cmphex(gpio_readl(gpio2, IDR), =3D=3D,
-+                               reset(gpio2, IDR) & ~(1 << pin));
-+
-+    /* Clean the test */
-+    disconnect_all_pins(gpio2);
-+    gpio_writel(gpio2, OTYPER, reset(gpio2, OTYPER));
-+    gpio_writel(gpio2, ODR, reset(gpio2, ODR));
-+    gpio_writel(gpio2, MODER, reset(gpio2, MODER));
-+    g_assert_cmphex(gpio_readl(gpio2, IDR), =3D=3D, reset(gpio2, IDR));
-+    disconnect_all_pins(gpio);
-+    gpio_writel(gpio, OTYPER, reset(gpio, OTYPER));
-+    gpio_writel(gpio, ODR, reset(gpio, ODR));
-+    gpio_writel(gpio, MODER, reset(gpio, MODER));
-+    g_assert_cmphex(gpio_readl(gpio, IDR), =3D=3D, reset(gpio, IDR));
++    /* Ensure RXD is cleared, otherwise the driver registers an error */
++    s->s &= ~(BCM2835_I2C_S_TA | BCM2835_I2C_S_RXR |
++              BCM2835_I2C_S_TXW | BCM2835_I2C_S_RXD);
 +}
 +
-+static void test_bsrr_brr(const void *data)
++static uint64_t bcm2835_i2c_read(void *opaque, hwaddr addr, unsigned size)
 +{
-+    /*
-+     * Test that writing a '1' in BSS and BSRR
-+     * has the desired effect on ODR.
-+     * In BSRR, BSx has priority over BRx.
-+     */
-+    unsigned int pin =3D ((uint64_t)data) & 0xF;
-+    uint32_t gpio =3D ((uint64_t)data) >> 32;
++    BCM2835I2CState *s = opaque;
++    uint32_t readval = 0;
 +
-+    gpio_writel(gpio, BSRR, (1 << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR) | (1=
- << pin));
++    switch (addr) {
++    case BCM2835_I2C_C:
++        readval = s->c;
++        break;
++    case BCM2835_I2C_S:
++        readval = s->s;
++        break;
++    case BCM2835_I2C_DLEN:
++        readval = s->dlen;
++        break;
++    case BCM2835_I2C_A:
++        readval = s->a;
++        break;
++    case BCM2835_I2C_FIFO:
++        /* We receive I2C messages directly instead of using FIFOs */
++        if (s->s & BCM2835_I2C_S_TA) {
++            readval = i2c_recv(s->bus);
++            s->dlen -= 1;
 +
-+    gpio_writel(gpio, BSRR, (1 << (pin + NUM_GPIO_PINS)));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR));
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_DIV:
++        readval = s->div;
++        break;
++    case BCM2835_I2C_DEL:
++        readval = s->del;
++        break;
++    case BCM2835_I2C_CLKT:
++        readval = s->clkt;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
 +
-+    gpio_writel(gpio, BSRR, (1 << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR) | (1=
- << pin));
-+
-+    gpio_writel(gpio, BRR, (1 << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR));
-+
-+    /* BSx should have priority over BRx */
-+    gpio_writel(gpio, BSRR, (1 << pin) | (1 << (pin + NUM_GPIO_PINS)));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR) | (1=
- << pin));
-+
-+    gpio_writel(gpio, BRR, (1 << pin));
-+    g_assert_cmphex(gpio_readl(gpio, ODR), =3D=3D, reset(gpio, ODR));
-+
-+    gpio_writel(gpio, ODR, reset(gpio, ODR));
++    return readval;
 +}
 +
-+int main(int argc, char **argv)
++static void bcm2835_i2c_write(void *opaque, hwaddr addr,
++                              uint64_t value, unsigned int size)
 +{
-+    int ret;
++    BCM2835I2CState *s = opaque;
++    uint32_t writeval = value;
 +
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+    qtest_add_func("stm32l4x5/gpio/test_idr_reset_value",
-+                   test_idr_reset_value);
-+    /*
-+     * The inputs for the tests (gpio and pin) can be changed,
-+     * but the tests don't work for pins that are high at reset
-+     * (GPIOA15, GPIO13 and GPIOB5).
-+     * Specifically, rising the pin then checking `get_irq()`
-+     * is problematic since the pin was already high.
-+     */
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpioc5_output_mode",
-+                        (void *)((uint64_t)GPIO_C << 32 | 5),
-+                        test_gpio_output_mode);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpioh3_output_mode",
-+                        (void *)((uint64_t)GPIO_H << 32 | 3),
-+                        test_gpio_output_mode);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_input_mode1",
-+                        (void *)((uint64_t)GPIO_D << 32 | 6),
-+                        test_gpio_input_mode);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_input_mode2",
-+                        (void *)((uint64_t)GPIO_C << 32 | 10),
-+                        test_gpio_input_mode);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_pull_up_pull_down1",
-+                        (void *)((uint64_t)GPIO_B << 32 | 5),
-+                        test_pull_up_pull_down);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_pull_up_pull_down2",
-+                        (void *)((uint64_t)GPIO_F << 32 | 1),
-+                        test_pull_up_pull_down);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_push_pull1",
-+                        (void *)((uint64_t)GPIO_G << 32 | 6),
-+                        test_push_pull);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_push_pull2",
-+                        (void *)((uint64_t)GPIO_H << 32 | 3),
-+                        test_push_pull);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_open_drain1",
-+                        (void *)((uint64_t)GPIO_C << 32 | 4),
-+                        test_open_drain);
-+    qtest_add_data_func("stm32l4x5/gpio/test_gpio_open_drain2",
-+                        (void *)((uint64_t)GPIO_E << 32 | 11),
-+                        test_open_drain);
-+    qtest_add_data_func("stm32l4x5/gpio/test_bsrr_brr1",
-+                        (void *)((uint64_t)GPIO_A << 32 | 12),
-+                        test_bsrr_brr);
-+    qtest_add_data_func("stm32l4x5/gpio/test_bsrr_brr2",
-+                        (void *)((uint64_t)GPIO_D << 32 | 0),
-+                        test_bsrr_brr);
-+    qtest_add_func("stm32l4x5/gpio/test_clock_enable",
-+                   test_clock_enable);
++    switch (addr) {
++    case BCM2835_I2C_C:
++        /* ST is a one-shot operation; it must read back as 0 */
++        s->c = writeval & ~BCM2835_I2C_C_ST;
 +
-+    qtest_start("-machine b-l475e-iot01a");
-+    ret =3D g_test_run();
-+    qtest_end();
++        /* Start transfer */
++        if (writeval & (BCM2835_I2C_C_ST | BCM2835_I2C_C_I2CEN)) {
++            bcm2835_i2c_begin_transfer(s);
++            /*
++             * Handle special case where transfer starts with zero data length.
++             * Required for zero length i2c quick messages to work.
++             */
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
 +
-+    return ret;
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_S:
++        if (writeval & BCM2835_I2C_S_DONE && s->s & BCM2835_I2C_S_DONE) {
++            /* When DONE is cleared, DLEN should read last written value. */
++            s->dlen = s->last_dlen;
++        }
++
++        /* Clear DONE, CLKT and ERR by writing 1 */
++        s->s &= ~(writeval & (BCM2835_I2C_S_DONE |
++                  BCM2835_I2C_S_ERR | BCM2835_I2C_S_CLKT));
++        break;
++    case BCM2835_I2C_DLEN:
++        s->dlen = writeval;
++        s->last_dlen = writeval;
++        break;
++    case BCM2835_I2C_A:
++        s->a = writeval;
++        break;
++    case BCM2835_I2C_FIFO:
++        /* We send I2C messages directly instead of using FIFOs */
++        if (s->s & BCM2835_I2C_S_TA) {
++            if (s->s & BCM2835_I2C_S_TXD) {
++                if (!i2c_send(s->bus, writeval & 0xff)) {
++                    s->dlen -= 1;
++                } else {
++                    s->s |= BCM2835_I2C_S_ERR;
++                }
++            }
++
++            if (s->dlen == 0) {
++                bcm2835_i2c_finish_transfer(s);
++            }
++        }
++        bcm2835_i2c_update_interrupt(s);
++        break;
++    case BCM2835_I2C_DIV:
++        s->div = writeval;
++        break;
++    case BCM2835_I2C_DEL:
++        s->del = writeval;
++        break;
++    case BCM2835_I2C_CLKT:
++        s->clkt = writeval;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, addr);
++    }
 +}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 36f85c8920..2db5b0329e 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -202,7 +202,8 @@ qtests_aspeed =3D \
- qtests_stm32l4x5 =3D \
-   ['stm32l4x5_exti-test',
-    'stm32l4x5_syscfg-test',
--   'stm32l4x5_rcc-test']
-+   'stm32l4x5_rcc-test',
-+   'stm32l4x5_gpio-test']
-=20
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
---=20
-2.43.2
++
++static const MemoryRegionOps bcm2835_i2c_ops = {
++    .read = bcm2835_i2c_read,
++    .write = bcm2835_i2c_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void bcm2835_i2c_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835I2CState *s = BCM2835_I2C(dev);
++    s->bus = i2c_init_bus(dev, NULL);
++
++    memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_i2c_ops, s,
++                          TYPE_BCM2835_I2C, 0x24);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
++}
++
++static void bcm2835_i2c_reset(DeviceState *dev)
++{
++    BCM2835I2CState *s = BCM2835_I2C(dev);
++
++    /* Reset values according to BCM2835 Peripheral Documentation */
++    s->c = 0x0;
++    s->s = BCM2835_I2C_S_TXD | BCM2835_I2C_S_TXE;
++    s->dlen = 0x0;
++    s->a = 0x0;
++    s->div = 0x5dc;
++    s->del = 0x00300030;
++    s->clkt = 0x40;
++}
++
++static const VMStateDescription vmstate_bcm2835_i2c = {
++    .name = TYPE_BCM2835_I2C,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(c, BCM2835I2CState),
++        VMSTATE_UINT32(s, BCM2835I2CState),
++        VMSTATE_UINT32(dlen, BCM2835I2CState),
++        VMSTATE_UINT32(a, BCM2835I2CState),
++        VMSTATE_UINT32(div, BCM2835I2CState),
++        VMSTATE_UINT32(del, BCM2835I2CState),
++        VMSTATE_UINT32(clkt, BCM2835I2CState),
++        VMSTATE_UINT32(last_dlen, BCM2835I2CState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_i2c_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_i2c_reset;
++    dc->realize = bcm2835_i2c_realize;
++    dc->vmsd = &vmstate_bcm2835_i2c;
++}
++
++static const TypeInfo bcm2835_i2c_info = {
++    .name = TYPE_BCM2835_I2C,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835I2CState),
++    .class_init = bcm2835_i2c_class_init,
++};
++
++static void bcm2835_i2c_register_types(void)
++{
++    type_register_static(&bcm2835_i2c_info);
++}
++
++type_init(bcm2835_i2c_register_types)
+diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+index b58bc167db..c459adcb59 100644
+--- a/hw/i2c/meson.build
++++ b/hw/i2c/meson.build
+@@ -17,4 +17,5 @@ i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
+ i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
+ i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
++i2c_ss.add(when: 'CONFIG_BCM2835_I2C', if_true: files('bcm2835_i2c.c'))
+ system_ss.add_all(when: 'CONFIG_I2C', if_true: i2c_ss)
+diff --git a/include/hw/i2c/bcm2835_i2c.h b/include/hw/i2c/bcm2835_i2c.h
+new file mode 100644
+index 0000000000..0a56df4720
+--- /dev/null
++++ b/include/hw/i2c/bcm2835_i2c.h
+@@ -0,0 +1,80 @@
++/*
++ * Broadcom Serial Controller (BSC)
++ *
++ * Copyright (c) 2024 Rayhan Faizel <rayhan.faizel@gmail.com>
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "hw/sysbus.h"
++#include "hw/i2c/i2c.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2835_I2C "bcm2835-i2c"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2835I2CState, BCM2835_I2C)
++
++#define BCM2835_I2C_C       0x0                   /* Control */
++#define BCM2835_I2C_S       0x4                   /* Status */
++#define BCM2835_I2C_DLEN    0x8                   /* Data Length */
++#define BCM2835_I2C_A       0xc                   /* Slave Address */
++#define BCM2835_I2C_FIFO    0x10                  /* FIFO */
++#define BCM2835_I2C_DIV     0x14                  /* Clock Divider */
++#define BCM2835_I2C_DEL     0x18                  /* Data Delay */
++#define BCM2835_I2C_CLKT    0x20                  /* Clock Stretch Timeout */
++
++#define BCM2835_I2C_C_I2CEN     BIT(15)           /* I2C enable */
++#define BCM2835_I2C_C_INTR      BIT(10)           /* Interrupt on RXR */
++#define BCM2835_I2C_C_INTT      BIT(9)            /* Interrupt on TXW */
++#define BCM2835_I2C_C_INTD      BIT(8)            /* Interrupt on DONE */
++#define BCM2835_I2C_C_ST        BIT(7)            /* Start transfer */
++#define BCM2835_I2C_C_CLEAR     (BIT(5) | BIT(4)) /* Clear FIFO */
++#define BCM2835_I2C_C_READ      BIT(0)            /* I2C read mode */
++
++#define BCM2835_I2C_S_CLKT      BIT(9)            /* Clock stretch timeout */
++#define BCM2835_I2C_S_ERR       BIT(8)            /* Slave error */
++#define BCM2835_I2C_S_RXF       BIT(7)            /* RX FIFO full */
++#define BCM2835_I2C_S_TXE       BIT(6)            /* TX FIFO empty */
++#define BCM2835_I2C_S_RXD       BIT(5)            /* RX bytes available */
++#define BCM2835_I2C_S_TXD       BIT(4)            /* TX space available */
++#define BCM2835_I2C_S_RXR       BIT(3)            /* RX FIFO needs reading */
++#define BCM2835_I2C_S_TXW       BIT(2)            /* TX FIFO needs writing */
++#define BCM2835_I2C_S_DONE      BIT(1)            /* I2C Transfer complete */
++#define BCM2835_I2C_S_TA        BIT(0)            /* I2C Transfer active */
++
++struct BCM2835I2CState {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    /* <public> */
++    MemoryRegion iomem;
++    I2CBus *bus;
++    qemu_irq irq;
++
++    uint32_t c;
++    uint32_t s;
++    uint32_t dlen;
++    uint32_t a;
++    uint32_t div;
++    uint32_t del;
++    uint32_t clkt;
++
++    uint32_t last_dlen;
++};
+-- 
+2.34.1
 

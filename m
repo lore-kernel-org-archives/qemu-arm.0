@@ -1,95 +1,96 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1643388ejf;
-        Sun, 25 Feb 2024 09:17:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXR8QUUSyiaphfSl665zuMsfLgafwXnSYPAls05A7ZUwRT2L03E8Bk7MvPc65iQioyA0btCNHBbBcUiCXos9KKqV9vnQeFS
-X-Google-Smtp-Source: AGHT+IH7Y3t7jMStuFDBIWhpxPtFdQTLCtCt3PFv1dhmJXGV7SJPp/fbda1iD9QL1FGF5vWwb8iU
-X-Received: by 2002:a05:6358:5e8c:b0:17b:5d21:e86e with SMTP id z12-20020a0563585e8c00b0017b5d21e86emr6104842rwn.3.1708881472570;
-        Sun, 25 Feb 2024 09:17:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708881472; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1643434ejf;
+        Sun, 25 Feb 2024 09:18:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUtUDMUZRoTYLDF6QUHPbz1WgPjk1cDbxtmy9ZwBGC3aWqdiDjsAqrRPTjAKvksaIL57nULFQk4qtZHTx7Txcu5QPg+96Mt
+X-Google-Smtp-Source: AGHT+IGyxiBtS8tIX+rgYWDJq0SKR8pDWEgwJO6XGkIkd0MD6Ps3aB0B9jEeXB8aZULm+JCTx4PG
+X-Received: by 2002:a05:620a:1a29:b0:787:8115:23f4 with SMTP id bk41-20020a05620a1a2900b00787811523f4mr7536954qkb.61.1708881479933;
+        Sun, 25 Feb 2024 09:17:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708881479; cv=none;
         d=google.com; s=arc-20160816;
-        b=vS9z30+9vEDhQSfbOD+9YhlRy8C2FObiistYaKQf0Jn5cFYC2EftYj04Fe0P1HM54m
-         AodA4vy4pQaZSPIz9I2M8GusFmMnNO7iUY38kw4q2qLQIt2N018uGvwSVe3nBErUlp5z
-         yzTTeBt/QjjXprhauNrYE4t9Pbi4/Ydcwu29p4nYXOIDZp004zjXB36W3fypI0bG1j/Q
-         Cc9AIlU0M54aazJpDua59ESvuaq+uDD3UvGJsiIlqYWBcMDadXb60DCc5lGCVPkZbPAC
-         T9pcC+2YiuVri5uYOneag/tYSZucRs6YccRf8ONtZx2H0MeVrSNsY0tXwv7Ypo61nQ8K
-         W/ig==
+        b=juUpzS6vs0DjdHDt6Mo0RdBqShuqHLF+0rkfyMhw+OgNX3uGjO5DJz9gMf0npKz61T
+         96US3xpDyYJvE2xds9ut9ct1s7cA7XN4Pt3xQXFiejGlUzXwuRa7iy358zA5R1oAOyT1
+         blDuGYIP2O43l8MAWRM+HedoJAVQJtCdakiduPSmhn9/C17M3VDJTpPn05pB4T37W3X+
+         KYF/TyGv83im1LtTTj+dI8Xzw40i9iO3Ol4EFgYf+5ZD46kPR8tfN31DB9PXyJGa/h9n
+         +CB5ozMyE9IL1IOjIV14/MQhzBDp2qNpxZzKLOaeRZ2szuFFoe0kWfwM1FQ+FUwkarG2
+         TtVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Nb2EkkM4HFBzPufUcNJ/oJaQMVNp/FOLKGxdMc6L4GE=;
-        fh=SskdMZOi/Od9NnSQ9aOgcLB0DLGFpnzN26c/Fy3PW9M=;
-        b=e9LEuIbHrdTMcxOOIUhzTC25eYsAfayMfnscmFlu2aeRZGzK8uQhnQrVINiL5CNFRp
-         FYgjGMbEdi/rYH8TH2dMY+8pKxc1tEJ33oplywZFIB2A15/uFpN6ZXlIRvd6e4HfScLi
-         iDHtRWQ6xkMfRzbU3Hpw3U8Yp4bxXhT5BDMyJX1KdZreDSg0fCK3tyYz3Kqi2tkYgVUH
-         dfqd0WlLibSO3Zwdm7r+tYJv14erm5V5z2LSKD0bxnDtroUWzyZiw3Lgly2SSJIym9W+
-         SUH/FFqMF3XyUOxUbsL0+285oJivxfJR0NdHFkrPPsTQwYEL0qYf33nuHAHOpDvAeKlz
-         ZBJg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=gkPCXbejDmS0Tz82absP8HIve4fjz8E5Jb0BUq+vylY=;
+        fh=VVEokp7CVhK9laH95bwn/1/1P1PK3npn9obwhWd5NXA=;
+        b=egTZUS+p/pxBZdqoMm+DzcjDZdUG7ElxCnCJjlQzU0Diu9qJfZVMEuI4qCg3upPaL3
+         5AsBtO3kS2rIl8a11zrA3H4SUBrvvGNITgOydJD0VYF3coqZb3RtO1TcDIE0lM1L4DFu
+         a+OfIpWPG0g/67z0qSp8O71N7niiTmng2zM9o1dmC2p+BLQ2DNXcyAz/6lg+GnReu41m
+         f9Ql7+PJX5G6RKAYzeqhq0e3RL6AEufmhd43+NUPoOmMvkvDxFRBKRfFzs3le/HlSNLW
+         SpTySAQdMEaxngfu807itkQsaHZSXYT8cqzEN7UT0RWuf+eDTXJn7g1V1liS6mGE8Vka
+         fkKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fCj/b/PT";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PxswJHTX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21-20020a05620a22d500b00787a0ef012asi3206382qki.341.2024.02.25.09.17.52
+        by mx.google.com with ESMTPS id i15-20020a05620a0a0f00b00783577b7501si3361598qka.357.2024.02.25.09.17.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 09:17:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 25 Feb 2024 09:17:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fCj/b/PT";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PxswJHTX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reI7K-0001ra-KV; Sun, 25 Feb 2024 12:16:46 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1reI7f-00020o-Le; Sun, 25 Feb 2024 12:17:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reI7J-0001qr-GK
- for qemu-arm@nongnu.org; Sun, 25 Feb 2024 12:16:45 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reI7e-0001zj-5S
+ for qemu-devel@nongnu.org; Sun, 25 Feb 2024 12:17:06 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reI7H-0003va-6c
- for qemu-arm@nongnu.org; Sun, 25 Feb 2024 12:16:45 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-412a4b86f5fso1201265e9.0
- for <qemu-arm@nongnu.org>; Sun, 25 Feb 2024 09:16:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reI7a-0003zS-KO
+ for qemu-devel@nongnu.org; Sun, 25 Feb 2024 12:17:05 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-41241f64c6bso18724005e9.0
+ for <qemu-devel@nongnu.org>; Sun, 25 Feb 2024 09:17:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708881401; x=1709486201; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Nb2EkkM4HFBzPufUcNJ/oJaQMVNp/FOLKGxdMc6L4GE=;
- b=fCj/b/PTKYbehiBJ450x2N7BMGfTf+cJqKt/DAby3sb8riWQ/SORxCi+Blt8s3MLFo
- 3fFHsJdJB2pOBEhlPFLiFbLW3E6Mx1fx8oRZuVrtrPpkP9OIVMc3ykPHez3YBGxrBHn7
- YCrYJ6iZspy5n0gdyiiUJtr5iLBM1+GYrIkZ+soijo0K23+tOzG5Cgle1+Lpn8QXJTMx
- mRVwo52u0NJOnPEA81mfr6hQUPSN4rR9jORLGaSxSsgPYZz+mxGroGu3fi6pghb4ROup
- fKd1OwcduVAJlb9hqVI7+eC3aT+L7Rs0Eoj5yn85bSCReh0lcFC0qo9ncfdGYkij3+39
- 2nfQ==
+ d=linaro.org; s=google; t=1708881419; x=1709486219; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gkPCXbejDmS0Tz82absP8HIve4fjz8E5Jb0BUq+vylY=;
+ b=PxswJHTXbL8Zp4poXKP1k7pGyEfkCalxYsgnmSVhkzdvLSczj/EWHmPbkwcbZBW9sz
+ XBPq10p7vK8bQo8hoSWtLHEvzWLMgBxbRFXc15/F9yTydH02FiSKvyNIIGBz6VDB1NVK
+ VLkrhH1roR60elhwcZsV41pVYrkRutT+4JnaGHlL8baHJEI94S0oelxhK5IGwDXZA5D0
+ AUzx+wlap4iTVMg1ECUn43kuI8no/73aoXQDXzMS/VKyGEHu6YSlUFN7z77UvzU9OD2L
+ s2ZV2RXvniJBtr3NftZW58Lu5JhBWj9XUG8EPoaPEaUNbipGNzMdOkFgLMQVmFNXeADs
+ EDSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708881401; x=1709486201;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Nb2EkkM4HFBzPufUcNJ/oJaQMVNp/FOLKGxdMc6L4GE=;
- b=H1GudLWhziZLvzuNvT5bHGH6P+XpW1Qn9CKMzFY4r9QCQKnwayxi2YP6fyWturzrOh
- NTaRjKDlW7b47l4lm2XYNUGHIjjGWfTfzHxrYS0U4pkrEo5vyy15iOnpSUeoCeaj0+z8
- nPg1rUYlLzZGpVhcwHC+BDO22Rvhgs0Qhxs/rVeM05n6ju32XG84WW8FA68K6wlAu/tN
- VPXxH/C/AF1fCepkjCQQdYuk64tdBpU6+v5EVkYOOjRgU4gwyasZmj9C5KSfgAXpZPBF
- 6qzIgQFsL7JUQC2CU+cSrGb2awVjSHmn/IINBu4Nl92pzfsMLOFmJ4NnK3L+hKCBg/KO
- bsnA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUPjH1OG+P7I0S/eFWL0YZXhFlN078BQrRDz2DSmrM3V7Yi72oZoZeLJZuZsmHgyvQzE6cNyDrFprm+fA2/taOPcoQW
-X-Gm-Message-State: AOJu0YwSj2iWW1fgAJLQDmuvBfHZ0UgXj0g8/U8tyNdt0UJC8+YwBUlK
- 5bEZqC1v5wlFTzVjLRxHrtUO41Kz0FC2ptSqHwDa069hW+Mw0JuhxDShbQRkWM8=
-X-Received: by 2002:a5d:49ce:0:b0:33d:1392:7469 with SMTP id
- t14-20020a5d49ce000000b0033d13927469mr3042088wrs.67.1708881400800; 
- Sun, 25 Feb 2024 09:16:40 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708881419; x=1709486219;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gkPCXbejDmS0Tz82absP8HIve4fjz8E5Jb0BUq+vylY=;
+ b=CRK2LrpDfukRkvwFV+DmxbMOgAyhiD1HT6ltQeDePjkpFRljRreIEMgWMCBZf6vaaA
+ J/5yG+PGttlA4ICQxLeRipW3j8Ami+wqdfEZzyDdJXo3wrkkLmuvOepV/JW99HlDCE4G
+ ZD8fIxZTTGCduqpodhOb6/OwfM9ERCEOhI5lyR/KU8KGSgvoQuM9z9AMi5iwvSHdGZXN
+ HSjbPtNRXSeAVx9g1d9PTLyzr0UN6oXv6lyJbEEz3sXpRlaDySmfhYunTXMzm2upTHCO
+ jVktBNYvoH0XOH0BfOpHY9oSPj3gNuVQZAtSIAe6rS2uqVdhdSchCF9OUjOWfq5IGN92
+ eVRA==
+X-Gm-Message-State: AOJu0YwJFUrFWAR0iUPp3IxLky0M6mBRDQiD5mVZ0kTc206sEhwKv/e3
+ 0hz+6Z8g5PsSaRqjKnF98onET/bs4qX9ZX3VtUldRNkwnQXZ0x4JUZ2bRG0x0wAeTEsGABXfGWK
+ a
+X-Received: by 2002:a5d:4802:0:b0:33d:c2cb:c18d with SMTP id
+ l2-20020a5d4802000000b0033dc2cbc18dmr2468095wrq.32.1708881419242; 
+ Sun, 25 Feb 2024 09:16:59 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.164.69])
  by smtp.gmail.com with ESMTPSA id
- l11-20020a5d4bcb000000b0033db2fe4d76sm5669594wrt.4.2024.02.25.09.16.39
+ e3-20020a5d4e83000000b0033d12895cfdsm5591435wru.61.2024.02.25.09.16.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 25 Feb 2024 09:16:40 -0800 (PST)
+ Sun, 25 Feb 2024 09:16:58 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
@@ -99,15 +100,17 @@ Cc: qemu-ppc@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
  qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 0/3] hw/ide: Make "ide_internal.h" really internal
-Date: Sun, 25 Feb 2024 18:16:34 +0100
-Message-ID: <20240225171637.4709-1-philmd@linaro.org>
+Subject: [PATCH v2 3/3] hw/ide: Include 'ide_internal.h' from current path
+Date: Sun, 25 Feb 2024 18:16:37 +0100
+Message-ID: <20240225171637.4709-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240225171637.4709-1-philmd@linaro.org>
+References: <20240225171637.4709-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,56 +119,265 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L0AVMuv6onDu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3Xn8/LVu/P+L
 
-Since v1:
-- Remove use of "ahci_internal.h" in SBSA-Ref
-- Rename "internal.h" -> "ide_internal.h"
+Rename "internal.h" as "ide_internal.h", and include
+it via its relative local path, instead of absolute
+to the project root path.
 
-Supersedes: <20240223142633.933694E6004@zero.eik.bme.hu>
+Mechanical patch doing:
 
-BALATON Zoltan (1):
-  hw/ide: Remove last two uses of ide/internal.h outside of hw/ide/
+  $ sed -i -e 's#hw/ide/internal.h#ide_internal.h#' \
+        $(git grep -l hw/ide/internal)
+  $ git mv hw/ide/internal.h hw/ide/ide_internal.h
 
-Philippe Mathieu-Daudé (2):
-  hw/arm/sbsa-ref: Do not open-code ahci_ide_create_devs()
-  hw/ide: Include 'ide_internal.h' from current path
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/ide/ahci_internal.h                | 2 +-
+ hw/ide/{internal.h => ide_internal.h} | 0
+ hw/ide/ahci.c                         | 2 +-
+ hw/ide/atapi.c                        | 2 +-
+ hw/ide/cmd646.c                       | 2 +-
+ hw/ide/core.c                         | 2 +-
+ hw/ide/ide-bus.c                      | 2 +-
+ hw/ide/ide-dev.c                      | 2 +-
+ hw/ide/ioport.c                       | 2 +-
+ hw/ide/isa.c                          | 2 +-
+ hw/ide/macio.c                        | 2 +-
+ hw/ide/microdrive.c                   | 2 +-
+ hw/ide/mmio.c                         | 2 +-
+ hw/ide/pci.c                          | 2 +-
+ hw/ide/piix.c                         | 2 +-
+ hw/ide/sii3112.c                      | 2 +-
+ hw/ide/via.c                          | 2 +-
+ 17 files changed, 16 insertions(+), 16 deletions(-)
+ rename hw/ide/{internal.h => ide_internal.h} (100%)
 
- hw/ide/ahci_internal.h                             |  2 +-
- include/hw/ide/internal.h => hw/ide/ide_internal.h |  0
- include/hw/misc/macio/macio.h                      |  2 +-
- hw/arm/sbsa-ref.c                                  | 11 ++---------
- hw/ide/ahci.c                                      |  2 +-
- hw/ide/atapi.c                                     |  2 +-
- hw/ide/cmd646.c                                    |  2 +-
- hw/ide/core.c                                      |  2 +-
- hw/ide/ide-bus.c                                   |  2 +-
- hw/ide/ide-dev.c                                   |  2 +-
- hw/ide/ioport.c                                    |  2 +-
- hw/ide/isa.c                                       |  2 +-
- hw/ide/macio.c                                     |  2 +-
- hw/ide/microdrive.c                                |  2 +-
- hw/ide/mmio.c                                      |  2 +-
- hw/ide/pci.c                                       |  2 +-
- hw/ide/piix.c                                      |  2 +-
- hw/ide/sii3112.c                                   |  2 +-
- hw/ide/via.c                                       |  2 +-
- 19 files changed, 19 insertions(+), 26 deletions(-)
- rename include/hw/ide/internal.h => hw/ide/ide_internal.h (100%)
-
+diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
+index 4e13329bb2..34f3d50ca9 100644
+--- a/hw/ide/ahci_internal.h
++++ b/hw/ide/ahci_internal.h
+@@ -25,7 +25,7 @@
+ #define HW_IDE_AHCI_INTERNAL_H
+ 
+ #include "hw/ide/ahci.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/pci/pci_device.h"
+ 
+ #define AHCI_MEM_BAR_SIZE         0x1000
+diff --git a/hw/ide/internal.h b/hw/ide/ide_internal.h
+similarity index 100%
+rename from hw/ide/internal.h
+rename to hw/ide/ide_internal.h
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 54c9685495..c2af344ac5 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -34,7 +34,7 @@
+ #include "qemu/module.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/dma.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/ide/pci.h"
+ #include "hw/ide/ahci-pci.h"
+ #include "hw/ide/ahci-sysbus.h"
+diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+index dcc39df9a4..8ac99f64d2 100644
+--- a/hw/ide/atapi.c
++++ b/hw/ide/atapi.c
+@@ -24,7 +24,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/scsi/scsi.h"
+ #include "sysemu/block-backend.h"
+ #include "scsi/constants.h"
+diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
+index 23d213ff01..be72f4d3ed 100644
+--- a/hw/ide/cmd646.c
++++ b/hw/ide/cmd646.c
+@@ -33,7 +33,7 @@
+ #include "sysemu/reset.h"
+ 
+ #include "hw/ide/pci.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "trace.h"
+ 
+ /* CMD646 specific */
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index 9c4a812902..8f2004f93b 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -41,7 +41,7 @@
+ #include "qemu/cutils.h"
+ #include "sysemu/replay.h"
+ #include "sysemu/runstate.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "trace.h"
+ 
+ /* These values were based on a Seagate ST3500418AS but have been modified
+diff --git a/hw/ide/ide-bus.c b/hw/ide/ide-bus.c
+index 57fe67b29c..32e9f62137 100644
+--- a/hw/ide/ide-bus.c
++++ b/hw/ide/ide-bus.c
+@@ -21,7 +21,7 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/runstate.h"
+diff --git a/hw/ide/ide-dev.c b/hw/ide/ide-dev.c
+index c8e2033469..832293ca69 100644
+--- a/hw/ide/ide-dev.c
++++ b/hw/ide/ide-dev.c
+@@ -23,7 +23,7 @@
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+ #include "hw/ide/ide-dev.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/ide/ioport.c b/hw/ide/ioport.c
+index 0b283ac783..7a80c549ec 100644
+--- a/hw/ide/ioport.c
++++ b/hw/ide/ioport.c
+@@ -25,7 +25,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/isa/isa.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "trace.h"
+ 
+ int ide_init_ioport(IDEBus *bus, ISADevice *dev, int iobase, int iobase2)
+diff --git a/hw/ide/isa.c b/hw/ide/isa.c
+index cc865c83dc..2fc28d64b6 100644
+--- a/hw/ide/isa.c
++++ b/hw/ide/isa.c
+@@ -32,7 +32,7 @@
+ #include "sysemu/dma.h"
+ 
+ #include "hw/ide/isa.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "qom/object.h"
+ 
+ /***********************************************************/
+diff --git a/hw/ide/macio.c b/hw/ide/macio.c
+index 0d2c6ba910..7611a99ef5 100644
+--- a/hw/ide/macio.c
++++ b/hw/ide/macio.c
+@@ -33,7 +33,7 @@
+ #include "sysemu/block-backend.h"
+ #include "sysemu/dma.h"
+ 
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ 
+ /* debug MACIO */
+ // #define DEBUG_MACIO
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+index a7f415f0fc..09781658f9 100644
+--- a/hw/ide/microdrive.c
++++ b/hw/ide/microdrive.c
+@@ -31,7 +31,7 @@
+ #include "sysemu/dma.h"
+ #include "hw/irq.h"
+ 
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_MICRODRIVE "microdrive"
+diff --git a/hw/ide/mmio.c b/hw/ide/mmio.c
+index e8f41c0610..1ba2541b40 100644
+--- a/hw/ide/mmio.c
++++ b/hw/ide/mmio.c
+@@ -30,7 +30,7 @@
+ #include "sysemu/dma.h"
+ 
+ #include "hw/ide/mmio.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/qdev-properties.h"
+ 
+ /***********************************************************/
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index 73efeec7f4..855cbb031d 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -30,7 +30,7 @@
+ #include "sysemu/dma.h"
+ #include "qemu/error-report.h"
+ #include "qemu/module.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/ide/pci.h"
+ #include "trace.h"
+ 
+diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+index 1773a068c3..886cf840f1 100644
+--- a/hw/ide/piix.c
++++ b/hw/ide/piix.c
+@@ -30,7 +30,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/pci/pci.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/ide/piix.h"
+ #include "hw/ide/pci.h"
+ #include "trace.h"
+diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
+index 321b9e46a1..e28bbd160d 100644
+--- a/hw/ide/sii3112.c
++++ b/hw/ide/sii3112.c
+@@ -13,7 +13,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/ide/pci.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+diff --git a/hw/ide/via.c b/hw/ide/via.c
+index cf151e70ec..ceecb3aa01 100644
+--- a/hw/ide/via.c
++++ b/hw/ide/via.c
+@@ -25,7 +25,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/ide/internal.h"
++#include "ide_internal.h"
+ #include "hw/pci/pci.h"
+ #include "migration/vmstate.h"
+ #include "qemu/module.h"
 -- 
 2.41.0
 

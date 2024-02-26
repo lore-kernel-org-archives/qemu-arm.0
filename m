@@ -1,174 +1,200 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2017259ejf;
-        Mon, 26 Feb 2024 04:22:23 -0800 (PST)
-X-Received: by 2002:a17:902:da8e:b0:1dc:a03a:b9ab with SMTP id j14-20020a170902da8e00b001dca03ab9abmr2692285plx.69.1708950142839;
-        Mon, 26 Feb 2024 04:22:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708950142; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2051102ejf;
+        Mon, 26 Feb 2024 05:26:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVwNecasxecFC+br2/u8atv7yZA2x6GLb5RYppPtGw6ZtywRDqa7Mjl+3pLR9ijyNQZmDJJ9yDPA9AJc+NjTK5esQd3wTxZ
+X-Google-Smtp-Source: AGHT+IG6Udz66v0+5brZ2GJG4JJRqEVXsKQ461g2bhi0rz632RdbZZJ6X7uEmkCj73tf2mwQzzpL
+X-Received: by 2002:a25:9012:0:b0:dcf:464d:8ec3 with SMTP id s18-20020a259012000000b00dcf464d8ec3mr4159109ybl.3.1708953977911;
+        Mon, 26 Feb 2024 05:26:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708953977; cv=none;
         d=google.com; s=arc-20160816;
-        b=qCtgaTU8sAO40NQ48Nvv/YtTIv909F0g9sqS/8ba9ZLR4isL2gsPPYc5eVTbkufMeV
-         joElURUhSbgHhyGzAHUUEDRC7uHRBFxmn0i1w4XBm9IqLuiLkFToCNOXwoXS3ft2TDPd
-         QstybWsEjlLjy+nF2ha/N3khTyGtNh6dITpOT7zPITPfKATaXCthMNsaCHsASGG+AkO3
-         g27uvlxsg1kAm/i3TnoNKb5vmJ8rmPFhXYLWPhU9XfQbiW7W4WXvT5+vVscuLTWHiUGG
-         QecSfuEDYpnHg+Ysg9a5nnG4x8d77lsJwAZzkweaQZxZUKwIR6wYLyPBcIZq/mQWr4pC
-         BWfQ==
+        b=iEQdffgIGG52DWEZY/Kv0Whr/xYiKUYD5lyeDh1bDooo+ZzMO3EBTsgSyXoY2Z++/Q
+         ehUxk8mVDpYaX/58rRahrl1bGO7wvLV7UGBK48c1p6dyrqnmUZiC9zV+1OybZEeH3PlP
+         EBH7cc2EXupwleWHGLnuQ/Zzww+w1mJ+NDI4vqr/YPCrU11zHfVg70EI4064mez5RGnB
+         wvin4bnT7pNJ3c66VLZUkmsiPhy58xxQMTMKfAKi4phkngJPN/8xxZTLwjMkjSKCroT6
+         yTlslKhsNu+R8pSebyenM7JlfQARoMZo6ccYqQrES5hCkg9BBPS7vtQEQdkVpcfhl6YA
+         ydrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=cDlHDrC2sXx/wFIpF7ENRE5ZHGFJqcpEgzRWGY9SY5M=;
-        fh=vMXW8M/QAlC8xuzwTuBKPw8wj798+wVwlNbZ5uJYgXg=;
-        b=aG5mF9PAd4hnmoNMTDnQWeZ1xS/3Cd313jp8mRRxsXYCHMTvxMqnrXB6PNKQuxRPzw
-         DAWzlurni/Io2xXBVEJ5IISbdDpO8irLf7dpbf6yJBA+CWYQ3TAhtQIVZ1OWMtTWwA1S
-         1saSGm6T9GCflJed8Tut1oJ3Qw0Lbf/GX2+XoyMql5HpEq8rmGXlKE/iF//gXcLjZv54
-         XXOGrhYRpR4WpolCXZWg7h0qe62O0eZhwLT2+zUMHgAWyUfqdvgqBfm2uzhq5GmjFPFQ
-         z0owuT09KjiGb60o7CRL9mH+UlSOHwrVCJl4Qg+J58XJ1hh02Vudx83Uu05J0R3+vp3s
-         6cNw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=M0pSgwdUsCu4IZL3guvtFpnGMwtBnvo50lTuekTfo38=;
+        fh=ln5oJcdK29z4ccodaKLOtL0mZ0cURU5YDbQkdp5Af6k=;
+        b=wbnS0HnafFWdi26H7bwbmSF1WKYmcnv3Uh6iAI7dbKig02vrKZTFwmjvCnjKhrPXCp
+         MYjbUdUdcTHP+ZfkGM//OZU0AOoWp7AV26jgRFelnWW2j7JIlR3Tcx9gvolvvIVl71qe
+         QzOITj7oA/1Db0KP1fvPZjzdi9NEqO7OhcwZ6MlHsk0SHBtT8IlEls6a9CXbVEgP8CVk
+         HFOq14DzKXlT5UUfBXGAhNM7o7I5LcTqfI/maTIYN5CRGXNIMjQlA9sK9MVQSnwSaf2f
+         N3ac1a+llzgMdzN6xsb8iYF3ytMMJ9x2BZp82Ka+utmq6l1xosJej0loxjb1W4n9gEPr
+         8RAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=HkW6s94z;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q8-20020a170902a3c800b001dba35c927fsor1527253plb.13.2024.02.26.04.22.22
+       dkim=pass header.i=@linaro.org header.s=google header.b=wMzgd0aZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h24-20020ac846d8000000b0042e7a34d286si3858340qto.672.2024.02.26.05.26.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 26 Feb 2024 04:22:22 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Feb 2024 05:26:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=HkW6s94z;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=wMzgd0aZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1reazd-0000Ov-B2; Mon, 26 Feb 2024 08:26:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reazZ-0000Cp-Rt
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 08:26:02 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reazX-0001u6-RY
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 08:26:01 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a3566c0309fso314615466b.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 05:25:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708950142; x=1709554942; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cDlHDrC2sXx/wFIpF7ENRE5ZHGFJqcpEgzRWGY9SY5M=;
-        b=HkW6s94zezVho4PS/WVe2P5u7852LhaxW1D+HeYO1iDgpgwb6i7hFr6oU6NrIP9vF7
-         r6VGk+VoduqqVHV11ttibSf76FDL8yQkgn1+clrtUWMXBd7ou2jwYZryTkJcdwTwv6tH
-         Wj+4eMh4heLSRSBQjgRWYpMjsBtrVr0oZM0rwIrcKaQP1yws7qDlgUAmpD7kciQYWA0O
-         vgiIDbCks8k4HNKoBLVUDheOjff8J/TETlMPIya1J+NOEOETVgQdzJNk49kpJI8hnEsP
-         rDXM5Esh81VHsYF3/l1bXaqCH1Xwxb7wlWrtFdgzvUdW+Lhr8i6kVRqhw6w7qjaErDlo
-         Pbsg==
+ d=linaro.org; s=google; t=1708953957; x=1709558757; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=M0pSgwdUsCu4IZL3guvtFpnGMwtBnvo50lTuekTfo38=;
+ b=wMzgd0aZaBgQYgs5UiUy5r3+Tp4cUgypdqwlMsZBzOQ7jbuSIqASKQYGOsyHQW5AY1
+ eOK1OWLRKEHQ4spP35rd/mRIR2PBTEd/u/nUkwaSivq3wrue+cQID1AhRp8wBEYOoOJf
+ kPOCKiJuGmlwV8IZ9NVx9/kZ1TyyklVhc81NK32hKhP4Qweo1Slf++VA7D87K1ZFcnQ7
+ Npn9ssEgbEXdliPU8o2b3Zig3o7c7VFQq21OeonH8e/cyoXrmikQV4/WWIuhiXfpCE+r
+ Spxnblsyf5Y3sI6fOaVGxjJsbxtMFUXSRtXvDpMa7icl9xNiZ/dUnbUYE96RiVnTd745
+ RJvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708950142; x=1709554942;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cDlHDrC2sXx/wFIpF7ENRE5ZHGFJqcpEgzRWGY9SY5M=;
-        b=nCHXl9ZuZtFKkSvfALdt6wCmyRNCdJ1IjGD9tdE3jQTSDjOtYhf9uXc0MtfH6qa3Od
-         VNq6sK808oPH1eoGKHOiDWMS38OM60TA9UWBszNDj4mcuyDUZiTSWuMhRMrwLZHNR0Oh
-         8GTJ0YjBsU1JJvbIGINppC+5fnmCgASNea/fa1R4YV6dKot7gg8UKDQsBiGmGjaC+XWN
-         0aDNacPANjA1vZTKHObhmY0wz935KGB5Wk0rKi0wrkrNPeOA+OIIkNn9kDpIfEXRzCg2
-         7MGaSmQmPMaOTWcsaqIcCfk2bDziDmPSWYCSxBSnmViXyYqDul52k7MUdpzQfnjze9+n
-         QH/A==
-X-Gm-Message-State: AOJu0Yw62fmicozGDd6FCCs8nFOWtFHf0+Ss/JHb9JMc8lRd57kroD3N
-	CM2XYMY3E64HRICes9rd+2a2d1yU2HFzRC6IkTt4QkQCydSjYxgtpR0YmRPmds64OwtjFdq+pNj
-	n
-X-Google-Smtp-Source: AGHT+IGujwpUcOVein8hvIc4zxJU7gkmldLs7Wdd8XjfOVtMmR3NGgwcvrIXettxCaZdoiq1724PjQ==
-X-Received: by 2002:a17:902:aa81:b0:1d9:3843:3f07 with SMTP id d1-20020a170902aa8100b001d938433f07mr6396069plr.61.1708950142073;
-        Mon, 26 Feb 2024 04:22:22 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with ESMTPSA id j5-20020a170902c3c500b001d5f1005096sm3801042plj.55.2024.02.26.04.22.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Feb 2024 04:22:21 -0800 (PST)
-Message-ID: <691af6af-bc4f-45ce-b017-7a82269e9381@daynix.com>
-Date: Mon, 26 Feb 2024 21:22:14 +0900
+ d=1e100.net; s=20230601; t=1708953957; x=1709558757;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=M0pSgwdUsCu4IZL3guvtFpnGMwtBnvo50lTuekTfo38=;
+ b=GwZAKfMZmDyucavWBUB59FjCz8U4J/PxMYZg1v9szNWWMh3+ubfPXwxrnv0HJgSEIu
+ VgFGX4v3jEW1gKjIWhXi2cBYWAFMTDC2c3rH0KUMqxFoYglrJVzEY05q5LTrqLS0LPRm
+ OLfrzox+6dh1TL5Uhx6LjpOCgoGJnSv8VCGBxdIrYv3uhNBjwQCH5SUSE/ELirHoIB1p
+ 2HCt6JmZmgyG0aB71EujEHDtoUs1bRf5Gm/82l/LBH8DTzXW6tpi04Oew7LGIXyBQxdq
+ Qx3pdy30tnCBqAD8irVuLdO7HaP9i9R0UL9sNt0prnblAMXRGZTWZ44MaVv6WrRDbDBE
+ ZsKg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWLfZgk05S8X+JXyw83TylQwMZyQ7NtbLpyL2nyqaV52/DLcG38INRCbiz0E28TEgNxR37W8DJKh74Rgd7liiPE9Bxy
+X-Gm-Message-State: AOJu0YyIOGoSBfIXp6uYslUFJ4fAwqE8D9tJ1g3mHVnPHQAGUAiCYz8p
+ 3XSe6jUsfwdyyG9uNKYiyPG+Z2L2MJfsTuivByHrjRvJ5hzOh20dLSIg9PcFaoU=
+X-Received: by 2002:a17:906:c28d:b0:a3f:c115:3ac8 with SMTP id
+ r13-20020a170906c28d00b00a3fc1153ac8mr4713854ejz.43.1708953957572; 
+ Mon, 26 Feb 2024 05:25:57 -0800 (PST)
+Received: from [192.168.69.100] ([176.176.164.69])
+ by smtp.gmail.com with ESMTPSA id
+ l15-20020a17090612cf00b00a3f480154a3sm2415265ejb.65.2024.02.26.05.25.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Feb 2024 05:25:57 -0800 (PST)
+Message-ID: <2860d4d6-4b5c-4867-a7f5-99e9fa6c53db@linaro.org>
+Date: Mon, 26 Feb 2024 14:25:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 21/27] plugins: add an API to read registers
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Song Gao <gaosong@loongson.cn>,
- qemu-s390x@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Cleber Rosa <crosa@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell
- <peter.maydell@linaro.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, John Snow <jsnow@redhat.com>,
- Weiwei Li <liwei1518@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Rolnik <mrolnik@gmail.com>
-References: <20240223162202.1936541-1-alex.bennee@linaro.org>
- <20240223162202.1936541-22-alex.bennee@linaro.org>
- <2a7f0e06-0bc9-4fad-add7-9675a4cc2a0a@daynix.com>
- <87y1b7eay6.fsf@draig.linaro.org>
+Subject: Re: [PATCH v6 13/41] Add BCM2838 PCIE Root Complex
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87y1b7eay6.fsf@draig.linaro.org>
+To: Sergey Kambalin <serg.oker@gmail.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+ <20240226000259.2752893-14-sergey.kambalin@auriga.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240226000259.2752893-14-sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: khwEJ2YyvY1l
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kVncOR8G1cSb
 
-On 2024/02/26 20:12, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/02/24 1:21, Alex Bennée wrote:
->>> We can only request a list of registers once the vCPU has been
->>> initialised so the user needs to use either call the get function on
->>> vCPU initialisation or during the translation phase.
->>> We don't expose the reg number to the plugin instead hiding it
->>> behind
->>> an opaque handle. As the register set is potentially different for
->>> each vCPU we store a separate set of handles for each vCPU. This will
->>> become more important if we are able to emulate more heterogeneous
->>> systems.
->>> Having an internal state within the plugins also allows us to expand
->>> the interface in future (for example providing callbacks on register
->>> change if the translator can track changes).
-> <snip>
->>> +
->>> +/*
->>> + * Register handles
->>> + *
->>> + * The plugin infrastructure keeps hold of these internal data
->>> + * structures which are presented to plugins as opaque handles. They
->>> + * are local to each vCPU as there can be slight variations for each
->>> + * vCPU depending on enabled features. We track this in
->>> + * CPUPluginState.
->>> + */
->>
->> Since we do no longer coalesce registers for different classes, I need
->> to bring my old question back: Why don't you just cast register
->> numbers into pointers and use it as handles?
-> 
-> In the interest of getting this merged before the fast approaching
-> soft-freeze I shall do this for now. However once the plugin system has
-> knowledge of individual registers exposed by TCG it will need to track
-> internal state so will need some sort of container for that.
+Hi Sergey,
 
-Indeed it's likely that we would have containers for registers, but we 
-don't know who would own them yet.
+On 26/2/24 01:02, Sergey Kambalin wrote:
+> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+> ---
+>   hw/arm/bcm2838_pcie.c         | 82 +++++++++++++++++++++++++++++++++++
+>   hw/arm/meson.build            |  5 ++-
+>   include/hw/arm/bcm2838_pcie.h | 53 ++++++++++++++++++++++
+>   3 files changed, 139 insertions(+), 1 deletion(-)
+>   create mode 100644 hw/arm/bcm2838_pcie.c
+>   create mode 100644 include/hw/arm/bcm2838_pcie.h
 
-These containers may not be held by vCPU classes as you previously 
-proposed because we may support different configurations of one vCPU class.
 
-The current proposal to allocate handles for each vCPU may not be what 
-we would want to do in the future either. To support SMP debugging with 
-gdbstub, gdbstub must know sets of vCPUs that have identical registers, 
-and once it does, it's better to allocate handles for each of such sets, 
-not each of vCPUs.
+> +static void bcm2838_pcie_root_init(Object *obj)
+> +{
+> +    PCIBridge *br = PCI_BRIDGE(obj);
+> +    br->bus_name = "pcie.1";
 
-Let's figure out how we should manage containers when a need arises.
+Shouldn't we set the bridge name using pci_bridge_map_irq()?
 
-> 
->> You can even just expose gdb_reg_num with the interface.
-> 
-> As I have explained before I don't want plugins to treat the handle as
-> a pure index in case they start providing numbers that aren't in the
-> list provided by qemu_plugin_get_registers.
-> 
+> +}
+> +
+> +static void bcm2838_pcie_root_class_init(ObjectClass *class, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(class);
+> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
+> +    ResettableClass *rc = RESETTABLE_CLASS(class);
+> +    PCIERootPortClass *rpc = PCIE_ROOT_PORT_CLASS(class);
+> +
+> +    dc->desc = "BCM2711 PCIe Bridge";
+> +    /*
+> +     * PCI-facing part of the host bridge, not usable without the host-facing
+> +     * part, which can't be device_add'ed.
 
-You can assert the given number has an associated name.
+This is the host-facing part; you add the PCI-facing one in
+the next patch.
+
+> +     */
+> +
+> +    resettable_class_set_parent_phases(rc, NULL,
+> +                                       bcm2838_pcie_root_port_reset_hold,
+> +                                       NULL, &rpc->parent_phases);
+> +
+> +    dc->user_creatable = false;
+> +    k->vendor_id = BCM2838_PCIE_VENDOR_ID;
+> +    k->device_id = BCM2838_PCIE_DEVICE_ID;
+> +    k->revision = BCM2838_PCIE_REVISION;
+> +
+> +    rpc->exp_offset = BCM2838_PCIE_EXP_CAP_OFFSET;
+> +    rpc->aer_offset = BCM2838_PCIE_AER_CAP_OFFSET;
+> +}
+> +
+> +static const TypeInfo bcm2838_pcie_root_info = {
+> +    .name = TYPE_BCM2838_PCIE_ROOT,
+> +    .parent = TYPE_PCIE_ROOT_PORT,
+> +    .instance_size = sizeof(BCM2838PcieRootState),
+> +    .instance_init = bcm2838_pcie_root_init,
+> +    .class_init = bcm2838_pcie_root_class_init,
+> +};
+> +
+> +static void bcm2838_pcie_register(void)
+> +{
+> +    type_register_static(&bcm2838_pcie_root_info);
+> +}
+
+Please use the DEFINE_TYPES() if you have to respin.
+

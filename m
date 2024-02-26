@@ -1,375 +1,360 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1021727ejf;
-        Sat, 24 Feb 2024 00:34:13 -0800 (PST)
-X-Received: by 2002:a05:6a21:e85:b0:1a0:e647:5d58 with SMTP id ma5-20020a056a210e8500b001a0e6475d58mr2222943pzb.23.1708763653370;
-        Sat, 24 Feb 2024 00:34:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708763653; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1762090ejf;
+        Sun, 25 Feb 2024 16:04:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVtmluy/h8+giRCYV8PHCwAa/flswTQYe1Q9tSEVtkXPxUpWlwz+f1tkoGFBKEjkvKpAXXm4K/hXZ99/j0VayKYjS3UaiqE
+X-Google-Smtp-Source: AGHT+IEjp/DWDuPra0+Xxkmayu48PUNQgrvybP1UwdEOYnYOPk1KwNTqdSHUPhgvPT0SCbpSAu9S
+X-Received: by 2002:a05:6870:14c1:b0:21e:959e:83ed with SMTP id l1-20020a05687014c100b0021e959e83edmr6653517oab.15.1708905853565;
+        Sun, 25 Feb 2024 16:04:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708905853; cv=none;
         d=google.com; s=arc-20160816;
-        b=KH66TdJ2uCwe6cLqqmRhFNqO5i7ThAgDAaxc+2gXKC+4asIuHcYEHBqrYos+A7PB+q
-         yway8GqLLTx1uini9P+h7CgcRCfLM4UneaWk5w/JA/6MnaqdeMM/C0WmT1O+iGKvxBDW
-         Szy5fsW1GGsTSMCNu/KfLzxOz/H4MjE3mcOnBn2uK8d/ccWN4LAOgs8o3gqccNvXTtni
-         A2ZLOQ0dTplh1MJwbl40YR3x6S3L5ju77PeZv2SD04hndrGPDAR6NJCvYkpQyf9hDpu2
-         TA22npUpA1lABadXPs+7+QwEXyRM3w3s0Xls85AaKmFIqF5H859SV93mhJAP20bkLL+0
-         l6RA==
+        b=KbqBp8Ss1bmVxzEeVg5u6R9rOMd7PHUefxFH+oj32XWo6nvMrdvgSydrEX9ttxvRqn
+         GHk9DcUATs0aU7DzHCuTkoSnvPAurZ/iXB4H4Bho8sjo8W1M1LiBlKs+XiWphQjg7isF
+         NKN43sZnLZy2ZeO0ly7JHFHgzStWDP8DmxbOx6tXw8HZkUR+upJib6mVs1/2nt3iN7Ah
+         iHyqYN0CpuPncotfTlkEDwnrHmqlRa8tqjBjA/7TW/IJAkfNMBrQ6joLFdQwwbvhwH7R
+         g9SD0MVrokUf4Wbrg5JzyE3BINTBFJ3a65XA8u6meu6R0BltMFSYc2fYkCwqQ7qfzDA+
+         ryQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=UVQsYrZNkkg5HHx+0cO2XWXKJlv+JJfjFrAQSba2qeA=;
-        fh=QfweE3G7ZUfZOnbEAgfsMGPL7doKSXUmko5NH1i79Fo=;
-        b=vownPvUPzUs+1oOetvhWsQ2eSe3tVKgeKk2hpUpCn3Ok4NTgkMA7mh4oEZX5eXlg70
-         sSHg680/h+HddrEMpLbraYyscfV9HffiBSDMZpu7T0hkMuIcn6ydz6y4sFKWVXiGG8k5
-         vxLsOFwndCH6Rz052+XGlPYYRWlQ/SI5+BufeExJdnFNrxDe1aoT3KS3SXhBV4vwrcA6
-         WtXgQh0TEZUvy0SOjPXEGpwP3ke+pwa5g8+8ViPd5U3wgJMBDmYoj8OvzsZ6RskYDqqH
-         dL8X9U2JLU73rdzfSxuL71scBZfD4bn0Ec//T4O+RvkTc/Yl7wTHZwPY4nin9/GDPctT
-         0r+w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
+        fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
+        b=FFwJjztswtzfcT9nO15z/FKIaJhPo/2K4rbCq8BhN7jgJNhUzpAWJUqcJc2fqxwL8+
+         7IBGgzJf0vfIF3oLoYlhIdUarVf0c5WdqV/My1XeJSI+6igUv65HHiSJCy0Cc+9HBtVq
+         el36apblbuirHFnzvq8A3+qcIqS6T+qp1gFCn+UWSCg4hBepXr/mDbKUwfUdbZg+Oqgd
+         NTux+ZzBxZIdAh2Ytijd2ABnh0ieLzGn055wCWf0mdqsu5nqHY6AlBFQokguLvPl2s86
+         XZtt/XGim013fOMAKn421/+WXYH1bM/NMNwHz61yaH0rg+cg88bVLIM/fSzb9uZKK18G
+         Gs/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=r87TigJo;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d129-20020a633687000000b005b8f61fcbabsor400960pga.8.2024.02.24.00.34.12
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ENcBVUtG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f8-20020a05620a408800b00787d62309c4si199499qko.481.2024.02.25.16.04.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 24 Feb 2024 00:34:13 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 25 Feb 2024 16:04:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=r87TigJo;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ENcBVUtG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1reOTA-0006uP-IU; Sun, 25 Feb 2024 19:03:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1reOT4-0006q6-3p; Sun, 25 Feb 2024 19:03:38 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1reOSx-0000Ri-39; Sun, 25 Feb 2024 19:03:37 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-60908e5fb9eso143297b3.2; 
+ Sun, 25 Feb 2024 16:03:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708763652; x=1709368452; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UVQsYrZNkkg5HHx+0cO2XWXKJlv+JJfjFrAQSba2qeA=;
-        b=r87TigJo+J9orUM0zVtiqPNinIcgEg718+KJRwynD1BGrOpdU5HpVevsid5AT+Z47S
-         16w1G1NdokCLXS1lLU886dxzSCxjhGTnkxL0q0yc2xkYXeYaf50RVj6wPW9cLVDfuCM9
-         CjX1awOyk4iR1MG3DOyeFTphoP4F/phYE19bonXgqqrLHY9hyjhj93YUDRDz3BHNrfnV
-         pJ9KPXL1V2bKxGlaqKmmgYigsYkW11W4EhXBr6wRWFIX22PcqvIajNeJ4+wfuyqDItEq
-         /tVETmPgkmoQSBa++GrS5gWbdGDCZ49P7iTkt6mhPH3YcVKMPMcDW1JmFLljpN9kgIPv
-         XV5A==
+ d=gmail.com; s=20230601; t=1708905809; x=1709510609; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
+ b=ENcBVUtGkz+VcpzPMf/pazoZzE65hCwQSk8hYNjHPoKang/vzun0WIYH+xIaSU0dZg
+ YcQnulGGgBMj9EL/lePlvhDvp2/tGfrLNDOCMdjRZttpOGW4uBJMbDMxwEc0SP7nMMq9
+ CRNHXJtWhrVE4Kn0xhX+6LlpPCoEtIKppZ9YAQcw5+FGXG5zE0DCVWhYE1FHx/uecHGQ
+ rbFjWTYXgmJwUj5clWSglqA/rJ6KGfZt6/zlKVGplBtSiC2XtCyzLcghP+7s1qg6nT3e
+ +WvaYJ8HYCR9+OdUH6DHbq4qy44+2jsOzLvqS7TjrkAYq0I/bRVQMfAGRY1hrz2AzSyG
+ 37CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708763652; x=1709368452;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UVQsYrZNkkg5HHx+0cO2XWXKJlv+JJfjFrAQSba2qeA=;
-        b=HFZ5EchZGGLr1KEl853qktZSpym8lYgHPGCbEK6xzSrbYE0oUgiBUhVDfR9g6FuJWy
-         sfl4qntnS+M11ZNO5JYb0cVnhXL2uIGip3l78yHvGZu44hYmFFkSjr9UAevRFLAKayxb
-         1qKc8jav5rj8xGiqqw8kDs5lu/IUIKh/71fkG5/d3X7u/e8dIa3tcOAHe5Cnez+0pPbL
-         yW/vNM21vn07/TFl4tCNDyCgkmrGNhJ2GuuqTMEVR+EcEFLKTNGs28zj948mUxygryTO
-         sPBbJcIEMM4b3KUrFafMkLBe6mJTTgo/GFaamGMjL8N6brNZEyFcIBy7Cn/HyrC3m192
-         G/Ig==
-X-Gm-Message-State: AOJu0Yyzt3120vdS9jcihOD5QNA8ueRGbLLE9NaeA402HFjNNF9QM6hg
-	7SIrS5oOBhMWQyAXeBeXMO5EA/942vUpoDa/EKmOdXLX1Ebf+UK0v0v55O0FLPejWZ5yLX0mADG
-	a
-X-Google-Smtp-Source: AGHT+IGOMRyeGWv0vDO5ZC2EKlsdbl+BAk5gh5f5cBrdNyh/zeeySIZqCwIU6jphPD1G1gEuGwKrig==
-X-Received: by 2002:a05:6a20:9d92:b0:1a0:6496:84c1 with SMTP id mu18-20020a056a209d9200b001a0649684c1mr2458976pzb.37.1708763652314;
-        Sat, 24 Feb 2024 00:34:12 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id w191-20020a6382c8000000b005c6617b52e6sm686202pgd.5.2024.02.24.00.34.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 24 Feb 2024 00:34:11 -0800 (PST)
-Message-ID: <2a7f0e06-0bc9-4fad-add7-9675a4cc2a0a@daynix.com>
-Date: Sat, 24 Feb 2024 17:34:03 +0900
+ d=1e100.net; s=20230601; t=1708905809; x=1709510609;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
+ b=G3gbz9YnromvrhKgJIk8yuElN/T7djztjsHD+9/+5tF04VKbHE9EBuR76oROryYokK
+ qhplSdE5icJ581fPEqRUeGqkTk4f0O9esj3Kris3x337T09dHOQ2UyDdpPgQj7xQwbRG
+ HePjpQXbOcLy1WJ7t0Ilu0Nl80zfOBBiAVEnX7pZ2igEdrs9e6YN2OUtima3eeW5nLoq
+ gWQ8oxvednmFqGKgsBlP9QAElqHuAGkUCsIdYXZfpduB5mTOWDyp+uzC52f9IhdJnZTD
+ wpHlk0jvfWs2xIue1NCz58MYThUpEPbpSWoQQxVm0CQM01DkKL3IlmToX+kJP/b/+GK0
+ GfQw==
+X-Gm-Message-State: AOJu0YxdzRMxsP4VxQaMSrcnYr9hK6DxGPmro4Cekc1UWVOS/cKLWhZ2
+ 2RSVM7iNIdiwiXexHHvv8OXDX+jnECiMKZuC+K/aAy2hrQLygOomLZXiWdSCmwbJMg==
+X-Received: by 2002:a05:690c:88f:b0:605:a557:6b47 with SMTP id
+ cd15-20020a05690c088f00b00605a5576b47mr5539967ywb.12.1708905809533; 
+ Sun, 25 Feb 2024 16:03:29 -0800 (PST)
+Received: from localhost.localdomain ([201.203.117.224])
+ by smtp.gmail.com with ESMTPSA id
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 25 Feb 2024 16:03:29 -0800 (PST)
+From: Sergey Kambalin <serg.oker@gmail.com>
+X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Sergey Kambalin <sergey.kambalin@auriga.com>
+Subject: [PATCH v6 22/41] Add GENET register structs. Part 3
+Date: Sun, 25 Feb 2024 18:02:40 -0600
+Message-Id: <20240226000259.2752893-23-sergey.kambalin@auriga.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 21/27] plugins: add an API to read registers
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Song Gao <gaosong@loongson.cn>, qemu-s390x@nongnu.org,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Cleber Rosa <crosa@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Peter Maydell
- <peter.maydell@linaro.org>, Daniel Henrique Barboza <danielhb413@gmail.com>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, John Snow <jsnow@redhat.com>,
- Weiwei Li <liwei1518@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Rolnik <mrolnik@gmail.com>
-References: <20240223162202.1936541-1-alex.bennee@linaro.org>
- <20240223162202.1936541-22-alex.bennee@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240223162202.1936541-22-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: SgdmaWk5L9sb
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cu1hAkVK20/r
 
-On 2024/02/24 1:21, Alex Bennée wrote:
-> We can only request a list of registers once the vCPU has been
-> initialised so the user needs to use either call the get function on
-> vCPU initialisation or during the translation phase.
-> 
-> We don't expose the reg number to the plugin instead hiding it behind
-> an opaque handle. As the register set is potentially different for
-> each vCPU we store a separate set of handles for each vCPU. This will
-> become more important if we are able to emulate more heterogeneous
-> systems.
-> 
-> Having an internal state within the plugins also allows us to expand
-> the interface in future (for example providing callbacks on register
-> change if the translator can track changes).
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
-> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
-> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> 
-> ---
-> v4
->    - the get/read_registers functions are now implicitly for current
->    vCPU only to accidental cpu != current_cpu uses.
-> v5
->    - make reg_handles as per-CPUPluginState variable.
-> ---
->   include/qemu/plugin.h        |  2 +
->   include/qemu/qemu-plugin.h   | 48 +++++++++++++++++++-
->   plugins/api.c                | 88 ++++++++++++++++++++++++++++++++++++
->   plugins/qemu-plugins.symbols |  2 +
->   4 files changed, 138 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-> index 0e7b9693d80..64fb425fb0b 100644
-> --- a/include/qemu/plugin.h
-> +++ b/include/qemu/plugin.h
-> @@ -189,9 +189,11 @@ struct qemu_plugin_insn *qemu_plugin_tb_insn_get(struct qemu_plugin_tb *tb,
->   /**
->    * struct CPUPluginState - per-CPU state for plugins
->    * @event_mask: plugin event bitmap. Modified only via async work.
-> + * @reg_handles: hash table of register handles.
->    */
->   struct CPUPluginState {
->       DECLARE_BITMAP(event_mask, QEMU_PLUGIN_EV_MAX);
-> +    GHashTable *reg_handles;
->   };
->   
->   /**
-> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-> index 93981f8f89f..3b6b18058d2 100644
-> --- a/include/qemu/qemu-plugin.h
-> +++ b/include/qemu/qemu-plugin.h
-> @@ -11,6 +11,7 @@
->   #ifndef QEMU_QEMU_PLUGIN_H
->   #define QEMU_QEMU_PLUGIN_H
->   
-> +#include <glib.h>
->   #include <inttypes.h>
->   #include <stdbool.h>
->   #include <stddef.h>
-> @@ -229,8 +230,8 @@ struct qemu_plugin_insn;
->    * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
->    * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
->    *
-> - * Note: currently unused, plugins cannot read or change system
-> - * register state.
-> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
-> + * system register state.
->    */
->   enum qemu_plugin_cb_flags {
->       QEMU_PLUGIN_CB_NO_REGS,
-> @@ -707,4 +708,47 @@ uint64_t qemu_plugin_end_code(void);
->   QEMU_PLUGIN_API
->   uint64_t qemu_plugin_entry_code(void);
->   
-> +/** struct qemu_plugin_register - Opaque handle for register access */
-> +struct qemu_plugin_register;
-> +
-> +/**
-> + * typedef qemu_plugin_reg_descriptor - register descriptions
-> + *
-> + * @handle: opaque handle for retrieving value with qemu_plugin_read_register
-> + * @name: register name
-> + * @feature: optional feature descriptor, can be NULL
-> + */
-> +typedef struct {
-> +    struct qemu_plugin_register *handle;
-> +    const char *name;
-> +    const char *feature;
-> +} qemu_plugin_reg_descriptor;
-> +
-> +/**
-> + * qemu_plugin_get_registers() - return register list for current vCPU
-> + *
-> + * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
-> + * frees the array (but not the const strings).
-> + *
-> + * Should be used from a qemu_plugin_register_vcpu_init_cb() callback
-> + * after the vCPU is initialised, i.e. in the vCPU context.
-> + */
-> +GArray *qemu_plugin_get_registers(void);
-> +
-> +/**
-> + * qemu_plugin_read_register() - read register for current vCPU
-> + *
-> + * @handle: a @qemu_plugin_reg_handle handle
-> + * @buf: A GByteArray for the data owned by the plugin
-> + *
-> + * This function is only available in a context that register read access is
-> + * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
-> + *
-> + * Returns the size of the read register. The content of @buf is in target byte
-> + * order. On failure returns -1
-> + */
-> +int qemu_plugin_read_register(struct qemu_plugin_register *handle,
-> +                              GByteArray *buf);
-> +
-> +
->   #endif /* QEMU_QEMU_PLUGIN_H */
-> diff --git a/plugins/api.c b/plugins/api.c
-> index 54df72c1c00..f6c3ba2366f 100644
-> --- a/plugins/api.c
-> +++ b/plugins/api.c
-> @@ -8,6 +8,7 @@
->    *
->    *  qemu_plugin_tb
->    *  qemu_plugin_insn
-> + *  qemu_plugin_register
->    *
->    * Which can then be passed back into the API to do additional things.
->    * As such all the public functions in here are exported in
-> @@ -35,10 +36,12 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/main-loop.h"
->   #include "qemu/plugin.h"
->   #include "qemu/log.h"
->   #include "tcg/tcg.h"
->   #include "exec/exec-all.h"
-> +#include "exec/gdbstub.h"
->   #include "exec/ram_addr.h"
->   #include "disas/disas.h"
->   #include "plugin.h"
-> @@ -410,3 +413,88 @@ uint64_t qemu_plugin_entry_code(void)
->   #endif
->       return entry;
->   }
-> +
-> +/*
-> + * Register handles
-> + *
-> + * The plugin infrastructure keeps hold of these internal data
-> + * structures which are presented to plugins as opaque handles. They
-> + * are local to each vCPU as there can be slight variations for each
-> + * vCPU depending on enabled features. We track this in
-> + * CPUPluginState.
-> + */
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+---
+ hw/net/bcm2838_genet.c         | 88 ++++++++++++++++++++++++++++++++++
+ include/hw/net/bcm2838_genet.h | 88 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 176 insertions(+)
 
-Since we do no longer coalesce registers for different classes, I need 
-to bring my old question back: Why don't you just cast register numbers 
-into pointers and use it as handles? You can even just expose 
-gdb_reg_num with the interface.
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 9a99f34c4a..be899b68f8 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -145,6 +145,94 @@ FIELD(GENET_RDMA_LENGTH_STATUS, OWN,        15, 1)
+ FIELD(GENET_RDMA_LENGTH_STATUS, BUFLENGTH,  16, 12)
+ FIELD(GENET_RDMA_LENGTH_STATUS, RSVD_28_31, 29, 4)
+ 
++REG32(GENET_TDMA_LENGTH_STATUS,             0)
++FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_0_3,   0, 4)
++FIELD(GENET_TDMA_LENGTH_STATUS, DO_CSUM,    4, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, OW_CRC,     5, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, APPEND_CRC, 6, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_7_8,   7, 2)
++FIELD(GENET_TDMA_LENGTH_STATUS, UNDERRUN,   9, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_10_11, 10, 2)
++FIELD(GENET_TDMA_LENGTH_STATUS, WRAP,       12, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, SOP,        13, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, EOP,        14, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, OWN,        15, 1)
++FIELD(GENET_TDMA_LENGTH_STATUS, BUFLENGTH,  16, 12)
++FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_28_31, 29, 4)
++
++REG16(GENET_PHY_BMCR,            0)
++FIELD(GENET_PHY_BMCR, RSVD_0_5,  0, 6)
++FIELD(GENET_PHY_BMCR, SPEED1000, 6, 1)
++FIELD(GENET_PHY_BMCR, CTST,      7, 1)
++FIELD(GENET_PHY_BMCR, FULLDPLX,  8, 1)
++FIELD(GENET_PHY_BMCR, ANRESTART, 9, 1)
++FIELD(GENET_PHY_BMCR, ISOLATE,   10, 1)
++FIELD(GENET_PHY_BMCR, PDOWN,     11, 1)
++FIELD(GENET_PHY_BMCR, AENABLE,   12, 1)
++FIELD(GENET_PHY_BMCR, SPEED100,  13, 1)
++FIELD(GENET_PHY_BMCR, LOOPBACK,  14, 1)
++FIELD(GENET_PHY_BMCR, RESET,     15, 1)
++
++REG16(GENET_PHY_BMSR,               0)
++FIELD(GENET_PHY_BMSR, ERCAP,        0, 1)
++FIELD(GENET_PHY_BMSR, JCD,          1, 1)
++FIELD(GENET_PHY_BMSR, LSTATUS,      2, 1)
++FIELD(GENET_PHY_BMSR, ANEGCAPABLE,  3, 1)
++FIELD(GENET_PHY_BMSR, RFAULT,       4, 1)
++FIELD(GENET_PHY_BMSR, ANEGCOMPLETE, 5, 1)
++FIELD(GENET_PHY_BMSR, RSVD_6_7,     6, 2)
++FIELD(GENET_PHY_BMSR, ESTATEN,      8, 1)
++FIELD(GENET_PHY_BMSR, _100HALF2,    9, 1)
++FIELD(GENET_PHY_BMSR, _100FULL2,    10, 1)
++FIELD(GENET_PHY_BMSR, _10HALF,      11, 1)
++FIELD(GENET_PHY_BMSR, _10FULL,      12, 1)
++FIELD(GENET_PHY_BMSR, _100HALF,     13, 1)
++FIELD(GENET_PHY_BMSR, _100FULL,     14, 1)
++FIELD(GENET_PHY_BMSR, _10BASE4,     15, 1)
++
++REG16(GENET_PHY_LPA,                           0)
++FIELD(GENET_PHY_LPA, SLCT,                     0, 5)
++FIELD(GENET_PHY_LPA, _10HALF_1000XFULL,        5, 1)
++FIELD(GENET_PHY_LPA, _10FULL_1000XHALF,        6, 1)
++FIELD(GENET_PHY_LPA, _100HALF_1000XPAUSE,      7, 1)
++FIELD(GENET_PHY_LPA, _100FULL_1000XPAUSE_ASYM, 8, 1)
++FIELD(GENET_PHY_LPA, _100BASE4,                9, 1)
++FIELD(GENET_PHY_LPA, PAUSE_CAP,                10, 1)
++FIELD(GENET_PHY_LPA, PAUSE_ASYM,               11, 1)
++FIELD(GENET_PHY_LPA, RSVD_12,                  12, 1)
++FIELD(GENET_PHY_LPA, RFAULT,                   13, 1)
++FIELD(GENET_PHY_LPA, LPACK,                    14, 1)
++FIELD(GENET_PHY_LPA, NPAGE,                    15, 1)
++
++REG16(GENET_PHY_STAT_1000,            0)
++FIELD(GENET_PHY_STAT_1000, RSVD_0_9,  0, 10)
++FIELD(GENET_PHY_STAT_1000, HALF,      10, 1)
++FIELD(GENET_PHY_STAT_1000, FULL,      11, 1)
++FIELD(GENET_PHY_STAT_1000, REMRXOK,   12, 1)
++FIELD(GENET_PHY_STAT_1000, LOCALRXOK, 13, 1)
++FIELD(GENET_PHY_STAT_1000, MSRES,     14, 1)
++FIELD(GENET_PHY_STAT_1000, MSFAIL,    15, 1)
++
++REG16(GENET_PHY_AUX_CTRL_0,              0)
++FIELD(GENET_PHY_AUX_CTRL_0, REG_ID_MASK, 0, 3)
++FIELD(GENET_PHY_AUX_CTRL_0, RSVD_3,      3, 1)
++FIELD(GENET_PHY_AUX_CTRL_0, REG_DATA,    4, 8)
++FIELD(GENET_PHY_AUX_CTRL_0, REG_ID,      12, 3)
++FIELD(GENET_PHY_AUX_CTRL_0, MISC_WREN,   15, 1)
++
++REG16(GENET_PHY_AUX_CTRL_1,           0)
++FIELD(GENET_PHY_AUX_CTRL_1, RSVD_0_3, 0, 4)
++FIELD(GENET_PHY_AUX_CTRL_1, REG_DATA, 4, 12)
++
++REG16(GENET_PHY_SHADOW,           0)
++FIELD(GENET_PHY_SHADOW, REG_DATA, 0, 10)
++FIELD(GENET_PHY_SHADOW, REG_ID,   10, 5)
++FIELD(GENET_PHY_SHADOW, WR,       15, 1)
++
++REG16(GENET_PHY_EXP_SEL,           0)
++FIELD(GENET_PHY_EXP_SEL, REG_ID,   0, 8)
++FIELD(GENET_PHY_EXP_SEL, BLOCK_ID, 8, 8)
++
+ static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint64_t value = ~0;
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 736b4d1757..1bd004785a 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -22,6 +22,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_DMA_RING_CNT      17
+ #define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
+ 
++#define BCM2838_GENET_HFB_FILTER_CNT      48
++#define BCM2838_GENET_HFB_FILTER_SIZE     128
++
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -169,6 +172,53 @@ typedef struct {
+     uint32_t reserved_0x10D0[972];
+ } BCM2838GenetRegsRdma;
+ 
++typedef struct {
++    uint32_t length_status;
++    uint32_t address_lo;
++    uint32_t address_hi;
++} BCM2838GenetTdmaDesc;
++
++typedef struct {
++    uint32_t read_ptr;
++    uint32_t read_ptr_hi;
++    uint32_t cons_index;
++    uint32_t prod_index;
++    uint32_t ring_buf_size;
++    uint32_t start_addr;
++    uint32_t start_addr_hi;
++    uint32_t end_addr;
++    uint32_t end_addr_hi;
++    uint32_t mbuf_done_tresh;
++    uint32_t flow_period;
++    uint32_t write_ptr;
++    uint32_t write_ptr_hi;
++    uint32_t reserved_0x34[3];
++} BCM2838GenetTdmaRing;
++
++typedef struct {
++    BCM2838GenetTdmaDesc descs[BCM2838_GENET_DMA_DESC_CNT];
++    BCM2838GenetTdmaRing rings[BCM2838_GENET_DMA_RING_CNT];
++    uint32_t ring_cfg;
++    uint32_t ctrl;
++    uint32_t status;
++    uint32_t scb_burst_size;
++    uint32_t reserved_0x1050[7];
++    uint32_t arb_ctrl;
++    uint32_t priority[3];
++    uint32_t reserved_0x10D0[993];
++} BCM2838GenetRegsTdma;
++
++typedef struct {
++    uint8_t flt[BCM2838_GENET_HFB_FILTER_CNT * BCM2838_GENET_HFB_FILTER_SIZE
++        * sizeof(uint32_t)];
++    uint32_t reserved_0x6000[1792];
++    uint32_t ctrl;
++    uint32_t flt_enable[2];
++    uint32_t reserved_0x7C0C[4];
++    uint32_t flt_len[BCM2838_GENET_HFB_FILTER_CNT / sizeof(uint32_t)];
++    uint32_t reserved_0x7C4C[237];
++} BCM2838GenetRegsHfb;
++
+ typedef struct {
+     BCM2838GenetRegsSys sys;
+     BCM2838GenetRegsGrBridge gr_bridge;
+@@ -184,8 +234,45 @@ typedef struct {
+     BCM2838GenetRegsUmac umac;
+     uint32_t reserved_0x1000[1024];
+     BCM2838GenetRegsRdma rdma;
++    BCM2838GenetRegsTdma tdma;
++    uint32_t reserved_0x6000[2048];
++    BCM2838GenetRegsHfb hfb;
+ } BCM2838GenetRegs;
+ 
++typedef struct {
++    uint16_t bmcr;
++    uint16_t bmsr;
++    uint16_t sid1;
++    uint16_t sid2;
++    uint16_t advertise;
++    uint16_t lpa;
++    uint16_t expansion;
++    uint16_t next_page;
++    uint16_t lpa_next_page;
++    uint16_t ctrl1000;
++    uint16_t stat1000;
++    uint16_t reserved_11_12[2];
++    uint16_t mmd_ctrl;
++    uint16_t mmd_data;
++    uint16_t estatus;
++    uint16_t ecr;
++    uint16_t esr;
++    uint16_t dcounter;
++    uint16_t fcscounter;
++    uint16_t nwaytest;
++    uint16_t exp_data;
++    uint16_t srevision;
++    uint16_t exp_ctrl;
++    uint16_t aux_ctl;
++    uint16_t phyaddr;
++    uint16_t isr;
++    uint16_t imr;
++    uint16_t shd;
++    uint16_t reserved_29;
++    uint16_t rdb_addr;
++    uint16_t rdb_data;
++} BCM2838GenetPhyRegs;
++
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -196,6 +283,7 @@ struct BCM2838GenetState {
+     AddressSpace dma_as;
+ 
+     BCM2838GenetRegs regs;
++    BCM2838GenetPhyRegs phy_regs;
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
+-- 
+2.34.1
 
-> +
-> +struct qemu_plugin_register {
-> +    const char *name;
-> +    int gdb_reg_num;
-> +};
-> +
-> +/*
-> + * Create register handles.
-> + *
-> + * We need to create a handle for each register so the plugin
-> + * infrastructure can call gdbstub to read a register. We also
-> + * construct a result array with those handles and some ancillary data
-> + * the plugin might find useful.
-> + */
-> +
-> +static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
-> +{
-> +    GArray *find_data = g_array_new(true, true,
-> +                                    sizeof(qemu_plugin_reg_descriptor));
-> +
-> +    if (!cs->plugin_state->reg_handles) {
-> +        cs->plugin_state->reg_handles = g_hash_table_new(g_direct_hash,
-> +                                                         g_direct_equal);
-> +    }
-> +
-> +    for (int i = 0; i < gdbstub_regs->len; i++) {
-> +        GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
-> +        gpointer key = GINT_TO_POINTER(grd->gdb_reg);
-> +        struct qemu_plugin_register *val
-> +            = g_hash_table_lookup(cs->plugin_state->reg_handles,
-> +                                  key);
-> +
-> +        /* skip "un-named" regs */
-> +        if (!grd->name) {
-> +            continue;
-> +        }
-> +
-> +        /* Doesn't exist, create one */
-> +        if (!val) {
-> +            val = g_new0(struct qemu_plugin_register, 1);
-> +            val->gdb_reg_num = grd->gdb_reg;
-> +            val->name = g_intern_string(grd->name);
-> +
-> +            g_hash_table_insert(cs->plugin_state->reg_handles, key, val);
-> +        } else {
-> +            /* make sure we are not seeing a key clash */
-> +            g_assert(val->gdb_reg_num == grd->gdb_reg);
-> +        }
-> +
-> +        /* Create a record for the plugin */
-> +        qemu_plugin_reg_descriptor desc = {
-> +            .handle = val,
-> +            .name = val->name,
-> +            .feature = g_intern_string(grd->feature_name)
-> +        };
-> +        g_array_append_val(find_data, desc);
-> +    }
-> +
-> +    return find_data;
-> +}
-> +
-> +GArray *qemu_plugin_get_registers(void)
-> +{
-> +    g_assert(current_cpu);
-> +
-> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
-> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
-> +}
-> +
-> +int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
-> +{
-> +    g_assert(current_cpu);
-> +
-> +    return gdb_read_register(current_cpu, buf, reg->gdb_reg_num);
-> +}
-> diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-> index adb67608598..27fe97239be 100644
-> --- a/plugins/qemu-plugins.symbols
-> +++ b/plugins/qemu-plugins.symbols
-> @@ -3,6 +3,7 @@
->     qemu_plugin_end_code;
->     qemu_plugin_entry_code;
->     qemu_plugin_get_hwaddr;
-> +  qemu_plugin_get_registers;
->     qemu_plugin_hwaddr_device_name;
->     qemu_plugin_hwaddr_is_io;
->     qemu_plugin_hwaddr_phys_addr;
-> @@ -19,6 +20,7 @@
->     qemu_plugin_num_vcpus;
->     qemu_plugin_outs;
->     qemu_plugin_path_to_binary;
-> +  qemu_plugin_read_register;
->     qemu_plugin_register_atexit_cb;
->     qemu_plugin_register_flush_cb;
->     qemu_plugin_register_vcpu_exit_cb;

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h19-20020a05600c261300b00412a30cd127sm5212488wma.7.2024.02.26.09.02.41
+        by smtp.gmail.com with ESMTPSA id az14-20020adfe18e000000b0033d2541b3e1sm9175176wrb.72.2024.02.26.09.02.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 26 Feb 2024 09:02:41 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9AD295F92C;
+	by draig.lan (Postfix) with ESMTP id 84F4C5F92B;
 	Mon, 26 Feb 2024 16:56:48 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -44,109 +44,201 @@ Cc: Nicholas Piggin <npiggin@gmail.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 19/27] gdbstub: expose api to find registers
-Date: Mon, 26 Feb 2024 16:56:38 +0000
-Message-Id: <20240226165646.425600-20-alex.bennee@linaro.org>
+Subject: [PATCH v3 18/27] plugins: Use different helpers when reading registers
+Date: Mon, 26 Feb 2024 16:56:37 +0000
+Message-Id: <20240226165646.425600-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240226165646.425600-1-alex.bennee@linaro.org>
 References: <20240226165646.425600-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OTLi64FkokpX
+X-TUID: E2KqmbOggCoc
 
-Expose an internal API to QEMU to return all the registers for a vCPU.
-The list containing the details required to called gdb_read_register().
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Based-on: <20231025093128.33116-15-akihiko.odaki@daynix.com>
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-38-alex.bennee@linaro.org>
+This avoids optimizations incompatible when reading registers.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240103173349.398526-37-alex.bennee@linaro.org>
+Message-Id: <20231213-gdb-v17-12-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3
-  - rm unused api functions left over
----
- include/exec/gdbstub.h | 28 ++++++++++++++++++++++++++++
- gdbstub/gdbstub.c      | 27 ++++++++++++++++++++++++++-
- 2 files changed, 54 insertions(+), 1 deletion(-)
+ accel/tcg/plugin-helpers.h |  3 ++-
+ include/qemu/plugin.h      |  1 +
+ accel/tcg/plugin-gen.c     | 43 ++++++++++++++++++++++++++++++++++----
+ plugins/api.c              | 12 +++++++++--
+ 4 files changed, 52 insertions(+), 7 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index da9ddfe54c5..eb14b91139b 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -111,6 +111,34 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
+diff --git a/accel/tcg/plugin-helpers.h b/accel/tcg/plugin-helpers.h
+index 8e685e06545..11796436f35 100644
+--- a/accel/tcg/plugin-helpers.h
++++ b/accel/tcg/plugin-helpers.h
+@@ -1,4 +1,5 @@
+ #ifdef CONFIG_PLUGIN
+-DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
++DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_wg, TCG_CALL_NO_WG | TCG_CALL_PLUGIN, void, i32, ptr)
++DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_rwg, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
+ DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, i32, i64, ptr)
+ #endif
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index 7fdc3a4849f..b0c5ac68293 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -73,6 +73,7 @@ enum plugin_dyn_cb_type {
+ 
+ enum plugin_dyn_cb_subtype {
+     PLUGIN_CB_REGULAR,
++    PLUGIN_CB_REGULAR_R,
+     PLUGIN_CB_INLINE,
+     PLUGIN_N_CB_SUBTYPES,
+ };
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 78b331b2510..b37ce7683e6 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -79,6 +79,7 @@ enum plugin_gen_from {
+ 
+ enum plugin_gen_cb {
+     PLUGIN_GEN_CB_UDATA,
++    PLUGIN_GEN_CB_UDATA_R,
+     PLUGIN_GEN_CB_INLINE,
+     PLUGIN_GEN_CB_MEM,
+     PLUGIN_GEN_ENABLE_MEM_HELPER,
+@@ -90,7 +91,10 @@ enum plugin_gen_cb {
+  * These helpers are stubs that get dynamically switched out for calls
+  * direct to the plugin if they are subscribed to.
   */
- const GDBFeature *gdb_find_static_feature(const char *xmlname);
+-void HELPER(plugin_vcpu_udata_cb)(uint32_t cpu_index, void *udata)
++void HELPER(plugin_vcpu_udata_cb_no_wg)(uint32_t cpu_index, void *udata)
++{ }
++
++void HELPER(plugin_vcpu_udata_cb_no_rwg)(uint32_t cpu_index, void *udata)
+ { }
  
-+/**
-+ * gdb_read_register() - Read a register associated with a CPU.
-+ * @cpu: The CPU associated with the register.
-+ * @buf: The buffer that the read register will be appended to.
-+ * @reg: The register's number returned by gdb_find_feature_register().
-+ *
-+ * Return: The number of read bytes.
-+ */
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-+
-+/**
-+ * typedef GDBRegDesc - a register description from gdbstub
-+ */
-+typedef struct {
-+    int gdb_reg;
-+    const char *name;
-+    const char *feature_name;
-+} GDBRegDesc;
-+
-+/**
-+ * gdb_get_register_list() - Return list of all registers for CPU
-+ * @cpu: The CPU being searched
-+ *
-+ * Returns a GArray of GDBRegDesc, caller frees array but not the
-+ * const strings.
-+ */
-+GArray *gdb_get_register_list(CPUState *cpu);
-+
- void gdb_set_stop_cpu(CPUState *cpu);
+ void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
+@@ -98,7 +102,7 @@ void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
+                                 void *userdata)
+ { }
  
- /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index a55b5e6581a..2909bc8c69f 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -490,7 +490,32 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
-     g_assert_not_reached();
+-static void gen_empty_udata_cb(void)
++static void gen_empty_udata_cb(void (*gen_helper)(TCGv_i32, TCGv_ptr))
+ {
+     TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+     TCGv_ptr udata = tcg_temp_ebb_new_ptr();
+@@ -106,12 +110,22 @@ static void gen_empty_udata_cb(void)
+     tcg_gen_movi_ptr(udata, 0);
+     tcg_gen_ld_i32(cpu_index, tcg_env,
+                    -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
+-    gen_helper_plugin_vcpu_udata_cb(cpu_index, udata);
++    gen_helper(cpu_index, udata);
+ 
+     tcg_temp_free_ptr(udata);
+     tcg_temp_free_i32(cpu_index);
  }
  
--static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-+GArray *gdb_get_register_list(CPUState *cpu)
++static void gen_empty_udata_cb_no_wg(void)
 +{
-+    GArray *results = g_array_new(true, true, sizeof(GDBRegDesc));
-+
-+    /* registers are only available once the CPU is initialised */
-+    if (!cpu->gdb_regs) {
-+        return results;
-+    }
-+
-+    for (int f = 0; f < cpu->gdb_regs->len; f++) {
-+        GDBRegisterState *r = &g_array_index(cpu->gdb_regs, GDBRegisterState, f);
-+        for (int i = 0; i < r->feature->num_regs; i++) {
-+            const char *name = r->feature->regs[i];
-+            GDBRegDesc desc = {
-+                r->base_reg + i,
-+                name,
-+                r->feature->name
-+            };
-+            g_array_append_val(results, desc);
-+        }
-+    }
-+
-+    return results;
++    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_wg);
 +}
 +
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
++static void gen_empty_udata_cb_no_rwg(void)
++{
++    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_rwg);
++}
++
+ /*
+  * For now we only support addi_i64.
+  * When we support more ops, we can generate one empty inline cb for each.
+@@ -192,7 +206,8 @@ static void plugin_gen_empty_callback(enum plugin_gen_from from)
+                     gen_empty_mem_helper);
+         /* fall through */
+     case PLUGIN_GEN_FROM_TB:
+-        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb);
++        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb_no_rwg);
++        gen_wrapped(from, PLUGIN_GEN_CB_UDATA_R, gen_empty_udata_cb_no_wg);
+         gen_wrapped(from, PLUGIN_GEN_CB_INLINE, gen_empty_inline_cb);
+         break;
+     default:
+@@ -588,6 +603,12 @@ static void plugin_gen_tb_udata(const struct qemu_plugin_tb *ptb,
+     inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR], begin_op);
+ }
+ 
++static void plugin_gen_tb_udata_r(const struct qemu_plugin_tb *ptb,
++                                  TCGOp *begin_op)
++{
++    inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR_R], begin_op);
++}
++
+ static void plugin_gen_tb_inline(const struct qemu_plugin_tb *ptb,
+                                  TCGOp *begin_op)
  {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     GDBRegisterState *r;
+@@ -602,6 +623,14 @@ static void plugin_gen_insn_udata(const struct qemu_plugin_tb *ptb,
+     inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR], begin_op);
+ }
+ 
++static void plugin_gen_insn_udata_r(const struct qemu_plugin_tb *ptb,
++                                    TCGOp *begin_op, int insn_idx)
++{
++    struct qemu_plugin_insn *insn = g_ptr_array_index(ptb->insns, insn_idx);
++
++    inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR_R], begin_op);
++}
++
+ static void plugin_gen_insn_inline(const struct qemu_plugin_tb *ptb,
+                                    TCGOp *begin_op, int insn_idx)
+ {
+@@ -721,6 +750,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
+                 case PLUGIN_GEN_CB_UDATA:
+                     plugin_gen_tb_udata(plugin_tb, op);
+                     break;
++                case PLUGIN_GEN_CB_UDATA_R:
++                    plugin_gen_tb_udata_r(plugin_tb, op);
++                    break;
+                 case PLUGIN_GEN_CB_INLINE:
+                     plugin_gen_tb_inline(plugin_tb, op);
+                     break;
+@@ -737,6 +769,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
+                 case PLUGIN_GEN_CB_UDATA:
+                     plugin_gen_insn_udata(plugin_tb, op, insn_idx);
+                     break;
++                case PLUGIN_GEN_CB_UDATA_R:
++                    plugin_gen_insn_udata_r(plugin_tb, op, insn_idx);
++                    break;
+                 case PLUGIN_GEN_CB_INLINE:
+                     plugin_gen_insn_inline(plugin_tb, op, insn_idx);
+                     break;
+diff --git a/plugins/api.c b/plugins/api.c
+index 116b8bd603c..54df72c1c00 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -89,7 +89,11 @@ void qemu_plugin_register_vcpu_tb_exec_cb(struct qemu_plugin_tb *tb,
+                                           void *udata)
+ {
+     if (!tb->mem_only) {
+-        plugin_register_dyn_cb__udata(&tb->cbs[PLUGIN_CB_REGULAR],
++        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
++                    flags == QEMU_PLUGIN_CB_RW_REGS ?
++                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
++
++        plugin_register_dyn_cb__udata(&tb->cbs[index],
+                                       cb, flags, udata);
+     }
+ }
+@@ -109,7 +113,11 @@ void qemu_plugin_register_vcpu_insn_exec_cb(struct qemu_plugin_insn *insn,
+                                             void *udata)
+ {
+     if (!insn->mem_only) {
+-        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR],
++        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
++                    flags == QEMU_PLUGIN_CB_RW_REGS ?
++                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
++
++        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][index],
+                                       cb, flags, udata);
+     }
+ }
 -- 
 2.39.2

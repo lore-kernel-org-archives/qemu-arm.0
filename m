@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i13-20020adfe48d000000b0033ae7d768b2sm8724194wrm.117.2024.02.26.08.56.53
+        by smtp.gmail.com with ESMTPSA id t8-20020a05600c198800b00412a218a68fsm5870758wmq.31.2024.02.26.08.56.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 08:56:56 -0800 (PST)
+        Mon, 26 Feb 2024 08:56:58 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 464125F928;
-	Mon, 26 Feb 2024 16:56:48 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 381D65F933;
+	Mon, 26 Feb 2024 16:56:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Nicholas Piggin <npiggin@gmail.com>,
@@ -43,60 +43,87 @@ Cc: Nicholas Piggin <npiggin@gmail.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 15/27] plugins: fix order of init/idle/resume callback
-Date: Mon, 26 Feb 2024 16:56:34 +0000
-Message-Id: <20240226165646.425600-16-alex.bennee@linaro.org>
+Subject: [PATCH v3 26/27] docs/devel: document some plugin assumptions
+Date: Mon, 26 Feb 2024 16:56:45 +0000
+Message-Id: <20240226165646.425600-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240226165646.425600-1-alex.bennee@linaro.org>
 References: <20240226165646.425600-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eyL7eAga2hyc
+X-TUID: Cyzliizy0G7z
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+While we attempt to hide implementation details from the plugin we
+shouldn't be totally obtuse. Let the user know what they can and can't
+expect with the various instrumentation options.
 
-We found that vcpu_init_hook was called *after* idle callback.
-vcpu_init is called from cpu_realize_fn, while idle/resume cb are called
-from qemu_wait_io_event (in vcpu thread).
-
-This change ensures we only call idle and resume cb only once a plugin
-was init for a given vcpu.
-
-Next change in the series will run vcpu_init asynchronously, which will
-make it run *after* resume callback as well. So we fix this now.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240213094009.150349-4-pierrick.bouvier@linaro.org>
+Message-Id: <20240103173349.398526-44-alex.bennee@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- plugins/core.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ docs/devel/tcg-plugins.rst | 49 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
-diff --git a/plugins/core.c b/plugins/core.c
-index caa66311351..2392bbb8889 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -391,12 +391,17 @@ void qemu_plugin_vcpu_syscall_ret(CPUState *cpu, int64_t num, int64_t ret)
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index 535a74684c5..9cc09d8c3da 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -112,6 +112,55 @@ details are opaque to plugins. The plugin is able to query select
+ details of instructions and system configuration only through the
+ exported *qemu_plugin* functions.
  
- void qemu_plugin_vcpu_idle_cb(CPUState *cpu)
- {
--    plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_IDLE);
-+    /* idle and resume cb may be called before init, ignore in this case */
-+    if (cpu->cpu_index < plugin.num_vcpus) {
-+        plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_IDLE);
-+    }
- }
++However the following assumptions can be made:
++
++Translation Blocks
++++++++++++++++++++
++
++All code will go through a translation phase although not all
++translations will be necessarily be executed. You need to instrument
++actual executions to track what is happening.
++
++It is quite normal to see the same address translated multiple times.
++If you want to track the code in system emulation you should examine
++the underlying physical address (``qemu_plugin_insn_haddr``) to take
++into account the effects of virtual memory although if the system does
++paging this will change too.
++
++Not all instructions in a block will always execute so if its
++important to track individual instruction execution you need to
++instrument them directly. However asynchronous interrupts will not
++change control flow mid-block.
++
++Instructions
++++++++++++++
++
++Instruction instrumentation runs before the instruction executes. You
++can be can be sure the instruction will be dispatched, but you can't
++be sure it will complete. Generally this will be because of a
++synchronous exception (e.g. SIGILL) triggered by the instruction
++attempting to execute. If you want to be sure you will need to
++instrument the next instruction as well. See the ``execlog.c`` plugin
++for examples of how to track this and finalise details after execution.
++
++Memory Accesses
+++++++++++++++++
++
++Memory callbacks are called after a successful load or store.
++Unsuccessful operations (i.e. faults) will not be visible to memory
++instrumentation although the execution side effects can be observed
++(e.g. entering a exception handler).
++
++System Idle and Resume States
+++++++++++++++++++++++++++++++
++
++The ``qemu_plugin_register_vcpu_idle_cb`` and
++``qemu_plugin_register_vcpu_resume_cb`` functions can be used to track
++when CPUs go into and return from sleep states when waiting for
++external I/O. Be aware though that these may occur less frequently
++than in real HW due to the inefficiencies of emulation giving less
++chance for the CPU to idle.
++
+ Internals
+ ---------
  
- void qemu_plugin_vcpu_resume_cb(CPUState *cpu)
- {
--    plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_RESUME);
-+    if (cpu->cpu_index < plugin.num_vcpus) {
-+        plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_RESUME);
-+    }
- }
- 
- void qemu_plugin_register_vcpu_idle_cb(qemu_plugin_id_t id,
 -- 
 2.39.2

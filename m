@@ -1,121 +1,93 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1766937ejf;
-        Sun, 25 Feb 2024 16:18:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV4m7LXjHpRnsMjVMFB25xYkr3Q9Z77EXJ8w5rpyAdq2oGKK1aTROOld+t3hLekze4c7dGRdl5A1pTPidrWJYvHf8lGfdNw
-X-Google-Smtp-Source: AGHT+IE+8SpxSgjYY4IW04xnYUW2h0Cr91MntbQnVBYv2eBPXgRK00vcv4oUuIbOBOpmoSBdnSBQ
-X-Received: by 2002:a0c:f094:0:b0:68f:a250:7a07 with SMTP id g20-20020a0cf094000000b0068fa2507a07mr5766392qvk.19.1708906720819;
-        Sun, 25 Feb 2024 16:18:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708906720; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1802893ejf;
+        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWhjsugrZnKiKn+iRgYN/4Xz7wpsTnhHKvrZdSQ7sZ8CkyUbZ+LsDEXoQowacR0ksPYYhPI2vIraUbJDwF7s+g4lY7Tet6K
+X-Google-Smtp-Source: AGHT+IFXh+y9aXfukIrmtaretrJSfV8itJ0Z5kYnegi+l364VGj7o407t/SRTNJE1OEzdiZ5MbGE
+X-Received: by 2002:a05:620a:66d:b0:787:bb0b:e9d6 with SMTP id a13-20020a05620a066d00b00787bb0be9d6mr6824154qkh.37.1708914178734;
+        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708914178; cv=none;
         d=google.com; s=arc-20160816;
-        b=EQC69Cvu+94N9pS6jFADfm58P/Jp/AqNPFvJypm9Aloz+keAbItm1OfAOkZdnTvV94
-         +UILf1EGw1TCKxBlIZJZ/QIWi/Y6rwGowLXxd78sHr+u/ncWh7dwVUyqN3MPG2T4K7eY
-         RFkhaRfky8kedd2e67APIyoDGb75LOFJ+LlYGs3OowQ/LLPuach7cUC0sbYaZC6WjDsp
-         f/BEJBCMiJIh9obkERN/IrqwGvuUyJQwKv6vPQ4c2q8lW+fSzoMgVykOw8HuNlMbL6/w
-         on7RWdbFrTJjkpoZ8m/KPJ3dMOw6liFEJQNZ+V4iJKigigdWFCBuAm2mO6XxJ+d0mYuY
-         HnEg==
+        b=RB55K+BEbcPSfhBisvU3O/oscQoB6av73mwUs2Oy2OaDydS76wSeCigQh7LNh7DhkI
+         7l4/S+71v5W3aDzMfdUtzASGPGwbIi1g5wTrJa0WVUore/4wdE/D4k9eIKSl05qtN+yg
+         kh+CSz6WRiX94ku5cScuo0hDQBLlDV3X7bmmsEWYHkoXUyg2bxEtzlINT48n+PhkE0Ga
+         5110T8Ckmg7po1L/ho+7EfV3hdhoxZVHkwYyRUh3kzxrJodNqYAvYkDDoCTf5mHC6FwL
+         6aL/zC/hjfmiAIY45sW3tdGl3CkeGtcRcPk07GvESsN3YiW7xqY/W72E57x0FOLuUzoM
+         q/bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=QhaANUWuN8fK3c9zHQX7xQLw2JO7i6h0XPTTn/pdIBQ=;
-        fh=YsZ1DrAp6Fo80jQSqLni+agJ1mtc4N12dz8iSfGlbLE=;
-        b=oWXax+m6D8rdK+cUAVwTYZymvj93eRaQyzanGqd4owPt/c51kzcZgO4VLo/WOqDb9M
-         9G8uVp9p4Kpl3dDutjRhxCTvc1jwHGqvfump7tZNTdQJzRmj3chcQcdawvBZepEWKrYq
-         WXuRMUIDaknJmuh3w3MkP/oSomJCqWACqbZCPcYvp0zYBa2+MSG/R9XlQfRi+dmlUiI6
-         afSxGCu9WSijrQeuF0tjRVyN/fsDBYZGjrqL1J6RoZ43AGdWw0EeOLYdV8Q+Nm0dZ0t+
-         XjKcErxEoaMgBdOXabEBakvOcTne8RNVln8ly0Uiw+KfyJzNDEKFu40z6QM2apkZ3c40
-         Gpog==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=5seFG1eZkV69vGa7gJUgNarOt2TKMZhhb3hKNiRiZv0=;
+        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
+        b=tIXC+xbvWiLhYZTe0SzQ315xV6N2O8KN+BwFDFUxtizrDj4kpDWxoOs0ukfJaLgUKO
+         AVAs9/u/kbwIqkRM9bF0n2AfrhYcXzYqMo5WHH14DrUet6oTqZj91xMOqeu6za8FVuui
+         QJIiqXCD+e5+blx6l1ClJHIqREbrbJOZECOItQ9edCCqb4BJF3+vS75+tKFTk2R8Ie0D
+         NztWrS0h00Ws7C9UZCtA12SOXL2C0h1Dxpt+TDSah9PJwT2xvRIQfktxOpQtAYf+NASc
+         q2YhVNPDdXCPgHmBJO6Cujl0wTrcgHaGvHgbYSWPJRlVaBSevdNYa5mz6tmD/UpE5Zfp
+         eenw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WvD3O5jc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk6-20020a056214508600b0068f5577223esi3917039qvb.73.2024.02.25.16.18.40
+        by mx.google.com with ESMTPS id w10-20020a05620a444a00b00787d5d40093si499602qkp.254.2024.02.25.18.22.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 16:18:40 -0800 (PST)
+        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WvD3O5jc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reOhC-0005qq-SM; Sun, 25 Feb 2024 19:18:14 -0500
+	id 1reQdo-0002hQ-RX; Sun, 25 Feb 2024 21:22:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1reOhA-0005qX-7z; Sun, 25 Feb 2024 19:18:12 -0500
-Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1reOh8-0005St-8d; Sun, 25 Feb 2024 19:18:11 -0500
-Received: by mail-ua1-x933.google.com with SMTP id
- a1e0cc1a2514c-7d2940ad0e1so1471698241.1; 
- Sun, 25 Feb 2024 16:18:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708906688; x=1709511488; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=QhaANUWuN8fK3c9zHQX7xQLw2JO7i6h0XPTTn/pdIBQ=;
- b=WvD3O5jc8mNtGxOR1xKkbOixoZjk4gKrhpUsuS7O01fD4z6mClrlJzSPz+2bebh7XS
- WEAgi/NhCwXtopI/rpi2avGLcdWrYnv19IRf0+szjEeQH7DcKoTbjaWNxpMhT33nYBQk
- oV2XmP3gkMMC8RlWfRNh6wAFeM8dqzTTYbRoG7zPyu1RWKnuSq37wyT3GsiZ8M6V6CkI
- 6f8/ZoNAd3ZYyvWQy5r3EOs2WMXVOYQ1oSRQSvkMsf88sPTAjSVHaPyKfW5h2MoAhElr
- 3710/Vt7hN5P04vaMmEoy7YSSm3jXkz5Gz9tEntSvV1GmzNEAM/EmvVLLmgS8DWhCDPp
- JpmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708906688; x=1709511488;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=QhaANUWuN8fK3c9zHQX7xQLw2JO7i6h0XPTTn/pdIBQ=;
- b=adXe/UuwFtjtEUOjLA6WEA1awz+0NCtIjSyw/ezEwQVD6B9lYgnekUtOwZUQoe0khz
- dHp6Y3VQed7qOW+IHe+tdxl5LsuiFrPbNqe6ejNl++BBSt4QF/XocmhLZ7cHapVAznIa
- hc9rZCzNZEQ3tL3iXs85MGTj22vA/RV1eQ8cn1RG0tep0A24XyI0aZ2j8WPJjs138mQd
- kSG9JRZ6HCxjGJGwFzJ1Pjlk3P6l5C5SV1NWgsftFkFFmL3asKS/6c1YP3BsOvq+x5AD
- oF2osFraXciSFXh1J/YMuyXPOcr+nuFaaiZvQMFor4UUEiLIdxdoF3fxHUnHzTHlTvAE
- JKQQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX4uLX+qF+H2B4z94aUUfLUhodXP+A/+tnyOiJ1ZBKAKFHMjYCQfdvfx6YdeAJ0Jry9ztwVmJ+HmiUKmh+btFzz5hBO
-X-Gm-Message-State: AOJu0YyZwE+pv1UzXfybapijQ9G0lCukFSkc6xE2Ux7x6Jc9UEHRjQPD
- Qa22EozqVXLOsPv3BohqPkUNlD/VFYE67Ut0QS2d1OID2ATJXaBMnJcSR63jkX+mUnQamv+/+Pd
- 4LVvvaUCF2ymxjTKoO+3ZUrMiJSg=
-X-Received: by 2002:a05:6102:3234:b0:470:3a5d:a711 with SMTP id
- x20-20020a056102323400b004703a5da711mr2608860vsf.6.1708906688588; Sun, 25 Feb
- 2024 16:18:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1reQdl-0002h4-T7; Sun, 25 Feb 2024 21:22:50 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1reQdh-0006xr-DK; Sun, 25 Feb 2024 21:22:49 -0500
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Tjkq45hjGz1X3QS;
+ Mon, 26 Feb 2024 10:20:16 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 149381400D3;
+ Mon, 26 Feb 2024 10:22:30 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 26 Feb 2024 10:22:29 +0800
+Message-ID: <138ddc99-f6f4-9907-a1c2-6b2b88bd79d0@huawei.com>
+Date: Mon, 26 Feb 2024 10:22:28 +0800
 MIME-Version: 1.0
-References: <20240220184145.106107-1-ines.varhol@telecom-paris.fr>
- <20240220184145.106107-2-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20240220184145.106107-2-ines.varhol@telecom-paris.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 26 Feb 2024 10:17:42 +1000
-Message-ID: <CAKmqyKMSUNBgMnNA1H8=suyotrmM-cN9=V_d7iRTbR0zbBVAhQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hw/arm: Use TYPE_OR_IRQ when connecting STM32L4x5
- EXTI fan-in IRQs
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RFC PATCH v3 04/21] target/arm: Implement ALLINT MSR (immediate)
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>,
+ <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20240223103221.1142518-1-ruanjinjie@huawei.com>
+ <20240223103221.1142518-5-ruanjinjie@huawei.com>
+ <9b20584a-3c4c-47a2-bf42-f8d7d4eabd9f@linaro.org>
+In-Reply-To: <9b20584a-3c4c-47a2-bf42-f8d7d4eabd9f@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::933;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x933.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -64
+X-Spam_score: -6.5
+X-Spam_bar: ------
+X-Spam_report: (-6.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.331,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,197 +101,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rTqbztG53F6C
+X-TUID: +F1N6K9biLXQ
 
-On Wed, Feb 21, 2024 at 4:42=E2=80=AFAM In=C3=A8s Varhol
-<ines.varhol@telecom-paris.fr> wrote:
->
-> Fixes: 52671f69f7a4 ("[PATCH v8 0/3] Add device STM32L4x5 EXTI")
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
+On 2024/2/24 3:03, Richard Henderson wrote:
+> On 2/23/24 00:32, Jinjie Ruan via wrote:
+>> Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
+>> to ALLINT. Avoid the unconditional write to pc and use raise_exception_ra
+>> to unwind.
+>>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> ---
+>> v3:
+>> - Remove EL0 check in allint_check().
+>> - Add TALLINT check for EL1 in allint_check().
+>> - Remove unnecessarily arm_rebuild_hflags() in msr_i_allint helper.
+>> ---
+>>   target/arm/tcg/a64.decode      |  1 +
+>>   target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
+>>   target/arm/tcg/helper-a64.h    |  1 +
+>>   target/arm/tcg/translate-a64.c | 10 ++++++++++
+>>   4 files changed, 36 insertions(+)
+>>
+>> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+>> index 8a20dce3c8..3588080024 100644
+>> --- a/target/arm/tcg/a64.decode
+>> +++ b/target/arm/tcg/a64.decode
+>> @@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010
+>> 11111 @msr_i
+>>   MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
+>>   MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
+>>   MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
+>> +MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
+> 
+> Decode is incorrect either here, or in trans_MSR_i_ALLINT, because CRm
+> != '000x' is UNDEFINED.
+> 
+> MSR_i_ALLINT    1101 0101 0000 0 001 0100 000 imm:1 000 11111
+> 
+> is perhaps the clearest implementation.
+> 
+>> +static void allint_check(CPUARMState *env, uint32_t op,
+>> +                       uint32_t imm, uintptr_t ra)
+>> +{
+>> +    /* ALLINT update to PSTATE. */
+>> +    if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
+>> +        (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
+>> +        raise_exception_ra(env, EXCP_UDEF,
+>> +                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
+>> +                                               extract32(op, 3, 3), 4,
+>> +                                               imm, 0x1f, 0),
+>> +                           exception_target_el(env), ra);
+>> +    }
+>> +}
+>> +
+>> +void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
+>> +{
+>> +    allint_check(env, 0x8, imm, GETPC());
+> 
+> As previously noted, the check for MSR_i only applies to imm==1, not 0.
 
-> ---
->  include/hw/arm/stm32l4x5_soc.h |  4 ++
->  hw/arm/stm32l4x5_soc.c         | 80 +++++++++++++++++++++++++++++-----
->  2 files changed, 74 insertions(+), 10 deletions(-)
->
-> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-> index baf70410b5..4f314b7a93 100644
-> --- a/include/hw/arm/stm32l4x5_soc.h
-> +++ b/include/hw/arm/stm32l4x5_soc.h
-> @@ -26,6 +26,7 @@
->
->  #include "exec/memory.h"
->  #include "hw/arm/armv7m.h"
-> +#include "hw/or-irq.h"
->  #include "hw/misc/stm32l4x5_syscfg.h"
->  #include "hw/misc/stm32l4x5_exti.h"
->  #include "qom/object.h"
-> @@ -36,12 +37,15 @@
->  #define TYPE_STM32L4X5XG_SOC "stm32l4x5xg-soc"
->  OBJECT_DECLARE_TYPE(Stm32l4x5SocState, Stm32l4x5SocClass, STM32L4X5_SOC)
->
-> +#define NUM_EXTI_OR_GATES 4
-> +
->  struct Stm32l4x5SocState {
->      SysBusDevice parent_obj;
->
->      ARMv7MState armv7m;
->
->      Stm32l4x5ExtiState exti;
-> +    OrIRQState exti_or_gates[NUM_EXTI_OR_GATES];
->      Stm32l4x5SyscfgState syscfg;
->
->      MemoryRegion sram1;
-> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-> index f470ff74ec..d1786e0da1 100644
-> --- a/hw/arm/stm32l4x5_soc.c
-> +++ b/hw/arm/stm32l4x5_soc.c
-> @@ -26,6 +26,7 @@
->  #include "qapi/error.h"
->  #include "exec/address-spaces.h"
->  #include "sysemu/sysemu.h"
-> +#include "hw/or-irq.h"
->  #include "hw/arm/stm32l4x5_soc.h"
->  #include "hw/qdev-clock.h"
->  #include "hw/misc/unimp.h"
-> @@ -42,21 +43,24 @@
->  #define NUM_EXTI_IRQ 40
->  /* Match exti line connections with their CPU IRQ number */
->  /* See Vector Table (Reference Manual p.396) */
-> +/*
-> + * Some IRQs are connected to the same CPU IRQ (denoted by -1)
-> + * and require an intermediary OR gate to function correctly.
-> + */
->  static const int exti_irq[NUM_EXTI_IRQ] =3D {
->      6,                      /* GPIO[0]                 */
->      7,                      /* GPIO[1]                 */
->      8,                      /* GPIO[2]                 */
->      9,                      /* GPIO[3]                 */
->      10,                     /* GPIO[4]                 */
-> -    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
-> -    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
-> -    1,                      /* PVD                     */
-> +    -1, -1, -1, -1, -1,     /* GPIO[5..9] OR gate 23   */
-> +    -1, -1, -1, -1, -1, -1, /* GPIO[10..15] OR gate 40 */
-> +    -1,                     /* PVD OR gate 1           */
->      67,                     /* OTG_FS_WKUP, Direct     */
->      41,                     /* RTC_ALARM               */
->      2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
->      3,                      /* RTC wakeup timer        */
-> -    63,                     /* COMP1                   */
-> -    63,                     /* COMP2                   */
-> +    -1, -1,                 /* COMP[1..2] OR gate 63   */
->      31,                     /* I2C1 wakeup, Direct     */
->      33,                     /* I2C2 wakeup, Direct     */
->      72,                     /* I2C3 wakeup, Direct     */
-> @@ -69,18 +73,39 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
->      65,                     /* LPTIM1, Direct          */
->      66,                     /* LPTIM2, Direct          */
->      76,                     /* SWPMI1 wakeup, Direct   */
-> -    1,                      /* PVM1 wakeup             */
-> -    1,                      /* PVM2 wakeup             */
-> -    1,                      /* PVM3 wakeup             */
-> -    1,                      /* PVM4 wakeup             */
-> +    -1, -1, -1, -1,         /* PVM[1..4] OR gate 1     */
->      78                      /* LCD wakeup, Direct      */
->  };
->
-> +static const int exti_or_gates_out[NUM_EXTI_OR_GATES] =3D {
-> +    23, 40, 63, 1,
-> +};
-> +
-> +static const int exti_or_gates_num_lines_in[NUM_EXTI_OR_GATES] =3D {
-> +    5, 6, 2, 5,
-> +};
-> +
-> +/* 3 OR gates with consecutive inputs */
-> +#define NUM_EXTI_SIMPLE_OR_GATES 3
-> +static const int exti_or_gates_first_line_in[NUM_EXTI_SIMPLE_OR_GATES] =
-=3D {
-> +    5, 10, 21,
-> +};
-> +
-> +/* 1 OR gate with non-consecutive inputs */
-> +#define EXTI_OR_GATE1_NUM_LINES_IN 5
-> +static const int exti_or_gate1_lines_in[EXTI_OR_GATE1_NUM_LINES_IN] =3D =
-{
-> +    16, 35, 36, 37, 38,
-> +};
-> +
->  static void stm32l4x5_soc_initfn(Object *obj)
->  {
->      Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
->
->      object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-> +    for (unsigned i =3D 0; i < NUM_EXTI_OR_GATES; i++) {
-> +        object_initialize_child(obj, "exti_or_gates[*]", &s->exti_or_gat=
-es[i],
-> +                                TYPE_OR_IRQ);
-> +    }
->      object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SY=
-SCFG);
->
->      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
-;
-> @@ -175,8 +200,43 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
->          return;
->      }
->      sysbus_mmio_map(busdev, 0, EXTI_ADDR);
-> +
-> +    /* IRQs with fan-in that require an OR gate */
-> +    for (unsigned i =3D 0; i < NUM_EXTI_OR_GATES; i++) {
-> +        if (!object_property_set_int(OBJECT(&s->exti_or_gates[i]), "num-=
-lines",
-> +                                     exti_or_gates_num_lines_in[i], errp=
-)) {
-> +            return;
-> +        }
-> +        if (!qdev_realize(DEVICE(&s->exti_or_gates[i]), NULL, errp)) {
-> +            return;
-> +        }
-> +
-> +        qdev_connect_gpio_out(DEVICE(&s->exti_or_gates[i]), 0,
-> +            qdev_get_gpio_in(armv7m, exti_or_gates_out[i]));
-> +
-> +        if (i < NUM_EXTI_SIMPLE_OR_GATES) {
-> +            /* consecutive inputs for OR gates 23, 40, 63 */
-> +            for (unsigned j =3D 0; j < exti_or_gates_num_lines_in[i]; j+=
-+) {
-> +                sysbus_connect_irq(SYS_BUS_DEVICE(&s->exti),
-> +                    exti_or_gates_first_line_in[i] + j,
-> +                    qdev_get_gpio_in(DEVICE(&s->exti_or_gates[i]), j));
-> +            }
-> +        } else {
-> +            /* non-consecutive inputs for OR gate 1 */
-> +            for (unsigned j =3D 0; j < EXTI_OR_GATE1_NUM_LINES_IN; j++) =
-{
-> +                sysbus_connect_irq(SYS_BUS_DEVICE(&s->exti),
-> +                    exti_or_gate1_lines_in[j],
-> +                    qdev_get_gpio_in(DEVICE(&s->exti_or_gates[i]), j));
-> +            }
-> +        }
-> +    }
-> +
-> +    /* IRQs that don't require fan-in */
->      for (unsigned i =3D 0; i < NUM_EXTI_IRQ; i++) {
-> -        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
-> +        if (exti_irq[i] !=3D -1) {
-> +            sysbus_connect_irq(busdev, i,
-> +                               qdev_get_gpio_in(armv7m, exti_irq[i]));
-> +        }
->      }
->
->      for (unsigned i =3D 0; i < 16; i++) {
-> --
-> 2.43.2
->
->
+Sorry! The hardware manual I looked at didn't say this.
+
+> 
+> As previously noted, with ALLINT in env->pstate, you can implement this
+> completely inline for EL[23], or EL1 with imm==0.
+> 
+> No point in passing in "op" and extracting, because you know exactly
+> what the value should be for all MSR ALLINT.
+> 
+> 
+> r~

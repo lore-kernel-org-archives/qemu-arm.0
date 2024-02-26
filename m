@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1907226ejf;
-        Sun, 25 Feb 2024 23:56:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWHgwcKgvDG5ee2Cso75Sadhzt1y3kiUlfo4NyA6Ddt8HlSvA+7hIzPhDYIge8vFDr5MdH7q/MqxtlAU9bJBU81gjstD/dU
-X-Google-Smtp-Source: AGHT+IEzICOEQUAAjokj2Or6gUj0ySoAS7cSIoiZR5AxMgHJIYo9q8DQkhPor1ExVz/UtGhyfl+9
-X-Received: by 2002:ac8:5c44:0:b0:42e:74b:c4da with SMTP id j4-20020ac85c44000000b0042e074bc4damr4147029qtj.5.1708934202762;
-        Sun, 25 Feb 2024 23:56:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708934202; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1908763ejf;
+        Mon, 26 Feb 2024 00:01:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXdBgT5MD6sw/zjFHZFTmbTbO1SV4SP9QGhMtMLfSaynHBgNxlAkOATqhTuAatNfavQ3+PeOc7YquPp5zZ7KoX0gPVwp0+U
+X-Google-Smtp-Source: AGHT+IEE2KMOHcZN+Jgm8XOyqPH4FnooMIj1CGGIMqPCuJMNYK2DuMcQ9EFicj7bn/4dxbLmLq+B
+X-Received: by 2002:a1f:ccc1:0:b0:4cd:b718:4b08 with SMTP id c184-20020a1fccc1000000b004cdb7184b08mr2674677vkg.11.1708934461123;
+        Mon, 26 Feb 2024 00:01:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708934461; cv=none;
         d=google.com; s=arc-20160816;
-        b=04iGa48qWe4JRdOrNyHLHFEbmNQMx5Xy//FzrYQNoulYxXTgdXjotI/1fWxE7aiSTD
-         3FzVjBXXmpoHn0irvE0H6tQc09bpUE1bdN+3JD7Wx6PtaT2Z8M5gL0osvKKz12L3O0Cf
-         Ie1V064G/RrXKaVviRds2nogIrm57lGK4FrStB1ChAO/mcYPSFvyJu2Vy4wv6k5JUeeQ
-         2yBnMQEQMXZaGBabkW694qy2JZHnaUWxPZZtlSe/QUlwhwtsNRAyoP9zNhCoDvO/Stoz
-         TQgBP8f2n/AayMY0tFFXcxvznMMqbaos1SmFBwdH2epvsvU3xP9ub2jH29eDpSkNYRW6
-         Kszg==
+        b=H4g/MIVVpNavxtfsSrRRPor0rqdQaivHx/o7TXLhaxNrzOUYqHIBRkPq9GQRMUO7Xz
+         c4oVE8Apugn3Kblg4YrARmoy+mgsxfmn2Ql4itPe9kd8PVCpUwEBwQeQs0Ya16PRFSAv
+         eYDOtTuJNQ+KwoaoPwA6BDiUtPNWkzCsk/AUNeVHppEa5Gz6tQ3vfH/jEfYX64WBPC85
+         aYXMOjOO+Ufbs1u2YeJtnOI56UMGghiGRN8QDhoaamvNXu+DIYQQZEJ1NbvbzCKtmBvB
+         8oP5nQJ2E0TimcTuV/SYA4w4bpkJH7UhT4Lf3JSkMVHR/zfULjrBgrH0ZFYKIm8k8IPB
+         2V2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=uGsOqpTP6osYG8FaocPDaPvgSl2PY/mJXXIgeUP4uG4=;
-        fh=Iytda+SU9+A2VH9sYLKoInLBhbOfo0tq02yPJ3a95g0=;
-        b=NeeYhEHM4GUN2U96QEywjxL1jbKw60a4PFOVo/v7k9rmromVhPPR/8TyE+FiPm2KXa
-         ggWHsBZV/6sCyuYp5MlHSN1+LAdQTSmfJVqjunkuRb2PrDaAnPO6GYJsRyoEEAgBovXr
-         QepvEBazbVaW3/yWcRSvP0w0bBgR3uZomKKo1RLALBA0lPjfgAl1s9UR8flSdqCevay0
-         iYNiV0iX6l5XZi0fIvCpUdR1U+p1qMZvDrMJFonNfmgkbGSxrUzeZNA23KFTUBbDgF2Z
-         eu5z3CYihMkhSMyP+QYVXWODGzBxUw/XjmENNxkI6Y1zpLnojb9PRWLr6neYAJa5pewS
-         ZGHQ==;
+        bh=/UiYJyxUM9xkP4u0DXwmFcgzWF7AV2LuaiRxAZcLzb8=;
+        fh=uStePNQ4x3Du2YBG04439f8/Uz+i8kzKsHW9jnRuJyw=;
+        b=PS5SSiI7EBYltcAplVCsBbbbArBPZLNggdh3bAgp4CDAVC15D6ONFf3lZfplqN7r4g
+         xohmgQEB8bVbYe2GZPrVFUvD5akvi+amw7xw8SYjJosb5fBZX2agWCvzDW3jiv71IOeI
+         1lXDWUNNmPLT1P/L2xkQve0IxXsAOTNYXXuAfNIXg5XKyRxotG2GO3s4awjijyP3NAb8
+         Xsk/Mj28fHpMhBee3xe4DQOXRmNVA2hTW6lTpkBvvdKVEc9plpavWlXFQehuVs5XSgKb
+         Ne2Jfa7RgHPiYRYgZpZzbFZCYmb7QjBGGeHOFoPxu8C5V68JtZt/NBYQEbbfDjf8Jf16
+         Aqsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QEPm4HFY;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iGvyBzvY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id h21-20020ac87155000000b0042e58058ce1si4560744qtp.14.2024.02.25.23.56.42
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d2-20020a05621421c200b0068ce8312e21si4681874qvh.415.2024.02.26.00.01.00
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Feb 2024 23:56:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 26 Feb 2024 00:01:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QEPm4HFY;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iGvyBzvY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1708934202;
+	s=mimecast20190719; t=1708934459;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=uGsOqpTP6osYG8FaocPDaPvgSl2PY/mJXXIgeUP4uG4=;
-	b=QEPm4HFYZ9fkVfuLcHU9uiNCfpBjbWde7Y6s4y5s5LRlxal6OOmVIHv7ik2zLXkD2Zkcbh
-	Gxs4xYm15/IJ2cYK08SjxvifA6Hy5BABCJ0FzIIZ3G+tflQ0dAr93abKbvx12a6ryi/wnI
-	uXrX/PqyD9E0KwrRMVu5nQtHKSP+Zlg=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=/UiYJyxUM9xkP4u0DXwmFcgzWF7AV2LuaiRxAZcLzb8=;
+	b=iGvyBzvY71cxAGB8YNt5ZEy7iNSQmmFGCGA7T7BKq0fMMzQhGz4wvv5FBUgk7Fr0V2eABI
+	Whn/9XcnFAoMiXCJS8s6Cmcd4z0FuxU0IXNSnVforpGXQIvDe1eTk5Zp85gQw65PFBiSbu
+	hAG1b5JJIUVSu/QjoXRQiRdBbQ2M8jU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-590-lhSk8_jHPRiYRO87_2diDA-1; Mon, 26 Feb 2024 02:56:40 -0500
-X-MC-Unique: lhSk8_jHPRiYRO87_2diDA-1
-Received: by mail-lj1-f198.google.com with SMTP id 38308e7fff4ca-2d2549572e7so21332031fa.3
-        for <alex.bennee@linaro.org>; Sun, 25 Feb 2024 23:56:40 -0800 (PST)
+ us-mta-255-dO4K5sYOPfegLl1EFFAObQ-1; Mon, 26 Feb 2024 03:00:58 -0500
+X-MC-Unique: dO4K5sYOPfegLl1EFFAObQ-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-33dbbe709ffso499954f8f.2
+        for <alex.bennee@linaro.org>; Mon, 26 Feb 2024 00:00:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708934199; x=1709538999;
+        d=1e100.net; s=20230601; t=1708934457; x=1709539257;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uGsOqpTP6osYG8FaocPDaPvgSl2PY/mJXXIgeUP4uG4=;
-        b=iq/+31rXshWQ6tEnlYZOX23on3/nSualUR2pMsHcawZj4Ezkw312GDZ0N0cVlnH7DY
-         dR0ERTH9ReEUt49qYUDrwf56nIhTWV2/t5459GjKnumjOY5ylHcsC0FsRmSTT5s9dp9F
-         EPTpDoKQGu9BNmZBAvPUCSW4F0/l0vAL+G+AUVILo6i7byBfiGQNVpgrFpVpaC8a6by0
-         QTAVcCBFoWe40QEEMyLMAc9hdEe36+5Mkg4/ttmfc95UOCr3pAZbykUEWROmM/m2jJ8l
-         BXtMKo2ojnfgdNod89nZPJAMYV8B1k4JBb9yms10bjhDr7wbptMzbqXwXOVyNt/pGeu/
-         XdOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWioDKND4kW0P1xv8J4doeqBpumyidQQhiszF9wR9NTUYN6kwp3MwwlikVklPTdKo/rIuNsm5rGSxMXIiQktvPzT8dW0EFw
-X-Gm-Message-State: AOJu0Yw9udR3BgffyZxDqKDq4ThYS+wEL+hHZiunV6B1h7lIGEHigbpI
-	79QBnMdHC0FvZebk9XbrblSwg26MCgHdJVJtnDkFOYXfyTi2DWbShxjw69CL1ZPneiP1eW40WIo
-	3cB1JNbL4U+JQ479uKejRKFgPLF08+I8AoMuekgAqGwvwtalVqAW+Cw==
-X-Received: by 2002:a05:651c:128d:b0:2d2:3186:4597 with SMTP id 13-20020a05651c128d00b002d231864597mr3001047ljc.25.1708934199321;
-        Sun, 25 Feb 2024 23:56:39 -0800 (PST)
-X-Received: by 2002:a05:651c:128d:b0:2d2:3186:4597 with SMTP id 13-20020a05651c128d00b002d231864597mr3001039ljc.25.1708934198999;
-        Sun, 25 Feb 2024 23:56:38 -0800 (PST)
+        bh=/UiYJyxUM9xkP4u0DXwmFcgzWF7AV2LuaiRxAZcLzb8=;
+        b=QH1c/XRbm8PEDeGIPSX1jzpkwVJ/BvqCQCcVSNv5ja0gKy4LeR7CEqPbr8DNQNcsqe
+         4c4X0LorEIesuBA9q3B1jNFnqTNnwFmcFQHzD+b8kDHrbw1FT2ViONLyG+UNIM3w1aY4
+         L/O5MkyL7Vix40HxpRZ2BhkL8nG4UNsuye2XTWVXAbAmgIr4uPlwNuPPkYpeCuUu3azK
+         i3/QyyzuZrYbCZ5b7z0WyVj8I38WijwxwcrHJy0bKqZOcqQrdwkF06CTWtRKXx8aD72l
+         bdi1Cjr41E++cAiP9YhqBoyFMTk28jUntRZ4BIQlDjpuNgE3JWxMzNmBa1syOCOEaCqq
+         pPtQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXLsVhBvIxq4+LStiY51Pg58bnKXHq7LGawJay8N0uocy9+QRcumkNmMgnSoO6V47W0TgGy23AdygcGUISFnORqAhWPvk1v
+X-Gm-Message-State: AOJu0YyRn3KQ6PXqrzlH8BE5tr5pNKn80Tx2L6TfJb/AIguTy6CDXGIv
+	Pfq/NN0Mp6XbSvHWfCM7+AeqMjUnhNkY0C2mgXZXZEBTG0Y5jfjXloKxubbmvYeI4PstaWgibwB
+	lplcu8Pmz/Ee21nh6CwiIiDBuHDKU5Re7n8iDP1yX6vkcyX9IA7djYA==
+X-Received: by 2002:a5d:52cb:0:b0:33d:7d88:cae5 with SMTP id r11-20020a5d52cb000000b0033d7d88cae5mr3727528wrv.69.1708934456832;
+        Mon, 26 Feb 2024 00:00:56 -0800 (PST)
+X-Received: by 2002:a5d:52cb:0:b0:33d:7d88:cae5 with SMTP id r11-20020a5d52cb000000b0033d7d88cae5mr3727508wrv.69.1708934456544;
+        Mon, 26 Feb 2024 00:00:56 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.9] (ip-109-43-176-215.web.vodafone.de. [109.43.176.215])
-        by smtp.gmail.com with ESMTPSA id g6-20020a7bc4c6000000b0040d5ae2906esm11033407wmk.30.2024.02.25.23.56.38
+        by smtp.gmail.com with ESMTPSA id t9-20020adfeb89000000b0033dbeb2eb4dsm7236248wrn.110.2024.02.26.00.00.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 25 Feb 2024 23:56:38 -0800 (PST)
-Message-ID: <ef2f00bc-e920-485f-ba6c-c94c5aa5d615@redhat.com>
-Date: Mon, 26 Feb 2024 08:56:37 +0100
+        Mon, 26 Feb 2024 00:00:56 -0800 (PST)
+Message-ID: <93bdd39e-c3bf-4854-b724-1500f86a8388@redhat.com>
+Date: Mon, 26 Feb 2024 09:00:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/6] tests/qtest: Reorganize common code in ivshmem-test
+Subject: Re: [PATCH 6/6] tests/qtest: Add ivshmem-flat test
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  philmd@linaro.org
 Cc: lvivier@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org,
  pbonzini@redhat.com, anton.kochkov@proton.me, richard.henderson@linaro.org,
  peter.maydell@linaro.org
 References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
- <20240222222218.2261956-6-gustavo.romero@linaro.org>
+ <20240222222218.2261956-7-gustavo.romero@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -137,102 +137,27 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240222222218.2261956-6-gustavo.romero@linaro.org>
+In-Reply-To: <20240222222218.2261956-7-gustavo.romero@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: PBpOVF/tRNfh
+X-TUID: SBizrlBR4tf6
 
 On 22/02/2024 23.22, Gustavo Romero wrote:
-> This commit reorganizes the ivshmem-test qtest by moving common structs,
-> functions, and code that can be utilized by other ivshmem qtests into
-> two new files: ivshmem-utils.h and ivshmem-utils.c.
+> This commit adds a qtest for the ivshmem-flat device to test memory
+> sharing, IRQ triggering, and the memory mapped registers in the device.
 > 
-> Enum Reg, struct ServerThread, and mktempshm() have been relocated to
-> these new files. Two new functions have been introduced to handle the
-> ivshmem server start/stop: test_ivshmem_server_{start,stop}.
-> 
-> To accommodate the new way for starting/stopping the ivshmem server,
-> struct ServerThread now includes two new members: 'server', previously
-> present but not a member of any struct; and 'status', a new member of a
-> new type, ServerStartStatus, used to track and handle service
-> termination properly.
-> 
-> Additionally, a new function, mktempsocket(), has been added to help
-> create a unix socket filename, similar to what mktempshm() does for the
-> creation of a shm file.
-> 
-> Finally, the ivshmem-test qtest has been adapted to use the new ivhsmem
-> utils. Adjustments in that sense have also been made to meson.build;
-> also 'rt' have been removed as a lib dependency for ivhsmem-test.c.
-> 
-> Two lines unrelated to these changes have had their line indentation
-> also fixed in meson.build.
-> 
-> Message-ID: <20231127052024.435743-3-gustavo.romero@linaro.org>
+> Based-on: https://lists.gnu.org/archive/html/qemu-devel/2023-11/msg03176.html
+> Message-ID: <20231127052024.435743-4-gustavo.romero@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
-...
-> diff --git a/tests/qtest/ivshmem-utils.c b/tests/qtest/ivshmem-utils.c
-> new file mode 100644
-> index 0000000000..c2fc3463dd
-> --- /dev/null
-> +++ b/tests/qtest/ivshmem-utils.c
-> @@ -0,0 +1,156 @@
-> +/*
-> + * Common utilities for testing ivshmem devices
-> + *
-> + * SPDX-FileCopyrightText: 2012 SUSE LINUX Products GmbH
-> + * SPDX-FileCopyrightText: 2021 Red Hat, Inc.
-> + * SPDX-FileCopyrightText: 2023 Linaro Ltd.
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + */
-> +
-> +#include "ivshmem-utils.h"
-> +
-> +gchar *mktempshm(int size, int *fd)
-> +{
-> +    while (true) {
-> +        /* Relative path to the shm filesystem, e.g. '/dev/shm'. */
-> +        gchar *shm_rel_path;
-> +
-> +        shm_rel_path = g_strdup_printf("/ivshmem_qtest-%u-%u", getpid(),
-> +                                       g_test_rand_int());
-> +        *fd = shm_open(shm_rel_path, O_CREAT | O_RDWR | O_EXCL,
-> +                       S_IRWXU | S_IRWXG | S_IRWXO);
-> +        if (*fd > 0) {
-> +            g_assert(ftruncate(*fd, size) == 0);
-> +            return shm_rel_path;
-> +        }
-> +
-> +        g_free(shm_rel_path);
-> +
-> +        if (errno != EEXIST) {
-> +            perror("shm_open");
-> +            return NULL;
-> +        }
-> +    }
-> +}
-> +
-> +gchar *mktempsocket(void)
-> +{
-> +    gchar *server_socket_path;
-> +
-> +    server_socket_path = g_strdup_printf("%s/ivshmem_socket_qtest-%u-%u",
-> +                                         g_get_tmp_dir(), getpid(),
-> +                                         g_test_rand_int());
-> +    return server_socket_path;
-> +}
+>   tests/qtest/ivshmem-flat-test.c | 338 ++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build         |   2 +
+>   2 files changed, 340 insertions(+)
+>   create mode 100644 tests/qtest/ivshmem-flat-test.c
 
-You could simplify that to:
 
-     return g_strdup_printf("%s/ivshmem_socket_qtest-%u-%u",
-                            g_get_tmp_dir(), getpid(),
-                            g_test_rand_int());
-
-Anyway:
 Acked-by: Thomas Huth <thuth@redhat.com>

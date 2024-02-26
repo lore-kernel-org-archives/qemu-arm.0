@@ -1,262 +1,174 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id cc13-20020a5d5c0d000000b0033b66c2d61esm9009518wrb.48.2024.02.26.09.02.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 09:02:45 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CA8B95F92E;
-	Mon, 26 Feb 2024 16:56:48 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Nicholas Piggin <npiggin@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-riscv@nongnu.org,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-s390x@nongnu.org,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 21/27] plugins: add an API to read registers
-Date: Mon, 26 Feb 2024 16:56:40 +0000
-Message-Id: <20240226165646.425600-22-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240226165646.425600-1-alex.bennee@linaro.org>
-References: <20240226165646.425600-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2221039ejf;
+        Mon, 26 Feb 2024 10:09:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXvSDoMVMQW800KfKg0rHnkYnxIIUDpvf+iN2TB2gCU/UlYTvyeLmls9TIlCEx+3KS/OKijp01ycSoyT5bjR8S4K9RTol1L
+X-Google-Smtp-Source: AGHT+IEeI4fKMdHyLtk+4tuSvzi04I3M6/5tJ9lEX8Bq62SfFsuzdss2RcSGhELJJD4wVojbvmeP
+X-Received: by 2002:a05:622a:506:b0:42e:76fa:2810 with SMTP id l6-20020a05622a050600b0042e76fa2810mr7817019qtx.60.1708970978095;
+        Mon, 26 Feb 2024 10:09:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708970978; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gi0M/cJX7zEEQdC8gUDN6QNmi1viWkfDVk/U8qbSRzWeDPnbW1MUCICJiENGFwBgsy
+         U2p2Io8uFW5z6M8gS1/5uc60wRipvmpmSLJ98Oov4zguyB/+HQF6pNavpQapSv8Fh8V9
+         0lYrVwTT04+JB0MDw6U3011JdH+ZTiU3Y+MMtK44qg4J0BxcL5NaYHlyoNNTe1RNGMY5
+         ty74YCpsNjFF5yzhMKjGRg857K9XZSynAX2AgAeceFDK7q5jzEbfd7KFMB2ssqIF8qjC
+         vAj4F9hArCTz33fsgYs2+pIq01jXWIp0NBsNTKtjeDo50v2DHhjkHxuKLCo8W0eWpBEh
+         9aPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=kNlpHvNe0Knj79P6hKrLjJzShYzrgiIlFsdVWAIh1Xk=;
+        fh=WxHSAr0douJCho47EDhfM/XjfxwBwDauKoNbFX9eT8I=;
+        b=QDvAkx2nyBrpZjJc5eUsS5Y8++EQ5ZssSMUGvj7mkAtPyTLHM9pkoowHGDDvJp3v30
+         0jUhWnt5hcajB+3mJaFrF3l8P4bCzeCpWO7V+9KBSRhu03rXw2CqrMxb7NBUkxUavbUW
+         9XFglChhjyCyzAAf44t30rr1XQsG4W1lQL+9LnHc3GPCcMk6StjSuyqr7X5yRSO+tymP
+         VL5LFm7Z7eclwXg+/rePUDuTotxn1zfhbC1KKrd8ewYqGAPWF+junJNJh+0+GeeVBdrx
+         K2J6rRUBzp8MsCBHdD0/fx2mTSUVXXbdxyD57A76aAc07di9wJjD7GOGxMXE3CN27K71
+         cofw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z0uNuejB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t21-20020a05622a149500b0042e825795c6si3287822qtx.640.2024.02.26.10.09.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Feb 2024 10:09:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z0uNuejB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1refPp-0001FL-EK; Mon, 26 Feb 2024 13:09:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1refPo-0001DR-4d
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 13:09:24 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1refPm-0004Ag-Eq
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 13:09:23 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-55a179f5fa1so4020139a12.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 10:09:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708970961; x=1709575761; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=kNlpHvNe0Knj79P6hKrLjJzShYzrgiIlFsdVWAIh1Xk=;
+ b=Z0uNuejBLD/p0urJ+Bd+nUj92x2S6hF+aRrgSjkSaTYlKKA2ehn+rCDZJ8607Ziodk
+ Rc+2Oc8fLrLOKq9VxkKFq6InmskB8Tx8RFM8cq2l0GBOm6xHIBpW3QHvNp1kIeFwbJLC
+ QMhG4SP7FmdN3+8KmRQF/pZWEwYJTR03UjTWP/pJNBMD2dAYtk27s/1FBSaBbqnWUyUr
+ oG+rwLXbwbPzNr0p4XZUCKhfFdCu4qsw4FjOs6pRXK3HPBGmUpL80xN0T2NR22RWOEqZ
+ DLHMKgKmRf4A3EPlP5JO1rFXWrqBiRFivLEMkSGm8GQl2+KfYr1GguZ7sZem5kYzQtgZ
+ EjCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708970961; x=1709575761;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kNlpHvNe0Knj79P6hKrLjJzShYzrgiIlFsdVWAIh1Xk=;
+ b=wuS1KRjsYs31Fv1umyToqvIwpVNeXY2e1hoWaGoe9giK002sEMq1w05Mtx63RGrUKa
+ Ug/KVFmfGuWjAK8XS2zjVy6/UI9O8jX6WKUTjzfoAJltLSK0wA/ABubitO6nKUEQfb4p
+ z+LHF/XZvygWScX8Oy3ts73ooMEsAjqdqLh65SjupTkXShbCpWXHMlzersYsJ1GY7/2R
+ ++mbrh4flHhBkv8X1W24/2Rcmo4sxLJaemPjpeqtAjRuufOCaOGZvbXPlbAqimDn+oaK
+ qkgKYqVSWP4vzlAZvVWHQ/U6mys1GKjzlzuQrAnezNxZ2JOsHIy7/sJs0SSz7QOmQAEc
+ Yxrg==
+X-Gm-Message-State: AOJu0Yzbqh1xlDP0Xc5me4f+LeT3nBcBRYP3CmnwdqnC14M40YeZ+sxI
+ vJSvLl5PN6lBzDP0n8Jj6AVKMenPWp6dFrXgzAN52M+LOGDGhhuMMqszMFGSWJblp7Cu84SAtCX
+ GAOHXbyWyK13I7p2ffjOJhFEPcmcoSg0XNYH9tg==
+X-Received: by 2002:a05:6402:3411:b0:564:bcb1:45f6 with SMTP id
+ k17-20020a056402341100b00564bcb145f6mr5348223edc.15.1708970960788; Mon, 26
+ Feb 2024 10:09:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: Myz4RLZn6nsB
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 26 Feb 2024 18:09:09 +0000
+Message-ID: <CAFEAcA_brkckzDZh_-UJ-KFfBGvjPozPHNmG-bWFO0Xa63R0Gg@mail.gmail.com>
+Subject: Re: [PATCH v6 00/41] Raspberry Pi 4B machine
+To: Sergey Kambalin <serg.oker@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Sergey Kambalin <sergey.kambalin@auriga.com>,
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6xQmQDKg5E5L
 
-We can only request a list of registers once the vCPU has been
-initialised so the user needs to use either call the get function on
-vCPU initialisation or during the translation phase.
+On Mon, 26 Feb 2024 at 00:04, Sergey Kambalin <serg.oker@gmail.com> wrote:
+>
+> Introducing Raspberry Pi 4B model.
+> It contains new BCM2838 SoC, PCIE subsystem,
+> RNG200, Thermal sensor and Genet network controller.
+>
+> It can work with recent linux kernels 6.x.x.
+> Two avocado tests was added to check that.
+>
+> Unit tests has been made as read/write operations
+> via mailbox properties.
+>
+> Genet integration test is under development.
+>
+> Every single commit
+> 1) builds without errors
+> 2) passes regression tests
+> 3) passes style check*
+> *the only exception is bcm2838-mbox-property-test.c file
+> containing heavy macros usage which cause a lot of
+> false-positives of checkpatch.pl.
+>
+> I did my best to keep the commits less than 200 changes,
+> but had to make some of them a bit more in order to
+> keep their integrity.
+>
+>
+> Sergey Kambalin (41):
+>   Split out common part of BCM283X classes
+>   Split out common part of peripherals
+>   Split out raspi machine common part
+>   Introduce BCM2838 SoC
+>   Add GIC-400 to BCM2838 SoC
+>   Add BCM2838 GPIO stub
+>   Implement BCM2838 GPIO functionality
 
-We don't expose the reg number to the plugin instead hiding it behind
-an opaque handle. For now this is just the gdb_regnum encapsulated in
-an anonymous GPOINTER but in future as we add more state for plugins
-to track we can expand it.
+I've just noticed that the commit messages in this series
+are missing the conventional prefix that indicates what part
+of the codebase they apply to (hw/arm, hw/gpio, etc). I
+propose to add those in on my end for the patches I'm taking
+into target-arm.next.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
-Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+I think the one question I have left is the name of the
+board: currently it's "raspi4b-2g", but should we name
+it just "raspi4b"? None of the names we use for the other
+raspi boards we model have a suffix like the "-2g" here.
+Philippe, do you have an opinion here ?
 
----
-v4
-  - the get/read_registers functions are now implicitly for current
-  vCPU only to accidental cpu != current_cpu uses.
-v5
-  - make reg_handles as per-CPUPluginState variable.
-v6
-  - for now just wrap gdb_regnum
----
- include/qemu/qemu-plugin.h   | 48 +++++++++++++++++++++++++++++--
- plugins/api.c                | 56 ++++++++++++++++++++++++++++++++++++
- plugins/qemu-plugins.symbols |  2 ++
- 3 files changed, 104 insertions(+), 2 deletions(-)
-
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 93981f8f89f..3b6b18058d2 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -11,6 +11,7 @@
- #ifndef QEMU_QEMU_PLUGIN_H
- #define QEMU_QEMU_PLUGIN_H
- 
-+#include <glib.h>
- #include <inttypes.h>
- #include <stdbool.h>
- #include <stddef.h>
-@@ -229,8 +230,8 @@ struct qemu_plugin_insn;
-  * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
-  * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
-  *
-- * Note: currently unused, plugins cannot read or change system
-- * register state.
-+ * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
-+ * system register state.
-  */
- enum qemu_plugin_cb_flags {
-     QEMU_PLUGIN_CB_NO_REGS,
-@@ -707,4 +708,47 @@ uint64_t qemu_plugin_end_code(void);
- QEMU_PLUGIN_API
- uint64_t qemu_plugin_entry_code(void);
- 
-+/** struct qemu_plugin_register - Opaque handle for register access */
-+struct qemu_plugin_register;
-+
-+/**
-+ * typedef qemu_plugin_reg_descriptor - register descriptions
-+ *
-+ * @handle: opaque handle for retrieving value with qemu_plugin_read_register
-+ * @name: register name
-+ * @feature: optional feature descriptor, can be NULL
-+ */
-+typedef struct {
-+    struct qemu_plugin_register *handle;
-+    const char *name;
-+    const char *feature;
-+} qemu_plugin_reg_descriptor;
-+
-+/**
-+ * qemu_plugin_get_registers() - return register list for current vCPU
-+ *
-+ * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
-+ * frees the array (but not the const strings).
-+ *
-+ * Should be used from a qemu_plugin_register_vcpu_init_cb() callback
-+ * after the vCPU is initialised, i.e. in the vCPU context.
-+ */
-+GArray *qemu_plugin_get_registers(void);
-+
-+/**
-+ * qemu_plugin_read_register() - read register for current vCPU
-+ *
-+ * @handle: a @qemu_plugin_reg_handle handle
-+ * @buf: A GByteArray for the data owned by the plugin
-+ *
-+ * This function is only available in a context that register read access is
-+ * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
-+ *
-+ * Returns the size of the read register. The content of @buf is in target byte
-+ * order. On failure returns -1
-+ */
-+int qemu_plugin_read_register(struct qemu_plugin_register *handle,
-+                              GByteArray *buf);
-+
-+
- #endif /* QEMU_QEMU_PLUGIN_H */
-diff --git a/plugins/api.c b/plugins/api.c
-index 54df72c1c00..03412598047 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -8,6 +8,7 @@
-  *
-  *  qemu_plugin_tb
-  *  qemu_plugin_insn
-+ *  qemu_plugin_register
-  *
-  * Which can then be passed back into the API to do additional things.
-  * As such all the public functions in here are exported in
-@@ -35,10 +36,12 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
- #include "qemu/plugin.h"
- #include "qemu/log.h"
- #include "tcg/tcg.h"
- #include "exec/exec-all.h"
-+#include "exec/gdbstub.h"
- #include "exec/ram_addr.h"
- #include "disas/disas.h"
- #include "plugin.h"
-@@ -410,3 +413,56 @@ uint64_t qemu_plugin_entry_code(void)
- #endif
-     return entry;
- }
-+
-+/*
-+ * Create register handles.
-+ *
-+ * We need to create a handle for each register so the plugin
-+ * infrastructure can call gdbstub to read a register. They are
-+ * currently just a pointer encapsulation of the gdb_regnum but in
-+ * future may hold internal plugin state so its important plugin
-+ * authors are not tempted to treat them as numbers.
-+ *
-+ * We also construct a result array with those handles and some
-+ * ancillary data the plugin might find useful.
-+ */
-+
-+static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
-+{
-+    GArray *find_data = g_array_new(true, true,
-+                                    sizeof(qemu_plugin_reg_descriptor));
-+
-+    for (int i = 0; i < gdbstub_regs->len; i++) {
-+        GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
-+
-+        /* skip "un-named" regs */
-+        if (!grd->name) {
-+            continue;
-+        }
-+
-+        /* Create a record for the plugin */
-+        qemu_plugin_reg_descriptor desc = {
-+            .handle = GINT_TO_POINTER(grd->gdb_reg),
-+            .name = g_intern_string(grd->name),
-+            .feature = g_intern_string(grd->feature_name)
-+        };
-+        g_array_append_val(find_data, desc);
-+    }
-+
-+    return find_data;
-+}
-+
-+GArray *qemu_plugin_get_registers(void)
-+{
-+    g_assert(current_cpu);
-+
-+    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
-+    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
-+}
-+
-+int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
-+{
-+    g_assert(current_cpu);
-+
-+    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg));
-+}
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index adb67608598..27fe97239be 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -3,6 +3,7 @@
-   qemu_plugin_end_code;
-   qemu_plugin_entry_code;
-   qemu_plugin_get_hwaddr;
-+  qemu_plugin_get_registers;
-   qemu_plugin_hwaddr_device_name;
-   qemu_plugin_hwaddr_is_io;
-   qemu_plugin_hwaddr_phys_addr;
-@@ -19,6 +20,7 @@
-   qemu_plugin_num_vcpus;
-   qemu_plugin_outs;
-   qemu_plugin_path_to_binary;
-+  qemu_plugin_read_register;
-   qemu_plugin_register_atexit_cb;
-   qemu_plugin_register_flush_cb;
-   qemu_plugin_register_vcpu_exit_cb;
--- 
-2.39.2
+-- PMM

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o5-20020a05600c510500b00412157dc70bsm8958398wms.30.2024.02.26.08.56.56
+        by smtp.gmail.com with ESMTPSA id bh21-20020a05600c3d1500b00412a5903673sm3262250wmb.26.2024.02.26.09.02.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 08:57:00 -0800 (PST)
+        Mon, 26 Feb 2024 09:02:41 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4A0C05F934;
+	by draig.lan (Postfix) with ESMTP id 24EBC5F932;
 	Mon, 26 Feb 2024 16:56:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -43,40 +43,51 @@ Cc: Nicholas Piggin <npiggin@gmail.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 27/27] docs/devel: plugins can trigger a tb flush
-Date: Mon, 26 Feb 2024 16:56:46 +0000
-Message-Id: <20240226165646.425600-28-alex.bennee@linaro.org>
+Subject: [PATCH v3 25/27] docs/devel: lift example and plugin API sections up
+Date: Mon, 26 Feb 2024 16:56:44 +0000
+Message-Id: <20240226165646.425600-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240226165646.425600-1-alex.bennee@linaro.org>
 References: <20240226165646.425600-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xQPUg0VlDmGX
+X-TUID: vfnxNbOtXmX/
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+This makes them a bit more visible in the TCG emulation menu rather
+than hiding them away bellow the ToC limit.
 
-When scoreboards need to be reallocated.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240213094009.150349-8-pierrick.bouvier@linaro.org>
+Message-Id: <20240103173349.398526-43-alex.bennee@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/devel/multi-thread-tcg.rst | 1 +
- 1 file changed, 1 insertion(+)
+ docs/devel/tcg-plugins.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index 7302c3bf534..1420789fff3 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -109,6 +109,7 @@ including:
-   - debugging operations (breakpoint insertion/removal)
-   - some CPU helper functions
-   - linux-user spawning its first thread
-+  - operations related to TCG Plugins
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index fa7421279f5..535a74684c5 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -143,7 +143,7 @@ requested. The plugin isn't completely uninstalled until the safe work
+ has executed while all vCPUs are quiescent.
  
- This is done with the async_safe_run_on_cpu() mechanism to ensure all
- vCPUs are quiescent when changes are being made to shared global
+ Example Plugins
+----------------
++===============
+ 
+ There are a number of plugins included with QEMU and you are
+ encouraged to contribute your own plugins plugins upstream. There is a
+@@ -591,8 +591,8 @@ The plugin has a number of arguments, all of them are optional:
+   configuration arguments implies ``l2=on``.
+   (default: N = 2097152 (2MB), B = 64, A = 16)
+ 
+-API
+----
++Plugin API
++==========
+ 
+ The following API is generated from the inline documentation in
+ ``include/qemu/qemu-plugin.h``. Please ensure any updates to the API
 -- 
 2.39.2

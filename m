@@ -1,94 +1,179 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1802893ejf;
-        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWhjsugrZnKiKn+iRgYN/4Xz7wpsTnhHKvrZdSQ7sZ8CkyUbZ+LsDEXoQowacR0ksPYYhPI2vIraUbJDwF7s+g4lY7Tet6K
-X-Google-Smtp-Source: AGHT+IFXh+y9aXfukIrmtaretrJSfV8itJ0Z5kYnegi+l364VGj7o407t/SRTNJE1OEzdiZ5MbGE
-X-Received: by 2002:a05:620a:66d:b0:787:bb0b:e9d6 with SMTP id a13-20020a05620a066d00b00787bb0be9d6mr6824154qkh.37.1708914178734;
-        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708914178; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1875734ejf;
+        Sun, 25 Feb 2024 22:19:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXdbuQB8P/vU97iVg5mTL8AOURN+IYKopG4DUY/HElzuoTAwl8FA5nDvPX938zP0bMxlPDpSg7USOivxDirDnVZ2LiUZ2JV
+X-Google-Smtp-Source: AGHT+IH0ZE7PltOrazHgc7opgOQejZQDFMt+CKz4NBzr73sXRyLgOZjkwM+c3P7kfIzCDoxI0vY0
+X-Received: by 2002:a0c:e10e:0:b0:68f:6013:7af7 with SMTP id w14-20020a0ce10e000000b0068f60137af7mr6712793qvk.57.1708928347679;
+        Sun, 25 Feb 2024 22:19:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708928347; cv=none;
         d=google.com; s=arc-20160816;
-        b=RB55K+BEbcPSfhBisvU3O/oscQoB6av73mwUs2Oy2OaDydS76wSeCigQh7LNh7DhkI
-         7l4/S+71v5W3aDzMfdUtzASGPGwbIi1g5wTrJa0WVUore/4wdE/D4k9eIKSl05qtN+yg
-         kh+CSz6WRiX94ku5cScuo0hDQBLlDV3X7bmmsEWYHkoXUyg2bxEtzlINT48n+PhkE0Ga
-         5110T8Ckmg7po1L/ho+7EfV3hdhoxZVHkwYyRUh3kzxrJodNqYAvYkDDoCTf5mHC6FwL
-         6aL/zC/hjfmiAIY45sW3tdGl3CkeGtcRcPk07GvESsN3YiW7xqY/W72E57x0FOLuUzoM
-         q/bw==
+        b=thbgPOpyx0XN2cZYy6wTRTlrWJJbCNPeFgjp7heu8j2uNcgOzy8Pysb0bg+vN5sL1O
+         +5vUdgmw0nDLqe/MXA4cJG8rva6PJ7RH5t8qDB6RPvd/0KbfWgeDEccVsKCH/J13fccM
+         lD9v0r47naNvgW+FXWPrYBo7nO3kxa0RwdUyxzYQUqtV7smxvlRW3HHZWBpBC4G35JFO
+         ru3EgM2cWJoVp5qNIic5Bn9HiMzICh/gAI2yFtbLSiOuTqIE+DcjXTEGkRDO+79bUuS2
+         jqNUOK70WUnDKskw5NTyY3ma+ROor5J47RaILuPJDEZeZU3qvLr5B7Jz0HWAWd9+zVWS
+         y9Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=5seFG1eZkV69vGa7gJUgNarOt2TKMZhhb3hKNiRiZv0=;
-        fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
-        b=tIXC+xbvWiLhYZTe0SzQ315xV6N2O8KN+BwFDFUxtizrDj4kpDWxoOs0ukfJaLgUKO
-         AVAs9/u/kbwIqkRM9bF0n2AfrhYcXzYqMo5WHH14DrUet6oTqZj91xMOqeu6za8FVuui
-         QJIiqXCD+e5+blx6l1ClJHIqREbrbJOZECOItQ9edCCqb4BJF3+vS75+tKFTk2R8Ie0D
-         NztWrS0h00Ws7C9UZCtA12SOXL2C0h1Dxpt+TDSah9PJwT2xvRIQfktxOpQtAYf+NASc
-         q2YhVNPDdXCPgHmBJO6Cujl0wTrcgHaGvHgbYSWPJRlVaBSevdNYa5mz6tmD/UpE5Zfp
-         eenw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=IbKA7TBz8ivrhVLtFyWhmWeQxDnz7YcubMUvdj7SgAk=;
+        fh=LCnfmqptvP00xTS9iQeRWHRtdeo0td2+ezSPCy3gc3A=;
+        b=KPmJpPkg56wMgAETI/+hCiVuPTDEgiO6JDtsMXYqwkotjF6SVjbr+WPAmdP07eFHe3
+         IIaUR2/xhm09/o2xQC1qOa1msgkA3/cWY9M8/OuT0XWXKqs2HkLo9CbHPWBxUlxCHxVD
+         QW3xx+dGwscmkqp4VmaBuVMWr8RIojmk4h30d1xZaa84bAsdSR7SKwuFZZjCCMjTMH2N
+         OsB+PV3KZA84cKOEO8Y6PI5+/bwwI6iPPK4tFKqudx7FNVcGOp3g9y5kjkMjIXjom9ll
+         cDpXTnXz/LDbOlL7YW2abgCQQ27dLo0DFdkWnJ+iyR9P/dQ8FX6JYDDoBFDE9GrlDyWp
+         VIHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KinYuQqr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10-20020a05620a444a00b00787d5d40093si499602qkp.254.2024.02.25.18.22.58
+        by mx.google.com with ESMTPS id js7-20020a0562142aa700b0068fe8496480si4451468qvb.233.2024.02.25.22.19.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 18:22:58 -0800 (PST)
+        Sun, 25 Feb 2024 22:19:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KinYuQqr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reQdo-0002hQ-RX; Sun, 25 Feb 2024 21:22:53 -0500
+	id 1reUKK-00065H-US; Mon, 26 Feb 2024 01:19:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1reQdl-0002h4-T7; Sun, 25 Feb 2024 21:22:50 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1reUKJ-000652-16
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 01:18:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1reQdh-0006xr-DK; Sun, 25 Feb 2024 21:22:49 -0500
-Received: from mail.maildlp.com (unknown [172.19.162.112])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Tjkq45hjGz1X3QS;
- Mon, 26 Feb 2024 10:20:16 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 149381400D3;
- Mon, 26 Feb 2024 10:22:30 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 26 Feb 2024 10:22:29 +0800
-Message-ID: <138ddc99-f6f4-9907-a1c2-6b2b88bd79d0@huawei.com>
-Date: Mon, 26 Feb 2024 10:22:28 +0800
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1reUKH-00076C-CQ
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 01:18:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708928335;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=IbKA7TBz8ivrhVLtFyWhmWeQxDnz7YcubMUvdj7SgAk=;
+ b=KinYuQqrx4pvOIj45eZYqNTjS8dgaxoEWqrNTBp6HmvBayvCO3S4VMO+9eNd57L9De4Ja+
+ ZpJJQFvokOPJsQ7j7DP70hRk40t8cbXH4GU83FZSxHpUmJLk5kd8L/+yvAEqs3JYU3+7h7
+ FsLorg7E8t/dZhx858sj/pcEcrmG/jQ=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-465-75wm8rYFOD24rmmzNmgHAg-1; Mon, 26 Feb 2024 01:18:50 -0500
+X-MC-Unique: 75wm8rYFOD24rmmzNmgHAg-1
+Received: by mail-lf1-f70.google.com with SMTP id
+ 2adb3069b0e04-512ed819112so1880044e87.1
+ for <qemu-arm@nongnu.org>; Sun, 25 Feb 2024 22:18:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708928328; x=1709533128;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IbKA7TBz8ivrhVLtFyWhmWeQxDnz7YcubMUvdj7SgAk=;
+ b=EBllgm6HKzkyb19DuVFmjHRTbv8fxN2VJjvA70GsTOhKfS3GW3tUU7bF9wCps2l3bo
+ 1O/6PlVPeNa2PWEfKXAcyQOxBors8XheCXOtUUypfAwyXGZNroud3ysydocRzDo4NLv6
+ e3I8WquN0U+v8i9oCd7VHCqjpBrHYJQ4eFr0qB4rsFbsWdbqgA+8+m10UQ/blvQyj8xi
+ PHbtJznJnO3yeiGVPrGqScVJC7EjCA4Fezp4z9Tx40UosN+LblW4LMoOAUNey7w2J0aX
+ wQGI5wwwk6oOjhJVK8W4eP9CYEclp96yPiXEFvqbREMyi8avutmadGcuZ2mXS9GHqTOi
+ 2mYg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWiO3yFaKQLY+zmLiLKApafGVt9UkSswmWGPpDHeyzZuRIlJkBrZ7W5tETmEFdZnfYbm9yVCVQMU0eEM56SAb9M4YL6
+X-Gm-Message-State: AOJu0YyeEr863VU71cYpRYNe+xNC5okqahDiD0iVDt5o5ZoOdoEG6Ihe
+ jO4zsbL5MEV9ghRE2Bm7N1KjsbT55+WC2yRQSynQsynKHBYbpP09GQQlbUWWFWlT+Rzsc2pSRwq
+ bKmDkQzn+QRJOw7Ly9sfFiOKuKVAzN0SL9PTFuhNC0y0uhBOuZA==
+X-Received: by 2002:ac2:5ed0:0:b0:512:e04f:ae4b with SMTP id
+ d16-20020ac25ed0000000b00512e04fae4bmr3555701lfq.10.1708928328655; 
+ Sun, 25 Feb 2024 22:18:48 -0800 (PST)
+X-Received: by 2002:ac2:5ed0:0:b0:512:e04f:ae4b with SMTP id
+ d16-20020ac25ed0000000b00512e04fae4bmr3555686lfq.10.1708928328320; 
+ Sun, 25 Feb 2024 22:18:48 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-176-215.web.vodafone.de.
+ [109.43.176.215]) by smtp.gmail.com with ESMTPSA id
+ d3-20020adffbc3000000b0033dd2c3131fsm3361949wrs.65.2024.02.25.22.18.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 25 Feb 2024 22:18:47 -0800 (PST)
+Message-ID: <6272423a-1e07-4813-bb6c-c67b91e7f245@redhat.com>
+Date: Mon, 26 Feb 2024 07:18:46 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [RFC PATCH v3 04/21] target/arm: Implement ALLINT MSR (immediate)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] hw/arm/sbsa-ref: Do not open-code
+ ahci_ide_create_devs()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Radoslaw Biernacki <rad@semihalf.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20240225171637.4709-1-philmd@linaro.org>
+ <20240225171637.4709-2-philmd@linaro.org>
+ <0fa25487-f25a-433d-b916-4b12ea5649ed@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <0fa25487-f25a-433d-b916-4b12ea5649ed@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>,
- <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20240223103221.1142518-1-ruanjinjie@huawei.com>
- <20240223103221.1142518-5-ruanjinjie@huawei.com>
- <9b20584a-3c4c-47a2-bf42-f8d7d4eabd9f@linaro.org>
-In-Reply-To: <9b20584a-3c4c-47a2-bf42-f8d7d4eabd9f@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
- helo=szxga07-in.huawei.com
-X-Spam_score_int: -64
-X-Spam_score: -6.5
-X-Spam_bar: ------
-X-Spam_report: (-6.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.331,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.097,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,79 +186,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +F1N6K9biLXQ
+X-TUID: MPNJ+OHvLL8o
 
-
-
-On 2024/2/24 3:03, Richard Henderson wrote:
-> On 2/23/24 00:32, Jinjie Ruan via wrote:
->> Add ALLINT MSR (immediate) to decodetree. And the EL0 check is necessary
->> to ALLINT. Avoid the unconditional write to pc and use raise_exception_ra
->> to unwind.
+On 25/02/2024 18.21, Philippe Mathieu-Daudé wrote:
+> On 25/2/24 18:16, Philippe Mathieu-Daudé wrote:
+>> Use ahci_ide_create_devs() instead of open-coding it.
+>> Not accessing AHCIDevice internals anymore allows to
+>> remove "hw/ide/ahci_internal.h" (which isn't really a
+>> public header).
 >>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >> ---
->> v3:
->> - Remove EL0 check in allint_check().
->> - Add TALLINT check for EL1 in allint_check().
->> - Remove unnecessarily arm_rebuild_hflags() in msr_i_allint helper.
->> ---
->>   target/arm/tcg/a64.decode      |  1 +
->>   target/arm/tcg/helper-a64.c    | 24 ++++++++++++++++++++++++
->>   target/arm/tcg/helper-a64.h    |  1 +
->>   target/arm/tcg/translate-a64.c | 10 ++++++++++
->>   4 files changed, 36 insertions(+)
+>>   hw/arm/sbsa-ref.c | 9 +--------
+>>   1 file changed, 1 insertion(+), 8 deletions(-)
 >>
->> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
->> index 8a20dce3c8..3588080024 100644
->> --- a/target/arm/tcg/a64.decode
->> +++ b/target/arm/tcg/a64.decode
->> @@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010
->> 11111 @msr_i
->>   MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
->>   MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
->>   MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
->> +MSR_i_ALLINT    1101 0101 0000 0 001 0100 .... 000 11111 @msr_i
+>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+>> index 5d3a574664..995c7be23e 100644
+>> --- a/hw/arm/sbsa-ref.c
+>> +++ b/hw/arm/sbsa-ref.c
+>> @@ -37,7 +37,6 @@
+>>   #include "hw/block/flash.h"
+>>   #include "hw/boards.h"
+>>   #include "hw/ide/internal.h"
+>> -#include "hw/ide/ahci_internal.h"
+>>   #include "hw/ide/ahci-sysbus.h"
+>>   #include "hw/intc/arm_gicv3_common.h"
+>>   #include "hw/intc/arm_gicv3_its_common.h"
+>> @@ -572,7 +571,6 @@ static void create_ahci(const SBSAMachineState *sms)
+>>       DriveInfo *hd[NUM_SATA_PORTS];
+>>       SysbusAHCIState *sysahci;
+>>       AHCIState *ahci;
+>> -    int i;
+>>       dev = qdev_new("sysbus-ahci");
+>>       qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
+>> @@ -583,12 +581,7 @@ static void create_ahci(const SBSAMachineState *sms)
+>>       sysahci = SYSBUS_AHCI(dev);
+>>       ahci = &sysahci->ahci;
 > 
-> Decode is incorrect either here, or in trans_MSR_i_ALLINT, because CRm
-> != '000x' is UNDEFINED.
+> Bah, we can even remove that 'ahci' variable.
 > 
-> MSR_i_ALLINT    1101 0101 0000 0 001 0100 000 imm:1 000 11111
+>>       ide_drive_get(hd, ARRAY_SIZE(hd));
+>> -    for (i = 0; i < ahci->ports; i++) {
+>> -        if (hd[i] == NULL) {
+>> -            continue;
+>> -        }
+>> -        ide_bus_create_drive(&ahci->dev[i].port, 0, hd[i]);
+>> -    }
+>> +    ahci_ide_create_devs(ahci, hd);
+>>   }
 > 
-> is perhaps the clearest implementation.
+> -- >8 --
+> @@ -571,8 +570,6 @@ static void create_ahci(const SBSAMachineState *sms)
+>       DeviceState *dev;
+>       DriveInfo *hd[NUM_SATA_PORTS];
+>       SysbusAHCIState *sysahci;
+> -    AHCIState *ahci;
+> -    int i;
 > 
->> +static void allint_check(CPUARMState *env, uint32_t op,
->> +                       uint32_t imm, uintptr_t ra)
->> +{
->> +    /* ALLINT update to PSTATE. */
->> +    if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
->> +        (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
->> +        raise_exception_ra(env, EXCP_UDEF,
->> +                           syn_aa64_sysregtrap(0, extract32(op, 0, 3),
->> +                                               extract32(op, 3, 3), 4,
->> +                                               imm, 0x1f, 0),
->> +                           exception_target_el(env), ra);
->> +    }
->> +}
->> +
->> +void HELPER(msr_i_allint)(CPUARMState *env, uint32_t imm)
->> +{
->> +    allint_check(env, 0x8, imm, GETPC());
+>       dev = qdev_new("sysbus-ahci");
+>       qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
+> @@ -581,14 +578,8 @@ static void create_ahci(const SBSAMachineState *sms)
+>       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, 
+> irq));
 > 
-> As previously noted, the check for MSR_i only applies to imm==1, not 0.
+>       sysahci = SYSBUS_AHCI(dev);
+> -    ahci = &sysahci->ahci;
+>       ide_drive_get(hd, ARRAY_SIZE(hd));
+> -    for (i = 0; i < ahci->ports; i++) {
+> -        if (hd[i] == NULL) {
+> -            continue;
+> -        }
+> -        ide_bus_create_drive(&ahci->dev[i].port, 0, hd[i]);
+> -    }
+> +    ahci_ide_create_devs(&sysahci->ahci, hd);
+>   }
 
-Sorry! The hardware manual I looked at didn't say this.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> 
-> As previously noted, with ALLINT in env->pstate, you can implement this
-> completely inline for EL[23], or EL1 with imm==0.
-> 
-> No point in passing in "op" and extracting, because you know exactly
-> what the value should be for all MSR ALLINT.
-> 
-> 
-> r~
+

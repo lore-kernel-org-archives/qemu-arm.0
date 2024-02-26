@@ -1,198 +1,337 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2276428ejf;
-        Mon, 26 Feb 2024 12:04:28 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXpKkzHa9h72kx2NY0sWkIU1c4p6d4P6dsBM7ewC5S3nrUAFmQ6hMLzcH37XP6uXhvpWCIyiDRjWHVi+ZTDVTQ47lbFRZfS
-X-Google-Smtp-Source: AGHT+IE9swEcdyFCM1cFKrrNXcVjFlUKeL5aqooBAvWSofncrDS7aWBpXhVK5y0v92VQnBgmPD3H
-X-Received: by 2002:a17:90a:4701:b0:29a:24c6:5cd2 with SMTP id h1-20020a17090a470100b0029a24c65cd2mr5191425pjg.32.1708977868169;
-        Mon, 26 Feb 2024 12:04:28 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708977868; cv=pass;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2291943ejf;
+        Mon, 26 Feb 2024 12:39:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXoBQ+lnDdjJP4EXduv0KpjauZJjdjTMUzZvkAeyHp2ZiFgX1LhLHL02RNZyUZZ4zUk+4pmp5EbOPzopfPhV+vV3dPsDpqn
+X-Google-Smtp-Source: AGHT+IHgjlWQrszzOcfGOuyJgfZ+2WUy3rMIlkhLJMPBz/pK2SL1SH0XWqhCGwpgL05srwFbSyeX
+X-Received: by 2002:aca:1c09:0:b0:3c1:66d8:b7c4 with SMTP id c9-20020aca1c09000000b003c166d8b7c4mr207014oic.42.1708979963944;
+        Mon, 26 Feb 2024 12:39:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708979963; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z8EPyRtlUXVmY39NiC6J93BjJiJY6doBFszbRIzw8Vo1Nf2xLl/vhOFPyqg5muarFO
-         nYKJ0FunqXgxLhYH8fLJGNru4c0wJJ/XVGZEXgRltOq5mZP08DSouL4lUsJcLq0AhRQV
-         9Wm8J6rF+DVvbL6cqSNsnTWDhdFcF1/DdrfaFs7JzPL2SGzJ8HXqr+x2Z5//VZ8LU/xf
-         q1Cd2kPcm37UJmY3+8+x/eGRnsKAbtGRaJrjfzqB3rtSN3WWWsVbTX3ni+u7I13XNkqN
-         Ba6aUKNxa8FVwWvB9bjwuSNUII7d4Tn0PFygNrTyohZDsop4V5dT86gkiPWg6DENwqTh
-         gk9g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:in-reply-to:subject:cc:to:from:date;
-        bh=HcZ/sBGt9reI1wFgvb+ibADOGF13fPja/plyjotp8lU=;
-        fh=UFW275cRVxdo2aD32lpuv/hTe/R8c3sBlY+UXq+JJ+A=;
-        b=Wny06xHqGxkcCG5ODkwxy+yB2lOOd0VcwaO4UmczAsdPcyt2QZNHeeQz2d4z2CeAG0
-         /NrrzLSU8yn9WfJkYdZjXD536elm13e6NpE4WC0Vs3VQh3H7cT6MuOa6dl2OKA5HCczH
-         HMzfsiXMdFRVVgFEei0zFf4NTUubAU7IIAMhey3yqNmvVHOJcBsNKBAj8tWAo1bDdFEY
-         wMmm5IrTyQ1Qc88HitxuBVk/1IzGWNxrGF1mEtZQMqtrBDREsu5lcUGWZhyD+6l+5/z0
-         LYN1mIazZFfpkyPSURwNhX71Xb5YPcesF4bGyAPtCeBAg1Uu9XrVNZFEP4sFiuY3xJ/r
-         vuEA==;
+        b=VkPjaUx5ZVhrA9FZ0cZNkrw+WFNkjQnfYENQSd7oUC5Zn7mb5iYRABl1IMRuUeEeDJ
+         uM+n4HxqJ5pIGZwm/U7SJAC8LNWNKp+xD+FrpYsPq1J9AEm36gIbUzIBUnkgK8/dmmB/
+         jAk53MbiXD97jbLVrRKdrfNJsxsssZoPWtZ2qu6u1K0wocOy5VtnP57Cwpr2LXPv9WXE
+         p6OGKNMZZveVWkNJK4Vk5vnpkhaiPa9DUE1bzdUnt2VVfgEf4AdN2l+XUICcNFdx6ksB
+         CAM1u8Eth+3wARe1olLoU6OT+WDLwKu11ncXsW1gzXgin8E3zRONLwpF7KPg1ISMcFVO
+         +YWA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
+        bh=HCeYBth8krepZlcIcrM/gCF1oQ3Ck2v+dYRDqiEDAN8=;
+        fh=7MyzgaXMkpkPNBrrlx8I9qAuaV2BdTnxcHrZcLEQ8Fg=;
+        b=UrFXFWAXq4CykvGLHE8k/nj+B9NtO9p0NUkOEIhpeT/O8BscVTZ5YhhX83rK/Pdfvb
+         hhahF/4U9lx5o2xCcHu5hCmi5rcApD9cghw9HPIKPBsqCHOWCns8VkvxP2pf5VBpT/1i
+         r33g5GfnGJgPvRyq3jP93iopB/ivqgixBUdz6NsK3Ha9Ofa9KZC3DvcwKPaUUOUmxWd9
+         Xwxn076hCbVtyYRMXLq5Veze6B7NnQIdsH3NmkbvNYsIVGH/psNf4IITKudyA0U4rSnt
+         iCbroAF9ID+1OFd7GtCrQLR4dX6dJNGuAL96BxiYbslap8n0TxckOk4McBiwG7U21CVT
+         NP0A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
-       spf=pass (google.com: domain of kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id oe7-20020a17090b394700b0029adca9a9c8si408278pjb.108.2024.02.26.12.04.27
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=rHi9sv2c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d8-20020a05621421c800b0068ff0981998si5572752qvh.337.2024.02.26.12.39.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 12:04:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Feb 2024 12:39:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=eik.bme.hu dmarc=pass fromdomain=eik.bme.hu);
-       spf=pass (google.com: domain of kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-9995-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id D9EF8B23B99
-	for <alex.bennee@linaro.org>; Mon, 26 Feb 2024 20:04:25 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id DB18F1292FF;
-	Mon, 26 Feb 2024 20:04:20 +0000 (UTC)
-Received: from zero.eik.bme.hu (zero.eik.bme.hu [152.66.115.2])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0643130ADB
-	for <kvm@vger.kernel.org>; Mon, 26 Feb 2024 20:04:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=152.66.115.2
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708977860; cv=none; b=D19BlkIqfCADgxGll9H83MVdIWC66AeRnD0iFkK7bfzn0Rp9NOmAtf8R59YrAArnp8sO/wHo+35w+Io7mG+4EXxM8iHOwoYa0yfyY6sBtA3xRmra27Ehb61xhsxyAhc2B+au0YERBko1B5F33iCikwkkbegdTg8CQk/8L0OypcM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708977860; c=relaxed/simple;
-	bh=OM5yEvjLqCASQyyyq6ESNY+qU3ZtdETPEs2un++CTiU=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=UWzUJseLvVQpT4QNcpXTPopI0elfCqs491dii3Zt5KrTfh6QObz5PtwoER3ptZdgXeUmUMAoZwcDhMCi39X6ErYiqfZn0xISTOlftmBaQojaRDU+bb8YBxUzQuDpsgWQDfoprnhPsOlllsS/5+yLxSOkb7uVrh561vxb+zq1dQc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu; spf=pass smtp.mailfrom=eik.bme.hu; arc=none smtp.client-ip=152.66.115.2
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=eik.bme.hu
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=eik.bme.hu
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 9BD1F4E601E;
-	Mon, 26 Feb 2024 21:04:08 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
-	by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
-	with ESMTP id wLBUWJt-thNp; Mon, 26 Feb 2024 21:04:06 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 9F81E4E6005; Mon, 26 Feb 2024 21:04:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 9D6CA7456B4;
-	Mon, 26 Feb 2024 21:04:06 +0100 (CET)
-Date: Mon, 26 Feb 2024 21:04:06 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-    Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
-    =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
-    Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org, 
-    kvm@vger.kernel.org, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
-    "Michael S. Tsirkin" <mst@redhat.com>, 
-    Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-    Paolo Bonzini <pbonzini@redhat.com>, 
-    Richard Henderson <richard.henderson@linaro.org>, 
-    Markus Armbruster <armbru@redhat.com>, 
-    Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-In-Reply-To: <c5d5f835-5b7f-46bb-8393-6d638cbad012@linaro.org>
-Message-ID: <14dc34ed-be4a-e3d1-dfae-95d141519d3f@eik.bme.hu>
-References: <20240216153517.49422-1-philmd@linaro.org> <20240216153517.49422-2-philmd@linaro.org> <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu> <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org> <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
- <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu> <2b9ea923-c4f9-4ee4-8ed2-ba9f62c15579@linaro.org> <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu> <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk> <CAFEAcA-Mvd4NVY2yDgNEdjZ_YPrN93PDZRyfCi7JyCjmPs4gAQ@mail.gmail.com>
- <0a31f410-415d-474b-bcea-9cb18f41aeb2@ilande.co.uk> <9ef2075b-b26b-41d2-a7d0-456cec3b104a@eik.bme.hu> <c5d5f835-5b7f-46bb-8393-6d638cbad012@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=rHi9sv2c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rehkl-0008Ar-Ku; Mon, 26 Feb 2024 15:39:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
+ id 1rehkj-0008AK-Dr; Mon, 26 Feb 2024 15:39:09 -0500
+Received: from zproxy4.enst.fr ([137.194.2.223])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <aminier-21@enst.fr>)
+ id 1rehkZ-00035d-Bt; Mon, 26 Feb 2024 15:39:09 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 8115D20589;
+ Mon, 26 Feb 2024 21:38:56 +0100 (CET)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id 9WBpJiU_brWR; Mon, 26 Feb 2024 21:38:55 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 96C4C205A2;
+ Mon, 26 Feb 2024 21:38:55 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 96C4C205A2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1708979935;
+ bh=HCeYBth8krepZlcIcrM/gCF1oQ3Ck2v+dYRDqiEDAN8=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=rHi9sv2cmlQad81cWaN5oKWWscLLhGgQ32sSPs7ZKrB9UXynhpfuREZ/pbE0O2orJ
+ wF3O89CB8+BnAH/eo0cw+GTJIocp/Q8IiPM0iWB8B51RKeQYnC46m6xL/PXHizApXl
+ dgpUHHiR3HG2eNLlGw4sRbyFY+bShCbQfxm99+LU=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id pCBU97WH5uFq; Mon, 26 Feb 2024 21:38:55 +0100 (CET)
+Received: from zmail-tp1.enst.fr (zmail-tp1.enst.fr [137.194.2.198])
+ by zproxy4.enst.fr (Postfix) with ESMTP id CFDD8205A5;
+ Mon, 26 Feb 2024 21:38:54 +0100 (CET)
+Date: Mon, 26 Feb 2024 21:38:54 +0100 (CET)
+From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Thomas Huth <thuth@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>, 
+ =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>, 
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
+ qemu-arm <qemu-arm@nongnu.org>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Alistair Francis <alistair.francis@wdc.com>
+Message-ID: <1729495377.11787593.1708979934438.JavaMail.zimbra@enst.fr>
+In-Reply-To: <CAFEAcA_EVoayec6Qec4EoU6atXhG7fdqb+QtFEvSQge88xJNPg@mail.gmail.com>
+References: <20240219200908.49551-1-arnaud.minier@telecom-paris.fr>
+ <20240219200908.49551-3-arnaud.minier@telecom-paris.fr>
+ <CAFEAcA_EVoayec6Qec4EoU6atXhG7fdqb+QtFEvSQge88xJNPg@mail.gmail.com>
+Subject: Re: [PATCH v5 2/8] Add an internal clock multiplexer object
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3866299591-2026228376-1708977846=:54539"
-X-TUID: SrbTOBI3Yo40
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [::ffff:46.193.4.103]
+X-Mailer: Zimbra 9.0.0_GA_4583 (ZimbraWebClient - FF122 (Linux)/9.0.0_GA_4583)
+Thread-Topic: Add an internal clock multiplexer object
+Thread-Index: NrImc00nNVHxguUng59clwHQlfCEKQ==
+Received-SPF: pass client-ip=137.194.2.223; envelope-from=aminier-21@enst.fr;
+ helo=zproxy4.enst.fr
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2hnlFqtNCL1w
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+----- Original Message -----
+> From: "Peter Maydell" <peter.maydell@linaro.org>
+> To: "Arnaud Minier" <arnaud.minier@telecom-paris.fr>
+> Cc: "qemu-devel" <qemu-devel@nongnu.org>, "Thomas Huth" <thuth@redhat.com=
+>, "Laurent Vivier" <lvivier@redhat.com>, "In=C3=A8s
+> Varhol" <ines.varhol@telecom-paris.fr>, "Samuel Tardieu" <samuel.tardieu@=
+telecom-paris.fr>, "qemu-arm"
+> <qemu-arm@nongnu.org>, "Alistair Francis" <alistair@alistair23.me>, "Paol=
+o Bonzini" <pbonzini@redhat.com>, "Alistair
+> Francis" <alistair.francis@wdc.com>
+> Sent: Friday, February 23, 2024 3:44:59 PM
+> Subject: Re: [PATCH v5 2/8] Add an internal clock multiplexer object
 
---3866299591-2026228376-1708977846=:54539
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+> On Mon, 19 Feb 2024 at 20:12, Arnaud Minier
+> <arnaud.minier@telecom-paris.fr> wrote:
+>>
+>> This object is used to represent every multiplexer in the clock tree as
+>> well as every clock output, every presecaler, frequency multiplier, etc.
+>> This allows to use a generic approach for every component of the clock t=
+ree
+>> (except the PLLs).
+>>
+>> Wasn't sure about how to handle the reset and the migration so used the
+>> same appproach as the BCM2835 CPRMAN.
+>=20
+> I think hw/misc/zynq_sclr.c is also probably a good model to look at.
+>=20
+> AIUI the way it works is:
+> * input Clock objects must be migrated
+> * output Clock objects do not need to be migrated
+> * your reset needs to be a three-phase one:
+>   - in the 'enter' method you reset register values (including
+>     all the values that define oscillator frequencies, enable bits, etc)
+>   - in the 'hold' method you compute the values for the output clocks
+>     as if the input clock is disabled, and propagate them
+>   - in the 'exit' method you compute the values for the output clocks
+>     according to the value of the input clock, and propagate them
+>=20
 
-On Mon, 26 Feb 2024, Philippe Mathieu-Daudé wrote:
-> On 19/2/24 15:05, BALATON Zoltan wrote:
->> On Mon, 19 Feb 2024, Mark Cave-Ayland wrote:
->>> On 19/02/2024 13:05, Peter Maydell wrote:
->>>> On Mon, 19 Feb 2024 at 12:49, Mark Cave-Ayland
->>>> <mark.cave-ayland@ilande.co.uk> wrote:
->>>>> 
->>>>> On 19/02/2024 12:00, BALATON Zoltan wrote:
->>>>>> For new people trying to contribute to QEMU QDev is overwhelming so 
->>>>>> having some way
->>>>>> to need less of it to do simple things would help them to get started.
->>>>> 
->>>>> It depends what how you define "simple": for QEMU developers most people 
->>>>> search for
->>>>> similar examples in the codebase and copy/paste them. I'd much rather 
->>>>> have a slightly
->>>>> longer, but consistent API for setting properties rather than coming up 
->>>>> with many
->>>>> special case wrappers that need to be maintained just to keep the line 
->>>>> count down for
->>>>> "simplicity".
->>>>> 
->>>>> I think that Phil's approach here is the best one for now, particularly 
->>>>> given that it
->>>>> allows us to take another step towards heterogeneous machines. As the 
->>>>> work in this
->>>>> area matures it might be that we can consider other approaches, but 
->>>>> that's not a
->>>>> decision that can be made right now and so shouldn't be a reason to 
->>>>> block this change.
->>>> 
->>>> Mmm. It's unfortunate that we're working with C, so we're a bit limited
->>>> in what tools we have to try to make a better and lower-boilerplate
->>>> interface for the "create, configure, realize and wire up devices" task.
->>>> (I think you could do much better in a higher level language...)
->>>> sysbus_create_simple() was handy at the time, but it doesn't work so
->>>> well for more complicated SoC-based boards. It's noticeable that
->>>> if you look at the code that uses it, it's almost entirely the older
->>>> and less maintained board models, especially those which don't actually
->>>> model an SoC and just have the board code create all the devices.
->>> 
->>> Yeah I was thinking that you'd use the DSL (e.g. YAML templates or 
->>> similar) to provide some of the boilerplating around common actions, 
->>> rather than the C API itself. Even better, once everything has been moved 
->>> to use a DSL then the C API shouldn't really matter so much as it is no 
->>> longer directly exposed to the user.
->> 
->> That may be a few more releases away (although Philippe is doing an 
->> excellent job with doing this all alone and as efficient as he is it might 
->> be reached sooner). So I think board code will stay for a while therefore 
->> if something can be done to keep it simple with not much work then maybe 
->> that's worth considering. That's why I did not propose to keep 
->> sysbus_create_simple and add properties to it because that might need 
->> something like a properties array with values that's hard to describe in C 
->> so it would be a bit more involved to implement and defining such arrays 
->> would only make it a litle less cluttered. So just keeping the parts that 
->> work for simple devices in sysbus_realize_simple and also keep 
->> sysbus_create_simple where it's already used is probably enough now rather 
->> than converting those to low level calls everywhere now.
->> 
->> Then we'll see how well the declarative machines will turn out and then if 
->> we no longer need to write board code these wrappers could go away then but 
->> for now it may be too early when we still have a lot of board code to 
->> maintain.
->
-> I'll keep forward with this patch inlining sysbus_create_simple();
-> if we notice in few releases the DSL experiment is a failure, I don't
-> mind going back reverting it.
+Thanks for the indication.
+I have changed the way we handle the reset to have a three phase one.
 
-I'm OK with that. Just thought that keeping a sysbus_realize_simple 
-function that's the same as sysbus_create simple minus creating the device 
-would not be a big change and cause less churn. But if you plan te remove 
-this completely in near future so another API would be needed anyway then 
-maybe not worth keeping it. Having only low level functions to create and 
-wire devices seems impractical for writing boeards in C so eventually some 
-replacement will be needed. I doubt every board can be quickly converted 
-to a new declarative way soon but you can prove me wrong. If this helps 
-you to progress to that direction then I'm not attached to it to much but 
-would like to keep some simplicity in board code wherever possible as it's 
-already quite complex to do simple things with low level APIs so I'd 
-prefer if convenience APIs don't go away.
+>=20
+>=20
+>> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+>> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+>> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+>> ---
+>>  hw/misc/stm32l4x5_rcc.c                   | 158 ++++++++++++++++++++++
+>>  hw/misc/trace-events                      |   5 +
+>>  include/hw/misc/stm32l4x5_rcc.h           | 119 ++++++++++++++++
+>>  include/hw/misc/stm32l4x5_rcc_internals.h |  29 ++++
+>>  4 files changed, 311 insertions(+)
+>>
+>> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
+>> index 38ca8aad7d..ed10832f88 100644
+>> --- a/hw/misc/stm32l4x5_rcc.c
+>> +++ b/hw/misc/stm32l4x5_rcc.c
+>> @@ -36,6 +36,132 @@
+>>  #define LSE_FRQ 32768ULL
+>>  #define LSI_FRQ 32000ULL
+>>
+>> +static void clock_mux_update(RccClockMuxState *mux)
+>> +{
+>> +    uint64_t src_freq, old_freq, freq;
+>> +
+>> +    src_freq =3D clock_get_hz(mux->srcs[mux->src]);
+>> +    old_freq =3D clock_get_hz(mux->out);
+>=20
+> You should try to avoid using clock_get_hz() and clock_update_hz()
+> when doing clock calculations like this. There is inherently
+> rounding involved if the clock isn't running at an exact number of Hz.
+> It's best to use clock_get() and clock_set(), which work with
+> the clock period specified in units of 2^-32ns.
+>=20
+>=20
+>> +
+>> +    if (!mux->enabled || !mux->divider) {
+>> +        freq =3D 0;
+>> +    } else {
+>> +        freq =3D muldiv64(src_freq, mux->multiplier, mux->divider);
+>=20
+> Consider whether you can use the Clock's builtin period
+> multiplier/divider (clock_set_mul_div()).
 
-Regards,
-BALATON Zoltan
---3866299591-2026228376-1708977846=:54539--
+I have changed it to use the period and the builtin clock_set_mul_div() but=
+ I had to discard
+the check below that prevents a lot of spam in the logs due to no longer
+having access to the children frequency without using muldiv64 again.
+Any idea on how to keep a similar functionnality .
+
+>=20
+>> +    }
+>> +
+>> +    /* No change, early return to avoid log spam and useless propagatio=
+n */
+>> +    if (old_freq =3D=3D freq) {
+>> +        return;
+>> +    }
+>> +
+>> +    clock_update_hz(mux->out, freq);
+>> +    trace_stm32l4x5_rcc_mux_update(mux->id, mux->src, src_freq, freq);
+>> +}
+>> +
+>> +static void clock_mux_src_update(void *opaque, ClockEvent event)
+>> +{
+>> +    RccClockMuxState **backref =3D opaque;
+>> +    RccClockMuxState *s =3D *backref;
+>> +    /*
+>> +     * The backref value is equal to:
+>> +     * s->backref + (sizeof(RccClockMuxState *) * update_src).
+>> +     * By subtracting we can get back the index of the updated clock.
+>> +     */
+>> +    const uint32_t update_src =3D backref - s->backref;
+>> +    /* Only update if the clock that was updated is the current source*=
+/
+>> +    if (update_src =3D=3D s->src) {
+>> +        clock_mux_update(s);
+>> +    }
+>> +}
+>> +
+>> +static void clock_mux_init(Object *obj)
+>> +{
+>> +    RccClockMuxState *s =3D RCC_CLOCK_MUX(obj);
+>> +    size_t i;
+>> +
+>> +    for (i =3D 0; i < RCC_NUM_CLOCK_MUX_SRC; i++) {
+>> +        char *name =3D g_strdup_printf("srcs[%zu]", i);
+>> +        s->backref[i] =3D s;
+>> +        s->srcs[i] =3D qdev_init_clock_in(DEVICE(s), name,
+>> +                                        clock_mux_src_update,
+>> +                                        &s->backref[i],
+>> +                                        ClockUpdate);
+>> +        g_free(name);
+>> +    }
+>> +
+>> +    s->out =3D qdev_init_clock_out(DEVICE(s), "out");
+>> +}
+>> +
+>> +static void clock_mux_reset_hold(Object *obj)
+>> +{ }
+>> +
+>> +static const VMStateDescription clock_mux_vmstate =3D {
+>> +    .name =3D TYPE_RCC_CLOCK_MUX,
+>> +    .version_id =3D 1,
+>> +    .minimum_version_id =3D 1,
+>> +    .fields =3D (VMStateField[]) {
+>> +        VMSTATE_UINT32(id, RccClockMuxState),
+>> +        VMSTATE_ARRAY_CLOCK(srcs, RccClockMuxState,
+>> +                            RCC_NUM_CLOCK_MUX_SRC),
+>> +        VMSTATE_CLOCK(out, RccClockMuxState),
+>=20
+> Output clocks don't need VMSTATE_CLOCK lines. (We trust
+> the device on the other end to migrate its state as needed.)
+
+Done. This line was removed.
+
+>=20
+>> +        VMSTATE_BOOL(enabled, RccClockMuxState),
+>> +        VMSTATE_UINT32(src, RccClockMuxState),
+>> +        VMSTATE_UINT32(multiplier, RccClockMuxState),
+>> +        VMSTATE_UINT32(divider, RccClockMuxState),
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>=20
+>=20
+>> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+>> index 62a7599353..d5e471811c 100644
+>> --- a/hw/misc/trace-events
+>> +++ b/hw/misc/trace-events
+>> @@ -177,6 +177,11 @@ stm32l4x5_exti_write(uint64_t addr, uint64_t data) =
+"reg
+>> write: addr: 0x%" PRIx64
+>>  # stm32l4x5_rcc.c
+>>  stm32l4x5_rcc_read(uint64_t addr, uint32_t data) "RCC: Read <0x%" PRIx6=
+4 "> ->
+>>  0x%" PRIx32 ""
+>>  stm32l4x5_rcc_write(uint64_t addr, uint32_t data) "RCC: Write <0x%" PRI=
+x64 "> <-
+>>  0x%" PRIx32 ""
+>> +stm32l4x5_rcc_mux_enable(uint32_t mux_id) "RCC: Mux %d enabled"
+>> +stm32l4x5_rcc_mux_disable(uint32_t mux_id) "RCC: Mux %d disabled"
+>> +stm32l4x5_rcc_mux_set_factor(uint32_t mux_id, uint32_t old_multiplier, =
+uint32_t
+>> new_multiplier, uint32_t old_divider, uint32_t new_divider) "RCC: Mux %d=
+ factor
+>> changed: multiplier (%u -> %u), divider (%u -> %u)"
+>> +stm32l4x5_rcc_mux_set_src(uint32_t mux_id, uint32_t old_src, uint32_t n=
+ew_src)
+>> "RCC: Mux %d source changed: from %u to %u"
+>> +stm32l4x5_rcc_mux_update(uint32_t mux_id, uint32_t src, uint64_t src_fr=
+eq,
+>> uint64_t new_freq) "RCC: Mux %d src %d update: src_freq %" PRIu64 " new_=
+freq %"
+>> PRIu64 ""
+>=20
+> You don't need the trailing "" in this kind of string
+> concatenation with a PRIu64 or similar: adding the empty
+> string on the end of a string has no effect.
+
+The useless trailing "" have been removed for every commit of this patch se=
+t.
+
+>=20
+> thanks
+> -- PMM
+
+Thanks for the review !

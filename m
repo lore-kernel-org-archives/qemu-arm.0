@@ -1,219 +1,157 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2202840ejf;
-        Mon, 26 Feb 2024 09:37:47 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWkE4x9H6ZVSmKREB2XKiTbBwBUBiKRwrsM0pjKWn1UFyrSZo8aKkBINotElw5krArynFKWDty9itewZnUPKNUU1CKJ47o/
-X-Google-Smtp-Source: AGHT+IFPM6IGnH418e3oShzgptGjV0idchBs4Pk0gIIOa+bV1+/oxJZC9Jys1OmbJbq3Fe3yw2Xh
-X-Received: by 2002:aa7:c919:0:b0:565:ff53:5359 with SMTP id b25-20020aa7c919000000b00565ff535359mr1297465edt.41.1708969067782;
-        Mon, 26 Feb 2024 09:37:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1708969067; cv=pass;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2203242ejf;
+        Mon, 26 Feb 2024 09:38:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVNlFUB4Tjlt4LnvQMfHGNlTIYCXoZnFUQndNk9Qe5AGRbVJXXbC0p9npUZfkKxNxUjYQNjaGobGuCkyHIIUbIGbfTlwRQ4
+X-Google-Smtp-Source: AGHT+IG6WITGMd50FP1HBnRoke2gfakYa+zETCLpYsf3+mp5sGjoI4mS3HrNuRzSi+Q8iZ1tdV8i
+X-Received: by 2002:a05:6830:1388:b0:6e4:7451:e7ba with SMTP id d8-20020a056830138800b006e47451e7bamr8285359otq.8.1708969107831;
+        Mon, 26 Feb 2024 09:38:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708969107; cv=none;
         d=google.com; s=arc-20160816;
-        b=g3O6/T+QNpjeKaz4nrBSfQidShkAvOwmnIvzc+7HgzMvY+StdcpCzbGjeUQrAQnmqS
-         chFjTfy/g0+qazA0Ao93dZfey7lGJvcme4OocmcCgFymvWvC5pj6HhKK9bGWQKRKSzSN
-         99z3F0C2IFat30wLPmQ7SE3zMHZ9PK/A6H4vfDv+COBHs6eyASBSedM865zhd3//kbTI
-         DbAGuCGVd8yuSpGkm0SWxUmPLKl0yEcCgDJGS8CgYrLezGh0ThnrVOjtbTvecv/STMC9
-         f1/ANsjoCHYFZEvPrSDXnZ6HQwBl7f0rbPXfhMvAQu+btUjnPUVjusXK17rX57rOiB2E
-         kHOA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=m77qrk6Qff2gXkBKjtrp1WyNIuR8YB6oHKyVJarj7i0=;
-        fh=OfZmDW8k0nll+OERmzwspzIBf+ptcNvE95MJdInJ9IQ=;
-        b=cXX9Ogsn8pq4pim3rmSVKqSLFwfzBYvwbirukWfWgC0/k4hxbp9r93VxhX7jdRMw0H
-         tDtmWMCMRoQCLTu8Io6SQoKhIsb/e+00qYZdMAjEAQb3VTaN6Evlqu/1A7z2VCMG/4BZ
-         /vVEdYNEHwyVLjvlrNHkE+9omwAatK9vFNFvMQJJClZF8ZLmhb1tBXd/D4BaeyoUD8GL
-         q0GO+odXuy6DuNhelVox3CEg1tY5PtSo696T6aNh+PSH5zLglDNwFY89QD551B0zXPsH
-         dlBtQVOXlYhEkz3WAyH9A8uCm+k637j0gNmpd9YJhCLM/UPh/bP27zSgfQw4SMn71Njq
-         SJGA==;
+        b=w4V0LNDDXuXNbi41RIh3Bcnk2+ANTBu6H27e9VJekcZlNAsKEKNJ0uGcnYCr5xK2ZU
+         sB5Wndv6Mm3Jy6SfRF85y7GTGOuf05hGEGeF9Ggdv8EbiDXpXqer3XtBRfNnwVMafp0K
+         R+1dOgIBDcHXPHYvZs9lSMsOiIfiJWpMT4/NhiS63GBgKCwS200pgMy+46F/H+I0VHvN
+         fORWNucXvwIkmlen2deKYRkxU4OFZhGPhi3sWtb4dsUM3uRma0ZJAAaKEfLvmEgn2Fa2
+         kUyTlaygxLE1ZGcM3MEMacm2h7W/N8xF7FtiW7NSOZ2dJdxr8KcbZJtXqEZsXk6HGebq
+         aaLg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8mgFB9QFF5PJ603vJYftBh86z1nFKmxYR5yaSbjagl0=;
+        fh=OZQBfL75rC14cCDy3q+1fYHCs9KjWAQ7ZJ3hTfS+5lQ=;
+        b=JdFUOlsr0QxCSZnv821C/Kxnxsrt25Y0iTWTGQMnxQ7iJEdhSagxc377g07yVKUqh9
+         SB995wah1GNi/3QwwpYLqqmMMGZsAvKIMylwNkWwx3CccBuo7oxClYzZDbxM8ZL30HVg
+         TR4UBMZFZHmCSjmppVMc1uZm/6oPOlLsuI6iCOcvBwREpQbzEthHuH/l7ZqbqN7c94CQ
+         m04pCrdOrhK6oLnmKzIi8D44MCuYmIvvzj/OEFIDrcKv5dOGxczgrPmikQ73hIcm6i9Z
+         /d5EXpa0pMOGIdU3JaVpYkxMEDtFBHuSWHeXirStEfqycW4Wq79A7QNopq1yi6/zeH0L
+         zJSA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y4JyJZBX;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nEVBO3hw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a8-20020a50c308000000b0056447760992si2314224edb.33.2024.02.26.09.37.47
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x22-20020ac84a16000000b0042e87608fb2si2123208qtq.359.2024.02.26.09.38.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 09:37:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Feb 2024 09:38:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y4JyJZBX;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-9950-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nEVBO3hw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 4F7C81F28AFA
-	for <alex.bennee@linaro.org>; Mon, 26 Feb 2024 17:37:47 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AEBCD12E1FE;
-	Mon, 26 Feb 2024 17:37:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Y4JyJZBX"
-Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 947D81292FF
-	for <kvm@vger.kernel.org>; Mon, 26 Feb 2024 17:37:26 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708969048; cv=none; b=ncM6MazLn/e81rebn8lYo1ZsUX2du61kJBrsum/Jk5qHZ+V93sI0a4a2bf5kVW7iQs3bk1py7aPTg90sGNmRHmCc9gxju64mwNmReF8kw1SORt0Mj6Ze/mA9sNl6VvPpcQD5EhSzUJvZu6KyBy6TXxtE/R/n5q3a8QcoTSpmD90=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708969048; c=relaxed/simple;
-	bh=qruZYQ8U3OtRKaG5ahQ+XCEbOjNKS/W5Vtc1DQ+jG24=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=QuuS0eSFnDnAW+toPrBTLozpXI6SMWiAI/PZgOfbTfb0rek7qaUb70APDHpsX82/tZ2ym+79mgA8gk7GRk5aW1jm+lUszb6joySezXQNFOl4n+G5+gSqGaJ5XCWGraaEb34ceAU8UFVwJtaIGKFhkyIgAkM5TmjqmPPWRHi2Wkw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=Y4JyJZBX; arc=none smtp.client-ip=209.85.208.46
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-563bb51c36eso3530755a12.2
-        for <kvm@vger.kernel.org>; Mon, 26 Feb 2024 09:37:26 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1reevh-0003wX-Gb; Mon, 26 Feb 2024 12:38:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reevb-0003oU-Jq
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:11 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reevZ-00074m-2N
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:11 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-40fb3b5893eso26318985e9.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 09:38:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708969045; x=1709573845; darn=vger.kernel.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=m77qrk6Qff2gXkBKjtrp1WyNIuR8YB6oHKyVJarj7i0=;
-        b=Y4JyJZBX3NTxUZo1Imeoyv50uBcMl0H5LVjUmiqAjBK2e69yE1Ys7uLZvGnhOvAOft
-         Q7sP1AloTvNZdBg1ARlsRrB6+zaRuPs63LaTiottNjCckTKogOIAcwj7phTFAmRsti8E
-         MzUieQ48jGyqASNY8JNVhgLJwjFUIXUo+ZsN4aM4t0ckdLZI0Tw2oH8MvGfOkVZ9QymD
-         b/i1IpGBtfuuVa18eoJOVYYyOTsLks8V99cbPSxGsBEQuhcejHPsnEbecL4IQRxFvv9I
-         SxYF/YOo0mnPL7gO0PyAU4ggQjuDNXux33bIN7GqAnTUUJ+tmGRvoLejL2dNTQ+E6iA7
-         PE/Q==
+ d=linaro.org; s=google; t=1708969087; x=1709573887; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8mgFB9QFF5PJ603vJYftBh86z1nFKmxYR5yaSbjagl0=;
+ b=nEVBO3hw767+JvcwHRKc4CyIVLkq4IFIylqPRhUxJO1Tqm+9x8LJn44wEhy6r5Eumc
+ 6TNmSNAxZfXAVBKXoVsk1g72N+eOxOZqkoRin+LsT8RUWD+E2SZju5LCZ2ox8IWSJYvM
+ tkHmtS9IwcHBd2vh5n1TVf3lv2BRFJbx/D2TWmKyhFNzfd4cIht2ONr/RhWTWEvuCtHk
+ hFS9CSlNiLEpiFwd16E98xS64NaJsaAXGb6BhsLUMznXZMqCzo9AMY+59T7w2/32eb8D
+ 1wDQiVho2O3Y+bhdRLAFoGm/cOXODZnI0eYhrQ7vQ3fHiX3ScniEQSlddxRvHFFdwsAA
+ BUrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708969045; x=1709573845;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m77qrk6Qff2gXkBKjtrp1WyNIuR8YB6oHKyVJarj7i0=;
-        b=PJ61IpF7vJTM7ciO6Jj7FEOrU1eYnOt66v7gUaN0wNirteuXyncw6cYwJT0//3CUho
-         wpYpCRT7coO3B6CPVBa/07Q4VfjS392wMzd3nAdpu7PHrD7GFTJDvOU4EgGXAvlvfZiD
-         cUewON5uDDnywTI1bJjA7yQHCpUsRXrUJyzSqL/k6KOHR1WEb7SY6100OFjOjgQv6jvF
-         PWFsgnF7Bjlf3QNU5emlkg95RJFTjB07QpCm4TACg3TY2M0v/C1J1aHghZW631Zqzw0I
-         7saGX0xazqkRTagtwljiHe6SJyf1GAjhyENB0DhefqFeyzeKgv+dAOr2fA+tbUEq5092
-         hoqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWMPo2Spf7DkPOeyxfWXKj1T0DbEGG69t2VusuzTl8xG4EIPglEAv8ODRgXsCBaP2OKMJ5UMV0eeGPUYL6bp57KOwld
-X-Gm-Message-State: AOJu0YxRDb+y/s/dpB6doNYt6cgf2xWntHSbDEpMywdF4mVNyUuY+WyN
-	o+mreKGMWZ3SP6TOZW+GZ566k9TMuMUB2FzEyhu37Z3zDHmzg8DofoyetclfX04=
-X-Received: by 2002:a17:906:1b4a:b0:a43:4675:631b with SMTP id p10-20020a1709061b4a00b00a434675631bmr2299525ejg.49.1708969044848;
-        Mon, 26 Feb 2024 09:37:24 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.223.153])
-        by smtp.gmail.com with ESMTPSA id d25-20020a170906305900b00a3eb1b1896bsm2579408ejd.58.2024.02.26.09.37.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Feb 2024 09:37:24 -0800 (PST)
-Message-ID: <c5d5f835-5b7f-46bb-8393-6d638cbad012@linaro.org>
-Date: Mon, 26 Feb 2024 18:37:21 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1708969087; x=1709573887;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8mgFB9QFF5PJ603vJYftBh86z1nFKmxYR5yaSbjagl0=;
+ b=SVxurXjQnKc9E2TgGpEpg3Xl69C03kMCJYgUD+v9tRcOYYQvEAqSpbQhDW1kn6TRkh
+ Cdwxn5eUTHV0U5C2wFfNuWg+ePJu2peIT0CbB3psQkF/jo+++eQ/5kfbpLrC2rfL9Tlb
+ 2djAUkXvuRA/Gt62x9TNJUznx2t0GCMQ69ucJIM5PVKA2H78Nsg8+HgkoFCiHmm+mS28
+ GVPkrakGGmebCBN7MqIbtVsVHviwRG/QNhIgmXhLLTZCkisjzW7GBhgacBLzRRKxYSxc
+ I8XMQaECyJUfXmh9trB4SB7C4/8MRm5oOvVUklQh6w36Il6LC+D7JH7nUYMme7yGpOYg
+ BB3Q==
+X-Gm-Message-State: AOJu0YyAbvZFcarz/YjlkimZXXk348eVEf4ZeShwDlStONwTE0QU3bK/
+ C76cn2BD+ZQlMhbPX5dwxsYfdRimcrRJvBgN60t5nA8MXCMWiy0hP+9Jrq5NIKc=
+X-Received: by 2002:a05:600c:34c7:b0:412:989a:f6f5 with SMTP id
+ d7-20020a05600c34c700b00412989af6f5mr5761837wmq.38.1708969087571; 
+ Mon, 26 Feb 2024 09:38:07 -0800 (PST)
+Received: from m1x-phil.lan ([176.187.223.153])
+ by smtp.gmail.com with ESMTPSA id
+ n16-20020a05600c3b9000b0041298c75ae8sm2493367wms.1.2024.02.26.09.38.06
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 26 Feb 2024 09:38:07 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/6] hw: Remove sysbus_address_space()
+Date: Mon, 26 Feb 2024 18:37:58 +0100
+Message-ID: <20240226173805.289-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
- kvm@vger.kernel.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20240216153517.49422-1-philmd@linaro.org>
- <20240216153517.49422-2-philmd@linaro.org>
- <bcfd3f9d-04e3-79c9-c15f-c3c8d7669bdb@eik.bme.hu>
- <2f8ec2e2-c4c7-48c3-9c3d-3e20bc3d6b9b@linaro.org>
- <b40fd79f-4d41-4e04-90c1-6f4b2fde811d@linaro.org>
- <00e2b898-3c5f-d19c-fddc-e657306e071f@eik.bme.hu>
- <2b9ea923-c4f9-4ee4-8ed2-ba9f62c15579@linaro.org>
- <6b5758d6-f464-2461-f9dd-71d2e15b610a@eik.bme.hu>
- <bc5929e4-1782-4719-8231-fe04a9719c40@ilande.co.uk>
- <CAFEAcA-Mvd4NVY2yDgNEdjZ_YPrN93PDZRyfCi7JyCjmPs4gAQ@mail.gmail.com>
- <0a31f410-415d-474b-bcea-9cb18f41aeb2@ilande.co.uk>
- <9ef2075b-b26b-41d2-a7d0-456cec3b104a@eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <9ef2075b-b26b-41d2-a7d0-456cec3b104a@eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: R3IIZL9lElPN
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: suZspfSCyWFI
 
-Hi,
+(all series reviewed)
 
-On 19/2/24 15:05, BALATON Zoltan wrote:
-> On Mon, 19 Feb 2024, Mark Cave-Ayland wrote:
->> On 19/02/2024 13:05, Peter Maydell wrote:
->>> On Mon, 19 Feb 2024 at 12:49, Mark Cave-Ayland
->>> <mark.cave-ayland@ilande.co.uk> wrote:
->>>>
->>>> On 19/02/2024 12:00, BALATON Zoltan wrote:
->>>>> For new people trying to contribute to QEMU QDev is overwhelming so 
->>>>> having some way
->>>>> to need less of it to do simple things would help them to get started.
->>>>
->>>> It depends what how you define "simple": for QEMU developers most 
->>>> people search for
->>>> similar examples in the codebase and copy/paste them. I'd much 
->>>> rather have a slightly
->>>> longer, but consistent API for setting properties rather than coming 
->>>> up with many
->>>> special case wrappers that need to be maintained just to keep the 
->>>> line count down for
->>>> "simplicity".
->>>>
->>>> I think that Phil's approach here is the best one for now, 
->>>> particularly given that it
->>>> allows us to take another step towards heterogeneous machines. As 
->>>> the work in this
->>>> area matures it might be that we can consider other approaches, but 
->>>> that's not a
->>>> decision that can be made right now and so shouldn't be a reason to 
->>>> block this change.
->>>
->>> Mmm. It's unfortunate that we're working with C, so we're a bit limited
->>> in what tools we have to try to make a better and lower-boilerplate
->>> interface for the "create, configure, realize and wire up devices" task.
->>> (I think you could do much better in a higher level language...)
->>> sysbus_create_simple() was handy at the time, but it doesn't work so
->>> well for more complicated SoC-based boards. It's noticeable that
->>> if you look at the code that uses it, it's almost entirely the older
->>> and less maintained board models, especially those which don't actually
->>> model an SoC and just have the board code create all the devices.
->>
->> Yeah I was thinking that you'd use the DSL (e.g. YAML templates or 
->> similar) to provide some of the boilerplating around common actions, 
->> rather than the C API itself. Even better, once everything has been 
->> moved to use a DSL then the C API shouldn't really matter so much as 
->> it is no longer directly exposed to the user.
-> 
-> That may be a few more releases away (although Philippe is doing an 
-> excellent job with doing this all alone and as efficient as he is it 
-> might be reached sooner). So I think board code will stay for a while 
-> therefore if something can be done to keep it simple with not much work 
-> then maybe that's worth considering. That's why I did not propose to 
-> keep sysbus_create_simple and add properties to it because that might 
-> need something like a properties array with values that's hard to 
-> describe in C so it would be a bit more involved to implement and 
-> defining such arrays would only make it a litle less cluttered. So just 
-> keeping the parts that work for simple devices in sysbus_realize_simple 
-> and also keep sysbus_create_simple where it's already used is probably 
-> enough now rather than converting those to low level calls everywhere now.
-> 
-> Then we'll see how well the declarative machines will turn out and then 
-> if we no longer need to write board code these wrappers could go away 
-> then but for now it may be too early when we still have a lot of board 
-> code to maintain.
+Since v1:
+- Rebased
 
-I'll keep forward with this patch inlining sysbus_create_simple();
-if we notice in few releases the DSL experiment is a failure, I don't
-mind going back reverting it.
+Pass address space as link property for devices where
+it seems to matter, otherwise just use get_system_memory().
 
-Regards,
+Philippe Mathieu-Daudé (6):
+  hw/arm: Inline sysbus_create_simple(PL110 / PL111)
+  hw/display/pl110: Pass frame buffer memory region as link property
+  hw/arm/exynos4210: Inline sysbus_create_varargs(EXYNOS4210_FIMD)
+  hw/display/exynos4210_fimd: Pass frame buffer memory region as link
+  hw/i386/kvmvapic: Inline sysbus_address_space()
+  hw/sysbus: Remove now unused sysbus_address_space()
 
-Phil.
+ include/hw/sysbus.h          |  1 -
+ hw/arm/exynos4210.c          | 14 +++++++++-----
+ hw/arm/integratorcp.c        |  7 ++++++-
+ hw/arm/realview.c            |  7 ++++++-
+ hw/arm/versatilepb.c         |  8 +++++++-
+ hw/arm/vexpress.c            | 15 +++++++++++++--
+ hw/core/sysbus.c             |  5 -----
+ hw/display/exynos4210_fimd.c | 19 ++++++++++++++++---
+ hw/display/pl110.c           | 20 ++++++++++++++++----
+ hw/i386/kvmvapic.c           | 11 +++++------
+ 10 files changed, 78 insertions(+), 29 deletions(-)
+
+-- 
+2.41.0
+

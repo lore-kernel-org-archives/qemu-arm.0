@@ -1,92 +1,117 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1704084ejf;
-        Sun, 25 Feb 2024 12:29:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUTBdguYfOiL4WYpD21oA67mmDAEThLW1gwtuPXt0u9bUQXWJZ/664h8zu16rgcDt5vVVbuCkZObBO1c/a1c9RJIMjiN6oH
-X-Google-Smtp-Source: AGHT+IHXtFiYo19IU1qIGExAyIAJMGO1Nqs2QwTnTIaEuNVZEGqpuw0Emqxr4rKY5sQ6NCoUv1u0
-X-Received: by 2002:a0c:f554:0:b0:686:a185:dc11 with SMTP id p20-20020a0cf554000000b00686a185dc11mr6100747qvm.55.1708892945280;
-        Sun, 25 Feb 2024 12:29:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708892945; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1761856ejf;
+        Sun, 25 Feb 2024 16:03:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU6DYzPRY1qSDvTGxHt8QFqX6Z1OJqmHSNc3n/ixePNQXfhsmuhHmhOktR94BbJ9FJ2TUKsdT9htxaB75CNRg9YPcwX9CtE
+X-Google-Smtp-Source: AGHT+IERC0aeZcD1uXY0BokRjJwXeFqroDnZH0/X4sT4R0bPLguf7Oro5nAIqUG37vkztYmCPPSe
+X-Received: by 2002:a05:6808:15a5:b0:3c1:9a62:aa41 with SMTP id t37-20020a05680815a500b003c19a62aa41mr4396355oiw.35.1708905816885;
+        Sun, 25 Feb 2024 16:03:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708905816; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cy9gjzh8zjFk0MU7n/gQN1onGUBIxBB/l9zXaA5C3KN7z0zdit1zhP4H/hvkh7K4t3
-         03Omf01gi6Bnsqy+60mqbLBDe4D8Vwxy6t4fr1tLZ66mNylMuAtzDas+swCNXfaGuJRJ
-         2Cp0qBM83tSz9PM3uw5TMEnIJOTt48JxfZwZM3kcUm0NEgOaNvsUWnL43X24RPMPEvfP
-         kghniha3nibwxDnTONxorxCZkQTfsGePKe24i8jMat//LNomYUkIZhJf8Foo3z/GCEe2
-         OR6VN5Mvv9vSmIwNdBcn0pDqHaHSVIrgy5D1q7wRcEEiFFhSt/NS9mwajKT1kupwB3gw
-         oVYg==
+        b=mU8NoxcQll5fJ+ap2JqF3338xXiuDWoQRSd/wcEctIPIFq7cXqX1o8P1UeuRfiOHHS
+         Pi4zT7OpSS0CgiTmGmjyBW4oQYasNMUoaBRw+8a5gJA3sV1zy7Xv4/tE2itBfilqWHSq
+         9YHSkcFKeikMogCN413Tqnl6UEUukSZ2zi2hM+eUh+ScSVL9fEVGTNJAWZFIGZbPjkM8
+         r8WMFgfvSdcEkSc0wY15BQpnHDHUltUwcC0IdjVPcjipAkdl7tlksJPuqshQoKw1egbH
+         EE+cHjx6HhJ8iMSbpSw4rOul1MeNsoFv0FkHYnuyPu6d919NUCLZva1zlNd+vqLdVcEP
+         3kEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=mXLmU3lB9Lbzvw3Bqr9T6ZximQ4ugC6I0JMcGUIUU6k=;
-        fh=pWpQGDvMWlMc4k/tuH7NYRbP0ihtXJjssLAAiK6yLzo=;
-        b=ODHCwprPZsCyrX8Z2zh5Ces2+JDrKfLEBbK87XWLgeNqlcMt/ke9jREHee1NOwvdNb
-         pUNj4WNjD8q7mbqC316OS6cx7WKDmDzv/gTVNAs2BpoSry4PWx9C3UttI/dCyZVRCKYq
-         qIOWUGprRFif0m8JnDO3KTrFSrRCUyQZlsRSyb1PrZpkESir00D19XRX6vtPfXPnd3NW
-         JaCiOzzYvZ6IPPeJbx+vZqpOM6ADJk1Pu/yiJoXHmOSsn18fbv/PmGdyYKJPGkR1eoud
-         xBQAuE//VTrVSIPt7KpMWJn24BKxw5xveSC6P0w3pF10SeLjta1TaByqqLVppmTEzq2r
-         jz1A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=iSoqiILo/8T//a8DbNy1D69NQ4By1adZ0vkkIYpfSrU=;
+        fh=Q3ymybApXVKZLLe/tVr7XNOAtHP7L1mCO+uDLDigmRk=;
+        b=oCh9xksjE0XakwE7O2rX+AUa7w7c2wy3g49dcKk9B6vUexiScRFBnAKlNsUwOJQjlQ
+         JK2jUGEvjeQzeAelCaB+hkfuXj1XqHZPTD2OAFLF78jMx6CYgYyenxWZ3YynsUxj5vbV
+         M0qiQ0HABSRygCa3NrNc3pumQRw3nuYUvNWO9Bk/yZcRFdYNUKn3DLNdfkoulYCOgt/Z
+         +tUp/0nPA1yRaQKzIY6tWThXX52Q37yLg7hFcr+SB4iZLR+HpFFhQK4QfZ7Ui+A/tbwA
+         ityJtr6H4OwYTfDvUNisiRn5akjd7NReNfvhnYmAOw98FqH55CgkYKKE8VXkx8HViXjS
+         0lmA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="LDlt19/V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iy10-20020a0562140f6a00b0068f45b756f5si3763797qvb.69.2024.02.25.12.29.05
+        by mx.google.com with ESMTPS id k11-20020ad45beb000000b0068fc588ca99si3943062qvc.476.2024.02.25.16.03.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 12:29:05 -0800 (PST)
+        Sun, 25 Feb 2024 16:03:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="LDlt19/V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reL75-0001H8-Ok; Sun, 25 Feb 2024 15:28:43 -0500
+	id 1reOSs-0006fn-Ve; Sun, 25 Feb 2024 19:03:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1reL74-0001Gn-RC; Sun, 25 Feb 2024 15:28:42 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1reL71-0006Va-Rj; Sun, 25 Feb 2024 15:28:42 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 29C564E6099;
- Sun, 25 Feb 2024 21:28:35 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id lQzbAKF0xXt6; Sun, 25 Feb 2024 21:28:33 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 22A944E609C; Sun, 25 Feb 2024 21:28:33 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 205777456FE;
- Sun, 25 Feb 2024 21:28:33 +0100 (CET)
-Date: Sun, 25 Feb 2024 21:28:33 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, 
- Leif Lindholm <quic_llindhol@quicinc.com>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org, 
- John Snow <jsnow@redhat.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH v2 3/3] hw/ide: Include 'ide_internal.h' from current path
-In-Reply-To: <20240225171637.4709-4-philmd@linaro.org>
-Message-ID: <feffd329-59e0-0291-0dd6-76a625da190b@eik.bme.hu>
-References: <20240225171637.4709-1-philmd@linaro.org>
- <20240225171637.4709-4-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1reOSm-0006ZR-9P; Sun, 25 Feb 2024 19:03:20 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1reOSh-0000Hx-64; Sun, 25 Feb 2024 19:03:19 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-60822b444c9so15149697b3.2; 
+ Sun, 25 Feb 2024 16:03:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1708905790; x=1709510590; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iSoqiILo/8T//a8DbNy1D69NQ4By1adZ0vkkIYpfSrU=;
+ b=LDlt19/V42eulxuWcX6LNF9pKcGLBI7dE2UNQ6IzVshMxYJWfOgDGjG+QOZy3tA3Pa
+ A8RPhyoAnlVlOo0Pb4UqCycy0o8cE5AGLPB67nTmTjR1tOynlJxNhxnox3uaJYoPMm6T
+ p1mXAhjbRHWoyL03r+mDl4vYssjjmGGmaGuIW5V/zuiLhOvFtz6HHf0Oz2Z/puzxa2sD
+ Nx3KEAOI99QMiSVnmLerseHcLoD0s9hz02ZCA+4oyRKANkJ340Y7qg5nCyRMOxkzt/Rc
+ SwiZxzC6ApZtsqmcboQhx/jQzqPZ/sRAEIlTegnKA6/fn1UvKBVmMzwp3Rnmy8UJbQEz
+ WGbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708905790; x=1709510590;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iSoqiILo/8T//a8DbNy1D69NQ4By1adZ0vkkIYpfSrU=;
+ b=B5CYnjWTmEMzn4YUzwVgPKJJvac2OrWMWAxPg6sRL9+f2WDt1DVmETy843KTwZ2hnG
+ JblMnwi/ew3vvrileJ8kJ8ASHzFFeTz1w9YZ+vhDQRbES2CULJ7vUpYOljPr5PFbOS8i
+ 1QCRNlMpW4pVFYMTG1SYeqctq1ve6rWy6+cinzl1fM1k39lFgjOM2myF8TTvRcGnmZ0C
+ AKwEL5rmwb8gNl2qAO5ZKqd120Su4zNoet4hBCR/xiJbYNiVPtshAP1jadUwAIVJAkjl
+ 1rtzbI0gUC+ubz+86KGBj0+kgZbmKGewTQ3+KObn5TBeHeylaSHqrmhKc9pE905vz1x3
+ 7Flg==
+X-Gm-Message-State: AOJu0Yx/Z3rtg0s6QTWkm7wfLKi1yjRFIQ1xTNHUTtICN9V19JwG7bQl
+ 5selSJQeeMiUfEpL8dwwBttG2RHh/xnBK53YDroQRKpNMhQlz582OvYJfVSLQNP+HA==
+X-Received: by 2002:a81:aa4c:0:b0:608:b439:4779 with SMTP id
+ z12-20020a81aa4c000000b00608b4394779mr4863735ywk.0.1708905790374; 
+ Sun, 25 Feb 2024 16:03:10 -0800 (PST)
+Received: from localhost.localdomain ([201.203.117.224])
+ by smtp.gmail.com with ESMTPSA id
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 25 Feb 2024 16:03:10 -0800 (PST)
+From: Sergey Kambalin <serg.oker@gmail.com>
+X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 06/41] Add BCM2838 GPIO stub
+Date: Sun, 25 Feb 2024 18:02:24 -0600
+Message-Id: <20240226000259.2752893-7-sergey.kambalin@auriga.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-190602859-1708892913=:78302"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,270 +126,238 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +hJWi2U0PCBN
+X-TUID: jQF6P4yQlDTC
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/gpio/bcm2838_gpio.c         | 153 +++++++++++++++++++++++++++++++++
+ hw/gpio/meson.build            |   5 +-
+ include/hw/gpio/bcm2838_gpio.h |  40 +++++++++
+ 3 files changed, 197 insertions(+), 1 deletion(-)
+ create mode 100644 hw/gpio/bcm2838_gpio.c
+ create mode 100644 include/hw/gpio/bcm2838_gpio.h
 
---3866299591-190602859-1708892913=:78302
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
+new file mode 100644
+index 0000000000..a312490bbd
+--- /dev/null
++++ b/hw/gpio/bcm2838_gpio.c
+@@ -0,0 +1,153 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "hw/gpio/bcm2838_gpio.h"
++
++#define GPFSEL0   0x00
++#define GPFSEL1   0x04
++#define GPFSEL2   0x08
++#define GPFSEL3   0x0C
++#define GPFSEL4   0x10
++#define GPFSEL5   0x14
++#define GPSET0    0x1C
++#define GPSET1    0x20
++#define GPCLR0    0x28
++#define GPCLR1    0x2C
++#define GPLEV0    0x34
++#define GPLEV1    0x38
++#define GPEDS0    0x40
++#define GPEDS1    0x44
++#define GPREN0    0x4C
++#define GPREN1    0x50
++#define GPFEN0    0x58
++#define GPFEN1    0x5C
++#define GPHEN0    0x64
++#define GPHEN1    0x68
++#define GPLEN0    0x70
++#define GPLEN1    0x74
++#define GPAREN0   0x7C
++#define GPAREN1   0x80
++#define GPAFEN0   0x88
++#define GPAFEN1   0x8C
++
++#define GPIO_PUP_PDN_CNTRL_REG0 0xE4
++#define GPIO_PUP_PDN_CNTRL_REG1 0xE8
++#define GPIO_PUP_PDN_CNTRL_REG2 0xEC
++#define GPIO_PUP_PDN_CNTRL_REG3 0xF0
++
++#define RESET_VAL_CNTRL_REG0 0xAAA95555
++#define RESET_VAL_CNTRL_REG1 0xA0AAAAAA
++#define RESET_VAL_CNTRL_REG2 0x50AAA95A
++#define RESET_VAL_CNTRL_REG3 0x00055555
++
++#define BYTES_IN_WORD        4
++
++static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t value = 0;
++
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++
++    return value;
++}
++
++static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
++                               unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++}
++
++static void bcm2838_gpio_reset(DeviceState *dev)
++{
++    BCM2838GpioState *s = BCM2838_GPIO(dev);
++
++    s->lev0 = 0;
++    s->lev1 = 0;
++
++    memset(s->fsel, 0, sizeof(s->fsel));
++
++    s->pup_cntrl_reg[0] = RESET_VAL_CNTRL_REG0;
++    s->pup_cntrl_reg[1] = RESET_VAL_CNTRL_REG1;
++    s->pup_cntrl_reg[2] = RESET_VAL_CNTRL_REG2;
++    s->pup_cntrl_reg[3] = RESET_VAL_CNTRL_REG3;
++}
++
++static const MemoryRegionOps bcm2838_gpio_ops = {
++    .read = bcm2838_gpio_read,
++    .write = bcm2838_gpio_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2838_gpio = {
++    .name = "bcm2838_gpio",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(fsel, BCM2838GpioState, BCM2838_GPIO_NUM),
++        VMSTATE_UINT32(lev0, BCM2838GpioState),
++        VMSTATE_UINT32(lev1, BCM2838GpioState),
++        VMSTATE_UINT8(sd_fsel, BCM2838GpioState),
++        VMSTATE_UINT32_ARRAY(pup_cntrl_reg, BCM2838GpioState,
++                             GPIO_PUP_PDN_CNTRL_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2838_gpio_init(Object *obj)
++{
++    BCM2838GpioState *s = BCM2838_GPIO(obj);
++    DeviceState *dev = DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2838_gpio_ops, s,
++                          "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++    qdev_init_gpio_out(dev, s->out, BCM2838_GPIO_NUM);
++}
++
++static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
++{
++    /* Temporary stub. Do nothing */
++}
++
++static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_bcm2838_gpio;
++    dc->realize = &bcm2838_gpio_realize;
++    dc->reset = &bcm2838_gpio_reset;
++}
++
++static const TypeInfo bcm2838_gpio_info = {
++    .name          = TYPE_BCM2838_GPIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2838GpioState),
++    .instance_init = bcm2838_gpio_init,
++    .class_init    = bcm2838_gpio_class_init,
++};
++
++static void bcm2838_gpio_register_types(void)
++{
++    type_register_static(&bcm2838_gpio_info);
++}
++
++type_init(bcm2838_gpio_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 066ea96480..8a8d03d885 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -9,6 +9,9 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+-system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files(
++    'bcm2835_gpio.c',
++    'bcm2838_gpio.c'
++))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
+diff --git a/include/hw/gpio/bcm2838_gpio.h b/include/hw/gpio/bcm2838_gpio.h
+new file mode 100644
+index 0000000000..06d48e0c19
+--- /dev/null
++++ b/include/hw/gpio/bcm2838_gpio.h
+@@ -0,0 +1,40 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2838_GPIO_H
++#define BCM2838_GPIO_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2838_GPIO "bcm2838-gpio"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GpioState, BCM2838_GPIO)
++
++#define BCM2838_GPIO_REGS_SIZE 0x1000
++#define BCM2838_GPIO_NUM       58
++#define GPIO_PUP_PDN_CNTRL_NUM 4
++
++struct BCM2838GpioState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++
++    uint8_t fsel[BCM2838_GPIO_NUM];
++    uint32_t lev0, lev1;
++    uint8_t sd_fsel;
++    qemu_irq out[BCM2838_GPIO_NUM];
++    uint32_t pup_cntrl_reg[GPIO_PUP_PDN_CNTRL_NUM];
++};
++
++#endif
+-- 
+2.34.1
 
-On Sun, 25 Feb 2024, Philippe Mathieu-Daudé wrote:
-> Rename "internal.h" as "ide_internal.h", and include
-
-Is there a convention about using underscore or dash in file names? The 
-headers Thomas added are using - as well as ahci-allwinner.c, only 
-ahci_internal.h has _ (but there are others elsewhere such as 
-pci_device.h). Maybe we should be consistent at least within IDE and this 
-series is now a good opportunity for renaming these headers to match. But 
-it's just a small nit, thanks for picking this up.
-
-Regards,
-BALATON Zoltan
-
-> it via its relative local path, instead of absolute
-> to the project root path.
->
-> Mechanical patch doing:
->
->  $ sed -i -e 's#hw/ide/internal.h#ide_internal.h#' \
->        $(git grep -l hw/ide/internal)
->  $ git mv hw/ide/internal.h hw/ide/ide_internal.h
->
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> hw/ide/ahci_internal.h                | 2 +-
-> hw/ide/{internal.h => ide_internal.h} | 0
-> hw/ide/ahci.c                         | 2 +-
-> hw/ide/atapi.c                        | 2 +-
-> hw/ide/cmd646.c                       | 2 +-
-> hw/ide/core.c                         | 2 +-
-> hw/ide/ide-bus.c                      | 2 +-
-> hw/ide/ide-dev.c                      | 2 +-
-> hw/ide/ioport.c                       | 2 +-
-> hw/ide/isa.c                          | 2 +-
-> hw/ide/macio.c                        | 2 +-
-> hw/ide/microdrive.c                   | 2 +-
-> hw/ide/mmio.c                         | 2 +-
-> hw/ide/pci.c                          | 2 +-
-> hw/ide/piix.c                         | 2 +-
-> hw/ide/sii3112.c                      | 2 +-
-> hw/ide/via.c                          | 2 +-
-> 17 files changed, 16 insertions(+), 16 deletions(-)
-> rename hw/ide/{internal.h => ide_internal.h} (100%)
->
-> diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
-> index 4e13329bb2..34f3d50ca9 100644
-> --- a/hw/ide/ahci_internal.h
-> +++ b/hw/ide/ahci_internal.h
-> @@ -25,7 +25,7 @@
-> #define HW_IDE_AHCI_INTERNAL_H
->
-> #include "hw/ide/ahci.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/pci/pci_device.h"
->
-> #define AHCI_MEM_BAR_SIZE         0x1000
-> diff --git a/hw/ide/internal.h b/hw/ide/ide_internal.h
-> similarity index 100%
-> rename from hw/ide/internal.h
-> rename to hw/ide/ide_internal.h
-> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-> index 54c9685495..c2af344ac5 100644
-> --- a/hw/ide/ahci.c
-> +++ b/hw/ide/ahci.c
-> @@ -34,7 +34,7 @@
-> #include "qemu/module.h"
-> #include "sysemu/block-backend.h"
-> #include "sysemu/dma.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/ide/pci.h"
-> #include "hw/ide/ahci-pci.h"
-> #include "hw/ide/ahci-sysbus.h"
-> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
-> index dcc39df9a4..8ac99f64d2 100644
-> --- a/hw/ide/atapi.c
-> +++ b/hw/ide/atapi.c
-> @@ -24,7 +24,7 @@
->  */
->
-> #include "qemu/osdep.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/scsi/scsi.h"
-> #include "sysemu/block-backend.h"
-> #include "scsi/constants.h"
-> diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
-> index 23d213ff01..be72f4d3ed 100644
-> --- a/hw/ide/cmd646.c
-> +++ b/hw/ide/cmd646.c
-> @@ -33,7 +33,7 @@
-> #include "sysemu/reset.h"
->
-> #include "hw/ide/pci.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "trace.h"
->
-> /* CMD646 specific */
-> diff --git a/hw/ide/core.c b/hw/ide/core.c
-> index 9c4a812902..8f2004f93b 100644
-> --- a/hw/ide/core.c
-> +++ b/hw/ide/core.c
-> @@ -41,7 +41,7 @@
-> #include "qemu/cutils.h"
-> #include "sysemu/replay.h"
-> #include "sysemu/runstate.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "trace.h"
->
-> /* These values were based on a Seagate ST3500418AS but have been modified
-> diff --git a/hw/ide/ide-bus.c b/hw/ide/ide-bus.c
-> index 57fe67b29c..32e9f62137 100644
-> --- a/hw/ide/ide-bus.c
-> +++ b/hw/ide/ide-bus.c
-> @@ -21,7 +21,7 @@
-> #include "qapi/error.h"
-> #include "qemu/error-report.h"
-> #include "qemu/module.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "sysemu/block-backend.h"
-> #include "sysemu/blockdev.h"
-> #include "sysemu/runstate.h"
-> diff --git a/hw/ide/ide-dev.c b/hw/ide/ide-dev.c
-> index c8e2033469..832293ca69 100644
-> --- a/hw/ide/ide-dev.c
-> +++ b/hw/ide/ide-dev.c
-> @@ -23,7 +23,7 @@
-> #include "qemu/error-report.h"
-> #include "qemu/module.h"
-> #include "hw/ide/ide-dev.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "sysemu/block-backend.h"
-> #include "sysemu/blockdev.h"
-> #include "sysemu/sysemu.h"
-> diff --git a/hw/ide/ioport.c b/hw/ide/ioport.c
-> index 0b283ac783..7a80c549ec 100644
-> --- a/hw/ide/ioport.c
-> +++ b/hw/ide/ioport.c
-> @@ -25,7 +25,7 @@
->
-> #include "qemu/osdep.h"
-> #include "hw/isa/isa.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "trace.h"
->
-> int ide_init_ioport(IDEBus *bus, ISADevice *dev, int iobase, int iobase2)
-> diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-> index cc865c83dc..2fc28d64b6 100644
-> --- a/hw/ide/isa.c
-> +++ b/hw/ide/isa.c
-> @@ -32,7 +32,7 @@
-> #include "sysemu/dma.h"
->
-> #include "hw/ide/isa.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "qom/object.h"
->
-> /***********************************************************/
-> diff --git a/hw/ide/macio.c b/hw/ide/macio.c
-> index 0d2c6ba910..7611a99ef5 100644
-> --- a/hw/ide/macio.c
-> +++ b/hw/ide/macio.c
-> @@ -33,7 +33,7 @@
-> #include "sysemu/block-backend.h"
-> #include "sysemu/dma.h"
->
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
->
-> /* debug MACIO */
-> // #define DEBUG_MACIO
-> diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-> index a7f415f0fc..09781658f9 100644
-> --- a/hw/ide/microdrive.c
-> +++ b/hw/ide/microdrive.c
-> @@ -31,7 +31,7 @@
-> #include "sysemu/dma.h"
-> #include "hw/irq.h"
->
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "qom/object.h"
->
-> #define TYPE_MICRODRIVE "microdrive"
-> diff --git a/hw/ide/mmio.c b/hw/ide/mmio.c
-> index e8f41c0610..1ba2541b40 100644
-> --- a/hw/ide/mmio.c
-> +++ b/hw/ide/mmio.c
-> @@ -30,7 +30,7 @@
-> #include "sysemu/dma.h"
->
-> #include "hw/ide/mmio.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/qdev-properties.h"
->
-> /***********************************************************/
-> diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-> index 73efeec7f4..855cbb031d 100644
-> --- a/hw/ide/pci.c
-> +++ b/hw/ide/pci.c
-> @@ -30,7 +30,7 @@
-> #include "sysemu/dma.h"
-> #include "qemu/error-report.h"
-> #include "qemu/module.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/ide/pci.h"
-> #include "trace.h"
->
-> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-> index 1773a068c3..886cf840f1 100644
-> --- a/hw/ide/piix.c
-> +++ b/hw/ide/piix.c
-> @@ -30,7 +30,7 @@
-> #include "qemu/osdep.h"
-> #include "qapi/error.h"
-> #include "hw/pci/pci.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/ide/piix.h"
-> #include "hw/ide/pci.h"
-> #include "trace.h"
-> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-> index 321b9e46a1..e28bbd160d 100644
-> --- a/hw/ide/sii3112.c
-> +++ b/hw/ide/sii3112.c
-> @@ -13,7 +13,7 @@
->  */
->
-> #include "qemu/osdep.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/ide/pci.h"
-> #include "qemu/module.h"
-> #include "trace.h"
-> diff --git a/hw/ide/via.c b/hw/ide/via.c
-> index cf151e70ec..ceecb3aa01 100644
-> --- a/hw/ide/via.c
-> +++ b/hw/ide/via.c
-> @@ -25,7 +25,7 @@
->  */
->
-> #include "qemu/osdep.h"
-> -#include "hw/ide/internal.h"
-> +#include "ide_internal.h"
-> #include "hw/pci/pci.h"
-> #include "migration/vmstate.h"
-> #include "qemu/module.h"
->
---3866299591-190602859-1708892913=:78302--

@@ -1,110 +1,111 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1763067ejf;
-        Sun, 25 Feb 2024 16:06:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVioUJDuT4Vi4x6efXyvuJ+ENAC4ZHf1qTx2eBBEqz8/eCSjoHCvKY3MuLSHrTHWD8fR88zVJ6eEMflYlmqDnIEh40fd05/
-X-Google-Smtp-Source: AGHT+IFFW9/JaOhxjrMRDw1jsZm9ucyI81xyuDOBB4j/Dz3PtXt6medX1kBmlo6WMiICkBpKoCUE
-X-Received: by 2002:a0c:f542:0:b0:68f:39bf:35ff with SMTP id p2-20020a0cf542000000b0068f39bf35ffmr6298261qvm.58.1708906001036;
-        Sun, 25 Feb 2024 16:06:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708906001; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1763156ejf;
+        Sun, 25 Feb 2024 16:06:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUR2IBke2ea2fRTy0EQeuhFngkRDER3FBIz9D+L3KXal7Xg/zWG7ttUwpepyk33KkYGA+aW1ljDAmp1VV4eKS7PmcoNKjZ5
+X-Google-Smtp-Source: AGHT+IEON32r+t77N41QoeiPXIFeYHSwle976A11mBq6KOT4CYIjb7dAz24O6tRs/ZhPCuBHPsE5
+X-Received: by 2002:a05:6871:4e88:b0:21e:7156:a6ad with SMTP id uk8-20020a0568714e8800b0021e7156a6admr4743507oab.48.1708906014181;
+        Sun, 25 Feb 2024 16:06:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708906014; cv=none;
         d=google.com; s=arc-20160816;
-        b=wv/EwSduRUoVoXsY5vKiP6QAs5VYYSrIoihwgsejAYf5fhNM0p48si5hDrcrXcJ64S
-         fmbd4+zALMTG/vVmnwCbURjMv1al7rMMwx4sCgq5+6pcjAAFdcDAzgexd09CUm/ibfcb
-         PLTa7Y6ccE0LuiL6ysVmA3E/9SVYx4YtDW59wjwL4Rv0K1ha6XpzQOt5BjwflOSFNMQu
-         ulopQTwiG2Usns5if5qefC96yhNvTLDdd+2f2eKCGIh9kYsBpBNzFpqtxmpfTVrPMFyz
-         DqdPXlGoK6E07k468oLkj3+8Mibgg25nnB7gc3R30JlyNkcpANbSmo5BGbhFBgyl0Mp9
-         DaMQ==
+        b=vDNFacd04ZL1sCZAw+hCwCowIa3+j7aXt5BUCQ0jJ2GxbeBDFMw4Y9D2jGWRta9Uzx
+         ybofQ0dv8CsBcyre96Mhw86aD4yG9nJBd8sP37wS8mfG1SxZC2fbbtZB4GXB96cJnfxQ
+         8cggj57P034u+22sleIZXwImpIhg8joD0H7mVjoXd8whQn4EmvnWEuWsE3GG7478190v
+         YDr8rie3vWyLZ9cl88oEwiifjcgMmFDddidcreozCGGcnrija9MyGV/8MEwrR/5bxczz
+         MwhxUYpftR+MlOlyWNj0cTHTM2E3Ib3YAngdLpHKlnsiGbByYa1PLyeWJa8G1RTlCOV2
+         P90A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=B1qiUg43qFf4fDzjm0il25qz/RHiJ49XsRgqOpb6has=;
-        fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=wFGS901ISPFs7rIR4jyB1JFBwqZvoq32Sm0AFKK/rQKyiusK/XJqf7EZW+p+SoWHmz
-         J4bDXn4RwEbXG+8iPD1bLPJPPT0WjcUSAqr5N7YF+hVaQwSG9yW2J52xQRAW+FJsqxMr
-         +HU01UbRq8dssK92lo41it0LhmGUbCcCD8X+5GC9Y7xB4dakW3EXyxgEH+dSkxDMmAy+
-         hAuFSCPR75I6gfeQjCqfauyyQ0IVDsiDiCakwSN+U9VAHHZev0lobOY0GlVI43qS2ztz
-         /gTnxIxHNxDZ5YVHOj4qlQg8LWLK2iPog6a/DOTY6gktt+XcBH5BcThPF3tTa0I1ax7E
-         B0+g==;
+        bh=RoX95RxF+8U+wKqy86eL59nPnbFVQV4seY8gaIhrmaQ=;
+        fh=Q3ymybApXVKZLLe/tVr7XNOAtHP7L1mCO+uDLDigmRk=;
+        b=cSMN7icm4WZn1Yse4HWR9sDB8Nz+aKRjMB2aqwp76B+HEAPTz+4J478R5t21u6MenZ
+         Y/Rt00n7JH6kV9YvJyR6cIjKKryx+0PQC7wT+vZKE1qHV0ug0k8Raw2NwQSySY0XWh/g
+         867XKBNTeUo94znxIUW9ba1OO9SaMNOFH0XdVfj+hT5ai2upoAduaeDjEu+Uw9v0fYpJ
+         gOx3RbQiHkTuUA8e5re5eGBEcH1jPmr51es5/FJnDIUgsVj23iIIIOv5Yzy2qIV+BYN1
+         f9WQ6re1V/qR66ZRsPDtJCONZne94910sCpRzUzxYMEkn6fxY9jxsPIxwOxf377LCftw
+         SuTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W8WSuNFb;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BOjRbfVV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iw8-20020a0562140f2800b0068f2b1e5a40si3933082qvb.308.2024.02.25.16.06.40
+        by mx.google.com with ESMTPS id e11-20020a05620a12cb00b00787162aeb70si3989928qkl.774.2024.02.25.16.06.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 16:06:41 -0800 (PST)
+        Sun, 25 Feb 2024 16:06:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W8WSuNFb;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BOjRbfVV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1reOU0-0007wn-Tv; Sun, 25 Feb 2024 19:04:36 -0500
+	id 1reOT0-0006lI-Oe; Sun, 25 Feb 2024 19:03:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTM-0006zq-4Y; Sun, 25 Feb 2024 19:04:00 -0500
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ id 1reOSt-0006gC-Uo; Sun, 25 Feb 2024 19:03:27 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTF-0000aS-Vx; Sun, 25 Feb 2024 19:03:54 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-609018048c3so1157047b3.3; 
- Sun, 25 Feb 2024 16:03:47 -0800 (PST)
+ id 1reOSr-0000Ow-Up; Sun, 25 Feb 2024 19:03:27 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-6087192b092so27904537b3.0; 
+ Sun, 25 Feb 2024 16:03:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708905826; x=1709510626; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708905803; x=1709510603; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=B1qiUg43qFf4fDzjm0il25qz/RHiJ49XsRgqOpb6has=;
- b=W8WSuNFbX5OY4nJO44KcEN48BW7Fb1cW5Cj2YA35UdlYbzRJi1QfHC8KAhzOljcd1P
- 5lZaFvzMffn9IX/RJAQaBMrejWmyAtrvpePxQhex5Og83CLoSE9RtvIB9/BL/r6DTIpE
- AKAFBopQIuOyGumIR9lZaA3P96/mYnfulaZ9CaJxwPCIblGbllJ0RKXitTkDCgWqTlBv
- Av6JO2Fx6YLJ4C5xzWKE97c65T6IfYJWSpTwMUqEH2CfnsKYD3b5PsKJZhwu9u64qNEa
- KQU66Urwj3Qjh3z+MPzPolsBw7KDpwiyG+pCVukonUWRWVfF2uY6opQdHmQ9tfUg2AXQ
- lVIw==
+ bh=RoX95RxF+8U+wKqy86eL59nPnbFVQV4seY8gaIhrmaQ=;
+ b=BOjRbfVVmVZFTtd3Hu9dJ9rpBt1wizZw4k0224tYMHpFQ2oCQzGWZDU7ewdbwH6Aq4
+ 9r85zw0UUcSmmoZEMVWARjS/exuU4dhSxKw7XjSkfFqKwXhbu9qsnw5srOnaSbr1QKP3
+ FjN96Mmod13RJzx24lo5n+vjnxTxtK1xNDZCb/UkUK2HkSYuLInOu8VBrwNCpjnvLig8
+ Dz30qslWyk4JO+K8FiJuQiMO5LqQM1G1xPmLZNKcyX/IOdNdV/hEvXwTahc6o9wtcQrx
+ 7CKn0ohFxDGM1a0X9Ku8mPgpxpFLlW8FQwz/SJiC18K1F2FlqXjKmuH2QYS3mOIcFIWh
+ qu9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708905826; x=1709510626;
+ d=1e100.net; s=20230601; t=1708905803; x=1709510603;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=B1qiUg43qFf4fDzjm0il25qz/RHiJ49XsRgqOpb6has=;
- b=TzdXohkTOJmUzZbhzXvw6LC0Pxwr0xX+x/qo2VouWT37Bcuqeovcbev201QINtHaDv
- +vkWDN0b2zGEs/A/WnwTPT9vWWJh639t8hMqKRnckOjgDke+QZYG+UcEQuRBqm5SNBRn
- faErZKODuyV47rfJJRm3htWDCr/xb+Jenki5j7GnmiGUwCoumf+XgirM/0V1gqCjZVa9
- LfjUcquGnVHSjRpQ3Dao3ZsDe2HHKbcNBAbL5BakbnkjJBw17W29sojFr9QQHfuPbI5s
- cSD6tMzt22zucVTjCs3Ii269oim9V2+Vwb+UyEBmWptRoVLkN2MRTq+97ms2gjw8eKpC
- b50A==
-X-Gm-Message-State: AOJu0Yxg9Sk9H3DeWhRz1LuVM3+wtd5nkUPBT4ufQpCRbu59xj1jhCdX
- cc79XLMIlbmdNW1SfVQqbo1FMD4hq40hMq3ImI11LQGOX6FkWvWGX8I2WTNe0zC9WA==
-X-Received: by 2002:a05:690c:72b:b0:607:85b3:b52f with SMTP id
- bt11-20020a05690c072b00b0060785b3b52fmr4727520ywb.22.1708905825965; 
- Sun, 25 Feb 2024 16:03:45 -0800 (PST)
+ bh=RoX95RxF+8U+wKqy86eL59nPnbFVQV4seY8gaIhrmaQ=;
+ b=HXbxKfGYNepJGmJCYaoOt4YdM6IJ8u1rODbbnfnB/Jnjz0cCz51cqI6geML0EINWvO
+ uoPjOwEgewfnFJj8MAjRpGPbNtxovuMk6vtwWpo80QoKmVNbhT3eGZX26vmmnQMHYxp0
+ OyHLbPOEdNvLJpdFwGfA8VIiL0Xy2liA+PprfNs/POPEMX7J5jH6BuS0VuZ75qcNBc6+
+ PcXbtPB9Oyl2qNcyx12nckzK22VHGs2LlBafO4C2gKDWRctQlVhUuZp7P53f4DSKZrGl
+ /jl7kcm+pvuQlEmzxTyh1Qv7Av+TLRpOMyNgqTonCYNwM3SlI3qLtQZDQRG+BABSQhpC
+ pC+A==
+X-Gm-Message-State: AOJu0YxNkFSkiNCjOOfxD3b2RI8J5ANgx+yeyvUbDwwtetgmmBdr8Kxc
+ f8/lTlfAbHrEmDy8kBTDot7ovjNqfqmPPh30v7Tq6IGKcSpa/nm2r2C1il+UmQd6ig==
+X-Received: by 2002:a81:9bd2:0:b0:608:ab2f:cfd9 with SMTP id
+ s201-20020a819bd2000000b00608ab2fcfd9mr4963479ywg.11.1708905803243; 
+ Sun, 25 Feb 2024 16:03:23 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.44
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Feb 2024 16:03:45 -0800 (PST)
+ Sun, 25 Feb 2024 16:03:22 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v6 36/41] Add mailbox property tests. Part 1
-Date: Sun, 25 Feb 2024 18:02:54 -0600
-Message-Id: <20240226000259.2752893-37-sergey.kambalin@auriga.com>
+Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v6 17/41] Implement BCM2838 thermal sensor
+Date: Sun, 25 Feb 2024 18:02:35 -0600
+Message-Id: <20240226000259.2752893-18-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,254 +127,235 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3odEJxESxjQo
+X-TUID: 5IvnJIVDekjx
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/bcm2838-mailbox.c            |   1 -
- tests/qtest/bcm2838-mbox-property-test.c | 207 +++++++++++++++++++++++
- tests/qtest/meson.build                  |   2 +-
- 3 files changed, 208 insertions(+), 2 deletions(-)
- create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
+ hw/arm/bcm2838_peripherals.c         | 11 ++++
+ hw/arm/raspi4b.c                     |  1 -
+ hw/misc/bcm2838_thermal.c            | 98 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                  |  1 +
+ include/hw/arm/bcm2838_peripherals.h |  2 +
+ include/hw/misc/bcm2838_thermal.h    | 24 +++++++
+ 6 files changed, 136 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/bcm2838_thermal.c
+ create mode 100644 include/hw/misc/bcm2838_thermal.h
 
-diff --git a/tests/qtest/bcm2838-mailbox.c b/tests/qtest/bcm2838-mailbox.c
-index 1efd3c628a..0928a3dff8 100644
---- a/tests/qtest/bcm2838-mailbox.c
-+++ b/tests/qtest/bcm2838-mailbox.c
-@@ -11,7 +11,6 @@
- #include "hw/registerfields.h"
- #include "libqtest-single.h"
- #include "bcm2838-mailbox.h"
--#include "hw/arm/raspberrypi-fw-defs.h"
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index 4a9cbe6cf6..6badda3045 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -37,6 +37,9 @@ static void bcm2838_peripherals_init(Object *obj)
+     /* Random Number Generator */
+     object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
  
- REG32(MBOX_EXCHNG_REG,          0)
- FIELD(MBOX_EXCHNG_REG, CHANNEL, 0, 4)
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
++    /* Thermal */
++    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2838_THERMAL);
++
+     /* PCIe Host Bridge */
+     object_initialize_child(obj, "pcie-host", &s->pcie_host,
+                             TYPE_BCM2838_PCIE_HOST);
+@@ -80,6 +83,7 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     MemoryRegion *mmio_mr;
+     MemoryRegion *rng200_mr;
+     qemu_irq rng_200_irq;
++    MemoryRegion *thermal_mr;
+ 
+     int n;
+ 
+@@ -105,6 +109,13 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+                                          BCM2835_IC_GPU_IRQ, INTERRUPT_RNG);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0, rng_200_irq);
+ 
++    /* THERMAL */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
++        return;
++    }
++    thermal_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0);
++    memory_region_add_subregion( &s->peri_low_mr, 0x15D2000, thermal_mr);
++
+     /* Extended Mass Media Controller 2 */
+     object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
+                              &error_abort);
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 3c71fa9a9a..175fd2c4fa 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -67,7 +67,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ 
+     /* Temporarily disable following devices until they are implemented */
+     const char *nodes_to_remove[] = {
+-        "brcm,bcm2711-thermal",
+         "brcm,bcm2711-genet-v5",
+     };
+ 
+diff --git a/hw/misc/bcm2838_thermal.c b/hw/misc/bcm2838_thermal.c
 new file mode 100644
-index 0000000000..acb421915b
+index 0000000000..3764d55b59
 --- /dev/null
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -0,0 +1,207 @@
++++ b/hw/misc/bcm2838_thermal.c
+@@ -0,0 +1,98 @@
 +/*
-+ * Tests set for BCM2838 mailbox property interface.
++ * BCM2838 dummy thermal sensor
 + *
-+ * Copyright (c) 2022 Auriga
++ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "hw/misc/bcm2838_thermal.h"
++#include "hw/registerfields.h"
++#include "migration/vmstate.h"
++#include "qemu/error-report.h"
++
++REG32(STAT, 0x200)
++FIELD(STAT, DATA, 0, 10)
++FIELD(STAT, VALID_1, 10, 1)
++FIELD(STAT, VALID_2, 16, 1)
++
++#define BCM2838_THERMAL_SIZE 0xf00
++
++#define THERMAL_OFFSET_C 410040
++#define THERMAL_COEFF  (-487.0f)
++#define MILLIDEGREE_COEFF 1000
++
++static uint16_t bcm2838_thermal_temp2adc(int temp_C)
++{
++    return (temp_C * MILLIDEGREE_COEFF - THERMAL_OFFSET_C) / THERMAL_COEFF;
++}
++
++static uint64_t bcm2838_thermal_read(void *opaque, hwaddr addr, unsigned size)
++{
++    uint32_t val = 0;
++
++    switch (addr) {
++    case A_STAT:
++        /* Temperature is always 25°C */
++        val = FIELD_DP32(val, STAT, DATA, bcm2838_thermal_temp2adc(25));
++        val = FIELD_DP32(val, STAT, VALID_1, 1);
++        val = FIELD_DP32(val, STAT, VALID_2, 1);
++
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s can't access addr: 0x%"HWADDR_PRIx,
++                     TYPE_BCM2838_THERMAL, addr);
++    }
++    return val;
++}
++
++static void bcm2838_thermal_write(void *opaque, hwaddr addr,
++                                      uint64_t value, unsigned size)
++{
++    qemu_log_mask(LOG_GUEST_ERROR, "%s: write 0x%" PRIx64
++                                " to 0x%" HWADDR_PRIx "\n",
++                __func__, value, addr);
++}
++
++static const MemoryRegionOps bcm2838_thermal_ops = {
++    .read = bcm2838_thermal_read,
++    .write = bcm2838_thermal_write,
++    .impl.max_access_size = 4,
++    .valid.min_access_size = 4,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void bcm2838_thermal_realize(DeviceState *dev, Error **errp)
++{
++    Bcm2838ThermalState *s = BCM2838_THERMAL(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2838_thermal_ops,
++                          s, TYPE_BCM2838_THERMAL, BCM2838_THERMAL_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++}
++
++static void bcm2838_thermal_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = bcm2838_thermal_realize;
++
++    /* This device has no state: no need for vmstate or reset */
++}
++
++static const TypeInfo bcm2838_thermal_info = {
++    .name = TYPE_BCM2838_THERMAL,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(Bcm2838ThermalState),
++    .class_init = bcm2838_thermal_class_init,
++};
++
++static void bcm2838_thermal_register_types(void)
++{
++    type_register_static(&bcm2838_thermal_info);
++}
++
++type_init(bcm2838_thermal_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index a3bee4375d..764e27ef67 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -93,6 +93,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_cprman.c',
+   'bcm2835_powermgt.c',
+   'bcm2838_rng200.c',
++  'bcm2838_thermal.c',
+ ))
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 914a287af2..49bb4fab08 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -11,6 +11,7 @@
+ 
+ #include "hw/arm/bcm2835_peripherals.h"
+ #include "hw/misc/bcm2838_rng200.h"
++#include "hw/misc/bcm2838_thermal.h"
+ #include "hw/arm/bcm2838_pcie.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
+@@ -66,6 +67,7 @@ struct BCM2838PeripheralState {
+     MemoryRegion mphi_mr_alias;
+ 
+     BCM2838Rng200State rng200;
++    Bcm2838ThermalState thermal;
+     SDHCIState emmc2;
+     BCM2838PcieHostState pcie_host;
+     BCM2838GpioState gpio;
+diff --git a/include/hw/misc/bcm2838_thermal.h b/include/hw/misc/bcm2838_thermal.h
+new file mode 100644
+index 0000000000..bb6302a037
+--- /dev/null
++++ b/include/hw/misc/bcm2838_thermal.h
+@@ -0,0 +1,24 @@
++/*
++ * BCM2838 dummy thermal sensor
++ *
++ * Copyright (C) 2022 Maksim Kopusov <maksim.kopusov@auriga.com>
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#include "qemu/osdep.h"
-+#include "hw/registerfields.h"
-+#include "libqtest-single.h"
-+#include "bcm2838-mailbox.h"
-+#include "hw/arm/raspberrypi-fw-defs.h"
++#ifndef BCM2838_THERMAL_H
++#define BCM2838_THERMAL_H
 +
-+REG32(MBOX_SIZE_STAT,          0)
-+FIELD(MBOX_SIZE_STAT, SIZE,    0, 31)
-+FIELD(MBOX_SIZE_STAT, SUCCESS, 31, 1)
++#include "hw/sysbus.h"
++#include "qom/object.h"
 +
-+REG32(SET_POWER_STATE_CMD,        0)
-+FIELD(SET_POWER_STATE_CMD, EN,    0, 1)
-+FIELD(SET_POWER_STATE_CMD, WAIT,  1, 1)
++#define TYPE_BCM2838_THERMAL "bcm2838-thermal"
++OBJECT_DECLARE_SIMPLE_TYPE(Bcm2838ThermalState, BCM2838_THERMAL)
 +
-+REG32(GET_CLOCK_STATE_CMD,        0)
-+FIELD(GET_CLOCK_STATE_CMD, EN,    0, 1)
-+FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
++struct Bcm2838ThermalState {
++    SysBusDevice busdev;
++    MemoryRegion iomem;
++};
 +
-+#define MBOX_TEST_MESSAGE_ADDRESS 0x10000000
-+
-+#define TEST_TAG(x) RPI_FWREQ_ ## x
-+#define TEST_TAG_TYPE(x) TAG_##x##_t
-+
-+#define TEST_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _test
-+
-+#define SETUP_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _setup
-+
-+#define CHECK_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _spec_check
-+
-+#define DECLARE_TEST_CASE_SETUP(testname, ...)              \
-+    void SETUP_FN_NAME(testname, __VA_ARGS__)               \
-+                             (TEST_TAG_TYPE(testname) * tag)
-+
-+/*----------------------------------------------------------------------------*/
-+#define DECLARE_TEST_CASE(testname, ...)                                       \
-+    __attribute__((weak))                                                      \
-+    void SETUP_FN_NAME(testname, __VA_ARGS__)                                  \
-+                      (TEST_TAG_TYPE(testname) * tag);                         \
-+    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-+                             (TEST_TAG_TYPE(testname) *tag);                   \
-+    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
-+        struct {                                                               \
-+            MboxBufHeader header;                                              \
-+            TEST_TAG_TYPE(testname) tag;                                       \
-+            uint32_t end_tag;                                                  \
-+        } mailbox_buffer = { 0 };                                              \
-+                                                                               \
-+        QTestState *qts = qtest_init("-machine raspi4b-2g");                   \
-+                                                                               \
-+        mailbox_buffer.header.size = sizeof(mailbox_buffer);                   \
-+        mailbox_buffer.header.req_resp_code = MBOX_PROCESS_REQUEST;            \
-+                                                                               \
-+        mailbox_buffer.tag.id = TEST_TAG(testname);                            \
-+        mailbox_buffer.tag.value_buffer_size = MAX(                            \
-+            sizeof(mailbox_buffer.tag.request.value),                          \
-+            sizeof(mailbox_buffer.tag.response.value));                        \
-+        mailbox_buffer.tag.request.zero = 0;                                   \
-+                                                                               \
-+        mailbox_buffer.end_tag = RPI_FWREQ_PROPERTY_END;                       \
-+                                                                               \
-+        if (SETUP_FN_NAME(testname, __VA_ARGS__)) {                            \
-+            SETUP_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);         \
-+        }                                                                      \
-+                                                                               \
-+        qtest_memwrite(qts, MBOX_TEST_MESSAGE_ADDRESS,                         \
-+                    &mailbox_buffer, sizeof(mailbox_buffer));                  \
-+        qtest_mbox1_write_message(qts, MBOX_CHANNEL_ID_PROPERTY,               \
-+                            MBOX_TEST_MESSAGE_ADDRESS);                        \
-+                                                                               \
-+        qtest_mbox0_read_message(qts, MBOX_CHANNEL_ID_PROPERTY,                \
-+                            &mailbox_buffer, sizeof(mailbox_buffer));          \
-+                                                                               \
-+        g_assert_cmphex(mailbox_buffer.header.req_resp_code, ==, MBOX_SUCCESS);\
-+                                                                               \
-+        g_assert_cmphex(mailbox_buffer.tag.id, ==, TEST_TAG(testname));        \
-+                                                                               \
-+        uint32_t size = FIELD_EX32(mailbox_buffer.tag.response.size_stat,      \
-+                                   MBOX_SIZE_STAT, SIZE);                      \
-+        uint32_t success = FIELD_EX32(mailbox_buffer.tag.response.size_stat,   \
-+                                      MBOX_SIZE_STAT, SUCCESS);                \
-+        g_assert_cmpint(size, ==, sizeof(mailbox_buffer.tag.response.value));  \
-+        g_assert_cmpint(success, ==, 1);                                       \
-+                                                                               \
-+        CHECK_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);             \
-+                                                                               \
-+        qtest_quit(qts);                                                       \
-+    }                                                                          \
-+    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-+                             (TEST_TAG_TYPE(testname) * tag)
-+
-+/*----------------------------------------------------------------------------*/
-+
-+#define QTEST_ADD_TEST_CASE(testname, ...)                                     \
-+    qtest_add_func(stringify(/bcm2838/mbox/property/                           \
-+                   TEST_FN_NAME(testname, __VA_ARGS__)-test),                  \
-+                   TEST_FN_NAME(testname, __VA_ARGS__))
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FIRMWARE_REVISION) {
-+    g_assert_cmpint(tag->response.value.revision, ==, FIRMWARE_REVISION);
-+}
-+
-+// /*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_BOARD_REVISION) {
-+    g_assert_cmpint(tag->response.value.revision, ==, BOARD_REVISION);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_ARM_MEMORY) {
-+    g_assert_cmphex(tag->response.value.base, ==, ARM_MEMORY_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, ARM_MEMORY_SIZE);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_VC_MEMORY) {
-+    g_assert_cmphex(tag->response.value.base, ==, VC_MEMORY_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, VC_MEMORY_SIZE);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_POWER_STATE) {
-+    uint32_t enabled =
-+        FIELD_EX32(tag->response.value.cmd, SET_POWER_STATE_CMD, EN);
-+    uint32_t wait =
-+        FIELD_EX32(tag->response.value.cmd, SET_POWER_STATE_CMD, WAIT);
-+    g_assert_cmphex(tag->response.value.device_id, ==, DEVICE_ID_UART0);
-+    g_assert_cmpint(enabled, ==, 1);
-+    g_assert_cmpint(wait, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_POWER_STATE) {
-+    tag->request.value.device_id = DEVICE_ID_UART0;
-+    tag->response.value.cmd =
-+        FIELD_DP32(tag->response.value.cmd, SET_POWER_STATE_CMD, EN, 1);
-+    tag->response.value.cmd =
-+        FIELD_DP32(tag->response.value.cmd, SET_POWER_STATE_CMD, WAIT, 1);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_STATE) {
-+    uint32_t enabled =
-+        FIELD_EX32(tag->response.value.cmd, GET_CLOCK_STATE_CMD, EN);
-+    uint32_t not_present =
-+        FIELD_EX32(tag->response.value.cmd, GET_CLOCK_STATE_CMD, NPRES);
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(enabled, ==, 1);
-+    g_assert_cmphex(not_present, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_STATE) {
-+   tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    QTEST_ADD_TEST_CASE(GET_FIRMWARE_REVISION);
-+    QTEST_ADD_TEST_CASE(GET_BOARD_REVISION);
-+    QTEST_ADD_TEST_CASE(GET_ARM_MEMORY);
-+    QTEST_ADD_TEST_CASE(GET_VC_MEMORY);
-+    QTEST_ADD_TEST_CASE(SET_POWER_STATE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_STATE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index e49ce4f092..194ddf3510 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -230,7 +230,7 @@ qtests_aarch64 = \
-     ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
-   (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test', 'xlnx-versal-trng-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
-+  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test', 'bcm2838-mbox-property-test'] : []) +  \
-   (config_all_accel.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   ['arm-cpu-features',
++#endif /* BCM2838_THERMAL_H */
 -- 
 2.34.1
 

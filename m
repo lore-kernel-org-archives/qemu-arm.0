@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1764105ejf;
-        Sun, 25 Feb 2024 16:09:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMwIA41odrU5WcsJBieiMJC+ZtH3G/rk5ZDBRQ4BXR6nFZHX6McUASYGmjGAXEUQ/ffqZguTUTmAp4XfoZlfPlSks877sw
-X-Google-Smtp-Source: AGHT+IHuWkNdIrvnaHM+80u1RCJYYf11InNqq1w0JJvhxUjhVdljSegWUWKy1/DQGm02IX/7NUbw
-X-Received: by 2002:a05:6102:6cb:b0:471:e3bc:a499 with SMTP id m11-20020a05610206cb00b00471e3bca499mr2275487vsg.9.1708906170915;
-        Sun, 25 Feb 2024 16:09:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708906170; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1764540ejf;
+        Sun, 25 Feb 2024 16:10:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXKfeTPDGqpd0Kc2mwEMgvHJqr89XOWAMD7byZoUkEFqN1t+aH2KdhNyQOtsmBgmTqVcHmRj47v88ll9aU0CO3Ws3d9fUWl
+X-Google-Smtp-Source: AGHT+IF3wERjC+pITGLwwxydcabyH0HjJfjCm1cu0sOLa/uhg2cGqk6aN1XTlMUa2N5Q741cl11x
+X-Received: by 2002:a05:620a:209b:b0:785:9516:e18e with SMTP id e27-20020a05620a209b00b007859516e18emr5766306qka.74.1708906246550;
+        Sun, 25 Feb 2024 16:10:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708906246; cv=none;
         d=google.com; s=arc-20160816;
-        b=WG1mrg+NV2swb2qJh92GH/nam/gpbJKKzmA2r4Nke4krd1xjVBDxudkbOMB/vYrAOs
-         sXPwf4eUlbjYSYZCnV4nCS+a5M6Cv5XwV2AfnKTr35WBYsxb2N2GP7yjjuxg998faYKH
-         wbJD0Bpb85zRUG62H0CNKO3gv+JYx8h2j1ZgFcruxn911B02WSvv03ch9AhNvQPQbBjK
-         ewjBOtgoNnMUpc3cDME7xyQVQXQ5d23yvcw7UwsUKeVuV9hf270R9sZGQr1bjxzSlh0e
-         5dLCVPSCVPIAcxb2WkuHyb0Qog67VuC/tMzw6eDB2vvVOzKFPlc9VqsY8tl1AM4HF865
-         A5wQ==
+        b=xPWd0esvi8uOxxeGUUwm6bi7eWWU7nJBnodMPgcF6PPXONnP0Spfb5DqdHcPOA87e0
+         G3XrupX1MPJ7SXPY1mzLvS9fKDsIwPv8zbdsE8ZTtjbX99Cf/pA9z9IiXt8CZ1YhAcew
+         BbIA6W7eFY3jcw44lFhBwzs5iOUgncp9G+cCDv1qJydj4NPVzeDfJnJqMAbIWxfEoSTf
+         SiDp33dCb/kptLt4g5vo1qFjMkHo1nh9rVbloAfjMGIysUJrTDf3P5oVv5wHcQIpq9lX
+         TOUKBswNijGTZJmHsC5LIdYr01qn5GaaDCzgApJX/H92ETeWvj24AKQBx+snl3wRTgcB
+         OKvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
+        bh=xY4fZ6J1E5d6nZV14RhkO1nw2p+k/NowBgJrZNhXAdQ=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=V1am2Dlt2yjbJ9YblmwOUjm8QRENpDNcDdP+Lm3sEmuq7JOilnn/LctYanmXWMLRU9
-         g1sxs7OgYvTj0GNWJjMzLqNX8cY3C/oYavDc3y55ewXyOZmLzqyhPeaikpCCyZosZCZv
-         1+141rGHd0NWx2oxHrY4UeFHu5e5OC0FIOTskCf5les2BQix6H5f7VvRFUbEofNLtq2k
-         9R1OujwJk1ZmmtcUyfrM/UXwpQlNlsU3r+jnz+ROMqXyg56rRHwDdjFJJuKPEPQo6E1T
-         n3BE7/Kqb5AJNsl7MTooY7gB61M2DRldHcMBchcReO7Y3yPlx1KiFl8p/0mD+8VkBbF1
-         kk0A==;
+        b=ikoAdq9HwPt7TnLYGpFoBzex7uvAQOGJ9hMNNd6YwH9fSgUNE4eRcr5NFYMAfzy4oP
+         nsM6mSUMVRtPC8TnvArtIHlBIebUp5CWaXq9j2n54k2rjnW0t+CcQpjLwDpJQh1AMxOm
+         Squ9vs1lCn5kFFEseA7NDbaGf6gINQfDqpRXTHZElBg5M39whRPSzsQKKHGaRIsUq8M6
+         9ijsUCyhtvZ3Yo1gPxxFieg2ridpTfPZbI9dHYNAGLdFQEDEvjznaj6ZhfFzyEozXJqI
+         w5cCTOwyl7LLvGGzMkgJ09wXh+/7qUA4KhjvyzwoBYRL3XVEhml1aQ1c+UDchrW4EqAX
+         YAOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FmUpswnf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V68ljs9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j1-20020a05620a410100b00787cb2ef423si2767990qko.54.2024.02.25.16.09.30
+        by mx.google.com with ESMTPS id w13-20020a05620a094d00b0078753baa31dsi3906650qkw.181.2024.02.25.16.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 16:09:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 25 Feb 2024 16:10:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FmUpswnf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=V68ljs9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1reOUw-0001Q7-3o; Sun, 25 Feb 2024 19:05:34 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1reOTz-0007sn-FW; Sun, 25 Feb 2024 19:04:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTM-0006zs-5F; Sun, 25 Feb 2024 19:04:00 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1reOTA-0006uj-PK; Sun, 25 Feb 2024 19:03:47 -0500
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTI-0000bP-EX; Sun, 25 Feb 2024 19:03:55 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-608a21f1cbcso13426247b3.0; 
- Sun, 25 Feb 2024 16:03:50 -0800 (PST)
+ id 1reOT8-0000ZJ-US; Sun, 25 Feb 2024 19:03:44 -0500
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-60853ad17f9so18235667b3.0; 
+ Sun, 25 Feb 2024 16:03:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708905829; x=1709510629; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708905821; x=1709510621; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
- b=FmUpswnfRS072ZsFBo8yVLoWOfiD0Vcs3Ve0mdReQTg+fhBhEwjCtZnRqNOgYjFUI6
- YDKAXRMC1ErbsK3HTrFzFYWGHeXeCPYgZlN1LNAhSs7G7HWVrlynQbnkrNzQiPE/IXbF
- Hiy0gLHtbR2NA1idxeyXZXyqp/bQSBiI3SMV0QHZkbBbC8b9TR/dk0nL2urguQ+edtiL
- oJuX9xTm4IamW/epNPx45//yLnIDBk3IBoNboOEjFJAbjWdFscFidMxjHFIrJOSIs1ld
- yhuU0RKyukB88e8Y8liNC+JJCEugEREqZmF704Y50ewCzLc2JzfSoaeFbDD4ElNP5/Cp
- 1twQ==
+ bh=xY4fZ6J1E5d6nZV14RhkO1nw2p+k/NowBgJrZNhXAdQ=;
+ b=V68ljs9Wv/9ZmeCFnsO2vYpwFHAO1scxM1aOIr7S2+I6eKV3U5kZJGi6hIdh77hiGJ
+ 3fcKpk8DK0lT/YZKrDT09AhQD8N9nbkrONSZbNhxuwB4lhxbUuJxFtnDS6wgN2VjPuSL
+ 74XOe3faa2UXU8mh0nsMM2GmhCqnqPqaRNyAK/s/U5hYqVqolC04EseFA4lj+66mENA/
+ 22sttigvZ0jsqYm+lIwuk2jOHLkxxbsbp07Tk/T21MkwBUSYOXwsG/Z+zqZjJLXD/KNz
+ byH1++EWqJPT3xz3c0fv/cIIBmg9945ul1GxL+Z/XRfLZTQfc2YVUARhPqqXWYABkE0F
+ qY4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708905829; x=1709510629;
+ d=1e100.net; s=20230601; t=1708905821; x=1709510621;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
- b=IjGa75qCBdBYWl4rHztL+D1QlBwHtGT6qHBipc+kF2Stow+L8fNEhE/f2e25u9X11+
- KKhDA9sqOuKsC+MI+5MmsuTgBMQaCASY+UgwYnBhFNT/LpoXBeEuqBOfkPhHP+Pm9TyY
- thRNYWLGxAk6jSAGQUh31SWWaD8DBtlqWCp6a/mYObj4Mx22ZUhek/MoHlVXj2hm4D7J
- SXb5LtQKu+Id20to/yZjygNZhELGdiKBpflnWhvEWxSdrSZrqjLAbno97N1F+ytdZWwA
- Faa5B73sxVMIj1SJ6WOa5jZQIqPtyqDLwJ60qwrzo9yKH0ng0bkSyeYrDYBaLmQtBO6a
- Wmtw==
-X-Gm-Message-State: AOJu0YyxKrwi/ybTGiE0t2KoJOWIP4bbk0h0rD+9rOmvVMZUZEOhEQoU
- MYH/FCEixhMQmtVOn8uC+1Aa9p+OC3x45rYsJaBtW2E05UT3m9+q9ZsG+m7sB6GUYQ==
-X-Received: by 2002:a0d:d812:0:b0:608:28cf:3591 with SMTP id
- a18-20020a0dd812000000b0060828cf3591mr5598216ywe.23.1708905829395; 
- Sun, 25 Feb 2024 16:03:49 -0800 (PST)
+ bh=xY4fZ6J1E5d6nZV14RhkO1nw2p+k/NowBgJrZNhXAdQ=;
+ b=Qc/VcQph4VVFgAO1ubdIbYtRih3C+m5RqOiWb8im25WGbGHtA0Tmz8vzBnAI/sVRIz
+ 8ZjNG8s10rmROLxmAOWHz7vjrO9A9PDkgxmpZuMITOQO3gEivzJ+pe2oG5kcZl9mRddI
+ JGcBpoCYnkUlzsj3baBaABnCghRIgve7weRuXUGyRYf0ZkhHuM1Wwtab9tD1GqhuyFn0
+ MvR8mGVmFA81ABmVYtBBLg7TUYQwofbqPXc69YPGy0HdHNZcDQSV4iUwJyhUlGLUPHDG
+ rjO9nYtsVQSL+oNg6rkMgjiaC0AzjrMk3zRWheXcZfhWxe892s/h2iV9hUwAXTVH+T3A
+ ux4Q==
+X-Gm-Message-State: AOJu0Yw5FDEKNA1UD7krk1My7Gf1Sa6oaN9Bz5ln6+xYjVAa/dpfkluq
+ 1HFjx+OmYXJ+M24BlVquFBu9tZn1yxTWU9opKiwJA+TeQpF2sh1RWnXPcag/52GXoA==
+X-Received: by 2002:a81:49cc:0:b0:608:f271:ca2d with SMTP id
+ w195-20020a8149cc000000b00608f271ca2dmr809313ywa.37.1708905821120; 
+ Sun, 25 Feb 2024 16:03:41 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.48
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Feb 2024 16:03:49 -0800 (PST)
+ Sun, 25 Feb 2024 16:03:40 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v6 39/41] Add missed BCM2835 properties
-Date: Sun, 25 Feb 2024 18:02:57 -0600
-Message-Id: <20240226000259.2752893-40-sergey.kambalin@auriga.com>
+Subject: [PATCH v6 32/41] Add mailbox test constants
+Date: Sun, 25 Feb 2024 18:02:50 -0600
+Message-Id: <20240226000259.2752893-33-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,100 +113,138 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VAy/wxEh2iHk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j347e4SUfsBp
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/misc/bcm2835_property.c           | 21 +++++++++++++++++++++
- include/hw/arm/raspberrypi-fw-defs.h | 11 +++++++++++
- 2 files changed, 32 insertions(+)
+ tests/qtest/bcm2838-mailbox.c |  1 +
+ tests/qtest/bcm2838-mailbox.h | 88 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 89 insertions(+)
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 5c48f8d743..bdd9a6bbce 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -19,6 +19,8 @@
- #include "trace.h"
- #include "hw/arm/raspi_platform.h"
+diff --git a/tests/qtest/bcm2838-mailbox.c b/tests/qtest/bcm2838-mailbox.c
+index 0928a3dff8..1efd3c628a 100644
+--- a/tests/qtest/bcm2838-mailbox.c
++++ b/tests/qtest/bcm2838-mailbox.c
+@@ -11,6 +11,7 @@
+ #include "hw/registerfields.h"
+ #include "libqtest-single.h"
+ #include "bcm2838-mailbox.h"
++#include "hw/arm/raspberrypi-fw-defs.h"
  
-+#define VCHI_BUSADDR_SIZE       sizeof(uint32_t)
-+
- /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
+ REG32(MBOX_EXCHNG_REG,          0)
+ FIELD(MBOX_EXCHNG_REG, CHANNEL, 0, 4)
+diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
+index e9e1f53bc9..9222b38bad 100644
+--- a/tests/qtest/bcm2838-mailbox.h
++++ b/tests/qtest/bcm2838-mailbox.h
+@@ -7,6 +7,94 @@
+  * See the COPYING file in the top-level directory.
+  */
  
- static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-@@ -138,6 +140,13 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 8;
-             break;
- 
-+        case RPI_FWREQ_GET_CLOCKS:
-+            /* TODO: add more clock IDs if needed */
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_ARM_CLK_ID);
-+            resplen = 8;
-+            break;
++#define MBOX0_BASE 0xFE00B880
++#define MBOX1_BASE 0xFE00B8A0
 +
-         case RPI_FWREQ_SET_CLOCK_RATE:
-         case RPI_FWREQ_SET_MAX_CLOCK_RATE:
-         case RPI_FWREQ_SET_MIN_CLOCK_RATE:
-@@ -276,6 +285,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             resplen = 4;
-             break;
++#define MBOX_REG_READ   0x00
++#define MBOX_REG_WRITE  0x00
++#define MBOX_REG_PEEK   0x10
++#define MBOX_REG_SENDER 0x14
++#define MBOX_REG_STATUS 0x18
++#define MBOX_REG_CONFIG 0x1C
 +
-         case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
-@@ -301,6 +311,17 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-                                     resplen);
-             break;
- 
-+        case RPI_FWREQ_GET_THROTTLED:
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            resplen = 4;
-+            break;
++#define MBOX_READ_EMPTY 0x40000000
 +
-+        case RPI_FWREQ_VCHIQ_INIT:
-+            stl_le_phys(&s->dma_as,
-+                        value + offsetof(rpi_firmware_prop_request_t, payload),
-+                        0);
-+            resplen = VCHI_BUSADDR_SIZE;
-+            break;
-         default:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: unhandled tag 0x%08x\n", tag);
-diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
-index 579cf0d554..8b404e0533 100644
---- a/include/hw/arm/raspberrypi-fw-defs.h
-+++ b/include/hw/arm/raspberrypi-fw-defs.h
-@@ -159,4 +159,15 @@ enum rpi_firmware_clk_id {
-     RPI_FIRMWARE_NUM_CLK_ID,
- };
- 
-+struct rpi_firmware_property_tag_header {
-+    uint32_t tag;
-+    uint32_t buf_size;
-+    uint32_t req_resp_size;
-+};
++#define MBOX_CHANNEL_ID_PROPERTY 8
 +
-+typedef struct rpi_firmware_prop_request {
-+    struct rpi_firmware_property_tag_header hdr;
-+    uint8_t payload[0];
-+} rpi_firmware_prop_request_t;
++#define MBOX_PROCESS_REQUEST      0x00000000
++#define MBOX_SUCCESS              0x80000000
++#define MBOX_ERROR_PARSING_BUFFER 0x80000001
 +
- #endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
++#define BOARD_REVISION    0xB03115
++#define FIRMWARE_REVISION 0x548E1
++#define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
++
++#define ARM_MEMORY_BASE 0x00000000
++#define ARM_MEMORY_SIZE 0x3c000000
++#define VC_MEMORY_BASE  0x3c000000
++#define VC_MEMORY_SIZE  0x04000000
++#define VC_FB_BASE      0x3c100000
++#define VC_FB_SIZE      0x00096000
++
++#define CLOCK_ID_ROOT      0x00000000
++#define CLOCK_ID_EMMC      0x00000001
++#define CLOCK_ID_UART      0x00000002
++#define CLOCK_ID_ARM       0x00000003
++#define CLOCK_ID_CORE      0x00000004
++#define CLOCK_ID_UNDEFINED 0x12345678
++
++#define CLOCK_RATE_EMMC 50000000
++#define CLOCK_RATE_UART 3000000
++#define CLOCK_RATE_CORE 350000000
++#define CLOCK_RATE_ANY  700000000
++
++#define DEVICE_ID_SD_CARD   0x00000000
++#define DEVICE_ID_UART0     0x00000001
++#define DEVICE_ID_UART1     0x00000002
++#define DEVICE_ID_USB HCD   0x00000003
++#define DEVICE_ID_I2C0      0x00000004
++#define DEVICE_ID_I2C1      0x00000005
++#define DEVICE_ID_I2C2      0x00000006
++#define DEVICE_ID_SPI       0x00000007
++#define DEVICE_ID_CCP2TX    0x00000008
++#define DEVICE_ID_UNKNOWN_0 0x00000009
++#define DEVICE_ID_UNKNOWN_1 0x0000000a
++
++#define TEMPERATURE_ID_SOC 0x00000000
++
++#define TEMPERATURE_SOC     25000
++#define TEMPERATURE_SOC_MAX 99000
++
++#define ALIGN_4K 4096
++
++#define PIXEL_ORDER_BGR 0
++#define PIXEL_ORDER_RGB 1
++
++#define ALPHA_MODE_ENABLED  0
++#define ALPHA_MODE_REVERSED 1
++#define ALPHA_MODE_IGNORED  2
++
++#define GPIO_MASK 0x003c
++
++#define GPIO_0 0x00000080
++
++#define GPIO_DIRECTION_IN  0
++#define GPIO_DIRECTION_OUT 1
++
++#define GPIO_TERMINATION_DISABLED 0
++#define GPIO_TERMINATION_ENABLED  1
++
++#define GPIO_TERMINATION_PULLUP_DISABLED 0
++#define GPIO_TERMINATION_PULLUP_ENABLED  1
++
++#define GPIO_POLARITY_LOW  0
++#define GPIO_POLARITY_HIGH 1
++
++#define GPIO_STATE_DOWN 0
++
++/* Used to test stubs that don't perform actual work */
++#define DUMMY_VALUE 0x12345678
++
+ typedef struct {
+     uint32_t size;
+     uint32_t req_resp_code;
 -- 
 2.34.1
 

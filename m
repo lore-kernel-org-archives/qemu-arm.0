@@ -1,162 +1,142 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2137113ejf;
-        Mon, 26 Feb 2024 07:47:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7ki3eFlgj2Kw9OiPR7GWqEwShSCEKjmYsfwg3+U+zohxRN0Op65RvHVJoTFT0otGBW/Tzx/jPEITJfGo/GcqKeO+s+GR6
-X-Google-Smtp-Source: AGHT+IFIMxDM3LZGyFT6Sg58FRKuQX/bs5tX04kJiCyGwcrIv5Gz27gNXLwdQAj97IclGpqtQpz9
-X-Received: by 2002:adf:fd87:0:b0:33d:b2d7:6264 with SMTP id d7-20020adffd87000000b0033db2d76264mr4900074wrr.51.1708962456819;
-        Mon, 26 Feb 2024 07:47:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708962456; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2149968ejf;
+        Mon, 26 Feb 2024 08:07:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX7F0EA36AtUm9pB4BP/ocpOMKL19FPCToG5LT29d3e9c6yX5Rt8O2YRGIMO8uzOsfbdZkijrTt47AfGEgm4vZd+jsi3Fb6
+X-Google-Smtp-Source: AGHT+IH8PDWpTV5aabqv6pTd+3RcVld7mNc3mO04giW4eub6x0QmKDw5htkBh/tsJiBy2oUO5egm
+X-Received: by 2002:a05:620a:29c3:b0:787:d7b8:dfce with SMTP id s3-20020a05620a29c300b00787d7b8dfcemr2230114qkp.4.1708963666163;
+        Mon, 26 Feb 2024 08:07:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708963666; cv=none;
         d=google.com; s=arc-20160816;
-        b=eo7toEQGkiEgKBv4NNGE7T9150JEvI484gTG+mRjVHIriAjZ1HRRSToTGj27vsrDlf
-         jk5ir31EsP0mdycEZz7oVKKIDtyZjkv8UscU6k7OzuRS88xncRvSxa7HO0ZwXeebpP5i
-         40MKRTbKjjp5IPKXiUXEvVDZyK+cXt7Bq2dUbPjuJTUfkLlzsI/SipeOtCtrQQQbUhlK
-         5nHlh/eIEH2NGpUk3wqEoxzX9zQstaPwWaWldoNbpdni6NsXcQI/i+9ZqQ/AK8QdJduX
-         IXKa5QdiZuR+KfG9pttmImfewje6WYJtevD834R0E109cHhqtu3bDTSRLQSWBemqRuY/
-         jtLg==
+        b=o4zdCyxQdP6op5UEv+pLJ/scJ2fDjyfD4ABpZX5uUtI/UGLh3zyPuUA61HgqkZ1f6q
+         G25AL3rLX6eYCk5ETxOM7y/4sJNKeVFS/HfQPgSq4ooO4huckKzXXEynyzUmMLz/t9H8
+         PvSEi4+gi6MwMQSJZ7G6JcHlJNwAu0g1E/fdGEoPoHItUIY8+1qr934j8agjFB3qQ9c6
+         KyNgescM12XEwdbW1DrVmj4KjBQ9yRgTuHSXWfebo3yIYxhOBns9u+N4W8Tar+ioKFJO
+         TNMWhNNCuTHSMXiJD8fgg3wspTUVXH2rdkbnAq8sCuspAZfQZrMogs8bU8mAkJTMyJbo
+         CZGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=t91U4clDVnQiwk39Uxy/q0kZHu5gkrq3b82tPVkiakI=;
-        fh=etCafUcGIfuy9fpedZpS24JHtYkPJpeDuHj2A+BIf6Y=;
-        b=BLta9n2OaaDL0j3wKDYDpCP+UaVChsPHDHb6WAzmcLlF/8umIJD74D4kupRGBPtREG
-         25443jtx3XIi/umlcZSsL8yffOXqkrkZtPCUeQ2UXRhV7bS8FLveoeDWHjoGzHftAOr0
-         TLx7dlScQloxBz8HuQXDmWxm4vaN2dDP/cviEv1PdTJ3kS0zttBOE6zT5a5Bn8dWhAjY
-         vJj2W+Y8SrgUlF7eeFc/5xOGRT3UjxYZxEF79290NOX2n93KyqQpNDCS82bi7ErKmS+C
-         QLQdLWTLYQcrBTwEEsNyXQsoNHM/eTq1L/ut3VvfD9upo/onbphvHO8g80uLullV/lzl
-         aDEw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=W6RZ19sTM05Z+88w1NUGEHn3Dcz3i6pGJL7ASY0ZUGo=;
+        fh=2VtAX4tuo1wAx3ShpyN1Mxyep54/GilG5RfQ2bAENVk=;
+        b=cF524sJ7Qh3oqPjiGl/yIbq2V/WvJq6wsmEDqW0SDITSBxYULeiEFpcvCj27G5AamW
+         BISBl0EqiY99J6/zrQ2wJ0ovnB2JimSOET8eSCeTTnLg88W0KvxVckbeCANwfaltJLcR
+         TXY1w+nKrEsks7j2hxlVWLJ7V81mAxQdGSORUEg1lr6mAj/tiFZzskRn/yWH2YGC0GhB
+         PxrPCdOJDjrrYZKdFiC21aRk368msiPAjuegicCb5rzQmHvw2zfbe00DZMkmzzM4JCyi
+         gOFMSgDRGBlpKBZ1BJKPkCe+F8+5mxCqCrHnli5/DQMLBBieBn8weC+KQY1G+OUDsBW2
+         578g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id j9-20020adfe509000000b0033cf4e47492si2719442wrm.49.2024.02.26.07.47.36
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Feb 2024 07:47:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LBySo5Ua;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j4-20020a37c244000000b0078773b77629si5466544qkm.255.2024.02.26.08.07.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Feb 2024 08:07:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Tk4dK68jwz6JBV6;
-	Mon, 26 Feb 2024 23:43:01 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id DF0BE140DAF;
-	Mon, 26 Feb 2024 23:47:35 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 26 Feb
- 2024 15:47:35 +0000
-Date: Mon, 26 Feb 2024 15:47:34 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-CC: "Daniel P . =?ISO-8859-1?Q?Berrang=E9?=" <berrange@redhat.com>, "Eduardo
- Habkost" <eduardo@habkost.net>, Marcel Apfelbaum
-	<marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
-	<philmd@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, "Michael S .
- Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "Richard
- Henderson" <richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell
-	<peter.maydell@linaro.org>, "Sia Jee Heng" <jeeheng.sia@starfivetech.com>,
-	<qemu-devel@nongnu.org>, <kvm@vger.kernel.org>, <qemu-riscv@nongnu.org>,
-	<qemu-arm@nongnu.org>, "Zhenyu Wang" <zhenyu.z.wang@intel.com>, Dapeng Mi
-	<dapeng1.mi@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu
-	<zhao1.liu@intel.com>
-Subject: Re: [RFC 8/8] qemu-options: Add the cache topology description of
- -smp
-Message-ID: <20240226154734.00000d6e@Huawei.com>
-In-Reply-To: <20240220092504.726064-9-zhao1.liu@linux.intel.com>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
-	<20240220092504.726064-9-zhao1.liu@linux.intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=LBySo5Ua;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1redVB-00069N-Eu; Mon, 26 Feb 2024 11:06:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1redV3-00065T-CD
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 11:06:42 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1redUu-0005vJ-9l
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 11:06:41 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-55a035669d5so5776051a12.2
+ for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 08:06:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708963588; x=1709568388; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=W6RZ19sTM05Z+88w1NUGEHn3Dcz3i6pGJL7ASY0ZUGo=;
+ b=LBySo5UauXOVFIl5na25v6YeCpj+sIzwjjU6/qKMf501xHzlFVbqdHyqSrRLaptbqR
+ Lwt0Wc++M58rNfLQnSYhmmaqH2ht4L8o5RLrr8yLzqeOlTtDx/uMugJt2ybm0ksLiA1E
+ +qZ/XQdYTOcLNekBFXx9uIYHJ0Nh8XgJysXjNKJJs5H1JnDyzNM4eVVdyVudaBxh8cPE
+ on1+ybDdXbSZ63nLnNRHKhrm4uWsQlj9CbD6HPPAN/JDZ/fcTlPxiEdeL0LXIVIpbVv5
+ iSJUNGL4qT8SjCdkLzG9sPZ3rQ3SZEDRhRe94lbgqf3SC4p3ylBfaOC8j+6r+jUBVtuL
+ mrPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708963588; x=1709568388;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=W6RZ19sTM05Z+88w1NUGEHn3Dcz3i6pGJL7ASY0ZUGo=;
+ b=f64DyGTo1JhVr6l3NPUb6HmMItcymxmD94DWVWTU+R+BC9ltuZXJcjk9SvbDnLFX1y
+ YXyAiiVOn0IVKCUKMl1VnwU7Cd1u5A4emp4bMDCW8H+rdMyc58ayU3jDzH7UjxHkKDJL
+ BoChi4eQj7SicgIm0HFera0iq344pTaqgfCsLcxzOaW+d4C1A+PAbScvaoesyyxDxM06
+ M2E+nGwd0Yzi6qUfPm/7xCsj7jLLIarL/kjUAr71k/EeyZnHmbNKn69htYlXV2tR0vMx
+ tXSCwbYMixcYtTDgNNowyi8sA9RlKyO6/+HUYEijv6GPsDKAmSv7BNaAlUgaZ+EpTxDQ
+ Y8kQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVGAm+5ILaw/CIfN6roUMEnmx8R4PrOkkQvXE32DcBOnuPmTWsp9+8Nc4xvnnW7Pfz/vKg0fmY9/zzVnRpCBOz0QB0M
+X-Gm-Message-State: AOJu0YzApTUUmNZNtZ1r7OE8NKC2iBWwBvBjGr7qEpN58XrkmdYE7+NN
+ +C2Xff7ECZ4+PSddXLh80bgLBryPqXmcQi3/hKKQkFTDsc5OCf8gRy29jpPajpU=
+X-Received: by 2002:aa7:d799:0:b0:565:f782:10ef with SMTP id
+ s25-20020aa7d799000000b00565f78210efmr1844352edq.10.1708963588092; 
+ Mon, 26 Feb 2024 08:06:28 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.223.153])
+ by smtp.gmail.com with ESMTPSA id
+ bf9-20020a0564021a4900b0056626973bc1sm104394edb.38.2024.02.26.08.06.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Feb 2024 08:06:26 -0800 (PST)
+Message-ID: <730fed32-0c79-4aa0-8ec5-141135dce2cd@linaro.org>
+Date: Mon, 26 Feb 2024 17:06:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: d+mpcUuJGsX/
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 18/41] Add clock_isp stub
+Content-Language: en-US
+To: Sergey Kambalin <serg.oker@gmail.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+ <20240226000259.2752893-19-sergey.kambalin@auriga.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240226000259.2752893-19-sergey.kambalin@auriga.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ReDAZpe+MGWc
 
-On Tue, 20 Feb 2024 17:25:04 +0800
-Zhao Liu <zhao1.liu@linux.intel.com> wrote:
-
-> From: Zhao Liu <zhao1.liu@intel.com>
-> 
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-
-Hi,
-
-A trivial comment, but also a possibly more significant one about
-whether the defaults are correctly verified.
-
-Jonathan
+On 26/2/24 01:02, Sergey Kambalin wrote:
+> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  qemu-options.hx | 54 ++++++++++++++++++++++++++++++++++++++++++-------
->  1 file changed, 47 insertions(+), 7 deletions(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 70eaf3256685..85c78c99a3b0 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -281,7 +281,9 @@ ERST
->  
->  DEF("smp", HAS_ARG, QEMU_OPTION_smp,
->      "-smp [[cpus=]n][,maxcpus=maxcpus][,drawers=drawers][,books=books][,sockets=sockets]\n"
-> -    "               [,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]\n"
-> +    "               [,dies=dies][,clusters=clusters][,modules=modules][,cores=cores]\n"
-> +    "               [,threads=threads][,l1d-cache=level][,l1i-cache=level][,l2-cache=level]\n"
-burns more characters but I'd go with
-l1d->cache=topo_level
+>   hw/arm/bcm2838_peripherals.c         | 6 ++++++
+>   include/hw/arm/bcm2838_peripherals.h | 1 +
+>   2 files changed, 7 insertions(+)
 
-As level for a cache has a totally different meaning!
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> +    "               [,l3-cache=level]\n"
->      "                set the number of initial CPUs to 'n' [default=1]\n"
->      "                maxcpus= maximum number of total CPUs, including\n"
->      "                offline CPUs for hotplug, etc\n"
-> @@ -290,9 +292,14 @@ DEF("smp", HAS_ARG, QEMU_OPTION_smp,
->      "                sockets= number of sockets in one book\n"
->      "                dies= number of dies in one socket\n"
->      "                clusters= number of clusters in one die\n"
-> -    "                cores= number of cores in one cluster\n"
-> +    "                modules= number of modules in one cluster\n"
-> +    "                cores= number of cores in one module\n"
->      "                threads= number of threads in one core\n"
-> -    "Note: Different machines may have different subsets of the CPU topology\n"
-> +    "                l1d-cache= topology level of L1 D-cache\n"
-> +    "                l1i-cache= topology level of L1 I-cache\n"
-> +    "                l2-cache= topology level of L2 cache\n"
-> +    "                l3-cache= topology level of L3 cache\n"
-> +    "Note: Different machines may have different subsets of the CPU and cache topology\n"
-
->  
->          -smp 32,sockets=2,dies=2,modules=2,cores=2,threads=2,maxcpus=32
->  
-> +    The following sub-option defines a CPU topology hierarchy (2 sockets
-> +    totally on the machine, 2 dies per socket, 2 modules per die, 2 cores per
-> +    module, 2 threads per core) with 3-level cache topology hierarchy (L1
-> +    D-cache per core, L1 I-cache per core, L2 cache per core and L3 cache per
-> +    die) for PC machines which support sockets/dies/modules/cores/threads.
-> +    Some members of the CPU topology option can be omitted but their values
-> +    will be automatically computed. Some members of the cache topology
-> +    option can also be omitted and target CPU will use the default topology.:
-
-Given the default could be inconsistent I wonder if we should 'push' levels
-up.  So if L2 not defined it is set either to default of equal to max of
-l1i and l1d level. L3 either default or same level as l2.
-
-Won't always correspond to a sensible system so maybe just rejecting
-cases where default isn't possible is the best plan.  However I don't
-see that verification as the checks on higher levels are gated on them
-being specified.
-
-> +
-> +    ::
-> +
-> +        -smp 32,sockets=2,dies=2,modules=2,cores=2,threads=2,maxcpus=32,\
-> +             l1d-cache=core,l1i-cache=core,l2-cache=core,l3-cache=die
-> +
->      The following sub-option defines a CPU topology hierarchy (2 sockets
->      totally on the machine, 2 clusters per socket, 2 cores per cluster,
->      2 threads per core) for ARM virt machines which support sockets/clusters

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q8-20020a7bce88000000b004101543e843sm12440932wmj.10.2024.02.26.08.56.53
+        by smtp.gmail.com with ESMTPSA id o5-20020a05600c510500b00412157dc70bsm8958398wms.30.2024.02.26.08.56.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Feb 2024 08:56:59 -0800 (PST)
+        Mon, 26 Feb 2024 08:57:00 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5A0285F929;
-	Mon, 26 Feb 2024 16:56:48 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 4A0C05F934;
+	Mon, 26 Feb 2024 16:56:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Nicholas Piggin <npiggin@gmail.com>,
@@ -43,42 +43,40 @@ Cc: Nicholas Piggin <npiggin@gmail.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 16/27] linux-user: ensure nios2 processes queued work
-Date: Mon, 26 Feb 2024 16:56:35 +0000
-Message-Id: <20240226165646.425600-17-alex.bennee@linaro.org>
+Subject: [PATCH v3 27/27] docs/devel: plugins can trigger a tb flush
+Date: Mon, 26 Feb 2024 16:56:46 +0000
+Message-Id: <20240226165646.425600-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240226165646.425600-1-alex.bennee@linaro.org>
 References: <20240226165646.425600-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dHeRjIm4rl/m
+X-TUID: xQPUg0VlDmGX
 
-While async processes are rare for linux-user we do use them from time
-to time. The most obvious one is tb_flush when we run out of
-translation space. We will also need this when we move plugin
-vcpu_init to an async task.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Fix nios2 to follow its older, wiser and more stable siblings.
+When scoreboards need to be reallocated.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240213094009.150349-8-pierrick.bouvier@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- linux-user/nios2/cpu_loop.c | 1 +
+ docs/devel/multi-thread-tcg.rst | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/linux-user/nios2/cpu_loop.c b/linux-user/nios2/cpu_loop.c
-index da77ede76bd..7fe08c87501 100644
---- a/linux-user/nios2/cpu_loop.c
-+++ b/linux-user/nios2/cpu_loop.c
-@@ -32,6 +32,7 @@ void cpu_loop(CPUNios2State *env)
-         cpu_exec_start(cs);
-         trapnr = cpu_exec(cs);
-         cpu_exec_end(cs);
-+        process_queued_cpu_work(cs);
+diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
+index 7302c3bf534..1420789fff3 100644
+--- a/docs/devel/multi-thread-tcg.rst
++++ b/docs/devel/multi-thread-tcg.rst
+@@ -109,6 +109,7 @@ including:
+   - debugging operations (breakpoint insertion/removal)
+   - some CPU helper functions
+   - linux-user spawning its first thread
++  - operations related to TCG Plugins
  
-         switch (trapnr) {
-         case EXCP_INTERRUPT:
+ This is done with the async_safe_run_on_cpu() mechanism to ensure all
+ vCPUs are quiescent when changes are being made to shared global
 -- 
 2.39.2

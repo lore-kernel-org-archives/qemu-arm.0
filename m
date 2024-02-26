@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1763746ejf;
-        Sun, 25 Feb 2024 16:08:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWjY1KZMqX4j5Vjk2kOtBQNEvOXWnVtNA8kBOMMyQ5CLSE0lJBTbG4XxRK0xpdTK5cvH3br4GegkNs6uLZd97hZaIOnLkGK
-X-Google-Smtp-Source: AGHT+IF+4FWtTVZthomV/GcjXwtjNGVfZLxLhnb7R9fgdhFqs8nuWAUq/j6j93pP4jVPnSlMQIYx
-X-Received: by 2002:a05:620a:35e:b0:787:b73c:38ec with SMTP id t30-20020a05620a035e00b00787b73c38ecmr6892088qkm.5.1708906107861;
-        Sun, 25 Feb 2024 16:08:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708906107; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1764105ejf;
+        Sun, 25 Feb 2024 16:09:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVMwIA41odrU5WcsJBieiMJC+ZtH3G/rk5ZDBRQ4BXR6nFZHX6McUASYGmjGAXEUQ/ffqZguTUTmAp4XfoZlfPlSks877sw
+X-Google-Smtp-Source: AGHT+IHuWkNdIrvnaHM+80u1RCJYYf11InNqq1w0JJvhxUjhVdljSegWUWKy1/DQGm02IX/7NUbw
+X-Received: by 2002:a05:6102:6cb:b0:471:e3bc:a499 with SMTP id m11-20020a05610206cb00b00471e3bca499mr2275487vsg.9.1708906170915;
+        Sun, 25 Feb 2024 16:09:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708906170; cv=none;
         d=google.com; s=arc-20160816;
-        b=IkAF06xSdxHdksoN3VAsfodpC61tZ2ymmdNj76xdttRFWEZIG1g/aI7NK58KjR/JfP
-         AyYb5YSUGDnr04Lui9LS3Wj6QGsj6G+sNereVyY9ulVazOAqWQEa2YakiDaaOA7PV9YZ
-         Aa6uAaw3XnpX+lJu007tbFol3mJWdRxny07AbSIOvy8t8mIjuHcRtvbUyEt+f6KC6JEP
-         dlBdfr8bScgSP9rtZCs+gUYBONjAgkBRaE85LWN5g3nAHNmvps8zbY1zoTLfaYAP0gEy
-         L7YR2MthVYME3HqLJwE3iBhjm/mNDvaaO5omiMZTA/t5AEYUjMSuolIgSA4WoqT4zTnH
-         Sy9A==
+        b=WG1mrg+NV2swb2qJh92GH/nam/gpbJKKzmA2r4Nke4krd1xjVBDxudkbOMB/vYrAOs
+         sXPwf4eUlbjYSYZCnV4nCS+a5M6Cv5XwV2AfnKTr35WBYsxb2N2GP7yjjuxg998faYKH
+         wbJD0Bpb85zRUG62H0CNKO3gv+JYx8h2j1ZgFcruxn911B02WSvv03ch9AhNvQPQbBjK
+         ewjBOtgoNnMUpc3cDME7xyQVQXQ5d23yvcw7UwsUKeVuV9hf270R9sZGQr1bjxzSlh0e
+         5dLCVPSCVPIAcxb2WkuHyb0Qog67VuC/tMzw6eDB2vvVOzKFPlc9VqsY8tl1AM4HF865
+         A5wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
+        bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=j1YbOngRXQIjOG9iwbkgkqCR8i3tbAAdtgd7qTcYOvH70fRpYFFf3pFAW03DQ1tRCW
-         Ccs5I+w/2sa8u/F2oxNTYhzT7JOiItwRZoSWMIhRFnm8D6wJFfXuoECw8om6/VIkAb8E
-         HrF9KUOVrSHMcmYnxONYnMEwyrLO2VOqGVsI5eWwUyKT2REfRX+od7okybbQictcZuaP
-         PhVP7nQKv7oy2RGM3Z1BIP5YYdbkY8R98DQqUVzDWC6z6UgDMkjLQ80QBohDzXvdiDNH
-         eElRD6BSYjbbtWpfbX0G6I5TmXYLBzIGadzrVL9Pqgl6tj0mcmyyhpiZsX/7ZHjur6jg
-         1Dvw==;
+        b=V1am2Dlt2yjbJ9YblmwOUjm8QRENpDNcDdP+Lm3sEmuq7JOilnn/LctYanmXWMLRU9
+         g1sxs7OgYvTj0GNWJjMzLqNX8cY3C/oYavDc3y55ewXyOZmLzqyhPeaikpCCyZosZCZv
+         1+141rGHd0NWx2oxHrY4UeFHu5e5OC0FIOTskCf5les2BQix6H5f7VvRFUbEofNLtq2k
+         9R1OujwJk1ZmmtcUyfrM/UXwpQlNlsU3r+jnz+ROMqXyg56rRHwDdjFJJuKPEPQo6E1T
+         n3BE7/Kqb5AJNsl7MTooY7gB61M2DRldHcMBchcReO7Y3yPlx1KiFl8p/0mD+8VkBbF1
+         kk0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=arHznQsQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FmUpswnf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id xx14-20020a05620a5d8e00b007871aa88a2csi3989671qkn.585.2024.02.25.16.08.27
+        by mx.google.com with ESMTPS id j1-20020a05620a410100b00787cb2ef423si2767990qko.54.2024.02.25.16.09.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 16:08:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 25 Feb 2024 16:09:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=arHznQsQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FmUpswnf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reOT7-0006sw-Mn; Sun, 25 Feb 2024 19:03:41 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1reOUw-0001Q7-3o; Sun, 25 Feb 2024 19:05:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOSx-0006iT-FU; Sun, 25 Feb 2024 19:03:31 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1reOTM-0006zs-5F; Sun, 25 Feb 2024 19:04:00 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOSu-0000QN-EI; Sun, 25 Feb 2024 19:03:31 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-608ceccb5f4so6893437b3.3; 
- Sun, 25 Feb 2024 16:03:27 -0800 (PST)
+ id 1reOTI-0000bP-EX; Sun, 25 Feb 2024 19:03:55 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-608a21f1cbcso13426247b3.0; 
+ Sun, 25 Feb 2024 16:03:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708905807; x=1709510607; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708905829; x=1709510629; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
- b=arHznQsQywhn+jjncR4R0hdYjX8yUG7EMOCI7NnKGqw328o4ZLFoBjijkcmJL2zuq0
- OR5OKHWmlWXu4Ec2fzirXGrMFAaRKXWwT7opLdGOPmTxBH2YDJQl91cMMagFAFq/2EoK
- wZUgxNrtMVikjAsEKCUl7XL01u3uTDNR2eE1W3wieeSj5+Gamzqh842yACMyEgDpKusy
- j4USoIpYVJsUd6QzA6fC/jF7UlaBMnZm9fl8aEG+KFNZjlmHMAbcSNjDUjLxarGxcFb0
- C+vNut76RtmbdgFcYuT2Zq93bIFsTCemykKTBnm4uBBgkbzdHDttaxUfOxs7xZAuG1oX
- VPSQ==
+ bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
+ b=FmUpswnfRS072ZsFBo8yVLoWOfiD0Vcs3Ve0mdReQTg+fhBhEwjCtZnRqNOgYjFUI6
+ YDKAXRMC1ErbsK3HTrFzFYWGHeXeCPYgZlN1LNAhSs7G7HWVrlynQbnkrNzQiPE/IXbF
+ Hiy0gLHtbR2NA1idxeyXZXyqp/bQSBiI3SMV0QHZkbBbC8b9TR/dk0nL2urguQ+edtiL
+ oJuX9xTm4IamW/epNPx45//yLnIDBk3IBoNboOEjFJAbjWdFscFidMxjHFIrJOSIs1ld
+ yhuU0RKyukB88e8Y8liNC+JJCEugEREqZmF704Y50ewCzLc2JzfSoaeFbDD4ElNP5/Cp
+ 1twQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708905807; x=1709510607;
+ d=1e100.net; s=20230601; t=1708905829; x=1709510629;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
- b=D1Ls2rxIYv7vztg668pif2tfwuWguJqHKc1veQxORHIbg5Rombbhd409PRsLWL0TQZ
- meJFByySKcqyeP4gxpWCYK1cu2E67/O6JlbXH5dmpr/P0gydULoJCDIAIjhOhQ34C+2c
- RsrR093yl1mX6ByC6/KmhwNJBbkuUH+RsR832aKRQlicj4iaproWT4IMtCB6IJR9RB8s
- svBNGcSePE4DCuAvxrY4d9+dGE8yyzXSp0xlQEVjUrAnCHyvNT9nRXvIkDmQW3eUVwzt
- kHE3hqKWHjJiNH0WuyRtVKoFzkg0Wpi7Q3X335moinLxPG22UM1DVbkECHRNnfqpEdD8
- P56g==
-X-Gm-Message-State: AOJu0YxCD5G6YdQgTzVzylfD6CJe2ql+iqzOhlmcIeqetRD8vDVY2/nN
- j0LxLJjzhRzdfmDFAmuMbUqh86Rk9ptYRaEd0dcR9TLnd2NikUep4Zzkry9EzxY12Q==
-X-Received: by 2002:a81:b145:0:b0:607:899a:7fb8 with SMTP id
- p66-20020a81b145000000b00607899a7fb8mr4852677ywh.14.1708905806604; 
- Sun, 25 Feb 2024 16:03:26 -0800 (PST)
+ bh=dwrUXWIcfFzdV7BBJp4HhKekDysIM9N/Y6Nj2awBLZc=;
+ b=IjGa75qCBdBYWl4rHztL+D1QlBwHtGT6qHBipc+kF2Stow+L8fNEhE/f2e25u9X11+
+ KKhDA9sqOuKsC+MI+5MmsuTgBMQaCASY+UgwYnBhFNT/LpoXBeEuqBOfkPhHP+Pm9TyY
+ thRNYWLGxAk6jSAGQUh31SWWaD8DBtlqWCp6a/mYObj4Mx22ZUhek/MoHlVXj2hm4D7J
+ SXb5LtQKu+Id20to/yZjygNZhELGdiKBpflnWhvEWxSdrSZrqjLAbno97N1F+ytdZWwA
+ Faa5B73sxVMIj1SJ6WOa5jZQIqPtyqDLwJ60qwrzo9yKH0ng0bkSyeYrDYBaLmQtBO6a
+ Wmtw==
+X-Gm-Message-State: AOJu0YyxKrwi/ybTGiE0t2KoJOWIP4bbk0h0rD+9rOmvVMZUZEOhEQoU
+ MYH/FCEixhMQmtVOn8uC+1Aa9p+OC3x45rYsJaBtW2E05UT3m9+q9ZsG+m7sB6GUYQ==
+X-Received: by 2002:a0d:d812:0:b0:608:28cf:3591 with SMTP id
+ a18-20020a0dd812000000b0060828cf3591mr5598216ywe.23.1708905829395; 
+ Sun, 25 Feb 2024 16:03:49 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.25
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Feb 2024 16:03:26 -0800 (PST)
+ Sun, 25 Feb 2024 16:03:49 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v6 20/41] Add GENET register structs. Part 1
-Date: Sun, 25 Feb 2024 18:02:38 -0600
-Message-Id: <20240226000259.2752893-21-sergey.kambalin@auriga.com>
+Subject: [PATCH v6 39/41] Add missed BCM2835 properties
+Date: Sun, 25 Feb 2024 18:02:57 -0600
+Message-Id: <20240226000259.2752893-40-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,166 +113,100 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oH6TUP77PRkg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VAy/wxEh2iHk
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/net/bcm2838_genet.c         | 37 ++++++++++++++++
- include/hw/net/bcm2838_genet.h | 77 +++++++++++++++++++++++++++++++++-
- 2 files changed, 113 insertions(+), 1 deletion(-)
+ hw/misc/bcm2835_property.c           | 21 +++++++++++++++++++++
+ include/hw/arm/raspberrypi-fw-defs.h | 11 +++++++++++
+ 2 files changed, 32 insertions(+)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index 4420486e00..0d98d1b30e 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -15,9 +15,46 @@
- #include "hw/irq.h"
- #include "net/checksum.h"
- #include "sysemu/dma.h"
-+#include "hw/registerfields.h"
- #include "hw/net/bcm2838_genet.h"
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 5c48f8d743..bdd9a6bbce 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -19,6 +19,8 @@
  #include "trace.h"
+ #include "hw/arm/raspi_platform.h"
  
-+REG32(GENET_SYS_REV_CTRL,              0)
-+FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
-+FIELD(GENET_SYS_REV_CTRL, MINOR_REV,   16, 4)
-+FIELD(GENET_SYS_REV_CTRL, RSVD_20_23,  20, 4)
-+FIELD(GENET_SYS_REV_CTRL, MAJOR_REV,   24, 4)
-+FIELD(GENET_SYS_REV_CTRL, RSVD_28_31,  28, 4)
++#define VCHI_BUSADDR_SIZE       sizeof(uint32_t)
 +
-+REG32(GENET_INTRL_0,                0)
-+FIELD(GENET_INTRL_0, SCB,           0, 1)
-+FIELD(GENET_INTRL_0, EPHY,          1, 1)
-+FIELD(GENET_INTRL_0, PHY_DET_R,     2, 1)
-+FIELD(GENET_INTRL_0, PHY_DET_F,     3, 1)
-+FIELD(GENET_INTRL_0, LINK_UP,       4, 1)
-+FIELD(GENET_INTRL_0, LINK_DOWN,     5, 1)
-+FIELD(GENET_INTRL_0, UMAC,          6, 1)
-+FIELD(GENET_INTRL_0, UMAC_TSV,      7, 1)
-+FIELD(GENET_INTRL_0, TBUF_UNDERRUN, 8, 1)
-+FIELD(GENET_INTRL_0, RBUF_OVERFLOW, 9, 1)
-+FIELD(GENET_INTRL_0, HFB_SM,        10, 1)
-+FIELD(GENET_INTRL_0, HFB_MM,        11, 1)
-+FIELD(GENET_INTRL_0, MPD_R,         12, 1)
-+FIELD(GENET_INTRL_0, RXDMA_MBDONE,  13, 1)
-+FIELD(GENET_INTRL_0, RXDMA_PDONE,   14, 1)
-+FIELD(GENET_INTRL_0, RXDMA_BDONE,   15, 1)
-+FIELD(GENET_INTRL_0, TXDMA_MBDONE,  16, 1)
-+FIELD(GENET_INTRL_0, TXDMA_PDONE,   17, 1)
-+FIELD(GENET_INTRL_0, TXDMA_BDONE,   18, 1)
-+FIELD(GENET_INTRL_0, RSVD_19_22,    19, 4)
-+FIELD(GENET_INTRL_0, MDIO_DONE,     23, 1)
-+FIELD(GENET_INTRL_0, MDIO_ERROR,    24, 1)
-+FIELD(GENET_INTRL_0, RSVD_25_31,    25, 4)
-+
-+REG32(GENET_INTRL_1,              0)
-+FIELD(GENET_INTRL_1, TX_INTRS,    0, 16)
-+FIELD(GENET_INTRL_1, RX_INTRS,    16, 16)
-+
+ /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
  
- static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
- {
-diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-index d166a5c24c..f583818399 100644
---- a/include/hw/net/bcm2838_genet.h
-+++ b/include/hw/net/bcm2838_genet.h
-@@ -19,7 +19,82 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
- #define BCM2838_GENET_REV_MINOR         0
+ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+@@ -138,6 +140,13 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 8;
+             break;
  
- typedef struct {
--    uint8_t stub_area[0x10000]; /* temporary stub */
-+    uint32_t rev_ctrl;
-+    uint32_t port_ctrl;
-+    uint32_t rbuf_flush_ctrl;
-+    uint32_t tbuf_flush_ctrl;
-+    uint32_t reserved_0x10[12];
-+} BCM2838GenetRegsSys;
++        case RPI_FWREQ_GET_CLOCKS:
++            /* TODO: add more clock IDs if needed */
++            stl_le_phys(&s->dma_as, value + 12, 0);
++            stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_ARM_CLK_ID);
++            resplen = 8;
++            break;
 +
-+typedef struct {
-+    uint32_t reserved_0x0[16];
-+} BCM2838GenetRegsGrBridge;
+         case RPI_FWREQ_SET_CLOCK_RATE:
+         case RPI_FWREQ_SET_MAX_CLOCK_RATE:
+         case RPI_FWREQ_SET_MIN_CLOCK_RATE:
+@@ -276,6 +285,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             stl_le_phys(&s->dma_as, value + 12, 0);
+             resplen = 4;
+             break;
 +
-+typedef struct {
-+    uint32_t pwr_mgmt;
-+    uint32_t reserved_0x4[2];
-+    uint32_t rgmii_oob_ctrl;
-+    uint32_t reserved_0x10[3];
-+    uint32_t gphy_ctrl;
-+    uint32_t reserved_0x20[24];
-+} BCM2838GenetRegsExt;
-+
-+typedef struct {
-+    uint32_t stat;
-+    uint32_t set;
-+    uint32_t clear;
-+    uint32_t mask_status;
-+    uint32_t mask_set;
-+    uint32_t mask_clear;
-+    uint32_t reserved_0x18[10];
-+} BCM2838GenetRegsIntrl0;
-+
-+typedef struct {
-+    uint32_t stat;
-+    uint32_t set;
-+    uint32_t clear;
-+    uint32_t mask_status;
-+    uint32_t mask_set;
-+    uint32_t mask_clear;
-+    uint32_t reserved_0x18[10];
-+} BCM2838GenetRegsIntrl1;
-+
-+typedef struct {
-+    uint32_t ctrl;
-+    uint32_t reserved_0x4[2];
-+    uint32_t status;
-+    uint32_t reserved_0x10;
-+    uint32_t chk_ctrl;
-+    uint32_t reserved_0x18[31];
-+    uint32_t ovfl_cnt;
-+    uint32_t err_cnt;
-+    uint32_t energy_ctrl;
-+    uint32_t reserved_0xA0[5];
-+    uint32_t size_ctrl;
-+    uint32_t reserved_0xB8[18];
-+} BCM2838GenetRegsRbuf;
-+
-+typedef struct {
-+    uint32_t ctrl;
-+    uint32_t reserved_0x4[2];
-+    uint32_t bp_mc;
-+    uint32_t reserved_0x10;
-+    uint32_t energy_ctrl;
-+    uint32_t reserved_0x18[58];
-+} BCM2838GenetRegsTbuf;
-+
-+typedef struct {
-+    BCM2838GenetRegsSys sys;
-+    BCM2838GenetRegsGrBridge gr_bridge;
-+    BCM2838GenetRegsExt ext;
-+    uint32_t reserved_0x100[64];
-+    BCM2838GenetRegsIntrl0 intrl0;
-+    BCM2838GenetRegsIntrl1 intrl1;
-+    uint32_t reserved_0x280[32];
-+    BCM2838GenetRegsRbuf rbuf;
-+    uint32_t reserved_0x400[128];
-+    BCM2838GenetRegsTbuf tbuf;
-+    uint32_t reserved_0x700[64];
- } BCM2838GenetRegs;
+         case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
+             stl_le_phys(&s->dma_as, value + 12, 1);
+             resplen = 4;
+@@ -301,6 +311,17 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+                                     resplen);
+             break;
  
- struct BCM2838GenetState {
++        case RPI_FWREQ_GET_THROTTLED:
++            stl_le_phys(&s->dma_as, value + 12, 0);
++            resplen = 4;
++            break;
++
++        case RPI_FWREQ_VCHIQ_INIT:
++            stl_le_phys(&s->dma_as,
++                        value + offsetof(rpi_firmware_prop_request_t, payload),
++                        0);
++            resplen = VCHI_BUSADDR_SIZE;
++            break;
+         default:
+             qemu_log_mask(LOG_UNIMP,
+                           "bcm2835_property: unhandled tag 0x%08x\n", tag);
+diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
+index 579cf0d554..8b404e0533 100644
+--- a/include/hw/arm/raspberrypi-fw-defs.h
++++ b/include/hw/arm/raspberrypi-fw-defs.h
+@@ -159,4 +159,15 @@ enum rpi_firmware_clk_id {
+     RPI_FIRMWARE_NUM_CLK_ID,
+ };
+ 
++struct rpi_firmware_property_tag_header {
++    uint32_t tag;
++    uint32_t buf_size;
++    uint32_t req_resp_size;
++};
++
++typedef struct rpi_firmware_prop_request {
++    struct rpi_firmware_property_tag_header hdr;
++    uint8_t payload[0];
++} rpi_firmware_prop_request_t;
++
+ #endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
 -- 
 2.34.1
 

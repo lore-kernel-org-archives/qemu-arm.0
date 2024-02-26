@@ -1,116 +1,96 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1917649ejf;
-        Mon, 26 Feb 2024 00:23:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW9LvEAM6PVmwdLANoheKAmNq+Sj1JLQnX/Jk3Peh9uiOG9H5StnVhHRv3BeiYAzYZM7s4u3GK3uW7CXsVgg9UNw8Sbl8P9
-X-Google-Smtp-Source: AGHT+IE9gICk1xryZ3lNJOY/ZiKadTxhpnB+URb44psyk1Socs85WUYih0mzzCIAIVyvM4MveWq+
-X-Received: by 2002:a05:622a:1354:b0:42e:8b5c:fd01 with SMTP id w20-20020a05622a135400b0042e8b5cfd01mr768041qtk.54.1708935823512;
-        Mon, 26 Feb 2024 00:23:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708935823; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1974267ejf;
+        Mon, 26 Feb 2024 02:51:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVoWx6EazIKGfHcnh8BMdgyYo5vywyQdCMihX0MGcSBexGOo1NDZ1kAz5DdA/E1CFoIvFMWhWGRsyAnYwalWz77eMSMH7HU
+X-Google-Smtp-Source: AGHT+IE0EI5iZdM7Bk7Ybs+JDolPr0/723wfMj5ddyjGWgnAH/1QD9j0P2NPLTNN7bQgeB6AAqhv
+X-Received: by 2002:a05:6102:291f:b0:472:1057:575 with SMTP id cz31-20020a056102291f00b0047210570575mr279316vsb.21.1708944685484;
+        Mon, 26 Feb 2024 02:51:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708944685; cv=none;
         d=google.com; s=arc-20160816;
-        b=xLO5MMvsD+9+1f9t9dZURo3GlyJROGADUrfqUJWhZElYoN5gQh8+b3XS6msNbcO0hj
-         qjppUYgAvXFcPllup6uz4jcD3wsWCJPPu1uTxErtBFbvqS1kGnVis/pol3j+PwwCe8y/
-         utCEFt+ajnAdv8OHepD9OTghauTvRZGrXY29K1N7VgojCIh15zVTigxDf+6sHpsLV1v/
-         tdS5/liKXlgJC4bIv+17FvRbKjbrSIeyp6Iej7s8VB+LjdQnXmMEClxN4Iy53Z20Z2Ew
-         lKBc0NT5BdbJS6Arok0EWl+135FV5O+0TSR9QWsUinZlwf46Uzbf4VxCpgHg4Xzig3g+
-         fiDA==
+        b=fGfMci4zXLKj3ysD5lVcDecNH/wADrW0KQRA/oZ6IF8kwjlC48yU9zHbghUeLda67f
+         vtOt2xCd5P4Bg4Bi9xY4EKXXDxUQRgZfEDiCuVf5f0K4zlJBtOz6wWg0OA/YRN41EYwj
+         P7+mi7dc4+KjvjiQGNLcNoi67MEYhjTd9qWFN+S0X+yn9F/lZAUCaGSPhnR6dWZcaHOE
+         Ics85fB7ihJ86nDAW+mvMJeWwwoVeT4LL66Pa8/N1Lw8/exj/XMd3PKrNtkiG0U1bCL7
+         vAwjhF1V/0K26CrTbvPWIerg0fA2x4OhsigqKGjoGIuVAPWRbMVY1uWXXc0fGP2rNvfj
+         MK2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=zjPaPGj5s3aVhMFul/v781tyjt/wzgZVW9WmyogkM4I=;
-        fh=v4HJEGzdEPtDD1AEc0HNPYnlVgxW9COTVumdfH5xaQs=;
-        b=lpmmUlJzDBzRc6iE3fCtw8Cl28xsesUuh6gNvVWmjuF+1T3qCUhd8d+37cikdi7ol+
-         b/J3E0KvcJoThNBUKGqorCHPQdXHUaW3IXJznNUeMhAzD9oSWz9EU0Umj8jjQJzvHqYK
-         t6GitNnMVQcqeYEKsqguSg0n60i76652fA0nzv1ley9DbCfVK6dxZgnNDurELw1iUEQ0
-         iiMUIXa8pz6rjNL3ridKfQO/T6Q1ACWaBCvP3VgP6KzK/4hzAYU0pPicY2Y+3GnIfquW
-         4qECA65gRWCgd3SCMfh7eD7kJI47MiBWxQtKhn++ph24nEvkd5x5o5OkgmOfmvIGOD21
-         5/4Q==;
+         :list-unsubscribe:list-id:precedence:content-id:mime-version
+         :references:message-id:in-reply-to:subject:cc:to:from:date;
+        bh=tnMEuAVLgWUbDZPHQWmuZHK/p1U+zMqkNN7DGQ1Lmg8=;
+        fh=ETlmwqe9NVc+3bqSVhrtWydl6yR3Ptjjn/QvvFe1kZs=;
+        b=oNLh/aoax09VmNQn8rj8DI/cViD6cxRiMdT8Xg1vgSVEcIVPNDrBVRJmEkah92expy
+         wCbgmZoEPqncTtip5YfLkDFvmHlwgSHvIjyiNuAPqL5/j3KrdLvP7mLKhJ72y7FLVj+l
+         AFQxf/UHW7+qjDyBCpE7CvyDWA+rfPk4mBRAh1HnlIZukfOkiOTAqyYptDERfqlJ9LHA
+         Ck2Ay0cO0i+XZXGAQRV9NxpdqunYM4EPCQTm4+rclpEcFDx8/EdBO61krHG80yt+P+GO
+         d1GJ1FVckoC1/c5IRqQ4v5Vdm/nuEtU2OmJGA4y7RRm5Q3h7yrehR0PFDCbEwis7TO6N
+         cUvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FdB1E3h6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9-20020ac87449000000b0042c66cff88asi4483791qtr.407.2024.02.26.00.23.43
+        by mx.google.com with ESMTPS id b24-20020a05620a0cd800b00787bba195d3si4723476qkj.109.2024.02.26.02.51.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Feb 2024 00:23:43 -0800 (PST)
+        Mon, 26 Feb 2024 02:51:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FdB1E3h6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reWGb-0005xC-Ma; Mon, 26 Feb 2024 03:23:17 -0500
+	id 1reYZE-0002lB-Hn; Mon, 26 Feb 2024 05:50:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1reWGY-0005vq-TG
- for qemu-arm@nongnu.org; Mon, 26 Feb 2024 03:23:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1reYZ3-0002hN-Re; Mon, 26 Feb 2024 05:50:30 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1reWGV-0004a1-PF
- for qemu-arm@nongnu.org; Mon, 26 Feb 2024 03:23:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708935790;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zjPaPGj5s3aVhMFul/v781tyjt/wzgZVW9WmyogkM4I=;
- b=FdB1E3h6XhUtVwXi1cKwh3BxWutLDlMjYVv3uQa5NPGJmwNRsrkkx4JeyNMqZsVnEVmWjw
- CUmZ0c/SX2ZHJ6M6j+osSmIjo7L5+cnDg10xwJC4psfwNkCGXahZEZ8SHH0I8aphBu3EdP
- KhattCp9s5s6TXM7WJZ+/k1Bzo4h93g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-141-2H9wsBxEOCSjOvyk5X0mIw-1; Mon, 26 Feb 2024 03:23:05 -0500
-X-MC-Unique: 2H9wsBxEOCSjOvyk5X0mIw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B1BFA1021F66;
- Mon, 26 Feb 2024 08:23:04 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7CCFF8CEC;
- Mon, 26 Feb 2024 08:23:04 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 39FCA21E6767; Mon, 26 Feb 2024 09:23:03 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  John Snow <jsnow@redhat.com>,  Leif
- Lindholm <quic_llindhol@quicinc.com>,  qemu-block@nongnu.org,  Radoslaw
- Biernacki <rad@semihalf.com>,  BALATON Zoltan <balaton@eik.bme.hu>,
- qemu-ppc@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 3/3] hw/ide: Include 'ide_internal.h' from current path
-In-Reply-To: <20240226080632.9596-4-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 26 Feb 2024 09:06:31
- +0100")
-References: <20240226080632.9596-1-philmd@linaro.org>
- <20240226080632.9596-4-philmd@linaro.org>
-Date: Mon, 26 Feb 2024 09:23:03 +0100
-Message-ID: <8734tfk520.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1reYZ1-00043K-OE; Mon, 26 Feb 2024 05:50:29 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 179C14E6026;
+ Mon, 26 Feb 2024 11:50:25 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id dA7fQlQtrwC1; Mon, 26 Feb 2024 11:50:23 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 20DCE4E601E; Mon, 26 Feb 2024 11:50:23 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 1F1187456B4;
+ Mon, 26 Feb 2024 11:50:23 +0100 (CET)
+Date: Mon, 26 Feb 2024 11:50:23 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
+ qemu-ppc@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org, 
+ John Snow <jsnow@redhat.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH v2 3/3] hw/ide: Include 'ide_internal.h' from current path
+In-Reply-To: <fd0fba89-cd93-4113-9f3d-2ee20f2217d9@linaro.org>
+Message-ID: <90219760-aad5-82b2-41aa-be563f52fdf9@eik.bme.hu>
+References: <20240225171637.4709-1-philmd@linaro.org>
+ <20240225171637.4709-4-philmd@linaro.org>
+ <feffd329-59e0-0291-0dd6-76a625da190b@eik.bme.hu>
+ <878r37lll6.fsf@pond.sub.org>
+ <fd0fba89-cd93-4113-9f3d-2ee20f2217d9@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.097,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ BOUNDARY="3866299591-1653774431-1708944568=:1986"
+Content-ID: <de8c98d8-24d0-883e-2208-6c280c149494@eik.bme.hu>
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,18 +105,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nLG72uf4GkNa
+X-TUID: +WXolVXlW8xR
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> Rename "internal.h" as "ide_internal.h", and include
+--3866299591-1653774431-1708944568=:1986
+Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 8BIT
+Content-ID: <a7ba5298-f308-b152-2717-bb9a6be7f849@eik.bme.hu>
 
-ide-internal.h
-
-> it via its relative local path, instead of absolute
-> to the project root path.
+On Mon, 26 Feb 2024, Philippe Mathieu-Daudé wrote:
+> On 26/2/24 08:40, Markus Armbruster wrote:
+>> BALATON Zoltan <balaton@eik.bme.hu> writes:
+>> 
+>>> On Sun, 25 Feb 2024, Philippe Mathieu-Daudé wrote:
+>>>> Rename "internal.h" as "ide_internal.h", and include
+>>> 
+>>> Is there a convention about using underscore or dash in file names? The 
+>>> headers Thomas added are using - as well as ahci-allwinner.c, only 
+>>> ahci_internal.h has _ (but there are others elsewhere such as 
+>>> pci_device.h). Maybe we should be consistent at least within IDE and this 
+>>> series is now a good opportunity for renaming these headers to match. But 
+>>> it's just a small nit, thanks for picking this up.
+>> 
+>> This is one of the many unnecessary inconsistencies we're inflicting on
+>> ourselves.
+>> 
+>> We have more than 3600 file names containing '-', and more almost 2700
+>> containing '_'.  Bizarrely, 68 of them contain both.
+>> 
+>> I strongly prefer '_' myself.
+>> 
+>> Zoltan is making a local consistency argument for '-'.
+>> 
+>> Let's use '-' here.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Fine, patch updated.
 
-The series is a lovely little cleanup; thanks, guys!
+And then please also rename ahci_internal.h to use '-' to be really 
+consistent.
 
+Regards,
+BALATON Zoltan
+--3866299591-1653774431-1708944568=:1986--

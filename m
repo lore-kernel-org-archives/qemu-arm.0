@@ -1,110 +1,106 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1762245ejf;
-        Sun, 25 Feb 2024 16:04:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUGfH1AA92ngFMA+KuRO61ZoMSKP8Uxy681O5fPydEazJjjMs3KCublfkh9Hozpaqm/RlqYCk+6ybL718/7iKOQyPGctBXp
-X-Google-Smtp-Source: AGHT+IErZZ/fk0g5awLhbQSUFu6JU1OkeLmhonND7ZUxiJux7zDAo2aSWmwM31l3S70x85lsUGZV
-X-Received: by 2002:ae9:e70c:0:b0:787:bb37:3ded with SMTP id m12-20020ae9e70c000000b00787bb373dedmr6637142qka.53.1708905875360;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1762252ejf;
+        Sun, 25 Feb 2024 16:04:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUVA0I5i+LmJmiZAcpA0EtfKmh+wI8ndlOVUiJMCIksSmbBgKSR9RV4grWDQwGESfXHBtCoRTFS6/XSWa0iofe+EwE1/sct
+X-Google-Smtp-Source: AGHT+IEaIE3YK62EhEtrAkkNiNgftcNyuXPn1/3dodvcEaek8m0bImnSoVGh/5yz586EGavf+Jfr
+X-Received: by 2002:ac8:7088:0:b0:42e:8461:65ba with SMTP id y8-20020ac87088000000b0042e846165bamr1390875qto.17.1708905875754;
         Sun, 25 Feb 2024 16:04:35 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1708905875; cv=none;
         d=google.com; s=arc-20160816;
-        b=cvQuE0S0QINv8OArG5tDtGPP/6uVsOKVBAUsr3eWZzGBJ5yEILtiufwHowHA4FmKDG
-         204a1hYXOqeKHYM15hjXoelOOf/27B9R6c8c65W2SH3EfdL5xQorTyhogxUbGZ9WNmq4
-         +18aLzKyRJ+cv4R0vaRm8UOUpBzglYCzb2jc5+9nZ84YvrFX9gipUIZKiJytDNLZkilr
-         9x4/me0dnRN25bruRQt/PDaomI7PbNky+ru10Jk+xUTGRRpp+5Cp+Vi8QcjsnBavQubQ
-         EE1MWHLEBMM3lM5ItoXhpIjwP8chH56McydsiqUAadwPBxk7cWMpIxChQtFue6OAodnQ
-         7jUw==
+        b=qJ+Ar//5bf8NccMoSpEvMdGzLyqMl25UuFs4tBTNtXU5ks/iYBjo+5ab9Nh9ltXBFv
+         rYDoWTiVG7nc6qzUWxw03kbslPTY3EoDj/VLBucNllHkWAhAcHgOGijypmV1yA1a4JLT
+         KOm95fUFehGVcbEf3XqKzVlE5xUkGehxvcKaLNkpj4s4BRLFMe1QWWdw5TQdjy2/aO80
+         VwIzKvtOII0HrPOqQqWGuXoNREBd5PJ/3V62dOFdnjleb7uKoXrE+4ViXC/XuC/Ucd1e
+         Lkn537Ptu8cig4LeMS9NU81pIzYJM6dK7joBEp2E1Q+fgNW/iyK62d+I3Z5lf8PK2hIC
+         KIbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=TQTbygsfH6LEz69k7MYJd7Upsoo3ZYSTx2HyN1rltsg=;
-        fh=Q3ymybApXVKZLLe/tVr7XNOAtHP7L1mCO+uDLDigmRk=;
-        b=Bdp9lw/lvypEDIDbZ5epvkyZX49L8I/vwZkL3m6HY1269IE7WdR6225T1Ve5EKgR/r
-         GfYmDviG/B4OQu/ibLi/I1AP3Lllzu2khkVEHBFW1DZ+Cr/909QigJMwgih+r6RtAoxe
-         IyIt/BC4ASddDxnnw22G7TIedPL3ea8pDGgkK1PqhVZJlZpI7J83u0Kgwo8lEl28/DfU
-         65k3JZjq4xnjWEbPiX2EuKk+BfEYa6TNQIZVusr/vegu9FwMLQ7Od8YUvp5NOX+vTIUV
-         aP6VplzO3Fm3EPpakkj0ik3HTmSJonXEYn40N1m/5p8YHSsznPi4OzFAgMhJF2JgcCR4
-         ELoQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Xh9GUoztdsMw4XbJM+HrJ0RmMjhiGtE6C1BDJ8vP0lo=;
+        fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
+        b=uhEDe8HfFSPvxRvCM7lCasA32iC//jQX89fcpVUFMcQZFtpz7a8KxD6tMA0t7VLRd2
+         hSuSfhMjl3EBYGJenaFGTIAN7zWf0QeHMzCJZNUJLKtjJaw/Xj2Ta4ysfP6+7z+iZEMB
+         o/rfled4wx80D6mNVxiKP2WksXRJHKCPGa1FpuURw0mVMFzvtlY9sYvefVaYOjWqAuj0
+         KSF1ylifiQWKTDBjE/EatFX6VdVkEsVpi1ofkOAwXzL+7gltsMc2TED+4C86H8RSHrMY
+         pVjheRpT2/DG5uc6Zu/LDKj7ganHnHSMAbo90Ebfs/aweRiU+EN/fbS0k5P8os5Mq1dN
+         eeDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ELZxTiTN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WYVGU0mq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk2-20020a05620a1a0200b007876f55c2a5si4258669qkb.752.2024.02.25.16.04.35
+        by mx.google.com with ESMTPS id j2-20020a05620a146200b00787ad2ff7d7si3748810qkl.482.2024.02.25.16.04.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 25 Feb 2024 16:04:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ELZxTiTN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WYVGU0mq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reOSt-0006fv-Ap; Sun, 25 Feb 2024 19:03:27 -0500
+	id 1reOSn-0006a7-4F; Sun, 25 Feb 2024 19:03:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOSo-0006bD-Ei; Sun, 25 Feb 2024 19:03:22 -0500
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ id 1reOSg-0006VM-8B; Sun, 25 Feb 2024 19:03:15 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOSk-0000L3-70; Sun, 25 Feb 2024 19:03:22 -0500
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-60893d33269so24807177b3.1; 
- Sun, 25 Feb 2024 16:03:17 -0800 (PST)
+ id 1reOSb-0000GX-S1; Sun, 25 Feb 2024 19:03:11 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-608dcb3a1cdso9551927b3.3; 
+ Sun, 25 Feb 2024 16:03:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708905796; x=1709510596; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TQTbygsfH6LEz69k7MYJd7Upsoo3ZYSTx2HyN1rltsg=;
- b=ELZxTiTNCMwqQfKE74c1Kj1WBwmNongQfrKoIc61/nA+EbY5OmXEOxwpfdZAXLgno4
- Y7QDSJOQP5UAhFboF7lQcd7Fc8L9B7GAupX7zT/6NPN3ZtZ6w7Y/wwpQCF4Tl2iRIIRK
- ox30P0NifYLm3yiF37RHvO9xfOzFk6ElCuBwfYTpXRfoirBbDMTJHKxwJWKiQ0Wsuy5v
- Q/gtFpDxfuenMIR1qv9et7UKKF7NMm1wK/VQ7QKnLblS8yJgoZvjzgPfrZGTvQJmEq9i
- v6wVv604jpugkvVRveeERFQHeQpDKU/MdzFBFd9//wRu6rCxAbPtQDXTsQL+LcIXzdmb
- tSoA==
+ d=gmail.com; s=20230601; t=1708905783; x=1709510583; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xh9GUoztdsMw4XbJM+HrJ0RmMjhiGtE6C1BDJ8vP0lo=;
+ b=WYVGU0mqmR2BAmKjwkFdcsGegUqI9ISAqgRhptd63vwtvHS5xrJ/i0gskGNPlaHzCk
+ Mdcwcco/UP0KfePlO97xxNvjhbMuwB7g6ULmjNQD5BXLz2m3RuIR1jjRQ8pqC8k2zmrk
+ RtB8w3RlnqGQkvVClSJ7LsJ1DaDuENiUEXpEyg4GBq5GfjGBYK5WJPfGUI48KNHkf415
+ urcJMiyvib765Dk6pfhLqnFHm2IALzbnb5ODvBwB7n9ilDFixcNibYiDqBItLptvM6IX
+ tOYQrrpE3cyHzEpKaLi9lzPXPlgLWl8HN1OVq+tJk+RlyS+9aXojAOpRFquMxuubmtn/
+ GXfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708905796; x=1709510596;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TQTbygsfH6LEz69k7MYJd7Upsoo3ZYSTx2HyN1rltsg=;
- b=rX6u7KOpMsLFYe8ciQHAySgPei+zAmtGWNeq5XLmCMpWNKOkQtnDcPCBmE7wnEeD9p
- qoDO6oHfvz6PefveBgMlY9Udt4tD6wg5E9280xThQcTibSWbVsAfH74MK72lirOENYco
- 9rJmu2c7ziKAxX3wG514fG1QNdjMA3qhyu11woPJkGWsVYlHMng3VUbwowQKOEJTmBf+
- 0exozfzaF6nXIRmRA7JqRd2KzyZecJxSFL/Sb2LCK55cM8rcLDpIdaSRA2Tv99xCeXLl
- zhxJWbQf+JmWj1tqn11oQPJvKGKcjLMaHZCLZc8KkzMFbrcFQw9oxM22IXiFeWL6mKpI
- sftQ==
-X-Gm-Message-State: AOJu0Yz+KlO8ITGKfmrAa208qp8F63+vrU69cWwWgOBQYuUMkXhrzRio
- Ydzv9iOk7d2wfCtxzS2l7SphlrszsNLwq9eo2JjXprlqe/RJ/6nrms3gGG1FOP1Bow==
-X-Received: by 2002:a0d:db82:0:b0:607:df61:5811 with SMTP id
- d124-20020a0ddb82000000b00607df615811mr5198583ywe.13.1708905796502; 
- Sun, 25 Feb 2024 16:03:16 -0800 (PST)
+ d=1e100.net; s=20230601; t=1708905783; x=1709510583;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Xh9GUoztdsMw4XbJM+HrJ0RmMjhiGtE6C1BDJ8vP0lo=;
+ b=qY1Qnv7AHwsfLCtnmPrHM37/HgG0jQEN7aXJTYzaKHADMkxuhBfMVs7iTW+vEdYG2O
+ 5wlabBrbXXgGiR4FvrMgwBMSY4/LAGMZlvt7PrKfylfwtCagzp8xIf2vSZk03BlkCrYV
+ dzMxiruQadlhBgpXG9yG/yT6EuqDtjNT15SsOfnDyHuKIJTPlF9xFXQQmBsuQRlC3d+x
+ wnCKM8beQxt5ntgflCVIaitAy2u2h5tmUj3B3Qqde5pTYXGO5TKxTKg4HCDn5NO1PUlZ
+ SiURdi5Y2rpIWKHBWYHHxxi0Ztq+E5wVke7145hIXHc+hkUhpt/PXEvgUc/FIIh+Zc/C
+ A+GA==
+X-Gm-Message-State: AOJu0YxsKlMQuyB0YE9N68nSVDAjZ7/D8z+GV2+CcoibCng8VjgXB2TQ
+ tv9bYKCeM2FlE2mYbs77r8wQBCK04miRl4355u/YYmGfjRQxRDpJmisKGGjCLiRLrA==
+X-Received: by 2002:a81:5213:0:b0:608:f9f2:6574 with SMTP id
+ g19-20020a815213000000b00608f9f26574mr1233517ywb.24.1708905782906; 
+ Sun, 25 Feb 2024 16:03:02 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.15
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Feb 2024 16:03:16 -0800 (PST)
+ Sun, 25 Feb 2024 16:03:02 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v6 11/41] Temporarily disable unimplemented rpi4b devices
-Date: Sun, 25 Feb 2024 18:02:29 -0600
-Message-Id: <20240226000259.2752893-12-sergey.kambalin@auriga.com>
+Cc: qemu-devel@nongnu.org,
+	Sergey Kambalin <sergey.kambalin@auriga.com>
+Subject: [PATCH v6 00/41] Raspberry Pi 4B machine
+Date: Sun, 25 Feb 2024 18:02:18 -0600
+Message-Id: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
-References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,154 +122,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bwXUzy8TjrcP
+X-TUID: /84tBkUYFUMp
 
-This commit adds RPi4B device tree modifications:
-- disable pcie, rng200, thermal sensor and genet devices
-  (they're going to be re-enabled in the following commits)
-- create additional memory region in device tree
-  if RAM amount exceeds VC base address.
+Introducing Raspberry Pi 4B model.
+It contains new BCM2838 SoC, PCIE subsystem,
+RNG200, Thermal sensor and Genet network controller.
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/raspi.c                  |  5 +--
- hw/arm/raspi4b.c                | 62 +++++++++++++++++++++++++++++++++
- include/hw/arm/raspi_platform.h |  4 +++
- 3 files changed, 67 insertions(+), 4 deletions(-)
+It can work with recent linux kernels 6.x.x.
+Two avocado tests was added to check that.
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 8b1a046912..a7a662f40d 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -37,9 +37,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(RaspiMachineState, RASPI_MACHINE)
- #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
- #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
- 
--/* Registered machine type (matches RPi Foundation bootloader and U-Boot) */
--#define MACH_TYPE_BCM2708   3138
--
- struct RaspiMachineState {
-     /*< private >*/
-     RaspiBaseMachineState parent_obj;
-@@ -75,7 +72,7 @@ static const struct {
-     [PROCESSOR_ID_BCM2838] = {TYPE_BCM2838, BCM283X_NCPUS},
- };
- 
--static uint64_t board_ram_size(uint32_t board_rev)
-+uint64_t board_ram_size(uint32_t board_rev)
- {
-     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-     return 256 * MiB << FIELD_EX32(board_rev, REV_CODE, MEMORY_SIZE);
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 36a4593928..49dec6e53a 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -21,6 +21,7 @@
- #include "hw/arm/boot.h"
- #include "qom/object.h"
- #include "hw/arm/bcm2838.h"
-+#include <libfdt.h>
- 
- #define TYPE_RASPI4B_MACHINE MACHINE_TYPE_NAME("raspi4b-2g")
- OBJECT_DECLARE_SIMPLE_TYPE(Raspi4bMachineState, RASPI4B_MACHINE)
-@@ -30,6 +31,66 @@ struct Raspi4bMachineState {
-     BCM2838State soc;
- };
- 
-+/*
-+ * Add second memory region if board RAM amount exceeds VC base address
-+ * (see https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
-+ * 1.2 Address Map)
-+ */
-+static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
-+{
-+    int ret;
-+    uint32_t acells, scells;
-+    char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-+
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
-+                                   NULL, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-+                                   NULL, &error_fatal);
-+    if (acells == 0 || scells == 0) {
-+        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-+        ret = -1;
-+    } else {
-+        qemu_fdt_add_subnode(fdt, nodename);
-+        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-+        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-+                                           acells, mem_base,
-+                                           scells, mem_len);
-+    }
-+
-+    g_free(nodename);
-+    return ret;
-+}
-+
-+static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
-+{
-+    uint64_t ram_size;
-+
-+    /* Temporarily disable following devices until they are implemented */
-+    const char *nodes_to_remove[] = {
-+        "brcm,bcm2711-pcie",
-+        "brcm,bcm2711-rng200",
-+        "brcm,bcm2711-thermal",
-+        "brcm,bcm2711-genet-v5",
-+    };
-+
-+    for (int i = 0; i < ARRAY_SIZE(nodes_to_remove); i++) {
-+        const char *dev_str = nodes_to_remove[i];
-+
-+        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
-+        if (offset >= 0) {
-+            if (!fdt_nop_node(fdt, offset)) {
-+                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
-+            }
-+        }
-+    }
-+
-+    ram_size = board_ram_size(info->board_id);
-+
-+    if (info->ram_size > UPPER_RAM_BASE) {
-+        raspi_add_memory_node(fdt, UPPER_RAM_BASE, ram_size - UPPER_RAM_BASE);
-+    }
-+}
-+
- static void raspi4b_machine_init(MachineState *machine)
- {
-     Raspi4bMachineState *s = RASPI4B_MACHINE(machine);
-@@ -37,6 +98,7 @@ static void raspi4b_machine_init(MachineState *machine)
-     RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-     BCM2838State *soc = &s->soc;
- 
-+    s_base->binfo.modify_dtb = raspi4_modify_dtb;
-     s_base->binfo.board_id = mc->board_rev;
- 
-     object_initialize_child(OBJECT(machine), "soc", soc,
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 45003e2425..0db146e592 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -31,6 +31,9 @@
- #include "hw/boards.h"
- #include "hw/arm/boot.h"
- 
-+/* Registered machine type (matches RPi Foundation bootloader and U-Boot) */
-+#define MACH_TYPE_BCM2708   3138
-+
- #define TYPE_RASPI_BASE_MACHINE MACHINE_TYPE_NAME("raspi-base")
- OBJECT_DECLARE_TYPE(RaspiBaseMachineState, RaspiBaseMachineClass,
-                     RASPI_BASE_MACHINE)
-@@ -59,6 +62,7 @@ void raspi_base_machine_init(MachineState *machine,
- 
- void raspi_machine_class_common_init(MachineClass *mc,
-                                      uint32_t board_rev);
-+uint64_t board_ram_size(uint32_t board_rev);
- 
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
- #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
+Unit tests has been made as read/write operations
+via mailbox properties.
+
+Genet integration test is under development.
+
+Every single commit
+1) builds without errors
+2) passes regression tests
+3) passes style check*
+*the only exception is bcm2838-mbox-property-test.c file
+containing heavy macros usage which cause a lot of
+false-positives of checkpatch.pl.
+
+I did my best to keep the commits less than 200 changes,
+but had to make some of them a bit more in order to
+keep their integrity.
+
+
+Sergey Kambalin (41):
+  Split out common part of BCM283X classes
+  Split out common part of peripherals
+  Split out raspi machine common part
+  Introduce BCM2838 SoC
+  Add GIC-400 to BCM2838 SoC
+  Add BCM2838 GPIO stub
+  Implement BCM2838 GPIO functionality
+  Connect SD controller to BCM2838 GPIO
+  Add GPIO and SD to BCM2838 periph
+  Introduce Raspberry PI 4 machine
+  Temporarily disable unimplemented rpi4b devices
+  Add memory region for BCM2837 RPiVid ASB
+  Add BCM2838 PCIE Root Complex
+  Add BCM2838 PCIE host
+  Enable BCM2838 PCIE
+  Add RPi4 RNG200
+  Implement BCM2838 thermal sensor
+  Add clock_isp stub
+  Add GENET stub
+  Add GENET register structs. Part 1
+  Add GENET register structs. Part 2
+  Add GENET register structs. Part 3
+  Add GENET register structs. Part 4
+  Add GENET register access macros
+  Implement GENET register ops
+  Implement GENET MDIO
+  Implement GENET TX path
+  Implement GENET RX path
+  Enable BCM2838 GENET controller
+  Add Rpi4b boot tests
+  Add mailbox test stub
+  Add mailbox test constants
+  Add mailbox tests tags. Part 1
+  Add mailbox tests tags. Part 2
+  Add mailbox tests tags. Part 3
+  Add mailbox property tests. Part 1
+  Add mailbox property tests. Part 2
+  Add mailbox property tests. Part 3
+  Add missed BCM2835 properties
+  Append added properties to mailbox test
+  Add RPi4B to raspi.rst
+
+ docs/system/arm/raspi.rst                |   11 +-
+ hw/arm/bcm2835_peripherals.c             |  215 +++--
+ hw/arm/bcm2836.c                         |  117 ++-
+ hw/arm/bcm2838.c                         |  282 ++++++
+ hw/arm/bcm2838_pcie.c                    |  295 ++++++
+ hw/arm/bcm2838_peripherals.c             |  287 ++++++
+ hw/arm/meson.build                       |    8 +-
+ hw/arm/raspi.c                           |  130 +--
+ hw/arm/raspi4b.c                         |  111 +++
+ hw/arm/trace-events                      |    7 +
+ hw/gpio/bcm2838_gpio.c                   |  390 ++++++++
+ hw/gpio/meson.build                      |    5 +-
+ hw/misc/bcm2835_property.c               |   21 +
+ hw/misc/bcm2838_rng200.c                 |  405 ++++++++
+ hw/misc/bcm2838_thermal.c                |   98 ++
+ hw/misc/meson.build                      |    2 +
+ hw/misc/trace-events                     |    9 +
+ hw/net/bcm2838_genet.c                   | 1088 ++++++++++++++++++++++
+ hw/net/meson.build                       |    2 +
+ hw/net/trace-events                      |   16 +
+ include/hw/arm/bcm2835_peripherals.h     |   29 +-
+ include/hw/arm/bcm2836.h                 |   27 +-
+ include/hw/arm/bcm2838.h                 |   31 +
+ include/hw/arm/bcm2838_pcie.h            |   75 ++
+ include/hw/arm/bcm2838_peripherals.h     |   94 ++
+ include/hw/arm/raspberrypi-fw-defs.h     |   11 +
+ include/hw/arm/raspi_platform.h          |   38 +-
+ include/hw/display/bcm2835_fb.h          |    2 +
+ include/hw/gpio/bcm2838_gpio.h           |   45 +
+ include/hw/misc/bcm2838_rng200.h         |   43 +
+ include/hw/misc/bcm2838_thermal.h        |   24 +
+ include/hw/net/bcm2838_genet.h           |  426 +++++++++
+ tests/avocado/boot_linux_console.py      |   92 ++
+ tests/qtest/bcm2838-mailbox.c            |   60 ++
+ tests/qtest/bcm2838-mailbox.h            |  532 +++++++++++
+ tests/qtest/bcm2838-mbox-property-test.c |  631 +++++++++++++
+ tests/qtest/meson.build                  |    3 +-
+ 37 files changed, 5457 insertions(+), 205 deletions(-)
+ create mode 100644 hw/arm/bcm2838.c
+ create mode 100644 hw/arm/bcm2838_pcie.c
+ create mode 100644 hw/arm/bcm2838_peripherals.c
+ create mode 100644 hw/arm/raspi4b.c
+ create mode 100644 hw/gpio/bcm2838_gpio.c
+ create mode 100644 hw/misc/bcm2838_rng200.c
+ create mode 100644 hw/misc/bcm2838_thermal.c
+ create mode 100644 hw/net/bcm2838_genet.c
+ create mode 100644 include/hw/arm/bcm2838.h
+ create mode 100644 include/hw/arm/bcm2838_pcie.h
+ create mode 100644 include/hw/arm/bcm2838_peripherals.h
+ create mode 100644 include/hw/gpio/bcm2838_gpio.h
+ create mode 100644 include/hw/misc/bcm2838_rng200.h
+ create mode 100644 include/hw/misc/bcm2838_thermal.h
+ create mode 100644 include/hw/net/bcm2838_genet.h
+ create mode 100644 tests/qtest/bcm2838-mailbox.c
+ create mode 100644 tests/qtest/bcm2838-mailbox.h
+ create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
+
 -- 
 2.34.1
 

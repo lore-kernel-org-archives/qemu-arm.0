@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1763611ejf;
-        Sun, 25 Feb 2024 16:08:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUHj9zXOGv0ebMNZhShI3pPWQFgNSvb2jNPyQenpRg8zyMbgEcvLVHabz0Eg6wlzHGNlAwBeTTw5Bx03dyQkjmKiAOmvX5g
-X-Google-Smtp-Source: AGHT+IGe4TecUyMUvaphsUYBh8epuV1W+U/HqY2NhBM6WYQN/m8ZP7yPUcl8LHqoFB2hUMRj7syI
-X-Received: by 2002:a05:6808:120e:b0:3c1:3f84:7a95 with SMTP id a14-20020a056808120e00b003c13f847a95mr6621728oil.14.1708906088316;
-        Sun, 25 Feb 2024 16:08:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1708906088; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp1763693ejf;
+        Sun, 25 Feb 2024 16:08:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVbhy+gVDc6bJSS8Tx78+mY2iPogi5ef0TQMvXcFHRPHh3AT32AdJwjNr5v80AkhC4dMCIvAe/qe5RZ77nWEpq0U2LtPtnV
+X-Google-Smtp-Source: AGHT+IFgxtyd0MxS5QNxdXG3rVMrQgZ8cnUQ5RIyZ95q+IPLJx+xmj5shB0dOkPwlX2DkZncMgRN
+X-Received: by 2002:a05:620a:22a9:b0:787:b70d:64e8 with SMTP id p9-20020a05620a22a900b00787b70d64e8mr5789254qkh.18.1708906101117;
+        Sun, 25 Feb 2024 16:08:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1708906101; cv=none;
         d=google.com; s=arc-20160816;
-        b=XLIAh1dvxRchB0ZkaLbMfSfS272EbuMESRkipw7m9uqZd4i8YafleNyohNAGMhIDLa
-         W0ZVDiaPJrtlEYnVUhh+iUsU3kgm78ecu+GXbrg5875niQrGyB3d1Jyl8QFTGUg/THBV
-         /fwDv8KVKGz0F2PfKjoFNKayofMb3FfGdU8tSpFTyoOomYiEBHzBIJG34GfpaViqoeIu
-         zTa3ck0Ka+nNW8+Vz+6bJBp4i/3DaMDYsEA0xGGO5gkd00HTA61HFDMfjSwWs2VftNjv
-         wa8ASQ/APzyQEYpi8XGiTIqtpSpIne1Yonm4drd/SRu3EDTTAmHVsPLzlGVaRJKhbEV4
-         8HIw==
+        b=iy2j6GFt0P4C1jXuydU4m/qa3SyG5DUje9/1LkERMSngMiNfCi/k/P5bpXqeqxJzGz
+         lr4Uu4FbyiED8VWTtRLjWCdSBjhYB7JRB79P1LzPZ4ujXLPzj5q8a7niX1hqGTXZrnNm
+         w/JHSuN0I72tDlPPEr/wUwpgGUC7MJACMUUZTSOpBWPLBiX1h4wAnlWEJKvLrJd+nMIO
+         uLrWC+c8/q4fGsd6fSfegeO3m5IJCSY4Z1DvhGdBalVnEQdmWWFwfq4kUjeAu/rSnsnS
+         axYCqCLl6LPavk/x4ExjAwlK4m5R8Ysjcp19rV4fM/dcM/+XoKitgyu7KEf1PKSCK4QW
+         rrzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xDMTaxB0TWxp4LTnEEK1r7+Pg3vnDkkuQfxuwY3SDHI=;
+        bh=u5a2w/rK6Bkb8GbGdExqQD2sclDIKNcGfVOyOWOm/V4=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=nLztAIw1JetEfZH7ghReaiAIYDNr2dHPuGjKWrWEnwUyfeKnqs3TDL4ahmh/YRzaaG
-         lIvNuNcKV1J9yBj6HmSXqH1LZfMZPqbA9yb+ZDiHtG8MXSQp8VvL3IKKttcUWs/FNA+B
-         8GJpG/kgM6pXKRGp6a4S3qqn30w4BAWIUJ0CiU+S44IF1wwvVd1JHy+vWoV3D2vnF6F8
-         xsdXEGGnOfmJOimI0MJABeDxvQme1ypJrYaoQ/Q6bC84j8X802H/uO7A7pTsPIgrRa8P
-         g47tiF7HWD+88He9V4hVzSBloH4KqBFkrU8prbGfpkiofcQ/ebBT5lskkIWmRhjbRQ/T
-         YSvw==;
+        b=qujxRc6eLUro9clxpd5mInp38zBl8rXg1/cdBvKuWhos4ZoK0AAssmArZwGL2UOVIy
+         OeB6Cw71Qg0MuVYBvDQWXAoi3iffggSmiRY4Glq8RSWXIzAlaiGD2SbQiD9jipKEGrz7
+         BVogcIqy4B8qEK20y6BQ2atE+vXZ5zMfjpW0p83h/eZpQltwybCfxCcWkp+ZCD6VytGV
+         LEBbZqN+h/DY/WSq6xVqsLey5JmI6zWSOHU4IW2sVaoiZCxDWbd3vIe0gdWrmSiiZQnV
+         bBFyHmTYgMeYwjPfWfCO4hBiuqClTcEceK/WKT7SjCCPE0jAdwZLS6ENugb7298Ka4X6
+         mxJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nKOMwjsy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="J/GVaXz0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020ac84606000000b0042e635426dcsi3819790qtn.708.2024.02.25.16.08.08
+        by mx.google.com with ESMTPS id h11-20020a37c44b000000b00787c4d11b8csi3491155qkm.669.2024.02.25.16.08.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Feb 2024 16:08:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 25 Feb 2024 16:08:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nKOMwjsy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="J/GVaXz0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1reOUy-0001lk-5H; Sun, 25 Feb 2024 19:05:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1reOT1-0006mh-MF; Sun, 25 Feb 2024 19:03:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTH-0006yA-6x; Sun, 25 Feb 2024 19:03:54 -0500
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1reOSu-0006gl-Cr; Sun, 25 Feb 2024 19:03:29 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1reOTA-0000a1-Rx; Sun, 25 Feb 2024 19:03:48 -0500
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-608c40666e0so12441437b3.2; 
- Sun, 25 Feb 2024 16:03:43 -0800 (PST)
+ id 1reOSs-0000PK-Tl; Sun, 25 Feb 2024 19:03:28 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-607e60d01b2so10517567b3.1; 
+ Sun, 25 Feb 2024 16:03:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708905822; x=1709510622; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1708905804; x=1709510604; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xDMTaxB0TWxp4LTnEEK1r7+Pg3vnDkkuQfxuwY3SDHI=;
- b=nKOMwjsyoBne5q7iXGqI5lisG+NkOdjEHMGOnHv0fpMTiGl5lcTmAHq3sTudb2mOSZ
- zmT6Gpw/RR1Y3HfJOxdNYep1IRdUtsl3zYehE7j/ciGLUoZLJASY4qOo40melID88Yjx
- jGl3kDC1tL479Wvrbr6yA8KsgfDC16wHeUJf8IcVwCzg9P4LKgziB22dDX0lF0RuyMyB
- ykbon8sTEm7iQRPvBeLQVIyqkGNfZQfLHtzC5JkCGvKqRbHXtRSczoD/q4zt7EG4OXMV
- XajCRHpWG5+hMaF4l5wFshv3N52pHBDzg1jSjxd18eINQHmCOjX0ZfZgrfSYxrpm1Yyp
- 427g==
+ bh=u5a2w/rK6Bkb8GbGdExqQD2sclDIKNcGfVOyOWOm/V4=;
+ b=J/GVaXz0ZMiAKq608z/juXWZk8GFH+Xiv4S+lG+T/0Y11JBicP0VNDZ9GrVgZYCo+8
+ kYYr25IMOTgPLf+WnVn8lfrtFaR2lxnEXQQujU8+hfo+gRzVT3frrOrUbRo9oVPDmAB5
+ W8IKlA7/HEPsFOxjOnqVcRgvClBqaWCYt0UTbsc8Cp70IxSqIdHolo2Bf5FxxfoV5mkc
+ 2lL7uUq9P8IIFboREn3ZCsV1SsVxXk5xDGEzEEcQu82WpBWsm8sUydI75p5xzk1gfiAl
+ js6u2p4/hNLW+YZoW96HJ4Uc5m49oiWoWOzFB3YhoijJT/gcU0r+7YFgduz4C5S/JR2O
+ YI6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708905822; x=1709510622;
+ d=1e100.net; s=20230601; t=1708905804; x=1709510604;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xDMTaxB0TWxp4LTnEEK1r7+Pg3vnDkkuQfxuwY3SDHI=;
- b=BX7WLdEqsBmZ3fEMfT6SITG5LQnh3+CZBVrKUhL9D6wj0AwabNegttKmGauad00xui
- xTW+5oI/GQUa/W7GsS2uobamdQx2eLLzqAPzZJlQ+MzcFbVUqskSLuPW4iUjGTrgt5RW
- fXHo1PzzO1HSi6pc23S0yh5YiRBYTh6gjTWK5cTe+p6pTagjhxeR5u6URGwzBV5Bk0lj
- WdMx0IklNGuh6RuPOMAFyYvXHtrRcyjaYpp1qSx7J9HQ0D4FCjrqtEqV0wgZ/XXYS9rf
- F+xjaTIKOpsxYVIkry0qAPHaWRUn+Sf9ttaSHc/hn1EMnZRpsvnc03O7y5iqUEC8u6fj
- gQ9w==
-X-Gm-Message-State: AOJu0Ywl4QZMNfpC1I/Ga6NyGTS1Bxb/fTVkaJELSu/pnVMDF13jYfrw
- SYSndB3P1BgolL74veGvJ+EFWarbJSrYIhAQpdJc7wMMgQbNm8TCTGdJUz9vYpbrkg==
-X-Received: by 2002:a81:b650:0:b0:604:a081:c198 with SMTP id
- h16-20020a81b650000000b00604a081c198mr3197795ywk.42.1708905822344; 
- Sun, 25 Feb 2024 16:03:42 -0800 (PST)
+ bh=u5a2w/rK6Bkb8GbGdExqQD2sclDIKNcGfVOyOWOm/V4=;
+ b=ASuoMD53E/Ji+UKy7e10/h5jDILhVi7Gv2PmGdAGleeves2p87pqM5UhivVQ2nSjLm
+ rhbct0q4TaA0cOcMvv+22XaDslQSWH1n5kErI0hFOBW3kS3oAwSo/9RLEJKCbK+mmSxw
+ wKkawizQWi0U7C2BuRQHGiSgJuU/vX8x6J8A437ssvanjjbp4k79kPKfD3CI+44sBK1Y
+ z7E087QU22FeyUhtxlfjCoByJtiLhuhOwVmZn3kOv8F7kA6n2bC9tJloTa5GqwHi2HIb
+ fzMovvhboosWMNFVdvgT37I96ThxwuYFY5b5xBBL8uvOwqB79ruOzT83GPShjCnd2D4H
+ DqHQ==
+X-Gm-Message-State: AOJu0YxRxqbdMquzVSKLOZgscEBa/o7aO83NOeqr5vkfW9w+GCU3TrC6
+ OEEisJRtqoaDxLKJ+Klbz/gFf7HjUQPbQdZnn096GOekfRkjgNmjYgvKQs/OXOC8Kg==
+X-Received: by 2002:a05:690c:80d:b0:5ff:aa34:7c5f with SMTP id
+ bx13-20020a05690c080d00b005ffaa347c5fmr3388368ywb.46.1708905804275; 
+ Sun, 25 Feb 2024 16:03:24 -0800 (PST)
 Received: from localhost.localdomain ([201.203.117.224])
  by smtp.gmail.com with ESMTPSA id
- t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.41
+ t18-20020a818312000000b00607bfa1913csm938171ywf.114.2024.02.25.16.03.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Feb 2024 16:03:42 -0800 (PST)
+ Sun, 25 Feb 2024 16:03:23 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v6 33/41] Add mailbox tests tags. Part 1
-Date: Sun, 25 Feb 2024 18:02:51 -0600
-Message-Id: <20240226000259.2752893-34-sergey.kambalin@auriga.com>
+Subject: [PATCH v6 18/41] Add clock_isp stub
+Date: Sun, 25 Feb 2024 18:02:36 -0600
+Message-Id: <20240226000259.2752893-19-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,214 +113,63 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 86By9mhMERHD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 15SBp4YaozbO
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.h | 177 ++++++++++++++++++++++++++++++++++
- 1 file changed, 177 insertions(+)
+ hw/arm/bcm2838_peripherals.c         | 6 ++++++
+ include/hw/arm/bcm2838_peripherals.h | 1 +
+ 2 files changed, 7 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 9222b38bad..1360fbb8cf 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -116,6 +116,183 @@ typedef struct {                                                        \
-     };                                                                  \
- } TypeName
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index 6badda3045..1f41028649 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -17,6 +17,9 @@
+ #define PCIE_MMIO_ARM_OFFSET    0x600000000
+ #define PCIE_MMIO_SIZE          0x40000000
  
-+DECLARE_TAG_TYPE(TAG_GET_FIRMWARE_REVISION_t,
-+    struct {},
-+    struct {
-+        uint32_t revision;
-+    });
++#define CLOCK_ISP_OFFSET        0xc11000
++#define CLOCK_ISP_SIZE          0x100
 +
-+DECLARE_TAG_TYPE(TAG_GET_FIRMWARE_VARIANT_t,
-+    struct {},
-+    struct {
-+        uint32_t variant;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_BOARD_REVISION_t,
-+    struct {},
-+    struct {
-+        uint32_t revision;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_ARM_MEMORY_t,
-+    struct {},
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_VC_MEMORY_t,
-+    struct {},
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_SET_POWER_STATE_t,
-+    struct {
-+        uint32_t device_id;
-+        uint32_t cmd;
-+    },
-+    struct {
-+        uint32_t device_id;
-+        uint32_t cmd;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCK_STATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t cmd;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MAX_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MIN_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCKS_t,
-+    struct {},
-+    struct {
-+        uint32_t root_clock;
-+        uint32_t arm_clock;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_TEMPERATURE_t,
-+    struct {
-+        uint32_t temperature_id;
-+    },
-+    struct {
-+        uint32_t temperature_id;
-+        uint32_t temperature;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MAX_TEMPERATURE_t,
-+    struct {
-+        uint32_t temperature_id;
-+    },
-+    struct {
-+        uint32_t temperature_id;
-+        uint32_t temperature;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_ALLOCATE_t,
-+    struct {
-+        uint32_t alignment;
-+    },
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_RELEASE_t,
-+    struct {},
-+    struct {});
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_BLANK_t,
-+    struct {
-+        uint32_t on;
-+    },
-+    struct {
-+        uint32_t on;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT_t,
-+    struct {},
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT_t,
-+    struct {},
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
+ /* Lower peripheral base address on the VC (GPU) system bus */
+ #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
  
- int mbox0_has_data(void);
- void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size);
+@@ -228,6 +231,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
+                                 mmio_mr);
+ 
++    create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
++                 CLOCK_ISP_SIZE);
++
+     /* GPIO */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
+         return;
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 49bb4fab08..adc02894c1 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -77,6 +77,7 @@ struct BCM2838PeripheralState {
+     OrIRQState dma_9_10_irq_orgate;
+ 
+     UnimplementedDeviceState asb;
++    UnimplementedDeviceState clkisp;
+ };
+ 
+ struct BCM2838PeripheralClass {
 -- 
 2.34.1
 

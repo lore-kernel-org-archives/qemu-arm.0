@@ -1,121 +1,121 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2203448ejf;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2203442ejf;
         Mon, 26 Feb 2024 09:38:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVXdS9k1fQ+ch+dVQc79qKJkvwcXVz5apbUbPF679TxYFDfKxppsLrCCZeW9futiQe32BjguUtbyhvDe5llDp8ru9BLeY/z
-X-Google-Smtp-Source: AGHT+IF5Qr8VZLS8zJJ/GZlSB7Jln8fUsYFSYGKz3Jd6fz/d0p77dl/ACmWqPjtWWkMvj7QkyxBN
-X-Received: by 2002:a05:620a:12c7:b0:787:2224:5cbb with SMTP id e7-20020a05620a12c700b0078722245cbbmr8023134qkl.50.1708969134671;
+X-Forwarded-Encrypted: i=2; AJvYcCX8DsdInrhDdvG/6q1RiC68QaoWzv7+T/QvtClF70gD8Zrp/XFAik7ox+649CbVwM75L9eI+6PcD0G8nyzIXhRA5tw/EsTh
+X-Google-Smtp-Source: AGHT+IGBg1PK2OdWCditZzHbsEYRHr3DQHrb/AbKaK5LVopz+ZetbXamHuKl0PtsDG5090ZaQzna
+X-Received: by 2002:a05:620a:31a0:b0:787:c780:a78c with SMTP id bi32-20020a05620a31a000b00787c780a78cmr9838282qkb.52.1708969134080;
         Mon, 26 Feb 2024 09:38:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1708969134; cv=none;
         d=google.com; s=arc-20160816;
-        b=isYzpAZuExzvH9YRtAwfWHJiY6C95PIO4A9ztymNOOpNdUSct6FIaHp+iFi/bAy1j7
-         M83vBxqkfpOobDwMzzXqPl2Ij0OaHJ0RWUeexPqeYSTVmP9CUH//0Jp94RfPhuthdz5A
-         T2WoBWdSY1Q+zZOhyOhoimAvciVx4ZfTMu350Bo0+h7LMQvTlrKlObBP2fdSFAKD6aU+
-         QF8XZwgeFfiD+pRAy8d8PYuzAkDxQtPvXBEcDcwiCwjGTJgBpgBePVUpmo9NLJ2im2ex
-         MA3hWLx52mrIVSmYoYY7FJR5XrZ0UgKJt1MFFo7fOMTyYgaSbKwoqIeR11ViWCnd4zI/
-         E4sg==
+        b=T7iJQRK/HQ0kgvJtAkanlIxiT/ytaTH6YfkXPzG69Ecp4CWGDyUH1AMk53TOKit5rs
+         uNihfN8Z4ykUgidtTCYKYnbeg81cS0xDX7WPD+IB62spOZ2WHt+dNb82pRSS1rFewZi9
+         sUnnUJZdVh4ioVDJRvLU38wsgY8xUH8zJM4h4JYIOYdep+FRiW1dt0VnRDu68bYa0atL
+         hTxsiuPAqCNEUUW6Ot/1eB8hy/8n+ZTSkeQtNWZGllFC7EEFoA4CjbG6xiE149+NSDJ3
+         RRWEIVrLI4f57hedWpQQRYNKXYlU6eEvUfqaplMLxrYqFKat3+Drh4/LbvnQMWXKVm1H
+         o/oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ibVcW3lwaKG1GGTyMtc1ku+JoJ+rReT+MXHBNQRHkgA=;
-        fh=n0PTKc6cFaTUPm+4LUzQHB6y5ChB5NluvE1RUm3gstw=;
-        b=xVGUEBpgHtnf4wrd3SWC5y9Cmo/926hN7Z0NnMNa40NGFVKOzkUFdSbVd4/7GorhUP
-         fR2hCGhnnvCf+V/NPMtFkf8zrP3819YhyVFd6MKny5WwZtFaY7w6KzBaJgDg3k6fPefi
-         mnfpCTfoaSnSqy5DNMF6XHSfvxI0ZpVEufW1t0O8w3MxElKvdIl0VjPlkGIfK/9iGNIU
-         a5mombN2I+JUE0EFkLv6rGXtHLHJ1pS+ipkJtngA4IjG3z+LM/oIpDmW/3Ae6PVU/TsP
-         /rGoTIr8GXeaF5JyJIcpi+xIOPj9xYE8D5bsHiFdkuUAm6HvK30B2uB97ZCHud0Y2mI2
-         mtDQ==;
+        bh=PgxgQMnqYvptEpW+MzXMom2BVnIVN63/TeZ44omQsrM=;
+        fh=hXBz7qm8Kf5b78SvQ683p6CidcN0HSYS2W160lsNAR0=;
+        b=dDKUaVM9hh4HN6FIEes9e2sFt/LPT4V+eM3HyJ9fPaYZqsvW9Q5eMoxMH8n0/Zz+4y
+         O6zgiLmXfK/lbLAM5uyw6Pzyd7pvDWyep6gfJy464xf0uxHjCHVwroXTmtTMinMUcl2k
+         fUNsJqEwVhid9yarRlMlpTqGAVuy26/0YxL+gyfJtEAXUzAYQLE23UT5tXx2W3qmJzc7
+         BZRUylHPu0+qZXXCZmLZD1GYba4YhCAm4xbMmiIfO17sKi2uAeq0QAnAFf8YxlVc4ocI
+         70f0ZhHGDXfF+FPF/lAQqNJ+cbZ1Nn3u7YJkMsAWitqnoypZH8hj3onLS9plZTcaAkvL
+         n5uQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GWXD2Kas;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O7T4VvPJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj8-20020a05620a190800b00787e006b6b9si263181qkb.537.2024.02.26.09.38.54
+        by mx.google.com with ESMTPS id oo20-20020a05620a531400b00787b070ce5esi5296485qkn.631.2024.02.26.09.38.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 26 Feb 2024 09:38:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GWXD2Kas;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O7T4VvPJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reew7-0004Sx-0R; Mon, 26 Feb 2024 12:38:43 -0500
+	id 1reew7-0004VB-Pc; Mon, 26 Feb 2024 12:38:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reew4-0004FP-2i
- for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:41 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reevx-000481-MO
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:37 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reew1-00079c-A6
- for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:39 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-412a38e2adaso10228955e9.1
- for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 09:38:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reevv-00078O-2Y
+ for qemu-arm@nongnu.org; Mon, 26 Feb 2024 12:38:32 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-412a5b63c11so7416655e9.2
+ for <qemu-arm@nongnu.org>; Mon, 26 Feb 2024 09:38:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708969115; x=1709573915; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708969109; x=1709573909; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ibVcW3lwaKG1GGTyMtc1ku+JoJ+rReT+MXHBNQRHkgA=;
- b=GWXD2Kas0o3bCKek52U4V18Gkimi3pSbE3BOSVXHsEwmeHLzb3iNw4pE82e377zHGy
- m6w53sX828oCFEIXDs03oYzT7Zq5cwufQkYJmgg69wfh9LV6JOYSZ5LCublk1mROaVC8
- 2dO0w6FlXRziCyfbstb0g10rhAF//xwYWk3jSGSWTeQS73RE3MMqI59Vf45GdqwUtR04
- 5+Mx/RTeg3yBB4MLKdvw+NYgRB5C6jpqGn90RzYKPeuBfpOO45rdjgHgdk6kIi4faZst
- YmutUHAtL+VPJQoCv5eN5cWtTk9Iw68yBj4+TMDPyxl958SoXEMWlyOFj8reuT6gdP//
- lB2w==
+ bh=PgxgQMnqYvptEpW+MzXMom2BVnIVN63/TeZ44omQsrM=;
+ b=O7T4VvPJm7D5pdsxd+xAaXnu6CMYKatBtyMOfgwEaps97pB2eoaHlSSDEWbR7qHUIc
+ 9q4s+8g+CJqqn3ahFSw/YWn71PaYQH1OQGfv4yz8+wAX6hVCjCzl1NwLQxxlsWKBLaQ7
+ T62fLpWARkx9sDqSGACqAYom+jVMHV52syJ7yp6Odqlg/T1SbymEE1G1KQlH1Xoih/EI
+ S25+f0SZIHs4U9TKYGm4eLyvjOwAqgyb9kChXKWOR1uG4bZJ8XbUqtvZg72zlv8EUouE
+ 37UrmiSrM19em/caAV9J72TKr1WDlQvPtsA+iS2++2KmlyT8yvgamU6wmwP1OpGRAO0Q
+ rFPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708969115; x=1709573915;
+ d=1e100.net; s=20230601; t=1708969109; x=1709573909;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ibVcW3lwaKG1GGTyMtc1ku+JoJ+rReT+MXHBNQRHkgA=;
- b=KfpngtNpj239EZjoaHMB60OVdRdeIeAggT9CmKwptRob/jPZ9vnKifA7+BYXtSYMiT
- wLGnaR6CN2il1gwvX3OIHgRgp6ZyQwXPRuKTsol5VHnml6qzyrRViAx69HLz17S+Q/BO
- cih2M/LJhklHePfXCpw4SbQfqjmuaqvXwWrnU1xfvQwYhzeyXMg9g21KuoR8tvxheMll
- +TdBB+35a4EXrIoGSXNfrCSjIe8hhp6/M1JysUmQBVqojUEq67RxJbs6k/QMKDPKAA9U
- VRDn+nlvL7AH+0ZcfZQSYVIaNDgLObrlEuI3f9qbk7TNZX1Q5sTKPCjyyEyfDzSuZj2G
- Wf0Q==
-X-Gm-Message-State: AOJu0YxRNFRjokYXf0s0KIHh5v88id54W4W7Hm4TDy0138tW50jeR1GJ
- cBiizaK1c5kKC2wUazh31F6jp4HlJqhF+iJo/PixcWb0FsQwtlgqSgff+5QwrwA=
-X-Received: by 2002:a05:600c:5246:b0:412:8d98:78a with SMTP id
- fc6-20020a05600c524600b004128d98078amr7017617wmb.13.1708969115328; 
- Mon, 26 Feb 2024 09:38:35 -0800 (PST)
+ bh=PgxgQMnqYvptEpW+MzXMom2BVnIVN63/TeZ44omQsrM=;
+ b=eU25eEXO6EilN5i+u9Tu7J5VixGe6u0rZogIvZrbHsCxGP3I8Omm0N3nf/+sWTmnEG
+ a1t0ci13Ik9hsb9X5ErRaUdnIJwC7rklmusDYbsWr+NkHjbVAKCngUSpWsdFuGDBhFRE
+ reXI/E+fmk05wus0nig5EqC6OXFAMqLCtE6R5Ck8fEgxnTrhItj5sIQQ5s1Zdz3N9m0L
+ i9T9PlOg5G1MvSQxHbjr2n73xqLNidOmp1rh6U8YrffMD3iqhLZaNoMEaqfZSo9wkOP6
+ W2XhabHq68nV8Dz4dyeB715tYEIhvY+/7sIP89SWZjnOJs+rvVCQtz2mewf5A3IG92iw
+ LuWw==
+X-Gm-Message-State: AOJu0YwmQ09I4avfM9bt2IunQn+F9VvWjllFufx0KE8wrfRgRYx8R8D0
+ 6J3PitzxvJ462nQfUMR0FhYQR6SvRy4eJ/Y+zd4JEpQD56JX3ITvgyoTGzfBUJw=
+X-Received: by 2002:a05:600c:35cc:b0:412:a72c:9d9c with SMTP id
+ r12-20020a05600c35cc00b00412a72c9d9cmr1611244wmq.17.1708969109772; 
+ Mon, 26 Feb 2024 09:38:29 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.223.153])
  by smtp.gmail.com with ESMTPSA id
- v6-20020a05600c470600b00412a2919d98sm5708711wmo.10.2024.02.26.09.38.34
+ 11-20020a05600c234b00b00412704a0e4asm12527590wmq.2.2024.02.26.09.38.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 26 Feb 2024 09:38:34 -0800 (PST)
+ Mon, 26 Feb 2024 09:38:29 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, kvm@vger.kernel.org
-Subject: [PATCH v2 5/6] hw/i386/kvmvapic: Inline sysbus_address_space()
-Date: Mon, 26 Feb 2024 18:38:03 +0100
-Message-ID: <20240226173805.289-6-philmd@linaro.org>
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 4/6] hw/display/exynos4210_fimd: Pass frame buffer memory
+ region as link
+Date: Mon, 26 Feb 2024 18:38:02 +0100
+Message-ID: <20240226173805.289-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240226173805.289-1-philmd@linaro.org>
 References: <20240226173805.289-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,65 +130,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XP0UmeKRtBm7
+X-TUID: SivXuMK0uaDX
 
-sysbus_address_space(...) is a simple wrapper to
-get_system_memory(). Use it in place, since KVM
-VAPIC doesn't distinct address spaces.
-
-Rename the 'as' variable as 'mr' since it is a
-MemoryRegion type, not an AddressSpace one.
+Add the Exynos4210fimdState::'framebuffer-memory' property. Have
+the board set it. We don't need to call sysbus_address_space()
+anymore.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/i386/kvmvapic.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ hw/arm/exynos4210.c          |  2 ++
+ hw/display/exynos4210_fimd.c | 19 ++++++++++++++++---
+ 2 files changed, 18 insertions(+), 3 deletions(-)
 
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index 20b0300357..61a65ef2ab 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -58,6 +58,7 @@ typedef struct GuestROMState {
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index ab18836943..e3f1de2631 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -770,6 +770,8 @@ static void exynos4210_realize(DeviceState *socdev, Error **errp)
  
- struct VAPICROMState {
-     SysBusDevice busdev;
-+
-     MemoryRegion io;
-     MemoryRegion rom;
-     uint32_t state;
-@@ -581,19 +582,17 @@ static int vapic_map_rom_writable(VAPICROMState *s)
+     /*** Display controller (FIMD) ***/
+     dev = qdev_new("exynos4210.fimd");
++    object_property_set_link(OBJECT(dev), "framebuffer-memory",
++                             OBJECT(system_mem), &error_fatal);
+     busdev = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(busdev, &error_fatal);
+     sysbus_mmio_map(busdev, 0, EXYNOS4210_FIMD0_BASE_ADDR);
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index 84687527d5..5712558e13 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "hw/qdev-properties.h"
+ #include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/sysbus.h"
+@@ -32,6 +33,7 @@
+ #include "qemu/bswap.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
++#include "qapi/error.h"
+ #include "qom/object.h"
+ 
+ /* Debug messages configuration */
+@@ -302,6 +304,7 @@ struct Exynos4210fimdState {
+     MemoryRegion iomem;
+     QemuConsole *console;
+     qemu_irq irq[3];
++    MemoryRegion *fbmem;
+ 
+     uint32_t vidcon[4];     /* Video main control registers 0-3 */
+     uint32_t vidtcon[4];    /* Video time control registers 0-3 */
+@@ -1119,7 +1122,6 @@ static void exynos4210_fimd_invalidate(void *opaque)
+  * VIDOSDA, VIDOSDB, VIDWADDx and SHADOWCON registers */
+ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
  {
-     hwaddr rom_paddr = s->rom_state_paddr & ROM_BLOCK_MASK;
-     MemoryRegionSection section;
--    MemoryRegion *as;
-+    MemoryRegion *mr = get_system_memory();
-     size_t rom_size;
-     uint8_t *ram;
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(s);
+     Exynos4210fimdWindow *w = &s->window[win];
+     hwaddr fb_start_addr, fb_mapped_len;
  
--    as = sysbus_address_space(&s->busdev);
--
-     if (s->rom_mapped_writable) {
--        memory_region_del_subregion(as, &s->rom);
-+        memory_region_del_subregion(mr, &s->rom);
-         object_unparent(OBJECT(&s->rom));
+@@ -1147,8 +1149,7 @@ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
+         memory_region_unref(w->mem_section.mr);
      }
  
-     /* grab RAM memory region (region @rom_paddr may still be pc.rom) */
--    section = memory_region_find(as, 0, 1);
-+    section = memory_region_find(mr, 0, 1);
+-    w->mem_section = memory_region_find(sysbus_address_space(sbd),
+-                                        fb_start_addr, w->fb_len);
++    w->mem_section = memory_region_find(s->fbmem, fb_start_addr, w->fb_len);
+     assert(w->mem_section.mr);
+     assert(w->mem_section.offset_within_address_space == fb_start_addr);
+     DPRINT_TRACE("Window %u framebuffer changed: address=0x%08x, len=0x%x\n",
+@@ -1924,6 +1925,12 @@ static const GraphicHwOps exynos4210_fimd_ops = {
+     .gfx_update  = exynos4210_fimd_update,
+ };
  
-     /* read ROM size from RAM region */
-     if (rom_paddr + 2 >= memory_region_size(section.mr)) {
-@@ -614,7 +613,7 @@ static int vapic_map_rom_writable(VAPICROMState *s)
++static Property exynos4210_fimd_properties[] = {
++    DEFINE_PROP_LINK("framebuffer-memory", Exynos4210fimdState, fbmem,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void exynos4210_fimd_init(Object *obj)
+ {
+     Exynos4210fimdState *s = EXYNOS4210_FIMD(obj);
+@@ -1944,6 +1951,11 @@ static void exynos4210_fimd_realize(DeviceState *dev, Error **errp)
+ {
+     Exynos4210fimdState *s = EXYNOS4210_FIMD(dev);
  
-     memory_region_init_alias(&s->rom, OBJECT(s), "kvmvapic-rom", section.mr,
-                              rom_paddr, rom_size);
--    memory_region_add_subregion_overlap(as, rom_paddr, &s->rom, 1000);
-+    memory_region_add_subregion_overlap(mr, rom_paddr, &s->rom, 1000);
-     s->rom_mapped_writable = true;
-     memory_region_unref(section.mr);
++    if (!s->fbmem) {
++        error_setg(errp, "'framebuffer-memory' property was not set");
++        return;
++    }
++
+     s->console = graphic_console_init(dev, 0, &exynos4210_fimd_ops, s);
+ }
  
+@@ -1954,6 +1966,7 @@ static void exynos4210_fimd_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &exynos4210_fimd_vmstate;
+     dc->reset = exynos4210_fimd_reset;
+     dc->realize = exynos4210_fimd_realize;
++    device_class_set_props(dc, exynos4210_fimd_properties);
+ }
+ 
+ static const TypeInfo exynos4210_fimd_info = {
 -- 
 2.41.0
 

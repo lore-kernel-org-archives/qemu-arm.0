@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a10-20020a5d4d4a000000b0033d13530134sm11454355wru.106.2024.02.27.06.52.50
+        by smtp.gmail.com with ESMTPSA id co2-20020a0560000a0200b0033d70dd0e04sm11964404wrb.8.2024.02.27.06.52.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Feb 2024 06:52:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 280B55F92F;
-	Tue, 27 Feb 2024 14:43:38 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 5B1915F923;
+	Tue, 27 Feb 2024 14:43:37 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org,
@@ -48,87 +48,64 @@ Cc: qemu-ppc@nongnu.org,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH v4 28/29] docs/devel: document some plugin assumptions
-Date: Tue, 27 Feb 2024 14:43:34 +0000
-Message-Id: <20240227144335.1196131-29-alex.bennee@linaro.org>
+Subject: [PATCH v4 19/29] cpu: call plugin init hook asynchronously
+Date: Tue, 27 Feb 2024 14:43:25 +0000
+Message-Id: <20240227144335.1196131-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240227144335.1196131-1-alex.bennee@linaro.org>
 References: <20240227144335.1196131-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: JmNCvkJAtKW/
+X-TUID: t9519RL08Fan
 
-While we attempt to hide implementation details from the plugin we
-shouldn't be totally obtuse. Let the user know what they can and can't
-expect with the various instrumentation options.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Message-Id: <20240103173349.398526-44-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+This ensures we run during a cpu_exec, which allows to call start/end
+exclusive from this init hook (needed for new scoreboard API introduced
+later).
+
+async work is run before any tb is translated/executed, so we can
+guarantee plugin init will be called before any other hook.
+
+The previous change made sure that any idle/resume cb call will not be
+done before initializing plugin for a given vcpu.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240213094009.150349-5-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/tcg-plugins.rst | 49 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ hw/core/cpu-common.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
-index 535a74684c5..9cc09d8c3da 100644
---- a/docs/devel/tcg-plugins.rst
-+++ b/docs/devel/tcg-plugins.rst
-@@ -112,6 +112,55 @@ details are opaque to plugins. The plugin is able to query select
- details of instructions and system configuration only through the
- exported *qemu_plugin* functions.
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index fe16d0d9df8..68786360ea5 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -194,6 +194,11 @@ static void cpu_common_parse_features(const char *typename, char *features,
+     }
+ }
  
-+However the following assumptions can be made:
++static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
++{
++    qemu_plugin_vcpu_init_hook(cpu);
++}
 +
-+Translation Blocks
-+++++++++++++++++++
-+
-+All code will go through a translation phase although not all
-+translations will be necessarily be executed. You need to instrument
-+actual executions to track what is happening.
-+
-+It is quite normal to see the same address translated multiple times.
-+If you want to track the code in system emulation you should examine
-+the underlying physical address (``qemu_plugin_insn_haddr``) to take
-+into account the effects of virtual memory although if the system does
-+paging this will change too.
-+
-+Not all instructions in a block will always execute so if its
-+important to track individual instruction execution you need to
-+instrument them directly. However asynchronous interrupts will not
-+change control flow mid-block.
-+
-+Instructions
-+++++++++++++
-+
-+Instruction instrumentation runs before the instruction executes. You
-+can be can be sure the instruction will be dispatched, but you can't
-+be sure it will complete. Generally this will be because of a
-+synchronous exception (e.g. SIGILL) triggered by the instruction
-+attempting to execute. If you want to be sure you will need to
-+instrument the next instruction as well. See the ``execlog.c`` plugin
-+for examples of how to track this and finalise details after execution.
-+
-+Memory Accesses
-++++++++++++++++
-+
-+Memory callbacks are called after a successful load or store.
-+Unsuccessful operations (i.e. faults) will not be visible to memory
-+instrumentation although the execution side effects can be observed
-+(e.g. entering a exception handler).
-+
-+System Idle and Resume States
-++++++++++++++++++++++++++++++
-+
-+The ``qemu_plugin_register_vcpu_idle_cb`` and
-+``qemu_plugin_register_vcpu_resume_cb`` functions can be used to track
-+when CPUs go into and return from sleep states when waiting for
-+external I/O. Be aware though that these may occur less frequently
-+than in real HW due to the inefficiencies of emulation giving less
-+chance for the CPU to idle.
-+
- Internals
- ---------
+ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ {
+     CPUState *cpu = CPU(dev);
+@@ -217,9 +222,9 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+         cpu_resume(cpu);
+     }
  
+-    /* Plugin initialization must wait until the cpu is fully realized. */
++    /* Plugin initialization must wait until the cpu start executing code */
+     if (tcg_enabled()) {
+-        qemu_plugin_vcpu_init_hook(cpu);
++        async_run_on_cpu(cpu, qemu_plugin_vcpu_init__async, RUN_ON_CPU_NULL);
+     }
+ 
+     /* NOTE: latest generic point where the cpu is fully realized */
 -- 
 2.39.2

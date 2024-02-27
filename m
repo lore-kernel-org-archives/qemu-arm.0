@@ -1,161 +1,189 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2752164ejf;
-        Tue, 27 Feb 2024 07:42:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWXqK4MqJt+NEQc2dr1bJ7QFxc9YVEZkl8mL9o5Q0V2LYNyj0ZmzFDcDG4ZYfklrvuZXmQpT7dvVxLLkIe0JhaRwfZanUcx
-X-Google-Smtp-Source: AGHT+IGN9PqIhH0VxxneXjSYlcjNdA8OOqQI14jPIBGj0gGvpEWHhtAw6SCnw+px9upRvzRnK0xF
-X-Received: by 2002:a05:620a:4689:b0:787:b817:213b with SMTP id bq9-20020a05620a468900b00787b817213bmr3147876qkb.14.1709048530630;
-        Tue, 27 Feb 2024 07:42:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709048530; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2755569ejf;
+        Tue, 27 Feb 2024 07:49:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXfZGYU43BmLfJD9QT0mJgSKKJHmGxMdu6NuP37NaHZMdD5PE7+rUOClnGOyYhuh3qsVdQhq3WSJYsEEC21nAXxp9aSuiko
+X-Google-Smtp-Source: AGHT+IGzB3XZE7CzE+w/pl4lBvXwx0d2AOxVs9qIBfg11wSBCuZ+FtVS1YQelU2t2kfja0T1an5i
+X-Received: by 2002:a05:620a:1787:b0:787:a18d:72b0 with SMTP id ay7-20020a05620a178700b00787a18d72b0mr2668078qkb.20.1709048940048;
+        Tue, 27 Feb 2024 07:49:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709048940; cv=none;
         d=google.com; s=arc-20160816;
-        b=frnV7p9kllDMLk/L0yYweLz6UveXVslMj+xNORS1z9zo3mw7kNC6xw17yB1gJsepIJ
-         ag2SxEYogcfOCzII7qBolTOT8l/BUbDNkyOL4GBLt0zlKRjBa+fBfuE+Yq/HYtDM7ts2
-         zDyChfldOVFpRPZqHAq6qk+SSTaJrjYrdWxHt9K871CDaPWRBo+GmqGpUQL7MGqwwTan
-         aFXnvwRmnm1zlsjqxWTXKQC1adnlbDN9OoBzKLpron4QpEqYxMe8hYyo12aAG694xYT1
-         KO7MF0UGIKl4LALNo4IgURF9CN+6TDUUMEqMBsksxALksNB0jbJsDgUsxHvjlOqgu9tQ
-         z3Lg==
+        b=PqgMQQZzEvx0LbMLCvv8q2hJR3DIzsYKOVnzVevgsAzLkfcjfUX/DpKbTr+IwXGk9v
+         NQlWwpVC2Ruh1zXNBAvXF320pHAy6IIp6Yo8wjfoDDb4l5cPHzw4nj3/qAnY+Qg4azwF
+         BImPVQf5jI/1kU0JG8yU7dvmzT/hCeM0dgspXIrH5XXZ4y1hxOM9y3DZPrbCScaDVWn4
+         Cqxde2IIlAr8q1odjkNghCxeOHERSoH3TLe4dTi6Dj82YyEr2MRF1wTVm1yPQczdXSde
+         fgMUorg5h8NScGh94yu7LzGKtKgjaxbH+6aCd9ngC+46gnrdPplpoFvZ3vU3PGfYrfup
+         rJEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=mILa5K4XepqKcH6OQ6NVb2VC5bmxLxx4tDY+FDiKQvg=;
-        fh=xE0kSxF0WCDtbQjOAA3CLpsfbwhKfJ9P7m1pAcwBsn8=;
-        b=VEVl+WWFd8KEzrj8acZW459PoDJIvn2pN2ARZ+ieozjWhToRmZ0hT2DdO1KAejVMb2
-         V+PBZszUuxnD+YDJFrv72DG3g7X26Y/p+yMMDXPDiKOzcu45+g8o37Ok3iG7ZAjTioQb
-         uhwQwp3Z5ln57SB+BsDFC94kCSX0wzkTj5hjLqlGurSz/n4UFsKOAg1/7AsjGkDoZa1b
-         QNn6fZlNGsQbW75oFrKo0/zi17FGVb/nYDzImV55ccXN2MuX8kg3piS4uNS6Oe5yHpFI
-         IhOX77fYqCiPfijRrKBdCTNYXuqMOROC75WrVsUrQN2WNBAXKB7LM58bs2egXL1m0ARL
-         1aTQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=JFOJUVRdNtzkyhJWiVfb1nhavyg0/7pyWLIP6eA0jdk=;
+        fh=cWYLLp2xiaCPawONafvmArBA+kFDFtOI7kkn8ypnRsk=;
+        b=oYASGyt2UgPmk9WSH60lKSqvzI+hKsaaTrfdL95qf+5HXhjSjh6XjjRiA4K6GxT7j1
+         o9PmVCfw/RrEGs43y26yrdNKTrUtNoWtGRBML6wyXovezaF37tcPEp3tCzQWdouRTPK2
+         BQpvnj0BY1z4Ikro41+3/qZPU8nBBa4FLz3MNd8/OBQMeskb6BbeUnOprvh8CO0DTwOH
+         cy0TfQCka+0vZipxaPfZy7oQAnNAYuX22qIZOzbKUaCJqZ5CV4F47/Pmpy/rduF67TKr
+         ml9p3NArYx7WzTUQMoC+UIuphB0Lw+f5GgyF6LIYSLrmR9Up6Yc7WV0WDEKxjj0/Wm/d
+         h3fA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LyYAnjpw;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@linux.intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.18])
-        by mx.google.com with ESMTPS id b27-20020a05620a089b00b00787b199c899si7683831qka.277.2024.02.27.07.42.09
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2024 07:42:10 -0800 (PST)
-Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=198.175.65.18;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AAsbz2KB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t10-20020a05620a450a00b00787df54066esi2689318qkp.112.2024.02.27.07.48.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 Feb 2024 07:49:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=LyYAnjpw;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1709048531; x=1740584531;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PpopX1xgqsSGu+ibkHdRkgrvQaMYRWvsytFX1WWOZtI=;
-  b=LyYAnjpwPhSMe/HyVPXvBVjKLknaBKjW7DoEKew1B0zp183vpsoVy+/p
-   orUi+Vp6gby4soH8tXoZJlCuiVj1vCn8Fyxcx9Cf5lgqk+HTg5KXjYOp2
-   kFYF4PT4heNLodq6/+VHULvSoNhMCk4YVyThMRtpsfNG9vEE/afvlirWM
-   twARQgq+VtE+BFJyBFGazwRsrR3LXrp3y/1jVWwJ6c0sruyvhpmiPgs+T
-   LqlHSh96DOt1pvYLlQfmZk9m2lPeXMjjB7ctZ2/DOtgDcqgHuVrODgRly
-   cLEz3V0j1yCDSomuTohWT/8DSzzXo+AH7bk+TNCM9cmAMQPLoyMKfir7V
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="3513681"
-X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; 
-   d="scan'208";a="3513681"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2024 07:42:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; 
-   d="scan'208";a="11697786"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa004.fm.intel.com with ESMTP; 27 Feb 2024 07:42:04 -0800
-Date: Tue, 27 Feb 2024 23:55:46 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
-Message-ID: <Zd4GAhwpw/w0QUth@intel.com>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-5-zhao1.liu@linux.intel.com>
- <20240226153947.00006fd6@Huawei.com>
- <Zd2pWVH4/eo3HM8j@intel.com>
- <20240227105145.0000106d@Huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AAsbz2KB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rezgm-0005Wr-G3; Tue, 27 Feb 2024 10:48:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rezgj-0005VQ-W8
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 10:48:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rezge-0008Nj-Qm
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 10:48:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709048888;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JFOJUVRdNtzkyhJWiVfb1nhavyg0/7pyWLIP6eA0jdk=;
+ b=AAsbz2KBPGwCaa0tO/dymh92lz5xWks/Z7RU+bMJkUCO3HwA0HN5ewpzrRJvh1zxQYOc0S
+ H6+z1WLB2tSqSVCT2QlZSEnK8LwOmBIuTVsnsFsLhqGvy09Q01ukYLU9kQGBsYkZG7IjL9
+ 37EZZVYY9+Y5OadXIkD3iTFgXdDtOD4=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-110-8BqCI_jZMIaqyArdz5SJEA-1; Tue,
+ 27 Feb 2024 10:48:04 -0500
+X-MC-Unique: 8BqCI_jZMIaqyArdz5SJEA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BBFFE1C0BA42;
+ Tue, 27 Feb 2024 15:48:03 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 386C42166B5E;
+ Tue, 27 Feb 2024 15:48:01 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
+ gaosong@loongson.cn, alistair.francis@wdc.com, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, imammedo@redhat.com, anisinha@redhat.com,
+ philmd@linaro.org, wangyanan55@huawei.com, eblake@redhat.com,
+ armbru@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ f.ebner@proxmox.com
+Subject: [PATCH 03/19] tests: smbios: add test for legacy mode CLI options
+Date: Tue, 27 Feb 2024 16:47:33 +0100
+Message-Id: <20240227154749.1818189-4-imammedo@redhat.com>
+In-Reply-To: <20240227154749.1818189-1-imammedo@redhat.com>
+References: <20240227154749.1818189-1-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240227105145.0000106d@Huawei.com>
-X-TUID: xY2MIvPtLfiv
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: afVqzxRHHJaY
 
-On Tue, Feb 27, 2024 at 10:51:45AM +0000, Jonathan Cameron wrote:
-> Date: Tue, 27 Feb 2024 10:51:45 +0000
-> From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-> Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
-> X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-> 
-> On Tue, 27 Feb 2024 17:20:25 +0800
-> Zhao Liu <zhao1.liu@linux.intel.com> wrote:
-> 
-> > Hi Jonathan,
-> > 
-> > > Hi Zhao Liu
-> > > 
-> > > I like the scheme.  Strikes a good balance between complexity of description
-> > > and systems that actually exist. Sure there are systems with more cache
-> > > levels etc but they are rare and support can be easily added later
-> > > if people want to model them.  
-> > 
-> > Thanks for your support!
-> > 
-> > [snip]
-> > 
-> > > > +static int smp_cache_string_to_topology(MachineState *ms,  
-> > > 
-> > > Not a good name for a function that does rather more than that.  
-> > 
-> > What about "smp_cache_get_valid_topology()"?
-> 
-> Looking again, could we return the CPUTopoLevel? I think returning
-> CPU_TOPO_LEVEL_INVALID will replace -1/0 returns and this can just
-> be smp_cache_string_to_topology() as you have it in this version.
-> 
-> The check on the return value becomes a little more more complex
-> and I think you want to squash CPU_TOPO_LEVEL_MAX down so we only
-> have one invalid value to check at callers..  E.g.
-> 
-> static CPUTopoLevel smp_cache_string_to_topolgy(MachineState *ms,
->                                                 char *top_str,
->                                                 Error **errp)
-> {
->     CPUTopoLevel topo = string_to_cpu_topo(topo_str);
-> 
->     if (topo == CPU_TOPO_LEVEL_MAX || topo == CPU_TOP?O_LEVEL_INVALID) {
->         return CPU_TOPO_LEVEL_INVALID;
->     }
-> 
->     if (!machine_check_topo_support(ms, topo) {
->         error_setg(errp,
->                    "Invalid cache topology level: %s. "
->                    "The cache topology should match the CPU topology level",
-> //Break string like this to make it as grep-able as possible!
->                    topo_str);
->         return CPU_TOPO_LEVEL_INVALID;
->     }
-> 
->     return topo;
-> 
-> }                
-> 
-> 
-> The checks then become != CPU_TOPO_LEVEL_INVALID at each callsite.
->
+Unfortunately having 2.0 machine type deprecated is not enough
+to get rid of legacy SMBIOS handling since 'isapc' also uses
+that and it's staying around.
 
-Good idea! This makes the code clearer. Let me try this way. Thanks!
+Hence add test for CLI options handling to be sure that it
+ain't broken during SMBIOS code refactoring.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+ tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
+ tests/qtest/bios-tables-test.c       |  17 +++++++++++++++++
+ 2 files changed, 17 insertions(+)
+ create mode 100644 tests/data/smbios/type11_blob.legacy
+
+diff --git a/tests/data/smbios/type11_blob.legacy b/tests/data/smbios/type11_blob.legacy
+new file mode 100644
+index 0000000000000000000000000000000000000000..aef463aab903405958b0a85f85c5980671c08bee
+GIT binary patch
+literal 10
+Rcmd;PW!S(N;u;*n000Tp0s;U4
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index a116f88e1d..d1ff4db7a2 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2106,6 +2106,21 @@ static void test_acpi_pc_smbios_blob(void)
+     free_test_data(&data);
+ }
+ 
++static void test_acpi_isapc_smbios_legacy(void)
++{
++    uint8_t req_type11[] = { 1, 11 };
++    test_data data = {
++        .machine = "isapc",
++        .variant = ".pc_smbios_legacy",
++        .required_struct_types = req_type11,
++        .required_struct_types_len = ARRAY_SIZE(req_type11),
++    };
++
++    test_smbios("-smbios file=tests/data/smbios/type11_blob.legacy "
++                "-smbios type=1,family=TEST", &data);
++    free_test_data(&data);
++}
++
+ static void test_oem_fields(test_data *data)
+ {
+     int i;
+@@ -2261,6 +2276,8 @@ int main(int argc, char *argv[])
+                            test_acpi_pc_smbios_options);
+             qtest_add_func("acpi/piix4/smbios-blob",
+                            test_acpi_pc_smbios_blob);
++            qtest_add_func("acpi/piix4/smbios-legacy",
++                           test_acpi_isapc_smbios_legacy);
+         }
+         if (qtest_has_machine(MACHINE_Q35)) {
+             qtest_add_func("acpi/q35", test_acpi_q35_tcg);
+-- 
+2.39.3
+

@@ -1,120 +1,120 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2545149ejf;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2545152ejf;
         Tue, 27 Feb 2024 00:46:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVkYCCnb1FweqKTt0Vxk33nhyjTEGIpKnpcBj4OzzuZtcneTfU/I/bWKqgEjl0aDxFWosFQZi7lMMEEEDfZ6LfueTHIfCqk
-X-Google-Smtp-Source: AGHT+IEVXJyX402qCRd5xpHr+N22DPs4cO5CVVDFkVL5cOpvA7MVp2RDeOep9v+Mw/kFPzgprPDC
-X-Received: by 2002:a05:620a:2004:b0:787:83b3:2283 with SMTP id c4-20020a05620a200400b0078783b32283mr1680820qka.23.1709023595066;
+X-Forwarded-Encrypted: i=2; AJvYcCWPZ+cR2PKh0B3P+SDYMLiAm2H1CRJpJAfDul14Z+TrhK6VswxLx+stp9vYb4o9p4d5uP93BGg94M8blizr9g68Ch0BTXmE
+X-Google-Smtp-Source: AGHT+IFfnuRzvgUQWBtTj9lIdS/Vk6E+0+h1dsGFjCU6YTXiLHaQlt8+1JjLiEU5zm7RWngxS8+z
+X-Received: by 2002:a05:6102:125c:b0:470:53d1:2900 with SMTP id p28-20020a056102125c00b0047053d12900mr5011149vsg.30.1709023595259;
         Tue, 27 Feb 2024 00:46:35 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1709023595; cv=none;
         d=google.com; s=arc-20160816;
-        b=MZBEeS/kber8lknw1fMWzGGceUXV1R7vtdpBS7t0Mbunnd0G5CFcuHcjjEbLNlooQk
-         BsBwwwHMH5xBlmfEEPw9zjCPpE+lm9vIucB66wvcnWVLJuK6k+hnmrwybTaH24ycdWaF
-         Cl7o6Rqd3pFrAcUdcG8uy5dC1GhsWrVh+3hyIGI5CcAr9i/0DZ+J9ZiF49CVaIckRbZ3
-         EGf5xh4eFPgAYP6a3jaKmVjmEbwJaTlZ2ROOLA6DRxnPeP8S3jdG745NLlH4KTvLtd14
-         X9LnNOGxXZ1Bte/WKpXvMNL0TeiCSJPrJYqRAvicceh4oTvD+dlNWHTDpo2QsiDmQMfS
-         ESuQ==
+        b=HKwzQ2DvibtmjEpYVzlcx+NsSsQdzFRwbyqRv85CUD3fZDUUm9uka/QLhcfSkoMrTj
+         WQGJoEJIIxJeyHoXnVt/KLMZety6r/poQPkBecljV+tfULDuRHpL1C3B6srH1iLsrKCV
+         t6LTcYyJ2KqWOMQjonuBQWpqYfarnPZ11spcwSArNlPERPtep0eGFwk3/e/xa1r4lhs3
+         fot8+JrvDHTHYuXMlu0FJcjUA6sHN42aefBQlnDpXqeVuVXZfNM3R277wAzw8Ovh0zbg
+         ZR2hjaBN+sibtIO5cFvAFKtOfi2y+BshvgGIKnMhEufjTdiCGCX93KXJme45UhtqkRZF
+         bZjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RPm16UPsnU4F/4oJXar+5N8ETXoxZOH1kbNjYRQpNV0=;
-        fh=jjs7Eythi1hifcQd4Bhf7UtQ9J4V+Ow9XNAYokBmahk=;
-        b=Df5Q/PgCR6MeKm5TzOsckLiAX1UFUhmPibMVAkaIBJvl8xmNScEm7EtYEbM1b0hmol
-         9eFYxCIsY2h//SoRRlJ8vOsUZyGIIoq4GfWWIShQ9GkWId3h9TNQ1Ht/e7T5mHbd59ER
-         hNc7WqjwviDIZT5tRc1GYMvRslXXK56KFH59eNI/BWhIAWW0KvIErAZ0VFm3uGu0sc4y
-         49G9Nv09Neqy0E2nSSW0pllPKNKblMn2HalcvCULj3QXXk21dkOda4e4kB4kTNOUEnHH
-         fC40Eke3BZlCF33dikUXXen8Nwe80AXHEk/tXAgLA2ZrZ9qvA9iu0zWMuFwZHs3jlkEy
-         yxbw==;
+        bh=GZ6f3MtsvPODeQCNs+mWuntTgICcd/owb4II9I6fwgI=;
+        fh=WXmR5dneUIu9dr2e9bUm1BEgVK1k9p1xrSa9QFHib8M=;
+        b=bV1L1/KsQMjsNhtGBCFPcg6UjH0EzRZ0Jggqc4cm+ATQqDT+bS72lLE+Jmi1SgJkof
+         sI5dW0c93p+SpX031KOgvJk4rYbDomxKHjxJ9kmupCYXxQaBsY3C01y45rD1npSOALLA
+         XjI/zaj8RtbBj8solSpEYhRuBYVCNe2Fh3YOUcSOQUWqX0RIj8Ya77kqE8c8u4fCRiRn
+         twCWj4p+MvEUzyoXwcESY+TUgleOINXTmrl7jTg6MOl0X6UKC6vwvPo3B34IcltOUz5l
+         FYlvmacGceK8RkXZd1siWirnh4yv8jTEFkAAJvo57JEvT7PMBs4Jegy4AXJ6tRgzsx9t
+         N9GA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcJligoQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a8fqtYMq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2-20020a05620a112200b00787b7f02325si7048111qkk.428.2024.02.27.00.46.34
+        by mx.google.com with ESMTPS id k18-20020ac84752000000b0042de7410ab8si6885946qtp.334.2024.02.27.00.46.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 27 Feb 2024 00:46:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcJligoQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a8fqtYMq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ret2H-0000j2-Ma; Tue, 27 Feb 2024 03:42:01 -0500
+	id 1ret1L-0007HX-US; Tue, 27 Feb 2024 03:41:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret1x-0007u6-KN
- for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:41:43 -0500
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret1K-0007FD-KQ
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:41:02 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret1w-0008AR-0R
- for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:41:41 -0500
-Received: by mail-lj1-x235.google.com with SMTP id
- 38308e7fff4ca-2d220e39907so63255661fa.1
- for <qemu-devel@nongnu.org>; Tue, 27 Feb 2024 00:41:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret1I-0007vr-19
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:41:02 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a3e7f7b3d95so447511466b.3
+ for <qemu-devel@nongnu.org>; Tue, 27 Feb 2024 00:40:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709023297; x=1709628097; darn=nongnu.org;
+ d=linaro.org; s=google; t=1709023258; x=1709628058; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RPm16UPsnU4F/4oJXar+5N8ETXoxZOH1kbNjYRQpNV0=;
- b=rcJligoQblwAJ4JCuYj7ylTS9+N3IYln4qB/Be9hSHJGr8Na6JAqdv8q1MBbLHKePm
- UXarjKcg70IsR1k25gI19UVIUG2Q9GA3/zcVNTI3K8nS2FT+eSNHfezttGMqos1IoNqi
- U8J09SlkTtSXxqiHInisBATNsaX7J8yWC9vpSpEKtW19xgswqGiAL+1Zl4vHJooO1/72
- wJ/zoGrvKZLA5JXeF24aDgE8Vm/M0yPYabPx8kJloQY0krQvhWC9Ix2yOTuL7FBWtjW/
- qgDa3UBlrj3H56xN3N+NraT9wUyFFWFp9pAZMu4xxkBdGRnrTaHpPrzNMBOFLkE9afNE
- WHew==
+ bh=GZ6f3MtsvPODeQCNs+mWuntTgICcd/owb4II9I6fwgI=;
+ b=a8fqtYMqZils9PEkchOrB5mu/ZWfMsy4xsh2wj3HSERIyYi12J+jt2rle2RrNoEhIy
+ eDG0/TxObkCvlaaB9h4VgyTOHvgPGe3Ml+s91PyKNfOh05bfOrWbBp/DExiTIhfbqUYH
+ WKz8OQ63Ie6OXJiCTp58IuRCb6J4hoxQl1YOeUyxPr0vXZRAkt0p0Eo31MyqTMqy79Ej
+ 9wf6IIet7J0T8Bewt3DTHFXDi1/2Txtxr79BueKBY9D+b6o0oBr3M0prBC9UwD9vNQVs
+ ueI/LJWZA4sORB0U4x/XIP44f0180iRDA1JUUHackNDnLj55/ALdr+vUTPa0a909CEzl
+ fQLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709023297; x=1709628097;
+ d=1e100.net; s=20230601; t=1709023258; x=1709628058;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RPm16UPsnU4F/4oJXar+5N8ETXoxZOH1kbNjYRQpNV0=;
- b=X8ORfNwXY4oQtrDy7bJYP0EUN9YMbC4fCmGusm/wcRB4RPmKSgPOqsqepv2yHUBqj0
- 5CAlHDsbUl5uWFExK5qBByjV93eZ5qhIQIR7Ar2MqH38N+7ZO6dqZqyvfS3ilJ4tL/4Q
- cptQk3mky+WXWhK/7X5g6rbu51rI5yoc5H/4w6qCArYFUBtl+OqtWfSJev2P/hll7aWV
- BChFlzCX7wycTyJ7IPuvbWr+pB1KNJYtPCJrwJ/+hbtzXH1lp6s7loUj7O3p7KJHjmJF
- 1XcxxMM796Rb0G79MvtNyudQ/kYivMjDtb1KQfABz/h1MSTwXsdtyHycTwTBDnusZWPf
- 4omA==
-X-Gm-Message-State: AOJu0YzxzBHiDPGz6Mec+PnNiAD4JumONGYlOimoMnj8muDWAMzirknw
- Ni7OGyt2EvcA09qPgtAUcfiXKzpafeXtWB0n5VcfIr/P2dAwppfVB8PVHUnLjw40nJ29b01ldWo
- J
-X-Received: by 2002:a2e:8784:0:b0:2d2:3c10:4b6c with SMTP id
- n4-20020a2e8784000000b002d23c104b6cmr5534555lji.24.1709023297560; 
- Tue, 27 Feb 2024 00:41:37 -0800 (PST)
+ bh=GZ6f3MtsvPODeQCNs+mWuntTgICcd/owb4II9I6fwgI=;
+ b=AHFRwpAoVptSaa4rkCvdPYPm4BPnKYSoiJtFFeBfF36A+he/O6nJ5u3jFCtsoFKasb
+ g2yXNCuS651hSLg9u6/QQRKH5oYDAl0gos8diaxBW3x13oUEXEBMcEZuhszweuhQse8r
+ PQ8qbmk+aUkqzHwn83/Inj3imiU5TN/Taakl8MrBhuX0rdajswpP2pLOg+NVXrGObGkH
+ QRo/3aFQg365W33ZhkVXX/rBD5v+a9sMakF2trDrvRNf7+KEIIk+nUAIcEN3ktCjIdOF
+ 3MfgfYKjoFV8W5DLLL14TGs6vvYBv+9cTE6tDmc9bqOATBSoM5EE6TmLfOiQ6ebxiwKk
+ 6XFg==
+X-Gm-Message-State: AOJu0YyAdBabvCzXjNZlGuXeIYQoqgI5xEsHqHtFDOKo8IyzJDffX2eB
+ pH304qkKXkYlp5u7Ux7mz71lr6Sy/6Z2lFRZu36mYe6ZtcAEymTYuSsTa7mWq11H1pjkURUZXDH
+ d
+X-Received: by 2002:a17:906:54b:b0:a43:77c6:e3f3 with SMTP id
+ k11-20020a170906054b00b00a4377c6e3f3mr2397043eja.17.1709023258286; 
+ Tue, 27 Feb 2024 00:40:58 -0800 (PST)
 Received: from m1x-phil.lan (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr.
  [176.184.33.214]) by smtp.gmail.com with ESMTPSA id
- n1-20020a2e82c1000000b002d236114533sm1162859ljh.75.2024.02.27.00.41.35
+ st14-20020a170907c08e00b00a3f5c39bf2asm545546ejc.0.2024.02.27.00.40.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 27 Feb 2024 00:41:37 -0800 (PST)
+ Tue, 27 Feb 2024 00:40:57 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PULL 17/30] hw/usb: remove usb_bus_find
-Date: Tue, 27 Feb 2024 09:39:33 +0100
-Message-ID: <20240227083948.5427-18-philmd@linaro.org>
+ Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PULL 11/30] hw/ppc/sam460ex: do not use usb_bus_find()
+Date: Tue, 27 Feb 2024 09:39:27 +0100
+Message-ID: <20240227083948.5427-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240227083948.5427-1-philmd@linaro.org>
 References: <20240227083948.5427-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::235;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x235.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,66 +129,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MePiakDwurTH
+X-TUID: +fO0XdXt6GvT
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-Inline the sole remaining use, which is for the -usbdevice command line.
+usb_bus_find() is always used with argument -1; it can be replaced with
+a search of the single USB bus on the machine.
 
+Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240223124406.234509-9-pbonzini@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20240223124406.234509-3-pbonzini@redhat.com>
+[PMD: Fixed style]
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/usb.h |  1 -
- hw/usb/bus.c     | 15 +--------------
- 2 files changed, 1 insertion(+), 15 deletions(-)
+ hw/ppc/sam460ex.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/usb.h b/include/hw/usb.h
-index cfeead2840..d46d96779a 100644
---- a/include/hw/usb.h
-+++ b/include/hw/usb.h
-@@ -498,7 +498,6 @@ struct USBBusOps {
- void usb_bus_new(USBBus *bus, size_t bus_size,
-                  USBBusOps *ops, DeviceState *host);
- void usb_bus_release(USBBus *bus);
--USBBus *usb_bus_find(int busnr);
- void usb_legacy_register(const char *typename, const char *usbdevice_name,
-                          USBDevice *(*usbdevice_init)(void));
- USBDevice *usbdevice_create(const char *cmdline);
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 76fda41b7e..796769fadb 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -100,19 +100,6 @@ void usb_bus_release(USBBus *bus)
-     QTAILQ_REMOVE(&busses, bus, next);
- }
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index a28498f39c..7e34b6c5e0 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -274,6 +274,7 @@ static void sam460ex_init(MachineState *machine)
+     DeviceState *uic[4];
+     int i;
+     PCIBus *pci_bus;
++    USBBus *usb_bus;
+     PowerPCCPU *cpu;
+     CPUPPCState *env;
+     I2CBus *i2c;
+@@ -421,8 +422,10 @@ static void sam460ex_init(MachineState *machine)
+     sysbus_realize_and_unref(sbdev, &error_fatal);
+     sysbus_mmio_map(sbdev, 0, 0x4bffd0000);
+     sysbus_connect_irq(sbdev, 0, qdev_get_gpio_in(uic[2], 30));
+-    usb_create_simple(usb_bus_find(-1), "usb-kbd");
+-    usb_create_simple(usb_bus_find(-1), "usb-mouse");
++    usb_bus = USB_BUS(object_resolve_type_unambiguous(TYPE_USB_BUS,
++                                                      &error_abort));
++    usb_create_simple(usb_bus, "usb-kbd");
++    usb_create_simple(usb_bus, "usb-mouse");
  
--USBBus *usb_bus_find(int busnr)
--{
--    USBBus *bus;
--
--    if (-1 == busnr)
--        return QTAILQ_FIRST(&busses);
--    QTAILQ_FOREACH(bus, &busses, next) {
--        if (bus->busnr == busnr)
--            return bus;
--    }
--    return NULL;
--}
--
- static void usb_device_realize(USBDevice *dev, Error **errp)
- {
-     USBDeviceClass *klass = USB_DEVICE_GET_CLASS(dev);
-@@ -643,7 +630,7 @@ HumanReadableText *qmp_x_query_usb(Error **errp)
- /* handle legacy -usbdevice cmd line option */
- USBDevice *usbdevice_create(const char *driver)
- {
--    USBBus *bus = usb_bus_find(-1 /* any */);
-+    USBBus *bus = QTAILQ_FIRST(&busses);
-     LegacyUSBFactory *f = NULL;
-     Error *err = NULL;
-     GSList *i;
+     /* PCIe buses */
+     dev = qdev_new(TYPE_PPC460EX_PCIE_HOST);
 -- 
 2.41.0
 

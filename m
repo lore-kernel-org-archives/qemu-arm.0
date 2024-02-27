@@ -1,179 +1,218 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2807499ejf;
-        Tue, 27 Feb 2024 09:11:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU5Swd79kPLdCDBcy8n3AdoivCkpt0E7b4BdVAgXofbcHuBOsk3vZzug8acNkikUa1hRw7/uRaTrdxBVMDFgRkdQElDflxg
-X-Google-Smtp-Source: AGHT+IHZQS+ij8VZjXsH7ySoaRM/84pvSqgfFM3psqfYtc2YysCHt4+xnNfrAGAgHDW8G9Mdz0uC
-X-Received: by 2002:a05:600c:511f:b0:412:abfd:2c0e with SMTP id o31-20020a05600c511f00b00412abfd2c0emr2435531wms.41.1709053904300;
-        Tue, 27 Feb 2024 09:11:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709053904; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2809657ejf;
+        Tue, 27 Feb 2024 09:14:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHMprS7CuVVbTtGNLyk8AQQgaqTXQMY1gPtaty+sGWMXIENzQLVmFa0oFRlybnYOJgx+TR5
+X-Received: by 2002:a05:6870:d88b:b0:21e:9df9:2596 with SMTP id oe11-20020a056870d88b00b0021e9df92596mr11452914oac.42.1709054095803;
+        Tue, 27 Feb 2024 09:14:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709054095; cv=none;
         d=google.com; s=arc-20160816;
-        b=SsR2crfblLva1gm3qHLPob33Dvow1ID60xFw5ukksS42uxmpU9LEhFIsHYaV8/wotO
-         HpeFJ+E4xH4YfMkxc+ccC3fT/4fHf/I2peJYjPwHl9Yr7TcRllkAE3KDOZKd+QCQVdOp
-         B0I9N/Q98ACoyyqUZZqdxGWL0e0NFhSKt/8+BXHCai9zpbnfwTGImhoh0FHf7pOW6buD
-         96HpnSV/eumxedWDdbDNzdldhwNgBKQ28WMfjuswVdPZXSdmuN1860DGKLRmB3pLxyJZ
-         6ZISDEtODZAjFsS+BrF1/xXGl0ziwvWjGTy7JE58NXVHDuU86C3PR9wSrqBKPWp7pJqw
-         Gjsg==
+        b=yWnvw45UWLwK/gd1NyeOVYRVs8Jvyda0LLr4HM06oPHu5uzBgApNO8gz3iXgn1JOMA
+         A7kX/dbFXnNKde/bG6z5KPsi9sOiLRIflGo9MIzeMcU18xwWWtg3CF7C3IR8v2ZJcA7T
+         mdA8jz+vgi3WblmPx2OZUJxlFb33CnVgl91V1vYqYZgL4PXEnlemMd4JRoLmInm/Au8O
+         M84nw/plCwN62hJ4XqgKpSt/9H+zgKf5CQcBVF1tHjAXigQczmWMJhZK1VqgpvrJ2+QN
+         M36YEZuUUjisZqK05EhH2T71DAQLa7wJM5T7nb3J3/TCqDC6GQdZbmX/ddijG2wb7f/d
+         ZYOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=rl+Qb6h1DK87FKvuDL3Draezf7PaMslwA2HVbdB5p6Y=;
-        fh=7hAnG8mt3O2g0t4S/UvlpYopBIc86fAdUNL/ShLRZ74=;
-        b=almA+W2Chg18otaavJcuJqqYfflOhgJn0TcT5k/mfDk/Hhlfqu4zN8ieNT3iFr77UO
-         1sdec+pUST2JVVlbNHFQHrzMDQdHDHwLKUDjXx2MX+p06KTCVrYcBJugdifbCWFNEsu9
-         S7hmOWLIVB2yJUVHFRxOaSpdDm2nDc7N8LNtUTsNmxogxLYp+Ty7wJXaAt9qwHehHzbu
-         EPjcPCXW7CWT54zt1e5PnwXknHD3j+Bz0GAPegO7eWw+nF8GAbIb9NpfYbHiFhXcFdwn
-         pD56GJ10y4ppr/4Rrhuz3MLNA6G8ZKMEEs+lDW+B7yje6d+yk/hqnMxZHx21ylz3V9CU
-         pK9Q==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=8KxYcjTO8o1tTxUM/2gXBCnQ/OmUKZSk83sSWMMi6XM=;
+        fh=oUNEGq5Jp9A1lVgt6bTHDeBq9b6dLi5c7sj/kZOPvQU=;
+        b=gYGAyQdanwntso4MjOT6iCC6M4yMamai/r6nlsFlKcNpfEUjiWPt+gDT2j/ERKaI4Z
+         7NwpgVGJtNPRfny9HyFbhItO8SH+a5nU82MHrMvNX7Q8V4Vn35yNVxVtihojkPjdtAdk
+         etLl4WAVVRR+HSL5LLpLiGcLXYHO399IkkmkdcrjJktWiJI+Zb9lte6TvfrVAheEdbxw
+         Ls6/81JzJz8W3IYeYfDiK3hmRMJdXRcDFr1l8eJQ37w2x2ronSfIm84Xh7hILNQNJ0Ou
+         NEva6VlAx9RhW00d56oYHSAGLMsDsltihup9DRUT0A9uwxB2bMrc87Vpjg3Ez8PgchiN
+         TrOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020adff0d0000000b0033d140bb182si4021496wro.518.2024.02.27.09.11.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zm8J1ILC;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id he15-20020a05622a600f00b0042dc8c25f57si7691263qtb.23.2024.02.27.09.14.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Feb 2024 09:11:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Feb 2024 09:14:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rf0zS-00008V-Ds; Tue, 27 Feb 2024 12:11:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rf0zL-0008TU-O7; Tue, 27 Feb 2024 12:11:31 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rf0zH-0007iU-Gh; Tue, 27 Feb 2024 12:11:31 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TkkRN19nWz6J9mG;
- Wed, 28 Feb 2024 01:06:40 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 3A4E514058E;
- Wed, 28 Feb 2024 01:11:17 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 27 Feb
- 2024 17:11:16 +0000
-Date: Tue, 27 Feb 2024 17:11:15 +0000
-To: Ankit Agrawal <ankita@nvidia.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
- <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
- Zhi Wang <zhiw@nvidia.com>, "Matt Ochs" <mochs@nvidia.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
- <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, "Kirti Wankhede"
- <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
- Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
- <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
-Message-ID: <20240227171115.00004c7b@Huawei.com>
-In-Reply-To: <SA1PR12MB71992ECFBF9FA3EE3C350EA8B0592@SA1PR12MB7199.namprd12.prod.outlook.com>
-References: <20240223124223.800078-1-ankita@nvidia.com>
- <20240223124223.800078-3-ankita@nvidia.com>
- <20240226164229.00001536@Huawei.com>
- <SA1PR12MB71992ECFBF9FA3EE3C350EA8B0592@SA1PR12MB7199.namprd12.prod.outlook.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zm8J1ILC;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1709054095;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=8KxYcjTO8o1tTxUM/2gXBCnQ/OmUKZSk83sSWMMi6XM=;
+	b=Zm8J1ILCh5a/2uc6VkO8pHJEKegrZtPJdFSBcOrYPA5An/2WRaKKKfzS66rtKMFZLU52AI
+	372D4bs/KgbkjMPCaey5EW8nxQq+5fBwnX8ITI7HgQtcFLbioRHgY93dx3p3JgMdUg4Z1V
+	RSWho633M3nkHY8l5um2MDcqQ36v90I=
+Received: from mail-oa1-f72.google.com (mail-oa1-f72.google.com
+ [209.85.160.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-586-diga88AGPvajsEXEniwn7w-1; Tue, 27 Feb 2024 12:14:54 -0500
+X-MC-Unique: diga88AGPvajsEXEniwn7w-1
+Received: by mail-oa1-f72.google.com with SMTP id 586e51a60fabf-21ea3c5425cso3874827fac.0
+        for <alex.bennee@linaro.org>; Tue, 27 Feb 2024 09:14:54 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709054093; x=1709658893;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8KxYcjTO8o1tTxUM/2gXBCnQ/OmUKZSk83sSWMMi6XM=;
+        b=N2vkV7uDX5ZIe6adnpMquv5HtobaUm/hGW2ECAoxD+BAE+pEqISl+axMSSs4BShaVy
+         pxLt8X7hBKfhRm50+9YU+mYnyJqJOatXn9Bk2Xo/48/Ditc+4oFApIzb4sPLjJ7GYI8L
+         FQvzvMJy5BQH6/PpTF9XbgjYLHY3nbqTQJCj7FMR4bxJpfuqY7eXQEJSnUJaljmFvtTZ
+         v/ehOdWqrgWkuV0BCwZjb6D4eOmVr/xAlh1deS23v3ygjAlqMHRmgGWlg2JNDfRXjg77
+         DxkENyqY+6WXigoiCYmYu7VyUFijsFhpuNpo5C5jmIjJnAMTx23KPZkQejnm8J+Gu4EP
+         35Ow==
+X-Gm-Message-State: AOJu0YzFyUJzwqBBQ0Nn0kgS+Q+dE+FkCXiyCcYku/w7X4+yAXbq3b4z
+	yNfp2was/uYklUhuN7aLSa+oOWkm6tR7xRdT1R40kAYRyyTcYeGku0sLjdph+JYOUjbnQQEaFXl
+	8YbztHFtB0kTRuWXj2E3+zRwistI6U17GbbOj/VwZy1zyzYnb+CG3vzFo8Ri+Mnkaxi+TKyD/Le
+	7if5oogmSx2ke7/1bxw8PYG3W2UBruPwevZQ==
+X-Received: by 2002:a05:6870:231f:b0:21e:8a73:f45e with SMTP id w31-20020a056870231f00b0021e8a73f45emr12457455oao.16.1709054093523;
+        Tue, 27 Feb 2024 09:14:53 -0800 (PST)
+X-Received: by 2002:a05:6870:231f:b0:21e:8a73:f45e with SMTP id w31-20020a056870231f00b0021e8a73f45emr12457389oao.16.1709054092992;
+        Tue, 27 Feb 2024 09:14:52 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.9] (ip-109-43-178-133.web.vodafone.de. [109.43.178.133])
+        by smtp.gmail.com with ESMTPSA id p14-20020a05620a22ae00b00787ec96ef6csm279627qkh.132.2024.02.27.09.14.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 Feb 2024 09:14:52 -0800 (PST)
+Message-ID: <5aea155a-0f82-4739-8f4d-fab4736f6265@redhat.com>
+Date: Tue, 27 Feb 2024 18:14:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mgcMq2Jcsc4O
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 03/29] tests/vm: avoid re-building the VM images all
+ the time
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ qemu-arm@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Michael Rolnik <mrolnik@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, Warner Losh <imp@bsdimp.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-s390x@nongnu.org,
+ Kyle Evans <kevans@freebsd.org>, Brad Smith <brad@comstyle.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Brian Cain <bcain@quicinc.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-riscv@nongnu.org, Bin Meng
+ <bin.meng@windriver.com>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>, Weiwei Li <liwei1518@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Mahmoud Mandour <ma.mandourr@gmail.com>
+References: <20240227144335.1196131-1-alex.bennee@linaro.org>
+ <20240227144335.1196131-4-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240227144335.1196131-4-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: tw31lZMszKQZ
 
-On Tue, 27 Feb 2024 08:37:15 +0000
-Ankit Agrawal <ankita@nvidia.com> wrote:
+On 27/02/2024 15.43, Alex Bennée wrote:
+> The main problem is that "check-venv" is a .PHONY target will always
+> evaluate and trigger a full re-build of the VM images. While its
+> tempting to drop it from the dependencies that does introduce a
+> breakage on freshly configured builds.
+> 
+> Fortunately we do have the otherwise redundant --force flag for the
+> script which up until now was always on. If we make the usage of
+> --force conditional on dependencies other than check-venv triggering
+> the update we can avoid the costly rebuild and still run cleanly on a
+> fresh checkout.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2118
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/vm/Makefile.include | 2 +-
+>   tests/vm/basevm.py        | 4 ++--
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+> index bf12e0fa3c5..ac56824a87d 100644
+> --- a/tests/vm/Makefile.include
+> +++ b/tests/vm/Makefile.include
+> @@ -102,7 +102,7 @@ $(IMAGES_DIR)/%.img:	$(SRC_PATH)/tests/vm/% \
+>   		$(if $(LOG_CONSOLE),--log-console) \
+>   		--source-path $(SRC_PATH) \
+>   		--image "$@" \
+> -		--force \
+> +		$(if $(filter-out check-venv, $?), --force) \
+>   		--build-image $@, \
+>   		"  VM-IMAGE $*")
+>   
+> diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
+> index c0d62c08031..f8fd751eb14 100644
+> --- a/tests/vm/basevm.py
+> +++ b/tests/vm/basevm.py
+> @@ -646,9 +646,9 @@ def main(vmcls, config=None):
+>           vm = vmcls(args, config=config)
+>           if args.build_image:
+>               if os.path.exists(args.image) and not args.force:
+> -                sys.stderr.writelines(["Image file exists: %s\n" % args.image,
+> +                sys.stderr.writelines(["Image file exists, skipping build: %s\n" % args.image,
+>                                         "Use --force option to overwrite\n"])
+> -                return 1
+> +                return 0
+>               return vm.build_image(args.image)
+>           if args.build_qemu:
+>               vm.add_source_dir(args.build_qemu)
 
-> Thanks Jonathan for reviewing the change.
->=20
-> Comments inline.
->=20
-> >> The structure needs a PCI device handle [2] that consists of the devic=
-e BDF.
-> >> The vfio-pci device corresponding to the acpi-generic-initiator object=
- is
-> >> located to determine the BDF.
-> >>
-> >> [1] ACPI Spec 6.3, Section 5.2.16.6
-> >> [2] ACPI Spec 6.3, Table 5.80
-> >>
-> >> Signed-off-by: Ankit Agrawal <ankita@nvidia.com> =20
-> >Hi Ankit,
-> >
-> > As the code stands the use of a list seems overkill. =20
->=20
-> Yeah, I will try out your suggestion.
->=20
-> > Otherwise looks good to me.=A0 I need Generic Ports support for CXL
-> > stuff so will copy your approach for that as it's ended up nice
-> > and simple.
-> >=20
-> > Jonathan =20
->=20
-> Nice, would be good to have uniform implementations.
-
-I've been messing around with this today.
-
-They differ only very trivially.
-2 Options.
-1) Have acpi-generic-port inherit from acpi-generic-initiator.
-   Works but implies a relationship that isn't really true.
-2) Add an abstract base class. I've called it acpi-generic-node
-   and have bother acpi-generic-initiator and acpi-generic-port
-   inherit from it.
-
-The second feels more natural but is a tiny bit more code (a few
-more empty init / finalize functions.
-
-If we are going to end up with an abstract base 'object' it
-will be cleaner to do this all as one series if you don't mind
-carrying the generic port stuff as well? Or I can smash the
-two series together and send out an updated version that hopefully
-meets both our requirements (+ tests etc).
-
-I'm just running tests against the CXL qos / generic port code
-but assuming all goes well can share my additional changes
-in next day or two.
-
-Jonathan
-
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

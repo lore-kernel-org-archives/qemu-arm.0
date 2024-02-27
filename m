@@ -1,355 +1,330 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2482555ejf;
-        Mon, 26 Feb 2024 21:49:31 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUG9+yLqJIbDAALWVmzxt/pdt7B3rqxQoE0wHg0ZapaRMcIsaTX1Zt18A/tEaTOPYnALkPmMYRTRs3yF+JzH9Niq3NJyoKK
-X-Google-Smtp-Source: AGHT+IEq+atFItUtpPyKH51ldcvVy4qkueZS0GLU6YRyRlRxgFzNh8j49hHq5ES8pCR1NErZ/6bb
-X-Received: by 2002:a05:6214:b61:b0:68f:edbc:5db1 with SMTP id ey1-20020a0562140b6100b0068fedbc5db1mr1193334qvb.42.1709012971643;
-        Mon, 26 Feb 2024 21:49:31 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709012971; cv=pass;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2523112ejf;
+        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
+X-Received: by 2002:a17:902:6b02:b0:1d9:7ab0:5e20 with SMTP id o2-20020a1709026b0200b001d97ab05e20mr8939998plk.69.1709020056438;
+        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709020056; cv=none;
         d=google.com; s=arc-20160816;
-        b=lDgecnZzH6hCH1bv+KZsgQOHhMGpPOZEMJni0mCWSAPNiQSzJ1YtHsjojmVWG+gwPb
-         4SLwQFKMrI0A3Aa3fnEvlodezEfo+jlAg8SG1issXNhmqBLI9/0pM0oyIfGqYTg44+AD
-         t2SiK9h1/zcON5XobNm6lCThnamXhV2xmOHZHS4Wc1G3xZxC1JMTKnMFbfXhp07NhCxL
-         prwySqUz9OQmZg9GN8QuqRd/NqA/bF5HvmkkHH/dzgO6XGkQtsLTGwnCl1QsZvNC26BU
-         +47kjZbeU+55uA4321OuLtRNPtvbZtclXH5RIoyNwzS867gV7NQMrqgln9SBKhB42FD7
-         lXmw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zWyy3bu1IBEx02zPLjk0z3Cp0KHpwx0cgiSOf2G5HNA=;
-        fh=U2LVkJPs1+je4vjqjOLqvJNPDEFLX0nm5Y7QpLOeQ7s=;
-        b=hrSYkHSpvZ2+2vA5NbZ1aJ45+xIJK/HyYMzLIEJCsRbyzgc/NcnkD9RJOatuUGxYzC
-         GMZgkt7eOTaoAK5ILzV8tUVGnraV7d7ly2peEKvH3rhZJxOysnuAFg9uKSPr1bpaU8dj
-         kjYV0EVW5AJmtfmRmqUgn9+8WHpsb3+CVC2jprKTnl0Y7/o499lFItSacyKbm2bfeGxg
-         EJy1UVvutAq66SGJesx5HHKCns2TXMHmtaLnuJyB5EHCEQ4YUMDuitOZZLIYgTu+fIw7
-         wl1QdKaC4uMoOY1ZrQZH+R/bEX47uZhUe1aTNS48cxEtqRQKW/PCooMjyZAiPZRfOf3C
-         6Dtw==;
+        b=kpIVfMaPP73gF1BiIyYocPt1+cG5LWqSFC4VXClV3ZQ+v7tg0P70KOlxZzeuAzosdr
+         godIVAzlrTGmWm55sbzdjoVCbiwJufatgVkcp19siOgrKOnJwMB1a0LAVz79hT38QhV2
+         VwzfpNlFvhwtzhmmc8niexC8ikIHpQ7fdy3hhNfvUHqcQa2/z5eVXq7mbdxUkcpZKaT5
+         rTai78b5IVRHta8xeuuoX4rj8cKnaN4aCXDarFkBBeieI6A5aUeVPSTar4Ez3L+N1MPb
+         LxRbx1Xh+pVwze0Oe1+A1yg63WNhXpppV/IS0E1PPrFN1+OB1UhZe6mlRwp9nk5ydC95
+         YeIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
+        fh=GPqR4IZ4tpxxMztuFlE5yid8HGx5q38zTNywteBGTK0=;
+        b=S9SxU2U9QZnJhwaG2yZNfl6fEPydmUOQiIvZCbZaODWgixfH274YKeqms0EXHaA6Qw
+         7excQWUjFEO1KLOX8V40/QsACg81DdeIYUdQ4fD47oILmZ+eFLR1Os+Z2P47PsMb3LrH
+         z9sgbDGvZAH0f6VlkzO88XrSdGjv+uJOLqbYfBoepL1UREvyV04PFFPYicZhJLbUhI2y
+         B106aI6lQmZLmzrxlB6h9UwMGQv2lZdtQVrc4CIFFze4DzDJGCkKqAQurOx7YOtKdanL
+         QEGkvms0YK7+nLLdebDU+wz1F9aU80OyiziaU3ZbCpXyMMlGujw7D8jTJ38uhKa6eCFs
+         Cuyg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=tdGEB4zp;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5-20020ad45c85000000b0068fe53248a6si6922533qvh.454.2024.02.26.21.49.31
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=schmqYi8;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e7-20020a170902784700b001dc3ef7aa26sor4067623pln.10.2024.02.26.23.47.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Feb 2024 21:49:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=tdGEB4zp;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1reqKx-0007jx-UE; Tue, 27 Feb 2024 00:49:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1reqKw-0007jg-OD; Tue, 27 Feb 2024 00:49:06 -0500
-Received: from mail-sn1nam02on20610.outbound.protection.outlook.com
- ([2a01:111:f400:7ea9::610]
- helo=NAM02-SN1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1reqKu-0006MY-FR; Tue, 27 Feb 2024 00:49:06 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ALu11sFk5V4oWQoJog999lOiaE7hf53nt+pVLUpbJ86sBg/4noZ1DRWnKXdIOeqsSwdJgzY/gzCFHTt8s39eFL/9zNswNa6ZwAK+ydWAN7zbgzUPCs1qmFSN6NkEaUjBCvK8UOMrSl2EXqtK8i0FGepKYIlcqfxEiFGlm2evPh6eGDJGB3canSOAWzLHtT+0VEB/Zyj0tmMXqeOCzeQZkayGwxgS4KcWWZFJ/Mq2EqfhQfBpmxbmfcBS/WliWNjcyPgz92un281K8BgbioOWwxfuESOglFk64zBejqHUwV3M733EWwhPX2sZ8WDsJj3a2T8H2u5x/ou7teal4a8yvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zWyy3bu1IBEx02zPLjk0z3Cp0KHpwx0cgiSOf2G5HNA=;
- b=BJ/wp4FupGklJa77dpORLBJkwr9+5oU7tpPjEcDUEC5YIUHFdEBhvzKvTs9M+CSY9ZIb/fVMC5EiZvRaGhiia64v/7h/ZsandDvUTu+hr11+H/Ags8kuqIA2QTzwrkl1h/pJsaCuRPfCdo5eRUhX8PdCFCZ00zj7mz/9dNjLdkDXTWM+01HnVOrLT7mSnK+/TvyqvRIyyoiuCH6LvJn5TyFUaCj5+L/j/Y1BRUPmeHuzuOai+8XmHG02hyS4LfHKHQkvMFsgOYC2RvfPifX9OiXavx4fzzQ2bwwjxNheuH/rGVwmK9S8cEmzm7pJtuJJPzpMosv/U7OeYXvh6RrMGA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zWyy3bu1IBEx02zPLjk0z3Cp0KHpwx0cgiSOf2G5HNA=;
- b=tdGEB4zpxZfNeJTCmZOh/w79O0GMnb2lzZV4+F1U2gwdfKtIB9Br5S8djqnm746wJ707NEX6n3TidHWipf022BYb5ey9gziXSmJ5nOqkssNf8E/8tN9C50wa8kpEzKzAUD47VL18Hsu55vQpy3c6p4wZNeOFbIVuPeYcVhePr0Q=
-Received: from CH0PR03CA0310.namprd03.prod.outlook.com (2603:10b6:610:118::33)
- by DM4PR12MB5841.namprd12.prod.outlook.com (2603:10b6:8:64::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.36; Tue, 27 Feb
- 2024 05:48:57 +0000
-Received: from CH3PEPF0000000C.namprd04.prod.outlook.com
- (2603:10b6:610:118:cafe::77) by CH0PR03CA0310.outlook.office365.com
- (2603:10b6:610:118::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.49 via Frontend
- Transport; Tue, 27 Feb 2024 05:48:57 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CH3PEPF0000000C.mail.protection.outlook.com (10.167.244.39) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7292.25 via Frontend Transport; Tue, 27 Feb 2024 05:48:57 +0000
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 26 Feb
- 2024 23:48:56 -0600
-Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.35 via Frontend
- Transport; Mon, 26 Feb 2024 23:48:56 -0600
-From: Tong Ho <tong.ho@amd.com>
-To: <qemu-arm@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
- <marcandre.lureau@redhat.com>, <pbonzini@redhat.com>,
- <francisco.iglesias@amd.com>, <tong.ho@amd.com>
-Subject: [PATCH v2] hw/char/pl011: Add support for loopback
-Date: Mon, 26 Feb 2024 21:48:55 -0800
-Message-ID: <20240227054855.44204-1-tong.ho@amd.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=schmqYi8;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1709020055; x=1709624855; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
+        b=schmqYi8kqUlz0E5Uo8PuovwUKl3OCgWaMvE4XJwsOksmViTIV0Gjni5AmViExEVww
+         Gv/vJbbEoLMX061KmMyL30wxV0c8xQTITbQIMg6foAYigi4euOr8K9BgTHLuo8GdsNHb
+         Xb7BOeMj01LVOVUhxhEQpIyDIC+zJu4VekzsRfN6/SWoDKMogYhI9SBJCP9VEoXICQRA
+         hJcxjPIzon5e+Z/6EQGpQCGWDdSmSV1ZjfOvEk/7njdUr/itX0p6oxpbeaglk2Sc9jPr
+         3AmlGUk0RxFPDLxjHgCwRvXV3f22qa2y/1UuPqRL/3NZuxK9uZCUAsfJLPHPBWKrxWNj
+         V6DA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709020055; x=1709624855;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
+        b=nVwQMP3ToOk+V2pS+ULlXTImleZlJskRTqLNm6v0xdK7CMT/052DVvc4Q/bQ2ZZSTF
+         9XOgFIzAqWiPSE0OBt8XApphhSHn11Ee/FJLlGwRO4gq882ausNh0gVTBHQMUVJpdagJ
+         FPyZTc2ZvnryFlP4J51zPvarIaFMUli67ecMpXUTteaH+wCbnY0xld3AInS4TSpeK8XS
+         lEDqa8t5yVKBVmfGtDSpyYUhVzyvAz8Rqw59Y5YFS4Uwz6yjaNlBjR17SGQQZX/3/bOC
+         t5PITw3K6PaYETbtoe59a4lrs6NuAyuAGO1pYsMXZRMEneqR4Dzhgorzmkntm+97Mms2
+         OIOA==
+X-Gm-Message-State: AOJu0YyzEGunGjcKQErLqpujGXKTExMwC/BfSbPYBXjrnrMBkIZzWs6q
+	FpPfttpZjJHD2u1quEbUgTeqh5RZVFFVr0KzbPVyreQNr/vW+cCmyogUt370KfqtjVT6xtunktD
+	S
+X-Google-Smtp-Source: AGHT+IHa5GPNZQyrh4lPjtiCaHfY4JaLVAhx3qAa4gyn6vwaRY7nzPSNlOoJIGtj3YT9SHvapxuPpQ==
+X-Received: by 2002:a17:903:244d:b0:1dc:93b:8981 with SMTP id l13-20020a170903244d00b001dc093b8981mr14131905pls.14.1709020055516;
+        Mon, 26 Feb 2024 23:47:35 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.203.206] ([157.82.203.206])
+        by smtp.gmail.com with ESMTPSA id l21-20020a170903005500b001db82fdc89asm880947pla.305.2024.02.26.23.47.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Feb 2024 23:47:35 -0800 (PST)
+Message-ID: <b7aac53e-cde5-4596-b0fc-d39f52d4ceb8@daynix.com>
+Date: Tue, 27 Feb 2024 16:47:26 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 21/27] plugins: add an API to read registers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Nicholas Piggin <npiggin@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-riscv@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Alexandre Iooss <erdnaxe@crans.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-s390x@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Thomas Huth <thuth@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Brian Cain <bcain@quicinc.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bin Meng <bin.meng@windriver.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20240226165646.425600-1-alex.bennee@linaro.org>
+ <20240226165646.425600-22-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240226165646.425600-22-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: None (SATLEXMB03.amd.com: tong.ho@amd.com does not designate
- permitted sender hosts)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PEPF0000000C:EE_|DM4PR12MB5841:EE_
-X-MS-Office365-Filtering-Correlation-Id: 37111edb-ac2c-4bdd-c3d7-08dc3757ca29
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Ed636DHO4jLb5uVjpSOqBJGSBmTFx8UXNBZEoztSZ77+bSKjHly0H6Ca1Mr9krQ4EkS0nPsBoGl2G9TTzUCSIm2kWQxEa5C/+3ct/LWrmNqPViKy8/4UhHWyx13hgM9KKUEl0NOIcbi4LpQK/5Z1d+yYzOfqEoYGzU85Bj5IU91AtZYhF2nH56XSetZkyB+BrdMmt5wG9K5CrPEVrneCt3q0MqPmsGzBeW2EagzbGX5DFYgtAjBnFYnxFWze5AfmicLgkrflHRlV6wNFyrexoOgaLNtThHeP6/GMaCXz746O5nMfOGY+NVZFQDhDwU9lsn3s7+qWfBxFNK1RiRT+DGANKe3HGU7SZcCL8C2jzAcZJHqMAQM133egJrRy1Lwlfy0EBB+t/NHSb+6xyhYG1fgCre8/Z7TsyiSIPIR3ar/lSq42KN4uhD9mVEcSKke/ok+EDxXgZHUy/kK13Id7LJH9/uHjH9DqR0WPN5Nlouc5+YlsrJZXCBYjwf3ofm6tpiHcsJwThBUVzk6GDNYYdAlRS1gMbTn6J4AnuYy0nlH4S0yyPYLb+IluwbSiAtUKpdUh+qJJKEHm/YXA+rargcLFYz/+JHGtfQylm0LEbj5mXtoiO1wwSa2O89hB2ce7FDyFVu0JtIp07WiZOMbRASRhhTroPaX8+EhR3AkcQu+X89EXzEskpZ3OVJWfxRzDaPzt8u4kBCkHFODG19QL94lCClIDKcnG0mB9Kr6FC3psbD7qg4c9WEVu+SFIOKtG
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(82310400014)(36860700004); DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Feb 2024 05:48:57.2559 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 37111edb-ac2c-4bdd-c3d7-08dc3757ca29
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CH3PEPF0000000C.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5841
-Received-SPF: softfail client-ip=2a01:111:f400:7ea9::610;
- envelope-from=tong.ho@amd.com;
- helo=NAM02-SN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.014,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f3lrt11zP+Ez
+X-TUID: VP5mV9+NQh1q
 
-This patch adds loopback for sent characters, sent BREAK,
-and modem-control signals.
+On 2024/02/27 1:56, Alex Bennée wrote:
+> We can only request a list of registers once the vCPU has been
+> initialised so the user needs to use either call the get function on
+> vCPU initialisation or during the translation phase.
+> 
+> We don't expose the reg number to the plugin instead hiding it behind
+> an opaque handle. For now this is just the gdb_regnum encapsulated in
+> an anonymous GPOINTER but in future as we add more state for plugins
+> to track we can expand it.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Loopback of send and modem-control is often used for uart
-self tests in real hardware but missing from current pl011
-model, resulting in self-test failures when running in QEMU.
+Hi,
 
-This implementation matches what is observed in real pl011
-hardware placed in loopback mode:
-1. Input characters and BREAK events from serial backend
-   are ignored, but
-2. Both TX characters and BREAK events are still sent to
-   serial backend, in addition to be looped back to RX.
+Mostly looks good. I have a few trivial comments so please have a look 
+at them.
 
-Signed-off-by: Tong Ho <tong.ho@amd.com>
-Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
----
- hw/char/pl011.c | 110 +++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 108 insertions(+), 2 deletions(-)
+> 
+> ---
+> v4
+>    - the get/read_registers functions are now implicitly for current
+>    vCPU only to accidental cpu != current_cpu uses.
+> v5
+>    - make reg_handles as per-CPUPluginState variable.
+> v6
+>    - for now just wrap gdb_regnum
+> ---
+>   include/qemu/qemu-plugin.h   | 48 +++++++++++++++++++++++++++++--
+>   plugins/api.c                | 56 ++++++++++++++++++++++++++++++++++++
+>   plugins/qemu-plugins.symbols |  2 ++
+>   3 files changed, 104 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+> index 93981f8f89f..3b6b18058d2 100644
+> --- a/include/qemu/qemu-plugin.h
+> +++ b/include/qemu/qemu-plugin.h
+> @@ -11,6 +11,7 @@
+>   #ifndef QEMU_QEMU_PLUGIN_H
+>   #define QEMU_QEMU_PLUGIN_H
+>   
+> +#include <glib.h>
+>   #include <inttypes.h>
+>   #include <stdbool.h>
+>   #include <stddef.h>
+> @@ -229,8 +230,8 @@ struct qemu_plugin_insn;
+>    * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
+>    * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
+>    *
+> - * Note: currently unused, plugins cannot read or change system
+> - * register state.
+> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
+> + * system register state.
+>    */
+>   enum qemu_plugin_cb_flags {
+>       QEMU_PLUGIN_CB_NO_REGS,
+> @@ -707,4 +708,47 @@ uint64_t qemu_plugin_end_code(void);
+>   QEMU_PLUGIN_API
+>   uint64_t qemu_plugin_entry_code(void);
+>   
+> +/** struct qemu_plugin_register - Opaque handle for register access */
+> +struct qemu_plugin_register;
+> +
+> +/**
+> + * typedef qemu_plugin_reg_descriptor - register descriptions
+> + *
+> + * @handle: opaque handle for retrieving value with qemu_plugin_read_register
+> + * @name: register name
+> + * @feature: optional feature descriptor, can be NULL
+> + */
+> +typedef struct {
+> +    struct qemu_plugin_register *handle;
+> +    const char *name;
+> +    const char *feature;
+> +} qemu_plugin_reg_descriptor;
+> +
+> +/**
+> + * qemu_plugin_get_registers() - return register list for current vCPU
+> + *
+> + * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
+> + * frees the array (but not the const strings).
+> + *
+> + * Should be used from a qemu_plugin_register_vcpu_init_cb() callback
+> + * after the vCPU is initialised, i.e. in the vCPU context.
+> + */
+> +GArray *qemu_plugin_get_registers(void);
+> +
+> +/**
+> + * qemu_plugin_read_register() - read register for current vCPU
+> + *
+> + * @handle: a @qemu_plugin_reg_handle handle
+> + * @buf: A GByteArray for the data owned by the plugin
+> + *
+> + * This function is only available in a context that register read access is
+> + * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
+> + *
+> + * Returns the size of the read register. The content of @buf is in target byte
+> + * order. On failure returns -1
+> + */
+> +int qemu_plugin_read_register(struct qemu_plugin_register *handle,
+> +                              GByteArray *buf);
+> +
+> +
+>   #endif /* QEMU_QEMU_PLUGIN_H */
+> diff --git a/plugins/api.c b/plugins/api.c
+> index 54df72c1c00..03412598047 100644
+> --- a/plugins/api.c
+> +++ b/plugins/api.c
+> @@ -8,6 +8,7 @@
+>    *
+>    *  qemu_plugin_tb
+>    *  qemu_plugin_insn
+> + *  qemu_plugin_register
+>    *
+>    * Which can then be passed back into the API to do additional things.
+>    * As such all the public functions in here are exported in
+> @@ -35,10 +36,12 @@
+>    */
+>   
+>   #include "qemu/osdep.h"
+> +#include "qemu/main-loop.h"
+>   #include "qemu/plugin.h"
+>   #include "qemu/log.h"
+>   #include "tcg/tcg.h"
+>   #include "exec/exec-all.h"
+> +#include "exec/gdbstub.h"
+>   #include "exec/ram_addr.h"
+>   #include "disas/disas.h"
+>   #include "plugin.h"
+> @@ -410,3 +413,56 @@ uint64_t qemu_plugin_entry_code(void)
+>   #endif
+>       return entry;
+>   }
+> +
+> +/*
+> + * Create register handles.
+> + *
+> + * We need to create a handle for each register so the plugin
+> + * infrastructure can call gdbstub to read a register. They are
+> + * currently just a pointer encapsulation of the gdb_regnum but in
+> + * future may hold internal plugin state so its important plugin
+> + * authors are not tempted to treat them as numbers.
+> + *
+> + * We also construct a result array with those handles and some
+> + * ancillary data the plugin might find useful.
+> + */
+> +
+> +static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
+> +{
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 855cb82d08..8753b84a84 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -49,10 +49,14 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- }
- 
- /* Flag Register, UARTFR */
-+#define PL011_FLAG_RI   0x100
- #define PL011_FLAG_TXFE 0x80
- #define PL011_FLAG_RXFF 0x40
- #define PL011_FLAG_TXFF 0x20
- #define PL011_FLAG_RXFE 0x10
-+#define PL011_FLAG_DCD  0x04
-+#define PL011_FLAG_DSR  0x02
-+#define PL011_FLAG_CTS  0x01
- 
- /* Data Register, UARTDR */
- #define DR_BE   (1 << 10)
-@@ -76,6 +80,13 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- #define LCR_FEN     (1 << 4)
- #define LCR_BRK     (1 << 0)
- 
-+/* Control Register, UARTCR */
-+#define CR_OUT2     (1 << 13)
-+#define CR_OUT1     (1 << 12)
-+#define CR_RTS      (1 << 11)
-+#define CR_DTR      (1 << 10)
-+#define CR_LBE      (1 << 7)
-+
- static const unsigned char pl011_id_arm[8] =
-   { 0x11, 0x10, 0x14, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
- static const unsigned char pl011_id_luminary[8] =
-@@ -251,6 +262,89 @@ static void pl011_trace_baudrate_change(const PL011State *s)
-                                 s->ibrd, s->fbrd);
- }
- 
-+static bool pl011_loopback_enabled(PL011State *s)
-+{
-+    return !!(s->cr & CR_LBE);
-+}
-+
-+static void pl011_loopback_mdmctrl(PL011State *s)
-+{
-+    uint32_t cr, fr, il;
-+
-+    if (!pl011_loopback_enabled(s)) {
-+        return;
-+    }
-+
-+    /*
-+     * Loopback software-driven modem control outputs to modem status inputs:
-+     *   FR.RI  <= CR.Out2
-+     *   FR.DCD <= CR.Out1
-+     *   FR.CTS <= CR.RTS
-+     *   FR.DSR <= CR.DTR
-+     *
-+     * The loopback happens immediately even if this call is triggered
-+     * by setting only CR.LBE.
-+     *
-+     * CTS/RTS updates due to enabled hardware flow controls are not
-+     * dealt with here.
-+     */
-+    cr = s->cr;
-+    fr = s->flags & ~(PL011_FLAG_RI | PL011_FLAG_DCD |
-+                      PL011_FLAG_DSR | PL011_FLAG_CTS);
-+    fr |= (cr & CR_OUT2) ? PL011_FLAG_RI  : 0;
-+    fr |= (cr & CR_OUT1) ? PL011_FLAG_DCD : 0;
-+    fr |= (cr & CR_RTS)  ? PL011_FLAG_CTS : 0;
-+    fr |= (cr & CR_DTR)  ? PL011_FLAG_DSR : 0;
-+
-+    /* Change interrupts based on updated FR */
-+    il = s->int_level & ~(INT_DSR | INT_DCD | INT_CTS | INT_RI);
-+    il |= (fr & PL011_FLAG_DSR) ? INT_DSR : 0;
-+    il |= (fr & PL011_FLAG_DCD) ? INT_DCD : 0;
-+    il |= (fr & PL011_FLAG_CTS) ? INT_CTS : 0;
-+    il |= (fr & PL011_FLAG_RI)  ? INT_RI  : 0;
-+
-+    s->flags = fr;
-+    s->int_level = il;
-+    pl011_update(s);
-+}
-+
-+static void pl011_put_fifo(void *opaque, uint32_t value);
-+
-+static void pl011_loopback_tx(PL011State *s, uint32_t value)
-+{
-+    if (!pl011_loopback_enabled(s)) {
-+        return;
-+    }
-+
-+    /*
-+     * Caveat:
-+     *
-+     * In real hardware, TX loopback happens at the serial-bit level
-+     * and then reassembled by the RX logics back into bytes and placed
-+     * into the RX fifo. That is, loopback happens after TX fifo.
-+     *
-+     * Because the real hardware TX fifo is time-drained at the frame
-+     * rate governed by the configured serial format, some loopback
-+     * bytes in TX fifo may still be able to get into the RX fifo
-+     * that could be full at times while being drained at software
-+     * pace.
-+     *
-+     * In such scenario, the RX draining pace is the major factor
-+     * deciding which loopback bytes get into the RX fifo, unless
-+     * hardware flow-control is enabled.
-+     *
-+     * For simplicity, the above described is not emulated.
-+     */
-+    pl011_put_fifo(s, value);
-+}
-+
-+static void pl011_loopback_break(PL011State *s, int brk_enable)
-+{
-+    if (brk_enable) {
-+        pl011_loopback_tx(s, DR_BE);
-+    }
-+}
-+
- static void pl011_write(void *opaque, hwaddr offset,
-                         uint64_t value, unsigned size)
- {
-@@ -266,6 +360,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-         /* XXX this blocks entire thread. Rewrite to use
-          * qemu_chr_fe_write and background I/O callbacks */
-         qemu_chr_fe_write_all(&s->chr, &ch, 1);
-+        pl011_loopback_tx(s, ch);
-         s->int_level |= INT_TX;
-         pl011_update(s);
-         break;
-@@ -295,13 +390,15 @@ static void pl011_write(void *opaque, hwaddr offset,
-             int break_enable = value & LCR_BRK;
-             qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
-                               &break_enable);
-+            pl011_loopback_break(s, break_enable);
-         }
-         s->lcr = value;
-         pl011_set_read_trigger(s);
-         break;
-     case 12: /* UARTCR */
--        /* ??? Need to implement the enable and loopback bits.  */
-+        /* ??? Need to implement the enable bit.  */
-         s->cr = value;
-+        pl011_loopback_mdmctrl(s);
-         break;
-     case 13: /* UARTIFS */
-         s->ifl = value;
-@@ -361,12 +458,21 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
- 
- static void pl011_receive(void *opaque, const uint8_t *buf, int size)
- {
-+    /*
-+     * In loopback mode, the RX input signal is internally disconnected
-+     * from the entire receiving logics; thus, all inputs are ignored,
-+     * and BREAK detection on RX input signal is also not performed.
-+     */
-+    if (pl011_loopback_enabled(opaque)) {
-+        return;
-+    }
-+
-     pl011_put_fifo(opaque, *buf);
- }
- 
- static void pl011_event(void *opaque, QEMUChrEvent event)
- {
--    if (event == CHR_EVENT_BREAK) {
-+    if (event == CHR_EVENT_BREAK && !pl011_loopback_enabled(opaque)) {
-         pl011_put_fifo(opaque, DR_BE);
-     }
- }
--- 
-2.25.1
+cs is unused.
 
+> +    GArray *find_data = g_array_new(true, true,
+> +                                    sizeof(qemu_plugin_reg_descriptor));
+> +
+> +    for (int i = 0; i < gdbstub_regs->len; i++) {
+> +        GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
+> +
+> +        /* skip "un-named" regs */
+> +        if (!grd->name) {
+> +            continue;
+> +        }
+> +
+> +        /* Create a record for the plugin */
+> +        qemu_plugin_reg_descriptor desc = {
+> +            .handle = GINT_TO_POINTER(grd->gdb_reg),
+> +            .name = g_intern_string(grd->name),
+> +            .feature = g_intern_string(grd->feature_name)
+> +        };
+
+Please remove a mixed declaration; see: docs/devel/style.rst
+
+> +        g_array_append_val(find_data, desc);
+> +    }
+> +
+> +    return find_data;
+> +}
+> +
+> +GArray *qemu_plugin_get_registers(void)
+> +{
+> +    g_assert(current_cpu);
+> +
+> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
+> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
+
+Why do you need regs->len check?
+
+> +}
+> +
+> +int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
+> +{
+> +    g_assert(current_cpu);
+> +
+> +    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg));
+> +}
+> diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+> index adb67608598..27fe97239be 100644
+> --- a/plugins/qemu-plugins.symbols
+> +++ b/plugins/qemu-plugins.symbols
+> @@ -3,6 +3,7 @@
+>     qemu_plugin_end_code;
+>     qemu_plugin_entry_code;
+>     qemu_plugin_get_hwaddr;
+> +  qemu_plugin_get_registers;
+>     qemu_plugin_hwaddr_device_name;
+>     qemu_plugin_hwaddr_is_io;
+>     qemu_plugin_hwaddr_phys_addr;
+> @@ -19,6 +20,7 @@
+>     qemu_plugin_num_vcpus;
+>     qemu_plugin_outs;
+>     qemu_plugin_path_to_binary;
+> +  qemu_plugin_read_register;
+>     qemu_plugin_register_atexit_cb;
+>     qemu_plugin_register_flush_cb;
+>     qemu_plugin_register_vcpu_exit_cb;

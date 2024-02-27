@@ -1,273 +1,194 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2543035ejf;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2543037ejf;
+        Tue, 27 Feb 2024 00:40:32 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVdbDwZrD3Qz9Z86dfARgfXYUdiek7rJz1dEl5cug/JDQBCu471q62KM6H5Y/TTYKTPI/UAY6GYnVHOlsmUb2Jf+0GDGIb0
+X-Google-Smtp-Source: AGHT+IHG50VaW00ZkgBmOsxIhfK+gF+BImDlpEIb6S+WQvZw4VVNVg5M8mS2GnubNYvAx4B/So/B
+X-Received: by 2002:a05:6358:590a:b0:17b:56f5:e with SMTP id g10-20020a056358590a00b0017b56f5000emr11329367rwf.0.1709023231761;
         Tue, 27 Feb 2024 00:40:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWgQtIsh0tZSWsKDF/8eLICPZMVC5TeM3Nwq7xHhhBRvy7fCJCm3Niuza44zBIm2VY4GVoZAy522bnyeBJL5QZ0QjYatQKK
-X-Google-Smtp-Source: AGHT+IHGurlDN0rbY0r7k41Wot2DDzPSeapluqPrs4r8XYe8B4r786G6ESvkztbbZn6klES99wld
-X-Received: by 2002:a1f:d606:0:b0:4c0:1918:27de with SMTP id n6-20020a1fd606000000b004c0191827demr5787223vkg.16.1709023231640;
-        Tue, 27 Feb 2024 00:40:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709023231; cv=none;
+ARC-Seal: i=2; a=rsa-sha256; t=1709023231; cv=pass;
         d=google.com; s=arc-20160816;
-        b=tX7JU8TwTIdCmPbQ5v8VB68irbELh9Ewq7b11hmxrYqkquzqNQT3NCmMokVEdeyIWl
-         YGr0NRO0Dok93QcsbWs2StePUAoMVooP9XIcB6sh07BTbyoz+f6tY+kPpaadDwtRC7dU
-         DnFhLedqivKPrd6qbrOCFKs7B8hYtynVARWNU9MGsSYOEtyaYBbXpuJ1vm93hiIbyS5R
-         EUplYAa3wcQXSAATi5UbfDR8WjOoAzOhQoCBTDpx+dVzNzkA8N8s3iW1Cf2i10kgEFCi
-         r856FJteKvdOVEhvtCdt4O6esRv4W0cSA66OTi43Myys08Sivr9oxdVdacQBDyj/VW1/
-         r+7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RIUtS/ewFcGB+h3mxnRfiJHTgwm3qMy24C28w5Y5/Lc=;
-        fh=6TVpauajkIXCLozI+eiDq2oBdJj29nt/gCsRoAXDzQw=;
-        b=FWvZTHKNY3Vus6Nbsn83Se3fKBjA1BsUP4lVM4oa8BtxNBoJXwYlphO33cgvVOQTPR
-         ufFlg5O9IkJ9t8XObY1sbpALckLnMkC5Cb5JxSrt8sm0aztU2JQoW+XvKkdzpfBtfziW
-         K4qNS57XkcguQ+9tKwb0Hs+oCEnTfX5oFyi9QGqtMRNQbsoPsPEuh7f/WvUB2ETa2pYH
-         i2ZvnBrG4fAUTJqAoVqwO24HtHty98yixghRnxFSlr9gyX0qnpccB+gW0YeqRNsuq/EL
-         meDzyVS/dxkM9sgjVpkkEKB0Rt7rlg8hmWnMdF4JRctnsvde6aUSefrYrAV2vhGFTZ+a
-         x5fw==;
+        b=RJcpDEs56ep0wfIZ/SEY5aANUpsDfhkD6XlNIBUEMaKbrASsIIZSghS4F/LDdaSa33
+         HO3XS2I7RcY2bXnxzhiIrUsrhuWWEQCHWTEQUqqZCHzFu1xoNFjjuBZDHbNjsJSzY27T
+         B+z1xNbbx7DFPxzxAMs7LaDgl4UONkhblMNuJqZvOvyP8j894WQtXTkKSYbP/5tgFRC5
+         hmcklWi8QZ9wWeKQE9zn+Ov5D1QCt5qUGrAusFXE1kNOYvQm6wSBhFRwWrwtKbBvxMcy
+         Y+tKN9CgRsjVDsydNc0uNFBj0GlsbQWQKiQFy2uuNMQ4Rgb96glplVjGSes131WbfrQv
+         bSiQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=XWmgk+68LApkOPWy7YUYgSrrjaqZXObndrHRfRf+NyU=;
+        fh=1DmuV/n2h/p4/4VSvrt8ey2xlZivJOv145Llg0kjtYE=;
+        b=rTKKgeb/i/aTnmee1G+In52yR2LgN1UGoJ196Q3+6GmxHnsGe/RKkdyQwWRMVUpvmu
+         1vpNsG46hL9L61St4KqkjO+FI8Y4N1iFjjFWxd1Jij2BbTbfkzbaMhLOcOYIv10UwzMB
+         UrQ4LF9RX7KNXfcDkHgHzlMsyGEo6t2B4lwLu4/fFN+BZlIbYnHJDlksHpiPxshohT0o
+         YpRFLbVhm+6lCO+hIiPm73bPVoliaJzzJwFb+Y0GCwuOYMDMAaaqouAsqgxYLwet631y
+         f2wbXfjnvhbVUmufUxjl3F2i2BvQp/A+2PaXYwQkm06EsNhQo9Gnx2vLS+pOS7hGuwrd
+         d9ZQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E9i2xi6h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pvCTDH9p;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16-20020ac85e50000000b0042e6296e5cesi7519545qtx.42.2024.02.27.00.40.31
+Return-Path: <kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id d3-20020a63f243000000b005dc4827d5bdsi5182180pgk.546.2024.02.27.00.40.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Feb 2024 00:40:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E9i2xi6h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pvCTDH9p;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-10030-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ret0L-0005oy-GW; Tue, 27 Feb 2024 03:40:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret0I-0005nU-VV
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:39:58 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret0C-0007LP-Lb
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:39:57 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-33dcad9e3a2so1113618f8f.3
- for <qemu-arm@nongnu.org>; Tue, 27 Feb 2024 00:39:52 -0800 (PST)
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 51B04B252DB
+	for <alex.bennee@linaro.org>; Tue, 27 Feb 2024 08:40:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3B7335644D;
+	Tue, 27 Feb 2024 08:40:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="pvCTDH9p"
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BE747B3D3
+	for <kvm@vger.kernel.org>; Tue, 27 Feb 2024 08:40:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.52
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1709023224; cv=none; b=t/CXTAeV11tJkvglaGY01qk6kUPIt7gy3ie7JP8JMtI3GBoZHMhiq3qY5NQxEiaikit6ZCGWaGH0P/W7gK7VV0kh0hpp9ujxnudu0wBYIs4zyhgzUWMFk4+sgCxoLqDkfknGgYbabYcHyiAWo9Oq8bxBmHk88FUR9cbyBDN05WI=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1709023224; c=relaxed/simple;
+	bh=CBqzF2WbF6mxXofugfGCh9KbQbez8nFtvoRqbo22BTk=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=RV27kfq/RRzIO+WmAebx7ghwtk9eDOWldIZpzFPz8E9uUhM+VwT4ihRNqt/jJFwrjjaWxvXFq7bwiOEVnUzcCVewI411BZkg4ayXgcqBsCr3aq17EZoHMDENFkIVaewXCjhfVOf3ZpNQe0clwqcAY1YpezRZFWup10IpVpw9ZMc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=pvCTDH9p; arc=none smtp.client-ip=209.85.221.52
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-33dc3fe739aso1447885f8f.0
+        for <kvm@vger.kernel.org>; Tue, 27 Feb 2024 00:40:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709023191; x=1709627991; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=RIUtS/ewFcGB+h3mxnRfiJHTgwm3qMy24C28w5Y5/Lc=;
- b=E9i2xi6hFQg9j4qV0JdGh2w69WDKZ6HgP5DfrtUYH6GH/a/celTpTSW9TKgF+AwJxt
- YP83FctcnmfKCoBQOHtSq+uLkR2fgxbGmY3XWA0K+mBuJa2TNIJkkZ73R9+OZWtTKchP
- P2QMdA8LT8Pzts2HGDfzc2iyNFfSArcdf81C6eoF6ksY7kZaxe2UJd34+PCV5Y3SgRch
- nQqmdWGS76h8nfinI66AXHBiJBNVgnMd9Xn+BveuNNRWLz9B04VMjOChB4tTSjg9loTP
- IlugONEKjqJliSxDZeU1mXhsUXVJpuNu9c/O7dDI9ZGDNH4Q2OqqBNDzRCHOjECkj0kA
- 7RnA==
+        d=linaro.org; s=google; t=1709023221; x=1709628021; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XWmgk+68LApkOPWy7YUYgSrrjaqZXObndrHRfRf+NyU=;
+        b=pvCTDH9pNW4ohwYFtYGHsqQY2Ui9ma4XlBooSx0v4VN5d4rt2CYyxq1BVZ4u8LdAcG
+         bW/QNGYAiRMYPuBuk12azze+Seq4EewMFDB70hUcI6gSBV6NA+KPEjJWXxV+tkS4TyfU
+         hQcegeX2DijqGgHGrp/hq1u+9Achl7gHMw4YEE+YocOBQ3ovXgq7DVlIh27436NAG5nH
+         v1G5XpmwZfPHIdZSgnp2u//+Fx3Gm8PyFeNUdc3D22Pzg3qGZ0upwIaq1qlV4rqgGVvb
+         gULYD3iEm7L28NG4JTKMicXiUDi965mSpE3WuQ3czp2TcqIzOFyEpm4Hl+CleYqF5D5S
+         Nm/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709023191; x=1709627991;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=RIUtS/ewFcGB+h3mxnRfiJHTgwm3qMy24C28w5Y5/Lc=;
- b=ii1u4rZ8zCoj2/avGw+zKS2dnm5pM/aUghqAAphQNOCsC8rYFzRO4SgPhO2bYfwqkk
- Fnx7e6aVeVBdYlEkn12KgemEp73qtVGk5WiQs3iX114hOXuaGQwzN1F3D+KIxAEoRm24
- N+MiS4UGRMYhwJkkYbhQUsy/psMWe+QvXHUkEzlol2dN4Ws1SpGDDwnwU3p4FDglu4MC
- fH0EpUXIVKfY6/aZwj07lhoZPi5NK9Z0DMO1DYeni5vbwufjgEL2tgljFajJa8yGXq3Y
- 9CY4JA/l4Holq2tC6NlOcziSxVqUcM9RAdLmlCAVLWNeznredKI/QyLTNgBAb2TrCILL
- Lhjg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWzpAzXnY43DnaJvvt5dEk539Bh9Bz8r0NnuBhkVJBhRZZE1UuHgk+IqPc2X4cWn/kydREAcgwKyDb2YaIVdA1xZv5m
-X-Gm-Message-State: AOJu0YxHS0qjZ5VThZsBqshSF0smsWpf6ouLjRwQwR7wfDRfKBGZj1ZL
- 0n4TmDjSqVjqQAlhaakIS2UvdsoguYNzPWwd3kh+u2wTZy0Klq0451EnPuT/JY8=
-X-Received: by 2002:adf:fc01:0:b0:33d:a185:17ed with SMTP id
- i1-20020adffc01000000b0033da18517edmr5656091wrr.56.1709023190930; 
- Tue, 27 Feb 2024 00:39:50 -0800 (PST)
-Received: from m1x-phil.lan (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr.
- [176.184.33.214]) by smtp.gmail.com with ESMTPSA id
- a10-20020a5d4d4a000000b0033d13530134sm10515937wru.106.2024.02.27.00.39.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 27 Feb 2024 00:39:50 -0800 (PST)
+        d=1e100.net; s=20230601; t=1709023221; x=1709628021;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XWmgk+68LApkOPWy7YUYgSrrjaqZXObndrHRfRf+NyU=;
+        b=JtTkUHRy0Nr6vcOOewzmb9eECpODh4tThl5M9nKT5LBZZxOWitTfxhnt/i2TkOkZQU
+         9GuYBJ24llAUCO6f0yteCkrbt0Ns1gNYZfVJ6HFe1cnKyeogUszCx0Smd4U29Fgki/io
+         0SM3wviw30nNdBHk8EapU6Gx32Ybscxe4V7ku6ptJ0xQ2/9DWdBVx97ewld4RXqmgAH+
+         0D/vMyCKoHDwd13Pf+n5mlBru3DbLJLrkmrscoQheqY99zmxaZsbnjCM7jKLYkjsGLaw
+         3WM6vEI8FIbs0OziXZGr/qczOBYCvU2kJwGesFnPVzh7PHMilR7Xn1kcWL516keRfq+l
+         3aVg==
+X-Forwarded-Encrypted: i=1; AJvYcCWYOplgxlBSCQ63f41T5TtAtoK2auOnv9uFTNCtdWP7BzxwXK8kQW8dYD0iUHUypCzgto552ctsRnargwGsrx56P4hg
+X-Gm-Message-State: AOJu0YyNOmM260g01zGOMv4JNpTgcTrnHyLlaN+20c4mpR9Bl19C4PIl
+	Dmi58+VfvgYggBZ8czOb/zjbOZP5acky8YQ19/QCo3GkPyrTbLLVahltX9GGm3s=
+X-Received: by 2002:a5d:4106:0:b0:33d:90c2:c7f4 with SMTP id l6-20020a5d4106000000b0033d90c2c7f4mr8225142wrp.14.1709023220812;
+        Tue, 27 Feb 2024 00:40:20 -0800 (PST)
+Received: from m1x-phil.lan (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr. [176.184.33.214])
+        by smtp.gmail.com with ESMTPSA id bj29-20020a0560001e1d00b0033d81d9c44esm10779692wrb.70.2024.02.27.00.40.19
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 27 Feb 2024 00:40:20 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 00/30] Misc HW patches for 2024-02-27
-Date: Tue, 27 Feb 2024 09:39:16 +0100
-Message-ID: <20240227083948.5427-1-philmd@linaro.org>
+Cc: qemu-ppc@nongnu.org,
+	qemu-block@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	kvm@vger.kernel.org
+Subject: [PULL 05/30] hw/i386/kvmvapic: Inline sysbus_address_space()
+Date: Tue, 27 Feb 2024 09:39:21 +0100
+Message-ID: <20240227083948.5427-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240227083948.5427-1-philmd@linaro.org>
+References: <20240227083948.5427-1-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: peoP8XvH8ZCa
+X-TUID: 0Z8Afr5g6ELy
 
-The following changes since commit 03d496a992d98650315af41be7c0ca6de2a28da1:
+sysbus_address_space(...) is a simple wrapper to
+get_system_memory(). Use it in place, since KVM
+VAPIC doesn't distinct address spaces.
 
-  Merge tag 'pull-qapi-2024-02-26' of https://repo.or.cz/qemu/armbru into staging (2024-02-26 11:22:32 +0000)
+Rename the 'as' variable as 'mr' since it is a
+MemoryRegion type, not an AddressSpace one.
 
-are available in the Git repository at:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240216153517.49422-6-philmd@linaro.org>
+---
+ hw/i386/kvmvapic.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-  https://github.com/philmd/qemu.git tags/hw-misc-20240227
-
-for you to fetch changes up to 0316482e876988f7526ebe62d579ad069f485957:
-
-  hw/ide: Include 'ide-internal.h' from current path (2024-02-27 09:37:30 +0100)
-
-----------------------------------------------------------------
-Misc HW patch queue
-
-hw: Remove sysbus_address_space() (Phil)
-hw/nubus: Add nubus-virtio-mmio device (Mark)
-hw/usb: Remove usb_bus_find() (Paolo)
-hw/usb: Extract sysbus-ohci from ohci (Paolo)
-hw/nvme: Fix invalid endian conversion
-hw/i386: More PC machine housekeeping (Bernhard, Phil)
-hw/ide: Restrict "ide-internal.h" (Zoltan, Phil)
-qom: Expose object_resolve_type_unambiguous() (Paolo)
-
-----------------------------------------------------------------
-
-BALATON Zoltan (1):
-  hw/ide: Remove last two uses of ide/internal.h outside of hw/ide/
-
-Bernhard Beschow (5):
-  hw/i386/x86: Let ioapic_init_gsi() take parent as pointer
-  hw/i386/pc: Rename "bus" attribute to "pcibus"
-  hw/i386/pc_{piix, q35}: Eliminate local pci_bus/pci_host variables
-  hw/i386/pc: Remove unneeded class attribute "kvmclock_enabled"
-  hw/i386/pc: Populate RTC attribute directly
-
-Klaus Jensen (1):
-  hw/nvme: fix invalid endian conversion
-
-Mark Cave-Ayland (3):
-  hw/nubus-device: round Declaration ROM memory region address to
-    qemu_target_page_size()
-  hw/nubus: increase maximum Declaration ROM size from 128k to 1Mb
-  hw/nubus: add nubus-virtio-mmio device
-
-Paolo Bonzini (10):
-  hw/acpi: move object_resolve_type_unambiguous to core QOM
-  hw/ppc/sam460ex: do not use usb_bus_find()
-  hw/sh4/r2d: do not use usb_bus_find()
-  hw/mips/loongson3_virt: do not require CONFIG_USB
-  hw/hppa: do not require CONFIG_USB
-  hw/ppc/mac_newworld: do not require CONFIG_USB
-  hw/ppc/pseries: do not require CONFIG_USB
-  hw/usb: remove usb_bus_find
-  hw/usb: extract sysbus-ohci to a separate file
-  hw/usb: remove duplicate file in system_ss
-
-Philippe Mathieu-Daudé (10):
-  hw/arm: Inline sysbus_create_simple(PL110 / PL111)
-  hw/display/pl110: Pass frame buffer memory region as link property
-  hw/arm/exynos4210: Inline sysbus_create_varargs(EXYNOS4210_FIMD)
-  hw/display/exynos4210_fimd: Pass frame buffer memory region as link
-  hw/i386/kvmvapic: Inline sysbus_address_space()
-  hw/sysbus: Remove now unused sysbus_address_space()
-  hw/i386/sgx: Use QDev API
-  hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
-  hw/arm/sbsa-ref: Do not open-code ahci_ide_create_devs()
-  hw/ide: Include 'ide-internal.h' from current path
-
- hw/ide/ahci_internal.h                        |   2 +-
- .../ide/internal.h => hw/ide/ide-internal.h   |   0
- include/hw/i386/pc.h                          |   3 +-
- include/hw/i386/x86.h                         |   2 +-
- include/hw/misc/macio/macio.h                 |   2 +-
- include/hw/nubus/nubus-virtio-mmio.h          |  36 +++++++
- include/hw/nubus/nubus.h                      |   2 +-
- include/hw/sysbus.h                           |   1 -
- include/hw/usb.h                              |   1 -
- include/qom/object.h                          |  13 +++
- hw/arm/exynos4210.c                           |  14 ++-
- hw/arm/integratorcp.c                         |   7 +-
- hw/arm/realview.c                             |   7 +-
- hw/arm/sbsa-ref.c                             |  13 +--
- hw/arm/versatilepb.c                          |   8 +-
- hw/arm/vexpress.c                             |  15 ++-
- hw/core/sysbus.c                              |   5 -
- hw/display/exynos4210_fimd.c                  |  19 +++-
- hw/display/pl110.c                            |  20 +++-
- hw/hppa/machine.c                             |  10 +-
- hw/i386/acpi-build.c                          |  22 ++--
- hw/i386/amd_iommu.c                           |   2 +-
- hw/i386/intel_iommu.c                         |   2 +-
- hw/i386/kvm/xen_evtchn.c                      |   2 +-
- hw/i386/kvmvapic.c                            |  11 +-
- hw/i386/microvm.c                             |   2 +-
- hw/i386/pc.c                                  |  17 +--
- hw/i386/pc_piix.c                             |  42 ++++----
- hw/i386/pc_q35.c                              |  26 +++--
- hw/i386/sgx.c                                 |  14 ++-
- hw/i386/x86-iommu.c                           |   2 +-
- hw/i386/x86.c                                 |   7 +-
- hw/ide/ahci.c                                 |   2 +-
- hw/ide/atapi.c                                |   2 +-
- hw/ide/cmd646.c                               |   2 +-
- hw/ide/core.c                                 |   2 +-
- hw/ide/ide-bus.c                              |   2 +-
- hw/ide/ide-dev.c                              |   2 +-
- hw/ide/ioport.c                               |   2 +-
- hw/ide/isa.c                                  |   2 +-
- hw/ide/macio.c                                |   2 +-
- hw/ide/microdrive.c                           |   2 +-
- hw/ide/mmio.c                                 |   2 +-
- hw/ide/pci.c                                  |   2 +-
- hw/ide/piix.c                                 |   2 +-
- hw/ide/sii3112.c                              |   2 +-
- hw/ide/via.c                                  |   2 +-
- hw/mips/loongson3_virt.c                      |   8 +-
- hw/nubus/nubus-device.c                       |  18 +++-
- hw/nubus/nubus-virtio-mmio.c                  | 102 ++++++++++++++++++
- hw/nvme/ctrl.c                                |   2 +-
- hw/ppc/mac_newworld.c                         |   4 +-
- hw/ppc/sam460ex.c                             |   7 +-
- hw/ppc/spapr.c                                |   4 +-
- hw/sh4/r2d.c                                  |   5 +-
- hw/usb/bus.c                                  |  15 +--
- hw/usb/hcd-ohci-sysbus.c                      |  88 +++++++++++++++
- hw/usb/hcd-ohci.c                             |  58 ----------
- qom/object.c                                  |  16 +++
- hw/arm/Kconfig                                |  12 ++-
- hw/display/Kconfig                            |   1 +
- hw/hppa/Kconfig                               |   2 +-
- hw/nubus/meson.build                          |   1 +
- hw/ppc/Kconfig                                |   5 +-
- hw/sh4/Kconfig                                |   1 -
- hw/usb/Kconfig                                |   4 +
- hw/usb/meson.build                            |   3 +-
- 67 files changed, 473 insertions(+), 242 deletions(-)
- rename include/hw/ide/internal.h => hw/ide/ide-internal.h (100%)
- create mode 100644 include/hw/nubus/nubus-virtio-mmio.h
- create mode 100644 hw/nubus/nubus-virtio-mmio.c
- create mode 100644 hw/usb/hcd-ohci-sysbus.c
-
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index 20b0300357..61a65ef2ab 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -58,6 +58,7 @@ typedef struct GuestROMState {
+ 
+ struct VAPICROMState {
+     SysBusDevice busdev;
++
+     MemoryRegion io;
+     MemoryRegion rom;
+     uint32_t state;
+@@ -581,19 +582,17 @@ static int vapic_map_rom_writable(VAPICROMState *s)
+ {
+     hwaddr rom_paddr = s->rom_state_paddr & ROM_BLOCK_MASK;
+     MemoryRegionSection section;
+-    MemoryRegion *as;
++    MemoryRegion *mr = get_system_memory();
+     size_t rom_size;
+     uint8_t *ram;
+ 
+-    as = sysbus_address_space(&s->busdev);
+-
+     if (s->rom_mapped_writable) {
+-        memory_region_del_subregion(as, &s->rom);
++        memory_region_del_subregion(mr, &s->rom);
+         object_unparent(OBJECT(&s->rom));
+     }
+ 
+     /* grab RAM memory region (region @rom_paddr may still be pc.rom) */
+-    section = memory_region_find(as, 0, 1);
++    section = memory_region_find(mr, 0, 1);
+ 
+     /* read ROM size from RAM region */
+     if (rom_paddr + 2 >= memory_region_size(section.mr)) {
+@@ -614,7 +613,7 @@ static int vapic_map_rom_writable(VAPICROMState *s)
+ 
+     memory_region_init_alias(&s->rom, OBJECT(s), "kvmvapic-rom", section.mr,
+                              rom_paddr, rom_size);
+-    memory_region_add_subregion_overlap(as, rom_paddr, &s->rom, 1000);
++    memory_region_add_subregion_overlap(mr, rom_paddr, &s->rom, 1000);
+     s->rom_mapped_writable = true;
+     memory_region_unref(section.mr);
+ 
 -- 
 2.41.0
 

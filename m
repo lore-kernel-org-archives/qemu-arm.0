@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2755631ejf;
-        Tue, 27 Feb 2024 07:49:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXeOGLtwzWhxBbZmCuf4V3/fBzAiVTuqbE99F0cA4wVMsU3dY/eCbZKnVLlCVE0g31XBtBqCq3/vlQ4/tPaAr8OlVlyyz5V
-X-Google-Smtp-Source: AGHT+IFxMALq3zfE2LhM+5Lar7f8aTjRl3FIgTX8bGgqmMOCatL2s+698F9IWJYJ/0t1rudwZm3h
-X-Received: by 2002:a25:d0cf:0:b0:dcf:5be3:3ed4 with SMTP id h198-20020a25d0cf000000b00dcf5be33ed4mr3139968ybg.17.1709048947681;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2755633ejf;
+        Tue, 27 Feb 2024 07:49:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVAl2WUN3x1C5aIJjUHAf24ALsjdNmSJyCODRhbqNv32OuSCBrBve4xIgNvIiVb7c5qAMFSIzD9BQCeVKv1LO6rSpBcYJZG
+X-Google-Smtp-Source: AGHT+IF1tl0qh4hBSxt/iQcamNZ5EPCiSYg4tpXCoAjGZV8KTe3SSu3WtGCw8oRGg2rEd5XujEzO
+X-Received: by 2002:a05:690c:3390:b0:608:aee8:3389 with SMTP id fl16-20020a05690c339000b00608aee83389mr1735428ywb.11.1709048947823;
         Tue, 27 Feb 2024 07:49:07 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1709048947; cv=none;
         d=google.com; s=arc-20160816;
-        b=P+gHYSEi2EPln3V4GkAIbeVF93igNC426K6R5BSvzAsuDwiWxG8Ha9L4CKrqTlJyIF
-         ufi2yASYnGeKNNL9wthYe4mBsWOSoi6CoHq/uBMw0RMLNaPuEe1AmPF51j1BFSEjHFfq
-         kh7jKLEH3mBlVNihc6NeqFH/XU5ArFmai6ts1QCoCsREa7S018d84MxziRIfsCe2ChkX
-         Y1OmvN9Tn+7+L869PKBerRYYokisfpxqJZR6vEMQUYFFEAyC/9bDTz3TQW75+gujoyJN
-         E/W1Q3QMzfH4B525HeKkOUu3UTmJyteIrY3oj6etCUCzQmwwlPUnyBRmrByigHQ7nUPm
-         dIRg==
+        b=qfwI9evJKGGMEX6XSruXyt5wtlG2cXK8G5OfB+yAbw14nRH+0jJtZKYzepb6IpA1AC
+         obBkO/enw7MLVwAUxMV8Dz9Cliu9gFNkkQGSsmMzu0ywGE1iBgIzI/yUDHfcyATG42s3
+         Gt8muSowGBSFDJzbDkLfypVj/jTm+JE5fcepNVWjc4z+y8tMWqcRuPEQhqstY76Mt5Jc
+         eqIy5eTfpLpmXlbECaYoeWtrWdszWUGCH5oPT6i7VHm/SVKE/I45BTiuIRLHyoFVaT3D
+         eGS+cYlBkc2r2PfRystArudF8ugbAY+VY1s2Llk2cgit9FgUjs8pwZOx+oo+BguMH3YN
+         xvxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Ue1WQH4nlGcTTQTDcf76NAFqe6oQZjumJOC4+jAOgrA=;
+        bh=pKoXIBumG0mx0Yx3vh9UwCRv3Ex4Gk0LAtYSiZP+3Us=;
         fh=cWYLLp2xiaCPawONafvmArBA+kFDFtOI7kkn8ypnRsk=;
-        b=ecVrjYCjibKGTNZjEbXJG5kvK83M6Wf98p6SNO/B0P0h9+xNGDATdawYyQfTyZ73Po
-         si9iYa/egpFpIN9upmtxXkLO86MCYWOSp/NOvw3p2zRDBhR0UyL+Z95mIRLeBO3PDlpl
-         BRb3GQ5lQFxVzBOucUkOoJNytchwRDF9f+f1eG4FLpy9UgK0rvOB8YePRY3asItfQoGr
-         0UGeBx7+1JgTY1TimNvtkO5MoOt76JYVKeRqGFKXrKwhmxahaitlSYagGX8Ek4YQuaQY
-         o6yDE0R6V/XPmWKaeyToJzIfX2qB7cFNZE6pcYNTzUCfwq4LfZyKS/0MURJhCu9jeToW
-         hbeg==;
+        b=MkGu6wIz0qlILafbJXRP8aWFlR3Cad+Ddjia0gjo+/jKLRamawWSnYFHz6G7srr2z+
+         qqfpcakq1FCNKChsoJl9cdFfMMYXQuIiBrpzzPDTq2pQJ/VMkN/iMi1GOiFavzELpgkH
+         SQudRnFzQ1i4LE9GnRrUK3zyuePCRU5hjJ8B/0/VS4zYJEpGli56+M3aRiTs2yq5AgIq
+         dFxn7dCjN/tVmHlDfqodNzZZh6lYP5FvDzuerIbNnNBm4HhFBlke/G9ltqeJnBRxQrtH
+         bP7mXywP4xssFrNLNqW7bzcMXnrCYdr5i6no9jAlnJ4lHX5SZCqYFGzQY/j3D/ozijfw
+         s9Ag==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aES3OVYj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NRj48hXX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gm13-20020a056214268d00b0068f3a8597f2si7515910qvb.333.2024.02.27.07.49.07
+        by mx.google.com with ESMTPS id u4-20020a05620a022400b00787b7987512si7626017qkm.741.2024.02.27.07.49.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 27 Feb 2024 07:49:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aES3OVYj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NRj48hXX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rezgp-0005Z2-RU; Tue, 27 Feb 2024 10:48:19 -0500
+	id 1rezgl-0005Wf-WD; Tue, 27 Feb 2024 10:48:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rezgo-0005Xs-PO
- for qemu-devel@nongnu.org; Tue, 27 Feb 2024 10:48:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1rezgj-0005V8-OH
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 10:48:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rezgk-0008OY-C0
- for qemu-devel@nongnu.org; Tue, 27 Feb 2024 10:48:18 -0500
+ id 1rezgd-0008M6-Vx
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 10:48:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709048893;
+ s=mimecast20190719; t=1709048885;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ue1WQH4nlGcTTQTDcf76NAFqe6oQZjumJOC4+jAOgrA=;
- b=aES3OVYjpvt44ncCUBmlUJsI8COqCR/uCWnn0TgsFrOMiD+EA13WLtm1DGp00JxdZ4IvT3
- SE8s8GJw5knq9HlXdxZnjdyk4wcgdBClAGO+tjrhVMAGwFj80/ClbjUV1ByU5sxlUBlt3N
- JIRyeXnjIRBVhi31sT0+TdizTKzuCZc=
+ bh=pKoXIBumG0mx0Yx3vh9UwCRv3Ex4Gk0LAtYSiZP+3Us=;
+ b=NRj48hXXuRTLXzv6n2CAvqGDJoRp0zA9+qVb5yJS6igEGtjpwIz8NxBOL193UUaTaUcXSd
+ FsuThHq1aUqQ3I/AOxqd1TE/3SqDW9+9SdGBZG2v+5HrZ5iA/OWivMKFHqYfqIQhHXwMqo
+ NNe4ZOi8mi5MFJKRWJvWJGtc8PkCYOc=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-302-QOvSC6t2MemcatzdRmoDrQ-1; Tue, 27 Feb 2024 10:48:10 -0500
-X-MC-Unique: QOvSC6t2MemcatzdRmoDrQ-1
+ us-mta-37-ZGHcGi1zNLivAUgUhZ2NUA-1; Tue, 27 Feb 2024 10:48:01 -0500
+X-MC-Unique: ZGHcGi1zNLivAUgUhZ2NUA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 455C185A58E;
- Tue, 27 Feb 2024 15:48:09 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 07E2F185A781;
+ Tue, 27 Feb 2024 15:48:01 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AE8362166AE1;
- Tue, 27 Feb 2024 15:48:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 77B9F2166AE4;
+ Tue, 27 Feb 2024 15:47:58 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
@@ -90,25 +90,24 @@ Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, eblake@redhat.com,
  armbru@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  f.ebner@proxmox.com
-Subject: [PATCH 05/19] smbios: get rid of smbios_smp_sockets global
-Date: Tue, 27 Feb 2024 16:47:35 +0100
-Message-Id: <20240227154749.1818189-6-imammedo@redhat.com>
+Subject: [PATCH 02/19] tests: smbios: add test for -smbios type=11 option
+Date: Tue, 27 Feb 2024 16:47:32 +0100
+Message-Id: <20240227154749.1818189-3-imammedo@redhat.com>
 In-Reply-To: <20240227154749.1818189-1-imammedo@redhat.com>
 References: <20240227154749.1818189-1-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,118 +122,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7Yo7iH52W83h
-
-it makes smbios_validate_table() independent from
-smbios_smp_sockets global, which in turn lets
-smbios_get_tables() avoid using not related legacy code.
+X-TUID: 6qNypaaNyk6I
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
-goal here is to isolate legacy handling from generic smbios_get_tables()
----
- include/hw/firmware/smbios.h |  2 +-
- hw/i386/fw_cfg.c             |  2 +-
- hw/smbios/smbios.c           | 22 +++++++++-------------
- 3 files changed, 11 insertions(+), 15 deletions(-)
+ tests/data/smbios/type11_blob  | Bin 0 -> 11 bytes
+ tests/qtest/bios-tables-test.c |  17 +++++++++++++++++
+ 2 files changed, 17 insertions(+)
+ create mode 100644 tests/data/smbios/type11_blob
 
-diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-index 6e514982d4..a187fbbd3d 100644
---- a/include/hw/firmware/smbios.h
-+++ b/include/hw/firmware/smbios.h
-@@ -296,7 +296,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
-                          const char *version, bool legacy_mode,
-                          bool uuid_encoded, SmbiosEntryPointType ep_type);
- void smbios_set_default_processor_family(uint16_t processor_family);
--uint8_t *smbios_get_table_legacy(MachineState *ms, size_t *length);
-+uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length);
- void smbios_get_tables(MachineState *ms,
-                        const struct smbios_phys_mem_area *mem_array,
-                        const unsigned int mem_array_size,
-diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index a635234e68..fcb4fb0769 100644
---- a/hw/i386/fw_cfg.c
-+++ b/hw/i386/fw_cfg.c
-@@ -70,7 +70,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
-     /* tell smbios about cpuid version and features */
-     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
- 
--    smbios_tables = smbios_get_table_legacy(ms, &smbios_tables_len);
-+    smbios_tables = smbios_get_table_legacy(ms->smp.cpus, &smbios_tables_len);
-     if (smbios_tables) {
-         fw_cfg_add_bytes(fw_cfg, FW_CFG_SMBIOS_ENTRIES,
-                          smbios_tables, smbios_tables_len);
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 8e86c62184..15339d8dbe 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -70,7 +70,7 @@ static SmbiosEntryPoint ep;
- static int smbios_type4_count = 0;
- static bool smbios_immutable;
- static bool smbios_have_defaults;
--static uint32_t smbios_cpuid_version, smbios_cpuid_features, smbios_smp_sockets;
-+static uint32_t smbios_cpuid_version, smbios_cpuid_features;
- 
- static DECLARE_BITMAP(have_binfile_bitmap, SMBIOS_MAX_TYPE+1);
- static DECLARE_BITMAP(have_fields_bitmap, SMBIOS_MAX_TYPE+1);
-@@ -476,14 +476,11 @@ opts_init(smbios_register_config);
-  */
- #define SMBIOS_21_MAX_TABLES_LEN 0xffff
- 
--static void smbios_validate_table(MachineState *ms)
-+static void smbios_validate_table(uint32_t expected_t4_count)
- {
--    uint32_t expect_t4_count = smbios_legacy ?
--                                        ms->smp.cpus : smbios_smp_sockets;
--
--    if (smbios_type4_count && smbios_type4_count != expect_t4_count) {
-+    if (smbios_type4_count && smbios_type4_count != expected_t4_count) {
-         error_report("Expected %d SMBIOS Type 4 tables, got %d instead",
--                     expect_t4_count, smbios_type4_count);
-+                     expected_t4_count, smbios_type4_count);
-         exit(1);
-     }
- 
-@@ -571,7 +568,7 @@ static void smbios_build_type_1_fields(void)
-     }
+diff --git a/tests/data/smbios/type11_blob b/tests/data/smbios/type11_blob
+new file mode 100644
+index 0000000000000000000000000000000000000000..1d8fea4b0c6f040a13ba99c3fad762538b795614
+GIT binary patch
+literal 11
+Scmd;PW!S(N;u;*nzyJUX)&c?m
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index b2992bafa8..a116f88e1d 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2091,6 +2091,21 @@ static void test_acpi_pc_smbios_options(void)
+     free_test_data(&data);
  }
  
--uint8_t *smbios_get_table_legacy(MachineState *ms, size_t *length)
-+uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
++static void test_acpi_pc_smbios_blob(void)
++{
++    uint8_t req_type11[] = { 11 };
++    test_data data = {
++        .machine = MACHINE_PC,
++        .variant = ".pc_smbios_blob",
++        .required_struct_types = req_type11,
++        .required_struct_types_len = ARRAY_SIZE(req_type11),
++    };
++
++    test_smbios("-machine smbios-entry-point-type=32 "
++                "-smbios file=tests/data/smbios/type11_blob", &data);
++    free_test_data(&data);
++}
++
+ static void test_oem_fields(test_data *data)
  {
-     if (!smbios_legacy) {
-         *length = 0;
-@@ -581,7 +578,7 @@ uint8_t *smbios_get_table_legacy(MachineState *ms, size_t *length)
-     if (!smbios_immutable) {
-         smbios_build_type_0_fields();
-         smbios_build_type_1_fields();
--        smbios_validate_table(ms);
-+        smbios_validate_table(expected_t4_count);
-         smbios_immutable = true;
-     }
-     *length = smbios_entries_len;
-@@ -1112,10 +1109,9 @@ void smbios_get_tables(MachineState *ms,
-         smbios_build_type_2_table();
-         smbios_build_type_3_table();
- 
--        smbios_smp_sockets = ms->smp.sockets;
--        assert(smbios_smp_sockets >= 1);
-+        assert(ms->smp.sockets >= 1);
- 
--        for (i = 0; i < smbios_smp_sockets; i++) {
-+        for (i = 0; i < ms->smp.sockets; i++) {
-             smbios_build_type_4_table(ms, i);
+     int i;
+@@ -2244,6 +2259,8 @@ int main(int argc, char *argv[])
+ #endif
+             qtest_add_func("acpi/piix4/smbios-options",
+                            test_acpi_pc_smbios_options);
++            qtest_add_func("acpi/piix4/smbios-blob",
++                           test_acpi_pc_smbios_blob);
          }
- 
-@@ -1160,7 +1156,7 @@ void smbios_get_tables(MachineState *ms,
-         smbios_build_type_41_table(errp);
-         smbios_build_type_127_table();
- 
--        smbios_validate_table(ms);
-+        smbios_validate_table(ms->smp.sockets);
-         smbios_entry_point_setup();
-         smbios_immutable = true;
-     }
+         if (qtest_has_machine(MACHINE_Q35)) {
+             qtest_add_func("acpi/q35", test_acpi_q35_tcg);
 -- 
 2.39.3
 

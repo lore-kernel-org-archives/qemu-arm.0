@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2677706ejf;
-        Tue, 27 Feb 2024 05:45:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXMksFJc+OLndbiJhFQfrVbKnoFM36lgaGCOsRGtxtdh5YgSjskvQBN0F2e0y3JoZxB0Jw55YRS5VDWK5NZu/9SQeDYDPG8
-X-Google-Smtp-Source: AGHT+IEzgUq5YD1GlbAGb6dzPa0azmTUZX5jHP/ZKJqpxS9Fa2SE4kf7bkiPLo3+ACPXuS4AQ6gD
-X-Received: by 2002:a1f:dfc4:0:b0:4ca:f519:c25f with SMTP id w187-20020a1fdfc4000000b004caf519c25fmr6311503vkg.9.1709041539669;
-        Tue, 27 Feb 2024 05:45:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709041539; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2796988ejf;
+        Tue, 27 Feb 2024 08:58:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV0St5rqjsi7vyReTBmrjzqeWr92Oe0zbkTbDbpqWUgsRcWzXEcK5tM0r3l/hg96FTUbM3IyITbma54LirhWA5uCHrVdl1L
+X-Google-Smtp-Source: AGHT+IFWyJIZS/aRmBbzLzTCxlI0DwWzHdxmbz07oULZrzazWikcmoQdASiRFCOi9P+LnuJKHRTj
+X-Received: by 2002:a05:622a:2ca:b0:42e:9745:376d with SMTP id a10-20020a05622a02ca00b0042e9745376dmr3539445qtx.19.1709053080273;
+        Tue, 27 Feb 2024 08:58:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709053080; cv=none;
         d=google.com; s=arc-20160816;
-        b=QxCa0gCFtObsb8bfqgeqKcgYXswTaUw6CzWVHj7khSLbtw6s3XLoZwhCC+CtEOrUih
-         DB8GOo5TipV2rf9b8om5EzRsLXiEMehr4tXLL9btZ5h6yJI/Vo9OQ3OJ3eJpMp1ikM2W
-         aJZYyeoqc1Z9iQ92AsKuvE9KiMqHe08dQezhQ6wEsc1BurIWvZPEFQPm9qesiBE1Kq6y
-         /ZWn7LCQ193wEY3gg9VP5q2toiTsazo1xSw4lwwdBog5Kx2yOvvV7FTqiesEzqIcbIqF
-         gBmExYUcdCLBd3vZtHhOSR5MCleKMF0lAiNMI4bYwFH3bYO76bBhVXalu4H1EIhUI0kF
-         gSrA==
+        b=fUMLY2NOKLYjcmp04uhOI8KnHQ+ZyU+auiNko4rXMSylxRaOwowBF5W9KHyZ8yuPtG
+         5joqh7NmK7irQORBwRsWaq6fMRzRmle1ktt1QPZsD42PrpTtucmCZeC57wN2jjdZJ3l9
+         j3Z+sXYjxUFNRpWowtvmEyK/ZtuiD5OJMTQLpz9B/Pp6AST+bEZd1dvMfeGKtvq+Olv8
+         1i9LPz8W0Qg0J5Qjqi6B2LWI8Tt39mZ5AWHipKJz9eNIREf4WdDYca6mQrIEkS5LRF/X
+         QrttS6vSjZL8pT7VdOunNlaMxaGSrm6FJlKQ422qQ1V3Fr/bNlsqZ9b+9dZwHBYmArCZ
+         3THg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=OsZl158P/T9biXftKiftNkHBySQJ+oNG5Df9v15vnKA=;
-        fh=0KhIjKiU+O2JZf1VS9JyMBg+F2e0g/O/OSjhhnPRlnk=;
-        b=UmQNbjnUCEDIuDJJQ4pWNQsECtrIPL5faP8zLG+xBajQrt9Pi/gfaLOYHjy+Cz3s6T
-         W9FrZZhxXRxKA+VVUTPXPzJqqDNYx0WOvMV9hxeRnSvQYCSIMt1zV4fefA8c0s705gkk
-         eCWW1x8iGapoo+ef2bJWQYDqCq6s5cbPXUH9CQA6rApCUE/MvVXvfELZ7t1bUxYQD6WB
-         sZuILUn/6fBgvlJUk+MWRcD+eKF/XGVtOjiAX40T3VeGjM7SAWz9x7LOkTUHU8IxPCDk
-         fIXcIzqcnNRqOML6qUG9FYlZCQbmKw/23LrhDnOuYPYoNAfXKl94n9qCDb09fS51Nyi7
-         RPdg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=CQdBQ55XBD1zKpk7OKKORm1TNObn+aTFGDtbgCuAoGo=;
+        fh=Qj9XkJT2wrGpuyrK8Cb5JvU0zaa7DXMs4s0kNIoBId8=;
+        b=bJEa7ILB6y6QCclHs/uW5mn3th0TRy7/X47Bs6ywXGatzqlIIwA8HTEPbFRfYFokzI
+         yiVVSHGmKx6OMHRycGtOrUDqEHqhjmeK5qJehW+9usogSQP1uFHbuk8gwdLcHnbM7sEx
+         T6+CQq87HQJHVjweaaufhU2NgjPs9h+yDgUSxpbO4seNnsW9NHQSGmvFUw7Obh+KF/zv
+         9XmQcWDerTYfT8EJT28J2aTxNIb/3t1yfqRoSi1JsX6uTehbmF9ZplUabyui6LeY+wsl
+         EN8p2ZYEG7sZ3K1/iaqMPLTdn1h8AAYy6SvP9rQBFhzIwZ6DgngJpK4orxXB8Kga9LqI
+         NgSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aA7FlL38;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SjCItQPp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s193-20020a1ff4ca000000b004c9670ca7e6si801125vkh.110.2024.02.27.05.45.39
+        by mx.google.com with ESMTPS id k4-20020ac84784000000b0042bf171ffe8si7571931qtq.524.2024.02.27.08.58.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Feb 2024 05:45:39 -0800 (PST)
+        Tue, 27 Feb 2024 08:58:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aA7FlL38;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SjCItQPp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rexlE-00054e-NI; Tue, 27 Feb 2024 08:44:44 -0500
+	id 1rf0mB-0005LA-RJ; Tue, 27 Feb 2024 11:57:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rexlD-00051Z-3j
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 08:44:43 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rexlB-0005aP-EP
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 08:44:42 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5655c7dd3b1so6923543a12.0
- for <qemu-arm@nongnu.org>; Tue, 27 Feb 2024 05:44:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709041479; x=1709646279; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OsZl158P/T9biXftKiftNkHBySQJ+oNG5Df9v15vnKA=;
- b=aA7FlL380oajrmMCC2b/yj+oXulzWRWshavnvA0yRHTzX0VncqL+XtnEsLcQiqQ/LV
- VNGhVWdxiL3o+jalmjOWjvjW7AYTOY4EXwFP21nBTX+B0auBgtm3rBA8zfVRI7QAapZ7
- wuInxar9mhcMne4nPogdbVBu/ZlAfn8c8o0jJG4BzSeZBIPxvYuBPA7o5INsSNp+I3aE
- JLfUbnPQFgElUQ/Q03dxFAaEIQGm9VHtVha+fSatZRynBNMd4qAjSH2KvXgjXBqRudMF
- hePoW1ZVKQy4yycP4oFBb7avwpmYBWunf2SeCi8tx2TP9CinSFAZTDvX6EAQgSbi1ji1
- cuzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709041479; x=1709646279;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=OsZl158P/T9biXftKiftNkHBySQJ+oNG5Df9v15vnKA=;
- b=N2lQgp908oI6uzJjJpjAE+PQEAnztctJ/0kxX8b9eEGwAV498AHvRLnT07WT7fP/UK
- GCdC+xisbY2Pen3wNo0XmALtdkpQi4uBzQS2ZuLxxuFM1cfOSqqU7pPpOl3CG/6OQDmT
- vN+PwWayk+hL8pUmXFPMY0yRZ9Ciafr680OD299uWv02Lp7w7Mk3jc59ZEFPsgjWdI/N
- BGOTdvCzIEBnh9NVHcjj97DcXws2Lu8TJ4qeGfiFXQej3ETIgfGV/HejWRW67cEn/sFW
- bvmwjzYpn3H39MFMSd3DtA+klUXqm/QtHEYvaHz+D8y2dn3VihGrMrHcU29n6CQYn2Cg
- U6Rw==
-X-Gm-Message-State: AOJu0YwT1CbxSo2a89tn8WU8KybhRVzn0ty0ccRU62O/q5yg9HanNzWx
- DBTaDufUPs6SjXTB/dOHeJEG/gPYPr19fpD7JemCk2AuMos1VWU+/NhFQHZQsVIglLiMt5z22OY
- GV0XWt2gmjo74bqPhTqPEiFP83DjT3DpPHHmBlQ==
-X-Received: by 2002:a05:6402:4342:b0:566:25c1:9e51 with SMTP id
- n2-20020a056402434200b0056625c19e51mr3031610edc.7.1709041479430; Tue, 27 Feb
- 2024 05:44:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rf0m7-0005Iq-06
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 11:57:52 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rf0m5-00054y-DF
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 11:57:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709053068;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CQdBQ55XBD1zKpk7OKKORm1TNObn+aTFGDtbgCuAoGo=;
+ b=SjCItQPpiE4p7IknjqF/uRSWNS9XoiConCcQsmdVvexrZpo7Y4+RXgrTZHtLgMfqiF9lUM
+ jD0UA6KTVueH5dpgNRMqxlo5U5a2wmNn4fllKaEiC/rucJVJ+BWEasC06aMTQLJYaeCYHw
+ uxLm8n8gedzoHJyRrntn45RG8DDMO3Q=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-295-NgxUnkcwOT6kYJt9dzVygA-1; Tue,
+ 27 Feb 2024 11:57:43 -0500
+X-MC-Unique: NgxUnkcwOT6kYJt9dzVygA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 727773814E91;
+ Tue, 27 Feb 2024 16:57:43 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.193.27])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 63D902166B5E;
+ Tue, 27 Feb 2024 16:57:39 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
+ peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com
+Cc: alex.williamson@redhat.com, zhenzhong.duan@intel.com, jasowang@redhat.com,
+ pbonzini@redhat.com, berrange@redhat.com
+Subject: [PATCH v6 1/3] qdev: Add a granule_mode property
+Date: Tue, 27 Feb 2024 17:55:48 +0100
+Message-ID: <20240227165730.14099-2-eric.auger@redhat.com>
+In-Reply-To: <20240227165730.14099-1-eric.auger@redhat.com>
+References: <20240227165730.14099-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <CAKAF0m-DmGa-dRABswuSfWkQTh1Cqhie2APi=fGdFLEUA+YaWg@mail.gmail.com>
-In-Reply-To: <CAKAF0m-DmGa-dRABswuSfWkQTh1Cqhie2APi=fGdFLEUA+YaWg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Feb 2024 13:44:28 +0000
-Message-ID: <CAFEAcA8PJz7TVMmOTBF9DadzBz0HtpXx1X_Np2Pev4MQh5exFw@mail.gmail.com>
-Subject: Re: Undocumented behavior with CPSR_c mode
-To: Kirill Zhumarin <kirill.zhumarin@gmail.com>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,61 +119,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r8FjHaSVGLa7
+X-TUID: 5D8+0bxYkTXp
 
-On Tue, 27 Feb 2024 at 13:15, Kirill Zhumarin <kirill.zhumarin@gmail.com> wrote:
-> My environment:
-> Real hardware: Infineon PMB8876 + Infineon PMB8875 (ARM926EJ-S core)
-> QEMU: from master, arm926ej-s
->
-> I found that the M4 bit in CPSR_c is optional when setting CPU mode.
-> On real hardware, modes 00010 and 10010 are actually equal.
+Introduce a new enum type property allowing to set an
+IOMMU granule. Values are 4k, 8k, 16k, 64k and host.
+This latter indicates the vIOMMU granule will match
+the host page size.
 
-> And I get different results on qemu and real CPU:
->
-> --------------------------------
-> qemu
-> CPSR: 60000113
-> MODE: 10011
-> --------------------------------
-> pmb8876 or pmb8875
-> CPSR: 60000012
-> MODE: 10010
-> --------------------------------
->
-> QEMU just ignores setting invalid mode.
->
-> Of course, I understand, this is an invalid code - according to the
-> ARM documentation, "00010" mode does not exist.
+A subsequent patch will add such a property to the
+virtio-iommu device.
 
-Yes. The Arm Architecture Reference Manual says that
-setting the M field to a reserved value is UNPREDICTABLE.
-That means that the implementation is allowed to do (almost)
-anything. It happens that QEMU's implementation makes a different
-choice from what the hardware ARM926EJ-S does. QEMU does not
-attempt to follow the exact behaviour (either UNPREDICTABLE
-or IMPDEF) of individual CPU types.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
 
-> But this is not a synthetic code. I found it in an existing bootloader
-> for pmb8876, and it works on a real device.
+---
+v5 -> v6
+- remove #include "hw/virtio/virtio-iommu.h" (Zhenzhong)
 
-This code is broken; it just happens to do what the
-author intended on the specific hardware it was tested on.
+v4 -> v5
+- remove code that can be automatically generated
+  and add the new enum in qapi/virtio.json (Philippe).
+  Added Phild's SOB. low case needs to be used due to
+  the Jason generation.
 
-> That code looks like this:
-> ```
-> msr        cpsr_c,#0xc2 ; go to the IRQ mode
-> ldr        sp,[DAT_00082e28] ; set IRQ mode stack
-> ...
-> msr        cpsr_c,#0xc3 ; back to the Supervisor mode
-> ldr        sp,[DAT_00082e2c] ; set Supervisor mode stack
-> ```
->
-> Unfortunately, I do not have other ARM926EJ-S processors to test the
-> behavior on them.
-> Should QEMU repeat this undocumented behavior?
+v3 -> v4:
+- Add 8K
+---
+ qapi/virtio.json                    | 18 ++++++++++++++++++
+ include/hw/qdev-properties-system.h |  3 +++
+ hw/core/qdev-properties-system.c    | 14 ++++++++++++++
+ 3 files changed, 35 insertions(+)
 
-No, we don't follow device specifics to that level.
+diff --git a/qapi/virtio.json b/qapi/virtio.json
+index a79013fe89..95745fdfd7 100644
+--- a/qapi/virtio.json
++++ b/qapi/virtio.json
+@@ -957,3 +957,21 @@
+ 
+ { 'struct': 'DummyVirtioForceArrays',
+   'data': { 'unused-iothread-vq-mapping': ['IOThreadVirtQueueMapping'] } }
++
++##
++# @GranuleMode:
++#
++# @4k: granule page size of 4KiB
++#
++# @8k: granule page size of 8KiB
++#
++# @16k: granule page size of 16KiB
++#
++# @64k: granule page size of 64KiB
++#
++# @host: granule matches the host page size
++#
++# Since: 9.0
++##
++{ 'enum': 'GranuleMode',
++  'data': [ '4k', '8k', '16k', '64k', 'host' ] }
+diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
+index 06c359c190..626be87dd3 100644
+--- a/include/hw/qdev-properties-system.h
++++ b/include/hw/qdev-properties-system.h
+@@ -8,6 +8,7 @@ extern const PropertyInfo qdev_prop_macaddr;
+ extern const PropertyInfo qdev_prop_reserved_region;
+ extern const PropertyInfo qdev_prop_multifd_compression;
+ extern const PropertyInfo qdev_prop_mig_mode;
++extern const PropertyInfo qdev_prop_granule_mode;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+ extern const PropertyInfo qdev_prop_blockdev_on_error;
+ extern const PropertyInfo qdev_prop_bios_chs_trans;
+@@ -47,6 +48,8 @@ extern const PropertyInfo qdev_prop_iothread_vq_mapping_list;
+ #define DEFINE_PROP_MIG_MODE(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_mig_mode, \
+                        MigMode)
++#define DEFINE_PROP_GRANULE_MODE(_n, _s, _f, _d) \
++    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_granule_mode, GranuleMode)
+ #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
+                         LostTickPolicy)
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 1a396521d5..b45e90edb2 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -679,6 +679,20 @@ const PropertyInfo qdev_prop_mig_mode = {
+     .set_default_value = qdev_propinfo_set_default_value_enum,
+ };
+ 
++/* --- GranuleMode --- */
++
++QEMU_BUILD_BUG_ON(sizeof(GranuleMode) != sizeof(int));
++
++const PropertyInfo qdev_prop_granule_mode = {
++    .name = "GranuleMode",
++    .description = "granule_mode values, "
++                   "4k, 8k, 16k, 64k, host",
++    .enum_table = &GranuleMode_lookup,
++    .get = qdev_propinfo_get_enum,
++    .set = qdev_propinfo_set_enum,
++    .set_default_value = qdev_propinfo_set_default_value_enum,
++};
++
+ /* --- Reserved Region --- */
+ 
+ /*
+-- 
+2.41.0
 
-thanks
--- PMM

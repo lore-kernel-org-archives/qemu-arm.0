@@ -1,179 +1,163 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2555215ejf;
-        Tue, 27 Feb 2024 01:12:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXEsJGPA3Pgli0uB65CPIQzI7pP/6mapb9RX7QhXFPjNf1sIOkb4tRZw03b3IP+zVCxMstVsMmq2pf3FrTMg3p9ruKhVptj
-X-Google-Smtp-Source: AGHT+IH/pwCCFJSv2x1+NtOzT8wWRq8X7g1RRTowuBcWi9RiwMFKN+C1hx3YPpjh1NhDwTmzKOHF
-X-Received: by 2002:a05:620a:2105:b0:787:3aee:32dd with SMTP id l5-20020a05620a210500b007873aee32ddmr1665606qkl.57.1709025153246;
-        Tue, 27 Feb 2024 01:12:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709025153; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2578806ejf;
+        Tue, 27 Feb 2024 02:15:25 -0800 (PST)
+X-Received: by 2002:a17:903:41c4:b0:1dc:6b99:a547 with SMTP id u4-20020a17090341c400b001dc6b99a547mr11805976ple.47.1709028925413;
+        Tue, 27 Feb 2024 02:15:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709028925; cv=none;
         d=google.com; s=arc-20160816;
-        b=O0hqoJ5YwLDHU/uIap+s4DJ9PftvE9tDk6gTJUEwX9syc1jGWQzTfpf5R1BisFYTLX
-         go/8mcqW+8u2hKV7Z05hyxC0+CTHjLs4wdYu5dm95GHWjuDETjJTu3lR3Eq79IVW0zq1
-         5SOBH4TCu4hExCSBHDY9UFSaw9xwkFopT0tU/lPXrEvSJtDlkXVMfA1INX9yT2RuSl+K
-         RBB30lJyU/CIX/nglypMqbSlBkAgrPIqrDNYKlOnt/9XhmupDSZQgfN9Y52mSuzCkKF2
-         UJ0gn8/9rP1fGlwzLVQBMIBkA9bZKI37BKuUBPlyM2HvXWkCf9hYwZQwvQjwKK2+TZtM
-         V2Rw==
+        b=KOAPRBCaLi+Sx87lHdypxGpKSdJbVGPSAeoiANyKouYDBX3xkAEA/CIKtAR3Pft/o4
+         4xSXIPFJhbyagUmDKgbioLw30B9wX6dXXdYghpxmM19D+iH0l9WbvifJF8kRUA4AiQqS
+         hE7UTlJStMFgTh95yqaZ5XckBmGMPo2zeqO7UlhAbjzHHJlLQtDsYX0QPQWIPvkuqLpn
+         YqTgAOQNT20sFZSHRktaVjSCrdxAFyhUsubgRELQDtrv/iVvv3zSkNNnWSyPIf54mEcb
+         KmCGWBJrPvaEth3dvYk1v8MnxNFQwQQbvuZTm/+6bcEIL0HD85B0JgwlnwuvBgOsjOQ6
+         UPsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=v+RdFPWoEi4G0dpITK5HWGkYzQ6cUrxSrSkxlO/IF04=;
-        fh=eKD2jaVNvffZiH/aRfEdAEdKtGl/Codgzrrgvjsy+t8=;
-        b=qi3g+/gZwY4BN6S1d7TTVbtuxfCHe34sxZjQrj+FnvnEx3Qg2yEi9lCadEJHthvT+O
-         Ok5HCws+sSF4D/gHE2DT9acL8ILfgd+8smTVO2UIMv6DecRW+Y5C17hFjC4TDq1SvL+N
-         d8EP5DpyulCYB2oH7cJ7SzM16V1mebta/qGZjMKhzHynU9T4Z2cvMCoLIB0vRy8m/W+m
-         SqK8WSXWbqmrKLLxiUGkV0aNxjb7i+mbDpy/aD1B1YqBLt4WePSRnmdPcWxli4zed7fi
-         imoUohV1JQlfKhD4ImnV1GfnFWWNP8wlZ32uBg1b3RQF1hVqE5Odo41kXEs3GLhnXW8Q
-         MAAA==;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Fx9hfe20Iig0ZK24L+ZonhivY18ZcsqsCbKd+RliBUI=;
+        fh=PL8OQMSxlLqhqev64mxlSU/Mp63SKv4MY+SASJSiwLg=;
+        b=vCfClKTjYtSLtW+ISq8at7HgWFiGMaPMWbVEqDWSTmpRSQ1G/3eUV91jW/umWlgmZr
+         22sq4Sn8bI+0roFTP+7hDjkTpKgB5wyCrIwRP/JIwzcNPzDviMYbaGuGx4G9OOL4Rriu
+         fI2dyTuXSpjQnCzQMyPOqOR/dzSDf3DwbVXnvXyaFfHnNoc03LTDczxFKg5Hy3aLvAbf
+         qJwc6EXDsCYF31Uk6CMm7ZwA3ILARFYhYDJho+VDE3tbp2mKSlAFkA7XslMt/lG5yQlI
+         w7c/eH2Cay9J2XJ4qUNOFa92e/w4y2/ksLGBiVsqM+f5k/ErjzPJVM5WPkZ2pjL7mE03
+         DU7Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OGrHI5Sr;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id j13-20020a05620a146d00b00787a63f79d5si7007646qkl.657.2024.02.27.01.12.33
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=dh06M+QW;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d8-20020a170902654800b001dc48458e5esor4178027pln.1.2024.02.27.02.15.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Feb 2024 01:12:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 27 Feb 2024 02:15:25 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OGrHI5Sr;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1709025152;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=v+RdFPWoEi4G0dpITK5HWGkYzQ6cUrxSrSkxlO/IF04=;
-	b=OGrHI5Srox1GXWOWWws0vClww2irdcDRP5EXMH2BBozf2lui7Zblry+rGPqQ6+ageRe0SL
-	t86beuXcjOXh+bZQDaByAO/mDTf9gfC5fBnKDurzdegSTwtdRAMyFo1elJl7OAKoEojOcY
-	pOGrw6fBSc9jZww5qSqkJZrwc2o4YuA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-627-TdEwwMHjOVWUMPyxAOmaHA-1; Tue, 27 Feb 2024 04:12:28 -0500
-X-MC-Unique: TdEwwMHjOVWUMPyxAOmaHA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 567DA106D1AC;
-	Tue, 27 Feb 2024 09:12:27 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.56])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0941BC185C0;
-	Tue, 27 Feb 2024 09:12:22 +0000 (UTC)
-Date: Tue, 27 Feb 2024 09:12:20 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
-Message-ID: <Zd2ndJghXbmMHzBn@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-5-zhao1.liu@linux.intel.com>
- <20240226153947.00006fd6@Huawei.com>
- <Zd2pWVH4/eo3HM8j@intel.com>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=dh06M+QW;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1709028925; x=1709633725; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Fx9hfe20Iig0ZK24L+ZonhivY18ZcsqsCbKd+RliBUI=;
+        b=dh06M+QWTqRNQTs4mZrdW9RZoh5CCEhf/9c6DQvpEmsLs0+PZpjvYX+VpWzq8L9JLX
+         py0LPFObBLW4dJbODMK0QGTh+cWiz033seudnT1PDlq9r6LK7vHr7x81zW1D9czHvWJD
+         vJkZkjkdLo0XG4su8TyrlsKBep0UWL2pTp48uLd5jdb/g2sM1swdvbmZVEgoxjw9XT0Q
+         BimQbJEwKvrzx+obBLi20ikInF8A8b+uKl+bySV5yLFs5q5HK5JmhnOrZMil3Ki5zmjB
+         SIOKfNKjkt8jaUTMqUH1i/MdUJGI1tH5K93VPKxACs5F8xUyeZJtWy4nEtzGbsb5xcF6
+         smAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709028925; x=1709633725;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Fx9hfe20Iig0ZK24L+ZonhivY18ZcsqsCbKd+RliBUI=;
+        b=QaIbKsqd0IX08aZw7YWQAzvToASHE1pIs8jG48EQGvcOLZqRaN8amTCG9/OciJZmJD
+         C5PLPasS38KDrPL6fQc7h4xpaL2Tv4Dmodyxel/JQFw9PK100FXmOs/dMbrLez4/8j+c
+         y5NYxX0bbPV5vMtZG/LCa8+D4l4Nh5nHurzWQSUG7pLA2XjkNcWXazgfvsjwY+abVy7D
+         TfNGSnwhKPQxvsHOCyrtZgqUW//c5cNClfGA34d8nF5BoxxdJPIanyosDgeNhMbdqS6E
+         bLuRXaWf+ufnxdVZ8fZ5RnNMDz90TjyJKH40xPOY+d6krhjOv39NGdPYEh+YS/P6pyfR
+         uXHg==
+X-Gm-Message-State: AOJu0Yw/WV7Qd61cPm1/nhNredAuRphcoUs077wvTkUML2hrK5XxLBTD
+	dX3RqUFR00Bwac6nksyMs4cl79aK+vNuowS2Uz4RfiqLuziiqJ/EmAz/zdZZzANo5EdOUKvKwrz
+	i
+X-Google-Smtp-Source: AGHT+IGGyYlErA9kk8nMdcFcEbGt4QH298QVBJTxJGbBkIKqaaIPTH8dfJ9RDIhR8DJM5hC3k8xACg==
+X-Received: by 2002:a17:902:d587:b0:1dc:ae92:7e9 with SMTP id k7-20020a170902d58700b001dcae9207e9mr4236692plh.62.1709028924773;
+        Tue, 27 Feb 2024 02:15:24 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.203.206] ([157.82.203.206])
+        by smtp.gmail.com with ESMTPSA id kn15-20020a170903078f00b001dbb0348733sm1193150plb.67.2024.02.27.02.15.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 Feb 2024 02:15:24 -0800 (PST)
+Message-ID: <485e6093-54e9-4ce4-ae01-c44525b202ef@daynix.com>
+Date: Tue, 27 Feb 2024 19:15:15 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <Zd2pWVH4/eo3HM8j@intel.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-X-TUID: MM4KPFJU7UmR
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 21/27] plugins: add an API to read registers
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-riscv@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Alexandre Iooss <erdnaxe@crans.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
+ <jsnow@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-s390x@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Thomas Huth <thuth@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Brian Cain <bcain@quicinc.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bin Meng <bin.meng@windriver.com>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20240226165646.425600-1-alex.bennee@linaro.org>
+ <20240226165646.425600-22-alex.bennee@linaro.org>
+ <b7aac53e-cde5-4596-b0fc-d39f52d4ceb8@daynix.com>
+ <878r36dxsv.fsf@draig.linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <878r36dxsv.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: uEPVt1e4EOfo
 
-On Tue, Feb 27, 2024 at 05:20:25PM +0800, Zhao Liu wrote:
-> Hi Jonathan,
+On 2024/02/27 19:08, Alex Bennée wrote:
+> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 > 
-> > Hi Zhao Liu
-> > 
-> > I like the scheme.  Strikes a good balance between complexity of description
-> > and systems that actually exist. Sure there are systems with more cache
-> > levels etc but they are rare and support can be easily added later
-> > if people want to model them.
+>> On 2024/02/27 1:56, Alex Bennée wrote:
+>>> We can only request a list of registers once the vCPU has been
+>>> initialised so the user needs to use either call the get function on
+>>> vCPU initialisation or during the translation phase.
+>>> We don't expose the reg number to the plugin instead hiding it
+>>> behind
+>>> an opaque handle. For now this is just the gdb_regnum encapsulated in
+>>> an anonymous GPOINTER but in future as we add more state for plugins
+>>> to track we can expand it.
+>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>
+>> Hi,
+>>
+>> Mostly looks good. I have a few trivial comments so please have a look
+>> at them.
 > 
-> Thanks for your support!
+> Done
 > 
-> [snip]
+> <snip>
+>>> +        g_array_append_val(find_data, desc);
+>>> +    }
+>>> +
+>>> +    return find_data;
+>>> +}
+>>> +
+>>> +GArray *qemu_plugin_get_registers(void)
+>>> +{
+>>> +    g_assert(current_cpu);
+>>> +
+>>> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
+>>> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
+>>
+>> Why do you need regs->len check?
 > 
-> > > +static int smp_cache_string_to_topology(MachineState *ms,
-> > 
-> > Not a good name for a function that does rather more than that.
+> Not all guests expose register to gdb so we need to catch that:
 > 
-> What about "smp_cache_get_valid_topology()"?
-> 
-> > 
-> > > +                                        char *topo_str,
-> > > +                                        CPUTopoLevel *topo,
-> > > +                                        Error **errp)
-> > > +{
-> > > +    *topo = string_to_cpu_topo(topo_str);
-> > > +
-> > > +    if (*topo == CPU_TOPO_LEVEL_MAX || *topo == CPU_TOPO_LEVEL_INVALID) {
-> > > +        error_setg(errp, "Invalid cache topology level: %s. The cache "
-> > > +                   "topology should match the CPU topology level", topo_str);
-> > > +        return -1;
-> > > +    }
-> > > +
-> > > +    if (!machine_check_topo_support(ms, *topo)) {
-> > > +        error_setg(errp, "Invalid cache topology level: %s. The topology "
-> > > +                   "level is not supported by this machine", topo_str);
-> > > +        return -1;
-> > > +    }
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +static void machine_parse_smp_cache_config(MachineState *ms,
-> > > +                                           const SMPConfiguration *config,
-> > > +                                           Error **errp)
-> > > +{
-> > > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> > > +
-> > > +    if (config->l1d_cache) {
-> > > +        if (!mc->smp_props.l1_separated_cache_supported) {
-> > > +            error_setg(errp, "L1 D-cache topology not "
-> > > +                       "supported by this machine");
-> > > +            return;
-> > > +        }
-> > > +
-> > > +        if (smp_cache_string_to_topology(ms, config->l1d_cache,
-> > > +            &ms->smp_cache.l1d, errp)) {
-> > 
-> > Indent is to wrong opening bracket.
-> > Same for other cases.
-> 
-> Could you please educate me about the correct style here?
-> I'm unsure if it should be indented by 4 spaces.
-
-It needs to look like this:
-
-        if (smp_cache_string_to_topology(ms, config->l1d_cache,
-                                         &ms->smp_cache.l1d, errp)) {
-
-so func parameters are aligned to the function calls' opening bracket,
-not the 'if' statement's opening bracket.
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+>    TEST    catch-syscalls-with-libinsn.so on alpha
+> **
+> ERROR:../../plugins/api.c:459:qemu_plugin_get_registers: assertion failed: (regs->len)
+> Aborted
+Certainly regs->len can be 0, but why do you need to return NULL in that 
+case? Can't qemu_plugin_get_registers() return an empty array just as 
+gdb_get_register_list() does?

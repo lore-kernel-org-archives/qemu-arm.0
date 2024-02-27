@@ -1,119 +1,108 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2581563ejf;
-        Tue, 27 Feb 2024 02:22:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXzufhnWecARtxleLQJKuQG5IxjN+YdJQPJt3W1MMEo17a3sWIU+n0mU18Qa1Vc2nJZ4LQh/wfI6z8LK+oEHhLj/cWbF5L5
-X-Google-Smtp-Source: AGHT+IEJ7vm8S146qvpfcqH3ZrOzug1AAuXMavjXIHtxK3D+vQ3PCQBaTU0imdBKxUOS28+vyIXX
-X-Received: by 2002:a05:6214:27c6:b0:68f:ed21:d91f with SMTP id ge6-20020a05621427c600b0068fed21d91fmr1829798qvb.35.1709029321155;
-        Tue, 27 Feb 2024 02:22:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709029321; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DUua/+3rjzhPrxgfleNwosrl6YK3CekAYX7iKpwvsLfheErcSRYs0j9UjNI314MWex
-         1LPbA7P176IzQqI12BV1y39xmh3hupiOQXvmAtQdCLDUw0h9wMkewcLBDu0Lcb5vXMGA
-         Cd7asLdKmRUunS8NXHHQOTVV2cUvZqQb1QyNX7XdRTLSf/BU0jwtLE0jyd7Cczu/xDT4
-         Iptr4f78MF8oDasiR0j760R5jRp233VWn3To60zR9PbiU9fddQSKZuaVpQquBBPda/at
-         EwnwoFPtpn+p532WRUqTla4nrbAGGtLuVSv7oDWb4wwkKjy79hSh5QHmxSVjOS7VXpxm
-         5oCg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=H+xE3Gx6S4gl2hYXxwRwZzH9lgbLUHuy42cixxPZEg4=;
-        fh=qPrRd1C5QtaWXQ+dPGvyjMJslmYMb40+RDVeGLW6Dl4=;
-        b=NkSBZPHZWKZVpNgOUm6KzgGyNJ7pasT5Tcy8fq03iz6rb98BJ788Bvkx4Q1xqxKVbA
-         M+s6hx4RToH74ygPFOCBjRtqkRKpzz9DzD7fg0mfz7adGmiCu4vq0LPUiO7ZAi18GBGF
-         P8lZfP9DU9tH0Zh5ztEAH7QQyMQianIthEZfhU3Ixx48o/8fO3CU1AefsTHhqGT8tmZT
-         tqn9X2w39961oIg7tx0yA9zSRZEOMUBeTGzLW21ZfSjaAXH0t5+ipphvFwZX83bV90sy
-         2ulyxTvySL6uTuFa2W5fSTPq2T1Vz5th9aAF51AWlYHJLuHnfVXs7WffcBsFdHvMjBTN
-         sObg==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sc0V3Ph9;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@linux.intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.9])
-        by mx.google.com with ESMTPS id jp9-20020ad45f89000000b0068f555f32b8si7263390qvb.491.2024.02.27.02.22.00
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2024 02:22:01 -0800 (PST)
-Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.198.163.9;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Sc0V3Ph9;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1709029321; x=1740565321;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=F6+NTEf+OvKxItgO+SSdOalGV2SCEFkd9K7C26e6mKo=;
-  b=Sc0V3Ph93BI2O3lVQDvVtP/Q0pLbDY/9OWrpSB8pTxQanUhPSoid4TtG
-   rGNYasHrwV26dYyK9OTnOQolbQ1W1KJCFqjF23Hb+xWz52JJq0NC1Xj8B
-   feKjUIw9j19ZsL3Ab7FISLQyhZh8bwXafqdai7yvS/SvKXPX2BuUM4hhI
-   SGhFWGoittEf998/kNnCC9lbORj3AVBAkYgvK+9uN9uBgrMRlPbQCin+i
-   P+cPUIYBSbdNozLWVGA492BCLGddbEaVTXkVkxYnjOve4dcb95wACh6yW
-   OYnWy443nHKuy7DYtqO7DNfy+1bZ+mn79S+rjGRcjYA9U53E20Hfjbu01
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="14071182"
-X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="14071182"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2024 02:21:59 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="11587755"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa003.fm.intel.com with ESMTP; 27 Feb 2024 02:21:53 -0800
-Date: Tue, 27 Feb 2024 18:35:36 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
-Message-ID: <Zd26+BpXQID95lqm@intel.com>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-5-zhao1.liu@linux.intel.com>
- <20240226153947.00006fd6@Huawei.com>
- <Zd2pWVH4/eo3HM8j@intel.com>
- <Zd2ndJghXbmMHzBn@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id bv15-20020a0560001f0f00b0033d47c6073esm11024174wrb.12.2024.02.27.02.29.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Feb 2024 02:29:04 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 4E8A15F754;
+	Tue, 27 Feb 2024 10:29:04 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org,  Nicholas Piggin <npiggin@gmail.com>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Peter
+ Maydell <peter.maydell@linaro.org>,  qemu-riscv@nongnu.org,  Michael
+ Rolnik <mrolnik@gmail.com>,  Song Gao <gaosong@loongson.cn>,  Alexandre
+ Iooss <erdnaxe@crans.org>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  David Hildenbrand <david@redhat.com>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  John Snow <jsnow@redhat.com>,  Eduardo
+ Habkost <eduardo@habkost.net>,  Mahmoud Mandour <ma.mandourr@gmail.com>,
+  qemu-arm@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Cleber Rosa <crosa@redhat.com>,
+  qemu-ppc@nongnu.org,  Richard Henderson <richard.henderson@linaro.org>,
+  qemu-s390x@nongnu.org,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Thomas Huth <thuth@redhat.com>,  Yoshinori
+ Sato <ysato@users.sourceforge.jp>,  Yanan Wang <wangyanan55@huawei.com>,
+  Brian Cain <bcain@quicinc.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,
+  Weiwei Li <liwei1518@gmail.com>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  Bin Meng <bin.meng@windriver.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  Palmer Dabbelt <palmer@dabbelt.com>,  Daniel
+ Henrique Barboza <danielhb413@gmail.com>,  Alistair Francis
+ <alistair.francis@wdc.com>
+Subject: Re: [PATCH v3 21/27] plugins: add an API to read registers
+In-Reply-To: <485e6093-54e9-4ce4-ae01-c44525b202ef@daynix.com> (Akihiko
+	Odaki's message of "Tue, 27 Feb 2024 19:15:15 +0900")
+References: <20240226165646.425600-1-alex.bennee@linaro.org>
+	<20240226165646.425600-22-alex.bennee@linaro.org>
+	<b7aac53e-cde5-4596-b0fc-d39f52d4ceb8@daynix.com>
+	<878r36dxsv.fsf@draig.linaro.org>
+	<485e6093-54e9-4ce4-ae01-c44525b202ef@daynix.com>
+User-Agent: mu4e 1.12.0; emacs 29.1
+Date: Tue, 27 Feb 2024 10:29:04 +0000
+Message-ID: <8734tedwun.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zd2ndJghXbmMHzBn@redhat.com>
-X-TUID: thmdWcGbUdgM
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9Iyvn25RsI6T
 
-> > > > +        if (smp_cache_string_to_topology(ms, config->l1d_cache,
-> > > > +            &ms->smp_cache.l1d, errp)) {
-> > > 
-> > > Indent is to wrong opening bracket.
-> > > Same for other cases.
-> > 
-> > Could you please educate me about the correct style here?
-> > I'm unsure if it should be indented by 4 spaces.
-> 
-> It needs to look like this:
-> 
->         if (smp_cache_string_to_topology(ms, config->l1d_cache,
->                                          &ms->smp_cache.l1d, errp)) {
-> 
-> so func parameters are aligned to the function calls' opening bracket,
-> not the 'if' statement's opening bracket.
->
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-Thanks for your explaination!
+> On 2024/02/27 19:08, Alex Benn=C3=A9e wrote:
+>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+>>=20
+>>> On 2024/02/27 1:56, Alex Benn=C3=A9e wrote:
+>>>> We can only request a list of registers once the vCPU has been
+>>>> initialised so the user needs to use either call the get function on
+>>>> vCPU initialisation or during the translation phase.
+>>>> We don't expose the reg number to the plugin instead hiding it
+>>>> behind
+>>>> an opaque handle. For now this is just the gdb_regnum encapsulated in
+>>>> an anonymous GPOINTER but in future as we add more state for plugins
+>>>> to track we can expand it.
+>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
+>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
+>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>
+>>> Hi,
+>>>
+>>> Mostly looks good. I have a few trivial comments so please have a look
+>>> at them.
+>> Done
+>> <snip>
+>>>> +        g_array_append_val(find_data, desc);
+>>>> +    }
+>>>> +
+>>>> +    return find_data;
+>>>> +}
+>>>> +
+>>>> +GArray *qemu_plugin_get_registers(void)
+>>>> +{
+>>>> +    g_assert(current_cpu);
+>>>> +
+>>>> +    g_autoptr(GArray) regs =3D gdb_get_register_list(current_cpu);
+>>>> +    return regs->len ? create_register_handles(current_cpu, regs) : N=
+ULL;
+>>>
+>>> Why do you need regs->len check?
+>> Not all guests expose register to gdb so we need to catch that:
+>>    TEST    catch-syscalls-with-libinsn.so on alpha
+>> **
+>> ERROR:../../plugins/api.c:459:qemu_plugin_get_registers: assertion faile=
+d: (regs->len)
+>> Aborted
+> Certainly regs->len can be 0, but why do you need to return NULL in
+> that case? Can't qemu_plugin_get_registers() return an empty array
+> just as gdb_get_register_list() does?
 
-Regards,
-Zhao
+That seems more troublesome to handle the other end. NULL is nothing is
+a fairly common pattern here which makes short-circuiting the array
+iteration simple.
+
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

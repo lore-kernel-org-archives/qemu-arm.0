@@ -1,330 +1,389 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2523112ejf;
-        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
-X-Received: by 2002:a17:902:6b02:b0:1d9:7ab0:5e20 with SMTP id o2-20020a1709026b0200b001d97ab05e20mr8939998plk.69.1709020056438;
-        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709020056; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2542028ejf;
+        Tue, 27 Feb 2024 00:37:37 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUh14ALAxUFqFWp8aCBCeAzlV0uD6spdnWxbaBRiLhdqqgTQwxnmHXlAbo06IJcv6WNLG0ScAeRPw2hDJJqzRt2qNHkDddy
+X-Google-Smtp-Source: AGHT+IEY44K4/kAIiUtNLYr8vJCuPpZ5CytJu3X68Nm5hjvzc3EFq8w7i7u+w7gIRlFwap+WbxaT
+X-Received: by 2002:a1f:c845:0:b0:4c0:25db:3618 with SMTP id y66-20020a1fc845000000b004c025db3618mr6221979vkf.0.1709023057396;
+        Tue, 27 Feb 2024 00:37:37 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709023057; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kpIVfMaPP73gF1BiIyYocPt1+cG5LWqSFC4VXClV3ZQ+v7tg0P70KOlxZzeuAzosdr
-         godIVAzlrTGmWm55sbzdjoVCbiwJufatgVkcp19siOgrKOnJwMB1a0LAVz79hT38QhV2
-         VwzfpNlFvhwtzhmmc8niexC8ikIHpQ7fdy3hhNfvUHqcQa2/z5eVXq7mbdxUkcpZKaT5
-         rTai78b5IVRHta8xeuuoX4rj8cKnaN4aCXDarFkBBeieI6A5aUeVPSTar4Ez3L+N1MPb
-         LxRbx1Xh+pVwze0Oe1+A1yg63WNhXpppV/IS0E1PPrFN1+OB1UhZe6mlRwp9nk5ydC95
-         YeIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
-        fh=GPqR4IZ4tpxxMztuFlE5yid8HGx5q38zTNywteBGTK0=;
-        b=S9SxU2U9QZnJhwaG2yZNfl6fEPydmUOQiIvZCbZaODWgixfH274YKeqms0EXHaA6Qw
-         7excQWUjFEO1KLOX8V40/QsACg81DdeIYUdQ4fD47oILmZ+eFLR1Os+Z2P47PsMb3LrH
-         z9sgbDGvZAH0f6VlkzO88XrSdGjv+uJOLqbYfBoepL1UREvyV04PFFPYicZhJLbUhI2y
-         B106aI6lQmZLmzrxlB6h9UwMGQv2lZdtQVrc4CIFFze4DzDJGCkKqAQurOx7YOtKdanL
-         QEGkvms0YK7+nLLdebDU+wz1F9aU80OyiziaU3ZbCpXyMMlGujw7D8jTJ38uhKa6eCFs
-         Cuyg==;
+        b=aM2Iy/ihV+9yocT1HVm4GdLplE5okgT4L0o99BtQTs44rJ92wHtfWYd505X/bOWMO+
+         fD2kdUuFtkCxOkFgavxGOLUAtJ87nucVHv3I+Oz90gmWIZDBMC06wEMk2LdK46oPtaIj
+         DjwSfj8bz+INn7+c06mQOtdLtOCvHAAjX9hjjq+gv0bBxATNjGf6C12HQnjgl4VyN7Ym
+         gXMjO69VdWkqcRjrqmP4Vt6Lq7BLX0w7bRVJeQWCW68w8uK17Y3J2n9sKSgqcxeb9vbI
+         5QszZkL6W06KR1WTEl+1a6lZwlWv2wXvgHDKqDyhpZN+mFqnJaHeDHYXfupyDVjVmLgr
+         0RZw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=XVy1l7pi/+qm0y9OkUzhIhTGiPS3UldBqIIzrzlK6S0=;
+        fh=//zckbncL3ZhW3xWiNhTtCS03WRUJH+nZC60UJKs+F8=;
+        b=bOWBJZ9fvI+6XN+PNrcZ7jM7YRMd4qg+PJis7nIoOeqN/oa+m/PkUhrl2fmgbwJA2y
+         rYPZ5P7nvpDtPDaeV1Gcy/V+B/rHe0BA3dQAqyW+XYJKYofT6ZbIysM79K/HrSIRaj8u
+         2C6sZu1V1OdoIsEeVdpi3qdp931Tp3JJVjDJjzLWsxlYOWYrk0KUfl3EmNG3r3vPks2m
+         W70LxbzoUVm1oAVS9xmhHNaf68YGCyYzd81BotmkUtp34eNBGfVG7L26ttyEQI5Vs+5v
+         eK+MIgSvLVIbmHJNnpwsAX24QW6imTBiRUmgYfbD3PdZbBzHX1WgA+Mp13J5yBxcINl1
+         N56w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=schmqYi8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e7-20020a170902784700b001dc3ef7aa26sor4067623pln.10.2024.02.26.23.47.36
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=d4hHweTa;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h7-20020ac87447000000b0042e78d98b0dsi6035951qtr.220.2024.02.27.00.37.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 26 Feb 2024 23:47:36 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 Feb 2024 00:37:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=schmqYi8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1709020055; x=1709624855; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
-        b=schmqYi8kqUlz0E5Uo8PuovwUKl3OCgWaMvE4XJwsOksmViTIV0Gjni5AmViExEVww
-         Gv/vJbbEoLMX061KmMyL30wxV0c8xQTITbQIMg6foAYigi4euOr8K9BgTHLuo8GdsNHb
-         Xb7BOeMj01LVOVUhxhEQpIyDIC+zJu4VekzsRfN6/SWoDKMogYhI9SBJCP9VEoXICQRA
-         hJcxjPIzon5e+Z/6EQGpQCGWDdSmSV1ZjfOvEk/7njdUr/itX0p6oxpbeaglk2Sc9jPr
-         3AmlGUk0RxFPDLxjHgCwRvXV3f22qa2y/1UuPqRL/3NZuxK9uZCUAsfJLPHPBWKrxWNj
-         V6DA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709020055; x=1709624855;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5Va+9CpvBWB277k7Vk/5Lq5SeV6/w0TKZhR5/P0tOS8=;
-        b=nVwQMP3ToOk+V2pS+ULlXTImleZlJskRTqLNm6v0xdK7CMT/052DVvc4Q/bQ2ZZSTF
-         9XOgFIzAqWiPSE0OBt8XApphhSHn11Ee/FJLlGwRO4gq882ausNh0gVTBHQMUVJpdagJ
-         FPyZTc2ZvnryFlP4J51zPvarIaFMUli67ecMpXUTteaH+wCbnY0xld3AInS4TSpeK8XS
-         lEDqa8t5yVKBVmfGtDSpyYUhVzyvAz8Rqw59Y5YFS4Uwz6yjaNlBjR17SGQQZX/3/bOC
-         t5PITw3K6PaYETbtoe59a4lrs6NuAyuAGO1pYsMXZRMEneqR4Dzhgorzmkntm+97Mms2
-         OIOA==
-X-Gm-Message-State: AOJu0YyzEGunGjcKQErLqpujGXKTExMwC/BfSbPYBXjrnrMBkIZzWs6q
-	FpPfttpZjJHD2u1quEbUgTeqh5RZVFFVr0KzbPVyreQNr/vW+cCmyogUt370KfqtjVT6xtunktD
-	S
-X-Google-Smtp-Source: AGHT+IHa5GPNZQyrh4lPjtiCaHfY4JaLVAhx3qAa4gyn6vwaRY7nzPSNlOoJIGtj3YT9SHvapxuPpQ==
-X-Received: by 2002:a17:903:244d:b0:1dc:93b:8981 with SMTP id l13-20020a170903244d00b001dc093b8981mr14131905pls.14.1709020055516;
-        Mon, 26 Feb 2024 23:47:35 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id l21-20020a170903005500b001db82fdc89asm880947pla.305.2024.02.26.23.47.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Feb 2024 23:47:35 -0800 (PST)
-Message-ID: <b7aac53e-cde5-4596-b0fc-d39f52d4ceb8@daynix.com>
-Date: Tue, 27 Feb 2024 16:47:26 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 21/27] plugins: add an API to read registers
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Nicholas Piggin <npiggin@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-riscv@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Alexandre Iooss <erdnaxe@crans.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-s390x@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Thomas Huth <thuth@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Yanan Wang <wangyanan55@huawei.com>, Brian Cain <bcain@quicinc.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Bin Meng <bin.meng@windriver.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20240226165646.425600-1-alex.bennee@linaro.org>
- <20240226165646.425600-22-alex.bennee@linaro.org>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=d4hHweTa;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1resxx-0004am-9p; Tue, 27 Feb 2024 03:37:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1resxu-0004a5-NY; Tue, 27 Feb 2024 03:37:31 -0500
+Received: from mail-mw2nam12on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:200a::601]
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1resxr-0006vV-KP; Tue, 27 Feb 2024 03:37:30 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CLMD+idzaL+fOlkZ9xGCvF40zNJtaW7ba91E6k8HvWFptrwmKMny2LYJvGCy3EUdHE+u4PbjxnPwquERe2qHdvIpLEKxbAk1hEE1KUXS7lfEU2CVJjucOZ+UibB6yRtAeZKsGlnmsuUEuWq8WTLlSfO/+Ac7B4TuLHYj7C5wzYBXLkChJHTqLVsOlmzNf86Kq7OcgDC9pNF4HTZSUdj7tPX4APaSdADtYIlt1IiBaZmTvkqyKOf3fj845tI07RgeSlxNnXGjzDdoFGXLYLHdKxH/UK2m6dt0rTOeKgEr6wb6Ls7kBO24+QjKkUuEIzn+KFeM7IGg7rXlHe9rMXFQEw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XVy1l7pi/+qm0y9OkUzhIhTGiPS3UldBqIIzrzlK6S0=;
+ b=knl7Bh1uroILJxZX2t+6dmYF5JirZc1OH6zI7XKlG9qS87WGtguMoxJBJSlWoi3ptAFKyZVYgKBbsunVd59uny9/IsVphglLwB4R32rxJwSOZ4Gtr1TCKgHWopCqlcYxiMdtQ4jugl9SdiAqKxnsx/xp9NpCPxyY72xJP/Br+82RIasDWrrQRtWkYD6/8haYqwH59U2QXBo7Jo2/ErfowOHJLwh0Exv3gi9z52ppg4fA8qqX7GshQ7g7JDx3/9rgsYOn6suida3hUQArI0gYbAkCjnUsfgXwzQMSvHMy3uILE9ujG6KXRqyt76hFtZW7txzc9HPI3rARRHyRNT9UCw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XVy1l7pi/+qm0y9OkUzhIhTGiPS3UldBqIIzrzlK6S0=;
+ b=d4hHweTasQW6jxqiinMVjxfUsMhdPyhcaW9iWpqjV1Mh3WPSTA34g/F41wB/Yqp0OXq0GdbKbRkkp0RQykmpepiCrgLR+1bjeG3/prAEpFDPuWgCnXe+tOdXOTrPvkXWEZR8xkFkxI5QOSrGdh/Wil1sBL0YR4VtsFSypm2ngElNpW5RN7Kqcgw4SIFmpX60FD2Pw9Zo48pV6sL8HFmQiu4h/5kE7e82xh7nZed9BT2t+bIAANLRHnvS1UFZGwHPmTimTEH4P1wEgk3AM38bHFrVgyo98O1j04e1IZf9shEFXrulQNK5tGZo+Nr97eiCMQ/9Xo3nP5YlO26BTD/O5A==
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
+ by DS7PR12MB6071.namprd12.prod.outlook.com (2603:10b6:8:9d::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.36; Tue, 27 Feb
+ 2024 08:37:16 +0000
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7316.032; Tue, 27 Feb 2024
+ 08:37:15 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Zhi Wang <zhiw@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Topic: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Index: AQHaZlXRPSA0zxYvqU+8THPBcca33bEc2OaAgAEKOgg=
+Date: Tue, 27 Feb 2024 08:37:15 +0000
+Message-ID: <SA1PR12MB71992ECFBF9FA3EE3C350EA8B0592@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20240223124223.800078-1-ankita@nvidia.com>
+ <20240223124223.800078-3-ankita@nvidia.com>
+ <20240226164229.00001536@Huawei.com>
+In-Reply-To: <20240226164229.00001536@Huawei.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240226165646.425600-22-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: VP5mV9+NQh1q
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|DS7PR12MB6071:EE_
+x-ms-office365-filtering-correlation-id: 53ccadfd-ea0b-46ac-e2db-08dc376f4d0a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: gcoGYQoV0U8ODHsfAtapxcfIS1DdhS8ricPJeIFiEHCT/LH7BPYmzHS5nAbLoZi9Cyk21RmcqSIEg6yrabfwL1OvnnbM7SYtq92TZXpLaCaSZ2osDwBgQSvXthKpdpmERB6kP/Y+UXMxmgk4tJGwqiv+HLpdJEGImwqRXbIG+sm1cbSyhGY56GpiKxnlfMcEDd7zgLKEs4bJPCuGCulYSfgkiOcPVhztX8tORJq/u4sbSkNHHEiw96uM+KtTJokA9SOrZZBXF5002INne+4ii+O5bEmUK7/dAybyVyCTSO3QJG8w9Sj3nqSehpnZNuSy9yJJX6MJ3CaHuMth8kNModbQswKz1yGgbUNv7LG0w0Rt4H68/crRS0nn5MKnffQgr52eaLrUURWU/zxDogvJyvwveOgiz7sRo2Ua3ThEHpbAR4WjNG3fvS8ewyUcCQpLY2vTZFonX/JbUJnD3YY7I/m+kRF/qFlKbz+al7f9XVWxDEdjRAPEGVaCDuOFmpiP8rXr83Gj7nYjzct4IEz5qOWpKpwiejhmyk4FGiemoqWgkhf9nkWilgSAtiS8HUBOq4VB5U1Gbvcx0uakAEOKhyTYFGPHzA43APoHKCIrs7FfM9Kb8kv7vgzIkabL517vEJ0he05DrMXCYvfXZTcIGbwX0c0gp+IcJjqwVHcQKDsFRqD7Pv9zzVlV3EBC+KmAgkUkc+zhARiHFXGT5EHD9A==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(38070700009); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?Ugk09pmQGkuy0thp/3zzYOBBaTFgF+cqRzsTHu1EPoipJ5xmuejuo/g5?=
+ =?Windows-1252?Q?OeBw/f+XLbepFUJf2VbC8NMNcVIk8r+HOmQwxcr3fVEyX+idSLXVBCza?=
+ =?Windows-1252?Q?ahM2Hg1eajy3RKkofkedy+Jx8yu0IgLb0cy/YqIolWqqCgAgbAC/I8jZ?=
+ =?Windows-1252?Q?FrQvPFMhZ2mVgOCUebkCUHO/SBmzesrX53daA+3iPaKJ7uY6qRKqzV9o?=
+ =?Windows-1252?Q?7y1OpA/9LXGNyWs7/2akzha7EGHfUN1B3qp848agUuYlv2nVER9S7kAn?=
+ =?Windows-1252?Q?Zy40lx2/n8PiqjRyle5j9Slnllctu0ZSYBdtWPHJYyckoORxcdOSyh/Q?=
+ =?Windows-1252?Q?lmDbi4yWuAt40CK5EtCg/hZZH5AfONKY1/qR25lIiWkoa5ZJXfB8Pap0?=
+ =?Windows-1252?Q?cOFe+4gLO5fTrk3xw+dN229kDQ+sEwMIDE+k+w5bUP7/092NR8VSIv/T?=
+ =?Windows-1252?Q?biL7iOG5FSmkDjhS3nI6S/OLFxnruI79eXoVbL9XLjxHbOhLQxjElYep?=
+ =?Windows-1252?Q?3IDjIBdTha3qrvQfrKNZvVkN0DoxU/1GHrTCXGHkYUcK73uS/hFAmYuI?=
+ =?Windows-1252?Q?c0qbJ095PuVcl97d82cuoavrnUaw36DweuGrPY4Tny7n1MuNWnX7o0uj?=
+ =?Windows-1252?Q?7uC8e3FQvxlq4pGYQ/LsL4HlTL07/bzysoOhCdZkRwNONk+FbGgbNVwU?=
+ =?Windows-1252?Q?+m00F8F4Ov4U+UcjSXTTiW7rbVBmf5bWU8AC1sXult3EotUte8TrgkWI?=
+ =?Windows-1252?Q?BndFkvA7Q8DxmvuSiH/59VFEYc7fe+A9dNaE4MqLAZkymEYf7FlVl576?=
+ =?Windows-1252?Q?nJ9u4xaFghOjB721Qf8U1rTr3Fo1m24ufKS2fLAC45VODXxqFm45dSfc?=
+ =?Windows-1252?Q?/V+7D0XVkUL0JT7iHQqnfCzp/bdYwTRoqf83DoQ9IpzqeEUSXSJhswj8?=
+ =?Windows-1252?Q?0WeN0PXzlC70yFFHmjb/PyWDyBY4ZnLLdxYhfQXlxDaK8GMIupobQXSy?=
+ =?Windows-1252?Q?Jv8UHOJUgxtR0fd2VdhKav6sVoXue3dfach4qBfIpiAuYtC8lItUeM9U?=
+ =?Windows-1252?Q?GTgsFN9CVfJQAQEjEBpvODmDF2ioND5aP/PKrDEU8LtDFn+K52v1q08I?=
+ =?Windows-1252?Q?Qlob7qvD/bnXh+pf3izf1m5ltWYlaxbn1pWK8AVK+Y8dHnlKMsFQOgkI?=
+ =?Windows-1252?Q?tWwnP4JbzBlbzupV1KPpNdjEKoqzCz6xyrQEflYapSsMy1xiSJp3sAaN?=
+ =?Windows-1252?Q?FiRT3/xOP3PaMObzNG16ACoERGWU8qysTFyZy6OUaVml6FIR+EThhV2T?=
+ =?Windows-1252?Q?pi1Nl+GxgoT2I/5DHytGB2DTBsbX5OwbrwVRkPBL9IdmRYEGGK8EVpn0?=
+ =?Windows-1252?Q?PnX05mYmhyC4zJhTZNbjSeZWGZ5+RIF6BzSaNUJibk5EBADEo4fKlJEa?=
+ =?Windows-1252?Q?my6aeqVzyiMNOZ/yEKDZbalTl6i9q0BfGIgsKccqFE+OamWIypelKNM4?=
+ =?Windows-1252?Q?EmEwbbQRgrL72GiOlqZTJdLNPEhBIw+pd9yrjJdy246Dljoqex7nNRx/?=
+ =?Windows-1252?Q?4f37f/43d2BxevDSw1aC9KB8F7XId9+5S0iIVkakNxUroqOYZPMYaZxW?=
+ =?Windows-1252?Q?AU7RNIr5kTgowAisHu2dUpOfiGLIjAbfD9pb1/1oQenKPtnpa6gzwuhL?=
+ =?Windows-1252?Q?s8dJOb6sLlE=3D?=
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 53ccadfd-ea0b-46ac-e2db-08dc376f4d0a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2024 08:37:15.2745 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 39I5dch+Gvi5cM3NOl87FeFsPGY9WV8mxa1iDnJ8bPdZqcOK1QL/vYfTuG2mGZ2Ra1FltCV8nvccg2EPPj820Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6071
+Received-SPF: softfail client-ip=2a01:111:f403:200a::601;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.014,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vmddqaNGNpNF
 
-On 2024/02/27 1:56, Alex Bennée wrote:
-> We can only request a list of registers once the vCPU has been
-> initialised so the user needs to use either call the get function on
-> vCPU initialisation or during the translation phase.
-> 
-> We don't expose the reg number to the plugin instead hiding it behind
-> an opaque handle. For now this is just the gdb_regnum encapsulated in
-> an anonymous GPOINTER but in future as we add more state for plugins
-> to track we can expand it.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
-> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
-> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
-Hi,
-
-Mostly looks good. I have a few trivial comments so please have a look 
-at them.
-
-> 
-> ---
-> v4
->    - the get/read_registers functions are now implicitly for current
->    vCPU only to accidental cpu != current_cpu uses.
-> v5
->    - make reg_handles as per-CPUPluginState variable.
-> v6
->    - for now just wrap gdb_regnum
-> ---
->   include/qemu/qemu-plugin.h   | 48 +++++++++++++++++++++++++++++--
->   plugins/api.c                | 56 ++++++++++++++++++++++++++++++++++++
->   plugins/qemu-plugins.symbols |  2 ++
->   3 files changed, 104 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-> index 93981f8f89f..3b6b18058d2 100644
-> --- a/include/qemu/qemu-plugin.h
-> +++ b/include/qemu/qemu-plugin.h
-> @@ -11,6 +11,7 @@
->   #ifndef QEMU_QEMU_PLUGIN_H
->   #define QEMU_QEMU_PLUGIN_H
->   
-> +#include <glib.h>
->   #include <inttypes.h>
->   #include <stdbool.h>
->   #include <stddef.h>
-> @@ -229,8 +230,8 @@ struct qemu_plugin_insn;
->    * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
->    * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
->    *
-> - * Note: currently unused, plugins cannot read or change system
-> - * register state.
-> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
-> + * system register state.
->    */
->   enum qemu_plugin_cb_flags {
->       QEMU_PLUGIN_CB_NO_REGS,
-> @@ -707,4 +708,47 @@ uint64_t qemu_plugin_end_code(void);
->   QEMU_PLUGIN_API
->   uint64_t qemu_plugin_entry_code(void);
->   
-> +/** struct qemu_plugin_register - Opaque handle for register access */
-> +struct qemu_plugin_register;
-> +
-> +/**
-> + * typedef qemu_plugin_reg_descriptor - register descriptions
-> + *
-> + * @handle: opaque handle for retrieving value with qemu_plugin_read_register
-> + * @name: register name
-> + * @feature: optional feature descriptor, can be NULL
-> + */
-> +typedef struct {
-> +    struct qemu_plugin_register *handle;
-> +    const char *name;
-> +    const char *feature;
-> +} qemu_plugin_reg_descriptor;
-> +
-> +/**
-> + * qemu_plugin_get_registers() - return register list for current vCPU
-> + *
-> + * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
-> + * frees the array (but not the const strings).
-> + *
-> + * Should be used from a qemu_plugin_register_vcpu_init_cb() callback
-> + * after the vCPU is initialised, i.e. in the vCPU context.
-> + */
-> +GArray *qemu_plugin_get_registers(void);
-> +
-> +/**
-> + * qemu_plugin_read_register() - read register for current vCPU
-> + *
-> + * @handle: a @qemu_plugin_reg_handle handle
-> + * @buf: A GByteArray for the data owned by the plugin
-> + *
-> + * This function is only available in a context that register read access is
-> + * explicitly requested via the QEMU_PLUGIN_CB_R_REGS flag.
-> + *
-> + * Returns the size of the read register. The content of @buf is in target byte
-> + * order. On failure returns -1
-> + */
-> +int qemu_plugin_read_register(struct qemu_plugin_register *handle,
-> +                              GByteArray *buf);
-> +
-> +
->   #endif /* QEMU_QEMU_PLUGIN_H */
-> diff --git a/plugins/api.c b/plugins/api.c
-> index 54df72c1c00..03412598047 100644
-> --- a/plugins/api.c
-> +++ b/plugins/api.c
-> @@ -8,6 +8,7 @@
->    *
->    *  qemu_plugin_tb
->    *  qemu_plugin_insn
-> + *  qemu_plugin_register
->    *
->    * Which can then be passed back into the API to do additional things.
->    * As such all the public functions in here are exported in
-> @@ -35,10 +36,12 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/main-loop.h"
->   #include "qemu/plugin.h"
->   #include "qemu/log.h"
->   #include "tcg/tcg.h"
->   #include "exec/exec-all.h"
-> +#include "exec/gdbstub.h"
->   #include "exec/ram_addr.h"
->   #include "disas/disas.h"
->   #include "plugin.h"
-> @@ -410,3 +413,56 @@ uint64_t qemu_plugin_entry_code(void)
->   #endif
->       return entry;
->   }
-> +
-> +/*
-> + * Create register handles.
-> + *
-> + * We need to create a handle for each register so the plugin
-> + * infrastructure can call gdbstub to read a register. They are
-> + * currently just a pointer encapsulation of the gdb_regnum but in
-> + * future may hold internal plugin state so its important plugin
-> + * authors are not tempted to treat them as numbers.
-> + *
-> + * We also construct a result array with those handles and some
-> + * ancillary data the plugin might find useful.
-> + */
-> +
-> +static GArray *create_register_handles(CPUState *cs, GArray *gdbstub_regs)
-> +{
-
-cs is unused.
-
-> +    GArray *find_data = g_array_new(true, true,
-> +                                    sizeof(qemu_plugin_reg_descriptor));
-> +
-> +    for (int i = 0; i < gdbstub_regs->len; i++) {
-> +        GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
-> +
-> +        /* skip "un-named" regs */
-> +        if (!grd->name) {
-> +            continue;
-> +        }
-> +
-> +        /* Create a record for the plugin */
-> +        qemu_plugin_reg_descriptor desc = {
-> +            .handle = GINT_TO_POINTER(grd->gdb_reg),
-> +            .name = g_intern_string(grd->name),
-> +            .feature = g_intern_string(grd->feature_name)
-> +        };
-
-Please remove a mixed declaration; see: docs/devel/style.rst
-
-> +        g_array_append_val(find_data, desc);
-> +    }
-> +
-> +    return find_data;
-> +}
-> +
-> +GArray *qemu_plugin_get_registers(void)
-> +{
-> +    g_assert(current_cpu);
-> +
-> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
-> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
-
-Why do you need regs->len check?
-
-> +}
-> +
-> +int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
-> +{
-> +    g_assert(current_cpu);
-> +
-> +    return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg));
-> +}
-> diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-> index adb67608598..27fe97239be 100644
-> --- a/plugins/qemu-plugins.symbols
-> +++ b/plugins/qemu-plugins.symbols
-> @@ -3,6 +3,7 @@
->     qemu_plugin_end_code;
->     qemu_plugin_entry_code;
->     qemu_plugin_get_hwaddr;
-> +  qemu_plugin_get_registers;
->     qemu_plugin_hwaddr_device_name;
->     qemu_plugin_hwaddr_is_io;
->     qemu_plugin_hwaddr_phys_addr;
-> @@ -19,6 +20,7 @@
->     qemu_plugin_num_vcpus;
->     qemu_plugin_outs;
->     qemu_plugin_path_to_binary;
-> +  qemu_plugin_read_register;
->     qemu_plugin_register_atexit_cb;
->     qemu_plugin_register_flush_cb;
->     qemu_plugin_register_vcpu_exit_cb;
+Thanks Jonathan for reviewing the change.=0A=
+=0A=
+Comments inline.=0A=
+=0A=
+>> The structure needs a PCI device handle [2] that consists of the device =
+BDF.=0A=
+>> The vfio-pci device corresponding to the acpi-generic-initiator object i=
+s=0A=
+>> located to determine the BDF.=0A=
+>>=0A=
+>> [1] ACPI Spec 6.3, Section 5.2.16.6=0A=
+>> [2] ACPI Spec 6.3, Table 5.80=0A=
+>>=0A=
+>> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>=0A=
+>Hi Ankit,=0A=
+>=0A=
+> As the code stands the use of a list seems overkill.=0A=
+=0A=
+Yeah, I will try out your suggestion.=0A=
+=0A=
+> Otherwise looks good to me.=A0 I need Generic Ports support for CXL=0A=
+> stuff so will copy your approach for that as it's ended up nice=0A=
+> and simple.=0A=
+> =0A=
+> Jonathan=0A=
+=0A=
+Nice, would be good to have uniform implementations.=0A=
+=0A=
+>> +/*=0A=
+>> + * Identify Generic Initiator objects and link them into the list which=
+ is=0A=
+>> + * returned to the caller.=0A=
+>> + *=0A=
+>> + * Note: it is the caller's responsibility to free the list to avoid=0A=
+>> + * memory leak.=0A=
+>> + */=0A=
+>> +static GSList *acpi_generic_initiator_get_list(void)=0A=
+>> +{=0A=
+>> +=A0=A0=A0 GSList *list =3D NULL;=0A=
+>> +=0A=
+>> +=A0=A0=A0 object_child_foreach(object_get_root(),=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 acpi_generic_initiator_list, &list);=0A=
+>=0A=
+> I think you can use object_child_foreach_recursive() and skip the manual=
+=0A=
+> calling above?=0A=
+=0A=
+Great suggestion, will give that a try.=0A=
+=0A=
+>> + * ACPI 6.3:=0A=
+>> + * Table 5-78 Generic Initiator Affinity Structure=0A=
+>> + */=0A=
+>> +static void=0A=
+>> +build_srat_generic_pci_initiator_affinity(GArray *table_data, int node,=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDeviceHandle *han=
+dle)=0A=
+>> +{=0A=
+>> +=A0=A0=A0 uint8_t index;=0A=
+>> +=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 5, 1);=A0 /* Type */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 32, 1); /* Length */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 0, 1);=A0 /* Reserved *=
+/=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 1, 1);=A0 /* Device Han=
+dle Type: PCI */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, node, 4);=A0 /* Proximi=
+ty Domain */=0A=
+>> +=0A=
+>> +=A0=A0=A0 /* Device Handle - PCI */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->segment, 2);=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->bdf, 2);=0A=
+>> +=A0=A0=A0 for (index =3D 0; index < 12; index++) {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 build_append_int_noprefix(table_data, 0, 1);=0A=
+>> +=A0=A0=A0 }=0A=
+>> +=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4=
+); /* Flags */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 0, 4);=A0=A0=A0=A0 /* R=
+eserved */=0A=
+>> +}=0A=
+>> +=0A=
+>> +void build_srat_generic_pci_initiator(GArray *table_data)=0A=
+>> +{=0A=
+>> +=A0=A0=A0 GSList *gi_list, *list =3D acpi_generic_initiator_get_list();=
+=0A=
+>=0A=
+>=0A=
+> Did you consider just have the functional called in the scan do this?=0A=
+> Not sure you need anything as a parameter beyond the GArray *table_data=
+=0A=
+>=0A=
+> Something like...=0A=
+>=0A=
+> static int acpi_generic_initiator_list(Object *obj, void *opaque)=0A=
+> {=0A=
+>=A0=A0=A0 uint8_t index;=0A=
+>=A0=A0=A0 AcpiGenericInitiator *gi;=0A=
+>=A0=A0=A0 GArray *table_data =3D opaque;=0A=
+>=A0=A0=A0 PCIDeviceHandle dev_handle;=0A=
+>=A0=A0=A0 PCIDevice *pci_dev;=0A=
+>=A0=A0=A0 Object *o;=0A=
+>=0A=
+>=A0=A0=A0 if (!object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {=0A=
+>=A0=A0=A0=A0=A0=A0=A0 return 0;=0A=
+>=A0=A0=A0 }=0A=
+>=0A=
+>=A0=A0=A0 gi =3D ACPI_GENERIC_INITIATOR(obj);=0A=
+>=A0=A0=A0 o =3D object_resolve_path_type(gi->pci_dev, TYPE_PCI_DEVICE, NUL=
+L);=0A=
+>=A0=A0=A0 if (!o) {=0A=
+>=A0=A0=A0=A0=A0=A0=A0 error_setg(&error_abort, "GI: Specified device must =
+be a PCI device.\n")=0A=
+>=A0=A0=A0=A0=A0=A0=A0 return 1;=0A=
+>=A0=A0=A0 }=0A=
+>=A0=A0=A0 pci_dev =3D PCI_DEVICE(o);=0A=
+>=0A=
+>=A0=A0=A0 dev_handle.segment =3D 0;=0A=
+>=A0=A0=A0 dev_handle.bdf =3D PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev=
+)),=0A=
+>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 pci_dev-=
+>devfn);=0A=
+>=A0=A0=A0 build_srat_generic_pci_initiator_affinity(table_data,=0A=
+>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 gi->node, &=
+dev_handle);=0A=
+> }=0A=
+>=0A=
+> + a call to.=0A=
+>=A0=A0=A0 object_child_foreach_recursive(object_get_root(),=0A=
+>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 acpi_generic_srat, table_data);=0A=
+>=0A=
+=0A=
+Thanks. That does seem better.=0A=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 pci_dev =3D PCI_DEVICE(o);=0A=
+>> +=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 dev_handle.segment =3D 0;=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 dev_handle.bdf =3D PCI_BUILD_BDF(pci_bus_num(pci_=
+get_bus(pci_dev)),=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0 pci_dev->devfn);=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 build_srat_generic_pci_initiator_affinity(table_d=
+ata,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 gi->node, &dev_handle);=0A=
+> Should we check for consistency of gi->node and=0A=
+> -numa node,id=3DX entries?=0A=
+>=0A=
+> Maybe just check less than numa_state->num_nodes as that's the variable=
+=0A=
+> used to walk the other structures when building srat.=0A=
+=0A=
+Ack, will add a check to compare against numa_state->num_nodes.=0A=
+=0A=
+>> +/*=0A=
+>> + * ACPI 6.3:=0A=
+>> + * Table 5-81 Flags =96 Generic Initiator Affinity Structure=0A=
+>> + */=0A=
+>> +typedef enum {=0A=
+>> +=A0=A0=A0 GEN_AFFINITY_ENABLED =3D (1 << 0), /*=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * If clear, the OSPM ignores the=
+ contents=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * of the Generic Initiator/Port =
+Affinity=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * Structure. This allows system =
+firmware=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * to populate the SRAT with a st=
+atic=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * number of structures, but only=
+ enable=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 * them as necessary.=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 */=0A=
+> I'd put the comment above the definition to avoid wrapping so much!=0A=
+=0A=
+Yeah, it does look kind of silly. Will fix it.=0A=
+=0A=
+>> +} GenericAffinityFlags;=0A=
+>> +=

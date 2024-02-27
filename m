@@ -1,211 +1,320 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2545791ejf;
-        Tue, 27 Feb 2024 00:48:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVK/rKp8tCdityHREdWeSwmrVGE2wHLUIO1gSynJ9R0Yexhz5kbL9N5BCGpG7fsJFju3a25xFjdN3frBZjjxr5CfUfbT1Sy
-X-Google-Smtp-Source: AGHT+IH+2/MOVV3+r0XsKxrfF8C0ajsa1VPhzOL5+jm6iqKRTqBaCs8f26Xe1bpXWS3FKIECr1hG
-X-Received: by 2002:a05:620a:1595:b0:785:c9d1:547d with SMTP id d21-20020a05620a159500b00785c9d1547dmr1380978qkk.78.1709023711031;
-        Tue, 27 Feb 2024 00:48:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709023711; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2545805ejf;
+        Tue, 27 Feb 2024 00:48:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV8AhNl5eo1BgtJjXnSzqN7fAK+VwzwKwRPudILKN1d3qWSwIGKTXC+cLICNLJvnY7AMv04o7MmUOaPWYZzthUKXuly82SU
+X-Google-Smtp-Source: AGHT+IHjpBQE4b1CDgO7y/uGc+wNrS/tgnIwdWusMZ+r8tx74gu2RxUS2Fu2N6lN83r2cDBzfW6K
+X-Received: by 2002:a25:d04b:0:b0:dcc:53c6:113a with SMTP id h72-20020a25d04b000000b00dcc53c6113amr1436678ybg.59.1709023713411;
+        Tue, 27 Feb 2024 00:48:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709023713; cv=none;
         d=google.com; s=arc-20160816;
-        b=NawxgLh8eU9oxPvS+CbDLma7s+FT5f0uXlDT11+o6puzo42Hmigl19AFEAzvxnPMph
-         AOg6YzDb+BgXZWsg6k0pXiL1TgC79zlKAMM1s3PCiYb7aSP35fdpc33lyEiSNcUKTPJg
-         uv9CJuRrXtYHsGBg60mqQ1NbtjBSYOpcIL7Q1uieUQOa6fVuJ9sed81QXioZv1pTR8Ag
-         sh/x98WGHjVRZCrwakh6ufKJljm88FpF6FXNU8ZjDkBewjossY/eaeW5DJMN7xKQ123M
-         Dbn8xZsHBvkjEyExPJ0OLKNWabb/Aezk5K60nCd/THFbdi2MoPHuHlMTA48xaOePSJfS
-         JUug==
+        b=Dv6eWuqTkLDrimJPIn4rFLkzzU3NbkOvJPgMz4mbwODf6RBuldBGwzaEBgbbYwM6Px
+         KbkccOWlPvqhHgXocbSe6I5w3LS14iqqkOU5GYDQS3IPhsOkMEM8SD9cN0a66wYVq8yr
+         HF0SWSgEEl3TpZ3LGHbJg9DLnS/0JFy0pm5yH2OIJFiZ4IiQlrcf1lUW4uN1MOz6/drR
+         cBemYey+CxgvD7V5HRavfDMUuk5JRFRLSeQ2WWQFKFnoJMseykCOYa8KXCg+SUmc5Xko
+         ng5GcGJw1NDv0zpO6c2Q/CCwrep8DiD+aUiRihz2VDTNnRp5ib3SZ6Tp4ctxLWWPtutA
+         7lEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Zi9hv8WXmOlU9cQPuWAqhoQd705Xi0sNArKoJ6BuDYw=;
-        fh=m/3FC3IR9/7pHAdUZKEZG2NcwwNFE+SfbEKtOJmfFTY=;
-        b=BseCrze8E826r/AUYb07nPQQy78FXY8mDAtFdM3Q8nd6nNGcqF/vNcqOSw9r8W/bMV
-         7WSQK+I33KbuarRcPzFxvQ6nMo37VGSCQIoq5mezWWcvmElsKtY+fHX+LIDeoPTd76BS
-         8oxl1KxYraETOb9E3WjwmBdw1+HRD6/XMGhFZFlyI6uLWWC4d9E96gkQs9hWWzFsVqVO
-         3MPFRiBrVsEr03Ns2B1iu8dj0pSFe2+6WVJ9nzfIxKaO9/Cs8+CMFkNRXL7NlKMQRP1+
-         5qZs7G6/CNZ1cDPMSc0fSzQyeH0SHVqZnWvpgHwvSN34DIBmwvIIT2RZ0yGDDUD8rIht
-         pr+w==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=XSLapJ/N2+XLeA9rBJUgjR1T0MBY+vpck1YklG7N1oM=;
+        fh=Rw0lzz6KIvos3k/dB4p+oAkufNHHqiirxTRZriwe4mg=;
+        b=zzhSIQZ8iB2nWBay3iYQpfp+OVdHQ41bi6VXjTgzXGaPn29w4HeXiKKwfYMP7yyIwA
+         wGCByJ9jvXC++io9c8uPC1hBKdFEmDFOJXm5xN5DizC45Ee6G7drhS4l4G/sI52suUvf
+         I8BE/hH2KdoxBenp3Rqn853RTV2dDMdyprL6TycfwBnUhl9nb4K0baNshvOk5NsEWMQy
+         s60PGnBwQOebX30aP97rMiZlobTPh2WzuFpUQf28ov/HpvyQxDshoOsB5hjRemYKwqIV
+         fOW7EAQ34hNu+KaX8zu/S1v74igw/nKAbnZYRzXca7KyUNAxo2b2zIhx+dCVIQqiHFJe
+         BqVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eEsUEdu1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WQxwkUQ3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16-20020a05620a20d000b00787281f8a9esi6975367qka.653.2024.02.27.00.48.30
+        by mx.google.com with ESMTPS id z19-20020a05622a029300b0042e874b961fsi4029668qtw.352.2024.02.27.00.48.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Feb 2024 00:48:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Feb 2024 00:48:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eEsUEdu1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WQxwkUQ3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ret6A-00049b-GB; Tue, 27 Feb 2024 03:46:02 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ret18-0006hu-MX; Tue, 27 Feb 2024 03:40:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret5Z-0003ho-PJ
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:45:30 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret17-0006gA-2H
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:40:49 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret5L-00019g-5t
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:45:25 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-33d146737e6so2998477f8f.0
- for <qemu-arm@nongnu.org>; Tue, 27 Feb 2024 00:45:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret14-0007r7-6c
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:40:48 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5654f700705so5262695a12.1
+ for <qemu-devel@nongnu.org>; Tue, 27 Feb 2024 00:40:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709023509; x=1709628309; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Zi9hv8WXmOlU9cQPuWAqhoQd705Xi0sNArKoJ6BuDYw=;
- b=eEsUEdu1zJYzUdKTpoADieUgoQMdOY5tvTUbyEedq3EQSEAl+CHhdRCYhJVR7gBIIS
- s/mSg2cKaUUYiOW4ZppY4kRGd6R+MeO4isXS60VR2AUN8P7J7NPZi4KmoJ25brcfOThc
- Zi9kCnhuuRWJOcb/HrxNlfNiefQ2Qqr4qS766jqAiXWHHXBe4Cwghw9hdISEPexYgv/K
- M1ep4rZfYY6NxdYZsTG0OfrNe9p1kPvsXO0xuGwKz/uVnsWW0r4RstVzS6K+MvLQ6kZF
- r5nqAj8fk6db1PThZevo2eTB3jwqcsH1tAwFBuefH9lutuIb5iEsdV0R3wc02azGlski
- eGBw==
+ d=linaro.org; s=google; t=1709023244; x=1709628044; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XSLapJ/N2+XLeA9rBJUgjR1T0MBY+vpck1YklG7N1oM=;
+ b=WQxwkUQ3OsSwO528RyhjnNnnx7a+8WB6IZ4jzFL7fxyXSDO0EAEJWgOb3gR62bSag0
+ rxDmEIFx24AlJHZQDIABmuy2wndQD/4MsweJggJTHcHLZPrdu67xKLy4t9TzMF14mxHV
+ lV6BNaKz1E9YFkjoorEihjbveU7T/gk/rR4ALSELoikhlJH4/f18QeJ6uu2nqIEKutfH
+ J5tctzG70El+oAsdzXKHSWrrTfA9ca0TWf+iEfo7Fsofuqr8DkjqVI3h/cIsz8Aze0VH
+ LCTJWxCqk5Sx4XIYbG81LzSgQRLDRagQivBIjBoO9uz3+dMN6dbUND4nGDXSPn+QxtSP
+ jpLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709023509; x=1709628309;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Zi9hv8WXmOlU9cQPuWAqhoQd705Xi0sNArKoJ6BuDYw=;
- b=HaTTvXHMupM1QKdhSIL1nIZuJ+HBYIaNR1GB8kIR4t07EDo1N91NT9e9J0nn3GlLid
- /ecMEWn2MtjMa8yaPH1WNyMOeHM+un1VYzaG4eGz9eemnsvRmgP071UV/2VM7D2/50hv
- G03MwnfS3or+u8JzigyBlgmP+inmLLcVSG5FTiV1cRIrDOCuzCfn+cQT+5wkNhoXY2BW
- saFNWf1keyGf1mU8e+nROlTeUhI00AmFk7jv3bNvQVCgryNLc3PBFBItec3qGZzUTroK
- gsaYYJaPNRrKeV0vJ9NKpSSe9VfNFDNvInxZ/UKtyBqauCLUwbBvEx7wnCSyZjSxQOkE
- G2xQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWixPnl8jfr7RW+QUJ3VGnVljaT7NoRSJTlYF4cCVyCKf1zJXmLDC5Ihpe77nWbNN8A5u53+6VLkdSszToZNqVMLpaf
-X-Gm-Message-State: AOJu0YweRTqElSw08MsRM6Q5JgkQE3oq6yISqBI+oFJB0JRQyZEoK6cl
- SWLWUmPKHDf1tgtwx/nT2izMFZ2xg92Y+HzgHOsXN+klMdYS+27zk9f9lb2FyK8=
-X-Received: by 2002:a5d:4610:0:b0:33d:855b:78f9 with SMTP id
- t16-20020a5d4610000000b0033d855b78f9mr6250432wrq.41.1709023509451; 
- Tue, 27 Feb 2024 00:45:09 -0800 (PST)
-Received: from [192.168.69.100] (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr.
+ d=1e100.net; s=20230601; t=1709023244; x=1709628044;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XSLapJ/N2+XLeA9rBJUgjR1T0MBY+vpck1YklG7N1oM=;
+ b=QpnqyxhzR316y8xifOtj8cQCscUcbKprfH914by5m8spRlMuaBhvEi1bhfbozGOWA+
+ 55J8tlxccucTHqFg06OysCTeeiUdbIB2EhpRxEvIyDAGJie/a9ETnhDxuPdDz9baVIMp
+ 9fsMHaIyO20rujBF77WSan7iurRk8hPbk6tcJn0A6uYPJxymLh2UatUGOElVQrVdm0yu
+ clIhDiJ44MpCKDnXvTBFPcV+33b+G3L5e117Ioh526l61sRCJ9lsV5fFIWVZK9LjJ7Ob
+ muqa+/CUlCrlkzlkJVKK0okLa1Ga6PSamClbCLPTkZNdAB/IxT5Ujg3FXfF7Zzn22VUu
+ 9EWw==
+X-Gm-Message-State: AOJu0Yz7L7D5fy0cOfbkwtQyTEU8B2S6Z9LhIv58Phd8TqMOIqTozHg9
+ hiNKfhSk2GzJ/ifHa5ScckBplJTPiX1VU5lQy+UXi6IdYrN6PGQDvZIRrGafJ1YH75JxNqiMhr7
+ Y
+X-Received: by 2002:aa7:d912:0:b0:565:6c31:9a47 with SMTP id
+ a18-20020aa7d912000000b005656c319a47mr7299942edr.39.1709023244355; 
+ Tue, 27 Feb 2024 00:40:44 -0800 (PST)
+Received: from m1x-phil.lan (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr.
  [176.184.33.214]) by smtp.gmail.com with ESMTPSA id
- a2-20020a5d5702000000b0033ce5b3390esm10646267wrv.38.2024.02.27.00.45.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Feb 2024 00:45:09 -0800 (PST)
-Message-ID: <0312eaa8-ed9b-4c4a-a846-42b4ed307d52@linaro.org>
-Date: Tue, 27 Feb 2024 09:45:06 +0100
+ cs5-20020a0564020c4500b00562d908daf4sm542409edb.84.2024.02.27.00.40.42
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 27 Feb 2024 00:40:43 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 09/30] hw/nubus: add nubus-virtio-mmio device
+Date: Tue, 27 Feb 2024 09:39:25 +0100
+Message-ID: <20240227083948.5427-10-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240227083948.5427-1-philmd@linaro.org>
+References: <20240227083948.5427-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 01/41] Split out common part of BCM283X classes
-Content-Language: en-US
-To: Sergey Kambalin <serg.oker@gmail.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
- <20240226000259.2752893-2-sergey.kambalin@auriga.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240226000259.2752893-2-sergey.kambalin@auriga.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F5PYFkLsTznz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tErakIZbB1NZ
 
-On 26/2/24 01:02, Sergey Kambalin wrote:
-> Pre setup for BCM2838 introduction
-> 
-> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/arm/bcm2836.c         | 103 ++++++++++++++++++++++-----------------
->   hw/arm/raspi.c           |   2 +-
->   include/hw/arm/bcm2836.h |  26 +++++++++-
->   3 files changed, 84 insertions(+), 47 deletions(-)
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
+The nubus-virtio-mmio device is a Nubus card that contains a set of 32 virtio-mmio
+devices and a goldfish PIC similar to the m68k virt machine that can be plugged
+into the m68k q800 machine.
 
-> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-> index 6f90cabfa3..5a6717ca91 100644
-> --- a/include/hw/arm/bcm2836.h
-> +++ b/include/hw/arm/bcm2836.h
-> @@ -17,8 +17,10 @@
->   #include "target/arm/cpu.h"
->   #include "qom/object.h"
->   
-> +#define TYPE_BCM283X_BASE "bcm283x-base"
+There are currently a number of drivers under development that can be used in
+conjunction with this device to provide accelerated and/or additional hypervisor
+services to 68k Classic MacOS.
 
-Note for eventual future cleanup, we usually name this "common".
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <20240111102954.449462-4-mark.cave-ayland@ilande.co.uk>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/nubus/nubus-virtio-mmio.h |  36 ++++++++++
+ hw/nubus/nubus-virtio-mmio.c         | 102 +++++++++++++++++++++++++++
+ hw/nubus/meson.build                 |   1 +
+ 3 files changed, 139 insertions(+)
+ create mode 100644 include/hw/nubus/nubus-virtio-mmio.h
+ create mode 100644 hw/nubus/nubus-virtio-mmio.c
 
-> +OBJECT_DECLARE_TYPE(BCM283XBaseState, BCM283XBaseClass, BCM283X_BASE)
->   #define TYPE_BCM283X "bcm283x"
-> -OBJECT_DECLARE_TYPE(BCM283XState, BCM283XClass, BCM283X)
-> +OBJECT_DECLARE_SIMPLE_TYPE(BCM283XState, BCM283X)
->   
->   #define BCM283X_NCPUS 4
->   
-> @@ -30,7 +32,7 @@ OBJECT_DECLARE_TYPE(BCM283XState, BCM283XClass, BCM283X)
->   #define TYPE_BCM2836 "bcm2836"
->   #define TYPE_BCM2837 "bcm2837"
->   
-> -struct BCM283XState {
-> +struct BCM283XBaseState {
->       /*< private >*/
->       DeviceState parent_obj;
->       /*< public >*/
-> @@ -41,7 +43,27 @@ struct BCM283XState {
->           ARMCPU core;
->       } cpu[BCM283X_NCPUS];
->       BCM2836ControlState control;
-> +};
-> +
-> +struct BCM283XBaseClass {
-> +    /*< private >*/
-> +    DeviceClass parent_class;
-> +    /*< public >*/
-
-Also we don't use these private/public comment anymore.
-
-> +    const char *name;
-> +    const char *cpu_type;
-> +    unsigned core_count;
-> +    hwaddr peri_base; /* Peripheral base address seen by the CPU */
-> +    hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
-> +    int clusterid;
-> +};
-> +
-> +struct BCM283XState {
-> +    /*< private >*/
-> +    BCM283XBaseState parent_obj;
-> +    /*< public >*/
-
-Ditto.
-
->       BCM2835PeripheralState peripherals;
->   };
->   
-> +bool bcm283x_common_realize(DeviceState *dev, Error **errp);
-
-Amusingly you name the realize handler 'common'.
-
->   #endif /* BCM2836_H */
+diff --git a/include/hw/nubus/nubus-virtio-mmio.h b/include/hw/nubus/nubus-virtio-mmio.h
+new file mode 100644
+index 0000000000..de497b7f76
+--- /dev/null
++++ b/include/hw/nubus/nubus-virtio-mmio.h
+@@ -0,0 +1,36 @@
++/*
++ * QEMU Macintosh Nubus Virtio MMIO card
++ *
++ * Copyright (c) 2023 Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_NUBUS_VIRTIO_MMIO_H
++#define HW_NUBUS_VIRTIO_MMIO_H
++
++#include "hw/nubus/nubus.h"
++#include "qom/object.h"
++#include "hw/intc/goldfish_pic.h"
++#include "hw/virtio/virtio-mmio.h"
++
++#define TYPE_NUBUS_VIRTIO_MMIO "nubus-virtio-mmio"
++OBJECT_DECLARE_TYPE(NubusVirtioMMIO, NubusVirtioMMIODeviceClass,
++                    NUBUS_VIRTIO_MMIO)
++
++struct NubusVirtioMMIODeviceClass {
++    DeviceClass parent_class;
++
++    DeviceRealize parent_realize;
++};
++
++#define NUBUS_VIRTIO_MMIO_NUM_DEVICES 32
++
++struct NubusVirtioMMIO {
++    NubusDevice parent_obj;
++
++    GoldfishPICState pic;
++    VirtIOMMIOProxy virtio_mmio[NUBUS_VIRTIO_MMIO_NUM_DEVICES];
++};
++
++#endif
+diff --git a/hw/nubus/nubus-virtio-mmio.c b/hw/nubus/nubus-virtio-mmio.c
+new file mode 100644
+index 0000000000..58a63c84d0
+--- /dev/null
++++ b/hw/nubus/nubus-virtio-mmio.c
+@@ -0,0 +1,102 @@
++/*
++ * QEMU Macintosh Nubus Virtio MMIO card
++ *
++ * Copyright (c) 2024 Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/nubus/nubus-virtio-mmio.h"
++
++
++#define NUBUS_VIRTIO_MMIO_PIC_OFFSET   0
++#define NUBUS_VIRTIO_MMIO_DEV_OFFSET   0x200
++
++
++static void nubus_virtio_mmio_set_input_irq(void *opaque, int n, int level)
++{
++    NubusDevice *nd = NUBUS_DEVICE(opaque);
++
++    nubus_set_irq(nd, level);
++}
++
++static void nubus_virtio_mmio_realize(DeviceState *dev, Error **errp)
++{
++    NubusVirtioMMIODeviceClass *nvmdc = NUBUS_VIRTIO_MMIO_GET_CLASS(dev);
++    NubusVirtioMMIO *s = NUBUS_VIRTIO_MMIO(dev);
++    NubusDevice *nd = NUBUS_DEVICE(dev);
++    SysBusDevice *sbd;
++    int i, offset;
++
++    nvmdc->parent_realize(dev, errp);
++    if (*errp) {
++        return;
++    }
++
++    /* Goldfish PIC */
++    sbd = SYS_BUS_DEVICE(&s->pic);
++    if (!sysbus_realize(sbd, errp)) {
++        return;
++    }
++    memory_region_add_subregion(&nd->slot_mem, NUBUS_VIRTIO_MMIO_PIC_OFFSET,
++                                sysbus_mmio_get_region(sbd, 0));
++    sysbus_connect_irq(sbd, 0,
++                       qdev_get_gpio_in_named(dev, "pic-input-irq", 0));
++
++    /* virtio-mmio devices */
++    offset = NUBUS_VIRTIO_MMIO_DEV_OFFSET;
++    for (i = 0; i < NUBUS_VIRTIO_MMIO_NUM_DEVICES; i++) {
++        sbd = SYS_BUS_DEVICE(&s->virtio_mmio[i]);
++        qdev_prop_set_bit(DEVICE(sbd), "force-legacy", false);
++        if (!sysbus_realize_and_unref(sbd, errp)) {
++            return;
++        }
++
++        memory_region_add_subregion(&nd->slot_mem, offset,
++                                    sysbus_mmio_get_region(sbd, 0));
++        offset += 0x200;
++
++        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(DEVICE(&s->pic), i));
++    }
++}
++
++static void nubus_virtio_mmio_init(Object *obj)
++{
++    NubusVirtioMMIO *s = NUBUS_VIRTIO_MMIO(obj);
++    int i;
++
++    object_initialize_child(obj, "pic", &s->pic, TYPE_GOLDFISH_PIC);
++    for (i = 0; i < NUBUS_VIRTIO_MMIO_NUM_DEVICES; i++) {
++        char *name = g_strdup_printf("virtio-mmio[%d]", i);
++        object_initialize_child(obj, name, &s->virtio_mmio[i],
++                                TYPE_VIRTIO_MMIO);
++        g_free(name);
++    }
++
++    /* Input from goldfish PIC */
++    qdev_init_gpio_in_named(DEVICE(obj), nubus_virtio_mmio_set_input_irq,
++                            "pic-input-irq", 1);
++}
++
++static void nubus_virtio_mmio_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    NubusVirtioMMIODeviceClass *nvmdc = NUBUS_VIRTIO_MMIO_CLASS(oc);
++
++    device_class_set_parent_realize(dc, nubus_virtio_mmio_realize,
++                                    &nvmdc->parent_realize);
++}
++
++static const TypeInfo nubus_virtio_mmio_types[] = {
++    {
++        .name = TYPE_NUBUS_VIRTIO_MMIO,
++        .parent = TYPE_NUBUS_DEVICE,
++        .instance_init = nubus_virtio_mmio_init,
++        .instance_size = sizeof(NubusVirtioMMIO),
++        .class_init = nubus_virtio_mmio_class_init,
++        .class_size = sizeof(NubusVirtioMMIODeviceClass),
++    },
++};
++
++DEFINE_TYPES(nubus_virtio_mmio_types)
+diff --git a/hw/nubus/meson.build b/hw/nubus/meson.build
+index e7ebda8993..9a7a12ea68 100644
+--- a/hw/nubus/meson.build
++++ b/hw/nubus/meson.build
+@@ -2,6 +2,7 @@ nubus_ss = ss.source_set()
+ nubus_ss.add(files('nubus-device.c'))
+ nubus_ss.add(files('nubus-bus.c'))
+ nubus_ss.add(files('nubus-bridge.c'))
++nubus_ss.add(files('nubus-virtio-mmio.c'))
+ nubus_ss.add(when: 'CONFIG_Q800', if_true: files('mac-nubus-bridge.c'))
+ 
+ system_ss.add_all(when: 'CONFIG_NUBUS', if_true: nubus_ss)
+-- 
+2.41.0
 

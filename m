@@ -1,200 +1,287 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2544290ejf;
-        Tue, 27 Feb 2024 00:44:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXu7PGxRHhwdxF+vizqj6gaTLokVLCo5DzzULs7hbygdwVuth2JEZUlWxbbCo/NOgfuYt/whtLXmb909HVc+LtT5Vqao6U6
-X-Google-Smtp-Source: AGHT+IHWGanmvcF8l15OAp9YbBlOEHrGgvIZrL3ESIvpDhxP1WFd0hNzTDv2Ap0ynQjLzZYz8RKi
-X-Received: by 2002:ac8:5f0c:0:b0:42e:7cdc:d787 with SMTP id x12-20020ac85f0c000000b0042e7cdcd787mr9621046qta.3.1709023450831;
-        Tue, 27 Feb 2024 00:44:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709023450; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2544395ejf;
+        Tue, 27 Feb 2024 00:44:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWkUVlwobDHjSJiY3DIZjH0fXUdDPKKbzj1MxufOv8WhWQy3hkblML8TrO9GRUYt0w4dDX+jNw5P9jJCnSqq88/5E37yyWp
+X-Google-Smtp-Source: AGHT+IFcFFLwtQtmSV6pGjaUXUEs2qMDvuhZBcAYsdkKp+gHygil+UrJAHb1KCcw9H4ucfwO/SRG
+X-Received: by 2002:a0c:da92:0:b0:68f:8c18:42a7 with SMTP id z18-20020a0cda92000000b0068f8c1842a7mr1344042qvj.32.1709023467808;
+        Tue, 27 Feb 2024 00:44:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709023467; cv=none;
         d=google.com; s=arc-20160816;
-        b=k1i1/HBnYxC8OFlC18JoY2Dfp/u6WV5f9SIpOeZ57CKm3uIMy64onNXu3tQXrkf8dZ
-         eoYInoJ1qTcet3b3UaM+kgfeTeCRiLgUSUgx263tJIyfJrSSOvqMryQDHpUkXt9Rasx6
-         LPiEk7La8OC2pft+bXdvef9MuW72jgjkMdwQ7H4ER+YfgeeUS3D3i7Za6ejNt7BBAW5C
-         3INTaTJqaZ9HcNKnphxlHUXIOy2c5ayWwmYar1uHhl8X84V4yrO7h9Dt3H/bpEHttRV3
-         2/hruEozrZi41t0/EgKeDPRaSUDE6Y09j7lWVxz2z1fJeFZw1PdhY9fPZPbbDZLacrcU
-         RyRw==
+        b=vH87YUFKdsx3AAUot3gGqwRT9wZR/u+gHzGetnYHqShT6mONRd9WCBsHvlWysG+vfl
+         K+N5+7H0r/vcmYvPF5uKkE8MhWYRpJ3nX498bJ2h2yJW0f/6lVA+EGmGlM2hDt2+6a59
+         rVDFI2VuXFO3Zek+GEMQNIyP92RTjsM3i3J5Wta5dZjT8ik8qROsFLFHcBSrS6QBEIQN
+         K3mvd+iWFuKv2sEEpOiQ6xEN905FwQFdmelwFdiZOtp/qW1UZWlhajQhdxjAH0gc4gjA
+         z3CVecyaKG/T11P00DjwTn+Yt2sAL1JO9g50YznE2sOo+a4qiL/99nleJUtFfdoK2o9H
+         opsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8FdaM9hjFygoV+600zSMTUb6h8PNn83HRuFk/DcEkWM=;
-        fh=vj94J8qh3CGrhi7wBRVD1bvyiAakbskuwh+4EElFC0o=;
-        b=qzCQmE8YQPaMX+fhvQdDi7Y1BNADnLoZ8d1zLWZdF6Hfyq2weNCDeagZ6AEPvGCSLw
-         hZjQNsmZvy40rEHWV9Vam7CDqJnwZByVPxZ7c/12ZFIk1/GZ7FD/vwzABZLSxE/aHFNx
-         9mn5PAKzSkBHadOVIscS3rASPN41NEbsj3RNpyTEN3y05EUAgu2eiqv6GN1Y0hcxqzTk
-         Ih0kKNpYaFdTEv8fQHxlLUm90diDhFgXGWVUKb+H+H+iM3kUa82cf8eIlC+mDpGGkV8D
-         vlAtSoOLkkXJid9MaFkkoGETLBB7emJgErHAZMJWq8nntrYQG4nKedJU59/XANDuPpff
-         K5aQ==;
+        bh=6n+lSFzDNPiqC0LaZPK+z4bhN6r8eJn5HjneFPDs130=;
+        fh=0MZ0IlRhVhABWR1j1g1ikwjLcFx3VgFxZ33T4n/gHsk=;
+        b=d5rAOOV+rL8N8rns4qr09aVAVcdlXW//GYsQ1HGtw9I+x4ap6oosuNbDuDokx4cefI
+         c1PZAFv2LlH402GXby5HhIfFsIT2VPJUOA/wgIXGR9uXI+2wU16RCnRu+9d9kZ4ifKuF
+         EjSS54TbQn2qCYb77HuDIqcYNuSDlQ+6Lctx+kTk6m3Zg1TA9BmK7LJ2PMScb+NXbQqT
+         O96pA4zqFz7Csx7UteIoKTqE5/K3DnglrGPwPFw8QD0Yh9S5yfaUo0gIjpsp+L/mPsAr
+         RpEKv0ZuN0gIG7Rof2IJ3qqe6adKugGerSutdnk4x+ytHzc8E8+m1WDelsC7l09Ju863
+         RClQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wiGf60xI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QItaDzK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9-20020ac87d49000000b0042dc7d56c01si7744128qtb.60.2024.02.27.00.44.10
+        by mx.google.com with ESMTPS id pn4-20020a056214130400b0068fe4983841si7114717qvb.490.2024.02.27.00.44.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Feb 2024 00:44:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Feb 2024 00:44:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wiGf60xI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QItaDzK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ret2y-0004s5-Dq; Tue, 27 Feb 2024 03:42:44 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ret2w-0004cv-6G; Tue, 27 Feb 2024 03:42:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret2w-0004g7-Hn
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:42:42 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret2t-0004Nj-Ot
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:42:39 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret2s-0008QK-BD
- for qemu-arm@nongnu.org; Tue, 27 Feb 2024 03:42:42 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40fd72f7125so31964595e9.1
- for <qemu-arm@nongnu.org>; Tue, 27 Feb 2024 00:42:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ret2k-0008PC-UO
+ for qemu-devel@nongnu.org; Tue, 27 Feb 2024 03:42:39 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3392b045e0aso3338656f8f.2
+ for <qemu-devel@nongnu.org>; Tue, 27 Feb 2024 00:42:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709023355; x=1709628155; darn=nongnu.org;
+ d=linaro.org; s=google; t=1709023349; x=1709628149; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8FdaM9hjFygoV+600zSMTUb6h8PNn83HRuFk/DcEkWM=;
- b=wiGf60xIDbVToLcQFzBWI7nENk8qMq/gTW+K85iPXD9u84dFociocAIL8/7fO2CLiV
- bshQ+P00e7wSXudAuA2zoyiZM2dlDK1bSNDpS7KPiN79qmfqKAjWHcXYCLx7t7w6XWOv
- 0AdJPUd+F2ts7Vz6x1TEn/thnO1xeVW/yUkfkI3KRHz8KaFqmudA0gJ34wFba0XF2bSW
- C0JRDS2qG7VXDan7/FzNUaJF7RjcFc4dj1af4PrBqEX8q1UTPjv3MtyMCqbpiySGR0Qp
- n5ZjtpPDi03tYciZEFnB79sR1LnXAIpmtZgMXUOjaA5vz4rxQTwyTRYK5NxejN2WkqLU
- XgFw==
+ bh=6n+lSFzDNPiqC0LaZPK+z4bhN6r8eJn5HjneFPDs130=;
+ b=QItaDzK+d0e9PPr5rCmQlWI3GceZIPTQBLHcHoV7bWDEZfC7j6FlO4qNL/pSQ/h5y8
+ ++kPyC/Xg65wDdcLOzNxCIrtJ89I7HZV/0zWRu6mqQi9Eiu1SxBm93k5BuA2j7QPNE7c
+ Rm1cI+er66wOSGDmlc/JinhH+OZF5QqLTvh3RcD1ZTd70qlqG0F1g9v075hVxdEcBfST
+ lW3T/raLlXmLyrYmncKo4wTAXKiedARS9H5OgqQ7xGXL+Y0oZefmm4hPNSRkLgnc/12C
+ ZzZX/QD/+snYCXxjHfF73w35jSj2l0RFIv7o8r+czZhZC2yNBUmYAeOhCDXubQGkHMyX
+ Cimw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709023355; x=1709628155;
+ d=1e100.net; s=20230601; t=1709023349; x=1709628149;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8FdaM9hjFygoV+600zSMTUb6h8PNn83HRuFk/DcEkWM=;
- b=fqGNE49E9bFgwbLd3T1lGXLni7D9FMGi+4YqT+2RqxVNtGJSd2kYTtuouD+OqVuAag
- X//pIstqcAZMnTTHRQnxLy0EFMxT/sHCRlHGy5kBkm+omzc9k6iU87X/sTno595FrpGD
- wdi56G91x1TMwUu09cBfLkvl34qgKnisvFsXNqOK1AGQxmRE6naNd2MQCLuB6qVkTYgI
- No4OQEQut8nXzGBlnJ9ihnsyjWy1e+13k71bQGapV2TmDhXxpUFU2XoLtqxZZPJcCz+x
- nI8EoXiAHXjeBd8uSC9HfJpYQlZcmhpADJLt07hlfWiPWJ/XEvEVSC+WhSmt4Kw5tHA7
- 0/8A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVcVrj7aZ7rconLtchBOv38Hi0SzZaW0XeNMkfLj93T4wFcjL25M9hAK5jfqBPmNCCz3NTGfMJYpdMSXcfC9cQWIPGy
-X-Gm-Message-State: AOJu0Yy4X7Hov0yKJuY0kJGCFndBhIdhqsxjpXFwevq7BAzB14ZWwHck
- bsTdaNpJNj94hAnPp0ih/ghed/So8fLMBmt0w/XGdNmdHOXJrhdIqNhxnk6xrKY=
-X-Received: by 2002:a5d:4109:0:b0:33d:701f:d179 with SMTP id
- l9-20020a5d4109000000b0033d701fd179mr5574325wrp.19.1709023355631; 
- Tue, 27 Feb 2024 00:42:35 -0800 (PST)
+ bh=6n+lSFzDNPiqC0LaZPK+z4bhN6r8eJn5HjneFPDs130=;
+ b=XSxwjHB5CnLHoQuMrumZ64E422/eMKGGMfENjS1mN0laZhpYU91nUVcCqYhE17w1zp
+ REhLEzPmXxyUe2bUwIUa+NEsjb1P5AFhlOhAfYjwhRm+4HuSXwXthZm56NxPc6R2TBNt
+ VhHlumETig5oMqq4HZXZ4dLDBeU8xIlOM2kP8N4hmQjAiWUmdSpyKRScMedPvyf8DARH
+ rsevHWW0vLPkZJMvx+XKIYznCMq+2W70mt1kb2zMkNQbT0Qw0oX1s9Wcn/HcuGLjDqeV
+ gFlHtHm12gFW2cwGNXdnxmRI/IU6og3+dHXmBSigQibmHOzs2YnT5zQdl7Lo2KI6d8Iv
+ TTyA==
+X-Gm-Message-State: AOJu0Yy8gF8qTL29K39v2mDG4+UETHpcQ1fQ1z3OH26Zg5Zs9GS9FSpM
+ HylgkW0KLyKG5iLgw9atd+xtC9z/Pn/S7Qy2otrSlg+tQR121QPEnv7lSAAAnq/VuiP4LLl1L1g
+ 0
+X-Received: by 2002:adf:ea81:0:b0:33d:74f2:820e with SMTP id
+ s1-20020adfea81000000b0033d74f2820emr7496378wrm.30.1709023349088; 
+ Tue, 27 Feb 2024 00:42:29 -0800 (PST)
 Received: from m1x-phil.lan (mic92-h03-176-184-33-214.dsl.sta.abo.bbox.fr.
  [176.184.33.214]) by smtp.gmail.com with ESMTPSA id
- bq8-20020a5d5a08000000b0033b684d6d5csm10815918wrb.20.2024.02.27.00.42.33
+ h4-20020a5d4304000000b0033d6c928a95sm10651527wrq.63.2024.02.27.00.42.27
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 27 Feb 2024 00:42:35 -0800 (PST)
+ Tue, 27 Feb 2024 00:42:28 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PULL 26/30] hw/i386/pc: Remove unneeded class attribute
- "kvmclock_enabled"
-Date: Tue, 27 Feb 2024 09:39:42 +0100
-Message-ID: <20240227083948.5427-27-philmd@linaro.org>
+Subject: [PULL 25/30] hw/i386/pc_{piix,
+ q35}: Eliminate local pci_bus/pci_host variables
+Date: Tue, 27 Feb 2024 09:39:41 +0100
+Message-ID: <20240227083948.5427-26-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240227083948.5427-1-philmd@linaro.org>
 References: <20240227083948.5427-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DfN6VKC2r3dk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HOUZgff8X61Q
 
 From: Bernhard Beschow <shentey@gmail.com>
 
-PCMachineClass introduces the attribute into the class hierarchy and sets it to
-true. There is no sub class overriding the attribute. Commit 30d2a17b46e9
-"hw/i386: Remove the deprecated machines 0.12 up to 0.15" removed the last
-overrides of this attribute. The attribute is now unneeded and can be removed.
+There is no advantage in having these local variables which 1/ needlessly have
+different identifiers in both machines and 2/ which are redundant to pcms->bus
+which is almost as short.
 
-Fixes: 30d2a17b46e9 "hw/i386: Remove the deprecated machines 0.12 up to 0.15"
-Cc: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Message-ID: <20240224135851.100361-5-shentey@gmail.com>
+Message-ID: <20240224135851.100361-4-shentey@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/i386/pc.h | 1 -
- hw/i386/pc.c         | 1 -
- hw/i386/pc_piix.c    | 2 +-
- 3 files changed, 1 insertion(+), 3 deletions(-)
+ hw/i386/pc_piix.c | 14 ++++++--------
+ hw/i386/pc_q35.c  | 16 +++++++---------
+ 2 files changed, 13 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 27834043c3..4bb1899602 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -92,7 +92,6 @@ struct PCMachineClass {
- 
-     /* Device configuration: */
-     bool pci_enabled;
--    bool kvmclock_enabled;
-     const char *default_south_bridge;
- 
-     /* Compat options: */
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 353edeb2ea..a80f809b83 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1799,7 +1799,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     pcmc->smbios_uuid_encoded = true;
-     pcmc->gigabyte_align = true;
-     pcmc->has_reserved_memory = true;
--    pcmc->kvmclock_enabled = true;
-     pcmc->enforce_aligned_dimm = true;
-     pcmc->enforce_amd_1tb_hole = true;
-     /* BIOS ACPI tables: 128K. Other BIOS datastructures: less than 4K reported
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 814d24326d..49d5d48db9 100644
+index 3393b93007..814d24326d 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -184,7 +184,7 @@ static void pc_init1(MachineState *machine,
-     pc_machine_init_sgx_epc(pcms);
-     x86_cpus_init(x86ms, pcmc->default_cpu_version);
+@@ -108,7 +108,6 @@ static void pc_init1(MachineState *machine,
+     MemoryRegion *system_memory = get_system_memory();
+     MemoryRegion *system_io = get_system_io();
+     Object *phb = NULL;
+-    PCIBus *pci_bus = NULL;
+     ISABus *isa_bus;
+     Object *piix4_pm = NULL;
+     qemu_irq smi_irq;
+@@ -212,11 +211,10 @@ static void pc_init1(MachineState *machine,
+                                 &error_fatal);
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(phb), &error_fatal);
  
--    if (kvm_enabled() && pcmc->kvmclock_enabled) {
-+    if (kvm_enabled()) {
-         kvmclock_create(pcmc->kvmclock_create_always);
+-        pci_bus = PCI_BUS(qdev_get_child_bus(DEVICE(phb), "pci.0"));
+-        pci_bus_map_irqs(pci_bus,
++        pcms->pcibus = PCI_BUS(qdev_get_child_bus(DEVICE(phb), "pci.0"));
++        pci_bus_map_irqs(pcms->pcibus,
+                          xen_enabled() ? xen_pci_slot_get_pirq
+                                        : pc_pci_slot_get_pirq);
+-        pcms->pcibus = pci_bus;
+ 
+         hole64_size = object_property_get_uint(phb,
+                                                PCI_HOST_PROP_PCI_HOLE64_SIZE,
+@@ -261,7 +259,7 @@ static void pc_init1(MachineState *machine,
+         for (i = 0; i < ISA_NUM_IRQS; i++) {
+             qdev_connect_gpio_out_named(dev, "isa-irqs", i, x86ms->gsi[i]);
+         }
+-        pci_realize_and_unref(pci_dev, pci_bus, &error_fatal);
++        pci_realize_and_unref(pci_dev, pcms->pcibus, &error_fatal);
+ 
+         if (xen_enabled()) {
+             pci_device_set_intx_routing_notifier(
+@@ -273,7 +271,7 @@ static void pc_init1(MachineState *machine,
+              * connected to the IOAPIC directly.
+              * These additional routes can be discovered through ACPI.
+              */
+-            pci_bus_irqs(pci_bus, xen_intx_set_irq, pci_dev,
++            pci_bus_irqs(pcms->pcibus, xen_intx_set_irq, pci_dev,
+                          XEN_IOAPIC_NUM_PIRQS);
+         }
+ 
+@@ -310,7 +308,7 @@ static void pc_init1(MachineState *machine,
+         x86_register_ferr_irq(x86ms->gsi[13]);
      }
  
+-    pc_vga_init(isa_bus, pcmc->pci_enabled ? pci_bus : NULL);
++    pc_vga_init(isa_bus, pcmc->pci_enabled ? pcms->pcibus : NULL);
+ 
+     assert(pcms->vmport != ON_OFF_AUTO__MAX);
+     if (pcms->vmport == ON_OFF_AUTO_AUTO) {
+@@ -321,7 +319,7 @@ static void pc_init1(MachineState *machine,
+     pc_basic_device_init(pcms, isa_bus, x86ms->gsi, rtc_state, true,
+                          0x4);
+ 
+-    pc_nic_init(pcmc, isa_bus, pci_bus);
++    pc_nic_init(pcmc, isa_bus, pcms->pcibus);
+ 
+ #ifdef CONFIG_IDE_ISA
+     if (!pcmc->pci_enabled) {
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 549c0bc041..9e4b8f79c2 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -123,7 +123,6 @@ static void pc_q35_init(MachineState *machine)
+     PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+     X86MachineState *x86ms = X86_MACHINE(machine);
+     Object *phb;
+-    PCIBus *host_bus;
+     PCIDevice *lpc;
+     DeviceState *lpc_dev;
+     ISADevice *rtc_state;
+@@ -217,8 +216,7 @@ static void pc_q35_init(MachineState *machine)
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(phb), &error_fatal);
+ 
+     /* pci */
+-    host_bus = PCI_BUS(qdev_get_child_bus(DEVICE(phb), "pcie.0"));
+-    pcms->pcibus = host_bus;
++    pcms->pcibus = PCI_BUS(qdev_get_child_bus(DEVICE(phb), "pcie.0"));
+ 
+     /* irq lines */
+     gsi_state = pc_gsi_create(&x86ms->gsi, true);
+@@ -232,7 +230,7 @@ static void pc_q35_init(MachineState *machine)
+     for (i = 0; i < IOAPIC_NUM_PINS; i++) {
+         qdev_connect_gpio_out_named(lpc_dev, ICH9_GPIO_GSI, i, x86ms->gsi[i]);
+     }
+-    pci_realize_and_unref(lpc, host_bus, &error_fatal);
++    pci_realize_and_unref(lpc, pcms->pcibus, &error_fatal);
+ 
+     rtc_state = ISA_DEVICE(object_resolve_path_component(OBJECT(lpc), "rtc"));
+ 
+@@ -284,7 +282,7 @@ static void pc_q35_init(MachineState *machine)
+         AHCIPCIState *ich9;
+ 
+         /* ahci and SATA device, for q35 1 ahci controller is built-in */
+-        pdev = pci_create_simple_multifunction(host_bus,
++        pdev = pci_create_simple_multifunction(pcms->pcibus,
+                                                PCI_DEVFN(ICH9_SATA1_DEV,
+                                                          ICH9_SATA1_FUNC),
+                                                "ich9-ahci");
+@@ -298,14 +296,14 @@ static void pc_q35_init(MachineState *machine)
+ 
+     if (machine_usb(machine)) {
+         /* Should we create 6 UHCI according to ich9 spec? */
+-        ehci_create_ich9_with_companions(host_bus, 0x1d);
++        ehci_create_ich9_with_companions(pcms->pcibus, 0x1d);
+     }
+ 
+     if (pcms->smbus_enabled) {
+         PCIDevice *smb;
+ 
+         /* TODO: Populate SPD eeprom data.  */
+-        smb = pci_create_simple_multifunction(host_bus,
++        smb = pci_create_simple_multifunction(pcms->pcibus,
+                                               PCI_DEVFN(ICH9_SMB_DEV,
+                                                         ICH9_SMB_FUNC),
+                                               TYPE_ICH9_SMB_DEVICE);
+@@ -317,8 +315,8 @@ static void pc_q35_init(MachineState *machine)
+     pc_cmos_init(pcms, rtc_state);
+ 
+     /* the rest devices to which pci devfn is automatically assigned */
+-    pc_vga_init(isa_bus, host_bus);
+-    pc_nic_init(pcmc, isa_bus, host_bus);
++    pc_vga_init(isa_bus, pcms->pcibus);
++    pc_nic_init(pcmc, isa_bus, pcms->pcibus);
+ 
+     if (machine->nvdimms_state->is_enabled) {
+         nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
 -- 
 2.41.0
 

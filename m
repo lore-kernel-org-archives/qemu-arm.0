@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a2-20020a5d5702000000b0033ce5b3390esm11537174wrv.38.2024.02.27.06.43.35
+        by smtp.gmail.com with ESMTPSA id fa20-20020a05600c519400b00412acb0b323sm2237909wmb.26.2024.02.27.06.43.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Feb 2024 06:43:36 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9CA7F5F8F7;
+	by draig.lan (Postfix) with ESMTP id 85B085F8ED;
 	Tue, 27 Feb 2024 14:43:35 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,46 +48,251 @@ Cc: qemu-ppc@nongnu.org,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH v4 02/29] tests/tcg: bump TCG test timeout to 120s
-Date: Tue, 27 Feb 2024 14:43:08 +0000
-Message-Id: <20240227144335.1196131-3-alex.bennee@linaro.org>
+Subject: [PATCH v4 01/29] tests/tcg: update licenses to GPLv2 as intended
+Date: Tue, 27 Feb 2024 14:43:07 +0000
+Message-Id: <20240227144335.1196131-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240227144335.1196131-1-alex.bennee@linaro.org>
 References: <20240227144335.1196131-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cXRUwsZRUDK6
+X-TUID: Avg7DDTW2TlY
 
-This is less than ideal but easier than making sure we get all the
-iterations of the memory test. Update the comment accordingly.
+My default header template is GPLv3 but for QEMU code we really should
+stick to GPLv2-or-later (allowing others to up-license it if they
+wish). While this is test code we should still be consistent on the
+source distribution.
 
-Message-Id: <20240223162202.1936541-3-alex.bennee@linaro.org>
+I wrote all of this code so its not a problem. However there remains
+one GPLv3 file left which is the crt0-tc2x.S for TriCore.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20240215184036.214065-1-alex.bennee@linaro.org>
 ---
- tests/tcg/Makefile.target | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ tests/tcg/aarch64/semicall.h                      | 4 ++--
+ tests/tcg/arm/semicall.h                          | 4 ++--
+ tests/tcg/multiarch/float_helpers.h               | 4 ++--
+ tests/tcg/riscv64/semicall.h                      | 4 ++--
+ tests/tcg/multiarch/arm-compat-semi/semiconsole.c | 4 ++--
+ tests/tcg/multiarch/arm-compat-semi/semihosting.c | 4 ++--
+ tests/tcg/multiarch/float_convd.c                 | 4 ++--
+ tests/tcg/multiarch/float_convs.c                 | 4 ++--
+ tests/tcg/multiarch/float_madds.c                 | 4 ++--
+ tests/tcg/multiarch/libs/float_helpers.c          | 4 ++--
+ tests/tcg/i386/system/boot.S                      | 6 +++---
+ tests/tcg/x86_64/system/boot.S                    | 6 +++---
+ 12 files changed, 26 insertions(+), 26 deletions(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 8cf65f68dd8..a4c25908fb7 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -93,12 +93,9 @@ QEMU_OPTS=
+diff --git a/tests/tcg/aarch64/semicall.h b/tests/tcg/aarch64/semicall.h
+index 8a3fce35c5f..30d4de9a549 100644
+--- a/tests/tcg/aarch64/semicall.h
++++ b/tests/tcg/aarch64/semicall.h
+@@ -1,10 +1,10 @@
+ /*
+  * Semihosting Tests - AArch64 helper
+  *
+- * Copyright (c) 2019
++ * Copyright (c) 2019, 2024
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
+ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
+index ad8ac51310b..624937c5577 100644
+--- a/tests/tcg/arm/semicall.h
++++ b/tests/tcg/arm/semicall.h
+@@ -1,10 +1,10 @@
+ /*
+  * Semihosting Tests - ARM Helper
+  *
+- * Copyright (c) 2019
++ * Copyright (c) 2019, 2024
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
- # If TCG debugging, or TCI is enabled things are a lot slower
--# ??? Makefile no longer has any indication that TCI is enabled,
--# but for the record:
--#   15s    original default
--#   60s    with --enable-debug
--#   90s    with --enable-tcg-interpreter
--TIMEOUT=90
-+# so we have to set our timeout for that. The current worst case
-+# offender is the system memory test running under TCI.
-+TIMEOUT=120
+ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+diff --git a/tests/tcg/multiarch/float_helpers.h b/tests/tcg/multiarch/float_helpers.h
+index 309f3f4bf10..c42ebe64b9e 100644
+--- a/tests/tcg/multiarch/float_helpers.h
++++ b/tests/tcg/multiarch/float_helpers.h
+@@ -1,9 +1,9 @@
+ /*
+  * Common Float Helpers
+  *
+- * Copyright (c) 2019 Linaro
++ * Copyright (c) 2019, 2024 Linaro
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
- ifeq ($(filter %-softmmu, $(TARGET)),)
- # The order we include is important. We include multiarch first and
+ #include <inttypes.h>
+diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
+index f8c88f32dc5..11d0650cb06 100644
+--- a/tests/tcg/riscv64/semicall.h
++++ b/tests/tcg/riscv64/semicall.h
+@@ -1,10 +1,10 @@
+ /*
+  * Semihosting Tests - RiscV64 Helper
+  *
+- * Copyright (c) 2021
++ * Copyright (c) 2021, 2024
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+diff --git a/tests/tcg/multiarch/arm-compat-semi/semiconsole.c b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
+index 1d82efc589d..1e2268f4b75 100644
+--- a/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
++++ b/tests/tcg/multiarch/arm-compat-semi/semiconsole.c
+@@ -1,10 +1,10 @@
+ /*
+  * linux-user semihosting console
+  *
+- * Copyright (c) 2019
++ * Copyright (c) 2024
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #define SYS_READC       0x07
+diff --git a/tests/tcg/multiarch/arm-compat-semi/semihosting.c b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
+index 8627eee3cf7..f609c01341a 100644
+--- a/tests/tcg/multiarch/arm-compat-semi/semihosting.c
++++ b/tests/tcg/multiarch/arm-compat-semi/semihosting.c
+@@ -1,10 +1,10 @@
+ /*
+  * linux-user semihosting checks
+  *
+- * Copyright (c) 2019
++ * Copyright (c) 2019, 2024
+  * Written by Alex Bennée <alex.bennee@linaro.org>
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #define SYS_WRITE0      0x04
+diff --git a/tests/tcg/multiarch/float_convd.c b/tests/tcg/multiarch/float_convd.c
+index 0a1f0f93dc5..58d7f8b4c58 100644
+--- a/tests/tcg/multiarch/float_convd.c
++++ b/tests/tcg/multiarch/float_convd.c
+@@ -1,9 +1,9 @@
+ /*
+  * Floating Point Convert Doubles to Various
+  *
+- * Copyright (c) 2019 Linaro
++ * Copyright (c) 2019, 2024 Linaro
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include <stdio.h>
+diff --git a/tests/tcg/multiarch/float_convs.c b/tests/tcg/multiarch/float_convs.c
+index 2e4fa55324d..cb1fdd439e3 100644
+--- a/tests/tcg/multiarch/float_convs.c
++++ b/tests/tcg/multiarch/float_convs.c
+@@ -1,9 +1,9 @@
+ /*
+  * Floating Point Convert Single to Various
+  *
+- * Copyright (c) 2019 Linaro
++ * Copyright (c) 2019, 2024 Linaro
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include <stdio.h>
+diff --git a/tests/tcg/multiarch/float_madds.c b/tests/tcg/multiarch/float_madds.c
+index 4888f8641f4..a692e052d5b 100644
+--- a/tests/tcg/multiarch/float_madds.c
++++ b/tests/tcg/multiarch/float_madds.c
+@@ -1,9 +1,9 @@
+ /*
+  * Fused Multiply Add (Single)
+  *
+- * Copyright (c) 2019 Linaro
++ * Copyright (c) 2019, 2024 Linaro
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #include <stdio.h>
+diff --git a/tests/tcg/multiarch/libs/float_helpers.c b/tests/tcg/multiarch/libs/float_helpers.c
+index 4e68d2b6598..fad5fc98933 100644
+--- a/tests/tcg/multiarch/libs/float_helpers.c
++++ b/tests/tcg/multiarch/libs/float_helpers.c
+@@ -5,9 +5,9 @@
+  * floating point constants useful for exercising the edge cases in
+  * floating point tests.
+  *
+- * Copyright (c) 2019 Linaro
++ * Copyright (c) 2019, 2024 Linaro
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ /* we want additional float type definitions */
+diff --git a/tests/tcg/i386/system/boot.S b/tests/tcg/i386/system/boot.S
+index 9e8920cbfe0..28902c400d8 100644
+--- a/tests/tcg/i386/system/boot.S
++++ b/tests/tcg/i386/system/boot.S
+@@ -2,12 +2,12 @@
+  * i386 boot code, based on  qemu-bmibug.
+  *
+  * Copyright 2019 Doug Gale
+- * Copyright 2019 Linaro
++ * Copyright 2019, 2024 Linaro
+  *
+- * This work is licensed under the terms of the GNU GPL, version 3 or later.
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+         .section .head
+diff --git a/tests/tcg/x86_64/system/boot.S b/tests/tcg/x86_64/system/boot.S
+index dac9bd534d7..7213aec63b2 100644
+--- a/tests/tcg/x86_64/system/boot.S
++++ b/tests/tcg/x86_64/system/boot.S
+@@ -1,16 +1,16 @@
+ /*
+  * x86_64 boot and support code
+  *
+- * Copyright 2019 Linaro
++ * Copyright 2019, 2024 Linaro
+  *
+- * This work is licensed under the terms of the GNU GPL, version 3 or later.
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+  *
+  * Unlike the i386 version we instead use Xen's PVHVM booting header
+  * which should drop us automatically into 32 bit mode ready to go. I've
+  * nabbed bits of the Linux kernel setup to achieve this.
+  *
+- * SPDX-License-Identifier: GPL-3.0-or-later
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+         .section .head
 -- 
 2.39.2

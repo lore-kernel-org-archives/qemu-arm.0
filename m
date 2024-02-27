@@ -1,175 +1,144 @@
-Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2595279ejf;
-        Tue, 27 Feb 2024 02:58:53 -0800 (PST)
-X-Received: by 2002:a05:6a20:2d0c:b0:1a1:261:ac3d with SMTP id g12-20020a056a202d0c00b001a10261ac3dmr2165893pzl.47.1709031533307;
-        Tue, 27 Feb 2024 02:58:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709031533; cv=none;
+Received: by 2002:a17:906:e92:b0:a3e:79c1:d636 with SMTP id p18csp2608999ejf;
+        Tue, 27 Feb 2024 03:28:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUbF2qWuW2UhASZIpq87c6T/eh4rTVmF4bCJ3q3xRo72lzl3fRpoXC7dKv7t9Rz7e0b7IJzCxI9h5g6lvmLePdydYn8Edar
+X-Google-Smtp-Source: AGHT+IFClELJA6oh9Z1wjydpjf/FuNluU2MCyQDimA6vH2VWTEM7L+nX74CCSiQRQwbNzs05HI/c
+X-Received: by 2002:a05:6214:2622:b0:690:d58:c6e1 with SMTP id gv2-20020a056214262200b006900d58c6e1mr2621399qvb.23.1709033291350;
+        Tue, 27 Feb 2024 03:28:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709033291; cv=none;
         d=google.com; s=arc-20160816;
-        b=NCdrvphzIgIGLylSgcJsz9MKoecWM4vm1zQfUYkEn5o2PHUoddnHRXoQvoS+kIpYi6
-         97TvfnJjookyI0omv0dXl61dDg2r1Th8xjUs63ZrpoyXZSnrpWHj3bJXVeMwGO3QwB7P
-         CNBwQoV3ISzRguMtaV/WPIHnp2dBHGZsZ2LmqtiUG+PAH2ZRzjkQHFYyoaWlbmkTyaIJ
-         +omnakc6TDgHtczfgxS/rmges3hnrFk97BUTrLoWTt2c2XB8iW3nzoAjW2f7943U7AqT
-         Lmb32RciM2lkWnyG1iL4tu4XZLAsCge+T6Mix0t3kRr2CroJ40tV/2aNfODURYv27H0C
-         4EYA==
+        b=tHYQ6ocWxgnygT5xxm3ItOCrOD4w2plfArnRbjJwoaiVBykT2nXjgsuWvWLoLSt0zb
+         jPhcNLw8q8djVub5p9PVVe3gico5APy7df+jhA30nLTUkF0YzdX1Q5c6HodRAFTTwCRT
+         TUKWBDT6DDqxFA2k5xqjU3MlT8LHD/TLU62DK8g0WRjOt8Vts+9G+jIpojXdnGbpWo6x
+         CvFKG+eNn3q/swbKrcRf5QhFfwtgWnBFXYQyOC0nv3o1KRc5feXIOM+YCSIvvY2UcFi8
+         tRNaeXHkh9zuw5pR6qFm+Fq8opK1Lnj96FRmjb4ZI4XUK9D54GsR07uifLVmTvgbFL7T
+         LLjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=TsDmIcNCrVwkgpZ3Rq+Sniy+ldkymAQlv95cwgKc05Q=;
-        fh=PL8OQMSxlLqhqev64mxlSU/Mp63SKv4MY+SASJSiwLg=;
-        b=grGv3U3Fdx7rLCk7F37aJcVEGhW2QRIkOLLa2+oiwbGn/y7XNjJRhgQOYRw/w/X/nO
-         vF8oLgukcWQ1ffbAyrCIeJb+Oav2847cmPrNYG55j6c/da/6b9j+jvu6sZERq8slYICt
-         QSoW7ZIoHFLUDpHH1eoHhCIR7xboWFnD3YMtrNu0S2EcWGwVWbk5CIt3H1N/4AmI/+dP
-         UeCkKhYghsk5r8v9ZOwEK38SW2NaUo/zKuo68F4dC6Lddp7l/Q9ERQbsJSHj1eLMgPO+
-         ocox0frJse3eAdZO4umQraLKRTR8vzGxehojMACdA6y3RzYxAzcKfcL6wVLe9y93QVzz
-         m0ag==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=yH+ysTtQHkZx1mKQLtwZgc/8OT4X9Vo3uEOds0+TbkI=;
+        fh=WxHSAr0douJCho47EDhfM/XjfxwBwDauKoNbFX9eT8I=;
+        b=rrEu8MmVuYPBUSa8Nl117y52kPBNAPc56pKZPG8UVD3lEqxdm5A8ZVMhCjq0wKWMYi
+         izR4yaKq+hj88HpPKN7gqIFWGjFja7+Z4jVToEwpNhtLvV5CtnqHeZJIzclICr3g7wyT
+         lIEYMa6Od/EeZu4G3ZiQqO2U4Rg3Rn1Z9OsoQDaAsu2y+2bCgoHR8ClhT1ps298rhJ+t
+         MAMk1F1mdPzyaNVxLlvlNLVk+DLou1ijp+DBOlqFyqskMfWTcqRHP+6V4YqF+1/iDskA
+         DDZqOn6sgrPvuiW6dw3/2riv9VJgaH+chWbNAbD7G3Mt0oZykMZYpzq5NaVxAI8Qo2Zt
+         Yt7w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=DK8avPhE;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d4-20020a170902654400b001dbcf653013sor3015087pln.7.2024.02.27.02.58.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=szpRvs4u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gf6-20020a056214250600b0068f8b839896si7641749qvb.472.2024.02.27.03.28.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 Feb 2024 02:58:53 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 Feb 2024 03:28:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=DK8avPhE;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=szpRvs4u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1revcI-0004Pt-Va; Tue, 27 Feb 2024 06:27:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1revc6-0004Js-Qn
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 06:27:12 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1revc5-0003Hi-7v
+ for qemu-arm@nongnu.org; Tue, 27 Feb 2024 06:27:10 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-55f50cf2021so6364885a12.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Feb 2024 03:27:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1709031532; x=1709636332; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TsDmIcNCrVwkgpZ3Rq+Sniy+ldkymAQlv95cwgKc05Q=;
-        b=DK8avPhEvIWCDQp2kodl6q4n2CQHEdNYL+7F1icsXC8ude8d0G1rfwsgCLVuFiLfgK
-         35Ly71VY2TDpb3ghFfBVWunc807UbXhouJGqC1lPpFbn8Lr1vkjI3MXZgLfq7KsUUOWd
-         8KEfumoDLl3i2xNUg5iRyPj6qIiFNh8LjwLqdUsIb6MXHUcy7K+vSgDnOqmUL3ZapmPg
-         CL5IMQpX2uV/azq+tF5KxnGtWeHJRywQLFV22B4WOFIPkliniIVlVNynXAXabf0DRuWZ
-         9auv1Opfrif77BL4RtsI5p5r2msuExwgYNoCrD6AV/TQbtE16Sb7670iDesZNNfU5RMl
-         bJag==
+ d=linaro.org; s=google; t=1709033227; x=1709638027; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=yH+ysTtQHkZx1mKQLtwZgc/8OT4X9Vo3uEOds0+TbkI=;
+ b=szpRvs4uPdtOMxouNbwIO3z4guN9KoBjCtWtIXhhKF+ttfOLtFbi9IIA9VssS0kih0
+ vmbtG9mrNiO1eeGPlvWlh4deA4ht5RdWpKNIJf0l/DaVkXTslHoq7+4cNeaX5ky7yLYc
+ 0HP1hFzNPzJ/AORH2Dd6Lbhyx6o0j050uOnvOLmumA8LzviF87VuBmiQVD/3l5W37ST4
+ HmiympUcLH90ktUvCD8vXZDFQwsno9SAuOR5OvgDNOqi6ywJq8XKKsYXZQqzCrqV1hSk
+ NBy+wae/deLwBvhoouc1gvGNMgUGdIrMRRATxSS56xYwk71xBLlhVWiGpiEpy+/c2M9U
+ ZDoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709031532; x=1709636332;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TsDmIcNCrVwkgpZ3Rq+Sniy+ldkymAQlv95cwgKc05Q=;
-        b=fFelHldADPcjpeC8rPnaoEwTVuz/WDt4roNMJc1s87V+zu9zsdDR4RGhqPQZwZPdvq
-         eY2tO/f9vjBOISuP4pqM9v94q1i1mui3sQ8aqr1zzpVLleBehqNOhCjDeTXp5Q2/Fv9w
-         w2qS7myvmuv1NyjODC3R6vZbi9buvzj0kc+Ylc7uZDA8nfHpZm3L7NphFHz35MUAfujr
-         SrtDACEQ7H14MyxUF+wFC/1EbmDTxPDnTpEniGSpjIbgULKGEfT8+u/NWHUl76aN0M2a
-         qyOZapuwV47+F+nc00USOoKZ6bimVwYpn3ZEvlhHnXKwLb5Oks4vgAAa7b9HeBrbcR7E
-         xr1g==
-X-Gm-Message-State: AOJu0YyoTNLQYaB7phdzBCWp4jIU+hoejMtEA/D9x3U8Z143FrKhO+02
-	19mXMspYwP6Bl93wx/5+ckmFbSgf5olz7PfZjjkAo6Uo41O0XNr4kS/isxdGrmHJgs2l1I7rj0J
-	g
-X-Google-Smtp-Source: AGHT+IE/xiDOvK/3wPL4R00Ude4nZVASCnxuRQ+do4oShLbadK9+gnNEMWTWVVSbYfenFG/UxyRKTw==
-X-Received: by 2002:a17:90b:4a03:b0:298:b9e3:691f with SMTP id kk3-20020a17090b4a0300b00298b9e3691fmr7038770pjb.23.1709031532662;
-        Tue, 27 Feb 2024 02:58:52 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id u3-20020a17090ac88300b0029a4db713b9sm8183679pjt.39.2024.02.27.02.58.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 Feb 2024 02:58:52 -0800 (PST)
-Message-ID: <20e4981d-6378-4293-8625-7c24bb499f41@daynix.com>
-Date: Tue, 27 Feb 2024 19:58:43 +0900
+ d=1e100.net; s=20230601; t=1709033227; x=1709638027;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yH+ysTtQHkZx1mKQLtwZgc/8OT4X9Vo3uEOds0+TbkI=;
+ b=bqqHJ9qlK4ND7qGXh9ZFyNsla9oeSZ13+0+P5OllOOENQ6/g+UQSBsyliZ9Us1YFXR
+ ffzCosMdBGKG/vA80CvWKzNHALdNkH7Vet4LhuDPXuy+6iNkz32ZG1yYXUhUuOHvddn8
+ RVu8cI9V0InvUXYWXbfaGmEvXwz4IKfH+KrksDGSO6o4KzaT983nfxULCoOuq8gN4th8
+ N9g3tsisspQAYTWz8do6Hh/SYW8jp659XvAHqpypm/z2/J8+IJv9X1nDl+9+NFkk3H9F
+ Th/bzdZ6eU8m9k54TYe9sYNDFzK2o5j6+YNUJCsKe8kdomDS8WuWkR/YRNweD3eggHKK
+ JTEg==
+X-Gm-Message-State: AOJu0YyoKOXOUXnkNz0QdGTOBhkbp7tVdZT3bJrDI91KQEm9Qf+uovFM
+ 7SyQcmcsYKtCK8SuYUDmt3DaWPvoHeZMABgzaQ52kOccHVgWaS83G2pic1e7RJBQzmH5r8WPE1S
+ erZ3ok+bbjkhW4tWfYwMqS4IxJw3TioeOgjsTag==
+X-Received: by 2002:a05:6402:3126:b0:566:4e7a:fa2b with SMTP id
+ dd6-20020a056402312600b005664e7afa2bmr125483edb.36.1709033226883; Tue, 27 Feb
+ 2024 03:27:06 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 21/27] plugins: add an API to read registers
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-riscv@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Alexandre Iooss <erdnaxe@crans.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- qemu-ppc@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-s390x@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Thomas Huth <thuth@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Yanan Wang <wangyanan55@huawei.com>, Brian Cain <bcain@quicinc.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Bin Meng <bin.meng@windriver.com>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20240226165646.425600-1-alex.bennee@linaro.org>
- <20240226165646.425600-22-alex.bennee@linaro.org>
- <b7aac53e-cde5-4596-b0fc-d39f52d4ceb8@daynix.com>
- <878r36dxsv.fsf@draig.linaro.org>
- <485e6093-54e9-4ce4-ae01-c44525b202ef@daynix.com>
- <8734tedwun.fsf@draig.linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <8734tedwun.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: TKaiKnR5furS
+References: <20240226000259.2752893-1-sergey.kambalin@auriga.com>
+ <CAFEAcA_brkckzDZh_-UJ-KFfBGvjPozPHNmG-bWFO0Xa63R0Gg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_brkckzDZh_-UJ-KFfBGvjPozPHNmG-bWFO0Xa63R0Gg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 27 Feb 2024 11:26:55 +0000
+Message-ID: <CAFEAcA_An-KUbaKHDGmk7Uiovft-8JDbW9J1s36wccS2sh9vJg@mail.gmail.com>
+Subject: Re: [PATCH v6 00/41] Raspberry Pi 4B machine
+To: Sergey Kambalin <serg.oker@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Sergey Kambalin <sergey.kambalin@auriga.com>,
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GbXlJ0QAuCQV
 
-On 2024/02/27 19:29, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> On 2024/02/27 19:08, Alex Bennée wrote:
->>> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
->>>
->>>> On 2024/02/27 1:56, Alex Bennée wrote:
->>>>> We can only request a list of registers once the vCPU has been
->>>>> initialised so the user needs to use either call the get function on
->>>>> vCPU initialisation or during the translation phase.
->>>>> We don't expose the reg number to the plugin instead hiding it
->>>>> behind
->>>>> an opaque handle. For now this is just the gdb_regnum encapsulated in
->>>>> an anonymous GPOINTER but in future as we add more state for plugins
->>>>> to track we can expand it.
->>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>>>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>> Message-Id: <20240103173349.398526-39-alex.bennee@linaro.org>
->>>>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>
->>>> Hi,
->>>>
->>>> Mostly looks good. I have a few trivial comments so please have a look
->>>> at them.
->>> Done
->>> <snip>
->>>>> +        g_array_append_val(find_data, desc);
->>>>> +    }
->>>>> +
->>>>> +    return find_data;
->>>>> +}
->>>>> +
->>>>> +GArray *qemu_plugin_get_registers(void)
->>>>> +{
->>>>> +    g_assert(current_cpu);
->>>>> +
->>>>> +    g_autoptr(GArray) regs = gdb_get_register_list(current_cpu);
->>>>> +    return regs->len ? create_register_handles(current_cpu, regs) : NULL;
->>>>
->>>> Why do you need regs->len check?
->>> Not all guests expose register to gdb so we need to catch that:
->>>     TEST    catch-syscalls-with-libinsn.so on alpha
->>> **
->>> ERROR:../../plugins/api.c:459:qemu_plugin_get_registers: assertion failed: (regs->len)
->>> Aborted
->> Certainly regs->len can be 0, but why do you need to return NULL in
->> that case? Can't qemu_plugin_get_registers() return an empty array
->> just as gdb_get_register_list() does?
-> 
-> That seems more troublesome to handle the other end. NULL is nothing is
-> a fairly common pattern here which makes short-circuiting the array
-> iteration simple.
+On Mon, 26 Feb 2024 at 18:09, Peter Maydell <peter.maydell@linaro.org> wrote:
+> I think the one question I have left is the name of the
+> board: currently it's "raspi4b-2g", but should we name
+> it just "raspi4b"? None of the names we use for the other
+> raspi boards we model have a suffix like the "-2g" here.
+> Philippe, do you have an opinion here ?
 
-I'm not sure why you would want to short-circuiting array iteration. 
-Iterating an empty array is often simpler.
+I had a look at what the different raspi4 models are, and
+it looks like they're all the same except for the amount
+of RAM. For QEMU, if we wanted to allow users to pick
+the RAM size we'd do it via the -m option, not by using
+different model names. So I think on that basis and to
+match the existing raspi machine names, we should call
+this simply "raspi4b". So I'll make that name change in the
+patches I have in target-arm.next.
 
-In any case, the same logic also applies to gdb_get_register_list(), so 
-you should change gdb_get_register_list() to return NULL instead of an 
-empty array if you think that's more reasonable.
+thanks
+-- PMM

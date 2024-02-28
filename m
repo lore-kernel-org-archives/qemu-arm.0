@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp168565ejb;
-        Wed, 28 Feb 2024 03:47:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVIFlQZh6jjfxb+eFYp90IHWEzqXdyhRbuiMYbbco0eULKkt7UC0RpCkR+IObF7kwgE+kpP54IHQxvE6tq/fqbzKbt0vMOO
-X-Google-Smtp-Source: AGHT+IE01dclLCYfBVAf6fL6TgdhS98671dgX5GNkw8UfIOXfDLWohe4W1SpI3GPRUaJPugYHw9K
-X-Received: by 2002:ac8:7f42:0:b0:42e:779c:dec4 with SMTP id g2-20020ac87f42000000b0042e779cdec4mr14649681qtk.25.1709120852559;
-        Wed, 28 Feb 2024 03:47:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709120852; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175131ejb;
+        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWfDeVN8fqF4/RsvAMzYMyaMNwFB3e7KV6Z7xFIlxD1AHLtGvbzNNfvuQYtoviod8NhZXnNLoFGVbfUwmPXMXR7LFWAyjIz
+X-Google-Smtp-Source: AGHT+IGUlzWVO7UfRhTVTdN4F0/t9Sa3mrjpsdvJoUPBlJNgPdfywQe6VD90A3ctL6NTcx3qX3Hn
+X-Received: by 2002:a05:6214:2b0d:b0:68f:f74f:508a with SMTP id jx13-20020a0562142b0d00b0068ff74f508amr4465103qvb.7.1709121759121;
+        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709121759; cv=none;
         d=google.com; s=arc-20160816;
-        b=NZzlmW+geKR0VX0iq4hWAXZ0K2EPO7aON57/YGMR30uckd/2gybU4lVQaPib+G85vI
-         0byQSANy0of9lK/IFG6Zhyn3OJ+hG3oW2e8A5NQ8sLRvLnDTRYoLJup+AH1jYq27ZCUR
-         SwMQR307fgKunRFcyZtTYGYbu2IkliTVdaRH6PXGkTnRIxR7B6wiiuzt5aFqwVKTzQ9k
-         O8/vPILxBjBGtFlCbDpUsGTHz8I8ZALI6rxfyeqAeBXKH9zi7Lk4I/nf6+8Bi2xI/r0X
-         qzkR39kEgJ8n8rojxFh1sCb0u22mEcgjwcxGU5DpRRkTLBvYrXeGnu6k9uOood0cXtmH
-         7sFg==
+        b=IE/URT+YQOZW81xThWqr6GNG3ojVU9pLHJcrrb4gQVsc7WNPW270FPDTMbJLAXmD5x
+         GwYkfyXTQogruxPKirAvrBFPGjaFtPQwqomK2SYJNpJ8/FDi43K/GP/TGPMuc08Sk2WX
+         N8JWK/ka3WhbscK8Kbcxv1/QWr7hZohcWUwqm9L9I5HDyvwTkg/Giz2+/wI/cIU47ECv
+         aFjuDisNqdeSmeYDDfwalL5pJ7/D4BkDE3Rgq+QchnueL1IQjPQ5Iz5jiL2OBUTnSfsA
+         Cj2hX4yr+G3yB9bTKsjARBB4TBhqU+e0k6HUVFMEPDLMQUc94xVKLXernLWya7/K4fDv
+         wAPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
         bh=j1OLjRXz8cKZbnXoeuqFRRV9nutmUnwXbF7aVzmCyuQ=;
-        fh=SXEQ4uOOc3uDrzcMFkl93DTKd5A7MrL4ch0TU9ebRdg=;
-        b=aHaPF01uvZoKjQFIgciDHMt9905ELQ3aUwdkg4TfmXCT0hIpq/hIAIl55rNPgXOB/G
-         PgN30iOjonDzRiufrjdBPBs3X5av3a0jeH0NZH5EABD/fW5guH731mPqM/Jqqp0+CY8e
-         lApOwe64rdupt99Z1MMWN4oFn7FlNecmkMiGrdGJEg63xliVtEub4WTrCqhvefx7Oorn
-         k05Bl4yCMo44a/i+ruZshMYZiP1BqRwqAKM37BkaB3+Hylztn4+FPxn72cHB0N8BAu4o
-         F5/Dr9e1IS4uim2oITI5nucFn3rE1Iz++FFa6WWs3zUNJsksROqzdvkhEPieDcz7dyW9
-         e1ZQ==;
+        fh=YkzlLM/B5rINvM6IVNmtbeUPm8x2JYcYDb51Z7uR+U4=;
+        b=kOwIwHclNpNczha2DZZ4TNXPL8kCO9+2bW5kNKAFjHibRSje+L5Lnyj+i1ROg8Aa7o
+         d4QPxl0jBVGUY0BKJmTsA1CDnaEkg6nS/1Smog4j1P2a6NpzoWX33/wkxUnvZIwDTijo
+         Wlv5uJ1imcAenSfIZcsYM8Ocsc4Y1LDrIuMvPNK7Ty79uJdtLf5/45f+Io/QTqeLqJnG
+         jIVoCGSXJE/823OA0ayKI1fURBpkjWHANx57/CFVnpS9uDBLuKchYuf6WNhrIpZaFvqi
+         34yoqa2K84vEKwiptwnwQkIo371KfKL4ZGfjt9dqw30gduH3RLQpCt/HddJ4LFKu/trD
+         ry8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=khpGOPMt;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Ogeqrkao;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay19-20020a05622a229300b0042eb26eda01si403538qtb.706.2024.02.28.03.47.32
+        by mx.google.com with ESMTPS id e8-20020a0562141d0800b0068c64a838b8si9388372qvd.417.2024.02.28.04.02.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 03:47:32 -0800 (PST)
+        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=khpGOPMt;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Ogeqrkao;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfIOO-000619-M7; Wed, 28 Feb 2024 06:46:32 -0500
+	id 1rfIdq-000446-Oq; Wed, 28 Feb 2024 07:02:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIO6-0005sr-7g; Wed, 28 Feb 2024 06:46:19 -0500
-Received: from zproxy2.enst.fr ([137.194.2.221])
+ id 1rfIdo-00042V-CH; Wed, 28 Feb 2024 07:02:28 -0500
+Received: from zproxy3.enst.fr ([137.194.2.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIO1-0002AK-8I; Wed, 28 Feb 2024 06:46:13 -0500
+ id 1rfIdm-0002z8-5o; Wed, 28 Feb 2024 07:02:28 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 529B380660;
- Wed, 28 Feb 2024 12:46:04 +0100 (CET)
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id 9AwgNAgKPdLk; Wed, 28 Feb 2024 12:46:03 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTP id 8DE0EA06DE;
+ Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id Ua5Yg_UeMUj6; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 86024805D9;
- Wed, 28 Feb 2024 12:46:03 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 86024805D9
+ by zproxy3.enst.fr (Postfix) with ESMTP id EAD9AA06F8;
+ Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr EAD9AA06F8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709120763;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121744;
  bh=j1OLjRXz8cKZbnXoeuqFRRV9nutmUnwXbF7aVzmCyuQ=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=khpGOPMtVp5SHLHc2nyuqpLKJgr24LyMxMElUZRDMU6KgOtDQmRivyItioKXQ1qc2
- SelS0vMRnZwxpFJLEfXmknQcFJFHKBW1ly5teYU3nbdRMYYjKcjqsVxehlRuvOmXFz
- KkPUW7r1QTVaZeQ2vYPPyfN43s42bkDwqoRBI+LI=
+ b=Ogeqrkaor5arS7qHnATgmwcVHJTgX2U/dTcFuuic5sQZoBO7SrjtRan2LBW+RKl4I
+ a6n8OwPLVKwE3/3grx5ZpfrD5Il5edYKWVgh2MguS+70V//GPTytXCOStrgAM5ls45
+ vRyk2Ou+/BE+Za4FONyc3DrYst73SIa4uOUFt3Ko=
 X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id P5Go5bxz67PF; Wed, 28 Feb 2024 12:46:03 +0100 (CET)
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id hKOGb5A2vy-p; Wed, 28 Feb 2024 13:02:23 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id DA8C48065C;
- Wed, 28 Feb 2024 12:46:02 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 7F334A06DE;
+ Wed, 28 Feb 2024 13:02:23 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Samuel Tardieu <sam@rfc1149.net>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 3/5] hw/arm : Create Bl475eMachineState
-Date: Wed, 28 Feb 2024 12:32:01 +0100
-Message-ID: <20240228114555.192175-4-ines.varhol@telecom-paris.fr>
+ Laurent Vivier <lvivier@redhat.com>, Samuel Tardieu <sam@rfc1149.net>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 3/5] hw/arm : Create Bl475eMachineState
+Date: Wed, 28 Feb 2024 13:01:06 +0100
+Message-ID: <20240228120215.277717-4-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240228114555.192175-1-ines.varhol@telecom-paris.fr>
-References: <20240228114555.192175-1-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
+References: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.221;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
+Received-SPF: pass client-ip=137.194.2.222;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,7 +119,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iOkOBS0d+y3X
+X-TUID: HsWpj0QuHrRD
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>

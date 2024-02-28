@@ -1,110 +1,109 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp178371ejb;
-        Wed, 28 Feb 2024 04:07:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVEtSP9Ebv78s/HAzF9OO5MJTDKpQ6FpFs5hQu2JoZ6jMyMAHo05Nn+8ovisuQW9fJbiiTLhgG8dAVr+Wpwl46LledwB1IA
-X-Google-Smtp-Source: AGHT+IGyWLOFSkoZpYpbGOMoN7HrOejeGIUSYUC0j7vIg34Q1VAGkPdUhrRLWx2KcHxJvqm1C4d5
-X-Received: by 2002:a05:620a:404a:b0:787:efeb:8dd4 with SMTP id i10-20020a05620a404a00b00787efeb8dd4mr2053120qko.51.1709122057754;
-        Wed, 28 Feb 2024 04:07:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709122057; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp179675ejb;
+        Wed, 28 Feb 2024 04:09:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWhy0flsSSTNEONRzXRB10qh3D5W0K2sp0IMWtxvKRlHfIe5nI6bj+Nq7/EfBQWBFO3jmZpOq4Fy2/ZoainIJg/VMALaFr1
+X-Google-Smtp-Source: AGHT+IFTG0+toXa6fAXG3uuS6+rdBOsP0O8ilsP2l9YFOMn2w3OMIDP+0gxXbcLywz3/LUSR8pD5
+X-Received: by 2002:a05:620a:45ab:b0:787:e359:372f with SMTP id bp43-20020a05620a45ab00b00787e359372fmr5858184qkb.9.1709122183026;
+        Wed, 28 Feb 2024 04:09:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709122183; cv=none;
         d=google.com; s=arc-20160816;
-        b=vJylkjtx33K8kLbocahdw4Yv/Mk2qeclyGmstB7nFTwMhnCRJRsPCVmxELbPdk0FCh
-         LiiwpmmwTZs275wmKM83TBQAjlZw0Pk+YblJK5Arm5C8VGZp+IuFXOh/LWYzjNmEUrsq
-         Exf2yTx+AyKOD33QAT/13p8XDINc45BCmIs5QA+I9ngaLtQpYgwSWonfQ5xiJJr6w0AL
-         43bhhRDQTxwATJGjWxummLKcZH0hHawE6LOHLrGDSn+d8dktM/GyckgoPbE1i+vVsita
-         38G8rxsuvcbCp3d+9deZpbvLwD+idJ7EFdo/1c4eyuQ+mlwwe+vAO9HW4iio0MvJmARS
-         tlCA==
+        b=vFqQlN/Xq6TcW/vgaG+chykF4j3bDgQc4/Nn1qPryGgXXGbXibTFr5uIeS3haQPJjS
+         7ozhA/p+PFPOzv0yPZfenECZaeL8AxWBuwMzgpfFe3tFOmFOgnt0ZKQSEADes8HMbhzf
+         SyTpFwMb3d5HLdppMdr7Tg/dCjfTL8sw67dcRIjIZb6kmRfwsDge6SrZrd1UHVSjcZly
+         zpvKXNdJYlw79LmZMH+faxxGy+/HiaNtC8R8iKXK/nvmtY40sneacwq7/mwwy9Lkdi9w
+         h0vMVRt2VGWSMgqfKCpLGmYkoWNu6XkbdWTGTfDUI9hiv2Wztyjw8k5uW2Tq8hQYS3sV
+         YshA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:references:cc:to:content-language
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BL/54CtAPj7J/HPpNmalyW6JbEk+lwX9pFy6xWP8SLQ=;
-        fh=3r+WMjrGrP/r841Yyecl4Qi9fVQ7B+F3DccNS/DmY68=;
-        b=nbcn03l9AQjFtf4RF8/624xuhDviXSPFRJbbUCFEyuGXdBOomhpM9/seEYxXLizA3Q
-         DJ8vdRJV4+qgJO4YzuhZ64QeUB7fdad/4oBD+GlshxbpgXSiAtFAyEqOoygk60EpO0eP
-         d/edoiN66X3Ok43OYbvZiPEIK28Iw1QGJVm8iXxUKLtNeI7WI1xr2DSCUm4yV9pFStZi
-         ULJjFyLI7aAv1paHIN9OkNdpx9Fh60OLd01s6woe9RoV8yGR3lgGZO9rrGlE/Ko+E03O
-         6vYWoByH+c1zDi0GCVp3hf0um78Q6J1DGmlQEJwbOcCmMOsZgWpnMNC9+7syJD7B9ZTu
-         peGQ==;
+        bh=QdPALHojxgwn5EqucwFptg2gqDaj4pL0aF8Zm3MbBnU=;
+        fh=6bPycBUAOJAu+GeP6XP763Bh6xcIqklS9+kCFP1qiko=;
+        b=GDvILxuoWlqQ1kZuYB64qgO9d/sjF0eYivLQ8aSCWXsW/7DV2/WkdHWtUkiJZRwqrm
+         zNVnOvf1cFIlCsKb9F6rObbcjowyJUjfFmwbhAgIRbgw9STnibnhjdwshFlWrPRQXqge
+         CuyzZ/Y6uo8apbnb3Yb+Dos+SEeHB79nKBRZYzhNCxM9PIvcW6omcOJ8C2Uc5E5HAxS4
+         tnXk6SQsq6H0ahD38ERawzNYFzwnpPtTpihzRm4HtYQvZBdNx3eP08jOvUKGzT563kMZ
+         2psvhLg0d7sleXmK4kfr0yzw7nIOn9KQAyCglUAGYPCbNr0ktitZpeDWVynEGpTcJtz+
+         NZ2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SMBbKOg7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ak6ZgjPh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wh24-20020a05620a56d800b0078726cffc20si9302483qkn.369.2024.02.28.04.07.37
+        by mx.google.com with ESMTPS id z18-20020a05620a101200b00785da71a474si9356040qkj.193.2024.02.28.04.09.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 04:07:37 -0800 (PST)
+        Wed, 28 Feb 2024 04:09:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SMBbKOg7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ak6ZgjPh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfIie-0000IY-Kf; Wed, 28 Feb 2024 07:07:29 -0500
+	id 1rfIkI-0003Aq-LF; Wed, 28 Feb 2024 07:09:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfIhm-0008CC-9T
- for qemu-devel@nongnu.org; Wed, 28 Feb 2024 07:06:40 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfIjg-0002eH-Pp
+ for qemu-devel@nongnu.org; Wed, 28 Feb 2024 07:08:37 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfIhj-0004Gl-D3
- for qemu-devel@nongnu.org; Wed, 28 Feb 2024 07:06:33 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfIjd-0004np-Ii
+ for qemu-devel@nongnu.org; Wed, 28 Feb 2024 07:08:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709121985;
+ s=mimecast20190719; t=1709122107;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=BL/54CtAPj7J/HPpNmalyW6JbEk+lwX9pFy6xWP8SLQ=;
- b=SMBbKOg7V57m/jss4ul0Nso3nh+9JLHIPGIwwcJ92fm2k/HI3UbvrRSXhrpO0c9H3pzCa0
- s7MlcdAwlw/MAaXNYSWgyZQkcAHb5QMXx8jJPVPXRvlJ6a6VeYDkV9aR6Kx3ZslCCWYuOu
- hdyfrbjJA4lz2aQt3Sd3MOp/FsDJyOE=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=QdPALHojxgwn5EqucwFptg2gqDaj4pL0aF8Zm3MbBnU=;
+ b=Ak6ZgjPhriTzJq8LdUmVv5CxJZzl5QK9DUHlGDO+hUOfAktkyHGN5v+WlHb2LrrcmdWLgS
+ QobuhN9P8bYWD47tduaRHVACgBgMqwyslnDGNaeWskDMk44x5tvC9BS0rjaMls1+nNcnpP
+ KWAd52x6zPD82CypxPoogfkgndiJFY0=
+Received: from mail-oa1-f72.google.com (mail-oa1-f72.google.com
+ [209.85.160.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-595-DjgyDVORPia_IA43e4XrIw-1; Wed, 28 Feb 2024 07:06:24 -0500
-X-MC-Unique: DjgyDVORPia_IA43e4XrIw-1
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-787c04e48a7so498842585a.1
- for <qemu-devel@nongnu.org>; Wed, 28 Feb 2024 04:06:24 -0800 (PST)
+ us-mta-147-LUHTkvTTPJiEkZBBNn3GkA-1; Wed, 28 Feb 2024 07:08:24 -0500
+X-MC-Unique: LUHTkvTTPJiEkZBBNn3GkA-1
+Received: by mail-oa1-f72.google.com with SMTP id
+ 586e51a60fabf-21e70fb3333so5486986fac.3
+ for <qemu-devel@nongnu.org>; Wed, 28 Feb 2024 04:08:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709121984; x=1709726784;
+ d=1e100.net; s=20230601; t=1709122103; x=1709726903;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BL/54CtAPj7J/HPpNmalyW6JbEk+lwX9pFy6xWP8SLQ=;
- b=TQI6qVLJ/OJtd9apHRNVWNCJBf8sYPhENIaR2H7qE2nEMuZGlf5hZbOYnZkHV/CEni
- OM1H79FXSKt43FsglqLb+GIz/DYCG2FyCdwKGnJVzArP8IX+fel8Re1+a+w2MI7TdSvP
- 5dDXvtUh0FsUgr280kNoDQZQv961bmXM97kw9nT2Eygza4AS2n1Pnp+U+B51l5TXNjQI
- m/NdFY4NmCFyeFi9G9vj5qlAZgUjOLRAXP6F8r1iJv4H1pLZQX+EOqYqcIr373D4QyLd
- 9rmCuHtfzop3bzMUh197p829d1XzHaW3lN9aJbByRSYK7Wp3XcQReMF52AF09zCCd4Kb
- 2oEw==
+ bh=QdPALHojxgwn5EqucwFptg2gqDaj4pL0aF8Zm3MbBnU=;
+ b=jIaqCLrkAdnrJtt6iIJ6mgcXe6U+HoiO4nqp8OmU1F7ZkmOYrRryRbSavmU0vYYopW
+ kj8Re08hVbNGA6xS4POXP901BmngAHCmnDrzho/sjA/ZuiPfc+bzeiM7C4/+CA+azLxF
+ URS24oML6X2AkP7kc8+kXG5e8AZ/ZMV8xdUtpcr0uu+GlFCRWy9Pvm8IHeG3VGgwmNSA
+ 7J4cskwv5lCPBjf02qRpXKdAVDu/Oo2GtoOMYpiaUerJtPaNc2x2UKvFIkIRBoUDj0G3
+ 3OvffTUPVknUTaXZIWk7Ur8I4yFZ9gNlA54jRi+8KdHhNj3DowbOQs4X1nMqQynuy/0r
+ loIA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVhoK79sOEk5EgFShJVicpy4EAKlIWD/dpOjXVwR5vebPemiSNikGlspvSlfjQbnLZ+Ka0DbkhfpZgTNX4jLLeEvLOapOg=
-X-Gm-Message-State: AOJu0YzUekrfUMk4b/kMB9b13vCttG5RATI47fZ1FYK6Wletrbl4khR+
- FBd4/Bzq3hdd3d3kvWF439im4V6Ee8INpp5A2p/f/Yis/Bd2zXwlQTTUKN9NgnK6NEqHMUZWMKe
- e5+mElGz9IcA4gRx94u9iK8RoyNbVVf6N6CjTpoCDO45+xRaDj26e
-X-Received: by 2002:a05:620a:1187:b0:787:24a7:78ff with SMTP id
- b7-20020a05620a118700b0078724a778ffmr5030563qkk.11.1709121984066; 
- Wed, 28 Feb 2024 04:06:24 -0800 (PST)
-X-Received: by 2002:a05:620a:1187:b0:787:24a7:78ff with SMTP id
- b7-20020a05620a118700b0078724a778ffmr5030545qkk.11.1709121983759; 
- Wed, 28 Feb 2024 04:06:23 -0800 (PST)
+ AJvYcCX4rbqzn5cZ9kQRhgQErU+AC7ACCdohjghci0ZVtUQa/AZj2w78gdGPWloYHxxBpCsXMw5XtyymaFKd+h76kSNRMwW9Bsc=
+X-Gm-Message-State: AOJu0YzCfTIiKp+2NX2Tj7UrCVzR9pQESKAeziOLRuMaqrESR+aUoth4
+ f9tpHFd+k4O1qwKNis3UPgq3OIb8BMVCcs6RRd+f7GgIaiXOJgy7jbOnwD1hk4PmN1KxM4F67Eb
+ VZwO+nNQJQZkpm8F/H6lSCqy8F/vo1MqtcYaSAaqG7KfQjxH7/X+2
+X-Received: by 2002:a05:6871:7990:b0:21e:5c6a:7f7e with SMTP id
+ pb16-20020a056871799000b0021e5c6a7f7emr13862171oac.51.1709122103798; 
+ Wed, 28 Feb 2024 04:08:23 -0800 (PST)
+X-Received: by 2002:a05:6871:7990:b0:21e:5c6a:7f7e with SMTP id
+ pb16-20020a056871799000b0021e5c6a7f7emr13862150oac.51.1709122103521; 
+ Wed, 28 Feb 2024 04:08:23 -0800 (PST)
 Received: from [10.33.192.181] (nat-pool-str-t.redhat.com. [149.14.88.106])
  by smtp.gmail.com with ESMTPSA id
- t10-20020a05620a034a00b00787e11574c5sm1803384qkm.125.2024.02.28.04.06.22
+ n24-20020a05620a223800b00787bb45cf5asm4511521qkh.117.2024.02.28.04.08.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Feb 2024 04:06:23 -0800 (PST)
-Message-ID: <54fe3a53-5bb8-4907-94ca-817c3000048d@redhat.com>
-Date: Wed, 28 Feb 2024 13:06:21 +0100
+ Wed, 28 Feb 2024 04:08:23 -0800 (PST)
+Message-ID: <1c52a320-649c-4b83-8c88-724442e0b5ca@redhat.com>
+Date: Wed, 28 Feb 2024 13:08:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] Add device DM163 (led driver, matrix colors shield
- & display)
+Subject: Re: [PATCH v2 5/5] tests/qtest : Add testcase for DM163
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
  qemu-devel@nongnu.org
@@ -115,6 +114,7 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Samuel Tardieu <sam@rfc1149.net>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
 References: <20240228114555.192175-1-ines.varhol@telecom-paris.fr>
+ <20240228114555.192175-6-ines.varhol@telecom-paris.fr>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -158,18 +158,19 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240228114555.192175-1-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20240228114555.192175-6-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_SORBS_WEB=1.5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -184,48 +185,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SIlTtgcgSKNg
+X-TUID: bLnGE2t/Fqax
 
-On 28/02/2024 12.31, Inès Varhol wrote:
-> This device implements the IM120417002 colors shield v1.1 for Arduino
-> (which relies on the DM163 8x3-channel led driving logic) and features
-> a simple display of an 8x8 RGB matrix. This color shield can be plugged
-> on the Arduino board (or the B-L475E-IOT01A board) to drive an 8x8
-> RGB led matrix. This RGB led matrix takes advantage of retinal persistance
-> to seemingly display different colors in each row.
+On 28/02/2024 12.32, Inès Varhol wrote:
+> `test_dm163_bank()`
+> Checks that the pin "sout" of the DM163 led driver outputs the values
+> received on pin "sin" with the expected latency (depending on the bank).
 > 
+> `test_dm163_gpio_connection()`
+> Check that changes to relevant STM32L4x5 GPIO pins are propagated to the
+> DM163 device.
 > 
-> 
-> I'm stuck on some issues with this implementation :
-> 
-> 1. Tests
-> 
-> TLDR: how can I provide a test or an example?
-> 
-> I've tested the display by running custom executables and
-> comparing to the result on the real board, but I don't
-> know how to test it using a QTest.
-> 
-> `qtest_init_internal` sets `-display none`
-> so there's no way to test the display visually.
-> 
-> There's no `visit_type_*` for arrays so accessing the DM163
-> buffer to check its content is complicated. I could technically
-> access all the elements in the array (returning a different element
-> each time in the getter for example), but that seems sketchy.
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>   tests/qtest/dm163-test.c | 192 +++++++++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build  |   5 +
+>   2 files changed, 197 insertions(+)
+>   create mode 100644 tests/qtest/dm163-test.c
 
-I'd suggest to try to take a screenshot via QMP or HMP. If you need a third 
-party binary to get something on the screen, it's maybe best to write an 
-avocado test instead of a qtest. See for example 
-tests/avocado/machine_m68k_nextcube.py - it takes a screenshot and then 
-converts the console messages from it via Tessaract to text and looks for 
-the expected strings there. Alternatively, have a look at 
-tests/avocado/machine_s390_ccw_virtio.py - it boots a Linux in the guest 
-that writes a string into the /dev/fb0 framebuffer, then takes a screendump 
-and then tries to find the string in the file. The latter could maybe also 
-be done via a qtest if you know how to set up the framebuffer without a 
-guest kernel.
-
-  HTH,
-   Thomas
+Acked-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,421 +1,117 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp24004dlb;
-        Tue, 27 Feb 2024 21:38:37 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWGd4ZLnI0Y1fcaZqNCvUn+0sWp3baToCjtf5E2Dc/wyNuqUb9flVg+GIrUtv6C2a52E+0QweXPROfa26uCl8m96huHFRBS
-X-Google-Smtp-Source: AGHT+IHKKlY8W0rgYxIMpf5nzAELMu2j5g5zFEtPdmhbsmZLNRbUBNcHnCZqraW5oRFny4gyipVJ
-X-Received: by 2002:a62:ee0b:0:b0:6e4:74dd:8460 with SMTP id e11-20020a62ee0b000000b006e474dd8460mr9126186pfi.10.1709098717531;
-        Tue, 27 Feb 2024 21:38:37 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709098717; cv=pass;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp40942dlb;
+        Tue, 27 Feb 2024 22:30:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXen6NEltms98vfU9fK+L8m2PjPOzuk+YyKI4Ww901QQjtes5lv2zT6jeiI7OoKbm90x8ItCvf9JkYepJ6tF/vJjOKxW+w6
+X-Google-Smtp-Source: AGHT+IGv3lxdGwUXF9m9bQ50CLrvnqGV1/PN1yXnUlgehcHSP/tQC0+bb6aPYn+femGVMtVouqW4
+X-Received: by 2002:a05:620a:5e11:b0:787:bdc5:7cb0 with SMTP id xz17-20020a05620a5e1100b00787bdc57cb0mr4259480qkn.3.1709101803099;
+        Tue, 27 Feb 2024 22:30:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709101803; cv=none;
         d=google.com; s=arc-20160816;
-        b=wt5nWRf8QTrM9RPVKElY7L+G9dhW6ClL7UQ+4VYDiQszl5cnbNALmdJobZH5zhsVKL
-         bLA8Z0+1urxp0SL/tTFFFUXH1sQ+B6+Y6dQ1eOmfJh2xY9xxrWePzQLgHZKYc+tk6KsW
-         wrEUnfgNfv4IulpWBBWUdnQY5cHpx7dpSgh2mdPWBAvJsixmI3oVN+ZCrDV1xwheF5BW
-         aqUh7TaWz5AqIFSE7tMuPIxygvvUSP7hy2RGaR41LuAMLGiyOpj+aW+BQ07LBSx77I0E
-         K3XnXZOUSzef3YEmaNskvovk75AR75pWbmOxeL0i4NvPLcVjRUaPK8y8J86P3DR02bY1
-         b+LQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=331EN18HP6VLDxxJfGhy5X7zvzfJ0YCmP2yi+OnRANQ=;
-        fh=qz8VF8tzgAphSskoFYBsXVssBZTIT1LIHmUHctC40G4=;
-        b=WZ4J6RZgG0ChOSKpYGfG1qx48AjFKvSYLZ9v2WIv44voLh3PyXukCgUp7qjCYB7YK8
-         gOuNwikx98e8nE6cUsUp39BDcKNB+zSTH6g29cMFXDTzGBbLlL4TnwmFd2vryxO8qRT4
-         2PzDACVyvs4G6QzcJxTbuPhiSr4arjSSEFrOvREX3oL7dtsYk3q+t4fk07pngS4nH7uv
-         CK12CYmOeh/QsYtJSryLxP+Nz+dprrXZunE8snKFex1zE1lRMELIlsLOoNCiwFZl+qN3
-         yc+8C7TIgXHDCgjOPpD6Xn5ZXK5NtTLtP8pCWkJs8jK3+N2FAiS5WJEvga5nU/k1GCg9
-         YqQA==;
+        b=gv5ZPtNioH7hRo9/cYDurqg/+xEkxxh8lVjeM+kj54e34f5w5u03uo268IpB1Qf1Za
+         tw0ACzWchq2t//nIMf53Y18RDPvYxhJXcBgoQA7Jtb4rGxa/6LoKKzo5H+S8DJx5SWY0
+         xCmFQ0k12Ude5JeCStIJ9oHCKJNQQS3P2f5fjY9QmXSBvSSsMXfU53Qbr7d/oXEF5ZJd
+         3B7e/BJUIYc+flTF0VmoblUaqwe2mMZoD8on+XfhgP9bCzVKkOpYXCSQAK7r0NcYcH2F
+         M5RYNT68Xr5mamo6jrHbZRXf27bfhwHKGWFOSZopLtBz7Vwi6VFSeWuVt7UKycyaUwVH
+         Ej8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=HtJcM8MeiQuDt8oTen0T+D/ITXNS5s2KD/Y3kyt7mo0=;
+        fh=J2ghTm4PdECeW0dOE4goFbMA3ATHz+aLwgaexA57/d0=;
+        b=T1wYxg/vHc9ygqnaSnFn549xerpXr6ujrbmz73AZC/qfUjKQSRVlAy8uCXg/eGI9BV
+         XiKxyVXQm1af9195JmldRAgkoMTdOhxmY6YmRPF+IsugnFbh9pH2nBX791hS0UCwODJQ
+         vEPhQZRt5TKcZGgvqLc+3h4qk5x9dfd7bqT6zyRGrfRndWXMD5trKw/KyTqaluYxgHop
+         cYC6lYNCse1RP90UKLjGNOAmq7wIoCFUP+Px59sorPHkktKgWBZq0fG3UDZzgqTzWJQs
+         4XuPflIJimxMo9dnjeZ+IRPUeurrudxFfDdQRQrvR1lSxxZ8sGaEbo3yzXONhHmD3dEd
+         um6A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.17.96 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
-Return-Path: <jeeheng.sia@starfivetech.com>
-Received: from CHN02-BJS-obe.outbound.protection.partner.outlook.cn (mail-bjschn02on2096.outbound.protection.partner.outlook.cn. [139.219.17.96])
-        by mx.google.com with ESMTPS id jc31-20020a056a006c9f00b006e55ff0ef67si760954pfb.284.2024.02.27.21.38.36
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2024 21:38:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.17.96 as permitted sender) client-ip=139.219.17.96;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LtVvPCKN;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id f21-20020a05620a20d500b00787b7df206esi8794099qka.201.2024.02.27.22.30.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Feb 2024 22:30:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.17.96 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Tj1DXh7P6xnCyu2pN9PSvb7azskVEAtKHLHOoNDs6garnoTwUjljCWjj1QqAuDyvfEqdhC2GqM//u/xdvCcSt3Rk/D70D35DtMRdHqxK1kwLXt+6bdNMz1Jdg7JgbVD+bHhXD6jwdJWpgZT/e2XHlZANm/Ms85lmjNBtWcQ5r1636j2CCCmPYrjA8B0ZNgyRIeS76A+CJyRcbtS1WMIxfP0jLBqcZksS04fn2w4n0W7Pn87tp69+0tbFcK3iZRD9WduwEB3OowTnJ7uLAkM42m8RsMu1LI2i7NYh1O231+XDln3qHgzRN7SxQ3n3FTPsDMmyw08Bo2WwZWucQ8vo7Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=331EN18HP6VLDxxJfGhy5X7zvzfJ0YCmP2yi+OnRANQ=;
- b=G3718lqXylUCK2Vx4JYR5Tk9E4EmYS7SnX5yeJ7yLcVK9eXFhQ9LuOEgEEavLsZjmVBdOD17uylz4Zwb/woU24YK1fHaPRIc5SBliohYJmjzmgVsSXflrIcuTT7giJsuCTH69U+ivHLsBbB2NNt/B9KOTcfQaULY60EoMWulwGUjVaIYBfJ4od0fMK+hTTKxBe2KJq3p4BpEcSPZlS3gjgLBz4NlKbh3dzbbq5dBv8cH558zfHCx9K/TS1iev5WqgotLG7LR4ubn2eUUc7h+NLg/5pwFqQv2rPet+zSRY3I2sg2e9daYS9jm5MY9iZHKRqeJURP47XTZp6RrHCK5Aw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:f::16) by BJSPR01MB0660.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:1f::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.45; Wed, 28 Feb
- 2024 05:38:32 +0000
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- ([fe80::fcfa:931b:8b1d:6af5]) by
- BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::fcfa:931b:8b1d:6af5%4])
- with mapi id 15.20.7316.037; Wed, 28 Feb 2024 05:38:33 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
-	=?iso-8859-1?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, Eduardo
- Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang
-	<wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
-	<richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>, Markus
- Armbruster <armbru@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	=?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell
-	<peter.maydell@linaro.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Zhenyu Wang
-	<zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma
-	<yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: RE: [RFC 4/8] hw/core: Add cache topology options in -smp
-Thread-Topic: [RFC 4/8] hw/core: Add cache topology options in -smp
-Thread-Index: AQHaY9zhac1dKVm9KUeTp1HqzZbrarEfSC7g
-Date: Wed, 28 Feb 2024 05:38:33 +0000
-Message-ID:
- <BJSPR01MB05618A7D409C2DE3E408345C9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-5-zhao1.liu@linux.intel.com>
-In-Reply-To: <20240220092504.726064-5-zhao1.liu@linux.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BJSPR01MB0561:EE_|BJSPR01MB0660:EE_
-x-ms-office365-filtering-correlation-id: ef73f824-358b-461e-f815-08dc381f8082
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- 4OHnog0gJpMs5X7qooXax/QOlFy900m9uQ/KbdET1l5gSKChPfYUMwoAorVlaDANSHgcG+KYBoicIu1+yUdhYuJnJBJsndzpF0E/bk6rNyeJEnGUYEQVNslHOXierOZGeFZvvtxswXoAbtz1iYY8si3XGyaPBUXybDNINGaJLfls1d5czt6/08xWX2tYxObGbNZ3a7y1qlQYrxC/1UzjdMggUH6xSeT3otrPbVOWji9awpN7oTlVPvcHzqGTxFapnj/v7fLXScw3/ZLUZSiHwKCKHjUH1ALc0y6OT7OLIfu2n9A1VdXLrWoYyl8JNrOGyDsCe+tnkwI8vh+2CEGh0C44J10h200tGjgGHXv2qVt8N2ClccgeZJyap4OfcoBLNFiXKhoGmztz91swnLv4VT+F8Z+utdbRn4tl3xuuEzJCFbzAE1rG67AFbqhDfrzmxvSpT+Rjlx27dC9eAWCAo2jisQTT9iQzJa+Xj8kLTSn9UMMGSuZ3SSRaOPWm/ZYvB6a/2DyYH+WTVEBg1EmAuvWtYA6WTFzCew5cWUSfV923yYZP5vN/hQq0tYx5STxVUmMWs7RzdAPfQ1bOivMscXtR0zkkomOszD8K3fAiETWJacReHIQKj8NiQAah66KBuqSRZlJIkpo5C4ahTjc3gA==
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn;PTR:;CAT:NONE;SFS:(13230031)(38070700009)(921011);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?iso-8859-1?Q?wgns+GdTjLvBmhQwaj224Za7m//rAdioTwDhXGCvJKOv36mNhckcFneCwr?=
- =?iso-8859-1?Q?fdMVDc+XggLWHxPqZMlt/MdP0SOd2V7j0RM0rN76UkwxlETo2pkgLbaL6i?=
- =?iso-8859-1?Q?HnN+qBmHQxw8QdQ3LIuR/Y2Uy6Pg5eXwOfSKiBaDt61tUKS3zXvE1AKFBb?=
- =?iso-8859-1?Q?StXFLvbcNZzeYutJ8dkYm5tX7qCmw2m5IBG2wlmmL3nxAF8FEOdJNUawfO?=
- =?iso-8859-1?Q?nT5yalhnGSvEtz2iYozZ6UPCefhjZQZ9fAoGFgh3NZveOtDIMewlYs8XNG?=
- =?iso-8859-1?Q?buqql8msqGFvXh7CVmwY+G8FTGrbmUu2l6+cP0xgLx7MIJvopAgszSa+EI?=
- =?iso-8859-1?Q?Y8tlei07V4nAo56Oap7ubgNg7/t9dHcUC4jWBn5XObw4RlV4/bg9gb3Rew?=
- =?iso-8859-1?Q?xOsjPcmigiMe8KQDF7L4zOI8NW5r4vLPdc9IBFpMEIGZnYnVoDLEKymDVW?=
- =?iso-8859-1?Q?fCaWIworJsX78vnP/2jV1Ujs/ST6hI5aemokQTTlaKz+KOSNnRbfz92XiO?=
- =?iso-8859-1?Q?YFY1in1MkXoVbG4CsCm+PwTB73zE5vYHr0xDYeXmV6aSoBNvH1+hez4RTD?=
- =?iso-8859-1?Q?1wLn0hMS8brlHwHReWWI48uceFds4JfBCZSh/8U4lVEt/HmPcRs0PljEzK?=
- =?iso-8859-1?Q?0CwEZNKvz+HTPClShZgl9sDz/C44TmpBuZymFijr98to+zQceRpZbthwlJ?=
- =?iso-8859-1?Q?xhOvEZUHXBQ6aGmdkmHFZjylZaE3b9sljrDI80qyVNto8YcXTqWs3+45n5?=
- =?iso-8859-1?Q?XEAYkZ/cGUBnNjNOpM8doGrR58SYpz00Zefjwqb3vionH+PQq10pro5Idz?=
- =?iso-8859-1?Q?cEfMsBAmWoSOvyeO93vsXS3We9txmv9H5LZ060lLDoRjUIy4AGGeySjj5A?=
- =?iso-8859-1?Q?4+Lg65nqybkFZYogRMPuJGvX1awHuGl0B/JeNrjpqouDARJ9enZRuvi9i4?=
- =?iso-8859-1?Q?qATDssgAeo6zjTpGCai2UvJjY0VAEfsIqjx9dbUVFZIK/Z9wsS9GUuGKQQ?=
- =?iso-8859-1?Q?utgB0jR02MtPvKm1rTJDxFxvoI98nR+Fii0w5cogB/qppR2d5hAYjz4VVL?=
- =?iso-8859-1?Q?qxKgrxutcgSA6pvWmJviiuceWwX/T0ElQ2WhQUA2d2ZmV78xaDCd29LEEp?=
- =?iso-8859-1?Q?/NzXIYmhO+yEfu643mCbc1B+0ruIIpaez+xH43uHaBRcpH3HebAJWpcPqS?=
- =?iso-8859-1?Q?Xq4ks8dQRBV0algy85YMybcKdfpYeuCGAK4vLQyYaYLbVVmrkxwc8ovwWf?=
- =?iso-8859-1?Q?67vjwKY7Xh+P3CLm1mwpLHBP/JwGngRxQdisRSYtfQoDg2ohkkexteOAgj?=
- =?iso-8859-1?Q?eBmb2gePjS5QfC0d/cZqIcwRENWpmJDkTCTSjOuT5usd0Z0ojvmcXbCXxl?=
- =?iso-8859-1?Q?FPm/iLExBZNNSzOwA/o//x/cvDGwcpJVKRaakJlsa34N4Y0CE83NEs6puC?=
- =?iso-8859-1?Q?7Nhxo1cKZsCXdF02KCs0HAgdDsXxldMN/SMwWS/CdzjazeJbbYGgkJD5uL?=
- =?iso-8859-1?Q?wIm8bfs1Y2ZHVVMM47BdvdteX4cyYsCW6sjf0ggYY/5SypeBC8zHkWrfrc?=
- =?iso-8859-1?Q?ipuCFMP5YcJcIfKu9xkb1KCvXb8eqdT9e/bh0yrC6QY426VkskYq0HqJPJ?=
- =?iso-8859-1?Q?h47BBP00Sm4SLPUgiT4jL/z5vApDuDwfcHgQA29z7XrC4Ifwy/YhJrTQ?=
- =?iso-8859-1?Q?=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LtVvPCKN;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1709101802;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HtJcM8MeiQuDt8oTen0T+D/ITXNS5s2KD/Y3kyt7mo0=;
+	b=LtVvPCKNHfS9e7Ujul8qJRjIEVXdA/MOLEGJo5xloeQjIvzqsqgQWoIw1Ctt1I4rDI0ONj
+	phoy3y40wxnlN7kIZ6l4c/ooJsSRCHHdSfFrfdh5zhwKKUpvSWsARWSvqspny/aPzZ2xi0
+	vEKcI5260qGiTI+yaUi4FMPpN/Pm96Q=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-557-dA63K2UUMD2ZLXRxMCZ57g-1; Wed, 28 Feb 2024 01:30:00 -0500
+X-MC-Unique: dA63K2UUMD2ZLXRxMCZ57g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7644785CE43;
+	Wed, 28 Feb 2024 06:30:00 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5252DC185C3;
+	Wed, 28 Feb 2024 06:30:00 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 257AC21E66F4; Wed, 28 Feb 2024 07:29:59 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org,  philmd@linaro.org,  thuth@redhat.com,
+  lvivier@redhat.com,  qemu-arm@nongnu.org,  alex.bennee@linaro.org,
+  pbonzini@redhat.com,  anton.kochkov@proton.me,
+  richard.henderson@linaro.org,  peter.maydell@linaro.org
+Subject: Re: [PATCH 0/6] Add ivshmem-flat device
+In-Reply-To: <20240222222218.2261956-1-gustavo.romero@linaro.org> (Gustavo
+	Romero's message of "Thu, 22 Feb 2024 22:22:12 +0000")
+References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
+Date: Wed, 28 Feb 2024 07:29:59 +0100
+Message-ID: <87wmqp3xug.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: ef73f824-358b-461e-f815-08dc381f8082
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2024 05:38:33.0515
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9LJKKtIeHJBuRWnhtyG3Zc4nyvm0UypDZpz8A11nCOEYRS5pVeFwjpRC4EVLZyA624TaL6MBP36VR+wRjHFrdh9F+MV1B50lgLL68wMijTQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0660
-X-TUID: a0RAXB/+YJcz
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-TUID: xMso3COBRt6r
 
+Gustavo Romero <gustavo.romero@linaro.org> writes:
 
+[...]
 
-> -----Original Message-----
-> From: Zhao Liu <zhao1.liu@linux.intel.com>
-> Sent: Tuesday, February 20, 2024 5:25 PM
-> To: Daniel P . Berrang=E9 <berrange@redhat.com>; Eduardo Habkost <eduardo=
-@habkost.net>; Marcel Apfelbaum
-> <marcel.apfelbaum@gmail.com>; Philippe Mathieu-Daud=E9 <philmd@linaro.org=
->; Yanan Wang <wangyanan55@huawei.com>;
-> Michael S . Tsirkin <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>=
-; Richard Henderson <richard.henderson@linaro.org>;
-> Eric Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>; Ma=
-rcelo Tosatti <mtosatti@redhat.com>; Alex Benn=E9e
-> <alex.bennee@linaro.org>; Peter Maydell <peter.maydell@linaro.org>; Jonat=
-han Cameron <Jonathan.Cameron@huawei.com>;
-> JeeHeng Sia <jeeheng.sia@starfivetech.com>
-> Cc: qemu-devel@nongnu.org; kvm@vger.kernel.org; qemu-riscv@nongnu.org; qe=
-mu-arm@nongnu.org; Zhenyu Wang
-> <zhenyu.z.wang@intel.com>; Dapeng Mi <dapeng1.mi@linux.intel.com>; Yongwe=
-i Ma <yongwei.ma@intel.com>; Zhao Liu
-> <zhao1.liu@intel.com>
-> Subject: [RFC 4/8] hw/core: Add cache topology options in -smp
->=20
-> From: Zhao Liu <zhao1.liu@intel.com>
->=20
-> Add "l1d-cache", "l1i-cache". "l2-cache", and "l3-cache" options in
-> -smp to define the cache topology for SMP system.
->=20
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
->  hw/core/machine-smp.c | 128 ++++++++++++++++++++++++++++++++++++++++++
->  hw/core/machine.c     |   4 ++
->  qapi/machine.json     |  14 ++++-
->  system/vl.c           |  15 +++++
->  4 files changed, 160 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-> index 8a8296b0d05b..2cbd19f4aa57 100644
-> --- a/hw/core/machine-smp.c
-> +++ b/hw/core/machine-smp.c
-> @@ -61,6 +61,132 @@ static char *cpu_hierarchy_to_string(MachineState *ms=
-)
->      return g_string_free(s, false);
->  }
->=20
-> +static bool machine_check_topo_support(MachineState *ms,
-> +                                       CPUTopoLevel topo)
-> +{
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> +
-> +    if (topo =3D=3D CPU_TOPO_LEVEL_MODULE && !mc->smp_props.modules_supp=
-orted) {
-> +        return false;
-> +    }
-> +
-> +    if (topo =3D=3D CPU_TOPO_LEVEL_CLUSTER && !mc->smp_props.clusters_su=
-pported) {
-> +        return false;
-> +    }
-> +
-> +    if (topo =3D=3D CPU_TOPO_LEVEL_DIE && !mc->smp_props.dies_supported)=
- {
-> +        return false;
-> +    }
-> +
-> +    if (topo =3D=3D CPU_TOPO_LEVEL_BOOK && !mc->smp_props.books_supporte=
-d) {
-> +        return false;
-> +    }
-> +
-> +    if (topo =3D=3D CPU_TOPO_LEVEL_DRAWER && !mc->smp_props.drawers_supp=
-orted) {
-> +        return false;
-> +    }
-> +
-> +    return true;
-> +}
-> +
-> +static int smp_cache_string_to_topology(MachineState *ms,
-> +                                        char *topo_str,
-> +                                        CPUTopoLevel *topo,
-> +                                        Error **errp)
-> +{
-> +    *topo =3D string_to_cpu_topo(topo_str);
-> +
-> +    if (*topo =3D=3D CPU_TOPO_LEVEL_MAX || *topo =3D=3D CPU_TOPO_LEVEL_I=
-NVALID) {
-> +        error_setg(errp, "Invalid cache topology level: %s. The cache "
-> +                   "topology should match the CPU topology level", topo_=
-str);
-> +        return -1;
-> +    }
-> +
-> +    if (!machine_check_topo_support(ms, *topo)) {
-> +        error_setg(errp, "Invalid cache topology level: %s. The topology=
- "
-> +                   "level is not supported by this machine", topo_str);
-> +        return -1;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void machine_parse_smp_cache_config(MachineState *ms,
-> +                                           const SMPConfiguration *confi=
-g,
-> +                                           Error **errp)
-> +{
-> +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> +
-> +    if (config->l1d_cache) {
-> +        if (!mc->smp_props.l1_separated_cache_supported) {
-> +            error_setg(errp, "L1 D-cache topology not "
-> +                       "supported by this machine");
-> +            return;
-> +        }
-> +
-> +        if (smp_cache_string_to_topology(ms, config->l1d_cache,
-> +            &ms->smp_cache.l1d, errp)) {
-> +            return;
-> +        }
-> +    }
-> +
-> +    if (config->l1i_cache) {
-> +        if (!mc->smp_props.l1_separated_cache_supported) {
-> +            error_setg(errp, "L1 I-cache topology not "
-> +                       "supported by this machine");
-> +            return;
-> +        }
-> +
-> +        if (smp_cache_string_to_topology(ms, config->l1i_cache,
-> +            &ms->smp_cache.l1i, errp)) {
-> +            return;
-> +        }
-> +    }
-> +
-> +    if (config->l2_cache) {
-> +        if (!mc->smp_props.l2_unified_cache_supported) {
-> +            error_setg(errp, "L2 cache topology not "
-> +                       "supported by this machine");
-> +            return;
-> +        }
-> +
-> +        if (smp_cache_string_to_topology(ms, config->l2_cache,
-> +            &ms->smp_cache.l2, errp)) {
-> +            return;
-> +        }
-> +
-> +        if (ms->smp_cache.l1d > ms->smp_cache.l2 ||
-> +            ms->smp_cache.l1i > ms->smp_cache.l2) {
-> +            error_setg(errp, "Invalid L2 cache topology. "
-> +                       "L2 cache topology level should not be "
-> +                       "lower than L1 D-cache/L1 I-cache");
-> +            return;
-> +        }
-> +    }
-> +
-> +    if (config->l3_cache) {
-> +        if (!mc->smp_props.l2_unified_cache_supported) {
-> +            error_setg(errp, "L3 cache topology not "
-> +                       "supported by this machine");
-> +            return;
-> +        }
-> +
-> +        if (smp_cache_string_to_topology(ms, config->l3_cache,
-> +            &ms->smp_cache.l3, errp)) {
-> +            return;
-> +        }
-> +
-> +        if (ms->smp_cache.l1d > ms->smp_cache.l3 ||
-> +            ms->smp_cache.l1i > ms->smp_cache.l3 ||
-> +            ms->smp_cache.l2 > ms->smp_cache.l3) {
-> +            error_setg(errp, "Invalid L3 cache topology. "
-> +                       "L3 cache topology level should not be "
-> +                       "lower than L1 D-cache/L1 I-cache/L2 cache");
-> +            return;
-> +        }
-> +    }
-> +}
-> +
->  /*
->   * machine_parse_smp_config: Generic function used to parse the given
->   *                           SMP configuration
-> @@ -249,6 +375,8 @@ void machine_parse_smp_config(MachineState *ms,
->                     mc->name, mc->max_cpus);
->          return;
->      }
-> +
-> +    machine_parse_smp_cache_config(ms, config, errp);
->  }
->=20
->  unsigned int machine_topo_get_cores_per_socket(const MachineState *ms)
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 426f71770a84..cb5173927b0d 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -886,6 +886,10 @@ static void machine_get_smp(Object *obj, Visitor *v,=
- const char *name,
->          .has_cores =3D true, .cores =3D ms->smp.cores,
->          .has_threads =3D true, .threads =3D ms->smp.threads,
->          .has_maxcpus =3D true, .maxcpus =3D ms->smp.max_cpus,
-> +        .l1d_cache =3D g_strdup(cpu_topo_to_string(ms->smp_cache.l1d)),
-> +        .l1i_cache =3D g_strdup(cpu_topo_to_string(ms->smp_cache.l1i)),
-> +        .l2_cache =3D g_strdup(cpu_topo_to_string(ms->smp_cache.l2)),
-> +        .l3_cache =3D g_strdup(cpu_topo_to_string(ms->smp_cache.l3)),
-Let's standardize the code by adding the 'has_' prefix.
->      };
->=20
->      if (!visit_type_SMPConfiguration(v, name, &config, &error_abort)) {
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index d0e7f1f615f3..0a923ac38803 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
-> @@ -1650,6 +1650,14 @@
->  #
->  # @threads: number of threads per core
->  #
-> +# @l1d-cache: topology hierarchy of L1 data cache (since 9.0)
-> +#
-> +# @l1i-cache: topology hierarchy of L1 instruction cache (since 9.0)
-> +#
-> +# @l2-cache: topology hierarchy of L2 unified cache (since 9.0)
-> +#
-> +# @l3-cache: topology hierarchy of L3 unified cache (since 9.0)
-> +#
->  # Since: 6.1
->  ##
->  { 'struct': 'SMPConfiguration', 'data': {
-> @@ -1662,7 +1670,11 @@
->       '*modules': 'int',
->       '*cores': 'int',
->       '*threads': 'int',
-> -     '*maxcpus': 'int' } }
-> +     '*maxcpus': 'int',
-> +     '*l1d-cache': 'str',
-> +     '*l1i-cache': 'str',
-> +     '*l2-cache': 'str',
-> +     '*l3-cache': 'str' } }
->=20
->  ##
->  # @x-query-irq:
-> diff --git a/system/vl.c b/system/vl.c
-> index a82555ae1558..ac95e5ddb656 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -741,6 +741,9 @@ static QemuOptsList qemu_smp_opts =3D {
->          }, {
->              .name =3D "clusters",
->              .type =3D QEMU_OPT_NUMBER,
-> +        }, {
-> +            .name =3D "modules",
-> +            .type =3D QEMU_OPT_NUMBER,
->          }, {
->              .name =3D "cores",
->              .type =3D QEMU_OPT_NUMBER,
-> @@ -750,6 +753,18 @@ static QemuOptsList qemu_smp_opts =3D {
->          }, {
->              .name =3D "maxcpus",
->              .type =3D QEMU_OPT_NUMBER,
-> +        }, {
-> +            .name =3D "l1d-cache",
-> +            .type =3D QEMU_OPT_STRING,
-> +        }, {
-> +            .name =3D "l1i-cache",
-> +            .type =3D QEMU_OPT_STRING,
-> +        }, {
-> +            .name =3D "l2-cache",
-> +            .type =3D QEMU_OPT_STRING,
-> +        }, {
-> +            .name =3D "l3-cache",
-> +            .type =3D QEMU_OPT_STRING,
->          },
->          { /*End of list */ }
->      },
-> --
-> 2.34.1
+> This patchset introduces a new device, ivshmem-flat, which is similar to the
+> current ivshmem device but does not require a PCI bus. It implements the ivshmem
+> status and control registers as MMRs and the shared memory as a directly
+> accessible memory region in the VM memory layout. It's meant to be used on
+> machines like those with Cortex-M MCUs, which usually lack a PCI bus, e.g.,
+> lm3s6965evb and mps2-an385. Additionally, it has the benefit of requiring a tiny
+> 'device driver,' which is helpful on some RTOSes, like Zephyr, that run on
+> memory-constrained resource targets.
+>
+> The patchset includes a QTest for the ivshmem-flat device, however, it's also
+> possible to experiment with it in two ways:
+>
+> (a) using two Cortex-M VMs running Zephyr; or
+> (b) using one aarch64 VM running Linux with the ivshmem PCI device and another
+>     arm (Cortex-M) VM running Zephyr with the new ivshmem-flat device.
+>
+> Please note that for running the ivshmem-flat QTests the following patch, which
+> is not committed to the tree yet, must be applied:
+>
+> https://lists.nongnu.org/archive/html/qemu-devel/2023-11/msg03176.html
+
+What problem are you trying to solve with ivshmem?
+
+Shared memory is not a solution to any communication problem, it's
+merely a building block for building such solutions: you invariably have
+to layer some protocol on top.  What do you intend to put on top of
+ivshmem?
+
+[...]

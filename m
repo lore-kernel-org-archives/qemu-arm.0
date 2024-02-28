@@ -1,117 +1,91 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp63998dlb;
-        Tue, 27 Feb 2024 23:36:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXGoNWBH0Yfbm274WZ5M9AVJBUCswgQmlBn905fpPcZjWvig1cdKoEnk/VpT360lHIih0NSrAHSz//Ru9dak5sFz5KBE/yh
-X-Google-Smtp-Source: AGHT+IELRVkVAzZflIbCx0MdOZilXAJeCNAHRddYXsHTs/CULQ2dVb5M9EtwZeYxP7nzTprBIPz9
-X-Received: by 2002:a05:620a:14b2:b0:787:f17d:d799 with SMTP id x18-20020a05620a14b200b00787f17dd799mr870418qkj.54.1709105768054;
-        Tue, 27 Feb 2024 23:36:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709105768; cv=none;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp109265dlb;
+        Wed, 28 Feb 2024 01:31:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV/KfrqS3T00dIPurW+4Ka+R/54BuRb+vSh8uKk6e3J0fQ1bASNaYE+R0sWAuQTO/VrNjhjI9wOljrHs+O3ICWBz4ZbfkxK
+X-Google-Smtp-Source: AGHT+IERJMOhdlx19XIbKCHYV5s1ED2o25M86t02yb7SpRa0TqYSdgqPDMdLknL/8NZVMV8rvPCf
+X-Received: by 2002:ac8:594b:0:b0:42e:78b9:869a with SMTP id 11-20020ac8594b000000b0042e78b9869amr12554904qtz.41.1709112682812;
+        Wed, 28 Feb 2024 01:31:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709112682; cv=none;
         d=google.com; s=arc-20160816;
-        b=uD7rBFZMyrn5hX0aUQWN+qFWBKJn9zrl/FnkvOW+JJTGW9q7SAReTseXQAt8wqQP2b
-         60s/iggO1G6D53+SczWObHD1NPD2Oy1bPzZAgK8eipBNRCbxFCr45kMiP+qW/UZRp/N5
-         iC+4t3kDuSXyVMw2xShcVGPA2ps14IRIGdkbxNpbh4MX1rzapsjX6j7tQXIYuJh+6gjv
-         V/qze9Q+TG44jboxYmQucv6zzI6xIqWjntUczisq7vPqd+z2IKJcZ3i5uyK/oGJ+7ED1
-         Wl1a4hF4Xge6hier5r6qR0MG22KfG47krFTVOthrI6pdoNgLuzjLfj8FS1hT0/kg1zhK
-         Ap/Q==
+        b=jNCOa0wVg4A1UuElj3uicEBTJMONmUxx5tyGb4gSL5sI5bRrR9Sae/uZG9aznBuuJD
+         Jz7OIj30r+4GtYBwLzqDlMzHj0H5kiE0J23gxQ/O5/qc2v/DZVcBQQrhzFpEPCvzgo67
+         61pkX4zOv6KmFQG8eauhKYNrX0EP8oKT8EMfJxoSYb26nXFpWfuCS2bxp+VcotMq6e8T
+         +Na/3XTTMS0Ethe06vEcm6xPqeLSaKYPAI992kG0JZg7VSu4ou0TD5kbuC9Nxg3Af8WJ
+         fYlel4gxXJW8DbYxO0rocCMh64h3Uit9B07EWuZ07e4oZBi6M7sBE7i1vJR8JIoe2bK4
+         +xzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:date:references:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=jtYXyLnp7bwjoHJPkkzUrax45s0QLF/9oIKbZvcy6ho=;
-        fh=C12WtIMWWuGcuHwLfiL01OHr//z6CyQ47MCLD95r5LE=;
-        b=dOzWqqFoMo/V8miywU3iM8sl5vFFRn9cN1HJm6ZaIciAziqSvPrPzRNUYz6hxUnSJn
-         9IQaGF//tZKOHj8kAwwUP4hyOLOxGOEn2utljKd9z2QAT01E3EwD0isBYT5tPd9MSg/h
-         LREkFZvZHOd8+118GBIZYrdWzY7KDzSQJHU8ZvHtKtx9bu06HQkcb5paYz3eHAWjgcMw
-         bzTFnPC0hn61ttrsCeKess2vg/TqRcRKhdxB2fC2xk61omcmLWw7Al1usnzVg6XBdRcQ
-         4ah1wZ3qhoqfvq80RhP35KoqRbpcOiTD9znqg5F2HnVFKAZcnYZsO8YzBN2kvYl1DMPY
-         rSgw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=8TFonrZeeb9Z5oiTebD7Ywi/vJ/Y18Mgf+7PSNgiT1o=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=t2dMZNxgZPYpWF9pflg4JK4YVfvPQP/+Kck+U7tCinRnx9cfLdRnL55WP0LD2qYSPc
+         RQk8vu+65M+Xh0DDqjDEnqE4nUythgeOcuVsYXRQL9w7+wdyzDST9TtEWwpFmfSTOnTe
+         uxO5T5Y5omHUGXKgDQ0C7eOytTTJhtExdnQzblYevGrvK7+sWwlGDDVENNsU+ypPUj6u
+         /At6uDksr9r5brCLUw44ylAxZrd5JA9YURwQnY9CNaEbLd27Y5C8Y9GNJeZnR531K1WF
+         dr67PIsOqEVucVZTvdtAZXpPOpwVLNuvWmB/AQd6tQPncfK39TE/33huaWZYoqTU+pnt
+         1d8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hbGXBRgN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4-20020a05620a09c400b00787c9e53212si7976083qky.280.2024.02.27.23.36.07
+        by mx.google.com with ESMTPS id j22-20020ac85516000000b0042e6f7e9996si9095405qtq.659.2024.02.28.01.31.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Feb 2024 23:36:08 -0800 (PST)
+        Wed, 28 Feb 2024 01:31:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hbGXBRgN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfETr-00077v-2J; Wed, 28 Feb 2024 02:36:00 -0500
+	id 1rfGHO-00012c-34; Wed, 28 Feb 2024 04:31:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfETI-0006uw-Di
- for qemu-arm@nongnu.org; Wed, 28 Feb 2024 02:35:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rfGHJ-00010w-Fk; Wed, 28 Feb 2024 04:31:07 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfETG-0002Cf-7M
- for qemu-arm@nongnu.org; Wed, 28 Feb 2024 02:35:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709105713;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jtYXyLnp7bwjoHJPkkzUrax45s0QLF/9oIKbZvcy6ho=;
- b=hbGXBRgNWuIgZDOl+bT4YT+LOeM0c2Lsbh3G6KB7kVfDmCMVGaaoZxEf5rdRtTnGw8wuM2
- HlVnb3Rvr7KA38j2v4mLtT+ft/YNlcEdziG0c19hWkZXe4OViwHpdXgOySN+mw4tU9MRY7
- 1jCEqhfIyguarSjsPbhj38zAlR4hDeA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-297-yvBg73o0OGyLeYZYnIRusg-1; Wed, 28 Feb 2024 02:35:07 -0500
-X-MC-Unique: yvBg73o0OGyLeYZYnIRusg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7871085A58A;
- Wed, 28 Feb 2024 07:35:06 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 30BCC400D783;
- Wed, 28 Feb 2024 07:35:06 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 1D84221E6767; Wed, 28 Feb 2024 08:35:05 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: <ankita@nvidia.com>
-Cc: <jgg@nvidia.com>,  <alex.williamson@redhat.com>,  <clg@redhat.com>,
- <shannon.zhaosl@gmail.com>,  <peter.maydell@linaro.org>,
- <ani@anisinha.ca>,  <berrange@redhat.com>,  <eduardo@habkost.net>,
- <imammedo@redhat.com>,  <mst@redhat.com>,  <eblake@redhat.com>,
- <armbru@redhat.com>,  <david@redhat.com>,  <gshan@redhat.com>,
- <Jonathan.Cameron@huawei.com>,  <zhiw@nvidia.com>,  <mochs@nvidia.com>,
- <pbonzini@redhat.com>,  <aniketa@nvidia.com>,  <cjia@nvidia.com>,
- <kwankhede@nvidia.com>,  <targupta@nvidia.com>,  <vsethi@nvidia.com>,
- <acurrid@nvidia.com>,  <dnigam@nvidia.com>,  <udhoke@nvidia.com>,
- <qemu-arm@nongnu.org>,  <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v7 1/2] qom: new object to associate device to numa node
-In-Reply-To: <20240223124223.800078-2-ankita@nvidia.com> (ankita@nvidia.com's
- message of "Fri, 23 Feb 2024 12:42:22 +0000")
-References: <20240223124223.800078-1-ankita@nvidia.com>
- <20240223124223.800078-2-ankita@nvidia.com>
-Date: Wed, 28 Feb 2024 08:35:05 +0100
-Message-ID: <8734td3uty.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rfGHF-0001P1-WF; Wed, 28 Feb 2024 04:31:04 -0500
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Tl8DT1hMjzvVyH;
+ Wed, 28 Feb 2024 17:28:41 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1E97718006C;
+ Wed, 28 Feb 2024 17:30:51 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 28 Feb
+ 2024 17:30:50 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v4 01/22] target/arm: Handle HCR_EL2 accesses for bits
+ introduced with FEAT_NMI
+Date: Wed, 28 Feb 2024 09:29:25 +0000
+Message-ID: <20240228092946.1768728-2-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240228092946.1768728-1-ruanjinjie@huawei.com>
+References: <20240228092946.1768728-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,278 +98,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1oRmu/GJ++0j
+X-TUID: 51+jAz4XkP9U
 
-<ankita@nvidia.com> writes:
+FEAT_NMI defines another three new bits in HCRX_EL2: TALLINT, HCRX_VINMI and
+HCRX_VFNMI. When the feature is enabled, allow these bits to be written in
+HCRX_EL2.
 
-> From: Ankit Agrawal <ankita@nvidia.com>
->
-> NVIDIA GPU's support MIG (Mult-Instance GPUs) feature [1], which allows
-> partitioning of the GPU device resources (including device memory) into
-> several (upto 8) isolated instances. Each of the partitioned memory needs
-> a dedicated NUMA node to operate. The partitions are not fixed and they
-> can be created/deleted at runtime.
->
-> Unfortunately Linux OS does not provide a means to dynamically create/destroy
-> NUMA nodes and such feature implementation is not expected to be trivial. The
-> nodes that OS discovers at the boot time while parsing SRAT remains fixed. So
-> we utilize the Generic Initiator Affinity structures that allows association
-> between nodes and devices. Multiple GI structures per BDF is possible,
-> allowing creation of multiple nodes by exposing unique PXM in each of these
-> structures.
->
-> Implement the mechanism to build the GI affinity structures as Qemu currently
-> does not. Introduce a new acpi-generic-initiator object to allow host admin
-> link a device with an associated NUMA node. Qemu maintains this association
-> and use this object to build the requisite GI Affinity Structure.
->
-> When multiple numa nodes are associated with a device, it is required to
-> create those many number of acpi-generic-initiator objects, each representing
-> a unique device:node association.
->
-> Following is one of a decoded GI affinity structure in VM ACPI SRAT.
-> [0C8h 0200   1]                Subtable Type : 05 [Generic Initiator Affinity]
-> [0C9h 0201   1]                       Length : 20
->
-> [0CAh 0202   1]                    Reserved1 : 00
-> [0CBh 0203   1]           Device Handle Type : 01
-> [0CCh 0204   4]             Proximity Domain : 00000007
-> [0D0h 0208  16]                Device Handle : 00 00 20 00 00 00 00 00 00 00 00
-> 00 00 00 00 00
-> [0E0h 0224   4]        Flags (decoded below) : 00000001
->                                      Enabled : 1
-> [0E4h 0228   4]                    Reserved2 : 00000000
->
-> [0E8h 0232   1]                Subtable Type : 05 [Generic Initiator Affinity]
-> [0E9h 0233   1]                       Length : 20
->
-> An admin can provide a range of acpi-generic-initiator objects, each
-> associating a device (by providing the id through pci-dev argument)
-> to the desired numa node (using the node argument). Currently, only PCI
-> device is supported.
->
-> For the grace hopper system, create a range of 8 nodes and associate that
-> with the device using the acpi-generic-initiator object. While a configuration
-> of less than 8 nodes per device is allowed, such configuration will prevent
-> utilization of the feature to the fullest. The following sample creates 8
-> nodes per PCI device for a VM with 2 PCI devices and link them to the
-> respecitve PCI device using acpi-generic-initiator objects:
->
-> -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
-> -numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 \
-> -numa node,nodeid=8 -numa node,nodeid=9 \
-> -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.0,addr=04.0,rombar=0,id=dev0 \
-> -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
-> -object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=3 \
-> -object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=4 \
-> -object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=5 \
-> -object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=6 \
-> -object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=7 \
-> -object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=8 \
-> -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
->
-> -numa node,nodeid=10 -numa node,nodeid=11 -numa node,nodeid=12 \
-> -numa node,nodeid=13 -numa node,nodeid=14 -numa node,nodeid=15 \
-> -numa node,nodeid=16 -numa node,nodeid=17 \
-> -device vfio-pci-nohotplug,host=0009:01:01.0,bus=pcie.0,addr=05.0,rombar=0,id=dev1 \
-> -object acpi-generic-initiator,id=gi8,pci-dev=dev1,node=10 \
-> -object acpi-generic-initiator,id=gi9,pci-dev=dev1,node=11 \
-> -object acpi-generic-initiator,id=gi10,pci-dev=dev1,node=12 \
-> -object acpi-generic-initiator,id=gi11,pci-dev=dev1,node=13 \
-> -object acpi-generic-initiator,id=gi12,pci-dev=dev1,node=14 \
-> -object acpi-generic-initiator,id=gi13,pci-dev=dev1,node=15 \
-> -object acpi-generic-initiator,id=gi14,pci-dev=dev1,node=16 \
-> -object acpi-generic-initiator,id=gi15,pci-dev=dev1,node=17 \
->
-> The performance benefits can be realized by providing the NUMA node distances
-> appropriately (through libvirt tags or Qemu params). The admin can get the
-> distance among nodes in hardware using `numactl -H`.
->
-> [1] https://www.nvidia.com/en-in/technologies/multi-instance-gpu
->
-> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
-> ---
->  hw/acpi/acpi-generic-initiator.c         | 70 ++++++++++++++++++++++++
->  hw/acpi/meson.build                      |  1 +
->  include/hw/acpi/acpi-generic-initiator.h | 32 +++++++++++
->  qapi/qom.json                            | 17 ++++++
->  4 files changed, 120 insertions(+)
->  create mode 100644 hw/acpi/acpi-generic-initiator.c
->  create mode 100644 include/hw/acpi/acpi-generic-initiator.h
->
-> diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-initiator.c
-> new file mode 100644
-> index 0000000000..1ade2f723f
-> --- /dev/null
-> +++ b/hw/acpi/acpi-generic-initiator.c
-> @@ -0,0 +1,70 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/acpi-generic-initiator.h"
-> +#include "hw/pci/pci_device.h"
-> +#include "qapi/error.h"
-> +#include "qapi/qapi-builtin-visit.h"
-> +#include "qapi/visitor.h"
-> +#include "qemu/error-report.h"
-> +
-> +OBJECT_DEFINE_TYPE_WITH_INTERFACES(AcpiGenericInitiator, acpi_generic_initiator,
-> +                   ACPI_GENERIC_INITIATOR, OBJECT,
-> +                   { TYPE_USER_CREATABLE },
-> +                   { NULL })
-> +
-> +OBJECT_DECLARE_SIMPLE_TYPE(AcpiGenericInitiator, ACPI_GENERIC_INITIATOR)
-> +
-> +static void acpi_generic_initiator_init(Object *obj)
-> +{
-> +    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-> +
-> +    gi->node = MAX_NODES;
-> +    gi->pci_dev = NULL;
-> +}
-> +
-> +static void acpi_generic_initiator_finalize(Object *obj)
-> +{
-> +    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-> +
-> +    g_free(gi->pci_dev);
-> +}
-> +
-> +static void acpi_generic_initiator_set_pci_device(Object *obj, const char *val,
-> +                                                  Error **errp)
-> +{
-> +    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-> +
-> +    gi->pci_dev = g_strdup(val);
-> +}
-> +
-> +static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
-> +                                            const char *name, void *opaque,
-> +                                            Error **errp)
-> +{
-> +    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-> +    uint32_t value;
-> +
-> +    if (!visit_type_uint32(v, name, &value, errp)) {
-> +        return;
-> +    }
-> +
-> +    if (value >= MAX_NODES) {
-> +        error_printf("%s: Invalid NUMA node specified\n",
-> +                     TYPE_ACPI_GENERIC_INITIATOR);
-> +        exit(1);
-> +    }
-> +
-> +    gi->node = value;
-> +}
-> +
-> +static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
-> +{
-> +    object_class_property_add_str(oc, "pci-dev", NULL,
-> +        acpi_generic_initiator_set_pci_device);
-> +    object_class_property_add(oc, "node", "int", NULL,
-> +        acpi_generic_initiator_set_node, NULL, NULL);
-> +}
-> diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-> index fc1b952379..2268589519 100644
-> --- a/hw/acpi/meson.build
-> +++ b/hw/acpi/meson.build
-> @@ -1,5 +1,6 @@
->  acpi_ss = ss.source_set()
->  acpi_ss.add(files(
-> +  'acpi-generic-initiator.c',
->    'acpi_interface.c',
->    'aml-build.c',
->    'bios-linker-loader.c',
-> diff --git a/include/hw/acpi/acpi-generic-initiator.h b/include/hw/acpi/acpi-generic-initiator.h
-> new file mode 100644
-> index 0000000000..2f183b029a
-> --- /dev/null
-> +++ b/include/hw/acpi/acpi-generic-initiator.h
-> @@ -0,0 +1,32 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved
-> + */
-> +
-> +#ifndef ACPI_GENERIC_INITIATOR_H
-> +#define ACPI_GENERIC_INITIATOR_H
-> +
-> +#include "hw/mem/pc-dimm.h"
-> +#include "hw/acpi/bios-linker-loader.h"
-> +#include "hw/acpi/aml-build.h"
-> +#include "sysemu/numa.h"
-> +#include "qemu/uuid.h"
-> +#include "qom/object.h"
-> +#include "qom/object_interfaces.h"
-> +
-> +#define TYPE_ACPI_GENERIC_INITIATOR "acpi-generic-initiator"
-> +
-> +typedef struct AcpiGenericInitiator {
-> +    /* private */
-> +    Object parent;
-> +
-> +    /* public */
-> +    char *pci_dev;
-> +    uint16_t node;
-> +} AcpiGenericInitiator;
-> +
-> +typedef struct AcpiGenericInitiatorClass {
-> +        ObjectClass parent_class;
-> +} AcpiGenericInitiatorClass;
-> +
-> +#endif
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index c53ef978ff..7efa0e14f6 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -794,6 +794,21 @@
->  { 'struct': 'VfioUserServerProperties',
->    'data': { 'socket': 'SocketAddress', 'device': 'str' } }
->  
-> +##
-> +# @AcpiGenericInitiatorProperties:
-> +#
-> +# Properties for acpi-generic-initiator objects.
-> +#
-> +# @pci-dev: PCI device ID to be associated with the node
-> +#
-> +# @node: numa node associated with the PCI device
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v4:
+- Update the comment for FEAT_NMI in hcrx_write().
+- Update the commit message, s/thress/three/g.
+v3:
+- Add Reviewed-by.
+- Add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
+- Upate the commit messsage.
+---
+ target/arm/cpu-features.h | 5 +++++
+ target/arm/helper.c       | 5 +++++
+ 2 files changed, 10 insertions(+)
 
-NUMA
-
-> +#
-> +# Since: 9.0
-> +##
-> +{ 'struct': 'AcpiGenericInitiatorProperties',
-> +  'data': { 'pci-dev': 'str',
-> +            'node': 'uint32' } }
-> +
->  ##
->  # @RngProperties:
->  #
-> @@ -911,6 +926,7 @@
->  ##
->  { 'enum': 'ObjectType',
->    'data': [
-> +    'acpi-generic-initiator',
->      'authz-list',
->      'authz-listfile',
->      'authz-pam',
-> @@ -981,6 +997,7 @@
->              'id': 'str' },
->    'discriminator': 'qom-type',
->    'data': {
-> +      'acpi-generic-initiator':     'AcpiGenericInitiatorProperties',
->        'authz-list':                 'AuthZListProperties',
->        'authz-listfile':             'AuthZListFileProperties',
->        'authz-pam':                  'AuthZPAMProperties',
-
-Jonathan, you pointed out interface design issues in your review of v2.
-Are you fully satisfied with the interface in v3?
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 7567854db6..2ad1179be7 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -681,6 +681,11 @@ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, NMI) != 0;
++}
++
+ static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
+ {
+     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 90c4fb72ce..affa493141 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6056,6 +6056,11 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+         valid_mask |= HCRX_MSCEN | HCRX_MCE2;
+     }
+ 
++    /* FEAT_NMI adds TALLINT, VINMI and VFNMI */
++    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++        valid_mask |= HCRX_TALLINT | HCRX_VINMI | HCRX_VFNMI;
++    }
++
+     /* Clear RES0 bits.  */
+     env->cp15.hcrx_el2 = value & valid_mask;
+ }
+-- 
+2.34.1
 

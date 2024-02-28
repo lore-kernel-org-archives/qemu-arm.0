@@ -1,164 +1,236 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp109279dlb;
-        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6Zw9KSc7TDBnU9b5nb5TQ8IDa6BH7KyjrrVXhJG2SiWN41r+a5ZG68mDUTXPbQNQe9iNxEuljk2tLr388lT+UGmWxMFDz
-X-Google-Smtp-Source: AGHT+IEhjFAe4bk9prWmwGB0X4RsQDtY6KdbbBciAX9x9k73V1LHq857g40XP72ewMs0EtJ3RLAI
-X-Received: by 2002:a05:6214:3381:b0:68f:a954:bba1 with SMTP id mv1-20020a056214338100b0068fa954bba1mr2883543qvb.26.1709112684753;
-        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709112684; cv=none;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp115103dlb;
+        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXgo4jB3nUnIZlytxmsON9TH7RixJrXBHtSMelfYmKrg/IMUORJyG+aq8/QRBsCeH2U2lWxx20ZCkS+CEADotcCxx4WSLEY
+X-Google-Smtp-Source: AGHT+IF3heb4s4rgd/qUyjVshFfU68ehVFma+2SRl3M+IESw5gXOnl85x8B+/CyHvEbtKh71Te/7
+X-Received: by 2002:a9d:7756:0:b0:6e4:8fa2:1c5b with SMTP id t22-20020a9d7756000000b006e48fa21c5bmr12486324otl.18.1709113570427;
+        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709113570; cv=pass;
         d=google.com; s=arc-20160816;
-        b=aCXrcBSeMVLg/FTSW0Od+Jb6kl1cDhORAxo3MRWVLHQRHxtJjiaqqg9ZBh1LwYd9kj
-         NJDE+kHkOk6L9tovNg9ZlA3xn/dIPbr/6whlGNTC5R17KtmVSdil02Nre2MF59JE8/YW
-         5I5B+oOZo0FkbvfmjPp4s0TCS1xfcP7RqZHI3NOQEACdhb+plvV6FOLojHLMcmuQTl8u
-         GtEVI91J9VM0CZodf139odRjYvGDYp2V0AY0kCjyTE6hIbYcKHlh823ktH6HIKBQwqxP
-         cw9KxvRRZT1n7ymCMsFx54gEmSrP5Ft9saJYoff/jNGzt7lWqCN0Z2ngMctrYTATDdfd
-         vG+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=DYdBcRTFVKdV17vpdL00pZLwPYPXQvdZfVh1xwk1UAo=;
-        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=f16W+3+MTj82OZ92ZUlq7Xh7gYghNVOSZ/0Y+5zQOGcZalnsF2rQBFf2zbnp/gfp1y
-         IvWR59v9L0SGQGEtY+9k6rMzF7+V7ZlSuM9qwRiKwS4kFn706N8ydQtOVnU4VJS58NkT
-         zGEk641nRdB5Xk6xbqE81r4m6iyiQmApqU12qCcEwov7vJMZomZmSIeIYW8NxaMbUkon
-         k28Fbvfklik9kDuPxCBuhu/QaaSoWweT1gasBcngjz4zeyIGZ64KNeT6jV7Gyjg6eCSN
-         +nAUuMXc7OQQB3TsuyQ1NLqgIyIcY2vAkOO5HAPJfSjynGkVNPTcPPXuCWavBpwp8hb4
-         pHsw==;
+        b=qwqN46UyebfVY2MmfpO80tLeXh3V5u7coNDvQdVfR0yS0/EujqP6+9Lq9JISIKxE2H
+         6wtj+rEEBk9NPfnAP+I7LqbvmA5QCgV5flTZIngXRNaX9yK8MNAi/h499XFCue63O5Oo
+         keAgQP9WJut6+AGOKhpzoM2Vb4hOH6ndLiC0+24drPS8/3sj8ZqcA8vRVL2rhsrLEXj1
+         sbcFLcblgUMMWm85xcHCpJcfaBt5YxU6Psp8x/TmzCZAAELgEgKvwGdED3CPwwVEKl8D
+         BxknQGLgf665YEt+pJ/gY4nZF6WtbdDycixkMoirKGHVLniTkCJ1PpMTJtnIpDo1xwF0
+         Ge9g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=hEXY382SLjpgk+SMEqO1Jnnclh9pnOZx/ib1bDc1Tj8=;
+        fh=qz8VF8tzgAphSskoFYBsXVssBZTIT1LIHmUHctC40G4=;
+        b=xTanCvrQAAZoII5P0b8dKUOM9UG7y34j5YYUcvlrWwoJ8tdRC/fu2gBwbNBPlMXszO
+         DoWwKNu83aILbnFa+mmTPVFE8KxFMgTYtv2C1lVojDPcXQnxzCUbm0UyFLl8sbv1CwYo
+         sec+0Y8FHPQ3BSbIFK+vHBAo0NtmERM0zyW/vpFa2yAdiqsgiRmpvNsQdZnr+WdDxYhf
+         PMVbOSrEKlhUA+4jx5iPihBFe9CnNizcsJnCIO5fu87WqvM65epw/g1A+QL0kFLzqd6F
+         FN6L9OTzXdmnWxwFG8soShdzZTbFnMnuokc2wIg30uyLddcx0syyBEJ7tlr2XaAAslgg
+         h9fQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i19-20020ac84f53000000b0042c513c8cc8si5489898qtw.68.2024.02.28.01.31.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
+Return-Path: <jeeheng.sia@starfivetech.com>
+Received: from CHN02-SH0-obe.outbound.protection.partner.outlook.cn (mail-sh0chn02on2094.outbound.protection.partner.outlook.cn. [139.219.146.94])
+        by mx.google.com with ESMTPS id e12-20020a630f0c000000b005dc4fca7d3csi7118315pgl.200.2024.02.28.01.46.09
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) client-ip=139.219.146.94;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfGHb-0001FZ-Re; Wed, 28 Feb 2024 04:31:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfGHS-00015V-Nn; Wed, 28 Feb 2024 04:31:17 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfGHQ-0001t0-Pr; Wed, 28 Feb 2024 04:31:14 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.252])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Dv6gdCzXhP7;
- Wed, 28 Feb 2024 17:29:03 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id C719E18005C;
- Wed, 28 Feb 2024 17:31:08 +0800 (CST)
-Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 28 Feb
- 2024 17:31:08 +0800
-To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v4 22/22] hw/arm/virt: Add FEAT_GICv3_NMI feature support
- in virt GIC
-Date: Wed, 28 Feb 2024 09:29:46 +0000
-Message-ID: <20240228092946.1768728-23-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240228092946.1768728-1-ruanjinjie@huawei.com>
-References: <20240228092946.1768728-1-ruanjinjie@huawei.com>
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FDwMTTR+hK1Buevuan0K2MgVU63rooQC3+upUuhKycXnjsLWDxIJxjKjdGJ61XL9mbHybnLXyeOEAMlmK/sKo9UMed79b00KSZwX/Cjif3Nxy6BOiYqxaG7saR286mdcd4UGo1IsnqHQhlSeB9JQVbgobNwxItQc7//27wPi2FAd9QyVe/vGlWh0y9KQNRkWHwMoY3CFqZ88l8UcRpNIPJ8O+9OLetNIxypLVQ/JDFn7cGx5Ku56N/vdgDDf9rzibznBU9MgTDWyMghZgO8yr9/VCQ06Jwy89AjqlA6bRMFsN/HplTK4673dsHGK2XaW81jwncn/RDLe4g7ww8xLEQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hEXY382SLjpgk+SMEqO1Jnnclh9pnOZx/ib1bDc1Tj8=;
+ b=T4REcM+uyCHzew/dqolCFdU1cdWFo/iIajMDFg8kTeUbXOTfUVVx6yw0YJx1yAbpC8iRf3rDqVfH0VhjHx7ntzsctTLwbJ9caogCPD5j9EtrXwFgCRTWUPqrfAwfuH43L/kx6Gq97JQ0sODVSchn4J3KCmBw+xVslzjhjuiXAoxDriS/epK0QdNYJM/hNzwRrMuO8FOtWCmnU9/1wKkdOS9JSIhEUzQu4m49S3EsrcN43LPeqE7a0JMjti+O9w95B6y5p87ShVruw8epmdLdObn6I8/N4Uv4G5rfjYEJ/5MeGKNw4SkqcxiiX9Hsahv1PtpmQQQ9l07OV1AZVvBD8Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:f::16) by BJSPR01MB0595.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:e::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.34; Wed, 28 Feb
+ 2024 09:45:52 +0000
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ ([fe80::fcfa:931b:8b1d:6af5]) by
+ BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::fcfa:931b:8b1d:6af5%4])
+ with mapi id 15.20.7316.037; Wed, 28 Feb 2024 09:45:52 +0000
+From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>,
+	=?iso-8859-1?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang
+	<wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Richard Henderson
+	<richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+	=?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell
+	<peter.maydell@linaro.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "kvm@vger.kernel.org"
+	<kvm@vger.kernel.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Zhenyu Wang
+	<zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma
+	<yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: RE: [RFC 6/8] i386/cpu: Update cache topology with machine's
+ configuration
+Thread-Topic: [RFC 6/8] i386/cpu: Update cache topology with machine's
+ configuration
+Thread-Index: AQHaY9zroLFH1odqwEKCZ7WWKO/azbEfjZXg
+Date: Wed, 28 Feb 2024 09:45:51 +0000
+Message-ID:
+ <BJSPR01MB0561F3D87C67D4BCCA9E9C8D9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
+References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
+ <20240220092504.726064-7-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240220092504.726064-7-zhao1.liu@linux.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BJSPR01MB0561:EE_|BJSPR01MB0595:EE_
+x-ms-office365-filtering-correlation-id: 4968ee3f-a099-4d8e-a6e6-08dc38420d35
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ PZIi23fnAUZujKPgDcG+czWL6v0aTZkRtInjGV7pzScVl+cUCDbvaPWVA41JUd1FQx5zn7qUbRPiw2S7nJ/m8kRCNj5Jqehp5DqtJAMXFnt15paV3bsccbzs0irgC3TPRH/DfUmAjvMdSSp3bGDc1mbOU9LlyopyPQGk5cmQoCer/XcztZ6yPD8t5GRWjU+M0s5g0wnyjKZxdYxtHQharmgWy3yVM84TNOUU16V1lWWoAObtc++AZqjOcl6Fdc2KhMkiFjuY8vR1JT5c6Pv0tPfmC+aRwYLo8GlojFMC1QP+9cvKjtH/MvSo24mouD+LrtXdbEbe9ZKeg336UvixIml6vKK9nWKGbsjLLlHdXF13wG3uLfI9RnZTmhDzkKrZLrM3/4ckbHep5a8biXAc3S9dH4g5OirDsMtSrqPGXkx9nOaM5CYRgfFOhNmTM7boLywazozR2aEAsfFL0v/tMItr1qoeeOhh4z0mfm8OMfPRIJ19v+en8ZNSjOE7yr1txbZLfFBAPkzIbclDY/AX/Qp1l6/zJRl51nRDftqKLWIQpVlX+M5kPuJNMOVkEflSDEmL0z11mfUoKbWvzj2AcoI0rcXaoXn09Rn0apQZf6txndubWy2KzC0pdhaDppWj7DSeS3vqRZ5VmjCvoytKvA==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn;PTR:;CAT:NONE;SFS:(13230031)(921011)(38070700009);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?iso-8859-1?Q?XrGMB2ylrdq/yH9Ln8raR92DE24tL/6/f+zDvs9zyyU6NXxsroOx+kQO3m?=
+ =?iso-8859-1?Q?j786OQqql5oST6riqR+TEVEAnMzro/0pxIXV2qPQ9DKG+GevjQRng7T+M/?=
+ =?iso-8859-1?Q?uoGzPuQsQjcvlriFLJPtn8mY8Zqol1O6sDAApJmL5dWkCX9/9ceUQBDuft?=
+ =?iso-8859-1?Q?v2UAJEEcKwAkKLNuWjDvQL5jQwLlio4DxzoWLiRWOQric5x1wL2YYULwYS?=
+ =?iso-8859-1?Q?D2uXvfBFTVg/NpyAJVNjyc/dCpRqE2a3fxv/1tN5LQavNfV6Ft+9jo6pom?=
+ =?iso-8859-1?Q?Vji0xEQB6wgBxX7S9h4m71PFKuYO4EtQd/wYloIvFcnKs/vV5+qD93BPxJ?=
+ =?iso-8859-1?Q?f3Wr/1sx++Glxetom74NLr4gn3JscXznEkilFQ7RT7IvqyzR4xo5OGXGmj?=
+ =?iso-8859-1?Q?3/dcwNnRwghbPeECf1ziXDk8pHHrVGto9qKEbbB59yG+nQnD7GSxv7AHjD?=
+ =?iso-8859-1?Q?Opeo3FITBJ2+VoD0L4woSYXbYNIVAiUMsu7tLvMXip+DJbdlEF+BwP28SV?=
+ =?iso-8859-1?Q?kW5KakjSoSmCkdv8EdpL2bHA0xuMEklXc/c76s2w0WqwMZAk6GHOEMN6tC?=
+ =?iso-8859-1?Q?Wk8NmKswiS3LIpa+nAUDrmxxEHrDJNjo32KjINMpCoagmXQU+zyCJcWU0z?=
+ =?iso-8859-1?Q?V6h+xFu9OZiqb4QyLXTDgD5nlmTLwsbr3yyyh1nz8tRv2k3cLT7TjXkj7W?=
+ =?iso-8859-1?Q?g2R5GgX9uCrN6pa5tzIlXIUoUdFqyt+uGyMPdCwKTirj+oShoUQ6YUtzV/?=
+ =?iso-8859-1?Q?NykrnBFgMniNm+ga7BiD8lauquASnBiLiFt3YyltqcZI5G7FIUgsXEJgmy?=
+ =?iso-8859-1?Q?rTuF13zlcG9LI+oS45k7fB74MnjeXYCsrPJkaDx+G+lh2/gxrSysUQdHv+?=
+ =?iso-8859-1?Q?XVZ5kBmyECSixWPJc9lDxughyyMWO68JtEFpj8+1bMzHAdcKifzwz0G2Ad?=
+ =?iso-8859-1?Q?dUpSqSBMrAgz/oPr/CV9UpiAKVOaDcr1mLOE30FtpaLBkrNAExKHUGJxXF?=
+ =?iso-8859-1?Q?tQzd/a2yeJITMj97sQuwO7IMLuPh/Jh1vWrKu/MidEoguk6Ld+HgLxwJED?=
+ =?iso-8859-1?Q?d/XqUMPCAh9I+oTHFRGqGjzDoy4E74pu/yJGGlmMY6VwwIqdT2Mlsj6wac?=
+ =?iso-8859-1?Q?fDFdaT6rz/TjQSm0vGkzsZq6gwJuLhrzG9OKDaiWL2gaE9AJ1jIXtLST0w?=
+ =?iso-8859-1?Q?FYpI1rn1qenidg462u7fL6pt19/h5rFLdwZ8AGUWOHCv6yZ3wINq8WbtIm?=
+ =?iso-8859-1?Q?7bOKx2bBaYwAGgjlVTbNI29Ih/J8fPAhljkiSbf1UvPKFnZZ3dejT/ISZ9?=
+ =?iso-8859-1?Q?8Qr9n32lymxuKcoSHZGXVcYc3HcMfXsH1ySmCnqi3/TridQBwTjpiqRRaD?=
+ =?iso-8859-1?Q?1nvxu3loBUSi4M3aQQTjWsITQmQylOffe/92XVI8kGa2IxhBgCZ7DXkQ7g?=
+ =?iso-8859-1?Q?0dPzbmndaJ8PRfOTpAFyDfB54aPgHLTdmdSRf0RDNyIxABI6osCPNFwM8d?=
+ =?iso-8859-1?Q?PQAhbOHa5NHPXWeRO1lXIlWnHnBAxIDjhPgCJAYDxAXsD7ep9ZRItkot/O?=
+ =?iso-8859-1?Q?TnhEs2UxOGMGYRTKpASJD5j7Y8wL1qAA18r5Z9jJz6renbhaGg3lt8AU9w?=
+ =?iso-8859-1?Q?p1BhwXj5py9Z6bZPuKwMJ92osUPCGjReEbPVLTq9MqMgLcpXXMDbXU7lRG?=
+ =?iso-8859-1?Q?VN2R3Y/8KT3rqFdAWMZGQm45oLfYrXKQD00Ggfh8EON3N3Fae0Acps5gkQ?=
+ =?iso-8859-1?Q?XUOA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.55]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WHUoJDxGzTPL
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4968ee3f-a099-4d8e-a6e6-08dc38420d35
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2024 09:45:52.0085
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: X/QtwJu+IsWAz4g23GI69A5xwMZdZn2rJllBdK/78t6gznGTohAWk4iUJeudGK5cSWHAI05LI4/N/K8UWFzKfGNd1P5M2n1kcIfQyurrAAI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0595
+X-TUID: aCs4dOwX+uza
 
-A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-FEAT_GICv3_NMI
 
-So included support FEAT_GICv3_NMI feature as part of virt platform
-GIC initialization if FEAT_NMI and FEAT_GICv3 supported.
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-v4:
-- Add Reviewed-by.
-v3:
-- Adjust to be the last after add FEAT_NMI to max.
-- Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
----
- hw/arm/virt.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2d4a187fd5..c12307ccd9 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -712,6 +712,19 @@ static void create_v2m(VirtMachineState *vms)
-     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
- }
- 
-+/*
-+ * A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-+ * FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-+ * FEAT_GICv3_NMI.
-+ */
-+static bool gicv3_nmi_present(VirtMachineState *vms)
-+{
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
-+
-+    return cpu_isar_feature(aa64_nmi, cpu) &&
-+           (vms->gic_version != VIRT_GIC_VERSION_2);
-+}
-+
- static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
- {
-     MachineState *ms = MACHINE(vms);
-@@ -785,6 +798,11 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                               vms->virt);
-         }
-     }
-+
-+    if (gicv3_nmi_present(vms)) {
-+        qdev_prop_set_bit(vms->gic, "has-nmi", true);
-+    }
-+
-     gicbusdev = SYS_BUS_DEVICE(vms->gic);
-     sysbus_realize_and_unref(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
--- 
-2.34.1
-
+> -----Original Message-----
+> From: Zhao Liu <zhao1.liu@linux.intel.com>
+> Sent: Tuesday, February 20, 2024 5:25 PM
+> To: Daniel P . Berrang=E9 <berrange@redhat.com>; Eduardo Habkost <eduardo=
+@habkost.net>; Marcel Apfelbaum
+> <marcel.apfelbaum@gmail.com>; Philippe Mathieu-Daud=E9 <philmd@linaro.org=
+>; Yanan Wang <wangyanan55@huawei.com>;
+> Michael S . Tsirkin <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>=
+; Richard Henderson <richard.henderson@linaro.org>;
+> Eric Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>; Ma=
+rcelo Tosatti <mtosatti@redhat.com>; Alex Benn=E9e
+> <alex.bennee@linaro.org>; Peter Maydell <peter.maydell@linaro.org>; Jonat=
+han Cameron <Jonathan.Cameron@huawei.com>;
+> JeeHeng Sia <jeeheng.sia@starfivetech.com>
+> Cc: qemu-devel@nongnu.org; kvm@vger.kernel.org; qemu-riscv@nongnu.org; qe=
+mu-arm@nongnu.org; Zhenyu Wang
+> <zhenyu.z.wang@intel.com>; Dapeng Mi <dapeng1.mi@linux.intel.com>; Yongwe=
+i Ma <yongwei.ma@intel.com>; Zhao Liu
+> <zhao1.liu@intel.com>
+> Subject: [RFC 6/8] i386/cpu: Update cache topology with machine's configu=
+ration
+>=20
+> From: Zhao Liu <zhao1.liu@intel.com>
+>=20
+> User will configure SMP cache topology via -smp.
+>=20
+> For this case, update the x86 CPUs' cache topology with user's
+> configuration in MachineState.
+>=20
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  target/i386/cpu.c | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+>=20
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index d7cb0f1e49b4..4b5c551fe7f0 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -7582,6 +7582,27 @@ static void x86_cpu_realizefn(DeviceState *dev, Er=
+ror **errp)
+>=20
+>  #ifndef CONFIG_USER_ONLY
+>      MachineState *ms =3D MACHINE(qdev_get_machine());
+> +
+> +    if (ms->smp_cache.l1d !=3D CPU_TOPO_LEVEL_INVALID) {
+> +        env->cache_info_cpuid4.l1d_cache->share_level =3D ms->smp_cache.=
+l1d;
+> +        env->cache_info_amd.l1d_cache->share_level =3D ms->smp_cache.l1d=
+;
+> +    }
+> +
+> +    if (ms->smp_cache.l1i !=3D CPU_TOPO_LEVEL_INVALID) {
+> +        env->cache_info_cpuid4.l1i_cache->share_level =3D ms->smp_cache.=
+l1i;
+> +        env->cache_info_amd.l1i_cache->share_level =3D ms->smp_cache.l1i=
+;
+> +    }
+> +
+> +    if (ms->smp_cache.l2 !=3D CPU_TOPO_LEVEL_INVALID) {
+> +        env->cache_info_cpuid4.l2_cache->share_level =3D ms->smp_cache.l=
+2;
+> +        env->cache_info_amd.l2_cache->share_level =3D ms->smp_cache.l2;
+> +    }
+> +
+> +    if (ms->smp_cache.l3 !=3D CPU_TOPO_LEVEL_INVALID) {
+> +        env->cache_info_cpuid4.l3_cache->share_level =3D ms->smp_cache.l=
+3;
+> +        env->cache_info_amd.l3_cache->share_level =3D ms->smp_cache.l3;
+> +    }
+> +
+I think this block of code can be further optimized. Maybe we can create
+a function called updateCacheShareLevel() that takes a cache pointer and
+a share level as arguments. This function encapsulates the common
+pattern of updating cache share levels for different caches. You can define
+it like this:
+void updateCacheShareLevel(XxxCacheInfo *cache, int shareLevel) {
+    if (shareLevel !=3D CPU_TOPO_LEVEL_INVALID) {
+        cache->share_level =3D shareLevel;
+    }
+}
+>      qemu_register_reset(x86_cpu_machine_reset_cb, cpu);
+>=20
+>      if (cpu->env.features[FEAT_1_EDX] & CPUID_APIC || ms->smp.cpus > 1) =
+{
+> --
+> 2.34.1

@@ -1,40 +1,40 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp109265dlb;
-        Wed, 28 Feb 2024 01:31:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV/KfrqS3T00dIPurW+4Ka+R/54BuRb+vSh8uKk6e3J0fQ1bASNaYE+R0sWAuQTO/VrNjhjI9wOljrHs+O3ICWBz4ZbfkxK
-X-Google-Smtp-Source: AGHT+IERJMOhdlx19XIbKCHYV5s1ED2o25M86t02yb7SpRa0TqYSdgqPDMdLknL/8NZVMV8rvPCf
-X-Received: by 2002:ac8:594b:0:b0:42e:78b9:869a with SMTP id 11-20020ac8594b000000b0042e78b9869amr12554904qtz.41.1709112682812;
-        Wed, 28 Feb 2024 01:31:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709112682; cv=none;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp109279dlb;
+        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU6Zw9KSc7TDBnU9b5nb5TQ8IDa6BH7KyjrrVXhJG2SiWN41r+a5ZG68mDUTXPbQNQe9iNxEuljk2tLr388lT+UGmWxMFDz
+X-Google-Smtp-Source: AGHT+IEhjFAe4bk9prWmwGB0X4RsQDtY6KdbbBciAX9x9k73V1LHq857g40XP72ewMs0EtJ3RLAI
+X-Received: by 2002:a05:6214:3381:b0:68f:a954:bba1 with SMTP id mv1-20020a056214338100b0068fa954bba1mr2883543qvb.26.1709112684753;
+        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709112684; cv=none;
         d=google.com; s=arc-20160816;
-        b=jNCOa0wVg4A1UuElj3uicEBTJMONmUxx5tyGb4gSL5sI5bRrR9Sae/uZG9aznBuuJD
-         Jz7OIj30r+4GtYBwLzqDlMzHj0H5kiE0J23gxQ/O5/qc2v/DZVcBQQrhzFpEPCvzgo67
-         61pkX4zOv6KmFQG8eauhKYNrX0EP8oKT8EMfJxoSYb26nXFpWfuCS2bxp+VcotMq6e8T
-         +Na/3XTTMS0Ethe06vEcm6xPqeLSaKYPAI992kG0JZg7VSu4ou0TD5kbuC9Nxg3Af8WJ
-         fYlel4gxXJW8DbYxO0rocCMh64h3Uit9B07EWuZ07e4oZBi6M7sBE7i1vJR8JIoe2bK4
-         +xzw==
+        b=aCXrcBSeMVLg/FTSW0Od+Jb6kl1cDhORAxo3MRWVLHQRHxtJjiaqqg9ZBh1LwYd9kj
+         NJDE+kHkOk6L9tovNg9ZlA3xn/dIPbr/6whlGNTC5R17KtmVSdil02Nre2MF59JE8/YW
+         5I5B+oOZo0FkbvfmjPp4s0TCS1xfcP7RqZHI3NOQEACdhb+plvV6FOLojHLMcmuQTl8u
+         GtEVI91J9VM0CZodf139odRjYvGDYp2V0AY0kCjyTE6hIbYcKHlh823ktH6HIKBQwqxP
+         cw9KxvRRZT1n7ymCMsFx54gEmSrP5Ft9saJYoff/jNGzt7lWqCN0Z2ngMctrYTATDdfd
+         vG+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=8TFonrZeeb9Z5oiTebD7Ywi/vJ/Y18Mgf+7PSNgiT1o=;
+        bh=DYdBcRTFVKdV17vpdL00pZLwPYPXQvdZfVh1xwk1UAo=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=t2dMZNxgZPYpWF9pflg4JK4YVfvPQP/+Kck+U7tCinRnx9cfLdRnL55WP0LD2qYSPc
-         RQk8vu+65M+Xh0DDqjDEnqE4nUythgeOcuVsYXRQL9w7+wdyzDST9TtEWwpFmfSTOnTe
-         uxO5T5Y5omHUGXKgDQ0C7eOytTTJhtExdnQzblYevGrvK7+sWwlGDDVENNsU+ypPUj6u
-         /At6uDksr9r5brCLUw44ylAxZrd5JA9YURwQnY9CNaEbLd27Y5C8Y9GNJeZnR531K1WF
-         dr67PIsOqEVucVZTvdtAZXpPOpwVLNuvWmB/AQd6tQPncfK39TE/33huaWZYoqTU+pnt
-         1d8g==;
+        b=f16W+3+MTj82OZ92ZUlq7Xh7gYghNVOSZ/0Y+5zQOGcZalnsF2rQBFf2zbnp/gfp1y
+         IvWR59v9L0SGQGEtY+9k6rMzF7+V7ZlSuM9qwRiKwS4kFn706N8ydQtOVnU4VJS58NkT
+         zGEk641nRdB5Xk6xbqE81r4m6iyiQmApqU12qCcEwov7vJMZomZmSIeIYW8NxaMbUkon
+         k28Fbvfklik9kDuPxCBuhu/QaaSoWweT1gasBcngjz4zeyIGZ64KNeT6jV7Gyjg6eCSN
+         +nAUuMXc7OQQB3TsuyQ1NLqgIyIcY2vAkOO5HAPJfSjynGkVNPTcPPXuCWavBpwp8hb4
+         pHsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22-20020ac85516000000b0042e6f7e9996si9095405qtq.659.2024.02.28.01.31.22
+        by mx.google.com with ESMTPS id i19-20020ac84f53000000b0042c513c8cc8si5489898qtw.68.2024.02.28.01.31.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 01:31:22 -0800 (PST)
+        Wed, 28 Feb 2024 01:31:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfGHO-00012c-34; Wed, 28 Feb 2024 04:31:11 -0500
+	id 1rfGHb-0001FZ-Re; Wed, 28 Feb 2024 04:31:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfGHJ-00010w-Fk; Wed, 28 Feb 2024 04:31:07 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+ id 1rfGHS-00015V-Nn; Wed, 28 Feb 2024 04:31:17 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfGHF-0001P1-WF; Wed, 28 Feb 2024 04:31:04 -0500
-Received: from mail.maildlp.com (unknown [172.19.162.254])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Tl8DT1hMjzvVyH;
- Wed, 28 Feb 2024 17:28:41 +0800 (CST)
+ id 1rfGHQ-0001t0-Pr; Wed, 28 Feb 2024 04:31:14 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.252])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Tl8Dv6gdCzXhP7;
+ Wed, 28 Feb 2024 17:29:03 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 1E97718006C;
- Wed, 28 Feb 2024 17:30:51 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id C719E18005C;
+ Wed, 28 Feb 2024 17:31:08 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 28 Feb
- 2024 17:30:50 +0800
+ 2024 17:31:08 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v4 01/22] target/arm: Handle HCR_EL2 accesses for bits
- introduced with FEAT_NMI
-Date: Wed, 28 Feb 2024 09:29:25 +0000
-Message-ID: <20240228092946.1768728-2-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v4 22/22] hw/arm/virt: Add FEAT_GICv3_NMI feature support
+ in virt GIC
+Date: Wed, 28 Feb 2024 09:29:46 +0000
+Message-ID: <20240228092946.1768728-23-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240228092946.1768728-1-ruanjinjie@huawei.com>
 References: <20240228092946.1768728-1-ruanjinjie@huawei.com>
@@ -78,8 +78,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=ruanjinjie@huawei.com; helo=szxga01-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.188;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -102,59 +102,63 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 51+jAz4XkP9U
+X-TUID: WHUoJDxGzTPL
 
-FEAT_NMI defines another three new bits in HCRX_EL2: TALLINT, HCRX_VINMI and
-HCRX_VFNMI. When the feature is enabled, allow these bits to be written in
-HCRX_EL2.
+A PE that implements FEAT_NMI and FEAT_GICv3 also implements
+FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
+FEAT_GICv3_NMI
+
+So included support FEAT_GICv3_NMI feature as part of virt platform
+GIC initialization if FEAT_NMI and FEAT_GICv3 supported.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
 v4:
-- Update the comment for FEAT_NMI in hcrx_write().
-- Update the commit message, s/thress/three/g.
-v3:
 - Add Reviewed-by.
-- Add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
-- Upate the commit messsage.
+v3:
+- Adjust to be the last after add FEAT_NMI to max.
+- Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
 ---
- target/arm/cpu-features.h | 5 +++++
- target/arm/helper.c       | 5 +++++
- 2 files changed, 10 insertions(+)
+ hw/arm/virt.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 7567854db6..2ad1179be7 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -681,6 +681,11 @@ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 2d4a187fd5..c12307ccd9 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -712,6 +712,19 @@ static void create_v2m(VirtMachineState *vms)
+     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
  }
  
-+static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
++/*
++ * A PE that implements FEAT_NMI and FEAT_GICv3 also implements
++ * FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
++ * FEAT_GICv3_NMI.
++ */
++static bool gicv3_nmi_present(VirtMachineState *vms)
 +{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, NMI) != 0;
++    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
++
++    return cpu_isar_feature(aa64_nmi, cpu) &&
++           (vms->gic_version != VIRT_GIC_VERSION_2);
 +}
 +
- static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
+ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
  {
-     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 90c4fb72ce..affa493141 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6056,6 +6056,11 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         valid_mask |= HCRX_MSCEN | HCRX_MCE2;
+     MachineState *ms = MACHINE(vms);
+@@ -785,6 +798,11 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+                               vms->virt);
+         }
      }
- 
-+    /* FEAT_NMI adds TALLINT, VINMI and VFNMI */
-+    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-+        valid_mask |= HCRX_TALLINT | HCRX_VINMI | HCRX_VFNMI;
++
++    if (gicv3_nmi_present(vms)) {
++        qdev_prop_set_bit(vms->gic, "has-nmi", true);
 +    }
 +
-     /* Clear RES0 bits.  */
-     env->cp15.hcrx_el2 = value & valid_mask;
- }
+     gicbusdev = SYS_BUS_DEVICE(vms->gic);
+     sysbus_realize_and_unref(gicbusdev, &error_fatal);
+     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
 -- 
 2.34.1
 

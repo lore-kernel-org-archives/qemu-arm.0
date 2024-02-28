@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175131ejb;
-        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWfDeVN8fqF4/RsvAMzYMyaMNwFB3e7KV6Z7xFIlxD1AHLtGvbzNNfvuQYtoviod8NhZXnNLoFGVbfUwmPXMXR7LFWAyjIz
-X-Google-Smtp-Source: AGHT+IGUlzWVO7UfRhTVTdN4F0/t9Sa3mrjpsdvJoUPBlJNgPdfywQe6VD90A3ctL6NTcx3qX3Hn
-X-Received: by 2002:a05:6214:2b0d:b0:68f:f74f:508a with SMTP id jx13-20020a0562142b0d00b0068ff74f508amr4465103qvb.7.1709121759121;
-        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709121759; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175377ejb;
+        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWNuaTtJCy0Q9DIoaUSXivupCVEqW64uq1P92Qs4kOOmRyZ0YaiVNGbZiRBXkob6CiebCDP9rx7XRshUkirW8c6+rKLt3yJ
+X-Google-Smtp-Source: AGHT+IEOnrdzenj5NBgzuMS4NMRtUaaj3eZdmKEGncfycnFXbcwgIshKiekvFqmcobHSr6NA82qb
+X-Received: by 2002:ac8:5a84:0:b0:42e:7b41:ac4d with SMTP id c4-20020ac85a84000000b0042e7b41ac4dmr10494689qtc.67.1709121781084;
+        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709121781; cv=none;
         d=google.com; s=arc-20160816;
-        b=IE/URT+YQOZW81xThWqr6GNG3ojVU9pLHJcrrb4gQVsc7WNPW270FPDTMbJLAXmD5x
-         GwYkfyXTQogruxPKirAvrBFPGjaFtPQwqomK2SYJNpJ8/FDi43K/GP/TGPMuc08Sk2WX
-         N8JWK/ka3WhbscK8Kbcxv1/QWr7hZohcWUwqm9L9I5HDyvwTkg/Giz2+/wI/cIU47ECv
-         aFjuDisNqdeSmeYDDfwalL5pJ7/D4BkDE3Rgq+QchnueL1IQjPQ5Iz5jiL2OBUTnSfsA
-         Cj2hX4yr+G3yB9bTKsjARBB4TBhqU+e0k6HUVFMEPDLMQUc94xVKLXernLWya7/K4fDv
-         wAPA==
+        b=uRwwxxKBxreLE5lW0ywOlmA8W2SzwKgaQrLGn1TCfzHlt3PuXXeA/8hz2oVkSfcn6l
+         8g03j/eAAmKdtwVAhp/K7Xro0lDV0VFmpR815G+2N9LIPiPiUQpJIB4ay0kSlq13zi8c
+         28ufa7AWylhGHKWh9O1q7hpWrCxp+iH3/0BY1arHbBM1+0waOxUmz/lrk8rRvlc5rIx6
+         D2uXSd6t3tuSYkUL2BtZ2FPvc6c+zUIlakdr5ORfsHlOXayzJn+lf1MTSScmzXETE2qh
+         XDok+8QGhZQcu2AukNnJpJFpz4+w+0oga3TyPMLfKMBKb0OTaWE3hMrOqC7LrIoJ4PDB
+         cRPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=j1OLjRXz8cKZbnXoeuqFRRV9nutmUnwXbF7aVzmCyuQ=;
+        bh=9yCAa2IaqsNHr0V/8Z3CfJJGrYjFNpZ6MWKqMGjZhOM=;
         fh=YkzlLM/B5rINvM6IVNmtbeUPm8x2JYcYDb51Z7uR+U4=;
-        b=kOwIwHclNpNczha2DZZ4TNXPL8kCO9+2bW5kNKAFjHibRSje+L5Lnyj+i1ROg8Aa7o
-         d4QPxl0jBVGUY0BKJmTsA1CDnaEkg6nS/1Smog4j1P2a6NpzoWX33/wkxUnvZIwDTijo
-         Wlv5uJ1imcAenSfIZcsYM8Ocsc4Y1LDrIuMvPNK7Ty79uJdtLf5/45f+Io/QTqeLqJnG
-         jIVoCGSXJE/823OA0ayKI1fURBpkjWHANx57/CFVnpS9uDBLuKchYuf6WNhrIpZaFvqi
-         34yoqa2K84vEKwiptwnwQkIo371KfKL4ZGfjt9dqw30gduH3RLQpCt/HddJ4LFKu/trD
-         ry8Q==;
+        b=we5cyM0aORgbtiGlzWeOb4RvwyGfeocwSpxCaQM+UYBqtovQ5OCwOCdfNx5kqJyF9Z
+         D+uD8f0IjJJUTG8q/uW3Jek9Gq7v+KZkSczex51VDk5U/5Pte5dqzhQdJ35Ux8pY4Ac6
+         zSOaZCBd64Nl8+P5tIO52O84D2w3AUP91JJbbEZgXbqVqpSfc4+3z5FDrYmPRrAguGu+
+         XTuZQzefaI4X6oi9saB+vLrwlOMwDt+4nb7yiFBS2xZeyzOLsN3BzAFgsCLN/LG1mEFa
+         70+O50W9RswXwqqwh3nOtgYnDqqySy0PVtsIrcW81Fwes4+yzr5/p8eLmpp1VzUUL76K
+         PfXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Ogeqrkao;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CZEIIK1i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8-20020a0562141d0800b0068c64a838b8si9388372qvd.417.2024.02.28.04.02.38
+        by mx.google.com with ESMTPS id f29-20020ac86edd000000b0042e6e264833si9128843qtv.309.2024.02.28.04.03.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 04:02:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Ogeqrkao;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CZEIIK1i;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfIdq-000446-Oq; Wed, 28 Feb 2024 07:02:32 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rfIdx-00049p-UH; Wed, 28 Feb 2024 07:02:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdo-00042V-CH; Wed, 28 Feb 2024 07:02:28 -0500
-Received: from zproxy3.enst.fr ([137.194.2.222])
+ id 1rfIdr-00044D-9D; Wed, 28 Feb 2024 07:02:32 -0500
+Received: from zproxy3.enst.fr ([2001:660:330f:2::de])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdm-0002z8-5o; Wed, 28 Feb 2024 07:02:28 -0500
+ id 1rfIdm-0002zA-5z; Wed, 28 Feb 2024 07:02:29 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 8DE0EA06DE;
+ by zproxy3.enst.fr (Postfix) with ESMTP id B8E3DA06F8;
  Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id Ua5Yg_UeMUj6; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+ id NIJOEiI5OQzm; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id EAD9AA06F8;
- Wed, 28 Feb 2024 13:02:23 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr EAD9AA06F8
+ by zproxy3.enst.fr (Postfix) with ESMTP id 27EF1A06FC;
+ Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 27EF1A06FC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
  s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121744;
- bh=j1OLjRXz8cKZbnXoeuqFRRV9nutmUnwXbF7aVzmCyuQ=;
+ bh=9yCAa2IaqsNHr0V/8Z3CfJJGrYjFNpZ6MWKqMGjZhOM=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=Ogeqrkaor5arS7qHnATgmwcVHJTgX2U/dTcFuuic5sQZoBO7SrjtRan2LBW+RKl4I
- a6n8OwPLVKwE3/3grx5ZpfrD5Il5edYKWVgh2MguS+70V//GPTytXCOStrgAM5ls45
- vRyk2Ou+/BE+Za4FONyc3DrYst73SIa4uOUFt3Ko=
+ b=CZEIIK1i7w0EjKTZOvUOGuHlxs8/CQbMAxdqupwDbYPp5Jg1UncsAHg2ENVs5tY2F
+ r5oOntPVDmUT0UMpFwzrlGtEzkzyY3ira726W1p+MaqH/o0H7kV3Po0kC5/cWHpyj+
+ vWF2JCkH2gDIeJxpFLBvsmBTvG0s+T8IRxUeVVQc=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id hKOGb5A2vy-p; Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+ id dAfXj_0nUQa5; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id 7F334A06DE;
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id CAA61A06DF;
  Wed, 28 Feb 2024 13:02:23 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
@@ -88,16 +88,16 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 3/5] hw/arm : Create Bl475eMachineState
-Date: Wed, 28 Feb 2024 13:01:06 +0100
-Message-ID: <20240228120215.277717-4-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v3 4/5] hw/arm : Connect DM163 to B-L475E-IOT01A
+Date: Wed, 28 Feb 2024 13:01:07 +0100
+Message-ID: <20240228120215.277717-5-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 References: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.222;
+Received-SPF: pass client-ip=2001:660:330f:2::de;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -106,105 +106,135 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HsWpj0QuHrRD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lD9HeGBye+dn
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/arm/b-l475e-iot01a.c | 44 +++++++++++++++++++++++++++++------------
- 1 file changed, 31 insertions(+), 13 deletions(-)
+ hw/arm/b-l475e-iot01a.c | 59 +++++++++++++++++++++++++++++++++++++++--
+ hw/arm/Kconfig          |  1 +
+ 2 files changed, 58 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-index d862aa43fc..2b570b3e09 100644
+index 2b570b3e09..6f0bf68ca6 100644
 --- a/hw/arm/b-l475e-iot01a.c
 +++ b/hw/arm/b-l475e-iot01a.c
-@@ -2,8 +2,8 @@
-  * B-L475E-IOT01A Discovery Kit machine
-  * (B-L475E-IOT01A IoT Node)
-  *
-- * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-- * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-@@ -32,33 +32,51 @@
-=20
- /* B-L475E-IOT01A implementation is derived from netduinoplus2 */
-=20
--static void b_l475e_iot01a_init(MachineState *machine)
-+#define TYPE_B_L475E_IOT01A MACHINE_TYPE_NAME("b-l475e-iot01a")
-+OBJECT_DECLARE_SIMPLE_TYPE(Bl475eMachineState, B_L475E_IOT01A)
+@@ -27,10 +27,37 @@
+ #include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
+-#include "hw/arm/stm32l4x5_soc.h"
+ #include "hw/arm/boot.h"
++#include "hw/core/split-irq.h"
++#include "hw/arm/stm32l4x5_soc.h"
++#include "hw/gpio/stm32l4x5_gpio.h"
++#include "hw/display/dm163.h"
 +
-+typedef struct Bl475eMachineState {
-+    MachineState parent_obj;
++/* B-L475E-IOT01A implementation is inspired from netduinoplus2 and ardu=
+ino */
+=20
+-/* B-L475E-IOT01A implementation is derived from netduinoplus2 */
++/*
++ * There are actually 14 input pins in the DM163 device.
++ * Here the DM163 input pin EN isn't connected to the STM32L4x5
++ * GPIOs as the IM120417002 colors shield doesn't actually use
++ * this pin to drive the RGB matrix.
++ */
++#define NUM_DM163_INPUTS 13
 +
-+    Stm32l4x5SocState soc;
-+} Bl475eMachineState;
-+
-+static void bl475e_init(MachineState *machine)
- {
-+    Bl475eMachineState *s =3D B_L475E_IOT01A(machine);
-     const Stm32l4x5SocClass *sc;
--    DeviceState *dev;
-=20
--    dev =3D qdev_new(TYPE_STM32L4X5XG_SOC);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc,
-+                            TYPE_STM32L4X5XG_SOC);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
-=20
--    sc =3D STM32L4X5_SOC_GET_CLASS(dev);
-+    sc =3D STM32L4X5_SOC_GET_CLASS(&s->soc);
-     armv7m_load_kernel(ARM_CPU(first_cpu),
--                       machine->kernel_filename,
--                       0, sc->flash_size);
-+        machine->kernel_filename, 0, sc->flash_size);
- }
-=20
--static void b_l475e_iot01a_machine_init(MachineClass *mc)
-+static void bl475e_machine_init(ObjectClass *oc, void *data)
- {
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-     static const char *machine_valid_cpu_types[] =3D {
-         ARM_CPU_TYPE_NAME("cortex-m4"),
-         NULL
-     };
-     mc->desc =3D "B-L475E-IOT01A Discovery Kit (Cortex-M4)";
--    mc->init =3D b_l475e_iot01a_init;
-+    mc->init =3D bl475e_init;
-     mc->valid_cpu_types =3D machine_valid_cpu_types;
-=20
-     /* SRAM pre-allocated as part of the SoC instantiation */
-     mc->default_ram_size =3D 0;
- }
-=20
--DEFINE_MACHINE("b-l475e-iot01a", b_l475e_iot01a_machine_init)
-+static const TypeInfo bl475e_machine_type[] =3D {
-+    {
-+        .name           =3D TYPE_B_L475E_IOT01A,
-+        .parent         =3D TYPE_MACHINE,
-+        .instance_size  =3D sizeof(Bl475eMachineState),
-+        .class_init     =3D bl475e_machine_init,
-+    }
++static const int dm163_input[NUM_DM163_INPUTS] =3D {
++    1 * GPIO_NUM_PINS + 2,  /* ROW0  PB2       */
++    0 * GPIO_NUM_PINS + 15, /* ROW1  PA15      */
++    0 * GPIO_NUM_PINS + 2,  /* ROW2  PA2       */
++    0 * GPIO_NUM_PINS + 7,  /* ROW3  PA7       */
++    0 * GPIO_NUM_PINS + 6,  /* ROW4  PA6       */
++    0 * GPIO_NUM_PINS + 5,  /* ROW5  PA5       */
++    1 * GPIO_NUM_PINS + 0,  /* ROW6  PB0       */
++    0 * GPIO_NUM_PINS + 3,  /* ROW7  PA3       */
++    0 * GPIO_NUM_PINS + 4,  /* SIN (SDA) PA4   */
++    1 * GPIO_NUM_PINS + 1,  /* DCK (SCK) PB1   */
++    2 * GPIO_NUM_PINS + 3,  /* RST_B (RST) PC3 */
++    2 * GPIO_NUM_PINS + 4,  /* LAT_B (LAT) PC4 */
++    2 * GPIO_NUM_PINS + 5,  /* SELBK (SB)  PC5 */
 +};
+=20
+ #define TYPE_B_L475E_IOT01A MACHINE_TYPE_NAME("b-l475e-iot01a")
+ OBJECT_DECLARE_SIMPLE_TYPE(Bl475eMachineState, B_L475E_IOT01A)
+@@ -39,12 +66,16 @@ typedef struct Bl475eMachineState {
+     MachineState parent_obj;
+=20
+     Stm32l4x5SocState soc;
++    SplitIRQ gpio_splitters[NUM_DM163_INPUTS];
++    DM163State dm163;
+ } Bl475eMachineState;
+=20
+ static void bl475e_init(MachineState *machine)
+ {
+     Bl475eMachineState *s =3D B_L475E_IOT01A(machine);
+     const Stm32l4x5SocClass *sc;
++    DeviceState *dev, *gpio_out_splitter;
++    int gpio, pin;
+=20
+     object_initialize_child(OBJECT(machine), "soc", &s->soc,
+                             TYPE_STM32L4X5XG_SOC);
+@@ -53,6 +84,30 @@ static void bl475e_init(MachineState *machine)
+     sc =3D STM32L4X5_SOC_GET_CLASS(&s->soc);
+     armv7m_load_kernel(ARM_CPU(first_cpu),
+         machine->kernel_filename, 0, sc->flash_size);
 +
-+DEFINE_TYPES(bl475e_machine_type)
++    if (object_class_by_name("dm163")) {
++        object_initialize_child(OBJECT(machine), "dm163",
++                                &s->dm163, TYPE_DM163);
++        dev =3D DEVICE(&s->dm163);
++        qdev_realize(dev, NULL, &error_abort);
++
++        for (unsigned i =3D 0; i < NUM_DM163_INPUTS; i++) {
++            object_initialize_child(OBJECT(machine), "gpio-out-splitters=
+[*]",
++                                    &s->gpio_splitters[i], TYPE_SPLIT_IR=
+Q);
++            gpio_out_splitter =3D DEVICE(&s->gpio_splitters[i]);
++            qdev_prop_set_uint32(gpio_out_splitter, "num-lines", 2);
++            qdev_realize(gpio_out_splitter, NULL, &error_fatal);
++
++            qdev_connect_gpio_out(gpio_out_splitter, 0,
++                qdev_get_gpio_in(DEVICE(&s->soc), dm163_input[i]));
++            qdev_connect_gpio_out(gpio_out_splitter, 1,
++                qdev_get_gpio_in(dev, i));
++            gpio =3D dm163_input[i] / GPIO_NUM_PINS;
++            pin =3D dm163_input[i] % GPIO_NUM_PINS;
++            qdev_connect_gpio_out(DEVICE(&s->soc.gpio[gpio]), pin,
++                qdev_get_gpio_in(DEVICE(gpio_out_splitter), 0));
++        }
++    }
+ }
+=20
+ static void bl475e_machine_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 5776dbb19f..6c05bac99b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -458,6 +458,7 @@ config B_L475E_IOT01A
+     default y
+     depends on TCG && ARM
+     select STM32L4X5_SOC
++    imply DM163
+=20
+ config STM32L4X5_SOC
+     bool
 --=20
 2.43.2
 

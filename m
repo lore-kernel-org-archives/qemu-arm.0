@@ -1,211 +1,210 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp14488dlb;
-        Tue, 27 Feb 2024 21:09:02 -0800 (PST)
-X-Received: by 2002:a17:902:db01:b0:1dc:6373:3cc with SMTP id m1-20020a170902db0100b001dc637303ccmr12568258plx.50.1709096942631;
-        Tue, 27 Feb 2024 21:09:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709096942; cv=none;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp23495dlb;
+        Tue, 27 Feb 2024 21:36:45 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCX/CtA4SFwOoLmLDWKjpFnP+YLNse6inV8gmJZT216xukarZKHtAAOdSkPdyZDPiGeGvr0oJ0Zsze6SxeqqQFeH4XtqKcio
+X-Google-Smtp-Source: AGHT+IF7bD85eezzmJn9zK0QR7sQFvzhruj1ATYP8rukV3ps+JdnrYZeYctZ/GhEih0rAMY9lc5z
+X-Received: by 2002:ac8:7cb5:0:b0:42e:71bf:fb92 with SMTP id z21-20020ac87cb5000000b0042e71bffb92mr10446515qtv.40.1709098604888;
+        Tue, 27 Feb 2024 21:36:44 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709098604; cv=pass;
         d=google.com; s=arc-20160816;
-        b=G8KYFOP5j57Rx0hwvwx4Ut5FiBBgN3LuSoVg2ikytGAvjd7CKoSrAk2vP7bKfSDbY7
-         Ikt5KEiG4W6TgFRxq3ZkpLl0QTsxLDoTkGsSTUSeHfWyRZr6I0GRa1vaMGN9oNRB7/qY
-         3g2HdkVhc0onw4jgBXZwTQDHwCfLL/Mg+TvH0M37/V4T9nSQJOqDjgZuY9GMjMHsmV6I
-         +IhqxNAjVk7R/CS/YoWb/4t5Hs2Xp77zJLLlJkRgb7lFHjslJHHyiCxKFdDQQF9GFnQz
-         S/LOLVMX1Il74qZ8axJFysG03ooJsaswFGGGMzUOtrw3JgjWEr0MCA2cIMRA9HhBvg5I
-         JR8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=cslmreSRbrQ1KYjx5gJYbed1Ss6prRm6Ac4nj/FDVd0=;
-        fh=KML6omqy75XiJbgKKwSnN1Nk2AKhL1cqEM/aRaICH5o=;
-        b=JwF9ufpsbDUTzOXpu5ZHGxW3J+VgzS+N/0+na6dZvTukMlUdOGJoYYE4eHWEvdOUD2
-         0+3rADav0E0S5IOs87e4Ycb95Em/MMyeDbNRBN67Npt97Ma0u19Yr5hYeTpHJCNLyNJo
-         3FvbN3dok5OXXl/0jZAxj46ul4tGjZRPd67WoVfJ2UdTTImesIlXNMi2AQZLOfb4sggc
-         uCrXj9zw3nQFPkooSQydDkh+RSAFHvaAEr4rbUFpzH0Qi5zJApQuMXfVG5QqpY9R31HK
-         0eQaLUMPgBghXqxbnX37bS0sMZgTmRawfjxu0bT59R8lRoLkrxY6nUxroZjGbUB7gJ00
-         X7cA==;
+        b=ah7sGXVjgoArHRLctWh6R9tq5fnX15V4oR7dhSiyHpVf7zMUgHM1YhSGWmYa/ukCev
+         ICD09bjN24rav3CynXi8bD230G991ijPnuqPamQEcIAOMDJ6SCqwReLpE1B77obhCfaO
+         Z+YXzUV7qXmHFA7J/ABuvZywh5X6CR6GPzGfysJMvcWEKr5PwMjzwSfTNnkuxmwdFTbE
+         6uy9Z6PRqUtyzKMQAPGc5ldh2UKoaqZQaaPk+ROdbwIIgqjGke5Apntz2cXJuk0eGDQJ
+         C1MZeFah+zNBvXu+BrtKPDZshs9g5D3E23VrpecRwt9tM+KF0RWartivig4P5N16Z7Hr
+         Q5XA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=M2Dmjo0eTFQBTdZu7RcW+bAtGwrsY89f3kYbWYqUfcY=;
+        fh=//zckbncL3ZhW3xWiNhTtCS03WRUJH+nZC60UJKs+F8=;
+        b=RKHQTr7Ri+F0J/ZkrQxawyLJBmbcEGJ68jX1Bd6TxlOqJWL4qfRX4H2L/2EShzMt1L
+         UhDbn6Y0juMQ87SsOASmMiTsnKDBxrXhlMhi45pVO3ZNyOQb78hw9d5PSSjYIjlQuKx1
+         C3y7HcBPCcM1SjK5yOJu/jPw2/JkS/tC2myxGGGivu3iP1fm2X6WySOJ2s04U7ScDDDJ
+         zquoWGoAMYSOHO5sjohiIw4uSjSofmIBmAF95VtSCrCY9TlBek5qK3s5TqdWDfstG1kv
+         sUbtpIZCH+XWZFG97tnC+peWIXX1XA01t9Ab7yc3nnORBC0m3/b9olemFK3Xr95gEMqv
+         C2yw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Cx+vIP4W;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f1-20020a170902e98100b001db4b23a75bsor4059481plb.15.2024.02.27.21.09.02
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=q5NdSJr1;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c1-20020ac86e81000000b0042c5d516510si8799934qtv.69.2024.02.27.21.36.44
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 27 Feb 2024 21:09:02 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 27 Feb 2024 21:36:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Cx+vIP4W;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1709096942; x=1709701742; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cslmreSRbrQ1KYjx5gJYbed1Ss6prRm6Ac4nj/FDVd0=;
-        b=Cx+vIP4WCOSh1JPsjDMtlMLIJL7Tz27+FWzs4dcPTCeyx8k3FmvxLXKFhKp/0BfpAY
-         W4fucxzju3yr6EUJx7Li+L7Nj8n8UieYOVh7U/wqSkfhF8o1/MnF2V9FYwDhsK+q+m9e
-         ftf0q2A9MrEhm/+k3yX4f8dafROhRVs9qqv0D8t+LhusbvVG6ZFGRqBu16Yy2yqtXEOu
-         sV+TTOUG18f7jET1jH4eve918Ys2a7Xx+npB4OMF2u8t6g4BIZpavdZOA0aqCNqEWTjv
-         opzt3kBMrcSsRlter3AnlD4E7GjzAjSqhcaxKT9+P44RofhhpkO62p7Wwa3xs1BPIWY1
-         23UQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709096942; x=1709701742;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cslmreSRbrQ1KYjx5gJYbed1Ss6prRm6Ac4nj/FDVd0=;
-        b=JebWbpxkR/5tDwYddfNSI+JHrcfyKAGOm7VU0X2SEWFpvNG06qSmDN5WAso5RrijPa
-         wlUJjmCsjzttowU9zKTVU5UVSUJyYKDkZMwTl7Y5gxUmNXqEsbeTD30eniC46asP7x4o
-         UL6RKuWOxaKFiWPfU60y+x4M2v9gsXG+cNWYLSPRxbCMJcSBotlotcivwXYpF0wURwqz
-         g0cDZaLoyPt7wAbhds4RnUcq1b65+dWuEkus2Du4hzMfoeYp4Nh8WhAhl4n5Wt2Bk0Tx
-         Hc6i7cQuq1FB+keRB4EvFyT4KY719G2eIpQVaHWLpKcQqMWcfxUQkx57NJTGBCyDni0D
-         rc/w==
-X-Gm-Message-State: AOJu0YyKp4U9AEsDopKIkJRWYLcIVXnvrxIDK469Rb2eOjYCLCivVCAF
-	CI/9AzJSkxUbQ4zLHmqwrMdkrSSJCvTP2dV16xuaKzwbJufGwA5gjzE0UBQkIE8bP9MJ6e/ExUQ
-	7
-X-Google-Smtp-Source: AGHT+IFNE9qxi2xbfuI0Uw+IMseWdlT6n78xSU1nbtCMaZDWvoU4Y3Qy/kKFYK79bAUdUounxM9n/w==
-X-Received: by 2002:a17:902:eccb:b0:1dc:c17d:6edd with SMTP id a11-20020a170902eccb00b001dcc17d6eddmr2707125plh.20.1709096941959;
-        Tue, 27 Feb 2024 21:09:01 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.203.206] ([157.82.203.206])
-        by smtp.gmail.com with ESMTPSA id km13-20020a17090327cd00b001db5ecb2899sm2376359plb.162.2024.02.27.21.08.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 Feb 2024 21:09:01 -0800 (PST)
-Message-ID: <ec233087-c919-47d9-b48f-044495d0a74a@daynix.com>
-Date: Wed, 28 Feb 2024 14:08:54 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 21/29] gdbstub: expose api to find registers
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=q5NdSJr1;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfCbi-0001hN-EB; Wed, 28 Feb 2024 00:35:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rfCbf-0001gv-PA; Wed, 28 Feb 2024 00:35:52 -0500
+Received: from mail-bn7nam10on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::601]
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rfCbd-00005i-BC; Wed, 28 Feb 2024 00:35:51 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=egeY3qHw1IZwaHwJnvN65eMIVr18+4yZLayK162jBkACrW4wR7g5700+lRsNvkAeLKkMDaLiWw8H+FIONumVafSqOXtdWeetBv5pdtvv9jVMNwemiE4DVyTu+pW8hcQzMJRwtcMAE8C9W5QqEoTusLHpbL95d0gE3DdBuehrnBtlS4Enc71XmQM4ou8Nx3pX/36KHDG22IhfO3gfpMWe7n1RGpSW4kAJuttPGnhcUa7w59bdXCxKx8FeNI+3gwqZgYnUqElOHlRJyQ8atvAdNi6DMaL0xfelcY5pVGWUEXU1Zn6zwNSOMciYlBr9YpoUFzqp+Cd10ESjFqBxCtzzUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=M2Dmjo0eTFQBTdZu7RcW+bAtGwrsY89f3kYbWYqUfcY=;
+ b=VVE6OU64JJAir2w0c0EnvEAZmQXpHmAR5uc+h95fHbgopB55ktSs5hk6i7MuXDO5aP+ISmIMnnIsWWbc/y3lQ65FEhiXZfx0FJ3cL4Os0rL6KBsxW8xLQCG8iDEt86jVWcmkC2dcewyU8f4z1MnvEqBzeZbeOY4bTTtC4O6U0VEOeCLUtoUXu4X4EIHxrs50JcQf89RecAm/DGKYB7+2t0foelNgcrmhNxuWw3oaY35V14Ff5XtB14DlUwQHGA7cgx6HtrLCCnTA3hYO2l2y3Hi+zBvF2dEDkOse/GBsa8Fwi8oXqKovnoiU8S3KApvQ1yZ6K1ElItKmPGMMQlxycw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M2Dmjo0eTFQBTdZu7RcW+bAtGwrsY89f3kYbWYqUfcY=;
+ b=q5NdSJr1xOQjmdbDTeWvnldZ29FwK1tD5TAJSe1zOGN0aVsPFN3oUnj7eb6jT/uz1v7AiS82QP8ENkOL1L4puCroPWdPRZYbZDMDnXHF0m4JWd2cy/s7b3AfLFaPh1tJTXV5mgtUBgClhWKi1PINl0rWFl1fLW9ozf/V+/8NGqsht7rxbsXy4uUOyMKzTOZF2gqxfj6OK6Hj0kqQfJE0TMBVeXIniB0zqSvCmAmU/3e1uHDZ9+kDX/5z7PfH/9Vwmc22L55ENw5DcDcI4co8YEyPbfVGR8UVG+dUtnT/LofRBLhgQeh+nJGMLXu+SxfxFKuAiU0e6gMDkY2Hmkw4dQ==
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
+ by DM4PR12MB5149.namprd12.prod.outlook.com (2603:10b6:5:390::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.39; Wed, 28 Feb
+ 2024 05:35:41 +0000
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7316.032; Wed, 28 Feb 2024
+ 05:35:41 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Zhi Wang <zhiw@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 1/2] qom: new object to associate device to numa node
+Thread-Topic: [PATCH v7 1/2] qom: new object to associate device to numa node
+Thread-Index: AQHaZlXRpHP8fv3NL0CqBnE3t10aOLEeLS2AgAEV0SI=
+Date: Wed, 28 Feb 2024 05:35:41 +0000
+Message-ID: <SA1PR12MB7199AE8E98FE0A585A901883B0582@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20240223124223.800078-1-ankita@nvidia.com>
+ <20240223124223.800078-2-ankita@nvidia.com>
+ <20240227130023.00000744@Huawei.com>
+In-Reply-To: <20240227130023.00000744@Huawei.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-arm@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Michael Rolnik <mrolnik@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Warner Losh <imp@bsdimp.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-s390x@nongnu.org,
- Kyle Evans <kevans@freebsd.org>, Brad Smith <brad@comstyle.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, John Snow
- <jsnow@redhat.com>, Alistair Francis <alistair.francis@wdc.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Brian Cain <bcain@quicinc.com>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-riscv@nongnu.org, Bin Meng <bin.meng@windriver.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Mahmoud Mandour <ma.mandourr@gmail.com>
-References: <20240227144335.1196131-1-alex.bennee@linaro.org>
- <20240227144335.1196131-22-alex.bennee@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240227144335.1196131-22-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: DBn720BWeY3p
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|DM4PR12MB5149:EE_
+x-ms-office365-filtering-correlation-id: 44dd4cf1-b5ab-4fca-ad38-08dc381f1a20
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: zOe4Dyf/npw8Aif0Zovts4+9xy6H5lD7/zKgMLnwiF50yyLL7tSVCW+Gm/fS1+l71xwqEGJRbSA4XGGfr+a5jBNuuNmR9qdTUknc7f5mp87mEHDL/72dpZKMPLWVDaGjeYVoSt8mfm2rwv5UwgqPZNsmCFB3xeCLwlJ4LramvQwdW56TZfwbXd4+IItSSuueVRpJJtdrgeISt7MhBGEEFmG1WVWJ74DfPVneEibhAy3peVDrFuYPfJSqkAp119KDIDkRPsSi6gv87X+o/WV9f7PTdC3g2EKxNNymYRCgmdSeD8H+5okzU3QkBx31ALQZ2FAW7THipoExBH6ZsyNfsIMfP0/z/Ep8aBYRoEvhm97vR7W5kBAV+yRe80lt7FVHovgcI3XB0kgPNKTHqYGykJ2/54cShmAYkmFj1ZF4NknQAVygnd87GHBrri++Fgmx+NJxNF7D4LGSkd58fc1vWQ7AGGxNd3K3y7WJ1VLGH8POeMPLtPqP8BL/i5/nBtHCI5NacS8pliUxhrM0zRlhzLaS5HImktissA3GJsLhKAIEAMkAoHl+LqbtgB3Q6N4A0a5Vqh80UsrFC8Q2XCqTiV6bNfaJmyfDDv307+UHFe2i6b9yWEpudtvDQbxhB4C8p0KUvbxZBzh/wgTxHeiftfNRCT+IOzjartA4Spq6Dw07yIv4JEWw7yP08IZvOn6ELzzZ8/PDSkCfgMNb9SUUTQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(38070700009); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?q8DOsoHUCzkHlyKsj5g9vCYxhoIeWx1/nR7WT3oWyYNcqsAj3C9M+//K5L?=
+ =?iso-8859-1?Q?sMzKwAzAAZdActWiPxKxN9S1+1keWZNliZ73ooveZWbm9vavuOUj8Qs6j9?=
+ =?iso-8859-1?Q?d+RcsEewR5jhfxUqLAvmd2ncFcDMbz9ifCLJpwxZzQ6lMLqQB28vdckDH2?=
+ =?iso-8859-1?Q?FDBbeA0oDkX2R/BdOtZUC1s2wgR1/zCGwysPqr82we9feHDc6upvHBwa3d?=
+ =?iso-8859-1?Q?Y+VWzAn4j4tqbfYun3azARLWjhmswpRKsDiemF1oEthUtTBy7QK4ZIULvz?=
+ =?iso-8859-1?Q?iXRoc17PjMZVoeJg4f6Qezy45tQgMdI9p8pEm0/fAWsopEaA3z2VXmgJPl?=
+ =?iso-8859-1?Q?XK8IqbAA4aGY+zZVW2IGOjWa4DaRSTwpU/ZBVEw9DxEvmkwqZ3+GXvwEwG?=
+ =?iso-8859-1?Q?XROVpwOQwkOWcSq+Ieh2VuuvGExCZflSyQkFyEZkjK8sgJU7teItPUJsCJ?=
+ =?iso-8859-1?Q?SowToHe3OVeAZkkpsVnG01uHAzYES/kKnl9Pjf7+scihpfffKPsGEWD4vs?=
+ =?iso-8859-1?Q?OL0R1zwMszJbo915DsdB58mnSgqZnIkYYSniYe1u0bn/bp1jJ/6myXVF4P?=
+ =?iso-8859-1?Q?Vj8yUkIuHR8Rd/0hYIFbYbsYROappI/KCw39f5wIKBzd6VXLKaOgW15w25?=
+ =?iso-8859-1?Q?M3IA0RRPVV1AdFJ9ALt53kb6OtpCJIBnR40wxEdpy0nvGgyKaGJjXhL1Lc?=
+ =?iso-8859-1?Q?plcxHAofEjrlXlf+RLyIEXTDba6J3/YVSEGml/CZeGrtpVTS2bVVO5DN2T?=
+ =?iso-8859-1?Q?AQnp5IVkc0UNrQRtqxbeVzrAdvxB7TnY064imcFKgIBkjdJ58zS4A0E0dW?=
+ =?iso-8859-1?Q?q6A7YS7ofk8zm6TOuC+7SwByO/9w00QpCdMi/aR4cPEtbSdaafHslLwBvB?=
+ =?iso-8859-1?Q?xvSQ2iIdG/JVFgNYVigKsDp9pb3GSZnoevRg2vSy/6lfg+zMRhCp+a1GIk?=
+ =?iso-8859-1?Q?pqnJelqa2/MpidWNIMPjSVj2P1HJKcj656EdT8Hty8G434r7k/HRKHQXX8?=
+ =?iso-8859-1?Q?KgdC7FYyiYzW5AKSbLrTwAUHCTh0+OGBQajLmWJzkyGxiCmxJN65nJ1Gbs?=
+ =?iso-8859-1?Q?WiYj8/MuDcR+TNqd/LQgLMVAzRH+svAYPH+xU2NN2q84kGzrk/HZ/UYEJq?=
+ =?iso-8859-1?Q?D28iIGe9b3UUPrNlzmR6U+rALx7jUyqX1yo7Pp0f85eef4ojUBE8/3c1rb?=
+ =?iso-8859-1?Q?wNtr9SfhgbOTXnMRJIb/VDwOm1dufW25uYpRZuZ6/MR1pn8yflQKL6huQY?=
+ =?iso-8859-1?Q?P8+BCL1OJM0xj/VN3OrrzKhuAjsSVDglfCVmmro25KBpsy7lIyayi9YLF9?=
+ =?iso-8859-1?Q?xE35mICpGlplCAk2X9BEL1EaK8uEeEEsizVDNCc7cz0JYJLAG+0VnRSoW7?=
+ =?iso-8859-1?Q?V/kHwJwbeMWN+fqKX9pcG5vU7mCueQ9qSBO17ar9W/A+yXv6twmOomDg/Z?=
+ =?iso-8859-1?Q?q9HoHB/2SPsVi13ZI7LoLStFA1y//Ozxycdtz6gVM4b668owUi1gq99INt?=
+ =?iso-8859-1?Q?MEqr/XSgOaxRp79Ume2gulP/HJCEqZkArWtsNUC16dB7NBkpSDkgNJrkdi?=
+ =?iso-8859-1?Q?Ee0W8oQDZ/fYiMk0sdhHd9PnK2syjapmaX/gGBx3pH4RwbE+wCuihmQDFz?=
+ =?iso-8859-1?Q?suzvEOB0Ca3xE=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44dd4cf1-b5ab-4fca-ad38-08dc381f1a20
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2024 05:35:41.3114 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: me8ocjuSo0YnMHpRV5t7kXo7JQfoNrzHg4S9/WMFPXwR6k7wFZ9rjCUgHj+G/8GaMnE65KbqT+3dwSntSHB8FQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5149
+Received-SPF: softfail client-ip=2a01:111:f403:2009::601;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rtMdsOZEJP8d
 
-On 2024/02/27 23:43, Alex Bennée wrote:
-> Expose an internal API to QEMU to return all the registers for a vCPU.
-> The list containing the details required to called gdb_read_register().
-> 
-> Based-on: <20231025093128.33116-15-akihiko.odaki@daynix.com>
-> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Message-Id: <20240103173349.398526-38-alex.bennee@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-
-> 
-> ---
-> v3
->    - rm unused api functions left over
-> ---
->   include/exec/gdbstub.h | 28 ++++++++++++++++++++++++++++
->   gdbstub/gdbstub.c      | 27 ++++++++++++++++++++++++++-
->   2 files changed, 54 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> index da9ddfe54c5..eb14b91139b 100644
-> --- a/include/exec/gdbstub.h
-> +++ b/include/exec/gdbstub.h
-> @@ -111,6 +111,34 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
->    */
->   const GDBFeature *gdb_find_static_feature(const char *xmlname);
->   
-> +/**
-> + * gdb_read_register() - Read a register associated with a CPU.
-> + * @cpu: The CPU associated with the register.
-> + * @buf: The buffer that the read register will be appended to.
-> + * @reg: The register's number returned by gdb_find_feature_register().
-> + *
-> + * Return: The number of read bytes.
-> + */
-> +int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-> +
-> +/**
-> + * typedef GDBRegDesc - a register description from gdbstub
-> + */
-> +typedef struct {
-> +    int gdb_reg;
-> +    const char *name;
-> +    const char *feature_name;
-> +} GDBRegDesc;
-> +
-> +/**
-> + * gdb_get_register_list() - Return list of all registers for CPU
-> + * @cpu: The CPU being searched
-> + *
-> + * Returns a GArray of GDBRegDesc, caller frees array but not the
-> + * const strings.
-> + */
-> +GArray *gdb_get_register_list(CPUState *cpu);
-> +
->   void gdb_set_stop_cpu(CPUState *cpu);
->   
->   /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index a55b5e6581a..2909bc8c69f 100644
-> --- a/gdbstub/gdbstub.c
-> +++ b/gdbstub/gdbstub.c
-> @@ -490,7 +490,32 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
->       g_assert_not_reached();
->   }
->   
-> -static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-> +GArray *gdb_get_register_list(CPUState *cpu)
-> +{
-> +    GArray *results = g_array_new(true, true, sizeof(GDBRegDesc));
-> +
-> +    /* registers are only available once the CPU is initialised */
-> +    if (!cpu->gdb_regs) {
-> +        return results;
-> +    }
-> +
-> +    for (int f = 0; f < cpu->gdb_regs->len; f++) {
-> +        GDBRegisterState *r = &g_array_index(cpu->gdb_regs, GDBRegisterState, f);
-> +        for (int i = 0; i < r->feature->num_regs; i++) {
-> +            const char *name = r->feature->regs[i];
-> +            GDBRegDesc desc = {
-> +                r->base_reg + i,
-> +                name,
-> +                r->feature->name
-> +            };
-> +            g_array_append_val(results, desc);
-> +        }
-> +    }
-> +
-> +    return results;
-> +}
-> +
-> +int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
->   {
->       CPUClass *cc = CPU_GET_CLASS(cpu);
->       GDBRegisterState *r;
+>> diff --git a/include/hw/acpi/acpi-generic-initiator.h b/include/hw/acpi/=
+acpi-generic-initiator.h=0A=
+>> new file mode 100644=0A=
+>> index 0000000000..2f183b029a=0A=
+>> --- /dev/null=0A=
+>> +++ b/include/hw/acpi/acpi-generic-initiator.h=0A=
+>=0A=
+>> +typedef struct AcpiGenericInitiatorClass {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 ObjectClass parent_class;=0A=
+>Too indented.=0A=
+=0A=
+Yes, will fix it.=0A=
+=0A=
+>> +} AcpiGenericInitiatorClass;=0A=

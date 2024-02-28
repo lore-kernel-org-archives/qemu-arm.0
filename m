@@ -1,225 +1,150 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp253443ejb;
-        Wed, 28 Feb 2024 06:19:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVW5sxlM/I1YsdmjZQ/bIgZiCjN+weM1s37sRdSKAqucBXVD+W6vFFaRe2BuuS0/XN1uIR077wzIlH4Wrnhe6R/NifIdoH9
-X-Google-Smtp-Source: AGHT+IF/ImHK6OQ71whOHQNawX98s4BOM247mwtF9L8MOIdaWcnTr7M8ugzU16xMxFhav0tS9wtV
-X-Received: by 2002:a05:6214:29ca:b0:68f:3c36:1b74 with SMTP id gh10-20020a05621429ca00b0068f3c361b74mr6557663qvb.41.1709129972749;
-        Wed, 28 Feb 2024 06:19:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709129972; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp310120ejb;
+        Wed, 28 Feb 2024 07:56:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVqJdJ/ho8RwFnQIEZOtGJ6Tdyr2hakZ/YomwSSX9iqFtUXZKvul81uvAmP4Qt2sp36O9TjfTZa0C26omPln9zCePW3ZaKn
+X-Google-Smtp-Source: AGHT+IF4mP/bTt8AEoR5VC1Ln7mgbmlG/Wc4fqTtLl5qu2fDW/c6O1gYyX2hrZVVqANwlPhXSJVj
+X-Received: by 2002:a0c:e24b:0:b0:68f:a308:bb4f with SMTP id x11-20020a0ce24b000000b0068fa308bb4fmr5273048qvl.2.1709135776002;
+        Wed, 28 Feb 2024 07:56:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709135775; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eyva9XuXUsx8IQ+AliPwDE59DO4jv13YdPbzLZiwNLYRhtMYiW0KOoqR+7RrieI242
-         IAXpMO2gu+u9LePom4waOtUBw5onyyVjw3kviIQhfj9K7gJaii3eVyvVg+sK4fUD+Yfr
-         a5N/AT9l8u8exUnKHqC3YOwDAmz/SNJ3QepyoKEhUPArEj4/zLHDeOg/+bDz4zO8iP5W
-         W0iq0cr75xjg8EEf8idjMzXCrGPSdlFr6NI1ORqRTyAj6IrXbIVOV/pZw/Dw/doog2z3
-         XgWvh1eK3V2B9T7xKTCTzDgzhQiHqADtBx5ZoATVdyPRsLE0Zc9pq5OT3izG8pXhTFtm
-         pVOQ==
+        b=p1bTGV5Q4ylbR5m0BLb1Tty3NdXdQAkOkABlL0PLZuEBskfefWiRVlcpacjruJHHaN
+         juJeHe2qiBQYmACS0yrBDuJS//fm4RqDLaJ3Y2Kxdo3uY4C1sqlg0Z3K0auSgIx/6z4p
+         /GdcAn0nRyXnCqWMWe9+vkAkG98p41qDxLpXGKS1lrmZukNH4PDGNjVzttt+Vk2ZhoI6
+         K0EENQyuLDb4FIX1aJCz+gciyAw0lL20wu1EzEmk3H/WplZnTI2uJefGFHUreneyvDiE
+         h8PMrj27DY1/tScre7NVGnukwG/z3QdjwgpJsYAOoCi1baMO3HX18FFjKv8QvggorvlJ
+         Wp6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=T9gsHcaIXWgebE1TFLUlGT0eDuaJ1smlcNOq4J3sI5w=;
-        fh=XqRHfvdTyZ3SXVL2WyB9NP9kyE6U+mf0pVeo0cM9u6s=;
-        b=A0Nuz9xPX7pc/yFmUwgOyrpeUj92Mzryih4liNzWG9rVFHRNYi3nKQ/8zspftrzKRj
-         GRkjoqN3Mu38/DNQT7JevIz3keyOJpfZVhUsqwDaKTlJ0DqWmValwr2a2xNOsgTRnwkj
-         AHoy16n9J5BdtOps056kSpHGJD9OJhEryTXkrd+6kj1oNibUnwjyuE8pEywh/er7r7SD
-         3ib14BokitBoC5E+MTdGfUUuNEoChhET3eE0ae54ci8e2ZPiwktAiiczuD6Z4JvwUdDV
-         xM58M1+pQjAeANjD4KMS+SYOWaDXzrJT9wqhHbkJEQi92bV9sh4PHdWeCXMxxZeGHLh0
-         ZFKg==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=4TIXxzvQCzpVQFI7ddyx7KIC/+MReVaVIA6kdk2lPjc=;
+        fh=qEoRr073L71waHf9CtRwJmOlw41u0/kf47lPXfFrf84=;
+        b=M6U1avuldcpoyO8Rn2DKFpEwYJJ7cu3fCMcZ+wEQz+k1hIzZU6jqc8rC0BD3T1pP4x
+         DwHbrCGKQR5rhzAVRP8JNbHSEuNEjNFymWeTwF0WxyvDwf02s/KdxKSkTPONY1/+VxZ+
+         ZxhcDVk048G09QXHlPpJFSK7LVP3Svp52okTED3WuW3MiCUz5ZMcYmPv3sIGUZrmQQ0R
+         WVifkSFS8gdNKQMawxg2I/jnwpZchXEUSEtUdJwFybmfZ6rh/wKiKMXc2eekTNWT+L8q
+         fRfdsD8HlsnXrgJ0JZoEWcls8xD0Tyys14tiqpbQiF7sAVssmNMjfsnWi3up2zcaNOns
+         vdYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pz5zKwZP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=DFZ4FgXU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15-20020a0562140c2f00b0068f572929b0si9343877qvd.78.2024.02.28.06.19.32
+        by mx.google.com with ESMTPS id u10-20020ad45aaa000000b0068f52b36cf8si9871300qvg.304.2024.02.28.07.56.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 06:19:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Feb 2024 07:56:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pz5zKwZP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=DFZ4FgXU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfKmJ-0001ND-S8; Wed, 28 Feb 2024 09:19:23 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfMHu-0008W6-Sh; Wed, 28 Feb 2024 10:56:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfKmI-0001MP-G9
- for qemu-devel@nongnu.org; Wed, 28 Feb 2024 09:19:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rfMHt-0008VS-Bw; Wed, 28 Feb 2024 10:56:05 -0500
+Received: from mgamail.intel.com ([198.175.65.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfKm5-0002rs-LM
- for qemu-devel@nongnu.org; Wed, 28 Feb 2024 09:19:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709129947;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=T9gsHcaIXWgebE1TFLUlGT0eDuaJ1smlcNOq4J3sI5w=;
- b=Pz5zKwZPo5EHse2nbPQ9j4wbm6+xZaDdx7m1trHb3LP2minga51LK2Vy0TkpVflx+0crGz
- yU6JRF5TeZ3J+jG4ktz7z7XQHqmRw8l8o09wvI+pTz5Xabn9v5Jq/YR3kKxq6Lfv6aHmOy
- 1W+R/IhOTpdXJX9daXAR+jRHTN37qoo=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-128-B1Pk6NNcPw6obibdKgUGQA-1; Wed, 28 Feb 2024 09:19:05 -0500
-X-MC-Unique: B1Pk6NNcPw6obibdKgUGQA-1
-Received: by mail-io1-f70.google.com with SMTP id
- ca18e2360f4ac-7c7ee7fa1caso131084739f.0
- for <qemu-devel@nongnu.org>; Wed, 28 Feb 2024 06:19:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709129945; x=1709734745;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=T9gsHcaIXWgebE1TFLUlGT0eDuaJ1smlcNOq4J3sI5w=;
- b=vZ8bp5kQHvwlFkosQKNXURowEPJFAqZkVx8ChnUQyXt11vRly1P4ZpECq5VQqFqTaf
- n4C+fXMKT1wYQcsTbU6OUV5V7a3XlYyiitFs/1/juWrUlr7KEmOC218petMrQsUGWeRR
- 6guvfqsXgT6R2pZn7UrS6fmur+vusIgQiB3U1l2s6fWYJuwnBgFaUI9d39EyEfxn1ayi
- bi56Ajmohk8f5fM80XTZzRVelu3U3uWkTWLqrEW/6gT6AhdFdM9RDNU2Qb3P9vjUfvFY
- TamDO8tiAeUpBJkFoMwKi+QYa4PlDCF3pO+lLcy34r30YSMKks9JrPULT7+/kay36gwb
- 0AcA==
-X-Gm-Message-State: AOJu0Yx2rw78ptYaZ5QQg5tdj/KQWR1eztUnBB+iuxmDO0YAcw/mclO/
- RHWzlmsdkTZUeMLTjlY7xIBKxngEcwWiTX1uqeb6GzaEp1fxXb6RyVdxw6Ahd5QDNyUitolDjlW
- L9+igGn/PUOS+d0f7pA0f+Es51mAVEf8qwYQdctXUazTbJ20NhaGH
-X-Received: by 2002:a92:d64d:0:b0:363:c4b9:d931 with SMTP id
- x13-20020a92d64d000000b00363c4b9d931mr12990313ilp.20.1709129945123; 
- Wed, 28 Feb 2024 06:19:05 -0800 (PST)
-X-Received: by 2002:a92:d64d:0:b0:363:c4b9:d931 with SMTP id
- x13-20020a92d64d000000b00363c4b9d931mr12990285ilp.20.1709129944853; 
- Wed, 28 Feb 2024 06:19:04 -0800 (PST)
-Received: from smtpclient.apple ([115.96.143.215])
- by smtp.gmail.com with ESMTPSA id
- z20-20020aa785d4000000b006e45dce37basm7844002pfn.220.2024.02.28.06.18.59
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 28 Feb 2024 06:19:04 -0800 (PST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH 03/19] tests: smbios: add test for legacy mode CLI options
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240227154749.1818189-4-imammedo@redhat.com>
-Date: Wed, 28 Feb 2024 19:48:47 +0530
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rfMHp-0004Jk-F7; Wed, 28 Feb 2024 10:56:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709135761; x=1740671761;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=fNVWwNQheie9mBpZcQ8dmgIOe23qPbQo9xV4snxQxi4=;
+ b=DFZ4FgXUkTfkQAwUZ4gi5/uETi8NRisLh1kGtTuz/zHfsCW+MvYdanOR
+ Xop4yxQzkxs9d3SOzWeOapPNHAREgJJ2r9U0g04saaFgQAAo1cCW6r8S7
+ eVC2AskxjZMWMzV7jUuAJxoMtznPl6VV41SbXKcjr1QqnByyHONM2YoHn
+ ej9d5X14ie/34FFck/ORM3/Mpem6FtdO3g0w1UR7SAkRqNtVZ9gqqXpFZ
+ ECkPztI8jVPvreB2a/bz1EidfX3lTRdj34q64yrRbTYBIhTMdGZftSgz6
+ MRzMzd3C6UG8pFqEKr4Nf2et+0Toh2KMgJkZLMPvloD0/DBQdJWz9EMkR w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="3464015"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; 
+   d="scan'208";a="3464015"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2024 07:55:55 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; 
+   d="scan'208";a="8040864"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by orviesa008.jf.intel.com with ESMTP; 28 Feb 2024 07:55:52 -0800
+Date: Thu, 29 Feb 2024 00:09:34 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Song Gao <gaosong@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <A54DF112-5A08-43E2-A30E-BA32FE330320@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-4-imammedo@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-X-Mailer: Apple Mail (2.3774.400.31)
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v2 1/7] hw/cxl/cxl-host: Fix missing ERRP_GUARD() in
+ cxl_fixed_memory_window_config()
+Message-ID: <Zd9avh8nPazzTSsN@intel.com>
+References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
+ <20240223085653.1255438-2-zhao1.liu@linux.intel.com>
+ <877cip3v24.fsf@pond.sub.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <877cip3v24.fsf@pond.sub.org>
+Received-SPF: none client-ip=198.175.65.21;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1GmTh2YULgc3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aTc+6G00IbL9
 
+> No need to quote the dereferences in full.
+> 
+>   But in cxl_fixed_memory_window_config(), @errp is dereferenced in 2
+>   places without ERRP_GUARD().
+> 
+>   In these two places, we check "*errp", because neither function
+> 
+> would do.
+> 
+> Same for the other commit messages.
+> 
+> Hardly worth a respin, though :)
+> 
 
+I over-understood your reply. I'll pay attention to that in the follow
+up.
 
-> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
->=20
-> Unfortunately having 2.0 machine type deprecated is not enough
-> to get rid of legacy SMBIOS handling since 'isapc' also uses
-> that and it's staying around.
->=20
-> Hence add test for CLI options handling to be sure that it
-> ain't broken during SMBIOS code refactoring.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
-
-> ---
-> tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
-> tests/qtest/bios-tables-test.c       |  17 +++++++++++++++++
-> 2 files changed, 17 insertions(+)
-> create mode 100644 tests/data/smbios/type11_blob.legacy
->=20
-> diff --git a/tests/data/smbios/type11_blob.legacy =
-b/tests/data/smbios/type11_blob.legacy
-> new file mode 100644
-> index =
-0000000000000000000000000000000000000000..aef463aab903405958b0a85f85c59806=
-71c08bee
-> GIT binary patch
-> literal 10
-> Rcmd;PW!S(N;u;*n000Tp0s;U4
->=20
-> literal 0
-> HcmV?d00001
->=20
-> diff --git a/tests/qtest/bios-tables-test.c =
-b/tests/qtest/bios-tables-test.c
-> index a116f88e1d..d1ff4db7a2 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -2106,6 +2106,21 @@ static void test_acpi_pc_smbios_blob(void)
->     free_test_data(&data);
-> }
->=20
-> +static void test_acpi_isapc_smbios_legacy(void)
-> +{
-> +    uint8_t req_type11[] =3D { 1, 11 };
-> +    test_data data =3D {
-> +        .machine =3D "isapc",
-> +        .variant =3D ".pc_smbios_legacy",
-> +        .required_struct_types =3D req_type11,
-> +        .required_struct_types_len =3D ARRAY_SIZE(req_type11),
-> +    };
-> +
-> +    test_smbios("-smbios file=3Dtests/data/smbios/type11_blob.legacy =
-"
-> +                "-smbios type=3D1,family=3DTEST", &data);
-> +    free_test_data(&data);
-> +}
-> +
-> static void test_oem_fields(test_data *data)
-> {
->     int i;
-> @@ -2261,6 +2276,8 @@ int main(int argc, char *argv[])
->                            test_acpi_pc_smbios_options);
->             qtest_add_func("acpi/piix4/smbios-blob",
->                            test_acpi_pc_smbios_blob);
-> +            qtest_add_func("acpi/piix4/smbios-legacy",
-> +                           test_acpi_isapc_smbios_legacy);
->         }
->         if (qtest_has_machine(MACHINE_Q35)) {
->             qtest_add_func("acpi/q35", test_acpi_q35_tcg);
-> --=20
-> 2.39.3
->=20
+Thanks,
+Zhao
 

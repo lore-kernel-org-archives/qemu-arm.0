@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175876ejb;
-        Wed, 28 Feb 2024 04:03:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWXk7d6nONEIVsep0kv4pV8hmGCXEHk1HEiqrqiFpDdsws9oE0JIgEefBnVwcd90h0K3pKLXvo9JylPponnFrx++24MiruH
-X-Google-Smtp-Source: AGHT+IFi6IJEVQ7k7K5miLtjMO8T9NszZcrUwyCcBEW4DoxZr711cf44PURxuTVR6hHRfK3bvWqS
-X-Received: by 2002:a05:620a:2492:b0:787:caf2:e1b1 with SMTP id i18-20020a05620a249200b00787caf2e1b1mr5825597qkn.51.1709121824260;
-        Wed, 28 Feb 2024 04:03:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709121824; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp176385ejb;
+        Wed, 28 Feb 2024 04:04:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWpuzlF2fikae0YeNfLlbLHGslDo1d6Sjo/5tFYZBa2m8qeeKa5/rifnfdg+mLGQcxoCaJPcQdOHNGo7O4YXoSBSD9Ax0BH
+X-Google-Smtp-Source: AGHT+IFkIt8nb4sX5aYh/+KnSP5krPHYup6IY2VyPMtxcPaQWtYEA/I/4SIZFa7k0C9MtIpG56q6
+X-Received: by 2002:a05:622a:a:b0:42e:8d63:50e2 with SMTP id x10-20020a05622a000a00b0042e8d6350e2mr6729986qtw.17.1709121866491;
+        Wed, 28 Feb 2024 04:04:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709121866; cv=none;
         d=google.com; s=arc-20160816;
-        b=sO7RPUoLuc9hwL9i5+YouJjWCqpGEjO3Qw09jFc/zEru9+nAfkaVob1wny/7obQnef
-         KPDw6U1OjLeFh8bQcVg1sXmipYDdHGQwXkn0By2HGPFAxoC9zhEjHeXmuk1LJllwF14Q
-         iXfGOt+4H05BP8zm3m3jDkzf2jbeLLIhD0Nzv0xN+MBwcM7Oyx1imzOnwc5vpSTPK3vI
-         0HHnjwcvaR73Y6VlQ/LvoK9+1n6wKzmrFzOQyW3ORT9riCQHiIn1+u2EAjrQmNCXCtV3
-         MKkqkRdQHjfou5FpfPJ8cR4SQ8ZVO577tFwqLXfDpuNTqBRtP5O4QY1mfAqkXdKPGn0U
-         nxEA==
+        b=n6rMsyNvprPP7Fg9Fltg/8rB4x/RD5CMfxEDGDRYj3u/qh3agS4fMeHAovAf6oWDEr
+         UIka29wLfjtT9wSWVI8z70qjktNbG0+cCObNJLnbsvI7eX3r4IERMEt1YJjepWf91StW
+         QjAZtUmw+LMFys+NZ+uENl/QaHB8y9ho0li92sHnK6QXgLo0UBpfRF95AtZ/EHL+/9OD
+         LC4Aej+4zMAWQJNYUSGPVC7/9oJXAGzjEFiPzj9Skum86wZtDRm9F1IM/X8ccIkh+ZCe
+         h0Dt4xVw7EUlzyUVW7oZHrvZ9Gs72oc16kN6gvD/hmEuK62R8LuNB5WxTCmwvVfBMnaN
+         fe3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=f3NS7fPrtXqoagp8rCB11HFdQzPWCS1YJlqct7gyccY=;
+        bh=Bcc8HBjuK+e32MtJJBC2ZwkLwi/bcHfcbiq9hbx5Q30=;
         fh=YkzlLM/B5rINvM6IVNmtbeUPm8x2JYcYDb51Z7uR+U4=;
-        b=VS8KOf/DPF8B49nOprSe3WMzGvqHTkBA/knKVWQPUUgclunCl8ONXHwLU1L0LwjjAS
-         GVS65hrhohQboB5D9mXgjM5i9F447G7lvdlMsM7Vc9VqhGBOzll9QeWNGjQsVimadmdU
-         KoXvWD12QRfRHaV0NBxIxhsF++Di4LPvgKyHM784U4COJI5uBScZp3i7vIMMd9+di9b8
-         L9b3/ukuLeiCCieOi1/UQE7mMZXz0pqoT94/ViDpAuIi9aZm71p47GgWJo5AGhj+M7r1
-         2Lppd46HM466dyPaKgZOcBDCRLNTj3/RCTfrf6PAOOPqdlkn80lvJtE9EZF/Dh62liiq
-         JRug==;
+        b=Qq8KVXulyFtjeYIGvlM0bC9Jv6JErtZyKiMezKDdd5gXdYDXDKOFfhS/HN9GhFEhjL
+         E7xACpGoUvkx1NBolc3uBqcFYTm9cEa1jXPzMBd/2Jo/ViOrD/3QOxqaD0o4mEZ4CTB3
+         2a19OFO13yJVNUIGoc/ObtqiBPcPzG/r1Ys+MZlMGOUIn2czNqyJyeZI8N1b+uRo522n
+         hjgVxvywRcggRwyVweLJgi5m7FlMag5MZFAv6K6T8BDKfd9NplP0glsG+7lKc1TfQuKA
+         eaFrsxyqBFgyovYhQOiG/iWVW7ERHIAcRaigwEFIHDFiK245ODkib3tV2lEK7mf6lBB8
+         FCaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=s6DmIAVr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=p7vhQQ85;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6-20020a37c446000000b00787bb718176si9420194qkm.739.2024.02.28.04.03.44
+        by mx.google.com with ESMTPS id y25-20020a37e319000000b007877e1802b0si9347000qki.722.2024.02.28.04.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 04:03:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Feb 2024 04:04:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=s6DmIAVr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=p7vhQQ85;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfIdw-00049e-Pt; Wed, 28 Feb 2024 07:02:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfIdv-000481-7e; Wed, 28 Feb 2024 07:02:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdo-00043B-MS; Wed, 28 Feb 2024 07:02:29 -0500
+ id 1rfIdr-00044E-91; Wed, 28 Feb 2024 07:02:32 -0500
 Received: from zproxy3.enst.fr ([137.194.2.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdm-0002z4-6T; Wed, 28 Feb 2024 07:02:28 -0500
+ id 1rfIdm-0002zE-KK; Wed, 28 Feb 2024 07:02:30 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 2D0BEA06FF;
- Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTP id 14D46A06ED;
+ Wed, 28 Feb 2024 13:02:25 +0100 (CET)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id ZsPidsl2YPEQ; Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+ id hpKzuRUedvMv; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 8F555A06ED;
- Wed, 28 Feb 2024 13:02:23 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 8F555A06ED
+ by zproxy3.enst.fr (Postfix) with ESMTP id 77824A0645;
+ Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 77824A0645
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121743;
- bh=f3NS7fPrtXqoagp8rCB11HFdQzPWCS1YJlqct7gyccY=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121744;
+ bh=Bcc8HBjuK+e32MtJJBC2ZwkLwi/bcHfcbiq9hbx5Q30=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=s6DmIAVrKwAf4lvOX5YWhE/+2z/xo91xlmSwwfPz52vG/GUJ6B8jGigrxSC9PrLGD
- SJzqqrgTODt6CDHkitr75Lc24QXzzPphSoUoVSS5MuRjT9dH1H1KLUpbyHgTgAnR6j
- PyR9K+Mm7Ik2CaIem/3HKO3DELf8Sh00v2oi1uwY=
+ b=p7vhQQ85i1SsQJ9kozIxhppTLeOAl/mCW9iYv5xtUAunNt3+hCCD8r+NdJlmthv3S
+ /adhnC28km3j5Io3rTQFh9+gtazPTLG+1pspJZnZi6LLUNA3NqwqwWRCMDTqyaSvyp
+ TzqSg6iz2wmoakSgf5N0+qxjvJPrX8cCI5vYkk+o=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id 2uB5g5s1_oQM; Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+ id x_d-Xy7V8Z8F; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id 2C10BA054C;
- Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 1E6BEA06DE;
+ Wed, 28 Feb 2024 13:02:24 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
@@ -88,9 +88,9 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 2/5] hw/arm : Pass STM32L4x5 SYSCFG gpios to STM32L4x5 SoC
-Date: Wed, 28 Feb 2024 13:01:05 +0100
-Message-ID: <20240228120215.277717-3-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v3 5/5] tests/qtest : Add testcase for DM163
+Date: Wed, 28 Feb 2024 13:01:08 +0100
+Message-ID: <20240228120215.277717-6-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 References: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
@@ -106,196 +106,268 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rc+a9B/CEX/h
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /pH2tCzf3IJe
 
-Exposing SYSCFG inputs to the SoC is practical in order to wire the SoC
-to the optional DM163 display from the board code (GPIOs outputs need
-to be connected to both SYSCFG inputs and DM163 inputs).
+`test_dm163_bank()`
+Checks that the pin "sout" of the DM163 led driver outputs the values
+received on pin "sin" with the expected latency (depending on the bank).
 
-STM32L4x5 SYSCFG in-irq interception needed to be changed accordingly.
+`test_dm163_gpio_connection()`
+Check that changes to relevant STM32L4x5 GPIO pins are prpagated to the
+DM163 device.
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
+ tests/qtest/dm163-test.c | 192 +++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build  |   5 +
+ 2 files changed, 197 insertions(+)
+ create mode 100644 tests/qtest/dm163-test.c
 
-Hello,
-
-If SYSCFG inputs are exposed, should GPIOs be part of the board
-rather than the SoC?
-
-Best regards,
-
-Ines
-
- hw/arm/stm32l4x5_soc.c              |  6 ++++--
- tests/qtest/stm32l4x5_gpio-test.c   | 12 +++++++-----
- tests/qtest/stm32l4x5_syscfg-test.c | 16 +++++++++-------
- 3 files changed, 20 insertions(+), 14 deletions(-)
-
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index 072671bdfb..8ba0dfc5e7 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -1,8 +1,8 @@
- /*
-  * STM32L4x5 SoC family
-  *
-- * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-- * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-@@ -196,6 +196,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-         }
-     }
-=20
-+    qdev_pass_gpios(DEVICE(&s->syscfg), dev_soc, NULL);
+diff --git a/tests/qtest/dm163-test.c b/tests/qtest/dm163-test.c
+new file mode 100644
+index 0000000000..6f88ceef44
+--- /dev/null
++++ b/tests/qtest/dm163-test.c
+@@ -0,0 +1,192 @@
++/*
++ * QTest testcase for DM163
++ *
++ * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
++ * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-     /* EXTI device */
-     busdev =3D SYS_BUS_DEVICE(&s->exti);
-     if (!sysbus_realize(busdev, errp)) {
-diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gp=
-io-test.c
-index cd4fd9bae2..bec83b3c1d 100644
---- a/tests/qtest/stm32l4x5_gpio-test.c
-+++ b/tests/qtest/stm32l4x5_gpio-test.c
-@@ -50,6 +50,8 @@
- #define OTYPER_PUSH_PULL 0
- #define OTYPER_OPEN_DRAIN 1
-=20
-+#define SYSCFG "/machine/soc"
++#include "qemu/osdep.h"
++#include "libqtest.h"
 +
- const uint32_t moder_reset[NUM_GPIOS] =3D {
-     0xABFFFFFF,
-     0xFFFFFEBF,
-@@ -306,7 +308,7 @@ static void test_gpio_output_mode(const void *data)
-     uint32_t gpio =3D ((uint64_t)data) >> 32;
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Set a bit in ODR and check nothing happens */
-     gpio_set_bit(gpio, ODR, pin, 1);
-@@ -341,7 +343,7 @@ static void test_gpio_input_mode(const void *data)
-     uint32_t gpio =3D ((uint64_t)data) >> 32;
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Configure a line as input, raise it, and check that the pin is hi=
-gh */
-     gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-@@ -370,7 +372,7 @@ static void test_pull_up_pull_down(const void *data)
-     uint32_t gpio =3D ((uint64_t)data) >> 32;
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Configure a line as input with pull-up, check the line is set hig=
-h */
-     gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-@@ -400,7 +402,7 @@ static void test_push_pull(const void *data)
-     uint32_t gpio =3D ((uint64_t)data) >> 32;
-     uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Setting a line high externally, configuring it in push-pull outpu=
-t */
-     /* And checking the pin was disconnected */
-@@ -447,7 +449,7 @@ static void test_open_drain(const void *data)
-     uint32_t gpio =3D ((uint64_t)data) >> 32;
-     uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Setting a line high externally, configuring it in open-drain outp=
-ut */
-     /* And checking the pin was disconnected */
-diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
-syscfg-test.c
-index ed4801798d..eed9d5940b 100644
---- a/tests/qtest/stm32l4x5_syscfg-test.c
-+++ b/tests/qtest/stm32l4x5_syscfg-test.c
-@@ -1,8 +1,8 @@
- /*
-  * QTest testcase for STM32L4x5_SYSCFG
-  *
-- * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-- * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-  * See the COPYING file in the top-level directory.
-@@ -25,6 +25,9 @@
- #define SYSCFG_SWPR2 0x28
- #define INVALID_ADDR 0x2C
-=20
-+#define EXTI "/machine/soc/exti"
-+#define SYSCFG "/machine/soc"
++#define SIN 8
++#define DCK 9
++#define RST_B 10
++#define LAT_B 11
++#define SELBK 12
++#define EN_B 13
 +
- static void syscfg_writel(unsigned int offset, uint32_t value)
- {
-     writel(SYSCFG_BASE_ADDR + offset, value);
-@@ -37,8 +40,7 @@ static uint32_t syscfg_readl(unsigned int offset)
++#define DEVICE_NAME "/machine/dm163"
++#define GPIO_OUT(name, value) qtest_set_irq_in(qts, DEVICE_NAME, NULL, n=
+ame,   \
++                                               value)
++#define GPIO_PULSE(name)                                                =
+       \
++  do {                                                                  =
+       \
++    GPIO_OUT(name, 1);                                                  =
+       \
++    GPIO_OUT(name, 0);                                                  =
+       \
++  } while (0)
++
++
++static void rise_gpio_pin_dck(QTestState *qts)
++{
++    /* Configure output mode for pin PB1 */
++    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
++    /* Write 1 in ODR for PB1 */
++    qtest_writel(qts, 0x48000414, 0x00000002);
++}
++
++static void lower_gpio_pin_dck(QTestState *qts)
++{
++    /* Configure output mode for pin PB1 */
++    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
++    /* Write 0 in ODR for PB1 */
++    qtest_writel(qts, 0x48000414, 0x00000000);
++}
++
++static void rise_gpio_pin_selbk(QTestState *qts)
++{
++    /* Configure output mode for pin PC5 */
++    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
++    /* Write 1 in ODR for PC5 */
++    qtest_writel(qts, 0x48000814, 0x00000020);
++}
++
++static void lower_gpio_pin_selbk(QTestState *qts)
++{
++    /* Configure output mode for pin PC5 */
++    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
++    /* Write 0 in ODR for PC5 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_lat_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC4 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
++    /* Write 1 in ODR for PC4 */
++    qtest_writel(qts, 0x48000814, 0x00000010);
++}
++
++static void lower_gpio_pin_lat_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC4 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
++    /* Write 0 in ODR for PC4 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_rst_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC3 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
++    /* Write 1 in ODR for PC3 */
++    qtest_writel(qts, 0x48000814, 0x00000008);
++}
++
++static void lower_gpio_pin_rst_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC3 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
++    /* Write 0 in ODR for PC3 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_sin(QTestState *qts)
++{
++    /* Configure output mode for pin PA4 */
++    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
++    /* Write 1 in ODR for PA4 */
++    qtest_writel(qts, 0x48000014, 0x00000010);
++}
++
++static void lower_gpio_pin_sin(QTestState *qts)
++{
++    /* Configure output mode for pin PA4 */
++    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
++    /* Write 0 in ODR for PA4 */
++    qtest_writel(qts, 0x48000014, 0x00000000);
++}
++
++static void test_dm163_bank(const void *opaque)
++{
++    const long bank =3D (uintptr_t) opaque;
++    const int width =3D bank ? 192 : 144;
++
++    QTestState *qts =3D qtest_initf("-M b-l475e-iot01a");
++    qtest_irq_intercept_out_named(qts, DEVICE_NAME, "sout");
++    GPIO_OUT(RST_B, 1);
++    GPIO_OUT(EN_B, 0);
++    GPIO_OUT(DCK, 0);
++    GPIO_OUT(SELBK, bank);
++    GPIO_OUT(LAT_B, 1);
++
++    /* Fill bank with zeroes */
++    GPIO_OUT(SIN, 0);
++    for (int i =3D 0; i < width; i++) {
++        GPIO_PULSE(DCK);
++    }
++    /* Fill bank with ones, check that we get the previous zeroes */
++    GPIO_OUT(SIN, 1);
++    for (int i =3D 0; i < width; i++) {
++        GPIO_PULSE(DCK);
++        g_assert(!qtest_get_irq(qts, 0));
++    }
++
++    /* Pulse one more bit in the bank, check that we get a one */
++    GPIO_PULSE(DCK);
++    g_assert(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++static void test_dm163_gpio_connection(void)
++{
++    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
++    qtest_irq_intercept_in(qts, DEVICE_NAME);
++
++    g_assert_false(qtest_get_irq(qts, SIN));
++    g_assert_false(qtest_get_irq(qts, DCK));
++    g_assert_false(qtest_get_irq(qts, RST_B));
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++    g_assert_false(qtest_get_irq(qts, SELBK));
++
++    rise_gpio_pin_dck(qts);
++    g_assert_true(qtest_get_irq(qts, DCK));
++    lower_gpio_pin_dck(qts);
++    g_assert_false(qtest_get_irq(qts, DCK));
++
++    rise_gpio_pin_lat_b(qts);
++    g_assert_true(qtest_get_irq(qts, LAT_B));
++    lower_gpio_pin_lat_b(qts);
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++
++    rise_gpio_pin_selbk(qts);
++    g_assert_true(qtest_get_irq(qts, SELBK));
++    lower_gpio_pin_selbk(qts);
++    g_assert_false(qtest_get_irq(qts, SELBK));
++
++    rise_gpio_pin_rst_b(qts);
++    g_assert_true(qtest_get_irq(qts, RST_B));
++    lower_gpio_pin_rst_b(qts);
++    g_assert_false(qtest_get_irq(qts, RST_B));
++
++    rise_gpio_pin_sin(qts);
++    g_assert_true(qtest_get_irq(qts, SIN));
++    lower_gpio_pin_sin(qts);
++    g_assert_false(qtest_get_irq(qts, SIN));
++
++    g_assert_false(qtest_get_irq(qts, DCK));
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++    g_assert_false(qtest_get_irq(qts, SELBK));
++    g_assert_false(qtest_get_irq(qts, RST_B));
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_data_func("/dm163/bank0", (void *)0, test_dm163_bank);
++    qtest_add_data_func("/dm163/bank1", (void *)1, test_dm163_bank);
++    qtest_add_func("/dm163/gpio_connection", test_dm163_gpio_connection)=
+;
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 2db5b0329e..0cc7406aed 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -205,6 +205,9 @@ qtests_stm32l4x5 =3D \
+    'stm32l4x5_rcc-test',
+    'stm32l4x5_gpio-test']
 =20
- static void syscfg_set_irq(int num, int level)
- {
--   qtest_set_irq_in(global_qtest, "/machine/soc/syscfg",
--                    NULL, num, level);
-+   qtest_set_irq_in(global_qtest, SYSCFG, NULL, num, level);
- }
-=20
- static void system_reset(void)
-@@ -197,7 +199,7 @@ static void test_interrupt(void)
-      * Test that GPIO rising lines result in an irq
-      * with the right configuration
-      */
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     /* GPIOA is the default source for EXTI lines 0 to 15 */
-=20
-@@ -230,7 +232,7 @@ static void test_irq_pin_multiplexer(void)
-      * Test that syscfg irq sets the right exti irq
-      */
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     syscfg_set_irq(0, 1);
-=20
-@@ -257,7 +259,7 @@ static void test_irq_gpio_multiplexer(void)
-      * Test that an irq is generated only by the right GPIO
-      */
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     /* GPIOA is the default source for EXTI lines 0 to 15 */
++qtests_dm163 =3D \
++  ['dm163-test']
++
+ qtests_arm =3D \
+   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
++ \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-ap=
+b-dualtimer-test'] : []) + \
+@@ -219,6 +222,8 @@ qtests_arm =3D \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] =
+: []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : [=
+]) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5=
+ : []) + \
++  (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
++   config_all_devices.has_key('CONFIG_DM163')? qtests_dm163 : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
 =20
 --=20
 2.43.2

@@ -1,142 +1,90 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp153046ejb;
-        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUYoy2C+6XuW1OJmTw62syToZcuY5c5qUae2kpYqbX/f2/QvMc7DqpJvMRUOzVDkkTv+B71BT1MxuM0bNzeYlDVKF6D8z1d
-X-Google-Smtp-Source: AGHT+IHJK9KW3RhQ099aJrA7RJ7iXvEudnycwJyBvnCAeG5VZRCL6UN6TPnvZBTaB7oatjdn+/jS
-X-Received: by 2002:a05:620a:29cb:b0:784:aae1:10de with SMTP id s11-20020a05620a29cb00b00784aae110demr5584524qkp.3.1709118724251;
-        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709118724; cv=none;
+Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp110110dlb;
+        Wed, 28 Feb 2024 01:33:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVstyHtSL1RS5RV0FV/EYsp537Mk7JCpl3qVaj9rVGMiXcHqaWrzk5hFSPuunoxsZ56X2yp4+uCD2rwsxbc57l7IuS+gsdI
+X-Google-Smtp-Source: AGHT+IFpWN4UKwLTEITLnuDnItnwz3rSYD2sNAGqr/pJb5e5F2oLiikmI59Hw6RU9y/KSj7WHITy
+X-Received: by 2002:a05:620a:2946:b0:787:c0b9:e83 with SMTP id n6-20020a05620a294600b00787c0b90e83mr3309609qkp.22.1709112785931;
+        Wed, 28 Feb 2024 01:33:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709112785; cv=none;
         d=google.com; s=arc-20160816;
-        b=NkyeE/7g1GpHvi9sXHPxEVc9fwsGB0McE5fGEcMZUA+fCUpmShJIBwvlfkNmHhA9dd
-         VPZMO6huVOeSUIRhxuI3Q9cgLIojNVpQAtB33HnBhHPgdzaxANgwSwqMCrGEYq1wTVh6
-         sYhNz73K7+pMdax8R7rNYDYJhLdkmgB1dgQag6qVZzFdAyrEpyx9kJyh6tfb0B+7JzGH
-         igEewr8ambqm9rvCXKQ71eeKYXGNk1CfTcnQy9+WO46HQR3y350q/Uv7P17iHimBunkl
-         B4096KCvDlZgoVcDl0yIBhGPhrIMGXCtso+el4Sz59Ow5HEaPNdQ8aB1uiqDwp1wsqzY
-         FWVQ==
+        b=RRPZw10CHsw3NCbe5VGtJxMf4xFwhDbmPoZUY6ef7P1GVtW2Xa0tpZwASLxlgMLa8G
+         9dyXr455wOaxAXNh9fzWW8b8nESvjZOyEZo4IhXkV+WQZ3dR0bJO48J/qr744nlN9k5U
+         7aPWPT1sRH36tPTP9radFQ1GdWVACC8KZA9LPkxwcNflMzhjvNQWTpYj9wUgE04s5eyI
+         47AJScoUos6GcUdDQzokc4eS92AGGcgrqdmTjN26viiOaK4dfJPryFCkX8pvLC8nmYzd
+         yBf8/tc/ygb7asrgSNOxbKRlUcx4F1qVEk0z53ypZPM2UW7nipLt9F6poc5HjS+xWXDI
+         2w7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
-         :dkim-signature;
-        bh=ack6zNbnh8xE4SclRkELehl4jVXWEmz1PFTXghcdvPU=;
-        fh=+q9Meqxrl9ig93ctowj5yCfVDLfZg8RlImI0fg8F6aY=;
-        b=CwU4p2VuZ8IAve/LsSB696YFLlfpD4ba5xW+REBgBFSq44xNdQdfe76MxDGO/VrW/C
-         p6KbWSYpn2L5SdzpWzm+aEYpFlJozF4eIlkty9FyojtqKiM3I1lEVy/MimaqMXZQ27nE
-         sqxlkjs4+0Gkflx+Jh9Nu1i7N1TMhVRJkPL9OuGP3Ad/nGM1zdLL7hncf2EK/Sh/eWnw
-         VbqAbAT05SiqT90LEj785cFbeXsoI62Gm1ESmlEhGyhKK3Kbn9QP2XWE2vhatCTGrqAI
-         mCcocghX4rtWjBlYr56fxdNWy7DVk5Si/XPEE9uhJGtYcSDDuE/3r2EcmEtOZDpWkBel
-         Poiw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=Z3EdLF9clAp9tSpaJE+9Jj3JRxyPU2DQSDQvQP1UcVI=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=i+CvRU7FwqDDxrvdn+LON5FrucdTocQ4ceVFHoyVL0rGQHosy+iC3knOXrDOReNgAy
+         BL/YECJ3lzjqrS2DI6Z4pOCCwbpPBbGxNIIYMTT5zsTY/OXWc49DxvIpifrE/6AL6e5G
+         BMqPMIoAOZNFwfwK9Mkvl0cA7NHTaAiwK6xSvoicPVfgGbgkdbuSlQ6arL7z+KbrLm9B
+         CZorZVf5S7aTqgMEqgPyDxx+OhhE21qbD03+TLgqgiztHklP0claw/MIXed6N7rxdlAb
+         Dv8X0FyJGBxjzQt4/1wJT+Ld/6ElJ+MOMydJryTybvapELvUuFdtJUfFPDWIR7Hlzo0s
+         4H4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a8+s0VF8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5-20020a05620a094500b00787de90a0basi4571580qkw.345.2024.02.28.03.12.04
+        by mx.google.com with ESMTPS id u12-20020ae9c00c000000b007879b80f197si9342982qkk.680.2024.02.28.01.33.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
+        Wed, 28 Feb 2024 01:33:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a8+s0VF8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfHqq-0004Zk-1o; Wed, 28 Feb 2024 06:11:53 -0500
+	id 1rfGHW-00018g-N9; Wed, 28 Feb 2024 04:31:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfHqn-0004Wi-KA
- for qemu-arm@nongnu.org; Wed, 28 Feb 2024 06:11:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rfGHK-000111-Sl; Wed, 28 Feb 2024 04:31:07 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfHqh-0003dn-IC
- for qemu-arm@nongnu.org; Wed, 28 Feb 2024 06:11:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709118702;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ack6zNbnh8xE4SclRkELehl4jVXWEmz1PFTXghcdvPU=;
- b=a8+s0VF8K/AQ69kcOHaxAV6Pao+7h49UuxaJLlabUkOMhyBuLVhh+vcs0tj5dXGF9G3XrZ
- ULs8OeFv8EN6B6wtJIV+26iJGGoLHBwrOuhsh01nHetZaAMv6u/ewONbarDZpfh8QvgehZ
- forGom89f/1sOAcKHtVEOZh/obRevRc=
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
- [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-692-xjz8Q3V2OG6gyaMdGkQQrw-1; Wed, 28 Feb 2024 06:11:41 -0500
-X-MC-Unique: xjz8Q3V2OG6gyaMdGkQQrw-1
-Received: by mail-pg1-f198.google.com with SMTP id
- 41be03b00d2f7-5dc90074016so4798893a12.0
- for <qemu-arm@nongnu.org>; Wed, 28 Feb 2024 03:11:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709118700; x=1709723500;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=2lOLvQEZPB1lbfugTDm65SThgR95YqYFdALlm5pPhSg=;
- b=c+0PzMy3BoVRCNyehjjHffXjGMLIwIxK4LZCOAN2xFZhSaXZ59bBiUBMaFDOn/7TTm
- IVP/PY+zqLSUDknkJA+rmTvL1YZT6DAqYhOx6hnaNLdnJxOd02vi54Oe9+oe2e2rv5NS
- rtPk/k24Ok3GIKQ8W/wdvmo0UTwVilSJ+YdCFzwbL1caV61iJVxHE9JesjZpli5PAgiB
- s52wBK8Vs2lI1w6cihIs7vHwSfY7aQfI2l8DvYL1MmGAMHyRLjkcnTmvAa1MYRYEeqnV
- FKEQtFjE4t2qiSFu2AXTxhy0yWVgBHKlhToNwp5SuxDRvucfxa3rwOAhtoSqC2rTYk8h
- QxyA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVRTUuG2G1PZmj64SY2Slq9WnFBWrS0xTB9RVZX4sThbqMmH5EfUUiLfELGFhAlzLHQqvIXTI9KIl1XT8dDJ9/vK4sa
-X-Gm-Message-State: AOJu0Yxs5fJAjbKStm7zYsq8pPL4frUQyKBiICxj+DxUbwb/QBE7fwYO
- 4Qoqj2ubP92FebByT4q1gtP9WS5PR3Svhpl/teZcja9TlK54SYyGugAIrKm+v3XpH8Hg50hKFBO
- EJQXnlU85qSJEJ8XFE/cCF/FZCqeCYVonWkC/RCixR5f4K4aKQg==
-X-Received: by 2002:a05:6a21:3189:b0:19e:9da6:c73b with SMTP id
- za9-20020a056a21318900b0019e9da6c73bmr5592113pzb.8.1709118700277; 
- Wed, 28 Feb 2024 03:11:40 -0800 (PST)
-X-Received: by 2002:a05:6a21:3189:b0:19e:9da6:c73b with SMTP id
- za9-20020a056a21318900b0019e9da6c73bmr5592083pzb.8.1709118699932; 
- Wed, 28 Feb 2024 03:11:39 -0800 (PST)
-Received: from smtpclient.apple ([115.96.143.215])
- by smtp.gmail.com with ESMTPSA id
- s7-20020a170902a50700b001dcc2951c02sm1824254plq.286.2024.02.28.03.11.34
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 28 Feb 2024 03:11:39 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH 03/19] tests: smbios: add test for legacy mode CLI options
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240227154749.1818189-4-imammedo@redhat.com>
-Date: Wed, 28 Feb 2024 16:41:22 +0530
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Song Gao <gaosong@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Message-Id: <4AD7C30D-F989-4228-91FD-672D79592302@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-4-imammedo@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-X-Mailer: Apple Mail (2.3774.400.31)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rfGHI-0001Sa-FS; Wed, 28 Feb 2024 04:31:06 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Tl8DN4YWPz1Q9PF;
+ Wed, 28 Feb 2024 17:28:36 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id E52D01402CC;
+ Wed, 28 Feb 2024 17:30:51 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 28 Feb
+ 2024 17:30:51 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v4 02/22] target/arm: Add PSTATE.ALLINT
+Date: Wed, 28 Feb 2024 09:29:26 +0000
+Message-ID: <20240228092946.1768728-3-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240228092946.1768728-1-ruanjinjie@huawei.com>
+References: <20240228092946.1768728-1-ruanjinjie@huawei.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,97 +97,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U8BpkOACtJ2U
+X-TUID: ZCct3bJsrDnl
 
+When PSTATE.ALLINT is set, an IRQ or FIQ interrupt that is targeted to
+ELx, with or without superpriority is masked.
 
+As Richard suggested, place ALLINT bit in PSTATE in env->pstate.
 
-> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
->=20
-> Unfortunately having 2.0 machine type deprecated is not enough
-> to get rid of legacy SMBIOS handling since 'isapc' also uses
-> that and it's staying around.
->=20
-> Hence add test for CLI options handling to be sure that it
-> ain't broken during SMBIOS code refactoring.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
-> tests/qtest/bios-tables-test.c       |  17 +++++++++++++++++
-> 2 files changed, 17 insertions(+)
-> create mode 100644 tests/data/smbios/type11_blob.legacy
->=20
-> diff --git a/tests/data/smbios/type11_blob.legacy b/tests/data/smbios/typ=
-e11_blob.legacy
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..aef463aab903405958b0a85f8=
-5c5980671c08bee
-> GIT binary patch
-> literal 10
-> Rcmd;PW!S(N;u;*n000Tp0s;U4
->=20
-> literal 0
-> HcmV?d00001
->=20
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-tes=
-t.c
-> index a116f88e1d..d1ff4db7a2 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -2106,6 +2106,21 @@ static void test_acpi_pc_smbios_blob(void)
->     free_test_data(&data);
-> }
->=20
-> +static void test_acpi_isapc_smbios_legacy(void)
-> +{
-> +    uint8_t req_type11[] =3D { 1, 11 };
+With the change to pstate_read/write, exception entry
+and return are automatically handled.
 
-Ok so looking at the code, it won=E2=80=99t let you specify smbios type oth=
-er than 1 =E2=80=A6
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+v4:
+- Keep PSTATE.ALLINT in env->pstate but not env->allint.
+- Update the commit message.
+v3:
+- Remove ALLINT dump in aarch64_cpu_dump_state().
+- Update the commit message.
+---
+ target/arm/cpu.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-See the following in smbios_set_defaults()
-
-  if (smbios_legacy) {
-        g_free(smbios_tables);
-=09/* in legacy mode, also complain if fields were given for types >1 */
-        if (find_next_bit(have_fields_bitmap,
-=09                  SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
-            error_report("can't process fields for smbios "
-                         "types > 1 on machine versions < 2.1!");
-            exit(1);
-        }
-    } else {
-
-BUT you lets you load a blob of type 11? Is that a bug in QEMU? Should we a=
-lso add a similar check for have_binfile_bitmap?=20
-
-> +    test_data data =3D {
-> +        .machine =3D "isapc",
-> +        .variant =3D ".pc_smbios_legacy",
-> +        .required_struct_types =3D req_type11,
-> +        .required_struct_types_len =3D ARRAY_SIZE(req_type11),
-> +    };
-> +
-> +    test_smbios("-smbios file=3Dtests/data/smbios/type11_blob.legacy "
-> +                "-smbios type=3D1,family=3DTEST", &data);
-> +    free_test_data(&data);
-> +}
-> +
-> static void test_oem_fields(test_data *data)
-> {
->     int i;
-> @@ -2261,6 +2276,8 @@ int main(int argc, char *argv[])
->                            test_acpi_pc_smbios_options);
->             qtest_add_func("acpi/piix4/smbios-blob",
->                            test_acpi_pc_smbios_blob);
-> +            qtest_add_func("acpi/piix4/smbios-legacy",
-> +                           test_acpi_isapc_smbios_legacy);
->         }
->         if (qtest_has_machine(MACHINE_Q35)) {
->             qtest_add_func("acpi/q35", test_acpi_q35_tcg);
-> --=20
-> 2.39.3
->=20
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 63f31e0d98..d6c3f8a935 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -224,6 +224,7 @@ typedef struct CPUArchState {
+      *    semantics as for AArch32, as described in the comments on each field)
+      *  nRW (also known as M[4]) is kept, inverted, in env->aarch64
+      *  DAIF (exception masks) are kept in env->daif
++     *  ALLINT (all IRQ or FIQ interrupts masks) are kept in env->pstate
+      *  BTYPE is kept in env->btype
+      *  SM and ZA are kept in env->svcr
+      *  all other bits are stored in their correct places in env->pstate
+@@ -1543,6 +1544,7 @@ FIELD(VTCR, SL2, 33, 1)
+ #define PSTATE_D (1U << 9)
+ #define PSTATE_BTYPE (3U << 10)
+ #define PSTATE_SSBS (1U << 12)
++#define PSTATE_ALLINT (1U << 13)
+ #define PSTATE_IL (1U << 20)
+ #define PSTATE_SS (1U << 21)
+ #define PSTATE_PAN (1U << 22)
+-- 
+2.34.1
 

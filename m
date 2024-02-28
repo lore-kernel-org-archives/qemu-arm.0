@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175377ejb;
-        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWNuaTtJCy0Q9DIoaUSXivupCVEqW64uq1P92Qs4kOOmRyZ0YaiVNGbZiRBXkob6CiebCDP9rx7XRshUkirW8c6+rKLt3yJ
-X-Google-Smtp-Source: AGHT+IEOnrdzenj5NBgzuMS4NMRtUaaj3eZdmKEGncfycnFXbcwgIshKiekvFqmcobHSr6NA82qb
-X-Received: by 2002:ac8:5a84:0:b0:42e:7b41:ac4d with SMTP id c4-20020ac85a84000000b0042e7b41ac4dmr10494689qtc.67.1709121781084;
-        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709121781; cv=none;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp175666ejb;
+        Wed, 28 Feb 2024 04:03:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX1oxo4rE8ejilpMXQexdOfDrifLDPWURO/hr0tl86KUMRsMqB7n/cuL8Awrt6wkwMOS+dg8axrssRWSphWAUXW/qvft8tR
+X-Google-Smtp-Source: AGHT+IEMBjjG5ejJJvXOSbxAK7ylCdvngxKFRtUSLa6lm8xrwQ3SQCcnaMhigPun1V1YQ+giXczG
+X-Received: by 2002:a05:620a:45a8:b0:787:bd92:4881 with SMTP id bp40-20020a05620a45a800b00787bd924881mr6095558qkb.76.1709121806930;
+        Wed, 28 Feb 2024 04:03:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709121806; cv=none;
         d=google.com; s=arc-20160816;
-        b=uRwwxxKBxreLE5lW0ywOlmA8W2SzwKgaQrLGn1TCfzHlt3PuXXeA/8hz2oVkSfcn6l
-         8g03j/eAAmKdtwVAhp/K7Xro0lDV0VFmpR815G+2N9LIPiPiUQpJIB4ay0kSlq13zi8c
-         28ufa7AWylhGHKWh9O1q7hpWrCxp+iH3/0BY1arHbBM1+0waOxUmz/lrk8rRvlc5rIx6
-         D2uXSd6t3tuSYkUL2BtZ2FPvc6c+zUIlakdr5ORfsHlOXayzJn+lf1MTSScmzXETE2qh
-         XDok+8QGhZQcu2AukNnJpJFpz4+w+0oga3TyPMLfKMBKb0OTaWE3hMrOqC7LrIoJ4PDB
-         cRPg==
+        b=JpFFast60NpD99Xm1bxcSNkPh9P6tHhK0wKQKE5/CMu6cSYHY+jkGIgdXXQ0yJ4k6u
+         Ta8pYgJar0sKyjJ1eGpH39sxO9edalnofeU2NOMO6/OVZZMB+3DLdqlnNGziWl8KHQwC
+         EkngvXdH9zo+3i5RLp4WLtfL/zNd/rc29vvUiKWDxk3vqcVT5gAotw+uifEn1EReE1Ar
+         xFDAu6izLSae3Kr9uQl4z5ICgcYrZJ+cOltqvewspebuG5mKx273Qlq3Wp/+fGpjP6/k
+         PtVvAWq0RyLEGZygILust6eBLzT/+/OSfX7RJaffpu5f8FINRyOitG6DH0bBJTfbdi3J
+         t7HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=9yCAa2IaqsNHr0V/8Z3CfJJGrYjFNpZ6MWKqMGjZhOM=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=81OPFLabJjQLGoGF7rqIGlf7aZpPyHQQQLV+Wf1sKSs=;
         fh=YkzlLM/B5rINvM6IVNmtbeUPm8x2JYcYDb51Z7uR+U4=;
-        b=we5cyM0aORgbtiGlzWeOb4RvwyGfeocwSpxCaQM+UYBqtovQ5OCwOCdfNx5kqJyF9Z
-         D+uD8f0IjJJUTG8q/uW3Jek9Gq7v+KZkSczex51VDk5U/5Pte5dqzhQdJ35Ux8pY4Ac6
-         zSOaZCBd64Nl8+P5tIO52O84D2w3AUP91JJbbEZgXbqVqpSfc4+3z5FDrYmPRrAguGu+
-         XTuZQzefaI4X6oi9saB+vLrwlOMwDt+4nb7yiFBS2xZeyzOLsN3BzAFgsCLN/LG1mEFa
-         70+O50W9RswXwqqwh3nOtgYnDqqySy0PVtsIrcW81Fwes4+yzr5/p8eLmpp1VzUUL76K
-         PfXg==;
+        b=Nhaaor7gcMz9Gau05NZWpSx1tT+KcSOZ9l8p1l+Fdz9g/sqwr56PxDK6Enhvqeq/1q
+         9TwNtkQeJQ3pRD6Dc/t03bJBixNu3RI0ctX9/kEnH194y61C9Gj5tTMMuHILZgQjZeRk
+         SgCKIc2OjhssdaZQq/34uunRDpnKKMw88OyHpRQdLrwGQPQzd+cgeQKT8qaszGAAGfui
+         bqjHpCWdzwb8mV+lP9I/NoeUTG88QmmpPnLDYsnNg1STc2eY1/L88sNMXqXDNYPuIMkP
+         WjE2Xr3Xt+ttpCxHVKC0+vf0Fegc0DijG/9vRs9Mmgv0B2jjpACIU8lCBERrfVMfDJzE
+         1uTg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CZEIIK1i;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=S7nyRucm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f29-20020ac86edd000000b0042e6e264833si9128843qtv.309.2024.02.28.04.03.00
+        by mx.google.com with ESMTPS id u13-20020a05620a084d00b00785d846cf6asi9092549qku.393.2024.02.28.04.03.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 04:03:01 -0800 (PST)
+        Wed, 28 Feb 2024 04:03:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CZEIIK1i;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=S7nyRucm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfIdx-00049p-UH; Wed, 28 Feb 2024 07:02:37 -0500
+	id 1rfIdv-00047Q-0A; Wed, 28 Feb 2024 07:02:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdr-00044D-9D; Wed, 28 Feb 2024 07:02:32 -0500
+ id 1rfIdq-00044C-WD; Wed, 28 Feb 2024 07:02:32 -0500
 Received: from zproxy3.enst.fr ([2001:660:330f:2::de])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1rfIdm-0002zA-5z; Wed, 28 Feb 2024 07:02:29 -0500
+ id 1rfIdm-0002yy-61; Wed, 28 Feb 2024 07:02:29 -0500
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id B8E3DA06F8;
- Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTP id 7A427A06BE;
+ Wed, 28 Feb 2024 13:02:23 +0100 (CET)
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id NIJOEiI5OQzm; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+ id a2QUqr8VwY_6; Wed, 28 Feb 2024 13:02:22 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 27EF1A06FC;
- Wed, 28 Feb 2024 13:02:24 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 27EF1A06FC
+ by zproxy3.enst.fr (Postfix) with ESMTP id D6253A05ED;
+ Wed, 28 Feb 2024 13:02:22 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr D6253A05ED
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121744;
- bh=9yCAa2IaqsNHr0V/8Z3CfJJGrYjFNpZ6MWKqMGjZhOM=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1709121742;
+ bh=81OPFLabJjQLGoGF7rqIGlf7aZpPyHQQQLV+Wf1sKSs=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=CZEIIK1i7w0EjKTZOvUOGuHlxs8/CQbMAxdqupwDbYPp5Jg1UncsAHg2ENVs5tY2F
- r5oOntPVDmUT0UMpFwzrlGtEzkzyY3ira726W1p+MaqH/o0H7kV3Po0kC5/cWHpyj+
- vWF2JCkH2gDIeJxpFLBvsmBTvG0s+T8IRxUeVVQc=
+ b=S7nyRucmrlNMYTJ71In+phBNA5pL83Gz8hXR2/V5qbS+3AyZljJnxndY3QteXZk6V
+ Op5RV6DWWnPx1l7QnNEW1z6P8jS8GCv7BwuGn/b3BKugbY1MJv6DeGm65sF7GToCSV
+ zdPumHBcgFhtiCeTs/NiZrMcKmrCn6dokJF6MIMA=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy3.enst.fr ([IPv6:::1])
  by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id dAfXj_0nUQa5; Wed, 28 Feb 2024 13:02:24 +0100 (CET)
+ id ILa6BLElPGGt; Wed, 28 Feb 2024 13:02:22 +0100 (CET)
 Received: from localhost.localdomain (74.0.125.80.rev.sfr.net [80.125.0.74])
- by zproxy3.enst.fr (Postfix) with ESMTPSA id CAA61A06DF;
- Wed, 28 Feb 2024 13:02:23 +0100 (CET)
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 376C2A054C;
+ Wed, 28 Feb 2024 13:02:22 +0100 (CET)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
@@ -88,12 +88,11 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 4/5] hw/arm : Connect DM163 to B-L475E-IOT01A
-Date: Wed, 28 Feb 2024 13:01:07 +0100
-Message-ID: <20240228120215.277717-5-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v3 0/5] Add device DM163 (led driver,
+ matrix colors shield & display)
+Date: Wed, 28 Feb 2024 13:01:03 +0100
+Message-ID: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
-References: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -119,122 +118,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lD9HeGBye+dn
+X-TUID: Emn9/nvPi9hT
+
+This device implements the IM120417002 colors shield v1.1 for Arduino
+(which relies on the DM163 8x3-channel led driving logic) and features
+a simple display of an 8x8 RGB matrix. This color shield can be plugged
+on the Arduino board (or the B-L475E-IOT01A board) to drive an 8x8
+RGB led matrix. This RGB led matrix takes advantage of retinal persistanc=
+e
+to seemingly display different colors in each row.
+
+
+
+I'm stuck on some issues with this implementation :
+
+1. Tests
+
+TLDR: how can I provide a test or an example?
+
+I've tested the display by running custom executables and
+comparing to the result on the real board, but I don't
+know how to test it using a QTest.
+
+`qtest_init_internal` sets `-display none`
+so there's no way to test the display visually.
+
+There's no `visit_type_*` for arrays so accessing the DM163
+buffer to check its content is complicated. I could technically
+access all the elements in the array (returning a different element
+each time in the getter for example), but that seems sketchy.
+
+2. Frame Rate
+
+It'd be convenient to set the QEMU console's refresh rate
+in order to ensure that the delay before turning off rows
+(4 frames currently) isn't too short. However
+`dpy_ui_info_supported(s->console)` returns false.
+
+
+
+Changes from v2 : Corrected typo in the Based-on message id
+
+Changes from v1 :
+- moving the DM163 from the SoC to the B-L475E-IOT01A machine
+(changing config files and tests accordingly)
+- restricting DM163 test to ARM & DM163 availability
+- using `object_class_by_name()` to check for DM163 presence at run-time
+- exporting SYSCFG inputs to the SoC (and adapting tests accordingly)
+
+Thank you for your review Philippe :)
+
+Based-on: 20240224105417.195674-1-ines.varhol@telecom-paris.fr
+([PATCH v6 0/3] Add device STM32L4x5 GPIO)
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/arm/b-l475e-iot01a.c | 59 +++++++++++++++++++++++++++++++++++++++--
- hw/arm/Kconfig          |  1 +
- 2 files changed, 58 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-index 2b570b3e09..6f0bf68ca6 100644
---- a/hw/arm/b-l475e-iot01a.c
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -27,10 +27,37 @@
- #include "hw/boards.h"
- #include "hw/qdev-properties.h"
- #include "qemu/error-report.h"
--#include "hw/arm/stm32l4x5_soc.h"
- #include "hw/arm/boot.h"
-+#include "hw/core/split-irq.h"
-+#include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
-+#include "hw/display/dm163.h"
-+
-+/* B-L475E-IOT01A implementation is inspired from netduinoplus2 and ardu=
-ino */
-=20
--/* B-L475E-IOT01A implementation is derived from netduinoplus2 */
-+/*
-+ * There are actually 14 input pins in the DM163 device.
-+ * Here the DM163 input pin EN isn't connected to the STM32L4x5
-+ * GPIOs as the IM120417002 colors shield doesn't actually use
-+ * this pin to drive the RGB matrix.
-+ */
-+#define NUM_DM163_INPUTS 13
-+
-+static const int dm163_input[NUM_DM163_INPUTS] =3D {
-+    1 * GPIO_NUM_PINS + 2,  /* ROW0  PB2       */
-+    0 * GPIO_NUM_PINS + 15, /* ROW1  PA15      */
-+    0 * GPIO_NUM_PINS + 2,  /* ROW2  PA2       */
-+    0 * GPIO_NUM_PINS + 7,  /* ROW3  PA7       */
-+    0 * GPIO_NUM_PINS + 6,  /* ROW4  PA6       */
-+    0 * GPIO_NUM_PINS + 5,  /* ROW5  PA5       */
-+    1 * GPIO_NUM_PINS + 0,  /* ROW6  PB0       */
-+    0 * GPIO_NUM_PINS + 3,  /* ROW7  PA3       */
-+    0 * GPIO_NUM_PINS + 4,  /* SIN (SDA) PA4   */
-+    1 * GPIO_NUM_PINS + 1,  /* DCK (SCK) PB1   */
-+    2 * GPIO_NUM_PINS + 3,  /* RST_B (RST) PC3 */
-+    2 * GPIO_NUM_PINS + 4,  /* LAT_B (LAT) PC4 */
-+    2 * GPIO_NUM_PINS + 5,  /* SELBK (SB)  PC5 */
-+};
-=20
- #define TYPE_B_L475E_IOT01A MACHINE_TYPE_NAME("b-l475e-iot01a")
- OBJECT_DECLARE_SIMPLE_TYPE(Bl475eMachineState, B_L475E_IOT01A)
-@@ -39,12 +66,16 @@ typedef struct Bl475eMachineState {
-     MachineState parent_obj;
-=20
-     Stm32l4x5SocState soc;
-+    SplitIRQ gpio_splitters[NUM_DM163_INPUTS];
-+    DM163State dm163;
- } Bl475eMachineState;
-=20
- static void bl475e_init(MachineState *machine)
- {
-     Bl475eMachineState *s =3D B_L475E_IOT01A(machine);
-     const Stm32l4x5SocClass *sc;
-+    DeviceState *dev, *gpio_out_splitter;
-+    int gpio, pin;
-=20
-     object_initialize_child(OBJECT(machine), "soc", &s->soc,
-                             TYPE_STM32L4X5XG_SOC);
-@@ -53,6 +84,30 @@ static void bl475e_init(MachineState *machine)
-     sc =3D STM32L4X5_SOC_GET_CLASS(&s->soc);
-     armv7m_load_kernel(ARM_CPU(first_cpu),
-         machine->kernel_filename, 0, sc->flash_size);
-+
-+    if (object_class_by_name("dm163")) {
-+        object_initialize_child(OBJECT(machine), "dm163",
-+                                &s->dm163, TYPE_DM163);
-+        dev =3D DEVICE(&s->dm163);
-+        qdev_realize(dev, NULL, &error_abort);
-+
-+        for (unsigned i =3D 0; i < NUM_DM163_INPUTS; i++) {
-+            object_initialize_child(OBJECT(machine), "gpio-out-splitters=
-[*]",
-+                                    &s->gpio_splitters[i], TYPE_SPLIT_IR=
-Q);
-+            gpio_out_splitter =3D DEVICE(&s->gpio_splitters[i]);
-+            qdev_prop_set_uint32(gpio_out_splitter, "num-lines", 2);
-+            qdev_realize(gpio_out_splitter, NULL, &error_fatal);
-+
-+            qdev_connect_gpio_out(gpio_out_splitter, 0,
-+                qdev_get_gpio_in(DEVICE(&s->soc), dm163_input[i]));
-+            qdev_connect_gpio_out(gpio_out_splitter, 1,
-+                qdev_get_gpio_in(dev, i));
-+            gpio =3D dm163_input[i] / GPIO_NUM_PINS;
-+            pin =3D dm163_input[i] % GPIO_NUM_PINS;
-+            qdev_connect_gpio_out(DEVICE(&s->soc.gpio[gpio]), pin,
-+                qdev_get_gpio_in(DEVICE(gpio_out_splitter), 0));
-+        }
-+    }
- }
-=20
- static void bl475e_machine_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 5776dbb19f..6c05bac99b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -458,6 +458,7 @@ config B_L475E_IOT01A
-     default y
-     depends on TCG && ARM
-     select STM32L4X5_SOC
-+    imply DM163
-=20
- config STM32L4X5_SOC
-     bool
+In=C3=A8s Varhol (5):
+  hw/display : Add device DM163
+  hw/arm : Pass STM32L4x5 SYSCFG gpios to STM32L4x5 SoC
+  hw/arm : Create Bl475eMachineState
+  hw/arm : Connect DM163 to B-L475E-IOT01A
+  tests/qtest : Add testcase for DM163
+
+ docs/system/arm/b-l475e-iot01a.rst  |   3 +-
+ include/hw/display/dm163.h          |  57 +++++
+ hw/arm/b-l475e-iot01a.c             | 103 ++++++++--
+ hw/arm/stm32l4x5_soc.c              |   6 +-
+ hw/display/dm163.c                  | 308 ++++++++++++++++++++++++++++
+ tests/qtest/dm163-test.c            | 192 +++++++++++++++++
+ tests/qtest/stm32l4x5_gpio-test.c   |  12 +-
+ tests/qtest/stm32l4x5_syscfg-test.c |  16 +-
+ hw/arm/Kconfig                      |   1 +
+ hw/display/Kconfig                  |   3 +
+ hw/display/meson.build              |   1 +
+ hw/display/trace-events             |  13 ++
+ tests/qtest/meson.build             |   5 +
+ 13 files changed, 690 insertions(+), 30 deletions(-)
+ create mode 100644 include/hw/display/dm163.h
+ create mode 100644 hw/display/dm163.c
+ create mode 100644 tests/qtest/dm163-test.c
+
 --=20
 2.43.2
 

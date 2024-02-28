@@ -1,236 +1,245 @@
-Received: by 2002:a05:7022:120c:b0:76:3752:a982 with SMTP id ox12csp115103dlb;
-        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXgo4jB3nUnIZlytxmsON9TH7RixJrXBHtSMelfYmKrg/IMUORJyG+aq8/QRBsCeH2U2lWxx20ZCkS+CEADotcCxx4WSLEY
-X-Google-Smtp-Source: AGHT+IF3heb4s4rgd/qUyjVshFfU68ehVFma+2SRl3M+IESw5gXOnl85x8B+/CyHvEbtKh71Te/7
-X-Received: by 2002:a9d:7756:0:b0:6e4:8fa2:1c5b with SMTP id t22-20020a9d7756000000b006e48fa21c5bmr12486324otl.18.1709113570427;
-        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709113570; cv=pass;
+Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp153046ejb;
+        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUYoy2C+6XuW1OJmTw62syToZcuY5c5qUae2kpYqbX/f2/QvMc7DqpJvMRUOzVDkkTv+B71BT1MxuM0bNzeYlDVKF6D8z1d
+X-Google-Smtp-Source: AGHT+IHJK9KW3RhQ099aJrA7RJ7iXvEudnycwJyBvnCAeG5VZRCL6UN6TPnvZBTaB7oatjdn+/jS
+X-Received: by 2002:a05:620a:29cb:b0:784:aae1:10de with SMTP id s11-20020a05620a29cb00b00784aae110demr5584524qkp.3.1709118724251;
+        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709118724; cv=none;
         d=google.com; s=arc-20160816;
-        b=qwqN46UyebfVY2MmfpO80tLeXh3V5u7coNDvQdVfR0yS0/EujqP6+9Lq9JISIKxE2H
-         6wtj+rEEBk9NPfnAP+I7LqbvmA5QCgV5flTZIngXRNaX9yK8MNAi/h499XFCue63O5Oo
-         keAgQP9WJut6+AGOKhpzoM2Vb4hOH6ndLiC0+24drPS8/3sj8ZqcA8vRVL2rhsrLEXj1
-         sbcFLcblgUMMWm85xcHCpJcfaBt5YxU6Psp8x/TmzCZAAELgEgKvwGdED3CPwwVEKl8D
-         BxknQGLgf665YEt+pJ/gY4nZF6WtbdDycixkMoirKGHVLniTkCJ1PpMTJtnIpDo1xwF0
-         Ge9g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=hEXY382SLjpgk+SMEqO1Jnnclh9pnOZx/ib1bDc1Tj8=;
-        fh=qz8VF8tzgAphSskoFYBsXVssBZTIT1LIHmUHctC40G4=;
-        b=xTanCvrQAAZoII5P0b8dKUOM9UG7y34j5YYUcvlrWwoJ8tdRC/fu2gBwbNBPlMXszO
-         DoWwKNu83aILbnFa+mmTPVFE8KxFMgTYtv2C1lVojDPcXQnxzCUbm0UyFLl8sbv1CwYo
-         sec+0Y8FHPQ3BSbIFK+vHBAo0NtmERM0zyW/vpFa2yAdiqsgiRmpvNsQdZnr+WdDxYhf
-         PMVbOSrEKlhUA+4jx5iPihBFe9CnNizcsJnCIO5fu87WqvM65epw/g1A+QL0kFLzqd6F
-         FN6L9OTzXdmnWxwFG8soShdzZTbFnMnuokc2wIg30uyLddcx0syyBEJ7tlr2XaAAslgg
-         h9fQ==;
+        b=NkyeE/7g1GpHvi9sXHPxEVc9fwsGB0McE5fGEcMZUA+fCUpmShJIBwvlfkNmHhA9dd
+         VPZMO6huVOeSUIRhxuI3Q9cgLIojNVpQAtB33HnBhHPgdzaxANgwSwqMCrGEYq1wTVh6
+         sYhNz73K7+pMdax8R7rNYDYJhLdkmgB1dgQag6qVZzFdAyrEpyx9kJyh6tfb0B+7JzGH
+         igEewr8ambqm9rvCXKQ71eeKYXGNk1CfTcnQy9+WO46HQR3y350q/Uv7P17iHimBunkl
+         B4096KCvDlZgoVcDl0yIBhGPhrIMGXCtso+el4Sz59Ow5HEaPNdQ8aB1uiqDwp1wsqzY
+         FWVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
+         :dkim-signature;
+        bh=ack6zNbnh8xE4SclRkELehl4jVXWEmz1PFTXghcdvPU=;
+        fh=+q9Meqxrl9ig93ctowj5yCfVDLfZg8RlImI0fg8F6aY=;
+        b=CwU4p2VuZ8IAve/LsSB696YFLlfpD4ba5xW+REBgBFSq44xNdQdfe76MxDGO/VrW/C
+         p6KbWSYpn2L5SdzpWzm+aEYpFlJozF4eIlkty9FyojtqKiM3I1lEVy/MimaqMXZQ27nE
+         sqxlkjs4+0Gkflx+Jh9Nu1i7N1TMhVRJkPL9OuGP3Ad/nGM1zdLL7hncf2EK/Sh/eWnw
+         VbqAbAT05SiqT90LEj785cFbeXsoI62Gm1ESmlEhGyhKK3Kbn9QP2XWE2vhatCTGrqAI
+         mCcocghX4rtWjBlYr56fxdNWy7DVk5Si/XPEE9uhJGtYcSDDuE/3r2EcmEtOZDpWkBel
+         Poiw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
-Return-Path: <jeeheng.sia@starfivetech.com>
-Received: from CHN02-SH0-obe.outbound.protection.partner.outlook.cn (mail-sh0chn02on2094.outbound.protection.partner.outlook.cn. [139.219.146.94])
-        by mx.google.com with ESMTPS id e12-20020a630f0c000000b005dc4fca7d3csi7118315pgl.200.2024.02.28.01.46.09
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Feb 2024 01:46:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) client-ip=139.219.146.94;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a8+s0VF8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w5-20020a05620a094500b00787de90a0basi4571580qkw.345.2024.02.28.03.12.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 Feb 2024 03:12:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of jeeheng.sia@starfivetech.com designates 139.219.146.94 as permitted sender) smtp.mailfrom=jeeheng.sia@starfivetech.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FDwMTTR+hK1Buevuan0K2MgVU63rooQC3+upUuhKycXnjsLWDxIJxjKjdGJ61XL9mbHybnLXyeOEAMlmK/sKo9UMed79b00KSZwX/Cjif3Nxy6BOiYqxaG7saR286mdcd4UGo1IsnqHQhlSeB9JQVbgobNwxItQc7//27wPi2FAd9QyVe/vGlWh0y9KQNRkWHwMoY3CFqZ88l8UcRpNIPJ8O+9OLetNIxypLVQ/JDFn7cGx5Ku56N/vdgDDf9rzibznBU9MgTDWyMghZgO8yr9/VCQ06Jwy89AjqlA6bRMFsN/HplTK4673dsHGK2XaW81jwncn/RDLe4g7ww8xLEQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hEXY382SLjpgk+SMEqO1Jnnclh9pnOZx/ib1bDc1Tj8=;
- b=T4REcM+uyCHzew/dqolCFdU1cdWFo/iIajMDFg8kTeUbXOTfUVVx6yw0YJx1yAbpC8iRf3rDqVfH0VhjHx7ntzsctTLwbJ9caogCPD5j9EtrXwFgCRTWUPqrfAwfuH43L/kx6Gq97JQ0sODVSchn4J3KCmBw+xVslzjhjuiXAoxDriS/epK0QdNYJM/hNzwRrMuO8FOtWCmnU9/1wKkdOS9JSIhEUzQu4m49S3EsrcN43LPeqE7a0JMjti+O9w95B6y5p87ShVruw8epmdLdObn6I8/N4Uv4G5rfjYEJ/5MeGKNw4SkqcxiiX9Hsahv1PtpmQQQ9l07OV1AZVvBD8Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:f::16) by BJSPR01MB0595.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:e::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.34; Wed, 28 Feb
- 2024 09:45:52 +0000
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- ([fe80::fcfa:931b:8b1d:6af5]) by
- BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::fcfa:931b:8b1d:6af5%4])
- with mapi id 15.20.7316.037; Wed, 28 Feb 2024 09:45:52 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
-	=?iso-8859-1?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, Eduardo
- Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang
-	<wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
-	<richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>, Markus
- Armbruster <armbru@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	=?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell
-	<peter.maydell@linaro.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Zhenyu Wang
-	<zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma
-	<yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: RE: [RFC 6/8] i386/cpu: Update cache topology with machine's
- configuration
-Thread-Topic: [RFC 6/8] i386/cpu: Update cache topology with machine's
- configuration
-Thread-Index: AQHaY9zroLFH1odqwEKCZ7WWKO/azbEfjZXg
-Date: Wed, 28 Feb 2024 09:45:51 +0000
-Message-ID:
- <BJSPR01MB0561F3D87C67D4BCCA9E9C8D9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
-References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-7-zhao1.liu@linux.intel.com>
-In-Reply-To: <20240220092504.726064-7-zhao1.liu@linux.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BJSPR01MB0561:EE_|BJSPR01MB0595:EE_
-x-ms-office365-filtering-correlation-id: 4968ee3f-a099-4d8e-a6e6-08dc38420d35
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- PZIi23fnAUZujKPgDcG+czWL6v0aTZkRtInjGV7pzScVl+cUCDbvaPWVA41JUd1FQx5zn7qUbRPiw2S7nJ/m8kRCNj5Jqehp5DqtJAMXFnt15paV3bsccbzs0irgC3TPRH/DfUmAjvMdSSp3bGDc1mbOU9LlyopyPQGk5cmQoCer/XcztZ6yPD8t5GRWjU+M0s5g0wnyjKZxdYxtHQharmgWy3yVM84TNOUU16V1lWWoAObtc++AZqjOcl6Fdc2KhMkiFjuY8vR1JT5c6Pv0tPfmC+aRwYLo8GlojFMC1QP+9cvKjtH/MvSo24mouD+LrtXdbEbe9ZKeg336UvixIml6vKK9nWKGbsjLLlHdXF13wG3uLfI9RnZTmhDzkKrZLrM3/4ckbHep5a8biXAc3S9dH4g5OirDsMtSrqPGXkx9nOaM5CYRgfFOhNmTM7boLywazozR2aEAsfFL0v/tMItr1qoeeOhh4z0mfm8OMfPRIJ19v+en8ZNSjOE7yr1txbZLfFBAPkzIbclDY/AX/Qp1l6/zJRl51nRDftqKLWIQpVlX+M5kPuJNMOVkEflSDEmL0z11mfUoKbWvzj2AcoI0rcXaoXn09Rn0apQZf6txndubWy2KzC0pdhaDppWj7DSeS3vqRZ5VmjCvoytKvA==
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn;PTR:;CAT:NONE;SFS:(13230031)(921011)(38070700009);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?iso-8859-1?Q?XrGMB2ylrdq/yH9Ln8raR92DE24tL/6/f+zDvs9zyyU6NXxsroOx+kQO3m?=
- =?iso-8859-1?Q?j786OQqql5oST6riqR+TEVEAnMzro/0pxIXV2qPQ9DKG+GevjQRng7T+M/?=
- =?iso-8859-1?Q?uoGzPuQsQjcvlriFLJPtn8mY8Zqol1O6sDAApJmL5dWkCX9/9ceUQBDuft?=
- =?iso-8859-1?Q?v2UAJEEcKwAkKLNuWjDvQL5jQwLlio4DxzoWLiRWOQric5x1wL2YYULwYS?=
- =?iso-8859-1?Q?D2uXvfBFTVg/NpyAJVNjyc/dCpRqE2a3fxv/1tN5LQavNfV6Ft+9jo6pom?=
- =?iso-8859-1?Q?Vji0xEQB6wgBxX7S9h4m71PFKuYO4EtQd/wYloIvFcnKs/vV5+qD93BPxJ?=
- =?iso-8859-1?Q?f3Wr/1sx++Glxetom74NLr4gn3JscXznEkilFQ7RT7IvqyzR4xo5OGXGmj?=
- =?iso-8859-1?Q?3/dcwNnRwghbPeECf1ziXDk8pHHrVGto9qKEbbB59yG+nQnD7GSxv7AHjD?=
- =?iso-8859-1?Q?Opeo3FITBJ2+VoD0L4woSYXbYNIVAiUMsu7tLvMXip+DJbdlEF+BwP28SV?=
- =?iso-8859-1?Q?kW5KakjSoSmCkdv8EdpL2bHA0xuMEklXc/c76s2w0WqwMZAk6GHOEMN6tC?=
- =?iso-8859-1?Q?Wk8NmKswiS3LIpa+nAUDrmxxEHrDJNjo32KjINMpCoagmXQU+zyCJcWU0z?=
- =?iso-8859-1?Q?V6h+xFu9OZiqb4QyLXTDgD5nlmTLwsbr3yyyh1nz8tRv2k3cLT7TjXkj7W?=
- =?iso-8859-1?Q?g2R5GgX9uCrN6pa5tzIlXIUoUdFqyt+uGyMPdCwKTirj+oShoUQ6YUtzV/?=
- =?iso-8859-1?Q?NykrnBFgMniNm+ga7BiD8lauquASnBiLiFt3YyltqcZI5G7FIUgsXEJgmy?=
- =?iso-8859-1?Q?rTuF13zlcG9LI+oS45k7fB74MnjeXYCsrPJkaDx+G+lh2/gxrSysUQdHv+?=
- =?iso-8859-1?Q?XVZ5kBmyECSixWPJc9lDxughyyMWO68JtEFpj8+1bMzHAdcKifzwz0G2Ad?=
- =?iso-8859-1?Q?dUpSqSBMrAgz/oPr/CV9UpiAKVOaDcr1mLOE30FtpaLBkrNAExKHUGJxXF?=
- =?iso-8859-1?Q?tQzd/a2yeJITMj97sQuwO7IMLuPh/Jh1vWrKu/MidEoguk6Ld+HgLxwJED?=
- =?iso-8859-1?Q?d/XqUMPCAh9I+oTHFRGqGjzDoy4E74pu/yJGGlmMY6VwwIqdT2Mlsj6wac?=
- =?iso-8859-1?Q?fDFdaT6rz/TjQSm0vGkzsZq6gwJuLhrzG9OKDaiWL2gaE9AJ1jIXtLST0w?=
- =?iso-8859-1?Q?FYpI1rn1qenidg462u7fL6pt19/h5rFLdwZ8AGUWOHCv6yZ3wINq8WbtIm?=
- =?iso-8859-1?Q?7bOKx2bBaYwAGgjlVTbNI29Ih/J8fPAhljkiSbf1UvPKFnZZ3dejT/ISZ9?=
- =?iso-8859-1?Q?8Qr9n32lymxuKcoSHZGXVcYc3HcMfXsH1ySmCnqi3/TridQBwTjpiqRRaD?=
- =?iso-8859-1?Q?1nvxu3loBUSi4M3aQQTjWsITQmQylOffe/92XVI8kGa2IxhBgCZ7DXkQ7g?=
- =?iso-8859-1?Q?0dPzbmndaJ8PRfOTpAFyDfB54aPgHLTdmdSRf0RDNyIxABI6osCPNFwM8d?=
- =?iso-8859-1?Q?PQAhbOHa5NHPXWeRO1lXIlWnHnBAxIDjhPgCJAYDxAXsD7ep9ZRItkot/O?=
- =?iso-8859-1?Q?TnhEs2UxOGMGYRTKpASJD5j7Y8wL1qAA18r5Z9jJz6renbhaGg3lt8AU9w?=
- =?iso-8859-1?Q?p1BhwXj5py9Z6bZPuKwMJ92osUPCGjReEbPVLTq9MqMgLcpXXMDbXU7lRG?=
- =?iso-8859-1?Q?VN2R3Y/8KT3rqFdAWMZGQm45oLfYrXKQD00Ggfh8EON3N3Fae0Acps5gkQ?=
- =?iso-8859-1?Q?XUOA=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a8+s0VF8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfHqq-0004Zk-1o; Wed, 28 Feb 2024 06:11:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rfHqn-0004Wi-KA
+ for qemu-arm@nongnu.org; Wed, 28 Feb 2024 06:11:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rfHqh-0003dn-IC
+ for qemu-arm@nongnu.org; Wed, 28 Feb 2024 06:11:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709118702;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ack6zNbnh8xE4SclRkELehl4jVXWEmz1PFTXghcdvPU=;
+ b=a8+s0VF8K/AQ69kcOHaxAV6Pao+7h49UuxaJLlabUkOMhyBuLVhh+vcs0tj5dXGF9G3XrZ
+ ULs8OeFv8EN6B6wtJIV+26iJGGoLHBwrOuhsh01nHetZaAMv6u/ewONbarDZpfh8QvgehZ
+ forGom89f/1sOAcKHtVEOZh/obRevRc=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-692-xjz8Q3V2OG6gyaMdGkQQrw-1; Wed, 28 Feb 2024 06:11:41 -0500
+X-MC-Unique: xjz8Q3V2OG6gyaMdGkQQrw-1
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-5dc90074016so4798893a12.0
+ for <qemu-arm@nongnu.org>; Wed, 28 Feb 2024 03:11:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709118700; x=1709723500;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2lOLvQEZPB1lbfugTDm65SThgR95YqYFdALlm5pPhSg=;
+ b=c+0PzMy3BoVRCNyehjjHffXjGMLIwIxK4LZCOAN2xFZhSaXZ59bBiUBMaFDOn/7TTm
+ IVP/PY+zqLSUDknkJA+rmTvL1YZT6DAqYhOx6hnaNLdnJxOd02vi54Oe9+oe2e2rv5NS
+ rtPk/k24Ok3GIKQ8W/wdvmo0UTwVilSJ+YdCFzwbL1caV61iJVxHE9JesjZpli5PAgiB
+ s52wBK8Vs2lI1w6cihIs7vHwSfY7aQfI2l8DvYL1MmGAMHyRLjkcnTmvAa1MYRYEeqnV
+ FKEQtFjE4t2qiSFu2AXTxhy0yWVgBHKlhToNwp5SuxDRvucfxa3rwOAhtoSqC2rTYk8h
+ QxyA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVRTUuG2G1PZmj64SY2Slq9WnFBWrS0xTB9RVZX4sThbqMmH5EfUUiLfELGFhAlzLHQqvIXTI9KIl1XT8dDJ9/vK4sa
+X-Gm-Message-State: AOJu0Yxs5fJAjbKStm7zYsq8pPL4frUQyKBiICxj+DxUbwb/QBE7fwYO
+ 4Qoqj2ubP92FebByT4q1gtP9WS5PR3Svhpl/teZcja9TlK54SYyGugAIrKm+v3XpH8Hg50hKFBO
+ EJQXnlU85qSJEJ8XFE/cCF/FZCqeCYVonWkC/RCixR5f4K4aKQg==
+X-Received: by 2002:a05:6a21:3189:b0:19e:9da6:c73b with SMTP id
+ za9-20020a056a21318900b0019e9da6c73bmr5592113pzb.8.1709118700277; 
+ Wed, 28 Feb 2024 03:11:40 -0800 (PST)
+X-Received: by 2002:a05:6a21:3189:b0:19e:9da6:c73b with SMTP id
+ za9-20020a056a21318900b0019e9da6c73bmr5592083pzb.8.1709118699932; 
+ Wed, 28 Feb 2024 03:11:39 -0800 (PST)
+Received: from smtpclient.apple ([115.96.143.215])
+ by smtp.gmail.com with ESMTPSA id
+ s7-20020a170902a50700b001dcc2951c02sm1824254plq.286.2024.02.28.03.11.34
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 28 Feb 2024 03:11:39 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: [PATCH 03/19] tests: smbios: add test for legacy mode CLI options
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <20240227154749.1818189-4-imammedo@redhat.com>
+Date: Wed, 28 Feb 2024 16:41:22 +0530
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Song Gao <gaosong@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Message-Id: <4AD7C30D-F989-4228-91FD-672D79592302@redhat.com>
+References: <20240227154749.1818189-1-imammedo@redhat.com>
+ <20240227154749.1818189-4-imammedo@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+X-Mailer: Apple Mail (2.3774.400.31)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain;
+	charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4968ee3f-a099-4d8e-a6e6-08dc38420d35
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2024 09:45:52.0085
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: X/QtwJu+IsWAz4g23GI69A5xwMZdZn2rJllBdK/78t6gznGTohAWk4iUJeudGK5cSWHAI05LI4/N/K8UWFzKfGNd1P5M2n1kcIfQyurrAAI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0595
-X-TUID: aCs4dOwX+uza
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: U8BpkOACtJ2U
 
 
 
-> -----Original Message-----
-> From: Zhao Liu <zhao1.liu@linux.intel.com>
-> Sent: Tuesday, February 20, 2024 5:25 PM
-> To: Daniel P . Berrang=E9 <berrange@redhat.com>; Eduardo Habkost <eduardo=
-@habkost.net>; Marcel Apfelbaum
-> <marcel.apfelbaum@gmail.com>; Philippe Mathieu-Daud=E9 <philmd@linaro.org=
->; Yanan Wang <wangyanan55@huawei.com>;
-> Michael S . Tsirkin <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>=
-; Richard Henderson <richard.henderson@linaro.org>;
-> Eric Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>; Ma=
-rcelo Tosatti <mtosatti@redhat.com>; Alex Benn=E9e
-> <alex.bennee@linaro.org>; Peter Maydell <peter.maydell@linaro.org>; Jonat=
-han Cameron <Jonathan.Cameron@huawei.com>;
-> JeeHeng Sia <jeeheng.sia@starfivetech.com>
-> Cc: qemu-devel@nongnu.org; kvm@vger.kernel.org; qemu-riscv@nongnu.org; qe=
-mu-arm@nongnu.org; Zhenyu Wang
-> <zhenyu.z.wang@intel.com>; Dapeng Mi <dapeng1.mi@linux.intel.com>; Yongwe=
-i Ma <yongwei.ma@intel.com>; Zhao Liu
-> <zhao1.liu@intel.com>
-> Subject: [RFC 6/8] i386/cpu: Update cache topology with machine's configu=
-ration
+> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
 >=20
-> From: Zhao Liu <zhao1.liu@intel.com>
+> Unfortunately having 2.0 machine type deprecated is not enough
+> to get rid of legacy SMBIOS handling since 'isapc' also uses
+> that and it's staying around.
 >=20
-> User will configure SMP cache topology via -smp.
+> Hence add test for CLI options handling to be sure that it
+> ain't broken during SMBIOS code refactoring.
 >=20
-> For this case, update the x86 CPUs' cache topology with user's
-> configuration in MachineState.
->=20
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  target/i386/cpu.c | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
+> tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
+> tests/qtest/bios-tables-test.c       |  17 +++++++++++++++++
+> 2 files changed, 17 insertions(+)
+> create mode 100644 tests/data/smbios/type11_blob.legacy
 >=20
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index d7cb0f1e49b4..4b5c551fe7f0 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -7582,6 +7582,27 @@ static void x86_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
+> diff --git a/tests/data/smbios/type11_blob.legacy b/tests/data/smbios/typ=
+e11_blob.legacy
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..aef463aab903405958b0a85f8=
+5c5980671c08bee
+> GIT binary patch
+> literal 10
+> Rcmd;PW!S(N;u;*n000Tp0s;U4
 >=20
->  #ifndef CONFIG_USER_ONLY
->      MachineState *ms =3D MACHINE(qdev_get_machine());
-> +
-> +    if (ms->smp_cache.l1d !=3D CPU_TOPO_LEVEL_INVALID) {
-> +        env->cache_info_cpuid4.l1d_cache->share_level =3D ms->smp_cache.=
-l1d;
-> +        env->cache_info_amd.l1d_cache->share_level =3D ms->smp_cache.l1d=
-;
-> +    }
-> +
-> +    if (ms->smp_cache.l1i !=3D CPU_TOPO_LEVEL_INVALID) {
-> +        env->cache_info_cpuid4.l1i_cache->share_level =3D ms->smp_cache.=
-l1i;
-> +        env->cache_info_amd.l1i_cache->share_level =3D ms->smp_cache.l1i=
-;
-> +    }
-> +
-> +    if (ms->smp_cache.l2 !=3D CPU_TOPO_LEVEL_INVALID) {
-> +        env->cache_info_cpuid4.l2_cache->share_level =3D ms->smp_cache.l=
-2;
-> +        env->cache_info_amd.l2_cache->share_level =3D ms->smp_cache.l2;
-> +    }
-> +
-> +    if (ms->smp_cache.l3 !=3D CPU_TOPO_LEVEL_INVALID) {
-> +        env->cache_info_cpuid4.l3_cache->share_level =3D ms->smp_cache.l=
-3;
-> +        env->cache_info_amd.l3_cache->share_level =3D ms->smp_cache.l3;
-> +    }
-> +
-I think this block of code can be further optimized. Maybe we can create
-a function called updateCacheShareLevel() that takes a cache pointer and
-a share level as arguments. This function encapsulates the common
-pattern of updating cache share levels for different caches. You can define
-it like this:
-void updateCacheShareLevel(XxxCacheInfo *cache, int shareLevel) {
-    if (shareLevel !=3D CPU_TOPO_LEVEL_INVALID) {
-        cache->share_level =3D shareLevel;
-    }
-}
->      qemu_register_reset(x86_cpu_machine_reset_cb, cpu);
+> literal 0
+> HcmV?d00001
 >=20
->      if (cpu->env.features[FEAT_1_EDX] & CPUID_APIC || ms->smp.cpus > 1) =
-{
-> --
-> 2.34.1
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-tes=
+t.c
+> index a116f88e1d..d1ff4db7a2 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -2106,6 +2106,21 @@ static void test_acpi_pc_smbios_blob(void)
+>     free_test_data(&data);
+> }
+>=20
+> +static void test_acpi_isapc_smbios_legacy(void)
+> +{
+> +    uint8_t req_type11[] =3D { 1, 11 };
+
+Ok so looking at the code, it won=E2=80=99t let you specify smbios type oth=
+er than 1 =E2=80=A6
+
+See the following in smbios_set_defaults()
+
+  if (smbios_legacy) {
+        g_free(smbios_tables);
+=09/* in legacy mode, also complain if fields were given for types >1 */
+        if (find_next_bit(have_fields_bitmap,
+=09                  SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
+            error_report("can't process fields for smbios "
+                         "types > 1 on machine versions < 2.1!");
+            exit(1);
+        }
+    } else {
+
+BUT you lets you load a blob of type 11? Is that a bug in QEMU? Should we a=
+lso add a similar check for have_binfile_bitmap?=20
+
+> +    test_data data =3D {
+> +        .machine =3D "isapc",
+> +        .variant =3D ".pc_smbios_legacy",
+> +        .required_struct_types =3D req_type11,
+> +        .required_struct_types_len =3D ARRAY_SIZE(req_type11),
+> +    };
+> +
+> +    test_smbios("-smbios file=3Dtests/data/smbios/type11_blob.legacy "
+> +                "-smbios type=3D1,family=3DTEST", &data);
+> +    free_test_data(&data);
+> +}
+> +
+> static void test_oem_fields(test_data *data)
+> {
+>     int i;
+> @@ -2261,6 +2276,8 @@ int main(int argc, char *argv[])
+>                            test_acpi_pc_smbios_options);
+>             qtest_add_func("acpi/piix4/smbios-blob",
+>                            test_acpi_pc_smbios_blob);
+> +            qtest_add_func("acpi/piix4/smbios-legacy",
+> +                           test_acpi_isapc_smbios_legacy);
+>         }
+>         if (qtest_has_machine(MACHINE_Q35)) {
+>             qtest_add_func("acpi/q35", test_acpi_q35_tcg);
+> --=20
+> 2.39.3
+>=20
+

@@ -1,327 +1,147 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp209138eja;
-        Wed, 28 Feb 2024 23:03:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV9KJ5DOZPBRTRZN5vmLI6uK9imlh5JP2jyCV+cANk4v31ToxXw/6LyjJknY7pEIIqXm2GOjO9XkYa9GH+CPwMZs7kV5wfJ
-X-Google-Smtp-Source: AGHT+IFBbxsxsH3cBNBJZs4LfDemV7zUI9i4Bvh6jG/f1Tlv/8Ohqn2WlRXUCXjwhK9KFuZJFS+t
-X-Received: by 2002:a05:6214:1631:b0:68f:25ab:3184 with SMTP id e17-20020a056214163100b0068f25ab3184mr1350671qvw.22.1709190232759;
-        Wed, 28 Feb 2024 23:03:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709190232; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp210209eja;
+        Wed, 28 Feb 2024 23:06:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXrfWlpLP52a/7IO15jHonSgaOAUnLoADj59ktX1XchRk+YbM99aH/fnp7IeRKC4QNmPBvrLEm+BgHQXlksjeY8Clm96L3b
+X-Google-Smtp-Source: AGHT+IEgwJOketXOaJ3DUIJ4iOhcgdltQ8BglUGOyCJLcAOvsOuduAL78eACHaEiFMJh+UPbNUeA
+X-Received: by 2002:a05:622a:104:b0:42e:168f:310d with SMTP id u4-20020a05622a010400b0042e168f310dmr1407587qtw.59.1709190363614;
+        Wed, 28 Feb 2024 23:06:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709190363; cv=none;
         d=google.com; s=arc-20160816;
-        b=QafopphBpKuCaBFeVmdb7DULaFWil8OzCrcB8e1aNeqe4z/cQTHimToCxvELif3lEP
-         bQoNrzDakPc2WvJF8VrftA/tYItKggJ9fVyh7Hle9RUQOIW3UJwoFYELOmMEE1LIqYWj
-         04OZd/s6bF/yN1caSzW+jX2SkSGdYAmrVW4jZn9Y0Z+wL302IXc1Kczoh49sCT+LKk0U
-         OobZC2/Pin92B+LRzBwNGPWNloigrPBOh9mEXHmbE/4GKAKLWV1mSGNqTeS+pQBG/C4G
-         TYkbcqRlP+QPndPirCY12q/8JliV/Rr6C0PUqIpLKErC2Jwy3OsZTzX8Em7Iyri73Mj2
-         x7Fw==
+        b=fbWpez/QDJTX2tjTu3lmHKTlKHFgRw9k9XIoMGdrdAhvlaqlZw8kV4DnT+exFM5gKb
+         oPHIbda9gmdqiYpkP/k8ypMEjP6i1p+FlTs1W1teeSQd41qPmavzdW6/PfPUeCabuHeQ
+         Lnqh4YpbNAWg6EBBrQTLuD1tmX4hbA95ieG/hXFYiaYFDaOSuo/wRQ4kExjxUQjy0FDJ
+         5MnBTU/rZHzYGxm7DYPR4Sw50y5HaFVxalIzC9v96o0a2Qt4BHkno0jUsniR4xycQa/h
+         pmFXpMb1WkJd/bZHei090CgR1Ra4eHSHF6MeeUSVOQEBUKTOrXtQAaU19EQWv3htP9A8
+         1E4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=2TOu202CxhP7omzIe1saxTSFfF++7emJ7mqJ0E5eux4=;
-        fh=jpP+qILQ2yxWrn1yBx62M4+fPS98PwnA+wNzO4Pv6us=;
-        b=TlmA35vdOCLvFkVEuK2unD7SyR0+2XvsevxwQElLpkgn9Drt9TcChKNkFFhS5wwU70
-         wr709innUhy0BlOMsdnStiE017s8OjiOhZFnCosw/jGwXxXIOZvj6fP3eRgf7tG7bX6A
-         H12VrPB5P77pzZR8gmFv8sClBvgN4P3zzj+6WIa7BM2s4Ozp5tBiFOX0FgAvNjoYU+OF
-         ql3M/YWM9tdiZhmXNPf/ByL+lLuWZZNd/lY3Fy6gYiNIvpbvi6OVXyDEswW/FvF3Krgz
-         z9QYUkZFpFx0Nsx4TRnN4aUl6p0rjcLIs57IDOpVse2KtKScxHiQtHgpf05t3zJkzlnf
-         aHgA==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=fDu127NaKbQXspGx0t1HE+7JXtWwc+PibGUY9zypOP8=;
+        fh=LdQSP/IzOsJu2Z1R2sMd/3tGWWnW7jyc4/vr7URDKK0=;
+        b=jnECt2IfuAoKDrtlU2bYIdgu1rcgAcKz4U5Fy/6Vm0E7DCRTlgPaP0t5+jPOyWs2T6
+         ikzqj8d8XlTqo26/qwJSXVBn8TeGuneIdXLVgY3ov6naZv1QX4ZCdTsKn+Ffij2L9WTK
+         hsN4p0Fpw+IPYxZxHA9+bU6jQeDhceqtZHU32bFW7ofi5mcT5S6Wvr7NPHcMr1Q3vS+v
+         ITa/Py/Sw60rcRlcJ/sEfL7k7UOGdxjQWDUZYDT8zToEQp72sryMnjFVWeo7U7brBMIQ
+         bTukAl8ExYB3UEmFy3S/mFQTId7HkShoEGbShdfoFrMheRcjCOlLA/pRct/iZQ4LifN4
+         MRMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id if5-20020a0562141c4500b0068f45fc3e67si810777qvb.16.2024.02.28.23.03.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 23:03:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=cyzpHtaj;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@linux.intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.18])
+        by mx.google.com with ESMTPS id 17-20020ac85911000000b0042e7efdd23esi872587qty.568.2024.02.28.23.06.02
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Feb 2024 23:06:03 -0800 (PST)
+Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=198.175.65.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfaRs-0002hs-VA; Thu, 29 Feb 2024 02:03:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfaRh-0002Xu-BV; Thu, 29 Feb 2024 02:03:09 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfaRS-0003DK-9e; Thu, 29 Feb 2024 02:03:09 -0500
-Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 29 Feb
- 2024 15:02:37 +0800
-Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Feb 2024 15:02:37 +0800
-To: <qemu-devel@nongnu.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "Alistair
- Francis" <alistair@alistair23.me>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 6/8] aspeed/intc: Add AST2700 support
-Date: Thu, 29 Feb 2024 15:02:31 +0800
-Message-ID: <20240229070233.463502-7-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240229070233.463502-1-jamin_lin@aspeedtech.com>
-References: <20240229070233.463502-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=cyzpHtaj;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1709190363; x=1740726363;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=i9uq6y/awOo4nqggMPn0JAiBk7ClRoK07Pbq42o5yNE=;
+  b=cyzpHtajw/skFpHzS6nwe3PGOLHhA1S45+IiVmXV86vUnLN7YmePnMbx
+   HzFcYKIZBuLbTnykikQCN/pdR9bX13HBIn/Eko73Z/xG9qYWqou/nGIj8
+   NCrZ6WwBvu768E0kIIHCT3hvklmUmsrMcFeTJHOEU1VrmKVto6hH//1Ve
+   WYe7ejYwPqOUP5adBAZYI4VwF36DscqbXJmhUppiB9NZR4bkVZb04RzT+
+   iQ0DEHjsHGLAmDdXCszceeRm7tUv04cnvSNqbniyUwbYMZFj1CzxbeMEW
+   rq5CzdbqeBDJl+T3iUtwl2cJOwPri5S2y2jzwGJ/UckdOszJvaTANiW0T
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="3764830"
+X-IronPort-AV: E=Sophos;i="6.06,192,1705392000"; 
+   d="scan'208";a="3764830"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Feb 2024 23:06:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,192,1705392000"; 
+   d="scan'208";a="8082618"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa007.jf.intel.com with ESMTP; 28 Feb 2024 23:05:56 -0800
+Date: Thu, 29 Feb 2024 15:19:40 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: JeeHeng Sia <jeeheng.sia@starfivetech.com>
+Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+	"qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [RFC 6/8] i386/cpu: Update cache topology with machine's
+ configuration
+Message-ID: <ZeAwDIDdJff6SiiB@intel.com>
+References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
+ <20240220092504.726064-7-zhao1.liu@linux.intel.com>
+ <BJSPR01MB0561F3D87C67D4BCCA9E9C8D9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=twmbx02.aspeed.com;
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5z4tFv3CeOA9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <BJSPR01MB0561F3D87C67D4BCCA9E9C8D9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
+X-TUID: CaOrV5jxssS0
 
-AST2700 interrupt controller(INTC) provides hardware interrupt interfaces
-to interrupt of processors PSP, SSP and TSP. In INTC, each interrupt of
-INT 128 to INT136 combines 32 interrupts.
+Hi JeeHeng,
 
-Introduce a new aspeed_intc class with instance_init and realize handlers.
+> > diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> > index d7cb0f1e49b4..4b5c551fe7f0 100644
+> > --- a/target/i386/cpu.c
+> > +++ b/target/i386/cpu.c
+> > @@ -7582,6 +7582,27 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+> > 
+> >  #ifndef CONFIG_USER_ONLY
+> >      MachineState *ms = MACHINE(qdev_get_machine());
+> > +
+> > +    if (ms->smp_cache.l1d != CPU_TOPO_LEVEL_INVALID) {
+> > +        env->cache_info_cpuid4.l1d_cache->share_level = ms->smp_cache.l1d;
+> > +        env->cache_info_amd.l1d_cache->share_level = ms->smp_cache.l1d;
+> > +    }
+> > +
+> > +    if (ms->smp_cache.l1i != CPU_TOPO_LEVEL_INVALID) {
+> > +        env->cache_info_cpuid4.l1i_cache->share_level = ms->smp_cache.l1i;
+> > +        env->cache_info_amd.l1i_cache->share_level = ms->smp_cache.l1i;
+> > +    }
+> > +
+> > +    if (ms->smp_cache.l2 != CPU_TOPO_LEVEL_INVALID) {
+> > +        env->cache_info_cpuid4.l2_cache->share_level = ms->smp_cache.l2;
+> > +        env->cache_info_amd.l2_cache->share_level = ms->smp_cache.l2;
+> > +    }
+> > +
+> > +    if (ms->smp_cache.l3 != CPU_TOPO_LEVEL_INVALID) {
+> > +        env->cache_info_cpuid4.l3_cache->share_level = ms->smp_cache.l3;
+> > +        env->cache_info_amd.l3_cache->share_level = ms->smp_cache.l3;
+> > +    }
+> > +
+>
+> I think this block of code can be further optimized. Maybe we can create
+> a function called updateCacheShareLevel() that takes a cache pointer and
+> a share level as arguments. This function encapsulates the common
+> pattern of updating cache share levels for different caches. You can define
+> it like this:
+> void updateCacheShareLevel(XxxCacheInfo *cache, int shareLevel) {
+>     if (shareLevel != CPU_TOPO_LEVEL_INVALID) {
+>         cache->share_level = shareLevel;
+>     }
+> }
+>
 
-QEMU supports ARM Generic Interrupt Controller, version 3(GICv3)
-but not support Shared Peripheral Interrupt (SPI), yet.
-This patch added work around to set GICINT132[18] which was BMC UART interrupt
-if it received GICINT132, so users are able to type any key from keyboard to
-trigger GICINT132 interrupt until AST2700 boot into login prompt.
-It is a temporary solution.
+Good idea! Will try this way.
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/intc/aspeed_intc.c        | 135 +++++++++++++++++++++++++++++++++++
- hw/intc/meson.build          |   1 +
- include/hw/intc/aspeed_vic.h |  29 ++++++++
- 3 files changed, 165 insertions(+)
- create mode 100644 hw/intc/aspeed_intc.c
-
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-new file mode 100644
-index 0000000000..851d43363b
---- /dev/null
-+++ b/hw/intc/aspeed_intc.c
-@@ -0,0 +1,135 @@
-+/*
-+ * ASPEED INTC Controller
-+ *
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/intc/aspeed_vic.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/intc/arm_gicv3.h"
-+#include "trace.h"
-+
-+#define ASPEED_INTC_NR_IRQS 128
-+#define ASPEED_INTC_SIZE 0x4000
-+#define TO_REG(N) (N >> 2)
-+
-+uint64_t regs[ASPEED_INTC_SIZE];
-+
-+static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-+{
-+}
-+
-+static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    GICv3State *gic = ARM_GICV3(s->gic);
-+
-+    uint64_t value = 0;
-+    switch (TO_REG(offset)) {
-+    case TO_REG(0x1404):
-+        /* BMC UART interript is GICINT132[18] */
-+        if (gic && gicv3_gicd_level_test(gic, 164)) {
-+            value = BIT(18);
-+        }
-+        break;
-+    default:
-+        value = regs[TO_REG(offset)];
-+        break;
-+    }
-+
-+    return value;
-+}
-+
-+static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-+                                        unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    GICv3State *gic = ARM_GICV3(s->gic);
-+
-+    switch (TO_REG(offset)) {
-+    case TO_REG(0x1400):
-+        regs[TO_REG(offset)] = data;
-+        if (regs[TO_REG(offset)]) {
-+            gicv3_gicd_enabled_set(gic, 164);
-+        } else {
-+            gicv3_gicd_enabled_clear(gic, 164);
-+        }
-+        break;
-+    case TO_REG(0x1404):
-+        regs[TO_REG(offset)] &= ~(data);
-+        gicv3_gicd_level_clear(gic, 164);
-+        break;
-+    default:
-+        regs[TO_REG(offset)] = data;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_intc_ops = {
-+    .read = aspeed_intc_read,
-+    .write = aspeed_intc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+    .valid.unaligned = false,
-+};
-+
-+static void aspeed_intc_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedINTCState *s = ASPEED_INTC(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
-+                          TYPE_ASPEED_INTC, ASPEED_INTC_SIZE);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+
-+    qdev_init_gpio_in(dev, aspeed_intc_set_irq, ASPEED_INTC_NR_IRQS);
-+    sysbus_init_irq(sbd, &s->irq);
-+    sysbus_init_irq(sbd, &s->fiq);
-+}
-+
-+static void aspeed_intc_reset(DeviceState *dev)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(dev);
-+
-+    s->level = 0;
-+    s->raw = 0;
-+    s->select = 0;
-+    s->enable = 0;
-+    s->trigger = 0;
-+    s->sense = 0x1F07FFF8FFFFULL;
-+    s->dual_edge = 0xF800070000ULL;
-+    s->event = 0x5F07FFF8FFFFULL;
-+}
-+
-+static void aspeed_intc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->realize = aspeed_intc_realize;
-+    dc->reset = aspeed_intc_reset;
-+    dc->desc = "ASPEED Interrupt Controller for AST27x0";
-+    dc->vmsd = NULL;
-+}
-+
-+static const TypeInfo aspeed_intc_info = {
-+    .name = TYPE_ASPEED_INTC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedINTCState),
-+    .class_init = aspeed_intc_class_init,
-+};
-+
-+static void aspeed_intc_register_types(void)
-+{
-+    type_register_static(&aspeed_intc_info);
-+}
-+
-+type_init(aspeed_intc_register_types);
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index ed355941d1..f5c574f584 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -14,6 +14,7 @@ system_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files(
- ))
- system_ss.add(when: 'CONFIG_ALLWINNER_A10_PIC', if_true: files('allwinner-a10-pic.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_vic.c'))
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_intc.c'))
- system_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_pic.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_gic.c', 'exynos4210_combiner.c'))
- system_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
-diff --git a/include/hw/intc/aspeed_vic.h b/include/hw/intc/aspeed_vic.h
-index 68d6ab997a..673a11d7fd 100644
---- a/include/hw/intc/aspeed_vic.h
-+++ b/include/hw/intc/aspeed_vic.h
-@@ -17,6 +17,7 @@
- #include "qom/object.h"
- 
- #define TYPE_ASPEED_VIC "aspeed.vic"
-+#define TYPE_ASPEED_INTC "aspeed.intc"
- OBJECT_DECLARE_SIMPLE_TYPE(AspeedVICState, ASPEED_VIC)
- 
- #define ASPEED_VIC_NR_IRQS 51
-@@ -46,4 +47,32 @@ struct AspeedVICState {
-     uint64_t event;
- };
- 
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedINTCState, ASPEED_INTC)
-+
-+struct AspeedINTCState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    DeviceState *gic;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+    qemu_irq fiq;
-+
-+    uint64_t level;
-+    uint64_t raw;
-+    uint64_t select;
-+    uint64_t enable;
-+    uint64_t trigger;
-+
-+    /* 0=edge, 1=level */
-+    uint64_t sense;
-+
-+    /* 0=single-edge, 1=dual-edge */
-+    uint64_t dual_edge;
-+
-+    /* 0=low-sensitive/falling-edge, 1=high-sensitive/rising-edge */
-+    uint64_t event;
-+};
-+
- #endif /* ASPEED_VIC_H */
--- 
-2.25.1
-
+Thanks,
+Zhao

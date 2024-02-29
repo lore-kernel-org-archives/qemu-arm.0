@@ -1,74 +1,73 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp374408eja;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp374411eja;
         Thu, 29 Feb 2024 05:13:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW4SOlUAMCnjZG+JmMUMSMHSbEz15lOe4iTTNf3zb+HiuFN+xCfEk2ZuaEN3DllE7VnKDFYmdeWKfU3D4VY5ekxODmvdaEh
-X-Google-Smtp-Source: AGHT+IGQCGiD8fXioJMae3MYn50rX5bdNevxFAQj6cv1OYHMqUVj/bpQ6I1c+M8/elhXqwCVr0+C
-X-Received: by 2002:a05:620a:1023:b0:787:7d3e:f72a with SMTP id a3-20020a05620a102300b007877d3ef72amr2168826qkk.59.1709212419868;
-        Thu, 29 Feb 2024 05:13:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709212419; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCWYLvwNKHGgtVfBfGQdXbU6i7+vRb77OJupDxH9T5LG170aIToO/i48LLZpvy+48dtLCy2Xh48FYqwZcLVSgILliMyEiLIx
+X-Google-Smtp-Source: AGHT+IGCLDiRz7DVA0nUWqc43u0ohgGeS5135KwIfgFdlV890wA4yt1Xb8LrkvaaELIa5ZmWriqC
+X-Received: by 2002:a05:622a:2286:b0:42e:b8d1:2b2f with SMTP id ay6-20020a05622a228600b0042eb8d12b2fmr2275746qtb.45.1709212420134;
+        Thu, 29 Feb 2024 05:13:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709212420; cv=none;
         d=google.com; s=arc-20160816;
-        b=YjPQmSdafXW+XSRLRW+d1OyuTnw0epy+gtXpUfagQjwZ0ld4YcaUC11c/9LR6Fs0YO
-         Df5UY8mO7qPgPLCUgx/Brb9FamJVwBVx3T1EnwZEE/E47ORIRhRIPuJXZb2dSOEW1dQ3
-         TEF3uLoEHqH7iFsr3SxoRN+q61owC+ohlYfPCyypGjA4UZBaGrp8zctqu3sG2Deifc17
-         0tyRmlBXYyBuTJwceN9iLkLIu8p50LR+88rUBH4MOjN99gvrTXATSYN7Kdq8NE47MlZM
-         xvSVS6vTOBmtYG77ww6vYQfhvDFMcOADycBMfTSgyUnCdllqTfOxvL89oj5ULvYhkfAO
-         wzQA==
+        b=FKYvmBQVGiN4Ln36WX616eHK1P0RySz95unnntYDPBX+4h3GDGwAp78O5HifxN58OP
+         AxlH4bTOoSzUSaA3cFsbAshSYekEx1QYIGWzX8/XY/07aYXEaXrFTJ4mG9XNFvxFSj8D
+         EeO1M6AegGAtPbEln148r2Oj67M9LL9IrFEG4Kctvokk6vtfXyZORhqO9n+onaA9CRvn
+         sGMXMmXwD10LLO8YhGMvO5Yq/a0poxK6UWsV6j5Tymg50nmyrkJx/TWd0JICMRr+gt5Z
+         pvrT/7PJdILmxLBm6Q3fezmJLURE9xkHBSci/vSQVNEsZdmMaxejmyeh/sGXjJacGavA
+         MXiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=DYdBcRTFVKdV17vpdL00pZLwPYPXQvdZfVh1xwk1UAo=;
+        bh=AJi/KQeVKt28o2W2aeZPMLFwi3sH+ZzJgbnYprfBw1s=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=uBx1Sdo6/YED1AqkoW/6wAdDJSrmOcr3J8OfE1FLmsC7/0uP3ciXoNC5wUqqPRzCOP
-         Y3Vnd2yyXxMZAWgiwfCejuSJlse7TKC1iejiqhtRU8nwaqNj64ETch+b3vu6ItAd1mzv
-         QuPVw/Eb4ZJOTXXPA+WTcD4VyZOZt/7PaHw5TbS3FgkqfZqfl4oOOoX7O0Az/6eZ2zQM
-         cosU0nR4jILRooSYPi9VE8WD7Bdz7p+jIqcwr8tV6rf6iTwet4V2tHV1FZvkTZti3TiE
-         m9DE0huqONdyiM0C1rpItoFyXMjeyuJCORNzfYBYOwrUASyPhDl0RblZAl46hjF2v0Dv
-         P3pg==;
+        b=X4pgdrt0HlvMtyIaGqINpm+DCpvf7smrFrgLnbxPQ2LBc7bl5Uo/lqieDpNTS6p1O1
+         BhfhmlmmRPrrGQZY0PtElZaLlqcPoTG7fqrsPEcMhHVnKsuA3U7WFFm25YsNgAo+A9HA
+         CjNzl7+AtAAonAbp3Rh9mKZ5YRKSnqgVjtnr2H2YKuymAj07bbOd6UGFsjg4XoFHEgBg
+         oyYCC/hBzCP95MPPw2j08Y0aO9cKnWWDKuMHXdHwDiaCpk3nOmwEqSVwM5ppIgVyzAmQ
+         wxqM+CFpeNsbNBTBsnirKcnwuu+GHX1sl68PKQZoMRU5pNuAJpznWovk1TDFL16nf+Em
+         Y8SA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20-20020ae9c114000000b007872f0228d7si1310964qki.500.2024.02.29.05.13.39
+        by mx.google.com with ESMTPS id t11-20020ac8530b000000b0042e68f19f80si1241660qtn.339.2024.02.29.05.13.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 05:13:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 05:13:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfgD9-0005xw-RJ; Thu, 29 Feb 2024 08:12:31 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfgD9-0005xh-KU; Thu, 29 Feb 2024 08:12:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCj-0005l5-Oq; Thu, 29 Feb 2024 08:12:07 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ id 1rfgCd-0005ea-Kn; Thu, 29 Feb 2024 08:11:59 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCg-0002j1-SB; Thu, 29 Feb 2024 08:12:05 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.44])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Tls5437KFz1h13q;
- Thu, 29 Feb 2024 21:09:44 +0800 (CST)
+ id 1rfgCa-0002fE-NB; Thu, 29 Feb 2024 08:11:59 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Tls5Q4WJszpVXG;
+ Thu, 29 Feb 2024 21:10:02 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 361BF1402CE;
- Thu, 29 Feb 2024 21:12:00 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id C3783140499;
+ Thu, 29 Feb 2024 21:11:52 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 21:11:59 +0800
+ 2024 21:11:52 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v5 22/22] hw/arm/virt: Add FEAT_GICv3_NMI feature support
- in virt GIC
-Date: Thu, 29 Feb 2024 13:10:39 +0000
-Message-ID: <20240229131039.1868904-23-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v5 14/22] hw/intc/arm_gicv3_redist: Implement GICR_INMIR0
+Date: Thu, 29 Feb 2024 13:10:31 +0000
+Message-ID: <20240229131039.1868904-15-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240229131039.1868904-1-ruanjinjie@huawei.com>
 References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
@@ -78,87 +77,99 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o37pf6zrBo7t
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sYyJmnfZLMqw
 
-A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-FEAT_GICv3_NMI
-
-So included support FEAT_GICv3_NMI feature as part of virt platform
-GIC initialization if FEAT_NMI and FEAT_GICv3 supported.
+Add GICR_INMIR0 register and support access GICR_INMIR0.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
 v4:
-- Add Reviewed-by.
-v3:
-- Adjust to be the last after add FEAT_NMI to max.
-- Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
+- Make the GICR_INMIR0 implementation more clearer.
 ---
- hw/arm/virt.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ hw/intc/arm_gicv3_redist.c | 19 +++++++++++++++++++
+ hw/intc/gicv3_internal.h   |  1 +
+ 2 files changed, 20 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2d4a187fd5..c12307ccd9 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -712,6 +712,19 @@ static void create_v2m(VirtMachineState *vms)
-     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 8153525849..7a16a058b1 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -35,6 +35,15 @@ static int gicr_ns_access(GICv3CPUState *cs, int irq)
+     return extract32(cs->gicr_nsacr, irq * 2, 2);
  }
  
-+/*
-+ * A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-+ * FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-+ * FEAT_GICv3_NMI.
-+ */
-+static bool gicv3_nmi_present(VirtMachineState *vms)
++static void gicr_write_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
++                                  uint32_t *reg, uint32_t val)
 +{
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
-+
-+    return cpu_isar_feature(aa64_nmi, cpu) &&
-+           (vms->gic_version != VIRT_GIC_VERSION_2);
++    /* Helper routine to implement writing to a "set" register */
++    val &= mask_group(cs, attrs);
++    *reg = val;
++    gicv3_redist_update(cs);
 +}
 +
- static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ static void gicr_write_set_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
+                                       uint32_t *reg, uint32_t val)
  {
-     MachineState *ms = MACHINE(vms);
-@@ -785,6 +798,11 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                               vms->virt);
-         }
+@@ -406,6 +415,10 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
+         *data = value;
+         return MEMTX_OK;
      }
++    case GICR_INMIR0:
++        *data = cs->gic->nmi_support ?
++                gicr_read_bitmap_reg(cs, attrs, cs->gicr_isuperprio) : 0;
++        return MEMTX_OK;
+     case GICR_ICFGR0:
+     case GICR_ICFGR1:
+     {
+@@ -555,6 +568,12 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+         gicv3_redist_update(cs);
+         return MEMTX_OK;
+     }
++    case GICR_INMIR0:
++        if (cs->gic->nmi_support) {
++            gicr_write_bitmap_reg(cs, attrs, &cs->gicr_isuperprio, value);
++        }
++        return MEMTX_OK;
 +
-+    if (gicv3_nmi_present(vms)) {
-+        qdev_prop_set_bit(vms->gic, "has-nmi", true);
-+    }
-+
-     gicbusdev = SYS_BUS_DEVICE(vms->gic);
-     sysbus_realize_and_unref(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
+     case GICR_ICFGR0:
+         /* Register is all RAZ/WI or RAO/WI bits */
+         return MEMTX_OK;
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 29d5cdc1b6..f35b7d2f03 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -109,6 +109,7 @@
+ #define GICR_ICFGR1           (GICR_SGI_OFFSET + 0x0C04)
+ #define GICR_IGRPMODR0        (GICR_SGI_OFFSET + 0x0D00)
+ #define GICR_NSACR            (GICR_SGI_OFFSET + 0x0E00)
++#define GICR_INMIR0           (GICR_SGI_OFFSET + 0x0F80)
+ 
+ /* VLPI redistributor registers, offsets from VLPI_base */
+ #define GICR_VPROPBASER       (GICR_VLPI_OFFSET + 0x70)
 -- 
 2.34.1
 

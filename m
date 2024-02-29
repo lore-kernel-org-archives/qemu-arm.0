@@ -1,169 +1,86 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp229961eja;
-        Wed, 28 Feb 2024 23:58:44 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXHqNztKmgqIhoGxj7NcSK//z7yMCUiUbBOtE0yGkbW4P/ePuAZeHfDshH4xp+hR8zPTLAbe+sJgyURSn5S0f+VBtW+xfrb
-X-Google-Smtp-Source: AGHT+IFjF/Sg2L5r/vF2TNpk6khbC56y2cS3SgPQL400m4i+ShCEPgMc0xFIHO+Nt+gRdlAe6vmN
-X-Received: by 2002:a05:620a:4688:b0:787:f66b:8d7 with SMTP id bq8-20020a05620a468800b00787f66b08d7mr1494313qkb.10.1709193523861;
-        Wed, 28 Feb 2024 23:58:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709193523; cv=pass;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp231037eja;
+        Thu, 29 Feb 2024 00:00:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU1kYP9QSGegG8QWfn28hvKTVEXeodQsnaMI9ds4+OJtrqDh0N2HS/CsFRR7nGZFAyHpxHceIfyRtbcL3qSA3kRtBqtLnvK
+X-Google-Smtp-Source: AGHT+IEsgEtFKsZIBc9RD0TJRRfN/ees3BLakkfnphUmVvdB89rIOoSSMax1fEjLmU5HnvVH+0WW
+X-Received: by 2002:a05:620a:2a13:b0:787:a2d2:d59b with SMTP id o19-20020a05620a2a1300b00787a2d2d59bmr1584487qkp.26.1709193649173;
+        Thu, 29 Feb 2024 00:00:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709193649; cv=none;
         d=google.com; s=arc-20160816;
-        b=wT4X/qzec7YOGr0G59a3HJ6ZHCKTZVf13atz6Vi4FrTX5ubEDjYdBxc+mM8BhAC0xY
-         wTxaGGH5LVYG21AK6Pg9Xl8Icp/kyxOG7ScdRXuc0cH04d6BsDdUsZvIQo55XfVfF9an
-         PwpEel8WueUJqgLLM6ekesSm6E/K96MdEoWiUv4LfOdn5dWhvE5zwBFGCW++pyrak0tD
-         VC1xsOFOozCBhIVai6Rc6i9+F+TuDnn/EmYnGjND4K+7aQdbMK25FVgkYXBhd5rvwlPs
-         jInVg0GCdrPukyzELOC3FzXuzRYu/CTn1ztEekqTDz4KtBFVb8KGtCy2IpgbHPuJ4y19
-         oyiA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=/0qrz1M2ZYhcvCg5GbOmWrXhXLmjfng/fQawhWYXa1M=;
-        fh=qQVEiIeK2Un1L//Ff520WR1C+gQjpRhtUvbVAma2nIQ=;
-        b=zZQB6MWEPE8aevUyCDZB3Cqkbdt9KYc/8N62qiL91ynwyA6WyLQizvEgDXHYD6iawf
-         VOG7ukgJqdC8L4YuP7yqkyJUpZ+q9PzUcnsObT0O044QYKeb2YEdS+03b43DqmTdym1W
-         XhzfTdqCBKoENQibTAThsT88eKNhn26Zw6BFEvqq/Bb4TnZb7y+c0kik/HrABnva1O8d
-         OHYiqEt9eWgGGKAxbwpMHyeDDXWMAQptItZ/XJP64uLahlsQzg4X1xBKb9g4mZoQETsj
-         2lvHI14WvOV7akMWbo5U8w7fdbr7w4Em1NyVdZQdhxoPwULrYxngccEeR01EqFWNizJf
-         +s6Q==;
+        b=dDRvjSCdcBLgoAwBJp77xwP+orOAv3su9vPoUlK0/0Fh2RbvIM7YF6D6WjKeR+lpyB
+         EDfUZzYLmRJ6XNY5j6R/5lJpa8IePO3XrKUZpPhlqJP9PbSsku9fJhTOYcGm/CMmnng2
+         NUEZUF/x+YMIQ0QjivqU6c/z+8gILQ9/DBA8Kx1pZbkjF0cGeyTAXYVxmUAH/tO4hX+7
+         PaPk9CHiHv3Dvi4B6PyCFrMkqBSY1LfzjA2LZvVymCOoB1xddt/nTYPUKJJWU8JI77F4
+         /TLz3WJQGw7H+z3rAYBczZrLw/K5DySMPTX4zlR2az5Stl5Ykd8d1BeCzS94Abl/KdOz
+         IsAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=FcvMDv76OcDGlLOqM/h891oml/WS03pjHw5o/BfpYPc=;
+        fh=PdtwIDHs/tPxejUvGNuNc+OfbOLCj28QtuyfcdtzgXw=;
+        b=GUdCG582E2+LMaXGMlGFO3FK2JCwYceaUXRiJxLbEzpQclbnponn5Dam+Nq9ioVVss
+         22ts4kpOp2Aj6ANXc2spXZJ+BO4ndlS7l1VorntxTGUk9DnSW5ovkAA58n6Lfg84d8WC
+         4jCoeKyOy4tccKCT7OHYWd77KfoYrqzRoccrI8HvcMieruF35AGtxGXXYO6G9iEa7mfZ
+         rxPRyynr+glKoMnsqOj5Jg+nA2wezekWPrDTDW2VmIucSXri/B9LxM4XtTvd80dUhMD8
+         deuDUTi/ioZnJk65W6FsRJRJu0rpUipfyH8BZvTxeDnP3+yTpqvU1MmK+Oc6Jvei+rgt
+         EDng==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=Z8HZ+u8P;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24-20020a05620a205800b00787c194daf9si906706qka.606.2024.02.28.23.58.43
+        by mx.google.com with ESMTPS id x3-20020a05620a0ec300b00787c66b2ae3si904342qkm.139.2024.02.29.00.00.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 23:58:43 -0800 (PST)
+        Thu, 29 Feb 2024 00:00:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=Z8HZ+u8P;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfbJO-0000T1-T5; Thu, 29 Feb 2024 02:58:38 -0500
+	id 1rfbLP-0001W3-MN; Thu, 29 Feb 2024 03:00:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfbJN-0000R0-9E; Thu, 29 Feb 2024 02:58:37 -0500
-Received: from mail-sgaapc01on2070f.outbound.protection.outlook.com
- ([2a01:111:f400:feab::70f]
- helo=APC01-SG2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ id 1rfbLA-0001M3-Ks; Thu, 29 Feb 2024 03:00:35 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfbJL-0001hS-Iq; Thu, 29 Feb 2024 02:58:37 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FuEbl9TOdJwoMPVLdVtNSx8R3517jjL4+pQGQ6VlW0jmHFIqrMclXmykFkccKPnGxaqS1Vzzv9UWUoB7tZ3MOJnwTsdX+IiIG87EnDclrmAxufibzj5iOcS8B1kqXcBYhVC/MRWwPDI8QCTj2l7ilZDE1M/i/MIlkYBKfqEImhWEVJnAC6v+B2ln8EYb2MxtUr+W9jvTHTUtWQIghDjwcwzhnOuMAdzGRo2T3gEtci8MBlPx/ImW2ytgpYYDmORVwP60enLMJPhCtOQKIzS2nAhizfVbY3bMxCGnnSuLRYQ3Sh3bZJh2Jy6sG2hRZTHz5sL7FZubblLRtUK9+59EGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/0qrz1M2ZYhcvCg5GbOmWrXhXLmjfng/fQawhWYXa1M=;
- b=A/tCoW+edcoONZvkgQffdN3qX8mvBxPtIXG0eaZOxv/TSvuLfr76vlwVealFPcSbtp7i0dgvnnBVphU6xedbJtiUnZwGYUA73o8oAWlzJYW20BwIUptYD5GbR9CCb+eH3agtin8DqQYkX1Gf7czzNsWfU7D5qXmk4d72w7R7TTC8YgssjwvqveVU5M9blc9ScwM2IktrvLp1oLgzEFwzLJeePhWgDk0QwvbFgoTlJ7WaIiozC8kGhBsJiQ7FXg3X4UzRfhCVxqDd8J1860NwwsSly3pEYpvH7uT4zW7ZlNv6NzddAVag6MAOEvSDTqmAs/CvRGm+tUjmJ8Q0sQGSwg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/0qrz1M2ZYhcvCg5GbOmWrXhXLmjfng/fQawhWYXa1M=;
- b=Z8HZ+u8PpcLTReXM3Fsteiq+E5Z3ITlSwrdxIk4qIxJvOJjK4rOGniHK36FHhDC7ULnWRyjv19ZpztDxVYK8K5l8+FJfmb6RrboOfuYklHz5Utx4XN+myiuDNTLNE2HFSK9uCfRnwsilcrXwO+O/vKTzF62VfPk5L9ynZz3vngriXrI2hjE4vfhKqz0eBXEz0DLqbTCiJQyLOPa8vwqU3j7XxB5Zwlltbj6flqb9ooi8ftPTes+LpyFK2a8gB5NxMUYtc/uj5xgJcYcbbrgU1mYEk0cMKFfY8Ue3N6hsn4tRwPiH1U6RQdyMIHWLaKheP1baXX6t8RuS2lWDQH2zmw==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- SI2PR06MB5195.apcprd06.prod.outlook.com (2603:1096:4:1bf::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7292.39; Thu, 29 Feb 2024 07:58:28 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::14c9:526b:24b5:109d]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::14c9:526b:24b5:109d%4]) with mapi id 15.20.7316.039; Thu, 29 Feb 2024
- 07:58:28 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "clg@kaod.org" <clg@kaod.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "andrew@codeconstruct.com.au"
- <andrew@codeconstruct.com.au>, "joel@jms.id.au" <joel@jms.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
+ id 1rfbL3-00033a-9A; Thu, 29 Feb 2024 03:00:25 -0500
+Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
+ (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 29 Feb
+ 2024 16:00:15 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Feb 2024 16:00:15 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
+ here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: RE: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
-Thread-Topic: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
-Thread-Index: AQHaauLiedApTYd2DEatyfju4PLRdbEg8W0ggAAC0BA=
-Date: Thu, 29 Feb 2024 07:58:28 +0000
-Message-ID: <SI2PR06MB50416760BC100CC2FB33CDDEFC5F2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20240229074234.976164-1-jamin_lin@aspeedtech.com>
- <20240229074234.976164-9-jamin_lin@aspeedtech.com>
- <SI2PR06MB5041B1EA856220BB77B8809DFC5F2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-In-Reply-To: <SI2PR06MB5041B1EA856220BB77B8809DFC5F2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SI2PR06MB5195:EE_
-x-ms-office365-filtering-correlation-id: 99267715-8988-49c0-665f-08dc38fc36ea
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: T+Ta92ERDWDnJLv/0aXOZFNMKqBXaiiZNF11hGaBgGtiFVGGMo5fBwG22+0y9kw57Ups2P4d0QMSBuAGO9wKdoBvmZHo+7/UsUI1y+iDCeEg9TdyFTP6Mr8AO91W0Dz5R4fCghaLC5Ws1YGGS/fenkTGMopa5UEMezyz7FkGNgV/CvenHoVJHQQWH4UzW+sfGx9VTsG5Z/pRJXP0mt7BXJRb1m9yR1NhEeJQQzGntGxIhx/joNRudHGAyQp3Ni1S1FQm1uU8nlKlnyGNKIHw3V8k3jYiRaOu7QEr6jRkteuVCzlMlt10AxHsq1AeQZWe/TpQkyWeZqsfc8pypOhpq5DHmUbPCJTs42OxLkdAre2KuZnJdBJy3bClLjF/JW6jnpEhg9Y1cCWU+OgPB3gZjyqYbGazelA0+Gg2VIvcRWZZu+N8mthHtUJQOV9xHhSBjRRO4qDv/vhvvYO9wl1Z2Vm7xzExtdwy7qMtSbg2cRznC0l43tIxX9Jowd9LHIzDHbC1ohNw4tjjGNyx2DUqoF8pAG/cUxYHeH+pv3PJz40+f9TlmQi2amD9bx8hQLaMckxH5H8K1DdI1rqrk/KHmCD64xoDX4XYvmLsmncmIbLz1rA18qqWBmNa8MBCfr/KR4IcYEnawQfCahL4KxgggvwSw8TYJNKJP+1Xk1IpyDk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(38070700009); DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?dQ9yXTYmLZilW+75hRFMDrxUH/6AeMngxxfea9z+dzfO1g/tCkhCSfNVAmUB?=
- =?us-ascii?Q?dHH61NPsMwRuaouRWIG3eB/yOx4gfaUAcoHSxVbPF5s9pE186nJOdRnTcDHd?=
- =?us-ascii?Q?oIXK+x+aOn5+3+dvxQSnYTt+zCMbRdoMBbwOh7EO6m5K8ViKFa4s3FbV9i0N?=
- =?us-ascii?Q?bgndvY+jIpCHIccDedz+deSFfyJ5tcZ4mIaENwW4eRUI8Gk1H1+E0myQ/kZI?=
- =?us-ascii?Q?RWjCjbZBbsO8Z7VYbKyJPLdVInmdRFZJbYSu8MQsbMEz27cx7c+aovb92+CR?=
- =?us-ascii?Q?YVYRs+HofoXNFg9ZxJ8sUv84q5mCg6WL9IHOu6m0Z33FmEat+DEIKauOCljC?=
- =?us-ascii?Q?i4jjeYAylUJS1uzV0vz3v2GlzW8NHNFMl0n5ZdNfdOuV1w95SICqebU/F8Te?=
- =?us-ascii?Q?Hv9I/jEzyXLkRm5954csT6TSXmMuRPHfK6auATuRg04k1mOkxZ+B5w4ojcLA?=
- =?us-ascii?Q?bgay58nUvLZ9IB/vIto+AbiqAIlnsevij/C9vbisx6IgUIWm1OCjGn8HPu1k?=
- =?us-ascii?Q?N6dbCC01hKWB15JsCQxPnRr1yQaFdb6poFyD5ndtJYCvTP2uXlIiI3sez0Zg?=
- =?us-ascii?Q?SlTzvVpbv8dgDrR0NZ5LcrJiZPlChpRLSj5a5LG169Yw8USKmbe+2Y7fMYYP?=
- =?us-ascii?Q?RxJfh6Rnhe4s1JEkE6zkSWefCEBQIia6BZWWkWedYn8DXYW3gS2v+Wbtrlup?=
- =?us-ascii?Q?R7HPJhnKZN6L/wu0osUERbap0tEXXUHq4fZuXr+bS17ZatEEh3w6RpOR51Ny?=
- =?us-ascii?Q?EgkGN5WulUkNtFt5p05ZTIb5oRYJ/WF509Wo2bPgbRN9pYuab4VChGZGLaE6?=
- =?us-ascii?Q?racOYMkwkLfsaXtymuNv0gLe2VN1nCaaIGneigHQiS3O2aAR6Yrcp5YlYSXb?=
- =?us-ascii?Q?oG/kpWgyLcAa5TGnE2h5lQkqUqFHKIvFPODKHDuAEAUDasmlijmK/poc0t1Y?=
- =?us-ascii?Q?wT7B+rYYW/XHmVAn2JKy2YvkPc9hQViWcdsK2fVuTsgoZQc+GoNaic5yd7D7?=
- =?us-ascii?Q?He/cm/mPYDvX1fjQrgcGg1rShxPZrF+mxFZQCPD3L9Okiew5TeQNh6CbVQ6u?=
- =?us-ascii?Q?SNQBIJc4JhP8MQl9VWw47cDz6Ti+Su919b0JNf5WMZ4VhgN7vFQ/sqEg1bvs?=
- =?us-ascii?Q?rFb3XK9pKm3P+CLX/cWoN/yxnsnMIFS43i/4RMTlNvrR1OWS9UKaL8/4sfy3?=
- =?us-ascii?Q?SYcaxtjlZVb0FSujeEMUcaGsXYl0AeaSblEZBWDWnfgXvugALxPar2ZDB07D?=
- =?us-ascii?Q?/d4HP726w6+O9QvjaXUmnIs2qQ2+O0vKBfGB3FpyHaRoU6/o3Ol6gqURGk3M?=
- =?us-ascii?Q?KCao+nrukYSDqdw1cJXVEf62YSUhWPXkYumc9gqSytRDz80kd4aPkG/swY7f?=
- =?us-ascii?Q?ROLiFNwODQlpj8wQEjnzp8AXeQnuyomSMPs4A7N16zZ9eFk9epgq5SxwsoYu?=
- =?us-ascii?Q?a0UHhy3ceC4xo4BJ2qKAOFWEm0mnG6fNiWAswASJn4Z0RTYjMsM5LNlFjNiz?=
- =?us-ascii?Q?qegkb7fqv6kLdMaaCGaXm38l12UCv8JF1CeC3QtCOJn55pJeV14kxCbrXFq9?=
- =?us-ascii?Q?GR8zRgGlThcOP24fp+9Igch0TeAh5nhySNRTOFsy?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Subject: [PATCH v1 0/8] Add AST2700 support
+Date: Thu, 29 Feb 2024 16:00:06 +0800
+Message-ID: <20240229080014.1235018-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99267715-8988-49c0-665f-08dc38fc36ea
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Feb 2024 07:58:28.3915 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qYcQ+UrQuhxhmxTuMk4R8FzGWMy78GuhMX3Ji400I7ZiF4bJB9Cu7aRQiNn0Ex2aCjjzQN+rMOrWWcOTNa1tXPBkTNEptokBUn+Mi/78lns=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR06MB5195
-Received-SPF: pass client-ip=2a01:111:f400:feab::70f;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=APC01-SG2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=localhost.localdomain;
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -177,147 +94,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rTYiqpXv500z
+X-TUID: RhrzVzHCmLqz
 
-> -----Original Message-----
-> From: Jamin Lin <jamin_lin@aspeedtech.com>
-> Sent: Thursday, February 29, 2024 3:53 PM
-> To: Jamin Lin <jamin_lin@aspeedtech.com>; clg@kaod.org;
-> peter.maydell@linaro.org; andrew@codeconstruct.com.au; joel@jms.id.au;
-> qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
-> <yunlin.tang@aspeedtech.com>
-> Subject: RE: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
->=20
-> > -----Original Message-----
-> > From: Jamin Lin <jamin_lin@aspeedtech.com>
-> > Sent: Thursday, February 29, 2024 3:43 PM
-> > To: clg@kaod.org; peter.maydell@linaro.org;
-> > andrew@codeconstruct.com.au; joel@jms.id.au; qemu-arm@nongnu.org;
-> > qemu-devel@nongnu.org
-> > Cc: Troy Lee <troy_lee@aspeedtech.com>; Jamin Lin
-> > <jamin_lin@aspeedtech.com>; Yunlin Tang <yunlin.tang@aspeedtech.com>
-> > Subject: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
-> >
-> Hi all,
->=20
-> I tried to send the patch series to support AST2700 but I encountered som=
-e
-> patches were rejected by server IP 211.20.114.70.
->=20
-> Error Log:
-> qemu-devel@nongnu.org
-> eggs.gnu.org
-> Remote Server returned '550-[SPF] 211.20.114.70 is not allowed to send ma=
-il
-> from aspeedtech.com. 550 Please see
-> http://www.openspf.org/Why?scope=3Dmfrom;identity=3Djamin_lin@aspeedtech.=
-c
-> om;ip=3D211.20.114.70'
-> qemu-arm@nongnu.org
-> eggs.gnu.org
-> Remote Server returned '550-[SPF] 211.20.114.70 is not allowed to send ma=
-il
-> from aspeedtech.com. 550 Please see
-> http://www.openspf.org/Why?scope=3Dmfrom;identity=3Djamin_lin@aspeedtech.=
-c
-> om;ip=3D211.20.114.70
->=20
-> Did you encounter the same errors before?
-> My send email command as following.
-> git send-email
-> --cc troy_lee@aspeedtech.com
-> --cc jamin_lin@aspeedtech.com
-> --cc yunlin.tang@aspeedtech.com
-> --to-cmd "./scripts/get_maintainer.pl ../v1-patch/*.patch" ../v1-patch/*.=
-patch
->=20
-> Thanks-Jamin
->=20
-It seems our mail server issue. We are checking this issue.
-Thanks
+Changes from v1:
+The patch series supports WDT, SDMC, SMC, SCU, SLI and INTC for AST2700 SoC.
 
-> > AST2700 CPU is ARM Cortex-A35 which is 64 bits.
-> > Add TARGET_AARCH64 to build this machine.
-> >
-> > According to the design of ast2700, it has a bootmcu(riscv-32) which
-> > is used for executing SPL.
-> > Then, CPUs(cortex-a35) execute u-boot, kernel and rofs.
-> >
-> > Currently, qemu not support emulate two CPU architectures at the same
-> > machine. Therefore, qemu will only support to emulate CPU(cortex-a35)
-> > side for ast2700
-> >
-> > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> > ---
-> >  hw/arm/aspeed.c | 32 ++++++++++++++++++++++++++++++++
-> >  1 file changed, 32 insertions(+)
-> >
-> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
-> > 8854581ca8..4544026d14 100644
-> > --- a/hw/arm/aspeed.c
-> > +++ b/hw/arm/aspeed.c
-> > @@ -178,6 +178,12 @@ struct AspeedMachineState {  #define
-> > AST2600_EVB_HW_STRAP1 0x000000C0  #define
-> AST2600_EVB_HW_STRAP2
-> > 0x00000003
-> >
-> > +#ifdef TARGET_AARCH64
-> > +/* AST2700 evb hardware value */
-> > +#define AST2700_EVB_HW_STRAP1 0x000000C0 #define
-> > AST2700_EVB_HW_STRAP2
-> > +0x00000003 #endif
-> > +
-> >  /* Tacoma hardware value */
-> >  #define TACOMA_BMC_HW_STRAP1  0x00000000  #define
-> > TACOMA_BMC_HW_STRAP2  0x00000040 @@ -1588,6 +1594,26 @@
-> static void
-> > aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-> >      aspeed_machine_class_init_cpus_defaults(mc);
-> >  }
-> >
-> > +#ifdef TARGET_AARCH64
-> > +static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc,
-> > +void
-> > +*data) {
-> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> > +
-> > +    mc->desc =3D "Aspeed AST2700 EVB (Cortex-A35)";
-> > +    amc->soc_name  =3D "ast2700-a0";
-> > +    amc->hw_strap1 =3D AST2700_EVB_HW_STRAP1;
-> > +    amc->hw_strap2 =3D AST2700_EVB_HW_STRAP2;
-> > +    amc->fmc_model =3D "w25q01jvq";
-> > +    amc->spi_model =3D "w25q512jv";
-> > +    amc->num_cs    =3D 2;
-> > +    amc->macs_mask =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON |
-> > ASPEED_MAC2_ON;
-> > +    amc->uart_default =3D ASPEED_DEV_UART12;
-> > +    mc->default_ram_size =3D 1 * GiB;
-> > +    aspeed_machine_class_init_cpus_defaults(mc);
-> > +}
-> > +#endif
-> > +
-> >  static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-> >                                                       void
-> *data) { @@
-> > -1711,6 +1737,12 @@ static const TypeInfo aspeed_machine_types[] =3D {
-> >          .name           =3D MACHINE_TYPE_NAME("ast1030-evb"),
-> >          .parent         =3D TYPE_ASPEED_MACHINE,
-> >          .class_init     =3D
-> > aspeed_minibmc_machine_ast1030_evb_class_init,
-> > +#ifdef TARGET_AARCH64
-> > +    }, {
-> > +        .name          =3D MACHINE_TYPE_NAME("ast2700-evb"),
-> > +        .parent        =3D TYPE_ASPEED_MACHINE,
-> > +        .class_init    =3D aspeed_machine_ast2700_evb_class_init,
-> > +#endif
-> >      }, {
-> >          .name          =3D TYPE_ASPEED_MACHINE,
-> >          .parent        =3D TYPE_MACHINE,
-> > --
-> > 2.25.1
+Test steps:
+1. Download openbmc image for AST2700 from
+   https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.00
+   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.00/
+   ast2700-default-obmc.tar.gz
+2. untar ast2700-default-obmc.tar.gz
+   ```
+   tar -xf ast2700-default-obmc.tar.gz
+   ```
+3. Run and the contents of scripts as following
+IMGDIR=ast2700-default
+UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+UBOOT_DTB_ADDR=$((0x400000000 + ${UBOOT_SIZE}))
+
+qemu-system-aarch64 -M ast2700-evb -nographic -m 8G\
+ -device loader,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin,force-raw=on\
+ -device loader,addr=${UBOOT_DTB_ADDR},file=${IMGDIR}/u-boot.dtb,force-raw=on\
+ -device loader,addr=0x430000000,file=${IMGDIR}/bl31.bin,force-raw=on\
+ -device loader,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin,force-raw=on\
+ -device loader,addr=0x430000000,cpu-num=0\
+ -device loader,addr=0x430000000,cpu-num=1\
+ -device loader,addr=0x430000000,cpu-num=2\
+ -device loader,addr=0x430000000,cpu-num=3\
+ -smp 4\
+ -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd\
+ -serial mon:stdio\
+ -snapshot
+
+Known Issue:
+1. QEMU supports ARM Generic Interrupt Controller, version 3(GICv3)
+but not support Shared Peripheral Interrupt (SPI), yet.
+Added work around in INTC patch to set GICINT132[18]
+which was BMC UART interrupt if it received GICINT132, so users are
+able to type any key from keyboard to trigger GICINT132 interrupt
+until AST2700 boot into login prompt. It is a temporary solution.
+If users encounter boot stck and no booting log,
+please type any key from keyboard.
+
+2. It is required to add "-m 8G" to set the dram size 8G.
+AST2700 dram size calculation is not compatible AST2600.
+According to the DDR hardware capacity behavior, if users write the
+data at address which is over than the supported size, it would set
+the data at address 0.
+For example:
+a. sdram base address "0x4 00000000"
+b. sdram size is 1GiB
+The available address range is from "0x4 00000000" to "0x4 40000000".
+If users write 0xdeadbeef at address "0x6 00000000", the value of
+DRAM address 0 (base address 0x4 00000000) should be 0xdeadbeef.
+Please see ast2700_sdrammc_calc_size in
+https://github.com/AspeedTech-BMC/u-boot/blob/v00.05.00/drivers/ram/aspeed/
+sdram_ast2700.c
+
+It seems we should create a new function instead of aspeed_soc_dram_init
+to support AST2700.
+https://github.com/qemu/qemu/blob/master/hw/arm/aspeed_soc_common.c
+
+Jamin Lin (8):
+  aspeed/wdt: Add AST2700 support
+  aspeed/sli: Add AST2700 support
+  aspeed/sdmc: Add AST2700 support
+  aspeed/smc: Add AST2700 support
+  aspeed/scu: Add AST2700 support
+  aspeed/intc: Add AST2700 support
+  aspeed/soc: Add AST2700 support
+  aspeed: Add an AST2700 eval board
+
+ hw/arm/aspeed.c                  |  32 +++
+ hw/arm/aspeed_ast27x0.c          | 462 +++++++++++++++++++++++++++++++
+ hw/arm/meson.build               |   1 +
+ hw/intc/aspeed_intc.c            | 135 +++++++++
+ hw/intc/meson.build              |   1 +
+ hw/misc/aspeed_scu.c             | 306 +++++++++++++++++++-
+ hw/misc/aspeed_sdmc.c            | 215 ++++++++++++--
+ hw/misc/aspeed_sli.c             | 179 ++++++++++++
+ hw/misc/meson.build              |   3 +-
+ hw/misc/trace-events             |  11 +
+ hw/ssi/aspeed_smc.c              | 326 ++++++++++++++++++++--
+ hw/ssi/trace-events              |   2 +-
+ hw/watchdog/wdt_aspeed.c         |  24 ++
+ include/hw/arm/aspeed_soc.h      |  26 +-
+ include/hw/intc/aspeed_vic.h     |  29 ++
+ include/hw/misc/aspeed_scu.h     |  47 +++-
+ include/hw/misc/aspeed_sdmc.h    |   4 +-
+ include/hw/misc/aspeed_sli.h     |  32 +++
+ include/hw/ssi/aspeed_smc.h      |   1 +
+ include/hw/watchdog/wdt_aspeed.h |   3 +-
+ 20 files changed, 1787 insertions(+), 52 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast27x0.c
+ create mode 100644 hw/intc/aspeed_intc.c
+ create mode 100644 hw/misc/aspeed_sli.c
+ create mode 100644 include/hw/misc/aspeed_sli.h
+
+-- 
+2.25.1
 

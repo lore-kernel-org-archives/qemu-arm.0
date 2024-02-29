@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp482144eja;
-        Thu, 29 Feb 2024 08:00:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVEwwFRfhHZZ6G0b5+ZuyCeImLfM1LkatoBxpXITJBIxt+2K+37183K+Z9iPd5ZSLF7UlZ6kb8C7eC4eRceQEKn8POP5evj
-X-Google-Smtp-Source: AGHT+IHhESgXwQjZPkMsZt2D2SuOIO+sdaBmJxG6Y7Da561rynxsaWb0eD4YUGlab6QQOkiqb2Er
-X-Received: by 2002:a05:6808:ec4:b0:3c1:a48c:7aa3 with SMTP id q4-20020a0568080ec400b003c1a48c7aa3mr2770103oiv.25.1709222426708;
-        Thu, 29 Feb 2024 08:00:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709222426; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp506887eja;
+        Thu, 29 Feb 2024 08:33:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWKcOn9d/g2XFYlpnG3bS+mMbPYJaI14mwHrTU3WZwJhKFsKaY7dYM64TWVpdKHVLysC24uVpcNkQw+q7/v+PUCINNMCjaG
+X-Google-Smtp-Source: AGHT+IHRta87gJF2z2KBvFmJj1S/fQWPr04rwd6nBqwVhkfBdPzwujaDpMLMFcJqAexeqDDYWPjc
+X-Received: by 2002:a05:6214:1926:b0:690:48f5:28 with SMTP id es6-20020a056214192600b0069048f50028mr1929732qvb.1.1709224402002;
+        Thu, 29 Feb 2024 08:33:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709224401; cv=none;
         d=google.com; s=arc-20160816;
-        b=T7YhO2G1qAXggqOvkrc3aFa/oyeEOB4b6OfdW+Ktg6vcvRKsWC2Fz7u5ncmzZsKuSE
-         pfx4fOmymqCasUd2m3KCVBcB0DQebZt1cm+SI/AV3h3+DjN17IOWws92EeoA7HZBY1+c
-         Ul28Ji6tj6ofAGhW423qrrvt4uUeWIMulrZ2fZeZQatdLoviCNMJ7I/c1BYrOnxguX51
-         37BBRSRZQaJMgeTSGrgCXlCl28tycBgoZzS5+RCAIdAkt80kgz1cml5+aB04GHNGzGFV
-         d/w8D8oGE8Y+Y6abogAQiDDmUIbf1QhvJw+aiwvWdIry0NhNbv0NSMSD5Ss9GiPE8xA9
-         oDxQ==
+        b=XEvBqiuoZ0OMdWwRXvboMcG7o1n69MljSFLXval3ElELoZaUyfR8SvOFVGQ2FypU4U
+         zuDYRcLWBVU49SMRnyMlZ0iI8sYzfioYcgP0bm9mG1Bp7Q50cfcuVrcrrtujcxTAGinA
+         rKYaW4oij5D7Lvd2/Tvf9od3E84ISDTYAqr8rr8+9qBnkf9lB4rqahS5+EMfaRSEpXKB
+         NtxhSwH+pS/LNuPmgq2qx4NZRyFmtysFVdtNy8z4M787MYSJ8JyGubaxhnsxCixGqQal
+         aA20ML/prnu+1jGqSiFXsSOxW8Sm1bra+00iLCaizrmiT1fJkBv2kdYwglcQuBLiBwb8
+         /njA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:date;
-        bh=akkfTHHQxBcmmX1lAbWTS6hEnvdn2Tb+49GELZrco3U=;
-        fh=3R5ogao408MhLDTcU8NiHlL+5i62HyAeaWFa6pZz3Y0=;
-        b=LGjt9E1QHKnnCiPseg321x4dThMVq1jRrnKMp4hCwuf+oezjt8D5fjkRmRoYyVGPP/
-         SWwlWkr6WhGgJaR1nsl/x5GHVaYgQTBe/HOuDGwFyCo/B0NG//+xrRv4JFGF5/zhlLlN
-         tMtnTBEwaNYOvpQuqvqkVvJjkA6+3ZHdSA6YQfLiob8sIe95rMvSw94rppPs5NyJwjTG
-         F81OUsTYoCQucCyLmiivDoKuGTw4orgKBGt0tFnohPsej7B5RguNVjQ4TGwgYJEfuGGz
-         oC4JScodrR3L+PKF+OMNV0CcBYTxuX3UY7l+wRwxpZC/mGKIA2LhGUd+CxDqL+kK4lz7
-         vzfg==;
+        bh=0+HeOQDCin455p3U++SFET+XtWdPdvD0qpSSuZcCtIA=;
+        fh=kHLsR3jjhMqS3cla2gydHFs9zLFbxmJgpnxriC7JI/Y=;
+        b=JMTNc4xYvErJCPTmdO+Fk0tYlD2pdgVrOqaZClBKV28URdbS/f7J5jDzq30pzi5/Qu
+         tROSefMRBGDGbWtkdnwIpAVyjwtNtTga3LAkVSyBBMQ4dwkzN48r2IXuJdrpszX+Ef6G
+         xKIUDIbjJR3KAplRecsJbxxos+GwZpz51XFKlukvWXX4VhPN3Qe6MtOnYnJ2TAXmRxZS
+         YzLHpqQrlVSMrL8oV10IdHDVfx2sBKSM84yBdIo3EV82GW4Sj6KKtaqAUQCSdv1iyF0b
+         n5IpMrx9DXllTdp9gAeasfAyex7+8tJIiVskIGMM2d5akWPgS/c3qs5fAaPiyajWsMI2
+         CU8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2-20020a05620a248200b00788046ea137si97441qkn.247.2024.02.29.08.00.26
+        by mx.google.com with ESMTPS id o4-20020ad45c84000000b0069019d520fdsi1192152qvh.252.2024.02.29.08.33.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 08:00:26 -0800 (PST)
+        Thu, 29 Feb 2024 08:33:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,66 +42,67 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfipT-0007QB-9m; Thu, 29 Feb 2024 11:00:15 -0500
+	id 1rfjKy-0003CB-9q; Thu, 29 Feb 2024 11:32:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rfipR-0007PD-Mo; Thu, 29 Feb 2024 11:00:13 -0500
+ id 1rfjKt-0003BF-3j; Thu, 29 Feb 2024 11:32:43 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rfipB-0006Cv-1n; Thu, 29 Feb 2024 11:00:13 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TlwmC1gRNz6K6Lg;
- Thu, 29 Feb 2024 23:55:23 +0800 (CST)
+ id 1rfjKp-0000JK-MW; Thu, 29 Feb 2024 11:32:41 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TlxTg0hB2z6J9bM;
+ Fri,  1 Mar 2024 00:27:51 +0800 (CST)
 Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id A85DB14011D;
- Thu, 29 Feb 2024 23:59:31 +0800 (CST)
-Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ by mail.maildlp.com (Postfix) with ESMTPS id AC0391408FE;
+ Fri,  1 Mar 2024 00:32:33 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
  (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 15:59:11 +0000
-Date: Thu, 29 Feb 2024 15:59:10 +0000
-To: Jonathan Cameron via <qemu-devel@nongnu.org>
-CC: Ankit Agrawal <ankita@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ 2024 16:32:33 +0000
+Date: Thu, 29 Feb 2024 16:32:32 +0000
+To: Ankit Agrawal <ankita@nvidia.com>
+CC: Markus Armbruster <armbru@redhat.com>, Jason Gunthorpe <jgg@nvidia.com>,
  "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "clg@redhat.com"
  <clg@redhat.com>, "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
  <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
  "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
  <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
- <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
- Zhi Wang <zhiw@nvidia.com>, "Matt Ochs" <mochs@nvidia.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
- <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, "Kirti Wankhede"
+ <eblake@redhat.com>, "david@redhat.com" <david@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, Zhi Wang <zhiw@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket
+ Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
  <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
- Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ Sethi <vsethi@nvidia.com>, "Andy Currid" <acurrid@nvidia.com>, Dheeraj Nigam
  <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
-Message-ID: <20240229155910.00005186@huawei.com>
-In-Reply-To: <20240227173621.00003694@Huawei.com>
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 1/2] qom: new object to associate device to numa node
+Message-ID: <20240229163232.0000478d@Huawei.com>
+In-Reply-To: <SA1PR12MB71993D9D99F4756C17CAE9DBB05F2@SA1PR12MB7199.namprd12.prod.outlook.com>
 References: <20240223124223.800078-1-ankita@nvidia.com>
- <20240223124223.800078-3-ankita@nvidia.com>
- <20240226164229.00001536@Huawei.com>
- <SA1PR12MB71992ECFBF9FA3EE3C350EA8B0592@SA1PR12MB7199.namprd12.prod.outlook.com>
- <20240227171115.00004c7b@Huawei.com>
- <20240227173621.00003694@Huawei.com>
-Organization: Huawei Technologies R&D (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
+ <20240223124223.800078-2-ankita@nvidia.com>
+ <8734td3uty.fsf@pond.sub.org> <20240228135504.00005d12@Huawei.com>
+ <87bk80vaft.fsf@pond.sub.org>
+ <SA1PR12MB7199F868F1C300B1E795CD39B0582@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <20240229102230.00004277@Huawei.com>
+ <SA1PR12MB71993D9D99F4756C17CAE9DBB05F2@SA1PR12MB7199.namprd12.prod.outlook.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.122.247.231]
-X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,163 +116,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8KK6meB1UByd
+X-TUID: 6imGdORfWuxX
 
-On Tue, 27 Feb 2024 17:36:21 +0000
-Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+On Thu, 29 Feb 2024 13:00:27 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
 
-> On Tue, 27 Feb 2024 17:11:15 +0000
-> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+> >> >>> Jonathan, you pointed out interface design issues in your review o=
+f v2.> =20
+> >> >> Are you fully satisfied with the interface in v3?
+> >> >>
+> >> >> Yes. I'm fine with the interface in this version (though it's v7, s=
+o I'm lost
+> >> >> on v2 vs v3!) =20
+> >> >
+> >> > Looks like I can't count to 7!
+> >> >
+> >> > With NUMA capitalized in the doc comment, QAPI schema
+> >> > Acked-by: Markus Armbruster <armbru@redhat.com>
+> >> >
+> >> > Thanks! =20
+> >>
+> >> Thanks! Will fix that in the next version. =20
+> >
+> > The following is really me arguing with myself, so can probably be
+> > ignored, but maybe it will spark an idea from someone else!
+> >
+> > One trivial tweak that might make our life easier if anyone adds
+> > support in the future for the other device handle type might be to go
+> > with simply dev rather than pci-dev.
+> >
+> > There is a sticky corner though if a device is a PCI device
+> > and in ACPI DSDT so maybe we are better off adding acpi-dev
+> > to take either pci-dev or acpi-dev? =20
 >=20
-> > On Tue, 27 Feb 2024 08:37:15 +0000
-> > Ankit Agrawal <ankita@nvidia.com> wrote:
-> >  =20
-> > > Thanks Jonathan for reviewing the change.
-> > >=20
-> > > Comments inline.
-> > >    =20
-> > > >> The structure needs a PCI device handle [2] that consists of the d=
-evice BDF.
-> > > >> The vfio-pci device corresponding to the acpi-generic-initiator ob=
-ject is
-> > > >> located to determine the BDF.
-> > > >>
-> > > >> [1] ACPI Spec 6.3, Section 5.2.16.6
-> > > >> [2] ACPI Spec 6.3, Table 5.80
-> > > >>
-> > > >> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>     =20
-> > > >Hi Ankit,
-> > > >
-> > > > As the code stands the use of a list seems overkill.     =20
-> > >=20
-> > > Yeah, I will try out your suggestion.
-> > >    =20
-> > > > Otherwise looks good to me.=A0 I need Generic Ports support for CXL
-> > > > stuff so will copy your approach for that as it's ended up nice
-> > > > and simple.
-> > > >=20
-> > > > Jonathan     =20
-> > >=20
-> > > Nice, would be good to have uniform implementations.   =20
-> >=20
-> > I've been messing around with this today.
-> >=20
-> > They differ only very trivially.
-> > 2 Options.
-> > 1) Have acpi-generic-port inherit from acpi-generic-initiator.
-> >    Works but implies a relationship that isn't really true.
-> > 2) Add an abstract base class. I've called it acpi-generic-node
-> >    and have bother acpi-generic-initiator and acpi-generic-port
-> >    inherit from it.
-> >=20
-> > The second feels more natural but is a tiny bit more code (a few
-> > more empty init / finalize functions.
-> >=20
-> > If we are going to end up with an abstract base 'object' it
-> > will be cleaner to do this all as one series if you don't mind
-> > carrying the generic port stuff as well? Or I can smash the
-> > two series together and send out an updated version that hopefully
-> > meets both our requirements (+ tests etc).
-> >=20
-> > I'm just running tests against the CXL qos / generic port code
-> > but assuming all goes well can share my additional changes
-> > in next day or two.
-> >=20
-> > Jonathan =20
->=20
-> One more thing.  Right now we can't use Generic Initiators as
-> HMAT initiators.  That also wants fixing given that's their
-> normal usecase rather than what you are using them for so it
-> should 'work'.
+> That use case does complicate the situation. Do you of any such
+> use case for generic initiator?
 
-Something along the lines of this will do the job.
-
-
-diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 4173ef2afa..825cfe86bc 100644
---- a/include/sysemu/numa.h
-+++ b/include/sysemu/numa.h
-@@ -41,6 +41,7 @@ struct NodeInfo {
-     struct HostMemoryBackend *node_memdev;
-     bool present;
-     bool has_cpu;
-+    bool has_gi;
-     uint8_t lb_info_provided;
-     uint16_t initiator;
-     uint8_t distance[MAX_NODES];
-diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-initia=
-tor.c
-index 9179590a42..8a67300320 100644
---- a/hw/acpi/acpi-generic-initiator.c
-+++ b/hw/acpi/acpi-generic-initiator.c
-@@ -6,6 +6,7 @@
- #include "qemu/osdep.h"
- #include "hw/acpi/acpi-generic-initiator.h"
- #include "hw/pci/pci_device.h"
-+#include "hw/boards.h"
- #include "qapi/error.h"
- #include "qapi/qapi-builtin-visit.h"
- #include "qapi/visitor.h"
-@@ -58,6 +59,7 @@ static void acpi_generic_node_set_node(Object *obj, Visit=
-or *v,
-                                        const char *name, void *opaque,
-                                        Error **errp)
- {
-+    MachineState *ms =3D MACHINE(qdev_get_machine());
-     AcpiGenericNode *gn =3D ACPI_GENERIC_NODE(obj);
-     uint32_t value;
-=20
-@@ -72,6 +74,10 @@ static void acpi_generic_node_set_node(Object *obj, Visi=
-tor *v,
-     }
-=20
-     gn->node =3D value;
-+
-+    if (object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
-+        ms->numa_state->nodes[gn->node].has_gi =3D true;
-+    }
- }
-=20
- static void acpi_generic_node_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/acpi/hmat.c b/hw/acpi/hmat.c
-index b933ae3c06..9b1662b6b8 100644
---- a/hw/acpi/hmat.c
-+++ b/hw/acpi/hmat.c
-@@ -225,7 +225,7 @@ static void hmat_build_table_structs(GArray *table_data=
-, NumaState *numa_state)
-     }
-=20
-     for (i =3D 0; i < numa_state->num_nodes; i++) {
--        if (numa_state->nodes[i].has_cpu) {
-+        if (numa_state->nodes[i].has_cpu || numa_state->nodes[i].has_gi) {
-             initiator_list[num_initiator++] =3D i;
-         }
-     }
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index f08956ddb0..58a32f1564 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -229,7 +229,8 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmat=
-LBOptions *node,
-                    node->target, numa_state->num_nodes);
-         return;
-     }
--    if (!numa_info[node->initiator].has_cpu) {
-+    if (!numa_info[node->initiator].has_cpu &&
-+        !numa_info[node->initiator].has_gi) {
-         error_setg(errp, "Invalid initiator=3D%d, it isn't an "
-                    "initiator proximity domain", node->initiator);
-         return;
+In physical systems yes - in QEMU not yet, though it's a quirk
+of the available ids to get to the ACPI devices (which oddly
+are PCI devices :()
 
 >=20
-> Jonathan
+> As for your suggestion of using acpi-dev as the arg to take both
+> pci-dev and acpi-dev.. Would that mean sending a pure pci device
+> (not the corner case you mentioned) through the acpi-dev argument
+> as well? Not sure if that would appropriate.
+
+Ah, looking up my description is unclear. I meant two optional parameters
+pci-dev or acpi-dev - which one was supplied would indicate the type
+of handle to be used.
+
 >=20
-> >=20
-> >=20
-> >  =20
+> > Annoyingly for generic ports, (I'm reusing this infrastructure here)
+> > the kernel code currently only deals with the ACPI form (for CXL host
+> > bridges).=A0 Given I point that at the bus of a PXB_CXL it is both
+> > a PCI device, and the only handle we have for getting to the
+> > Root Bridge ACPI handle. =20
 >=20
+> So IIUC, you need to pass a PCI device to the generic port object, but use
+> that to reach the ACPI handle and build the Generic port affinity structu=
+re
+> for an ACPI device?
+
+Yes.  Slightly shortcut is that the UID is the bus number for all the
+relevant devices so I can abuse that.  QEMU doesn't keep track of
+the ACPI handles directly so this is the current cleanest solution.
+
+>=20
+> > So I think I've argued myself around to thinking we need to extend
+> > the interface with another optional parameter if we ever do support
+> > the ACPI handle for generic initiators :(
+> >
+> > Jonatha =20
 

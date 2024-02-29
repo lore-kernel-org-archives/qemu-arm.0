@@ -1,74 +1,73 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp374468eja;
-        Thu, 29 Feb 2024 05:13:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUMivDQ6y04E5/UmCoIVU6FYiCHUQZU5PRM25un1Y66psX1MJWsIbb154AHIBs9zTvPmGfp4Tfz+TArVjy099ct5mAG8FTo
-X-Google-Smtp-Source: AGHT+IH+TFgGN7bKpZ8VHgtaWCzUUGN0gQ3ClgZqyZTa0KTreXMC1RrvuVFh7GOkNBeETAWj16XV
-X-Received: by 2002:a05:620a:1722:b0:788:184:122c with SMTP id az34-20020a05620a172200b007880184122cmr799540qkb.54.1709212424429;
-        Thu, 29 Feb 2024 05:13:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709212424; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp374544eja;
+        Thu, 29 Feb 2024 05:13:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVc9s96l4wH39C11ouY6k+AQWf+PoLg31630qyeO0iwMCXc4S4btJMrRZrg8s6xtUebWD0bqpkOPZAQCxbDVWQPpnzc6IuJ
+X-Google-Smtp-Source: AGHT+IHyDGq6aOA5AztMs3OEGbJPmEfnZX98xiTuMopJ8JBriDcqk6kBELAqnpDuKOQ/Zgx13D9w
+X-Received: by 2002:a05:620a:408a:b0:785:86e0:c3fc with SMTP id f10-20020a05620a408a00b0078586e0c3fcmr2456429qko.5.1709212431692;
+        Thu, 29 Feb 2024 05:13:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709212431; cv=none;
         d=google.com; s=arc-20160816;
-        b=R//O5mY0GTvD6qFsCtoMr33G7TmZtTx+JYIybDWvKDrWyPlRElkSbhQa/3G9l5pH4H
-         lie7TEVB7HwpnX5e1rCgftiKyyN/cDwLcmu+cJMnnGfdIyU8nRh7MbpOW6CyC79LAsuv
-         zbwP5n2nr7Nc8Tzgurji59g4gsrNLRj3t8qukjUQ9MilfLI209YehJojd8Xjw/+ajyml
-         O2SuynwV3P4LjA0xpMLkxhgolRJ7byc8p29EujzKgWKEkxEqCWerTixSjO3IaMUZZKrA
-         zdeU3hS/HtBc0Luf9/gCw+NFUhYLeZiZbxlCcUqAjLF1wkPbds6UNSofJjw7vzC3GNHo
-         m4EQ==
+        b=KNKESdF2trUjQvgN8eZEpEPS3DgRu4VH2FdnhR7UmfK1ckXEMx9+y8P4xeokWAt3qn
+         O1sXwDQa6Idet9ASATEStM3SJxIqPZRmvCmBVXBwdSZGpMhTWpua9YYqc6vGWncXGlMl
+         OIm/2M5BiohC1pA/vecbVKJ5E2YRZhhoqQNjpRPzCy8YJX4mqS5gtf3SJL4sFeO19x3v
+         Omt5TZvp2ruv6LHocqBnz+o/+qY4gObh1lIeFXxu8fdiZ/2qmFmrFoRkvArrsHx0/BKl
+         hB8mN9izwKyaJt2Ahuo1/3bblvnJg94m/K146XiPeHrkp4nDEaPjLA1pRFDOVVKdsDoD
+         zOPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=o7ZGcGJxdVQIY0D33zNlz53xzmhWoTCMIxEgZDwaG+g=;
+        bh=wwoXp4ZKfbuZ1Y5TSFJBpg/7n09+nWgd0J8+bi06jH0=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=IiyHDPPs+w9oQq1rb86z7wxXpXyK/PsKmkg0O8hlhuXIBn0kEquKSwwifxGaw2xVQB
-         Sn008JROLfGIgipb3Ctan2pOgrzEuqWUGw7g5YjIMf8qswKrHq7OOj19eLY1g73PlDRz
-         i6tglmkEOE0tFkeIvZS4WQelTDWpnkIRaj/Y4dVyONGbIvMRP2oyk9nCsD2wwKcJscKE
-         ZEVb+m/49fDpGUJZPpNxOZ/vnsydNEjcyCaAe765fsZeVJ8twSPF1sJFrZec12GGuQ5t
-         zMwfqz2m13tMm3f4PL+myIJozXpc1yANXmo4R+5Rjm3xygLxSfiEhJ7tX4zhNMrYGf4q
-         fA5w==;
+        b=bHZ8EzhWdoPHXtc3/97REpCMT6WndWRoo33L3uk/iQwVNTgZYzuZ4zjtju8odoYtnT
+         DQk1D+qxq99+it9nGLID3Q7L+sXnfyl2M+E6BKB4b15y+6FEMr2Ml5dNx+hRazo88c11
+         QmUtzM1idgkL0iB9qp4hGsoZdHbY1NltvpaYBRigh1OMC2/fbrcpb4EPbh9u+1iklLZ5
+         Fs/Q/KeN4Sp0OaZ3qxr7DGpqvBU7yAaygzrz2eiLVSdUPbnKsNYZthrivok1A9nyf9Dg
+         xivhm8Ws+U1g/zMhfzcFh1g2V/9DsfbEi7fw2YtJzGvfQ+HEj8CbggeBK+x2BbEPlLYb
+         tyTw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk27-20020a05620a1a1b00b00787b7fb88b9si1434085qkb.630.2024.02.29.05.13.44
+        by mx.google.com with ESMTPS id 4-20020a05620a04c400b007871f7dff88si1334691qks.760.2024.02.29.05.13.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 05:13:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 05:13:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfgDB-00068W-K5; Thu, 29 Feb 2024 08:12:33 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rfgDD-0006F4-2n; Thu, 29 Feb 2024 08:12:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCg-0005jj-SQ; Thu, 29 Feb 2024 08:12:03 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+ id 1rfgCi-0005kf-FH; Thu, 29 Feb 2024 08:12:05 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCe-0002hV-9T; Thu, 29 Feb 2024 08:12:02 -0500
-Received: from mail.maildlp.com (unknown [172.19.88.163])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Tls500R74z1Q9Wd;
- Thu, 29 Feb 2024 21:09:40 +0800 (CST)
+ id 1rfgCg-0002ie-QN; Thu, 29 Feb 2024 08:12:04 -0500
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Tls6w2ycfzqjgr;
+ Thu, 29 Feb 2024 21:11:20 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 59622180061;
- Thu, 29 Feb 2024 21:11:56 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 15F9F140390;
+ Thu, 29 Feb 2024 21:11:58 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 21:11:55 +0800
+ 2024 21:11:57 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v5 18/22] hw/intc/arm_gicv3: Implement NMI interrupt
- prioirty
-Date: Thu, 29 Feb 2024 13:10:35 +0000
-Message-ID: <20240229131039.1868904-19-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v5 20/22] hw/intc/arm_gicv3: Report the VNMI interrupt
+Date: Thu, 29 Feb 2024 13:10:37 +0000
+Message-ID: <20240229131039.1868904-21-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240229131039.1868904-1-ruanjinjie@huawei.com>
 References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
@@ -78,191 +77,93 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
- helo=szxga07-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=ruanjinjie@huawei.com;
+ helo=szxga06-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mj/c8uMNVRZn
+From:  Jinjie Ruan via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ISx7AdKX/LYo
 
-If GICD_CTLR_DS bit is zero and the NMI is non-secure, the NMI prioirty
-is higher than 0x80, otherwise it is higher than 0x0. And save NMI
-super prioirty information in hppi.superprio to deliver NMI exception.
-Since both GICR and GICD can deliver NMI, it is both necessary to check
-whether the pending irq is NMI in gicv3_redist_update_noirqset and
-gicv3_update_noirqset. And In irqbetter(), only a non-NMI with the same
-priority and a smaller interrupt number can be preempted but not NMI.
+In vCPU Interface, if the vIRQ has the superpriority property, report
+vNMI to the corresponding vPE.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
-v4:
-- Replace is_nmi with has_superprio to not a mix NMI and superpriority.
-- Update the comment in irqbetter().
-- Extract gicv3_get_priority() to avoid code repeat.
----
-v3:
-- Add missing brace
----
- hw/intc/arm_gicv3.c | 71 ++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 63 insertions(+), 8 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 14 ++++++++++++--
+ hw/intc/gicv3_internal.h  |  1 +
+ 2 files changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 0b8f79a122..1d16a53b23 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -21,7 +21,8 @@
- #include "hw/intc/arm_gicv3.h"
- #include "gicv3_internal.h"
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index afba98ad87..0141d259e4 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -465,6 +465,7 @@ void gicv3_cpuif_virt_irq_fiq_update(GICv3CPUState *cs)
+     int idx;
+     int irqlevel = 0;
+     int fiqlevel = 0;
++    int nmilevel = 0;
  
--static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
-+static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio,
-+                      bool has_superprio)
- {
-     /* Return true if this IRQ at this priority should take
-      * precedence over the current recorded highest priority
-@@ -33,11 +34,24 @@ static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
-     if (prio < cs->hppi.prio) {
-         return true;
-     }
-+
-+    /*
-+     * Current highest prioirity pending interrupt is an IRQ without
-+     * superpriority, the new IRQ with superpriority has same priority
-+     * should signal to the CPU as it have the priority higher than
-+     * the labelled 0x80 or 0x00.
-+     */
-+    if (prio == cs->hppi.prio && !cs->hppi.superprio && has_superprio) {
-+        return true;
-+    }
-+
-     /* If multiple pending interrupts have the same priority then it is an
-      * IMPDEF choice which of them to signal to the CPU. We choose to
--     * signal the one with the lowest interrupt number.
-+     * signal the one with the lowest interrupt number if they don't have
-+     * superpriority.
-      */
--    if (prio == cs->hppi.prio && irq <= cs->hppi.irq) {
-+    if (prio == cs->hppi.prio && !cs->hppi.superprio &&
-+        !has_superprio && irq <= cs->hppi.irq) {
-         return true;
-     }
-     return false;
-@@ -129,6 +143,35 @@ static uint32_t gicr_int_pending(GICv3CPUState *cs)
-     return pend;
+     idx = hppvi_index(cs);
+     trace_gicv3_cpuif_virt_update(gicv3_redist_affid(cs), idx,
+@@ -482,9 +483,17 @@ void gicv3_cpuif_virt_irq_fiq_update(GICv3CPUState *cs)
+         uint64_t lr = cs->ich_lr_el2[idx];
+ 
+         if (icv_hppi_can_preempt(cs, lr)) {
+-            /* Virtual interrupts are simple: G0 are always FIQ, and G1 IRQ */
++            /*
++             * Virtual interrupts are simple: G0 are always FIQ, and G1 are
++             * IRQ or NMI which depends on the ICH_LR<n>_EL2.NMI to have
++             * non-maskable property.
++             */
+             if (lr & ICH_LR_EL2_GROUP) {
+-                irqlevel = 1;
++                if (cs->gic->nmi_support && (lr & ICH_LR_EL2_NMI)) {
++                    nmilevel = 1;
++                } else {
++                    irqlevel = 1;
++                }
+             } else {
+                 fiqlevel = 1;
+             }
+@@ -494,6 +503,7 @@ void gicv3_cpuif_virt_irq_fiq_update(GICv3CPUState *cs)
+     trace_gicv3_cpuif_virt_set_irqs(gicv3_redist_affid(cs), fiqlevel, irqlevel);
+     qemu_set_irq(cs->parent_vfiq, fiqlevel);
+     qemu_set_irq(cs->parent_virq, irqlevel);
++    qemu_set_irq(cs->parent_vnmi, nmilevel);
  }
  
-+static bool gicv3_get_priority(GICv3CPUState *cs, bool is_redist,
-+                               uint32_t superprio, uint8_t *prio, int irq)
-+{
-+    bool has_superprio = false;
-+
-+    if (superprio) {
-+        has_superprio = true;
-+
-+        /* DS = 0 & Non-secure NMI */
-+        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS) &&
-+            ((is_redist && extract32(cs->gicr_igroupr0, irq, 1)) ||
-+             (!is_redist && gicv3_gicd_group_test(cs->gic, irq)))) {
-+            *prio = 0x80;
-+        } else {
-+            *prio = 0x0;
-+        }
-+    } else {
-+        has_superprio = false;
-+
-+        if (is_redist) {
-+            *prio = cs->gicr_ipriorityr[irq];
-+        } else {
-+            *prio = cs->gic->gicd_ipriority[irq];
-+        }
-+    }
-+
-+    return has_superprio;
-+}
-+
- /* Update the interrupt status after state in a redistributor
-  * or CPU interface has changed, but don't tell the CPU i/f.
-  */
-@@ -141,6 +184,8 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
-     uint8_t prio;
-     int i;
-     uint32_t pend;
-+    uint32_t superprio = 0;
-+    bool has_superprio = false;
- 
-     /* Find out which redistributor interrupts are eligible to be
-      * signaled to the CPU interface.
-@@ -152,10 +197,13 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
-             if (!(pend & (1 << i))) {
-                 continue;
-             }
--            prio = cs->gicr_ipriorityr[i];
--            if (irqbetter(cs, i, prio)) {
-+            superprio = extract32(cs->gicr_isuperprio, i, 1);
-+            has_superprio = gicv3_get_priority(cs, true, superprio, &prio, i);
-+
-+            if (irqbetter(cs, i, prio, has_superprio)) {
-                 cs->hppi.irq = i;
-                 cs->hppi.prio = prio;
-+                cs->hppi.superprio = has_superprio;
-                 seenbetter = true;
-             }
-         }
-@@ -168,7 +216,7 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
-     if ((cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) && cs->gic->lpi_enable &&
-         (cs->gic->gicd_ctlr & GICD_CTLR_EN_GRP1NS) &&
-         (cs->hpplpi.prio != 0xff)) {
--        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio)) {
-+        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio, false)) {
-             cs->hppi.irq = cs->hpplpi.irq;
-             cs->hppi.prio = cs->hpplpi.prio;
-             cs->hppi.grp = cs->hpplpi.grp;
-@@ -213,6 +261,8 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
-     int i;
-     uint8_t prio;
-     uint32_t pend = 0;
-+    uint32_t superprio = 0;
-+    bool has_superprio = false;
- 
-     assert(start >= GIC_INTERNAL);
-     assert(len > 0);
-@@ -240,10 +290,15 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
-              */
-             continue;
-         }
--        prio = s->gicd_ipriority[i];
--        if (irqbetter(cs, i, prio)) {
-+
-+        superprio = *gic_bmp_ptr32(s->superprio, i);
-+        superprio = superprio & (1 << (i & 0x1f));
-+        has_superprio = gicv3_get_priority(cs, false, superprio, &prio, i);
-+
-+        if (irqbetter(cs, i, prio, has_superprio)) {
-             cs->hppi.irq = i;
-             cs->hppi.prio = prio;
-+            cs->hppi.superprio = has_superprio;
-             cs->seenbetter = true;
-         }
-     }
+ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 93e56b3726..b6cb0115e7 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -242,6 +242,7 @@ FIELD(GICR_VPENDBASER, VALID, 63, 1)
+ #define ICH_LR_EL2_PRIORITY_SHIFT 48
+ #define ICH_LR_EL2_PRIORITY_LENGTH 8
+ #define ICH_LR_EL2_PRIORITY_MASK (0xffULL << ICH_LR_EL2_PRIORITY_SHIFT)
++#define ICH_LR_EL2_NMI (1ULL << 59)
+ #define ICH_LR_EL2_GROUP (1ULL << 60)
+ #define ICH_LR_EL2_HW (1ULL << 61)
+ #define ICH_LR_EL2_STATE_SHIFT 62
 -- 
 2.34.1
 

@@ -1,69 +1,69 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp224589eja;
-        Wed, 28 Feb 2024 23:43:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU/zg/Uv1IXbKk1H/txirM52DBAlRbxGFpqBmIAzmpEfiDt51Rg1klb0QmKUFb3wheXGYb5BjzZ89gssss3aanc3pVE+CKQ
-X-Google-Smtp-Source: AGHT+IHmTLtzgG6Hxj4u2FF8C/PLID/rubog1Rgzh8spCBeWdHqotRt+sgDU87Kj6h069NC/uDK3
-X-Received: by 2002:a25:6ad4:0:b0:dbf:ec4:311f with SMTP id f203-20020a256ad4000000b00dbf0ec4311fmr1310782ybc.58.1709192598481;
-        Wed, 28 Feb 2024 23:43:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709192598; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp224757eja;
+        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2NTZx7ZrnztE3Cg9nLr2siQDwyPCb1LqxeXkwUDf7VFdNIp4wDee0wQgXiT/4CppJi28tIdfyfBdQnw/IkRhTy4ktRh9g
+X-Google-Smtp-Source: AGHT+IHYLhZCb7fSE+/XcnMudHtwfzgpA74L+QO45mtebZlXYx5Vf37HuVvoseeHCx0C00nOGSwu
+X-Received: by 2002:a0d:d587:0:b0:608:28cf:3591 with SMTP id x129-20020a0dd587000000b0060828cf3591mr1467005ywd.23.1709192629372;
+        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709192629; cv=none;
         d=google.com; s=arc-20160816;
-        b=oh068m+MT01/iJhJbPKdR+nu962tCID1zaReoXCfsB7g4Thwg6pOvUC0OQbRy+50ae
-         5m63j/gN5njwjSz4+SM239zl8HQZEx6BvcWhTnnGHnPFVQK6LqulLZi3Ib/CbHxnAKfL
-         RraLnqsG0NSh5TDLA2Pqne7VdDxEQ9vcYOQsQQ//IyRTSMStJ7yt2NJqNUYaqmeTiFst
-         VjCilC+za2WuQg48GPTv8Pcs/ynblwBWLX4Jphg3Sov/IQMisE6wwrSzgth4KoTyRpqN
-         ZwQCKQTbwZf0llEuhdJcrOXpKpkF91nN4XQaergdeIjezXNe9t8pdrOc+o4kTP2WQr6B
-         pB4g==
+        b=J2QwPdoIt/70e35w9ukZ4jvCoxO+7Dg+/2csSEwggI9A1WdoyZ0peQrZzzBeChcG0y
+         rt495RYmcI2XxEB4d3ou6ikphF3A44YcYusRfmPpda+ML7fHwoUHftABRLeioVijtN60
+         5b2XFWsqn93AulD6N1GWQ8I/vDNJMK9AIPUX8gkbdlpDDTGr/52YfKwbZzQRq0iPiJNS
+         95YC3YTdGGWqbb2ADfXUDpV8lr+m3LVjpRt4uCER6WKUxVDsWCM3l/aLBuvvvMo/CNYw
+         jVrm7+A/9EmJ5Edqg6HwmVUZKQh4ZfnfLZXx7JwLb9euj/IfxN5Sm7dyBHvcxaYjBzwj
+         9Xnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Pj7k0wYh3wHW05N9gW3iprZKmGP6mAJKnIPARGDKqKo=;
+        bh=veBlh2C90/Irw4XFal3N0j8E/CjV8zoHdGEvLL1EdQY=;
         fh=UiAnrWHdzYMNrM6szngjm+ppUEiT4HPvSYef1ABH2rc=;
-        b=Nvp4YZflbLgsLWjSPick0En+5/EttfLAy95amOtG9ZpvCLwjnv59A2TdG9CIBQg/Cg
-         1VFxbDBrwiopeuifTmYi703+wpbjxeeaOAAot82RhzJ6k+iIUKSx6y2p/ybkPEe3H/jA
-         yCZ1dkxASMvESWRCUzrwFUtVCntN1StfVV1hRqQ5zQ32OQFWXWW7iyEnABfNHuboKAgv
-         V45PqjEP44XFTgM/B645RleSAOjwuaz+7lNZmdwVrJ8MeKLKCfoGPQU0P6zWxBuwyxTx
-         Dj4ePqEuKr5dT6TF60FqljEERdLkiO0Xi01/sQrdCCzcJdNYCln1FgiXmhZoaw6yYYhD
-         AkRA==;
+        b=RLbOOCWUWbiO69TSIhPm06gbxznCwbuKeScgcUxc9qpHcwMVIunr+J2GFrhuNiuEA3
+         x0SI6eHsc8g2j47jCsqAf84+DpOumd7Pj8OEA6PWi9spl3CuiW7jStEfMw4/3wnxtYD0
+         e6lw/6XcgVSqMfv7p0KJ5MHE8sirug6Nz3KbFRhRGtb4tuW+kha+QLjOGqy4/tcgSE31
+         XsMNc03OD9q9jdDTi1gzotPQqT3vnCooqw2uf+PtuOVySD5KAEplxho+T8IuCrefJU4q
+         6dagK9dsMCA0/i4G2kzuSyMxbICSjadp0jhWsKbgKB8cxbpQJi7IEdebA6YFIN72V9Ci
+         bMFg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j6-20020a05622a038600b0042d24a32838si928150qtx.54.2024.02.28.23.43.18
+        by mx.google.com with ESMTPS id jy11-20020a05622a818b00b0042c5ff0e29asi818302qtb.740.2024.02.28.23.43.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 23:43:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfb43-0001iV-Gw; Thu, 29 Feb 2024 02:42:47 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rfb4B-0001je-Pv; Thu, 29 Feb 2024 02:42:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfb40-0001hz-NX; Thu, 29 Feb 2024 02:42:44 -0500
+ id 1rfb44-0001iZ-94; Thu, 29 Feb 2024 02:42:48 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfb3x-0005bF-3U; Thu, 29 Feb 2024 02:42:44 -0500
+ id 1rfb41-0005bF-IJ; Thu, 29 Feb 2024 02:42:47 -0500
 Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
  (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 29 Feb
- 2024 15:42:35 +0800
+ 2024 15:42:36 +0800
 Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Feb 2024 15:42:35 +0800
+ Transport; Thu, 29 Feb 2024 15:42:36 +0800
 To: <clg@kaod.org>, <peter.maydell@linaro.org>, <andrew@codeconstruct.com.au>, 
  <joel@jms.id.au>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 1/8] aspeed/wdt: Add AST2700 support
-Date: Thu, 29 Feb 2024 15:42:27 +0800
-Message-ID: <20240229074234.976164-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 2/8] aspeed/sli: Add AST2700 support
+Date: Thu, 29 Feb 2024 15:42:28 +0800
+Message-ID: <20240229074234.976164-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240229074234.976164-1-jamin_lin@aspeedtech.com>
 References: <20240229074234.976164-1-jamin_lin@aspeedtech.com>
@@ -82,92 +82,293 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zTfoXrQb7GYH
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CG0zQcUYsYn0
 
-AST2700 wdt controller is similiar to AST2600's wdt, but
-the AST2700 has 8 watchdogs, and they each have a 0x80 of registers.
-Introduce ast2700 object class and increse the number of regs(offset) of
-ast2700 model.
+AST2700 SLI engine is designed to accelerate the
+throughput between cross-die connections.
+It have CPU_SLI at CPU die and IO_SLI at IO die.
+
+Introduce new ast2700_sli and ast2700_sliio class
+with instance_init and realize handlers.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++++
- include/hw/watchdog/wdt_aspeed.h |  3 ++-
- 2 files changed, 26 insertions(+), 1 deletion(-)
+ hw/misc/aspeed_sli.c         | 179 +++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build          |   3 +-
+ hw/misc/trace-events         |   7 ++
+ include/hw/misc/aspeed_sli.h |  32 +++++++
+ 4 files changed, 220 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/aspeed_sli.c
+ create mode 100644 include/hw/misc/aspeed_sli.h
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index d70b656f8e..75685c5647 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -422,12 +422,36 @@ static const TypeInfo aspeed_1030_wdt_info = {
-     .class_init = aspeed_1030_wdt_class_init,
- };
- 
-+static void aspeed_2700_wdt_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
+diff --git a/hw/misc/aspeed_sli.c b/hw/misc/aspeed_sli.c
+new file mode 100644
+index 0000000000..4af42f145c
+--- /dev/null
++++ b/hw/misc/aspeed_sli.c
+@@ -0,0 +1,179 @@
++/*
++ * ASPEED SLI Controller
++ *
++ * Copyright (C) 2024 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
 +
-+    dc->desc = "ASPEED 2700 Watchdog Controller";
-+    awc->iosize = 0x80;
-+    awc->ext_pulse_width_mask = 0xfffff; /* TODO */
-+    awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
-+    awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
-+    awc->wdt_reload = aspeed_wdt_reload_1mhz;
-+    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
-+    awc->default_status = 0x014FB180;
-+    awc->default_reload_value = 0x014FB180;
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "hw/qdev-properties.h"
++#include "hw/misc/aspeed_sli.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++#define SLI_REGION_SIZE 0x500
++#define TO_REG(addr) ((addr) >> 2)
++
++static uint64_t aspeed_sli_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    AspeedSLIState *s = ASPEED_SLI(opaque);
++    int reg = TO_REG(addr);
++
++    if (reg >= ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return 0;
++    }
++
++    trace_aspeed_sli_read(addr, size, s->regs[reg]);
++    return s->regs[reg];
 +}
 +
-+static const TypeInfo aspeed_2700_wdt_info = {
-+    .name = TYPE_ASPEED_2700_WDT,
-+    .parent = TYPE_ASPEED_WDT,
-+    .instance_size = sizeof(AspeedWDTState),
-+    .class_init = aspeed_2700_wdt_class_init,
++static void aspeed_sli_write(void *opaque, hwaddr addr, uint64_t data,
++                              unsigned int size)
++{
++    AspeedSLIState *s = ASPEED_SLI(opaque);
++    int reg = TO_REG(addr);
++
++    if (reg >= ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return;
++    }
++
++    trace_aspeed_sli_write(addr, size, data);
++    s->regs[reg] = data;
++}
++
++static uint64_t aspeed_sliio_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    AspeedSLIState *s = ASPEED_SLI(opaque);
++    int reg = TO_REG(addr);
++
++    if (reg >= ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return 0;
++    }
++
++    trace_aspeed_sliio_read(addr, size, s->regs[reg]);
++    return s->regs[reg];
++}
++
++static void aspeed_sliio_write(void *opaque, hwaddr addr, uint64_t data,
++                              unsigned int size)
++{
++    AspeedSLIState *s = ASPEED_SLI(opaque);
++    int reg = TO_REG(addr);
++
++    if (reg >= ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return;
++    }
++
++    trace_aspeed_sliio_write(addr, size, data);
++    s->regs[reg] = data;
++}
++
++static const MemoryRegionOps aspeed_sli_ops = {
++    .read = aspeed_sli_read,
++    .write = aspeed_sli_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 4,
++    },
 +};
 +
- static void wdt_aspeed_register_types(void)
- {
-     type_register_static(&aspeed_wdt_info);
-     type_register_static(&aspeed_2400_wdt_info);
-     type_register_static(&aspeed_2500_wdt_info);
-     type_register_static(&aspeed_2600_wdt_info);
-+    type_register_static(&aspeed_2700_wdt_info);
-     type_register_static(&aspeed_1030_wdt_info);
- }
++static const MemoryRegionOps aspeed_sliio_ops = {
++    .read = aspeed_sliio_read,
++    .write = aspeed_sliio_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 4,
++    },
++};
++
++static void aspeed_sli_realize(DeviceState *dev, Error **errp)
++{
++    AspeedSLIState *s = ASPEED_SLI(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sli_ops, s,
++                          TYPE_ASPEED_SLI, SLI_REGION_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void aspeed_sliio_realize(DeviceState *dev, Error **errp)
++{
++    AspeedSLIState *s = ASPEED_SLI(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sliio_ops, s,
++                          TYPE_ASPEED_SLI, SLI_REGION_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void aspeed_sli_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "Aspeed SLI Controller";
++    dc->realize = aspeed_sli_realize;
++}
++
++static const TypeInfo aspeed_sli_info = {
++    .name          = TYPE_ASPEED_SLI,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedSLIState),
++    .class_init    = aspeed_sli_class_init,
++    .class_size    = sizeof(AspeedSLIClass),
++    .abstract      = true,
++};
++
++static void aspeed_2700_sli_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "AST2700 SLI Controller";
++}
++
++static void aspeed_2700_sliio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "AST2700 I/O SLI Controller";
++    dc->realize = aspeed_sliio_realize;
++}
++
++static const TypeInfo aspeed_2700_sli_info = {
++    .name           = TYPE_ASPEED_2700_SLI,
++    .parent         = TYPE_ASPEED_SLI,
++    .class_init     = aspeed_2700_sli_class_init,
++};
++
++static const TypeInfo aspeed_2700_sliio_info = {
++    .name           = TYPE_ASPEED_2700_SLIIO,
++    .parent         = TYPE_ASPEED_SLI,
++    .class_init     = aspeed_2700_sliio_class_init,
++};
++
++static void aspeed_sli_register_types(void)
++{
++    type_register_static(&aspeed_sli_info);
++    type_register_static(&aspeed_2700_sli_info);
++    type_register_static(&aspeed_2700_sliio_info);
++}
++
++type_init(aspeed_sli_register_types);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 746686835b..790f05525a 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -137,7 +137,8 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_sbc.c',
+   'aspeed_sdmc.c',
+   'aspeed_xdma.c',
+-  'aspeed_peci.c'))
++  'aspeed_peci.c',
++  'aspeed_sli.c'))
  
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
-index e90ef86651..830b0a7936 100644
---- a/include/hw/watchdog/wdt_aspeed.h
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -19,9 +19,10 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
- #define TYPE_ASPEED_2400_WDT TYPE_ASPEED_WDT "-ast2400"
- #define TYPE_ASPEED_2500_WDT TYPE_ASPEED_WDT "-ast2500"
- #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
-+#define TYPE_ASPEED_2700_WDT TYPE_ASPEED_WDT "-ast2700"
- #define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
- 
--#define ASPEED_WDT_REGS_MAX        (0x30 / 4)
-+#define ASPEED_WDT_REGS_MAX        (0x80 / 4)
- 
- struct AspeedWDTState {
-     /*< private >*/
+ system_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 5f5bc92222..07010a7ea6 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -341,3 +341,10 @@ djmemc_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRI
+ # iosb.c
+ iosb_read(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
+ iosb_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
++
++# aspeed_sli.c
++aspeed_sli_write(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_sli_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_sliio_write(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_sliio_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++
+diff --git a/include/hw/misc/aspeed_sli.h b/include/hw/misc/aspeed_sli.h
+new file mode 100644
+index 0000000000..15892950e2
+--- /dev/null
++++ b/include/hw/misc/aspeed_sli.h
+@@ -0,0 +1,32 @@
++/*
++ * ASPEED SLI Controller
++ *
++ * Copyright (C) 2024 ASPEED Technology Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++#ifndef ASPEED_SLI_H
++#define ASPEED_SLI_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_SLI "aspeed.sli"
++#define TYPE_ASPEED_2700_SLI TYPE_ASPEED_SLI "-ast2700"
++#define TYPE_ASPEED_2700_SLIIO TYPE_ASPEED_SLI "io" "-ast2700"
++OBJECT_DECLARE_TYPE(AspeedSLIState, AspeedSLIClass, ASPEED_SLI)
++
++#define ASPEED_SLI_NR_REGS  (0x500 >> 2)
++
++struct AspeedSLIState {
++    SysBusDevice parent;
++    MemoryRegion iomem;
++
++    uint32_t regs[ASPEED_SLI_NR_REGS];
++};
++
++struct AspeedSLIClass {
++    SysBusDeviceClass parent_class;
++};
++
++#endif /* ASPEED_SLI_H */
 -- 
 2.25.1
 

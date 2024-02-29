@@ -1,374 +1,302 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp224757eja;
-        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW2NTZx7ZrnztE3Cg9nLr2siQDwyPCb1LqxeXkwUDf7VFdNIp4wDee0wQgXiT/4CppJi28tIdfyfBdQnw/IkRhTy4ktRh9g
-X-Google-Smtp-Source: AGHT+IHYLhZCb7fSE+/XcnMudHtwfzgpA74L+QO45mtebZlXYx5Vf37HuVvoseeHCx0C00nOGSwu
-X-Received: by 2002:a0d:d587:0:b0:608:28cf:3591 with SMTP id x129-20020a0dd587000000b0060828cf3591mr1467005ywd.23.1709192629372;
-        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709192629; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp228361eja;
+        Wed, 28 Feb 2024 23:53:48 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWWCZ1VXvdE7/82Shga4IMBM5eF4QgdFcA7BYs/pjtVNZldPY9/mCwFAQU5//XpP3h3jWJ9IqOyV3hGBZ0uAXZRkFtRCTSr
+X-Google-Smtp-Source: AGHT+IEr2wj6Caw1CN+GyDP4BxO+ACyArGp5f/fn07+T1jVPAu2vj4nzhYMjJcrhGbQaiC8d97E1
+X-Received: by 2002:a37:e109:0:b0:787:f8c3:dda7 with SMTP id c9-20020a37e109000000b00787f8c3dda7mr1454238qkm.24.1709193228510;
+        Wed, 28 Feb 2024 23:53:48 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709193228; cv=pass;
         d=google.com; s=arc-20160816;
-        b=J2QwPdoIt/70e35w9ukZ4jvCoxO+7Dg+/2csSEwggI9A1WdoyZ0peQrZzzBeChcG0y
-         rt495RYmcI2XxEB4d3ou6ikphF3A44YcYusRfmPpda+ML7fHwoUHftABRLeioVijtN60
-         5b2XFWsqn93AulD6N1GWQ8I/vDNJMK9AIPUX8gkbdlpDDTGr/52YfKwbZzQRq0iPiJNS
-         95YC3YTdGGWqbb2ADfXUDpV8lr+m3LVjpRt4uCER6WKUxVDsWCM3l/aLBuvvvMo/CNYw
-         jVrm7+A/9EmJ5Edqg6HwmVUZKQh4ZfnfLZXx7JwLb9euj/IfxN5Sm7dyBHvcxaYjBzwj
-         9Xnw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=veBlh2C90/Irw4XFal3N0j8E/CjV8zoHdGEvLL1EdQY=;
-        fh=UiAnrWHdzYMNrM6szngjm+ppUEiT4HPvSYef1ABH2rc=;
-        b=RLbOOCWUWbiO69TSIhPm06gbxznCwbuKeScgcUxc9qpHcwMVIunr+J2GFrhuNiuEA3
-         x0SI6eHsc8g2j47jCsqAf84+DpOumd7Pj8OEA6PWi9spl3CuiW7jStEfMw4/3wnxtYD0
-         e6lw/6XcgVSqMfv7p0KJ5MHE8sirug6Nz3KbFRhRGtb4tuW+kha+QLjOGqy4/tcgSE31
-         XsMNc03OD9q9jdDTi1gzotPQqT3vnCooqw2uf+PtuOVySD5KAEplxho+T8IuCrefJU4q
-         6dagK9dsMCA0/i4G2kzuSyMxbICSjadp0jhWsKbgKB8cxbpQJi7IEdebA6YFIN72V9Ci
-         bMFg==;
+        b=XJU1HTNs+ht5FajpIfENJX7aJ9f8PqYdu8KpfRZCnPtesEpAa5OoWkCRDHFKW8feCa
+         6Z1sm+x97bQEMRrQEZM1s9CyAGifn3644pAQNQCyymkb10yKV/4juyoRnubOYNeLfbBq
+         fApP2JKbAMubdXjEHyq32Fuliqu1fcXdmKzkqu7uzpCaNqsYg8D9Cg0JgvxiVaDyC4Wo
+         x/nbB08ZWarG76Lo+4u+ih6nY8SvM4Pe5ntVMxu1X5nmm5+rF33yUtOW62BlMeLGk1iG
+         JAgBmqblPpiKNfpO/vz7CvsGO7glqLS8Wja4hkzjPquvLju5KxSHoP/4MjzZHm0+1Sjk
+         FvWQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=Pf7TGjL0wbQlIe0OFPDM2a/OY7A+fWhyVDiF/jBStyc=;
+        fh=d6RNHi34WRP4lZNfgveKQDWUn1qeeVXKvn+xPIqUDDY=;
+        b=JnjhN4V6IHquExIvRh+6B7RM4IhHb5CBm+Zm7YOkkjiBYGlnh2svdmlneS1hJZpNxB
+         AS99PME1LYNo2wQ2ULxI0D6GyH2myg0yLE8IH2w1ozZ5t7eN10kdZzyduyscgjYqef4x
+         8srmtHCOs4FaTeOm/BdAt6C2Tw+45mJNjTp45kDLb5wj74RjLH+xRg0BJnW+uyF4g5OW
+         DUMYjy5LYoRQjnFQEtGKB3XKiL6kmtG7BIqh8qoN8doKhozE7RpjNUBGYZ8zzAxPTl7a
+         Ty/1+Gr6qsFHwEPo5Imuh+pPrqFstI2hcAe9TdgF3QOMUhf9tU9mzkKy2lmput2LvVk7
+         qMDA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=WFTKk3l4;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jy11-20020a05622a818b00b0042c5ff0e29asi818302qtb.740.2024.02.28.23.43.49
+        by mx.google.com with ESMTPS id f2-20020a05620a15a200b00787b4fabbeasi890919qkk.59.2024.02.28.23.53.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 23:43:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Feb 2024 23:53:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=WFTKk3l4;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfb4B-0001je-Pv; Thu, 29 Feb 2024 02:42:55 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfbEV-0007Rh-84; Thu, 29 Feb 2024 02:53:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfb44-0001iZ-94; Thu, 29 Feb 2024 02:42:48 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ id 1rfbES-0007RA-MN; Thu, 29 Feb 2024 02:53:32 -0500
+Received: from mail-tyzapc01on20701.outbound.protection.outlook.com
+ ([2a01:111:f403:2011::701]
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rfb41-0005bF-IJ; Thu, 29 Feb 2024 02:42:47 -0500
-Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
- (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 29 Feb
- 2024 15:42:36 +0800
-Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Feb 2024 15:42:36 +0800
-To: <clg@kaod.org>, <peter.maydell@linaro.org>, <andrew@codeconstruct.com.au>, 
- <joel@jms.id.au>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
+ id 1rfbEP-0000Mb-VA; Thu, 29 Feb 2024 02:53:32 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Tz5lsplfPjGnYiuHXMv9Y2c34YsonhrNlFsCXbAAG7cSSgRKxyXjDnPMY38Vb6iFiG1c3iMyxKXOhg6+qlkM+1M9pL7ZiM+hpIijX5cIG77hsQIcI9DXChj1T+4XoyIc7RFG/bwCpjDJBoGDeg5KfdILplwoN4xYyGcZzbfdkX+khSMIrs/DXrQfI8V0PRFjPnXwaRySF/dKsMJmXWEE+xAoXM/RVoiTkWn3OTOxQBi/v1x+qLDpkfup5A+4ibZQzgLxPn0nVUU2yLhobUzwZW7YBeVq+xnoifU/QFEPuwDiwXX3Pm8ATTxmYQEFZXYiT9k9Roig478aCDaayLtyMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Pf7TGjL0wbQlIe0OFPDM2a/OY7A+fWhyVDiF/jBStyc=;
+ b=ICErPIYQYK7fixM7fN8t7nyWIxZ7UkwKVyJ0eiVjeLUWRU4MnwK6Tazj152B5HArrtC63mOQ46GgBGTWws/0NNEz7N2RLRY0KQpRrS1PEAm7yh1OtmryP+wHc3ik7ePSZTENu6odp9e3lUnfKExoA3MLBwKbbuW+mBYi1dd6ry6ss5fmgBd5YMGXz6k24x0shz2w08miW0LWZzJbFNtYL/7mxP3xwXRoPpbBff2AdQmipe8nWaRHnZKXrc46CfPX21TWIQTGYRal0W2erm8fQlIep4XhHRyPEzWTzRwjQL8j2lEhQfpdQxfjRwayHYIUW5p1VGXIfyTYgjYRCVaktg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Pf7TGjL0wbQlIe0OFPDM2a/OY7A+fWhyVDiF/jBStyc=;
+ b=WFTKk3l4RJ4U040nduYhzWbesj0o9H9VUNJYGwBtbHoWFXreZH1X03hnbCIPcpHdCjU6ETN3gAZ2eyytHnX9mdslvP76pLVU5QwZBPcLdC4vuMRHd2c1vVdsWpv/vHRal85wCEV0OyZFfpSVs9WVu51tH+3AbGqEk7DdmeRkiPQ1IpshNHmRYR/RtIZyO5GapJZwGmCKf1qDFZ5oyO02qSAr1OezKBgcto0IYzeEhSn4XVtPlUXpBSsWJgEa2x9dtPJWZYujcYDiTaQgfKfa4jUogRnrP/PbSa5RwEZIfv+pWR/MaYC1flOooHyYKGLBpB08UC5TDX/dQtC3OjxtPw==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ JH0PR06MB6415.apcprd06.prod.outlook.com (2603:1096:990:14::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7316.31; Thu, 29 Feb 2024 07:53:22 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::14c9:526b:24b5:109d]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::14c9:526b:24b5:109d%4]) with mapi id 15.20.7316.039; Thu, 29 Feb 2024
+ 07:53:22 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, "clg@kaod.org" <clg@kaod.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "andrew@codeconstruct.com.au" <andrew@codeconstruct.com.au>, "joel@jms.id.au"
+ <joel@jms.id.au>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 2/8] aspeed/sli: Add AST2700 support
-Date: Thu, 29 Feb 2024 15:42:28 +0800
-Message-ID: <20240229074234.976164-3-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240229074234.976164-1-jamin_lin@aspeedtech.com>
+Subject: RE: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
+Thread-Topic: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
+Thread-Index: AQHaauLiedApTYd2DEatyfju4PLRdbEg8W0g
+Date: Thu, 29 Feb 2024 07:53:22 +0000
+Message-ID: <SI2PR06MB5041B1EA856220BB77B8809DFC5F2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 References: <20240229074234.976164-1-jamin_lin@aspeedtech.com>
+ <20240229074234.976164-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240229074234.976164-9-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|JH0PR06MB6415:EE_
+x-ms-office365-filtering-correlation-id: 4b839f0b-d15a-493b-bff1-08dc38fb8087
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Jpmf2noSSBa7+mSsGpwLJeYCEdo0blxSO5UPNsFZkUAgBTdX7Njw6kAEnfFtvgcipU0HIElOv/1oc9NCZWBTVrpT5zBe/Usznt7cPXmu4nOOLv9GbSwqzC1NtMgPSB4FP1oczzXzu135vS0TfAFpmwWf+fAu5zGHNWmFZG2XpTKhFDvNY6v9SjJqegLdH/tAF02iQ6T04gncDNHcCNxAV+/rDuEqo+ZjGpZKxWlTDA+4t2I0SKuqNlArYHEcUyfJlnRQShaOE7OFWJMxz+Tn65RnOKAn2ajUhfeNpG8i/QnmDIkZyvZw+zSKqHWmnFvUrOY8/A5vDQX2SLa9gyyQ9gSZ1YvdclkL4RyR9URKlpnca5qZQxtGn3QwNj4WYaIn14PMqSKO5Gyia5d/MET0chMXuX5izQHvN/EOsgBewqcf1IPL+YjRR8Uu5oyakdWl6BqhYmgN4lLu5IaN84h6lW9kxcgxksS5AOuEDOJj/58U3ezC7sh5tVZykBsiFy5OkkoywINxWBcjk1AATFded1OJbaASUhkSbDpxyTfWbKIJtYSbDI1e1SUFaPH3cS3hhi0s2jgJFNudXgLmOQ0rLY2TugWKA16nVPpi2rhI/C6xMp/YJHyGsaV2DesgUP3wFIPGhViAm1ipjrmdC2ZaHhlhRO/4xJRbEDtyctgC1GI=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(38070700009); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?nYosMpGT34giyjKOFUkMU0tOE3YQGqKPcdXsvtjmyvpdAuakhwD8zfMQ1V2L?=
+ =?us-ascii?Q?mN1aW9O7aMbguJG5TVqpfHlTeBWtLcNYK7nGpkWDPdM2LDi/8Y9igIhggUYf?=
+ =?us-ascii?Q?4CNsf/D7KWVf2p2x2B9xgU2j+GiXfzASdCiuQLokw0dxwgQuDPV1YTCvjkLi?=
+ =?us-ascii?Q?qCawp4SPk8U/uzMdGYiWCvdcZIJ7fXIDSwqrI3JeEjy2L48Ei9SsyoQu14rA?=
+ =?us-ascii?Q?1Xbksr+o5Hm61AAi474e//MjbnuIZ/9UtsnzTjKWPDttm3B+TvvtrNGfcJNk?=
+ =?us-ascii?Q?Fndwa0qPSvNQizQljYXMaq+hljp+fm7olwJwO5bfBmnFC1TLg5JayJZeD8Xg?=
+ =?us-ascii?Q?McSYir3NLJFnaLHcXYmuNhq/x4lbyzOucoWclRYUpZ7SEeOp/seeN9+HHFDZ?=
+ =?us-ascii?Q?6hAX/LcPaSS89bA2aYu+2Rc97oGL4bgqHQpFwtfBYVo5tdsDzW3HrC+pVqky?=
+ =?us-ascii?Q?CO7ZilCGm/uDdh04iTu0sAnAv+CYq/zZXFyP+zAl/XbSU7WnmO4r9qI/OAXQ?=
+ =?us-ascii?Q?QUZ4ubUTRH2oQNrU+9pHRXD4SVm3lT7IiEpjoZkfH2Dvj4cRSR3TvTG9z5zM?=
+ =?us-ascii?Q?pH4FLxlFhgP48dpEDfnZ/kOns8Y5ptdQQir/zLXRCWDJP1BoDSMhd0Wh0YJS?=
+ =?us-ascii?Q?LNW9KC6/uGlP8ETD6yMvUHq63O7WwkrV1mjUpXlW+b9BfSlfsa/rHm+rH9Sw?=
+ =?us-ascii?Q?lebCKBTbl/u0Vf8qODifCkOClKNjd4m9dRbfkWetWh4GUBOtrIGOPPWeSDWj?=
+ =?us-ascii?Q?Vt0LU/GynQpt7B9kgySAtTSpuqayFj//tTBNPhUdbFA+k5/IueNnQGkP7AGu?=
+ =?us-ascii?Q?uQXLMYqQ/4MGMzs3ZzdZBfTKk7VGoeNu5gQ5sn+0Si4LrgluGdf7SmOnD/00?=
+ =?us-ascii?Q?bdcTdGzGUrPRqD0RnhwYbOWrd6TGyXc+AJu4pLVz3QgN0C4fdsxGcdxJpRTE?=
+ =?us-ascii?Q?sZhb9TyV1Pg3ia3ctzZV8WZ3Pds8FgRZ/AnW9ZIMULCY2qPVq2NrPycHjQUL?=
+ =?us-ascii?Q?5RTQ8yOftT+xdwzYXAi8fkAu+9KnbaEak3LXisHzq+TxkcgyGduYxbwXlmOp?=
+ =?us-ascii?Q?JYEjHh0HW3s8v/oFQqVi8TPD2oLK88YlVn6hAWfZKr7XYfLAIivYzEqQZD4+?=
+ =?us-ascii?Q?aA2Zkqa21pdbwpqSyb3aG0HSgC+cjbSH9FutZS9YSgbhlMb8PzxPPJ+JvDTb?=
+ =?us-ascii?Q?qZKGe72lPYmMUa+AfifmOJF/jihiIrsVtTfA96maO8PHWh2XCAh/TJJTgZON?=
+ =?us-ascii?Q?rFwWhQILKyn2vuXv2avNdQpoFa9gex2Tk0u17uev4mG/TVyupmS92MP8cSQk?=
+ =?us-ascii?Q?4oOKi0NUW5omhrCcHczxa/FnYy4ts7ocB1E+4qa86CNKXspbvrL2uRUrw7d+?=
+ =?us-ascii?Q?ijKMQYFiM7qCjVe9VphvX7c6r+oedYCBIjDb3msWXCbU1Ixo15OVQmJScn1M?=
+ =?us-ascii?Q?MfeauhPKyv3YFlOum19OyCoN/j87/b9Hyz2dk8V2ZmTT8OhV1ABL8DDulCFX?=
+ =?us-ascii?Q?ZWo1o0nWiNENKxbNblxLzjyQ+5yrR2rHPwKoOauImg0DkzpRkB5TMlEXeCOP?=
+ =?us-ascii?Q?OoIuPUy3FWjQ6VHOW0sJE4C4Wzk+o8agOR0094vT?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=twmbx02.aspeed.com;
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4b839f0b-d15a-493b-bff1-08dc38fb8087
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Feb 2024 07:53:22.3706 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: am+RvT4cnKf1T0KYY4nDe0dvecqE5akw3R7fT3JiHRS+VpMPTT6DBM9wF/hLIE7qJm8E1FNDgumIdnTtDq7Dc5n0AOpy4K3cHxQSNgzMv24=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB6415
+Received-SPF: pass client-ip=2a01:111:f403:2011::701;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CG0zQcUYsYn0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RCi7ucowUtd8
 
-AST2700 SLI engine is designed to accelerate the
-throughput between cross-die connections.
-It have CPU_SLI at CPU die and IO_SLI at IO die.
+> -----Original Message-----
+> From: Jamin Lin <jamin_lin@aspeedtech.com>
+> Sent: Thursday, February 29, 2024 3:43 PM
+> To: clg@kaod.org; peter.maydell@linaro.org; andrew@codeconstruct.com.au;
+> joel@jms.id.au; qemu-arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: Troy Lee <troy_lee@aspeedtech.com>; Jamin Lin
+> <jamin_lin@aspeedtech.com>; Yunlin Tang <yunlin.tang@aspeedtech.com>
+> Subject: [PATCH v1 8/8] aspeed: Add an AST2700 eval board
+>=20
+Hi all,
 
-Introduce new ast2700_sli and ast2700_sliio class
-with instance_init and realize handlers.
+I tried to send the patch series to support AST2700 but I encountered some =
+patches
+were rejected by server IP 211.20.114.70.
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/misc/aspeed_sli.c         | 179 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   3 +-
- hw/misc/trace-events         |   7 ++
- include/hw/misc/aspeed_sli.h |  32 +++++++
- 4 files changed, 220 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/aspeed_sli.c
- create mode 100644 include/hw/misc/aspeed_sli.h
+Error Log:
+qemu-devel@nongnu.org
+eggs.gnu.org
+Remote Server returned '550-[SPF] 211.20.114.70 is not allowed to send mail=
+ from aspeedtech.com. 550 Please see http://www.openspf.org/Why?scope=3Dmfr=
+om;identity=3Djamin_lin@aspeedtech.com;ip=3D211.20.114.70'
+qemu-arm@nongnu.org
+eggs.gnu.org
+Remote Server returned '550-[SPF] 211.20.114.70 is not allowed to send mail=
+ from aspeedtech.com. 550 Please see http://www.openspf.org/Why?scope=3Dmfr=
+om;identity=3Djamin_lin@aspeedtech.com;ip=3D211.20.114.70
 
-diff --git a/hw/misc/aspeed_sli.c b/hw/misc/aspeed_sli.c
-new file mode 100644
-index 0000000000..4af42f145c
---- /dev/null
-+++ b/hw/misc/aspeed_sli.c
-@@ -0,0 +1,179 @@
-+/*
-+ * ASPEED SLI Controller
-+ *
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/aspeed_sli.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+#define SLI_REGION_SIZE 0x500
-+#define TO_REG(addr) ((addr) >> 2)
-+
-+static uint64_t aspeed_sli_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(opaque);
-+    int reg = TO_REG(addr);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        return 0;
-+    }
-+
-+    trace_aspeed_sli_read(addr, size, s->regs[reg]);
-+    return s->regs[reg];
-+}
-+
-+static void aspeed_sli_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(opaque);
-+    int reg = TO_REG(addr);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        return;
-+    }
-+
-+    trace_aspeed_sli_write(addr, size, data);
-+    s->regs[reg] = data;
-+}
-+
-+static uint64_t aspeed_sliio_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(opaque);
-+    int reg = TO_REG(addr);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        return 0;
-+    }
-+
-+    trace_aspeed_sliio_read(addr, size, s->regs[reg]);
-+    return s->regs[reg];
-+}
-+
-+static void aspeed_sliio_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(opaque);
-+    int reg = TO_REG(addr);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        return;
-+    }
-+
-+    trace_aspeed_sliio_write(addr, size, data);
-+    s->regs[reg] = data;
-+}
-+
-+static const MemoryRegionOps aspeed_sli_ops = {
-+    .read = aspeed_sli_read,
-+    .write = aspeed_sli_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static const MemoryRegionOps aspeed_sliio_ops = {
-+    .read = aspeed_sliio_read,
-+    .write = aspeed_sliio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_sli_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sli_ops, s,
-+                          TYPE_ASPEED_SLI, SLI_REGION_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_sliio_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSLIState *s = ASPEED_SLI(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sliio_ops, s,
-+                          TYPE_ASPEED_SLI, SLI_REGION_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_sli_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "Aspeed SLI Controller";
-+    dc->realize = aspeed_sli_realize;
-+}
-+
-+static const TypeInfo aspeed_sli_info = {
-+    .name          = TYPE_ASPEED_SLI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedSLIState),
-+    .class_init    = aspeed_sli_class_init,
-+    .class_size    = sizeof(AspeedSLIClass),
-+    .abstract      = true,
-+};
-+
-+static void aspeed_2700_sli_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "AST2700 SLI Controller";
-+}
-+
-+static void aspeed_2700_sliio_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "AST2700 I/O SLI Controller";
-+    dc->realize = aspeed_sliio_realize;
-+}
-+
-+static const TypeInfo aspeed_2700_sli_info = {
-+    .name           = TYPE_ASPEED_2700_SLI,
-+    .parent         = TYPE_ASPEED_SLI,
-+    .class_init     = aspeed_2700_sli_class_init,
-+};
-+
-+static const TypeInfo aspeed_2700_sliio_info = {
-+    .name           = TYPE_ASPEED_2700_SLIIO,
-+    .parent         = TYPE_ASPEED_SLI,
-+    .class_init     = aspeed_2700_sliio_class_init,
-+};
-+
-+static void aspeed_sli_register_types(void)
-+{
-+    type_register_static(&aspeed_sli_info);
-+    type_register_static(&aspeed_2700_sli_info);
-+    type_register_static(&aspeed_2700_sliio_info);
-+}
-+
-+type_init(aspeed_sli_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 746686835b..790f05525a 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -137,7 +137,8 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_sbc.c',
-   'aspeed_sdmc.c',
-   'aspeed_xdma.c',
--  'aspeed_peci.c'))
-+  'aspeed_peci.c',
-+  'aspeed_sli.c'))
- 
- system_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 5f5bc92222..07010a7ea6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -341,3 +341,10 @@ djmemc_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRI
- # iosb.c
- iosb_read(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
- iosb_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
-+
-+# aspeed_sli.c
-+aspeed_sli_write(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_sli_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_sliio_write(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_sliio_read(uint64_t offset, unsigned int size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+
-diff --git a/include/hw/misc/aspeed_sli.h b/include/hw/misc/aspeed_sli.h
-new file mode 100644
-index 0000000000..15892950e2
---- /dev/null
-+++ b/include/hw/misc/aspeed_sli.h
-@@ -0,0 +1,32 @@
-+/*
-+ * ASPEED SLI Controller
-+ *
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+#ifndef ASPEED_SLI_H
-+#define ASPEED_SLI_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_SLI "aspeed.sli"
-+#define TYPE_ASPEED_2700_SLI TYPE_ASPEED_SLI "-ast2700"
-+#define TYPE_ASPEED_2700_SLIIO TYPE_ASPEED_SLI "io" "-ast2700"
-+OBJECT_DECLARE_TYPE(AspeedSLIState, AspeedSLIClass, ASPEED_SLI)
-+
-+#define ASPEED_SLI_NR_REGS  (0x500 >> 2)
-+
-+struct AspeedSLIState {
-+    SysBusDevice parent;
-+    MemoryRegion iomem;
-+
-+    uint32_t regs[ASPEED_SLI_NR_REGS];
-+};
-+
-+struct AspeedSLIClass {
-+    SysBusDeviceClass parent_class;
-+};
-+
-+#endif /* ASPEED_SLI_H */
--- 
-2.25.1
+Did you encounter the same errors before?
+My send email command as following.
+git send-email=20
+--cc troy_lee@aspeedtech.com=20
+--cc jamin_lin@aspeedtech.com=20
+--cc yunlin.tang@aspeedtech.com=20
+--to-cmd "./scripts/get_maintainer.pl ../v1-patch/*.patch" ../v1-patch/*.pa=
+tch
+
+Thanks-Jamin
+
+> AST2700 CPU is ARM Cortex-A35 which is 64 bits.
+> Add TARGET_AARCH64 to build this machine.
+>=20
+> According to the design of ast2700, it has a bootmcu(riscv-32) which is u=
+sed
+> for executing SPL.
+> Then, CPUs(cortex-a35) execute u-boot, kernel and rofs.
+>=20
+> Currently, qemu not support emulate two CPU architectures at the same
+> machine. Therefore, qemu will only support to emulate CPU(cortex-a35) sid=
+e
+> for ast2700
+>=20
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>  hw/arm/aspeed.c | 32 ++++++++++++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+>=20
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c index
+> 8854581ca8..4544026d14 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -178,6 +178,12 @@ struct AspeedMachineState {  #define
+> AST2600_EVB_HW_STRAP1 0x000000C0  #define AST2600_EVB_HW_STRAP2
+> 0x00000003
+>=20
+> +#ifdef TARGET_AARCH64
+> +/* AST2700 evb hardware value */
+> +#define AST2700_EVB_HW_STRAP1 0x000000C0 #define
+> AST2700_EVB_HW_STRAP2
+> +0x00000003 #endif
+> +
+>  /* Tacoma hardware value */
+>  #define TACOMA_BMC_HW_STRAP1  0x00000000  #define
+> TACOMA_BMC_HW_STRAP2  0x00000040 @@ -1588,6 +1594,26 @@ static
+> void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+>      aspeed_machine_class_init_cpus_defaults(mc);
+>  }
+>=20
+> +#ifdef TARGET_AARCH64
+> +static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void
+> +*data) {
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc =3D "Aspeed AST2700 EVB (Cortex-A35)";
+> +    amc->soc_name  =3D "ast2700-a0";
+> +    amc->hw_strap1 =3D AST2700_EVB_HW_STRAP1;
+> +    amc->hw_strap2 =3D AST2700_EVB_HW_STRAP2;
+> +    amc->fmc_model =3D "w25q01jvq";
+> +    amc->spi_model =3D "w25q512jv";
+> +    amc->num_cs    =3D 2;
+> +    amc->macs_mask =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON |
+> ASPEED_MAC2_ON;
+> +    amc->uart_default =3D ASPEED_DEV_UART12;
+> +    mc->default_ram_size =3D 1 * GiB;
+> +    aspeed_machine_class_init_cpus_defaults(mc);
+> +}
+> +#endif
+> +
+>  static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+>                                                       void *data)
+> { @@ -1711,6 +1737,12 @@ static const TypeInfo aspeed_machine_types[] =3D=
+ {
+>          .name           =3D MACHINE_TYPE_NAME("ast1030-evb"),
+>          .parent         =3D TYPE_ASPEED_MACHINE,
+>          .class_init     =3D
+> aspeed_minibmc_machine_ast1030_evb_class_init,
+> +#ifdef TARGET_AARCH64
+> +    }, {
+> +        .name          =3D MACHINE_TYPE_NAME("ast2700-evb"),
+> +        .parent        =3D TYPE_ASPEED_MACHINE,
+> +        .class_init    =3D aspeed_machine_ast2700_evb_class_init,
+> +#endif
+>      }, {
+>          .name          =3D TYPE_ASPEED_MACHINE,
+>          .parent        =3D TYPE_MACHINE,
+> --
+> 2.25.1
 

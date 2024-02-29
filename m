@@ -1,183 +1,87 @@
-Received: by 2002:a17:906:a892:b0:a44:c09:7745 with SMTP id ha18csp344091ejb;
-        Wed, 28 Feb 2024 08:51:17 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUsRJ8N8MhKkB2wWhceKovE2hHIv5VdOXN2FnP0aFHxImUyT+GrYMXY5qTl9OruCD50YVXLppi3/rZKem3SIkFw4cNjo0Ji
-X-Google-Smtp-Source: AGHT+IGG36wuhqwHZA1EwN+oQI668qc6Hu7ZA5AtxVlZSS2qrZGHJI/loUXSDN6rr0Z8nHicsMmt
-X-Received: by 2002:a05:622a:178f:b0:42e:68b5:da8f with SMTP id s15-20020a05622a178f00b0042e68b5da8fmr17270205qtk.1.1709139077363;
-        Wed, 28 Feb 2024 08:51:17 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709139077; cv=pass;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp217000eja;
+        Wed, 28 Feb 2024 23:23:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXYfrJ1TnVhK2wHnfhQuf9bPhxp8l2YBiPwWC2a4MvHurEQzT/8kzM6Ako6Y/Suad+eiggZiqTnQDo8aJyMaktxO9UkhYSp
+X-Google-Smtp-Source: AGHT+IGBYUzakxlcXb35Ul8QBK6N3szo57/WIKvKLE5d3ZbIrOmkrEG0yjCEcAT251YL/J7Riucy
+X-Received: by 2002:ad4:46c7:0:b0:68f:3f89:b302 with SMTP id pm7-20020ad446c7000000b0068f3f89b302mr1574749qvb.0.1709191419377;
+        Wed, 28 Feb 2024 23:23:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709191419; cv=none;
         d=google.com; s=arc-20160816;
-        b=AOC9Ru1hF7oErcGLJz8PoBJZge9i658CM/xuUSsQbDx/cIlxZPRUXLcu3G7OEvc/uD
-         SSbkFu7xlcQbMjtL+M57bvrE0FWTWhjGPEIP+lIeYyZKmZlwu1ZBP89uhL5MPN5IDau/
-         kuk+bWqRJFt0D/7IZY4Kp3MwN9KwXCvvYSK2vvtvevork68Oe+ffQ5NQi8u5CZ3/Ttb6
-         YeU1ppYE0yCaUhwe6zCb4PspJlgN4+BqFGwtpKMfRMtf4o9rrsvCzrnkwjUoAAtw9vQL
-         CcqaitNK6xhgaefm0O0KzU6tjkmSHhGFWNkEU+mb2B4rYNmPaN0VPajJ+s8Rm8/ZI3WE
-         h58A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=+tDXFJIl5RTgFY0yI6P2dHfa3T5Hu5JAbTUjXQ4CIOo=;
-        fh=451yDYU9HF3Q4pN6TOBn+rni+5wEUZOP0xaUr71sAOw=;
-        b=uuIaJ6Qve1BAmY+GHe3gYHTS29X6XjWgOvcGeBmdrwf+8UmgFwDjkI0CApOnTeUsps
-         a0Zk91Pxrx1dlKcdnEcl1kLhZ9za7mpoUPBHBUCUWkBN5tZDTIwgpH03/pk9N9531HSl
-         lq6r+LcEykZgld1gfMVNUK6TwlH94EQv38sQhK3xQEoY02ebOb6JIwFLvTGCWo0uXQUi
-         WHt0eDJWsPB9L+krcSr3PQCZp7EgHtrRJLsuU0FvS7rShx2bkHauKpQg2TeU2CFkazgm
-         VuO0ke4pBXXfCdmYVavB3e++RjbqVUCszlLFrWozVmdNE4Q8lgZ7vV/hJ6ExzUeqIcmE
-         bqAA==;
+        b=ecVMgcGedXPd/Y7xWVlmKlAYpi9Nu8LnRIqgZ3opIGDUjKg7aGPQ53OFCsqP+oaP/q
+         VLmkp0wqNb+ZDPEt3oIHRB/21R1XScwUdzwWZXuz+lltzs++9uWxwQYuHV3R37HGfCpV
+         GHR0rL9SG3a7psfjmLTvHFCRNCyhozlvhQTg/SvlrdqCrKNgv3l4wZaJRQAQQrXbDio8
+         IKzZjF1/WoSc2ITFoqTfdYV1/GtbY+w28INR4xpJahVW7UDf8fOgKV35RnXwjd8lAj7X
+         Z2lepVQQuiRi6GAD29EmR4fabokqdmfBnl/iQoKQwW+k3pE2NdT15cB4DiHApqYcmC8N
+         1zPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=FcvMDv76OcDGlLOqM/h891oml/WS03pjHw5o/BfpYPc=;
+        fh=PdtwIDHs/tPxejUvGNuNc+OfbOLCj28QtuyfcdtzgXw=;
+        b=Pkk93Yt4XDLxeTFdET0VY666oQ4d8ufNm4nsV+SYpwTFaEKnPoHbxUSzc/IK9D59iV
+         3IB7w5Uc3hGBQaSqUoy/mWmRsIMLQsH/NDiKAQI5gClYZ92+6E75KbZzk/oz4sG9g01P
+         s89kJ0ftRx6PxNLE6XA0E9wAiLIREkduOaE5ahtmH3Wl/WP+D+Lfr0f0GfMNwuTlZHcH
+         vcMjJ/ZMcmzAz2rP/gMotU8OUCdplLz155TCI3W4OBAOtkyEG4MsAkWAm3ujP96KzhPm
+         uAanZ+m3WVAPxvP+h2ambMHwYnX4Lrm4bz1b8iRjjCAZZwwp83JFmWw4VHuLSoHj1knY
+         g6Tg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="bKTWppu/";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020ac85345000000b0042e78c37d6csi9004822qto.318.2024.02.28.08.51.17
+        by mx.google.com with ESMTPS id h2-20020a0562140da200b0068f6a21487fsi802116qvh.15.2024.02.28.23.23.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 08:51:17 -0800 (PST)
+        Wed, 28 Feb 2024 23:23:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="bKTWppu/";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfN8y-0005iq-DX; Wed, 28 Feb 2024 11:50:58 -0500
+	id 1rfalN-0003gO-UQ; Thu, 29 Feb 2024 02:23:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rfN8k-0005fy-K8; Wed, 28 Feb 2024 11:50:44 -0500
-Received: from mail-bn8nam11on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2414::601]
- helo=NAM11-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rfN8f-0003F5-5d; Wed, 28 Feb 2024 11:50:39 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=coKH26QzDbyfs5p51tHDR1Z1BjyVsL0zb+ILbPluQiIGtOyEQRdfLJ+ByXEMTz6tPXdHxFskw8VXl5pJa4TNQv3om87MFmeDBXULa1h225T2x1xFd/LLxxrtT4UXTMlXiRhR+S/0SQY53Q0tQAggLBKoV7x+0yKUbFmqFtVvU8QkrHfF31/3AXM0SqYQZwyeguGsDsCbe0zopBYnW3pvVG4ezmaxY9Q6rpA9YIZveO4ttambSDQM02/X+VtJxNTI0YewBoOBDtgd7oxlS8VUGc0uoyZ2f/zAQAkZMcHUdutCxGlcKzV9BGqu6LPIbimZuEWif8uVtwXsFmileMMKjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+tDXFJIl5RTgFY0yI6P2dHfa3T5Hu5JAbTUjXQ4CIOo=;
- b=KJYEa7y8CmtPwZubNWdlzJ5aP0tDMMnbLLaYPB6Qvr33K/40XAWjZLuUeQMFvjGA6zHZ3KNyOQju6y1Rzj3OzCUvYZs73SgPDxjC40G5Q2ONqsLifF58m2nEjsP0C4pOWqYpFlZ+KlPs6uxX+DxPDDsDhRF5uX6u4tDTn9Cl7U8BcwM+VPjZC3CIsRkpvTZgZUCkyU+ofrKrezx4zSYjRaHkN8A8eIQy8ILB9gIhyxxrf+2kYmBxF6RTjFmExiRan/C7+vmcALcvGYKIT8U8IDJJjiJbtvEbZotVj5IiCCbCWJjRsxc5STFYbMLje+VhE9wMXtmo2BMN1Vljsl5PxA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+tDXFJIl5RTgFY0yI6P2dHfa3T5Hu5JAbTUjXQ4CIOo=;
- b=bKTWppu/t1Q4yeunBOMOYiQk5MqSKnkZuue4poxBDxW5GFaX+ln2juDzc4WtQqDDmMzEll0dSuN3b4jxM4fky6B/Bl9j/sn009smD3VwildD+HAv/3m4o9+l49nchHsj2RXDSHQ8Hn0QGBJipvnH+vJt3ySxwbqK2guj1gcYVrYpn73GXztXwjd0AF42BBWFLgi4YW2bRxGONvDKVwexlpD87W2ohqoDnAJbiRGQugk5OcnLaoUD8igJ8K1yjFJQ8vXxxKjBQH5QshqC0IGLhKEpPPqGFXigLURWeMm1GKEghOEJgZKQkeMchDTiv0wQc2PO2L3PmLwlSeCLkpzsUw==
-Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
- by MW3PR12MB4474.namprd12.prod.outlook.com (2603:10b6:303:2e::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.41; Wed, 28 Feb
- 2024 16:50:30 +0000
-Received: from SA1PR12MB7199.namprd12.prod.outlook.com
- ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
- ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7316.032; Wed, 28 Feb 2024
- 16:50:30 +0000
-From: Ankit Agrawal <ankita@nvidia.com>
-To: Markus Armbruster <armbru@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@Huawei.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
- <eblake@redhat.com>, "david@redhat.com" <david@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, Zhi Wang <zhiw@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket
- Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
- <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
- Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
- <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v7 1/2] qom: new object to associate device to numa node
-Thread-Topic: [PATCH v7 1/2] qom: new object to associate device to numa node
-Thread-Index: AQHaZlXRpHP8fv3NL0CqBnE3t10aOLEfZKrYgABqHwCAACU5hYAAC4X6
-Date: Wed, 28 Feb 2024 16:50:30 +0000
-Message-ID: <SA1PR12MB7199F868F1C300B1E795CD39B0582@SA1PR12MB7199.namprd12.prod.outlook.com>
-References: <20240223124223.800078-1-ankita@nvidia.com>
- <20240223124223.800078-2-ankita@nvidia.com>	<8734td3uty.fsf@pond.sub.org>
- <20240228135504.00005d12@Huawei.com> <87bk80vaft.fsf@pond.sub.org>
-In-Reply-To: <87bk80vaft.fsf@pond.sub.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|MW3PR12MB4474:EE_
-x-ms-office365-filtering-correlation-id: 979fcc16-120b-4fba-44f9-08dc387d5f72
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: WKXBp7PRViwG7WWB7ir7AMCFmYMeWfqGecTtUegVPtigceLDl/69crj6W5QayWISuJas4HzK2OPnF1lK2wz4rxtVsCHW+/EsXU7t4ilHxUrrcAY1cnam5G5sJgG3KpY/C0g99sRKduo0U8IDQO/FOo1f58m8oAXklT+konbpT1+C9zh0RhIyLp2YXkTEtNTMLq0f4FmjHiFKf2fSViqE3HaSCydmW9rQkdKwtJEPSgmkglRg4QngrQaQETgxCHmWRdPO7gfY5ZKj7g0MlY4AasLdG5DVor5rbmkRY00fBI5FM9NUeNyI/jQXbXOMzbTwyZFcDa2MKk2ulv5sTWMlSjbTeXVg+weJmn7CDe/PGOnhWlZrKfB1Wd1fl5vNoGzbjLmk6gcXrm15SWxny30Y/T1RPnrSmvvQ9pN/vUUVGe3w4MaMo2J8vBFuC52KPoPivSNpik/GTnn18QvJAjQ6oBOr4I+XURJCf/n3HvInymnotnQ2G8X/AqZzU3MZX0XzE7f0mTq7AYpxoSdZ+s8mGPz1pF+2djsxx8i7rkWpQbldAG45ndFtZCDRYDTiO1vRNf8qTWcirwxOo13oVFy+SbV++z2DzRN+X3kDTTImeCwdP1/cBnMyP6Lr8Ty6reSbkZNNQITl2a1g4yFvXB78qWa1H5Jw/iiNIWc8C5b1eF4GpZFq8yOjeu2Cc0EZdg46Z66eK7GXm00Qnryzz1acfS1jH+Hkobc6vPpXMfMyh+A=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(38070700009); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?0hxymucNMMoun7SF0qUfGoNO8NmtQIO6aWjKyNXWGsUDIan6nY+X/4qAsN?=
- =?iso-8859-1?Q?ld2/bmbiz3feWatHtMZDQtoNq+9FVqJd2P3vbvr01CdbXrvE5RC9OnpnZf?=
- =?iso-8859-1?Q?47gx0KdIpYC9BXTpTmfHr30a36E/TS60ltA4DwespScHVGOaAeARbnvz5C?=
- =?iso-8859-1?Q?kmRzBblthyodcbAhsz/4JZR8jqbO0LQ5BsF1JZnBjjQtfCRtoVzC/b03/r?=
- =?iso-8859-1?Q?yswSZVNtyLigzh85T+dCfKTn+kYc5hEWlsWGwsOKlGpnFMF6bHIHuIos5s?=
- =?iso-8859-1?Q?T8Gi40a493nhPprt6En3WxRo4i/9MWsbwpYazuByyl2cIVLf5fSS8HuhBi?=
- =?iso-8859-1?Q?PZ8eXbOJOU3rtRLW1uU4ACQEbrLGDiZ8bOdtD3woGVZJaFS56toGnIB16C?=
- =?iso-8859-1?Q?XTM6ijvz5eGYRqZiNpJrhyzHB9dnkz1JxrNZQvfRnz/9hj5euued7T70BW?=
- =?iso-8859-1?Q?Te84HIyHGWxDTACmPbu7sqHFHABMgmkcQnVcsq9Lf2J9PdL7fUmm6a5nTn?=
- =?iso-8859-1?Q?d5wlwHHanyIeQyQQUpV3l1cawy/NaBICOi1+NGkNVRsT5zGBKMQlY+K8zL?=
- =?iso-8859-1?Q?+cEa9Y8DCiNatmpwYnV/y2NbXBZwI78jE8BkxCv1DBS9CxmUAsT5Rn1/a1?=
- =?iso-8859-1?Q?602m1FV9h1sCFCajymsNnacb4RQJsoKiCZ2NUvEkXPsiHZwtI2TrX8axhf?=
- =?iso-8859-1?Q?0PpGXEqMVvilXRHhvncq4ppO8l8VyNBgF6vnw50uTsF/kh1RFVnvZmzptl?=
- =?iso-8859-1?Q?LpSC2UrP30k6L5yztf0JtFYVV1iJ9cEF8v1F4JjI3aOw4zsgmLXECdAHn0?=
- =?iso-8859-1?Q?yuMqVsOoQ5dUHq9tuTK1nLfugj5N/8gaZpoQkqe9f6izEhSJB2HBrRN6C4?=
- =?iso-8859-1?Q?g3HrgC9XSeMjHhs/h322OdMXd3R0Mvq+LFYd/5a4u4j9+u9FkzQUz9fNuq?=
- =?iso-8859-1?Q?AMF81FGFqu0sSjjQhjK4dOmYLLPPx6xRBNuYRGrVYuyEhALowvLeKHPts6?=
- =?iso-8859-1?Q?lXdBgOgyoGNn7V/HQEZ/YPDSbLQwx9sdsATf/X53ev0vYjO+v5jbnmCfUa?=
- =?iso-8859-1?Q?U/i8UklWPZU+k2Aw/c9Iy7hghIvYi8AcRzFAC7m9PWZLvxDmBcpNtOv38/?=
- =?iso-8859-1?Q?GSQAWswslriSOLFsOFjbCw27mR8d8EcR6Mmi0DTMovVMkpWzbTopCsdI8q?=
- =?iso-8859-1?Q?hAe4uCSxhZb6cHAxShdWW93t7kVOK50XOw015/YBKATVXnlkFr/kQ8IpSx?=
- =?iso-8859-1?Q?8Tl9FDuQd7JJAG31g5fG29mBk3jeZwZ6rjczut4twr7LzVCBPJJhgM3K/H?=
- =?iso-8859-1?Q?+mjwC/lBrkzPeQpMDi7eOSrCFwNewC2fyKdPKfscoy1Hb1y9mM1IZK2HZP?=
- =?iso-8859-1?Q?ghYdcbh3b+Mo+OmTePwG8ANqS+CdST5TSv0KfMwP7F/SFq5TeMRNZo1bap?=
- =?iso-8859-1?Q?VhcMtOnaV4jcWRE9vVkZne3nxNFI8iSaFOV28lhOX72J61TgdTUQnoNpqt?=
- =?iso-8859-1?Q?zUos4b7ADOiezHuZlm/6yWv/SB3WpvYpvof17H2/m+srBTQ/wLz1G4d/qe?=
- =?iso-8859-1?Q?nEvTbl1F9JTBtjMQRI1mgqdEAkq6i+6pJ7Twt5eIGHljvNZ22YvHN/X3/9?=
- =?iso-8859-1?Q?4em0y5/8j1amc=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rfalL-0003bu-Hp; Thu, 29 Feb 2024 02:23:27 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rfalG-0008LL-D5; Thu, 29 Feb 2024 02:23:26 -0500
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 29 Feb
+ 2024 15:23:16 +0800
+Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Feb 2024 15:23:16 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
+ here" <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 0/8] Add AST2700 support
+Date: Thu, 29 Feb 2024 15:23:07 +0800
+Message-ID: <20240229072315.743963-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 979fcc16-120b-4fba-44f9-08dc387d5f72
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2024 16:50:30.2663 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OubBEucc9o+m/r4O/G1zdmA72eeWiQmjnpg2KrzoH7WE+6pIGqX/qNanQJuGxeNnxW1GQ+vSMXezwp9bRkefew==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4474
-Received-SPF: softfail client-ip=2a01:111:f403:2414::601;
- envelope-from=ankita@nvidia.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=twmbx02.aspeed.com;
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -190,24 +94,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YC55B01djpH5
+X-TUID: I4wRB9lKkIAm
 
-=0A=
->>> Jonathan, you pointed out interface design issues in your review of v2.=
->=0A=
->> Are you fully satisfied with the interface in v3?=0A=
->>=0A=
->> Yes. I'm fine with the interface in this version (though it's v7, so I'm=
- lost=0A=
->> on v2 vs v3!)=0A=
->=0A=
-> Looks like I can't count to 7!=0A=
->=0A=
-> With NUMA capitalized in the doc comment, QAPI schema=0A=
-> Acked-by: Markus Armbruster <armbru@redhat.com>=0A=
->=0A=
-> Thanks!=0A=
-=0A=
-Thanks! Will fix that in the next version.=0A=
+Changes from v1:
+The patch series supports WDT, SDMC, SMC, SCU, SLI and INTC for AST2700 SoC.
+
+Test steps:
+1. Download openbmc image for AST2700 from
+   https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.00
+   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.00/
+   ast2700-default-obmc.tar.gz
+2. untar ast2700-default-obmc.tar.gz
+   ```
+   tar -xf ast2700-default-obmc.tar.gz
+   ```
+3. Run and the contents of scripts as following
+IMGDIR=ast2700-default
+UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+UBOOT_DTB_ADDR=$((0x400000000 + ${UBOOT_SIZE}))
+
+qemu-system-aarch64 -M ast2700-evb -nographic -m 8G\
+ -device loader,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin,force-raw=on\
+ -device loader,addr=${UBOOT_DTB_ADDR},file=${IMGDIR}/u-boot.dtb,force-raw=on\
+ -device loader,addr=0x430000000,file=${IMGDIR}/bl31.bin,force-raw=on\
+ -device loader,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin,force-raw=on\
+ -device loader,addr=0x430000000,cpu-num=0\
+ -device loader,addr=0x430000000,cpu-num=1\
+ -device loader,addr=0x430000000,cpu-num=2\
+ -device loader,addr=0x430000000,cpu-num=3\
+ -smp 4\
+ -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd\
+ -serial mon:stdio\
+ -snapshot
+
+Known Issue:
+1. QEMU supports ARM Generic Interrupt Controller, version 3(GICv3)
+but not support Shared Peripheral Interrupt (SPI), yet.
+Added work around in INTC patch to set GICINT132[18]
+which was BMC UART interrupt if it received GICINT132, so users are
+able to type any key from keyboard to trigger GICINT132 interrupt
+until AST2700 boot into login prompt. It is a temporary solution.
+If users encounter boot stck and no booting log,
+please type any key from keyboard.
+
+2. It is required to add "-m 8G" to set the dram size 8G.
+AST2700 dram size calculation is not compatible AST2600.
+According to the DDR hardware capacity behavior, if users write the
+data at address which is over than the supported size, it would set
+the data at address 0.
+For example:
+a. sdram base address "0x4 00000000"
+b. sdram size is 1GiB
+The available address range is from "0x4 00000000" to "0x4 40000000".
+If users write 0xdeadbeef at address "0x6 00000000", the value of
+DRAM address 0 (base address 0x4 00000000) should be 0xdeadbeef.
+Please see ast2700_sdrammc_calc_size in
+https://github.com/AspeedTech-BMC/u-boot/blob/v00.05.00/drivers/ram/aspeed/
+sdram_ast2700.c
+
+It seems we should create a new function instead of aspeed_soc_dram_init
+to support AST2700.
+https://github.com/qemu/qemu/blob/master/hw/arm/aspeed_soc_common.c
+
+Jamin Lin (8):
+  aspeed/wdt: Add AST2700 support
+  aspeed/sli: Add AST2700 support
+  aspeed/sdmc: Add AST2700 support
+  aspeed/smc: Add AST2700 support
+  aspeed/scu: Add AST2700 support
+  aspeed/intc: Add AST2700 support
+  aspeed/soc: Add AST2700 support
+  aspeed: Add an AST2700 eval board
+
+ hw/arm/aspeed.c                  |  32 +++
+ hw/arm/aspeed_ast27x0.c          | 462 +++++++++++++++++++++++++++++++
+ hw/arm/meson.build               |   1 +
+ hw/intc/aspeed_intc.c            | 135 +++++++++
+ hw/intc/meson.build              |   1 +
+ hw/misc/aspeed_scu.c             | 306 +++++++++++++++++++-
+ hw/misc/aspeed_sdmc.c            | 215 ++++++++++++--
+ hw/misc/aspeed_sli.c             | 179 ++++++++++++
+ hw/misc/meson.build              |   3 +-
+ hw/misc/trace-events             |  11 +
+ hw/ssi/aspeed_smc.c              | 326 ++++++++++++++++++++--
+ hw/ssi/trace-events              |   2 +-
+ hw/watchdog/wdt_aspeed.c         |  24 ++
+ include/hw/arm/aspeed_soc.h      |  26 +-
+ include/hw/intc/aspeed_vic.h     |  29 ++
+ include/hw/misc/aspeed_scu.h     |  47 +++-
+ include/hw/misc/aspeed_sdmc.h    |   4 +-
+ include/hw/misc/aspeed_sli.h     |  32 +++
+ include/hw/ssi/aspeed_smc.h      |   1 +
+ include/hw/watchdog/wdt_aspeed.h |   3 +-
+ 20 files changed, 1787 insertions(+), 52 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast27x0.c
+ create mode 100644 hw/intc/aspeed_intc.c
+ create mode 100644 hw/misc/aspeed_sli.c
+ create mode 100644 include/hw/misc/aspeed_sli.h
+
+-- 
+2.25.1
+

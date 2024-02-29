@@ -1,67 +1,67 @@
-Received: by 2002:a05:7022:fa0b:b0:76:3752:a982 with SMTP id sy11csp184730dlb;
-        Wed, 28 Feb 2024 20:33:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVLfYzwDxwJDhdkmQrbOzcwpB7jl46Ao/nzW6tdZbuRx6R4fM/OalBglYbrR6wx5GDcXSk+qhhVM1cxl2ybwlRcucpyrVJb
-X-Google-Smtp-Source: AGHT+IGrUixEt6NyTyqX53CN0cUeAwCRGzlJrKfbm4IXa8AQYVqDWSmLVO8XH1wAYPMaMpmRKg6C
-X-Received: by 2002:a17:902:ce8a:b0:1dc:cf17:8a70 with SMTP id f10-20020a170902ce8a00b001dccf178a70mr1149253plg.29.1709181199154;
-        Wed, 28 Feb 2024 20:33:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709181199; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp204297eja;
+        Wed, 28 Feb 2024 22:51:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXdXhKj5MS39bNs3CGIrTpbybrk41MUjjKsQDvuf49hj/5QFMZGAX8O/bw24H7PvkTdIF9GLC98BwzC9+TxcQvXKsiII/pu
+X-Google-Smtp-Source: AGHT+IH/nzAlTsLDHMNwPmo0VrZO6vT3bgYFN79fTUl/KGX66LuGYQm4K45Bzs8H0oHO+ZzU60pX
+X-Received: by 2002:a05:622a:449:b0:42e:80bb:f25b with SMTP id o9-20020a05622a044900b0042e80bbf25bmr1368890qtx.60.1709189466017;
+        Wed, 28 Feb 2024 22:51:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709189466; cv=none;
         d=google.com; s=arc-20160816;
-        b=0T5ttwPdGd5YEhgRMl3IVsXpsQXs7xQ+O41RddKzrHzPq86VOF88FOgLP3k0njrzuy
-         stYgXnOgY/BWF0uZhzV1sj4p5Ur6FkbsDLrGHvYDwLTjp4ogMEgvbmdVvGdA2/lg0dhh
-         zD7HcP6VCcNKN1OvgiP58Q4vK0w4GbDOW54WCGOtFxn1jYizP4OFfA4fi1D+fwfbx3Ek
-         pywCbnL+kb2uwMp7w4fFZ27YWybTN/mCrH6vWi8YSCaAgsVsXSnf9Cxbcx78qrXGlQLo
-         OrzCVKaWA2fzicWf5E2AT8KU8jm6T8GWkQgfzzs7G4XEUIuTRPN8+MKMLpU4m2pJ3B2D
-         l9vw==
+        b=fKW03VR93Ury8/Gq8JY1f72HDoXAjWN+ZqJSLNHcMs5RdiGz7WVTp1XWmvtg6TLtmY
+         bu4Lf+ccMiA+Ka0uORr8OrybohXfObbtx5x6OoKWlp/sQt7UYxO4T0RGRTQwFAIepLeT
+         uvvOm8TwuGAMsQ/XsKGsNbNo8sdZCMr8xYstzP2+haq2N7AfPvf2iPCIcLme9+rsECES
+         Uz8/T8LyLDJZ5WvfaFLV70vNQaxJA/6/CMhx1UUy3001HfMYf5DaaRGCsSIfY0DZDoTn
+         kcj+2H52/Nem95THr3OmJSBkTp5ATXF1+OAyR8ZhR0bzW0haUDOSSUiFt3NxWxnqW1uY
+         fIBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=zb88qiTrwS/aUUKzU37PAoVcS3fL/y1gRnyLEGS7HPY=;
+        bh=Lclo39EMpS7SrJbgFNsRGNA7RU0BU97MoTQuWyr2AMM=;
         fh=LdQSP/IzOsJu2Z1R2sMd/3tGWWnW7jyc4/vr7URDKK0=;
-        b=yKo7Ua3q7HJrefWQ31PnJLzsEPEBBfjbF5/4OmSm76dDW31vNFbdiQtJNd+9yrp+eu
-         KPr5Em9cQS688Yc5WwbUbWird8rB84tWGa2TvJBX/D5eAeJ5hQjFgUtyoeyTOUzjo4dq
-         QDy1+hT8uiA7KcBO9WO8MisinJiGZbA+66p/ctF59fQVvrX3WSI2KlQSFZ/Xm/DzEcpo
-         ipXHQc4Zbmoa5KzQKSN61w78M38oV63A9Q04Iw5Cy2VNJqbyjBSxfNqlmOkh9oEXvM8h
-         nbZvUJeHVR/oA1p/ge6M2rD9KvHTBBs9fxe86TeMsU2esVrsUbd/ijQ+8SeLuS+qLBCo
-         GHLQ==;
+        b=giWd1kb2pveIREJm1QkLm4AE27K30F4myk9V5YVZyQxWXjdYdH4p76N3XbYM8ZKeNj
+         MgoY7sm3e1ailQnmDAdORtKLxsVg4qUWX80NJnsrUDVdKrSzfafDz800cpma1YVn8Zup
+         +WqaIQ/jPL5NT2Rvp9VuPZ/j9Ac/+SdmVTD0j8X0Y3CVoJvDlen5na6Qy0N+aU/Qkjd8
+         3z6wugafdkuBnuNdfO5sL3XauVIeApG4YXVNDoayFggzy23hcVTIm/QhNrxNKKEpBHqi
+         e92cWz+2bgorK3qIjjTliGuCP28i2kk+RdcMS8da5uq4JURM1IvdEROxRnDaq7TVXJGo
+         4otw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=GayKpWCq;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=laIjna1d;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.9])
-        by mx.google.com with ESMTPS id j5-20020a170902c3c500b001dcadae1e8bsi507127plj.357.2024.02.28.20.33.18
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.16])
+        by mx.google.com with ESMTPS id c14-20020ac8518e000000b0042e5a818adasi788250qtn.189.2024.02.28.22.51.04
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Feb 2024 20:33:19 -0800 (PST)
-Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.198.163.9;
+        Wed, 28 Feb 2024 22:51:05 -0800 (PST)
+Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=198.175.65.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=GayKpWCq;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=laIjna1d;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1709181199; x=1740717199;
+  t=1709189465; x=1740725465;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=K4P+3be7WkAmiqJGY461bGaJxoGNESikO7CzVS0rHDM=;
-  b=GayKpWCqL6hBOgbY3nIHZ4aIKKfIWbG3ZF7ZtQY8qG73WkiolD1D/Vk3
-   jSSYXIOKtMCVeuMk9JceiMw/+xlVfeC9WIbQYbhSGeWO+m3dFM3fF/W7c
-   YGyoLmgEnCSIzzw/tyAbQKdghrER6BgDJSsr6eeKPd+tPbo+t93+rk+QF
-   tx9SHbfN897Dj6iHBZgR9Eq0WebqWk69aI7WI/e42sjFgUhg84MpE/RWn
-   7zI5UYEfJBJquBgHUhBmdydfjjmcSnMXjCcqH9Gb907x/HtC9VZUVQByR
-   TWy4l+z3m02Oj1DJV+hKy5L59VYeU8pYxKpVKDUsQ7y/Y2wWTyvgwiy8y
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="14338811"
+  bh=GS2K/1elXcA90zDdKMXQSx9HqJcMQIF3eoynkMWLosE=;
+  b=laIjna1dWfuH2gJ8V9NnjwrheGf6oCklPWSJYX71uGEv7mGLKoRC1apx
+   RDH23XL82VeZdGlHSnrTiVcWsLlfOvvDZeCsd3oZpJzdex6z+PNaOkOA0
+   MNT5O6X47Ik54mA01zcSHYpoENCDENg6Nk4t7HFefXtXVSO+NhK1URg9c
+   B+FfPnQeZAbr24WyJ/GdxrCC8OhdPXaFULs2EeW+8N9dygB93YwUJZE0N
+   NTyqsQXtuy6vBM0zpOr6EHGRWRtb0PrOL97AAwjGwuODLSvoLeLSw3JQc
+   gbhV1ml4ewYepmvAArkUDCOT5yKS5+OASETd1nAuCIUlA1VPV0gtYEIFm
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="3755275"
 X-IronPort-AV: E=Sophos;i="6.06,192,1705392000"; 
-   d="scan'208";a="14338811"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Feb 2024 20:33:18 -0800
+   d="scan'208";a="3755275"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Feb 2024 22:51:04 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,192,1705392000"; 
-   d="scan'208";a="38526829"
+   d="scan'208";a="7638819"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa002.jf.intel.com with ESMTP; 28 Feb 2024 20:33:12 -0800
-Date: Thu, 29 Feb 2024 12:46:55 +0800
+  by fmviesa009.fm.intel.com with ESMTP; 28 Feb 2024 22:50:58 -0800
+Date: Thu, 29 Feb 2024 15:04:42 +0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: JeeHeng Sia <jeeheng.sia@starfivetech.com>
 Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
@@ -85,63 +85,103 @@ Cc: Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [RFC 2/8] hw/core: Move CPU topology enumeration into
- arch-agnostic file
-Message-ID: <ZeAMP7OCwWPMhpeD@intel.com>
+Subject: Re: [RFC 4/8] hw/core: Add cache topology options in -smp
+Message-ID: <ZeAsijVdx6DO+1pP@intel.com>
 References: <20240220092504.726064-1-zhao1.liu@linux.intel.com>
- <20240220092504.726064-3-zhao1.liu@linux.intel.com>
- <BJSPR01MB05614B900DA2E93AE9F8E0BE9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
+ <20240220092504.726064-5-zhao1.liu@linux.intel.com>
+ <BJSPR01MB05618A7D409C2DE3E408345C9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <BJSPR01MB05614B900DA2E93AE9F8E0BE9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
-X-TUID: zfa7WZ+sBm3E
+In-Reply-To: <BJSPR01MB05618A7D409C2DE3E408345C9C58A@BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn>
+X-TUID: LoCeQjx6ShV8
 
 Hi JeeHeng,
 
-> > +const char *cpu_topo_to_string(CPUTopoLevel topo)
-> > +{
-> > +    return cpu_topo_descriptors[topo].name;
-> > +}
-> > +
-> > +CPUTopoLevel string_to_cpu_topo(char *str)
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index 426f71770a84..cb5173927b0d 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -886,6 +886,10 @@ static void machine_get_smp(Object *obj, Visitor *v, const char *name,
+> >          .has_cores = true, .cores = ms->smp.cores,
+> >          .has_threads = true, .threads = ms->smp.threads,
+> >          .has_maxcpus = true, .maxcpus = ms->smp.max_cpus,
+> > +        .l1d_cache = g_strdup(cpu_topo_to_string(ms->smp_cache.l1d)),
+> > +        .l1i_cache = g_strdup(cpu_topo_to_string(ms->smp_cache.l1i)),
+> > +        .l2_cache = g_strdup(cpu_topo_to_string(ms->smp_cache.l2)),
+> > +        .l3_cache = g_strdup(cpu_topo_to_string(ms->smp_cache.l3)),
 >
-> Can use const char *str.
+> Let's standardize the code by adding the 'has_' prefix.
 
-Okay, I'll.
+SMPConfiguration is automatically generated in the compilation, and its
+prototype is defined in qapi/machine.json like the following code:
 
-> > +{
-> > +    for (int i = 0; i < ARRAY_SIZE(cpu_topo_descriptors); i++) {
-> > +        CPUTopoInfo *info = &cpu_topo_descriptors[i];
-> > +
-> > +        if (!strcmp(info->name, str)) {
->
-> Suggest to use strncmp instead.
 
-Thanks! I tries "l1i-cache=coree", and it causes Segmentation fault.
-Will fix.
+> > diff --git a/qapi/machine.json b/qapi/machine.json
+> > index d0e7f1f615f3..0a923ac38803 100644
+> > --- a/qapi/machine.json
+> > +++ b/qapi/machine.json
+> > @@ -1650,6 +1650,14 @@
+> >  #
+> >  # @threads: number of threads per core
+> >  #
+> > +# @l1d-cache: topology hierarchy of L1 data cache (since 9.0)
+> > +#
+> > +# @l1i-cache: topology hierarchy of L1 instruction cache (since 9.0)
+> > +#
+> > +# @l2-cache: topology hierarchy of L2 unified cache (since 9.0)
+> > +#
+> > +# @l3-cache: topology hierarchy of L3 unified cache (since 9.0)
+> > +#
+> >  # Since: 6.1
+> >  ##
+> >  { 'struct': 'SMPConfiguration', 'data': {
+> > @@ -1662,7 +1670,11 @@
+> >       '*modules': 'int',
+> >       '*cores': 'int',
+> >       '*threads': 'int',
+> > -     '*maxcpus': 'int' } }
+> > +     '*maxcpus': 'int',
+> > +     '*l1d-cache': 'str',
+> > +     '*l1i-cache': 'str',
+> > +     '*l2-cache': 'str',
+> > +     '*l3-cache': 'str' } }
+> >
 
-> > +            return (CPUTopoLevel)i;
-> > +        }
-> > +    }
-> > +    return CPU_TOPO_LEVEL_MAX;
-> > +}
+The gnerated complete structure is (will in build/qapi/qapi-types-machine.h):
 
-> > @@ -304,7 +304,7 @@ static uint32_t num_threads_by_topo_level(X86CPUTopoInfo *topo_info,
-> >                                            enum CPUTopoLevel topo_level)
-> >  {
-> >      switch (topo_level) {
-> > -    case CPU_TOPO_LEVEL_SMT:
-> > +    case CPU_TOPO_LEVEL_THREAD:
-> >          return 1;
-> Just wondering why 'return 1' is used directly for the thread, but not
-> for the rest?
+struct SMPConfiguration {
+    bool has_cpus;
+    int64_t cpus;
+    bool has_drawers;
+    int64_t drawers;
+    bool has_books;
+    int64_t books;
+    bool has_sockets;
+    int64_t sockets;
+    bool has_dies;
+    int64_t dies;
+    bool has_clusters;
+    int64_t clusters;
+    bool has_modules;
+    int64_t modules;
+    bool has_cores;
+    int64_t cores;
+    bool has_threads;
+    int64_t threads;
+    bool has_maxcpus;
+    int64_t maxcpus;
+    char *l1d_cache;
+    char *l1i_cache;
+    char *l2_cache;
+    char *l3_cache;
+};
 
-This helper returens how many threads in one topology domain/container
-at this level.
+The int member defined in qapi/machine.json will get their corresponding
+status fields as has_* to indicate if user sets those int fields.
 
-For thread level, it calculates how many threads are in one thread
-domain, so it returns 1 directly.
+For str type, the status field is not needed since NULL is enough to
+indicate no user sets that.
 
 Thanks,
 Zhao

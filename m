@@ -1,84 +1,85 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp375423eja;
-        Thu, 29 Feb 2024 05:15:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVV878o5khdmts1AoJ5l9p/ms3o/P26iLyEulbQ2rBLPS9Pj95WIc+NIEdCsMXbOOBuD/v+Nc7BrQp0BVG8MhNThJn1CgnA
-X-Google-Smtp-Source: AGHT+IHwmj+KO9IW9DRbRombVrtFAjoFFqXJKp0pG6Lxor0DlUOrjavyu4D/ZOmNF8AT/pNm2wdK
-X-Received: by 2002:a05:6102:510f:b0:470:4933:8d55 with SMTP id bm15-20020a056102510f00b0047049338d55mr2225095vsb.11.1709212512579;
-        Thu, 29 Feb 2024 05:15:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709212512; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp375492eja;
+        Thu, 29 Feb 2024 05:15:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWRe2I3MKmV5HA8ZIcOTmaMdzy3pwavpuEBQsOLp+t/dTwvSiuUJ8Cl+rYUzoelRnsiqPm9j5Fd4tMxfa1p+Zd/omJpwC2y
+X-Google-Smtp-Source: AGHT+IGpql0v//LsfqmqYUSZiS3E40dydhmPArnqyjFa//iXHY6PYkuzf3t6r70FRnbHKxD3Qcf1
+X-Received: by 2002:a0c:fb50:0:b0:68f:5fd5:80cd with SMTP id b16-20020a0cfb50000000b0068f5fd580cdmr2128113qvq.6.1709212518515;
+        Thu, 29 Feb 2024 05:15:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709212518; cv=none;
         d=google.com; s=arc-20160816;
-        b=A/+heuKHSoab1ikiBSWc4fgSU8HToLzMgzzqSFIu6pdXZtueLb3JI9KO1RtioyNPJQ
-         +OlBRg449XnrFVWG1GiQcbfAQbuppi8OTP4dgmXLYxjrxlfZ8POwcBsMGy5hJ3O7DrlV
-         H28NYUXlnWPeTRVVHllc3ITIlYHjdXRXN+hnEw73dqVWcX2UdL69KldsJEY8UsJdEFLE
-         v3j3Hay2R405dy6wtoGthFtAdgYBp1Mpz4GxnR38HidtiCTMS8FJ/W7YNFC6ezMo4BrY
-         LWBrs248DzVb8UkneDATKej21kalw4ua1BEL+fI5jCMMjdT62zED+8/oE2NIlGv1YoeO
-         7XBg==
+        b=sHMhg3d450uffBMaf8iySM19TUpuowuy+k0oWo7J+iIzaANTjqdkW6RG7EUvtwuS/D
+         momLWT8qP3dv+lQp0kaMbHjhZkD7JoNgWIf185C1ky2CvQAjq1ucEZGw30ngzi0nLi7K
+         VVJm3W5zDGiaEgL9SDfzuN6JCRWEOSn3wNAKxCj3yPoRnN+dtlp6c+4fJXqaOPLDUtWd
+         Kp7ndVtZsWyQLCMe5OaltA1MO949IQMh8AkfXTE/TyPqfgTAlhHwLu1M25+74EXSklsT
+         azU4XuliZZ6j9/Iw0mbtMmXSvI3OdU21s7GuT8KmnSQMwZ6A9GszoxXQuEXgNbM31gve
+         JcRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=2RW/+KvOBHh3yEUeEQc3iAicwwZIHAdV3aHhkdOY+yk=;
+        bh=/DV2Rkm3kAKjUtpAzkucNnat7KZioxU7Xo8lk4UY7eg=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=dmgs5U7k0rKBWsv9uZnDWZA344ZvIwY1gaHb/LFOhm/SvkhrdVWG7Gxo7rwVA1cTDf
-         /Z6BnAsdJl+E/PXZ/mMGoojfaX/9mHT+TTtP2bx+c3vJ4BphypAW+jOd6SFubEaIx8gS
-         Od+Ps4chkNcDfJDbs9hgDbq9EuOJoU42O4KijQK0TukSrsRNSFtjMI5XjdkkGUZvxBvY
-         CRGsw2aACoAUjkEp3IdzlC8S3T7+aqSqTL22arO2RaKRaDvsPI9VnM5F/dCvU9LhpEOF
-         wOjAT92n+bg6qBp/F4sMypwC3VIbe+pC+cFUUvw+RLHkxrvT4TlrLiH/2RYyQJYzFm/I
-         R0fQ==;
+        b=knQ1FbwnTiNe9WjzOmdcafoeeOBB0XVhPkIMRO2yB5BjjNrqz7eNsPBjgJeQ6yEC+R
+         5PBDewTqywvf6Gnu7XMbITKAsRTpPXpYdt8Xy/owTMdg2Zl36ytIEJR6lETjjVbCoNXg
+         t00zznABPCZe0KZgdHS5z+/Sc42y/oSOG5fKX3Zp1TXOW8kIztQKre0+HqsYRM2R4gYJ
+         4r8fm74x7nr6MSLuG4zKZm0eU3mWF6xnRZ2smM8Vps2hBgNTYzYb5ki8BYIczNGGs/oY
+         hjJDeUyfkElSlrUd6BTfcv3V4EfOE0zdnjYXnf5X1UuJNJ0CSqFwX3aooiUV62oqZWYV
+         NBrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j11-20020a056102000b00b0047173a86774si124769vsp.305.2024.02.29.05.15.12
+        by mx.google.com with ESMTPS id pf3-20020a056214498300b0068fc86e7879si1239200qvb.612.2024.02.29.05.15.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 05:15:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 05:15:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfgDA-0005y5-1v; Thu, 29 Feb 2024 08:12:32 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfgCj-0005lA-W7; Thu, 29 Feb 2024 08:12:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCd-0005eu-Oa; Thu, 29 Feb 2024 08:11:59 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+ id 1rfgCc-0005co-Ef; Thu, 29 Feb 2024 08:11:58 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCa-0002eC-QG; Thu, 29 Feb 2024 08:11:59 -0500
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Tls5h2MZMz1xpV6;
- Thu, 29 Feb 2024 21:10:16 +0800 (CST)
+ id 1rfgCZ-0002ds-71; Thu, 29 Feb 2024 08:11:58 -0500
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Tls7M6RrCz1FLRM;
+ Thu, 29 Feb 2024 21:11:43 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id A362C1A0172;
- Thu, 29 Feb 2024 21:11:47 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 9E335140390;
+ Thu, 29 Feb 2024 21:11:45 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 21:11:46 +0800
+ 2024 21:11:45 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v5 08/22] target/arm: Handle IS/FS in ISR_EL1 for NMI
-Date: Thu, 29 Feb 2024 13:10:25 +0000
-Message-ID: <20240229131039.1868904-9-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v5 06/22] target/arm: Add support for Non-maskable
+ Interrupt
+Date: Thu, 29 Feb 2024 13:10:23 +0000
+Message-ID: <20240229131039.1868904-7-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240229131039.1868904-1-ruanjinjie@huawei.com>
 References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -86,85 +87,295 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WNmlXBTtRUHn
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rIgFkf1lw0nt
 
-Add IS and FS bit in ISR_EL1 and handle the read. With CPU_INTERRUPT_NMI or
-CPU_INTERRUPT_VNMI, both CPSR_I and ISR_IS must be set. With
-CPU_INTERRUPT_VFIQ and HCRX_EL2.VFNMI set, both CPSR_F and ISR_FS must be set.
+This only implements the external delivery method via the GICv3.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
-v4；
-- Also handle VNMI.
+v4:
+- Accept NMI unconditionally for arm_cpu_has_work() but add comment.
+- Change from & to && for EXCP_IRQ or EXCP_FIQ.
+- Refator nmi mask in arm_excp_unmasked().
+- Also handle VNMI in arm_cpu_exec_interrupt() and arm_cpu_set_irq().
+- Rename virtual to Virtual.
 v3:
-- CPU_INTERRUPT_NMI do not set FIQ, so remove it.
-- With CPU_INTERRUPT_NMI, both CPSR_I and ISR_IS must be set.
+- Not include CPU_INTERRUPT_NMI when FEAT_NMI not enabled
+- Add ARM_CPU_VNMI.
+- Refator nmi mask in arm_excp_unmasked().
+- Test SCTLR_ELx.NMI for ALLINT mask for NMI.
 ---
- target/arm/cpu.h    |  2 ++
- target/arm/helper.c | 13 +++++++++++++
- 2 files changed, 15 insertions(+)
+ target/arm/cpu-qom.h   |  4 +-
+ target/arm/cpu.c       | 88 +++++++++++++++++++++++++++++++++++++++---
+ target/arm/cpu.h       |  4 ++
+ target/arm/helper.c    |  2 +
+ target/arm/internals.h | 10 +++++
+ 5 files changed, 101 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 6aa9f1e9ba..4f9a8127f9 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1474,6 +1474,8 @@ FIELD(CPTR_EL3, TCPAC, 31, 1)
- #define CPSR_N (1U << 31)
- #define CPSR_NZCV (CPSR_N | CPSR_Z | CPSR_C | CPSR_V)
- #define CPSR_AIF (CPSR_A | CPSR_I | CPSR_F)
-+#define ISR_FS (1U << 9)
-+#define ISR_IS (1U << 10)
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 8e032691db..e0c9e18036 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -36,11 +36,13 @@ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+ #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
+ #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
  
- #define CPSR_IT (CPSR_IT_0_1 | CPSR_IT_2_7)
- #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7cdc90e9e3..ac44498537 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2018,15 +2018,28 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         if (cs->interrupt_request & CPU_INTERRUPT_VIRQ) {
-             ret |= CPSR_I;
-         }
-+        if (cs->interrupt_request & CPU_INTERRUPT_VNMI) {
-+            ret |= ISR_IS;
-+            ret |= CPSR_I;
-+        }
-     } else {
-         if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
-             ret |= CPSR_I;
-         }
-+
-+        if (cs->interrupt_request & CPU_INTERRUPT_NMI) {
-+            ret |= ISR_IS;
-+            ret |= CPSR_I;
-+        }
+-/* Meanings of the ARMCPU object's four inbound GPIO lines */
++/* Meanings of the ARMCPU object's six inbound GPIO lines */
+ #define ARM_CPU_IRQ 0
+ #define ARM_CPU_FIQ 1
+ #define ARM_CPU_VIRQ 2
+ #define ARM_CPU_VFIQ 3
++#define ARM_CPU_NMI 4
++#define ARM_CPU_VNMI 5
+ 
+ /* For M profile, some registers are banked secure vs non-secure;
+  * these are represented as a 2-element array where the first element
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5fa86bc8d5..ad6e6200f6 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -122,6 +122,13 @@ void arm_restore_state_to_opc(CPUState *cs,
+ }
+ #endif /* CONFIG_TCG */
+ 
++/*
++ * With SCTLR_ELx.NMI == 0, IRQ with Superpriority is masked identically with
++ * IRQ without Superpriority. Moreover, if the GIC is configured so that
++ * FEAT_GICv3_NMI is only set if FEAT_NMI is set, then we won't ever see
++ * CPU_INTERRUPT_*NMI anyway. So we might as well accept NMI here
++ * unconditionally.
++ */
+ static bool arm_cpu_has_work(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -129,6 +136,7 @@ static bool arm_cpu_has_work(CPUState *cs)
+     return (cpu->power_state != PSCI_OFF)
+         && cs->interrupt_request &
+         (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
++         | CPU_INTERRUPT_NMI | CPU_INTERRUPT_VNMI
+          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VSERR
+          | CPU_INTERRUPT_EXITTB);
+ }
+@@ -668,6 +676,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+     CPUARMState *env = cpu_env(cs);
+     bool pstate_unmasked;
+     bool unmasked = false;
++    bool allIntMask = false;
+ 
+     /*
+      * Don't take exceptions if they target a lower EL.
+@@ -678,13 +687,31 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+         return false;
      }
  
-     if (hcr_el2 & HCR_FMO) {
-         if (cs->interrupt_request & CPU_INTERRUPT_VFIQ) {
-             ret |= CPSR_F;
++    if (cpu_isar_feature(aa64_nmi, env_archcpu(env)) &&
++        env->cp15.sctlr_el[target_el] & SCTLR_NMI && cur_el == target_el) {
++        allIntMask = env->pstate & PSTATE_ALLINT ||
++                     ((env->cp15.sctlr_el[target_el] & SCTLR_SPINTMASK) &&
++                      (env->pstate & PSTATE_SP));
++    }
 +
-+            if (env->cp15.hcrx_el2 & HCRX_VFNMI) {
-+                ret |= ISR_FS;
-+            }
+     switch (excp_idx) {
++    case EXCP_NMI:
++        pstate_unmasked = !allIntMask;
++        break;
++
++    case EXCP_VNMI:
++        if ((!(hcr_el2 & HCR_IMO) && !(hcr_el2 & HCR_FMO)) ||
++             (hcr_el2 & HCR_TGE)) {
++            /* VNMIs(VIRQs or VFIQs) are only taken when hypervized.  */
++            return false;
++        }
++        return !allIntMask;
+     case EXCP_FIQ:
+-        pstate_unmasked = !(env->daif & PSTATE_F);
++        pstate_unmasked = (!(env->daif & PSTATE_F)) && (!allIntMask);
+         break;
+ 
+     case EXCP_IRQ:
+-        pstate_unmasked = !(env->daif & PSTATE_I);
++        pstate_unmasked = (!(env->daif & PSTATE_I)) && (!allIntMask);
+         break;
+ 
+     case EXCP_VFIQ:
+@@ -692,13 +719,13 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+             /* VFIQs are only taken when hypervized.  */
+             return false;
          }
+-        return !(env->daif & PSTATE_F);
++        return !(env->daif & PSTATE_F) && (!allIntMask);
+     case EXCP_VIRQ:
+         if (!(hcr_el2 & HCR_IMO) || (hcr_el2 & HCR_TGE)) {
+             /* VIRQs are only taken when hypervized.  */
+             return false;
+         }
+-        return !(env->daif & PSTATE_I);
++        return !(env->daif & PSTATE_I) && (!allIntMask);
+     case EXCP_VSERR:
+         if (!(hcr_el2 & HCR_AMO) || (hcr_el2 & HCR_TGE)) {
+             /* VIRQs are only taken when hypervized.  */
+@@ -804,6 +831,24 @@ static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ 
+     /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
+ 
++    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++        if (interrupt_request & CPU_INTERRUPT_NMI) {
++            excp_idx = EXCP_NMI;
++            target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
++            if (arm_excp_unmasked(cs, excp_idx, target_el,
++                                  cur_el, secure, hcr_el2)) {
++                goto found;
++            }
++        }
++        if (interrupt_request & CPU_INTERRUPT_VNMI) {
++            excp_idx = EXCP_VNMI;
++            target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
++            if (arm_excp_unmasked(cs, excp_idx, target_el,
++                                  cur_el, secure, hcr_el2)) {
++                goto found;
++            }
++        }
++    }
+     if (interrupt_request & CPU_INTERRUPT_FIQ) {
+         excp_idx = EXCP_FIQ;
+         target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
+@@ -900,6 +945,31 @@ void arm_cpu_update_vfiq(ARMCPU *cpu)
+     }
+ }
+ 
++void arm_cpu_update_vnmi(ARMCPU *cpu)
++{
++    /*
++     * Update the interrupt level for VNMI, which is the logical OR of
++     * the HCRX_EL2.VINMI or HCRX_EL2.VFNMI bit and the input line level from
++     * the GIC.
++     */
++    CPUARMState *env = &cpu->env;
++    CPUState *cs = CPU(cpu);
++
++    bool new_state = ((env->cp15.hcr_el2 & HCR_VI) &&
++                      (env->cp15.hcrx_el2 & HCRX_VINMI)) ||
++                     ((env->cp15.hcr_el2 & HCR_VF) &&
++                      (env->cp15.hcrx_el2 & HCRX_VFNMI)) ||
++        (env->irq_line_state & CPU_INTERRUPT_VNMI);
++
++    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VNMI) != 0)) {
++        if (new_state) {
++            cpu_interrupt(cs, CPU_INTERRUPT_VNMI);
++        } else {
++            cpu_reset_interrupt(cs, CPU_INTERRUPT_VNMI);
++        }
++    }
++}
++
+ void arm_cpu_update_vserr(ARMCPU *cpu)
+ {
+     /*
+@@ -929,7 +999,9 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
+         [ARM_CPU_IRQ] = CPU_INTERRUPT_HARD,
+         [ARM_CPU_FIQ] = CPU_INTERRUPT_FIQ,
+         [ARM_CPU_VIRQ] = CPU_INTERRUPT_VIRQ,
+-        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ
++        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ,
++        [ARM_CPU_NMI] = CPU_INTERRUPT_NMI,
++        [ARM_CPU_VNMI] = CPU_INTERRUPT_VNMI
+     };
+ 
+     if (!arm_feature(env, ARM_FEATURE_EL2) &&
+@@ -955,8 +1027,12 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
+     case ARM_CPU_VFIQ:
+         arm_cpu_update_vfiq(cpu);
+         break;
++    case ARM_CPU_VNMI:
++        arm_cpu_update_vnmi(cpu);
++        break;
+     case ARM_CPU_IRQ:
+     case ARM_CPU_FIQ:
++    case ARM_CPU_NMI:
+         if (level) {
+             cpu_interrupt(cs, mask[irq]);
+         } else {
+@@ -1355,7 +1431,7 @@ static void arm_cpu_initfn(Object *obj)
+          */
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
      } else {
-         if (cs->interrupt_request & CPU_INTERRUPT_FIQ) {
+-        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
++        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 6);
+     }
+ 
+     qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index abb453f733..6aa9f1e9ba 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -60,6 +60,8 @@
+ #define EXCP_DIVBYZERO      23   /* v7M DIVBYZERO UsageFault */
+ #define EXCP_VSERR          24
+ #define EXCP_GPC            25   /* v9 Granule Protection Check Fault */
++#define EXCP_NMI            26
++#define EXCP_VNMI           27
+ /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
+ 
+ #define ARMV7M_EXCP_RESET   1
+@@ -79,6 +81,8 @@
+ #define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
+ #define CPU_INTERRUPT_VFIQ  CPU_INTERRUPT_TGT_EXT_3
+ #define CPU_INTERRUPT_VSERR CPU_INTERRUPT_TGT_INT_0
++#define CPU_INTERRUPT_NMI   CPU_INTERRUPT_TGT_EXT_4
++#define CPU_INTERRUPT_VNMI  CPU_INTERRUPT_TGT_EXT_0
+ 
+ /* The usual mapping for an AArch64 system register to its AArch32
+  * counterpart is for the 32 bit world to have access to the lower
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 497b6e4bdf..4b4c8e279d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10628,6 +10628,8 @@ void arm_log_exception(CPUState *cs)
+             [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
+             [EXCP_VSERR] = "Virtual SERR",
+             [EXCP_GPC] = "Granule Protection Check",
++            [EXCP_NMI] = "NMI",
++            [EXCP_VNMI] = "Virtual NMI"
+         };
+ 
+         if (idx >= 0 && idx < ARRAY_SIZE(excnames)) {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index fee65caba5..4ff19b1b44 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -958,6 +958,16 @@ void arm_cpu_update_virq(ARMCPU *cpu);
+  */
+ void arm_cpu_update_vfiq(ARMCPU *cpu);
+ 
++/**
++ * arm_cpu_update_vnmi: Update CPU_INTERRUPT_VNMI bit in cs->interrupt_request
++ *
++ * Update the CPU_INTERRUPT_VNMI bit in cs->interrupt_request, following
++ * a change to either the input VNMI line from the GIC or the HCRX_EL2.VINMI
++ * or the HCRX_EL2.VFNMI.
++ * Must be called with the BQL held.
++ */
++void arm_cpu_update_vnmi(ARMCPU *cpu);
++
+ /**
+  * arm_cpu_update_vserr: Update CPU_INTERRUPT_VSERR bit
+  *
 -- 
 2.34.1
 

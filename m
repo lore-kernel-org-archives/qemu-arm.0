@@ -1,342 +1,277 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp422916eja;
-        Thu, 29 Feb 2024 06:29:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVuaNiGdbArcA0isj2yaUPT5Xwd4OnXDERnN92t2bEqlPmCOHlAwbz/do4ywZ7grfeSOKhRobSm+GldY3tG7N3z5NPExbD/
-X-Google-Smtp-Source: AGHT+IGUICNzr8YghZLOBVx25itP4j+Om6c17e7KpahhwZCRRjpfPK+6GYHYB394JY8vcazwPTN9
-X-Received: by 2002:ac2:554e:0:b0:513:26b5:139a with SMTP id l14-20020ac2554e000000b0051326b5139amr1268655lfk.23.1709216985244;
-        Thu, 29 Feb 2024 06:29:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709216985; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp482144eja;
+        Thu, 29 Feb 2024 08:00:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVEwwFRfhHZZ6G0b5+ZuyCeImLfM1LkatoBxpXITJBIxt+2K+37183K+Z9iPd5ZSLF7UlZ6kb8C7eC4eRceQEKn8POP5evj
+X-Google-Smtp-Source: AGHT+IHhESgXwQjZPkMsZt2D2SuOIO+sdaBmJxG6Y7Da561rynxsaWb0eD4YUGlab6QQOkiqb2Er
+X-Received: by 2002:a05:6808:ec4:b0:3c1:a48c:7aa3 with SMTP id q4-20020a0568080ec400b003c1a48c7aa3mr2770103oiv.25.1709222426708;
+        Thu, 29 Feb 2024 08:00:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709222426; cv=none;
         d=google.com; s=arc-20160816;
-        b=a4TSADAuP/afqeiYgQa21IBb/pWHcVCgksospWRguJzdmlH8iq9r3TBpD0fmY7LLrU
-         E3GTkQEv7x3GddSLEOpqa5iaqbzHn3jfW0phzzuAisVQzCDVOJd9A75oCRDsz2wJcVfK
-         mn9WPEI51TXT55DK8hHgN4Iq8S5nC95/AjT5MRippXNpQbnIg0zwIwnWn6twx2ddYhIw
-         EPXyx7I1Sqfasjo+ClnpCNtSlBdj8hXt3RMZKlbSz8wq2Na4vE3TPJw9iHgf02DnMnKe
-         X6UUbkcy0+86n41vtt4pOiebxdTShirfuftYIdYKqdICpDbsP/vNVRornB08jZGw1LKv
-         TdJg==
+        b=T7YhO2G1qAXggqOvkrc3aFa/oyeEOB4b6OfdW+Ktg6vcvRKsWC2Fz7u5ncmzZsKuSE
+         pfx4fOmymqCasUd2m3KCVBcB0DQebZt1cm+SI/AV3h3+DjN17IOWws92EeoA7HZBY1+c
+         Ul28Ji6tj6ofAGhW423qrrvt4uUeWIMulrZ2fZeZQatdLoviCNMJ7I/c1BYrOnxguX51
+         37BBRSRZQaJMgeTSGrgCXlCl28tycBgoZzS5+RCAIdAkt80kgz1cml5+aB04GHNGzGFV
+         d/w8D8oGE8Y+Y6abogAQiDDmUIbf1QhvJw+aiwvWdIry0NhNbv0NSMSD5Ss9GiPE8xA9
+         oDxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=StbiZXwla8vIuHHbeT4VZbIjdaKRKNSm18LQtWP/rZQ=;
-        fh=i1pMiHW8ihR4DaSjmZpmCQZvwyZqiQzpBL78U4QtuPk=;
-        b=Bsm2syQC4LpIXjkMUC25Ub2+sqrLrrmLFhblGeupe4NoEKcXt/p73HAbOk1FEqWrl2
-         4Qexx0cyO6HTASO/2suKsK0lWMrgritBe+3vFW3p9fS4pC/O2T52lr9FljfdS5e9/Yqy
-         ng1tkZiaqjobI1aCoeue6Q5aCpoc2Sf2Snl17UoHOi3mDetKdQEYU2VoqXptVA/oXeoi
-         B+OYHcdAEJIb7RWMZVzRb94EB5vpriUC/3KeERX1uFKRFttlKjweecFBVnvjIYaK64Vg
-         Z/EPG1hOoTuAklBqT1VF32y/1KBsyIJkHi477CeiUV527qxE9S1n92Bfv+DYv8+abaVC
-         CX3w==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=akkfTHHQxBcmmX1lAbWTS6hEnvdn2Tb+49GELZrco3U=;
+        fh=3R5ogao408MhLDTcU8NiHlL+5i62HyAeaWFa6pZz3Y0=;
+        b=LGjt9E1QHKnnCiPseg321x4dThMVq1jRrnKMp4hCwuf+oezjt8D5fjkRmRoYyVGPP/
+         SWwlWkr6WhGgJaR1nsl/x5GHVaYgQTBe/HOuDGwFyCo/B0NG//+xrRv4JFGF5/zhlLlN
+         tMtnTBEwaNYOvpQuqvqkVvJjkA6+3ZHdSA6YQfLiob8sIe95rMvSw94rppPs5NyJwjTG
+         F81OUsTYoCQucCyLmiivDoKuGTw4orgKBGt0tFnohPsej7B5RguNVjQ4TGwgYJEfuGGz
+         oC4JScodrR3L+PKF+OMNV0CcBYTxuX3UY7l+wRwxpZC/mGKIA2LhGUd+CxDqL+kK4lz7
+         vzfg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8eqRpa7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv9-20020a05600c548900b00411ab5da5d1si994409wmb.54.2024.02.29.06.29.45
+        by mx.google.com with ESMTPS id i2-20020a05620a248200b00788046ea137si97441qkn.247.2024.02.29.08.00.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 06:29:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 08:00:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8eqRpa7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfhPm-0002Nj-TQ; Thu, 29 Feb 2024 09:29:38 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfipT-0007QB-9m; Thu, 29 Feb 2024 11:00:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rfhPi-0001zO-Rk
- for qemu-devel@nongnu.org; Thu, 29 Feb 2024 09:29:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rfipR-0007PD-Mo; Thu, 29 Feb 2024 11:00:13 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rfhPd-00068s-TK
- for qemu-devel@nongnu.org; Thu, 29 Feb 2024 09:29:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709216968;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=StbiZXwla8vIuHHbeT4VZbIjdaKRKNSm18LQtWP/rZQ=;
- b=K8eqRpa7JQ6Phq9D9odBnPhbAUAilzL5XUD+Ree4tS0MkCV62GTlZOwOW/rjhZBc0T1lND
- WgHkMiWvX1rrjoA+VOuMNzQropwINsvCHvgExsch8ayr90FdMN102LGoo8W4M+uzPjbBBy
- tf+3YMANppyfub2sr89Uu0QFZtLh6m0=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-1c8xQ0cHNIaEQ0odqm8nPQ-1; Thu, 29 Feb 2024 09:29:27 -0500
-X-MC-Unique: 1c8xQ0cHNIaEQ0odqm8nPQ-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-33d256ca4c8so549145f8f.3
- for <qemu-devel@nongnu.org>; Thu, 29 Feb 2024 06:29:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709216966; x=1709821766;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=StbiZXwla8vIuHHbeT4VZbIjdaKRKNSm18LQtWP/rZQ=;
- b=EgKEN8ie35xyTkz8gC2uurhWvwxxPj7Mox2iscati9QR43mu5LZgbFpPz9kRxXf0WH
- O0G1Voy1CZLxLTR+U4HavOutpJ2Bf2KwMkkGsmYSaLkZwN0/cvEzFEBTjIsuRFvyjK0L
- cSJN1aV8DsiDZE8K7jB0H/cEr9/1Ezr+KjPoBs4f0sGURa7UxLSh2kbbEN5j5xv+idBN
- pACF5BZAASGap/5WrKWpcvy+hMK84lzj07tMv7K5PudeqyqgfCxro9cBGKfd8WMDKUXF
- J/4gelHOsJM7/JGRqUuamxzCaQ2+d8F3lDHKfkrjjVzQyCOxMa4tJod6wlXOETS5fzB4
- q9Wg==
-X-Gm-Message-State: AOJu0Yxo31KdzvCSBptcLYktZvFVJ+xVnmV7Cyp8rHxmxCplC2m1nk8I
- mouD0o85La3KJNxomtWCJ8xhLdxxI+k+viLgT9bRxVSw2wQnmwxFkYlPEJqOKR+eYZsp9ilU6Hs
- vyToK8/FuFLoJyHKRWU7kXbBIi34biKZQca0u0JwZudh3IJxMlSiO
-X-Received: by 2002:a05:600c:1c0d:b0:412:ace9:9d85 with SMTP id
- j13-20020a05600c1c0d00b00412ace99d85mr2219370wms.3.1709216965746; 
- Thu, 29 Feb 2024 06:29:25 -0800 (PST)
-X-Received: by 2002:a05:600c:1c0d:b0:412:ace9:9d85 with SMTP id
- j13-20020a05600c1c0d00b00412ace99d85mr2219349wms.3.1709216965338; 
- Thu, 29 Feb 2024 06:29:25 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- bw1-20020a0560001f8100b0033db0c866f7sm1954508wrb.11.2024.02.29.06.29.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Feb 2024 06:29:24 -0800 (PST)
-Date: Thu, 29 Feb 2024 15:29:23 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, "Michael
- S. Tsirkin" <mst@redhat.com>, Song Gao <gaosong@loongson.cn>, Alistair
- Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
- <philmd@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, Eric Blake
- <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Subject: Re: [PATCH 06/19] smbios: get rid of smbios_legacy global
-Message-ID: <20240229152923.46919312@imammedo.users.ipa.redhat.com>
-In-Reply-To: <0129FA3E-A566-481A-85A6-439E72C5594B@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-7-imammedo@redhat.com>
- <0129FA3E-A566-481A-85A6-439E72C5594B@redhat.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rfipB-0006Cv-1n; Thu, 29 Feb 2024 11:00:13 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TlwmC1gRNz6K6Lg;
+ Thu, 29 Feb 2024 23:55:23 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id A85DB14011D;
+ Thu, 29 Feb 2024 23:59:31 +0800 (CST)
+Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
+ 2024 15:59:11 +0000
+Date: Thu, 29 Feb 2024 15:59:10 +0000
+To: Jonathan Cameron via <qemu-devel@nongnu.org>
+CC: Ankit Agrawal <ankita@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "clg@redhat.com"
+ <clg@redhat.com>, "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Zhi Wang <zhiw@nvidia.com>, "Matt Ochs" <mochs@nvidia.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, "Kirti Wankhede"
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Message-ID: <20240229155910.00005186@huawei.com>
+In-Reply-To: <20240227173621.00003694@Huawei.com>
+References: <20240223124223.800078-1-ankita@nvidia.com>
+ <20240223124223.800078-3-ankita@nvidia.com>
+ <20240226164229.00001536@Huawei.com>
+ <SA1PR12MB71992ECFBF9FA3EE3C350EA8B0592@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <20240227171115.00004c7b@Huawei.com>
+ <20240227173621.00003694@Huawei.com>
+Organization: Huawei Technologies R&D (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.122.247.231]
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Oo6FJNtQU/cK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8KK6meB1UByd
 
-On Thu, 29 Feb 2024 16:23:21 +0530
-Ani Sinha <anisinha@redhat.com> wrote:
+On Tue, 27 Feb 2024 17:36:21 +0000
+Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
 
-> > On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
-> > 
-> > clean up smbios_set_defaults() which is reused by legacy
-> > and non legacy machines from being aware of 'legacy' notion
-> > and need to turn it off. And push legacy handling up to
-> > PC machine code where it's relevant.
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> > PS: I've moved/kept legacy smbios_entries to smbios_get_tables()
-> > but it at least is not visible to API users. To get rid of it
-> > as well, it would be necessary to change how '-smbios' CLI
-> > option is processed. Which is done later in the series.
-> > ---
-> > include/hw/firmware/smbios.h |  2 +-
-> > hw/arm/virt.c                |  2 +-
-> > hw/i386/fw_cfg.c             |  7 ++++---
-> > hw/loongarch/virt.c          |  2 +-
-> > hw/riscv/virt.c              |  2 +-
-> > hw/smbios/smbios.c           | 35 +++++++++++++++--------------------
-> > 6 files changed, 23 insertions(+), 27 deletions(-)
-> > 
-> > diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-> > index a187fbbd3d..0818184834 100644
-> > --- a/include/hw/firmware/smbios.h
-> > +++ b/include/hw/firmware/smbios.h
-> > @@ -293,7 +293,7 @@ struct smbios_type_127 {
-> > void smbios_entry_add(QemuOpts *opts, Error **errp);
-> > void smbios_set_cpuid(uint32_t version, uint32_t features);
-> > void smbios_set_defaults(const char *manufacturer, const char *product,
-> > -                         const char *version, bool legacy_mode,
-> > +                         const char *version,
-> >                          bool uuid_encoded, SmbiosEntryPointType ep_type);
-> > void smbios_set_default_processor_family(uint16_t processor_family);
-> > uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length);
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 0af1943697..8588681f27 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1633,7 +1633,7 @@ static void virt_build_smbios(VirtMachineState *vms)
-> >     }
-> > 
-> >     smbios_set_defaults("QEMU", product,
-> > -                        vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
-> > +                        vmc->smbios_old_sys_ver ? "1.0" : mc->name,
-> >                         true, SMBIOS_ENTRY_POINT_TYPE_64);
-> > 
-> >     /* build the array of physical mem area from base_memmap */
-> > diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> > index fcb4fb0769..c1e9c0fd9c 100644
-> > --- a/hw/i386/fw_cfg.c
-> > +++ b/hw/i386/fw_cfg.c
-> > @@ -63,15 +63,16 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
-> >     if (pcmc->smbios_defaults) {
-> >         /* These values are guest ABI, do not change */
-> >         smbios_set_defaults("QEMU", mc->desc, mc->name,
-> > -                            pcmc->smbios_legacy_mode, pcmc->smbios_uuid_encoded,
-> > +                            pcmc->smbios_uuid_encoded,
-> >                             pcms->smbios_entry_point_type);
-> >     }
-> > 
-> >     /* tell smbios about cpuid version and features */
-> >     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
-> > 
-> > -    smbios_tables = smbios_get_table_legacy(ms->smp.cpus, &smbios_tables_len);
-> > -    if (smbios_tables) {
-> > +    if (pcmc->smbios_legacy_mode) {
-> > +        smbios_tables = smbios_get_table_legacy(ms->smp.cpus,
-> > +                                                &smbios_tables_len);
-> >         fw_cfg_add_bytes(fw_cfg, FW_CFG_SMBIOS_ENTRIES,
-> >                          smbios_tables, smbios_tables_len);
-> >         return;
-> > diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> > index 0ad7d8c887..73fb3522ba 100644
-> > --- a/hw/loongarch/virt.c
-> > +++ b/hw/loongarch/virt.c
-> > @@ -320,7 +320,7 @@ static void virt_build_smbios(LoongArchMachineState *lams)
-> >         return;
-> >     }
-> > 
-> > -    smbios_set_defaults("QEMU", product, mc->name, false,
-> > +    smbios_set_defaults("QEMU", product, mc->name,
-> >                         true, SMBIOS_ENTRY_POINT_TYPE_64);
-> > 
-> >     smbios_get_tables(ms, NULL, 0, &smbios_tables, &smbios_tables_len,
-> > diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> > index fd35c74781..e2c9529df2 100644
-> > --- a/hw/riscv/virt.c
-> > +++ b/hw/riscv/virt.c
-> > @@ -1235,7 +1235,7 @@ static void virt_build_smbios(RISCVVirtState *s)
-> >         product = "KVM Virtual Machine";
-> >     }
-> > 
-> > -    smbios_set_defaults("QEMU", product, mc->name, false,
-> > +    smbios_set_defaults("QEMU", product, mc->name,
-> >                         true, SMBIOS_ENTRY_POINT_TYPE_64);
-> > 
-> >     if (riscv_is_32bit(&s->soc[0])) {
-> > diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> > index 15339d8dbe..c46fc93357 100644
-> > --- a/hw/smbios/smbios.c
-> > +++ b/hw/smbios/smbios.c
-> > @@ -54,7 +54,6 @@ struct smbios_table {
-> > 
-> > static uint8_t *smbios_entries;
-> > static size_t smbios_entries_len;
-> > -static bool smbios_legacy = true;
-> > static bool smbios_uuid_encoded = true;
-> > /* end: legacy structures & constants for <= 2.0 machines */
-> > 
-> > @@ -570,9 +569,16 @@ static void smbios_build_type_1_fields(void)
-> > 
-> > uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
-> > {
-> > -    if (!smbios_legacy) {
-> > -        *length = 0;
-> > -        return NULL;
-> > +    /* drop unwanted version of command-line file blob(s) */
-> > +    g_free(smbios_tables);
-> > +    smbios_tables = NULL;
-> > +
-> > +    /* also complain if fields were given for types > 1 */
-> > +    if (find_next_bit(have_fields_bitmap,
-> > +                      SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
-> > +        error_report("can't process fields for smbios "
-> > +                     "types > 1 on machine versions < 2.1!");
-> > +        exit(1);
-> >     }
-> > 
-> >     if (!smbios_immutable) {
-> > @@ -1006,28 +1012,13 @@ void smbios_set_default_processor_family(uint16_t processor_family)
-> > }
-> > 
-> > void smbios_set_defaults(const char *manufacturer, const char *product,
-> > -                         const char *version, bool legacy_mode,
-> > +                         const char *version,
-> >                          bool uuid_encoded, SmbiosEntryPointType ep_type)
-> > {
-> >     smbios_have_defaults = true;
-> > -    smbios_legacy = legacy_mode;
-> >     smbios_uuid_encoded = uuid_encoded;
-> >     smbios_ep_type = ep_type;
-> > 
-> > -    /* drop unwanted version of command-line file blob(s) */
-> > -    if (smbios_legacy) {
-> > -        g_free(smbios_tables);
-> > -        /* in legacy mode, also complain if fields were given for types > 1 */
-> > -        if (find_next_bit(have_fields_bitmap,
-> > -                          SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
-> > -            error_report("can't process fields for smbios "
-> > -                         "types > 1 on machine versions < 2.1!");
-> > -            exit(1);
-> > -        }
-> > -    } else {
-> > -        g_free(smbios_entries);
-> > -    }
-> > -
-> >     SMBIOS_SET_DEFAULT(type1.manufacturer, manufacturer);
-> >     SMBIOS_SET_DEFAULT(type1.product, product);
-> >     SMBIOS_SET_DEFAULT(type1.version, version);
-> > @@ -1103,6 +1094,10 @@ void smbios_get_tables(MachineState *ms,
-> > {
-> >     unsigned i, dimm_cnt, offset;
-> > 
-> > +    /* drop unwanted (legacy) version of command-line file blob(s) */
-> > +    g_free(smbios_entries);
-> > +    smbios_entries = NULL;
-> > +  
-> 
-> Can you please explain why you do this unconditionally without checking for legacy mode? Seems wrong?
+> On Tue, 27 Feb 2024 17:11:15 +0000
+> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+>=20
+> > On Tue, 27 Feb 2024 08:37:15 +0000
+> > Ankit Agrawal <ankita@nvidia.com> wrote:
+> >  =20
+> > > Thanks Jonathan for reviewing the change.
+> > >=20
+> > > Comments inline.
+> > >    =20
+> > > >> The structure needs a PCI device handle [2] that consists of the d=
+evice BDF.
+> > > >> The vfio-pci device corresponding to the acpi-generic-initiator ob=
+ject is
+> > > >> located to determine the BDF.
+> > > >>
+> > > >> [1] ACPI Spec 6.3, Section 5.2.16.6
+> > > >> [2] ACPI Spec 6.3, Table 5.80
+> > > >>
+> > > >> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>     =20
+> > > >Hi Ankit,
+> > > >
+> > > > As the code stands the use of a list seems overkill.     =20
+> > >=20
+> > > Yeah, I will try out your suggestion.
+> > >    =20
+> > > > Otherwise looks good to me.=A0 I need Generic Ports support for CXL
+> > > > stuff so will copy your approach for that as it's ended up nice
+> > > > and simple.
+> > > >=20
+> > > > Jonathan     =20
+> > >=20
+> > > Nice, would be good to have uniform implementations.   =20
+> >=20
+> > I've been messing around with this today.
+> >=20
+> > They differ only very trivially.
+> > 2 Options.
+> > 1) Have acpi-generic-port inherit from acpi-generic-initiator.
+> >    Works but implies a relationship that isn't really true.
+> > 2) Add an abstract base class. I've called it acpi-generic-node
+> >    and have bother acpi-generic-initiator and acpi-generic-port
+> >    inherit from it.
+> >=20
+> > The second feels more natural but is a tiny bit more code (a few
+> > more empty init / finalize functions.
+> >=20
+> > If we are going to end up with an abstract base 'object' it
+> > will be cleaner to do this all as one series if you don't mind
+> > carrying the generic port stuff as well? Or I can smash the
+> > two series together and send out an updated version that hopefully
+> > meets both our requirements (+ tests etc).
+> >=20
+> > I'm just running tests against the CXL qos / generic port code
+> > but assuming all goes well can share my additional changes
+> > in next day or two.
+> >=20
+> > Jonathan =20
+>=20
+> One more thing.  Right now we can't use Generic Initiators as
+> HMAT initiators.  That also wants fixing given that's their
+> normal usecase rather than what you are using them for so it
+> should 'work'.
 
-with this patch legacy tables build is moved to fw_cfg_build_smbios(),
-however at this point QEMU still has option processing that fills
-both new and legacy smbios_entries blobs. 
+Something along the lines of this will do the job.
 
-this hunk cleanups not needed blob smbios_entries when building
-modern tables, and smbios_get_table_legacy() has a corresponding
-smbios_tables cleanup since modern is not needed there.
 
-[7/19] removes this in favor of a single blob.
+diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+index 4173ef2afa..825cfe86bc 100644
+--- a/include/sysemu/numa.h
++++ b/include/sysemu/numa.h
+@@ -41,6 +41,7 @@ struct NodeInfo {
+     struct HostMemoryBackend *node_memdev;
+     bool present;
+     bool has_cpu;
++    bool has_gi;
+     uint8_t lb_info_provided;
+     uint16_t initiator;
+     uint8_t distance[MAX_NODES];
+diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-initia=
+tor.c
+index 9179590a42..8a67300320 100644
+--- a/hw/acpi/acpi-generic-initiator.c
++++ b/hw/acpi/acpi-generic-initiator.c
+@@ -6,6 +6,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/acpi/acpi-generic-initiator.h"
+ #include "hw/pci/pci_device.h"
++#include "hw/boards.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-builtin-visit.h"
+ #include "qapi/visitor.h"
+@@ -58,6 +59,7 @@ static void acpi_generic_node_set_node(Object *obj, Visit=
+or *v,
+                                        const char *name, void *opaque,
+                                        Error **errp)
+ {
++    MachineState *ms =3D MACHINE(qdev_get_machine());
+     AcpiGenericNode *gn =3D ACPI_GENERIC_NODE(obj);
+     uint32_t value;
+=20
+@@ -72,6 +74,10 @@ static void acpi_generic_node_set_node(Object *obj, Visi=
+tor *v,
+     }
+=20
+     gn->node =3D value;
++
++    if (object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
++        ms->numa_state->nodes[gn->node].has_gi =3D true;
++    }
+ }
+=20
+ static void acpi_generic_node_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/acpi/hmat.c b/hw/acpi/hmat.c
+index b933ae3c06..9b1662b6b8 100644
+--- a/hw/acpi/hmat.c
++++ b/hw/acpi/hmat.c
+@@ -225,7 +225,7 @@ static void hmat_build_table_structs(GArray *table_data=
+, NumaState *numa_state)
+     }
+=20
+     for (i =3D 0; i < numa_state->num_nodes; i++) {
+-        if (numa_state->nodes[i].has_cpu) {
++        if (numa_state->nodes[i].has_cpu || numa_state->nodes[i].has_gi) {
+             initiator_list[num_initiator++] =3D i;
+         }
+     }
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index f08956ddb0..58a32f1564 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -229,7 +229,8 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmat=
+LBOptions *node,
+                    node->target, numa_state->num_nodes);
+         return;
+     }
+-    if (!numa_info[node->initiator].has_cpu) {
++    if (!numa_info[node->initiator].has_cpu &&
++        !numa_info[node->initiator].has_gi) {
+         error_setg(errp, "Invalid initiator=3D%d, it isn't an "
+                    "initiator proximity domain", node->initiator);
+         return;
 
-> 
-> >     if (!smbios_immutable) {
-> >         smbios_build_type_0_table();
-> >         smbios_build_type_1_table();
-> > -- 
-> > 2.39.3
-> >   
-> 
+>=20
+> Jonathan
+>=20
+> >=20
+> >=20
+> >  =20
+>=20
 

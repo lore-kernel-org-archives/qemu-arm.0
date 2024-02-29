@@ -1,141 +1,182 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp302762eja;
-        Thu, 29 Feb 2024 02:54:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU4ldC9eBiKZU15TteQmaHBpPkV8FyvQmxLPKvX8PlqDdAt9W+0NOfKL8BgY+N5Vp93PSXM1C9J/ExJHa3yzwy5GICYqMrK
-X-Google-Smtp-Source: AGHT+IFUYbI/G46Dl3x6n/S5DRhKA+hmgn28z9aGXIpmYkQNMCmCoC+Am1ZNsziZlNwOrwIaD5De
-X-Received: by 2002:a05:620a:a06:b0:787:d4fc:932e with SMTP id i6-20020a05620a0a0600b00787d4fc932emr1703763qka.34.1709204055711;
-        Thu, 29 Feb 2024 02:54:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709204055; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp325919eja;
+        Thu, 29 Feb 2024 03:44:08 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXq4MMf3HVbgi70B8/DtP87ovPBwvPqNx06sorRjP0P5E4NI1EpM8wwp6YXWtkLZqoBzCmEFHBWxS0OPJAk4KSkFUvzNAcx
+X-Google-Smtp-Source: AGHT+IFnC6KiCSoRLxYUOf7dRHrHhn9kPLMxHnJJCe1NMdmVCaCj1hH1edQewCSNrKpV/YBex/s3
+X-Received: by 2002:a05:6870:e2d2:b0:220:8cc9:8f86 with SMTP id w18-20020a056870e2d200b002208cc98f86mr1889929oad.25.1709207048488;
+        Thu, 29 Feb 2024 03:44:08 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709207048; cv=pass;
         d=google.com; s=arc-20160816;
-        b=oHnmU5tMHQ+oXiHIj8IPcVuVyl7yjh+gS3hQnkFYw6S6UIXfZNgEZYBnc0kV20JgA2
-         OSaURvtpKgYbEmnV0Jwuf6Il6cSGNgbmz0q+MIvUA8341dEz5f5s9o7kP3eLAuPCEG8d
-         fASPbyEw/tIzL9XDyDs/PJm/+ZHPh7rMUnya/4kQILcdruILbNgeGZV8TuvtWA0NJpZF
-         TeTX+dkiiuNdtMWNAb7JCNZO9LfJALOYZSMeJMm0V8FpSetKvRe4iwbEAWxMdqgHcLML
-         w4ndMyzno9lib5IiFyPnpLCKyTCG3rjaf5cI0/ZVk9afSz8nEHaX0HTCTQeMTgfo41LS
-         aBsw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=NVMw66Jgzoolq3jkCjF11t4l5f/Ua7CSgsf7Zn0Jnsa4FD0OzVDSi1r4WjliyifDvw
+         E90brUSmNsqJf5HCK2mOJhmk9uidgXXUq/bCGxlBweFZf6ihhYXCNafMgsqDlR0z69NP
+         Zbghu9Ob933GdTBtPbKY/ffy5uc4OtNMYd0NJ75cf7op2JnY2PFbjZRIh+FrC0+DvOb9
+         Hdv/nrzHn/7b7R+e6h04YFyMk7fbE90H0OBZ98RcmV+N6keOX6mp5hyiKQqIamChsHN+
+         qcod/mbFO77cVDiCTChKGO/GqV8Z4Pn0MBr4M8T1MdMXnql970LiDNDn9JdGrnA0s9Px
+         FN8Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
-         :dkim-signature;
-        bh=tgMIq/M5mFlfMpvX5wTxywxxRMmmvaYAYKVWg20StjQ=;
-        fh=j1TXyZAfvd5vP9Ap1biIsVS0p2d98qbkVYk02+m98oA=;
-        b=QkCLJvv+DLTUNB6OjGxbTVNEjBWvXcaSBeWQ2OuJQMFTH7+ddfe8tr0ckGQqg7bBaL
-         AbQ/w2jU8j+O5tZP9zVq6Xu8RqTpgBR6vQMz4OQMCSsl3pB7iAJcsQ4w161bin3HyEUm
-         5bCwah0nxbB3ABNRBFbv7QJ4Vth1KAKyUKcw99yJVBeBBh8Phd97gHNVgrYq+f2u5V6N
-         DrxuRHyYEUtywdRqUHQudpRiYE3reUDigqAeFhLiK3tB8wwUKWBaXaYNkTuBYl0cg4VU
-         8Zfk2BLZ7W73Q5RhY5NifKwDjcGaChr7v1jHDAprbRcQLj7jSGds/4t3jJkrIW/MOHoN
-         tvOg==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=HaIlKOFUay9tPTF9j+mNvghlSx1MmGw8SQmOmlDnnt4=;
+        fh=//zckbncL3ZhW3xWiNhTtCS03WRUJH+nZC60UJKs+F8=;
+        b=v0SPsS1MuucyIOUAci595N1qXLfXBj13F60tPSGyxALq7ZARXjZoqlgZsjBd3AIiQF
+         fXD1iUAyHAqPYX5j17K/de6RgO8R2mWMgv11yY2I2ezA78iBYgGFC073VKDm4kvoj8vP
+         xl05Fk9P6i/G0gIhsgIo8fPW/MvXobc332ZCvit0I74VelGaTzlKd7U6AQi5dpN5OA1u
+         EaVSD+6VlgE1mu4xhw1u6tEM2haRgWMDGHsE/TYtBAB8f34LUuE0F/R/7keUcN8GnCyo
+         oanwDfh643VCZvXS/QZQg9HhsJoYcb4G2tn+ZgEzGdzV2wGnPOsSNd/I15wPXmXMTKyc
+         M+tg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WdjLDo/x";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=WLIEUBwo;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a05620a030e00b00787245038bbsi1068935qkm.233.2024.02.29.02.54.15
+        by mx.google.com with ESMTPS id o7-20020ac86d07000000b0042e635426dcsi1108211qtt.708.2024.02.29.03.44.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 02:54:15 -0800 (PST)
+        Thu, 29 Feb 2024 03:44:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WdjLDo/x";
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=WLIEUBwo;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfe2x-0000FA-Be; Thu, 29 Feb 2024 05:53:51 -0500
+	id 1rfepR-0007I3-Eb; Thu, 29 Feb 2024 06:43:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfe2w-0000El-4A
- for qemu-arm@nongnu.org; Thu, 29 Feb 2024 05:53:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rfepO-0007Hg-1E; Thu, 29 Feb 2024 06:43:55 -0500
+Received: from mail-dm6nam11on20601.outbound.protection.outlook.com
+ ([2a01:111:f403:2415::601]
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfe2p-0005PQ-VS
- for qemu-arm@nongnu.org; Thu, 29 Feb 2024 05:53:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709204022;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tgMIq/M5mFlfMpvX5wTxywxxRMmmvaYAYKVWg20StjQ=;
- b=WdjLDo/xDm9gs/HLzLxSsbutUkBV0hH5yDyizv94rhbXIybw0+iZ4hTEE+ufWjtg2RyglG
- iqlDdTeCWfaNHSQ8G6yC/0wna3aB+XHD8B8qSZps4zSHULH8bTrL9C25NEfyVWTamvvKLj
- lB8Dz2DzME3G+5mIEdAc/XswAghLmXs=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-642-5dQDocseNgW5T67lWBD_HA-1; Thu, 29 Feb 2024 05:53:40 -0500
-X-MC-Unique: 5dQDocseNgW5T67lWBD_HA-1
-Received: by mail-il1-f198.google.com with SMTP id
- e9e14a558f8ab-36527824ab9so7754755ab.1
- for <qemu-arm@nongnu.org>; Thu, 29 Feb 2024 02:53:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709204019; x=1709808819;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=T04YZ+WjGIGT+oF86UZYJmgPRyPQqMGsqGuR8vP+UKY=;
- b=iP8TxF8Cyr3RCDHD3zKe78JZHNvQq3qLR7T73kgMtn3/J1T1tzZcdx22dYZNlr7aPx
- nzSCtdEBixyws6TMI7VEwfvEavq8xuFs6KOXfRKqFxo+UkoN9F8lFxmPJBtx6RKAgkhG
- j+/GXAPCl5S6Mr3G3gKHTMIxgOnOAPxT3oxNXlV76gs9BP2vNTgqB086gh0FwWiqjKwB
- jKEZWBpgnnXT8leW2o4whKr7C8VbpOjWWi4TrxUc0hlX0tGPBY/UxQkKg8ABgXtuAEpD
- qI6gfYiE1CLUbTEDWfyQrNQ3XRyTYcnbuXbNMAabvENF3fAvei110qTZi49BBW1iwII+
- kcDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVluDkDW83VGT8uaKXVoAUbP1FE36LJP0URbwvRnSlAMsMlKkLzu1dWn4SwREs4o74aTFmJW/ABsZ+IshvSTBlz9gkQ
-X-Gm-Message-State: AOJu0Yxtf2WWlyMSF6W+MaujfwOWV+tiVM6WTRvGgtREWdZz+GKPIXuZ
- KyXioDLC0ZI4Y6noigplVA7k+V4lJecnQrKGVHsUg5KYG/EdjA2mLEgJdVO8tY3c0XefSkt5dzf
- BzKPwgyJWZuMFklyicHsFPSfRTuc6vh9GgVtG9QErRjRqZc92fw==
-X-Received: by 2002:a92:c9c1:0:b0:365:e03:df3b with SMTP id
- k1-20020a92c9c1000000b003650e03df3bmr2025450ilq.19.1709204019554; 
- Thu, 29 Feb 2024 02:53:39 -0800 (PST)
-X-Received: by 2002:a92:c9c1:0:b0:365:e03:df3b with SMTP id
- k1-20020a92c9c1000000b003650e03df3bmr2025430ilq.19.1709204019229; 
- Thu, 29 Feb 2024 02:53:39 -0800 (PST)
-Received: from smtpclient.apple ([115.96.135.6])
- by smtp.gmail.com with ESMTPSA id
- lp3-20020a056a003d4300b006e553f2b880sm974810pfb.211.2024.02.29.02.53.33
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 29 Feb 2024 02:53:38 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH 06/19] smbios: get rid of smbios_legacy global
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240227154749.1818189-7-imammedo@redhat.com>
-Date: Thu, 29 Feb 2024 16:23:21 +0530
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Song Gao <gaosong@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Message-Id: <0129FA3E-A566-481A-85A6-439E72C5594B@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-7-imammedo@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-X-Mailer: Apple Mail (2.3774.400.31)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=us-ascii
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1rfepL-0002ZQ-KK; Thu, 29 Feb 2024 06:43:53 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dzc0ypc8dWQgXsYWzRmdUNsaTOASN0LlQc7UVGHU1yGduCeBQA2hwweMhhjkvM2ifie1aD7tBsxhEtheEaowDVRS5vqtB+9ZvBLHu5/aWEElo3usJkYW2TPkgxCwQn2vhMpE9ZGC0xq5yeFxg4ILhVuY6HHJW5Z7pfs77Dpx6VzU5x4Luw1jv1UTfEvQ/Fao/nNm3CS1dt1wT4k1rXbOcaOdTyWoVyBG+mKMSxFyWZK1B8aC8Ez7E3E5Je8UgblxBkZfVyS+niyrD/9y75xRGqVX3/sOz/n70/IiuCLFQvR/NDYeE8uUL81BHc/t+VWz0LVZiwL9jmqFoiii9RTx5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HaIlKOFUay9tPTF9j+mNvghlSx1MmGw8SQmOmlDnnt4=;
+ b=DFeqkHYXSz+kVZ9HIvD7Vs5ugUARmdSr8ezreX/BcKYv2SXh8KqB9RLompC7hx9Ub9PmqBgxP0oDfOtAUh4jt+ZGkLLa//l0kMm3Oi7091zTJLXrQ3YPCZ1sQUg3f7EBZu7J15ygFekf3aVF00r7gScn9EcTUN6BzJPLGlegqhNQUF/rIXu+xuuwF8yoSpMzIa8lWg36T8AQbrSgkIfiMacl4P/8GaO1G4L1Pk9fahSpnUTvM2xkTxI92cWpgqKt3LQQGMhfAQPCYEBQryjznQHPK9lifXggr5WKRs5eXq6IGwgIe8CgGALGhqW/Gb/rlsgUHwBfXpvC/rQwIId3bw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HaIlKOFUay9tPTF9j+mNvghlSx1MmGw8SQmOmlDnnt4=;
+ b=WLIEUBwoVP13TSnwK+XSB/cQS79N+rLgYscUc4mZee6WorzEf2lYkCJfu8cxh/q2ZMgkFQNtbmCLjoongJrbl6Ix5RKu0+SfJaGI0g92HXinLBbYAJJ9vcMHTolg10Pdu8vxScHHSNTUL5LYWVnBd4tUcJ14ds5LpTna5N9R6NjF47uyc9VU/yZZsMtNgPmpnHT9p/GEZGUi3Daxc0t7KldALcGmLjJv48hCcdHr9ytZHBPHMfXTM56bPmqK2UwlQJ3MFsyHEM0t0k1XhVUpfvu+GhEBf7TpUE4i35/Y1dQvj3HGGj1F4UMBSUDyXj+G1W0B5nFN16G+HAxi1FRBYA==
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
+ by MW3PR12MB4491.namprd12.prod.outlook.com (2603:10b6:303:5c::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.41; Thu, 29 Feb
+ 2024 11:43:44 +0000
+Received: from SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
+ ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7316.032; Thu, 29 Feb 2024
+ 11:43:44 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Zhi Wang <zhiw@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Topic: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Index: AQHaZlXRPSA0zxYvqU+8THPBcca33bEc2OaAgARh1QA=
+Date: Thu, 29 Feb 2024 11:43:44 +0000
+Message-ID: <SA1PR12MB7199C32D46CF39363F38D2E7B05F2@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20240223124223.800078-1-ankita@nvidia.com>
+ <20240223124223.800078-3-ankita@nvidia.com>
+ <20240226164229.00001536@Huawei.com>
+In-Reply-To: <20240226164229.00001536@Huawei.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|MW3PR12MB4491:EE_
+x-ms-office365-filtering-correlation-id: 730030ec-638c-4485-fa3f-08dc391baefb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: sJ5PJqO95bT3ANoRes+MbUiICe2qcXPFBl8qcaKWvdkk4sEMhrlQVi2dCs3yY+NVwQoLG+LnvOJBs57LJfR1yqlNKaNceZUmKNhuG7FZt8RuhSaxW3Vq0sSS7gyWsyPBGi9eRgXB0GeedSoHTxfyph16ZDkcd8rVRUek3NNp3PyhYPv4K/h+ldm6rnnJNv9Q3b1sxp3mV7PMY3zrhBwv98YS6xVLi3sQwo+ZOZnht2RZZrNCAnhcJlKceIgeL0T++gOL3eJi1F5KhSBtA8pXL7vdm5NYHOYrVQRV3G/z6PDEXLkNx/hquVgHb/cU/gcgoVt7CbCab2qxPSFHXvfp+rlG9C42yh+NFxmN71naeJ5Dw2rcEb0J7YgFRXEgdg88nhiEUJnVw80baZKbmESi1e+5wBPcU0JQ38vuhoyckVneX8m0RL1v3HUuM5HnNmI9n6YnnUhO9l54hHkc6ME6bzbtV5BXt1NbHqkkBBVRU05BPK4EkISDCneWivUUHzRmOPqX2HWKcYFp2cvxJBMlixIib69uJNmr43gZ0KSrRnvwf/xWo5XAxfMbHaEaNCh1fgA6VXqJrmYL15mI0s/TqwErxKRv5QHDuRzVvD7IDp6i9DsMhrk3HaSuJn7zCspeMINMrfEzYss33UjOj0WwjbAm09PBG/hqfjLezQnF2z04uEOkoixmxXWfsgXa2ByrAw3HKKVG6RDOXqxwIbB+c5uQYqJP2EUGpMCLj9U4yXE=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(38070700009); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?NDmGiQmCFcAL5/eaIKZWj3Gwe/x/vQ9Tkan/T//AEEghJvvnCOW90MEH6s?=
+ =?iso-8859-1?Q?jKQHgv536tiaxhxyvkb7248uCHwTX3g5khixlYdSJ9ybYpwhLmlueIAQp5?=
+ =?iso-8859-1?Q?vCecCqdohLqkmTAfXMNNyikeHkRV0EEt4+fmp/XTlsf+Tx3XpjBxqM4ePq?=
+ =?iso-8859-1?Q?J/xcU3BkcTm3ZpVlEiz+Kw4OlV6oeiQO6l9brbdDCrG7S8MuyfZD7xVCTy?=
+ =?iso-8859-1?Q?tHeUEBwcvoYqDFoHKhE32nseuc8MsqYkbwaMPa8+Kg5QWG1WxVsTa26Vmp?=
+ =?iso-8859-1?Q?6wv3jgY8bGI7BYHsNiLlfOhZhhN1uwQw2w/7OKGRhYCE50Px5TmoCjrW2E?=
+ =?iso-8859-1?Q?zerEEy1I/bib43GL7eplnjj0jqHPo8wVWbX6vmnIxcL3Vl+aP1hiFkvdP2?=
+ =?iso-8859-1?Q?ivhK4KDVbS+zK/4nuzlvUdCDB1d/qEuJA9ehp5JbVrNNX8UQT+CPZ+sMjZ?=
+ =?iso-8859-1?Q?4KRqqaFB8g34YS9SPrh5TUMQ5RyomHE6EhzYxG8VSBCFSrtNm3kFn4p6lv?=
+ =?iso-8859-1?Q?oXCB97o9VjsR+qV6jEZwfrBW7suj1MVso7aGudc+Z90mrsw4+Gfj7b7VWv?=
+ =?iso-8859-1?Q?iupEVlwB5jWQwDifcDx/ysYvvjq/I6EJ69OF4BiLpVPXVE+N2tf4TPoaEh?=
+ =?iso-8859-1?Q?9TDqMi8g8sWvlLlmmas6GuOENC7n5nsmMBpd0XNgMkuHNqjI5zC+DVhmnF?=
+ =?iso-8859-1?Q?8hvBgFsxx0IdWPeE9CIXi2TnjoXAWqfVUHmnopQnbGOkPvg9LcF2quMWZD?=
+ =?iso-8859-1?Q?AU0sLgWyiznvq4DqSHiHH2Jfucaq8BpS+9NWs7RzNlB9t4Dw9dchg5SkUx?=
+ =?iso-8859-1?Q?mLUYUC/VghrGdlbwnxGoace3HS8O00wxo9L+JNrIAVDHAQtQIamSqFlBXT?=
+ =?iso-8859-1?Q?0/4dmX8YW96R12Ke5lWcuCngJ+Toi8++WwOoTAf/XkxJSUMJ78WL6svDz2?=
+ =?iso-8859-1?Q?u1QEq77Ly8Bj0PLuUZF7DvmPNYTaH+gJGz9l2MiS1mI9qFkFC9XVavXaEN?=
+ =?iso-8859-1?Q?oLJoCNG/NAh6E1ZmXJ0+QoCxBS4j082svbYV9cj+lPKUjJioo3Nb8D52UE?=
+ =?iso-8859-1?Q?k+ZW6cyK4bxv0mu0tgRe0J+dp122k9ohg/OnEgjYHR8Q1w6v4p5wgw80Jc?=
+ =?iso-8859-1?Q?YZX1UY7BJ0jkGMGwo9SNMcdmWy/Ewis8314btAzJyeV8r6i+MNNm72/mjJ?=
+ =?iso-8859-1?Q?fDOiqxZgooeqjsoUia+u3VOq6+QltkMeUuIxTEsDifLYBetfFZJdn41cjw?=
+ =?iso-8859-1?Q?f1DzdrfgiDEuNXRpQU+YpK6OymrONt+np5M2ZteaAGkgmBGDzQtG7/z8E1?=
+ =?iso-8859-1?Q?GHd3aOna6g2BRpiXWNxxEb/3j+rPKb6IaRRCKAeQ69Msvd8HvdbgmeEPWr?=
+ =?iso-8859-1?Q?O0hbyO+ZElpmePaMeMYHE2OFRVifQiehOloTniegyD8hAloPFqo/nJe26c?=
+ =?iso-8859-1?Q?XMDZHUfhFU0n6djCgh6ByoPEy/WnLrKiDp6md5lACA8XgC8Q3g7OwCgb0M?=
+ =?iso-8859-1?Q?/8L9tTeGbtzo8Y2A+rNSYHugsGKt6GwbUamm4XOt5LjXzPI5yqFAFWnkwH?=
+ =?iso-8859-1?Q?TZ7FHjkVk4/yZLBWVvarh1/qRcdklnti6Y3HeWYjPotPq4CUjxcblKOLh1?=
+ =?iso-8859-1?Q?25KbI6fvbJW3Y=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 730030ec-638c-4485-fa3f-08dc391baefb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Feb 2024 11:43:44.1791 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ba6MzlbhPBwsxA0BmfNOyDCo/NFx35dehVuTt62nLfPhnR+D3VD9XWnT0yjW7eZK87CcJOjgDXyhMGZLGYp9Ag==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4491
+Received-SPF: softfail client-ip=2a01:111:f403:2415::601;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,198 +192,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5wEtWWP0zjUL
+X-TUID: h8/+l2GkjwJr
 
-
-
-> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
->=20
-> clean up smbios_set_defaults() which is reused by legacy
-> and non legacy machines from being aware of 'legacy' notion
-> and need to turn it off. And push legacy handling up to
-> PC machine code where it's relevant.
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> PS: I've moved/kept legacy smbios_entries to smbios_get_tables()
-> but it at least is not visible to API users. To get rid of it
-> as well, it would be necessary to change how '-smbios' CLI
-> option is processed. Which is done later in the series.
-> ---
-> include/hw/firmware/smbios.h |  2 +-
-> hw/arm/virt.c                |  2 +-
-> hw/i386/fw_cfg.c             |  7 ++++---
-> hw/loongarch/virt.c          |  2 +-
-> hw/riscv/virt.c              |  2 +-
-> hw/smbios/smbios.c           | 35 +++++++++++++++--------------------
-> 6 files changed, 23 insertions(+), 27 deletions(-)
->=20
-> diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-> index a187fbbd3d..0818184834 100644
-> --- a/include/hw/firmware/smbios.h
-> +++ b/include/hw/firmware/smbios.h
-> @@ -293,7 +293,7 @@ struct smbios_type_127 {
-> void smbios_entry_add(QemuOpts *opts, Error **errp);
-> void smbios_set_cpuid(uint32_t version, uint32_t features);
-> void smbios_set_defaults(const char *manufacturer, const char *product,
-> -                         const char *version, bool legacy_mode,
-> +                         const char *version,
->                          bool uuid_encoded, SmbiosEntryPointType ep_type)=
-;
-> void smbios_set_default_processor_family(uint16_t processor_family);
-> uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *leng=
-th);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 0af1943697..8588681f27 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1633,7 +1633,7 @@ static void virt_build_smbios(VirtMachineState *vms=
-)
->     }
->=20
->     smbios_set_defaults("QEMU", product,
-> -                        vmc->smbios_old_sys_ver ? "1.0" : mc->name, fals=
-e,
-> +                        vmc->smbios_old_sys_ver ? "1.0" : mc->name,
->                         true, SMBIOS_ENTRY_POINT_TYPE_64);
->=20
->     /* build the array of physical mem area from base_memmap */
-> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> index fcb4fb0769..c1e9c0fd9c 100644
-> --- a/hw/i386/fw_cfg.c
-> +++ b/hw/i386/fw_cfg.c
-> @@ -63,15 +63,16 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgS=
-tate *fw_cfg)
->     if (pcmc->smbios_defaults) {
->         /* These values are guest ABI, do not change */
->         smbios_set_defaults("QEMU", mc->desc, mc->name,
-> -                            pcmc->smbios_legacy_mode, pcmc->smbios_uuid_=
-encoded,
-> +                            pcmc->smbios_uuid_encoded,
->                             pcms->smbios_entry_point_type);
->     }
->=20
->     /* tell smbios about cpuid version and features */
->     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX=
-]);
->=20
-> -    smbios_tables =3D smbios_get_table_legacy(ms->smp.cpus, &smbios_tabl=
-es_len);
-> -    if (smbios_tables) {
-> +    if (pcmc->smbios_legacy_mode) {
-> +        smbios_tables =3D smbios_get_table_legacy(ms->smp.cpus,
-> +                                                &smbios_tables_len);
->         fw_cfg_add_bytes(fw_cfg, FW_CFG_SMBIOS_ENTRIES,
->                          smbios_tables, smbios_tables_len);
->         return;
-> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> index 0ad7d8c887..73fb3522ba 100644
-> --- a/hw/loongarch/virt.c
-> +++ b/hw/loongarch/virt.c
-> @@ -320,7 +320,7 @@ static void virt_build_smbios(LoongArchMachineState *=
-lams)
->         return;
->     }
->=20
-> -    smbios_set_defaults("QEMU", product, mc->name, false,
-> +    smbios_set_defaults("QEMU", product, mc->name,
->                         true, SMBIOS_ENTRY_POINT_TYPE_64);
->=20
->     smbios_get_tables(ms, NULL, 0, &smbios_tables, &smbios_tables_len,
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index fd35c74781..e2c9529df2 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1235,7 +1235,7 @@ static void virt_build_smbios(RISCVVirtState *s)
->         product =3D "KVM Virtual Machine";
->     }
->=20
-> -    smbios_set_defaults("QEMU", product, mc->name, false,
-> +    smbios_set_defaults("QEMU", product, mc->name,
->                         true, SMBIOS_ENTRY_POINT_TYPE_64);
->=20
->     if (riscv_is_32bit(&s->soc[0])) {
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 15339d8dbe..c46fc93357 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -54,7 +54,6 @@ struct smbios_table {
->=20
-> static uint8_t *smbios_entries;
-> static size_t smbios_entries_len;
-> -static bool smbios_legacy =3D true;
-> static bool smbios_uuid_encoded =3D true;
-> /* end: legacy structures & constants for <=3D 2.0 machines */
->=20
-> @@ -570,9 +569,16 @@ static void smbios_build_type_1_fields(void)
->=20
-> uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *leng=
-th)
-> {
-> -    if (!smbios_legacy) {
-> -        *length =3D 0;
-> -        return NULL;
-> +    /* drop unwanted version of command-line file blob(s) */
-> +    g_free(smbios_tables);
-> +    smbios_tables =3D NULL;
-> +
-> +    /* also complain if fields were given for types > 1 */
-> +    if (find_next_bit(have_fields_bitmap,
-> +                      SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
-> +        error_report("can't process fields for smbios "
-> +                     "types > 1 on machine versions < 2.1!");
-> +        exit(1);
->     }
->=20
->     if (!smbios_immutable) {
-> @@ -1006,28 +1012,13 @@ void smbios_set_default_processor_family(uint16_t=
- processor_family)
-> }
->=20
-> void smbios_set_defaults(const char *manufacturer, const char *product,
-> -                         const char *version, bool legacy_mode,
-> +                         const char *version,
->                          bool uuid_encoded, SmbiosEntryPointType ep_type)
-> {
->     smbios_have_defaults =3D true;
-> -    smbios_legacy =3D legacy_mode;
->     smbios_uuid_encoded =3D uuid_encoded;
->     smbios_ep_type =3D ep_type;
->=20
-> -    /* drop unwanted version of command-line file blob(s) */
-> -    if (smbios_legacy) {
-> -        g_free(smbios_tables);
-> -        /* in legacy mode, also complain if fields were given for types =
-> 1 */
-> -        if (find_next_bit(have_fields_bitmap,
-> -                          SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
-> -            error_report("can't process fields for smbios "
-> -                         "types > 1 on machine versions < 2.1!");
-> -            exit(1);
-> -        }
-> -    } else {
-> -        g_free(smbios_entries);
-> -    }
-> -
->     SMBIOS_SET_DEFAULT(type1.manufacturer, manufacturer);
->     SMBIOS_SET_DEFAULT(type1.product, product);
->     SMBIOS_SET_DEFAULT(type1.version, version);
-> @@ -1103,6 +1094,10 @@ void smbios_get_tables(MachineState *ms,
-> {
->     unsigned i, dimm_cnt, offset;
->=20
-> +    /* drop unwanted (legacy) version of command-line file blob(s) */
-> +    g_free(smbios_entries);
-> +    smbios_entries =3D NULL;
-> +
-
-Can you please explain why you do this unconditionally without checking for=
- legacy mode? Seems wrong?
-
->     if (!smbios_immutable) {
->         smbios_build_type_0_table();
->         smbios_build_type_1_table();
-> --=20
-> 2.39.3
->=20
-
+> One thing I forgot.=0A=
+>=0A=
+> Please add a test.=A0 tests/qtest/bios-tables-test.c=0A=
+=0A=
+IIUC, we need to add a test for aarch64 to test the interface with the=0A=
+acpi-generic-initiator object.=0A=
+=0A=
+> + relevant table dumps.=0A=
+=0A=
+Sorry it isn't clear where do you want me to add this. In the git commit=0A=
+message?=0A=

@@ -1,195 +1,124 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp375643eja;
-        Thu, 29 Feb 2024 05:15:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUZSaxrXLQVa/2n1nTnjFuxoi7hSbdg1qtBvcUWdJNCxYBvkWkaSOkzhmrnqGnM26vqBkbAnowiQlkmiGOb7mfO5szHc3aR
-X-Google-Smtp-Source: AGHT+IFO7TRunMUY948YeQDwXNkhvlWhK6KS3mC9LtAy+xpYwOjZb/hlIXJBYKdJCwT4/5deq7IW
-X-Received: by 2002:a67:c40e:0:b0:472:7747:14d6 with SMTP id c14-20020a67c40e000000b00472774714d6mr1496618vsk.26.1709212528315;
-        Thu, 29 Feb 2024 05:15:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709212528; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp377655eja;
+        Thu, 29 Feb 2024 05:18:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU1hIIWiiG/4Et6IbPBgqzfjKBjlU3a+bB0WoOSxutkMoe8Zs7NgQIoIHr/VoB3BoKawppzyFkIRlXw47QzpGkUbB98f+Gh
+X-Google-Smtp-Source: AGHT+IFU17/BQKK91TbheEXKqy3CaRYyPiFF7dAnA28lHBtiNSjyaSqRtSMhLkalOpqB/nY4Sa+q
+X-Received: by 2002:a05:6830:1e84:b0:6e4:bb48:39f4 with SMTP id n4-20020a0568301e8400b006e4bb4839f4mr1757774otr.35.1709212723365;
+        Thu, 29 Feb 2024 05:18:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709212723; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y9wqbd/KOi2eLB8uOuUDTh5N1cdR/NtTuZQflDudyz+YZs8U6G9aPNFoYin/FZANW3
-         n/2KBd2+0hlwYMjBuNRXpJLcfHDL7hrR0iIt0QZgQv18QG527QSrxRVqD6++dwSPn/Un
-         S+2LiZtsSCyZRmB+yUgKsW2NR17f0l0WW97PAC/bmpAsSPs2AVhPKJ41yRqm0dPo01rt
-         o2zx/qSlSNBAoGd7+MTiH99fDy/Y4dnUW/xPS1MkyhLqknkXiC4g66c6JWODkfRXx0M0
-         M2dRg321ZeOE++D+JgSTHA90i9Cm7FxOCE9H2v/3eoQ4OHVHFknwRbft52zP5/2hBMIv
-         MRJA==
+        b=NI+8Ozw4DAHuWvVqd5mSVotNo0ZXHGGeB+NRXWUrKxTudcEr7n+0MOHsiBJbjR/ggJ
+         uMIeKpM6CwV5VbzBpM28k17HbTJKE8Pi6eClikmCXfA1WfCDGCKbOx21Vs8asf0ukc+Z
+         nKFAqrt04FV+1N6OGJkr0NJWXdCpcm48sn/fhZo44/6wU4+WVAaPFpgrQop3Jb28HT9e
+         zZfF1Gb5sIXfJz/7JXc0VkyGGSq7UpSSjK4BN2kD0+nNLQGpDjSOGslP4WwgQZs0UiAN
+         mLAcbDAFy9Pcb+y/sjC+otnFBNfO4VGInwqt7NmbVVhCKM9i9dmJPDhTNcBOWzkysg6d
+         9eHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=r2v8RQwDgySTh/taHWfZK8WzRFwK3hB0n+sY8tHshNg=;
-        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=nY/zxmd2V+cGm9lLYxs865jSKCffNEyB/Nw7a5Badv7WBlChSSo6/SDr/Fo7KTRunX
-         +84nVLKNYCf6Gf3OpKNJmiTRCnigRJcBo67yAb8ljJFSiCdpDBLDSPoDIBBzhTegcM7X
-         +KwjBk6vFFjJKYxISamdbUtmNhXf92UJBogQoix2P8N6MS7bftwKOHAGz6JiqdP8qNzA
-         NNGnABkDAs2OrVsRTd3bb7KlShFmO0W5Ndq5Zl2Un30+JQizjdjlWtA7NGfOlKrtBXHa
-         JOaWwsTte8BNP22Wut+q5HKtb3Xq1T2o/lM8OILYo3RX5ywFVwT+Np+J+x36aih17JKw
-         Hpuw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=W/p0SGHab+/uj5Jk7EuQ+3ol/tTRwXMI/9GFLcR/R6I=;
+        fh=Q5KDUqtjRy3+sC6114y2UzscfZIjjg6ZLQnstKDnu3E=;
+        b=ztgtu2Naki3YR1L1d16dGRjVDWIXE2/fmhgjNl4eLhefp5rJhLJKeZ8J7fsbzcP5oA
+         lnjPFHn9L5H1oNdB6/3uGTPYdUNiKO0QDZSYuuuXkHpkwDxd6bwLGrKmZy/h7/hyqwNc
+         3Iz2oNvxnpHAQILWIZPDxX92nN3eGtH7MnDxNkkX4bUO6Fkrea6xEWx6JEtDxFC5IymN
+         AjBJ5tsbvm+lJdGc3YazeSDOipz+lQ7UPZythj5+/tXDezy/VJ9NKLIHrUmL9+NJRjvd
+         pNIcbzpn8R3p+7ovZRL+dUon+EKU26H0xMRd34cvXV6LRfjZMysLWPBUPkuOMs5kXCw9
+         sRcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ij9-20020a0561025e8900b0046b567b185esi143549vsb.812.2024.02.29.05.15.28
+        by mx.google.com with ESMTPS id z9-20020a05622a028900b0042eb8a53fffsi1467605qtw.488.2024.02.29.05.18.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 05:15:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 05:18:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfgCp-0005oU-EK; Thu, 29 Feb 2024 08:12:11 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rfgIq-0004tu-Kd; Thu, 29 Feb 2024 08:18:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCc-0005dP-PI; Thu, 29 Feb 2024 08:11:58 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
+ id 1rfgIj-0004sI-On; Thu, 29 Feb 2024 08:18:17 -0500
+Received: from proxmox-new.maurer-it.com ([94.136.29.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCa-0002fH-BN; Thu, 29 Feb 2024 08:11:58 -0500
-Received: from mail.maildlp.com (unknown [172.19.88.163])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Tls7W72PVz1FLSw;
- Thu, 29 Feb 2024 21:11:51 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id AFD4E180060;
- Thu, 29 Feb 2024 21:11:53 +0800 (CST)
-Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 21:11:53 +0800
-To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
- <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v5 15/22] hw/intc/arm_gicv3: Implement GICD_INMIR
-Date: Thu, 29 Feb 2024 13:10:32 +0000
-Message-ID: <20240229131039.1868904-16-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240229131039.1868904-1-ruanjinjie@huawei.com>
-References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
+ (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
+ id 1rfgIh-0003hS-PD; Thu, 29 Feb 2024 08:18:17 -0500
+Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
+ by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 6D5A147F90;
+ Thu, 29 Feb 2024 14:18:12 +0100 (CET)
+Message-ID: <60950146-7b79-465d-9e33-3c485cc00504@proxmox.com>
+Date: Thu, 29 Feb 2024 14:18:11 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.55]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/19] Workaround Windows failing to find 64bit SMBIOS
+ entry point with SeaBIOS
+Content-Language: en-US
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
+ gaosong@loongson.cn, alistair.francis@wdc.com, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, anisinha@redhat.com, philmd@linaro.org,
+ wangyanan55@huawei.com, eblake@redhat.com, armbru@redhat.com,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+References: <20240227154749.1818189-1-imammedo@redhat.com>
+From: Fiona Ebner <f.ebner@proxmox.com>
+In-Reply-To: <20240227154749.1818189-1-imammedo@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=94.136.29.106; envelope-from=f.ebner@proxmox.com;
+ helo=proxmox-new.maurer-it.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vxTlUYvuEUcg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ooMVaclOZ8y8
 
-Add GICD_INMIR, GICD_INMIRnE register and support access GICD_INMIR0.
+Am 27.02.24 um 16:47 schrieb Igor Mammedov:
+> Windows (10) bootloader when running on top of SeaBIOS, fails to find            
+> SMBIOSv3 entry point. Tracing it shows that it looks for v2 anchor markers       
+> only and not v3. Tricking it into believing that entry point is found            
+> lets Windows successfully locate and parse SMBIOSv3 tables. Whether it           
+> will be fixed on Windows side is not clear so here goes a workaround.            
+>                                                                                  
+> Idea is to try build v2 tables if QEMU configuration permits,                    
+> and fallback to v3 tables otherwise. That will mask Windows issue                
+> form majority of users.                                                          
+> However if VM configuration can't be described (typically large VMs)             
+> by v2 tables, QEMU will use SMBIOSv3 and Windows will hit the issue              
+> again. In this case complain to Microsoft and/or use UEFI instead of             
+> SeaBIOS (requires reinstall).                                                    
+>                                                                                  
+> Default compat setting of smbios-entry-point-type after series                   
+> for pc/q35 machines:                                                             
+>   * 9.0-newer: 'auto'                                                            
+>   * 8.1-8.2: '64'                                                                
+>   * 8.0-older: '32'                                                              
+>                                                                                  
+> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2008                        
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-v4:
-- Make the GICD_INMIR implementation more clearer.
-- Udpate the commit message.
-v3:
-- Add Reviewed-by.
----
- hw/intc/arm_gicv3_dist.c | 34 ++++++++++++++++++++++++++++++++++
- hw/intc/gicv3_internal.h |  2 ++
- 2 files changed, 36 insertions(+)
+Thank you! I'm happy to confirm that this series works around the issue :)
 
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 35e850685c..9739404e35 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -89,6 +89,29 @@ static int gicd_ns_access(GICv3State *s, int irq)
-     return extract32(s->gicd_nsacr[irq / 16], (irq % 16) * 2, 2);
- }
- 
-+static void gicd_write_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                  uint32_t *bmp, maskfn *maskfn,
-+                                  int offset, uint32_t val)
-+{
-+    /*
-+     * Helper routine to implement writing to a "set" register
-+     * (GICD_INMIR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    *gic_bmp_ptr32(bmp, irq) = val;
-+    gicv3_update(s, irq, 32);
-+}
-+
- static void gicd_write_set_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-                                       uint32_t *bmp,
-                                       maskfn *maskfn,
-@@ -543,6 +566,11 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-         /* RAZ/WI since affinity routing is always enabled */
-         *data = 0;
-         return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        *data = (!s->nmi_support) ? 0 :
-+                gicd_read_bitmap_reg(s, attrs, s->superprio, NULL,
-+                                     offset - GICD_INMIR);
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
-@@ -752,6 +780,12 @@ static bool gicd_writel(GICv3State *s, hwaddr offset,
-     case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-         /* RAZ/WI since affinity routing is always enabled */
-         return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        if (s->nmi_support) {
-+            gicd_write_bitmap_reg(s, attrs, s->superprio, NULL,
-+                                  offset - GICD_INMIR, value);
-+        }
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index f35b7d2f03..a1fc34597e 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -52,6 +52,8 @@
- #define GICD_SGIR            0x0F00
- #define GICD_CPENDSGIR       0x0F10
- #define GICD_SPENDSGIR       0x0F20
-+#define GICD_INMIR           0x0F80
-+#define GICD_INMIRnE         0x3B00
- #define GICD_IROUTER         0x6000
- #define GICD_IDREGS          0xFFD0
- 
--- 
-2.34.1
+Best Regards,
+Fiona
 

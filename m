@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp373898eja;
-        Thu, 29 Feb 2024 05:12:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+gxZHkZgn7Us6pKWr1sRA8G5/8sBoolzZtGuIDTJybEr/31ShWIyey8lrPK3CkALoZZddFHzoH2IzkPsQi65plSIev6tu
-X-Google-Smtp-Source: AGHT+IFhdbEdKlKK+MhXCBQJZ0EVQqm+bNGVPtDWleBPzwZEksXaybX12tRKbupAry8h46KGBo0J
-X-Received: by 2002:a05:620a:2a13:b0:787:a2d2:d59b with SMTP id o19-20020a05620a2a1300b00787a2d2d59bmr2571744qkp.26.1709212372872;
-        Thu, 29 Feb 2024 05:12:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709212372; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp373972eja;
+        Thu, 29 Feb 2024 05:13:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWccny8fShdFQsFnkN46FKGeAhLNzt5m3C0V+JFpOg47xkEyKr8abgqv6y8fLVGpcG6CuKBMunG0KBBdprvfyDu1BFTaI80
+X-Google-Smtp-Source: AGHT+IEgdOEhi+T6FCtfhtk9ETAFDJqVjGlI6LErihIh85Exjb3gPZ6IQ0YxH9hhW34j9SvKaqLT
+X-Received: by 2002:a05:6214:702:b0:68f:e46b:47f with SMTP id c2-20020a056214070200b0068fe46b047fmr1906021qvz.17.1709212380410;
+        Thu, 29 Feb 2024 05:13:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709212380; cv=none;
         d=google.com; s=arc-20160816;
-        b=HXl7jDZK3v3L/glf2zCreYsnWky/ZFCEWrCYbza5NE6gkf8UEw6bggCwYaSW/yLVjH
-         uUdak4e3nAqY09slKk7MYrsb8anxTxF1ufgAARc3AoPFEyq5losn+8UKkc4YJ6y7Khb6
-         pYR589pZbXUay3ADM47KSlQRGMqnv9p3ywmuYTC1V0E4RxLOD7wLC8k4ZwKfKnYwkgJD
-         Vq6wwknf2Wp0mxpLi4WqLcyXndCI7OmnMu1Mix0eTi76qB4VBGD/D8YbJsKhs3Y19AIH
-         2TgeEklsURkjna0bZJNX3W8B0DPy4LUFk75hKm//EqKxo/+8PU8GBoW48jVbxx1sno5r
-         20og==
+        b=DEz7c8Yqf5yLUF54LeeSh6VUg1kNXcftpvEy7iqe6lDFc4/Uw8naL9ZTWyNSl5u2D7
+         zLeCVBWpqERZsfJaGFN2SBpANL9S5g526Z/NHUM/ybPBYzG0FIsKOFlX0I3kmcP2pWU7
+         enb6X6aCdNfPf+91bWHpo+j/8R+3gLWF+wpNpE3ixKbTzB8uO4angLRf15VVGIhONDCE
+         Uq//lzwYFB8VVDb6d/5uVCfn2mnzYuEIZgjA7JuVdp6pQdkhNriUMYt07UHl1k2t7hON
+         loZfY0yMk5AdTvizC71AkXHnrPZh+5yHSefYNBPpyljU1lyM9JbqclBSXEEA0EsSi6hc
+         tTpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=57Kw0PFlG9IUoX5OcjXRWHERtWXMJPxVOMZZtrJzxco=;
+        bh=bV2qmxVL6SODOmsM5SIrDQvwh6Zt7MiViQJJ7t0fqNg=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=xd5GSIxNl1VN9FGB9TGAWu6eYlS4rhNt/O5/aR13nk+dExeaveltFOW0RkX0PMoWza
-         1XpV0syWsF2xbpYzKdhPDUYUcyolmfV0MawuClTnYB8ZJhs9KIeESKTPNk2YsAvvjoY+
-         WWqzkP2mm9Qy0fY3XPyZ9/j2YB1YnJE45sR1gJl3JpC8GcH3+alp6P1i/ikDcgCPI6BD
-         D7QioLvP7SKr9YJa2TK9RMM4Z9bQLjqTzvITUJ74eq21i/AML4eQkn/bmx7w7/jUfu86
-         bE7xg2PYX5sb9UroU9FWRCu9Sy+GZX1B8IeYUYNcf4QPNiI/hISEy0sze+24r9vBJhTt
-         cNSg==;
+        b=gpIS+6W2wbUUqpmQ6GlwRwlX7sP+sHccIHJunleMkJczlzVFDvrV05c9Xp60RGLNB4
+         Knd1ARwmWsNI5vdAoECoJQu9xzUHrvuXoP16i2HUljSDDgIP6s9CRy/lFUxm4uJGVQau
+         +BjrjtNe7M0DGbSrf9ywbzAWqqVKwil7/891UFOt4f2nbnIcLDF9Su4JOhIutoYTTbF3
+         H3Xj020CPNhkI/8nWEJvSmeM8y9+Q7I+vWOe3xcPcC/WiHFfhmdzz21u0tzE8Tl5LB49
+         +D0STtuKlfQfLru+cgMrEWzIjei4ABTmQMI/1B6SSjOL+O8KCE7M/gIZjqCn+c2hCS7I
+         4isA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n11-20020ae9c30b000000b00786fe4117fcsi1297292qkg.388.2024.02.29.05.12.52
+        by mx.google.com with ESMTPS id iu4-20020ad45cc4000000b0068f7071cd09si1320716qvb.100.2024.02.29.05.13.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Feb 2024 05:12:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 29 Feb 2024 05:13:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rfgDA-0005yP-4q; Thu, 29 Feb 2024 08:12:32 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rfgCa-0005a9-Mu; Thu, 29 Feb 2024 08:11:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCc-0005cp-FF; Thu, 29 Feb 2024 08:11:58 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32])
+ id 1rfgCZ-0005YH-Cz; Thu, 29 Feb 2024 08:11:55 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rfgCZ-0002dV-Jc; Thu, 29 Feb 2024 08:11:58 -0500
-Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Tls6f19KJzqhs5;
- Thu, 29 Feb 2024 21:11:06 +0800 (CST)
+ id 1rfgCW-0002ec-Qn; Thu, 29 Feb 2024 08:11:55 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Tls5k6MBWz1xpWB;
+ Thu, 29 Feb 2024 21:10:18 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id CC17E140594;
- Thu, 29 Feb 2024 21:11:43 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 398C01402CE;
+ Thu, 29 Feb 2024 21:11:50 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 29 Feb
- 2024 21:11:43 +0800
+ 2024 21:11:49 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v5 04/22] target/arm: Implement ALLINT MSR (immediate)
-Date: Thu, 29 Feb 2024 13:10:21 +0000
-Message-ID: <20240229131039.1868904-5-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v5 11/22] hw/intc/arm_gicv3: Add external IRQ lines for NMI
+Date: Thu, 29 Feb 2024 13:10:28 +0000
+Message-ID: <20240229131039.1868904-12-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240229131039.1868904-1-ruanjinjie@huawei.com>
 References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
@@ -77,8 +77,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=ruanjinjie@huawei.com;
- helo=szxga06-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -86,129 +86,82 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CSHlbNDQhPMq
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Nv/1E9czKv1x
 
-Add ALLINT MSR (immediate) to decodetree, in which the CRm is 0b000x. The
-EL0 check is necessary to ALLINT, and the EL1 check is necessary when
-imm == 1. So implement it inline for EL2/3, or EL1 with imm==0. Avoid the
-unconditional write to pc and use raise_exception_ra to unwind.
+Augment the GICv3's QOM device interface by adding one
+new set of sysbus IRQ line, to signal NMI to each CPU.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v5:
-- Drop the & 1 in trans_MSR_i_ALLINT().
-- Simplify and merge msr_i_allint() and allint_check().
-- Rename msr_i_allint() to msr_set_allint_el1().
 v4:
-- Fix the ALLINT MSR (immediate) decodetree implementation.
-- Remove arm_is_el2_enabled() check in allint_check().
-- Update env->allint to env->pstate.
-- Only call allint_check() when imm == 1.
-- Simplify the allint_check() to not pass "op" and extract.
-- Implement it inline for EL2/3, or EL1 with imm==0.
-- Pass (a->imm & 1) * PSTATE_ALLINT (i64) to simplfy the ALLINT set/clear.
+- Add Reviewed-by.
 v3:
-- Remove EL0 check in allint_check().
-- Add TALLINT check for EL1 in allint_check().
-- Remove unnecessarily arm_rebuild_hflags() in msr_i_allint helper.
+- Add support for VNMI.
 ---
- target/arm/tcg/a64.decode      |  1 +
- target/arm/tcg/helper-a64.c    | 12 ++++++++++++
- target/arm/tcg/helper-a64.h    |  1 +
- target/arm/tcg/translate-a64.c | 18 ++++++++++++++++++
- 4 files changed, 32 insertions(+)
+ hw/intc/arm_gicv3_common.c         | 6 ++++++
+ include/hw/intc/arm_gic_common.h   | 2 ++
+ include/hw/intc/arm_gicv3_common.h | 2 ++
+ 3 files changed, 10 insertions(+)
 
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8a20dce3c8..0e7656fd15 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010 11111 @msr_i
- MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
- MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
- MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
-+MSR_i_ALLINT    1101 0101 0000 0 001 0100 000 imm:1 000 11111
- MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
- 
- # MRS, MSR (register), SYS, SYSL. These are all essentially the
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index ebaa7f00df..7818537890 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -66,6 +66,18 @@ void HELPER(msr_i_spsel)(CPUARMState *env, uint32_t imm)
-     update_spsel(env, imm);
- }
- 
-+void HELPER(msr_set_allint_el1)(CPUARMState *env)
-+{
-+    /* ALLINT update to PSTATE. */
-+    if (arm_hcrx_el2_eff(env) & HCRX_TALLINT) {
-+        raise_exception_ra(env, EXCP_UDEF,
-+                           syn_aa64_sysregtrap(0, 1, 0, 4, 1, 0x1f, 0),
-+                           exception_target_el(env), GETPC());
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index cb55c72681..c52f060026 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -299,6 +299,12 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+     for (i = 0; i < s->num_cpu; i++) {
+         sysbus_init_irq(sbd, &s->cpu[i].parent_vfiq);
+     }
++    for (i = 0; i < s->num_cpu; i++) {
++        sysbus_init_irq(sbd, &s->cpu[i].parent_nmi);
 +    }
-+
-+    env->pstate |= PSTATE_ALLINT;
-+}
-+
- static void daif_check(CPUARMState *env, uint32_t op,
-                        uint32_t imm, uintptr_t ra)
- {
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 575a5dab7d..0518165399 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -22,6 +22,7 @@ DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_2(msr_i_spsel, void, env, i32)
- DEF_HELPER_2(msr_i_daifset, void, env, i32)
- DEF_HELPER_2(msr_i_daifclear, void, env, i32)
-+DEF_HELPER_1(msr_set_allint_el1, void, env)
- DEF_HELPER_3(vfp_cmph_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmpeh_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 340265beb0..14e2b35b28 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2036,6 +2036,24 @@ static bool trans_MSR_i_DAIFCLEAR(DisasContext *s, arg_i *a)
-     return true;
- }
++    for (i = 0; i < s->num_cpu; i++) {
++        sysbus_init_irq(sbd, &s->cpu[i].parent_vnmi);
++    }
  
-+static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
-+{
-+    if (!dc_isar_feature(aa64_nmi, s) || s->current_el == 0) {
-+        return false;
-+    }
-+
-+    if (a->imm == 0) {
-+        clear_pstate_bits(PSTATE_ALLINT);
-+    } else if (s->current_el > 1) {
-+        set_pstate_bits(PSTATE_ALLINT);
-+    } else {
-+        gen_helper_msr_set_allint_el1(tcg_env);
-+    }
-+
-+    s->base.is_jmp = DISAS_TOO_MANY;
-+    return true;
-+}
-+
- static bool trans_MSR_i_SVCR(DisasContext *s, arg_MSR_i_SVCR *a)
- {
-     if (!dc_isar_feature(aa64_sme, s) || a->mask == 0) {
+     memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
+                           "gicv3_dist", 0x10000);
+diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+index 7080375008..97fea4102d 100644
+--- a/include/hw/intc/arm_gic_common.h
++++ b/include/hw/intc/arm_gic_common.h
+@@ -71,6 +71,8 @@ struct GICState {
+     qemu_irq parent_fiq[GIC_NCPU];
+     qemu_irq parent_virq[GIC_NCPU];
+     qemu_irq parent_vfiq[GIC_NCPU];
++    qemu_irq parent_nmi[GIC_NCPU];
++    qemu_irq parent_vnmi[GIC_NCPU];
+     qemu_irq maintenance_irq[GIC_NCPU];
+ 
+     /* GICD_CTLR; for a GIC with the security extensions the NS banked version
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 4e2fb518e7..7324c7d983 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -155,6 +155,8 @@ struct GICv3CPUState {
+     qemu_irq parent_fiq;
+     qemu_irq parent_virq;
+     qemu_irq parent_vfiq;
++    qemu_irq parent_nmi;
++    qemu_irq parent_vnmi;
+ 
+     /* Redistributor */
+     uint32_t level;                  /* Current IRQ level */
 -- 
 2.34.1
 

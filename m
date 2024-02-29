@@ -1,141 +1,124 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp227854eja;
-        Wed, 28 Feb 2024 23:52:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXsmMpXETVMThfDWfj4CKqUVDFWdyd2WDayWm9+gBoFlvPx17sTtOhKr1WAbw0FvYyCAb2ah+qE8FXtS50bso/3ZCzPAYKF
-X-Google-Smtp-Source: AGHT+IFMvqcYmlH1TAtkFjqVGcjjVRx+yMUC2SgkdWdKO/7E4TXWUa24CfnyUptTZfTqbIt8waeb
-X-Received: by 2002:a05:620a:1a0d:b0:787:df2a:bbf5 with SMTP id bk13-20020a05620a1a0d00b00787df2abbf5mr1850813qkb.38.1709193135671;
-        Wed, 28 Feb 2024 23:52:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709193135; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp263528eja;
+        Thu, 29 Feb 2024 01:18:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXHkOPYR0l4Pqq4paaqO9hxS5y/icFCX8hK8xJdTjcfk/RNfwsT9ve0hEx216iuz8K4hXRjP2JA2iKw2nw1vmNDRlLZxqL8
+X-Google-Smtp-Source: AGHT+IHNcwcCuxYXHdVOkE5sDXdf0CNBbMcEE9q3WGPNFgO9vpohJiTbqhqqCJX/Dw/18eiNMgty
+X-Received: by 2002:a05:620a:1657:b0:787:8545:80c2 with SMTP id c23-20020a05620a165700b00787854580c2mr1465954qko.69.1709198284288;
+        Thu, 29 Feb 2024 01:18:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709198284; cv=none;
         d=google.com; s=arc-20160816;
-        b=WCRWrXyx4mF1+xugvApEgPG7qUjEpDHKnoF2ipkk0Zcndtz+gxNo7wrLfVU/9r2kHz
-         L1V955hy1wZunfbxNLv70HeXVqwerYhLsUiZZ3OhhQoxyx1iMvZs99PEmVOY/kPYIYo1
-         anA5kJoDNSgThm0/hME4Xh5+Bt/3S3Q3vWecDZ2SqCoeMB7iHvwnvlf5mSHCFHlxK3FU
-         WemRZ1VgtmC5DBiOv/mh0V7P1GpygyjXfZln9sb6RHmOEQkahcE8tPdrqAblGohtikX7
-         nFj02s590BdZmENhBHSIA5iTijRoThGmlU9s1p3ehG8iuU08KWLNLngzdo0bjpuTvhGU
-         5rag==
+        b=bLTT1csjOPNPwe0V6hXld6mxxDWG28JLQ8F0zllyU1dpEzwZL6te+mXEnGlOwdFfAD
+         xDhKRMUjYWJqOHWO1GIuIDhmxZJqdL3CVjUvhcCN5VyS26gBexRv71tcfMa+o9Y0f5uz
+         tWDHy2pDpfqx3Zrw3pbtHatT5IQcj1+9MaYTC7ZV316DXoI4RANg6+Ub8Cp7GBvdLnMq
+         bCtQ8Sb4DjultptIApy+auaNp+HxxqV70QiEx3DN77Xf2CCceyBBWgUSOrJYpbzNpuwX
+         ez8Xj+iM75BFfvGbvVCt8KwklU/hiyc3lGe5ZAqfYA3NDlKxHsux8h/9ngDWwBAOFJvL
+         jl0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
-         :dkim-signature;
-        bh=1ftegPjJzDRirAWTFgiZ8qfMnV03M4216LE0RFWMiRw=;
-        fh=jVWmmOmQHGpJ1jkFs8N7BSeNZNqus67fpLjDGGNAEfI=;
-        b=fWXvW+g11yaODa5517IXZSth92E1Ms2NxvRS2aB18XnhAybGJAG7M4CxPX5toM0Fe7
-         T3z0vkaN6NwtLFmzDCXJn5PTyk+3E59isWsEd6dxqXzECL3hqlfmaMxSUhZJV+hf6O1m
-         3UfVQvAYVIXb6G10QSZjLgDnScsCoL3MgA+Mcoej8yFCrHjgD1Xj8JxubQRbmlFOY+vp
-         s2+zRDT2ZImXXPN+lFXoM5W1HlBmW8L4wGFZJr/RPUX3/2F3i2d/d/UK+yLEmCgav37C
-         YGDWlaow4LeLoGVBubEOgk+5pkVmJGA7rb7xVpxb9PdPWMLhfvJYgbz1VY1ClT/oeZFr
-         aw/Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GHrh/nNkQh7TYgndSEQQ8I9OPrs3wS3MtBzdmWGvMMo=;
+        fh=ENMG2tTiNe1cWXZJSJM7Gpp1VP89Fos/AtjYwoB8Odo=;
+        b=iI+zBN2f11OAyLkgMA/i78iV+s1Lqi0Q/0Ydsl830I0/Zt1kMt5tMASpjfhjq3UgFo
+         0to7Iy+p/PBiKKl8QICkLZC378K8K1sAHfREd7tGQ8Ij8QEgCGIOwR4zsZEzumgRtWwx
+         6zdCih2wLDu8dIiZe9ktcPlPKG5yAeMjpEthNm82mpjpOJYgMNAk2dZeGvs+wkN93mqX
+         zBZ5HYGH65ILxO6A8iAq/j/NJcMqPV148aAT7iWfwnGGjoEjHKsPt1Rrpfz7GKl8VhsH
+         dpt6GYGtBuMH9ccHAYWf3t+amjkmVrWm0UgsCd1xn6g4eRP93uKZFhy52IN0R8AqYjla
+         v5tw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L8u0FqB8;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Wu/ikibp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14-20020a05620a12ee00b0078772a9cf60si877228qkl.346.2024.02.28.23.52.15
+        by mx.google.com with ESMTPS id bq17-20020a05620a469100b00787a61b4023si1085217qkb.252.2024.02.29.01.18.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Feb 2024 23:52:15 -0800 (PST)
+        Thu, 29 Feb 2024 01:18:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L8u0FqB8;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Wu/ikibp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rfbCt-0006Kw-T3; Thu, 29 Feb 2024 02:51:55 -0500
+	id 1rfcXq-0003dT-DA; Thu, 29 Feb 2024 04:17:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfbCr-0006K4-OY
- for qemu-arm@nongnu.org; Thu, 29 Feb 2024 02:51:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rfbCq-0000BJ-7r
- for qemu-arm@nongnu.org; Thu, 29 Feb 2024 02:51:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709193110;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1ftegPjJzDRirAWTFgiZ8qfMnV03M4216LE0RFWMiRw=;
- b=L8u0FqB8YJOLx2Ct4eb0PXnQRMDwrS8IIUrHLNT86anAICpsW0oDkhHg7EmmqH6DxT53nk
- rPTkXdpI+G+yVouij49fXX3cp3pwi3hHm0A///q483RN42w8Z5fMek2vV1Y9AW0ZBJn9wE
- n7MBYvX4SufmS5xIFR48BgkxCNAkPBY=
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
- [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-493-hAOrESC5ON22adcZY7mQgQ-1; Thu, 29 Feb 2024 02:51:47 -0500
-X-MC-Unique: hAOrESC5ON22adcZY7mQgQ-1
-Received: by mail-pg1-f198.google.com with SMTP id
- 41be03b00d2f7-5c65e666609so595840a12.1
- for <qemu-arm@nongnu.org>; Wed, 28 Feb 2024 23:51:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rfcXj-0003aD-Pe
+ for qemu-arm@nongnu.org; Thu, 29 Feb 2024 04:17:32 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rfcXg-00080d-65
+ for qemu-arm@nongnu.org; Thu, 29 Feb 2024 04:17:30 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-412a3371133so4785895e9.2
+ for <qemu-arm@nongnu.org>; Thu, 29 Feb 2024 01:17:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709198246; x=1709803046; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GHrh/nNkQh7TYgndSEQQ8I9OPrs3wS3MtBzdmWGvMMo=;
+ b=Wu/ikibpyvX33VWk1OyFjoAmTFDs+1qQtRTm0ifSNzlbWbtlGa1HP+y1I/fikfsbcE
+ OuZmJdBBdbZ5hRQU6WhJXQq9M9d9Isx5r4vD5xW8GQfk81E1QBfqxNxUjEWfGgBh77O7
+ 6VzrKSOVbE9GTmHJIRNxEX9+OfK7a+477xCQGI7ya8GpgkyvnY8SJtlzMWUvTpTnNYGR
+ iVWQgfLCyv2bIjeQshnuwdd1hGFLlF9zkBC5ZHpMs+pVa474yB3op8Qh5ux+IOHZX/m2
+ /fouvkQr0sInv2HH0wI4k98juj/RtT8niB4JWx0hqIPV01OhJM5RTNy6t4qNH/dHkY4J
+ N0qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709193107; x=1709797907;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vYZe/DZW2BzM3r0kIBtLsS/lPvl3VeHQTWZOYH4EiX0=;
- b=L16tMtATfRSQF2r0awiAASD8caVFP2rD0CcLUueqXXMMzOS9mnCDLXJwL2psbicY4K
- V5OkyHIZETqZ8Ps6E4F864ou/P1weMq1IBxFewDQFg7XpDEKyP6Nr5tBTgLmhD6nVm38
- W+J6t5k2vfo53xFvZ2jJS1choUjcCxfDP8qsdAOweoorMK798shEUS0PkXs8CZFCU4Rj
- uXhv295eprDdRsANMl7wsBWzZJm3mQ6sQDu3mtYNxCGMretKDscp81+vrhkilZmPJjGB
- lyslLVt4CxrrYurWhEERths25GUaRP+wrUXggvLiThqcWz6pPb7h4s6q9Wi9vYx8FVLC
- a43g==
+ d=1e100.net; s=20230601; t=1709198246; x=1709803046;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GHrh/nNkQh7TYgndSEQQ8I9OPrs3wS3MtBzdmWGvMMo=;
+ b=SqWAiyXqvz5/Mkq4oHlM34hZR7ojp4dvyQFI31ONe+FyXJX99MxDDN7R1n4Y9SH9Fe
+ M3+d6wVAL53zYyZ49VFQAn0OwWlmeNLa9QrN6RGpz7ZKi4PiPb95U+xKXQ/+bCWhICwt
+ bJvRCEjA5WCnYkqQH30ezkyRQU2EiXeOwf8U12vuqQhISGgRQ5XR7CvuJEwJkpMmQsWR
+ 1DTXz9D7UQZZav4X+aaNoJhrOR6Le2y/pNIy3ui4W95poYvgeGffrXyh2nXq59XEFEPo
+ iap2jqlmTqsk9etBfgFDu37GzREa49YhPnQsTCve8pgw1dVeW1AyAeVufGrJUaqDpSbc
+ +Quw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWS7Mm+++9bv2wdvS5jGDiHUiBgG/Z3GrHzdmO1/xbolRZrAmmKhOqv8Fu2DjrMw23YKsle3bP/m5/Ys/ihKPx4vBxC
-X-Gm-Message-State: AOJu0Yy9YUB6i8X+5hvbRbqEVTJiP444p9gsC68S1k3YDvcVQ/+Fk27Y
- z6waBMkFuAU1FBvzFEqnyQYgn0knEcx5MEY5J/TfNUYzmRyE42bxf0JyhX47ZgDcuiivRPOUZfl
- 7DGLphP3qJYk0OYa4UaU8TfD49BV2maSLmOVS99RaSyLDRkILEg==
-X-Received: by 2002:a17:90a:e601:b0:29a:377f:3994 with SMTP id
- j1-20020a17090ae60100b0029a377f3994mr1403244pjy.13.1709193106850; 
- Wed, 28 Feb 2024 23:51:46 -0800 (PST)
-X-Received: by 2002:a17:90a:e601:b0:29a:377f:3994 with SMTP id
- j1-20020a17090ae60100b0029a377f3994mr1403229pjy.13.1709193106472; 
- Wed, 28 Feb 2024 23:51:46 -0800 (PST)
-Received: from smtpclient.apple ([223.191.49.228])
+ AJvYcCWLnZ0inxx5HwEQmx4bNkfkObIRJeiqjiyTmdLIB5+QEFt2VozjTLfHFXFPHelRPn+MjVnYQXn/YdPFC83WYbrgSyCS
+X-Gm-Message-State: AOJu0YxwwN3ZAW6Dv+pecC8gZWwQYH6tedvU+ZmIbF8WWJP3+V12T8PK
+ 18DNbbcJDEii5JnpG8qEBoWVpKXRk2Uu8mSwKxhOVosOVmL4fpmOlFzcACWe+nw=
+X-Received: by 2002:a05:600c:4e91:b0:412:b6c4:ac21 with SMTP id
+ f17-20020a05600c4e9100b00412b6c4ac21mr1441657wmq.41.1709198245978; 
+ Thu, 29 Feb 2024 01:17:25 -0800 (PST)
+Received: from [192.168.1.67] ([78.196.4.158])
  by smtp.gmail.com with ESMTPSA id
- cc13-20020a17090af10d00b0029681231ae1sm778568pjb.28.2024.02.28.23.51.38
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 28 Feb 2024 23:51:45 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH 05/19] smbios: get rid of smbios_smp_sockets global
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240227154749.1818189-6-imammedo@redhat.com>
-Date: Thu, 29 Feb 2024 13:21:14 +0530
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Song Gao <gaosong@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Message-Id: <AF2F995D-246B-481E-B3C6-CF95F1BD6B13@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-6-imammedo@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-X-Mailer: Apple Mail (2.3774.400.31)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ o3-20020a05600c4fc300b0041297d7e181sm1455306wmq.6.2024.02.29.01.17.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Feb 2024 01:17:24 -0800 (PST)
+Message-ID: <06696a4e-ae61-4fa0-984b-481e680f9989@linaro.org>
+Date: Thu, 29 Feb 2024 10:17:22 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/8] aspeed/sdmc: Add AST2700 support
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240229072315.743963-1-jamin_lin@aspeedtech.com>
+ <20240229072315.743963-4-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240229072315.743963-4-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,140 +134,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N88WjKtgiwNn
+X-TUID: CB6hLJT+l81/
 
+Hi Jamin,
 
-
-> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
->=20
-> it makes smbios_validate_table() independent from
-> smbios_smp_sockets global, which in turn lets
-> smbios_get_tables() avoid using not related legacy code.
->=20
-Good cleanup!
-
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
-
-
+On 29/2/24 08:23, Jamin Lin via wrote:
+> The SDRAM memory controller(DRAMC) controls the access to external
+> DDR4 and DDR5 SDRAM and power up to DDR4 and DDR5 PHY.
+> 
+> The DRAM memory controller of AST2700 is not backward compatible
+> to previous chips such AST2600, AST2500 and AST2400.
+> 
+> Max memory is now 8GiB on the AST2700. Introduce new
+> aspeed_2700_sdmc and class with read/write operation and
+> reset handlers.
+> 
+> Define DRAMC necessary protected registers and
+> unprotected registers for AST2700 and increase
+> the register set to 0x1000.
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
-> goal here is to isolate legacy handling from generic smbios_get_tables()
-> ---
-> include/hw/firmware/smbios.h |  2 +-
-> hw/i386/fw_cfg.c             |  2 +-
-> hw/smbios/smbios.c           | 22 +++++++++-------------
-> 3 files changed, 11 insertions(+), 15 deletions(-)
->=20
-> diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-> index 6e514982d4..a187fbbd3d 100644
-> --- a/include/hw/firmware/smbios.h
-> +++ b/include/hw/firmware/smbios.h
-> @@ -296,7 +296,7 @@ void smbios_set_defaults(const char *manufacturer, co=
-nst char *product,
->                          const char *version, bool legacy_mode,
->                          bool uuid_encoded, SmbiosEntryPointType ep_type)=
-;
-> void smbios_set_default_processor_family(uint16_t processor_family);
-> -uint8_t *smbios_get_table_legacy(MachineState *ms, size_t *length);
-> +uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *len=
-gth);
-> void smbios_get_tables(MachineState *ms,
->                        const struct smbios_phys_mem_area *mem_array,
->                        const unsigned int mem_array_size,
-> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> index a635234e68..fcb4fb0769 100644
-> --- a/hw/i386/fw_cfg.c
-> +++ b/hw/i386/fw_cfg.c
-> @@ -70,7 +70,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgSta=
-te *fw_cfg)
->     /* tell smbios about cpuid version and features */
->     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX=
-]);
->=20
-> -    smbios_tables =3D smbios_get_table_legacy(ms, &smbios_tables_len);
-> +    smbios_tables =3D smbios_get_table_legacy(ms->smp.cpus, &smbios_tabl=
-es_len);
->     if (smbios_tables) {
->         fw_cfg_add_bytes(fw_cfg, FW_CFG_SMBIOS_ENTRIES,
->                          smbios_tables, smbios_tables_len);
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 8e86c62184..15339d8dbe 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -70,7 +70,7 @@ static SmbiosEntryPoint ep;
-> static int smbios_type4_count =3D 0;
-> static bool smbios_immutable;
-> static bool smbios_have_defaults;
-> -static uint32_t smbios_cpuid_version, smbios_cpuid_features, smbios_smp_=
-sockets;
-> +static uint32_t smbios_cpuid_version, smbios_cpuid_features;
->=20
-> static DECLARE_BITMAP(have_binfile_bitmap, SMBIOS_MAX_TYPE+1);
-> static DECLARE_BITMAP(have_fields_bitmap, SMBIOS_MAX_TYPE+1);
-> @@ -476,14 +476,11 @@ opts_init(smbios_register_config);
->  */
-> #define SMBIOS_21_MAX_TABLES_LEN 0xffff
->=20
-> -static void smbios_validate_table(MachineState *ms)
-> +static void smbios_validate_table(uint32_t expected_t4_count)
-> {
-> -    uint32_t expect_t4_count =3D smbios_legacy ?
-> -                                        ms->smp.cpus : smbios_smp_socket=
-s;
-> -
-> -    if (smbios_type4_count && smbios_type4_count !=3D expect_t4_count) {
-> +    if (smbios_type4_count && smbios_type4_count !=3D expected_t4_count)=
- {
->         error_report("Expected %d SMBIOS Type 4 tables, got %d instead",
-> -                     expect_t4_count, smbios_type4_count);
-> +                     expected_t4_count, smbios_type4_count);
->         exit(1);
->     }
->=20
-> @@ -571,7 +568,7 @@ static void smbios_build_type_1_fields(void)
->     }
-> }
->=20
-> -uint8_t *smbios_get_table_legacy(MachineState *ms, size_t *length)
-> +uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *len=
-gth)
-> {
->     if (!smbios_legacy) {
->         *length =3D 0;
-> @@ -581,7 +578,7 @@ uint8_t *smbios_get_table_legacy(MachineState *ms, si=
-ze_t *length)
->     if (!smbios_immutable) {
->         smbios_build_type_0_fields();
->         smbios_build_type_1_fields();
-> -        smbios_validate_table(ms);
-> +        smbios_validate_table(expected_t4_count);
->         smbios_immutable =3D true;
->     }
->     *length =3D smbios_entries_len;
-> @@ -1112,10 +1109,9 @@ void smbios_get_tables(MachineState *ms,
->         smbios_build_type_2_table();
->         smbios_build_type_3_table();
->=20
-> -        smbios_smp_sockets =3D ms->smp.sockets;
-> -        assert(smbios_smp_sockets >=3D 1);
-> +        assert(ms->smp.sockets >=3D 1);
->=20
-> -        for (i =3D 0; i < smbios_smp_sockets; i++) {
-> +        for (i =3D 0; i < ms->smp.sockets; i++) {
->             smbios_build_type_4_table(ms, i);
->         }
->=20
-> @@ -1160,7 +1156,7 @@ void smbios_get_tables(MachineState *ms,
->         smbios_build_type_41_table(errp);
->         smbios_build_type_127_table();
->=20
-> -        smbios_validate_table(ms);
-> +        smbios_validate_table(ms->smp.sockets);
->         smbios_entry_point_setup();
->         smbios_immutable =3D true;
->     }
-> --=20
-> 2.39.3
->=20
+>   hw/misc/aspeed_sdmc.c         | 215 ++++++++++++++++++++++++++++++----
+>   include/hw/misc/aspeed_sdmc.h |   4 +-
+>   2 files changed, 198 insertions(+), 21 deletions(-)
+
+
+> @@ -231,7 +270,10 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+>       AspeedSDMCState *s = ASPEED_SDMC(dev);
+>       AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
+>   
+> -    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
+> +    if (!asc->is_aarch64) {
+
+Maybe name it 'bus64bit'? Because this isn't really related
+to Aarch64.
+
+> +        assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
+> +    }
+
+
+> +static void aspeed_2700_sdmc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 SDRAM Memory Controller";
+> +    dc->reset = aspeed_2700_sdmc_reset;
+> +
+> +    asc->is_aarch64 = true;
+> +    asc->max_ram_size = 8 * GiB;
+> +    asc->compute_conf = aspeed_2700_sdmc_compute_conf;
+> +    asc->write = aspeed_2700_sdmc_write;
+> +    asc->valid_ram_sizes = aspeed_2700_ram_sizes;
+> +}
+
+
+> @@ -51,6 +52,7 @@ struct AspeedSDMCClass {
+>       const uint64_t *valid_ram_sizes;
+>       uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
+>       void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
+> +    uint32_t is_aarch64;
+
+bool.
+
+>   };
+>   
+>   #endif /* ASPEED_SDMC_H */
 

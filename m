@@ -1,117 +1,116 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp1326029eja;
-        Fri, 1 Mar 2024 13:20:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUpss0XDlETwba1oRYVeR22MQnhnsyiOwnt3E0KujjUP8xeVK8QDZWiCHtOrElYivJMHNbl3uoEI+w1E7N3pMHdW4lMEmFd
-X-Google-Smtp-Source: AGHT+IE+87Q6zbEOlDNAoYh5UwP1rmkm9yqnAhxfzY2dfi7u46yDR47B8QluWTEB5vnD26kH3oPw
-X-Received: by 2002:a05:620a:3706:b0:785:635b:ac2b with SMTP id de6-20020a05620a370600b00785635bac2bmr3734037qkb.32.1709328008767;
-        Fri, 01 Mar 2024 13:20:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709328008; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp1332975eja;
+        Fri, 1 Mar 2024 13:37:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUmIXlHjiidrArohiZKw2CH4bMjNwkBEHWnQsqVoRcz9EHcyJJSx7HYJ4BKJQd3lJ/ADEVt5snDZ3fRm2BunZug1n+EAXoK
+X-Google-Smtp-Source: AGHT+IF0fdb3zZgFqBMDIpWlYB7zt56MBvbzAMABUR6mAyu4XDhTXiloPoJA8IEXSfRs8TsnGAOe
+X-Received: by 2002:ad4:44a3:0:b0:68f:b9b7:9c47 with SMTP id n3-20020ad444a3000000b0068fb9b79c47mr3094753qvt.29.1709329041193;
+        Fri, 01 Mar 2024 13:37:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709329041; cv=none;
         d=google.com; s=arc-20160816;
-        b=RLrrH18GQpgwCCcoBAO6t2wZASQ3HNBX/7ZHf20lUPyg3aA6laKbxE24fGUfR7/Eh5
-         LEgTq9bFXPjOBfM6Ys1MK0LizH0sYfs5J8Ukl9N5y6pSj7y0LxoMSPGBE1K00fYZ7o1p
-         YdoavNE3axq+vYdzUWiBu7KofsHuIBmI4/7AZZUSodUDGzd50dlij5EQ4oBZSWgWpXdq
-         1LibZeSP6Uw0MXvDMXb+Ygk/XcF4RghdwZZPRSehKRDTAtri9B9H45uLKEPvb2WT6n53
-         lmwXYHqj/2F9ZZ2AxuNzzuIkTRGyKKdkKf7tuSWxvbt6UpzGotQn2iY3QwzkGW4mMQHS
-         d9Vg==
+        b=cbASiLb6DQ44miiDoPpTDSf0rwsN7aIFwNZ37W9uQp+EOhPfyHARtH7wDpaXYfwYru
+         0bjT/+cUI3xHfx0R6oq6P8ap2x0K+7+GVeqkMjDgy51aJtpedc/p8RSAdgfyf9757/gY
+         QRJFvoOAV3LlvIp/8AKIWkbrV6H2BDssj+9vBJFltGpw3/L/mWjO8r8+M30hroXX+0WO
+         x8mfyTGYZXTJIscuhVUwKp0ue7qzTmRB9F0fWcKFCm675hymnqC3npZ7gXjH2lt8fKSS
+         M9cGOa5vjXksKqTmG38hYzrtWOpOhf7eIYTkDsHGnNRQkgKkqZyIbSawtCEOKxAy+7jV
+         FY+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=bDwdHISmLSY4krXDpn1gbWdD12mP21WT+zg/WfUsNtc=;
-        fh=u26cu6AWyXS55HzXw0SLlEu7K5SOkBH/tEiaviTrMnk=;
-        b=vGdvjQ4m59Np67VIH1G4WeMgIDsYIrx+S2WLmpJ6n3JL7q6LakZDHRrnCjcZZ60bNh
-         nRTSEH4/qUYn0+JNPsTZ+DnJupqVntRe85s402fhgZEvGAr6C9aTytDPPlx16n4k6isy
-         iyyv3rQABYvBlGVD9qrSC3QzyhRkekUyedEMyrZ4F3xlbhuLqW6h74BwqTPymWmCIyKg
-         uVU17gBpi4IT2K9upEYOp89fC4gRceheXR0lJdKJcdhKrg5tict8lR9sM0OQJErVA2e/
-         LLT3eVfoPXYv1ZnDBUCxmejUUWvn2kzqH94kK61AqficZERPzvnIXLm9TvWNIzFQNf2M
-         N5nQ==;
+        bh=Q5GiP80IalSN5F7eFL1OJ19Krnw4i3TpXLYxT0jJhPU=;
+        fh=pFnYkCGJPZDwn4oU2ghxtUYnOnOoc9FVNF2yZ/0Wq/8=;
+        b=qfMnzKrAea/aN68hzk6RqXOMIerG6LuobF8YFG/SbIvE4z7Ymx+N6osmm+fELDlQkE
+         faa+umn4mwwpVuDmYxq1COg8Zt+8RJ5brU6/XmWxsFEmpK/7Wz5nNfSJeJ8qxDEJZZlh
+         KW6lIo2Yr7Pk5Gb7WZ6sxfZPx4beonVylcBet6kbxiHerSqFbwU11c6HlF7x7/DWNw4Y
+         VYQqyO6nmVclZ/C6sCyEzyKw2AQdqwZeoW16CyTK8BOwmWYFiPOLSFi6kEvPvzkjrlJy
+         cgak0kpJH1RpdMmdeYe5A+4FTh8onuhF9ZSZiC1Pf1anYCW8HAbcgsJ1sawzoSbxb1BT
+         65fw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gHdFzk9s;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J37cVQq+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020a05620a0f8a00b00787d6989706si4302208qkn.98.2024.03.01.13.20.08
+        by mx.google.com with ESMTPS id q3-20020ad45743000000b0068fbd79c519si4270666qvx.373.2024.03.01.13.37.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Mar 2024 13:20:08 -0800 (PST)
+        Fri, 01 Mar 2024 13:37:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gHdFzk9s;
+       dkim=pass header.i=@linaro.org header.s=google header.b=J37cVQq+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rgAI3-0001NG-Ph; Fri, 01 Mar 2024 16:19:35 -0500
+	id 1rgAZ7-0008Mk-R7; Fri, 01 Mar 2024 16:37:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rgAI1-0001Mx-Qc
- for qemu-arm@nongnu.org; Fri, 01 Mar 2024 16:19:34 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1rgAZ6-0008MJ-Px
+ for qemu-arm@nongnu.org; Fri, 01 Mar 2024 16:37:12 -0500
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rgAI0-0007KB-7d
- for qemu-arm@nongnu.org; Fri, 01 Mar 2024 16:19:33 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1dcd0431f00so19569645ad.3
- for <qemu-arm@nongnu.org>; Fri, 01 Mar 2024 13:19:31 -0800 (PST)
+ id 1rgAZ4-0004Se-Mz
+ for qemu-arm@nongnu.org; Fri, 01 Mar 2024 16:37:12 -0500
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-1dcad814986so23165725ad.0
+ for <qemu-arm@nongnu.org>; Fri, 01 Mar 2024 13:37:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709327970; x=1709932770; darn=nongnu.org;
+ d=linaro.org; s=google; t=1709329028; x=1709933828; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=bDwdHISmLSY4krXDpn1gbWdD12mP21WT+zg/WfUsNtc=;
- b=gHdFzk9sIetff4NYjdh5mhkjOp3qqPtxSkraU61c97bUeU8wCoMFePWJuKB9+871bk
- yMIPsraSpoHW5UbOUQTMNJOaaGw6fYWXc/JcqlteQQkKD/ewr5TsJpnBkLUlD+ZFYlJk
- SyZbvFQT7kj6mGMZHvYWOLdoYHJKCK4kV8kg0oEWtVeO8CzP3eIMszOFo4l/vxhZEGw0
- DvBr5cWZDJ+57MZFLb7/geyr/DzRlnym5LigOWZ75AZ+iofUH9M0mrrKyMEvc2Eh2oPE
- RyWLHHIYneEp9KK5Iht/WWj31pDbul3xLGdNhNY6UaeQoKaNb9f1c+Q4alwbWkCXU6uy
- 2qTQ==
+ bh=Q5GiP80IalSN5F7eFL1OJ19Krnw4i3TpXLYxT0jJhPU=;
+ b=J37cVQq+cxbhwasccpQ42gY6mgk4Zt8yLGQLy0AisizK783g9eOidVDnp2Jm2sC3r7
+ x+mbHpS7DZbEvRkUi4pC0Km7RBWhBG59sVfO5JslRXtR0BXF5DCh8jGSeIi4x5/siqz1
+ Z1ZPUWnB4mHQaeTSmZXS5QEINDi7+sNDOp6nT6SXBCKR+ZukqaSAPF2J2tn9yneNlNNK
+ nIC3+sfbkWALRNPB36za76KPC33ACT1x3wuOgKguIJBhnKP0PrFYugbxYJ/nu7upaL8D
+ jWgQoUCUf6eP6SoEqlnqpygOanNM3ti3xKu5sywequrIJxV+nkVJrnkHV6ubOm9rZqtm
+ NltA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709327970; x=1709932770;
+ d=1e100.net; s=20230601; t=1709329028; x=1709933828;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bDwdHISmLSY4krXDpn1gbWdD12mP21WT+zg/WfUsNtc=;
- b=Efgq21m5jU3wvwPUbwU5p/DkRLz9cH8WsK9oRyOYFoZUjBRFR7XQStNA2lhuq9IoEE
- oL+/cL46cZkAw8WXNMNCc/xG9dz8CsWdoHpOf8auIPYfuWKABWHgmVRQ8ly12ZIANyMF
- JS6exspGgFA7/LTLxdpgm8EvUOeH+E0xK05HDdbHMJ5ZKnIpR0gi7uF9Nk5rwZr2x/gy
- hNZ6I4roWnWHRKuWdhbNerRpzGuqoQ9kp/l5vFxolrpEtPJ6Q0fqsYtNyZEftXx8UiPD
- mP4NU7yE3H7fAgdYXIuDbpl6lFzdlgMfxME9JB1WS2bW2XLRr/zcJF5bfjYxrRiSGF0q
- kZXw==
+ bh=Q5GiP80IalSN5F7eFL1OJ19Krnw4i3TpXLYxT0jJhPU=;
+ b=hlf5bmGK9rdtyNKqkawgSO8mZNJuKL+0X8B9mJWE5lsfyI1+ok5daVI+gYwa1k9vKw
+ Ut0/6f0y9P9osueaVWegDbKoXLDA4idbQQ31PgKs7ihEm2EXdzYKTWj/EjOoX+HVzqN+
+ G8piBbZmkzb+ZLvsdfrNQOFjddmqP16cObOtJ0XYmqwtCcJlixiy2pzR+DV27P3nJKif
+ yKj47UcSXF/s6eSBUoYoGucXLl0CGUAhWJcI9aaOO8GyhXOKoJzB/CIWscQh41Msfhpo
+ w1CEC0+NyltZApNs/hPmyJvw84UL6+gsCiwZfMrPh1XdOXxk3EuOqM+BJe3/hKffbFUt
+ WTBA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCur7NHs9szduDdXJZ+5rMoPvrFDNE2RfbjT/+kZpljOy7UaWovxXUHCRla3bEaKfkyojkDe7zZfvfVmjPz/U34bPV
-X-Gm-Message-State: AOJu0Yy62XCNCl+K3Xgy7UBwzB6Kp7Lg4EgAqgPFC+6xj5VOBrRaasdi
- dPgLMc/03B1YmeuVA++Xy2ee1VzDavPFaQM53IgQjZrqUuR/ddAwldqTuEexOM4=
-X-Received: by 2002:a17:902:6544:b0:1dc:7890:72d6 with SMTP id
- d4-20020a170902654400b001dc789072d6mr2576785pln.22.1709327970621; 
- Fri, 01 Mar 2024 13:19:30 -0800 (PST)
+ AJvYcCWwQxuMyyrnTX3B1gx2+CrbaEhI7lnhuT2wzf/h+G6dYEVoqKiRSwEOPV779FoIIDmVaPUEixGihhqsSbjC6UEUAYbN
+X-Gm-Message-State: AOJu0YzrYOVMhOgkiWWvR4Kqn7rU6ihEs4A/3lyII/57hFaCDvqPd30A
+ TBSG0YBDvgcoV0Dj/U/hEuCFGMrAgWPGCRKHS4K5DfB+Eoy5bxVn2rE0QdSDppw=
+X-Received: by 2002:a17:902:e785:b0:1da:190c:3481 with SMTP id
+ cp5-20020a170902e78500b001da190c3481mr2642517plb.34.1709329028252; 
+ Fri, 01 Mar 2024 13:37:08 -0800 (PST)
 Received: from [192.168.6.128] (098-147-055-211.res.spectrum.com.
  [98.147.55.211]) by smtp.gmail.com with ESMTPSA id
- r18-20020a170902c61200b001dca920ae40sm3898386plr.203.2024.03.01.13.19.29
+ le13-20020a170902fb0d00b001dbcf653024sm3932680plb.293.2024.03.01.13.37.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Mar 2024 13:19:30 -0800 (PST)
-Message-ID: <f0dd2308-6a94-46b5-821f-12ab907d29ea@linaro.org>
-Date: Fri, 1 Mar 2024 11:19:26 -1000
+ Fri, 01 Mar 2024 13:37:07 -0800 (PST)
+Message-ID: <33667149-6f6f-4ca0-aa51-96d3a397ef89@linaro.org>
+Date: Fri, 1 Mar 2024 11:37:04 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/8] target/arm: use FIELD macro for CNTHCTL bit
- definitions
+Subject: Re: [PATCH 5/8] target/arm: Implement new FEAT_ECV trap bits
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>
 References: <20240301183219.2424889-1-peter.maydell@linaro.org>
- <20240301183219.2424889-4-peter.maydell@linaro.org>
+ <20240301183219.2424889-6-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240301183219.2424889-4-peter.maydell@linaro.org>
+In-Reply-To: <20240301183219.2424889-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,42 +132,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EKJVq0Iri3Y5
+X-TUID: pQo/MpwTU9CG
 
 On 3/1/24 08:32, Peter Maydell wrote:
-> We prefer the FIELD macro over ad-hoc #defines for register bits;
-> switch CNTHCTL to that style before we add any more bits.
+> The functionality defined by ID_AA64MMFR0_EL1.ECV == 1 is:
+>   * four new trap bits for various counter and timer registers
+>   * the CNTHCTL_EL2.EVNTIS and CNTKCTL_EL1.EVNTIS bits which control
+>     scaling of the event stream. This is a no-op for us, because we don't
+>     implement the event stream (our WFE is a NOP): all we need to do is
+>     allow CNTHCTL_EL2.ENVTIS to be read and written.
+>   * extensions to PMSCR_EL1.PCT, PMSCR_EL2.PCT, TRFCR_EL1.TS and
+>     TRFCR_EL2.TS: these are all no-ops for us, because we don't implement
+>     FEAT_SPE or FEAT_TRF.
+>   * new registers CNTPCTSS_EL0 and NCTVCTSS_EL0 which are
+>     "self-sychronizing" views of the CNTPCT_EL0 and CNTVCT_EL0, meaning
+>     that no barriers are needed around their accesses. For us these
+>     are just the same as the normal views, because all our sysregs are
+>     inherently self-sychronizing.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> In this commit we implement the trap handling and permit the new
+> CNTHCTL_EL2 bits to be written.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/internals.h | 19 +++++++++++++++++--
->   target/arm/helper.c    |  9 ++++-----
->   2 files changed, 21 insertions(+), 7 deletions(-)
-> 
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index c93acb270cc..6553e414934 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -224,8 +224,23 @@ FIELD(VTCR, SL2, 33, 1)
->   #define HSTR_TTEE (1 << 16)
->   #define HSTR_TJDBX (1 << 17)
->   
-> -#define CNTHCTL_CNTVMASK      (1 << 18)
-> -#define CNTHCTL_CNTPMASK      (1 << 19)
-> +FIELD(CNTHCTL, EL0PCTEN, 0, 1)
-> +FIELD(CNTHCTL, EL0VCTEN, 1, 1)
-> +FIELD(CNTHCTL, EVNTEN, 2, 1)
-> +FIELD(CNTHCTL, EVNTDIR, 3, 1)
-...
-> +FIELD(CNTHCTL, EL0VTEN, 8, 1)
-> +FIELD(CNTHCTL, EL0PTEN, 9, 1)
-> +FIELD(CNTHCTL, EL1PCTEN, 10, 1)
-> +FIELD(CNTHCTL, EL1PTEN, 11, 1)
+>   target/arm/cpu-features.h |  5 ++++
+>   target/arm/helper.c       | 51 +++++++++++++++++++++++++++++++++++----
+>   2 files changed, 51 insertions(+), 5 deletions(-)
 
-These bits change definition based on HCR_E2H, which I remembered when I got to patch 5, 
-which adds code nearby the existing tests of these bits.
-
-It might be confusing to only provide the E2H versions, without some extra suffix?
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~

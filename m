@@ -1,221 +1,136 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp975125eja;
-        Fri, 1 Mar 2024 02:52:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVcIBZFTQNqrOkY9JyMCwRo5Y7wZSHGZCn2U/2t5XSczwuxMxrNECkZpWSO/jKyCBCeUOgjTEYJyc/QleBDCubfMryX+AgZ
-X-Google-Smtp-Source: AGHT+IHyK4Xdhk9dQFuW0U555mU2cZSRiFplyS8wWmknQXbahIr6QsWKBKWoNGcnkBEv39Yjmfwh
-X-Received: by 2002:a05:620a:20c4:b0:787:f900:248 with SMTP id f4-20020a05620a20c400b00787f9000248mr1380896qka.55.1709290354812;
-        Fri, 01 Mar 2024 02:52:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709290354; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp1071344eja;
+        Fri, 1 Mar 2024 05:56:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU2aPTeun90z0RRJx5NPlNO8F8dc9lMcSI0Hya3TqxW7A0RTT0eREF/jUsoy0ZwDV5R+V4z2R7SI7j34XSwgDVZuGd9Qdw+
+X-Google-Smtp-Source: AGHT+IHS4vOcZU2+iJQlMXiUw9Tlbq1yuGmw+lHpQjEVK4xgo+F4B2TnLIkIw3LaR1PWglt2nS5r
+X-Received: by 2002:a05:622a:10a:b0:42e:c6db:40da with SMTP id u10-20020a05622a010a00b0042ec6db40damr1776430qtw.36.1709301383738;
+        Fri, 01 Mar 2024 05:56:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709301383; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqdDyfACbgJ7c/KsKgieKGg2LtPiT6WayIEHITj6/N9EHnbULS2jLXIlvk1s96PEk0
-         Bv/yt4oEyYIp6ewY892HpmWeNJL9sbGUbzIhHCxeCqpgWDhJCt76n+5CKepuFBDH8asL
-         H9fRIXx38zTdO7g0aVnqwOzPLqmMAXb4d6yiIDpmGo8J44DFk7JddEjpCpVvrLd+FJV2
-         WJLuSSV6jpPH3ebV4+R1NQQdoinFOHhiU+6ftAWv3kX5usf3pmB3R5Euz0lT+kF3Sl0b
-         8y7O2lG7dyIiV28mmgxUZqGTJ0sdu8QaufkBJnf/aJ0YmeDoQ1MJyBpzUmAoTJv0zjn0
-         NHpA==
+        b=F8UpvuVK990aeW9pQkHft0YPl2DrviLZoL7oDgx8UrlFpjWaXHI/IN7owDj7AEciYD
+         qWkb4Sd1gmMsDUtDkOJPprABBvstHwoNYXUm6/gabBxhIY+bVmlflRnu5SMt/obNlmQu
+         G96zt1tcGUIbEbtYXPzWPoYLydyNQfseUT/TOkA7A4rPYWSOfmteFNXjgzGSAD2JD6j5
+         TP6hQJ5t1SlBTi8TQyDAOzNHT48XqvJCPOrN9mtMr3XVZo2iTrzlEfH1oKdy5DG+i7+X
+         6+D8p4fQ+Y/t40HHCF2gg3gZfHOT3LNzjwtlES5IawYl9t9o1ozOw61Ubu3pdJ6baCfK
+         RK1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:references:cc:to:content-language
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=aqeVVdHQlcPLjxzi+RJxcRs0FDTccO5F0XPuypXrO/I=;
-        fh=HL3xPTssYWmO/BpMv8dJpU8UuE5oA7I0iaZuiYq1dOo=;
-        b=a9dkFFsNODwN58ksY+II7qwA1y07SMz0A0EqT5CUEXr9EqTs7xIYAUW3C7MhjC6XS/
-         43DnCWUrm7T81QGg+CjbDpvf8Jy7PzSw8XCO4wUJFiKxLX9+moQb9OoHeYfuqaPleteo
-         piHvX5O/fCbI0CAcUccb3mjEiqqtVDgbPMbdaifxW+b/7l7F4yLzPzQmEMww12t4Cenr
-         J7ptGKpc10sHYppu9JCPTr9T0yFnZEZU6+sgwvPFakUWADQlrQc0zp2Pm24eH3e3nU16
-         V6LPUmY9YpbOZRpDE0bMNhE+hb/YmSmN0DLDtTH6UyHN2ya+DPdxu2yY1gdoONZFA5Xn
-         5suQ==;
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id;
+        bh=MnWh+eqzWj1O97pCxztSI+KJETrqglOMPJL1IgcgtN4=;
+        fh=Q5KDUqtjRy3+sC6114y2UzscfZIjjg6ZLQnstKDnu3E=;
+        b=CslsgKVvj1+b+H9mzgtjQbvtIsfpV7snAvUPgRUiCnN7B9jqv45OV8BOCfdAp2vPzm
+         fjGozSEgAC3+JnDr/0nOSdHWhL31bj3g1ytRZZTPLVMzh3HISCf9KvJycvl5aOVxXaYe
+         Pq916O+Cp8doJLCDyg+7gclLjKrMS55FOD+rlqJNy1U1/mB3CCMLjz16DDBPdYa2aA5W
+         /iJb1gZKHETKlQ/M8Vib0Hl/iSWlqc7DLQKtjBYpJyZai1xp6Xln9pu0i3i/gkLkzNQP
+         L+S40Z0gi1a9RW2JzyFOTYiOPzMvF41wA6S1aN7Ff7jtVpF4TQ/DPEMrUpRsLebAoQb1
+         KPMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMY19Nvp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a21-20020a05620a439500b007880480ec8bsi2002486qkp.730.2024.03.01.02.52.34
+        by mx.google.com with ESMTPS id a23-20020ac87217000000b0042c74f61410si3261326qtp.725.2024.03.01.05.56.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Mar 2024 02:52:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Mar 2024 05:56:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMY19Nvp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rg0Uw-0002S1-VS; Fri, 01 Mar 2024 05:52:14 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rg3My-0001pM-HU; Fri, 01 Mar 2024 08:56:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rg0Uv-0002Rb-PO
- for qemu-devel@nongnu.org; Fri, 01 Mar 2024 05:52:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
+ id 1rg3Mw-0001os-7p; Fri, 01 Mar 2024 08:56:10 -0500
+Received: from proxmox-new.maurer-it.com ([94.136.29.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rg0Us-0003Ce-Nm
- for qemu-devel@nongnu.org; Fri, 01 Mar 2024 05:52:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709290325;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=aqeVVdHQlcPLjxzi+RJxcRs0FDTccO5F0XPuypXrO/I=;
- b=FMY19NvpWXd5KTrikZM0SWwqePrkirb74KSlPey3Z7pkFreiYCmyrhMvQ+QpPtvMg1nHiR
- VH2JPQ9KDTxtf2Iw+/sY+IQY8u7TrzlSgXo9vDwQtZmBEgCoYiAHaB5GKy41CipVd4uvgu
- Qvos9OfzEy/kAvfDP/Y0oiLtBfSoy8w=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-269-wDZGUZs-N76ftKk013G0rw-1; Fri, 01 Mar 2024 05:52:03 -0500
-X-MC-Unique: wDZGUZs-N76ftKk013G0rw-1
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-42e8e2f71f5so21371411cf.3
- for <qemu-devel@nongnu.org>; Fri, 01 Mar 2024 02:52:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709290323; x=1709895123;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=aqeVVdHQlcPLjxzi+RJxcRs0FDTccO5F0XPuypXrO/I=;
- b=sOgWU27zMyTrY7FnAMKM4ZlzsONWEsL8B9NdMl9NPScRxoYQQeZVvVCgIONpALpwkw
- U75JUmma+rZyXQqWfK5w1lhtlm/IHGzuSXeAh11tOz/G2e341Xj3mSzYzW0KRky4ZXwk
- 2Ry7Yf9KXoE7SJM9VrrlXLt4aSX6jfQAh99F9gV88vMfhT0eJNK82Vo20db+76f6zvCp
- QgfYG+JKiFNrp5a1nC7gxaR40uMXdcDJO0vD3FDlnba370pc8Opg3gumFj0JRgUf2U5B
- fVrrhCHarVqnV/utZAKwOQNtxIhjPI185SCqwOwyb4qUthgcO8lLRMHdsearB9JeHDFz
- dZgQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVIN38moVUcj1xJS6RPLLtbTfaM0MqAL9tezrVRJPygPKQweAoUP1BcLapG3m1X+JdmPZhbBO+rLlelS/ukFEZb9ey5tBI=
-X-Gm-Message-State: AOJu0Yw9+BeOOHH8bUADanF6MPgz5or1WwsIul7kQ3oNpgFJzlKoJnpo
- RIYFsX9nibe2NxTTpslhmz3UM9L2h1skT9DTGfWPH2WZURngA7hBuahBoQOm2RbuRTG9HQ9pCzA
- ZdpDSooc5nYVWKYOAOOBS20JfUW9BdXGk4BzcxeWibfW7M2nqurMR
-X-Received: by 2002:a05:622a:144e:b0:42e:3fa6:28a6 with SMTP id
- v14-20020a05622a144e00b0042e3fa628a6mr1698206qtx.3.1709290323245; 
- Fri, 01 Mar 2024 02:52:03 -0800 (PST)
-X-Received: by 2002:a05:622a:144e:b0:42e:3fa6:28a6 with SMTP id
- v14-20020a05622a144e00b0042e3fa628a6mr1698193qtx.3.1709290322944; 
- Fri, 01 Mar 2024 02:52:02 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-178-133.web.vodafone.de.
- [109.43.178.133]) by smtp.gmail.com with ESMTPSA id
- d3-20020ac851c3000000b0042c61b99f42sm1594612qtn.46.2024.03.01.02.52.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Mar 2024 02:52:02 -0800 (PST)
-Message-ID: <459ac649-4db0-486b-b989-df89b99ca1b4@redhat.com>
-Date: Fri, 1 Mar 2024 11:51:57 +0100
+ (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
+ id 1rg3Mr-0007S5-9o; Fri, 01 Mar 2024 08:56:09 -0500
+Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
+ by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 346DA482A6;
+ Fri,  1 Mar 2024 14:55:55 +0100 (CET)
+Message-ID: <91b064fa-c006-41a4-a53e-d860c45d8675@proxmox.com>
+Date: Fri, 1 Mar 2024 14:55:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/5] Add device DM163 (led driver, matrix colors shield
- & display)
+Subject: Re: [PATCH 00/19] Workaround Windows failing to find 64bit SMBIOS
+ entry point with SeaBIOS
+From: Fiona Ebner <f.ebner@proxmox.com>
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
+ gaosong@loongson.cn, alistair.francis@wdc.com, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, anisinha@redhat.com, philmd@linaro.org,
+ wangyanan55@huawei.com, eblake@redhat.com, armbru@redhat.com,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+References: <20240227154749.1818189-1-imammedo@redhat.com>
+ <60950146-7b79-465d-9e33-3c485cc00504@proxmox.com>
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-arm@nongnu.org,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Samuel Tardieu <sam@rfc1149.net>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20240228114555.192175-1-ines.varhol@telecom-paris.fr>
- <54fe3a53-5bb8-4907-94ca-817c3000048d@redhat.com>
- <CAFEAcA8Lbqgp1d3DCp+qXz=E51CfnAp_rbA7eF7C2BivJrGGtg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <CAFEAcA8Lbqgp1d3DCp+qXz=E51CfnAp_rbA7eF7C2BivJrGGtg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <60950146-7b79-465d-9e33-3c485cc00504@proxmox.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=94.136.29.106; envelope-from=f.ebner@proxmox.com;
+ helo=proxmox-new.maurer-it.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BDHn8LtQFf8r
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6Btwn5oayGa7
 
-On 01/03/2024 11.21, Peter Maydell wrote:
-> On Wed, 28 Feb 2024 at 12:06, Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 28/02/2024 12.31, Inès Varhol wrote:
->>> TLDR: how can I provide a test or an example?
->>>
->>> I've tested the display by running custom executables and
->>> comparing to the result on the real board, but I don't
->>> know how to test it using a QTest.
+Am 29.02.24 um 14:18 schrieb Fiona Ebner:
+> Am 27.02.24 um 16:47 schrieb Igor Mammedov:
+>> Windows (10) bootloader when running on top of SeaBIOS, fails to find            
+>> SMBIOSv3 entry point. Tracing it shows that it looks for v2 anchor markers       
+>> only and not v3. Tricking it into believing that entry point is found            
+>> lets Windows successfully locate and parse SMBIOSv3 tables. Whether it           
+>> will be fixed on Windows side is not clear so here goes a workaround.            
+>>                                                                                  
+>> Idea is to try build v2 tables if QEMU configuration permits,                    
+>> and fallback to v3 tables otherwise. That will mask Windows issue                
+>> form majority of users.                                                          
+>> However if VM configuration can't be described (typically large VMs)             
+>> by v2 tables, QEMU will use SMBIOSv3 and Windows will hit the issue              
+>> again. In this case complain to Microsoft and/or use UEFI instead of             
+>> SeaBIOS (requires reinstall).                                                    
+>>                                                                                  
+>> Default compat setting of smbios-entry-point-type after series                   
+>> for pc/q35 machines:                                                             
+>>   * 9.0-newer: 'auto'                                                            
+>>   * 8.1-8.2: '64'                                                                
+>>   * 8.0-older: '32'                                                              
+>>                                                                                  
+>> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2008                        
 > 
->> I'd suggest to try to take a screenshot via QMP or HMP. If you need a third
->> party binary to get something on the screen, it's maybe best to write an
->> avocado test instead of a qtest. See for example
->> tests/avocado/machine_m68k_nextcube.py - it takes a screenshot and then
->> converts the console messages from it via Tessaract to text and looks for
->> the expected strings there. Alternatively, have a look at
->> tests/avocado/machine_s390_ccw_virtio.py - it boots a Linux in the guest
->> that writes a string into the /dev/fb0 framebuffer, then takes a screendump
->> and then tries to find the string in the file. The latter could maybe also
->> be done via a qtest if you know how to set up the framebuffer without a
->> guest kernel.
+> Thank you! I'm happy to confirm that this series works around the issue :)
 > 
-> The other extremely popular approach for testing display devices
-> is "I looked at the screen while I was doing the development,
-> and it was fine" :-)
 
-Well, but that doesn't help that much against regressions that can occur in 
-the course of time...
+While I still didn't do any in-depth testing (don't have enough
+knowledge for that anyways), I played around a bit more now, check that
+nothing obvious breaks also with a Linux VM and also ran a successful
+'make check'.
 
-  Thomas
+If that is enough, feel free to add:
+
+Tested-by: Fiona Ebner <f.ebner@proxmox.com>
+
+Best Regards,
+Fiona
 

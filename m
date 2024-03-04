@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2549059eja;
-        Mon, 4 Mar 2024 04:18:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWohmFGB218B393kBP4VBHo3S3YKGV9LRj7Rjt0Sl4DKsjmwpryZX8Crssc9/x4pD6yD3nJ9538Ai0JubYlxX9KD/+1YGSU
-X-Google-Smtp-Source: AGHT+IFcnC9iCyWayqsW9RdXYiShupOS3X4auKYUBQh5RM3yoPAQcQlv/00zPCsSSo6S+CVAQ749
-X-Received: by 2002:a05:6871:878b:b0:21e:a2c0:fd1 with SMTP id td11-20020a056871878b00b0021ea2c00fd1mr10739658oab.34.1709554731058;
-        Mon, 04 Mar 2024 04:18:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709554731; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2568421eja;
+        Mon, 4 Mar 2024 04:59:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXJ3z2lxvgNngf0lFaehJwan8/NPnTPyUxhO8f7ai+uwsw3f3SS/Ehw+s7gQANbmTkODe1c71XGmZ8ROa0GDORV0QQi7Vcn
+X-Google-Smtp-Source: AGHT+IGAplvZi5X6ToG3p1esnb7knwPa70X+irXvMdeWJ5j7sg9sbuXgXBmIMnTG6ElTJ9B4Eb3e
+X-Received: by 2002:ad4:4212:0:b0:690:621e:59de with SMTP id k18-20020ad44212000000b00690621e59demr5685150qvp.14.1709557189546;
+        Mon, 04 Mar 2024 04:59:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709557189; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y8DHooXdNQIH0p+zVdpY9xlfLz/yE0aVQkoAP3x9Jz9dBCz6N3VdYwXqUkOsy/WSf7
-         7Fq+bCnbfuiG2ywAa9ZQvn0NlC5qqLNNNXi3h16kR1Y0ox77ddeTZFsBlLi18nmczWXC
-         6WcFqTijNcaTy1/bgU734uGxieivdupaYuh7r0y+oXQwnVhxB1M1TQl3CzVtFF6yJsO3
-         VZz24O0qfaiemv5aziqX1Etypp5EvYjtF63dnF9Pzd0nS0VKxE6d6xvOju8bSwBstxF3
-         tficHlqE6e3Du72CAVA1mM4x1mvEsyqFxu/vZnSH5PPf71j5fxUpyBoLCF2CuSan3x4L
-         7lsQ==
+        b=dFXVGh9Eb84YTm50hHqoO83KcmoGdNXv2+coEawZC6cYeVcewgqs4tkCi01L+LuqWR
+         Kw1Pw2tjnpaBFEGNJZq/jALnTvE8MKIjQ4JOHOHyFyRlRxM233FxNVdgPonfXydxEgz6
+         Gc5rBxhZSmmy/JWepJD8aDM/XZDiEVIr+/QANmse9/X+32nSu5UmeAY9AiqCfknHQxBP
+         /vGsMbVoGV2U04349gFrnqthiEYmQaP/k03OSk4cPXJcAnQ3/VmsVx3GKszL2CMyunQ6
+         Na2fzOqtmr/fbYXIqDhOojjGnLQL0ieTnV6ytkXiOshQnTk51JFZEu5dEHN/sYhkANtH
+         2z7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:references:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=QxbO8n8qocr/wzHLhXn2zR38V3Yaw9Tevlii/Y8VJ54=;
+        bh=/JCn4SdIxEGNgPKioH6JBVx8YoHdHQMCrX9PWLiEcP4=;
         fh=/TX5S8kgkt7/rBZYZ+crJ/+YKPw+5BFKLYKcqwsm7JU=;
-        b=sA+ps7My4XxS1jlGqz5DJnREi+zdOC862QEMmfrGDx2li2Ag9v1IpHammVgRxv3cr0
-         g5NixCoZvAjw12JnIkfjSs/XHRRDLS+7Vg6/0kUqrBC9zUIbhq6HMv58i6fjg+R7XUGo
-         tSZ1+dKLmxxgmIfqswE26FzIe0/6HnrBgU2qqMLZJvVJpSYziLM8hI399dcfJxAe5LyK
-         MOZqirGJ+HU+Ga34HLAxzQmw6SWwZXb9wjCT1LfoD4QNnUR313tWrDHxLMSFMyJCylqM
-         ChpoXLh9E5xMdFWGRL3Zdrh+oPgzwD5OHH3F6WHhdmzwIDiJsbnzWMirnv12RkIEbwQU
-         AHSA==;
+        b=pFM7qN0fhmnv7EcvGhKw8AoxzX4q3A8RKefA0sIAdoE4LlbuYrnm8w2H3LCAN/Sl8F
+         0ylyOlK0U50zjsILPl+gUrLdNRnPQIFoUIiuHNmu6Ko64YA38c2ytHmX6GFzivaoUpt3
+         xQKAgQs3gXDrlWRyqOoMOiFA9z3pwINYQ5rco+9RnGrh1+JcIFBvUJAKB4fNe5MU+x59
+         46bXlAHcXQaUpRXpXXGf7h9X+/kPxqFUhklU9PgGSLkyU+4IX+Y2Z7Uw80Y9vGlXlZVn
+         yjcjxBtPv8HDoDNs6HvAXxZYJtFq8o6ur+RN9upi6QqzNBQ9Egkcwk0N2wocbXfCE+me
+         XG8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b20-20020a05620a127400b00787b7b46c49si9475614qkl.683.2024.03.04.04.18.50
+        by mx.google.com with ESMTPS id r3-20020a0562140c8300b006903099b236si9566701qvr.504.2024.03.04.04.59.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 04:18:51 -0800 (PST)
+        Mon, 04 Mar 2024 04:59:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,27 +42,27 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rh7HB-0002v7-4R; Mon, 04 Mar 2024 07:18:37 -0500
+	id 1rh7uk-0008VM-6A; Mon, 04 Mar 2024 07:59:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rh7H9-0002uf-Ps; Mon, 04 Mar 2024 07:18:35 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+ id 1rh7ui-0008V6-SH; Mon, 04 Mar 2024 07:59:28 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rh7H6-0006Zc-2h; Mon, 04 Mar 2024 07:18:35 -0500
+ id 1rh7ug-0008V7-1A; Mon, 04 Mar 2024 07:59:28 -0500
 Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4TpHkx3J5jzRjZb;
- Mon,  4 Mar 2024 20:17:29 +0800 (CST)
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4TpJcc69J9zwPFs;
+ Mon,  4 Mar 2024 20:57:04 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 01505140EBB;
- Mon,  4 Mar 2024 20:18:11 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 4BF241402CD;
+ Mon,  4 Mar 2024 20:59:20 +0800 (CST)
 Received: from [10.67.109.254] (10.67.109.254) by
  kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Mon, 4 Mar 2024 20:18:10 +0800
-Message-ID: <895fa382-1c0f-ae33-ba6b-76387506ad16@huawei.com>
-Date: Mon, 4 Mar 2024 20:18:09 +0800
+ 15.1.2507.35; Mon, 4 Mar 2024 20:59:19 +0800
+Message-ID: <7f9d680d-1e1f-10b2-ca3f-dd2e385b69f7@huawei.com>
+Date: Mon, 4 Mar 2024 20:59:18 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
@@ -80,10 +80,10 @@ In-Reply-To: <85d632e6-8eb9-4bb5-bef4-b6430d499e61@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -82
 X-Spam_score: -8.3
 X-Spam_bar: --------
@@ -106,7 +106,7 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c/S0Oy93bkVG
+X-TUID: o+Yd2UFpNWPq
 
 
 
@@ -214,9 +214,6 @@ On 2024/3/1 7:50, Richard Henderson wrote:
 > 
 > It would eliminate the change in irqbetter(), which is a bit more
 > complex than it needs to be.
-
-I will try to change to implement this mapping scheme.
-
 > 
 >> @@ -152,10 +197,13 @@ static void
 >> gicv3_redist_update_noirqset(GICv3CPUState *cs)
@@ -233,6 +230,10 @@ I will try to change to implement this mapping scheme.
 > gicv3_get_priority(), alongside the read of gicr_ipriorityr.
 > 
 > Is there a bug here not handling is_redist for GCIR_INMI*?
+
+There seems no bug. Since prio = cs->gicr_ipriorityr[i] or  prio =
+s->gicd_ipriority[i] are separately used originally,
+
 > 
 >> @@ -168,7 +216,7 @@ static void
 >> gicv3_redist_update_noirqset(GICv3CPUState *cs)

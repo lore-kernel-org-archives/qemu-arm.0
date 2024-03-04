@@ -1,689 +1,443 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2477354eja;
-        Mon, 4 Mar 2024 01:31:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXhIBLSj0K43452JIrkYfN3GfZ+qhiIh0FCmJV8zt+ON458bhGOAJLLnqFJJQP0D56WJrABKJyLQbeQctlTMQG4XkD2fakv
-X-Google-Smtp-Source: AGHT+IFiP3fWKvkaokyWHcbAKFEYDJ1s7K+XGNrBFWVeiPzQ0QpWekCsAr6E+Q1YW5sYEqgU4JQ8
-X-Received: by 2002:a05:620a:124b:b0:788:25a6:e227 with SMTP id a11-20020a05620a124b00b0078825a6e227mr3248202qkl.44.1709544685848;
-        Mon, 04 Mar 2024 01:31:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709544685; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2486534eja;
+        Mon, 4 Mar 2024 01:56:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXFZ7CVhxmhx8izfTf//YHElPg6sGk6s7c9UYM313ZsDKgd2YkL69ZyuOjH6M7GuO//v09J6FVgNLExySi0AMOZhIgEEDLv
+X-Google-Smtp-Source: AGHT+IErSb4ONnARMKASf9KqfmxL2g33jPAU2khaNwYrD1lSa6aJIfsfOtYlfZE4g91donkmRLLP
+X-Received: by 2002:a05:620a:8396:b0:788:2444:9d0a with SMTP id pb22-20020a05620a839600b0078824449d0amr4092733qkn.6.1709546207983;
+        Mon, 04 Mar 2024 01:56:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709546207; cv=none;
         d=google.com; s=arc-20160816;
-        b=fE2ec0Xl0BYxOTtJ0qnv5nYszR7lp7G+UwP6MqbXEiz9d0A2noWp9jWLnYanVaYMU/
-         hvxZ+0Rk8DE+8IAW+Can9OCsC7mXxlYjenV2LM8K2SMUc1IvoKjLicsFbxr8FqyDyXnY
-         1sR2rLiF5LUGXLQz9Lqh2Vg19eZ4+G7G0ZblRg++m6vN16sQm9bCbUBCCukizHszf8ZC
-         HfM5aojHFa+x17Hxm6J+RT4RGNSgnTy/pPJyPSVFpvACadGflO04BLoEBhBfBzZF5Tv6
-         0lYYxgc9s0AvuuMFzTs+XqJbIWNFYiMu866Zt/KdURKU0bCp/wZsX3++4OotXaa8L/iu
-         CfHg==
+        b=ZCYPcQDQgKL0OVyvhFYOmfAIkxmCmYhhCnFF7iA0KVVsSotwMy1Vss286FJ6RfQTcw
+         GXSm6iTb0bPavy+G7LvZIlCCszq+XkG29vGgaVzQhF+e0iI+c6ckad5V4ZuoYaLMicq5
+         3aDRNm39MMozQpOFxpNpbEuvb92Qs+SHcFZI7fzUI4MbVyuUB9etcC7ObocQHhVLPg53
+         VDNUI4AzWijBc+Js3SW2BEpJZnBfY0Kki0hrU+t/cEH+PaaVDa80obRUj+ZKvoowiERN
+         IqkUnYvBrLkfc/rYMFLM0pZq7C1vMq4g3pZLSK9ND6FFfUWzsNJNfNvDm7868PhQTuf7
+         6N9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=kixeiuaq1cjrx+8hruom9p3zJEPGyzdmiPZIF+Mv6BY=;
-        fh=MGNs5MsPfS8GULtQe2qMcYQbAiZJSQuMQcVfuHK1z7k=;
-        b=yIvV7j4i9+d9jW5d0F0FLbbI5JS8LfnHzcfVdXeYPDe0QZQTP5hvr2NT7eFd6UZx+V
-         ljbgtonIJfulKqSnE/NdPY/HdAKYu4wUp7oDJ4kcZkv1rMtVKrdV7SUiNNsUfPCgE4F6
-         5TwNnS//hFtJkLY/eb9MILUldbPTVWhS+ewOOPkfV/+FovV+1fESL/nyjRlcPGmt4Hgf
-         pOvee8xhHHL3vb96Jv/EnutDuFX/2aRmC14P/bkoZBd0zPp4tt8DO4R0Rw4/ljV9I0n+
-         HdusM/rLHluNekCOIkzKhnVWm/k+/5oPh8lSPpwaylG/dtOHy4BQ/yawIxyKdcRBcuX4
-         AvAg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date:dkim-signature;
+        bh=4jCd5RGq1kFbGA9Ha55zGrhopf2SSTFnGpxK1+8EEpg=;
+        fh=h8ZzLv4e15EDNViN0TxHIFrChRY/re6BN1olOJsC/Jc=;
+        b=ccjkY8PvEr14Knp1IsR39hhvydBy23qyTNXNiq8olLdJ5srCa/8UbrZ9/Aa96r30KG
+         G4JByJA9/W2mxQ8RoOlGLfw7b1bgJZ9lGm5XL75jFVEE2+IYYq1H56sSPEuIyeLPisgd
+         4eDxuk1WjibP5jvedpY1cG8WSCGPCHKEXFvOJqNJtNhQ9+qrRqNyahJpiSIOimeIiCGF
+         O+IO86Gj1IxR+tGmZ6LRnu7sRqAvQ5pKrGMAAUe4nQr9UP0Q71duZKV6EDRX2KHTAF+Q
+         RvJoy9DkmyzNKU3LUF3GTfuxI0dtyVwgWv1PSxIo9RYVPiDzk4HiEL3hqzj7483GT+I0
+         2iwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xu7vypSW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou24-20020a05620a621800b00787c6ff2d1dsi8954638qkn.212.2024.03.04.01.31.25
+        by mx.google.com with ESMTPS id j10-20020a05620a410a00b007882eee2389si401446qko.518.2024.03.04.01.56.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 01:31:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2024 01:56:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xu7vypSW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rh4ds-0007yf-Lu; Mon, 04 Mar 2024 04:29:52 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rh52j-0001y9-CH; Mon, 04 Mar 2024 04:55:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rh4dr-0007wb-3R; Mon, 04 Mar 2024 04:29:51 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rh4do-0005bh-6P; Mon, 04 Mar 2024 04:29:50 -0500
-Received: from TWMBX03.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 4 Mar
- 2024 17:29:39 +0800
-Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX03.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 4 Mar
- 2024 17:30:38 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 4 Mar 2024 17:29:38 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC
- here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 4/9] aspeed/smc: Add AST2700 support
-Date: Mon, 4 Mar 2024 17:29:29 +0800
-Message-ID: <20240304092934.1953198-5-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240304092934.1953198-1-jamin_lin@aspeedtech.com>
-References: <20240304092934.1953198-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rh52g-0001xZ-Pl
+ for qemu-devel@nongnu.org; Mon, 04 Mar 2024 04:55:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rh52d-000288-6z
+ for qemu-devel@nongnu.org; Mon, 04 Mar 2024 04:55:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709546126;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=4jCd5RGq1kFbGA9Ha55zGrhopf2SSTFnGpxK1+8EEpg=;
+ b=Xu7vypSWrUcJRLm0MgyerpXiBAQ08p4e174zXMNcFHOesp7JNE7FW9Eu3nBRDfRHH8TLCl
+ 7CG6eeElRzoESNdmlqsnpdNYd0RcbdcxuZ5rLK/bvTbeWof9lUTEcqGRnUWOM6oVkERpM2
+ u3Gjv9Hwmz+pK/ZApfV3unynO0Jiatg=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-549-UnZZrBwLM5ii0f8DSfCxag-1; Mon, 04 Mar 2024 04:55:24 -0500
+X-MC-Unique: UnZZrBwLM5ii0f8DSfCxag-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-78806327fc9so355291185a.2
+ for <qemu-devel@nongnu.org>; Mon, 04 Mar 2024 01:55:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709546124; x=1710150924;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4jCd5RGq1kFbGA9Ha55zGrhopf2SSTFnGpxK1+8EEpg=;
+ b=tr1oz3iEBODolDiFeKWn0jHNOVQuil9qVLYX0J4ZKFIkoHvuLoViQ8hlebDCXVovR8
+ zU3AGVOynAiddb+uS/zNzPoUSHBGMNoh2TPGbB1NKDkKv2FXkEtzPJ2yPeC9ypPqnv5W
+ HdGT1N2vXU5mH6b5PBCgen7TMzl72zVCZxRN+LSapcZT1S2qFlbQ+rjIo8Y68Yi8nqyq
+ 0ohLoGmORHytLCiFCefgYvciU5nSic6nlH2EaQvnIHV82atsvqa6nPiqQRCH6fsC+PHw
+ LK+ge53qgBn7WLkL/2NBCm5NW9gfJhCVxhl1jBejR7RsKuncvNIxoQJZkvYoG/vbgdSg
+ 9ZMw==
+X-Gm-Message-State: AOJu0YweRKRfehL9Eb/bE6WnqZtnLhd/AMSpy/J+certzFSmqdfwHbhP
+ nOcNma16KK3ujxjwjU6d8gIVKH7Aoym0jnZil/M9hjlXuwXT6kJZNLck0i5iF06SRzoqKJJTfoP
+ x5ceNNlt6oNOnw0KKgGDx6QPH4fJ0hoY0U9+voOGFa8ppNTb26z2f
+X-Received: by 2002:a05:620a:190c:b0:787:a444:12c7 with SMTP id
+ bj12-20020a05620a190c00b00787a44412c7mr10932125qkb.54.1709546124002; 
+ Mon, 04 Mar 2024 01:55:24 -0800 (PST)
+X-Received: by 2002:a05:620a:190c:b0:787:a444:12c7 with SMTP id
+ bj12-20020a05620a190c00b00787a44412c7mr10932106qkb.54.1709546123570; 
+ Mon, 04 Mar 2024 01:55:23 -0800 (PST)
+Received: from fc37-ani ([115.96.159.226])
+ by smtp.googlemail.com with ESMTPSA id
+ u12-20020a05620a022c00b00788258a8888sm1093171qkm.48.2024.03.04.01.55.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Mar 2024 01:55:23 -0800 (PST)
+Date: Mon, 4 Mar 2024 15:25:11 +0530 (IST)
+From: Ani Sinha <anisinha@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com, 
+ mst@redhat.com, gaosong@loongson.cn, alistair.francis@wdc.com, 
+ palmer@dabbelt.com, bin.meng@windriver.com, liwei1518@gmail.com, 
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, eblake@redhat.com, armbru@redhat.com, 
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Subject: Re: [PATCH 07/19] smbios: avoid mangling user provided tables
+In-Reply-To: <20240227154749.1818189-8-imammedo@redhat.com>
+Message-ID: <bb38e2e8-d9dd-d552-469e-8d47196393c1@redhat.com>
+References: <20240227154749.1818189-1-imammedo@redhat.com>
+ <20240227154749.1818189-8-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.589,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R01/eamJnnQ8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: G/lqLzVt/8zz
 
-AST2700 fmc/spi controller's address decoding unit is 64KB
-and only bits [31:16] are used for decoding. Introduce seg_to_reg
-and reg_to_seg handlers for ast2700 fmc/spi controller.
-In addition, adds ast2700 fmc, spi0, spi1, and spi2 class init handler.
 
-AST2700 support the maximum dram size is 8GiB.
-Update dma_rw function and trace-event to support 64 bits dram
-address. DMA length is from 1 byte to 32MB for AST2700, AST2600 and AST10x0
-and DMA length is from 4 bytes to 32MB for AST2500.
 
-In other words, if "R_DMA_LEN" is 0, it should move at least 1 byte
-data for AST2700, AST2600 and AST10x0 and 4 bytes data for AST2500.
-To support all ASPEED SOCs, adds dma_start_length parameter to store
-the start length and update DMA_LENGTH mask to "1FFFFFF" to fix dma moving
-incorrect data length issue.
+On Tue, 27 Feb 2024, Igor Mammedov wrote:
 
-Currently, dma_rw function only supports length 4 bytes aligned.
+> currently smbios_entry_add() preserves internally '-smbios type='
+> options but tables provided with '-smbios file=' are stored directly
+> into blob that eventually will be exposed to VM. And then later
+> QEMU adds default/'-smbios type' entries on top into the same blob.
+>
+> It makes impossible to generate tables more than once, hence
+> 'immutable' guard was used.
+> Make it possible to regenerate final blob by storing user provided
+> blobs into a dedicated area (usr_blobs) and then copy it when
+> composing final blob. Which also makes handling of -smbios
+> options consistent.
+>
+> As side effect of this and previous commits there is no need to
+> generate legacy smbios_entries at the time options are parsed.
+> Instead compose smbios_entries on demand from  usr_blobs like
+> it is done for non-legacy SMBIOS tables.
+>
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/ssi/aspeed_smc.c         | 326 +++++++++++++++++++++++++++++++++---
- hw/ssi/trace-events         |   2 +-
- include/hw/ssi/aspeed_smc.h |   1 +
- 3 files changed, 309 insertions(+), 20 deletions(-)
+This patch is very dense and even after taking several iterations through
+it, I am not confident that I have not missed anything.
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 3c93936fd1..73121edf2b 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -131,6 +131,9 @@
- #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
- #define   FMC_WDT2_CTRL_EN               BIT(0)
- 
-+/* DMA DRAM Side Address High Part (AST2700) */
-+#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
-+
- /* DMA Control/Status Register */
- #define R_DMA_CTRL        (0x80 / 4)
- #define   DMA_CTRL_REQUEST      (1 << 31)
-@@ -177,13 +180,18 @@
-  * DMA flash addresses should be 4 bytes aligned and the valid address
-  * range is 0x20000000 - 0x2FFFFFFF.
-  *
-- * DMA length is from 4 bytes to 32MB
-+ * DMA length is from 4 bytes to 32MB (AST2500)
-  *   0: 4 bytes
-  *   0x7FFFFF: 32M bytes
-+ *
-+ * DMA length is from 1 byte to 32MB (AST2600, AST10x0 and AST2700)
-+ *   0: 1 byte
-+ *   0x1FFFFFF: 32M bytes
-  */
- #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
-+#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
- #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
--#define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
-+#define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
- 
- /* Flash opcodes. */
- #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
-@@ -202,6 +210,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
- #define ASPEED_SMC_FEATURE_DMA       0x1
- #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
- #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
-+#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
- 
- static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
- {
-@@ -213,6 +222,11 @@ static inline bool aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
-     return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
- }
- 
-+static inline bool aspeed_smc_has_dma_dram_addr_high(const AspeedSMCClass *asc)
-+{
-+    return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
-+}
-+
- #define aspeed_smc_error(fmt, ...)                                      \
-     qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
- 
-@@ -655,7 +669,7 @@ static const MemoryRegionOps aspeed_smc_flash_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
-     .valid = {
-         .min_access_size = 1,
--        .max_access_size = 4,
-+        .max_access_size = 8,
-     },
- };
- 
-@@ -734,6 +748,9 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR) ||
-+        (aspeed_smc_has_dma(asc) &&
-+         aspeed_smc_has_dma_dram_addr_high(asc) &&
-+         addr == R_DMA_DRAM_ADDR_HIGH) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM) ||
-         (addr >= R_SEG_ADDR0 &&
-@@ -840,8 +857,11 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
-  */
- static void aspeed_smc_dma_checksum(AspeedSMCState *s)
- {
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-     MemTxResult result;
-+    uint32_t dma_len;
-     uint32_t data;
-+    uint32_t extra;
- 
-     if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-         aspeed_smc_error("invalid direction for DMA checksum");
-@@ -852,7 +872,14 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-         aspeed_smc_dma_calibration(s);
-     }
- 
--    while (s->regs[R_DMA_LEN]) {
-+    dma_len = s->regs[R_DMA_LEN] + asc->dma_start_length;
-+    /* dma length 4 bytes aligned */
-+    extra = dma_len % 4;
-+    if (extra != 0) {
-+        dma_len += 4 - extra;
-+    }
-+
-+    while (dma_len) {
-         data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
-                                     MEMTXATTRS_UNSPECIFIED, &result);
-         if (result != MEMTX_OK) {
-@@ -868,7 +895,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-          */
-         s->regs[R_DMA_CHECKSUM] += data;
-         s->regs[R_DMA_FLASH_ADDR] += 4;
--        s->regs[R_DMA_LEN] -= 4;
-+        dma_len -= 4;
-+        s->regs[R_DMA_LEN] = dma_len;
-     }
- 
-     if (s->inject_failure && aspeed_smc_inject_read_failure(s)) {
-@@ -879,21 +907,44 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
- 
- static void aspeed_smc_dma_rw(AspeedSMCState *s)
- {
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    uint64_t dram_addr_high;
-+    uint64_t dma_dram_addr;
-+    uint64_t dram_addr;
-     MemTxResult result;
-+    uint32_t dma_len;
-     uint32_t data;
-+    uint32_t extra;
-+
-+    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
-+        dram_addr_high = s->regs[R_DMA_DRAM_ADDR_HIGH];
-+        dram_addr_high <<= 32;
-+        dma_dram_addr = dram_addr_high | s->regs[R_DMA_DRAM_ADDR];
-+        dram_addr = dma_dram_addr - s->dram_mr->container->addr;
-+    } else {
-+        dma_dram_addr = s->regs[R_DMA_DRAM_ADDR];
-+        dram_addr = dma_dram_addr;
-+    }
-+
-+    dma_len = s->regs[R_DMA_LEN] + asc->dma_start_length;
-+    /* dma length 4 bytes aligned */
-+    extra = dma_len % 4;
-+    if (extra != 0) {
-+        dma_len += 4 - extra;
-+    }
- 
-     trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
-                             "write" : "read",
-                             s->regs[R_DMA_FLASH_ADDR],
--                            s->regs[R_DMA_DRAM_ADDR],
--                            s->regs[R_DMA_LEN]);
--    while (s->regs[R_DMA_LEN]) {
-+                            dram_addr,
-+                            dma_len);
-+
-+    while (dma_len) {
-         if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
--            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            data = address_space_ldl_le(&s->dram_as, dram_addr,
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM read failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM read failed @%" PRIx64, dram_addr);
-                 return;
-             }
- 
-@@ -913,11 +964,10 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-                 return;
-             }
- 
--            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            address_space_stl_le(&s->dram_as, dram_addr,
-                                  data, MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM write failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM write failed @%" PRIx64, dram_addr);
-                 return;
-             }
-         }
-@@ -926,10 +976,18 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-          * When the DMA is on-going, the DMA registers are updated
-          * with the current working addresses and length.
-          */
-+        dram_addr += 4;
-+        dma_dram_addr += 4;
-+        if (aspeed_smc_has_dma_dram_addr_high(asc)) {
-+            dram_addr_high = dma_dram_addr >> 32;
-+            s->regs[R_DMA_DRAM_ADDR_HIGH] = dram_addr_high;
-+        }
-+
-+        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
-         s->regs[R_DMA_FLASH_ADDR] += 4;
--        s->regs[R_DMA_DRAM_ADDR] += 4;
--        s->regs[R_DMA_LEN] -= 4;
-         s->regs[R_DMA_CHECKSUM] += data;
-+        dma_len -= 4;
-+        s->regs[R_DMA_LEN] = dma_len;
-     }
- }
- 
-@@ -1079,6 +1137,10 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
-     } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
-                aspeed_smc_dma_granted(s)) {
-         s->regs[addr] = DMA_LENGTH(value);
-+    } else if (aspeed_smc_has_dma(asc) &&
-+               aspeed_smc_has_dma_dram_addr_high(asc) &&
-+               addr == R_DMA_DRAM_ADDR_HIGH) {
-+        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
-     } else {
-         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
-                       __func__, addr);
-@@ -1372,6 +1434,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x1FFFFFFC;
-+    asc->dma_start_length  = 4;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-@@ -1439,7 +1502,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 FMC Controller";
-+    dc->desc               = "Aspeed 2500 FMC Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
-@@ -1455,6 +1518,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 4;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-@@ -1477,7 +1541,7 @@ static void aspeed_2500_spi1_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 SPI1 Controller";
-+    dc->desc               = "Aspeed 2500 SPI1 Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
-@@ -1512,7 +1576,7 @@ static void aspeed_2500_spi2_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 SPI2 Controller";
-+    dc->desc               = "Aspeed 2500 SPI2 Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
-@@ -1611,6 +1675,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_WDT_CONTROL;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1649,6 +1714,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_DMA_GRANT;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1688,6 +1754,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_DMA_GRANT;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1769,6 +1836,7 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
-@@ -1806,6 +1874,7 @@ static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1842,6 +1911,7 @@ static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1854,6 +1924,220 @@ static const TypeInfo aspeed_1030_spi2_info = {
-     .class_init = aspeed_1030_spi2_class_init,
- };
- 
-+/*
-+ * The FMC Segment Registers of the AST2700 have a 64KB unit.
-+ * Only bits [31:16] are used for decoding.
-+ */
-+#define AST2700_SEG_ADDR_MASK 0xffff0000
-+
-+static uint32_t aspeed_2700_smc_segment_to_reg(const AspeedSMCState *s,
-+                                               const AspeedSegments *seg)
-+{
-+    uint32_t reg = 0;
-+
-+    /* Disabled segments have a nil register */
-+    if (!seg->size) {
-+        return 0;
-+    }
-+
-+    reg |= (seg->addr & AST2700_SEG_ADDR_MASK) >> 16; /* start offset */
-+    reg |= (seg->addr + seg->size - 1) & AST2700_SEG_ADDR_MASK; /* end offset */
-+    return reg;
-+}
-+
-+static void aspeed_2700_smc_reg_to_segment(const AspeedSMCState *s,
-+                                           uint32_t reg, AspeedSegments *seg)
-+{
-+    uint32_t start_offset = (reg << 16) & AST2700_SEG_ADDR_MASK;
-+    uint32_t end_offset = reg & AST2700_SEG_ADDR_MASK;
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+
-+    if (reg) {
-+        seg->addr = asc->flash_window_base + start_offset;
-+        seg->size = end_offset + (64 * KiB) - start_offset;
-+    } else {
-+        seg->addr = asc->flash_window_base;
-+        seg->size = 0;
-+    }
-+}
-+
-+static const uint32_t aspeed_2700_fmc_resets[ASPEED_SMC_R_MAX] = {
-+    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
-+            CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
-+    [R_CE_CTRL] = 0x0000aa00,
-+    [R_CTRL0] = 0x406b0641,
-+    [R_CTRL1] = 0x00000400,
-+    [R_CTRL2] = 0x00000400,
-+    [R_CTRL3] = 0x00000400,
-+    [R_SEG_ADDR0] = 0x08000000,
-+    [R_SEG_ADDR1] = 0x10000800,
-+    [R_SEG_ADDR2] = 0x00000000,
-+    [R_SEG_ADDR3] = 0x00000000,
-+    [R_DUMMY_DATA] = 0x00010000,
-+    [R_DMA_DRAM_ADDR_HIGH] = 0x00000000,
-+    [R_TIMINGS] = 0x007b0000,
-+};
-+
-+static const AspeedSegments aspeed_2700_fmc_segments[] = {
-+    { 0x0, 128 * MiB }, /* start address is readonly */
-+    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-+    { 256 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-+    { 0x0, 0 }, /* disabled */
-+};
-+
-+static void aspeed_2700_fmc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-+
-+    dc->desc               = "Aspeed 2700 FMC Controller";
-+    asc->r_conf            = R_CONF;
-+    asc->r_ce_ctrl         = R_CE_CTRL;
-+    asc->r_ctrl0           = R_CTRL0;
-+    asc->r_timings         = R_TIMINGS;
-+    asc->nregs_timings     = 3;
-+    asc->conf_enable_w0    = CONF_ENABLE_W0;
-+    asc->cs_num_max        = 3;
-+    asc->segments          = aspeed_2700_fmc_segments;
-+    asc->segment_addr_mask = 0xffffffff;
-+    asc->resets            = aspeed_2700_fmc_resets;
-+    asc->flash_window_base = 0x100000000;
-+    asc->flash_window_size = 1 * GiB;
-+    asc->features          = ASPEED_SMC_FEATURE_DMA |
-+                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-+    asc->dma_flash_mask    = 0x2FFFFFFC;
-+    asc->dma_dram_mask     = 0xFFFFFFFC;
-+    asc->dma_start_length  = 1;
-+    asc->nregs             = ASPEED_SMC_R_MAX;
-+    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-+    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-+    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+}
-+
-+static const TypeInfo aspeed_2700_fmc_info = {
-+    .name =  "aspeed.fmc-ast2700",
-+    .parent = TYPE_ASPEED_SMC,
-+    .class_init = aspeed_2700_fmc_class_init,
-+};
-+
-+static const AspeedSegments aspeed_2700_spi0_segments[] = {
-+    { 0x0, 128 * MiB }, /* start address is readonly */
-+    { 128 * MiB, 128 * MiB }, /* start address is readonly */
-+    { 0x0, 0 }, /* disabled */
-+};
-+
-+static void aspeed_2700_spi0_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-+
-+    dc->desc               = "Aspeed 2700 SPI0 Controller";
-+    asc->r_conf            = R_CONF;
-+    asc->r_ce_ctrl         = R_CE_CTRL;
-+    asc->r_ctrl0           = R_CTRL0;
-+    asc->r_timings         = R_TIMINGS;
-+    asc->nregs_timings     = 2;
-+    asc->conf_enable_w0    = CONF_ENABLE_W0;
-+    asc->cs_num_max        = 2;
-+    asc->segments          = aspeed_2700_spi0_segments;
-+    asc->segment_addr_mask = 0xffffffff;
-+    asc->flash_window_base = 0x180000000;
-+    asc->flash_window_size = 1 * GiB;
-+    asc->features          = ASPEED_SMC_FEATURE_DMA |
-+                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-+    asc->dma_flash_mask    = 0x2FFFFFFC;
-+    asc->dma_dram_mask     = 0xFFFFFFFC;
-+    asc->dma_start_length  = 1;
-+    asc->nregs             = ASPEED_SMC_R_MAX;
-+    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-+    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-+    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+}
-+
-+static const TypeInfo aspeed_2700_spi0_info = {
-+    .name =  "aspeed.spi0-ast2700",
-+    .parent = TYPE_ASPEED_SMC,
-+    .class_init = aspeed_2700_spi0_class_init,
-+};
-+
-+static const AspeedSegments aspeed_2700_spi1_segments[] = {
-+    { 0x0, 128 * MiB }, /* start address is readonly */
-+    { 0x0, 0 }, /* disabled */
-+};
-+
-+static void aspeed_2700_spi1_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-+
-+    dc->desc               = "Aspeed 2700 SPI1 Controller";
-+    asc->r_conf            = R_CONF;
-+    asc->r_ce_ctrl         = R_CE_CTRL;
-+    asc->r_ctrl0           = R_CTRL0;
-+    asc->r_timings         = R_TIMINGS;
-+    asc->nregs_timings     = 2;
-+    asc->conf_enable_w0    = CONF_ENABLE_W0;
-+    asc->cs_num_max        = 2;
-+    asc->segments          = aspeed_2700_spi1_segments;
-+    asc->segment_addr_mask = 0xffffffff;
-+    asc->flash_window_base = 0x200000000;
-+    asc->flash_window_size = 1 * GiB;
-+    asc->features          = ASPEED_SMC_FEATURE_DMA |
-+                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-+    asc->dma_flash_mask    = 0x2FFFFFFC;
-+    asc->dma_dram_mask     = 0xFFFFFFFC;
-+    asc->dma_start_length  = 1;
-+    asc->nregs             = ASPEED_SMC_R_MAX;
-+    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-+    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-+    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+}
-+
-+static const TypeInfo aspeed_2700_spi1_info = {
-+        .name =  "aspeed.spi1-ast2700",
-+        .parent = TYPE_ASPEED_SMC,
-+        .class_init = aspeed_2700_spi1_class_init,
-+};
-+
-+static const AspeedSegments aspeed_2700_spi2_segments[] = {
-+    { 0x0, 128 * MiB }, /* start address is readonly */
-+    { 0x0, 0 }, /* disabled */
-+};
-+
-+static void aspeed_2700_spi2_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-+
-+    dc->desc               = "Aspeed 2700 SPI2 Controller";
-+    asc->r_conf            = R_CONF;
-+    asc->r_ce_ctrl         = R_CE_CTRL;
-+    asc->r_ctrl0           = R_CTRL0;
-+    asc->r_timings         = R_TIMINGS;
-+    asc->nregs_timings     = 2;
-+    asc->conf_enable_w0    = CONF_ENABLE_W0;
-+    asc->cs_num_max        = 2;
-+    asc->segments          = aspeed_2700_spi2_segments;
-+    asc->segment_addr_mask = 0xffffffff;
-+    asc->flash_window_base = 0x280000000;
-+    asc->flash_window_size = 1 * GiB;
-+    asc->features          = ASPEED_SMC_FEATURE_DMA |
-+                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-+    asc->dma_flash_mask    = 0x0FFFFFFC;
-+    asc->dma_dram_mask     = 0xFFFFFFFC;
-+    asc->dma_start_length  = 1;
-+    asc->nregs             = ASPEED_SMC_R_MAX;
-+    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-+    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-+    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+}
-+
-+static const TypeInfo aspeed_2700_spi2_info = {
-+        .name =  "aspeed.spi2-ast2700",
-+        .parent = TYPE_ASPEED_SMC,
-+        .class_init = aspeed_2700_spi2_class_init,
-+};
-+
- static void aspeed_smc_register_types(void)
- {
-     type_register_static(&aspeed_smc_flash_info);
-@@ -1870,6 +2154,10 @@ static void aspeed_smc_register_types(void)
-     type_register_static(&aspeed_1030_fmc_info);
-     type_register_static(&aspeed_1030_spi1_info);
-     type_register_static(&aspeed_1030_spi2_info);
-+    type_register_static(&aspeed_2700_fmc_info);
-+    type_register_static(&aspeed_2700_spi0_info);
-+    type_register_static(&aspeed_2700_spi1_info);
-+    type_register_static(&aspeed_2700_spi2_info);
- }
- 
- type_init(aspeed_smc_register_types)
-diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-index 2d5bd2b83d..7b5ad6a939 100644
---- a/hw/ssi/trace-events
-+++ b/hw/ssi/trace-events
-@@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d index:0x%x d
- aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
- aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
--aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
-+aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 " size:0x%08x"
- aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
- 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 8e1dda556b..f359ed22cc 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -106,6 +106,7 @@ struct AspeedSMCClass {
-     uint32_t features;
-     hwaddr dma_flash_mask;
-     hwaddr dma_dram_mask;
-+    uint32_t dma_start_length;
-     uint32_t nregs;
-     uint32_t (*segment_to_reg)(const AspeedSMCState *s,
-                                const AspeedSegments *seg);
--- 
-2.25.1
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/smbios/smbios.c | 179 +++++++++++++++++++++++----------------------
+>  1 file changed, 92 insertions(+), 87 deletions(-)
+>
+> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> index c46fc93357..aa2cc5bdbd 100644
+> --- a/hw/smbios/smbios.c
+> +++ b/hw/smbios/smbios.c
+> @@ -57,6 +57,14 @@ static size_t smbios_entries_len;
+>  static bool smbios_uuid_encoded = true;
+>  /* end: legacy structures & constants for <= 2.0 machines */
+>
+> +/*
+> + * SMBIOS tables provided by user with '-smbios file=<foo>' option
+> + */
+> +uint8_t *usr_blobs;
+> +size_t usr_blobs_len;
+> +static GArray *usr_blobs_sizes;
+> +static unsigned usr_table_max;
+> +static unsigned usr_table_cnt;
+>
+>  uint8_t *smbios_tables;
+>  size_t smbios_tables_len;
+> @@ -67,7 +75,6 @@ static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
+>  static SmbiosEntryPoint ep;
+>
+>  static int smbios_type4_count = 0;
+> -static bool smbios_immutable;
+>  static bool smbios_have_defaults;
+>  static uint32_t smbios_cpuid_version, smbios_cpuid_features;
+>
+> @@ -569,9 +576,8 @@ static void smbios_build_type_1_fields(void)
+>
+>  uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+>  {
+> -    /* drop unwanted version of command-line file blob(s) */
+> -    g_free(smbios_tables);
+> -    smbios_tables = NULL;
+> +    int i;
+> +    size_t usr_offset;
+>
+>      /* also complain if fields were given for types > 1 */
+>      if (find_next_bit(have_fields_bitmap,
+> @@ -581,12 +587,33 @@ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+>          exit(1);
+>      }
+>
+> -    if (!smbios_immutable) {
+> -        smbios_build_type_0_fields();
+> -        smbios_build_type_1_fields();
+> -        smbios_validate_table(expected_t4_count);
+> -        smbios_immutable = true;
+> +    g_free(smbios_entries);
+> +    smbios_entries_len = sizeof(uint16_t);
+> +    smbios_entries = g_malloc0(smbios_entries_len);
+> +
+> +    for (i = 0, usr_offset = 0; usr_blobs_sizes && i < usr_blobs_sizes->len;
+> +         i++)
+> +    {
+> +        struct smbios_table *table;
+> +        struct smbios_structure_header *header;
+> +        size_t size = g_array_index(usr_blobs_sizes, size_t, i);
+> +
+> +        header = (struct smbios_structure_header *)(usr_blobs + usr_offset);
+> +        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> +                                                   size + sizeof(*table));
+> +        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> +        table->header.type = SMBIOS_TABLE_ENTRY;
+> +        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> +        memcpy(table->data, header, size);
+> +        smbios_entries_len += sizeof(*table) + size;
+> +        (*(uint16_t *)smbios_entries) =
+> +            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> +        usr_offset += size;
+>      }
+> +
+> +    smbios_build_type_0_fields();
+> +    smbios_build_type_1_fields();
+> +    smbios_validate_table(expected_t4_count);
+>      *length = smbios_entries_len;
+>      return smbios_entries;
+>  }
+> @@ -1094,67 +1121,67 @@ void smbios_get_tables(MachineState *ms,
+>  {
+>      unsigned i, dimm_cnt, offset;
+>
+> -    /* drop unwanted (legacy) version of command-line file blob(s) */
+> -    g_free(smbios_entries);
+> -    smbios_entries = NULL;
+> +    g_free(smbios_tables);
+> +    smbios_tables = g_memdup2(usr_blobs, usr_blobs_len);
+
+Why can't we do a memdup even for the legacy case instead of memcpy?
+
+Secondly, here and other places we should check for NULL returns.
+https://docs.gtk.org/glib/func.memdup2.html
+return from memdup2 can be null.
+
+
+> +    smbios_tables_len = usr_blobs_len;
+> +    smbios_table_max = usr_table_max;
+> +    smbios_table_cnt = usr_table_cnt;
+>
+> -    if (!smbios_immutable) {
+> -        smbios_build_type_0_table();
+> -        smbios_build_type_1_table();
+> -        smbios_build_type_2_table();
+> -        smbios_build_type_3_table();
+> +    smbios_build_type_0_table();
+> +    smbios_build_type_1_table();
+> +    smbios_build_type_2_table();
+> +    smbios_build_type_3_table();
+>
+> -        assert(ms->smp.sockets >= 1);
+> +    assert(ms->smp.sockets >= 1);
+>
+> -        for (i = 0; i < ms->smp.sockets; i++) {
+> -            smbios_build_type_4_table(ms, i);
+> -        }
+> +    for (i = 0; i < ms->smp.sockets; i++) {
+> +        smbios_build_type_4_table(ms, i);
+> +    }
+>
+> -        smbios_build_type_8_table();
+> -        smbios_build_type_11_table();
+> +    smbios_build_type_8_table();
+> +    smbios_build_type_11_table();
+>
+>  #define MAX_DIMM_SZ (16 * GiB)
+>  #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+>                                          : ((current_machine->ram_size - 1) % MAX_DIMM_SZ) + 1)
+>
+> -        dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) / MAX_DIMM_SZ;
+> +    dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) /
+> +               MAX_DIMM_SZ;
+>
+> -        /*
+> -         * The offset determines if we need to keep additional space between
+> -         * table 17 and table 19 header handle numbers so that they do
+> -         * not overlap. For example, for a VM with larger than 8 TB guest
+> -         * memory and DIMM like chunks of 16 GiB, the default space between
+> -         * the two tables (T19_BASE - T17_BASE = 512) is not enough.
+> -         */
+> -        offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+> -                 dimm_cnt - (T19_BASE - T17_BASE) : 0;
+> +    /*
+> +     * The offset determines if we need to keep additional space between
+> +     * table 17 and table 19 header handle numbers so that they do
+> +     * not overlap. For example, for a VM with larger than 8 TB guest
+> +     * memory and DIMM like chunks of 16 GiB, the default space between
+> +     * the two tables (T19_BASE - T17_BASE = 512) is not enough.
+> +     */
+> +    offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+> +             dimm_cnt - (T19_BASE - T17_BASE) : 0;
+>
+> -        smbios_build_type_16_table(dimm_cnt);
+> +    smbios_build_type_16_table(dimm_cnt);
+>
+> -        for (i = 0; i < dimm_cnt; i++) {
+> -            smbios_build_type_17_table(i, GET_DIMM_SZ);
+> -        }
+> +    for (i = 0; i < dimm_cnt; i++) {
+> +        smbios_build_type_17_table(i, GET_DIMM_SZ);
+> +    }
+>
+> -        for (i = 0; i < mem_array_size; i++) {
+> -            smbios_build_type_19_table(i, offset, mem_array[i].address,
+> -                                       mem_array[i].length);
+> -        }
+> +    for (i = 0; i < mem_array_size; i++) {
+> +        smbios_build_type_19_table(i, offset, mem_array[i].address,
+> +                                   mem_array[i].length);
+> +    }
+>
+> -        /*
+> -         * make sure 16 bit handle numbers in the headers of tables 19
+> -         * and 32 do not overlap.
+> -         */
+> -        assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+> +    /*
+> +     * make sure 16 bit handle numbers in the headers of tables 19
+> +     * and 32 do not overlap.
+> +     */
+> +    assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+>
+> -        smbios_build_type_32_table();
+> -        smbios_build_type_38_table();
+> -        smbios_build_type_41_table(errp);
+> -        smbios_build_type_127_table();
+> +    smbios_build_type_32_table();
+> +    smbios_build_type_38_table();
+> +    smbios_build_type_41_table(errp);
+> +    smbios_build_type_127_table();
+>
+> -        smbios_validate_table(ms->smp.sockets);
+> -        smbios_entry_point_setup();
+> -        smbios_immutable = true;
+> -    }
+> +    smbios_validate_table(ms->smp.sockets);
+> +    smbios_entry_point_setup();
+>
+>      /* return tables blob and entry point (anchor), and their sizes */
+>      *tables = smbios_tables;
+> @@ -1254,13 +1281,10 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+>  {
+>      const char *val;
+>
+> -    assert(!smbios_immutable);
+> -
+>      val = qemu_opt_get(opts, "file");
+>      if (val) {
+>          struct smbios_structure_header *header;
+> -        int size;
+> -        struct smbios_table *table; /* legacy mode only */
+> +        size_t size;
+>
+>          if (!qemu_opts_validate(opts, qemu_smbios_file_opts, errp)) {
+>              return;
+> @@ -1277,9 +1301,9 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+>           * (except in legacy mode, where the second '\0' is implicit and
+>           *  will be inserted by the BIOS).
+>           */
+> -        smbios_tables = g_realloc(smbios_tables, smbios_tables_len + size);
+> -        header = (struct smbios_structure_header *)(smbios_tables +
+> -                                                    smbios_tables_len);
+> +        usr_blobs = g_realloc(usr_blobs, usr_blobs_len + size);
+> +        header = (struct smbios_structure_header *)(usr_blobs +
+> +                                                    usr_blobs_len);
+>
+>          if (load_image_size(val, (uint8_t *)header, size) != size) {
+>              error_setg(errp, "Failed to load SMBIOS file %s", val);
+> @@ -1300,34 +1324,15 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+>              smbios_type4_count++;
+>          }
+>
+> -        smbios_tables_len += size;
+> -        if (size > smbios_table_max) {
+> -            smbios_table_max = size;
+> +        if (!usr_blobs_sizes) {
+> +            usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
+>          }
+> -        smbios_table_cnt++;
+> -
+> -        /* add a copy of the newly loaded blob to legacy smbios_entries */
+> -        /* NOTE: This code runs before smbios_set_defaults(), so we don't
+> -         *       yet know which mode (legacy vs. aggregate-table) will be
+> -         *       required. We therefore add the binary blob to both legacy
+> -         *       (smbios_entries) and aggregate (smbios_tables) tables, and
+> -         *       delete the one we don't need from smbios_set_defaults(),
+> -         *       once we know which machine version has been requested.
+> -         */
+> -        if (!smbios_entries) {
+> -            smbios_entries_len = sizeof(uint16_t);
+> -            smbios_entries = g_malloc0(smbios_entries_len);
+> +        g_array_append_val(usr_blobs_sizes, size);
+> +        usr_blobs_len += size;
+> +        if (size > usr_table_max) {
+> +            usr_table_max = size;
+>          }
+> -        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> -                                                   size + sizeof(*table));
+> -        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> -        table->header.type = SMBIOS_TABLE_ENTRY;
+> -        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> -        memcpy(table->data, header, size);
+> -        smbios_entries_len += sizeof(*table) + size;
+> -        (*(uint16_t *)smbios_entries) =
+> -                cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> -        /* end: add a copy of the newly loaded blob to legacy smbios_entries */
+> +        usr_table_cnt++;
+>
+>          return;
+>      }
+> --
+> 2.39.3
+>
+>
 

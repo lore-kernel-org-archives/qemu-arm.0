@@ -1,470 +1,148 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2633130eja;
-        Mon, 4 Mar 2024 06:47:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVLbXLKOugOUkeoQ5jPqj4O9yDA/NGdpe+T/syk/Yr+iuuzosRhZIk7brKNrXyyjvkdJX08IeS2cVFRqm19Hi0OupZjB3ZO
-X-Google-Smtp-Source: AGHT+IEmq2pncky7CyoNJU3hjdNcRe2wrCVfhx9X8q8sc1+RtIc0IbDe7YsmTj1E19N3b4+d0Nwl
-X-Received: by 2002:a05:620a:1215:b0:788:2367:509e with SMTP id u21-20020a05620a121500b007882367509emr4396663qkj.51.1709563672411;
-        Mon, 04 Mar 2024 06:47:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709563672; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2641655eja;
+        Mon, 4 Mar 2024 07:03:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVl9Vvn/ZtUbfKZaiC+en4Wx6aDJsECj4pQP8NatydwKxsmwo+uMti9Xv1oj2kE3+my/hQCpMgbR91kgd4jHdNzDxjwUssD
+X-Google-Smtp-Source: AGHT+IFJRXKyB9W6dmaA/4VODI42jceqhHq6jiGmSIKyr3CNcAPIXje2WORid8hpAtVRtAaQXms8
+X-Received: by 2002:a05:6902:1108:b0:dc7:4460:878a with SMTP id o8-20020a056902110800b00dc74460878amr6673615ybu.3.1709564580499;
+        Mon, 04 Mar 2024 07:03:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709564580; cv=none;
         d=google.com; s=arc-20160816;
-        b=BhfeWKVepzQHlHnEiUdT7Ynmcia7o7lr8aTaz0uSteZ0IFwU/vSwHyMyq1aHiZfkic
-         POEC5K3i2PL1LSAL2yNTJrnmGdFjIMC522b/eVSjA9+ek0MgXxGqbaWStakT1ChtjZD8
-         subm1z14wFS5E2qkfBecVDvyQRW06kDBiBLtxmJ32umfiXax1fMVEZH6c+jaIIAGvZ8s
-         C9Q7/iWwTx3eA0raw6f2sEWkYBOyfzrpOakEwGC4vX6/ftp8XJepVCRAxLgdvaFkRiH/
-         LHfG0hTOO2l7UvO9Z7O1EbBvc1IbRsoXl6xMzrOOKKpIeRT/JFIhWTYTz8oAIGJCJ9AM
-         wJwg==
+        b=wlq6c/jbhd8IzvgecIF74GW3J0aoZ3nLhWM5zbxLp9SR9KXTkpsd6xMTql+c1UaRaK
+         FHmqUqsBekdU1Srbym6J5Rs3AiNRAVjWqfKh8FIj8qkSooiID9FtXfWp6se/FsTG7y97
+         PIxUAcEhfYO01j/UIL9mUe3jmtUb/I3m79ucFs+iIMWvjQ51VoyjDX0pEb6YtkVBdJAW
+         tno03tKRG4rbgO6nfD29xigwu2ymMFNCAIMT3tqyY4OqfiGDxR9LdAalIYlMBS5Z6YxN
+         u5ZIDQkwM3l7RQo0sm+NmBdSQjhjqHHY1BkAWPGaIkReIttO3x0fx9EEQR54ji2DTH2d
+         msYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=45v2Iup03dyrXmzZscAqpoeWSwmOL/rmDy4pOcT4CAY=;
-        fh=X7FqJc9Q/d3HW4sohIQPglBEIAw7wozu40hVQBfqWeQ=;
-        b=KgDLzxHUhq50yLBRemb1qGnMWJ+vTmgVhSL+9X4rcFEKsz1pErbzQ/mmjJmWKRgPWp
-         PLb3gn/yKwKQDGSNQzDkOTzR8qF6Q7Pwc7fH+VkklXRwOhgUI5MMF8KCJZLUjVhTZx7r
-         AqevrDJb1nBUgpDlBiweX8stGqvlaisV69qrTqaVg2QqMYdUpMnOSFoL2DCvG1y/8/i/
-         KbZ/2CmbtQiugZR7Q5JqCf2cI0pdar9w5arj5EjJKIDusemixe4dwCizjCbr7pWuNJFq
-         c+zZa5/e12gp8R76s0ccSd1o5drw5sMYToTXmqbVQDuLzj9UK981yYF/kLRp6K3J/cDE
-         6kZQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=otbtgtUNVpwfIth7PNDoBPWCzPaH5tButK7oNpC0WYk=;
+        fh=qXYAZEGsmJzvLt0ZGrb18mxIGXMtPPEflpX/lCVLtWA=;
+        b=jcekk+DCTSqQA/ZrKe7IjykqeBC/gbSyb3e6MyUQQ3FUkXwysyHq+R24bjDEAMyjwv
+         LiB7qJ2XY4iUaFHFQgtoc+wnZQlaFXGQJHeIu5nAEIHXE4SPvArfMPDqSlSMnDCgjvS6
+         XT9naAbfY84D//RDt6MCSBPoD28KU26ocF7znzYjNfuyXSYDO+0ngYxPd9j7X0lM9Y4K
+         iQ+CQvSZ6ioSd90YfQWdlLqVc18MmHiCUV2fIwtpDw9c7kKJpQHLvBfwlIPlc4zOrtp+
+         hDH9K4Sk4yviPazeXIN3yCkkqFsMt4qtt8iDXbPg15t+NNFU3Zt3U0qFyn56GAI8nJpM
+         u9WQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="Z7/K6HQ7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt39-20020a05620a47a700b007881c2088eesi5024705qkb.600.2024.03.04.06.47.52
+        by mx.google.com with ESMTPS id e92-20020a25a3e5000000b00dce19d60b46si2320117ybi.474.2024.03.04.07.03.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 06:47:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2024 07:03:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="Z7/K6HQ7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rh9bS-0001Tr-Fi; Mon, 04 Mar 2024 09:47:42 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rh9q3-0003bf-D9; Mon, 04 Mar 2024 10:02:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=daq9=KK=kaod.org=clg@ozlabs.org>)
- id 1rh9bM-0001Sq-Cr; Mon, 04 Mar 2024 09:47:36 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=daq9=KK=kaod.org=clg@ozlabs.org>)
- id 1rh9bI-000773-Qy; Mon, 04 Mar 2024 09:47:35 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4TpM3z3knkz4wcJ;
- Tue,  5 Mar 2024 01:47:27 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4TpM3w2ML6z4wbh;
- Tue,  5 Mar 2024 01:47:24 +1100 (AEDT)
-Message-ID: <2e975f92-26f4-4bdf-b195-996b69f705aa@kaod.org>
-Date: Mon, 4 Mar 2024 15:47:21 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rh9pw-0003b1-Qs
+ for qemu-arm@nongnu.org; Mon, 04 Mar 2024 10:02:40 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rh9pv-00019P-5D
+ for qemu-arm@nongnu.org; Mon, 04 Mar 2024 10:02:40 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-565a3910f86so6861471a12.3
+ for <qemu-arm@nongnu.org>; Mon, 04 Mar 2024 07:02:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709564556; x=1710169356; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=otbtgtUNVpwfIth7PNDoBPWCzPaH5tButK7oNpC0WYk=;
+ b=Z7/K6HQ7yYhfp0z/EVQckfqasJWY7Cpj7c3o0r6i8r4OvtfldXXk82XgUcXZ1TwrAa
+ C3KBapgYHPPVHUnc16WEPx57aknBu3p0lDV6LcDutNMaFUEYKo5plzkaeWSJqM0XsD7K
+ D6tVKFxQW09tGF+2BtaspnPq3wySYaqTFPWyDTNPPB8pSSrWKilGIpO+F9jsSYxGtr0J
+ 3KdAs2CksbHd6enI0ozs26FL0wXClRk2Nmnepoct4TQzg3j5Qr31yVgeZ9CHBefqc2Zx
+ s27+oB6v5MM/KGaCmCMcBV9qi4ZIInqDx3BcDfHwvkvRLMHqEeLsebjeZm2YolDZwgk8
+ JQyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709564556; x=1710169356;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=otbtgtUNVpwfIth7PNDoBPWCzPaH5tButK7oNpC0WYk=;
+ b=ZgU/yIHSLvVTUP5f4gnWYAZIqJ5Ynk820134Y74tQdEBcJ9nUVEX25o5isN987Cwns
+ gUkXSm4mcnnRbnM9T1Vqcv6UoF5jBcfOWsrVGA2dQp7KgCttkgzAU5ruKTcK7PlqAgfK
+ 8SnsKd8GPnHRGMgFlRJ/53oQrTSFLs2ErNLELd2jmA1OQ6303AqaJ1nBuus99Jq839+6
+ UpEIvNh2NNmgfGdYFdRHt6JBkPUxr53JNlC1e77tLAoZNcOx0Jr8pGMLbe9buqGyaAm1
+ mcTtLx+iBlaQIINmRrRIU5bymyVJTanPsl6k+bKtnvQQYxJZkBK1AhdOtVB2Dq7h4YSK
+ CO8Q==
+X-Gm-Message-State: AOJu0YxNgPclMwU7Y6RjjPQ02eVU6G88GI9l5RWYK4FTf3YD78FnfmOw
+ f6DZONdi/DKe25lJadbZGSgODC7YdJ1Prx/kCAPALNgIB80fcTnHvtPpsl9DKACJ29j+klHXhpz
+ 2Tw/8HQESXCnP8FvU7F4A6rhADQP1wOqrpqQEUQ==
+X-Received: by 2002:aa7:d8cd:0:b0:567:56b5:8960 with SMTP id
+ k13-20020aa7d8cd000000b0056756b58960mr1710862eds.13.1709564556606; Mon, 04
+ Mar 2024 07:02:36 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/9] aspeed/sdmc: Add AST2700 support
-Content-Language: en-US, fr
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240304092934.1953198-1-jamin_lin@aspeedtech.com>
- <20240304092934.1953198-4-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240304092934.1953198-4-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=daq9=KK=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20240227054855.44204-1-tong.ho@amd.com>
+In-Reply-To: <20240227054855.44204-1-tong.ho@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Mar 2024 15:02:25 +0000
+Message-ID: <CAFEAcA8EH1VLRPBb4gGCHotLbG6Gpnf3OqGM5Vy4GUX+2h_=_w@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/char/pl011: Add support for loopback
+To: Tong Ho <tong.ho@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, marcandre.lureau@redhat.com, 
+ pbonzini@redhat.com, francisco.iglesias@amd.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3xiDCPP9AfRW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qUceIPBwJiOH
 
-On 3/4/24 10:29, Jamin Lin wrote:
-> The SDRAM memory controller(DRAMC) controls the access to external
-> DDR4 and DDR5 SDRAM and power up to DDR4 and DDR5 PHY.
-> 
-> The DRAM memory controller of AST2700 is not backward compatible
-> to previous chips such AST2600, AST2500 and AST2400.
-> 
-> Max memory is now 8GiB on the AST2700. Introduce new
-> aspeed_2700_sdmc and class with read/write operation and
-> reset handlers.
-> 
-> Define DRAMC necessary protected registers and
-> unprotected registers for AST2700 and increase
-> the register set to 0x1000.
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/misc/aspeed_sdmc.c         | 215 ++++++++++++++++++++++++++++++----
->   include/hw/misc/aspeed_sdmc.h |   4 +-
->   2 files changed, 198 insertions(+), 21 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 64cd1a81dc..63fb7936c4 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -27,6 +27,7 @@
->   #define   PROT_SOFTLOCKED    0x00
->   
->   #define   PROT_KEY_UNLOCK     0xFC600309
-> +#define   PROT_2700_KEY_UNLOCK  0x1688A8A8
->   #define   PROT_KEY_HARDLOCK   0xDEADDEAD /* AST2600 */
->   
->   /* Configuration Register */
-> @@ -54,6 +55,46 @@
->   #define R_DRAM_TIME       (0x8c / 4)
->   #define R_ECC_ERR_INJECT  (0xb4 / 4)
->   
-> +/* AST2700 Register */
-> +#define R_2700_PROT                 (0x00 / 4)
-> +#define R_INT_STATUS                (0x04 / 4)
-> +#define R_INT_CLEAR                 (0x08 / 4)
-> +#define R_INT_MASK                  (0x0c / 4)
-> +#define R_MAIN_CONF                 (0x10 / 4)
-> +#define R_MAIN_CONTROL              (0x14 / 4)
-> +#define R_MAIN_STATUS               (0x18 / 4)
-> +#define R_ERR_STATUS                (0x1c / 4)
-> +#define R_ECC_FAIL_STATUS           (0x78 / 4)
-> +#define R_ECC_FAIL_ADDR             (0x7c / 4)
-> +#define R_ECC_TESTING_CONTROL       (0x80 / 4)
-> +#define R_PROT_REGION_LOCK_STATUS   (0x94 / 4)
-> +#define R_TEST_FAIL_ADDR            (0xd4 / 4)
-> +#define R_TEST_FAIL_D0              (0xd8 / 4)
-> +#define R_TEST_FAIL_D1              (0xdc / 4)
-> +#define R_TEST_FAIL_D2              (0xe0 / 4)
-> +#define R_TEST_FAIL_D3              (0xe4 / 4)
-> +#define R_DBG_STATUS                (0xf4 / 4)
-> +#define R_PHY_INTERFACE_STATUS      (0xf8 / 4)
-> +#define R_GRAPHIC_MEM_BASE_ADDR     (0x10c / 4)
-> +#define R_PORT0_INTERFACE_MONITOR0  (0x240 / 4)
-> +#define R_PORT0_INTERFACE_MONITOR1  (0x244 / 4)
-> +#define R_PORT0_INTERFACE_MONITOR2  (0x248 / 4)
-> +#define R_PORT1_INTERFACE_MONITOR0  (0x2c0 / 4)
-> +#define R_PORT1_INTERFACE_MONITOR1  (0x2c4 / 4)
-> +#define R_PORT1_INTERFACE_MONITOR2  (0x2c8 / 4)
-> +#define R_PORT2_INTERFACE_MONITOR0  (0x340 / 4)
-> +#define R_PORT2_INTERFACE_MONITOR1  (0x344 / 4)
-> +#define R_PORT2_INTERFACE_MONITOR2  (0x348 / 4)
-> +#define R_PORT3_INTERFACE_MONITOR0  (0x3c0 / 4)
-> +#define R_PORT3_INTERFACE_MONITOR1  (0x3c4 / 4)
-> +#define R_PORT3_INTERFACE_MONITOR2  (0x3c8 / 4)
-> +#define R_PORT4_INTERFACE_MONITOR0  (0x440 / 4)
-> +#define R_PORT4_INTERFACE_MONITOR1  (0x444 / 4)
-> +#define R_PORT4_INTERFACE_MONITOR2  (0x448 / 4)
-> +#define R_PORT5_INTERFACE_MONITOR0  (0x4c0 / 4)
-> +#define R_PORT5_INTERFACE_MONITOR1  (0x4c4 / 4)
-> +#define R_PORT5_INTERFACE_MONITOR2  (0x4c8 / 4)
-> +
->   /*
->    * Configuration register Ox4 (for Aspeed AST2400 SOC)
->    *
-> @@ -76,10 +117,6 @@
->   #define     ASPEED_SDMC_VGA_32MB            0x2
->   #define     ASPEED_SDMC_VGA_64MB            0x3
->   #define ASPEED_SDMC_DRAM_SIZE(x)        (x & 0x3)
-> -#define     ASPEED_SDMC_DRAM_64MB           0x0
-> -#define     ASPEED_SDMC_DRAM_128MB          0x1
-> -#define     ASPEED_SDMC_DRAM_256MB          0x2
-> -#define     ASPEED_SDMC_DRAM_512MB          0x3
->   
->   #define ASPEED_SDMC_READONLY_MASK                       \
->       (ASPEED_SDMC_RESERVED | ASPEED_SDMC_VGA_COMPAT |    \
-> @@ -100,22 +137,24 @@
->   #define ASPEED_SDMC_CACHE_ENABLE        (1 << 10) /* differs from AST2400 */
->   #define ASPEED_SDMC_DRAM_TYPE           (1 << 4)  /* differs from AST2400 */
->   
-> -/* DRAM size definitions differs */
-> -#define     ASPEED_SDMC_AST2500_128MB       0x0
-> -#define     ASPEED_SDMC_AST2500_256MB       0x1
-> -#define     ASPEED_SDMC_AST2500_512MB       0x2
-> -#define     ASPEED_SDMC_AST2500_1024MB      0x3
-> -
-> -#define     ASPEED_SDMC_AST2600_256MB       0x0
-> -#define     ASPEED_SDMC_AST2600_512MB       0x1
-> -#define     ASPEED_SDMC_AST2600_1024MB      0x2
-> -#define     ASPEED_SDMC_AST2600_2048MB      0x3
-> -
-Please move the removal above in a separate patch.
-
->   #define ASPEED_SDMC_AST2500_READONLY_MASK                               \
->       (ASPEED_SDMC_HW_VERSION(0xf) | ASPEED_SDMC_CACHE_INITIAL_DONE |     \
->        ASPEED_SDMC_AST2500_RESERVED | ASPEED_SDMC_VGA_COMPAT |            \
->        ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB))
->   
-> +/*
-> + * Main Configuration register Ox10 (for Aspeed AST2700 SOC and higher)
-> + *
-> + */
-> +#define ASPEED_SDMC_AST2700_RESERVED        0xFFFF2082 /* 31:16, 13, 7, 1 */
-> +#define ASPEED_SDMC_AST2700_DATA_SCRAMBLE           (1 << 8)
-> +#define ASPEED_SDMC_AST2700_ECC_ENABLE              (1 << 6)
-> +#define ASPEED_SDMC_AST2700_PAGE_MATCHING_ENABLE    (1 << 5)
-> +#define ASPEED_SDMC_AST2700_DRAM_SIZE(x)            ((x & 0x7) << 2)
-> +
-> +#define ASPEED_SDMC_AST2700_READONLY_MASK   \
-> +     (ASPEED_SDMC_AST2700_RESERVED)
-> +
->   static uint64_t aspeed_sdmc_read(void *opaque, hwaddr addr, unsigned size)
->   {
->       AspeedSDMCState *s = ASPEED_SDMC(opaque);
-> @@ -231,7 +270,10 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
->       AspeedSDMCState *s = ASPEED_SDMC(dev);
->       AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
->   
-> -    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
-> +    if (!asc->is_bus64bit) {
-> +        assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
-> +    }
-
-May be :
-
-    assert(asc->max_ram_size < 4 * GiB || asc->is_bus64bit);
-
-?
-
-> +
->       s->max_ram_size = asc->max_ram_size;
->   
->       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-> @@ -311,7 +353,8 @@ static void aspeed_2400_sdmc_write(AspeedSDMCState *s, uint32_t reg,
->                                      uint32_t data)
->   {
->       if (reg == R_PROT) {
-> -        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
-> +        s->regs[reg] =
-> +            (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
->           return;
->       }
->   
-> @@ -369,7 +412,8 @@ static void aspeed_2500_sdmc_write(AspeedSDMCState *s, uint32_t reg,
->                                      uint32_t data)
->   {
->       if (reg == R_PROT) {
-> -        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
-> +        s->regs[reg] =
-> +            (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
->           return;
->       }
->   
-> @@ -449,8 +493,9 @@ static void aspeed_2600_sdmc_write(AspeedSDMCState *s, uint32_t reg,
->       }
->   
->       if (s->regs[R_PROT] == PROT_HARDLOCKED) {
-> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked until system reset!\n",
-> -                __func__);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: SDMC is locked until system reset!\n",
-> +                      __func__);
->           return;
->       }
-
-The checkpatch changes could be in a separate patch. This is minor.
-
->   
-> @@ -512,12 +557,142 @@ static const TypeInfo aspeed_2600_sdmc_info = {
->       .class_init = aspeed_2600_sdmc_class_init,
->   };
->   
-> +static void aspeed_2700_sdmc_reset(DeviceState *dev)
-> +{
-> +    AspeedSDMCState *s = ASPEED_SDMC(dev);
-> +    AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
-> +
-> +    memset(s->regs, 0, sizeof(s->regs));
-> +
-> +    /* Set ram size bit and defaults values */
-> +    s->regs[R_MAIN_CONF] = asc->compute_conf(s, 0);
-> +    s->regs[R_2700_PROT] = PROT_UNLOCKED;
-
-The default reset value is unlocked ?
-
-
-Thanks,
-
-C.
+On Tue, 27 Feb 2024 at 05:48, Tong Ho <tong.ho@amd.com> wrote:
+>
+> This patch adds loopback for sent characters, sent BREAK,
+> and modem-control signals.
+>
+> Loopback of send and modem-control is often used for uart
+> self tests in real hardware but missing from current pl011
+> model, resulting in self-test failures when running in QEMU.
+>
+> This implementation matches what is observed in real pl011
+> hardware placed in loopback mode:
+> 1. Input characters and BREAK events from serial backend
+>    are ignored, but
+> 2. Both TX characters and BREAK events are still sent to
+>    serial backend, in addition to be looped back to RX.
+>
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
+> Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
 
 
 
-> +}
-> +
-> +static uint32_t aspeed_2700_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
-> +{
-> +    uint32_t fixed_conf = ASPEED_SDMC_AST2700_PAGE_MATCHING_ENABLE |
-> +        ASPEED_SDMC_AST2700_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
-> +
-> +    /* Make sure readonly bits are kept */
-> +    data &= ~ASPEED_SDMC_AST2700_READONLY_MASK;
-> +
-> +    return data | fixed_conf;
-> +}
-> +
-> +static void aspeed_2700_sdmc_write(AspeedSDMCState *s, uint32_t reg,
-> +                                   uint32_t data)
-> +{
-> +    /* Unprotected registers */
-> +    switch (reg) {
-> +    case R_INT_STATUS:
-> +    case R_INT_CLEAR:
-> +    case R_INT_MASK:
-> +    case R_MAIN_STATUS:
-> +    case R_ERR_STATUS:
-> +    case R_ECC_FAIL_STATUS:
-> +    case R_ECC_FAIL_ADDR:
-> +    case R_PROT_REGION_LOCK_STATUS:
-> +    case R_TEST_FAIL_ADDR:
-> +    case R_TEST_FAIL_D0:
-> +    case R_TEST_FAIL_D1:
-> +    case R_TEST_FAIL_D2:
-> +    case R_TEST_FAIL_D3:
-> +    case R_DBG_STATUS:
-> +    case R_PHY_INTERFACE_STATUS:
-> +    case R_GRAPHIC_MEM_BASE_ADDR:
-> +    case R_PORT0_INTERFACE_MONITOR0:
-> +    case R_PORT0_INTERFACE_MONITOR1:
-> +    case R_PORT0_INTERFACE_MONITOR2:
-> +    case R_PORT1_INTERFACE_MONITOR0:
-> +    case R_PORT1_INTERFACE_MONITOR1:
-> +    case R_PORT1_INTERFACE_MONITOR2:
-> +    case R_PORT2_INTERFACE_MONITOR0:
-> +    case R_PORT2_INTERFACE_MONITOR1:
-> +    case R_PORT2_INTERFACE_MONITOR2:
-> +    case R_PORT3_INTERFACE_MONITOR0:
-> +    case R_PORT3_INTERFACE_MONITOR1:
-> +    case R_PORT3_INTERFACE_MONITOR2:
-> +    case R_PORT4_INTERFACE_MONITOR0:
-> +    case R_PORT4_INTERFACE_MONITOR1:
-> +    case R_PORT4_INTERFACE_MONITOR2:
-> +    case R_PORT5_INTERFACE_MONITOR0:
-> +    case R_PORT5_INTERFACE_MONITOR1:
-> +    case R_PORT5_INTERFACE_MONITOR2:
-> +        s->regs[reg] = data;
-> +        return;
-> +    }
-> +
-> +    if (s->regs[R_2700_PROT] == PROT_HARDLOCKED) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: SDMC is locked until system reset!\n",
-> +                      __func__);
-> +        return;
-> +    }
-> +
-> +    if (reg != R_2700_PROT && s->regs[R_2700_PROT] == PROT_SOFTLOCKED) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: SDMC is locked! (write to MCR%02x blocked)\n",
-> +                      __func__, reg * 4);
-> +        return;
-> +    }
-> +
-> +    switch (reg) {
-> +    case R_2700_PROT:
-> +        if (data == PROT_2700_KEY_UNLOCK)  {
-> +            data = PROT_UNLOCKED;
-> +        } else if (data == PROT_KEY_HARDLOCK) {
-> +            data = PROT_HARDLOCKED;
-> +        } else {
-> +            data = PROT_SOFTLOCKED;
-> +        }
-> +        break;
-> +    case R_MAIN_CONF:
-> +        data = aspeed_2700_sdmc_compute_conf(s, data);
-> +        break;
-> +    case R_MAIN_STATUS:
-> +        /* Will never return 'busy'. */
-> +        data &= ~PHY_BUSY_STATE;
-> +        break;
-> +    default:
-> +        break;
-> +    }
-> +
-> +    s->regs[reg] = data;
-> +}
-> +
-> +static const uint64_t
-> +    aspeed_2700_ram_sizes[] = { 256 * MiB, 512 * MiB, 1024 * MiB,
-> +                                2048 * MiB, 4096 * MiB, 8192 * MiB, 0};
-> +
-> +static void aspeed_2700_sdmc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
-> +
-> +    dc->desc = "ASPEED 2700 SDRAM Memory Controller";
-> +    dc->reset = aspeed_2700_sdmc_reset;
-> +
-> +    asc->is_bus64bit = true;
-> +    asc->max_ram_size = 8 * GiB;
-> +    asc->compute_conf = aspeed_2700_sdmc_compute_conf;
-> +    asc->write = aspeed_2700_sdmc_write;
-> +    asc->valid_ram_sizes = aspeed_2700_ram_sizes;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_sdmc_info = {
-> +    .name = TYPE_ASPEED_2700_SDMC,
-> +    .parent = TYPE_ASPEED_SDMC,
-> +    .class_init = aspeed_2700_sdmc_class_init,
-> +};
-> +
->   static void aspeed_sdmc_register_types(void)
->   {
->       type_register_static(&aspeed_sdmc_info);
->       type_register_static(&aspeed_2400_sdmc_info);
->       type_register_static(&aspeed_2500_sdmc_info);
->       type_register_static(&aspeed_2600_sdmc_info);
-> +    type_register_static(&aspeed_2700_sdmc_info);
->   }
->   
->   type_init(aspeed_sdmc_register_types);
-> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
-> index ec2d59a14f..6df2f0a3b7 100644
-> --- a/include/hw/misc/aspeed_sdmc.h
-> +++ b/include/hw/misc/aspeed_sdmc.h
-> @@ -17,6 +17,7 @@ OBJECT_DECLARE_TYPE(AspeedSDMCState, AspeedSDMCClass, ASPEED_SDMC)
->   #define TYPE_ASPEED_2400_SDMC TYPE_ASPEED_SDMC "-ast2400"
->   #define TYPE_ASPEED_2500_SDMC TYPE_ASPEED_SDMC "-ast2500"
->   #define TYPE_ASPEED_2600_SDMC TYPE_ASPEED_SDMC "-ast2600"
-> +#define TYPE_ASPEED_2700_SDMC TYPE_ASPEED_SDMC "-ast2700"
->   
->   /*
->    * SDMC has 174 documented registers. In addition the u-boot device tree
-> @@ -29,7 +30,7 @@ OBJECT_DECLARE_TYPE(AspeedSDMCState, AspeedSDMCClass, ASPEED_SDMC)
->    * time, and the other is in the DDR-PHY IP which is used during DDR-PHY
->    * training.
->    */
-> -#define ASPEED_SDMC_NR_REGS (0x500 >> 2)
-> +#define ASPEED_SDMC_NR_REGS (0x1000 >> 2)
->   
->   struct AspeedSDMCState {
->       /*< private >*/
-> @@ -51,6 +52,7 @@ struct AspeedSDMCClass {
->       const uint64_t *valid_ram_sizes;
->       uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
->       void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
-> +    bool is_bus64bit;
->   };
->   
->   #endif /* ASPEED_SDMC_H */
+Applied to target-arm.next, thanks.
 
+-- PMM

@@ -1,163 +1,176 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp468907ejb;
-        Wed, 6 Mar 2024 04:33:49 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVvgFpvbYY1IpkhBe1aetK7qpmwyZEWqqeNL+Yh1p7htop4J2TXLEPOGh2m114Wlhb0zeXBlwUVfZd1nJ5SE/uMP1kgATkk
-X-Google-Smtp-Source: AGHT+IGzjiUtjBD2KCtKFBNwJ5NqQGMSS/1R8fmTKM8dVVIs2O1YvzQAH6/LYMu64oULKrgcvCdW
-X-Received: by 2002:a05:620a:55bc:b0:788:2486:14e0 with SMTP id vr28-20020a05620a55bc00b00788248614e0mr4963685qkn.66.1709728429361;
-        Wed, 06 Mar 2024 04:33:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709728429; cv=pass;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2331129eja;
+        Sun, 3 Mar 2024 17:47:18 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXQQ8k1YfiELWHcmFP6dsRsoAgH6W5OK3BA0wUU/SQPo9j1tlu6lDD6f+r4ZGivwsz3rVF6KxSlcQ7NCPq0zsYpcz7ClrtJ
+X-Google-Smtp-Source: AGHT+IE3DDKQQMAT1DjMC+5MJnpOaKRViBia7sntgGb0AoRGPAgjoQAnMNREkIyLa5Q3RYtyKuXz
+X-Received: by 2002:a05:6102:34cc:b0:470:53d8:a0f4 with SMTP id a12-20020a05610234cc00b0047053d8a0f4mr5487710vst.28.1709516837589;
+        Sun, 03 Mar 2024 17:47:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1709516837; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xd+K05LiSfGR2wx9/+c6/CCjnKSsSs/rkofsDHaVgqbs9c+uFt7hXEtgTSE1By7cqK
-         VoZCmG2En3QyVeXjN3xUqVCHZ9drhG+vvLHWT10np7N8+bmsux3D7UHa0HSatt3Rysqt
-         FamNkHaGbJj82K+/cs5FlVHqGEJac3YhDRPmFuc9DcelDEvkSkadGq9OT023rSYR0BnS
-         wY71iM4ENeksQj+MRAG/FYCIVjGit79U0hEWyYxwpCVwAEClvz8zlRGcQWGdGD421Ux1
-         TxDrdPzvWLh7QWgYfMob46LRnNZ0vk3WeaKCEBxm9hOI0ZX6/0eMgOdSl6bjTcsi3fhl
-         s1Sw==
+        b=YrxQF5rIF1gtJFPm8UdEBF2Do7iPmhwTu569qfkdGMb2QY0t1aGBtUPrJVR/CShH7/
+         e0HBem6FDWHHMqufsidU0Ih8yBcwTy/8RCU/6A9JjrKTdV5Z22ay0ZrfPkQlhInFIKIa
+         K5HlRQUH4rSncjzTOm3B29yIX6Z7ASFpZqy51SIY2agcPD39/poCufRafOBFTs5zG0Ee
+         sP+gNvsRrUFP+x04SbRTTPBaryXuJIiES8G2qWJP5s8pbMP0aY9b5JWV9KzWUY3zDqGi
+         ogPXrnO/ZR8ZCa+ujaEwQP9m/2Zn/0Wjf7W76rF6JuDksH1bAft8/ChjDY7Hw6jVcTX3
+         UJtQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=AEL1vtLpI25aT5cjVy9lYU91m2CGz2cI2c775BXZpBk=;
-        fh=TsskilArLjXGsoNH3Wuzmttym1Rj4Ek2NlvJZ/25aOE=;
-        b=LNAZZB8tza9cNjrW1swTp5Z4hPJMU14lzBhDhiGS1XofYbIgwW87p4z4uJS6uZ8DF7
-         pFPhd+GPK3LxtMoxa9UR+hX32qoSIK0LKEtgfyrwbN4oPrglbH1i8xFW0D4KNJlpVZTH
-         VuhJL1s3ca5JrXpx5Wpi3vYR4HnHNceY9nxQ2+mgMg6mQmqou470Q0vKqKlQuJV9DeXI
-         114lXQR7pNcqYj2SGNee0akKotrUb34XBJyr+7it/542Yd5L5qFIqi7kKsQmg+pf1UIV
-         hcGguKxO+QLUYPm/3RYybqNyrg0ysZpvNTUHf9JIc+sb/errcCKvfeBgaBKnRla49hcb
-         QiLg==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=eq+Ogogwq2NQ7/xXMgYMah6eUVxhDIdeF+enblWB7jo=;
+        fh=cZOdOvWiXJFnFMC2SXgDnagQJpYAyzrS+FehWH4dM1o=;
+        b=v32Ur+AAWZCSvd1n2CvD/Xv4LyMw1ESQAwRLU886AaRBPt/mFy77qv3VUdz8xEKApM
+         9gOvWilKRzJZrL3pEqtjMGeW5sB49y0N3U4m/xUyUsIJD38spDxs73PGUt+tAvZitqFA
+         C97T1E7wnMUXU1Fzx7Lm+9L+U/wP4IyXGVSs+4NolHQb/OfccSIMBcKktV85AOuL/SVO
+         LQCgO+8T+qmGM8vfYTKdmCO9ZFkJPTZ2N0rp5v0qYHkN7h7Pzx9vfyFHYBmBhdVkSLLB
+         gH/D0+BKCieCtNGoZzPBWJm7ct9K30ncxaml/VzrVJRGTYYklbgXEvK77hYdMqw0VyCs
+         4csA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=DgC3OopQ;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=W8GVHW0W;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18-20020a05620a113200b00788411a465csi675477qkk.595.2024.03.06.04.33.49
+        by mx.google.com with ESMTPS id jt10-20020a05622aa00a00b0042ec4b153cbsi6828099qtb.148.2024.03.03.17.47.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 04:33:49 -0800 (PST)
+        Sun, 03 Mar 2024 17:47:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=DgC3OopQ;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=W8GVHW0W;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhqSq-0007kG-Gk; Wed, 06 Mar 2024 07:33:40 -0500
+	id 1rgxPm-0003Qu-J5; Sun, 03 Mar 2024 20:46:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rhqSp-0007js-6m; Wed, 06 Mar 2024 07:33:39 -0500
-Received: from mail-bn7nam10on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2009::601]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rgxPk-0003QD-SH; Sun, 03 Mar 2024 20:46:48 -0500
+Received: from mail-psaapc01on20720.outbound.protection.outlook.com
+ ([2a01:111:f400:feae::720]
+ helo=APC01-PSA-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rhqSl-0002uO-RC; Wed, 06 Mar 2024 07:33:38 -0500
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1rgxPg-0005KK-FJ; Sun, 03 Mar 2024 20:46:48 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SMt2gBkKTsTWdh580xONArn4Dl6uYYqw8ow+CFeHg3HFtOEkGRmyDQeuu1Pwi7k20KjLrissvgjXBnYXKn8lw/UXGuOwJrQ5x3KKC/mZ92XYN4O29Bkmy4ZgH7/ub11kRt9NHZCZZy18c0KfKEXliMF78C59/E95raB0wnF9MBhS0qa3MSizIjPBpc9r1MJBteLRqy5FbECn1Gap82laIRXRm/kzqvI/ykfmQD19ENE42y+9zXDDPuBaSEoa8Xe6Iv5BwgE49rQLwsba+vo/yMALGbJ4XybH6Z1lh15AnkVqPh0xxNSraWbq82vt3WYGL71s2r2m30njYIrUymY9jA==
+ b=frWc1MVQ7aa5DZH2ZiuG7+sBBHS1UEhvtL3Pr8nJeS72RubitFGEUtT4ZZyhG44go2ojK934uhFZH8jaHJzfppzFJKspGhR9sYjR2296F7KwpuRO9igG60pG67a7Bgs/3jZCSIwIoYxmqi1InXJidLHPD9CXufye2o0RNw/39cRBJHNM+f/N3OPOgGweCOEqcNfOgKKgmg2uCF++xfR3QuJsjxYzR4gkUi9BATb7hq6w54KvX9BziS0xocgnsdChdKgZJIlyWShF2dyDyIb8f1fjRcW/ngk71yCkYavWQiw3ve+Jr32VEUcatTM0ZjZGefP/Ynj/z86fL8eOeyAtrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AEL1vtLpI25aT5cjVy9lYU91m2CGz2cI2c775BXZpBk=;
- b=YUiRVZmJQQLJ/8zwtq9QRTgXrRXoZvFiLUKP/UkMa2to7+U2G4EsWnZd8q8soT2Ggpuu1c8bwqdAMIkiiIbvOIOsAwcSkHfvhMZD0pmsUabae0WWFbiif5QkGbMoYKNSFyTkyzU+bMVNYZOj0SunffDjoORPxhC/ImSeARPQCOSGgc+41lgbpCUfN4jIgQk4uBDfa/kaLhxsENSeguQlVcXq2bl8tJ4GOeNjHg6xPoewq0Re82CefuwjkP6W+3C12smemqRiio2axoQK47FoCwtIIWBa4zyO1AJy4om3iQGYNPQYjq2sy8XGeue3Lw3b9aDBFCxsKqY80UUpAJlBZw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ bh=eq+Ogogwq2NQ7/xXMgYMah6eUVxhDIdeF+enblWB7jo=;
+ b=GyN3QxIwqyFWV1GZmK9luZCzD/Sr2xtkNJ4LkQR9uVmxHGVjTsVROo8/W1/O4nO8ed7rk3X7zMnIsj6cb767ZKuN7bMTSCch85Ld+1pkbIKk6o791goHeld+/4cVDRUt9cqPxp9ammGzoprB+gmuS/XSqyFDBoyod5uIo6wXFa7cwzwgAbywQY9CFEToawpo81upksqHiw/ZsovtqSsmVM+XvC8hNrk9TZSFsKqPbhgiyClxo2FpztQo01yZsMakfi6V3W773JPsyn+TzQEJJIki9IqAqmvcg/5cuzqsLDu1svisXfbVnAJCmFedMn6F7RJRbzDx3/ZzgVmxg3wzxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AEL1vtLpI25aT5cjVy9lYU91m2CGz2cI2c775BXZpBk=;
- b=DgC3OopQ6M0mqOuP4wuIynHJdzHIKNdJTVFDMh9bHSQFOBxIm+5SZsRy1KTM9TCoPwfKx2R6RE6o+soYeFjm72usplmEeoawav/KAwv2UD2ekA6tj5D/vr6KOk5Zeg7vVEeecbxIILJR4MRj/jmFc8BVOda0jMXEZJQSfOekGoHNIHaCrgdkCo99zTFde0c6eyzVv6NY/Nzc9RZFGBchJw9p8GZGJ8rF2JrI+GXc01kkLVPVyPUMgWpVWPaLefY4jnGoNKPy8tWLkzH4XjTQ1v48bFl1rSj2/5R26VC5C9yYKXsl5Chf5Sieetxg6fhvcp8/WOKltcyLBmPjrA8Ccg==
-Received: from BL0PR01CA0018.prod.exchangelabs.com (2603:10b6:208:71::31) by
- DS7PR12MB8372.namprd12.prod.outlook.com (2603:10b6:8:eb::8) with Microsoft
+ bh=eq+Ogogwq2NQ7/xXMgYMah6eUVxhDIdeF+enblWB7jo=;
+ b=W8GVHW0WmYHCCUMrJiyIcWF5wQiL8098Lv/SVNFiW0Zp1WnBBZFoHz+cps1g2eSdpS4DRi8GFHr9eYbKE+KbYyoVocmjzXQgGk3H4+3zSiorRDCDuagCysQM2LCFNMEaPi6KYoWe4h3E02OrReb2dfhvT9cleoqZJtZtqYnMihJ2S5Gp9sEPt7iVYfxzWa8+XPMggxjZ28CyqbiRS7uMEdE+PcDppfMywlDRP+yp8JS8lLkesp2JBlO2ON82CQgUAdiDn0dk5dB76D2nYcruRXt+7xxoDXMw1bZtrdNZIaD7VvikiRbDF2bCDERkoKyFukGrt+Kwrg84sehP0BPTnw==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ TYSPR06MB7372.apcprd06.prod.outlook.com (2603:1096:405:9b::10) with
+ Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7339.39; Wed, 6 Mar 2024 12:33:29 +0000
-Received: from BL02EPF0001A106.namprd05.prod.outlook.com
- (2603:10b6:208:71:cafe::90) by BL0PR01CA0018.outlook.office365.com
- (2603:10b6:208:71::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24 via Frontend
- Transport; Wed, 6 Mar 2024 12:33:28 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- BL02EPF0001A106.mail.protection.outlook.com (10.167.241.139) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7362.11 via Frontend Transport; Wed, 6 Mar 2024 12:33:28 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Wed, 6 Mar 2024
- 04:33:18 -0800
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Wed, 6 Mar 2024 04:33:18 -0800
-Received: from host-10-63-191-31.nvidia.com (10.127.8.10) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12 via Frontend
- Transport; Wed, 6 Mar 2024 04:33:18 -0800
-From: <ankita@nvidia.com>
-To: <ankita@nvidia.com>, <jgg@nvidia.com>, <marcel.apfelbaum@gmail.com>,
- <philmd@linaro.org>, <wangyanan55@huawei.com>, <alex.williamson@redhat.com>,
- <pbonzini@redhat.com>, <clg@redhat.com>, <shannon.zhaosl@gmail.com>,
- <peter.maydell@linaro.org>, <ani@anisinha.ca>, <berrange@redhat.com>,
- <eduardo@habkost.net>, <imammedo@redhat.com>, <mst@redhat.com>,
- <eblake@redhat.com>, <armbru@redhat.com>, <david@redhat.com>,
- <gshan@redhat.com>, <Jonathan.Cameron@huawei.com>
-CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
- <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
- <dnigam@nvidia.com>, <udhoke@nvidia.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: [PATCH v8 2/2] hw/acpi: Implement the SRAT GI affinity structure
-Date: Wed, 6 Mar 2024 12:33:17 +0000
-Message-ID: <20240306123317.4691-3-ankita@nvidia.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240306123317.4691-1-ankita@nvidia.com>
-References: <20240306123317.4691-1-ankita@nvidia.com>
+ 15.20.7339.32; Mon, 4 Mar 2024 01:46:32 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::14c9:526b:24b5:109d]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::14c9:526b:24b5:109d%4]) with mapi id 15.20.7339.035; Mon, 4 Mar 2024
+ 01:46:31 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [PULL 2/2] aspeed: fix hardcode boot address 0
+Thread-Topic: [PULL 2/2] aspeed: fix hardcode boot address 0
+Thread-Index: AQHaaXvNgomQZD51X0GcrdHzK2AKnLEjDOiAgAPLd3A=
+Date: Mon, 4 Mar 2024 01:46:31 +0000
+Message-ID: <SI2PR06MB5041357F8C72141B5BCC801EFC232@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20240227125201.414060-1-clg@kaod.org>
+ <20240227125201.414060-3-clg@kaod.org>
+ <eb260acf-859f-4b48-a2eb-2aff8416620a@linaro.org>
+In-Reply-To: <eb260acf-859f-4b48-a2eb-2aff8416620a@linaro.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|TYSPR06MB7372:EE_
+x-ms-office365-filtering-correlation-id: ec64ca99-75e5-444b-da61-08dc3beceaec
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: WkjK063m69C4Hnb8BOZvXud9YuUt/wxGnZv1DgVMoS1nOPwUY+P+kEbMVZ+FLfGGKi1qL+yKV/u/U7G8xjR1XfvSDi0/fxHT1KUC0TniNhYXr4PcbF6QKkfcykBHn+fMgg52Nhq2DNWUr8Oly4p/XPbOWHo5x0Eiyj2tVvV6VQVzFZqrnbQhG1xjlPE1MXMT5m3H8As1hhJgmdEar7uIQLHbzE7lJ5LHsZSmjtDBqUUUcr7rUdSnlOusAk2QwrAel1wlRvttp+8cq8LP8M6AD9awCrsUWlHodJkJThgIlWZ5TWyoC7QIKZCur50p6GEikY0AnH4LDZLLhSR2MG6M6pkqHNionAMW0kNydRjNMm2ghFs/0joHVtVrsR1PWNqHtxgfuY0Q4foKbwBp+L84Mnjjg5SHy0P9PRux2TWQpFfh0uLfb8jRESkeelr9Woegvkp20sDU5nCcL0dgptDLJFeaGXNDqrDdCsqgtpRHuEdBFmV/do7zxSGzB6krlNV5TZ3CMv3q/g0U6zjp3o0e8RP+e8K4yEfnUcpwds3o9R9NSBFLwkExZg/YzanBZy6ypLSk7Dee/Pl3K44A/2eNnLL89X6CmtNtQhmF3T2OgiTQM1Sygd7ox+xOsJV3HXF81dErBlXcGEsPPfBWNWsFSbXL6126M+O2r0eXBprznAQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230031)(376005)(38070700009); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bHdrMDVVamU3aTdjQW9UMkJlZWw1Q041SDdsMU5td0czK3FTZW5rZ01XTDd6?=
+ =?utf-8?B?QnN3Q0FWenh4M0s4Z2QvRFJzdnNIZnRzbm1HN0E1K1lSUnZneHNDdnJvQ0l2?=
+ =?utf-8?B?bUZqRTZIZUE4cWJOeUFGY0NVdm1ZY2pVMjZDSm1VT3ExaGIxc2FtV0ZtQTM2?=
+ =?utf-8?B?b2I1RFQySGFHeGszdkZpRjZyOFpHdS9wV2ltUGhvSS9LMVMyZlQ0YVJoUlpz?=
+ =?utf-8?B?M2Vza2dWNWwzUFFvTnBCN3VETm4xZTBzdkppRERaa1BIWm1sVWVXZFAyU3c1?=
+ =?utf-8?B?Z0U1eUtiSEJjMWFmVndWRkJpSDluNTd5cEIxR2RGLzBNa05LMi9yMERZaTR0?=
+ =?utf-8?B?dHJnOS9GYXJyZU92V05UN2l5YWxFdWh2Nkg0U2hlNUJoeVcvOWRLQ2pZQnlQ?=
+ =?utf-8?B?aDVWd3BTOUt2ck1zVDBCTnBXYnY4UzRRb3JCYjlUcmlIaXQrV0tEa3lQbnNu?=
+ =?utf-8?B?RVBMTGp4SERTZlZSNmFjOU9OQ0hBTWJXTzh5RldXNU03eWFCUkVuWkdlRHM3?=
+ =?utf-8?B?QnZCWHhZRU9YK09hNHBLRmh0QVozam5iaHRoQW5VajNTRWpORVRUUkY0MVIy?=
+ =?utf-8?B?ZW51Z0pTVFV1eVE3aldORDgweFdPTmJDMUdXLy9KZDJqVmxZN0x6cU9pUERL?=
+ =?utf-8?B?WFM5UGZsK1QwV1RRUVBxemhpNC93Z1BGa3I3bVZvc1UrM0E3K1ZFSUR2U0lR?=
+ =?utf-8?B?ekR2K1FsMk43emxvK3VvTmwxUk10RCtBOWlBWXhMbmZYYzQweFQwVnpHOEZ6?=
+ =?utf-8?B?OFRJb0xlRHdkYW5IVEZiQ25qb3JLM3VjZDJuZkFRSDRMMWd5dDk0Sk9NRkRH?=
+ =?utf-8?B?WC8wWmE0WnhrQmhlZU02SHVhNUlML3gvazVaald3dVVyRTBxRXRYWlBRSWMx?=
+ =?utf-8?B?bU1hQ0tOcjR3eUZSbWxBRmduQ3UyUFFpZ3NwS1J3cUJ1RVY2bVUxd01zNTBt?=
+ =?utf-8?B?UTNXS1MzckNNRTdXTU53WHNwRTBGYzNsYVhJL2pJYTZRZUt4cWUzNzF0cVVq?=
+ =?utf-8?B?QWd3NzZDMGhlS2lOcDZmTVNSWVhUOHlab1FLejZVeFAxMG5QaXY3bm9SZGdp?=
+ =?utf-8?B?d0xyRFg2ZHNIaFQrN1J6cTU4RFVudEp4MDh1R0puU1BQV1NSY0NRZkdYMW9T?=
+ =?utf-8?B?TDdoV0pSK091K1RabitOOGxaSjVHRzByVi9Gd0FMWUhNMXRKbG00bklKaHZs?=
+ =?utf-8?B?QTAxNmFNa1pPcGE0VmhJNG8waUM3Y1NTdWxNTjd0ZFhFT1FzcnlYUytBVHRS?=
+ =?utf-8?B?RUhXUVp3eEQ3NUk2RzRtOW1KeDJ1SzI3eG85VlRoWDZ1L2hPc05JTWtwcWdJ?=
+ =?utf-8?B?U0ZFdGt4WTVncVFqb3N1bXFuOTJtcUtsbzMxS2FkbWxWcGoyejJlTllNV3NM?=
+ =?utf-8?B?TDdBcHV5Ymg1NjlVK2FDNEpsSnJKRnpSTnBraGxTT0FmOTczR3l1ZldCMXlJ?=
+ =?utf-8?B?cWZzaitueGdybnBsUHh2YTJFSjg2YVFYRmMzMG56K09nZ2RvRkJrZFhPTDcv?=
+ =?utf-8?B?UFRrQjBMVzJURzNlSk9Db01kdVBQeFd4UC9Ga000NkVTdnFralZvOW82YnV0?=
+ =?utf-8?B?U3IwUFJXbmFibk5Vcy9xbEpET2R3ajRramowR0lyaFpvY25JNUtMS1krWTls?=
+ =?utf-8?B?cGwwcm5ORUg0R1d2UGs2TkhFTlQydWhYVmt3YjAxVWpVakVuR3JuTDFOa1lJ?=
+ =?utf-8?B?Ri9aTC8vNXVCSTRyQkk5cmh2Y1FUMUtSVlBQV3FJR1pkRThsNkVzc3VveXY1?=
+ =?utf-8?B?WDdZa3NCcVM0QnJVQVkvY3ROUGFqUUNQL2pwUHNMeEdKeXcwYWhmdFpEU0cw?=
+ =?utf-8?B?cWNDMm1laXpPK0ZaeXgxdktYTDNXaFFOaUZBcjg4TWMrb3Fqdk4xV0cybklR?=
+ =?utf-8?B?VXNacUJWRzVXcE1kR0hQOFVFZWJNRlU1ZzI0QTAxaTkvbWc1TDhwa3lOR1k3?=
+ =?utf-8?B?OFN6QWVOR3IySERmNk04L2d4ZDJ3QlF1TG5JOHhTS0J4TVhMdzdvUlppNmpo?=
+ =?utf-8?B?SjFmbUpLQkRRL2cxRHJPM0NZR1kvQnMyUWNWMVEzMkg0REc3ZXY5RGlMUDBi?=
+ =?utf-8?B?cjFIc3VSS0liYVIzZy9VSnpWckd0SFEzNmZUTklYQmJBbnVQSFJPc1JFSE1F?=
+ =?utf-8?Q?dnWyrqxTCnXOyNxtarUYj9CvO?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0001A106:EE_|DS7PR12MB8372:EE_
-X-MS-Office365-Filtering-Correlation-Id: 759d1b74-d9b6-49d1-3eb5-08dc3dd9a07b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3ERHUQeUXAp0ssXTWw6tQN1A/1dHXxjm+P9lMhnVXJMQaxTPML1N7Z0mrsXokOZMLD9VIdd90lejilGeYb7QSv8YwUttHvY/yx/pvExSfbaghHk+Uzn1ebElnjSoiQrU5Ujz9LNX1vcXser/MdLbRaxUiJsaAfQwim9CcFErLsLobBChh6dExthcjlID94DWB20qfUYHcn8fvRzWgsb/SXZwFpcRgD1g+CUQl7zmL/SA872TgHsYeJR1/vM0ZqXCz7rwxZ3Csgu/pp+zlFjXpK9zDVe9nO0zOtixvgT4oGvAjVQAoopS8Dg9J3/1c8YiC4L/sHitc5A+0ke+rIRt6TsprEtfpeu73cgh3ihXRsK/8lHXO+JN+mrsz/5Q8CBwza2ock15QNxHkmyRHBDiRbBN5F0OccZRm4+GtkUhh2AVBuETGAI9Y2RLB5sSKsl+1uXaYyJYKEpQlRiGK+JoQe1c8S8J0LyCGLbD9VmGQwHnyhxA0oj4mG34HkWLQm+zveBTNNRVrw75ndjjDZSNvqPhAIQ3F1fOkcOqPJDQ/0V1KDZakG7BWLdVtOfRZWb64oWu3UOvOksu3VUz3cO6J5YpnIVX7W6Rvq3gvTsgDHO1QcpV/LYDQFZioLcfRO28uGWuwzU/p31VqrdvmGL0q0oX+DPSZhPcDI+ITZPP8dAt88HCq0H6xsZnNY9brSnJGREAykl6m2MUkY7Xp70LF2ZXSfbxU1FFe9hiYahHXcl639N68tLrw25ox3o+LsQmYwXCxFUnF5tIc0e9gAyltQ==
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230031)(82310400014)(376005)(36860700004)(921011); DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2024 12:33:28.7365 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 759d1b74-d9b6-49d1-3eb5-08dc3dd9a07b
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A106.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB8372
-Received-SPF: softfail client-ip=2a01:111:f403:2009::601;
- envelope-from=ankita@nvidia.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ec64ca99-75e5-444b-da61-08dc3beceaec
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Mar 2024 01:46:31.8955 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hp+5cHhqgDoyGnL/n6ltQdd1pEssC3Rn5M8trb6/B0uJepZ1qD0eapNPE6fsTUU1187HvtfFzuIIBSg/abkOScZr0he92bPPBXTAdjci48A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR06MB7372
+Received-SPF: pass client-ip=2a01:111:f400:feae::720;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=APC01-PSA-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -172,175 +185,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /CitneZ2vRoT
+X-TUID: ur1RphkXksox
 
-From: Ankit Agrawal <ankita@nvidia.com>
-
-ACPI spec provides a scheme to associate "Generic Initiators" [1]
-(e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
-integrated compute or DMA engines GPUs) with Proximity Domains. This is
-achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
-Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
-node for each unique PXM ID encountered. Qemu currently do not implement
-these structures while building SRAT.
-
-Add GI structures while building VM ACPI SRAT. The association between
-device and node are stored using acpi-generic-initiator object. Lookup
-presence of all such objects and use them to build these structures.
-
-The structure needs a PCI device handle [2] that consists of the device BDF.
-The vfio-pci device corresponding to the acpi-generic-initiator object is
-located to determine the BDF.
-
-[1] ACPI Spec 6.3, Section 5.2.16.6
-[2] ACPI Spec 6.3, Table 5.80
-
-Cc: Jonathan Cameron <qemu-devel@nongnu.org>
-Cc: Alex Williamson <alex.williamson@redhat.com>
-Cc: Cedric Le Goater <clg@redhat.com>
-Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
----
- hw/acpi/acpi_generic_initiator.c         | 73 ++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c                 |  3 +
- include/hw/acpi/acpi_generic_initiator.h | 25 ++++++++
- 3 files changed, 101 insertions(+)
-
-diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
-index f57b3c8984..5a7d15363e 100644
---- a/hw/acpi/acpi_generic_initiator.c
-+++ b/hw/acpi/acpi_generic_initiator.c
-@@ -71,3 +71,76 @@ static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
-     object_class_property_add(oc, "node", "int", NULL,
-         acpi_generic_initiator_set_node, NULL, NULL);
- }
-+
-+/*
-+ * ACPI 6.3:
-+ * Table 5-78 Generic Initiator Affinity Structure
-+ */
-+static void
-+build_srat_generic_pci_initiator_affinity(GArray *table_data, int node,
-+                                          PCIDeviceHandle *handle)
-+{
-+    uint8_t index;
-+
-+    build_append_int_noprefix(table_data, 5, 1);  /* Type */
-+    build_append_int_noprefix(table_data, 32, 1); /* Length */
-+    build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
-+    build_append_int_noprefix(table_data, 1, 1);  /* Device Handle Type: PCI */
-+    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain */
-+
-+    /* Device Handle - PCI */
-+    build_append_int_noprefix(table_data, handle->segment, 2);
-+    build_append_int_noprefix(table_data, handle->bdf, 2);
-+    for (index = 0; index < 12; index++) {
-+        build_append_int_noprefix(table_data, 0, 1);
-+    }
-+
-+    build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4); /* Flags */
-+    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
-+}
-+
-+static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    AcpiGenericInitiator *gi;
-+    GArray *table_data = opaque;
-+    PCIDeviceHandle dev_handle;
-+    PCIDevice *pci_dev;
-+    Object *o;
-+
-+    if (!object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
-+        return 0;
-+    }
-+
-+    gi = ACPI_GENERIC_INITIATOR(obj);
-+    if (gi->node >= ms->numa_state->num_nodes) {
-+        error_printf("%s: Specified node %d is invalid.\n",
-+                     TYPE_ACPI_GENERIC_INITIATOR, gi->node);
-+        exit(1);
-+    }
-+
-+    o = object_resolve_path_type(gi->pci_dev, TYPE_PCI_DEVICE, NULL);
-+    if (!o) {
-+        error_printf("%s: Specified device must be a PCI device.\n",
-+                     TYPE_ACPI_GENERIC_INITIATOR);
-+        exit(1);
-+    }
-+
-+    pci_dev = PCI_DEVICE(o);
-+
-+    dev_handle.segment = 0;
-+    dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
-+                                               pci_dev->devfn);
-+
-+    build_srat_generic_pci_initiator_affinity(table_data,
-+                                              gi->node, &dev_handle);
-+
-+    return 0;
-+}
-+
-+void build_srat_generic_pci_initiator(GArray *table_data)
-+{
-+    object_child_foreach_recursive(object_get_root(),
-+                                   build_all_acpi_generic_initiators,
-+                                   table_data);
-+}
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 8bc35a483c..a2b3a2eb25 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -58,6 +58,7 @@
- #include "migration/vmstate.h"
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/viot.h"
-+#include "hw/acpi/acpi_generic_initiator.h"
- 
- #define ARM_SPI_BASE 32
- 
-@@ -558,6 +559,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
-     }
- 
-+    build_srat_generic_pci_initiator(table_data);
-+
-     if (ms->nvdimms_state->is_enabled) {
-         nvdimm_build_srat(table_data);
-     }
-diff --git a/include/hw/acpi/acpi_generic_initiator.h b/include/hw/acpi/acpi_generic_initiator.h
-index 23d0b591c6..4bebe119ee 100644
---- a/include/hw/acpi/acpi_generic_initiator.h
-+++ b/include/hw/acpi/acpi_generic_initiator.h
-@@ -29,4 +29,29 @@ typedef struct AcpiGenericInitiatorClass {
-     ObjectClass parent_class;
- } AcpiGenericInitiatorClass;
- 
-+/*
-+ * ACPI 6.3:
-+ * Table 5-81 Flags – Generic Initiator Affinity Structure
-+ */
-+typedef enum {
-+    /*
-+     * If clear, the OSPM ignores the contents of the Generic
-+     * Initiator/Port Affinity Structure. This allows system firmware
-+     * to populate the SRAT with a static number of structures, but only
-+     * enable them as necessary.
-+     */
-+    GEN_AFFINITY_ENABLED = (1 << 0),
-+} GenericAffinityFlags;
-+
-+/*
-+ * ACPI 6.3:
-+ * Table 5-80 Device Handle - PCI
-+ */
-+typedef struct PCIDeviceHandle {
-+    uint16_t segment;
-+    uint16_t bdf;
-+} PCIDeviceHandle;
-+
-+void build_srat_generic_pci_initiator(GArray *table_data);
-+
- #endif
--- 
-2.34.1
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
+dWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+DQo+IFNlbnQ6IEZyaWRheSwgTWFyY2ggMSwgMjAyNCAx
+MTo0OSBQTQ0KPiBUbzogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz47IHFlbXUtYXJt
+QG5vbmdudS5vcmc7DQo+IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogSmFtaW4gTGluIDxq
+YW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBUcm95IExlZQ0KPiA8dHJveV9sZWVAYXNwZWVkdGVj
+aC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUFVMTCAyLzJdIGFzcGVlZDogZml4IGhhcmRjb2RlIGJv
+b3QgYWRkcmVzcyAwDQo+IA0KPiBIaSBKYW1pbiwNCj4gDQo+IE9uIDI3LzIvMjQgMTM6NTIsIEPD
+qWRyaWMgTGUgR29hdGVyIHdyb3RlOg0KPiA+IEZyb206IEphbWluIExpbiA8amFtaW5fbGluQGFz
+cGVlZHRlY2guY29tPg0KPiA+DQo+ID4gSW4gdGhlIHByZXZpb3VzIGRlc2lnbiBvZiBBU1BFRUQg
+U09DcyBRRU1VIG1vZGVsLCBpdCBzZXQgdGhlIGJvb3QNCj4gPiBhZGRyZXNzIGF0ICIwIiB3aGlj
+aCB3YXMgdGhlIGhhcmRjb2RlIHNldHRpbmcgZm9yIGFzdDEweDAsIGFzdDI2MDAsDQo+ID4gYXN0
+MjUwMCBhbmQgYXN0MjQwMC4NCj4gPg0KPiA+IEFjY29yZGluZyB0byB0aGUgZGVzaWduIG9mIGFz
+dDI3MDAsIGl0IGhhcyBhIGJvb3RtY3UocmlzY3YtMzIpIHdoaWNoDQo+ID4gaXMgdXNlZCBmb3Ig
+ZXhlY3V0aW5nIFNQTCBhbmQgaW5pdGlhbGl6ZSBEUkFNIGFuZCBjb3B5IHUtYm9vdCBpbWFnZQ0K
+PiA+IGZyb20gU1BJL0ZsYXNoIHRvIERSQU0gYXQgYWRkcmVzcyAweDQwMDAwMDAwMCBhdCBTUEwg
+Ym9vdCBzdGFnZS4NCj4gPiBUaGVuLCBDUFVzKGNvcnRleC1hMzUpIGV4ZWN1dGUgdS1ib290LCBr
+ZXJuZWwgYW5kIHJvZnMuDQo+ID4NCj4gPiBDdXJyZW50bHksIHFlbXUgbm90IHN1cHBvcnQgZW11
+bGF0ZSB0d28gQ1BVIGFyY2hpdGVjdHVyZXMgYXQgdGhlIHNhbWUNCj4gPiBtYWNoaW5lLiBUaGVy
+ZWZvcmUsIHFlbXUgd2lsbCBvbmx5IHN1cHBvcnQgdG8gZW11bGF0ZSBDUFUoY29ydGV4LWEzNSkN
+Cj4gPiBzaWRlIGZvciBhc3QyNzAwIGFuZCB0aGUgYm9vdCBhZGRyZXNzIGlzICIweDQgMDAwMDAw
+MDAiLg0KPiA+DQo+ID4gRml4ZWQgaGFyZGNvZGUgYm9vdCBhZGRyZXNzICIwIiBmb3IgZnV0dXJl
+IG1vZGVscyB1c2luZyBhIGRpZmZlcmVudA0KPiA+IG1hcHBpbmcgYWRkcmVzcy4NCj4gPg0KPiA+
+IFNpZ25lZC1vZmYtYnk6IFRyb3kgTGVlIDx0cm95X2xlZUBhc3BlZWR0ZWNoLmNvbT4NCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT4NCj4gPiBS
+ZXZpZXdlZC1ieTogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz4NCj4gDQo+IFRpcCBm
+b3IgdGhlIGVtYWlsIHdvcmtmbG93OiB3aGVuIHNvbWVvbmUgcHJvdmlkZSBhIFItYiB0YWcgZm9y
+IGEgcGF0Y2gsDQo+IHBsZWFzZSBjYXJyeSBpdCBvbiBpbiB5b3VyIG5leHQgaXRlcmF0aW9ucy4N
+Cj4gDQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMDlmOWNhMzQtNGUwYy00
+YWRhLWI4MDgtNjQzYThjNTc4NTExDQo+IEBsaW5hcm8ub3JnLw0KPiANCj4gU2VlDQo+IGh0dHBz
+Oi8vd3d3LnFlbXUub3JnL2RvY3MvbWFzdGVyL2RldmVsL3N1Ym1pdHRpbmctYS1wYXRjaC5odG1s
+I3Byb3Blci11cw0KPiBlLW9mLXJldmlld2VkLWJ5LXRhZ3MtY2FuLWFpZC1yZXZpZXcNCj4NCkdv
+dCBpdCBhbmQgdGhhbmtzIGZvciBub3RpZmljYXRpb24uDQogDQo+ID4gU2lnbmVkLW9mZi1ieTog
+Q8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz4NCj4gPiAtLS0NCj4gPiAgIGluY2x1ZGUv
+aHcvYXJtL2FzcGVlZF9zb2MuaCB8IDIgLS0NCj4gPiAgIGh3L2FybS9hc3BlZWQuYyAgICAgICAg
+ICAgICB8IDQgKysrLQ0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyNDAwLmMgICAgIHwgNCArKy0t
+DQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI2MDAuYyAgICAgfCAyICstDQo+ID4gICA0IGZpbGVz
+IGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkNCg==

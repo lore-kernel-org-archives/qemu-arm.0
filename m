@@ -1,107 +1,106 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2582914eja;
-        Mon, 4 Mar 2024 05:22:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVwmboNnTDlh3j4Y7bQhyALBMntgYQ47flremRjHL+0BKJT2mjepFsg6GkRwWjoy1+zG8PTUk/UvdBUmvbDH96jK6RaDlgl
-X-Google-Smtp-Source: AGHT+IFjXPe9xOf5x1r0w/Imkze45fxQWgPRZ/537BynnfMcbBb0d7Jyc/iRptocBrmQbxncKpN7
-X-Received: by 2002:ac8:4e47:0:b0:42e:f56b:9298 with SMTP id e7-20020ac84e47000000b0042ef56b9298mr1674014qtw.25.1709558528376;
-        Mon, 04 Mar 2024 05:22:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709558528; cv=none;
+Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2620367eja;
+        Mon, 4 Mar 2024 06:25:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWqY468Bn0jh+2El0IDwTeMA/sq/oAk0SPNbGmZiL+RLFPSBZuzmjYw72Lr8tYoCrL3M15Y5Y+kexYJNao6tGN816JADpqw
+X-Google-Smtp-Source: AGHT+IGoFafw5+I6kWl4gpBfZeMqWyIK+eKnD9miBpVjoSjDMqGuQAvbn9t7jTFU3FntjbwIq1q9
+X-Received: by 2002:a0c:e343:0:b0:68f:6c38:c4b0 with SMTP id a3-20020a0ce343000000b0068f6c38c4b0mr14226843qvm.23.1709562320705;
+        Mon, 04 Mar 2024 06:25:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709562320; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qwr7XtU2/+e6iQDg8xMZ+CKG8C2Wr5lVOzDgFQAXGrlP4CeEU1M15EAcQE9Radz9D+
-         dlC2b4NgBVxV+9PhchURxhILa49pOy7m7x+EdvO/QgkFd2AqcdgKLzGqioyG+zh0u314
-         MjMZi0drIWtwijGWt50gi/O9/x+N2he25qi5SDNlZ4B+bYbDsXW0dpBi0TxbHbG6FrHt
-         5nxQV74AHT34ctmcHocXgA2XzlgEz1wslGxIgDlMCSIUbylwzFCQRuYo6s+F/qzv6Xpp
-         wibY9O5y4S/GAod9pPE3nuThdW19SYHDKCWGI8TcwRVTuhp94y2An3LawdmDgrWCo8Iv
-         a9Bg==
+        b=eUTsJryR04bux2x0kRBGV5ejnQv+EnlteAEGjNmo1trWOXMCHLw6MFu7yWr8SIpIAT
+         7XUVbSBSYXNpLcfr4CnlbuFOS/MpKwMa9IgsqbGcosDURzJg19YahyS1wmCuA9QWurDL
+         jj4U+MZCPt5j/4syR8s2pkOY7RjMWvSybOIJHUlgTsQkEEGcQHqJnBCyIxpiNE/9MWKC
+         /fvYqrlHOduL3fr0rZUs/iTSqF8/ewnf9P9gjhnpa//9GUb7YZ7eCfHKW6WP/J79l588
+         eiVRjNV3su265/DV2fsx06f4JYZdvcdh23s4wGzQOlIFEcU4fI6Rkr4oNNkRI020FLaY
+         n76g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=NpXEnaMYtF6jKBwYo4yAsZHIAGy3RRfL09a4at74QvQ=;
-        fh=uYDMNQ/tDfFpaMGUdHeeg4NIi3yEkHKQXv0eLhe259U=;
-        b=FnB6rD8C+7tZUf2cxETBEbKcNBvyhAQWUOCUYrbqND+xvfILoG7eXRtpqWJoO7Re00
-         GbEikQvxLKuJZKcTK1mmkvMzoryZ4Jr9hi3HACnHEsLE4Nm5T6XTMcLNQJvuW5oidymK
-         2xmCZJtVRD4TnT87jwPVtjY+DR63DT7NGscRwIP6rIOYpOEHCDbm22PquekQGLKR7l0I
-         RTD1i+9QD7cqkJVTXTLdJ9+Wptdldb0ZY3kum6fXDwikty8jYLH8whoeEnl6/90waGQT
-         984QiO1om5iC+s5WPflfIAC5o2LsbLmhhf/DBYw11THaO332/vqNejo2IB/DIHCXB24c
-         8TSw==;
+        bh=SLFaLbJKTvZVrg6KNlFEGyOYAUZQ3f61dVszsVZcUjc=;
+        fh=e1c2ZiWZS7NdiUyGFpRgx4SOQcK6RxAh3qVwchH3J7U=;
+        b=ioiNZNJHnwC3w4hDrww/OX0u/i59+g3J+5/T0loecspIu4z5L9Np7p9sLUUvK2XaGt
+         AV+VfSvPROa9N6swxbfTwB1zliem15kwdpfSmcyIEtJicqdXA5E7kZTTJCoYoyP1IhE8
+         NokwtD9gufJibl6y2NaUsZ3wwJ8BcNyKHsuxq8mdrsk2KgfM4MxVA54YWLL/PuLen41D
+         qGMK4slUoelqOSfZKOpU399CJNnCOonIs6buyF7NaNAqCtJWZZDF5Q++IEtngJ2dFkce
+         NHmi8xBGESuRfi1alSbmLCu8+zwoOjgny3jLSROqXqiX2mjZrrCNSNN3sYqrfXmmipWQ
+         tYlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xsr/AdEc";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TnGCxu3h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6-20020ac85906000000b0042ef1ad84e4si2259695qty.652.2024.03.04.05.22.08
+        by mx.google.com with ESMTPS id gv11-20020a056214262b00b0068fd2ee2b00si9684018qvb.19.2024.03.04.06.25.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 05:22:08 -0800 (PST)
+        Mon, 04 Mar 2024 06:25:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xsr/AdEc";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TnGCxu3h;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rh8GF-0002xy-Im; Mon, 04 Mar 2024 08:21:43 -0500
+	id 1rh9Fa-0006Lo-KM; Mon, 04 Mar 2024 09:25:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rh8G9-0002wl-Hz
- for qemu-arm@nongnu.org; Mon, 04 Mar 2024 08:21:40 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1rh9FY-0006LW-O4
+ for qemu-arm@nongnu.org; Mon, 04 Mar 2024 09:25:04 -0500
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rh8G5-0005NH-PE
- for qemu-arm@nongnu.org; Mon, 04 Mar 2024 08:21:37 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-564647bcdbfso5165815a12.2
- for <qemu-arm@nongnu.org>; Mon, 04 Mar 2024 05:21:31 -0800 (PST)
+ id 1rh9FW-00021D-39
+ for qemu-arm@nongnu.org; Mon, 04 Mar 2024 09:25:04 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-56759dc7ea6so1178677a12.1
+ for <qemu-arm@nongnu.org>; Mon, 04 Mar 2024 06:25:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709558490; x=1710163290; darn=nongnu.org;
+ d=linaro.org; s=google; t=1709562300; x=1710167100; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NpXEnaMYtF6jKBwYo4yAsZHIAGy3RRfL09a4at74QvQ=;
- b=xsr/AdEcYIaGrVD60p+dG/2kMu9OObAiIhW1s9bCr4QND5m8igubvfZSW6yiM03mt7
- Y40Y2BO+vzVRYmGYTa30sttbHnmOjF46zjrMeB7GWbd3OXPtQfQIDhOeOxRBb45zJd66
- 2gIKT2C++W42lnSOcOWgswcEE7taP9Cice61Tq6guou0sx/AZcQmRa+4RzyaiCwGnf2x
- wCeiUp9Ibz2vRCipxV8ZapZN2p0oAUg/TNMRaqdN7HEmK7nyxxul+8hqHbDL9nplqnVN
- 2h9VumVGi0ILIgdMsIPqM2Fs2jG1ypNqiC6UQ6KQcG2udN++RgYof/7nCqrGN++xdUjJ
- Wnsg==
+ bh=SLFaLbJKTvZVrg6KNlFEGyOYAUZQ3f61dVszsVZcUjc=;
+ b=TnGCxu3h9zy90w+KyfFmBlKsiJKRHSSW5tPUq/nDpKgdPpl9jP3JbPddNhDblaNmBB
+ +bgzNqW0vnxVsu+FLq6Ec5l+UW+fpi2trxnVYcKH9Pf6/c5x+QmWFdbANRKudMLlaqVc
+ 1QHv8arqhjU7cHfzCMrpdRoxAGzMW0rvgcyCq91g/5S8VssAC0bH7oB+1YgP8gTKkGVe
+ Hayysp00tSWd3AcFOoZXA4XOmz1+6DjjB5PIHYaGm4kZxvKin5dqFRt1LI0NIlVkx4D/
+ dimISR7SuXz0Pa/rUfL1VnEJtYFHLKso9c58UtGwlB2jhZWEgW6DEBQZdmZ26mBomXMb
+ Eadg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709558490; x=1710163290;
+ d=1e100.net; s=20230601; t=1709562300; x=1710167100;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NpXEnaMYtF6jKBwYo4yAsZHIAGy3RRfL09a4at74QvQ=;
- b=Ir24Qy9wpXbvK+iTsn9cXO9MR/TkszcwKawdNJp6XxoK6BwE01xKBCm+Wp1WySF1KV
- oGi7qrcJYl0j7GFl8lFArYe8/8uhnMmZ7DBfSdFhdY2C+mrukgNRXh6IqeCgyecvigCb
- 7H2+IWF/scRAyWL1nB7gkE75ShYCjp5624e4r3Ji+Cwgy8I31nS33wLZQuJY558RbsHV
- GGTFI39zwlym1bTxC8IWkqIAinX44k8DoXAzIxIjY7u2Lp39FOXbtMSywWd7idwoo8B7
- t0JySNBg9W5DhNLlyiNvna3nbwpL9J21Q6AJ3db4gFNnvq77i1x5yrwF4Me2iSWemdnJ
- asmw==
-X-Gm-Message-State: AOJu0Yz71Ib7ukKGf8qbAR2XMWgevjoFtKVjEis1FejDHsrZj7h6P+GY
- D7Yta+vZlLUOl02/6ArJ9dq6IQJGWJxZ91T91s/kEBdtPfBOoae1O0WNEb0Ok+8d/MM+m3Dshqj
- UGOApz4gGU9XpZIlAQw0W2CSYyOlpomUjFvXSHQ==
-X-Received: by 2002:a05:6402:5d85:b0:566:b3f3:d987 with SMTP id
- if5-20020a0564025d8500b00566b3f3d987mr5111075edb.42.1709558490123; Mon, 04
- Mar 2024 05:21:30 -0800 (PST)
+ bh=SLFaLbJKTvZVrg6KNlFEGyOYAUZQ3f61dVszsVZcUjc=;
+ b=N2seJIPtOFF8AgHT/iB0aGKXvxUFaY3P8ZOouP2xxmFBR+i7OECsAsz/B2ab6TIFGa
+ OHXgr8wOxke2gyeKXd2YoVJ3KDsuB3l+8r6F/7kicEF8caWVvaROsfgSPniwNZ/oTvkp
+ 4XlknKqFICBZJZz5hEMMCUJtjR1HE9PrjuNktjpX6xyleLiMG8FeHjgxU52DBFf4cC/5
+ lJwgWwPX2MIwNfxe6SKN8bG+jVCn9doPl9NawTg/nvdDF0fzrYllCIxGfqbjDvEn5JUp
+ zX/nLy00rSkuy7Czp23UsGoeH5Zla4Km9tTy52glBCwJrDoWKka3DlIEbCYrfxdVaaiw
+ UxUw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXBp+sFXcUslAsEonJ0kPoHv45UVTi0oLezR4FjZ490NEYhLE/iMg15H58O3BxE7o7Sex+HE7LL4NJyXYwWNIhFN2/R
+X-Gm-Message-State: AOJu0YxaWPz7zqKnrKviNLitUWnL83T7rpo8KQUQdC3YvOw7i1DgkHS5
+ ROMgUYPmEh2vN0NPrJi2U48ATx05Ba6bFUOCrGuQ4AaKAzG9DD/JVJjBQT6OCBjRu6kLk4xVO8F
+ IgFeu5Hj/h3SIxltYQ/3v2p/re+vRRBecskZkBA==
+X-Received: by 2002:a05:6402:901:b0:565:9fa4:dd59 with SMTP id
+ g1-20020a056402090100b005659fa4dd59mr6274481edz.5.1709562299796; Mon, 04 Mar
+ 2024 06:24:59 -0800 (PST)
 MIME-Version: 1.0
-References: <20240301183219.2424889-1-peter.maydell@linaro.org>
- <20240301183219.2424889-4-peter.maydell@linaro.org>
- <f0dd2308-6a94-46b5-821f-12ab907d29ea@linaro.org>
-In-Reply-To: <f0dd2308-6a94-46b5-821f-12ab907d29ea@linaro.org>
+References: <20240224191038.2409945-1-rayhan.faizel@gmail.com>
+In-Reply-To: <20240224191038.2409945-1-rayhan.faizel@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Mar 2024 13:21:18 +0000
-Message-ID: <CAFEAcA_JFq9hFoCJDD9BNx-SOumZBtLs64B=yj-jWRrg_WMzfA@mail.gmail.com>
-Subject: Re: [PATCH 3/8] target/arm: use FIELD macro for CNTHCTL bit
- definitions
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Jean-Philippe Brucker <jean-philippe@linaro.org>
+Date: Mon, 4 Mar 2024 14:24:48 +0000
+Message-ID: <CAFEAcA9DUbXi8pectLuHx7c8v8jPbbJ=sqZ9yPYa7M-T7B-mbw@mail.gmail.com>
+Subject: Re: [PATCH v5 0/3] Add support for I2C in BCM2835 boards
+To: Rayhan Faizel <rayhan.faizel@gmail.com>
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, pbonzini@redhat.com, 
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,82 +122,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2eCVyx3wZ2rS
+X-TUID: GX0HI1Nzqf5L
 
-On Fri, 1 Mar 2024 at 21:19, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Sat, 24 Feb 2024 at 20:31, Rayhan Faizel <rayhan.faizel@gmail.com> wrote:
 >
-> On 3/1/24 08:32, Peter Maydell wrote:
-> > We prefer the FIELD macro over ad-hoc #defines for register bits;
-> > switch CNTHCTL to that style before we add any more bits.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   target/arm/internals.h | 19 +++++++++++++++++--
-> >   target/arm/helper.c    |  9 ++++-----
-> >   2 files changed, 21 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/target/arm/internals.h b/target/arm/internals.h
-> > index c93acb270cc..6553e414934 100644
-> > --- a/target/arm/internals.h
-> > +++ b/target/arm/internals.h
-> > @@ -224,8 +224,23 @@ FIELD(VTCR, SL2, 33, 1)
-> >   #define HSTR_TTEE (1 << 16)
-> >   #define HSTR_TJDBX (1 << 17)
-> >
-> > -#define CNTHCTL_CNTVMASK      (1 << 18)
-> > -#define CNTHCTL_CNTPMASK      (1 << 19)
-> > +FIELD(CNTHCTL, EL0PCTEN, 0, 1)
-> > +FIELD(CNTHCTL, EL0VCTEN, 1, 1)
-> > +FIELD(CNTHCTL, EVNTEN, 2, 1)
-> > +FIELD(CNTHCTL, EVNTDIR, 3, 1)
-> ...
-> > +FIELD(CNTHCTL, EL0VTEN, 8, 1)
-> > +FIELD(CNTHCTL, EL0PTEN, 9, 1)
-> > +FIELD(CNTHCTL, EL1PCTEN, 10, 1)
-> > +FIELD(CNTHCTL, EL1PTEN, 11, 1)
+> This patch series implements support for the Broadcom Serial Controller used
+> by BCM2835 based boards for I2C.
 >
-> These bits change definition based on HCR_E2H, which I remembered when I got to patch 5,
-> which adds code nearby the existing tests of these bits.
+> [Changes in v5]
 >
-> It might be confusing to only provide the E2H versions, without some extra suffix?
+> - Improper whitespace again.
+>
+> [Changes in v4]
+>
+> - Added IRQ or-gate for common BSC IRQ.
+> - Added valid sizes to MemoryRegionOps.
+> - Use version tag instead of master
+>
+> [Changes in v3]
+>
+> - Add SPDX license identifiers.
+> - Fix a few minor whitespace issues.
+>
+> [Changes in v2]
+>
+> - Fixed and simplified writing to status register
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/481
+> Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+>
+> Rayhan Faizel (3):
+>   hw/i2c: Implement Broadcom Serial Controller (BSC)
+>   hw/arm: Connect BSC to BCM2835 board as I2C0, I2C1 and I2C2
+>   tests/qtest: Add testcase for BCM2835 BSC
 
-Yeah, bits 8..11 are RES0 if E2H is 0; bits 3 and 2 are the same;
-bits 0 and 1 change (to EL1PCTEN and EL1PCEN, so bit 0 when E2H is 0
-has the same name as bit 10 when E2H is 1).
 
-I don't see the need to suffix the bits that are only relevant in
-one context and RES0 in the other, only the ones where the bit has
-the same name but a different location, or where the same bit
-number has two names. So:
 
-+/*
-+ * Depending on the value of HCR_EL2.E2H, bits 0 and 1
-+ * have different bit definitions, and EL1PCTEN might be
-+ * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
-+ * disambiguate if necessary.
-+ */
-+FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
-+FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
-+FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
-+FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
-+FIELD(CNTHCTL, EVNTEN, 2, 1)
-+FIELD(CNTHCTL, EVNTDIR, 3, 1)
-+FIELD(CNTHCTL, EVNTI, 4, 4)
-+FIELD(CNTHCTL, EL0VTEN, 8, 1)
-+FIELD(CNTHCTL, EL0PTEN, 9, 1)
-+FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
-+FIELD(CNTHCTL, EL1PTEN, 11, 1)
-+FIELD(CNTHCTL, ECV, 12, 1)
-+FIELD(CNTHCTL, EL1TVT, 13, 1)
-+FIELD(CNTHCTL, EL1TVCT, 14, 1)
-+FIELD(CNTHCTL, EL1NVPCT, 15, 1)
-+FIELD(CNTHCTL, EL1NVVCT, 16, 1)
-+FIELD(CNTHCTL, EVNTIS, 17, 1)
-+FIELD(CNTHCTL, CNTVMASK, 18, 1)
-+FIELD(CNTHCTL, CNTPMASK, 19, 1)
+Applied to target-arm.next, thanks.
 
-(and updating the uses in following patches as needed) ?
-
-thanks
 -- PMM

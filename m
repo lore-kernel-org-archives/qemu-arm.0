@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp112662ejc;
-        Mon, 4 Mar 2024 23:08:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUa+cJCaFhuMOXpHSZ2mFvrUFsM0hhYJv3YOEKw1ebuaG2vXCn0G6deuTIK+5BZHXltlnINSjMCKpkVtIm8Fvit+AZCiHbv
-X-Google-Smtp-Source: AGHT+IGW9m9dJyUCqhzCM2bZQUKg2JhAy3s926BM7PgDH/1SH/+1g2moOQvFUa1JgIkrd7Wp8rLu
-X-Received: by 2002:a05:6359:4103:b0:17a:d4c0:d59f with SMTP id kh3-20020a056359410300b0017ad4c0d59fmr1124044rwc.4.1709622489216;
-        Mon, 04 Mar 2024 23:08:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709622489; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp112831ejc;
+        Mon, 4 Mar 2024 23:08:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXwR/y9rqIv3I1lmrBqXyLWxfBKWGAAXCTVtDYr1v2MB0T5v+o8CPVynnz8uykC6Ov1gfHO2Gva2f6YZoDJBTof7qhaJ+PO
+X-Google-Smtp-Source: AGHT+IEcAFqqwFgKBCCH9xuKFFQf3KCWg/Q4MtqOAnqvynTP03t2P1HFlOMRoeWyDYgNJJcmctD1
+X-Received: by 2002:a05:620a:4606:b0:788:2631:188b with SMTP id br6-20020a05620a460600b007882631188bmr1308378qkb.39.1709622520683;
+        Mon, 04 Mar 2024 23:08:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709622520; cv=none;
         d=google.com; s=arc-20160816;
-        b=tSTPmjsiKgT0fHpLCzNtdxlM/T9zmelsmU2oJVymtcSIITHmeFsQr3PHv0rJoIrTvN
-         jWuNh3lwL7pJ6mS2PBsho8heAdqj2ccf2bArYZgs2sfOgurl1UbrCufYTF0Vbnd6lyna
-         NfXJtbAVEKPMoDG/INRMRGrHlJR14QTEhVsf0vWWk936obgor5ys2gncRbvB54R86f9r
-         K8ojKdcRPJM4uhFApweYO/clDW69xkeu5jPkJ+gtogb8qjU2uAOuF0CnVG3rjD/GM/M/
-         jPdwRWStB2NJKpTVtOn3EJbgOjoQyrftYJ0mXuVVDDxrEGkfwEEBLdAQIj9YKI2BxSx7
-         DbWg==
+        b=CcoKlpzlmVbcurF7v/NM2nh4zJJA4DkQ7aolbeDCecEk1qXhKdKEjR08gVIMfjlXny
+         grBm+FtDh4b9z6N817V3RBMwgGli6Fy0dX+iUD4TUFvSlMCxgyBaUNg2cmzKJvsKHbm6
+         V/kixFWmhXvodhajqgzfAqEhLcHQbKUs9h0pXnKGLRFoQdpfZK0e7mly9QW/IvtJTnHm
+         F/YBSslpEOFFhNH/UUd3i/Z2rpQK3BrqEP+Log5Ez/69y9HjRiIwLpe3KSLbgXLOD1X6
+         jcQ85k6z6O3V9bzaUmEVQNx1XP0CVJ7pdZ9LZNRvluoMwAnGaA0w2P5w7Vwuvunb5bPW
+         fkiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Zv6U2fBaRQkOkrNra5ld63Ntn4mBIT0LlLmI1iQgZuI=;
+        bh=eUv2z9KmY34SX56f6Q2Vdh1Bdsvd+iEMfpcSIQHA4Sc=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=ls9LlnDICIwTWvJtHMy5eDTLKw/V9v+pXsVlWjA1+5POVICDuzQqFQ8ZKVvOR6+0lO
-         KBsnxK8mBK/pJTA9ZVfU+tGLCrVwk9RLcxpLDC5oCdJqL2GUQ09DmkkqrUSLX2GWoeLB
-         BohGbC3Y3iK6mfNJ27NXxuOt6EQZSLf+w1xyRYHptoQDR6GBcyTrvp6+HyWyDDoYgtbX
-         8kGIiLtUXG3nxfo7RPBAuNuTG8v4NbPBWartXSV9ru1NthnnsJHgohDP50+6FFSA/9Tq
-         +vsD3uTQ4VwgRd/6YVTDI3RM2PRXshJh1dCSY8hgQnchgzNnvKw/g7tjoVCnJGEbYctj
-         gtjg==;
+        b=MsStSpjGlG7FbP5odYjCDP4tOQFpMB+smcnIHiYQ8EuV05lUlAId30KVN2VYZC54PK
+         qN9cdkHo9jhX+ez1MLwmz6uz9CEkYPmqC6mLrutN2nmBn3a3nxaTQOAFRfOBVycJrg0+
+         R4fb9zwqEsdIPzaninnAjb0xDX3OFtCTo56SB3h3uRpG5IkHlXaM6lNcCQjPmORh5Gr/
+         i55IiHV1ZuqjeYRY+OUwpNS48sORd7z4pr2Wj+sisdQnNUaQRz8RPZj6tR2L6Om61bWH
+         WUAdp3VOtw6HRgsig8UDVWj9lTev+noF2vs4hP9xV1dGJHJ/NntNDYbD0mQ4ICG30662
+         o66w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1-20020a05620a094100b007881f42860asi6064713qkw.54.2024.03.04.23.08.09
+        by mx.google.com with ESMTPS id w8-20020a05620a148800b007882eef5651si2490697qkj.63.2024.03.04.23.08.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 23:08:09 -0800 (PST)
+        Mon, 04 Mar 2024 23:08:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhOsp-00062h-2g; Tue, 05 Mar 2024 02:06:39 -0500
+	id 1rhOu9-0007yK-59; Tue, 05 Mar 2024 02:08:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhOre-0004SP-6O; Tue, 05 Mar 2024 02:05:28 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+ id 1rhOrC-0004DY-4q; Tue, 05 Mar 2024 02:04:58 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhOrc-00007v-0r; Tue, 05 Mar 2024 02:05:25 -0500
-Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Tpmjr2sZfz1xqG6;
- Tue,  5 Mar 2024 15:03:12 +0800 (CST)
+ id 1rhOrA-0008Ta-4s; Tue, 05 Mar 2024 02:04:57 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Tpmlc4XQvz1FLcx;
+ Tue,  5 Mar 2024 15:04:44 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id D1BC814037E;
- Tue,  5 Mar 2024 15:04:48 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 79B241A0172;
+ Tue,  5 Mar 2024 15:04:51 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
- 2024 15:04:48 +0800
+ 2024 15:04:50 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v6 17/23] hw/intc/arm_gicv3: Add NMI handling CPU
- interface registers
-Date: Tue, 5 Mar 2024 07:03:25 +0000
-Message-ID: <20240305070331.2151131-18-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v6 20/23] hw/intc/arm_gicv3: Report the NMI interrupt in
+ gicv3_cpuif_update()
+Date: Tue, 5 Mar 2024 07:03:28 +0000
+Message-ID: <20240305070331.2151131-21-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240305070331.2151131-1-ruanjinjie@huawei.com>
 References: <20240305070331.2151131-1-ruanjinjie@huawei.com>
@@ -78,8 +78,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -102,175 +102,53 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vkwTtoztnSoR
+X-TUID: oZQRhTRqZYeR
 
-Add the NMIAR CPU interface registers which deal with acknowledging NMI.
-
-When introduce NMI interrupt, there are some updates to the semantics for the
-register ICC_IAR1_EL1 and ICC_HPPIR1_EL1. For ICC_IAR1_EL1 register, it
-should return 1022 if the intid has super priority. And for ICC_NMIAR1_EL1
-register, it should return 1023 if the intid do not have super priority.
-Howerever, these are not necessary for ICC_HPPIR1_EL1 register.
+In CPU Interface, if the IRQ has the superpriority property, report
+NMI to the corresponding PE.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
+v6:
+- Add Reviewed-by.
 v4:
-- Define ICC_NMIAR1_EL1 only if FEAT_GICv3_NMI is implemented.
-- Check sctrl_elx.SCTLR_NMI to return 1022 for icc_iar1_read().
-- Add gicv3_icc_nmiar1_read() trace event.
-- Do not check icc_hppi_can_preempt() for icc_nmiar1_read().
-- Add icv_nmiar1_read() and call it when EL2Enabled() and HCR_EL2.IMO == '1'
-
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+- Swap the ordering of the IFs.
+v3:
+- Remove handling nmi_is_irq flag.
 ---
- hw/intc/arm_gicv3_cpuif.c | 59 +++++++++++++++++++++++++++++++++++++--
- hw/intc/gicv3_internal.h  |  1 +
- hw/intc/trace-events      |  1 +
- 3 files changed, 58 insertions(+), 3 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index e1a60d8c15..df82a413c6 100644
+index 9a7d089dea..483b1bc4a3 100644
 --- a/hw/intc/arm_gicv3_cpuif.c
 +++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -795,6 +795,13 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return intid;
+@@ -967,6 +967,7 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+     /* Tell the CPU about its highest priority pending interrupt */
+     int irqlevel = 0;
+     int fiqlevel = 0;
++    int nmilevel = 0;
+     ARMCPU *cpu = ARM_CPU(cs->cpu);
+     CPUARMState *env = &cpu->env;
+ 
+@@ -1005,6 +1006,8 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+ 
+         if (isfiq) {
+             fiqlevel = 1;
++        } else if (cs->hppi.superprio) {
++            nmilevel = 1;
+         } else {
+             irqlevel = 1;
+         }
+@@ -1014,6 +1017,7 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+ 
+     qemu_set_irq(cs->parent_fiq, fiqlevel);
+     qemu_set_irq(cs->parent_irq, irqlevel);
++    qemu_set_irq(cs->parent_nmi, nmilevel);
  }
  
-+static uint64_t icv_nmiar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /* todo */
-+    uint64_t intid = INTID_SPURIOUS;
-+    return intid;
-+}
-+
- static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
- {
-     /*
-@@ -1097,7 +1104,8 @@ static uint64_t icc_hppir0_value(GICv3CPUState *cs, CPUARMState *env)
-     return cs->hppi.irq;
- }
- 
--static uint64_t icc_hppir1_value(GICv3CPUState *cs, CPUARMState *env)
-+static uint64_t icc_hppir1_value(GICv3CPUState *cs, CPUARMState *env,
-+                                 bool is_nmi, bool is_hppi)
- {
-     /* Return the highest priority pending interrupt register value
-      * for group 1.
-@@ -1108,6 +1116,19 @@ static uint64_t icc_hppir1_value(GICv3CPUState *cs, CPUARMState *env)
-         return INTID_SPURIOUS;
-     }
- 
-+    if (!is_hppi) {
-+        int el = arm_current_el(env);
-+
-+        if (is_nmi && (!cs->hppi.superprio)) {
-+            return INTID_SPURIOUS;
-+        }
-+
-+        if ((!is_nmi) && cs->hppi.superprio
-+            && env->cp15.sctlr_el[el] & SCTLR_NMI) {
-+            return INTID_NMI;
-+        }
-+    }
-+
-     /* Check whether we can return the interrupt or if we should return
-      * a special identifier, as per the CheckGroup1ForSpecialIdentifiers
-      * pseudocode. (We can simplify a little because for us ICC_SRE_EL1.RM
-@@ -1168,7 +1189,7 @@ static uint64_t icc_iar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     if (!icc_hppi_can_preempt(cs)) {
-         intid = INTID_SPURIOUS;
-     } else {
--        intid = icc_hppir1_value(cs, env);
-+        intid = icc_hppir1_value(cs, env, false, false);
-     }
- 
-     if (!gicv3_intid_is_special(intid)) {
-@@ -1179,6 +1200,25 @@ static uint64_t icc_iar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return intid;
- }
- 
-+static uint64_t icc_nmiar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv3CPUState *cs = icc_cs_from_env(env);
-+    uint64_t intid;
-+
-+    if (icv_access(env, HCR_IMO)) {
-+        return icv_nmiar1_read(env, ri);
-+    }
-+
-+    intid = icc_hppir1_value(cs, env, true, false);
-+
-+    if (!gicv3_intid_is_special(intid)) {
-+        icc_activate_irq(cs, intid);
-+    }
-+
-+    trace_gicv3_icc_nmiar1_read(gicv3_redist_affid(cs), intid);
-+    return intid;
-+}
-+
- static void icc_drop_prio(GICv3CPUState *cs, int grp)
- {
-     /* Drop the priority of the currently active interrupt in
-@@ -1555,7 +1595,7 @@ static uint64_t icc_hppir1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         return icv_hppir_read(env, ri);
-     }
- 
--    value = icc_hppir1_value(cs, env);
-+    value = icc_hppir1_value(cs, env, false, true);
-     trace_gicv3_icc_hppir1_read(gicv3_redist_affid(cs), value);
-     return value;
- }
-@@ -2482,6 +2522,15 @@ static const ARMCPRegInfo gicv3_cpuif_icc_apxr23_reginfo[] = {
-     },
- };
- 
-+static const ARMCPRegInfo gicv3_cpuif_gicv3_nmi_reginfo[] = {
-+    { .name = "ICC_NMIAR1_EL1", .state = ARM_CP_STATE_BOTH,
-+      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 9, .opc2 = 5,
-+      .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+      .access = PL1_R, .accessfn = gicv3_irq_access,
-+      .readfn = icc_nmiar1_read,
-+    },
-+};
-+
- static uint64_t ich_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     GICv3CPUState *cs = icc_cs_from_env(env);
-@@ -2838,6 +2887,10 @@ void gicv3_init_cpuif(GICv3State *s)
-          */
-         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
- 
-+        if (s->nmi_support) {
-+            define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
-+        }
-+
-         /*
-          * The CPU implementation specifies the number of supported
-          * bits of physical priority. For backwards compatibility
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 8d793243f4..93e56b3726 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -511,6 +511,7 @@ FIELD(VTE, RDBASE, 42, RDBASE_PROCNUM_LENGTH)
- /* Special interrupt IDs */
- #define INTID_SECURE 1020
- #define INTID_NONSECURE 1021
-+#define INTID_NMI 1022
- #define INTID_SPURIOUS 1023
- 
- /* Functions internal to the emulated GICv3 */
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 1ef29d0256..94030550d5 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -116,6 +116,7 @@ gicv3_cpuif_set_irqs(uint32_t cpuid, int fiqlevel, int irqlevel) "GICv3 CPU i/f
- gicv3_icc_generate_sgi(uint32_t cpuid, int irq, int irm, uint32_t aff, uint32_t targetlist) "GICv3 CPU i/f 0x%x generating SGI %d IRM %d target affinity 0x%xxx targetlist 0x%x"
- gicv3_icc_iar0_read(uint32_t cpu, uint64_t val) "GICv3 ICC_IAR0 read cpu 0x%x value 0x%" PRIx64
- gicv3_icc_iar1_read(uint32_t cpu, uint64_t val) "GICv3 ICC_IAR1 read cpu 0x%x value 0x%" PRIx64
-+gicv3_icc_nmiar1_read(uint32_t cpu, uint64_t val) "GICv3 ICC_NMIAR1 read cpu 0x%x value 0x%" PRIx64
- gicv3_icc_eoir_write(int grp, uint32_t cpu, uint64_t val) "GICv3 ICC_EOIR%d write cpu 0x%x value 0x%" PRIx64
- gicv3_icc_hppir0_read(uint32_t cpu, uint64_t val) "GICv3 ICC_HPPIR0 read cpu 0x%x value 0x%" PRIx64
- gicv3_icc_hppir1_read(uint32_t cpu, uint64_t val) "GICv3 ICC_HPPIR1 read cpu 0x%x value 0x%" PRIx64
+ static uint64_t icc_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
 -- 
 2.34.1
 

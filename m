@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q13-20020a05600c46cd00b00412ebd587ebsm2115487wmo.3.2024.03.05.04.18.43
+        by smtp.gmail.com with ESMTPSA id l21-20020a05600c4f1500b004101543e843sm20823499wmq.10.2024.03.05.04.18.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:18:43 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F10295F9FF;
-	Tue,  5 Mar 2024 12:10:07 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 239F45FA03;
+	Tue,  5 Mar 2024 12:10:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -51,40 +51,62 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 27/29] disas/hppa: honour show_opcodes
-Date: Tue,  5 Mar 2024 12:10:03 +0000
-Message-Id: <20240305121005.3528075-28-alex.bennee@linaro.org>
+Subject: [PATCH 29/29] target/riscv: honour show_opcodes when disassembling
+Date: Tue,  5 Mar 2024 12:10:05 +0000
+Message-Id: <20240305121005.3528075-30-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: syi6YsNRlssC
+X-TUID: lmk0H0W8P4r4
+
+This makes the output suitable when used for plugins.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- disas/hppa.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ disas/riscv.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-diff --git a/disas/hppa.c b/disas/hppa.c
-index 22dce9b41bb..49e2231ae62 100644
---- a/disas/hppa.c
-+++ b/disas/hppa.c
-@@ -1972,9 +1972,11 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
+diff --git a/disas/riscv.c b/disas/riscv.c
+index 8a546d5ea53..9dec8fa966f 100644
+--- a/disas/riscv.c
++++ b/disas/riscv.c
+@@ -5192,19 +5192,21 @@ print_insn_riscv(bfd_vma memaddr, struct disassemble_info *info, rv_isa isa)
+         }
+     }
  
-   insn = bfd_getb32 (buffer);
+-    switch (len) {
+-    case 2:
+-        (*info->fprintf_func)(info->stream, INST_FMT_2, inst);
+-        break;
+-    case 4:
+-        (*info->fprintf_func)(info->stream, INST_FMT_4, inst);
+-        break;
+-    case 6:
+-        (*info->fprintf_func)(info->stream, INST_FMT_6, inst);
+-        break;
+-    default:
+-        (*info->fprintf_func)(info->stream, INST_FMT_8, inst);
+-        break;
++    if (!info->show_opcodes) {
++        switch (len) {
++        case 2:
++            (*info->fprintf_func)(info->stream, INST_FMT_2, inst);
++            break;
++        case 4:
++            (*info->fprintf_func)(info->stream, INST_FMT_4, inst);
++            break;
++        case 6:
++            (*info->fprintf_func)(info->stream, INST_FMT_6, inst);
++            break;
++        default:
++            (*info->fprintf_func)(info->stream, INST_FMT_8, inst);
++            break;
++        }
+     }
  
--  info->fprintf_func(info->stream, " %02x %02x %02x %02x   ",
--                (insn >> 24) & 0xff, (insn >> 16) & 0xff,
--                (insn >>  8) & 0xff, insn & 0xff);
-+  if (info->show_opcodes) {
-+      info->fprintf_func(info->stream, " %02x %02x %02x %02x   ",
-+                         (insn >> 24) & 0xff, (insn >> 16) & 0xff,
-+                         (insn >>  8) & 0xff, insn & 0xff);
-+  }
- 
-   for (i = 0; i < NUMOPCODES; ++i)
-     {
+     disasm_inst(buf, sizeof(buf), isa, memaddr, inst,
 -- 
 2.39.2

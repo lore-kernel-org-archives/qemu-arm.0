@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id hg5-20020a05600c538500b00412eeb017f0sm1196785wmb.34.2024.03.05.04.10.08
+        by smtp.gmail.com with ESMTPSA id d8-20020a05600c3ac800b00412e84e59d8sm3851590wms.44.2024.03.05.04.10.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5EDF65F7B5;
+	by draig.lan (Postfix) with ESMTP id 8A5E65F9CF;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,78 +51,72 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 09/29] gdbstub: Introduce gdb_handle_query_supported_user()
-Date: Tue,  5 Mar 2024 12:09:45 +0000
-Message-Id: <20240305121005.3528075-10-alex.bennee@linaro.org>
+Subject: [PATCH 11/29] gdbstub: Introduce gdb_handle_detach_user()
+Date: Tue,  5 Mar 2024 12:09:47 +0000
+Message-Id: <20240305121005.3528075-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5kcgWQsiiTQ2
+X-TUID: AtYEtT1KSOGO
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-The upcoming follow-fork-mode child support requires advertising the
-fork-events feature, which is user-specific. Introduce a user-specific
-hook for this.
+The upcoming follow-fork-mode child support needs to perform certain
+actions when GDB detaches from the stopped parent or the stopped child.
+Introduce a user-specific hook for this.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-9-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-11-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 12 +++++++++---
- gdbstub/user.c      |  4 ++++
- 3 files changed, 14 insertions(+), 3 deletions(-)
+ gdbstub/internals.h | 1 +
+ gdbstub/gdbstub.c   | 6 ++++++
+ gdbstub/user.c      | 5 +++++
+ 3 files changed, 12 insertions(+)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 56b7c13b750..e6063835b1f 100644
+index b4905c7181a..b4724598384 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -196,6 +196,7 @@ void gdb_handle_v_file_pread(GArray *params, void *user_ctx); /* user */
- void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user */
- void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
+@@ -198,6 +198,7 @@ void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
  void gdb_handle_set_catch_syscalls(GArray *params, void *user_ctx); /* user */
-+void gdb_handle_query_supported_user(const char *gdb_supported); /* user */
+ void gdb_handle_query_supported_user(const char *gdb_supported); /* user */
+ bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid); /* user */
++bool gdb_handle_detach_user(uint32_t pid); /* user */
  
  void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
  
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 2909bc8c69f..7be4418dcb5 100644
+index 3eb93162aa8..17efcae0d0e 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -1655,9 +1655,15 @@ static void handle_query_supported(GArray *params, void *user_ctx)
-     g_string_append(gdbserver_state.str_buf, ";qXfer:exec-file:read+");
- #endif
- 
--    if (params->len &&
--        strstr(get_param(params, 0)->data, "multiprocess+")) {
--        gdbserver_state.multiprocess = true;
-+    if (params->len) {
-+        const char *gdb_supported = get_param(params, 0)->data;
-+
-+        if (strstr(gdb_supported, "multiprocess+")) {
-+            gdbserver_state.multiprocess = true;
-+        }
-+#if defined(CONFIG_USER_ONLY)
-+        gdb_handle_query_supported_user(gdb_supported);
-+#endif
+@@ -1024,6 +1024,12 @@ static void handle_detach(GArray *params, void *user_ctx)
+         pid = get_param(params, 0)->val_ul;
      }
  
-     g_string_append(gdbserver_state.str_buf, ";vContSupported+;multiprocess+");
++#ifdef CONFIG_USER_ONLY
++    if (gdb_handle_detach_user(pid)) {
++        return;
++    }
++#endif
++
+     process = gdb_get_process(pid);
+     gdb_process_breakpoint_remove_all(process);
+     process->attached = false;
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 866a25f9c06..c9e8b83d720 100644
+index b048754c4f8..1a7b582a40d 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -382,6 +382,10 @@ void gdbserver_fork_end(CPUState *cpu, pid_t pid)
-     disable_gdbstub(cpu);
+@@ -391,6 +391,11 @@ bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
+     return false;
  }
  
-+void gdb_handle_query_supported_user(const char *gdb_supported)
++bool gdb_handle_detach_user(uint32_t pid)
 +{
++    return false;
 +}
 +
  /*

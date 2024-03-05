@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp375987ejc;
-        Tue, 5 Mar 2024 08:01:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUpZDRMjQzQgETSh/u6L6lXYNJ4D8ZSWFgIopMqIdTWRNXUWjuvIqSQXwZZNibP4HcQqXms6XQugAKMZBya1tIGlD9rWpvg
-X-Google-Smtp-Source: AGHT+IFfmFhkJng/tYIgbxrerQ4DTxXyZUzGdaP+tGKN0t9dq/vl7H5CU3PyDgapSfJftrakLztn
-X-Received: by 2002:a05:6870:2317:b0:220:f92f:5bf7 with SMTP id w23-20020a056870231700b00220f92f5bf7mr2024018oao.50.1709654472119;
-        Tue, 05 Mar 2024 08:01:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709654472; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp376358ejc;
+        Tue, 5 Mar 2024 08:01:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVWOZINnhTv6oghE+OcgBuB2vQzDIuvk/CzV6cthNe4yqVZMvqo8X62gKVFKLYq1bM5VyMiHWCfopA1EdCQXopWixkN4ZIy
+X-Google-Smtp-Source: AGHT+IEHMfbUQAZLNTnJDjgfgl5Q2vfa8PQsM45Wa6lPE0AMKQF3pz2L/qeWFYVHp70upUBJVO35
+X-Received: by 2002:a05:6870:70a0:b0:21e:80ee:523b with SMTP id v32-20020a05687070a000b0021e80ee523bmr2353179oae.34.1709654493905;
+        Tue, 05 Mar 2024 08:01:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709654493; cv=none;
         d=google.com; s=arc-20160816;
-        b=USXydeNDKRF+bmaCMSttFvJp5JcPwVWrFBD8BhtQyEDiBgqwXp3vhS/LveUQi8s4I/
-         /EHZYH1/e/b5Shdg8hJ0hmSEW2XhHvUtVpWwJIbP6U6wpZs3CCSrYyZS5UZi/yCjjE3f
-         9ehIlUqO/oB8m6poQvLf3m3wekGgVDA1VvlK4DizWtgifOag84WRSBn/MS2UvT0Guw0H
-         Y8/MFrp9J/ad4lIwgzVl8Di/iP09MQ8wW1/CYik+9hJ3Ddxfca9rkiOvf/oWsx4pjjp3
-         3ytvulkPi6PeRCyFSjRNFpXxPNHBmK1jPXS/wtmeTsbsC6sPYDuOArusYibnsh2Iz1+c
-         NOvg==
+        b=FNB02fdnXXY6yIumf3Hxf6esr7LkyyIuxcyeJQUDhg18mx6uWwKx5e3+lGggIThpim
+         mU5c020UYSl9CJ0hWlzQK67fzSsgablAMOHs/w7ZKY9LS/5Fy2Crp82H1ywXbv4fmr+j
+         joA6oevDm9WRDg6D1wogZ/70i8WQ1ZwUJsTBk27T+xaTeNxfUp8NRRmxpDlz2LFTyeTw
+         7zStjzUI2VS/Mi4pV57RmEztsLZYe2UNC69UjxMoTNI/5tD4HuHQXDE8rDjexCHxL+fo
+         Y/cJ0lWR3baAmJO1dZ2A82bu2wcNyfSPfa85rszh6VitNuBSdhCidMxY4G29AK8ZzYGk
+         M5kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=l6cAEnNEFvLtmXf52i9SVdWGzySjtlt0xpy+thGq8X8=;
+        bh=5JjwNBMG2GsvzQ6nB+0Hsc0Mpt86WlSXCQzuq9IjmKs=;
         fh=cWYLLp2xiaCPawONafvmArBA+kFDFtOI7kkn8ypnRsk=;
-        b=cKyrSaIQxZlWMtH1iByvQb0U2Ik+Zo9SMdWAA2qXGRvQ9ua/t8N6phCwt/PoCjABQG
-         eCevVHPgYDWiu5axn2CAwBLDhvmyf5Bs8uT3IeCkCEAQUTG6Y2WgnPDFkaZMbucK0VBu
-         6fAJWmSpcWgWUm8dXc80MtY+kJG03X82lI0PtJyOhCyzPBXQEwZjdoUbBBqKCiqyEP8D
-         FgZZwgmGKMeD3QznL9bzQmkeVAtul2hbmQbH8ssNe7dtX8J3uiPed+SCPheoxURsMfqQ
-         G0HrNScPBxFvqqTg4NS8Uwj5TD91a7XdjCQL+HjPAIxN8iCqMtOfwRTSLtT033ZsMaYE
-         qK3A==;
+        b=lz5hSfbSLv4/N+6EysLnxlvobqunRayQhF0LHqCOIb7ZDZv0Ks+554GbQSYoMmpS5T
+         LXrrR3m1TRqeyRCm2F9atkc8/KjaYewxbmuUdH4uN1ofaNnstNJ7WwUSF19pyWa94SzH
+         7LJYH3+mjybhtui7445hUlXMIOWhO2I71g6OVqMgexZFMiUeCQpThWTTrn9cWHRT1vxM
+         zVDc/4Wxgr/OldYffoAZWj5T1rFNpUtPtJYDBplnRmDIHXxwe4qX0FcXdkco7kppXUfW
+         rlDiYNgfPdt0JHMZqNZUOzCK4wMq7JqCVsN/ovlyOLq+5JbVq8IWAp4MUAghHUE74VPd
+         uOcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EMw262+o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EltinEVN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6-20020a0561023d0600b0047264b2e955si2068544vsv.761.2024.03.05.08.01.11
+        by mx.google.com with ESMTPS id fe2-20020a056130188200b007da03ad070dsi1814622uab.12.2024.03.05.08.01.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 08:01:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2024 08:01:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EMw262+o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EltinEVN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhXBf-0006Xo-B6; Tue, 05 Mar 2024 10:58:39 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rhXBe-0006Ot-Hn; Tue, 05 Mar 2024 10:58:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXB8-0005he-He
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 10:58:07 -0500
+ id 1rhXBI-0005xn-Js
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:58:23 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXB5-0000Yl-Rb
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 10:58:06 -0500
+ id 1rhXBG-0000bV-Hl
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:58:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709654283;
+ s=mimecast20190719; t=1709654293;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=l6cAEnNEFvLtmXf52i9SVdWGzySjtlt0xpy+thGq8X8=;
- b=EMw262+oP7ffgKqq5OcW88X6z99mdLX7yxAICTIKunohDtW81Uc680ArEkT2uk1doP+GNU
- TY1FrzPwY2LRfhgvTyQAtUbaCDfG4AUgznSpvaxy3d4L25Gwye6P0wMOK2FTCAiV8B6Vbg
- QPEo+yTHAO1p/Yh/0kdQmPs9op4j2M8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-508-hmRgpx0IO4iHhsT5aW5QYw-1; Tue, 05 Mar 2024 10:58:00 -0500
-X-MC-Unique: hmRgpx0IO4iHhsT5aW5QYw-1
+ bh=5JjwNBMG2GsvzQ6nB+0Hsc0Mpt86WlSXCQzuq9IjmKs=;
+ b=EltinEVN8hGfuEQup0JT+1IBITx1iY/ayar9eSSozjSfgAIKDPBBMxg1LQAsKcmPrGLBSP
+ E/kMOEb0cfATf6cra6tZeTwoYWN52LNmkTTdmACGpTsHbHRlnBjYhFN0LMX878WTDW1s9f
+ R1SwKTRCQOtP8attihoj8LRlpsqtaOw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-316-cM7HLpHzPIOS0bZFRdpcBQ-1; Tue,
+ 05 Mar 2024 10:58:11 -0500
+X-MC-Unique: cM7HLpHzPIOS0bZFRdpcBQ-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1C24280026B;
- Tue,  5 Mar 2024 15:57:59 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 298013C02449;
+ Tue,  5 Mar 2024 15:58:10 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8D9BA17A8E;
- Tue,  5 Mar 2024 15:57:56 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9A70417A99;
+ Tue,  5 Mar 2024 15:58:07 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
@@ -90,10 +90,10 @@ Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, eblake@redhat.com,
  armbru@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  f.ebner@proxmox.com
-Subject: [PATCH v2 10/20] smbios: rename/expose structures/bitmaps used by
- both legacy and modern code
-Date: Tue,  5 Mar 2024 16:57:14 +0100
-Message-Id: <20240305155724.2047069-11-imammedo@redhat.com>
+Subject: [PATCH v2 14/20] smbios: extend smbios-entry-point-type with 'auto'
+ value
+Date: Tue,  5 Mar 2024 16:57:18 +0100
+Message-Id: <20240305155724.2047069-15-imammedo@redhat.com>
 In-Reply-To: <20240305155724.2047069-1-imammedo@redhat.com>
 References: <20240305155724.2047069-1-imammedo@redhat.com>
 MIME-Version: 1.0
@@ -111,322 +111,51 @@ X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0yc8J1FqeJ/E
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sgb3QaN7d678
 
-As a preparation to move legacy handling into a separate file,
-add prefix 'smbios_' to type0/type1/have_binfile_bitmap/have_fields_bitmap
-and expose them in smbios.h so that they can be reused in
-legacy and modern code.
-
-Doing it as a separate patch to avoid rename cluttering follow-up
-patch which will move legacy code into a separate file.
+later patches will use it to pick SMBIOS version at runtime
+depending on configuration.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Tested-by: Fiona Ebner <f.ebner@proxmox.com>
 ---
- include/hw/firmware/smbios.h |  16 +++++
- hw/smbios/smbios.c           | 113 ++++++++++++++++-------------------
- 2 files changed, 69 insertions(+), 60 deletions(-)
+ qapi/machine.json | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-index 1fbff3c55f..bea5c3f1b1 100644
---- a/include/hw/firmware/smbios.h
-+++ b/include/hw/firmware/smbios.h
-@@ -2,6 +2,7 @@
- #define QEMU_SMBIOS_H
+diff --git a/qapi/machine.json b/qapi/machine.json
+index bb5a178909..6bdc71dc8c 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -1797,10 +1797,13 @@
+ #
+ # @64: SMBIOS version 3.0 (64-bit) Entry Point
+ #
++# @auto: Either 2.x or 3.x SMBIOS version, 2.x if configuration can be
++#        described by it and 3.x otherwise (since: 9.0)
++#
+ # Since: 7.0
+ ##
+ { 'enum': 'SmbiosEntryPointType',
+-  'data': [ '32', '64' ] }
++  'data': [ '32', '64', 'auto' ] }
  
- #include "qapi/qapi-types-machine.h"
-+#include "qemu/bitmap.h"
- 
- /*
-  * SMBIOS Support
-@@ -16,8 +17,23 @@
-  *
-  */
- 
-+typedef struct {
-+    const char *vendor, *version, *date;
-+    bool have_major_minor, uefi;
-+    uint8_t major, minor;
-+} smbios_type0_t;
-+extern smbios_type0_t smbios_type0;
-+
-+typedef struct {
-+    const char *manufacturer, *product, *version, *serial, *sku, *family;
-+    /* uuid is in qemu_uuid */
-+} smbios_type1_t;
-+extern smbios_type1_t smbios_type1;
- 
- #define SMBIOS_MAX_TYPE 127
-+extern DECLARE_BITMAP(smbios_have_binfile_bitmap, SMBIOS_MAX_TYPE + 1);
-+extern DECLARE_BITMAP(smbios_have_fields_bitmap, SMBIOS_MAX_TYPE + 1);
-+
- #define offsetofend(TYPE, MEMBER) \
-        (offsetof(TYPE, MEMBER) + sizeof_field(TYPE, MEMBER))
- 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 01180bd82c..86cf66b5ce 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -78,19 +78,11 @@ static int smbios_type4_count = 0;
- static bool smbios_have_defaults;
- static uint32_t smbios_cpuid_version, smbios_cpuid_features;
- 
--static DECLARE_BITMAP(have_binfile_bitmap, SMBIOS_MAX_TYPE+1);
--static DECLARE_BITMAP(have_fields_bitmap, SMBIOS_MAX_TYPE+1);
-+DECLARE_BITMAP(smbios_have_binfile_bitmap, SMBIOS_MAX_TYPE + 1);
-+DECLARE_BITMAP(smbios_have_fields_bitmap, SMBIOS_MAX_TYPE + 1);
- 
--static struct {
--    const char *vendor, *version, *date;
--    bool have_major_minor, uefi;
--    uint8_t major, minor;
--} type0;
--
--static struct {
--    const char *manufacturer, *product, *version, *serial, *sku, *family;
--    /* uuid is in qemu_uuid */
--} type1;
-+smbios_type0_t smbios_type0;
-+smbios_type1_t smbios_type1;
- 
- static struct {
-     const char *manufacturer, *product, *version, *serial, *asset, *location;
-@@ -536,36 +528,36 @@ static void smbios_maybe_add_str(int type, int offset, const char *data)
- static void smbios_build_type_0_fields(void)
- {
-     smbios_maybe_add_str(0, offsetof(struct smbios_type_0, vendor_str),
--                         type0.vendor);
-+                         smbios_type0.vendor);
-     smbios_maybe_add_str(0, offsetof(struct smbios_type_0, bios_version_str),
--                         type0.version);
-+                         smbios_type0.version);
-     smbios_maybe_add_str(0, offsetof(struct smbios_type_0,
-                                      bios_release_date_str),
--                         type0.date);
--    if (type0.have_major_minor) {
-+                         smbios_type0.date);
-+    if (smbios_type0.have_major_minor) {
-         smbios_add_field(0, offsetof(struct smbios_type_0,
-                                      system_bios_major_release),
--                         &type0.major, 1);
-+                         &smbios_type0.major, 1);
-         smbios_add_field(0, offsetof(struct smbios_type_0,
-                                      system_bios_minor_release),
--                         &type0.minor, 1);
-+                         &smbios_type0.minor, 1);
-     }
- }
- 
- static void smbios_build_type_1_fields(void)
- {
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, manufacturer_str),
--                         type1.manufacturer);
-+                         smbios_type1.manufacturer);
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, product_name_str),
--                         type1.product);
-+                         smbios_type1.product);
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, version_str),
--                         type1.version);
-+                         smbios_type1.version);
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, serial_number_str),
--                         type1.serial);
-+                         smbios_type1.serial);
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, sku_number_str),
--                         type1.sku);
-+                         smbios_type1.sku);
-     smbios_maybe_add_str(1, offsetof(struct smbios_type_1, family_str),
--                         type1.family);
-+                         smbios_type1.family);
-     if (qemu_uuid_set) {
-         /* We don't encode the UUID in the "wire format" here because this
-          * function is for legacy mode and needs to keep the guest ABI, and
-@@ -583,14 +575,14 @@ uint8_t *smbios_get_table_legacy(size_t *length)
-     size_t usr_offset;
- 
-     /* also complain if fields were given for types > 1 */
--    if (find_next_bit(have_fields_bitmap,
-+    if (find_next_bit(smbios_have_fields_bitmap,
-                       SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
-         error_report("can't process fields for smbios "
-                      "types > 1 on machine versions < 2.1!");
-         exit(1);
-     }
- 
--    if (test_bit(4, have_binfile_bitmap)) {
-+    if (test_bit(4, smbios_have_binfile_bitmap)) {
-         error_report("can't process table for smbios "
-                      "type 4 on machine versions < 2.1!");
-         exit(1);
-@@ -631,10 +623,10 @@ uint8_t *smbios_get_table_legacy(size_t *length)
- 
- bool smbios_skip_table(uint8_t type, bool required_table)
- {
--    if (test_bit(type, have_binfile_bitmap)) {
-+    if (test_bit(type, smbios_have_binfile_bitmap)) {
-         return true; /* user provided their own binary blob(s) */
-     }
--    if (test_bit(type, have_fields_bitmap)) {
-+    if (test_bit(type, smbios_have_fields_bitmap)) {
-         return false; /* user provided fields via command line */
-     }
-     if (smbios_have_defaults && required_table) {
-@@ -661,25 +653,25 @@ static void smbios_build_type_0_table(void)
- {
-     SMBIOS_BUILD_TABLE_PRE(0, T0_BASE, false); /* optional, leave up to BIOS */
- 
--    SMBIOS_TABLE_SET_STR(0, vendor_str, type0.vendor);
--    SMBIOS_TABLE_SET_STR(0, bios_version_str, type0.version);
-+    SMBIOS_TABLE_SET_STR(0, vendor_str, smbios_type0.vendor);
-+    SMBIOS_TABLE_SET_STR(0, bios_version_str, smbios_type0.version);
- 
-     t->bios_starting_address_segment = cpu_to_le16(0xE800); /* from SeaBIOS */
- 
--    SMBIOS_TABLE_SET_STR(0, bios_release_date_str, type0.date);
-+    SMBIOS_TABLE_SET_STR(0, bios_release_date_str, smbios_type0.date);
- 
-     t->bios_rom_size = 0; /* hardcoded in SeaBIOS with FIXME comment */
- 
-     t->bios_characteristics = cpu_to_le64(0x08); /* Not supported */
-     t->bios_characteristics_extension_bytes[0] = 0;
-     t->bios_characteristics_extension_bytes[1] = 0x14; /* TCD/SVVP | VM */
--    if (type0.uefi) {
-+    if (smbios_type0.uefi) {
-         t->bios_characteristics_extension_bytes[1] |= 0x08; /* |= UEFI */
-     }
- 
--    if (type0.have_major_minor) {
--        t->system_bios_major_release = type0.major;
--        t->system_bios_minor_release = type0.minor;
-+    if (smbios_type0.have_major_minor) {
-+        t->system_bios_major_release = smbios_type0.major;
-+        t->system_bios_minor_release = smbios_type0.minor;
-     } else {
-         t->system_bios_major_release = 0;
-         t->system_bios_minor_release = 0;
-@@ -709,18 +701,18 @@ static void smbios_build_type_1_table(void)
- {
-     SMBIOS_BUILD_TABLE_PRE(1, T1_BASE, true); /* required */
- 
--    SMBIOS_TABLE_SET_STR(1, manufacturer_str, type1.manufacturer);
--    SMBIOS_TABLE_SET_STR(1, product_name_str, type1.product);
--    SMBIOS_TABLE_SET_STR(1, version_str, type1.version);
--    SMBIOS_TABLE_SET_STR(1, serial_number_str, type1.serial);
-+    SMBIOS_TABLE_SET_STR(1, manufacturer_str, smbios_type1.manufacturer);
-+    SMBIOS_TABLE_SET_STR(1, product_name_str, smbios_type1.product);
-+    SMBIOS_TABLE_SET_STR(1, version_str, smbios_type1.version);
-+    SMBIOS_TABLE_SET_STR(1, serial_number_str, smbios_type1.serial);
-     if (qemu_uuid_set) {
-         smbios_encode_uuid(&t->uuid, &qemu_uuid);
-     } else {
-         memset(&t->uuid, 0, 16);
-     }
-     t->wake_up_type = 0x06; /* power switch */
--    SMBIOS_TABLE_SET_STR(1, sku_number_str, type1.sku);
--    SMBIOS_TABLE_SET_STR(1, family_str, type1.family);
-+    SMBIOS_TABLE_SET_STR(1, sku_number_str, smbios_type1.sku);
-+    SMBIOS_TABLE_SET_STR(1, family_str, smbios_type1.family);
- 
-     SMBIOS_BUILD_TABLE_POST;
- }
-@@ -1055,9 +1047,9 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
-     smbios_uuid_encoded = uuid_encoded;
-     smbios_ep_type = ep_type;
- 
--    SMBIOS_SET_DEFAULT(type1.manufacturer, manufacturer);
--    SMBIOS_SET_DEFAULT(type1.product, product);
--    SMBIOS_SET_DEFAULT(type1.version, version);
-+    SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, manufacturer);
-+    SMBIOS_SET_DEFAULT(smbios_type1.product, product);
-+    SMBIOS_SET_DEFAULT(smbios_type1.version, version);
-     SMBIOS_SET_DEFAULT(type2.manufacturer, manufacturer);
-     SMBIOS_SET_DEFAULT(type2.product, product);
-     SMBIOS_SET_DEFAULT(type2.version, version);
-@@ -1329,13 +1321,13 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
-         }
- 
-         if (header->type <= SMBIOS_MAX_TYPE) {
--            if (test_bit(header->type, have_fields_bitmap)) {
-+            if (test_bit(header->type, smbios_have_fields_bitmap)) {
-                 error_setg(errp,
-                            "can't load type %d struct, fields already specified!",
-                            header->type);
-                 return;
-             }
--            set_bit(header->type, have_binfile_bitmap);
-+            set_bit(header->type, smbios_have_binfile_bitmap);
-         }
- 
-         if (header->type == 4) {
-@@ -1366,41 +1358,42 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
-             return;
-         }
- 
--        if (test_bit(type, have_binfile_bitmap)) {
-+        if (test_bit(type, smbios_have_binfile_bitmap)) {
-             error_setg(errp, "can't add fields, binary file already loaded!");
-             return;
-         }
--        set_bit(type, have_fields_bitmap);
-+        set_bit(type, smbios_have_fields_bitmap);
- 
-         switch (type) {
-         case 0:
-             if (!qemu_opts_validate(opts, qemu_smbios_type0_opts, errp)) {
-                 return;
-             }
--            save_opt(&type0.vendor, opts, "vendor");
--            save_opt(&type0.version, opts, "version");
--            save_opt(&type0.date, opts, "date");
--            type0.uefi = qemu_opt_get_bool(opts, "uefi", false);
-+            save_opt(&smbios_type0.vendor, opts, "vendor");
-+            save_opt(&smbios_type0.version, opts, "version");
-+            save_opt(&smbios_type0.date, opts, "date");
-+            smbios_type0.uefi = qemu_opt_get_bool(opts, "uefi", false);
- 
-             val = qemu_opt_get(opts, "release");
-             if (val) {
--                if (sscanf(val, "%hhu.%hhu", &type0.major, &type0.minor) != 2) {
-+                if (sscanf(val, "%hhu.%hhu", &smbios_type0.major,
-+                           &smbios_type0.minor) != 2) {
-                     error_setg(errp, "Invalid release");
-                     return;
-                 }
--                type0.have_major_minor = true;
-+                smbios_type0.have_major_minor = true;
-             }
-             return;
-         case 1:
-             if (!qemu_opts_validate(opts, qemu_smbios_type1_opts, errp)) {
-                 return;
-             }
--            save_opt(&type1.manufacturer, opts, "manufacturer");
--            save_opt(&type1.product, opts, "product");
--            save_opt(&type1.version, opts, "version");
--            save_opt(&type1.serial, opts, "serial");
--            save_opt(&type1.sku, opts, "sku");
--            save_opt(&type1.family, opts, "family");
-+            save_opt(&smbios_type1.manufacturer, opts, "manufacturer");
-+            save_opt(&smbios_type1.product, opts, "product");
-+            save_opt(&smbios_type1.version, opts, "version");
-+            save_opt(&smbios_type1.serial, opts, "serial");
-+            save_opt(&smbios_type1.sku, opts, "sku");
-+            save_opt(&smbios_type1.family, opts, "family");
- 
-             val = qemu_opt_get(opts, "uuid");
-             if (val) {
+ ##
+ # @MemorySizeConfiguration:
 -- 
 2.39.3
 

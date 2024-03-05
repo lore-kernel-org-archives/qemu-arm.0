@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bt12-20020a056000080c00b0033e3a110d7fsm6390168wrb.71.2024.03.05.04.18.43
+        by smtp.gmail.com with ESMTPSA id q13-20020a05600c46cd00b00412ebd587ebsm2115487wmo.3.2024.03.05.04.18.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:18:43 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 87D885F9ED;
+	by draig.lan (Postfix) with ESMTP id F10295F9FF;
 	Tue,  5 Mar 2024 12:10:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,136 +51,40 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 22/29] contrib/plugins/hotblocks: migrate to new per_vcpu API
-Date: Tue,  5 Mar 2024 12:09:58 +0000
-Message-Id: <20240305121005.3528075-23-alex.bennee@linaro.org>
+Subject: [PATCH 27/29] disas/hppa: honour show_opcodes
+Date: Tue,  5 Mar 2024 12:10:03 +0000
+Message-Id: <20240305121005.3528075-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bEu9+HZs3rKy
+X-TUID: syi6YsNRlssC
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240304130036.124418-10-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/hotblocks.c | 50 ++++++++++++++++++++++---------------
- 1 file changed, 30 insertions(+), 20 deletions(-)
+ disas/hppa.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
-index 4de1b134944..02bc5078bdd 100644
---- a/contrib/plugins/hotblocks.c
-+++ b/contrib/plugins/hotblocks.c
-@@ -34,8 +34,8 @@ static guint64 limit = 20;
-  */
- typedef struct {
-     uint64_t start_addr;
--    uint64_t exec_count;
--    int      trans_count;
-+    struct qemu_plugin_scoreboard *exec_count;
-+    int trans_count;
-     unsigned long insns;
- } ExecCount;
+diff --git a/disas/hppa.c b/disas/hppa.c
+index 22dce9b41bb..49e2231ae62 100644
+--- a/disas/hppa.c
++++ b/disas/hppa.c
+@@ -1972,9 +1972,11 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
  
-@@ -43,7 +43,17 @@ static gint cmp_exec_count(gconstpointer a, gconstpointer b)
- {
-     ExecCount *ea = (ExecCount *) a;
-     ExecCount *eb = (ExecCount *) b;
--    return ea->exec_count > eb->exec_count ? -1 : 1;
-+    uint64_t count_a =
-+        qemu_plugin_u64_sum(qemu_plugin_scoreboard_u64(ea->exec_count));
-+    uint64_t count_b =
-+        qemu_plugin_u64_sum(qemu_plugin_scoreboard_u64(eb->exec_count));
-+    return count_a > count_b ? -1 : 1;
-+}
-+
-+static void exec_count_free(gpointer key, gpointer value, gpointer user_data)
-+{
-+    ExecCount *cnt = value;
-+    qemu_plugin_scoreboard_free(cnt->exec_count);
- }
+   insn = bfd_getb32 (buffer);
  
- static void plugin_exit(qemu_plugin_id_t id, void *p)
-@@ -52,7 +62,6 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-     GList *counts, *it;
-     int i;
+-  info->fprintf_func(info->stream, " %02x %02x %02x %02x   ",
+-                (insn >> 24) & 0xff, (insn >> 16) & 0xff,
+-                (insn >>  8) & 0xff, insn & 0xff);
++  if (info->show_opcodes) {
++      info->fprintf_func(info->stream, " %02x %02x %02x %02x   ",
++                         (insn >> 24) & 0xff, (insn >> 16) & 0xff,
++                         (insn >>  8) & 0xff, insn & 0xff);
++  }
  
--    g_mutex_lock(&lock);
-     g_string_append_printf(report, "%d entries in the hash table\n",
-                            g_hash_table_size(hotblocks));
-     counts = g_hash_table_get_values(hotblocks);
-@@ -63,16 +72,21 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
- 
-         for (i = 0; i < limit && it->next; i++, it = it->next) {
-             ExecCount *rec = (ExecCount *) it->data;
--            g_string_append_printf(report, "0x%016"PRIx64", %d, %ld, %"PRId64"\n",
--                                   rec->start_addr, rec->trans_count,
--                                   rec->insns, rec->exec_count);
-+            g_string_append_printf(
-+                report, "0x%016"PRIx64", %d, %ld, %"PRId64"\n",
-+                rec->start_addr, rec->trans_count,
-+                rec->insns,
-+                qemu_plugin_u64_sum(
-+                    qemu_plugin_scoreboard_u64(rec->exec_count)));
-         }
- 
-         g_list_free(it);
-     }
--    g_mutex_unlock(&lock);
- 
-     qemu_plugin_outs(report->str);
-+
-+    g_hash_table_foreach(hotblocks, exec_count_free, NULL);
-+    g_hash_table_destroy(hotblocks);
- }
- 
- static void plugin_init(void)
-@@ -82,15 +96,9 @@ static void plugin_init(void)
- 
- static void vcpu_tb_exec(unsigned int cpu_index, void *udata)
- {
--    ExecCount *cnt;
--    uint64_t hash = (uint64_t) udata;
--
--    g_mutex_lock(&lock);
--    cnt = (ExecCount *) g_hash_table_lookup(hotblocks, (gconstpointer) hash);
--    /* should always succeed */
--    g_assert(cnt);
--    cnt->exec_count++;
--    g_mutex_unlock(&lock);
-+    ExecCount *cnt = (ExecCount *)udata;
-+    qemu_plugin_u64_add(qemu_plugin_scoreboard_u64(cnt->exec_count),
-+                        cpu_index, 1);
- }
- 
- /*
-@@ -114,18 +122,20 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-         cnt->start_addr = pc;
-         cnt->trans_count = 1;
-         cnt->insns = insns;
-+        cnt->exec_count = qemu_plugin_scoreboard_new(sizeof(uint64_t));
-         g_hash_table_insert(hotblocks, (gpointer) hash, (gpointer) cnt);
-     }
- 
-     g_mutex_unlock(&lock);
- 
-     if (do_inline) {
--        qemu_plugin_register_vcpu_tb_exec_inline(tb, QEMU_PLUGIN_INLINE_ADD_U64,
--                                                 &cnt->exec_count, 1);
-+        qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu(
-+            tb, QEMU_PLUGIN_INLINE_ADD_U64,
-+            qemu_plugin_scoreboard_u64(cnt->exec_count), 1);
-     } else {
-         qemu_plugin_register_vcpu_tb_exec_cb(tb, vcpu_tb_exec,
-                                              QEMU_PLUGIN_CB_NO_REGS,
--                                             (void *)hash);
-+                                             (void *)cnt);
-     }
- }
- 
+   for (i = 0; i < NUMOPCODES; ++i)
+     {
 -- 
 2.39.2

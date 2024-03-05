@@ -1,252 +1,339 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp286682ejc;
-        Tue, 5 Mar 2024 05:43:47 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCV4hYkP2iymJbu9fc2fPQZs2zLs4/v/x4Dx6FuCjPKaxV5MAMwxR/pcWeZcf7CLNf3m8SUYdOi3UFMqV6wXU0anZP5VUxIW
-X-Google-Smtp-Source: AGHT+IG7PSeNriS9B3jQyjKZtn9seMiZXdeaXB+hSB8DAEXT1Zct0eLQzfx2nZz3etFo+JXFdPr2
-X-Received: by 2002:a17:902:e54f:b0:1dc:30ab:406b with SMTP id n15-20020a170902e54f00b001dc30ab406bmr1838587plf.13.1709646227341;
-        Tue, 05 Mar 2024 05:43:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709646227; cv=pass;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp332865ejc;
+        Tue, 5 Mar 2024 06:59:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXAXt8tDMGHfv8FB+oWGdfuhzJANTqPq/AshduOoYj60AE+PqzWXClkj5GwbV9Rfk34HxZo26sesgr2T6gEd2OcVsXAe1VH
+X-Google-Smtp-Source: AGHT+IGA11scyJrgdSKzq5EwiYOjzylz4idI3oggq5iL3Y0JuDbYtiuN7exa28/E2zoqm8mwBE0E
+X-Received: by 2002:a05:6122:790:b0:4c8:8149:848e with SMTP id k16-20020a056122079000b004c88149848emr2004428vkr.5.1709650786432;
+        Tue, 05 Mar 2024 06:59:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709650786; cv=none;
         d=google.com; s=arc-20160816;
-        b=CLMuEyrSmd1Y+zv9owFPbKq5VJ4oynwsi+K81CQpupigzW0ue3yinWG8EZwdiyGpZd
-         m+PEel1SwoFHDjaNChu5ai7rLQ5AMFoU58cIDZKx0cCMlajgd7pI/SxK5w/I2D4E7ZAY
-         WCPDLRzfavZ1aRkTl/rtk2DPkTZRoyi321Ss1QG9nmu6R/YgGI/LbjPOZLB6NEq0FPJO
-         OpPId03jjSHkdyDbVb2DmfPAWGo0ddk1MRHFybqKY6zsE2g/PTSRqOFwUB4QGLRGCFv8
-         HojODObee5he/xSAlC8toQ4jVTxS5GH5AMJq6bmwWlLdc8Qo35hsU7cVuvx+p5HuKa0A
-         ADXw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=8+MCTA1UltNqL+EA8gVKWQmk1jjDdIIyMkrSTBOV/KA=;
-        fh=ONy2AWm12fBLPlOi/vlOC5CIy1IZeBRlJa5lHqqSsO0=;
-        b=On+SaGQYHqtgIEmEAkKb4Dgu+uQtckMm1EMXPFsG9ZfY8mACz54uKyVUfVmOneJbCu
-         xA4NhmEQP8WLADkzsl/3XX2cnxvv9lzqkFRGAc7OCWmnfRv5RjWZr4zONNdFBZap8Unt
-         dGWQY3qCYsoIWx8oeNya+qDKG3LRWcjdW8IhtZA3UHb0Zp0MW+O5zXnwsCvQqYwgY/PD
-         dxxPpwgnhUmai3MR0mZK+HU3D/1Z+YOKBkkprgwurv00t7Oy7RKWrV9CXAvKoZj12FRz
-         z0UETGN95LoglPYKDuhXrDL/QZdjZWGAJx5aGDkMphjFnTBTWO9UV6Nh7dm3TQ5RuIh2
-         1FJQ==;
+        b=j4kcJK6yPD07zDHOaCrxTMHDrYtCmEkGImkCGyzaW4PhxMZXaAE2msVwExn9/7/GsA
+         rluUSfO+N01teg26EI8sGShjQND3ugjzextVN8mkkQJLwOP70ZVND0yfaUDNUn/tvmFJ
+         Ql2UXSbRWF+Lxti0neHPQHABKCXG9TBOOtH7VgHC8NyXmzKPLMj+hF+M/01bI1/UtzRF
+         QmoWzPyjyYHGNUF5vYmif7XxHVoVERxD+b2Z7VUuAhtS4IrGQLSmkQN/g5nHEb8ely+h
+         PX3Ucc71i27EOQXFh1jD3biDfWVx+hMRHcUGj+fhRADjFTsZptZ8mpRKmzmBjvw+mj13
+         /9Cg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=KiA1J7t/TfETNZzis3RCpaXizwbF9sMTr/y4i4JKHh4=;
+        fh=OwtIYMY0+00dD+0OYwGlMmiEzgLSCX0RGHgJTct538Y=;
+        b=ehUnGb+k8D/bNKb46gh8+mmIW1lmO7recKJhXEze2w5l9l5SFGi4f8iKvffw51r22/
+         CJBBiheJhPrVUIVrNqYAvv/eaJGBiHt0dkeWR8oZfs9hGW0NTcmA/EvKmNA0kLWlPF2n
+         xvnIlDn+y3tVfO4pWswnLd3aG4F+iEpTp6/vmudpyKJm7tEN1VaPJ3qfavxGttUcZvYe
+         MVRcWArWrrCy2CohWceAuFKNIrGjmeyvNE8l6vIFw9zjroJnMmH/ausnPPEJGj/oj4N0
+         3EETgB58LLHyxdw31Kv8+sN7i9BQ1RqnrlriikiKBPq7zrSeHP6CjTS/bDwX5WG4wXKZ
+         JvnA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L0Jjtf+9;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id n17-20020a170902e55100b001dcdf1e11b3si9569983plf.73.2024.03.05.05.43.46
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MgfOJcay;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d16-20020a05622a101000b0042e64ca9522si7166274qte.187.2024.03.05.06.59.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Mar 2024 05:43:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 05 Mar 2024 06:59:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L0Jjtf+9;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-10994-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 10AE2B28956
-	for <alex.bennee@linaro.org>; Tue,  5 Mar 2024 13:43:45 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 00B3885C65;
-	Tue,  5 Mar 2024 13:43:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="L0Jjtf+9"
-Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com [209.85.167.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E62E95915D
-	for <kvm@vger.kernel.org>; Tue,  5 Mar 2024 13:43:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.42
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709646219; cv=none; b=ARpzgaMn93TfQDAIlT8z53nm5ccZxKVfQsOptGva7H4GO6mzfMTZECtSuelG1N7Nu6++7FAHNh7N2R4j1A8TxQBeVNNN1xtpq+WJUyhltdmwejYTu78Xb4uRRqdAGGJphcyDCbXISe0gI3JI187ELofVuq3n+IKDttyH0n/omLA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709646219; c=relaxed/simple;
-	bh=HYPbOo/3N1o8cYm6RRIsG7OHUi29Bq0eDqkzgN+ePWA=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=BuAayJ6gVkXdRsD+DINJ5gX5pgTtEPVYCPIHg//d1TPITNMohgwjIAlOfqv/KI8KihHdJWV4GyF5wlz10sx76dhAlJNpQciDdPtG2YsmFpi6Nk97PPobzcsdYxg4qTWUTC01Hnc5UPj73AL/TqL/sOR5Cru+oxR5xuV5x0PVB6o=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=L0Jjtf+9; arc=none smtp.client-ip=209.85.167.42
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-5132010e5d1so962631e87.0
-        for <kvm@vger.kernel.org>; Tue, 05 Mar 2024 05:43:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709646216; x=1710251016; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8+MCTA1UltNqL+EA8gVKWQmk1jjDdIIyMkrSTBOV/KA=;
-        b=L0Jjtf+9ucoNMxxQaOthomBpPC86GmlXSJd9IIHBb+vStWDmC5FaDEPc6pCBjirmrI
-         03OCKVcxCFH+X/g5etOmvHir3Xv/dEviqJd7M7S6tQLIApn6ld8SHDpN0cPGMPN9I0uv
-         cX5btc2Cin0zR7iL1oKPJNPLQYDtEQ9mI48LztMh4QrQ8sLKH2xlF2hy5xMIscdx3c6x
-         qArz82pI4D809qYW8Jx8oGiJDPktlmOoKTrR7YbkCxPpjZEuGZubhmyI2k+8GVE8PIm4
-         1KoIQrJzCBN9Q8Y8tBSAvETTBeK+xdQnz8MkAzioR0ASaIC9lo+PYkCSRZa1RSlrgeQw
-         +SFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709646216; x=1710251016;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8+MCTA1UltNqL+EA8gVKWQmk1jjDdIIyMkrSTBOV/KA=;
-        b=oCNZaYcmvk79LZI2qpGo/IkweRzPl9CI6nRlvufLYEIh+a/STEOvPhZccQqzFPLC1c
-         rODnyqGD2hATH7U8Q8PyC3BhL5eXzXLSwDezT+jF9UQbXGUpxym4+Hl7dbzJUgFgMGjl
-         ZPZyTZcfiZH1/LPbgJ2A1iwYwd6VxR0mZ3hmtZvsujY0/Q8oyu5UAxBVqUqAvpM7fNFx
-         LWdhYMNhi/6f4IITHQWtsrNPwzVG1ndxuxf6OMy9zuDJ38VYcV8driTnXYJ8DLrJi0fn
-         cUobFAYOYS6W9AYvSGmCvXHF7CZHu1L2rZCpnIZNP6wcD845Tz/AyOdrM9TTfV21nXL1
-         F70w==
-X-Forwarded-Encrypted: i=1; AJvYcCXXd8GQ69OHEKaNgn8AG014MNDU8EXmvI8RyB/MM0Rvm096UdsjQUDeBKXOmW87rW1gnSY6Rc66jmBs33S7xPVsUkJS
-X-Gm-Message-State: AOJu0Yzf4eo2qYmr7cUHqPimAiP4+R0rchoXjFiOvAyAHdaCIhaoAzSY
-	I9hwId2PGDCO6nj1EJPCZPn82uSRfDlw3E+esZOEE9YMEdEjpoU2+wTBxbFZ3Vo=
-X-Received: by 2002:a05:6512:2028:b0:513:177e:4254 with SMTP id s8-20020a056512202800b00513177e4254mr1162168lfs.14.1709646216124;
-        Tue, 05 Mar 2024 05:43:36 -0800 (PST)
-Received: from m1x-phil.lan ([176.176.177.70])
-        by smtp.gmail.com with ESMTPSA id qw28-20020a1709066a1c00b00a381ca0e589sm6032584ejc.22.2024.03.05.05.43.32
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 05 Mar 2024 05:43:35 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	Thomas Huth <thuth@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	kvm@vger.kernel.org,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	devel@lists.libvirt.org,
-	David Hildenbrand <david@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Song Gao <gaosong@loongson.cn>,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org
-Subject: [PATCH-for-9.1 10/18] hw/mem/pc-dimm: Remove legacy_align argument from pc_dimm_pre_plug()
-Date: Tue,  5 Mar 2024 14:42:12 +0100
-Message-ID: <20240305134221.30924-11-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240305134221.30924-1-philmd@linaro.org>
-References: <20240305134221.30924-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MgfOJcay;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rhWGR-00039h-O7; Tue, 05 Mar 2024 09:59:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhWGN-00034j-UY
+ for qemu-arm@nongnu.org; Tue, 05 Mar 2024 09:59:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhWGK-0004I9-Da
+ for qemu-arm@nongnu.org; Tue, 05 Mar 2024 09:59:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709650763;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KiA1J7t/TfETNZzis3RCpaXizwbF9sMTr/y4i4JKHh4=;
+ b=MgfOJcayldieLrtnMcjZzKBrVsDvgKIOyAlHV3Cl80n9621G610BYxykqFX4T8jxm6Rwkm
+ t3C3hLpXvN4+/U1LFZUKYW0MJTr4fplwm7VzOa/YXQ9zWXdIAVburLWCeF6a2WaBDI+oRk
+ GWdcA9Ss1HJYHZYBAQrlkbJNjJghz/c=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-622-KufdTkPrPrSYhx4cHkvXSw-1; Tue, 05 Mar 2024 09:59:21 -0500
+X-MC-Unique: KufdTkPrPrSYhx4cHkvXSw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A68248007AF;
+ Tue,  5 Mar 2024 14:59:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2296F37FC;
+ Tue,  5 Mar 2024 14:59:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0FD0D21E692E; Tue,  5 Mar 2024 15:59:19 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, gaosong@loongson.cn,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, richard.henderson@linaro.org,
+ david@redhat.com, iii@linux.ibm.com, thuth@redhat.com, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH 3/4] target: Improve error reporting for CpuModelInfo member
+ @props
+Date: Tue,  5 Mar 2024 15:59:17 +0100
+Message-ID: <20240305145919.2186971-4-armbru@redhat.com>
+In-Reply-To: <20240305145919.2186971-1-armbru@redhat.com>
+References: <20240305145919.2186971-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-TUID: zD79A2we/scO
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cAF+vpDfSRX7
 
-'legacy_align' is always NULL, remove it.
+query-cpu-model-comparison, query-cpu-model-baseline, and
+query-cpu-model-expansion take CpuModelInfo arguments.  Errors in
+@props members of these arguments are reported for 'props', without
+further context.  For instance, s390x rejects
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+    {"execute": "query-cpu-model-comparison", "arguments": {"modela": {"name": "z13", "props": {}}, "modelb": {"name": "z14", "props": []}}}
+
+with
+
+    {"error": {"class": "GenericError", "desc": "Invalid parameter type for 'props', expected: object"}}
+
+This is unusual; the common QAPI unmarshaling machinery would complain
+about 'modelb.props'.  Our hand-written code to visit the @props
+member neglects to provide the context.
+
+Tweak it so it provides it.  The command above now fails with
+
+    {"error": {"class": "GenericError", "desc": "Invalid parameter type for 'modelb.props', expected: dict"}}
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- include/hw/mem/pc-dimm.h | 3 +--
- hw/arm/virt.c            | 2 +-
- hw/i386/pc.c             | 2 +-
- hw/loongarch/virt.c      | 2 +-
- hw/mem/pc-dimm.c         | 6 ++----
- hw/ppc/spapr.c           | 2 +-
- 6 files changed, 7 insertions(+), 10 deletions(-)
+ target/arm/arm-qmp-cmds.c        |  2 +-
+ target/i386/cpu-sysemu.c         | 11 ++++++-----
+ target/riscv/riscv-qmp-cmds.c    |  6 ++++--
+ target/s390x/cpu_models_sysemu.c | 17 ++++++++++-------
+ tests/qtest/arm-cpu-features.c   |  5 +++--
+ 5 files changed, 24 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
-index 322bebe555..fe0f3ea963 100644
---- a/include/hw/mem/pc-dimm.h
-+++ b/include/hw/mem/pc-dimm.h
-@@ -66,8 +66,7 @@ struct PCDIMMDeviceClass {
-     void (*unrealize)(PCDIMMDevice *dimm);
- };
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 0167759730..0efbee8af8 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -158,7 +158,7 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+         Error *err = NULL;
  
--void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
--                      const uint64_t *legacy_align, Error **errp);
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp);
- void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine);
- void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine);
- #endif
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0af1943697..9a6df69642 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2720,7 +2720,7 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+         visitor = qobject_input_visitor_new(model->props);
+-        if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
++        if (!visit_start_struct(visitor, "model.props", NULL, 0, errp)) {
+             visit_free(visitor);
+             object_unref(obj);
+             return NULL;
+diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
+index df91f97827..3f9093d285 100644
+--- a/target/i386/cpu-sysemu.c
++++ b/target/i386/cpu-sysemu.c
+@@ -130,14 +130,15 @@ static void x86_cpu_to_dict_full(X86CPU *cpu, QDict *props)
+     }
+ }
+ 
+-static void object_apply_props(Object *obj, QObject *props, Error **errp)
++static void object_apply_props(Object *obj, QObject *props,
++                               const char *props_arg_name, Error **errp)
+ {
+     Visitor *visitor;
+     QDict *qdict;
+     const QDictEntry *prop;
+ 
+     visitor = qobject_input_visitor_new(props);
+-    if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
++    if (!visit_start_struct(visitor, props_arg_name, NULL, 0, errp)) {
+         visit_free(visitor);
          return;
      }
+@@ -158,7 +159,7 @@ out:
  
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
- }
+ /* Create X86CPU object according to model+props specification */
+ static X86CPU *x86_cpu_from_model(const char *model, QObject *props,
+-                                  Error **errp)
++                                  const char *props_arg_name, Error **errp)
+ {
+     X86CPU *xc = NULL;
+     X86CPUClass *xcc;
+@@ -172,7 +173,7 @@ static X86CPU *x86_cpu_from_model(const char *model, QObject *props,
  
- static void virt_memory_plug(HotplugHandler *hotplug_dev,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 0950abcc2a..b4736822e4 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1325,7 +1325,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
+     xc = X86_CPU(object_new_with_class(OBJECT_CLASS(xcc)));
+     if (props) {
+-        object_apply_props(OBJECT(xc), props, &err);
++        object_apply_props(OBJECT(xc), props, props_arg_name, &err);
+         if (err) {
+             goto out;
+         }
+@@ -203,7 +204,7 @@ qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     QDict *props = NULL;
+     const char *base_name;
+ 
+-    xc = x86_cpu_from_model(model->name, model->props, &err);
++    xc = x86_cpu_from_model(model->name, model->props, "model.props", &err);
+     if (err) {
+         goto out;
      }
- 
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
+diff --git a/target/riscv/riscv-qmp-cmds.c b/target/riscv/riscv-qmp-cmds.c
+index 69dde0c3e7..ee7465297d 100644
+--- a/target/riscv/riscv-qmp-cmds.c
++++ b/target/riscv/riscv-qmp-cmds.c
+@@ -129,6 +129,7 @@ static void riscv_obj_add_profiles_qdict(Object *obj, QDict *qdict_out)
  }
  
- static void pc_memory_plug(HotplugHandler *hotplug_dev,
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 1e98d8bda5..2e8234affd 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -1024,7 +1024,7 @@ static bool memhp_type_supported(DeviceState *dev)
- static void virt_mem_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                                  Error **errp)
+ static void riscv_cpuobj_validate_qdict_in(Object *obj, QObject *props,
++                                           const char *props_arg_name,
+                                            Error **errp)
  {
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
- }
- 
- static void virt_machine_device_pre_plug(HotplugHandler *hotplug_dev,
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 37f1f4ccfd..836384a90f 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -44,8 +44,7 @@ static MemoryRegion *pc_dimm_get_memory_region(PCDIMMDevice *dimm, Error **errp)
-     return host_memory_backend_get_memory(dimm->hostmem);
- }
- 
--void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
--                      const uint64_t *legacy_align, Error **errp)
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
- {
+     const QDict *qdict_in;
+@@ -137,7 +138,7 @@ static void riscv_cpuobj_validate_qdict_in(Object *obj, QObject *props,
      Error *local_err = NULL;
-     int slot;
-@@ -70,8 +69,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                             &error_abort);
-     trace_mhp_pc_dimm_assigned_slot(slot);
  
--    memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, legacy_align,
--                           errp);
-+    memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, NULL, errp);
- }
- 
- void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine)
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 55263f0815..32fdca2bd4 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3639,7 +3639,7 @@ static void spapr_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
+     visitor = qobject_input_visitor_new(props);
+-    if (!visit_start_struct(visitor, "props", NULL, 0, &local_err)) {
++    if (!visit_start_struct(visitor, props_arg_name, NULL, 0, &local_err)) {
+         goto err;
      }
  
--    pc_dimm_pre_plug(dimm, MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(dimm, MACHINE(hotplug_dev), errp);
+@@ -198,7 +199,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     }
+ 
+     if (model->props) {
+-        riscv_cpuobj_validate_qdict_in(obj, model->props, &local_err);
++        riscv_cpuobj_validate_qdict_in(obj, model->props, "model.props",
++                                       &local_err);
+         if (local_err) {
+             error_propagate(errp, local_err);
+             object_unref(obj);
+diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+index ef19724888..8338084d00 100644
+--- a/target/s390x/cpu_models_sysemu.c
++++ b/target/s390x/cpu_models_sysemu.c
+@@ -98,7 +98,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
  }
  
- struct SpaprDimmState {
+ static void cpu_model_from_info(S390CPUModel *model, const CpuModelInfo *info,
+-                                Error **errp)
++                                const char *info_arg_name, Error **errp)
+ {
+     Error *err = NULL;
+     const QDict *qdict;
+@@ -128,8 +128,11 @@ static void cpu_model_from_info(S390CPUModel *model, const CpuModelInfo *info,
+     }
+ 
+     if (info->props) {
++        g_autofree const char *props_name = g_strdup_printf("%s.props",
++                                                            info_arg_name);
++
+         visitor = qobject_input_visitor_new(info->props);
+-        if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
++        if (!visit_start_struct(visitor, props_name, NULL, 0, errp)) {
+             visit_free(visitor);
+             object_unref(obj);
+             return;
+@@ -216,7 +219,7 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     bool delta_changes = false;
+ 
+     /* convert it to our internal representation */
+-    cpu_model_from_info(&s390_model, model, &err);
++    cpu_model_from_info(&s390_model, model, "model", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return NULL;
+@@ -254,12 +257,12 @@ CpuModelCompareInfo *qmp_query_cpu_model_comparison(CpuModelInfo *infoa,
+     S390CPUModel modela, modelb;
+ 
+     /* convert both models to our internal representation */
+-    cpu_model_from_info(&modela, infoa, &err);
++    cpu_model_from_info(&modela, infoa, "modela", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return NULL;
+     }
+-    cpu_model_from_info(&modelb, infob, &err);
++    cpu_model_from_info(&modelb, infob, "modelb", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return NULL;
+@@ -331,13 +334,13 @@ CpuModelBaselineInfo *qmp_query_cpu_model_baseline(CpuModelInfo *infoa,
+     uint8_t max_gen;
+ 
+     /* convert both models to our internal representation */
+-    cpu_model_from_info(&modela, infoa, &err);
++    cpu_model_from_info(&modela, infoa, "modela", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return NULL;
+     }
+ 
+-    cpu_model_from_info(&modelb, infob, &err);
++    cpu_model_from_info(&modelb, infob, "modelb", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return NULL;
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 1daceb2e31..9d6e6190d5 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -213,7 +213,8 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+     error = resp_get_error(resp);
+     g_assert(error);
+     g_assert_cmpstr(error, ==,
+-                    "Invalid parameter type for 'props', expected: object");
++                    "Invalid parameter type for 'model.props',"
++                    " expected: object");
+     qobject_unref(resp);
+ }
+ 
+@@ -446,7 +447,7 @@ static void test_query_cpu_model_expansion(const void *data)
+     assert_bad_props(qts, "max");
+     assert_error(qts, "foo", "The CPU type 'foo' is not a recognized "
+                  "ARM CPU type", NULL);
+-    assert_error(qts, "max", "Parameter 'props.not-a-prop' is unexpected",
++    assert_error(qts, "max", "Parameter 'model.props.not-a-prop' is unexpected",
+                  "{ 'not-a-prop': false }");
+     assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
+ 
 -- 
-2.41.0
+2.44.0
 

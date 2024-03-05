@@ -1,128 +1,119 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp160673ejc;
-        Tue, 5 Mar 2024 01:17:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV/FHI8XyckaPgPhyzBp6mjz3evsPX5IzDKoMHsemKzsQDPyk+TXFc63f/QRs38cSRw1qjkwlgafnRY4bPiZbQPzLMKnPck
-X-Google-Smtp-Source: AGHT+IFL8/14w3AZezOeWhdScifPEXFOa7lftLuo/zgU3HKP8A4V9vAgWKVnKJPw9kk4NA9kG01M
-X-Received: by 2002:a05:6214:9b0:b0:690:8c00:2099 with SMTP id du16-20020a05621409b000b006908c002099mr358539qvb.52.1709630228467;
-        Tue, 05 Mar 2024 01:17:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709630228; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp161656ejc;
+        Tue, 5 Mar 2024 01:19:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU/wZKzn42dANq2ustQDtDY44aoke9bIUTbKEXsDJwdJu916pqjT+R5H75XPk8ELQmH3ojw1E6pMJlmlmr/oWhOojwhRYEj
+X-Google-Smtp-Source: AGHT+IGUOuZdy0uhIzERyjSX3hTUfWzMn9gqSB5kw1qc+Qxqlqkg1FuwFcwy04YdCYBu4+GL+9Fh
+X-Received: by 2002:a0c:de11:0:b0:68f:2d89:dfb with SMTP id t17-20020a0cde11000000b0068f2d890dfbmr2061046qvk.27.1709630386016;
+        Tue, 05 Mar 2024 01:19:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709630386; cv=none;
         d=google.com; s=arc-20160816;
-        b=rvDtjOA18ZMpIK7XWZj1jPpDhuTnQXlhHbnFYBxUmBzN+jDugeJSJtjmm0+V2ftvio
-         hIJXjNR4HF7A3/g1A3IW5cjtIQKpRl8OgJdxxm3H0mSHFwarKBP59NW7IMhKvhjSVe1h
-         0zWSbFN80LflBC4t7/CFtU+etkCJyCEor/H5fBbni72n+pI4utfay5FzLOXwkgaiNSr8
-         3/aU4z48oBHVo8CGeioIlHD9VaH8u8RD0hqFo1Om3w0Q0e0+h84TXsS/3EN/q2F2f6RS
-         aH1s6tvMNiJj689Lvs6VYMmjn5OD+jHmEa9a1b69/cAFc3d5uR+TnOONSzZ3ie+Dhd3u
-         GG6Q==
+        b=tDrl/X/rS7nURBGoRMqcjeBpX3H/nw1U8Obp+wS57h6IowM+D17Oqb37nSfW10oY52
+         B1tBJpIDR6A9Gglm8Il9rLq2rzYBkyPf/hfYo0ORkxPolnaguxD5vSHyyaIlIY+SDySu
+         w4od0qtRy/eHm50ruoewsuvy6dDnQIiHw/Knsw3Ao2KCLDS0Pxaccm6VFuVrhUTPEsLd
+         tMBPdOjX2f4yeuuJhCIjqimE/eWlEo06Hk8kseM4kxfk3VO8n9mnPNA5/zUJ357xfUi9
+         pgAa/9MQScgWSfpIF0+cTuIGf7Ur+4tw4Jjje0lZOjK+2e+MEHLF0NbxDjebR483zQz8
+         LmVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date:dkim-signature;
-        bh=9HTY+X2KO6kKRaIQrR95vtH8ooylQ2pgOWr5xDKhIos=;
-        fh=h8ZzLv4e15EDNViN0TxHIFrChRY/re6BN1olOJsC/Jc=;
-        b=nwjyMGELnDfoC4uHyDHauoGkTgyC9fu53g2btqobROTrtSWU+IjraRzGzf4crG4l+C
-         Q/wsYCXc93VO+ygoXh9b4G3CBKEqbHp+nShuyuPmtvVwi4bKo4lXKjVFxZduxqqZbJGz
-         fkcFQieldM6eCxDjtvF/FR3uXJOMt362RALpKQGfpjjjwGlQ6w5vBumHJRc7xFj8r7vR
-         ZNQgADXApA+ulCxid48SYF/PJTmIXzCjwAZdtt7rY3vXUcCjT3amjXgPJxeQtQqcBhPO
-         KFN9C7zwl3mux89Wkhf/EpaBWN6D5NatveNZee2DR2D8999lVwR3sZ2OQ6pQfertr25H
-         0PdA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=SBGWjvKzxGlK6swN0imY7LpdB8TE7rSqLvXeRQtd6rQ=;
+        fh=d/Ma0I2iKohqPriXb0OYBZGuA/zR/vXQGloCSnTTEFc=;
+        b=k3EMgW1oHE0Rqy5KNK+2WpxQAqvwLWcs84rSBX7kLPsyq8CYep+lVxCPK/rwz0ZSSO
+         6B7tMfREMmomYTBfl/d+LUPqQE9hnHNJgE9rr1x8dyFtCtQj19nG7aPSDtyOV4fDmHvp
+         WtKZ9UQ7C/Daa1NhqL/6fTreKJd5zn5qVE1nVK8s+lg8lrJK5k40ZobwQAkjvXuey68m
+         SRx3m1fBXydxYWyZm1jL9XBJAmvo4Sb/VF2f1u9CgFxObERi0J9vFo1+ldm8aXckjW/T
+         bCwsv7aeBAjo/fLpd5KdNptRqgiY/wwKIg+zxmkkg+SospYsj7p97Zq8YpESC5slJPcj
+         de4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kmp7Q1Yg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZgJIMtGE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020ad45b88000000b0068f2dbe366dsi11429216qvp.348.2024.03.05.01.17.08
+        by mx.google.com with ESMTPS id t1-20020a05621421a100b0068cbcf48e43si12148311qvc.49.2024.03.05.01.19.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 01:17:08 -0800 (PST)
+        Tue, 05 Mar 2024 01:19:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kmp7Q1Yg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZgJIMtGE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhQtz-0003xk-8j; Tue, 05 Mar 2024 04:15:59 -0500
+	id 1rhQxT-0005xV-NK; Tue, 05 Mar 2024 04:19:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rhQte-0003sV-BN
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 04:15:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rhQtV-0006ko-0u
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 04:15:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709630128;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=9HTY+X2KO6kKRaIQrR95vtH8ooylQ2pgOWr5xDKhIos=;
- b=Kmp7Q1Yg0g+kDeR+hB2DN08Vg5y51jaM/YO4L6OM5OvxwWOw000m6chii2Pjs+o4lSnBqY
- uL/FZtJ23sZCa0KvmkteRG8HYqxMrGhqMGfvYnLqj08ogOE1H1CmWqzbhV0WXYgqGLh4ZC
- wCGzWBKGvT3wEUd2pgxhOr01Wf26fH0=
-Received: from mail-oa1-f71.google.com (mail-oa1-f71.google.com
- [209.85.160.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-82-TWCo05Q4N6SAFIDdiyvifg-1; Tue, 05 Mar 2024 04:15:25 -0500
-X-MC-Unique: TWCo05Q4N6SAFIDdiyvifg-1
-Received: by mail-oa1-f71.google.com with SMTP id
- 586e51a60fabf-220a44546e3so4869756fac.1
- for <qemu-devel@nongnu.org>; Tue, 05 Mar 2024 01:15:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rhQxR-0005w0-Lj
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 04:19:33 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rhQxD-0007W9-Ji
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 04:19:33 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-33e17342ea7so2825242f8f.2
+ for <qemu-devel@nongnu.org>; Tue, 05 Mar 2024 01:19:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709630358; x=1710235158; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=SBGWjvKzxGlK6swN0imY7LpdB8TE7rSqLvXeRQtd6rQ=;
+ b=ZgJIMtGEEx0tTFDmi33rMxVJkEZS0JuZ7pOaKTCN9rAA8zck/wpBiezRQusiP9igdB
+ VawHEbE1QDJUDTogFs0jFVRHdm5ZHI1dc1ZsN+CnkGi1xQusNukcNRY+lCjTLvAwfP2o
+ fhFovAzXDVuZnaiNN+znyNY4aitqx4B0v/aMmV6bAfPVz+r4j6t3CIdsEktrkfTLZY1H
+ 1uGPTNeNxB7+06fTAChdtQsXBwAjuxOOu4DGwvoDmsZnCjau5n3Zsc/SzQAIR+hcxi1s
+ jUppS4EivdtxREjaAyjer7XMhUfaS9YGd6aioF13qHrF/ZGJnHg9w3M7JNgbn2HXysqX
+ yIZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709630125; x=1710234925;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9HTY+X2KO6kKRaIQrR95vtH8ooylQ2pgOWr5xDKhIos=;
- b=rqTLPMGHqptFzhJLhG8P2147ihTZXdkdFKyfhWismn7E3PCgV6jjUzRRqeX/R29zgn
- L7nhR8MiBL+2xd1cHuWmDnwbg/cqGbMqPwmaT+t+1fWANPz7Swm6jo3PR8w1EgiAd+ex
- FLOJFzAH/iz8npufMAshozyFPnoxAePbiMQCJYggIvG+10DckA9CJn6fO46P4mmz0dpt
- 1tnM81N2mEANIgnL7ChPSNU6pyXImfUw4fy9pf+tJWJC8LmrpdL6hhTyI9CCcz88wbQM
- N6jiHcNQJit9lxJZZdFcfz48KUDUm5TqV9gITOSxGwNVVgpTNob09jRomvPUf1mio0jE
- iFRg==
-X-Gm-Message-State: AOJu0YxeQHBHklE4ZUVk67iRQlnVxi5JI/PdpdAGhHFnhsx+cFUx3LW0
- VQGn8uLehxqIxJe45Ww5mEddyrjqL0gyhw6BKZvhNCMnbEX8vfn+JFC398wb4gnc3d90gW7T1xU
- XVOqbsIqSLOR7GY7Z8v3xRlneV0Pv18+ELLbhstz3K+44QxXIvpI1
-X-Received: by 2002:a05:6870:d07:b0:21e:a47f:ec31 with SMTP id
- mk7-20020a0568700d0700b0021ea47fec31mr1122613oab.43.1709630124874; 
- Tue, 05 Mar 2024 01:15:24 -0800 (PST)
-X-Received: by 2002:a05:6870:d07:b0:21e:a47f:ec31 with SMTP id
- mk7-20020a0568700d0700b0021ea47fec31mr1122597oab.43.1709630124610; 
- Tue, 05 Mar 2024 01:15:24 -0800 (PST)
-Received: from fc37-ani ([203.163.238.152])
- by smtp.googlemail.com with ESMTPSA id
- g29-20020aa79ddd000000b006e6291c30dcsm2475475pfq.104.2024.03.05.01.15.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Mar 2024 01:15:24 -0800 (PST)
-Date: Tue, 5 Mar 2024 14:45:15 +0530 (IST)
-From: Ani Sinha <anisinha@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com, 
- mst@redhat.com, gaosong@loongson.cn, alistair.francis@wdc.com, 
- palmer@dabbelt.com, bin.meng@windriver.com, liwei1518@gmail.com, 
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, philmd@linaro.org, 
- wangyanan55@huawei.com, eblake@redhat.com, armbru@redhat.com, 
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Subject: Re: [PATCH 13/19] smbios: extend smbios-entry-point-type with 'auto'
- value
-In-Reply-To: <20240227154749.1818189-14-imammedo@redhat.com>
-Message-ID: <a9f674ed-0e94-86a1-8e8d-fa65a27a8aa0@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-14-imammedo@redhat.com>
+ d=1e100.net; s=20230601; t=1709630358; x=1710235158;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=SBGWjvKzxGlK6swN0imY7LpdB8TE7rSqLvXeRQtd6rQ=;
+ b=RHF5H6MSClxpUFp98c1FRfFIhAA/DTJzzrbyN246G5bvsdpBy2Bd8JJ526t9vO7wRk
+ 3VJR93ZZGfZ8DUOUFyo9iQ1fG5KYVDDr71LSjoqf51jLqR3hS6OXbuJqSX4DB14KQ13Z
+ vvtdYhgy4u8H5QyY0xecWjZNyYKZ/SJfksPOPR3jtLaBu355eSTq9wjqMg4iFc0VyruE
+ Ce4XDJnX/16CAPWDCEUrhg8plm3V9BHD5hh6ujhkyp3BLNI7hqjMZh3ankI8M0a/jQOK
+ DpNHz05+ZRVWjage2YDpnErW/zJaK9lYEN+u1eqvYsS2ky1cvQcSI0iF8OJf57VkS/FQ
+ ADAg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVs2yTwZzZRn7GjQxRUjDwTAG5EAR32t5jrLSkEwktUWVRReAE3oYzkY+pLsFffjFaJ92r/zgh83SFXBApIEQyOmegHpww=
+X-Gm-Message-State: AOJu0YyvmvWyTfBVk449QF6nC/eSGST0j8rXKrPKx4qrIWPWFO27IOxv
+ ER04Lt5GqVmrpmhI56az0kGyUwgKRFXb90uH+RdDO0LJlnAIN5EazLV2FQqQgCI=
+X-Received: by 2002:adf:9d93:0:b0:33e:17fd:5f25 with SMTP id
+ p19-20020adf9d93000000b0033e17fd5f25mr8627195wre.2.1709630357791; 
+ Tue, 05 Mar 2024 01:19:17 -0800 (PST)
+Received: from [192.168.69.100] ([176.176.177.70])
+ by smtp.gmail.com with ESMTPSA id
+ q13-20020adfcb8d000000b0033ce06c303csm14337479wrh.40.2024.03.05.01.19.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Mar 2024 01:19:17 -0800 (PST)
+Message-ID: <fa8f1d52-f88d-4107-abfa-fa10ebef511c@linaro.org>
+Date: Tue, 5 Mar 2024 10:19:15 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.571,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Fix 32-bit SMOPA
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org
+References: <20240305023116.234256-1-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240305023116.234256-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,44 +128,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uExLiiZ2oeD9
+X-TUID: bXjBs3flUBc9
 
+Hi Richard,
 
-
-On Tue, 27 Feb 2024, Igor Mammedov wrote:
-
-> later patches will use it to pick SMBIOS version at runtime
-> depending on configuration.
->
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
-
+On 5/3/24 03:31, Richard Henderson wrote:
+> The while the 8-bit input elements are sequential in the input vector,
+> the 32-bit output elements are not sequential in the output matrix.
+> Do not attempt to compute 2 32-bit outputs at the same time.
+> 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 23a5e3859f5 ("target/arm: Implement SME integer outer product")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2083
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  qapi/machine.json | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index 93b4677286..4c68528507 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
-> @@ -1802,10 +1802,13 @@
->  #
->  # @64: SMBIOS version 3.0 (64-bit) Entry Point
->  #
-> +# @auto: Either 2.x or 3.x SMBIOS version, 2.x if configuration can be described
-> +#        by it and 3.x otherwise (since: 9.0)
-> +#
->  # Since: 7.0
->  ##
->  { 'enum': 'SmbiosEntryPointType',
-> -  'data': [ '32', '64' ] }
-> +  'data': [ '32', '64', 'auto' ] }
->
->  ##
->  # @MemorySizeConfiguration:
-> --
-> 2.39.3
->
->
+>   target/arm/tcg/sme_helper.c       | 77 ++++++++++++++++++-------------
+>   tests/tcg/aarch64/sme-smopa-1.c   | 47 +++++++++++++++++++
+>   tests/tcg/aarch64/sme-smopa-2.c   | 54 ++++++++++++++++++++++
+>   tests/tcg/aarch64/Makefile.target |  2 +-
+>   4 files changed, 147 insertions(+), 33 deletions(-)
+>   create mode 100644 tests/tcg/aarch64/sme-smopa-1.c
+>   create mode 100644 tests/tcg/aarch64/sme-smopa-2.c
+> 
+> diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+> index 904bfdac43..ef39eee48d 100644
+> --- a/target/arm/tcg/sme_helper.c
+> +++ b/target/arm/tcg/sme_helper.c
+> @@ -1083,11 +1083,32 @@ void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
+>       }
+>   }
+>   
+> -typedef uint64_t IMOPFn(uint64_t, uint64_t, uint64_t, uint8_t, bool);
+> +typedef uint32_t IMOPFn32(uint32_t, uint32_t, uint32_t, uint8_t, bool);
+> +static inline void do_imopa_s(uint32_t *za, uint32_t *zn, uint32_t *zm,
+> +                              uint8_t *pn, uint8_t *pm,
+> +                              uint32_t desc, IMOPFn32 *fn)
+> +{
+> +    intptr_t row, col, oprsz = simd_oprsz(desc) / 4;
+> +    bool neg = simd_data(desc);
+>   
+> -static inline void do_imopa(uint64_t *za, uint64_t *zn, uint64_t *zm,
+> -                            uint8_t *pn, uint8_t *pm,
+> -                            uint32_t desc, IMOPFn *fn)
+> +    for (row = 0; row < oprsz; ++row) {
+> +        uint8_t pa = pn[H1(row >> 1)] >> ((row & 1) * 4);
+> +        uint32_t *za_row = &za[H4(tile_vslice_index(row))];
+> +        uint32_t n = zn[H4(row)];
+> +
+> +        for (col = 0; col < oprsz; ++col) {
+> +            uint8_t pb = pm[H1(col >> 1)] >> ((col & 1) * 4);
+> +            uint32_t *a = &za_row[col];
+
+Shouldn't this be:
+
+               uint32_t *a = &za_row[H4(col)];
+
+to work on big endian hosts?
+
+> +
+> +            *a = fn(n, zm[H4(col)], *a, pa & pb & 0xf, neg);
+> +        }
+> +    }
+> +}
+> +
+> +typedef uint64_t IMOPFn64(uint64_t, uint64_t, uint64_t, uint8_t, bool);
+> +static inline void do_imopa_d(uint64_t *za, uint64_t *zn, uint64_t *zm,
+> +                              uint8_t *pn, uint8_t *pm,
+> +                              uint32_t desc, IMOPFn64 *fn)
+>   {
+>       intptr_t row, col, oprsz = simd_oprsz(desc) / 8;
+>       bool neg = simd_data(desc);
+> @@ -1107,25 +1128,16 @@ static inline void do_imopa(uint64_t *za, uint64_t *zn, uint64_t *zm,
+>   }
+>   
+>   #define DEF_IMOP_32(NAME, NTYPE, MTYPE) \
+> -static uint64_t NAME(uint64_t n, uint64_t m, uint64_t a, uint8_t p, bool neg) \
+> +static uint32_t NAME(uint32_t n, uint32_t m, uint32_t a, uint8_t p, bool neg) \
+>   {                                                                           \
+> -    uint32_t sum0 = 0, sum1 = 0;                                            \
+> +    uint32_t sum = 0;                                                       \
+>       /* Apply P to N as a mask, making the inactive elements 0. */           \
+>       n &= expand_pred_b(p);                                                  \
+> -    sum0 += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                              \
+> -    sum0 += (NTYPE)(n >> 8) * (MTYPE)(m >> 8);                              \
+> -    sum0 += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                            \
+> -    sum0 += (NTYPE)(n >> 24) * (MTYPE)(m >> 24);                            \
+> -    sum1 += (NTYPE)(n >> 32) * (MTYPE)(m >> 32);                            \
+> -    sum1 += (NTYPE)(n >> 40) * (MTYPE)(m >> 40);                            \
+> -    sum1 += (NTYPE)(n >> 48) * (MTYPE)(m >> 48);                            \
+> -    sum1 += (NTYPE)(n >> 56) * (MTYPE)(m >> 56);                            \
+> -    if (neg) {                                                              \
+> -        sum0 = (uint32_t)a - sum0, sum1 = (uint32_t)(a >> 32) - sum1;       \
+> -    } else {                                                                \
+> -        sum0 = (uint32_t)a + sum0, sum1 = (uint32_t)(a >> 32) + sum1;       \
+> -    }                                                                       \
+> -    return ((uint64_t)sum1 << 32) | sum0;                                   \
+> +    sum += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                               \
+> +    sum += (NTYPE)(n >> 8) * (MTYPE)(m >> 8);                               \
+> +    sum += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                             \
+> +    sum += (NTYPE)(n >> 24) * (MTYPE)(m >> 24);                             \
+> +    return neg ? a - sum : a + sum;                                         \
+>   }
 

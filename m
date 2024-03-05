@@ -1,276 +1,248 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp89536ejc;
-        Mon, 4 Mar 2024 22:01:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWiALPzDwuQWdke81BEknV8LIrnEVuhfqIRiVA/uUVAQyE8ad7NsgFjU3OKzeXykKTJfwdmd0m21V50BIpMHZHPamTsVL4w
-X-Google-Smtp-Source: AGHT+IEcQMsD8tt16Jm4urv0YEhTEbr8kg6BHNbQY+SucBfxVM65VGAgCaZvUc5+08+cSEBiS+Gd
-X-Received: by 2002:ac8:57cd:0:b0:42e:fc40:fa87 with SMTP id w13-20020ac857cd000000b0042efc40fa87mr1000087qta.1.1709618482821;
-        Mon, 04 Mar 2024 22:01:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709618482; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp111522ejc;
+        Mon, 4 Mar 2024 23:05:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXB74xGKo9KCC5UU71/bKmFpyulXK71k/qDyuasTCC3CRV8/s+1yAFxxK65z2o+zPKCQcLewClAR4ZmGWIqDGKjmm82N+RJ
+X-Google-Smtp-Source: AGHT+IEe+uPncQlRAs5oV0FMK2GbZIYGqhnleuO9iqQogZyk1bA0dsMSgkAUR46s9iK9EH487EM8
+X-Received: by 2002:ac8:5a4c:0:b0:42e:efcb:c5f7 with SMTP id o12-20020ac85a4c000000b0042eefcbc5f7mr978379qta.62.1709622315343;
+        Mon, 04 Mar 2024 23:05:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709622315; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z1oYDPCHF+Ube/xrh22WMN9m+k9mtC8tAbNRouq5o1M6I2Z8KxOF/fOFoevFaH75ik
-         lBev8rV5meQsuAQjQsTIegDGuh9w24XLMhbxVmV8tHGy9YZEiqJKWTpHuhwT8crIvNWq
-         mZMusyrxDtiDWpMuJyHFUNTyDoRVhOuqXglz7fqt9txgabyWfj6JZSJ8baoTsLC6KjSt
-         wULq54dK/iHytb0T1O6cEbejz+I5g4lkxbSxEyvgpiBevGenS2N2/gByKOIw+nGxoJTU
-         X/zPKUMuxsEc4fO9Lasb/q8hIEJVhEB5Y92YjJV/DsYXO8Gt04B8UCCtS4QTV+4afv0j
-         EbIA==
+        b=waXgT02fM7rlJoZG6uYcwnyM8H+lnfX+o0DHz4O9nJZCdKaMNcMFrUPcysZoC96jdl
+         nEwZ+2l8WNlUFjhRL1Q8LjR12Rna4KRcq6iz32WbWgV3zlKSVLh7ZUnZTiXX2KZoqeOa
+         q9T3iVl5qpBwpmExoIaCh2MWI7J8i49+WVHMWuhmQ25hx59MVhwcnnUFUrDqJVziCoF5
+         9usXKJZ4TJLNX/LkOg3N5WO2U8OdkNFP9/8L4iG5B5Pfp4Y7x51sCyQVv88j63b5SyFi
+         jlTddDRXm+XQ/JDfZGdFYVozr/QaYcmbk++yr0k5PGR7I6HiZw9JJHJpUnbdQLG4hxiw
+         1uVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=WG/8tjaYkx8u3OdWeMNWhdFumkizH8kgmlVXE9b7Voc=;
-        fh=JHYG3bu/CxROEe/PdmQdUgmES46iiw/HdM8xXf3Kk20=;
-        b=aQ3UTXO+6cyOEM1rVaC6fak/5SRhw5PQDBIEN2UNkBh6JBDgwTeZr1SNbYSvZ3lOGW
-         7ot1Riin8S6r2fzITffxQSta2kDKXE1VSUZdBiLykO9GS5mHoJgeXZLZzec5gDYrmQNX
-         85JLuw5wG1XWbYbSgR5D5PPeJwGeE744kq4TOjrrTOUS3v11YFpnmrpbsMJf/Vy4HHKD
-         U/J7tFuK7ws0BQqsUxFHjWSyJLVJivR+kIszzHRzVsgcWj3jiKLmS03ZVHDHtE2Ygqq5
-         dVAQIINc3oSmxRBYU8yNIpRacWLIULvY0/kZihKdNg9a6qbs8bYzjjCxnwmejKNTjSWI
-         3sGA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=PtaHCRxA2vGOoa5Phfig7GevOE2OchElAIg8zc1WZ0Q=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=snOFeTMp3v9LCREJYgciU/utfuwJeovhvRwXashHeXAo0rRTyDme0aPOBOaqaDwXp4
+         4YbW+sklpfPlP0gV8VlC1ohijm5bxboRXKPk6x9vAa23KUTSWLMRDPgGyQRx5+g1DHqM
+         7ZrjznIxWu/LA3yOkJ3qud91zCTIgPGdbfHQg55lqh8bIMgltqoPPCNvA4ineVFinYqz
+         YntJwd5UZ4uCwwHdZ77O6rHQlXk4vf2Efvsxzf5Z7GuVLBH7DD8KEBH0WTONSWzttK45
+         1nArY5jrDikpFzTxemRxKioforjTAlJ+QCLvkiz3bkoxz3IR74DrTA0uXxCgMBkueVzr
+         7Z4A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dEQ99Kmz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17-20020ac86791000000b0042eaf9b3a7csi10708126qtp.660.2024.03.04.22.01.22
+        by mx.google.com with ESMTPS id i6-20020ac85e46000000b0042ef5bdda3asi3224950qtx.374.2024.03.04.23.05.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 22:01:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2024 23:05:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dEQ99Kmz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhNrI-00057a-MO; Tue, 05 Mar 2024 01:01:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rhOrC-0004Dx-QS; Tue, 05 Mar 2024 02:05:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rhNrF-00055l-8n
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 01:00:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhOqz-00047B-3n; Tue, 05 Mar 2024 02:04:46 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rhNrD-0005hc-Jx
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 01:00:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709618454;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WG/8tjaYkx8u3OdWeMNWhdFumkizH8kgmlVXE9b7Voc=;
- b=dEQ99KmzW6gbcDceuVUa/oK+Yct/Hush17MemaV1ViLrMFb6f7vIZt7rlVCFQ4K2mKReo0
- 6xi65f+I1Bm+t1dJAd+o0iQcoj83hZQFOeBHHuIF3QzE20AXqeQjvrHf2eulJskqLrchTi
- ufEwq7wGzDCN0B1JiJu+qh2/6Dz6LjQ=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-180-uPr58if0MlaaifhLG61tmA-1; Tue, 05 Mar 2024 01:00:52 -0500
-X-MC-Unique: uPr58if0MlaaifhLG61tmA-1
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-1dc435b3e87so45964055ad.1
- for <qemu-devel@nongnu.org>; Mon, 04 Mar 2024 22:00:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709618451; x=1710223251;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=WG/8tjaYkx8u3OdWeMNWhdFumkizH8kgmlVXE9b7Voc=;
- b=vvxlQR1gZuapOy/4SZzK20gYqxlWrKCkhAUQu5QXdlkuiZkHWfRKIeFDhsbqPKO1eV
- ZCFNNealk8OMI0ascBdpYgVwXurkBfwh2Gl8z5fH/kqpQDaoHTfAyay3zLHOA6EqvIuH
- BiFE8fQjEAT3AnL9eQRnXkfwQl3vfoWByXDouoAVjCFvALbI7c/vtl6h7bl7SJb1tSzx
- r2t2vX/hJ40ap0gyEc4tvn904ThpqNkjJY0RKxAZ9est7p1A0C+lEGyA2KSZTrRHkC1E
- GEFKrpPQ97yHlxkuc56IAhYcUXl4Digjw3GY/bXy5DTbCuHvYHQqC6Rsyx2+6nt3cnVc
- aOdQ==
-X-Gm-Message-State: AOJu0YyqyI7WXXfMSyWjg6VHzZwJvCrmMK9SaecZsVsBm8fXSTTIHgT8
- Hb7fi8sTPjm0ZWE3uNv8yE2/+zIWg7oapTdcZwWEi7E6W1YTe4e2+fatDdTqHQ7SLA/uj021N2g
- 2i5gBd4LJfKJvs9xNFlt43BoVYW9yiBr4DhA2E9XkOTvXfIqIcGHk
-X-Received: by 2002:a17:902:cece:b0:1dc:6373:3cc with SMTP id
- d14-20020a170902cece00b001dc637303ccmr1126282plg.50.1709618451563; 
- Mon, 04 Mar 2024 22:00:51 -0800 (PST)
-X-Received: by 2002:a17:902:cece:b0:1dc:6373:3cc with SMTP id
- d14-20020a170902cece00b001dc637303ccmr1126246plg.50.1709618451011; 
- Mon, 04 Mar 2024 22:00:51 -0800 (PST)
-Received: from smtpclient.apple ([203.163.238.152])
- by smtp.gmail.com with ESMTPSA id
- y18-20020a170902e19200b001dc95e7e191sm9559181pla.298.2024.03.04.22.00.43
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 04 Mar 2024 22:00:50 -0800 (PST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH 14/19] smbios: in case of entry point is 'auto' try to
- build v2 tables 1st
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240227154749.1818189-15-imammedo@redhat.com>
-Date: Tue, 5 Mar 2024 11:30:29 +0530
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Song Gao <gaosong@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, philmd@linaro.org, wangyanan55@huawei.com,
- eblake@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <5705CEF6-9217-41A1-8DF9-8DD74FB5E5B7@redhat.com>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-15-imammedo@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-X-Mailer: Apple Mail (2.3774.400.31)
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.571,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhOqs-0008QD-Ro; Tue, 05 Mar 2024 02:04:41 -0500
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Tpmhh4vHVz2BfLQ;
+ Tue,  5 Mar 2024 15:02:12 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id C6A9B1A016C;
+ Tue,  5 Mar 2024 15:04:32 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
+ 2024 15:04:32 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v6 00/23] target/arm: Implement FEAT_NMI and FEAT_GICv3_NMI
+Date: Tue, 5 Mar 2024 07:03:08 +0000
+Message-ID: <20240305070331.2151131-1-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tk4bsqBfeeLF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X4HGBkGvAJfu
 
+This patch set implements FEAT_NMI and FEAT_GICv3_NMI for armv8. These
+introduce support for a new category of interrupts in the architecture
+which we can use to provide NMI like functionality.
 
+There are two modes for using this FEAT_NMI. When PSTATE.ALLINT or
+PSTATE.SP & SCTLR_ELx.SCTLR_SPINTMASK is set, any entry to ELx causes all
+interrupts including those with superpriority to be masked on entry to ELn
+until the mask is explicitly removed by software or hardware. PSTATE.ALLINT
+can be managed by software using the new register control ALLINT.ALLINT.
+Independent controls are provided for this feature at each EL, usage at EL1
+should not disrupt EL2 or EL3.
 
-> On 27-Feb-2024, at 21:17, Igor Mammedov <imammedo@redhat.com> wrote:
->=20
-> QEMU for some time now uses SMBIOS 3.0 for PC/Q35 machines by
-> default, however Windows has a bug in locating SMBIOS 3.0
-> entrypoint and fails to find tables when booted on SeaBIOS
-> (on UEFI SMBIOS 3.0 tables work fine since firmware hands
-> over tables in another way)
->=20
-> Missing SMBIOS tables may lead to some issues for guest
-> though (worst are: possible reactiveation, inability to
-> get virtio drivers from 'Windows Update')
->=20
-> It's unclear  at this point if MS will fix the issue on their
-> side. So instead of it (or rather in addition) this patch
-> will try to workaround the issue.
->=20
-> aka, use smbios-entry-point-type=3Dauto to make QEMU try
-> generating conservative SMBIOS 2.0 tables and if that
-> fails (due to limits/requested configuration) fallback
-> to SMBIOS 3.0 tables.
->=20
-> With this in place majority of users will use SMBIOS 2.0
-> tables which work fine with (Windows + legacy BIOS).
-> The configurations that is not to possible to describe
-> with SMBIOS 2.0 will switch automatically to SMBIOS 3.0
-> (which will trigger Windows bug but there is nothing
-> QEMU can do here, so go and aks Microsoft to real fix).
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+I have tested it with the following linux patches which try to support
+FEAT_NMI in linux kernel:
 
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
+	https://lore.kernel.org/linux-arm-kernel/Y4sH5qX5bK9xfEBp@lpieralisi/T/#mb4ba4a2c045bf72c10c2202c1dd1b82d3240dc88
 
-> ---
-> hw/smbios/smbios.c | 52 +++++++++++++++++++++++++++++++++++++++++++---
-> 1 file changed, 49 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 5a791fd9eb..e54a9f21e6 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -959,7 +959,7 @@ static void =
-smbios_entry_point_setup(SmbiosEntryPointType ep_type)
->     }
-> }
->=20
-> -void smbios_get_tables(MachineState *ms,
-> +static bool smbios_get_tables_ep(MachineState *ms,
->                        SmbiosEntryPointType ep_type,
->                        const struct smbios_phys_mem_area *mem_array,
->                        const unsigned int mem_array_size,
-> @@ -968,6 +968,7 @@ void smbios_get_tables(MachineState *ms,
->                        Error **errp)
-> {
->     unsigned i, dimm_cnt, offset;
-> +    ERRP_GUARD();
->=20
->     assert(ep_type =3D=3D SMBIOS_ENTRY_POINT_TYPE_32 ||
->            ep_type =3D=3D SMBIOS_ENTRY_POINT_TYPE_64);
-> @@ -1052,11 +1053,56 @@ void smbios_get_tables(MachineState *ms,
->         abort();
->     }
->=20
-> -    return;
-> +    return true;
-> err_exit:
->     g_free(smbios_tables);
->     smbios_tables =3D NULL;
-> -    return;
-> +    return false;
-> +}
-> +
-> +void smbios_get_tables(MachineState *ms,
-> +                       SmbiosEntryPointType ep_type,
-> +                       const struct smbios_phys_mem_area *mem_array,
-> +                       const unsigned int mem_array_size,
-> +                       uint8_t **tables, size_t *tables_len,
-> +                       uint8_t **anchor, size_t *anchor_len,
-> +                       Error **errp)
-> +{
-> +    Error *local_err =3D NULL;
-> +    bool is_valid;
-> +    ERRP_GUARD();
-> +
-> +    switch (ep_type) {
-> +    case SMBIOS_ENTRY_POINT_TYPE_AUTO:
-> +    case SMBIOS_ENTRY_POINT_TYPE_32:
-> +        is_valid =3D smbios_get_tables_ep(ms, =
-SMBIOS_ENTRY_POINT_TYPE_32,
-> +                                        mem_array, mem_array_size,
-> +                                        tables, tables_len,
-> +                                        anchor, anchor_len,
-> +                                        &local_err);
-> +        if (is_valid || ep_type !=3D SMBIOS_ENTRY_POINT_TYPE_AUTO) {
-> +            break;
-> +        }
-> +        /*
-> +         * fall through in case AUTO endpoint is selected and
-> +         * SMBIOS 2.x tables can't be generated, to try if SMBIOS 3.x
-> +         * tables would work
-> +         */
-> +    case SMBIOS_ENTRY_POINT_TYPE_64:
-> +        error_free(local_err);
-> +        local_err =3D NULL;
-> +        is_valid =3D smbios_get_tables_ep(ms, =
-SMBIOS_ENTRY_POINT_TYPE_64,
-> +                                        mem_array, mem_array_size,
-> +                                        tables, tables_len,
-> +                                        anchor, anchor_len,
-> +                                        &local_err);
-> +        break;
-> +    default:
-> +        abort();
-> +    }
-> +    if (!is_valid) {
-> +        error_propagate(errp, local_err);
-> +    }
-> }
->=20
-> static void save_opt(const char **dest, QemuOpts *opts, const char =
-*name)
-> --=20
-> 2.39.3
->=20
+In the test, SGI, PPI and SPI interrupts can all be set to have super priority
+to be converted to a hardware NMI interrupt. The SGI is tested with kernel
+IPI as NMI framework, softlockup, hardlockup and kgdb test cases, and the PPI
+interrupt is tested with "perf top" command with hardware NMI enabled, and
+the SPI interrupt is tested with a custom test module, in which NMI interrupts
+can be received and sent normally.
+
+However, the Virtual NMI(VNMI) has not been tested.
+
+         +-------------------------------------------------+
+         |               Distributor                       |
+         +-------------------------------------------------+
+             SPI |  NMI                         |  NMI
+                \/                            \/
+            +--------+                     +-------+
+            | Redist |                     | Redist|
+            +--------+                     +-------+
+            SGI  | NMI                     PPI | NMI
+                \/                            \/
+          +-------------+             +---------------+
+          |CPU Interface|   ...       | CPU Interface |
+          +-------------+             +---------------+
+               | NMI                         | NMI
+              \/                            \/
+            +-----+                       +-----+
+            |  PE |                       |  PE |
+            +-----+                       +-----+
+
+Changes in v6:
+- Fix DISAS_TOO_MANY to DISAS_UPDATE_EXIT for ALLINT MSR (immediate).
+- Verify that HCR_EL2.VF is set before checking VFNMI.
+- env->cp15.hcr_el2 -> arm_hcr_el2_eff().
+- env->cp15.hcrx_el2 -> arm_hcrx_el2_eff().
+- Not combine VFNMI with CPU_INTERRUPT_VNMI.
+- Implement icv_nmiar1_read().
+- Put the "extract superprio info" code into gicv3_get_priority().
+- Update the comment in irqbetter().
+- Reset the cs->hppi.superprio to 0x0.
+- Set hppi.superprio to false for LPI.
+- Add Reviewed-by.
+
+Changes in v5:
+- Remove the comment for ALLINT in cpu.h.
+- Merge allint_check() to msr_i_allint to clear the ALLINT MSR (immediate)
+  implementation.
+- Rename msr_i_allint() to msr_set_allint_el1() to make it clearer.
+- Drop the & 1 in trans_MSR_i_ALLINT().
+- Add Reviewed-by.
+
+Changes in v4:
+- Handle VNMI within the CPU and the GIC.
+- Keep PSTATE.ALLINT in env->pstate but not env->allint.
+- Fix the ALLINT MSR (immediate) decodetree implementation.
+- Accept NMI unconditionally for arm_cpu_has_work() but add comment.
+- Improve nmi mask in arm_excp_unmasked().
+- Make the GICR_INMIR0 and GICD_INMIR implementation more clearer.
+- Improve ICC_NMIAR1_EL1 implementation
+- Extract gicv3_get_priority() to avoid priority code repetition.
+- Add Reviewed-by.
+
+Changes in v3:
+- Remove the FIQ NMI.
+- Adjust the patches Sequence.
+- Reomve the patch "Set pstate.ALLINT in arm_cpu_reset_hold".
+- Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
+- With CPU_INTERRUPT_NMI, both CPSR_I and ISR_IS must be set.
+- Not include NMI logic when FEAT_NMI or SCTLR_ELx.NMI not enabled.
+- Refator nmi mask in arm_excp_unmasked().
+- Add VNMI definitions, add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
+- Add Reviewed-by and Acked-by.
+- Update the commit message.
+
+Changes in v2:
+- Break up the patches so that each one does only one thing.
+- Remove the command line option and just implement it in "max" cpu.
+
+Jinjie Ruan (23):
+  target/arm: Handle HCR_EL2 accesses for bits introduced with FEAT_NMI
+  target/arm: Add PSTATE.ALLINT
+  target/arm: Add support for FEAT_NMI, Non-maskable Interrupt
+  target/arm: Implement ALLINT MSR (immediate)
+  target/arm: Support MSR access to ALLINT
+  target/arm: Add support for Non-maskable Interrupt
+  target/arm: Add support for NMI in arm_phys_excp_target_el()
+  target/arm: Handle IS/FS in ISR_EL1 for NMI
+  target/arm: Handle PSTATE.ALLINT on taking an exception
+  hw/arm/virt: Wire NMI and VNMI irq lines from GIC to CPU
+  hw/intc/arm_gicv3: Add external IRQ lines for NMI
+  target/arm: Handle NMI in arm_cpu_do_interrupt_aarch64()
+  hw/intc/arm_gicv3: Add irq superpriority information
+  hw/intc/arm_gicv3_redist: Implement GICR_INMIR0
+  hw/intc/arm_gicv3: Implement GICD_INMIR
+  hw/intc: Enable FEAT_GICv3_NMI Feature
+  hw/intc/arm_gicv3: Add NMI handling CPU interface registers
+  hw/intc/arm_gicv3: Handle icv_nmiar1_read() for icc_nmiar1_read()
+  hw/intc/arm_gicv3: Implement NMI interrupt prioirty
+  hw/intc/arm_gicv3: Report the NMI interrupt in gicv3_cpuif_update()
+  hw/intc/arm_gicv3: Report the VNMI interrupt
+  target/arm: Add FEAT_NMI to max
+  hw/arm/virt: Add FEAT_GICv3_NMI feature support in virt GIC
+
+ docs/system/arm/emulation.rst      |   1 +
+ hw/arm/virt.c                      |  25 +++++-
+ hw/intc/arm_gicv3.c                |  70 ++++++++++++++--
+ hw/intc/arm_gicv3_common.c         |   8 ++
+ hw/intc/arm_gicv3_cpuif.c          | 125 ++++++++++++++++++++++++++---
+ hw/intc/arm_gicv3_dist.c           |  36 +++++++++
+ hw/intc/arm_gicv3_redist.c         |  19 +++++
+ hw/intc/gicv3_internal.h           |   8 ++
+ hw/intc/trace-events               |   2 +
+ include/hw/intc/arm_gic_common.h   |   2 +
+ include/hw/intc/arm_gicv3_common.h |   7 ++
+ target/arm/cpu-features.h          |   5 ++
+ target/arm/cpu-qom.h               |   4 +-
+ target/arm/cpu.c                   |  85 ++++++++++++++++++--
+ target/arm/cpu.h                   |   7 ++
+ target/arm/helper.c                |  67 ++++++++++++++++
+ target/arm/internals.h             |  12 +++
+ target/arm/tcg/a64.decode          |   1 +
+ target/arm/tcg/cpu64.c             |   1 +
+ target/arm/tcg/helper-a64.c        |  12 +++
+ target/arm/tcg/helper-a64.h        |   1 +
+ target/arm/tcg/translate-a64.c     |  19 +++++
+ 22 files changed, 491 insertions(+), 26 deletions(-)
+
+-- 
+2.34.1
 

@@ -1,253 +1,183 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp190930ejc;
-        Tue, 5 Mar 2024 02:33:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXn8cZLd3W/RPwb9RH/uySMMq6hXefWzIWQoROb/ODDMrKWwIMSLyB2CsOEryl63AT6HLVe/yOlaFz/s3X/ULc152Z5OPqw
-X-Google-Smtp-Source: AGHT+IEeka8x/jc2m9MoyquOnQ2rMKW4Nu9obyiYX8hDsfLot4krYSnca9ZfI34euH8hFPsk70o8
-X-Received: by 2002:a05:6358:789:b0:17b:5cf2:fe5b with SMTP id n9-20020a056358078900b0017b5cf2fe5bmr1663821rwj.4.1709634790758;
-        Tue, 05 Mar 2024 02:33:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709634790; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp194019ejc;
+        Tue, 5 Mar 2024 02:39:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV6z5vMnBNMpbdZYnLWpyAhYOI9CSSzbak9lxkwK+O7VWEkWrjNqhM1Oqg/BPpf8OJwVG9AEEVxzdesjRGK7EuVRi5HPmS+
+X-Google-Smtp-Source: AGHT+IEQVch3J62cBItG6oiN9ofS2Hs6eMcPek9CcXim14UxU7GC60srLhXrXYcb0JczO6j2LIGc
+X-Received: by 2002:a5b:11:0:b0:dc2:2d0a:4d55 with SMTP id a17-20020a5b0011000000b00dc22d0a4d55mr7207692ybp.63.1709635151967;
+        Tue, 05 Mar 2024 02:39:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709635151; cv=none;
         d=google.com; s=arc-20160816;
-        b=VQgUTZJ5Kli46bKVaskQZcHAM/ZSG+QeWeQiZCmeptwrHsYL0zx0k9wsSXi40Z/d/r
-         h8I1VgUZbvXeL3HgJ/d2PG57gTZ79lkxHRuL8u/w9HZ93xjfeyGZo4wMCNd3RHSW+fGz
-         90BoHfiLxq1cA10YQsMr3jQ5CxXZYIFCn2XhaWYbc/1uVb3dcGllBGtgMJsQZeVl4MP4
-         HGmyTQhX+M7XNN8eeNhC8OypDiaNQV8RKbUi95zEo1uJwVc0FcZeb62JTWi2ZdWytSrW
-         4LX9Ad0pGnBbog+Q2wkSJv+LgY/lFqLWZvS+Wmjv5S9Oh7aNLwqdTQA0UIKsKzw+olH5
-         dq+Q==
+        b=Tc5ydloJW3qHmRp8l4oW+pYo69X1jkpukrmBbTYEcdiOD6Y45acmadh54NMzAxh8C8
+         sptY4nIj44WH7Fpc9yaSjAcm2jci7EzhSWoATJULAZmx5MKL3lPRFU2qG4wdXS2Wut3k
+         FLQDICFNct0+zua2fNdlVtDiAyEcD7ACPON69esVoEnjcBDcgtNxtJxstIINXwrQCRJY
+         nLs3IpMNw34igxePHFOaQJvEq3G+qjlx+3925sKmq/FbJPutW9actAUVX2IRdXc8w3Ng
+         d9ntowEMqnUpWEvJALpwfgqO5i0zePQ1NA9TOXBX4V8fHHZWxACVoVX9RQJ+ikP/s4y/
+         Fv9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=2vDMOG858kwohsjaFQnfhqCCejlVxFcw1ADU0gyslJk=;
-        fh=pwgdIVV2TB7TWmsjfI7GAPIA1X7/gAf84pUPVR/7pHI=;
-        b=YCm061liLlhwGVxMJ8o0UPfbByJdvR6dHHklz0jiBUutUFkOgAAU+4b0FlcGltdTVQ
-         aYn4tGNhJ3CQNF/PG9n/DK/IEF1duQawhuNGdruLyzSWxtmBCajv0HejheF7qdy4aTG5
-         SmvH0bWixGXStmR9bO0zVO67pFavWTaTH+9lXSB1Ovfa3YWZt/bRlVnsS3Zo0jCPEYRb
-         z05gUO1Gh998VrK3xDqslQnmlbz9JyErnJiAjRNGJY9xEiaY5aKvVeR8hyj90VXKWY8S
-         8KD2z2MbDpbEJxHAeZw/cyRBo/yywLS0TrO0aOQxMZEk0m/s4NccLQBLX1UHVNhiHKWw
-         zGPQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=0RJXQ54P7BtOv5/pkepl4/W1V8PKL7BXJNMfpBFY7Dg=;
+        fh=jIy6WsDFJ+KptA+PwUkgsWgm4TeBegQDtDSD0bIpv0I=;
+        b=V+6/Yo3Fih0dPWzVYNd43/6D3NKm9d9/vq3Z6ISKBmYm3qqMB5vHELDOHYF0a+kS9/
+         WEyr9YIcZxW40SHBMxgg68NOOVj7vIsohdkJKyXXqo83DMIgrWdyGBWInhyyktzjv1jC
+         jcUty23U+iRRBhFqulYe0PRxZch9uXxdGuX+Q6qeAMQzAB1s04gozDmukBcCZh933DcK
+         T5v2hgr855hOCDdtv3kkEY/SoDVwUX1LkB2JYHWH4srFpbB02L3hcUXLhTrwOPHEC5wt
+         QlMUaCdLiuiYYl6q+CtPXSFe0a6/tJuhXeRLz2W5UQLzSk83cZdV8WPJxO98CbTIPNjc
+         mcRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KH2f1Il1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qm1-20020a056214568100b0068f761b112esi11940361qvb.357.2024.03.05.02.33.10
+        by mx.google.com with ESMTPS id d3-20020ac85ac3000000b0042e67e4b0efsi11765552qtd.395.2024.03.05.02.39.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 02:33:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2024 02:39:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KH2f1Il1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhS6K-0002KX-TK; Tue, 05 Mar 2024 05:32:49 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rhSC5-0004P2-Qc; Tue, 05 Mar 2024 05:38:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhS6J-0002K7-96
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 05:32:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rhSC4-0004Oj-3a; Tue, 05 Mar 2024 05:38:44 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhS6F-0003PT-VE
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 05:32:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709634763;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2vDMOG858kwohsjaFQnfhqCCejlVxFcw1ADU0gyslJk=;
- b=KH2f1Il1M4dnCB41i63GnirffEIuP/zIEyrIPPOTegWSRLIafG8Dw3TLiexHr6sxAHXDt6
- F6syXPH3daVHT9zaX6qov1tICZRvZLXmdEHIedyqJM4HoJap6O5yIEtrpc6QocyY4Oq8Gl
- l4qEA368liqaTj424DH++S6tlcnGizM=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-367-5_BTwF_0MjKgN8GISAXu8Q-1; Tue, 05 Mar 2024 05:32:42 -0500
-X-MC-Unique: 5_BTwF_0MjKgN8GISAXu8Q-1
-Received: by mail-pf1-f200.google.com with SMTP id
- d2e1a72fcca58-6e5323e15f2so5559803b3a.3
- for <qemu-arm@nongnu.org>; Tue, 05 Mar 2024 02:32:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709634760; x=1710239560;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=2vDMOG858kwohsjaFQnfhqCCejlVxFcw1ADU0gyslJk=;
- b=N5phG/MOdzr7JGjALkf0ajf/j9MaRcrkAOk7QFHBVQrnC7nUB2MDmgMbYmeBMEnFNC
- ZhT58GUyUK5j7xZM+kZ9D405hkkPvHZB2Q357nyUgMHIBDgmlw/u0nf8mpCMhAxD/kB2
- scmeSjNan2Mkh0kIMbroTg/eTj2xv+eKguVHxGNtERS9F1X6xPxaYZy6qpq956OrlBgE
- WW1ClqsDH0spOrFHgLAjWPiaL6PmFp5ynoBtzfTLrSUE5UNW5cGOF6Rc/Bpy4gt0xNJw
- nTK3JdXGcjYXi3O2LhT4FA/bveRk3idbOfzoZKBzJ6G5MuqZTcSGfR31UrttyNG3ifso
- Najg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXN0rCzcsrsopHmRQQtydfjGbAlKNODDDwcF7d/Afv7lXjGU9l5AfmfWEQcjy64Sw2Azw9dQUtrffniaxf6cJ5qvUys
-X-Gm-Message-State: AOJu0YwQ17ohy+ZlYSVxh2btiQzSqYov2MZ0Kiwe52O3/8SRILv6pe9j
- kWFgE/BZwckvsUm2y5eNv8qr/jTLb3bhkq4iORMoLpZRy5UYvzTg9tvuX/P4REUC1eO4ug0+IrK
- 96rtz2ysRWv+iU9JgZ+qk1bSoyy4LGOzIeoFJCuGvdMc7qZl/EroteiX1Fw==
-X-Received: by 2002:a05:6a00:2288:b0:6e5:fb97:ed35 with SMTP id
- f8-20020a056a00228800b006e5fb97ed35mr8011348pfe.18.1709634759892; 
- Tue, 05 Mar 2024 02:32:39 -0800 (PST)
-X-Received: by 2002:a05:6a00:2288:b0:6e5:fb97:ed35 with SMTP id
- f8-20020a056a00228800b006e5fb97ed35mr8011331pfe.18.1709634759542; 
- Tue, 05 Mar 2024 02:32:39 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- le6-20020a056a004fc600b006e6150a5392sm3748585pfb.155.2024.03.05.02.32.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Mar 2024 02:32:38 -0800 (PST)
-Date: Tue, 5 Mar 2024 11:32:32 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
- gaosong@loongson.cn, alistair.francis@wdc.com, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, anisinha@redhat.com, philmd@linaro.org,
- wangyanan55@huawei.com, eblake@redhat.com, armbru@redhat.com,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Subject: Re: [PATCH 00/19] Workaround Windows failing to find 64bit SMBIOS
- entry point with SeaBIOS
-Message-ID: <20240305113232.791c116e@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240305050735-mutt-send-email-mst@kernel.org>
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240305050735-mutt-send-email-mst@kernel.org>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rhSC1-0004hM-6b; Tue, 05 Mar 2024 05:38:43 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TpsNg5Lx8z6J9Tw;
+ Tue,  5 Mar 2024 18:33:39 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 12E7B1404F5;
+ Tue,  5 Mar 2024 18:38:36 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
+ 2024 10:38:35 +0000
+Date: Tue, 5 Mar 2024 10:38:34 +0000
+To: Ankit Agrawal <ankita@nvidia.com>
+CC: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Zhi Wang <zhiw@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, "Andy Currid" <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Message-ID: <20240305103834.00004d49@Huawei.com>
+In-Reply-To: <SA1PR12MB7199E6243CD2838335893CFCB0222@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20240223124223.800078-1-ankita@nvidia.com>
+ <20240223124223.800078-3-ankita@nvidia.com>
+ <20240226164229.00001536@Huawei.com>
+ <SA1PR12MB71995AAADE78D3D0052FAC01B0222@SA1PR12MB7199.namprd12.prod.outlook.com>
+ <533ccbfc-7d90-42cd-9183-a5b128c41fad@redhat.com>
+ <SA1PR12MB7199E6243CD2838335893CFCB0222@SA1PR12MB7199.namprd12.prod.outlook.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.571,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TnuEi3IUN2c9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YG8ihVd/RosK
 
-On Tue, 5 Mar 2024 05:08:05 -0500
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+On Tue, 5 Mar 2024 08:17:18 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
 
-> On Tue, Feb 27, 2024 at 04:47:30PM +0100, Igor Mammedov wrote:
-> > Windows (10) bootloader when running on top of SeaBIOS, fails to find            
-> > SMBIOSv3 entry point. Tracing it shows that it looks for v2 anchor markers       
-> > only and not v3. Tricking it into believing that entry point is found            
-> > lets Windows successfully locate and parse SMBIOSv3 tables. Whether it           
-> > will be fixed on Windows side is not clear so here goes a workaround.            
-> >                                                                                  
-> > Idea is to try build v2 tables if QEMU configuration permits,                    
-> > and fallback to v3 tables otherwise. That will mask Windows issue                
-> > form majority of users.                                                          
-> > However if VM configuration can't be described (typically large VMs)             
-> > by v2 tables, QEMU will use SMBIOSv3 and Windows will hit the issue              
-> > again. In this case complain to Microsoft and/or use UEFI instead of             
-> > SeaBIOS (requires reinstall).                                                      
-> 
-> Igor so you want to repost a version with a couple of patches squashed?
+> >>> Please add a test.=A0 tests/qtest/bios-tables-test.c
+> >>> + relevant table dumps. =20
+> >>
+> >> Here I need to add a test that creates a vfio-pci device and numa
+> >> nodes and link using the acpi-generic-initiator object. One thing
+> >> here is that the -device vfio-pci needs a host=3D<bdf> argument. I
+> >> probably cannot provide the device bdf from my local setup. So
+> >> I am not sure how can I add this test to tests/qtest/bios-tables-test.=
+c.
+> >> FYI, the following is a sample args we use for the
+> >> acpi-generic-initiator object.
+> >>
+> >>=A0=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D2
+> >>=A0=A0=A0=A0=A0=A0=A0=A0 -device vfio-pci-nohotplug,bus=3Dpcie.0,addr=
+=3D04.0,rombar=3D0,id=3Ddev0 \
+> >>=A0=A0=A0=A0=A0=A0=A0=A0 -object acpi-generic-initiator,id=3Dgi0,pci-de=
+v=3Ddev0,node=3D2 \
+> >>
+> >> Moreover based on a quick grep, I don't see any other test that
+> >> have -device vfio-pci argument.
+> >>
+> >> Jonathan, Alex, do you know how we may add tests that is dependent
+> >> on the vfio-pci device? =20
+> >
+> > There are none.
+> >
+> > This would require a host device always available for passthrough and
+> > there is no simple solution for this problem. Such tests would need to
+> > run in a nested environment under avocado: a pc/virt machine with an
+> > igb device and use the PF and/or VFs to check device assignment in a
+> > nested guests.
+> >
+> > PPC just introduced new tests to check nested guest support on two
+> > different HV implementations. If you have time, please take a look
+> > at tests/avocado/ppc_hv_tests.py for the framework.
+> >
+> > I will try to propose a new test when I am done with the reviews,
+> > not before 9.0 soft freeze though. =20
+>=20
+> Thanks for the information. As part of this patch, I'll leave out
+> this test change then.
 
-requested changes where in several patches
-(style and making series easier to review),
+For BIOS table purposes it can be any PCI device. I've been testing
+this with a virtio-net-pci but something like virtio-rng-pci will
+do fine.  The table contents doesn't care if it's vfio or not.
 
-I'll repost series with those changes today. 
- 
+I can spin a test as part of the follow up Generic Port series that
+incorporates both and pushes the limits of the hmat code in general.
+Current tests are too tame ;)
 
-> > Default compat setting of smbios-entry-point-type after series                   
-> > for pc/q35 machines:                                                             
-> >   * 9.0-newer: 'auto'                                                            
-> >   * 8.1-8.2: '64'                                                                
-> >   * 8.0-older: '32'                                                              
-> >                                                                                  
-> > Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2008                        
-> > CC: peter.maydell@linaro.org                                                     
-> > CC: pbonzini@redhat.com                                                          
-> > CC: mst@redhat.com                                                               
-> > CC: gaosong@loongson.cn                                                          
-> > CC: alistair.francis@wdc.com                                                     
-> > CC: palmer@dabbelt.com                                                           
-> > CC: bin.meng@windriver.com                                                       
-> > CC: liwei1518@gmail.com                                                          
-> > CC: dbarboza@ventanamicro.com                                                    
-> > CC: zhiwei_liu@linux.alibaba.com                                                 
-> > CC: imammedo@redhat.com                                                          
-> > CC: anisinha@redhat.com                                                          
-> > CC: philmd@linaro.org                                                            
-> > CC: wangyanan55@huawei.com                                                       
-> > CC: eblake@redhat.com                                                            
-> > CC: armbru@redhat.com                                                            
-> > CC: qemu-arm@nongnu.org                                                          
-> > CC: qemu-riscv@nongnu.org                                                        
-> > CC: f.ebner@proxmox.com                                                          
-> >                           
-> > Igor Mammedov (19):
-> >   tests: smbios: make it possible to write SMBIOS only test
-> >   tests: smbios: add test for -smbios type=11 option
-> >   tests: smbios: add test for legacy mode CLI options
-> >   smbios: cleanup smbios_get_tables() from legacy handling
-> >   smbios: get rid of smbios_smp_sockets global
-> >   smbios: get rid of smbios_legacy global
-> >   smbios: avoid mangling user provided tables
-> >   smbios: don't check type4 structures in legacy mode
-> >   smbios: build legacy mode code only for 'pc' machine
-> >   smbios: handle errors consistently
-> >   smbios: clear smbios_tables pointer after freeing
-> >   get rid of global smbios_ep_type
-> >   smbios: extend smbios-entry-point-type with 'auto' value
-> >   smbios: in case of entry point is 'auto' try to build v2 tables 1st
-> >   smbios: error out when building type 4 table is not possible
-> >   smbios: clear smbios_type4_count before building tables
-> >   tests: acpi/smbios: whitelist expected blobs
-> >   pc/q35: set SMBIOS entry point type to 'auto' by default
-> >   tests: acpi: update expected SSDT.dimmpxm blob
-> > 
-> >  hw/i386/fw_cfg.h                     |   3 +-
-> >  include/hw/firmware/smbios.h         |  29 +-
-> >  hw/arm/virt.c                        |   6 +-
-> >  hw/i386/Kconfig                      |   1 +
-> >  hw/i386/fw_cfg.c                     |  14 +-
-> >  hw/i386/pc.c                         |   4 +-
-> >  hw/i386/pc_piix.c                    |   4 +
-> >  hw/i386/pc_q35.c                     |   3 +
-> >  hw/loongarch/virt.c                  |   7 +-
-> >  hw/riscv/virt.c                      |   6 +-
-> >  hw/smbios/Kconfig                    |   2 +
-> >  hw/smbios/meson.build                |   4 +
-> >  hw/smbios/smbios.c                   | 481 +++++++++++----------------
-> >  hw/smbios/smbios_legacy.c            | 185 +++++++++++
-> >  hw/smbios/smbios_legacy_stub.c       |  16 +
-> >  qapi/machine.json                    |   5 +-
-> >  tests/data/acpi/q35/SSDT.dimmpxm     | Bin 1815 -> 1815 bytes
-> >  tests/data/smbios/type11_blob        | Bin 0 -> 11 bytes
-> >  tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
-> >  tests/qtest/bios-tables-test.c       |  81 ++++-
-> >  20 files changed, 535 insertions(+), 316 deletions(-)
-> >  create mode 100644 hw/smbios/smbios_legacy.c
-> >  create mode 100644 hw/smbios/smbios_legacy_stub.c
-> >  create mode 100644 tests/data/smbios/type11_blob
-> >  create mode 100644 tests/data/smbios/type11_blob.legacy
-> > 
-> > -- 
-> > 2.39.3  
-> 
+Given I don't think we have clarification from ACPI spec side on
+the many to one mapping you are using, I'd just use a 1-1 in any
+test.
 
+
+Jonathan

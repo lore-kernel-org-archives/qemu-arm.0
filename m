@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a12-20020a05600c348c00b00412ef5a0c78sm758146wmq.43.2024.03.05.04.10.06
+        by smtp.gmail.com with ESMTPSA id fa10-20020a05600c518a00b00412e17d5f83sm7151450wmb.14.2024.03.05.04.10.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 009A65F956;
+	by draig.lan (Postfix) with ESMTP id 1A3755F958;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,88 +51,148 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 05/29] gdbstub: Introduce gdbserver_fork_start()
-Date: Tue,  5 Mar 2024 12:09:41 +0000
-Message-Id: <20240305121005.3528075-6-alex.bennee@linaro.org>
+Subject: [PATCH 06/29] {linux,bsd}-user: Pass pid to fork_end()
+Date: Tue,  5 Mar 2024 12:09:42 +0000
+Message-Id: <20240305121005.3528075-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WwavMDPO1boX
+X-TUID: iiBcEopgJ5Ib
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-The upcoming follow-fork-mode child support requires knowing when
-fork() is about to happen in order to initialize its state. Add a hook
-for that.
+The upcoming follow-fork-mode child support requires knowing the child
+pid. Pass it down.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-5-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-6-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/gdbstub/user.h | 5 +++++
- bsd-user/main.c        | 1 +
- gdbstub/user.c         | 4 ++++
- linux-user/main.c      | 1 +
- 4 files changed, 11 insertions(+)
+ bsd-user/freebsd/os-proc.h  | 6 +++---
+ bsd-user/qemu.h             | 2 +-
+ linux-user/user-internals.h | 2 +-
+ bsd-user/main.c             | 4 +++-
+ linux-user/main.c           | 4 +++-
+ linux-user/syscall.c        | 6 +++---
+ 6 files changed, 14 insertions(+), 10 deletions(-)
 
-diff --git a/include/gdbstub/user.h b/include/gdbstub/user.h
-index 68b6534130c..e33f8d9a9a6 100644
---- a/include/gdbstub/user.h
-+++ b/include/gdbstub/user.h
-@@ -45,6 +45,11 @@ static inline int gdb_handlesig(CPUState *cpu, int sig)
-  */
- void gdb_signalled(CPUArchState *as, int sig);
+diff --git a/bsd-user/freebsd/os-proc.h b/bsd-user/freebsd/os-proc.h
+index d6418780344..3003c8cb637 100644
+--- a/bsd-user/freebsd/os-proc.h
++++ b/bsd-user/freebsd/os-proc.h
+@@ -208,7 +208,7 @@ static inline abi_long do_freebsd_fork(void *cpu_env)
+      */
+     set_second_rval(cpu_env, child_flag);
  
-+/**
-+ * gdbserver_fork_start() - inform gdb of the upcoming fork()
-+ */
-+void gdbserver_fork_start(void);
-+
+-    fork_end(child_flag);
++    fork_end(ret);
+ 
+     return ret;
+ }
+@@ -252,7 +252,7 @@ static inline abi_long do_freebsd_rfork(void *cpu_env, abi_long flags)
+      * value: 0 for parent process, 1 for child process.
+      */
+     set_second_rval(cpu_env, child_flag);
+-    fork_end(child_flag);
++    fork_end(ret);
+ 
+     return ret;
+ 
+@@ -285,7 +285,7 @@ static inline abi_long do_freebsd_pdfork(void *cpu_env, abi_ulong target_fdp,
+      * value: 0 for parent process, 1 for child process.
+      */
+     set_second_rval(cpu_env, child_flag);
+-    fork_end(child_flag);
++    fork_end(ret);
+ 
+     return ret;
+ }
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index 4adb75d19ff..1b0a591d2d2 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -192,7 +192,7 @@ void cpu_loop(CPUArchState *env);
+ char *target_strerror(int err);
+ int get_osversion(void);
+ void fork_start(void);
+-void fork_end(int child);
++void fork_end(pid_t pid);
+ 
+ #include "qemu/log.h"
+ 
+diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
+index c63ef45fc78..ce11d9e21c1 100644
+--- a/linux-user/user-internals.h
++++ b/linux-user/user-internals.h
+@@ -71,7 +71,7 @@ const char *target_strerror(int err);
+ int get_osversion(void);
+ void init_qemu_uname_release(void);
+ void fork_start(void);
+-void fork_end(int child);
++void fork_end(pid_t pid);
+ 
  /**
-  * gdbserver_fork() - disable gdb stub for child processes.
-  * @cs: CPU
+  * probe_guest_base:
 diff --git a/bsd-user/main.c b/bsd-user/main.c
-index e39eef3040f..517c6b3ec2f 100644
+index 517c6b3ec2f..fca9b302043 100644
 --- a/bsd-user/main.c
 +++ b/bsd-user/main.c
-@@ -113,6 +113,7 @@ void fork_start(void)
-     start_exclusive();
-     cpu_list_lock();
-     mmap_fork_start();
-+    gdbserver_fork_start();
+@@ -116,8 +116,10 @@ void fork_start(void)
+     gdbserver_fork_start();
  }
  
- void fork_end(int child)
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 3ce20b7bbfc..536fb43b03e 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -356,6 +356,10 @@ int gdbserver_start(const char *port_or_path)
-     return -1;
- }
- 
-+void gdbserver_fork_start(void)
-+{
-+}
-+
- static void disable_gdbstub(CPUState *thread_cpu)
+-void fork_end(int child)
++void fork_end(pid_t pid)
  {
-     CPUState *cpu;
++    bool child = pid == 0;
++
+     if (child) {
+         CPUState *cpu, *next_cpu;
+         /*
 diff --git a/linux-user/main.c b/linux-user/main.c
-index 699da773714..755c566d6d2 100644
+index 755c566d6d2..cab95f5b0aa 100644
 --- a/linux-user/main.c
 +++ b/linux-user/main.c
-@@ -145,6 +145,7 @@ void fork_start(void)
-     mmap_fork_start();
-     cpu_list_lock();
-     qemu_plugin_user_prefork_lock();
-+    gdbserver_fork_start();
+@@ -148,8 +148,10 @@ void fork_start(void)
+     gdbserver_fork_start();
  }
  
- void fork_end(int child)
+-void fork_end(int child)
++void fork_end(pid_t pid)
+ {
++    bool child = pid == 0;
++
+     qemu_plugin_user_postfork(child);
+     mmap_fork_end(child);
+     if (child) {
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index c233d4eb30a..7f30defcb13 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -6669,7 +6669,7 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
+         if (ret == 0) {
+             /* Child Process.  */
+             cpu_clone_regs_child(env, newsp, flags);
+-            fork_end(1);
++            fork_end(ret);
+             /* There is a race condition here.  The parent process could
+                theoretically read the TID in the child process before the child
+                tid is set.  This would require using either ptrace
+@@ -6700,8 +6700,8 @@ static int do_fork(CPUArchState *env, unsigned int flags, abi_ulong newsp,
+                 }
+ #endif
+                 put_user_u32(pid_fd, parent_tidptr);
+-                }
+-            fork_end(0);
++            }
++            fork_end(ret);
+         }
+         g_assert(!cpu_in_exclusive_context(cpu));
+     }
 -- 
 2.39.2

@@ -1,86 +1,84 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp374094ejc;
-        Tue, 5 Mar 2024 07:58:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWatdOWXl7x6u9hiRp8ww3XzL1FSMJJQSYhTlQjftr9DE4Su7reHUdaYw2IWmkMLPooAYOu0vcLZ7I/6KhApByUGomcQ/ig
-X-Google-Smtp-Source: AGHT+IFIm1n+b3Hd4eWr2FL8NlqNGeHF2CbaNmq8G9Cm5yWQ8XsTn8GnKuijpSoddMeKLRPEffTY
-X-Received: by 2002:a05:620a:4088:b0:788:33fb:4e14 with SMTP id f8-20020a05620a408800b0078833fb4e14mr2966365qko.12.1709654330241;
-        Tue, 05 Mar 2024 07:58:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709654330; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp374120ejc;
+        Tue, 5 Mar 2024 07:58:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXa+UaRwegjaGhs6OzmFeRLhgb3Bz2iZkMALp7fxjxlxLmRl+66BCev8sYlBYya2lAcm9zGeYorgl++X2Tw+8eTUr5YwRE/
+X-Google-Smtp-Source: AGHT+IGF9pF0BcfGJbi5mg7QBM+Rb7q4m5eCqlHbYAtYmvJy+3CT9pwgKJjOWNkvGOrN0lg4jQAZ
+X-Received: by 2002:a0c:c305:0:b0:690:8f6a:2f09 with SMTP id f5-20020a0cc305000000b006908f6a2f09mr835610qvi.61.1709654334017;
+        Tue, 05 Mar 2024 07:58:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709654333; cv=none;
         d=google.com; s=arc-20160816;
-        b=qYXZc5+rH2oJcsyd9ihGeHvKoDJ38TsUCWqg1PRXTYgGlSpRBNogfSBD//55ju/0JP
-         D9OL2vB9zGF+K/yuoLvOinE/02vzpDYiVrX8PmwIOLcvxV/fpLfoDedIvuCmsaFerYlr
-         59nHinrxvoE78qH5LQNAFAxF2dwDwAt6oAWGh+xt64PnbyuA/r9nOj16JSO+xxd4C9tC
-         3zRtK8j5pvZ0uEVF3Asaeo1QocLVzbZ6FytKRRmzE7enWfZPo2j6KklsM1owTs2aEPui
-         7iCbGG+NEJScN1lVAIGKl2lp6tcvIr4192ACkzAUFp/lH66eQ0wxFbYImjkgoNzH9NYF
-         xT+Q==
+        b=R9mdyMc1YZ5AfWnjsukGMVTNVXAKHmii3iiqKBDHsVfdeM4HfDOVhzzxK5Bs6FzS7O
+         tYRpU2CZFhcgK5cuCzNaTZt5U+2rywzLvSfbi4opzZDEgDsXq1Hycz6f9/sw9qu3K/Cx
+         fmilR1Vx5oysNkxUkUv6i00mmve6eq9FjgrvUR4EODsWfhbQXavc1lNAF2tGWClZe7H3
+         oRtHSt8ANC8hxvws0Gdtkz/9/ihpMZ9zFOUrADqIwLLdguepEtHTisQgTB+1y6fHSe8X
+         cpH5nDL5y3efvS/sSDfJK4ESpDmUGbsXP3vxws7/ByPpj2NIel6hEd53HX0eMUzyBDtO
+         T5ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ZPxefcrUSoOBOHuk1sFV5x9qKOwla4dnMHg+sDmbLZE=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HJF5Senj6Onn7fvPNEIxgiyack88To0MhvSnWL+GUxk=;
         fh=cWYLLp2xiaCPawONafvmArBA+kFDFtOI7kkn8ypnRsk=;
-        b=xayHiiGichsHGAzeCNHnk0CSTBwZCr+oqtpoNYqHK9TdtqIGLU/0ycTPSd2/XJRgbc
-         Oi02meZanEIvE4KMxM9s6tWGYVOyTqBmLU8KkVQRe3N8gzSeSGQzx2Gs5taETmF3PTgq
-         YMap/8ir3B2XNpxBXnGRK35r9u9dgXcHFUQCE3HPnyaz0XluMVnUpdBa95AitG8v8tl7
-         QrVWLP+W5d/u8JX19QuCXz7Pg7mjb5FdLU0v+Dd0ZFLdKVxw2c1WoeRYAa6geJOzfSwK
-         4erUd9vw94AI2vUTdUW2lla9JxhSfdnKv6I7LZryoZtD2MbTnCL54aK9PV/W8KX8ZzKD
-         D23Q==;
+        b=G3dTwoSdQzqiVkJOUK9S6wXZJ6PQp5dMmF9rlphTvs4MHILl6bDFdY35eT35qBJUSc
+         HCRXtXffvtLi78/ofmKCuVAqbUhdbC5zmM1CT2k3CZj4qhsph9DHMJVQKPmI/0OdiEoe
+         AM/lWlRUdmZyOaIS6sJWlfsGOj+Zp3vpbRlT9BfHbfdB3+ScdqYarMGcpFeolhPS7C4D
+         hVWQBzCj3yYCfwOPBPQ4ki2JXSPnhr5fe4tuuFLLETTydzrBQF2aGMs++xgF1ZS/X1jH
+         ZAFHqy6GwPU3qtUFERxgEsfHALPmCEHI2bJNpTivUL9hFv0bNaTtINqFPd0A11AaVGdK
+         AjtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOSJwsbt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlSETNMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dz14-20020a05620a2b8e00b0078831797408si3476284qkb.647.2024.03.05.07.58.50
+        by mx.google.com with ESMTPS id 11-20020a0562140ccb00b0068f34f6c1b8si12561063qvx.14.2024.03.05.07.58.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 07:58:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2024 07:58:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bOSJwsbt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlSETNMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhXBY-000662-2L; Tue, 05 Mar 2024 10:58:33 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rhXAs-0005TF-6G; Tue, 05 Mar 2024 10:57:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXB6-0005dd-DY
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 10:58:05 -0500
+ id 1rhXAl-0005Pf-1M
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:44 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXB5-0000YN-2l
- for qemu-arm@nongnu.org; Tue, 05 Mar 2024 10:58:04 -0500
+ id 1rhXAi-0000Rz-VF
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709654282;
+ s=mimecast20190719; t=1709654259;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZPxefcrUSoOBOHuk1sFV5x9qKOwla4dnMHg+sDmbLZE=;
- b=bOSJwsbtPh80NrcnJpK0+VvPBxFY1Y+moRRSj5xf/94z5UbOb45xWZaEKd8FcnTaj6frLS
- pPAo0Va8oucre9Smze/cbs/W/mpVnvgFaVvItVcdYULN3eX1p+Kmzk+uoE5mUIr1P/A0uy
- lnpJc7R6DsNYOhbyXJhE0irjiVVicOk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-288-XDlEVkooNNOMW4UBYOWFBA-1; Tue, 05 Mar 2024 10:57:58 -0500
-X-MC-Unique: XDlEVkooNNOMW4UBYOWFBA-1
+ content-transfer-encoding:content-transfer-encoding;
+ bh=HJF5Senj6Onn7fvPNEIxgiyack88To0MhvSnWL+GUxk=;
+ b=NlSETNMS2JqTHot8BEI4KO5LsQht/dDuYzMSdY9rrMQmIKbfFIliPJk/1A7v1hhMITPLBl
+ Q4L3IixCtHRT8ujdzexq+xMYSKi8la3kSQmCTODoVBG8hCouAL1L/oD5Qd5TgG3VbXQbO8
+ wTrqTcFU/4yX38x1F6fOzjwbLr7aKPo=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-428-eKlafKU9N268RW43G7SUEA-1; Tue,
+ 05 Mar 2024 10:57:33 -0500
+X-MC-Unique: eKlafKU9N268RW43G7SUEA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CA0B8164E4;
- Tue,  5 Mar 2024 15:57:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9D6C21C01E95;
+ Tue,  5 Mar 2024 15:57:31 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CF24417A99;
- Tue,  5 Mar 2024 15:57:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 491D317A99;
+ Tue,  5 Mar 2024 15:57:26 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
@@ -90,11 +88,10 @@ Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, eblake@redhat.com,
  armbru@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  f.ebner@proxmox.com
-Subject: [PATCH v2 09/20] smbios: add smbios_add_usr_blob_size() helper
-Date: Tue,  5 Mar 2024 16:57:13 +0100
-Message-Id: <20240305155724.2047069-10-imammedo@redhat.com>
-In-Reply-To: <20240305155724.2047069-1-imammedo@redhat.com>
-References: <20240305155724.2047069-1-imammedo@redhat.com>
+Subject: [PATCH v2 00/20] Workaround Windows failing to find 64bit SMBIOS
+ entry point with SeaBIOS
+Date: Tue,  5 Mar 2024 16:57:04 +0100
+Message-Id: <20240305155724.2047069-1-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -110,65 +107,121 @@ X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lhPbtdNs1lp5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KTD01tAUdAKz
 
-it will be used by follow up patch when legacy handling
-is moved out into a separate file.
+Changelog:
+   * QAPI style fixes (Markus Armbruster <armbru@redhat.com>)
+   * squash 11/19 into 10/19 (Ani Sinha <anisinha@redhat.com>)
+   * split '[PATCH 09/19] smbios: build legacy mode code only for 'pc' machine'
+     in 3 smaller patches, to make it more readable
+       smbios: add smbios_add_usr_blob_size() helper                                  
+       smbios: rename/expose structures/bitmaps used by both legacy and modern code                                                                  
+       smbios: build legacy mode code only for 'pc' machine
+   * pick up acks
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/smbios/smbios.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+Windows (10) bootloader when running on top of SeaBIOS, fails to find            
+SMBIOSv3 entry point. Tracing it shows that it looks for v2 anchor markers       
+only and not v3. Tricking it into believing that entry point is found            
+lets Windows successfully locate and parse SMBIOSv3 tables. Whether it           
+will be fixed on Windows side is not clear so here goes a workaround.            
+                                                                                 
+Idea is to try build v2 tables if QEMU configuration permits,                    
+and fallback to v3 tables otherwise. That will mask Windows issue                
+form majority of users.                                                          
+However if VM configuration can't be described (typically large VMs)             
+by v2 tables, QEMU will use SMBIOSv3 and Windows will hit the issue              
+again. In this case complain to Microsoft and/or use UEFI instead of             
+SeaBIOS (requires reinstall).                                                    
+                                                                                 
+Default compat setting of smbios-entry-point-type after series                   
+for pc/q35 machines:                                                             
+  * 9.0-newer: 'auto'                                                            
+  * 8.1-8.2: '64'                                                                
+  * 8.0-older: '32'                                                              
+                                                                                 
+Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2008                        
+CC: peter.maydell@linaro.org                                                     
+CC: pbonzini@redhat.com                                                          
+CC: mst@redhat.com                                                               
+CC: gaosong@loongson.cn                                                          
+CC: alistair.francis@wdc.com                                                     
+CC: palmer@dabbelt.com                                                           
+CC: bin.meng@windriver.com                                                       
+CC: liwei1518@gmail.com                                                          
+CC: dbarboza@ventanamicro.com                                                    
+CC: zhiwei_liu@linux.alibaba.com                                                 
+CC: imammedo@redhat.com                                                          
+CC: anisinha@redhat.com                                                          
+CC: philmd@linaro.org                                                            
+CC: wangyanan55@huawei.com                                                       
+CC: eblake@redhat.com                                                            
+CC: armbru@redhat.com                                                            
+CC: qemu-arm@nongnu.org                                                          
+CC: qemu-riscv@nongnu.org                                                        
+CC: f.ebner@proxmox.com                                                          
 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 97cf762228..01180bd82c 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -1287,6 +1287,14 @@ static bool save_opt_list(size_t *ndest, char ***dest, QemuOpts *opts,
-     return true;
- }
- 
-+static void smbios_add_usr_blob_size(size_t size)
-+{
-+    if (!usr_blobs_sizes) {
-+        usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
-+    }
-+    g_array_append_val(usr_blobs_sizes, size);
-+}
-+
- void smbios_entry_add(QemuOpts *opts, Error **errp)
- {
-     const char *val;
-@@ -1334,10 +1342,12 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
-             smbios_type4_count++;
-         }
- 
--        if (!usr_blobs_sizes) {
--            usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
--        }
--        g_array_append_val(usr_blobs_sizes, size);
-+        /*
-+         * preserve blob size for legacy mode so it could build its
-+         * blobs flavor from 'usr_blobs'
-+         */
-+        smbios_add_usr_blob_size(size);
-+
-         usr_blobs_len += size;
-         if (size > usr_table_max) {
-             usr_table_max = size;
+Igor Mammedov (20):
+  tests: smbios: make it possible to write SMBIOS only test
+  tests: smbios: add test for -smbios type=11 option
+  tests: smbios: add test for legacy mode CLI options
+  smbios: cleanup smbios_get_tables() from legacy handling
+  smbios: get rid of smbios_smp_sockets global
+  smbios: get rid of smbios_legacy global
+  smbios: avoid mangling user provided tables
+  smbios: don't check type4 structures in legacy mode
+  smbios: add smbios_add_usr_blob_size() helper
+  smbios: rename/expose structures/bitmaps used by both legacy and
+    modern code
+  smbios: build legacy mode code only for 'pc' machine
+  smbios: handle errors consistently
+  smbios: get rid of global smbios_ep_type
+  smbios: extend smbios-entry-point-type with 'auto' value
+  smbios: in case of entry point is 'auto' try to build v2 tables 1st
+  smbios: error out when building type 4 table is not possible
+  smbios: clear smbios_type4_count before building tables
+  tests: acpi/smbios: whitelist expected blobs
+  pc/q35: set SMBIOS entry point type to 'auto' by default
+  tests: acpi: update expected SSDT.dimmpxm blob
+
+ hw/i386/fw_cfg.h                     |   3 +-
+ include/hw/firmware/smbios.h         |  28 +-
+ hw/arm/virt.c                        |   6 +-
+ hw/i386/Kconfig                      |   1 +
+ hw/i386/fw_cfg.c                     |  14 +-
+ hw/i386/pc.c                         |   4 +-
+ hw/i386/pc_piix.c                    |   4 +
+ hw/i386/pc_q35.c                     |   3 +
+ hw/loongarch/virt.c                  |   7 +-
+ hw/riscv/virt.c                      |   6 +-
+ hw/smbios/Kconfig                    |   2 +
+ hw/smbios/meson.build                |   4 +
+ hw/smbios/smbios.c                   | 481 +++++++++++----------------
+ hw/smbios/smbios_legacy.c            | 185 +++++++++++
+ hw/smbios/smbios_legacy_stub.c       |  16 +
+ qapi/machine.json                    |   5 +-
+ tests/data/acpi/q35/SSDT.dimmpxm     | Bin 1815 -> 1815 bytes
+ tests/data/smbios/type11_blob        | Bin 0 -> 11 bytes
+ tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
+ tests/qtest/bios-tables-test.c       |  81 ++++-
+ 20 files changed, 534 insertions(+), 316 deletions(-)
+ create mode 100644 hw/smbios/smbios_legacy.c
+ create mode 100644 hw/smbios/smbios_legacy_stub.c
+ create mode 100644 tests/data/smbios/type11_blob
+ create mode 100644 tests/data/smbios/type11_blob.legacy
+
 -- 
 2.39.3
 

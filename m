@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id k4-20020a05600c1c8400b00412e556d4besm5271799wms.48.2024.03.05.04.18.44
+        by smtp.gmail.com with ESMTPSA id ck4-20020a5d5e84000000b0033e431950c5sm1119001wrb.97.2024.03.05.04.18.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:18:47 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DE1675F9FB;
+	by draig.lan (Postfix) with ESMTP id C954F5F9FA;
 	Tue,  5 Mar 2024 12:10:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,58 +51,116 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 26/29] disas: introduce show_opcodes
-Date: Tue,  5 Mar 2024 12:10:02 +0000
-Message-Id: <20240305121005.3528075-27-alex.bennee@linaro.org>
+Subject: [PATCH 25/29] plugins: cleanup codepath for previous inline operation
+Date: Tue,  5 Mar 2024 12:10:01 +0000
+Message-Id: <20240305121005.3528075-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kKzhRmt1HK11
+X-TUID: 2iRePMPb62t3
 
-For plugins we don't expect the raw opcodes in the disassembly. We
-already deal with this by hand crafting our capstone call but for
-other diassemblers we need a flag. Introduce show_opcodes which
-defaults to off.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240304130036.124418-13-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/disas/dis-asm.h | 8 ++++++++
- disas/disas.c           | 1 +
- 2 files changed, 9 insertions(+)
+ plugins/plugin.h       |  5 -----
+ accel/tcg/plugin-gen.c | 13 ++++---------
+ plugins/core.c         | 29 ++++-------------------------
+ 3 files changed, 8 insertions(+), 39 deletions(-)
 
-diff --git a/include/disas/dis-asm.h b/include/disas/dis-asm.h
-index 2324f6b1a46..b26867b6417 100644
---- a/include/disas/dis-asm.h
-+++ b/include/disas/dis-asm.h
-@@ -396,6 +396,14 @@ typedef struct disassemble_info {
-   /* Command line options specific to the target disassembler.  */
-   char * disassembler_options;
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index f6fa10a0f56..7c34f23cfcb 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -68,11 +68,6 @@ struct qemu_plugin_ctx {
  
-+  /*
-+   * When true instruct the disassembler it may preface the
-+   * disassembly with the opcodes values if it wants to. This is
-+   * mainly for the benefit of the plugin interface which doesn't want
-+   * that.
-+   */
-+  bool show_opcodes;
-+
-   /* Field intended to be used by targets in any way they deem suitable.  */
-   void *target_info;
+ struct qemu_plugin_ctx *plugin_id_to_ctx_locked(qemu_plugin_id_t id);
  
-diff --git a/disas/disas.c b/disas/disas.c
-index 0d2d06c2ecc..17170d291ec 100644
---- a/disas/disas.c
-+++ b/disas/disas.c
-@@ -299,6 +299,7 @@ void disas(FILE *out, const void *code, size_t size)
-     s.info.buffer = code;
-     s.info.buffer_vma = (uintptr_t)code;
-     s.info.buffer_length = size;
-+    s.info.show_opcodes = true;
+-void plugin_register_inline_op(GArray **arr,
+-                               enum qemu_plugin_mem_rw rw,
+-                               enum qemu_plugin_op op, void *ptr,
+-                               uint64_t imm);
+-
+ void plugin_register_inline_op_on_entry(GArray **arr,
+                                         enum qemu_plugin_mem_rw rw,
+                                         enum qemu_plugin_op op,
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 47e05ec6347..8028786c7bb 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -440,15 +440,10 @@ static TCGOp *append_inline_cb(const struct qemu_plugin_dyn_cb *cb,
+                                TCGOp *begin_op, TCGOp *op,
+                                int *unused)
+ {
+-    char *ptr = cb->userp;
+-    size_t elem_size = 0;
+-    size_t offset = 0;
+-    if (!ptr) {
+-        /* use inline entry */
+-        ptr = cb->inline_insn.entry.score->data->data;
+-        elem_size = g_array_get_element_size(cb->inline_insn.entry.score->data);
+-        offset = cb->inline_insn.entry.offset;
+-    }
++    char *ptr = cb->inline_insn.entry.score->data->data;
++    size_t elem_size = g_array_get_element_size(
++        cb->inline_insn.entry.score->data);
++    size_t offset = cb->inline_insn.entry.offset;
  
-     if (s.info.cap_arch >= 0 && cap_disas_host(&s.info, code, size)) {
-         return;
+     op = copy_ld_i32(&begin_op, op);
+     op = copy_mul_i32(&begin_op, op, elem_size);
+diff --git a/plugins/core.c b/plugins/core.c
+index 7852590da88..11ca20e6267 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -316,22 +316,6 @@ static struct qemu_plugin_dyn_cb *plugin_get_dyn_cb(GArray **arr)
+     return &g_array_index(cbs, struct qemu_plugin_dyn_cb, cbs->len - 1);
+ }
+ 
+-void plugin_register_inline_op(GArray **arr,
+-                               enum qemu_plugin_mem_rw rw,
+-                               enum qemu_plugin_op op,
+-                               void *ptr,
+-                               uint64_t imm)
+-{
+-    struct qemu_plugin_dyn_cb *dyn_cb;
+-
+-    dyn_cb = plugin_get_dyn_cb(arr);
+-    dyn_cb->userp = ptr;
+-    dyn_cb->type = PLUGIN_CB_INLINE;
+-    dyn_cb->rw = rw;
+-    dyn_cb->inline_insn.op = op;
+-    dyn_cb->inline_insn.imm = imm;
+-}
+-
+ void plugin_register_inline_op_on_entry(GArray **arr,
+                                         enum qemu_plugin_mem_rw rw,
+                                         enum qemu_plugin_op op,
+@@ -494,15 +478,10 @@ void qemu_plugin_flush_cb(void)
+ 
+ void exec_inline_op(struct qemu_plugin_dyn_cb *cb, int cpu_index)
+ {
+-    char *ptr = cb->userp;
+-    size_t elem_size = 0;
+-    size_t offset = 0;
+-    if (!ptr) {
+-        /* use inline entry */
+-        ptr = cb->inline_insn.entry.score->data->data;
+-        elem_size = g_array_get_element_size(cb->inline_insn.entry.score->data);
+-        offset = cb->inline_insn.entry.offset;
+-    }
++    char *ptr = cb->inline_insn.entry.score->data->data;
++    size_t elem_size = g_array_get_element_size(
++        cb->inline_insn.entry.score->data);
++    size_t offset = cb->inline_insn.entry.offset;
+     uint64_t *val = (uint64_t *)(ptr + offset + cpu_index * elem_size);
+ 
+     switch (cb->inline_insn.op) {
 -- 
 2.39.2

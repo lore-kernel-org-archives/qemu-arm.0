@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r15-20020a05600c35cf00b00412e3717ae6sm6193958wmq.36.2024.03.05.04.10.05
+        by smtp.gmail.com with ESMTPSA id h3-20020adfa4c3000000b0033dd2a7167fsm14970270wrb.29.2024.03.05.04.10.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Mar 2024 04:10:06 -0800 (PST)
+        Tue, 05 Mar 2024 04:10:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7F1E45F8E5;
+	by draig.lan (Postfix) with ESMTP id DC55A5F954;
 	Tue,  5 Mar 2024 12:10:05 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,48 +51,56 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 01/29] tests: bump QOS_PATH_MAX_ELEMENT_SIZE again
-Date: Tue,  5 Mar 2024 12:09:37 +0000
-Message-Id: <20240305121005.3528075-2-alex.bennee@linaro.org>
+Subject: [PATCH 04/29] {linux,bsd}-user: Update ts_tid after fork()
+Date: Tue,  5 Mar 2024 12:09:40 +0000
+Message-Id: <20240305121005.3528075-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: s4U2ztnE1ZWG
+X-TUID: L/PqQn/34c44
 
-We "fixed" a bug with LTO builds with 100c459f194 (tests/qtest: bump
-up QOS_PATH_MAX_ELEMENT_SIZE) but it seems it has triggered again.
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-The array is sized according to the maximum anticipated length of a
-path on the graph. However, the worst case for a depth-first search is
-to push all nodes on the graph. So it's not really LTO, it depends on
-the ordering of the constructors.
+Currently ts_tid contains the parent tid after fork(), which is not
+correct. So far it has not affected anything, but the upcoming
+follow-fork-mode child support relies on the correct value, so fix it.
 
-Lets be more assertive raising QOS_PATH_MAX_ELEMENT_SIZE to make it go
-away again.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1186 (again)
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Message-Id: <20240219141628.246823-4-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240304193702.3195255-1-alex.bennee@linaro.org>
 ---
- tests/qtest/libqos/qgraph.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ bsd-user/main.c   | 1 +
+ linux-user/main.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/tests/qtest/libqos/qgraph.h b/tests/qtest/libqos/qgraph.h
-index 287022a67c1..1b5de02e7be 100644
---- a/tests/qtest/libqos/qgraph.h
-+++ b/tests/qtest/libqos/qgraph.h
-@@ -24,7 +24,7 @@
- #include "libqos-malloc.h"
- 
- /* maximum path length */
--#define QOS_PATH_MAX_ELEMENT_SIZE 64
-+#define QOS_PATH_MAX_ELEMENT_SIZE 128
- 
- typedef struct QOSGraphObject QOSGraphObject;
- typedef struct QOSGraphNode QOSGraphNode;
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 512d4ab69fc..e39eef3040f 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -134,6 +134,7 @@ void fork_end(int child)
+          * state, so we don't need to end_exclusive() here.
+          */
+         qemu_init_cpu_list();
++        get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
+         gdbserver_fork(thread_cpu);
+     } else {
+         mmap_fork_end(child);
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 551acf16619..699da773714 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -161,6 +161,7 @@ void fork_end(int child)
+             }
+         }
+         qemu_init_cpu_list();
++        get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
+         gdbserver_fork(thread_cpu);
+     } else {
+         cpu_list_unlock();
 -- 
 2.39.2

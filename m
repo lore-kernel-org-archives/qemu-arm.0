@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d7-20020adf9c87000000b0033d640c8942sm14870192wre.10.2024.03.05.04.10.09
+        by smtp.gmail.com with ESMTPSA id u20-20020adfcb14000000b0033b7ce8b496sm14732205wrh.108.2024.03.05.04.10.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D029E5F9DE;
+	by draig.lan (Postfix) with ESMTP id 9FDDD5F9D3;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,268 +51,310 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 14/29] plugins: scoreboard API
-Date: Tue,  5 Mar 2024 12:09:50 +0000
-Message-Id: <20240305121005.3528075-15-alex.bennee@linaro.org>
+Subject: [PATCH 12/29] gdbstub: Implement follow-fork-mode child
+Date: Tue,  5 Mar 2024 12:09:48 +0000
+Message-Id: <20240305121005.3528075-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: n0uWr4ONqBEv
+X-TUID: P6WjLcAw200E
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-We introduce a cpu local storage, automatically managed (and extended)
-by QEMU itself. Plugin allocate a scoreboard, and don't have to deal
-with how many cpus are launched.
+Currently it's not possible to use gdbstub for debugging linux-user
+code that runs in a forked child, which is normally done using the `set
+follow-fork-mode child` GDB command. Purely on the protocol level, the
+missing piece is the fork-events feature.
 
-This API will be used by new inline functions but callbacks can benefit
-from this as well. This way, they can operate without a global lock for
-simple operations.
+However, a deeper problem is supporting $Hg switching between different
+processes - right now it can do only threads. Implementing this for the
+general case would be quite complicated, but, fortunately, for the
+follow-fork-mode case there are a few factors that greatly simplify
+things: fork() happens in the exclusive section, there are only two
+processes involved, and before one of them is resumed, the second one
+is detached.
 
-At any point during execution, any scoreboard will be dimensioned with
-at least qemu_plugin_num_vcpus entries.
+This makes it possible to implement a simplified scheme: the parent and
+the child share the gdbserver socket, it's used only by one of them at
+any given time, which is coordinated through a separate socketpair. The
+processes can read from the gdbserver socket only one byte at a time,
+which is not great for performance, but, fortunately, the
+follow-fork-mode handling involves only a few messages.
 
-New functions:
-- qemu_plugin_scoreboard_find
-- qemu_plugin_scoreboard_free
-- qemu_plugin_scoreboard_new
+Advertise the fork-events support, and remember whether GDB has it
+as well. Implement the state machine that is initialized on fork(),
+decides the current owner of the gdbserver socket, and is terminated
+when one of the two processes is detached. The logic for the parent and
+the child is the same, only the initial state is different.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240304130036.124418-2-pierrick.bouvier@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-12-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h        |  6 ++++
- include/qemu/qemu-plugin.h   | 31 ++++++++++++++++++++
- plugins/plugin.h             |  6 ++++
- plugins/api.c                | 19 ++++++++++++
- plugins/core.c               | 57 ++++++++++++++++++++++++++++++++++++
- plugins/qemu-plugins.symbols |  3 ++
- 6 files changed, 122 insertions(+)
+ gdbstub/user.c | 212 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 210 insertions(+), 2 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index b3c94a34aa4..bf96d2c2aa3 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -112,6 +112,12 @@ struct qemu_plugin_insn {
-     bool mem_only;
- };
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 1a7b582a40d..7f9f19a1249 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -25,6 +25,61 @@
+ #define GDB_NR_SYSCALLS 1024
+ typedef unsigned long GDBSyscallsMask[BITS_TO_LONGS(GDB_NR_SYSCALLS)];
  
-+/* A scoreboard is an array of values, indexed by vcpu_index */
-+struct qemu_plugin_scoreboard {
-+    GArray *data;
-+    QLIST_ENTRY(qemu_plugin_scoreboard) entry;
++/*
++ * Forked child talks to its parent in order to let GDB enforce the
++ * follow-fork-mode. This happens inside a start_exclusive() section, so that
++ * the other threads, which may be forking too, do not interfere. The
++ * implementation relies on GDB not sending $vCont until it has detached
++ * either from the parent (follow-fork-mode child) or from the child
++ * (follow-fork-mode parent).
++ *
++ * The parent and the child share the GDB socket; at any given time only one
++ * of them is allowed to use it, as is reflected in the respective fork_state.
++ * This is negotiated via the fork_sockets pair as a reaction to $Hg.
++ *
++ * Below is a short summary of the possible state transitions:
++ *
++ *     ENABLED                     : Terminal state.
++ *     DISABLED                    : Terminal state.
++ *     ACTIVE                      : Parent initial state.
++ *     INACTIVE                    : Child initial state.
++ *     ACTIVE       -> DEACTIVATING: On $Hg.
++ *     ACTIVE       -> ENABLING    : On $D.
++ *     ACTIVE       -> DISABLING   : On $D.
++ *     ACTIVE       -> DISABLED    : On communication error.
++ *     DEACTIVATING -> INACTIVE    : On gdb_read_byte() return.
++ *     DEACTIVATING -> DISABLED    : On communication error.
++ *     INACTIVE     -> ACTIVE      : On $Hg in the peer.
++ *     INACTIVE     -> ENABLE      : On $D in the peer.
++ *     INACTIVE     -> DISABLE     : On $D in the peer.
++ *     INACTIVE     -> DISABLED    : On communication error.
++ *     ENABLING     -> ENABLED     : On gdb_read_byte() return.
++ *     ENABLING     -> DISABLED    : On communication error.
++ *     DISABLING    -> DISABLED    : On gdb_read_byte() return.
++ */
++enum GDBForkState {
++    /* Fully owning the GDB socket. */
++    GDB_FORK_ENABLED,
++    /* Working with the GDB socket; the peer is inactive. */
++    GDB_FORK_ACTIVE,
++    /* Handing off the GDB socket to the peer. */
++    GDB_FORK_DEACTIVATING,
++    /* The peer is working with the GDB socket. */
++    GDB_FORK_INACTIVE,
++    /* Asking the peer to close its GDB socket fd. */
++    GDB_FORK_ENABLING,
++    /* Asking the peer to take over, closing our GDB socket fd. */
++    GDB_FORK_DISABLING,
++    /* The peer has taken over, our GDB socket fd is closed. */
++    GDB_FORK_DISABLED,
 +};
 +
- /*
-  * qemu_plugin_insn allocate and cleanup functions. We don't expect to
-  * cleanup many of these structures. They are reused for each fresh
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 45e2ebc8f8f..31c468ddb2c 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -222,6 +222,8 @@ void qemu_plugin_register_vcpu_resume_cb(qemu_plugin_id_t id,
- struct qemu_plugin_tb;
- /** struct qemu_plugin_insn - Opaque handle for a translated instruction */
- struct qemu_plugin_insn;
-+/** struct qemu_plugin_scoreboard - Opaque handle for a scoreboard */
-+struct qemu_plugin_scoreboard;
- 
- /**
-  * enum qemu_plugin_cb_flags - type of callback
-@@ -752,5 +754,34 @@ QEMU_PLUGIN_API
- int qemu_plugin_read_register(struct qemu_plugin_register *handle,
-                               GByteArray *buf);
- 
-+/**
-+ * qemu_plugin_scoreboard_new() - alloc a new scoreboard
-+ *
-+ * @element_size: size (in bytes) for one entry
-+ *
-+ * Returns a pointer to a new scoreboard. It must be freed using
-+ * qemu_plugin_scoreboard_free.
-+ */
-+QEMU_PLUGIN_API
-+struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size);
++enum GDBForkMessage {
++    GDB_FORK_ACTIVATE = 'a',
++    GDB_FORK_ENABLE = 'e',
++    GDB_FORK_DISABLE = 'd',
++};
 +
-+/**
-+ * qemu_plugin_scoreboard_free() - free a scoreboard
-+ * @score: scoreboard to free
-+ */
-+QEMU_PLUGIN_API
-+void qemu_plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
-+
-+/**
-+ * qemu_plugin_scoreboard_find() - get pointer to an entry of a scoreboard
-+ * @score: scoreboard to query
-+ * @vcpu_index: entry index
-+ *
-+ * Returns address of entry of a scoreboard matching a given vcpu_index. This
-+ * address can be modified later if scoreboard is resized.
-+ */
-+QEMU_PLUGIN_API
-+void *qemu_plugin_scoreboard_find(struct qemu_plugin_scoreboard *score,
-+                                  unsigned int vcpu_index);
- 
- #endif /* QEMU_QEMU_PLUGIN_H */
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 00b3509f708..043c740067d 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -31,6 +31,8 @@ struct qemu_plugin_state {
-      * but with the HT we avoid adding a field to CPUState.
+ /* User-mode specific state */
+ typedef struct {
+     int fd;
+@@ -36,6 +91,10 @@ typedef struct {
       */
-     GHashTable *cpu_ht;
-+    QLIST_HEAD(, qemu_plugin_scoreboard) scoreboards;
-+    size_t scoreboard_alloc_size;
-     DECLARE_BITMAP(mask, QEMU_PLUGIN_EV_MAX);
-     /*
-      * @lock protects the struct as well as ctx->uninstalling.
-@@ -101,4 +103,8 @@ void exec_inline_op(struct qemu_plugin_dyn_cb *cb);
+     bool catch_all_syscalls;
+     GDBSyscallsMask catch_syscalls_mask;
++    bool fork_events;
++    enum GDBForkState fork_state;
++    int fork_sockets[2];
++    pid_t fork_peer_pid, fork_peer_tid;
+ } GDBUserState;
  
- int plugin_num_vcpus(void);
+ static GDBUserState gdbserver_user_state;
+@@ -358,6 +417,18 @@ int gdbserver_start(const char *port_or_path)
  
-+struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
-+
-+void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
-+
- #endif /* PLUGIN_H */
-diff --git a/plugins/api.c b/plugins/api.c
-index e905e995bd6..76b2e652b9c 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -465,3 +465,22 @@ int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
- 
-     return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg));
- }
-+
-+struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size)
-+{
-+    return plugin_scoreboard_new(element_size);
-+}
-+
-+void qemu_plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
-+{
-+    plugin_scoreboard_free(score);
-+}
-+
-+void *qemu_plugin_scoreboard_find(struct qemu_plugin_scoreboard *score,
-+                                  unsigned int vcpu_index)
-+{
-+    g_assert(vcpu_index < qemu_plugin_num_vcpus());
-+    /* we can't use g_array_index since entry size is not statically known */
-+    char *base_ptr = score->data->data;
-+    return base_ptr + vcpu_index * g_array_get_element_size(score->data);
-+}
-diff --git a/plugins/core.c b/plugins/core.c
-index 2db4d31354b..63f4c6c6ce3 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -18,6 +18,7 @@
- #include "qemu/lockable.h"
- #include "qemu/option.h"
- #include "qemu/plugin.h"
-+#include "qemu/queue.h"
- #include "qemu/rcu_queue.h"
- #include "qemu/xxhash.h"
- #include "qemu/rcu.h"
-@@ -215,6 +216,35 @@ CPUPluginState *qemu_plugin_create_vcpu_state(void)
-     return g_new0(CPUPluginState, 1);
+ void gdbserver_fork_start(void)
+ {
++    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
++        return;
++    }
++    if (!gdbserver_user_state.fork_events ||
++            qemu_socketpair(AF_UNIX, SOCK_STREAM, 0,
++                            gdbserver_user_state.fork_sockets) < 0) {
++        gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
++        return;
++    }
++    gdbserver_user_state.fork_state = GDB_FORK_INACTIVE;
++    gdbserver_user_state.fork_peer_pid = getpid();
++    gdbserver_user_state.fork_peer_tid = qemu_get_thread_id();
  }
  
-+static void plugin_grow_scoreboards__locked(CPUState *cpu)
-+{
-+    if (cpu->cpu_index < plugin.scoreboard_alloc_size) {
+ static void disable_gdbstub(CPUState *thread_cpu)
+@@ -376,23 +447,160 @@ static void disable_gdbstub(CPUState *thread_cpu)
+ 
+ void gdbserver_fork_end(CPUState *cpu, pid_t pid)
+ {
+-    if (pid != 0 || !gdbserver_state.init || gdbserver_user_state.fd < 0) {
++    char b;
++    int fd;
++
++    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
+         return;
+     }
+-    disable_gdbstub(cpu);
++
++    if (pid == -1) {
++        if (gdbserver_user_state.fork_state != GDB_FORK_DISABLED) {
++            g_assert(gdbserver_user_state.fork_state == GDB_FORK_INACTIVE);
++            close(gdbserver_user_state.fork_sockets[0]);
++            close(gdbserver_user_state.fork_sockets[1]);
++        }
 +        return;
 +    }
 +
-+    bool need_realloc = FALSE;
-+    while (cpu->cpu_index >= plugin.scoreboard_alloc_size) {
-+        plugin.scoreboard_alloc_size *= 2;
-+        need_realloc = TRUE;
-+    }
-+
-+
-+    if (!need_realloc || QLIST_EMPTY(&plugin.scoreboards)) {
-+        /* nothing to do, we just updated sizes for future scoreboards */
++    if (gdbserver_user_state.fork_state == GDB_FORK_DISABLED) {
++        if (pid == 0) {
++            disable_gdbstub(cpu);
++        }
 +        return;
 +    }
 +
-+    /* cpus must be stopped, as tb might still use an existing scoreboard. */
-+    start_exclusive();
-+    struct qemu_plugin_scoreboard *score;
-+    QLIST_FOREACH(score, &plugin.scoreboards, entry) {
-+        g_array_set_size(score->data, plugin.scoreboard_alloc_size);
++    if (pid == 0) {
++        close(gdbserver_user_state.fork_sockets[0]);
++        fd = gdbserver_user_state.fork_sockets[1];
++        g_assert(gdbserver_state.process_num == 1);
++        g_assert(gdbserver_state.processes[0].pid ==
++                     gdbserver_user_state.fork_peer_pid);
++        g_assert(gdbserver_state.processes[0].attached);
++        gdbserver_state.processes[0].pid = getpid();
++    } else {
++        close(gdbserver_user_state.fork_sockets[1]);
++        fd = gdbserver_user_state.fork_sockets[0];
++        gdbserver_user_state.fork_state = GDB_FORK_ACTIVE;
++        gdbserver_user_state.fork_peer_pid = pid;
++        gdbserver_user_state.fork_peer_tid = pid;
++
++        if (!gdbserver_state.allow_stop_reply) {
++            goto fail;
++        }
++        g_string_printf(gdbserver_state.str_buf,
++                        "T%02xfork:p%02x.%02x;thread:p%02x.%02x;",
++                        gdb_target_signal_to_gdb(gdb_target_sigtrap()),
++                        pid, pid, (int)getpid(), qemu_get_thread_id());
++        gdb_put_strbuf();
 +    }
-+    /* force all tb to be flushed, as scoreboard pointers were changed. */
-+    tb_flush(cpu);
-+    end_exclusive();
-+}
 +
- void qemu_plugin_vcpu_init_hook(CPUState *cpu)
- {
-     bool success;
-@@ -225,6 +255,7 @@ void qemu_plugin_vcpu_init_hook(CPUState *cpu)
-     success = g_hash_table_insert(plugin.cpu_ht, &cpu->cpu_index,
-                                   &cpu->cpu_index);
-     g_assert(success);
-+    plugin_grow_scoreboards__locked(cpu);
-     qemu_rec_mutex_unlock(&plugin.lock);
- 
-     plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_INIT);
-@@ -578,6 +609,8 @@ static void __attribute__((__constructor__)) plugin_init(void)
-     qemu_rec_mutex_init(&plugin.lock);
-     plugin.id_ht = g_hash_table_new(g_int64_hash, g_int64_equal);
-     plugin.cpu_ht = g_hash_table_new(g_int_hash, g_int_equal);
-+    QLIST_INIT(&plugin.scoreboards);
-+    plugin.scoreboard_alloc_size = 16; /* avoid frequent reallocation */
-     QTAILQ_INIT(&plugin.ctxs);
-     qht_init(&plugin.dyn_cb_arr_ht, plugin_dyn_cb_arr_cmp, 16,
-              QHT_MODE_AUTO_RESIZE);
-@@ -588,3 +621,27 @@ int plugin_num_vcpus(void)
- {
-     return plugin.num_vcpus;
++    gdbserver_state.state = RS_IDLE;
++    gdbserver_state.allow_stop_reply = false;
++    gdbserver_user_state.running_state = 0;
++    for (;;) {
++        switch (gdbserver_user_state.fork_state) {
++        case GDB_FORK_ENABLED:
++            if (gdbserver_user_state.running_state) {
++                return;
++            }
++            QEMU_FALLTHROUGH;
++        case GDB_FORK_ACTIVE:
++            if (read(gdbserver_user_state.fd, &b, 1) != 1) {
++                goto fail;
++            }
++            gdb_read_byte(b);
++            break;
++        case GDB_FORK_DEACTIVATING:
++            b = GDB_FORK_ACTIVATE;
++            if (write(fd, &b, 1) != 1) {
++                goto fail;
++            }
++            gdbserver_user_state.fork_state = GDB_FORK_INACTIVE;
++            break;
++        case GDB_FORK_INACTIVE:
++            if (read(fd, &b, 1) != 1) {
++                goto fail;
++            }
++            switch (b) {
++            case GDB_FORK_ACTIVATE:
++                gdbserver_user_state.fork_state = GDB_FORK_ACTIVE;
++                break;
++            case GDB_FORK_ENABLE:
++                close(fd);
++                gdbserver_user_state.fork_state = GDB_FORK_ENABLED;
++                break;
++            case GDB_FORK_DISABLE:
++                gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
++                break;
++            default:
++                g_assert_not_reached();
++            }
++            break;
++        case GDB_FORK_ENABLING:
++            b = GDB_FORK_DISABLE;
++            if (write(fd, &b, 1) != 1) {
++                goto fail;
++            }
++            close(fd);
++            gdbserver_user_state.fork_state = GDB_FORK_ENABLED;
++            break;
++        case GDB_FORK_DISABLING:
++            b = GDB_FORK_ENABLE;
++            if (write(fd, &b, 1) != 1) {
++                goto fail;
++            }
++            gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
++            break;
++        case GDB_FORK_DISABLED:
++            close(fd);
++            disable_gdbstub(cpu);
++            return;
++        default:
++            g_assert_not_reached();
++        }
++    }
++
++fail:
++    close(fd);
++    if (pid == 0) {
++        disable_gdbstub(cpu);
++    }
  }
+ 
+ void gdb_handle_query_supported_user(const char *gdb_supported)
+ {
++    if (strstr(gdb_supported, "fork-events+")) {
++        gdbserver_user_state.fork_events = true;
++    }
++    g_string_append(gdbserver_state.str_buf, ";fork-events+");
+ }
+ 
+ bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
+ {
++    if (gdbserver_user_state.fork_state == GDB_FORK_ACTIVE &&
++            pid == gdbserver_user_state.fork_peer_pid &&
++            tid == gdbserver_user_state.fork_peer_tid) {
++        gdbserver_user_state.fork_state = GDB_FORK_DEACTIVATING;
++        gdb_put_packet("OK");
++        return true;
++    }
+     return false;
+ }
+ 
+ bool gdb_handle_detach_user(uint32_t pid)
+ {
++    bool enable;
 +
-+struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size)
-+{
-+    struct qemu_plugin_scoreboard *score =
-+        g_malloc0(sizeof(struct qemu_plugin_scoreboard));
-+    score->data = g_array_new(FALSE, TRUE, element_size);
-+    g_array_set_size(score->data, plugin.scoreboard_alloc_size);
-+
-+    qemu_rec_mutex_lock(&plugin.lock);
-+    QLIST_INSERT_HEAD(&plugin.scoreboards, score, entry);
-+    qemu_rec_mutex_unlock(&plugin.lock);
-+
-+    return score;
-+}
-+
-+void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
-+{
-+    qemu_rec_mutex_lock(&plugin.lock);
-+    QLIST_REMOVE(score, entry);
-+    qemu_rec_mutex_unlock(&plugin.lock);
-+
-+    g_array_free(score->data, TRUE);
-+    g_free(score);
-+}
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index 27fe97239be..3f93e7d6b13 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -37,6 +37,9 @@
-   qemu_plugin_register_vcpu_tb_exec_inline;
-   qemu_plugin_register_vcpu_tb_trans_cb;
-   qemu_plugin_reset;
-+  qemu_plugin_scoreboard_free;
-+  qemu_plugin_scoreboard_find;
-+  qemu_plugin_scoreboard_new;
-   qemu_plugin_start_code;
-   qemu_plugin_tb_get_insn;
-   qemu_plugin_tb_n_insns;
++    if (gdbserver_user_state.fork_state == GDB_FORK_ACTIVE) {
++        enable = pid == gdbserver_user_state.fork_peer_pid;
++        if (enable || pid == getpid()) {
++            gdbserver_user_state.fork_state = enable ? GDB_FORK_ENABLING :
++                                                       GDB_FORK_DISABLING;
++            gdb_put_packet("OK");
++            return true;
++        }
++    }
+     return false;
+ }
+ 
 -- 
 2.39.2

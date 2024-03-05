@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i10-20020a05600011ca00b0033b60bad2fcsm14828244wrx.113.2024.03.05.04.10.08
+        by smtp.gmail.com with ESMTPSA id d7-20020adf9c87000000b0033d640c8942sm14870192wre.10.2024.03.05.04.10.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 496475F9CB;
+	by draig.lan (Postfix) with ESMTP id D029E5F9DE;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,102 +51,268 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 08/29] gdbstub: Call gdbserver_fork() both in parent and in child
-Date: Tue,  5 Mar 2024 12:09:44 +0000
-Message-Id: <20240305121005.3528075-9-alex.bennee@linaro.org>
+Subject: [PATCH 14/29] plugins: scoreboard API
+Date: Tue,  5 Mar 2024 12:09:50 +0000
+Message-Id: <20240305121005.3528075-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BXrx3JITTGRa
+X-TUID: n0uWr4ONqBEv
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-The upcoming follow-fork-mode child support requires post-fork message
-exchange between the parent and the child. Prepare gdbserver_fork() for
-this purpose. Rename it to gdbserver_fork_end() to better reflect its
-purpose.
+We introduce a cpu local storage, automatically managed (and extended)
+by QEMU itself. Plugin allocate a scoreboard, and don't have to deal
+with how many cpus are launched.
+
+This API will be used by new inline functions but callbacks can benefit
+from this as well. This way, they can operate without a global lock for
+simple operations.
+
+At any point during execution, any scoreboard will be dimensioned with
+at least qemu_plugin_num_vcpus entries.
+
+New functions:
+- qemu_plugin_scoreboard_find
+- qemu_plugin_scoreboard_free
+- qemu_plugin_scoreboard_new
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-8-iii@linux.ibm.com>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240304130036.124418-2-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/gdbstub/user.h | 5 +++--
- bsd-user/main.c        | 3 ++-
- gdbstub/user.c         | 5 ++---
- linux-user/main.c      | 2 +-
- 4 files changed, 8 insertions(+), 7 deletions(-)
+ include/qemu/plugin.h        |  6 ++++
+ include/qemu/qemu-plugin.h   | 31 ++++++++++++++++++++
+ plugins/plugin.h             |  6 ++++
+ plugins/api.c                | 19 ++++++++++++
+ plugins/core.c               | 57 ++++++++++++++++++++++++++++++++++++
+ plugins/qemu-plugins.symbols |  3 ++
+ 6 files changed, 122 insertions(+)
 
-diff --git a/include/gdbstub/user.h b/include/gdbstub/user.h
-index 3f9f45946e0..4c4e5c4c582 100644
---- a/include/gdbstub/user.h
-+++ b/include/gdbstub/user.h
-@@ -51,10 +51,11 @@ void gdb_signalled(CPUArchState *as, int sig);
- void gdbserver_fork_start(void);
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index b3c94a34aa4..bf96d2c2aa3 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -112,6 +112,12 @@ struct qemu_plugin_insn {
+     bool mem_only;
+ };
+ 
++/* A scoreboard is an array of values, indexed by vcpu_index */
++struct qemu_plugin_scoreboard {
++    GArray *data;
++    QLIST_ENTRY(qemu_plugin_scoreboard) entry;
++};
++
+ /*
+  * qemu_plugin_insn allocate and cleanup functions. We don't expect to
+  * cleanup many of these structures. They are reused for each fresh
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index 45e2ebc8f8f..31c468ddb2c 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -222,6 +222,8 @@ void qemu_plugin_register_vcpu_resume_cb(qemu_plugin_id_t id,
+ struct qemu_plugin_tb;
+ /** struct qemu_plugin_insn - Opaque handle for a translated instruction */
+ struct qemu_plugin_insn;
++/** struct qemu_plugin_scoreboard - Opaque handle for a scoreboard */
++struct qemu_plugin_scoreboard;
  
  /**
-- * gdbserver_fork() - disable gdb stub for child processes.
-+ * gdbserver_fork_end() - inform gdb of the completed fork()
-  * @cs: CPU
-+ * @pid: 0 if in child process, -1 if fork failed, child process pid otherwise
-  */
--void gdbserver_fork(CPUState *cs, pid_t pid);
-+void gdbserver_fork_end(CPUState *cs, pid_t pid);
+  * enum qemu_plugin_cb_flags - type of callback
+@@ -752,5 +754,34 @@ QEMU_PLUGIN_API
+ int qemu_plugin_read_register(struct qemu_plugin_register *handle,
+                               GByteArray *buf);
  
- /**
-  * gdb_syscall_entry() - inform gdb of syscall entry and yield control to it
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 0dbd1cf8801..3dc285e5b74 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -138,10 +138,11 @@ void fork_end(pid_t pid)
-          */
-         qemu_init_cpu_list();
-         get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
--        gdbserver_fork(thread_cpu, pid);
-+        gdbserver_fork_end(thread_cpu, pid);
-     } else {
-         mmap_fork_end(child);
-         cpu_list_unlock();
-+        gdbserver_fork_end(thread_cpu, pid);
-         end_exclusive();
-     }
- }
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index c61e1a0d1f6..866a25f9c06 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -374,10 +374,9 @@ static void disable_gdbstub(CPUState *thread_cpu)
-     tb_flush(thread_cpu);
- }
++/**
++ * qemu_plugin_scoreboard_new() - alloc a new scoreboard
++ *
++ * @element_size: size (in bytes) for one entry
++ *
++ * Returns a pointer to a new scoreboard. It must be freed using
++ * qemu_plugin_scoreboard_free.
++ */
++QEMU_PLUGIN_API
++struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size);
++
++/**
++ * qemu_plugin_scoreboard_free() - free a scoreboard
++ * @score: scoreboard to free
++ */
++QEMU_PLUGIN_API
++void qemu_plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
++
++/**
++ * qemu_plugin_scoreboard_find() - get pointer to an entry of a scoreboard
++ * @score: scoreboard to query
++ * @vcpu_index: entry index
++ *
++ * Returns address of entry of a scoreboard matching a given vcpu_index. This
++ * address can be modified later if scoreboard is resized.
++ */
++QEMU_PLUGIN_API
++void *qemu_plugin_scoreboard_find(struct qemu_plugin_scoreboard *score,
++                                  unsigned int vcpu_index);
  
--/* Disable gdb stub for child processes.  */
--void gdbserver_fork(CPUState *cpu, pid_t pid)
-+void gdbserver_fork_end(CPUState *cpu, pid_t pid)
- {
--    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
-+    if (pid != 0 || !gdbserver_state.init || gdbserver_user_state.fd < 0) {
-         return;
-     }
-     disable_gdbstub(cpu);
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 70314e0ab6a..41caa77cb52 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -165,10 +165,10 @@ void fork_end(pid_t pid)
-         }
-         qemu_init_cpu_list();
-         get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
--        gdbserver_fork(thread_cpu, pid);
-     } else {
-         cpu_list_unlock();
-     }
-+    gdbserver_fork_end(thread_cpu, pid);
+ #endif /* QEMU_QEMU_PLUGIN_H */
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 00b3509f708..043c740067d 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -31,6 +31,8 @@ struct qemu_plugin_state {
+      * but with the HT we avoid adding a field to CPUState.
+      */
+     GHashTable *cpu_ht;
++    QLIST_HEAD(, qemu_plugin_scoreboard) scoreboards;
++    size_t scoreboard_alloc_size;
+     DECLARE_BITMAP(mask, QEMU_PLUGIN_EV_MAX);
      /*
-      * qemu_init_cpu_list() reinitialized the child exclusive state, but we
-      * also need to keep current_cpu consistent, so call end_exclusive() for
+      * @lock protects the struct as well as ctx->uninstalling.
+@@ -101,4 +103,8 @@ void exec_inline_op(struct qemu_plugin_dyn_cb *cb);
+ 
+ int plugin_num_vcpus(void);
+ 
++struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size);
++
++void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score);
++
+ #endif /* PLUGIN_H */
+diff --git a/plugins/api.c b/plugins/api.c
+index e905e995bd6..76b2e652b9c 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -465,3 +465,22 @@ int qemu_plugin_read_register(struct qemu_plugin_register *reg, GByteArray *buf)
+ 
+     return gdb_read_register(current_cpu, buf, GPOINTER_TO_INT(reg));
+ }
++
++struct qemu_plugin_scoreboard *qemu_plugin_scoreboard_new(size_t element_size)
++{
++    return plugin_scoreboard_new(element_size);
++}
++
++void qemu_plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
++{
++    plugin_scoreboard_free(score);
++}
++
++void *qemu_plugin_scoreboard_find(struct qemu_plugin_scoreboard *score,
++                                  unsigned int vcpu_index)
++{
++    g_assert(vcpu_index < qemu_plugin_num_vcpus());
++    /* we can't use g_array_index since entry size is not statically known */
++    char *base_ptr = score->data->data;
++    return base_ptr + vcpu_index * g_array_get_element_size(score->data);
++}
+diff --git a/plugins/core.c b/plugins/core.c
+index 2db4d31354b..63f4c6c6ce3 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -18,6 +18,7 @@
+ #include "qemu/lockable.h"
+ #include "qemu/option.h"
+ #include "qemu/plugin.h"
++#include "qemu/queue.h"
+ #include "qemu/rcu_queue.h"
+ #include "qemu/xxhash.h"
+ #include "qemu/rcu.h"
+@@ -215,6 +216,35 @@ CPUPluginState *qemu_plugin_create_vcpu_state(void)
+     return g_new0(CPUPluginState, 1);
+ }
+ 
++static void plugin_grow_scoreboards__locked(CPUState *cpu)
++{
++    if (cpu->cpu_index < plugin.scoreboard_alloc_size) {
++        return;
++    }
++
++    bool need_realloc = FALSE;
++    while (cpu->cpu_index >= plugin.scoreboard_alloc_size) {
++        plugin.scoreboard_alloc_size *= 2;
++        need_realloc = TRUE;
++    }
++
++
++    if (!need_realloc || QLIST_EMPTY(&plugin.scoreboards)) {
++        /* nothing to do, we just updated sizes for future scoreboards */
++        return;
++    }
++
++    /* cpus must be stopped, as tb might still use an existing scoreboard. */
++    start_exclusive();
++    struct qemu_plugin_scoreboard *score;
++    QLIST_FOREACH(score, &plugin.scoreboards, entry) {
++        g_array_set_size(score->data, plugin.scoreboard_alloc_size);
++    }
++    /* force all tb to be flushed, as scoreboard pointers were changed. */
++    tb_flush(cpu);
++    end_exclusive();
++}
++
+ void qemu_plugin_vcpu_init_hook(CPUState *cpu)
+ {
+     bool success;
+@@ -225,6 +255,7 @@ void qemu_plugin_vcpu_init_hook(CPUState *cpu)
+     success = g_hash_table_insert(plugin.cpu_ht, &cpu->cpu_index,
+                                   &cpu->cpu_index);
+     g_assert(success);
++    plugin_grow_scoreboards__locked(cpu);
+     qemu_rec_mutex_unlock(&plugin.lock);
+ 
+     plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_INIT);
+@@ -578,6 +609,8 @@ static void __attribute__((__constructor__)) plugin_init(void)
+     qemu_rec_mutex_init(&plugin.lock);
+     plugin.id_ht = g_hash_table_new(g_int64_hash, g_int64_equal);
+     plugin.cpu_ht = g_hash_table_new(g_int_hash, g_int_equal);
++    QLIST_INIT(&plugin.scoreboards);
++    plugin.scoreboard_alloc_size = 16; /* avoid frequent reallocation */
+     QTAILQ_INIT(&plugin.ctxs);
+     qht_init(&plugin.dyn_cb_arr_ht, plugin_dyn_cb_arr_cmp, 16,
+              QHT_MODE_AUTO_RESIZE);
+@@ -588,3 +621,27 @@ int plugin_num_vcpus(void)
+ {
+     return plugin.num_vcpus;
+ }
++
++struct qemu_plugin_scoreboard *plugin_scoreboard_new(size_t element_size)
++{
++    struct qemu_plugin_scoreboard *score =
++        g_malloc0(sizeof(struct qemu_plugin_scoreboard));
++    score->data = g_array_new(FALSE, TRUE, element_size);
++    g_array_set_size(score->data, plugin.scoreboard_alloc_size);
++
++    qemu_rec_mutex_lock(&plugin.lock);
++    QLIST_INSERT_HEAD(&plugin.scoreboards, score, entry);
++    qemu_rec_mutex_unlock(&plugin.lock);
++
++    return score;
++}
++
++void plugin_scoreboard_free(struct qemu_plugin_scoreboard *score)
++{
++    qemu_rec_mutex_lock(&plugin.lock);
++    QLIST_REMOVE(score, entry);
++    qemu_rec_mutex_unlock(&plugin.lock);
++
++    g_array_free(score->data, TRUE);
++    g_free(score);
++}
+diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+index 27fe97239be..3f93e7d6b13 100644
+--- a/plugins/qemu-plugins.symbols
++++ b/plugins/qemu-plugins.symbols
+@@ -37,6 +37,9 @@
+   qemu_plugin_register_vcpu_tb_exec_inline;
+   qemu_plugin_register_vcpu_tb_trans_cb;
+   qemu_plugin_reset;
++  qemu_plugin_scoreboard_free;
++  qemu_plugin_scoreboard_find;
++  qemu_plugin_scoreboard_new;
+   qemu_plugin_start_code;
+   qemu_plugin_tb_get_insn;
+   qemu_plugin_tb_n_insns;
 -- 
 2.39.2

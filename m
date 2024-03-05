@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h3-20020adfa4c3000000b0033dd2a7167fsm14970270wrb.29.2024.03.05.04.10.06
+        by smtp.gmail.com with ESMTPSA id a12-20020a05600c348c00b00412ef5a0c78sm758146wmq.43.2024.03.05.04.10.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DC55A5F954;
-	Tue,  5 Mar 2024 12:10:05 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 009A65F956;
+	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -51,56 +51,88 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 04/29] {linux,bsd}-user: Update ts_tid after fork()
-Date: Tue,  5 Mar 2024 12:09:40 +0000
-Message-Id: <20240305121005.3528075-5-alex.bennee@linaro.org>
+Subject: [PATCH 05/29] gdbstub: Introduce gdbserver_fork_start()
+Date: Tue,  5 Mar 2024 12:09:41 +0000
+Message-Id: <20240305121005.3528075-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: L/PqQn/34c44
+X-TUID: WwavMDPO1boX
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Currently ts_tid contains the parent tid after fork(), which is not
-correct. So far it has not affected anything, but the upcoming
-follow-fork-mode child support relies on the correct value, so fix it.
+The upcoming follow-fork-mode child support requires knowing when
+fork() is about to happen in order to initialize its state. Add a hook
+for that.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-Message-Id: <20240219141628.246823-4-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-5-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- bsd-user/main.c   | 1 +
- linux-user/main.c | 1 +
- 2 files changed, 2 insertions(+)
+ include/gdbstub/user.h | 5 +++++
+ bsd-user/main.c        | 1 +
+ gdbstub/user.c         | 4 ++++
+ linux-user/main.c      | 1 +
+ 4 files changed, 11 insertions(+)
 
+diff --git a/include/gdbstub/user.h b/include/gdbstub/user.h
+index 68b6534130c..e33f8d9a9a6 100644
+--- a/include/gdbstub/user.h
++++ b/include/gdbstub/user.h
+@@ -45,6 +45,11 @@ static inline int gdb_handlesig(CPUState *cpu, int sig)
+  */
+ void gdb_signalled(CPUArchState *as, int sig);
+ 
++/**
++ * gdbserver_fork_start() - inform gdb of the upcoming fork()
++ */
++void gdbserver_fork_start(void);
++
+ /**
+  * gdbserver_fork() - disable gdb stub for child processes.
+  * @cs: CPU
 diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 512d4ab69fc..e39eef3040f 100644
+index e39eef3040f..517c6b3ec2f 100644
 --- a/bsd-user/main.c
 +++ b/bsd-user/main.c
-@@ -134,6 +134,7 @@ void fork_end(int child)
-          * state, so we don't need to end_exclusive() here.
-          */
-         qemu_init_cpu_list();
-+        get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
-         gdbserver_fork(thread_cpu);
-     } else {
-         mmap_fork_end(child);
+@@ -113,6 +113,7 @@ void fork_start(void)
+     start_exclusive();
+     cpu_list_lock();
+     mmap_fork_start();
++    gdbserver_fork_start();
+ }
+ 
+ void fork_end(int child)
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 3ce20b7bbfc..536fb43b03e 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -356,6 +356,10 @@ int gdbserver_start(const char *port_or_path)
+     return -1;
+ }
+ 
++void gdbserver_fork_start(void)
++{
++}
++
+ static void disable_gdbstub(CPUState *thread_cpu)
+ {
+     CPUState *cpu;
 diff --git a/linux-user/main.c b/linux-user/main.c
-index 551acf16619..699da773714 100644
+index 699da773714..755c566d6d2 100644
 --- a/linux-user/main.c
 +++ b/linux-user/main.c
-@@ -161,6 +161,7 @@ void fork_end(int child)
-             }
-         }
-         qemu_init_cpu_list();
-+        get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
-         gdbserver_fork(thread_cpu);
-     } else {
-         cpu_list_unlock();
+@@ -145,6 +145,7 @@ void fork_start(void)
+     mmap_fork_start();
+     cpu_list_lock();
+     qemu_plugin_user_prefork_lock();
++    gdbserver_fork_start();
+ }
+ 
+ void fork_end(int child)
 -- 
 2.39.2

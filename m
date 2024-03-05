@@ -1,119 +1,108 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2738567eja;
-        Mon, 4 Mar 2024 09:39:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUzdxZ+Hz9SNO9HYAgwRUpgeGJH6bOqu+7DpTMvIDckXn/9r1ZVDjLOf+QOqekvLaQs1s2Vdx4RAXieWqV4F2UCSeTeGI7t
-X-Google-Smtp-Source: AGHT+IHNr2Za68E0TZxj2SDBiBzKNUVIIUKh1yYuMD5ioGMgt2qItYrSm9nTaoap0L8ycUFXpDws
-X-Received: by 2002:adf:e045:0:b0:33e:cc6:8485 with SMTP id w5-20020adfe045000000b0033e0cc68485mr6394829wrh.47.1709573973898;
-        Mon, 04 Mar 2024 09:39:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709573973; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp23379ejc;
+        Mon, 4 Mar 2024 18:31:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXPlVBmZmfvX1gwUOGyk+SlpErb4ZeMO+5SCPPBNe/mXoX7plbDCAnOvYHFqbE3oCnwR0jIdhVJs8FhBR62g69tlfS2+/rC
+X-Google-Smtp-Source: AGHT+IFA+IcPusBsnwD8zd5vmuqTo2y/rET8UNtLxTN+5jZaHXL1Hpi9tMjq5BbAinbwWt7x42yO
+X-Received: by 2002:a05:6358:728b:b0:17c:1ba5:2447 with SMTP id w11-20020a056358728b00b0017c1ba52447mr568737rwf.4.1709605907533;
+        Mon, 04 Mar 2024 18:31:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709605907; cv=none;
         d=google.com; s=arc-20160816;
-        b=rDtMhZKVUsEnvXguK+rpZ+dI2zexl2kgE/lI42xFSGGg5zlZtTzN4d/JsgsVd7Ci9Q
-         lsHEgvjFwnRavolO478dMRGVC5oZoublnxDt54yIwcxDaW9hQhtrvED4teghydD4OYHu
-         OFYfXPYcEq1c6iz/N61dyzq4pq0jzvbTHeBfAw1/xdNiPgJtHyEEsnJY9Khxwo7NfKeJ
-         SP16YYc7KJyCSbdpmMj0nnNxtOOqBH6QATJnClfb4Q+V1L8APE6EHId3mpsTAnBnulUl
-         irxEA6RANBOpwFtf+FwBbHCNUq4MDumt+WpAhiy4J4jYu1RajTjNotoOWjwWmbbSbo3Q
-         A9VQ==
+        b=E3CYevhbElP1fiA7un1vEEZAIa7NjPZpl/oD1g0i6juSo5UcMUYmAH5dOW5DX57tOx
+         HsMT7RWGtoJNS3Xhp9TlIo+dbQejOTxEttRdfjX3lQNTlayME9JeElS9tbo2ZYdzhA2P
+         tCTg5Sa81YGuj+vAZHZwe3hg+Nqcynl8EF4bx14SB5Y/CQtOsIwZf7/E93Er6apeU6n/
+         AXya3vm7/m4JlzZLU1XKrHFyndizO7MEt8hNZw+01eJfE/rWyPcZ7ocBu7pYc5Oopa0P
+         fLL4NOOpdw+iY3x78YLzY0tyVa0GMaMl1nytEkb7McwDKR1wi408wwUtW4qOhaVyFs07
+         wphg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KVszsBZs9brW+lLEUkAZ9ZZ6tjG3HNNrK49mwVmLRws=;
-        fh=NRDfmRloylYVTyfdOHSoovs2Wyid8Q+7txeKjePglV0=;
-        b=z0f4BdY+M+Y8ChSS2sSEc4W36w27Uaz9SaIiaABxt/VE9gbBWCXTrpkDHRg832MtfG
-         GbLHWkAJ8pvDCZRds8XU7fm4dxy6OO2ivQOTFZYjID4ewQhAiibCKBFoWS22Yid6uoBx
-         qBTTjmIq7t6JWGtlDvBrjiBf2lQnCBMuUStWs7OkXGM3un8KdBrY/wA/7yDzFgrcrdFy
-         nWUtHSKbnh83iS8NEvjyDEXUCCrTprqvmfuV6PkNzUrlqMopn3n71Xb2bXmXCRfq0ets
-         QE7ejmV3uR+VCuDUTMvekrF+5Pn8dab5Uamwqh9oHl3TTPB5tm7MdtWQcHeYrsj/B7bG
-         aosw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gZ/X+Gm6f8G27zUrqUaBxmrYaEWuc6ExS67JFkwCyrQ=;
+        fh=quVKJN+JogokNzsp4kwoA7mheGRSBID5PxcC4hooSO8=;
+        b=m/0lj7057eLPulWTDirZG8A5E5LFon6p6SExhh/f1k6sTCd0XpomT+AtLsb5oTLt2V
+         1LZeaSwHLwONQvEh4I4PMHLsHR9iwk5Tu5mEJyDnOG4G/Ij3PiNsLd0wLrmHU/aIOvYP
+         /HTzh1Zm7KbuN819duHFL9/TOTF5azrd/e+QryofgTzaOa7EjRJe8bXeqGeBn+GxTRSI
+         gg3lmXTMUs1zPmwwHIvx9wrDz4MPG5jdLyQLpWXm4f2kNAjnuWFEVkdIG3tCkQQzCUms
+         RhUe7EmdaWzXGhH+MHEvxISHK7OcjoEm8eCqId7JoNTKzmTc/DdvgDJ1pI6O/t2fP0Ry
+         T9cA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="WPJA5/JU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=O0v4Lcme;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020a056000180600b0033dcc7ccfacsi5490733wrh.804.2024.03.04.09.39.33
+        by mx.google.com with ESMTPS id on33-20020a05621444a100b0068edf63c212si11046406qvb.152.2024.03.04.18.31.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 09:39:33 -0800 (PST)
+        Mon, 04 Mar 2024 18:31:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="WPJA5/JU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=O0v4Lcme;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhCHG-0006td-7f; Mon, 04 Mar 2024 12:39:04 -0500
+	id 1rhKaU-00024s-V0; Mon, 04 Mar 2024 21:31:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rhCH9-0006qE-QH
- for qemu-devel@nongnu.org; Mon, 04 Mar 2024 12:38:55 -0500
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rhKaQ-00024P-DW
+ for qemu-devel@nongnu.org; Mon, 04 Mar 2024 21:31:23 -0500
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rhCH6-0001z7-WC
- for qemu-devel@nongnu.org; Mon, 04 Mar 2024 12:38:54 -0500
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-6e57ab846a1so2972936b3a.3
- for <qemu-devel@nongnu.org>; Mon, 04 Mar 2024 09:38:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rhKaO-0005UK-AY
+ for qemu-devel@nongnu.org; Mon, 04 Mar 2024 21:31:22 -0500
+Received: by mail-oa1-x29.google.com with SMTP id
+ 586e51a60fabf-21f3a4ba205so2144553fac.1
+ for <qemu-devel@nongnu.org>; Mon, 04 Mar 2024 18:31:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1709573931; x=1710178731; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KVszsBZs9brW+lLEUkAZ9ZZ6tjG3HNNrK49mwVmLRws=;
- b=WPJA5/JUlCE8KNhoH265ze97LBy4q2Hs7wOug6WXaiAQr/xFn3O2wmLwtJmd8HFWOs
- eT/zmXASg77eKGOzezUA9lxqED57G4RZfYFtne+NXTw4GDMRIwccDQmglXDeigz8qpiT
- 9WyR7yWlNYvIUk/Im9fUNgG5jfQ1tkAIpWgxtG/FMhZewVXOoPxNlr1/i4MUQakQqKEH
- +/bn6eRJqPiolGWjzDRH9EoANWyCtkBA+RaShNT/YMuA3XWTal1JR5E+h2EACY0OjZiE
- bO0qslIh5k2Wqf5LczZ4xjti4WQnLsi3tqv/D6BBzgd9hxEBBzqXqYobQyk6rCrRnBRR
- 41Ow==
+ d=linaro.org; s=google; t=1709605879; x=1710210679; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gZ/X+Gm6f8G27zUrqUaBxmrYaEWuc6ExS67JFkwCyrQ=;
+ b=O0v4LcmeqaB2ra9V7W+1TZC54y6ucUZ4p5xmo1xEgGIzgLPVVs+0W/G9+ytxCb2skP
+ GfM3Sp3IJDF5yGTo7VdeYQgdJc/GGNBpWTyu0thh5FAumGx17pz5sqYWhXdcnavYsdgJ
+ hmQrCIHyeEToouZrjd7ItBzd5wiV6CgFeSvT4kv0cIMaxKCGzrFdOakirWg/k7ng6Rvr
+ t30CxGYlBNOINlCcBlYzKqSCD20Q+fVADxQ8tRPzJ1YH+FHbR/IFXB6Iqrz0YfhjiUOQ
+ 4uMgJRS0xeOwUXtWJaaPM1aWw6SLqSIk4pqasD0W51HWZlqddeUWqLNpHTtqhaLzGyET
+ mYLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709573931; x=1710178731;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KVszsBZs9brW+lLEUkAZ9ZZ6tjG3HNNrK49mwVmLRws=;
- b=UIVTWUPYXzvuwgsMGP3a9pubQL0Li+pFwB5PoMQglusu896ulbX1n0kkEr/PmaOPyr
- pNc43upophSlb3zl94GR5nuJ90xu12UqPcjxy/eAnBauMpLG/aGnyzxmftk4GXoNH5eR
- SOwygrrECQzn6bjiEC8GVF07mvZ/Jk1vlEgJGQVW4QRm4P3wZ1V4RwbNYkEBR2Or7Pdq
- 35Fl88Lnk+ug+H3fJFzcVWMGfd9KFqbg+1EZKyB4gKF8aCapwdG0l0psTUzOmUs+6Jdp
- Q6prtA2lweZRWk47+FOPlUy5rL4yBnAORT+GRlunzm4Y0FjhS1pIM0UN0+8a6B2l2ei5
- tAUA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXnTxvwkC6AfxLIir+TYEgAPWL8i7zOFERzX2sKKTIlI4ihiNkoj5mmZZ6aVDGIjX2PWL43Q0A1x4Wh7SjU+WgDvW1mArQ=
-X-Gm-Message-State: AOJu0Yx5CqhZ8HQAzpzwOr9p6HJPAl4wO1BixvpadaFs6pRoqAEJyhzV
- lHILX8C3DgfnJ+7H5Dk8a3lxOfftQwmVTUo8BQASYCq1Mc58A3UyA5Eqk/fKpZF5s1eQruR9y9+
- E
-X-Received: by 2002:a05:6a00:a14:b0:6e4:1a29:732f with SMTP id
- p20-20020a056a000a1400b006e41a29732fmr11186308pfh.12.1709573931519; 
- Mon, 04 Mar 2024 09:38:51 -0800 (PST)
-Received: from [192.168.68.110] ([177.94.15.159])
+ d=1e100.net; s=20230601; t=1709605879; x=1710210679;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gZ/X+Gm6f8G27zUrqUaBxmrYaEWuc6ExS67JFkwCyrQ=;
+ b=NcOXyJZyqJSaHnMFii9gx6+MpY8MFYITfYFpXTr4Su7GAU9/tsHz998MAaksgI9a1s
+ p7xBYBuqMRl7Iv+5O1BIeXUyN+QI0Lkz5RwXCq6H7Ykfp/EXyNttes5ZXrMjbnlkGaGO
+ 382VNiMu8JBckIJLkvufB+wy3pIk0jfPEYS6Bn9gY4b3fSx0eAmMmaMGe9QWRuVNVaSa
+ xeNj7tzVNDQXuszm+1H3UTq29eTIn8JXLLpA6Roms0B2rBn562jjm7Ehp4mjtaPlCdwt
+ P9rclDaux/CnlWQzGGIjlqd0riS1Ux+xSlsgHOdVyFdM1437J9PrOloMxUMCm9o0y53B
+ tsOg==
+X-Gm-Message-State: AOJu0Yw/ClJmLXIPWRLQLiKDzf0nW4nyTe5KWUoYXeHjNGWFw09ScgvA
+ dbYxJfhoEqEqJHxROY5fCFxaAZFzopqs3l00RHx7u8AGrG8hz0So9aI/x1kmLHdqxL479BrHJ8T
+ +
+X-Received: by 2002:a05:6870:e98c:b0:220:94b4:2074 with SMTP id
+ r12-20020a056870e98c00b0022094b42074mr540762oao.37.1709605878933; 
+ Mon, 04 Mar 2024 18:31:18 -0800 (PST)
+Received: from stoup.. (098-147-055-211.res.spectrum.com. [98.147.55.211])
  by smtp.gmail.com with ESMTPSA id
- d18-20020a056a00199200b006e56c8f572esm7765946pfl.141.2024.03.04.09.38.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Mar 2024 09:38:51 -0800 (PST)
-Message-ID: <4be46a42-3200-4762-9ed3-434dd33c4b76@ventanamicro.com>
-Date: Mon, 4 Mar 2024 14:38:42 -0300
+ g22-20020aa78756000000b006e5588d1c9fsm7887635pfo.156.2024.03.04.18.31.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Mar 2024 18:31:18 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: Fix 32-bit SMOPA
+Date: Mon,  4 Mar 2024 16:31:16 -1000
+Message-Id: <20240305023116.234256-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/19] get rid of global smbios_ep_type
-Content-Language: en-US
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
- gaosong@loongson.cn, alistair.francis@wdc.com, palmer@dabbelt.com,
- bin.meng@windriver.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
- anisinha@redhat.com, philmd@linaro.org, wangyanan55@huawei.com,
- eblake@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-References: <20240227154749.1818189-1-imammedo@redhat.com>
- <20240227154749.1818189-13-imammedo@redhat.com>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20240227154749.1818189-13-imammedo@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pf1-x434.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:4860:4864:20::29;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,294 +124,255 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JFGIBqQT+hpI
+X-TUID: RNNqYjFeKapb
 
+The while the 8-bit input elements are sequential in the input vector,
+the 32-bit output elements are not sequential in the output matrix.
+Do not attempt to compute 2 32-bit outputs at the same time.
 
+Cc: qemu-stable@nongnu.org
+Fixes: 23a5e3859f5 ("target/arm: Implement SME integer outer product")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2083
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/sme_helper.c       | 77 ++++++++++++++++++-------------
+ tests/tcg/aarch64/sme-smopa-1.c   | 47 +++++++++++++++++++
+ tests/tcg/aarch64/sme-smopa-2.c   | 54 ++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  2 +-
+ 4 files changed, 147 insertions(+), 33 deletions(-)
+ create mode 100644 tests/tcg/aarch64/sme-smopa-1.c
+ create mode 100644 tests/tcg/aarch64/sme-smopa-2.c
 
-On 2/27/24 12:47, Igor Mammedov wrote:
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 904bfdac43..ef39eee48d 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -1083,11 +1083,32 @@ void HELPER(sme_bfmopa)(void *vza, void *vzn, void *vzm, void *vpn,
+     }
+ }
+ 
+-typedef uint64_t IMOPFn(uint64_t, uint64_t, uint64_t, uint8_t, bool);
++typedef uint32_t IMOPFn32(uint32_t, uint32_t, uint32_t, uint8_t, bool);
++static inline void do_imopa_s(uint32_t *za, uint32_t *zn, uint32_t *zm,
++                              uint8_t *pn, uint8_t *pm,
++                              uint32_t desc, IMOPFn32 *fn)
++{
++    intptr_t row, col, oprsz = simd_oprsz(desc) / 4;
++    bool neg = simd_data(desc);
+ 
+-static inline void do_imopa(uint64_t *za, uint64_t *zn, uint64_t *zm,
+-                            uint8_t *pn, uint8_t *pm,
+-                            uint32_t desc, IMOPFn *fn)
++    for (row = 0; row < oprsz; ++row) {
++        uint8_t pa = pn[H1(row >> 1)] >> ((row & 1) * 4);
++        uint32_t *za_row = &za[H4(tile_vslice_index(row))];
++        uint32_t n = zn[H4(row)];
++
++        for (col = 0; col < oprsz; ++col) {
++            uint8_t pb = pm[H1(col >> 1)] >> ((col & 1) * 4);
++            uint32_t *a = &za_row[col];
++
++            *a = fn(n, zm[H4(col)], *a, pa & pb & 0xf, neg);
++        }
++    }
++}
++
++typedef uint64_t IMOPFn64(uint64_t, uint64_t, uint64_t, uint8_t, bool);
++static inline void do_imopa_d(uint64_t *za, uint64_t *zn, uint64_t *zm,
++                              uint8_t *pn, uint8_t *pm,
++                              uint32_t desc, IMOPFn64 *fn)
+ {
+     intptr_t row, col, oprsz = simd_oprsz(desc) / 8;
+     bool neg = simd_data(desc);
+@@ -1107,25 +1128,16 @@ static inline void do_imopa(uint64_t *za, uint64_t *zn, uint64_t *zm,
+ }
+ 
+ #define DEF_IMOP_32(NAME, NTYPE, MTYPE) \
+-static uint64_t NAME(uint64_t n, uint64_t m, uint64_t a, uint8_t p, bool neg) \
++static uint32_t NAME(uint32_t n, uint32_t m, uint32_t a, uint8_t p, bool neg) \
+ {                                                                           \
+-    uint32_t sum0 = 0, sum1 = 0;                                            \
++    uint32_t sum = 0;                                                       \
+     /* Apply P to N as a mask, making the inactive elements 0. */           \
+     n &= expand_pred_b(p);                                                  \
+-    sum0 += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                              \
+-    sum0 += (NTYPE)(n >> 8) * (MTYPE)(m >> 8);                              \
+-    sum0 += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                            \
+-    sum0 += (NTYPE)(n >> 24) * (MTYPE)(m >> 24);                            \
+-    sum1 += (NTYPE)(n >> 32) * (MTYPE)(m >> 32);                            \
+-    sum1 += (NTYPE)(n >> 40) * (MTYPE)(m >> 40);                            \
+-    sum1 += (NTYPE)(n >> 48) * (MTYPE)(m >> 48);                            \
+-    sum1 += (NTYPE)(n >> 56) * (MTYPE)(m >> 56);                            \
+-    if (neg) {                                                              \
+-        sum0 = (uint32_t)a - sum0, sum1 = (uint32_t)(a >> 32) - sum1;       \
+-    } else {                                                                \
+-        sum0 = (uint32_t)a + sum0, sum1 = (uint32_t)(a >> 32) + sum1;       \
+-    }                                                                       \
+-    return ((uint64_t)sum1 << 32) | sum0;                                   \
++    sum += (NTYPE)(n >> 0) * (MTYPE)(m >> 0);                               \
++    sum += (NTYPE)(n >> 8) * (MTYPE)(m >> 8);                               \
++    sum += (NTYPE)(n >> 16) * (MTYPE)(m >> 16);                             \
++    sum += (NTYPE)(n >> 24) * (MTYPE)(m >> 24);                             \
++    return neg ? a - sum : a + sum;                                         \
+ }
+ 
+ #define DEF_IMOP_64(NAME, NTYPE, MTYPE) \
+@@ -1151,16 +1163,17 @@ DEF_IMOP_64(umopa_d, uint16_t, uint16_t)
+ DEF_IMOP_64(sumopa_d, int16_t, uint16_t)
+ DEF_IMOP_64(usmopa_d, uint16_t, int16_t)
+ 
+-#define DEF_IMOPH(NAME) \
+-    void HELPER(sme_##NAME)(void *vza, void *vzn, void *vzm, void *vpn,      \
+-                            void *vpm, uint32_t desc)                        \
+-    { do_imopa(vza, vzn, vzm, vpn, vpm, desc, NAME); }
++#define DEF_IMOPH(NAME, S) \
++    void HELPER(sme_##NAME##_##S)(void *vza, void *vzn, void *vzm,          \
++                                  void *vpn, void *vpm, uint32_t desc)      \
++    { do_imopa_##S(vza, vzn, vzm, vpn, vpm, desc, NAME##_##S); }
+ 
+-DEF_IMOPH(smopa_s)
+-DEF_IMOPH(umopa_s)
+-DEF_IMOPH(sumopa_s)
+-DEF_IMOPH(usmopa_s)
+-DEF_IMOPH(smopa_d)
+-DEF_IMOPH(umopa_d)
+-DEF_IMOPH(sumopa_d)
+-DEF_IMOPH(usmopa_d)
++DEF_IMOPH(smopa, s)
++DEF_IMOPH(umopa, s)
++DEF_IMOPH(sumopa, s)
++DEF_IMOPH(usmopa, s)
++
++DEF_IMOPH(smopa, d)
++DEF_IMOPH(umopa, d)
++DEF_IMOPH(sumopa, d)
++DEF_IMOPH(usmopa, d)
+diff --git a/tests/tcg/aarch64/sme-smopa-1.c b/tests/tcg/aarch64/sme-smopa-1.c
+new file mode 100644
+index 0000000000..c62d5e0007
+--- /dev/null
++++ b/tests/tcg/aarch64/sme-smopa-1.c
+@@ -0,0 +1,47 @@
++#include <stdio.h>
++#include <string.h>
++
++int main()
++{
++    static const int cmp[4][4] = {
++        {  110,  134,  158,  182 },
++        {  390,  478,  566,  654 },
++        {  670,  822,  974, 1126 },
++        {  950, 1166, 1382, 1598 }
++    };
++    int dst[4][4];
++    int *tmp = &dst[0][0];
++
++    asm volatile(
++        ".arch armv8-r+sme\n\t"
++        "smstart\n\t"
++        "index z0.b, #0, #1\n\t"
++        "movprfx z1, z0\n\t"
++        "add z1.b, z1.b, #16\n\t"
++        "ptrue p0.b\n\t"
++        "smopa za0.s, p0/m, p0/m, z0.b, z1.b\n\t"
++        "ptrue p0.s, vl4\n\t"
++        "mov w12, #0\n\t"
++        "st1w { za0h.s[w12, #0] }, p0, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w { za0h.s[w12, #1] }, p0, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w { za0h.s[w12, #2] }, p0, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w { za0h.s[w12, #3] }, p0, [%0]\n\t"
++        "smstop"
++        : "+r"(tmp) : : "memory");
++
++    if (memcmp(cmp, dst, sizeof(dst)) == 0) {
++        return 0;
++    }
++
++    /* See above for correct results. */
++    for (int i = 0; i < 4; ++i) {
++        for (int j = 0; j < 4; ++j) {
++            printf("%6d", dst[i][j]);
++        }
++        printf("\n");
++    }
++    return 1;
++}
+diff --git a/tests/tcg/aarch64/sme-smopa-2.c b/tests/tcg/aarch64/sme-smopa-2.c
+new file mode 100644
+index 0000000000..c9f48c3bfc
+--- /dev/null
++++ b/tests/tcg/aarch64/sme-smopa-2.c
+@@ -0,0 +1,54 @@
++#include <stdio.h>
++#include <string.h>
++
++int main()
++{
++    static const long cmp[4][4] = {
++        {  110,  134,  158,  182 },
++        {  390,  478,  566,  654 },
++        {  670,  822,  974, 1126 },
++        {  950, 1166, 1382, 1598 }
++    };
++    long dst[4][4];
++    long *tmp = &dst[0][0];
++    long svl;
++
++    /* Validate that we have a wide enough vector for 4 elements. */
++    asm(".arch armv8-r+sme-i64\n\trdsvl %0, #1" : "=r"(svl));
++    if (svl < 32) {
++        return 0;
++    }
++
++    asm volatile(
++        "smstart\n\t"
++        "index z0.h, #0, #1\n\t"
++        "movprfx z1, z0\n\t"
++        "add z1.h, z1.h, #16\n\t"
++        "ptrue p0.b\n\t"
++        "smopa za0.d, p0/m, p0/m, z0.h, z1.h\n\t"
++        "ptrue p0.d, vl4\n\t"
++        "mov w12, #0\n\t"
++        "st1d { za0h.d[w12, #0] }, p0, [%0]\n\t"
++        "add %0, %0, #32\n\t"
++        "st1d { za0h.d[w12, #1] }, p0, [%0]\n\t"
++        "mov w12, #2\n\t"
++        "add %0, %0, #32\n\t"
++        "st1d { za0h.d[w12, #0] }, p0, [%0]\n\t"
++        "add %0, %0, #32\n\t"
++        "st1d { za0h.d[w12, #1] }, p0, [%0]\n\t"
++        "smstop"
++        : "+r"(tmp) : : "memory");
++
++    if (memcmp(cmp, dst, sizeof(dst)) == 0) {
++        return 0;
++    }
++
++    /* See above for correct results. */
++    for (int i = 0; i < 4; ++i) {
++        for (int j = 0; j < 4; ++j) {
++            printf("%6ld", dst[i][j]);
++        }
++        printf("\n");
++    }
++    return 1;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index cded1d01fc..ea3e232e65 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -67,7 +67,7 @@ endif
+ 
+ # SME Tests
+ ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
+-AARCH64_TESTS += sme-outprod1
++AARCH64_TESTS += sme-outprod1 sme-smopa-1 sme-smopa-2
+ endif
+ 
+ # System Registers Tests
+-- 
+2.34.1
 
-For hw/riscv/virt.c changes:
-
-Acked-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
-
->   hw/i386/fw_cfg.h             |  3 ++-
->   include/hw/firmware/smbios.h |  5 +++--
->   hw/arm/virt.c                |  4 ++--
->   hw/i386/fw_cfg.c             |  8 ++++----
->   hw/i386/pc.c                 |  2 +-
->   hw/loongarch/virt.c          |  7 ++++---
->   hw/riscv/virt.c              |  6 +++---
->   hw/smbios/smbios.c           | 27 +++++++++++++++------------
->   hw/smbios/smbios_legacy.c    |  2 +-
->   9 files changed, 35 insertions(+), 29 deletions(-)
-> 
-> diff --git a/hw/i386/fw_cfg.h b/hw/i386/fw_cfg.h
-> index 1e1de6b4a3..92e310f5fd 100644
-> --- a/hw/i386/fw_cfg.h
-> +++ b/hw/i386/fw_cfg.h
-> @@ -23,7 +23,8 @@
->   FWCfgState *fw_cfg_arch_create(MachineState *ms,
->                                  uint16_t boot_cpus,
->                                  uint16_t apic_id_limit);
-> -void fw_cfg_build_smbios(PCMachineState *ms, FWCfgState *fw_cfg);
-> +void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
-> +                         SmbiosEntryPointType ep_type);
->   void fw_cfg_build_feature_control(MachineState *ms, FWCfgState *fw_cfg);
->   void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg);
->   
-> diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
-> index d1194c9cc2..d59c2f5a13 100644
-> --- a/include/hw/firmware/smbios.h
-> +++ b/include/hw/firmware/smbios.h
-> @@ -310,16 +310,17 @@ struct smbios_type_127 {
->       struct smbios_structure_header header;
->   } QEMU_PACKED;
->   
-> -bool smbios_validate_table(Error **errp);
-> +bool smbios_validate_table(SmbiosEntryPointType ep_type, Error **errp);
->   void smbios_add_usr_blob_size(size_t size);
->   void smbios_entry_add(QemuOpts *opts, Error **errp);
->   void smbios_set_cpuid(uint32_t version, uint32_t features);
->   void smbios_set_defaults(const char *manufacturer, const char *product,
->                            const char *version,
-> -                         bool uuid_encoded, SmbiosEntryPointType ep_type);
-> +                         bool uuid_encoded);
->   void smbios_set_default_processor_family(uint16_t processor_family);
->   uint8_t *smbios_get_table_legacy(size_t *length, Error **errp);
->   void smbios_get_tables(MachineState *ms,
-> +                       SmbiosEntryPointType ep_type,
->                          const struct smbios_phys_mem_area *mem_array,
->                          const unsigned int mem_array_size,
->                          uint8_t **tables, size_t *tables_len,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 8588681f27..780224ee5b 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1634,13 +1634,13 @@ static void virt_build_smbios(VirtMachineState *vms)
->   
->       smbios_set_defaults("QEMU", product,
->                           vmc->smbios_old_sys_ver ? "1.0" : mc->name,
-> -                        true, SMBIOS_ENTRY_POINT_TYPE_64);
-> +                        true);
->   
->       /* build the array of physical mem area from base_memmap */
->       mem_array.address = vms->memmap[VIRT_MEM].base;
->       mem_array.length = ms->ram_size;
->   
-> -    smbios_get_tables(ms, &mem_array, 1,
-> +    smbios_get_tables(ms, SMBIOS_ENTRY_POINT_TYPE_64, &mem_array, 1,
->                         &smbios_tables, &smbios_tables_len,
->                         &smbios_anchor, &smbios_anchor_len,
->                         &error_fatal);
-> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> index e387bf50d0..d802d2787f 100644
-> --- a/hw/i386/fw_cfg.c
-> +++ b/hw/i386/fw_cfg.c
-> @@ -48,7 +48,8 @@ const char *fw_cfg_arch_key_name(uint16_t key)
->       return NULL;
->   }
->   
-> -void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
-> +void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
-> +                         SmbiosEntryPointType ep_type)
->   {
->   #ifdef CONFIG_SMBIOS
->       uint8_t *smbios_tables, *smbios_anchor;
-> @@ -63,8 +64,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
->       if (pcmc->smbios_defaults) {
->           /* These values are guest ABI, do not change */
->           smbios_set_defaults("QEMU", mc->desc, mc->name,
-> -                            pcmc->smbios_uuid_encoded,
-> -                            pcms->smbios_entry_point_type);
-> +                            pcmc->smbios_uuid_encoded);
->       }
->   
->       /* tell smbios about cpuid version and features */
-> @@ -89,7 +89,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
->               array_count++;
->           }
->       }
-> -    smbios_get_tables(ms, mem_array, array_count,
-> +    smbios_get_tables(ms, ep_type, mem_array, array_count,
->                         &smbios_tables, &smbios_tables_len,
->                         &smbios_anchor, &smbios_anchor_len,
->                         &error_fatal);
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index f8eb684a49..56562e7d9e 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -689,7 +689,7 @@ void pc_machine_done(Notifier *notifier, void *data)
->   
->       acpi_setup();
->       if (x86ms->fw_cfg) {
-> -        fw_cfg_build_smbios(pcms, x86ms->fw_cfg);
-> +        fw_cfg_build_smbios(pcms, x86ms->fw_cfg, pcms->smbios_entry_point_type);
->           fw_cfg_build_feature_control(MACHINE(pcms), x86ms->fw_cfg);
->           /* update FW_CFG_NB_CPUS to account for -device added CPUs */
->           fw_cfg_modify_i16(x86ms->fw_cfg, FW_CFG_NB_CPUS, x86ms->boot_cpus);
-> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> index 73fb3522ba..d2ed15da75 100644
-> --- a/hw/loongarch/virt.c
-> +++ b/hw/loongarch/virt.c
-> @@ -320,10 +320,11 @@ static void virt_build_smbios(LoongArchMachineState *lams)
->           return;
->       }
->   
-> -    smbios_set_defaults("QEMU", product, mc->name,
-> -                        true, SMBIOS_ENTRY_POINT_TYPE_64);
-> +    smbios_set_defaults("QEMU", product, mc->name, true);
->   
-> -    smbios_get_tables(ms, NULL, 0, &smbios_tables, &smbios_tables_len,
-> +    smbios_get_tables(ms, SMBIOS_ENTRY_POINT_TYPE_64,
-> +                      NULL, 0,
-> +                      &smbios_tables, &smbios_tables_len,
->                         &smbios_anchor, &smbios_anchor_len, &error_fatal);
->   
->       if (smbios_anchor) {
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index e2c9529df2..b730ff2030 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1235,8 +1235,7 @@ static void virt_build_smbios(RISCVVirtState *s)
->           product = "KVM Virtual Machine";
->       }
->   
-> -    smbios_set_defaults("QEMU", product, mc->name,
-> -                        true, SMBIOS_ENTRY_POINT_TYPE_64);
-> +    smbios_set_defaults("QEMU", product, mc->name, true);
->   
->       if (riscv_is_32bit(&s->soc[0])) {
->           smbios_set_default_processor_family(0x200);
-> @@ -1248,7 +1247,8 @@ static void virt_build_smbios(RISCVVirtState *s)
->       mem_array.address = s->memmap[VIRT_DRAM].base;
->       mem_array.length = ms->ram_size;
->   
-> -    smbios_get_tables(ms, &mem_array, 1,
-> +    smbios_get_tables(ms, SMBIOS_ENTRY_POINT_TYPE_64,
-> +                      &mem_array, 1,
->                         &smbios_tables, &smbios_tables_len,
->                         &smbios_anchor, &smbios_anchor_len,
->                         &error_fatal);
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index d9ba2072b1..5a791fd9eb 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -43,7 +43,6 @@ uint8_t *smbios_tables;
->   size_t smbios_tables_len;
->   unsigned smbios_table_max;
->   unsigned smbios_table_cnt;
-> -static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
->   
->   static SmbiosEntryPoint ep;
->   
-> @@ -457,9 +456,9 @@ static bool smbios_check_type4_count(uint32_t expected_t4_count, Error **errp)
->       return true;
->   }
->   
-> -bool smbios_validate_table(Error **errp)
-> +bool smbios_validate_table(SmbiosEntryPointType ep_type, Error **errp)
->   {
-> -    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
-> +    if (ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
->           smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
->           error_setg(errp, "SMBIOS 2.1 table length %zu exceeds %d",
->                      smbios_tables_len, SMBIOS_21_MAX_TABLES_LEN);
-> @@ -605,14 +604,15 @@ static void smbios_build_type_3_table(void)
->       SMBIOS_BUILD_TABLE_POST;
->   }
->   
-> -static void smbios_build_type_4_table(MachineState *ms, unsigned instance)
-> +static void smbios_build_type_4_table(MachineState *ms, unsigned instance,
-> +                                      SmbiosEntryPointType ep_type)
->   {
->       char sock_str[128];
->       size_t tbl_len = SMBIOS_TYPE_4_LEN_V28;
->       unsigned threads_per_socket;
->       unsigned cores_per_socket;
->   
-> -    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_64) {
-> +    if (ep_type == SMBIOS_ENTRY_POINT_TYPE_64) {
->           tbl_len = SMBIOS_TYPE_4_LEN_V30;
->       }
->   
-> @@ -888,11 +888,10 @@ void smbios_set_default_processor_family(uint16_t processor_family)
->   
->   void smbios_set_defaults(const char *manufacturer, const char *product,
->                            const char *version,
-> -                         bool uuid_encoded, SmbiosEntryPointType ep_type)
-> +                         bool uuid_encoded)
->   {
->       smbios_have_defaults = true;
->       smbios_uuid_encoded = uuid_encoded;
-> -    smbios_ep_type = ep_type;
->   
->       SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, manufacturer);
->       SMBIOS_SET_DEFAULT(smbios_type1.product, product);
-> @@ -909,9 +908,9 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
->       SMBIOS_SET_DEFAULT(type17.manufacturer, manufacturer);
->   }
->   
-> -static void smbios_entry_point_setup(void)
-> +static void smbios_entry_point_setup(SmbiosEntryPointType ep_type)
->   {
-> -    switch (smbios_ep_type) {
-> +    switch (ep_type) {
->       case SMBIOS_ENTRY_POINT_TYPE_32:
->           memcpy(ep.ep21.anchor_string, "_SM_", 4);
->           memcpy(ep.ep21.intermediate_anchor_string, "_DMI_", 5);
-> @@ -961,6 +960,7 @@ static void smbios_entry_point_setup(void)
->   }
->   
->   void smbios_get_tables(MachineState *ms,
-> +                       SmbiosEntryPointType ep_type,
->                          const struct smbios_phys_mem_area *mem_array,
->                          const unsigned int mem_array_size,
->                          uint8_t **tables, size_t *tables_len,
-> @@ -969,6 +969,9 @@ void smbios_get_tables(MachineState *ms,
->   {
->       unsigned i, dimm_cnt, offset;
->   
-> +    assert(ep_type == SMBIOS_ENTRY_POINT_TYPE_32 ||
-> +           ep_type == SMBIOS_ENTRY_POINT_TYPE_64);
-> +
->       g_free(smbios_tables);
->       smbios_tables = g_memdup2(usr_blobs, usr_blobs_len);
->       smbios_tables_len = usr_blobs_len;
-> @@ -983,7 +986,7 @@ void smbios_get_tables(MachineState *ms,
->       assert(ms->smp.sockets >= 1);
->   
->       for (i = 0; i < ms->smp.sockets; i++) {
-> -        smbios_build_type_4_table(ms, i);
-> +        smbios_build_type_4_table(ms, i, ep_type);
->       }
->   
->       smbios_build_type_8_table();
-> @@ -1031,10 +1034,10 @@ void smbios_get_tables(MachineState *ms,
->       if (!smbios_check_type4_count(ms->smp.sockets, errp)) {
->           goto err_exit;
->       }
-> -    if (!smbios_validate_table(errp)) {
-> +    if (!smbios_validate_table(ep_type, errp)) {
->           goto err_exit;
->       }
-> -    smbios_entry_point_setup();
-> +    smbios_entry_point_setup(ep_type);
->   
->       /* return tables blob and entry point (anchor), and their sizes */
->       *tables = smbios_tables;
-> diff --git a/hw/smbios/smbios_legacy.c b/hw/smbios/smbios_legacy.c
-> index a6544bf55a..06907cd16c 100644
-> --- a/hw/smbios/smbios_legacy.c
-> +++ b/hw/smbios/smbios_legacy.c
-> @@ -173,7 +173,7 @@ uint8_t *smbios_get_table_legacy(size_t *length, Error **errp)
->   
->       smbios_build_type_0_fields();
->       smbios_build_type_1_fields();
-> -    if (!smbios_validate_table(errp)) {
-> +    if (!smbios_validate_table(SMBIOS_ENTRY_POINT_TYPE_32, errp)) {
->           goto err_exit;
->       }
->   

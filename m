@@ -1,84 +1,86 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp374120ejc;
-        Tue, 5 Mar 2024 07:58:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXa+UaRwegjaGhs6OzmFeRLhgb3Bz2iZkMALp7fxjxlxLmRl+66BCev8sYlBYya2lAcm9zGeYorgl++X2Tw+8eTUr5YwRE/
-X-Google-Smtp-Source: AGHT+IGF9pF0BcfGJbi5mg7QBM+Rb7q4m5eCqlHbYAtYmvJy+3CT9pwgKJjOWNkvGOrN0lg4jQAZ
-X-Received: by 2002:a0c:c305:0:b0:690:8f6a:2f09 with SMTP id f5-20020a0cc305000000b006908f6a2f09mr835610qvi.61.1709654334017;
-        Tue, 05 Mar 2024 07:58:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709654333; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp374207ejc;
+        Tue, 5 Mar 2024 07:59:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXWG24ZnsuN3S/rxcFpOJad/XYZEb0Y6XWwpU9KEK/DWAU3Juwwwk1QIWyWBq1nw4OaBTLhd22A5Mut6gmkudNtrTYl1bsZ
+X-Google-Smtp-Source: AGHT+IHMPMFeKYJrND1qY+ZnU4XmewKatyTgoE0leIIdUAXQlEFpFNeCgjTYj/+IRivhrb8weCwa
+X-Received: by 2002:ac8:5c89:0:b0:42e:7ebf:1d51 with SMTP id r9-20020ac85c89000000b0042e7ebf1d51mr2517927qta.68.1709654343698;
+        Tue, 05 Mar 2024 07:59:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709654343; cv=none;
         d=google.com; s=arc-20160816;
-        b=R9mdyMc1YZ5AfWnjsukGMVTNVXAKHmii3iiqKBDHsVfdeM4HfDOVhzzxK5Bs6FzS7O
-         tYRpU2CZFhcgK5cuCzNaTZt5U+2rywzLvSfbi4opzZDEgDsXq1Hycz6f9/sw9qu3K/Cx
-         fmilR1Vx5oysNkxUkUv6i00mmve6eq9FjgrvUR4EODsWfhbQXavc1lNAF2tGWClZe7H3
-         oRtHSt8ANC8hxvws0Gdtkz/9/ihpMZ9zFOUrADqIwLLdguepEtHTisQgTB+1y6fHSe8X
-         cpH5nDL5y3efvS/sSDfJK4ESpDmUGbsXP3vxws7/ByPpj2NIel6hEd53HX0eMUzyBDtO
-         T5ZA==
+        b=L9kv8nkkxnhB2urDcWQtv1dREktztxytgZ7pbE/5IRqeDHoRBpa2Z0cPmaj+/dwhoh
+         +WqPaT8jxruMXyE1tPJWtYooUH7uFY6WV+ATFIn2RvpiwPdGyUnZcLcI8EM+vKwy6jld
+         wrq6lz9Dq2C0dLy+lGQuvCK3hZ1CYXaYtdcZcE2WZRBy2RXpyEWpqAD3TH3jBX4xN0ex
+         I4/9+G5mL+R/ME+oPflhZAGwGWu9NdmFGmNIG5uO7UdjulgOcgMGcEddPnK8U65yg2Iw
+         KveHmGDWElgSVX4w7ke7qbJbgV+ekM5mjq0lN5QVZzujyr9JOluE0MpdwyKaOwCgjBty
+         HXBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HJF5Senj6Onn7fvPNEIxgiyack88To0MhvSnWL+GUxk=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=QsfDHXS/vKLAoke9nTRBezMkimcYLRcCslmBW8mdaDQ=;
         fh=cWYLLp2xiaCPawONafvmArBA+kFDFtOI7kkn8ypnRsk=;
-        b=G3dTwoSdQzqiVkJOUK9S6wXZJ6PQp5dMmF9rlphTvs4MHILl6bDFdY35eT35qBJUSc
-         HCRXtXffvtLi78/ofmKCuVAqbUhdbC5zmM1CT2k3CZj4qhsph9DHMJVQKPmI/0OdiEoe
-         AM/lWlRUdmZyOaIS6sJWlfsGOj+Zp3vpbRlT9BfHbfdB3+ScdqYarMGcpFeolhPS7C4D
-         hVWQBzCj3yYCfwOPBPQ4ki2JXSPnhr5fe4tuuFLLETTydzrBQF2aGMs++xgF1ZS/X1jH
-         ZAFHqy6GwPU3qtUFERxgEsfHALPmCEHI2bJNpTivUL9hFv0bNaTtINqFPd0A11AaVGdK
-         AjtQ==;
+        b=O07JXSILr1zITcK8ExjJJzW9VhJg5yGjWGf7+wt1Iq8cm8W/3alMTgl7rrMlt6UJIK
+         587zzZmC3hUUjMOLGs673J18Wil75nXU323UKagobCzzrSECuJbDxxzIyL9M4+FVa2TA
+         wE01Ug+2u73TYnv5FgEusUnRnqYv5YuAD1fwauYwBJjWrsqs4VU6Nzuo4TRCNPblf7J2
+         2dFGu7jO3htkcjYwzWP/zzqzidEZjPSZ+ammlkUlGqPIv+/KloKCX54/elNSVxSW/V6A
+         Hb/Ea9XXFrHyGJKdiYFXW39tHjeMaUGP9zb1wUGRXmqtGStXsmOB48rNH/4lXUIZ2ZK+
+         9Vug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlSETNMS;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2vaxjUs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 11-20020a0562140ccb00b0068f34f6c1b8si12561063qvx.14.2024.03.05.07.58.53
+        by mx.google.com with ESMTPS id f13-20020a05622a104d00b0042ddadbb68esi12469396qte.705.2024.03.05.07.59.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 07:58:53 -0800 (PST)
+        Tue, 05 Mar 2024 07:59:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NlSETNMS;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2vaxjUs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhXAs-0005TF-6G; Tue, 05 Mar 2024 10:57:50 -0500
+	id 1rhXBA-0005hk-4s; Tue, 05 Mar 2024 10:58:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXAl-0005Pf-1M
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:44 -0500
+ id 1rhXB1-0005bb-Hp
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:59 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rhXAi-0000Rz-VF
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:42 -0500
+ id 1rhXAz-0000XL-It
+ for qemu-devel@nongnu.org; Tue, 05 Mar 2024 10:57:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709654259;
+ s=mimecast20190719; t=1709654277;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=HJF5Senj6Onn7fvPNEIxgiyack88To0MhvSnWL+GUxk=;
- b=NlSETNMS2JqTHot8BEI4KO5LsQht/dDuYzMSdY9rrMQmIKbfFIliPJk/1A7v1hhMITPLBl
- Q4L3IixCtHRT8ujdzexq+xMYSKi8la3kSQmCTODoVBG8hCouAL1L/oD5Qd5TgG3VbXQbO8
- wTrqTcFU/4yX38x1F6fOzjwbLr7aKPo=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-428-eKlafKU9N268RW43G7SUEA-1; Tue,
- 05 Mar 2024 10:57:33 -0500
-X-MC-Unique: eKlafKU9N268RW43G7SUEA-1
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=QsfDHXS/vKLAoke9nTRBezMkimcYLRcCslmBW8mdaDQ=;
+ b=h2vaxjUsyYSfwPoR9azf1MYbeEvqppQ0NztAkVkCIYzK/6HgGSDzoP72L9pgNDBIVk3IW7
+ mTGl7NN5G/kBIf/vH7VcCwLWhquWpKnXrAByZE5TS8yY7Worj7fTZy0vFc9eZY4W/FzaMf
+ LH5Xb3oi0eUUMoDHljKZSPuOhbfUTJM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-144-M6ubedwQOBWvSXINv3DNBw-1; Tue, 05 Mar 2024 10:57:52 -0500
+X-MC-Unique: M6ubedwQOBWvSXINv3DNBw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9D6C21C01E95;
- Tue,  5 Mar 2024 15:57:31 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D7AE4811E81;
+ Tue,  5 Mar 2024 15:57:50 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 491D317A99;
- Tue,  5 Mar 2024 15:57:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 419FE16A9C;
+ Tue,  5 Mar 2024 15:57:48 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
@@ -88,10 +90,11 @@ Cc: peter.maydell@linaro.org, pbonzini@redhat.com, mst@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, eblake@redhat.com,
  armbru@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  f.ebner@proxmox.com
-Subject: [PATCH v2 00/20] Workaround Windows failing to find 64bit SMBIOS
- entry point with SeaBIOS
-Date: Tue,  5 Mar 2024 16:57:04 +0100
-Message-Id: <20240305155724.2047069-1-imammedo@redhat.com>
+Subject: [PATCH v2 07/20] smbios: avoid mangling user provided tables
+Date: Tue,  5 Mar 2024 16:57:11 +0100
+Message-Id: <20240305155724.2047069-8-imammedo@redhat.com>
+In-Reply-To: <20240305155724.2047069-1-imammedo@redhat.com>
+References: <20240305155724.2047069-1-imammedo@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -120,108 +123,292 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KTD01tAUdAKz
+X-TUID: vVPCWBV1QgnA
 
-Changelog:
-   * QAPI style fixes (Markus Armbruster <armbru@redhat.com>)
-   * squash 11/19 into 10/19 (Ani Sinha <anisinha@redhat.com>)
-   * split '[PATCH 09/19] smbios: build legacy mode code only for 'pc' machine'
-     in 3 smaller patches, to make it more readable
-       smbios: add smbios_add_usr_blob_size() helper                                  
-       smbios: rename/expose structures/bitmaps used by both legacy and modern code                                                                  
-       smbios: build legacy mode code only for 'pc' machine
-   * pick up acks
+currently smbios_entry_add() preserves internally '-smbios type='
+options but tables provided with '-smbios file=' are stored directly
+into blob that eventually will be exposed to VM. And then later
+QEMU adds default/'-smbios type' entries on top into the same blob.
 
-Windows (10) bootloader when running on top of SeaBIOS, fails to find            
-SMBIOSv3 entry point. Tracing it shows that it looks for v2 anchor markers       
-only and not v3. Tricking it into believing that entry point is found            
-lets Windows successfully locate and parse SMBIOSv3 tables. Whether it           
-will be fixed on Windows side is not clear so here goes a workaround.            
-                                                                                 
-Idea is to try build v2 tables if QEMU configuration permits,                    
-and fallback to v3 tables otherwise. That will mask Windows issue                
-form majority of users.                                                          
-However if VM configuration can't be described (typically large VMs)             
-by v2 tables, QEMU will use SMBIOSv3 and Windows will hit the issue              
-again. In this case complain to Microsoft and/or use UEFI instead of             
-SeaBIOS (requires reinstall).                                                    
-                                                                                 
-Default compat setting of smbios-entry-point-type after series                   
-for pc/q35 machines:                                                             
-  * 9.0-newer: 'auto'                                                            
-  * 8.1-8.2: '64'                                                                
-  * 8.0-older: '32'                                                              
-                                                                                 
-Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2008                        
-CC: peter.maydell@linaro.org                                                     
-CC: pbonzini@redhat.com                                                          
-CC: mst@redhat.com                                                               
-CC: gaosong@loongson.cn                                                          
-CC: alistair.francis@wdc.com                                                     
-CC: palmer@dabbelt.com                                                           
-CC: bin.meng@windriver.com                                                       
-CC: liwei1518@gmail.com                                                          
-CC: dbarboza@ventanamicro.com                                                    
-CC: zhiwei_liu@linux.alibaba.com                                                 
-CC: imammedo@redhat.com                                                          
-CC: anisinha@redhat.com                                                          
-CC: philmd@linaro.org                                                            
-CC: wangyanan55@huawei.com                                                       
-CC: eblake@redhat.com                                                            
-CC: armbru@redhat.com                                                            
-CC: qemu-arm@nongnu.org                                                          
-CC: qemu-riscv@nongnu.org                                                        
-CC: f.ebner@proxmox.com                                                          
+It makes impossible to generate tables more than once, hence
+'immutable' guard was used.
+Make it possible to regenerate final blob by storing user provided
+blobs into a dedicated area (usr_blobs) and then copy it when
+composing final blob. Which also makes handling of -smbios
+options consistent.
 
-Igor Mammedov (20):
-  tests: smbios: make it possible to write SMBIOS only test
-  tests: smbios: add test for -smbios type=11 option
-  tests: smbios: add test for legacy mode CLI options
-  smbios: cleanup smbios_get_tables() from legacy handling
-  smbios: get rid of smbios_smp_sockets global
-  smbios: get rid of smbios_legacy global
-  smbios: avoid mangling user provided tables
-  smbios: don't check type4 structures in legacy mode
-  smbios: add smbios_add_usr_blob_size() helper
-  smbios: rename/expose structures/bitmaps used by both legacy and
-    modern code
-  smbios: build legacy mode code only for 'pc' machine
-  smbios: handle errors consistently
-  smbios: get rid of global smbios_ep_type
-  smbios: extend smbios-entry-point-type with 'auto' value
-  smbios: in case of entry point is 'auto' try to build v2 tables 1st
-  smbios: error out when building type 4 table is not possible
-  smbios: clear smbios_type4_count before building tables
-  tests: acpi/smbios: whitelist expected blobs
-  pc/q35: set SMBIOS entry point type to 'auto' by default
-  tests: acpi: update expected SSDT.dimmpxm blob
+As side effect of this and previous commits there is no need to
+generate legacy smbios_entries at the time options are parsed.
+Instead compose smbios_entries on demand from  usr_blobs like
+it is done for non-legacy SMBIOS tables.
 
- hw/i386/fw_cfg.h                     |   3 +-
- include/hw/firmware/smbios.h         |  28 +-
- hw/arm/virt.c                        |   6 +-
- hw/i386/Kconfig                      |   1 +
- hw/i386/fw_cfg.c                     |  14 +-
- hw/i386/pc.c                         |   4 +-
- hw/i386/pc_piix.c                    |   4 +
- hw/i386/pc_q35.c                     |   3 +
- hw/loongarch/virt.c                  |   7 +-
- hw/riscv/virt.c                      |   6 +-
- hw/smbios/Kconfig                    |   2 +
- hw/smbios/meson.build                |   4 +
- hw/smbios/smbios.c                   | 481 +++++++++++----------------
- hw/smbios/smbios_legacy.c            | 185 +++++++++++
- hw/smbios/smbios_legacy_stub.c       |  16 +
- qapi/machine.json                    |   5 +-
- tests/data/acpi/q35/SSDT.dimmpxm     | Bin 1815 -> 1815 bytes
- tests/data/smbios/type11_blob        | Bin 0 -> 11 bytes
- tests/data/smbios/type11_blob.legacy | Bin 0 -> 10 bytes
- tests/qtest/bios-tables-test.c       |  81 ++++-
- 20 files changed, 534 insertions(+), 316 deletions(-)
- create mode 100644 hw/smbios/smbios_legacy.c
- create mode 100644 hw/smbios/smbios_legacy_stub.c
- create mode 100644 tests/data/smbios/type11_blob
- create mode 100644 tests/data/smbios/type11_blob.legacy
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Tested-by: Fiona Ebner <f.ebner@proxmox.com>
+---
+ hw/smbios/smbios.c | 179 +++++++++++++++++++++++----------------------
+ 1 file changed, 92 insertions(+), 87 deletions(-)
 
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index c46fc93357..aa2cc5bdbd 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -57,6 +57,14 @@ static size_t smbios_entries_len;
+ static bool smbios_uuid_encoded = true;
+ /* end: legacy structures & constants for <= 2.0 machines */
+ 
++/*
++ * SMBIOS tables provided by user with '-smbios file=<foo>' option
++ */
++uint8_t *usr_blobs;
++size_t usr_blobs_len;
++static GArray *usr_blobs_sizes;
++static unsigned usr_table_max;
++static unsigned usr_table_cnt;
+ 
+ uint8_t *smbios_tables;
+ size_t smbios_tables_len;
+@@ -67,7 +75,6 @@ static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
+ static SmbiosEntryPoint ep;
+ 
+ static int smbios_type4_count = 0;
+-static bool smbios_immutable;
+ static bool smbios_have_defaults;
+ static uint32_t smbios_cpuid_version, smbios_cpuid_features;
+ 
+@@ -569,9 +576,8 @@ static void smbios_build_type_1_fields(void)
+ 
+ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+ {
+-    /* drop unwanted version of command-line file blob(s) */
+-    g_free(smbios_tables);
+-    smbios_tables = NULL;
++    int i;
++    size_t usr_offset;
+ 
+     /* also complain if fields were given for types > 1 */
+     if (find_next_bit(have_fields_bitmap,
+@@ -581,12 +587,33 @@ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+         exit(1);
+     }
+ 
+-    if (!smbios_immutable) {
+-        smbios_build_type_0_fields();
+-        smbios_build_type_1_fields();
+-        smbios_validate_table(expected_t4_count);
+-        smbios_immutable = true;
++    g_free(smbios_entries);
++    smbios_entries_len = sizeof(uint16_t);
++    smbios_entries = g_malloc0(smbios_entries_len);
++
++    for (i = 0, usr_offset = 0; usr_blobs_sizes && i < usr_blobs_sizes->len;
++         i++)
++    {
++        struct smbios_table *table;
++        struct smbios_structure_header *header;
++        size_t size = g_array_index(usr_blobs_sizes, size_t, i);
++
++        header = (struct smbios_structure_header *)(usr_blobs + usr_offset);
++        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
++                                                   size + sizeof(*table));
++        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
++        table->header.type = SMBIOS_TABLE_ENTRY;
++        table->header.length = cpu_to_le16(sizeof(*table) + size);
++        memcpy(table->data, header, size);
++        smbios_entries_len += sizeof(*table) + size;
++        (*(uint16_t *)smbios_entries) =
++            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
++        usr_offset += size;
+     }
++
++    smbios_build_type_0_fields();
++    smbios_build_type_1_fields();
++    smbios_validate_table(expected_t4_count);
+     *length = smbios_entries_len;
+     return smbios_entries;
+ }
+@@ -1094,67 +1121,67 @@ void smbios_get_tables(MachineState *ms,
+ {
+     unsigned i, dimm_cnt, offset;
+ 
+-    /* drop unwanted (legacy) version of command-line file blob(s) */
+-    g_free(smbios_entries);
+-    smbios_entries = NULL;
++    g_free(smbios_tables);
++    smbios_tables = g_memdup2(usr_blobs, usr_blobs_len);
++    smbios_tables_len = usr_blobs_len;
++    smbios_table_max = usr_table_max;
++    smbios_table_cnt = usr_table_cnt;
+ 
+-    if (!smbios_immutable) {
+-        smbios_build_type_0_table();
+-        smbios_build_type_1_table();
+-        smbios_build_type_2_table();
+-        smbios_build_type_3_table();
++    smbios_build_type_0_table();
++    smbios_build_type_1_table();
++    smbios_build_type_2_table();
++    smbios_build_type_3_table();
+ 
+-        assert(ms->smp.sockets >= 1);
++    assert(ms->smp.sockets >= 1);
+ 
+-        for (i = 0; i < ms->smp.sockets; i++) {
+-            smbios_build_type_4_table(ms, i);
+-        }
++    for (i = 0; i < ms->smp.sockets; i++) {
++        smbios_build_type_4_table(ms, i);
++    }
+ 
+-        smbios_build_type_8_table();
+-        smbios_build_type_11_table();
++    smbios_build_type_8_table();
++    smbios_build_type_11_table();
+ 
+ #define MAX_DIMM_SZ (16 * GiB)
+ #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+                                         : ((current_machine->ram_size - 1) % MAX_DIMM_SZ) + 1)
+ 
+-        dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) / MAX_DIMM_SZ;
++    dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) /
++               MAX_DIMM_SZ;
+ 
+-        /*
+-         * The offset determines if we need to keep additional space between
+-         * table 17 and table 19 header handle numbers so that they do
+-         * not overlap. For example, for a VM with larger than 8 TB guest
+-         * memory and DIMM like chunks of 16 GiB, the default space between
+-         * the two tables (T19_BASE - T17_BASE = 512) is not enough.
+-         */
+-        offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+-                 dimm_cnt - (T19_BASE - T17_BASE) : 0;
++    /*
++     * The offset determines if we need to keep additional space between
++     * table 17 and table 19 header handle numbers so that they do
++     * not overlap. For example, for a VM with larger than 8 TB guest
++     * memory and DIMM like chunks of 16 GiB, the default space between
++     * the two tables (T19_BASE - T17_BASE = 512) is not enough.
++     */
++    offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
++             dimm_cnt - (T19_BASE - T17_BASE) : 0;
+ 
+-        smbios_build_type_16_table(dimm_cnt);
++    smbios_build_type_16_table(dimm_cnt);
+ 
+-        for (i = 0; i < dimm_cnt; i++) {
+-            smbios_build_type_17_table(i, GET_DIMM_SZ);
+-        }
++    for (i = 0; i < dimm_cnt; i++) {
++        smbios_build_type_17_table(i, GET_DIMM_SZ);
++    }
+ 
+-        for (i = 0; i < mem_array_size; i++) {
+-            smbios_build_type_19_table(i, offset, mem_array[i].address,
+-                                       mem_array[i].length);
+-        }
++    for (i = 0; i < mem_array_size; i++) {
++        smbios_build_type_19_table(i, offset, mem_array[i].address,
++                                   mem_array[i].length);
++    }
+ 
+-        /*
+-         * make sure 16 bit handle numbers in the headers of tables 19
+-         * and 32 do not overlap.
+-         */
+-        assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
++    /*
++     * make sure 16 bit handle numbers in the headers of tables 19
++     * and 32 do not overlap.
++     */
++    assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+ 
+-        smbios_build_type_32_table();
+-        smbios_build_type_38_table();
+-        smbios_build_type_41_table(errp);
+-        smbios_build_type_127_table();
++    smbios_build_type_32_table();
++    smbios_build_type_38_table();
++    smbios_build_type_41_table(errp);
++    smbios_build_type_127_table();
+ 
+-        smbios_validate_table(ms->smp.sockets);
+-        smbios_entry_point_setup();
+-        smbios_immutable = true;
+-    }
++    smbios_validate_table(ms->smp.sockets);
++    smbios_entry_point_setup();
+ 
+     /* return tables blob and entry point (anchor), and their sizes */
+     *tables = smbios_tables;
+@@ -1254,13 +1281,10 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+ {
+     const char *val;
+ 
+-    assert(!smbios_immutable);
+-
+     val = qemu_opt_get(opts, "file");
+     if (val) {
+         struct smbios_structure_header *header;
+-        int size;
+-        struct smbios_table *table; /* legacy mode only */
++        size_t size;
+ 
+         if (!qemu_opts_validate(opts, qemu_smbios_file_opts, errp)) {
+             return;
+@@ -1277,9 +1301,9 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+          * (except in legacy mode, where the second '\0' is implicit and
+          *  will be inserted by the BIOS).
+          */
+-        smbios_tables = g_realloc(smbios_tables, smbios_tables_len + size);
+-        header = (struct smbios_structure_header *)(smbios_tables +
+-                                                    smbios_tables_len);
++        usr_blobs = g_realloc(usr_blobs, usr_blobs_len + size);
++        header = (struct smbios_structure_header *)(usr_blobs +
++                                                    usr_blobs_len);
+ 
+         if (load_image_size(val, (uint8_t *)header, size) != size) {
+             error_setg(errp, "Failed to load SMBIOS file %s", val);
+@@ -1300,34 +1324,15 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+             smbios_type4_count++;
+         }
+ 
+-        smbios_tables_len += size;
+-        if (size > smbios_table_max) {
+-            smbios_table_max = size;
++        if (!usr_blobs_sizes) {
++            usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
+         }
+-        smbios_table_cnt++;
+-
+-        /* add a copy of the newly loaded blob to legacy smbios_entries */
+-        /* NOTE: This code runs before smbios_set_defaults(), so we don't
+-         *       yet know which mode (legacy vs. aggregate-table) will be
+-         *       required. We therefore add the binary blob to both legacy
+-         *       (smbios_entries) and aggregate (smbios_tables) tables, and
+-         *       delete the one we don't need from smbios_set_defaults(),
+-         *       once we know which machine version has been requested.
+-         */
+-        if (!smbios_entries) {
+-            smbios_entries_len = sizeof(uint16_t);
+-            smbios_entries = g_malloc0(smbios_entries_len);
++        g_array_append_val(usr_blobs_sizes, size);
++        usr_blobs_len += size;
++        if (size > usr_table_max) {
++            usr_table_max = size;
+         }
+-        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+-                                                   size + sizeof(*table));
+-        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+-        table->header.type = SMBIOS_TABLE_ENTRY;
+-        table->header.length = cpu_to_le16(sizeof(*table) + size);
+-        memcpy(table->data, header, size);
+-        smbios_entries_len += sizeof(*table) + size;
+-        (*(uint16_t *)smbios_entries) =
+-                cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+-        /* end: add a copy of the newly loaded blob to legacy smbios_entries */
++        usr_table_cnt++;
+ 
+         return;
+     }
 -- 
 2.39.3
 

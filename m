@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d8-20020a05600c3ac800b00412e84e59d8sm3851590wms.44.2024.03.05.04.10.09
+        by smtp.gmail.com with ESMTPSA id l22-20020a05600c4f1600b004128f41a13fsm17794983wmq.38.2024.03.05.04.10.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8A5E65F9CF;
+	by draig.lan (Postfix) with ESMTP id 755565F9CE;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,70 +51,82 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 11/29] gdbstub: Introduce gdb_handle_detach_user()
-Date: Tue,  5 Mar 2024 12:09:47 +0000
-Message-Id: <20240305121005.3528075-12-alex.bennee@linaro.org>
+Subject: [PATCH 10/29] gdbstub: Introduce gdb_handle_set_thread_user()
+Date: Tue,  5 Mar 2024 12:09:46 +0000
+Message-Id: <20240305121005.3528075-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AtYEtT1KSOGO
+X-TUID: surIJadlEb0y
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
 The upcoming follow-fork-mode child support needs to perform certain
-actions when GDB detaches from the stopped parent or the stopped child.
-Introduce a user-specific hook for this.
+actions when GDB switches between the stopped parent and the stopped
+child. Introduce a user-specific hook for this.
 
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-11-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-10-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h | 1 +
- gdbstub/gdbstub.c   | 6 ++++++
- gdbstub/user.c      | 5 +++++
- 3 files changed, 12 insertions(+)
+ gdbstub/internals.h |  1 +
+ gdbstub/gdbstub.c   | 11 +++++++++--
+ gdbstub/user.c      |  5 +++++
+ 3 files changed, 15 insertions(+), 2 deletions(-)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index b4905c7181a..b4724598384 100644
+index e6063835b1f..b4905c7181a 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -198,6 +198,7 @@ void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
+@@ -197,6 +197,7 @@ void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user */
+ void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
  void gdb_handle_set_catch_syscalls(GArray *params, void *user_ctx); /* user */
  void gdb_handle_query_supported_user(const char *gdb_supported); /* user */
- bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid); /* user */
-+bool gdb_handle_detach_user(uint32_t pid); /* user */
++bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid); /* user */
  
  void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
  
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 3eb93162aa8..17efcae0d0e 100644
+index 7be4418dcb5..3eb93162aa8 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -1024,6 +1024,12 @@ static void handle_detach(GArray *params, void *user_ctx)
-         pid = get_param(params, 0)->val_ul;
+@@ -1099,6 +1099,7 @@ static void handle_cont_with_sig(GArray *params, void *user_ctx)
+ 
+ static void handle_set_thread(GArray *params, void *user_ctx)
+ {
++    uint32_t pid, tid;
+     CPUState *cpu;
+ 
+     if (params->len != 2) {
+@@ -1116,8 +1117,14 @@ static void handle_set_thread(GArray *params, void *user_ctx)
+         return;
      }
  
+-    cpu = gdb_get_cpu(get_param(params, 1)->thread_id.pid,
+-                      get_param(params, 1)->thread_id.tid);
++    pid = get_param(params, 1)->thread_id.pid;
++    tid = get_param(params, 1)->thread_id.tid;
 +#ifdef CONFIG_USER_ONLY
-+    if (gdb_handle_detach_user(pid)) {
++    if (gdb_handle_set_thread_user(pid, tid)) {
 +        return;
 +    }
 +#endif
-+
-     process = gdb_get_process(pid);
-     gdb_process_breakpoint_remove_all(process);
-     process->attached = false;
++    cpu = gdb_get_cpu(pid, tid);
+     if (!cpu) {
+         gdb_put_packet("E22");
+         return;
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index b048754c4f8..1a7b582a40d 100644
+index c9e8b83d720..b048754c4f8 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -391,6 +391,11 @@ bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
-     return false;
+@@ -386,6 +386,11 @@ void gdb_handle_query_supported_user(const char *gdb_supported)
+ {
  }
  
-+bool gdb_handle_detach_user(uint32_t pid)
++bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
 +{
 +    return false;
 +}

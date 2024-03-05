@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u20-20020adfcb14000000b0033b7ce8b496sm14732205wrh.108.2024.03.05.04.10.09
+        by smtp.gmail.com with ESMTPSA id f10-20020a5d58ea000000b0033d4cf751b2sm14731989wrd.33.2024.03.05.04.10.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9FDDD5F9D3;
+	by draig.lan (Postfix) with ESMTP id B6EA15F9DA;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,310 +51,200 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 12/29] gdbstub: Implement follow-fork-mode child
-Date: Tue,  5 Mar 2024 12:09:48 +0000
-Message-Id: <20240305121005.3528075-13-alex.bennee@linaro.org>
+Subject: [PATCH 13/29] tests/tcg: Add two follow-fork-mode tests
+Date: Tue,  5 Mar 2024 12:09:49 +0000
+Message-Id: <20240305121005.3528075-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: P6WjLcAw200E
+X-TUID: MHddJOa0Le5X
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Currently it's not possible to use gdbstub for debugging linux-user
-code that runs in a forked child, which is normally done using the `set
-follow-fork-mode child` GDB command. Purely on the protocol level, the
-missing piece is the fork-events feature.
-
-However, a deeper problem is supporting $Hg switching between different
-processes - right now it can do only threads. Implementing this for the
-general case would be quite complicated, but, fortunately, for the
-follow-fork-mode case there are a few factors that greatly simplify
-things: fork() happens in the exclusive section, there are only two
-processes involved, and before one of them is resumed, the second one
-is detached.
-
-This makes it possible to implement a simplified scheme: the parent and
-the child share the gdbserver socket, it's used only by one of them at
-any given time, which is coordinated through a separate socketpair. The
-processes can read from the gdbserver socket only one byte at a time,
-which is not great for performance, but, fortunately, the
-follow-fork-mode handling involves only a few messages.
-
-Advertise the fork-events support, and remember whether GDB has it
-as well. Implement the state machine that is initialized on fork(),
-decides the current owner of the gdbserver socket, and is terminated
-when one of the two processes is detached. The logic for the parent and
-the child is the same, only the initial state is different.
+Add follow-fork-mode child and and follow-fork-mode parent tests.
+Check for the obvious pitfalls, such as lingering breakpoints,
+catchpoints, and single-step mode.
 
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-12-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-13-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/user.c | 212 ++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 210 insertions(+), 2 deletions(-)
+ tests/tcg/multiarch/follow-fork-mode.c        | 56 +++++++++++++++++++
+ tests/tcg/multiarch/Makefile.target           | 17 +++++-
+ .../gdbstub/follow-fork-mode-child.py         | 40 +++++++++++++
+ .../gdbstub/follow-fork-mode-parent.py        | 16 ++++++
+ 4 files changed, 128 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/multiarch/follow-fork-mode.c
+ create mode 100644 tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
+ create mode 100644 tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
 
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 1a7b582a40d..7f9f19a1249 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -25,6 +25,61 @@
- #define GDB_NR_SYSCALLS 1024
- typedef unsigned long GDBSyscallsMask[BITS_TO_LONGS(GDB_NR_SYSCALLS)];
- 
+diff --git a/tests/tcg/multiarch/follow-fork-mode.c b/tests/tcg/multiarch/follow-fork-mode.c
+new file mode 100644
+index 00000000000..cb6b032b388
+--- /dev/null
++++ b/tests/tcg/multiarch/follow-fork-mode.c
+@@ -0,0 +1,56 @@
 +/*
-+ * Forked child talks to its parent in order to let GDB enforce the
-+ * follow-fork-mode. This happens inside a start_exclusive() section, so that
-+ * the other threads, which may be forking too, do not interfere. The
-+ * implementation relies on GDB not sending $vCont until it has detached
-+ * either from the parent (follow-fork-mode child) or from the child
-+ * (follow-fork-mode parent).
++ * Test GDB's follow-fork-mode.
 + *
-+ * The parent and the child share the GDB socket; at any given time only one
-+ * of them is allowed to use it, as is reflected in the respective fork_state.
-+ * This is negotiated via the fork_sockets pair as a reaction to $Hg.
++ * fork() a chain of processes.
++ * Parents sends one byte to their children, and children return their
++ * position in the chain, in order to prove that they survived GDB's fork()
++ * handling.
 + *
-+ * Below is a short summary of the possible state transitions:
-+ *
-+ *     ENABLED                     : Terminal state.
-+ *     DISABLED                    : Terminal state.
-+ *     ACTIVE                      : Parent initial state.
-+ *     INACTIVE                    : Child initial state.
-+ *     ACTIVE       -> DEACTIVATING: On $Hg.
-+ *     ACTIVE       -> ENABLING    : On $D.
-+ *     ACTIVE       -> DISABLING   : On $D.
-+ *     ACTIVE       -> DISABLED    : On communication error.
-+ *     DEACTIVATING -> INACTIVE    : On gdb_read_byte() return.
-+ *     DEACTIVATING -> DISABLED    : On communication error.
-+ *     INACTIVE     -> ACTIVE      : On $Hg in the peer.
-+ *     INACTIVE     -> ENABLE      : On $D in the peer.
-+ *     INACTIVE     -> DISABLE     : On $D in the peer.
-+ *     INACTIVE     -> DISABLED    : On communication error.
-+ *     ENABLING     -> ENABLED     : On gdb_read_byte() return.
-+ *     ENABLING     -> DISABLED    : On communication error.
-+ *     DISABLING    -> DISABLED    : On gdb_read_byte() return.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+enum GDBForkState {
-+    /* Fully owning the GDB socket. */
-+    GDB_FORK_ENABLED,
-+    /* Working with the GDB socket; the peer is inactive. */
-+    GDB_FORK_ACTIVE,
-+    /* Handing off the GDB socket to the peer. */
-+    GDB_FORK_DEACTIVATING,
-+    /* The peer is working with the GDB socket. */
-+    GDB_FORK_INACTIVE,
-+    /* Asking the peer to close its GDB socket fd. */
-+    GDB_FORK_ENABLING,
-+    /* Asking the peer to take over, closing our GDB socket fd. */
-+    GDB_FORK_DISABLING,
-+    /* The peer has taken over, our GDB socket fd is closed. */
-+    GDB_FORK_DISABLED,
-+};
++#include <assert.h>
++#include <stdlib.h>
++#include <sys/wait.h>
++#include <unistd.h>
 +
-+enum GDBForkMessage {
-+    GDB_FORK_ACTIVATE = 'a',
-+    GDB_FORK_ENABLE = 'e',
-+    GDB_FORK_DISABLE = 'd',
-+};
++void break_after_fork(void)
++{
++}
 +
- /* User-mode specific state */
- typedef struct {
-     int fd;
-@@ -36,6 +91,10 @@ typedef struct {
-      */
-     bool catch_all_syscalls;
-     GDBSyscallsMask catch_syscalls_mask;
-+    bool fork_events;
-+    enum GDBForkState fork_state;
-+    int fork_sockets[2];
-+    pid_t fork_peer_pid, fork_peer_tid;
- } GDBUserState;
- 
- static GDBUserState gdbserver_user_state;
-@@ -358,6 +417,18 @@ int gdbserver_start(const char *port_or_path)
- 
- void gdbserver_fork_start(void)
- {
-+    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
-+        return;
-+    }
-+    if (!gdbserver_user_state.fork_events ||
-+            qemu_socketpair(AF_UNIX, SOCK_STREAM, 0,
-+                            gdbserver_user_state.fork_sockets) < 0) {
-+        gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
-+        return;
-+    }
-+    gdbserver_user_state.fork_state = GDB_FORK_INACTIVE;
-+    gdbserver_user_state.fork_peer_pid = getpid();
-+    gdbserver_user_state.fork_peer_tid = qemu_get_thread_id();
- }
- 
- static void disable_gdbstub(CPUState *thread_cpu)
-@@ -376,23 +447,160 @@ static void disable_gdbstub(CPUState *thread_cpu)
- 
- void gdbserver_fork_end(CPUState *cpu, pid_t pid)
- {
--    if (pid != 0 || !gdbserver_state.init || gdbserver_user_state.fd < 0) {
++int main(void)
++{
++    int depth = 42, err, i, fd[2], status;
++    pid_t child, pid;
++    ssize_t n;
 +    char b;
-+    int fd;
 +
-+    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
-         return;
-     }
--    disable_gdbstub(cpu);
++    for (i = 0; i < depth; i++) {
++        err = pipe(fd);
++        assert(err == 0);
++        child = fork();
++        break_after_fork();
++        assert(child != -1);
++        if (child == 0) {
++            close(fd[1]);
 +
-+    if (pid == -1) {
-+        if (gdbserver_user_state.fork_state != GDB_FORK_DISABLED) {
-+            g_assert(gdbserver_user_state.fork_state == GDB_FORK_INACTIVE);
-+            close(gdbserver_user_state.fork_sockets[0]);
-+            close(gdbserver_user_state.fork_sockets[1]);
-+        }
-+        return;
-+    }
++            n = read(fd[0], &b, 1);
++            close(fd[0]);
++            assert(n == 1);
++            assert(b == (char)i);
++        } else {
++            close(fd[0]);
 +
-+    if (gdbserver_user_state.fork_state == GDB_FORK_DISABLED) {
-+        if (pid == 0) {
-+            disable_gdbstub(cpu);
-+        }
-+        return;
-+    }
++            b = (char)i;
++            n = write(fd[1], &b, 1);
++            close(fd[1]);
++            assert(n == 1);
 +
-+    if (pid == 0) {
-+        close(gdbserver_user_state.fork_sockets[0]);
-+        fd = gdbserver_user_state.fork_sockets[1];
-+        g_assert(gdbserver_state.process_num == 1);
-+        g_assert(gdbserver_state.processes[0].pid ==
-+                     gdbserver_user_state.fork_peer_pid);
-+        g_assert(gdbserver_state.processes[0].attached);
-+        gdbserver_state.processes[0].pid = getpid();
-+    } else {
-+        close(gdbserver_user_state.fork_sockets[1]);
-+        fd = gdbserver_user_state.fork_sockets[0];
-+        gdbserver_user_state.fork_state = GDB_FORK_ACTIVE;
-+        gdbserver_user_state.fork_peer_pid = pid;
-+        gdbserver_user_state.fork_peer_tid = pid;
-+
-+        if (!gdbserver_state.allow_stop_reply) {
-+            goto fail;
-+        }
-+        g_string_printf(gdbserver_state.str_buf,
-+                        "T%02xfork:p%02x.%02x;thread:p%02x.%02x;",
-+                        gdb_target_signal_to_gdb(gdb_target_sigtrap()),
-+                        pid, pid, (int)getpid(), qemu_get_thread_id());
-+        gdb_put_strbuf();
-+    }
-+
-+    gdbserver_state.state = RS_IDLE;
-+    gdbserver_state.allow_stop_reply = false;
-+    gdbserver_user_state.running_state = 0;
-+    for (;;) {
-+        switch (gdbserver_user_state.fork_state) {
-+        case GDB_FORK_ENABLED:
-+            if (gdbserver_user_state.running_state) {
-+                return;
-+            }
-+            QEMU_FALLTHROUGH;
-+        case GDB_FORK_ACTIVE:
-+            if (read(gdbserver_user_state.fd, &b, 1) != 1) {
-+                goto fail;
-+            }
-+            gdb_read_byte(b);
-+            break;
-+        case GDB_FORK_DEACTIVATING:
-+            b = GDB_FORK_ACTIVATE;
-+            if (write(fd, &b, 1) != 1) {
-+                goto fail;
-+            }
-+            gdbserver_user_state.fork_state = GDB_FORK_INACTIVE;
-+            break;
-+        case GDB_FORK_INACTIVE:
-+            if (read(fd, &b, 1) != 1) {
-+                goto fail;
-+            }
-+            switch (b) {
-+            case GDB_FORK_ACTIVATE:
-+                gdbserver_user_state.fork_state = GDB_FORK_ACTIVE;
-+                break;
-+            case GDB_FORK_ENABLE:
-+                close(fd);
-+                gdbserver_user_state.fork_state = GDB_FORK_ENABLED;
-+                break;
-+            case GDB_FORK_DISABLE:
-+                gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+            break;
-+        case GDB_FORK_ENABLING:
-+            b = GDB_FORK_DISABLE;
-+            if (write(fd, &b, 1) != 1) {
-+                goto fail;
-+            }
-+            close(fd);
-+            gdbserver_user_state.fork_state = GDB_FORK_ENABLED;
-+            break;
-+        case GDB_FORK_DISABLING:
-+            b = GDB_FORK_ENABLE;
-+            if (write(fd, &b, 1) != 1) {
-+                goto fail;
-+            }
-+            gdbserver_user_state.fork_state = GDB_FORK_DISABLED;
-+            break;
-+        case GDB_FORK_DISABLED:
-+            close(fd);
-+            disable_gdbstub(cpu);
-+            return;
-+        default:
-+            g_assert_not_reached();
++            pid = waitpid(child, &status, 0);
++            assert(pid == child);
++            assert(WIFEXITED(status));
++            return WEXITSTATUS(status) - 1;
 +        }
 +    }
 +
-+fail:
-+    close(fd);
-+    if (pid == 0) {
-+        disable_gdbstub(cpu);
-+    }
- }
++    return depth;
++}
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index f11f3b084d7..979a0dd1bc2 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -106,6 +106,20 @@ run-gdbstub-catch-syscalls: catch-syscalls
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/catch-syscalls.py, \
+ 	hitting a syscall catchpoint)
  
- void gdb_handle_query_supported_user(const char *gdb_supported)
- {
-+    if (strstr(gdb_supported, "fork-events+")) {
-+        gdbserver_user_state.fork_events = true;
-+    }
-+    g_string_append(gdbserver_state.str_buf, ";fork-events+");
- }
- 
- bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
- {
-+    if (gdbserver_user_state.fork_state == GDB_FORK_ACTIVE &&
-+            pid == gdbserver_user_state.fork_peer_pid &&
-+            tid == gdbserver_user_state.fork_peer_tid) {
-+        gdbserver_user_state.fork_state = GDB_FORK_DEACTIVATING;
-+        gdb_put_packet("OK");
-+        return true;
-+    }
-     return false;
- }
- 
- bool gdb_handle_detach_user(uint32_t pid)
- {
-+    bool enable;
++run-gdbstub-follow-fork-mode-child: follow-fork-mode
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-child.py, \
++	following children on fork)
 +
-+    if (gdbserver_user_state.fork_state == GDB_FORK_ACTIVE) {
-+        enable = pid == gdbserver_user_state.fork_peer_pid;
-+        if (enable || pid == getpid()) {
-+            gdbserver_user_state.fork_state = enable ? GDB_FORK_ENABLING :
-+                                                       GDB_FORK_DISABLING;
-+            gdb_put_packet("OK");
-+            return true;
-+        }
-+    }
-     return false;
- }
++run-gdbstub-follow-fork-mode-parent: follow-fork-mode
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-parent.py, \
++	following parents on fork)
++
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
+@@ -113,7 +127,8 @@ endif
+ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+ 	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
+ 	      run-gdbstub-registers run-gdbstub-prot-none \
+-	      run-gdbstub-catch-syscalls
++	      run-gdbstub-catch-syscalls run-gdbstub-follow-fork-mode-child \
++	      run-gdbstub-follow-fork-mode-parent
  
+ # ARM Compatible Semi Hosting Tests
+ #
+diff --git a/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py b/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
+new file mode 100644
+index 00000000000..72a6e440c08
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
+@@ -0,0 +1,40 @@
++"""Test GDB's follow-fork-mode child.
++
++SPDX-License-Identifier: GPL-2.0-or-later
++"""
++from test_gdbstub import main, report
++
++
++def run_test():
++    """Run through the tests one by one"""
++    gdb.execute("set follow-fork-mode child")
++    # Check that the parent breakpoints are unset.
++    gdb.execute("break break_after_fork")
++    # Check that the parent syscall catchpoints are unset.
++    # Skip this check on the architectures that don't have them.
++    have_fork_syscall = False
++    for fork_syscall in ("fork", "clone", "clone2", "clone3"):
++        try:
++            gdb.execute("catch syscall {}".format(fork_syscall))
++        except gdb.error:
++            pass
++        else:
++            have_fork_syscall = True
++    gdb.execute("continue")
++    for i in range(42):
++        if have_fork_syscall:
++            # syscall entry.
++            if i % 2 == 0:
++                # Check that the parent single-stepping is turned off.
++                gdb.execute("si")
++            else:
++                gdb.execute("continue")
++            # syscall exit.
++            gdb.execute("continue")
++        # break_after_fork()
++        gdb.execute("continue")
++    exitcode = int(gdb.parse_and_eval("$_exitcode"))
++    report(exitcode == 42, "{} == 42".format(exitcode))
++
++
++main(run_test)
+diff --git a/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py b/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
+new file mode 100644
+index 00000000000..5c2fe722088
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
+@@ -0,0 +1,16 @@
++"""Test GDB's follow-fork-mode parent.
++
++SPDX-License-Identifier: GPL-2.0-or-later
++"""
++from test_gdbstub import main, report
++
++
++def run_test():
++    """Run through the tests one by one"""
++    gdb.execute("set follow-fork-mode parent")
++    gdb.execute("continue")
++    exitcode = int(gdb.parse_and_eval("$_exitcode"))
++    report(exitcode == 0, "{} == 0".format(exitcode))
++
++
++main(run_test)
 -- 
 2.39.2

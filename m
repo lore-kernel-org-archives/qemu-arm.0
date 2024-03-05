@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l22-20020a05600c4f1600b004128f41a13fsm17794983wmq.38.2024.03.05.04.10.08
+        by smtp.gmail.com with ESMTPSA id i10-20020a05600011ca00b0033b60bad2fcsm14828244wrx.113.2024.03.05.04.10.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:10:12 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 755565F9CE;
+	by draig.lan (Postfix) with ESMTP id 496475F9CB;
 	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,88 +51,102 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 10/29] gdbstub: Introduce gdb_handle_set_thread_user()
-Date: Tue,  5 Mar 2024 12:09:46 +0000
-Message-Id: <20240305121005.3528075-11-alex.bennee@linaro.org>
+Subject: [PATCH 08/29] gdbstub: Call gdbserver_fork() both in parent and in child
+Date: Tue,  5 Mar 2024 12:09:44 +0000
+Message-Id: <20240305121005.3528075-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: surIJadlEb0y
+X-TUID: BXrx3JITTGRa
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-The upcoming follow-fork-mode child support needs to perform certain
-actions when GDB switches between the stopped parent and the stopped
-child. Introduce a user-specific hook for this.
+The upcoming follow-fork-mode child support requires post-fork message
+exchange between the parent and the child. Prepare gdbserver_fork() for
+this purpose. Rename it to gdbserver_fork_end() to better reflect its
+purpose.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-10-iii@linux.ibm.com>
+Message-Id: <20240219141628.246823-8-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 11 +++++++++--
- gdbstub/user.c      |  5 +++++
- 3 files changed, 15 insertions(+), 2 deletions(-)
+ include/gdbstub/user.h | 5 +++--
+ bsd-user/main.c        | 3 ++-
+ gdbstub/user.c         | 5 ++---
+ linux-user/main.c      | 2 +-
+ 4 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index e6063835b1f..b4905c7181a 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -197,6 +197,7 @@ void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user */
- void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
- void gdb_handle_set_catch_syscalls(GArray *params, void *user_ctx); /* user */
- void gdb_handle_query_supported_user(const char *gdb_supported); /* user */
-+bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid); /* user */
+diff --git a/include/gdbstub/user.h b/include/gdbstub/user.h
+index 3f9f45946e0..4c4e5c4c582 100644
+--- a/include/gdbstub/user.h
++++ b/include/gdbstub/user.h
+@@ -51,10 +51,11 @@ void gdb_signalled(CPUArchState *as, int sig);
+ void gdbserver_fork_start(void);
  
- void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
+ /**
+- * gdbserver_fork() - disable gdb stub for child processes.
++ * gdbserver_fork_end() - inform gdb of the completed fork()
+  * @cs: CPU
++ * @pid: 0 if in child process, -1 if fork failed, child process pid otherwise
+  */
+-void gdbserver_fork(CPUState *cs, pid_t pid);
++void gdbserver_fork_end(CPUState *cs, pid_t pid);
  
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 7be4418dcb5..3eb93162aa8 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -1099,6 +1099,7 @@ static void handle_cont_with_sig(GArray *params, void *user_ctx)
- 
- static void handle_set_thread(GArray *params, void *user_ctx)
- {
-+    uint32_t pid, tid;
-     CPUState *cpu;
- 
-     if (params->len != 2) {
-@@ -1116,8 +1117,14 @@ static void handle_set_thread(GArray *params, void *user_ctx)
-         return;
+ /**
+  * gdb_syscall_entry() - inform gdb of syscall entry and yield control to it
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 0dbd1cf8801..3dc285e5b74 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -138,10 +138,11 @@ void fork_end(pid_t pid)
+          */
+         qemu_init_cpu_list();
+         get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
+-        gdbserver_fork(thread_cpu, pid);
++        gdbserver_fork_end(thread_cpu, pid);
+     } else {
+         mmap_fork_end(child);
+         cpu_list_unlock();
++        gdbserver_fork_end(thread_cpu, pid);
+         end_exclusive();
      }
- 
--    cpu = gdb_get_cpu(get_param(params, 1)->thread_id.pid,
--                      get_param(params, 1)->thread_id.tid);
-+    pid = get_param(params, 1)->thread_id.pid;
-+    tid = get_param(params, 1)->thread_id.tid;
-+#ifdef CONFIG_USER_ONLY
-+    if (gdb_handle_set_thread_user(pid, tid)) {
-+        return;
-+    }
-+#endif
-+    cpu = gdb_get_cpu(pid, tid);
-     if (!cpu) {
-         gdb_put_packet("E22");
-         return;
+ }
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index c9e8b83d720..b048754c4f8 100644
+index c61e1a0d1f6..866a25f9c06 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -386,6 +386,11 @@ void gdb_handle_query_supported_user(const char *gdb_supported)
- {
+@@ -374,10 +374,9 @@ static void disable_gdbstub(CPUState *thread_cpu)
+     tb_flush(thread_cpu);
  }
  
-+bool gdb_handle_set_thread_user(uint32_t pid, uint32_t tid)
-+{
-+    return false;
-+}
-+
- /*
-  * Execution state helpers
-  */
+-/* Disable gdb stub for child processes.  */
+-void gdbserver_fork(CPUState *cpu, pid_t pid)
++void gdbserver_fork_end(CPUState *cpu, pid_t pid)
+ {
+-    if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
++    if (pid != 0 || !gdbserver_state.init || gdbserver_user_state.fd < 0) {
+         return;
+     }
+     disable_gdbstub(cpu);
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 70314e0ab6a..41caa77cb52 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -165,10 +165,10 @@ void fork_end(pid_t pid)
+         }
+         qemu_init_cpu_list();
+         get_task_state(thread_cpu)->ts_tid = qemu_get_thread_id();
+-        gdbserver_fork(thread_cpu, pid);
+     } else {
+         cpu_list_unlock();
+     }
++    gdbserver_fork_end(thread_cpu, pid);
+     /*
+      * qemu_init_cpu_list() reinitialized the child exclusive state, but we
+      * also need to keep current_cpu consistent, so call end_exclusive() for
 -- 
 2.39.2

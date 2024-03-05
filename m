@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f10-20020a5d58ea000000b0033d4cf751b2sm14731989wrd.33.2024.03.05.04.10.09
+        by smtp.gmail.com with ESMTPSA id n37-20020a05600c3ba500b00412e58be350sm5058355wms.1.2024.03.05.04.10.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Mar 2024 04:10:12 -0800 (PST)
+        Tue, 05 Mar 2024 04:10:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B6EA15F9DA;
-	Tue,  5 Mar 2024 12:10:06 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 082A95F9E0;
+	Tue,  5 Mar 2024 12:10:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -51,200 +51,219 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 13/29] tests/tcg: Add two follow-fork-mode tests
-Date: Tue,  5 Mar 2024 12:09:49 +0000
-Message-Id: <20240305121005.3528075-14-alex.bennee@linaro.org>
+Subject: [PATCH 16/29] plugins: implement inline operation relative to cpu_index
+Date: Tue,  5 Mar 2024 12:09:52 +0000
+Message-Id: <20240305121005.3528075-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MHddJOa0Le5X
+X-TUID: iUj1Yb46ENlD
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Add follow-fork-mode child and and follow-fork-mode parent tests.
-Check for the obvious pitfalls, such as lingering breakpoints,
-catchpoints, and single-step mode.
+Instead of working on a fixed memory location, allow to address it based
+on cpu_index, an element size and a given offset.
+Result address: ptr + offset + cpu_index * element_size.
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240219141628.246823-13-iii@linux.ibm.com>
+With this, we can target a member in a struct array from a base pointer.
+
+Current semantic is not modified, thus inline operation still targets
+always the same memory location.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240304130036.124418-4-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/multiarch/follow-fork-mode.c        | 56 +++++++++++++++++++
- tests/tcg/multiarch/Makefile.target           | 17 +++++-
- .../gdbstub/follow-fork-mode-child.py         | 40 +++++++++++++
- .../gdbstub/follow-fork-mode-parent.py        | 16 ++++++
- 4 files changed, 128 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/multiarch/follow-fork-mode.c
- create mode 100644 tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
- create mode 100644 tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
+ plugins/plugin.h       |  2 +-
+ accel/tcg/plugin-gen.c | 69 ++++++++++++++++++++++++++++++++++--------
+ plugins/api.c          |  3 +-
+ plugins/core.c         | 12 +++++---
+ 4 files changed, 67 insertions(+), 19 deletions(-)
 
-diff --git a/tests/tcg/multiarch/follow-fork-mode.c b/tests/tcg/multiarch/follow-fork-mode.c
-new file mode 100644
-index 00000000000..cb6b032b388
---- /dev/null
-+++ b/tests/tcg/multiarch/follow-fork-mode.c
-@@ -0,0 +1,56 @@
-+/*
-+ * Test GDB's follow-fork-mode.
-+ *
-+ * fork() a chain of processes.
-+ * Parents sends one byte to their children, and children return their
-+ * position in the chain, in order to prove that they survived GDB's fork()
-+ * handling.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <assert.h>
-+#include <stdlib.h>
-+#include <sys/wait.h>
-+#include <unistd.h>
+diff --git a/plugins/plugin.h b/plugins/plugin.h
+index 043c740067d..3bf1aaf5c2d 100644
+--- a/plugins/plugin.h
++++ b/plugins/plugin.h
+@@ -99,7 +99,7 @@ void plugin_register_vcpu_mem_cb(GArray **arr,
+                                  enum qemu_plugin_mem_rw rw,
+                                  void *udata);
+ 
+-void exec_inline_op(struct qemu_plugin_dyn_cb *cb);
++void exec_inline_op(struct qemu_plugin_dyn_cb *cb, int cpu_index);
+ 
+ int plugin_num_vcpus(void);
+ 
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index ac6b52b9ec9..0f8be53d394 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -133,16 +133,28 @@ static void gen_empty_udata_cb_no_rwg(void)
+  */
+ static void gen_empty_inline_cb(void)
+ {
++    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
++    TCGv_ptr cpu_index_as_ptr = tcg_temp_ebb_new_ptr();
+     TCGv_i64 val = tcg_temp_ebb_new_i64();
+     TCGv_ptr ptr = tcg_temp_ebb_new_ptr();
+ 
++    tcg_gen_ld_i32(cpu_index, tcg_env,
++                   -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
++    /* second operand will be replaced by immediate value */
++    tcg_gen_mul_i32(cpu_index, cpu_index, cpu_index);
++    tcg_gen_ext_i32_ptr(cpu_index_as_ptr, cpu_index);
 +
-+void break_after_fork(void)
+     tcg_gen_movi_ptr(ptr, 0);
++    tcg_gen_add_ptr(ptr, ptr, cpu_index_as_ptr);
+     tcg_gen_ld_i64(val, ptr, 0);
+-    /* pass an immediate != 0 so that it doesn't get optimized away */
+-    tcg_gen_addi_i64(val, val, 0xdeadface);
++    /* second operand will be replaced by immediate value */
++    tcg_gen_add_i64(val, val, val);
++
+     tcg_gen_st_i64(val, ptr, 0);
+     tcg_temp_free_ptr(ptr);
+     tcg_temp_free_i64(val);
++    tcg_temp_free_ptr(cpu_index_as_ptr);
++    tcg_temp_free_i32(cpu_index);
+ }
+ 
+ static void gen_empty_mem_cb(TCGv_i64 addr, uint32_t info)
+@@ -290,12 +302,37 @@ static TCGOp *copy_const_ptr(TCGOp **begin_op, TCGOp *op, void *ptr)
+     return op;
+ }
+ 
++static TCGOp *copy_ld_i32(TCGOp **begin_op, TCGOp *op)
 +{
++    return copy_op(begin_op, op, INDEX_op_ld_i32);
 +}
 +
-+int main(void)
++static TCGOp *copy_ext_i32_ptr(TCGOp **begin_op, TCGOp *op)
 +{
-+    int depth = 42, err, i, fd[2], status;
-+    pid_t child, pid;
-+    ssize_t n;
-+    char b;
-+
-+    for (i = 0; i < depth; i++) {
-+        err = pipe(fd);
-+        assert(err == 0);
-+        child = fork();
-+        break_after_fork();
-+        assert(child != -1);
-+        if (child == 0) {
-+            close(fd[1]);
-+
-+            n = read(fd[0], &b, 1);
-+            close(fd[0]);
-+            assert(n == 1);
-+            assert(b == (char)i);
-+        } else {
-+            close(fd[0]);
-+
-+            b = (char)i;
-+            n = write(fd[1], &b, 1);
-+            close(fd[1]);
-+            assert(n == 1);
-+
-+            pid = waitpid(child, &status, 0);
-+            assert(pid == child);
-+            assert(WIFEXITED(status));
-+            return WEXITSTATUS(status) - 1;
-+        }
++    if (UINTPTR_MAX == UINT32_MAX) {
++        op = copy_op(begin_op, op, INDEX_op_mov_i32);
++    } else {
++        op = copy_op(begin_op, op, INDEX_op_ext_i32_i64);
 +    }
-+
-+    return depth;
++    return op;
 +}
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index f11f3b084d7..979a0dd1bc2 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -106,6 +106,20 @@ run-gdbstub-catch-syscalls: catch-syscalls
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/catch-syscalls.py, \
- 	hitting a syscall catchpoint)
++
++static TCGOp *copy_add_ptr(TCGOp **begin_op, TCGOp *op)
++{
++    if (UINTPTR_MAX == UINT32_MAX) {
++        op = copy_op(begin_op, op, INDEX_op_add_i32);
++    } else {
++        op = copy_op(begin_op, op, INDEX_op_add_i64);
++    }
++    return op;
++}
++
+ static TCGOp *copy_ld_i64(TCGOp **begin_op, TCGOp *op)
+ {
+     if (TCG_TARGET_REG_BITS == 32) {
+         /* 2x ld_i32 */
+-        op = copy_op(begin_op, op, INDEX_op_ld_i32);
+-        op = copy_op(begin_op, op, INDEX_op_ld_i32);
++        op = copy_ld_i32(begin_op, op);
++        op = copy_ld_i32(begin_op, op);
+     } else {
+         /* ld_i64 */
+         op = copy_op(begin_op, op, INDEX_op_ld_i64);
+@@ -331,6 +368,13 @@ static TCGOp *copy_add_i64(TCGOp **begin_op, TCGOp *op, uint64_t v)
+     return op;
+ }
  
-+run-gdbstub-follow-fork-mode-child: follow-fork-mode
-+	$(call run-test, $@, $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-child.py, \
-+	following children on fork)
++static TCGOp *copy_mul_i32(TCGOp **begin_op, TCGOp *op, uint32_t v)
++{
++    op = copy_op(begin_op, op, INDEX_op_mul_i32);
++    op->args[2] = tcgv_i32_arg(tcg_constant_i32(v));
++    return op;
++}
 +
-+run-gdbstub-follow-fork-mode-parent: follow-fork-mode
-+	$(call run-test, $@, $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/follow-fork-mode-parent.py, \
-+	following parents on fork)
-+
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
-@@ -113,7 +127,8 @@ endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
- 	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
- 	      run-gdbstub-registers run-gdbstub-prot-none \
--	      run-gdbstub-catch-syscalls
-+	      run-gdbstub-catch-syscalls run-gdbstub-follow-fork-mode-child \
-+	      run-gdbstub-follow-fork-mode-parent
+ static TCGOp *copy_st_ptr(TCGOp **begin_op, TCGOp *op)
+ {
+     if (UINTPTR_MAX == UINT32_MAX) {
+@@ -396,18 +440,17 @@ static TCGOp *append_inline_cb(const struct qemu_plugin_dyn_cb *cb,
+                                TCGOp *begin_op, TCGOp *op,
+                                int *unused)
+ {
+-    /* const_ptr */
+-    op = copy_const_ptr(&begin_op, op, cb->userp);
+-
+-    /* ld_i64 */
++    char *ptr = cb->userp;
++    size_t elem_size = 0;
++    size_t offset = 0;
++    op = copy_ld_i32(&begin_op, op);
++    op = copy_mul_i32(&begin_op, op, elem_size);
++    op = copy_ext_i32_ptr(&begin_op, op);
++    op = copy_const_ptr(&begin_op, op, ptr + offset);
++    op = copy_add_ptr(&begin_op, op);
+     op = copy_ld_i64(&begin_op, op);
+-
+-    /* add_i64 */
+     op = copy_add_i64(&begin_op, op, cb->inline_insn.imm);
+-
+-    /* st_i64 */
+     op = copy_st_i64(&begin_op, op);
+-
+     return op;
+ }
  
- # ARM Compatible Semi Hosting Tests
- #
-diff --git a/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py b/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
-new file mode 100644
-index 00000000000..72a6e440c08
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/follow-fork-mode-child.py
-@@ -0,0 +1,40 @@
-+"""Test GDB's follow-fork-mode child.
-+
-+SPDX-License-Identifier: GPL-2.0-or-later
-+"""
-+from test_gdbstub import main, report
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    gdb.execute("set follow-fork-mode child")
-+    # Check that the parent breakpoints are unset.
-+    gdb.execute("break break_after_fork")
-+    # Check that the parent syscall catchpoints are unset.
-+    # Skip this check on the architectures that don't have them.
-+    have_fork_syscall = False
-+    for fork_syscall in ("fork", "clone", "clone2", "clone3"):
-+        try:
-+            gdb.execute("catch syscall {}".format(fork_syscall))
-+        except gdb.error:
-+            pass
-+        else:
-+            have_fork_syscall = True
-+    gdb.execute("continue")
-+    for i in range(42):
-+        if have_fork_syscall:
-+            # syscall entry.
-+            if i % 2 == 0:
-+                # Check that the parent single-stepping is turned off.
-+                gdb.execute("si")
-+            else:
-+                gdb.execute("continue")
-+            # syscall exit.
-+            gdb.execute("continue")
-+        # break_after_fork()
-+        gdb.execute("continue")
-+    exitcode = int(gdb.parse_and_eval("$_exitcode"))
-+    report(exitcode == 42, "{} == 42".format(exitcode))
-+
-+
-+main(run_test)
-diff --git a/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py b/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
-new file mode 100644
-index 00000000000..5c2fe722088
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/follow-fork-mode-parent.py
-@@ -0,0 +1,16 @@
-+"""Test GDB's follow-fork-mode parent.
-+
-+SPDX-License-Identifier: GPL-2.0-or-later
-+"""
-+from test_gdbstub import main, report
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    gdb.execute("set follow-fork-mode parent")
-+    gdb.execute("continue")
-+    exitcode = int(gdb.parse_and_eval("$_exitcode"))
-+    report(exitcode == 0, "{} == 0".format(exitcode))
-+
-+
-+main(run_test)
+diff --git a/plugins/api.c b/plugins/api.c
+index 8910cbb2c46..fa1daee8254 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -106,7 +106,8 @@ void qemu_plugin_register_vcpu_tb_exec_inline(struct qemu_plugin_tb *tb,
+                                               void *ptr, uint64_t imm)
+ {
+     if (!tb->mem_only) {
+-        plugin_register_inline_op(&tb->cbs[PLUGIN_CB_INLINE], 0, op, ptr, imm);
++        plugin_register_inline_op(&tb->cbs[PLUGIN_CB_INLINE],
++                                  0, op, ptr, imm);
+     }
+ }
+ 
+diff --git a/plugins/core.c b/plugins/core.c
+index 63f4c6c6ce3..65d5611f797 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -318,7 +318,8 @@ static struct qemu_plugin_dyn_cb *plugin_get_dyn_cb(GArray **arr)
+ 
+ void plugin_register_inline_op(GArray **arr,
+                                enum qemu_plugin_mem_rw rw,
+-                               enum qemu_plugin_op op, void *ptr,
++                               enum qemu_plugin_op op,
++                               void *ptr,
+                                uint64_t imm)
+ {
+     struct qemu_plugin_dyn_cb *dyn_cb;
+@@ -474,9 +475,12 @@ void qemu_plugin_flush_cb(void)
+     plugin_cb__simple(QEMU_PLUGIN_EV_FLUSH);
+ }
+ 
+-void exec_inline_op(struct qemu_plugin_dyn_cb *cb)
++void exec_inline_op(struct qemu_plugin_dyn_cb *cb, int cpu_index)
+ {
+-    uint64_t *val = cb->userp;
++    char *ptr = cb->userp;
++    size_t elem_size = 0;
++    size_t offset = 0;
++    uint64_t *val = (uint64_t *)(ptr + offset + cpu_index * elem_size);
+ 
+     switch (cb->inline_insn.op) {
+     case QEMU_PLUGIN_INLINE_ADD_U64:
+@@ -509,7 +513,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
+                            vaddr, cb->userp);
+             break;
+         case PLUGIN_CB_INLINE:
+-            exec_inline_op(cb);
++            exec_inline_op(cb, cpu->cpu_index);
+             break;
+         default:
+             g_assert_not_reached();
 -- 
 2.39.2

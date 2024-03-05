@@ -1,116 +1,90 @@
-Received: by 2002:a17:906:489:b0:a44:3ba0:e9d1 with SMTP id f9csp2843812eja;
-        Mon, 4 Mar 2024 13:12:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUZj7Zz9qrpA16e2Ufb3nqMIlS0y+jbo2CKc55DCUiReQQKcVKF5eXIseOkWJZOePGSlfXwV02ENN0gN/v56FXAiYdXSdhZ
-X-Google-Smtp-Source: AGHT+IE+Nk760aMySnqykFgkbZvtSlX/a2IkQz50XfJBcn6Q2YTyqCGcn4ft4g7BAgtVTZ0ujwDG
-X-Received: by 2002:ac8:5f46:0:b0:42e:f950:d225 with SMTP id y6-20020ac85f46000000b0042ef950d225mr75373qta.1.1709586725327;
-        Mon, 04 Mar 2024 13:12:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709586725; cv=none;
+Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp111632ejc;
+        Mon, 4 Mar 2024 23:05:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWk7qbEBM6kFVXV6CA6canMAoqZdwtWbMAhZPr2LDpYCLlQQrwT6vJHFmQ1w0M3nGnRWGyNMCEjUoYHnGvv3Nl9Mgu1qKoq
+X-Google-Smtp-Source: AGHT+IEM7haTvyX1eB69HGtymmhFC2YgMZBRovWcuHpfNBPnY2ubgJNPJZapicggKOQEr17K/T0j
+X-Received: by 2002:a67:ea1a:0:b0:472:94bd:9d71 with SMTP id g26-20020a67ea1a000000b0047294bd9d71mr840528vso.15.1709622331500;
+        Mon, 04 Mar 2024 23:05:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709622331; cv=none;
         d=google.com; s=arc-20160816;
-        b=qd6yN/GB7a6Aoyp45hMyGjCCtAndxdMy7xcbtoauyXlv2hQ9fm0QgADNLQQLbW0ksE
-         0tU86uX25b37XivYaTPsaIZawWzZHn/y35i40n3op5CloSWpLGzzdFhHPUrfbU/ZCw9m
-         TOXXo+0tMmGRuecASuFWb8owAK1NCkBE8tkm1gppZgHN+3qSrlY9lCiy/Q4/9p1OTvaQ
-         0jUEEBiA1KT+dsJUOioAmDHPxsDh8MTdHKQ1YL3s/BzFgnEuyyuF4W5qvRV4cHrRNO4q
-         XmeJZZMfPzEOidpfRditC1RiCIiL1ZCIFckPL4AeyYxP629NfT2EuRiCT4au7g6YRDb2
-         qb6w==
+        b=w/oR29Ck7B4T9rd40AAU3+OT/337vYXvUcwWwNN9+yAxbpaLSs2kgyq15l7H3rIc2T
+         G0mmWdCQzFeuslSYfLiENpWZZwPlDELl9sge62wzS3DXGRTsHCF3irJ6pGJW8thXJUsQ
+         HDLvxnnkDwvhSN08M3cqMAjIXJ55et238Nq0rLeOC2i+RF+1MNnd/QOW3OFC1PyZjN4Q
+         780hZBJTQPtOQ3Ui4RFcGjmP71VMoyEOERW0fU5OYgru6NFXeN3nSyZapBNrwYq9qk3h
+         Er5bTSpp/1pQ6OAjce4iIpXX4wJQzwydAFBwsoef0y2VuDbOFAskVHmXeypEh/RrNVP7
+         000A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=+Hqb1C+XYVn3thuSGrZUtKLKE9O91b1Ym1bO374eQt0=;
-        fh=2KZjj4iCoV0BAbZ14DdBcUgIjyeOA3ZwQiZ0LxzCyMU=;
-        b=u1v9KaWtfuufvwzk2ANuQuVrlzoYkKMlL60TiYZoNoD1BycWAX3bC4hfgfrQwtoLOB
-         0E3A12pAsASMdkHyUHoovRFoeZU5+HzLqAwpkj5pc8QOTBp5xUZYKvRAsEHTZNxI+w9x
-         8q+mupaAH4VyVccIi75Kn0OFJDfw9THzJ74PRNyXTMBeo5wD3LGLED2MYxnwDmApGZRK
-         7zFidoRpyoIQpQmEr32AbrQeKEsFcM9bg8dT/lOoBJuNN7WXZyMyR0/TTeQ9FqXNiRcu
-         hUxAFVonCMIGw3QhHn1a794jklpGoxUnMDNBrXyWeZZ5fZGSbjP+UsZ7USLQ1ejt2hzj
-         OY7Q==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=+nRSNrjth2UwdRhfgwlk/qN0zTPWTDhsfhu94f5mEiQ=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=xRIeO/c2UdElQWHDF+XKHkv6PLFsu+wrV/y3gpZmxNLeBBm4AQU3/TdkOmBBClC4BM
+         sJ3CPqSI5fyJFutz7B3SqPQfLIA3c4MQk6HgXWjarRxpa7VIsEEw2uJ9QCotvRkLIQFP
+         9BVYJFHB5qhdd8NXZlZpUwclDrYHodMdfPiIvc4z8MBPCKhrWMrAQmo0h1XVlfm+bmkv
+         ZvGfPFJtwtGLIYhKiFdepeVcZsmI5c3XZMrc8XalbtB+7wDTd+Q9IhEkbRlUi0TVsBRG
+         3PcXtpAopsS1LprJmPs6cgHQvOIu/O7Y7pS1e5FuEu55ljPyUmSoxjPSrKKcLyjXnl4T
+         Jvjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=jjNDGPba;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24-20020a05622a181800b0042ef6d8d4edsi1853896qtc.784.2024.03.04.13.12.04
+        by mx.google.com with ESMTPS id jx15-20020a0562142b0f00b0068fe59e447bsi11618730qvb.315.2024.03.04.23.05.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2024 13:12:05 -0800 (PST)
+        Mon, 04 Mar 2024 23:05:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=jjNDGPba;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhFav-0007j2-02; Mon, 04 Mar 2024 16:11:33 -0500
+	id 1rhOrG-0004GU-Ik; Tue, 05 Mar 2024 02:05:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1rhFao-0007hX-FH
- for qemu-arm@nongnu.org; Mon, 04 Mar 2024 16:11:27 -0500
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1rhFal-0006sB-MU
- for qemu-arm@nongnu.org; Mon, 04 Mar 2024 16:11:26 -0500
-Received: by mail-ot1-x32a.google.com with SMTP id
- 46e09a7af769-6e125818649so2643430a34.1
- for <qemu-arm@nongnu.org>; Mon, 04 Mar 2024 13:11:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1709586681; x=1710191481; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+Hqb1C+XYVn3thuSGrZUtKLKE9O91b1Ym1bO374eQt0=;
- b=jjNDGPba7VAwH17WKKUVg+n58YRgzMBHNTkm0RhSz8xAvroKfah+F/OgJ7IZFCD/uo
- 72pcove1bfIdfDc7pTjYDRxaWAr/6cfYqkMM49MXEopm5WWbA485jtLlzWWsFGHnVuxX
- QCZpJ3Ac0XCB2mglOv9POHOh97ZfZwGFjVYvPsG2BM1yT1U09VBrxLS/0OrsL4TK75jA
- ooumNdXAMMeJHmnFsSExqdyDkQg7EdJbPa0IG7Dx5oYV/+5QyfTJYiEbQCw+U5H69/5q
- 2hhRMHlIdlaKw7iH3Y9s8wQ8MhmfSRvHfWmer2Ud43p4bg9F2OoHP6slvsnTwkDl/h/3
- 4QwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709586681; x=1710191481;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+Hqb1C+XYVn3thuSGrZUtKLKE9O91b1Ym1bO374eQt0=;
- b=ndKDA9/riGHE+/nkX7BP9FWaYL6N41xfYvUYTdaR+BKZA5dx76+uEOWsuNESAmvqsR
- DOK0GF/xCYTuLvT1IRP+7TTsl4YttPXgOFBA3Xknm42g3EhikAo+myARz4z/JXMX8cDq
- SJ9jkfcPDq1Caetb9oCZmYmfoNimsDTbTA6uC8cEsq9ICjuvyIxnvbVSzptbrk1/doHa
- Do6xQ8TQWvRcLQ0mkADDrKynexIqSQA+s7g360RRR4c4UnPRwZHF8CL97K6s3tY+1CyZ
- VEnfPHfWRFPxqYpk7nCe/9ATBb3ndNyFYpx3OgsKema7yhi8Wq5AciQNi62QaajNjvAA
- +iOw==
-X-Gm-Message-State: AOJu0YzX9LP3SeTs7CyBY00qDi4s2Rt/nMXQah6BZDfEz4kC8eMquUzZ
- 8CVmIi8w9EP6wH/h/fAq02N9foVAVYki93bMmozESMEOERMHzyxjvVPUfKydYDhRRmhk2UVbj/X
- DwzI1Latyeyo17+3lVLw5L5koYnS0eCKeaNfs
-X-Received: by 2002:a05:6870:1645:b0:220:a0b0:6d4a with SMTP id
- c5-20020a056870164500b00220a0b06d4amr12339900oae.57.1709586681421; Mon, 04
- Mar 2024 13:11:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhOr1-00048i-B3; Tue, 05 Mar 2024 02:04:49 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhOqw-0008Qa-CM; Tue, 05 Mar 2024 02:04:45 -0500
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TpmlM5YG0z1FLmg;
+ Tue,  5 Mar 2024 15:04:31 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 9C19B1402E1;
+ Tue,  5 Mar 2024 15:04:38 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
+ 2024 15:04:38 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v6 05/23] target/arm: Support MSR access to ALLINT
+Date: Tue, 5 Mar 2024 07:03:13 +0000
+Message-ID: <20240305070331.2151131-6-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240305070331.2151131-1-ruanjinjie@huawei.com>
+References: <20240305070331.2151131-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-References: <20240221170027.1027325-1-nabihestefan@google.com>
-In-Reply-To: <20240221170027.1027325-1-nabihestefan@google.com>
-From: Nabih Estefan <nabihestefan@google.com>
-Date: Mon, 4 Mar 2024 13:11:09 -0800
-Message-ID: <CA+QoejU3y=0k3-hMQzzmOV-RxkxTe1pnSVpU-xv=B0WLHq3n4A@mail.gmail.com>
-Subject: Re: [PATCH 0/2] SMBIOS type 9 descriptor implementation
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org, 
- its@irrelevant.dk, kbusch@kernel.org, eric.auger@redhat.com, mst@redhat.com, 
- imammedo@redhat.com, anisinha@redhat.com, flwu@google.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
- envelope-from=nabihestefan@google.com; helo=mail-ot1-x32a.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,42 +97,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mWmIfJpJfy+i
+X-TUID: T/iv9AUPKlaG
 
-Friendly ping on review for this patchset!
+Support ALLINT msr access as follow:
+	mrs <xt>, ALLINT	// read allint
+	msr ALLINT, <xt>	// write allint with imm
 
-It's been ~2 weeks since it was sent out, please let us know if
-there's any changes that should be done to upstream it!
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v5:
+- Add Reviewed-by.
+v4:
+- Remove arm_is_el2_enabled() check in allint_check().
+- Change to env->pstate instead of env->allint.
+v3:
+- Remove EL0 check in aa64_allint_access() which alreay checks in .access
+  PL1_RW.
+- Use arm_hcrx_el2_eff() in aa64_allint_access() instead of env->cp15.hcrx_el2.
+- Make ALLINT msr access function controlled by aa64_nmi.
+---
+ target/arm/helper.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-Thanks,
-Nabih Estefan
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index affa493141..497b6e4bdf 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4618,6 +4618,36 @@ static void aa64_daif_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     env->daif = value & PSTATE_DAIF;
+ }
+ 
++static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    env->pstate = (env->pstate & ~PSTATE_ALLINT) | (value & PSTATE_ALLINT);
++}
++
++static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return env->pstate & PSTATE_ALLINT;
++}
++
++static CPAccessResult aa64_allint_access(CPUARMState *env,
++                                         const ARMCPRegInfo *ri, bool isread)
++{
++    if (arm_current_el(env) == 1 && (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    return CP_ACCESS_OK;
++}
++
++static const ARMCPRegInfo nmi_reginfo[] = {
++    { .name = "ALLINT", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .opc2 = 0, .crn = 4, .crm = 3,
++      .type = ARM_CP_NO_RAW,
++      .access = PL1_RW, .accessfn = aa64_allint_access,
++      .fieldoffset = offsetof(CPUARMState, pstate),
++      .writefn = aa64_allint_write, .readfn = aa64_allint_read,
++      .resetfn = arm_cp_reset_ignore },
++};
++
+ static uint64_t aa64_pan_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     return env->pstate & PSTATE_PAN;
+@@ -9724,6 +9754,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_nv2, cpu)) {
+         define_arm_cp_regs(cpu, nv2_reginfo);
+     }
++
++    if (cpu_isar_feature(aa64_nmi, cpu)) {
++        define_arm_cp_regs(cpu, nmi_reginfo);
++    }
+ #endif
+ 
+     if (cpu_isar_feature(any_predinv, cpu)) {
+-- 
+2.34.1
 
-Nabih Estefan (he/him) |  Software Engineer |
-nabihestefan@google.com |  857-308-9574
-
-
-
-On Wed, Feb 21, 2024 at 9:00=E2=80=AFAM Nabih Estefan <nabihestefan@google.=
-com> wrote:
->
-> This patch series implements SMBIOS type 9 descriptor, system slots.
-> For each system slot, we can assign one descriptor for it if needed.
-> In versions later than 2.6, a new PCI device field was added to make sure=
- the
-> descriptor is associated with a certain device, if provided.
-> For ease of usage, qemu-options.hx was updated.
->
-> Felix Wu (2):
->   Implement base of SMBIOS type 9 descriptor.
->   Implement SMBIOS type 9 v2.6
->
->  hw/smbios/smbios.c           | 142 +++++++++++++++++++++++++++++++++++
->  include/hw/firmware/smbios.h |  17 +++++
->  qemu-options.hx              |   3 +
->  3 files changed, 162 insertions(+)
->
-> --
-> 2.44.0.rc0.258.g7320e95886-goog
->

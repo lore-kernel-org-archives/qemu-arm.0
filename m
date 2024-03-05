@@ -1,206 +1,205 @@
-Received: by 2002:a17:906:3750:b0:a44:3ba0:e9d1 with SMTP id e16csp410685ejc;
-        Tue, 5 Mar 2024 08:50:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXANVK7usbjT+4TCvX2LiCR0Xtd0BgIcy7kWOVz1n3ZTEotalEQc6y+Lr/YiR5UW93ouVx5nfs79BfMvJt2BRy8WLMDppKS
-X-Google-Smtp-Source: AGHT+IG7YGKE8IsdoPxbVzf8u/FEZ5EiYS1qkWlunZSUTQwbyPSHdMEMoMJ9T0eRP5OIJ0pU15PN
-X-Received: by 2002:a0c:e0d2:0:b0:690:303f:2977 with SMTP id x18-20020a0ce0d2000000b00690303f2977mr2726684qvk.8.1709657427784;
-        Tue, 05 Mar 2024 08:50:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709657427; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp28876ejb;
+        Tue, 5 Mar 2024 10:08:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX/ajEC6v3QC0Ua6LPh0tr9e4/8rxq8js3rej4B34wK2lOTB3ZvdhUwcTDu4fCW0E1rboHjs4KLylxod6F17RNs/bZFqHUe
+X-Google-Smtp-Source: AGHT+IG/gIY6v5LSmz/xcHcGrTyNVPZ2XrM9uCQWbhMtbgUDjYCR1xWbC+lAHPjGlHm06k1swB49
+X-Received: by 2002:a05:622a:1a87:b0:42e:984f:1497 with SMTP id s7-20020a05622a1a8700b0042e984f1497mr2887584qtc.17.1709662090201;
+        Tue, 05 Mar 2024 10:08:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709662090; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ed7rMtn7od1xlZRQhemw+xvFBYNg9aqdvX/vYNNRgh4V9nLsMAOHyoCGca2wqL1b04
-         1W8qBJ9qilKAq4miVAMhglVVvZga3DQ5D/lpq7FMbmqCSvjUizsmSaT3bQQeiUcD/GE7
-         AYLmVunIUGNE9ZKUghP/xqIgkgCWCQemPiq3B9G4YKW/XHJ0XM9R3XWngK/hYIRjqvvi
-         d1A7lRouPIAvxDWJtQ/qqYWLuQMyxE/NkPX/9wcLgvaFIi7Gd2bXCWFpUrOt6psJfmVn
-         CFUi7pqWKx/VkudHb/hZCSAxz/9lQq4iwGs0CyjgbCVHP8PY5xgvzw5+rnmw1owEmAZ7
-         WPhA==
+        b=IDlW3XFVfLOs3/Q8nJEuDEcQXHXi0oFjWhBY6VHCEYU2tCzno7h+ka4BZsCRrJhWIx
+         +NJW1fqQVFY5mBDrIWQw+3j0RvuX907FnW9KbhGITUWU18J32j6sXMSa7gy9Zt3vvJUx
+         bfy1q/V9uWGx04z27pGsU3byjYSsE6h/1te7z0OvlEZdF0tBq2adJVN9FUcmiIiLTSY8
+         yBb3Pc0e5ItXGhaQUDhmnvh/cl2iRu2LNsNHjyrWjalvfeIANraidOxqLENDTJEAu8mb
+         PYqMFNoYyKJymusvIch3RunVuXZe2dca8GYT+YYppZWUSbFk3sLa5M/ArsXE8htKhObT
+         LIAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=bVnoPFp+LqdAOXwQUfLL6Hgm7VDLhJWQuyKbgFX/Q34=;
-        fh=UHWSLUukHSelJ+slBM0N1DBrBfxXdcbN/WzqQMRQVbA=;
-        b=dGT4rqIQDR01UaLIZ2Ufgy6E8D5kNOvOfOFDpj7VK5BpqXdNRsK7dB7sc5xhNs8Pb8
-         ybV4N7pmADFpcFBipqYxxT1sqmXfFwLcMpc7b6VSI5YzLZL3DaqxOiYDdARdLjCG/Va1
-         hqDjzFt/xjMCGI9yh/dRxGjJVfoToZfZXtDGOkQqhAcBAO4EkKmyJQP0y6EunznV4WjK
-         lv86bMEJu8lusq83XBve8PInqfLoy7U1kCX+8oZvbKKUtUryKuMxScsv3p4SGhWLQUbO
-         plQ9uGLy+2JbbCmY6TZEa1A8jLsyOlYwoWSloPKf5JL31EBm81+m26Y0/zCQHSUif5fh
-         SCtw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=G8pf/ay85w+iMb0sdshULxgyxYsK+YqD3nZSpGMyglg=;
+        fh=RVuuaU7Ghp1omAcM/aHHQKcSvJxs+IjfJSTvOY2eDr8=;
+        b=dfdhGan8lwm1cbuAePuwkhpnOPiPBDOgrSC2NyiQ4IACwb9UgpREwnr1EpdA/SOWQh
+         WHoRO1o4KHtQSih19lHYVFRZUmba41P/Lw+vFZPPqwTAcI2wQVtMzzW1zHYM2t+0R4Rh
+         GJ8r9KvFHvf/apX/ITt8D2JHUh3eYojtrB34R5v79fgc/NO45xUqdR8bjfRf0IPKsuXf
+         1ZzEv5ke0CkSvJwW7DwoRvs0y7EnasLZTa/riV+ui0W6oDeOVvXm4vVa6ugF3J1YVqsF
+         uwKDqEK3wEUpA0ciSathNnTOiR2RI1Rv5X3DBn01IBLUXxg/6TI5lxGih0JhgMgfsXUF
+         q5+g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GvNDgq5p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZEQbkSoM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 12-20020a05621420ac00b00690062e6bf9si12624195qvd.597.2024.03.05.08.50.27
+        by mx.google.com with ESMTPS id u15-20020a05622a14cf00b0042eccd04003si10208469qtx.448.2024.03.05.10.08.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 08:50:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2024 10:08:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GvNDgq5p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZEQbkSoM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhXzQ-0000Ip-JL; Tue, 05 Mar 2024 11:50:04 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rhZCq-0001sn-Pc; Tue, 05 Mar 2024 13:08:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rhXzM-0000Hk-NX
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 11:50:01 -0500
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rhXzL-00026O-45
- for qemu-devel@nongnu.org; Tue, 05 Mar 2024 11:50:00 -0500
-Received: by mail-lj1-x235.google.com with SMTP id
- 38308e7fff4ca-2d28387db09so71404631fa.0
- for <qemu-devel@nongnu.org>; Tue, 05 Mar 2024 08:49:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709657397; x=1710262197; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bVnoPFp+LqdAOXwQUfLL6Hgm7VDLhJWQuyKbgFX/Q34=;
- b=GvNDgq5pwzJ0W8ZIsK6Mn3XjR0dNvtWU1VWsVnNf6Coz5p3jZ9o5H/aMXxkDwsse90
- nU6xOyFmFUZTlU+IDMbS/m9ZAeWu0OfzKup7RZ7kbeB1h2NaKWW6acs6KRa90YCqDot3
- meZEv0YODf/EmlYPeSAX8+BU6dScAZyth7aoEv+0CnJSx4l5TL9wKiSmBYBVXXPpzGcu
- Us7UXFqxO6HhOCKQ8rLNNklpvVz9T/us0iAHLpAYD9wU5ToQgft97lJk3nMHHDYFXO06
- 2lcXsnCGrUSjWu1iJZutsdQdF9mM75kHZwUTVc1vKH8JDdh0aoGvS1O+KnXK96CY1NAx
- LYXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709657397; x=1710262197;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bVnoPFp+LqdAOXwQUfLL6Hgm7VDLhJWQuyKbgFX/Q34=;
- b=S20jd/5PwJX0x+5Lvxhvwh2NNrWG4uclEJig4h6oUBSnake8iyrZA7/KR98VP99I1F
- PZybF3E0icvYn+1YOaXfGSmRgfJGBys5zp18a7BuDEIeLYmjqTZW6Q9vdt+nVXpLSFrf
- SN7Fi3MglSFNTjPZ3TaF0p9ImkZ5t+4E8L6YLajGwtT5Exj2K62DgG3pS+DOrXgc30Jf
- Ka5/pFTE9BxhGs/TPQ0rwGTkRZyZ/Gti8vjumTCLUCCl8vORrn9kD0Z03CbN1kbuyr8U
- 6zO+XxmjstYpj/TMAmkC/ME2bMi7ROryH1Sh5C/ihm9ZjZ98OJuaM8/l5ZR1CmvN1cMo
- PDCA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUzrOA/7tLK9V7R40sRtokAXvMidAzOgMt0jPnOrujoCMwFoB0o+4AkQjewpdcRNp7nVxjrQC2/Q3QWU+ufndzTpov2Ox8=
-X-Gm-Message-State: AOJu0YzGg3ti0PDsAVy16Yj8Ax0rvNefoBjKLNe94SUWqn9cQ7AmbtPz
- 0wc2DOUYkwKaSR659n5jfckh8/Y4UKLBFKDRvH/bMbInR41TeLmD/MlbzhmnF5uVp/V4XBsnYdK
- WVDw03e0f91IdqWmdofomvTUabBTlNDKvOxDG5w==
-X-Received: by 2002:a2e:9bca:0:b0:2d2:d3de:44fd with SMTP id
- w10-20020a2e9bca000000b002d2d3de44fdmr1652817ljj.29.1709657396550; Tue, 05
- Mar 2024 08:49:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rhZCo-0001ru-S2
+ for qemu-arm@nongnu.org; Tue, 05 Mar 2024 13:07:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rhZCn-0008UB-AC
+ for qemu-arm@nongnu.org; Tue, 05 Mar 2024 13:07:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709662075;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=G8pf/ay85w+iMb0sdshULxgyxYsK+YqD3nZSpGMyglg=;
+ b=ZEQbkSoMlsVrjiVkqt5wGUvXgFxrnX0QkpQw6PsaQFTtA87TUTQfZAGDbbDt/dBXP1sPqY
+ 0l1nQQ9zQob4cdSdSFZvF1RnaNWQ6yO4VJKK0nx2oGfirdbwSI1TnaiMa0+o4023OEIhHN
+ w3nFs34D/Pqt9CORdE/dgbwRsGKRwVo=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-179-gLhyBP6fMRmYO2_6zKPIwQ-1; Tue,
+ 05 Mar 2024 13:07:52 -0500
+X-MC-Unique: gLhyBP6fMRmYO2_6zKPIwQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F0C3B29ABA12;
+ Tue,  5 Mar 2024 18:07:51 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.193.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 87A74C041F1;
+ Tue,  5 Mar 2024 18:07:48 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
+ imammedo@redhat.com, peter.maydell@linaro.org, clg@redhat.com,
+ yanghliu@redhat.com, zhenzhong.duan@intel.com
+Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
+ berrange@redhat.com
+Subject: [PATCH v6 3/9] virtio-iommu: Change the default granule to the host
+ page size
+Date: Tue,  5 Mar 2024 19:06:21 +0100
+Message-ID: <20240305180734.48515-4-eric.auger@redhat.com>
+In-Reply-To: <20240305180734.48515-1-eric.auger@redhat.com>
+References: <20240305180734.48515-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20240209160039.677865-1-eric.auger@redhat.com>
- <20240209160039.677865-5-eric.auger@redhat.com>
-In-Reply-To: <20240209160039.677865-5-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Mar 2024 16:49:45 +0000
-Message-ID: <CAFEAcA_y9uHa5cdtqgyneUSj=DzhDfrWc73xyr9x54tF5MedNg@mail.gmail.com>
-Subject: Re: [RFC v2 4/5] target/arm: Enable feature ARM_FEATURE_EL2 if EL2 is
- supported
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- miguel.luis@oracle.com, haibo.xu@linaro.org, richard.henderson@linaro.org, 
- maz@kernel.org, gkulkarni@amperecomputing.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::235;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x235.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8DJGza5QRgcq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QeLtchyr8d2Y
 
-On Fri, 9 Feb 2024 at 16:00, Eric Auger <eric.auger@redhat.com> wrote:
->
-> From: Haibo Xu <haibo.xu@linaro.org>
->
-> KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
-> In case the host does support NV, expose the feature.
->
-> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
-> ---
->
-> v1 -> v2:
-> - remove isar_feature_aa64_aa32_el2 modif in target/arm/cpu.h
->   [Richard] and use el2_supported in kvm_arch_init_vcpu
-> ---
->  target/arm/kvm.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 0996866afe..a08bc68a3f 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -238,6 +238,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->       */
->      int fdarray[3];
->      bool sve_supported;
-> +    bool el2_supported;
->      bool pmu_supported = false;
->      uint64_t features = 0;
->      int err;
-> @@ -268,6 +269,14 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
->      }
->
-> +    /*
-> +     * Ask for EL2 if supported.
-> +     */
-> +    el2_supported = kvm_arm_el2_supported();
-> +    if (el2_supported) {
-> +        init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-> +    }
-> +
->      /*
->       * Ask for Pointer Authentication if supported, so that we get
->       * the unsanitized field values for AA64ISAR1_EL1.
-> @@ -449,6 +458,10 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->      features |= 1ULL << ARM_FEATURE_PMU;
->      features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
->
-> +    if (el2_supported) {
-> +        features |= 1ULL << ARM_FEATURE_EL2;
-> +    }
-> +
->      ahcf->features = features;
->
->      return true;
-> @@ -1912,6 +1925,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          cpu->kvm_init_features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
->                                        1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->      }
-> +    if (kvm_arm_el2_supported()) {
-> +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-> +    }
->
->      /* Do KVM_ARM_VCPU_INIT ioctl */
->      ret = kvm_arm_vcpu_init(cpu);
+We used to set the default granule to 4KB but with VFIO assignment
+it makes more sense to use the actual host page size.
 
-Am I reading this right that if the kernel supports FEAT_NV
-then we will always ask for a vCPU with that feature?
-Is that a good idea, or should we arrange to only do it if
-the user uses the 'virtualization=on' option to -M virt ?
-(Or does that happen already in some way I'm not seeing?)
+Indeed when hotplugging a VFIO device protected by a virtio-iommu
+on a 64kB/64kB host/guest config, we current get a qemu crash:
 
-thanks
--- PMM
+"vfio: DMA mapping failed, unable to continue"
+
+This is due to the hot-attached VFIO device calling
+memory_region_iommu_set_page_size_mask() with 64kB granule
+whereas the virtio-iommu granule was already frozen to 4KB on
+machine init done.
+
+Set the granule property to "host" and introduce a new compat.
+The page size mask used before 9.0 was qemu_target_page_mask().
+Since the virtio-iommu currently only supports x86_64 and aarch64,
+this matched a 4KB granule.
+
+Note that the new default will prevent 4kB guest on 64kB host
+because the granule will be set to 64kB which would be larger
+than the guest page size. In that situation, the virtio-iommu
+driver fails on viommu_domain_finalise() with
+"granule 0x10000 larger than system page size 0x1000".
+
+In that case the workaround is to request 4K granule.
+
+The current limitation of global granule in the virtio-iommu
+should be removed and turned into per domain granule. But
+until we get this upgraded, this new default is probably
+better because I don't think anyone is currently interested in
+running a 4KB page size guest with virtio-iommu on a 64KB host.
+However supporting 64kB guest on 64kB host with virtio-iommu and
+VFIO looks a more important feature.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+
+---
+
+v4 -> v5
+- use low case, mandated by the jason qapi
+---
+ hw/core/machine.c        | 5 ++++-
+ hw/virtio/virtio-iommu.c | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 9ac5d5389a..6bd09d4592 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -30,9 +30,12 @@
+ #include "exec/confidential-guest-support.h"
+ #include "hw/virtio/virtio-pci.h"
+ #include "hw/virtio/virtio-net.h"
++#include "hw/virtio/virtio-iommu.h"
+ #include "audio/audio.h"
+ 
+-GlobalProperty hw_compat_8_2[] = {};
++GlobalProperty hw_compat_8_2[] = {
++    { TYPE_VIRTIO_IOMMU_PCI, "granule", "4k" },
++};
+ const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
+ 
+ GlobalProperty hw_compat_8_1[] = {
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 84d6819d3b..aab97e1527 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -1543,7 +1543,7 @@ static Property virtio_iommu_properties[] = {
+                      TYPE_PCI_BUS, PCIBus *),
+     DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+     DEFINE_PROP_GRANULE_MODE("granule", VirtIOIOMMU, granule_mode,
+-                             GRANULE_MODE_4K),
++                             GRANULE_MODE_HOST),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+-- 
+2.41.0
+

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ck4-20020a5d5e84000000b0033e431950c5sm1119001wrb.97.2024.03.05.04.18.44
+        by smtp.gmail.com with ESMTPSA id o14-20020a05600c510e00b00412aff7874esm17909157wms.48.2024.03.05.04.18.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 05 Mar 2024 04:18:47 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C954F5F9FA;
+	by draig.lan (Postfix) with ESMTP id 745EA5F9EB;
 	Tue,  5 Mar 2024 12:10:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -50,117 +50,154 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Alexandre Iooss <erdnaxe@crans.org>,
 	Warner Losh <imp@bsdimp.com>,
 	qemu-riscv@nongnu.org,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 25/29] plugins: cleanup codepath for previous inline operation
-Date: Tue,  5 Mar 2024 12:10:01 +0000
-Message-Id: <20240305121005.3528075-26-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Luc Michel <luc.michel@amd.com>
+Subject: [PATCH 21/29] tests/plugin/bb: migrate to new per_vcpu API
+Date: Tue,  5 Mar 2024 12:09:57 +0000
+Message-Id: <20240305121005.3528075-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305121005.3528075-1-alex.bennee@linaro.org>
 References: <20240305121005.3528075-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2iRePMPb62t3
+X-TUID: 8PCWfSXw6kYa
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Luc Michel <luc.michel@amd.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240304130036.124418-13-pierrick.bouvier@linaro.org>
+Message-Id: <20240304130036.124418-9-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- plugins/plugin.h       |  5 -----
- accel/tcg/plugin-gen.c | 13 ++++---------
- plugins/core.c         | 29 ++++-------------------------
- 3 files changed, 8 insertions(+), 39 deletions(-)
+ tests/plugin/bb.c | 63 +++++++++++++++++++----------------------------
+ 1 file changed, 26 insertions(+), 37 deletions(-)
 
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index f6fa10a0f56..7c34f23cfcb 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -68,11 +68,6 @@ struct qemu_plugin_ctx {
+diff --git a/tests/plugin/bb.c b/tests/plugin/bb.c
+index df50d1fd3bc..36776dee1e1 100644
+--- a/tests/plugin/bb.c
++++ b/tests/plugin/bb.c
+@@ -17,27 +17,25 @@
+ QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
  
- struct qemu_plugin_ctx *plugin_id_to_ctx_locked(qemu_plugin_id_t id);
+ typedef struct {
+-    GMutex lock;
+-    int index;
+     uint64_t bb_count;
+     uint64_t insn_count;
+ } CPUCount;
  
--void plugin_register_inline_op(GArray **arr,
--                               enum qemu_plugin_mem_rw rw,
--                               enum qemu_plugin_op op, void *ptr,
--                               uint64_t imm);
--
- void plugin_register_inline_op_on_entry(GArray **arr,
-                                         enum qemu_plugin_mem_rw rw,
-                                         enum qemu_plugin_op op,
-diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
-index 47e05ec6347..8028786c7bb 100644
---- a/accel/tcg/plugin-gen.c
-+++ b/accel/tcg/plugin-gen.c
-@@ -440,15 +440,10 @@ static TCGOp *append_inline_cb(const struct qemu_plugin_dyn_cb *cb,
-                                TCGOp *begin_op, TCGOp *op,
-                                int *unused)
+-/* Used by the inline & linux-user counts */
+-static bool do_inline;
+-static CPUCount inline_count;
++static struct qemu_plugin_scoreboard *counts;
++static qemu_plugin_u64 bb_count;
++static qemu_plugin_u64 insn_count;
+ 
++static bool do_inline;
+ /* Dump running CPU total on idle? */
+ static bool idle_report;
+-static GPtrArray *counts;
+-static int max_cpus;
+ 
+-static void gen_one_cpu_report(CPUCount *count, GString *report)
++static void gen_one_cpu_report(CPUCount *count, GString *report,
++                               unsigned int cpu_index)
  {
--    char *ptr = cb->userp;
--    size_t elem_size = 0;
--    size_t offset = 0;
--    if (!ptr) {
--        /* use inline entry */
--        ptr = cb->inline_insn.entry.score->data->data;
--        elem_size = g_array_get_element_size(cb->inline_insn.entry.score->data);
--        offset = cb->inline_insn.entry.offset;
--    }
-+    char *ptr = cb->inline_insn.entry.score->data->data;
-+    size_t elem_size = g_array_get_element_size(
-+        cb->inline_insn.entry.score->data);
-+    size_t offset = cb->inline_insn.entry.offset;
+     if (count->bb_count) {
+         g_string_append_printf(report, "CPU%d: "
+                                "bb's: %" PRIu64", insns: %" PRIu64 "\n",
+-                               count->index,
++                               cpu_index,
+                                count->bb_count, count->insn_count);
+     }
+ }
+@@ -46,20 +44,23 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+ {
+     g_autoptr(GString) report = g_string_new("");
  
-     op = copy_ld_i32(&begin_op, op);
-     op = copy_mul_i32(&begin_op, op, elem_size);
-diff --git a/plugins/core.c b/plugins/core.c
-index 7852590da88..11ca20e6267 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -316,22 +316,6 @@ static struct qemu_plugin_dyn_cb *plugin_get_dyn_cb(GArray **arr)
-     return &g_array_index(cbs, struct qemu_plugin_dyn_cb, cbs->len - 1);
+-    if (do_inline || !max_cpus) {
+-        g_string_printf(report, "bb's: %" PRIu64", insns: %" PRIu64 "\n",
+-                        inline_count.bb_count, inline_count.insn_count);
+-    } else {
+-        g_ptr_array_foreach(counts, (GFunc) gen_one_cpu_report, report);
++    for (int i = 0; i < qemu_plugin_num_vcpus(); ++i) {
++        CPUCount *count = qemu_plugin_scoreboard_find(counts, i);
++        gen_one_cpu_report(count, report, i);
+     }
++    g_string_append_printf(report, "Total: "
++                           "bb's: %" PRIu64", insns: %" PRIu64 "\n",
++                           qemu_plugin_u64_sum(bb_count),
++                           qemu_plugin_u64_sum(insn_count));
+     qemu_plugin_outs(report->str);
++    qemu_plugin_scoreboard_free(counts);
  }
  
--void plugin_register_inline_op(GArray **arr,
--                               enum qemu_plugin_mem_rw rw,
--                               enum qemu_plugin_op op,
--                               void *ptr,
--                               uint64_t imm)
--{
--    struct qemu_plugin_dyn_cb *dyn_cb;
--
--    dyn_cb = plugin_get_dyn_cb(arr);
--    dyn_cb->userp = ptr;
--    dyn_cb->type = PLUGIN_CB_INLINE;
--    dyn_cb->rw = rw;
--    dyn_cb->inline_insn.op = op;
--    dyn_cb->inline_insn.imm = imm;
--}
--
- void plugin_register_inline_op_on_entry(GArray **arr,
-                                         enum qemu_plugin_mem_rw rw,
-                                         enum qemu_plugin_op op,
-@@ -494,15 +478,10 @@ void qemu_plugin_flush_cb(void)
- 
- void exec_inline_op(struct qemu_plugin_dyn_cb *cb, int cpu_index)
+ static void vcpu_idle(qemu_plugin_id_t id, unsigned int cpu_index)
  {
--    char *ptr = cb->userp;
--    size_t elem_size = 0;
--    size_t offset = 0;
--    if (!ptr) {
--        /* use inline entry */
--        ptr = cb->inline_insn.entry.score->data->data;
--        elem_size = g_array_get_element_size(cb->inline_insn.entry.score->data);
--        offset = cb->inline_insn.entry.offset;
--    }
-+    char *ptr = cb->inline_insn.entry.score->data->data;
-+    size_t elem_size = g_array_get_element_size(
-+        cb->inline_insn.entry.score->data);
-+    size_t offset = cb->inline_insn.entry.offset;
-     uint64_t *val = (uint64_t *)(ptr + offset + cpu_index * elem_size);
+-    CPUCount *count = g_ptr_array_index(counts, cpu_index);
++    CPUCount *count = qemu_plugin_scoreboard_find(counts, cpu_index);
+     g_autoptr(GString) report = g_string_new("");
+-    gen_one_cpu_report(count, report);
++    gen_one_cpu_report(count, report, cpu_index);
  
-     switch (cb->inline_insn.op) {
+     if (report->len > 0) {
+         g_string_prepend(report, "Idling ");
+@@ -69,14 +70,11 @@ static void vcpu_idle(qemu_plugin_id_t id, unsigned int cpu_index)
+ 
+ static void vcpu_tb_exec(unsigned int cpu_index, void *udata)
+ {
+-    CPUCount *count = max_cpus ?
+-        g_ptr_array_index(counts, cpu_index) : &inline_count;
++    CPUCount *count = qemu_plugin_scoreboard_find(counts, cpu_index);
+ 
+     uintptr_t n_insns = (uintptr_t)udata;
+-    g_mutex_lock(&count->lock);
+     count->insn_count += n_insns;
+     count->bb_count++;
+-    g_mutex_unlock(&count->lock);
+ }
+ 
+ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+@@ -84,11 +82,10 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+     size_t n_insns = qemu_plugin_tb_n_insns(tb);
+ 
+     if (do_inline) {
+-        qemu_plugin_register_vcpu_tb_exec_inline(tb, QEMU_PLUGIN_INLINE_ADD_U64,
+-                                                 &inline_count.bb_count, 1);
+-        qemu_plugin_register_vcpu_tb_exec_inline(tb, QEMU_PLUGIN_INLINE_ADD_U64,
+-                                                 &inline_count.insn_count,
+-                                                 n_insns);
++        qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu(
++            tb, QEMU_PLUGIN_INLINE_ADD_U64, bb_count, 1);
++        qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu(
++            tb, QEMU_PLUGIN_INLINE_ADD_U64, insn_count, n_insns);
+     } else {
+         qemu_plugin_register_vcpu_tb_exec_cb(tb, vcpu_tb_exec,
+                                              QEMU_PLUGIN_CB_NO_REGS,
+@@ -121,18 +118,10 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+         }
+     }
+ 
+-    if (info->system_emulation && !do_inline) {
+-        max_cpus = info->system.max_vcpus;
+-        counts = g_ptr_array_new();
+-        for (i = 0; i < max_cpus; i++) {
+-            CPUCount *count = g_new0(CPUCount, 1);
+-            g_mutex_init(&count->lock);
+-            count->index = i;
+-            g_ptr_array_add(counts, count);
+-        }
+-    } else if (!do_inline) {
+-        g_mutex_init(&inline_count.lock);
+-    }
++    counts = qemu_plugin_scoreboard_new(sizeof(CPUCount));
++    bb_count = qemu_plugin_scoreboard_u64_in_struct(counts, CPUCount, bb_count);
++    insn_count = qemu_plugin_scoreboard_u64_in_struct(
++        counts, CPUCount, insn_count);
+ 
+     if (idle_report) {
+         qemu_plugin_register_vcpu_idle_cb(id, vcpu_idle);
 -- 
 2.39.2

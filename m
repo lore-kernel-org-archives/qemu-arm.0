@@ -1,161 +1,216 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp514046ejb;
-        Wed, 6 Mar 2024 05:59:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWjo4WDQvpXxEbIW1Ed7h69OqkiSt+oQ8loIseQcjMRWSjaLqN8MpgmeTOIJRbWAF3mt0tYC+dvyJ713iOQWTkuwlOJedgZ
-X-Google-Smtp-Source: AGHT+IFhouvrXRrers0D2JhnjPjW/6XprO4gD9Eyv+kNBY94uNFyuCxrggCnSYxhS+0ZqSLMjIi4
-X-Received: by 2002:a05:622a:114:b0:42e:a46d:722f with SMTP id u20-20020a05622a011400b0042ea46d722fmr5356665qtw.23.1709733567773;
-        Wed, 06 Mar 2024 05:59:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709733567; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp625808ejb;
+        Wed, 6 Mar 2024 08:59:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWPP1DBQqUMd+PS30TSl6j9Z40oS3Kcmov5+aOo/4Kh0mFmiF+3kx/M7ioonbNfjYPyFTPcaMCZGq5R5SZYXv3Yinbb8No7
+X-Google-Smtp-Source: AGHT+IHBS2TvrbVa7o8pdoHLEhPozkKMT8w5kU2hsUaxAoNQDcGXAPSg/v7XK4/40M6y4a9GVzv/
+X-Received: by 2002:ac8:5b81:0:b0:42e:d2e9:8da1 with SMTP id a1-20020ac85b81000000b0042ed2e98da1mr1054283qta.6.1709744393024;
+        Wed, 06 Mar 2024 08:59:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709744393; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIpKKtECD/qkcfjtsmRiX8wM7+cry5p5WwHuizHNLpPeq5bqueEbUV5fh2wAfIoCG5
-         yyH2z5EAWHWwC7TFn0lpVracL3BNUdhhthjtnNMvCH9WPCBTkRtMLm1bkViOgH7MJGkT
-         tdTPiORCpiVA7w+2aZ4GHeB7nS91k26BLzYDIis86w0HLNos8QNqfFmjBdQ58HxOOtLo
-         jsSG5n/GLlPCHFQW6hGe6/5DT6oxikMEPZeRxw+coJ45wPWYFqBttIFouWYcVI03sbR1
-         Z7vN7v56hqawehFnJGF/K2qLF+pXqQp4FrV+9ykHVSAZ2Z7TdlfrKGe0Y3io3TVmlr3R
-         u0Bg==
+        b=d0ZrwKeUISVGBIgiBXpBQTZAqzTNoSCZpz+WEbWZ0kMAlokvp8DNfvFZ1EmH1AiLKP
+         JainJ3H4olzL7gW7jlaEeLQy1qK0zA0zOSPGELqkRQ/PDn0A0sRHzGYtUR48mJwP6DAR
+         knNEb5hqm01WJ9OVVTZROLHInOUZM99D89eYPira4LguImQpqW2e6ghHHGUDXM4TyNVU
+         ZSHJhDpDdAN0oGnYbU8f3SS7IL0oKDiTFnWVDmm35LIVM7E3ZbkUT+yUrWTfKGLYfxCo
+         LCG1nCWt3aboHGqJJmvGY4GFBzJ8WMHAlCIf9Kw+WkPKDnP1giHVXIJofSsWK0zw1soN
+         t0+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=cQDFLy0CZSPqjE1CKuzZVx7duh+wvmGVv3eAyAhCQyw=;
-        fh=+FD09Mxav9aL8Wjog+48Pqxc2lLOxPZpfMtjTli+kPk=;
-        b=sOcXMlyqJRuUig5VwAFMv+z5+dkjmvNjLpaS2dClqwQwo1+zs63yzPlLTDJK/93JU1
-         D4uKHsZBLidaxGvYYOAV/q5Q/zQ9Dy87ZYMN16r0t+dCLY/S4xO2Mkt74FEHoESawi7P
-         Yi3fOhTjrnqCUm+tfATVSkzpcDTCJDOhM/3hW1kj9he0ClrHqmtbgqsSFgSGpGc0v06N
-         QbNjLqzuYu+R21rPqzVxCchFFTHTDk55L4CUV31rTcQ+q3XjHCXSePl1UuWNmy0FolB3
-         v0rsHcVdmUFuzdpNKTQv/tz8jmtBEEEEgKd0isf9i7EyXZ139Bvb7h9zQbF3PdBT044x
-         IFtQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=hE/ZqNmd1X0ptql1MwvYIvaVvoBbwsA30SeD65YYv8o=;
+        fh=XptC5uW3sVkB2wdvGyzT2Fhz2hqXAtWDsF+qqfw8Soo=;
+        b=cnfwSNLrg2zPAqbJd9PvkIOIituAEoDAmHJMelcpKsutdD79WrdysDYUJ1/A+BF+y8
+         HHxBdfw2gviF5RtFK3Wi/5c7m1lgVdrIF//gPXmCRuHWkB9y0d9oSQjHZEgGGS8FS399
+         EIfVFbMIy5GKBoKLAPvS/vhxDrhxwTzqfP5tTF1CiDVEwDfAld6xEB8JCzkADirbjrRV
+         KcmdHIxeuRr58SjCHikJKrZHXk/dPJcYvRSV8KMR/tLcuua2lDuRTp8C4RPka22HdH+Q
+         QHGGplBbxO/0azpovItjZH0FPWdtkal0+hr3b9Y/j/lHib+UNmfg8cHrdc3VNDgdXbEj
+         x3Yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gcI3FTWI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l6-20020a05622a050600b0042ebb8dbc78si3266060qtx.355.2024.03.06.05.59.27
+        by mx.google.com with ESMTPS id fc13-20020a05622a488d00b0042ed2f7902bsi12066087qtb.117.2024.03.06.08.59.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 05:59:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Mar 2024 08:59:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gcI3FTWI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhrnb-0002MT-FH; Wed, 06 Mar 2024 08:59:11 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rhucC-0000Pa-9e; Wed, 06 Mar 2024 11:59:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhrnY-0002MA-NR; Wed, 06 Mar 2024 08:59:09 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhuc5-0000Oe-6Z
+ for qemu-devel@nongnu.org; Wed, 06 Mar 2024 11:59:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhrnX-0006uZ-5D; Wed, 06 Mar 2024 08:59:08 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TqYnR6sZ3z6D8rD;
- Wed,  6 Mar 2024 21:54:03 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 7BC4D141DB4;
- Wed,  6 Mar 2024 21:59:03 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 6 Mar
- 2024 13:58:48 +0000
-Date: Wed, 6 Mar 2024 13:58:47 +0000
-To: <ankita@nvidia.com>
-CC: <jgg@nvidia.com>, <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>,
- <wangyanan55@huawei.com>, <alex.williamson@redhat.com>,
- <pbonzini@redhat.com>, <clg@redhat.com>, <shannon.zhaosl@gmail.com>,
- <peter.maydell@linaro.org>, <ani@anisinha.ca>, <berrange@redhat.com>,
- <eduardo@habkost.net>, <imammedo@redhat.com>, <mst@redhat.com>,
- <eblake@redhat.com>, <armbru@redhat.com>, <david@redhat.com>,
- <gshan@redhat.com>, <aniketa@nvidia.com>, <cjia@nvidia.com>,
- <kwankhede@nvidia.com>, <targupta@nvidia.com>, <vsethi@nvidia.com>,
- <acurrid@nvidia.com>, <dnigam@nvidia.com>, <udhoke@nvidia.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v8 2/2] hw/acpi: Implement the SRAT GI affinity structure
-Message-ID: <20240306135847.00007876@Huawei.com>
-In-Reply-To: <20240306123317.4691-3-ankita@nvidia.com>
-References: <20240306123317.4691-1-ankita@nvidia.com>
- <20240306123317.4691-3-ankita@nvidia.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhuc1-0000k0-Tg
+ for qemu-devel@nongnu.org; Wed, 06 Mar 2024 11:59:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709744365;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=hE/ZqNmd1X0ptql1MwvYIvaVvoBbwsA30SeD65YYv8o=;
+ b=gcI3FTWINV/R1bpKx3s957KwB4gRsjeYr7V5QhhNo4nEpi9IsdQjKCgilFhcsrbLClXZM1
+ CVg9ObqxJDOG9KCAf0cgcsNk375JXiFxtju+p1ycx4iydKWOKRAeJuOzrNeBjq20G24wFk
+ WlGt5Y8C4fldxIB8G4C30dq+kModn+M=
+Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
+ [209.85.161.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-642-0WX4N0jxMQmeif4b8uH03Q-1; Wed, 06 Mar 2024 11:59:24 -0500
+X-MC-Unique: 0WX4N0jxMQmeif4b8uH03Q-1
+Received: by mail-oo1-f70.google.com with SMTP id
+ 006d021491bc7-5a12223ab8fso849113eaf.1
+ for <qemu-devel@nongnu.org>; Wed, 06 Mar 2024 08:59:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709744343; x=1710349143;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=hE/ZqNmd1X0ptql1MwvYIvaVvoBbwsA30SeD65YYv8o=;
+ b=PuuYJNoVsFCOjicOqVoHYbLTnaVQX6KpHRma9L4HCKvXexW7dG/SVK41AKFqo4aKlV
+ d8OYDglxyTK1+za60AS+FeAt26skLj6dSO378qwGYTVtRzdvA3dBm0YckB32eovW8iLe
+ dziCANvS13TmUjKzkBVx8gVujmskx1e0vyXflc0yZfBhkaBormPLsN+H5w51uQzwcMZp
+ cvwkoSqMpD+SlQEQ9AYV1MM/hS5tl1X3iQUJTtOsxE7qIpN+2ZjVDpGfy/b1zySJwsSA
+ jwAIISucXAn5Q6XazIthBH6YVWJS4NWR17oW/Vd1/E6j6Jg8Ky1nobdft/cXdXzy2C9X
+ Fi0Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWEX1//83/gbHCvA4HFwpvxRsGgJ8iyXXxpFUzLAedno3T+sw9m338wnaTfLTWnvtF7IKDyTWuObqnL5FPi84FqL4RUVrs=
+X-Gm-Message-State: AOJu0YxpSw3k3rsuklHULPPQR5qJCN7P4M/guLTJOEPmd0UAhB6Q+xmB
+ Yo3rQ69czHF+owbEssaJPspAT03TW0RLcBztV1erpledolvvb09uFKYCury/Y4eeRMj2z9Cz3Ax
+ iu+/NlbUbgjpdjLbMQeX77de3PM9bivcLRCS7dgF0ewS8A+yHYoXP
+X-Received: by 2002:a05:6808:d4b:b0:3c2:1863:1b9f with SMTP id
+ w11-20020a0568080d4b00b003c218631b9fmr346643oik.21.1709744343801; 
+ Wed, 06 Mar 2024 08:59:03 -0800 (PST)
+X-Received: by 2002:a05:6808:d4b:b0:3c2:1863:1b9f with SMTP id
+ w11-20020a0568080d4b00b003c218631b9fmr346634oik.21.1709744343558; 
+ Wed, 06 Mar 2024 08:59:03 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-178-151.web.vodafone.de.
+ [109.43.178.151]) by smtp.gmail.com with ESMTPSA id
+ t11-20020a0568080b2b00b003c1f461d1cbsm760543oij.37.2024.03.06.08.58.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Mar 2024 08:59:03 -0800 (PST)
+Message-ID: <0554c009-0c1d-49c5-8744-a7bb12e2b837@redhat.com>
+Date: Wed, 6 Mar 2024 17:58:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.1 10/18] hw/mem/pc-dimm: Remove legacy_align
+ argument from pc_dimm_pre_plug()
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
+ Marcelo Tosatti <mtosatti@redhat.com>, devel@lists.libvirt.org,
+ David Hildenbrand <david@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org
+References: <20240305134221.30924-1-philmd@linaro.org>
+ <20240305134221.30924-11-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240305134221.30924-11-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ajr3UfdkjATL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5xXkyjpNnoY8
 
-On Wed, 6 Mar 2024 12:33:17 +0000
-<ankita@nvidia.com> wrote:
-
-> From: Ankit Agrawal <ankita@nvidia.com>
+On 05/03/2024 14.42, Philippe Mathieu-Daudé wrote:
+> 'legacy_align' is always NULL, remove it.
 > 
-> ACPI spec provides a scheme to associate "Generic Initiators" [1]
-> (e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
-> integrated compute or DMA engines GPUs) with Proximity Domains. This is
-> achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
-> Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
-> node for each unique PXM ID encountered. Qemu currently do not implement
-> these structures while building SRAT.
-> 
-> Add GI structures while building VM ACPI SRAT. The association between
-> device and node are stored using acpi-generic-initiator object. Lookup
-> presence of all such objects and use them to build these structures.
-> 
-> The structure needs a PCI device handle [2] that consists of the device BDF.
-> The vfio-pci device corresponding to the acpi-generic-initiator object is
-> located to determine the BDF.
-> 
-> [1] ACPI Spec 6.3, Section 5.2.16.6
-> [2] ACPI Spec 6.3, Table 5.80
-> 
-> Cc: Jonathan Cameron <qemu-devel@nongnu.org>
-> Cc: Alex Williamson <alex.williamson@redhat.com>
-> Cc: Cedric Le Goater <clg@redhat.com>
-> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/mem/pc-dimm.h | 3 +--
+>   hw/arm/virt.c            | 2 +-
+>   hw/i386/pc.c             | 2 +-
+>   hw/loongarch/virt.c      | 2 +-
+>   hw/mem/pc-dimm.c         | 6 ++----
+>   hw/ppc/spapr.c           | 2 +-
+>   6 files changed, 7 insertions(+), 10 deletions(-)
 
-I guess we gloss over the bisection breakage due to being able to add
-these nodes and have them used in HMAT as initiators before we have
-added SRAT support.  Linux will moan about it and not use such an HMAT
-but meh, it will boot.
-
-You could drag the HMAT change after this but perhaps it's not worth bothering.
-
-Otherwise LGTM
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-Could add x86 support (posted in reply to v7 this morning)
-and sounds like you have the test nearly ready which is great.
-
-Jonathan
-
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

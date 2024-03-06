@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp272492ejb;
-        Tue, 5 Mar 2024 19:59:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWkRvdazx641zVYwEbGNxDvivTunviLULVR7giF9PzGpexQhe3AGlOkLAXljyEU7x0lZtyV9YCXnmHNYtdccRma0uJqMAxv
-X-Google-Smtp-Source: AGHT+IGwU1b0QDmHf1REWMEUdAZqfqseu/quiYijNvbEDQZeWQiRwMAnZqHXvRG3U24dlHYLvcIw
-X-Received: by 2002:a05:6102:2a59:b0:472:7535:2ab8 with SMTP id gt25-20020a0561022a5900b0047275352ab8mr3539082vsb.19.1709697586812;
-        Tue, 05 Mar 2024 19:59:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709697586; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp272519ejb;
+        Tue, 5 Mar 2024 19:59:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVYaWYYCVqzcGYTKSb2cpEXy5ozmMrx6UkSIT0DNAP9AChrJKkd+MZcHgNbHc+5bQNegebn9JdJJixwCYfBnw3XOGYoGoNd
+X-Google-Smtp-Source: AGHT+IFqysR2YotmGsT0eJyQlWWoZHhUyZK4iI7Jmx1FPOB4IVpvMOzLKNG0YjB2/GirA+dA0KVq
+X-Received: by 2002:a05:620a:578d:b0:788:26ea:c3da with SMTP id wk13-20020a05620a578d00b0078826eac3damr4246192qkn.46.1709697593424;
+        Tue, 05 Mar 2024 19:59:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709697593; cv=none;
         d=google.com; s=arc-20160816;
-        b=buBn+qBjGBcJrB71zWCd90Gtdq+b6L41MwJKSFJEqC0ykbI4cmkcPU3TYopY/P5Y0s
-         pEptylyT+tkUPmttizxWzJXfc9eAR9B5PzYZIlHtyuTXJVqhMTscojoqXjudP0UdugiR
-         1Ndkv9DuNysWSUM0L+0OMco1eGvvtdO6tT7FxfNzM0odl8be193uxdPs9YWQCJpv5hrM
-         KERbnvyqsUSCrR2J5CtDeRdin2SDWoO8FSqWHcBqLCUhXUq8vMb2EOhHRLSOfP+P4LSB
-         k5mSWjenBhWUnERbpORPVLJ2xe0KLdGyHRrGt4zBHkP9vNy6WH+dL9GBcgJJQBfar9PY
-         pHlw==
+        b=ypQateQhApKgHbrRfIwQYqqRZtT/+lky/qdo+j3fyDCkPfZVmB5asnMTZPANrnOway
+         djS1CMa9zj8MIMi8Th0LPsWfAaSlhA/6dQll9OzYaVKiR4vBE+zavqgYZuBjlr01t4ss
+         mTkEFp1K54f2LU6COfhevnLYLxgXyuBQdcPbmYkSqNWmukYVV8B3Rna0euK6dmRp/Zx5
+         cj9h51lUaE7gcIO9sjxMGW/D/Cz78jWTdGnfoTiOJoTIFh9QWtSvjV5KTZMySsGMRH78
+         /L+bEuLrvWC5uUvzdo54rxSc51TMy77O6QX0Gn/fUSEXmNGVU/cVo54vcy3LbPZTSf2i
+         ifkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=eUv2z9KmY34SX56f6Q2Vdh1Bdsvd+iEMfpcSIQHA4Sc=;
+        bh=6F+muBG2sFhXaJ0bL3QHGxlktDKUuT6YhCvBdluQbHo=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=kXrEQ+ytj2xt7Q93xaTOgzl3v6JdAq+/WT/JQAzQitvCBBV53W8HkhJ6aRREiGdgXl
-         pliopVW2XxT7EtnIZvPTYjH54bWztYMVWEAOp75p4dyySmhWkZes/MbravehKRY2ctM+
-         7KjAKK1dSO5O0uo1g0pJBP7Zb3wcy8CtnIamn9PpS/qucQXgRQ3FHtMynxADYuZ9Dyqz
-         V/6JbgDVVPazAz/lLCg2IkOZFCpvZs9Fknen4WMyp8clR+m2ElSkyn2R4K5iNS4QJ2h+
-         Cy/PhJb+GltsH1CdZ6vyXTRWtnwsFCoAeUajGnVxtLnYz8+6pMzCrL7KfC4GRrBW1yZO
-         SoTA==;
+        b=0PxCBk8TkWM14cc+7PNQzv+N6ljb3B0E/k46wwWZG/Fi9plT7REiYHQVNxk0+5q1eV
+         ML9BoPhRsvvROuKFE50HOUwAgnUNMCQlI29rUzVrBSx2oWHrsv4Rtv6sOXex3tgv8alq
+         7x9Y1TMMNI3DXQAanVnQ/C6VmszHl5VPwtYNCQnyb5hvZ6rd3IhwS5WqlnpSYDVCxe8d
+         M7WZHp8V66wjwTlkRKgNg0DEq2IsreKfDJRTwcu2X4tNSLIxKPcbk4LqG5bgvvUhrUq8
+         M81CgYmak8n0AbeX4W3E31DkmDA3TnH+v3dAMRkgh7yqgR0tedxLYBoz1rYKLX4rHX+Z
+         qZtw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o7-20020a05620a22c700b0078832f5c06asi3410457qki.664.2024.03.05.19.59.46
+        by mx.google.com with ESMTPS id k11-20020a05620a414b00b007883c2ec6bcsi1459835qko.352.2024.03.05.19.59.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 19:59:46 -0800 (PST)
+        Tue, 05 Mar 2024 19:59:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhiQe-00014h-ML; Tue, 05 Mar 2024 22:58:52 -0500
+	id 1rhiQW-0000wt-TV; Tue, 05 Mar 2024 22:58:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhiQd-00013F-3u; Tue, 05 Mar 2024 22:58:51 -0500
+ id 1rhiQW-0000vv-1D; Tue, 05 Mar 2024 22:58:44 -0500
 Received: from szxga08-in.huawei.com ([45.249.212.255])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhiQa-0006p0-Hr; Tue, 05 Mar 2024 22:58:50 -0500
+ id 1rhiQU-0006n1-3H; Tue, 05 Mar 2024 22:58:43 -0500
 Received: from mail.maildlp.com (unknown [172.19.163.48])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4TqJXH071mz1Q9Kn;
- Wed,  6 Mar 2024 11:56:47 +0800 (CST)
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4TqJX86YJyz1Q9Km;
+ Wed,  6 Mar 2024 11:56:40 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 534DE18007B;
- Wed,  6 Mar 2024 11:58:44 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 3C66E18007B;
+ Wed,  6 Mar 2024 11:58:38 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 6 Mar
- 2024 11:58:43 +0800
+ 2024 11:58:37 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v7 20/23] hw/intc/arm_gicv3: Report the NMI interrupt in
- gicv3_cpuif_update()
-Date: Wed, 6 Mar 2024 03:57:18 +0000
-Message-ID: <20240306035721.2333531-21-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v7 13/23] hw/intc/arm_gicv3: Add irq superpriority
+ information
+Date: Wed, 6 Mar 2024 03:57:11 +0000
+Message-ID: <20240306035721.2333531-14-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240306035721.2333531-1-ruanjinjie@huawei.com>
 References: <20240306035721.2333531-1-ruanjinjie@huawei.com>
@@ -102,53 +102,57 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d8oEsRUMCFKF
+X-TUID: bUUgJXew9Ka+
 
-In CPU Interface, if the IRQ has the superpriority property, report
-NMI to the corresponding PE.
+A SPI, PPI or SGI interrupt can have a superpriority property. So
+maintain superpriority information in PendingIrq and GICR/GICD.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v6:
-- Add Reviewed-by.
-v4:
-- Swap the ordering of the IFs.
 v3:
-- Remove handling nmi_is_irq flag.
+- Place this ahead of implement GICR_INMIR.
+- Add Acked-by.
 ---
- hw/intc/arm_gicv3_cpuif.c | 4 ++++
+ include/hw/intc/arm_gicv3_common.h | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 9a7d089dea..483b1bc4a3 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -967,6 +967,7 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
-     /* Tell the CPU about its highest priority pending interrupt */
-     int irqlevel = 0;
-     int fiqlevel = 0;
-+    int nmilevel = 0;
-     ARMCPU *cpu = ARM_CPU(cs->cpu);
-     CPUARMState *env = &cpu->env;
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 7324c7d983..df4380141d 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -146,6 +146,7 @@ typedef struct {
+     int irq;
+     uint8_t prio;
+     int grp;
++    bool superprio;
+ } PendingIrq;
  
-@@ -1005,6 +1006,8 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+ struct GICv3CPUState {
+@@ -172,6 +173,7 @@ struct GICv3CPUState {
+     uint32_t gicr_ienabler0;
+     uint32_t gicr_ipendr0;
+     uint32_t gicr_iactiver0;
++    uint32_t gicr_isuperprio;
+     uint32_t edge_trigger; /* ICFGR0 and ICFGR1 even bits */
+     uint32_t gicr_igrpmodr0;
+     uint32_t gicr_nsacr;
+@@ -274,6 +276,7 @@ struct GICv3State {
+     GIC_DECLARE_BITMAP(active);       /* GICD_ISACTIVER */
+     GIC_DECLARE_BITMAP(level);        /* Current level */
+     GIC_DECLARE_BITMAP(edge_trigger); /* GICD_ICFGR even bits */
++    GIC_DECLARE_BITMAP(superprio);    /* GICD_INMIR */
+     uint8_t gicd_ipriority[GICV3_MAXIRQ];
+     uint64_t gicd_irouter[GICV3_MAXIRQ];
+     /* Cached information: pointer to the cpu i/f for the CPUs specified
+@@ -313,6 +316,7 @@ GICV3_BITMAP_ACCESSORS(pending)
+ GICV3_BITMAP_ACCESSORS(active)
+ GICV3_BITMAP_ACCESSORS(level)
+ GICV3_BITMAP_ACCESSORS(edge_trigger)
++GICV3_BITMAP_ACCESSORS(superprio)
  
-         if (isfiq) {
-             fiqlevel = 1;
-+        } else if (cs->hppi.superprio) {
-+            nmilevel = 1;
-         } else {
-             irqlevel = 1;
-         }
-@@ -1014,6 +1017,7 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
- 
-     qemu_set_irq(cs->parent_fiq, fiqlevel);
-     qemu_set_irq(cs->parent_irq, irqlevel);
-+    qemu_set_irq(cs->parent_nmi, nmilevel);
- }
- 
- static uint64_t icc_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ #define TYPE_ARM_GICV3_COMMON "arm-gicv3-common"
+ typedef struct ARMGICv3CommonClass ARMGICv3CommonClass;
 -- 
 2.34.1
 

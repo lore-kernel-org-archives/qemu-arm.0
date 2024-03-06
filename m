@@ -1,206 +1,91 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp262766ejb;
-        Tue, 5 Mar 2024 19:26:49 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWOJmJGpUVuwNieG2zsxg28c/kbPfcnCpKdA//txTxtDjH2I4AMqr0hOSAMGggHJ3vV4tr+LhLCGnT5Wrmjz7NcickZ2kqO
-X-Google-Smtp-Source: AGHT+IHRzVu25+sHrr5KPZd81iVILbcadyVoVHsvA2CQ3rdTc4dfKxJJ3cwAaRH+EwgSJjl6xyi5
-X-Received: by 2002:a0c:bf47:0:b0:68f:b8e0:aa3b with SMTP id b7-20020a0cbf47000000b0068fb8e0aa3bmr4088124qvj.14.1709695609351;
-        Tue, 05 Mar 2024 19:26:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709695609; cv=pass;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp272197ejb;
+        Tue, 5 Mar 2024 19:58:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWsvERBZngD/PpyfETYkvvpLIKyfDLh6LGpHdTjej1jzsMCieOfdXhXWETmF7ChxCUFcsZP4TleCw2wkQjBHfCiZdNGg8dk
+X-Google-Smtp-Source: AGHT+IH/LJA6byyR1EyQCoLcCquNHSLKVY8BABOVfBIjRBpR46XIFWD/WjqBzWcCPBvrqXgaA77L
+X-Received: by 2002:a05:620a:1265:b0:787:f3b6:ad2d with SMTP id b5-20020a05620a126500b00787f3b6ad2dmr3655067qkl.33.1709697521128;
+        Tue, 05 Mar 2024 19:58:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709697521; cv=none;
         d=google.com; s=arc-20160816;
-        b=lL1hmIFA84ZUE/WWU1xJDhL5K7Rn4GqnZ2hVdg5O/VI6N9qu5FSD7R4fUWupv1sj/a
-         XDeJKCUUR9vCTfgbUWneSA3yUByD7HCqGtxoqsdqTBct2emk0Z1CUwGC3thXSa+QsUvU
-         +tWIulDQ5IKYhDBeudu2SZ5ar+xv2CwlzZ8xYV8+8wzYOjr6one6736zfGzyZHq+U8AN
-         F77KLJfRtmIFPrYx5p+1BMHvQlbB2RnRIoyooENt3yVIUsWkF50Z1OpManHLjkbIlnfh
-         U1G/haYLq+BSC5N/RahBFnSN8qCjVDdZk2mHMqUn+mUPmDm+dWx1Xb/eSEz/AU8hlffK
-         rUBw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=qUL5YT/mSvQ7QjFpAu6w4mfuq4SIe/hC4UiBpIFcuOo=;
-        fh=4/W8c+4tuetrNsW/djAlbto+LUaes7fyKRgO7bpUkhc=;
-        b=rYqMoBq78u7ot9jRt+iCJaNtLbSAWQAkdn2IJ7W3jcAUCR1Sm5RRgiiVdCA1IBwHKK
-         0rFKVfxkmTSCYdDZNs3zSgZCH1LdDUOJFCs3KCqGvIwMN5AwxvWj5JqnxkE9GD/ivYQO
-         Xft2tHcwb/1I1cjEUOkuy0JZCZMG504uTL+bCK/flVo7WBhUjCv+9T4avlQLvJIgFKy8
-         wrLIhMCpTRUOXc98+jjW99mee0HAWPfLPx/srhDU5h+Yu5Bf5dPCniEZ92/G+Vj+4YiY
-         rEYI7sAvs9thqqn/HC+OQAN1zfY5hNA0pKAQ9vaVRq98vrUsLKVO6YLI7eDhBqPtU7iA
-         grcQ==;
+        b=wjNAQ2SbZFOVtWbgoT0Tt/PjoEZ0RmDtvW/lT21Px97c0S191mxe07dApiiDoYOBPd
+         Kk/Vyn01U1ddLCM5NGCCfW52P8vuVkN8En0XuM7NqnapcYazFCd8BKvj4Lo7bLt71PND
+         8algPy7mvkTmAIe1bqXH8y3s2aS0DI1m64+Kxdjht0lpIXcWAT/RUIQAbX6iEm8ftPgH
+         cEJujdbZyjnGP1ufty8WtNCfixxAFlZxsQEd1mqONgnxYegg9SFYBgfhCoHnWQv+dkUc
+         3lhys8qyAS39mz7uAGHZXq1uiRrLAN7InjLNPpW3lb4hcUA38LCtswDZQKhZdoDIf/XM
+         1Z6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=8TFonrZeeb9Z5oiTebD7Ywi/vJ/Y18Mgf+7PSNgiT1o=;
+        fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
+        b=vLfkwvwi+V40P9B+RJhA99CjU54ToeidMbCkfaOiwHkmlAwxwV3eqhHmV5mXXm+CEY
+         7cbKhfhvjzalX7cASLUsPvuY91mdOnxyq4QIOZaGmmlfjIFo7Dvm2wgTRukRlx397Xmi
+         FI3jdjCLdqg3EsaMQ0ctZCKKJhSSwmwgAqo6SJkYoBle0vKfoVTZOZtFZT6h6K1NFiAB
+         ZXKhKGy9+jzRaTGuOZvqW43O651572hr4LJfpyvnFaj5Z96fhvHzcXGha6ov6L5ZVwe1
+         9OV3i2JTn8UQbQU/DyadjvERWKhuyPD0hho6FBi3Y3mkxqPXMCfM65jCKQ+E18Fi454F
+         c0+w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HrEVTm3w;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10-20020a05621419ca00b0068fdc47fd29si13832588qvc.601.2024.03.05.19.26.49
+        by mx.google.com with ESMTPS id j15-20020a05620a0a4f00b007882646b0c1si6426207qka.276.2024.03.05.19.58.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 19:26:49 -0800 (PST)
+        Tue, 05 Mar 2024 19:58:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HrEVTm3w;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhhvI-000476-Dm; Tue, 05 Mar 2024 22:26:28 -0500
+	id 1rhiQN-0000mR-M3; Tue, 05 Mar 2024 22:58:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rhhvE-00044j-0w; Tue, 05 Mar 2024 22:26:24 -0500
-Received: from mgamail.intel.com ([198.175.65.20])
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhiQM-0000m4-Sw; Tue, 05 Mar 2024 22:58:34 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1rhhvA-0005HK-NM; Tue, 05 Mar 2024 22:26:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709695581; x=1741231581;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=uTxz5h+vrMOgrxQynDeIPUl6awg7UzCni0FhjBVFMDs=;
- b=HrEVTm3w1Mrnnxf8/rZMWKIcuyLaGSEzI7WJ3ueFLKngbBzaLr3ier/Q
- 3O2ASXDtEM0kHgXIeOM8W/26cxjFFEfiTv6x1NPsm1wH+ACe0atVl3evp
- MHR1PSV0EKB+XNuZ1YfjwC1PZIL+RMiILYJnqRbjATd4WA8GIlhEMWsz8
- JRPHgQAE/ibdeo3u0BU4QqlPoB53abKU7GXQQcyZQe5mOA783Ruho5Hiv
- CtLxHA6dS+0aDVv3yJi9t8qBAqb7AQfa76xlpduOi7CtToLEuJ+szmPvP
- mU8FmrOOPAGfDd1afFayffDIw8oUkFxqgJv8KPc1UjvzgchwhvC7NqD/G Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11004"; a="4172700"
-X-IronPort-AV: E=Sophos;i="6.06,207,1705392000"; 
-   d="scan'208";a="4172700"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2024 19:25:15 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,207,1705392000"; d="scan'208";a="14169606"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 05 Mar 2024 19:25:11 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Mar 2024 19:25:10 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Mar 2024 19:25:09 -0800
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 5 Mar 2024 19:25:09 -0800
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.169)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 5 Mar 2024 19:25:07 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UFz48G/bmX0wM4KVk9LJi5ZtoARKhvZqh4d2eOX0k+QtgBgCH1aiLJo+le+EdKkHsOFDksJlbRzLMVZhkcAu6cb7xvD13CrUOoPX3JJ3y3Ry4w6kapNMi+OfvznRFmwSAf3poy87JNwvD/OYs7lnMAUzr2fn18lFLn+KxnrHIvyloOSwozStyefBH8zX4BqIub7rcgrR23kDMyqeCxW0HyfbgV9tCfuhOlkaRXkZ6SiNV9sxsFk+OsyoEGRSTSC6W2OT2XW41NS4g5hql4hjq9YqQPygwWhVSsyVaAC16agIZPS86JBOvwjK2NipnMMazBxZENVovSGUTBV7O7x5nA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qUL5YT/mSvQ7QjFpAu6w4mfuq4SIe/hC4UiBpIFcuOo=;
- b=VhXWIX2FNomdrlPH4dOHcVS+MNtYYZBHZHudI5p5zmlT9BWSfdwvOmEtZ/cspKuksMPFVrthi0IWOARfUpaWgJgeixc90F0BTpIWhdq7H3dRg9W/7NOCQvrZGijUUG9qc0qknMwFyZ6jcgYiq6MO0YB+kUue+3v5jI6ZLBXjHuMWm9xSNKkN0c9aGSjrXV48/5n/+En+vsnX2BmDTl5vus6MlhGAYk7TcnWokHKVgLvCYP4yQmdwl7cEpS/fNQ/coP8RUjAnTPkTOWjrFYMRZCAk7CwVId4c/lcD38i8a0neKD9sm1PVUGdyaMX7ZgSZ67XGOanO9nO6Pb2zu27B7A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
- by IA1PR11MB7725.namprd11.prod.outlook.com (2603:10b6:208:3fd::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24; Wed, 6 Mar
- 2024 03:25:05 +0000
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::c0f3:15d4:d7f6:a72a]) by SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::c0f3:15d4:d7f6:a72a%4]) with mapi id 15.20.7362.019; Wed, 6 Mar 2024
- 03:25:05 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
- <mst@redhat.com>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "imammedo@redhat.com" <imammedo@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "clg@redhat.com" <clg@redhat.com>,
- "yanghliu@redhat.com" <yanghliu@redhat.com>
-CC: "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>
-Subject: RE: [PATCH v6 8/9] hw/arm/virt: Set virtio-iommu aw-bits default
- value to 48
-Thread-Topic: [PATCH v6 8/9] hw/arm/virt: Set virtio-iommu aw-bits default
- value to 48
-Thread-Index: AQHabygk5E2/3wpKVEOSHjFvlm1f7rEqDTVw
-Date: Wed, 6 Mar 2024 03:25:05 +0000
-Message-ID: <SJ0PR11MB674472228A664E543C15CD7092212@SJ0PR11MB6744.namprd11.prod.outlook.com>
-References: <20240305180734.48515-1-eric.auger@redhat.com>
- <20240305180734.48515-9-eric.auger@redhat.com>
-In-Reply-To: <20240305180734.48515-9-eric.auger@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|IA1PR11MB7725:EE_
-x-ms-office365-filtering-correlation-id: 25e248c1-85c8-4897-f647-08dc3d8d048b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5lG/e7ETTHEVhw8A90PgfnsYx+H3qNWnR4EbxiQF1aDsNEPuimnzvrPfloFagxcxD2N7Ixo3aLwfF5YcX7FuBUa4VMhCDwQMKpUSZNA+WRPbhrM5QFS21qe3EhzTp2S8Fgv15tqdIK9kQ6+X2kp2flEub4uTkJSPvOZvkxByS+JOlVWDrKXo6cxqtyHuuMcvk1YOPCv0+hMU6E5ciM53X3QVtglpCjLwJC0IgYQ6x48deOb9ePXeN5HxQU4sEGQvqoIEaUKrm3emcRl5vP91EuK1AxvkRUcdHH168xPDM5fhFCNFX7jgFCBZSl4k3ikccvqJMIdT8i9e3cBq1cC8w7ji/tzwEbtnGB6xxhwgDG4+8X+it/gM4kgElrI1Z4tTPcj6wgpnv2Df4F+L/7HFNQx5epuTLlGhA0U1zHsYf2mR0Dupd7tLgb5biyrbSwN3ZiMHwdTqbdvYHfdHcZmXYyzDN2891NtiVBqswFTuOMzUUdebPsaG2HDt9hdZa04j0kR2vkIPaUMUw6qANIg0feGKNUophDm9d0d3fDhhuUDbOTU98LoimnWbm6zKHWHiXrguW22vEx63yTt96icMTDvVX+rkN3+5ntngpSarhiTPtm6x6gJ4rQ9rMjwp66t+yqwZnp/vDfmTCgM++g4ZDuI3FQA9j02poPlhr4eCioDisFg4nS7Nouoalc4UsHrjZDmgNc9KhGXIazlxVAvGKN9al0TAkZypMLGdETnWJg8=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(921011)(38070700009); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?D31p3/k33I6UyDHzzS+mavLjnnV1OWe0/GEa3qT5hxzhjNgiX3Umv+bESosV?=
- =?us-ascii?Q?Mcf306A2zTLpzgTMjtZDjcV5l/WEtGwooPjDGC3VwxvMzKqoTyOABJlVVVdE?=
- =?us-ascii?Q?OdHXGkyHBX4NMwEmw/e5RFl/HWXea8eXuNZRwwUBwfMnQs+HEFHHxyQfISS5?=
- =?us-ascii?Q?YR1HhAeQpksPUiwzJwfnIcp2S3II1n9DmopSTWuUyY4OCCUufyplLyRKdFAM?=
- =?us-ascii?Q?+Ni97KlCOzGNsDm0ylKC2qG9fQSUkDUggvNRNqcjPLOJL2zy8VvgCI5NWVsJ?=
- =?us-ascii?Q?nEuJSzm49OauBK41QX9p2m+SnJYWS6WJlYNgj0avzCAGxHuSz/rs5Of9diNA?=
- =?us-ascii?Q?7+vfxdG3ZMdx4OyvpIzoKdAbJ4sJcyG41E4/Jf+u4GVA5sGES80uhDd9D6dW?=
- =?us-ascii?Q?oAVvucGM/qKfii03/eO8BdHzBTMudCk/QDiymQbnX4gzdynceO5FEJeLp2+K?=
- =?us-ascii?Q?fTrUN5rC6FrOJu4hfFYeI4QQboBRKgfhIOEwNr9236HOtjqYuN5tEpem/MkL?=
- =?us-ascii?Q?S5Vj1sVgfEugkQ109IO2MYgn1nZQ06l1y2WG0tB8zBgDh4q1r6iXWKBLgXrA?=
- =?us-ascii?Q?nFyakJ4SDcLewuwmk4OlHOnIQ/VxYSQio3GcDKE+eQmx0ZFJi+5qTyrIy5nG?=
- =?us-ascii?Q?d7tlHI96CDsPM8vPhht2UriI0qHSrqHJgikMXTLDnaTjDNCyF3R+Z5pLWyJD?=
- =?us-ascii?Q?SBE/K/VKG++p1Uhm3ZhWvkXEpeXmDua68JPyeu92dwjf6Mx4119ebhZHcm7s?=
- =?us-ascii?Q?OtrSHbXcy31jhbNhUatE8zVbIKOFn1VdJWzcBSm4+Vg+Tx5rLhOwbnxZtdxW?=
- =?us-ascii?Q?AGRxuOY3YGQxe6FnoPjL2a030/NpgHJDKoJurMf+q8BEIHScu8lHw6pwAOjZ?=
- =?us-ascii?Q?3pBUBt1Bod+8jBelOJn0N8iXHGmUE7xUFz7Xs7zIa5Kl8xv55b/Qqc7CmLge?=
- =?us-ascii?Q?uHfenlsaNfyKOMaHY48Y4o9xaOYYc6hR3Ko9oHLIBfbLW1ghTLuM5M0NPrwU?=
- =?us-ascii?Q?Zoh6YJV+r3cxrg6lfehiXE2HKdNCI/9LORSeW9iR844jgJDTCySthsZGB8wg?=
- =?us-ascii?Q?0gTYlupOLsQG8qkE6ktnyEdsjU/Y/iwjKmfRkfHeYx1v1zoSjWpP0HJcm0Xw?=
- =?us-ascii?Q?aPxxfwYgxxGlTcG9xq7zdw6IH5i2UfduYXdyLH/7tm4IW+KAxGil+tonKgja?=
- =?us-ascii?Q?YR0/KkZ3A4F/QSfxyvRqdX6EbaujEMQBFvc6LWNZ3DgLiehbuAnCJSxHQ2tw?=
- =?us-ascii?Q?TfPgsGT6ilkOg+oSWeFX9F7IoBiTzIPfWotqV9p0cmXKhoBaeXn2vKBbq7yC?=
- =?us-ascii?Q?yY1vTuxhF9+ifljCOLNJJDCLfF5bj8NjWv5YKFqx57VEFnTAbx92q3nzzCA2?=
- =?us-ascii?Q?SAsaWMIvAAvsIFjItyGQIumpz32onLCrMK/E4oNjO9lJSRU6UDCf+1qz9JjD?=
- =?us-ascii?Q?sfznnOpkD26BhlUlEnS4GB8XDP9YY6ouHCRLUUVXVHb+km40TDG8IbFDlt52?=
- =?us-ascii?Q?xK2bOXQWJpjIqalfKbKmflDCdQAPRAKxxiZGQF0uzOaekL2ciYV5or0rtvzt?=
- =?us-ascii?Q?EIiSIpOWatPmMK+KebqcHyOa13xymLuqv2RpFp0W?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rhiQK-0006k4-AE; Tue, 05 Mar 2024 22:58:34 -0500
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4TqJZ373KMz1FLpS;
+ Wed,  6 Mar 2024 11:58:19 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id C1CD11A0172;
+ Wed,  6 Mar 2024 11:58:27 +0800 (CST)
+Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 6 Mar
+ 2024 11:58:27 +0800
+To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
+ <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [RFC PATCH v7 01/23] target/arm: Handle HCR_EL2 accesses for bits
+ introduced with FEAT_NMI
+Date: Wed, 6 Mar 2024 03:56:59 +0000
+Message-ID: <20240306035721.2333531-2-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240306035721.2333531-1-ruanjinjie@huawei.com>
+References: <20240306035721.2333531-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 25e248c1-85c8-4897-f647-08dc3d8d048b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Mar 2024 03:25:05.5507 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: tGNIzylLeFux4lqq6AhyWv10QJ5+dr0QsqOWm/TYFaU4MsBpRBYX/qZoapVHQF4a2bodEGeEe8Z4HB0qApXZXBpXOGibO/Dbk3pOQzuN0e0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7725
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=198.175.65.20;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.55]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -213,71 +98,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u8kt+/YVzyFN
+X-TUID: UgPuBrS6alzO
 
+FEAT_NMI defines another three new bits in HCRX_EL2: TALLINT, HCRX_VINMI and
+HCRX_VFNMI. When the feature is enabled, allow these bits to be written in
+HCRX_EL2.
 
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v4:
+- Update the comment for FEAT_NMI in hcrx_write().
+- Update the commit message, s/thress/three/g.
+v3:
+- Add Reviewed-by.
+- Add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
+- Upate the commit messsage.
+---
+ target/arm/cpu-features.h | 5 +++++
+ target/arm/helper.c       | 5 +++++
+ 2 files changed, 10 insertions(+)
 
->-----Original Message-----
->From: Eric Auger <eric.auger@redhat.com>
->Subject: [PATCH v6 8/9] hw/arm/virt: Set virtio-iommu aw-bits default valu=
-e
->to 48
->
->On ARM we set 48b as a default (matching SMMUv3 SMMU_IDR5.VAX =3D=3D 0).
->
->hw_compat_8_2 is used to handle the compatibility for machine types
->before 9.0 (default was 64 bits).
->
->Signed-off-by: Eric Auger <eric.auger@redhat.com>
->---
-> hw/arm/virt.c | 17 +++++++++++++++++
-> 1 file changed, 17 insertions(+)
->
->diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->index 0af1943697..dcfb25369b 100644
->--- a/hw/arm/virt.c
->+++ b/hw/arm/virt.c
->@@ -85,11 +85,28 @@
-> #include "hw/char/pl011.h"
-> #include "qemu/guest-random.h"
->
->+GlobalProperty arm_virt_compat[] =3D {
->+    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
->+};
->+const size_t arm_virt_compat_len =3D G_N_ELEMENTS(arm_virt_compat);
-
-This can be static, otherwise,
-
-Reviewed-by: Zhenzhong Duan <Zhenzhong.duan@intel.com>
-
-Thanks
-Zhenzhong
-
->+
->+/*
->+ * This cannot be called from the virt_machine_class_init() because
->+ * TYPE_VIRT_MACHINE is abstract and mc->compat_props
->g_ptr_array_new()
->+ * only is called on virt non abstract class init.
->+ */
->+static void arm_virt_compat_set(MachineClass *mc)
->+{
->+    compat_props_add(mc->compat_props, arm_virt_compat,
->+                     arm_virt_compat_len);
->+}
->+
-> #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
->                                                     void *data) \
->     { \
->         MachineClass *mc =3D MACHINE_CLASS(oc); \
->+        arm_virt_compat_set(mc); \
->         virt_machine_##major##_##minor##_options(mc); \
->         mc->desc =3D "QEMU " # major "." # minor " ARM Virtual Machine"; =
-\
->         if (latest) { \
->--
->2.41.0
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 7567854db6..2ad1179be7 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -681,6 +681,11 @@ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, NMI) != 0;
++}
++
+ static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
+ {
+     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 90c4fb72ce..affa493141 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6056,6 +6056,11 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+         valid_mask |= HCRX_MSCEN | HCRX_MCE2;
+     }
+ 
++    /* FEAT_NMI adds TALLINT, VINMI and VFNMI */
++    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
++        valid_mask |= HCRX_TALLINT | HCRX_VINMI | HCRX_VFNMI;
++    }
++
+     /* Clear RES0 bits.  */
+     env->cp15.hcrx_el2 = value & valid_mask;
+ }
+-- 
+2.34.1
 

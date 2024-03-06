@@ -1,189 +1,198 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp380833ejb;
-        Wed, 6 Mar 2024 01:13:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWchCAgknTUFUIgIC81zkbWfQ3/4yZmq6BNbimFhoBdXhKNupi1bdaUICkF5n9t39NNdVqvVuvfLzatv5mqKDKrnctR4PGa
-X-Google-Smtp-Source: AGHT+IFfhvuCbKtSIWM3uOF1P3zorJqgmr8szb9On4zapoKKJS0+vYGTATPsa3VOmdBYPaDicPgX
-X-Received: by 2002:a0c:e441:0:b0:690:897f:a615 with SMTP id d1-20020a0ce441000000b00690897fa615mr3693721qvm.9.1709716389202;
-        Wed, 06 Mar 2024 01:13:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709716389; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp384011ejb;
+        Wed, 6 Mar 2024 01:21:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXvzGgnh3yTgZOM7ZsKMA7LdJnxiYt6OXs+6GebZbgwk6u6BATtA/jaZk3eDi9/co+6tG4VdjWf17wm0ZXiRXcxOx1ufOLP
+X-Google-Smtp-Source: AGHT+IEKd+96IwwZp52EijHGZVpfrUFhJl+TIvXI1EK45eQieWN0oSWAcZLlWAmSfyGylLkbAwyy
+X-Received: by 2002:ac8:5c4b:0:b0:42e:dcfc:b87 with SMTP id j11-20020ac85c4b000000b0042edcfc0b87mr4988612qtj.48.1709716876453;
+        Wed, 06 Mar 2024 01:21:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709716876; cv=none;
         d=google.com; s=arc-20160816;
-        b=zWztXk2DUv6hFr1AwwMkQMPM3HG7lmsUOkhs4MnRwt0atp0RMQUe4J+lwHDgTOuRbH
-         wttXsqkA888WYPg5ZowgSDD58ggCJe0TfxtQCPpO0HVLvYd1IZwBz2wHPfswGJFfviPb
-         9ZhdhNw1KpLfgm6zTEprdKz2OluLbLY31pxfOlfUCsJTVXYS7qRUWinjn7GnKepkydEW
-         4k4Vaj3xuVdow+mUVeSXHfaErMEP3jD3pdwPh6zshRV+z5J0wuPYuU4DRdABf2CNGp39
-         DPkBmajcDnh+CI2LQmtxN74x/fWODSCGNAGK7gFmXmYuAnCwVV54UqcNJSMFrbzRQneJ
-         WwbQ==
+        b=M29LIUFzmzOw7sNCt8WNfDQ5x9dYlVPwoakB9CFVnWmcme9l3av3vrwLz8it3yNWGt
+         uqjXKC8bFNonYy/gux9CZ7y1R9weAfR3kEqlBEXqXkgvavUnK3HVMCuJdCF3mvXIQeCl
+         Z3VJeHooz/TlkB3Oi/30JarbHpcC3Yy9cRkTeSbXmc4CZG5J7rPDe8BQ4CKMhaC3uRRi
+         pY1JBqyOjV8lwQccEdCZz8A2a4bnzHoU1Y6SPmGMT1HEGtQsBTfbfhDWrOhUuYXvd3jz
+         XR1gkIScmcApOr3UVwx/+FIsAk2FIz5/VFaOBVvzbhF65eXF7gCjF8sbepSzv8X/M/B2
+         NMkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=Ix5xOJqLYr7w/HTxqVLMqz2EUzihrKosNUDugP2z9LE=;
-        fh=0LvxF2gBko4aRsXKwNWweY2aR++Z7KX7V7rhsneOS3o=;
-        b=yR+T/5fnJsxE3zWTg0RirH2Hixec2Wv8DJPBhgtim9JAkWiUjpUhpK2kK5ZfW88Fs1
-         27R4T4ZCmOiKHyUBwbiK8qc18gqpYlWjwwQSBWrORV0UjhmoCY/D1/VCmYrZuX4QmEq0
-         JIUpBHmNnsMtF6Oj7ICVGhg5e8tO2AkyyxnsvK+eyN6qky1m5IzZDJ/43HQeHIlLzDzG
-         0K2W53WzC+/374CDSA6m370+LM/NVpPTCmoQeRXg3rDAXoyMuUNJzVMSqQrlgLtxpo6N
-         eAXCu6+wknq8evPfd5KzHjz3F8gVfr/5BJy204Wf8K4DqLlf6FpAJHg8EbCzIZqP+Yyz
-         4l4Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:dkim-signature;
+        bh=zzWX08Pqnklos6/nMIEev6rgEQxG8m1Enm3rRtbZGlk=;
+        fh=JHYG3bu/CxROEe/PdmQdUgmES46iiw/HdM8xXf3Kk20=;
+        b=Yp3WYzlQnmZuD58ogEgNl9GZWaICfmQmmRoOF1xUr+WPvX6ynlIhbM8H5lznbUlM9K
+         kohnFqxkFN9LISfEj7pF9GTnAugdTthvheFmMFjp9Q66tUd5eMTA69BxwmudVT5xrCMU
+         6bgKK9Sm/aA96JUJqSnA6MaMqb4BKbXDcUDtAif4uOtub7gzuEx0reGYq72RKSk+2rGo
+         9Jsm5GoOpp4GRKXsV7cQ6nyMVvbq9okP6mywv7Z8ish1YW+JzhYjnywWPwSQNa+10k8m
+         a6zqHFDAhJ2V/40p/7F57BcHzn9wNuvpdR4zJVfNA7g0+4dEsZRtDX+htv/aEJ5wJhfh
+         AXpw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ke6bDQ1z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2-20020a05621421c200b0068ff09d8b69si14913919qvh.197.2024.03.06.01.13.09
+        by mx.google.com with ESMTPS id s2-20020a0562140ca200b0068cf2ec8200si13646942qvs.95.2024.03.06.01.21.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 01:13:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Mar 2024 01:21:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ke6bDQ1z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhnKb-0000rL-ER; Wed, 06 Mar 2024 04:12:57 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rhnSC-0002o1-47; Wed, 06 Mar 2024 04:20:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhnKZ-0000qc-Ab; Wed, 06 Mar 2024 04:12:55 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rhnSA-0002ne-6G
+ for qemu-devel@nongnu.org; Wed, 06 Mar 2024 04:20:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhnKV-0007cU-A3; Wed, 06 Mar 2024 04:12:54 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TqRR40drBz67hqY;
- Wed,  6 Mar 2024 17:07:44 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 15F27140DF4;
- Wed,  6 Mar 2024 17:12:43 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 6 Mar
- 2024 09:12:42 +0000
-Date: Wed, 6 Mar 2024 09:12:41 +0000
-To: Jonathan Cameron via <qemu-devel@nongnu.org>
-CC: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, <ankita@nvidia.com>,
- <jgg@nvidia.com>, <alex.williamson@redhat.com>, <clg@redhat.com>,
- <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>, <ani@anisinha.ca>,
- <berrange@redhat.com>, <eduardo@habkost.net>, <imammedo@redhat.com>,
- <mst@redhat.com>, <eblake@redhat.com>, <armbru@redhat.com>,
- <david@redhat.com>, <gshan@redhat.com>, <zhiw@nvidia.com>,
- <mochs@nvidia.com>, <pbonzini@redhat.com>, <aniketa@nvidia.com>,
- <cjia@nvidia.com>, <kwankhede@nvidia.com>, <targupta@nvidia.com>,
- <vsethi@nvidia.com>, <acurrid@nvidia.com>, <dnigam@nvidia.com>,
- <udhoke@nvidia.com>, <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v7 2/2] hw/acpi: Implement the SRAT GI affinity structure
-Message-ID: <20240306091241.0000432b@Huawei.com>
-In-Reply-To: <20240226164229.00001536@Huawei.com>
-References: <20240223124223.800078-1-ankita@nvidia.com>
- <20240223124223.800078-3-ankita@nvidia.com>
- <20240226164229.00001536@Huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1rhnS6-0002oa-Lq
+ for qemu-devel@nongnu.org; Wed, 06 Mar 2024 04:20:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709716840;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zzWX08Pqnklos6/nMIEev6rgEQxG8m1Enm3rRtbZGlk=;
+ b=Ke6bDQ1zEckMgY/KjyGOGoRqiykbUXevwmxjMFwmc38QBXa2SJ5LU1TxtaD+TKaNjqv7PT
+ b0kiP8puEnSkIKioe4URUARnQ0IO5Xl/i4B5tbJnVS3ACsR/W97AbiNP8Z23IJa6eO80Jr
+ l03+HXhIw/vdpIhvfq7160lAkbxOlyQ=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-396-txetfhvlNLiyj93AMuvGKg-1; Wed, 06 Mar 2024 04:20:39 -0500
+X-MC-Unique: txetfhvlNLiyj93AMuvGKg-1
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-1dbf8efabdeso59364775ad.3
+ for <qemu-devel@nongnu.org>; Wed, 06 Mar 2024 01:20:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709716838; x=1710321638;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zzWX08Pqnklos6/nMIEev6rgEQxG8m1Enm3rRtbZGlk=;
+ b=Zl4ylczO65cR/EbE+TCPAkjnDnF9kpKznC3DJUZycLD+tPTeUsKUJp7uj00ktPIf36
+ zurU1RrOcMb4jvNzvZ/ZVW6JNm55Z7M11hkQwW9MmAKyN1lddOSw2iNxM6Ab/Vv2Pzlr
+ QyKTnlR64Tphxy0hidu5T7p8CJImVvoJi9Wv7JhrRJo5sRcPt+BTxZqAQT64p8VohtuK
+ SQh0jJAUXc+qiUxN8SJ//LeVGUcCFG5JJV3O5u7bDzNT9V7Jb5GUVa5HsIPAZNg7HRCB
+ wqGsslCOfZQdyRDlH9RhIJswnVCjFOzAchBPVakdgKjqrWEf8RYmZ+mYEUlXLVEdkOcJ
+ fgAw==
+X-Gm-Message-State: AOJu0YxfUCWntpZljaxgNA3ShIpPEp4cSBvEeIaLJvv5Zmw7g9vA+UOp
+ nJTKXeLLWPBESDgAAoMIHqcsRW0MS/uJ9uLUilRkuCEgvHxD7BPWqIjrsl8FjRT2hXrV6Pjgg/0
+ aTII+XQjNnqYkYiD0DQHDzQlB4q0+/Rf1vTwSYvJCAsrUhn/shmk/
+X-Received: by 2002:a17:902:f544:b0:1dc:c17d:6edd with SMTP id
+ h4-20020a170902f54400b001dcc17d6eddmr4676865plf.20.1709716838352; 
+ Wed, 06 Mar 2024 01:20:38 -0800 (PST)
+X-Received: by 2002:a17:902:f544:b0:1dc:c17d:6edd with SMTP id
+ h4-20020a170902f54400b001dcc17d6eddmr4676833plf.20.1709716838010; 
+ Wed, 06 Mar 2024 01:20:38 -0800 (PST)
+Received: from smtpclient.apple ([115.96.30.47])
+ by smtp.gmail.com with ESMTPSA id
+ b17-20020a170903229100b001db8a5ea0a3sm12089566plh.94.2024.03.06.01.20.31
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 06 Mar 2024 01:20:37 -0800 (PST)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: [PATCH v2 20/20] tests: acpi: update expected SSDT.dimmpxm blob
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <20240305155724.2047069-21-imammedo@redhat.com>
+Date: Wed, 6 Mar 2024 14:50:20 +0530
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Song Gao <gaosong@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, philmd@linaro.org, wangyanan55@huawei.com,
+ eblake@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <9E373F64-2290-4AF7-A23D-340FB6CE86F8@redhat.com>
+References: <20240305155724.2047069-1-imammedo@redhat.com>
+ <20240305155724.2047069-21-imammedo@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+X-Mailer: Apple Mail (2.3774.400.31)
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sCy9FZ3nfbt5
-
-On Mon, 26 Feb 2024 16:42:29 +0000
-Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
-
-> On Fri, 23 Feb 2024 12:42:23 +0000
-> <ankita@nvidia.com> wrote:
-> 
-> > From: Ankit Agrawal <ankita@nvidia.com>
-> > 
-> > ACPI spec provides a scheme to associate "Generic Initiators" [1]
-> > (e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
-> > integrated compute or DMA engines GPUs) with Proximity Domains. This is
-> > achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
-> > Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
-> > node for each unique PXM ID encountered. Qemu currently do not implement
-> > these structures while building SRAT.
-> > 
-> > Add GI structures while building VM ACPI SRAT. The association between
-> > device and node are stored using acpi-generic-initiator object. Lookup
-> > presence of all such objects and use them to build these structures.
-> > 
-> > The structure needs a PCI device handle [2] that consists of the device BDF.
-> > The vfio-pci device corresponding to the acpi-generic-initiator object is
-> > located to determine the BDF.
-> > 
-> > [1] ACPI Spec 6.3, Section 5.2.16.6
-> > [2] ACPI Spec 6.3, Table 5.80
-> > 
-> > Signed-off-by: Ankit Agrawal <ankita@nvidia.com>  
-> 
-> One thing I forgot.
-And another :)
-
-It might be nice to also support x86 from the start (apparently people still
-care about that old architecture)
-
-https://gitlab.com/jic23/qemu/-/commit/ccfb4fe22167e035173390cf147d9c226951b9b6
-is what I'm carrying for this (see below)
-
-We could do this later as part of the generic ports series (which is also on
-that tree if you are curious).
-
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 2d2bb0a325b83f5e3fb4666a462a693aea1a2220..54462d3a46c379a4159b4d71d7689a107745fa4c 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -68,6 +68,7 @@
- #include "hw/acpi/utils.h"
- #include "hw/acpi/pci.h"
- #include "hw/acpi/cxl.h"
-+#include "hw/acpi/acpi-generic-initiator.h"
- 
- #include "qom/qom-qobject.h"
- #include "hw/i386/amd_iommu.h"
-@@ -2097,6 +2098,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-         }
-     }
- 
-+    build_srat_generic_pci_initiator(table_data);
-     if (machine->nvdimms_state->is_enabled) {
-         nvdimm_build_srat(table_data);
-     }
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oDUc1H1WeeO3
 
 
 
+> On 05-Mar-2024, at 21:27, Igor Mammedov <imammedo@redhat.com> wrote:
+>=20
+> address shift is caused by switch to 32-bit SMBIOS entry point
+> which has slightly different size from 64-bit one and happens
+> to trigger a bit different memory layout.
 
-> 
-> Please add a test.  tests/qtest/bios-tables-test.c
-> + relevant table dumps.
-> 
-> Could also hook this up for x86 with a oneline addition and improve
-> test coverage.  If not, I'll do it when I add Generic Ports as annoyingly
-> people still care about x86 for some reason.
-> 
+Why does it affect only q35 machines and not i440fx as well?
+
+>=20
+> Expected diff:
+>=20
+> -    Name (MEMA, 0x07FFE000)
+> +    Name (MEMA, 0x07FFF000)
+>=20
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+Acked-by: Ani Sinha <anisinha@redhat.com>
+
+> ---
+> tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+> tests/data/acpi/q35/SSDT.dimmpxm            | Bin 1815 -> 1815 bytes
+> 2 files changed, 1 deletion(-)
+>=20
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h =
+b/tests/qtest/bios-tables-test-allowed-diff.h
+> index 81148a604f..dfb8523c8b 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,2 +1 @@
+> /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/q35/SSDT.dimmpxm",
+> diff --git a/tests/data/acpi/q35/SSDT.dimmpxm =
+b/tests/data/acpi/q35/SSDT.dimmpxm
+> index =
+70f133412f5e0aa128ab210245a8de7304eeb843..9ea4e0d0ceaa8a5cbd706afb6d49de85=
+3fafe654 100644
+> GIT binary patch
+> delta 23
+> ecmbQvH=3DU0wIM^jboSlJzam_|9E_UV*|JeaVTLvQl
+>=20
+> delta 23
+> ecmbQvH=3DU0wIM^jboSlJzanD9BE_UVz|JeaVy9Ofw
+>=20
+> --=20
+> 2.39.3
+>=20
 

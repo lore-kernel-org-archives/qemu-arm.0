@@ -1,74 +1,73 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp273058ejb;
-        Tue, 5 Mar 2024 20:00:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV0dbqAH65RwWTumwAUKw78a3avI9EnJKh51r3bhk95lXwSEuO1gAxAQWaJgag/Fy+No+bSolrVBogjbCEcMpde5bB35Idc
-X-Google-Smtp-Source: AGHT+IFVDsNTC0p0D2VkLfFWkgCaRCQXXIbR5H7C1CtM5CotLvfU9wscYEXngZsIn3rCdgIclv6d
-X-Received: by 2002:a05:620a:1b:b0:787:a2f0:2fc2 with SMTP id j27-20020a05620a001b00b00787a2f02fc2mr4087777qki.76.1709697659551;
-        Tue, 05 Mar 2024 20:00:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709697659; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp273097ejb;
+        Tue, 5 Mar 2024 20:01:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVt4WP9Bz3H/RQzcQylF844xQqh+UE32NwN0PokzSYaZPVvhE9bcTqJM6SMFQGZPofSnhjpJyF7k1DZneZkJrw2rmNyIf9r
+X-Google-Smtp-Source: AGHT+IHnyWFe2WjbczbKu6RCZ68UGv4nBAz/076h4JZSbvSo5RpPzbDz0dfW9YN8/qlXVeFEJw+2
+X-Received: by 2002:a05:6102:b0f:b0:472:b803:9a62 with SMTP id b15-20020a0561020b0f00b00472b8039a62mr4692958vst.10.1709697663318;
+        Tue, 05 Mar 2024 20:01:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709697663; cv=none;
         d=google.com; s=arc-20160816;
-        b=XLmEN16J7xb8g6WzHBnHya1NOE2M19R4BdTxq7Z+mZmIt9LrLsBjxu/oDJlHtp9M9q
-         edHhPTg3Y1P5exjhgmK+MY5Clk/yvGRVLlv2KjE5luOT03gsfpH5Z+vc6fWZVWMZolX7
-         0XDiZkuA3nPWIbcVOIIdtn/nbRApxi/NjWEUFOnf0G545P5Cx8HKuifkk/nfhfC3RAwz
-         G/7UrzPnrfa4yNSgALhNo7VTsSYYSwIHRRPy2MsUSuJoZvOotmkZ32RA+hCl4FVccc57
-         fkqekhp0d2e9ibuyqU+xX3SXP2dBZ6umg0VFYSJx7gzVRyzf3ljxDc/rkQd4FSEPnB9K
-         hA5g==
+        b=lbW2sLqWOKtU1pAUHmpbP2Duuux05JAlmPU0CopFqKY90vGWnrmXWgj7k79G1+ynr+
+         goeMFGsoU2PJxSipi//s7EuNyUKp+uoZEBPvRGNZ7m0CGVQiQbx8Va19mu719AxB8Ik1
+         ezWc9IugWFCXLYRWyuHp3dL/MFhGIlbLZBTHsU5B3/agNGPubjhNvdRQG+HwH8PWTsml
+         tkuWN7Z9MpwtluF5/SWk1XNr8g7ys7Y7lM/FtVaPPPYw5dK87Z+gQzIjyEfZOIE2kNTz
+         Jz1oW2oHcjo0di9evmjNHG6EJ+/wrs2QVYn2LBtM85v9r03CEqx2Utdlp53Ym/sw7MOf
+         I5QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=73/lLjUC7vy/VMSuYDHESMt2TDH58XTjVE/APL9O/JU=;
+        bh=6JhAjWd+J/YRt9FWIidU3nnhB67XeiHZvMW5v6FTevo=;
         fh=7La06MPWnWIeY2syFASYiv5clJRkW0OVzImHIa97XCQ=;
-        b=N1HZSWskvnIyAaaS/ivfdY82A7cOidJoq1ib6nkRyc/ipBQBMqzvSzvM297hAue8wT
-         nZW9o2u2C67f4EvAGRX9252JKpzUlte94cWhkxP1rjnKWgKo6NI7fXJ2H1880COtWLg2
-         C25w8AnAPW4nlAXWRzEx0ZZyu1Xty6PvyMoL1DF1RgMim89i+r6ffiVNMOyqvTukAbYW
-         pe0Z40Mbah/lLgn0sOzI7OP2F6TFn9OyDdnNrb+AMj+bjs2tGHgaS6vrTh8tgWpgh1eh
-         6JBgLuRXiooDrgoEU8s8Hk3WCxSzbYmeA8+uVVn8ACkkDuNiAGhIrUTM64wLyXQh7XFw
-         5wmQ==;
+        b=XnTx9elkbC6e0m4tMDQTRz/yYRMnUv2gl1cz3NzEwtrK0WQ3uT73oKVWSyfE+y8Ig9
+         K/3NF0Ex09ozASv79Oe5O9tPQCHofnLgvshibcQH1Lk2a8q2S/xQ6FVenWfDo7oYCN/M
+         MupCDEH9MrYh7GpaotQiT+mmfhqcP4/zpquxWZ5mc4VtijyRuZZWPjHXirFPSZZIEaJn
+         +n0fqQVtkaUL5WQ83o7vcDMVrYU/eZR4MiWsI8BsZfe7NtZZsIP/ezGG/yaTeCtEMaoX
+         08dnxwZia6fbl/w/u63KA+V0z9iQWL8O1aOPUTAZKunHaK2F3ppYefXiJHdPDZMbUkfV
+         8QwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wi1-20020a05620a570100b0078835210530si3026538qkn.676.2024.03.05.20.00.59
+        by mx.google.com with ESMTPS id o2-20020ac84282000000b0042ebc897cd3si12230411qtl.364.2024.03.05.20.01.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Mar 2024 20:00:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2024 20:01:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhiQU-0000vC-SK; Tue, 05 Mar 2024 22:58:42 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rhiQh-0001BV-2V; Tue, 05 Mar 2024 22:58:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhiQR-0000pg-QB; Tue, 05 Mar 2024 22:58:39 -0500
+ id 1rhiQf-0001AD-Uj; Tue, 05 Mar 2024 22:58:53 -0500
 Received: from szxga01-in.huawei.com ([45.249.212.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rhiQQ-0006lc-90; Tue, 05 Mar 2024 22:58:39 -0500
+ id 1rhiQa-0006p4-Li; Tue, 05 Mar 2024 22:58:53 -0500
 Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4TqJWk3GdlzwPFL;
- Wed,  6 Mar 2024 11:56:18 +0800 (CST)
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4TqJXJ48HxzsX6t;
+ Wed,  6 Mar 2024 11:56:48 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id A07C9140257;
- Wed,  6 Mar 2024 11:58:35 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 156DE1404F9;
+ Wed,  6 Mar 2024 11:58:46 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 6 Mar
- 2024 11:58:35 +0800
+ 2024 11:58:45 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v7 10/23] hw/arm/virt: Wire NMI and VNMI irq lines from
- GIC to CPU
-Date: Wed, 6 Mar 2024 03:57:08 +0000
-Message-ID: <20240306035721.2333531-11-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v7 22/23] target/arm: Add FEAT_NMI to max
+Date: Wed, 6 Mar 2024 03:57:20 +0000
+Message-ID: <20240306035721.2333531-23-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240306035721.2333531-1-ruanjinjie@huawei.com>
 References: <20240306035721.2333531-1-ruanjinjie@huawei.com>
@@ -87,61 +86,60 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0VQdtNThecP9
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /eFlb8e0aE+3
 
-Wire the new NMI and VNMI interrupt line from the GIC to each CPU.
+Enable FEAT_NMI on the 'max' CPU.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v4:
-- Add Reviewed-by.
 v3:
-- Also add VNMI wire.
+- Add Reviewed-by.
+- Sorted to last.
 ---
- hw/arm/virt.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ docs/system/arm/emulation.rst | 1 +
+ target/arm/tcg/cpu64.c        | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0af1943697..2d4a187fd5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -804,7 +804,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index f67aea2d83..91baf7ad69 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -63,6 +63,7 @@ the following architecture extensions:
+ - FEAT_MTE (Memory Tagging Extension)
+ - FEAT_MTE2 (Memory Tagging Extension)
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
++- FEAT_NMI (Non-maskable Interrupt)
+ - FEAT_NV (Nested Virtualization)
+ - FEAT_NV2 (Enhanced nested virtualization support)
+ - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 5fba2c0f04..60f0dcd799 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1175,6 +1175,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64PFR1, RAS_FRAC, 0);  /* FEAT_RASv1p1 + FEAT_DoubleFault */
+     t = FIELD_DP64(t, ID_AA64PFR1, SME, 1);       /* FEAT_SME */
+     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_2 */
++    t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
+     cpu->isar.id_aa64pfr1 = t;
  
-     /* Wire the outputs from each CPU's generic timer and the GICv3
-      * maintenance interrupt signal to the appropriate GIC PPI inputs,
--     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI/VNMI interrupt outputs to the
-+     * CPU's inputs.
-      */
-     for (i = 0; i < smp_cpus; i++) {
-         DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-@@ -848,6 +849,10 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-+        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-+        sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VNMI));
-     }
- 
-     fdt_add_gic_node(vms);
+     t = cpu->isar.id_aa64mmfr0;
 -- 
 2.34.1
 

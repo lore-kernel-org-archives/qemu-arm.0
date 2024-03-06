@@ -1,330 +1,358 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp469200ejb;
-        Wed, 6 Mar 2024 04:34:27 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWfIgzk/tHsuIkm8kKM0ys/F2vLv/7mH8gjbi77ErNiYgoqAQz0bPAgCWaEQ55ZD8iJIrV6YKQrdcacQgz2j7si67xkVgj0
-X-Google-Smtp-Source: AGHT+IEv1GA0zGlvPXxP68I5dfGwf2vtB8TxsZnOrl96H0iBxrcaY5VOpDJ9acyaPgA/eZwWkW0j
-X-Received: by 2002:a05:6214:b06:b0:690:182c:d398 with SMTP id u6-20020a0562140b0600b00690182cd398mr5358527qvj.0.1709728466862;
-        Wed, 06 Mar 2024 04:34:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709728466; cv=pass;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp485887ejb;
+        Wed, 6 Mar 2024 05:06:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXwxUh10bHaH3I5WKOLu6NsXNwiS8K4GH4PxyxdSJB8tKPd6/b5slyZpYvXBpGfWWEe9l3B/+MM8b8kd2oT1VK9CQQfenwn
+X-Google-Smtp-Source: AGHT+IHWLzoDCMO7/we0KXRctgiTfvlq995KchqzzmPGuL27XX/MGF+WdkkXgUvOGjkeKm1te0Fb
+X-Received: by 2002:ad4:50a6:0:b0:68f:3295:2457 with SMTP id d6-20020ad450a6000000b0068f32952457mr5580661qvq.43.1709730366669;
+        Wed, 06 Mar 2024 05:06:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709730366; cv=none;
         d=google.com; s=arc-20160816;
-        b=osx6vgxjgt3BmdOaH12FcWmcEn+35YqDZ7kCvJJCYru+ACw4244XUuwp1Nfqj5oAn4
-         FNmM/JmU70a82KDWjoqKYW4c2g5fBhtnd7GgaC59YtQkH3ht5hggDWqy8qqsGdoDa+A/
-         qGfcY1tN7sbRMvD3DcWrg80khTdZu+hUOXppDz+Z3z7HV4ZvYY8IUNIluU5ycG11svi6
-         Cq4M6bPInXCWrAEvfzNsWpZppA2iYvCRwZTwDE4LsDHYuiFypIxrUoyjFc3JmwdF6gK0
-         CCIjoF8LpZFE0lI0HyVINeefyKXTqn13QzfTdjAoGZycrRwF6jpObsyCMlMTQ4EntMU/
-         UFww==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=aInXuuC8RpS+/jHBYjW6eDHJx6FdqwpAslqUxO862G9H17dwSyAf2ZeVWlYQsmiwhg
+         UCHh0P0LSgFnJ9T+Zj/nrEhRU6YHGNs5tfMmJFE7rnvaaLzKQNs7odBPeV0hfeTOnxEC
+         cAm9RkmbDKK/VPCmZg9atn1j95NGb0VWU/Lyh/4iWGyhp/FFR1z87toJSn09PVNp2Cpi
+         8oPX/TJlTBaiYBKRUr9yncUf9H03Q1lME2GeYoUEkEBdxQmoMT2XK3v8ScZAEZ6fk41Z
+         LYkCUq4FEMmWAVbqz5cSSdmqG+Bp+gDUDkz63ZtS5dZuGVPb4IvPfsf0p52rWTXyFubM
+         rbuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=N6gKNxCyS7Sr4D+XIcxKv0S0Hy99F9ARIfXO1XPC7I8=;
-        fh=TsskilArLjXGsoNH3Wuzmttym1Rj4Ek2NlvJZ/25aOE=;
-        b=CwmfO8mX46Qv0l82Ptm3f/AWBOM5ckN90WsHarlq13X/JzSK8aZeUtimPbWUYg6aj/
-         c9hFWqsDcAZBu7Cbqa6ME9tQe2icd+pczVXtDqUT2gPTkXx4iYSOh/MGeRo8c5h3v3tC
-         gyP9VRKQi/gpAPYUEr+ifsvOATPoyMiKvB/usFyF+AE8iqXRHLwDGjA36rMf5iOb6gzd
-         IGyl0bb/14RlB10qORFHMATNHqbfIDslaROe8n5XP93vxlvRmvayOYC5+Iuci5OXxWxI
-         Z5yxjJjpxY6NuHgqfNrRCjqFLARWnUHKFRd4GFdgW+dlfI991cMRNJAtyf+h55KM5V3/
-         R04w==;
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=35epdlKFgsUnoD10TbsRqMnZ4hleOgbRmnX4nUudU/E=;
+        fh=9udqZaTykpsF0Whin5x+Kr5n0rItsudQqYkRlwxGQ6k=;
+        b=HRjQeWoan4860tDkyjI4vn49j5aRZGFmYc/NrCHsSbVzKjr/k7z0XKhG6Z1rxq6n0U
+         WhksAh3mxZx0gpyI81n7hzURJqWTQKsp3e/TDRa7Jf9/ID31skT6luCMFrwafH6ogTZ5
+         sW9GpjrsPp9cAfaUyOU1hq6EvUj/9WAo5QyHPmkcOF0so16NOKtiPTOkiAO6wxb64UCj
+         yOsHriN3qwi+oRDXPDw+HN+dX3XstkWcHolXNjTWSjABi550Doqpt8u+558EqPNtGFaQ
+         EsTTYxc2VFQlayrZM6KpovUS5G1AVxvca8N9YanFpttD6UJar33ygT4i4CZnvmuLKcX/
+         tHFQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=rHDM5beQ;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=hNMNSGUT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ed10-20020ad44eaa000000b0068fb82329f8si1280124qvb.598.2024.03.06.04.34.26
+        by mx.google.com with ESMTPS id i3-20020ad45c63000000b006903e2831aasi14590088qvh.370.2024.03.06.05.06.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 04:34:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Mar 2024 05:06:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=rHDM5beQ;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=hNMNSGUT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rhqSr-0007kt-TC; Wed, 06 Mar 2024 07:33:41 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rhqy1-0005NV-NP; Wed, 06 Mar 2024 08:05:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rhqSp-0007k4-Pj; Wed, 06 Mar 2024 07:33:39 -0500
-Received: from mail-mw2nam10on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2412::601]
- helo=NAM10-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rhqSl-0002ti-89; Wed, 06 Mar 2024 07:33:39 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Zm4I3mMe1f+CRPHlYYeQ1ff/vLNPMWUNoIDG2jlAeV5/tHeX5gsbYDA2c4xZDntcXy8DyHviZgCvU3e+4cu8mahOlGvyKw4ZTJBRsqoSO2vXUVHPe7ruXw7cFMbJpEp7g1GrDKje/PTZ/bXAHZ0qHQxbAjs1YA5aS//4dGMaHnNbvFzd+l1R4zFyWMoNmmJnoZwE8PF5w0mj50a9SL4JLTFysuHzn9TcM95DF67T2mzieEDGRxRZisoj7MhP0r46MTL13EgOF8Tb6YbYDPRRhvGtoiMZIxptb2kPzsdlcWhriHrHlEP8A/V8vC/VY7hUSAc9JIhicglpdZj/xgtHkQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=N6gKNxCyS7Sr4D+XIcxKv0S0Hy99F9ARIfXO1XPC7I8=;
- b=l5NVbJCEW7FPUfuw8Et/sWebIKp2xi53Ck9OeTwQJfX7Oyv2XFZaLdks5Fw+/Dvwm9Lr+jgULoG9jHhogDCza4DGdKDfdIf5807TYYlVa50xqNdo/00ABOzjm2k2JDZ61FMWVid2MNUwRwuTIc6K6xjPRSFzRRU2ScZ6G70X6NaAxwgRZWyxtzJ/HEffS67qeHj5AI7HNbGG1ZpVOF99cyzHPXL0U0eqB0/eiX716myzHY1ATeWMwND94ncsluYvS9E8REwUfaSGX1a/bDABDKZMPgm5cg9d0A10d9eX/HhfgzFUxJTzFjSMq5Zl1VcH1Nd98zYlmcCR5FY4NZ7LRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=N6gKNxCyS7Sr4D+XIcxKv0S0Hy99F9ARIfXO1XPC7I8=;
- b=rHDM5beQKcMYDZJzHLN4mmWGnLZQyKiR8oS+AyKv9GRn9zwtxJS3do5uPYNeCoTa9Vz2NHEGHoSAKRMO7oYp2zBrmmcqRsLXuaqIgUNz0glJ0DkOLlCwktr1KpFnHJebXomXEYWAOhMsb5PxFavk66fgDrWR/a/Uj9It/2upeyQFrFD6cwWQO37EejvYociGK+C6mV+E+D+FN6QprprcqVCXamihdEJosejELwO2Svw6OCvCGJhh+qC578TpV/DZyBMEXOMUdGRi56fQl018pmFWDWufpLw6/jrlTTif0XEf/cBlSqpClqeoNRnoA1Ffb0l294AttyA7KAJjuY96HA==
-Received: from MW4PR04CA0193.namprd04.prod.outlook.com (2603:10b6:303:86::18)
- by CH2PR12MB4296.namprd12.prod.outlook.com (2603:10b6:610:af::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24; Wed, 6 Mar
- 2024 12:33:24 +0000
-Received: from MWH0EPF000989E7.namprd02.prod.outlook.com
- (2603:10b6:303:86:cafe::62) by MW4PR04CA0193.outlook.office365.com
- (2603:10b6:303:86::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24 via Frontend
- Transport; Wed, 6 Mar 2024 12:33:24 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- MWH0EPF000989E7.mail.protection.outlook.com (10.167.241.134) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7362.11 via Frontend Transport; Wed, 6 Mar 2024 12:33:23 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Wed, 6 Mar 2024
- 04:33:18 -0800
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Wed, 6 Mar 2024 04:33:17 -0800
-Received: from host-10-63-191-31.nvidia.com (10.127.8.10) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12 via Frontend
- Transport; Wed, 6 Mar 2024 04:33:17 -0800
-From: <ankita@nvidia.com>
-To: <ankita@nvidia.com>, <jgg@nvidia.com>, <marcel.apfelbaum@gmail.com>,
- <philmd@linaro.org>, <wangyanan55@huawei.com>, <alex.williamson@redhat.com>,
- <pbonzini@redhat.com>, <clg@redhat.com>, <shannon.zhaosl@gmail.com>,
- <peter.maydell@linaro.org>, <ani@anisinha.ca>, <berrange@redhat.com>,
- <eduardo@habkost.net>, <imammedo@redhat.com>, <mst@redhat.com>,
- <eblake@redhat.com>, <armbru@redhat.com>, <david@redhat.com>,
- <gshan@redhat.com>, <Jonathan.Cameron@huawei.com>
-CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
- <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
- <dnigam@nvidia.com>, <udhoke@nvidia.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: [PATCH v8 0/2] acpi: report NUMA nodes for device memory using GI
-Date: Wed, 6 Mar 2024 12:33:15 +0000
-Message-ID: <20240306123317.4691-1-ankita@nvidia.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1rhqxz-0005MU-Qr
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 08:05:51 -0500
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1rhqxx-0001EH-0Z
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 08:05:51 -0500
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1dcb3e6ff3fso39584635ad.2
+ for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 05:05:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1709730347; x=1710335147; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=35epdlKFgsUnoD10TbsRqMnZ4hleOgbRmnX4nUudU/E=;
+ b=hNMNSGUTJPdF257WXi6zOGDsmN7uKQWdV1S22lvAdvnCinwg7k7VXZB+kkuZI2nH3X
+ 2hCmEihUwFe6OoncgGwUG52uxtBqx1s51xqaGQlRoqQfkQUfB8X+6QStpw5uuuttySM+
+ 8cWgKaIqipbbc055FYUjw3LwhPAHlj7z7MDnrRKfTDeIdsZuD4Um2dEdDDtza2UESqKL
+ N4ydQ7ufDFkfVzoQxPZqmqP/fJsRdRTND3yiUxC8dPeFbhAAPcBN8LtiXYo+SxEsInAL
+ VybciFA8VC3mgRyGaOqOtRoKujQvci9vjBSfx2eIbsXFlitc8CFxQUu9XbzPsrHlzIOp
+ RsSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709730347; x=1710335147;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=35epdlKFgsUnoD10TbsRqMnZ4hleOgbRmnX4nUudU/E=;
+ b=lFLhtnHocAKcsWFYwNY6sx445DUQ3fP0pfv7RalEkdi8S5eqQjgcRSry0a39xm0uiz
+ aSX4XeLSqMWbpv49/+/p4UqkAEbRfUUntBh/c6FbYawmsqe2+K56jgrdCHNVXC6lHPHv
+ p6bpXCvwHmQL4ceY8VsJSoO04dids2KRIeOcM7A9TNOhiSDcgvSyKxlOXwpzXkTAIFLP
+ 0I+7o5grpJdCBkZ59CNjzQISybhNpk+DenKrCCfhJ4uefciBofWsod0Iu1c21S3oiWAN
+ Gzc3nc7VsVC+HXbL6Nm+GlDZfr1cT9CuU7XWzosR7UU9flfnVP9rkBhjfJD+Ixs4yf48
+ 2kdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVcY5S/UNR20aqR1WOF6dGjuZ0znQE6V3HVGArDS+v3b5B3XDsu7jKq3d8IHfkhalT3Pe9XoH5lT8xYLi0oanyg7MKR
+X-Gm-Message-State: AOJu0Yw4wZHP2H/w4dfgYOc/Bp+qL4Mw1qBDyipJ0QmSm2zeq9/+UbPA
+ b9CrY1ThbBO3uSc396TP52hA4LDRfPmdqGOiIKxw0qSbbOWQ+ugbVe4b5s3rm1Y=
+X-Received: by 2002:a17:903:238e:b0:1dc:728d:b1de with SMTP id
+ v14-20020a170903238e00b001dc728db1demr5587523plh.56.1709730347595; 
+ Wed, 06 Mar 2024 05:05:47 -0800 (PST)
+Received: from [192.168.68.110] ([177.94.15.159])
+ by smtp.gmail.com with ESMTPSA id
+ ix19-20020a170902f81300b001db45b65e13sm12540439plb.279.2024.03.06.05.05.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Mar 2024 05:05:47 -0800 (PST)
+Message-ID: <bf7da333-d777-4cb6-96b1-368410ba733c@ventanamicro.com>
+Date: Wed, 6 Mar 2024 10:05:42 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MWH0EPF000989E7:EE_|CH2PR12MB4296:EE_
-X-MS-Office365-Filtering-Correlation-Id: 07ef8430-b12c-4e40-b012-08dc3dd99d7d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: r34zsy2FCTK05IBngwli25HD+S1WSf3XQlgVNoJzOmiNAhWGWHqO8W1HLnK0QLDmVUYpPn2/sPHw5r8gwjUtAKpw3FwecjDRIIwPgcWw9OVej4GcwKYN77ujQL8Pl1+GF/Ek2RVBpnZQKEUG/kaCidRuzEMMZN+vi39+c+zIYIRl1uOFhDQAdX2WHra0IAjjuzxy6/bVjsQv6IvR5uIMli7ZwPw2bZmQkX318eqGlJqUh0NIh22QLQgFRZAfCm6M9nZGlRtR7Ru9jpKgZbxHveqbPB5a/+0i1hSAez++nbyxDFBFWIKivF2SmU7bW66in9DMOFTvQymnQB9fR+68mPWpUBe+Z28P0Sp1BCfQnXTOofYcAN/UsqFiac+UhwRZ9Gn0YI4wzJSPrZUIL3KlppiE896b/fcN/KgLVR+vDpRKM4vgEVAUpULtEfvUFL8By48f7hBudnGR3y/rfl1xSsw6nbG/b8T5Jw3h00HQSX5OhfigfPHw4/aR00rG2Pwxl6/XDwdL92ixuRnzS+9dNVSTWOyW9/W7f0W7+BZOa08c9zK2fqjfIjdcsH/g49ndwl2nFQG2yoCvJkFfzRUi7D6LqYftNZZz7mnnpMF16ldRKkU8jZjEAqjhfbICoMvc6vDtgPc2zLt19OZTJ+OTKPKepOgOVN5ivNZ8MWkBBIE2Ttessn/lwoPPLvf3WZ1sOq3LNVphpDPr+X4mosPbbc4kAjgB+NKgki6WLO7KV6RfsrZ7mU9Rd7ba1u/juvLQq+QBimMM+jea9YpmW65cqg==
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230031)(36860700004)(376005)(82310400014)(921011); DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2024 12:33:23.8131 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 07ef8430-b12c-4e40-b012-08dc3dd99d7d
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000989E7.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4296
-Received-SPF: softfail client-ip=2a01:111:f403:2412::601;
- envelope-from=ankita@nvidia.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] target: Improve error reporting for CpuModelInfo
+ member @props
+Content-Language: en-US
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, pbonzini@redhat.com, gaosong@loongson.cn,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20240305145919.2186971-1-armbru@redhat.com>
+ <20240305145919.2186971-4-armbru@redhat.com>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20240305145919.2186971-4-armbru@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JlU/cIgBTyae
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wy0S+qivLk9S
 
-From: Ankit Agrawal <ankita@nvidia.com>
 
-There are upcoming devices which allow CPU to cache coherently access
-their memory. It is sensible to expose such memory as NUMA nodes separate
-from the sysmem node to the OS. The ACPI spec provides a scheme in SRAT
-called Generic Initiator Affinity Structure [1] to allow an association
-between a Proximity Domain (PXM) and a Generic Initiator (GI) (e.g.
-heterogeneous processors and accelerators, GPUs, and I/O devices with
-integrated compute or DMA engines).
 
-While a single node per device may cover several use cases, it is however
-insufficient for a full utilization of the NVIDIA GPUs MIG
-(Mult-Instance GPUs) [2] feature. The feature allows partitioning of the
-GPU device resources (including device memory) into several (upto 8)
-isolated instances. Each of the partitioned memory requires a dedicated NUMA
-node to operate. The partitions are not fixed and they can be created/deleted
-at runtime.
+On 3/5/24 11:59, Markus Armbruster wrote:
+> query-cpu-model-comparison, query-cpu-model-baseline, and
+> query-cpu-model-expansion take CpuModelInfo arguments.  Errors in
+> @props members of these arguments are reported for 'props', without
+> further context.  For instance, s390x rejects
+> 
+>      {"execute": "query-cpu-model-comparison", "arguments": {"modela": {"name": "z13", "props": {}}, "modelb": {"name": "z14", "props": []}}}
+> 
+> with
+> 
+>      {"error": {"class": "GenericError", "desc": "Invalid parameter type for 'props', expected: object"}}
+> 
+> This is unusual; the common QAPI unmarshaling machinery would complain
+> about 'modelb.props'.  Our hand-written code to visit the @props
+> member neglects to provide the context.
+> 
+> Tweak it so it provides it.  The command above now fails with
+> 
+>      {"error": {"class": "GenericError", "desc": "Invalid parameter type for 'modelb.props', expected: dict"}}
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
 
-Linux OS does not provide a means to dynamically create/destroy NUMA nodes
-and such feature implementation is expected to be non-trivial. The nodes
-that OS discovers at the boot time while parsing SRAT remains fixed. So we
-utilize the GI Affinity structures that allows association between nodes
-and devices. Multiple GI structures per device/BDF is possible, allowing
-creation of multiple nodes in the VM by exposing unique PXM in each of these
-structures.
 
-Implement the mechanism to build the GI affinity structures as Qemu currently
-does not. Introduce a new acpi-generic-initiator object to allow host admin
-link a device with an associated NUMA node. Qemu maintains this association
-and use this object to build the requisite GI Affinity Structure.
+For RISC-V changes:
 
-When multiple NUMA nodes are associated with a device, it is required to
-create those many number of acpi-generic-initiator objects, each representing
-a unique device:node association.
+Acked-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-Following is one of a decoded GI affinity structure in VM ACPI SRAT.
-[0C8h 0200   1]                Subtable Type : 05 [Generic Initiator Affinity]
-[0C9h 0201   1]                       Length : 20
-
-[0CAh 0202   1]                    Reserved1 : 00
-[0CBh 0203   1]           Device Handle Type : 01
-[0CCh 0204   4]             Proximity Domain : 00000007
-[0D0h 0208  16]                Device Handle : 00 00 20 00 00 00 00 00 00 00 00
-00 00 00 00 00
-[0E0h 0224   4]        Flags (decoded below) : 00000001
-                                     Enabled : 1
-[0E4h 0228   4]                    Reserved2 : 00000000
-
-[0E8h 0232   1]                Subtable Type : 05 [Generic Initiator Affinity]
-[0E9h 0233   1]                       Length : 20
-
-On Grace Hopper systems, an admin will create a range of 8 nodes and associate
-them with the device using the acpi-generic-initiator object. While a
-configuration of less than 8 nodes per device is allowed, such configuration
-will prevent utilization of the feature to the fullest. This setting is
-applicable to all the Grace+Hopper systems. The following is an example of
-the Qemu command line arguments to create 8 nodes and link them to the device
-'dev0':
-
--numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
--numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 \
--numa node,nodeid=8 -numa node,nodeid=9 \
--device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.0,addr=04.0,rombar=0,id=dev0 \
--object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
--object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=3 \
--object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=4 \
--object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=5 \
--object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=6 \
--object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=7 \
--object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=8 \
--object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
-
-The performance benefits can be realized by providing the NUMA node distances
-appropriately (through libvirt tags or Qemu params). The admin can get the
-distance among nodes in hardware using `numactl -H`.
-
-This series goes along with the recenty added vfio-pci variant driver [3].
-
-Applied over v8.2.2
-base commit: 11aa0b1ff115b86160c4d37e7c37e6a6b13b77ea
-
-[1] ACPI Spec 6.3, Section 5.2.16.6
-Link: https://www.nvidia.com/en-in/technologies/multi-instance-gpu [2]
-Link: https://lore.kernel.org/all/20240220115055.23546-1-ankita@nvidia.com/ [3]
-
-Link for v7:
-Link: https://lore.kernel.org/all/20240223124223.800078-1-ankita@nvidia.com/
-
-v7 -> v8
-- Replaced the code to collect the acpi-generic-initiator objects
-  with the code to use recursive helper object_child_foreach_recursive
-  based on suggestion from Jonathan Cameron.
-- Added sanity check for the node id passed to the
-  acpi-generic-initiator object.
-- Added change to use GI as HMAT initiator as per Jonathan's suggestion.
-- Fixed nits pointed by Marcus and Jonathan.
-- Collected Marcus' Acked-by.
-- Rebased to v8.2.2.
-
-v6 -> v7
-- Updated code and the commit message to make acpi-generic-initiator
-  define a 1:1 relationship between device and node based on
-  Jonathan Cameron's suggestion.
-- Updated commit message to include the decoded GI entry in the SRAT.
-- Rebased to v8.2.1.
-
-v5 -> v6
-- Updated commit message for the [1/2] and the cover letter.
-- Updated the acpi-generic-initiator object comment description for
-  clarity on the input host-nodes.
-- Rebased to v8.2.0-rc4.
-
-v4 -> v5
-- Removed acpi-dev option until full support.
-- The NUMA nodes are saved as bitmap instead of uint16List.
-- Replaced asserts to exit calls.
-- Addressed other miscellaneous comments.
-
-v3 -> v4
-- changed the ':' delimited way to a uint16 array to communicate the
-nodes associated with the device.
-- added asserts to handle invalid inputs.
-- addressed other miscellaneous v3 comments.
-
-v2 -> v3
-- changed param to accept a ':' delimited list of NUMA nodes, instead
-of a range.
-- Removed nvidia-acpi-generic-initiator object.
-- Addressed miscellaneous comments in v2.
-
-v1 -> v2
-- Removed dependency on sysfs to communicate the feature with variant module.
-- Use GI Affinity SRAT structure instead of Memory Affinity.
-- No DSDT entries needed to communicate the PXM for the device. SRAT GI
-structure is used instead.
-- New objects introduced to establish link between device and nodes.
-
-Ankit Agrawal (2):
-  qom: new object to associate device to NUMA node
-  hw/acpi: Implement the SRAT GI affinity structure
-
- hw/acpi/acpi_generic_initiator.c         | 146 +++++++++++++++++++++++
- hw/acpi/hmat.c                           |   2 +-
- hw/acpi/meson.build                      |   1 +
- hw/arm/virt-acpi-build.c                 |   3 +
- hw/core/numa.c                           |   3 +-
- include/hw/acpi/acpi_generic_initiator.h |  57 +++++++++
- include/sysemu/numa.h                    |   1 +
- qapi/qom.json                            |  17 +++
- 8 files changed, 228 insertions(+), 2 deletions(-)
- create mode 100644 hw/acpi/acpi_generic_initiator.c
- create mode 100644 include/hw/acpi/acpi_generic_initiator.h
-
--- 
-2.34.1
-
+>   target/arm/arm-qmp-cmds.c        |  2 +-
+>   target/i386/cpu-sysemu.c         | 11 ++++++-----
+>   target/riscv/riscv-qmp-cmds.c    |  6 ++++--
+>   target/s390x/cpu_models_sysemu.c | 17 ++++++++++-------
+>   tests/qtest/arm-cpu-features.c   |  5 +++--
+>   5 files changed, 24 insertions(+), 17 deletions(-)
+> 
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index 0167759730..0efbee8af8 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -158,7 +158,7 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>           Error *err = NULL;
+>   
+>           visitor = qobject_input_visitor_new(model->props);
+> -        if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
+> +        if (!visit_start_struct(visitor, "model.props", NULL, 0, errp)) {
+>               visit_free(visitor);
+>               object_unref(obj);
+>               return NULL;
+> diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
+> index df91f97827..3f9093d285 100644
+> --- a/target/i386/cpu-sysemu.c
+> +++ b/target/i386/cpu-sysemu.c
+> @@ -130,14 +130,15 @@ static void x86_cpu_to_dict_full(X86CPU *cpu, QDict *props)
+>       }
+>   }
+>   
+> -static void object_apply_props(Object *obj, QObject *props, Error **errp)
+> +static void object_apply_props(Object *obj, QObject *props,
+> +                               const char *props_arg_name, Error **errp)
+>   {
+>       Visitor *visitor;
+>       QDict *qdict;
+>       const QDictEntry *prop;
+>   
+>       visitor = qobject_input_visitor_new(props);
+> -    if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
+> +    if (!visit_start_struct(visitor, props_arg_name, NULL, 0, errp)) {
+>           visit_free(visitor);
+>           return;
+>       }
+> @@ -158,7 +159,7 @@ out:
+>   
+>   /* Create X86CPU object according to model+props specification */
+>   static X86CPU *x86_cpu_from_model(const char *model, QObject *props,
+> -                                  Error **errp)
+> +                                  const char *props_arg_name, Error **errp)
+>   {
+>       X86CPU *xc = NULL;
+>       X86CPUClass *xcc;
+> @@ -172,7 +173,7 @@ static X86CPU *x86_cpu_from_model(const char *model, QObject *props,
+>   
+>       xc = X86_CPU(object_new_with_class(OBJECT_CLASS(xcc)));
+>       if (props) {
+> -        object_apply_props(OBJECT(xc), props, &err);
+> +        object_apply_props(OBJECT(xc), props, props_arg_name, &err);
+>           if (err) {
+>               goto out;
+>           }
+> @@ -203,7 +204,7 @@ qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>       QDict *props = NULL;
+>       const char *base_name;
+>   
+> -    xc = x86_cpu_from_model(model->name, model->props, &err);
+> +    xc = x86_cpu_from_model(model->name, model->props, "model.props", &err);
+>       if (err) {
+>           goto out;
+>       }
+> diff --git a/target/riscv/riscv-qmp-cmds.c b/target/riscv/riscv-qmp-cmds.c
+> index 69dde0c3e7..ee7465297d 100644
+> --- a/target/riscv/riscv-qmp-cmds.c
+> +++ b/target/riscv/riscv-qmp-cmds.c
+> @@ -129,6 +129,7 @@ static void riscv_obj_add_profiles_qdict(Object *obj, QDict *qdict_out)
+>   }
+>   
+>   static void riscv_cpuobj_validate_qdict_in(Object *obj, QObject *props,
+> +                                           const char *props_arg_name,
+>                                              Error **errp)
+>   {
+>       const QDict *qdict_in;
+> @@ -137,7 +138,7 @@ static void riscv_cpuobj_validate_qdict_in(Object *obj, QObject *props,
+>       Error *local_err = NULL;
+>   
+>       visitor = qobject_input_visitor_new(props);
+> -    if (!visit_start_struct(visitor, "props", NULL, 0, &local_err)) {
+> +    if (!visit_start_struct(visitor, props_arg_name, NULL, 0, &local_err)) {
+>           goto err;
+>       }
+>   
+> @@ -198,7 +199,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>       }
+>   
+>       if (model->props) {
+> -        riscv_cpuobj_validate_qdict_in(obj, model->props, &local_err);
+> +        riscv_cpuobj_validate_qdict_in(obj, model->props, "model.props",
+> +                                       &local_err);
+>           if (local_err) {
+>               error_propagate(errp, local_err);
+>               object_unref(obj);
+> diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+> index ef19724888..8338084d00 100644
+> --- a/target/s390x/cpu_models_sysemu.c
+> +++ b/target/s390x/cpu_models_sysemu.c
+> @@ -98,7 +98,7 @@ CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
+>   }
+>   
+>   static void cpu_model_from_info(S390CPUModel *model, const CpuModelInfo *info,
+> -                                Error **errp)
+> +                                const char *info_arg_name, Error **errp)
+>   {
+>       Error *err = NULL;
+>       const QDict *qdict;
+> @@ -128,8 +128,11 @@ static void cpu_model_from_info(S390CPUModel *model, const CpuModelInfo *info,
+>       }
+>   
+>       if (info->props) {
+> +        g_autofree const char *props_name = g_strdup_printf("%s.props",
+> +                                                            info_arg_name);
+> +
+>           visitor = qobject_input_visitor_new(info->props);
+> -        if (!visit_start_struct(visitor, "props", NULL, 0, errp)) {
+> +        if (!visit_start_struct(visitor, props_name, NULL, 0, errp)) {
+>               visit_free(visitor);
+>               object_unref(obj);
+>               return;
+> @@ -216,7 +219,7 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>       bool delta_changes = false;
+>   
+>       /* convert it to our internal representation */
+> -    cpu_model_from_info(&s390_model, model, &err);
+> +    cpu_model_from_info(&s390_model, model, "model", &err);
+>       if (err) {
+>           error_propagate(errp, err);
+>           return NULL;
+> @@ -254,12 +257,12 @@ CpuModelCompareInfo *qmp_query_cpu_model_comparison(CpuModelInfo *infoa,
+>       S390CPUModel modela, modelb;
+>   
+>       /* convert both models to our internal representation */
+> -    cpu_model_from_info(&modela, infoa, &err);
+> +    cpu_model_from_info(&modela, infoa, "modela", &err);
+>       if (err) {
+>           error_propagate(errp, err);
+>           return NULL;
+>       }
+> -    cpu_model_from_info(&modelb, infob, &err);
+> +    cpu_model_from_info(&modelb, infob, "modelb", &err);
+>       if (err) {
+>           error_propagate(errp, err);
+>           return NULL;
+> @@ -331,13 +334,13 @@ CpuModelBaselineInfo *qmp_query_cpu_model_baseline(CpuModelInfo *infoa,
+>       uint8_t max_gen;
+>   
+>       /* convert both models to our internal representation */
+> -    cpu_model_from_info(&modela, infoa, &err);
+> +    cpu_model_from_info(&modela, infoa, "modela", &err);
+>       if (err) {
+>           error_propagate(errp, err);
+>           return NULL;
+>       }
+>   
+> -    cpu_model_from_info(&modelb, infob, &err);
+> +    cpu_model_from_info(&modelb, infob, "modelb", &err);
+>       if (err) {
+>           error_propagate(errp, err);
+>           return NULL;
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index 1daceb2e31..9d6e6190d5 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -213,7 +213,8 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>       error = resp_get_error(resp);
+>       g_assert(error);
+>       g_assert_cmpstr(error, ==,
+> -                    "Invalid parameter type for 'props', expected: object");
+> +                    "Invalid parameter type for 'model.props',"
+> +                    " expected: object");
+>       qobject_unref(resp);
+>   }
+>   
+> @@ -446,7 +447,7 @@ static void test_query_cpu_model_expansion(const void *data)
+>       assert_bad_props(qts, "max");
+>       assert_error(qts, "foo", "The CPU type 'foo' is not a recognized "
+>                    "ARM CPU type", NULL);
+> -    assert_error(qts, "max", "Parameter 'props.not-a-prop' is unexpected",
+> +    assert_error(qts, "max", "Parameter 'model.props.not-a-prop' is unexpected",
+>                    "{ 'not-a-prop': false }");
+>       assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
+>   

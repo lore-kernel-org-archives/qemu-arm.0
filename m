@@ -1,130 +1,124 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp628873ejb;
-        Wed, 6 Mar 2024 09:03:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWs0Ivcra2K9wZZqaS/6TN6x40Z+I4JR4FZpPZuJr1LO48vPA4eQ9WEPUZabXZz3gJO4+6jNIjf/fhp5xl9Zs65WLEG9jN4
-X-Received: by 2002:a05:600c:5114:b0:412:b95d:ba47 with SMTP id o20-20020a05600c511400b00412b95dba47mr10800597wms.27.1709744591406;
-        Wed, 06 Mar 2024 09:03:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709744591; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp637467ejb;
+        Wed, 6 Mar 2024 09:14:56 -0800 (PST)
+X-Received: by 2002:a17:906:5a9a:b0:a3e:5ffa:d564 with SMTP id l26-20020a1709065a9a00b00a3e5ffad564mr9775913ejq.8.1709745296439;
+        Wed, 06 Mar 2024 09:14:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709745296; cv=none;
         d=google.com; s=arc-20160816;
-        b=kwrGn/weiPpbwvWGqp++LiGnB2NtaRF7b/WIfZDZxFKxC8XFuLHcpJDvdc7kmQYlgQ
-         5zQI/vpdqigC0geXanyLEp8gMlW3RMg4twAitYUOHzlAPi1JdyZzeaeVUfbvd/mri6Qi
-         tFDygreVciVchOo0SzE0KIJ2UMIjK4gpLEOy2txsEV+v77T9o6SnYgJ6nb0Ee4VZyKyH
-         BA8Q7ol0yBo5Rqehr//vBvmT1t409ioyF4t9cN15i5HnADpaic+DqHNd1B8RJF/+CGDe
-         mlU1AoU+Anu3rJP//G3WPKT0E7W5ycdzhGz/FJhcA2PuS6NfTN7GnxPOgeNQS7kZT1Pg
-         ccJg==
+        b=Cb3DEKcq2u4Y1qb7bKxKiNdMHt+hFCdc1vxyEqLHgPJBbB9Ic8cV4RZ4Kl2v7D1mtX
+         XllOfS5mnsbPXxApdYeV1FWjgAuyGGmJvz5xjJy8kgXOg/M7fuaKWVr9yvLWZH8wjGtc
+         wvL4Fz/9SS9fOZ2C65U/+RXFjsA5lkRzs690Qqvu1NosD7UYMD0UwePgsIt6OXtobkCZ
+         wCcT/YTtR7AAWrm1GccViLEXv0Ms7ZdzWhUB/lbW3Qob2ZooiC5lCJeHQpQ1DS2SIVJB
+         smzZbmYKGxxvp/c125LF8Q1tPYWU4zQZWtAlLO5aTJk10JB42GrzGKRVD1kiw6ousZhi
+         iJ4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=r2aSHjVP+Xu8BA7aiHVPv6ilPDdzaBKFNJurg14KCaA=;
-        fh=Wc6u6OIAxvnPlpueCNWXe7/qgZGvXor33ThyjQfcW9Q=;
-        b=LQbULOmu00T9lJ+mqtR6FRXVLMbaIwv+JxJ4UZA6KkNKsaIaFyNMd2F1u7PMqAQ7us
-         2kTbTyvTj7HIwRKlMdNnqiw2iYM7iADFgwHKtanCZr+SF1h2nX18Qxg+r1A+r4a9eV48
-         lfL4YaZKlqiFhi8u4pjhacfGmFH7jY0+vYExrwaAiBoHvmOJ0s14wry+IH/CKXMXXVvY
-         vrZLUNLzCghlU2KHW1lQxgZat0WRNJY0X8XtuwscnM+Zdqe9WdHephnyW6D20ZAbHIAR
-         QgyN37POrWHUkDfW60MojwrxtO2mqzkipt7sISUpzLKrVotLFOeXTdj72TTBRhHMDEg5
-         pz0g==;
+        bh=XjsyNthJQ6LEz6SX9rxTBbqUR1TTwhwhwoVKkXhpUAw=;
+        fh=ZGg3ZHI1pKEGfgIpTaenbd6OQotj3ouK92c0ES8lqaY=;
+        b=ezXSPV60ib/mrHuAti0lUeF9Ey42Y7MWHyZwcyZyADjHzGGaY9WrxgpeTDbRnkAMDL
+         cfYy8Pvuk5ge9756kr50pTphuLdGDZl33NatkeiCK/HrlKfXCWpFV5JtLXbBRmdGfG0m
+         llJqzhqulglxkzy19KE18ubAF2G+KQXCJ4JhZMrxIjv9F0P8Hfsbt9CctfxtUIodS/kY
+         +NF06/MleTCreKgMh0vUjVGowAwaVx+ro5M7JWF53A4F/pGM5iW8+t1TV1segEEcz1TM
+         rtkz5V64CwFrSdZouB+0QwVR2yD6FyBBJq/weCUCK6wetU2fuvYXY24HMaQr39yL0XP0
+         nEEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gUOedqzH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=INTFi60j;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l23-20020a05600c089700b00412dd4c9dfdsor2712566wmp.4.2024.03.06.09.03.11
+        by mx.google.com with SMTPS id l24-20020a170906415800b00a454e1ce8cesor2231677ejk.4.2024.03.06.09.14.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 06 Mar 2024 09:03:11 -0800 (PST)
+        Wed, 06 Mar 2024 09:14:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gUOedqzH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=INTFi60j;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709744591; x=1710349391; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=linaro.org; s=google; t=1709745296; x=1710350096; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=r2aSHjVP+Xu8BA7aiHVPv6ilPDdzaBKFNJurg14KCaA=;
-        b=gUOedqzHrls229kc9LcjzGgfOITZcSCnkz9/rTV0MeNQbgxtx5L+ZuZ3T065ZNn4da
-         xfPAew/Zzbs3v3/uMRhg6DNPIOeh9BcXHCGIHlSJHI1b6XNvNACn8MQ9f8VFTaZ4vFS2
-         VLS6dU09aXnLS9J+SODPhxm7WVPlHoX/JhBevQ+3nlQfRfp7mXG2NHeLNzOg3bSOjEOi
-         3KKCgSqQdnMaczOPjfyME7J5mg8XzIbWVf3Qg2OoM0fbgT/iBdeCbwoOe/JEvP13XqWu
-         mPwfoFHTFP7gIvvhm/cDgmfmv1svUYRqVwWOqpjOUnHFfcKEQC4HwmyRKAw+pdD6ju2A
-         I26w==
+        bh=XjsyNthJQ6LEz6SX9rxTBbqUR1TTwhwhwoVKkXhpUAw=;
+        b=INTFi60j0Xdk21tN4lDceN1t7MQWqwbaQWkubx1TdIKtRDcDmLVwZvZ2qx/0RBnqIQ
+         WkGR3HaIMRfSD7ZEYSQxnjCbairjYqVXAOee81qpz/0JjHuUd7H4l2BMA7LnbpFbkKDY
+         b8XWsMPCPf3wKnek2zh2DyCQ0Sa0Y4WMkcjojmKzjmzScotHPGg5wH/CThhFEzbEOHws
+         M/BNr+D8xYaYWD+HS+QpPjhwd3Ko2gsx+2dZLBPemTDEP0kyrdfUEP11BV8IZchbmWa7
+         51IsQZeDDDItg8z2U+gVDgPHEKBetpIbtUJuZPkPyQnvS9bG4HXxX/mOvB8s3uMf4lhn
+         jMUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709744591; x=1710349391;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=1e100.net; s=20230601; t=1709745296; x=1710350096;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=r2aSHjVP+Xu8BA7aiHVPv6ilPDdzaBKFNJurg14KCaA=;
-        b=DRZWqYRFvxA02A6dhDEEZL2nCHpckNhdjAB2Q0lJvdZIavu2k6meWFc+5mG4NCapCT
-         UHyhaU5+wnKF71lwWmV6nohPE9Y+ajd3NCy3ik5VDFcjndP/7Use4b1O1xLqo8BSX/NE
-         TCqXj8mm45nQZ8jYRawJEDvtS1BE4XpyltMc9j3G8ONcuPif5sUkW70aBI96SlJ3o363
-         EmlQVMK3g2Xh580eCwuSP46MHmfMvj4k416bk3LsvNgX7bs56A+p32EZiGXo6FBIrgpd
-         OLZeJqCsDGB2IwLj89uCTAMw73q064n56n1HT4y96Qj35losUIZveuChdiCGnoOMv+mW
-         NcTw==
-X-Forwarded-Encrypted: i=1; AJvYcCUrC2dI0yiEc0VTVwUZkKL0b202bSxS3d7TIv/7g7gfY7tmOZgdsr0ePUSU30hT5FN7IqEx7iHjHvnakadR4a+9Ey7OrWUM
-X-Gm-Message-State: AOJu0YymKA3ThJuNFfzWQdwDRHzZCgjEGOgNCdj3snv5K8wjzP8EMp7c
-	MfyY+pJmcSMxTeq6MtUtNTZNF1PFNl35I01/598hQNgvzcbw6JxeA/JuDRumBgNZRg==
-X-Google-Smtp-Source: AGHT+IEsDTdAWujgDph7eInjSucsXEx2XwJLDZSG22OQUW1INRiZK92/ydMK1V2qWC2wu4aeYu1cUg==
-X-Received: by 2002:a05:600c:1d9e:b0:412:ef25:aaa5 with SMTP id p30-20020a05600c1d9e00b00412ef25aaa5mr3453077wms.36.1709744590971;
-        Wed, 06 Mar 2024 09:03:10 -0800 (PST)
+        bh=XjsyNthJQ6LEz6SX9rxTBbqUR1TTwhwhwoVKkXhpUAw=;
+        b=vqwr1dQWo7hKw/58uVIghw7paCB6MR+/J1r08iIgbYq9eWWmfVXTFKKYMIJl9BQSa9
+         BTXJvKoqIfj8Mneb0hc5TDTiZzvjv1RJcj6efXstGdgGlgQrUkTfOAOrSuVJ/WVCrp8w
+         ufKU5aykoDoyKPT67/RzxaEwlXgXem+17/Z1evzMZW9OuS12tsA3qDKNj6DhV6ubbXT5
+         LQaZtsDLdvwiqs2qGb26oVjI0z+t0CZnFV/mgqgIBlLPRo6qQGPndUvHmLFO/f2hPa6q
+         tbLqn00lQawfGFKWzKOGV6sDHZ/1YXglxcf0YRi8TqDvnqilh1Nk00RM2+d32hDd3NAY
+         lp/g==
+X-Gm-Message-State: AOJu0YypUuiS4Eg8I0ovJmC0zmrRqG8FV3sZ3qSsaRV9MODkhQBsPgEP
+	Sw8MsO9Uf+dJ4clK13IxdEXyaCPmJDYGnqrRmaJM4jqaOfce1ePWlVVu8562uahsPA==
+X-Google-Smtp-Source: AGHT+IEzDMCAv1jmeGC0ooiGaix7vjr0dWNnW+e2K3+cHwRyHziRS4ipyA3ZMUpeB9SviZ5lAMKGMA==
+X-Received: by 2002:a17:906:b154:b0:a45:da1:9375 with SMTP id bt20-20020a170906b15400b00a450da19375mr7102659ejb.30.1709745295992;
+        Wed, 06 Mar 2024 09:14:55 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (vau06-h02-176-184-43-100.dsl.sta.abo.bbox.fr. [176.184.43.100])
-        by smtp.gmail.com with ESMTPSA id u21-20020a7bc055000000b004129a1097e7sm24003609wmc.12.2024.03.06.09.03.09
+        by smtp.gmail.com with ESMTPSA id m26-20020a17090607da00b00a441ff174a3sm7372337ejc.90.2024.03.06.09.14.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Mar 2024 09:03:10 -0800 (PST)
-Message-ID: <fdb970ba-0b15-4a59-a5ed-f9df1430ddd8@linaro.org>
-Date: Wed, 6 Mar 2024 18:03:08 +0100
+        Wed, 06 Mar 2024 09:14:55 -0800 (PST)
+Message-ID: <68c4a4ad-cc49-4917-b1d6-d0f28b611c05@linaro.org>
+Date: Wed, 6 Mar 2024 18:14:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH-for-9.0 0/9] hw/xen: Have ARM targets use common
- xen_memory_listener
+Subject: Re: [PATCH-for-9.0 v2 10/19] hw/xen: Rename 'ram_memory' global
+ variable as 'xen_memory'
 Content-Language: en-US
+To: David Woodhouse <dwmw2@infradead.org>, David Woodhouse
+ <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
+ Anthony Perard <anthony.perard@citrix.com>, kvm@vger.kernel.org,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20231114143816.71079-1-philmd@linaro.org>
+ <20231114143816.71079-11-philmd@linaro.org>
+ <84F1C2D8-4963-4815-8079-B44081234D41@infradead.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org
-References: <20231114163123.74888-1-philmd@linaro.org>
- <0064f684-793e-4954-90cf-d39c21385a43@linaro.org>
-In-Reply-To: <0064f684-793e-4954-90cf-d39c21385a43@linaro.org>
+In-Reply-To: <84F1C2D8-4963-4815-8079-B44081234D41@infradead.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: kJMbkjL0N4Lb
+X-TUID: cBRMAni8P2eh
 
-ping ^ 2
+On 14/11/23 16:49, David Woodhouse wrote:
+> On 14 November 2023 09:38:06 GMT-05:00, "Philippe Mathieu-Daudé" <philmd@linaro.org> wrote:
+>> To avoid a potential global variable shadow in
+>> hw/i386/pc_piix.c::pc_init1(), rename Xen's
+>> "ram_memory" as "xen_memory".
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
+> Well OK, but aren't you going to be coming back later to eliminate global variables which are actually per-VM?
+> 
+> Or is that the point, because *then* the conflicting name will actually matter?
 
-On 13/12/23 18:00, Philippe Mathieu-Daudé wrote:
-> ping?
+Eh I wasn't thinking about running 2 Xen VMs in the same QEMU process,
+but this is a good test case. I was thinking of running a Xen guest VM
+and another TCG VM in the same process.
+
+So IIUC xen_memory should be part of PCMachineState.
+
 > 
-> On 14/11/23 17:31, Philippe Mathieu-Daudé wrote:
->> Hi,
->>
->> While looking at Xen target-specific code, I noticed some
->> generic code used by x86 which is not implemented for ARM.
->>
->> Maybe ARM machines don't need it, I don't know. But I
->> wanted to see if I can get this common code target agnostic
->> and build it once, possibly bringing smth useful to ARM.
->>
->> The changes don't break CI testing and Avocado local tests.
->> If this xen_memory_listener feature isn't required for ARM,
->> I'll send follow up patch that keep this series with common
->> xen_memory_listener but with a runtime flag to disable.
->>
->> Patches do the usual "change target-specific API to a
->> target-agnostic one", in particular using "exec/target_page.h"
->> at runtime. Then non-x86 code is extracted, then merged to
->> the generic xen/xen-hvm-common.c.
->>
->> Thoughts?
->>
->> Regards,
->>
->> Phil.
->>
->> Based-on: <20231114143816.71079-1-philmd@linaro.org>
-> 
+> Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
+
+Thanks!

@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp399129ejb;
-        Wed, 6 Mar 2024 02:01:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV9pgoXOZv/MjsSzRGnbb9GNQDqu6NuaSP02V5/RZKsty5QCI8tHkkUeG3F9jyqFQrLZMy/JqnMRTj/pPKqwWe9vc1tj8sD
-X-Google-Smtp-Source: AGHT+IGq90obMyF9+R1TwPxKD+O81bFS7P6P8WmIKGvbhuyzvxPKgpq1BOCrtZn0EjlEhh3bCk0N
-X-Received: by 2002:ac8:5c10:0:b0:42e:f860:d4e6 with SMTP id i16-20020ac85c10000000b0042ef860d4e6mr4430406qti.34.1709719300952;
-        Wed, 06 Mar 2024 02:01:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709719300; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp401000ejb;
+        Wed, 6 Mar 2024 02:05:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUB7FDMT/6qopaNxs9CQXUiQLd5WwwBXW8b0a0fPKCNrEpoVnk5snl+BLyI/hIvo76yIB/LdVd5jcilXdSnVRrKizcnKgZW
+X-Google-Smtp-Source: AGHT+IEqhxeCFhBGo9vfcv5kmvAfzsKpNIBrrvWNzQTvC5+9opsglxJY7lhQGkt6IhrSSOOqRBah
+X-Received: by 2002:ac8:5713:0:b0:42e:f48d:f826 with SMTP id 19-20020ac85713000000b0042ef48df826mr6739653qtw.16.1709719515110;
+        Wed, 06 Mar 2024 02:05:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709719515; cv=none;
         d=google.com; s=arc-20160816;
-        b=J1xJpmF6X9IhJPEG2X7mfisE3fS0meA96O4G4vOfWsFq6pQypH6uk/uoRK7zTdjpU9
-         sIMC8LNWJh3erqjBIT3e4I82uTXT6GN6BC0D0cYaPmrZsUKsm8sZQpB8DOSfPcUF7A4P
-         PJkDqILhhn8XmgzhH9HUl04lwT3WvWMeiROYgsuLJIclUup1mLsMWHaG9+fdLRUPGb24
-         Y1mUQrv32NrjNRzrZFMF0sArxcs0SbCS/bZEM9BHyP5G9MktLAcCHiI70PgGoAGTVDQY
-         8C2b0PFplVm8sgH3on1SFCzVPJlqeWOtFCRlikWNTunTm0aFDuMZ3HlfUqTrNZOy485E
-         g8qQ==
+        b=ytSDpT6+DsbL2tjXkd3/KyXp57VF+slGz55/DDW+aIxlL+aZkTkk2zqBYZW39eO6iB
+         IxnBqyt/4Hsmvuj3AFDd1lZF3Ib8TYiS2vNCFKOX4FymLNf0nC2ItKpB0nzWH5ZbtLI2
+         ckZ8CoyU68MJ/9a2bd08LaLMRwWvlO4z4p+m5rTvhd+9cQ8QAwQR9e0Bii+ELqosvFbc
+         QwEDNSGAg0EYj1HptoLCd+5urrtop4nF5NeCgGJDwIRxUGRhrHoAZEgQ2cbGrA0DHu/v
+         N/T9bQepmk6MZ/McTrj2+ibQ8NJdpZFv7rKGigHl0R0YY/jgffGBqLkLDor02kRSGzZE
+         fTuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=oTp8e0WZUBvMyqT1cOn79edMLQPrjwMomvyCPj6o8mk=;
-        fh=EZirZUOPNdD7X3oQuHa2j3IkfNpjNeetQBcFtk6MinY=;
-        b=b1yxA21ncpWjc9tnygu0QbMhFAReSPSU4QiI13c3JnpeMvbdzpEDqMIrrgKYsW1Htr
-         NTZNAwxqEnlz5gzIw1NAiqqPt5kYBDkVDzVE7pUxydns1RAHYvLyIyTFtUX50VDRW5v8
-         mfguIAmvF3jV0u0lIPUeUXx9eF+yJozUydp8BW021dJARg45Dn80bU/OYpu8zTHwgEzC
-         c1OtwTZHRBxKbCZUMWuVw+hW6PU0/V5TcQ/O8ZnLEvp9/cGcCtawwpBDshEf5kBdfBEV
-         ODucyeI/4LThtWWQeo/K9biOFI3NOscaGRfCI2x1p+BFihSsXSuvI/+k9Rc9mhFef8gH
-         3vaA==;
+        bh=TDAe6MMLouvotkiUXiscDNkVQyr3KD4WoWNUFy7Zi2Q=;
+        fh=5zSZ5S+FovR5fPf3D6P1/hbO/VkRqW5iUDn2fuU7NM4=;
+        b=SBf7O8eBtUc6HZd5dYmpB8MVatZfGnCEZxlpSCItKwUOgmtm+sSbYNX9LICiSyHZBZ
+         HNJ5iRJvMuUFb+PlQPIYITg4SbwDk6oK2k/0bThVDSnHen3pCLiyszuElJs55DVnnuds
+         +HfEom6A4fk+2o3SaBLQJmdhm5AHErLFqvNt7YaLLnMTKQRfBcvTb3KJlIldUDLrFuf3
+         BiHMlPYVB+7MZokQYY0RfHKcZ0fbGUzQLiNbiBW+d1A5S+VWyjTvFZ2K5UsYo6EcUdpR
+         9YPRXFEdWunxGcnDo/9UktJtTtn15EdWkOJkKDwEn/csU6H1AjasIEr0MN7im7YTVjcq
+         FKQQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ILeTWl3Y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F5b7IO3U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7-20020ae9e407000000b007882d5d8c29si5453608qkc.221.2024.03.06.02.01.40
+        by mx.google.com with ESMTPS id s14-20020ac85cce000000b0042eef14a2f9si7394986qta.191.2024.03.06.02.05.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 02:01:40 -0800 (PST)
+        Wed, 06 Mar 2024 02:05:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ILeTWl3Y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F5b7IO3U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rho5Z-0005Lr-6h; Wed, 06 Mar 2024 05:01:29 -0500
+	id 1rho8g-0007N7-Dd; Wed, 06 Mar 2024 05:04:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rho5W-0005Kz-EW
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 05:01:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1rho8e-0007MY-4n
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 05:04:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rho5F-0004rY-UV
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 05:01:25 -0500
+ id 1rho8Z-0005Hx-Hr
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 05:04:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709719268;
+ s=mimecast20190719; t=1709719474;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oTp8e0WZUBvMyqT1cOn79edMLQPrjwMomvyCPj6o8mk=;
- b=ILeTWl3Y/TZ96j5tj3mn9OzLoVvGdWXE4tN0R8r+TmJ3qhp2o3iGZKpIRUeI93f9/R3VOr
- Wb1a74bOOqB74Etz7XV8KL3q/UNZgBw5jOIDhvOUJAOJa3f0wedCBNo0JPog/7TY2djwIv
- A01qQ1Di9zaFs0GPUd1lzy3+lphNJ40=
-Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
- [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=TDAe6MMLouvotkiUXiscDNkVQyr3KD4WoWNUFy7Zi2Q=;
+ b=F5b7IO3UTT9inDm0GWgJxU6i9L8ofwUGjvtuqTfODo6MT6HzNOar1sWQV5iqbVHzs1x+FV
+ Lj7hBSdeCQl6SShb4QlO596FQs5ZorKHT5G1eYxiCZqYDSES/PmfrqCLPnswMJSmNIh/vy
+ xLqTuEI2SCkdb9i4HzPE0xB5g2EwOiQ=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-304-cY8Sp0eGM_OPBQ-nMBzlog-1; Wed, 06 Mar 2024 05:01:06 -0500
-X-MC-Unique: cY8Sp0eGM_OPBQ-nMBzlog-1
-Received: by mail-oi1-f197.google.com with SMTP id
- 5614622812f47-3c1a2f7e321so829255b6e.0
- for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 02:01:06 -0800 (PST)
+ us-mta-19-J_HByJZ9NVys09jNC1NDUw-1; Wed, 06 Mar 2024 05:04:33 -0500
+X-MC-Unique: J_HByJZ9NVys09jNC1NDUw-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-42ee4e3eda9so11459811cf.0
+ for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 02:04:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709719266; x=1710324066;
+ d=1e100.net; s=20230601; t=1709719468; x=1710324268;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oTp8e0WZUBvMyqT1cOn79edMLQPrjwMomvyCPj6o8mk=;
- b=VCw3XUqcIabM+a8gEnBiuz94brwws828/qrIaaE6msrmsXA/K3x5HwxfKlQ/41T+LK
- 2Iv/uxo5u1LZhmiDXS9jlrdx13TZSO7DfDZIE7Ix6tq8P3XSwqkLvUugkaBPd5fy5m1M
- 6lshXS4HP0G110gnlVXS76TAz8JsPfq3Gbk+HeDK/5zyyIZkIefdGcKIh9d5qygl8pfU
- 15Lovgepk6ee/KnPxrw5Vyl4GAIdrCOBLlT7G5eKeiHRvnsyxm38g3P45e5WP0tv83El
- AlUTLiQ+Q0Gr/gbAjU+fZpw1R7WRiWHkxOj6+BViMgge+Fs3bjqxJji3fr9VOgYBDNQT
- vBxg==
+ bh=TDAe6MMLouvotkiUXiscDNkVQyr3KD4WoWNUFy7Zi2Q=;
+ b=GlRay4bsp46/+LiRUMMzHcGveQ2GV8q40+zRppzsBuJ6Er6PJRrbkObvg2niRENQAU
+ FNhG4AklOyhxA4Gx6SgEx4qBqKm51L3lHEwUQUG1SZ1jjjzbZ3A4rvx+vGGWvr4paIY6
+ o4fxReqrTipEKrDXhloDeeGV4y1Qg5UYQ0aCIpR35j43+EohDkQ/mQc7fxQU0N+b5wAp
+ 6R8f9/YSbFVzNf78h0bgDph4cqIx/6XikdIRiOr15MT6XFl0xH3GfN2NS9u6xjIh1PUM
+ r+zM+ksf3Cq219JVVFMmsTPaF4sfAct3nH1ukGpN1fyBLtm6sQUJK2JYIPZa28kg0Ab/
+ E1Rw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV/dyQyYRyg7RauyfvMqUjpUHV1E45pZLqQdpfAXIHBvt+25qp38H0/x6tSzg0Goss652v735GQKh8HyK8dZTLC9JUa
-X-Gm-Message-State: AOJu0YzhcN84xPriItZC/IgUaY+A3BLSL7QOHHtLp8jiHPE3cI9o/9Uu
- mOnbZ2Zjd8HF56Mlryp8bFnvc0z7NqxO7K3Obx8359Kbm77ib4Tc67YRTfqwQPfqzpEA92lqQV9
- zYNhriGiLzeEx7LMCLLZ5PhvPj9CdJ3HLDv6v+CavJ+zFafxklQ==
-X-Received: by 2002:a05:6358:80a0:b0:17b:520f:8249 with SMTP id
- a32-20020a05635880a000b0017b520f8249mr4794686rwk.31.1709719266326; 
- Wed, 06 Mar 2024 02:01:06 -0800 (PST)
-X-Received: by 2002:a05:6358:80a0:b0:17b:520f:8249 with SMTP id
- a32-20020a05635880a000b0017b520f8249mr4794660rwk.31.1709719266078; 
- Wed, 06 Mar 2024 02:01:06 -0800 (PST)
+ AJvYcCUjau35ZutAayahnh5nfQIcfuYQrIZWAgxDD4/V4K8E9SEA0CtZfttQjvGmbc96HyoUK6CvrYCiw5FD7Qo/t3V7DJrR
+X-Gm-Message-State: AOJu0Yxw/GRDUCEozJLMzku13solaMftFZqPz5Exy9QEUpRU/qhbhxKZ
+ tTGn/8O1kgUAKVKfZZ5NTa+wERj5Rny6k9r85U0zoVbrd2ucaHTY82zjrhzfCPOVJ3Y/4aeXqK2
+ bX8U22Dp2GjvYVPVHPqvrvXK/C0/YsyxO62d2Tu63oigu1uIWrw==
+X-Received: by 2002:ac8:7c4b:0:b0:42e:f660:8001 with SMTP id
+ o11-20020ac87c4b000000b0042ef6608001mr7118843qtv.11.1709719467890; 
+ Wed, 06 Mar 2024 02:04:27 -0800 (PST)
+X-Received: by 2002:ac8:7c4b:0:b0:42e:f660:8001 with SMTP id
+ o11-20020ac87c4b000000b0042ef6608001mr7118804qtv.11.1709719467523; 
+ Wed, 06 Mar 2024 02:04:27 -0800 (PST)
 Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
  by smtp.gmail.com with ESMTPSA id
- qp30-20020a05620a389e00b0078820f053b0sm3850364qkn.109.2024.03.06.02.01.02
+ s18-20020ae9f712000000b007882b33f6d5sm2733374qkg.114.2024.03.06.02.04.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 Mar 2024 02:01:05 -0800 (PST)
-Date: Wed, 6 Mar 2024 11:01:00 +0100
+ Wed, 06 Mar 2024 02:04:27 -0800 (PST)
+Date: Wed, 6 Mar 2024 11:04:23 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Ani Sinha <anisinha@redhat.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell
@@ -109,30 +109,32 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell
  S. Tsirkin" <mst@redhat.com>, Song Gao <gaosong@loongson.cn>, Alistair
  Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
  bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, philmd@linaro.org, wangyanan55@huawei.com,
- eblake@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, f.ebner@proxmox.com
-Subject: Re: [PATCH v2 20/20] tests: acpi: update expected SSDT.dimmpxm blob
-Message-ID: <20240306110100.6b1c445d@imammedo.users.ipa.redhat.com>
-In-Reply-To: <9E373F64-2290-4AF7-A23D-340FB6CE86F8@redhat.com>
+ zhiwei_liu@linux.alibaba.com, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philmd@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Subject: Re: [PATCH v2 11/20] smbios: build legacy mode code only for 'pc'
+ machine
+Message-ID: <20240306110423.4eb54341@imammedo.users.ipa.redhat.com>
+In-Reply-To: <DE550091-7675-40D6-9651-97E090DF767B@redhat.com>
 References: <20240305155724.2047069-1-imammedo@redhat.com>
- <20240305155724.2047069-21-imammedo@redhat.com>
- <9E373F64-2290-4AF7-A23D-340FB6CE86F8@redhat.com>
+ <20240305155724.2047069-12-imammedo@redhat.com>
+ <DE550091-7675-40D6-9651-97E090DF767B@redhat.com>
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,53 +149,521 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IlnM1a9Yacit
+X-TUID: pUGtiNK5KFa0
 
-On Wed, 6 Mar 2024 14:50:20 +0530
+On Wed, 6 Mar 2024 12:57:47 +0530
 Ani Sinha <anisinha@redhat.com> wrote:
 
 > > On 05-Mar-2024, at 21:27, Igor Mammedov <imammedo@redhat.com> wrote:
 > > 
-> > address shift is caused by switch to 32-bit SMBIOS entry point
-> > which has slightly different size from 64-bit one and happens
-> > to trigger a bit different memory layout.  
-> 
-> Why does it affect only q35 machines and not i440fx as well?
-
-that what tests show, mem layout is a bit different between those 
-
-> 
+> > basically moving code around without functional change.
+> > And exposing some symbols so that they could be shared
+> > between smbbios.c and new smbios_legacy.c
 > > 
-> > Expected diff:
-> > 
-> > -    Name (MEMA, 0x07FFE000)
-> > +    Name (MEMA, 0x07FFF000)
+> > plus some meson magic to build smbios_legacy.c only
+> > for 'pc' machine and otherwise replace it with stub
+> > if not selected.  
+> 
+> When I apply this, I get:
+> 
+> Applying: smbios: build legacy mode code only for 'pc' machine
+> .git/rebase-apply/patch:483: new blank line at EOF.
+> +
+> warning: 1 line adds whitespace errors.
+
+it looks like checkpatch missed that, v3 is on the way as a reply to this
+
+> 
+> Can you please look into this? Modulo that,
+> 
 > > 
 > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>  
 > 
-> Acked-by: Ani Sinha <anisinha@redhat.com>
+> Reviewed-by: Ani Sinha <anisinha@redhat.com>
 > 
 > > ---
-> > tests/qtest/bios-tables-test-allowed-diff.h |   1 -
-> > tests/data/acpi/q35/SSDT.dimmpxm            | Bin 1815 -> 1815 bytes
-> > 2 files changed, 1 deletion(-)
+> > v2:
+> >  moved type0/type1/have_binfile_bitmap/have_fields_bitmap rename into
+> >  a separate patch
+> > ---
+> > include/hw/firmware/smbios.h   |   5 +
+> > hw/i386/Kconfig                |   1 +
+> > hw/smbios/Kconfig              |   2 +
+> > hw/smbios/meson.build          |   4 +
+> > hw/smbios/smbios.c             | 164 +-----------------------------
+> > hw/smbios/smbios_legacy.c      | 179 +++++++++++++++++++++++++++++++++
+> > hw/smbios/smbios_legacy_stub.c |  16 +++
+> > 7 files changed, 208 insertions(+), 163 deletions(-)
+> > create mode 100644 hw/smbios/smbios_legacy.c
+> > create mode 100644 hw/smbios/smbios_legacy_stub.c
 > > 
-> > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> > index 81148a604f..dfb8523c8b 100644
-> > --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> > @@ -1,2 +1 @@
-> > /* List of comma-separated changed AML files to ignore */
-> > -"tests/data/acpi/q35/SSDT.dimmpxm",
-> > diff --git a/tests/data/acpi/q35/SSDT.dimmpxm b/tests/data/acpi/q35/SSDT.dimmpxm
-> > index 70f133412f5e0aa128ab210245a8de7304eeb843..9ea4e0d0ceaa8a5cbd706afb6d49de853fafe654 100644
-> > GIT binary patch
-> > delta 23
-> > ecmbQvH=U0wIM^jboSlJzam_|9E_UV*|JeaVTLvQl
+> > diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+> > index bea5c3f1b1..7f47475aa4 100644
+> > --- a/include/hw/firmware/smbios.h
+> > +++ b/include/hw/firmware/smbios.h
+> > @@ -17,6 +17,9 @@
+> >  *
+> >  */
 > > 
-> > delta 23
-> > ecmbQvH=U0wIM^jboSlJzanD9BE_UVz|JeaVy9Ofw
+> > +extern uint8_t *usr_blobs;
+> > +extern GArray *usr_blobs_sizes;
+> > +
+> > typedef struct {
+> >     const char *vendor, *version, *date;
+> >     bool have_major_minor, uefi;
+> > @@ -306,6 +309,8 @@ struct smbios_type_127 {
+> >     struct smbios_structure_header header;
+> > } QEMU_PACKED;
 > > 
+> > +void smbios_validate_table(void);
+> > +void smbios_add_usr_blob_size(size_t size);
+> > void smbios_entry_add(QemuOpts *opts, Error **errp);
+> > void smbios_set_cpuid(uint32_t version, uint32_t features);
+> > void smbios_set_defaults(const char *manufacturer, const char *product,
+> > diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+> > index a1846be6f7..a6ee052f9a 100644
+> > --- a/hw/i386/Kconfig
+> > +++ b/hw/i386/Kconfig
+> > @@ -76,6 +76,7 @@ config I440FX
+> >     select PIIX
+> >     select DIMM
+> >     select SMBIOS
+> > +    select SMBIOS_LEGACY
+> >     select FW_CFG_DMA
+> > 
+> > config ISAPC
+> > diff --git a/hw/smbios/Kconfig b/hw/smbios/Kconfig
+> > index 553adf4bfc..8d989a2f1b 100644
+> > --- a/hw/smbios/Kconfig
+> > +++ b/hw/smbios/Kconfig
+> > @@ -1,2 +1,4 @@
+> > config SMBIOS
+> >     bool
+> > +config SMBIOS_LEGACY
+> > +    bool
+> > diff --git a/hw/smbios/meson.build b/hw/smbios/meson.build
+> > index 7046967462..a59039f669 100644
+> > --- a/hw/smbios/meson.build
+> > +++ b/hw/smbios/meson.build
+> > @@ -4,5 +4,9 @@ smbios_ss.add(when: 'CONFIG_IPMI',
+> >               if_true: files('smbios_type_38.c'),
+> >               if_false: files('smbios_type_38-stub.c'))
+> > 
+> > +smbios_ss.add(when: 'CONFIG_SMBIOS_LEGACY',
+> > +              if_true: files('smbios_legacy.c'),
+> > +              if_false: files('smbios_legacy_stub.c'))
+> > +
+> > system_ss.add_all(when: 'CONFIG_SMBIOS', if_true: smbios_ss)
+> > system_ss.add(when: 'CONFIG_SMBIOS', if_false: files('smbios-stub.c'))
+> > diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> > index 86cf66b5ce..fb1f05fcde 100644
+> > --- a/hw/smbios/smbios.c
+> > +++ b/hw/smbios/smbios.c
+> > @@ -31,38 +31,12 @@
+> > #include "hw/pci/pci_device.h"
+> > #include "smbios_build.h"
+> > 
+> > -/* legacy structures and constants for <= 2.0 machines */
+> > -struct smbios_header {
+> > -    uint16_t length;
+> > -    uint8_t type;
+> > -} QEMU_PACKED;
+> > -
+> > -struct smbios_field {
+> > -    struct smbios_header header;
+> > -    uint8_t type;
+> > -    uint16_t offset;
+> > -    uint8_t data[];
+> > -} QEMU_PACKED;
+> > -
+> > -struct smbios_table {
+> > -    struct smbios_header header;
+> > -    uint8_t data[];
+> > -} QEMU_PACKED;
+> > -
+> > -#define SMBIOS_FIELD_ENTRY 0
+> > -#define SMBIOS_TABLE_ENTRY 1
+> > -
+> > -static uint8_t *smbios_entries;
+> > -static size_t smbios_entries_len;
+> > static bool smbios_uuid_encoded = true;
+> > -/* end: legacy structures & constants for <= 2.0 machines */
+> > -
+> > /*
+> >  * SMBIOS tables provided by user with '-smbios file=<foo>' option
+> >  */
+> > uint8_t *usr_blobs;
+> > size_t usr_blobs_len;
+> > -static GArray *usr_blobs_sizes;
+> > static unsigned usr_table_max;
+> > static unsigned usr_table_cnt;
+> > 
+> > @@ -483,7 +457,7 @@ static void smbios_check_type4_count(uint32_t expected_t4_count)
+> >     }
+> > }
+> > 
+> > -static void smbios_validate_table(void)
+> > +void smbios_validate_table(void)
+> > {
+> >     if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_32 &&
+> >         smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
+> > @@ -493,134 +467,6 @@ static void smbios_validate_table(void)
+> >     }
+> > }
+> > 
+> > -
+> > -/* legacy setup functions for <= 2.0 machines */
+> > -static void smbios_add_field(int type, int offset, const void *data, size_t len)
+> > -{
+> > -    struct smbios_field *field;
+> > -
+> > -    if (!smbios_entries) {
+> > -        smbios_entries_len = sizeof(uint16_t);
+> > -        smbios_entries = g_malloc0(smbios_entries_len);
+> > -    }
+> > -    smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> > -                                                  sizeof(*field) + len);
+> > -    field = (struct smbios_field *)(smbios_entries + smbios_entries_len);
+> > -    field->header.type = SMBIOS_FIELD_ENTRY;
+> > -    field->header.length = cpu_to_le16(sizeof(*field) + len);
+> > -
+> > -    field->type = type;
+> > -    field->offset = cpu_to_le16(offset);
+> > -    memcpy(field->data, data, len);
+> > -
+> > -    smbios_entries_len += sizeof(*field) + len;
+> > -    (*(uint16_t *)smbios_entries) =
+> > -            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> > -}
+> > -
+> > -static void smbios_maybe_add_str(int type, int offset, const char *data)
+> > -{
+> > -    if (data) {
+> > -        smbios_add_field(type, offset, data, strlen(data) + 1);
+> > -    }
+> > -}
+> > -
+> > -static void smbios_build_type_0_fields(void)
+> > -{
+> > -    smbios_maybe_add_str(0, offsetof(struct smbios_type_0, vendor_str),
+> > -                         smbios_type0.vendor);
+> > -    smbios_maybe_add_str(0, offsetof(struct smbios_type_0, bios_version_str),
+> > -                         smbios_type0.version);
+> > -    smbios_maybe_add_str(0, offsetof(struct smbios_type_0,
+> > -                                     bios_release_date_str),
+> > -                         smbios_type0.date);
+> > -    if (smbios_type0.have_major_minor) {
+> > -        smbios_add_field(0, offsetof(struct smbios_type_0,
+> > -                                     system_bios_major_release),
+> > -                         &smbios_type0.major, 1);
+> > -        smbios_add_field(0, offsetof(struct smbios_type_0,
+> > -                                     system_bios_minor_release),
+> > -                         &smbios_type0.minor, 1);
+> > -    }
+> > -}
+> > -
+> > -static void smbios_build_type_1_fields(void)
+> > -{
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, manufacturer_str),
+> > -                         smbios_type1.manufacturer);
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, product_name_str),
+> > -                         smbios_type1.product);
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, version_str),
+> > -                         smbios_type1.version);
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, serial_number_str),
+> > -                         smbios_type1.serial);
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, sku_number_str),
+> > -                         smbios_type1.sku);
+> > -    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, family_str),
+> > -                         smbios_type1.family);
+> > -    if (qemu_uuid_set) {
+> > -        /* We don't encode the UUID in the "wire format" here because this
+> > -         * function is for legacy mode and needs to keep the guest ABI, and
+> > -         * because we don't know what's the SMBIOS version advertised by the
+> > -         * BIOS.
+> > -         */
+> > -        smbios_add_field(1, offsetof(struct smbios_type_1, uuid),
+> > -                         &qemu_uuid, 16);
+> > -    }
+> > -}
+> > -
+> > -uint8_t *smbios_get_table_legacy(size_t *length)
+> > -{
+> > -    int i;
+> > -    size_t usr_offset;
+> > -
+> > -    /* also complain if fields were given for types > 1 */
+> > -    if (find_next_bit(smbios_have_fields_bitmap,
+> > -                      SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
+> > -        error_report("can't process fields for smbios "
+> > -                     "types > 1 on machine versions < 2.1!");
+> > -        exit(1);
+> > -    }
+> > -
+> > -    if (test_bit(4, smbios_have_binfile_bitmap)) {
+> > -        error_report("can't process table for smbios "
+> > -                     "type 4 on machine versions < 2.1!");
+> > -        exit(1);
+> > -    }
+> > -
+> > -    g_free(smbios_entries);
+> > -    smbios_entries_len = sizeof(uint16_t);
+> > -    smbios_entries = g_malloc0(smbios_entries_len);
+> > -
+> > -    for (i = 0, usr_offset = 0; usr_blobs_sizes && i < usr_blobs_sizes->len;
+> > -         i++)
+> > -    {
+> > -        struct smbios_table *table;
+> > -        struct smbios_structure_header *header;
+> > -        size_t size = g_array_index(usr_blobs_sizes, size_t, i);
+> > -
+> > -        header = (struct smbios_structure_header *)(usr_blobs + usr_offset);
+> > -        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> > -                                                   size + sizeof(*table));
+> > -        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> > -        table->header.type = SMBIOS_TABLE_ENTRY;
+> > -        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> > -        memcpy(table->data, header, size);
+> > -        smbios_entries_len += sizeof(*table) + size;
+> > -        (*(uint16_t *)smbios_entries) =
+> > -            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> > -        usr_offset += size;
+> > -    }
+> > -
+> > -    smbios_build_type_0_fields();
+> > -    smbios_build_type_1_fields();
+> > -    smbios_validate_table();
+> > -    *length = smbios_entries_len;
+> > -    return smbios_entries;
+> > -}
+> > -/* end: legacy setup functions for <= 2.0 machines */
+> > -
+> > -
+> > bool smbios_skip_table(uint8_t type, bool required_table)
+> > {
+> >     if (test_bit(type, smbios_have_binfile_bitmap)) {
+> > @@ -1279,14 +1125,6 @@ static bool save_opt_list(size_t *ndest, char ***dest, QemuOpts *opts,
+> >     return true;
+> > }
+> > 
+> > -static void smbios_add_usr_blob_size(size_t size)
+> > -{
+> > -    if (!usr_blobs_sizes) {
+> > -        usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
+> > -    }
+> > -    g_array_append_val(usr_blobs_sizes, size);
+> > -}
+> > -
+> > void smbios_entry_add(QemuOpts *opts, Error **errp)
+> > {
+> >     const char *val;
+> > diff --git a/hw/smbios/smbios_legacy.c b/hw/smbios/smbios_legacy.c
+> > new file mode 100644
+> > index 0000000000..21f143e738
+> > --- /dev/null
+> > +++ b/hw/smbios/smbios_legacy.c
+> > @@ -0,0 +1,179 @@
+> > +/*
+> > + * SMBIOS legacy support
+> > + *
+> > + * Copyright (C) 2009 Hewlett-Packard Development Company, L.P.
+> > + * Copyright (C) 2013 Red Hat, Inc.
+> > + *
+> > + * Authors:
+> > + *  Alex Williamson <alex.williamson@hp.com>
+> > + *  Markus Armbruster <armbru@redhat.com>
+> > + *
+> > + * This work is licensed under the terms of the GNU GPL, version 2.  See
+> > + * the COPYING file in the top-level directory.
+> > + *
+> > + * Contributions after 2012-01-13 are licensed under the terms of the
+> > + * GNU GPL, version 2 or (at your option) any later version.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qemu/bswap.h"
+> > +#include "hw/firmware/smbios.h"
+> > +#include "sysemu/sysemu.h"
+> > +#include "qemu/error-report.h"
+> > +
+> > +struct smbios_header {
+> > +    uint16_t length;
+> > +    uint8_t type;
+> > +} QEMU_PACKED;
+> > +
+> > +struct smbios_field {
+> > +    struct smbios_header header;
+> > +    uint8_t type;
+> > +    uint16_t offset;
+> > +    uint8_t data[];
+> > +} QEMU_PACKED;
+> > +
+> > +struct smbios_table {
+> > +    struct smbios_header header;
+> > +    uint8_t data[];
+> > +} QEMU_PACKED;
+> > +
+> > +#define SMBIOS_FIELD_ENTRY 0
+> > +#define SMBIOS_TABLE_ENTRY 1
+> > +
+> > +static uint8_t *smbios_entries;
+> > +static size_t smbios_entries_len;
+> > +GArray *usr_blobs_sizes;
+> > +
+> > +void smbios_add_usr_blob_size(size_t size)
+> > +{
+> > +    if (!usr_blobs_sizes) {
+> > +        usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
+> > +    }
+> > +    g_array_append_val(usr_blobs_sizes, size);
+> > +}
+> > +
+> > +static void smbios_add_field(int type, int offset, const void *data, size_t len)
+> > +{
+> > +    struct smbios_field *field;
+> > +
+> > +    if (!smbios_entries) {
+> > +        smbios_entries_len = sizeof(uint16_t);
+> > +        smbios_entries = g_malloc0(smbios_entries_len);
+> > +    }
+> > +    smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> > +                                                  sizeof(*field) + len);
+> > +    field = (struct smbios_field *)(smbios_entries + smbios_entries_len);
+> > +    field->header.type = SMBIOS_FIELD_ENTRY;
+> > +    field->header.length = cpu_to_le16(sizeof(*field) + len);
+> > +
+> > +    field->type = type;
+> > +    field->offset = cpu_to_le16(offset);
+> > +    memcpy(field->data, data, len);
+> > +
+> > +    smbios_entries_len += sizeof(*field) + len;
+> > +    (*(uint16_t *)smbios_entries) =
+> > +            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> > +}
+> > +
+> > +static void smbios_maybe_add_str(int type, int offset, const char *data)
+> > +{
+> > +    if (data) {
+> > +        smbios_add_field(type, offset, data, strlen(data) + 1);
+> > +    }
+> > +}
+> > +
+> > +static void smbios_build_type_0_fields(void)
+> > +{
+> > +    smbios_maybe_add_str(0, offsetof(struct smbios_type_0, vendor_str),
+> > +                         smbios_type0.vendor);
+> > +    smbios_maybe_add_str(0, offsetof(struct smbios_type_0, bios_version_str),
+> > +                         smbios_type0.version);
+> > +    smbios_maybe_add_str(0, offsetof(struct smbios_type_0,
+> > +                                     bios_release_date_str),
+> > +                         smbios_type0.date);
+> > +    if (smbios_type0.have_major_minor) {
+> > +        smbios_add_field(0, offsetof(struct smbios_type_0,
+> > +                                     system_bios_major_release),
+> > +                         &smbios_type0.major, 1);
+> > +        smbios_add_field(0, offsetof(struct smbios_type_0,
+> > +                                     system_bios_minor_release),
+> > +                         &smbios_type0.minor, 1);
+> > +    }
+> > +}
+> > +
+> > +static void smbios_build_type_1_fields(void)
+> > +{
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, manufacturer_str),
+> > +                         smbios_type1.manufacturer);
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, product_name_str),
+> > +                         smbios_type1.product);
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, version_str),
+> > +                         smbios_type1.version);
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, serial_number_str),
+> > +                         smbios_type1.serial);
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, sku_number_str),
+> > +                         smbios_type1.sku);
+> > +    smbios_maybe_add_str(1, offsetof(struct smbios_type_1, family_str),
+> > +                         smbios_type1.family);
+> > +    if (qemu_uuid_set) {
+> > +        /*
+> > +         * We don't encode the UUID in the "wire format" here because this
+> > +         * function is for legacy mode and needs to keep the guest ABI, and
+> > +         * because we don't know what's the SMBIOS version advertised by the
+> > +         * BIOS.
+> > +         */
+> > +        smbios_add_field(1, offsetof(struct smbios_type_1, uuid),
+> > +                         &qemu_uuid, 16);
+> > +    }
+> > +}
+> > +
+> > +uint8_t *smbios_get_table_legacy(size_t *length)
+> > +{
+> > +    int i;
+> > +    size_t usr_offset;
+> > +
+> > +    /* complain if fields were given for types > 1 */
+> > +    if (find_next_bit(smbios_have_fields_bitmap,
+> > +                      SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
+> > +        error_report("can't process fields for smbios "
+> > +                     "types > 1 on machine versions < 2.1!");
+> > +        exit(1);
+> > +    }
+> > +
+> > +    if (test_bit(4, smbios_have_binfile_bitmap)) {
+> > +        error_report("can't process table for smbios "
+> > +                     "type 4 on machine versions < 2.1!");
+> > +        exit(1);
+> > +    }
+> > +
+> > +    g_free(smbios_entries);
+> > +    smbios_entries_len = sizeof(uint16_t);
+> > +    smbios_entries = g_malloc0(smbios_entries_len);
+> > +
+> > +    for (i = 0, usr_offset = 0; usr_blobs_sizes && i < usr_blobs_sizes->len;
+> > +         i++)
+> > +    {
+> > +        struct smbios_table *table;
+> > +        struct smbios_structure_header *header;
+> > +        size_t size = g_array_index(usr_blobs_sizes, size_t, i);
+> > +
+> > +        header = (struct smbios_structure_header *)(usr_blobs + usr_offset);
+> > +        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> > +                                                   size + sizeof(*table));
+> > +        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> > +        table->header.type = SMBIOS_TABLE_ENTRY;
+> > +        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> > +        memcpy(table->data, header, size);
+> > +        smbios_entries_len += sizeof(*table) + size;
+> > +        (*(uint16_t *)smbios_entries) =
+> > +            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> > +        usr_offset += size;
+> > +    }
+> > +
+> > +    smbios_build_type_0_fields();
+> > +    smbios_build_type_1_fields();
+> > +    smbios_validate_table();
+> > +    *length = smbios_entries_len;
+> > +    return smbios_entries;
+> > +}
+> > diff --git a/hw/smbios/smbios_legacy_stub.c b/hw/smbios/smbios_legacy_stub.c
+> > new file mode 100644
+> > index 0000000000..91e6c75029
+> > --- /dev/null
+> > +++ b/hw/smbios/smbios_legacy_stub.c
+> > @@ -0,0 +1,16 @@
+> > +/*
+> > + * IPMI SMBIOS firmware handling
+> > + *
+> > + * Copyright (c) 2024 Igor Mammedov, Red Hat, Inc.
+> > + *
+> > + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> > + * See the COPYING file in the top-level directory.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "hw/firmware/smbios.h"
+> > +
+> > +void smbios_add_usr_blob_size(size_t size)
+> > +{
+> > +}
+> > +
 > > -- 
 > > 2.39.3
 > >   

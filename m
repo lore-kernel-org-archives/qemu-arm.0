@@ -1,109 +1,123 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp744297ejb;
-        Wed, 6 Mar 2024 12:36:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWtXF11Dhj4s3k/yiwCZvqj62azn/+8EyTGI8GZ3GC9CWTw3o9N9XnVQ8tjkc/ZRZzNSNiZEsv4R6FwGQVfZyacLLRm3O3E
-X-Google-Smtp-Source: AGHT+IFhelgcMqzxLNxqVePbi/YTIEVZTE1b+953ivdmvvpGM0K9shmS1ARlhxqD3XQ1ThC9t09A
-X-Received: by 2002:a05:6122:468f:b0:4d3:3446:6bc9 with SMTP id di15-20020a056122468f00b004d334466bc9mr6067618vkb.14.1709757367226;
-        Wed, 06 Mar 2024 12:36:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709757367; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp747846ejb;
+        Wed, 6 Mar 2024 12:44:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVYsVAWmyPv0OHlFBKocCsT5NiEW0wuvYdhj+GDRI/bIJSnZGxWPLnmtkT8lQsi9ZXD7gGLKrqiMBc2Xc65FP3HCvbb/5fo
+X-Google-Smtp-Source: AGHT+IGEAtXEp744kzGndwRiyuFQCY4Uwl744dazqRBq2X5hycdEpBB1TiFgW4BehjatRh6M3Vpm
+X-Received: by 2002:ac8:59d6:0:b0:42e:f863:a6ec with SMTP id f22-20020ac859d6000000b0042ef863a6ecmr6961283qtf.20.1709757882700;
+        Wed, 06 Mar 2024 12:44:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709757882; cv=none;
         d=google.com; s=arc-20160816;
-        b=pk+EhpdI3O5/GVlrf1AwWCUxu9D5pwmpgEXKajhNFt/CdoQxxKkaAZgr0/cvop/ek9
-         AaFhvmI91tMa7rCt32A38rKt77Yn9G5opQjlkdTf+X5SOpaJCgUz8Bvsv9Gm5PffsVAD
-         nmzZB8zm2epD6/ASdt5Di9jUsv+DPOcttLxSTDXqcgEosm1bniKOilxs+s/6d1GsMso+
-         4XJpE4jScxCbJJkfrQlPXMD6xEPNA5s07phIbwNYo/7NnyKpagaJGcZsOFSXggmeN+GB
-         0f6x3sia+Wq4/j0p7dMsf5BieLOE9ISRpNNNgNv3qdJPovJZCKknQkjdtXl2KqtOO9nk
-         2DMA==
+        b=Bb+uiwHzmUnuts4qTtTLfFPNjlZ1YOlQz4xwrMnPk7JbXjsot48Wl7aPiHJDzsBDnn
+         6mQXskQIhQlBj90WFPGTR0YKkigSoNTcfB7rtTYNnB5kMCAk4pWziDWEWhjYI6MuhhSX
+         c3a+8vhlcc3RRZSra80E/KvHP8AgoNKwT/LsjC779ZDEHOjoKXEW9vZedGxxGx4hFEP8
+         txI9ewDnYa/HjiR3d4Bna1OX41q5osa/HXraAOvh2PQXI1OgMV6tYvWfDATIIzcVyn/k
+         WArwGVmo1ejyGEW9jVa802MkArbjlbHT8fLNuNvOqeOKxBNjIPbcCXLErSDqrTRx/9CV
+         /qkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=czEcqsIErIQNXIn00F0Uho7fUouArtsC4cjIi74+OlU=;
-        fh=RVuuaU7Ghp1omAcM/aHHQKcSvJxs+IjfJSTvOY2eDr8=;
-        b=roZZ2WJHRulcgXND6+BWlBCVZaR/B7FeVWnCNk+frV4cNs+icImGGF8EC/GcxFmZHw
-         V0X/XJNc6XnRg9zliPpbUP98x2R8byx+HUoNU6thF/h75D6OXvjysmFzrffiQtW3z697
-         niBPgkIz40MP09+VfdY9HQ/D57pIoQoVBkFn2IW5eNV6+h8/mUx0WDUoJSISb0i9Pg19
-         a42iZMXCxWVCq2P+9bVepRfkK4DgD9J7jyVUJdmzK/f84tnv0q8wUUSF2zP0SQOEkSra
-         P+GVcxC490L59YF8GP7aWgUlK5Q4b+qZX3kxK7yt0w4M7fGHLFg2zmYaLYFPZq+8oAUu
-         PhvA==;
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=qOs77BSVkN26lRtJwEwSVGiJq8nL5CI5avAC0pC8yu4=;
+        fh=kwP6zYfVMS9MF7BCGvzK3sQFb0AA4faFJQznrVJjvAs=;
+        b=YZeL2dapbidLfB7i33i5EumKI3Uq9h5MQlRGzEd3tWANrTonp/N+OrAtWDoUWmhPr1
+         ezUW/u518sWxhJYzhrSL7HlWObmVU1tLeZpwOAq5bqPoIeKFXXYLjbFkKGD89lCJ2skF
+         yXOy/jH/1RrX8pY6qn6D3PZNSFaMzz0eYIdCcXfK5Gp8TcijX0KWfephjB6X0h2WdEQz
+         BtGP0g2KUprqlqgT87q+G01MYSH+khpeImIOBVgIj/eSyFflDvLbHRSann/+ykMRqlNE
+         jOP74gdz0ei51E4PW/ukuX22aBpgP4c/z0IUeKyd56PJ9jGLLpd2digSDl07+LZQZFiF
+         7dlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SaoYVvvU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q1NexMJL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl38-20020a05620a1aa600b007881f509f0bsi10917533qkb.402.2024.03.06.12.36.07
+        by mx.google.com with ESMTPS id f11-20020a056214076b00b0068d185e9c25si14600152qvz.532.2024.03.06.12.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 12:36:07 -0800 (PST)
+        Wed, 06 Mar 2024 12:44:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SaoYVvvU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q1NexMJL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rhxyE-0004TM-Rt; Wed, 06 Mar 2024 15:34:36 -0500
+	id 1rhy7p-00057B-PG; Wed, 06 Mar 2024 15:44:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rhxy8-0004Nj-EB
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 15:34:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rhxy5-0001qc-JP
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 15:34:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709757264;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=czEcqsIErIQNXIn00F0Uho7fUouArtsC4cjIi74+OlU=;
- b=SaoYVvvU4tsNxIeZYP/M3JJBwppvROHwZh6izDYMKfZ7gh2TLWX99MOhvdnAJ79E2EG1zZ
- 2FsiZnwyDA3Rxn2I2nhisrRx5GXymLSvIJ/Mtlpb3iTqC0lMUEcqB9LKTeyqHih4tTuNnR
- QJ1HYaCnOVQB1IsScvWjfdpmPT0RDjg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-441-aF8o0b6YPnG6APvJEwt9qw-1; Wed, 06 Mar 2024 15:34:21 -0500
-X-MC-Unique: aF8o0b6YPnG6APvJEwt9qw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 115AA185A783;
- Wed,  6 Mar 2024 20:34:21 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.193.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A4B043701;
- Wed,  6 Mar 2024 20:34:17 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- imammedo@redhat.com, peter.maydell@linaro.org, clg@redhat.com,
- yanghliu@redhat.com, zhenzhong.duan@intel.com
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rhy7o-00056n-0y
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 15:44:28 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rhy7m-0004ys-Be
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 15:44:27 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-412f692be21so1716095e9.2
+ for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 12:44:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709757863; x=1710362663; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qOs77BSVkN26lRtJwEwSVGiJq8nL5CI5avAC0pC8yu4=;
+ b=Q1NexMJLu6VVVPFa0SPj2OiMXQ3RqsMg39HMOtYrGh0HOd1U/+0B7V+wcUoz7l933h
+ pf6egPUMdA49GJXQLSD3jbJb/+DoMci+bX+t/UocjljyDXjHFxubteN6X351YD4EFBOF
+ rfufWvKOX8v1eX5Y1WWkuJ0Fq3t9N2BIS8OIdMRLebi8oAIPfJZIT+5bOB+3F2Dpt3JN
+ y1/v9hBmaBi+0/o9UwKZsEKk8v5l7ltpNyIwiHuj5x/RNLZQusjB5VcFz2XT+plDb3nS
+ CuT15YNN0xuIL+0MIAfxmzyotRiVuJIORSWBu0bup3zB+wYmBIm0K8vPJH1AUJHs8HBu
+ rI9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709757863; x=1710362663;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=qOs77BSVkN26lRtJwEwSVGiJq8nL5CI5avAC0pC8yu4=;
+ b=d7kGq3ijp1r6b0RJmw3jcL5INQZYofRfs4ZMxKN/RASPc/sCUHJYkMcBpY8Vys6RLB
+ QUgKHrPXwG5H8XnpV/TUWYFJiUBYTZD0DfezHdCrjpn9+ki3O67NKX0jLl7Z1KCeb+p2
+ 1R/bzq5YaSjLZUP8qPdHpbWKfXMhDBTZPOfXFCSSoYVF8Z7KK6KZxLmAK+d1txRjtNc3
+ sROQ3iBdxLqO/QaehOxpMDbgPC6mSMzPHqjKwZfvItniTpxt7xL5+4AN9HxkPu1b/lGg
+ VPWrL9GrvS4kUXB4iKG315y0jKJ52PBy/5veMbCabZOoBPUtYRoQNRsPXog14J73pxHu
+ Kf/g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWjdTldXepdOeKT4MQ4T1gLHKIgmP5jPOZzNOD9U3LbOGe3XpDHwu7s5/4uCElUSdnTRO+iIqSK3fPi4YNPGD4VDvNk
+X-Gm-Message-State: AOJu0YxrGPTnDpnTovHp+LUeWxkHO5/SdmNMTvYFL8APTdfTafuz6cmv
+ 1EZu9FX/H51xJeBsF2D0PKXvAV9sRhfix1VCNufcSxrV5+0xRJrHQcL8NyLaVQc=
+X-Received: by 2002:a05:600c:cc5:b0:412:df1b:4875 with SMTP id
+ fk5-20020a05600c0cc500b00412df1b4875mr7975337wmb.30.1709757863682; 
+ Wed, 06 Mar 2024 12:44:23 -0800 (PST)
+Received: from [192.168.69.100] (vau06-h02-176-184-43-100.dsl.sta.abo.bbox.fr.
+ [176.184.43.100]) by smtp.gmail.com with ESMTPSA id
+ jg7-20020a05600ca00700b00412f778c4c7sm364335wmb.16.2024.03.06.12.44.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Mar 2024 12:44:23 -0800 (PST)
+Message-ID: <fcaf95d2-bb09-4c55-a333-21a93a707ad2@linaro.org>
+Date: Wed, 6 Mar 2024 21:44:20 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 4/9] qemu-options.hx: Document the virtio-iommu-pci
+ granule option
+Content-Language: en-US
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
+ jean-philippe@linaro.org, imammedo@redhat.com, peter.maydell@linaro.org,
+ clg@redhat.com, yanghliu@redhat.com, zhenzhong.duan@intel.com
 Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
  berrange@redhat.com
-Subject: [PATCH v7 7/9] hw/i386/q35: Set virtio-iommu aw-bits default value to
- 39
-Date: Wed,  6 Mar 2024 21:32:46 +0100
-Message-ID: <20240306203348.65776-8-eric.auger@redhat.com>
-In-Reply-To: <20240306203348.65776-1-eric.auger@redhat.com>
 References: <20240306203348.65776-1-eric.auger@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+ <20240306203348.65776-5-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240306203348.65776-5-eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -120,110 +134,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DRgOwZQlF+0C
+X-TUID: s0pksQSHBGST
 
-Currently the default input range can extend to 64 bits. On x86,
-when the virtio-iommu protects vfio devices, the physical iommu
-may support only 39 bits. Let's set the default to 39, as done
-for the intel-iommu.
+On 6/3/24 21:32, Eric Auger wrote:
+> We are missing an entry for the virtio-iommu-pci device. Add the
+> information on which machine it is currently supported and document
+> the new granule option.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   qemu-options.hx | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 9a47385c15..757df3eac0 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1172,6 +1172,14 @@ SRST
+>       Please also refer to the wiki page for general scenarios of VT-d
+>       emulation in QEMU: https://wiki.qemu.org/Features/VT-d.
+>   
+> +``-device virtio-iommu-pci[,option=...]``
+> +    This is only supported by ``-machine q35`` and ``-machine virt``.
 
-We use hw_compat_8_2 to handle the compatibility for machines
-before 9.0 which used to have a virtio-iommu default input range
-of 64 bits.
+Don't we need to precise x86 and arm here?
 
-Of course if aw-bits is set from the command line, the default
-is overriden.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
----
-
-v6 -> v7:
-- use static pc_q35_compat_defaults
-- remove spurious header addition
-- s/32/UINT32_MAX in the qtest
-
-v5 -> v6:
-- split pc/arm settings
-
-v3 -> v4:
-- update the qos test to relax the check on the max input IOVA
-
-v2 -> v3:
-- collected Zhenzhong's R-b
-- use &error_abort instead of NULL error handle
-  on object_property_get_uint() call (Cédric)
-- use VTD_HOST_AW_39BIT (Cédric)
-
-v1 -> v2:
-- set aw-bits to 48b on ARM
-- use hw_compat_8_2 to handle the compat for older machines
-  which used 64b as a default
----
- hw/core/machine.c               | 1 +
- hw/i386/pc_q35.c                | 9 +++++++++
- tests/qtest/virtio-iommu-test.c | 2 +-
- 3 files changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 6bd09d4592..4b89172d1c 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -35,6 +35,7 @@
- 
- GlobalProperty hw_compat_8_2[] = {
-     { TYPE_VIRTIO_IOMMU_PCI, "granule", "4k" },
-+    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "64" },
- };
- const size_t hw_compat_8_2_len = G_N_ELEMENTS(hw_compat_8_2);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 45a4102e75..1e7464d39a 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -45,6 +45,7 @@
- #include "hw/i386/pc.h"
- #include "hw/i386/amd_iommu.h"
- #include "hw/i386/intel_iommu.h"
-+#include "hw/virtio/virtio-iommu.h"
- #include "hw/display/ramfb.h"
- #include "hw/ide/pci.h"
- #include "hw/ide/ahci-pci.h"
-@@ -63,6 +64,12 @@
- /* ICH9 AHCI has 6 ports */
- #define MAX_SATA_PORTS     6
- 
-+static GlobalProperty pc_q35_compat_defaults[] = {
-+    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "39" },
-+};
-+static const size_t pc_q35_compat_defaults_len =
-+    G_N_ELEMENTS(pc_q35_compat_defaults);
-+
- struct ehci_companions {
-     const char *name;
-     int func;
-@@ -356,6 +363,8 @@ static void pc_q35_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
-+    compat_props_add(m->compat_props,
-+                     pc_q35_compat_defaults, pc_q35_compat_defaults_len);
- }
- 
- static void pc_q35_9_0_machine_options(MachineClass *m)
-diff --git a/tests/qtest/virtio-iommu-test.c b/tests/qtest/virtio-iommu-test.c
-index 068e7a9e6c..afb225971d 100644
---- a/tests/qtest/virtio-iommu-test.c
-+++ b/tests/qtest/virtio-iommu-test.c
-@@ -34,7 +34,7 @@ static void pci_config(void *obj, void *data, QGuestAllocator *t_alloc)
-     uint8_t bypass = qvirtio_config_readb(dev, 36);
- 
-     g_assert_cmpint(input_range_start, ==, 0);
--    g_assert_cmphex(input_range_end, ==, UINT64_MAX);
-+    g_assert_cmphex(input_range_end, >=, UINT32_MAX);
-     g_assert_cmpint(domain_range_start, ==, 0);
-     g_assert_cmpint(domain_range_end, ==, UINT32_MAX);
-     g_assert_cmpint(bypass, ==, 1);
--- 
-2.41.0
+> +    It supports below options:
+> +
+> +    ``granule=val`` (possible values are 4k, 8k, 16k, 64k and host; default: host)
+> +        This decides the default granule to be be exposed by the
+> +        virtio-iommu. If host, the granule matches the host page size.
+> +
+>   ERST
+>   
+>   DEF("name", HAS_ARG, QEMU_OPTION_name,
 

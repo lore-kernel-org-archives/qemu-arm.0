@@ -1,248 +1,186 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1098562ejb;
-        Thu, 7 Mar 2024 04:13:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVwAl01YdnNfDZ4oIYpGRZHDlrHBpmpKl0fz1W4JQSogCRXd4zFcPdUDbccnaOKFRTS1ATyh3aeNVc0OTTPkCQy8JYvByck
-X-Received: by 2002:a05:600c:310c:b0:412:f047:4df1 with SMTP id g12-20020a05600c310c00b00412f0474df1mr4646514wmo.19.1709813593007;
-        Thu, 07 Mar 2024 04:13:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709813592; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1151470ejb;
+        Thu, 7 Mar 2024 05:48:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVfP+ZJeVhk3IobSZMaSJ9pPS0JKaF4ngV4qAg4mAh8pFbdDWeFy9ALiEMAeACR4QyZXLH6YCZ6SyNy1wT5AqCSYhMnfECJ
+X-Google-Smtp-Source: AGHT+IFVBoxGsl7dO6XGK4SwOmL/umhf5hFVpBN4FFOJfSHgd6f8hFeHM0EAr5UsPIRPxmuF0+cU
+X-Received: by 2002:a05:620a:9c3:b0:788:491b:4f0a with SMTP id y3-20020a05620a09c300b00788491b4f0amr1221938qky.66.1709819331867;
+        Thu, 07 Mar 2024 05:48:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709819331; cv=none;
         d=google.com; s=arc-20160816;
-        b=EDFj63dj2kprKNhNVjZa+9VMCBUF3Y7Isc9KvnBG2/mCiMgniAoD79F7UgcKmvSa/g
-         slpGiqZsPsOvXe2L8iBbOJXnzxM6GSm9r0f7ocNMS2agYrP+rKCGjuD7mEm1At7WmL0r
-         VjZg7oX3AIH0u4pS3MsGP+TYd2tbbzRoTzQ8c4glXBpBqxwOei9RwBzQeB9/kDl3Awli
-         hlvVUpG41CEM/2M9Gc7dtPU+wjE7uQz/KsKqd0uZuWkEnrQ1Jm+FsiMmMI/G4x2N5mXu
-         L3fY8L2buXwSyC5oiiOtOVcI52kq1nnye8Fmev0rd0TxbGk7DkHWGnG4xwxbCHQevRkK
-         Dpxw==
+        b=jT6qKvHs8eZ57A1m3TSXOLclBMaAHi+jBH+yJlELYz9P8ju5TRPXiaCS+LUbTS0PfK
+         U6FeJJaXqaIAeElCQQZ1V6SPh+AmOVah7c558WAdQiuXu28Bwfpa14/a7HisuOagZ1GU
+         h47PeSCGvVHiKM0l4e5iRSz+KMUiQiStKNzyOBY11g+bmLnchQSaiKBh8iE0MgQ8ScoQ
+         9kExP0yLgVQJR7gnVMNzstAYxMTEE7GyES/LzNIsAK4yZRbbjfcpIYI9IKW2uOaDuoRA
+         +Z9ODWML+XB0AYcjxDDSZB5hlXXyZhZsrp+ceChkcyv2WSUzXa+3loKtdsjpSw5bzMnv
+         R7sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:in-reply-to
-         :references:user-agent:subject:cc:to:from:date:dkim-signature;
-        bh=9jKcNU8mtddf0xD96048JENdNgxkV5RZUTuB2JvZ3Dk=;
-        fh=fCJagYNorT0748iUxSn9k5wdqIDeagIUiBhA4MI7Wog=;
-        b=n1eN9eKkZJ671SV/AH9bVpMMypxN3i9RERSmuLy6mP5iKb2gJt1oyvpaLZZ3CdVKm7
-         QDuuYY3cgUpVuhgRk2lOqHgdLNx/7uCcO1IyVj+crQC8B81JFBNFY04g68HKnML61q/K
-         wUYPtJ31KbPKfoUu/JWYdG46ZgetRUEYr8d3jHhYJ9EqmizDlOUYfV17+scIWhMDms3r
-         jMQHd//NwghhRjg1eJ7yf32wtFYGgw9dlAqB3KLjQRUxfMY55WK3x2fpbLEjVXCCSMj8
-         6/RrsMRpTrFdsqBLrmRsynraJk8EiQhGbKxKEKKG21E5vBWcFgnMqKPQaA1a/054jjvM
-         +coA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vDM7bxy2/ttWVowQoF3MO/PN2pkTpq/lXKV4CArE2nw=;
+        fh=RVuuaU7Ghp1omAcM/aHHQKcSvJxs+IjfJSTvOY2eDr8=;
+        b=GeRSgbrkOrvpAZZvCgPS29zUpQ/sJZ4+wNRSK0JjM9be4VtARY7lIjk1/Q4t04DIZk
+         0GEQKv8+1WIHDofj9mPSQIoz6NP2nacWL+SAkp7fdlSQq6zzvJtu+Zpc0NoGKEH/fvMP
+         AQ+RTR6tL1Cz22KCFT3VBv0O0pVI+X7cmmF+xgwza25UXvl/R+mj83VG0a5UF2xUQGET
+         +gksiZhG3ygGRq0KaugH1qAM2aqLoDZ7BPT2sKbC7LGojIYbImmYKE9eURp9Zd3pomV1
+         ZU0W98+I0cXwKDTcxx+ntxcPBbwTUHAAlmCvhtcJlB4m5mzmt8vhFFLdiqRsze7a6tIq
+         RScw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W2fHOCvV;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n23-20020a05600c3b9700b00412f0bc3152sor1550535wms.7.2024.03.07.04.13.12
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dUipLhKr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id wg25-20020a05620a569900b007882320b033si10012328qkn.105.2024.03.07.05.48.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 07 Mar 2024 04:13:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 07 Mar 2024 05:48:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W2fHOCvV;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709813592; x=1710418392; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:in-reply-to
-         :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=9jKcNU8mtddf0xD96048JENdNgxkV5RZUTuB2JvZ3Dk=;
-        b=W2fHOCvVz1m6FEkJhzWWcRL1Qv1AB9fKw05UQC1sBdLDyc6LQbzJEtisu71wbuKy2Y
-         5LE3C0q1+VeoxX6DAzBekRKEDuxMNJiW1YO/FVfqzVLWS98/Qf2e8DAROPfThwB6z4kx
-         3dS1/73jNpecOu8oem0mlnYPou0Sfhv9ZIxnQjL+dsbVoEclG+U3rKupti2bqesTVUlY
-         ty9wU3gyq5U/QHjfrZt+c9lMC3AOaOnQX+UpVTQJpKs1FQpali5SXV2FR/77NU47lLxR
-         xziiIF4sB9tyLMHhx5BGI/WF4QLR04kDfW8vLm1oU7RAoRv2ldfVEmTTJgQHv5012Otx
-         QVew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709813592; x=1710418392;
-        h=content-transfer-encoding:mime-version:message-id:in-reply-to
-         :references:user-agent:subject:cc:to:from:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=9jKcNU8mtddf0xD96048JENdNgxkV5RZUTuB2JvZ3Dk=;
-        b=oWybdy89EvXg48cGTUzmJIIlvof/i2CgKlFqai0n/3KlYj+7zQM8wbdL1QlJRgBVGc
-         Qy9WtOBqjA320KnrcVqhzY2wNk4w7j9NOoo8DPgxdfUgEJyPSfFJeUPdwJkRVvbZOgj4
-         SawXDVxQXCC0Jrfye7npTfNeFixmFlXsWFcNFS012quYJaB2ZWBLZwsWIbjF0V02A0Y3
-         08raH82+slj8QTw5dfXN+DRWVOaRd5pa9lKIfIw5DLWkitWuwPsptrutFVLTDKvUZvE4
-         vOlCKG8x48KLu75C+i12PJB4E+dr/liXo7ufc0W2uyqiTfDGuHoXreEsEFKRv/GKzhIx
-         2iqg==
-X-Forwarded-Encrypted: i=1; AJvYcCVJ5la4XouvepYF8GEAFYu7lXqUNxj2ojIXEy1pJTtAeK9BXMeHYqB+WK4IPjAw8uVOZB3AGApGD7hh1SBVtgf7fqCNDqHD
-X-Gm-Message-State: AOJu0Yxy7CeZAtqDiNNKWFreIOHDd1TASxTc5pQs2EMnUUPx4iq5EZ7n
-	/C5oVuVr21JhzuW/RZRwmgGLAYDfzqRClJubKa20ibVu2eGfexzdgQ2aBrEEciOhWg==
-X-Google-Smtp-Source: AGHT+IEZSbHZqEkiGm8ptHFul1KfAi5rGSBCKI8+od071N4EROSygV23LA7LHPIPhTI5uqeuF0rSog==
-X-Received: by 2002:a5d:64af:0:b0:33e:5310:820f with SMTP id m15-20020a5d64af000000b0033e5310820fmr5236522wrp.67.1709813592443;
-        Thu, 07 Mar 2024 04:13:12 -0800 (PST)
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from meli.delivery (adsl-101.37.6.0.tellas.gr. [37.6.0.101])
-        by smtp.gmail.com with ESMTPSA id v7-20020a5d59c7000000b0033e475940fasm7826319wry.66.2024.03.07.04.13.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Mar 2024 04:13:12 -0800 (PST)
-Date: Thu, 07 Mar 2024 14:11:03 +0200
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-arm@nongnu.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Benn=?UTF-8?B?w6k=?= e <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>
-Bcc: 
-Subject: Re: [PATCH-for-9.0 9/9] hw/xen/hvm: Inline xen_arch_set_memory()
-User-Agent: meli 0.8.5-rc.3
-References: <20231114163123.74888-1-philmd@linaro.org> <20231114163123.74888-10-philmd@linaro.org>
-In-Reply-To: <20231114163123.74888-10-philmd@linaro.org>
-Message-ID: <9z8lx.2kzq0em3zqbp@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dUipLhKr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1riE6z-0006QJ-PA; Thu, 07 Mar 2024 08:48:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1riE4H-00057W-Ns
+ for qemu-arm@nongnu.org; Thu, 07 Mar 2024 08:46:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1riE3o-00079O-1C
+ for qemu-arm@nongnu.org; Thu, 07 Mar 2024 08:45:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709819095;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vDM7bxy2/ttWVowQoF3MO/PN2pkTpq/lXKV4CArE2nw=;
+ b=dUipLhKrOIh5CY1RCMOz/rnlWszHsJQro3LArAYX1QVXdXf7PJeMtPn5PYytRv+eKwWBnC
+ +s3ZCaQh2WZoDbq5m5j5K/n5uE+bPUNg4c5TKTOOcZL67XM2vnImWXktPQ3uZ3LCE22W0F
+ FSFDOZg2QJjiUxJDl9q7qIG2PsD8DcQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-515-GoCBt6itPGaLLTyyMwUhFA-1; Thu, 07 Mar 2024 08:44:52 -0500
+X-MC-Unique: GoCBt6itPGaLLTyyMwUhFA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4E1A28007A3;
+ Thu,  7 Mar 2024 13:44:52 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.193.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2E56917AA5;
+ Thu,  7 Mar 2024 13:44:48 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
+ imammedo@redhat.com, peter.maydell@linaro.org, clg@redhat.com,
+ yanghliu@redhat.com, zhenzhong.duan@intel.com
+Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
+ berrange@redhat.com
+Subject: [PATCH v8 0/9] VIRTIO-IOMMU: Introduce aw-bits and granule options
+Date: Thu,  7 Mar 2024 14:43:01 +0100
+Message-ID: <20240307134445.92296-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-X-TUID: a9nTh4ME6iRb
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: c9XOMHiGpDGl
 
-On Tue, 14 Nov 2023 18:31, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->xen_arch_set_memory() is not arch-specific anymore. Being
->called once, inline it in xen_set_memory().
->
->Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->---
-> include/hw/xen/xen-hvm-common.h |   3 -
-> hw/xen/xen-hvm-common.c         | 104 ++++++++++++++++----------------
-> 2 files changed, 51 insertions(+), 56 deletions(-)
->
->diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
->index 536712dc83..a1b8a2783b 100644
->--- a/include/hw/xen/xen-hvm-common.h
->+++ b/include/hw/xen/xen-hvm-common.h
->@@ -99,8 +99,5 @@ void cpu_ioreq_pio(ioreq_t *req);
-> 
-> void xen_read_physmap(XenIOState *state);
-> void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
->-void xen_arch_set_memory(XenIOState *state,
->-                         MemoryRegionSection *section,
->-                         bool add);
-> 
-> #endif /* HW_XEN_HVM_COMMON_H */
->diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
->index 50ce45effc..789c6b4b7a 100644
->--- a/hw/xen/xen-hvm-common.c
->+++ b/hw/xen/xen-hvm-common.c
->@@ -426,50 +426,6 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
->     }
-> }
-> 
->-void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
->-                         bool add)
->-{
->-    unsigned target_page_bits = qemu_target_page_bits();
->-    int page_size = qemu_target_page_size();
->-    int page_mask = -page_size;
->-    hwaddr start_addr = section->offset_within_address_space;
->-    ram_addr_t size = int128_get64(section->size);
->-    bool log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
->-    hvmmem_type_t mem_type;
->-
->-    if (!memory_region_is_ram(section->mr)) {
->-        return;
->-    }
->-
->-    if (log_dirty != add) {
->-        return;
->-    }
->-
->-    trace_xen_client_set_memory(start_addr, size, log_dirty);
->-
->-    start_addr &= page_mask;
->-    size = ROUND_UP(size, page_size);
->-
->-    if (add) {
->-        if (!memory_region_is_rom(section->mr)) {
->-            xen_add_to_physmap(state, start_addr, size,
->-                               section->mr, section->offset_within_region);
->-        } else {
->-            mem_type = HVMMEM_ram_ro;
->-            if (xen_set_mem_type(xen_domid, mem_type,
->-                                 start_addr >> target_page_bits,
->-                                 size >> target_page_bits)) {
->-                DPRINTF("xen_set_mem_type error, addr: "HWADDR_FMT_plx"\n",
->-                        start_addr);
->-            }
->-        }
->-    } else {
->-        if (xen_remove_from_physmap(state, start_addr, size) < 0) {
->-            DPRINTF("physmapping does not exist at "HWADDR_FMT_plx"\n", start_addr);
->-        }
->-    }
->-}
->-
-> void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
->                    Error **errp)
-> {
->@@ -512,20 +468,62 @@ static void xen_set_memory(struct MemoryListener *listener,
->                            bool add)
-> {
->     XenIOState *state = container_of(listener, XenIOState, memory_listener);
->+    unsigned target_page_bits = qemu_target_page_bits();
->+    int page_size = qemu_target_page_size();
->+    int page_mask = -page_size;
->+    hwaddr start_addr;
->+    ram_addr_t size;
->+    bool log_dirty;
->+    hvmmem_type_t mem_type;
->+
-> 
->     if (section->mr == &xen_memory) {
->         return;
->-    } else {
->-        if (add) {
->-            xen_map_memory_section(xen_domid, state->ioservid,
->-                                   section);
->-        } else {
->-            xen_unmap_memory_section(xen_domid, state->ioservid,
->-                                     section);
->-        }
->     }
-> 
->-    xen_arch_set_memory(state, section, add);
->+    if (add) {
->+        xen_map_memory_section(xen_domid, state->ioservid,
->+                               section);
->+    } else {
->+        xen_unmap_memory_section(xen_domid, state->ioservid,
->+                                 section);
->+    }
->+
->+    if (!memory_region_is_ram(section->mr)) {
->+        return;
->+    }
->+
->+    log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
->+
->+    if (log_dirty != add) {
->+        return;
->+    }
->+
->+    start_addr = section->offset_within_address_space;
->+    size = int128_get64(section->size);
->+    trace_xen_client_set_memory(start_addr, size, log_dirty);
->+
->+    start_addr &= page_mask;
->+    size = ROUND_UP(size, page_size);
->+
->+    if (add) {
->+        if (!memory_region_is_rom(section->mr)) {
->+            xen_add_to_physmap(state, start_addr, size,
->+                               section->mr, section->offset_within_region);
->+        } else {
->+            mem_type = HVMMEM_ram_ro;
->+            if (xen_set_mem_type(xen_domid, mem_type,
->+                                 start_addr >> target_page_bits,
->+                                 size >> target_page_bits)) {
->+                DPRINTF("xen_set_mem_type error, addr: "HWADDR_FMT_plx"\n",
->+                        start_addr);
->+            }
->+        }
->+    } else {
->+        if (xen_remove_from_physmap(state, start_addr, size) < 0) {
->+            DPRINTF("physmapping does not exist at "HWADDR_FMT_plx"\n", start_addr);
->+        }
->+    }
-> }
-> 
-> void xen_region_add(MemoryListener *listener,
->-- 
->2.41.0
->
->
+This is a respin of
+[1] [PATCH v5 0/4] VIRTIO-IOMMU: Introduce an aw-bits option
+(https://lore.kernel.org/all/20240215084315.863897-1-eric.auger@redhat.com/)
+
+which now also integrates
+
+[PATCH v6 0/3] VIRTIO-IOMMU: Set default granule to host page size
+(https://lore.kernel.org/all/20240227165730.14099-1-eric.auger@redhat.com/)
+
+The introduction of those 2 new options and their new default values
+fix bugs when assigning VFIO devices protected by a virtio-iommu.
+
+patches 1 - 4: intro of the granule property, collected reviews
+- we used to set the default granule to 4k. This causes failures
+  when hotplugging a VFIO device on a 64kB/64kB host/guest config:
+  "vfio: DMA mapping failed, unable to continue". When the device
+  is hotplugged the granule is already frozen to 4k wheras 64k is
+  needed. This series introduces a new granule option which is set
+  by default to the host page size.
+
+patches 5 - 9: intro of the aw-bits property, needs further review
+- we used to set the input address width to 64b. This causes
+  failures with some assigned devices where the guest driver
+  tries to use the full 64b input range whereas the physical IOMMU
+  supports less bits (39/48 gaw for instance on VTD). New default
+  usually match the host HW capability.
+
+For more details please see the cover letter of [1] and [2].
+This series can be found at:
+https://github.com/eauger/qemu/tree/granule_aw_bits_v8
+
+History:
+v7 -> v8:
+- address Phil's comments: return earlier on bad aw-bits,
+  doc improvement
+
+v6 -> v7:
+- Made property static in virt and pc_q35. Fix qtest 32 limit.
 
 
-Same observation as in previous patch, in Arm xen, qemu doesn't handle 
-memory, it is only responsible for devices and their memory.
+Eric Auger (9):
+  qdev: Add a granule_mode property
+  virtio-iommu: Add a granule property
+  virtio-iommu: Change the default granule to the host page size
+  qemu-options.hx: Document the virtio-iommu-pci granule option
+  virtio-iommu: Trace domain range limits as unsigned int
+  virtio-iommu: Add an option to define the input range width
+  hw/i386/q35: Set virtio-iommu aw-bits default value to 39
+  hw/arm/virt: Set virtio-iommu aw-bits default value to 48
+  qemu-options.hx: Document the virtio-iommu-pci aw-bits option
+
+ qapi/virtio.json                    | 18 +++++++++++++++
+ include/hw/qdev-properties-system.h |  3 +++
+ include/hw/virtio/virtio-iommu.h    |  3 +++
+ hw/arm/virt.c                       | 17 ++++++++++++++
+ hw/core/machine.c                   |  6 ++++-
+ hw/core/qdev-properties-system.c    | 14 +++++++++++
+ hw/i386/pc_q35.c                    |  9 ++++++++
+ hw/virtio/virtio-iommu.c            | 36 +++++++++++++++++++++++++----
+ tests/qtest/virtio-iommu-test.c     |  2 +-
+ hw/virtio/trace-events              |  2 +-
+ qemu-options.hx                     | 11 +++++++++
+ 11 files changed, 114 insertions(+), 7 deletions(-)
+
+-- 
+2.41.0
+

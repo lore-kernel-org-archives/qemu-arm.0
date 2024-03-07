@@ -1,127 +1,143 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp910049ejb;
-        Wed, 6 Mar 2024 19:46:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU0eJJbDwhpOwTgJoKFQPVhjg4cRmqXISLXqNSvyFY7i6GoK8JWiueOn9Z2C/pm5y+GhWLHxqyJdOmqxKwpWTp5corncAfP
-X-Google-Smtp-Source: AGHT+IFgca+m1c8BBt48bWIvjEKU08/ZUAHqo2fQSK0ZHbElgqG1bPgcEX7XOpLrJZR59GpIkmHu
-X-Received: by 2002:a0c:ff4a:0:b0:68f:69bb:4b97 with SMTP id y10-20020a0cff4a000000b0068f69bb4b97mr8479880qvt.24.1709783210740;
-        Wed, 06 Mar 2024 19:46:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709783210; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp982097ejb;
+        Wed, 6 Mar 2024 23:36:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXJCqQEbY1eibUprevwkc2AAFodnV3BsUuApQlXB0hltYJEfdbzyzlcQZCERot7rFx8R/dd7uPtV6xUOmIumD8QlopSr08L
+X-Google-Smtp-Source: AGHT+IGLEHaV4adM2fNPZ+c6B2jbdorVNv2VWFi9QRLCurJrb9CZ4xNCkAqg+UE/Yp1riFPwMazx
+X-Received: by 2002:a05:620a:19a9:b0:788:4891:53d0 with SMTP id bm41-20020a05620a19a900b00788489153d0mr711552qkb.30.1709796996370;
+        Wed, 06 Mar 2024 23:36:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709796996; cv=none;
         d=google.com; s=arc-20160816;
-        b=s0aSaRs55pplWgtD7Eh+vajfcrcI1Gc0ZZofCO7U3OYINSD79/Zdh56Td0j58n+zu9
-         SnaolYdf5895GxDf3l1T5ARvrEMZw8Gmzr3h4Xbe3zNXv46Ct0AEVY4KEyNW1LvldXd2
-         oWjoaxW10GTIH1CPVXc3TZId2w6+vCHIBq3SoM/XH0stfWgW9UTwmgfLJVfrnSKjc7Mz
-         NsCj1NBtrHpMh4b44rdDH5RyRc/oGJDdmgg+b7F0ntaad+UXT4d4mahth5NK6LjBULqc
-         ynS3lYAcI5RRnMkkeuGaYpfm1vopNrkOAdVXnpFoLxKk1BhatJJe9Brc+K/+Mhhpg7Pg
-         bQ5g==
+        b=iYMXobjqu/R8IvbmZ2KHmrB6ce0+7yRnlP+GnSpbWm4nm68N5f0m4BtDj106VN5vkM
+         B38kK0QrFESDWovGurQjPUGJjjSmUN946M3EAGlQsWl3ZjqeBxU+jNdNVWVod0ardSGx
+         Y0pLog999ics82ZWgF6rUZKToJVOpQM88wNQI9r5Mb/r+B30NEK7MyZzLliv0u40CbjY
+         uly2s0wGtCjzmzVUz9nuuHPeg41MQE4wSy+68ho3N2yBqPmQI2dEIMEs+ipChSeZQdqK
+         HMWIdnNOkQCDPdKAp0GNZlUu1zerh+EAI7VTlLg/8MFwYeau4ZDi3VbGjWPjv49hhsps
+         BQ9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=CfULBCBfNatDaXtj+xRudvsdZ/mVV9MMq0WpZxve08g=;
-        fh=P3kIKstclJM7wSoflwGQ/A9srC8FM9AzyDLguyU+hQQ=;
-        b=xgg8XxJzmR62ornAjmKwz0tCOsNx4qSgdwe7rI9OKY3XXQh3tpla9dDhc/k/fBQLhj
-         5J3bmZfWv3sIxczGUbHZslxNvhXeI4iTgDOjHAPBQzEjBzta/o2/QoO22MGlxJGAeeh4
-         +QC3Da6MCqh0NlCGYnmiI55z4iJqqJOehNlN7tYkeHyscsyRRIMvEgBmPS9a4v1dwmqO
-         J5TLBDjlRedrYIH9aO3pRnSfXSqHWv65YprUWzHtCtiFBnV5bZqBhr14YhgzprXpeXZ/
-         50IExkcLPvbSp3P0SRe2cuvkTrVMiiYWdGFDHjVlB5nmVIoTFeBHGClufIoA4dZ08jkv
-         zUpw==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=D1WfqLZgDka9rQY484/u0YexWs9lTrfR0ok04P3iYdo=;
+        fh=KYsowhbGlyWVlzUNHELBVFWJAy+h6vnqEOUMK8trAZs=;
+        b=EMVwLojE0SJwB4qlKevyTFo1NcDKMdtTlTkwiyzj+lALAh9kuxgwIh7Li6JPHo2YAl
+         dCp2IpIvVtxWryGJSJio1ad6VywFmwQuFwXqflQ6h5upmyuzYHiDN7n6AX2E0MVpoMxp
+         CJT775wCHBS+7b+CAfFMGSzPZFNMg7OIyt3MX0zqzdRD+S5x92hnV+1FcCB4ETM+spkb
+         Wv1UpvGMnboP6TmRZq9ep/c54QjGQc11+w+Nc2rb1nkVTjo5ukS2Ef+yrmL+eoLMTvro
+         gTPug7kDPqtXcCovcY3/4NMUROLIMaBlffiPCMmbyQeRaaMegyfISEgVSYDl9AqJz76f
+         agNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="D/4mFgRz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OgXsVTZr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020a0562140ca700b0068fa7211a44si17094432qvs.3.2024.03.06.19.46.50
+        by mx.google.com with ESMTPS id pi18-20020a05620a379200b00787c0bd8f36si15982387qkn.333.2024.03.06.23.36.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 19:46:50 -0800 (PST)
+        Wed, 06 Mar 2024 23:36:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b="D/4mFgRz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OgXsVTZr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ri4hx-0002HH-MZ; Wed, 06 Mar 2024 22:46:13 -0500
+	id 1ri8IT-0006CO-8m; Thu, 07 Mar 2024 02:36:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1ri4hs-0002Ev-5t
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 22:46:08 -0500
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1ri4ho-0003aU-1G
- for qemu-arm@nongnu.org; Wed, 06 Mar 2024 22:46:07 -0500
-Received: by mail-oo1-xc2b.google.com with SMTP id
- 006d021491bc7-59fc2d22cfaso149324eaf.3
- for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 19:46:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1709783162; x=1710387962; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=CfULBCBfNatDaXtj+xRudvsdZ/mVV9MMq0WpZxve08g=;
- b=D/4mFgRzTw0Hj0YJ11ptB94HkrvidgjjFkC5mIpTbwe4kccl3oGg4lYYo1fD9stXeM
- DQUeiQwtY2Z1UdF9NSw9neN0l8PdowNYgKV5aIfvFLeAp7APSE2YfSdIectWGokpc7JA
- BRISDiZ9eUS5g1o8HTmgW+osTQhp4JCLEJNKNSMfSmAe0pO1QhkSQv4ohbahseJ/8yFF
- IFBgYAA/BIAReMPQtKS1qEDcL4TI5oVFa13CE0ZFntXe29oDcq7lciH9/cM8Y1kRyQba
- PoAtJlOrZs/RqFnL2I1trmbkkdOtTwWZR64+3SiGXhufY7S6rJ00ckjNHXgguQfRCAn7
- xctw==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1ri8IP-0006C0-Gv
+ for qemu-arm@nongnu.org; Thu, 07 Mar 2024 02:36:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1ri8IM-00046P-Rh
+ for qemu-arm@nongnu.org; Thu, 07 Mar 2024 02:36:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709796961;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=D1WfqLZgDka9rQY484/u0YexWs9lTrfR0ok04P3iYdo=;
+ b=OgXsVTZrdhB1NE6W8c0PIFeAJq2/lmIdN8+jRIZQEr1yPiEolO+9FHyK3rQI78WHRfgijd
+ UXXhbj25gBDuaLhAICGydGPrFDOi/YQhW/K6E/JPFjnMTjUPEkhOLnJUx1VQE175sRWg7F
+ bmNEwrfhnu8jJUk8gNwikA+2O5UbYL0=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-504-Wp3_jZ8jPlSwca-71Y0xbQ-1; Thu, 07 Mar 2024 02:36:00 -0500
+X-MC-Unique: Wp3_jZ8jPlSwca-71Y0xbQ-1
+Received: by mail-lj1-f197.google.com with SMTP id
+ 38308e7fff4ca-2d2a5e2e7c3so3508291fa.2
+ for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 23:36:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709783162; x=1710387962;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CfULBCBfNatDaXtj+xRudvsdZ/mVV9MMq0WpZxve08g=;
- b=JkWOGCn9tmdUZctl0LlTaWUM/L42M6eQMSMEsVt+eRKl1hvA1EJ2idyPVOn9Kf9Au0
- 6oCokbgUN0gUxRe46Dp176zTCS7oEJbHEYGQJLzjlnkfODDhSSPQiE8q6zi7iZW3qRDO
- lECNjBz5peeYPh3yhg4DkkZ7QVeMH78KELglwSr0acNP31zbVty99P2+sfLv09WjtRSi
- FOYQUUCoVDp7fMuspZYEKr8pd5pQWOPX4rFPARodmTnX1i6ilWPPwE6XiJP5UiRoGyq+
- kpjjuQmiTcbl3kqNwY19wmzh8U3/jxhbWt4VYUXVdMH+c0pyPOWqdS3sPLFVNwgVe0/m
- E+gA==
+ d=1e100.net; s=20230601; t=1709796959; x=1710401759;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=D1WfqLZgDka9rQY484/u0YexWs9lTrfR0ok04P3iYdo=;
+ b=n2Mg1I7nd7+4E3FyyUnM/VMTR7a5A+M7sHFszVkn9RLcUHWJv/icnv1T1lLcSCQ0dq
+ s4r3eH2MGpg+HD5a69t2PH1Vka17dp8t72YA1RqI8pMGXdGebZRYNy1cYWfkvUkbzE8C
+ +qoMDW5I8MXQswRaNsrXrtbQWeYq9m6c4TwM3dp+z6N4ZwTwe/7Xh6jAQFRYCM0EiAza
+ aX/bVnutNtpKxJhS3D/xTvSIb1v8lLOcWmkEGxgIiqBm3R2xTtSfVuQcZsETOPoAjc60
+ yNR4dK4ZEz7E7VkRe6m+SjhEwf4OMqq7oz+A0yheBvR2xrEGchZqamfTALseV3MukZSU
+ XOQg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWKyGGZPWtCEj6FTX1v4UhI0frHQqcKdXvXW/zvmr3ZflcEQYYr1Qa9xCVniqsRfMPxhL74rLd0wyaIQkNHkHnuocVI
-X-Gm-Message-State: AOJu0Yw+nNIF8tSfJaR1d/uvAT4iu4vlCEfh42KdE+8PH4vlI9zbCYt4
- 8pAYjpf4hU5LaGQrZTbU9SvtVu2S3qMxILmTOwM8C+Lp4Mvgw5Zuf7assOoD3v8=
-X-Received: by 2002:a05:6820:629:b0:5a1:1081:260a with SMTP id
- e41-20020a056820062900b005a11081260amr8793488oow.4.1709783162173; 
- Wed, 06 Mar 2024 19:46:02 -0800 (PST)
-Received: from sunil-laptop ([106.51.83.242]) by smtp.gmail.com with ESMTPSA id
- n10-20020a4a848a000000b0059f5da15e99sm3201785oog.38.2024.03.06.19.45.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 Mar 2024 19:46:01 -0800 (PST)
-Date: Thu, 7 Mar 2024 09:15:52 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, qemu-riscv@nongnu.org, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
- shannon.zhaosl@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com,
- liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com
-Subject: Re: [PATCH v2 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR creation
- to common location
-Message-ID: <Zek4cO8ci2O38NFJ@sunil-laptop>
-References: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
- <20240116010930.43433-2-jeeheng.sia@starfivetech.com>
- <49d0d8d3-c7fd-4039-aeed-6c31ba16557a@ventanamicro.com>
- <CAKmqyKPE-ERHShmAJQH3VNc7XqOfOeKYYyCRswJSUwf7hqm1xA@mail.gmail.com>
+ AJvYcCUszyDg5VBxqIPT1uc5LzSXt5xrCuBdK2yV3OIoZ2QmrRo0w1QedBKX5moZKq+D2OQhGFC6u8dMRjDzkW9JrCj9Qe0q
+X-Gm-Message-State: AOJu0YwHW0wspM/iML9zHp4HQFc5Y67K/2DZOVLdQrbAqc6u78O1QOJw
+ pW4JhoqM+yU4pxXhGI9vstTIj/rqKpnkamEzw1BdueKfisYXf2MPIO5R73d7mAVC5b70yKmC8RX
+ ciy27wb8hmpBBW/9xE+mqNy6IC4OZdYYtLgzEt5e6TqNmENa7Cw==
+X-Received: by 2002:a05:651c:198c:b0:2d3:ffa0:8782 with SMTP id
+ bx12-20020a05651c198c00b002d3ffa08782mr851556ljb.43.1709796959002; 
+ Wed, 06 Mar 2024 23:35:59 -0800 (PST)
+X-Received: by 2002:a05:651c:198c:b0:2d3:ffa0:8782 with SMTP id
+ bx12-20020a05651c198c00b002d3ffa08782mr851536ljb.43.1709796958628; 
+ Wed, 06 Mar 2024 23:35:58 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ q16-20020a5d6590000000b0033d56aa4f45sm19575005wru.112.2024.03.06.23.35.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Mar 2024 23:35:58 -0800 (PST)
+Message-ID: <0b2dea01-f587-4ef8-bf56-e56b881b693e@redhat.com>
+Date: Thu, 7 Mar 2024 08:35:56 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 6/9] virtio-iommu: Add an option to define the input
+ range width
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ mst@redhat.com, jean-philippe@linaro.org, imammedo@redhat.com,
+ peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com,
+ zhenzhong.duan@intel.com
+Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
+ berrange@redhat.com
+References: <20240306203348.65776-1-eric.auger@redhat.com>
+ <20240306203348.65776-7-eric.auger@redhat.com>
+ <708f7eb4-f1fb-4f8e-8cba-7d270c84847c@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <708f7eb4-f1fb-4f8e-8cba-7d270c84847c@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAKmqyKPE-ERHShmAJQH3VNc7XqOfOeKYYyCRswJSUwf7hqm1xA@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-oo1-xc2b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,152 +150,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1ecyBecCmDLt
+X-TUID: h2yLnVAxPs7p
 
-On Thu, Mar 07, 2024 at 11:33:25AM +1000, Alistair Francis wrote:
-> On Thu, Mar 7, 2024 at 4:59 AM Daniel Henrique Barboza
-> <dbarboza@ventanamicro.com> wrote:
-> >
-> > Hi,
-> >
-> > This patch break check-qtest, most specifically 'bios-table'test', for aarch64.
-> > I found this while running riscv-to-apply.next in the Gitlab pipeline.
-> >
-> >
-> > Here's the output:
-> >
-> > $ make -j && QTEST_QEMU_BINARY=./qemu-system-aarch64 V=1 ./tests/qtest/bios-tables-test
-> > TAP version 13
-> > # random seed: R02Sf0f2fa0a3fac5d540b1681c820621b7d
-> > # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-591353.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-591353.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -machine none -accel qtest
-> > 1..8
-> > # Start of aarch64 tests
-> > # Start of acpi tests
-> > # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-591353.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-591353.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -machine virt  -accel tcg -nodefaults -nographic -drive if=pflash,format=raw,file=pc-bios/edk2-aarch64-code.fd,readonly=on -drive if=pflash,format=raw,file=pc-bios/edk2-arm-vars.fd,snapshot=on -cdrom tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2 -cpu cortex-a57 -smbios type=4,max-speed=2900,current-speed=2700 -accel qtest
-> > acpi-test: Warning! SPCR binary file mismatch. Actual [aml:/tmp/aml-9G53J2], Expected [aml:tests/data/acpi/virt/SPCR].
-> > See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
-> > acpi-test: Warning! SPCR mismatch. Actual [asl:/tmp/asl-SR53J2.dsl, aml:/tmp/aml-9G53J2], Expected [asl:/tmp/asl-4Z33J2.dsl, aml:tests/data/acpi/virt/SPCR].
-> >
-> > The diff is here:
-> >
-> > --- /tmp/asl-4Z33J2.dsl 2024-03-06 15:40:24.879879348 -0300
-> > +++ /tmp/asl-SR53J2.dsl 2024-03-06 15:40:24.877879347 -0300
-> > @@ -1,57 +1,49 @@
-> >   /*
-> >    * Intel ACPI Component Architecture
-> >    * AML/ASL+ Disassembler version 20220331 (64-bit version)
-> >    * Copyright (c) 2000 - 2022 Intel Corporation
-> >
-> > (...)
-> >
-> >   [000h 0000   4]                    Signature : "SPCR"    [Serial Port Console Redirection Table]
-> > -[004h 0004   4]                 Table Length : 00000050
-> > +[004h 0004   4]                 Table Length : 0000004F
-> >   [008h 0008   1]                     Revision : 02
-> > -[009h 0009   1]                     Checksum : B1
-> > +[009h 0009   1]                     Checksum : B2
-> >   [00Ah 0010   6]                       Oem ID : "BOCHS "
-> >
-> > (...)
-> >
-> > -[042h 0066   2]                PCI Vendor ID : FFFF
-> > +[042h 0066   2]                PCI Vendor ID : 00FF
-> >
-> >
-> > After inspecting the common helper and what the original ARM code was doing
-> > I found out that we're missing something down there:
-> >
-> >
-> > On 1/15/24 22:09, Sia Jee Heng wrote:
-> > > RISC-V should also generate the SPCR in a manner similar to ARM.
-> > > Therefore, instead of replicating the code, relocate this function
-> > > to the common AML build.
-> > >
-> > > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-> > > ---
-> > >   hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
-> > >   hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
-> > >   include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
-> > >   include/hw/acpi/aml-build.h |  4 +++
-> > >   4 files changed, 115 insertions(+), 41 deletions(-)
-> > >
-> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > > index af66bde0f5..f3904650e4 100644
-> > > --- a/hw/acpi/aml-build.c
-> > > +++ b/hw/acpi/aml-build.c
-> > > @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
-> > >       }
-> > >   }
-> > >
-> > > +void build_spcr(GArray *table_data, BIOSLinker *linker,
-> > > +                const AcpiSpcrData *f, const uint8_t rev,
-> > > +                const char *oem_id, const char *oem_table_id)
-> > > +{
-> > > +    AcpiTable table = { .sig = "SPCR", .rev = rev, .oem_id = oem_id,
-> > > +                        .oem_table_id = oem_table_id };
-> > > +
-> > > +    acpi_table_begin(&table, table_data);
-> > > +    /* Interface type */
-> > > +    build_append_int_noprefix(table_data, f->interface_type, 1);
-> > > +    /* Reserved */
-> > > +    build_append_int_noprefix(table_data, 0, 3);
-> > > +    /* Base Address */
-> > > +    build_append_gas(table_data, f->base_addr.id, f->base_addr.width,
-> > > +                     f->base_addr.offset, f->base_addr.size,
-> > > +                     f->base_addr.addr);
-> > > +    /* Interrupt type */
-> > > +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
-> > > +    /* IRQ */
-> > > +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
-> > > +    /* Global System Interrupt */
-> > > +    build_append_int_noprefix(table_data, f->interrupt, 4);
-> > > +    /* Baud Rate */
-> > > +    build_append_int_noprefix(table_data, f->baud_rate, 1);
-> > > +    /* Parity */
-> > > +    build_append_int_noprefix(table_data, f->parity, 1);
-> > > +    /* Stop Bits */
-> > > +    build_append_int_noprefix(table_data, f->stop_bits, 1);
-> > > +    /* Flow Control */
-> > > +    build_append_int_noprefix(table_data, f->flow_control, 1);
-> >
-> > Here. We're missing the "Language" entry.
-> >
-> >
-> > This diff fixes the broken test:
-> >
-> >
-> > $ git diff
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > index f3904650e4..6d4517cfbe 100644
-> > --- a/hw/acpi/aml-build.c
-> > +++ b/hw/acpi/aml-build.c
-> > @@ -2024,6 +2024,8 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
-> >       build_append_int_noprefix(table_data, f->stop_bits, 1);
-> >       /* Flow Control */
-> >       build_append_int_noprefix(table_data, f->flow_control, 1);
-> > +    /* Language */
-> > +    build_append_int_noprefix(table_data, f->language, 1);
-> >       /* Terminal Type */
-> >       build_append_int_noprefix(table_data, f->terminal_type, 1);
-> >       /* PCI Device ID  */
-> 
-> Thanks! I added this to the patch
-> 
-> >
-> >
-> >
-> > As a side note, it seems like 'bios-table-test' isn't being run for RISC-V. Not sure if this
-> > is intentional or a foresight.
-> 
-> I think you are looking for oversight :)
-> 
-> I think it's just an oversight, not intentional.
-> 
-Adding these test cases is WIP. Drew had already pointed this. Myself
-and Haibo are looking at it. But I doubt patches can be sent before 9.0
-deadlines. Can we add them post 9.0?
 
-Thanks,
-Sunil
+
+On 3/6/24 21:45, Philippe Mathieu-Daudé wrote:
+> On 6/3/24 21:32, Eric Auger wrote:
+>> aw-bits is a new option that allows to set the bit width of
+>> the input address range. This value will be used as a default for
+>> the device config input_range.end. By default it is set to 64 bits
+>> which is the current value.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+>> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+>>
+>> ---
+>>
+>> v1 -> v2:
+>> - Check the aw-bits value is within [32,64]
+>> ---
+>>   include/hw/virtio/virtio-iommu.h | 1 +
+>>   hw/virtio/virtio-iommu.c         | 7 ++++++-
+>>   2 files changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/hw/virtio/virtio-iommu.h
+>> b/include/hw/virtio/virtio-iommu.h
+>> index 67ea5022af..83a52cc446 100644
+>> --- a/include/hw/virtio/virtio-iommu.h
+>> +++ b/include/hw/virtio/virtio-iommu.h
+>> @@ -68,6 +68,7 @@ struct VirtIOIOMMU {
+>>       Notifier machine_done;
+>>       bool granule_frozen;
+>>       GranuleMode granule_mode;
+>> +    uint8_t aw_bits;
+>>   };
+>>     #endif
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index aab97e1527..9b2813188b 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -1314,7 +1314,11 @@ static void
+>> virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>        * in vfio realize
+>>        */
+>>       s->config.bypass = s->boot_bypass;
+>> -    s->config.input_range.end = UINT64_MAX;
+>> +    if (s->aw_bits < 32 || s->aw_bits > 64) {
+>> +        error_setg(errp, "aw-bits must be within [32,64]");
+>
+> Don't we need to return?
+It looks better. Nevertheless this was tested and it gives the expected
+behavior.
+
+Thanks
+
+Eric
+>
+>> +    }
+>> +    s->config.input_range.end =
+>> +        s->aw_bits == 64 ? UINT64_MAX : BIT_ULL(s->aw_bits) - 1;
+>>         switch (s->granule_mode) {
+>>       case GRANULE_MODE_4K:
+>> @@ -1544,6 +1548,7 @@ static Property virtio_iommu_properties[] = {
+>>       DEFINE_PROP_BOOL("boot-bypass", VirtIOIOMMU, boot_bypass, true),
+>>       DEFINE_PROP_GRANULE_MODE("granule", VirtIOIOMMU, granule_mode,
+>>                                GRANULE_MODE_HOST),
+>> +    DEFINE_PROP_UINT8("aw-bits", VirtIOIOMMU, aw_bits, 64),
+>>       DEFINE_PROP_END_OF_LIST(),
+>>   };
+>>   
+>
+

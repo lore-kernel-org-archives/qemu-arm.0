@@ -1,195 +1,176 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1055846ejb;
-        Thu, 7 Mar 2024 02:43:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUy9HIEIcrM5PZ6ZZP+mNV99mHiEFOn+PZ8p3suw6Np99jJVU5za9ziHKNKjD5DDFTfBKRIVIZ2r4haKvNopvGo3Rotb+2E
-X-Google-Smtp-Source: AGHT+IFNogNifow0VaMp136CXCIc6sULIlvesU0t7ZQqgY7hqhJ8InJ65sKAR7QxxLO3vaYrXecX
-X-Received: by 2002:a05:6358:6f0e:b0:17b:89bd:e6cd with SMTP id r14-20020a0563586f0e00b0017b89bde6cdmr9923926rwn.8.1709808190643;
-        Thu, 07 Mar 2024 02:43:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709808190; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1085623ejb;
+        Thu, 7 Mar 2024 03:48:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV1fFb4lfvoX/EQtOGuvK6H9SSjOu36iV27duZXWLmMQI+xiXeC5rzT/MvdvOxcQ2EZZWd5AwamK14qCfXDm7AdW/dXVCJB
+X-Received: by 2002:a05:600c:4ed2:b0:412:b674:28ff with SMTP id g18-20020a05600c4ed200b00412b67428ffmr13436767wmq.22.1709812139123;
+        Thu, 07 Mar 2024 03:48:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709812139; cv=none;
         d=google.com; s=arc-20160816;
-        b=UP5I86ZcqX1DZtXEK+/JVkP9/qlCTj1QxH5JK6lI0Gn8S0kkL3jrawO3POvf27lXtH
-         s7nAB2suPVNmUroIcM0VLbs4vKWt52v2NFw5ZDxHtFKG5hgyHDjFj5NIPiwBtAADcoQ1
-         iljz2GI9qqoy4Lhwdb62WGy2XTNOFaZ8e7cmCaP/NM5CZWjRO9yb7tO7mcza+fUu133Z
-         4e46SIKdwI7riMvV6zoTL/qY6zJJlRrcO5brUh+R5/U04Gy/KiHzhVY6p6C8+s1ekhnD
-         L9AU29Jc0PgtkW/SMbMA2JpAswFK8VgxPP3g9DHU3R2L8Nm4+5vywEaHopZBgWCg+iD1
-         qYGg==
+        b=HIan4G5lkCAa+R6vC55XAIy+hadz7kTfMRr36Y+vqpHtUaFm+OTNDjbjWk0flJmQYV
+         2DQsFWmDO1RbOXpnCEtb7hduoG+wHS/1jecba3eB2WzrMy/qhX0l0Gbgug1PSUaYwC7t
+         K3CnCaFl4s7mjiXtn6AoIshb8XpjE3cizin83+YM00Ofph3F2q5Psbo8TDWVS8h0WML4
+         veSXWDmdIGizdtxRTuovgv4Lta00vqHFCpu8CXlSOxRt2+tkyyMUPCRIk8bWoRS2Fihd
+         ZKz7OAl2es3EBXodocx8LGGccnsRNHINzyWfRM/Jm7iMtrg6GMpKv+0/wCcKsia8D8jg
+         PHvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=nhJKO/wzZGIVmpKtiV0O1OdDRHUzXIrRh8U48t8aa0I=;
-        fh=8cPGgKM9WYcPhw2caRl7EXGILlcBvb2vAcIWy8Pa6ZA=;
-        b=LYKCS552+EgyxjOm57xxu1f4IaOzFqCHVNFFQ0Az4F2HzUlg0TmpvTS3fSwjwYP6Wu
-         iNyS43QdKUYgJhHcelNggNWCxfhA6Yh35Y1LGfLSHeRxdk8AQKjSA1r4tTwbr479B+Su
-         y5tEtgXm/781mKoLnrk7Bbg8e4qeGf9iI5fY3XqKFukihej+HMD+wru8XmXuW8HQdxVU
-         fV7CUHhMQAbw7clWfiD5SWfs3J04gazW3a9EemAggWK6qEH+Lu3GtgJ4uvBnZSCNumGZ
-         2aTaepdXReerSYf8XCQfMehAoADQ1MoY48lwxv51syMh2QUeB1r3D9jYIKdTGiD692jf
-         rdvA==;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:dkim-signature;
+        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
+        fh=+NRV2Y+6ysFCHBLMS2LqfG63NUbFi0hXb6uFxczgop8=;
+        b=hkfn9aol7RmQ8nZmPc4sqW88r/hJAkr6gQ93dW4yOd04RxD61/omAAJ5x9pjQ1UjZE
+         1p5XwyOquMaUI1NkTTnDlm3z0ylHHRM129iFXPltkQXg84IWcVzGVypTD2ojl2VmtWGD
+         6RhRAfRcXqtulf/uUKxhgdN/Gsw8qUwDrckDrHJKLwzEcWaJs4Yh//aFc+oXjtG5EqU/
+         6+cnRXZWRJPs2apYqEpazGZ6MxUNbCdv/1IOipimhDXXe4/Q30OrpO6Tr5FzMwW2LL5J
+         y44H29BMm2yFy+STww2PxN8SHah9lrO5FmmfHUYEt7QrtcrziAX5CrzAiIbb4a8RWgJf
+         L/rQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jx15-20020a0562142b0f00b0068fe59e447bsi16645855qvb.315.2024.03.07.02.43.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=OUBFHlO+;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e24-20020a05600c4b9800b00412d844df51sor3387231wmp.6.2024.03.07.03.48.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2024 02:43:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 07 Mar 2024 03:48:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1riBDN-00075C-CO; Thu, 07 Mar 2024 05:43:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=hzXx=KN=kaod.org=clg@ozlabs.org>)
- id 1riBDI-0006zj-Fv; Thu, 07 Mar 2024 05:43:03 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=hzXx=KN=kaod.org=clg@ozlabs.org>)
- id 1riBDG-0004TN-4R; Thu, 07 Mar 2024 05:43:00 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Tr5VF0BHmz4wc8;
- Thu,  7 Mar 2024 21:42:45 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Tr5V82Ssgz4wc7;
- Thu,  7 Mar 2024 21:42:37 +1100 (AEDT)
-Message-ID: <bd9e5103-661e-46c4-801d-5afdd629d5cf@kaod.org>
-Date: Thu, 7 Mar 2024 11:42:31 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b=OUBFHlO+;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1709812139; x=1710416939; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
+        b=OUBFHlO+wfAS9Z9yzO8UgS4+WouOmPuuxYxOUpkciihp40HZG5rmzQf422kDpKCHub
+         UzQ8r/ZKmbAzWAxaVFZCOt62nRBUmaMA03Bqhq4XUVWGX4bvLlVsDaolqvrPTxus5Kly
+         Pv72hL/5l1BOHxl+g7HANbyhSEAVuMelhs2BPELTPeX6EJmQghH7fW4cycpk/6UZOfHA
+         jVsSFAj59eP4w3KqmkLMyyhcsgeW79/C4O6RJl6+xcnwz749yVYH2VNd/xUkrJCJeBZh
+         XyUNwSOJNdpxleYiv0UfGsqPt1ySZg2EK0rhcEUYMd9jujvdTiF95v5OFeXP2V/nCvH+
+         Slgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709812139; x=1710416939;
+        h=content-transfer-encoding:mime-version:message-id:in-reply-to
+         :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
+        b=aYqA20SbDmNhHTLlQadb5xMTpVADo6WT98nLwNjWIyYFF+u2ofQ4HwnX7Gncktr8tG
+         YF+HIlvRQcJUvFEkqIPRP5VGGwP5fAtdFUqGnebubu9CFGP5wvYprdWs4IV7OEmv9oY1
+         nY7aYJEyCatzHRHbMNk0IXQ/C2d7p6TF1/Cu5MYYsfYM5eR6UwZMWPcG5ijAJcZ07m0f
+         fo5YPjT1aPQUp3cEFR3RAoXWiXM43EQYxNA1AR18oykupfPwdWIptgEDHR5buk0VmDKE
+         H44SX/pyE5Ycy53AhY/WZjdgGxJiyjw/weo9PtMusJ5IDXddTzSWT+dxQbCar/uizwk4
+         qDRw==
+X-Forwarded-Encrypted: i=1; AJvYcCVoorSezSBo+b7plOAJweaXHpriuJzxuvx9LQBB15tk0d9EqS3mZvyX3vQ48B0Px/yvPrMLQeScA/eBUCG0+dY41+ak80YA
+X-Gm-Message-State: AOJu0Yw3g1yOk8RueJSCHXfC1YTDAorIOrB6hlVFjLDadBgsuILBLZw1
+	muNJor4jbjryaAaiX0GjN1zYf5uDlJCFy+UmoTtjHcHQIaVMCxZaFan+ysuVNAFstQ==
+X-Google-Smtp-Source: AGHT+IGkmoMw3a1DPayc7QnWHr4dDS3sIBh8SO1Tg4XHtfrHtXIYWWCQjxeTzAsb6sqGUSlj3ULtUw==
+X-Received: by 2002:a05:600c:3c86:b0:412:8d98:78a with SMTP id bg6-20020a05600c3c8600b004128d98078amr14629463wmb.13.1709812138686;
+        Thu, 07 Mar 2024 03:48:58 -0800 (PST)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from meli.delivery (adsl-101.109.242.224.tellas.gr. [109.242.224.101])
+        by smtp.gmail.com with ESMTPSA id fa18-20020a05600c519200b004130c1dc29csm2432000wmb.22.2024.03.07.03.48.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Mar 2024 03:48:58 -0800 (PST)
+Date: Thu, 07 Mar 2024 13:46:27 +0200
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-arm@nongnu.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, qemu-devel@nongnu.org
+Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Benn=?UTF-8?B?w6k=?= e <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>
+Bcc: 
+Subject: Re: [PATCH-for-9.0 2/9] hw/xen/hvm: Propagate page_mask to a pair of functions
+User-Agent: meli 0.8.5-rc.3
+References: <20231114163123.74888-1-philmd@linaro.org> <20231114163123.74888-3-philmd@linaro.org>
+In-Reply-To: <20231114163123.74888-3-philmd@linaro.org>
+Message-ID: <9z7hk.qddjfbvts5k7@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/9] Add AST2700 support
-Content-Language: en-US, fr
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240304092934.1953198-1-jamin_lin@aspeedtech.com>
- <5e09c627-01aa-46cd-b367-b537f5b61e03@kaod.org>
- <SI2PR06MB5041140DFC668A43DBAB81E3FC222@SI2PR06MB5041.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041140DFC668A43DBAB81E3FC222@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=hzXx=KN=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YwFeOhGsPEzo
+Content-Type: text/plain; charset=utf-8; format=flowed
+X-TUID: oaxBLa9wJeKn
 
-On 3/5/24 04:38, Jamin Lin wrote:
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Monday, March 4, 2024 11:54 PM
->> To: Jamin Lin <jamin_lin@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Andrew Jeffery <andrew@codeconstruct.com.au>;
->> Joel Stanley <joel@jms.id.au>; Alistair Francis <alistair@alistair23.me>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->> <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH v2 0/9] Add AST2700 support
->>
->> Hello Jamin,
->>
->> On 3/4/24 10:29, Jamin Lin wrote:
->>> Changes from v1:
->>> The patch series supports WDT, SDMC, SMC, SCU, SLI and INTC for AST2700
->> SoC.
->>>
->>> Changes from v2:
->>> - replace is_aarch64 with is_bus64bit for sdmc patch review.
->>> - fix incorrect dram size for AST2700
->>>
->>> Test steps:
->>> 1. Download openbmc image for AST2700 from
->>>      https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.00
->>>
->> https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.00/
->>>      ast2700-default-obmc.tar.gz
->>> 2. untar ast2700-default-obmc.tar.gz
->>>      ```
->>>      tar -xf ast2700-default-obmc.tar.gz
->>>      ```
->>> 3. Run and the contents of scripts as following IMGDIR=ast2700-default
->>> UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
->>> UBOOT_DTB_ADDR=$((0x400000000 + ${UBOOT_SIZE}))
->>>
->>> qemu-system-aarch64 -M ast2700-evb -nographic\
->>>    -device
->> loader,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin,force-raw=on\
->>>    -device
->> loader,addr=${UBOOT_DTB_ADDR},file=${IMGDIR}/u-boot.dtb,force-raw=on\
->>>    -device loader,addr=0x430000000,file=${IMGDIR}/bl31.bin,force-raw=on\
->>>    -device
->> loader,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin,force-raw=on\
->>>    -device loader,addr=0x430000000,cpu-num=0\
->>>    -device loader,addr=0x430000000,cpu-num=1\
->>>    -device loader,addr=0x430000000,cpu-num=2\
->>>    -device loader,addr=0x430000000,cpu-num=3\
->>>    -smp 4\
->>>    -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd\
->>>    -serial mon:stdio\
->>>    -snapshot
->>>
->>> Known Issue:
->>> 1. QEMU supports ARM Generic Interrupt Controller, version 3(GICv3)
->>> but not support Shared Peripheral Interrupt (SPI), yet.
->>> Added work around in INTC patch to set GICINT132[18] which was BMC
->>> UART interrupt if it received GICINT132, so users are able to type any
->>> key from keyboard to trigger GICINT132 interrupt until AST2700 boot
->>> into login prompt. It is a temporary solution.
->>> If users encounter boot stck and no booting log, please type any key
->>> from keyboard.
->>
->> I haven't looked at the GIC issue but I started reviewing what I received.
->>
->> The mailer issue needs to be fixed before we consider this patches for merge.
->> May be use an external email while keeping the same
->> From: and Signed-off-by address.
->>
-> Understand.
-> Thanks for your suggestion. I am asking our IT help to fix our smtp server issue.
-> They are fixing it. I will use my external account to send V3 patch series if
-> this issues does not be fixed, yet.
->> When you resend, could you please add an avocado test ?
->>
-> Sure, will create a patch for avocado test.
-
-Forgot to add,
-
-please update the documentation docs/system/arm/aspeed.rst.
-
-Thanks,
-
-C.
+On Tue, 14 Nov 2023 18:31, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>We are going to replace TARGET_PAGE_MASK by a
+>runtime variable. In order to reduce code duplication,
+>propagate TARGET_PAGE_MASK to get_physmapping() and
+>xen_phys_offset_to_gaddr().
+>
+>Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>---
+> hw/i386/xen/xen-hvm.c | 18 ++++++++++--------
+> 1 file changed, 10 insertions(+), 8 deletions(-)
+>
+>diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+>index 8aa6a1ec3b..3b10425986 100644
+>--- a/hw/i386/xen/xen-hvm.c
+>+++ b/hw/i386/xen/xen-hvm.c
+>@@ -174,11 +174,12 @@ static void xen_ram_init(PCMachineState *pcms,
+>     }
+> }
+> 
+>-static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
+>+static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
+>+                                   int page_mask)
+> {
+>     XenPhysmap *physmap = NULL;
+> 
+>-    start_addr &= TARGET_PAGE_MASK;
+>+    start_addr &= page_mask;
+> 
+>     QLIST_FOREACH(physmap, &xen_physmap, list) {
+>         if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
+>@@ -188,9 +189,10 @@ static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
+>     return NULL;
+> }
+> 
+>-static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size)
+>+static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
+>+                                       int page_mask)
+> {
+>-    hwaddr addr = phys_offset & TARGET_PAGE_MASK;
+>+    hwaddr addr = phys_offset & page_mask;
+>     XenPhysmap *physmap = NULL;
+> 
+>     QLIST_FOREACH(physmap, &xen_physmap, list) {
+>@@ -252,7 +254,7 @@ static int xen_add_to_physmap(XenIOState *state,
+>     hwaddr phys_offset = memory_region_get_ram_addr(mr);
+>     const char *mr_name;
+> 
+>-    if (get_physmapping(start_addr, size)) {
+>+    if (get_physmapping(start_addr, size, TARGET_PAGE_MASK)) {
+>         return 0;
+>     }
+>     if (size <= 0) {
+>@@ -325,7 +327,7 @@ static int xen_remove_from_physmap(XenIOState *state,
+>     XenPhysmap *physmap = NULL;
+>     hwaddr phys_offset = 0;
+> 
+>-    physmap = get_physmapping(start_addr, size);
+>+    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>     if (physmap == NULL) {
+>         return -1;
+>     }
+>@@ -373,7 +375,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+>     int rc, i, j;
+>     const XenPhysmap *physmap = NULL;
+> 
+>-    physmap = get_physmapping(start_addr, size);
+>+    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>     if (physmap == NULL) {
+>         /* not handled */
+>         return;
+>@@ -633,7 +635,7 @@ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+>         int rc;
+>         ram_addr_t start_pfn, nb_pages;
+> 
+>-        start = xen_phys_offset_to_gaddr(start, length);
+>+        start = xen_phys_offset_to_gaddr(start, length, TARGET_PAGE_MASK);
+> 
+>         if (length == 0) {
+>             length = TARGET_PAGE_SIZE;
+>-- 
+>2.41.0
+>
+>
 
 
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>

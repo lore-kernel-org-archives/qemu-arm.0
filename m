@@ -1,305 +1,189 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1023521ejb;
-        Thu, 7 Mar 2024 01:22:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUT2q4cXg45Jp2G05/tztNQF1wdithsEXLxzDTzf7MVRzkHA9XXcXaZfFJSHJDE54/YRoBM740EayHIX4RUv6xNbW2N86QN
-X-Google-Smtp-Source: AGHT+IFSDeO6KQ+0uxWk3Ns0kIY+vUnqOJ0yAIF7/6m0ZDT3EveHIoxQdKDBol8FHUAzYVfdJ4et
-X-Received: by 2002:ac8:7e95:0:b0:42e:f481:efe7 with SMTP id w21-20020ac87e95000000b0042ef481efe7mr8702246qtj.11.1709803365111;
-        Thu, 07 Mar 2024 01:22:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709803365; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1028836ejb;
+        Thu, 7 Mar 2024 01:35:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWoTacedE/uQb9u5irWjqtLqurRT1Fk/pZlrQzLsmFrJUPdSHUAafStLNTmB4HcxIEX2CL74HFT7ydr4bNFxqO8RvemEoQJ
+X-Google-Smtp-Source: AGHT+IHMHRBZQ9E+OS7nHkaHcig1+uhW+nTImaN03ssd+vvtVZINhJjY9LUqISv7/JshjhLbcF4T
+X-Received: by 2002:ad4:5961:0:b0:690:a70e:bff3 with SMTP id eq1-20020ad45961000000b00690a70ebff3mr526406qvb.37.1709804136104;
+        Thu, 07 Mar 2024 01:35:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709804136; cv=none;
         d=google.com; s=arc-20160816;
-        b=TOKtEgmVkTbN6t4K6uYAnhzknsMSm7aWMHVuA45134r6+LTfvdy9BBjlxJJLVvk6Fs
-         r47Ux9aCsxpCwSkhen9vm58vsJbeo6rjjwap89iLs9AHUfnfQE+VMTGyLtjGD9GIISbP
-         0chwuPEKuG0HfsFQF4qaBwh6GQIV9X+uStt3AFdtSQ08aaKlYxRGEtiGXojhzuETz95g
-         8CCvedpR3jMYgaKO5dR5bNpZRCMF6qJqGP4whje0+lMGy5x41x+Ng0QHuGNciDHd6I/e
-         M4KEDdZ9Xwt2aPVdCA3c/BCbT8Uazgw57I8ZTCTW3t88jbBCBkRxQMixztrsbfPQVuuM
-         xUAQ==
+        b=SN8P4Apw+JvxDLv/BXxdB3x6VyamY5xbXosv11BjlQwO1LG7LaJeYrhlbxbS2TbZFk
+         4kbut9lBiGnqoYt7mZw5EoTloQ750fCvRR6LQBYJMHIuIH0uCRAwYt7+bW4JSJgeejhp
+         FT7JqKEqJdNpTbRNMBv82S8kpdcbbV8OVLZnyQXibqhYmAkvSqDYEr1qtcNQrZby+ez1
+         LL4rP16RXGJvhHNT4GL302TOP+IIpGbvc3uTQIMu5FfUUW3bUcralU9YfKgojtCctxw4
+         E04WThcki4kE0UjDGlSnvBTQE9UX/XeTm6YUxCKRc7iDAhsIryP0OxG/MLqvvRCCv1Ly
+         sy3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=FTVxRU5K7bUdUsDj3xGcg7m+v5jwrvME7QShy0kv7CE=;
-        fh=X3ZbbEK03YaZV2q2gVQ+BlHnzSty/AxJE2Vr96+Bmb4=;
-        b=vzjoUIjauMryGqV2l6rsbde1IuPG/tooVF/dEYsZtpbnPcl56xvbYavojqPTGl6e6N
-         ieFOjQqIxvFuFNLW8/9IqGR1bpV+NcUJSElV4FnxTN2NGl+ETrKabAyXcjoD3mBWZ/gp
-         EqD+iozpC1PiN3SeB/i9hnUDeulhtRHO5RIV2e8dzNZzk/hnj9GHZ7tsRoKbYwcUXF7Z
-         sBU7fzftY0l+4xBSqEX3PdJJNgTscRpCDxFiVsMOjMVD7pfnS9U+nWSt1iesF5rpnPMH
-         sEjamGF4aQGycLIOiH7G+aVtoDR+3rBPnSYcF/4RP37tNI+awbxlxBo1q+X95GJfm8fT
-         o9hQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=5iUjXlOlaZI+e9aFI8vxZ6t3An8P31o6FmV5XecqnVo=;
+        fh=v+YVb7zv3UYkFuLMBcT0+mY1PhmlVehJDHwY27b4k2g=;
+        b=WB9xFKAi0umiGbliO++E5VlYP/E3JAvXrlnTHwrL6kd6JQGC3vH9nfN05O9UI6YXEg
+         8KqvP+zfmuTl/sHbZdXEH/qiAxQ8SqGMnJ12gSZqJVmHB3Vqm4oltzZd4hJNjEQC3wAU
+         3BzJV+RgeryXqBTNVcOxKwSBbPPQH1glMhlPxDcRKX2gBG05xulGiqMCivSS/ZW+zMWg
+         9SQSv+d7jSa1umxRPksTmLZZJrOf5HZglw0OEh8iIOp68SaHa4v1iSouSprK7Qb2tfS7
+         TvMDryjmAzO0r8DLi5b0atuqMhJUPlgn7Hi0qYSpLe7VLutzr49uLXTRBkiHE0WWFuGq
+         dtrA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=aW3OGyta;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17-20020a05622a021100b0042eecd2b767si5217691qtx.799.2024.03.07.01.22.44
+        by mx.google.com with ESMTPS id g7-20020a0562140ac700b0068fe8212b87si17609346qvi.563.2024.03.07.01.35.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2024 01:22:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Mar 2024 01:35:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=aW3OGyta;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ri9xR-0004GS-G6; Thu, 07 Mar 2024 04:22:33 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1riA9q-0001BG-Qb; Thu, 07 Mar 2024 04:35:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1ri9xO-0004Fw-KU
- for qemu-devel@nongnu.org; Thu, 07 Mar 2024 04:22:30 -0500
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1ri9xK-000565-Q6
- for qemu-devel@nongnu.org; Thu, 07 Mar 2024 04:22:29 -0500
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-6e5760eeb7aso482426b3a.1
- for <qemu-devel@nongnu.org>; Thu, 07 Mar 2024 01:22:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1709803345; x=1710408145; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FTVxRU5K7bUdUsDj3xGcg7m+v5jwrvME7QShy0kv7CE=;
- b=aW3OGytaK95bhdfCrj9NA9Nbj6o+pikZedExwZ4PFI5MM1JjJq8zvRL0uA7LhmnADn
- Re06TSg1Eoz/BADBrbPvKzHcNs7/5hibdxXajSDZxVFlz1AryPraQmdAWLZds8725Qei
- b/WqYancVB3cqVpkJJFVNEUHWX0Cfid9fSrKRmVHvKLEBEwnYJEHzky8Dp6DJrePxi+Q
- JhQuTnqMSMJqyLgl6n07c12iYWL0YQaoc+QiJbiIpU5DvEW5Rz1oLqwzbRTfHQeTDNbR
- hLLqQ7BQbtYU+EGK+eXRUEpmKGpEKGiML0gbI7OUIFL+G+2jaEsVLIV05kmeDv4NMHl4
- SX0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709803345; x=1710408145;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FTVxRU5K7bUdUsDj3xGcg7m+v5jwrvME7QShy0kv7CE=;
- b=q5uETvVR3uX4PQgfDctLzs9KkFNN8o7hTystCINOPVhxchLkHMqnOKJw1Tj9qbRQxO
- g6AJkCXCAQ9Pn327kdtKWlVrGGZzXNu8pUXR2dilaQa9Tb6CiKrlCnN6Iw/OuGpgcU2R
- W5+vh4U/jAwJ9uTkLyyT7GXI1VmF+IzHgEZU6mC2cEj4n0hSFr0WBL+atrjZTw/35WoP
- eY1mCPXZYVRAglUgCTA36u/jU5doR+LmtsLXnPG9aC709HcPgBsjQ0bHkA+nQh3qKi72
- 7GB1f5NR5twsZzH1oBUy6d3YvRPQxo1m3BWA5lapvAQG4Sl5H77vfblhenFaVOFCPy+l
- 89OQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUIcFo+SF6I9zI/6n20VUvc0FH7psalkvcZWM3If8et28/2Kx0KFyWwFaVwylYAHXqqBLOJogvApj8/zLEuSqTGYhtuy1w=
-X-Gm-Message-State: AOJu0YyCp4hN2BnrXuOe789P+9JDT65MN21iKgCVMjavwPkfBLzpRZIk
- wqr+GyfgDKD7wSBHoUJqFR8KV8t6XRnv1tzkij/93yin7Xxy0YJf2APjBkN6HjM=
-X-Received: by 2002:a05:6a00:2d13:b0:6e5:fb97:ed05 with SMTP id
- fa19-20020a056a002d1300b006e5fb97ed05mr16479893pfb.25.1709803345223; 
- Thu, 07 Mar 2024 01:22:25 -0800 (PST)
-Received: from [192.168.68.110] ([177.94.15.159])
- by smtp.gmail.com with ESMTPSA id
- c11-20020a056a00008b00b006e5ce366f0csm9790621pfj.89.2024.03.07.01.22.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Mar 2024 01:22:24 -0800 (PST)
-Message-ID: <b50a1d69-4978-4aa9-a30b-24f5c8f8d306@ventanamicro.com>
-Date: Thu, 7 Mar 2024 06:22:18 -0300
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1riA9o-0001Am-PP; Thu, 07 Mar 2024 04:35:21 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1riA9g-00082f-0D; Thu, 07 Mar 2024 04:35:20 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Tr3td5vtXz6K5Z2;
+ Thu,  7 Mar 2024 17:30:17 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 1D1B9140736;
+ Thu,  7 Mar 2024 17:35:07 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 7 Mar
+ 2024 09:35:06 +0000
+Date: Thu, 7 Mar 2024 09:35:05 +0000
+To: Ankit Agrawal <ankita@nvidia.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "marcel.apfelbaum@gmail.com"
+ <marcel.apfelbaum@gmail.com>, "philmd@linaro.org" <philmd@linaro.org>,
+ "wangyanan55@huawei.com" <wangyanan55@huawei.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "clg@redhat.com"
+ <clg@redhat.com>, "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ Aniket Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, "Uday Dhoke" <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v8 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Message-ID: <20240307093505.000000fc@Huawei.com>
+In-Reply-To: <SA1PR12MB71997549A6120677BEDF2287B0202@SA1PR12MB7199.namprd12.prod.outlook.com>
+References: <20240306123317.4691-1-ankita@nvidia.com>
+ <20240306123317.4691-3-ankita@nvidia.com>
+ <20240306135847.00007876@Huawei.com>
+ <SA1PR12MB71997549A6120677BEDF2287B0202@SA1PR12MB7199.namprd12.prod.outlook.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR creation to
- common location
-Content-Language: en-US
-To: Sunil V L <sunilvl@ventanamicro.com>,
- Alistair Francis <alistair23@gmail.com>
-Cc: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, qemu-riscv@nongnu.org, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
- shannon.zhaosl@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com
-References: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
- <20240116010930.43433-2-jeeheng.sia@starfivetech.com>
- <49d0d8d3-c7fd-4039-aeed-6c31ba16557a@ventanamicro.com>
- <CAKmqyKPE-ERHShmAJQH3VNc7XqOfOeKYYyCRswJSUwf7hqm1xA@mail.gmail.com>
- <Zek4cO8ci2O38NFJ@sunil-laptop>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <Zek4cO8ci2O38NFJ@sunil-laptop>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tqMxCr6eKf3n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ueq6O5mBqwnj
+
+On Thu, 7 Mar 2024 03:03:02 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
+
+> >>
+> >> [1] ACPI Spec 6.3, Section 5.2.16.6
+> >> [2] ACPI Spec 6.3, Table 5.80
+> >>
+> >> Cc: Jonathan Cameron <qemu-devel@nongnu.org>
+> >> Cc: Alex Williamson <alex.williamson@redhat.com>
+> >> Cc: Cedric Le Goater <clg@redhat.com>
+> >> Signed-off-by: Ankit Agrawal <ankita@nvidia.com> =20
+> >
+> > I guess we gloss over the bisection breakage due to being able to add
+> > these nodes and have them used in HMAT as initiators before we have
+> > added SRAT support.=A0 Linux will moan about it and not use such an HMAT
+> > but meh, it will boot.
+> >
+> > You could drag the HMAT change after this but perhaps it's not worth bo=
+thering. =20
+>=20
+> Sorry this part isn't clear to me. Are you suggesting we keep the HMAT
+> changes out from this patch?
+
+No - don't drop them. Move them from patch 1 to either patch 2, or to a
+patch 3 if that ends up looking clearer.  I think patch 2 is the
+right choice though as that enables everything at once.
+
+It's valid to have SRAT containing GI entries without the same in HMAT
+(as HMAT doesn't have to be complete), it's not valid to have HMAT refer
+to entries that aren't in SRAT.
+
+Another thing we may need to do add in the long run is the _OSC support.
+That's needed for DSDT entries with _PXM associated with a GI only node
+so that we can make them move node depending on whether or not the
+Guest OS supports GIs and so will create the nodes.  Requires a bit of
+magic AML to make that work.
+
+It used to crash linux if you didn't do that, but that's been fixed
+for a while I believe.
+
+For now we aren't adding any such _PXM entries though so this is just
+one for the TODO list :)
 
 
+>=20
+> > Otherwise LGTM
+> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com> =20
+>=20
+> Thanks!
+>=20
+> > Could add x86 support (posted in reply to v7 this morning)
+> > and sounds like you have the test nearly ready which is great. =20
+>=20
+> Ok, will add the x86 part as well. I could reuse what you shared
+> earlier.
+>=20
+> https://gitlab.com/jic23/qemu/-/commit/ccfb4fe22167e035173390cf147d9c2269=
+51b9b6
+Excellent - thanks!
 
-On 3/7/24 00:45, Sunil V L wrote:
-> On Thu, Mar 07, 2024 at 11:33:25AM +1000, Alistair Francis wrote:
->> On Thu, Mar 7, 2024 at 4:59 AM Daniel Henrique Barboza
->> <dbarboza@ventanamicro.com> wrote:
->>>
->>> Hi,
->>>
->>> This patch break check-qtest, most specifically 'bios-table'test', for aarch64.
->>> I found this while running riscv-to-apply.next in the Gitlab pipeline.
->>>
->>>
->>> Here's the output:
->>>
->>> $ make -j && QTEST_QEMU_BINARY=./qemu-system-aarch64 V=1 ./tests/qtest/bios-tables-test
->>> TAP version 13
->>> # random seed: R02Sf0f2fa0a3fac5d540b1681c820621b7d
->>> # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-591353.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-591353.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -machine none -accel qtest
->>> 1..8
->>> # Start of aarch64 tests
->>> # Start of acpi tests
->>> # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-591353.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-591353.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -machine virt  -accel tcg -nodefaults -nographic -drive if=pflash,format=raw,file=pc-bios/edk2-aarch64-code.fd,readonly=on -drive if=pflash,format=raw,file=pc-bios/edk2-arm-vars.fd,snapshot=on -cdrom tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2 -cpu cortex-a57 -smbios type=4,max-speed=2900,current-speed=2700 -accel qtest
->>> acpi-test: Warning! SPCR binary file mismatch. Actual [aml:/tmp/aml-9G53J2], Expected [aml:tests/data/acpi/virt/SPCR].
->>> See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
->>> acpi-test: Warning! SPCR mismatch. Actual [asl:/tmp/asl-SR53J2.dsl, aml:/tmp/aml-9G53J2], Expected [asl:/tmp/asl-4Z33J2.dsl, aml:tests/data/acpi/virt/SPCR].
->>>
->>> The diff is here:
->>>
->>> --- /tmp/asl-4Z33J2.dsl 2024-03-06 15:40:24.879879348 -0300
->>> +++ /tmp/asl-SR53J2.dsl 2024-03-06 15:40:24.877879347 -0300
->>> @@ -1,57 +1,49 @@
->>>    /*
->>>     * Intel ACPI Component Architecture
->>>     * AML/ASL+ Disassembler version 20220331 (64-bit version)
->>>     * Copyright (c) 2000 - 2022 Intel Corporation
->>>
->>> (...)
->>>
->>>    [000h 0000   4]                    Signature : "SPCR"    [Serial Port Console Redirection Table]
->>> -[004h 0004   4]                 Table Length : 00000050
->>> +[004h 0004   4]                 Table Length : 0000004F
->>>    [008h 0008   1]                     Revision : 02
->>> -[009h 0009   1]                     Checksum : B1
->>> +[009h 0009   1]                     Checksum : B2
->>>    [00Ah 0010   6]                       Oem ID : "BOCHS "
->>>
->>> (...)
->>>
->>> -[042h 0066   2]                PCI Vendor ID : FFFF
->>> +[042h 0066   2]                PCI Vendor ID : 00FF
->>>
->>>
->>> After inspecting the common helper and what the original ARM code was doing
->>> I found out that we're missing something down there:
->>>
->>>
->>> On 1/15/24 22:09, Sia Jee Heng wrote:
->>>> RISC-V should also generate the SPCR in a manner similar to ARM.
->>>> Therefore, instead of replicating the code, relocate this function
->>>> to the common AML build.
->>>>
->>>> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
->>>> ---
->>>>    hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
->>>>    hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
->>>>    include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
->>>>    include/hw/acpi/aml-build.h |  4 +++
->>>>    4 files changed, 115 insertions(+), 41 deletions(-)
->>>>
->>>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->>>> index af66bde0f5..f3904650e4 100644
->>>> --- a/hw/acpi/aml-build.c
->>>> +++ b/hw/acpi/aml-build.c
->>>> @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
->>>>        }
->>>>    }
->>>>
->>>> +void build_spcr(GArray *table_data, BIOSLinker *linker,
->>>> +                const AcpiSpcrData *f, const uint8_t rev,
->>>> +                const char *oem_id, const char *oem_table_id)
->>>> +{
->>>> +    AcpiTable table = { .sig = "SPCR", .rev = rev, .oem_id = oem_id,
->>>> +                        .oem_table_id = oem_table_id };
->>>> +
->>>> +    acpi_table_begin(&table, table_data);
->>>> +    /* Interface type */
->>>> +    build_append_int_noprefix(table_data, f->interface_type, 1);
->>>> +    /* Reserved */
->>>> +    build_append_int_noprefix(table_data, 0, 3);
->>>> +    /* Base Address */
->>>> +    build_append_gas(table_data, f->base_addr.id, f->base_addr.width,
->>>> +                     f->base_addr.offset, f->base_addr.size,
->>>> +                     f->base_addr.addr);
->>>> +    /* Interrupt type */
->>>> +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
->>>> +    /* IRQ */
->>>> +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
->>>> +    /* Global System Interrupt */
->>>> +    build_append_int_noprefix(table_data, f->interrupt, 4);
->>>> +    /* Baud Rate */
->>>> +    build_append_int_noprefix(table_data, f->baud_rate, 1);
->>>> +    /* Parity */
->>>> +    build_append_int_noprefix(table_data, f->parity, 1);
->>>> +    /* Stop Bits */
->>>> +    build_append_int_noprefix(table_data, f->stop_bits, 1);
->>>> +    /* Flow Control */
->>>> +    build_append_int_noprefix(table_data, f->flow_control, 1);
->>>
->>> Here. We're missing the "Language" entry.
->>>
->>>
->>> This diff fixes the broken test:
->>>
->>>
->>> $ git diff
->>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->>> index f3904650e4..6d4517cfbe 100644
->>> --- a/hw/acpi/aml-build.c
->>> +++ b/hw/acpi/aml-build.c
->>> @@ -2024,6 +2024,8 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
->>>        build_append_int_noprefix(table_data, f->stop_bits, 1);
->>>        /* Flow Control */
->>>        build_append_int_noprefix(table_data, f->flow_control, 1);
->>> +    /* Language */
->>> +    build_append_int_noprefix(table_data, f->language, 1);
->>>        /* Terminal Type */
->>>        build_append_int_noprefix(table_data, f->terminal_type, 1);
->>>        /* PCI Device ID  */
->>
->> Thanks! I added this to the patch
->>
->>>
->>>
->>>
->>> As a side note, it seems like 'bios-table-test' isn't being run for RISC-V. Not sure if this
->>> is intentional or a foresight.
->>
->> I think you are looking for oversight :)
->>
->> I think it's just an oversight, not intentional.
->>
-> Adding these test cases is WIP. Drew had already pointed this. Myself
-> and Haibo are looking at it. But I doubt patches can be sent before 9.0
-> deadlines. Can we add them post 9.0?
+Jonathan
 
-I don't recall the last time I had to deal with a new test being added after the
-code freeze. It's not a new feature, it increases test coverage and it might find
-bugs, so my guess is that it's fine.
+>=20
+>=20
+>=20
 
-Alistair/Peter, any thoughts?
-
-
-Thanks,
-
-Daniel
-
-
-
-
-> 
-> Thanks,
-> Sunil

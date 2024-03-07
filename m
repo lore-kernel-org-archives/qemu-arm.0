@@ -1,183 +1,142 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp893739ejb;
-        Wed, 6 Mar 2024 18:56:51 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCW16G3ODvK7efRpL4frhBdmJWE9wn7EgJGCVi8QIuWd7DbpHEJHq+vvAHyprAHW8WHhwZnf/ynDtm51GKsJV+/khdxImPhC
-X-Google-Smtp-Source: AGHT+IHozqTHXWS3w6SqzTQkp8EkoyWe3Ro4Io3iwRaw6fJNlV8uW8C3+SSM7GXxRviV1FQiiFom
-X-Received: by 2002:ac8:5910:0:b0:42e:60ba:14 with SMTP id 16-20020ac85910000000b0042e60ba0014mr7912710qty.44.1709780211669;
-        Wed, 06 Mar 2024 18:56:51 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709780211; cv=pass;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp915221ejb;
+        Wed, 6 Mar 2024 20:04:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVXuCib8TEyuaSva5e7exVqWfPSLwNY987Ig+zAwW3vba58BcJUEiDvVJbtxoFhwOnI03I0J/yKfduXjeETSCY+IIt7BPqH
+X-Google-Smtp-Source: AGHT+IHok0IF8IbNJLTJSzit7GnUFwwoaO8yYAgx/mFKl0bvK0/AIvSQWib/oEbFynCWAb0ZaXTt
+X-Received: by 2002:a05:6214:5587:b0:690:9c09:f734 with SMTP id mi7-20020a056214558700b006909c09f734mr2185717qvb.4.1709784252587;
+        Wed, 06 Mar 2024 20:04:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709784252; cv=none;
         d=google.com; s=arc-20160816;
-        b=1JTXEc8aAvLPSmWsaA+bLUr8K4xusARbdMtx8gAgPG8vPsv+xPjbr+IDUl8ov7f+++
-         W4bDkbyBHgZVpQjTiccQKiFjCMRoaQiEUioCYDkevI1CrLOwSgPVpxs42xrCiodz+y2T
-         2X/G5XJjwU00bIQOoPxGnZvs/CIxHpwL94YW+6oDsuanY2l37KBpNNbzRWnhp3smvNgJ
-         p3SY2q2/oA6QfFKH0cZh+qpJs9HB035q0yS0SWo2+rvHgA5MXLmh6cDAWThgLScg72vc
-         WmWaznLHFvTXkg83utW5MSxiZkeImxrBQaBQDtzREANqovq/R55PcyyzrgOjYN8I4Pg4
-         jQ4Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=rur28WQ25ePdPGaMEXK0xKdRndoK1Ty0PfgmzCAkBNOOnE+Tt9ZU7X76tiATntzN2A
+         Ovmft3C+RqJhfoh/jTW9wQ3sDlSxlliWiSlUxzCH625fknZiWkiaGxs4obu0WsUJBD6r
+         FuvSkoh5SODh1SvWTFCE4Kxgrd2jZW7DX4oHJ6N0BOk2GOZgYYUkLrRdPP3aNGx0k/3Z
+         6BAqer9SwQXV93BUHW7Hm6Pacv+oclAFOC9bqmuFIfxbO/+p219HIwLv1XDPYEX5PTiy
+         HoDnI8NfvJPRYM3fBqL3slnOBFTZC6IbeYRYa6NWpUJOkXoCKbi5Xs0aHN4zBSJMD5NZ
+         lPDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=MRpWeqFqImYouyrGPK2IHvW3ku0pqOf1ApMMrpfOQBk=;
-        fh=2hxVxVbxpagcO4T9RvYh3jnwA2Fg/2EaM4Q4+Mxghj0=;
-        b=x3Fqicun9R7md2bWbivZNeavDaRFU1wInyb9WQrzseRfZzrWpuzawnNxOVycnsHF3m
-         J++WODxulMmh/f835xSTHHRTuB//r2636NlkRJ82I++qptu3/MVZMjQs9v23QYzEp8BX
-         R6FL7Jsw41gImCkNQp3u5fpwKqaUc4PdM3LoGgpMan/MwBMDyHVyV5M5t1cx11S+Gvth
-         yvRRl9a7wxCyYaerc56RunjTB6wk4cDMiyZV28gEC0oLzgodV/81Eb2YpquDJt9ds9TW
-         7WdRR2GbrnpjIowxbAt1oamqxkLuLp9PKXsGSan44GTT++o1MroUd1jFdT3SgspXAedQ
-         0GUQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
+         :dkim-signature;
+        bh=nK6XErzBpkocsIWFutDGoKKWWUODsOaNUxM+g+K5/ao=;
+        fh=Qs2cFxG27I/9/y+GFijU+Syv8JiCwCPeQ8hIJNNBXxk=;
+        b=DsmU/yTJQYkPxhukBeHs4LUQfzA/jEaBl52h6C9mvTzI/Cd27jBfGCjxt/2LJ0cyXb
+         t4deh8MgwXfVdkOzWscqbRbtkYra6w0Eml7j+2lh2fqJR6EkEzz6qbBFM1oopdIAZoMV
+         ENyn90+Mq6Guz9j7Gsa+VFcAR5qDKMVrH579ztfbWO+DmaOydJ04P+S1Y1+51saOpBhx
+         YjIsMG1gyL3ekzNhgqk4f5/3KidSKSydOaCTiE6Z+lfLP7zOoVmfPsNMoQHYzWdnv4rq
+         KBIqfTsQg0DPESHkE/jaIWLuMI8eimGBz9GSLXWTGTwMBG3szvtHphZbZWd4R7tjczYO
+         Jg2A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=inzU3oHq;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZNeDcg4b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id xy13-20020a05620a5dcd00b007882aba13d7si7611770qkn.780.2024.03.06.18.56.51
+        by mx.google.com with ESMTPS id c1-20020a056214224100b0068fa2e70f54si16132902qvc.11.2024.03.06.20.04.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Mar 2024 18:56:51 -0800 (PST)
+        Wed, 06 Mar 2024 20:04:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=inzU3oHq;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZNeDcg4b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ri3w4-0006Gw-LM; Wed, 06 Mar 2024 21:56:44 -0500
+	id 1ri4yu-00057S-Ec; Wed, 06 Mar 2024 23:03:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1ri3w2-0006Gf-OW; Wed, 06 Mar 2024 21:56:43 -0500
-Received: from mail-mw2nam12on20600.outbound.protection.outlook.com
- ([2a01:111:f403:200a::600]
- helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1ri4yt-00054E-6z
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 23:03:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1ri3w0-000536-H6; Wed, 06 Mar 2024 21:56:42 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ci9xYMGa+m7u+XF16yDJtpEzCKP4A8weHhZI0DgD/MhhC1OfrHoJvDeFHpc0eWXmNMWuP6cn4chvM+aejq+2/6hPNiu+zXYXRi9Mj9GjWbMb79Ax3MSCk+WbaSZKDVPS1tNVdGIq3/QDtus1DtsoXzZEK2masrIBQsNjWndZaK3W6YjlQMCTsEds4FX9ZM4lUtGal/lmRPGbMrGacRAYwMIPI6y81QQ72DjvD/tEAVYPEFfLYvv/XqVaPwOcwvdBWNfMceUdOVs12bHOTFvgP1jR3iXHCw1zwEHwHN580o4VYa4YoGF1vlxxnK8Vpma7TFOfIfkUZW7DTyDPMcZMKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MRpWeqFqImYouyrGPK2IHvW3ku0pqOf1ApMMrpfOQBk=;
- b=Fnz2KmnzcRCSp41cspna216D4T8qQKIKuxcM8oSFDFkP7xds/YLuhHOwNiiq1K/hvHI/Go3/XGyoiCOq5XLw2IyVlS4AZBfybJ7FDT+KeDInT85hlNO8egUJ62HEs//CeJhpXhwJXTfBa9h9lnFfHmHG4a20aAOdAn3Io99r77PFE4dsdpjngSJxpN4eHh8pxG4n0cxFi+JAVS2tyAhsrcIWUtdMlRECbGam6V29cXwipwFxE6sO/agE4tstVYIbdN3qXbVlRNsUX5qpkgUysp348Lkqiyc4jTPobWuar7BRBpGrAk+aJgDCECfsddUqzazP2oz2G2q/DPxsk79cPg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MRpWeqFqImYouyrGPK2IHvW3ku0pqOf1ApMMrpfOQBk=;
- b=inzU3oHqoufbJvLoR6hNtQ7QCpzP376B0TOh5ETP9YxJ7GT5A33XDAL6kVJqapQd8/7qUGwpGLM+i7vnY4oAguuIkMTrE9n6PnOJNr1p4diCB/J1dfW4nl+QZKV9yozp24abvfbYRS2ryu96EvLPjrwPQ+8ayV118dev3Csrq2WFmRGnuIweXMNlqs7XrA8hfy2Edsz30fMVvg/skEdO3OiyBDGacYFmZ9VY9YSS62jdxtNyU9lN0Fg7MSqTS/PmWx0WMq/bnACKbvR+fD1B9147Wr7BmnhNfdgwg7hk5P0hEbqghthVTuM+DRSBnSoyhTf8bwm3q0oeNfttuZjZnw==
-Received: from SA1PR12MB7199.namprd12.prod.outlook.com (2603:10b6:806:2bc::21)
- by MN6PR12MB8567.namprd12.prod.outlook.com (2603:10b6:208:478::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.40; Thu, 7 Mar
- 2024 02:56:32 +0000
-Received: from SA1PR12MB7199.namprd12.prod.outlook.com
- ([fe80::284c:211f:16dc:f7b2]) by SA1PR12MB7199.namprd12.prod.outlook.com
- ([fe80::284c:211f:16dc:f7b2%5]) with mapi id 15.20.7316.032; Thu, 7 Mar 2024
- 02:56:31 +0000
-From: Ankit Agrawal <ankita@nvidia.com>
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "marcel.apfelbaum@gmail.com"
- <marcel.apfelbaum@gmail.com>, "philmd@linaro.org" <philmd@linaro.org>,
- "wangyanan55@huawei.com" <wangyanan55@huawei.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "clg@redhat.com"
- <clg@redhat.com>, "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
- <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
- Aniket Agashe <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
- <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
- Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
- <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v8 1/2] qom: new object to associate device to NUMA node
-Thread-Topic: [PATCH v8 1/2] qom: new object to associate device to NUMA node
-Thread-Index: AQHab8KAGKU3ULlvlU6gntZVHgcPsrEqupuAgADaA9Y=
-Date: Thu, 7 Mar 2024 02:56:31 +0000
-Message-ID: <SA1PR12MB71994D65E90175F6916AE5C9B0202@SA1PR12MB7199.namprd12.prod.outlook.com>
-References: <20240306123317.4691-1-ankita@nvidia.com>
- <20240306123317.4691-2-ankita@nvidia.com>
- <20240306134909.00000a3a@Huawei.com>
-In-Reply-To: <20240306134909.00000a3a@Huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SA1PR12MB7199:EE_|MN6PR12MB8567:EE_
-x-ms-office365-filtering-correlation-id: b38354e6-5898-4a75-5020-08dc3e52315b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: H44geO34FFIrbQWCg3pFymm7F+TN9Q/te3lwFL5b3nmkNntu9KQ1pONtACO5Sf7sYykAgdr22rbpcM3qHepYQgcGHvZY7QOYHjziYyWDNcYBDajIjX5FZXcFdz4WJCAcPOt7nyVFPVurawfWuEIR56nx+I5QAL8y+/DGACufBpDC8MEz08mZygAdRj12KGJT32gQXC3tte5jKiL9cSM/RnGXl8v2oO9V9nCi9kgbUx5s852u6fEiFuiWU3woZvHiU/1XaIeIjWqr7ZS7DP48AB2uz61habSzrjIHWq/G1mr+5w+0IG4gKRFKCl0LlG0RIJ8GuQ+EEITLxULvNVNRmrvFNonJEszgpy7YFJjwcV4mE4sVzD4Pal4wSMAjiRCnoMxhXVGOaFFMcNG9cnH6ToYDQl7F+6BfnwHlreGrZTuS0VW+FpFxXTkio3Qt/YCLeH1BjBjOFyfKhdU1sgOjXLl4SepRWkD+3xT0lt02TE6uK+/opcLlc+Co/IHnWyvuM42ToD7R9iepyKBLs4S1bvqjOw64rd3u7Wa/ZowuC6P2D7AH7F8qum2fjQHSqJh5gwtPL02tOpacDr8mCl0WKR/GHQ/MJkeyQ+xMZq785NOmwQge/eSC1fL0COo0Lj7Ulg6rr5dGP85hpMhPpLmbJ7I7zFy66h05Buq9UPBjyig=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SA1PR12MB7199.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(38070700009); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?jPtHh1zxpgugLN8zUNhyJgdVNkMhloYjZWQ+pZKz2Ymr3dPgSAPR5EYkr2?=
- =?iso-8859-1?Q?tenf/89JFKUwy6ONotMpD2d4ao4d4lrjwxt3tOcIylq05y7sQLQt7CR4eB?=
- =?iso-8859-1?Q?Lxjfetq9Vzrxbch7YPA8+xQ06YyTtM1QCheJ69GmbF6kGR1tW+QtRj8itB?=
- =?iso-8859-1?Q?D5Ml+zuJ6EFEgLhRm3lN2dslLivU8EATMY5OrE4ROfoq7PkjWcrZakbB1s?=
- =?iso-8859-1?Q?eEOexRyVqt+ah5B/KpFQqryV92DMLOahPZR8htO2wSYRNpnO2VZVLzo1MK?=
- =?iso-8859-1?Q?fP4sXrucnTvf2i/fJc/qwQpYiaxGBjuHcJqW3yOskGc/YpAbmHk4BjVGuW?=
- =?iso-8859-1?Q?lhpTWXjOWZTs+kd8Shquk0Dj/yDEL+xkcLKI1vdL8KrgDW5G5ypPP3c1vk?=
- =?iso-8859-1?Q?AvaiSFsGW7rJ3YRhpSIVFZ+SiYdM2FHp+2x4x9dkL6E7howi318VuigKDi?=
- =?iso-8859-1?Q?ObSNqTWGyvcMscJjeiWQ7fXBytrHlr7Qaj2F/rHGHVMtOXWKDEy808cQNr?=
- =?iso-8859-1?Q?z6Um+e1TydYLvphx508dCZMNfaQKJDsNm30m14IiBMzCdoAdEppd1jmWkI?=
- =?iso-8859-1?Q?NU5Qcwa6/SrlGmuZxej1tv2SJ39ozezTtDvYivJwUDM9q8so8pKpyJHnrw?=
- =?iso-8859-1?Q?gJxW5rEGOKqBYBhSIgxZQigYCzwYWLWQi0TgMmxGwIYHktkf+sl+Z3vSsW?=
- =?iso-8859-1?Q?TiNSqABa04TxP5VhpgLiJlPlGYCNgPlVWaS4xydr2ufXe0Vb6hdoEcLNUb?=
- =?iso-8859-1?Q?0q8Bv/LSXFVErKoPf2WIIsGI19h36GK7O74bVMxPMX+K24N0H+lnK928lF?=
- =?iso-8859-1?Q?feKeQOPq29UTtn5j5ou0ejVPlzBCOI0SYRj323RPQsF0zpLhjDxIk93eqL?=
- =?iso-8859-1?Q?0N2VSOH+I8qighpuwWa9LqbB4BElvyGV6tPS2xjyMY3ey86a8BTHulfCq+?=
- =?iso-8859-1?Q?HkOAH1ae/Jcky1rv9JH/iOproubLdNvjNP9fC3SMOVvRvlSkaXdqbs5wDm?=
- =?iso-8859-1?Q?sBwRMKyFt8UlKOle//yMEXp+fojY9uafCLM1heRbOcoui4gwvvSBH9xjmY?=
- =?iso-8859-1?Q?TjLa++C+2liuAYlyVO5q0uT8/quMudJL2iDOEDd63YIq+zwTYGCc02MmS8?=
- =?iso-8859-1?Q?+fdFNRisHHCVmlwfXBxsFJIE7N/a+gxNmKspgo2czhHeFbNjgLdEyprIu3?=
- =?iso-8859-1?Q?UUjmrqycXeUVpeEFfLNuMohiZFWObgQVaif0gIc/CfRET2+LhRlNe5zMh5?=
- =?iso-8859-1?Q?XqsY+x6Xrn8JSb05v3csmV5kx7ZY95cAug2i2MRVjpjWD6ybkcnrDkWi7a?=
- =?iso-8859-1?Q?MEe+dghvZycfeMJoM5LafElUWckipx8rvSuEAdlArNTwLFXdkg2EHPrav+?=
- =?iso-8859-1?Q?YDzbLDt7GPCH+F0mbtCPITSL8H3MSIyx1c9pj33Ri6IkYBa0HSWSHGAjRA?=
- =?iso-8859-1?Q?wscSDZuZjY/FTlWpaJfhjSjc4B0TcU0N6e56PJnlq8KCkpiMgDFH8uhqzP?=
- =?iso-8859-1?Q?ilkaeimuFPCqayjQ/qv8RGby9aGH69WolDCwfrj/UJrbleFPpso7rkzaV6?=
- =?iso-8859-1?Q?9KtLSq21WdfF7xNH1C7g+vOkY+AO6X+g4H9O3+eOUW+nvvT+g+FyI9HdOj?=
- =?iso-8859-1?Q?ujnbvY+HTLiic=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1ri4yq-00018H-U4
+ for qemu-arm@nongnu.org; Wed, 06 Mar 2024 23:03:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709784218;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nK6XErzBpkocsIWFutDGoKKWWUODsOaNUxM+g+K5/ao=;
+ b=ZNeDcg4baP5U5LNBRwqcTzxJ3J80Id7Sj2JjKKjNlVHereChX6AKzBCWMrJ9XoRdpdx19S
+ 4N69H6eENXtBqPq+mVMvVFOKo9zJlO8Ra4bIB5XKyvVGP1bNoSqkJc+g/W0vPv7ddpAqef
+ 2jqcXC3fgN8N7NDD+Siih1alpuj3Umk=
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-302-TUYJ0H1iNWCx5RWBwSb9NQ-1; Wed, 06 Mar 2024 23:03:36 -0500
+X-MC-Unique: TUYJ0H1iNWCx5RWBwSb9NQ-1
+Received: by mail-oi1-f200.google.com with SMTP id
+ 5614622812f47-3bbc40771a9so446881b6e.0
+ for <qemu-arm@nongnu.org>; Wed, 06 Mar 2024 20:03:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709784216; x=1710389016;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=wenKE+MVTcK8m6UPJnyls0Ib8nxNGHTk5ssV3xWvL58=;
+ b=s7yQINA5jDlC8+Se7TsdQVTUdzRf7Ldy0W75Kiw6JUr+1tMuiUwRUS+wTa7Ngz5Xhv
+ V/eCzIQIPysvtxHa8gKrgIzJY29ptsLMvVI+cddW0TMu2bzuFFoKR75UoAxctG7Z1lSi
+ G6IT88i5bfkyluHIMgIqJ2ELKQxU53IeiiAkxb+0l98sBo0Qw5d97rbXbGVlZbWQ+YB3
+ KqbQFTXa6BBKtPtu7Q5+/cvZ2H/1BNrqS6ZcxgfGyBho9BywZyDj7vSD9u6G7fcUJzyf
+ BH8nQTzTa83ovjsRii2U+nDA426TZxs3l8D5u9S4ehk15J2j0/tc/lkz900Yimr0rmq3
+ iMQg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8aU3ujGtBpp2Ju3D/KWHvcPoD/PWpa1EhEWKj8ZfU8IlH8JYBdvW4r3trm7lXjzlfmnbPB1XVYJW493awR243r0Uj
+X-Gm-Message-State: AOJu0YxIj45pt7NrY9QV8cXv/wj1atcH0XZLpo0/JQCqf6vwJISu9L5k
+ 7EXEhRm3qmen5G9nATeEtr34jFHq76emubR4l56gpAsnE6oJKCvPHnqqQJ2YZETE4i6g0/4Unzc
+ EB6aH1ZU8VavLEnpReeni1BT0CmVw9OXUWlWpONuey2GCxTSEKw==
+X-Received: by 2002:a05:6808:6297:b0:3c2:154f:7716 with SMTP id
+ du23-20020a056808629700b003c2154f7716mr5048231oib.43.1709784215619; 
+ Wed, 06 Mar 2024 20:03:35 -0800 (PST)
+X-Received: by 2002:a05:6808:6297:b0:3c2:154f:7716 with SMTP id
+ du23-20020a056808629700b003c2154f7716mr5048210oib.43.1709784215194; 
+ Wed, 06 Mar 2024 20:03:35 -0800 (PST)
+Received: from smtpclient.apple ([116.73.135.231])
+ by smtp.gmail.com with ESMTPSA id
+ r31-20020a63fc5f000000b005dc3fc53f19sm11566107pgk.7.2024.03.06.20.03.29
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 06 Mar 2024 20:03:34 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: [PATCH v2 07/20] smbios: avoid mangling user provided tables
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <0eeed9a2-cd7b-bdde-6346-3357dc430835@redhat.com>
+Date: Thu, 7 Mar 2024 09:33:17 +0530
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Song Gao <gaosong@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Message-Id: <97A9187B-2BB6-4819-AB28-679C0DE04501@redhat.com>
+References: <20240305155724.2047069-1-imammedo@redhat.com>
+ <20240305155724.2047069-8-imammedo@redhat.com>
+ <0eeed9a2-cd7b-bdde-6346-3357dc430835@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+X-Mailer: Apple Mail (2.3774.400.31)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain;
+	charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SA1PR12MB7199.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b38354e6-5898-4a75-5020-08dc3e52315b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2024 02:56:31.5467 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rkc6gZfFw5mcvTgtD6FlD89VgqOGdwPr0rLo/X2FxTEsJ2S1BVJ5cboLJz0TzoGRT8WmwhoOd1w3I1NnMXjPqQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR12MB8567
-Received-SPF: softfail client-ip=2a01:111:f403:200a::600;
- envelope-from=ankita@nvidia.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.365,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -193,85 +152,355 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0ROuEJi1wkEm
+X-TUID: JDOBWNc6GyJD
 
->> -object acpi-generic-initiator,id=3Dgi14,pci-dev=3Ddev1,node=3D16 \=0A=
->> -object acpi-generic-initiator,id=3Dgi15,pci-dev=3Ddev1,node=3D17 \=0A=
->> =0A=
->> The performance benefits can be realized by providing the NUMA node dist=
-ances=0A=
->> appropriately (through libvirt tags or Qemu params). The admin can get t=
-he=0A=
->> distance among nodes in hardware using `numactl -H`.=0A=
->=0A=
-> That's a lot of description when you could just have claimed you want a n=
-ormal=0A=
-> GI node for HMAT and we'd have all believed you ;)=0A=
-=0A=
-Ack, I'll remove this part and change it to say as such.=0A=
-=0A=
->> =0A=
->> Link: https://www.nvidia.com/en-in/technologies/multi-instance-gpu [1]=
-=0A=
->> Cc: Jonathan Cameron <qemu-devel@nongnu.org>=0A=
->> Cc: Alex Williamson <alex.williamson@redhat.com>=0A=
->> Cc: Markus Armbruster <armbru@redhat.com>=0A=
->> Acked-by: Markus Armbruster <armbru@redhat.com>=0A=
->> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>=0A=
->=0A=
-> Hi Ankit,=0A=
->=0A=
-> Some minor things inline. With the includes tidied up.=0A=
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>=0A=
-=0A=
-Thanks!=0A=
-=0A=
->> diff --git a/include/hw/acpi/acpi_generic_initiator.h b/include/hw/acpi/=
-acpi_generic_initiator.h=0A=
->> new file mode 100644=0A=
->> index 0000000000..23d0b591c6=0A=
->> --- /dev/null=0A=
->> +++ b/include/hw/acpi/acpi_generic_initiator.h=0A=
->> @@ -0,0 +1,32 @@=0A=
->> +// SPDX-License-Identifier: GPL-2.0-only=0A=
->> +/*=0A=
->> + * Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights rese=
-rved=0A=
->> + */=0A=
->> +=0A=
->> +#ifndef ACPI_GENERIC_INITIATOR_H=0A=
->> +#define ACPI_GENERIC_INITIATOR_H=0A=
->> +=0A=
->> +#include "hw/mem/pc-dimm.h"=0A=
->=0A=
-> Why?=0A=
->=0A=
->> +#include "hw/acpi/bios-linker-loader.h"=0A=
->> +#include "hw/acpi/aml-build.h"=0A=
->> +#include "sysemu/numa.h"=0A=
->=0A=
-> This should only include headers that it uses directly.=0A=
-> If they are needed down in the c files, then include them there.=0A=
-=0A=
-Ack, will fix this in the next version.=0A=
-=0A=
->> +typedef struct AcpiGenericInitiator {=0A=
->> +=A0=A0=A0 /* private */=0A=
->> +=A0=A0=A0 Object parent;=0A=
->> +=0A=
->> +=A0=A0=A0 /* public */=0A=
->> +=A0=A0=A0 char *pci_dev;=0A=
->> +=A0=A0=A0 uint16_t node;=0A=
->> +} AcpiGenericInitiator;=0A=
->> +=0A=
->> +typedef struct AcpiGenericInitiatorClass {=0A=
->> +=A0=A0=A0 ObjectClass parent_class;=0A=
->> +} AcpiGenericInitiatorClass;=0A=
->=0A=
-> Trivial, but you could push the class definition down into the c file=0A=
-> given it's not accessed from anywhere else.=0A=
-=0A=
-Sure will move the AcpiGenericInitiatorClass typedef to the .c file.=0A=
-=0A=
-> +=0A=
-> +#endif=0A=
+
+
+> On 06-Mar-2024, at 12:11, Ani Sinha <anisinha@redhat.com> wrote:
+>=20
+>=20
+>=20
+> On Tue, 5 Mar 2024, Igor Mammedov wrote:
+>=20
+>> currently smbios_entry_add() preserves internally '-smbios type=3D'
+>> options but tables provided with '-smbios file=3D' are stored directly
+>> into blob that eventually will be exposed to VM. And then later
+>> QEMU adds default/'-smbios type' entries on top into the same blob.
+>>=20
+>> It makes impossible to generate tables more than once, hence
+>> 'immutable' guard was used.
+>> Make it possible to regenerate final blob by storing user provided
+>> blobs into a dedicated area (usr_blobs) and then copy it when
+>> composing final blob. Which also makes handling of -smbios
+>> options consistent.
+>>=20
+>> As side effect of this and previous commits there is no need to
+>> generate legacy smbios_entries at the time options are parsed.
+>> Instead compose smbios_entries on demand from  usr_blobs like
+>> it is done for non-legacy SMBIOS tables.
+>>=20
+>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+>> Tested-by: Fiona Ebner <f.ebner@proxmox.com>
+>=20
+> Reviewed-by: Ani Sinha <anisinha@redhat.com>
+>=20
+>> ---
+>> hw/smbios/smbios.c | 179 +++++++++++++++++++++++----------------------
+>> 1 file changed, 92 insertions(+), 87 deletions(-)
+>>=20
+>> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+>> index c46fc93357..aa2cc5bdbd 100644
+>> --- a/hw/smbios/smbios.c
+>> +++ b/hw/smbios/smbios.c
+>> @@ -57,6 +57,14 @@ static size_t smbios_entries_len;
+>> static bool smbios_uuid_encoded =3D true;
+>> /* end: legacy structures & constants for <=3D 2.0 machines */
+>>=20
+>> +/*
+>> + * SMBIOS tables provided by user with '-smbios file=3D<foo>' option
+>> + */
+>> +uint8_t *usr_blobs;
+>> +size_t usr_blobs_len;
+>> +static GArray *usr_blobs_sizes;
+>> +static unsigned usr_table_max;
+>> +static unsigned usr_table_cnt;
+>>=20
+>> uint8_t *smbios_tables;
+>> size_t smbios_tables_len;
+>> @@ -67,7 +75,6 @@ static SmbiosEntryPointType smbios_ep_type =3D SMBIOS_=
+ENTRY_POINT_TYPE_32;
+>> static SmbiosEntryPoint ep;
+>>=20
+>> static int smbios_type4_count =3D 0;
+>> -static bool smbios_immutable;
+>> static bool smbios_have_defaults;
+>> static uint32_t smbios_cpuid_version, smbios_cpuid_features;
+>>=20
+>> @@ -569,9 +576,8 @@ static void smbios_build_type_1_fields(void)
+>>=20
+>> uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *len=
+gth)
+>> {
+>> -    /* drop unwanted version of command-line file blob(s) */
+>> -    g_free(smbios_tables);
+>> -    smbios_tables =3D NULL;
+>> +    int i;
+>> +    size_t usr_offset;
+>>=20
+>>     /* also complain if fields were given for types > 1 */
+>>     if (find_next_bit(have_fields_bitmap,
+>> @@ -581,12 +587,33 @@ uint8_t *smbios_get_table_legacy(uint32_t expected=
+_t4_count, size_t *length)
+>>         exit(1);
+>>     }
+>>=20
+>> -    if (!smbios_immutable) {
+>> -        smbios_build_type_0_fields();
+>> -        smbios_build_type_1_fields();
+>> -        smbios_validate_table(expected_t4_count);
+>> -        smbios_immutable =3D true;
+>> +    g_free(smbios_entries);
+>> +    smbios_entries_len =3D sizeof(uint16_t);
+>> +    smbios_entries =3D g_malloc0(smbios_entries_len);
+>> +
+>> +    for (i =3D 0, usr_offset =3D 0; usr_blobs_sizes && i < usr_blobs_si=
+zes->len;
+>> +         i++)
+>> +    {
+>> +        struct smbios_table *table;
+>> +        struct smbios_structure_header *header;
+>> +        size_t size =3D g_array_index(usr_blobs_sizes, size_t, i);
+>> +
+>> +        header =3D (struct smbios_structure_header *)(usr_blobs + usr_o=
+ffset);
+>> +        smbios_entries =3D g_realloc(smbios_entries, smbios_entries_len=
+ +
+>> +                                                   size + sizeof(*table=
+));
+>> +        table =3D (struct smbios_table *)(smbios_entries + smbios_entri=
+es_len);
+>> +        table->header.type =3D SMBIOS_TABLE_ENTRY;
+>> +        table->header.length =3D cpu_to_le16(sizeof(*table) + size);
+>> +        memcpy(table->data, header, size);
+>> +        smbios_entries_len +=3D sizeof(*table) + size;
+>> +        (*(uint16_t *)smbios_entries) =3D
+>> +            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+>=20
+> I know this comes from existing code but can you please explain why we ad=
+d
+> 1 to it? This is confusing and a comment here would be nice.
+>=20
+>> +        usr_offset +=3D size;
+>=20
+> It would be better if we could add a comment here describing a bit what
+> this is all about.
+>=20
+> user blobs are an array of smbios_structure_header entries whereas legacy
+> tables are an array of smbios_table structures where
+> smbios_table->data represents the a single user provided table blob in
+> smbios_structure_header.
+
+Igor, are you going to send a v3 for this with the comments added?
+
+>=20
+>>     }
+>> +
+>> +    smbios_build_type_0_fields();
+>> +    smbios_build_type_1_fields();
+>> +    smbios_validate_table(expected_t4_count);
+>>     *length =3D smbios_entries_len;
+>>     return smbios_entries;
+>> }
+>> @@ -1094,67 +1121,67 @@ void smbios_get_tables(MachineState *ms,
+>> {
+>>     unsigned i, dimm_cnt, offset;
+>>=20
+>> -    /* drop unwanted (legacy) version of command-line file blob(s) */
+>> -    g_free(smbios_entries);
+>> -    smbios_entries =3D NULL;
+>> +    g_free(smbios_tables);
+>> +    smbios_tables =3D g_memdup2(usr_blobs, usr_blobs_len);
+>=20
+> Again a comment describing here would be nice as to why memdup is ok.
+>=20
+>> +    smbios_tables_len =3D usr_blobs_len;
+>> +    smbios_table_max =3D usr_table_max;
+>> +    smbios_table_cnt =3D usr_table_cnt;
+>>=20
+>> -    if (!smbios_immutable) {
+>> -        smbios_build_type_0_table();
+>> -        smbios_build_type_1_table();
+>> -        smbios_build_type_2_table();
+>> -        smbios_build_type_3_table();
+>> +    smbios_build_type_0_table();
+>> +    smbios_build_type_1_table();
+>> +    smbios_build_type_2_table();
+>> +    smbios_build_type_3_table();
+>>=20
+>> -        assert(ms->smp.sockets >=3D 1);
+>> +    assert(ms->smp.sockets >=3D 1);
+>>=20
+>> -        for (i =3D 0; i < ms->smp.sockets; i++) {
+>> -            smbios_build_type_4_table(ms, i);
+>> -        }
+>> +    for (i =3D 0; i < ms->smp.sockets; i++) {
+>> +        smbios_build_type_4_table(ms, i);
+>> +    }
+>>=20
+>> -        smbios_build_type_8_table();
+>> -        smbios_build_type_11_table();
+>> +    smbios_build_type_8_table();
+>> +    smbios_build_type_11_table();
+>>=20
+>> #define MAX_DIMM_SZ (16 * GiB)
+>> #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+>>                                         : ((current_machine->ram_size - =
+1) % MAX_DIMM_SZ) + 1)
+>>=20
+>> -        dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_=
+SZ) / MAX_DIMM_SZ;
+>> +    dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) =
+/
+>> +               MAX_DIMM_SZ;
+>>=20
+>> -        /*
+>> -         * The offset determines if we need to keep additional space be=
+tween
+>> -         * table 17 and table 19 header handle numbers so that they do
+>> -         * not overlap. For example, for a VM with larger than 8 TB gue=
+st
+>> -         * memory and DIMM like chunks of 16 GiB, the default space bet=
+ween
+>> -         * the two tables (T19_BASE - T17_BASE =3D 512) is not enough.
+>> -         */
+>> -        offset =3D (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+>> -                 dimm_cnt - (T19_BASE - T17_BASE) : 0;
+>> +    /*
+>> +     * The offset determines if we need to keep additional space betwee=
+n
+>> +     * table 17 and table 19 header handle numbers so that they do
+>> +     * not overlap. For example, for a VM with larger than 8 TB guest
+>> +     * memory and DIMM like chunks of 16 GiB, the default space between
+>> +     * the two tables (T19_BASE - T17_BASE =3D 512) is not enough.
+>> +     */
+>> +    offset =3D (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+>> +             dimm_cnt - (T19_BASE - T17_BASE) : 0;
+>>=20
+>> -        smbios_build_type_16_table(dimm_cnt);
+>> +    smbios_build_type_16_table(dimm_cnt);
+>>=20
+>> -        for (i =3D 0; i < dimm_cnt; i++) {
+>> -            smbios_build_type_17_table(i, GET_DIMM_SZ);
+>> -        }
+>> +    for (i =3D 0; i < dimm_cnt; i++) {
+>> +        smbios_build_type_17_table(i, GET_DIMM_SZ);
+>> +    }
+>>=20
+>> -        for (i =3D 0; i < mem_array_size; i++) {
+>> -            smbios_build_type_19_table(i, offset, mem_array[i].address,
+>> -                                       mem_array[i].length);
+>> -        }
+>> +    for (i =3D 0; i < mem_array_size; i++) {
+>> +        smbios_build_type_19_table(i, offset, mem_array[i].address,
+>> +                                   mem_array[i].length);
+>> +    }
+>>=20
+>> -        /*
+>> -         * make sure 16 bit handle numbers in the headers of tables 19
+>> -         * and 32 do not overlap.
+>> -         */
+>> -        assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+>> +    /*
+>> +     * make sure 16 bit handle numbers in the headers of tables 19
+>> +     * and 32 do not overlap.
+>> +     */
+>> +    assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+>>=20
+>> -        smbios_build_type_32_table();
+>> -        smbios_build_type_38_table();
+>> -        smbios_build_type_41_table(errp);
+>> -        smbios_build_type_127_table();
+>> +    smbios_build_type_32_table();
+>> +    smbios_build_type_38_table();
+>> +    smbios_build_type_41_table(errp);
+>> +    smbios_build_type_127_table();
+>>=20
+>> -        smbios_validate_table(ms->smp.sockets);
+>> -        smbios_entry_point_setup();
+>> -        smbios_immutable =3D true;
+>> -    }
+>> +    smbios_validate_table(ms->smp.sockets);
+>> +    smbios_entry_point_setup();
+>>=20
+>>     /* return tables blob and entry point (anchor), and their sizes */
+>>     *tables =3D smbios_tables;
+>> @@ -1254,13 +1281,10 @@ void smbios_entry_add(QemuOpts *opts, Error **er=
+rp)
+>> {
+>>     const char *val;
+>>=20
+>> -    assert(!smbios_immutable);
+>> -
+>>     val =3D qemu_opt_get(opts, "file");
+>>     if (val) {
+>>         struct smbios_structure_header *header;
+>> -        int size;
+>> -        struct smbios_table *table; /* legacy mode only */
+>> +        size_t size;
+>>=20
+>>         if (!qemu_opts_validate(opts, qemu_smbios_file_opts, errp)) {
+>>             return;
+>> @@ -1277,9 +1301,9 @@ void smbios_entry_add(QemuOpts *opts, Error **errp=
+)
+>>          * (except in legacy mode, where the second '\0' is implicit and
+>>          *  will be inserted by the BIOS).
+>>          */
+>> -        smbios_tables =3D g_realloc(smbios_tables, smbios_tables_len + =
+size);
+>> -        header =3D (struct smbios_structure_header *)(smbios_tables +
+>> -                                                    smbios_tables_len);
+>> +        usr_blobs =3D g_realloc(usr_blobs, usr_blobs_len + size);
+>> +        header =3D (struct smbios_structure_header *)(usr_blobs +
+>> +                                                    usr_blobs_len);
+>>=20
+>>         if (load_image_size(val, (uint8_t *)header, size) !=3D size) {
+>>             error_setg(errp, "Failed to load SMBIOS file %s", val);
+>> @@ -1300,34 +1324,15 @@ void smbios_entry_add(QemuOpts *opts, Error **er=
+rp)
+>>             smbios_type4_count++;
+>>         }
+>>=20
+>> -        smbios_tables_len +=3D size;
+>> -        if (size > smbios_table_max) {
+>> -            smbios_table_max =3D size;
+>> +        if (!usr_blobs_sizes) {
+>> +            usr_blobs_sizes =3D g_array_new(false, false, sizeof(size_t=
+));
+>>         }
+>> -        smbios_table_cnt++;
+>> -
+>> -        /* add a copy of the newly loaded blob to legacy smbios_entries=
+ */
+>> -        /* NOTE: This code runs before smbios_set_defaults(), so we don=
+'t
+>> -         *       yet know which mode (legacy vs. aggregate-table) will =
+be
+>> -         *       required. We therefore add the binary blob to both leg=
+acy
+>> -         *       (smbios_entries) and aggregate (smbios_tables) tables,=
+ and
+>> -         *       delete the one we don't need from smbios_set_defaults(=
+),
+>> -         *       once we know which machine version has been requested.
+>> -         */
+>> -        if (!smbios_entries) {
+>> -            smbios_entries_len =3D sizeof(uint16_t);
+>> -            smbios_entries =3D g_malloc0(smbios_entries_len);
+>> +        g_array_append_val(usr_blobs_sizes, size);
+>> +        usr_blobs_len +=3D size;
+>> +        if (size > usr_table_max) {
+>> +            usr_table_max =3D size;
+>>         }
+>> -        smbios_entries =3D g_realloc(smbios_entries, smbios_entries_len=
+ +
+>> -                                                   size + sizeof(*table=
+));
+>> -        table =3D (struct smbios_table *)(smbios_entries + smbios_entri=
+es_len);
+>> -        table->header.type =3D SMBIOS_TABLE_ENTRY;
+>> -        table->header.length =3D cpu_to_le16(sizeof(*table) + size);
+>> -        memcpy(table->data, header, size);
+>> -        smbios_entries_len +=3D sizeof(*table) + size;
+>> -        (*(uint16_t *)smbios_entries) =3D
+>> -                cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + =
+1);
+>> -        /* end: add a copy of the newly loaded blob to legacy smbios_en=
+tries */
+>> +        usr_table_cnt++;
+>>=20
+>>         return;
+>>     }
+>> --
+>> 2.39.3
+
+

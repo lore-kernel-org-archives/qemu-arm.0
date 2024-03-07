@@ -1,172 +1,285 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1085623ejb;
-        Thu, 7 Mar 2024 03:48:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV1fFb4lfvoX/EQtOGuvK6H9SSjOu36iV27duZXWLmMQI+xiXeC5rzT/MvdvOxcQ2EZZWd5AwamK14qCfXDm7AdW/dXVCJB
-X-Received: by 2002:a05:600c:4ed2:b0:412:b674:28ff with SMTP id g18-20020a05600c4ed200b00412b67428ffmr13436767wmq.22.1709812139123;
-        Thu, 07 Mar 2024 03:48:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709812139; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1087994ejb;
+        Thu, 7 Mar 2024 03:54:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVSsNFB54PccdhQauUV+lHmrpr4pqofWuM9RcYm7cv92kIB3UFO80l8gsaeu+LDF+yJYneJpeL8kBXrN9Qn8vAIhqWaeSLL
+X-Received: by 2002:ac2:555e:0:b0:513:26e7:440c with SMTP id l30-20020ac2555e000000b0051326e7440cmr1162402lfk.61.1709812469909;
+        Thu, 07 Mar 2024 03:54:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709812469; cv=none;
         d=google.com; s=arc-20160816;
-        b=HIan4G5lkCAa+R6vC55XAIy+hadz7kTfMRr36Y+vqpHtUaFm+OTNDjbjWk0flJmQYV
-         2DQsFWmDO1RbOXpnCEtb7hduoG+wHS/1jecba3eB2WzrMy/qhX0l0Gbgug1PSUaYwC7t
-         K3CnCaFl4s7mjiXtn6AoIshb8XpjE3cizin83+YM00Ofph3F2q5Psbo8TDWVS8h0WML4
-         veSXWDmdIGizdtxRTuovgv4Lta00vqHFCpu8CXlSOxRt2+tkyyMUPCRIk8bWoRS2Fihd
-         ZKz7OAl2es3EBXodocx8LGGccnsRNHINzyWfRM/Jm7iMtrg6GMpKv+0/wCcKsia8D8jg
-         PHvA==
+        b=yY0XBugJIIO6dxtjt4AoHcf27lVWZW1klq/ORyQbfDS4u+L6XVmWmmxPYcl+Cit5d4
+         0tNbeIOOE5H0bL60M0c91jr71T7xf3IsvU95slrp6wzCDlqfHt6Gqyr7f81aBzR3DLZ4
+         frxiVuqvgWe7g6zTVVrHhoeqyf5ifsYy/gCU74hqNrdiJdUMOslKtkcqKTfu5uL6osI+
+         GD+J5HPbK0Y7QuI5ApB/AxEWHbCdKfdIoBedIITK3/GK11MA2T9z1omucd+HyBpoING6
+         qzURysH6m+GqUgme3GrjAZh6eND1qTEQAgNvSpPaWUw1HUHA1r3fWWPvjBFJZsDYMLkY
+         FnPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:in-reply-to
          :references:user-agent:subject:cc:to:from:date:dkim-signature;
-        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
-        fh=+NRV2Y+6ysFCHBLMS2LqfG63NUbFi0hXb6uFxczgop8=;
-        b=hkfn9aol7RmQ8nZmPc4sqW88r/hJAkr6gQ93dW4yOd04RxD61/omAAJ5x9pjQ1UjZE
-         1p5XwyOquMaUI1NkTTnDlm3z0ylHHRM129iFXPltkQXg84IWcVzGVypTD2ojl2VmtWGD
-         6RhRAfRcXqtulf/uUKxhgdN/Gsw8qUwDrckDrHJKLwzEcWaJs4Yh//aFc+oXjtG5EqU/
-         6+cnRXZWRJPs2apYqEpazGZ6MxUNbCdv/1IOipimhDXXe4/Q30OrpO6Tr5FzMwW2LL5J
-         y44H29BMm2yFy+STww2PxN8SHah9lrO5FmmfHUYEt7QrtcrziAX5CrzAiIbb4a8RWgJf
-         L/rQ==;
+        bh=D4wGmyvUQ61mLBJ031BInsy1nVuxKAhaid0zefzzgGc=;
+        fh=UQiUUdN6tGIYFYNRNOd68sadaryBOZhK+SvWTFZrnpE=;
+        b=bJXyFER14E8aoy9oHwmbcs3xZMHOsqdEG0oQapjZ1qcdIfHRQTXr/PAJ1jP/2sGN4y
+         QivKOmriydvSdCDcBeFhR7mM6LcZtgdwZW4ZRZrIuyKfHxJtp0szbi9cv9q7SuIIRr1D
+         Mplp/tOfyvkexCwEFkMJjCVf3E5khZ9bjzH20N8jKQANONZ41gyHdKFJ2pjoJdjtVQ+f
+         dlOEbfaDQMKlC51Y1NF2MdfuvO5qiN3w/NlBQu1KGvAJXASLC+LtXniISpPMvac4HnRw
+         RXlTg4IkKPhjzXBT+Poz/zpstPZYrdg6L/zrRu6Sy0xc2o6he8nI5O3/Ilzel8ZhisYl
+         pTYg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OUBFHlO+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AKnOPS3y;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e24-20020a05600c4b9800b00412d844df51sor3387231wmp.6.2024.03.07.03.48.59
+        by mx.google.com with SMTPS id z25-20020a195e59000000b00513432ac58asor2847422lfi.17.2024.03.07.03.54.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 07 Mar 2024 03:48:59 -0800 (PST)
+        Thu, 07 Mar 2024 03:54:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OUBFHlO+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AKnOPS3y;
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709812139; x=1710416939; darn=linaro.org;
+        d=linaro.org; s=google; t=1709812469; x=1710417269; darn=linaro.org;
         h=content-transfer-encoding:mime-version:message-id:in-reply-to
          :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
-        b=OUBFHlO+wfAS9Z9yzO8UgS4+WouOmPuuxYxOUpkciihp40HZG5rmzQf422kDpKCHub
-         UzQ8r/ZKmbAzWAxaVFZCOt62nRBUmaMA03Bqhq4XUVWGX4bvLlVsDaolqvrPTxus5Kly
-         Pv72hL/5l1BOHxl+g7HANbyhSEAVuMelhs2BPELTPeX6EJmQghH7fW4cycpk/6UZOfHA
-         jVsSFAj59eP4w3KqmkLMyyhcsgeW79/C4O6RJl6+xcnwz749yVYH2VNd/xUkrJCJeBZh
-         XyUNwSOJNdpxleYiv0UfGsqPt1ySZg2EK0rhcEUYMd9jujvdTiF95v5OFeXP2V/nCvH+
-         Slgg==
+        bh=D4wGmyvUQ61mLBJ031BInsy1nVuxKAhaid0zefzzgGc=;
+        b=AKnOPS3yAQXAA6hpSrzT4KmDvN5/IFOaK+svXPj8eqk2Q8DotHOVP7ZnflbHSTc5Tg
+         4YMLKja5IUZCQGIa5qkZ/A7z17QjeMSMxRcBgh4jHTMhnK2MtG6C9WZmxa7vxpwFW5UF
+         ggZYHAhkuP3XUkge04PyOUvz41ZZEB1NedCap5k0iP5pxHlDcE0/mM0BVeBmjr6zRjA3
+         6M0WySbO3xu0Up9FCQfMEHSXhoJ3ZQuw1SVEjVJRNViRV10dO5KJscIYg6OPtigTONiH
+         tGM9FEpvkSbLzm5/iv+XyEHX94Mf0JMUC6WHNOOAo2fnCq/cQHUZrD6Abhv8GRfv7Bvq
+         900g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709812139; x=1710416939;
+        d=1e100.net; s=20230601; t=1709812469; x=1710417269;
         h=content-transfer-encoding:mime-version:message-id:in-reply-to
          :references:user-agent:subject:cc:to:from:date:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=G/SbbEMUCs/VycRuaZQyQX/2EumGC/JTHxyB6vdSb1o=;
-        b=aYqA20SbDmNhHTLlQadb5xMTpVADo6WT98nLwNjWIyYFF+u2ofQ4HwnX7Gncktr8tG
-         YF+HIlvRQcJUvFEkqIPRP5VGGwP5fAtdFUqGnebubu9CFGP5wvYprdWs4IV7OEmv9oY1
-         nY7aYJEyCatzHRHbMNk0IXQ/C2d7p6TF1/Cu5MYYsfYM5eR6UwZMWPcG5ijAJcZ07m0f
-         fo5YPjT1aPQUp3cEFR3RAoXWiXM43EQYxNA1AR18oykupfPwdWIptgEDHR5buk0VmDKE
-         H44SX/pyE5Ycy53AhY/WZjdgGxJiyjw/weo9PtMusJ5IDXddTzSWT+dxQbCar/uizwk4
-         qDRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVoorSezSBo+b7plOAJweaXHpriuJzxuvx9LQBB15tk0d9EqS3mZvyX3vQ48B0Px/yvPrMLQeScA/eBUCG0+dY41+ak80YA
-X-Gm-Message-State: AOJu0Yw3g1yOk8RueJSCHXfC1YTDAorIOrB6hlVFjLDadBgsuILBLZw1
-	muNJor4jbjryaAaiX0GjN1zYf5uDlJCFy+UmoTtjHcHQIaVMCxZaFan+ysuVNAFstQ==
-X-Google-Smtp-Source: AGHT+IGkmoMw3a1DPayc7QnWHr4dDS3sIBh8SO1Tg4XHtfrHtXIYWWCQjxeTzAsb6sqGUSlj3ULtUw==
-X-Received: by 2002:a05:600c:3c86:b0:412:8d98:78a with SMTP id bg6-20020a05600c3c8600b004128d98078amr14629463wmb.13.1709812138686;
-        Thu, 07 Mar 2024 03:48:58 -0800 (PST)
+        bh=D4wGmyvUQ61mLBJ031BInsy1nVuxKAhaid0zefzzgGc=;
+        b=nYOIUNqkvl8fFt+J6uGRDiMhBGnm968lD70aKx7biVpp2YWqCk5I8YdsxaAMM9/zJN
+         zY2OhikvvnXoGWf/lSAjCeysPUQxmPepn4AMw0RHhY6WRrRYpJVaHnjm5zho5Zw/2oNo
+         j+7th8D5UklNP1ldJ1YFqB+3DjeIQMX1NCA+7V7zyNlzpS/loYqiUDLbgmnewsXVnzPE
+         8Yh+T41+WZbdMLYMBOTbsB/g3k9tIyIYFTD3nCMXhn0WVsbD8HSokFXP/ayXMpv8qOeD
+         gn0twR5G+eKgBFbrPbcwO9llMln1bKwJClCzD4PFNXMFqxLXhFlt/zmiZyojuwCahJ9H
+         4XNQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUJ0nKmZ+7j/SeIvD9Q4PguF021vIHiR45XcouDRtfJKrBWOZVnnlsf9YTBnEtT9Dp/bOVXH+//0ZWHy/DNSrT2+dzjlXym
+X-Gm-Message-State: AOJu0Yx6W0rkrMN8DOuojMmqJAAfmFaEOlqP+jRU/4G4mOsRfA3FXlM4
+	Z28UEUrYdMgf1vhPWi+THqtrKU4fbkqlpZloUFizCfqcXosvNwaJ8uxMAiqDQwMR+Q==
+X-Google-Smtp-Source: AGHT+IHz5Cvig/z02xR0HuA2J9PkQo8Dyofphkh0RFYr8J9DsKohKy9DtwP9NgjeqhuAqzXFKS1QlQ==
+X-Received: by 2002:a2e:9ad6:0:b0:2d3:e236:ddc2 with SMTP id p22-20020a2e9ad6000000b002d3e236ddc2mr1155474ljj.30.1709812469290;
+        Thu, 07 Mar 2024 03:54:29 -0800 (PST)
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from meli.delivery (adsl-101.109.242.224.tellas.gr. [109.242.224.101])
-        by smtp.gmail.com with ESMTPSA id fa18-20020a05600c519200b004130c1dc29csm2432000wmb.22.2024.03.07.03.48.58
+        by smtp.gmail.com with ESMTPSA id i9-20020a5d6309000000b0033e122a9a91sm19368088wru.105.2024.03.07.03.54.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Mar 2024 03:48:58 -0800 (PST)
-Date: Thu, 07 Mar 2024 13:46:27 +0200
+        Thu, 07 Mar 2024 03:54:29 -0800 (PST)
+Date: Thu, 07 Mar 2024 13:49:11 +0200
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-arm@nongnu.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Benn=?UTF-8?B?w6k=?= e <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>
+Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Benn=?UTF-8?B?w6k=?= e <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org, Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Bcc: 
-Subject: Re: [PATCH-for-9.0 2/9] hw/xen/hvm: Propagate page_mask to a pair of functions
+Subject: Re: [PATCH-for-9.0 3/9] hw/xen/hvm: Get target page size at runtime
 User-Agent: meli 0.8.5-rc.3
-References: <20231114163123.74888-1-philmd@linaro.org> <20231114163123.74888-3-philmd@linaro.org>
-In-Reply-To: <20231114163123.74888-3-philmd@linaro.org>
-Message-ID: <9z7hk.qddjfbvts5k7@linaro.org>
+References: <20231114163123.74888-1-philmd@linaro.org> <20231114163123.74888-4-philmd@linaro.org>
+In-Reply-To: <20231114163123.74888-4-philmd@linaro.org>
+Message-ID: <9z7qq.40e122bkrid@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset=utf-8; format=flowed
-X-TUID: oaxBLa9wJeKn
+X-TUID: goHGOlVv+mCB
 
 On Tue, 14 Nov 2023 18:31, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->We are going to replace TARGET_PAGE_MASK by a
->runtime variable. In order to reduce code duplication,
->propagate TARGET_PAGE_MASK to get_physmapping() and
->xen_phys_offset_to_gaddr().
+>In order to build this file once for all targets, replace:
+>
+>  TARGET_PAGE_BITS -> qemu_target_page_bits()
+>  TARGET_PAGE_SIZE -> qemu_target_page_size()
+>  TARGET_PAGE_MASK -> -qemu_target_page_size()
 >
 >Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >---
-> hw/i386/xen/xen-hvm.c | 18 ++++++++++--------
-> 1 file changed, 10 insertions(+), 8 deletions(-)
+> hw/i386/xen/xen-hvm.c | 62 +++++++++++++++++++++++++++----------------
+> 1 file changed, 39 insertions(+), 23 deletions(-)
 >
 >diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
->index 8aa6a1ec3b..3b10425986 100644
+>index 3b10425986..b64204ea94 100644
 >--- a/hw/i386/xen/xen-hvm.c
 >+++ b/hw/i386/xen/xen-hvm.c
->@@ -174,11 +174,12 @@ static void xen_ram_init(PCMachineState *pcms,
->     }
-> }
+>@@ -22,6 +22,7 @@
 > 
->-static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
->+static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
->+                                   int page_mask)
+> #include "hw/xen/xen-hvm-common.h"
+> #include <xen/hvm/e820.h>
+>+#include "exec/target_page.h"
+> #include "cpu.h"
+> 
+> static MemoryRegion ram_640k, ram_lo, ram_hi;
+>@@ -247,6 +248,9 @@ static int xen_add_to_physmap(XenIOState *state,
+>                               MemoryRegion *mr,
+>                               hwaddr offset_within_region)
 > {
+>+    unsigned target_page_bits = qemu_target_page_bits();
+>+    int page_size = qemu_target_page_size();
+>+    int page_mask = -page_size;
+>     unsigned long nr_pages;
+>     int rc = 0;
 >     XenPhysmap *physmap = NULL;
-> 
->-    start_addr &= TARGET_PAGE_MASK;
->+    start_addr &= page_mask;
-> 
->     QLIST_FOREACH(physmap, &xen_physmap, list) {
->         if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
->@@ -188,9 +189,10 @@ static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
->     return NULL;
-> }
-> 
->-static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size)
->+static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
->+                                       int page_mask)
-> {
->-    hwaddr addr = phys_offset & TARGET_PAGE_MASK;
->+    hwaddr addr = phys_offset & page_mask;
->     XenPhysmap *physmap = NULL;
-> 
->     QLIST_FOREACH(physmap, &xen_physmap, list) {
->@@ -252,7 +254,7 @@ static int xen_add_to_physmap(XenIOState *state,
+>@@ -254,7 +258,7 @@ static int xen_add_to_physmap(XenIOState *state,
 >     hwaddr phys_offset = memory_region_get_ram_addr(mr);
 >     const char *mr_name;
 > 
->-    if (get_physmapping(start_addr, size)) {
->+    if (get_physmapping(start_addr, size, TARGET_PAGE_MASK)) {
+>-    if (get_physmapping(start_addr, size, TARGET_PAGE_MASK)) {
+>+    if (get_physmapping(start_addr, size, page_mask)) {
 >         return 0;
 >     }
 >     if (size <= 0) {
->@@ -325,7 +327,7 @@ static int xen_remove_from_physmap(XenIOState *state,
+>@@ -294,9 +298,9 @@ go_physmap:
+>         return 0;
+>     }
+> 
+>-    pfn = phys_offset >> TARGET_PAGE_BITS;
+>-    start_gpfn = start_addr >> TARGET_PAGE_BITS;
+>-    nr_pages = size >> TARGET_PAGE_BITS;
+>+    pfn = phys_offset >> target_page_bits;
+>+    start_gpfn = start_addr >> target_page_bits;
+>+    nr_pages = size >> target_page_bits;
+>     rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, nr_pages, pfn,
+>                                         start_gpfn);
+>     if (rc) {
+>@@ -310,8 +314,8 @@ go_physmap:
+>     }
+> 
+>     rc = xendevicemodel_pin_memory_cacheattr(xen_dmod, xen_domid,
+>-                                   start_addr >> TARGET_PAGE_BITS,
+>-                                   (start_addr + size - 1) >> TARGET_PAGE_BITS,
+>+                                   start_addr >> target_page_bits,
+>+                                   (start_addr + size - 1) >> target_page_bits,
+>                                    XEN_DOMCTL_MEM_CACHEATTR_WB);
+>     if (rc) {
+>         error_report("pin_memory_cacheattr failed: %s", strerror(errno));
+>@@ -323,11 +327,14 @@ static int xen_remove_from_physmap(XenIOState *state,
+>                                    hwaddr start_addr,
+>                                    ram_addr_t size)
+> {
+>+    unsigned target_page_bits = qemu_target_page_bits();
+>+    int page_size = qemu_target_page_size();
+>+    int page_mask = -page_size;
+>     int rc = 0;
 >     XenPhysmap *physmap = NULL;
 >     hwaddr phys_offset = 0;
 > 
->-    physmap = get_physmapping(start_addr, size);
->+    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>-    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>+    physmap = get_physmapping(start_addr, size, page_mask);
 >     if (physmap == NULL) {
 >         return -1;
 >     }
->@@ -373,7 +375,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+>@@ -338,9 +345,9 @@ static int xen_remove_from_physmap(XenIOState *state,
+>     DPRINTF("unmapping vram to %"HWADDR_PRIx" - %"HWADDR_PRIx", at "
+>             "%"HWADDR_PRIx"\n", start_addr, start_addr + size, phys_offset);
+> 
+>-    size >>= TARGET_PAGE_BITS;
+>-    start_addr >>= TARGET_PAGE_BITS;
+>-    phys_offset >>= TARGET_PAGE_BITS;
+>+    size >>= target_page_bits;
+>+    start_addr >>= target_page_bits;
+>+    phys_offset >>= target_page_bits;
+>     rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, size, start_addr,
+>                                         phys_offset);
+>     if (rc) {
+>@@ -369,13 +376,16 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+>                                   hwaddr start_addr,
+>                                   ram_addr_t size)
+> {
+>-    hwaddr npages = size >> TARGET_PAGE_BITS;
+>+    unsigned target_page_bits = qemu_target_page_bits();
+>+    int page_size = qemu_target_page_size();
+>+    int page_mask = -page_size;
+>+    hwaddr npages = size >> target_page_bits;
+>     const int width = sizeof(unsigned long) * 8;
+>     size_t bitmap_size = DIV_ROUND_UP(npages, width);
 >     int rc, i, j;
 >     const XenPhysmap *physmap = NULL;
 > 
->-    physmap = get_physmapping(start_addr, size);
->+    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>-    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+>+    physmap = get_physmapping(start_addr, size, page_mask);
 >     if (physmap == NULL) {
 >         /* not handled */
 >         return;
->@@ -633,7 +635,7 @@ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+>@@ -389,7 +399,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+>         return;
+>     }
+> 
+>-    rc = xen_track_dirty_vram(xen_domid, start_addr >> TARGET_PAGE_BITS,
+>+    rc = xen_track_dirty_vram(xen_domid, start_addr >> target_page_bits,
+>                               npages, dirty_bitmap);
+>     if (rc < 0) {
+> #ifndef ENODATA
+>@@ -410,8 +420,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+>             j = ctzl(map);
+>             map &= ~(1ul << j);
+>             memory_region_set_dirty(framebuffer,
+>-                                    (i * width + j) * TARGET_PAGE_SIZE,
+>-                                    TARGET_PAGE_SIZE);
+>+                                    (i * width + j) * page_size, page_size);
+>         };
+>     }
+> }
+>@@ -631,17 +640,21 @@ void xen_register_framebuffer(MemoryRegion *mr)
+> 
+> void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+> {
+>+    unsigned target_page_bits = qemu_target_page_bits();
+>+    int page_size = qemu_target_page_size();
+>+    int page_mask = -page_size;
+>+
+>     if (unlikely(xen_in_migration)) {
 >         int rc;
 >         ram_addr_t start_pfn, nb_pages;
 > 
->-        start = xen_phys_offset_to_gaddr(start, length);
->+        start = xen_phys_offset_to_gaddr(start, length, TARGET_PAGE_MASK);
+>-        start = xen_phys_offset_to_gaddr(start, length, TARGET_PAGE_MASK);
+>+        start = xen_phys_offset_to_gaddr(start, length, page_mask);
 > 
 >         if (length == 0) {
->             length = TARGET_PAGE_SIZE;
+>-            length = TARGET_PAGE_SIZE;
+>+            length = page_size;
+>         }
+>-        start_pfn = start >> TARGET_PAGE_BITS;
+>-        nb_pages = ((start + length + TARGET_PAGE_SIZE - 1) >> TARGET_PAGE_BITS)
+>+        start_pfn = start >> target_page_bits;
+>+        nb_pages = ((start + length + page_size - 1) >> target_page_bits)
+>             - start_pfn;
+>         rc = xen_modified_memory(xen_domid, start_pfn, nb_pages);
+>         if (rc) {
+>@@ -664,6 +677,9 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+> void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
+>                          bool add)
+> {
+>+    unsigned target_page_bits = qemu_target_page_bits();
+>+    int page_size = qemu_target_page_size();
+>+    int page_mask = -page_size;
+>     hwaddr start_addr = section->offset_within_address_space;
+>     ram_addr_t size = int128_get64(section->size);
+>     bool log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
+>@@ -679,8 +695,8 @@ void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
+> 
+>     trace_xen_client_set_memory(start_addr, size, log_dirty);
+> 
+>-    start_addr &= TARGET_PAGE_MASK;
+>-    size = ROUND_UP(size, TARGET_PAGE_SIZE);
+>+    start_addr &= page_mask;
+>+    size = ROUND_UP(size, page_size);
+> 
+>     if (add) {
+>         if (!memory_region_is_rom(section->mr)) {
+>@@ -689,8 +705,8 @@ void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
+>         } else {
+>             mem_type = HVMMEM_ram_ro;
+>             if (xen_set_mem_type(xen_domid, mem_type,
+>-                                 start_addr >> TARGET_PAGE_BITS,
+>-                                 size >> TARGET_PAGE_BITS)) {
+>+                                 start_addr >> target_page_bits,
+>+                                 size >> target_page_bits)) {
+>                 DPRINTF("xen_set_mem_type error, addr: "HWADDR_FMT_plx"\n",
+>                         start_addr);
+>             }
 >-- 
 >2.41.0
 >

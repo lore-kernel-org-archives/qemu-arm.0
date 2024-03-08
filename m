@@ -1,101 +1,120 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1723071ejb;
-        Fri, 8 Mar 2024 02:42:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWOaVVXX4qn0Z5j3A0MEcRf1HhidsAhhjlNPFQjnd3QkzLu2/me/wM7hM70lC7C2wRonmmQriu+8LH9xux7rjQkS5Q0kxr4
-X-Google-Smtp-Source: AGHT+IFEdefhREAOlCvUiILBO+IkfM1WgcMiC9p+Bg1OT3ffwxYYFvxGPiuNG3Hk42YPa+bctik+
-X-Received: by 2002:a81:6d41:0:b0:60a:a94:6ef6 with SMTP id i62-20020a816d41000000b0060a0a946ef6mr314452ywc.20.1709894560543;
-        Fri, 08 Mar 2024 02:42:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709894560; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1806117ejb;
+        Fri, 8 Mar 2024 05:28:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXq94lpLqExfBScWbNtXJyCr93SaraXLVmwqEjQbXewLyjJrLnb/XJkXRjXpcmxfuHMNaYePX05ZKkGm6M6KeAPz+DbKi2F
+X-Google-Smtp-Source: AGHT+IFKECBr0OhIRrhOdBnc0OT9bm9dK8x2OH8w2AH3N2NXNrpDIULraCUKkCHvOta5ewOohaYC
+X-Received: by 2002:a05:620a:24d5:b0:788:242e:b2d0 with SMTP id m21-20020a05620a24d500b00788242eb2d0mr14351813qkn.45.1709904480770;
+        Fri, 08 Mar 2024 05:28:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709904480; cv=none;
         d=google.com; s=arc-20160816;
-        b=hKYH83C4uAAMh2F6j7fuqhE+PkXeb6bUNDLUVKmc07JWGUuaBHV4CcXnTMMJ+BGC9D
-         NMEtI5WMgipzUQE82X/0j8iorUaIW3YLohbHzuf/M4oeBeFp00S5TWnaBD5tGFe14ZgI
-         3Ta4Q2bFECF4eYI+uf//ufsf+2CMZcP99oQj4fQd83nfVVbjEjEznEss6wWLYHjDcqIn
-         /ebjtJRag/UWu9qaI0L3P0zFNTQUpRjJHWsBfxKneuA9hviFP7UaKyP3pSyE8W67+LAV
-         anEI1qTtbtJ2tu+vOG+oj8U9ORafuCk0o9EVldGk2uXCtxntGRTK+/31IV0jyZ2evJe7
-         /wOw==
+        b=L3z8Oqlmjro1KPUh7w1j/tEoBsdXzSZJmFGB7UUVTtjIQG6aZoRgmi7JOJTQSQTSFJ
+         KxxOMeorsCuVcOL074IMhj25g9BA52kkQJ1Sf2lt3yt9pShYNYa3aezFE06kUHPSrBUR
+         ynzIDhW7VkrBIPRhI4U+E/TA3raSLnepGwx1NhjYBJwOU9rnHkUXqJlxr/bn4g/Lw7YV
+         TxvF4QZSMWuVHoC0LymULlpngiWqocuF8ts9pYru+8aR9ZFA5VLCIVz48liD6vEiW5ej
+         TJcesEM9tcsCqnHG95NTfFBoNWQSIs6HnMHt9dFHKFOUl/2rBCjpUiLEBgoULyOMtoyi
+         fQ4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=R8lL/g6oDQcA7TfztXytEJa3Vv3eTQ3pcbjrOlW+zS0=;
-        fh=qUk3Wv8M1ZXgdOPNY0X8vo/Vd3NFINnKkGEtKvKNqeY=;
-        b=KP15KlwyPQuBfYzytRfQQg2tYL74uKbVejzkqpSwIFVr2LSyuAVlmOHWQWjDu2kgaC
-         tuiF6NsR61e7OqTTFX9AGdO1DTpSWEjm2IhucGfGm8hYln+8gOV4GDOf5v3Cn6Q3x2Aq
-         TjfgfLG1BNe/X6dP+zsc1J+kLZcTVt1nrcnQAVGAv51q4DDU4SKFNtrhMpxqDiOH7eyg
-         +DaCL+1dWSH52yt036dsFjUw+fg1b9OsWp1uFXAhI6Ar1mNMnogRw6MuIVPLYfzltQWE
-         dQkjRQhvK0eic+nIdSB6tRAuPXW5Gp3HYux4QzwbiMBNnGU6p2Ad3qCiZCXtH65prvRY
-         HsAw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=CMwrJpB/DJy52CSm232qW3g+OfPChW9UXY1c0q2947s=;
+        fh=sDKSa0R9KCfbDQmB3aHc5jEVUhKJOQAfojDhM9XKu20=;
+        b=PO0cN1p5HDxtMP0M2KfRuI9eS+jsigPj8VSyvv/xyogIBeD1cV7JXofUdX5nOfiGrq
+         hr30vsbocmZQUFv7fx87rQRt2z4992SUHFKQy2goZ0qmDNliT+8vjYQ0VmB5VwQLbkJT
+         QoLFtJvTjB4ku8oeVq4SbQltVTRj9+b7v5ajkClRyJYr4gk0JJTpg4/08Xs4VMTq0kKr
+         70KUuuRwGr4wdQEJ/fWpLa7a5vvrqvmof48ZqvJZ+6d3mPxQk3HQxVKr3kcjxEtk0tSV
+         8LfXQpy7u6KgTutrKbhrtJdBDG7TPfcc/yB0QLZKrNmY5iR5zDkcXFb+CtC1uuFLo6Yh
+         j1oA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EgVWcsqz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MMMHMZ3a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020ac87dc6000000b0042ed29fbdb1si15605438qte.617.2024.03.08.02.42.40
+        by mx.google.com with ESMTPS id wg1-20020a05620a568100b007883bac6392si6570196qkn.49.2024.03.08.05.28.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2024 02:42:40 -0800 (PST)
+        Fri, 08 Mar 2024 05:28:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EgVWcsqz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MMMHMZ3a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1riXg7-0007Xo-H4; Fri, 08 Mar 2024 05:42:15 -0500
+	id 1riaG8-0000hy-0c; Fri, 08 Mar 2024 08:27:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riXg6-0007XD-Eb
- for qemu-arm@nongnu.org; Fri, 08 Mar 2024 05:42:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riXg4-0002cu-PF
- for qemu-arm@nongnu.org; Fri, 08 Mar 2024 05:42:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709894531;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=R8lL/g6oDQcA7TfztXytEJa3Vv3eTQ3pcbjrOlW+zS0=;
- b=EgVWcsqz0xi4DjxlJoc16H6svBtHnfbGd4Y5BLRa77IswN95h9DL/Bn19GOc22mZ4z290w
- iQvgQqUoHda6dhyLTICxROFp8+bsgSVFFnTdVZjCF9rcIH1ZdHxUiYxkKtb8dztvSz7RcM
- ncd0ywLXiwucoNEEo8wCYJ4L3jS9ocA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-91-DoegQFvQMletphR2VExa_g-1; Fri, 08 Mar 2024 05:42:09 -0500
-X-MC-Unique: DoegQFvQMletphR2VExa_g-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E322D101A526;
- Fri,  8 Mar 2024 10:42:08 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9B0CB492BCB;
- Fri,  8 Mar 2024 10:42:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH] docs/about: Deprecate the "mainstone",
- "tosa" and "z2" machines
-Date: Fri,  8 Mar 2024 11:42:06 +0100
-Message-ID: <20240308104206.480929-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1riaG6-0000gw-Cu
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 08:27:34 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1riaFy-0003FM-Ri
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 08:27:34 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-2d33986dbc0so21702241fa.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Mar 2024 05:27:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709904445; x=1710509245; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CMwrJpB/DJy52CSm232qW3g+OfPChW9UXY1c0q2947s=;
+ b=MMMHMZ3a6slhGLtxNCDxVa7+Yqwkf4PXXbrx6rVTZ3D7sUD2xCTxVCvtNrI6vYyT7G
+ gLb+UA4xzrw4YN6EAsb+nDBk8FZm/L80VG0EJZtNdEybD9wnJ1OqdS6+BUDpsOJsis0S
+ 2RbuNXtwV9iDtriMzFWHsDIQ5iYhONpfi85M15ltgG+xhz4m9tcGpeN+f+ouKWAKwZzA
+ aam/2ASuoeWHACnABXEHDXLYjqguF/la2lFoTVAIkSoszWYRj6djDKGL4/SW5WMmGctA
+ U4FsHc34YLyJvY5Nx6H7vXMeokOOAH74wN4nnb1mk5ryYyEoZird2GQcOvGG0Z0FCSYY
+ pM3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709904445; x=1710509245;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CMwrJpB/DJy52CSm232qW3g+OfPChW9UXY1c0q2947s=;
+ b=CHsjKusNab3bvclGtiKuFvt6DWt2xUOucPZ8PgxRONDDrz5Un6+pRTQNc7VM5DKKg+
+ AWp/WWtUrwT0gxQOXOQJLubxkzkLKQkN3fPGcK9xbWXEzf82Wlkcz+WpEAkZ+7ZeZNiz
+ sMPxZzU3KLcXeuy/BppAVaTyQ8eNITzT4Hd4G/OG31wE25OoT/KZ7JZoL1GH2rW0anAQ
+ cJn6g0nDTkmTwsPTfnFNn2MtEi5fi4WZEMc8CnrfPH9yj/hH4VZhVGJU+Y1jVxH7rFGK
+ 99/c3fwHFRXPmWUsn7Hz1mvrfeo9euvO5qxcVdwHGZEO/g0mSAANMz81qWdTlPhQVePy
+ OU/g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU/mZZd5mb0Yz6jqyXT9AgZNM+IDAczcY6rUpeG+RG7EicNDf/eX3IYJ4EwVG5/kHtOPrfLaxcLShfXQ55pCGftYJiR
+X-Gm-Message-State: AOJu0YyQtR8guWTD9plvdklAPBZNKPMUTWqU48xh+CykxcbwZlHWB6y3
+ ve3QCMBZb8lDfL/7UHcsw20zM8d8bMtelEc/ooUksldv2WIj3witI9hFQ0KBbNnyYJcquDxAquN
+ AdUiEH5c5rFfSr42E8BSd0VZs+06xdjpS82MObA==
+X-Received: by 2002:a05:651c:2de:b0:2d2:acef:6aca with SMTP id
+ f30-20020a05651c02de00b002d2acef6acamr3290897ljo.41.1709904444869; Fri, 08
+ Mar 2024 05:27:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+References: <20240215175752.82828-1-philmd@linaro.org>
+ <20240215175752.82828-35-philmd@linaro.org>
+In-Reply-To: <20240215175752.82828-35-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 8 Mar 2024 13:27:14 +0000
+Message-ID: <CAFEAcA-HpKCk-n4HsnZPiz09xq9sk=Sh5nt05KpRymy-NQ2HEg@mail.gmail.com>
+Subject: Re: [PULL 34/56] hw/intc/grlib_irqmp: add ncpus property
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org, 
+ qemu-block@nongnu.org, =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, 
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,75 +129,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ghBA8EJYgTQx
+X-TUID: 5amKW69ucjCQ
 
-Support for these boards has been removed from the Linux kernel
-in version 6.3 in 2023, so there are likely no users left for these
-boards. Time to mark them as deprecated in QEMU, too!
+On Thu, 15 Feb 2024 at 18:04, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> From: Cl=C3=A9ment Chigot <chigot@adacore.com>
+>
+> This adds a "ncpus" property to the "grlib-irqmp" device to be used
+> later, this required a little refactoring of how we initialize the
+> device (ie: use realize instead of init).
+>
+> Co-developed-by: Frederic Konrad <konrad.frederic@yahoo.fr>
+> Signed-off-by: Cl=C3=A9ment Chigot <chigot@adacore.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Message-ID: <20240131085047.18458-3-chigot@adacore.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/about/deprecated.rst | 8 ++++++++
- hw/arm/mainstone.c        | 1 +
- hw/arm/tosa.c             | 1 +
- hw/arm/z2.c               | 1 +
- 4 files changed, 11 insertions(+)
+Hi; Coverity points out a bug in this commit (CID 1534914):
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 8565644da6..da5cc91eec 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -247,6 +247,14 @@ to correct issues, mostly regarding migration compatibility. These are
- no longer maintained and removing them will make the code easier to
- read and maintain. Use versions 2.12 and above as a replacement.
- 
-+``mainstone``, ``tosa`` and ``z2`` PXA2xx arm machines (since 9.0)
-+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+Support for these boards has been removed from the Linux kernel
-+in version 6.3 in 2023, so there are likely no users left for these
-+boards, thus they will be removed without replacement.
-+
-+
- Backend options
- ---------------
- 
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index d2e2e68aa3..c6018c6e81 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -169,6 +169,7 @@ static void mainstone2_machine_init(MachineClass *mc)
-     mc->init = mainstone_init;
-     mc->ignore_memory_transaction_failures = true;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
-+    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
- }
- 
- DEFINE_MACHINE("mainstone", mainstone2_machine_init)
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index 3ca2e4459c..9241867ba9 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -270,6 +270,7 @@ static void tosapda_machine_init(MachineClass *mc)
-     mc->init = tosa_init;
-     mc->block_default_type = IF_IDE;
-     mc->ignore_memory_transaction_failures = true;
-+    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
- }
- 
- DEFINE_MACHINE("tosa", tosapda_machine_init)
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index eb2ff8dbc8..c7c26bd726 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -347,6 +347,7 @@ static void z2_machine_init(MachineClass *mc)
-     mc->init = z2_init;
-     mc->ignore_memory_transaction_failures = true;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
-+    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
- 
-     machine_add_audiodev_property(mc);
- }
--- 
-2.44.0
 
+> -static void grlib_irqmp_init(Object *obj)
+> +static void grlib_irqmp_realize(DeviceState *dev, Error **errp)
+>  {
+> -    IRQMP *irqmp =3D GRLIB_IRQMP(obj);
+> -    SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
+> +    IRQMP *irqmp =3D GRLIB_IRQMP(dev);
+>
+> -    qdev_init_gpio_in(DEVICE(obj), grlib_irqmp_set_irq, MAX_PILS);
+> -    qdev_init_gpio_out_named(DEVICE(obj), &irqmp->irq, "grlib-irq", 1);
+> -    memory_region_init_io(&irqmp->iomem, obj, &grlib_irqmp_ops, irqmp,
+> +    if ((!irqmp->ncpus) || (irqmp->ncpus > IRQMP_MAX_CPU)) {
+> +        error_setg(errp, "Invalid ncpus properties: "
+> +                   "%u, must be 0 < ncpus =3D< %u.", irqmp->ncpus,
+> +                   IRQMP_MAX_CPU);
+> +    }
+
+We detect the out-of-range 'ncpus' value, but forget the "return"
+statement, so execution will continue onward regardless, and
+overrun the irqmp->irq[] array when we call qdev_init_gpio_out_named().
+
+> +
+> +    qdev_init_gpio_in(dev, grlib_irqmp_set_irq, MAX_PILS);
+> +    qdev_init_gpio_out_named(dev, &irqmp->irq, "grlib-irq", 1);
+> +    memory_region_init_io(&irqmp->iomem, OBJECT(dev), &grlib_irqmp_ops, =
+irqmp,
+>                            "irqmp", IRQMP_REG_SIZE);
+>
+>      irqmp->state =3D g_malloc0(sizeof *irqmp->state);
+>
+> -    sysbus_init_mmio(dev, &irqmp->iomem);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &irqmp->iomem);
+>  }
+
+thanks
+-- PMM

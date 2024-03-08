@@ -1,434 +1,475 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1859828ejb;
-        Fri, 8 Mar 2024 06:58:00 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCX35sXonsEEYkjku7QNt7mw1mEG/CGfnQThb+8GEjZ6v1YdJSRHu5kvMHBOEIXYY44urFBXGG71c8bkAdO4AIOI98YCAEED
-X-Google-Smtp-Source: AGHT+IFNd+fcXV0qGZ9pntrS8ggD+wEunMfMxUhXJKx4rgCUGtShwCviPIbyjT943sUdvRLD0hB0
-X-Received: by 2002:a0c:ef05:0:b0:690:9e6d:efe9 with SMTP id t5-20020a0cef05000000b006909e6defe9mr957917qvr.27.1709909880525;
-        Fri, 08 Mar 2024 06:58:00 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1709909880; cv=pass;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1954428ejb;
+        Fri, 8 Mar 2024 09:20:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVcZb829voky1Ms2m2TedAa68vCHhAQg+ZZComSs8yOSMno+6/pg5sGjuIFwgUKzmqCHkc8c19JIw/oj811L8al59KMwUi
+X-Google-Smtp-Source: AGHT+IEg9f88ri7Z56dLfCSUMXorMzfGnZo3RIwu2IPrJoQv4L5NcFMw3/XHyA3sG7FSE43HTYhf
+X-Received: by 2002:a67:e950:0:b0:470:3f14:b86 with SMTP id p16-20020a67e950000000b004703f140b86mr11654870vso.11.1709918426059;
+        Fri, 08 Mar 2024 09:20:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709918426; cv=none;
         d=google.com; s=arc-20160816;
-        b=011W8cljdwiAAR8mDGQePlVZoKZT5pccBP1eiA0/zM42RFaqKThsKJhuN8LoldRhXX
-         rBTEod39O9uLxgCDblZfTLyAg32IRLDWGRZ15aTdjCwSXwPU7MBJv94uQYk7PDao0NBH
-         znAAP/LR8wnw6p/tBZPRHjbX2hFDMvfeItDUjzFpYPuhztZ/n8ycbfUxsqt3pd0blcOJ
-         31KqPdR1FyyB/XEFESio1X8w5ezSAvJi5qSJHiSRs2GZ7XLxA6X01VBiHDGE+k6UPdaA
-         m/jnmr/l//fOcsJyHjFxyPIReAbZeIgEgl8b3l63uB64+q8laQ9qJO9pgnUyGk1AOwS5
-         caPw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=eWzp6UNyfFqvFfDBzuvsin+pOxVLzEg7QnAwJiBss1p6TZ70h/Q3VZjf5EuyUq48J4
+         VfDqLB74B1+fCum72qYDM2Xj592/qMLGcw4xc0clJLYPpx/ObmO7O2R7XufEdi5DLHTN
+         p6LcF/3SpXWdJvO3nheHZ5gocBFQSNHi1uZsQL6mo0TeOc2r+zNTyGCXafeATTTPo/t+
+         wIIqPZHD/KnoYcXdGpm+pWFMh59C1yfrNsFvaUK7m/WIgmipGMuXJ6jJQAggsM2F6gDg
+         j001poYPZXkQx6CCJK9SjD59A2kZR11qje1itVyiH47ivE+V3L5uv8jW7ns7VaAjPEAI
+         4k4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=8+Nfb9Fp9svwTRraIIDVALUSYVvUG9WY8BWqf0gGVtg=;
-        fh=cXfPzVeEfqtrWPBd2kb3Qo6ynz8sMCnuT2a86y+CvXk=;
-        b=n8gk/FN7slp099Lkpvz59mAMjspb3nFLPsjSH4V29oTfwZROhFPf3nc7lmOvGLGD4O
-         6moNegur3P3zyqVgcc3aJ5rMfyNXAglPn5K7MROOK/+/Hs1XeCdiwcWeNf8BcUkzAnT3
-         mfnIBb1DYAeQ3f2Di7Ql1HAZU4BEVnL+CQINWVUn0zjlRP+S9W6c35XWesIc9g7qxg4L
-         X3Q6haTNtJwgMBqh9TgVPtnfWnubDrEEJ8WHv5R/twEHJL9kaqUx1JH0Rkq1k2dGDrEa
-         OCk6kv8Sz47uus2TeoaLFgiim9DqeEY1rXqAzdWomLAuhudA5SSyNQNs4ch1cfvrfSbC
-         hhhA==;
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=0HK/8E6bZBmkJKB4WdspBLCTxoWKSFI3j1jbdIa8Bfo=;
+        fh=i1pMiHW8ihR4DaSjmZpmCQZvwyZqiQzpBL78U4QtuPk=;
+        b=ygTtRK99YMzsUYNjD8D7KqDZSill3BqUG1qNM3ZolkGckJLhpIZzJKUxQk0gHCqiW1
+         mnasJSBm+XNRZjfiFuxvzI7mvIoaMjbXefJWt0oVxL8WZoaCwSrPNiZsats82QG/M2Qr
+         a3e17QBttfmUgX3I0jTd7bqGqY/i8Bmcy60Dmw42iKAsUDAB9dMu8hnXrnIW4h+1sANO
+         WoDscVhdUsxPq65s6N86YnX2xO4pahy5iOuYPiBZ7SMiVVXErlZJkMFWC6FeOcfSAvOb
+         udeSvjg7mjkVeei717RR0rgx4vWcoEeAnfdQl3c/mtLgMNcc4dV/7KuhYIjMOUE8fekt
+         cdXg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="D8agL/Y4";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dkr+mFi7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kr25-20020a0562142b9900b0069030971fe3si18983897qvb.79.2024.03.08.06.58.00
+        by mx.google.com with ESMTPS id v18-20020a67f1d2000000b00469ddbd2b2csi2889469vsm.486.2024.03.08.09.20.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2024 06:58:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Mar 2024 09:20:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="D8agL/Y4";
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dkr+mFi7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ribdl-00036r-VQ; Fri, 08 Mar 2024 09:56:06 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ridt1-0000Nh-1o; Fri, 08 Mar 2024 12:19:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1ribdd-0002t5-Fj; Fri, 08 Mar 2024 09:56:01 -0500
-Received: from mail-bn8nam12on20601.outbound.protection.outlook.com
- ([2a01:111:f403:2418::601]
- helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ridt0-0000NJ-0n
+ for qemu-devel@nongnu.org; Fri, 08 Mar 2024 12:19:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1ribda-0005Ip-OX; Fri, 08 Mar 2024 09:55:57 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C166snbXI41zTfT3fPSkDGZBkM28R8UCU4f4b+/QuMzvsyPXmk1gCa8EwNqdV/LAa3P9pkx7h2+MdKA5wU7379hTXHmwLMg43Zl+rw/Dwja5XIy1i2x1Ulsjpq3bThzi/vqZluYqCx59xRjDlT4p1QzrH9+SYCk3JNMObN8IsciwOX6gJDGEPJB0Zle2pr8YK1DrG1TbLUwjE+9MF2PLt2Fd5j0pQn5UCuEbt0hBxQ8kl1EzMWuwAWWCHI7vgsjNogXGTffXHQXgoyni4+i3Coxsk4emZXGlx6E+ZRZeVaaL44NiGWA9/YJW3uS6ecWoCauu8FYeuGhUoZb7vkCH8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8+Nfb9Fp9svwTRraIIDVALUSYVvUG9WY8BWqf0gGVtg=;
- b=Mc6LMcyYyadZjFOWHnURBfx0YrdVEH3jtBMoTkPIapdOqsZhY00wXEIU5UgtUSCtruPENX35sNF+VUxqh5xnO8VJq1qzR2p+UpCtJx6YVVsZwPCBu+HOXq148dzcJJBsk4KGGCZVJdEi8dUYnPXOOQjk0NJt3Se9IWLD6vacP8431Kn8JTRTmO9D3rHslhoKHjQ8UK5tbF7avv98tDEzpb/keVKKDSovipwXV7+mx7Qd9BbW9uJyiBqiVzLo8PyhNnME4Eb8GZSXMfHN8n7RQPXPggH9LU2+hwtFmjPPSwvujpo8/x6tMc3qA1TeOjqd9706spe1+46TzqUR6j6ZrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8+Nfb9Fp9svwTRraIIDVALUSYVvUG9WY8BWqf0gGVtg=;
- b=D8agL/Y4iJokIFXXyiYlxjGVhGvI1m/nCuw3ECgH6WzvXhnmbUFxBZGbu/BzniGK2nSWrynnLCdmgFGOm5EnnGu7YAkE/NoQLegdSLBzdrG1Bxxsj/nhf1nqvFTZMR/aPF0h90f3jLBIv9BuulMXdKf3KsI+YDoPBKf7//ugjsSowAFyL/ZP1OE1UAfwM6sTImOOQ4gJ8dSg+x//SOgSLvOuXkVah3A61LpVz13d/BIaD/FuWr88fEBMnAr330+hOhabfr5SmtuDP12SCHz6EJsavV3cw7iaLh2rIGTn6y2FbIBLoRessAemy18s51OIdi0pb8sWcXQ0Rtee2b9l2g==
-Received: from PA7P264CA0227.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:372::14)
- by DS0PR12MB8319.namprd12.prod.outlook.com (2603:10b6:8:f7::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.27; Fri, 8 Mar
- 2024 14:55:49 +0000
-Received: from SN1PEPF0002636D.namprd02.prod.outlook.com
- (2603:10a6:102:372:cafe::d) by PA7P264CA0227.outlook.office365.com
- (2603:10a6:102:372::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.26 via Frontend
- Transport; Fri, 8 Mar 2024 14:55:49 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- SN1PEPF0002636D.mail.protection.outlook.com (10.167.241.138) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7362.11 via Frontend Transport; Fri, 8 Mar 2024 14:55:47 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Fri, 8 Mar 2024
- 06:55:26 -0800
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Fri, 8 Mar 2024 06:55:26 -0800
-Received: from host-10-63-191-31.nvidia.com (10.127.8.10) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12 via Frontend
- Transport; Fri, 8 Mar 2024 06:55:26 -0800
-From: <ankita@nvidia.com>
-To: <ankita@nvidia.com>, <jgg@nvidia.com>, <marcel.apfelbaum@gmail.com>,
- <philmd@linaro.org>, <wangyanan55@huawei.com>, <alex.williamson@redhat.com>,
- <pbonzini@redhat.com>, <clg@redhat.com>, <shannon.zhaosl@gmail.com>,
- <peter.maydell@linaro.org>, <ani@anisinha.ca>, <berrange@redhat.com>,
- <eduardo@habkost.net>, <imammedo@redhat.com>, <mst@redhat.com>,
- <eblake@redhat.com>, <armbru@redhat.com>, <david@redhat.com>,
- <gshan@redhat.com>, <Jonathan.Cameron@huawei.com>
-CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
- <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
- <mochs@nvidia.com>, <dnigam@nvidia.com>, <udhoke@nvidia.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH v9 1/3] qom: new object to associate device to NUMA node
-Date: Fri, 8 Mar 2024 14:55:23 +0000
-Message-ID: <20240308145525.10886-2-ankita@nvidia.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240308145525.10886-1-ankita@nvidia.com>
-References: <20240308145525.10886-1-ankita@nvidia.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1ridsx-0004Z7-NG
+ for qemu-devel@nongnu.org; Fri, 08 Mar 2024 12:19:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709918394;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0HK/8E6bZBmkJKB4WdspBLCTxoWKSFI3j1jbdIa8Bfo=;
+ b=dkr+mFi78/8rqQ6rId9Z86R5JEzZPOX2SnDfRGE268SmN28aPHbz39/t88mzeCbnKLmavx
+ MKFNTU8ZfRcWtn1W5e0uqW8RBOzObX4OC9YHtfQODRZk2ZQdlyTW+O4CRx7OFuxQdc+4rU
+ lwzQm55fwglcL01Bt6J/4UZ9Z/uBBWc=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-642-d2t7P6t7MlGLdQwXQAoK_g-1; Fri, 08 Mar 2024 12:19:53 -0500
+X-MC-Unique: d2t7P6t7MlGLdQwXQAoK_g-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-412db0e24aeso11804765e9.1
+ for <qemu-devel@nongnu.org>; Fri, 08 Mar 2024 09:19:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709918392; x=1710523192;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0HK/8E6bZBmkJKB4WdspBLCTxoWKSFI3j1jbdIa8Bfo=;
+ b=PBGtSRxZgoPQffT2+vVSvWO9De2qoobOUiyR9PI74AYGwflzAIU46LB7df5paYpqyG
+ cs6OvgtGnhiIUra7T18zQhFL3iHCSsXOA92nNrNHFmpnaSTSf34uLAIwWqypJ+Uij0BG
+ mXNU5R0PppJ9PAK1R4VZTw/QbDwq6HYpZ9aWUNvTJgaVrvhZKbNWFojjvyx4I6Q3qlPH
+ vd34ZhlETsDBlbmn3zGt8lYPDomJIEZ2KpkiBzcyADbCO+OMrW7VMVTf5V+l6M2tAayM
+ b/YOxQiK5wUN1oTVRn1HaBEJz6EkCKgahiuCV9oJ6AiGFDtNzVNkEV87pIeoYzq/7gr/
+ FZXw==
+X-Gm-Message-State: AOJu0YwUoEmHyLZqWtomrdLo3eLYAMWTc8t9Wi5qFJUd2YvZoLFhif/V
+ LQ6VZg3S77y9EFpCT/11KFuEa6WtS5V01tKoh0ccMdUt9gTjpGMIBp1gbfaUsGW8ijLI6mc6Xzo
+ 1PYrlvVTdIVgrDh32MUEoOVxiU8MAAg2HV9QzvwdzbUG41vrQiSSf
+X-Received: by 2002:a05:600c:3b1f:b0:413:1651:6bb2 with SMTP id
+ m31-20020a05600c3b1f00b0041316516bb2mr2443410wms.8.1709918391700; 
+ Fri, 08 Mar 2024 09:19:51 -0800 (PST)
+X-Received: by 2002:a05:600c:3b1f:b0:413:1651:6bb2 with SMTP id
+ m31-20020a05600c3b1f00b0041316516bb2mr2443383wms.8.1709918391265; 
+ Fri, 08 Mar 2024 09:19:51 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ n4-20020a05600c4f8400b00412ff941abasm6504737wmq.21.2024.03.08.09.19.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Mar 2024 09:19:50 -0800 (PST)
+Date: Fri, 8 Mar 2024 18:19:48 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Song Gao <gaosong@loongson.cn>, Alistair
+ Francis <alistair.francis@wdc.com>, palmer@dabbelt.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philmd@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, f.ebner@proxmox.com
+Subject: Re: [PATCH v2 07/20] smbios: avoid mangling user provided tables
+Message-ID: <20240308181948.2f42db4f@imammedo.users.ipa.redhat.com>
+In-Reply-To: <97A9187B-2BB6-4819-AB28-679C0DE04501@redhat.com>
+References: <20240305155724.2047069-1-imammedo@redhat.com>
+ <20240305155724.2047069-8-imammedo@redhat.com>
+ <0eeed9a2-cd7b-bdde-6346-3357dc430835@redhat.com>
+ <97A9187B-2BB6-4819-AB28-679C0DE04501@redhat.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN1PEPF0002636D:EE_|DS0PR12MB8319:EE_
-X-MS-Office365-Filtering-Correlation-Id: 471798c5-f0e0-40c8-b77c-08dc3f7fd6cc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: vrtNJgmfdGsLkwUgQ1eEYCrXXKUncCH02qXU8jZovIf6532HTrKO3x1SX77ZTdwNzHN8JqVQoJNxgauJ5ZyQohP75jA49zES36vQyR3arOSvYPjBYbwnFfvtBpKLLjZAeYElojxrRN1Z+oRyaHBqdmsaULfdDMFmiuucPvuu9ZDgtr7q3ne0UscSCOYws6V5FUnMudnR/lzEGuUGM0Yd9vPpmQzAUbhiapjPzY9SHOcZa2O+qWyusXUpmFT1+DKavcM7wAfPyWrOeSxcuiAbpLA34s+QIxJpjMALbYMFqCwK5XfJLCXk9FQK/+biGXrW8dPoymLUmW/V2Yem/PX7GnhufY5z8ADTckavfBXYSc87VKn0oF8whFZz16NbcS02gT/V1qRSSJL+xZ1lIZRz2KfpxltuzMufW0VDwNzgAe8xSbih6GBGzp0kW42bO/TRHeeWtxgyltGqIqwRzjt4Uy43y905zletSCeT0rAigH0r4LfUabsAylH4KtMJpYqMb3aEbitP433GIxEfyq3udbWRoAX0sjQ8WrxbdEYUS6biS5vSQWK/CNTq+m5+SV4Jd3hCX9k/iKHENMDm7N9zp2WZ3q8GQ9UgtO0/seV2f3v7+CtOnCGEhj5mgnzjV2D8s3aSFnMxSw9SZ6d9k6E3qZraaRubhaGoTg8Mk4zceceuGAbSBODCu2HqwGoPr3WcrWTivRs2OY5Ybg309q4PfUpxzv9LPz/cDXMJUwVnYmQB9tbIA2SKsF5LLA82Mfpp9tAK9uUwgpvwlWsNSC6dIQ==
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(36860700004)(7416005)(82310400014)(921011);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Mar 2024 14:55:47.5811 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 471798c5-f0e0-40c8-b77c-08dc3f7fd6cc
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002636D.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8319
-Received-SPF: softfail client-ip=2a01:111:f403:2418::601;
- envelope-from=ankita@nvidia.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -26
 X-Spam_score: -2.7
 X-Spam_bar: --
 X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.572,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +YmoWSfLIOsl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: esq7HXEgxAfX
 
-From: Ankit Agrawal <ankita@nvidia.com>
+On Thu, 7 Mar 2024 09:33:17 +0530
+Ani Sinha <anisinha@redhat.com> wrote:
 
-NVIDIA GPU's support MIG (Mult-Instance GPUs) feature [1], which allows
-partitioning of the GPU device resources (including device memory) into
-several (upto 8) isolated instances. Each of the partitioned memory needs
-a dedicated NUMA node to operate. The partitions are not fixed and they
-can be created/deleted at runtime.
+> > On 06-Mar-2024, at 12:11, Ani Sinha <anisinha@redhat.com> wrote:
+> > 
+> > 
+> > 
+> > On Tue, 5 Mar 2024, Igor Mammedov wrote:
+> >   
+> >> currently smbios_entry_add() preserves internally '-smbios type='
+> >> options but tables provided with '-smbios file=' are stored directly
+> >> into blob that eventually will be exposed to VM. And then later
+> >> QEMU adds default/'-smbios type' entries on top into the same blob.
+> >> 
+> >> It makes impossible to generate tables more than once, hence
+> >> 'immutable' guard was used.
+> >> Make it possible to regenerate final blob by storing user provided
+> >> blobs into a dedicated area (usr_blobs) and then copy it when
+> >> composing final blob. Which also makes handling of -smbios
+> >> options consistent.
+> >> 
+> >> As side effect of this and previous commits there is no need to
+> >> generate legacy smbios_entries at the time options are parsed.
+> >> Instead compose smbios_entries on demand from  usr_blobs like
+> >> it is done for non-legacy SMBIOS tables.
+> >> 
+> >> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> >> Tested-by: Fiona Ebner <f.ebner@proxmox.com>  
+> > 
+> > Reviewed-by: Ani Sinha <anisinha@redhat.com>
+> >   
+> >> ---
+> >> hw/smbios/smbios.c | 179 +++++++++++++++++++++++----------------------
+> >> 1 file changed, 92 insertions(+), 87 deletions(-)
+> >> 
+> >> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> >> index c46fc93357..aa2cc5bdbd 100644
+> >> --- a/hw/smbios/smbios.c
+> >> +++ b/hw/smbios/smbios.c
+> >> @@ -57,6 +57,14 @@ static size_t smbios_entries_len;
+> >> static bool smbios_uuid_encoded = true;
+> >> /* end: legacy structures & constants for <= 2.0 machines */
+> >> 
+> >> +/*
+> >> + * SMBIOS tables provided by user with '-smbios file=<foo>' option
+> >> + */
+> >> +uint8_t *usr_blobs;
+> >> +size_t usr_blobs_len;
+> >> +static GArray *usr_blobs_sizes;
+> >> +static unsigned usr_table_max;
+> >> +static unsigned usr_table_cnt;
+> >> 
+> >> uint8_t *smbios_tables;
+> >> size_t smbios_tables_len;
+> >> @@ -67,7 +75,6 @@ static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
+> >> static SmbiosEntryPoint ep;
+> >> 
+> >> static int smbios_type4_count = 0;
+> >> -static bool smbios_immutable;
+> >> static bool smbios_have_defaults;
+> >> static uint32_t smbios_cpuid_version, smbios_cpuid_features;
+> >> 
+> >> @@ -569,9 +576,8 @@ static void smbios_build_type_1_fields(void)
+> >> 
+> >> uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+> >> {
+> >> -    /* drop unwanted version of command-line file blob(s) */
+> >> -    g_free(smbios_tables);
+> >> -    smbios_tables = NULL;
+> >> +    int i;
+> >> +    size_t usr_offset;
+> >> 
+> >>     /* also complain if fields were given for types > 1 */
+> >>     if (find_next_bit(have_fields_bitmap,
+> >> @@ -581,12 +587,33 @@ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+> >>         exit(1);
+> >>     }
+> >> 
+> >> -    if (!smbios_immutable) {
+> >> -        smbios_build_type_0_fields();
+> >> -        smbios_build_type_1_fields();
+> >> -        smbios_validate_table(expected_t4_count);
+> >> -        smbios_immutable = true;
+> >> +    g_free(smbios_entries);
+> >> +    smbios_entries_len = sizeof(uint16_t);
+> >> +    smbios_entries = g_malloc0(smbios_entries_len);
+> >> +
+> >> +    for (i = 0, usr_offset = 0; usr_blobs_sizes && i < usr_blobs_sizes->len;
+> >> +         i++)
+> >> +    {
+> >> +        struct smbios_table *table;
+> >> +        struct smbios_structure_header *header;
+> >> +        size_t size = g_array_index(usr_blobs_sizes, size_t, i);
+> >> +
+> >> +        header = (struct smbios_structure_header *)(usr_blobs + usr_offset);
+> >> +        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> >> +                                                   size + sizeof(*table));
+> >> +        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> >> +        table->header.type = SMBIOS_TABLE_ENTRY;
+> >> +        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> >> +        memcpy(table->data, header, size);
+> >> +        smbios_entries_len += sizeof(*table) + size;
+> >> +        (*(uint16_t *)smbios_entries) =
+> >> +            cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);  
+> > 
+> > I know this comes from existing code but can you please explain why we add
+> > 1 to it? This is confusing and a comment here would be nice.
+> >   
+> >> +        usr_offset += size;  
+> > 
+> > It would be better if we could add a comment here describing a bit what
+> > this is all about.
+> > 
+> > user blobs are an array of smbios_structure_header entries whereas legacy
+> > tables are an array of smbios_table structures where
+> > smbios_table->data represents the a single user provided table blob in
+> > smbios_structure_header.  
+> 
+> Igor, are you going to send a v3 for this with the comments added?
 
-Unfortunately Linux OS does not provide a means to dynamically create/destroy
-NUMA nodes and such feature implementation is not expected to be trivial. The
-nodes that OS discovers at the boot time while parsing SRAT remains fixed. So
-we utilize the Generic Initiator (GI) Affinity structures that allows
-association between nodes and devices. Multiple GI structures per BDF is
-possible, allowing creation of multiple nodes by exposing unique PXM in each
-of these structures.
+I can add comments as a patch on top of series,
+though I'd rather prefer to deprecate all this legacy code
+(along with ISA machine) and just remove it.
 
-Implement the mechanism to build the GI affinity structures as Qemu currently
-does not. Introduce a new acpi-generic-initiator object to allow host admin
-link a device with an associated NUMA node. Qemu maintains this association
-and use this object to build the requisite GI Affinity Structure.
-
-When multiple NUMA nodes are associated with a device, it is required to
-create those many number of acpi-generic-initiator objects, each representing
-a unique device:node association.
-
-Following is one of a decoded GI affinity structure in VM ACPI SRAT.
-[0C8h 0200   1]                Subtable Type : 05 [Generic Initiator Affinity]
-[0C9h 0201   1]                       Length : 20
-
-[0CAh 0202   1]                    Reserved1 : 00
-[0CBh 0203   1]           Device Handle Type : 01
-[0CCh 0204   4]             Proximity Domain : 00000007
-[0D0h 0208  16]                Device Handle : 00 00 20 00 00 00 00 00 00 00 00
-00 00 00 00 00
-[0E0h 0224   4]        Flags (decoded below) : 00000001
-                                     Enabled : 1
-[0E4h 0228   4]                    Reserved2 : 00000000
-
-[0E8h 0232   1]                Subtable Type : 05 [Generic Initiator Affinity]
-[0E9h 0233   1]                       Length : 20
-
-An admin can provide a range of acpi-generic-initiator objects, each
-associating a device (by providing the id through pci-dev argument)
-to the desired NUMA node (using the node argument). Currently, only PCI
-device is supported.
-
-For the grace hopper system, create a range of 8 nodes and associate that
-with the device using the acpi-generic-initiator object. While a configuration
-of less than 8 nodes per device is allowed, such configuration will prevent
-utilization of the feature to the fullest. The following sample creates 8
-nodes per PCI device for a VM with 2 PCI devices and link them to the
-respecitve PCI device using acpi-generic-initiator objects:
-
--numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
--numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 \
--numa node,nodeid=8 -numa node,nodeid=9 \
--device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.0,addr=04.0,rombar=0,id=dev0 \
--object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
--object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=3 \
--object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=4 \
--object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=5 \
--object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=6 \
--object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=7 \
--object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=8 \
--object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
-
--numa node,nodeid=10 -numa node,nodeid=11 -numa node,nodeid=12 \
--numa node,nodeid=13 -numa node,nodeid=14 -numa node,nodeid=15 \
--numa node,nodeid=16 -numa node,nodeid=17 \
--device vfio-pci-nohotplug,host=0009:01:01.0,bus=pcie.0,addr=05.0,rombar=0,id=dev1 \
--object acpi-generic-initiator,id=gi8,pci-dev=dev1,node=10 \
--object acpi-generic-initiator,id=gi9,pci-dev=dev1,node=11 \
--object acpi-generic-initiator,id=gi10,pci-dev=dev1,node=12 \
--object acpi-generic-initiator,id=gi11,pci-dev=dev1,node=13 \
--object acpi-generic-initiator,id=gi12,pci-dev=dev1,node=14 \
--object acpi-generic-initiator,id=gi13,pci-dev=dev1,node=15 \
--object acpi-generic-initiator,id=gi14,pci-dev=dev1,node=16 \
--object acpi-generic-initiator,id=gi15,pci-dev=dev1,node=17 \
-
-Link: https://www.nvidia.com/en-in/technologies/multi-instance-gpu [1]
-Cc: Jonathan Cameron <qemu-devel@nongnu.org>
-Cc: Alex Williamson <alex.williamson@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Acked-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
----
- hw/acpi/acpi_generic_initiator.c         | 71 ++++++++++++++++++++++++
- hw/acpi/meson.build                      |  1 +
- include/hw/acpi/acpi_generic_initiator.h | 22 ++++++++
- qapi/qom.json                            | 17 ++++++
- 4 files changed, 111 insertions(+)
- create mode 100644 hw/acpi/acpi_generic_initiator.c
- create mode 100644 include/hw/acpi/acpi_generic_initiator.h
-
-diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
-new file mode 100644
-index 0000000000..130d6ae8c1
---- /dev/null
-+++ b/hw/acpi/acpi_generic_initiator.c
-@@ -0,0 +1,71 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/acpi_generic_initiator.h"
-+#include "hw/boards.h"
-+#include "qemu/error-report.h"
-+
-+typedef struct AcpiGenericInitiatorClass {
-+    ObjectClass parent_class;
-+} AcpiGenericInitiatorClass;
-+
-+OBJECT_DEFINE_TYPE_WITH_INTERFACES(AcpiGenericInitiator, acpi_generic_initiator,
-+                   ACPI_GENERIC_INITIATOR, OBJECT,
-+                   { TYPE_USER_CREATABLE },
-+                   { NULL })
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(AcpiGenericInitiator, ACPI_GENERIC_INITIATOR)
-+
-+static void acpi_generic_initiator_init(Object *obj)
-+{
-+    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-+
-+    gi->node = MAX_NODES;
-+    gi->pci_dev = NULL;
-+}
-+
-+static void acpi_generic_initiator_finalize(Object *obj)
-+{
-+    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-+
-+    g_free(gi->pci_dev);
-+}
-+
-+static void acpi_generic_initiator_set_pci_device(Object *obj, const char *val,
-+                                                  Error **errp)
-+{
-+    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-+
-+    gi->pci_dev = g_strdup(val);
-+}
-+
-+static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
-+                                            const char *name, void *opaque,
-+                                            Error **errp)
-+{
-+    AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-+    uint32_t value;
-+
-+    if (!visit_type_uint32(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    if (value >= MAX_NODES) {
-+        error_printf("%s: Invalid NUMA node specified\n",
-+                     TYPE_ACPI_GENERIC_INITIATOR);
-+        exit(1);
-+    }
-+
-+    gi->node = value;
-+}
-+
-+static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
-+{
-+    object_class_property_add_str(oc, "pci-dev", NULL,
-+        acpi_generic_initiator_set_pci_device);
-+    object_class_property_add(oc, "node", "int", NULL,
-+        acpi_generic_initiator_set_node, NULL, NULL);
-+}
-diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
-index fc1b952379..1424046164 100644
---- a/hw/acpi/meson.build
-+++ b/hw/acpi/meson.build
-@@ -1,5 +1,6 @@
- acpi_ss = ss.source_set()
- acpi_ss.add(files(
-+  'acpi_generic_initiator.c',
-   'acpi_interface.c',
-   'aml-build.c',
-   'bios-linker-loader.c',
-diff --git a/include/hw/acpi/acpi_generic_initiator.h b/include/hw/acpi/acpi_generic_initiator.h
-new file mode 100644
-index 0000000000..16de1d3d80
---- /dev/null
-+++ b/include/hw/acpi/acpi_generic_initiator.h
-@@ -0,0 +1,22 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved
-+ */
-+
-+#ifndef ACPI_GENERIC_INITIATOR_H
-+#define ACPI_GENERIC_INITIATOR_H
-+
-+#include "qom/object_interfaces.h"
-+
-+#define TYPE_ACPI_GENERIC_INITIATOR "acpi-generic-initiator"
-+
-+typedef struct AcpiGenericInitiator {
-+    /* private */
-+    Object parent;
-+
-+    /* public */
-+    char *pci_dev;
-+    uint16_t node;
-+} AcpiGenericInitiator;
-+
-+#endif
-diff --git a/qapi/qom.json b/qapi/qom.json
-index c53ef978ff..81727310b1 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -794,6 +794,21 @@
- { 'struct': 'VfioUserServerProperties',
-   'data': { 'socket': 'SocketAddress', 'device': 'str' } }
- 
-+##
-+# @AcpiGenericInitiatorProperties:
-+#
-+# Properties for acpi-generic-initiator objects.
-+#
-+# @pci-dev: PCI device ID to be associated with the node
-+#
-+# @node: NUMA node associated with the PCI device
-+#
-+# Since: 9.0
-+##
-+{ 'struct': 'AcpiGenericInitiatorProperties',
-+  'data': { 'pci-dev': 'str',
-+            'node': 'uint32' } }
-+
- ##
- # @RngProperties:
- #
-@@ -911,6 +926,7 @@
- ##
- { 'enum': 'ObjectType',
-   'data': [
-+    'acpi-generic-initiator',
-     'authz-list',
-     'authz-listfile',
-     'authz-pam',
-@@ -981,6 +997,7 @@
-             'id': 'str' },
-   'discriminator': 'qom-type',
-   'data': {
-+      'acpi-generic-initiator':     'AcpiGenericInitiatorProperties',
-       'authz-list':                 'AuthZListProperties',
-       'authz-listfile':             'AuthZListFileProperties',
-       'authz-pam':                  'AuthZPAMProperties',
--- 
-2.34.1
+> 
+> >   
+> >>     }
+> >> +
+> >> +    smbios_build_type_0_fields();
+> >> +    smbios_build_type_1_fields();
+> >> +    smbios_validate_table(expected_t4_count);
+> >>     *length = smbios_entries_len;
+> >>     return smbios_entries;
+> >> }
+> >> @@ -1094,67 +1121,67 @@ void smbios_get_tables(MachineState *ms,
+> >> {
+> >>     unsigned i, dimm_cnt, offset;
+> >> 
+> >> -    /* drop unwanted (legacy) version of command-line file blob(s) */
+> >> -    g_free(smbios_entries);
+> >> -    smbios_entries = NULL;
+> >> +    g_free(smbios_tables);
+> >> +    smbios_tables = g_memdup2(usr_blobs, usr_blobs_len);  
+> > 
+> > Again a comment describing here would be nice as to why memdup is ok.
+> >   
+> >> +    smbios_tables_len = usr_blobs_len;
+> >> +    smbios_table_max = usr_table_max;
+> >> +    smbios_table_cnt = usr_table_cnt;
+> >> 
+> >> -    if (!smbios_immutable) {
+> >> -        smbios_build_type_0_table();
+> >> -        smbios_build_type_1_table();
+> >> -        smbios_build_type_2_table();
+> >> -        smbios_build_type_3_table();
+> >> +    smbios_build_type_0_table();
+> >> +    smbios_build_type_1_table();
+> >> +    smbios_build_type_2_table();
+> >> +    smbios_build_type_3_table();
+> >> 
+> >> -        assert(ms->smp.sockets >= 1);
+> >> +    assert(ms->smp.sockets >= 1);
+> >> 
+> >> -        for (i = 0; i < ms->smp.sockets; i++) {
+> >> -            smbios_build_type_4_table(ms, i);
+> >> -        }
+> >> +    for (i = 0; i < ms->smp.sockets; i++) {
+> >> +        smbios_build_type_4_table(ms, i);
+> >> +    }
+> >> 
+> >> -        smbios_build_type_8_table();
+> >> -        smbios_build_type_11_table();
+> >> +    smbios_build_type_8_table();
+> >> +    smbios_build_type_11_table();
+> >> 
+> >> #define MAX_DIMM_SZ (16 * GiB)
+> >> #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+> >>                                         : ((current_machine->ram_size - 1) % MAX_DIMM_SZ) + 1)
+> >> 
+> >> -        dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) / MAX_DIMM_SZ;
+> >> +    dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) /
+> >> +               MAX_DIMM_SZ;
+> >> 
+> >> -        /*
+> >> -         * The offset determines if we need to keep additional space between
+> >> -         * table 17 and table 19 header handle numbers so that they do
+> >> -         * not overlap. For example, for a VM with larger than 8 TB guest
+> >> -         * memory and DIMM like chunks of 16 GiB, the default space between
+> >> -         * the two tables (T19_BASE - T17_BASE = 512) is not enough.
+> >> -         */
+> >> -        offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+> >> -                 dimm_cnt - (T19_BASE - T17_BASE) : 0;
+> >> +    /*
+> >> +     * The offset determines if we need to keep additional space between
+> >> +     * table 17 and table 19 header handle numbers so that they do
+> >> +     * not overlap. For example, for a VM with larger than 8 TB guest
+> >> +     * memory and DIMM like chunks of 16 GiB, the default space between
+> >> +     * the two tables (T19_BASE - T17_BASE = 512) is not enough.
+> >> +     */
+> >> +    offset = (dimm_cnt > (T19_BASE - T17_BASE)) ? \
+> >> +             dimm_cnt - (T19_BASE - T17_BASE) : 0;
+> >> 
+> >> -        smbios_build_type_16_table(dimm_cnt);
+> >> +    smbios_build_type_16_table(dimm_cnt);
+> >> 
+> >> -        for (i = 0; i < dimm_cnt; i++) {
+> >> -            smbios_build_type_17_table(i, GET_DIMM_SZ);
+> >> -        }
+> >> +    for (i = 0; i < dimm_cnt; i++) {
+> >> +        smbios_build_type_17_table(i, GET_DIMM_SZ);
+> >> +    }
+> >> 
+> >> -        for (i = 0; i < mem_array_size; i++) {
+> >> -            smbios_build_type_19_table(i, offset, mem_array[i].address,
+> >> -                                       mem_array[i].length);
+> >> -        }
+> >> +    for (i = 0; i < mem_array_size; i++) {
+> >> +        smbios_build_type_19_table(i, offset, mem_array[i].address,
+> >> +                                   mem_array[i].length);
+> >> +    }
+> >> 
+> >> -        /*
+> >> -         * make sure 16 bit handle numbers in the headers of tables 19
+> >> -         * and 32 do not overlap.
+> >> -         */
+> >> -        assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+> >> +    /*
+> >> +     * make sure 16 bit handle numbers in the headers of tables 19
+> >> +     * and 32 do not overlap.
+> >> +     */
+> >> +    assert((mem_array_size + offset) < (T32_BASE - T19_BASE));
+> >> 
+> >> -        smbios_build_type_32_table();
+> >> -        smbios_build_type_38_table();
+> >> -        smbios_build_type_41_table(errp);
+> >> -        smbios_build_type_127_table();
+> >> +    smbios_build_type_32_table();
+> >> +    smbios_build_type_38_table();
+> >> +    smbios_build_type_41_table(errp);
+> >> +    smbios_build_type_127_table();
+> >> 
+> >> -        smbios_validate_table(ms->smp.sockets);
+> >> -        smbios_entry_point_setup();
+> >> -        smbios_immutable = true;
+> >> -    }
+> >> +    smbios_validate_table(ms->smp.sockets);
+> >> +    smbios_entry_point_setup();
+> >> 
+> >>     /* return tables blob and entry point (anchor), and their sizes */
+> >>     *tables = smbios_tables;
+> >> @@ -1254,13 +1281,10 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+> >> {
+> >>     const char *val;
+> >> 
+> >> -    assert(!smbios_immutable);
+> >> -
+> >>     val = qemu_opt_get(opts, "file");
+> >>     if (val) {
+> >>         struct smbios_structure_header *header;
+> >> -        int size;
+> >> -        struct smbios_table *table; /* legacy mode only */
+> >> +        size_t size;
+> >> 
+> >>         if (!qemu_opts_validate(opts, qemu_smbios_file_opts, errp)) {
+> >>             return;
+> >> @@ -1277,9 +1301,9 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+> >>          * (except in legacy mode, where the second '\0' is implicit and
+> >>          *  will be inserted by the BIOS).
+> >>          */
+> >> -        smbios_tables = g_realloc(smbios_tables, smbios_tables_len + size);
+> >> -        header = (struct smbios_structure_header *)(smbios_tables +
+> >> -                                                    smbios_tables_len);
+> >> +        usr_blobs = g_realloc(usr_blobs, usr_blobs_len + size);
+> >> +        header = (struct smbios_structure_header *)(usr_blobs +
+> >> +                                                    usr_blobs_len);
+> >> 
+> >>         if (load_image_size(val, (uint8_t *)header, size) != size) {
+> >>             error_setg(errp, "Failed to load SMBIOS file %s", val);
+> >> @@ -1300,34 +1324,15 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+> >>             smbios_type4_count++;
+> >>         }
+> >> 
+> >> -        smbios_tables_len += size;
+> >> -        if (size > smbios_table_max) {
+> >> -            smbios_table_max = size;
+> >> +        if (!usr_blobs_sizes) {
+> >> +            usr_blobs_sizes = g_array_new(false, false, sizeof(size_t));
+> >>         }
+> >> -        smbios_table_cnt++;
+> >> -
+> >> -        /* add a copy of the newly loaded blob to legacy smbios_entries */
+> >> -        /* NOTE: This code runs before smbios_set_defaults(), so we don't
+> >> -         *       yet know which mode (legacy vs. aggregate-table) will be
+> >> -         *       required. We therefore add the binary blob to both legacy
+> >> -         *       (smbios_entries) and aggregate (smbios_tables) tables, and
+> >> -         *       delete the one we don't need from smbios_set_defaults(),
+> >> -         *       once we know which machine version has been requested.
+> >> -         */
+> >> -        if (!smbios_entries) {
+> >> -            smbios_entries_len = sizeof(uint16_t);
+> >> -            smbios_entries = g_malloc0(smbios_entries_len);
+> >> +        g_array_append_val(usr_blobs_sizes, size);
+> >> +        usr_blobs_len += size;
+> >> +        if (size > usr_table_max) {
+> >> +            usr_table_max = size;
+> >>         }
+> >> -        smbios_entries = g_realloc(smbios_entries, smbios_entries_len +
+> >> -                                                   size + sizeof(*table));
+> >> -        table = (struct smbios_table *)(smbios_entries + smbios_entries_len);
+> >> -        table->header.type = SMBIOS_TABLE_ENTRY;
+> >> -        table->header.length = cpu_to_le16(sizeof(*table) + size);
+> >> -        memcpy(table->data, header, size);
+> >> -        smbios_entries_len += sizeof(*table) + size;
+> >> -        (*(uint16_t *)smbios_entries) =
+> >> -                cpu_to_le16(le16_to_cpu(*(uint16_t *)smbios_entries) + 1);
+> >> -        /* end: add a copy of the newly loaded blob to legacy smbios_entries */
+> >> +        usr_table_cnt++;
+> >> 
+> >>         return;
+> >>     }
+> >> --
+> >> 2.39.3  
+> 
+> 
 

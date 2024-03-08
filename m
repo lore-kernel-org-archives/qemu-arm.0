@@ -1,114 +1,108 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1912279ejb;
-        Fri, 8 Mar 2024 08:14:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX+TCUEP7dn3PW3f+ttLnYeAXXtxA6XVC5Rh+XRigcR+CNdEs6+b/Y5dM9mRHDTTQ4vZFQqM8XL017yvjC7KiHC9zRSDCK4
-X-Google-Smtp-Source: AGHT+IFUNBV8Mph87zWN4LpLbNn4KzspIjEhnaxSR8+/93NEVOXNNk0SMjymXlNhoJ9TlswuP0H9
-X-Received: by 2002:a05:620a:19a9:b0:788:4891:53d0 with SMTP id bm41-20020a05620a19a900b00788489153d0mr6305179qkb.30.1709914478798;
-        Fri, 08 Mar 2024 08:14:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709914478; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1952187ejb;
+        Fri, 8 Mar 2024 09:16:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVXyOct8qj6uq0SvbhP/lRoHODoGdTc0SfpBi79nHCzrKGKWh73g9lsi79W2XX7qmU7VR36dKdxKxtnKSEn4IdX7lCI9ZdB
+X-Google-Smtp-Source: AGHT+IETCo7dpEU8u9n0oVdwWhK+yRojMG3oBgO2P1auvRptdIiKqqNtyEluHtn59vy6YSNNMv5s
+X-Received: by 2002:a0c:f7c7:0:b0:690:b4db:abe with SMTP id f7-20020a0cf7c7000000b00690b4db0abemr2369785qvo.58.1709918209322;
+        Fri, 08 Mar 2024 09:16:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709918209; cv=none;
         d=google.com; s=arc-20160816;
-        b=x2YTns4kO4UmFVxkJPDQNMx6Pw6rHgwk3/dTjnHKyP9xr35exrfkcNHg/rcqW2wxc+
-         DBfzzq5Zkno0Rg+DYrc7r8f891IhH/66kcT/m+kv45bFvX8BmmN30grK6iIeFAiYKz5d
-         RNffTurrpEp6rFTAPK9bGy5o5ZAGkzUIIA26R7A/9uO0w6w2qlG8597a587v27l7r947
-         AXp+bxvTp5pdIL+a8OaKPX008/TjDUM+utEXQsY8k/F5lEjdhvDd308a1gYX4b5t3OYy
-         rgrMzs4d/GqcL2QQKiCnhUMpzaRUUW8NJfOso9asP2NQhmkmqDJ+g57i21T+JKgiQxJu
-         VuWQ==
+        b=qxQVyGrixVBci6Klp8A2h2zAlMKsXhF2+y5H8Y48akSuEazg1n2EfJoBbvdcjB6zX+
+         ZE3JgFZZwSQDjVQzC5uWbpPNgL/oD9+Nb8TKTIB9TnMP4Ry/OGmPMLQ4+TemCdRh+hFb
+         VgR5V5pFbVLspihIrcFxJTHrQXuTS3Ar4pE0LOkZp4k2+w5AaOZcw8PtCOubA/e3Ckhp
+         DbJhJNXJgrN1lBT6PGA7M1tNxER3rGOTylEywjvyGBRZVCShCHvzOIcZqEbeEap6r52W
+         9Q5b/26rn3QX58lW+PSpBnBR0P4OurjDRuRtgrLHBTieHNVUNSop+KWpzqP8kPZkwYHT
+         65Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=GFuY10NRycju0TCEIzNu/SW5zTp5TLcxEWCaS61P9RE=;
-        fh=TKGwhUpPGdn0FM14NOtAkAds6TuToXmlwcalQSIOa4s=;
-        b=o8wZWL8gFIf2+luNiaREUofkQ7qA+vQR8yDyNT4PWXNfIGaw7FFT5UWHWCd8dC6SC0
-         JNg9tDJPPc206kx9iWb/e2mPYKskjK6VA+MgULZSui2hdiZm13ziCWEzL00udFPceBTQ
-         +lE1brgDAglqJDR63NNImJ4Zsa1b4qiwcs3F9eiI5Z/htjGFqsOeP+IrWFJLRAuAv+zc
-         +3QxyLSeyZu/GQBM0TzXX7/t7F4zIkjZp2wCPE3VQ7Bj8teKSq9hgoRPrREcYRN+UEMH
-         fIAQqibo51NVOh95c3O46amEaF5nP8qFVjMobXy6joxLDIXBsQgMvSr5tupQC+msyu6c
-         oLIg==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EAfaOd/Q8LRJix3CBCeSxae8NympPrs4lYwaYOxdUU8=;
+        fh=6ygh8lbf+XvspWpGPd8xbHB0rPIUJcrgvR9vA5/qhQM=;
+        b=xL6qqR8sgDTHQ6t3IxW2gAbGD8/KA+Llb8y/p3+XhmRVuHoT/hxUAZCOdlirFqZWrU
+         /M6OuVNO75OcWcJzzISzIHKwuJhfutbR6iPSDqqybXSUcakzaSL/gqVTBZMZkrYrwCwS
+         sggqn7y06y6/pfkZ4L6uQo7VG750xKkmuuuSvZ3MwbTOaA0hytkRdyIPGE5sZTvH0iFm
+         k65GzL+7maquPe5Ypl11NY79CucZiK82IAspdcmVK5mZms8RQ/CwR9nsr8lXN4lzsB8h
+         75Wun4GJxLFgMtysdkEXWQC+zcFcdxWoxLhzrGL+aCFt0thEvmOU38HlWQhmmnVAaoD2
+         NWlg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="cSdsyOJ/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="bJz/cSLc";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj15-20020a05620a190f00b007884e690860si2687921qkb.510.2024.03.08.08.14.38
+        by mx.google.com with ESMTPS id a4-20020ad45c44000000b0068fc31ce46csi19929830qva.140.2024.03.08.09.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2024 08:14:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Mar 2024 09:16:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="cSdsyOJ/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="bJz/cSLc";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ricrb-0007oq-Gb; Fri, 08 Mar 2024 11:14:29 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ridpj-0006WO-Hg; Fri, 08 Mar 2024 12:16:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ricrT-0007jw-Te
- for qemu-devel@nongnu.org; Fri, 08 Mar 2024 11:14:20 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ridpb-0006VP-2J
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 12:16:27 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ricrQ-00005X-5a
- for qemu-devel@nongnu.org; Fri, 08 Mar 2024 11:14:19 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id
- a640c23a62f3a-a44ad785a44so128209066b.3
- for <qemu-devel@nongnu.org>; Fri, 08 Mar 2024 08:14:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ridpY-0003og-Sf
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 12:16:26 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-33e6aca1ca9so1531471f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Mar 2024 09:16:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709914453; x=1710519253; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GFuY10NRycju0TCEIzNu/SW5zTp5TLcxEWCaS61P9RE=;
- b=cSdsyOJ/i1QyBFKO4fUBCfGV+6qDjfEVZCugJlyIm08R99kq6zbtsamSH1Vxdmp6kD
- U8mXdVeHOxFs/HndQeGDHDyiMZ+vgXNrbZL+0HtTsJ9F8chiNS1fwUUY7D2N0qxbGere
- 2D6podKmkE0c1o+Fw/ualGj5W7HTw7+LCyjFZDVvSTVyJPk5gOtIk/dqoxB1OzEXAi8g
- SKdfF/dUwUqDfBI0I5fdQNg7xe5OJr5dySPhxQUNr+VkzQo7RcUJkmm2VBK3Z8Umzqkv
- 2zkLBbQP1AtdrPZ3PQqipqdYBb5wFl2hd5D7pLggna1xVo1M8T4KLZ2k5wA/3UB8VKPC
- HbkA==
+ d=linaro.org; s=google; t=1709918183; x=1710522983; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EAfaOd/Q8LRJix3CBCeSxae8NympPrs4lYwaYOxdUU8=;
+ b=bJz/cSLcYVTGbrQktP2f/c7zY1t8wWtZpzH+Jt6BH8fW9tq2XABC9vJPIOC8j5SGYr
+ TcwnBbeKhMKT13SqqWxXyGbhLUlxpqpza7qAU1EkasF1WMa0gR0hWl1KCmaNhV0nNUH8
+ Uj9R/ORIyp9vE2HFnJFr7SmiAG7jyfgnQ7JURHUJXNogJOT89KK+NN3HLYFe8UsXpsYe
+ gV7j2pKL6H0Rg7HzAKgU4Fj8t0dOMsSu/qURrJYvgwfxqoafuKq+31dpMsdIM8WGEmMV
+ zTVNua3UlmuFQIYLaMl3DyRFCIqD/fg2HBGKQ449PL5zU/he4xfgn3MNLW0QunsH1jrz
+ pOiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709914453; x=1710519253;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GFuY10NRycju0TCEIzNu/SW5zTp5TLcxEWCaS61P9RE=;
- b=B4vaRcrUgmVcXTcH2LArw3mQJgVXQUEeeGSefiHRn+bCkqhd1qGz8BULBjyFWbNukf
- JbzxVdeX52BsTw0LEp0VDOnWihFmao2qPn5eS2gB/nVicRcq1fBVTh5+sj+xtt2VrnGB
- pliDpKYI8IzKJOloLRutwUiG3OrBqZwVb4Xnk3Y774jRIrUAHK0aC64g7fymVlwPXlJs
- awBDaji5DM06SEL9g4c5Rtf7FR+e0ROxoS2hjjbkF2wXODwzi2WiKQdjZ2uq4le9T2dt
- BqRHdvm7DhRbprEq5jqtQWjFFxLYzDybfgHz/OwjwC09VsBRTMWE/T+b3N2Ffe5LH8v9
- LYbA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWoNA/5CekHS3HYyrmwi88JzkC+sUPW6ACQtf73J8sSUd+QBMb296KlFsRYzkKOakwfthCDe3aTaQz1uttL7nVdGc7hF1g=
-X-Gm-Message-State: AOJu0YzEJ5EtmJriXcWW1fQbY51Qm/znSo4Tl5Qn6Oyhprr3uEFIhbHC
- W9R59g1xY0vKtiAmIs6ZrrfiC7XIjSCLPD+3+8KDRM0ql4R000YgPI4EMeV5+vA=
-X-Received: by 2002:a17:906:ccc8:b0:a44:1a51:a1fd with SMTP id
- ot8-20020a170906ccc800b00a441a51a1fdmr14045816ejb.64.1709914453592; 
- Fri, 08 Mar 2024 08:14:13 -0800 (PST)
-Received: from [192.168.69.100] (pir44-h02-176-184-37-132.dsl.sta.abo.bbox.fr.
- [176.184.37.132]) by smtp.gmail.com with ESMTPSA id
- fw11-20020a170906c94b00b00a45a8c4edb4sm3995322ejb.48.2024.03.08.08.14.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Mar 2024 08:14:13 -0800 (PST)
-Message-ID: <66729d0f-72af-4c96-8bf7-479f954b032e@linaro.org>
-Date: Fri, 8 Mar 2024 17:14:11 +0100
+ d=1e100.net; s=20230601; t=1709918183; x=1710522983;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EAfaOd/Q8LRJix3CBCeSxae8NympPrs4lYwaYOxdUU8=;
+ b=qgxLov0Curiua2sr5g8OawYhe6nO32K8cucB6AclzpuRCHc5GD/q7sQTI8k4ydyWAT
+ aLNGa42PP9V3c3R3F1maDW9NHPt0rdZg4TRP8eETj164WoprOb49lEUe+iqTrFOBw+H9
+ V2TrSHH5OWshlb4Xi/tiayLCeH5rp/qGmNPmv0oHAt6d+Z9RmW1FkPADqfltFFs5XTU1
+ TdU/VDm6zKQeLCzqimnEtVmZbkTSBfRPfqggc70qsjovHznjbg+9H5lVqU7dVuUsoevC
+ xzV4XytzarZhBFCF7O7Sm8rp3j81aGTWwEs1sA/oXakzIjaqd9X5Xn1AqbwsupvZWice
+ pnsg==
+X-Gm-Message-State: AOJu0Yzkv90Sfil/XDdNDMveL8xQ9Eoyh4GNaU5DbCHGB2ao0ze1mPkN
+ ahw8uEUifKB5ClFdh7tN/QRr7qe0eupdr3YlyfCD+By30tuwbTujRlRJ9kfLZYNXQUG9gSmby1Y
+ G
+X-Received: by 2002:adf:9c86:0:b0:33d:731f:b750 with SMTP id
+ d6-20020adf9c86000000b0033d731fb750mr14634213wre.54.1709918183137; 
+ Fri, 08 Mar 2024 09:16:23 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ bn1-20020a056000060100b0033e17341ebesm4027275wrb.117.2024.03.08.09.16.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Mar 2024 09:16:22 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] hw/arm: Deprecate various old Arm machine types
+Date: Fri,  8 Mar 2024 17:16:21 +0000
+Message-Id: <20240308171621.3749894-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/about: Deprecate the "mainstone", "tosa" and "z2"
- machines
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20240308104206.480929-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240308104206.480929-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,53 +111,222 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fEucDxTkpBGg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YNCay/YGYxRf
 
-Hi Thomas,
+QEMU includes some models of old Arm machine types which are
+a bit problematic for us because:
+ * they're written in a very old way that uses numerous APIs that we
+   would like to get away from (eg they don't use qdev, they use
+   qemu_system_reset_request(), they use vmstate_register(), etc)
+ * they've been that way for a decade plus and nobody particularly has
+   stepped up to try to modernise the code (beyond some occasional
+   work here and there)
+ * we often don't have test cases for them, which means that if we
+   do try to do the necessary refactoring work on them we have no
+   idea if they even still work at all afterwards
 
-On 8/3/24 11:42, Thomas Huth wrote:
-> Support for these boards has been removed from the Linux kernel
-> in version 6.3 in 2023, so there are likely no users left for these
-> boards. Time to mark them as deprecated in QEMU, too!
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   docs/about/deprecated.rst | 8 ++++++++
->   hw/arm/mainstone.c        | 1 +
->   hw/arm/tosa.c             | 1 +
->   hw/arm/z2.c               | 1 +
->   4 files changed, 11 insertions(+)
-> 
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index 8565644da6..da5cc91eec 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -247,6 +247,14 @@ to correct issues, mostly regarding migration compatibility. These are
->   no longer maintained and removing them will make the code easier to
->   read and maintain. Use versions 2.12 and above as a replacement.
->   
-> +``mainstone``, ``tosa`` and ``z2`` PXA2xx arm machines (since 9.0)
-> +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-> +
-> +Support for these boards has been removed from the Linux kernel
-> +in version 6.3 in 2023, so there are likely no users left for these
-> +boards, thus they will be removed without replacement.
+All these machine types are also of hardware that has largely passed
+away into history and where I would not be surprised to find that
+e.g. the Linux kernel support was never tested on real hardware
+any more.
 
-While Linux host support makes sense for code removal, guest
-support isn't relevant IMHO. I.e. you can still run U-boot
-or any guest code you fancy, like my-first-rtos.
+After some consultation with the Linux kernel developers, we
+are going to deprecate:
 
-(I noticed Peter want a more generic removal)
+All PXA2xx machines:
+
+akita                Sharp SL-C1000 (Akita) PDA (PXA270)
+borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
+connex               Gumstix Connex (PXA255)
+mainstone            Mainstone II (PXA27x)
+spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
+terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
+tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
+verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
+z2                   Zipit Z2 (PXA27x)
+
+All OMAP2 machines:
+
+n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+
+One of the OMAP1 machines:
+
+cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+
+Rationale:
+ * for QEMU dropping individual machines is much less beneficial
+   than if we can drop support for an entire SoC
+ * the OMAP2 QEMU code in particular is large, old and unmaintained,
+   and none of the OMAP2 kernel maintainers said they were using
+   QEMU in any of their testing/development
+ * although there is a setup that is booting test kernels on some
+   of the PXA2xx machines, nobody seemed to be using them as part
+   of their active kernel development and my impression from the
+   email thread is that PXA is the closest of all these SoC families
+   to being dropped from the kernel soon
+ * nobody said they were using cheetah, so it's entirely
+   untested and quite probably broken
+ * on the other hand the OMAP1 sx1 model does seem to be being
+   used as part of kernel development, and there was interest
+   in keeping collie around
+
+In particular, the mainstone, tosa and z2 machine types have
+already been dropped from Linux.
+
+Mark all these machine types as depprecated.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/about/deprecated.rst | 15 +++++++++++++++
+ hw/arm/gumstix.c          |  2 ++
+ hw/arm/mainstone.c        |  1 +
+ hw/arm/nseries.c          |  2 ++
+ hw/arm/palm.c             |  1 +
+ hw/arm/spitz.c            |  1 +
+ hw/arm/tosa.c             |  1 +
+ hw/arm/z2.c               |  1 +
+ 8 files changed, 24 insertions(+)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 8565644da6d..7345e9f536a 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -247,6 +247,21 @@ to correct issues, mostly regarding migration compatibility. These are
+ no longer maintained and removing them will make the code easier to
+ read and maintain. Use versions 2.12 and above as a replacement.
+ 
++Arm machines ``akita``, ``borzoi``, ``cheetah``, ``connex``, ``mainstone``, ``n800``, ``n810``, ``spitz``, ``terrier``, ``tosa``, ``verdex``, ``z2`` (since 9.0)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++QEMU includes models of some machine types where the QEMU code that
++emulates their SoCs is very old and unmaintained. This code is now
++blocking our ability to move forward with various changes across
++the codebase, and over many years nobody has been interested in
++trying to modernise it. We don't expect any of these machines to have
++a large number of users, because they're all modelling hardware that
++has now passed away into history. We are therefore dropping support
++for all machine types using the PXA2xx and OMAP2 SoCs. We are also
++dropping the ``cheetah`` OMAP1 board, because we don't have any
++test images for it and don't know of anybody who does; the ``sx1``
++and ``sx1-v1`` OMAP1 machines remain supported for now.
++
+ Backend options
+ ---------------
+ 
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index d5de5409e17..91462691531 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -106,6 +106,7 @@ static void connex_class_init(ObjectClass *oc, void *data)
+     mc->desc = "Gumstix Connex (PXA255)";
+     mc->init = connex_init;
+     mc->ignore_memory_transaction_failures = true;
++    mc->deprecation_reason = "machine is old and unmaintained";
+ }
+ 
+ static const TypeInfo connex_type = {
+@@ -121,6 +122,7 @@ static void verdex_class_init(ObjectClass *oc, void *data)
+     mc->desc = "Gumstix Verdex Pro XL6P COMs (PXA270)";
+     mc->init = verdex_init;
+     mc->ignore_memory_transaction_failures = true;
++    mc->deprecation_reason = "machine is old and unmaintained";
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c0");
+ }
+ 
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index d2e2e68aa3f..3a6c22fddbc 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -169,6 +169,7 @@ static void mainstone2_machine_init(MachineClass *mc)
+     mc->init = mainstone_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
++    mc->deprecation_reason = "machine is old and unmaintained";
+ }
+ 
+ DEFINE_MACHINE("mainstone", mainstone2_machine_init)
+diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+index 35deb74f655..35364312c73 100644
+--- a/hw/arm/nseries.c
++++ b/hw/arm/nseries.c
+@@ -1430,6 +1430,7 @@ static void n800_class_init(ObjectClass *oc, void *data)
+     /* Actually two chips of 0x4000000 bytes each */
+     mc->default_ram_size = 0x08000000;
+     mc->default_ram_id = "omap2.dram";
++    mc->deprecation_reason = "machine is old and unmaintained";
+ 
+     machine_add_audiodev_property(mc);
+ }
+@@ -1452,6 +1453,7 @@ static void n810_class_init(ObjectClass *oc, void *data)
+     /* Actually two chips of 0x4000000 bytes each */
+     mc->default_ram_size = 0x08000000;
+     mc->default_ram_id = "omap2.dram";
++    mc->deprecation_reason = "machine is old and unmaintained";
+ 
+     machine_add_audiodev_property(mc);
+ }
+diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+index 8c4c8316140..e04ac92eb7f 100644
+--- a/hw/arm/palm.c
++++ b/hw/arm/palm.c
+@@ -309,6 +309,7 @@ static void palmte_machine_init(MachineClass *mc)
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("ti925t");
+     mc->default_ram_size = 0x02000000;
+     mc->default_ram_id = "omap1.dram";
++    mc->deprecation_reason = "machine is old and unmaintained";
+ 
+     machine_add_audiodev_property(mc);
+ }
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 643a02b1807..62cd55ba914 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -1041,6 +1041,7 @@ static void spitz_common_class_init(ObjectClass *oc, void *data)
+     mc->block_default_type = IF_IDE;
+     mc->ignore_memory_transaction_failures = true;
+     mc->init = spitz_common_init;
++    mc->deprecation_reason = "machine is old and unmaintained";
+ 
+     machine_add_audiodev_property(mc);
+ }
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index 3ca2e4459ca..5891f6064f9 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -270,6 +270,7 @@ static void tosapda_machine_init(MachineClass *mc)
+     mc->init = tosa_init;
+     mc->block_default_type = IF_IDE;
+     mc->ignore_memory_transaction_failures = true;
++    mc->deprecation_reason = "machine is old and unmaintained";
+ }
+ 
+ DEFINE_MACHINE("tosa", tosapda_machine_init)
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index eb2ff8dbc84..fc5672e7ab2 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -347,6 +347,7 @@ static void z2_machine_init(MachineClass *mc)
+     mc->init = z2_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
++    mc->deprecation_reason = "machine is old and unmaintained";
+ 
+     machine_add_audiodev_property(mc);
+ }
+-- 
+2.34.1
+

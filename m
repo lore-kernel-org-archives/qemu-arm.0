@@ -1,143 +1,184 @@
-Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1117591ejb;
-        Thu, 7 Mar 2024 04:50:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX5yRkB8ZXzPMLbn2qBzT1vljuLVgRzAdlI5sVZ5JUeic46iZkFlYhkABtuJL+yS/SLW9BIIJXeyxgRpbGQdbVE7MIcysuv
-X-Google-Smtp-Source: AGHT+IG4+AIBk0+6lZAsGdVgEzsDnNslH4Y92iH39/h9pEYM4KPd0VNB0JG5rbg8hAaaB6q0CF2Q
-X-Received: by 2002:a05:620a:45ab:b0:788:3121:f91c with SMTP id bp43-20020a05620a45ab00b007883121f91cmr9751535qkb.47.1709815818525;
-        Thu, 07 Mar 2024 04:50:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1709815818; cv=none;
+Received: by 2002:a17:906:3588:b0:a45:b507:d90a with SMTP id o8csp1723071ejb;
+        Fri, 8 Mar 2024 02:42:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWOaVVXX4qn0Z5j3A0MEcRf1HhidsAhhjlNPFQjnd3QkzLu2/me/wM7hM70lC7C2wRonmmQriu+8LH9xux7rjQkS5Q0kxr4
+X-Google-Smtp-Source: AGHT+IFEdefhREAOlCvUiILBO+IkfM1WgcMiC9p+Bg1OT3ffwxYYFvxGPiuNG3Hk42YPa+bctik+
+X-Received: by 2002:a81:6d41:0:b0:60a:a94:6ef6 with SMTP id i62-20020a816d41000000b0060a0a946ef6mr314452ywc.20.1709894560543;
+        Fri, 08 Mar 2024 02:42:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1709894560; cv=none;
         d=google.com; s=arc-20160816;
-        b=lIQ7qq+3Ucy4skIIp5qR9weAvtSD59iJ/JoQuDOreduQte7vqhQgpXfV2LAb0jSmlN
-         9aBxNaXIbd/BpkRX7VTNySqtYHtqTGDckOa4fvIZX60TE0mj0V2cIKu/M35XbYVdFzJv
-         k6SScapNOr4CdV8tSCxEEiRPlsI5OpKDAPrvM+C9Sm4iPU9ztzdiU+BPYQZ9gho4KJ1H
-         NVPDTZLoJonHCEFwUI1Q7A9SfRNuyXgTmMfBsTbcKr/RfLM4pZHsvslFr8RpJhqg9m9y
-         FIAj+iJIlIgo76H8tTfHUlWe9BpKU1A57RuhVjXQoGHHvCdx5xjgpJHU6ZqGtiRLxljv
-         DjeA==
+        b=hKYH83C4uAAMh2F6j7fuqhE+PkXeb6bUNDLUVKmc07JWGUuaBHV4CcXnTMMJ+BGC9D
+         NMEtI5WMgipzUQE82X/0j8iorUaIW3YLohbHzuf/M4oeBeFp00S5TWnaBD5tGFe14ZgI
+         3Ta4Q2bFECF4eYI+uf//ufsf+2CMZcP99oQj4fQd83nfVVbjEjEznEss6wWLYHjDcqIn
+         /ebjtJRag/UWu9qaI0L3P0zFNTQUpRjJHWsBfxKneuA9hviFP7UaKyP3pSyE8W67+LAV
+         anEI1qTtbtJ2tu+vOG+oj8U9ORafuCk0o9EVldGk2uXCtxntGRTK+/31IV0jyZ2evJe7
+         /wOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=zJ7VaqbJclpxZItJ5O2/a9RjPhH7hcEalo9E3OydZ4M=;
-        fh=GRGAhYIRyJLIexm/SQeD/ONQMnKo+TSDqNowgo15cfY=;
-        b=z4aUIRhFar1g/alWMdHtt3jgBbjIOohtQEnZZJKl0ZTcUecFSqW2yNhQy049+hW4+9
-         ZTpK7bJcD4yO1xEJ1ftd1237TuYrDcvdTsrS2eEpB/7a4S0kRIWh+NmzY886XWO3hGqY
-         gG/PuDZuWGaFt1hi3nFw6SS2Rq3K4kgOhlFWdPqAHBv9bZTqnbHkViYzShgOLVJ4xe1I
-         90VXtfy8g2dmSLgCUR7Tg2LOEtUToF0oQEqrGdBetdVh0ThxhfhiBCrGCvpsj12AlJVQ
-         HStFzXnM00ijMCAvun8ZAelujUQH/s4cJvtqs/QzxpoHLeGmHWC3tyoqZsjq90HD4PnR
-         1UcQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=R8lL/g6oDQcA7TfztXytEJa3Vv3eTQ3pcbjrOlW+zS0=;
+        fh=qUk3Wv8M1ZXgdOPNY0X8vo/Vd3NFINnKkGEtKvKNqeY=;
+        b=KP15KlwyPQuBfYzytRfQQg2tYL74uKbVejzkqpSwIFVr2LSyuAVlmOHWQWjDu2kgaC
+         tuiF6NsR61e7OqTTFX9AGdO1DTpSWEjm2IhucGfGm8hYln+8gOV4GDOf5v3Cn6Q3x2Aq
+         TjfgfLG1BNe/X6dP+zsc1J+kLZcTVt1nrcnQAVGAv51q4DDU4SKFNtrhMpxqDiOH7eyg
+         +DaCL+1dWSH52yt036dsFjUw+fg1b9OsWp1uFXAhI6Ar1mNMnogRw6MuIVPLYfzltQWE
+         dQkjRQhvK0eic+nIdSB6tRAuPXW5Gp3HYux4QzwbiMBNnGU6p2Ad3qCiZCXtH65prvRY
+         HsAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xuZUiDuQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EgVWcsqz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id op33-20020a05620a536100b007883187d1c4si5523248qkn.153.2024.03.07.04.50.18
+        by mx.google.com with ESMTPS id c6-20020ac87dc6000000b0042ed29fbdb1si15605438qte.617.2024.03.08.02.42.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2024 04:50:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Mar 2024 02:42:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xuZUiDuQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EgVWcsqz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1riDCE-0008KX-Sd; Thu, 07 Mar 2024 07:50:03 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1riXg7-0007Xo-H4; Fri, 08 Mar 2024 05:42:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1riDC4-0008Gu-Nf
- for qemu-devel@nongnu.org; Thu, 07 Mar 2024 07:49:54 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1riDC0-0002oo-CG
- for qemu-devel@nongnu.org; Thu, 07 Mar 2024 07:49:51 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-55a5e7fa471so1243348a12.1
- for <qemu-devel@nongnu.org>; Thu, 07 Mar 2024 04:49:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1709815786; x=1710420586; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zJ7VaqbJclpxZItJ5O2/a9RjPhH7hcEalo9E3OydZ4M=;
- b=xuZUiDuQA+u3xFAYoRA3vwSBrKDdo01chT8dd/TOShkuZYgEvwpc/ErkYJ6pJLNU+U
- zNYdGwnLbjy6b10JQ8ZNhpvZUWyeL1EWscND59X6OB3c5OMS/SaYXJgoUa3a29EksuZY
- H+GZeuO4HHUmn5FBgkourQ93ANandX1BBBm0MgbrTljxZWcJqvpLIFJpd6Hc11b2lksw
- 5CDZUKspy1/AFVzaBnVuht7PKQdoCzoLAOaQr7oOxR4IbZZmBGOIA5Kdoi8nJeA1a40J
- MKI/bye3627si6tteIqZCzQHTq3O34samvbp3hyLC8qQEnzAMI3eqWEpogsvGisTavQf
- 9ixg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709815786; x=1710420586;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zJ7VaqbJclpxZItJ5O2/a9RjPhH7hcEalo9E3OydZ4M=;
- b=jYToCGM+rZuNdlH43NdddmU5ec/wCLB6UpBCMROMPEchjN2kYHtWovCQdl8ZhbI2VI
- tX7TEe3h8agbMC4CpFw+Y5o3GL48pBj1ufbaAkXOxPEX92CE2eeOX8zP8GCtzcDMmyn9
- CPIfK4XZokALlIDo25fk5CHrik5zDeelSA2RBmbLrLN2fA1Zzqtzic5aeBIf4jQ5uZSB
- PqK9Redod6tPjiFyn2kN5WYtTm6KpuvBE2ltfwGTYegD4pMmQ1qRUFEuZO90yU6bkrCJ
- BP67wFT7HXiHNWxcU1QeEbIZhEGim1M/vM7zuKQvmO04RIz/TpvnZnfXBsGb4e5xYKw1
- oalQ==
-X-Gm-Message-State: AOJu0Yzs99J6qrCpPbvRJcgbq3dIfjOM7fZQAQE4/D0+gMEFiXzNKtLQ
- /mwvA4A+AjUAFQv7ONf9wo7/veTgJBahY1EhGeZuHHwE5WMcRer78yiwoqxfZyosTuE3sL74iKi
- JJYwh4qGXeOaR1BK/TP080Kfz6Cp5JUYjYci6bg==
-X-Received: by 2002:a05:6402:8d1:b0:567:fb9b:37d5 with SMTP id
- d17-20020a05640208d100b00567fb9b37d5mr2280052edz.32.1709815786335; Thu, 07
- Mar 2024 04:49:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riXg6-0007XD-Eb
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 05:42:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riXg4-0002cu-PF
+ for qemu-arm@nongnu.org; Fri, 08 Mar 2024 05:42:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709894531;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=R8lL/g6oDQcA7TfztXytEJa3Vv3eTQ3pcbjrOlW+zS0=;
+ b=EgVWcsqz0xi4DjxlJoc16H6svBtHnfbGd4Y5BLRa77IswN95h9DL/Bn19GOc22mZ4z290w
+ iQvgQqUoHda6dhyLTICxROFp8+bsgSVFFnTdVZjCF9rcIH1ZdHxUiYxkKtb8dztvSz7RcM
+ ncd0ywLXiwucoNEEo8wCYJ4L3jS9ocA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-91-DoegQFvQMletphR2VExa_g-1; Fri, 08 Mar 2024 05:42:09 -0500
+X-MC-Unique: DoegQFvQMletphR2VExa_g-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E322D101A526;
+ Fri,  8 Mar 2024 10:42:08 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.9])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9B0CB492BCB;
+ Fri,  8 Mar 2024 10:42:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH] docs/about: Deprecate the "mainstone",
+ "tosa" and "z2" machines
+Date: Fri,  8 Mar 2024 11:42:06 +0100
+Message-ID: <20240308104206.480929-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20240305163931.242795-1-richard.henderson@linaro.org>
-In-Reply-To: <20240305163931.242795-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Mar 2024 12:49:35 +0000
-Message-ID: <CAFEAcA-uhJy2jVyNqc=774bW70-FByPOXVJoQUH5jw-aAS2YcA@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Fix 32-bit SMOPA
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KxHkSxRhDtw9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ghBA8EJYgTQx
 
-On Tue, 5 Mar 2024 at 16:39, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> While the 8-bit input elements are sequential in the input vector,
-> the 32-bit output elements are not sequential in the output matrix.
-> Do not attempt to compute 2 32-bit outputs at the same time.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 23a5e3859f5 ("target/arm: Implement SME integer outer product")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2083
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->
-> v2: Fixed endian issue; double-checked on s390x.
->
+Support for these boards has been removed from the Linux kernel
+in version 6.3 in 2023, so there are likely no users left for these
+boards. Time to mark them as deprecated in QEMU, too!
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/about/deprecated.rst | 8 ++++++++
+ hw/arm/mainstone.c        | 1 +
+ hw/arm/tosa.c             | 1 +
+ hw/arm/z2.c               | 1 +
+ 4 files changed, 11 insertions(+)
 
-Applied to target-arm.next, thanks.
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 8565644da6..da5cc91eec 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -247,6 +247,14 @@ to correct issues, mostly regarding migration compatibility. These are
+ no longer maintained and removing them will make the code easier to
+ read and maintain. Use versions 2.12 and above as a replacement.
+ 
++``mainstone``, ``tosa`` and ``z2`` PXA2xx arm machines (since 9.0)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++Support for these boards has been removed from the Linux kernel
++in version 6.3 in 2023, so there are likely no users left for these
++boards, thus they will be removed without replacement.
++
++
+ Backend options
+ ---------------
+ 
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index d2e2e68aa3..c6018c6e81 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -169,6 +169,7 @@ static void mainstone2_machine_init(MachineClass *mc)
+     mc->init = mainstone_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
++    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
+ }
+ 
+ DEFINE_MACHINE("mainstone", mainstone2_machine_init)
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index 3ca2e4459c..9241867ba9 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -270,6 +270,7 @@ static void tosapda_machine_init(MachineClass *mc)
+     mc->init = tosa_init;
+     mc->block_default_type = IF_IDE;
+     mc->ignore_memory_transaction_failures = true;
++    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
+ }
+ 
+ DEFINE_MACHINE("tosa", tosapda_machine_init)
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index eb2ff8dbc8..c7c26bd726 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -347,6 +347,7 @@ static void z2_machine_init(MachineClass *mc)
+     mc->init = z2_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("pxa270-c5");
++    mc->deprecation_reason = "machine is old and has no more Linux kernel support";
+ 
+     machine_add_audiodev_property(mc);
+ }
+-- 
+2.44.0
 
--- PMM

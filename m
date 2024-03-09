@@ -1,115 +1,114 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp369457ejc;
-        Sat, 9 Mar 2024 11:28:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW83pcjud40Ki4wcjjEcwsFcCvW9PO2KRxyOtaaiQ0m04ML2mg64/jZFZIpwwL3jV6FVRUCHqwocMcBF0jOlhCduVWKVmoh
-X-Google-Smtp-Source: AGHT+IHvtKI+HBAedQE6ajT1/W1h5+ORuEsaw+Y9a42NyqQY+lfTmCnSGHZwiHpbqxNwkc/aiM+u
-X-Received: by 2002:a0c:f741:0:b0:690:c99d:c817 with SMTP id e1-20020a0cf741000000b00690c99dc817mr394198qvo.7.1710012500052;
-        Sat, 09 Mar 2024 11:28:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1710012500; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp369556ejc;
+        Sat, 9 Mar 2024 11:28:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVmoQVcavguvyLWCtRXC9tgbAh+MDGQpl9VVDvYVwurAvre2n0xhIVrClsW/Kt8uiw/JJ1+flaHm3F2aZRXS6+kEv3s/YOZ
+X-Google-Smtp-Source: AGHT+IGDtCcxoj0/mXs3OMSyueyCDUvHR795jl+whoGZ0eonHUNNAn7glWYUeGTHg4wm6S9D1w1u
+X-Received: by 2002:a05:620a:1452:b0:788:2c7b:32ae with SMTP id i18-20020a05620a145200b007882c7b32aemr2665210qkl.77.1710012519040;
+        Sat, 09 Mar 2024 11:28:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1710012519; cv=none;
         d=google.com; s=arc-20160816;
-        b=yWzYE5m0O5OTdDIMgAbPoOCSilSziDzXQ+JNgRhMgdwGM50c8+CZODcxtxgugVqLCy
-         Yv/R65oa55YJQ1x33SSRP6hMe1XLZaxLhSGcpaAhONfYmPaT8R3DHebY3E7BQR6QU8Hc
-         Gf3RDFNw96hPtjRUOI6yDUk0tjYFqIoDtv6oAUUCXZFVjv8dqJ8eACrNoCUO/FFlnv8G
-         gIVZYDVzj+H4U2ShBoKTG4gKllPqtniFs3d2TsvqSJbqSvIqq17F9Ns/27iNhFE1RYGF
-         5yWCvN73avSu9cz7JEUGqTQQ5Y+/byUZXA3hYJGY1+78RofVopC3nWIX6i7Df/2M7npq
-         N2Wg==
+        b=AXgJ63EOZoLfIYnbl3joAqN78GIZKDojbkrXt+h4aE1Lsjr3g94AKGD9zuMTVyHbiN
+         egn5YF9YMi9+Q1nOoLANBCaQKE1wOB/XpcGDueAylcFy67YTOv5T08rQH9Lih0whog1D
+         rdsFiltmXJ1MHF6s8nsoyVHRkbG8YAkyQkgDFSNdgl6wDwI16Mg+yQUGqA+lOThwinQY
+         M4Y4Isiv8XfDLhhe/QKX45buH7gmtC+70DaodIN8F3LPNE+JwdS8Lk/RJYXxsDIrP+iY
+         W+LffDCMx7arNhYS6GUCXTb1BxFV9wrp//Tk+9TNO64vCWSw8pXOuP0Y56cFEt6ALORt
+         FjHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=oXXCTTKtOqKGIkFeLbdf6BFuAhbM9FIUumQwfVgSOrQ=;
-        fh=MRpuvAMiIDngljO/1ktWIu7Kho7sXmLGHrYdpgFbLRA=;
-        b=AnlhNOhsBnc7msr++GT1t1hXqCsasEARUTpgt+oKSgCWFZ2zqMQ/8FDfO+kgY6gNOt
-         xz2ihopj1A+ole1aP8U8SpOWVYcak3D25VBSJw31Z0lNvuBK22hY+vVNgAq0EMjFFpKi
-         493OWWPKCn+QwIgkfRQWUsxL4yRteJQis7WQNfLw3skCRi3wPxtBuuZW+A89pjpSOdPh
-         jfhVCUplhtzxPLPYAoWF8tPFmJ82s6BlHdW3ahGrjlVrI2ffK6oSOTwxEXqRKwaZi9dx
-         wbw7/nZgw2TnAXKFckq5ONo19E81nFxEP2FUlmN7sc1gumVJNcqfmyvgTLWaHbhxBjJo
-         vMbw==;
+        bh=shKXB5mcwJL88T3p8o75GRzqkLr6uG1jmqPC2UukzhI=;
+        fh=BE6MZhFgQ+vESRToz8548hMEtrvy36dnVW/KHUFM08M=;
+        b=t8d1TZFbtVvm1FcxR778SYyqmvsg7iz1kF6J2Miz29ADxyJj5k9T49dgQcBq3sDlwG
+         csKA35xmqlpFg+K89b4CGBDKF84ugipz/lnBdlAp2JWLrDBcuY121H6dJOLEJ9c4/Ror
+         4TCtJRhyYknvUE5TtPhxJ8yATUVY8mH+w79Yn66PZVW80FmpWI7FZdUpJNHjh0oYToTN
+         +cqpf4rqa7kHi7MjS+rkmM30SQnJi8MJl7RDszhr0RDI8f7C/eUp4WqZ9PBUnCFpE7Z0
+         AGrCS9szJ2u1CyZMczQUGDlmVgTm2JScM6YOxGlKTaKoXUElVY9dVd7aFX20A0sidfIm
+         JfNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NnxAPgg+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pY4+LBsm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jm10-20020ad45eca000000b00690b07d1fe6si2132561qvb.282.2024.03.09.11.28.19
+        by mx.google.com with ESMTPS id yf21-20020a05620a3bd500b007885eb686bfsi1637738qkn.785.2024.03.09.11.28.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 09 Mar 2024 11:28:20 -0800 (PST)
+        Sat, 09 Mar 2024 11:28:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NnxAPgg+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pY4+LBsm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rj2Lk-0001Gy-G4; Sat, 09 Mar 2024 14:27:16 -0500
+	id 1rj2Ld-000097-Kd; Sat, 09 Mar 2024 14:27:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2Kx-0007tI-B1
- for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:26:30 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2Js-000769-Mu
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:22 -0500
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2Kt-0003YB-KE
- for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:26:27 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-563bb51c36eso3383658a12.2
- for <qemu-devel@nongnu.org>; Sat, 09 Mar 2024 11:26:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2Jl-0003Is-SN
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:18 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-563cb3ba9daso3523889a12.3
+ for <qemu-devel@nongnu.org>; Sat, 09 Mar 2024 11:25:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710012381; x=1710617181; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710012309; x=1710617109; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oXXCTTKtOqKGIkFeLbdf6BFuAhbM9FIUumQwfVgSOrQ=;
- b=NnxAPgg+MaI2MhPlQKj+BaKniQJ0Rv0no4GvooxGVwQXEn3V+wl60vioL77E+V7Bxe
- cSijFcXFXnfovMX5T7leg2Ne1pN0bxDBj5gcvIKn6VHJ3XqPtx/D8hRfkCM9s1xQref1
- gepzhwyLHcpTBkgoZ1pj3Q1lLN+EY1cXQ4OyJJIjxHbJNuAQjpX+QJm1aeL4F6j5rGpx
- DR/ULNhxeKnJC4asKq7B+megyxkmHviFFIiUJguf0cdpuI/puVOxSnMgG9djEKXeAWL3
- b2wjEnNoMRO/jlFaW3PEBSXTTtamzjuLr21pa25BTfEJUpsQRgoPn+9w6HZsXI+p4IUm
- qx5g==
+ bh=shKXB5mcwJL88T3p8o75GRzqkLr6uG1jmqPC2UukzhI=;
+ b=pY4+LBsm4cXmBzCJybnR2Hy02QkbN0Bt/FH+E/VAwK8DCHjAFkyQ1ysrS7ckIyLDpr
+ q0P1huPa1iAHzlkDqQlubQGYsdypCsGkrZO5sKMzurFY+tVGLt2OtcMm8klHbjwCYx1m
+ UtVXzZSu3fZPpwQbwCwZIrihHeaPUVnR9iPJ9h3uIk0eOLoyUFZhUYkttNVJ5+LPHZB4
+ DijuYjuOUsu/tYq9RB5OAou816u5NakeAhA8Gtu8xhiDNcqFzSSMD4EPU+840x1ZlyiP
+ yfjX7bcmffnthpvWh8lUCMk4scgSetGPhNXbACO7o8uS3mJJfaR8tMQkoAI1kn5mFlHb
+ CW+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710012381; x=1710617181;
+ d=1e100.net; s=20230601; t=1710012309; x=1710617109;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oXXCTTKtOqKGIkFeLbdf6BFuAhbM9FIUumQwfVgSOrQ=;
- b=vXp0uZaYiegavFY0eQz+mj6rSFyQWgWJkVZC7cxmwUCF7Bfzd/pnmulsy2wwQKuGhE
- MHGFmVCVsHyWDd5uZsD6UviK+l81cvMtYqoCuwxTb9gYpxc6LbR3p8FbwRBuI8IaIXxZ
- t3Dy1nVyvotpsL1OchFgVLgbzSvZm1VrfkJU6hL62FF/MWE2ccHeaINsX11hAom31W3M
- vzkqRDOCaA2ckXny0x1fZEe9QZc8DkVmrPzfBOIDi5MftGobEJMLohrNd/8dFxc3scrd
- SYIbKMVNDB68lL7ROdHAHn8woAGdiYmm80wvzmK7j52O4SCqwP+BNB3AwJKadIJEVjEG
- akrw==
-X-Gm-Message-State: AOJu0YwDo/Wp7AFh9SWmkZVTyk4S0OjDeCExjV52Qaxxh79tdLLj48ga
- 1UD4W/iYXNfMTBPkK1tlfzS2ln3ud5FuKUkkvKw4ySfK+7tbXgRQOvHkToAmCi21rdnF71+qrTV
- I
-X-Received: by 2002:a50:aad2:0:b0:567:f643:fc5c with SMTP id
- r18-20020a50aad2000000b00567f643fc5cmr1867041edc.20.1710012381554; 
- Sat, 09 Mar 2024 11:26:21 -0800 (PST)
+ bh=shKXB5mcwJL88T3p8o75GRzqkLr6uG1jmqPC2UukzhI=;
+ b=PsnV/EXBSTrJazg9Aqr5hFN329JPxAdO7qv+otesJL/bxO5qghLHM2v/Ll9m33qmMA
+ ePJRigyMqiMrunorat5su0C/vDY/UYLhC3GXkCWW0bSDJWqY5g0kp6JZnZBoUlLGtmq5
+ bD4MnglLDmAg5VXHDIFCDpzH50URSLbcIQuP0tS3J1Cyal/Nd0O8KCpJQj0DYUF4CSQs
+ 9t1Z/Hp30wXGSenliInJ0d6TiUl18YkGFFfOd1lgT+BS8oJSyb2zwNRokah0ZaeW4/BQ
+ ZGWWBhcUWYgiqlzJjScLEaZ12pYaLB2BhEzdlV8oqBKOjXI6TpREQJMite2mlTDty23Q
+ okjQ==
+X-Gm-Message-State: AOJu0YwHAa+eT3J9VTriNFDqRUjqkzm8pCoKdcT+sU/F5Gqjptt8TQaq
+ R2Gb9XFWKmkL6ysxsNFfyOYSPthEPz5S1D6+iW5TIEzdM8AwhuMIKOeP/buoavwHTiEXstnAZEx
+ T
+X-Received: by 2002:a17:907:7856:b0:a44:415d:fa3a with SMTP id
+ lb22-20020a170907785600b00a44415dfa3amr1436642ejc.40.1710012309349; 
+ Sat, 09 Mar 2024 11:25:09 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.237])
  by smtp.gmail.com with ESMTPSA id
- et8-20020a056402378800b00566a4dec01fsm1156535edb.11.2024.03.09.11.26.20
+ y20-20020a17090629d400b00a45cc1e8fe3sm1169038eje.211.2024.03.09.11.25.08
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 09 Mar 2024 11:26:21 -0800 (PST)
+ Sat, 09 Mar 2024 11:25:09 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Xiaoling Song <xiaoling.song@intel.com>, Thomas Huth <thuth@redhat.com>,
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PULL 41/43] tests/unit/test-smp-parse: Test smp_props.has_clusters
-Date: Sat,  9 Mar 2024 20:22:08 +0100
-Message-ID: <20240309192213.23420-42-philmd@linaro.org>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Kashyap Chamarthy <kchamart@redhat.com>
+Subject: [PULL 29/43] docs/interop/firmware.json: Fix doc for FirmwareFlashMode
+Date: Sat,  9 Mar 2024 20:21:56 +0100
+Message-ID: <20240309192213.23420-30-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240309192213.23420-1-philmd@linaro.org>
 References: <20240309192213.23420-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,96 +130,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9GjJk4cA4KUR
+X-TUID: ToOBkCVWqRN4
 
-From: Zhao Liu <zhao1.liu@intel.com>
+From: Thomas Weißschuh <thomas.weissschuh@linutronix.de>
 
-The smp_props.has_clusters in MachineClass is not a user configured
-field, and it indicates if user specifies "clusters" in -smp.
+The doc title did not match the actual definition.
 
-After -smp parsing, other module could aware if the cluster level
-is configured by user. This is used when the machine has only 1 cluster
-since there's only 1 cluster by default.
-
-Add the check to cover this field.
-
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Tested-by: Xiaoling Song <xiaoling.song@intel.com>
-Acked-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20240308160148.3130837-13-zhao1.liu@linux.intel.com>
+Fixes: 2720ceda05 ("docs: expand firmware descriptor to allow flash without NVRAM")
+Signed-off-by: Thomas Weißschuh <thomas.weissschuh@linutronix.de>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240307-qapi-firmware-json-v2-2-3b29eabb9b9a@linutronix.de>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/unit/test-smp-parse.c | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
+ docs/interop/firmware.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/unit/test-smp-parse.c b/tests/unit/test-smp-parse.c
-index 7558169171..d39cfdc19b 100644
---- a/tests/unit/test-smp-parse.c
-+++ b/tests/unit/test-smp-parse.c
-@@ -573,7 +573,8 @@ static unsigned int cpu_topology_get_cores_per_socket(const CpuTopology *topo)
+diff --git a/docs/interop/firmware.json b/docs/interop/firmware.json
+index a024f1b9bf..54a1fc6c10 100644
+--- a/docs/interop/firmware.json
++++ b/docs/interop/firmware.json
+@@ -223,7 +223,7 @@
  
- static char *cpu_topology_to_string(const CpuTopology *topo,
-                                     unsigned int threads_per_socket,
--                                    unsigned int cores_per_socket)
-+                                    unsigned int cores_per_socket,
-+                                    bool has_clusters)
- {
-     return g_strdup_printf(
-         "(CpuTopology) {\n"
-@@ -588,17 +589,20 @@ static char *cpu_topology_to_string(const CpuTopology *topo,
-         "    .max_cpus           = %u,\n"
-         "    .threads_per_socket = %u,\n"
-         "    .cores_per_socket   = %u,\n"
-+        "    .has_clusters       = %s,\n"
-         "}",
-         topo->cpus, topo->drawers, topo->books,
-         topo->sockets, topo->dies, topo->clusters,
-         topo->cores, topo->threads, topo->max_cpus,
--        threads_per_socket, cores_per_socket);
-+        threads_per_socket, cores_per_socket,
-+        has_clusters ? "true" : "false");
- }
  
- static void check_parse(MachineState *ms, const SMPConfiguration *config,
-                         const CpuTopology *expect_topo, const char *expect_err,
-                         bool is_valid)
- {
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-     g_autofree char *config_str = smp_config_to_string(config);
-     g_autofree char *expect_topo_str = NULL, *output_topo_str = NULL;
-     unsigned int expect_threads_per_socket, expect_cores_per_socket;
-@@ -611,15 +615,18 @@ static void check_parse(MachineState *ms, const SMPConfiguration *config,
-                         cpu_topology_get_cores_per_socket(expect_topo);
-     expect_topo_str = cpu_topology_to_string(expect_topo,
-                                              expect_threads_per_socket,
--                                             expect_cores_per_socket);
-+                                             expect_cores_per_socket,
-+                                             config->has_clusters);
- 
-     /* call the generic parser */
-     machine_parse_smp_config(ms, config, &err);
- 
-     ms_threads_per_socket = machine_topo_get_threads_per_socket(ms);
-     ms_cores_per_socket = machine_topo_get_cores_per_socket(ms);
--    output_topo_str = cpu_topology_to_string(&ms->smp, ms_threads_per_socket,
--                                             ms_cores_per_socket);
-+    output_topo_str = cpu_topology_to_string(&ms->smp,
-+                                             ms_threads_per_socket,
-+                                             ms_cores_per_socket,
-+                                             mc->smp_props.has_clusters);
- 
-     /* when the configuration is supposed to be valid */
-     if (is_valid) {
-@@ -634,7 +641,8 @@ static void check_parse(MachineState *ms, const SMPConfiguration *config,
-             (ms->smp.threads == expect_topo->threads) &&
-             (ms->smp.max_cpus == expect_topo->max_cpus) &&
-             (ms_threads_per_socket == expect_threads_per_socket) &&
--            (ms_cores_per_socket == expect_cores_per_socket)) {
-+            (ms_cores_per_socket == expect_cores_per_socket) &&
-+            (mc->smp_props.has_clusters == config->has_clusters)) {
-             return;
-         }
- 
+ ##
+-# @FirmwareFlashType:
++# @FirmwareFlashMode:
+ #
+ # Describes how the firmware build handles code versus variable
+ # persistence.
 -- 
 2.41.0
 

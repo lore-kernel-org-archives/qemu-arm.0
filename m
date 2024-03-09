@@ -1,187 +1,222 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp368097ejc;
-        Sat, 9 Mar 2024 11:24:15 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXR6K3St6xjU3C53bM2qpGeBGbpY4d129JjCDWt2e5erhHfF0eLb7VcJBflwlq61Q/wO29EJsHVGJ7OPB1VeQTeR0LbRhLd
-X-Google-Smtp-Source: AGHT+IG98l6pvn0rpnK55VRaDD020Ja2mv9khonq2bwyZs+i6gdeWkFdA/DKE0/E/w9H95e81+cg
-X-Received: by 2002:a17:902:ab8c:b0:1dd:75c6:faa7 with SMTP id f12-20020a170902ab8c00b001dd75c6faa7mr1899634plr.36.1710012255394;
-        Sat, 09 Mar 2024 11:24:15 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1710012255; cv=pass;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp368114ejc;
+        Sat, 9 Mar 2024 11:24:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW16HBfdsdiwzYLzuGSck482xsha/bzVf8ZEtOflHaBmGjyefqUwUIhjeMzVVQFcG5CZtmRqi9nVYBDqrVEb9VQzt83GTLM
+X-Google-Smtp-Source: AGHT+IHZO2lE2nxl0SJeddUkav6IITlSBWVObMtUs1i/+1OZE03dYR3wccVNclmw7G6dIqmaIoZD
+X-Received: by 2002:a05:620a:28c1:b0:787:9862:b940 with SMTP id l1-20020a05620a28c100b007879862b940mr6075401qkp.35.1710012258692;
+        Sat, 09 Mar 2024 11:24:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1710012258; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ldw+eIa7NdFSyN4ifG42/lmZBqTERA6Ybi7LbHsozz9muKmiEX2g3EaAcmIYxE4Vm0
-         3MNPMlG0UuF1/YO1vfoacRANcZc3nkTkgqfN2TKtUwDH1a+7hfIoZNboQMJGAiT5BeXC
-         xrqUVcILA7D0UckUksNlb+6g6rWWrRMOgcuJ01njPkG4hHrTYU8Uj44tegkSvbTSwefD
-         RKIY9Wtnl80KW5J6QQSM/IWEeFPgh/oFJfHlkqZI9BymoCD8Y9rg8AzG4cvL59pZ8f7+
-         7D4CuifNFZPYXOUhpfJvboI5yQ8o5t/Iej5rygB2Pw4yHV1uwrM4lBGBs73YkWkdWPLE
-         YBsA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=w5JHLoxMjL6tDi9iKJsLNg13AWr77+ZJm44MiLunTng=;
-        fh=Q6b9MGO50pL+K3r13ZZUzlXmEdMQYZsoyBHZEHcfWXU=;
-        b=SaA/xcuJEAmu0xTOQoOztY8dJsMucOu+hLsLDbgPaMCaxbmbS3rznEyCwHwdQ+c+J7
-         VE3pACQQVJCPX6X1H0hPRwJUOG5brwMIFXLypl7BGuYeAUKqyfqkYKpNB54Jy5dZVlXa
-         Kyav3skgYJppt7kV+4cgsIAL1myHq4zAkvZAFQadfzVVbi8UFokRD3d881VOlBJcosEZ
-         NgCVTZlHFnNgtx9rKxMadrDgj2FhBpxjzEZyaKAjk32k8uvYRVU9JlrwT262hqGNEsqi
-         Bq77nZzkebSKflAMK/pXDaH7L67DLiT5f2NUZY93o+9VNF0OkQ1gu3sUq1HTdYUkju3l
-         f98w==;
+        b=UElnLYY5Wm9mRlXFdMQLaSifkOBM5ryai2Yfqh9WjBFRwp+Y8fv0dc0Pid6tUKXj2m
+         TAcR1KnrQWLii81OZGp3cAi4iChWgWPp0vCEVNF2d0F2vwjzk96940LZE7DT+pQcnDO+
+         JwsQ2nCUxE67Osq8yDcmJhlXa9fwS7qBdaSw/at26+6tQWnM9cOY0vZ3u3sPyi83mFbK
+         4kuvZ5CwJ38qZ42aspdUpUDlrxnWwflUKWbnO3bFVJxfV1xLsJu0mP1hpNE4v4rnSWOx
+         ZVTZcfxRusp9OZVt9WP0CLIc+6rHZTUs8Nf1VgZlpM4Rsd71v0HhYjpzWpBIcOSqP5LV
+         5bmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
+         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
+         :list-id;
+        bh=GjJ9Xc35+gwGwrFshf70kAsb/Zk8w4JUpjKATwEq64Y=;
+        fh=5BuI90ZmfbhW4u5Mb54k9eb0bTLJaZeTNlC5d5Bty34=;
+        b=wkb06Z44NLRUeTOaMBUGK8w/Wu+wonfnWf3RxcYBBZ7DYdLOzJOOIn+eJznCYAi8fU
+         fgpQk6tlYpZjg3NHxxGc8jY/ydRMsosfKdw/dpcK0snXtq38HVcW8jaB1SQmhcaaIVgf
+         azN8srFUJpHCzpdnUPzMtdXk6va0sGCQ2J7cVmGSjjaeVtX41QMl7+7yzKpUd6looseW
+         TO8TJsDwQk1VjyB4xfAU+EWqpMbNZg8bCvXIZLFBHXsT4SGEztUD4oroxE/4hnzdKBgv
+         K4u8q6/vKEwE0anZ3ksUWKtj4jED/g/FcQu36CL5/W3uQTXIxZ0Q33qadK4XTL1Dhs+K
+         XJkQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KQ8o9IAv;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cz93Ty6k;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id ju22-20020a170903429600b001db8cd74953si1789036plb.112.2024.03.09.11.24.14
-        for <alex.bennee@linaro.org>
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id o15-20020ae9f50f000000b0078820e34f7dsi2012648qkg.274.2024.03.09.11.24.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 Mar 2024 11:24:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Sat, 09 Mar 2024 11:24:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KQ8o9IAv;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-11455-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Cz93Ty6k;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 46AD4B21302
-	for <alex.bennee@linaro.org>; Sat,  9 Mar 2024 19:24:13 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0AB0E4C610;
-	Sat,  9 Mar 2024 19:24:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="KQ8o9IAv"
-Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B8CF4596D
-	for <kvm@vger.kernel.org>; Sat,  9 Mar 2024 19:24:05 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.51
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710012247; cv=none; b=RJHeWj24+Nv2SNzEGIGEeSsLul9BwZ5cmW5ci/9oOPHotGkIkLALZE4GCMloB/xYeSwI0ESFq1og8IUiq4OGFrAEy4L4qzd5hK8SCNdFixSPnbWjCzY4ds+Q6n59GVpGbRhQRWrR8tpbOQxnkI3Zs+AV/s/LjehsHmF41Fr0Bk0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710012247; c=relaxed/simple;
-	bh=JtxY7CscfEe4LJt83V4NY01fNf8t8mvsjJ1dvKJY5Vk=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=b4MXAA5wE/4I7cMaNfPhvJYsNIzRVx3oR+CpRJ/jX3QLTzQWNaRFKfWyrec6PjgetJQzBSrUotU/d/jZKg1V2isqWDSESz8l4qiFI92n6rWk/y0ZUqjHWnSH40buOPZcCrHWC+N7P11pqsDTe8Bx8ZS8Rwt0MzKz5ZA5Eb+Bd2I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=KQ8o9IAv; arc=none smtp.client-ip=209.85.218.51
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ej1-f51.google.com with SMTP id a640c23a62f3a-a293f2280c7so503132366b.1
-        for <kvm@vger.kernel.org>; Sat, 09 Mar 2024 11:24:05 -0800 (PST)
+Received: from list by lists.xenproject.org with outflank-mailman.690979.1076746 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1rj2ID-0004IH-DC; Sat, 09 Mar 2024 19:23:37 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 690979.1076746; Sat, 09 Mar 2024 19:23:37 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1rj2ID-0004IA-8y; Sat, 09 Mar 2024 19:23:37 +0000
+Received: by outflank-mailman (input) for mailman id 690979;
+ Sat, 09 Mar 2024 19:23:36 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=MmSm=KP=linaro.org=philmd@srs-se1.protection.inumbo.net>)
+ id 1rj2IC-0000Lp-3l
+ for xen-devel@lists.xenproject.org; Sat, 09 Mar 2024 19:23:36 +0000
+Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com
+ [2a00:1450:4864:20::535])
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 857f947f-de4a-11ee-a1ee-f123f15fe8a2;
+ Sat, 09 Mar 2024 20:23:34 +0100 (CET)
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5682360e095so2919755a12.1
+ for <xen-devel@lists.xenproject.org>; Sat, 09 Mar 2024 11:23:34 -0800 (PST)
+Received: from m1x-phil.lan ([176.176.181.237])
+ by smtp.gmail.com with ESMTPSA id
+ l20-20020a170906a41400b00a46163be639sm251749ejz.12.2024.03.09.11.23.32
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sat, 09 Mar 2024 11:23:33 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
+Precedence: list
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 857f947f-de4a-11ee-a1ee-f123f15fe8a2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710012244; x=1710617044; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1710012214; x=1710617014; darn=lists.xenproject.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=w5JHLoxMjL6tDi9iKJsLNg13AWr77+ZJm44MiLunTng=;
-        b=KQ8o9IAvZiphUZOyXkxRu25OS1EL1XA8FAZ/Qp+tkHsaoFWGm5oJWZ5RH/acDLIiCe
-         je3xGs7FEtnhBk3Dv1goJuopvgu/BEIA2JYMLUU/wQqOpaXb7ydoxkJ6qb1i2G+LywgN
-         XSJn2ocmXgXduJ4EPhQXtUqdTOfc4PvtO582Hy10eFH+IvkCkTxcbnCc3C/5MEnA+oNw
-         XK/W4eqZ++t5HAvsZ72aWZeswqnXvLXY2Z9Sx6J4yy8Musv3I1m2jCfh4Thf5y26EviX
-         HBkCDYQsXVAsWOPWbvY8GEIp7BcVUNA4T2EGC9U6M/XpC2PLXuX7Af29GpZWx9LdfyjQ
-         KsXQ==
+        bh=GjJ9Xc35+gwGwrFshf70kAsb/Zk8w4JUpjKATwEq64Y=;
+        b=Cz93Ty6kH9Ww33ARglTIEs5esvgrOwNs6eu98xl9xRIsRJ6jCcEfkJE6TZGABnY0Os
+         E4PDiRG9cwpEVowt3vdpdLBrQrx5iUnfoV5+QCBfkzvFA9IBs7C6CJgbFHPvVUfpqEmT
+         TFVFArMbQHJCNcACjdkCUzoIwPO23jw9nMvh7QzlzuS5mD7zHwVipOkblYGa610SKEdx
+         qVAQE7g0UyeiRz/Blb43JeXi7jV3hqZOKoUhkbcrd0+KXdf/5MlV4G7Kju/GZYFLRI56
+         To0miIHACBrtgSWKHKCLXEpOFk+8QoxGUOJdGezwx/NftnIEwfcvtCTXgWi9K+KMN5Ij
+         QLgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710012244; x=1710617044;
+        d=1e100.net; s=20230601; t=1710012214; x=1710617014;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=w5JHLoxMjL6tDi9iKJsLNg13AWr77+ZJm44MiLunTng=;
-        b=PNy/T8g6XGVC/14myns9SxvATz2Sl9N+VMRzP/vnxspDOsnaNZjYFir7tBjdh3J5Gp
-         jmDuwtvT+xqnvhTC+sl73YfTfrjiVi51PQBhtyIlkxpuuOzib8cBsQ8YWK9xD/90l6BX
-         +S7F4mS0i9360roccddI/lndqC3dUKUvaLHCBuNUhmHKdLImYuV6PkZ4p5KWwdZL9Epz
-         Ys8SUYfL9lpxmW30KX7kPdnRoXldd49XhZ2xJFssxpI2g+mly8F9bzo2mh0p1zb1U6x8
-         nVLdpBd4XGWM6TlnCzwOkH5VNJJY/s5bqq3ha6Yt5g5yaNNOFrasqBJWW4izLWcu6d1a
-         Cw5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXAzXP/UFfE2fhdI6VG95tNSvJPwYPD/unM1v8HdHNPdOUt8faSICfsT4dTjKoERTlb/wzoDG7eoKIWjzeXrfMJjCnk
-X-Gm-Message-State: AOJu0YyVKiSWsqry9AY3YGovlTI6oQ9JSYgRQqXwbXXNZbc6Bk+Ea3FL
-	EQpznu8mGfA+I6CYXtISM0cOCtjeRor1+1B/aAwtybnt5G+cEJbytv7Fe+vyobM=
-X-Received: by 2002:a17:906:3984:b0:a44:1f3:e474 with SMTP id h4-20020a170906398400b00a4401f3e474mr1261620eje.23.1710012244545;
-        Sat, 09 Mar 2024 11:24:04 -0800 (PST)
-Received: from m1x-phil.lan ([176.176.181.237])
-        by smtp.gmail.com with ESMTPSA id w22-20020a1709067c9600b00a45a72fadfcsm1180096ejo.23.2024.03.09.11.24.03
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 09 Mar 2024 11:24:04 -0800 (PST)
+        bh=GjJ9Xc35+gwGwrFshf70kAsb/Zk8w4JUpjKATwEq64Y=;
+        b=BLZRRsJ0pyyd5DPpoB9D5GvTVI+H35tMVqqz5P+V80GB3Dz9hrl8nLkP68gjk8KUeG
+         E2L4e7jA752FK7DrbSxQKkkgeo0m4JzyIfPzcU6BDQxdY/rFDislBky92Y4STcuH1ABW
+         ZNYiOrEX3owJYz4pKXS6Ix3JshsPreBZ8iRR+ctdKERJozhLUrVQW16ty/YnXroXhRF5
+         A4OD+/GrtoNTV84fRNPPfV/vPvuf0AFdRxnYRMRN4v5QcOMq+f2gz8lCTyMAojXpAm4V
+         c1Vx5bFVBzYYmItPD264+8loksaq6JWEIjSoUcpy/G69CBIZ+WLK6/WKdsIySH16zobN
+         Irlw==
+X-Forwarded-Encrypted: i=1; AJvYcCVwibozan0IzIMmNjCgIIXyu4zZFQy/x6l5wfD7jJYnRoaymQeaEsT4q3ga/2AFTxtPB6pq3b64clVhQZp4aXATr6PvzeZCEwYs7DgS0LY=
+X-Gm-Message-State: AOJu0YwoL3oWPNf437Tbg7aiN9frHnmSL3D+ZPUIS0Ty+YYgY7ig+w64
+	iYxRV78Ju4Xi7wO6BgVMWt40lkp6IHw2HTYN4ezVEBAu3NsbaHSyE6CZHE61Ap8=
+X-Received: by 2002:a17:907:d389:b0:a45:92c4:7892 with SMTP id vh9-20020a170907d38900b00a4592c47892mr1630790ejc.56.1710012214113;
+        Sat, 09 Mar 2024 11:23:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	kvm@vger.kernel.org
-Subject: [PULL 18/43] target/i386/sev: Fix missing ERRP_GUARD() for error_prepend()
-Date: Sat,  9 Mar 2024 20:21:45 +0100
-Message-ID: <20240309192213.23420-19-philmd@linaro.org>
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	xen-devel@lists.xenproject.org
+Subject: [PULL 13/43] hw/xen/hvm: Propagate page_mask to a pair of functions
+Date: Sat,  9 Mar 2024 20:21:40 +0100
+Message-ID: <20240309192213.23420-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240309192213.23420-1-philmd@linaro.org>
 References: <20240309192213.23420-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: lmaeYWprzWAb
+X-TUID: SJGCTqVzDI3d
 
-From: Zhao Liu <zhao1.liu@intel.com>
+We are going to replace TARGET_PAGE_MASK by a
+runtime variable. In order to reduce code duplication,
+propagate TARGET_PAGE_MASK to get_physmapping() and
+xen_phys_offset_to_gaddr().
 
-As the comment in qapi/error, passing @errp to error_prepend() requires
-ERRP_GUARD():
-
-* = Why, when and how to use ERRP_GUARD() =
-*
-* Without ERRP_GUARD(), use of the @errp parameter is restricted:
-...
-* - It should not be passed to error_prepend(), error_vprepend() or
-*   error_append_hint(), because that doesn't work with &error_fatal.
-* ERRP_GUARD() lifts these restrictions.
-*
-* To use ERRP_GUARD(), add it right at the beginning of the function.
-* @errp can then be used without worrying about the argument being
-* NULL or &error_fatal.
-
-ERRP_GUARD() could avoid the case when @errp is the pointer of
-error_fatal, the user can't see this additional information, because
-exit() happens in error_setg earlier than information is added [1].
-
-The sev_inject_launch_secret() passes @errp to error_prepend(), and as
-an APIs defined in target/i386/sev.h, it is necessary to protect its
-@errp with ERRP_GUARD().
-
-To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-beginning of this function.
-
-[1]: Issue description in the commit message of commit ae7c80a7bd73
-     ("error: New macro ERRP_GUARD()").
-
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Marcelo Tosatti <mtosatti@redhat.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20240229143914.1977550-17-zhao1.liu@linux.intel.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Message-Id: <20231114163123.74888-3-philmd@linaro.org>
 ---
- target/i386/sev.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/i386/xen/xen-hvm.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/target/i386/sev.c b/target/i386/sev.c
-index 173de91afe..72930ff0dc 100644
---- a/target/i386/sev.c
-+++ b/target/i386/sev.c
-@@ -1044,6 +1044,7 @@ sev_encrypt_flash(uint8_t *ptr, uint64_t len, Error **errp)
- int sev_inject_launch_secret(const char *packet_hdr, const char *secret,
-                              uint64_t gpa, Error **errp)
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 8235782ef7..844b11ae08 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -174,11 +174,12 @@ static void xen_ram_init(PCMachineState *pcms,
+     }
+ }
+ 
+-static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
++static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
++                                   int page_mask)
  {
-+    ERRP_GUARD();
-     struct kvm_sev_launch_secret input;
-     g_autofree guchar *data = NULL, *hdr = NULL;
-     int error, ret = 1;
+     XenPhysmap *physmap = NULL;
+ 
+-    start_addr &= TARGET_PAGE_MASK;
++    start_addr &= page_mask;
+ 
+     QLIST_FOREACH(physmap, &xen_physmap, list) {
+         if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
+@@ -188,9 +189,10 @@ static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
+     return NULL;
+ }
+ 
+-static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size)
++static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
++                                       int page_mask)
+ {
+-    hwaddr addr = phys_offset & TARGET_PAGE_MASK;
++    hwaddr addr = phys_offset & page_mask;
+     XenPhysmap *physmap = NULL;
+ 
+     QLIST_FOREACH(physmap, &xen_physmap, list) {
+@@ -252,7 +254,7 @@ static int xen_add_to_physmap(XenIOState *state,
+     hwaddr phys_offset = memory_region_get_ram_addr(mr);
+     const char *mr_name;
+ 
+-    if (get_physmapping(start_addr, size)) {
++    if (get_physmapping(start_addr, size, TARGET_PAGE_MASK)) {
+         return 0;
+     }
+     if (size <= 0) {
+@@ -325,7 +327,7 @@ static int xen_remove_from_physmap(XenIOState *state,
+     XenPhysmap *physmap = NULL;
+     hwaddr phys_offset = 0;
+ 
+-    physmap = get_physmapping(start_addr, size);
++    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+     if (physmap == NULL) {
+         return -1;
+     }
+@@ -373,7 +375,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+     int rc, i, j;
+     const XenPhysmap *physmap = NULL;
+ 
+-    physmap = get_physmapping(start_addr, size);
++    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+     if (physmap == NULL) {
+         /* not handled */
+         return;
+@@ -633,7 +635,7 @@ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+         int rc;
+         ram_addr_t start_pfn, nb_pages;
+ 
+-        start = xen_phys_offset_to_gaddr(start, length);
++        start = xen_phys_offset_to_gaddr(start, length, TARGET_PAGE_MASK);
+ 
+         if (length == 0) {
+             length = TARGET_PAGE_SIZE;
 -- 
 2.41.0
 

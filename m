@@ -1,119 +1,115 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp368471ejc;
-        Sat, 9 Mar 2024 11:25:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUypBhXHUQReOykvHQvDDz7i7g93ox2HflgKThZzguKtWsFelLldaQxqKn+cX3m/unXAT2sSNx8NdYKLqANLKzXM1XAEam8
-X-Google-Smtp-Source: AGHT+IF1MQXu35jxL0PSzdqAssV7R4TKGGCH9ohX3mftIdqSQARmxEh9fpkl/k3cie+cMaMh03Lp
-X-Received: by 2002:a05:622a:486:b0:42e:fb29:136 with SMTP id p6-20020a05622a048600b0042efb290136mr3810528qtx.9.1710012323748;
-        Sat, 09 Mar 2024 11:25:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1710012323; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp368896ejc;
+        Sat, 9 Mar 2024 11:26:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUcTYkNfi9CS44BCBPDr9vyMLFjEGwHm5UHY6i3E7V32ln2orIRhu1QMBD085+Rk9L+mLCE2pDAvUyMybFBuJzneQ5xIIa0
+X-Google-Smtp-Source: AGHT+IGHHXCMH8md5p7dRkjclQmCDaBMdi+Pi7z45IAwk6dRVzcjdRTYX2rVqRuDY9Csy3YsL9PL
+X-Received: by 2002:a05:620a:1379:b0:788:4d24:e02e with SMTP id d25-20020a05620a137900b007884d24e02emr2862948qkl.42.1710012403501;
+        Sat, 09 Mar 2024 11:26:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1710012403; cv=none;
         d=google.com; s=arc-20160816;
-        b=F/87Hy+ZypAuRxxu5nES7ubVB5g0xcfHf8nRJjxZP10TBQOVJ7hkDLCGX5FxDP85hC
-         4udvjwVuwZyC0nZi/OVBa/nTyIJkfHadUxBMvPPZIQ2QOQvHtKEXXOS+iL4T3dtYlGDY
-         ZMYyvMKifH4mU3DJceyKWfBZmbt7IBh0t7omNtFv4YPbR+fxUr1MlPtUnawaYIT+3lT+
-         NMHcjGBxmC7V+4nwkaV2/D4vKG788mU2UvQDH6ev1YaSQJktLCB6HeK/6F+GcWM58G1s
-         z63v/oJQAKJooEmLFbTbEhSPiZuOF2gO1FJfbELyLBSa183zXD0CXfUl0N3j1Fj3EGnf
-         NLPA==
+        b=NEzfeqkhUc0MZnIPv/1rfMZhXCx1qyplwE3014SRORmt4xSvWcz4xuU4DbUf5+3oxd
+         sXr0tL9ziKNhXw1XjMSfRCuQH3R+kbsxWWbrHmTjcL6d9L+ixbTARiIKXLX+KtOSJLdp
+         9I8HAlCl5hmhUKvwvzegDduS5m1G9/MNzHP+zobFoczoEi8mc2kxpLX3XboyuF90Tzrv
+         fkuNDWe+OxlHqFCPWLD3+AQWCu5rAElrpPNKXD3esVDwtm2XVZMeUBmKwGUaghpoeT9r
+         yLOXR/t7qzu+QqkAv5cyynzH/6TyAR46kDBDAR0ISC7ITqqLej7ykdgwhl64Oi+axvtv
+         telA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=D23dj2T324O3GGxalmLgdyenzdMnRbpccgTLg/T9/aw=;
-        fh=U8bUP7hHNMp3TQpSutPk3KVufEwUPvJm1+gBBJA7HWM=;
-        b=MiE4kFZPXaP3B9HR+NPnkta5sgdWI/KG35tIif11PGh6sBzEmVKPc9jpyfopiwFVDC
-         sjClWGVVrJOIJShvRUroY0VMPtJlHIwKTz03nomDlpOGYaOFFLkyQSheRtKZGWy/SofB
-         LE2wdBWy1zm3+BkCG5O33PaWKDJPsiea927yvyNaEldwgb7hTJ6jqTNeead3f9H6TkoP
-         j4Wnq6Zppi4+Nlg6jwtuPl160ee9veDob5eGiZVaGhZqp7aUW20xwW8E3VBtrgQOml2k
-         iVh5azYO5xB0Pornoz5KxBJEBtzRJusF4wX+9JwJYttiFbcBhbf2+kp1g0WhgWEbVf1U
-         iRdA==;
+        bh=LXk2FBAU/I+Gq91SQ8W6u6cQEBqnEw8TniXn77xAtfE=;
+        fh=NlDOEFt680eBPvA80vGZs7w+yS9VdznKuU46dP0Ceto=;
+        b=JSPId2VK4vhfd7MclXF4uAYLdMGeIudZDdnuVwKnYtyE0Enx4ZdMDbChIkwpRT6V9/
+         +RAcZQdHeO0EYnvmL3M2sjUEUWZ2GWyoJzJ/nueTzbvUpTIf7Vc/3sfwJI7eJnLFh53/
+         ackuxv1E4RdGsWY/7jvNuAOQjGcOOBNA+WHv82SP5J5vO3Z6aziFQE44N+vjM0vJvb2j
+         bEcIyjZmPoLD3Msrc5yfV/5j7tDa1+dZAQqUiwQC8r3zSXZICd9MCOAGTaiXzjFVVL28
+         yeFdMHUqMgsT6otdTIT3hm9zoOT56p7rZOZnkqD0CyQdDYAJtPdfghCoh+x6Wp8XUgnq
+         mT+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ERIDBqFz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="hW/y+TVQ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6-20020a05622a198600b0042ef7077bc1si2161892qtc.550.2024.03.09.11.25.23
+        by mx.google.com with ESMTPS id t11-20020a05620a450b00b007881c30f7c9si2278812qkp.592.2024.03.09.11.26.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 09 Mar 2024 11:25:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 09 Mar 2024 11:26:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ERIDBqFz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="hW/y+TVQ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rj2JJ-0005WF-Od; Sat, 09 Mar 2024 14:24:45 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rj2KI-0007DT-At; Sat, 09 Mar 2024 14:25:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2JI-0005VI-MX
- for qemu-arm@nongnu.org; Sat, 09 Mar 2024 14:24:44 -0500
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2Jc-0006pH-T1
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:07 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2JG-0002w5-02
- for qemu-arm@nongnu.org; Sat, 09 Mar 2024 14:24:44 -0500
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-512e39226efso3208624e87.0
- for <qemu-arm@nongnu.org>; Sat, 09 Mar 2024 11:24:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2JX-00035R-JQ
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:02 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-a460185d1a7so75719966b.0
+ for <qemu-devel@nongnu.org>; Sat, 09 Mar 2024 11:24:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710012280; x=1710617080; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710012298; x=1710617098; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=D23dj2T324O3GGxalmLgdyenzdMnRbpccgTLg/T9/aw=;
- b=ERIDBqFzmZ17pH8SpnAgGNi8hOYLx4icONDj6FjNkH8a9Lu86H+sb5p714/R3MmdMI
- tTUH/MCx004PSNJ3wsEPn89NsUoV8J/4Sh/boI3gwrhoBqepIm8kZh55/bJ+WzXUB3ra
- kAR0/XJCG7N+4vOUVvIq4mJ74GmNh7SyGInoY8frLjvAK+SBJloJjBpVhHidlL00fBIJ
- vw4XZkoXdP5AXC4BO4WeMEoOHqeThtvd8nyY6BWlm+IIEsKqm+89HhIXMJTSm9e9cH+a
- Nx0FFYvs1LRIVBZzPsr2nrq+yNk4SHW+/91JRl2ldY56z3sY6pVa+6QRc8K+mJyY8aeq
- ngzA==
+ bh=LXk2FBAU/I+Gq91SQ8W6u6cQEBqnEw8TniXn77xAtfE=;
+ b=hW/y+TVQNEGOV3R6xUfA6rbqvDgFVTmeyaeKF6nw4CdPPoWGD+YUtJ8uUeHtiSXO66
+ Cs4lDp+wXeSNo6TvLWGy7bwR2U0tYGpFudeQ5osJ1nWOQ3I4D7CfbXmVHrHxjQUcln9J
+ Joc48+Ki03C4j1Q24MnT9V5pwWHlZHoaTfPlQpZnnC+dYEuQjXF/OeUgUDIC6dRI4k0K
+ uiPE1x6fypUQNsMoVcatwmuv53xrDWbnP2xCKz0vmNNJE9nD7Du/f/cGQxOsN8UcAKlu
+ iy+1dHnqHFQubWdYPdt0bRL1H6ds8enlTXVFDGAYFJIKb5wvc3uaimWr75QWEkt8KKqK
+ ip0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710012280; x=1710617080;
+ d=1e100.net; s=20230601; t=1710012298; x=1710617098;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=D23dj2T324O3GGxalmLgdyenzdMnRbpccgTLg/T9/aw=;
- b=UWZgggNaO8Gnm3Dzudy3+aW9HqjbzTpn2nepWrfiyWR3r/I6wgpn9E/zyu4pgTIcJk
- 9rjQQR6pRtNkWnsXvH27uncR2cV5MkJLkcnrcjnVrIdLHKvz4fF4SxpbBmNtEZOkSeWN
- N2wPPBwo2OBnY4WubGWwgHgrUOgceeUchqax74BFlG8X32HTEAqGvDDGJvEqTVfLw5lH
- KVOdpdpqL4tj5SNMFYMpfms5/cIBLejB/BBIHD3AWW2fFpWkYtrtlIWpM5ppYQVtEm6j
- U41+dCyngCTvgHSNnhIHAuwGvQ9a3nF6UyZBXm5I7oSWCM2GBQaoA5NAPEWSw+MhdweA
- l3gA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdevCjfEEKJIWT6C2fda9WM7fQoQHF4h34dvtLwzIGeR7SOeUrjNLz9IRxwYVz68Mdm6fEFPIHvBwXa8In1c7vq9Qu
-X-Gm-Message-State: AOJu0YyYr2Z63YAiXp9OqdY1U+bW/vHm7d9IzFfyjUo9NHpEt57EWtoj
- 0DfBhTBNNnYiPA+NhdraiVYxZAZ0I4enWidd+n/7aFyPLRaDPLOA75BMzqlEjyE=
-X-Received: by 2002:a05:6512:a96:b0:513:1cc7:ae4b with SMTP id
- m22-20020a0565120a9600b005131cc7ae4bmr2003705lfu.4.1710012280216; 
- Sat, 09 Mar 2024 11:24:40 -0800 (PST)
+ bh=LXk2FBAU/I+Gq91SQ8W6u6cQEBqnEw8TniXn77xAtfE=;
+ b=KNpY2RF7NMrfweWKolJNx5xKfK66KlMjAfUIr/0cV3SgU0CRG3cF2gJglTY/588xaX
+ RF5XZAMb4QYyuRTtYWqU/C4pNVPr+6JxtsmcktCOb+q+wTzpb+NT3A9VdFX/wR5kkFIP
+ bnwfq6uSUEO7h0aCqYdXmejWsF4FOYB+Wcbd273Ah6zto06LjqxE3O3t/8b1zx6Sl5n3
+ lw/tPI7BARUtntJYrHAUj0+lfWqwZDrlWD3Zt4D5uqJ0roz9BDhD0mflqq5LjeLRv8zz
+ PKfUrST0w5s+8i+/l1qJKonC3MFF/sCcX0LPvvNOAUZKQoMfR5ilcCTxH2CMRwmiEL0q
+ 4A8A==
+X-Gm-Message-State: AOJu0Yy0nX9MBAl5yw6KH+sySnUC7U3BPh40Qx9zViKg3f4awQOaqjPZ
+ UxW/umJd5lFtvh7g67E1u8QSfDCz+Z78q9PBp0rkCr9IpsHVBOvV/DBow2Vr0tA+/lHK9GUe8AP
+ a
+X-Received: by 2002:a17:906:310f:b0:a43:dc5f:f271 with SMTP id
+ 15-20020a170906310f00b00a43dc5ff271mr1326849ejx.42.1710012297770; 
+ Sat, 09 Mar 2024 11:24:57 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.237])
  by smtp.gmail.com with ESMTPSA id
- rn16-20020a170906d93000b00a441a7a75b5sm1174678ejb.209.2024.03.09.11.24.38
+ r1-20020a170906364100b00a4320e22b31sm1195761ejb.19.2024.03.09.11.24.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 09 Mar 2024 11:24:39 -0800 (PST)
+ Sat, 09 Mar 2024 11:24:57 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
-Subject: [PULL 24/43] qdev: Add a granule_mode property
-Date: Sat,  9 Mar 2024 20:21:51 +0100
-Message-ID: <20240309192213.23420-25-philmd@linaro.org>
+ Frederic Konrad <konrad.frederic@yahoo.fr>
+Subject: [PULL 27/43] hw/intc/grlib_irqmp: abort realize when ncpus value is
+ out of range
+Date: Sat,  9 Mar 2024 20:21:54 +0100
+Message-ID: <20240309192213.23420-28-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240309192213.23420-1-philmd@linaro.org>
 References: <20240309192213.23420-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,113 +118,48 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MiA+l46JOlnW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fIl8CaAeVcFZ
 
-From: Eric Auger <eric.auger@redhat.com>
+From: Clément Chigot <chigot@adacore.com>
 
-Introduce a new enum type property allowing to set an
-IOMMU granule. Values are 4k, 8k, 16k, 64k and host.
-This latter indicates the vIOMMU granule will match
-the host page size.
+Even if the error is set, the build is not aborted when the ncpus value
+is wrong, the return is missing.
 
-A subsequent patch will add such a property to the
-virtio-iommu device.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Signed-off-by: Clément Chigot <chigot@adacore.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Fixes: 6bf1478543 ("hw/intc/grlib_irqmp: add ncpus property")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20240308152719.591232-1-chigot@adacore.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20240227165730.14099-2-eric.auger@redhat.com>
 ---
- qapi/virtio.json                    | 18 ++++++++++++++++++
- include/hw/qdev-properties-system.h |  3 +++
- hw/core/qdev-properties-system.c    | 14 ++++++++++++++
- 3 files changed, 35 insertions(+)
+ hw/intc/grlib_irqmp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/qapi/virtio.json b/qapi/virtio.json
-index a79013fe89..95745fdfd7 100644
---- a/qapi/virtio.json
-+++ b/qapi/virtio.json
-@@ -957,3 +957,21 @@
+diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
+index 144b121d48..c6c51a349c 100644
+--- a/hw/intc/grlib_irqmp.c
++++ b/hw/intc/grlib_irqmp.c
+@@ -356,6 +356,7 @@ static void grlib_irqmp_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, "Invalid ncpus properties: "
+                    "%u, must be 0 < ncpus =< %u.", irqmp->ncpus,
+                    IRQMP_MAX_CPU);
++        return;
+     }
  
- { 'struct': 'DummyVirtioForceArrays',
-   'data': { 'unused-iothread-vq-mapping': ['IOThreadVirtQueueMapping'] } }
-+
-+##
-+# @GranuleMode:
-+#
-+# @4k: granule page size of 4KiB
-+#
-+# @8k: granule page size of 8KiB
-+#
-+# @16k: granule page size of 16KiB
-+#
-+# @64k: granule page size of 64KiB
-+#
-+# @host: granule matches the host page size
-+#
-+# Since: 9.0
-+##
-+{ 'enum': 'GranuleMode',
-+  'data': [ '4k', '8k', '16k', '64k', 'host' ] }
-diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
-index 06c359c190..626be87dd3 100644
---- a/include/hw/qdev-properties-system.h
-+++ b/include/hw/qdev-properties-system.h
-@@ -8,6 +8,7 @@ extern const PropertyInfo qdev_prop_macaddr;
- extern const PropertyInfo qdev_prop_reserved_region;
- extern const PropertyInfo qdev_prop_multifd_compression;
- extern const PropertyInfo qdev_prop_mig_mode;
-+extern const PropertyInfo qdev_prop_granule_mode;
- extern const PropertyInfo qdev_prop_losttickpolicy;
- extern const PropertyInfo qdev_prop_blockdev_on_error;
- extern const PropertyInfo qdev_prop_bios_chs_trans;
-@@ -47,6 +48,8 @@ extern const PropertyInfo qdev_prop_iothread_vq_mapping_list;
- #define DEFINE_PROP_MIG_MODE(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_mig_mode, \
-                        MigMode)
-+#define DEFINE_PROP_GRANULE_MODE(_n, _s, _f, _d) \
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_granule_mode, GranuleMode)
- #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
-                         LostTickPolicy)
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 1a396521d5..b45e90edb2 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -679,6 +679,20 @@ const PropertyInfo qdev_prop_mig_mode = {
-     .set_default_value = qdev_propinfo_set_default_value_enum,
- };
- 
-+/* --- GranuleMode --- */
-+
-+QEMU_BUILD_BUG_ON(sizeof(GranuleMode) != sizeof(int));
-+
-+const PropertyInfo qdev_prop_granule_mode = {
-+    .name = "GranuleMode",
-+    .description = "granule_mode values, "
-+                   "4k, 8k, 16k, 64k, host",
-+    .enum_table = &GranuleMode_lookup,
-+    .get = qdev_propinfo_get_enum,
-+    .set = qdev_propinfo_set_enum,
-+    .set_default_value = qdev_propinfo_set_default_value_enum,
-+};
-+
- /* --- Reserved Region --- */
- 
- /*
+     qdev_init_gpio_in(dev, grlib_irqmp_set_irq, MAX_PILS);
 -- 
 2.41.0
 

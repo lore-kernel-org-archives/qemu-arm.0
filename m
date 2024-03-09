@@ -1,241 +1,188 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp369169ejc;
-        Sat, 9 Mar 2024 11:27:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMxJs5M5Bgr6s2XvZmVrctKn9prh8bvb+sYyZ1elBOCqDPI+V2cHePXoZhMj2ZUpUjskxvpfJoqhbiJPRhHtDULzdjiySW
-X-Google-Smtp-Source: AGHT+IHEeE5Q4mOXiqXyf5g5be5KMdNUmEGHaIzM9YwSWGOYhtLGUDkmFceWK66RvYTfgzh2fUOx
-X-Received: by 2002:a37:c40c:0:b0:788:29d5:a8d0 with SMTP id d12-20020a37c40c000000b0078829d5a8d0mr3111160qki.64.1710012450851;
-        Sat, 09 Mar 2024 11:27:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1710012450; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp369246ejc;
+        Sat, 9 Mar 2024 11:27:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVY7dpleUA/wb5rQFjQw9fOUC3MjssL/7iek8D6H5INEns78yRplAQ+VmeLZPW51AkoGmcMTu0qd3dsR+xKrnKsi/5UuPwv
+X-Google-Smtp-Source: AGHT+IExflOxl/tZnohHSbhZ6CFrrtx5N+itC7Sm26aeqRbun6tEicbmDmDyEhzrivbxKD2vRw3r
+X-Received: by 2002:a05:622a:252:b0:42e:f451:6b21 with SMTP id c18-20020a05622a025200b0042ef4516b21mr3576871qtx.36.1710012463225;
+        Sat, 09 Mar 2024 11:27:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1710012463; cv=none;
         d=google.com; s=arc-20160816;
-        b=GVfqqFxcySsu2Kbzapxq4PGXSHByvHaEueAI3SPSiz7wE9a9SkcMbaV7D/TcgbO74G
-         8l/ySvET+HSZoAINiBwZOgmhfcK54auoUtVd/VYlch5IXRhLN9Roqcb26izmX+/ouKiX
-         96CpukWuTfyK/unETkBAtHlsqafXlq/wZ9Mr6h85k9b7z7MhwG42Mu6SxmQLU2Qk5Gda
-         c6tm8E1MgjVOPg8rGIqNg0toev+SGw8PJEf+Lgq7KN2bLXZtvL3s6SIMQlYFmx9KKuXx
-         sF/B/1aveilDh0u3Cz/MFToBf+eT67DZxio3OOMstZ6uGrdv+29uVwu3gD/ceYECG/C5
-         NQMg==
+        b=teeV5pOxwPL8eTshZNdyXFzLYiGrB0hip+ggvE1hs0Xyvg06kH5srpAKzHwcQbdeDR
+         WuZ++Ka2HiI8IgA44YunXJ7mNdWgfpuwVrZ9KxBmhvWYOiXnmZfg0K4ju1SrWKx23i25
+         7qP9gv+D/R3XQRU2vPmPqjf6kZVYlVl/y7lT+w9rlwT7/gNaa0enVUd4CkAkQLJaawjB
+         gu0bppum/5O3mLbJNZZ1neX4HafMO1ZDuIVUfUnQ5eibVSpVHHxNhCWkTAxnnHnEdED4
+         diyvBHBDqW4jIutGBCWkD3FRI3g46XQckCdY+K0D2I74Tlql4Oha/kRd9p3i500VtA8w
+         A+TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8IXK0wenZmYfT6yBITIHGYESwGfPru4qC6kLvjxG9yg=;
-        fh=b9Ze0ht93AI4Q+XQ1FUGzfGPYMJHxL7A3yoX4kfdzIw=;
-        b=iIn0p8oDMXtTduguViopzGrfMftH/2rxdQvAn2pyUuWa4BV4JMisujKuebb461ED4b
-         DhSOYADcVoao3wL2dcNe4CMb/jI6H3MHNyqLU5sWCbbQMryDpTvxo9KG0bYqn/gu/AJZ
-         S/SciU2Xgso8bjQpbsnQ62AxSS9cVcjRffMBnn9r5P7AY73sgLrLLujYgITVoeRi6v8v
-         kTWU1rQ56YHDA5NADnaZnUXQayfs/BU/8qcPMSZZGJACZgaoSklsR69HESuaH/xH6CTs
-         ek2QO2OcwEKupLsVzRFwp64HxtesyPffcxUc4FPb+QyuCpUN9Mq+VHcOcy4s7kmQRUWQ
-         LXmw==;
+        bh=b8wT84tp5Ct3Koz7/1+DQ3KNhe44GTMwlt4WEbo2CyY=;
+        fh=MRpuvAMiIDngljO/1ktWIu7Kho7sXmLGHrYdpgFbLRA=;
+        b=rPH5V0YDWC/mycK1qHEo4HyFmlYbBwn95gK8PM1vRFi+YJv5mt9tNsxkW7a8jNp+7w
+         j2G4OR+lpVLuoOiLde+NZSVI35G7JZChtIoqvliJUNYiYs4ubVKi6KfoysXV9a9h/Fcp
+         gNiOFdjMNXzTG8GyCLHbMl4sGI0lwFJ7tHoQnbr5c6gamrMAfVs6P26qRa7pMU5fSil9
+         usOVITV+Vw11f7PiEUVU97Mn30GdJS4Hf+uKFQ/7QdvsEHOIkAuI2SeIoVjWmmqvXlIB
+         hQmsKGV/3mh18jQl8cVBC6sRTIpwzywNl9bcvnAuFSVv/nxpSNrrPJCTZAdO0IuI7Be/
+         reLA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRpMwXKF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wTAGvnU7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ee28-20020a05620a801c00b00787e0e6dbb6si2307490qkb.525.2024.03.09.11.27.30
+        by mx.google.com with ESMTPS id d21-20020a05620a205500b0078853fadae0si2065539qka.144.2024.03.09.11.27.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 09 Mar 2024 11:27:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 09 Mar 2024 11:27:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRpMwXKF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wTAGvnU7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rj2JP-00060C-TE; Sat, 09 Mar 2024 14:24:51 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rj2Lk-0001HA-Hq; Sat, 09 Mar 2024 14:27:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2JO-0005tW-FW
- for qemu-arm@nongnu.org; Sat, 09 Mar 2024 14:24:50 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2KL-0007NQ-T5
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:54 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2JL-0002zr-Nb
- for qemu-arm@nongnu.org; Sat, 09 Mar 2024 14:24:50 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a4467d570cdso222999466b.3
- for <qemu-arm@nongnu.org>; Sat, 09 Mar 2024 11:24:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rj2KJ-0003NW-BF
+ for qemu-devel@nongnu.org; Sat, 09 Mar 2024 14:25:49 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5684db9147dso112896a12.2
+ for <qemu-devel@nongnu.org>; Sat, 09 Mar 2024 11:25:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710012286; x=1710617086; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710012345; x=1710617145; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8IXK0wenZmYfT6yBITIHGYESwGfPru4qC6kLvjxG9yg=;
- b=TRpMwXKF63pdPAvGMgc6ixM4eoIBkr6yoc4X6K1oEkSpy9Wxpw4JPI+kljWmF0wg9D
- JE9PEE4DVSgebju7pEz34rvWN8LDjE6Tm8SYgT2BVCFRVZ2cTLc2/alKPlBFtEvr/csk
- 8GYG7NWZQwjgkGEseMrljxcEEbdVltS3/Ztk8VOZQZWAiM+FuNCcQ1Hh5OBGrXZ+VCDh
- sqUzjSBMrV25pyBviNeemAv0vw2EICEWfXOlAYAEQBWUxP+CvUms5441fmU2yYJ1jLUY
- GQSknB36f5mXe6W7Npw/Ei3aGNQjsbVgEQYPmnpH9/ksumQlzpavmapwQvXyfbkpX5B9
- T5/w==
+ bh=b8wT84tp5Ct3Koz7/1+DQ3KNhe44GTMwlt4WEbo2CyY=;
+ b=wTAGvnU7iv8knhIc9QM/CApgXDYdur06A/RIpA3EnwHXT30pnBduKbE8jxFdDLpkm8
+ lKPVdEEVsYEY5Ffp4AlujOMQq4YC4QQVT/iuaCOPX0n8s2Ti8SjVReIMFqqifIiYakXn
+ LxLwPTh9Rn6zVNmvt/pPFx4LX+iSOnj6XTHgkt60EiI6Jr5g7/4DB4ozzN3m3FWi0eNY
+ 5lkT1xHtK6mNb3K/1ZOdONNWx0ZKZj2VFrNjISN+UAmNAkMczQ5sIBou6XRYZT/BQFhU
+ 0PeDplfTF1n2shOSLdJkXfGgPI/MVDEjRkDCvUSB73NyfGw6ERPFJa0De+o32dxfJAM2
+ rZbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710012286; x=1710617086;
+ d=1e100.net; s=20230601; t=1710012345; x=1710617145;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8IXK0wenZmYfT6yBITIHGYESwGfPru4qC6kLvjxG9yg=;
- b=YTaT3TDBSfVVb4TkTtnOXtTLzgb2b+K3HXnSm8Vv9Ub8UlTZDd6M5s9bVwNgNOc2KW
- ayKKRVb8avFd64aT/sYBdmLrD5Z1kxvEYdg2YZ2eDd2mMwPY84s/GIgMRJz8T9DqKjb0
- GiCnkjfe33BJ2FML8NKi7KspjiJGGzGZULVRiwkk9UmX2YLQU4gYxsrPRKZdcjhOcBAn
- V1qYP6vBD7rA5NiI/2iuqPXHGMVUCB4uRy7UyBE0jBi9zdy4YK4Ni1yjVbX+/SR2sVLF
- WTbF4yifFguG4oQol1qk9GMkMCzP1VsuykjnFy6kMSWykRIaiwY2gIf/wKaoHC6XxW14
- q8rA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU80AVTsMsaG3+W6D/ijMu2WwVJHLNaQbO4bzHQwcHM03+aagctkptsB/PLXaVwL/8WfQXt3DtOP3SZMOzILdR6XRyY
-X-Gm-Message-State: AOJu0Ywi1ZtoHxDOCa4pM7KhPdR+Rmyp+GCyYZPaV+CvDlxNzX7K4C/m
- Upe/tLIgnqgUD5o+k2ApILLuyVcmV0itvUlErSpLjm3Q4zGRumqdvRS1Ph3B6Tw=
-X-Received: by 2002:a17:906:d0c5:b0:a45:110e:568f with SMTP id
- bq5-20020a170906d0c500b00a45110e568fmr1452152ejb.37.1710012286153; 
- Sat, 09 Mar 2024 11:24:46 -0800 (PST)
+ bh=b8wT84tp5Ct3Koz7/1+DQ3KNhe44GTMwlt4WEbo2CyY=;
+ b=T9sqak3maeybx/l8eGdgvHUfpD/fOwH7jSNriT7gtd5LCGMShp//ZJiMu+z+F0vBfw
+ GoojSQkpvZWtcUeHVpdZVQcsOdu9pQmmpbXFKSrklcMdC1kzhMHAKhf+AsiLZ3YduhNC
+ dpcx/zs5Zd4baCjXtHHktPKfHWpvs0LP92wvm4gQh1v6m4/D28h0tKcVHWYzYry2r7rt
+ 2o5nChgAdk83k3tfW9H5Q+mNGWC0/1Se6WBJLfInKe3Xosmx/AstrHbmTcJ5TOu8v7ar
+ b8+VTVCcFcRs2JHPpxZPyORj755VzhMEm1z9j+b5NVA8xj+9H0sUkKZoi++S7U2KPAsQ
+ h9Ow==
+X-Gm-Message-State: AOJu0YyC6inb2g9IMx8z8I5shx05j7ZId2AeKZ+/d2D92Onf3q1Qkcc8
+ KaxMiXYypolXTnzEv8BnWj1CTWfhEOo/suzUJWOvFQ7DEjlrvLmPHEDvXAgACI9t5KGqquN50zd
+ o
+X-Received: by 2002:a50:ccd6:0:b0:566:d274:a41d with SMTP id
+ b22-20020a50ccd6000000b00566d274a41dmr1546436edj.42.1710012345670; 
+ Sat, 09 Mar 2024 11:25:45 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.237])
  by smtp.gmail.com with ESMTPSA id
- kq17-20020a170906abd100b00a40f7ed6cb9sm1173609ejb.4.2024.03.09.11.24.44
+ y18-20020a056402359200b005648d0eebdbsm1143695edc.96.2024.03.09.11.25.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 09 Mar 2024 11:24:45 -0800 (PST)
+ Sat, 09 Mar 2024 11:25:45 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>,
- "Dr . David Alan Gilbert" <dave@treblig.org>,
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Xiaoling Song <xiaoling.song@intel.com>, Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: [PULL 25/43] hmp: Add option to info qtree to omit details
-Date: Sat,  9 Mar 2024 20:21:52 +0100
-Message-ID: <20240309192213.23420-26-philmd@linaro.org>
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PULL 35/43] tests/unit/test-smp-parse: Bump max_cpus to 4096
+Date: Sat,  9 Mar 2024 20:22:02 +0100
+Message-ID: <20240309192213.23420-36-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240309192213.23420-1-philmd@linaro.org>
 References: <20240309192213.23420-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i1X4yBSfhrS3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: C5x2bI7ERE5m
 
-From: BALATON Zoltan <balaton@eik.bme.hu>
+From: Zhao Liu <zhao1.liu@intel.com>
 
-The output of info qtree monitor command is very long. Add an option
-to print a brief overview omitting all the details.
+The q35 machine is trying to support up to 4096 vCPUs [1], so it's
+necessary to bump max_cpus in test-smp-parse to 4096 to cover the
+topological needs of future machines.
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
-Message-ID: <20240307183812.0105D4E6004@zero.eik.bme.hu>
+[1]: https://lore.kernel.org/qemu-devel/20240228143351.3967-1-anisinha@redhat.com/
+
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Tested-by: Xiaoling Song <xiaoling.song@intel.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20240308160148.3130837-7-zhao1.liu@linux.intel.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- system/qdev-monitor.c | 27 +++++++++++++++------------
- hmp-commands-info.hx  |  6 +++---
- 2 files changed, 18 insertions(+), 15 deletions(-)
+ tests/unit/test-smp-parse.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index a13db763e5..ad91e74181 100644
---- a/system/qdev-monitor.c
-+++ b/system/qdev-monitor.c
-@@ -744,7 +744,6 @@ DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
- }
+diff --git a/tests/unit/test-smp-parse.c b/tests/unit/test-smp-parse.c
+index 84e3422774..2eb9533bc5 100644
+--- a/tests/unit/test-smp-parse.c
++++ b/tests/unit/test-smp-parse.c
+@@ -20,8 +20,8 @@
+ #define T true
+ #define F false
  
- #define qdev_printf(fmt, ...) monitor_printf(mon, "%*s" fmt, indent, "", ## __VA_ARGS__)
--static void qbus_print(Monitor *mon, BusState *bus, int indent);
+-#define MIN_CPUS 1   /* set the min CPUs supported by the machine as 1 */
+-#define MAX_CPUS 512 /* set the max CPUs supported by the machine as 512 */
++#define MIN_CPUS 1    /* set the min CPUs supported by the machine as 1 */
++#define MAX_CPUS 4096 /* set the max CPUs supported by the machine as 4096 */
  
- static void qdev_print_props(Monitor *mon, DeviceState *dev, Property *props,
-                              int indent)
-@@ -784,13 +783,9 @@ static void bus_print_dev(BusState *bus, Monitor *mon, DeviceState *dev, int ind
- static void qdev_print(Monitor *mon, DeviceState *dev, int indent)
- {
-     ObjectClass *class;
--    BusState *child;
-     NamedGPIOList *ngl;
-     NamedClockList *ncl;
+ #define SMP_MACHINE_NAME "TEST-SMP"
  
--    qdev_printf("dev: %s, id \"%s\"\n", object_get_typename(OBJECT(dev)),
--                dev->id ? dev->id : "");
--    indent += 2;
-     QLIST_FOREACH(ngl, &dev->gpios, node) {
-         if (ngl->num_in) {
-             qdev_printf("gpio-in \"%s\" %d\n", ngl->name ? ngl->name : "",
-@@ -814,12 +809,9 @@ static void qdev_print(Monitor *mon, DeviceState *dev, int indent)
-         class = object_class_get_parent(class);
-     } while (class != object_class_by_name(TYPE_DEVICE));
-     bus_print_dev(dev->parent_bus, mon, dev, indent);
--    QLIST_FOREACH(child, &dev->child_bus, sibling) {
--        qbus_print(mon, child, indent);
--    }
- }
- 
--static void qbus_print(Monitor *mon, BusState *bus, int indent)
-+static void qbus_print(Monitor *mon, BusState *bus, int indent, bool details)
- {
-     BusChild *kid;
- 
-@@ -827,16 +819,27 @@ static void qbus_print(Monitor *mon, BusState *bus, int indent)
-     indent += 2;
-     qdev_printf("type %s\n", object_get_typename(OBJECT(bus)));
-     QTAILQ_FOREACH(kid, &bus->children, sibling) {
-+        BusState *child_bus;
-         DeviceState *dev = kid->child;
--        qdev_print(mon, dev, indent);
-+        qdev_printf("dev: %s, id \"%s\"\n", object_get_typename(OBJECT(dev)),
-+                    dev->id ? dev->id : "");
-+        if (details) {
-+            qdev_print(mon, dev, indent + 2);
-+        }
-+        QLIST_FOREACH(child_bus, &dev->child_bus, sibling) {
-+            qbus_print(mon, child_bus, indent + 2, details);
-+        }
-     }
- }
- #undef qdev_printf
- 
- void hmp_info_qtree(Monitor *mon, const QDict *qdict)
- {
--    if (sysbus_get_default())
--        qbus_print(mon, sysbus_get_default(), 0);
-+    bool details = !qdict_get_try_bool(qdict, "brief", false);
-+
-+    if (sysbus_get_default()) {
-+        qbus_print(mon, sysbus_get_default(), 0, details);
-+    }
- }
- 
- void hmp_info_qdm(Monitor *mon, const QDict *qdict)
-diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-index da120f82a3..ad1b1306e3 100644
---- a/hmp-commands-info.hx
-+++ b/hmp-commands-info.hx
-@@ -540,9 +540,9 @@ ERST
- 
-     {
-         .name       = "qtree",
--        .args_type  = "",
--        .params     = "",
--        .help       = "show device tree",
-+        .args_type  = "brief:-b",
-+        .params     = "[-b]",
-+        .help       = "show device tree (-b: brief, omit properties)",
-         .cmd        = hmp_info_qtree,
+@@ -333,13 +333,13 @@ static const struct SMPTestData data_generic_invalid[] = {
+                         "by machine '" SMP_MACHINE_NAME "' is 2",
+     }, {
+         /*
+-         * config: -smp 512
++         * config: -smp 4096
+          * The test machine should tweak the supported max CPUs to
+-         * 511 (MAX_CPUS - 1) for testing.
++         * 4095 (MAX_CPUS - 1) for testing.
+          */
+-        .config = SMP_CONFIG_GENERIC(T, MAX_CPUS, F, 0, F, 0, F, 0, F, 0),
+-        .expect_error = "Invalid SMP CPUs 512. The max CPUs supported "
+-                        "by machine '" SMP_MACHINE_NAME "' is 511",
++        .config = SMP_CONFIG_GENERIC(T, 4096, F, 0, F, 0, F, 0, F, 0),
++        .expect_error = "Invalid SMP CPUs 4096. The max CPUs supported "
++                        "by machine '" SMP_MACHINE_NAME "' is 4095",
      },
+ };
  
 -- 
 2.41.0

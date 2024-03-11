@@ -1,141 +1,325 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1101086ejc;
-        Mon, 11 Mar 2024 03:37:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU6FDe7/N0MywgSUk6wWRmarYVrb0bHMiMmkVJQ8LrIItWfOaBGMjJqaJS9L1JkcEgALLRMuhek48nyWdbpeN1gOmVmFLEv
-X-Google-Smtp-Source: AGHT+IFSw0B6dxK802Xq5o9sMBnr+uyWGssMO3ARleicRp3QPywi6wIW1D84RjjBodK+xV7+Wta5
-X-Received: by 2002:ad4:57a6:0:b0:690:ca04:cec4 with SMTP id g6-20020ad457a6000000b00690ca04cec4mr4281799qvx.52.1710153423499;
-        Mon, 11 Mar 2024 03:37:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710153423; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1102195ejc;
+        Mon, 11 Mar 2024 03:39:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUt2u2hdxOh8xGl1GFxdZ8isLXpmPR2zr2Kq5vm8IkHyoFK4zW1++gQ4jIa472WfLhJlANZSY7ACuSOi4m7brw4y8a1eCTL
+X-Google-Smtp-Source: AGHT+IFbe73lO9D04W3tIYPA8DAya81YYnFz5zTBOfPZ731gzXT4ZAhw5M9hEBWmCQhQ+AITVU1m
+X-Received: by 2002:ac8:57c4:0:b0:42e:ba5d:7c95 with SMTP id w4-20020ac857c4000000b0042eba5d7c95mr8519407qta.8.1710153580348;
+        Mon, 11 Mar 2024 03:39:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710153580; cv=none;
         d=google.com; s=arc-20160816;
-        b=CTe6e9wvUuBXLC+0aHqM00J+NrlV4f4teyx1BDuFOzkVd0cyTWNw+eLOGZnwMV8+kV
-         mJAuGdO6DMJwqFQvzVPVeik9GYNZGGD2awax2URZTkHH84FIoGLawl0Tc5xCLuQjf2yz
-         jGhd+GObHTrEzjEgaENXtZiyIZU3qEGg2RZg83UsUnD07eRB575luTA4Hv1qQnW5WRz/
-         WvmKQVV00t3SVIeTA7SQ9wnh/iXe1zRj5IlruxzUPqcUmde9YxEfRZYzYbl6P/u4UCA3
-         LF+rc/6GU9F3qgQjF1rLAdFF6RA8Tt4shVOuwxuBveFPPkQkA9AICwJEck8NFgKC2TjQ
-         +M9A==
+        b=S4C3sSi+nQ2wJKkfV68Y8cLvNBBuLxeQa0m3cz4xosq1RwEXfLCNTrQg1F0OqvKz/J
+         CgobC5yYYZSTlbHzHRgiCJ6km8Co2XULwXz6ZMqFH1+oud8rhv536yUNmggAUZM17zo1
+         2fkFB0a1cSzTRiwfcpo3iyJoHJ9WgV2XyHkj/TuIpK7SNZ//6gzAAamE8sraNawJ/qwB
+         XoM6hKRH4f4JfDrhAJ+uAyIjElmUhSX44eTeHSYfTSsILxtYaetTy/gunGZQmX/eeHzx
+         K+f9VRLyZrI15280wAMu6TDH9vgzurJiFbBykCrwd5vR1r8Fy1f7qsWG7ts5cHnE3GTZ
+         hf9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=zp/MywqdKGQLriABJtnLsQNpE22xitl9JDyNyvgP+3k=;
-        fh=UUZCqJUd82M9Tc9PpfB/wn6gOkBrUBw0KKD7Zku7ZH0=;
-        b=Cj3UppsKP4mWR08hLxJWcQukNsvdKRu2pYf4zDu70mmF0AAL27F0CAxuzTvWi+KOL6
-         1iRoVas4AkMS4l9qvwP0vKiacm0O60KXzdf0gfDiBb3I1FoNi+u5QH+Vskk5TnEgV3ow
-         9go2g6tgm5pPot2Zaln8DJatF85cMdvGld0JrVaEOJdb31cLxMcEqOdY2N60vk6UNZxx
-         6/RMUwSfPuLpv8sUikMkpz+Jjy0kiovLyMqJZmIekQHmEtY4qLzZbQnKeNVmeKY+Nd3A
-         H+BNqsbR81gDPzevvXYuD1HRkLqbKTHebDXASHijs/oRNVnZoQGM5LUxw8hUqn0x7lus
-         UR7A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=U+Ii/kOPW3h45SlqGUFN2yAHBkXKphO9hhvqq94ksek=;
+        fh=jH03aVM+0wtV3GPx2MuNgaRVd1PZ3cVikgwKROnyVQM=;
+        b=0xOgMP6OoqMYlxC6NppO50ojyINfcBp313vySPLeRCF6umF0f5xu6mANn7BzFrTaqV
+         qC6Xh8e+eIXQN8d7u1I3XvA0YlACESadPBAPxj60KiA4leyWOafFbJBUuXdr9qd3VzU2
+         Z9XbKHsCwOWcFL3AfE3oGidhJcU9aO2EMTaYzepAC0WMOnEFvGViU0UxsSjF7tDqkQpU
+         vMNeO7PmARGlnUHDbBA/jP+YT6K11E+T0I1Zo2ue2rppV5/pSlro9qfdrpnj2X1gyu1g
+         vxeqw3JiEZ8/lGa2H9S7KkJbwUNxBn8hbZIQJglSNk+sKP0K5ilOSiElIVGzMyPftupH
+         8m/w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PFNIUILz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WzWJg1mk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke11-20020a056214300b00b0068fe59e447bsi4971427qvb.315.2024.03.11.03.37.03
+        by mx.google.com with ESMTPS id j4-20020ac85c44000000b0042ef5da9019si5089734qtj.167.2024.03.11.03.39.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Mar 2024 03:37:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Mar 2024 03:39:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PFNIUILz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WzWJg1mk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rjd1S-0004aN-Mr; Mon, 11 Mar 2024 06:36:46 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rjd45-0005bb-Tn; Mon, 11 Mar 2024 06:39:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjd1Q-0004Ze-GL
- for qemu-arm@nongnu.org; Mon, 11 Mar 2024 06:36:44 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjd1N-0003TP-Nu
- for qemu-arm@nongnu.org; Mon, 11 Mar 2024 06:36:44 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-568241f40e9so3759102a12.0
- for <qemu-arm@nongnu.org>; Mon, 11 Mar 2024 03:36:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710153399; x=1710758199; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zp/MywqdKGQLriABJtnLsQNpE22xitl9JDyNyvgP+3k=;
- b=PFNIUILztkORRpTmMuHC76NlWJrBWI5MzPz+fI2hjFCpx3TzXFOyuKzNbmoVVhMQPQ
- /hQhKXhNy205Fh0MLhlvDwftjdqvAP0z+NsdCqzdcmf2UuMdInTQM+P2hwu6iQOQlC88
- Z7MHn1Kex1ahym6ycWZiyt0HPyWymRHGVIYcpyZg7cRmiQ9KsQYjoVNfdGUoV8g9bNBP
- RgpMTshQK3UDXU9rxWH6KkdW3ynvLiE5764ABzev0Xo1wzDvgR8yDh0hkdMRDRG9ZZhU
- qb2XQofPZv5p9zsSyzpVpqeCqQSGZvsQDFQJBtZ+rPts65IkUMuo80Uip0OcdS1nB/1e
- i54w==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rjd43-0005bG-N4
+ for qemu-devel@nongnu.org; Mon, 11 Mar 2024 06:39:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rjd3y-0003wq-Or
+ for qemu-devel@nongnu.org; Mon, 11 Mar 2024 06:39:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710153559;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=U+Ii/kOPW3h45SlqGUFN2yAHBkXKphO9hhvqq94ksek=;
+ b=WzWJg1mkul97+KkTBST/7D5fIJmRls/UnTLFCh7UNF0rQxtVl498aJYa62Z3Hk9pPu4Jlh
+ HCaBYKx+L+Gdt5wtSzD8JoMw539WhOH75LfZxK80Xi6ec0uLfLpXK4Hcz3RJWuCetdWXju
+ 5hFCw3T923v2TR0sCQF7vCzSkjn7Y4o=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-323-Cr9eEXycNt-m35N8nrrl0A-1; Mon, 11 Mar 2024 06:39:18 -0400
+X-MC-Unique: Cr9eEXycNt-m35N8nrrl0A-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-42f03fad2a3so36517301cf.0
+ for <qemu-devel@nongnu.org>; Mon, 11 Mar 2024 03:39:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710153399; x=1710758199;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zp/MywqdKGQLriABJtnLsQNpE22xitl9JDyNyvgP+3k=;
- b=eqUpwPPy6KRH/EfLj10SGDuNTsKVrafzLxfTI5DmrIDdurBmoq8csXVz41eFRifvcY
- T82pDvTghmze26et2VlErfaTgVcSGzy8o4XJw9mDUAkuG5NbjH3vSZ9xSFYCii4Q8fyE
- kY6SpGls78xEUKDrCHFtSoXNw6neNWA/pTY32YqApw11Q9X2hwZzXtDa8pCdGxBnpmRQ
- TaZZLxQ7V6dMgpC6W0YjSEiJQFa/e77wtjv/u3+2h6C/MkGMSJvAbT6SJz9ShN/em45f
- dQMPrGGJclxES08ADkmEiTiZ3bLN8HKhes5MbbuAWkb8Njcv5IvSvNVsTI5gSeen9gRm
- 09Rw==
+ d=1e100.net; s=20230601; t=1710153557; x=1710758357;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=U+Ii/kOPW3h45SlqGUFN2yAHBkXKphO9hhvqq94ksek=;
+ b=ZtKZMunsdKZQkzObqibveadF+qg/o6SKmMS2SvfE1Mlp+eNUzpx6ALqoTxsNIWwSjQ
+ qQ2MIl7ooJH6fUvIg/06VxQW58zuEnBlbbHrbB+dD4v0lML4Vz28jawvd9EGQNC9XH/r
+ ZJXaxRajRVGS9ecbfH9LNwqBYwDRy8awNdO00AZped7EF6GEs+sHy8SfxQRuimS242f2
+ G+jjhBglH57x8hgmp/UI2R6QPqgrQQX1AFYrPFbcsBB7Iz42m8gC6pbxpOc7d5TxjbZU
+ wyWArBeiBITMgZSnrJk1UEyA4fquGdgXrQeC8o0T5UeNHwAZKUzsgQxeOyHxmPR8e3OY
+ AJFg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXElDL49DDi+LWE+wasNEdlp66G2PuQDkInk1xSunc9umzdw6tef1bEXo9lVGbqXIbijUGED8msa/g9z1NahCJAF87f
-X-Gm-Message-State: AOJu0YzAUHWAImwqs6G1ACuckFD6MG+CY9v7hLVhh5QTv4d08it2JJT/
- jLVQbsE8NBEp1oqMD24po//oA75/TeJJpDb4V+qmUBp+Jf5Z40WOm/Vt7W1kf5hNh/2dThJ7wWf
- sR5SerwNAwthaggoYW+BMd+rNtkbMxgfIhAaQFA==
-X-Received: by 2002:a50:c35d:0:b0:566:95e3:1759 with SMTP id
- q29-20020a50c35d000000b0056695e31759mr4235768edb.26.1710153399038; Mon, 11
- Mar 2024 03:36:39 -0700 (PDT)
+ AJvYcCWJstMVcKUun0YjBde5h6e5AYrZ/oeSpSWwX2PSUluX6eq24b54oX3Fb08x0lz1cLi2i+o9i+okf0x16+QKSBpBTePNCTk=
+X-Gm-Message-State: AOJu0Yzwfty/OsNW3VhKNnb+YO03uxY+wjc1e3QDVYut+e8tGQwqw/ph
+ pHkaHMDZQfEcSoLAYOllX+vLj85ngPBddkkaOAbn7KAXI1f1PffORp9yTQZ3e9XSZN7yIwYCH3I
+ JBk+Fk6GwYqMgC/Wm3fUiIa9lSqHlVBOdHUhj7rpQ6IOYtZ4I+ET0
+X-Received: by 2002:ac8:7f4b:0:b0:42e:24e6:4118 with SMTP id
+ g11-20020ac87f4b000000b0042e24e64118mr9162793qtk.34.1710153557312; 
+ Mon, 11 Mar 2024 03:39:17 -0700 (PDT)
+X-Received: by 2002:ac8:7f4b:0:b0:42e:24e6:4118 with SMTP id
+ g11-20020ac87f4b000000b0042e24e64118mr9162761qtk.34.1710153556913; 
+ Mon, 11 Mar 2024 03:39:16 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ f15-20020ac8464f000000b0042e703a8d74sm2581165qto.56.2024.03.11.03.39.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Mar 2024 03:39:16 -0700 (PDT)
+Message-ID: <2f86279d-3c0e-447b-97ae-f4257b84ad71@redhat.com>
+Date: Mon, 11 Mar 2024 11:39:11 +0100
 MIME-Version: 1.0
-References: <20240306035721.2333531-1-ruanjinjie@huawei.com>
- <fd515ea4-ca4b-4d54-9d9b-59683ccd683e@linaro.org>
- <c57f3338-0f38-1768-7c9f-d2b00a0cb158@huawei.com>
-In-Reply-To: <c57f3338-0f38-1768-7c9f-d2b00a0cb158@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Mar 2024 10:36:27 +0000
-Message-ID: <CAFEAcA93u-W5nr1bfQJPp91w0pXRomgoAUMxgyuVeTVFYGNpaA@mail.gmail.com>
-Subject: Re: [RFC PATCH v7 00/23] target/arm: Implement FEAT_NMI and
- FEAT_GICv3_NMI
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 0/3] acpi: report NUMA nodes for device memory using GI
+Content-Language: en-US, fr
+To: ankita@nvidia.com, jgg@nvidia.com, marcel.apfelbaum@gmail.com,
+ philmd@linaro.org, wangyanan55@huawei.com, alex.williamson@redhat.com,
+ pbonzini@redhat.com, shannon.zhaosl@gmail.com, peter.maydell@linaro.org,
+ ani@anisinha.ca, berrange@redhat.com, eduardo@habkost.net,
+ imammedo@redhat.com, mst@redhat.com, eblake@redhat.com, armbru@redhat.com,
+ david@redhat.com, gshan@redhat.com, Jonathan.Cameron@huawei.com
+Cc: aniketa@nvidia.com, cjia@nvidia.com, kwankhede@nvidia.com,
+ targupta@nvidia.com, vsethi@nvidia.com, acurrid@nvidia.com,
+ mochs@nvidia.com, dnigam@nvidia.com, udhoke@nvidia.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240308145525.10886-1-ankita@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <20240308145525.10886-1-ankita@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.945,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kgYCesqw2R/4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Nh+K8h1XJSq0
 
-On Mon, 11 Mar 2024 at 04:00, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
->
-> Ping.
+On 3/8/24 15:55, ankita@nvidia.com wrote:
+> From: Ankit Agrawal <ankita@nvidia.com>
+> 
+> There are upcoming devices which allow CPU to cache coherently access
+> their memory. It is sensible to expose such memory as NUMA nodes separate
+> from the sysmem node to the OS. The ACPI spec provides a scheme in SRAT
+> called Generic Initiator Affinity Structure [1] to allow an association
+> between a Proximity Domain (PXM) and a Generic Initiator (GI) (e.g.
+> heterogeneous processors and accelerators, GPUs, and I/O devices with
+> integrated compute or DMA engines).
+> 
+> While a single node per device may cover several use cases, it is however
+> insufficient for a full utilization of the NVIDIA GPUs MIG
+> (Mult-Instance GPUs) [2] feature. The feature allows partitioning of the
+> GPU device resources (including device memory) into several (upto 8)
+> isolated instances. Each of the partitioned memory requires a dedicated NUMA
+> node to operate. The partitions are not fixed and they can be created/deleted
+> at runtime.
+> 
+> Linux OS does not provide a means to dynamically create/destroy NUMA nodes
+> and such feature implementation is expected to be non-trivial. The nodes
+> that OS discovers at the boot time while parsing SRAT remains fixed. So we
+> utilize the GI Affinity structures that allows association between nodes
+> and devices. Multiple GI structures per device/BDF is possible, allowing
+> creation of multiple nodes in the VM by exposing unique PXM in each of these
+> structures.
+> 
+> Implement the mechanism to build the GI affinity structures as Qemu currently
+> does not. Introduce a new acpi-generic-initiator object to allow host admin
+> link a device with an associated NUMA node. Qemu maintains this association
+> and use this object to build the requisite GI Affinity Structure.
+> 
+> When multiple NUMA nodes are associated with a device, it is required to
+> create those many number of acpi-generic-initiator objects, each representing
+> a unique device:node association.
+> 
+> Following is one of a decoded GI affinity structure in VM ACPI SRAT.
+> [0C8h 0200   1]                Subtable Type : 05 [Generic Initiator Affinity]
+> [0C9h 0201   1]                       Length : 20
+> 
+> [0CAh 0202   1]                    Reserved1 : 00
+> [0CBh 0203   1]           Device Handle Type : 01
+> [0CCh 0204   4]             Proximity Domain : 00000007
+> [0D0h 0208  16]                Device Handle : 00 00 20 00 00 00 00 00 00 00 00
+> 00 00 00 00 00
+> [0E0h 0224   4]        Flags (decoded below) : 00000001
+>                                       Enabled : 1
+> [0E4h 0228   4]                    Reserved2 : 00000000
+> 
+> [0E8h 0232   1]                Subtable Type : 05 [Generic Initiator Affinity]
+> [0E9h 0233   1]                       Length : 20
+> 
+> On Grace Hopper systems, an admin will create a range of 8 nodes and associate
+> them with the device using the acpi-generic-initiator object. While a
+> configuration of less than 8 nodes per device is allowed, such configuration
+> will prevent utilization of the feature to the fullest. This setting is
+> applicable to all the Grace+Hopper systems. The following is an example of
+> the Qemu command line arguments to create 8 nodes and link them to the device
+> 'dev0':
+> 
+> -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
+> -numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 \
+> -numa node,nodeid=8 -numa node,nodeid=9 \
+> -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.0,addr=04.0,rombar=0,id=dev0 \
+> -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
+> -object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=3 \
+> -object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=4 \
+> -object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=5 \
+> -object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=6 \
+> -object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=7 \
+> -object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=8 \
+> -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
+> 
+> The performance benefits can be realized by providing the NUMA node distances
+> appropriately (through libvirt tags or Qemu params). The admin can get the
+> distance among nodes in hardware using `numactl -H`.
+> 
+> This series goes along with the recenty added vfio-pci variant driver [3].
+> 
+> Applied over v8.2.2
+> base commit: 11aa0b1ff115b86160c4d37e7c37e6a6b13b77ea
+> 
+> [1] ACPI Spec 6.3, Section 5.2.16.6
+> Link: https://www.nvidia.com/en-in/technologies/multi-instance-gpu [2]
+> Link: https://lore.kernel.org/all/20240220115055.23546-1-ankita@nvidia.com/ [3]
+> 
+> Link for v8:
+> Link: https://lore.kernel.org/all/20240306123317.4691-1-ankita@nvidia.com/
 
-Hi; this is on my list to look at, but since it's not going into
-9.0 I'm afraid I'm prioritising things for softfreeze/freeze
-period ahead of it. I promise I'll get to it before we unfreeze
-for 9.1, though :-)
+v9 looks ready for QEMU 9.0. An Ack from the ACPI supporters is missing
+though.
 
-thanks
--- PMM
+Michal, Igor, Ani,
+
+Did you have time to take a look ?
+
+Thanks
+
+C.
+
+
+
+> v8 -> v9
+> - Removed unused included headers based on Jonathan's suggestion.
+> - Collected Reviewed-by from Jonathan.
+> - Added acpi-generic-initiator support for i386
+> - Moved HMAT change from patch 1/2 to 2/3.
+> - Fixed nits.
+> 
+> v7 -> v8
+> - Replaced the code to collect the acpi-generic-initiator objects
+>    with the code to use recursive helper object_child_foreach_recursive
+>    based on suggestion from Jonathan Cameron.
+> - Added sanity check for the node id passed to the
+>    acpi-generic-initiator object.
+> - Added change to use GI as HMAT initiator as per Jonathan's suggestion.
+> - Fixed nits pointed by Marcus and Jonathan.
+> - Collected Marcus' Acked-by.
+> - Rebased to v8.2.2.
+> 
+> v6 -> v7
+> - Updated code and the commit message to make acpi-generic-initiator
+>    define a 1:1 relationship between device and node based on
+>    Jonathan Cameron's suggestion.
+> - Updated commit message to include the decoded GI entry in the SRAT.
+> - Rebased to v8.2.1.
+> 
+> v5 -> v6
+> - Updated commit message for the [1/2] and the cover letter.
+> - Updated the acpi-generic-initiator object comment description for
+>    clarity on the input host-nodes.
+> - Rebased to v8.2.0-rc4.
+> 
+> v4 -> v5
+> - Removed acpi-dev option until full support.
+> - The NUMA nodes are saved as bitmap instead of uint16List.
+> - Replaced asserts to exit calls.
+> - Addressed other miscellaneous comments.
+> 
+> v3 -> v4
+> - changed the ':' delimited way to a uint16 array to communicate the
+> nodes associated with the device.
+> - added asserts to handle invalid inputs.
+> - addressed other miscellaneous v3 comments.
+> 
+> v2 -> v3
+> - changed param to accept a ':' delimited list of NUMA nodes, instead
+> of a range.
+> - Removed nvidia-acpi-generic-initiator object.
+> - Addressed miscellaneous comments in v2.
+> 
+> v1 -> v2
+> - Removed dependency on sysfs to communicate the feature with variant module.
+> - Use GI Affinity SRAT structure instead of Memory Affinity.
+> - No DSDT entries needed to communicate the PXM for the device. SRAT GI
+> structure is used instead.
+> - New objects introduced to establish link between device and nodes.
+> 
+> Ankit Agrawal (3):
+>    qom: new object to associate device to NUMA node
+>    hw/acpi: Implement the SRAT GI affinity structure
+>    hw/i386/acpi-build: Add support for SRAT Generic Initiator structures
+> 
+>   hw/acpi/acpi_generic_initiator.c         | 148 +++++++++++++++++++++++
+>   hw/acpi/hmat.c                           |   2 +-
+>   hw/acpi/meson.build                      |   1 +
+>   hw/arm/virt-acpi-build.c                 |   3 +
+>   hw/core/numa.c                           |   3 +-
+>   hw/i386/acpi-build.c                     |   3 +
+>   include/hw/acpi/acpi_generic_initiator.h |  47 +++++++
+>   include/sysemu/numa.h                    |   1 +
+>   qapi/qom.json                            |  17 +++
+>   9 files changed, 223 insertions(+), 2 deletions(-)
+>   create mode 100644 hw/acpi/acpi_generic_initiator.c
+>   create mode 100644 include/hw/acpi/acpi_generic_initiator.h
+> 
+

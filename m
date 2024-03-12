@@ -1,119 +1,126 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2115629ejc;
-        Tue, 12 Mar 2024 15:34:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXbvPFfkQmCMT2ndtGqbXWQnGnpPwkBrKgkgiTidN4lROP0JUC6RQIYKNyvDZMLYffTE2LdiIIkuEouwCVvOjmfsxoU+Z0R
-X-Google-Smtp-Source: AGHT+IGFo7jDEPQrHydgipgROtnjL21KuZ74k0mdbs0XLeBoTNhqkTqMpkt1/d2k/oegyUzQ2G7a
-X-Received: by 2002:a05:620a:123a:b0:788:3a14:fe0b with SMTP id v26-20020a05620a123a00b007883a14fe0bmr3324817qkj.16.1710282846442;
-        Tue, 12 Mar 2024 15:34:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710282846; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2118001ejc;
+        Tue, 12 Mar 2024 15:40:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpH7kaCCrqMN/GYr43znJG3h+4W6rus8tj7mxPOEDxD4ZvxN8Us3VFSJVzZXit11VdpBaRIEgILho7oSD/0YbuNxj0XGzK
+X-Google-Smtp-Source: AGHT+IFWFWK0J6LbKbJCTG2lkuPYqoM0mpz4PcSqv/f8mtqXFhH6M6wFHMChJI1OsrjSJAuuZBeE
+X-Received: by 2002:a05:6214:3002:b0:690:d777:ed0 with SMTP id ke2-20020a056214300200b00690d7770ed0mr7137801qvb.40.1710283214876;
+        Tue, 12 Mar 2024 15:40:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710283214; cv=none;
         d=google.com; s=arc-20160816;
-        b=BtwMpIDOaYhv3lUjB6MVGIFarZKJ/eB7lBwgDzsdjmi/oJlF/v4UFPm2hQ90o6G0zt
-         0saNkeheD1YY5QjhafVE+KqH+RRbwTgtxwpU3mT3Cl9CBONZWg0mj4b3DbUqwuS+vLRv
-         5oi/J50AWDnL2zKPStbMg1ltWww1h9DT283Ho4wS/aj7PZVmzQPM8OnZ0qGckLb7a/TM
-         xJBxoEtufsf8G0ftq5tsexl4JRqQwGJKtu4usTkJdbkSu3BOp87VUJUoEyoGJ2zqH86x
-         dS3gbizjW0RTS/eI6fQonuHZCRQg7Y6jws568pzm/mcYo7+K4/fo/OX84UO77a29T740
-         1tbA==
+        b=C0XtqpgziVSnVUPV72wb/1Sc+OVkMkUyjsApWWkXyTlQVqONzdIhPrgqc1GvJIwQUU
+         qwZfAsmnvO1P6AiHF8TWuEdDcSkQTR146KpdlsypC+tc+1mQEUpIjGuDv0CcF5s6q7+B
+         KSI5P482dlbsPViukPUhxl5m8CbVsV2OaKE26zg/hcf+dRxInTmotXUrV7RJEPgaeo6Z
+         dlwMD00Mml/R0HTfVFMC4/bhIIJm+buvMnDQVLlc6M84b0ZkVF26Z+pliEwfkqE4Hd6s
+         +LsAoDk7eCv9pO0F1fNT8C9AUbIcT95DTuUF9mGEvO+mgPkNjBsts7ij8useEI+FsQle
+         b7Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=MKkSDazDM8plKzOrprMyap3/frHtZRjZMB1Z0hTsQYk=;
-        fh=8uBL2Re56wH98camTkbcq6548/ihvfOtPP7EZ7WKbA0=;
-        b=zDt45HmKfBgEMkMA4XN2QvEXYLFduM2nMaC5j3R5PDM6n1bQffV0GW8iYYqGGloltU
-         +QFBWBvYDDzhWHDHkWKErW5iRbYMdlv6qeBIL20DZDkDJBNG7MRPSEZhlwDVo1irS597
-         IlV89L4cX+rBWrbLYVDKDjt+4LJhN/Eo/1aCHGM2OwEsg5BvcqK/YpDH1s9kuFk2SJnY
-         +UcePlCM5xwoQ5H2zI9FrrtJApKks/xKBXsBW00GkUttT3PdPT1cPYwRsWNRDi+a4JI6
-         bt2JUUCQhYFRnIUbycvQo3gYjdZDgHhpCT1BjSEsF+7xi3gqxfUPSOqoc5HHQAa65v9/
-         E5Rw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
+        fh=52OH1gOgoglLtPjOQKI4VIbbYeaFLZucBM/rZQCKuRU=;
+        b=b+OcZnsmWodFdjU1DT4O+Se6K4oWRqiqpR5Ru/i1WIlvMIaD+lLnHTQU1pRHiif0/C
+         vT3tOeu9g2udXK6kMeB4RCJAEfKxPi/cWoi0e0aK24FDAAUsplxyoDLDkn0Kc3RW97PD
+         NJ/e2EuhGVfFzfouAyGLNeW/Ns+UJmNEaTY/LDAHjgtJMB09W6vxxdZVAQcrCEYY2Ecw
+         iVKfClVnBTSSBW3zylarAR6DyLRqElPbMbHCSr3B6H4jgmUQ6SEmyLJR7yolJwKQy4I8
+         bp/ro4mE+LftZr7B/l+p3pn7Twpuh0FROV7p6eRzxq2djKXB2CYnoZQ9+LgnTJUNKF5e
+         jIUQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LU7uPF0d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuKZsuIx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de26-20020a05620a371a00b007881ece7271si9193067qkb.781.2024.03.12.15.34.06
+        by mx.google.com with ESMTPS id e6-20020a0562140d8600b0068f7d3144acsi8054661qve.449.2024.03.12.15.40.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 15:34:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Mar 2024 15:40:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LU7uPF0d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuKZsuIx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rkAdL-0005p5-GX; Tue, 12 Mar 2024 18:30:07 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rkAdI-0005V9-Ge; Tue, 12 Mar 2024 18:30:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAcV-0002uQ-NG
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 18:29:18 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAbx-0002oT-Dh
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 18:28:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAcI-0004d7-L9
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 18:29:03 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAbs-0004aC-Eb
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 18:28:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710282542;
+ s=mimecast20190719; t=1710282515;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MKkSDazDM8plKzOrprMyap3/frHtZRjZMB1Z0hTsQYk=;
- b=LU7uPF0dUcGQ3pT/CsI/CPYNgrsmRmfcmHMbxd/+e6NuCpDZ9VuiK0ehRU0R/oTM8QIuy4
- hWDGPGEaTig4jdmOXRq3aGBbtCdOArydsFDMPK4BCQWRW3FcKWsMjlfJHJcxcbwMefRC4q
- SlPDyz4BIB3hfE0a8yn/bKBNzLAHPKA=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
+ b=EuKZsuIxB8hzA8rWqvIyMbr1v1FezI9d+C+wQ1o/OT16G/Oz729oK8eqWzZsupVnuBK370
+ JZqbyx43TF6HaDx50jEI6B+50mPHuOGXxxMzA5HOwSftkW1Xg4bG6hdxslsTWl0DL3oqja
+ ZOKJ2g4Q0oTs4hiQseKPnIRyPxmgdto=
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-444-eyjMdxGSOOWU3nx7DEX76w-1; Tue, 12 Mar 2024 18:29:00 -0400
-X-MC-Unique: eyjMdxGSOOWU3nx7DEX76w-1
-Received: by mail-lj1-f198.google.com with SMTP id
- 38308e7fff4ca-2d449d68bc3so18037711fa.3
- for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 15:29:00 -0700 (PDT)
+ us-mta-588-dzFvI5WaNimTuQBZrZgY7Q-1; Tue, 12 Mar 2024 18:28:34 -0400
+X-MC-Unique: dzFvI5WaNimTuQBZrZgY7Q-1
+Received: by mail-lj1-f199.google.com with SMTP id
+ 38308e7fff4ca-2d44551e1ccso2831621fa.3
+ for <qemu-devel@nongnu.org>; Tue, 12 Mar 2024 15:28:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710282538; x=1710887338;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MKkSDazDM8plKzOrprMyap3/frHtZRjZMB1Z0hTsQYk=;
- b=rwqezJyCoAUlrPIUucxeP/+J6OcfDFX3ng+JmwhnGtXD5+G1kw/IIPvhNYiQTDCsYG
- X4Astq2MZYtdZflLIgeqdRdMaIPs5nPP0K5POVQgxidzfypTS2VcCWt267KZvr8Lm9oO
- IVHrrZRK+WdDldNBCYHnhDGuSEUrslAQoawggLhNFBCfGiEWw5S51mwYkVzDK5ZGBlOq
- tHWhqthfVAopKqA18TE776WxRRkcnY5tv6DyWIYk9vknEQbL/D/VGKJ7pRIKb/Z91d7v
- Nc4y4whEwxtJO3X6rXDfDlWNj8dItWJHgs+iKgFXGDI8vpYFpVI2Q0IbWAqPcIOps1v1
- l5oA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUaCZtK32sXO9xr2Ai4tvJA8nOmhWRs7in4qPdIEHPGPA4dygFQG8eVWHzImu4Y0+o6e7sVCcihl5hDQoRzVxN4kBKe
-X-Gm-Message-State: AOJu0YzRn96HhG8uQ/WaqJVLeUVpfTSybR40YXyrwAO8bzcX9POosDHg
- L79+loORaYgi2wOosbct8WcGNoCitEsokWxafwsVfyXxwL48ArgAbTfOgBbiZMpyYXDEPCcvbra
- oYZ9eY6bQ0Ec5YQT4BHoQZmKUZlptTkuYIVcR4kGsgDXFyDux4oUDOWoVYvEx
-X-Received: by 2002:a2e:720b:0:b0:2d4:49d1:38e with SMTP id
- n11-20020a2e720b000000b002d449d1038emr3547941ljc.28.1710282538425; 
- Tue, 12 Mar 2024 15:28:58 -0700 (PDT)
-X-Received: by 2002:a2e:720b:0:b0:2d4:49d1:38e with SMTP id
- n11-20020a2e720b000000b002d449d1038emr3547935ljc.28.1710282537949; 
- Tue, 12 Mar 2024 15:28:57 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1710282513; x=1710887313;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
+ b=KnE9MJ9TwDW3mmPdpc8oiOOUWcR7uFBaL0cvs80+B2oraUyoD+Y0taqzdT1QT8X2bw
+ soD5DFnStLHMrwazPKFWF5CSd5GMD3eur/+VIcL5XGOWcbJy4Op219e+S7lMWzSKS303
+ mmx2Ulm7rKMiY8YYbMj8gF3pZxS7OMY8h8bMiZdbT4tvRipF8j4JgBouR013VG5jtVBU
+ PWb870jRJNmviiELAViBa4A/y+FD+9Mak1E9EL5kHTBXGGuC3sLf63HUyyttsohtBVmr
+ 1gR+s6P885VhbHzQJYVHKWsQ5elABUef9ZzB4adzw3UWcNeZxlmIV6AtBwiroXLBPhmA
+ HJkQ==
+X-Gm-Message-State: AOJu0YyeIt7HUthS6zu2qQEbSEezFZ2HMssgMlGu5qB+OkIOiH6ZaX7d
+ Ly3wyYHvaxw9KTvVeBajNz2DppUQJgP/jjE5na2VW8rvc/cV22Ca31v7F8kzCyO75U6n1m3zxJ6
+ EygiGLcuyqdISkt30LAd3gcRxsonH2JcG8VOcjtlUNPTc/ZnoCu8IDsGlar7p4gk5bP71OTvNLz
+ TVJxW2vNatIKzpcGCB//NzL113ZdR+uGqZ
+X-Received: by 2002:a2e:bc1f:0:b0:2d4:1d45:d5e2 with SMTP id
+ b31-20020a2ebc1f000000b002d41d45d5e2mr4317076ljf.10.1710282512546; 
+ Tue, 12 Mar 2024 15:28:32 -0700 (PDT)
+X-Received: by 2002:a2e:bc1f:0:b0:2d4:1d45:d5e2 with SMTP id
+ b31-20020a2ebc1f000000b002d41d45d5e2mr4317051ljf.10.1710282511986; 
+ Tue, 12 Mar 2024 15:28:31 -0700 (PDT)
 Received: from redhat.com ([2.52.134.16]) by smtp.gmail.com with ESMTPSA id
- d34-20020a056402402200b005687e7b0cd2sm388946eda.40.2024.03.12.15.28.56
+ jw22-20020a170906e95600b00a4623030893sm2658289ejb.126.2024.03.12.15.28.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Mar 2024 15:28:57 -0700 (PDT)
-Date: Tue, 12 Mar 2024 18:28:55 -0400
+ Tue, 12 Mar 2024 15:28:31 -0700 (PDT)
+Date: Tue, 12 Mar 2024 18:28:27 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>,
- Zhenzhong Duan <Zhenzhong.duan@intel.com>, qemu-arm@nongnu.org
-Subject: [PULL 63/68] hw/arm/virt: Set virtio-iommu aw-bits default value to 48
-Message-ID: <62d776002c990d5b6fd4a2b6809ab2956c6e1ff0.1710282274.git.mst@redhat.com>
+ Ankit Agrawal <ankita@nvidia.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Cedric Le Goater <clg@redhat.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org
+Subject: [PULL 55/68] hw/acpi: Implement the SRAT GI affinity structure
+Message-ID: <0a5b5acdf2d8c7302ca48d42e6ef3423e1b956d5.1710282274.git.mst@redhat.com>
 References: <cover.1710282274.git.mst@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 In-Reply-To: <cover.1710282274.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
@@ -125,70 +132,260 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nuxvYZZpfvCo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hkDsfY+ji7Ll
 
-From: Eric Auger <eric.auger@redhat.com>
+From: Ankit Agrawal <ankita@nvidia.com>
 
-On ARM we set 48b as a default (matching SMMUv3 SMMU_IDR5.VAX == 0).
+ACPI spec provides a scheme to associate "Generic Initiators" [1]
+(e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
+integrated compute or DMA engines GPUs) with Proximity Domains. This is
+achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
+Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
+node for each unique PXM ID encountered. Qemu currently do not implement
+these structures while building SRAT.
 
-hw_compat_8_2 is used to handle the compatibility for machine types
-before 9.0 (default was 64 bits).
+Add GI structures while building VM ACPI SRAT. The association between
+device and node are stored using acpi-generic-initiator object. Lookup
+presence of all such objects and use them to build these structures.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Zhenzhong Duan <Zhenzhong.duan@intel.com>
-Message-Id: <20240307134445.92296-9-eric.auger@redhat.com>
+The structure needs a PCI device handle [2] that consists of the device BDF.
+The vfio-pci device corresponding to the acpi-generic-initiator object is
+located to determine the BDF.
+
+[1] ACPI Spec 6.3, Section 5.2.16.6
+[2] ACPI Spec 6.3, Table 5.80
+
+Cc: Jonathan Cameron <qemu-devel@nongnu.org>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: Cedric Le Goater <clg@redhat.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
+Message-Id: <20240308145525.10886-3-ankita@nvidia.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ include/hw/acpi/acpi_generic_initiator.h | 25 ++++++++
+ include/sysemu/numa.h                    |  1 +
+ hw/acpi/acpi_generic_initiator.c         | 77 ++++++++++++++++++++++++
+ hw/acpi/hmat.c                           |  2 +-
+ hw/arm/virt-acpi-build.c                 |  3 +
+ hw/core/numa.c                           |  3 +-
+ 6 files changed, 109 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0af1943697..e5cd935232 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -85,11 +85,28 @@
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
+diff --git a/include/hw/acpi/acpi_generic_initiator.h b/include/hw/acpi/acpi_generic_initiator.h
+index 16de1d3d80..a304bad73e 100644
+--- a/include/hw/acpi/acpi_generic_initiator.h
++++ b/include/hw/acpi/acpi_generic_initiator.h
+@@ -19,4 +19,29 @@ typedef struct AcpiGenericInitiator {
+     uint16_t node;
+ } AcpiGenericInitiator;
  
-+static GlobalProperty arm_virt_compat[] = {
-+    { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
-+};
-+static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
++/*
++ * ACPI 6.3:
++ * Table 5-81 Flags – Generic Initiator Affinity Structure
++ */
++typedef enum {
++    /*
++     * If clear, the OSPM ignores the contents of the Generic
++     * Initiator/Port Affinity Structure. This allows system firmware
++     * to populate the SRAT with a static number of structures, but only
++     * enable them as necessary.
++     */
++    GEN_AFFINITY_ENABLED = (1 << 0),
++} GenericAffinityFlags;
 +
 +/*
-+ * This cannot be called from the virt_machine_class_init() because
-+ * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
-+ * only is called on virt non abstract class init.
++ * ACPI 6.3:
++ * Table 5-80 Device Handle - PCI
 + */
-+static void arm_virt_compat_set(MachineClass *mc)
++typedef struct PCIDeviceHandle {
++    uint16_t segment;
++    uint16_t bdf;
++} PCIDeviceHandle;
++
++void build_srat_generic_pci_initiator(GArray *table_data);
++
+ #endif
+diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+index 4173ef2afa..825cfe86bc 100644
+--- a/include/sysemu/numa.h
++++ b/include/sysemu/numa.h
+@@ -41,6 +41,7 @@ struct NodeInfo {
+     struct HostMemoryBackend *node_memdev;
+     bool present;
+     bool has_cpu;
++    bool has_gi;
+     uint8_t lb_info_provided;
+     uint16_t initiator;
+     uint8_t distance[MAX_NODES];
+diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
+index 130d6ae8c1..17b9a052f5 100644
+--- a/hw/acpi/acpi_generic_initiator.c
++++ b/hw/acpi/acpi_generic_initiator.c
+@@ -5,7 +5,9 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/acpi/acpi_generic_initiator.h"
++#include "hw/acpi/aml-build.h"
+ #include "hw/boards.h"
++#include "hw/pci/pci_device.h"
+ #include "qemu/error-report.h"
+ 
+ typedef struct AcpiGenericInitiatorClass {
+@@ -47,6 +49,7 @@ static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
+                                             Error **errp)
+ {
+     AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
++    MachineState *ms = MACHINE(qdev_get_machine());
+     uint32_t value;
+ 
+     if (!visit_type_uint32(v, name, &value, errp)) {
+@@ -60,6 +63,7 @@ static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
+     }
+ 
+     gi->node = value;
++    ms->numa_state->nodes[gi->node].has_gi = true;
+ }
+ 
+ static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
+@@ -69,3 +73,76 @@ static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
+     object_class_property_add(oc, "node", "int", NULL,
+         acpi_generic_initiator_set_node, NULL, NULL);
+ }
++
++/*
++ * ACPI 6.3:
++ * Table 5-78 Generic Initiator Affinity Structure
++ */
++static void
++build_srat_generic_pci_initiator_affinity(GArray *table_data, int node,
++                                          PCIDeviceHandle *handle)
 +{
-+    compat_props_add(mc->compat_props, arm_virt_compat,
-+                     arm_virt_compat_len);
++    uint8_t index;
++
++    build_append_int_noprefix(table_data, 5, 1);  /* Type */
++    build_append_int_noprefix(table_data, 32, 1); /* Length */
++    build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
++    build_append_int_noprefix(table_data, 1, 1);  /* Device Handle Type: PCI */
++    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain */
++
++    /* Device Handle - PCI */
++    build_append_int_noprefix(table_data, handle->segment, 2);
++    build_append_int_noprefix(table_data, handle->bdf, 2);
++    for (index = 0; index < 12; index++) {
++        build_append_int_noprefix(table_data, 0, 1);
++    }
++
++    build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4); /* Flags */
++    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
 +}
 +
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-                                                     void *data) \
-     { \
-         MachineClass *mc = MACHINE_CLASS(oc); \
-+        arm_virt_compat_set(mc); \
-         virt_machine_##major##_##minor##_options(mc); \
-         mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
-         if (latest) { \
++static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
++{
++    MachineState *ms = MACHINE(qdev_get_machine());
++    AcpiGenericInitiator *gi;
++    GArray *table_data = opaque;
++    PCIDeviceHandle dev_handle;
++    PCIDevice *pci_dev;
++    Object *o;
++
++    if (!object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
++        return 0;
++    }
++
++    gi = ACPI_GENERIC_INITIATOR(obj);
++    if (gi->node >= ms->numa_state->num_nodes) {
++        error_printf("%s: Specified node %d is invalid.\n",
++                     TYPE_ACPI_GENERIC_INITIATOR, gi->node);
++        exit(1);
++    }
++
++    o = object_resolve_path_type(gi->pci_dev, TYPE_PCI_DEVICE, NULL);
++    if (!o) {
++        error_printf("%s: Specified device must be a PCI device.\n",
++                     TYPE_ACPI_GENERIC_INITIATOR);
++        exit(1);
++    }
++
++    pci_dev = PCI_DEVICE(o);
++
++    dev_handle.segment = 0;
++    dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
++                                               pci_dev->devfn);
++
++    build_srat_generic_pci_initiator_affinity(table_data,
++                                              gi->node, &dev_handle);
++
++    return 0;
++}
++
++void build_srat_generic_pci_initiator(GArray *table_data)
++{
++    object_child_foreach_recursive(object_get_root(),
++                                   build_all_acpi_generic_initiators,
++                                   table_data);
++}
+diff --git a/hw/acpi/hmat.c b/hw/acpi/hmat.c
+index 3042d223c8..2242981e18 100644
+--- a/hw/acpi/hmat.c
++++ b/hw/acpi/hmat.c
+@@ -214,7 +214,7 @@ static void hmat_build_table_structs(GArray *table_data, NumaState *numa_state)
+     }
+ 
+     for (i = 0; i < numa_state->num_nodes; i++) {
+-        if (numa_state->nodes[i].has_cpu) {
++        if (numa_state->nodes[i].has_cpu || numa_state->nodes[i].has_gi) {
+             initiator_list[num_initiator++] = i;
+         }
+     }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6a1bde61ce..c3ccfef026 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -57,6 +57,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/viot.h"
++#include "hw/acpi/acpi_generic_initiator.h"
+ #include "hw/virtio/virtio-acpi.h"
+ #include "target/arm/multiprocessing.h"
+ 
+@@ -504,6 +505,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         }
+     }
+ 
++    build_srat_generic_pci_initiator(table_data);
++
+     if (ms->nvdimms_state->is_enabled) {
+         nvdimm_build_srat(table_data);
+     }
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index f08956ddb0..58a32f1564 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -229,7 +229,8 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
+                    node->target, numa_state->num_nodes);
+         return;
+     }
+-    if (!numa_info[node->initiator].has_cpu) {
++    if (!numa_info[node->initiator].has_cpu &&
++        !numa_info[node->initiator].has_gi) {
+         error_setg(errp, "Invalid initiator=%d, it isn't an "
+                    "initiator proximity domain", node->initiator);
+         return;
 -- 
 MST
 

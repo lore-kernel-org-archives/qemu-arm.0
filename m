@@ -1,531 +1,204 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1661249ejc;
-        Tue, 12 Mar 2024 00:49:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWDEUio/gqfQ9qUhLSDBfFzarbV/F357o1dw76tbSqFBZiAqslB0WtaC9dufu14IYeEojkcSbSjUoHtohexhtiSBUm3Lu9Z
-X-Google-Smtp-Source: AGHT+IFOdVZ9II0L5jSEg4E3ueKcKukYXzInvL1FRrk/oyuMl7n/zRgu3+dUfXiLabe/Q7GILrXP
-X-Received: by 2002:a9d:618a:0:b0:6e4:7f14:c01b with SMTP id g10-20020a9d618a000000b006e47f14c01bmr10541794otk.29.1710229768048;
-        Tue, 12 Mar 2024 00:49:28 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1710229768; cv=pass;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1674320ejc;
+        Tue, 12 Mar 2024 01:23:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVHuY0Qcjlpqc+g+Tvs7TgyPRRZnAjuW8ZmyTyxoh+wN7BPWMHIeTDu+6Jkag8UdXRnsXBma6de530LOP4iIJRnAFRE9XS1
+X-Google-Smtp-Source: AGHT+IELHCoWh0VZVOP0zwwJTGTdCdoD2OxZ4AXgHvTZVOhoCGspGPX7VO6W1zM2TBfIa89jYVeg
+X-Received: by 2002:a0c:cd88:0:b0:690:f804:e915 with SMTP id v8-20020a0ccd88000000b00690f804e915mr393931qvm.26.1710231806390;
+        Tue, 12 Mar 2024 01:23:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710231806; cv=none;
         d=google.com; s=arc-20160816;
-        b=w+7LXROMJLUOApLjoEgdWMsr2hYfTs1w109EJH4fcpYpAPfoCzIidKr4svNckSbnHD
-         p1V1IRDKMjey12c6Z4tQA9SiuGp8C41neOUThuGWHs3XlUZULLWZNv5pvIgAcyaxHdpj
-         NySvHJFp+VokhVklpnV8D03uGHnNzn2Z2nEiaX9r5pmUsKio513JOuBs2OIJsMmlKFlk
-         zcGl1FHnpPbYZtiOhfNqJJfk8zlxrHyiIXJcPOBTqbOMH4H2V0cmYzizlF3g5MxnOcm7
-         dkpd96Lh7vs41lY+gGpwhj+JfxPmuuuCI8TSmrZdu6Un52+EK3JzQYQbfMcHf7oPCdfv
-         rDAA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
+        b=08KB+gUR2s0WMM5E56LdCPaYZ/tNe6V4sSeDaH6xD8oOojdP3mBXPnuaUwmFMQbEzI
+         704ovpiyjR/tJB9n8uXdcDMIvMKIxfya25WUb7U3lhwRTW4uxD8wfs+F9Tnv/mJA8N8d
+         xL4cYhkDsYCg7QqFLTeft9APn/+zjQPuN2H7NWEmD7jUHfzSnPt1vgNaITOspFVXAIxW
+         pvZC6yOliz3szUgEDAuYy+xTAHJQx1utwAZUx87j3MGvKQNNkQGz8j1TeEF5rC0PjArp
+         i4asz6hWMQVoqMjIyt+ZcO7Tnrc1Xukr7n9VQtssPpcKl0BU4ywcX1VhSOnieWkcMb5Z
+         RcSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hf0i2X5ZaQ7uy+Izd/1iXlQf71HB4eo5q05CggoYeWk=;
-        fh=FLZikGh3tKUI9toOt3sZeg3PJMzr8zGNgGk0jGyN++w=;
-        b=t1GsQ1FevN5FapKMkKDUYsyOyMQldX2ER/OV5Y+3vhywY5MIZWdXEwP6EM8Ro2Z4Xf
-         nszr+mQNG4wdg0lgPqvVIDA6smLYhr1iGYDPP36Wf+zCuA9KU2N4kBDvxgA9koFFOldw
-         RD2Qmaij0feQcptU/DyBfdpKcNjUXwZf9MLu4cqMxk2ivmau0tCkXOA0rW9Ijae2TWg6
-         CN5XmDp1S2BwTuolOb9dmuQnhq3jKi6hC2Wkv5Vfj0l1P3OozLlVUSIa54xSyenqM5hy
-         QU3DzcFZ245fzmRPy5nahVsif0RFTDdEqf51KeUCXRPYaASlK0yMLVQMg9bW6nEPqDJ8
-         h0dg==;
+        bh=eC/1sv6Wv+c7ut+0cdVRZlJFS7IBk+vo2wQm3zp+8ts=;
+        fh=+qpzb3SYbhq67lhRB0qgJZVW/O3RhcqEk2U7nqc1BKg=;
+        b=SKiuswgPZU9WfghpKV0cOHcbYBjJfbxav5LhdzlrcwZ/8SeNa934XktcqVUEkBT0c8
+         flnhgwKzp8v0Wwm8n7ANhx26jl6LR+P/t/P0UrNmzoRIBG6EcoRNzPLSE225VT+FbY4u
+         MlPVw1a2rLSXdQ/sCoHDqOddt4BVGq4im/qbDDktK9bGE170s1WroF9h64BlX394Kbi0
+         X8tHwC5TmXG7xdneJlnlced0VArk6R1c7P2koZmRcIGvJNyV7oDgUXivGUgs3zyh6Lk7
+         e/AipeeEdbYHYYhM2Mr7fg3bQ3gHmlBa697y2ZTElaQiMM0gL613GG276aURTebWLpil
+         YGBA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ViM7aCgC;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 15-20020a63134f000000b005cf0abea01dsi6569562pgt.114.2024.03.12.00.49.27
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fd1fc1iq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jl13-20020ad45e8d000000b00690796914e5si7451774qvb.181.2024.03.12.01.23.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Mar 2024 00:49:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Mar 2024 01:23:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ViM7aCgC;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-11647-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 9017E283C15
-	for <alex.bennee@linaro.org>; Tue, 12 Mar 2024 07:49:27 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1005769969;
-	Tue, 12 Mar 2024 07:49:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ViM7aCgC"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8196AB657
-	for <kvm@vger.kernel.org>; Tue, 12 Mar 2024 07:49:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710229763; cv=none; b=Di3MX/aOn9+nCnmnJC6LmKNb6rC+TyQNmFq3Gaap2kw2IG0efjmdMGA49/Zo49xRoE5ROUghVr6NUsLEBtzw12Of9RTG7qOF0Q1WgL5P1FnnGHO8Sni6CtpP0xNwQA6reOWxEkMjOfk4pkAyjJLrve9OLFlw8X1oT8nUV7JGHGc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710229763; c=relaxed/simple;
-	bh=Dc39tjeJQk1BcSb79wissba4frelN+hFbGu65yFJ4ck=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=PDszJm399jbfDb9HIyqT5eoxyVxCo94BYX0HBAxQII23ktrzRdZJ+lNsapAHJDcS0ws2BUtZDlBG3r4bRiqGc2Fr7FSzFa6wKAX4Yld9BfAKaTGZH36YzSUR6+vpMDlDU/J6BBEvAgzPUBPiyoL0HCq0ZZMPKaf0tLpJu56M2QU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ViM7aCgC; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1710229760;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=hf0i2X5ZaQ7uy+Izd/1iXlQf71HB4eo5q05CggoYeWk=;
-	b=ViM7aCgCaR71uk+dyh/nZzbY3PoPgASdBMpXGgbXGigY8HbW0xiLSiD+ZcGOmdvv7iixrK
-	pGVtonvgtLNQeFqwy17hMmRlXco+uhRHny/qE1pB65VZjNxnrFRCjU9X/skEBNuLryKTW+
-	hWlFBawVi31HhJzjTavRVumnRwu+/+M=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-61-uem3J4rIPXSvQBPuOtbhWg-1; Tue, 12 Mar 2024 03:49:16 -0400
-X-MC-Unique: uem3J4rIPXSvQBPuOtbhWg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28AAE1018985;
-	Tue, 12 Mar 2024 07:49:16 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1D92D1C060A4;
-	Tue, 12 Mar 2024 07:49:16 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: Eric Auger <eauger@redhat.com>,
-	Shaoqin Huang <shahuang@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	qemu-devel@nongnu.org,
-	kvm@vger.kernel.org
-Subject: [PATCH v8] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Date: Tue, 12 Mar 2024 03:48:49 -0400
-Message-Id: <20240312074849.71475-1-shahuang@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fd1fc1iq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rjxPf-0005bV-A4; Tue, 12 Mar 2024 04:23:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPd-0005YM-1E
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:05 -0400
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPb-00018X-DQ
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:04 -0400
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-513a81b717cso2246156e87.0
+ for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 01:23:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710231782; x=1710836582; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eC/1sv6Wv+c7ut+0cdVRZlJFS7IBk+vo2wQm3zp+8ts=;
+ b=Fd1fc1iq/M+GU7EAm8sZ0C+YlMZ4hfOLoC+TBCHc0XXVliSk2MMvXiGhrvkIr7jWeJ
+ U3hTRGc3aNZasSo+eWZXHL0AjxCxegy959CbkM/XeZn7RZyEvhrhffLQnSXQjNX0wQ3r
+ GbAMJQa4HWQhGu+PinoRzPWtEa2RRGNHMKkk+aDDuWb+2pgHB/6ccbUQzVbkIA15Q422
+ XrZpMt/MZyUrOKqTXwtT6TqHaWTpSK/0JhZrloTus8M5DU+mYAXowU7J5+m6kACLZ5M7
+ 9HiQGNM4CTBv50mGBm0mFaqR2NCPIkQO+rd8T8xW+BxQOE+XkCmYDMXp2FFXIRe2uqiz
+ ApFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710231782; x=1710836582;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eC/1sv6Wv+c7ut+0cdVRZlJFS7IBk+vo2wQm3zp+8ts=;
+ b=tXfsjcbjrk6RGJJK8FRVlZWNJuFBEuqLKxpBM+0vJARsdvhqUp+2yquFmz7mXy7KbK
+ N0E8KqScU054NIG9nDUVZWNvCRfNDQvOU15OwNp8WVqDPHZp887YqkfyB4sRRsK8IQfW
+ tA1NOIfJEpTB9C6CsmWkFPe/eBx1n27cNFRC1gBMGWm5DzXVOjXPAtkF3T9WQjfSASS+
+ xw91XD0EiFlgTJUTkBnT3xKHuEUs6i8Is5R8rlSzFR3+ZR6LtxkRb9EHHEoUKb1HeXqX
+ TLAq8GIB4XY9JiQRVv/xifqgCl1DtrQxYf7xW5I+1nxGOi3ZWMkKHJlbwGCdHq9mhn4F
+ 88vw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXnERek2sBdp8o4fgMR760SlH4zswEU6U4gKl0BVQ/aafHu733HlmTZxPtxnKoFcwWN8AM8tqsVNLNmMCVKXdT7f44x
+X-Gm-Message-State: AOJu0YxICLGT9M0FEe/fuFoC4HPt3VvR1iN1FbW26TZQ85A8W5TL51Ao
+ OzAaMlla8KGTmbWKQneiK+bukDlLb4AbxOjzeabe5dz5t1eSkYehuNWRLPz3Ql6eNYUZLyiheLQ
+ S
+X-Received: by 2002:a19:5f5a:0:b0:513:ee3:65bd with SMTP id
+ a26-20020a195f5a000000b005130ee365bdmr4962829lfj.35.1710231781536; 
+ Tue, 12 Mar 2024 01:23:01 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.206.139])
+ by smtp.gmail.com with ESMTPSA id
+ r4-20020a05600c35c400b004130c1dc29csm11664395wmq.22.2024.03.12.01.23.00
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 12 Mar 2024 01:23:01 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 03/13] hw/ppc/sam460ex: Support short options for adding drives
+Date: Tue, 12 Mar 2024 09:22:28 +0100
+Message-ID: <20240312082239.69696-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240312082239.69696-1-philmd@linaro.org>
+References: <20240312082239.69696-1-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-X-TUID: PEeJRWxmCtVA
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8VsZrI5IkP06
 
-The KVM_ARM_VCPU_PMU_V3_FILTER provides the ability to let the VMM decide
-which PMU events are provided to the guest. Add a new option
-`kvm-pmu-filter` as -cpu sub-option to set the PMU Event Filtering.
-Without the filter, all PMU events are exposed from host to guest by
-default. The usage of the new sub-option can be found from the updated
-document (docs/system/arm/cpu-features.rst).
+From: BALATON Zoltan <balaton@eik.bme.hu>
 
-Here is an example which shows how to use the PMU Event Filtering, when
-we launch a guest by use kvm, add such command line:
+Having to use -drive if=none,... and -device ide-[cd,hd] is
+inconvenient. Add support for shorter convenience options such as
+-cdrom and -drive media=disk. Also adjust two nearby comments for code
+style.
 
-  # qemu-system-aarch64 \
-        -accel kvm \
-        -cpu host,kvm-pmu-filter="D:0x11-0x11"
-
-Since the first action is deny, we have a global allow policy. This
-filters out the cycle counter (event 0x11 being CPU_CYCLES).
-
-And then in guest, use the perf to count the cycle:
-
-  # perf stat sleep 1
-
-   Performance counter stats for 'sleep 1':
-
-              1.22 msec task-clock                       #    0.001 CPUs utilized
-                 1      context-switches                 #  820.695 /sec
-                 0      cpu-migrations                   #    0.000 /sec
-                55      page-faults                      #   45.138 K/sec
-   <not supported>      cycles
-           1128954      instructions
-            227031      branches                         #  186.323 M/sec
-              8686      branch-misses                    #    3.83% of all branches
-
-       1.002492480 seconds time elapsed
-
-       0.001752000 seconds user
-       0.000000000 seconds sys
-
-As we can see, the cycle counter has been disabled in the guest, but
-other pmu events do still work.
-
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+Message-ID: <20240305225721.E9A404E6005@zero.eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-v7->v8:
-  - Add qtest for kvm-pmu-filter.
-  - Do the kvm-pmu-filter syntax checking up-front in the kvm_pmu_filter_set()
-  function. And store the filter information at there. When kvm_pmu_filter_get()
-  reconstitute it.
+ hw/ppc/sam460ex.c | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
 
-v6->v7:
-  - Check return value of sscanf.
-  - Improve the check condition.
-
-v5->v6:
-  - Commit message improvement.
-  - Remove some unused code.
-  - Collect Reviewed-by, thanks Sebastian.
-  - Use g_auto(Gstrv) to replace the gchar **.          [Eric]
-
-v4->v5:
-  - Change the kvm-pmu-filter as a -cpu sub-option.     [Eric]
-  - Comment tweak.                                      [Gavin]
-  - Rebase to the latest branch.
-
-v3->v4:
-  - Fix the wrong check for pmu_filter_init.            [Sebastian]
-  - Fix multiple alignment issue.                       [Gavin]
-  - Report error by warn_report() instead of error_report(), and don't use
-  abort() since the PMU Event Filter is an add-on and best-effort feature.
-                                                        [Gavin]
-  - Add several missing {  } for single line of code.   [Gavin]
-  - Use the g_strsplit() to replace strtok().           [Gavin]
-
-v2->v3:
-  - Improve commits message, use kernel doc wording, add more explaination on
-    filter example, fix some typo error.                [Eric]
-  - Add g_free() in kvm_arch_set_pmu_filter() to prevent memory leak. [Eric]
-  - Add more precise error message report.              [Eric]
-  - In options doc, add pmu-filter rely on KVM_ARM_VCPU_PMU_V3_FILTER support in
-    KVM.                                                [Eric]
-
-v1->v2:
-  - Add more description for allow and deny meaning in 
-    commit message.                                     [Sebastian]
-  - Small improvement.                                  [Sebastian]
----
- docs/system/arm/cpu-features.rst |  23 +++++++
- target/arm/arm-qmp-cmds.c        |   2 +-
- target/arm/cpu.h                 |   3 +
- target/arm/kvm.c                 | 115 +++++++++++++++++++++++++++++++
- tests/qtest/arm-cpu-features.c   |  51 ++++++++++++++
- 5 files changed, 193 insertions(+), 1 deletion(-)
-
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index a5fb929243..f3930f34b3 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -204,6 +204,29 @@ the list of KVM VCPU features and their descriptions.
-   the guest scheduler behavior and/or be exposed to the guest
-   userspace.
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index 7e34b6c5e0..d42b677898 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -33,6 +33,7 @@
+ #include "hw/char/serial.h"
+ #include "hw/i2c/ppc4xx_i2c.h"
+ #include "hw/i2c/smbus_eeprom.h"
++#include "hw/ide/pci.h"
+ #include "hw/usb/hcd-ehci.h"
+ #include "hw/ppc/fdt.h"
+ #include "hw/qdev-properties.h"
+@@ -449,15 +450,27 @@ static void sam460ex_init(MachineState *machine)
  
-+``kvm-pmu-filter``
-+  By default kvm-pmu-filter is disabled. This means that by default all PMU
-+  events will be exposed to guest.
-+
-+  KVM implements PMU Event Filtering to prevent a guest from being able to
-+  sample certain events. It depends on the KVM_ARM_VCPU_PMU_V3_FILTER
-+  attribute supported in KVM. It has the following format:
-+
-+  kvm-pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-+
-+  The A means "allow" and D means "deny", start is the first event of the
-+  range and the end is the last one. The first registered range defines
-+  the global policy (global ALLOW if the first action is DENY, global DENY
-+  if the first action is ALLOW). The start and end only support hexadecimal
-+  format. For example:
-+
-+  kvm-pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
-+
-+  Since the first action is allow, we have a global deny policy. It
-+  will allow event 0x11 (the cycle counter), events 0x23 to 0x3a are
-+  also allowed except the event 0x30 which is denied, and all the other
-+  events are denied.
-+
- TCG VCPU Features
- =================
- 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 2250cd7ddf..36df2e4820 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -94,7 +94,7 @@ static const char *cpu_model_advertised_features[] = {
-     "sve128", "sve256", "sve384", "sve512",
-     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
--    "kvm-no-adjvtime", "kvm-steal-time",
-+    "kvm-no-adjvtime", "kvm-steal-time", "kvm-pmu-filter",
-     "pauth", "pauth-impdef", "pauth-qarma3",
-     NULL
- };
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 63f31e0d98..b810a80e67 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -948,6 +948,9 @@ struct ArchCPU {
- 
-     /* KVM steal time */
-     OnOffAuto kvm_steal_time;
-+
-+    /* KVM PMU Filter */
-+    GArray *kvm_pmu_filter;
- #endif /* CONFIG_KVM */
- 
-     /* Uniprocessor system with MP extensions */
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 81813030a5..7f62fad029 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -496,6 +496,72 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
-     ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
- }
- 
-+static char *kvm_pmu_filter_get(Object *obj, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    g_autoptr(GString) pmu_filter = g_string_new(NULL);
-+    struct kvm_pmu_event_filter *filter;
-+    char action;
-+    int i;
-+
-+    if (!cpu->kvm_pmu_filter) {
-+        return NULL;
-+    }
-+
-+    for (i = 0; i < cpu->kvm_pmu_filter->len; i++) {
-+        filter = &g_array_index(cpu->kvm_pmu_filter,
-+                                struct kvm_pmu_event_filter, i);
-+        if (i) {
-+            g_string_append_c(pmu_filter, ';');
-+        }
-+        action = filter->action == KVM_PMU_EVENT_ALLOW ? 'A' : 'D';
-+        g_string_append_printf(pmu_filter, "%c:0x%hx-0x%hx", action,
-+                               filter->base_event,
-+                               filter->base_event + filter->nevents - 1);
-+    }
-+
-+    return g_strdup(pmu_filter->str);
-+}
-+
-+static void kvm_pmu_filter_set(Object *obj, const char *pmu_filter,
-+                               Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    struct kvm_pmu_event_filter filter;
-+    g_auto(GStrv) event_filters;
-+    int i;
-+
-+    if (cpu->kvm_pmu_filter) {
-+        g_array_free(cpu->kvm_pmu_filter, true);
-+    }
-+
-+    cpu->kvm_pmu_filter = g_array_new(false, false,
-+                                      sizeof(struct kvm_pmu_event_filter));
-+
-+    event_filters = g_strsplit(pmu_filter, ";", -1);
-+    for (i = 0; event_filters[i]; i++) {
-+        unsigned short start = 0, end = 0;
-+        char act;
-+
-+        if (sscanf(event_filters[i], "%c:%hx-%hx", &act, &start, &end) != 3) {
-+            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
-+            continue;
-+        }
-+
-+        if ((act != 'A' && act != 'D') || start > end) {
-+            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
-+            continue;
-+        }
-+
-+        filter.base_event = start;
-+        filter.nevents = end - start + 1;
-+        filter.action = (act == 'A') ? KVM_PMU_EVENT_ALLOW :
-+                                       KVM_PMU_EVENT_DENY;
-+
-+        g_array_append_vals(cpu->kvm_pmu_filter, &filter, 1);
-+    }
-+}
-+
- /* KVM VCPU properties should be prefixed with "kvm-". */
- void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
- {
-@@ -517,6 +583,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
-                              kvm_steal_time_set);
-     object_property_set_description(obj, "kvm-steal-time",
-                                     "Set off to disable KVM steal time.");
-+
-+    object_property_add_str(obj, "kvm-pmu-filter", kvm_pmu_filter_get,
-+                            kvm_pmu_filter_set);
-+    object_property_set_description(obj, "kvm-pmu-filter",
-+                                    "PMU Event Filtering description for "
-+                                    "guest PMU. (default: NULL, disabled)");
- }
- 
- bool kvm_arm_pmu_supported(void)
-@@ -1706,6 +1778,47 @@ static bool kvm_arm_set_device_attr(ARMCPU *cpu, struct kvm_device_attr *attr,
-     return true;
- }
- 
-+static void kvm_arm_pmu_filter_init(ARMCPU *cpu)
-+{
-+    static bool pmu_filter_init;
-+    struct kvm_device_attr attr = {
-+        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-+    };
-+    int i;
-+
+     /* PCI devices */
+     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
+-    /* SoC has a single SATA port but we don't emulate that yet
 +    /*
-+     * The filter only needs to be initialized through one vcpu ioctl and it
-+     * will affect all other vcpu in the vm.
-+     * It can be referred from kernel commit d7eec2360e3 ("KVM: arm64: Add PMU
-+     * event filtering infrastructure"):
-+     * Note that although the ioctl is per-vcpu, the map of allowed events is
-+     * global to the VM (it can be setup from any vcpu until the vcpu PMU is
-+     * initialized).
++     * SoC has a single SATA port but we don't emulate that
+      * However, firmware and usual clients have driver for SiI311x
+-     * so add one for convenience by default */
++     * PCI SATA card so add one for convenience by default
 +     */
-+    if (pmu_filter_init) {
-+        return;
-+    } else {
-+        pmu_filter_init = true;
-+    }
+     if (defaults_enabled()) {
+-        pci_create_simple(pci_bus, -1, "sii3112");
++        PCIIDEState *s = PCI_IDE(pci_create_simple(pci_bus, -1, "sii3112"));
++        DriveInfo *di;
 +
-+    if (!cpu->kvm_pmu_filter) {
-+        return;
-+    }
-+    if (kvm_vcpu_ioctl(CPU(cpu), KVM_HAS_DEVICE_ATTR, &attr)) {
-+        error_report("KVM doesn't support the PMU Event Filter!");
-+        return;
-+    }
-+
-+    for (i = 0; i < cpu->kvm_pmu_filter->len; i++) {
-+        attr.addr = (uint64_t)&g_array_index(cpu->kvm_pmu_filter,
-+                                             struct kvm_pmu_event_filter, i);
-+        if (!kvm_arm_set_device_attr(cpu, &attr, "PMU_V3_FILTER")) {
-+            break;
++        di = drive_get_by_index(IF_IDE, 0);
++        if (di) {
++            ide_bus_create_drive(&s->bus[0], 0, di);
 +        }
-+    }
-+}
-+
- void kvm_arm_pmu_init(ARMCPU *cpu)
++        /* Use index 2 only if 1 does not exist, this allows -cdrom */
++        di = drive_get_by_index(IF_IDE, 1) ?: drive_get_by_index(IF_IDE, 2);
++        if (di) {
++            ide_bus_create_drive(&s->bus[1], 0, di);
++        }
+     }
+ 
+-    /* SoC has 4 UARTs
+-     * but board has only one wired and two are present in fdt */
++    /* SoC has 4 UARTs but board has only one wired and two described in fdt */
+     if (serial_hd(0) != NULL) {
+         serial_mm_init(get_system_memory(), 0x4ef600300, 0,
+                        qdev_get_gpio_in(uic[1], 1),
+@@ -531,6 +544,7 @@ static void sam460ex_machine_init(MachineClass *mc)
  {
-     struct kvm_device_attr attr = {
-@@ -1716,6 +1829,8 @@ void kvm_arm_pmu_init(ARMCPU *cpu)
-     if (!cpu->has_pmu) {
-         return;
-     }
-+
-+    kvm_arm_pmu_filter_init(cpu);
-     if (!kvm_arm_set_device_attr(cpu, &attr, "PMU")) {
-         error_report("failed to init PMU");
-         abort();
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index a8a4c668ad..60a5e32eb8 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -127,6 +127,17 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     return qdict_get_bool(props, feature);
- }
- 
-+static const char *resp_get_feature_str(QDict *resp, const char *feature)
-+{
-+    QDict *props;
-+
-+    g_assert(resp);
-+    g_assert(resp_has_props(resp));
-+    props = resp_get_props(resp);
-+    g_assert(qdict_get(props, feature));
-+    return qdict_get_str(props, feature);
-+}
-+
- #define assert_has_feature(qts, cpu_type, feature)                     \
- ({                                                                     \
-     QDict *_resp = do_query_no_props(qts, cpu_type);                   \
-@@ -156,6 +167,18 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
- })
- 
-+#define resp_assert_feature_str(resp, feature, expected_value)         \
-+({                                                                     \
-+    QDict *_props;                                                     \
-+                                                                       \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props = resp_get_props(_resp);                                    \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert_cmpstr(qdict_get_str(_props, feature),                    \
-+                    ==, (expected_value));                             \
-+})
-+
- #define assert_feature(qts, cpu_type, feature, expected_value)         \
- ({                                                                     \
-     QDict *_resp;                                                      \
-@@ -177,6 +200,17 @@ static bool resp_get_feature(QDict *resp, const char *feature)
-     qobject_unref(_resp);                                              \
- })
- 
-+#define assert_set_feature_str(qts, cpu_type, feature, value)          \
-+({                                                                     \
-+    const char *_fmt = "{ %s: %s }";                                   \
-+    QDict *_resp;                                                      \
-+                                                                       \
-+    _resp = do_query(qts, cpu_type, _fmt, feature, value);             \
-+    g_assert(_resp);                                                   \
-+    resp_assert_feature_str(_resp, feature, value);                    \
-+    qobject_unref(_resp);                                              \
-+})
-+
- #define assert_has_feature_enabled(qts, cpu_type, feature)             \
-     assert_feature(qts, cpu_type, feature, true)
- 
-@@ -461,6 +495,7 @@ static void test_query_cpu_model_expansion(const void *data)
- 
-     assert_has_not_feature(qts, "max", "kvm-no-adjvtime");
-     assert_has_not_feature(qts, "max", "kvm-steal-time");
-+    assert_has_not_feature(qts, "max", "kvm-pmu-filter");
- 
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         assert_has_feature_enabled(qts, "max", "aarch64");
-@@ -508,6 +543,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-     assert_set_feature(qts, "host", "kvm-no-adjvtime", false);
- 
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-+        const char *kvm_supports_pmu_filter;
-         bool kvm_supports_steal_time;
-         bool kvm_supports_sve;
-         char max_name[8], name[8];
-@@ -546,15 +582,29 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-          * because this instance of KVM doesn't support them. Test that the
-          * features are present, and, when enabled, issue further tests.
-          */
-+        assert_has_feature(qts, "host", "kvm-pmu-filter");
-         assert_has_feature(qts, "host", "kvm-steal-time");
-         assert_has_feature(qts, "host", "sve");
- 
-         resp = do_query_no_props(qts, "host");
-+        kvm_supports_pmu_filter = resp_get_feature_str(resp, "kvm-pmu-filter");
-         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
-         kvm_supports_sve = resp_get_feature(resp, "sve");
-         vls = resp_get_sve_vls(resp);
-         qobject_unref(resp);
- 
-+        if (kvm_supports_pmu_filter) {
-+            assert_set_feature_str(qts, "host", "kvm-pmu-filter", "");
-+            assert_set_feature_str(qts, "host", "kvm-pmu-filter",
-+                                   "A:0x11-0x11");
-+            assert_set_feature_str(qts, "host", "kvm-pmu-filter",
-+                                   "D:0x11-0x11");
-+            assert_set_feature_str(qts, "host", "kvm-pmu-filter",
-+                                   "A:0x11-0x11;A:0x12-0x20");
-+            assert_set_feature_str(qts, "host", "kvm-pmu-filter",
-+                                   "D:0x11-0x11;A:0x12-0x20;D:0x12-0x15");
-+        }
-+
-         if (kvm_supports_steal_time) {
-             /* If we have steal-time then we should be able to toggle it. */
-             assert_set_feature(qts, "host", "kvm-steal-time", false);
-@@ -622,6 +672,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-         assert_has_not_feature(qts, "host", "pmu");
-         assert_has_not_feature(qts, "host", "sve");
-         assert_has_not_feature(qts, "host", "kvm-steal-time");
-+        assert_has_not_feature(qts, "host", "kvm-pmu-filter");
-     }
- 
-     qtest_quit(qts);
+     mc->desc = "aCube Sam460ex";
+     mc->init = sam460ex_init;
++    mc->block_default_type = IF_IDE;
+     mc->default_cpu_type = POWERPC_CPU_TYPE_NAME("460exb");
+     mc->default_ram_size = 512 * MiB;
+     mc->default_ram_id = "ppc4xx.sdram";
 -- 
-2.40.1
+2.41.0
 

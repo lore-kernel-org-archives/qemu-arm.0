@@ -1,51 +1,51 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1553695ejc;
-        Mon, 11 Mar 2024 19:02:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUdrUAfDVDkvdEFo/sK1M6OGCyH2Lf+LWtWG3WSrpUcr8oQLs96DxSmoaoO5nmFFmWrLv7oFBTy+EXW4uyYMey++8su4x1
-X-Google-Smtp-Source: AGHT+IFhJvEK4XhMYN+gjf8Laffkw0Jo0hsKvBVhydAlfo8OWQLRYwHhjWqo0YZDk6NoY59yyLaq
-X-Received: by 2002:a5d:4b0c:0:b0:33d:7385:d929 with SMTP id v12-20020a5d4b0c000000b0033d7385d929mr5049092wrq.0.1710208952676;
-        Mon, 11 Mar 2024 19:02:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710208952; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1553827ejc;
+        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU1BtyPs7KJHHwT+OsdM4NOeiybxTZHiQSsYqEDmTODQWgf1k3t7c1ScDRZ3azLv9MPIbU+usU2BvZdwi/w4FT8xRldmP+W
+X-Google-Smtp-Source: AGHT+IHpqS0EFEKygRWUNglH5E80bML48FyJJ97Dk2wcZW9YZwCqTdjgIEEu496oEUPySenNc8Cn
+X-Received: by 2002:a05:6a20:9147:b0:1a3:11cb:9219 with SMTP id x7-20020a056a20914700b001a311cb9219mr8260573pzc.6.1710208972597;
+        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710208972; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hvjc9rv3sLVUr3TBrHbOhFr97cJSs55WY5pemzTgOm4gZ/G6pGi6DDrmCoDRpFw6s6
-         4/5Fcklu6lHQZw2mjw8ZtO4kdwgCycqGlWE7pNdqH7pE+iDZ6Y6HV7INK1rasiF6SwK3
-         LWT/ECxCwETx3cIvhy3izwzF3THma8mFF5YTUv60H3Pqp7ZHOHgA0Oq+aaW8+1+Em9No
-         OPLMNdAmGTPJFehsFRvGqdgniKoAicFoAm5Vxg4ew/NQzzrbksyH4O6D1LDIfnX9xOG+
-         Jmg1T0XR4tpv4RKLxG7hIu+WDjj1l9+N4ZP6+4ksvorZHfkCq/SuX2NmCDq34KMV1yBB
-         B3wg==
+        b=W/UtFbVJgi7tRFW8/q63cDDIBqwq1JECycDQoNav+fRTTNOstFiVuX3tNeJWmzqXTx
+         L9TJ9QTFXZV0f7rWgCCeU+oyggTSVdOkHu+1q2Am/abiD5OHjgjSc+4HHfuG5DG5APhr
+         +KtEx1rRIEeLWm0hqGW71UXGHHKfaLY33735u/i8MWJLbsCWmAH2dKZVzgdiSEjF7TDj
+         uKKOmKUpT6dv1H+K8HcTgTdAGHXoq8aDVyAk4fBFFoVyUyi5D/patFLDAPCBZD1XpfId
+         HXEBTWakL1o31jAPozO7aTj5YIWLIU2kgaFXlnj+YSBz8Aa35HKJ9VnN29sD/Lvk0xcM
+         OLiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=iTL6OZGy5zQQAw1zlcz2pMcwkRgNCkvf935i/eqYRvY=;
+        bh=gxPEmOjI1IPxhv8GQqPZpEbShAewc4HU90xsgp6vrG8=;
         fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=GQChh5OdwMEaygFP8zrHamFYy7u3GOiqkR6JFN5IgpGvN9E8dLXHwIaFufl/HqmpDq
-         ZYhl9/cDodpWJB0QdRSrhCqPG78vEKDqFvTGEUdKD+crF+tLRmOoCxQIIc035mB/ibEO
-         oln+iesqXm4lvC93w+Gsx1UK3yNqEZPPqMrYZBrSVoLLElIxH5W29G+WLBcezE6Zxrp9
-         A3UYyqqjUX3ZOC35IdXzVJ9pP2Xw4ZXGtOD6s3q6eYELjW5+pXATC2tvq+875N5vyFKn
-         PPuyz+mnYpY5preCaDKj0Lc8AXHqRwTzOWzBcqGE18FbLPKsCbapxdjxHxE4lqC7LTnm
-         6UyQ==;
+        b=GQY5Syo5iZYsRv5+FTCeC2qXda204Fb8dP/P4fzS6+H88BrY9NS2GGziuZRKAEgC8o
+         7jh6hGG/pA2nVHZyF6K0rtJWNNtz/VAYtB0J0/aFxEVS4DgGTKilUCOVDIczQdbg42Gn
+         cn/EN0OlEu4Slo4JJW7kpDkGoIOCAQDRARGpi5dh6g/3DIUKl5tkvxzzIUdw4UvLm0+Z
+         D7417PfyUKJVaQzRIeG0dwNmfqNSXeSP47PEtyTIAuqXsuw/oacuJEUWtoUQWxyd7mrD
+         3Q2C24Q6vsRG90PHO8zONCXCoNwD1Veagjii4ahHoDuiR6ubszj4aNuPgs0PmLd/SzNF
+         susg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id r4-20020a5d4944000000b0033e752cc86fsi3379064wrs.624.2024.03.11.19.02.32
+        by mx.google.com with ESMTPS id 4-20020a630b04000000b005ceb19326e3si5995973pgl.251.2024.03.11.19.02.51
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2024 19:02:32 -0700 (PDT)
+        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TtxjL2f1Cz6JBW4;
-	Tue, 12 Mar 2024 10:02:14 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ttxjv4bF8z6K6MR;
+	Tue, 12 Mar 2024 10:02:43 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id E71A6140A35;
-	Tue, 12 Mar 2024 10:02:30 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id BC92A1400CA;
+	Tue, 12 Mar 2024 10:02:48 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.48.148.5) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 12 Mar 2024 02:02:13 +0000
+ 15.1.2507.35; Tue, 12 Mar 2024 02:02:31 +0000
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -62,9 +62,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
-Date: Tue, 12 Mar 2024 01:59:58 +0000
-Message-ID: <20240312020000.12992-7-salil.mehta@huawei.com>
+Subject: [PATCH V8 7/8] gdbstub: Add helper function to unregister GDB register space
+Date: Tue, 12 Mar 2024 01:59:59 +0000
+Message-ID: <20240312020000.12992-8-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20240312020000.12992-1-salil.mehta@huawei.com>
 References: <20240312020000.12992-1-salil.mehta@huawei.com>
@@ -73,11 +73,10 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.148.5]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: dpb8IhLGRLIH
+X-TUID: 5ZgDYDQi6ZPe
 
-Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
-involves destruction of the CPU AddressSpace. Add common function to help
-destroy the CPU AddressSpace.
+Add common function to help unregister the GDB register space. This shall be
+done in context to the CPU unrealization.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
@@ -86,88 +85,49 @@ Tested-by: Xianglai Li <lixianglai@loongson.cn>
 Tested-by: Miguel Luis <miguel.luis@oracle.com>
 Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 ---
- include/exec/cpu-common.h |  8 ++++++++
- include/hw/core/cpu.h     |  1 +
- system/physmem.c          | 29 +++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+)
+ gdbstub/gdbstub.c      | 12 ++++++++++++
+ include/exec/gdbstub.h |  6 ++++++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 6346df17ce..a427d80340 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -123,6 +123,14 @@ size_t qemu_ram_pagesize_largest(void);
-  */
- void cpu_address_space_init(CPUState *cpu, int asidx,
-                             const char *prefix, MemoryRegion *mr);
-+/**
-+ * cpu_address_space_destroy:
-+ * @cpu: CPU for which address space needs to be destroyed
-+ * @asidx: integer index of this address space
-+ *
-+ * Note that with KVM only one address space is supported.
-+ */
-+void cpu_address_space_destroy(CPUState *cpu, int asidx);
- 
- void cpu_physical_memory_rw(hwaddr addr, void *buf,
-                             hwaddr len, bool is_write);
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index ec14f74ce5..e975b8085f 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -493,6 +493,7 @@ struct CPUState {
-     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
- 
-     CPUAddressSpace *cpu_ases;
-+    int cpu_ases_count;
-     int num_ases;
-     AddressSpace *as;
-     MemoryRegion *memory;
-diff --git a/system/physmem.c b/system/physmem.c
-index 6e9ed97597..61b32ac4f2 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
- 
-     if (!cpu->cpu_ases) {
-         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-+        cpu->cpu_ases_count = cpu->num_ases;
-     }
- 
-     newas = &cpu->cpu_ases[asidx];
-@@ -774,6 +775,34 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 17efcae0d0..a8449dc309 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
      }
  }
  
-+void cpu_address_space_destroy(CPUState *cpu, int asidx)
++void gdb_unregister_coprocessor_all(CPUState *cpu)
 +{
-+    CPUAddressSpace *cpuas;
++    /*
++     * Safe to nuke everything. GDBRegisterState::xml is static const char so
++     * it won't be freed
++     */
++    g_array_free(cpu->gdb_regs, true);
 +
-+    assert(cpu->cpu_ases);
-+    assert(asidx >= 0 && asidx < cpu->num_ases);
-+    /* KVM cannot currently support multiple address spaces. */
-+    assert(asidx == 0 || !kvm_enabled());
-+
-+    cpuas = &cpu->cpu_ases[asidx];
-+    if (tcg_enabled()) {
-+        memory_listener_unregister(&cpuas->tcg_as_listener);
-+    }
-+
-+    address_space_destroy(cpuas->as);
-+    g_free_rcu(cpuas->as, rcu);
-+
-+    if (asidx == 0) {
-+        /* reset the convenience alias for address space 0 */
-+        cpu->as = NULL;
-+    }
-+
-+    if (--cpu->cpu_ases_count == 0) {
-+        g_free(cpu->cpu_ases);
-+        cpu->cpu_ases = NULL;
-+    }
++    cpu->gdb_regs = NULL;
++    cpu->gdb_num_g_regs = 0;
 +}
 +
- AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
  {
-     /* Return the AddressSpace corresponding to the specified index */
+     CPUState *cpu = gdb_get_first_cpu_in_process(p);
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index eb14b91139..249d4d4bc8 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               const GDBFeature *feature, int g_pos);
+ 
++/**
++ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
++ * @cpu - the CPU associated with registers
++ */
++void gdb_unregister_coprocessor_all(CPUState *cpu);
++
+ /**
+  * gdbserver_start: start the gdb server
+  * @port_or_device: connection spec for gdb
 -- 
 2.34.1

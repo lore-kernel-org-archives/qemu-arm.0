@@ -1,117 +1,108 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1674827ejc;
-        Tue, 12 Mar 2024 01:24:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSYVsTJxPTaaC0iQe+LXuwD1q8SCAM3tSGAW7ZVESwujo8UmmFUDAHy0Q/EuyzEG2EAMwf9vMCRnS65kgFlc3zff902RAa
-X-Google-Smtp-Source: AGHT+IFHVXY64KmQYil+i4MEbE0Ll0311PzT69HPSQDfDVrTAL+aD9FYrNXwPFT+UV3Sad7Hpe7M
-X-Received: by 2002:a0c:cb87:0:b0:690:7e89:d5e5 with SMTP id p7-20020a0ccb87000000b006907e89d5e5mr9055468qvk.45.1710231879516;
-        Tue, 12 Mar 2024 01:24:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710231879; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1674930ejc;
+        Tue, 12 Mar 2024 01:24:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQ2gktj41c7POwM9BF4WpiKGJRjYXJ+rk0hXErHoUsfOzQvlmZrNNlibfUfXWhGirWR7XmKw1WeVNyqA4WyoYk1u0m2PzG
+X-Google-Smtp-Source: AGHT+IH3761H5Sa3daDDSzhCozcq7w51cwZ16dOsXRQiRnIrY3WlYnttnIse26s16sH6ykCxKDRr
+X-Received: by 2002:a05:620a:560e:b0:788:30ba:98fc with SMTP id vu14-20020a05620a560e00b0078830ba98fcmr10070835qkn.43.1710231893400;
+        Tue, 12 Mar 2024 01:24:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710231893; cv=none;
         d=google.com; s=arc-20160816;
-        b=JKyBfxQu5HVeQYeoyfA6BC6ZZMPg2YsMxffsM1HMys1n/o4M6X4/19PWb4a042krUC
-         mq9h4m558F5/rzksyfYLSmyl7JpvBGaRrDpejNRSBo7x1pvnUT85AkVOjOntH9fggCQo
-         3uONMgWjXNoJPiAdL5e8H09a7gch3aeKmMp3extWdZbeUlrym/fNIaJvR/QyeogGGZ+Y
-         bLE7OUiyKqTd9LXVYO6MYL0VVEjgfdyx+XrApSrmEgEnRcnqANic/tBPuYf6Nn/00bEJ
-         F9hiY9p7zr8ZviL+z23PlgVPy3tI34jq87Kdo+b2qbHsGM90KmXfUmHD6Ffr12nza+7i
-         tjMA==
+        b=JXpddpE8gmIjHMUzGTY3A2XspH7eueHN0zml4z0Cmjjy41rxkCJRP4Yf/J5VTHqUxW
+         UR1PixIgmU5egd84E9f9RafJ8s84iOtFVpwsMGy8NhwIZapr2LiXiR/bMejBOkR75hAT
+         UjcJVnT3BMR0hxJ0e+Mlwpf034ynm5nF9qqwL8T74Z0+AW2w7i0YvxDTz7+TDPMNZpL7
+         IOHB7FTJlc8zCYTJaxHg/w2B3zxDRk4PR2fht+RJIzZ+gXaFBIwd6gcn7O4GU41+vUvz
+         twUfzfKgNsGMdzyqIfVyW3y9aIR6p6kdU1jboMjrJWmCCxGv4TNgMRMt8esx7P0Cd1hm
+         aMAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=QyCNdGxEUzn56uZqvjtKqW1lxcPgF0npDxgJEUvvre8=;
-        fh=q0p/DAoa83wMU/IpXW0+Auv+BdiFhgFQ0g9pdcNuBB4=;
-        b=aX34OkqGtvsKwZ00cJnLo9w0KeYWEgi5/x12v0qAZ6LyuY7NCBDey4EIA9dwKPxqDP
-         oZUpmqUTIiaE9H558+ntn82h8T49lK597fJj1740Hq5JPrWEkBmM13VuvErZSig4xyu2
-         5JnXxgsEca2Mc/+wP58SRdf4jjp8/mZ1cPfY6r+INIlLU3DuyODWXBt0v61rb+ITJ0BJ
-         55GLcap4oIHpot2UZul+2uTiyj0yYDetCy+Dx/zQGvlJ7B4xcz0w2Rl6QgeuDUjX4CTq
-         4SwYSD2N51x+ScEN9jI0OEdYdImA9Wacb9P9cVlRKWjnr7ZLi3t1ylzIO0OeKevZNgAC
-         LVaw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9ThlkXWuH/LZwgUYhcSMxtjhxxhNUZ7hP3Buj6LguH0=;
+        fh=+hK48+RkpcPOlP78dIpt8pF2N5VnjhdW7WD/fho3/8U=;
+        b=yUeGuC5l0HXlxfRKUaUaYvRG9UukhDFLX0uI11NfLFXU7eVJTnIfCjNo+90QujwXP0
+         IrEK9vVwUGG+ZDQfrZtxfXyCEec9Vi4YeP61ns8SxbO28K65Z9A2qyQBRF1Ff8gK3kDa
+         i+oEdWWDiBmsG5hvnGEfZRYA276LTMsRXF39irkAkD7afQeXaxlk/qli6Iufm0PwGiSL
+         jqPaDrqBcN4N39a7oy9iK77uJoGwsaz5NFV4U1MYi32Jr54hy4pi8AVJeT3j1KXlU+U5
+         DX+YfeOTePqDKvyWpyabLLSZAwIwW0Ou7fau159t1eAViPxsC1nherfFulWwlncP4eS5
+         JWzg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lesFdg4H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bhfa8VBq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gg1-20020a056214252100b00690db8b4ae1si2436337qvb.443.2024.03.12.01.24.39
+        by mx.google.com with ESMTPS id v11-20020a05620a440b00b007887120c8dcsi3508050qkp.421.2024.03.12.01.24.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 01:24:39 -0700 (PDT)
+        Tue, 12 Mar 2024 01:24:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lesFdg4H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bhfa8VBq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rjxPw-0005ox-O6; Tue, 12 Mar 2024 04:23:24 -0400
+	id 1rjxPP-0005SM-5B; Tue, 12 Mar 2024 04:22:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPs-0005mH-51
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:21 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPN-0005Q8-2Y
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:22:49 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPp-0001AU-CW
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:19 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-412e784060cso36385035e9.1
- for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 01:23:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxPJ-00014e-HY
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:22:47 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-413318a3a29so4501805e9.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 01:22:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710231794; x=1710836594; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=QyCNdGxEUzn56uZqvjtKqW1lxcPgF0npDxgJEUvvre8=;
- b=lesFdg4HTUSflfoAzyWIKAOpzPkDoogKt6NUsFGz/EQjOpVxrG6XxgfCDPR4H/Lm3T
- 7xO+/UjqxJ/79LtMN8or/470jknfzLB0KlpoJ0O9Ny1zd7nWd56p+rJ7jG6aHWE88Kdb
- V4uHpXRjyyKHcY+1FEviUnbUKFPbxDznjfBaT/n3hQ14I9AvHmgWHXL6rg4L5kViiaqn
- QN4Saxe+Jb2/cNqBwtp/LzmKEtfNBYX8zpR/OTiGLh5EwpPQayI+9hkaPEdQw+c5uJzM
- kHlxasfAnpBqJaPIDD8Gv2VV+6OPOneiyqu9uTQ974IUlJkDEw79GxoT5rjKxhYXbr21
- gqlA==
+ d=linaro.org; s=google; t=1710231763; x=1710836563; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9ThlkXWuH/LZwgUYhcSMxtjhxxhNUZ7hP3Buj6LguH0=;
+ b=bhfa8VBqBmsjIWEjgspU4nAA85uO9SGQ4eQmzry3Li3gBA44GzSHj9GFjL0iYZ0IP/
+ M5mOlQvHyyLwAIVF7YsYNPv7ZfSgyiHqFy//T6h5wuOU9SdyI4Irkp1WAXyBbWf/7sVg
+ LKqrNsGcmBKurFTbDfgkj8ogtCm2lH8tVgB9UAp8xsZVlZvVIPywb/QTc505piQA2QOU
+ 2QZrh39Fj7Z8+yj8qamRZswftWpWwF338CX9fIdJhdsgei/hvYIKoCJnJz2uYUd2XyKP
+ +GlwEf6t4LdpEBSlRVPK5o/fvCfN+olqVUsgUIJpKb02LbEq3hzoYoCwBLtLTDNW2+1b
+ 9Q8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710231794; x=1710836594;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=QyCNdGxEUzn56uZqvjtKqW1lxcPgF0npDxgJEUvvre8=;
- b=YOEwRkRsmqFNKkOGoqWp3zBftwFjMkupu2/lI5sz7cNApn5LiJHdxE0HDuVRINXnpP
- FQLIttxHGjQAT92oAcvHOXrAWDFKkc1dlDHaCjpmYUQ97uADFV11jCCfDWERypE0Vhqp
- wtplgxHFK/Kiy6u1zakkcXII9HyHprCJkrpi7cfSBqK/DmZRseCCZEAx7bcJokftX4uE
- j26qpfKcEkyFPfoY8JIVmY1bNAXMpvX2BfQgAbmueT5jAS8kJM06BQsuZJ7kTBZnN4vv
- F96QxFsvfYzQCaNqEt32UZJYuZDwXMzgaINgLlra5BnW2asMkYdJGyQiqMIFnt23u9KX
- egBg==
+ d=1e100.net; s=20230601; t=1710231763; x=1710836563;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9ThlkXWuH/LZwgUYhcSMxtjhxxhNUZ7hP3Buj6LguH0=;
+ b=D5nrF98xKQmkMGIpp78xZztGZLcxfecFLfBrObQlERpnsSmxCA8MX01NiFzOPHNrw/
+ hDnZA5EPcoJuEGGE8MDiILQozJjg25u8eeyEsBlozqttDslA34MdibQARu1HuEm8zLaQ
+ btZ4raprDvqFHZJY6EQbdtlFp/70rFSztqXHJEE0pdb6h12ICVD3lGyryk2STlTIe9Jr
+ jEGRUnsrl4ucxjHpGtG2DuCsdbfXRdXgTuiVGkUsHZQOmkxWwki8yZhVw/tN94NE8JwJ
+ PIGRar1sls1VTB+iql0cc18czxmoNb3PVlbYhg3XJyswSw02s7/R0wi6WYzXJOXVSUyf
+ wYrA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWVfMfVXHgKqeE98tUPONKfVYSqptCKy1hJNyBDVYcDyeeN3eeITgtFaneUFLOiDz6lsifH/f3HwWRhKJD03Wl6FymQ
-X-Gm-Message-State: AOJu0YztVUjxkquzQKYjxZUDEvMSwBCDNr1nCC4BukT6kdmSa8DgL1jt
- XKD+9y9p9rYGvpaXaMxEGAyTseRRcthgyjg6VVGL8TwHIRo9t2zdv8kTkVfyx7c=
-X-Received: by 2002:adf:a15a:0:b0:33e:9ce8:407a with SMTP id
- r26-20020adfa15a000000b0033e9ce8407amr3030528wrr.13.1710231794245; 
- Tue, 12 Mar 2024 01:23:14 -0700 (PDT)
+ AJvYcCV5ow6MJx1GEtWLdKWyLqKntbhBnvP5oYadvgMoZ0z1+HH2a0Nm5qO4j3IrfyShvHmUHSWGJITUlVaYFrD0H8JbRBv+
+X-Gm-Message-State: AOJu0Yx9fNy+CTHgW+nloB/op5qtgdtP9x2/REdTapKtUJKKFYlFjfF8
+ WLqGMdtzdCIOlX7UgmkXy5Tzu/x5qPfMr4xv/xJYZZHJh3bIkHjejik6IYWrUjw=
+X-Received: by 2002:a05:600c:518b:b0:413:38f6:c62c with SMTP id
+ fa11-20020a05600c518b00b0041338f6c62cmr609523wmb.1.1710231762803; 
+ Tue, 12 Mar 2024 01:22:42 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.206.139])
  by smtp.gmail.com with ESMTPSA id
- c13-20020adfe74d000000b0033cf4e47496sm8443384wrn.51.2024.03.12.01.23.12
+ i17-20020a05600c355100b00413079f9065sm11717694wmq.8.2024.03.12.01.22.41
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 12 Mar 2024 01:23:13 -0700 (PDT)
+ Tue, 12 Mar 2024 01:22:42 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 05/13] hw/core/qdev-properties-system: Fix missing ERRP_GUARD()
- for error_prepend()
-Date: Tue, 12 Mar 2024 09:22:30 +0100
-Message-ID: <20240312082239.69696-6-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 00/13] Misc HW patches for 2024-03-12
+Date: Tue, 12 Mar 2024 09:22:25 +0100
+Message-ID: <20240312082239.69696-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240312082239.69696-1-philmd@linaro.org>
-References: <20240312082239.69696-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,64 +124,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Gg3gfEamKrWR
+X-TUID: aDJKBVVomV2c
 
-From: Zhao Liu <zhao1.liu@intel.com>
+The following changes since commit 7489f7f3f81dcb776df8c1b9a9db281fc21bf05f:
 
-As the comment in qapi/error, passing @errp to error_prepend() requires
-ERRP_GUARD():
+  Merge tag 'hw-misc-20240309' of https://github.com/philmd/qemu into staging (2024-03-09 20:12:21 +0000)
 
-* = Why, when and how to use ERRP_GUARD() =
-*
-* Without ERRP_GUARD(), use of the @errp parameter is restricted:
-...
-* - It should not be passed to error_prepend(), error_vprepend() or
-*   error_append_hint(), because that doesn't work with &error_fatal.
-* ERRP_GUARD() lifts these restrictions.
-*
-* To use ERRP_GUARD(), add it right at the beginning of the function.
-* @errp can then be used without worrying about the argument being
-* NULL or &error_fatal.
+are available in the Git repository at:
 
-ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
-can't see this additional information, because exit() happens in
-error_setg earlier than information is added [1].
+  https://github.com/philmd/qemu.git tags/hw-misc-20240312
 
-The set_chr() passes @errp to error_prepend() without ERRP_GUARD().
+for you to fetch changes up to afc8b05cea14b2eea6f1eaa640f74b21486fca48:
 
-As a PropertyInfo.set method, there are too many possible callers to
-check the impact of this defect; it may or may not be harmless. Thus it
-is necessary to protect @errp with ERRP_GUARD().
+  docs/about/deprecated.rst: Move SMP configurations item to system emulator section (2024-03-12 09:19:04 +0100)
 
-To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-beginning of this function.
+----------------------------------------------------------------
+Misc HW patch queue
 
-[1]: Issue description in the commit message of commit ae7c80a7bd73
-     ("error: New macro ERRP_GUARD()").
+- Rename hw/ide/ahci-internal.h for consistency (Zoltan)
+- More convenient PCI hotplug trace events (Vladimir)
+- Short CLI option to add drives for sam460ex machine (Zoltan)
+- More missing ERRP_GUARD() macros (Zhao)
+- Avoid faulting when unmapped I/O BAR is accessed on SPARC EBUS (Mark)
+- Remove unused includes in hw/core/ (Zhao)
+- New PCF8574 GPIO over I2C model (Dmitriy)
+- Require ObjC on Darwin macOS by default (Peter)
+- Corrected "-smp parameter=1" placement in docs/ (Zhao)
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: "Daniel P. Berrangé" <berrange@redhat.com
-Cc: Eduardo Habkost <eduardo@habkost.net>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20240311033822.3142585-16-zhao1.liu@linux.intel.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/core/qdev-properties-system.c | 1 +
- 1 file changed, 1 insertion(+)
+----------------------------------------------------------------
 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index b45e90edb2..00c968f4f5 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -242,6 +242,7 @@ static void get_chr(Object *obj, Visitor *v, const char *name, void *opaque,
- static void set_chr(Object *obj, Visitor *v, const char *name, void *opaque,
-                     Error **errp)
- {
-+    ERRP_GUARD();
-     Property *prop = opaque;
-     CharBackend *be = object_field_prop_ptr(obj, prop);
-     Chardev *s;
+BALATON Zoltan (2):
+  hw/ide/ahci: Rename ahci_internal.h to ahci-internal.h
+  hw/ppc/sam460ex: Support short options for adding drives
+
+Dmitriy Sharikhin (1):
+  hw/gpio: introduce pcf8574 driver
+
+Mark Cave-Ayland (1):
+  sun4u: remap ebus BAR0 to use unassigned_io_ops instead of alias to
+    PCI IO space
+
+Peter Maydell (1):
+  meson.build: Always require an objc compiler on macos hosts
+
+Vladimir Sementsov-Ogievskiy (1):
+  hw/pci: add some convenient trace-events for pcie and shpc hotplug
+
+Zhao Liu (7):
+  hw/core/loader-fit: Fix missing ERRP_GUARD() for error_prepend()
+  hw/core/qdev-properties-system: Fix missing ERRP_GUARD() for
+    error_prepend()
+  hw/misc/ivshmem: Fix missing ERRP_GUARD() for error_prepend()
+  hw/core: Cleanup unused included headers in cpu-common.c
+  hw/core: Cleanup unused included header in machine-qmp-cmds.c
+  hw/core: Cleanup unused included headers in numa.c
+  docs/about/deprecated.rst: Move SMP configurations item to system
+    emulator section
+
+ MAINTAINERS                                 |   6 +
+ docs/about/deprecated.rst                   |  20 +--
+ meson.build                                 |   2 +-
+ hw/ide/{ahci_internal.h => ahci-internal.h} |   0
+ include/hw/gpio/pcf8574.h                   |  15 ++
+ hw/core/cpu-common.c                        |   4 -
+ hw/core/loader-fit.c                        |   2 +
+ hw/core/machine-qmp-cmds.c                  |   1 -
+ hw/core/numa.c                              |   2 -
+ hw/core/qdev-properties-system.c            |   1 +
+ hw/gpio/pcf8574.c                           | 162 ++++++++++++++++++++
+ hw/ide/ahci.c                               |   2 +-
+ hw/ide/ich.c                                |   2 +-
+ hw/misc/ivshmem.c                           |   1 +
+ hw/pci/pcie.c                               |  56 +++++++
+ hw/pci/shpc.c                               |  46 ++++++
+ hw/ppc/sam460ex.c                           |  24 ++-
+ hw/sparc64/sun4u.c                          |   9 +-
+ hw/gpio/Kconfig                             |   4 +
+ hw/gpio/meson.build                         |   1 +
+ hw/pci/trace-events                         |   6 +
+ 21 files changed, 339 insertions(+), 27 deletions(-)
+ rename hw/ide/{ahci_internal.h => ahci-internal.h} (100%)
+ create mode 100644 include/hw/gpio/pcf8574.h
+ create mode 100644 hw/gpio/pcf8574.c
+
 -- 
 2.41.0
 

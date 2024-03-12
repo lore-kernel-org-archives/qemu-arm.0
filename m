@@ -1,133 +1,168 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1553827ejc;
-        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1BtyPs7KJHHwT+OsdM4NOeiybxTZHiQSsYqEDmTODQWgf1k3t7c1ScDRZ3azLv9MPIbU+usU2BvZdwi/w4FT8xRldmP+W
-X-Google-Smtp-Source: AGHT+IHpqS0EFEKygRWUNglH5E80bML48FyJJ97Dk2wcZW9YZwCqTdjgIEEu496oEUPySenNc8Cn
-X-Received: by 2002:a05:6a20:9147:b0:1a3:11cb:9219 with SMTP id x7-20020a056a20914700b001a311cb9219mr8260573pzc.6.1710208972597;
-        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710208972; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1936727ejc;
+        Tue, 12 Mar 2024 09:29:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXDLIr9CnAdUtwjr8jzpgcOLXa79EpV+cRccbdzKfkbtI0Jcqjg3qkdwoUz8tKzIap6MjJh6eTX2UaF6hsYyrgsPTDViS+z
+X-Google-Smtp-Source: AGHT+IFV4tVAbg1IAbSPWXxuqTq8dGk+6XCPIxbyls/SO76MQn+WQTLSWkjcMEf3Z/af1c+E/IE0
+X-Received: by 2002:a05:6214:a6a:b0:691:84e:719e with SMTP id ef10-20020a0562140a6a00b00691084e719emr466448qvb.17.1710260973247;
+        Tue, 12 Mar 2024 09:29:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710260973; cv=none;
         d=google.com; s=arc-20160816;
-        b=W/UtFbVJgi7tRFW8/q63cDDIBqwq1JECycDQoNav+fRTTNOstFiVuX3tNeJWmzqXTx
-         L9TJ9QTFXZV0f7rWgCCeU+oyggTSVdOkHu+1q2Am/abiD5OHjgjSc+4HHfuG5DG5APhr
-         +KtEx1rRIEeLWm0hqGW71UXGHHKfaLY33735u/i8MWJLbsCWmAH2dKZVzgdiSEjF7TDj
-         uKKOmKUpT6dv1H+K8HcTgTdAGHXoq8aDVyAk4fBFFoVyUyi5D/patFLDAPCBZD1XpfId
-         HXEBTWakL1o31jAPozO7aTj5YIWLIU2kgaFXlnj+YSBz8Aa35HKJ9VnN29sD/Lvk0xcM
-         OLiw==
+        b=t5OZWFqOwMbNVf6MX2BIKOvm30Xv0i0bo6tqkJ1JxJolU9Fl5V4EtiU7QJoHUeMZ4k
+         qtmIpOx+z6oHdLbhqvzFrIaJoanJDjMrWou/KpCqp+YJ3XFb/nMKGCxhmWdhHMcbTftM
+         8wLfr/iOYpEp9JpWCleoqk1VRkqa0P6LY1Y7lVcoy7l7k1Ud6Xu8sj5FOvElWXRvqdTM
+         4T31zIFDIjuy4x9yF+uQvGM9fOcAU3cGq8Cq66Iv44mpinRsHF2vbHsn2+vYjBF6UUwI
+         VASPQNCbgSmAnNKrZ2sxVYj8T1iCOg+Sj7SxXTmcLSwnHYODLz3eVQ/eK2lAbIfTEwdL
+         p0tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=gxPEmOjI1IPxhv8GQqPZpEbShAewc4HU90xsgp6vrG8=;
-        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=GQY5Syo5iZYsRv5+FTCeC2qXda204Fb8dP/P4fzS6+H88BrY9NS2GGziuZRKAEgC8o
-         7jh6hGG/pA2nVHZyF6K0rtJWNNtz/VAYtB0J0/aFxEVS4DgGTKilUCOVDIczQdbg42Gn
-         cn/EN0OlEu4Slo4JJW7kpDkGoIOCAQDRARGpi5dh6g/3DIUKl5tkvxzzIUdw4UvLm0+Z
-         D7417PfyUKJVaQzRIeG0dwNmfqNSXeSP47PEtyTIAuqXsuw/oacuJEUWtoUQWxyd7mrD
-         3Q2C24Q6vsRG90PHO8zONCXCoNwD1Veagjii4ahHoDuiR6ubszj4aNuPgs0PmLd/SzNF
-         susg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ourPPBXgHsJzAv8BNAT3mWUg6FCmtfwZF1S8XNHaZ1A=;
+        fh=NYRA6SbmiRfDSD/J6PzXBGJru7UbL3oojuGHy+Aahsw=;
+        b=xyv5hZ6Ggn7FMO2/o8vtkDk91isnVi3F8LcXBBbyFazuJSiOmpXWUlvsOGpG9i1DyZ
+         P1XMSls6KZJqSptkgMdC4gH09O78n8hXkLKXMxNsNj/61ts3pzNJ9KdT9tx1Ql2C2eXO
+         82yBdyU7axP2ZtdgNNlgzl07fG1lC/b4W/HoItSfkCJtHfiYMFHopUNyhREBmN8CropF
+         n1kqoVakIY5+EqI6H4TYI8/BkJ2CkNRAEURwlc7u/4VIl8vNBxngH5FJgdrXxdwnObuP
+         amnwchAZrd5K4bqcZVko+sS5z3bhw0HyXEV6Kd4vDl38Vek3WhMmAoU52cUJpIcI3rzv
+         sLEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 4-20020a630b04000000b005ceb19326e3si5995973pgl.251.2024.03.11.19.02.51
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2024 19:02:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wWjO4hsf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jk5-20020ad45d45000000b006903e727621si8441673qvb.37.2024.03.12.09.29.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Mar 2024 09:29:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ttxjv4bF8z6K6MR;
-	Tue, 12 Mar 2024 10:02:43 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id BC92A1400CA;
-	Tue, 12 Mar 2024 10:02:48 +0800 (CST)
-Received: from A190218597.china.huawei.com (10.48.148.5) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 12 Mar 2024 02:02:31 +0000
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<linuxarm@huawei.com>
-Subject: [PATCH V8 7/8] gdbstub: Add helper function to unregister GDB register space
-Date: Tue, 12 Mar 2024 01:59:59 +0000
-Message-ID: <20240312020000.12992-8-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.8.3
-In-Reply-To: <20240312020000.12992-1-salil.mehta@huawei.com>
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=wWjO4hsf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rk4zu-0003UX-OO; Tue, 12 Mar 2024 12:29:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rk4zt-0003RC-0u
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 12:29:01 -0400
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rk4zq-00022W-Ai
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 12:29:00 -0400
+Received: by mail-lj1-x235.google.com with SMTP id
+ 38308e7fff4ca-2d094bc2244so88154441fa.1
+ for <qemu-devel@nongnu.org>; Tue, 12 Mar 2024 09:28:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710260936; x=1710865736; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ourPPBXgHsJzAv8BNAT3mWUg6FCmtfwZF1S8XNHaZ1A=;
+ b=wWjO4hsfBEDeb4N7WmNXj5MQzxisKBkDqOupHWMfXn5rbNOwE6lfJmWz+1hfry7xbd
+ sG2slsewVayCUTpOI4b3gZf+H0H79inqthI0uMwo/xAccln8S0B1OHApTJB3YMo7HKkR
+ qY/YqssGD2CPwuw+GrpsuHZ6129QSctLli9eTJ1fowsx1LJ8b5l1KaBK3sCdyk+KIXAT
+ 8mFZGaPsCBk8DuXWVDVPAE2Ex8k454DWJrbCSUM0qf3OmP+rj9E9AQ1SferIr9Nbu7q9
+ pEYut+yPKzwBA84mv2hDMcevgq+UKZR1RfHQbsnYUJvElc5HUJovZpHZH6fG9PAvQ7l5
+ unSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710260936; x=1710865736;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ourPPBXgHsJzAv8BNAT3mWUg6FCmtfwZF1S8XNHaZ1A=;
+ b=U7w3CfnEBac8nOd0vln84jYu38J45yedUtNy3TYMQhyMSpQtUEcTkgFKDIK/jYzvDf
+ suAEE1BlIlVlvawix3IkLf56JC9gykWeS6KmIG+KkND6Z0dJD9BB+kKIQAlXnaxmWBmp
+ fcYscV+k7JYXz4ys7ne70U5NSY7SmET/5O48qMg7WRmjVEHXyY6MYslBvEt0jF+QO606
+ IZyhnlbFuMYQqXZOuKxJcaFez/Fii/zvuYDab3yU5hcm3Gt0boVJQxuJZb62ntQZPO2m
+ BGPzRyW+lddTHKma0DeY0/MFempIJR6MkfYYIh7zWK2+qXePsGLvrz3iXkGbHKedwAv9
+ YZOQ==
+X-Gm-Message-State: AOJu0YywJB1Yd7Pc9/wO3iaysxJ/Tyex2Zl7ZBN2MofisXXCqs3UbpyH
+ wFZosPDAzXLLKVkKdLH08A517XDj5WtdfPtQ0iauALPjBsOi2EpOAbnPuwmjnZGNXIGMPvQq0BX
+ lRoK0b9Ib0pgwEuwXmBgKk4+cOJp/JJwhTo0ouEe8HpKvFPAq
+X-Received: by 2002:a2e:b527:0:b0:2d4:2651:1483 with SMTP id
+ z7-20020a2eb527000000b002d426511483mr1681282ljm.35.1710260936150; Tue, 12 Mar
+ 2024 09:28:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.48.148.5]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: 5ZgDYDQi6ZPe
+References: <20240312082239.69696-1-philmd@linaro.org>
+In-Reply-To: <20240312082239.69696-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Mar 2024 16:28:44 +0000
+Message-ID: <CAFEAcA9+69CidzthzAZX8vxnwU5rF330icLCDyJ7tfWv=bb_oA@mail.gmail.com>
+Subject: Re: [PULL 00/13] Misc HW patches for 2024-03-12
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org, 
+ qemu-block@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::235;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x235.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qL1cRhUqwsjY
 
-Add common function to help unregister the GDB register space. This shall be
-done in context to the CPU unrealization.
+On Tue, 12 Mar 2024 at 08:24, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> The following changes since commit 7489f7f3f81dcb776df8c1b9a9db281fc21bf0=
+5f:
+>
+>   Merge tag 'hw-misc-20240309' of https://github.com/philmd/qemu into sta=
+ging (2024-03-09 20:12:21 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/philmd/qemu.git tags/hw-misc-20240312
+>
+> for you to fetch changes up to afc8b05cea14b2eea6f1eaa640f74b21486fca48:
+>
+>   docs/about/deprecated.rst: Move SMP configurations item to system emula=
+tor section (2024-03-12 09:19:04 +0100)
+>
+> ----------------------------------------------------------------
+> Misc HW patch queue
+>
+> - Rename hw/ide/ahci-internal.h for consistency (Zoltan)
+> - More convenient PCI hotplug trace events (Vladimir)
+> - Short CLI option to add drives for sam460ex machine (Zoltan)
+> - More missing ERRP_GUARD() macros (Zhao)
+> - Avoid faulting when unmapped I/O BAR is accessed on SPARC EBUS (Mark)
+> - Remove unused includes in hw/core/ (Zhao)
+> - New PCF8574 GPIO over I2C model (Dmitriy)
+> - Require ObjC on Darwin macOS by default (Peter)
+> - Corrected "-smp parameter=3D1" placement in docs/ (Zhao)
+>
+> ----------------------------------------------------------------
+>
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Tested-by: Xianglai Li <lixianglai@loongson.cn>
-Tested-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
----
- gdbstub/gdbstub.c      | 12 ++++++++++++
- include/exec/gdbstub.h |  6 ++++++
- 2 files changed, 18 insertions(+)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 17efcae0d0..a8449dc309 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
- }
- 
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    /*
-+     * Safe to nuke everything. GDBRegisterState::xml is static const char so
-+     * it won't be freed
-+     */
-+    g_array_free(cpu->gdb_regs, true);
-+
-+    cpu->gdb_regs = NULL;
-+    cpu->gdb_num_g_regs = 0;
-+}
-+
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
- {
-     CPUState *cpu = gdb_get_first_cpu_in_process(p);
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index eb14b91139..249d4d4bc8 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               const GDBFeature *feature, int g_pos);
- 
-+/**
-+ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
-+ * @cpu - the CPU associated with registers
-+ */
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
-+
- /**
-  * gdbserver_start: start the gdb server
-  * @port_or_device: connection spec for gdb
--- 
-2.34.1
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0
+for any user-visible changes.
+
+-- PMM

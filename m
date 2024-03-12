@@ -1,83 +1,83 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1677881ejc;
-        Tue, 12 Mar 2024 01:32:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXszcKqLVIECV4b9jLSvlcfAqrbl8dh70mx9ZEbi2S5OYN42zPWpvDqOE6zmM2cAF/1etEZOFPBdZzp5Gav1DfcdTo8LJDc
-X-Google-Smtp-Source: AGHT+IGhiZswgrLJKbSQqRb9Nv8x03c4cKsK42AszI0hC0Aj6nJAdHkz9L5Vy1E3QgoVeu37yR4R
-X-Received: by 2002:ad4:44a7:0:b0:690:f620:94f1 with SMTP id n7-20020ad444a7000000b00690f62094f1mr459187qvt.8.1710232356185;
-        Tue, 12 Mar 2024 01:32:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710232356; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1678165ejc;
+        Tue, 12 Mar 2024 01:33:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXl07YLFH8zbYZnqjrhKfMj0e8VNzoCW/QfQdxd6X9xXlGczpmW/jaz4ONyYURpQPOwzdn/P+Zd4kN0ZToOcJLobV4rXzKy
+X-Google-Smtp-Source: AGHT+IG9tB+hmc+qOTTPzZlfOMIqJy+ewPHfHAakw699wFNl19ZQEYyxcv8TV5feF68ehzfueHEs
+X-Received: by 2002:a25:aa90:0:b0:d80:68d1:b826 with SMTP id t16-20020a25aa90000000b00d8068d1b826mr2632164ybi.6.1710232400413;
+        Tue, 12 Mar 2024 01:33:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710232400; cv=none;
         d=google.com; s=arc-20160816;
-        b=RY2xNcwZgg7Oc61796f9lY6H0VRdM6ZIQbqbbMo0N94Qolh6kl3KWEb2eL1nSte0Uk
-         R42ESj/P3T3qiyBXUfuoyKJc4DeGwknLLh7ESSEMA1q8QxY+yj5WkLERwPXkc5hsQ37O
-         BEmzQRiWUg9+Y49XW0wJrGRsFcm/tJuavmWTOwNRJfCLwWO82lKW+Thg0L+Hrs/GECYR
-         EVlg2gnwfyf9EqnYjqIXhSQEenDpu4xiXdk/+L/e5PVSpjEEobifce0LvBYwO90i/Um5
-         llBiY1cHUSTBs2jcWgHtn4zOarSjWcHvLqx/r+5JdMNRdka74akHeXSXdG4oTa3diRC0
-         Nszg==
+        b=xqv01Hb73U3NPEhKDOm/O9/O7GyQpoBqmAY9eyZARMtSMqJKg5qWBYSJIAg4zbIt/T
+         OxevI98q/7z1fdbqjpQSpdL4EwQVVhM/EAROxCg1N7cH2yys2luNaHi3TKhLpFumNz9d
+         PIHnE0wfJtPRCBcDhW60cpSXqmS/cCEzUgjbV6SD3/epk9as4r9+JnzMLZP+giuOREWn
+         DcPzZep9mY3HtBdF5f+bx3qKoxsWZQmMRqV1Dm9weTXjFujHGXAjmIEue7C6O00wLlCU
+         Fapt+Hpg9mKz//7oWii7We8ka/xB9vXi/59fIzbEfv1MHeScf8doNe+uTAAKCE8YUC1e
+         DPFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=PnF8OLXE4RE6E4PT990KNuA5e0DBBBiKrBh+QIEuDC0=;
+        bh=ScvwsP9DYn3NimwZOIrUdUmRaOWaSYikr+7Qk/Q8KG0=;
         fh=wmM0NAoeKt5fL6F1FJEgD5CF+sXm7q3Q0YiqZP09Rok=;
-        b=B8F3x0yL3pGZpFkK/uXOpJgU49hFciuy5ZCz5/c5ZPJWP5D9/Xc0Duqo8fhjYC2o06
-         xr5AiQTAxfmPxJQwGpSSrlouzwjztPMfJFzZfLXUQrkPY35ULYiY+v49rpjCc7K2NWiA
-         fHqgVVWytmWXq3cBooGBBMwi1yW94juIzP7CI/T3lGyvS+6UNFxZR0BGQWswoUf4mHPc
-         j4WZyuJd5CsJ6kJIWpPlhM3JPlzTW6faLFsEcJdC133F81iXpyRf2re6VK6f3wWUNzV8
-         FVZJaHl4tIXUS4VlCEhoGA1Obh/Ya9X83Z9cAy+vztjD7sx548aqN0R6rynmwjb2Dbzv
-         iXRQ==;
+        b=R3NKG1hzImzmF0z2V23r6fcjqL6rTM028g9LBDY5EfM54H0g4Bnlr/UYDXAc1CsYIa
+         Vam8lC1imkCAMiH9+5Q212r32db1UjWtqOg4X17I2MVNtrrgvond8H8jne6pNwj/fqTK
+         kUp0srYLNsU9iegms1pbbfDF2EqNPznHMJKzbjMC7/zRI5c+xJfq6hVWdo5Bacnk4QuU
+         smtlcfDnPly5pReLVcGK5AX9TTp65llLfMlTHDfkUB8eFCW+tSlOgFWEabi1aQYOc70M
+         beUXhEwyF9N6WD0UrYyIiwzmb11Q4H20ikB38oU94kQHTmmQzPrZ8xVR7g0/Dn5CbUYz
+         axcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ks4-20020a056214310400b00690b0d90effsi7002360qvb.135.2024.03.12.01.32.35
+        by mx.google.com with ESMTPS id o3-20020ac87c43000000b0042ef8fb63casi7176833qtv.545.2024.03.12.01.33.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 01:32:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Mar 2024 01:33:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rjxYc-0002x6-Gg; Tue, 12 Mar 2024 04:32:23 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rjxYm-0002zB-0z; Tue, 12 Mar 2024 04:32:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <xiongyining1480@phytium.com.cn>)
- id 1rjxYb-0002wZ-9c; Tue, 12 Mar 2024 04:32:21 -0400
+ id 1rjxYf-0002xr-2D; Tue, 12 Mar 2024 04:32:25 -0400
 Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <xiongyining1480@phytium.com.cn>)
- id 1rjxYY-0002iF-Nl; Tue, 12 Mar 2024 04:32:21 -0400
+ id 1rjxYc-0002kd-UZ; Tue, 12 Mar 2024 04:32:24 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHDwsKE_BlgM6GBg--.36585S2;
- Tue, 12 Mar 2024 16:32:10 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHzEQPE_Bl4iXhDA--.32666S2;
+ Tue, 12 Mar 2024 16:32:15 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwCXjPAEE_BlkXMAAA--.584S4;
- Tue, 12 Mar 2024 16:32:05 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwCXjPAEE_BlkXMAAA--.584S5;
+ Tue, 12 Mar 2024 16:32:08 +0800 (CST)
 From: Xiong Yining <xiongyining1480@phytium.com.cn>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 Cc: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
  marcin.juszkiewicz@linaro.org, chenbaozi@phytium.com.cn,
  xiongyining1480 <xiongyining1480@phytium.com.cn>
-Subject: [PATCH v2 1/2] hw/arm/sbsa-ref:Enable CPU cluster on ARM sbsa machine
-Date: Tue, 12 Mar 2024 08:30:48 +0000
-Message-Id: <20240312083049.3412522-2-xiongyining1480@phytium.com.cn>
+Subject: [PATCH v2 2/2] hw/arm/sbsa-ref: Add cpu-map to device tree
+Date: Tue, 12 Mar 2024 08:30:49 +0000
+Message-Id: <20240312083049.3412522-3-xiongyining1480@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240312083049.3412522-1-xiongyining1480@phytium.com.cn>
 References: <20240312083049.3412522-1-xiongyining1480@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwCXjPAEE_BlkXMAAA--.584S4
-X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQACBmXvXPYDKAAAsO
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=xiongyinin
+X-CM-TRANSID: AQAAfwCXjPAEE_BlkXMAAA--.584S5
+X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQACBmXvXPYDKwAAsN
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=xiongyinin
  g1480@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvdXoWrZr1kXr4UKF15uw1fKF4UJwb_yoWDWwc_Jw
- 1xXwnxWF1UKwnF9ryYyF4fAryrKw4UKFsrKrn7uFyrJw1jgF1UG3Z8JrZ7Xw18Za15Za4S
- kF4UZF45uwnxGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
- Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
- UUUU=
+X-Coremail-Antispam: 1Uk129KBjvJXoW7AF13Cr1kAw1xJFWDWFy7GFg_yoW8Cw15pw
+ 4UGFn8WrW5CrnFvayfWa42gFyFgw1rXw47Xw47KayFyw17G34fXF1IyF9Yk34UGry2gFya
+ krsxCFyFg34UJr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
 Received-SPF: pass client-ip=129.150.39.64;
  envelope-from=xiongyining1480@phytium.com.cn;
  helo=sgoci-sdnproxy-4.icoremail.net
@@ -88,45 +88,80 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 64wzWcLQz5R9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: z+42yAMETOzS
 
 From: xiongyining1480 <xiongyining1480@phytium.com.cn>
 
-Enable the CPU cluster on ARM sbsa machine, so user can configure the
-cluster hierarchy.
+Support CPU topology description through device tree.
 
 Signed-off-by: Xiong Yining <xiongyining1480@phytium.com.cn>
 Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
-Tested-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Reviewed-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- hw/arm/sbsa-ref.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/sbsa-ref.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index f5709d6c14..fde7dd528f 100644
+index fde7dd528f..5b2c32515d 100644
 --- a/hw/arm/sbsa-ref.c
 +++ b/hw/arm/sbsa-ref.c
-@@ -886,6 +886,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "sbsa-ref.ram";
-     mc->default_cpus = 4;
-+    mc->smp_props.clusters_supported = true;
-     mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
-     mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
+@@ -264,9 +264,43 @@ static void create_fdt(SBSAMachineState *sms)
+                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+         }
+ 
++        qemu_fdt_setprop_cell(sms->fdt, nodename, "phandle",
++                        qemu_fdt_alloc_phandle(sms->fdt));
++
+         g_free(nodename);
+     }
+ 
++    /*
++     * Add vCPU topology description through fdt node cpu-map.
++     * See fdt_add_cpu_nodes() on hw/arm/virt.c for longer description.
++     */
++    qemu_fdt_add_subnode(sms->fdt, "/cpus/cpu-map");
++
++    for (cpu = sms->smp_cpus - 1; cpu >= 0; cpu--) {
++        char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
++        char *map_path;
++
++        if (ms->smp.threads > 1) {
++            map_path = g_strdup_printf(
++                "/cpus/cpu-map/socket%d/cluster%d/core%d/thread%d",
++                cpu / (ms->smp.clusters * ms->smp.cores * ms->smp.threads),
++                (cpu / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters,
++                (cpu / ms->smp.threads) % ms->smp.cores,
++                cpu % ms->smp.threads);
++        } else {
++            map_path = g_strdup_printf(
++                "/cpus/cpu-map/socket%d/cluster%d/core%d",
++                cpu / (ms->smp.clusters * ms->smp.cores),
++                (cpu / ms->smp.cores) % ms->smp.clusters,
++                cpu % ms->smp.cores);
++        }
++        qemu_fdt_add_path(sms->fdt, map_path);
++        qemu_fdt_setprop_phandle(sms->fdt, map_path, "cpu", cpu_path);
++
++        g_free(map_path);
++        g_free(cpu_path);
++    }
++
+     sbsa_fdt_add_gic_node(sms);
+ }
+ 
 -- 
 2.34.1
 

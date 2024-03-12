@@ -1,124 +1,140 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1893256ejc;
-        Tue, 12 Mar 2024 08:19:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX4mye4tIJZk8nq8DYr2OJBCnZZAIQ2GNGTyIQK0KGUPGzaB+jSdXoHD3Ce6iIkwJ+Iaz8uMx32RnwaJQeuAhKbjlK5pgu3
-X-Google-Smtp-Source: AGHT+IGiGbhHUa5r7y3ENjcf7/ZpIBsBXgyTVcfTHKE31u/LdHOl38G4VfL4QIGXW3btFdMklekO
-X-Received: by 2002:a9d:7e89:0:b0:6e5:2db2:d593 with SMTP id m9-20020a9d7e89000000b006e52db2d593mr437869otp.22.1710256782186;
-        Tue, 12 Mar 2024 08:19:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710256782; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1945458ejc;
+        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWrUS1DkBU9ICcPc+edi1THRCfabZ8bzWvvY218wBqa0upuf8lm48gzQ1KP4LirIlitJnAADMgyOzgc/ifzlWFTlztRPQd4
+X-Google-Smtp-Source: AGHT+IFobRPlI4bVG5BtuV3Ve4/6Tq3pnfJx5FBq9F2licNqAqalajbYYvHnnnj/ce6KLCdFypXx
+X-Received: by 2002:a05:622a:244:b0:42f:20b6:4866 with SMTP id c4-20020a05622a024400b0042f20b64866mr12342335qtx.17.1710261880123;
+        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710261880; cv=none;
         d=google.com; s=arc-20160816;
-        b=a+uhIq+HOgs6BDw1n+wYI9K7gOULk2wqIlj71fM6KEwEg6BZ7ubXpEkFQ/PtKVbXk6
-         6CgOhdbcqkxnTja7zfK7GA6Sm3H/Ef8F/X3xkWE2FBSUb5cLvl/XVkrmvxsgSkuosWkW
-         fbNU4d/Z+qY2EGeKKBSHoacrE+dPNFOZVOoB8NctMhVUm0yfnBI7YHqhBeK+U3feT0Dn
-         Y+lWxlDUrNABzC5lHUxINFDCWWJ1UX6OTMaIoB2/H5SA/7M4+8LPKPsIV99Pm9HgQ2PZ
-         mlGVj45OR6HQgVuE/gptaEpxfkoIL0HcNEMROD2rCmH6mx4HZ3xPD6cFo3eScV0lDk/h
-         Ax+g==
+        b=Ok/vKinReHkV2JHOhNt6m4UwooADZf3mRT1bkxpGcYnX4JFKU7LlROk8XF6c8VaGDq
+         jmFfk6v8g1oLFjpilmzvKVsVm3qCNqKDnydfvxK7hpdWy7LHRcJ+PsRMmH/X6fqUJh74
+         2rpGjWNqsp0YbSXBjKaRtU7FS4i0PxSU9CVN/xJF9mnDogjcfdTN0rpOyAR7HJSAed9N
+         ilZrAuOoQ3wMBFv/iWI44Fe9gQaEa30xPlm66nqVqir4wjtCSVhrrEp8BMliERUxeM/p
+         IPViRnA2OpV/l0wSTJDFHInfP084mDJsdfJ91mE/0vsT2/8OC0M6uGCAwOqxhFIYmmkb
+         BUFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=vckrPcfv6XciLm9Q/kHa2ZdTPe3qu0tjvxznEZ5BDnY=;
-        fh=oEAevJfFPXqGI08rd62XJKqLvrpLflm29RnvC/4AIH4=;
-        b=PL4LgCEYZleDpKC72OmP6+S1uCemFsw4vUPe8JfarGVE9bsQUNbzwEn5PZnMr7Z3t4
-         Snlw/4IwEyxamtLZyl4fEm0sQfNlcSOCLyxmScjR0oxXT0ecB/LUYCgFaUQHIduPaZr8
-         sBejb17PlLzCoetoMUi++VgvhJJ7qxKga9pMwrcgTif2dfwSytVhKxPrGKtB7YzOji5x
-         beS3akgCQq998WY+INurGbGz8YEWqbQoWo5fz/xd6/2SNPSwbKohA16U89T0TDG3kxei
-         5v4O/gmMWfrB3BMVEW9L5GXsZMaaU4ywzpB6AVrrAI/yE93guZJ8DPgFXL8bDcUYEekb
-         vHAA==;
+        bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
+        fh=w1UW12MccwC7FVeVdLVwLC0ifkv8jnqp86uFXFbqJq8=;
+        b=MYW3jL3yW16lFwQgi8yPr1+l0Ukc2/+CrOvRULS0D1CdHw1eCJYcBe2+5RWB5J9trN
+         KMOQQOiJv6Puxm+JE+OwjszYuaCReiYn+rn2GQtNHAtDgiTE5+fkA6I1dImjJAEwZV74
+         qNOweGcseY117Ih51OMzhCOd5ie+QS7m8rXF8jZa0uz1Mb1KIv2lpoNNQWzPCmsCqz4+
+         6aFI0/pJVB6lLz3+4gFkJdTrCTNs64jcnSeJP4qHqv4Z7fAptHhiGaN5f4Sjry4v1DlO
+         jUpJREx2RfiZYdM78gUGapxnvJLIT7N+9Tewa6RjK7KP3IWVubjgSCtyrQQh8LXadQLN
+         EAlw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mZeqkZB5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NgFnwMJB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w16-20020ac857d0000000b0042ef35e58a1si7715012qta.576.2024.03.12.08.19.42
+        by mx.google.com with ESMTPS id j8-20020a05622a038800b0042eeb367b8dsi8085757qtx.486.2024.03.12.09.44.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 08:19:42 -0700 (PDT)
+        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mZeqkZB5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NgFnwMJB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rk3uL-0000VI-K2; Tue, 12 Mar 2024 11:19:13 -0400
+	id 1rk5EW-0003X2-Fh; Tue, 12 Mar 2024 12:44:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rk3uK-0000U4-2c
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 11:19:12 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rk3uF-0006VP-I2
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 11:19:11 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-56838e00367so4978852a12.0
- for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 08:19:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710256745; x=1710861545; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vckrPcfv6XciLm9Q/kHa2ZdTPe3qu0tjvxznEZ5BDnY=;
- b=mZeqkZB5JXQidpA5VJaVDtRAkleMO9Tl+oQc59cbAFeQMztBPMWamuuhhyvYcmZrT8
- FyEa2Nrq4z7KBMFmkldj5bulQbT/kcmnXKUC6JuPW+Vh3ZisT2brJRNnM3O6Zow1Npmy
- 5w9eJ00Mav+3Q+put1xNUX2s7lqM1UDMfZUztSbDuue1P9gIM9cCrKtWFzGQU4bLJu6d
- gl6Do69Om+cS3JH6Rs6LD3vfw5GDKebbsbTUWYjQqg7kNNCrtf/wTPkKcb7ZroMtUrJc
- rqgjAbdgNdjRbvnVUJ5y98/Lweghnluu5LkgOW6sZRtYTpKkoFsXyz5P7Qp3V/JD0R67
- llYQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5EU-0003Sz-Lg
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 12:44:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5ET-0004mL-Cv
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 12:44:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710261844;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
+ b=NgFnwMJBm7vARZDT08/2rsr/6U5BthumxU0Rbxt3171xENIHur0UyVn5cHgFSoKRqFSIkK
+ 5Mo+kfki3YbZzpN44zwAiqhJdt7JyoAbqXPpphq43BsNMLmX+GokCG7RMT+L5YMx2+oxnm
+ T8Oh5lcF1sxqbbhvV2avd93DUxEHcjY=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-216-U13ZUvLjNEeGHdPRX842oQ-1; Tue, 12 Mar 2024 12:44:03 -0400
+X-MC-Unique: U13ZUvLjNEeGHdPRX842oQ-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-41330261f8cso864605e9.0
+ for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 09:44:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710256745; x=1710861545;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vckrPcfv6XciLm9Q/kHa2ZdTPe3qu0tjvxznEZ5BDnY=;
- b=gZL5GnHut6C5ABrCBVjsXyANRNTRFC/wAzzaV0ZSvu4kC/ia/LAkddFaqLAcbGwtLY
- h/Omyu6V5ySYryG/XjGRbcPf49WldWjhpMpCdD06sfzKAlNWI2fkIOugMQ25+tzR/0zU
- CS0RrNsGf1VPiroY8BctlY/9PTb6lIDn/dtTeiI68ZQOihTJ2lGt6ysMC2fy/tBddGEO
- IdCzNcYi4xvxKtsvN2pyU6P7NqY/etuxYVAtgqegg1L85Qf0v0MM+pAS57nlb0+Ie4N9
- 4cMKcgpx5xwTkdPVucXPpGq7JncbduSmMyuxxYlzkn6liZjuDre9fa9QehkLep82ad5U
- fIRg==
+ d=1e100.net; s=20230601; t=1710261842; x=1710866642;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
+ b=d7yq/AYPz3GHxcnqO928LBqyxXb36L7IaJY2Tk5CYYnCBf+Oc184GeoW+++1s8HGSq
+ LqxC6t9/7QDJzRwuj+I6d/t+XmHMjZBccg7P2u36MeaiYN2JQs94fUpbNeyEK9x3H1vR
+ hNzbcZrezcad3RqXS35kjCjdAD1R6Cv44AunaR+IJBNf7V0REmXJHYVT5dGwNW+lrpDo
+ dTmTeTl1HP94ZMp53TvR8rM1KqQwJmZ+wrcBPHTw0+jlw7a+IJEtggGBSoqGcPbHbSRZ
+ TPDZPK51MI4OBRhB55rzF3pwTjRFXi9ZJjwIpYaGW6CqpCtpFlyk78yYAVZokc36IUFA
+ sncQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX63wjm4nh22AwuD33oEHy6+a7bmRx8QtlQwaKtktsqT6qFu0lZGwyS2IwnjbzYAuPetvRWHQipGdm6vijwPv3b2v8t
-X-Gm-Message-State: AOJu0Yw6O6xsgIICpFn8+xGQQURCrNTAmu/pZvSCDOLDs59hkE0acXaO
- 9/n2OYQY+22a4sMGMP33mx104wwPQE5gSoYQy3PQEED30gtLE08lbaAmjwC6G5HPsGV5DBrcg4U
- kWzAW0RAK8SLywgMwX3wQmyIK3CBzOrABcOC1hA==
-X-Received: by 2002:a50:cd95:0:b0:567:45e2:c4db with SMTP id
- p21-20020a50cd95000000b0056745e2c4dbmr3121824edi.39.1710256745357; Tue, 12
- Mar 2024 08:19:05 -0700 (PDT)
+ AJvYcCVIHQFlOXG4A/apybK/bqWKQuBIIaXK+I1Ro9Py/mDmlWI10n1Ce3XEx4QZa9DduNHEFUrzZ1jw5PFMyhKLHXIlKlLh
+X-Gm-Message-State: AOJu0Ywl0DST57dCDXaR3Q/oMfiEuenjNwd5f7Jgar3KlW4Hryx4apMp
+ yH+c4CKtkJHoUnHRfQZNv1pcMFefgBICor5MP4nut2D0PMMWM2LpNmZKZEtDiY+7FAgtPzG9oDs
+ vIs0mp3GzxVXaBJFkgQZHd53EjkaQ5gyL28Mtayq+MRzIHohFAQ==
+X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
+ r12-20020a05600c35cc00b00412ed3f1b4bmr3005409wmq.11.1710261842189; 
+ Tue, 12 Mar 2024 09:44:02 -0700 (PDT)
+X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
+ r12-20020a05600c35cc00b00412ed3f1b4bmr3005387wmq.11.1710261841695; 
+ Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
+Received: from redhat.com ([2a02:14f:1f0:532c:5ae4:fce6:76e1:fa1a])
+ by smtp.gmail.com with ESMTPSA id
+ bh25-20020a05600c3d1900b004133365bbc6sm2840627wmb.19.2024.03.12.09.43.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
+Date: Tue, 12 Mar 2024 12:43:55 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v2 0/7] Cleanup and fix @errp dereference
+Message-ID: <20240312124339-mutt-send-email-mst@kernel.org>
+References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
+ <Ze5/r5EW9YsqVwtS@intel.com>
 MIME-Version: 1.0
-References: <20240228120215.277717-1-ines.varhol@telecom-paris.fr>
- <20240228120215.277717-2-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20240228120215.277717-2-ines.varhol@telecom-paris.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Mar 2024 15:18:54 +0000
-Message-ID: <CAFEAcA8LWa70KZMO1ajVLvKxwcbKQEQOHZ8Jy6JM75pr4jB9Cg@mail.gmail.com>
-Subject: Re: [PATCH v3 1/5] hw/display : Add device DM163
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>, Samuel Tardieu <sam@rfc1149.net>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair.francis@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <Ze5/r5EW9YsqVwtS@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,290 +149,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p5twGspAkCx0
+X-TUID: N+oZLon5sAkJ
 
-On Wed, 28 Feb 2024 at 12:02, In=C3=A8s Varhol <ines.varhol@telecom-paris.f=
-r> wrote:
->
-> This device implements the IM120417002 colors shield v1.1 for Arduino
-> (which relies on the DM163 8x3-channel led driving logic) and features
-> a simple display of an 8x8 RGB matrix. The columns of the matrix are
-> driven by the DM163 and the rows are driven externally.
->
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> ---
->  docs/system/arm/b-l475e-iot01a.rst |   3 +-
->  include/hw/display/dm163.h         |  57 ++++++
->  hw/display/dm163.c                 | 308 +++++++++++++++++++++++++++++
->  hw/display/Kconfig                 |   3 +
->  hw/display/meson.build             |   1 +
->  hw/display/trace-events            |  13 ++
->  6 files changed, 384 insertions(+), 1 deletion(-)
->  create mode 100644 include/hw/display/dm163.h
->  create mode 100644 hw/display/dm163.c
->
-> diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e=
--iot01a.rst
-> index 0afef8e4f4..60b9611167 100644
-> --- a/docs/system/arm/b-l475e-iot01a.rst
-> +++ b/docs/system/arm/b-l475e-iot01a.rst
-> @@ -12,13 +12,14 @@ USART, I2C, SPI, CAN and USB OTG, as well as a variet=
-y of sensors.
->  Supported devices
->  """""""""""""""""
->
-> -Currently B-L475E-IOT01A machine's only supports the following devices:
-> +Currently B-L475E-IOT01A machine's supports the following devices:
+On Mon, Mar 11, 2024 at 11:51:11AM +0800, Zhao Liu wrote:
+> Hi Michael & Philippe,
+> 
+> Could this series catch the last train of next releases? ;-)
+> 
+> Thanks,
+> Zhao
 
-"machines support"
+yes it will be in subject to last minute testing.
 
->
->  - Cortex-M4F based STM32L4x5 SoC
->  - STM32L4x5 EXTI (Extended interrupts and events controller)
->  - STM32L4x5 SYSCFG (System configuration controller)
->  - STM32L4x5 RCC (Reset and clock control)
->  - STM32L4x5 GPIOs (General-purpose I/Os)
-> +- optional 8x8 led display (based on DM163 driver)
->
->  Missing devices
->  """""""""""""""
-> diff --git a/include/hw/display/dm163.h b/include/hw/display/dm163.h
-> new file mode 100644
-> index 0000000000..aa775e51e1
-> --- /dev/null
-> +++ b/include/hw/display/dm163.h
-> @@ -0,0 +1,57 @@
-> +/*
-> + * QEMU DM163 8x3-channel constant current led driver
-> + * driving columns of associated 8x8 RGB matrix.
-> + *
-> + * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
-> + * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef HW_DISPLAY_DM163_H
-> +#define HW_DISPLAY_DM163_H
-> +
-> +#include "qom/object.h"
-> +#include "hw/qdev-core.h"
-> +
-> +#define TYPE_DM163 "dm163"
-> +OBJECT_DECLARE_SIMPLE_TYPE(DM163State, DM163);
-> +
-> +#define DM163_NUM_LEDS 24
-> +#define RGB_MATRIX_NUM_ROWS 8
-> +#define RGB_MATRIX_NUM_COLS (DM163_NUM_LEDS / 3)
-> +#define COLOR_BUFFER_SIZE RGB_MATRIX_NUM_ROWS
-> +
-> +typedef struct DM163State {
-> +    DeviceState parent_obj;
-> +
-> +    /* DM163 driver */
-> +    uint64_t bank0_shift_register[3];
-> +    uint64_t bank1_shift_register[3];
-> +    uint16_t latched_outputs[DM163_NUM_LEDS];
-> +    uint16_t outputs[DM163_NUM_LEDS];
-> +    qemu_irq sout;
-> +
-> +    uint8_t dck;
-> +    uint8_t en_b;
-> +    uint8_t lat_b;
-> +    uint8_t rst_b;
-> +    uint8_t selbk;
-> +    uint8_t sin;
-> +
-> +    /* IM120417002 colors shield */
-> +    uint8_t activated_rows;
-> +
-> +    /* 8x8 RGB matrix */
-> +    QemuConsole *console;
-> +    /* Rows currently being displayed on the matrix. */
-> +    /* The last row is filled with 0 (turned off row) */
-> +    uint32_t buffer[COLOR_BUFFER_SIZE + 1][RGB_MATRIX_NUM_COLS];
-> +    uint8_t last_buffer_idx;
-> +    uint8_t buffer_idx_of_row[RGB_MATRIX_NUM_ROWS];
-> +    /* Used to simulate retinal persistance of rows */
-
-"persistence" (I think there are some other instances of this
-typo below as well.)
-
-> +    uint8_t age_of_row[RGB_MATRIX_NUM_ROWS];
-> +} DM163State;
-> +
-> +#endif /* HW_DISPLAY_DM163_H */
-> diff --git a/hw/display/dm163.c b/hw/display/dm163.c
-> new file mode 100644
-> index 0000000000..87e886356a
-> --- /dev/null
-> +++ b/hw/display/dm163.c
-> @@ -0,0 +1,308 @@
-> +/*
-> + * QEMU DM163 8x3-channel constant current led driver
-> + * driving columns of associated 8x8 RGB matrix.
-> + *
-> + * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
-> + * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +/*
-> + * The reference used for the DM163 is the following :
-> + * http://www.siti.com.tw/product/spec/LED/DM163.pdf
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/irq.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/display/dm163.h"
-> +#include "ui/console.h"
-> +#include "trace.h"
-> +
-> +#define LED_SQUARE_SIZE 100
-> +/* Number of frames a row stays visible after being turned off. */
-> +#define ROW_PERSISTANCE 4
-> +
-> +static const VMStateDescription vmstate_dm163 =3D {
-> +    .name =3D TYPE_DM163,
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (const VMStateField[]) {
-> +        VMSTATE_UINT8(activated_rows, DM163State),
-> +        VMSTATE_UINT64_ARRAY(bank0_shift_register, DM163State, 3),
-> +        VMSTATE_UINT64_ARRAY(bank1_shift_register, DM163State, 3),
-> +        VMSTATE_UINT16_ARRAY(latched_outputs, DM163State, DM163_NUM_LEDS=
-),
-> +        VMSTATE_UINT16_ARRAY(outputs, DM163State, DM163_NUM_LEDS),
-> +        VMSTATE_UINT8(dck, DM163State),
-> +        VMSTATE_UINT8(en_b, DM163State),
-> +        VMSTATE_UINT8(lat_b, DM163State),
-> +        VMSTATE_UINT8(rst_b, DM163State),
-> +        VMSTATE_UINT8(selbk, DM163State),
-> +        VMSTATE_UINT8(sin, DM163State),
-> +        VMSTATE_UINT32_2DARRAY(buffer, DM163State,
-> +            COLOR_BUFFER_SIZE + 1, RGB_MATRIX_NUM_COLS),
-> +        VMSTATE_UINT8(last_buffer_idx, DM163State),
-> +        VMSTATE_UINT8_ARRAY(buffer_idx_of_row, DM163State, RGB_MATRIX_NU=
-M_ROWS),
-> +        VMSTATE_UINT8_ARRAY(age_of_row, DM163State, RGB_MATRIX_NUM_ROWS)=
-,
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void dm163_reset_hold(Object *obj)
-> +{
-> +    DM163State *s =3D DM163(obj);
-> +
-> +    /* Reset only stops the PWM. */
-> +    memset(s->outputs, 0, sizeof(s->outputs));
-> +
-> +    /* The last row of the buffer stores a turned off row */
-> +    memset(s->buffer[COLOR_BUFFER_SIZE], 0, sizeof(s->buffer[0]));
-
-This reset function seems to be missing reset handling for
-a lot of this device's state.
-
-> +}
-
-
-> +static void dm163_invalidate_display(void *opaque)
-> +{
-> +}
-
-I'm not sure but I think the invalidate_display method is supposed
-to at least do a qemu_console_resize() to the correct size.
-It also typically sets a flag to tell the update_display method
-that it needs to redraw the whole window.
-
-> +
-> +static void dm163_update_display(void *opaque)
-> +{
-> +    DM163State *s =3D (DM163State *)opaque;
-> +    DisplaySurface *surface =3D qemu_console_surface(s->console);
-> +    uint32_t *dest;
-> +    unsigned bits_ppi =3D surface_bits_per_pixel(surface);
-> +
-> +    /* Should the code be updated to handle other bpp than 32 ? */
-
-No. The UI layer guarantees that the console surface is always
-32 bits per pixel. You don't need to assert that this is true.
-(We still have some old display driver models which have legacy
-code we never cleaned up from back when they had to cope with
-possibly different console surface bit depths; but the handling
-of other depths is just dead code in those devices.)
-
-> +    /* trace_dm163_bits_ppi(bits_ppi); */
-> +    g_assert((bits_ppi =3D=3D 32));
-> +    dest =3D surface_data(surface);
-> +    for (unsigned y =3D 0; y < RGB_MATRIX_NUM_ROWS; y++) {
-> +        for (unsigned _ =3D 0; _ < LED_SQUARE_SIZE; _++) {
-> +            for (int x =3D RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE - 1; x =
->=3D 0; x--) {
-> +                *dest++ =3D s->buffer[s->buffer_idx_of_row[y]][x / LED_S=
-QUARE_SIZE];
-> +            }
-> +        }
-> +        if (s->age_of_row[y]) {
-> +            s->age_of_row[y]--;
-> +            if (!s->age_of_row[y]) {
-> +                /*
-> +                 * If the ROW_PERSISTANCE delay is up,
-> +                 * the row is turned off.
-> +                 * (s->buffer[COLOR_BUFFER] is filled with 0)
-> +                 */
-> +                s->buffer_idx_of_row[y] =3D COLOR_BUFFER_SIZE;
-> +            }
-> +        }
-> +    }
-> +    /*
-> +     * Ideally set the refresh rate so that the row persistance
-> +     * doesn't need to be changed.
-> +     *
-> +     * Currently `dpy_ui_info_supported(s->console)` returns false
-> +     * which makes it impossible to get or set UIInfo.
-> +     */
-> +    if (dpy_ui_info_supported(s->console)) {
-> +        trace_dm163_refresh_rate(dpy_get_ui_info(s->console)->refresh_ra=
-te);
-> +    } else {
-> +        trace_dm163_refresh_rate(0);
-> +    }
-
-Why does this device care about the console's refresh rate at all?
-It should just be displaying what it needs to display.
-No other device in hw/display calls dpy_get_ui_info().
-
-(The reason it returns false is because your GraphicHwOps struct
-doesn't define a ui_info function -- dpy_get_ui_info()/dpy_set_ui_info()
-is for the UI layer to tell the display device about changes in things
-like refresh rate and window size, not for the display device to ask
-something else for this information. This is typically only needed by
-virtual devices like virtio-vga or xenfb, though, so I wouldn't
-expect you to need to set a ui_info function.)
-
-> +
-> +    dpy_gfx_update(s->console, 0, 0, RGB_MATRIX_NUM_COLS * LED_SQUARE_SI=
-ZE,
-> +                   RGB_MATRIX_NUM_ROWS * LED_SQUARE_SIZE);
-
-This will redraw the entire 800x800 window every time, which is
-not very efficient. Do we really need to do that?
-
-> +}
-> +
-> +static const GraphicHwOps dm163_ops =3D {
-> +    .invalidate  =3D dm163_invalidate_display,
-> +    .gfx_update  =3D dm163_update_display,
-> +};
-
-thanks
--- PMM

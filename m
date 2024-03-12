@@ -1,387 +1,179 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1675136ejc;
-        Tue, 12 Mar 2024 01:25:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVslDw81gt0Ag3HQhlihNTgNVe16mcDZ7sXLYjRe+B7/8S+RPbkGRBs6W+iWLTx3GuSL1lQih+GK6bZeSFdf476hR1YjJGR
-X-Google-Smtp-Source: AGHT+IFfOOme66huIldzJYIIUaZzhsuqrruWvaA32ztzclRe+zl64CgVTC3IDXxfpFoUk+vti1fw
-X-Received: by 2002:a05:6122:1796:b0:4c9:75c3:e79b with SMTP id o22-20020a056122179600b004c975c3e79bmr6178105vkf.6.1710231927205;
-        Tue, 12 Mar 2024 01:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710231927; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1675165ejc;
+        Tue, 12 Mar 2024 01:25:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX1cCCrjS/YnWtX1fQPtuP2Fi1pKbCfdkLJ4eOQ6M/IJQ04bKNDdymJapC8HwVBW4My+svKdywOLXA9dNBRbJfu54VZmQ/7
+X-Google-Smtp-Source: AGHT+IF4kTV0GjcY3BvzQIGCnSqG34/oF15KDfayGUJomjfVfbcZ8xhqhGa4d5S0zhwpdGBR6VnY
+X-Received: by 2002:a25:8ca:0:b0:dcd:63f8:ba41 with SMTP id 193-20020a2508ca000000b00dcd63f8ba41mr6377039ybi.42.1710231931731;
+        Tue, 12 Mar 2024 01:25:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710231931; cv=none;
         d=google.com; s=arc-20160816;
-        b=BnrsfSKkGKV4Js96VGo1JFpgBxkj8MlgeLjP3yiKI4Q9kYokNCEUVsn2EhJDiMRugT
-         69xkVYrL73HV6b31Uk5LyRW0tTRabxSxn+C7seBvaeiL0ITrGPOanKubomtVToR+SadX
-         tuLGic7Lsz+UoBQleP2KujT7BwgSHI2n2m3RZAZjLaAITDIpNuV56X14wAgYQGRUSsqO
-         qi3iKdRoB78IyGZSXF3ZL83hF+Wj3TJ8xOBt3YP9bu84zqgNe25Vd8bgLyV6bKRVX2tb
-         d3JJOMN9kjrds3zz1JEvwf4LUgUVuE3oJEmVWSHYEoaG8+YDZWLSfN/Ie8j9RRrzJKFi
-         kRag==
+        b=WJiNXsrZchRxmn0eUIDi2vkAVrpTnQTELU8T+RFhITdheHVl4PqOhk/V05Q9VfNUEc
+         Dddj736CAf+ybpxUwov3S0fXFDHLxY7DsX3L0TMYyDc5NzQqpIOMUyljduAaicKSDLYz
+         xaIuARHgkjFNfGciT4MMiGkpKXPoM1fJx8yWMqaS7LYlELU1LK7KjnM2guVLrV+6zNA7
+         0si0dT4QVl/C++7LiBewe8Jgkf9auHLPZqAm8/3g9NvBNZhbWE/yifY2E146NCQ6xgcF
+         6p2Ad2bKvvSDR4pp2mdCMmln0aH5QrI0fClfmnwvQDX1fMArb4lRP66GcMRV9HHHWg2d
+         CrBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1hGuUQy57ryIxbN/Y0vAq6Y8p4QXBEpEzJDzKEkwyAk=;
-        fh=3ltkW4KvPlEIMCrr10LCpU5PLRpymHCP+rV40JqhiF0=;
-        b=J07R5iMFcP76hpqtrkFSxw/lunJ3P+3z6EIeOnAbBzHw7FLlmQgrlKwJeYAZnvq7xX
-         +gVdc0pm7ZcyC4tEvgvy5n96ol4cgdL9fEd7syrzmmim1/W9AZ4Y462BnCbK46Y5NpW8
-         jhL5vy80+SP5KGcyCvo0fcLsnBwUIVZjZWOwjwQ86l7c28GcgR96IcUz5oJZugdnafcf
-         xmfDVcZTMwsUhD9ZrAZ4hmikxweZUMCblja6bKECEdMw3IEc9E5fRFnEodO7yRY6D0lB
-         44sXVpqt8RbZ+Yxy0wtuONDYlFBk/A7akW/cLFfRkknJhvcfPFXz3Bblomgb3Hy6Dgg8
-         YUrw==;
+        bh=Eq8dPdS4O29YZHMSjUomBAXNnVOWg/nPlLYlOBRYYnw=;
+        fh=/OjMTd8ii5kKJ/oyG1ORwNy4xKO7ElcessVTlN1EkRg=;
+        b=tMZ3P/eVFn2W0d1+mnqUAXTsVrSDM/5pQSWrkQorjUAPoloFEhx6AKJbtSWpIsj5+4
+         bFTlc50wFJ7gEN7Qzi4+KO3bhS4eqmNa1u4PhPvpKIfoSGxIul/9DcI8Pw67wWUp/3BD
+         cVyTFSY9FPDTpPsDwvKxYOFOHt2LwMXd1ecuy2+uX5Uk8w7dIvDJ3H+9BlDAhNQHSXqp
+         zU51O2BEXZXcjf79uWqgoQDDstP4AqpWGTauhp5SN75j+jyHjmFI4nWS4bQ1RBZm3326
+         MVD042QdvH4JZcf9NqBspeRSRlbZX0kdpEdGRTa4TQuxCc9Otbg8ZmCcXWA2zsZ6+Hja
+         nOAA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BjhUfDYt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TcVF8q6C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8-20020a05622a110800b0042eeb2e5c34si7166082qty.465.2024.03.12.01.25.27
+        by mx.google.com with ESMTPS id f22-20020ac87f16000000b0042ef733709bsi7054765qtk.228.2024.03.12.01.25.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 01:25:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Mar 2024 01:25:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BjhUfDYt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TcVF8q6C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rjxQy-0007tX-Ck; Tue, 12 Mar 2024 04:24:28 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rjxQ6-000668-5H; Tue, 12 Mar 2024 04:23:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxQT-0006nD-W0
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:59 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxQ4-00062O-1V
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 04:23:32 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxQQ-0001HY-PL
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 04:23:57 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-33e94c12cfaso1755608f8f.3
- for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 01:23:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rjxQ1-0001CV-4x
+ for qemu-devel@nongnu.org; Tue, 12 Mar 2024 04:23:31 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-33e8b957a89so1580176f8f.0
+ for <qemu-devel@nongnu.org>; Tue, 12 Mar 2024 01:23:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710231833; x=1710836633; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710231807; x=1710836607; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1hGuUQy57ryIxbN/Y0vAq6Y8p4QXBEpEzJDzKEkwyAk=;
- b=BjhUfDYtP7lU9fIAfCfByQAH5b1W3x9xippxG0OloPwnHydP7D3h8dNXNCwkumBQIA
- GK+/yzRL+/BMRMCha8Hg983kFaEI0Rdhr13Rl1xnnaxXNBma0ovpoYMIFBBYRN5jANwO
- ggKldzRnsetCXYVXgccocK2D77ihKhCUWVDPBG5wyW8vVoA8l1Qg6AmjGo+YOeL2X24/
- J+eUT+oad4nUccNoJ2xeO6Mh33Ircg/9vqjUYwVktOOmdNrh3onPVRQVBVHkfUE/RSre
- HYtGQ0U7xe98GyHFqp/iDgBJCAHTR3Hf86q0UA9mBw3bFZCfChCIMyeDY9KCwhyVFRdf
- Nojg==
+ bh=Eq8dPdS4O29YZHMSjUomBAXNnVOWg/nPlLYlOBRYYnw=;
+ b=TcVF8q6CVfURTxPJpFVhmfBYNF3AcQyeUARzttJCWT6au5QoD2EK4TnbjV0DAz4o17
+ V2eVZZwVvivJNj2qn8Fut3l8cG35tFybALy4IgnxM+i5j9cmcaThLrikdrx5u/bGFEsP
+ dfnIak911LM0Ygi8aU2nXkIfD/fB6pepAczg6oFsMmypp2mrwT8ujsd4w+T+qm7kt4ze
+ u7U/ZdsL03pUFhL0Vk8Gfq/wsN8/GzUmvjqk9jeS76n5n8gZDrbWpuBmDcs1++JKZJt6
+ WhoNMP+TaIWlpIXSRl0y6UL4cFjW7rE1WrKvpldJd+5PP1PFjGpt8/OEf0r+GTBsvZOq
+ gt9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710231833; x=1710836633;
+ d=1e100.net; s=20230601; t=1710231807; x=1710836607;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1hGuUQy57ryIxbN/Y0vAq6Y8p4QXBEpEzJDzKEkwyAk=;
- b=ehrwCfhywoj7ch+xbcBORDNRZuB7avKYs/a8dczggPlsptDmYnQ2uBNtPVLFuhw8aJ
- smnAff7MJFhUn6ila/PZwz0ifAqt8x/YAXKI4xiewOrvg9LZDzZdg51d8L/1Ur2ChASV
- 91sonyoDztEGPvFEk38LKUPykEqNvIKYFFeErvYFoFiXIm4fX595SSr3ixSEkcnn/X1Z
- u1rsdIFZnFv5WxAOWBOegv4gYkBQ+YjV3rJFT4PAAt4J7V/jiANgQ3/GWSt+CJh3/sc9
- S4/ODvwwYLuZL+dTjflUVweka5KHD/NrH48vPRjxcLDA9on7e41aZXjPK9Ka8CsR77dw
- IUpQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU7uGsxeV/8YxS2Y51kmzaFWS6tpsJ7KtE9SODmwvot7SXOle/Z6idjPjxQSnBrCuaqWBgWbJqmZ+cjV+DOrWaQ0QnH
-X-Gm-Message-State: AOJu0YyxuXJeu+toX7RSlEYuYcLj+4upyJlPihjt32nAzx6qSgGpwpNi
- lNDpxB9LqfjQ4yZO85mU+G1ESvodMEr/lwrhCSXbfHcVuK2vXPka4JO7262C8js=
-X-Received: by 2002:a5d:4bc3:0:b0:33e:6064:a3f with SMTP id
- l3-20020a5d4bc3000000b0033e60640a3fmr2170152wrt.29.1710231832915; 
- Tue, 12 Mar 2024 01:23:52 -0700 (PDT)
+ bh=Eq8dPdS4O29YZHMSjUomBAXNnVOWg/nPlLYlOBRYYnw=;
+ b=UiHK63kFY00iiB4Jl1N8ztOdIbqtDA9p/9A4lwSTnsRFijLiEw9CAlh0Y/hTlLhtQ2
+ yBFlD7wNRhYyNAQPzBHOZmU5sRolLCC4UVgmPb61EWzMEOz5GFckpWOX04ZKjrAdymil
+ ikA9xmgDMS+mwfnJJL1EUZWtJNmTMHRH4HprUmaxGycbp0kmOreb2SyQTiInADtVSdI0
+ q0NVAKmK44Hispf8qKtvraM2y5w4wODNQwnwK8TqBSHwA1ckL0fCg67lWAannUs3ZdKp
+ x1jH0gpeFUsRqxMybleAPzMjcMHcI958ViO3CYhaVUi/Ec3lKJnOtk6tkM1PeJEidO68
+ NdAg==
+X-Gm-Message-State: AOJu0YxeiThGYuco1Sfb85RtPWreD8a/Jq+mCaSpLtKaKY2tGYGkwbbO
+ tpy3VesdQljrZvO9iOWwwzOYs4w1CdGs/n3kybzSiqNTTl0uOEeCt0DYuWAAaWDQj1ujWyYUGlp
+ A
+X-Received: by 2002:a5d:5505:0:b0:33d:277d:a2c7 with SMTP id
+ b5-20020a5d5505000000b0033d277da2c7mr5082955wrv.16.1710231807243; 
+ Tue, 12 Mar 2024 01:23:27 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.206.139])
  by smtp.gmail.com with ESMTPSA id
- bu29-20020a056000079d00b0033e87564720sm7586064wrb.92.2024.03.12.01.23.51
+ bx33-20020a5d5b21000000b0033e93e00f68sm5279431wrb.61.2024.03.12.01.23.25
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 12 Mar 2024 01:23:52 -0700 (PDT)
+ Tue, 12 Mar 2024 01:23:26 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Dmitriy Sharikhin <d.sharikhin@yadro.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 11/13] hw/gpio: introduce pcf8574 driver
-Date: Tue, 12 Mar 2024 09:22:36 +0100
-Message-ID: <20240312082239.69696-12-philmd@linaro.org>
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PULL 07/13] sun4u: remap ebus BAR0 to use unassigned_io_ops instead
+ of alias to PCI IO space
+Date: Tue, 12 Mar 2024 09:22:32 +0100
+Message-ID: <20240312082239.69696-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240312082239.69696-1-philmd@linaro.org>
 References: <20240312082239.69696-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oGjjGKSLuOyQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gsnMSTGzbT+H
 
-From: Dmitriy Sharikhin <d.sharikhin@yadro.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-NXP PCF8574 and compatible ICs are simple I2C GPIO expanders.
-PCF8574 incorporates quasi-bidirectional IO, and simple
-communication protocol, when IO read is I2C byte read, and
-IO write is I2C byte write. User can think of it as
-open-drain port, when line high state is input and line low
-state is output.
+During kernel startup OpenBSD accesses addresses mapped by BAR0 of the ebus device
+but at offsets where no IO devices exist. Before commit 4aa07e8649 ("hw/sparc64/ebus:
+Access memory regions via pci_address_space_io()") BAR0 was mapped to legacy IO
+space which allows accesses to unmapped devices to succeed, but afterwards these
+accesses to unmapped PCI IO space cause a memory fault which prevents OpenBSD from
+booting.
 
-Signed-off-by: Dmitrii Sharikhin <d.sharikhin@yadro.com>
+Since no devices are mapped at the addresses accessed by OpenBSD, change ebus BAR0
+from a PCI IO space alias to an IO memory region using unassigned_io_ops which allows
+these accesses to succeed and so allows OpenBSD to boot once again.
+
+Fixes: 4aa07e8649 ("hw/sparc64/ebus: Access memory regions via pci_address_space_io()")
+Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <f1552d822276e878d84c01eba2cf2c7c9ebdde00.camel@yadro.com>
+Message-ID: <20240311064345.2531197-1-mark.cave-ayland@ilande.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- MAINTAINERS               |   6 ++
- include/hw/gpio/pcf8574.h |  15 ++++
- hw/gpio/pcf8574.c         | 162 ++++++++++++++++++++++++++++++++++++++
- hw/gpio/Kconfig           |   4 +
- hw/gpio/meson.build       |   1 +
- 5 files changed, 188 insertions(+)
- create mode 100644 include/hw/gpio/pcf8574.h
- create mode 100644 hw/gpio/pcf8574.c
+ hw/sparc64/sun4u.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4d96f855de..72c23e3682 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2503,6 +2503,12 @@ S: Maintained
- F: hw/i2c/i2c_mux_pca954x.c
- F: include/hw/i2c/i2c_mux_pca954x.h
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index eda9b58a21..cff6d5abaf 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -360,8 +360,13 @@ static void ebus_realize(PCIDevice *pci_dev, Error **errp)
+     pci_dev->config[0x09] = 0x00; // programming i/f
+     pci_dev->config[0x0D] = 0x0a; // latency_timer
  
-+pcf8574
-+M: Dmitrii Sharikhin <d.sharikhin@yadro.com>
-+S: Maintained
-+F: hw/gpio/pcf8574.c
-+F: include/gpio/pcf8574.h
-+
- Generic Loader
- M: Alistair Francis <alistair@alistair23.me>
- S: Maintained
-diff --git a/include/hw/gpio/pcf8574.h b/include/hw/gpio/pcf8574.h
-new file mode 100644
-index 0000000000..3291d7dbbc
---- /dev/null
-+++ b/include/hw/gpio/pcf8574.h
-@@ -0,0 +1,15 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+/*
-+ * NXP PCF8574 8-port I2C GPIO expansion chip.
-+ *
-+ * Copyright (c) 2024 KNS Group (YADRO).
-+ * Written by Dmitrii Sharikhin <d.sharikhin@yadro.com>
-+ */
-+
-+#ifndef _HW_GPIO_PCF8574
-+#define _HW_GPIO_PCF8574
-+
-+#define TYPE_PCF8574 "pcf8574"
-+
-+#endif /* _HW_GPIO_PCF8574 */
-diff --git a/hw/gpio/pcf8574.c b/hw/gpio/pcf8574.c
-new file mode 100644
-index 0000000000..d37909e2ad
---- /dev/null
-+++ b/hw/gpio/pcf8574.c
-@@ -0,0 +1,162 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+/*
-+ * NXP PCF8574 8-port I2C GPIO expansion chip.
-+ * Copyright (c) 2024 KNS Group (YADRO).
-+ * Written by Dmitrii Sharikhin <d.sharikhin@yadro.com>
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "hw/gpio/pcf8574.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qom/object.h"
-+
-+/*
-+ * PCF8574 and compatible chips incorporate quasi-bidirectional
-+ * IO. Electrically it means that device sustain pull-up to line
-+ * unless IO port is configured as output _and_ driven low.
-+ *
-+ * IO access is implemented as simple I2C single-byte read
-+ * or write operation. So, to configure line to input user write 1
-+ * to corresponding bit. To configure line to output and drive it low
-+ * user write 0 to corresponding bit.
-+ *
-+ * In essence, user can think of quasi-bidirectional IO as
-+ * open-drain line, except presence of builtin rising edge acceleration
-+ * embedded in PCF8574 IC
-+ *
-+ * PCF8574 has interrupt request line, which is being pulled down when
-+ * port line state differs from last read. Port read operation clears
-+ * state and INT line returns to high state via pullup.
-+ */
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(PCF8574State, PCF8574)
-+
-+#define PORTS_COUNT (8)
-+
-+struct PCF8574State {
-+    I2CSlave parent_obj;
-+    uint8_t  lastrq;     /* Last requested state. If changed - assert irq */
-+    uint8_t  input;      /* external electrical line state */
-+    uint8_t  output;     /* Pull-up (1) or drive low (0) on bit */
-+    qemu_irq handler[PORTS_COUNT];
-+    qemu_irq intrq;      /* External irq request */
-+};
-+
-+static void pcf8574_reset(DeviceState *dev)
-+{
-+    PCF8574State *s = PCF8574(dev);
-+    s->lastrq = MAKE_64BIT_MASK(0, PORTS_COUNT);
-+    s->input  = MAKE_64BIT_MASK(0, PORTS_COUNT);
-+    s->output = MAKE_64BIT_MASK(0, PORTS_COUNT);
-+}
-+
-+static inline uint8_t pcf8574_line_state(PCF8574State *s)
-+{
-+    /* we driving line low or external circuit does that */
-+    return s->input & s->output;
-+}
-+
-+static uint8_t pcf8574_rx(I2CSlave *i2c)
-+{
-+    PCF8574State *s = PCF8574(i2c);
-+    uint8_t linestate = pcf8574_line_state(s);
-+    if (s->lastrq != linestate) {
-+        s->lastrq = linestate;
-+        if (s->intrq) {
-+            qemu_set_irq(s->intrq, 1);
-+        }
-+    }
-+    return linestate;
-+}
-+
-+static int pcf8574_tx(I2CSlave *i2c, uint8_t data)
-+{
-+    PCF8574State *s = PCF8574(i2c);
-+    uint8_t prev;
-+    uint8_t diff;
-+    uint8_t actual;
-+    int line = 0;
-+
-+    prev = pcf8574_line_state(s);
-+    s->output = data;
-+    actual = pcf8574_line_state(s);
-+
-+    for (diff = (actual ^ prev); diff; diff &= ~(1 << line)) {
-+        line = ctz32(diff);
-+        if (s->handler[line]) {
-+            qemu_set_irq(s->handler[line], (actual >> line) & 1);
-+        }
-+    }
-+
-+    if (s->intrq) {
-+        qemu_set_irq(s->intrq, actual == s->lastrq);
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_pcf8574 = {
-+    .name               = "pcf8574",
-+    .version_id         = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, PCF8574State),
-+        VMSTATE_UINT8(lastrq, PCF8574State),
-+        VMSTATE_UINT8(input,  PCF8574State),
-+        VMSTATE_UINT8(output, PCF8574State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void pcf8574_gpio_set(void *opaque, int line, int level)
-+{
-+    PCF8574State *s = (PCF8574State *) opaque;
-+    assert(line >= 0 && line < ARRAY_SIZE(s->handler));
-+
-+    if (level) {
-+        s->input |=  (1 << line);
-+    } else {
-+        s->input &= ~(1 << line);
-+    }
-+
-+    if (pcf8574_line_state(s) != s->lastrq && s->intrq) {
-+        qemu_set_irq(s->intrq, 0);
-+    }
-+}
-+
-+static void pcf8574_realize(DeviceState *dev, Error **errp)
-+{
-+    PCF8574State *s = PCF8574(dev);
-+
-+    qdev_init_gpio_in(dev, pcf8574_gpio_set, ARRAY_SIZE(s->handler));
-+    qdev_init_gpio_out(dev, s->handler, ARRAY_SIZE(s->handler));
-+    qdev_init_gpio_out_named(dev, &s->intrq, "nINT", 1);
-+}
-+
-+static void pcf8574_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass   *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k  = I2C_SLAVE_CLASS(klass);
-+
-+    k->recv     = pcf8574_rx;
-+    k->send     = pcf8574_tx;
-+    dc->realize = pcf8574_realize;
-+    dc->reset   = pcf8574_reset;
-+    dc->vmsd    = &vmstate_pcf8574;
-+}
-+
-+static const TypeInfo pcf8574_infos[] = {
-+    {
-+        .name          = TYPE_PCF8574,
-+        .parent        = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(PCF8574State),
-+        .class_init    = pcf8574_class_init,
-+    }
-+};
-+
-+DEFINE_TYPES(pcf8574_infos);
-diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-index 712940b8e0..19c97cc823 100644
---- a/hw/gpio/Kconfig
-+++ b/hw/gpio/Kconfig
-@@ -19,3 +19,7 @@ config SIFIVE_GPIO
- 
- config STM32L4X5_GPIO
-     bool
-+
-+config PCF8574
-+    bool
-+    depends on I2C
-diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-index 3454b503ae..791e93a97b 100644
---- a/hw/gpio/meson.build
-+++ b/hw/gpio/meson.build
-@@ -16,3 +16,4 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
- system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_gpio.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
- system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
-+system_ss.add(when: 'CONFIG_PCF8574', if_true: files('pcf8574.c'))
+-    memory_region_init_alias(&s->bar0, OBJECT(s), "bar0",
+-                             pci_address_space_io(pci_dev), 0, 0x1000000);
++    /*
++     * BAR0 is accessed by OpenBSD but not for ebus device access: allow any
++     * memory access to this region to succeed which allows the OpenBSD kernel
++     * to boot.
++     */
++    memory_region_init_io(&s->bar0, OBJECT(s), &unassigned_io_ops, s,
++                          "bar0", 0x1000000);
+     pci_register_bar(pci_dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->bar0);
+     memory_region_init_alias(&s->bar1, OBJECT(s), "bar1",
+                              pci_address_space_io(pci_dev), 0, 0x8000);
 -- 
 2.41.0
 

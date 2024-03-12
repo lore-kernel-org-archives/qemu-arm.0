@@ -1,246 +1,154 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1751015ejc;
-        Tue, 12 Mar 2024 04:25:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXJrgt4w6BeR1NRjB0SHogvOTgKwzkjF1NJvYTXNfq2WYl0Jcq4FHgHkvwpFYRrlpEu49VjiccY3DyOqEUOC4ZgRLFj2n8A
-X-Google-Smtp-Source: AGHT+IFGpDmVLXxOYIR9DPmdEQiw/EDch0nFFLDP6Hf+5jFX+w1aepNG4AN28RuG9gUBLM0cGduU
-X-Received: by 2002:a05:6808:4395:b0:3c2:f93:7c30 with SMTP id dz21-20020a056808439500b003c20f937c30mr8127846oib.55.1710242708326;
-        Tue, 12 Mar 2024 04:25:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1710242708; cv=pass;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1809103ejc;
+        Tue, 12 Mar 2024 06:09:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVJsZ82CxgYMl/8etoN6OMSYe1atcCCu8EU/8haWh1KpfN8Tn19NbYgnPxL0VkKnwetSeBE3gCSyii5FsF107PcnXYuBunA
+X-Google-Smtp-Source: AGHT+IEYRfPTVisKn1VKqVW0ea2LPFOeIH5L16KUFmF+3G/KHVg5kmCLhma2FPcKHqrQ1zrvqY6G
+X-Received: by 2002:a05:6122:88b:b0:4c8:df97:139d with SMTP id 11-20020a056122088b00b004c8df97139dmr7789193vkf.2.1710248990601;
+        Tue, 12 Mar 2024 06:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710248990; cv=none;
         d=google.com; s=arc-20160816;
-        b=oJvWgfZV9nhzkY+RrGAZjafk2c7hsV+p5sHgOVPOPwFdj2NYYbDmZDIxWadikvzyYB
-         PB7F4hL7CqDLiMr1reXf002XKEQ0/++vMcpV65atN7i8KKEGmtAtfUnQ+3qbAckqY+b5
-         DsNetM4mtnhPJG7yCd6IH2hWwWEW29Gx7xMJ0pWav8iCV48GHnebf/c+o+mv3fTA3u/i
-         broKiG/LZ1D65CuamBb+9ACOHNzpUhR0T2wu6yDFKnATUymmH19Iw4QGmAKD8sXmOQrj
-         X1ckqsugTGWMiuclYMbJjnhmZoUQ3zO+qCSATzhUk9Kvvy2PtGifwwXMtcjWPOaR0xCn
-         HehQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
-         :dkim-signature;
-        bh=gnBoAxc43PzxlzX8NgDw1FOToc09+ltM8010JBkSnys=;
-        fh=txNxgAItzZnYaHd1e3IvtSYpoRnEQvNU3xYesxMNLXc=;
-        b=Bw+SfzIxHb0Plstj3HwKJ6d4mjbM2gJUEZ9JWXTgy3jq9ikNtpqneCiUoJegHNoexo
-         xhaq9k1h38RqXkNIgJikJCY5XTmpWOneuMi/koVH/yCaY94ycSW0wDBjbTR7HNKDS0lO
-         l9t2pkljebUCIbDv34oPBaqecgfMCrHar++XUmkVVrGF834l7ZCVQm2291yqkFOD8dJy
-         FfwZIQdMpuI9bWSbcJkgE9h7ltBtHM5wOSL7U/kCGodI0wXkL/W/InZ7QW8CRWZTIbO1
-         U2UY1KY4EoZkTe4T9fsM7nW6BifDT/n8QhYNX7ef3z/ZhKcbRVR6PpZJaJg2iVWMX2sV
-         Udmg==;
+        b=iElt/LZh0xMJ2ULzVPGsj9v3iTeb7ufhF/pu1ZqiXwBIUvbE8tkQxeescebTFH8DGP
+         FyCbY3Azei8rnenF/jNkDl62ahOnUE0D07UqUlYr8PiR8wOjp0M2QEPEHPyI/4beU506
+         VzfDSuBpPzTJFWEi4TxOZpj1PHlggNN7X9zGJUhWTyDdLdm+EEUWGXHDxpJyWK8yxl+n
+         e0F+eDi0Q0YtWdRIy5ikXpfKXDK5mIFqEKjbKEx3h8cN73/63fHCDR8ayLED7agV7LhY
+         J4tnUVr7wjvIxi17EJOewNAzh0iqE9/X7xQXjl7uvkvCrpxLa8Yps3dchhHqnutQwHnv
+         8QDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:references
+         :mime-version:subject:message-id:to:from:date:dkim-signature;
+        bh=fGLMALKatNo+wZeNHQL+HYSXPNVDCyPKBUxn5ctg/zY=;
+        fh=3EkCcoIvNSwlrASCcvqsZ/s2iF1sUTSne1+2h6/BaUw=;
+        b=0ULnRaG2jjxzTR0xY9T5skkLq672NzTZv5030O1Eg1s4Jj30YsQulWzWFv2n10OLXJ
+         +lOt5586MMOTLaI86bOWBJlQwgx0J0LOZHaCGsO6hPXQNB4hWPVhr2zu8AfJIa3cAXTD
+         vetb1hIRO5or1yi8lSdvkTRNEnfLAB54uLEMa6gFQAEuIVvW2W/oOoaxJpxpYiND0Ve3
+         T02ErvW2W7ArtETW/EPCtjQVLh/RyGcnSz1RFiB3dz3B+PN0+/CLkdw/1JEgapgH8gfV
+         7lPN1f/F07vU9IUJHSVSQEvTdREFEkalIXH1YcO16tk3UFuR8V20fvYetMCnK+cFZZLu
+         xe5g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e9/3H3VM";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id z6-20020ae9e606000000b00788663d8a1fsi5588957qkf.347.2024.03.12.04.25.07
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@yahoo.co.in header.s=s2048 header.b=F0+AS2Hz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.co.in
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ec30-20020a056122369e00b004d40ecb278esi49266vkb.57.2024.03.12.06.09.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Mar 2024 04:25:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Mar 2024 06:09:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e9/3H3VM";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-11658-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9C72B1C215ED
-	for <alex.bennee@linaro.org>; Tue, 12 Mar 2024 11:25:07 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6D80A79B73;
-	Tue, 12 Mar 2024 11:25:02 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="e9/3H3VM"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89C3279B69
-	for <kvm@vger.kernel.org>; Tue, 12 Mar 2024 11:25:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710242702; cv=none; b=ZqLftXbyGVNfkejJ5bSj/vutJi+mnCUYG7UTakSQXdpJXqACEfzRB7iSh97lGNIRC3mI2J9MqUiLzMyKZl8FC8PVaR9jh0b/9vSMrQQ7v9R25c0uxdlqcKFaJyP00JpfmpplGzO6XVpb75RjeRyzo5DlNjMa0laa4hfeMPEiZ6A=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710242702; c=relaxed/simple;
-	bh=6m4+azSLc0RRBy0kt1h4TfTj3VGf6qL9H1jmOwsx6mg=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=MNDyPMqO/IFWm7YZ7f3d5c/FUqxD7DAYnTc3iOqwWM0IdfyItJvjYqBYQnstCR7MMmdGUrOmHIwR7IFuCAjGDSOb6zOOzFj9SCdKWHNosQQpzbfiUDp77+7NkehUf+AsZNpTQsTjyzZ0o4vx5u1strQe2O/KEjteIbRyrahAAO8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=e9/3H3VM; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1710242699;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=gnBoAxc43PzxlzX8NgDw1FOToc09+ltM8010JBkSnys=;
-	b=e9/3H3VMXf5v0Hyrk6ovKXcI9QUHW4RkLDr+ez+uLnmbk1Qx9EPoVGUqU0nOaF0sUtpyPi
-	RdGhb5YyhYO3WPLpPPz6WAO9d2nEZAhZj600nHtyJL+G9mQvk7ASeUME1vXjw0WDqLvMPt
-	uHTJsvYMTcGB/uM7sQPamVnWN4ZMgNU=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-427-1YXhNkf-M0mYi3xciELZBw-1; Tue, 12 Mar 2024 07:24:57 -0400
-X-MC-Unique: 1YXhNkf-M0mYi3xciELZBw-1
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-42ea54868d2so49478481cf.3
-        for <kvm@vger.kernel.org>; Tue, 12 Mar 2024 04:24:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710242697; x=1710847497;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gnBoAxc43PzxlzX8NgDw1FOToc09+ltM8010JBkSnys=;
-        b=uvHKC5GQNODQPQFoUrr8plyT88+YSPrM6F3B1E3R7Q8apX/9km/V8YLxi4VPMPZekB
-         cZXOpF9gB+G7bHRWZqWu9he5xESJDzdhiLTtAIM2cYy72B2CIK7pynOspSeV1iXwKaam
-         ZS5gaioGlveFuQgNavFSCvC0oqXAKlxT8dV5RNTcF/cXakpsb6CNmIZuBiw9LamYbyW0
-         qqwQKyF48k1ZLOdPSS4c1N6uh0lLtQOOkEv0AvsMJGfdJkJcfeMaN50Jvg3aXx+FFO24
-         64R3tUYgF/h53sRKIb4B3iZsTlm1Kp0sDkTmYSGCPTq+x4VLTueOEBlZNRim7WyOG8ZR
-         bN/g==
-X-Forwarded-Encrypted: i=1; AJvYcCW0s3ngJ8nrN5jMizRrtk9Z5OG945DbPRk7zwHa8GW9MKT5p8cehFzB2PSve8A3X9XRqDNcj6w0Y19EBj9xGohQQxcL
-X-Gm-Message-State: AOJu0YxcVXi/4vTjybVvrEjsNb8YGLG5ZvxDNrTabZXgEChBF9u1/03N
-	oD4eOTmJo5B2Zj31f0rfrx6C3nfHCD6+MevTgI3j+6d5r287pqOfrOMZXStV8GchF53KmJS+cP3
-	EcfkhnLwqmDBxJdaud7Him+BdYTI9TVb4hEMHqoNmQuQksQbbrA==
-X-Received: by 2002:a05:622a:1454:b0:42e:8beb:325 with SMTP id v20-20020a05622a145400b0042e8beb0325mr10339150qtx.31.1710242696630;
-        Tue, 12 Mar 2024 04:24:56 -0700 (PDT)
-X-Received: by 2002:a05:622a:1454:b0:42e:8beb:325 with SMTP id v20-20020a05622a145400b0042e8beb0325mr10339129qtx.31.1710242696303;
-        Tue, 12 Mar 2024 04:24:56 -0700 (PDT)
-Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de. [109.43.177.86])
-        by smtp.gmail.com with ESMTPSA id l11-20020a05622a050b00b0042c7d11e280sm3608889qtx.90.2024.03.12.04.24.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Mar 2024 04:24:56 -0700 (PDT)
-Message-ID: <96422cf0-30a8-4e2a-99c5-8388ec342e36@redhat.com>
-Date: Tue, 12 Mar 2024 12:24:49 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@yahoo.co.in header.s=s2048 header.b=F0+AS2Hz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.co.in
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rk1sz-0004uj-Tq; Tue, 12 Mar 2024 09:09:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <patilprasadb@yahoo.co.in>)
+ id 1rk0u1-0004ai-GJ
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 08:06:42 -0400
+Received: from sonic311-20.consmr.mail.sg3.yahoo.com ([106.10.244.37])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <patilprasadb@yahoo.co.in>)
+ id 1rk0tw-0000f0-Tz
+ for qemu-arm@nongnu.org; Tue, 12 Mar 2024 08:06:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.co.in; s=s2048;
+ t=1710245184; bh=fGLMALKatNo+wZeNHQL+HYSXPNVDCyPKBUxn5ctg/zY=;
+ h=Date:From:Reply-To:To:Subject:References:From:Subject:Reply-To;
+ b=F0+AS2HzTbQI4GdZZQgUFpgS6JIYKliGw7WPQLdopnAjJ3kxZwbavsddgSOA+QdgPjXBH0MKlISbozi91L7GhqAckqS/UFx3uj9JFq3sGrhKv6HDVE5oXvb0C/7Dx4fOgAWggF3ulIbSz6i9xyudVFEN7nMtxE859+WqunK9YDA9bL/z2PxjT0MFUzN6HYLOiqOKQKtUwDgqHKgy0NTYSnKXkEYI6/SnQMtot2ZLbbg4OwqJQ8xpOTgEhX/+XSu75G/J5dpeRHjhe4kRBt8om3SimNxEwh9CrFqf8prCxxLZhksG7Jk2eorpFsHZ95G3TJxOgoR02HvkadjQcY2peA==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1710245184; bh=RPSVYZ0GTG7s+1puclxqB2qHEPMhAmv1GnDDzfLwhma=;
+ h=X-Sonic-MF:Date:From:To:Subject:From:Subject;
+ b=S/YdBiyk4dEO6O7Eslemkot75ErToDyOgAH/p399zszMZLspy9Pc7nZB0l7a08OZE+oMwVQgE0b4vvr9ftW2JNHF9YpbwHZMeegcHSvnys1cFzzQwQapAdvQy0avrXuevgEL6EFeDZtkbrJfgukzixymNC8Hqo8hLtd5g2SlRogHA6GttRE8TerBp9f+0SN4H36w2WAHs3u+t8+SILPRdtidx6u+nUGqEjK7FJTS9baveoksxRaOiPNr5c5GPby7fGYPvJTQMkhRRGPwFGdPDBBGIjCe7KEIzPNZljRRxzwAVCcqBjIbp2dMex6rKqWBSw8/Adln7MzYOlOLSrKhkw==
+X-YMail-OSG: Hh5D.xYVM1m2jxlr3cZJHXMJUktBchZ3SP5GuW07FvjGvGhu.dXUKu3iUTH2iWZ
+ MTYpkXEG37CkovI0UM8mxRs_BR6OIXc.8SV44BIKy8xMWwgvcRQ0SJxFhoXrXtovEwhU3lZEary8
+ EdPTojtT4qYhtLi7eyKbqphc8KH8NibEIRJe13P3wJ3MRzJAWDE9R2eBZ4W3mk1nffxk9w.1x2qH
+ XKMmMoDHQjYq.CE.rgz_1_ma8w8xwAWs2NQrJra03_14DyAcd6Rn6cjs9gTGzVWxfVu97GEPIC3L
+ Ud4q6IIrMMXXW24HWTnSMm_9FonFPSIfsRJ1jORdZJLI1mjFTb7YpzuVaSgCyJy3xNVxflxiZBG0
+ tFsWULH_PF4_38wzARQGH7XKq4ThUymtDn.2IyxqF5CexhB1BQySJ_GfbVZCMovCt2sZ_CByqExN
+ _I9qNvW.iBoRB2nfjaHmtZtzt6QfuI1bqMfVENO9UU8wNjxe60u0Yusso.d6TLIBw5tIZYj9cBfM
+ XoPdkxtpeCN_ynORcFH9LhHgrGaA6WhzdqALkTAOPRALpO4IdvTNsBdaUIwUpNwvqZMI26C2UOyz
+ e0dCu7puiS56uLwTVQDkqktA2_h5UrEgNxv497l41x2t.PpTHJzYNN2qMnFFpTU1LZckI6U8ENys
+ 12FQly_zAEexI38adf7V.fBMUEms3uzbnxA8xvWPDak_kF4gf5KUWed9z4LZGXeNZ3svm_DHk7jd
+ Va.Sb9JIK3nF22oeiXHQz2VCWgpNgWy5flhdsiZvXnX26gzFPedegLUQUcWWOoWl_EquuLEcKP1D
+ b8Io9EZ_4Dpuo.7gj662nyVYC7FyOLjW81gqOj124kzx3jPiRgLAFOb.M4DL_T.yskLhnxUJazBL
+ k2640Fc8oyKjf23MPQ4amVS2qbpm2AZLxZoV2KX0KAHy0q0DRpBw7RRm4jT5IzH_YyomSZOIULri
+ _hGiNUvDgqi8xO8Sx8Ydkkg8oRVf7dn6EAiTuC0_N.tZcV3VWNFNkT2isYo5M3TGkMAAumuABfCG
+ QWayYDujpasVcGTU0iRgTVAgsvzt4rfOAnhY08XCR5gkVZQrAauUJ7site9AMvFJZlFnDuu96tBe
+ UOUtFTpsd38Crk4_opb7Tkx8e0mZ3IxqJa6K5qyGpYiAToQNzPOvuQv7LAnLthT1LL4PYVgCy0Wx
+ HLiEgQ.6FX9VW_Yy9OK5h_ttgZgqYke_K3Zgvi5.2ZSbfZzXghyibPW9fcS_t5I1I0Trvfhozk4M
+ 3Nvw60dX1BXhwc4QDqUSxyKW8C70Xo4KwyTJNZsvxbYFUH8GD3FI0f5zNNH7wTOtWtf6SFaFXkWh
+ 1KiD86arbln0mckn2cXBH1tGNzMk6YlCTsBntxB7AZKYVvgSz8otfHfa92hW62ph0V_1LIGocZxy
+ nz6M1.eHNo1EWqLDqdEx03n.ngOCTN2dsACeG.UQ87L7pdhB_l3d6xoJXMiCxj9SfNR8k1o7GmMG
+ 1i5b1RBDuRj.oIfEbW8DU8OwnDN4kb8wv8bbYbbOAAO9mFT2PYFd0bHP2jTAHslv9MbyU2lnlsE1
+ J1zXi5HpeiV2WQ47dm8E4G8vRCvqOlc25hwuRlSB5cDI64ttxbXKLV1O5mHTbAF81Sd0ZpQQEsao
+ BMrOzQh2JUH172T_AC_Y0dn1s_.3XmqeGc7FyhwlrMAATFc.wAwT1bUAVxW0pSELC9GpwwEWortr
+ Mov7QCmtCGybA76FftqVMadeTnzB6MhPkKdQADIMQIcrGwIJDpK6XCV3cYy7q_qZviMvwPNdsVT0
+ pa5oSTDhdKbpuuLGkBgVXroIKeC3YP1_A2znhCjqA3MULZvjaUtlnI.SDDVEyT4OuI6YzTbtAH1H
+ ikIHFfood.q944DrZys2Lrbep455iXf7VYXh5Kd9tIquSQ8h_Bfj2SNAaq4NU3D22zkX9w1GF2Gk
+ 81LJMe7KObwQjnDz7EjI0J070eOCEFFXTWzKzsZD04LR1g4NvGGO6PMHlJtUn7qRLNrLft0IUh79
+ K1TZSnW.aY8i62Rm.7PylD2c0glKO_adp.0J4.QcHyr5xJI1hAMY1ZlRHV.JV8Ro9pikQegPoNMh
+ 4n0XBMNQGijrDRUfvfR0yW8jc6o_Y487w_TCRjX_VkpBbC.0uzMl.yaWiG54M37cAHlws8J8CxUL
+ 6yi0PvIPsJ7FpIcsoswRStxMNDvLMpwmqMzXA0_e16N2cvYmMY5AbjSXIqoHSxLMyZ_MggKev2Te
+ oilQITEmg6iOkb8me9d_7iH08YJjSe5L9X7QgoTg74WGzfGxEgzDpcO_.WpwrPE4mX_.mMA_CWQ7
+ s4LHowI9W5x9IYxhhdOklmEQVFPTkg93Ruj3166sB6gddaf7VKO0Ff1dAnKZ_n2s92p0Y9EHQljx
+ aauNF51jbnQ4-
+X-Sonic-MF: <patilprasadb@yahoo.co.in>
+X-Sonic-ID: 09538e03-a6aa-4d20-8bf3-e434a816a9e7
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic311.consmr.mail.sg3.yahoo.com with HTTP; Tue, 12 Mar 2024 12:06:24 +0000
+Date: Tue, 12 Mar 2024 12:06:17 +0000 (UTC)
+From: Prasad Patil <patilprasadb@yahoo.co.in>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Message-ID: <1112676651.2089918.1710245177914@mail.yahoo.com>
+Subject: Machine type to use with cpu type cortex-r52
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 14/29] target/i386: Prefer fast cpu_env() over slower
- CPU QOM cast macro
-Content-Language: en-US
-To: Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, David Woodhouse
- <dwmw2@infradead.org>, xen-devel@lists.xenproject.org
-References: <20240129164514.73104-1-philmd@linaro.org>
- <20240129164514.73104-15-philmd@linaro.org>
- <20240130140115.135f533d@imammedo.users.ipa.redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240130140115.135f533d@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: GGD7USKL+jFJ
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_2089917_964694638.1710245177913"
+References: <1112676651.2089918.1710245177914.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.22129 YahooMailAndroidMobile
+Received-SPF: pass client-ip=106.10.244.37;
+ envelope-from=patilprasadb@yahoo.co.in;
+ helo=sonic311-20.consmr.mail.sg3.yahoo.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 12 Mar 2024 09:09:40 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Prasad Patil <patilprasadb@yahoo.co.in>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 33L+tlFh+HX2
 
-On 30/01/2024 14.01, Igor Mammedov wrote:
-> On Mon, 29 Jan 2024 17:44:56 +0100
-> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
-> 
->> Mechanical patch produced running the command documented
->> in scripts/coccinelle/cpu_env.cocci_template header.
-> 
-> 
-> commenting here since, I'm not expert on coccinelle scripts.
-> 
-> On negative side we are permanently loosing type checking in this area.
+------=_Part_2089917_964694638.1710245177913
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Not really that much. Have a look at cpu_env(), it has a comment saying:
+Hi,When using virt machine type with cortex-r52,=C2=A0 I am getting error C=
+PU type cortex-r52-arm-cpu not supported. Can you please tell me which mach=
+ine type to use with cortex-r52?Thanks and regards,Prasad Patil=C2=A0
 
-  "We validate that CPUArchState follows CPUState in cpu-all.h"
+Yahoo Mail: Search, organise, conquer
+------=_Part_2089917_964694638.1710245177913
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-So instead of run-time checking, the check should have already been done 
-during compile time, i.e. when you have a valid CPUState pointer, it should 
-be possible to derive a valid CPUArchState pointer from it without much 
-further checking during runtime.
-
-> Is it worth it, what gains do we get with this series?
-
-It's a small optimization, but why not?
-
-> Side note,
-> QOM cast expenses you are replacing could be negated by disabling
-> CONFIG_QOM_CAST_DEBUG without killing type check code when it's enabled.
-> That way you will speed up not only cpuenv access but also all other casts
-> across the board.
-
-Yes, but that checking is enabled by default and does not have such 
-compile-time checks that could be used instead, so I think Philippe's series 
-here is still a good idea.
-
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
-> ...
->>   static inline void vmx_clear_nmi_blocking(CPUState *cpu)
->>   {
->> -    X86CPU *x86_cpu = X86_CPU(cpu);
->> -    CPUX86State *env = &x86_cpu->env;
->> -
->> -    env->hflags2 &= ~HF2_NMI_MASK;
-> 
->> +    cpu_env(cpu)->hflags2 &= ~HF2_NMI_MASK;
-> 
-> this style of de-referencing return value of macro/function
-> was discouraged in past and preferred way was 'Foo f = CAST(me); f->some_access
-> 
-> (it's just imprint speaking, I don't recall where it comes from)
-
-I agree, though the new code is perfectly valid, it looks nicer if we'd use 
-a variable here instead.
-
-  Thomas
-
+Hi,<div>When using virt machine type with cortex-r52,&nbsp; I am getting error CPU type cortex-r52-arm-cpu not supported. Can you please tell me which machine type to use with cortex-r52?</div><div>Thanks and regards,</div><div>Prasad Patil&nbsp;<br><br><div id="ymail_android_signature"><a id="ymail_android_signature_link" href="https://mail.onelink.me/107872968?pid=NativePlacement&amp;c=Global_Acquisition_YMktg_315_EmailSignatureGrowth_YahooMail:Search,Organize,Conquer&amp;af_sub1=Acquisition&amp;af_sub2=Global_YMktg&amp;af_sub3=&amp;af_sub4=100000945&amp;af_sub5=OrganizeConquer__Static_">Yahoo Mail: Search, organise, conquer</a></div></div>
+------=_Part_2089917_964694638.1710245177913--

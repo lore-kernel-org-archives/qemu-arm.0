@@ -1,149 +1,142 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2259297ejc;
-        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXrZDm8tw4SeJ5X++7IcM54bKIeYkiza3mga+H/wiuvicyiBOYtf6qk3lxqBVaZt2KSamT7jk1RRzSu01wzVmdoklXNl1nO
-X-Google-Smtp-Source: AGHT+IH1VwY1d0wQJY7pWgPTK1wNUS2+WlrxnYBeS8oKCSyuBl5NxTDbnsSQLY8BNUcDV5rSz7KH
-X-Received: by 2002:a05:620a:6190:b0:789:c69e:8c67 with SMTP id or16-20020a05620a619000b00789c69e8c67mr1842531qkn.77.1710309626345;
-        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710309626; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2354156ejc;
+        Wed, 13 Mar 2024 03:09:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxOOHWYKFsuf8tMfXm3xZHARkxmFlgLmgWln2CNLIvnnDsWDilw8RgNxqENYp5vSuJ5Ed1kHad/NNSw3IEMmzXnhqSJgNo
+X-Google-Smtp-Source: AGHT+IFaiFo59geydP1ixO/iV1qzx5gN/Kyp5SjfAsPS0Z2sfnJpnopedBkyL5alF4jxkZZX4viE
+X-Received: by 2002:a05:622a:5c7:b0:42e:d04a:4c85 with SMTP id d7-20020a05622a05c700b0042ed04a4c85mr17309726qtb.66.1710324540523;
+        Wed, 13 Mar 2024 03:09:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710324540; cv=none;
         d=google.com; s=arc-20160816;
-        b=HW46iUSbar+fwW8vVdMmNu1g+uK3OdLs4ENkFYvvCC+OyieldGeDrkNMTzW0PeL2hR
-         W28kKRvDBXebqYzQ6bJ0szZMmFY21y9DWu/wTwWxyP1hu0y4gcYgZabE/jWyT9XiUivt
-         pa8sIhWt949IKzOSGsHpHg6bJRf8iT5Bk0ib9f5PDjlfLuXI/ckJr4H7L9bsgqK5N1al
-         y/JSbAlZBGItAIYqdkj96fW9z5qBDhXux/uc2zKo/Oce67mkb7+TxZVdCeZ/Ch0teVGu
-         3QGslkobKbs6UEO2LOu3/UxkOB/0dnzliTrDO8F6C178UWCHRPTJiGGcd/hKMhieSBk5
-         mj8g==
+        b=RlYniePlNfV9qBZv9XSfPCTMNx8TJ/9lXpGHuWCj5htEK39+khr68z/PMbjmzJS9lZ
+         tMgvf/hPBI+k+fJ7fGWPBeNJQgipF9CLgnF2KdcuWM6R5ADJ1hB5aie9OUbMjDk7BrGp
+         c0GjOrhxNv1q3b671tohcR+PVIpRufCmvWmIT72pdSHuJp1WwF9haIihYhxeAVEZPWTF
+         UCktNIsLs/yHLRH7yuc7/YdAHSadLODNzvkJLVWFVP7OBxxqKb7fYw//6gV4enVt+4aH
+         xVCdNUhS8NXCTuwqCPzgxiq6izpy96oBK+5CNmGUxjyjuSintGJOC7AM4/ntn8/46c0T
+         +ibQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=GUhW5DapR7SKs6DhAPydPIoNVPxrxtNNelH9/Eile3I=;
-        fh=nHXCxAu9yzvsZfHVth69sEU95KCk0t//YoILpnfCoG4=;
-        b=hc1LBcx54cHRPx/Pkv/NpzMjx79rnGKNwQknsO6fk1z7UnRQ0DYyz3yWLwGVD5p80/
-         f95js/pSDz45UL57Db4I5lhqzQrt2HdB+FJEjj8cLe8/vf1P1/NfCkXfJhFKWkw86J3Z
-         kaLYI7mdcQ1O9jTBPHzpbkGuHwe51Z+7gyxA2ch2vpev26fG8F/MWu/cMubuQx3F6r3U
-         JlzijqviSJlgad0lI4WCUUDOFg8zNpP5dR4orPHVoZppCwiTgstxrjungjAh1ncVc/8u
-         szdaJbqQPvI71c/Lodb09ljBYbXpRk5OlXCSQXPTPOYWP3eHJ5ljDu6ywsFx/bM3Hpl/
-         uIVQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=caJKMCVgz/4gnFbNz97BlPifioYjsyPV5gCVBsw/Wyo=;
+        fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
+        b=wAFMeih5j+iVc5rmpMyEGLX1+vm1HArzHGiFcYHEUTYLPIWa8uyVDO3q8DLSvPOVAt
+         6GorXe4z0tE/LndYOXBSp3n09SBZ4Zp6DpKfkTJOJdPo6QlUVMTGhEbZN2W5MlnayMkx
+         AGCopCB1q7JLCJyiSHrKRku32fKgK6jbe1X5Tg1j7bf2jPx0fjZXsU517GLBKt9qFAMH
+         F3k4vdShjJaQwecUNKngFtAqxst4ZBrW18XTL6lG9FDzz8qCoMdRzZ0SeQU67KspcuaO
+         2pEF/d9KaZR2ukmQJFn1uUq5D6G2C/PMZygAwhfw7QCn7EJiPyU0l3bSuZbYk8vqX205
+         9C0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZSG8RX4m;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.12])
-        by mx.google.com with ESMTPS id z7-20020a05620a08c700b00788258b007esi8717373qkz.715.2024.03.12.23.00.22
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) client-ip=198.175.65.12;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 14-20020ac8574e000000b0042ef595d151si9329751qtx.269.2024.03.13.03.09.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Mar 2024 03:09:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=ZSG8RX4m;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1710309626; x=1741845626;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PVsToUiCUiOhSzkdiRM4zUD+fdyiF34qLsiHYhQsYC4=;
-  b=ZSG8RX4mfEqZ9NABTwfPoWKXAx80O7d2cgeAryw5/MNkYKBiKTqPi+Xa
-   l52JnA6oRHHiA4F5wCxHhtM/DCsRu2bddyzuuXpwLQOp/nFEztl9l9F98
-   TMw+S1SYtjXXmJ5u8d7XsbHSBzRxIj8D/fcIrXOxMml2AtFKw+EvAwgZd
-   ECsYc8VZd2TxkbhQ7aN/sDMQ+Z7eR+YxAQ33zOULjNYXyLAW8At56L/dL
-   mXlVcmGHL7PuIAOZdYPT+sch0zWOTo9hS0e4RBc5o+ijfR1DSUGd3+fvI
-   6VTZnR1BUicv7iOtDDEUc4EwSUPP4kOvKI/DaRJ5TK65KrDk9Tscq1lCN
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11011"; a="16501386"
-X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; 
-   d="scan'208";a="16501386"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2024 23:00:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; 
-   d="scan'208";a="16519824"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa005.jf.intel.com with ESMTP; 12 Mar 2024 23:00:12 -0700
-Date: Wed, 13 Mar 2024 14:14:02 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
-	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
-	lpieralisi@kernel.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, imammedo@redhat.com,
-	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
-	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
-	mst@redhat.com, will@kernel.org, gshan@redhat.com,
-	rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
-	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
-	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
-	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
-	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
-	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
-	lixianglai@loongson.cn, linuxarm@huawei.com
-Subject: Re: [PATCH V8 3/8] hw/acpi: Update ACPI GED framework to support
- vCPU Hotplug
-Message-ID: <ZfFEKgpRiEOZo9xd@intel.com>
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-4-salil.mehta@huawei.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rkLXN-0001qG-Ea; Wed, 13 Mar 2024 06:08:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1rkLXF-0001pQ-GH; Wed, 13 Mar 2024 06:08:34 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1rkLXA-0006UX-T4; Wed, 13 Mar 2024 06:08:31 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 5779F260AB8;
+ Wed, 13 Mar 2024 11:08:25 +0100 (CET)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id 5ngjmAEiR85Y; Wed, 13 Mar 2024 11:08:23 +0100 (CET)
+Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
+ [83.11.22.169])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id C5395260B8D;
+ Wed, 13 Mar 2024 11:08:22 +0100 (CET)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Wed, 13 Mar 2024 11:08:20 +0100
+Subject: [PATCH 2/3] tests/avocado: drop virtio-rng from sbsa-ref tests
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240312020000.12992-4-salil.mehta@huawei.com>
-X-TUID: kziUO10t8W89
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240313-sbsa-ref-firmware-update-v1-2-e166703c5424@linaro.org>
+References: <20240313-sbsa-ref-firmware-update-v1-0-e166703c5424@linaro.org>
+In-Reply-To: <20240313-sbsa-ref-firmware-update-v1-0-e166703c5424@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ Beraldo Leal <bleal@redhat.com>, Brad Smith <brad@comstyle.com>, 
+ qemu-arm@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.12.3
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bLsVXfcA8uiw
 
-Hi Salil,
+sbsa-ref is supposed to emulate real hardware so virtio-rng-pci
+does not fit here
 
-It seems my comment [1] in v7 was missed, but I still hit the same
-issue. Pls let me paste the previous comment here again.
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 8 --------
+ 1 file changed, 8 deletions(-)
 
-[1]: https://lore.kernel.org/qemu-devel/ZXCqp32ggIFvUweu@intel.com/
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index cbab793455..259225f15f 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -132,10 +132,6 @@ def boot_alpine_linux(self, cpu):
+             cpu,
+             "-drive",
+             f"file={iso_path},format=raw",
+-            "-device",
+-            "virtio-rng-pci,rng=rng0",
+-            "-object",
+-            "rng-random,id=rng0,filename=/dev/urandom",
+         )
+ 
+         self.vm.launch()
+@@ -179,10 +175,6 @@ def boot_openbsd73(self, cpu):
+             cpu,
+             "-drive",
+             f"file={img_path},format=raw",
+-            "-device",
+-            "virtio-rng-pci,rng=rng0",
+-            "-object",
+-            "rng-random,id=rng0,filename=/dev/urandom",
+         )
+ 
+         self.vm.launch()
 
-[snip]
+-- 
+2.44.0
 
-> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
->      memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
->                            TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
->      sysbus_init_mmio(sbd, &ged_st->regs);
-> +
-> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
-> +                       ACPI_CPU_HOTPLUG_REG_LEN);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
-> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
-> +                        &s->cpuhp_state, 0);
->  }
->
-
-I find this cpu_hotplug_hw_init() can still cause qtest errors (for v8)
-on x86 platforms as you mentioned in v6:
-https://lore.kernel.org/qemu-devel/15e70616-6abb-63a4-17d0-820f4a254607@opnsrc.net/T/#m108f102b2fe92b7dd7218f2f942f7b233a9d6af3
-
-IIUC, microvm machine has its own 'possible_cpus_arch_ids' and that is
-inherited from its parent x86 machine.
-
-The above error is because device-introspect-test sets the none-machine:
-
-# starting QEMU: exec ./qemu-system-i386 -qtest unix:/tmp/qtest-3094820.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-3094820.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -machine none -accel qtest
-
-So what about just checking mc->possible_cpu_arch_ids instead of an
-assert in cpu_hotplug_hw_init()?
-
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 4b24a2500361..303f1f1f57bc 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -221,7 +221,10 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-     const CPUArchIdList *id_list;
-     int i;
-
--    assert(mc->possible_cpu_arch_ids);
-+    if (!mc->possible_cpu_arch_ids) {
-+        return;
-+    }
-+
-     id_list = mc->possible_cpu_arch_ids(machine);
-     state->dev_count = id_list->len;
-     state->devs = g_new0(typeof(*state->devs), state->dev_count);
-
-This check seems to be acceptable in the general code path? Not all machines
-have possible_cpu_arch_ids, after all.
-
-Thanks,
-Zhao

@@ -1,87 +1,111 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2547568ejc;
-        Wed, 13 Mar 2024 08:46:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUnsfiPq0K8hB65SrSOkSQJe4DTTJHtfugRfB1OQME9lBaHwMUbyNrysjzxsyKnQ6qw2/fQ1nOgbGF5BR1Tt1TFNp6VHqT4
-X-Google-Smtp-Source: AGHT+IGUSpq/TZklVao706CiFH4mfqk1vAQw7F42P06aVnk2GAWe1Q8d8VYr3NxudiRTK+9GUdOD
-X-Received: by 2002:a05:620a:4055:b0:789:d140:5ab7 with SMTP id i21-20020a05620a405500b00789d1405ab7mr189556qko.11.1710344819500;
-        Wed, 13 Mar 2024 08:46:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710344819; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2604417ejc;
+        Wed, 13 Mar 2024 10:16:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXW9a6TaaMvrCGY0xlSsi2wdQhYEsPNIMpcSobBI+c5uVwsqZtfzOfA++8nCh5KRKaviPWUi0b+3ATQ3Po+lCWNi+RnnBJq
+X-Google-Smtp-Source: AGHT+IFLyDFjdWg5Qg78rLyiZdQNnrdUJ/04lc+KkKULxHlCW5nBIZEawpFJ301zT5yfVtGKIKWv
+X-Received: by 2002:ad4:58f1:0:b0:691:2393:2a04 with SMTP id di17-20020ad458f1000000b0069123932a04mr521674qvb.32.1710350209558;
+        Wed, 13 Mar 2024 10:16:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710350209; cv=none;
         d=google.com; s=arc-20160816;
-        b=PuR77kb8qGxggwhlICqIvqG1I/9R1O3SKXJlh3phBQCIC9UvEH+hILDfbYC+xF1r0u
-         /kFYw7tU8BtlkTaCKaOmX/BP4mkr5Fq0g3B/EPRWJEyhDXtAm1Nnarv90m9VDleWEEiK
-         mvBr9eFxcu09uAnYhywUQ+nTVAdiHu2OdAC/XMQ77QMlwD9dV02ZIITf7vFKpi8Xn0Hk
-         R56w60anJi1HjkqIL6BTwfbv8VEEdyc3AWgK5MNAxLZRIctZASzeg4m/oGwk4t4hSCdo
-         3iq41IdF3kMRzy1S2MzXciDvBR4LbDBMe96EoCEImvNlMKZfL3++D1HoJDKjl0Swruav
-         f52w==
+        b=AOLF+fAd+5EADnY2UY7lr/wY81lDiWTmVlCuDQIjX31URMzHe/+neEytceHFrNQd8E
+         AYEQsVin8jQ32ryeRnmB9jk3ACYwTY4aHWRM3G9zet+74FyMS0VLQdLhmYHiw1krZFeP
+         Zm3n+HxXaKHEVHJps62136gHwsRLPlVq7//S5aZXt5J6smP4nt85WERPGk5zEn+bpmbQ
+         BG7TUvrggs5b4NjzHyPpPJIkBsCyc8VV+B6dCEtUeWUJG9bLjwYlG0qndLWPqj1O2sCZ
+         f5fi0V6NTXFH17M/SnyhtLCMnQVSOP9KkQrmUqvvpkyD/u5/xRa1ISTwM94RSNFbZaWh
+         I1cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:mime-version:subject
-         :to:from:date;
-        bh=HMKP6XyoiRZvcdX56a+yBt32GPNWp/AkA+rOU+Lp68I=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=VRapjiZ8PQ3Zg9BL+ATug2zwFcIyuvvI9PvXPzc53nQWWCmz43d4ObYZ6ExEdeYuAv
-         +EfQwD8rQTHIrAHfzDiHSpFEsi/4vcxGyvUC5QVRKxsf+48vmPXxrceQnhRxioDykGJz
-         /AIqkiP8PJD9g4+06XdaCQsoTPB0IdfJGJQmpYywCSJchZILzI4/zmUylLxXiRlnDz0m
-         avyT+5mXDCDUtqLt+mxtitfXc5FiJZuxdvK1MgM2kgFiY7qLnFlaMSpMn0m9mwukpdwH
-         2dQx1bGpQOgOilvbi2Ze4dEKEffIU1RK+rukM6XkrywpoJ8eUIdq2E+h09sQaEQ1mjFm
-         IGlw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=UJWMtCfVTsmWBPRveH0G4AEo2GwXdUG/wQ/ozwSb608=;
+        fh=SMeGIPMWi0JoAB5Abyk93fJsyzjYg7EVU0EmTBL1F4E=;
+        b=T5P/useoKxNp3FvvrAxWZQ17v9afXsQ0us7JbvEh0jC+kyoSOfYSWVFkdjERVNQ8Nw
+         /1zCDB3kMOK1+CNZXtKzsRQbfdI0godWZpsSbJ0nG+7Ty2Kr7ZDfKNuddD9tWcIYFPbO
+         ftPFtntf3Ih7IrYfNsYf1So512mAiNKJUV9YXfYpTA70e3GPEUDgIfKIUsShinCkNV7C
+         wuUgFE9h0KT7azGXq6izl0sDu7sZRtOnP1bmGH2DruhIaM5grSRa2aq/SpW+K7hd4/y/
+         JaFJT3q0FHoeLsgcI9wu2UMUWvbo//Sfz806xaBev/5TTMJGMySJDAks+YI06oj1xL8P
+         NUNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=ghCMsm2G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj19-20020a05620a191300b0078839b2e9b4si10771175qkb.245.2024.03.13.08.46.59
+        by mx.google.com with ESMTPS id gs9-20020a056214226900b0068fb8db15fdsi10107138qvb.54.2024.03.13.10.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Mar 2024 08:46:59 -0700 (PDT)
+        Wed, 13 Mar 2024 10:16:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=ghCMsm2G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rkQoU-0003r4-ME; Wed, 13 Mar 2024 11:46:50 -0400
+	id 1rkSDX-0001eP-9m; Wed, 13 Mar 2024 13:16:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhouxia_icsr@zju.edu.cn>)
- id 1rkPc3-0007H4-Op
- for qemu-arm@nongnu.org; Wed, 13 Mar 2024 10:29:47 -0400
-Received: from azure-sdnproxy.icoremail.net ([52.237.72.81])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhouxia_icsr@zju.edu.cn>) id 1rkPbz-0004Mw-5F
- for qemu-arm@nongnu.org; Wed, 13 Mar 2024 10:29:47 -0400
-Received: from zhouxia_icsr$zju.edu.cn ( [221.218.138.111] ) by
- ajax-webmail-mail-app4 (Coremail) ; Wed, 13 Mar 2024 22:29:28 +0800
- (GMT+08:00)
-X-Originating-IP: [221.218.138.111]
-Date: Wed, 13 Mar 2024 22:29:28 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Xia Zhou" <zhouxia_icsr@zju.edu.cn>
-To: qemu-arm@nongnu.org
-Subject: Will QEMU Support ARMv8.9-A Permission Indirection & Overlay
- Extensions?
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT5 build
- 20231205(37e20f0e) Copyright (c) 2002-2024 www.mailtech.cn zju.edu.cn
-Content-Type: multipart/alternative; 
- boundary="----=_Part_101905_1831961221.1710340168870"
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rkSDS-0001Y7-Lz
+ for qemu-arm@nongnu.org; Wed, 13 Mar 2024 13:16:38 -0400
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rkSDD-0003uT-0W
+ for qemu-arm@nongnu.org; Wed, 13 Mar 2024 13:16:32 -0400
+Received: by mail-lj1-x235.google.com with SMTP id
+ 38308e7fff4ca-2d09cf00214so610241fa.0
+ for <qemu-arm@nongnu.org>; Wed, 13 Mar 2024 10:16:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710350177; x=1710954977; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UJWMtCfVTsmWBPRveH0G4AEo2GwXdUG/wQ/ozwSb608=;
+ b=ghCMsm2GZd0R1yrutzKUQiotZxlR1Y+qYh1GH6otljQYjspriciyxolmyeY9S8D2e4
+ V/V9k0dWOwZBLOsMYEET/Kklb+3PN9XmB1f5RIlaGsB6uCwQ0OMxexByehPL1AdChyHD
+ AN7VZG3fk0bXUiLGWoaRD2Fls0hv0i8Up033bHQZy03Kx9rf4JMxNomHmhfTd/AZ3M3K
+ lq51/f4HysC7QNqVf/lDg+d9wBbDckZInxWYGTSbRz/lhKq2EMbQgLAQS9lZlBV0htVf
+ UIMxLeqDBo3zENA+GTFib91T3RBfmesBDNnbK3p6/R2q1xGt3jZr0ApG9ok/RsGOkf67
+ 9HPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710350177; x=1710954977;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UJWMtCfVTsmWBPRveH0G4AEo2GwXdUG/wQ/ozwSb608=;
+ b=i/R+A8+m+8fp8pv8rADCQlUAWTY4cbFkQ69MIeJQ3Yho/ruj+loYg5ilvjQ1oHeq0U
+ PtdleQx5xsaWP/dM/kClu1WZk79wKtv8AScu5ACvUGmfKG85yCO5slT4MpyyQaNf5fRT
+ BYKJnKzh07F+0SvoCYlmGGzoGgD/Qx6oCngzLZhy+8kQKE1n+GWuMBbHOnpyTaCZzhAk
+ GcgYwCrLkvnjB4u8vFa45tdeuJMlUmqjD+bgfR2yJjxfwrGjsbqllRN3xRHw5a+HtyHD
+ /4GrBHN/buoILO63hzYtOPMd5Zy6zURpTZ6B8rgbERIpVi3mYOIhrHJltMK0jMUHFi+O
+ WAZQ==
+X-Gm-Message-State: AOJu0YyvQHRy71Y9H4IZ71OO5leLV1ZMZiXCDSTYBnR29XyBXYwe3nvd
+ 7kjiUVny5BvlUb3KuDWVtESlB1FPEJBH5LNT/9cts4367yTHoRzHeM80k0SJMLS1FsCLjGk4bcn
+ AG3FrZuCZDR5cuTO+hqXEBSEE/qXFnnBm2Vy/rw==
+X-Received: by 2002:a2e:8297:0:b0:2d4:2958:6daf with SMTP id
+ y23-20020a2e8297000000b002d429586dafmr2913501ljg.20.1710350176949; Wed, 13
+ Mar 2024 10:16:16 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <4f10e5bd.71e7.18e3837dca6.Coremail.zhouxia_icsr@zju.edu.cn>
-X-Coremail-Locale: en_US
-X-CM-TRANSID: cS_KCgA3W79JuPFl02N6AA--.8454W
-X-CM-SenderInfo: p2kr355ldbxudvu66yvxohv3gofq/1tbiAg4TBmXxrqoBHQAAsV
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
- CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
- daVFxhVjvjDU=
-Received-SPF: pass client-ip=52.237.72.81;
- envelope-from=zhouxia_icsr@zju.edu.cn; helo=azure-sdnproxy.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+References: <4f10e5bd.71e7.18e3837dca6.Coremail.zhouxia_icsr@zju.edu.cn>
+In-Reply-To: <4f10e5bd.71e7.18e3837dca6.Coremail.zhouxia_icsr@zju.edu.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 13 Mar 2024 17:16:06 +0000
+Message-ID: <CAFEAcA_b_VNjR8Z=RzMLW1vuzH6F+XhvhpiEpbE-sW_hpdyXkA@mail.gmail.com>
+Subject: Re: Will QEMU Support ARMv8.9-A Permission Indirection & Overlay
+ Extensions?
+To: Xia Zhou <zhouxia_icsr@zju.edu.cn>
+Cc: qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::235;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x235.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 Mar 2024 11:46:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,52 +119,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vNlkOHy2mB+v
+X-TUID: jMELfZInGfLg
 
-------=_Part_101905_1831961221.1710340168870
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+On Wed, 13 Mar 2024 at 15:46, Xia Zhou <zhouxia_icsr@zju.edu.cn> wrote:
+> Does QEMU-ARM have any plan to support the new permission indirection & overlay extensions of ARMv8.9-A [1]? These features involve FEAT_S1PIE, FEAT_S1POE, FEAT_S2PIE, and FEAT_S2POE. ARM64 Linux has patches for these features [2] [3].
 
-SGksCgoKCgpEb2VzIFFFTVUtQVJNIGhhdmUgYW55IHBsYW4gdG8gc3VwcG9ydCB0aGUgbmV3IHBl
-cm1pc3Npb24gaW5kaXJlY3Rpb24gJiBvdmVybGF5IGV4dGVuc2lvbnMgb2YgQVJNdjguOS1BIFsx
-XT8gVGhlc2UgZmVhdHVyZXMgaW52b2x2ZSBGRUFUX1MxUElFLCBGRUFUX1MxUE9FLCBGRUFUX1My
-UElFLCBhbmQgRkVBVF9TMlBPRS4gQVJNNjQgTGludXggaGFzIHBhdGNoZXMgZm9yIHRoZXNlIGZl
-YXR1cmVzIFsyXSBbM10uCgoKCgoKCgpbMV0gaHR0cHM6Ly9kZXZlbG9wZXIuYXJtLmNvbS9kb2N1
-bWVudGF0aW9uLzEwMjM3Ni8wMjAwL1Blcm1pc3Npb24taW5kaXJlY3Rpb24tYW5kLXBlcm1pc3Np
-b24tb3ZlcmxheS1leHRlbnNpb25zCgpbMl0gaHR0cHM6Ly9sd24ubmV0L0FydGljbGVzLzkyNTc1
-Ny8KClszXSBodHRwczovL2x3bi5uZXQvQXJ0aWNsZXMvOTQ5MTI2Lw==
-------=_Part_101905_1831961221.1710340168870
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+It's likely that we'll support them eventually, but we
+usually lag behind the bleeding edge of the architecture
+somewhat. I don't know if anybody has any concrete plan to
+work on this specific feature.
 
-PHN0eWxlIGNsYXNzPSJrZS1zdHlsZSI+CltsaXN0LXN0eWxlLXR5cGVdIHtwYWRkaW5nLWxlZnQ6
-MjBweDtsaXN0LXN0eWxlLXBvc2l0aW9uOmluc2lkZX0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkge21h
-cmdpbjowfQpbbGlzdC1zdHlsZS10eXBlXSBsaTpiZWZvcmUsIHNwYW4ua2UtbGlzdC1pdGVtLW1h
-dHRlciB7Zm9udC1mYW1pbHk6InNhbnMgc2VyaWYiLHRhaG9tYSx2ZXJkYW5hLGhlbHZldGljYX0K
-W2xpc3Qtc3R5bGUtdHlwZV0gbGkgcCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoMSxbbGlzdC1zdHls
-ZS10eXBlXSBsaSBoMixbbGlzdC1zdHlsZS10eXBlXSBsaSBoMyxbbGlzdC1zdHlsZS10eXBlXSBs
-aSBoNCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoNSxbbGlzdC1zdHlsZS10eXBlXSBsaSBkaXYsW2xp
-c3Qtc3R5bGUtdHlwZV0gbGkgYmxvY2txdW90ZXtkaXNwbGF5OmlubGluZTt3b3JkLWJyZWFrOmJy
-ZWFrLWFsbH0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkgdGFibGUge2Rpc3BsYXk6aW5saW5lLWJsb2Nr
-O3ZlcnRpY2FsLWFsaWduOnRvcH0KcHttYXJnaW46MH0KdGQge3dvcmQtYnJlYWs6IGJyZWFrLXdv
-cmR9Ci5kZWZhdWx0LWZvbnQtMTcxMDMzOTMzNTk3NnsKfQo8L3N0eWxlPjxkaXYgY2xhc3M9ImRl
-ZmF1bHQtZm9udC0xNzEwMzM5MzM1OTc2IiBkaXI9Imx0ciI+PHAgc3R5bGU9ImZvbnQtc2l6ZTox
-NnB4OyI+SGksPC9wPjxwIHN0eWxlPSJmb250LXNpemU6MTZweDsiPjxicj48L3A+PHAgc3R5bGU9
-ImZvbnQtc2l6ZToxNnB4OyI+RG9lcyBRRU1VLUFSTSBoYXZlIGFueSBwbGFuIHRvIHN1cHBvcnQm
-bmJzcDt0aGUgbmV3IHBlcm1pc3Npb24gaW5kaXJlY3Rpb24gJmFtcDsgb3ZlcmxheSBleHRlbnNp
-b25zIG9mJm5ic3A7QVJNdjguOS1BIFsxXT8gVGhlc2UgZmVhdHVyZXMgaW52b2x2ZSA8c3BhbiBz
-dHlsZT0idGV4dC13cmFwOndyYXA7Ij5GRUFUX1MxUElFLCBGRUFUX1MxUE9FLCBGRUFUX1MyUElF
-LCBhbmQgRkVBVF9TMlBPRS48L3NwYW4+PHNwYW4gc3R5bGU9InRleHQtd3JhcDp3cmFwOyI+Jm5i
-c3A7PC9zcGFuPkFSTTY0IExpbnV4IGhhcyBwYXRjaGVzIGZvciB0aGVzZSZuYnNwO2ZlYXR1cmVz
-IFsyXSBbM10uPC9wPjxwIHN0eWxlPSJmb250LXNpemU6MTZweDsiPjxicj48L3A+PHAgc3R5bGU9
-ImZvbnQtc2l6ZToxNnB4OyI+PGJyPjwvcD48cCBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij48c3Bh
-biBzdHlsZT0idGV4dC13cmFwOm5vd3JhcDsiPlsxXSBodHRwczovL2RldmVsb3Blci5hcm0uY29t
-L2RvY3VtZW50YXRpb24vMTAyMzc2LzAyMDAvUGVybWlzc2lvbi1pbmRpcmVjdGlvbi1hbmQtcGVy
-bWlzc2lvbi1vdmVybGF5LWV4dGVuc2lvbnM8L3NwYW4+PC9wPjxwIHN0eWxlPSJmb250LXNpemU6
-MTZweDsiPjxzcGFuIHN0eWxlPSJ0ZXh0LXdyYXA6bm93cmFwOyI+WzJdJm5ic3A7PHNwYW4gc3R5
-bGU9InRleHQtd3JhcDpub3dyYXA7Ij5odHRwczovL2x3bi5uZXQvQXJ0aWNsZXMvOTI1NzU3Lzwv
-c3Bhbj48L3NwYW4+PC9wPjxwIHN0eWxlPSJmb250LXNpemU6MTZweDsiPlszXSZuYnNwOzxzcGFu
-IHN0eWxlPSJ0ZXh0LXdyYXA6bm93cmFwOyI+aHR0cHM6Ly9sd24ubmV0L0FydGljbGVzLzk0OTEy
-Ni88L3NwYW4+PC9wPjwvZGl2Pg==
-------=_Part_101905_1831961221.1710340168870--
+(This feature is a bit awkward for QEMU because the indirection
+isn't permitted to be cached in a TLB, and QEMU's core TCG design
+is pretty heavily designed around permissions always being in the
+TLB. I don't know if there's a nice way for us to implement it or
+if we'd have to flush the TLB every time the guest changed the
+overlay permissions...)
 
+-- PMM

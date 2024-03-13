@@ -1,177 +1,178 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2655356ejc;
-        Wed, 13 Mar 2024 11:51:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWnz17yrMOZv8tq2KbNLIhjYg4QuZwGN2GkjkpYr8/9kNO9KU9LedzmWRxd146dK/+fIbnac90irJMpwaa2qT+aFvdqlKyZ
-X-Google-Smtp-Source: AGHT+IGjQ6oJhYYKFKUh+Kd6qH6O3d2bVsYmsBjNSwY7yyrf3yejmmp1nGyAfWQNB4eMPHADZXhU
-X-Received: by 2002:a05:6902:1b09:b0:dcc:9d30:58a0 with SMTP id eh9-20020a0569021b0900b00dcc9d3058a0mr3618511ybb.64.1710355897272;
-        Wed, 13 Mar 2024 11:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710355897; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2667758ejc;
+        Wed, 13 Mar 2024 12:12:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXvEC5PTLAgmGlMYDkE7yctWd8HYOo8EXJJBx9opgaul65Q8y/Ak92JXs6vgYYoKk/uwG9qXMRXQORpklDgN0BosbGZ9SNV
+X-Google-Smtp-Source: AGHT+IGhMlymYe0yq7mGatUroyzgkgiHiFwEgGGFeBjhX+4jA8fg8p6TdjY5TfV2b6HasbT/CLVa
+X-Received: by 2002:ae9:f215:0:b0:788:255b:3f5e with SMTP id m21-20020ae9f215000000b00788255b3f5emr694048qkg.75.1710357176529;
+        Wed, 13 Mar 2024 12:12:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710357176; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZEPzpz+N2kG20U+negj21F4VZWnueB3KMa3pT13AOfe3/whj0weXz2du9jC6bi71cl
-         q0Fy+qH+Ppt6aqJQ+0HYc8Vq16G50wHB0OJJ18o8TbVS6XTjN4krdfCdEjCICkZZ5EzW
-         aVErbFQIyvAgr0R7CcrAYDCzxGIoIc4U1DXrATLnz14RLiS9aEIZXULcfe8jPOtxIlk8
-         FE83HM9u709SaRH/HZLzambFTsNMnNYniZ6SL3/N80b+qRGNLRlmpsI/uEC2eoy8yMcT
-         pSW3J4tun8Hjv192Ld5k+FgzDkT7Eupm+it7tgpFlunU728frNUHmGdILHEPsLePhoo/
-         ObqA==
+        b=Vt/84AggXiBYLwKFPUnf3DLb32zRDZprJbqKB5yGhV4m6Boa+I2FYVKAj3AFW1xt/R
+         Yz0T+wF4xfI3QnVPs2pdj98zfP11NcbhzVwO5lEAbQCGn3tRi4qVCWLcei3yynuiduOR
+         leMD3ZHUCsoqgeCBOf0dFTzQ6y+XfJMS7XtCHKa0GNx3SRvM82U3V9aTz0fRfxHq3THA
+         bx6gkLcdzt9Z5hixdKnOMAhRyE54aM3EvycZiF37c6Y9ezwlS8Drk5+pY3WpxsoE1F4P
+         a33mWaoyOzDEeH9kKnhTIJjGt5ZCCLA+zBZWCvsmgMOfm2zlLuqiC9xhGLqLPhSmdUr4
+         vZwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=c2tKyqNq18mnQFUnvgOLAQJ9bujVYus/vlpKAdDFa/k=;
-        fh=aGZTIr0kq9izro58BcTksSEiZzOqKaj7frLxg/3wpBI=;
-        b=Ed+OGRagzouRqKUc0Gp53TYVcvgJyQA4c99Nb/+OdzFczkdfT2fEibiBY1dNSgaBGc
-         zqtwore7Ij8bQ6C6A5iu9pfjrxjQujKSCWvppytbeHe9W4uR6/hlAV4cLdv2h+2dhbh1
-         UHoDbEvULLXGNBvjqKbIZy/HDcuzhApASxLkrayQWT/JqxOdrm0Rd/mZkhFv6tEhEcW1
-         k1BLaTVrQhd8gSZck+J33JHSLBDxRaoUG5RbE/0QWXGb+2K1SuYiYbEf2INTN3v08l+e
-         cJYIlgRj+zYBqBiU1RMXH7gJhlgBWweajBodyDD7/X4gJ10qZYdOkPurH4TP5cue4olr
-         PkNw==;
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id;
+        bh=dkPJwQB5WpogXWAK0veLpn3jDoLGj118SyNxpCPsz5s=;
+        fh=BI9Pe6Z9Mv/w/YnpyeiS1KSHJEuys+gj/NtrFzpHJfM=;
+        b=Q0LtwLI5EaSPukgbI808f/yrqlF4fXXxhfWpledSm2La9jKhx9qEFEHaJyZ14h8f/D
+         UEbZRjlN97jdzTA7dabYE+F90L/Sn0hK5L2gX6GBCC541BMAp3TD2G0HM/Cc5cami96a
+         KdKrHTq8rGO458z0fMvEKO/1Wff0YxuJJ0RyWiQpCAQAsOzWqHKhw+riCRjWDz2COBXK
+         TJyzrAh5jr+xHVZUj82u8+vc2qVBEK11z5l0z2aVkL5mhrbINdF3dqFYguGRiEmHbML5
+         kj0gimIqsEhoDsbp2Okbp7hlD7KXwOCgHJa6dd7/1kR0rVHcX9JYMWtVah/OXxkLvlkw
+         MYvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qXOIyT2N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3-20020a05622a034300b0042ef6607fd4si10549119qtw.95.2024.03.13.11.51.37
+        by mx.google.com with ESMTPS id s1-20020a05620a030100b00788371ee81csi10263246qkm.25.2024.03.13.12.12.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Mar 2024 11:51:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Mar 2024 12:12:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qXOIyT2N;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rkTgT-0001bw-K7; Wed, 13 Mar 2024 14:50:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rkU1f-0001PU-1N; Wed, 13 Mar 2024 15:12:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rkTgK-0001aQ-G9
- for qemu-devel@nongnu.org; Wed, 13 Mar 2024 14:50:29 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rkTgH-0004DB-S2
- for qemu-devel@nongnu.org; Wed, 13 Mar 2024 14:50:28 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-412e784060cso8085975e9.1
- for <qemu-devel@nongnu.org>; Wed, 13 Mar 2024 11:50:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710355824; x=1710960624; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=c2tKyqNq18mnQFUnvgOLAQJ9bujVYus/vlpKAdDFa/k=;
- b=qXOIyT2NKkSKe4DIfdACtVnqJ9uMMjDKOuPwOwBCK75YZBCWhnlFxr3hsHAepZv97I
- gaPb2S/eFRwgNbh1b0TRphUSbb3ZxkWDbxDO/3w+E+ZkmdASXsA8HWeSXtfN3MopESp9
- EndtKzXCMQdS+bBcQv2+iMIJyrzyZriDBaFsg888c/SbYI7kdA5pcuTxcgdC7QrLmLDV
- 2GAaupfrujvMiC25THscTIZmIna/wt/0hQfztgweGmPN5BZylAgpzbBgZFm7TN+CXosR
- b3jg+72+SFlpauidtZFhnNdH4/84wA2iUS4aQMMMF0WNndHhYYU+hd30NyRD+R7Yjj5p
- 0gXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710355824; x=1710960624;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=c2tKyqNq18mnQFUnvgOLAQJ9bujVYus/vlpKAdDFa/k=;
- b=exSVyeSDjh/uQ3DIvXEvE5c7OjmW9CxFQasT5xOxiXK7kUS9CP4qx1PZCoWHIUVrkc
- ov15aESfzWFpBfajkrPx+Fh0+nMA7jhj82ZoGIl2a/HZbLcwrIFj4VFtQtYP4x22Tkct
- WMjb42VTObjyLVKARL9AVBbb0HVIJGrAk5TMYGXM9GsfMYerrnKUPsAsVmAp92BjY3jG
- tGEPTJkEw29qNJQlBruxYTpfLDtaVDtD43DdNxpCaQKCXhm6PdevcGNOiVidvW9H9UcA
- g2Aghi+Ee15JznCHwquWwl9FqJ2pjV2UR5DpIUsVDDaNi7W8W9Zm0pu2t5aniMcV3Rh3
- J3FQ==
-X-Gm-Message-State: AOJu0YwvYfh5ns8H3jDVNv2SgQTb4jf4jT8w6NXDe/lPWaIQmjV7kmaX
- ZlauNnJeM6NJ9ShE7n9Y0yHE4pfYeKBZqCb0GCetVdFInH+KmrrtFnWw7PiPDeXGZOVp39ZpUVO
- q
-X-Received: by 2002:adf:cd10:0:b0:33e:b787:5beb with SMTP id
- w16-20020adfcd10000000b0033eb7875bebmr2237803wrm.0.1710355823908; 
- Wed, 13 Mar 2024 11:50:23 -0700 (PDT)
-Received: from m1x-phil.lan ([176.176.182.179])
- by smtp.gmail.com with ESMTPSA id
- a17-20020adffad1000000b0033dc7e50488sm12209454wrs.96.2024.03.13.11.50.16
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 13 Mar 2024 11:50:23 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- John Snow <jsnow@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Eric Auger <eric.auger@redhat.com>, qemu-block@nongnu.org,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 2/4] accel/hvf: Un-inline
- hvf_arch_supports_guest_debug()
-Date: Wed, 13 Mar 2024 19:49:52 +0100
-Message-ID: <20240313184954.42513-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240313184954.42513-1-philmd@linaro.org>
-References: <20240313184954.42513-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rkU1b-0001PL-LW; Wed, 13 Mar 2024 15:12:29 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rkU1Y-0007fe-BW; Wed, 13 Mar 2024 15:12:27 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 0B2C755BBF;
+ Wed, 13 Mar 2024 22:13:24 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 9C71A9899B;
+ Wed, 13 Mar 2024 22:12:19 +0300 (MSK)
+Message-ID: <0ad81b09-e115-42df-a5c0-b8032b0e8875@tls.msk.ru>
+Date: Wed, 13 Mar 2024 22:12:19 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] target/arm: Fix 32-bit SMOPA
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Zhuojia Shen <chaosdefinition@hotmail.com>
+References: <20240305163931.242795-1-richard.henderson@linaro.org>
+ <ffe7207d-c88f-444f-804f-a3597976ee3e@tls.msk.ru>
+ <1f5e8229-18d5-46e5-afba-3fecf2c5504b@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <1f5e8229-18d5-46e5-afba-3fecf2c5504b@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DFQp0LwDWDqJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AJSDXWj/Vf9C
 
-See previous commit and commit 9de9fa5cf2 ("Avoid using inlined
-functions with external linkage") for rationale.
+10.03.2024 21:13, Richard Henderson wrote:
+> On 3/9/24 08:40, Michael Tokarev wrote:
+...
+>> I tried to pick this one up for stable-7.2 (since the fix is for older commit),
+>> and faced a fun issue in this change to tests/tcg/aarch64/Makefile.target,
+>> since 7.2. doesn't have CROSS_AS_HAS_ARMV9_SME yet.  I went on and found out
+>> that the following commits:
+>>
+>> v7.2.0-374-gbc6bd20ee3  target/arm: align exposed ID registers with Linux
+>> v8.0.0-2358-g3dc2afeab2 tests/tcg/aarch64/sysregs.c: Use S syntax for id_aa64zfr0_el1
+>>                          and id_aa64smfr0_el1
+>> v8.0.0-2361-g1f51573f79 target/arm: Fix SME full tile indexing
+>>
+>> applies to 7.2, and lets this "Fix 32-bit SMOPA" change to apply cleanly,
+>> including this very change in Makefile.target.
+>>
+>> Now, 1f51573f79 "Fix SME full tile indexing" is Cc'd qemu-stable already, but
+>> it is not in 7.2.x for some reason which I don't remember anymore, so it is
+>> a good one to pick up already.  3dc2afeab is tests-only.
+> 
+> Oh wow, I didn't expect the fix to get propagated back that far.
+> I was expecting only back into the 8.x series...
+> 
+>> And bc6bd20ee3 (from Dec-2022) seems like a good candidate too, is it not?
+> 
+> Sure, couldn't hurt.
+> 
+> If it all applies without drama, all is well.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/hvf/hvf.c  | 2 +-
- target/i386/hvf/hvf.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+While it goes fine, it doesn't quite work actually:
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index e5f0f60093..65a5601804 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2246,7 +2246,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu)
-     hvf_arch_set_traps();
- }
- 
--inline bool hvf_arch_supports_guest_debug(void)
-+bool hvf_arch_supports_guest_debug(void)
- {
-     return true;
- }
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 11ffdd4c69..1ed8ed5154 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -708,7 +708,7 @@ void hvf_arch_update_guest_debug(CPUState *cpu)
- {
- }
- 
--inline bool hvf_arch_supports_guest_debug(void)
-+bool hvf_arch_supports_guest_debug(void)
- {
-     return false;
- }
--- 
-2.41.0
+https://gitlab.com/qemu-project/qemu/-/jobs/6386966720#L2482
 
+timeout --foreground 90  /home/gitlab-runner/builds/E8PpwMky/0/qemu-project/qemu/build/qemu-aarch64  sme-smopa-1 >  sme-smopa-1.out
+warning: TCG temporary leaks before 0000000000400714
+qemu-aarch64: ../tcg/tcg.c:1052: tcg_temp_free_internal: Assertion `ts->temp_allocated != 0' failed.
+timeout: the monitored command dumped core
+Trace/breakpoint trap
+make[1]: *** [Makefile:170: run-sme-smopa-1] Error 133
+make[1]: Leaving directory '/home/gitlab-runner/builds/E8PpwMky/0/qemu-project/qemu/build/tests/tcg/aarch64-linux-user'
+make[1]: *** Waiting for unfinished jobs....
+make[1]: Entering directory '/home/gitlab-runner/builds/E8PpwMky/0/qemu-project/qemu/build/tests/tcg/aarch64-linux-user'
+timeout --foreground 90  /home/gitlab-runner/builds/E8PpwMky/0/qemu-project/qemu/build/qemu-aarch64  sme-smopa-2 >  sme-smopa-2.out
+warning: TCG temporary leaks before 0000000000400730
+qemu-aarch64: ../tcg/tcg.c:1052: tcg_temp_free_internal: Assertion `ts->temp_allocated != 0' failed.
+timeout: the monitored command dumped core
+Trace/breakpoint trap
+
+Does it make sense to pick this for 7.2 with the above failures?
+
+Unfortunately this test does not run on a private repository clone on gitlab,
+that's why I haven't noticed this immediately.
+
+Thanks,
+
+/mjt

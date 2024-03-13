@@ -1,391 +1,173 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2118001ejc;
-        Tue, 12 Mar 2024 15:40:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXpH7kaCCrqMN/GYr43znJG3h+4W6rus8tj7mxPOEDxD4ZvxN8Us3VFSJVzZXit11VdpBaRIEgILho7oSD/0YbuNxj0XGzK
-X-Google-Smtp-Source: AGHT+IFWFWK0J6LbKbJCTG2lkuPYqoM0mpz4PcSqv/f8mtqXFhH6M6wFHMChJI1OsrjSJAuuZBeE
-X-Received: by 2002:a05:6214:3002:b0:690:d777:ed0 with SMTP id ke2-20020a056214300200b00690d7770ed0mr7137801qvb.40.1710283214876;
-        Tue, 12 Mar 2024 15:40:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710283214; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2399100ejc;
+        Wed, 13 Mar 2024 04:45:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU067Sur2refthZ8Io302+ruzuTw4H3TvsudIvUhuvZMyTnVVPdgdJnPOo6KY1r9AOFBqGCnlEC+zm9+joJXtQkqV1QYb48
+X-Google-Smtp-Source: AGHT+IGmzslrE6/rrDZ81d5LFmykRB4zut/7zB33CgRXnC6VbAi6r79MXjD1TapJ60ehcj2nTsxM
+X-Received: by 2002:a05:6214:5c4:b0:690:bc2e:a67f with SMTP id t4-20020a05621405c400b00690bc2ea67fmr2828538qvz.37.1710330328273;
+        Wed, 13 Mar 2024 04:45:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710330328; cv=none;
         d=google.com; s=arc-20160816;
-        b=C0XtqpgziVSnVUPV72wb/1Sc+OVkMkUyjsApWWkXyTlQVqONzdIhPrgqc1GvJIwQUU
-         qwZfAsmnvO1P6AiHF8TWuEdDcSkQTR146KpdlsypC+tc+1mQEUpIjGuDv0CcF5s6q7+B
-         KSI5P482dlbsPViukPUhxl5m8CbVsV2OaKE26zg/hcf+dRxInTmotXUrV7RJEPgaeo6Z
-         dlwMD00Mml/R0HTfVFMC4/bhIIJm+buvMnDQVLlc6M84b0ZkVF26Z+pliEwfkqE4Hd6s
-         +LsAoDk7eCv9pO0F1fNT8C9AUbIcT95DTuUF9mGEvO+mgPkNjBsts7ij8useEI+FsQle
-         b7Hg==
+        b=MSGCmfHGy5e8WfFhWR1eBmm+5e36IakKgRLAxXqvda4ruTXpT03Q8Q3MBDn8sDaz7k
+         0MVZXzViD5j066ybZX6lVUgUuhrx0RL2rlchg1chUtNK+mc0UvUf6u5m8NU3UXws3EpU
+         Tt72f6HBZ5OjGL5QJTbBChgNVeHWDeODfzs+sBi5ANeWHNnsJClrGT3KRB+96UshuRp9
+         PQ0vY1b+xZJ6MIxMmd2NiXoCnvioGecpPpt4eoXBMRg/uVp+xG+R1pR+BBvxRaDr55rn
+         Fn0JDOyt0/5FQp/tLoE6Y60qCZAxtEPLvTYFQNYKiryL8lLa59pU8zp3222FSnoOnCfv
+         Wupw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
-        fh=52OH1gOgoglLtPjOQKI4VIbbYeaFLZucBM/rZQCKuRU=;
-        b=b+OcZnsmWodFdjU1DT4O+Se6K4oWRqiqpR5Ru/i1WIlvMIaD+lLnHTQU1pRHiif0/C
-         vT3tOeu9g2udXK6kMeB4RCJAEfKxPi/cWoi0e0aK24FDAAUsplxyoDLDkn0Kc3RW97PD
-         NJ/e2EuhGVfFzfouAyGLNeW/Ns+UJmNEaTY/LDAHjgtJMB09W6vxxdZVAQcrCEYY2Ecw
-         iVKfClVnBTSSBW3zylarAR6DyLRqElPbMbHCSr3B6H4jgmUQ6SEmyLJR7yolJwKQy4I8
-         bp/ro4mE+LftZr7B/l+p3pn7Twpuh0FROV7p6eRzxq2djKXB2CYnoZQ9+LgnTJUNKF5e
-         jIUQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=YiBLyKUiP5fWogCu58cDeSiwf0mKYYrCZi1EDZXDNis=;
+        fh=SyFnjqIX04GLstmyT0Rp5gk7Y78cxxBaxD9QRqFyLug=;
+        b=sha0/SFqfwmfMFlA62MpPKXf7VwcRDNU7kqI/nrbcDO0oTS4bXADSIUGtMp0wY6C1U
+         QRdn8X7oOEMXxXXnKUFxYhsUWudJRJdk78vB8YyvuHNkd5d/qx47058SspscM0jok0Nw
+         +FCip+pLDc3V7BP0lsWgGJxjpWIYJxkp1jnMVISc0uBVdfW230Uw/MSIbJ0oyah0IyUH
+         evRw4MvbNtWbdmV7W324fTlds7eBzPabMSUY2jov+WKugyvYU7Lo1BCn3BPC69ojAKAQ
+         P2aVKY0Q8/dYyZA85T1+q8Df50EKZTpSDnuUZbYWGxNSm3w8U/vwWb5LFzzndxp49hRy
+         OlJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuKZsuIx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=yv+zh1J7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6-20020a0562140d8600b0068f7d3144acsi8054661qve.449.2024.03.12.15.40.14
+        by mx.google.com with ESMTPS id 2-20020a0562140d4200b00690c73c1552si8287452qvr.562.2024.03.13.04.45.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 15:40:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Mar 2024 04:45:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuKZsuIx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=yv+zh1J7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rkAdI-0005V9-Ge; Tue, 12 Mar 2024 18:30:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rkN2R-0003lG-0c; Wed, 13 Mar 2024 07:44:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAbx-0002oT-Dh
- for qemu-devel@nongnu.org; Tue, 12 Mar 2024 18:28:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rkAbs-0004aC-Eb
- for qemu-devel@nongnu.org; Tue, 12 Mar 2024 18:28:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710282515;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
- b=EuKZsuIxB8hzA8rWqvIyMbr1v1FezI9d+C+wQ1o/OT16G/Oz729oK8eqWzZsupVnuBK370
- JZqbyx43TF6HaDx50jEI6B+50mPHuOGXxxMzA5HOwSftkW1Xg4bG6hdxslsTWl0DL3oqja
- ZOKJ2g4Q0oTs4hiQseKPnIRyPxmgdto=
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-588-dzFvI5WaNimTuQBZrZgY7Q-1; Tue, 12 Mar 2024 18:28:34 -0400
-X-MC-Unique: dzFvI5WaNimTuQBZrZgY7Q-1
-Received: by mail-lj1-f199.google.com with SMTP id
- 38308e7fff4ca-2d44551e1ccso2831621fa.3
- for <qemu-devel@nongnu.org>; Tue, 12 Mar 2024 15:28:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rkN2L-0003kp-62
+ for qemu-arm@nongnu.org; Wed, 13 Mar 2024 07:44:47 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rkN2J-0002HB-Jk
+ for qemu-arm@nongnu.org; Wed, 13 Mar 2024 07:44:44 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-33e6aca1ca9so6421743f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 13 Mar 2024 04:44:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710330281; x=1710935081; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YiBLyKUiP5fWogCu58cDeSiwf0mKYYrCZi1EDZXDNis=;
+ b=yv+zh1J7WBX+psXqd58/drbe8klSVqflx3vYpgEyRAYzuBc6GWqpivH9/vVyY76itT
+ mjvaAB7/ClWWCJiNIOvfikD+HBobn6SyhdOA1gRuibinQWjtl50QlXMO7Y+gAAey54NH
+ SKnValZ56mvxnVdC5GPEfxIGmtcoe9vlh8tiXmK5U0rSia4u8SnnGj8YD0AdlcJSHxd1
+ +NXghq9SKddnFAFSI9d+L5C5ilcr/Xkjo26XeVbTbEbQnciNmSkGHSjEDreuAQ2myURY
+ Z/k/FNYiz60PX8zQ+2RBUWQPOwUown+tCZ6eZyiS3xwGgjx8OJSCGiFZMhsO7zaeCGnL
+ jJdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710282513; x=1710887313;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
+ d=1e100.net; s=20230601; t=1710330281; x=1710935081;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f5mdyjCEbyffW9T7OKjJbIrqSM8blOZkF1pxw/tMTzk=;
- b=KnE9MJ9TwDW3mmPdpc8oiOOUWcR7uFBaL0cvs80+B2oraUyoD+Y0taqzdT1QT8X2bw
- soD5DFnStLHMrwazPKFWF5CSd5GMD3eur/+VIcL5XGOWcbJy4Op219e+S7lMWzSKS303
- mmx2Ulm7rKMiY8YYbMj8gF3pZxS7OMY8h8bMiZdbT4tvRipF8j4JgBouR013VG5jtVBU
- PWb870jRJNmviiELAViBa4A/y+FD+9Mak1E9EL5kHTBXGGuC3sLf63HUyyttsohtBVmr
- 1gR+s6P885VhbHzQJYVHKWsQ5elABUef9ZzB4adzw3UWcNeZxlmIV6AtBwiroXLBPhmA
- HJkQ==
-X-Gm-Message-State: AOJu0YyeIt7HUthS6zu2qQEbSEezFZ2HMssgMlGu5qB+OkIOiH6ZaX7d
- Ly3wyYHvaxw9KTvVeBajNz2DppUQJgP/jjE5na2VW8rvc/cV22Ca31v7F8kzCyO75U6n1m3zxJ6
- EygiGLcuyqdISkt30LAd3gcRxsonH2JcG8VOcjtlUNPTc/ZnoCu8IDsGlar7p4gk5bP71OTvNLz
- TVJxW2vNatIKzpcGCB//NzL113ZdR+uGqZ
-X-Received: by 2002:a2e:bc1f:0:b0:2d4:1d45:d5e2 with SMTP id
- b31-20020a2ebc1f000000b002d41d45d5e2mr4317076ljf.10.1710282512546; 
- Tue, 12 Mar 2024 15:28:32 -0700 (PDT)
-X-Received: by 2002:a2e:bc1f:0:b0:2d4:1d45:d5e2 with SMTP id
- b31-20020a2ebc1f000000b002d41d45d5e2mr4317051ljf.10.1710282511986; 
- Tue, 12 Mar 2024 15:28:31 -0700 (PDT)
-Received: from redhat.com ([2.52.134.16]) by smtp.gmail.com with ESMTPSA id
- jw22-20020a170906e95600b00a4623030893sm2658289ejb.126.2024.03.12.15.28.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Mar 2024 15:28:31 -0700 (PDT)
-Date: Tue, 12 Mar 2024 18:28:27 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Ankit Agrawal <ankita@nvidia.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Cedric Le Goater <clg@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, qemu-arm@nongnu.org
-Subject: [PULL 55/68] hw/acpi: Implement the SRAT GI affinity structure
-Message-ID: <0a5b5acdf2d8c7302ca48d42e6ef3423e1b956d5.1710282274.git.mst@redhat.com>
-References: <cover.1710282274.git.mst@redhat.com>
+ bh=YiBLyKUiP5fWogCu58cDeSiwf0mKYYrCZi1EDZXDNis=;
+ b=OGLrOFv5ETnC+XzcN9sA+z+uqoXd90rLqP//3M2yL/l/ulSuiW+MrOV08msqaTzoew
+ /v71YzzbWdrGNo193eig33E4Cn1/Fyh4BraCzKCJtW0KRMFzXWKvdS7nH29IiPjid9zC
+ HWNdJdsiWGqV7R3dJednZ08M7v87HZ4DZ7KdbPLlT6sGJZgZe3dgIyorLivy5vgD0w0z
+ KLgKEPSG9aUK81Gjsho6BKTaeSZkN+aQ97ksCvW97iG/DhV6u9levMetfqaXIg6Bxa8N
+ Osi3mArmNV1DAMYuho3ZdG/NnXCGXiYoW8t73SylKBr6mIB641lnfi+xhqcN3cssexnC
+ OaSA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDWm4WBLAS8ujhUsfx6JbNNKYxf4GwhppPlu9cll33LAFFGAvxN35CkeX8XJt8O4mY7cIJroL6Tu1zZm5FrmmX9HyV
+X-Gm-Message-State: AOJu0Ywvejy5XL+rIyQpmafM6N9eoxpMdjaIDd0mkKsblud3e9OIT0kN
+ rCcb477bSicN4IZsEiOZuBVrNPGMFmmdlMEqVFBR3a2i0fCMlOnwMn1whABkOkY=
+X-Received: by 2002:a05:6000:1b86:b0:33e:79dc:1867 with SMTP id
+ r6-20020a0560001b8600b0033e79dc1867mr1556178wru.29.1710330281590; 
+ Wed, 13 Mar 2024 04:44:41 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.182.179])
+ by smtp.gmail.com with ESMTPSA id
+ j6-20020a5d6046000000b0033e122a9a91sm11417556wrt.105.2024.03.13.04.44.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 Mar 2024 04:44:41 -0700 (PDT)
+Message-ID: <8c197bfe-0cab-47dd-beec-c9752d434a47@linaro.org>
+Date: Wed, 13 Mar 2024 12:44:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1710282274.git.mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] tests/avocado: use OpenBSD 7.4 for sbsa-ref
+Content-Language: en-US
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Brad Smith <brad@comstyle.com>,
+ qemu-arm@nongnu.org
+References: <20240313-sbsa-ref-firmware-update-v1-0-e166703c5424@linaro.org>
+ <20240313-sbsa-ref-firmware-update-v1-3-e166703c5424@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240313-sbsa-ref-firmware-update-v1-3-e166703c5424@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hkDsfY+ji7Ll
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NRLOE9dW3C67
 
-From: Ankit Agrawal <ankita@nvidia.com>
+Hi Marcin,
 
-ACPI spec provides a scheme to associate "Generic Initiators" [1]
-(e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
-integrated compute or DMA engines GPUs) with Proximity Domains. This is
-achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
-Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
-node for each unique PXM ID encountered. Qemu currently do not implement
-these structures while building SRAT.
+On 13/3/24 11:08, Marcin Juszkiewicz wrote:
+> 7.4 was released in October 2023, time to update before 7.3 gets dropped.
+> 
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> ---
+>   tests/avocado/machine_aarch64_sbsaref.py | 26 +++++++++++++-------------
+>   1 file changed, 13 insertions(+), 13 deletions(-)
 
-Add GI structures while building VM ACPI SRAT. The association between
-device and node are stored using acpi-generic-initiator object. Lookup
-presence of all such objects and use them to build these structures.
 
-The structure needs a PCI device handle [2] that consists of the device BDF.
-The vfio-pci device corresponding to the acpi-generic-initiator object is
-located to determine the BDF.
+> @@ -180,23 +180,23 @@ def boot_openbsd73(self, cpu):
+>           self.vm.launch()
+>           wait_for_console_pattern(self,
+>                                    "Welcome to the OpenBSD/arm64"
+> -                                 " 7.3 installation program.")
+> +                                 " 7.4 installation program.")
+>   
+> -    def test_sbsaref_openbsd73_cortex_a57(self):
+> +    def test_sbsaref_openbsd_cortex_a57(self):
+>           """
+> -        :avocado: tags=cpu:cortex-a57
+> +        :avocado: tags=cpu:cortex-a57,os:openbsd
 
-[1] ACPI Spec 6.3, Section 5.2.16.6
-[2] ACPI Spec 6.3, Table 5.80
+IIRC for some reason we must use one tag per line... Even if
+named 'tags', this is handled as a single tag, so we couldn't
+filter on "os:openbsd". We need:
 
-Cc: Jonathan Cameron <qemu-devel@nongnu.org>
-Cc: Alex Williamson <alex.williamson@redhat.com>
-Cc: Cedric Le Goater <clg@redhat.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
-Message-Id: <20240308145525.10886-3-ankita@nvidia.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/acpi/acpi_generic_initiator.h | 25 ++++++++
- include/sysemu/numa.h                    |  1 +
- hw/acpi/acpi_generic_initiator.c         | 77 ++++++++++++++++++++++++
- hw/acpi/hmat.c                           |  2 +-
- hw/arm/virt-acpi-build.c                 |  3 +
- hw/core/numa.c                           |  3 +-
- 6 files changed, 109 insertions(+), 2 deletions(-)
+   :avocado: tags=cpu:cortex-a57
+   :avocado: tags=os:openbsd
 
-diff --git a/include/hw/acpi/acpi_generic_initiator.h b/include/hw/acpi/acpi_generic_initiator.h
-index 16de1d3d80..a304bad73e 100644
---- a/include/hw/acpi/acpi_generic_initiator.h
-+++ b/include/hw/acpi/acpi_generic_initiator.h
-@@ -19,4 +19,29 @@ typedef struct AcpiGenericInitiator {
-     uint16_t node;
- } AcpiGenericInitiator;
- 
-+/*
-+ * ACPI 6.3:
-+ * Table 5-81 Flags – Generic Initiator Affinity Structure
-+ */
-+typedef enum {
-+    /*
-+     * If clear, the OSPM ignores the contents of the Generic
-+     * Initiator/Port Affinity Structure. This allows system firmware
-+     * to populate the SRAT with a static number of structures, but only
-+     * enable them as necessary.
-+     */
-+    GEN_AFFINITY_ENABLED = (1 << 0),
-+} GenericAffinityFlags;
-+
-+/*
-+ * ACPI 6.3:
-+ * Table 5-80 Device Handle - PCI
-+ */
-+typedef struct PCIDeviceHandle {
-+    uint16_t segment;
-+    uint16_t bdf;
-+} PCIDeviceHandle;
-+
-+void build_srat_generic_pci_initiator(GArray *table_data);
-+
- #endif
-diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
-index 4173ef2afa..825cfe86bc 100644
---- a/include/sysemu/numa.h
-+++ b/include/sysemu/numa.h
-@@ -41,6 +41,7 @@ struct NodeInfo {
-     struct HostMemoryBackend *node_memdev;
-     bool present;
-     bool has_cpu;
-+    bool has_gi;
-     uint8_t lb_info_provided;
-     uint16_t initiator;
-     uint8_t distance[MAX_NODES];
-diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
-index 130d6ae8c1..17b9a052f5 100644
---- a/hw/acpi/acpi_generic_initiator.c
-+++ b/hw/acpi/acpi_generic_initiator.c
-@@ -5,7 +5,9 @@
- 
- #include "qemu/osdep.h"
- #include "hw/acpi/acpi_generic_initiator.h"
-+#include "hw/acpi/aml-build.h"
- #include "hw/boards.h"
-+#include "hw/pci/pci_device.h"
- #include "qemu/error-report.h"
- 
- typedef struct AcpiGenericInitiatorClass {
-@@ -47,6 +49,7 @@ static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
-                                             Error **errp)
- {
-     AcpiGenericInitiator *gi = ACPI_GENERIC_INITIATOR(obj);
-+    MachineState *ms = MACHINE(qdev_get_machine());
-     uint32_t value;
- 
-     if (!visit_type_uint32(v, name, &value, errp)) {
-@@ -60,6 +63,7 @@ static void acpi_generic_initiator_set_node(Object *obj, Visitor *v,
-     }
- 
-     gi->node = value;
-+    ms->numa_state->nodes[gi->node].has_gi = true;
- }
- 
- static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
-@@ -69,3 +73,76 @@ static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
-     object_class_property_add(oc, "node", "int", NULL,
-         acpi_generic_initiator_set_node, NULL, NULL);
- }
-+
-+/*
-+ * ACPI 6.3:
-+ * Table 5-78 Generic Initiator Affinity Structure
-+ */
-+static void
-+build_srat_generic_pci_initiator_affinity(GArray *table_data, int node,
-+                                          PCIDeviceHandle *handle)
-+{
-+    uint8_t index;
-+
-+    build_append_int_noprefix(table_data, 5, 1);  /* Type */
-+    build_append_int_noprefix(table_data, 32, 1); /* Length */
-+    build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
-+    build_append_int_noprefix(table_data, 1, 1);  /* Device Handle Type: PCI */
-+    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain */
-+
-+    /* Device Handle - PCI */
-+    build_append_int_noprefix(table_data, handle->segment, 2);
-+    build_append_int_noprefix(table_data, handle->bdf, 2);
-+    for (index = 0; index < 12; index++) {
-+        build_append_int_noprefix(table_data, 0, 1);
-+    }
-+
-+    build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4); /* Flags */
-+    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
-+}
-+
-+static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    AcpiGenericInitiator *gi;
-+    GArray *table_data = opaque;
-+    PCIDeviceHandle dev_handle;
-+    PCIDevice *pci_dev;
-+    Object *o;
-+
-+    if (!object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
-+        return 0;
-+    }
-+
-+    gi = ACPI_GENERIC_INITIATOR(obj);
-+    if (gi->node >= ms->numa_state->num_nodes) {
-+        error_printf("%s: Specified node %d is invalid.\n",
-+                     TYPE_ACPI_GENERIC_INITIATOR, gi->node);
-+        exit(1);
-+    }
-+
-+    o = object_resolve_path_type(gi->pci_dev, TYPE_PCI_DEVICE, NULL);
-+    if (!o) {
-+        error_printf("%s: Specified device must be a PCI device.\n",
-+                     TYPE_ACPI_GENERIC_INITIATOR);
-+        exit(1);
-+    }
-+
-+    pci_dev = PCI_DEVICE(o);
-+
-+    dev_handle.segment = 0;
-+    dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
-+                                               pci_dev->devfn);
-+
-+    build_srat_generic_pci_initiator_affinity(table_data,
-+                                              gi->node, &dev_handle);
-+
-+    return 0;
-+}
-+
-+void build_srat_generic_pci_initiator(GArray *table_data)
-+{
-+    object_child_foreach_recursive(object_get_root(),
-+                                   build_all_acpi_generic_initiators,
-+                                   table_data);
-+}
-diff --git a/hw/acpi/hmat.c b/hw/acpi/hmat.c
-index 3042d223c8..2242981e18 100644
---- a/hw/acpi/hmat.c
-+++ b/hw/acpi/hmat.c
-@@ -214,7 +214,7 @@ static void hmat_build_table_structs(GArray *table_data, NumaState *numa_state)
-     }
- 
-     for (i = 0; i < numa_state->num_nodes; i++) {
--        if (numa_state->nodes[i].has_cpu) {
-+        if (numa_state->nodes[i].has_cpu || numa_state->nodes[i].has_gi) {
-             initiator_list[num_initiator++] = i;
-         }
-     }
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6a1bde61ce..c3ccfef026 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -57,6 +57,7 @@
- #include "migration/vmstate.h"
- #include "hw/acpi/ghes.h"
- #include "hw/acpi/viot.h"
-+#include "hw/acpi/acpi_generic_initiator.h"
- #include "hw/virtio/virtio-acpi.h"
- #include "target/arm/multiprocessing.h"
- 
-@@ -504,6 +505,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
-     }
- 
-+    build_srat_generic_pci_initiator(table_data);
-+
-     if (ms->nvdimms_state->is_enabled) {
-         nvdimm_build_srat(table_data);
-     }
-diff --git a/hw/core/numa.c b/hw/core/numa.c
-index f08956ddb0..58a32f1564 100644
---- a/hw/core/numa.c
-+++ b/hw/core/numa.c
-@@ -229,7 +229,8 @@ void parse_numa_hmat_lb(NumaState *numa_state, NumaHmatLBOptions *node,
-                    node->target, numa_state->num_nodes);
-         return;
-     }
--    if (!numa_info[node->initiator].has_cpu) {
-+    if (!numa_info[node->initiator].has_cpu &&
-+        !numa_info[node->initiator].has_gi) {
-         error_setg(errp, "Invalid initiator=%d, it isn't an "
-                    "initiator proximity domain", node->initiator);
-         return;
--- 
-MST
+>           """
+> -        self.boot_openbsd73("cortex-a57")
+> +        self.boot_openbsd("cortex-a57")
 

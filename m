@@ -1,139 +1,107 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp1945458ejc;
-        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWrUS1DkBU9ICcPc+edi1THRCfabZ8bzWvvY218wBqa0upuf8lm48gzQ1KP4LirIlitJnAADMgyOzgc/ifzlWFTlztRPQd4
-X-Google-Smtp-Source: AGHT+IFobRPlI4bVG5BtuV3Ve4/6Tq3pnfJx5FBq9F2licNqAqalajbYYvHnnnj/ce6KLCdFypXx
-X-Received: by 2002:a05:622a:244:b0:42f:20b6:4866 with SMTP id c4-20020a05622a024400b0042f20b64866mr12342335qtx.17.1710261880123;
-        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710261880; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2193605ejc;
+        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVWmTgN0LD1RwRV+MzFUQxPSqrAK+YWGEp2UTVF/4tBJjCSh44SdY2wSqKmX8KAztHRVTi4hJ5nAXB5VRXwuGUf1h0C0NAN
+X-Google-Smtp-Source: AGHT+IHCV6zhQ8EF/ayMjhaGotCSGGG3szCbxG/vPrs/aiUXYdlaRJguftKpYgeCQe0VhbtqOo14
+X-Received: by 2002:a05:6102:34d4:b0:473:7db:1b5b with SMTP id a20-20020a05610234d400b0047307db1b5bmr8930707vst.24.1710296023524;
+        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710296023; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ok/vKinReHkV2JHOhNt6m4UwooADZf3mRT1bkxpGcYnX4JFKU7LlROk8XF6c8VaGDq
-         jmFfk6v8g1oLFjpilmzvKVsVm3qCNqKDnydfvxK7hpdWy7LHRcJ+PsRMmH/X6fqUJh74
-         2rpGjWNqsp0YbSXBjKaRtU7FS4i0PxSU9CVN/xJF9mnDogjcfdTN0rpOyAR7HJSAed9N
-         ilZrAuOoQ3wMBFv/iWI44Fe9gQaEa30xPlm66nqVqir4wjtCSVhrrEp8BMliERUxeM/p
-         IPViRnA2OpV/l0wSTJDFHInfP084mDJsdfJ91mE/0vsT2/8OC0M6uGCAwOqxhFIYmmkb
-         BUFA==
+        b=uCOxszYZ1RkMd8ka/JlTycCBdagFwMSDHCWrmpkX0/jCyxWn7fDHFUwFFPR4+piANa
+         6b3tyMP4XbSt2pztO7ESAYoUbVyRbRjJpnK3Xeoeh3XSiWNv2BCnN/+LctSkC7tL7Zio
+         XNxGY2Yso9WJ9pu2Mm08gE5nNNiIrBclxYP1Yv4wmneq8PTw4y7W3lMk4rT0O8wmax+p
+         nCiSloqXbJUAn6IyhQbrH//AzmkEGqvVj4jIcUcPzA+X4ZIT9S9IqhKCp+mU7ak8zuLd
+         W1r7vHy/PclHe06VNKEg6hlPF7cITmCKWMRSfZexP0Xiuf77jgWoM5rCZ5Y57Du/lpIj
+         6f+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
-        fh=w1UW12MccwC7FVeVdLVwLC0ifkv8jnqp86uFXFbqJq8=;
-        b=MYW3jL3yW16lFwQgi8yPr1+l0Ukc2/+CrOvRULS0D1CdHw1eCJYcBe2+5RWB5J9trN
-         KMOQQOiJv6Puxm+JE+OwjszYuaCReiYn+rn2GQtNHAtDgiTE5+fkA6I1dImjJAEwZV74
-         qNOweGcseY117Ih51OMzhCOd5ie+QS7m8rXF8jZa0uz1Mb1KIv2lpoNNQWzPCmsCqz4+
-         6aFI0/pJVB6lLz3+4gFkJdTrCTNs64jcnSeJP4qHqv4Z7fAptHhiGaN5f4Sjry4v1DlO
-         jUpJREx2RfiZYdM78gUGapxnvJLIT7N+9Tewa6RjK7KP3IWVubjgSCtyrQQh8LXadQLN
-         EAlw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=1hMYbuo0Lk9jEHgL6djrcSXYdknzIGBCBVPmM4UCSH0=;
+        fh=pTb13JATqenlskxLbJ0tjRpC9GsBf4XLd2E4wcRCHd4=;
+        b=hi5CDe7Rc3wv9EsOjhHBtMWEwBp4RVGczH3hG0688Rcaxs+DQfQjDCF7WaGUqkVqkW
+         Et+0tytAqJyYev0PZ+YLfyG2HyPsfIxeGPuWuJpI1mdx15YW/D0MciKqSaDzJfkeBmKd
+         fK5wE15ZVeTJlmMmM6Pwptxahe1BEBSrZ8/D9J4lnPVBvi0iQnlxs2HiY3adSJ92nifQ
+         o99/90BjiPMB5y8mhYZyKHRhno0z7meFCP21zVmzVLDrYZbThiNveSV6/IjyAXxLiTy/
+         01DYWEExbMIfBA82lby5fgmuCEgj8L+Tr9WBCdN4XDL/WAKpm6T0//qZG+6RHEQr8qZF
+         xQJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NgFnwMJB;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=BRPssKra;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8-20020a05622a038800b0042eeb367b8dsi8085757qtx.486.2024.03.12.09.44.39
+        by mx.google.com with ESMTPS id wk11-20020a05620a578b00b0078857811e97si8448346qkn.380.2024.03.12.19.13.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 09:44:40 -0700 (PDT)
+        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NgFnwMJB;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=BRPssKra;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rk5EW-0003X2-Fh; Tue, 12 Mar 2024 12:44:08 -0400
+	id 1rkE7E-0005GH-Pb; Tue, 12 Mar 2024 22:13:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5EU-0003Sz-Lg
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 12:44:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rkE75-0005FC-2g; Tue, 12 Mar 2024 22:13:03 -0400
+Received: from mgamail.intel.com ([198.175.65.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5ET-0004mL-Cv
- for qemu-arm@nongnu.org; Tue, 12 Mar 2024 12:44:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710261844;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
- b=NgFnwMJBm7vARZDT08/2rsr/6U5BthumxU0Rbxt3171xENIHur0UyVn5cHgFSoKRqFSIkK
- 5Mo+kfki3YbZzpN44zwAiqhJdt7JyoAbqXPpphq43BsNMLmX+GokCG7RMT+L5YMx2+oxnm
- T8Oh5lcF1sxqbbhvV2avd93DUxEHcjY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-216-U13ZUvLjNEeGHdPRX842oQ-1; Tue, 12 Mar 2024 12:44:03 -0400
-X-MC-Unique: U13ZUvLjNEeGHdPRX842oQ-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-41330261f8cso864605e9.0
- for <qemu-arm@nongnu.org>; Tue, 12 Mar 2024 09:44:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710261842; x=1710866642;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
- b=d7yq/AYPz3GHxcnqO928LBqyxXb36L7IaJY2Tk5CYYnCBf+Oc184GeoW+++1s8HGSq
- LqxC6t9/7QDJzRwuj+I6d/t+XmHMjZBccg7P2u36MeaiYN2JQs94fUpbNeyEK9x3H1vR
- hNzbcZrezcad3RqXS35kjCjdAD1R6Cv44AunaR+IJBNf7V0REmXJHYVT5dGwNW+lrpDo
- dTmTeTl1HP94ZMp53TvR8rM1KqQwJmZ+wrcBPHTw0+jlw7a+IJEtggGBSoqGcPbHbSRZ
- TPDZPK51MI4OBRhB55rzF3pwTjRFXi9ZJjwIpYaGW6CqpCtpFlyk78yYAVZokc36IUFA
- sncQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVIHQFlOXG4A/apybK/bqWKQuBIIaXK+I1Ro9Py/mDmlWI10n1Ce3XEx4QZa9DduNHEFUrzZ1jw5PFMyhKLHXIlKlLh
-X-Gm-Message-State: AOJu0Ywl0DST57dCDXaR3Q/oMfiEuenjNwd5f7Jgar3KlW4Hryx4apMp
- yH+c4CKtkJHoUnHRfQZNv1pcMFefgBICor5MP4nut2D0PMMWM2LpNmZKZEtDiY+7FAgtPzG9oDs
- vIs0mp3GzxVXaBJFkgQZHd53EjkaQ5gyL28Mtayq+MRzIHohFAQ==
-X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
- r12-20020a05600c35cc00b00412ed3f1b4bmr3005409wmq.11.1710261842189; 
- Tue, 12 Mar 2024 09:44:02 -0700 (PDT)
-X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
- r12-20020a05600c35cc00b00412ed3f1b4bmr3005387wmq.11.1710261841695; 
- Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
-Received: from redhat.com ([2a02:14f:1f0:532c:5ae4:fce6:76e1:fa1a])
- by smtp.gmail.com with ESMTPSA id
- bh25-20020a05600c3d1900b004133365bbc6sm2840627wmb.19.2024.03.12.09.43.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
-Date: Tue, 12 Mar 2024 12:43:55 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rkE72-00005t-Kz; Tue, 12 Mar 2024 22:13:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1710295981; x=1741831981;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=v38YNtJy/YG6uK8903FNNbXlOx4a9Ia/xHQiui7fk2Q=;
+ b=BRPssKraj9vpkocw/J4nrVdNi40E0nZQi9p7nJuhiR1XJhRsW4tJkZDK
+ uHWeBA6VNi3QroqOSBuQ7lSOpdolWBD2MhpC1Swaq7tb53HTGlWPLwiS4
+ Ay7xzN6NaTt9kW3yc5zgmvvzt3ibqHIP6AqnYAgmSDMAkCZLhC50CU3oS
+ VKnXR/k+K8ikEumZi9LoLj/hiOKUBvZ1rYwOHj/1BXbr5/ZEq+VxKk/LT
+ MMQyvczRPZFRtXJut0lbFTjtZTlJ53XhjRJzQ8nwNmL04c0OTCcObus1Z
+ 2PV9PvysyG+qtvsQUeHo0QdwVsJeYzPOSQrrCV2CafMetGuLdx09SwiUK Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11011"; a="4905912"
+X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; 
+   d="scan'208";a="4905912"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Mar 2024 19:12:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; d="scan'208";a="11644382"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa009.fm.intel.com with ESMTP; 12 Mar 2024 19:12:54 -0700
+Date: Wed, 13 Mar 2024 10:26:43 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH v2 0/7] Cleanup and fix @errp dereference
-Message-ID: <20240312124339-mutt-send-email-mst@kernel.org>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <Ze5/r5EW9YsqVwtS@intel.com>
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PULL 36/68] hw/misc/xlnx-versal-trng: Check returned bool in
+ trng_prop_fault_event_set()
+Message-ID: <ZfEO4xhZwgyrWk8M@intel.com>
+References: <cover.1710282274.git.mst@redhat.com>
+ <305446015848f0b5d71b817b53e7e02b08c36ede.1710282274.git.mst@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <Ze5/r5EW9YsqVwtS@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <305446015848f0b5d71b817b53e7e02b08c36ede.1710282274.git.mst@redhat.com>
+Received-SPF: pass client-ip=198.175.65.19; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,15 +117,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N+oZLon5sAkJ
+X-TUID: thWfCr2uA5mB
 
-On Mon, Mar 11, 2024 at 11:51:11AM +0800, Zhao Liu wrote:
-> Hi Michael & Philippe,
+Hi Michael,
+
+Thanks a lot and aslo this one, I forgot to update the status :/,
+this patch has been merged (commit 1e0efa9735635,
+"hw/misc/xlnx-versal-trng: Check returned bool in
+trng_prop_fault_event_set()"). Sorry to make you
+repeat the merge.
+
+Best Regards,
+Zhao
+
+
+On Tue, Mar 12, 2024 at 06:27:22PM -0400, Michael S. Tsirkin wrote:
+> Date: Tue, 12 Mar 2024 18:27:22 -0400
+> From: "Michael S. Tsirkin" <mst@redhat.com>
+> Subject: [PULL 36/68] hw/misc/xlnx-versal-trng: Check returned bool in
+>  trng_prop_fault_event_set()
+> X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 > 
-> Could this series catch the last train of next releases? ;-)
+> From: Zhao Liu <zhao1.liu@intel.com>
 > 
-> Thanks,
-> Zhao
-
-yes it will be in subject to last minute testing.
-
+> As the comment in qapi/error, dereferencing @errp requires
+> ERRP_GUARD():
+> 
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> * - It must not be dereferenced, because it may be null.
+> ...
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> *
+> * Using it when it's not needed is safe, but please avoid cluttering
+> * the source with useless code.
+> 
+> But in trng_prop_fault_event_set, @errp is dereferenced without
+> ERRP_GUARD():
+> 
+> visit_type_uint32(v, name, events, errp);
+> if (*errp) {
+>     return;
+> }
+> 
+> Currently, since trng_prop_fault_event_set() doesn't get the NULL @errp
+> parameter as a "set" method of object property, it hasn't triggered the
+> bug that dereferencing the NULL @errp.
+> 
+> And since visit_type_uint32() returns bool, check the returned bool
+> directly instead of dereferencing @errp, then we needn't the add missing
+> ERRP_GUARD().
+> 
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Message-Id: <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  hw/misc/xlnx-versal-trng.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+> index b8111b8b66..6495188dc7 100644
+> --- a/hw/misc/xlnx-versal-trng.c
+> +++ b/hw/misc/xlnx-versal-trng.c
+> @@ -644,8 +644,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
+>      Property *prop = opaque;
+>      uint32_t *events = object_field_prop_ptr(obj, prop);
+>  
+> -    visit_type_uint32(v, name, events, errp);
+> -    if (*errp) {
+> +    if (!visit_type_uint32(v, name, events, errp)) {
+>          return;
+>      }
+>  
+> -- 
+> MST
+> 

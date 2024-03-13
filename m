@@ -1,202 +1,149 @@
-Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2193605ejc;
-        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVWmTgN0LD1RwRV+MzFUQxPSqrAK+YWGEp2UTVF/4tBJjCSh44SdY2wSqKmX8KAztHRVTi4hJ5nAXB5VRXwuGUf1h0C0NAN
-X-Google-Smtp-Source: AGHT+IHCV6zhQ8EF/ayMjhaGotCSGGG3szCbxG/vPrs/aiUXYdlaRJguftKpYgeCQe0VhbtqOo14
-X-Received: by 2002:a05:6102:34d4:b0:473:7db:1b5b with SMTP id a20-20020a05610234d400b0047307db1b5bmr8930707vst.24.1710296023524;
-        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710296023; cv=none;
+Received: by 2002:a17:907:991a:b0:a45:b507:d90a with SMTP id ka26csp2259297ejc;
+        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXrZDm8tw4SeJ5X++7IcM54bKIeYkiza3mga+H/wiuvicyiBOYtf6qk3lxqBVaZt2KSamT7jk1RRzSu01wzVmdoklXNl1nO
+X-Google-Smtp-Source: AGHT+IH1VwY1d0wQJY7pWgPTK1wNUS2+WlrxnYBeS8oKCSyuBl5NxTDbnsSQLY8BNUcDV5rSz7KH
+X-Received: by 2002:a05:620a:6190:b0:789:c69e:8c67 with SMTP id or16-20020a05620a619000b00789c69e8c67mr1842531qkn.77.1710309626345;
+        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710309626; cv=none;
         d=google.com; s=arc-20160816;
-        b=uCOxszYZ1RkMd8ka/JlTycCBdagFwMSDHCWrmpkX0/jCyxWn7fDHFUwFFPR4+piANa
-         6b3tyMP4XbSt2pztO7ESAYoUbVyRbRjJpnK3Xeoeh3XSiWNv2BCnN/+LctSkC7tL7Zio
-         XNxGY2Yso9WJ9pu2Mm08gE5nNNiIrBclxYP1Yv4wmneq8PTw4y7W3lMk4rT0O8wmax+p
-         nCiSloqXbJUAn6IyhQbrH//AzmkEGqvVj4jIcUcPzA+X4ZIT9S9IqhKCp+mU7ak8zuLd
-         W1r7vHy/PclHe06VNKEg6hlPF7cITmCKWMRSfZexP0Xiuf77jgWoM5rCZ5Y57Du/lpIj
-         6f+g==
+        b=HW46iUSbar+fwW8vVdMmNu1g+uK3OdLs4ENkFYvvCC+OyieldGeDrkNMTzW0PeL2hR
+         W28kKRvDBXebqYzQ6bJ0szZMmFY21y9DWu/wTwWxyP1hu0y4gcYgZabE/jWyT9XiUivt
+         pa8sIhWt949IKzOSGsHpHg6bJRf8iT5Bk0ib9f5PDjlfLuXI/ckJr4H7L9bsgqK5N1al
+         y/JSbAlZBGItAIYqdkj96fW9z5qBDhXux/uc2zKo/Oce67mkb7+TxZVdCeZ/Ch0teVGu
+         3QGslkobKbs6UEO2LOu3/UxkOB/0dnzliTrDO8F6C178UWCHRPTJiGGcd/hKMhieSBk5
+         mj8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1hMYbuo0Lk9jEHgL6djrcSXYdknzIGBCBVPmM4UCSH0=;
-        fh=pTb13JATqenlskxLbJ0tjRpC9GsBf4XLd2E4wcRCHd4=;
-        b=hi5CDe7Rc3wv9EsOjhHBtMWEwBp4RVGczH3hG0688Rcaxs+DQfQjDCF7WaGUqkVqkW
-         Et+0tytAqJyYev0PZ+YLfyG2HyPsfIxeGPuWuJpI1mdx15YW/D0MciKqSaDzJfkeBmKd
-         fK5wE15ZVeTJlmMmM6Pwptxahe1BEBSrZ8/D9J4lnPVBvi0iQnlxs2HiY3adSJ92nifQ
-         o99/90BjiPMB5y8mhYZyKHRhno0z7meFCP21zVmzVLDrYZbThiNveSV6/IjyAXxLiTy/
-         01DYWEExbMIfBA82lby5fgmuCEgj8L+Tr9WBCdN4XDL/WAKpm6T0//qZG+6RHEQr8qZF
-         xQJQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=GUhW5DapR7SKs6DhAPydPIoNVPxrxtNNelH9/Eile3I=;
+        fh=nHXCxAu9yzvsZfHVth69sEU95KCk0t//YoILpnfCoG4=;
+        b=hc1LBcx54cHRPx/Pkv/NpzMjx79rnGKNwQknsO6fk1z7UnRQ0DYyz3yWLwGVD5p80/
+         f95js/pSDz45UL57Db4I5lhqzQrt2HdB+FJEjj8cLe8/vf1P1/NfCkXfJhFKWkw86J3Z
+         kaLYI7mdcQ1O9jTBPHzpbkGuHwe51Z+7gyxA2ch2vpev26fG8F/MWu/cMubuQx3F6r3U
+         JlzijqviSJlgad0lI4WCUUDOFg8zNpP5dR4orPHVoZppCwiTgstxrjungjAh1ncVc/8u
+         szdaJbqQPvI71c/Lodb09ljBYbXpRk5OlXCSQXPTPOYWP3eHJ5ljDu6ywsFx/bM3Hpl/
+         uIVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BRPssKra;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZSG8RX4m;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wk11-20020a05620a578b00b0078857811e97si8448346qkn.380.2024.03.12.19.13.43
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Mar 2024 19:13:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.12])
+        by mx.google.com with ESMTPS id z7-20020a05620a08c700b00788258b007esi8717373qkz.715.2024.03.12.23.00.22
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Mar 2024 23:00:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) client-ip=198.175.65.12;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BRPssKra;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZSG8RX4m;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.12 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rkE7E-0005GH-Pb; Tue, 12 Mar 2024 22:13:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rkE75-0005FC-2g; Tue, 12 Mar 2024 22:13:03 -0400
-Received: from mgamail.intel.com ([198.175.65.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rkE72-00005t-Kz; Tue, 12 Mar 2024 22:13:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710295981; x=1741831981;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=v38YNtJy/YG6uK8903FNNbXlOx4a9Ia/xHQiui7fk2Q=;
- b=BRPssKraj9vpkocw/J4nrVdNi40E0nZQi9p7nJuhiR1XJhRsW4tJkZDK
- uHWeBA6VNi3QroqOSBuQ7lSOpdolWBD2MhpC1Swaq7tb53HTGlWPLwiS4
- Ay7xzN6NaTt9kW3yc5zgmvvzt3ibqHIP6AqnYAgmSDMAkCZLhC50CU3oS
- VKnXR/k+K8ikEumZi9LoLj/hiOKUBvZ1rYwOHj/1BXbr5/ZEq+VxKk/LT
- MMQyvczRPZFRtXJut0lbFTjtZTlJ53XhjRJzQ8nwNmL04c0OTCcObus1Z
- 2PV9PvysyG+qtvsQUeHo0QdwVsJeYzPOSQrrCV2CafMetGuLdx09SwiUK Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11011"; a="4905912"
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1710309626; x=1741845626;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=PVsToUiCUiOhSzkdiRM4zUD+fdyiF34qLsiHYhQsYC4=;
+  b=ZSG8RX4mfEqZ9NABTwfPoWKXAx80O7d2cgeAryw5/MNkYKBiKTqPi+Xa
+   l52JnA6oRHHiA4F5wCxHhtM/DCsRu2bddyzuuXpwLQOp/nFEztl9l9F98
+   TMw+S1SYtjXXmJ5u8d7XsbHSBzRxIj8D/fcIrXOxMml2AtFKw+EvAwgZd
+   ECsYc8VZd2TxkbhQ7aN/sDMQ+Z7eR+YxAQ33zOULjNYXyLAW8At56L/dL
+   mXlVcmGHL7PuIAOZdYPT+sch0zWOTo9hS0e4RBc5o+ijfR1DSUGd3+fvI
+   6VTZnR1BUicv7iOtDDEUc4EwSUPP4kOvKI/DaRJ5TK65KrDk9Tscq1lCN
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11011"; a="16501386"
 X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; 
-   d="scan'208";a="4905912"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2024 19:12:57 -0700
+   d="scan'208";a="16501386"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2024 23:00:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; d="scan'208";a="11644382"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa009.fm.intel.com with ESMTP; 12 Mar 2024 19:12:54 -0700
-Date: Wed, 13 Mar 2024 10:26:43 +0800
+X-IronPort-AV: E=Sophos;i="6.07,119,1708416000"; 
+   d="scan'208";a="16519824"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa005.jf.intel.com with ESMTP; 12 Mar 2024 23:00:12 -0700
+Date: Wed, 13 Mar 2024 14:14:02 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PULL 36/68] hw/misc/xlnx-versal-trng: Check returned bool in
- trng_prop_fault_event_set()
-Message-ID: <ZfEO4xhZwgyrWk8M@intel.com>
-References: <cover.1710282274.git.mst@redhat.com>
- <305446015848f0b5d71b817b53e7e02b08c36ede.1710282274.git.mst@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+	lpieralisi@kernel.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, imammedo@redhat.com,
+	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+	mst@redhat.com, will@kernel.org, gshan@redhat.com,
+	rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+	lixianglai@loongson.cn, linuxarm@huawei.com
+Subject: Re: [PATCH V8 3/8] hw/acpi: Update ACPI GED framework to support
+ vCPU Hotplug
+Message-ID: <ZfFEKgpRiEOZo9xd@intel.com>
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-4-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <305446015848f0b5d71b817b53e7e02b08c36ede.1710282274.git.mst@redhat.com>
-Received-SPF: pass client-ip=198.175.65.19; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: thWfCr2uA5mB
+In-Reply-To: <20240312020000.12992-4-salil.mehta@huawei.com>
+X-TUID: kziUO10t8W89
 
-Hi Michael,
+Hi Salil,
 
-Thanks a lot and aslo this one, I forgot to update the status :/,
-this patch has been merged (commit 1e0efa9735635,
-"hw/misc/xlnx-versal-trng: Check returned bool in
-trng_prop_fault_event_set()"). Sorry to make you
-repeat the merge.
+It seems my comment [1] in v7 was missed, but I still hit the same
+issue. Pls let me paste the previous comment here again.
 
-Best Regards,
+[1]: https://lore.kernel.org/qemu-devel/ZXCqp32ggIFvUweu@intel.com/
+
+[snip]
+
+> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+>      memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+>                            TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
+>      sysbus_init_mmio(sbd, &ged_st->regs);
+> +
+> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
+> +                       ACPI_CPU_HOTPLUG_REG_LEN);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
+> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+> +                        &s->cpuhp_state, 0);
+>  }
+>
+
+I find this cpu_hotplug_hw_init() can still cause qtest errors (for v8)
+on x86 platforms as you mentioned in v6:
+https://lore.kernel.org/qemu-devel/15e70616-6abb-63a4-17d0-820f4a254607@opnsrc.net/T/#m108f102b2fe92b7dd7218f2f942f7b233a9d6af3
+
+IIUC, microvm machine has its own 'possible_cpus_arch_ids' and that is
+inherited from its parent x86 machine.
+
+The above error is because device-introspect-test sets the none-machine:
+
+# starting QEMU: exec ./qemu-system-i386 -qtest unix:/tmp/qtest-3094820.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-3094820.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -machine none -accel qtest
+
+So what about just checking mc->possible_cpu_arch_ids instead of an
+assert in cpu_hotplug_hw_init()?
+
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 4b24a2500361..303f1f1f57bc 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -221,7 +221,10 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+     const CPUArchIdList *id_list;
+     int i;
+
+-    assert(mc->possible_cpu_arch_ids);
++    if (!mc->possible_cpu_arch_ids) {
++        return;
++    }
++
+     id_list = mc->possible_cpu_arch_ids(machine);
+     state->dev_count = id_list->len;
+     state->devs = g_new0(typeof(*state->devs), state->dev_count);
+
+This check seems to be acceptable in the general code path? Not all machines
+have possible_cpu_arch_ids, after all.
+
+Thanks,
 Zhao
-
-
-On Tue, Mar 12, 2024 at 06:27:22PM -0400, Michael S. Tsirkin wrote:
-> Date: Tue, 12 Mar 2024 18:27:22 -0400
-> From: "Michael S. Tsirkin" <mst@redhat.com>
-> Subject: [PULL 36/68] hw/misc/xlnx-versal-trng: Check returned bool in
->  trng_prop_fault_event_set()
-> X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-> 
-> From: Zhao Liu <zhao1.liu@intel.com>
-> 
-> As the comment in qapi/error, dereferencing @errp requires
-> ERRP_GUARD():
-> 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> * - It must not be dereferenced, because it may be null.
-> ...
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> *
-> * Using it when it's not needed is safe, but please avoid cluttering
-> * the source with useless code.
-> 
-> But in trng_prop_fault_event_set, @errp is dereferenced without
-> ERRP_GUARD():
-> 
-> visit_type_uint32(v, name, events, errp);
-> if (*errp) {
->     return;
-> }
-> 
-> Currently, since trng_prop_fault_event_set() doesn't get the NULL @errp
-> parameter as a "set" method of object property, it hasn't triggered the
-> bug that dereferencing the NULL @errp.
-> 
-> And since visit_type_uint32() returns bool, check the returned bool
-> directly instead of dereferencing @errp, then we needn't the add missing
-> ERRP_GUARD().
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Message-Id: <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/misc/xlnx-versal-trng.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-> index b8111b8b66..6495188dc7 100644
-> --- a/hw/misc/xlnx-versal-trng.c
-> +++ b/hw/misc/xlnx-versal-trng.c
-> @@ -644,8 +644,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
->      Property *prop = opaque;
->      uint32_t *events = object_field_prop_ptr(obj, prop);
->  
-> -    visit_type_uint32(v, name, events, errp);
-> -    if (*errp) {
-> +    if (!visit_type_uint32(v, name, events, errp)) {
->          return;
->      }
->  
-> -- 
-> MST
-> 

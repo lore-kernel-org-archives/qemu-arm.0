@@ -1,75 +1,77 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp205216eju;
-        Thu, 14 Mar 2024 02:23:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW2ISxQQH6F1W/xD60dzTZ3cFIFLE+jCbk5wouv7iRv8B77Awr5PjwxPl5ABeoruMiG5+0xA3elSNyRAxca7O6dSqFtOIlq
-X-Google-Smtp-Source: AGHT+IGCxeZ0XPWzXn3/rO1n4RcYAk9YOK6zgw9Z3WwJrg3CnFkxgCKHJycbRFM3flJTowTWLu2C
-X-Received: by 2002:a05:620a:a8a:b0:788:7583:7647 with SMTP id v10-20020a05620a0a8a00b0078875837647mr42534qkg.69.1710408238776;
-        Thu, 14 Mar 2024 02:23:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710408238; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp205361eju;
+        Thu, 14 Mar 2024 02:24:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWBa4TBP7AxIfqzuEXuiieuW7M3NJ0upiQFm8PzJs2QctJnDjimxIRsjCuvIRCFeYwTDdx46oj/vTWEFF+v9dtNAa6oXUrk
+X-Google-Smtp-Source: AGHT+IGqrjUooPX0oW+bhRBYrLg73wmDi2ONbBnsK4hbgY8qqZhYCnm0F9hiSEsI1NkyK+K35laV
+X-Received: by 2002:a05:6214:c8a:b0:690:c49f:7cb with SMTP id r10-20020a0562140c8a00b00690c49f07cbmr197492qvr.3.1710408261162;
+        Thu, 14 Mar 2024 02:24:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710408261; cv=none;
         d=google.com; s=arc-20160816;
-        b=ebsiM4HTYqQFV6OEIYaBgDx8gQ8Ry6EMLeOL8PKtIL54W7+l9BMAuNGVjRHax5V+D8
-         gwf7GFEBFFk8GUrvcKPgU5CBVLUcB8vKO4bjOLL56xRTQ+tlCMyswDG0+WQdeLSUQ2t9
-         q8kCpAviVFukaHQ5ehVi+GqIuA045xu6fmYKTtgLsm2iOepRpdbVjpX8YzhgONwzOhw1
-         BVo5Vax/9f367C+dw4m1n9Lce89U8RwFtf5GUGfcRLkoUyyGjwTyNOQDaR8Vg28jD7py
-         LfFf/irOvAq1/DImuNLldzdikzb0bqRaD56zT9cc7AENn6J2cVDbsnVMuLl/wvQtMs22
-         lycQ==
+        b=cCRWsFfPkagNqN9m8gYMwUpmobiwhDLjcDZacU040cup6UoZUtDf9Y4NSJiE1KWC85
+         0FcIiWK0iswMHyhvXu0uOv3v8a2Lt/Y6ewnobB6vEUlDTfTAndetLall4QH/wjW6Lgv7
+         QHzmYaC+OFQwM/1e/sC+bjmupzv1LuV0wvAjQewpXov+jmumIdLZ0Cc5jHNaVQ0plP+o
+         Gk8+78uuwi9vwWE8giRrzF5dg0tHU5SVu0uZ2Wb5hHMMgx8GQccCgVsd9S5s7Wp5/Q2f
+         ExFQ/cUIOKB/xq6Xpu26H7m9pdiFRxwV6FxW1m6ss9lp/+Mgo3ahwtoLT74ovfx8HmQn
+         WD7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
-         :message-id:content-transfer-encoding:mime-version:subject:date:from;
-        bh=caJKMCVgz/4gnFbNz97BlPifioYjsyPV5gCVBsw/Wyo=;
+         :list-unsubscribe:list-id:precedence:cc:to:content-transfer-encoding
+         :mime-version:message-id:date:subject:from;
+        bh=thbu9xjL4yyUABSiAZ/h0mDTAVpECZJr3U743Quww7Y=;
         fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
-        b=kDKfgmiPZyM2tXj4osp4XvNDKCKy41ZbVyjjW7zpR0Pb/BBlYFIlRrVrd96xHS4N5K
-         m0kzVhWJSM1TKnB/x145+0I47w7MToeNgusa0uNSOu/qDUWM+aAgWSDbWwDN9wZH72zB
-         RUfSGd8WvDCtN7qttqZ3mOZVA4hKGdVRbeEm5B7cdx1a/sgVUvQAN9vTu3xkVJCoF0ET
-         S2bUpE6ANoUwXucP2AlaJ+/dA4AWgyXX9grTt8pP7kdOYPREI97vvo49oy57+Pv6N0cn
-         MW02Ar6MV5gpLOVkCf/Xctb3u77yeomwf6vnoIzbxJRkUxgc4TY0pgrexrN3ZdTnLxZ5
-         DVyQ==;
+        b=R1HXQ/TMspbJOQXhCIYU/xHC8VEAYDFIO3iUvYZCBYxFRN9b+M464gfCK7cYPRdthZ
+         CN3bbUM6FYJPTXRz01itfsv6XmpebKO/M8BfRG5Ph02dWd9YaUU+Rzje4ghtz4FKeB2O
+         BJqvXu66dBC5uCqlMv1H9hPmbfzBJiA3u+P099+KEINCtQKFLU69BEMf9UptJfj0rOCG
+         b/qriRisRa3ZJaj9mz4DQNKZeKVTXnZxDcHvl3O//WcoYUtrZ4Hb327f72gEmWPEpINq
+         0PrDS3Rxixj9Dc1AN6cnMsqZj4Vwd7cE7kil8ErvnerHbZhyW479deUT0Ti29AIjZJ3R
+         Ab3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wm14-20020a05620a580e00b00789dd83ea07si57628qkn.86.2024.03.14.02.23.58
+        by mx.google.com with ESMTPS id iv6-20020ad45ce6000000b0068f4553e43dsi245785qvb.39.2024.03.14.02.24.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Mar 2024 02:23:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Mar 2024 02:24:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rkhJR-0004ra-FZ; Thu, 14 Mar 2024 05:23:45 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rkhJN-0004oh-E0; Thu, 14 Mar 2024 05:23:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rkhJK-0004oF-OH; Thu, 14 Mar 2024 05:23:38 -0400
+ id 1rkhJJ-0004nZ-OQ; Thu, 14 Mar 2024 05:23:37 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rkhJG-0007sV-7i; Thu, 14 Mar 2024 05:23:38 -0400
+ id 1rkhJE-0007sI-Lc; Thu, 14 Mar 2024 05:23:37 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id B73BF260AB8;
- Thu, 14 Mar 2024 10:23:31 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id C3C5A260BB2;
+ Thu, 14 Mar 2024 10:23:29 +0100 (CET)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id OEP9ygsYXWPS; Thu, 14 Mar 2024 10:23:30 +0100 (CET)
+ with ESMTP id OHE9iN8v3aOF; Thu, 14 Mar 2024 10:23:27 +0100 (CET)
 Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
  [83.11.22.169])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id CAFD7260B83;
- Thu, 14 Mar 2024 10:23:28 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 7DF2D260835;
+ Thu, 14 Mar 2024 10:23:26 +0100 (CET)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Date: Thu, 14 Mar 2024 10:23:25 +0100
-Subject: [PATCH v2 2/4] tests/avocado: drop virtio-rng from sbsa-ref tests
+Subject: [PATCH v2 0/4] tests/avocado: update sbsa-ref firmware to latest
+Date: Thu, 14 Mar 2024 10:23:23 +0100
+Message-Id: <20240314-sbsa-ref-firmware-update-v2-0-b557c56559cd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240314-sbsa-ref-firmware-update-v2-2-b557c56559cd@linaro.org>
-References: <20240314-sbsa-ref-firmware-update-v2-0-b557c56559cd@linaro.org>
-In-Reply-To: <20240314-sbsa-ref-firmware-update-v2-0-b557c56559cd@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAAvC8mUC/42NTQ6CMBCFr0Jm7Zi2/AVX3sOwKHSASZSSKVYN4
+ e5WTuDye3nvexsEEqYAl2wDociB/ZzAnDLoJzuPhOwSg1GmULnOMXTBotCAA8vjZYXwuTi7EtZ
+ l3bhmqFzZdJDmSyrx+1Df2sQTh9XL53iK+pf+IY0aFZKuqlrlfVmY4nrn2Yo/exmh3ff9C81vx
+ RrBAAAA
 To: qemu-devel@nongnu.org
 Cc: Radoslaw Biernacki <rad@semihalf.com>, 
  Peter Maydell <peter.maydell@linaro.org>, 
@@ -81,62 +83,78 @@ Cc: Radoslaw Biernacki <rad@semihalf.com>,
 X-Mailer: b4 0.12.3
 Received-SPF: softfail client-ip=213.251.184.221;
  envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: teabqtpGsVLG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qBKBhYy8aUHr
 
-sbsa-ref is supposed to emulate real hardware so virtio-rng-pci
-does not fit here
+Updating sbsa-ref firmware for QEMU CI was manual task. Now it is
+replaced by CI job run on CodeLinaro Gitlab instance.
+
+This patchset updates to current state:
+
+- Trusted Firmware v2.10.2 (latest LTS)
+- Tianocore EDK2 stable202402 (latest release)
+
+And Tianocore EDK2-platforms commit 085c2fb (edk2-platforms does not
+have releases).
+
+Firmware images were built using Debian 'bookworm' cross gcc 12.2.0
+compiler.
+
+And while I am in that file I dropped use of 'virtio-rng-pci' device as
+sbsa-ref is supposed to emulate physical hardware.
+
+OpenBSD updated to 7.4 version.
+
+(1/8) test_sbsaref_edk2_firmware: PASS (2.49 s)
+(2/8) test_sbsaref_alpine_linux_cortex_a57: PASS (23.78 s)
+(3/8) test_sbsaref_alpine_linux_neoverse_n1: PASS (23.38 s)
+(4/8) test_sbsaref_alpine_linux_max_pauth_off: PASS (23.31 s)
+(5/8) test_sbsaref_alpine_linux_max_pauth_impdef: PASS (29.27 s)
+(6/8) test_sbsaref_alpine_linux_max: PASS (80.13 s)
+(7/8) test_sbsaref_openbsd_cortex_a57: PASS (16.01 s)
+(8/8) test_sbsaref_openbsd_neoverse_n1: PASS (16.05 s)
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 8 --------
- 1 file changed, 8 deletions(-)
+Changes in v2:
+- disabled 'max' tests on OpenBSD
+- moved tags to 'one tag per line'
+- added 'os:linux' tags to Alpine ones
+- Link to v1: https://lore.kernel.org/r/20240313-sbsa-ref-firmware-update-v1-0-e166703c5424@linaro.org
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index cbab793455..259225f15f 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -132,10 +132,6 @@ def boot_alpine_linux(self, cpu):
-             cpu,
-             "-drive",
-             f"file={iso_path},format=raw",
--            "-device",
--            "virtio-rng-pci,rng=rng0",
--            "-object",
--            "rng-random,id=rng0,filename=/dev/urandom",
-         )
- 
-         self.vm.launch()
-@@ -179,10 +175,6 @@ def boot_openbsd73(self, cpu):
-             cpu,
-             "-drive",
-             f"file={img_path},format=raw",
--            "-device",
--            "virtio-rng-pci,rng=rng0",
--            "-object",
--            "rng-random,id=rng0,filename=/dev/urandom",
-         )
- 
-         self.vm.launch()
+---
+Marcin Juszkiewicz (4):
+      tests/avocado: update sbsa-ref firmware
+      tests/avocado: drop virtio-rng from sbsa-ref tests
+      tests/avocado: use OpenBSD 7.4 for sbsa-ref
+      tests/avocado: sbsa-ref: add Alpine tests for misc 'max' setup
 
+ tests/avocado/machine_aarch64_sbsaref.py | 113 ++++++++++++++++++++-----------
+ 1 file changed, 73 insertions(+), 40 deletions(-)
+---
+base-commit: 0748129684be2773117b0b8fc3c60161abdb7bb8
+change-id: 20240313-sbsa-ref-firmware-update-7579d9f6d59b
+
+Best regards,
 -- 
-2.44.0
+Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 

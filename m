@@ -1,96 +1,97 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp991636eju;
-        Fri, 15 Mar 2024 06:13:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV7NhvBMgAzQGmL4EVVbq2zBFGfFTjbMiyPvSvZ5b0kczLgIovBaHT8UgYeYnjLCKj+TeONDOKp6cPhzVp3kuEs1LoiQxkA
-X-Google-Smtp-Source: AGHT+IHeqM2J5TQ3WRLjW01l2xzN0sGpDd5Qms+L5zDid2rm4PesBezLUlieEM/uJoF3YTXijL/P
-X-Received: by 2002:a05:6808:ec9:b0:3c3:6224:e671 with SMTP id q9-20020a0568080ec900b003c36224e671mr4377557oiv.26.1710508382308;
-        Fri, 15 Mar 2024 06:13:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710508382; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp992614eju;
+        Fri, 15 Mar 2024 06:14:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWx7BJMqLbwLjK+Qier0Iglb6UipjJe2mwEXtjisnA0x2cfebR4aAAdKwHj+45Zm+4e39+NafNnrWdFOEnXeWaVbYdLUdrJ
+X-Google-Smtp-Source: AGHT+IHV6rAGfpLSPt9iYY7GSqSUwBT2wor6XUmo7NrRzMdeMXWZYfUdHoJ2/18KZdMnQD+QXe/d
+X-Received: by 2002:a05:6102:b06:b0:476:6b4b:29e2 with SMTP id b6-20020a0561020b0600b004766b4b29e2mr650464vst.24.1710508463481;
+        Fri, 15 Mar 2024 06:14:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710508463; cv=none;
         d=google.com; s=arc-20160816;
-        b=vzYg5yrwXkE/ab3VuxtzuGUC8V2Nx+3vE1U26lDKRY1gAxSV9Wz+pP/xYDqmwzSByH
-         DpXwHuVw9dTi4xzC2BlPxJRRounHYupWwMuqU01JCI0dBKqS6Op7iTWXiaIGVlSXu0HY
-         4fryrQVd575Xw/ZmS5dhtI+YDF9iHuMZmIttvcU93CxcFBU9pqoGcm1D9PITeelSd0Xs
-         Rt4W5plN45IB7jVrhSl13shcVRiUeJngXMqTtUBhImoPzj7FqxIwk1PGwfb9VFHDJJZ6
-         JtkZh03CNUaF6UOTCsulaniD7nPunnPcko4NMkAVeyctIcgw/0kZPeJGwo0LtYkdPsgY
-         nkqA==
+        b=m+RD7TxXW9wCioiXxtFWNXaxFIUv13FUJRjeTA6LmE6hTwSQ2v5Y3lCTM7r3wzM/l8
+         lqAxf4BYIHxENjQHyGpaUQaKgpsmmrqttNPCuzW+m4siOirr8kCwm3dw3Gua/rcbPiyH
+         Wxf0oaGlSGnwsCMOxTKIiGssNEAHySpIwvdwWQqtKXk9Fu09SKNztvTCT/oTqq3d3HRu
+         Ev0WOHDlW2aRuwmeEFIZ+6HNNiBDQhw40WxyM5HVNp3GfF6PBH3eUq+ZPso/GmLD0ukl
+         G4nRid5bI0S0216jSMDEDWM/n/RlRTBEmNtWJhjjLNJVnpUrajFdIgpKljWaajOtXcrs
+         BBTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nbTQO2KVoRaBqcKgnkMGplR/jUAxDF5U80st6L4ph7Q=;
-        fh=uGcXrD5210VkmqrQURzS9Txl0eldLxl/g55OxRC+1V0=;
-        b=HS36SavH/dKekfT+pWHwmePdDMjJpuq75xdMmejlOJtRqcc9jhnPvcUCX/MfTJDIR9
-         xVLkctc5+RU0Mq4J2Zk+nqDAl879ZKoiFC6CxjJDgi79NMxJ87h9PTuYM7pz3CsSfe9R
-         5+3tGyZBNFOhSbatTWEv9zkTNIVhqEfPCIwH5FTrQJ1dU3qGAVpQaiqlFDr1l+tmOGzF
-         JtBGGUEbJnCoAFLhvpXWYns3l2LBHR5XIvqs4gAFTSIVEB+jTKXMsG9q9+YBLs0IMeS0
-         0fqxrsy+NzLRJ7mbcljfDT0S8tIgn8JuZXVbol+4hYs3C/V/G7QjxWvsirhqR2nECLbT
-         OEuA==;
+        bh=rLrHBMIvFW4XmoCMhvXju7BN+IFOvSPPXpZv8Qzl0AE=;
+        fh=ceYyVsojsUhDifc+cJ/3088BWgc6hELCxp4VImebiM8=;
+        b=OpHYurIAaOSs7r9tCRAA2opUGmdUvkUbJJkX09TS1/XKJsMtJA9Xxh7lfgwN327Z09
+         Puy0JCormbD2qMC+3Ol4yHNKVCxR6QHLlj0P3go5kS5aiTkr02VRIFlKFMzuVzxk5lzr
+         t9eONFLFO4RQ360NZKPfPt0VrUOT+9To4ve/a/L9mwire6BNWFheujwQwgrN4oCBCh4i
+         zw+tMB98T6U8n9Q7pHK9Uv3AHsQSrshpfNo2oGdnACnPJBFeRvUp8xozgQPcGXXBHTsC
+         uqqOJZmY1OdH+AZYWSGM+hQZXZpR4fFEiobAvvivRFN8+vvCQM8OJLDwuBk/I8Te/RbF
+         R1wA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RJLAhd1c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ZoKXrnjX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j5-20020ac85f85000000b0042f4b97555bsi3578085qta.338.2024.03.15.06.13.02
+        by mx.google.com with ESMTPS id x16-20020a05610207b000b00474be0190aesi535454vsg.229.2024.03.15.06.14.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Mar 2024 06:13:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Mar 2024 06:14:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RJLAhd1c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ZoKXrnjX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rl7L9-0000fW-Pw; Fri, 15 Mar 2024 09:11:15 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rl7Kx-00009U-BA; Fri, 15 Mar 2024 09:11:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7KQ-00070o-D7
- for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:10:30 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ id 1rl7KI-0006mp-Ef
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 09:10:23 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7KI-00081L-BL
- for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:10:29 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-29c71c6e20cso1745848a91.2
- for <qemu-devel@nongnu.org>; Fri, 15 Mar 2024 06:10:20 -0700 (PDT)
+ id 1rl7K8-0007x1-NJ
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 09:10:20 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-6e6bee809b8so1995138b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 15 Mar 2024 06:10:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1710508220; x=1711113020; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1710508209; x=1711113009; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nbTQO2KVoRaBqcKgnkMGplR/jUAxDF5U80st6L4ph7Q=;
- b=RJLAhd1ciGwCfaHXQbkYjJhG5vynmk3us1blbeJpdtRyeYPcDG+M7ciY3Gk6y8yBCU
- 0hSaHe3NvXum8ZJoD3KEKQO1iUiY21Rq5JIsrFUmaB+RBV1cjXW0gAjvQcX2dUPqU+B6
- X89TwWd0M+A6fTIJZ/uNHpLiHdFhkDKhq54jdkB1r2xLAAv4R9nm3OELEVkuc6yfKwmH
- 8EDmpq+SG2RppdPotqRLyGYS2ISanCo1+U2g5I0GCwxGll3foL0NOKJK4uZ+NiJpDHTE
- Z9LWDScGWsVjL/eOaSA+s0Wh9rFL9ORrCGX4eXZ59zVS5+S4scUUN0L3Rj4WUNxy6kRP
- rhbA==
+ bh=rLrHBMIvFW4XmoCMhvXju7BN+IFOvSPPXpZv8Qzl0AE=;
+ b=ZoKXrnjX3H3Q+d2tmzUQ6o7PY93aQuSpWCHlbyxoj/ye8i2rYYKDgr3ZD3U+8hBoo9
+ RXU9rZgTKCDoMvKq01GZK1Ht0raNjYmbjchmIoD/1fLWnUBO8MtyM1NCLHQ8/kwoGiwz
+ FQzzMEx8Sg7Xgs0YYSQGn3pB8IFjAgUm0vH0vxO944KaEwWiFthXPJtEWQ2XZxs2wP0h
+ a5XeCue6NOum9qe9g7GRWWVbEJuhnbgX8y8d0Ba02RQ+vjdrvQYDGbPB39o66K4YNd/N
+ 3lLmgFjLmSUKA3oH6aiYP+XUuE7V+f/GDPwZZQVISf4Go3llha7ciRbmIrVVPpuJ/O7g
+ YceA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710508220; x=1711113020;
+ d=1e100.net; s=20230601; t=1710508209; x=1711113009;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nbTQO2KVoRaBqcKgnkMGplR/jUAxDF5U80st6L4ph7Q=;
- b=FEUs04wsXuUT6x1yujyFanZI/aNbvrwPRS3dUqFLABaKi137UdKF+wYaTZ75oJ2r+D
- zLEr1GUhye+c2KrozVSEP7TNnjnV6PDV/4hG6ddaRbszlXQcOrY1G3KbQkAwsY/4ry4i
- kJm7hM/Zji30R67CgLWKucQnf3mNpcE18/9jh8L0/DD6Uh5tpcQObisNMB5bw//XF4F/
- mn6vkgGm5AjMv2vE/J/zb8Ut8NOJ0hGS+Uw+juMp0QmGIjnxwxq4z/VGMhoaxYZ06vGN
- 7bLTm14L0WAyPp2qXhhE/jTO3O68lrSkGDMF+51DqON7aPfOV94X6UalVq/FNrmxr2Xr
- 3maQ==
-X-Gm-Message-State: AOJu0YyqnctQsyTzInySgMOqQbd75VmnlY1WhN6/y+oSxAwLi+Mat4Zj
- /aHc9koo5XBqT5KUaNyIlv9GhkGv/vtzv6mo9+GAyk/7LLqzAcaxnPa05b17jnW+YsHC55EnfF5
- U
-X-Received: by 2002:a17:90a:be18:b0:29e:781:25dc with SMTP id
- a24-20020a17090abe1800b0029e078125dcmr383552pjs.19.1710508219750; 
- Fri, 15 Mar 2024 06:10:19 -0700 (PDT)
+ bh=rLrHBMIvFW4XmoCMhvXju7BN+IFOvSPPXpZv8Qzl0AE=;
+ b=AY2RgSdCxgIkZEG6pyDSpgDaqe5wQqxyhieuzp26BsyFKGuEMWrp2d71GG5qrf+/FC
+ x6TonOLg4QaanC7xA8sJQdaTJMl108hkCh/+Ml2WO2uvP5ThhVk/92NRG8mnx5lmhI+b
+ nHc/0LJ29VodSjPrvKYIkzywS5CHbd1h+SaYD40jYuNnqmQQND5Zi+jkuMTMx6KfXGRE
+ pv6hvxWqSct2P2xu2KPwawLK8s6yQna4RrF9NAc/3rxQ1m+nk1jq55HTGCk2RWXVNYp4
+ U32kJ5iI31WcZhOHPrHmvWhZC0r4wirvZEZVaL6laJDSFTPS15vPHJlXGe9DqYfaxeSg
+ TGsQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXE7uqtQrTyAn2Q7temRbU5uHikEm0DT4Y1PRbBYggK1SHUY9KzSIKaiQClWHNZPCVuzB1/kdTdmwgrX5QIWLEELPCH
+X-Gm-Message-State: AOJu0YwP1OgPu4qSy+TRrQP230c6u88wKDJEGRwUIEMwYskBrNcJq0tx
+ q1GQKqW6QunxA8mlGSt27Fi4prNdbeK0oOdOKjDDwegZ0rGpcNz69n6zY7y4+u4=
+X-Received: by 2002:a05:6a20:1591:b0:1a0:e187:87c4 with SMTP id
+ h17-20020a056a20159100b001a0e18787c4mr3772557pzj.38.1710508209727; 
+ Fri, 15 Mar 2024 06:10:09 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.184.12])
  by smtp.gmail.com with ESMTPSA id
- r3-20020a17090ad40300b0029c68206e2bsm2886663pju.0.2024.03.15.06.10.15
+ r3-20020a17090ad40300b0029c68206e2bsm2886663pju.0.2024.03.15.06.10.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Mar 2024 06:10:19 -0700 (PDT)
+ Fri, 15 Mar 2024 06:10:09 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -108,93 +109,69 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Jones <ajones@ventanamicro.com>,
  Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH 12/12] tests/qtest/bios-tables-test.c: Enable basic testing
- for RISC-V
-Date: Fri, 15 Mar 2024 18:39:24 +0530
-Message-Id: <20240315130924.2378849-10-sunilvl@ventanamicro.com>
+Subject: [PATCH 10/12] tests/data/acpi/rebuild-expected-aml.sh: Add RISC-V
+Date: Fri, 15 Mar 2024 18:39:22 +0530
+Message-Id: <20240315130924.2378849-8-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
 References: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1034.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w17DhYuxd/Np
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5G8N8SY9WdBQ
 
-Add basic ACPI table testing for RISC-V.
+Update the list of supported architectures to include RISC-V.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 ---
- tests/qtest/bios-tables-test.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ tests/data/acpi/rebuild-expected-aml.sh | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index c492438ced..033acc8958 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1923,6 +1923,30 @@ static void test_acpi_microvm_acpi_erst(void)
- }
- #endif /* CONFIG_POSIX */
+diff --git a/tests/data/acpi/rebuild-expected-aml.sh b/tests/data/acpi/rebuild-expected-aml.sh
+index dcf2e2f221..c1092fb8ba 100755
+--- a/tests/data/acpi/rebuild-expected-aml.sh
++++ b/tests/data/acpi/rebuild-expected-aml.sh
+@@ -12,7 +12,7 @@
+ # This work is licensed under the terms of the GNU GPLv2.
+ # See the COPYING.LIB file in the top-level directory.
  
-+static void test_acpi_riscv64_virt_tcg(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "riscv64",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
-+        .ram_start = 0x80000000ULL,
-+        .scan_len = 128ULL * 1024 * 1024,
-+    };
-+
-+    /*
-+     * RHCT will have ISA string encoded. To reduce the effort
-+     * of updating expected AML file for any new default ISA extension,
-+     * use the profile rva22s64. Once profile is ratified, there may
-+     * not be new extension possible.
-+     */
-+    test_acpi_one("-cpu rva22s64 -device virtio-blk-device,drive=hd0 "
-+                  "-drive file=tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2,id=hd0",
-+                  &data);
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_aarch64_virt_tcg(void)
- {
-     test_data data = {
-@@ -2342,6 +2366,10 @@ int main(int argc, char *argv[])
-                 qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
-             }
-         }
-+    } else if (strcmp(arch, "riscv64") == 0) {
-+        if (has_tcg && qtest_has_device("virtio-blk-pci")) {
-+            qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
-+        }
-     }
-     ret = g_test_run();
-     boot_sector_cleanup(disk);
+-qemu_arches="x86_64 aarch64"
++qemu_arches="x86_64 aarch64 riscv64"
+ 
+ if [ ! -e "tests/qtest/bios-tables-test" ]; then
+     echo "Test: bios-tables-test is required! Run make check before this script."
+@@ -36,7 +36,8 @@ fi
+ if [ -z "$qemu_bins" ]; then
+     echo "Only the following architectures are currently supported: $qemu_arches"
+     echo "None of these configured!"
+-    echo "To fix, run configure --target-list=x86_64-softmmu,aarch64-softmmu"
++    echo "To fix, run configure \
++         --target-list=x86_64-softmmu,aarch64-softmmu,riscv64-softmmu"
+     exit 1;
+ fi
+ 
 -- 
 2.40.1
 

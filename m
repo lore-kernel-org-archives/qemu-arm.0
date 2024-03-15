@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp989087eju;
-        Fri, 15 Mar 2024 06:09:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXFmh9Pcri89+UZQ9+KiAPfzmSwXKJV2oumdNW2l5Hual8RSZG8rQ76euo+rF0UT+BsynsP/b3/n8ATED41/PtKsT/4RJqW
-X-Received: by 2002:ac2:5bce:0:b0:513:5a3c:e8cc with SMTP id u14-20020ac25bce000000b005135a3ce8ccmr3452476lfn.19.1710508181010;
-        Fri, 15 Mar 2024 06:09:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710508180; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp989159eju;
+        Fri, 15 Mar 2024 06:09:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVEg+5QDgjRnwCeBPBKbqvJTyIhcweFu1ZaYxa+wH2zLH1UVP9WIH0WBsIAzqqPbybI9nF6+9p8ifga2AApetHxj+TlxTAg
+X-Received: by 2002:a17:907:11c7:b0:a45:c027:372 with SMTP id va7-20020a17090711c700b00a45c0270372mr2791496ejb.68.1710508187500;
+        Fri, 15 Mar 2024 06:09:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710508187; cv=none;
         d=google.com; s=arc-20160816;
-        b=h8kNXZJC0EhOSbboDwwOTg29VvYuSP3ZxJOciwQbv/ky0bNPmCDIk5bspgGcrofKCG
-         0WU+W+FALGSqDxVPyxCtiYUDYdWuooN3uES3vxkhu0vEW9I+OFmXkUvkfbgSow3mYO03
-         tarZsVINHN1/KbsP33jlzxeUr04IJ8z7JaQ1sD5mT/zK8808UuUoBv5IcCxYYMzMsPcK
-         5DUreBl5OoGnofF8xC9ZmU7nUenggAyLjudrBjZ/sBGfwlpTtk3KjXHAGG8aNaG7EB1a
-         uFhYQ+up51XblTlfwO1DrWhWKDNcokSSBY7/lK+RGUBbiKc9lFMWv4tqjhmyweCgxhEX
-         QUAg==
+        b=UKOVmhqQpRl4FgLDpl6EXt5UaQCYHEDfl5EP7zukPR9WmdNt0zJmZlle3e4hmpdlGT
+         SP5GrtW0nVhVLPfcijFvGGZow9hQAnjjgHupTIymJin2ZPISmurE1vGaFIoDj3TtSixC
+         zKhg4EhWeNpefoVu9bPflP3biCVtTIqiWJgofjbeIjK3WGm1MFmKarUPNxe7rcNSYwT0
+         oInvnztAF+3ALdfCffY3fjDIHO7y5GsEkhTwjCex3vY/CYI+yOxUCOjAy9yyGeMIrJdr
+         CMnvgYmyqvBFcZEbqHmkQy92lr7EI5S/FkyK+ySuk4CBmAGxbKB0Zsj3kpKv7I81eltM
+         4TUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xkGMjK1G9yFAmyZjfysW+oy0VEwc0DxCtLcyXCgX4n0=;
-        fh=9DVifIYSl6Y0daHHuFULH0QIo/yPjhQTyFY577gj14o=;
-        b=X7R4/lqj0+cavOPZIpys6lWwWAxQdH9SGnr3rpo2tl3GqeNCVh1D6ROsh5NgnKhzp+
-         3Z2A/cyBd8BJTt6gaEj288f+FvcajNejziCb5p8Fos13ZJm9WnnEfPA4q6XgLmy3X2vF
-         NEsgl/3oKMWPX6y9TQ7IhSvospg58uqgHv7iYtcqzP5Qdc02supoHUl/Yj7ZFnLk1KH9
-         PSXwgnMf8nuBNn9TQSLNtcmdMl3J9wJ5BypriAYwYPn8X2QM0t+TYut0VYSbsZmFidO3
-         SAJtYo5uBKaOD/e1oGkghJWnDd1S5bx4y4VMDMdlYbxUr2oXIEooALQPVksEWQuz5fQX
-         aG3w==;
+        bh=7ztA/s++99kJlJQVkkhi5KVYRPW5VID21TBVzyIGr2Y=;
+        fh=pWm0c4S1uihOaoCOtXkjZPIdauq9mKCqA22CiGYD7eI=;
+        b=FRYYvDMEUkqHDRTBYn3Q1HSxlx/01Gyt5UfNH2nqKmk57zo0X/JOG6qYqLU8wKBX3d
+         ImDldrINZ2NYvBITC4Gpn39GvcerKymhc/N3Y3exrJegYjoIOReRN96EPI1vWAFOyrcN
+         vDNLrLvHppYkLhAVi5EFunqNl+aefnM9cv3L0fCjNu2Vg5rPMXkIchCfDjb736aruhpY
+         8aeqlmxCY6wY5BXMig/wvzr6TvIA70/Yia47OTzpeSCDJUpSSklkBVmEpKAMpE276diV
+         C15kzoLxVvihTAlyoF1vPNLOsDY6xIY73aOjBuKstdtHG1A33tnkVYt88rqf+85tTR7T
+         dhMg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="uj/YuiA7";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HqJrtJD9;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l28-20020ac2555c000000b00513d5d1c285sor619825lfk.21.2024.03.15.06.09.40
+        by mx.google.com with SMTPS id d3-20020a1709064c4300b00a4635c9843dsor1389853ejw.12.2024.03.15.06.09.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 15 Mar 2024 06:09:40 -0700 (PDT)
+        Fri, 15 Mar 2024 06:09:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="uj/YuiA7";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HqJrtJD9;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710508180; x=1711112980; darn=linaro.org;
+        d=linaro.org; s=google; t=1710508187; x=1711112987; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xkGMjK1G9yFAmyZjfysW+oy0VEwc0DxCtLcyXCgX4n0=;
-        b=uj/YuiA7MBuBjot6HTF3m+w0JrOLAw8WnPMwD/xi16l94CMjBtQp7gsSGc2EFOeAyf
-         tf5z1iY/P5KQi1uvDKIFp07QUAaBmS1fjRXStDveVgC/WLt93onIvxOY0H5TtZB42MgN
-         MWbUhKbT60TxV7ATTcT1lujCniwO9NPd17wAh9QaL1/zwb2qiCTiywEbI6gkTlFnz0ei
-         lI3llw8SCHQIl6i1QF5OIx9HIdP/SBPCkt70Bidyk1GNSAfJF502tBhL/6lTXMQ/7q9v
-         KB5q4Wo4EFHyBF5sUHhYpWgcTNEi02RvGEYXPvksKyaTx7veqhoaaUIdbEgSONdtu3kz
-         HRyw==
+        bh=7ztA/s++99kJlJQVkkhi5KVYRPW5VID21TBVzyIGr2Y=;
+        b=HqJrtJD9MKFD2rzIItQ4PATxEB0UFa0Wn1U05bchdPuQbxfiBGRESP0+YbGnvE8evS
+         W2brTkR37UNPT7ze0KoC/s4+iAtBZFu86EcujB+2LzHC6fueqL9tB4ZkJKULsoIadEFj
+         qHTpsVsPuVIFTSCp5VeBY/KPwpPYUomlzeFYTuVM/jbOb3JSnJHKL3WgbdV9vAnijskV
+         soG2t9zSSN1STBXZKou5QBJPxsxMQfmsbHED7AUD19gTAqpHVoFf/InpxOOfNpTMnjoW
+         APr10FRYy1r2QFNDvptwg1RBUYz+MX3rEj5Ttn9VjqaDDcHs5XbQ1VQVYszhQnFQHXcc
+         12AA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710508180; x=1711112980;
+        d=1e100.net; s=20230601; t=1710508187; x=1711112987;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xkGMjK1G9yFAmyZjfysW+oy0VEwc0DxCtLcyXCgX4n0=;
-        b=SxlzlkagEkHX1iNpQPkv90mHp1gia2WFXlCmkU6KMYkLz/8J6y8CPmIZrORVzOGlk5
-         la8WjMgEJJqzbzgnvLygkXEfImdRSPEFG0zfbOjCWoDBWycDugyHNTB+NRQXAoYo0AYw
-         tKqRLvwi98gRVdNytuTbRKL/4Ef0tggccOgXU+yegEBVL+pViu3ZNulqlJO0JeusTs8o
-         NjpdtZPuR3CYfOcGjhXdD5LS2Wm7fDFRR4LU8VzL+eTSfsg9erbverA91C0wv+ReyXP7
-         WdFak01yq/M2mDVxEQlYh5WHnG5Gxx+//+nLrqFONP1pCX2d3XMjiqClRdE6igEjnHD0
-         kCIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUL8fAAPhjo/UNs0GPyp4ybKxjKtJvTlPX9FOXpSYxbwuWcL96ZNU1iX0FzcFSVHa1UuwM6EI+XWW+o0JP8s+LbQZVlNcsf
-X-Gm-Message-State: AOJu0YyjmwXNNwti52GA+3e49uyF99jv1V197kPbbsm6jCnO16tcWlsk
-	+eczsTo2c6RUH9OODqvxttnlsOmHzmfdWkOWtnrwFzWV8du0YQLYq/UOtlL9Trjjqg==
-X-Google-Smtp-Source: AGHT+IHpHtbKvMjVVyy3n1oFAdNafsLrOa9Ad04r6RdA8Gsvr4YycfqtkVPsX2+fpJ/zynsRUwxdAw==
-X-Received: by 2002:a2e:808e:0:b0:2d2:a38c:d706 with SMTP id i14-20020a2e808e000000b002d2a38cd706mr3159290ljg.17.1710508180605;
-        Fri, 15 Mar 2024 06:09:40 -0700 (PDT)
+        bh=7ztA/s++99kJlJQVkkhi5KVYRPW5VID21TBVzyIGr2Y=;
+        b=jUG4DKcJOyyP7ouyZ8Ocitzwm1+pZnJC+9DnJAf9BauqlpovWwHlEab2x9eWix6Y6+
+         cgllns8Xi1VkbuDNzz7/B5gfwc9sVDay5W8yNFEpkFrDDEpZUrp2Ds7vdHW5ARLd3j9U
+         VScL3PCppquAhdSc/yUy7ajtz6DPqbL5Wiqg4RbY2VjTcIyvxHWuDuLrr7Wnala83R/+
+         vKGtJax4VkmmcGC22vVRMtULnQVz3FhdCODs4k9aE/yGte8NMuCGBDOgW4ajYRawtvQw
+         opCqcTKhLSJMkwJwNPz5lVnuuWCOnZ99YEjYyld2PbqZZpzVGjtXBFZaEWXh7IK1Eitb
+         P4hw==
+X-Forwarded-Encrypted: i=1; AJvYcCWWWvu/51vYrM5XNcOVaunVlKr0ceZ+9suOKVacAto4CQymHHCxlzbK+tJlylYxx3saiTQEc3XrTRLLZhBK3RTaxLWxJ2R2
+X-Gm-Message-State: AOJu0Yx1+Mln6b2HfOZX/GNm7rxE/YrcviR8d5nyq1R6XfJ4cwQvPOWa
+	ex8AKRjGEoIpRjNEDfni3k9deJRQOzhXzIK8fXlXcLqz8YSBEbf5ii9i8YFOlqDIqA==
+X-Google-Smtp-Source: AGHT+IHGdVDgE0BV4E6ET1vnyKOiNgQutr60WkuR7/igTVB/b/2IuiYcgezn/mIAKkIya0Cm/N2Kbw==
+X-Received: by 2002:a17:906:6bc8:b0:a46:800a:6358 with SMTP id t8-20020a1709066bc800b00a46800a6358mr1492199ejs.15.1710508187195;
+        Fri, 15 Mar 2024 06:09:47 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.145.26])
-        by smtp.gmail.com with ESMTPSA id cx14-20020a05640222ae00b00568af798c9esm578595edb.90.2024.03.15.06.09.38
+        by smtp.gmail.com with ESMTPSA id f23-20020a1709067f9700b00a466a265ffcsm1722093ejr.145.2024.03.15.06.09.45
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 15 Mar 2024 06:09:40 -0700 (PDT)
+        Fri, 15 Mar 2024 06:09:46 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
@@ -92,77 +92,79 @@ Cc: qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PATCH-for-9.1 04/21] target/sparc: Declare CPU QOM types using DEFINE_TYPES() macro
-Date: Fri, 15 Mar 2024 14:08:52 +0100
-Message-ID: <20240315130910.15750-5-philmd@linaro.org>
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH-for-9.1 05/21] cpus: Open code OBJECT_DECLARE_TYPE() in OBJECT_DECLARE_CPU_TYPE()
+Date: Fri, 15 Mar 2024 14:08:53 +0100
+Message-ID: <20240315130910.15750-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240315130910.15750-1-philmd@linaro.org>
 References: <20240315130910.15750-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: la9VIiG1vX4N
+X-TUID: SNHIizWiXe6c
 
-When multiple QOM types are registered in the same file,
-it is simpler to use the the DEFINE_TYPES() macro. In
-particular because type array declared with such macro
-are easier to review.
+Since the OBJECT_DECLARE_CPU_TYPE() macro uses the abstract ArchCPU
+type, when declaring multiple CPUs of the same ArchCPU type we get
+an error related to the indirect G_DEFINE_AUTOPTR_CLEANUP_FUNC()
+use within OBJECT_DECLARE_TYPE():
 
-In few commits we are going to add more types, so replace
-the type_register_static() to ease further reviews.
+  target/mips/cpu-qom.h:31:1: error: redefinition of 'glib_autoptr_clear_ArchCPU'
+  OBJECT_DECLARE_CPU_TYPE(MIPS64CPU, MIPSCPUClass, MIPS64_CPU)
+  ^
+  include/hw/core/cpu.h:82:5: note: expanded from macro 'OBJECT_DECLARE_CPU_TYPE'
+      OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
+      ^
+  include/qom/object.h:237:5: note: expanded from macro 'OBJECT_DECLARE_TYPE'
+      G_DEFINE_AUTOPTR_CLEANUP_FUNC(InstanceType, object_unref) \
+      ^
+  /usr/include/glib-2.0/glib/gmacros.h:1371:3: note: expanded from macro 'G_DEFINE_AUTOPTR_CLEANUP_FUNC'
+    _GLIB_DEFINE_AUTOPTR_CLEANUP_FUNCS(TypeName, TypeName, func)
+    ^
+  /usr/include/glib-2.0/glib/gmacros.h:1354:36: note: expanded from macro '_GLIB_DEFINE_AUTOPTR_CLEANUP_FUNCS'
+    static G_GNUC_UNUSED inline void _GLIB_AUTOPTR_CLEAR_FUNC_NAME(TypeName) (TypeName *_ptr)                     \
+                                     ^
+  /usr/include/glib-2.0/glib/gmacros.h:1338:49: note: expanded from macro '_GLIB_AUTOPTR_CLEAR_FUNC_NAME'
+  #define _GLIB_AUTOPTR_CLEAR_FUNC_NAME(TypeName) glib_autoptr_clear_##TypeName
+                                                  ^
+  <scratch space>:54:1: note: expanded from here
+  glib_autoptr_clear_ArchCPU
+  ^
+  target/mips/cpu-qom.h:30:1: note: previous definition is here
+  OBJECT_DECLARE_CPU_TYPE(MIPS32CPU, MIPSCPUClass, MIPS32_CPU)
+  ^
+
+Avoid that problem by expanding the OBJECT_DECLARE_TYPE() macro
+within OBJECT_DECLARE_CPU_TYPE().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20231013140116.255-17-philmd@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/sparc/cpu.c | 23 +++++++++++++----------
- 1 file changed, 13 insertions(+), 10 deletions(-)
+TODO: check rth comment:
+What about adding an OBJECT_DECLARE_CPU_SUBTYPE that omits half the stuff instead?
+We don't need another object typedef at all, for instance.
+---
+ include/hw/core/cpu.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index dc9ead21fc..42b13ab63f 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -949,17 +949,21 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->tcg_ops = &sparc_tcg_ops;
- }
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index ec14f74ce5..4c2e5095bf 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -78,7 +78,12 @@ DECLARE_CLASS_CHECKERS(CPUClass, CPU,
+  */
+ #define OBJECT_DECLARE_CPU_TYPE(CpuInstanceType, CpuClassType, CPU_MODULE_OBJ_NAME) \
+     typedef struct ArchCPU CpuInstanceType; \
+-    OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
++    typedef struct CpuClassType CpuClassType; \
++    \
++    G_DEFINE_AUTOPTR_CLEANUP_FUNC(CpuInstanceType, object_unref) \
++    \
++    DECLARE_OBJ_CHECKERS(CpuInstanceType, CpuClassType, \
++                         CPU_MODULE_OBJ_NAME, TYPE_##CPU_MODULE_OBJ_NAME)
  
--static const TypeInfo sparc_cpu_type_info = {
--    .name = TYPE_SPARC_CPU,
--    .parent = TYPE_CPU,
--    .instance_size = sizeof(SPARCCPU),
--    .instance_align = __alignof(SPARCCPU),
--    .instance_init = sparc_cpu_initfn,
--    .abstract = true,
--    .class_size = sizeof(SPARCCPUClass),
--    .class_init = sparc_cpu_class_init,
-+static const TypeInfo sparc_cpu_types[] = {
-+    {
-+        .name           = TYPE_SPARC_CPU,
-+        .parent         = TYPE_CPU,
-+        .instance_size  = sizeof(SPARCCPU),
-+        .instance_align = __alignof(SPARCCPU),
-+        .instance_init  = sparc_cpu_initfn,
-+        .abstract       = true,
-+        .class_size     = sizeof(SPARCCPUClass),
-+        .class_init     = sparc_cpu_class_init,
-+    }
- };
- 
-+DEFINE_TYPES(sparc_cpu_types)
-+
- static void sparc_cpu_cpudef_class_init(ObjectClass *oc, void *data)
- {
-     SPARCCPUClass *scc = SPARC_CPU_CLASS(oc);
-@@ -984,7 +988,6 @@ static void sparc_cpu_register_types(void)
- {
-     int i;
- 
--    type_register_static(&sparc_cpu_type_info);
-     for (i = 0; i < ARRAY_SIZE(sparc_defs); i++) {
-         sparc_register_cpudef_type(&sparc_defs[i]);
-     }
+ typedef enum MMUAccessType {
+     MMU_DATA_LOAD  = 0,
 -- 
 2.41.0

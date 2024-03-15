@@ -1,304 +1,136 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp996054eju;
-        Fri, 15 Mar 2024 06:19:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVa4DL+3KEIoGSnHynOqiI3WEdyyEXGqhARdiqq+LejMCGhSk5/dWLT/JvmfeqTFOdXz7kHTxElxrLugsW7KrhPPc0xrwQ2
-X-Google-Smtp-Source: AGHT+IH7Syj7cCiR8PTsLQymIJeXctyr4oZicy5cTqQ2SuU16jQsPNOB86Xyvth9xj7ot9Ehfqzd
-X-Received: by 2002:a05:6808:219d:b0:3c3:76da:e821 with SMTP id be29-20020a056808219d00b003c376dae821mr2439277oib.23.1710508754032;
-        Fri, 15 Mar 2024 06:19:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710508754; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp1034952eju;
+        Fri, 15 Mar 2024 07:17:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUFZYAh3+l+7LGqTuausuVnSLa8gG3OiQ8dmwCJrR2zIFqJkBgFZiXxvwja0VKKfIoFhzKRZjWe5lG67t9RWGzZZivvOpnd
+X-Google-Smtp-Source: AGHT+IFU7OSlGBCpIQC1bmO6o47d1ZzdYtmgmh57DesKSJSs432U5uvNKxzEeLBL/vF6y5uoN7ze
+X-Received: by 2002:a67:e94c:0:b0:474:c309:3733 with SMTP id p12-20020a67e94c000000b00474c3093733mr3223107vso.11.1710512276484;
+        Fri, 15 Mar 2024 07:17:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710512276; cv=none;
         d=google.com; s=arc-20160816;
-        b=nwJBuoel1LuTtZXs1RMGb1F0ajiSbkwswyKnstTABPBhq1XByC/wxvKx7pxKxkDxV2
-         uSC4Nif0VPS6j8cIMDQnz43NeUvgc5Oq7FNLUgqeAn/Tue9G4/ag2ssgZnKNNz0TnHfC
-         T/CvoP4B3EKikCiKuo5eR5nk23d8Wsu1oFgpz53yMxDBmsM7awl0zpAqhxXSLHke9DXs
-         EWuAduPqoZs2D6qNwf7qR+kWjEzbMNZfsNBjZ7ljISqx0Z1bhLkfhJrplioYfAOj0rxU
-         ETbCgZdyfdY8ZnWUADuPYKr5GhgzChaJHb12U45V1KKlgQ8QQjTXesgD1gE8xe3gRsJV
-         yfew==
+        b=sGFxjKLvPSNwQCUX/oitbrwnpcfue0VwW/C4UFESmw0KNXsPkhyiqpZJWcW/TrkzH1
+         hqhwhQeLUlc86Cenhn9tZW8n7kjksCKtB18G6ry2yKZOZR34lOjtqhfjXinvBQBGeiid
+         KupTUkAkUP+pHr4NoCHT3ZE3DefY6+Yeu3C2u3JAO1Q6brnj9Blk9WYqwx0FCIshZxcV
+         3kpbkqO7YWCPgX+aRbVGXVY3MuTBP4GqiC+zqC7P/TstsIoJVNgrxwh8EGiJAZ3u30l0
+         RIchIS8Q69gJMaD58Co63pDgzlG2hnwFsUr5i6hqTuPzLqib/Qm8yZoCBFvtVJzK+TZY
+         vK/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=eP7mFS+tC1O6LUU3KM5DOGQ8e+9ow7yRP/vkR8U6RW0=;
-        fh=uGcXrD5210VkmqrQURzS9Txl0eldLxl/g55OxRC+1V0=;
-        b=ToaRkVs4L7x/eUxppPluAjC9yJ+W+0Eox12vIW3rrg4kaRThA3uRx+V+njhXePxNo9
-         P5oVwwodVpMlsTeFDfxZJHYHw5r80t4xeiNhusuE3BbutuREk+yGozBi41g+fVn2B3VG
-         FVVrmikq+FDZVutPc5VwN3+QeYoZxUI5pDJp3VG+cwFPrlMDR/Xccxay29VKae8NLV5R
-         oH1CqBaFs0/zGYQwLb3UvWGSgCOaPBiDIcC+XD+DEGy/34qHVmccxnTDIWZsJd1mnT3i
-         rnBq47+YGef0NzpOxRkDGBsHKtt3PesrYp6fmrBEj93vXmkBrxP7vtrj6Y9MvDET7JN3
-         6SLg==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=e3xroBIiXu7NK0TFFTTmYVT17u94PI1uMbQRwjWPBC4=;
+        fh=Baw0egHTUW2YOB9xUl68znQ+5cwxFOSKFgakOp+S9Es=;
+        b=AD1pYVpoKhFg1Hz/hOxZjP5OOriZWUehDMykaz9fQr8+h11eqPzZKOmJB7FSDREtWk
+         vMN87SCux6Y/VFreGA0Sn+rcP6FIjnUb4Youh/vBoZekd5vrwv2reiDwr2DMgrGD0Exn
+         skpa1c/anVSUK76yHbyqj95Sc8esInzALb+WfKNgSfKjfFRFJYdzP9cA2yFcsN/MGa7v
+         RzrdRQ/9mm/mOxO6BtkVQm5eRfyoLbliNRsTpLzC763mQ9NnDFjd6Z+pCW/ADYJH7Rl2
+         EGdOUr8pKhQLtDrOJmI2H8P9duqjnp/ZZU4d1f4iQ5mnDMtvU6n6wUD5rt4USlfrO3Ad
+         cXwg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=kHFx1v+4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TbIbY1BM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r11-20020a0562140c8b00b00690ab4beb40si2905160qvr.287.2024.03.15.06.19.13
+        by mx.google.com with ESMTPS id j22-20020a67f796000000b0047548c99cc3si532033vso.736.2024.03.15.07.17.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Mar 2024 06:19:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Mar 2024 07:17:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=kHFx1v+4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TbIbY1BM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rl7Kt-00086u-1K; Fri, 15 Mar 2024 09:10:59 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rl8NI-0003Lt-U4; Fri, 15 Mar 2024 10:17:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7Jy-0006La-PS
- for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:10:03 -0400
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7Jw-0007qr-MJ
- for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:10:02 -0400
-Received: by mail-pg1-x52a.google.com with SMTP id
- 41be03b00d2f7-5dbd519bde6so1604403a12.1
- for <qemu-devel@nongnu.org>; Fri, 15 Mar 2024 06:10:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1710508194; x=1711112994; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eP7mFS+tC1O6LUU3KM5DOGQ8e+9ow7yRP/vkR8U6RW0=;
- b=kHFx1v+44WC2DwghQQHmDRutOk/1jga+Y2zpUaGC40RqAw8E0KecBJVul/DYiMDdUg
- +g7v0en9/587hd8LqVcRJTqZWv1B+0FRTn92wwj/0R2BokUWn2PZhAdPRvTcXIAmM9Fu
- oyfYuozq/9lDVuuNi9ygggV8fMFq3jshEe+oVmFGmUBUGlOG089ryfrYPSzfbQKXete7
- DMqT0SC4njieMRQ7PjCFhQCL+ulZkcEA7b5gBSTbqILXTarTA9Clr9T24TsdNTJu2X76
- 8OnsgNSXdqSVHbkx9jXHoMhHnNQm9ZsHdO0FSNF+0TUIjLscqsmm0k6PQw06UJORIeOl
- Ld7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710508194; x=1711112994;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eP7mFS+tC1O6LUU3KM5DOGQ8e+9ow7yRP/vkR8U6RW0=;
- b=FHsg3OEBFEFLPFd8GF0bauaQWIvxosOCckHNWJRBIN9JzYrYw9ttdcFomqfTaDbXDY
- DWSmplty+rgBjwQwJPkrCb+xgMUFFFfo2VIWLm8bYjk5xUt3/nwEV3u6jPSskWwKKGgF
- qXl9bzzO1fvpV5RhGRX0GSO/LHfXTaK2roAuf4SNcYPj49x1CvK+jaZd29f+fC3KvjFf
- JHAsxz83D9xhBdauEM0LzJ9lLxBeV+dQwWEYvZETSktWdNXGUgPYyT0DNeQ6evqimN5D
- 6MUDHC5rMWT/XR0WMNPbQCVVxqj3Mf3T5dIXQjYwwIt7Mkwsn3u5ruVm/z7Zq5bbtFoz
- F6kA==
-X-Gm-Message-State: AOJu0YzC6veAH0CBu5wnQsnImBF/qAkL4ARz86LPqlo8KSUHnwUHfzDA
- Ba6OOxWfNZCT7zkHN0WGztvhYtWv9YSVcPqE7JE3I27ojYjiEuzI4creFn+3JA/r0bpl7ISB6GA
- L
-X-Received: by 2002:a17:90a:ce12:b0:29b:f2b1:6973 with SMTP id
- f18-20020a17090ace1200b0029bf2b16973mr4641926pju.20.1710508194137; 
- Fri, 15 Mar 2024 06:09:54 -0700 (PDT)
-Received: from sunil-pc.Dlink ([106.51.184.12])
- by smtp.gmail.com with ESMTPSA id
- r3-20020a17090ad40300b0029c68206e2bsm2886663pju.0.2024.03.15.06.09.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Mar 2024 06:09:53 -0700 (PDT)
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rl8NE-0003IN-HD
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 10:17:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rl8ND-00065k-75
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 10:17:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710512246;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=e3xroBIiXu7NK0TFFTTmYVT17u94PI1uMbQRwjWPBC4=;
+ b=TbIbY1BMP7HlUO26gTCkEZmSiowZ6eiT4MxJwTMLeEjQrkP/uCXtC0LRsf5BeMQjyODBJG
+ 7PeuSidd5FHaeJ8p9gv1XVNJ13d+nqsQDYFG6PnSz0NemT7/eXzBvYdlCeMP7ug4922kNe
+ p87LtAdCCljjt6EhSiWP/Ot/YadaGE4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-668-_22CQEOQMqilx1qjqRBrVQ-1; Fri, 15 Mar 2024 10:17:22 -0400
+X-MC-Unique: _22CQEOQMqilx1qjqRBrVQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 230A186C043;
+ Fri, 15 Mar 2024 14:17:22 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B0847C041EF;
+ Fri, 15 Mar 2024 14:17:20 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 960281800DD4; Fri, 15 Mar 2024 15:17:19 +0100 (CET)
+Date: Fri, 15 Mar 2024 15:17:19 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, 
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
  Laurent Vivier <lvivier@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Alistair Francis <alistair23@gmail.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH 07/12] tests/data/acpi/virt: Move ACPI tables under aarch64
-Date: Fri, 15 Mar 2024 18:39:19 +0530
-Message-Id: <20240315130924.2378849-5-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+ Alistair Francis <alistair23@gmail.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>
+Subject: Re: [PATCH 03/12] uefi-test-tools: Add support for python based
+ build script
+Message-ID: <a425xsrezixamz7zo6cswvgawvv3swkfem73dod5ummkpol27i@orq5xdpzond7>
 References: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.933,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RZiFwd4ZQSm4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Zp6eCuv/bHu0
 
-Since virt is a common machine name across architectures like ARM64 and
-RISC-V, move existing ARM64 ACPI tables under aarch64 folder so that
-RISC-V tables can be added under riscv64 folder in future.
+> +Build/bios-tables-test.%.efi:
+> +	$(PYTHON) ../../roms/edk2-build.py --config uefi-test-build.config
 
-Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
----
- tests/data/acpi/virt/{ => aarch64}/APIC             | Bin
- .../data/acpi/virt/{ => aarch64}/APIC.acpihmatvirt  | Bin
- tests/data/acpi/virt/{ => aarch64}/APIC.topology    | Bin
- tests/data/acpi/virt/{ => aarch64}/DBG2             | Bin
- tests/data/acpi/virt/{ => aarch64}/DSDT             | Bin
- .../data/acpi/virt/{ => aarch64}/DSDT.acpihmatvirt  | Bin
- tests/data/acpi/virt/{ => aarch64}/DSDT.memhp       | Bin
- tests/data/acpi/virt/{ => aarch64}/DSDT.pxb         | Bin
- tests/data/acpi/virt/{ => aarch64}/DSDT.topology    | Bin
- tests/data/acpi/virt/{ => aarch64}/FACP             | Bin
- tests/data/acpi/virt/{ => aarch64}/GTDT             | Bin
- .../data/acpi/virt/{ => aarch64}/HMAT.acpihmatvirt  | Bin
- tests/data/acpi/virt/{ => aarch64}/IORT             | Bin
- tests/data/acpi/virt/{ => aarch64}/MCFG             | Bin
- tests/data/acpi/virt/{ => aarch64}/NFIT.memhp       | Bin
- tests/data/acpi/virt/{ => aarch64}/PPTT             | Bin
- .../data/acpi/virt/{ => aarch64}/PPTT.acpihmatvirt  | Bin
- tests/data/acpi/virt/{ => aarch64}/PPTT.topology    | Bin
- tests/data/acpi/virt/{ => aarch64}/SLIT.memhp       | Bin
- tests/data/acpi/virt/{ => aarch64}/SPCR             | Bin
- .../data/acpi/virt/{ => aarch64}/SRAT.acpihmatvirt  | Bin
- tests/data/acpi/virt/{ => aarch64}/SRAT.memhp       | Bin
- tests/data/acpi/virt/{ => aarch64}/SRAT.numamem     | Bin
- tests/data/acpi/virt/{ => aarch64}/SSDT.memhp       | Bin
- tests/data/acpi/virt/{ => aarch64}/VIOT             | Bin
- 25 files changed, 0 insertions(+), 0 deletions(-)
- rename tests/data/acpi/virt/{ => aarch64}/APIC (100%)
- rename tests/data/acpi/virt/{ => aarch64}/APIC.acpihmatvirt (100%)
- rename tests/data/acpi/virt/{ => aarch64}/APIC.topology (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DBG2 (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DSDT (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DSDT.acpihmatvirt (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DSDT.memhp (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DSDT.pxb (100%)
- rename tests/data/acpi/virt/{ => aarch64}/DSDT.topology (100%)
- rename tests/data/acpi/virt/{ => aarch64}/FACP (100%)
- rename tests/data/acpi/virt/{ => aarch64}/GTDT (100%)
- rename tests/data/acpi/virt/{ => aarch64}/HMAT.acpihmatvirt (100%)
- rename tests/data/acpi/virt/{ => aarch64}/IORT (100%)
- rename tests/data/acpi/virt/{ => aarch64}/MCFG (100%)
- rename tests/data/acpi/virt/{ => aarch64}/NFIT.memhp (100%)
- rename tests/data/acpi/virt/{ => aarch64}/PPTT (100%)
- rename tests/data/acpi/virt/{ => aarch64}/PPTT.acpihmatvirt (100%)
- rename tests/data/acpi/virt/{ => aarch64}/PPTT.topology (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SLIT.memhp (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SPCR (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SRAT.acpihmatvirt (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SRAT.memhp (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SRAT.numamem (100%)
- rename tests/data/acpi/virt/{ => aarch64}/SSDT.memhp (100%)
- rename tests/data/acpi/virt/{ => aarch64}/VIOT (100%)
-
-diff --git a/tests/data/acpi/virt/APIC b/tests/data/acpi/virt/aarch64/APIC
-similarity index 100%
-rename from tests/data/acpi/virt/APIC
-rename to tests/data/acpi/virt/aarch64/APIC
-diff --git a/tests/data/acpi/virt/APIC.acpihmatvirt b/tests/data/acpi/virt/aarch64/APIC.acpihmatvirt
-similarity index 100%
-rename from tests/data/acpi/virt/APIC.acpihmatvirt
-rename to tests/data/acpi/virt/aarch64/APIC.acpihmatvirt
-diff --git a/tests/data/acpi/virt/APIC.topology b/tests/data/acpi/virt/aarch64/APIC.topology
-similarity index 100%
-rename from tests/data/acpi/virt/APIC.topology
-rename to tests/data/acpi/virt/aarch64/APIC.topology
-diff --git a/tests/data/acpi/virt/DBG2 b/tests/data/acpi/virt/aarch64/DBG2
-similarity index 100%
-rename from tests/data/acpi/virt/DBG2
-rename to tests/data/acpi/virt/aarch64/DBG2
-diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/aarch64/DSDT
-similarity index 100%
-rename from tests/data/acpi/virt/DSDT
-rename to tests/data/acpi/virt/aarch64/DSDT
-diff --git a/tests/data/acpi/virt/DSDT.acpihmatvirt b/tests/data/acpi/virt/aarch64/DSDT.acpihmatvirt
-similarity index 100%
-rename from tests/data/acpi/virt/DSDT.acpihmatvirt
-rename to tests/data/acpi/virt/aarch64/DSDT.acpihmatvirt
-diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/aarch64/DSDT.memhp
-similarity index 100%
-rename from tests/data/acpi/virt/DSDT.memhp
-rename to tests/data/acpi/virt/aarch64/DSDT.memhp
-diff --git a/tests/data/acpi/virt/DSDT.pxb b/tests/data/acpi/virt/aarch64/DSDT.pxb
-similarity index 100%
-rename from tests/data/acpi/virt/DSDT.pxb
-rename to tests/data/acpi/virt/aarch64/DSDT.pxb
-diff --git a/tests/data/acpi/virt/DSDT.topology b/tests/data/acpi/virt/aarch64/DSDT.topology
-similarity index 100%
-rename from tests/data/acpi/virt/DSDT.topology
-rename to tests/data/acpi/virt/aarch64/DSDT.topology
-diff --git a/tests/data/acpi/virt/FACP b/tests/data/acpi/virt/aarch64/FACP
-similarity index 100%
-rename from tests/data/acpi/virt/FACP
-rename to tests/data/acpi/virt/aarch64/FACP
-diff --git a/tests/data/acpi/virt/GTDT b/tests/data/acpi/virt/aarch64/GTDT
-similarity index 100%
-rename from tests/data/acpi/virt/GTDT
-rename to tests/data/acpi/virt/aarch64/GTDT
-diff --git a/tests/data/acpi/virt/HMAT.acpihmatvirt b/tests/data/acpi/virt/aarch64/HMAT.acpihmatvirt
-similarity index 100%
-rename from tests/data/acpi/virt/HMAT.acpihmatvirt
-rename to tests/data/acpi/virt/aarch64/HMAT.acpihmatvirt
-diff --git a/tests/data/acpi/virt/IORT b/tests/data/acpi/virt/aarch64/IORT
-similarity index 100%
-rename from tests/data/acpi/virt/IORT
-rename to tests/data/acpi/virt/aarch64/IORT
-diff --git a/tests/data/acpi/virt/MCFG b/tests/data/acpi/virt/aarch64/MCFG
-similarity index 100%
-rename from tests/data/acpi/virt/MCFG
-rename to tests/data/acpi/virt/aarch64/MCFG
-diff --git a/tests/data/acpi/virt/NFIT.memhp b/tests/data/acpi/virt/aarch64/NFIT.memhp
-similarity index 100%
-rename from tests/data/acpi/virt/NFIT.memhp
-rename to tests/data/acpi/virt/aarch64/NFIT.memhp
-diff --git a/tests/data/acpi/virt/PPTT b/tests/data/acpi/virt/aarch64/PPTT
-similarity index 100%
-rename from tests/data/acpi/virt/PPTT
-rename to tests/data/acpi/virt/aarch64/PPTT
-diff --git a/tests/data/acpi/virt/PPTT.acpihmatvirt b/tests/data/acpi/virt/aarch64/PPTT.acpihmatvirt
-similarity index 100%
-rename from tests/data/acpi/virt/PPTT.acpihmatvirt
-rename to tests/data/acpi/virt/aarch64/PPTT.acpihmatvirt
-diff --git a/tests/data/acpi/virt/PPTT.topology b/tests/data/acpi/virt/aarch64/PPTT.topology
-similarity index 100%
-rename from tests/data/acpi/virt/PPTT.topology
-rename to tests/data/acpi/virt/aarch64/PPTT.topology
-diff --git a/tests/data/acpi/virt/SLIT.memhp b/tests/data/acpi/virt/aarch64/SLIT.memhp
-similarity index 100%
-rename from tests/data/acpi/virt/SLIT.memhp
-rename to tests/data/acpi/virt/aarch64/SLIT.memhp
-diff --git a/tests/data/acpi/virt/SPCR b/tests/data/acpi/virt/aarch64/SPCR
-similarity index 100%
-rename from tests/data/acpi/virt/SPCR
-rename to tests/data/acpi/virt/aarch64/SPCR
-diff --git a/tests/data/acpi/virt/SRAT.acpihmatvirt b/tests/data/acpi/virt/aarch64/SRAT.acpihmatvirt
-similarity index 100%
-rename from tests/data/acpi/virt/SRAT.acpihmatvirt
-rename to tests/data/acpi/virt/aarch64/SRAT.acpihmatvirt
-diff --git a/tests/data/acpi/virt/SRAT.memhp b/tests/data/acpi/virt/aarch64/SRAT.memhp
-similarity index 100%
-rename from tests/data/acpi/virt/SRAT.memhp
-rename to tests/data/acpi/virt/aarch64/SRAT.memhp
-diff --git a/tests/data/acpi/virt/SRAT.numamem b/tests/data/acpi/virt/aarch64/SRAT.numamem
-similarity index 100%
-rename from tests/data/acpi/virt/SRAT.numamem
-rename to tests/data/acpi/virt/aarch64/SRAT.numamem
-diff --git a/tests/data/acpi/virt/SSDT.memhp b/tests/data/acpi/virt/aarch64/SSDT.memhp
-similarity index 100%
-rename from tests/data/acpi/virt/SSDT.memhp
-rename to tests/data/acpi/virt/aarch64/SSDT.memhp
-diff --git a/tests/data/acpi/virt/VIOT b/tests/data/acpi/virt/aarch64/VIOT
-similarity index 100%
-rename from tests/data/acpi/virt/VIOT
-rename to tests/data/acpi/virt/aarch64/VIOT
--- 
-2.40.1
+Adding '--match $*' will build one arch instead of all.
 

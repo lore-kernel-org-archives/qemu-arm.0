@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp986912eju;
-        Fri, 15 Mar 2024 06:06:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUCYjBB5VyFx0c312H41hUyZbQ9giJCka2a/n5hAq66y+ANmNvJD6iQoE+8seY+ydalAnRr0M1QQr+1LxPivGcFEDlhLsva
-X-Google-Smtp-Source: AGHT+IFRJHPG7eidF7lqjpgAQAl7WQj3UiG3J5pA8xUfSVEDHYMlgZ1ANpuUSL74hwZOfWINg0L4
-X-Received: by 2002:a05:6870:6389:b0:221:8b50:f1a1 with SMTP id t9-20020a056870638900b002218b50f1a1mr5056204oap.40.1710508002469;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp986917eju;
+        Fri, 15 Mar 2024 06:06:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXQRQJd3G6SZLcbS3JX4ug05R/YXVnp9VQjAf3/iJ/xmQji7gG7l2zlanLZz9RRg/LVv423EYE2Fa3RxSFYawfs6M/GWo6w
+X-Google-Smtp-Source: AGHT+IGG40Q5FCi693D1wOfsGpr+XDv2j1iwYKDmH4/FQymmDeokt9kT8FBPlvHnvSv743gXugUL
+X-Received: by 2002:a81:538a:0:b0:60a:e1f:3594 with SMTP id h132-20020a81538a000000b0060a0e1f3594mr5260813ywb.32.1710508002558;
         Fri, 15 Mar 2024 06:06:42 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1710508002; cv=none;
         d=google.com; s=arc-20160816;
-        b=YgGL/Icl8dJei/oNeuAmBL87eKD3rjU0HaORSp896kz3q9BnmEpuBIN0i/pGTEptvK
-         5fj1gTfVJ/LX25BaUks3DfyvBG6BeDWLt0IWvS/l3jCLZrd8VS4znRjDu58JhO9SL0se
-         qjYpqDCFiNtCPCqnqI7rBQvnzvOjgI3CljlCKp0CGvGe4vs3XZowVn1LDjMIvvE+CnLR
-         Zsm/dbsbqwodY0qug9neCfozcWzNa9+0qqofXZ2ICUnqd6jmzlnVkvgxotHiUEZ8ne25
-         jmK7OdgSM20188ssWEH/hO5ANhDAnxcVgrdAxgWOeq/VcGfPcPzE6dk0kItEk0ZWDJbt
-         Cp1g==
+        b=Y01FKMSsJbLfA0H+TSGHygBNwWkuE5iZpcJvBShsQbUzzdV+fcen2+8yQbKO9YinQn
+         TrJSW4nUII7Nu1KtI4L2jrOiGHuoKlFU33h/OmcowHeQRRVhQ0dz8ug68co/hpK/aDqb
+         BzoN9AZKZqJ+835gPvZE8qULz3m6/tOp0/YBHptJmHdiSWdD8gWyBRhHtz8csTgvV9OY
+         u01FQuId1J2rPH9oOAv382QTwr+lYk8Ex0JnjGRCAWpr8x/5cLfN8qErQuvU9JeyS3iT
+         BLBt5T1VcGVpFv/N+sHJkt/hCzw/x9ghm34Z2XwkRhuHjwChNbk68a/iabwRQ8aNWHDS
+         M7+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=XJnPsHFmkVMUnscQauDvD3T+tPj+dvrsErrOjqviBzw=;
+        bh=PkDt8GM6nQ3pKknMgJXpLHP0C4rfjUmHwI1ZOZTyda8=;
         fh=uGcXrD5210VkmqrQURzS9Txl0eldLxl/g55OxRC+1V0=;
-        b=Fu71YjaAGns+i73LfPNoyv5RTNgz3Qy50Tzvc7kXqXdSl5tipKKq7c2BfWfbWmVb6b
-         J6qUTDoBIoC7Q3Y3/wJlQdifBQXFtUrAoAT3fPdYA9INbNcRjgwNJgnlWeIRy8xs0avv
-         Mb0Cu5OQuOvJcr894s3IOKwVz8v06RwWoU9/g367RWkHnQHCxmLRAUjRt7yq5UvC1VCZ
-         qQ1jczKRwvLLpjEdB1kEnPtXxIDCBU26yFT1v3iKQOEl9acpcrCnOMhGhftEECpR6IXg
-         TR9CQtJ0QT9Bhzw/lbVIrLPKtJN4dwdsZxel+1RxjtfC/vcHYBK+zTj9yoy9BffrPWSv
-         /BqA==;
+        b=eGv7KCgsK2hN2W1N/x1Ah+ekzsEEabjA83M+utpjgpTKQFkpQdojlPaIOHULf/6F1t
+         AH0UbE5OY5cWHyKiUgT2Jk0tw+QVUoI1jCK08utzVVgnOTCBwAxrSZT6zTNg8pdtxgpb
+         F7sQd6Tcfvh2pScDQlzvRb9101omYx1qXDqBfIECHIDH6sv86/wl/Z4EfvVfjPHPEwzR
+         7ALJy9uovp0sAfUb9HTQMjE6Lt58bnszhotRAlqok7bsAuHD05HgZDtjWUDoy+03dNO5
+         bWeFsacn1RvjWzSka6ZmlxEV+let3UKJvHNJ05pkp7jOP4RvAe8TW38M+WN4+/AcyMyX
+         rSUg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=OC0REzmU;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Og4TRqs3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11-20020a67ad0b000000b00472a9a14723si503640vsl.180.2024.03.15.06.06.42
+        by mx.google.com with ESMTPS id r22-20020a819a16000000b0060a50312ddesi1620835ywg.245.2024.03.15.06.06.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 15 Mar 2024 06:06:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=OC0REzmU;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Og4TRqs3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rl7Ft-0002kN-S2; Fri, 15 Mar 2024 09:05:50 -0400
+	id 1rl7Fy-0002mK-T6; Fri, 15 Mar 2024 09:05:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7Fr-0002iy-VV
+ id 1rl7Fr-0002if-3A
  for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:05:48 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rl7Fl-0006H0-RG
- for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:05:47 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-1dcab44747bso13864015ad.1
- for <qemu-devel@nongnu.org>; Fri, 15 Mar 2024 06:05:39 -0700 (PDT)
+ id 1rl7Ff-0006FZ-4w
+ for qemu-devel@nongnu.org; Fri, 15 Mar 2024 09:05:46 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1dbd32cff0bso15497015ad.0
+ for <qemu-devel@nongnu.org>; Fri, 15 Mar 2024 06:05:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1710507938; x=1711112738; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1710507933; x=1711112733; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XJnPsHFmkVMUnscQauDvD3T+tPj+dvrsErrOjqviBzw=;
- b=OC0REzmUwSB0rpJcWVZ9MnDz416DTkFBIs+MZjrtmU/1ac+rEQAznreadnMfIPwEWa
- jlVJgNRg/KaTGt/1YjxLAexMdOvNXDi3EDwRgSEO4oCAQs0T4uYQaSIraD59/xUjqGRJ
- AM4Uwy9X4c3Mly0G94f7Ci6lIcjWVPt2TgZtIoEEvjP43L+ngYydh4aJ3Q46zQNnf3Z9
- 0OJ0QkRAZ9j1BNSkFIrLB8Jh/iIUpFd93Z6DvFsLA4ScOKDtQtJLfCbpcfN0cMuON3t3
- tn61EPGxEd6TxchkqleXnuMUAwO0meDNUfmu38PuhEhl+v9GxkdwJ0+x+eLOso0CsOzf
- x5UQ==
+ bh=PkDt8GM6nQ3pKknMgJXpLHP0C4rfjUmHwI1ZOZTyda8=;
+ b=Og4TRqs3p2gmWrajxrKotIosWBcuRAAIwMAfsiKStUU9192FIbh76gt+ebeLCHwa4B
+ wAPvoUTQdO9ia1abqtXxdKKUYzSXJAFeXrQWavfdg/T4m2uQpJoQRTmSSZVToiESOdc1
+ IfABs+zj7V+7Ev0Lz1k0sU2WSCLGO7vXP89OwLxft31XCtb0F2AhrQgS4xwYjQ1bPMLr
+ KySfNc/YKJ4yNpqJqFBQwnkvdaB9NN2hr0GB2Alv8iUw7lrqRMiX7D2urt/Pe3MfSWVZ
+ rFAd6PcerCiT7NWOknhlISXJDe5CYyoa2FUMMrsN2VqJmdXIM4PwXfAEBPjzaJ3YmKld
+ vK8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710507938; x=1711112738;
+ d=1e100.net; s=20230601; t=1710507933; x=1711112733;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XJnPsHFmkVMUnscQauDvD3T+tPj+dvrsErrOjqviBzw=;
- b=w5/8Ccismm+hK5bny3jZaMnyVqBOp1FDiS8BAWDg5y8n1boM6crvUJ6+LXkHR6XmDB
- xEkAqRNqYaSST/bK63YU/SaQth5MPqGoNReH36Lt5XjinlyDvKY/7o4fF+2xDMLoIdAi
- DgK0PClnCLD2uDqISBKzKML6/ILnhVMyk2HChCAwDuTrtWWEkeoKkVQ0sbj5aSuDXuLV
- Cr2F2cC3fJW07VokjwzBHRun3CH+SkYarJFkW32/05o+sEr3iVzGvVr9NSUFavMqCBZ+
- xN4EpTQqBGz37TbfNHFnBrOhOyvehmm/eAgAvXoZSWJGviv5zrWflXL5UdfL1H4iqXE5
- HeSw==
-X-Gm-Message-State: AOJu0YybbtcKhF0Q1KUUaZHuHPOZlYNI0iVfI1u/UiDgfnwmzByQhqeS
- Q6i5yyYgW5n8V82CJTZpzAwklowkrHWip+2OzGp3ntGNRoJ3772MK3MH6nHsht2Iz/B7Kf7LFCN
- p
-X-Received: by 2002:a17:903:503:b0:1dd:bdf6:3746 with SMTP id
- jn3-20020a170903050300b001ddbdf63746mr4177077plb.40.1710507937931; 
- Fri, 15 Mar 2024 06:05:37 -0700 (PDT)
+ bh=PkDt8GM6nQ3pKknMgJXpLHP0C4rfjUmHwI1ZOZTyda8=;
+ b=DCylVzbOPI9D152Z4qeplUdowmfupAszBL7SYiP14ar4LZBFQenW2GnU6uskdkRSKE
+ 5dvPgoKU5ZQyNWQyC0dcgrj0nv2k7MpKoB4y02bC1FjG+kbkaPp1qnTbFazWSd/+DoMj
+ 3kV9YQE0lHpUUQo0HWWPq1ZmSbr/E1J1Rq3PutTI0V6oxXqzwOdqzvXIQiY+/lT2DVP5
+ 0q1K1m9pRkfCwmwrBVGCgJYexxt3MGBBWKEc+N/EojUYFcwesM31oAzZXJFrviiAclrE
+ +jQcRY6rKiRLend5TsUO0h381f/lJxMHbPKHS6tiGnJXYSpyB0CSyl9fDm8Fa4YE2q53
+ sOwA==
+X-Gm-Message-State: AOJu0YwFHyAZF8Rd6g2U6OICekBs1Ie309QVEH5gtKrjeDMFle8XGQzs
+ ACrEywDQWW86QL9/VisgzWu8moMhrWV8rbmxm7fF+sRT8THT17Hqyv8ZXHVQJqwC7iQu2aH7Biv
+ J
+X-Received: by 2002:a17:902:c401:b0:1dd:7de5:7ac4 with SMTP id
+ k1-20020a170902c40100b001dd7de57ac4mr6697522plk.38.1710507932709; 
+ Fri, 15 Mar 2024 06:05:32 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.184.12])
  by smtp.gmail.com with ESMTPSA id
- lh12-20020a170903290c00b001defd3e64d6sm182474plb.22.2024.03.15.06.05.33
+ lh12-20020a170903290c00b001defd3e64d6sm182474plb.22.2024.03.15.06.05.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Mar 2024 06:05:37 -0700 (PDT)
+ Fri, 15 Mar 2024 06:05:32 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -108,16 +108,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Andrew Jones <ajones@ventanamicro.com>,
  Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH 02/12] uefi-test-tools/UefiTestToolsPkg: Add RISC-V support
-Date: Fri, 15 Mar 2024 18:35:09 +0530
-Message-Id: <20240315130519.2378765-3-sunilvl@ventanamicro.com>
+Subject: [PATCH 01/12] roms/edk2-build.py: Add --module support
+Date: Fri, 15 Mar 2024 18:35:08 +0530
+Message-Id: <20240315130519.2378765-2-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240315130519.2378765-1-sunilvl@ventanamicro.com>
 References: <20240315130519.2378765-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,40 +139,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hO/p6nP+y7oq
+X-TUID: WpiA7ecQWDdn
 
-Enable building the test application for RISC-V with appropriate
-dependencies updated.
+UefiTestToolsPkg which should use edk2-build.py needs --module parameter
+support. Add this optional parameter handling.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 ---
- tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ roms/edk2-build.py | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc b/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-index c8511cd732..0902fd3c73 100644
---- a/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+++ b/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-@@ -19,7 +19,7 @@
-   PLATFORM_VERSION        = 0.1
-   PLATFORM_NAME           = UefiTestTools
-   SKUID_IDENTIFIER        = DEFAULT
--  SUPPORTED_ARCHITECTURES = ARM|AARCH64|IA32|X64
-+  SUPPORTED_ARCHITECTURES = ARM|AARCH64|IA32|X64|RISCV64
-   BUILD_TARGETS           = DEBUG
- 
- [BuildOptions.IA32]
-@@ -60,6 +60,10 @@
- 
- [LibraryClasses.IA32, LibraryClasses.X64]
-   BaseMemoryLib|MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
-+  RegisterFilterLib|MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
-+
-+[LibraryClasses.RISCV64]
-+  BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
- 
- [PcdsFixedAtBuild]
-   gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x8040004F
+diff --git a/roms/edk2-build.py b/roms/edk2-build.py
+index e564765aaa..3bfe200929 100755
+--- a/roms/edk2-build.py
++++ b/roms/edk2-build.py
+@@ -192,6 +192,9 @@ def build_one(cfg, build, jobs = None, silent = False, nologs = False):
+         cmdline += [ '-n', jobs ]
+     for arch in b['arch'].split():
+         cmdline += [ '-a', arch ]
++    if 'module' in b:
++        for module in b['module'].split():
++            cmdline += [ '-m', module ]
+     if 'opts' in b:
+         for name in b['opts'].split():
+             section = 'opts.' + name
 -- 
 2.40.1
 

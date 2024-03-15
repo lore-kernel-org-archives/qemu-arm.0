@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp989764eju;
-        Fri, 15 Mar 2024 06:10:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbe2GQ8qpObbeCfkDfep2ciNZtia7Z7r/VzDKzzq4BkmtzDVyNQRKRyakLMv7p2Q2zywyDea35WqG6un15yuD6Q/rdtUXj
-X-Received: by 2002:a17:906:7181:b0:a45:6b66:92ab with SMTP id h1-20020a170906718100b00a456b6692abmr3255023ejk.51.1710508235490;
-        Fri, 15 Mar 2024 06:10:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710508235; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp989860eju;
+        Fri, 15 Mar 2024 06:10:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWz4hcpvuDo3SJQG+7SrDijJPaEI+v2HEZxkQTiozp+nMU8hkotqDvLI2RmwegPFPM4cMOfwmqtiEsJAboFui40eN6EesnI
+X-Received: by 2002:a05:651c:154:b0:2d3:e0ec:36c7 with SMTP id c20-20020a05651c015400b002d3e0ec36c7mr3044629ljd.43.1710508242444;
+        Fri, 15 Mar 2024 06:10:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710508242; cv=none;
         d=google.com; s=arc-20160816;
-        b=D/grZs953TUPYS1rzoVpqHwZFbJv7HSFEGmVmtoDKff3OzGzChp3f+/F7aQgu65FBD
-         Suau5r19yIE1cLi1zGt9KR9AbOCdoKDfbWSDYEfHc78lYpqq6+7Aw8R737znGq/gp/4+
-         hIkDiiPbELZ7lzCAkOQq3lI/uyBf44EIebKa/jlZmr9RcYRzywnB0a/xsfflG5mAZjZh
-         yH0/uWLxjELEMFKZO0UC9UmU+n+XwDWOsguVLlMsrI2J8PHmMyNuebRVi1IjHvDPwkv0
-         wn2KlAEJUq2YBMq1wdmHCtOjD1qbFVAABNmSJJN0k9Bq8MsCLRXjwttd6KWeDiNmqHVu
-         jUAg==
+        b=M0XNhCyR3GdtXVEMiUjat+TvXOsRNe7TxxhWsyk8BNueyb7BMongw170KF9LWROntR
+         MO2PStGUFrFf+lbb3xZVn4/DbV3uKGJFnEJq9Bc33MIq+uY6fk8lf5vB6uVinhGrFK6W
+         BORUXtk2qOmCR7IURwvag3qlzZXUZ+FsjuAAFJef3i/XZjObGkSQZosrWN036ZRnsWrR
+         xGddqghRgGnwmPR/UmvjKp0yqptZ9Acykfnrcup1kkBofqa8AdVP8/cxoF/sZUnTY2xG
+         HhHKKsM51ZKTSsa0pZHSsuxCPpBkt+895b4Artpl526c4sd5hjluIDERDev6Os1zZLQH
+         TCSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ziq2wowWWC1u1AFoZqkoU9Vq9nlm9ySbjwCpiWVML/s=;
-        fh=odq/f1P8WzgFbcvth1l/AII3RIXaBrnqRrB3S4Xqe5M=;
-        b=nQy5p4JwG8lUCxOEFvzwLPoaVrjp8RKBjN8oQ4o0lBpwclnW7qXbdV27CT/MFa9kB1
-         B7CZjCKoHptbBodM9z/rtznKYbzalhi6nnclUHSe+RDPGye9Af32nr6CEPuX3NtW8Zr7
-         O/0VLI10OXK0NTjIaO7zpq8zem3cOzFOzPpkHLPzi29GYMVWVF2c2FE7rg/K5nr0xNp7
-         dFzmwFUb8qnDobfgKKorEvHBY3lIzWBVPTpfcOqCzuP5g/EPRh2/BgB/JauOYoFHnyOX
-         9D5T8vXdFKkpwra04OkcRf1w26XH7EL4Uk8i5w+dQCAcSeBWXGAF3dawcHAURVeb7UbS
-         w2LQ==;
+        bh=J25HPqsyrmOQ1iioSn9g7nmBc+Xq8CsuJB3WGvQV87Y=;
+        fh=/pg+MFNPOp7PpveO/uSti8HL9OXc4TinFqf86Yo64G8=;
+        b=XuCC+QZXJRa7Qnl20zyG9By8F14kRh9gQqwgbSpLTVjjRNIFvXwphQqONuEE/jCFYa
+         WKhQl8S0C0JUOVAJGYL1ZbkhoBXq/cDgRBNIUPuV56aBbBtv40Utb91t2z3Shv4vrjeG
+         4rS9GsDObptDseB9NuJzoxNTGuaAjAFJ2AkCQ9PV5Ne0n+qCUrBub4edBu+lC0D6snCE
+         2B/0uJyHNOlWBQ2aR+R0EN7OMLnZVZYl/aPmBhiwWh/sTQbf51AwpL0cfRSgOKHSJdMo
+         ECpda9rUY+erKRYdifBYWLPksYeIdke3kPwbZE3v0ZSmTOkQqOw0zzv2+ChnfLCMNQMb
+         keiw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h5AWLOgo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rNfNAi2p;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ku14-20020a170907788e00b00a4677787b97sor1116096ejc.2.2024.03.15.06.10.35
+        by mx.google.com with SMTPS id k23-20020a2e8897000000b002d41f0aa420sor829480lji.13.2024.03.15.06.10.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 15 Mar 2024 06:10:35 -0700 (PDT)
+        Fri, 15 Mar 2024 06:10:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h5AWLOgo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rNfNAi2p;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710508235; x=1711113035; darn=linaro.org;
+        d=linaro.org; s=google; t=1710508242; x=1711113042; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Ziq2wowWWC1u1AFoZqkoU9Vq9nlm9ySbjwCpiWVML/s=;
-        b=h5AWLOgoVVSzbCumZHsFuYa8eD3EdKSBgEa2Xn+NMRQbFcdPDdshuADaw7+po663BT
-         yJjEV75+TJJ6fj8xBb2vcNATHJ1iVRC7sBYYZk3BgLyqC1nqxSdWNORR07HbpmZ3xJno
-         8TstRBcZb08YYmBcLSOmRt7mQ2HWZHnkZeXkTPKReQv0MgOU9mz7/khGoG9nUHV8eaOi
-         kLZaiaRVA6YRm23QxmWvTdW57VB5dM5FnxPoFjskrele8Sl5+6odtsfIhQFlNTZI5wu+
-         0q2wHiIQSduDL/9kI3/9XXs/ex6ovdXC/P/aqsNOUIhAAxM/DSWi0w01Z+yBu+SeRzH+
-         HqmQ==
+        bh=J25HPqsyrmOQ1iioSn9g7nmBc+Xq8CsuJB3WGvQV87Y=;
+        b=rNfNAi2pMU4GuH8wTG+l8vBI/zgXtGbFUTQkVyK1t15SDYzL/j+ogPQFY5EubRl93g
+         Ik+SoYBHGpNYIwYAyicvBTvMeadzMdGF52rR7/+Y6ZdsMv4VxQoWP1PCE5J60mipXD9e
+         Crg6UZzcTjLVPyHrpvJlrnRPdGn4SD/VOykw2n/r7s+5FvYp9Vr0I1WKoAZTxv/hrp24
+         EeeHQ8Jzqx2txryEYF/wW66R3xkcZoFA4XfyO7365BsYjr+THpJmCM7/pnZ4inqjCpGV
+         JnuDoWGHatiJH5HPuozlHtKoWfrP+mGlL6hYZ5IVc1prNN+SXj6PFwi/c+1+/jdSlfz6
+         WQCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710508235; x=1711113035;
+        d=1e100.net; s=20230601; t=1710508242; x=1711113042;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ziq2wowWWC1u1AFoZqkoU9Vq9nlm9ySbjwCpiWVML/s=;
-        b=Ecmwjx6pqU1zYaOKetT6OGXGkcvjvzob4w3cP9Hoq9NhAkqo61ami5Q1WeLr5ai2IW
-         pZ5ZV7+A+qZTcc71wsU4bB+YE4DeTq+dgKpYftNVEESujmrG4uwkTJvQ9T79eaCS78+0
-         5H5RkThghnScBNrk/uMc9N5A6kEvbD8+gV60s8C3ufQGp8dNqUH980OZvLtBK46zp+rX
-         FHy1Q+wx+qnSPfIfGpaAyW5hx8+0E5ujGiCpoRJnbW1JsXGduwJabJNLufBQ3AQvOoWM
-         HB7xbmoN8Q4O2xCfl9NAsxTVMhY9uKjRREXr9vNx7mEDgmHXzGmy7ivada0mHOOtrukL
-         rNCg==
-X-Forwarded-Encrypted: i=1; AJvYcCXQ397gsFr3OSlhGtKltYELSFDiNuYabgcevP38ko/6FV7C9gdXXMcNtmk3VAcae28gS133E/mBIXhUN20lhnu1cmgmrXWd
-X-Gm-Message-State: AOJu0YzE+zvJzNmAipHHSugqs/hwtqZwFvLohV6+1ipK2RVMU/euhWFl
-	n6Y/wTHpcrqIGaKIsWZU27Ohi2Zduldoobje4WyNOVmVCMLeqRzy4uztXr3Q3RWDcg==
-X-Google-Smtp-Source: AGHT+IGM9lKIGYFKaZaCihcgLpVmcmySzlNiRx+Vc9T9AfUSHHHR2fR0Hvp2VtpFFpo3dT3QgLPrVA==
-X-Received: by 2002:a17:906:40ca:b0:a45:2e21:c776 with SMTP id a10-20020a17090640ca00b00a452e21c776mr3334104ejk.3.1710508235156;
-        Fri, 15 Mar 2024 06:10:35 -0700 (PDT)
+        bh=J25HPqsyrmOQ1iioSn9g7nmBc+Xq8CsuJB3WGvQV87Y=;
+        b=Kv7B8qXo6oJfyyl1WGcCIXZtB2J0Dz5oKUUBC39eHKr5bkwaaYfjcJwvxrdGssju8c
+         5D0N8um3MGllsTa6SyE0y8wicCVYoz4nJf9PqCjZfrxt6nKXGMoWUsjaqKbhw8fPo7ns
+         iM89sbkZhBkEsrraZm9dCkGe950WEmjmrRJiCJ1rlvqmzEnyRhBD5ATdtElQw/nXRAQU
+         JiHtCxAYol1sEkY8aR6ApVBHC2BpdT6Zc2lnD3RNlBvrIikdV8aecuqK9zR4TkAlumfv
+         0RjtI4NBS9qZaHLs9msObhwuZiSwocP4tuJ+oUticrsmvSMMHWrNwArL3hADun+igPpp
+         Jwwg==
+X-Forwarded-Encrypted: i=1; AJvYcCUzdhf1kDpGDD905IVct8ZOlDsuhm1Atzj3bPC50MIDqwveZGSaugQhWBZt+FQJjxFPeRRnCOr/8Ep2iq0LrA4TXir5Czsx
+X-Gm-Message-State: AOJu0YyqnabKNneoZTr9whldlTffaZ7j5qICmdKqFgrjsDA3YhxkKD8k
+	3OVQG+80v9F5pu2hrQmeT8aoJfFTaXG/gKlpC0wx2ZdYzNrdsLho1YY6THvISW0brw==
+X-Google-Smtp-Source: AGHT+IEv3LwWoidfawbI4h9yAjYbFyjy4RfVu/IFC9ezcLGHzfJWoWogtJbH4nZ9k43Uxgvez5OUAA==
+X-Received: by 2002:a05:651c:23a:b0:2d3:3b37:db78 with SMTP id z26-20020a05651c023a00b002d33b37db78mr2967826ljn.16.1710508241796;
+        Fri, 15 Mar 2024 06:10:41 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.145.26])
-        by smtp.gmail.com with ESMTPSA id c19-20020a170906341300b00a462736feedsm1691257ejb.62.2024.03.15.06.10.33
+        by smtp.gmail.com with ESMTPSA id l23-20020a1709065a9700b00a460040a102sm1670235ejq.124.2024.03.15.06.10.39
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 15 Mar 2024 06:10:34 -0700 (PDT)
+        Fri, 15 Mar 2024 06:10:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
@@ -92,106 +92,132 @@ Cc: qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.1 12/21] system: Introduce QemuArchBit enum
-Date: Fri, 15 Mar 2024 14:09:00 +0100
-Message-ID: <20240315130910.15750-13-philmd@linaro.org>
+Subject: [PATCH-for-9.1 13/21] system: Introduce cpu_typename_by_arch_bit()
+Date: Fri, 15 Mar 2024 14:09:01 +0100
+Message-ID: <20240315130910.15750-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240315130910.15750-1-philmd@linaro.org>
 References: <20240315130910.15750-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mFy8s7coptE2
+X-TUID: NHug4CgKCPcs
 
-Current QEMU_ARCH_foo definitions are used as masks.
-Extract the bit values, so we can easily iterate over.
+Introduce a helper to return the CPU type name given a QemuArchBit.
+
+The TYPE_PPC_CPU target have different 32/64-bit definitions
+so we can not include it yet.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/sysemu/arch_init.h | 69 ++++++++++++++++++++++++++------------
- 1 file changed, 47 insertions(+), 22 deletions(-)
+---
+ MAINTAINERS                |  1 +
+ include/sysemu/arch_init.h |  2 ++
+ system/cpu-qom-helpers.c   | 58 ++++++++++++++++++++++++++++++++++++++
+ system/meson.build         |  1 +
+ 4 files changed, 62 insertions(+)
+ create mode 100644 system/cpu-qom-helpers.c
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ed98814398..af27490243 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -148,6 +148,7 @@ M: Richard Henderson <richard.henderson@linaro.org>
+ R: Paolo Bonzini <pbonzini@redhat.com>
+ S: Maintained
+ F: system/cpus.c
++F: system/cpu-qom-helpers.c
+ F: system/watchpoint.c
+ F: cpu-common.c
+ F: cpu-target.c
 diff --git a/include/sysemu/arch_init.h b/include/sysemu/arch_init.h
-index 8850cb1a14..cf597c40a3 100644
+index cf597c40a3..1874f18e67 100644
 --- a/include/sysemu/arch_init.h
 +++ b/include/sysemu/arch_init.h
-@@ -1,30 +1,55 @@
- #ifndef QEMU_ARCH_INIT_H
- #define QEMU_ARCH_INIT_H
+@@ -27,6 +27,8 @@ typedef enum QemuArchBit {
+     QEMU_ARCH_BIT_LAST          = QEMU_ARCH_BIT_LOONGARCH
+ } QemuArchBit;
  
-+typedef enum QemuArchBit {
-+    QEMU_ARCH_BIT_ALPHA         = 0,
-+    QEMU_ARCH_BIT_ARM           = 1,
-+    QEMU_ARCH_BIT_CRIS          = 2,
-+    QEMU_ARCH_BIT_I386          = 3,
-+    QEMU_ARCH_BIT_M68K          = 4,
-+    QEMU_ARCH_BIT_MICROBLAZE    = 6,
-+    QEMU_ARCH_BIT_MIPS          = 7,
-+    QEMU_ARCH_BIT_PPC           = 8,
-+    QEMU_ARCH_BIT_S390X         = 9,
-+    QEMU_ARCH_BIT_SH4           = 10,
-+    QEMU_ARCH_BIT_SPARC         = 11,
-+    QEMU_ARCH_BIT_XTENSA        = 12,
-+    QEMU_ARCH_BIT_OPENRISC      = 13,
-+    QEMU_ARCH_BIT_TRICORE       = 16,
-+    QEMU_ARCH_BIT_NIOS2         = 17,
-+    QEMU_ARCH_BIT_HPPA          = 18,
-+    QEMU_ARCH_BIT_RISCV         = 19,
-+    QEMU_ARCH_BIT_RX            = 20,
-+    QEMU_ARCH_BIT_AVR           = 21,
-+    QEMU_ARCH_BIT_HEXAGON       = 22,
-+    QEMU_ARCH_BIT_LOONGARCH     = 23,
- 
--enum {
-+    QEMU_ARCH_BIT_LAST          = QEMU_ARCH_BIT_LOONGARCH
-+} QemuArchBit;
++const char *cpu_typename_by_arch_bit(QemuArchBit arch_bit);
 +
-+enum QemuArchMask {
+ enum QemuArchMask {
      QEMU_ARCH_ALL = -1,
--    QEMU_ARCH_ALPHA = (1 << 0),
--    QEMU_ARCH_ARM = (1 << 1),
--    QEMU_ARCH_CRIS = (1 << 2),
--    QEMU_ARCH_I386 = (1 << 3),
--    QEMU_ARCH_M68K = (1 << 4),
--    QEMU_ARCH_MICROBLAZE = (1 << 6),
--    QEMU_ARCH_MIPS = (1 << 7),
--    QEMU_ARCH_PPC = (1 << 8),
--    QEMU_ARCH_S390X = (1 << 9),
--    QEMU_ARCH_SH4 = (1 << 10),
--    QEMU_ARCH_SPARC = (1 << 11),
--    QEMU_ARCH_XTENSA = (1 << 12),
--    QEMU_ARCH_OPENRISC = (1 << 13),
--    QEMU_ARCH_TRICORE = (1 << 16),
--    QEMU_ARCH_NIOS2 = (1 << 17),
--    QEMU_ARCH_HPPA = (1 << 18),
--    QEMU_ARCH_RISCV = (1 << 19),
--    QEMU_ARCH_RX = (1 << 20),
--    QEMU_ARCH_AVR = (1 << 21),
--    QEMU_ARCH_HEXAGON = (1 << 22),
--    QEMU_ARCH_LOONGARCH = (1 << 23),
-+    QEMU_ARCH_ALPHA             = (1 << QEMU_ARCH_BIT_ALPHA),
-+    QEMU_ARCH_ARM               = (1 << QEMU_ARCH_BIT_ARM),
-+    QEMU_ARCH_CRIS              = (1 << QEMU_ARCH_BIT_CRIS),
-+    QEMU_ARCH_I386              = (1 << QEMU_ARCH_BIT_I386),
-+    QEMU_ARCH_M68K              = (1 << QEMU_ARCH_BIT_M68K),
-+    QEMU_ARCH_MICROBLAZE        = (1 << QEMU_ARCH_BIT_MICROBLAZE),
-+    QEMU_ARCH_MIPS              = (1 << QEMU_ARCH_BIT_MIPS),
-+    QEMU_ARCH_PPC               = (1 << QEMU_ARCH_BIT_PPC),
-+    QEMU_ARCH_S390X             = (1 << QEMU_ARCH_BIT_S390X),
-+    QEMU_ARCH_SH4               = (1 << QEMU_ARCH_BIT_SH4),
-+    QEMU_ARCH_SPARC             = (1 << QEMU_ARCH_BIT_SPARC),
-+    QEMU_ARCH_XTENSA            = (1 << QEMU_ARCH_BIT_XTENSA),
-+    QEMU_ARCH_OPENRISC          = (1 << QEMU_ARCH_BIT_OPENRISC),
-+    QEMU_ARCH_TRICORE           = (1 << QEMU_ARCH_BIT_TRICORE),
-+    QEMU_ARCH_NIOS2             = (1 << QEMU_ARCH_BIT_NIOS2),
-+    QEMU_ARCH_HPPA              = (1 << QEMU_ARCH_BIT_HPPA),
-+    QEMU_ARCH_RISCV             = (1 << QEMU_ARCH_BIT_RISCV),
-+    QEMU_ARCH_RX                = (1 << QEMU_ARCH_BIT_RX),
-+    QEMU_ARCH_AVR               = (1 << QEMU_ARCH_BIT_AVR),
-+    QEMU_ARCH_HEXAGON           = (1 << QEMU_ARCH_BIT_HEXAGON),
-+    QEMU_ARCH_LOONGARCH         = (1 << QEMU_ARCH_BIT_LOONGARCH),
- };
- 
- extern const uint32_t arch_type;
+     QEMU_ARCH_ALPHA             = (1 << QEMU_ARCH_BIT_ALPHA),
+diff --git a/system/cpu-qom-helpers.c b/system/cpu-qom-helpers.c
+new file mode 100644
+index 0000000000..0d402ee3a0
+--- /dev/null
++++ b/system/cpu-qom-helpers.c
+@@ -0,0 +1,58 @@
++/*
++ * Helpers for CPU QOM types
++ *
++ * SPDX-FileCopyrightText: 2024 Linaro Ltd.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "sysemu/arch_init.h"
++
++#include "target/alpha/cpu-qom.h"
++#include "target/arm/cpu-qom.h"
++#include "target/avr/cpu-qom.h"
++#include "target/cris/cpu-qom.h"
++#include "target/hexagon/cpu-qom.h"
++#include "target/hppa/cpu-qom.h"
++#include "target/i386/cpu-qom.h"
++#include "target/loongarch/cpu-qom.h"
++#include "target/m68k/cpu-qom.h"
++#include "target/microblaze/cpu-qom.h"
++#include "target/mips/cpu-qom.h"
++#include "target/nios2/cpu-qom.h"
++#include "target/openrisc/cpu-qom.h"
++#include "target/riscv/cpu-qom.h"
++#include "target/rx/cpu-qom.h"
++#include "target/s390x/cpu-qom.h"
++#include "target/sparc/cpu-qom.h"
++#include "target/sh4/cpu-qom.h"
++#include "target/tricore/cpu-qom.h"
++#include "target/xtensa/cpu-qom.h"
++
++const char *cpu_typename_by_arch_bit(QemuArchBit arch_bit)
++{
++    static const char *cpu_bit_to_typename[QEMU_ARCH_BIT_LAST + 1] = {
++        [QEMU_ARCH_BIT_ALPHA]       = TYPE_ALPHA_CPU,
++        [QEMU_ARCH_BIT_ARM]         = TYPE_ARM_CPU,
++        [QEMU_ARCH_BIT_CRIS]        = TYPE_CRIS_CPU,
++        [QEMU_ARCH_BIT_I386]        = TYPE_I386_CPU,
++        [QEMU_ARCH_BIT_M68K]        = TYPE_M68K_CPU,
++        [QEMU_ARCH_BIT_MICROBLAZE]  = TYPE_MICROBLAZE_CPU,
++        [QEMU_ARCH_BIT_MIPS]        = TYPE_MIPS_CPU,
++        /* TODO:                      TYPE_PPC_CPU */
++        [QEMU_ARCH_BIT_S390X]       = TYPE_S390_CPU,
++        [QEMU_ARCH_BIT_SH4]         = TYPE_SUPERH_CPU,
++        [QEMU_ARCH_BIT_SPARC]       = TYPE_SPARC_CPU,
++        [QEMU_ARCH_BIT_XTENSA]      = TYPE_XTENSA_CPU,
++        [QEMU_ARCH_BIT_OPENRISC]    = TYPE_OPENRISC_CPU,
++        [QEMU_ARCH_BIT_TRICORE]     = TYPE_TRICORE_CPU,
++        [QEMU_ARCH_BIT_NIOS2]       = TYPE_NIOS2_CPU,
++        [QEMU_ARCH_BIT_HPPA]        = TYPE_HPPA_CPU,
++        [QEMU_ARCH_BIT_RISCV]       = TYPE_RISCV_CPU,
++        [QEMU_ARCH_BIT_RX]          = TYPE_RX_CPU,
++        [QEMU_ARCH_BIT_AVR]         = TYPE_AVR_CPU,
++        [QEMU_ARCH_BIT_HEXAGON]     = TYPE_HEXAGON_CPU,
++        [QEMU_ARCH_BIT_LOONGARCH]   = TYPE_LOONGARCH_CPU,
++    };
++    return cpu_bit_to_typename[arch_bit];
++}
+diff --git a/system/meson.build b/system/meson.build
+index 25e2117250..c6ee97e3b2 100644
+--- a/system/meson.build
++++ b/system/meson.build
+@@ -10,6 +10,7 @@ system_ss.add(files(
+   'balloon.c',
+   'bootdevice.c',
+   'cpus.c',
++  'cpu-qom-helpers.c',
+   'cpu-throttle.c',
+   'cpu-timers.c',
+   'datadir.c',
 -- 
 2.41.0

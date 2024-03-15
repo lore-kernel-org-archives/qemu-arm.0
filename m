@@ -1,191 +1,269 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp988791eju;
-        Fri, 15 Mar 2024 06:09:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVGG5JELSFhixyKcbgwBxnUxeu1NEqPsTISDk6yiqB5imea1n1wqOstYWuNChErknOTRQiR56lE03CTGjM82Jy5wzr5YefE
-X-Received: by 2002:a19:8c57:0:b0:513:226c:651d with SMTP id i23-20020a198c57000000b00513226c651dmr2558459lfj.2.1710508155178;
-        Fri, 15 Mar 2024 06:09:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710508155; cv=none;
+Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp989638eju;
+        Fri, 15 Mar 2024 06:10:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzNeNeE1H1GFPSQ6r0kONGbNpAAPWgZlC9xZX8QzyAnPr9mRhWO3IiymN8F0fJPqDfudN/cN4SCSH9cVz0qW/Uq+e6EgrX
+X-Google-Smtp-Source: AGHT+IFcyDT78Q7/xNCOK8zv+67YONF3mK0suuPPD/HCDw3SmQ2AHb26B39P689kTYbCbfQhADkY
+X-Received: by 2002:ae9:c109:0:b0:788:2176:e1ed with SMTP id z9-20020ae9c109000000b007882176e1edmr4452985qki.41.1710508226843;
+        Fri, 15 Mar 2024 06:10:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710508226; cv=none;
         d=google.com; s=arc-20160816;
-        b=eogyuQK30EVaoaxQT+MAbAua5m1jn9dBV2Arw/9+q9oPzJgO+S8H7/zCLLLwV4VCh5
-         N6ux9N/HKWKlS9QL9/BgkCrl/Eb7TY+GFL87vuo8+dJVWv6qmgpYKqmkBdYIW7OCHZSJ
-         TQO51ASCqYd2v4BG87FGu/yAM9Z9iJNbTzFtWYFScho3n/NyFH+Vhw0NKzsbQeHPW7xC
-         dU1YQAv+v05n7TWnFPP3RcjuQkN6ld5+VVvJJl0vr7wXQBuywzDJF3ccJHI6Q85kLWLg
-         7jRqZcTJeJxHclKwt8VjrrzY2JcZVBhZGmJwlQd5FnuERc41LdAHrJWMxy5F+YQnC3hD
-         C28A==
+        b=torPAqJac1fT/a27dUpc1+2GFlqazL2xyEINvRATRQalAYjZPjJ5dG3d43bDGKe2sQ
+         qddijVufb0JmYYaribjWNHY7P2CyFxY4SddmNYSOchlSl4H72rCUlgJnB8kNzmwKuCf3
+         i8zhHZ7VNG5VWX5eqafjOc72spth2vST8zitGOwr3raOPzOVhWecVrQ0quEzi0YK67NB
+         70yhoBdb3KjkQKZfaCguYYQ9dzYYYmWrRZgss5xzI2voYYfJGvbCqllCMPz+GOCsAC2Z
+         NXmpIuIKZu3jrKmbH693qS/tXdnd0gYP2HC5o+vekKpaa5Oo/OPTi/putN9vsj0Bu5jP
+         vrOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=7a422lMoFqhS7qWnbusg1+rx0QiF01UmLh0mI1ZQEY0=;
-        fh=h/cs0EwCloDhZKdklh+9danKuLxjP+kB8c6a7wEisMc=;
-        b=wFDmZyekt/XRGv9Q6PXdqqUlM55Fo3jqvoyKQHj0iB5e5YaZ9X/xGP32z87WNoNtbt
-         fg7AEELPiRImPTp301giZq3CC7uiKzpbw34Kz6k0H+UR6Lh80s8aDzizMQo3dH20iWfS
-         gSlyjh8V2Vx0/W7DRBS7364YNC1VH6UW9PGLnLxtxlQaFmbHbnRPJriAbLA5xWUI3dVB
-         KRqA+tNYuM8dYxiEqiL7IkYjElq5pNYMG9T1aJH8OhaG9xWjw1sC0P+OUHzc6R5/GtRo
-         NrkIC+XF+csOmg9kxI3HZi6/++Q0d/z4H+/+ZwimNuCm8FnOJ1eARzS9YPZPb5t4lz4M
-         6I5g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Y4vX0WH0NUhjpqoGC54S3e1oXOXXObwA9DbtQ2MGi0g=;
+        fh=qWTAIpnpjnlg29hkuLe0Wrjqftv7a2D/M/xbiILTcJU=;
+        b=yPjw0GOSzmT1Heyrj/N1m7irqzi+77rmDhz3xAsNhfBU89GrYSY64atyAC1x6+8Cjw
+         GCVm25aTGwrr3zZ+QoKnTO0Sy574vIcwMaZkVtISYhB+JGjceHNaNVQpCAx9i23qIFTC
+         wYZllE3CD/a0/++vgYodXfnPAC8qBfR51TDHmsHNSyd3oUjGLf9HvkpAJWeAhkJcRjBG
+         yJdjpOUTp3GVFzxELPeftmaZPYkHm638l8iM20H0j8rDUgAVUR2qkUslYVCJFzVHQNKf
+         i4dp69k94o0uEQmFMLTplaHTlqpp119TyQEHMORpLMgWP5fBRlsRN9/S9rN+x1r/R2nm
+         45Wg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FdKtPWYX;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g21-20020a19ee15000000b005135bbccdfcsor1186143lfb.29.2024.03.15.06.09.15
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=dpbDMCxE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u20-20020a05620a023400b00789c67669d7si3464824qkm.775.2024.03.15.06.10.26
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 15 Mar 2024 06:09:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Mar 2024 06:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FdKtPWYX;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=dpbDMCxE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rl7Jp-00065Z-Ru; Fri, 15 Mar 2024 09:09:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rl7JZ-0005eG-TM
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 09:09:40 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rl7JW-0007cl-8L
+ for qemu-arm@nongnu.org; Fri, 15 Mar 2024 09:09:37 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-1dbd32cff0bso15530165ad.0
+ for <qemu-arm@nongnu.org>; Fri, 15 Mar 2024 06:09:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710508155; x=1711112955; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7a422lMoFqhS7qWnbusg1+rx0QiF01UmLh0mI1ZQEY0=;
-        b=FdKtPWYXovN0gddEFvmOtB28DYaQgwZFP5dmpyyfP7CGzmkU8Mamm1SieeogLFnzF7
-         ZPptsItXEdN8R8XqZAHFi5nbE9LlkMaEKrik0pJmvC3kYQ8q+sfZLv3Rn66X80JOfKjX
-         T6f2SLtT0cgtlrmi02U5Xkq3EQuFEdp/KTsh6CEuUgCyASb5aj+JIxSW7BzG7yKBEglX
-         Tw4YzZRQGcWCyGmBj+X3weNEcqXolATkxN6weGD4c1YWmjrZ8KfjIoarH+AiBaEOeXot
-         7487G+YYBBOPoxC8Dop3S1JRhKzDF9TJEu/Sr0nvhIrmHFxXZW/B1agc/QVbujakKsCu
-         1ZLw==
+ d=ventanamicro.com; s=google; t=1710508173; x=1711112973; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y4vX0WH0NUhjpqoGC54S3e1oXOXXObwA9DbtQ2MGi0g=;
+ b=dpbDMCxEvWES4UrjeR6mWrMh7ranEAo92ypKgzMniMXuMof1fy2xgtEXXgUtGaO9vJ
+ bUVgFLoXqo7fa1+Nb1MWBpG124tquYFS1TgW4RWjt4osVWjf4zir+cxxnVlLxgzhoK+K
+ RphAs5sWCEA1yyhEcZAV8+r2t+nDC7w2432TGLxnPpaCDjzvhkDtqeTNjc6h+tySquFv
+ PW9vSoOkZ8HSEVOI/BQ/diyif5pYEwM31SCjsPjWP330qTHDQjSQKTM2RX1fbOzeLo7V
+ 6MOE6LGJVA1i6SepTyN7nbvGxlC8Q72wMg/PYlXVjtCs5VZH3fnDMbPDyNdEK9W7XJGd
+ bKYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710508155; x=1711112955;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7a422lMoFqhS7qWnbusg1+rx0QiF01UmLh0mI1ZQEY0=;
-        b=wuQ41O7tY246Ocq5xRXODt+hmqRlhSWApLH02VqaLpK0RJFlugP4+x6vWWbSpZL/CK
-         JCQSxxhxzdy0Cm39obVMBCkD+6R37Sr0gkgsWSynDkATGU+LXKWYncr/51Nok4sHLsvo
-         Zx7ljRAgwR3Cm5IpUnl+ZxTkQRHZWb0Y+WpFBDSeQxVsm3QZ4nmkRgfghN+emZDXZBf5
-         xJ7WJr7gl/WdFdoKYjQO284klRelXKfBkD0SSPMHdbXEed6nSjwQzVIfcSLAeBNjhO+C
-         aQMZRU9vSbt4L6cbI45SpBmQhRXWtbcFZooUFs7p4bWLrWEyTZF1apB6+aYEjrSzJMhg
-         ByFw==
-X-Forwarded-Encrypted: i=1; AJvYcCWqOQeYysybQsMd5RvE+V+JzhrJmF2c0Gsx4KqEcnt2Cw3bG07JgKltK5ezH2IjdIeQhdPJ78Er1SAo+id16NInkAHFAytE
-X-Gm-Message-State: AOJu0YyTFlDKLAd41JCVQUi5nTlKx/rw+ztHC9tyBcm2EphVA3RPLBdX
-	eQrX5qekN7gu6QVFwRUxMoCveqpa/QY7ti3kk7JK7tnsYqWOwYJF5fAAzaXTsNePA/nVHBigZAw
-	9eEI=
-X-Google-Smtp-Source: AGHT+IFQmUy/dU+fupT8cYu33ialfeNRqZs47n4Rfj0aky+gjH4INiHFbcsT6qE9d0RgV4ZxVkrSVw==
-X-Received: by 2002:a05:6512:468:b0:512:e02f:9fa7 with SMTP id x8-20020a056512046800b00512e02f9fa7mr2636463lfd.1.1710508154576;
-        Fri, 15 Mar 2024 06:09:14 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan ([176.176.145.26])
-        by smtp.gmail.com with ESMTPSA id gx27-20020a1709068a5b00b00a3d11feb32esm1690762ejc.186.2024.03.15.06.09.12
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 15 Mar 2024 06:09:14 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1710508173; x=1711112973;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Y4vX0WH0NUhjpqoGC54S3e1oXOXXObwA9DbtQ2MGi0g=;
+ b=cBGQP/d2Azcb4wnhR3+OioxHs1QCOZ3Y12lNp6h4D9mVE/g6rPhzMbFzZOEQUUxS08
+ rXA0tkjnUkAhugq6bUm61OfpyZeF3stoBeDDiFqjgqok/x+92vPOvSXmCvZDmY8/tL24
+ QdxzPzZYD4UNywTxRVZtaNJ9wDQWRdWAYp1GByTLUgUHrc8pL2vbTIBLeUCxtRFKES52
+ c8fBsUhc1zk4l1/h5pVy3xQjRGVJ3CtCqZZBSwfF2ziAbTPfUemExpF6VSd+Pi7VxyK9
+ eKmrekWqO2Lb49lWXjumCjEltjD3VtBRrVEUBZ8al0YlUP7EYLAxHJhmYj9m16+o4bHw
+ n/aA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXGyoC3xV3a1T4an6aep7Z6Zza/R1MF3lSvBwGmHqnFyMcO4qO+fZeuY6BrpO5hCJrHJQ+GUONycVNk8GoOR0cme880
+X-Gm-Message-State: AOJu0Yx9jh6bOz6YTUUPCtmt/BKgVjyjU3jRStPocyeOV8tCAKD1dyhV
+ py7MZLN09b5T6nvTCasXoYc71GkiLYX7WcrR1eNPXoUHt63l5Sx2W+yov5310Bw=
+X-Received: by 2002:a17:90a:ea0e:b0:29b:b15d:5353 with SMTP id
+ w14-20020a17090aea0e00b0029bb15d5353mr4612835pjy.31.1710508172750; 
+ Fri, 15 Mar 2024 06:09:32 -0700 (PDT)
+Received: from sunil-pc.Dlink ([106.51.184.12])
+ by smtp.gmail.com with ESMTPSA id
+ r3-20020a17090ad40300b0029c68206e2bsm2886663pju.0.2024.03.15.06.09.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Mar 2024 06:09:32 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Cc: qemu-riscv@nongnu.org,
-	Anton Johansson <anjo@rev.ng>,
-	qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Claudio Fontana <cfontana@suse.de>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
 	qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH-for-9.1 00/21] qapi: Make @query-cpu-definitions command target-agnostic
-Date: Fri, 15 Mar 2024 14:08:48 +0100
-Message-ID: <20240315130910.15750-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+	qemu-riscv@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Alistair Francis <alistair23@gmail.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>,
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH 03/12] uefi-test-tools: Add support for python based build
+ script
+Date: Fri, 15 Mar 2024 18:39:15 +0530
+Message-Id: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: gfulmQ4vuKKz
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vmDQg+lMaVCY
 
-Hi Alex, Markus,
+edk2-funcs.sh which is used in this Makefile, was removed in the commit
+c28a2891f3 ("edk2: update build script"). It is replaced with a python
+based script. So, update the Makefile and add the configuration file as
+required to support the python based build script.
 
-Markus mentioned QAPI problems with the heterogeneous emulation
-binary. My understanding is, while QAPI can use host-specific
-conditional (OS, library available, configure option), it
-shouldn't use target-specific ones.
+Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+---
+ tests/uefi-test-tools/Makefile               | 18 +++----
+ tests/uefi-test-tools/uefi-test-build.config | 57 ++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 12 deletions(-)
+ create mode 100644 tests/uefi-test-tools/uefi-test-build.config
 
-This series is an example on how to remove target specific
-bits from the @query-cpu-definitions command. Target specific
-code is registered as CPUClass handlers, then a generic method
-is used, iterating over all targets built in.
-
-The first set of patches were already posted / reviewed last
-year.
-
-The PPC and S390X targets still need work (help welcomed),
-however the code is useful enough to be tested and see if this
-is a good approach.
-
-The only drawback is a change in QAPI introspection, because
-targets not implementing @query-cpu-definitions were returning
-"CommandNotFound". My view is this was an incomplete
-implementation, rather than a feature.
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (21):
-  target/i386: Declare CPU QOM types using DEFINE_TYPES() macro
-  target/mips: Declare CPU QOM types using DEFINE_TYPES() macro
-  target/ppc: Declare CPU QOM types using DEFINE_TYPES() macro
-  target/sparc: Declare CPU QOM types using DEFINE_TYPES() macro
-  cpus: Open code OBJECT_DECLARE_TYPE() in OBJECT_DECLARE_CPU_TYPE()
-  target/i386: Make X86_CPU common to new I386_CPU / X86_64_CPU types
-  target/mips: Make MIPS_CPU common to new MIPS32_CPU / MIPS64_CPU types
-  target/sparc: Make SPARC_CPU common to new SPARC32_CPU/SPARC64_CPU
-    types
-  qapi: Merge machine-common.json with qapi/machine.json
-  qapi: Make CpuModel* definitions target agnostic
-  qapi: Make CpuDefinitionInfo target agnostic
-  system: Introduce QemuArchBit enum
-  system: Introduce cpu_typename_by_arch_bit()
-  system: Introduce QMP generic_query_cpu_definitions()
-  target/arm: Use QMP generic_query_cpu_definitions()
-  target/loongarch: Use QMP generic_query_cpu_definitions()
-  target/riscv: Use QMP generic_query_cpu_definitions()
-  target/i386: Use QMP generic_query_cpu_definitions()
-  target/ppc: Factor ppc_add_alias_definitions() out
-  target/ppc: Use QMP generic_query_cpu_definitions()
-  qapi: Make @query-cpu-definitions target-agnostic
-
- MAINTAINERS                           |   3 +-
- qapi/machine-common.json              |  21 ----
- qapi/machine-target.json              | 167 +-------------------------
- qapi/machine.json                     | 166 ++++++++++++++++++++++++-
- qapi/qapi-schema.json                 |   1 -
- include/hw/core/cpu.h                 |   7 +-
- include/hw/core/sysemu-cpu-ops.h      |  14 +++
- include/sysemu/arch_init.h            |  71 +++++++----
- target/i386/cpu-qom.h                 |  16 ++-
- target/mips/cpu-qom.h                 |  13 +-
- target/ppc/cpu-models.h               |   4 +
- target/riscv/cpu.h                    |   2 +
- target/s390x/cpu.h                    |   2 +-
- target/sparc/cpu-qom.h                |   9 +-
- system/cpu-qmp-cmds.c                 |  71 +++++++++++
- system/cpu-qom-helpers.c              |  58 +++++++++
- target/arm/arm-qmp-cmds.c             |  27 -----
- target/i386/cpu.c                     |  77 ++++++------
- target/loongarch/loongarch-qmp-cmds.c |  25 ----
- target/mips/cpu.c                     |  34 ++++--
- target/mips/sysemu/mips-qmp-cmds.c    |  31 -----
- target/ppc/cpu_init.c                 |  53 ++++----
- target/ppc/ppc-qmp-cmds.c             |  31 +----
- target/riscv/cpu.c                    |   1 +
- target/riscv/riscv-qmp-cmds.c         |  13 +-
- target/sparc/cpu.c                    |  35 ++++--
- tests/qtest/cpu-plug-test.c           |   2 +-
- qapi/meson.build                      |   1 -
- system/meson.build                    |   2 +
- 29 files changed, 515 insertions(+), 442 deletions(-)
- delete mode 100644 qapi/machine-common.json
- create mode 100644 system/cpu-qmp-cmds.c
- create mode 100644 system/cpu-qom-helpers.c
-
+diff --git a/tests/uefi-test-tools/Makefile b/tests/uefi-test-tools/Makefile
+index 0c003f2877..f94738b645 100644
+--- a/tests/uefi-test-tools/Makefile
++++ b/tests/uefi-test-tools/Makefile
+@@ -12,7 +12,7 @@
+ 
+ edk2_dir              := ../../roms/edk2
+ images_dir            := ../data/uefi-boot-images
+-emulation_targets     := arm aarch64 i386 x86_64
++emulation_targets     := arm aarch64 i386 x86_64 riscv64
+ uefi_binaries         := bios-tables-test
+ intermediate_suffixes := .efi .fat .iso.raw
+ 
+@@ -56,7 +56,8 @@ Build/%.iso.raw: Build/%.fat
+ # stripped from, the argument.
+ map_arm_to_uefi     = $(subst arm,ARM,$(1))
+ map_aarch64_to_uefi = $(subst aarch64,AA64,$(call map_arm_to_uefi,$(1)))
+-map_i386_to_uefi    = $(subst i386,IA32,$(call map_aarch64_to_uefi,$(1)))
++map_riscv64_to_uefi = $(subst riscv64,RISCV64,$(call map_aarch64_to_uefi,$(1)))
++map_i386_to_uefi    = $(subst i386,IA32,$(call map_riscv64_to_uefi,$(1)))
+ map_x86_64_to_uefi  = $(subst x86_64,X64,$(call map_i386_to_uefi,$(1)))
+ map_to_uefi         = $(subst .,,$(call map_x86_64_to_uefi,$(1)))
+ 
+@@ -70,7 +71,7 @@ Build/%.fat: Build/%.efi
+ 	uefi_bin_b=$$(stat --format=%s -- $<) && \
+ 		uefi_fat_kb=$$(( (uefi_bin_b * 11 / 10 + 1023) / 1024 )) && \
+ 		uefi_fat_kb=$$(( uefi_fat_kb >= 64 ? uefi_fat_kb : 64 )) && \
+-		mkdosfs -C $@ -n $(basename $(@F)) -- $$uefi_fat_kb
++		mkdosfs -C $@ -n "bios-test" -- $$uefi_fat_kb
+ 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI
+ 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI/BOOT
+ 	MTOOLS_SKIP_CHECK=1 mcopy -i $@ -- $< \
+@@ -95,15 +96,8 @@ Build/%.fat: Build/%.efi
+ # we must mark the recipe manually as recursive, by using the "+" indicator.
+ # This way, when the inner "make" starts a parallel build of the target edk2
+ # module, it can communicate with the outer "make"'s job server.
+-Build/bios-tables-test.%.efi: build-edk2-tools
+-	+./build.sh $(edk2_dir) BiosTablesTest $* $@
+-
+-build-edk2-tools:
+-	cd $(edk2_dir)/BaseTools && git submodule update --init --force
+-	$(MAKE) -C $(edk2_dir)/BaseTools \
+-		PYTHON_COMMAND=$${EDK2_PYTHON_COMMAND:-python3} \
+-		EXTRA_OPTFLAGS='$(EDK2_BASETOOLS_OPTFLAGS)' \
+-		EXTRA_LDFLAGS='$(EDK2_BASETOOLS_LDFLAGS)'
++Build/bios-tables-test.%.efi:
++	$(PYTHON) ../../roms/edk2-build.py --config uefi-test-build.config
+ 
+ clean:
+ 	rm -rf Build Conf log
+diff --git a/tests/uefi-test-tools/uefi-test-build.config b/tests/uefi-test-tools/uefi-test-build.config
+new file mode 100644
+index 0000000000..4fb89f7db9
+--- /dev/null
++++ b/tests/uefi-test-tools/uefi-test-build.config
+@@ -0,0 +1,57 @@
++[global]
++core = ../../roms/edk2
++
++####################################################################################
++# arm
++
++[build.arm]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++module = UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.inf
++dest = ./Build
++arch = ARM
++cpy1 = ARM/BiosTablesTest.efi  bios-tables-test.arm.efi
++
++####################################################################################
++# aarch64
++
++[build.aarch64]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++module = UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.inf
++dest = ./Build
++arch = AARCH64
++cpy1 = AARCH64/BiosTablesTest.efi  bios-tables-test.aarch64.efi
++
++####################################################################################
++# riscv64
++
++[build.riscv]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++module = UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.inf
++dest = ./Build
++arch = RISCV64
++cpy1 = RISCV64/BiosTablesTest.efi  bios-tables-test.riscv64.efi
++
++####################################################################################
++# ia32
++
++[build.ia32]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++module = UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.inf
++dest = ./Build
++arch = IA32
++cpy1 = IA32/BiosTablesTest.efi  bios-tables-test.i386.efi
++
++####################################################################################
++# x64
++
++[build.x64]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++module = UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.inf
++dest = ./Build
++arch = X64
++cpy1 = X64/BiosTablesTest.efi  bios-tables-test.x86_64.efi
 -- 
-2.41.0
+2.40.1
+

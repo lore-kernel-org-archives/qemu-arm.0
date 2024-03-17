@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp58400ejb;
-        Sun, 17 Mar 2024 03:41:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqj/w8l8Dlr6IIqyQCidQ3h7CBLjVjZpyOkof9y9+v+ln3HyZfHwk/loSx12Cy6EO3nYUt3vvUSQTJmWckCNFvDcqj9EyH
-X-Google-Smtp-Source: AGHT+IHiU+9NytbIGI0ynEY0ifmJtCWyKpVUwtMySR4aq7p3dr9XnYdRDQfx9HAYm15bhB/CUvH9
-X-Received: by 2002:a05:620a:cf2:b0:789:d334:619c with SMTP id c18-20020a05620a0cf200b00789d334619cmr9387557qkj.29.1710672093044;
-        Sun, 17 Mar 2024 03:41:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710672093; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp58456ejb;
+        Sun, 17 Mar 2024 03:41:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUoK3vXl3kvmjyexu1d03vFrTxq08irnTHAnSif1DkXzXSEUNzkT7c7JtxJQ85C9j4Wu2d0SqA43a4SvcSfYPuj5azqc7o7
+X-Google-Smtp-Source: AGHT+IEkHhA87EC2fAta5DX/YwKwtui/4ZFVrkAfpginp9my6RfS4gFfwWGcYuVfStqI3tLN9QVl
+X-Received: by 2002:a0c:ac0e:0:b0:690:b2c3:bfd0 with SMTP id l14-20020a0cac0e000000b00690b2c3bfd0mr9807005qvb.57.1710672101722;
+        Sun, 17 Mar 2024 03:41:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710672101; cv=none;
         d=google.com; s=arc-20160816;
-        b=GgwOJLff8LyN94SZlhmiPo9AdvkOWfnpvGYPblIBcW2KD6i9lvIpYCoknLz7MZ3ts/
-         eXCij7JjpZmytTgEX+8O1jbQD33+fJ+bK5ckOUTQ7663QBpioONzfgMXoTW5HFYx1MwF
-         YBka2OMNPWPf0NsVtJVSPP/f6UT4lWTGw1+sMCQFf3eIA8Urn2ZHAVfm+KTi+HtejNpC
-         daYkXudsmNGfWqURn1ThKx0tdmuKuUwGu/eFih6RyhfmZ5Kpe9+4DnRFvx5FlMqOuDlW
-         YKD1BAjvkrlIN0tytmdETvzWIgTGxnGeXcCgpEJSehTH6il7FafGNVUN8nLIcIlYrP9T
-         9V8g==
+        b=tfy6vh3Fj9BdhZRJ4hDc5i912nI5M0ds1bs4/vyGS6EensLEXKq6Q2DJjoYCgjwCbZ
+         J3FABaQMDHdP+zE8CQ5UWCC/ts3bM4+kWYPdkGK/GMddWLPJ/F1qBwZR+uJd1MoY/Zs0
+         vtnlYOep4a5vOuSihENIhxSF9QwWK7XSpjDCfwJx53F3YCEFO5nLRN4VPAQpmqPL4uRH
+         2dLWJG4a8Da94zRyfJV+PPzushRmsqkSnM022h2+ASq4QDQG9pCNdP/n9msaHkp1UffG
+         6i55cTD2H4ldQGhyBG/t/kMJMXDoaPb0NfZFGerQ6hf1DfpGRms0d0wKFq4fvVwQdTZ4
+         UZ7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=5GDvnMu2ewIpK7fNk9UMMPgm5GCnbCl9hPbVOlmLn+A=;
+        bh=1M07QmUdcjDgX6E7/IQG4GlxgxJ8TiHLTW/QmWMAN0I=;
         fh=oFnqSTjBm9mnHO2iEUy4nxRwHSPc72uVfpVJMnLaLdw=;
-        b=nz7xkOAl3ZJ276xqVadXarY/pemduw7bAeFIWgpf1ttKH1KUDcXeOCTIrxkZabZ6J8
-         Fp/htThr0HKAGu4eGLrORgqvQ1cwxAFiQ4jIFki9bYuVmPhDuWk0tiOkbWOSv7pZmUzu
-         bxHbzRtUlrNUdwUReoNWBm4RRbK26ZAF/2QIkUjX6GwjVzBrIaa4YdZRPp3tTXDdahKZ
-         CQfAVYzcek/vQCZZ7GM8tL8LoQmvIcE/INGIiWLDlLqJYsx4xpSZaOS8v95OuPUiPapX
-         cVdqHDvpRDtTOiWfFbxhE5y6kHFiml/34mLyMxMcV11EIB3QZ+NTwpFwG2ai2ryD9DNo
-         T4GA==;
+        b=n7SPeW9GaUE7Lodt0csfRT9VucOmObChn5M3KX9jxp3eNSarorD/28h2NKgs96FZe5
+         ivH6+E3rb/DV8M+LW1Kl0jcrj6vuMnDDslHK20Aau+JiObhZJcyge/QCvFdcMc6ShwG8
+         1ABj9LpTNvGP4SzAAYToDI42MaPWgukmlegl6aLFZkua8Q3C8SiibuXuJMxJDqao+syQ
+         qiDMOp93q8Eir+rH33MpEPDQnAH1L5b5qOTXLCDeDp3KeTzcKStP5AWm9Lp4iYp8hGLl
+         HZAEfBqxp6hEfnvhJviq+F01tqUq3qVJuCDx8p1TERWHuKpALd5hSqLHB7EkiJlEFy/y
+         J6nQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ryd0oXLo;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="rMuEp7/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8-20020a05620a148800b00789ec76486csi3072419qkj.682.2024.03.17.03.41.32
+        by mx.google.com with ESMTPS id h12-20020a0562140dac00b00690d79f8aaasi6366887qvh.517.2024.03.17.03.41.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Mar 2024 03:41:33 -0700 (PDT)
+        Sun, 17 Mar 2024 03:41:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ryd0oXLo;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="rMuEp7/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rlnxD-0002vJ-R7; Sun, 17 Mar 2024 06:41:27 -0400
+	id 1rlnxO-00035O-N3; Sun, 17 Mar 2024 06:41:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rlnx7-0002j0-SY; Sun, 17 Mar 2024 06:41:19 -0400
-Received: from zproxy4.enst.fr ([137.194.2.223])
+ id 1rlnxA-0002qF-GR; Sun, 17 Mar 2024 06:41:23 -0400
+Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rlnx3-0001PG-6W; Sun, 17 Mar 2024 06:41:16 -0400
+ id 1rlnx7-0001PO-HY; Sun, 17 Mar 2024 06:41:19 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 958B7205A4;
- Sun, 17 Mar 2024 11:41:10 +0100 (CET)
+ by zproxy4.enst.fr (Postfix) with ESMTP id 42FA42061D;
+ Sun, 17 Mar 2024 11:41:11 +0100 (CET)
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id ZyZmxp1mnQN3; Sun, 17 Mar 2024 11:41:09 +0100 (CET)
+ id ldRA11B_8oXQ; Sun, 17 Mar 2024 11:41:10 +0100 (CET)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id C858B2061D;
- Sun, 17 Mar 2024 11:41:08 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr C858B2061D
+ by zproxy4.enst.fr (Postfix) with ESMTP id 6B29C205F4;
+ Sun, 17 Mar 2024 11:41:10 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 6B29C205F4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1710672068;
- bh=5GDvnMu2ewIpK7fNk9UMMPgm5GCnbCl9hPbVOlmLn+A=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1710672070;
+ bh=1M07QmUdcjDgX6E7/IQG4GlxgxJ8TiHLTW/QmWMAN0I=;
  h=From:To:Date:Message-Id:MIME-Version;
- b=ryd0oXLo5rPZ4Uxto/c1tWLq/Jh8kJZZ6J+J0uvRR2kNH8n4/c0znnSSQJONtJhm9
- 0T40wNskuI/yqvuy/+t0rKd3jbpEjKQP8vBq7K/LEMn7essjUpeksh70CdErZvvRuq
- KXd58KwAQY53FF6LfdqaYozhDb33bRvOicTJPytc=
+ b=rMuEp7/zJypxhWjhhPpaylgBOM4EkQ1raNGGnNelJA8fOy2hN82UsG///qf4X1pTF
+ WUAu7jc4DuyNzy7DfYIUUy6ROpYdGlwbbg1XUpJQVjkTnccE08HrD8YxsPtHBZfoBI
+ EdfITSwIbVYCzIH+JAzlGRjb5s3ubF1Yr5KjI+no=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id LYl-nYQxjC9L; Sun, 17 Mar 2024 11:41:08 +0100 (CET)
+ id yWCRL7Ps1xFw; Sun, 17 Mar 2024 11:41:10 +0100 (CET)
 Received: from AM-Inspiron-3585.. (cust-west-par-46-193-4-103.cust.wifirst.net
  [46.193.4.103])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id CB612205F4;
- Sun, 17 Mar 2024 11:41:07 +0100 (CET)
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id 036B9205A4;
+ Sun, 17 Mar 2024 11:41:09 +0100 (CET)
 From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
@@ -88,16 +88,16 @@ Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Subject: [PATCH 3/7] hw/char/stm32l4x5_usart: Add USART, UART, LPUART types
-Date: Sun, 17 Mar 2024 11:39:14 +0100
-Message-Id: <20240317103918.44375-4-arnaud.minier@telecom-paris.fr>
+Subject: [PATCH 4/7] hw/char/stm32l4x5_usart: Enable serial read and write
+Date: Sun, 17 Mar 2024 11:39:15 +0100
+Message-Id: <20240317103918.44375-5-arnaud.minier@telecom-paris.fr>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
 References: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.223;
+Received-SPF: pass client-ip=2001:660:330f:2::df;
  envelope-from=arnaud.minier@telecom-paris.fr; helo=zproxy4.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -119,255 +119,221 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A6BLxCroGVVy
+X-TUID: hZwLIkP5kqM/
 
-Create different types for the USART, UART and LPUART of the STM32L4x5
-to deduplicate code and enable the implementation of different
-behaviors depending on the type.
+Implement the ability to read and write characters to the
+usart using the serial port.
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/char/stm32l4x5_usart.c         | 113 +++++++++++++++++++-----------
- include/hw/char/stm32l4x5_usart.h |  21 +++++-
- 2 files changed, 92 insertions(+), 42 deletions(-)
+ hw/char/stm32l4x5_usart.c | 105 +++++++++++++++++++++++++++++++++++++-
+ hw/char/trace-events      |   1 +
+ 2 files changed, 105 insertions(+), 1 deletion(-)
 
 diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-index b56fee5b3a..f58bd56875 100644
+index f58bd56875..958d05a56d 100644
 --- a/hw/char/stm32l4x5_usart.c
 +++ b/hw/char/stm32l4x5_usart.c
-@@ -154,9 +154,9 @@ REG32(RDR, 0x24)
+@@ -154,6 +154,71 @@ REG32(RDR, 0x24)
  REG32(TDR, 0x28)
      FIELD(TDR, TDR, 0, 8)
 =20
--static void stm32l4x5_usart_reset_hold(Object *obj)
-+static void stm32l4x5_usart_base_reset_hold(Object *obj)
++static int stm32l4x5_usart_base_can_receive(void *opaque)
++{
++    Stm32l4x5UsartBaseState *s =3D opaque;
++
++    if (!(s->isr & R_ISR_RXNE_MASK)) {
++        return 1;
++    }
++
++    return 0;
++}
++
++static void stm32l4x5_update_irq(Stm32l4x5UsartBaseState *s)
++{
++    if (((s->isr & R_ISR_WUF_MASK) && (s->cr3 & R_CR3_WUFIE_MASK))      =
+  ||
++        ((s->isr & R_ISR_CMF_MASK) && (s->cr1 & R_CR1_CMIE_MASK))       =
+  ||
++        ((s->isr & R_ISR_ABRF_MASK) && (s->cr1 & R_CR1_RXNEIE_MASK))    =
+  ||
++        ((s->isr & R_ISR_EOBF_MASK) && (s->cr1 & R_CR1_EOBIE_MASK))     =
+  ||
++        ((s->isr & R_ISR_RTOF_MASK) && (s->cr1 & R_CR1_RTOIE_MASK))     =
+  ||
++        ((s->isr & R_ISR_CTSIF_MASK) && (s->cr3 & R_CR3_CTSIE_MASK))    =
+  ||
++        ((s->isr & R_ISR_LBDF_MASK) && (s->cr2 & R_CR2_LBDIE_MASK))     =
+  ||
++        ((s->isr & R_ISR_TXE_MASK) && (s->cr1 & R_CR1_TXEIE_MASK))      =
+  ||
++        ((s->isr & R_ISR_TC_MASK) && (s->cr1 & R_CR1_TCIE_MASK))        =
+  ||
++        ((s->isr & R_ISR_RXNE_MASK) && (s->cr1 & R_CR1_RXNEIE_MASK))    =
+  ||
++        ((s->isr & R_ISR_IDLE_MASK) && (s->cr1 & R_CR1_IDLEIE_MASK))    =
+  ||
++        ((s->isr & R_ISR_ORE_MASK) &&
++            ((s->cr1 & R_CR1_RXNEIE_MASK) || (s->cr3 & R_CR3_EIE_MASK)))=
+  ||
++        /* TODO: Handle NF ? */
++        ((s->isr & R_ISR_FE_MASK) && (s->cr3 & R_CR3_EIE_MASK))         =
+  ||
++        ((s->isr & R_ISR_PE_MASK) && (s->cr1 & R_CR1_PEIE_MASK))) {
++        qemu_irq_raise(s->irq);
++        trace_stm32l4x5_usart_irq_raised(s->isr);
++    } else {
++        qemu_irq_lower(s->irq);
++        trace_stm32l4x5_usart_irq_lowered();
++    }
++}
++
++static void stm32l4x5_usart_base_receive(void *opaque, const uint8_t *bu=
+f, int size)
++{
++    Stm32l4x5UsartBaseState *s =3D opaque;
++
++    if (!((s->cr1 & R_CR1_UE_MASK) && (s->cr1 & R_CR1_RE_MASK))) {
++        /* USART not enabled - drop the chars */
++        trace_stm32l4x5_usart_error("Dropping the chars\n");
++        return;
++    }
++
++    /* Check if overrun detection is enabled and if there is an overrun =
+*/
++    if (!(s->cr3 & R_CR3_OVRDIS_MASK) && (s->isr & R_ISR_RXNE_MASK)) {
++        /*
++         * A character has been received while
++         * the previous has not been read =3D Overrun.
++         */
++        s->isr |=3D R_ISR_ORE_MASK;
++        trace_stm32l4x5_usart_overrun_detected(s->rdr, *buf);
++    } else {
++        /* No overrun */
++        s->rdr =3D *buf;
++        s->isr |=3D R_ISR_RXNE_MASK;
++        trace_stm32l4x5_usart_rx(s->rdr);
++    }
++
++    stm32l4x5_update_irq(s);
++}
++
+ static void stm32l4x5_usart_base_reset_hold(Object *obj)
  {
--    STM32L4X5UsartState *s =3D STM32L4X5_USART(obj);
-+    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
-=20
-     s->cr1 =3D 0x00000000;
-     s->cr2 =3D 0x00000000;
-@@ -170,10 +170,10 @@ static void stm32l4x5_usart_reset_hold(Object *obj)
+     Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
+@@ -168,6 +233,21 @@ static void stm32l4x5_usart_base_reset_hold(Object *=
+obj)
+     s->isr =3D 0x020000C0 | R_ISR_TXE_MASK;
+     s->rdr =3D 0x00000000;
      s->tdr =3D 0x00000000;
++
++    stm32l4x5_update_irq(s);
++}
++
++static void usart_update_rqr(Stm32l4x5UsartBaseState *s, uint32_t value)
++{
++    /* TXFRQ */
++    /* Reset RXNE flag */
++    if (value & R_RQR_RXFRQ_MASK) {
++        s->isr &=3D ~R_ISR_RXNE_MASK;
++    }
++    /* MMRQ */
++    /* SBKRQ */
++    /* ABRRQ */
++    stm32l4x5_update_irq(s);
  }
 =20
--static uint64_t stm32l4x5_usart_read(void *opaque, hwaddr addr,
--                                       unsigned int size)
-+static uint64_t stm32l4x5_usart_base_read(void *opaque, hwaddr addr,
-+                                     unsigned int size)
- {
--    STM32L4X5UsartState *s =3D opaque;
-+    Stm32l4x5UsartBaseState *s =3D opaque;
-     uint64_t retvalue =3D 0;
-=20
-     switch (addr) {
-@@ -225,10 +225,10 @@ static uint64_t stm32l4x5_usart_read(void *opaque, =
+ static uint64_t stm32l4x5_usart_base_read(void *opaque, hwaddr addr,
+@@ -209,7 +289,8 @@ static uint64_t stm32l4x5_usart_base_read(void *opaqu=
+e, hwaddr addr,
+     case A_RDR:
+         retvalue =3D FIELD_EX32(s->rdr, RDR, RDR);
+         /* Reset RXNE flag */
+-        s->isr &=3D ~USART_ISR_RXNE;
++        s->isr &=3D ~R_ISR_RXNE_MASK;
++        stm32l4x5_update_irq(s);
+         break;
+     case A_TDR:
+         retvalue =3D FIELD_EX32(s->tdr, TDR, TDR);
+@@ -237,6 +318,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
 hwaddr addr,
-     return retvalue;
- }
-=20
--static void stm32l4x5_usart_write(void *opaque, hwaddr addr,
-+static void stm32l4x5_usart_base_write(void *opaque, hwaddr addr,
-                                   uint64_t val64, unsigned int size)
- {
--    STM32L4X5UsartState *s =3D opaque;
-+    Stm32l4x5UsartBaseState *s =3D opaque;
-     const uint32_t value =3D val64;
-     uint8_t ch;
-=20
-@@ -276,9 +276,9 @@ static void stm32l4x5_usart_write(void *opaque, hwadd=
-r addr,
-     }
- }
-=20
--static const MemoryRegionOps stm32l4x5_usart_ops =3D {
--    .read =3D stm32l4x5_usart_read,
--    .write =3D stm32l4x5_usart_write,
-+static const MemoryRegionOps stm32l4x5_usart_base_ops =3D {
-+    .read =3D stm32l4x5_usart_base_read,
-+    .write =3D stm32l4x5_usart_base_write,
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
-     .valid =3D {
-         .max_access_size =3D 4,
-@@ -292,72 +292,105 @@ static const MemoryRegionOps stm32l4x5_usart_ops =3D=
- {
-     },
- };
-=20
--static Property stm32l4x5_usart_properties[] =3D {
--    DEFINE_PROP_CHR("chardev", STM32L4X5UsartState, chr),
-+static Property stm32l4x5_usart_base_properties[] =3D {
-+    DEFINE_PROP_CHR("chardev", Stm32l4x5UsartBaseState, chr),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
--static void stm32l4x5_usart_init(Object *obj)
-+static void stm32l4x5_usart_base_init(Object *obj)
- {
--    STM32L4X5UsartState *s =3D STM32L4X5_USART(obj);
-+    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
-=20
-     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
-=20
--    memory_region_init_io(&s->mmio, obj, &stm32l4x5_usart_ops, s,
--                          TYPE_STM32L4X5_USART, 0x400);
-+    memory_region_init_io(&s->mmio, obj, &stm32l4x5_usart_base_ops, s,
-+                          TYPE_STM32L4X5_USART_BASE, 0x400);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-=20
-     s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
- }
-=20
--static const VMStateDescription vmstate_stm32l4x5_usart =3D {
--    .name =3D TYPE_STM32L4X5_USART,
-+static const VMStateDescription vmstate_stm32l4x5_usart_base =3D {
-+    .name =3D TYPE_STM32L4X5_USART_BASE,
-     .version_id =3D 1,
-     .minimum_version_id =3D 1,
-     .fields =3D (VMStateField[]) {
--        VMSTATE_UINT32(cr1, STM32L4X5UsartState),
--        VMSTATE_UINT32(cr2, STM32L4X5UsartState),
--        VMSTATE_UINT32(cr3, STM32L4X5UsartState),
--        VMSTATE_UINT32(brr, STM32L4X5UsartState),
--        VMSTATE_UINT32(gtpr, STM32L4X5UsartState),
--        VMSTATE_UINT32(rtor, STM32L4X5UsartState),
--        VMSTATE_UINT32(isr, STM32L4X5UsartState),
--        VMSTATE_UINT32(rdr, STM32L4X5UsartState),
--        VMSTATE_UINT32(tdr, STM32L4X5UsartState),
--        VMSTATE_CLOCK(clk, STM32L4X5UsartState),
-+        VMSTATE_UINT32(cr1, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(cr2, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(cr3, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(brr, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(gtpr, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(rtor, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(isr, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(rdr, Stm32l4x5UsartBaseState),
-+        VMSTATE_UINT32(tdr, Stm32l4x5UsartBaseState),
-+        VMSTATE_CLOCK(clk, Stm32l4x5UsartBaseState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-=20
-=20
--static void stm32l4x5_usart_realize(DeviceState *dev, Error **errp)
-+static void stm32l4x5_usart_base_realize(DeviceState *dev, Error **errp)
- {
-     ERRP_GUARD();
--    STM32L4X5UsartState *s =3D STM32L4X5_USART(dev);
-+    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(dev);
-     if (!clock_has_source(s->clk)) {
+     switch (addr) {
+     case A_CR1:
+         s->cr1 =3D value;
++        stm32l4x5_update_irq(s);
+         return;
+     case A_CR2:
+         s->cr2 =3D value;
+@@ -254,6 +336,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
+hwaddr addr,
+         s->rtor =3D value;
+         return;
+     case A_RQR:
++        usart_update_rqr(s, value);
+         return;
+     case A_ISR:
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -262,6 +345,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
+hwaddr addr,
+     case A_ICR:
+         /* Clear the status flags */
+         s->isr &=3D ~value;
++        stm32l4x5_update_irq(s);
+         return;
+     case A_RDR:
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -269,6 +353,21 @@ static void stm32l4x5_usart_base_write(void *opaque,=
+ hwaddr addr,
+         return;
+     case A_TDR:
+         s->tdr =3D value;
++        ch =3D value & R_TDR_TDR_MASK;
++        /*
++         * XXX this blocks entire thread. Rewrite to use
++         * qemu_chr_fe_write and background I/O callbacks
++         */
++        qemu_chr_fe_write_all(&s->chr, &ch, 1);
++        /*
++         * XXX I/O are currently synchronous, making it impossible for
++         * software to observe transient states where TXE or TC aren't
++         * set. Unlike TXE however, which is read-only, software may
++         * clear TC by writing 0 to the ISR register, so set it again
++         * on each write.
++         */
++        s->isr |=3D R_ISR_TC_MASK;
++        stm32l4x5_update_irq(s);
+         return;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -338,6 +437,10 @@ static void stm32l4x5_usart_base_realize(DeviceState=
+ *dev, Error **errp)
          error_setg(errp, "USART clock must be wired up by SoC code");
          return;
      }
++
++    qemu_chr_fe_set_handlers(&s->chr, stm32l4x5_usart_base_can_receive,
++                             stm32l4x5_usart_base_receive, NULL, NULL,
++                             s, NULL, true);
  }
 =20
--static void stm32l4x5_usart_class_init(ObjectClass *klass, void *data)
-+static void stm32l4x5_usart_base_class_init(ObjectClass *klass, void *da=
+ static void stm32l4x5_usart_base_class_init(ObjectClass *klass, void *da=
 ta)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-     ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 9f5fda0eb8..0cda3dfed0 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -114,6 +114,7 @@ stm32l4x5_usart_rx(uint8_t c) "USART: got character 0=
+x%x from backend"
+ stm32l4x5_usart_tx(uint8_t c) "USART: character 0x%x sent to backend"
+ stm32l4x5_usart_irq_raised(uint32_t reg) "USART: IRQ raised: 0x%08"PRIx3=
+2
+ stm32l4x5_usart_irq_lowered(void) "USART: IRQ lowered"
++stm32l4x5_usart_overrun_detected(uint8_t current, uint8_t received) "USA=
+RT: Overrun detected, RDR=3D'0x%x', received 0x%x"
+ stm32l4x5_usart_error(const char* error) "USART Error: %s"
 =20
--    rc->phases.hold =3D stm32l4x5_usart_reset_hold;
--    device_class_set_props(dc, stm32l4x5_usart_properties);
--    dc->realize =3D stm32l4x5_usart_realize;
--    dc->vmsd =3D &vmstate_stm32l4x5_usart;
-+    rc->phases.hold =3D stm32l4x5_usart_base_reset_hold;
-+    device_class_set_props(dc, stm32l4x5_usart_base_properties);
-+    dc->realize =3D stm32l4x5_usart_base_realize;
-+    dc->vmsd =3D &vmstate_stm32l4x5_usart_base;
-+}
-+
-+static void stm32l4x5_usart_class_init(ObjectClass *oc, void *data)
-+{
-+    Stm32l4x5UsartBaseClass *subc =3D STM32L4X5_USART_BASE_CLASS(oc);
-+
-+    subc->type =3D STM32L4x5_USART;
-+}
-+
-+static void stm32l4x5_uart_class_init(ObjectClass *oc, void *data)
-+{
-+    Stm32l4x5UsartBaseClass *subc =3D STM32L4X5_USART_BASE_CLASS(oc);
-+
-+    subc->type =3D STM32L4x5_UART;
-+}
-+
-+static void stm32l4x5_lpuart_class_init(ObjectClass *oc, void *data)
-+{
-+    Stm32l4x5UsartBaseClass *subc =3D STM32L4X5_USART_BASE_CLASS(oc);
-+
-+    subc->type =3D STM32L4x5_LPUART;
- }
-=20
- static const TypeInfo stm32l4x5_usart_types[] =3D {
-     {
--        .name          =3D TYPE_STM32L4X5_USART,
--        .parent        =3D TYPE_SYS_BUS_DEVICE,
--        .instance_size =3D sizeof(STM32L4X5UsartState),
--        .instance_init =3D stm32l4x5_usart_init,
--        .class_init    =3D stm32l4x5_usart_class_init,
-+        .name           =3D TYPE_STM32L4X5_USART_BASE,
-+        .parent         =3D TYPE_SYS_BUS_DEVICE,
-+        .instance_size  =3D sizeof(Stm32l4x5UsartBaseState),
-+        .instance_init  =3D stm32l4x5_usart_base_init,
-+        .class_init     =3D stm32l4x5_usart_base_class_init,
-+    }, {
-+        .name           =3D TYPE_STM32L4X5_USART,
-+        .parent         =3D TYPE_STM32L4X5_USART_BASE,
-+        .class_init     =3D stm32l4x5_usart_class_init,
-+    }, {
-+        .name           =3D TYPE_STM32L4X5_UART,
-+        .parent         =3D TYPE_STM32L4X5_USART_BASE,
-+        .class_init     =3D stm32l4x5_uart_class_init,
-+    }, {
-+        .name           =3D TYPE_STM32L4X5_LPUART,
-+        .parent         =3D TYPE_STM32L4X5_USART_BASE,
-+        .class_init     =3D stm32l4x5_lpuart_class_init,
-     }
- };
-=20
-diff --git a/include/hw/char/stm32l4x5_usart.h b/include/hw/char/stm32l4x=
-5_usart.h
-index 8ec1b7afed..8d38a85a6e 100644
---- a/include/hw/char/stm32l4x5_usart.h
-+++ b/include/hw/char/stm32l4x5_usart.h
-@@ -22,10 +22,20 @@
- #include "chardev/char-fe.h"
- #include "qom/object.h"
-=20
-+#define TYPE_STM32L4X5_USART_BASE "stm32l4x5-usart-base"
- #define TYPE_STM32L4X5_USART "stm32l4x5-usart"
--OBJECT_DECLARE_SIMPLE_TYPE(STM32L4X5UsartState, STM32L4X5_USART)
-+#define TYPE_STM32L4X5_UART "stm32l4x5-uart"
-+#define TYPE_STM32L4X5_LPUART "stm32l4x5-lpuart"
-+OBJECT_DECLARE_TYPE(Stm32l4x5UsartBaseState, Stm32l4x5UsartBaseClass,
-+                    STM32L4X5_USART_BASE)
-=20
--struct STM32L4X5UsartState {
-+typedef enum {
-+    STM32L4x5_USART,
-+    STM32L4x5_UART,
-+    STM32L4x5_LPUART,
-+} Stm32l4x5UsartType;
-+
-+struct Stm32l4x5UsartBaseState {
-     SysBusDevice parent_obj;
-=20
-     MemoryRegion mmio;
-@@ -46,4 +56,11 @@ struct STM32L4X5UsartState {
-     CharBackend chr;
-     qemu_irq irq;
- };
-+
-+struct Stm32l4x5UsartBaseClass {
-+    SysBusDeviceClass parent_class;
-+
-+    Stm32l4x5UsartType type;
-+};
-+
- #endif /* HW_STM32L4X5_USART_H */
+ # xen_console.c
 --=20
 2.34.1
 

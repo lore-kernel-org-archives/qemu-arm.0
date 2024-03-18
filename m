@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666284ejb;
-        Mon, 18 Mar 2024 07:08:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUyhaDK31gov+xPdYKCPg3+z7ZGyohBj0APxjXeSbuKAtSrkzwyuYCbzZjvWxrVnhaRLeswteN+1ewmw6E3KcfR6lNkOyV
-X-Google-Smtp-Source: AGHT+IEpBqkcPPUrxGrMwW65aL8J9iQPUTtHUizznh65YLhKtQ02vqGBvwRKmk986arAZBJJW8FG
-X-Received: by 2002:ad4:538c:0:b0:696:2e6d:93 with SMTP id i12-20020ad4538c000000b006962e6d0093mr55324qvv.0.1710770933972;
-        Mon, 18 Mar 2024 07:08:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710770933; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666589ejb;
+        Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdBIt0ZPNuaGTMzi7ct01yD5T9jAEVQel9iOKmcw+B8vBh4T2Dn4pA1zsHDUnyP09SCQPiHad9NpM8EXvL3KM9GI9wISXB
+X-Google-Smtp-Source: AGHT+IH1X/uHcdcsah6HjLDyvpBWRv3yorWeiY1+uJ2u78UB2Xr7YA/GZfyGKnUAUhmxoA8IlO4x
+X-Received: by 2002:ac8:7f03:0:b0:430:d3f9:b140 with SMTP id f3-20020ac87f03000000b00430d3f9b140mr3941041qtk.4.1710770958743;
+        Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710770958; cv=none;
         d=google.com; s=arc-20160816;
-        b=LdLLVwLjAsIWHnurezXh0gVPDhxBaSyLm0lvrPX3/l22qIYgbnIW1bUvDmXAU6GAK1
-         6Piu16A6ThsPXAtgx4mybw4vA/5WxBplqmq2eNrtpmpS1N93USfr9a/zKpRFIQXewmdM
-         4sYwa5DsMJJvCo8HUxBihH+oYQOXdcp5zsh7XKP7kU2ilVOYUhcq/SrTccWNRE5dxnJW
-         bGY4LeEbfyat/aXcTzulSgkscw/+GN9Pl2P8XuBwpc6yEaAuNx0JvSM6mI6vaW0Fkwq9
-         bzaRvdl2/3fgcrsH0HDlFhHVofVnPDFyhDwLfCqr1HPvuNguSKOtCSL8phMrbg0/Zovu
-         XCVA==
+        b=AOPIYAlt5w4E/rik3Sc/njEUnWuLOYbSDvoUnINWKNCX934JW4jykwXWicgtMkP7sJ
+         aYsT94JZ5oLRQ9Ouzkp3Uh6aV9tD6/sNwJNFvxN0U+NW9MA6POZlx/X+Ih7SwlulN4+r
+         1evsNu3NzB4DStcOqAgTvm/Ifld2Hl/bCDFR5bSJszvOqdv0O4eFuMni+daSjrdRn67t
+         0Y4EiTwBD51LisAc96SX8wLWvy0L1YSpDWL1zfbFPSbVX/r4vWszfPzhJPg6tA+Yqkeh
+         mNr9CQPZUcxhQoQC2prF4uz4qrd77YjTCp8+7Qg+eNlge1teWAHvvhxcqw3rSA1YW1x+
+         w9zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
          :message-id:content-transfer-encoding:mime-version:subject:date:from;
-        bh=caJKMCVgz/4gnFbNz97BlPifioYjsyPV5gCVBsw/Wyo=;
+        bh=vfeprfunQnpX58SAH5692t7TVgRlW3Qw1+ON516pdc8=;
         fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
-        b=cnlqkgE0bc8rWgPOfbYFmGcXSmDs9uTXkOMpmLHCMj9pscv7DNY90a10vs2/y6emcU
-         PKaXFeutIMTZfmgmYmrw4MEescADiRd4e67JddNjTPVIUaknTJnuOlgoaLfuAAvaWmoa
-         KqgTv2q3eGc/yz5azcZ3gSBMZjwxybOC/HAflCnMScNRbtlF7h266y+asP1K5oJ5b5Kw
-         +YGg39IZza2fEn6Ns5RI5NH15JBlzGsY6skHtabGOgqJ6KPiSc4RZtT3f78QOLWfMqD6
-         KtXSSqJAOB0mva3ZG0mCq5pZj4sNoOoaZaabtWddZATnlN/1e/x4hce6dC0XRJKy6k4M
-         MspQ==;
+        b=wo80O5Cqv8spyzv8bxh+n4+/05Gf3acGYQsdi5FXdzvfJfUT7IU5TTVkUHm1YBFyT2
+         ZFJ+SVJcyS1EkkDLE8ZPOdNnhO2w54J/nFxU+gzLWipPJoNEk6F5oBfjVS1/wVAOCpVN
+         ONAjPUkXAg0IsD8K0sRQiNGQTYUUmnmMDeodWiScYgv8yt9zXvXCegxjGvDpEKKjTsYB
+         TPwh1u6gFlJbUtRVKu+i1pdcqyOUR9nmFgpYAGQSAm5mCq3hzwvr0V6po5sQ88LC3nh4
+         e7TD8Wejr2YWNXW+WCaHclLz2QXPoeP3j+ae4xW9E/rY2Eh5F3EcaXuEJ66TAA4KQSqf
+         4wSQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gi7-20020a056214248700b0068f07fbcbffsi8576912qvb.43.2024.03.18.07.08.53
+        by mx.google.com with ESMTPS id ay6-20020a05622a228600b00430c8209f97si3479580qtb.438.2024.03.18.07.09.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 07:08:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmDf0-0001Te-Rz; Mon, 18 Mar 2024 10:08:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rmDf8-0001Vt-5q; Mon, 18 Mar 2024 10:08:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDey-0001TD-Kz; Mon, 18 Mar 2024 10:08:16 -0400
+ id 1rmDf1-0001Th-9s; Mon, 18 Mar 2024 10:08:20 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDet-0006Fu-8C; Mon, 18 Mar 2024 10:08:16 -0400
+ id 1rmDet-0006Fq-Pa; Mon, 18 Mar 2024 10:08:19 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 61BD5260AB8;
- Mon, 18 Mar 2024 15:08:09 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 5EFCC2600DA;
+ Mon, 18 Mar 2024 15:08:08 +0100 (CET)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id IlarQtBE3U9N; Mon, 18 Mar 2024 15:08:07 +0100 (CET)
+ with ESMTP id fIiQz__vXvSu; Mon, 18 Mar 2024 15:08:06 +0100 (CET)
 Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
  [83.11.22.169])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 4B8FF26074C;
- Mon, 18 Mar 2024 15:08:06 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 7C9D6260AB8;
+ Mon, 18 Mar 2024 15:08:05 +0100 (CET)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Date: Mon, 18 Mar 2024 15:08:02 +0100
-Subject: [PATCH v3 2/4] tests/avocado: drop virtio-rng from sbsa-ref tests
+Date: Mon, 18 Mar 2024 15:08:01 +0100
+Subject: [PATCH v3 1/4] tests/avocado: update sbsa-ref firmware
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240318-sbsa-ref-firmware-update-v3-2-1c33b995a538@linaro.org>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240318-sbsa-ref-firmware-update-v3-1-1c33b995a538@linaro.org>
 References: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
 In-Reply-To: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
 To: qemu-devel@nongnu.org
@@ -81,62 +81,126 @@ Cc: Radoslaw Biernacki <rad@semihalf.com>,
 X-Mailer: b4 0.12.3
 Received-SPF: softfail client-ip=213.251.184.221;
  envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L5Iv02fBNZOF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kw8T6KuNi6PX
 
-sbsa-ref is supposed to emulate real hardware so virtio-rng-pci
-does not fit here
+We now have CI job to build those and publish in space with
+readable urls.
+
+Firmware is built using Debian 'bookworm' cross toolchain (gcc 12.2.0).
+
+Used versions:
+
+- Trusted Firmware v2.10.2
+- Tianocore EDK2 stable202402
+- Tianocore EDK2 Platforms code commit 085c2fb
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 8 --------
- 1 file changed, 8 deletions(-)
+ tests/avocado/machine_aarch64_sbsaref.py | 40 +++++++++++++++++---------------
+ 1 file changed, 21 insertions(+), 19 deletions(-)
 
 diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index cbab793455..259225f15f 100644
+index 528c7d2934..cbab793455 100644
 --- a/tests/avocado/machine_aarch64_sbsaref.py
 +++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -132,10 +132,6 @@ def boot_alpine_linux(self, cpu):
-             cpu,
-             "-drive",
-             f"file={iso_path},format=raw",
--            "-device",
--            "virtio-rng-pci,rng=rng0",
--            "-object",
--            "rng-random,id=rng0,filename=/dev/urandom",
-         )
+@@ -1,6 +1,6 @@
+ # Functional test that boots a Linux kernel and checks the console
+ #
+-# SPDX-FileCopyrightText: 2023 Linaro Ltd.
++# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+ # SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+ # SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+ #
+@@ -32,34 +32,36 @@ def fetch_firmware(self):
+         """
+         Flash volumes generated using:
  
-         self.vm.launch()
-@@ -179,10 +175,6 @@ def boot_openbsd73(self, cpu):
-             cpu,
-             "-drive",
-             f"file={img_path},format=raw",
--            "-device",
--            "virtio-rng-pci,rng=rng0",
--            "-object",
--            "rng-random,id=rng0,filename=/dev/urandom",
-         )
+-        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
++        Toolchain from Debian:
++        aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0
  
-         self.vm.launch()
+-        - Trusted Firmware-A
+-          https://github.com/ARM-software/arm-trusted-firmware/tree/7c3ff62d
++        Used components:
++
++        - Trusted Firmware 2.10.2
++        - Tianocore EDK2 stable202402
++        - Tianocore EDK2-platforms commit 085c2fb
+ 
+-        - Tianocore EDK II
+-          https://github.com/tianocore/edk2/tree/0f9283429dd4
+-          https://github.com/tianocore/edk2/tree/ad1c0394b177
+-          https://github.com/tianocore/edk2-platforms/tree/d03a60523a60
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+-            "https://fileserver.linaro.org/s/rE43RJyTfxPtBkc/"
+-            "download/SBSA_FLASH0.fd.xz"
++            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
++            "20240313-116475/edk2/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "cdb8e4ffdaaa79292b7b465693f9e5fae6b7062d"
+-        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
++        fs0_xz_hash = "637593749cc307dea7dc13265c32e5d020267552f22b18a31850b8429fc5e159"
++        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
++                                      algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+ 
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+-            "https://fileserver.linaro.org/s/AGWPDXbcqJTKS4R/"
+-            "download/SBSA_FLASH1.fd.xz"
++            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
++            "20240313-116475/edk2/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "411155ae6984334714dff08d5d628178e790c875"
+-        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
++        fs1_xz_hash = "cb0a5e8cf5e303c5d3dc106cfd5943ffe9714b86afddee7164c69ee1dd41991c"
++        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
++                                      algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+ 
+@@ -96,15 +98,15 @@ def test_sbsaref_edk2_firmware(self):
+ 
+         # AP Trusted ROM
+         wait_for_console_pattern(self, "Booting Trusted Firmware")
+-        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
++        wait_for_console_pattern(self, "BL1: v2.10.2(release):")
+         wait_for_console_pattern(self, "BL1: Booting BL2")
+ 
+         # Trusted Boot Firmware
+-        wait_for_console_pattern(self, "BL2: v2.9(release)")
++        wait_for_console_pattern(self, "BL2: v2.10.2(release)")
+         wait_for_console_pattern(self, "Booting BL31")
+ 
+         # EL3 Runtime Software
+-        wait_for_console_pattern(self, "BL31: v2.9(release)")
++        wait_for_console_pattern(self, "BL31: v2.10.2(release)")
+ 
+         # Non-trusted Firmware
+         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
 
 -- 
 2.44.0

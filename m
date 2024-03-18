@@ -1,98 +1,96 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp573092ejb;
-        Mon, 18 Mar 2024 04:33:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZ7imxwg2KJLlqNczQ6uk+NJFMGm+3bintJXf4iLrxqnoRl0NzuT66SM8A1+zVnLBbob7vWQuZcqinQKREqCta3t2nbCVN
-X-Google-Smtp-Source: AGHT+IFhgDjZFOJISIEYI6eNFEe53nZdyWES6pyHg7y26BOVmjyPtJAnJpzrb/7AxYJlo1EAgHaR
-X-Received: by 2002:ac8:5a8d:0:b0:42e:f733:669d with SMTP id c13-20020ac85a8d000000b0042ef733669dmr15121059qtc.58.1710761592026;
-        Mon, 18 Mar 2024 04:33:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710761592; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp572714ejb;
+        Mon, 18 Mar 2024 04:32:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCmGoLOLaRjti9NKbno0Ey31aKTtmXdZMxWOD2diPHI1je+LRWY9ZK1+MkKobE8BzwLI5BR0BxMYTBcRDR2zbgaTiKM0bc
+X-Google-Smtp-Source: AGHT+IEMHMXmP+sOkwTNqmMyiPJyYFVGO9lWm7GufJMfQYzwdLm7C9DEmQWwnI2rXH2yxL79Ei/u
+X-Received: by 2002:a05:6214:f24:b0:691:15c4:7983 with SMTP id iw4-20020a0562140f2400b0069115c47983mr22080343qvb.0.1710761545320;
+        Mon, 18 Mar 2024 04:32:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710761545; cv=none;
         d=google.com; s=arc-20160816;
-        b=FKzM8s5fmiFFq4OvMdgOa4+tlPTpTuOJNuxzeiAJvtNRxkYlbM1dSctXw8TIM9j/1/
-         oOA3tT2jXx6zXHzqdN0XUUZDEG9qaXASIAVjvlS5kGSqmNaj7rs8zob8Y1bpSBHsbYe8
-         qmJ4sLFPKC0pwcNJzKnKwZXrKIeAJn72eOsHGv8XeLIBsRc7+3fqEp57MMpoZtVuIA42
-         j82YJRO9wZtgD26XyXZ+MlNjo73IOJmt5W9cJTkQ6qBsPIhgRK6f9f/FQMnVWmKTiU8c
-         Yz8eJP1IeXlRbE9xhAdix1+eBGz84nQTueZ0R2q3g/QHW2FlczBURHvY88E3vAUXTe0q
-         mwng==
+        b=vyPSlDxRkHpR8CEDfmBIadjMZwRCYW5eVANwOxYS2szcJI2DG/tCGtzvko6ReUtjko
+         QcZjkTloM+bTVVsY8iQYji6SveoPGx0SBj9KxiXqJrQAfOvLx9+Bq4IN/T6neC2G3ctd
+         k32pSVMNkE6ki1wtCpNnIR5KXrGkoZs4MextGk0RxHCRQBc4+U/EoyFiTnA5uz5IMnVk
+         rKliuxy09x+Ne7oIl1DW9R9byPOZwyRQyW/9xYvCW5DQphynHBEPv1cU6pzxRNYXbOMZ
+         rZKJm4fD6mXgSQYBODKD/YPE/2ITvFNn/6RUeP/EAWdVTg6G4qnx7JvDHaEVgin6Td0t
+         vk9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=awIh3lBTG+gHE0lcYbdt4h6RpA3aL2oraGQ+LIq+QwM=;
-        fh=t44Gy1VASiXIoNlkjOUvkv5xpVuiNECntBEg8BIl5b4=;
-        b=i8TsFigy0Jxm32Z6P04UstCOGkR/FFBSHWHn5N7Vz0LAxXKAo6ROhHOltXqmvlrrRM
-         /DXbQavQq1P02EufNoT+WvkdcGKTtmB600zi3KJEQAQ+YO4RDwajvOPz3RykhaLCvS0g
-         vHbgkzS+RtqJx57sTBROGnbhQT6KimVNqk3NJZDUoB7s/j9G3VQEgKs0wOc+u7GgFEYD
-         aG2qP6Pi7vs70Mjcy0CiqPjNUN2vhvLmCglly99D2/53MRqkYdmxM48G+6d3sH1+8smz
-         QJKCTCs3G6AMCqL896g5z5S9dsr3iVOCchCDJRAN9z1FPKv3PO/hn0L0+ry9mCxandbg
-         tWSQ==;
+        bh=CYjr201DlEJ4l0jHNZURE4npfEFxYjcehCBVscFCuRE=;
+        fh=ZHIWNRx+rEvHyVsyvIT+SxJMVv6/ti8EiM9uHXaYuG4=;
+        b=kgbNDP6h4D08Pxn1ydtMa+ORKjkJHlbPvUTwfRa3ZI+D6X5QiBL+mbu8eQaoWhZj7N
+         j9OAKhNO23WFKKhqHn8ZKMgtJ0UDAyGSFnaO2HZRDsSPFYQfKHpWxEkKu1ArSa18xUYu
+         zggMPdzc3zmZA6VwZ3f42oQINSmGQXdX/f8kLlaU6w8sRDmleh9ld6yog/f2R1y6UsXi
+         ZttkB0HRqvoSGpVFv9IqnAKEGVq9Try1jmO6JE7UOeJpRPMfjPyIwJezrq3w6gel09Kc
+         vweM8u0+VXEHGDi37X644p3NrO3Q9rsS0lAFw3kNozx11Pk/qMxW2QtEt7reCztGcX8y
+         3o9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t6abnBkU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JqpNx0VC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7-20020a05622a144700b0042eb8d52057si1966045qtx.320.2024.03.18.04.33.11
+        by mx.google.com with ESMTPS id ey2-20020a0562140b6200b00691606620c0si8201091qvb.19.2024.03.18.04.32.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 04:33:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Mar 2024 04:32:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t6abnBkU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JqpNx0VC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmBDs-0008HD-R4; Mon, 18 Mar 2024 07:32:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rmBDe-00086b-Gi; Mon, 18 Mar 2024 07:31:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDq-0008GE-Nr
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 07:32:06 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDc-000865-SG
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 07:31:52 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDn-000781-8R
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 07:32:06 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-33ed5b6bf59so1588054f8f.0
- for <qemu-arm@nongnu.org>; Mon, 18 Mar 2024 04:32:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDb-00073e-61
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 07:31:52 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-33e672e10cfso2125108f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Mar 2024 04:31:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710761520; x=1711366320; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710761509; x=1711366309; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=awIh3lBTG+gHE0lcYbdt4h6RpA3aL2oraGQ+LIq+QwM=;
- b=t6abnBkU2XUWkGK6POZGY+MO2BQ8GqPy+hx7OVZfjAC0kQNJCFXLmqz0nlhL//8otC
- XVzdFxDO50LZCyHfZLeOXwTwz3NcBfHLhK5KtsxxjmjmPX2z4miJyYcCfFzqx8sKhawy
- V5gduQN5/+FpaMjB1qAVBUEpYKb9D2/c/q0su/C3GQOIPNIvGICUBd5bif8Uffy69w3u
- N1PNxlch6v8Ns0kgr6Ih7PWther1bQdc5VToG7piQ1V4uWgA2WYJwtz9KCk/ENObCjso
- D/QPNf6kDFaMKMp2CcNPxBL0+FuHVcOHlltrtpMnk691vWALI67vl3vhxVbEUF+swwk4
- g95A==
+ bh=CYjr201DlEJ4l0jHNZURE4npfEFxYjcehCBVscFCuRE=;
+ b=JqpNx0VCRlsxEdNDVGEWoRghM25n95vy7Q03+PhyY2LFAFSNm6x3Zppkv++hRQ4B/X
+ BkcI6OrsbWsY3XMyt1uP9f82UK0PMTC8fm6k080K8qo8kTaXIUc+AaKw/29xzgt4U5df
+ LMeLQnpwUVG15ts0sgCZVv8IbtOouX9lizCbJRj9QUHllQjmzPuBtGXxULIIGevPbxA8
+ AYPlB3BwucCLn33QR45C6uBXMCLxCxFBBKeYep1NFC4mmecy853gSUdA3nDqwSOPIeHV
+ sI2lg/XB4KDxr9vF9s12e3WxP8xYYKTPcijmLhMAPT+VCa8RZNiO3XraKbS7pzTBRGnm
+ mQZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710761520; x=1711366320;
+ d=1e100.net; s=20230601; t=1710761509; x=1711366309;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=awIh3lBTG+gHE0lcYbdt4h6RpA3aL2oraGQ+LIq+QwM=;
- b=DJTgD1ISdkJWCgHvFntAnwsdC9q4oTSXm3ftT25kAkCJ1n5CrGetc1ztDxXw7N37vA
- yPoYOackmvowp95Gf4ksgaT9GmHWapi5+p3Rgy2C3dUTY3wj/RPbFlSUTOS3a2nrUfPw
- nh4+llWqigxrqRbZ38TctOvFZIt+a4D13DY09SOiuXDm3S2EhMsMm+0n4Ac5Y+KvZRXC
- OlC3F3tKcnW13FWzrTbFVWFtfXlCBuVCQv8H5wsDrHhLZdF2BQ+bIHWN3av8INsq/bgb
- xKzrKhzvo5Mz0Kltd5i0NQV9o72cfptZk6s2whGoo7TzFYZhyuC3mjuwydLCs+BKglBa
- hSIQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVsZMpFlo0QN2gyKNez28iX92VOJ12U62s8MVpY3kLrEbTw5eu02X7PpTFjouMbqZ9rjSrdq2Mg0pNqKaUtLQJj9T+Z
-X-Gm-Message-State: AOJu0YxyplQmjtgMPDSe75H3viSXmuEKfny19Dns9Ug8i7GfWy6dm92F
- tlO0h1fKxwYciCzHvAa/a/ooNTnONCqaCh4+bujfqebY6YlzyrZ+RkXUuWVZ6z4ghiRBguszO3y
- /
-X-Received: by 2002:a05:6000:18ce:b0:341:715e:36d6 with SMTP id
- w14-20020a05600018ce00b00341715e36d6mr2144217wrq.34.1710761520731; 
- Mon, 18 Mar 2024 04:32:00 -0700 (PDT)
+ bh=CYjr201DlEJ4l0jHNZURE4npfEFxYjcehCBVscFCuRE=;
+ b=OhZgMF18T6uOqbAgEy7QHpfR0IxSJb8Re6lGv+BdwOA+gD9StZBFsUCNql76KFs2/L
+ zmdUhR11/tQ2BIy1bzJgqbqLB5V2rYiVX9BkdGZ44NJlRNXqaFt00qydBJYTTtp5MzO8
+ YJJWCIW8Kd+XEXfflObqi/xNy+N8kphUeKZ5F2LAELyPdpAbLY7DqVOoePXfQpV4Us5Y
+ AkVJbI8Wm/wmSnHxqOXuoa79DYXdvrn2v/OipoeOTN08xcd2Wnvq/XVM0VXOWiVK7YVe
+ CWhtNg9pppDOGnsC3puVSZppNJfW0z//80O2twudTXTNrEqJi05TZbwcEGZnH18mwwcS
+ 7ACA==
+X-Gm-Message-State: AOJu0Yx2Y00qpv+V3SPZYKq44tHOPc5tRY+LDTGN5C7xaGXoXUWvG94i
+ n0OZKoU+McsrvlIorPoH1v/gBIKtyFEKghPpGzoBJFZc8RA7k4KX/crmH+0TeC4wLUs9dmP3hJ5
+ k
+X-Received: by 2002:adf:ca88:0:b0:33e:6495:3273 with SMTP id
+ r8-20020adfca88000000b0033e64953273mr8314765wrh.4.1710761509290; 
+ Mon, 18 Mar 2024 04:31:49 -0700 (PDT)
 Received: from m1x-phil.lan (vit94-h02-176-184-29-165.dsl.sta.abo.bbox.fr.
  [176.184.29.165]) by smtp.gmail.com with ESMTPSA id
- y10-20020a5d4aca000000b0033e03d37685sm9617334wrs.55.2024.03.18.04.31.59
+ bq24-20020a5d5a18000000b0033ed8643638sm6202549wrb.106.2024.03.18.04.31.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 18 Mar 2024 04:32:00 -0700 (PDT)
+ Mon, 18 Mar 2024 04:31:48 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -101,18 +99,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.1 v2 3/3] ui/console: Add 'rotate_arcdegree' field to
- allow per-console rotation
-Date: Mon, 18 Mar 2024 12:31:40 +0100
-Message-ID: <20240318113140.88151-4-philmd@linaro.org>
+Subject: [PATCH-for-9.1 v2 1/3] ui/console: Introduce API to change console
+ orientation
+Date: Mon, 18 Mar 2024 12:31:38 +0100
+Message-ID: <20240318113140.88151-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240318113140.88151-1-philmd@linaro.org>
 References: <20240318113140.88151-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,77 +119,125 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D7YZX9Kcjxdk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WML3+VPrY6as
 
-Add the 'rotate_arcdegree' field to QemuGraphicConsole and
-remove the use of the 'graphic_rotate' global.
+Extract the following methods:
+
+  - qemu_console_set_rotate()
+  - qemu_console_is_rotated()
+  - qemu_console_get_rotate_arcdegree()
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- ui/console.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ include/ui/console.h |  3 +++
+ ui/console.c         | 16 ++++++++++++++++
+ ui/input.c           |  9 ++++-----
+ 3 files changed, 23 insertions(+), 5 deletions(-)
 
+diff --git a/include/ui/console.h b/include/ui/console.h
+index a4a49ffc64..86ba36e391 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -422,15 +422,18 @@ bool qemu_console_is_visible(QemuConsole *con);
+ bool qemu_console_is_graphic(QemuConsole *con);
+ bool qemu_console_is_fixedsize(QemuConsole *con);
+ bool qemu_console_is_gl_blocked(QemuConsole *con);
++bool qemu_console_is_rotated(QemuConsole *con);
+ char *qemu_console_get_label(QemuConsole *con);
+ int qemu_console_get_index(QemuConsole *con);
+ uint32_t qemu_console_get_head(QemuConsole *con);
+ int qemu_console_get_width(QemuConsole *con, int fallback);
+ int qemu_console_get_height(QemuConsole *con, int fallback);
++unsigned qemu_console_get_rotate_arcdegree(QemuConsole *con);
+ /* Return the low-level window id for the console */
+ int qemu_console_get_window_id(QemuConsole *con);
+ /* Set the low-level window id for the console */
+ void qemu_console_set_window_id(QemuConsole *con, int window_id);
++void qemu_console_set_rotate(QemuConsole *con, unsigned arcdegree);
+ 
+ void console_select(unsigned int index);
+ void qemu_console_resize(QemuConsole *con, int width, int height);
 diff --git a/ui/console.c b/ui/console.c
-index 84aee76846..94624c37ae 100644
+index 832055675c..84aee76846 100644
 --- a/ui/console.c
 +++ b/ui/console.c
-@@ -37,7 +37,6 @@
+@@ -37,6 +37,7 @@
  #include "trace.h"
  #include "exec/memory.h"
  #include "qom/object.h"
--#include "sysemu/sysemu.h"
++#include "sysemu/sysemu.h"
  
  #include "console-priv.h"
  
-@@ -51,6 +50,8 @@ typedef struct QemuGraphicConsole {
- 
-     QEMUCursor *cursor;
-     int cursor_x, cursor_y, cursor_on;
-+
-+    unsigned rotate_arcdegree;
- } QemuGraphicConsole;
- 
- typedef QemuConsoleClass QemuGraphicConsoleClass;
-@@ -210,17 +211,23 @@ void qemu_console_set_window_id(QemuConsole *con, int window_id)
- 
- void qemu_console_set_rotate(QemuConsole *con, unsigned arcdegree)
- {
--    graphic_rotate = arcdegree;
-+    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
-+
-+    gc->rotate_arcdegree = arcdegree;
+@@ -207,6 +208,21 @@ void qemu_console_set_window_id(QemuConsole *con, int window_id)
+     con->window_id = window_id;
  }
  
- bool qemu_console_is_rotated(QemuConsole *con)
- {
--    return graphic_rotate != 0;
-+    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
++void qemu_console_set_rotate(QemuConsole *con, unsigned arcdegree)
++{
++    graphic_rotate = arcdegree;
++}
 +
-+    return gc->rotate_arcdegree != 0;
- }
- 
- unsigned qemu_console_get_rotate_arcdegree(QemuConsole *con)
- {
--    return graphic_rotate;
-+    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
++bool qemu_console_is_rotated(QemuConsole *con)
++{
++    return graphic_rotate != 0;
++}
 +
-+    return gc->rotate_arcdegree;
- }
- 
++unsigned qemu_console_get_rotate_arcdegree(QemuConsole *con)
++{
++    return graphic_rotate;
++}
++
  void graphic_hw_invalidate(QemuConsole *con)
+ {
+     if (!con) {
+diff --git a/ui/input.c b/ui/input.c
+index dc745860f4..951806bf05 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include "sysemu/sysemu.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-ui.h"
+ #include "trace.h"
+@@ -179,10 +178,10 @@ static int qemu_input_transform_invert_abs_value(int value)
+   return (int64_t)INPUT_EVENT_ABS_MAX - value + INPUT_EVENT_ABS_MIN;
+ }
+ 
+-static void qemu_input_transform_abs_rotate(InputEvent *evt)
++static void qemu_input_transform_abs_rotate(QemuConsole *src, InputEvent *evt)
+ {
+     InputMoveEvent *move = evt->u.abs.data;
+-    switch (graphic_rotate) {
++    switch (qemu_console_get_rotate_arcdegree(src)) {
+     case 90:
+         if (move->axis == INPUT_AXIS_X) {
+             move->axis = INPUT_AXIS_Y;
+@@ -341,8 +340,8 @@ void qemu_input_event_send_impl(QemuConsole *src, InputEvent *evt)
+     qemu_input_event_trace(src, evt);
+ 
+     /* pre processing */
+-    if (graphic_rotate && (evt->type == INPUT_EVENT_KIND_ABS)) {
+-            qemu_input_transform_abs_rotate(evt);
++    if (qemu_console_is_rotated(src) && (evt->type == INPUT_EVENT_KIND_ABS)) {
++        qemu_input_transform_abs_rotate(src, evt);
+     }
+ 
+     /* send event */
 -- 
 2.41.0
 

@@ -1,124 +1,92 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp572857ejb;
-        Mon, 18 Mar 2024 04:32:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWqaMZHr+0aHYkb57tFRg5AP3n3ysBGH4G4qzLRXwU+5hvLVGlr9CZYlOpAOuxYLykgKs0ybd3wT5y6mHFRSFxR3nxqoTM+
-X-Google-Smtp-Source: AGHT+IHDXgUAjp5Edseru/bOWfTgjiDbz26qlYbJcD/a58J2oa2zFyOjNcTSKZHrlr1ymoaC+q9G
-X-Received: by 2002:a9d:7cc4:0:b0:6e4:d6d8:fbaa with SMTP id r4-20020a9d7cc4000000b006e4d6d8fbaamr11481375otn.37.1710761560843;
-        Mon, 18 Mar 2024 04:32:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710761560; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666284ejb;
+        Mon, 18 Mar 2024 07:08:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWUyhaDK31gov+xPdYKCPg3+z7ZGyohBj0APxjXeSbuKAtSrkzwyuYCbzZjvWxrVnhaRLeswteN+1ewmw6E3KcfR6lNkOyV
+X-Google-Smtp-Source: AGHT+IEpBqkcPPUrxGrMwW65aL8J9iQPUTtHUizznh65YLhKtQ02vqGBvwRKmk986arAZBJJW8FG
+X-Received: by 2002:ad4:538c:0:b0:696:2e6d:93 with SMTP id i12-20020ad4538c000000b006962e6d0093mr55324qvv.0.1710770933972;
+        Mon, 18 Mar 2024 07:08:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710770933; cv=none;
         d=google.com; s=arc-20160816;
-        b=A+tH8/EXrMx+AU4ISyzRFZDu7V0Q8U0OU8bMTLUaSOJYHJoQXKYNkOtTijf46eBKO6
-         2aJymPOfy9b3Q5is/sBulBlGYy1759cmhkLe1tBWepuduyBtqJsrSilFf6mNkSBIxdCq
-         8W6GbPWGIMvvpOHZ/GA0FGoM5SOzaK9NnjBzZ9FddBt9NTKF6qxOLM4e9LGofGGrYJJJ
-         02BW6Ychr8RXXt4SNM6CLFq4ftokkOptS2oJJD5bK5DKwu9QtdYYSNZvnoBzRw4cux0B
-         teioyUhHELm2PwdZFKl6oiTQ5IcJiL2PmHO/NeFWVeQ3XQhsYsvCaonpcJ2pto2Rh+5J
-         BuRg==
+        b=LdLLVwLjAsIWHnurezXh0gVPDhxBaSyLm0lvrPX3/l22qIYgbnIW1bUvDmXAU6GAK1
+         6Piu16A6ThsPXAtgx4mybw4vA/5WxBplqmq2eNrtpmpS1N93USfr9a/zKpRFIQXewmdM
+         4sYwa5DsMJJvCo8HUxBihH+oYQOXdcp5zsh7XKP7kU2ilVOYUhcq/SrTccWNRE5dxnJW
+         bGY4LeEbfyat/aXcTzulSgkscw/+GN9Pl2P8XuBwpc6yEaAuNx0JvSM6mI6vaW0Fkwq9
+         bzaRvdl2/3fgcrsH0HDlFhHVofVnPDFyhDwLfCqr1HPvuNguSKOtCSL8phMrbg0/Zovu
+         XCVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=SFthmmsYp+m5f9owLwx+hyTocTKSDvu4WqZSfWH+cu8=;
-        fh=yfwDdSKcr6Se3eGE9F6E1ezNMLd6LigQ+5HydIWa3ho=;
-        b=R4ttPnKCawlonFvTFk3/bv9GptqbVoszA+p1Demhb5+7ZYpusfXmFF7luIydLjmaDa
-         bV5bQczU4rJTaQuRzqW3gxIOjkDN/DQiD80gYIUpXwaY2ukfU9hpg8yJsjFI4MGTfyXk
-         4PDOZwSkrY+rUjEOLgzzfDPdf7T5/xOFft9sBZEGhefQQYMiqoDchqJmSsywCCMxypzV
-         uelwpl6DsBWKf665Uf7XZ4CxROPLdHHClFm//2P2S0nd2SqDJZ3WVti1l8ZJIvihBCNV
-         c8avkzlvg2FvkByB2fbazWRWkQMo00dbsUlybuY+Hnj++jItT/hJyX0BnPYP3RIJ/WJe
-         Vt2Q==;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=caJKMCVgz/4gnFbNz97BlPifioYjsyPV5gCVBsw/Wyo=;
+        fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
+        b=cnlqkgE0bc8rWgPOfbYFmGcXSmDs9uTXkOMpmLHCMj9pscv7DNY90a10vs2/y6emcU
+         PKaXFeutIMTZfmgmYmrw4MEescADiRd4e67JddNjTPVIUaknTJnuOlgoaLfuAAvaWmoa
+         KqgTv2q3eGc/yz5azcZ3gSBMZjwxybOC/HAflCnMScNRbtlF7h266y+asP1K5oJ5b5Kw
+         +YGg39IZza2fEn6Ns5RI5NH15JBlzGsY6skHtabGOgqJ6KPiSc4RZtT3f78QOLWfMqD6
+         KtXSSqJAOB0mva3ZG0mCq5pZj4sNoOoaZaabtWddZATnlN/1e/x4hce6dC0XRJKy6k4M
+         MspQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/kUTwkP";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020ad45f46000000b00690047b8120si8166565qvg.539.2024.03.18.04.32.40
+        by mx.google.com with ESMTPS id gi7-20020a056214248700b0068f07fbcbffsi8576912qvb.43.2024.03.18.07.08.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 04:32:40 -0700 (PDT)
+        Mon, 18 Mar 2024 07:08:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/kUTwkP";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmBDk-00088X-9i; Mon, 18 Mar 2024 07:32:00 -0400
+	id 1rmDf0-0001Te-Rz; Mon, 18 Mar 2024 10:08:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDi-00087Z-9k
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 07:31:58 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmBDg-00077O-Ne
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 07:31:58 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-513d23be0b6so4212459e87.0
- for <qemu-arm@nongnu.org>; Mon, 18 Mar 2024 04:31:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710761515; x=1711366315; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SFthmmsYp+m5f9owLwx+hyTocTKSDvu4WqZSfWH+cu8=;
- b=M/kUTwkPeboXlUZublF5oMUWc/IoCL9w5+sb05yAxzdFHilC5Rs9LJdUHtkhHEgtgF
- 4nFtjgh6nTMEt9MkNO+pk2pyon4wFbzjyfyscx2r6syPJBZyflZ4Zm/sYaZI5k7J2mxF
- ARIvup7v1S+3OW8YYb+QfF+ac7ICmxPUoFP0mm0OwtIX5hLOB7rso+DkgBg0bgsx00GG
- QtdsLxyJD0s1B+h0UPSOAtBfv0FV2O+ES7KOveXk8shEzTr8MDiuBXnzobK0hfRiq14w
- giTbUOEL3cU8chozV/dzeYVRSx6HsDaTvJrEfWnclYmPjohciKKyDR6F+yHUHLr4BbAP
- nriA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710761515; x=1711366315;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=SFthmmsYp+m5f9owLwx+hyTocTKSDvu4WqZSfWH+cu8=;
- b=bZ6i1fE8oRngbss2qh/BvbFgmbXb8Ku0dk1AneD5otf1MN/jnGfRxiqpfjoWQcvXef
- OM2OZbh5/vzLHVXI+cGUbMi0SXssGSS43Nq3b6ts/I0W5XUmm4nEHXkbaOJs1mBxfrru
- ivp1I+qJhHB/0Hy4+jnrHXxlq+21s4rmksg5K0Zz8Szj6cAEgti4XYGUPnvbrCaDWoEf
- UoCm6mnt4LRRrWOFohadtXxd2QPMrSs0twa7E6bGHUKhI8+NqKGbf9Lqml4VPYV3zzCJ
- gWy0VaItknjnDyOwIlJ9zWUV7eiqvSVE4cU/JEY+wLbyGI2lJXjgd5p47iJBslXVGT1E
- /Jtg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWyxGdBG8sRPaJn1E5nRRYZEZDoXXYzvfGliTwJ87LuTRmT76ht3Yc7GfSC/I7ryAvt76HaM5gEDiSzSEBkoDfc42Qm
-X-Gm-Message-State: AOJu0YzxsWIuu+QvC1CRPmbMBFtenB9/jFisWuhwFOo/lAT1jqGVwwV1
- vfwJkHA2PeOaYyxjyGy6BxMIHtaieqgEnt/sRum60FyZHWYLHtaOBrgvB3ptw3g=
-X-Received: by 2002:a05:6512:2205:b0:513:e7ff:15b8 with SMTP id
- h5-20020a056512220500b00513e7ff15b8mr2758956lfu.51.1710761515074; 
- Mon, 18 Mar 2024 04:31:55 -0700 (PDT)
-Received: from m1x-phil.lan (vit94-h02-176-184-29-165.dsl.sta.abo.bbox.fr.
- [176.184.29.165]) by smtp.gmail.com with ESMTPSA id
- m10-20020adffe4a000000b0033de10c9efcsm9536719wrs.114.2024.03.18.04.31.53
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 18 Mar 2024 04:31:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Akihiko Odaki <akihiko.odaki@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.1 v2 2/3] hw/display/pxa2xx_lcd: Set rotation angle
- using qemu_console_set_rotate
-Date: Mon, 18 Mar 2024 12:31:39 +0100
-Message-ID: <20240318113140.88151-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240318113140.88151-1-philmd@linaro.org>
-References: <20240318113140.88151-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1rmDey-0001TD-Kz; Mon, 18 Mar 2024 10:08:16 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1rmDet-0006Fu-8C; Mon, 18 Mar 2024 10:08:16 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 61BD5260AB8;
+ Mon, 18 Mar 2024 15:08:09 +0100 (CET)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id IlarQtBE3U9N; Mon, 18 Mar 2024 15:08:07 +0100 (CET)
+Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
+ [83.11.22.169])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 4B8FF26074C;
+ Mon, 18 Mar 2024 15:08:06 +0100 (CET)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Mon, 18 Mar 2024 15:08:02 +0100
+Subject: [PATCH v3 2/4] tests/avocado: drop virtio-rng from sbsa-ref tests
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240318-sbsa-ref-firmware-update-v3-2-1c33b995a538@linaro.org>
+References: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
+In-Reply-To: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ Beraldo Leal <bleal@redhat.com>, Brad Smith <brad@comstyle.com>, 
+ qemu-arm@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.12.3
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,25 +101,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mmASsknCt5Ga
+X-TUID: L5Iv02fBNZOF
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+sbsa-ref is supposed to emulate real hardware so virtio-rng-pci
+does not fit here
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- hw/display/pxa2xx_lcd.c | 1 +
- 1 file changed, 1 insertion(+)
+ tests/avocado/machine_aarch64_sbsaref.py | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index a9d0d981a0..7d03fa57d0 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -1439,6 +1439,7 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
-     memory_region_add_subregion(sysmem, base, &s->iomem);
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index cbab793455..259225f15f 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -132,10 +132,6 @@ def boot_alpine_linux(self, cpu):
+             cpu,
+             "-drive",
+             f"file={iso_path},format=raw",
+-            "-device",
+-            "virtio-rng-pci,rng=rng0",
+-            "-object",
+-            "rng-random,id=rng0,filename=/dev/urandom",
+         )
  
-     s->con = graphic_console_init(NULL, 0, &pxa2xx_ops, s);
-+    qemu_console_set_rotate(s->con, graphic_rotate);
+         self.vm.launch()
+@@ -179,10 +175,6 @@ def boot_openbsd73(self, cpu):
+             cpu,
+             "-drive",
+             f"file={img_path},format=raw",
+-            "-device",
+-            "virtio-rng-pci,rng=rng0",
+-            "-object",
+-            "rng-random,id=rng0,filename=/dev/urandom",
+         )
  
-     vmstate_register(NULL, 0, &vmstate_pxa2xx_lcdc, s);
- 
+         self.vm.launch()
+
 -- 
-2.41.0
+2.44.0
 

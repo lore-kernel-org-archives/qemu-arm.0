@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp521464ejb;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp521461ejb;
         Mon, 18 Mar 2024 02:39:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9UySbnzS5Snn4AO21z9UIOVjCAkpH5WpciTyzVe4yd1saYKQzrcr5KPQ6I1OG+Z4fDQvDx15HAbdL9d41FXAQP6B+/vK/
-X-Google-Smtp-Source: AGHT+IGkeb9MemeMRA8PTAig97ewYk8aZI82UXrNTdX2fLlm45pWQxwrwwgP4t4ygazXM6h+ftNm
-X-Received: by 2002:a05:622a:110f:b0:430:c731:9c with SMTP id e15-20020a05622a110f00b00430c731009cmr7652085qty.32.1710754773334;
+X-Forwarded-Encrypted: i=2; AJvYcCUsyLlxy00AqbifWAKfm2QW41waq32KPJQvJGTGwXNQi02i9Igmlqmz92tSR6Va59KNvMEWID/KiFXuqFVZs3DMKV8egUi9
+X-Google-Smtp-Source: AGHT+IGJpbruj1g1D+WItt/q25sqn2Y+U1HJlpiT8wyfJ7d1CO7a+R6dx38RKeMkd5ZuIkIZXPan
+X-Received: by 2002:a0c:cc81:0:b0:690:b39e:bf0d with SMTP id f1-20020a0ccc81000000b00690b39ebf0dmr21285208qvl.8.1710754773117;
         Mon, 18 Mar 2024 02:39:33 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1710754773; cv=none;
         d=google.com; s=arc-20160816;
-        b=sDK5qKxhGfsd0aekOt+xl31XmKRJW1ERgysLDSmC8ezzENJlec8awUNAVmsWjG177o
-         ZcgjJkUZzkFGmAaJ9EGUg0thJ+Rxsbkl0o6zx2RQuiUc9dEahXOQhPZsFiowHd1KiEBU
-         bQpBipMr7G3EsnQKhooCxh6wPnpoeid4PvHcL4tFgvD7CmiqvMJWinMbl+xPpRYX7gMC
-         oxHIB3C12kU2hBPT5DANKY+3awjAHTId2uU3oRD/UxjtIrQkPAWtBbph+RgBSE9i0OgE
-         mRReXc8jwF3WF71Wz8DMjwlZHzVL7X/LKofXg3XaKlVQ18LSUgR0qg9VlW6jbRJnStJ7
-         eD4A==
+        b=j4NsXIUi6IVPTehJ+4oNpMGIq2hdbPNUd80RmTCD9rDPavw42GKEOf3VPOVf4Vq2a/
+         KN3MbvbD8kS+YU8xLcN/r6eQ3ac+Key3XLHJEhc4OHvSgwRfQ07hDw5/1Sdu7DoGsr+j
+         o3uXFelijMhC5A8MoI3VvJYvardi68jVmlt0jbF7k2VcQG5wb7/Usht+HpEIIqA5na5p
+         az15P0dOGm2XW6iA5CPhdKAuuyVgp8DxQjro6SKCkFFOgRe9g4kOvtAL9ttub+7HYbjj
+         5j8CuasaIJRXxCyNHzRp1y/DwD8jPge/B9kSHggeLCVfuv3fCtwZIM72iTq8U48/Zlwl
+         NAoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=r2v8RQwDgySTh/taHWfZK8WzRFwK3hB0n+sY8tHshNg=;
+        bh=JfpU7OhijC5sTc6Ys4qkarvkbbBfZc8JG9QmSM7+1xs=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=rbUuDoX5sCDe94ZYkcVznZMcfIYmmLWU8/MAzmibtR/Yi8uwop7Npi+VCQcVSLto9B
-         gvm/HxFdh6qAHcpNbW0jknLbBRj2Xw9P52+jALVzHin+b38Oyr9Qdr+RFiQiUm+wSy3I
-         Sp5PkPMwAFWrPv4livNpZ/MCmY4yumYFkCjhssZkSktHySOUTMGngnUKju8rOENy7A8l
-         1R7c3ZmK6NFafHvPzaFa5YWWFJox/YDTyjOa9r98LAiAOCD92M29hjJgyB8Z03ivNABh
-         W7vS5qGnadQQ4H7lJdmK3Yj4X0ELZN57b78mVmbpGO8AexiKLOAlWCv0r+4Hy9t+dWNg
-         UaAw==;
+        b=qMWCzQQaGEID0zW6AMf+UORWuyzo1vSySffYx6ROMxrWlrPpMolYDMv+7xzoC8quuy
+         rMwydAiOSS4PBW7NHPhVmD7ZGUaAIkxYym+3SzxmuPAytjDsxxDpED2k08wi1VZZQ5cV
+         lE9teH401lHoPv/fqFJ1jdErUKgA+qHfD51RUIiAomFqGeeS+uWlwZDOo1b5bOHrVy22
+         gqJWIoc461AhCCxT6rDw5OfQN6vOzrudpdc1RwYA3HZ1UMYyaA15eka3s1RFFlcbwLm5
+         N0gOiOOdIG4+TsfMFvwe7d9PppWElHj6mowxljpAMOrGJsgEAIKqoLrVhRAjuuseSNXm
+         9Gdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20-20020a05622a061400b0042f512efd0bsi4393498qta.329.2024.03.18.02.39.33
+        by mx.google.com with ESMTPS id r3-20020ad45763000000b00696116cccbesi2585075qvx.41.2024.03.18.02.39.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 18 Mar 2024 02:39:33 -0700 (PDT)
@@ -42,33 +42,34 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rm9RC-0004AC-M4; Mon, 18 Mar 2024 05:37:46 -0400
+	id 1rm9RD-0004Ag-8i; Mon, 18 Mar 2024 05:37:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rm9Qv-0003wg-4X; Mon, 18 Mar 2024 05:37:29 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35])
+ id 1rm9Qx-0003xh-FG; Mon, 18 Mar 2024 05:37:32 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rm9Qi-0000xH-PB; Mon, 18 Mar 2024 05:37:28 -0400
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4TyqSb6vCwz1QBrY;
- Mon, 18 Mar 2024 17:34:39 +0800 (CST)
+ id 1rm9Ql-0000y6-7b; Mon, 18 Mar 2024 05:37:31 -0400
+Received: from mail.maildlp.com (unknown [172.19.163.48])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4TyqT202svz1Q9r9;
+ Mon, 18 Mar 2024 17:35:02 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id E1D9F1A0172;
- Mon, 18 Mar 2024 17:37:11 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 571A018006C;
+ Mon, 18 Mar 2024 17:37:15 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 18 Mar
- 2024 17:37:11 +0800
+ 2024 17:37:14 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v8 15/23] hw/intc/arm_gicv3: Implement GICD_INMIR
-Date: Mon, 18 Mar 2024 09:35:37 +0000
-Message-ID: <20240318093546.2786144-16-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v8 19/23] hw/intc/arm_gicv3: Implement NMI interrupt
+ prioirty
+Date: Mon, 18 Mar 2024 09:35:41 +0000
+Message-ID: <20240318093546.2786144-20-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240318093546.2786144-1-ruanjinjie@huawei.com>
 References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
@@ -78,14 +79,14 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
- helo=szxga07-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,94 +103,235 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SyfPETLIkcw/
+X-TUID: 5pN0LjUUjuSu
 
-Add GICD_INMIR, GICD_INMIRnE register and support access GICD_INMIR0.
+If GICD_CTLR_DS bit is zero and the NMI is non-secure, the NMI prioirty
+is higher than 0x80, otherwise it is higher than 0x0. And save NMI
+super prioirty information in hppi.superprio to deliver NMI exception.
+Since both GICR and GICD can deliver NMI, it is both necessary to check
+whether the pending irq is NMI in gicv3_redist_update_noirqset and
+gicv3_update_noirqset. And In irqbetter(), only a non-NMI with the same
+priority and a smaller interrupt number can be preempted but not NMI.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v4:
-- Make the GICD_INMIR implementation more clearer.
-- Udpate the commit message.
-v3:
+v8:
 - Add Reviewed-by.
+v7:
+- Reorder the irqbetter() code for clarity.
+- Eliminate the has_superprio local variable for gicv3_get_priority().
+- false -> cs->hpplpi.superprio in gicv3_redist_update_noirqset().
+- 0x0 -> false in arm_gicv3_common_reset_hold().
+- Clear superprio in several places for hppi, hpplpi and hppvlpi.
+v6:
+- Put the "extract superprio info" logic into gicv3_get_priority().
+- Update the comment in irqbetter().
+- Reset the cs->hppi.superprio to 0x0.
+- Set hppi.superprio to false for LPI.
+v4:
+- Replace is_nmi with has_superprio to not a mix NMI and superpriority.
+- Update the comment in irqbetter().
+- Extract gicv3_get_priority() to avoid code repeat.
 ---
- hw/intc/arm_gicv3_dist.c | 34 ++++++++++++++++++++++++++++++++++
- hw/intc/gicv3_internal.h |  2 ++
- 2 files changed, 36 insertions(+)
+v3:
+- Add missing brace
+---
+ hw/intc/arm_gicv3.c        | 69 +++++++++++++++++++++++++++++++++-----
+ hw/intc/arm_gicv3_common.c |  3 ++
+ hw/intc/arm_gicv3_redist.c |  3 ++
+ 3 files changed, 66 insertions(+), 9 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 35e850685c..9739404e35 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -89,6 +89,29 @@ static int gicd_ns_access(GICv3State *s, int irq)
-     return extract32(s->gicd_nsacr[irq / 16], (irq % 16) * 2, 2);
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index 0b8f79a122..9496a28005 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -21,7 +21,8 @@
+ #include "hw/intc/arm_gicv3.h"
+ #include "gicv3_internal.h"
+ 
+-static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
++static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio,
++                      bool has_superprio)
+ {
+     /* Return true if this IRQ at this priority should take
+      * precedence over the current recorded highest priority
+@@ -30,14 +31,23 @@ static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
+      * is the same as this one (a property which the calling code
+      * relies on).
+      */
+-    if (prio < cs->hppi.prio) {
+-        return true;
++    if (prio != cs->hppi.prio) {
++        return prio < cs->hppi.prio;
++    }
++
++    /*
++     * The same priority IRQ with superpriority should signal to the CPU
++     * as it have the priority higher than the labelled 0x80 or 0x00.
++     */
++    if (has_superprio != cs->hppi.superprio) {
++        return has_superprio;
+     }
++
+     /* If multiple pending interrupts have the same priority then it is an
+      * IMPDEF choice which of them to signal to the CPU. We choose to
+      * signal the one with the lowest interrupt number.
+      */
+-    if (prio == cs->hppi.prio && irq <= cs->hppi.irq) {
++    if (irq <= cs->hppi.irq) {
+         return true;
+     }
+     return false;
+@@ -129,6 +139,40 @@ static uint32_t gicr_int_pending(GICv3CPUState *cs)
+     return pend;
  }
  
-+static void gicd_write_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                  uint32_t *bmp, maskfn *maskfn,
-+                                  int offset, uint32_t val)
++static bool gicv3_get_priority(GICv3CPUState *cs, bool is_redist,
++                               uint8_t *prio, int irq)
 +{
-+    /*
-+     * Helper routine to implement writing to a "set" register
-+     * (GICD_INMIR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
++    uint32_t superprio = 0x0;
 +
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
++    if (is_redist) {
++        superprio = extract32(cs->gicr_isuperprio, irq, 1);
++    } else {
++        superprio = *gic_bmp_ptr32(cs->gic->superprio, irq);
++        superprio = superprio & (1 << (irq & 0x1f));
 +    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    *gic_bmp_ptr32(bmp, irq) = val;
-+    gicv3_update(s, irq, 32);
++
++    if (superprio) {
++        /* DS = 0 & Non-secure NMI */
++        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS) &&
++            ((is_redist && extract32(cs->gicr_igroupr0, irq, 1)) ||
++             (!is_redist && gicv3_gicd_group_test(cs->gic, irq)))) {
++            *prio = 0x80;
++        } else {
++            *prio = 0x0;
++        }
++
++        return true;
++    }
++
++    if (is_redist) {
++        *prio = cs->gicr_ipriorityr[irq];
++    } else {
++        *prio = cs->gic->gicd_ipriority[irq];
++    }
++
++    return false;
 +}
 +
- static void gicd_write_set_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-                                       uint32_t *bmp,
-                                       maskfn *maskfn,
-@@ -543,6 +566,11 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-         /* RAZ/WI since affinity routing is always enabled */
-         *data = 0;
-         return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        *data = (!s->nmi_support) ? 0 :
-+                gicd_read_bitmap_reg(s, attrs, s->superprio, NULL,
-+                                     offset - GICD_INMIR);
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
-@@ -752,6 +780,12 @@ static bool gicd_writel(GICv3State *s, hwaddr offset,
-     case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-         /* RAZ/WI since affinity routing is always enabled */
-         return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        if (s->nmi_support) {
-+            gicd_write_bitmap_reg(s, attrs, s->superprio, NULL,
-+                                  offset - GICD_INMIR, value);
-+        }
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index f35b7d2f03..a1fc34597e 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -52,6 +52,8 @@
- #define GICD_SGIR            0x0F00
- #define GICD_CPENDSGIR       0x0F10
- #define GICD_SPENDSGIR       0x0F20
-+#define GICD_INMIR           0x0F80
-+#define GICD_INMIRnE         0x3B00
- #define GICD_IROUTER         0x6000
- #define GICD_IDREGS          0xFFD0
+ /* Update the interrupt status after state in a redistributor
+  * or CPU interface has changed, but don't tell the CPU i/f.
+  */
+@@ -141,6 +185,7 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+     uint8_t prio;
+     int i;
+     uint32_t pend;
++    bool has_superprio = false;
+ 
+     /* Find out which redistributor interrupts are eligible to be
+      * signaled to the CPU interface.
+@@ -152,10 +197,11 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+             if (!(pend & (1 << i))) {
+                 continue;
+             }
+-            prio = cs->gicr_ipriorityr[i];
+-            if (irqbetter(cs, i, prio)) {
++            has_superprio = gicv3_get_priority(cs, true, &prio, i);
++            if (irqbetter(cs, i, prio, has_superprio)) {
+                 cs->hppi.irq = i;
+                 cs->hppi.prio = prio;
++                cs->hppi.superprio = has_superprio;
+                 seenbetter = true;
+             }
+         }
+@@ -168,9 +214,11 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+     if ((cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) && cs->gic->lpi_enable &&
+         (cs->gic->gicd_ctlr & GICD_CTLR_EN_GRP1NS) &&
+         (cs->hpplpi.prio != 0xff)) {
+-        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio)) {
++        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio,
++                      cs->hpplpi.superprio)) {
+             cs->hppi.irq = cs->hpplpi.irq;
+             cs->hppi.prio = cs->hpplpi.prio;
++            cs->hppi.superprio = cs->hpplpi.superprio;
+             cs->hppi.grp = cs->hpplpi.grp;
+             seenbetter = true;
+         }
+@@ -213,6 +261,7 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
+     int i;
+     uint8_t prio;
+     uint32_t pend = 0;
++    bool has_superprio = false;
+ 
+     assert(start >= GIC_INTERNAL);
+     assert(len > 0);
+@@ -240,10 +289,11 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
+              */
+             continue;
+         }
+-        prio = s->gicd_ipriority[i];
+-        if (irqbetter(cs, i, prio)) {
++        has_superprio = gicv3_get_priority(cs, false, &prio, i);
++        if (irqbetter(cs, i, prio, has_superprio)) {
+             cs->hppi.irq = i;
+             cs->hppi.prio = prio;
++            cs->hppi.superprio = has_superprio;
+             cs->seenbetter = true;
+         }
+     }
+@@ -293,6 +343,7 @@ void gicv3_full_update_noirqset(GICv3State *s)
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+         s->cpu[i].hppi.prio = 0xff;
++        s->cpu[i].hppi.superprio = false;
+     }
+ 
+     /* Note that we can guarantee that these functions will not
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 2d2cea6858..822d99d8b4 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -498,8 +498,11 @@ static void arm_gicv3_common_reset_hold(Object *obj)
+         memset(cs->gicr_ipriorityr, 0, sizeof(cs->gicr_ipriorityr));
+ 
+         cs->hppi.prio = 0xff;
++        cs->hppi.superprio = false;
+         cs->hpplpi.prio = 0xff;
++        cs->hpplpi.superprio = false;
+         cs->hppvlpi.prio = 0xff;
++        cs->hppvlpi.superprio = false;
+ 
+         /* State in the CPU interface must *not* be reset here, because it
+          * is part of the CPU's reset domain, not the GIC device's.
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 7a16a058b1..4118c2f297 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -120,6 +120,7 @@ static void update_for_one_lpi(GICv3CPUState *cs, int irq,
+         ((prio == hpp->prio) && (irq <= hpp->irq))) {
+         hpp->irq = irq;
+         hpp->prio = prio;
++        hpp->superprio = false;
+         /* LPIs and vLPIs are always non-secure Grp1 interrupts */
+         hpp->grp = GICV3_G1NS;
+     }
+@@ -156,6 +157,7 @@ static void update_for_all_lpis(GICv3CPUState *cs, uint64_t ptbase,
+     int i, bit;
+ 
+     hpp->prio = 0xff;
++    hpp->superprio = false;
+ 
+     for (i = GICV3_LPI_INTID_START / 8; i < pendt_size / 8; i++) {
+         address_space_read(as, ptbase + i, MEMTXATTRS_UNSPECIFIED, &pend, 1);
+@@ -241,6 +243,7 @@ static void gicv3_redist_update_vlpi_only(GICv3CPUState *cs)
+ 
+     if (!FIELD_EX64(cs->gicr_vpendbaser, GICR_VPENDBASER, VALID)) {
+         cs->hppvlpi.prio = 0xff;
++        cs->hppvlpi.superprio = false;
+         return;
+     }
  
 -- 
 2.34.1

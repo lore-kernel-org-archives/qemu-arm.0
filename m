@@ -1,150 +1,118 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp434097ejb;
-        Sun, 17 Mar 2024 22:26:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUW702RmtknPvox583MGbHGAU5/GmQAlRl9jGBXUwlgXmTJNMO/h1whJCLCRboR5ua48Vq2mLAOoJKfOInxNeMPNKs6xRfV
-X-Google-Smtp-Source: AGHT+IHLujwjsxc6ILH6DDCxd/+7B4HVQBLmeA1sbfxfqGrc8l/qZl2H0hJNFtM2UnZAPfRXliuC
-X-Received: by 2002:a05:620a:2187:b0:789:d969:85c0 with SMTP id g7-20020a05620a218700b00789d96985c0mr10844467qka.9.1710739583098;
-        Sun, 17 Mar 2024 22:26:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710739583; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp483150ejb;
+        Mon, 18 Mar 2024 00:59:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKLcMEqxBapZmi4pKNfPf3iDGD5jJ0jTYqjOOsEloBYKOtkiS0C9s8FifPcSPGpWtTLt9boT50opUelutrDje7HvTBRazn
+X-Google-Smtp-Source: AGHT+IH+U24UunyVnI6hmk+02x+kWEe+ocuo0Tjnn+NJKdVakf0fJ0CslqQvGqJtTzBQH2iQ9pxY
+X-Received: by 2002:a0c:e8c6:0:b0:690:f57c:b65c with SMTP id m6-20020a0ce8c6000000b00690f57cb65cmr11169756qvo.23.1710748757354;
+        Mon, 18 Mar 2024 00:59:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710748757; cv=none;
         d=google.com; s=arc-20160816;
-        b=cfBCILQRYOUH8Yl3PAaaW5Hh0ldEVZ1O/PgStRPJie61Jd0o+4EaKC4rBD9WeUhxn0
-         3hf6Ev3kR4lxC0AfVX4YtI9kDrBmFBbnYdRZb2KLzLkp+OsCCDKbiIGLgsqrHbAG+Wx4
-         zQyU2xS4AlCgSEq0Jdx1DmTF46xu57keQ5Qi/hdSq07bSqtGK4IQ2NNM+nZ8O+juY5Ai
-         6wLWvy9kV4MHKARQsfVOw/sEpbwozQ1WbIGDeaJreI1hFMZnVHxPTI4w8cHr6AbpQiCZ
-         9+6HVCQeXlGtH7LjDTb/Fn6IG4xYGmWN13QqeDEEVg9rOCBaNwZTHhCgwkdpc/RycuRG
-         xQ+A==
+        b=jx0xw6TqjbVgcnVVjQvCKVp/YcpmhTfGNFGe0pzGq0DBvoVxVZbnPUrkGZ6hWWuPCj
+         aDtmnVW8ronN8d+tDo+oslM77rKKi55JTp/7wLUChauk6hKr9EHePiJL04O7keh4nHN6
+         0aeXthUV6VDhuDaByfILyqs7LZ6kRurGs7l+sjD8+cPoCOKVXGk1CKnrL81oSpTRgML5
+         R9aZ9htDhE5Lx/E3PkWI+HqPgAZLWdcWazoJ8+svRweRBxtlPYPJ2N76boMj85xOzs1a
+         xvmbvf7ZLjgGDDXB9YnRsUC3TDzzWdj36hY4cYNqnHOEVwUqnkCdtgJrUAlVpoQ6AFKj
+         BwKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+        h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=VbVdj6D/b4iE8YW38lmRZRkiSX17/mQ8glm3MWlFbbM=;
-        fh=1lFlUDSatuzjuXLe9IyNaEq5fOweOC05eNCprPNrvjE=;
-        b=Gnr97Qo3JPACpXODWbgr5t8+NkxQvZC+VpY4sWJVdw6VB7SBpBFFZkDtlwD/EYLqPX
-         QAMqVBEBOGrm5S62ns5m9xitT0zTNWnqrd2EXEEwAs8qCfRjrVemuaPvFqwZVmLUmxZ5
-         ixlzAGZouRPJjx0RGbcwXDUfQ+jTEw+E/Q/6rWc4/qoZVewp08qCVY7yeSBACMKmarqD
-         fHxcOxEmSnT3i4xvE4xe9/APCZS6qYkSh+Z31+fC3qZd70LH8Q6XsncO7bOaAozpwK3X
-         RaHsuwlqt8OTJ7T1vYa4uhAXFl4i9zic5xO1m8DTSt5wkSw9HHwNyE0cAZlzajAU+St0
-         BrBw==;
+        bh=7HRicsPfw2qH+R0Hv0lAfkLQ1AsWw2uQ8+b8w+OaAfs=;
+        fh=MZYTlXB+bDczHuI0FDOhExBboyvTFrwhXwRBKJ8jQZ8=;
+        b=ziRtIKsInUjr/Xvo4C0PHP+u7EnBSRvKjkKo45yQMMbeHarcp6g5C/Ztc34s4jnATw
+         rpvOdieljk5bOMH5x9BGzJAtU+QZ+FB+d72Za8MMZ9/xFxc1CPA9AO0RjkM33EjKWzks
+         bXD5qZzvkP9WVyn34ozacWG53Rdjeeripspk5QxoSr+/IdiQ84jAcFuE6MEUKwJIAC24
+         bc19/MA6HTmL5Z8gzrYb73x9vm7IiJA/IHx6LoxFWAz1xx2eXCADGZoxwNRQKiWHz372
+         ooqzhQ6zlogmt6Qp6SLRBbz4msSJVX9kLs/yqtDkWy0zhK1UFPkd8+EgsJY25wVtf47u
+         ZLNQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=YZGUoGjD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 23-20020a05620a04d700b00789f4fee002si3159718qks.618.2024.03.17.22.26.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Mar 2024 22:26:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WfYgVq8F;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@linux.intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.18])
+        by mx.google.com with ESMTPS id jx14-20020a0562142b0e00b006961c193123si1576366qvb.304.2024.03.18.00.59.16
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Mar 2024 00:59:17 -0700 (PDT)
+Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=198.175.65.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=YZGUoGjD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rm5Vh-0003Gl-1I; Mon, 18 Mar 2024 01:26:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rm5VE-00038l-0L
- for qemu-devel@nongnu.org; Mon, 18 Mar 2024 01:25:40 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1rm5VB-0002ie-Aa
- for qemu-devel@nongnu.org; Mon, 18 Mar 2024 01:25:39 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1def3340682so20754235ad.1
- for <qemu-devel@nongnu.org>; Sun, 17 Mar 2024 22:25:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1710739535; x=1711344335; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=VbVdj6D/b4iE8YW38lmRZRkiSX17/mQ8glm3MWlFbbM=;
- b=YZGUoGjDv2/GGYYikrBx6BS0m3yL+i177sMNvR0TLP0vMnyGjUxZqvE77/0yoy1GXr
- kp1yarlXXkklikShpMlvlgFbt3N2IXj01CoKTLtBfv212ShnPEXf2VTBLjoDZ+M0m71x
- Wef9VmZtvX2KVvlk2K4178EB+qa9qV8wz9/4y6JaerMHzuhg35dg0/dnwIDdlIC9D/Sl
- 2jvVOudEqJopNxV4L8FHZbAceM6DiF5kD05dZEZJsk3fi0BNUmmS4Yx7O7GAz2Gk+sGZ
- 0jBPjj0iHstkueAbZnrfOvYuF9MVi2LcJie3f0cpxjylmeXPxDnkNDENikc6MeCicLwJ
- naKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710739535; x=1711344335;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VbVdj6D/b4iE8YW38lmRZRkiSX17/mQ8glm3MWlFbbM=;
- b=gs3CHzA/kC2yp7QMNXwnfnDHTNLCFyy03olyXEUnN6Kh8xU8LFArRTI3AoOnWMWCfx
- Cnym46sHczAMUkdt/ocomDgyaYDsWGEOsUH9LumZc10sSRzBPZC7GKm+hxDt0YjUWcJT
- pXOuub61h02gyguRPio+PuwSXkV4CQkoTMvqjvnfcvJ63AHzmbjDg2SH8pTrBlOpZ79J
- Y1MvRmfp6E8nARAx+O1rGugQlLjFtnZupKIDVv+E8lFi2hNQg4QODcCMlWozMddHGRCL
- AEkynGvziCNUQ+GdcwFQErBYCeDoEFiw4XsRDcxKuR2JptzNI58hBidyQV8Q75HZlSh8
- am5w==
-X-Gm-Message-State: AOJu0YzwphuAbmYImGJKGMtyVWlgpsIxPM+EVcX4fnrFjfWDAkKvUpZB
- 3NYjs/UAo5DyGJE/Vgs+lym6NCCDWpNqaxF4lgyTZNq6x15cGxJQRAtspJGUmUc=
-X-Received: by 2002:a17:903:1249:b0:1dd:cef5:2b27 with SMTP id
- u9-20020a170903124900b001ddcef52b27mr14516341plh.1.1710739535050; 
- Sun, 17 Mar 2024 22:25:35 -0700 (PDT)
-Received: from sunil-laptop ([106.51.185.90]) by smtp.gmail.com with ESMTPSA id
- n2-20020a170902e54200b001dd67d69848sm1913454plf.82.2024.03.17.22.25.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Mar 2024 22:25:34 -0700 (PDT)
-Date: Mon, 18 Mar 2024 10:55:26 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Alistair Francis <alistair23@gmail.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH 03/12] uefi-test-tools: Add support for python based
- build script
-Message-ID: <ZffQRvmha4iUEsmO@sunil-laptop>
-References: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
- <a425xsrezixamz7zo6cswvgawvv3swkfem73dod5ummkpol27i@orq5xdpzond7>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WfYgVq8F;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1710748757; x=1742284757;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=K3oyBVjD9yERzrexxJjy+LSwuy7gM46KXG2e0fpWMCY=;
+  b=WfYgVq8Fo+aFbsaE2zwgc2KUrzBFdcR4mQNfeO4IFK/vkwoT7yzU7Wih
+   41k1hTC6SX1nh1fje2JAKLBjLpHe+2pxo/Vl9urCs95ejaxYBELG/j3Iv
+   L2DvXwFskpVzYXEyIrlDlAhewmI/VYryzjdvdYArFHmUnzlSGhcGhF/zm
+   kE6J3WHmmDs/17SSlNC+GHXCGuFbGDN0Heegl32oqxZC93YdDBhRGsE2+
+   exSY7/IYLnEo5mskzSm5PXhlD9SG8e8D8We2siKtJlDDfvrc6HGjrG2bZ
+   tVToQbVnXN86/eSgfO6TjVIfPIHmumDikYiQBHmYzDs2Qm1XguNyDJqGZ
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11016"; a="5678417"
+X-IronPort-AV: E=Sophos;i="6.07,134,1708416000"; 
+   d="scan'208";a="5678417"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 00:59:15 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,134,1708416000"; 
+   d="scan'208";a="18072582"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa005.jf.intel.com with ESMTP; 18 Mar 2024 00:59:10 -0700
+Date: Mon, 18 Mar 2024 16:13:01 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	qemu-riscv@nongnu.org, Anton Johansson <anjo@rev.ng>,
+	qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Claudio Fontana <cfontana@suse.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Subject: Re: [PATCH-for-9.1 02/21] target/mips: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+Message-ID: <Zff3jcV6H6u2zwtQ@intel.com>
+References: <20240315130910.15750-1-philmd@linaro.org>
+ <20240315130910.15750-3-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <a425xsrezixamz7zo6cswvgawvv3swkfem73dod5ummkpol27i@orq5xdpzond7>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xpl+xX0Oosch
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240315130910.15750-3-philmd@linaro.org>
+X-TUID: ytS9518j+/Mz
 
-On Fri, Mar 15, 2024 at 03:17:19PM +0100, Gerd Hoffmann wrote:
-> > +Build/bios-tables-test.%.efi:
-> > +	$(PYTHON) ../../roms/edk2-build.py --config uefi-test-build.config
+On Fri, Mar 15, 2024 at 02:08:50PM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Fri, 15 Mar 2024 14:08:50 +0100
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH-for-9.1 02/21] target/mips: Declare CPU QOM types using
+>  DEFINE_TYPES() macro
+> X-Mailer: git-send-email 2.41.0
 > 
-> Adding '--match $*' will build one arch instead of all.
+> When multiple QOM types are registered in the same file,
+> it is simpler to use the the DEFINE_TYPES() macro. In
+> particular because type array declared with such macro
+> are easier to review.
 > 
-Thanks Gerd. Good suggestion. Let me update in next revision.
+> In few commits we are going to add more types, so replace
+> the type_register_static() to ease further reviews.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20231013140116.255-15-philmd@linaro.org>
+> ---
+>  target/mips/cpu.c | 23 +++++++++++++----------
+>  1 file changed, 13 insertions(+), 10 deletions(-)
 
-Thanks,
-Sunil
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>

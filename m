@@ -1,117 +1,125 @@
-Received: by 2002:a17:906:4a0b:b0:a45:b507:d90a with SMTP id w11csp1033280eju;
-        Fri, 15 Mar 2024 07:15:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXeJHRoU67DH/U954aPkPmxULMgbaNyYP8XXTCIjJ4XpqL5+K3rp4zHkKzpqoq3DsyEx5ctgXx0J8lKMDpKPAk4BJfcKxyh
-X-Google-Smtp-Source: AGHT+IEahxgOT6tx+43gp1PJ/GGVPwO8Y8itm+0nxonlx57oPlSXM0221pYY9Si7p8Rr0OvpK3lX
-X-Received: by 2002:a05:6214:1bcd:b0:690:84d5:cfc3 with SMTP id m13-20020a0562141bcd00b0069084d5cfc3mr10345042qvc.1.1710512137503;
-        Fri, 15 Mar 2024 07:15:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710512137; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp545546ejb;
+        Mon, 18 Mar 2024 03:37:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8v6CeUqRSKEvLMwWTQ4Yca5EaNeVC5Pe78+fsD8mYifkdKCPFGMe/W3H8wiJuiDQT1cKQpTksms47/NK+rsvmnZRDri0P
+X-Google-Smtp-Source: AGHT+IG+XQ1Wet1+hEktwp+vyMOy+cp6R3YDNmeGypqfY4HOYfOUGczG+7SHxMYtRHLJzDXAIr3Y
+X-Received: by 2002:a0c:fde3:0:b0:696:179f:153d with SMTP id m3-20020a0cfde3000000b00696179f153dmr2842221qvu.32.1710758221066;
+        Mon, 18 Mar 2024 03:37:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710758221; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bt4lPMNKFEAqLC1XgFsrKQBuNmotZiSnbLWtzmTyGA21XhB4c9U1yPfwvKyoU2zIDg
-         2yCgAVVwjBmWrqpXMfMcoM8syzu8QYL330qnCNETr+XZAtPaUdBx+sUx3GyAKoveyXwj
-         alzlmxuz37eNK7ijorwdMLleY0DBvr4B2hO9PBdGHfbVyPcH66+YMvMfBp1wMMYPvpm8
-         KprMPYxMNOcMN6KdwlA2YFU4NDBYpnYbZlcLBYzTBK51Uuz68hEQ52Cs0gJigfZlDELD
-         qeDHzGxO6Ff/UAKHysSjP0JBje0RQO9PNNrEWA/lDDlk2i97xFIzJvRT2x6taJNOB1mD
-         3H6g==
+        b=FjczCdxPXruarEnBUoHa4qFiFztVtKKhOU66X/E6vqOWD0oI+Kgw+8tnm6yvv8gAAi
+         sAT36fLyKMzMNg1PW5teisujlb6+FJx7w6OrL6jty5AmFCkZSMgvZFI28uEAsSga/E29
+         7kuBLpEgL1P3A7tSUJgTfgVBoL1rHUQB32qKvcnMwe6lY16zKSyh5i/ursm5Pn+l7ASU
+         IZBFpPG8XBC32urmwllIuUnC83wsQtyIQl388KWFlIzIY+DoOw5l0IYfSds2nBoonNv2
+         HG9lvCjWge90X+vqlOoBJqyJDIz8TbhBFDeAvq41cnNWtz2UBirdCP7EPEQvFlQOynRI
+         wfzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=w1364j2VhZB6bZhx3dW4KI7A3t7vXn+5+aieG8tbcDE=;
-        fh=Baw0egHTUW2YOB9xUl68znQ+5cwxFOSKFgakOp+S9Es=;
-        b=iwzeiUGTde97ZPmfNeCXSQaheRXTv/CCHiJTz65tyw3VbYrPpig0xHpfNAztBBz2/o
-         nzETV8QmRd7rdtue1+AZsgT8E2IF6qidmkMQYC9p/A/VLI82ciCgAladKTNQhrLoyUtF
-         5gQZthnjrvSxzPDvNnnO38gbCrFsxVgMH/myofAYSsg7QzJDv4+BWWjvDTBBfg0FgR7/
-         4cv5vWU7pCo3NiiOvAAjZUzuuW3g9JPiqeae8FkfZCgKnyGnEjOiVd5tPwGja6wMKo+G
-         MSf776EKZpfOZWQHNvzRnvFbE9ZL80fhetL9wVRkokwmfEEL+8M436E8CsoNoVM30FF1
-         104g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=YLjNEEGj7YutZqv3ska1jpI5LSiCIkPKoN+5SjJg8zA=;
+        fh=iBN6bGsqSW/gvtCjFCKkfGcWOWAYFmhs4hB+QIAqxwo=;
+        b=gelDMhUZbQrZ3fhvqWyMQEcYT6lmrtCEUnee/r2mDrSnJvNywXc5b3pmuosghy/vCj
+         K7QK7NE4wFoAHvx4fr2HTBROIiW+qbsVhitejiPHVpWXr1/ZGkz4ec8dxUJtnboeaZ9K
+         f63eAc6ZMYQ7306hIAb6AJGWE65O4IZ1zdmWOcVEJy9+30ljb3ZdLvBFrcLJXkzTW6sI
+         Qf8Kp+hZjOxVvep4Bm4ynGG0SftmJ8765lTUytFjnTKp3GvNSEpce5nf+TQpgaZfxvhY
+         84ItqAr97zS/qUt/E3wnzU2oyUZJftFu0DOh5QFMzqSgkhfPAW/8R4VLaweaeaMkkyP9
+         kluw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ADFjfUIs;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IZw0hoh4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fn3-20020ad45d63000000b0068fea245ae7si3020835qvb.23.2024.03.15.07.15.37
+        by mx.google.com with ESMTPS id a8-20020ad45c48000000b0068fe843bc61si8623947qva.80.2024.03.18.03.37.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Mar 2024 07:15:37 -0700 (PDT)
+        Mon, 18 Mar 2024 03:37:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ADFjfUIs;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IZw0hoh4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rl8L3-000209-Lu; Fri, 15 Mar 2024 10:15:13 -0400
+	id 1rmAM8-00042v-8X; Mon, 18 Mar 2024 06:36:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rl8L2-0001ze-B4
- for qemu-arm@nongnu.org; Fri, 15 Mar 2024 10:15:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rl8Kt-0005bW-Qg
- for qemu-arm@nongnu.org; Fri, 15 Mar 2024 10:15:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710512101;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=w1364j2VhZB6bZhx3dW4KI7A3t7vXn+5+aieG8tbcDE=;
- b=ADFjfUIsOu9s8+INl2Mh4JV1pdDxSXf2K5EAfnBBqxkt+ByhdrEMKCvfBifogwCz28Bl4X
- cQXsWNunKIx22QQnd55iD72o/u2I4lDWfuaa/DJpjVboCcFVN56QRxanGbNm5K+xcFoVX5
- 3ybUq7DqZ8XRIpmUjw0qSZiQhfsdACc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-66-Z4j6xV0fN9K2mE4iAZV98A-1; Fri, 15 Mar 2024 10:14:58 -0400
-X-MC-Unique: Z4j6xV0fN9K2mE4iAZV98A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B89A2185A781;
- Fri, 15 Mar 2024 14:14:57 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E923200AFA5;
- Fri, 15 Mar 2024 14:14:57 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id E90FA1800DD4; Fri, 15 Mar 2024 15:14:55 +0100 (CET)
-Date: Fri, 15 Mar 2024 15:14:55 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Alistair Francis <alistair23@gmail.com>, Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH 02/12] uefi-test-tools/UefiTestToolsPkg: Add RISC-V support
-Message-ID: <f6wp7r5e6covd5bjubvqcvwvhgur25yjxcqxg54ivlfhwencme@gtyxkxji3ear>
-References: <20240315130519.2378765-1-sunilvl@ventanamicro.com>
- <20240315130519.2378765-3-sunilvl@ventanamicro.com>
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
+ id 1rmAM6-00042b-Ms; Mon, 18 Mar 2024 06:36:34 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
+ id 1rmAM4-00032b-IY; Mon, 18 Mar 2024 06:36:34 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-1e036b76725so1207575ad.1; 
+ Mon, 18 Mar 2024 03:36:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1710758190; x=1711362990; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YLjNEEGj7YutZqv3ska1jpI5LSiCIkPKoN+5SjJg8zA=;
+ b=IZw0hoh4K4lW6AqqoR3XQ4omPjPUCszRm3ccgy2z2XuT6FrsBg7RYisqxh6844xfSc
+ eHhUZWNFckd7f7P+fPNuoZRlt7NepRyCTrDugfd5ZJkSTSH3LG5aZFqbQAyjOcj31+b/
+ a0+8wuJkfwXYtIJDo2nRLGRWXlFGuWWgOmFTMemGDWjZmdfXfYJzbcCI6qfFB0FdG1OP
+ lGQV3k8/WMF7OWcn/4QViIHHNrGePcSt/unIG1E9NRQDm2hLCEJ1oLQAK3tyBFc+l9Tw
+ 2IUxfliwvy1bP0UVeaG94/ieRbyPUEwHmCoQ/n3OCvAqhmH1umdV4434JVtDhTtKw0gY
+ 5F6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710758190; x=1711362990;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YLjNEEGj7YutZqv3ska1jpI5LSiCIkPKoN+5SjJg8zA=;
+ b=HwhcmbMVQV4cVzDB5vwYF7ZRGMQ1zjmyK3XAch1M4fQqWoULd9NlsHk/pbahucC44u
+ snM+26KKBp03h2uURUAP1CX3mqvI08Ufd4E38icLDPkr/XW9LQOH7aLJs+faLtc0BtNu
+ Yn4hyYbpjFf+eSC/XUHzk9pq/KDwGkUKz4UDI6sBss+JxjW0cgub/74D0revMiGKAq+i
+ YTzxN9jhi8GgC/XBlqgcXLxM5Is4XE977tv1LgwVLGkHaEyEMDO5qtMlfJw2IILrpNEK
+ riDcQ0Gt1yULtVBQZklWZGV1Z3zVMd4r5kr4+F7xp8NZPLsyFsofnX/MJRpzBb8q7e5h
+ POiQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXAW/kIxiO7RU5yKiB0/O2WTHjURc9Halj3CrjWQVcPB2B4LaEXXg4QPfNoPReEzoKduGo1J0jjgcgoXnAkDMCYfGHNvD+6KvLlfGDg0btNJNMF0v8J5pcDlv4=
+X-Gm-Message-State: AOJu0Yx05RCSpPrHI4pEFTWaLwd/Bibx8bt9++VfK/0N86+6M8x/DBe4
+ GMO8SUXrPqNQDIOh+O8j+kQYHTjcrzo0zkoS7TI5Ty8sDNVdwM+m
+X-Received: by 2002:a17:903:1209:b0:1dd:62c5:b6e2 with SMTP id
+ l9-20020a170903120900b001dd62c5b6e2mr14493721plh.37.1710758190139; 
+ Mon, 18 Mar 2024 03:36:30 -0700 (PDT)
+Received: from [157.82.200.213] ([157.82.200.213])
+ by smtp.gmail.com with ESMTPSA id
+ ky6-20020a170902f98600b001dcfbbb1ddesm8907742plb.7.2024.03.18.03.36.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Mar 2024 03:36:29 -0700 (PDT)
+Message-ID: <ab5892b3-38ec-43c5-9c82-8595ad4c77e0@gmail.com>
+Date: Mon, 18 Mar 2024 19:36:26 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240315130519.2378765-3-sunilvl@ventanamicro.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.1 3/3] ui/console: Add 'rotate_arcdegree' field to
+ allow per-console rotation
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20240318100543.78846-1-philmd@linaro.org>
+ <20240318100543.78846-4-philmd@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@gmail.com>
+In-Reply-To: <20240318100543.78846-4-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=akihiko.odaki@gmail.com; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,16 +134,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4hQmxRNrqAQu
+X-TUID: JIl6WjoHSN4D
 
-On Fri, Mar 15, 2024 at 06:35:09PM +0530, Sunil V L wrote:
-> Enable building the test application for RISC-V with appropriate
-> dependencies updated.
+On 2024/03/18 19:05, Philippe Mathieu-Daudé wrote:
+> Add the 'rotate_arcdegree' field to QemuConsole and remove
+> the use of the 'graphic_rotate' global.
+
+I think QemuGraphicConsole is a better place to put the field.
+
+Regards,
+Akihiko Odaki
+
 > 
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-
+>   ui/console-priv.h | 1 +
+>   ui/console.c      | 7 +++----
+>   2 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/ui/console-priv.h b/ui/console-priv.h
+> index 88569ed2cc..6e54b476d9 100644
+> --- a/ui/console-priv.h
+> +++ b/ui/console-priv.h
+> @@ -31,6 +31,7 @@ struct QemuConsole {
+>       const GraphicHwOps *hw_ops;
+>       void *hw;
+>       CoQueue dump_queue;
+> +    unsigned rotate_arcdegree;
+>   
+>       QTAILQ_ENTRY(QemuConsole) next;
+>   };
+> diff --git a/ui/console.c b/ui/console.c
+> index 84aee76846..a36674bacf 100644
+> --- a/ui/console.c
+> +++ b/ui/console.c
+> @@ -37,7 +37,6 @@
+>   #include "trace.h"
+>   #include "exec/memory.h"
+>   #include "qom/object.h"
+> -#include "sysemu/sysemu.h"
+>   
+>   #include "console-priv.h"
+>   
+> @@ -210,17 +209,17 @@ void qemu_console_set_window_id(QemuConsole *con, int window_id)
+>   
+>   void qemu_console_set_rotate(QemuConsole *con, unsigned arcdegree)
+>   {
+> -    graphic_rotate = arcdegree;
+> +    con->rotate_arcdegree = arcdegree;
+>   }
+>   
+>   bool qemu_console_is_rotated(QemuConsole *con)
+>   {
+> -    return graphic_rotate != 0;
+> +    return con->rotate_arcdegree != 0;
+>   }
+>   
+>   unsigned qemu_console_get_rotate_arcdegree(QemuConsole *con)
+>   {
+> -    return graphic_rotate;
+> +    return con->rotate_arcdegree;
+>   }
+>   
+>   void graphic_hw_invalidate(QemuConsole *con)

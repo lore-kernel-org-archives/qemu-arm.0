@@ -1,36 +1,36 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666589ejb;
-        Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVdBIt0ZPNuaGTMzi7ct01yD5T9jAEVQel9iOKmcw+B8vBh4T2Dn4pA1zsHDUnyP09SCQPiHad9NpM8EXvL3KM9GI9wISXB
-X-Google-Smtp-Source: AGHT+IH1X/uHcdcsah6HjLDyvpBWRv3yorWeiY1+uJ2u78UB2Xr7YA/GZfyGKnUAUhmxoA8IlO4x
-X-Received: by 2002:ac8:7f03:0:b0:430:d3f9:b140 with SMTP id f3-20020ac87f03000000b00430d3f9b140mr3941041qtk.4.1710770958743;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666592ejb;
+        Mon, 18 Mar 2024 07:09:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW57IhmXsaJ1vME1a/CO1HD74sYu3l38G8ROn+JwI7gUqSIrHXXZAYjpD2usN0s7MG45EePJZVZ8ZeiVo4Mc6wrbOHibKJm
+X-Google-Smtp-Source: AGHT+IG3LdTpVZkVXVR53908O2xZCNk0FFcCaKMg0K5f817QSj9kb3/K7K0Grrds1c1tsaClw8Tp
+X-Received: by 2002:ae9:e40b:0:b0:789:e2c1:40ac with SMTP id q11-20020ae9e40b000000b00789e2c140acmr11563382qkc.11.1710770958883;
         Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1710770958; cv=none;
         d=google.com; s=arc-20160816;
-        b=AOPIYAlt5w4E/rik3Sc/njEUnWuLOYbSDvoUnINWKNCX934JW4jykwXWicgtMkP7sJ
-         aYsT94JZ5oLRQ9Ouzkp3Uh6aV9tD6/sNwJNFvxN0U+NW9MA6POZlx/X+Ih7SwlulN4+r
-         1evsNu3NzB4DStcOqAgTvm/Ifld2Hl/bCDFR5bSJszvOqdv0O4eFuMni+daSjrdRn67t
-         0Y4EiTwBD51LisAc96SX8wLWvy0L1YSpDWL1zfbFPSbVX/r4vWszfPzhJPg6tA+Yqkeh
-         mNr9CQPZUcxhQoQC2prF4uz4qrd77YjTCp8+7Qg+eNlge1teWAHvvhxcqw3rSA1YW1x+
-         w9zw==
+        b=VSyviP+om5QRo17nTKc546YUVsKxuQs8IUZ/95BRqMO7If1Pq5Dat0vkrigoo2wUN4
+         72gCuzDId/S5rFazXtkFgd/aDSdNG9uWuKEN+qmXH84SnEt9ggRCTTsqVdSn0njNJj5E
+         kU8t7a1H0NVH4w952k2S81iph8QdHsA4xNi1ZLUNYxtuZYO1iWyOAZskbQrZnGKxmolQ
+         3lDpuxSuL3vp0ATD/7fHQA08nAO3LOQvPeWuXesEjY5LiEKJQBDIFxFaXEhoQS8yf5YB
+         nGWr2F0qcqmbA2CgAxvhyKeJBlKRmUL+Z14QbJSOWjtI47+3LQ4g/aHvaFmloZMSTf0f
+         3tmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
          :message-id:content-transfer-encoding:mime-version:subject:date:from;
-        bh=vfeprfunQnpX58SAH5692t7TVgRlW3Qw1+ON516pdc8=;
+        bh=3hVDurQmW4EE2ENRc4QEf83ThCZPBhIKIOOUjf5qAew=;
         fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
-        b=wo80O5Cqv8spyzv8bxh+n4+/05Gf3acGYQsdi5FXdzvfJfUT7IU5TTVkUHm1YBFyT2
-         ZFJ+SVJcyS1EkkDLE8ZPOdNnhO2w54J/nFxU+gzLWipPJoNEk6F5oBfjVS1/wVAOCpVN
-         ONAjPUkXAg0IsD8K0sRQiNGQTYUUmnmMDeodWiScYgv8yt9zXvXCegxjGvDpEKKjTsYB
-         TPwh1u6gFlJbUtRVKu+i1pdcqyOUR9nmFgpYAGQSAm5mCq3hzwvr0V6po5sQ88LC3nh4
-         e7TD8Wejr2YWNXW+WCaHclLz2QXPoeP3j+ae4xW9E/rY2Eh5F3EcaXuEJ66TAA4KQSqf
-         4wSQ==;
+        b=Hl5RSSBbL3G5OHyPloWCZqfZPpgC5CDFlFd6ZAEG3u/n2jUzMeXmJDUcVSeSn/Tjm2
+         DBiZOo3CVeOax7zsDOr8APcJEv8NK9jGYF9qwWz8odmu4XuWcSiOUyqOyLoINbncq1OL
+         WMPWReQIAUxlQkOSDE9WwyaZIP+GNXtS8EfczrvFcSQHyyx8lo04VIPDPGCXR9pzZqZ0
+         ojIYs03eVjdhyw1YCzEXL/lYA7jhFIQutK9NrCW2ZBCARaeHYKGNVQK/x/2TmFBRUVFr
+         FGMPs64NihNBDZ/FTGWib2yD2Q7jnOxo3pQv0x77styD1kl+EoEBVImsIGVSE0KL1v1Q
+         bUqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay6-20020a05622a228600b00430c8209f97si3479580qtb.438.2024.03.18.07.09.18
+        by mx.google.com with ESMTPS id u17-20020a05620a023100b0078a0366a2c9si1479709qkm.693.2024.03.18.07.09.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 18 Mar 2024 07:09:18 -0700 (PDT)
@@ -41,33 +41,34 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rmDf8-0001Vt-5q; Mon, 18 Mar 2024 10:08:26 -0400
+	id 1rmDfB-0001Yk-E6; Mon, 18 Mar 2024 10:08:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDf1-0001Th-9s; Mon, 18 Mar 2024 10:08:20 -0400
+ id 1rmDf4-0001Un-6j; Mon, 18 Mar 2024 10:08:23 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDet-0006Fq-Pa; Mon, 18 Mar 2024 10:08:19 -0400
+ id 1rmDet-0006Fx-Pa; Mon, 18 Mar 2024 10:08:20 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 5EFCC2600DA;
- Mon, 18 Mar 2024 15:08:08 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 3ABBD26074C;
+ Mon, 18 Mar 2024 15:08:10 +0100 (CET)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id fIiQz__vXvSu; Mon, 18 Mar 2024 15:08:06 +0100 (CET)
+ with ESMTP id 7OOaUM3g0Hl0; Mon, 18 Mar 2024 15:08:08 +0100 (CET)
 Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
  [83.11.22.169])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 7C9D6260AB8;
- Mon, 18 Mar 2024 15:08:05 +0100 (CET)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 01435260BB4;
+ Mon, 18 Mar 2024 15:08:06 +0100 (CET)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Date: Mon, 18 Mar 2024 15:08:01 +0100
-Subject: [PATCH v3 1/4] tests/avocado: update sbsa-ref firmware
+Date: Mon, 18 Mar 2024 15:08:03 +0100
+Subject: [PATCH v3 3/4] tests/avocado: sbsa-ref: add Alpine tests for misc
+ 'max' setup
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240318-sbsa-ref-firmware-update-v3-1-1c33b995a538@linaro.org>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240318-sbsa-ref-firmware-update-v3-3-1c33b995a538@linaro.org>
 References: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
 In-Reply-To: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
 To: qemu-devel@nongnu.org
@@ -100,107 +101,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kw8T6KuNi6PX
+X-TUID: f64Md0DkD1tI
 
-We now have CI job to build those and publish in space with
-readable urls.
-
-Firmware is built using Debian 'bookworm' cross toolchain (gcc 12.2.0).
-
-Used versions:
-
-- Trusted Firmware v2.10.2
-- Tianocore EDK2 stable202402
-- Tianocore EDK2 Platforms code commit 085c2fb
+PAuth makes run timeout on CI so add tests using 'max' without it
+and with impdef one.
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 40 +++++++++++++++++---------------
- 1 file changed, 21 insertions(+), 19 deletions(-)
+ tests/avocado/machine_aarch64_sbsaref.py | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 528c7d2934..cbab793455 100644
+index 259225f15f..cf8954d02e 100644
 --- a/tests/avocado/machine_aarch64_sbsaref.py
 +++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -1,6 +1,6 @@
- # Functional test that boots a Linux kernel and checks the console
- #
--# SPDX-FileCopyrightText: 2023 Linaro Ltd.
-+# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
- # SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
- # SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
- #
-@@ -32,34 +32,36 @@ def fetch_firmware(self):
+@@ -140,18 +140,36 @@ def boot_alpine_linux(self, cpu):
+     def test_sbsaref_alpine_linux_cortex_a57(self):
          """
-         Flash volumes generated using:
+         :avocado: tags=cpu:cortex-a57
++        :avocado: tags=os:linux
+         """
+         self.boot_alpine_linux("cortex-a57")
  
--        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
-+        Toolchain from Debian:
-+        aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0
+     def test_sbsaref_alpine_linux_neoverse_n1(self):
+         """
+         :avocado: tags=cpu:neoverse-n1
++        :avocado: tags=os:linux
+         """
+         self.boot_alpine_linux("neoverse-n1")
  
--        - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/7c3ff62d
-+        Used components:
++    def test_sbsaref_alpine_linux_max_pauth_off(self):
++        """
++        :avocado: tags=cpu:max
++        :avocado: tags=os:linux
++        """
++        self.boot_alpine_linux("max,pauth=off")
 +
-+        - Trusted Firmware 2.10.2
-+        - Tianocore EDK2 stable202402
-+        - Tianocore EDK2-platforms commit 085c2fb
- 
--        - Tianocore EDK II
--          https://github.com/tianocore/edk2/tree/0f9283429dd4
--          https://github.com/tianocore/edk2/tree/ad1c0394b177
--          https://github.com/tianocore/edk2-platforms/tree/d03a60523a60
++    def test_sbsaref_alpine_linux_max_pauth_impdef(self):
++        """
++        :avocado: tags=cpu:max
++        :avocado: tags=os:linux
++        """
++        self.boot_alpine_linux("max,pauth-impdef=on")
++
++    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+     def test_sbsaref_alpine_linux_max(self):
          """
+         :avocado: tags=cpu:max
++        :avocado: tags=os:linux
+         """
+         self.boot_alpine_linux("max")
  
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/rE43RJyTfxPtBkc/"
--            "download/SBSA_FLASH0.fd.xz"
-+            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
-+            "20240313-116475/edk2/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "cdb8e4ffdaaa79292b7b465693f9e5fae6b7062d"
--        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-+        fs0_xz_hash = "637593749cc307dea7dc13265c32e5d020267552f22b18a31850b8429fc5e159"
-+        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
-+                                      algorithm='sha256')
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
- 
-         # Non-secure rom (UEFI and EFI variables)
-         fs1_xz_url = (
--            "https://fileserver.linaro.org/s/AGWPDXbcqJTKS4R/"
--            "download/SBSA_FLASH1.fd.xz"
-+            "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
-+            "20240313-116475/edk2/SBSA_FLASH1.fd.xz"
-         )
--        fs1_xz_hash = "411155ae6984334714dff08d5d628178e790c875"
--        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
-+        fs1_xz_hash = "cb0a5e8cf5e303c5d3dc106cfd5943ffe9714b86afddee7164c69ee1dd41991c"
-+        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
-+                                      algorithm='sha256')
-         archive.extract(tar_xz_path, self.workdir)
-         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
- 
-@@ -96,15 +98,15 @@ def test_sbsaref_edk2_firmware(self):
- 
-         # AP Trusted ROM
-         wait_for_console_pattern(self, "Booting Trusted Firmware")
--        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
-+        wait_for_console_pattern(self, "BL1: v2.10.2(release):")
-         wait_for_console_pattern(self, "BL1: Booting BL2")
- 
-         # Trusted Boot Firmware
--        wait_for_console_pattern(self, "BL2: v2.9(release)")
-+        wait_for_console_pattern(self, "BL2: v2.10.2(release)")
-         wait_for_console_pattern(self, "Booting BL31")
- 
-         # EL3 Runtime Software
--        wait_for_console_pattern(self, "BL31: v2.9(release)")
-+        wait_for_console_pattern(self, "BL31: v2.10.2(release)")
- 
-         # Non-trusted Firmware
-         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
 
 -- 
 2.44.0

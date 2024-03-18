@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp520834ejb;
-        Mon, 18 Mar 2024 02:38:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVAzXInxUmWfA+TgfSK/MX2sPXTVHtO5OPO+OBqLwMfDWrhIUMjFpPyRlgnQoUmPZ9YtI/GEJksD6Ci8A9C4PmY+5hqJjwM
-X-Google-Smtp-Source: AGHT+IE9M3PlJm2EFljQUYq8VFfR7Gx0PpTggm5JKfGvZLkVg7v1yukk0EPkv2R2wyZVfWnPe1EZ
-X-Received: by 2002:a0c:e792:0:b0:691:49d5:470 with SMTP id x18-20020a0ce792000000b0069149d50470mr10431937qvn.45.1710754680697;
-        Mon, 18 Mar 2024 02:38:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710754680; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp520865ejb;
+        Mon, 18 Mar 2024 02:38:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWNdDhG3o53UiiwVAt2Bsw+V6CbGeq0VPJKqHqHpnKrZkEApC+CtRMXAdDBk93ViotLcT4muYqcFZApvY9JOmvehZ6AMa2Z
+X-Google-Smtp-Source: AGHT+IHQv333pdecWJgdtcs1SwR1R9RV2wNcr9CRuknE1I9zaUGrHfrVE696w4FcJiXthRYlwNSm
+X-Received: by 2002:a05:6122:1a82:b0:4d4:20fa:eb0c with SMTP id dy2-20020a0561221a8200b004d420faeb0cmr6071741vkb.5.1710754685058;
+        Mon, 18 Mar 2024 02:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710754685; cv=none;
         d=google.com; s=arc-20160816;
-        b=vn9XLIWMo2FUh4WH9DuuizytxlyaaNSlP/MUriRW8/jTBwgXJ8LdkJtaX9xMxYhELu
-         +ZBCvjQ+32k6kY5tTuShLilVoh9xcJOjK64N9XsD5mEdzWdZA/Q0sU93CQdoRX3MYWzr
-         jbQo0qjnw2SUbrAOh5k5jr81alvGlp9hK0zAhhzVj9Q3ZBwNly03kUeR+SjSTJUtlmsW
-         +8EJJ3mRXG1F2OBkqbWQysoqtfF1MQTS5j6go+fpsOhACnFAjyp4+VDERkBpk4BSE1WD
-         Kt7AL08jTZ6rGH4ZW2VWPkzld/K4cubpJnUNktjxVxWDHrLh6FA4i7qEITH7tHPx6NI4
-         QsQA==
+        b=eUDwJfIgmyD3vdeUGgITEBNFtBdrSvKTrnXi8p0qL1hOG9vf4X8wWvmYO3365n1J4r
+         3OjY6eCKar0v/0oi7fVaJpmtpslqx3U0u1+jD9EzueBT4f9y0e9SS9uvFhi4DrbuQV7t
+         hZETbxzhY0KssEBgMof9Aw1DBa0XIoSq/3AAgMjpqkWrBwO0fsBnuzq2F0Tn3sqOKs1J
+         3p872ZDFjFumtsS9D3l1O6rfWLzRtI2KNl9DRZfgA2Y1nIRByxGFs6i1S11nJXhvTIUF
+         ATXYbFzQKUdztEOE2INhuiLg+v5NDtjG1amlXmYkKH16iLZhAwtVlbJCorhRxK1OWl39
+         Dg4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=l5oEwPcVpYh/9y2GAxtlXJZwNQW7Qk7FiGFDHcjC9+8=;
+        bh=hB7gdXvPI2ignjsLOtBg9yiJTF4UPHKB5mLi26icxdI=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=bMEclAuFWTSUOffUOSq1dJvfKF/8ggel48coRahUWgkqYR2EW2m0daBA40g3JCK9ig
-         gl3r1OkmdC+2c0z9l8ucSOUW2RpJ6Ejs2DmeRAmDX73stMQPRYCGFL2M4C7AlPaYT7vG
-         4Tqp5xM0FGhGrod8yZpgn+gagNuD9mT2MVL+ugFREfDZpcfjpaGDjA1xLk7UuTmUXrgF
-         QtPx1m7BOD4W+ajKIDlPFBTwHt+s48O1ijaEaqDDuo2Gyy1wkZsacUWkd33Hn+rIdbmy
-         8k6qPxm5qrsefxHXV+altwBM3FQqLeLLRaK8g/P1CxI/vIsGRAsvt7uakLvsXNv5+G2D
-         kIfg==;
+        b=t9UVm9A69gid4UERWScxfmEGwqxtLqfWW+rnPqTL8StYHiS/ROJRRpFPcLVVkqv1Be
+         VCnKORLWnt4pSqzU58WFVKT/wWYme3ANywK2WxU0+MvY95dVrSMzmU31vOQRvb1PwAC3
+         B1wjD1d0dXVDlmqrym8w1D95DaNN/Mj+Qbf25z2uh/1TkUZ9Fb3LKAEDpc8fZpaW00Bp
+         a0gM3YNHwcUI2YQgk7jmRO08rq9cIQmdOsLCOS2TTjBuzxisM/s6+TtMTajcw/2kAh10
+         ayf8b6CHhhmQSWOsAhyY1rwBh7aq7opcwS94gqk7dlB6zN7CIbiA35+aaCJaAKwuPrd4
+         b0kQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3-20020ad45743000000b00695e33f6b16si3125691qvx.475.2024.03.18.02.38.00
+        by mx.google.com with ESMTPS id q6-20020a05621419e600b00691837e4fc2si5743041qvc.257.2024.03.18.02.38.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 02:38:00 -0700 (PDT)
+        Mon, 18 Mar 2024 02:38:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,34 +42,34 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rm9R2-00040p-SU; Mon, 18 Mar 2024 05:37:36 -0400
+	id 1rm9R2-00040R-KA; Mon, 18 Mar 2024 05:37:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rm9Qp-0003uf-83; Mon, 18 Mar 2024 05:37:24 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+ id 1rm9Qp-0003ug-7q; Mon, 18 Mar 2024 05:37:24 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rm9Qh-0000tw-4z; Mon, 18 Mar 2024 05:37:22 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.194])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4TyqT84F1nzNm7x;
- Mon, 18 Mar 2024 17:35:08 +0800 (CST)
+ id 1rm9Qh-0000uk-KK; Mon, 18 Mar 2024 05:37:22 -0400
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4TyqSq3nGzz1Q9qC;
+ Mon, 18 Mar 2024 17:34:51 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id A711C1400FD;
- Mon, 18 Mar 2024 17:36:59 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id D7E0D18001D;
+ Mon, 18 Mar 2024 17:37:04 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 18 Mar
- 2024 17:36:59 +0800
+ 2024 17:37:04 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [RFC PATCH v8 01/23] target/arm: Handle HCR_EL2 accesses for bits
- introduced with FEAT_NMI
-Date: Mon, 18 Mar 2024 09:35:23 +0000
-Message-ID: <20240318093546.2786144-2-ruanjinjie@huawei.com>
+Subject: [RFC PATCH v8 07/23] target/arm: Add support for NMI in
+ arm_phys_excp_target_el()
+Date: Mon, 18 Mar 2024 09:35:29 +0000
+Message-ID: <20240318093546.2786144-8-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240318093546.2786144-1-ruanjinjie@huawei.com>
 References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
@@ -79,8 +79,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=ruanjinjie@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -103,59 +103,36 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CaUzsW5ENL4B
+X-TUID: 3x5JLsPXcKtr
 
-FEAT_NMI defines another three new bits in HCRX_EL2: TALLINT, HCRX_VINMI and
-HCRX_VFNMI. When the feature is enabled, allow these bits to be written in
-HCRX_EL2.
+According to Arm GIC section 4.6.3 Interrupt superpriority, the interrupt
+with superpriority is always IRQ, never FIQ, so handle NMI same as IRQ in
+arm_phys_excp_target_el().
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
 v4:
-- Update the comment for FEAT_NMI in hcrx_write().
-- Update the commit message, s/thress/three/g.
-v3:
 - Add Reviewed-by.
-- Add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
-- Upate the commit messsage.
+v3:
+- Remove nmi_is_irq flag in CPUARMState.
+- Handle NMI same as IRQ in arm_phys_excp_target_el().
 ---
- target/arm/cpu-features.h | 5 +++++
- target/arm/helper.c       | 5 +++++
- 2 files changed, 10 insertions(+)
+ target/arm/helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index e5758d9fbc..b300d0446d 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -681,6 +681,11 @@ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
- }
- 
-+static inline bool isar_feature_aa64_nmi(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, NMI) != 0;
-+}
-+
- static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
- {
-     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3f3a5b55d4..b19a0178ce 100644
+index 875a7fa8da..5c637f3413 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6190,6 +6190,11 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         valid_mask |= HCRX_MSCEN | HCRX_MCE2;
-     }
- 
-+    /* FEAT_NMI adds TALLINT, VINMI and VFNMI */
-+    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-+        valid_mask |= HCRX_TALLINT | HCRX_VINMI | HCRX_VFNMI;
-+    }
-+
-     /* Clear RES0 bits.  */
-     env->cp15.hcrx_el2 = value & valid_mask;
- }
+@@ -10735,6 +10735,7 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+     hcr_el2 = arm_hcr_el2_eff(env);
+     switch (excp_idx) {
+     case EXCP_IRQ:
++    case EXCP_NMI:
+         scr = ((env->cp15.scr_el3 & SCR_IRQ) == SCR_IRQ);
+         hcr = hcr_el2 & HCR_IMO;
+         break;
 -- 
 2.34.1
 

@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp762071ejb;
-        Mon, 18 Mar 2024 09:35:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUIwmuE8wplRt0e7a0uuN19p/aUfcbpwT0E9y/Idx1agjEYmtIzPFJbPOiWjny+GXhvhuhJBvY/KbbnV/rPHQWOfqr+1lhD
-X-Google-Smtp-Source: AGHT+IFS8jQq4xL848VfBhWhifE29THH7yMeBseVcd002g1PRiz76+DaFVKRAibBIJ/T5CR39jv9
-X-Received: by 2002:a05:620a:4917:b0:788:1652:b192 with SMTP id vy23-20020a05620a491700b007881652b192mr12017428qkn.25.1710779748799;
-        Mon, 18 Mar 2024 09:35:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710779748; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp762781ejb;
+        Mon, 18 Mar 2024 09:37:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXD3qX/UxpuBpEKpk0EcLJa8fDpP3zE5mgVueiJgHMTC7TZnz7NXYOSIYsk7mqCGe2H4V1qto1mDaI2L1QuFgVpcaieV5F5
+X-Google-Smtp-Source: AGHT+IE1TvpDLZJutTYGGz8WKJHPE9WJzlNhzaK8+ng7sYQ3DZmceRUR0XvNWeS6WKsViCDqAUPt
+X-Received: by 2002:a05:6102:3c89:b0:473:48b6:48b5 with SMTP id c9-20020a0561023c8900b0047348b648b5mr259023vsv.2.1710779826003;
+        Mon, 18 Mar 2024 09:37:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710779825; cv=none;
         d=google.com; s=arc-20160816;
-        b=yrOECHcRHC6cLIUjz4Ged2xPMOZt9niQgcYBgTP81L67/dkUbrZOFRnXi+pt45xO6q
-         F+hdu4dSW5Pw1x7wXhPtcYP/JAqGUE3ur5RGJVfZgMfjL42WEs1/bHvsADWMwsCLBqT5
-         Pqb4bUbtkxoA1uUPTEGsRkO3kzz0ddoF/xI+Id2lYd4jvcRkA8vrmtgqHpSqbhCgmLNX
-         /gaPCBvnnuW6uMtuwdRHdBRRK9qSdhH3w9ASeWB0lsOn47kZZ5f//qdvHoYDLe+2cqI7
-         jtFJkfjSAH5MkWqf32vHeYYuuScktDAeXPSl4uU394fcn9xq5kG8nUxx+wj7EeKC61bx
-         H3Qw==
+        b=upyBSVCOfAWVasURlrKNXU7aK8aGLpvYxLDsYy2otV/L+dBkcK16h1SKdf/G9M9OwK
+         p5o1IYd77H3kbv8DB8wih3nyyPYAr5uocmxDk7U/uVQSSAKLqSaTOgTAMzB/615VMLso
+         pdA9GzJfFXYY5R81INe+GrfIYRPl2F16ge1gBmVMZ/fo7EHj5//vwN5FUE1h7OSsmigo
+         DmY109eRmkRmw7sf2XTJYY40gfgtLAZ00YUMmwV73AT0Z4kekLPHjrd99sH3QEBStzKt
+         v//4Rkpc5U2MMegatUcf7MG8fNyXgpdGVHQUqO1SMCIvMrJM8raQhfJOvSnscd6eVEkw
+         KiZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :in-reply-to:references:cc:to:from:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=VWxrXzjZ+6wi5AGBZhXYkgtdBUbxMT0Pmi1L1yNtdSk=;
-        fh=bgmYMUw5B4MaPYabpxEXX5nTG2QkSDUoIUsKf4LV2h0=;
-        b=jv0ejikQR3pipogyq5l+ouBSZvB5kUqE+zvADfypQCamODeH/USNqqS63junPhBJZs
-         p+/o2iBQjm3KGZ+m84E4BqdzdYTPI/bn6MVTd5J9TZw/WIv32H92J0JlRumdqwQBzRhl
-         b3AVEjQ4z1jvRvQWaJOhQvLhFG4TkI/p1ksXdaGN2x7MGr3wJ1tHOg+UL2CTDg20Y1Yw
-         LJ7nX4Gp1feFR3ct0VPswugiGfE0IuCW+ckF0dLJY6yUqTwQy7v8MNkbYhmBEANB/np9
-         nfsm69lsN9q/teAfe3pJtEEUS62Op27r1cfsa2hxqsuDCkdV5FYVmdJ1me0UBZRCdx6/
-         aXQQ==;
+        bh=ff4y2hYdBHU6+ERPH49T0I+rjcJQzaop2+p+j6BSWIw=;
+        fh=ZoXv4hhuLU/x6UhniB3Osvjat4rCnfQo7zUjvLYVIk4=;
+        b=Udhq/0RwfmCjKMZkZxaSHTrzJmw/8jkBi1mf4s/hWWsfPt3blMlMPwh1YIUtFbXXze
+         0Fkc2gH6095+r+Blk4EKNOwp6NpgY8JFBLX2lD0xjxQy+wQlHXzh1GszwsKFBwwOxbT4
+         lJ90/vBTFVMq+UQ4xoREHMFvjZkqoGR6eYLXmhrWtzXFe1mOAimQbxnV5SR5WhH63T0r
+         JQue9s2w6VnIWELJy+MLzRO0mENwRYG/GZUdN1UM+jTrxHP3O/HrUcgOcqzafKnqkFk+
+         mC1oBhMlmliO9XTpmf4d0ajDtcyYeH/3nLXtqZ+Z0UC5u9HVodyFcNyC79vNtDCjKGQN
+         q3xg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Whx4cfc8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BKGhWIIU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi7-20020a05620a318700b00789e99d58cdsi6772662qkb.501.2024.03.18.09.35.48
+        by mx.google.com with ESMTPS id i36-20020a0561023d2400b004765df042a2si1010495vsv.168.2024.03.18.09.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 09:35:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Mar 2024 09:37:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Whx4cfc8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BKGhWIIU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmFxb-0007x8-N4; Mon, 18 Mar 2024 12:35:39 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rmFyw-0000se-Lx; Mon, 18 Mar 2024 12:37:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmFxa-0007wQ-JX
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 12:35:38 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmFyu-0000jM-9O
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 12:37:00 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmFxZ-0008PK-2S
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 12:35:38 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-513dd2d2415so3105390e87.3
- for <qemu-arm@nongnu.org>; Mon, 18 Mar 2024 09:35:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmFyn-00008A-Vr
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 12:36:59 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-41409dc5becso13532195e9.3
+ for <qemu-devel@nongnu.org>; Mon, 18 Mar 2024 09:36:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710779735; x=1711384535; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=linaro.org; s=google; t=1710779812; x=1711384612; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=VWxrXzjZ+6wi5AGBZhXYkgtdBUbxMT0Pmi1L1yNtdSk=;
- b=Whx4cfc8JpBh1JbJtHqmtMUa/AoJy2NPwNF45rgPYY6YYx8zKjuz+u4ayFJrxeQges
- tDVS1lg+X8Nl+B4h4EtEEcGOmxheXg3Sw1hF2oChz3L/Dwjvz+R4gTccPjI5a39DMIOs
- mh1R2IM06JFIaX7By3nxxzjbBUhAGwToK+taE6N3Uq7Qt5FdhEK8WB9l7uun1N2MjTgl
- q76NhiXr/u9PYXymNfUYUEeA7jDJtBi2H6KxBiWwhL+Sn55QCaG3Ora+y2sWvH9HP9++
- yVnzw33FPRwdugJzeb02GVjJ425fFbhq/aZreXrXO3OAdZqdwYhoBQN93dpBHQm7XkFT
- x7QA==
+ bh=ff4y2hYdBHU6+ERPH49T0I+rjcJQzaop2+p+j6BSWIw=;
+ b=BKGhWIIUCpYIfS4Mc5Y2HsE1MbFKvC1kWJz4zyUw4iHHP9ZRyEFtfCVaP+qi9R/xv0
+ WwdSKj8ifa6mY53dtqKHTphyOrVG4GzKgn3nRVKWQVPYHreQsO92q6PXjCT49ywC1p5l
+ GNyljfZFoih18FqCSVKeQqY2iqncYURakuf17Zdc/mwx+ukjSv07FbE2R/karXrM50Mz
+ DCOQAYRZIxD2rdqLAaeZqIkM/m2YVauAIHKtVkaZrAFGOutpOtmX8epxBIilW/v+M/C1
+ DVFVbEOiHGtnb/gOYScn8VxsxgIPycn+9u5oE5OyRN2XbEr3UevJA1lxxfvCY2FogAZi
+ F+FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710779735; x=1711384535;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=1e100.net; s=20230601; t=1710779812; x=1711384612;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VWxrXzjZ+6wi5AGBZhXYkgtdBUbxMT0Pmi1L1yNtdSk=;
- b=dH0fgCADEWdROxjXcZIMB1IbKddVfNGU2srm3jw9ZYutq5zBjzMtGAR2O6abABzWbI
- BKkm5NdyQX9cpq9NUxAfkSqxaaqamnG9tlBxftx3T5m3Spioivzi5/shYVlR8Aw1QSIg
- isRJ96Wi5+dthhYh1PZ6xu94NAeE3AN7Kva63XcRXJKdfxSeioRl4AC+WqWpQExbC0vR
- +1Z1xXtnJHWsMPhv8SADD7SNw/MGZxoZ0HBRMJBQndt6d7q1woN9tFaCYoKexZksfTE+
- yUrGeS976uqcuOnPi1nL692oqFoIjR4DT13FM77nSOQ0NJJkIbICjNvhImragH7VTQ6V
- C7oQ==
+ bh=ff4y2hYdBHU6+ERPH49T0I+rjcJQzaop2+p+j6BSWIw=;
+ b=Lmd4PlBSOgBZuC1bHY5hXZoa/u49pVAuv7wsUHbjMwMKOytQmMM5QnuRU4im2NMedQ
+ GTkP0skGyqE6uXza2WOozRU2HiDsMZ1LnB6oJYiKn0hv3N0lGmpcqt6najOoe1QIPgq0
+ ev3Pirz4GgnbItaGCGrbV84ETzGjF86AiMYTqIjqA6Eb7tn0UeyeMFSwuwoKBW6WhmCP
+ CbTD/ZymeJT+V4mj3e7TPwXyxuf6Sm38RWnus+TUS/48gBEBmWP+FaXhvmsK0Z3Id3oU
+ hKqheQeVrkxBMPzH1KJq+DcESXnWNZhzlC3qAvBxgaxKUitqAGEdociSuZGTVLEELgZm
+ jg7Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWDcHeMZ90MjFLUwLy6Sm121+RbstP4l23iDiZmXO9B7S6yx5ONG2lENjPdmnw+xhXjB1XYBP7LrtT2XUVbcWI11PVp
-X-Gm-Message-State: AOJu0YytOW+udbuofUHUxW+NkcaTFNgHc3kRuwveObzgbAz9c76/gT2s
- xZs6suZWWlNZTvYeYaU+w5AkgqPx/rAEU1gJym+bU5o/NGcmGo40xcw+oi75GN4=
-X-Received: by 2002:ac2:4db7:0:b0:513:d0e2:8a1e with SMTP id
- h23-20020ac24db7000000b00513d0e28a1emr7768732lfe.54.1710779734988; 
- Mon, 18 Mar 2024 09:35:34 -0700 (PDT)
+ AJvYcCVSm1IgKD7cJgxy24lq8FdY9KA7wecmy/y2rR61Lrn/yFOcnbasN3w7nuU35Rg+AzKBOLrKPnnV+8C8ett3CKUqZTrRg2k=
+X-Gm-Message-State: AOJu0Yw4Z9EzEOVJGGc1L0gf4flWA2djIDQqyOErS0pufPN4IUH+wHly
+ Vm4Dob5jz+R+O6yBCyyCRVP1LY1CUEhRqdZ57QsLKzmZ7BAbaufRgRC1HTUrEQg=
+X-Received: by 2002:a7b:cc9a:0:b0:412:fa5f:7f85 with SMTP id
+ p26-20020a7bcc9a000000b00412fa5f7f85mr7333469wma.19.1710779811772; 
+ Mon, 18 Mar 2024 09:36:51 -0700 (PDT)
 Received: from [192.168.69.100] (vit94-h02-176-184-29-165.dsl.sta.abo.bbox.fr.
  [176.184.29.165]) by smtp.gmail.com with ESMTPSA id
- bg28-20020a05600c3c9c00b0041330d49604sm18520814wmb.45.2024.03.18.09.35.33
+ bg28-20020a05600c3c9c00b0041330d49604sm18520814wmb.45.2024.03.18.09.36.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Mar 2024 09:35:34 -0700 (PDT)
-Message-ID: <7fdd2a28-a9d3-4462-a688-0199d4dc96cf@linaro.org>
-Date: Mon, 18 Mar 2024 17:35:33 +0100
+ Mon, 18 Mar 2024 09:36:51 -0700 (PDT)
+Message-ID: <534576b9-be78-4481-8c87-41387ab4a31a@linaro.org>
+Date: Mon, 18 Mar 2024 17:36:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/4] tests/avocado: sbsa-ref: add Alpine tests for misc
- 'max' setup
+Subject: Re: [PATCH v3 0/4] tests/avocado: update sbsa-ref firmware to latest
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
 Cc: Radoslaw Biernacki <rad@semihalf.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -107,91 +107,153 @@ Cc: Radoslaw Biernacki <rad@semihalf.com>,
  Beraldo Leal <bleal@redhat.com>, Brad Smith <brad@comstyle.com>,
  qemu-arm@nongnu.org
 References: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
- <20240318-sbsa-ref-firmware-update-v3-3-1c33b995a538@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240318-sbsa-ref-firmware-update-v3-3-1c33b995a538@linaro.org>
+ <42cdcb79-1873-4987-9a20-92c803b3668d@linaro.org>
+In-Reply-To: <42cdcb79-1873-4987-9a20-92c803b3668d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lzPtbqnQZef0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Yzih7ZjVNuih
 
-On 18/3/24 15:08, Marcin Juszkiewicz wrote:
-> PAuth makes run timeout on CI so add tests using 'max' without it
-> and with impdef one.
+On 18/3/24 17:30, Philippe Mathieu-Daudé wrote:
+> Hi Marcin,
 > 
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> ---
->   tests/avocado/machine_aarch64_sbsaref.py | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
+> On 18/3/24 15:08, Marcin Juszkiewicz wrote:
+>> Updating sbsa-ref firmware for QEMU CI was manual task. Now it is
+>> replaced by CI job run on CodeLinaro Gitlab instance.
+>>
+>> This patchset updates to current state:
+>>
+>> - Trusted Firmware v2.10.2 (latest LTS)
+>> - Tianocore EDK2 stable202402 (latest release)
+>>
+>> And Tianocore EDK2-platforms commit 085c2fb (edk2-platforms does not
+>> have releases).
+>>
+>> Firmware images were built using Debian 'bookworm' cross gcc 12.2.0
+>> compiler.
+>>
+>> And while I am in that file I dropped use of 'virtio-rng-pci' device as
+>> sbsa-ref is supposed to emulate physical hardware.
+>>
+>> Added 'max' tests with 'pauth=off' and 'pauth-impdef=on' variants.
+>>
+>> (01/11) test_sbsaref_edk2_firmware: PASS (2.51 s)
+>> (02/11) test_sbsaref_alpine_linux_cortex_a57: PASS (23.72 s)
+>> (03/11) test_sbsaref_alpine_linux_neoverse_n1: PASS (23.70 s)
+>> (04/11) test_sbsaref_alpine_linux_max_pauth_off: PASS (23.00 s)
+>> (05/11) test_sbsaref_alpine_linux_max_pauth_impdef: PASS (29.03 s)
+>> (06/11) test_sbsaref_alpine_linux_max: PASS (80.69 s)
 > 
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-> index 259225f15f..cf8954d02e 100644
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> @@ -140,18 +140,36 @@ def boot_alpine_linux(self, cpu):
->       def test_sbsaref_alpine_linux_cortex_a57(self):
->           """
->           :avocado: tags=cpu:cortex-a57
-> +        :avocado: tags=os:linux
->           """
->           self.boot_alpine_linux("cortex-a57")
->   
->       def test_sbsaref_alpine_linux_neoverse_n1(self):
->           """
->           :avocado: tags=cpu:neoverse-n1
-> +        :avocado: tags=os:linux
->           """
->           self.boot_alpine_linux("neoverse-n1")
->   
-> +    def test_sbsaref_alpine_linux_max_pauth_off(self):
-> +        """
-> +        :avocado: tags=cpu:max
-> +        :avocado: tags=os:linux
-> +        """
-> +        self.boot_alpine_linux("max,pauth=off")
-> +
-> +    def test_sbsaref_alpine_linux_max_pauth_impdef(self):
-> +        """
-> +        :avocado: tags=cpu:max
-> +        :avocado: tags=os:linux
-> +        """
-> +        self.boot_alpine_linux("max,pauth-impdef=on")
-> +
-> +    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+> This one is timeouting for me, should we skip it with
+> AVOCADO_TIMEOUT_EXPECTED? (See below)
 
-Odd, this tag doesn't seem processed in my test. Anyhow,
+Well AVOCADO_TIMEOUT_EXPECTED is present but apparently ignored :/
 
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
->       def test_sbsaref_alpine_linux_max(self):
->           """
->           :avocado: tags=cpu:max
-> +        :avocado: tags=os:linux
->           """
->           self.boot_alpine_linux("max")
->   
+>> (07/11) test_sbsaref_openbsd73_cortex_a57: PASS (16.05 s)
+>> (08/11) test_sbsaref_openbsd73_neoverse_n1: PASS (15.97 s)
+>> (09/11) test_sbsaref_openbsd73_max_pauth_off: PASS (16.22 s)
+>> (10/11) test_sbsaref_openbsd73_max_pauth_impdef: PASS (16.11 s)
+>> (11/11) test_sbsaref_openbsd73_max: PASS (16.08 s)
+>>
+>> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+>> ---
+>> Changes in v3:
+>> - left OpenBSD at 7.3 (7.4+ is known to not boot)
+>>    https://gitlab.com/qemu-project/qemu/-/issues/2224
+>>    https://marc.info/?l=openbsd-arm&m=171050428327850&w=2
+>> - added pauth variants of 'max' to OpenBSD tests
+>> - Link to v2: 
+>> https://lore.kernel.org/r/20240314-sbsa-ref-firmware-update-v2-0-b557c56559cd@linaro.org
+>>
+>> Changes in v2:
+>> - disabled 'max' tests on OpenBSD
+>> - moved tags to 'one tag per line'
+>> - added 'os:linux' tags to Alpine ones
+>> - Link to v1: 
+>> https://lore.kernel.org/r/20240313-sbsa-ref-firmware-update-v1-0-e166703c5424@linaro.org
+>>
+>> ---
+>> Marcin Juszkiewicz (4):
+>>        tests/avocado: update sbsa-ref firmware
+>>        tests/avocado: drop virtio-rng from sbsa-ref tests
+>>        tests/avocado: sbsa-ref: add Alpine tests for misc 'max' setup
+>>        tests/avocado: sbsa-ref: add OpenBSD tests for misc 'max' setup
+> 
+> $ make check-avocado AVOCADO_TAGS='machine:sbsa-ref'
+> ninja: no work to do.
+> JOB ID     : 76d5dc90c6f70f0801c5269ff1c1db6c0d2cb27b
+> JOB LOG    : 
+> build/system_arm/tests/results/job-2024-03-18T15.54-76d5dc9/job.log
+>   (1/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_edk2_firmware: PASS (4.96 s)
+>   (2/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_alpine_linux_cortex_a57: PASS (52.67 s)
+>   (3/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_alpine_linux_neoverse_n1: PASS (51.01 s)
+>   (4/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max: INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal status: ERROR\n{'name': '4-tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max', 'logdir': 'build/system_... (180.50 s)
+>   (5/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_openbsd73_cortex_a57: PASS (21.15 s)
+>   (6/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_openbsd73_neoverse_n1: PASS (20.88 s)
+>   (7/7) 
+> tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_openbsd73_max: PASS (20.70 s)
+> RESULTS    : PASS 6 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 1 | 
+> CANCEL 0
+> JOB TIME   : 355.21 s
+> make: *** [tests/Makefile.include:139: check-avocado] Error 8
+> 
+> Looking at debug.log:
+> 
+> 15:56:17 DEBUG| Opening console file
+> 15:56:17 DEBUG| Opening console socket
+> 15:56:17 DEBUG| NOTICE:  Booting Trusted Firmware
+> 15:56:17 DEBUG| NOTICE:  BL1: v2.9(release):v2.9.0-764-g7c3ff62d2
+> 15:56:17 DEBUG| NOTICE:  BL1: Built : 12:32:06, Sep 27 2023
+> 15:56:17 DEBUG| NOTICE:  BL1: Booting BL2
+> 15:56:17 DEBUG| NOTICE:  BL2: v2.9(release):v2.9.0-764-g7c3ff62d2
+> 15:56:17 DEBUG| NOTICE:  BL2: Built : 12:32:06, Sep 27 2023
+> 15:56:17 DEBUG| NOTICE:  BL1: Booting BL31
+> 15:56:17 DEBUG| NOTICE:  BL31: v2.9(release):v2.9.0-764-g7c3ff62d2
+> 15:56:17 DEBUG| NOTICE:  BL31: Built : 12:32:06, Sep 27 2023
+> 15:56:17 DEBUG| UEFI firmware (version 1.0 built at 15:45:23 on Sep 20 
+> 2023)
+> ...
+> 15:57:48 DEBUG| * Mounting security filesystem ... [ ok ]
+> 15:57:49 DEBUG| * Mounting debug filesystem ... [ ok ]
+> 15:57:49 DEBUG| * Mounting persistent storage (pstore) filesystem ... [ 
+> ok ]
+> 15:57:50 DEBUG| * Mounting efivarfs filesystem ... [ ok ]
+> 15:57:51 DEBUG| * Starting busybox mdev ... [ ok ]
+> 15:58:05 DEBUG| * Scanning hardware for mdev ... [ ok ]
+> 15:59:05 DEBUG| * Loading hardware drivers ... [ ok ]
+> 15:59:05 DEBUG| * WARNING: clock skew detected!
+> 15:59:07 DEBUG| * Setting the local clock based on last shutdown time 
+> ... [ ok ]
+> 15:59:11 DEBUG| * Loading modules ... [ ok ]
+> 15:59:13 ERROR|
+> 15:59:13 ERROR| RuntimeError: Test interrupted by SIGTERM
 > 
 

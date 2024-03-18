@@ -1,585 +1,155 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp58741ejb;
-        Sun, 17 Mar 2024 03:42:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVetDgfZkKv9JAJdomthseZqHHzrSdT+KFM+Tp960o6Sbigp798bTCsa5Q4qMkKrjEEBUG0PkKWg4tpWIPcFz34rdvP9HaB
-X-Google-Smtp-Source: AGHT+IGlPvMONEMwx+aLb+DAhkNGk55FVMCEtte+f74Mh6hy9IB0k4SiNrx2IfdgzaJaF5Bbh3Hs
-X-Received: by 2002:a05:620a:248f:b0:789:d27a:5779 with SMTP id i15-20020a05620a248f00b00789d27a5779mr12879479qkn.33.1710672160647;
-        Sun, 17 Mar 2024 03:42:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710672160; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp433833ejb;
+        Sun, 17 Mar 2024 22:25:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVAOMrOlkAh98LMoxAJFS9gfju79Km4b+P9fvQ72RW1EQzMFDFlwBSQ55hu78ffOyyqqTNV+DPDlPUWSY0rYrUmnidViYA1
+X-Google-Smtp-Source: AGHT+IHWOCLhR9ar21g/DwubQB6IZDeSpWEGQl/MAFRZgxo67l40Z29CJQxdKfoQ6ca5cVplz4rJ
+X-Received: by 2002:a05:620a:2915:b0:78a:3f1:3145 with SMTP id m21-20020a05620a291500b0078a03f13145mr1335159qkp.4.1710739521159;
+        Sun, 17 Mar 2024 22:25:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710739521; cv=none;
         d=google.com; s=arc-20160816;
-        b=gvydg1X9Bbvn/UyeWC32BGcHdQxZWkaiA+ef5OLoEHZyzA3nCKPRrRyNisZc8m3GDA
-         46Qgmgx6iEyHOAt08b7R83vhO5+nCVeFDhgZQsIiwg1DG9gVgVAUwd0uU0ocO/HztR5j
-         W3/pkoaLh7plkEP5AoF2VKzDAsvJbY/BqnmzKBXQ0TJWBSAvKj2EEt6VodUL/Z87Qdpu
-         LEKkjl/DnUGAW0yI/BiQvMF8Qx7jJIdj+GNTxJVqsl1lotk9wh+6GMAMAn5VRyIwXNRE
-         HkYxTSPIWJupG5vh0Vu8iNc4WZ2Gxb9FVZVKkwCw0hXOuZ2rQ/Cg8mP4KM4e4HoYH8AW
-         yUxQ==
+        b=h35j/6EtX2bVAhG5HmBYyXaDzId2qaaPE5gYlPxiHtzyXpLzhlqt8jo4AkCt4fE0Gt
+         zdBa3zwQkTMqGyBeijRVSoU+upkEOS/Ervz6B6vMPt8/2yrh8Us48g2FZUDdyCKH/Lei
+         UkXVZyfM2yqTBAXws3JUlh4GC9kFUGXsolGS+u0uMczDu+2gYir9or0YQh5Hk6hqXOZt
+         VnduI7UYPMQTFXEObBSXdo+QIwtXOx74yHlR39/Wbl06I6IqtPelm7MR36TIRJQQgcZi
+         W1z87zF+4zCbJabPjrxhmmIvWiN1CB/v9UCPa8iYSEifOixR7UMKCTTpgeQ4QIuT8bYP
+         ZyNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=+SWkX0o2QReO37iop26P/T3kwRpNYHtksoAyb30/1Y0=;
-        fh=oFnqSTjBm9mnHO2iEUy4nxRwHSPc72uVfpVJMnLaLdw=;
-        b=RgATKcSszO7izE6QTz+sUH/82Qaa4DWe2dQ7+ABKJ/RxNnu/masGsRiEdmNG4wtcsE
-         6P+l8tHXUGpuhIwWZW1rbKz5L4IFz//UHfXWjyyQ01ymgJxtkoJva4HklIIFiAuQDAP+
-         irkMSUOyUtxq71ERGJy4hkPadTxegwAvCOZ/uVPGHtjXna3oon7o1IPNJWoqKkhYDdDJ
-         ssJQB//zqq+yaJQQ6zGOSuGO5taw47KmO4FdPoXWw3U3WatRz/Z0YULMjjD/HIstdIfk
-         42tdGou6Bf7CyQI0AOpyixbipUjuXJRu2AC64KUMxDW/QPLED2sXnaEZwwkqyNWyqpNY
-         WDUw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gbmky9YQX20wzO2zy9DbboVLxpylBJOz7L0pS5TRiMo=;
+        fh=2sBl/JL7jQ45Qz8AcT/fRItpYYiB4NUweZ5cD5ZxT0I=;
+        b=cSPEyexthuWNlyYDUtt00ovRBB4m1icFNm+8lelrWUQiSy5pHeX/TdonyFXSyBGOV+
+         M5hfvkx+60QXqLJ4GfH98PxcLzWoelZZot4cARuRp753n6VvmFrwaaMH0+0lZjeNesQK
+         zcGUEneIDFzxGycy2A4htx7aXWQb3wxdeBvWFQKfCG8RWKWqpVYPpdbjzLPGJLZXzm5R
+         96BfAe3ALy1kZbrkW0t8GHzIvyeMSG4MUXtHNcsLs082H66KrEOrOagjal9gQa5hMnwe
+         TF4P/mT07m8LqiwBrMG7ffi67xcGqYvaUfRJNWLLT078GY5F5Gk93d1gMvaagCWrEe3L
+         V1Ng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=2jOm1Jxn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=MoBs10Gc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p25-20020a05620a113900b00789f68d1078si1265961qkk.439.2024.03.17.03.42.40
+        by mx.google.com with ESMTPS id de38-20020a05620a372600b00789c69aab5fsi9295069qkb.15.2024.03.17.22.25.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Mar 2024 03:42:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 17 Mar 2024 22:25:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=2jOm1Jxn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=MoBs10Gc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rlnyI-0005c6-TU; Sun, 17 Mar 2024 06:42:30 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rm5UH-0002qq-Ku; Mon, 18 Mar 2024 01:24:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rlnyH-0005bp-D6; Sun, 17 Mar 2024 06:42:29 -0400
-Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
- id 1rlnyF-0001XY-6S; Sun, 17 Mar 2024 06:42:29 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id C128620804;
- Sun, 17 Mar 2024 11:42:25 +0100 (CET)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id 5nm9788iPow0; Sun, 17 Mar 2024 11:42:24 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 9CDC1208D9;
- Sun, 17 Mar 2024 11:42:24 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 9CDC1208D9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1710672144;
- bh=+SWkX0o2QReO37iop26P/T3kwRpNYHtksoAyb30/1Y0=;
- h=From:To:Date:Message-Id:MIME-Version;
- b=2jOm1JxnaRa6qBjk17zq1zD+NDdOFvq1Gq9Chu5VHK0aj09k1cnQMVZcEetyTitOD
- +TYpEok3lpW1MaMbHMUHq/I6aFFveHe56deaEB0xts19CNQlNPRF4Ql+Y3d1d21nN0
- S9FsFK39BnJWZKspBJRO/CFnzHfGoSH0/jPK+VTg=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id 2h29AJvT_Bw7; Sun, 17 Mar 2024 11:42:24 +0100 (CET)
-Received: from AM-Inspiron-3585.. (cust-west-par-46-193-4-103.cust.wifirst.net
- [46.193.4.103])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id E805E20804;
- Sun, 17 Mar 2024 11:42:23 +0100 (CET)
-From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rm5UG-0002qa-Gt
+ for qemu-arm@nongnu.org; Mon, 18 Mar 2024 01:24:40 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1rm5UE-0002TY-P9
+ for qemu-arm@nongnu.org; Mon, 18 Mar 2024 01:24:40 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-6e6b22af648so3612604b3a.0
+ for <qemu-arm@nongnu.org>; Sun, 17 Mar 2024 22:24:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1710739476; x=1711344276; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=gbmky9YQX20wzO2zy9DbboVLxpylBJOz7L0pS5TRiMo=;
+ b=MoBs10Gc9cgbqIPAhz1O5+DNVFETYeG9Hqy3TCQH2Cp8xLbTAFDMWE5JH+M1hgRZFN
+ cLFERKNXgfvVFCAiI43BXUjK/LumURT193muNpNhF3KTgIrnbtwe4VBBCivQq0jH1Pom
+ YOBoHY724/aKHTS/BJkCIPQvjCFG2fvPwWpZkHFF9TmGoczz6Yb2iTMsXvQ6g19R31Y3
+ gcZNPOKxFJc/8WYR71bEy7snMMplVcYDDY048wVrHL55i1BWtdP6X2aXwymmCvweNeqG
+ eILEqGjZqXR74ELIvmvrnhjdmaroxZyZnOTgxpRO9BrFgCXVAnsbRd5bFzwO1jVMyMAN
+ L0FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710739476; x=1711344276;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=gbmky9YQX20wzO2zy9DbboVLxpylBJOz7L0pS5TRiMo=;
+ b=imXefBrWdSRnGrZhWsPdA6978VA26SvQJhSI63lrEh3PPV6BLR+BRLy1969XXTzS4N
+ 90+6jj69ziuW37xJ4NKXM8nskmvQUR7iOd65n4Iabz3MCNDJyiAMDygqatHkTnIPQ2qe
+ Iej/Ps4BximCu3elc9Gfb8Z+CRHc2PU0+61unMM1hHRcwMMfnaSYWGKUT7XxptRYwUQw
+ PFvHcudRl/mHCFE2n6R/Wh9Kr/eNBkR6xaTET4H+fT/Kr5+jKBFckRXGWrG8/gx0HsZz
+ JaUSWd76FM2m+d0hb6GoHOy1SQ5TMYf2b3GzQMbQ3a3VYqgx7ZsJ9tb+pU5tGuXvoKyu
+ o8Iw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXQy37m+bScqFDcTnIH+sd9YTtHxz+/u5KcuXZdGjVZWbnes4qIjon4sfPZOHoAqmWx5qj7MZML0kDJSpm3t8SNRwZ8
+X-Gm-Message-State: AOJu0YwRAVw2IL33xB4T+p5OBUXPiDIPaWBdXv4q8zsoIMeQp64zZiNw
+ BOWpJrZL8RRmnyXIq0VpS7g1h/yxGrBdkbGO5zzRb3V8xIS32DdJTzdc3U2P3J8=
+X-Received: by 2002:a05:6a20:9f08:b0:1a3:4e27:c8d1 with SMTP id
+ mk8-20020a056a209f0800b001a34e27c8d1mr11646112pzb.25.1710739476552; 
+ Sun, 17 Mar 2024 22:24:36 -0700 (PDT)
+Received: from sunil-laptop ([106.51.185.90]) by smtp.gmail.com with ESMTPSA id
+ p17-20020a635b11000000b005dcbb855530sm6250879pgb.76.2024.03.17.22.24.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 17 Mar 2024 22:24:35 -0700 (PDT)
+Date: Mon, 18 Mar 2024 10:54:28 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Subject: [PATCH 7/7] tests/qtest: Add tests for the STM32L4x5 USART
-Date: Sun, 17 Mar 2024 11:39:18 +0100
-Message-Id: <20240317103918.44375-8-arnaud.minier@telecom-paris.fr>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
-References: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Alistair Francis <alistair23@gmail.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>
+Subject: Re: [PATCH 01/12] roms/edk2-build.py: Add --module support
+Message-ID: <ZffQDBsJ5Sou2Ixj@sunil-laptop>
+References: <20240315130519.2378765-1-sunilvl@ventanamicro.com>
+ <20240315130519.2378765-2-sunilvl@ventanamicro.com>
+ <nvi45kbmhbzrlapysvpy7srgdzw62we5ijhxgrxpfp4m27ji67@6eftbkcku4fq>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::df;
- envelope-from=arnaud.minier@telecom-paris.fr; helo=zproxy4.enst.fr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <nvi45kbmhbzrlapysvpy7srgdzw62we5ijhxgrxpfp4m27ji67@6eftbkcku4fq>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7bK+ATIZz1VX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aA+U7V+Wcpwr
 
-Test:
-- read/write from/to the usart registers
-- send/receive a character/string over the serial port
+On Fri, Mar 15, 2024 at 03:13:44PM +0100, Gerd Hoffmann wrote:
+> On Fri, Mar 15, 2024 at 06:35:08PM +0530, Sunil V L wrote:
+> > UefiTestToolsPkg which should use edk2-build.py needs --module parameter
+> > support. Add this optional parameter handling.
+> 
+> I don't think this is needed.  By default everything listed in
+> [Components] should be built, which is just that one module we
+> have ;)
+> 
+Ahh yes. Makes sense. Let me remove this in next revision of the series.
 
-The test to detect overrun is implemented but disabled
-because overruns are currently impossible due to how we signal
-in the USART when we are ready to receive a new character.
-
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- tests/qtest/meson.build            |   3 +-
- tests/qtest/stm32l4x5_usart-test.c | 399 +++++++++++++++++++++++++++++
- 2 files changed, 401 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32l4x5_usart-test.c
-
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 36c5c13a7b..e0d72ee91e 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -205,7 +205,8 @@ qtests_stm32l4x5 =3D \
-   ['stm32l4x5_exti-test',
-    'stm32l4x5_syscfg-test',
-    'stm32l4x5_rcc-test',
--   'stm32l4x5_gpio-test']
-+   'stm32l4x5_gpio-test',
-+   'stm32l4x5_usart-test']
-=20
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_u=
-sart-test.c
-new file mode 100644
-index 0000000000..b19b89c9ff
---- /dev/null
-+++ b/tests/qtest/stm32l4x5_usart-test.c
-@@ -0,0 +1,399 @@
-+/*
-+ * QTest testcase for STML4X5_USART
-+ *
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+#include "hw/misc/stm32l4x5_rcc_internals.h"
-+#include "hw/registerfields.h"
-+
-+/*
-+ * All page references in the following test
-+ * refer to the ST RM0351 Reference Manuel.
-+ */
-+
-+#define RCC_BASE_ADDR 0x40021000
-+/* Use USART 1 ADDR, assume the others work the same */
-+#define USART1_BASE_ADDR 0x40013800
-+
-+/* See stm32l4x5_usart for definitions */
-+REG32(CR1, 0x00)
-+    FIELD(CR1, M1, 28, 1)
-+    FIELD(CR1, OVER8, 15, 1)
-+    FIELD(CR1, M0, 12, 1)
-+    FIELD(CR1, PCE, 10, 1)
-+    FIELD(CR1, TXEIE, 7, 1)
-+    FIELD(CR1, RXNEIE, 5, 1)
-+    FIELD(CR1, TE, 3, 1)
-+    FIELD(CR1, RE, 2, 1)
-+    FIELD(CR1, UE, 0, 1)
-+REG32(CR2, 0x04)
-+REG32(CR3, 0x08)
-+    FIELD(CR3, OVRDIS, 12, 1)
-+REG32(BRR, 0x0C)
-+REG32(GTPR, 0x10)
-+REG32(RTOR, 0x14)
-+REG32(RQR, 0x18)
-+REG32(ISR, 0x1C)
-+    FIELD(ISR, TXE, 7, 1)
-+    FIELD(ISR, RXNE, 5, 1)
-+    FIELD(ISR, ORE, 3, 1)
-+REG32(ICR, 0x20)
-+REG32(RDR, 0x24)
-+REG32(TDR, 0x28)
-+
-+#define NVIC_ISPR1 0XE000E204
-+#define NVIC_ICPR1 0xE000E284
-+#define USART1_IRQ 37
-+
-+static bool check_nvic_pending(QTestState *qts, unsigned int n)
-+{
-+    /* No USART interrupts are less than 32 */
-+    if (n < 32) {
-+        return false;
-+    }
-+    n -=3D 32;
-+    return qtest_readl(qts, NVIC_ISPR1) & (1 << n);
-+}
-+
-+static bool clear_nvic_pending(QTestState *qts, unsigned int n)
-+{
-+    /* No USART interrupts are less than 32 */
-+    if (n < 32) {
-+        return false;
-+    }
-+    n -=3D 32;
-+    qtest_writel(qts, NVIC_ICPR1, (1 << n));
-+    return true;
-+}
-+
-+static void usart_writel(unsigned int offset, uint32_t value)
-+{
-+    writel(USART1_BASE_ADDR + offset, value);
-+}
-+
-+static uint32_t usart_readl(unsigned int offset)
-+{
-+    return readl(USART1_BASE_ADDR + offset);
-+}
-+
-+static bool usart_wait_for_flag(QTestState *qts, uint32_t event_addr, ui=
-nt32_t flag)
-+{
-+    /* Wait at most 5 seconds */
-+    for (int i =3D 0; i < 5000; i++) {
-+        if ((qtest_readl(qts, event_addr) & flag)) {
-+            return true;
-+        }
-+        g_usleep(1000);
-+    }
-+
-+    return false;
-+}
-+
-+static void usart_receive_string(QTestState *qts, int sock_fd, const cha=
-r *in,
-+                           char *out)
-+{
-+    int i, in_len =3D strlen(in);
-+
-+    g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);
-+    for (i =3D 0; i < in_len; i++) {
-+        g_assert_true(usart_wait_for_flag(qts,
-+            USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK));
-+        out[i] =3D qtest_readl(qts, USART1_BASE_ADDR + A_RDR);
-+    }
-+    out[i] =3D '\0';
-+}
-+
-+static void usart_send_string(QTestState *qts, const char *in)
-+{
-+    int i, in_len =3D strlen(in);
-+
-+    for (i =3D 0; i < in_len; i++) {
-+        qtest_writel(qts, USART1_BASE_ADDR + A_TDR, in[i]);
-+        g_assert_true(usart_wait_for_flag(qts,
-+            USART1_BASE_ADDR + A_ISR, R_ISR_TXE_MASK));
-+    }
-+}
-+
-+/* Init the RCC clocks to run at 80 MHz */
-+static void init_clocks(QTestState *qts)
-+{
-+    uint32_t value;
-+
-+    /* MSIRANGE can be set only when MSI is OFF or READY */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CR), R_CR_MSION_MASK);
-+
-+    /* Clocking from MSI, in case MSI was not the default source */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CFGR), 0);
-+
-+    /*
-+     * Update PLL and set MSI as the source clock.
-+     * PLLM =3D 1 --> 000
-+     * PLLN =3D 40 --> 40
-+     * PPLLR =3D 2 --> 00
-+     * PLLDIV =3D unused, PLLP =3D unused (SAI3), PLLQ =3D unused (48M1)
-+     * SRC =3D MSI --> 01
-+     */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_PLLCFGR), R_PLLCFGR_PLLREN_MASK=
- |
-+            (40 << R_PLLCFGR_PLLN_SHIFT) |
-+            (0b01 << R_PLLCFGR_PLLSRC_SHIFT));
-+
-+    /* PLL activation */
-+
-+    value =3D qtest_readl(qts, (RCC_BASE_ADDR + A_CR));
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CR), value | R_CR_PLLON_MASK);
-+
-+    /* RCC_CFGR is OK by defaut */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CFGR), 0);
-+
-+    /* CCIPR : no periph clock by default */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CCIPR), 0);
-+
-+    /* Switches on the PLL clock source */
-+    value =3D qtest_readl(qts, (RCC_BASE_ADDR + A_CFGR));
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CFGR), (value & ~R_CFGR_SW_MASK=
-) |
-+        (0b11 << R_CFGR_SW_SHIFT));
-+
-+    /* Enable SYSCFG clock enabled */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_APB2ENR), R_APB2ENR_SYSCFGEN_MA=
-SK);
-+
-+    /* Enable the IO port B clock (See p.252) */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_AHB2ENR), R_AHB2ENR_GPIOBEN_MAS=
-K);
-+
-+    /* Enable the clock for USART1 (cf p.259) */
-+    /* We rewrite SYSCFGEN to not disable it */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_APB2ENR),
-+                 R_APB2ENR_SYSCFGEN_MASK | R_APB2ENR_USART1EN_MASK);
-+
-+    /* TODO: Enable usart via gpio */
-+    /* Set Pin 6 & 7 of port B in Alternate Function mode */
-+    /* GPIOB->MODER =3D (GPIOB->MODER & ~(GPIO_MODER_MODE6_Msk |
-+                    GPIO_MODER_MODE7_Msk)) |
-+                    (AF_MODE << GPIO_MODER_MODE6_Pos) |
-+                    (AF_MODE << GPIO_MODER_MODE7_Pos); */
-+
-+    /* Specify Alternate Function mode n=C2=B07 for Pin 6 & 7 of port B =
-*/
-+    /* GPIOB->AFR[0] =3D (GPIOB->AFR[0] & ~(GPIO_AFRL_AFSEL6_Msk |
-+                        GPIO_AFRL_AFSEL7_Msk )) |
-+                        (AF7 << GPIO_AFRL_AFSEL6_Pos) |
-+                        (AF7 << GPIO_AFRL_AFSEL7_Pos); */
-+
-+    /* Set PCLK as the clock for USART1(cf p.272) i.e. reset both bits *=
-/
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_CCIPR), 0);
-+
-+    /* Reset USART1 (see p.249) */
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_APB2RSTR), 1 << 14);
-+    qtest_writel(qts, (RCC_BASE_ADDR + A_APB2RSTR), 0);
-+}
-+
-+static void init_uart(QTestState *qts)
-+{
-+    uint32_t cr1;
-+
-+    init_clocks(qts);
-+
-+    /*
-+     * For 115200 bauds, see p.1349.
-+     * The clock has a frequency of 80Mhz,
-+     * for 115200, we have to put a divider of 695 =3D 0x2B7.
-+     */
-+    qtest_writel(qts, (USART1_BASE_ADDR + A_BRR), 0x2B7);
-+
-+    /*
-+     * Set the oversampling by 16,
-+     * disable the parity control and
-+     * set the word length to 8. (cf p.1377)
-+     */
-+    cr1 =3D qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-+    cr1 &=3D ~(R_CR1_M1_MASK | R_CR1_M0_MASK | R_CR1_OVER8_MASK | R_CR1_=
-PCE_MASK);
-+    qtest_writel(qts, (USART1_BASE_ADDR + A_CR1), cr1);
-+
-+    /* Enable the transmitter, the receiver and the USART. */
-+    qtest_writel(qts, (USART1_BASE_ADDR + A_CR1),
-+        R_CR1_UE_MASK | R_CR1_RE_MASK | R_CR1_TE_MASK);
-+}
-+
-+static void test_write_read(void)
-+{
-+    /* Test that we can write and retrieve a value from the device */
-+    usart_writel(A_TDR, 0xFFFFFFFF);
-+    const uint32_t tdr =3D usart_readl(A_TDR);
-+    g_assert_cmpuint(tdr, =3D=3D, 0x000000FF);
-+}
-+
-+static void test_receive_char(void)
-+{
-+    int sock_fd;
-+    uint32_t cr1;
-+    QTestState *qts =3D qtest_init_with_serial("-M b-l475e-iot01a", &soc=
-k_fd);
-+
-+    init_uart(qts);
-+
-+    /* Try without initializing IRQ */
-+    g_assert_true(send(sock_fd, "a", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-+    g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), =3D=3D, =
-'a');
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+
-+    /* Now with the IRQ */
-+    cr1 =3D qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-+    cr1 |=3D R_CR1_RXNEIE_MASK;
-+    qtest_writel(qts, USART1_BASE_ADDR + A_CR1, cr1);
-+    g_assert_true(send(sock_fd, "b", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-+    g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), =3D=3D, =
-'b');
-+    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
-+    clear_nvic_pending(qts, USART1_IRQ);
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_send_char(void)
-+{
-+    int sock_fd;
-+    char s[1];
-+    uint32_t cr1;
-+    QTestState *qts =3D qtest_init_with_serial("-M b-l475e-iot01a", &soc=
-k_fd);
-+
-+    init_uart(qts);
-+
-+    /* Try without initializing IRQ */
-+    qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'c');
-+    g_assert_true(recv(sock_fd, s, 1, 0) =3D=3D 1);
-+    g_assert_cmphex(s[0], =3D=3D, 'c');
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+
-+    /* Now with the IRQ */
-+    cr1 =3D qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-+    cr1 |=3D R_CR1_TXEIE_MASK;
-+    qtest_writel(qts, USART1_BASE_ADDR + A_CR1, cr1);
-+    qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'd');
-+    g_assert_true(recv(sock_fd, s, 1, 0) =3D=3D 1);
-+    g_assert_cmphex(s[0], =3D=3D, 'd');
-+    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
-+    clear_nvic_pending(qts, USART1_IRQ);
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_receive_str(void)
-+{
-+    int sock_fd;
-+    char s[10];
-+    QTestState *qts =3D qtest_init_with_serial("-M b-l475e-iot01a", &soc=
-k_fd);
-+
-+    init_uart(qts);
-+
-+    usart_receive_string(qts, sock_fd, "hello", s);
-+    g_assert_true(memcmp(s, "hello", 5) =3D=3D 0);
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_send_str(void)
-+{
-+    int sock_fd;
-+    char s[10];
-+    QTestState *qts =3D qtest_init_with_serial("-M b-l475e-iot01a", &soc=
-k_fd);
-+
-+    init_uart(qts);
-+
-+    usart_send_string(qts, "world");
-+    g_assert_true(recv(sock_fd, s, 10, 0) =3D=3D 5);
-+    g_assert_true(memcmp(s, "world", 5) =3D=3D 0);
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_overrun(void)
-+{
-+    int sock_fd;
-+    uint32_t cr1;
-+    QTestState *qts =3D qtest_init_with_serial("-M b-l475e-iot01a", &soc=
-k_fd);
-+
-+    init_uart(qts);
-+
-+    /*
-+     * These tests fail for now because we cannot write an new charcter
-+     * while RXNE is high (see stm32l4x_5_usart_can_receive),
-+     * thus preventing any overrun to happen.
-+     * TODO: Find a way to indicate that we can only receive 1 character=
- at
-+     * a time without using RXNE.
-+     */
-+
-+    /* Try without initializing IRQ: Test presence of overrun error flag=
- */
-+    g_assert_true(send(sock_fd, "e", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_true(send(sock_fd, "f", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_ORE_MASK);
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), =3D=3D, =
-'e');
-+
-+    /* Now disable Overrun detection */
-+    qtest_writel(qts, USART1_BASE_ADDR + A_CR3, R_CR3_OVRDIS_MASK);
-+    g_assert_true(send(sock_fd, "g", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_true(send(sock_fd, "h", 1, 0) =3D=3D 1);
-+    g_usleep(1000);
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_cmphex(qtest_readl(qts,
-+     USART1_BASE_ADDR + A_ISR) & R_ISR_ORE_MASK, =3D=3D, 0);
-+    g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), =3D=3D, =
-'h');
-+
-+    /* Now, enable irq from overrun with RXNEIE */
-+    g_assert_true(send(sock_fd, "i", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-+    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    cr1 =3D qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-+    cr1 |=3D R_CR1_RXNEIE_MASK;
-+    qtest_writel(qts, USART1_BASE_ADDR + A_CR1, cr1);
-+    g_assert_true(send(sock_fd, "j", 1, 0) =3D=3D 1);
-+    usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_ORE_MASK);
-+    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
-+    clear_nvic_pending(qts, USART1_IRQ);
-+    g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), =3D=3D, =
-'i');
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    qtest_add_func("stm32l4x5/usart/write_read", test_write_read);
-+    qtest_add_func("stm32l4x5/usart/receive_char", test_receive_char);
-+    qtest_add_func("stm32l4x5/usart/send_char", test_send_char);
-+    qtest_add_func("stm32l4x5/usart/receive_str", test_receive_str);
-+    qtest_add_func("stm32l4x5/usart/send_str", test_send_str);
-+    /* Disabled tests */
-+    if (false) {
-+        qtest_add_func("stm32l4x5/usart/overrun", test_overrun);
-+    }
-+    qtest_start("-machine b-l475e-iot01a");
-+    ret =3D g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
-+
---=20
-2.34.1
-
+Thanks!
+Sunil

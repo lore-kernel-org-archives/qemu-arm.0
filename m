@@ -1,92 +1,135 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp666595ejb;
-        Mon, 18 Mar 2024 07:09:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWCwscLZztcpS5z6SUfH6bLzmVpnJoo3i+jmwhwgpxC2wDvrqR3cl1TxqK/KETSeAfFPEvM0uZPtemL0sw1xHQqNFcfrUdV
-X-Google-Smtp-Source: AGHT+IGstK3TfKvzGBUD2VG7QaZs1RnPYK6IbTM0pFCyzb8YSVf5Rbbr3zx6g/yroNN0c8FGzvVf
-X-Received: by 2002:a05:620a:2451:b0:789:f9ef:90a9 with SMTP id h17-20020a05620a245100b00789f9ef90a9mr4848977qkn.7.1710770959083;
-        Mon, 18 Mar 2024 07:09:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710770959; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp750011ejb;
+        Mon, 18 Mar 2024 09:16:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWqno3rWx179+nzsmw6DYsQEOv4NKfxQdRJJs8hp4orP1ceahRbrWTW6BjOcpKHZcylXfAsoPHQTVS5mjHIF3CBT9O7T4rX
+X-Google-Smtp-Source: AGHT+IFOLFyLakszBbk063hChMmRJUvSyPWgcV3+DbdXP2xhGj4pQKX8yvmyDi7kJ73DdyL+jylk
+X-Received: by 2002:a05:620a:5347:b0:787:ff02:9524 with SMTP id op7-20020a05620a534700b00787ff029524mr12233316qkn.9.1710778596208;
+        Mon, 18 Mar 2024 09:16:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710778596; cv=none;
         d=google.com; s=arc-20160816;
-        b=DA0lxPHeGtxL5+DK40EuwLWqC+hugbaCg9iAKnuIDd6W8wN8VLTrSdxBo5atXlHORa
-         jZyKoQyZ5skL0zSatRU8x5TNHsGPuTZeJ5b0hAGOvFl9bXPueYUPyH1vxhA4PfXn9ThI
-         UXh8MPfY7nRdbRd/FXICl64j1+RH7SVrtR5T79RigMlhcHHXg0zpB7fjhMP9XEsysLIR
-         58txWpTl1O0k/8lZfUG7FYCiTNcPUdr8KgsobFMeqFbT81EINz6tP3qX2EQlDWuFH+7x
-         8bx7ZWqhWxdpFl1zHW/TJkOO2PXYHg8wIc3X8IPqcNJy83PtAIDON85igtitF0v2hBCd
-         N49w==
+        b=0cNEuga0POO1YC5+sg+9C6t0lGkin3CCuRcqUw5L1YVF+rtrR9QH/4rRqxf3poYybf
+         HOcwKo+1sBLDaBkqCVAwRNXPpCnYVFVpph9o5OKPZ3CNk5M2XxbLPOg2IBh/zusoXkyj
+         hDYxYFsx/7nYI+nLOkEh4StzBVYhKr8urMuIOdFWsCV6oamuaWhyTbihQKMDPjfDwvFj
+         YXmsVHP2LxjE/QtZOnEbsoEexpGI4S+WS8HAksI11+CzjY5f3tlzBZ6kkTPbQXhSAcdL
+         Qm0oScB2mBZE5/64PUMktiXW8X3tlxMyiD7mvo8vzSfqLCVXVDZ/QUrE9mNU/WKEuKlb
+         GH2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
-         :message-id:content-transfer-encoding:mime-version:subject:date:from;
-        bh=1fyHYl66GQGoCnkOs5sxansYjBhLiL4iTk6B2u8RlBw=;
-        fh=LC/OdAGxp8XjCcxyMB5oH3DeKOnqJHpFVM0U3yCY+4A=;
-        b=LKZc16Rb24vAn6+V8N7q8S3hI7iraVB3CMWlY5kWyhGhShHuEeXwEQYY1SqTC8qisx
-         Ud6aG8YgmTFoYqWjqitxE8xq4RTFuZSNa4oikngl751JilFyerrtgm6AvStcX04mnoH8
-         qmrMvC7qh0G55fiQmpV2EpXPpZbWZrJiaWrKhCw0PG1uAyUargsCzCxXAaeEBeu9PSWu
-         C4WuStNrJM+cTHTsEAn6qPnc83Xy9aqT8hnLbHxZLD0h6+40kFsQSd/4IUzGf377rRaT
-         cDfwdgOLMdeTHLeUQmfxvC8UVeAqfDxaHsM96C9JZz8vU1GA7DCnDW0KzCYlY0pvrpR+
-         Dn8Q==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=odPqgcRarP/qfco3bEKoj8jaqMYx3BuQ+fTJjBu4E9k=;
+        fh=w4Ymn1OdeUtqGQNgAZdkZzE/jvn9/9uIv9PIz/YWIaM=;
+        b=P3YUD89jJZ8BA8hD4hF3D/gCJoG6DZTTOohIPt7map2xFCZrL1J8DnScuCExWub1Uq
+         rozl84+b00gP1ifjv2cV7FiA8U/T9/Sa/gw/yTI6RdT4gZwIjm1MIxC8m5N6jOUU7z3w
+         jB4r1HF4aXiwzPKqsc2BHSfqmRIhSgUEXhkirbd213gFMzB4/yZwtaHCsmO3jbkWDa+w
+         qG7Xu78U7ARQi7UfMsfI1s5GPSmq3v+BjgwTQ2ErcigRL5XKgFj+9Sz1O3dFrayQJOI+
+         OzeJcEeqrdmzmv1pEjIZPr+IeIzw8wiikCrL+vHCEg8ISTHN1fQhOuk4bSVCS7ACi7OD
+         GMLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZcHcnlET;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7-20020ae9e307000000b00789daaa57b9si8620565qkf.80.2024.03.18.07.09.18
+        by mx.google.com with ESMTPS id w25-20020ae9e519000000b007884dab50e7si9421569qkf.178.2024.03.18.09.16.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 07:09:19 -0700 (PDT)
+        Mon, 18 Mar 2024 09:16:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZcHcnlET;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rmDfG-0001cj-RS; Mon, 18 Mar 2024 10:08:34 -0400
+	id 1rmFf1-0007UJ-AV; Mon, 18 Mar 2024 12:16:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDf0-0001Tg-Vj; Mon, 18 Mar 2024 10:08:20 -0400
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rmFex-0007Rp-H0
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 12:16:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rmDew-0006Gn-49; Mon, 18 Mar 2024 10:08:18 -0400
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 2CA7F260BB4;
- Mon, 18 Mar 2024 15:08:11 +0100 (CET)
-X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id 5SIq3skwq7wl; Mon, 18 Mar 2024 15:08:09 +0100 (CET)
-Received: from [172.17.0.1] (83.11.22.169.ipv4.supernova.orange.pl
- [83.11.22.169])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id AB129260FE6;
- Mon, 18 Mar 2024 15:08:07 +0100 (CET)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Date: Mon, 18 Mar 2024 15:08:04 +0100
-Subject: [PATCH v3 4/4] tests/avocado: sbsa-ref: add OpenBSD tests for misc
- 'max' setup
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240318-sbsa-ref-firmware-update-v3-4-1c33b995a538@linaro.org>
-References: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
-In-Reply-To: <20240318-sbsa-ref-firmware-update-v3-0-1c33b995a538@linaro.org>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rmFet-0004eM-Kv
+ for qemu-devel@nongnu.org; Mon, 18 Mar 2024 12:16:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710778566;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=odPqgcRarP/qfco3bEKoj8jaqMYx3BuQ+fTJjBu4E9k=;
+ b=ZcHcnlET0wKq7sMmUIWwyAEGyjp5xIZdMGLgjbU/BIcCvf5kb3mkIFjhV9ImLT4PHVj91Z
+ geLjh0C0DmOngnBGfU9lSO+8EIjzA/3PLvfbuZups7P8NXvpixWWUGJ7wev7wuColx78C9
+ dZNsqtuCgNRBAQh+54yfTPeh+W/96/I=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-198-eY0ZZT8sOlSJQuCmxhvpjA-1; Mon, 18 Mar 2024 12:16:04 -0400
+X-MC-Unique: eY0ZZT8sOlSJQuCmxhvpjA-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-41413c99712so3684115e9.3
+ for <qemu-devel@nongnu.org>; Mon, 18 Mar 2024 09:16:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710778562; x=1711383362;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=odPqgcRarP/qfco3bEKoj8jaqMYx3BuQ+fTJjBu4E9k=;
+ b=ft+A7f5bnVf0kS+y4TInAf/chicp6+1aU6pbPqri6PSEeQDg2P3wNcc9Cbsj0hSRbQ
+ iow7o8PhyPfRQvBe3CuItO1ZmgMH7bpWQrBa5tS8KqETQy9noGibbEroBZQgrJAOIWf9
+ T1fu+APT8EOt+ct0iSYi+1AAomS4A85VKSKO7gR3GYzS2niKGUrsztGeapV3WZiDCyCL
+ VEVre1n34Z3fcC6D0diKd8a/iIjhaRuHSabbc47+EF5RELWX9HwLfL+vZ4TAxS/0ho+Z
+ po/w6wb9r/3BkzCHNBVbXF5m+hm5k1lxJJWFRAb9sSDogP+8EgZmMDJITefpyn+ulWL1
+ jN0A==
+X-Gm-Message-State: AOJu0Yy8DtEKymqwKBHYSXYKeExpr7M37aIiiFITpWF8XxBT71upersx
+ qydKXzOGgNWYMGVfPT8NX7Sa7w8e2TmU7VfnoxVHleSeQufYO5Tyd0e3WvJ3xpH1i4+6WPwv/V5
+ OwplFWi0OPliHN3MFPaaQjqaBidvqb1k4Ay5MIqCUvqFSmayPwUCInZyNxCjV6AZjJIATEOk3MJ
+ 0PoSnv1LeY5gNUc7WcnSc3BwFdSL8GdQ==
+X-Received: by 2002:a05:600c:524c:b0:414:cd1:e46d with SMTP id
+ fc12-20020a05600c524c00b004140cd1e46dmr3307387wmb.23.1710778562380; 
+ Mon, 18 Mar 2024 09:16:02 -0700 (PDT)
+X-Received: by 2002:a05:600c:524c:b0:414:cd1:e46d with SMTP id
+ fc12-20020a05600c524c00b004140cd1e46dmr3307344wmb.23.1710778561762; 
+ Mon, 18 Mar 2024 09:16:01 -0700 (PDT)
+Received: from redhat.com ([2.52.5.113]) by smtp.gmail.com with ESMTPSA id
+ d6-20020a05600c34c600b004140837a0d4sm8222211wmq.3.2024.03.18.09.15.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 Mar 2024 09:16:01 -0700 (PDT)
+Date: Mon, 18 Mar 2024 12:15:57 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Radoslaw Biernacki <rad@semihalf.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>, 
- Beraldo Leal <bleal@redhat.com>, Brad Smith <brad@comstyle.com>, 
- qemu-arm@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-X-Mailer: b4 0.12.3
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+Subject: [PULL 09/24] smbios: get rid of smbios_legacy global
+Message-ID: <b3854ce8a77f14b40a59c4fcef234f4af04504d5.1710778506.git.mst@redhat.com>
+References: <cover.1710778506.git.mst@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1710778506.git.mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,59 +144,180 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EDvqhIq81Tf5
+X-TUID: psG3WXzWrzGV
 
-PAuth makes run timeout on CI so add tests using 'max' without
-it and with impdef one.
+From: Igor Mammedov <imammedo@redhat.com>
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+clean up smbios_set_defaults() which is reused by legacy
+and non legacy machines from being aware of 'legacy' notion
+and need to turn it off. And push legacy handling up to
+PC machine code where it's relevant.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Acked-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Tested-by: Fiona Ebner <f.ebner@proxmox.com>
+Message-Id: <20240314152302.2324164-7-imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ include/hw/firmware/smbios.h |  2 +-
+ hw/arm/virt.c                |  2 +-
+ hw/i386/fw_cfg.c             |  7 ++++---
+ hw/loongarch/virt.c          |  2 +-
+ hw/riscv/virt.c              |  2 +-
+ hw/smbios/smbios.c           | 35 +++++++++++++++--------------------
+ 6 files changed, 23 insertions(+), 27 deletions(-)
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index cf8954d02e..98c76c1ff7 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -203,18 +203,36 @@ def boot_openbsd73(self, cpu):
-     def test_sbsaref_openbsd73_cortex_a57(self):
-         """
-         :avocado: tags=cpu:cortex-a57
-+        :avocado: tags=os:openbsd
-         """
-         self.boot_openbsd73("cortex-a57")
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 36744b6cc9..7b42e7b4ac 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -310,7 +310,7 @@ struct smbios_type_127 {
+ void smbios_entry_add(QemuOpts *opts, Error **errp);
+ void smbios_set_cpuid(uint32_t version, uint32_t features);
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version, bool legacy_mode,
++                         const char *version,
+                          bool uuid_encoded, SmbiosEntryPointType ep_type);
+ void smbios_set_default_processor_family(uint16_t processor_family);
+ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e5cd935232..b634c908a7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1650,7 +1650,7 @@ static void virt_build_smbios(VirtMachineState *vms)
+     }
  
-     def test_sbsaref_openbsd73_neoverse_n1(self):
-         """
-         :avocado: tags=cpu:neoverse-n1
-+        :avocado: tags=os:openbsd
-         """
-         self.boot_openbsd73("neoverse-n1")
+     smbios_set_defaults("QEMU", product,
+-                        vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
++                        vmc->smbios_old_sys_ver ? "1.0" : mc->name,
+                         true, SMBIOS_ENTRY_POINT_TYPE_64);
  
-+    def test_sbsaref_openbsd73_max_pauth_off(self):
-+        """
-+        :avocado: tags=cpu:max
-+        :avocado: tags=os:openbsd
-+        """
-+        self.boot_openbsd73("max,pauth=off")
+     /* build the array of physical mem area from base_memmap */
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index fcb4fb0769..c1e9c0fd9c 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -63,15 +63,16 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg)
+     if (pcmc->smbios_defaults) {
+         /* These values are guest ABI, do not change */
+         smbios_set_defaults("QEMU", mc->desc, mc->name,
+-                            pcmc->smbios_legacy_mode, pcmc->smbios_uuid_encoded,
++                            pcmc->smbios_uuid_encoded,
+                             pcms->smbios_entry_point_type);
+     }
+ 
+     /* tell smbios about cpuid version and features */
+     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
+ 
+-    smbios_tables = smbios_get_table_legacy(ms->smp.cpus, &smbios_tables_len);
+-    if (smbios_tables) {
++    if (pcmc->smbios_legacy_mode) {
++        smbios_tables = smbios_get_table_legacy(ms->smp.cpus,
++                                                &smbios_tables_len);
+         fw_cfg_add_bytes(fw_cfg, FW_CFG_SMBIOS_ENTRIES,
+                          smbios_tables, smbios_tables_len);
+         return;
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index efce112310..53bfdcee61 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -355,7 +355,7 @@ static void virt_build_smbios(LoongArchMachineState *lams)
+         return;
+     }
+ 
+-    smbios_set_defaults("QEMU", product, mc->name, false,
++    smbios_set_defaults("QEMU", product, mc->name,
+                         true, SMBIOS_ENTRY_POINT_TYPE_64);
+ 
+     smbios_get_tables(ms, NULL, 0, &smbios_tables, &smbios_tables_len,
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index a094af97c3..535fd047ba 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1275,7 +1275,7 @@ static void virt_build_smbios(RISCVVirtState *s)
+         product = "KVM Virtual Machine";
+     }
+ 
+-    smbios_set_defaults("QEMU", product, mc->name, false,
++    smbios_set_defaults("QEMU", product, mc->name,
+                         true, SMBIOS_ENTRY_POINT_TYPE_64);
+ 
+     if (riscv_is_32bit(&s->soc[0])) {
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 003c539d76..9f9087601c 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -54,7 +54,6 @@ struct smbios_table {
+ 
+ static uint8_t *smbios_entries;
+ static size_t smbios_entries_len;
+-static bool smbios_legacy = true;
+ static bool smbios_uuid_encoded = true;
+ /* end: legacy structures & constants for <= 2.0 machines */
+ 
+@@ -633,9 +632,16 @@ static void smbios_build_type_1_fields(void)
+ 
+ uint8_t *smbios_get_table_legacy(uint32_t expected_t4_count, size_t *length)
+ {
+-    if (!smbios_legacy) {
+-        *length = 0;
+-        return NULL;
++    /* drop unwanted version of command-line file blob(s) */
++    g_free(smbios_tables);
++    smbios_tables = NULL;
 +
-+    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
-+    def test_sbsaref_openbsd73_max_pauth_impdef(self):
-+        """
-+        :avocado: tags=cpu:max
-+        :avocado: tags=os:openbsd
-+        """
-+        self.boot_openbsd73("max,pauth-impdef=on")
-+
-+    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
-     def test_sbsaref_openbsd73_max(self):
-         """
-         :avocado: tags=cpu:max
-+        :avocado: tags=os:openbsd
-         """
-         self.boot_openbsd73("max")
++    /* also complain if fields were given for types > 1 */
++    if (find_next_bit(have_fields_bitmap,
++                      SMBIOS_MAX_TYPE + 1, 2) < SMBIOS_MAX_TYPE + 1) {
++        error_report("can't process fields for smbios "
++                     "types > 1 on machine versions < 2.1!");
++        exit(1);
+     }
+ 
+     if (!smbios_immutable) {
+@@ -1129,28 +1135,13 @@ void smbios_set_default_processor_family(uint16_t processor_family)
+ }
+ 
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version, bool legacy_mode,
++                         const char *version,
+                          bool uuid_encoded, SmbiosEntryPointType ep_type)
+ {
+     smbios_have_defaults = true;
+-    smbios_legacy = legacy_mode;
+     smbios_uuid_encoded = uuid_encoded;
+     smbios_ep_type = ep_type;
+ 
+-    /* drop unwanted version of command-line file blob(s) */
+-    if (smbios_legacy) {
+-        g_free(smbios_tables);
+-        /* in legacy mode, also complain if fields were given for types > 1 */
+-        if (find_next_bit(have_fields_bitmap,
+-                          SMBIOS_MAX_TYPE+1, 2) < SMBIOS_MAX_TYPE+1) {
+-            error_report("can't process fields for smbios "
+-                         "types > 1 on machine versions < 2.1!");
+-            exit(1);
+-        }
+-    } else {
+-        g_free(smbios_entries);
+-    }
 -
-
+     SMBIOS_SET_DEFAULT(type1.manufacturer, manufacturer);
+     SMBIOS_SET_DEFAULT(type1.product, product);
+     SMBIOS_SET_DEFAULT(type1.version, version);
+@@ -1226,6 +1217,10 @@ void smbios_get_tables(MachineState *ms,
+ {
+     unsigned i, dimm_cnt, offset;
+ 
++    /* drop unwanted (legacy) version of command-line file blob(s) */
++    g_free(smbios_entries);
++    smbios_entries = NULL;
++
+     if (!smbios_immutable) {
+         smbios_build_type_0_table();
+         smbios_build_type_1_table();
 -- 
-2.44.0
+MST
 

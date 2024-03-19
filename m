@@ -1,277 +1,169 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1478826ejb;
-        Tue, 19 Mar 2024 11:19:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVghDqWuk7LE7o+UKLWO+pozEMISCiTTQ8o7eUADTpHJdgI8dsCzUxeNANGHVGcqXqZNbxyYZT1gjFB/YPbrpDMQFxgbxwX
-X-Google-Smtp-Source: AGHT+IE7HPiV4X0zq+ymET7IluhWdqk0tSAIPtadWri+1+BX9XQFxufbTjqswt5VahZbnB52Qzcw
-X-Received: by 2002:a05:6402:380c:b0:568:d3b1:90cf with SMTP id es12-20020a056402380c00b00568d3b190cfmr4856642edb.41.1710872351368;
-        Tue, 19 Mar 2024 11:19:11 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1710872351; cv=pass;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1490799ejb;
+        Tue, 19 Mar 2024 11:40:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMX/pu5LTsHaWe8sMTQoR/0YIzgrN6F0io/6q36izF+k5xcHGzY1JT28S+3oH63vbaWgMn/FuWPt9t15wT2CWf2m3wzZiC
+X-Google-Smtp-Source: AGHT+IHDppInHhOmIO7Qktxxssp65lxgxKBJie52hRVmX0ST23ucZUSyjM6UZ/wJh+C2PhJ0AunV
+X-Received: by 2002:a05:6214:2f0f:b0:691:859c:95bf with SMTP id od15-20020a0562142f0f00b00691859c95bfmr14643925qvb.60.1710873655660;
+        Tue, 19 Mar 2024 11:40:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710873655; cv=none;
         d=google.com; s=arc-20160816;
-        b=jX1bfGMebXuUq7+twsQ0k9FGbQbPBYdVmoAW46/jBvo63o5dHnOlQx5Hj1uPvA9Nho
-         kU51NFkQC3K9de1SDc6QkfTFbWSoMk1rqegQBMXbQp0Ksljsh0JboCyjZNFsTelDVlhf
-         bCCkWS05I9c/wG26ZKhqkit241jnWQMD+lcR+b38SQST/86opuV1tRDArZnGo7rB1joJ
-         BXi8/xy1ewDE+fsSW3rUtG4jTGErSA1v6QJd93IYQQDQx/InSH647XrzFJIV2FTLEOW1
-         JSx/7MR4WgT8O13P3i+YeVq7ccgwm9cJ5ZnuJF09GXetv6MQaFtIK3guY7xmDF1gBLSt
-         Ie/A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=0i1FXUp3Se0Q8v6HAao+2JETY0/VPzWwNUhVoeedqFg=;
-        fh=5yIJeorfVJTzLLqfHiszhIQOvkyIBQB3TlnMWnlg+9A=;
-        b=Al51LBqG7ZNhtGaeYmKNLOEQm3qxa4tcX2R3efvCIJLEWCnd8jk8Tb11kcFyvKdaZT
-         IDX6sX6yZ+WMO1n/nTrJxyCiR2uB6Y0k5IujKbk9lUQI2fn34f+8VCG19E2SYjHSztIz
-         XizydsEDY5VBDhvSTdkye3wb4zF3Marowm4cfmeMVZhPvu5pMVGdRV8lKgSVliEI25p/
-         gg0lxNyxdRQjq46HiDp+kj4gfn+Fg7RHoFTdmm2aXrEILhB83SQ03+m6YzuHNu+bbznh
-         y5cEm+anjzSucurHnLuES4jT+GiERrbOk/Bvaor+Rtpy55gYeDiDJIZoa6/r5GELxcon
-         ERnw==;
+        b=gabXf9hwChoQZHBO78I+lu9eIoV702L3p5fcXlkyHDmGeac49GbsXw9yNJiHtNL9h+
+         kYZO/y2L1S1WtlBIAgesslFi3lpSAOobvl7a/V2JTKFGYKaXJdCQqRImQOFDbqAxMu/N
+         q4NaGqZL2uCnUxcmKixHm8iMgGBN+Od9A7iY9ld3pPG3Fx+d72c7Jipc0qPu1sKCt3v2
+         peNP/4qWCAhl+Ms/gsqjVqvj2TR6iubcNsCeHor1VG029QNtVEdr09xH9qcgkZaUhgB2
+         Pc9UDk6XDLdXfxuTWB+Ko70Uh9Rd07IBcJBnrVtjDtrArBHlYfhj3eIjkoAo45FyfxRe
+         IWCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cxA7qF4mgrEANZPhHQUVl/tVPzqjuidaffO6pTsMZnk=;
+        fh=dVGGeAc4usxRxVdLAtV6KbsxZxPnKFrHQzcQVWL8Cio=;
+        b=o1hm5pRhSVHExYLMAnTtNycagGa6IrJSO4pWKkBiu6pz+1uq/L7no8ANJ3o/aoT3JE
+         OUSxMAUEAdOYlw9bo+HnAZ6IZKVgATAceGDNyPUR7vrOZhBcrvWf5Lem9LJmK7xyjtbN
+         lFOVxfPuJVhZlrDmrqZBpX+CIhXhrhslt/OQVp7VR3dAt9JntV7vVTl9/smwilkTbLQE
+         7jXcneni5DUasTYmQzZeZb08N2KkjVFCm+7gfWydKL4SZVFk/ctfafHuXcXXYzTGb+HE
+         6A3Sl8coJghxpoJ/J1ElYAe1tWFdm+lz60Lnu0yGbN9WV4K/dgq/cb2eCKuHj75CkvoO
+         Ewvw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DLTgm/Wu";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id g27-20020a056402321b00b0056ba01693afsi433787eda.510.2024.03.19.11.19.11
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BqaqB2yn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q7-20020a05621419e700b00691886b125bsi8234283qvc.243.2024.03.19.11.40.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Mar 2024 11:19:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Mar 2024 11:40:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DLTgm/Wu";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-12175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id DFBDE1F23F8D
-	for <alex.bennee@linaro.org>; Tue, 19 Mar 2024 18:19:10 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 34B72374D9;
-	Tue, 19 Mar 2024 18:18:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="DLTgm/Wu"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E2F236AE1
-	for <kvm@vger.kernel.org>; Tue, 19 Mar 2024 18:18:52 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710872335; cv=none; b=Di+Eg+85ZkkVxxKxMxeyLc6iwm4jIrSgS4kNSbn8S7VfwRXjM+EuRHT0tOOEfPIzqkkSKCvNsPzCPBQuUcyQ5S2HUhp4pNxRtrsioO9hy+QnKXbYztdE4hzmoVdNEI6boWjjP4kZDFuWp0ur0jnPHU5i8wzHKkKNtf8lrSpCUto=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710872335; c=relaxed/simple;
-	bh=hzdAk1XXdvKjOZ4AQHy8ggyj0EbaWXWPvMx/bAolRNU=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=RuchRzIMJbMRaNBHtzajVzva5S/9gp7O8uL4qIoFCGej9mpOu4D5aYT9sgwi8khK3p+PHuQjNFGEzrqMwQv+CU9UVStIblSqto4GT69h13vDgPjj4CPSPj4BV64tZfHA+qNI+hEzLWPbZk+vcbLIEtW+df1YruyilVbC18lx3s4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=DLTgm/Wu; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1710872332;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0i1FXUp3Se0Q8v6HAao+2JETY0/VPzWwNUhVoeedqFg=;
-	b=DLTgm/WujYiJXZtmrAonB1F31NUxfFEmSAA7MuvaQjU1LpOGFLnOwUByNsQRCiIoepnzdj
-	1GgehGceReOf2NB3p9rWVF6GecNqCwktk8VqzdYIVDwVrzqs2cNNz+YA3s6SnxgZW9a7ew
-	qTnxKm3hwzoz6g1mHJ7oLQKAq/F/las=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-608-E9oEtvOONzOYmiB8hXMwVg-1; Tue, 19 Mar 2024 14:18:50 -0400
-X-MC-Unique: E9oEtvOONzOYmiB8hXMwVg-1
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-33e4397540bso3588195f8f.3
-        for <kvm@vger.kernel.org>; Tue, 19 Mar 2024 11:18:50 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=BqaqB2yn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rmeNp-0000AA-Gy; Tue, 19 Mar 2024 14:40:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rmeNn-00009N-TQ
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 14:40:19 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rmeNi-0005ml-Jy
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 14:40:19 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-6e6afb754fcso5615127b3a.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 11:40:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710873613; x=1711478413; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cxA7qF4mgrEANZPhHQUVl/tVPzqjuidaffO6pTsMZnk=;
+ b=BqaqB2ynQQ9vCu4MISNLgAdk3CsnJYIy1gb5MEeVyPMQ5pWH/conk1PoD3hNHKtErV
+ sqqay36DdwApYgKUZBTidHfHq2jjdUsp6ip00afal6kDfSnZuJ7HWRZjCp00SELSxerh
+ Pm/CT98RP4IPEKIU/iNENp4Amc47HbdcwA86apXH8ywwhh/I2n1ErZY40gIqBpSMcpfF
+ FSICj74OFj4051z8O34GWQFpJozf6NkODgob2kv7PE3FDQ2O9mRi3yiRddMLygCiY3RY
+ YlkWECbm0Zu+8Am92ygcu5hLSY7QTjn2j5+hcVIkW20gCelV3zC7Iwx9aaupMYwE1aa0
+ ykyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710872329; x=1711477129;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0i1FXUp3Se0Q8v6HAao+2JETY0/VPzWwNUhVoeedqFg=;
-        b=j46ZWysK+y0h88EG33h37j4A5dBaEfBvmpHL2U6hH1NWOOo1vgpmgw55Fxb1YcNfKB
-         kzdUUBTpDDm3hnQY3EChaqXd3KGCqgCTRttB9CsxkZD36i7tl2cv1fSxBsGLnLIrlKIG
-         IOiOp5HLwqtJPUGosRPcXcL/Dl6PyT2/0eiemIvSf/JnGHheiCXZhqhriI/wwJ9L8Hss
-         pmO25l0VbHhFKJNSGe5Hcm4K74DVh7zsqHqeFPqFimNvoIVnNjR4i+0QyaAYlRpWf9rP
-         3w6vHFYMHkWBKbobZFxpr9jh1H8nH8l30xUuw7u8gSJTQDLzejhAOF3X+zoDgzXq/OQw
-         hdUg==
-X-Forwarded-Encrypted: i=1; AJvYcCVUaRXv5hC6aSZaB+TO7m9YdAlzeJJoEfatqund0DD+PvwIC0zbHVxgcVyop79VeDQ2/OheWl6C/bFpiO6LfEU00ETA
-X-Gm-Message-State: AOJu0Yxdm+Ybb22pDZjS7UBB9bbRfRcImLUaxEctlK100AZXZbrLdRad
-	ZU4SUdLxf7LutPleKRaaad6CUTCcoQvYkKojkjO3FfrX+4iYhHZKXAGDEZaykXeB+v/+G/a4oYo
-	azCxaqiGwyyVZ4IsIe7XdH1YtHcL7GRr7Tg9gczNfCyFVwnjcnw==
-X-Received: by 2002:a5d:6505:0:b0:33e:1e0:2679 with SMTP id x5-20020a5d6505000000b0033e01e02679mr10466494wru.47.1710872329416;
-        Tue, 19 Mar 2024 11:18:49 -0700 (PDT)
-X-Received: by 2002:a5d:6505:0:b0:33e:1e0:2679 with SMTP id x5-20020a5d6505000000b0033e01e02679mr10466468wru.47.1710872329046;
-        Tue, 19 Mar 2024 11:18:49 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id u14-20020a056000038e00b0033e34c53354sm8525278wrf.56.2024.03.19.11.18.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Mar 2024 11:18:48 -0700 (PDT)
-Message-ID: <f26c5a3d-8ca8-4fbc-860e-d170cd5973c8@redhat.com>
-Date: Tue, 19 Mar 2024 19:18:47 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1710873613; x=1711478413;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cxA7qF4mgrEANZPhHQUVl/tVPzqjuidaffO6pTsMZnk=;
+ b=G99M4Gn2xO5riXvbUOX46KitVPzCPbLrFSR7GeyqmEZjl9zkUqoLNJEMr9M8Hu3cGh
+ eOr8R/Q0wDB+VgPa6z8YWYlJfKU8yGKogL69XmA+gRAzXfnOcOAZ1JfoP7EfAcwNe6J7
+ mNSP2yVtK4eh1QKQfPP5nED7CLfxLZljjrG0wNAckGg0i6E/wrfWPs8TF0Je1JdHlrqW
+ +OEtkKYe2ERfCZbXzB8gxEDWMYRgdu+Y5nW5uJRMH+TPWkroKFLkE9xEoYfJUtgAL9hU
+ yxjghR0xgB2sOr5ek6wPZ8AvxvoptPayTCLSn3WCnWzwCTiAst2gTbuwERbf/kGYWaUu
+ n7ZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVRHWlPohwGxudRCPXkzRxIQQdMJ6EIxaFB4iYPdei+kgHLX9SuzPrEtLMHNq/u7QmFUXhlaB2JurJX5JsjfuC9RnxX
+X-Gm-Message-State: AOJu0YzqeE6XBDSBu0VN5IGjqIBG6MeqCZ9AkdvfDLkKc7KdWxCw54ip
+ cs/DoxglqkZHz9ygXawMDbbvu0S9P2J0Jfg9D23PYlAHaT8Y+c6gFCZh0jxkkNc=
+X-Received: by 2002:a05:6a00:138b:b0:6e7:4abe:85a0 with SMTP id
+ t11-20020a056a00138b00b006e74abe85a0mr2200037pfg.14.1710873612879; 
+ Tue, 19 Mar 2024 11:40:12 -0700 (PDT)
+Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
+ [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
+ o8-20020a056a001b4800b006e68bff396csm10022896pfv.215.2024.03.19.11.40.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Mar 2024 11:40:12 -0700 (PDT)
+Message-ID: <d2aac7bb-9b97-495d-a203-0244a50a721a@linaro.org>
+Date: Tue, 19 Mar 2024 08:40:09 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
+Subject: Re: [RFC PATCH v5 06/22] target/arm: Add support for Non-maskable
+ Interrupt
 Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org,
- Sebastian Ott <sebott@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org
-References: <20240221063431.76992-1-shahuang@redhat.com>
- <ZfmtxxlATpvhK61y@redhat.com>
- <84e01fa8-0de6-4d2b-8696-53cd3c3f42fa@redhat.com>
- <ZfnUZKf3p8jv2yEM@redhat.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <ZfnUZKf3p8jv2yEM@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: kGnfx0NggScG
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jinjie Ruan <ruanjinjie@huawei.com>, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20240229131039.1868904-1-ruanjinjie@huawei.com>
+ <20240229131039.1868904-7-ruanjinjie@huawei.com>
+ <8d494fe8-c0f0-47b3-9f59-ac69f10c1e64@linaro.org>
+ <CAFEAcA93HZEvVxFWE8GoCEZwOMjCVX-_EdOoubyGSyoMc+f6LQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA93HZEvVxFWE8GoCEZwOMjCVX-_EdOoubyGSyoMc+f6LQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8sxZ22R1xcbn
 
-Hi,
-
-On 3/19/24 19:07, Daniel P. Berrangé wrote:
-> On Tue, Mar 19, 2024 at 06:58:33PM +0100, Eric Auger wrote:
->> Hi Daniel,
+On 3/19/24 07:03, Peter Maydell wrote:
+> On Thu, 29 Feb 2024 at 23:02, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> On 3/19/24 16:22, Daniel P. Berrangé wrote:
->>> On Wed, Feb 21, 2024 at 01:34:31AM -0500, Shaoqin Huang wrote:
->>>> The KVM_ARM_VCPU_PMU_V3_FILTER provides the ability to let the VMM decide
->>>> which PMU events are provided to the guest. Add a new option
->>>> `kvm-pmu-filter` as -cpu sub-option to set the PMU Event Filtering.
->>>> Without the filter, all PMU events are exposed from host to guest by
->>>> default. The usage of the new sub-option can be found from the updated
->>>> document (docs/system/arm/cpu-features.rst).
->>>>
->>>> Here is an example which shows how to use the PMU Event Filtering, when
->>>> we launch a guest by use kvm, add such command line:
->>>>
->>>>   # qemu-system-aarch64 \
->>>>         -accel kvm \
->>>>         -cpu host,kvm-pmu-filter="D:0x11-0x11"
->>>
->>> snip
->>>
->>>> @@ -517,6 +533,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->>>>                               kvm_steal_time_set);
->>>>      object_property_set_description(obj, "kvm-steal-time",
->>>>                                      "Set off to disable KVM steal time.");
->>>> +
->>>> +    object_property_add_str(obj, "kvm-pmu-filter", kvm_pmu_filter_get,
->>>> +                            kvm_pmu_filter_set);
->>>> +    object_property_set_description(obj, "kvm-pmu-filter",
->>>> +                                    "PMU Event Filtering description for "
->>>> +                                    "guest PMU. (default: NULL, disabled)");
->>>>  }
->>>
->>> Passing a string property, but....[1]
->>>
->>>>  
->>>>  bool kvm_arm_pmu_supported(void)
->>>> @@ -1706,6 +1728,62 @@ static bool kvm_arm_set_device_attr(ARMCPU *cpu, struct kvm_device_attr *attr,
->>>>      return true;
->>>>  }
->>>>  
->>>> +static void kvm_arm_pmu_filter_init(ARMCPU *cpu)
->>>> +{
->>>> +    static bool pmu_filter_init;
->>>> +    struct kvm_pmu_event_filter filter;
->>>> +    struct kvm_device_attr attr = {
->>>> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
->>>> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
->>>> +        .addr       = (uint64_t)&filter,
->>>> +    };
->>>> +    int i;
->>>> +    g_auto(GStrv) event_filters;
->>>> +
->>>> +    if (!cpu->kvm_pmu_filter) {
->>>> +        return;
->>>> +    }
->>>> +    if (kvm_vcpu_ioctl(CPU(cpu), KVM_HAS_DEVICE_ATTR, &attr)) {
->>>> +        warn_report("The KVM doesn't support the PMU Event Filter!");
->>>
->>> If the user requested a filter and it can't be supported, QEMU
->>> must exit with an error, not ignore the user's request.
->>>
->>>> +        return;
->>>> +    }
->>>> +
->>>> +    /*
->>>> +     * The filter only needs to be initialized through one vcpu ioctl and it
->>>> +     * will affect all other vcpu in the vm.
->>>> +     */
->>>> +    if (pmu_filter_init) {
->>>> +        return;
->>>> +    } else {
->>>> +        pmu_filter_init = true;
->>>> +    }
->>>> +
->>>> +    event_filters = g_strsplit(cpu->kvm_pmu_filter, ";", -1);
->>>> +    for (i = 0; event_filters[i]; i++) {
->>>> +        unsigned short start = 0, end = 0;
->>>> +        char act;
->>>> +
->>>> +        if (sscanf(event_filters[i], "%c:%hx-%hx", &act, &start, &end) != 3) {
->>>> +            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
->>>> +            continue;
->>>
->>> Warning on user syntax errors is undesirable - it should be a fatal
->>> error of the user gets this wrong.
->>>
->>>> +        }
->>>> +
->>>> +        if ((act != 'A' && act != 'D') || start > end) {
->>>> +            warn_report("Skipping invalid PMU filter %s", event_filters[i]);
->>>> +            continue;
->>>
->>> Likewise should be fatal.
->>>
->>>> +        }
->>>> +
->>>> +        filter.base_event = start;
->>>> +        filter.nevents = end - start + 1;
->>>> +        filter.action = (act == 'A') ? KVM_PMU_EVENT_ALLOW :
->>>> +                                       KVM_PMU_EVENT_DENY;
->>>> +
->>>> +        if (!kvm_arm_set_device_attr(cpu, &attr, "PMU_V3_FILTER")) {
->>>> +            break;
->>>> +        }
->>>> +    }
->>>> +}
->>>
->>> ..[1] then implementing a custom parser is rather a QEMU design anti-pattern,
->>> especially when the proposed syntax is incapable of being mapped into the
->>> normal QAPI syntax for a list of structs should we want to fully convert
->>> -cpu to QAPI parsing later. I wonder if can we model this property with
->>> QAPI now ?
->> I guess you mean creating a new property like those in
->> hw/core/qdev-properties-system.c for instance  and populating an array
->> of those at CPU object level?
+>> On 2/29/24 03:10, Jinjie Ruan via wrote:
+>>> +    bool new_state = ((env->cp15.hcr_el2 & HCR_VI) &&
+>>> +                      (env->cp15.hcrx_el2 & HCRX_VINMI)) ||
+>>> +                     ((env->cp15.hcr_el2 & HCR_VF) &&
+>>> +                      (env->cp15.hcrx_el2 & HCRX_VFNMI)) ||
+>>> +        (env->irq_line_state & CPU_INTERRUPT_VNMI);
+>>
+>> Because the GIC cannot signal an FIQ with superpriority, I think you should not include VF
+>> && VFNMI in CPU_INTERRUPT_VNMI.
 > 
-> Yeah, something like the IOThreadVirtQueueMapping data type would
-> be the more QAPI like code pattern.
-OK thank you for the confirmation. Then if we create such kind of
-property it would be nice that this latter also matches the need of x86
-PMU filtering. I think the uapi exists at KVM level but has never been
-integrated in qemu.
-> 
->> Note there is v8 but most of your comments still apply
->> https://lore.kernel.org/all/20240312074849.71475-1-shahuang@redhat.com/
-> 
-> Yes, sorry I just saw Peter's query about libvirt on this v7 and
-> didn't think to look for a newer version
+> The GIC can't, but a hypervisor can -- it just sets the
+> VF and VFNMI bits if it wants one. (Architecturally, the CPU
+> has a FIQ-with-superpriority, it's only the GIC that doesn't.)
 
-no problem. Thank you for your time
+Yes, I know.
 
-Eric
-> 
-> With regards,
-> Daniel
+The point was not to mix (irq from cpu or gic) with (fiq from cpu) so that we can 
+correctly determine superpriority later.
+
+Another way would have been to add an fiq-with-superpriority CPU_INTERRUPT bit, but since 
+there's only one way to get that at present, I thought the extra bit was overkill.
+
+
+r~
 

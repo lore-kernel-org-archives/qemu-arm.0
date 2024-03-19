@@ -1,123 +1,125 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1382959ejb;
-        Tue, 19 Mar 2024 08:45:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUgDVeTpP7MLuCDD23b7wGJ7zHpGgEAvLmWU6l1J85Rl87twTF664W7bpL2SO/x+eZnhUBXpkUgz59sxCoPFW869sHCxyoT
-X-Google-Smtp-Source: AGHT+IGBCnJSV8IcEhITLWBXeACXi9pcZqXTfkPwKpkyW28PZZLXwZmbmS4Wk3rcNGCPeREeFuZl
-X-Received: by 2002:a0d:c242:0:b0:60c:c96d:7e18 with SMTP id e63-20020a0dc242000000b0060cc96d7e18mr2982038ywd.42.1710863112628;
-        Tue, 19 Mar 2024 08:45:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710863112; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1383015ejb;
+        Tue, 19 Mar 2024 08:45:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnTtLMjwg6ptXQEl1T1ygo+SHLkLZzufAMCuOoAtCXlpmGD8w+OOOLpliy252zgotcV6It1I11xizmFv4HDG3eQkLZOzLG
+X-Google-Smtp-Source: AGHT+IGlfM8ivwt+F30C0SyASBuULqdLkgPL9c69ZAwODCEYVz7Q5Pxl8Xcsx3Jj9C/TBjDdVuGI
+X-Received: by 2002:a05:6808:1246:b0:3c3:8a48:32c2 with SMTP id o6-20020a056808124600b003c38a4832c2mr3103817oiv.59.1710863117615;
+        Tue, 19 Mar 2024 08:45:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710863117; cv=none;
         d=google.com; s=arc-20160816;
-        b=KlVTuG75vhIVbR2R78ibv4s6JC3We7jECko+Q0xJTjaGwMbpUOmkmIaTax34e95s/1
-         q0jc7CYxidN7rs2vcfW0EjJeKdLr6F+j6RL3iRDagnZlBqFGsSDHTE7EmiXY3CPPQsAj
-         PeZPU/UdRuB1f9B/nlc0PwtE4WBy+FkkAH06Kb1OgCNz2mD2iQS7eexQ0J96GWtQ9TUX
-         mOfLPL+gezDrD44KsmrrU9IMHHK7+vJjL2mSjtouQ1qzD1Jd87gJhIb4qlN5tHNM9Zk1
-         BJjvttDXOv+2hC8WJUtVeuDREDR1ZFRm+I7umhlbjMYlgN+aSMlC0eFotMFjBpev54Lp
-         mGoA==
+        b=oGW7aHV/aSvogyeYK8Q6PzkcwHl3MaMp4Tm9vvQw3srOJcljYc93tO8wM/8gFUtwmP
+         7eqPi6+h+kAb4eDD1smHmNwyxmnbX8SYW5ZazMplgMQJeWaLGQIvRysgoY7VIHwQff4+
+         agURuonTBewn2dJv3+1kMeKKgcUXQGIEBnR20yaBkE+0dr6DEGvfjJenxdLXzhM1JSqV
+         tMrVsM73/j7stOp/qr3f6+ISfC/+BLBBQJjonSixEGc+TJr6A9E95OPbaLo8YeArJDxT
+         qHfz03z4pXm47gNN7dhJRTa0HvGD75c/GQvp7YQVqVJx8uD8YQd487fdPFCYUhNbO9+X
+         2FPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9AmlJlFpu+sjCS8Dqdfk+383y3J9XzQtcfIth5cqVHg=;
-        fh=fO4L2BTEwXJ/MqH/AYWhhNeVPrdGOpPm07Kg8QnZR/Y=;
-        b=h/8QHdIT91dbPfMjE4cqdaKHT5sKr5mNpFt0EK3gAOokroYxmKn6UMU0CdWC/ky2Ih
-         78ttjUXU2tmkNyxGMN872nEnWc19Z1aTLvJMVLt9APKgQBY45/Fmv8iD3KFl0fStEUOB
-         CsrBVPFBl0my//TnwFjS2XvCHsxt3PdXsZQiibhfwPZ4dyQhQKQXLPPT2lCkJQqPrW0f
-         3a9LG6cfb0K/l3yx/Q3KbqpOLQBCb29EkBqWGWxchR9kN9/+IAnkqlEx0Y1Jj507/5+T
-         El43RImBotJyblvIb+Z4pU7Qgtb6ORcZqqWZ/tSNX+1vhYGyuT6EYHEGLMBFtlBH7PP8
-         tV8g==;
+        bh=DikP2L6ARWdRvFee2b+GuSHD2n5uD5QzEz8674gqbFw=;
+        fh=rMROp7HllCADjYk2EEXwMRkICjUS+BGXLgMBfE3FKxE=;
+        b=WaRroGx8jBzjn4zDczlIP+ho4k/DfIwbda1GAwujZF2nPj1/t16dcfw9ca/uzcGjh6
+         ofttKDDVKh9W4WifTrmlJcy6SovKb7ffGNIzXYH3h1AKgCvbK8lHo8SSWOH3rSRWDO68
+         K9BgmAU0RXFyUSG7J4pvfvHntZAaWCX7fLZca7H0F4cjCOfCOMJ2uq/XKfDCv06d8lhz
+         Bv0R97zULS4Mbwqw/EeKJJwM2d5RivVRnC5rnPSizcVoj4fZE6LAUTKDpFhQouXJXez5
+         2rSNSM4ThNX69ZOOtgPg0zgr1bwmnA9uW2O65sAbSWo1zeBaUlHbxWyc4f2S5eNS44RS
+         rWjg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wsBGyhpC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zXh3ae0I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y11-20020a05622a120b00b00430c7694074si6060593qtx.638.2024.03.19.08.45.12
+        by mx.google.com with ESMTPS id z8-20020a056214040800b0069006895612si11519248qvx.548.2024.03.19.08.45.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2024 08:45:12 -0700 (PDT)
+        Tue, 19 Mar 2024 08:45:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wsBGyhpC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zXh3ae0I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmbde-0006PR-0k; Tue, 19 Mar 2024 11:44:30 -0400
+	id 1rmbdq-0007ed-2M; Tue, 19 Mar 2024 11:44:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbdL-00060D-BT
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:44:14 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbdm-0007Oc-N8
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:44:38 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbdH-00055X-FE
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:44:10 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-33e285a33bdso2964751f8f.2
- for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 08:44:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbdY-0005B6-F4
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:44:38 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-413f4cb646dso37792375e9.1
+ for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 08:44:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710863045; x=1711467845; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710863062; x=1711467862; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9AmlJlFpu+sjCS8Dqdfk+383y3J9XzQtcfIth5cqVHg=;
- b=wsBGyhpCm7bq6NdO5kPpoQWgxeNQSAu4E9qxGVPeq+A6TmDzlNEh8QltvW6QOYP4Ah
- zahqNvc8QiHeoQ34brlJTGbaCQktcZACK5YTEMpYqg111R85zoX1neDLw8fd+CahKdVU
- Te5TatZAonQR8MOF4xObABTLnt1F+SFF78vZfk+4kO75peM68zwdEW4Hr55pDAS8riJU
- eAm0FlXKVG0sOWSs76bWd++bsF2Sejm4coO7WdJr0hU66aor9rfQ3T/t2Kw3s0un8B5q
- kSlMyrSTghrJLJ0OHB6IIOqi6yQ9JqCPZJFfK3+2y+bZsPV6HFp6XDhO+P8h+HF6Ep81
- Y+Tw==
+ bh=DikP2L6ARWdRvFee2b+GuSHD2n5uD5QzEz8674gqbFw=;
+ b=zXh3ae0I+/g/ICjQH+F22BreXtfQUlFlBxw9CB5c6raSZYiVC6JPuZ6MNjSwddOPaw
+ mMzzCcQ4P5N9omMMZmxhlje91ihdRYgN4yNpt/kN5sPo8GotoFJWI2ZNY0isPkLMYJEO
+ yRNyvdzAucfI/rfhoDtBJU4XTJLemHu1BaVauD9WgE1icpVq4p3ZE3pMT+xcQ2ZgydNy
+ MrZGBsZmC3SVAqHJhAb7AO211gA9FxjwGhc0jK93+9iDKYtI2NInD/Pqt1LgIMfOXhty
+ 565CE0LWg/a6/C87pcyznRWWomEmPvtskIwCE1UQPb/xkfWVvsdRsssot69T8YD226u9
+ dIIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710863045; x=1711467845;
+ d=1e100.net; s=20230601; t=1710863062; x=1711467862;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9AmlJlFpu+sjCS8Dqdfk+383y3J9XzQtcfIth5cqVHg=;
- b=rtTMNHm543Zn6WmWFramQFSsldmuDxm9Dh7stAL79WEiruzdL1hwvmLex5+UTuvkMc
- nidhyRfq0/m4rIFrb8hbnM4xVJDHFrpU+WBMHrcRme8ftNq2xApZDqNM5i6jicza5Ms5
- 9Vbb3x7/kNgIFzbvnHuwcKoTDUn5yoWrjg4mly5Tz7wMqbc9AsU55VifgDF1B6Nm0CQV
- W8aC/0iCNiOeYX+0AKkmAbFBaYg+UznTgbq4LwIqdQMx7dNHAY5v9XJidaACHI2MI6sQ
- z1B+Ix3JReILElwYhGdhIa4P3Rpcr4m9x6jzCQ/cQZjztAWj8cwAnj9tqKOjpGKeNyYG
- nneA==
+ bh=DikP2L6ARWdRvFee2b+GuSHD2n5uD5QzEz8674gqbFw=;
+ b=Koeg2eWXzeEnJWrSYt1MZ5PiXTzqbU3ay6XzxTQox5zM6LzObsIfq9FlkC3FoBbTcA
+ vm30zxmuCzZ3MjQK8H33HR0b3PWAye5oDaiw0M+2H6bAlLJZ5GtRAnKNCpGSAcxxmCDk
+ TP351tlMH97wTdTEx19jqN5NQ9FQxx0RmSKX7zpdiYpAQWMTW2N5vxNCsHmzBExcbV+b
+ P+qOVlA6W4w+Gw1bltyA4yODERZ5FUQMqaKhJdhnDWdOr7b+EtQkrP4FnmwHfXV2kifx
+ fVEu7Q52ENhnczbX+8sTgovMkQYqCap6B9nnzyxofBw0mjFUHlhoSC4DMqsHNptvOMCv
+ jNmA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVVkHDTwgUmE5bI+vy/K9TaZguGfL/1lukXm2mwX9m4rQRhjOWztBcChbFcPQ+J43JPaNwveHw7ekQDrFfkGVFodtBS
-X-Gm-Message-State: AOJu0YytV++GzUSlhS5Pv701oQkUh8eOgosntrkaTM8OQqo969aziGlR
- TAxdFfbu/Sc1HbdIxaiTlrC62NopJvCLgaSwswfdhChNjStkTwPn1KSBtv3WZfY=
-X-Received: by 2002:a5d:4ac4:0:b0:33e:bf11:a007 with SMTP id
- y4-20020a5d4ac4000000b0033ebf11a007mr10698783wrs.31.1710863045475; 
- Tue, 19 Mar 2024 08:44:05 -0700 (PDT)
+ AJvYcCVHH2Qgmo2V7iKkdTkqlXeZPpZqTyOtcpaahFWH48itlICgfFTJnCCVqTPQfg+nGeC8ATY0CdWuVgsVCJHfwd51xpVl
+X-Gm-Message-State: AOJu0Yy9BMjROtJqwRliW3OUo/1V/Z/BpluX9jpnvYPwW98Q8LKgovH6
+ ZpcaFT9lcBCtDTcupeM0oq5L8VnXUDfrsSB+nX0mEx6VFZqDWsDH+DG/5+Ezda8=
+X-Received: by 2002:a5d:5a0e:0:b0:33e:76db:9bf8 with SMTP id
+ bq14-20020a5d5a0e000000b0033e76db9bf8mr13665980wrb.68.1710863062221; 
+ Tue, 19 Mar 2024 08:44:22 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.166.129])
  by smtp.gmail.com with ESMTPSA id
- dw11-20020a0560000dcb00b0033b66c2d61esm12575894wrb.48.2024.03.19.08.44.04
+ w10-20020adff9ca000000b0033e72e104c5sm12592777wrr.34.2024.03.19.08.44.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 19 Mar 2024 08:44:05 -0700 (PDT)
+ Tue, 19 Mar 2024 08:44:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Anton Johansson <anjo@rev.ng>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Song Gao <gaosong@loongson.cn>
-Subject: [PATCH-for-9.1 11/27] target/loongarch: Convert to
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Subject: [PATCH-for-9.1 14/27] target/mips: Convert to
  TCGCPUOps::get_cpu_state()
-Date: Tue, 19 Mar 2024 16:42:40 +0100
-Message-ID: <20240319154258.71206-12-philmd@linaro.org>
+Date: Tue, 19 Mar 2024 16:42:43 +0100
+Message-ID: <20240319154258.71206-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240319154258.71206-1-philmd@linaro.org>
 References: <20240319154258.71206-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,74 +134,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wau5la75wPEP
+X-TUID: rdG5BGPegShI
 
 Convert cpu_get_tb_cpu_state() to TCGCPUOps::get_cpu_state().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/loongarch/cpu.h | 14 --------------
- target/loongarch/cpu.c | 15 +++++++++++++++
- 2 files changed, 15 insertions(+), 14 deletions(-)
+ target/mips/cpu.h              | 11 -----------
+ target/mips/tcg/tcg-internal.h |  2 ++
+ target/mips/cpu.c              |  1 +
+ target/mips/tcg/translate.c    |  9 +++++++++
+ 4 files changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
-index d814ba08dd..14f1d37606 100644
---- a/target/loongarch/cpu.h
-+++ b/target/loongarch/cpu.h
-@@ -443,20 +443,6 @@ static inline void set_pc(CPULoongArchState *env, uint64_t value)
- #define HW_FLAGS_VA32       0x20
- #define HW_FLAGS_EUEN_ASXE  0x40
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index caa12a2dd3..9d2f7e0194 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1362,17 +1362,6 @@ void cpu_mips_clock_init(MIPSCPU *cpu);
+ /* helper.c */
+ target_ulong exception_resume_pc(CPUMIPSState *env);
  
 -#define TARGET_HAS_CPU_GET_TB_CPU_STATE
 -
--static inline void cpu_get_tb_cpu_state(CPULoongArchState *env, vaddr *pc,
+-static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, vaddr *pc,
 -                                        uint64_t *cs_base, uint32_t *flags)
 -{
--    *pc = env->pc;
+-    *pc = env->active_tc.PC;
 -    *cs_base = 0;
--    *flags = env->CSR_CRMD & (R_CSR_CRMD_PLV_MASK | R_CSR_CRMD_PG_MASK);
--    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, FPE) * HW_FLAGS_EUEN_FPE;
--    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, SXE) * HW_FLAGS_EUEN_SXE;
--    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, ASXE) * HW_FLAGS_EUEN_ASXE;
--    *flags |= is_va32(env) * HW_FLAGS_VA32;
+-    *flags = env->hflags & (MIPS_HFLAG_TMASK | MIPS_HFLAG_BMASK |
+-                            MIPS_HFLAG_HWRENA_ULR);
 -}
 -
- #include "exec/cpu-all.h"
+ /**
+  * mips_cpu_create_with_clock:
+  * @typename: a MIPS CPU type.
+diff --git a/target/mips/tcg/tcg-internal.h b/target/mips/tcg/tcg-internal.h
+index aef032c48d..c54d5c64b2 100644
+--- a/target/mips/tcg/tcg-internal.h
++++ b/target/mips/tcg/tcg-internal.h
+@@ -24,6 +24,8 @@ G_NORETURN void mips_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+ void mips_restore_state_to_opc(CPUState *cs,
+                                const TranslationBlock *tb,
+                                const uint64_t *data);
++void mips_get_cpu_state(CPUMIPSState *env, vaddr *pc,
++                        uint64_t *cs_base, uint32_t *flags);
  
- #define CPU_RESOLVING_TYPE TYPE_LOONGARCH_CPU
-diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-index f6ffb3aadb..a2d772ca5f 100644
---- a/target/loongarch/cpu.c
-+++ b/target/loongarch/cpu.c
-@@ -340,6 +340,20 @@ static void loongarch_restore_state_to_opc(CPUState *cs,
- {
-     set_pc(cpu_env(cs), data[0]);
+ const char *mips_exception_name(int32_t exception);
+ 
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 8d8f690a53..6cc64b7628 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -551,6 +551,7 @@ static const TCGCPUOps mips_tcg_ops = {
+     .initialize = mips_tcg_init,
+     .synchronize_from_tb = mips_cpu_synchronize_from_tb,
+     .restore_state_to_opc = mips_restore_state_to_opc,
++    .get_cpu_state = mips_get_cpu_state,
+ 
+ #if !defined(CONFIG_USER_ONLY)
+     .tlb_fill = mips_cpu_tlb_fill,
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index 06c108cc9c..4ecac13a8f 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -15581,3 +15581,12 @@ void mips_restore_state_to_opc(CPUState *cs,
+         break;
+     }
  }
 +
-+static void loongarch_get_cpu_state(CPULoongArchState *env, vaddr *pc,
-+                                    uint64_t *cs_base, uint32_t *flags)
++void mips_get_cpu_state(CPUMIPSState *env, vaddr *pc,
++                        uint64_t *cs_base, uint32_t *flags)
 +{
-+    *pc = env->pc;
++    *pc = env->active_tc.PC;
 +    *cs_base = 0;
-+    *flags = env->CSR_CRMD & (R_CSR_CRMD_PLV_MASK | R_CSR_CRMD_PG_MASK);
-+    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, FPE) * HW_FLAGS_EUEN_FPE;
-+    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, SXE) * HW_FLAGS_EUEN_SXE;
-+    *flags |= FIELD_EX64(env->CSR_EUEN, CSR_EUEN, ASXE) * HW_FLAGS_EUEN_ASXE;
-+    *flags |= is_va32(env) * HW_FLAGS_VA32;
++    *flags = env->hflags & (MIPS_HFLAG_TMASK | MIPS_HFLAG_BMASK |
++                            MIPS_HFLAG_HWRENA_ULR);
 +}
-+
-+
- #endif /* CONFIG_TCG */
- 
- static bool loongarch_cpu_has_work(CPUState *cs)
-@@ -729,6 +743,7 @@ static const TCGCPUOps loongarch_tcg_ops = {
-     .initialize = loongarch_translate_init,
-     .synchronize_from_tb = loongarch_cpu_synchronize_from_tb,
-     .restore_state_to_opc = loongarch_restore_state_to_opc,
-+    .get_cpu_state = loongarch_get_cpu_state,
- 
- #ifndef CONFIG_USER_ONLY
-     .tlb_fill = loongarch_cpu_tlb_fill,
 -- 
 2.41.0
 

@@ -1,109 +1,108 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1449214ejb;
-        Tue, 19 Mar 2024 10:29:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWydWindyvkm2XtxmzEXXvJR225IzRAuk5tGrZxemdCyXJVKgla2Z2asYQhqs79MZPPlyl0XomXU+S8PlZEoVccBp/ghySN
-X-Google-Smtp-Source: AGHT+IFUurP0WAJt5bMXZOvXwzIbPli61EzWLuorJ0H43S2JETxsCqdWD1lYZyPVpJqPVm954vtg
-X-Received: by 2002:a0c:aa0c:0:b0:696:2430:c2ea with SMTP id d12-20020a0caa0c000000b006962430c2eamr4844009qvb.4.1710869358425;
-        Tue, 19 Mar 2024 10:29:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710869358; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1450077ejb;
+        Tue, 19 Mar 2024 10:30:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUoj7VUdyJiUik9hddNk/Fa/EjUURf68jToSbJWd806fVRs6AfCqCxgbIogN6RUe2TzgF2VttK0YoRAAyMQz4/q3sy9J2hN
+X-Google-Smtp-Source: AGHT+IH6mccqHcsLTCSRQRptjSIwDDi9V075ZuJzqALy88MKO4qz2ipet6AaDXcGIGyst2coe2J+
+X-Received: by 2002:a05:6102:30b8:b0:476:6d3:dec1 with SMTP id y24-20020a05610230b800b0047606d3dec1mr2686019vsd.17.1710869444098;
+        Tue, 19 Mar 2024 10:30:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710869444; cv=none;
         d=google.com; s=arc-20160816;
-        b=n+D/xzdQBu5jzowMcQ/L/Aoa7ttIK1+JTJsC5dVMeI3OEU79jLUmicJBAIYcQ4MftO
-         dCOix1QyJVk0u465wB3cqTL/U+Rx7Gi1kTNLTS9rmHak8M2qYMlF5ISrezZ3j+ncpdor
-         xWeow1UsQTvpbWdVqk6ZRK9qEvGMJqbpr9MsprqQ6bidRJ6krhwOzUn1TyvmeHFC1iUo
-         aacoQ5Yfb2g7Gcs3L6VsS/ba1zP1c0QnOY8Ox86N98h4gSMCD7eWMscQkXEKKLGbDVrJ
-         vHyu1Txd8bCzOqhdDcF8d0VutHZ7v2jjPdqCMfsKQsegPmue3ZxhYzcwRdfArEz9BPE1
-         UbwQ==
+        b=pWgPI0MHnx6KNu2EL8WZXuAtfwADZEN0mDpr6srhHgA6PVqmFXa3gUkXQ+69/UlxeW
+         DFyJBvr0KWmz/HQPFh8yHQNu076B42PQQZEYZu8GDLkAvgQrdLK6xgfKriqAuMS2+hX+
+         vJ1F08xT0azHpfdeG7l/TXiFch9UUKvWXtqLeTRU0iPwEp9dO89swOwVEtUUH3s1qBs7
+         LwkmwG78x6ZQpkVDi17OaMjI2DMsxqIfF85zkS5xMtAWSmBqfGYkk3FKbu5/odeUnQ+C
+         iXXBHg7qH7r+XThUsFoOpZsRn3dLUqQ5kI/ZeRX9tHpcCggVneIuPmtnX943AdA9Vnl8
+         OxcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=vOwEUj9xPQk9/xMWe7WXcb2JPRH0w5ppYiC8cOHOmTI=;
-        fh=jz8b4UKq1Oyb2ZjFMqDtUl49X4+hrpw9hrSp8kN2oX8=;
-        b=eUm+LJ1XkG7uzoH737z058WTLoROVrpKPrM/x9gFw08ykvdlymhF/t5VMpdyZfhOZv
-         lgXIbRQGq5D1DqJIm+txkQ00xpZZLslgNMi6dFitOZ2cVJ5E6axBoIrIA/GOUsTCa/q4
-         l+e/phGu2FyVCuo1akc/TsFYzpIW77dHZvJHSOtHyKVY5nvjLvukChEY/1z+BwgFdVQp
-         8BFtZ3h3oCb8f2b2WhcMXHyP+8jAOY3oPYcpKtnXhhLOiyo0phWNFYGhuDC03f+rxyPb
-         6B4WYAXkhA8L46jgWQFHP6987k37AZ8VxIAPs2rbyMJOygBuVN2UKc+p5ZTnyHkS7vcH
-         syvQ==;
+        bh=JdpTIk9+f5e71+MYsNfHufuXiNazSlSND9bnfl+T+Sw=;
+        fh=HPQo30ZycSLnqCfw+VFWwlI8ThGHRUYyS5YZBLvdSjI=;
+        b=oUBEaN3cYueH5rynBkax4vw6xBo6rjrgPsNweljbxVeYJWtQcPczWorxL9YrTlUL/H
+         2RMngS8Lns3ivbVGBoz/XYEu2zq8fwvipZnn/fB+Q7ql7AEoshCaEUBUzegh46phRj3N
+         nmxnJxcIUF615GNcR71Roi+1aDTQxGn9DmIs9COMgY95ztPyTMXmSQHqT8kmcLXdMnRg
+         2/YLV5l57r47JPbclLMJs8XiNsx7aGEnYKWn1gs45yepW1KYW30ZPnD4AwbDfsznp1ra
+         MFKCJ1LpXHMCA+8wKwAPCsebaIj0x4JerZ/yFaQEXxHRZfCcKRMcvJhwbwupLjKD8zaI
+         ctZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jM8zckow;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dUuAM/ur";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 11-20020a0562140ccb00b0068f5fce66e3si10985021qvx.1.2024.03.19.10.29.18
+        by mx.google.com with ESMTPS id ij13-20020a0561025e8d00b00474ceab278fsi536511vsb.686.2024.03.19.10.30.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2024 10:29:18 -0700 (PDT)
+        Tue, 19 Mar 2024 10:30:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jM8zckow;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dUuAM/ur";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmdGM-0005Ib-6Z; Tue, 19 Mar 2024 13:28:34 -0400
+	id 1rmdIK-0006Gf-0w; Tue, 19 Mar 2024 13:30:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rmdGK-0005He-9I
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 13:28:32 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1rmdIG-0006FV-Sf
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 13:30:32 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rmdGI-0000mC-0I
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 13:28:32 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-56b85146589so175720a12.0
- for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 10:28:29 -0700 (PDT)
+ id 1rmdIF-0001Dg-4V
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 13:30:32 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-56a9f5694dcso2684480a12.1
+ for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 10:30:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710869308; x=1711474108; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710869429; x=1711474229; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=vOwEUj9xPQk9/xMWe7WXcb2JPRH0w5ppYiC8cOHOmTI=;
- b=jM8zckow4tYkE1ZTgEaAxgXTJfp6mwNKDFmvpIRBRS+mu2FxSuAIIxe/kmXt/Dul+D
- FrDvv3dJe2gILMfJ2u7dD+tsyD+I8/JxqRD68+T2PovJLSQYBgfQaIvwsEJnJrJafB0G
- ut6/si98NlAEYo5hHhC/CTdaiuWUlNRrAfUO4pTGqbDdfijQdq4E7O4QS1GYnobSYs24
- R+tW9KBWhEqymDupmmTXwl3XGMu5Y0JNgBARXj8wAjPctOkTE9YsVeGQ9icTHdDq1xOL
- u7WksfNXP2oMvTfqsmOqDDziS3UuG0ZN7NRcBZcAEOS7vGgQ/luRSl1betTUoGlhbhRn
- 2aqw==
+ bh=JdpTIk9+f5e71+MYsNfHufuXiNazSlSND9bnfl+T+Sw=;
+ b=dUuAM/ur1TQAyA2FjuGsbgQNwBCNEdnLXW8Njk+t2+t1wD0F3G+X/zHEfMg3aPrHm9
+ hM8ysJ1k/U2jmLN6p1ypQ6Q8hzbmT+It2c8e/9PU6+ugSfT2/Vm6thDuiSFwrk9Xshdc
+ HAmB5IQb2+UbMgQnX10hfRPhSVdYr0tKEOxKLbJaK7NAEhkSQaSCRlHHiY+WWaMskpH7
+ 5tj690Vk+PqTQ3xd3sVpvSchzicuSRO+CjZg5Gz41YyDEonXWALG1i5DcfPk/tAAXV8l
+ 2Tlqduz5RAhm9KtjggncPk0B+iHs4jJiDNsVfN+itZFwOmv51FpXE/BazTe6LJlqNbxF
+ RHFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710869308; x=1711474108;
+ d=1e100.net; s=20230601; t=1710869429; x=1711474229;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=vOwEUj9xPQk9/xMWe7WXcb2JPRH0w5ppYiC8cOHOmTI=;
- b=V+ww0enuZ8d4FZaoRbgJ2+qicSYKdtHFls2JOujRTJaa47Wkn/IRxgCtGIibE9tfR6
- 1IFKEBJNyKe8/Cs9lP0mck+LxlmpuTeTEOL24cawJNwPfgT4t9Ep1RPYxvBfwQGBL5MP
- +kjbtx9mQ5XbN1X+fFO6HU322fXKZq3rqSQHDGOSlRKCM/nKnA4ilhCOwH5YemhWbRJW
- 4BAqFvwLJzAf5ARZGl8xNzyHB4g0EdcTbQKNIUQ78kt0yq2QYzVvpQoRs3Ecp1H6jgBs
- d/z7yiu2XlA4pTseswwcwt0wD8KBRzGBnG/BQuG1u1q1+a9tRCLrElEOtw1Cj+ZGWvvo
- W+9Q==
+ bh=JdpTIk9+f5e71+MYsNfHufuXiNazSlSND9bnfl+T+Sw=;
+ b=o6B5MvLvKL3+airXU7wk5wpZNI6u/Fgb2AKy2tfU70n7XedHjfkH6Jfa0HyBnpX4UR
+ Jqysz7X4IUpe/DadTs7OYr5SF+c+CTK4SzgMaX5gJAmWeoRlzkgL4G6rrcLaB9oStnN7
+ 9kMS0CQ5raDOqtD7nfmcZyy/OJ93iRxN/kswjz53Rz1NSffGZojSJJAeTh6R2vKVMDRR
+ c38TUW3oYIeMs73SXVoUWisM83Gnf/EcEHaUVBpBcGGl9BG/KwYgembYaKlHroebYQxp
+ dzUHxBON3ka166hoIZkNyHgom4zFsCLiJiiGTbiAiLeWcZvV7iQme5kEt5dxZ8NSSAeQ
+ ju3g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXfLwTXUNWEf7iGXRW8LjtNMuPQqjwRZedApxerWtbbRJGlxNsCEU8Rkeuooch4Xts0BDEZ8j+KgnmvMNuikBe8CXEA
-X-Gm-Message-State: AOJu0YxDE2N4BolydSASBxuQks99BMnsWaN+lATJniS3X/Nlvg22ggkh
- P+4twKANOowQMJcpXWOXabbwWFUAQ+EkQFtv8jMjpLS9j5qpQYQmoQGAxQNNPn4bHTfSxD92n7w
- 2qN7sHkWltbGI5dbW2D0CrgPg3nqaCE1PVI3NTA==
-X-Received: by 2002:a50:f617:0:b0:566:902e:65e4 with SMTP id
- c23-20020a50f617000000b00566902e65e4mr3319827edn.18.1710869307940; Tue, 19
- Mar 2024 10:28:27 -0700 (PDT)
+ AJvYcCVKqXO79dsG/K6o1fm/CBLCqK1wpOCo0IzAi2013V2khrNfZi3GioRjD9xmo6FYU4+OoJq/ylQ3BZIasrIsBaM5HAmT
+X-Gm-Message-State: AOJu0YyI0E7xNRHAlXOw2brCBwJBdC7ueObpxbPii6mCIQHay/OcFsOb
+ NhfVgk6rk+hfiv5i6pqqWgyE/xDEwqyBI+EpBi2AsfspyDfQjAk5WainCKw4LnGejA+t1/1X3HE
+ Ck0CSFviFnYoiqhZahhu6bVW5CSwuc8y9I/fbxg==
+X-Received: by 2002:a05:6402:2421:b0:566:f5d6:4b4 with SMTP id
+ t33-20020a056402242100b00566f5d604b4mr2332387eda.12.1710869428791; Tue, 19
+ Mar 2024 10:30:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
- <20240318093546.2786144-7-ruanjinjie@huawei.com>
-In-Reply-To: <20240318093546.2786144-7-ruanjinjie@huawei.com>
+ <20240318093546.2786144-6-ruanjinjie@huawei.com>
+In-Reply-To: <20240318093546.2786144-6-ruanjinjie@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Mar 2024 17:28:16 +0000
-Message-ID: <CAFEAcA_xSHAJnn0_O9=zGo9u8omzhuB_WvuMo9gf7wKt8OVDmw@mail.gmail.com>
-Subject: Re: [RFC PATCH v8 06/23] target/arm: Add support for Non-maskable
- Interrupt
+Date: Tue, 19 Mar 2024 17:30:18 +0000
+Message-ID: <CAFEAcA9LnJJDsC8WZzd2ZYGgwqYkbH-FmxKHy0CXKcS2tEonJA@mail.gmail.com>
+Subject: Re: [RFC PATCH v8 05/23] target/arm: Support MSR access to ALLINT
 To: Jinjie Ruan <ruanjinjie@huawei.com>
 Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,289 +124,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r+Jo2a07ao3z
+X-TUID: x8J29MufXcCS
 
 On Mon, 18 Mar 2024 at 09:37, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> This only implements the external delivery method via the GICv3.
+> Support ALLINT msr access as follow:
+>         mrs <xt>, ALLINT        // read allint
+>         msr ALLINT, <xt>        // write allint with imm
 >
 > Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> v8:
-> - Fix the rcu stall after sending a VNMI in qemu VM.
-> v7:
+> v5:
 > - Add Reviewed-by.
-> v6:
-> - env->cp15.hcr_el2 -> arm_hcr_el2_eff().
-> - env->cp15.hcrx_el2 -> arm_hcrx_el2_eff().
-> - Not include VF && VFNMI in CPU_INTERRUPT_VNMI.
 > v4:
-> - Accept NMI unconditionally for arm_cpu_has_work() but add comment.
-> - Change from & to && for EXCP_IRQ or EXCP_FIQ.
-> - Refator nmi mask in arm_excp_unmasked().
-> - Also handle VNMI in arm_cpu_exec_interrupt() and arm_cpu_set_irq().
-> - Rename virtual to Virtual.
+> - Remove arm_is_el2_enabled() check in allint_check().
+> - Change to env->pstate instead of env->allint.
 > v3:
-> - Not include CPU_INTERRUPT_NMI when FEAT_NMI not enabled
-> - Add ARM_CPU_VNMI.
-> - Refator nmi mask in arm_excp_unmasked().
-> - Test SCTLR_ELx.NMI for ALLINT mask for NMI.
+> - Remove EL0 check in aa64_allint_access() which alreay checks in .access
+>   PL1_RW.
+> - Use arm_hcrx_el2_eff() in aa64_allint_access() instead of env->cp15.hcrx_el2.
+> - Make ALLINT msr access function controlled by aa64_nmi.
 > ---
->  target/arm/cpu-qom.h   |  4 +-
->  target/arm/cpu.c       | 85 +++++++++++++++++++++++++++++++++++++++---
->  target/arm/cpu.h       |  4 ++
->  target/arm/helper.c    |  2 +
->  target/arm/internals.h |  9 +++++
->  5 files changed, 97 insertions(+), 7 deletions(-)
+>  target/arm/helper.c | 34 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
 >
-> diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-> index 8e032691db..e0c9e18036 100644
-> --- a/target/arm/cpu-qom.h
-> +++ b/target/arm/cpu-qom.h
-> @@ -36,11 +36,13 @@ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
->  #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
->  #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
->
-> -/* Meanings of the ARMCPU object's four inbound GPIO lines */
-> +/* Meanings of the ARMCPU object's six inbound GPIO lines */
->  #define ARM_CPU_IRQ 0
->  #define ARM_CPU_FIQ 1
->  #define ARM_CPU_VIRQ 2
->  #define ARM_CPU_VFIQ 3
-> +#define ARM_CPU_NMI 4
-> +#define ARM_CPU_VNMI 5
->
->  /* For M profile, some registers are banked secure vs non-secure;
->   * these are represented as a 2-element array where the first element
-
-> @@ -678,13 +687,31 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
->          return false;
->      }
->
-> +    if (cpu_isar_feature(aa64_nmi, env_archcpu(env)) &&
-> +        env->cp15.sctlr_el[target_el] & SCTLR_NMI && cur_el == target_el) {
-> +        allIntMask = env->pstate & PSTATE_ALLINT ||
-> +                     ((env->cp15.sctlr_el[target_el] & SCTLR_SPINTMASK) &&
-> +                      (env->pstate & PSTATE_SP));
-> +    }
-> +
->      switch (excp_idx) {
-> +    case EXCP_NMI:
-> +        pstate_unmasked = !allIntMask;
-> +        break;
-> +
-> +    case EXCP_VNMI:
-> +        if ((!(hcr_el2 & HCR_IMO) && !(hcr_el2 & HCR_FMO)) ||
-> +             (hcr_el2 & HCR_TGE)) {
-> +            /* VNMIs(VIRQs or VFIQs) are only taken when hypervized.  */
-> +            return false;
-> +        }
-
-VINMI and VFNMI aren't the same thing: do we definitely want to
-merge them into one EXCP_VNMI ? It feels like it would be simpler
-to keep them separate. Similarly CPU_INTERRUPT_VNMI, and
-arm_cpu_update_vnmi() probably want VINMI and VFNMI versions.
-
-> +        return !allIntMask;
->      case EXCP_FIQ:
-> -        pstate_unmasked = !(env->daif & PSTATE_F);
-> +        pstate_unmasked = (!(env->daif & PSTATE_F)) && (!allIntMask);
->          break;
->
->      case EXCP_IRQ:
-> -        pstate_unmasked = !(env->daif & PSTATE_I);
-> +        pstate_unmasked = (!(env->daif & PSTATE_I)) && (!allIntMask);
->          break;
->
->      case EXCP_VFIQ:
-> @@ -692,13 +719,13 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
->              /* VFIQs are only taken when hypervized.  */
->              return false;
->          }
-> -        return !(env->daif & PSTATE_F);
-> +        return !(env->daif & PSTATE_F) && (!allIntMask);
->      case EXCP_VIRQ:
->          if (!(hcr_el2 & HCR_IMO) || (hcr_el2 & HCR_TGE)) {
->              /* VIRQs are only taken when hypervized.  */
->              return false;
->          }
-> -        return !(env->daif & PSTATE_I);
-> +        return !(env->daif & PSTATE_I) && (!allIntMask);
->      case EXCP_VSERR:
->          if (!(hcr_el2 & HCR_AMO) || (hcr_el2 & HCR_TGE)) {
->              /* VIRQs are only taken when hypervized.  */
-> @@ -804,6 +831,24 @@ static bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->
->      /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
->
-> +    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-> +        if (interrupt_request & CPU_INTERRUPT_NMI) {
-> +            excp_idx = EXCP_NMI;
-> +            target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
-> +            if (arm_excp_unmasked(cs, excp_idx, target_el,
-> +                                  cur_el, secure, hcr_el2)) {
-> +                goto found;
-> +            }
-> +        }
-> +        if (interrupt_request & CPU_INTERRUPT_VNMI) {
-> +            excp_idx = EXCP_VNMI;
-> +            target_el = 1;
-> +            if (arm_excp_unmasked(cs, excp_idx, target_el,
-> +                                  cur_el, secure, hcr_el2)) {
-> +                goto found;
-> +            }
-> +        }
-> +    }
->      if (interrupt_request & CPU_INTERRUPT_FIQ) {
->          excp_idx = EXCP_FIQ;
->          target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
-> @@ -900,6 +945,28 @@ void arm_cpu_update_vfiq(ARMCPU *cpu)
->      }
->  }
->
-> +void arm_cpu_update_vnmi(ARMCPU *cpu)
-> +{
-> +    /*
-> +     * Update the interrupt level for VNMI, which is the logical OR of
-> +     * the HCRX_EL2.VINMI bit and the input line level from the GIC.
-> +     */
-> +    CPUARMState *env = &cpu->env;
-> +    CPUState *cs = CPU(cpu);
-> +
-> +    bool new_state = ((arm_hcr_el2_eff(env) & HCR_VI) &&
-> +                      (arm_hcrx_el2_eff(env) & HCRX_VINMI)) ||
-> +        (env->irq_line_state & CPU_INTERRUPT_VNMI);
-> +
-> +    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VNMI) != 0)) {
-> +        if (new_state) {
-> +            cpu_interrupt(cs, CPU_INTERRUPT_VNMI);
-> +        } else {
-> +            cpu_reset_interrupt(cs, CPU_INTERRUPT_VNMI);
-> +        }
-> +    }
-> +}
-
-I think Richard noted on a previous version of the series that
-the existing arm_cpu_update_virq() and arm_cpu_update_vfiq()
-also need changing so they don't set CPU_INTERRUPT_VIRQ
-or CPU_INTERRUPT_VFIQ if the HCRX_EL2 bits indicate that
-we should be signalling a VINMI or VFNMI instead.
-That also means that VIRQ and VFIQ will change values based
-on changes in HCRX_EL2, which means that hcrx_write() needs
-to have calls to arm_cpu_update_{virq,vfiq,vnmi} the way
-that do_hcr_write() already does.
-
-The use of the _eff() versions of the functions here is
-correct but it introduces a new case where we need to
-reevaluate the status of the VNMI etc interrupt status:
-when we change from Secure to NonSecure or when we change
-SCR_EL3.EEL2 or SCR_EL3.HXEN. We either need to make sure
-we reevaluate when we drop from EL3 to EL2 (which would be
-OK since VINMI and VFNMI can't be taken at EL3 and none of
-these bits can change except at EL3) or else make the calls
-to reevaluate them when we write to SCR_EL3. At least, I don't
-think we currently reevaluate these bits on an EL change.
-
-> +
->  void arm_cpu_update_vserr(ARMCPU *cpu)
->  {
->      /*
-> @@ -929,7 +996,9 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
->          [ARM_CPU_IRQ] = CPU_INTERRUPT_HARD,
->          [ARM_CPU_FIQ] = CPU_INTERRUPT_FIQ,
->          [ARM_CPU_VIRQ] = CPU_INTERRUPT_VIRQ,
-> -        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ
-> +        [ARM_CPU_VFIQ] = CPU_INTERRUPT_VFIQ,
-> +        [ARM_CPU_NMI] = CPU_INTERRUPT_NMI,
-> +        [ARM_CPU_VNMI] = CPU_INTERRUPT_VNMI
->      };
->
->      if (!arm_feature(env, ARM_FEATURE_EL2) &&
-> @@ -955,8 +1024,12 @@ static void arm_cpu_set_irq(void *opaque, int irq, int level)
->      case ARM_CPU_VFIQ:
->          arm_cpu_update_vfiq(cpu);
->          break;
-> +    case ARM_CPU_VNMI:
-> +        arm_cpu_update_vnmi(cpu);
-> +        break;
->      case ARM_CPU_IRQ:
->      case ARM_CPU_FIQ:
-> +    case ARM_CPU_NMI:
->          if (level) {
->              cpu_interrupt(cs, mask[irq]);
->          } else {
-> @@ -1355,7 +1428,7 @@ static void arm_cpu_initfn(Object *obj)
->           */
->          qdev_init_gpio_in(DEVICE(cpu), arm_cpu_kvm_set_irq, 4);
->      } else {
-> -        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
-> +        qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 6);
-
-You should also update the value passed when we init the
-GPIOs in the arm_cpu_kvm_set_irq case, and update the comment
-that explains why, which currently reads:
-
-        /* VIRQ and VFIQ are unused with KVM but we add them to maintain
-         * the same interface as non-KVM CPUs.
-         */
-
-so it mentions also the NMI and VNMI inputs.
-
->      }
->
->      qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index de740d223f..629221e1a9 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -61,6 +61,8 @@
->  #define EXCP_DIVBYZERO      23   /* v7M DIVBYZERO UsageFault */
->  #define EXCP_VSERR          24
->  #define EXCP_GPC            25   /* v9 Granule Protection Check Fault */
-> +#define EXCP_NMI            26
-> +#define EXCP_VNMI           27
->  /* NB: add new EXCP_ defines to the array in arm_log_exception() too */
->
->  #define ARMV7M_EXCP_RESET   1
-> @@ -80,6 +82,8 @@
->  #define CPU_INTERRUPT_VIRQ  CPU_INTERRUPT_TGT_EXT_2
->  #define CPU_INTERRUPT_VFIQ  CPU_INTERRUPT_TGT_EXT_3
->  #define CPU_INTERRUPT_VSERR CPU_INTERRUPT_TGT_INT_0
-> +#define CPU_INTERRUPT_NMI   CPU_INTERRUPT_TGT_EXT_4
-> +#define CPU_INTERRUPT_VNMI  CPU_INTERRUPT_TGT_EXT_0
-
->  /* The usual mapping for an AArch64 system register to its AArch32
->   * counterpart is for the 32 bit world to have access to the lower
 > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index aa0151c775..875a7fa8da 100644
+> index b19a0178ce..aa0151c775 100644
 > --- a/target/arm/helper.c
 > +++ b/target/arm/helper.c
-> @@ -10793,6 +10793,8 @@ void arm_log_exception(CPUState *cs)
->              [EXCP_DIVBYZERO] = "v7M DIVBYZERO UsageFault",
->              [EXCP_VSERR] = "Virtual SERR",
->              [EXCP_GPC] = "Granule Protection Check",
-> +            [EXCP_NMI] = "NMI",
-> +            [EXCP_VNMI] = "Virtual NMI"
->          };
+> @@ -4752,6 +4752,36 @@ static void aa64_daif_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>      env->daif = value & PSTATE_DAIF;
+>  }
 >
->          if (idx >= 0 && idx < ARRAY_SIZE(excnames)) {
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 516e0584bf..cb217a9ce7 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1109,6 +1109,15 @@ void arm_cpu_update_virq(ARMCPU *cpu);
->   */
->  void arm_cpu_update_vfiq(ARMCPU *cpu);
->
-> +/**
-> + * arm_cpu_update_vnmi: Update CPU_INTERRUPT_VNMI bit in cs->interrupt_request
-> + *
-> + * Update the CPU_INTERRUPT_VNMI bit in cs->interrupt_request, following
-> + * a change to either the input VNMI line from the GIC or the HCRX_EL2.VINMI.
-> + * Must be called with the BQL held.
-> + */
-> +void arm_cpu_update_vnmi(ARMCPU *cpu);
+> +static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                              uint64_t value)
+> +{
+> +    env->pstate = (env->pstate & ~PSTATE_ALLINT) | (value & PSTATE_ALLINT);
+> +}
+> +
+> +static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> +{
+> +    return env->pstate & PSTATE_ALLINT;
+> +}
+> +
+> +static CPAccessResult aa64_allint_access(CPUARMState *env,
+> +                                         const ARMCPRegInfo *ri, bool isread)
+> +{
+> +    if (arm_current_el(env) == 1 && (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
+> +        return CP_ACCESS_TRAP_EL2;
+> +    }
+> +    return CP_ACCESS_OK;
+
+Forgot to note in my earlier email: HCRX_EL2.TALLINT traps
+only writes to ALLINT, not reads, so the condition
+here needs to also look at 'isread'.
+
+> +}
 
 thanks
 -- PMM

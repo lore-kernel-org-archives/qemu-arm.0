@@ -1,172 +1,468 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1376771ejb;
-        Tue, 19 Mar 2024 08:34:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUQ7C1yZGBcCvreoL0Ywfm/X70cUBY+uYVj4FUeunKLqyCkeOXbWenQdOzyGf7DgQRhHya2SlL6vuPZdIxSbzZWIJm5qdXy
-X-Google-Smtp-Source: AGHT+IGQovQf7i/JmYpwVe99h2/mmmdR0tJ9YpqxYVjm3TTKeWsUanFVfUsv3gXz9O/6scny5D7e
-X-Received: by 2002:a17:902:eb84:b0:1e0:2335:8f5d with SMTP id q4-20020a170902eb8400b001e023358f5dmr7132851plg.64.1710862450042;
-        Tue, 19 Mar 2024 08:34:10 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1710862450; cv=pass;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1382390ejb;
+        Tue, 19 Mar 2024 08:44:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjAiG9kvUqyzTRuhnO8RnzWWJgXHNgKFuwwGduuM+7IjX7GxA6eR6H1LCJoleeeNz96IgnnAk4qbl/7sH7slI6+OzYMhI4
+X-Google-Smtp-Source: AGHT+IFbdCkJ96CtHd02AMCj1aYrGbWDMEURf75qu1S8ai2dJJbbJlxEmZApVHcYxwlkDI4sPR2e
+X-Received: by 2002:a05:6102:945:b0:476:6cba:4388 with SMTP id a5-20020a056102094500b004766cba4388mr2849311vsi.22.1710863051644;
+        Tue, 19 Mar 2024 08:44:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710863051; cv=none;
         d=google.com; s=arc-20160816;
-        b=IyrcBAr+M9OChZOoJ/T76Mr/E0xLxMh+6NH+ZUvZSox0re3xbvIXp0iA0eUv5pFDaS
-         QiC+S6QvxOswKy7WtGgbsijQUQVui3ftx0+nxs2Ixz/Tr/s/2sF+Z6GSM7lSuzZ9LNwN
-         f9hymM0T+M1bbvQ8H+Ei5Lb+vZV1dYwmoV65+u6jFllBG8RCVxvcgGYJpw7KXibp/ntv
-         hSAqiPgKNQZ8d90bjqrDkK+/w2/an5LaiuXwLDGibjHGpRQ6OQ7nhjsQsHmMkGHhzyqz
-         Jbxoi6k/V0O12FCwH002nqsH9qAzgIhM4D9wQZEgXCGWv5uTy7CarCGxCPFE/2MUZ2mJ
-         zmtA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=LTv0c9gBsGx2cGoLzFXhFtEOz/PUb4iNz/cutnWVCfY=;
-        fh=iuarMY80Wj9V9QrSIyXjgMQ/mVzPeH5DXZsyZrMtanE=;
-        b=wU3RrWPCCaN/MJLe7L+HQI6bCJhcrgZNN3YQog9t6z/wlNPrH7mHYZyeN4/NdTqDPH
-         zacxOSwTVKai6DN/AGgTLSaVFrmyuG5f9SwzLS58b3cvlvcPHAvRxBynZQiVPUg9NjKA
-         kis9iFdPJw/fYQX9Y0PWRMZjYdt0nWoKXJ131DQ8uMFeL2kwh+HalszGTbhAzmkTBz94
-         TLaVB+bYWS4RRXtFlfWY41DRFT5ThoUnIAU548urV18jZNzOELA/3miS+m9UkfihQL1t
-         rKjh1GeJrL2PYQd6bmyF9NfP0azKL5xYBp7WneaVcSXQcEKd0FjroHIXtZehDqU2lW6A
-         Y1tg==;
+        b=mXHf1ynGIf7LSZ9uPbDWHYBwSZnMveNf4WmITOGfG+VNESyd84rmVDpWXs2E70wTTg
+         e8VhitEm1tKEg5dpu54GpPvtPy2vCWyqZOJ4Z2tzhw0rlH+vYzbXXlXAUIxOtgJA9chM
+         9Kk8fQV/z+JyQSB0SllH/Nc5vCOuHlPEOrEFFZMchxmb5p8jKHLNK3OjVQSnXGJ2zFd7
+         GaH3tXIxX1NDAZEtHOZA5lFJI+dL0iM1uJa4Swn5i8o1RtrXXrZET7zPTmYdlyugwj/0
+         Wa/GJ9U/MiYUyaumZjnhtV+4L2qEAQbQMYUGl6BlGd1IEah7wUBXhz918WxFnyi0aksd
+         pN9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=new3hB1/RFA2taMVx8452jvGfTxveGkjivBgpLY9vi4=;
+        fh=KWs6emMBdmzCqhVoMZCOGEtFjobBQJLpKizMis01IJw=;
+        b=m5k0jK9snbIdE5AhMu6wwDIN7wJo4dMDQehZrPpILWBVA/IQDCE7q+GO08/3l9TeNf
+         qAFac9ePMbW1422C3dBf2gBrEiYDlAKHAAdhQjIKsbYLmmzGQlCFhCnio8ETqxh4mEpx
+         /E+PoElBRKIKHb5BOvbJ21XgBYtK4cTEQVXyCxD3RUF5Bul8q3Cre97kVhtUcQRPRdfF
+         tSKz2eXnueSC1gyRi0l2a0aeuxzShZ+0V9m0VnKc3cdfZ55vuAKLiYd/ZNrr3M6WhOWA
+         KkPJfiF/4+l5jfpeceignq765VjRfthubEVUZHj2ANcHrT4RpdYrLQPV1c7OgxHmCEst
+         d+2g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YY+tFMXj;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id d3-20020a170903230300b001dddbe5ab7csi3579817plh.640.2024.03.19.08.34.09
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TM6rYJXk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gm8-20020a056214268800b006901808bd02si11362812qvb.125.2024.03.19.08.44.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Mar 2024 08:34:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Mar 2024 08:44:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YY+tFMXj;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-12156-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id CBC6CB215EA
-	for <alex.bennee@linaro.org>; Tue, 19 Mar 2024 15:34:07 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 93B9B651BE;
-	Tue, 19 Mar 2024 15:34:02 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="YY+tFMXj"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6A5962818
-	for <kvm@vger.kernel.org>; Tue, 19 Mar 2024 15:34:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710862442; cv=none; b=eUogsePGKSMdDgR5jgo9bI7hLwb3o/JggWSBa4L+1hjWMqeDY1aIR6vSSIAiFUncP12q0aywFVou1TeUfPuFt42p3yqoWz5DpUd1lR8z688+2VFcutwzdTbNgTFxy0spKpSvh9A52eG4oKyYfJRa5RwvXqfmKM6rOh0dKTFSwcw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710862442; c=relaxed/simple;
-	bh=rrQSAAEQCgctnBTxLRZaF5NpLsX/foa8mFUz552bLlo=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=XFL7C8DO2i+XuAQeIFkyP4I/oUd6OlT6jxhhwzVQo6VbGuNw2tifqOLZO0ahP9cSfgSbugbX9WTm99Q0EGp3rTRhbyh8ZDI8QJ0xTc0ETVG88ovunFC5RpqomeiHEVLCwUwU84UBLaCfTF8jdbUJyOn0VSvwdTg4/24lGG2RSG0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=YY+tFMXj; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1710862439;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=LTv0c9gBsGx2cGoLzFXhFtEOz/PUb4iNz/cutnWVCfY=;
-	b=YY+tFMXjJu1Bae/EA9qG8BfuN6FmiBa2aAoFEtGOpzlWBEOlpH6rV77qsk1Y/obGlKbxc5
-	v5beO0zk3uGje5zodSEa8RiIW5gqbibG5kY0s77tBMVnHHiajViOqCJRi/5VfqmGOv5+1d
-	8xU1sMts+QKrDr+Z8zCefnu4ReNNe0Y=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-571-cHXfH-IXM4GpTBHYlzoxHg-1; Tue,
- 19 Mar 2024 11:33:51 -0400
-X-MC-Unique: cHXfH-IXM4GpTBHYlzoxHg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 84F6D1C2CDE6;
-	Tue, 19 Mar 2024 15:33:51 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.88])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3698F492BD1;
-	Tue, 19 Mar 2024 15:33:50 +0000 (UTC)
-Date: Tue, 19 Mar 2024 15:33:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Shaoqin Huang <shahuang@redhat.com>
-Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
-	Sebastian Ott <sebott@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org
-Subject: Re: [PATCH v7] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Message-ID: <ZfmwWKvueeC0KFIM@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240221063431.76992-1-shahuang@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=TM6rYJXk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rmbcX-0005JM-8n; Tue, 19 Mar 2024 11:43:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbcW-0005Gl-2T
+ for qemu-devel@nongnu.org; Tue, 19 Mar 2024 11:43:20 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbcS-0004nI-5S
+ for qemu-devel@nongnu.org; Tue, 19 Mar 2024 11:43:19 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-41409fd8b6bso22676985e9.1
+ for <qemu-devel@nongnu.org>; Tue, 19 Mar 2024 08:43:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710862994; x=1711467794; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=new3hB1/RFA2taMVx8452jvGfTxveGkjivBgpLY9vi4=;
+ b=TM6rYJXk9kFlnej/e78jkrI0jr0BKGdurkGmgK+6tGA3NJmmu4Oh2E27qBt2VZ8tNN
+ QH5gCJ65hGkFPCuDk0ROtDzJTqWV9fehAd/eAQ7JT74OmfmQ13lcaZ60xtQVunEq/uFo
+ dB61nj2Rju089Fu5rkQvlilgk2dZqckhDTQKznORgkFUoeIeMJRtvufpdKfIt5Np8Rj6
+ ys2CuY4JR4LFgS+owXpU9JZBXhZOL1e19AxoSIA58q7QwpLrn7zP1dfWwSJlbvJzJUEx
+ BI5ngkotjKV4/70FZZjRYJ7IUMhfnwrKiErcfNfs/gE4TOmpZc0xf8uOZ1hRgNMr2tCo
+ tbnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710862994; x=1711467794;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=new3hB1/RFA2taMVx8452jvGfTxveGkjivBgpLY9vi4=;
+ b=BGFvlTcop0nokKFEqvue+SKOWO9IWDjepc0MRgKA6l07cF4bHMOBgRSza0XH4LcmNV
+ iFF4kiCZwCUoVdILKBo1sFlT4mKyjwZG/Kh7EmX+aeMI7J+6uCFwFhAt26R8Zwbo6/8c
+ NEggurP7ERrnYxYwdGosOLwwGH8A7fWYXf2jegJpK/5k3ur4ypr8lUTrfRLqs4Em6szq
+ 87rMmo3jz9UTc4p6lQ1HjmLsdiCLijGAX5wqg9ldT89Excvpkm1osPrnRC3nw9jnxlEX
+ BT3JR+pgk79Yok1cbQL5RXF0HtEgIYxJb0gTOFBe4+Vq1N/OO1zRLAmrgnRnN6/qiz8z
+ fO/g==
+X-Gm-Message-State: AOJu0YwZ3bLcPsf4N8a592k3hugwiu7rBEM9XyKpvWQHqD9xtREC5fEi
+ tEuqTzWh9QyTxAN2J1sn98wfkqbTjfMW4Pe68A4yuwTJJo0vOCp2q/yOd3DBJjCMwWmtQI9x1lN
+ 4
+X-Received: by 2002:a05:600c:1992:b0:414:c48:a90 with SMTP id
+ t18-20020a05600c199200b004140c480a90mr5817173wmq.24.1710862994286; 
+ Tue, 19 Mar 2024 08:43:14 -0700 (PDT)
+Received: from m1x-phil.lan ([176.176.166.129])
+ by smtp.gmail.com with ESMTPSA id
+ t6-20020a05600c450600b004133365bbc6sm21728612wmo.19.2024.03.19.08.43.11
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 19 Mar 2024 08:43:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Anton Johansson <anjo@rev.ng>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>,
+ Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH-for-9.1 02/27] accel/tcg: Introduce TCGCPUOps::get_cpu_state()
+ handler
+Date: Tue, 19 Mar 2024 16:42:31 +0100
+Message-ID: <20240319154258.71206-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240319154258.71206-1-philmd@linaro.org>
+References: <20240319154258.71206-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240221063431.76992-1-shahuang@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-X-TUID: 4+vDPZbN4TZm
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0HK4H3eXqjja
 
-On Wed, Feb 21, 2024 at 01:34:31AM -0500, Shaoqin Huang wrote:
+We want a single cpu_get_tb_cpu_state() for all targets,
+but each of them already define it.
 
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index a5fb929243..7c8f6a60ef 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -204,6 +204,29 @@ the list of KVM VCPU features and their descriptions.
->    the guest scheduler behavior and/or be exposed to the guest
->    userspace.
->  
-> +``kvm-pmu-filter``
-> +  By default kvm-pmu-filter is disabled. This means that by default all pmu
-> +  events will be exposed to guest.
-> +
-> +  KVM implements PMU Event Filtering to prevent a guest from being able to
-> +  sample certain events. It depends on the KVM_ARM_VCPU_PMU_V3_FILTER
-> +  attribute supported in KVM. It has the following format:
-> +
-> +  kvm-pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-> +
-> +  The A means "allow" and D means "deny", start is the first event of the
-> +  range and the end is the last one. The first registered range defines
-> +  the global policy(global ALLOW if the first @action is DENY, global DENY
-> +  if the first @action is ALLOW). The start and end only support hexadecimal
-> +  format. For example:
-> +
-> +  kvm-pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
-> +
-> +  Since the first action is allow, we have a global deny policy. It
-> +  will allow event 0x11 (The cycle counter), events 0x23 to 0x3a are
-> +  also allowed except the event 0x30 which is denied, and all the other
-> +  events are denied.
+Introduce a generic target-agnostic cpu_get_tb_cpu_state()
+method when per-target TARGET_HAS_CPU_GET_TB_CPU_STATE
+is not defined. Currently all targets define it, but they
+are going to be converted one by one.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ accel/tcg/internal-target.h   |  2 ++
+ include/hw/core/tcg-cpu-ops.h |  3 +++
+ target/alpha/cpu.h            |  2 ++
+ target/arm/cpu.h              |  2 ++
+ target/avr/cpu.h              |  2 ++
+ target/cris/cpu.h             |  2 ++
+ target/hexagon/cpu.h          |  2 ++
+ target/hppa/cpu.h             |  2 ++
+ target/i386/cpu.h             |  2 ++
+ target/loongarch/cpu.h        |  2 ++
+ target/m68k/cpu.h             |  2 ++
+ target/microblaze/cpu.h       |  2 ++
+ target/mips/cpu.h             |  2 ++
+ target/nios2/cpu.h            |  2 ++
+ target/openrisc/cpu.h         |  2 ++
+ target/ppc/cpu.h              |  2 ++
+ target/rx/cpu.h               |  2 ++
+ target/s390x/cpu.h            |  2 ++
+ target/sparc/cpu.h            |  2 ++
+ target/xtensa/cpu.h           |  2 ++
+ accel/tcg/translate-all.c     | 10 ++++++++++
+ 21 files changed, 51 insertions(+)
 
-Can you document whether the policy evaluation stops at the first
-matching range, or checks all ranges
-
-ie, if you have
-
-  kvm-pmu-filter="A:0x1-0x9;D=0x7-0x7"
-
-will an input of '0x7' be allowed (because it matches the
-first range and stops), or denied (because the second range
-overrides the result of the first)
-
-
-
-With regards,
-Daniel
+diff --git a/accel/tcg/internal-target.h b/accel/tcg/internal-target.h
+index 4e36cf858e..10a45d3b9c 100644
+--- a/accel/tcg/internal-target.h
++++ b/accel/tcg/internal-target.h
+@@ -79,6 +79,8 @@ TranslationBlock *tb_link_page(TranslationBlock *tb);
+ bool tb_invalidate_phys_page_unwind(tb_page_addr_t addr, uintptr_t pc);
+ void cpu_restore_state_from_tb(CPUState *cpu, TranslationBlock *tb,
+                                uintptr_t host_pc);
++void cpu_get_tb_cpu_state(CPUArchState *env, vaddr *pc,
++                          uint64_t *cs_base, uint32_t *flags);
+ 
+ bool tcg_exec_realizefn(CPUState *cpu, Error **errp);
+ void tcg_exec_unrealizefn(CPUState *cpu);
+diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.h
+index bf8ff8e3ee..0ad9949950 100644
+--- a/include/hw/core/tcg-cpu-ops.h
++++ b/include/hw/core/tcg-cpu-ops.h
+@@ -49,6 +49,9 @@ struct TCGCPUOps {
+     /** @debug_excp_handler: Callback for handling debug exceptions */
+     void (*debug_excp_handler)(CPUState *cpu);
+ 
++    void (*get_cpu_state)(CPUArchState *cpu, vaddr *pc,
++                          uint64_t *cs_base, uint32_t *flags);
++
+ #ifdef NEED_CPU_H
+ #ifdef CONFIG_USER_ONLY
+     /**
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 7188a409a0..16b0f8a097 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -467,6 +467,8 @@ void alpha_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+                                      MemTxResult response, uintptr_t retaddr);
+ #endif
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUAlphaState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *pflags)
+ {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index bc0c84873f..d20e2bd90e 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3151,6 +3151,8 @@ static inline bool arm_cpu_bswap_data(CPUARMState *env)
+ }
+ #endif
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ void cpu_get_tb_cpu_state(CPUARMState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *flags);
+ 
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index d185d20dcb..0c0aa580f5 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -193,6 +193,8 @@ enum {
+     TB_FLAGS_SKIP = 2,
+ };
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUAVRState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *pflags)
+ {
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index 3904e5448c..dbd6fb05f0 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -273,6 +273,8 @@ enum {
+ 
+ #include "exec/cpu-all.h"
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUCRISState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
+index 3eef58fe8f..935a9c3276 100644
+--- a/target/hexagon/cpu.h
++++ b/target/hexagon/cpu.h
+@@ -134,6 +134,8 @@ struct ArchCPU {
+ 
+ FIELD(TB_FLAGS, IS_TIGHT_LOOP, 0, 1)
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUHexagonState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index a92dc352cb..cdb2904936 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -314,6 +314,8 @@ hwaddr hppa_abs_to_phys_pa2_w1(vaddr addr);
+ #define TB_FLAG_PRIV_SHIFT  8
+ #define TB_FLAG_UNALIGN     0x400
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUHPPAState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *pflags)
+ {
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 952174bb6f..954495fff0 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2354,6 +2354,8 @@ static inline int cpu_mmu_index_kernel(CPUX86State *env)
+ #include "hw/i386/apic.h"
+ #endif
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUX86State *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+index ec37579fd6..d814ba08dd 100644
+--- a/target/loongarch/cpu.h
++++ b/target/loongarch/cpu.h
+@@ -443,6 +443,8 @@ static inline void set_pc(CPULoongArchState *env, uint64_t value)
+ #define HW_FLAGS_VA32       0x20
+ #define HW_FLAGS_EUEN_ASXE  0x40
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPULoongArchState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 346427e144..2790d61115 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -604,6 +604,8 @@ void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr addr,
+ #define TB_FLAGS_TRACE          16
+ #define TB_FLAGS_TRACE_BIT      (1 << TB_FLAGS_TRACE)
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index c0c7574dbd..8058dcac7f 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -415,6 +415,8 @@ void mb_tcg_init(void);
+ /* Ensure there is no overlap between the two masks. */
+ QEMU_BUILD_BUG_ON(MSR_TB_MASK & IFLAGS_TB_MASK);
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUMBState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 7329226d39..caa12a2dd3 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1362,6 +1362,8 @@ void cpu_mips_clock_init(MIPSCPU *cpu);
+ /* helper.c */
+ target_ulong exception_resume_pc(CPUMIPSState *env);
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
+index 4164a3432e..32002b819a 100644
+--- a/target/nios2/cpu.h
++++ b/target/nios2/cpu.h
+@@ -286,6 +286,8 @@ FIELD(TBFLAGS, CRS0, 0, 1)  /* Set if CRS == 0. */
+ FIELD(TBFLAGS, U, 1, 1)     /* Overlaps CR_STATUS_U */
+ FIELD(TBFLAGS, R0_0, 2, 1)  /* Set if R0 == 0. */
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUNios2State *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index b1b7db5cbd..d42800242f 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -351,6 +351,8 @@ static inline void cpu_set_gpr(CPUOpenRISCState *env, int i, uint32_t val)
+     env->shadow_gpr[0][i] = val;
+ }
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUOpenRISCState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 67e6b2effd..ced4e53024 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -2716,6 +2716,8 @@ void cpu_write_xer(CPUPPCState *env, target_ulong xer);
+  */
+ #define is_book3s_arch2x(ctx) (!!((ctx)->insns_flags & PPC_SEGMENT_64B))
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ #ifdef CONFIG_DEBUG_TCG
+ void cpu_get_tb_cpu_state(CPUPPCState *env, vaddr *pc,
+                           uint64_t *cs_base, uint32_t *flags);
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index c53593d7aa..996f121bcd 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -149,6 +149,8 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int rte);
+ #define RX_CPU_IRQ 0
+ #define RX_CPU_FIR 1
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPURXState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index 43a46a5a06..2e184aabf5 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -416,6 +416,8 @@ static inline int s390x_env_mmu_index(CPUS390XState *env, bool ifetch)
+ 
+ #include "tcg/tcg_s390x.h"
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUS390XState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index f3cdd17c62..ae55cd15a4 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -747,6 +747,8 @@ trap_state* cpu_tsptr(CPUSPARCState* env);
+ #define TB_FLAG_HYPER        (1 << 7)
+ #define TB_FLAG_ASI_SHIFT    24
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUSPARCState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *pflags)
+ {
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 6b8d0636d2..3826b779e4 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -734,6 +734,8 @@ static inline uint32_t xtensa_replicate_windowstart(CPUXtensaState *env)
+ 
+ #include "exec/cpu-all.h"
+ 
++#define TARGET_HAS_CPU_GET_TB_CPU_STATE
++
+ static inline void cpu_get_tb_cpu_state(CPUXtensaState *env, vaddr *pc,
+                                         uint64_t *cs_base, uint32_t *flags)
+ {
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index c1f57e894a..7b538d2b9c 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -221,6 +221,16 @@ void cpu_restore_state_from_tb(CPUState *cpu, TranslationBlock *tb,
+     cpu->cc->tcg_ops->restore_state_to_opc(cpu, tb, data);
+ }
+ 
++#ifndef TARGET_HAS_CPU_GET_TB_CPU_STATE
++void cpu_get_tb_cpu_state(CPUArchState *env, vaddr *pc,
++                          uint64_t *cs_base, uint32_t *flags)
++{
++    CPUState *cpu = env_cpu(env);
++
++    cpu->cc->tcg_ops->get_cpu_state(env, pc, cs_base, flags);
++}
++#endif
++
+ bool cpu_restore_state(CPUState *cpu, uintptr_t host_pc)
+ {
+     /*
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.41.0
 

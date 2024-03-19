@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1030583ejb;
-        Mon, 18 Mar 2024 19:54:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzOcJwYvwdYmsjlsPmnMiNGNx2fWzhWK4L86Sg4ae5DpL7DJKbneliifN914D+9buDQ2kVI02SrvTlCx3oUMD1gAWwuYIl
-X-Google-Smtp-Source: AGHT+IENe1N09poOVrC7njIsOL1dJR6Xidgb6HA9k3bc4076FUU4C2Uc7De4ZTTi6bqxP67YkqCC
-X-Received: by 2002:a05:620a:5dcb:b0:788:19cc:8a4b with SMTP id xy11-20020a05620a5dcb00b0078819cc8a4bmr15588856qkn.1.1710816897824;
-        Mon, 18 Mar 2024 19:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710816897; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1030792ejb;
+        Mon, 18 Mar 2024 19:55:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmNZDfPr+udMXDYBnfQsscZhiOAh6gZC008nwuBHThCNrcIAjdq4d2TkOMimgqdgl2I3CPjLMr8AzqBQZi0kkcsRCEQTAq
+X-Google-Smtp-Source: AGHT+IH9MKK/83/VGi+jNO/Uqt7u2nY6YmadCtJHXU3y4ClRdnsybugIgdP4smLedB0BmhEpAPn2
+X-Received: by 2002:a05:620a:8010:b0:789:e14c:5d00 with SMTP id ee16-20020a05620a801000b00789e14c5d00mr17397081qkb.28.1710816935816;
+        Mon, 18 Mar 2024 19:55:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710816935; cv=none;
         d=google.com; s=arc-20160816;
-        b=WsBldZqgxEVkbHrU9TtBDrTC3J1Ra/poGqb8L5ny2vJ4mxRgTOruzdrFJTHLW4LRig
-         sI5m5BoqlBem2+Iq0NBv9FC7MGbxFcHSKFWbH5xzS7ayclg2+Xj1mCceWBdyuuh8lTAG
-         SDhRlp7K41xol3OOqN1E04D8OOO99D/mt/hlOn9hSOAkSeKjd+m+7AE9L47YhZtyOxDb
-         F+AazqyF0sJ0yRZ9KK2bWOjhNqVaZICYqkzrt48J1bfMRAw2DaNgEPktYn7AxwPb7/+9
-         qNVEVIBrFvWoPprVSHCJcuLhBtJtT3pgDhx3woc3+F3Dy3cSTRHldFdElvU5EBbhTseF
-         ngRQ==
+        b=YZxSRWgg/wOeGvR03oATSNYEOsszV9XjYoWknELAzFGrQBlZFCd3plbH7mdoCePNZU
+         aadNpfZrVjTFduFaecIi+Hc+ajJaMRncCVDcuauIo/lWA72ySYf5pGZ0elOjhuFl1u+p
+         DJx8Wk70mhjo+vtlFpqyHCFTYtneUkN0tmE5sZTgv/LAQ2EUWjkhjXZUTEYE35p6p3M4
+         rIu4ahmGkv5/a5Ugalu3H+SS/7mGCRoliovBri552apuyI1B9uRrBdXrg1pfo1mWNwqt
+         g4/xhEnzzc/Q/fWSX6iVly5BmGERCYuMO5R+Ksbzebt2FHs5LyoZUquvUZxmRaMKDXAt
+         /gJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=HDIBy76UAagNa5qz5F2BQ5rKPIrkH/FBLCwd5Ke3q0E=;
-        fh=zi6hZ17F1lczFEAPf/GwbC016OZpuXb1YcXTJyQszoc=;
-        b=eTFyC/coK60V6k976wuxa1zILw6dtZSPMi5ZQhxB4mfpgWpQMSa9zVOahbCXofVHiL
-         Het7HhgQASXEEjBvukYdw5rktGJIFXC12+5StzdEnWULnEXM4c/bU3aDceYje57Q6V71
-         aLdNzRwPtpHpegVS/Uan1rJZ7PjuIsex0Oaa9iqJANfyjc9+J9zzJebhqTVGjmx8Z81R
-         4HTsjIb3GfsrXXRAAKMkCYNyNofmVlh6cyHM7YHTPlGm6ZUEfhF98NQBDe08Zfka6CVr
-         pN8I1yG7MZrTsGTvIslmGFRUOldTdZKfGJ9jZ0tRP1gx6+tM+N7Eaqqjl3SGMG8m/5g2
-         sjhA==;
+        bh=LUFyKgFYLSCV3YFW5lpKa0Px1abb1/xX829AhzB9eRs=;
+        fh=5E1giC0VznBfpv+3JklUSc7gVLiRWzSfv0ij67qlDNo=;
+        b=te9ECvy7VzxuZUP77BI9C8mVs87ftgAW4ybFQnZhSr82UlbGZwdF0PfU9B5SDolH2Y
+         oM8SRX+RzRmjkpfnCI65icqFA3+YAKtAA+A/Ex7/XYfEjAx8Vhb7ShadiUzuIh7gLYDH
+         uiyHrqfVbhuSvtUHB7mdaQoYfGyWgz0XknHLjVf7T2hYbbspgv/+IRk5JT4YlRdvuBju
+         w6gCP6yg01n51wsodyQtGhTlmp7CxjVwuQecalfDRR94cpsI9NYdpF3NHHF6zG5Mwypd
+         m25r8c9vSYSAxTPKOJFbH8R/oX68vjum/6vBsWLPx+YkFp4EVrXa3r7LbPBqE5KtqCyg
+         +HLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=adyJWLwO;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=CPpVOsUP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8-20020a05620a29c800b0078a11e5da35si695370qkp.733.2024.03.18.19.54.57
+        by mx.google.com with ESMTPS id l10-20020a05620a210a00b00789eca5fc61si6427759qkl.14.2024.03.18.19.55.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2024 19:54:57 -0700 (PDT)
+        Mon, 18 Mar 2024 19:55:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=adyJWLwO;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=CPpVOsUP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmPco-00007v-I5; Mon, 18 Mar 2024 22:54:50 -0400
+	id 1rmPd0-0000Bq-IR; Mon, 18 Mar 2024 22:55:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1rmPcn-00006K-CG
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 22:54:49 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1rmPcx-00009i-FF
+ for qemu-arm@nongnu.org; Mon, 18 Mar 2024 22:54:59 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1rmPcl-0004j2-Go
- for qemu-arm@nongnu.org; Mon, 18 Mar 2024 22:54:49 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-6e6afb754fcso4815148b3a.3
- for <qemu-arm@nongnu.org>; Mon, 18 Mar 2024 19:54:47 -0700 (PDT)
+ id 1rmPcv-0004kE-W9
+ for qemu-arm@nongnu.org; Mon, 18 Mar 2024 22:54:59 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-6e6ade6a66aso4468926b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Mar 2024 19:54:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1710816885; x=1711421685;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1710816897; x=1711421697;
  darn=nongnu.org; 
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=HDIBy76UAagNa5qz5F2BQ5rKPIrkH/FBLCwd5Ke3q0E=;
- b=adyJWLwOeQMppvklVmqVKXTWVYnTV5L7gtdfb7nyzngLet+lGqlAfZltxiccGFDnUE
- eBiAn2/hN5U8JjEDC8PGF/akbXK890w6LfsrvoSKndsgVRoInGJ+zY94yelbmKAPc9TC
- 4DH2IWWXc/4G89QjYjabgigMmkfpdf4Ys7KpoRQCchQ59n0rI2VUvum+pcNKn3oVpsIw
- KNDJglhYGpCIDSWnJOfsxljHgTOfZEpOpXMlqUUbWgCkmTQ9cUTVYTRMELJcJAeh9a2s
- j9uguU8ycFjT7/iVE5NaPjZ2+sDplvQ9FQbQQHSS4H4CauilZ6hcNPy6VRxaSrKjOI7e
- S5jQ==
+ bh=LUFyKgFYLSCV3YFW5lpKa0Px1abb1/xX829AhzB9eRs=;
+ b=CPpVOsUP0yDgy997TddVnr3znrwu4zF6F2VLnJJJ6xmKoUM2tRIBnpKeXLpl5aWc8c
+ T94BDvWw3PwFZzKYgLlr5CYgwZ+e1x+1HzKdT0RoL5VpV/FEDkdQdklQpSQgOibze/h9
+ GKTUJb3zj6762Qb3adFv5/xQbT0oWHD2+gsd0GgxUKFKlSpgSm/B3pJ+SpWCA56uuno4
+ s1kuTYiddvm84zylqA1aAlxUBDepI62pIPMocuFf1Xa+QSlfSdwOznPp1pkSYMR+Pi3R
+ cX2dPim80sZYsQCHFeu4ZepmOL22smPJyJhQd8kUNZm5NEkVC4gYsFfm+4oNKu1B9Y8S
+ naJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710816885; x=1711421685;
+ d=1e100.net; s=20230601; t=1710816897; x=1711421697;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HDIBy76UAagNa5qz5F2BQ5rKPIrkH/FBLCwd5Ke3q0E=;
- b=dhD9KnXENEuMLPlzFWaQbaePb5vNHDHgILNxjtibhDknKjw2wgJ+I3Ip6SfH+4hVkp
- yyfDVIhJbPBnovhTlLqGDLegnkd1ZOdh7Kvrlr2LjV4yJwad4DizfIQwUhZP8TM7s/Tx
- K0IeqJ8n47fX/r7xbIvqVpu1J7HIgTjG4yf2Zwzh1zeHasSHod7FLzjFmisDfhM0Xhr1
- wlX4aWIwVTX2s7pR2LmxYp1DoJJ4pxjdnxPob+h5L+mlHBYYLxwVmbzfKv917syR9PbY
- 4JVi5+xBnJjgqKqMX2J2XRTZjV7MhT48LJQKUF9I724DNFjzQ0WlvA+JATpkPqeelgBG
- lMUQ==
+ bh=LUFyKgFYLSCV3YFW5lpKa0Px1abb1/xX829AhzB9eRs=;
+ b=g29TorFNVpebYrczm6PteF/4QkoS7l9hItD0/cPUJFveMM2XCzxfq4Ic2e1NoO91+z
+ n/jw/TIF4T02lqB1ogxFGnPbf0BkICYDKJenWJO+fJKZ4PlLCEciUkFC8ZkNVqWTMnTd
+ Xnovpf7pCAiX30lCQteWn4fZPf2lNM9jhiXHIlNUy6w7D3mp8pOyENkEZghFsEaRphvi
+ 83kHdGsVjyKjtK2znQaf7ICOVkZqIjDauu3+QkBWI60YjxtyOIzpx14a0szIP2eCSA1Z
+ fhrwYU5VjkIcCUfCRk/FVF/I+L3sswQFUHsiwhIqCxWAOCmCY5WbDgLbsGh6Wg93VqLC
+ 39sw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVILpJE8mgK0YbsgZiQemapQ/fPfDeBOiZTw3dJ4Avtz3xJ7UgYWn413s23GkOc5xY/z5mC6PdMjYo4BErJA+wWF7wy
-X-Gm-Message-State: AOJu0Yzjez2JYVc4p2V546mhQJoZ7UM6uWPWqU/okjMvhXx1lAtaIepQ
- Ve0gQc4Nm1K7GIA211ABarSttyjx+qZcrUKc6zeBbLxmuvsZCX7rbM//SFDfeic=
-X-Received: by 2002:a05:6a00:2301:b0:6e5:64cd:8f52 with SMTP id
- h1-20020a056a00230100b006e564cd8f52mr17768104pfh.0.1710816885591; 
- Mon, 18 Mar 2024 19:54:45 -0700 (PDT)
+ AJvYcCVoH8yvZmpJR7lVSQxpkRmvxaBYtURViBKiGCyODWP+gPMISg/oTnN+Gqqq2XJngYdwnUbgUmTXiDRsFfijeDGl/tH9
+X-Gm-Message-State: AOJu0YwYYUuvXWWmNMxlqU6gheiwy8d0TSgqOQge2v0Pa3A/niVm+RIh
+ mgF1/gStSheZHYvq5zFsiKALJaVqJIG/ZSKZzSxBwc0yCJn25JqPvK9xmDKRTr0=
+X-Received: by 2002:a05:6a00:9a4:b0:6e6:98e4:99a1 with SMTP id
+ u36-20020a056a0009a400b006e698e499a1mr16697544pfg.14.1710816896681; 
+ Mon, 18 Mar 2024 19:54:56 -0700 (PDT)
 Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932?
  ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
  by smtp.gmail.com with ESMTPSA id
- z3-20020aa79e43000000b006e6fd17069fsm6188632pfq.37.2024.03.18.19.54.43
+ z3-20020aa79e43000000b006e6fd17069fsm6188632pfq.37.2024.03.18.19.54.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Mar 2024 19:54:45 -0700 (PDT)
-Message-ID: <e15312de-3a5b-47e2-aaa9-1fb3f623b04f@daynix.com>
-Date: Tue, 19 Mar 2024 11:54:42 +0900
+ Mon, 18 Mar 2024 19:54:56 -0700 (PDT)
+Message-ID: <f36ecb7c-5ce4-44e6-ad07-f8a82e4b8eeb@daynix.com>
+Date: Tue, 19 Mar 2024 11:54:54 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1 v2 2/3] hw/display/pxa2xx_lcd: Set rotation angle
- using qemu_console_set_rotate
+Subject: Re: [PATCH-for-9.1 v2 3/3] ui/console: Add 'rotate_arcdegree' field
+ to allow per-console rotation
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -107,13 +107,13 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20240318113140.88151-1-philmd@linaro.org>
- <20240318113140.88151-3-philmd@linaro.org>
+ <20240318113140.88151-4-philmd@linaro.org>
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20240318113140.88151-3-philmd@linaro.org>
+In-Reply-To: <20240318113140.88151-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::42c;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x42c.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -135,26 +135,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i7Ft2un3bttJ
+X-TUID: l/KMnS8+JQcw
 
 On 2024/03/18 20:31, Philippe Mathieu-Daudé wrote:
+> Add the 'rotate_arcdegree' field to QemuGraphicConsole and
+> remove the use of the 'graphic_rotate' global.
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
 > ---
->   hw/display/pxa2xx_lcd.c | 1 +
->   1 file changed, 1 insertion(+)
+>   ui/console.c | 15 +++++++++++----
+>   1 file changed, 11 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-> index a9d0d981a0..7d03fa57d0 100644
-> --- a/hw/display/pxa2xx_lcd.c
-> +++ b/hw/display/pxa2xx_lcd.c
-> @@ -1439,6 +1439,7 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
->       memory_region_add_subregion(sysmem, base, &s->iomem);
+> diff --git a/ui/console.c b/ui/console.c
+> index 84aee76846..94624c37ae 100644
+> --- a/ui/console.c
+> +++ b/ui/console.c
+> @@ -37,7 +37,6 @@
+>   #include "trace.h"
+>   #include "exec/memory.h"
+>   #include "qom/object.h"
+> -#include "sysemu/sysemu.h"
 >   
->       s->con = graphic_console_init(NULL, 0, &pxa2xx_ops, s);
-> +    qemu_console_set_rotate(s->con, graphic_rotate);
+>   #include "console-priv.h"
 >   
->       vmstate_register(NULL, 0, &vmstate_pxa2xx_lcdc, s);
+> @@ -51,6 +50,8 @@ typedef struct QemuGraphicConsole {
 >   
+>       QEMUCursor *cursor;
+>       int cursor_x, cursor_y, cursor_on;
+> +
+> +    unsigned rotate_arcdegree;
+>   } QemuGraphicConsole;
+>   
+>   typedef QemuConsoleClass QemuGraphicConsoleClass;
+> @@ -210,17 +211,23 @@ void qemu_console_set_window_id(QemuConsole *con, int window_id)
+>   
+>   void qemu_console_set_rotate(QemuConsole *con, unsigned arcdegree)
+>   {
+> -    graphic_rotate = arcdegree;
+> +    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
+> +
+> +    gc->rotate_arcdegree = arcdegree;
+>   }
+>   
+>   bool qemu_console_is_rotated(QemuConsole *con)
+>   {
+> -    return graphic_rotate != 0;
+> +    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
+> +
+> +    return gc->rotate_arcdegree != 0;
+>   }
+>   
+>   unsigned qemu_console_get_rotate_arcdegree(QemuConsole *con)
+>   {
+> -    return graphic_rotate;
+> +    QemuGraphicConsole *gc = QEMU_GRAPHIC_CONSOLE(con);
+> +
+> +    return gc->rotate_arcdegree;
+>   }
+>   
+>   void graphic_hw_invalidate(QemuConsole *con)

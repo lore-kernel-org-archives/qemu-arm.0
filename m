@@ -1,114 +1,116 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1385870ejb;
-        Tue, 19 Mar 2024 08:50:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWtAe2y4S/Tl72QJoGSitYHWyjhgRFPhxb2CtbzxHdXiOxbfA5x6ekKYbbSOZrK/3xcL0y+J1OWEYgT2FWGLfoJK8TcmJKJ
-X-Google-Smtp-Source: AGHT+IEEZrzLvVJqerKuWSD+7LMiJZBnWYCBXzB79AheWtYrKzGOg18TiwkobqXvs9z2qkGPbpKl
-X-Received: by 2002:a0d:dd47:0:b0:60a:21cd:f18c with SMTP id g68-20020a0ddd47000000b0060a21cdf18cmr13287723ywe.36.1710863422113;
-        Tue, 19 Mar 2024 08:50:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710863422; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1386423ejb;
+        Tue, 19 Mar 2024 08:51:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNBFkr6ZJq9jgjmmDN4FAS55HnNTUrX27WcVwdf7lumGdVBdQukYfjU1uoHbd+TrObfEVF0ilrcJujmGJDYUi76qKMkAs8
+X-Google-Smtp-Source: AGHT+IE/qcBoNSTGhiQS7ytkdW/5KmN394TTw2nDYsbHncVmjlRJX4Dta9lCDaY8PLoAsxD/spru
+X-Received: by 2002:a05:690c:4609:b0:60c:d24d:f962 with SMTP id gw9-20020a05690c460900b0060cd24df962mr12024401ywb.42.1710863473963;
+        Tue, 19 Mar 2024 08:51:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710863473; cv=none;
         d=google.com; s=arc-20160816;
-        b=atwm9Am7whBtPiu+/xnt3rd/+vZYsvTVHPt/0BuJaQ0xCKYPveyjSluV7zrOJ4JwGS
-         QfFzznAkW+HWKv+AG1QOWxgDtrb5Lm2sMNAVux4irW1VxQBK62EYOtQq19qap9mMm6em
-         3ZJMJTtFXGhCDf2BFbO5bYFI6QlVkSQipbFElATzzxu5N71GZe4/18QvPA7Uft8hILcZ
-         SFR1xdrPST80SNATlIllrH+360gNv6bNmI+y0wMMJDa2ix7Jn/o23kv5eVokFolDgs2M
-         DxAw4K5U7Yi7ATjobuwcXhBLE2xkI5w2QsWRoFHM0kryHAmUvhPnGoA7OM+PKoMhAxfE
-         kcow==
+        b=Dd/NvHY0aShPKdCoRA9c+SatYeJxrberdkGokTXxsxMKxylmi3nEN+ZtokfdpKc/0K
+         hJcDJmzpf8PnDY9i3cYmuyWFShogTfSc95F/gmNXQX14OPiK59K+xuyBTQcPchvOu97i
+         U1idNK4BvKlWIpXYVWsZK/q4FBHNa+TNdyA6YT9UUDLH4u1WfolB21a26Ztpkb8HGOgx
+         o1XZLcEIu+A+qN23hC65Aw0K2M6V72qySUpcnCakKn1KWK8+sfDSENlTkLKTjzmqF/VK
+         pIGSTlFYpMKoNAgtX3rVBkLgW6Owf4mZoEIm+7EceEq8nPAxUhCBDCCezI5hfuUYmNmv
+         6nBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mVM5sczr6N9DCawSN+UIf+ICT806MOF/8Ruu+UYE2pM=;
-        fh=iIsJbJwYnCg2UlIbr7sQPzlRJVuHnMa5yP2I41VjFBQ=;
-        b=sQ6Rwhkg0++PYkMGwO4VktC8JKDZ3fgLHB7CSGkU0kVQbA1vQ08Xn1pVNm8c+YWOnC
-         LWw8A2/oRRhmWJaqLIehqfMR8mVKBNDWV++KEDHoTS97IqX1wtaSA+BtAPObceNoBRk8
-         lcpkZuiabBV+p+s8yE1FNzlQuyqyBY0sJIKgc/pLLURr2Z00Ah5OlH4rqwviiBuX05Bt
-         5gVi/mvPRhWvdMJBv88WaHnlci+NvvkJpA7i/ddWJVdLROib3EHqJNMIHeVCEZaAPKBQ
-         aExrUMCELaKJjyIYvtHHRjnkGfsKwnjZPfqMtkGZCrwnGbEDW6BpobxZEMHcrigFuI7O
-         +hTg==;
+        bh=sAFmieUWILTCKRkamo/d7jrRPjeosX/hmTYF3Y7FJ0I=;
+        fh=4EVAndxaK5B4fenUMuzxHX/zTIC0CB+tZ6OiAG82Gx0=;
+        b=elaZZiPTMuXSiDaM2VOBJ/sDN55/DlXgDcbHW+8J20ybtiKF9AVOpL1iEb3U/SAjki
+         KkYkNM9tx1cp7Acwi/SMjlMDH5Tl9fL0oiNAwflttGrJhRZFNVzisG7lhINCxmBUTS4N
+         ge17z52LAR3WmPMCCFbdpz1/YHCSk6d6o640C2NiAH8+zKJTgySUuMI5Uc6MUOJdy6uc
+         WhvGCg+oyzSaAdJzGbOpkoqQ7Xcs5h6EzfHKu0Epjkc8ywjY0unzbbT4yuyIUw4uMfyC
+         RqqXGIgyLBQRJHY/xKVBwMtm8PGJqkgtTMihGWpt+b+PQR0tZ2jw3R1l6TzJioO0CbfJ
+         7/3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIOgl0hK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KNkjRW2l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11-20020a05622a060b00b0042ef8445a43si12067526qta.366.2024.03.19.08.50.21
+        by mx.google.com with ESMTPS id c2-20020ac85a82000000b00430d2816a3fsi4554128qtc.7.2024.03.19.08.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2024 08:50:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Mar 2024 08:51:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIOgl0hK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KNkjRW2l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rmbi4-0002up-C9; Tue, 19 Mar 2024 11:49:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rmbju-0007KN-PV; Tue, 19 Mar 2024 11:50:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbhm-0002k0-Sv
- for qemu-devel@nongnu.org; Tue, 19 Mar 2024 11:48:50 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbjl-0007Bw-Ge
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:50:51 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbhk-0006Fa-2P
- for qemu-devel@nongnu.org; Tue, 19 Mar 2024 11:48:46 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-33e1878e357so2367785f8f.3
- for <qemu-devel@nongnu.org>; Tue, 19 Mar 2024 08:48:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmbjh-0006i0-QZ
+ for qemu-arm@nongnu.org; Tue, 19 Mar 2024 11:50:48 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4140efa16caso18722035e9.0
+ for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 08:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710863319; x=1711468119; darn=nongnu.org;
+ d=linaro.org; s=google; t=1710863441; x=1711468241; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mVM5sczr6N9DCawSN+UIf+ICT806MOF/8Ruu+UYE2pM=;
- b=fIOgl0hKAXkiMcuO6asQsoetAuXOfYYOEjvAqHXxTww0WOUM8Hwx3jexZDoMSHT1XN
- AYDtSyJmAgqiLa+b2NMBoD4XWWE9FTc1j0j9dQkFLzYL8oRe0OUm9tq8cUGx4AyGwJEo
- AuIg0Gb5jSwC9uYudBQYd1np2eKAkGEUq4u6j6nrScECdgOYSDdjnXYg4Gf152Dfd4R4
- JGJXDlqQKXrHyKmqwdK+H/Igy3dK3sD3dz3fCgFrEMEmgy9HUlQt6ISz2TfGp1zVTbVu
- UAYXuCGkNP6ahxaRZBRrHIa2A3RfqqXSjaCOROQ1zGIx9SbZebUuN1ZSUQuavaVOdWaN
- uAjw==
+ bh=sAFmieUWILTCKRkamo/d7jrRPjeosX/hmTYF3Y7FJ0I=;
+ b=KNkjRW2lqyeqiwDFdJs1Ze7yY7Nekcd0ibal82qnyqN9k0m3K0M3YWaKADVQ0PqaJC
+ P43ei1b0HD4nY+uM572NdlPzvRLeeMJRBCh21S9KfcQuLgpeNLqgo+na0iKIJfjUfefv
+ OiFJJe3Oj3RXzDSlM19utDa42OxbbqCjYn45D2eVcnqVTHCSSGAEtWD4HQt3pd66nwyq
+ j/jlJKYlXG6s8+2DbE0Vkx8SjlxqCIpEIfMjfUDPgyCxAVthih+9gtHKgKJKpOOJLHRz
+ vB8UmVC6DkPr8/OcP+tAgL64xJyjjgZLrSnVDdu04c9DDw+nlgQH+rpYXfn88Lipr4T+
+ 6cPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710863319; x=1711468119;
+ d=1e100.net; s=20230601; t=1710863441; x=1711468241;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mVM5sczr6N9DCawSN+UIf+ICT806MOF/8Ruu+UYE2pM=;
- b=v3GPnAI+iSFe4aMs3XgmOGY8Wp+CnVH525yV9lxOtJcFkwAOr0+6T8cY11BTVHf/YQ
- Nlvkz9zNHcYBpcjUiZDO5ONHFFL2FkHKn/tlbbvb0oIhKR72JtywCADXGD1UpcreWLPK
- POQ+cYz/m6f8OK2yu07tp9WIVVim4WDr5Nsu8PU6ul3wgy4uX7uOZWtoNuKSEEU6D6CY
- CvnqwOMTudYD1s6NMNlHQ04e8fxI5ECVVq2GM5eQpcbMSG96yhLaDfbLibve/9mEvu2L
- rAZJMYc4GLllR8nKeR6gntQ4eIeK8wKilVqaNuHkQ3DgaQQRNEl2gTIowtCbO8shjOuT
- V0Pg==
-X-Gm-Message-State: AOJu0YwwWY7C7uBcMIXSe3pIpXM3w0D1gcud+6jk8HVc3IqP03/0UMWd
- 5tTx7JCIWhT33FhLFfOkOMRn1jaw0CJSi2e+9eVJ47RiFPmTDI14Mb063ajFoOOn2nH1u5XG0Xw
- I
-X-Received: by 2002:a5d:5265:0:b0:340:49a2:650a with SMTP id
- l5-20020a5d5265000000b0034049a2650amr2321972wrc.55.1710863318839; 
- Tue, 19 Mar 2024 08:48:38 -0700 (PDT)
+ bh=sAFmieUWILTCKRkamo/d7jrRPjeosX/hmTYF3Y7FJ0I=;
+ b=AWPsR0L2njYjRQA6KDUqyScRSpUZtL8Ri0/EXXwR0ScxsGtyhvgtnhNIDd9sDzykyR
+ EHDZbcJK9orwbD70AiV0dJl86AXku1548Pfj/6IE81dibhpMEgwDy6Bb/hBMdeQuyD+7
+ 9ItzhjkArS/eD1oPTa2NpbsqWVDbBfYWrHKM9Az9+QyticHFgkUkaNa9PpuWws4GR7xk
+ 4eIV8Mxi/yc+RoWtr32DWJNjYzrm+v9fcPATyEAyzbM3Dw4bfREOs6DAmQRrWpwLg7Gg
+ swIb+FYYSH7Df65uI3rYsA1PNWV2KctxgwifNXNtZglGTB7dAQd5o95h+Hen2XZJ0qwg
+ i93w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXz8P1FzpXjj7csnErCYOJl4TloD1t/vcaR/B1Zu+LulgzdOj9FoYhQDZumXWFW/hU3KXEPvFbxrPSUZFQuyjCxpjDv
+X-Gm-Message-State: AOJu0YwG/rP+br9KkcCpYArKy0ZLUeJ/JtcvFs2lKAEncdMIQvvgOr4Z
+ pezhKK40LL5KTIhd/FmOBArvtFLfOEfuR8Erl4+NpIz9y629FRNl9+hOxQ9BxNw=
+X-Received: by 2002:a05:600c:a4c:b0:414:729:1189 with SMTP id
+ c12-20020a05600c0a4c00b0041407291189mr7961730wmq.21.1710863441396; 
+ Tue, 19 Mar 2024 08:50:41 -0700 (PDT)
 Received: from [192.168.69.100] ([176.176.166.129])
  by smtp.gmail.com with ESMTPSA id
- f10-20020adffcca000000b0033d640c8942sm12655351wrs.10.2024.03.19.08.48.37
+ u6-20020a05600c19c600b0041413546e5bsm5711005wmq.0.2024.03.19.08.50.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Mar 2024 08:48:38 -0700 (PDT)
-Message-ID: <b2b9f1f0-bb84-4cbe-828d-6142ebbbbd54@linaro.org>
-Date: Tue, 19 Mar 2024 16:48:36 +0100
+ Tue, 19 Mar 2024 08:50:41 -0700 (PDT)
+Message-ID: <61da973d-e017-41d2-bafe-12570956aa8e@linaro.org>
+Date: Tue, 19 Mar 2024 16:50:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1 00/27] accel/tcg: Introduce
- TCGCPUOps::get_cpu_state() handler
+Subject: Re: [PATCH 2/2] aspeed: Make the ast1030-a1 SoC not user creatable
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Anton Johansson <anjo@rev.ng>, Claudio Fontana <cfontana@suse.de>
-References: <20240319154258.71206-1-philmd@linaro.org>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240319150903.413662-1-clg@redhat.com>
+ <20240319150903.413662-2-clg@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240319154258.71206-1-philmd@linaro.org>
+In-Reply-To: <20240319150903.413662-2-clg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,63 +119,32 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VIx++mvVa/zz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a0vPUJXhWyER
 
-(Forgot to Cc Claudio to keep him updated)
+On 19/3/24 16:09, Cédric Le Goater wrote:
+> Aspeed SoCs are complex devices that can not be specified on the
+> command line. Fix that to avoid QEMU aborts.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2227
+> Fixes: 356b230ed138 ("aspeed/soc : Add AST1030 support")
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   hw/arm/aspeed_ast10x0.c | 2 ++
+>   1 file changed, 2 insertions(+)
 
-On 19/3/24 16:42, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> This series introduce a generic get_cpu_state() handler in
-> TCGCPUOps and convert each target to it.
-> 
-> This is required to get a single cpu_get_tb_cpu_state()
-> for heterogeneous emulation (since this method is called
-> by accel/tcg/).
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Philippe Mathieu-Daudé (27):
->    accel/tcg: Ensure frontends define restore_state_to_opc handler
->    accel/tcg: Introduce TCGCPUOps::get_cpu_state() handler
->    target/alpha: Convert to TCGCPUOps::get_cpu_state()
->    target/arm: Restrict TCG-specific declarations
->    target/arm: Convert to TCGCPUOps::get_cpu_state()
->    target/avr: Convert to TCGCPUOps::get_cpu_state()
->    target/cris: Convert to TCGCPUOps::get_cpu_state()
->    target/hexagon: Convert to TCGCPUOps::get_cpu_state()
->    target/hppa: Convert to TCGCPUOps::get_cpu_state()
->    target/i386: Convert to TCGCPUOps::get_cpu_state()
->    target/loongarch: Convert to TCGCPUOps::get_cpu_state()
->    target/m68k: Convert to TCGCPUOps::get_cpu_state()
->    target/microblaze: Convert to TCGCPUOps::get_cpu_state()
->    target/mips: Convert to TCGCPUOps::get_cpu_state()
->    target/nios2: Convert to TCGCPUOps::get_cpu_state()
->    target/openrisc: Convert to TCGCPUOps::get_cpu_state()
->    target/ppc: Indent ppc_tcg_ops[] with 4 spaces
->    target/ppc: Convert to TCGCPUOps::get_cpu_state()
->    target/riscv: Convert to TCGCPUOps::get_cpu_state()
->    target/rx: Convert to TCGCPUOps::get_cpu_state()
->    target/s390x: Restrict TCG-specific declarations
->    target/s390x: Convert to TCGCPUOps::get_cpu_state()
->    target/sh4: Convert to TCGCPUOps::get_cpu_state()
->    target/sparc: Convert to TCGCPUOps::get_cpu_state()
->    target/tricore: Convert to TCGCPUOps::get_cpu_state()
->    target/xtensa: Convert to TCGCPUOps::get_cpu_state()
->    accel/tcg: Remove check on TARGET_HAS_CPU_GET_TB_CPU_STATE
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
